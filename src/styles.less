@@ -1,61 +1,78 @@
+// BASE
 body{
 	background-image: url('/assets/home/images/bg.png');
+	box-sizing: border-box;
 	cursor: default;
 	height: 100vh;
 	margin: 0 auto;
 	max-width: 400px;
-	box-sizing: border-box;
 }
 
-.div-table{
+
+// LAYOUT
+.main-container{
 	display: table;
 	height: 100%;
 	width: 100%;
+
+	&__cell{
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+	}
 }
 
-.div-table-cell{
-	display: table-cell;
-	vertical-align: middle;
+.text-center{
 	text-align: center;
 }
 
+.text-right{
+	text-align: right;
+}
+
+.text-left{
+	text-align: left;
+}
+
+
+// MODULES
 .title{
-	margin-bottom: 30px;
 	font-family: 'Abril Fatface', cursive;
+	font-size: 1.3em;
 	padding-left: 10px;
 }
 
 .link-wrapper-row{
 	margin: 0 auto;
-}
 
-.link-wrapper-cell{
-	width: 40%;
-	padding: 10px;
-	display: inline-block;
+	&__cell{
+		width: 40%;
+		padding: 10px;
+		display: inline-block;
 
-	&:nth-child(1){
-		text-align: right;
+		&__link{
+			font-size: 1.1em;
+			text-decoration: none;
+			display: block;
+
+			&__icon{
+				vertical-align: middle;
+
+				&--about-me{
+					width: 29px;
+				}
+			}
+
+			&__text{
+				color: black;
+				font-family: consolas;
+				padding-bottom: 1px;
+				vertical-align: middle;
+			}
+		}
 	}
-
-	&:nth-child(2){
-		text-align: left;
-	}
 }
 
-.link{
-	color: #404040;
-	font-size: 1.1em;
-	text-decoration: none;
-	display: block;
-}
+// STATES
 
-.icon{
-	vertical-align: middle;
-	width: 24px;
-}
-
-.link-text{
-	vertical-align: middle;
-	font-family: consolas;
-}
+// THEME

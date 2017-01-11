@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		initGA();
 
-		var links = document.getElementsByClassName('link');
+		var links = document.getElementsByClassName('link-wrapper-row__cell__link');
 
 		for (var i = 0, length = links.length; i < length; i++) {
 			links[i].addEventListener('click', linkClick, false);
