@@ -17,7 +17,7 @@ var htmlminOpts = {
 
 var isWatching = false;
 var environment = 'dev';
-var destPath = './dist';
+var destPath = './public';
 
 
 
@@ -59,7 +59,6 @@ function buildHTML() {
 
 	var stream = gulp.src(__dirname + '/src/template.html');
 	var cssText;
-	var jsText;
 
 	buildCSS()
 		.on('data', function(file) {
@@ -70,6 +69,8 @@ function buildHTML() {
 		.on('end', function() {
 
 			stream = stream.pipe(g.replace('/*INJECT:CSS*/', cssText));
+
+			var jsText;
 
 			buildJS()
 				.on('data', function(file) {

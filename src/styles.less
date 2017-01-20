@@ -9,6 +9,7 @@ body{
 }
 
 
+
 // LAYOUT
 .main-container{
 	display: table;
@@ -22,57 +23,56 @@ body{
 	}
 }
 
-.text-center{
-	text-align: center;
-}
-
-.text-right{
-	text-align: right;
-}
-
-.text-left{
-	text-align: left;
-}
-
 
 // MODULES
 .title{
 	font-family: 'Abril Fatface', cursive;
-	font-size: 1.3em;
-	padding-left: 10px;
+	font-size: 2em;
+	padding-left: 20px;
 }
 
-.link-wrapper-row{
+.links-container-row{
 	margin: 0 auto;
+}
 
-	&__cell{
-		width: 40%;
-		padding: 10px;
-		display: inline-block;
+.link-container-cell{
+	width: 40%;
+	padding: 10px;
+	display: inline-block;
+}
 
-		&__link{
-			font-size: 1.1em;
-			text-decoration: none;
-			display: block;
+.link{
+	font-size: 1.1em;
+	text-decoration: none;
+	display: block;
 
-			&__icon{
-				vertical-align: middle;
+	&__icon{
+		vertical-align: middle;
 
-				&--about-me{
-					width: 29px;
-				}
-			}
-
-			&__text{
-				color: black;
-				font-family: consolas;
-				padding-bottom: 1px;
-				vertical-align: middle;
-			}
+		&--about-me{
+			width: 29px;
 		}
+	}
+
+	&__text{
+		color: black;
+		font-family: consolas;
+		padding-bottom: 1px;
+		vertical-align: middle;
 	}
 }
 
-// STATES
 
-// THEME
+
+// UTIL
+.u-text-center{
+	text-align: center;
+}
+
+.u-text-right{
+	text-align: right;
+}
+
+.u-text-left{
+	text-align: left;
+}
