@@ -1,4 +1,6 @@
 # homepage
 =======================
 
-Homepage of my website
+- **Description**: My website's homepage
+- **Tech Stack:** html, css, js, gulp
+- **URL:** http://new-dfrzdev.rhcloud.com/
