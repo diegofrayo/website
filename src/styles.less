@@ -3,6 +3,7 @@ body{
 	background-image: url('/assets/home/images/bg.png');
 	box-sizing: border-box;
 	cursor: default;
+	font-family: 'Lato', cursive;
 	height: 100vh;
 	margin: 0 auto;
 	max-width: 400px;
@@ -26,9 +27,8 @@ body{
 
 // MODULES
 .title{
-	font-family: 'Abril Fatface', cursive;
 	font-size: 2em;
-	padding-left: 20px;
+	text-transform: lowercase;
 }
 
 .links-container-row{
@@ -48,17 +48,24 @@ body{
 
 	&__icon{
 		vertical-align: middle;
+		width: 48px;
 
 		&--about-me{
-			width: 29px;
+			width: 42px;
 		}
 	}
 
 	&__text{
-		color: black;
-		font-family: consolas;
+		background-color: black;
+		border-radius: 5px;
+		color: white;
 		padding-bottom: 1px;
+		padding: 3px 5px;
 		vertical-align: middle;
+
+		&:hover{
+			background-color: lighten(black, 30%);
+		}
 	}
 }
 
