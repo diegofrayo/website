@@ -41,15 +41,17 @@ body{
 }
 
 .link{
+	display: block;
 	font-size: 1.1em;
 	text-decoration: none;
-	display: block;
 
 	&__icon{
 		vertical-align: middle;
 		width: 48px;
 
 		&--about-me{
+			display: block;
+			margin: 5px auto;
 			width: 42px;
 		}
 	}
@@ -62,10 +64,29 @@ body{
 		padding: 3px 5px;
 		vertical-align: middle;
 
+		&--custom-width{
+			display: inline-block;
+			text-align: center;
+			width: 45px;
+		}
+
 		&:hover{
 			background-color: lighten(black, 30%);
 		}
 	}
+}
+
+.apps-link-container{
+	display: none;
+	margin: 70px auto 0;
+}
+
+.app-link{
+	background-color: #2196F3;
+	color: white;
+	display: inline-block;
+	margin: 0 5px;
+	padding: 5px;
 }
 
 

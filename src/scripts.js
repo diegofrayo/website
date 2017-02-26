@@ -24,28 +24,67 @@ function linkClick() {
 	// TRACK THIS EVENT
 }
 
+function getCookie(cname) {
+
+	var cookieData = document.cookie.split(';');
+	var name = cname + '=';
+
+	for (var index = 0; index < cookieData.length; index += 1) {
+
+		var cookieChunk = cookieData[index];
+
+		while (cookieChunk.charAt(0) === ' ') {
+			cookieChunk = cookieChunk.substring(1);
+		}
+
+		if (cookieChunk.indexOf(name) === 0) {
+			return cookieChunk.substring(name.length, cookieChunk.length);
+		}
+	}
+
+	return false;
+}
 
 
 //-------------------Global Vars-------------------//
 const APP_CONFIGURATION = {
-	ENVIRONMENT: window.location.href.indexOf('diegorayo.com') !== -1 ? 'LIVE' : 'DEV'
+	ENVIRONMENT: window.location.href.indexOf('homepage.local') !== -1 ? 'DEV' : window.location.href.indexOf('personal-website.local') ? 'STAGING' : 'LIVE'
 };
 
 
 //-------------------onReadyCallback-------------------//
-
 document.addEventListener('DOMContentLoaded', function() {
+
+	var showAppsLinks = function() {
+		document.getElementById('apps-link-container').style.display = 'block';
+	};
+
+	var isLoggedIn = getCookie('auth');
 
 	if (APP_CONFIGURATION.ENVIRONMENT === 'LIVE') {
 
-		initGA();
+		if (isLoggedIn === false) {
 
-		var links = document.getElementsByClassName('link');
+			initGA();
 
-		for (var i = 0, length = links.length; i < length; i++) {
-			links[i].addEventListener('click', linkClick, false);
+			var links = document.getElementsByClassName('link');
+
+			for (var i = 0, length = links.length; i < length; i++) {
+				links[i].addEventListener('click', linkClick, false);
+			}
+
+		} else {
+			showAppsLinks();
 		}
 
+	} else if (APP_CONFIGURATION.ENVIRONMENT === 'STAGING') {
+
+		if (isLoggedIn) {
+			showAppsLinks();
+		}
+
+	} else {
+		showAppsLinks();
 	}
 
 }, false);
