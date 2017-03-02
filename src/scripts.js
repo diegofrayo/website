@@ -48,7 +48,7 @@ function getCookie(cname) {
 
 //-------------------Global Vars-------------------//
 const APP_CONFIGURATION = {
-	ENVIRONMENT: window.location.href.indexOf('homepage.local') !== -1 ? 'DEV' : window.location.href.indexOf('personal-website.local') ? 'STAGING' : 'LIVE'
+	ENVIRONMENT: window.location.href.indexOf('homepage.local') !== -1 ? 'DEV' : window.location.href.indexOf('personal-website.local') !== -1 ? 'STAGING' : 'LIVE'
 };
 
 
