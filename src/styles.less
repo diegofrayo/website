@@ -71,30 +71,32 @@ body{
 }
 
 .console-container{
-	border-radius: 3px;
-	box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
 	margin-bottom: 20px;
+	overflow: hidden;
+	padding: 5px;
 
 	&__header{
 		background-color: #f7f7f7;
-		border-bottom: none;
+		border-bottom: 0;
 		border-top-left-radius: 3px;
 		border-top-right-radius: 3px;
-		border: 1px solid #CCCCCC;
+		border: 1px solid #a09797;
+		box-shadow: 0 0 2px 0 #636363;
 		color: #525252;
-		font-size: 0.85em;
+		font-size: 0.75em;
 		margin: 0;
-		padding: 5px 0;
-		text-align: center;
-		text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+		padding: 2px 2px 3px 5px;
+		text-align: left;
 	}
 
 	&__body{
+		box-shadow: 0 0 2px 0 #636363;
 		background-color: black;
 		color: #45D40C;
 		font-family: 'consolas';
-		font-size: 0.8em;
-		padding: 5px;
+		font-size: 0.9em;
+		margin-top: -1px;
+		padding: 5px 5px 20px;
 		text-align: left;
 	}
 }
