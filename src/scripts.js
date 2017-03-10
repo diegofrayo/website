@@ -19,9 +19,13 @@ function initGA() {
 /* jshint ignore:end */
 
 function linkClick() {
+
 	var linkNameClicked = this.getAttribute('data-link-name');
-	console.log(linkNameClicked);
-	// TRACK THIS EVENT
+
+	if (linkNameClicked) {
+		console.log(linkNameClicked);
+		// TRACK THIS EVENT
+	}
 }
 
 function getCookie(cname) {
@@ -56,7 +60,9 @@ const APP_CONFIGURATION = {
 document.addEventListener('DOMContentLoaded', function() {
 
 	var showAppsLinks = function() {
-		document.getElementById('apps-link-container').style.display = 'block';
+		document.querySelectorAll('.link-container-cell--apps').forEach(function(element) {
+			element.style.display = 'block';
+		});
 	};
 
 	var isLoggedIn = getCookie('auth');

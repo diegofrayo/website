@@ -1,14 +1,14 @@
 {
-	"adjoining-classes": false,
+	"adjoining-classes": true,
 	"box-sizing": false,
-	"box-model": false,
-	"compatible-vendor-prefixes": false,
-	"fallback-colors": false,
+	"box-model": true,
+	"compatible-vendor-prefixes": true,
+	"fallback-colors": true,
 	"floats": true,
 	"font-sizes": true,
 	"gradients": true,
-	"important": true,
-	"ids": false,
+	"important": false,
+	"ids": true,
 	"known-properties": true,
 	"outline-none": true,
 	"qualified-headings": true,
@@ -17,5 +17,5 @@
 	"text-indent": true,
 	"unique-headings": true,
 	"universal-selector": true,
-	"unqualified-attributes": false
+	"unqualified-attributes": true
 }

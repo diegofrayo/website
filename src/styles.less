@@ -3,7 +3,7 @@ body{
 	background-image: url('/assets/home/images/bg.png');
 	box-sizing: border-box;
 	cursor: default;
-	font-family: 'Roboto', cursive;
+	font-family: 'Lato';
 	height: 100vh;
 	margin: 0 auto;
 	max-width: 400px;
@@ -25,68 +25,78 @@ body{
 
 
 // MODULES
-.title{
-	font-size: 2em;
-	text-transform: lowercase;
-}
-
-.links-container-row{
-	margin: 0 auto;
-}
-
-.link-container-cell{
-	width: 40%;
-	padding: 10px;
-	display: inline-block;
+.link-container{
+	margin: 5px auto;
+	max-width: 160px;
 }
 
 .link{
+	@gray: #d2d2d2;
+	@blue: #2196F3;
+	border: 1px solid @gray;
+	color: black;
 	display: block;
-	font-size: 1.1em;
+	font-size: 1em;
+	padding: 0 0 2px;
 	text-decoration: none;
+
+	&:hover{
+		background-color: @gray;
+	}
+
+	&--apps{
+		background-color: @blue;
+		border: 1px solid @blue;
+		color: white;
+
+		&:hover{
+			background-color: darken(@blue, 10%);
+		}
+	}
 
 	&__icon{
 		vertical-align: middle;
-		width: 48px;
+		width: 20px;
 
 		&--about-me{
-			display: block;
-			margin: 5px auto;
-			width: 42px;
+			width: 18px;
 		}
 	}
 
 	&__text{
-		background-color: black;
-		border-radius: 5px;
-		color: white;
+		color: inherit;
 		padding-bottom: 1px;
-		padding: 3px 5px;
 		vertical-align: middle;
-
-		&--custom-width{
-			display: inline-block;
-			text-align: center;
-			width: 45px;
-		}
-
-		&:hover{
-			background-color: lighten(black, 30%);
-		}
 	}
 }
 
-.apps-link-container{
-	display: none;
-	margin: 70px auto 0;
-}
+.console-container{
+	border-radius: 3px;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+	margin-bottom: 20px;
 
-.app-link{
-	background-color: #2196F3;
-	color: white;
-	display: inline-block;
-	margin: 0 5px;
-	padding: 5px;
+	&__header{
+		background-color: #f7f7f7;
+		border-bottom: none;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		border: 1px solid #CCCCCC;
+		color: #525252;
+		font-size: 0.85em;
+		margin: 0;
+		padding: 5px 0;
+		text-align: center;
+		text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+	}
+
+	&__body{
+		background-color: black;
+		color: #45D40C;
+		font-family: 'consolas';
+		font-size: 0.8em;
+		padding: 5px;
+		text-align: left;
+	}
 }
 
 
