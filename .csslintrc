@@ -1,7 +1,7 @@
 {
 	"adjoining-classes": true,
 	"box-sizing": false,
-	"box-model": true,
+	"box-model": false,
 	"compatible-vendor-prefixes": true,
 	"fallback-colors": true,
 	"floats": true,

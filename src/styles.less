@@ -1,10 +1,16 @@
 // BASE
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
 body{
 	background-image: url('/assets/home/images/bg.png');
 	box-sizing: border-box;
 	cursor: default;
 	font-family: 'Lato';
-	height: 100vh;
 	margin: 0 auto;
 	max-width: 400px;
 }
@@ -27,7 +33,7 @@ body{
 // MODULES
 .link-container{
 	margin: 5px auto;
-	max-width: 160px;
+	max-width: 200px;
 }
 
 .link{
@@ -71,22 +77,25 @@ body{
 }
 
 .console-container{
-	margin-bottom: 20px;
 	overflow: hidden;
 	padding: 5px;
 
 	&__header{
-		background-color: #f7f7f7;
+		background-color: #e0e0e0;
 		border-bottom: 0;
 		border-top-left-radius: 3px;
 		border-top-right-radius: 3px;
 		border: 1px solid #a09797;
 		box-shadow: 0 0 2px 0 #636363;
 		color: #525252;
-		font-size: 0.75em;
 		margin: 0;
-		padding: 2px 2px 3px 5px;
+		padding: 2px 2px 3px 2px;
 		text-align: left;
+
+		&__title{
+			font-weight: bold;
+			margin-left: 10px;
+		}
 	}
 
 	&__body{
@@ -94,13 +103,33 @@ body{
 		background-color: black;
 		color: #45D40C;
 		font-family: 'consolas';
-		font-size: 0.9em;
 		margin-top: -1px;
 		padding: 5px 5px 20px;
 		text-align: left;
 	}
 }
 
+.console-header-button{
+	border-radius: 100%;
+	cursor: default;
+	float: left;
+	height: 12px;
+	margin: 5px 3px;
+	padding: 0 3px;
+	width: 5px;
+
+	&--min{
+		background-color: #37cb4b;
+	}
+
+	&--close{
+		background-color: #f1615c;
+	}
+
+	&--max{
+		background-color: #fabe41;
+	}
+}
 
 // UTIL
 .u-text-center{
