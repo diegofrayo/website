@@ -18,13 +18,17 @@ function initGA() {
 }
 /* jshint ignore:end */
 
-function linkClick() {
+function gaElementClick() {
 
-	var linkNameClicked = this.getAttribute('data-link-name');
+	var elementNameClicked = this.getAttribute('data-element-name');
 
-	if (linkNameClicked) {
-		console.log(linkNameClicked);
-		// TRACK THIS EVENT
+	if (elementNameClicked) {
+		ga('send', {
+			hitType: 'event',
+			eventCategory: 'Main',
+			eventAction: 'click',
+			eventLabel: elementNameClicked
+		});
 	}
 }
 
@@ -73,10 +77,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			initGA();
 
-			var links = document.getElementsByClassName('link');
+			var gaElements = document.getElementsByClassName('ga-element');
 
-			for (var i = 0, length = links.length; i < length; i++) {
-				links[i].addEventListener('click', linkClick, false);
+			for (var i = 0, length = gaElements.length; i < length; i++) {
+				gaElements[i].addEventListener('click', gaElementClick, false);
 			}
 
 		} else {
