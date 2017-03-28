@@ -13,8 +13,8 @@ function initGA() {
 		m.parentNode.insertBefore(a, m)
 	})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-	ga('create', 'UA-90015747-1', 'auto');
-	ga('send', 'pageview');
+	ga('create', 'UA-90015747-1', 'auto', 'homepage');
+	ga('homePage.send', 'pageview');
 }
 /* jshint ignore:end */
 
@@ -23,7 +23,7 @@ function gaElementClick() {
 	var elementNameClicked = this.getAttribute('data-element-name');
 
 	if (elementNameClicked) {
-		ga('send', {
+		ga('homePage.send', {
 			hitType: 'event',
 			eventCategory: 'Main',
 			eventAction: 'click',
