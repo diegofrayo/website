@@ -17,7 +17,7 @@ var htmlminOpts = {
 
 var isWatching = false;
 var environment = 'dev';
-var destPath = './dist';
+var destPath = './build';
 
 
 

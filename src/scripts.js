@@ -18,6 +18,36 @@ function initGA() {
 }
 /* jshint ignore:end */
 
+function initTypingInConsole() {
+
+	var consoleText = document.getElementsByClassName('console__text')[0];
+	var message = '<JavaScriptDeveloper />';
+	var index = 0;
+
+	var interval = setInterval(function() {
+
+		consoleText.innerHTML = consoleText.innerHTML + message.charAt(index);
+		index++;
+
+		if (index === message.length) {
+
+			var consoleCursor = document.getElementsByClassName('console__cursor')[0];
+
+			setInterval(function() {
+				if (consoleCursor.style.opacity !== '0') {
+					consoleCursor.style.opacity = 0;
+				} else {
+					consoleCursor.style.opacity = 100;
+				}
+			}, 500);
+
+			clearInterval(interval);
+		}
+
+	}, 100);
+
+}
+
 function gaElementClick() {
 
 	var elementNameClicked = this.getAttribute('data-element-name');
@@ -96,5 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	} else {
 		showAppsLinks();
 	}
+
+	initTypingInConsole();
 
 }, false);

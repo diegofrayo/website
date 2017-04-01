@@ -33,7 +33,7 @@ body{
 // MODULES
 .link-container{
 	margin: 5px auto;
-	max-width: 200px;
+	max-width: 250px;
 
 	&--apps{
 		display: none;
@@ -41,7 +41,7 @@ body{
 }
 
 .link{
-	@gray: #d2d2d2;
+	@gray: #c7c7c7;
 	@blue: #2196F3;
 	border: 1px solid @gray;
 	color: black;
@@ -82,7 +82,7 @@ body{
 	}
 }
 
-.console-container{
+.console{
 	overflow: hidden;
 	padding: 5px;
 
@@ -100,7 +100,29 @@ body{
 
 		&__title{
 			font-weight: bold;
-			margin-left: 10px;
+			margin-left: 30px;
+		}
+
+		&__button{
+			border-radius: 100%;
+			cursor: default;
+			float: left;
+			height: 12px;
+			margin: 5px 3px;
+			padding: 0 3px;
+			width: 5px;
+
+			&--close{
+				background-color: #f1615c;
+			}
+
+			&--max{
+				background-color: #fabe41;
+			}
+
+			&--min{
+				background-color: #37cb4b;
+			}
 		}
 	}
 
@@ -113,29 +135,22 @@ body{
 		padding: 5px 5px 20px;
 		text-align: left;
 	}
-}
 
-.console-header-button{
-	border-radius: 100%;
-	cursor: default;
-	float: left;
-	height: 12px;
-	margin: 5px 3px;
-	padding: 0 3px;
-	width: 5px;
-
-	&--close{
-		background-color: #f1615c;
+	&__text{
+		display: inline-block;
 	}
 
-	&--max{
-		background-color: #fabe41;
-	}
-
-	&--min{
-		background-color: #37cb4b;
+	&__cursor{
+		background-color: #45D40C;
+		display: inline-block;
+		height: 16px;
+		opacity: 0;
+		position: relative;
+		top: 3px;
+		width: 10px;
 	}
 }
+
 
 // UTIL
 .u-text-center{
