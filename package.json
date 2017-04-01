@@ -2,6 +2,9 @@
 	"name": "homepage",
 	"version": "0.0.1",
 	"private": true,
+	"scripts": {
+		"build": "gulp build-live"
+	},
 	"devDependencies": {
 		"gulp": "^3.9.0",
 		"gulp-csslint": "~0.1.3",

@@ -14,7 +14,7 @@ function initGA() {
 	})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
 	ga('create', 'UA-90015747-1', 'auto', 'homepage');
-	ga('homePage.send', 'pageview');
+	ga('homepage.send', 'pageview');
 }
 /* jshint ignore:end */
 
@@ -53,7 +53,7 @@ function gaElementClick() {
 	var elementNameClicked = this.getAttribute('data-element-name');
 
 	if (elementNameClicked) {
-		ga('homePage.send', {
+		ga('homepage.send', {
 			hitType: 'event',
 			eventCategory: 'Main',
 			eventAction: 'click',
