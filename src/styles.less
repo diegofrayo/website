@@ -8,11 +8,14 @@ html, body {
 
 body{
 	background-image: url('/assets/home/images/bg.png');
-	box-sizing: border-box;
 	cursor: default;
-	font-family: 'Lato';
+	font-family: 'Righteous', cursive;
 	margin: 0 auto;
 	max-width: 200px;
+}
+
+*{
+	box-sizing: border-box;
 }
 
 
@@ -20,10 +23,12 @@ body{
 .main-container{
 	display: table;
 	height: 100%;
-	width: 100%;
+	margin: 0 auto;
+	max-width: 280px;
 
 	&__cell{
 		display: table-cell;
+		padding: 5px;
 		text-align: center;
 		vertical-align: middle;
 	}
@@ -31,56 +36,9 @@ body{
 
 
 // MODULES
-.link-container{
-	margin: 5px auto;
-	max-width: 250px;
-
-	&--apps{
-		display: none;
-	}
-}
-
-.link{
-	@gray: #c7c7c7;
-	@blue: #2196F3;
-	border: 1px solid @gray;
-	color: black;
-	display: block;
-	font-size: 1em;
-	padding: 0 0 2px;
-	text-decoration: none;
-
-	&:hover{
-		background-color: @gray;
-	}
-
-	&--apps{
-		background-color: @blue;
-		border: 1px solid @blue;
-		color: white;
-
-		&:hover{
-			background-color: darken(@blue, 10%);
-		}
-	}
-
-	&__icon{
-		vertical-align: middle;
-		width: 20px;
-	}
-
-	&__text{
-		color: inherit;
-		padding-bottom: 1px;
-		position: relative;
-		top: -1px;
-		vertical-align: middle;
-	}
-}
-
 .console{
+	margin: 5px auto;
 	overflow: hidden;
-	padding: 5px;
 
 	&__header{
 		background-color: #e0e0e0;
@@ -88,7 +46,6 @@ body{
 		border-top-left-radius: 3px;
 		border-top-right-radius: 3px;
 		border: 1px solid #a09797;
-		box-shadow: 0 0 2px 0 #636363;
 		color: #525252;
 		margin: 0;
 		padding: 2px 2px 3px 2px;
@@ -96,7 +53,7 @@ body{
 
 		&__title{
 			font-weight: bold;
-			margin-left: 10px;
+			margin-left: 5px;
 		}
 
 		&__button{
@@ -106,7 +63,9 @@ body{
 			height: 12px;
 			margin: 5px 3px;
 			padding: 0 3px;
-			width: 5px;
+			position: relative;
+			top: -1px;
+			width: 12px;
 
 			&--close{
 				background-color: #f1615c;
@@ -123,7 +82,6 @@ body{
 	}
 
 	&__body{
-		box-shadow: 0 0 2px 0 #636363;
 		background-color: black;
 		color: #45D40C;
 		font-family: 'consolas';
@@ -144,6 +102,66 @@ body{
 		position: relative;
 		top: 3px;
 		width: 10px;
+	}
+}
+
+.link-container{
+	display: inline-block;
+	margin: 5px auto;
+	width: 49%;
+
+	&:first-child{
+		margin-right: 1px;
+	}
+
+	&:last-child{
+		margin-left: 1px;
+	}
+
+	&--apps{
+		display: none;
+
+		&--width-100{
+			width: 99%;
+		}
+	}
+}
+
+.link{
+	@gray: #c7c7c7;
+	@blue: #2196F3;
+	border: 1px solid @gray;
+	color: black;
+	display: block;
+	font-size: 1em;
+	padding: 5px 0;
+	text-decoration: none;
+
+	&:hover{
+		background-color: white;
+	}
+
+	&--apps{
+		background-color: @blue;
+		border: 1px solid @blue;
+		color: white;
+
+		&:hover{
+			background-color: darken(@blue, 10%);
+		}
+	}
+
+	&__icon{
+		vertical-align: middle;
+		width: 30px;
+	}
+
+	&__text{
+		color: inherit;
+		padding-bottom: 1px;
+		vertical-align: middle;
+		position: relative;
+		top: -1px;
 	}
 }
 

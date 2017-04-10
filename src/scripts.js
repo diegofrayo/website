@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	var showAppsLinks = function() {
 		document.querySelectorAll('.link-container--apps').forEach(function(element) {
-			element.style.display = 'block';
+			element.style.display = 'inline-block';
 		});
 	};
 
