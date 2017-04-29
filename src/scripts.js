@@ -13,7 +13,11 @@ function initGA() {
 		m.parentNode.insertBefore(a, m)
 	})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-	ga('create', 'UA-90015747-1', 'auto', 'homepage');
+	ga('create', 'UA-90015747-3', 'auto', 'homepage', {
+		location: window.location.href.replace('?i=1', '').replace('?i=2', ''),
+		page: '/',
+		title: document.title
+	});
 	ga('homepage.send', 'pageview');
 }
 /* jshint ignore:end */
