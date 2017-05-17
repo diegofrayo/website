@@ -13,12 +13,12 @@ function initGA() {
 		m.parentNode.insertBefore(a, m)
 	})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-	ga('create', 'UA-90015747-3', 'auto', 'homepage', {
-		location: window.location.href.replace('?i=1', '').replace('?i=2', ''),
+	ga('create', 'UA-98284306-1', 'auto', 'website', {
+		location: window.location.href.replace('?i=1', '').replace('?i=2', '').replace('?i=3', ''),
 		page: '/',
 		title: document.title
 	});
-	ga('homepage.send', 'pageview');
+	ga('website.send', 'pageview');
 }
 /* jshint ignore:end */
 
@@ -57,7 +57,7 @@ function gaElementClick() {
 	var elementNameClicked = this.getAttribute('data-element-name');
 
 	if (elementNameClicked) {
-		ga('homepage.send', {
+		ga('website.send', {
 			hitType: 'event',
 			eventCategory: 'Main',
 			eventAction: 'click',

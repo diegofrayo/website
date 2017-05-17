@@ -100,7 +100,7 @@ function buildHTML() {
 
 					}
 
-					g.util.log('BUILD HOME PAGE FILES');
+					g.util.log('BUILD HOME PAGE FILES ' + new Date().toLocaleString());
 
 				});
 

@@ -37,16 +37,6 @@ body{
 
 
 // MODULES
-.main-title{
-	padding: 10px;
-	margin: 10px;
-	overflow: hidden;
-	top: 0;
-	position: absolute;
-	color: white;
-	opacity: 0;
-}
-
 .console{
 	margin: 3px auto;
 	overflow: hidden;
@@ -63,8 +53,15 @@ body{
 		text-align: left;
 
 		&__title{
+			display: inline-block;
+			font-size: 16px;
 			font-weight: 700;
-			margin-left: 5px;
+			margin: 0 0 0 5px;
+			text-transform: lowercase;
+
+			&:before{
+				content: '/';
+			}
 		}
 
 		&__button{
