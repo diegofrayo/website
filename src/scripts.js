@@ -25,7 +25,7 @@ function initGA() {
 function initTypingInConsole() {
 
 	var consoleText = document.getElementsByClassName('console__text')[0];
-	var message = '<WebDeveloper />';
+	var message = '<JavaScriptDeveloper />';
 	var index = 0;
 
 	var interval = setInterval(function() {
