@@ -38,7 +38,7 @@ body{
 
 // MODULES
 .console{
-	margin: 3px auto 10px;
+	margin: 3px auto;
 	overflow: hidden;
 
 	&__header{
@@ -142,7 +142,7 @@ body{
 
 .link{
 	@gray: #c7c7c7;
-	@blue: #348eff;
+	@main: #000;
 	border: 1px solid @gray;
 	color: black;
 	display: block;
@@ -155,12 +155,12 @@ body{
 	}
 
 	&--apps{
-		background-color: @blue;
-		border: 1px solid @blue;
+		background-color: @main;
+		border: 1px solid @main;
 		color: white;
 
 		&:hover{
-			background-color: darken(@blue, 5%);
+			background-color: lighten(@main, 5%);
 		}
 	}
 
