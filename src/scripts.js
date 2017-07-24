@@ -1,9 +1,9 @@
 /* jshint ignore:start */
 function initGA() {
 
-	(function(i, s, o, g, r, a, m) {
+	(function (i, s, o, g, r, a, m) {
 		i['GoogleAnalyticsObject'] = r;
-		i[r] = i[r] || function() {
+		i[r] = i[r] || function () {
 			(i[r].q = i[r].q || []).push(arguments)
 		}, i[r].l = 1 * new Date();
 		a = s.createElement(o),
@@ -13,12 +13,16 @@ function initGA() {
 		m.parentNode.insertBefore(a, m)
 	})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
+	var location = window.location.href.replace('?i=1', '').replace('?i=2', '').replace('?i=3', '');
 	ga('create', 'UA-98284306-1', 'auto', 'website', {
-		location: window.location.href.replace('?i=1', '').replace('?i=2', '').replace('?i=3', ''),
+		location: location,
 		page: '/',
 		title: document.title
 	});
+	ga('set', 'location', location);
+	ga('set', 'page', '/');
 	ga('website.send', 'pageview');
+
 }
 /* jshint ignore:end */
 
@@ -28,7 +32,7 @@ function initTypingInConsole() {
 	var message = '<JavaScriptDeveloper />';
 	var index = 0;
 
-	var interval = setInterval(function() {
+	var interval = setInterval(function () {
 
 		consoleText.innerHTML = consoleText.innerHTML + message.charAt(index);
 		index++;
@@ -37,7 +41,7 @@ function initTypingInConsole() {
 
 			var consoleCursor = document.getElementsByClassName('console__cursor')[0];
 
-			setInterval(function() {
+			setInterval(function () {
 				if (consoleCursor.style.opacity !== '0') {
 					consoleCursor.style.opacity = 0;
 				} else {
@@ -95,10 +99,10 @@ const APP_CONFIGURATION = {
 
 
 //-------------------onReadyCallback-------------------//
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
-	var showAppsLinks = function() {
-		document.querySelectorAll('.link-container--apps').forEach(function(element) {
+	var showAppsLinks = function () {
+		document.querySelectorAll('.link-container--apps').forEach(function (element) {
 			element.style.display = 'inline-block';
 		});
 	};
