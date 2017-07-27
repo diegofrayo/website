@@ -63,7 +63,7 @@ function gaElementClick() {
 	if (elementNameClicked) {
 		ga('website.send', {
 			hitType: 'event',
-			eventCategory: 'Main',
+			eventCategory: 'homepage',
 			eventAction: 'click',
 			eventLabel: elementNameClicked
 		});
