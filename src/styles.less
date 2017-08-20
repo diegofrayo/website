@@ -155,12 +155,14 @@ body{
 	}
 
 	&--apps{
-		background-color: @main;
-		border: 1px solid @main;
-		color: white;
+		@bg: #00a1ff;
+		background-color: @bg;
+		border: 1px solid #258ac5;
+		color: black;
+		font-weight: 700;
 
 		&:hover{
-			background-color: lighten(@main, 5%);
+			background-color: darken(@bg, 5%);
 		}
 	}
 
