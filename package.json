@@ -3,7 +3,8 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"build": "gulp build-live"
+    "build": "gulp build-live",
+    "start": "gulp"
 	},
 	"devDependencies": {
 		"gulp": "^3.9.0",

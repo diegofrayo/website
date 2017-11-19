@@ -24,8 +24,8 @@ body{
 	display: table;
 	height: 100%;
 	margin: 0 auto;
-	max-width: 270px;
-	min-width: 270px;
+	max-width: 200px;
+	min-width: 200px;
 
 	&__cell{
 		display: table-cell;
@@ -121,29 +121,13 @@ body{
 
 .link-container{
 	display: inline-block;
-	margin: 3px auto;
-	width: 49%;
-
-	&:first-child{
-		float: left;
-		margin-right: 1px;
-	}
-
-	&:last-child{
-		float: right;
-		margin-left: 1px;
-	}
-
-	&--apps{
-		display: none;
-		width: 100%;
-	}
+	margin: 3px 7px;
+  text-decoration: underline;
 }
 
 .link{
 	@gray: #c7c7c7;
 	@main: #000;
-	border: 1px solid @gray;
 	color: black;
 	display: block;
 	font-size: 1em;
@@ -151,33 +135,16 @@ body{
 	text-decoration: none;
 
 	&:hover{
-		background-color: white;
-	}
+    font-weight: 700;
+  }
 
-	&--apps{
-		@bg: #00a1ff;
-		background-color: @bg;
-		border: 1px solid #258ac5;
-		color: black;
-		font-weight: 700;
-
-		&:hover{
-			background-color: darken(@bg, 5%);
-		}
-	}
-
-	&__icon{
-		vertical-align: middle;
-		width: 30px;
-	}
-
-	&__text{
-		color: inherit;
-		padding-bottom: 1px;
-		vertical-align: middle;
-		position: relative;
-		top: -1px;
-	}
+  &__text{
+    color: inherit;
+    padding-bottom: 1px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
 }
 
 

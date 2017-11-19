@@ -29,7 +29,7 @@ function initGA() {
 function initTypingInConsole() {
 
 	var consoleText = document.getElementsByClassName('console__text')[0];
-	var message = '<JavaScriptDeveloper />';
+	var message = 'hello there...';
 	var index = 0;
 
 	var interval = setInterval(function () {
@@ -101,12 +101,6 @@ const APP_CONFIGURATION = {
 //-------------------onReadyCallback-------------------//
 document.addEventListener('DOMContentLoaded', function () {
 
-	var showAppsLinks = function () {
-		document.querySelectorAll('.link-container--apps').forEach(function (element) {
-			element.style.display = 'inline-block';
-		});
-	};
-
 	var isLoggedIn = getCookie('auth');
 
 	if (APP_CONFIGURATION.ENVIRONMENT === 'LIVE') {
@@ -121,18 +115,8 @@ document.addEventListener('DOMContentLoaded', function () {
 				gaElements[i].addEventListener('click', gaElementClick, false);
 			}
 
-		} else {
-			showAppsLinks();
 		}
 
-	} else if (APP_CONFIGURATION.ENVIRONMENT === 'STAGING') {
-
-		if (isLoggedIn) {
-			showAppsLinks();
-		}
-
-	} else {
-		showAppsLinks();
 	}
 
 	initTypingInConsole();
