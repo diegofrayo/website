@@ -29,7 +29,7 @@ function initGA() {
 function initTypingInConsole() {
 
 	var consoleText = document.getElementsByClassName('console__text')[0];
-	var message = 'hello there...';
+	var message = 'welcome...';
 	var index = 0;
 
 	var interval = setInterval(function () {
