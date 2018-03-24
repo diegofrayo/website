@@ -1,143 +1,142 @@
-@max-width: 230px;
+@max-width: 300px;
 
 // BASE
-html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	width: 100%;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
-body{
+body {
   background-color: #242424;
-	cursor: default;
-	font-family: monospace, 'consolas', sans-serif;
-	margin: 0 auto;
-	max-width: @max-width;
+  cursor: default;
+  font-family: monospace, 'consolas', sans-serif;
+  margin: 0 auto;
+  max-width: @max-width;
 }
 
-*{
-	box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-
 
 // LAYOUT
-.main-container{
-	display: table;
-	height: 100%;
-	margin: 0 auto;
-	width: 100%;
+.main-container {
+  display: table;
+  height: 100%;
+  margin: 0 auto;
+  width: 100%;
 
-	&__cell{
-		display: table-cell;
-		padding: 5px;
-		text-align: center;
-		vertical-align: middle;
-	}
+  &__cell {
+    display: table-cell;
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+  }
 }
-
 
 // MODULES
-.console{
-	margin: 3px auto;
-	overflow: hidden;
+.console {
+  margin: 3px auto;
+  overflow: hidden;
 
-	&__header{
-		background-color: #e0e0e0;
-		border-bottom: 0;
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
-		border: 1px solid #a09797;
-		color: #525252;
-		margin: 0;
-		padding: 2px 2px 3px 2px;
-		position: relative;
-		text-align: center;
+  &__header {
+    background-color: #e0e0e0;
+    border-bottom: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border: 1px solid #a09797;
+    color: #525252;
+    margin: 0;
+    padding: 2px 2px 3px 2px;
+    position: relative;
+    text-align: center;
 
-		&__title{
-			display: inline-block;
-			font-size: 16px;
-			font-weight: 700;
-			margin: 0 0 0 20px;
-			text-transform: lowercase;
+    &__title {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 0 20px;
+      text-transform: lowercase;
 
-			&:before{
-				content: '/';
-			}
-		}
+      &:before {
+        content: '/';
+      }
+    }
 
-		&__buttons-wrapper{
-			left: 0;
-			padding-left: 5px;
-			position: absolute;
-			top: 1px;
-		}
+    &__buttons-wrapper {
+      left: 0;
+      padding-left: 5px;
+      position: absolute;
+      top: 1px;
+    }
 
-		&__button{
-			border-radius: 100%;
-			cursor: default;
-			display: inline-block;
-			height: 12px;
-			margin: 5px -2px;
-			padding: 0 3px;
-			width: 12px;
+    &__button {
+      border-radius: 100%;
+      cursor: default;
+      display: inline-block;
+      height: 12px;
+      margin: 5px -2px;
+      padding: 0 3px;
+      width: 12px;
 
-			&--close{
-				background-color: #f1615c;
-			}
+      &--close {
+        background-color: #f1615c;
+      }
 
-			&--max{
-				background-color: #fabe41;
-			}
+      &--max {
+        background-color: #fabe41;
+      }
 
-			&--min{
-				background-color: #37cb4b;
-			}
-		}
-	}
+      &--min {
+        background-color: #37cb4b;
+      }
+    }
+  }
 
-	&__body{
-		background-color: black;
-		color: #45D40C;
-    height: 60px;
-		margin-top: -1px;
-		padding: 5px 5px 20px;
-		text-align: left;
-	}
+  &__body {
+    background-color: black;
+    color: #45d40c;
+    height: 40px;
+    margin-top: -1px;
+    padding: 5px 5px 20px;
+    text-align: left;
+  }
 
-	&__text{
-		display: inline-block;
-	}
+  &__text {
+    display: inline-block;
+  }
 
-	&__cursor{
-		background-color: #45D40C;
-		display: inline-block;
-		height: 16px;
-		opacity: 0;
-		position: relative;
-		top: 3px;
-		width: 10px;
-	}
+  &__cursor {
+    background-color: #45d40c;
+    display: inline-block;
+    height: 16px;
+    opacity: 0;
+    position: relative;
+    top: 3px;
+    width: 10px;
+  }
 }
 
-.link-container{
-	display: inline-block;
-	margin: 3px 7px;
+.link-container {
+  display: inline-block;
+  margin: 3px 7px;
   text-decoration: underline;
 }
 
-.link{
-	color: #a7a7a7;
-	display: block;
-	font-size: 1em;
-	padding: 5px 0;
-	text-decoration: none;
+.link {
+  color: #a7a7a7;
+  display: block;
+  font-size: 1em;
+  padding: 5px 0;
+  text-decoration: none;
 
-	&:hover{
+  &:hover {
     font-weight: 700;
   }
 
-  &__text{
+  &__text {
     color: inherit;
     padding-bottom: 1px;
     vertical-align: middle;
@@ -146,16 +145,15 @@ body{
   }
 }
 
-
 // UTIL
-.u-text-center{
-	text-align: center;
+.u-text-center {
+  text-align: center;
 }
 
-.u-text-right{
-	text-align: right;
+.u-text-right {
+  text-align: right;
 }
 
-.u-text-left{
-	text-align: left;
+.u-text-left {
+  text-align: left;
 }
