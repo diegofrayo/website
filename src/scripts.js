@@ -52,7 +52,7 @@ function initTypingInConsole() {
 			clearInterval(interval);
 		}
 
-	}, 100);
+	}, 200);
 
 }
 
