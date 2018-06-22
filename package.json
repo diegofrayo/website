@@ -14,7 +14,6 @@
     "email": "diegofrayo@gmail.com",
     "url": "http://diegofrayo.com"
   },
-  "main": "src/index.jsx",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/diegofrayo/homepage.git"

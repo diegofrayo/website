@@ -76,10 +76,11 @@
 
     if (APP_CONFIGURATION.ENVIRONMENT === 'production' && isLoggedIn === false) {
       initGA();
-      const gaElements = document.getElementsByClassName('ga-element');
+      let gaElements = document.getElementsByClassName('ga-element');
       for (let i = 0, length = gaElements.length; i < length; i++) {
         gaElements[i].addEventListener('click', gaElementClick, false);
       }
+      gaElements = null;
     }
   };
 

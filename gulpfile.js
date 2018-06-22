@@ -112,7 +112,7 @@ gulp.task('default', ['watch']);
 //----------------- Builds Tasks ------------------------
 gulp.task('build-live', () => {
   environment = 'live';
-  destPath = './../website-router';
+  destPath = './../website-router/public';
   buildHTML();
   copyAssets();
 });
