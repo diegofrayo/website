@@ -1,151 +1,118 @@
 //------------------------------------------------------------------
 //-------------- Load Plugins And Their Settings -------------------
-var gulp = require('gulp'),
-	g = require('gulp-load-plugins')({
-		lazy: false
-	}),
-	lazypipe = require('lazypipe'),
-	stylish = require('jshint-stylish');
+const gulp = require('gulp');
+const g = require('gulp-load-plugins')({ lazy: false });
+const browserSync = require('browser-sync').create();
 
-var htmlminOpts = {
-	removeComments: true,
-	collapseWhitespace: true,
-	removeEmptyAttributes: false,
-	collapseBooleanAttributes: true,
-	removeRedundantAttributes: true
+const HTML_MIN_OPTS = {
+  removeComments: true,
+  collapseWhitespace: true,
+  removeEmptyAttributes: false,
+  collapseBooleanAttributes: true,
+  removeRedundantAttributes: true,
 };
 
-var isWatching = false;
-var environment = 'dev';
-var destPath = './build';
-
-
+let environment = 'dev';
+let destPath = './build';
 
 //--------------------------------------------------------------
 //------------------------- Util Functions ---------------------
-function jshint(jshintfile) {
-	return lazypipe()
-		.pipe(g.jshint, jshintfile)
-		.pipe(g.jshint.reporter, stylish)();
-}
+const buildJS = () => {
 
-function buildJS() {
+  let stream = gulp
+    .src(__dirname + '/src/scripts.js')
+    .pipe(g.babel({ presets: ['env'] }));
 
-	var stream = gulp.src(__dirname + '/src/scripts.js')
-		.pipe(jshint('.jshintrc'));
+  if (environment === 'live') {
+    stream = stream.pipe(g.uglify());
+  }
 
-	if (environment === 'live') {
-		stream = stream.pipe(g.uglify());
-	}
+  return stream;
+};
 
-	return stream;
-}
+const buildCSS = () => {
 
-function buildCSS() {
+  let stream = gulp
+    .src(`${__dirname}/src/styles.less`)
+    .pipe(g.less());
 
-	var stream = gulp.src(__dirname + '/src/styles.less')
-		.pipe(g.less())
-		.pipe(g.csslint('.csslintrc'))
-		.pipe(g.csslint.reporter('compact'));
+  if (environment === 'live') {
+    stream = stream.pipe(g.minifyCss());
+  }
 
-	if (environment === 'live') {
-		stream = stream.pipe(g.minifyCss());
-	}
+  return stream;
+};
 
-	return stream;
-}
+const buildHTML = () => {
 
-function buildHTML() {
+  let stream = gulp.src(`${__dirname}/src/template.html`);
+  let cssText;
 
-	var stream = gulp.src(__dirname + '/src/template.html');
-	var cssText;
+  buildCSS()
+    .on('data', file => cssText = file.contents.toString())
+    .on('end', () => {
 
-	buildCSS()
-		.on('data', function(file) {
+      stream = stream.pipe(g.replace('/*INJECT:CSS*/', cssText));
 
-			cssText = file.contents.toString();
+      let jsText;
 
-		})
-		.on('end', function() {
+      buildJS()
+        .on('data', file => jsText = file.contents.toString())
+        .on('end', () => {
 
-			stream = stream.pipe(g.replace('/*INJECT:CSS*/', cssText));
+          stream = stream
+            .pipe(g.replace('//INJECT:JS', jsText))
+            .pipe(g.htmlhint('.htmlhintrc'))
+            .pipe(g.htmlhint.reporter())
+            .pipe(g.rename('index.html'));
 
-			var jsText;
+          if (environment === 'live') {
+            stream = stream.pipe(g.htmlmin(HTML_MIN_OPTS));
+          }
 
-			buildJS()
-				.on('data', function(file) {
+          stream.pipe(gulp.dest(destPath));
 
-					jsText = file.contents.toString();
+          g.util.log(`BUILD HOME PAGE FILES => ${new Date().toLocaleString()}`);
+        });
+    });
+};
 
-				})
-				.on('end', function() {
+const copyAssets = () => {
+  gulp
+    .src([
+      `${__dirname}/src/images/*.ico`,
+      `${__dirname}/src/images/*.png`,
+      `${__dirname}/src/images/*.svg`,
+    ])
+    .pipe(gulp.dest(`${destPath}/home/images`));
+};
 
-					stream = stream
-						.pipe(g.replace('//INJECT:JS', jsText))
-						.pipe(g.htmlhint('.htmlhintrc'))
-						.pipe(g.htmlhint.reporter());
-
-					if (environment === 'live') {
-
-						stream
-							.pipe(g.htmlmin(htmlminOpts))
-							.pipe(g.rename('home.html'))
-							.pipe(gulp.dest(destPath + '/templates'));
-
-					} else {
-
-						stream
-							.pipe(g.rename('index.html'))
-							.pipe(gulp.dest(destPath));
-
-					}
-
-					g.util.log('BUILD HOME PAGE FILES ' + new Date().toLocaleString());
-
-				});
-
-		});
-
-}
-
-function copyAssets() {
-
-	gulp.src(__dirname + '/src/images/*.png')
-		.pipe(gulp.dest(destPath + '/assets/home/images'));
-
-}
-
-
+const createServer = () => {
+  browserSync.init({
+    server: {
+      baseDir: './build',
+    },
+  });
+};
 
 //-------------------------------------------------------
 //----------------- Main Tasks --------------------------
-gulp.task('watch', function() {
-
-	isWatching = true;
-
-	gulp.watch([
-		'./src/template.html',
-		'./src/styles.less',
-		'./src/scripts.js'
-	], buildHTML);
-
-	copyAssets();
-	buildHTML();
-
+gulp.task('watch', () => {
+  createServer();
+  buildHTML();
+  copyAssets();
+  gulp
+    .watch(['./src/template.html', './src/styles.less', './src/scripts.js'], buildHTML)
+    .on('change', browserSync.reload);
 });
 
 gulp.task('default', ['watch']);
 
-
-
 //-------------------------------------------------------
 //----------------- Builds Tasks ------------------------
-gulp.task('build-live', function() {
-
-	environment = 'live';
-	destPath = './../website-router';
-
-	copyAssets();
-	buildHTML();
-
+gulp.task('build-live', () => {
+  environment = 'live';
+  destPath = './../website-router';
+  buildHTML();
+  copyAssets();
 });

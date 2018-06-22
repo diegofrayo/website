@@ -1,4 +1,4 @@
-@max-width: 280px;
+@max-width: 400px;
 
 // BASE
 html,
@@ -10,11 +10,10 @@ body {
 }
 
 body {
-  background-color: #242424;
+  background-color: white;
   cursor: default;
-  font-family: monospace, 'consolas', sans-serif;
-  margin: 0 auto;
-  max-width: @max-width;
+  padding: 10px;
+  font-family: 'Raleway', sans-serif;
 }
 
 * {
@@ -23,125 +22,72 @@ body {
 
 // LAYOUT
 .main-container {
-  display: table;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  margin: 0 auto;
+  justify-content: center;
+  width: 100%;
+}
+
+// COMPONENTS
+.title-name {
+  color: black;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.title-description {
+  color: lighten(black, 20%);
+  font-weight: 100;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.links-container {
+  @border-color: darken(white, 5%);
+  border-bottom: 1px solid @border-color;
+  border-left: 1px solid @border-color;
+  border-top: 1px solid @border-color;
+  display: flex;
+  max-width: @max-width;
   width: 100%;
 
-  &__cell {
-    display: table-cell;
-    padding: 5px;
+  .item {
+    border-right: 1px solid @border-color;
+    flex-grow: 1;
+    flex-shrink: 0;
     text-align: center;
-    vertical-align: middle;
-  }
-}
+    transition: background-color 0.5s ease;
 
-// MODULES
-.console {
-  margin: 3px auto;
-  overflow: hidden;
-
-  &__header {
-    background-color: #e0e0e0;
-    border-bottom: 0;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border: 1px solid #a09797;
-    color: #525252;
-    margin: 0;
-    padding: 2px 2px 3px 2px;
-    position: relative;
-    text-align: center;
-
-    &__title {
-      display: inline-block;
-      font-size: 16px;
+    &:hover {
+      background-color: @border-color;
       font-weight: 700;
-      margin: 0 0 0 20px;
-      text-transform: lowercase;
-
-      &:before {
-        content: '/';
-      }
-    }
-
-    &__buttons-wrapper {
-      left: 0;
-      padding-left: 5px;
-      position: absolute;
-      top: 1px;
-    }
-
-    &__button {
-      border-radius: 100%;
-      cursor: default;
-      display: inline-block;
-      height: 12px;
-      margin: 5px -2px;
-      padding: 0 3px;
-      width: 12px;
-
-      &--close {
-        background-color: #f1615c;
-      }
-
-      &--max {
-        background-color: #fabe41;
-      }
-
-      &--min {
-        background-color: #37cb4b;
-      }
     }
   }
 
-  &__body {
-    background-color: black;
-    color: #45d40c;
-    height: 40px;
-    margin-top: -1px;
-    padding: 5px 5px 20px;
-    text-align: left;
-  }
-
-  &__text {
-    display: inline-block;
-  }
-
-  &__cursor {
-    background-color: #45d40c;
-    display: inline-block;
-    height: 16px;
-    opacity: 0;
-    position: relative;
-    top: 3px;
-    width: 10px;
+  .link {
+    color: black;
+    display: block;
+    font-size: 1em;
+    padding: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
   }
 }
 
-.link-container {
-  display: inline-block;
-  margin: 3px 7px;
-  text-decoration: underline;
-}
+.social-icons-container {
+  margin-top: 50px;
+  text-align: center;
 
-.link {
-  color: #a7a7a7;
-  display: block;
-  font-size: 1em;
-  padding: 5px 0;
-  text-decoration: none;
-
-  &:hover {
-    font-weight: 700;
+  .icon-link {
+    display: inline-block;
+    margin: 0 7px;
   }
 
-  &__text {
-    color: inherit;
-    padding-bottom: 1px;
-    vertical-align: middle;
-    position: relative;
-    top: -1px;
+  .icon {
+    height: 24px;
+    width: 24px;
   }
 }
 
