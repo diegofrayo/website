@@ -20,7 +20,7 @@ let destPath = './build';
 const buildJS = () => {
 
   let stream = gulp
-    .src(__dirname + '/src/scripts.js')
+    .src(`${__dirname}/src/scripts.js`)
     .pipe(g.babel({ presets: ['env'] }));
 
   if (environment === 'live') {

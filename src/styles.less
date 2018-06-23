@@ -13,7 +13,7 @@ body {
   background-color: white;
   cursor: default;
   padding: 10px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 * {
@@ -32,37 +32,35 @@ body {
 
 // COMPONENTS
 .title-name {
-  color: black;
   margin: 0 0 10px 0;
   text-align: center;
 }
 
 .title-description {
-  color: lighten(black, 20%);
   font-weight: 100;
   margin: 0 0 20px 0;
   text-align: center;
 }
 
 .links-container {
-  @border-color: darken(white, 5%);
-  border-bottom: 1px solid @border-color;
-  border-left: 1px solid @border-color;
-  border-top: 1px solid @border-color;
+  @color: darken(white, 10%);
+  border-bottom: 1px solid @color;
+  border-left: 1px solid @color;
+  border-top: 1px solid @color;
   display: flex;
   max-width: @max-width;
   width: 100%;
 
   .item {
-    border-right: 1px solid @border-color;
+    border-right: 1px solid @color;
     flex-grow: 1;
     flex-shrink: 0;
     text-align: center;
     transition: background-color 0.5s ease;
 
     &:hover {
-      background-color: @border-color;
-      font-weight: 700;
+      background-color: @color;
+      font-weight: 600;
     }
   }
 
