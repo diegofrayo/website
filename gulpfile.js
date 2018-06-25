@@ -62,8 +62,6 @@ const buildHTML = () => {
 
           stream = stream
             .pipe(g.replace('//INJECT:JS', jsText))
-            .pipe(g.htmlhint('.htmlhintrc'))
-            .pipe(g.htmlhint.reporter())
             .pipe(g.rename('index.html'));
 
           if (environment === 'live') {
@@ -83,8 +81,13 @@ const copyAssets = () => {
       `${__dirname}/src/images/*.ico`,
       `${__dirname}/src/images/*.png`,
       `${__dirname}/src/images/*.svg`,
+      `!${__dirname}/src/images/favicon.png`,
     ])
     .pipe(gulp.dest(`${destPath}/home/images`));
+
+  gulp
+    .src(`${__dirname}/src/images/favicon.png`)
+    .pipe(gulp.dest(destPath));
 };
 
 const createServer = () => {

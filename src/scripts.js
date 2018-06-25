@@ -2,10 +2,7 @@
 
   //------------------- Global Vars -------------------//
   const APP_CONFIGURATION = {
-    ENVIRONMENT:
-      window.location.href.indexOf('localhost') !== -1
-        ? 'development'
-        : window.location.href.indexOf('personal-website.local') !== -1 ? 'staging' : 'production',
+    ENVIRONMENT: window.location.href.indexOf('localhost') !== -1 ? 'development' : 'production',
   };
 
 

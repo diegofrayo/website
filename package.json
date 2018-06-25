@@ -2,7 +2,7 @@
   "name": "homepage",
   "version": "1.0.0",
   "description": "My website's homepage",
-  "keywords": ["html", "css", "javascript", "gulp", "flexbox"],
+  "keywords": ["html", "css", "javascript", "gulp"],
   "homepage": "https://github.com/diegofrayo/homepage#readme",
   "bugs": {
     "email": "diegofrayo@gmail.com",
@@ -12,7 +12,7 @@
   "author": {
     "name": "Diego Rayo",
     "email": "diegofrayo@gmail.com",
-    "url": "http://diegofrayo.com"
+    "url": "https://diegofrayo.com"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,6 @@
     "browser-sync": "^2.24.4",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
-    "gulp-htmlhint": "^0.3.0",
     "gulp-htmlmin": "~0.1.2",
     "gulp-less": "^3.0.3",
     "gulp-load-plugins": "~0.4.0",

@@ -1,5 +1,5 @@
 # homepage
 
 - **Description**: My website's homepage
-- **Tech Stack:** html, css, js, gulp
-- **URL:** http://diegofrayo.com
+- **Tech Stack:** html, css, javascript, gulp
+- **URL:** https://diegofrayo.com
