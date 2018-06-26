@@ -1,3 +1,6 @@
+@text-primary: black;
+@text-secundary: lighten(@text-primary, 30%);
+
 // BASE
 html,
 body {
@@ -38,13 +41,14 @@ body {
 }
 
 .title-description {
+  color: @text-secundary;
   font-weight: 100;
   margin: 0 0 1em 0;
   text-align: center;
 }
 
 .links-container {
-  @color: darken(white, 10%);
+  @color: lighten(@text-primary, 90%);
   border-bottom: 1px solid @color;
   border-left: 1px solid @color;
   border-top: 1px solid @color;
@@ -67,7 +71,7 @@ body {
   }
 
   .link {
-    color: black;
+    color: @text-primary;
     display: block;
     font-size: 0.8em;
     padding: 5px;
@@ -88,6 +92,16 @@ body {
     height: 24px;
     width: 24px;
   }
+}
+
+#flag {
+  background-color: black;
+  bottom: 10px;
+  display: none;
+  height: 10px;
+  position: fixed;
+  right: 10px;
+  width: 10px;
 }
 
 // UTIL

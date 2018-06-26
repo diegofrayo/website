@@ -1,12 +1,9 @@
 ((window, document) => {
 
-  //------------------- Global Vars -------------------//
   const APP_CONFIGURATION = {
     ENVIRONMENT: window.location.href.indexOf('localhost') !== -1 ? 'development' : 'production',
   };
 
-
-  //------------------- Events -------------------//
   const initGA = () => {
 
     (function (i, s, o, g, r, a, m) {
@@ -67,21 +64,29 @@
     return false;
   };
 
+  const configureGAEvents = () => {
+
+    let gaElements = document.getElementsByClassName('ga-element');
+
+    for (let i = 0, length = gaElements.length; i < length; i++) {
+      gaElements[i].addEventListener('click', gaElementClick, false);
+    }
+
+    gaElements = null;
+  };
+
   const onReadyHandler = () => {
 
     const isLoggedIn = getCookie('auth');
 
     if (APP_CONFIGURATION.ENVIRONMENT === 'production' && isLoggedIn === false) {
       initGA();
-      let gaElements = document.getElementsByClassName('ga-element');
-      for (let i = 0, length = gaElements.length; i < length; i++) {
-        gaElements[i].addEventListener('click', gaElementClick, false);
-      }
-      gaElements = null;
+      configureGAEvents();
+    } else {
+      document.getElementById('flag').style.display = 'block';
     }
   };
 
-  //-------------------onReadyCallback-------------------//
   document.addEventListener('DOMContentLoaded', onReadyHandler, false);
 
 })(window, document);
