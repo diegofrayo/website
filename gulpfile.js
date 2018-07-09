@@ -78,15 +78,16 @@ const buildHTML = () => {
 const copyAssets = () => {
   gulp
     .src([
-      `${__dirname}/src/images/*.ico`,
       `${__dirname}/src/images/*.png`,
-      `${__dirname}/src/images/*.svg`,
+      `${__dirname}/src/images/*.jpg`,
       `!${__dirname}/src/images/favicon.png`,
     ])
+    .pipe(g.imagemin())
     .pipe(gulp.dest(`${destPath}/home/images`));
 
   gulp
     .src(`${__dirname}/src/images/favicon.png`)
+    .pipe(g.imagemin())
     .pipe(gulp.dest(destPath));
 };
 

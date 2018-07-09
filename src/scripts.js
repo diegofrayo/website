@@ -83,7 +83,7 @@
       initGA();
       configureGAEvents();
     } else {
-      document.getElementById('flag').style.display = 'block';
+      document.getElementById('login-flag').style.display = 'block';
     }
   };
 
