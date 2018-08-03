@@ -1,5 +1,6 @@
 @text-primary: black;
 @text-secundary: lighten(@text-primary, 30%);
+@light-gray: lighten(@text-primary, 90%);
 
 // BASE
 html,
@@ -36,7 +37,7 @@ body {
 // COMPONENTS
 .title-name {
   line-height: 1em;
-  margin: 0 0 0.5em 0;
+  margin: 0 0 0.3em 0;
   text-align: center;
 }
 
@@ -48,24 +49,23 @@ body {
 }
 
 .links-container {
-  @color: lighten(@text-primary, 90%);
-  border-bottom: 1px solid @color;
-  border-left: 1px solid @color;
-  border-top: 1px solid @color;
+  border-bottom: 1px solid @light-gray;
+  border-left: 1px solid @light-gray;
+  border-top: 1px solid @light-gray;
   display: flex;
-  margin: 0 0 1em 0;
-  max-width: 400px;
+  margin: 0 0 1.7em 0;
+  max-width: 350px;
   width: 100%;
 
   .item {
-    border-right: 1px solid @color;
+    border-right: 1px solid @light-gray;
     flex-grow: 1;
     flex-shrink: 0;
     text-align: center;
     transition: background-color 0.5s ease;
 
     &:hover {
-      background-color: @color;
+      background-color: @light-gray;
       font-weight: 600;
     }
   }
@@ -81,11 +81,16 @@ body {
 }
 
 .social-icons-container {
+  background: @light-gray;
+  border-radius: 5px;
+  padding-top: 9px;
+  padding-right: 10px;
+  padding-left: 10px;
   text-align: center;
 
   .icon-link {
     display: inline-block;
-    margin: 0 7px;
+    margin: 0 10px;
   }
 
   .icon {
