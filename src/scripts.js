@@ -84,6 +84,7 @@
       configureGAEvents();
     } else {
       document.getElementById('login-flag').style.display = 'block';
+      document.getElementsByClassName('apps-container')[0].style.display = 'flex';
     }
   };
 
