@@ -17,7 +17,6 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 22px;
   line-height: 1.5em;
-  padding: 10px;
 }
 
 * {
@@ -31,6 +30,8 @@ body {
   flex-direction: column;
   height: 100%;
   justify-content: center;
+  overflow: auto;
+  padding: 20px;
   width: 100%;
 }
 
@@ -49,18 +50,18 @@ body {
 }
 
 .links-container {
-  border-bottom: 1px solid @light-gray;
-  border-left: 1px solid @light-gray;
-  border-top: 1px solid @light-gray;
   display: flex;
+  flex-wrap: wrap;
   margin: 0 0 1.7em 0;
   max-width: 350px;
   width: 100%;
 
   .item {
-    border-right: 1px solid @light-gray;
+    border: 1px solid @light-gray;
     flex-grow: 1;
     flex-shrink: 0;
+    margin: 0.5px;
+    min-width: 110px;
     text-align: center;
     transition: background-color 0.5s ease;
 
@@ -80,7 +81,7 @@ body {
   }
 }
 
-.apps-container{
+.apps-container {
   display: none;
   margin: 1.7em 0 0 0;
 }
@@ -126,4 +127,19 @@ body {
 
 .u-text-left {
   text-align: left;
+}
+
+// MEDIA-QUERIES
+@media screen and (max-width: 767px) {
+  .main-container {
+    height: auto;
+  }
+
+  .title-name {
+    font-size: 1.4em;
+  }
+
+  .title-description {
+    font-size: 1.1em;
+  }
 }
