@@ -38,7 +38,7 @@ body {
 // COMPONENTS
 .title-name {
   line-height: 1em;
-  margin: 0 0 0.3em 0;
+  margin: 0 0 0.2em 0;
   text-align: center;
 }
 
@@ -61,7 +61,7 @@ body {
     flex-grow: 1;
     flex-shrink: 0;
     margin: 0.5px;
-    min-width: 110px;
+    min-width: 80px;
     text-align: center;
     transition: background-color 0.5s ease;
 
@@ -131,15 +131,17 @@ body {
 
 // MEDIA-QUERIES
 @media screen and (max-width: 767px) {
-  .main-container {
-    height: auto;
-  }
-
   .title-name {
     font-size: 1.4em;
   }
 
   .title-description {
     font-size: 1.1em;
+  }
+}
+
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  .main-container {
+    height: auto;
   }
 }
