@@ -1,8 +1,16 @@
-@text-primary: black;
-@text-secundary: lighten(@text-primary, 30%);
-@light-gray: lighten(@text-primary, 90%);
+// VARS
+@blue: #1c212c;
+@gray: #cbccc6;
+@green-blue: #48a3b5;
+@green: #7cbdab;
+@orange: #ffa759;
+@yellow: #f6ce7c;
 
 // BASE
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
@@ -12,15 +20,11 @@ body {
 }
 
 body {
-  background-color: white;
+  background-color: @blue;
   cursor: default;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 22px;
   line-height: 1.5em;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 // LAYOUT
@@ -37,58 +41,21 @@ body {
 
 // COMPONENTS
 .title-name {
+  color: white;
   line-height: 1em;
   margin: 0 0 0.2em 0;
   text-align: center;
 }
 
 .title-description {
-  color: @text-secundary;
+  color: @gray;
   font-weight: 100;
   margin: 0 0 1em 0;
   text-align: center;
 }
 
-.links-container {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 0 1.7em 0;
-  max-width: 350px;
-  width: 100%;
-
-  .item {
-    border: 1px solid @light-gray;
-    flex-grow: 1;
-    flex-shrink: 0;
-    margin: 0.5px;
-    min-width: 80px;
-    text-align: center;
-    transition: background-color 0.5s ease;
-
-    &:hover {
-      background-color: @light-gray;
-      font-weight: 600;
-    }
-  }
-
-  .link {
-    color: @text-primary;
-    display: block;
-    font-size: 0.8em;
-    padding: 5px;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-}
-
-.apps-container {
-  display: none;
-  margin: 1.7em 0 0 0;
-}
-
 .social-icons-container {
-  background-color: lighten(@text-primary, 95%);
-  border: 1px solid @light-gray;
+  background-color: @yellow;
   border-radius: 5px;
   padding-top: 9px;
   padding-right: 10px;
@@ -107,7 +74,7 @@ body {
 }
 
 #login-flag {
-  background-color: black;
+  background-color: @yellow;
   bottom: 10px;
   display: none;
   height: 10px;

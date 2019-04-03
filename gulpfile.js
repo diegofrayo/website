@@ -13,30 +13,23 @@ const HTML_MIN_OPTS = {
 };
 
 let environment = 'dev';
-let destPath = './build';
 
 //--------------------------------------------------------------
 //------------------------- Util Functions ---------------------
 const buildJS = () => {
+  let stream = gulp.src('./src/scripts.js');
 
-  let stream = gulp
-    .src(`${__dirname}/src/scripts.js`)
-    .pipe(g.babel({ presets: ['env'] }));
-
-  if (environment === 'live') {
-    stream = stream.pipe(g.uglify());
+  if (environment === 'prod') {
+    stream = stream.pipe(g.terser());
   }
 
   return stream;
 };
 
 const buildCSS = () => {
+  let stream = gulp.src('./src/styles.less').pipe(g.less());
 
-  let stream = gulp
-    .src(`${__dirname}/src/styles.less`)
-    .pipe(g.less());
-
-  if (environment === 'live') {
+  if (environment === 'prod') {
     stream = stream.pipe(g.minifyCss());
   }
 
@@ -44,31 +37,28 @@ const buildCSS = () => {
 };
 
 const buildHTML = () => {
-
-  let stream = gulp.src(`${__dirname}/src/template.html`);
+  let stream = gulp.src('./src/template.html');
   let cssText;
 
   buildCSS()
-    .on('data', file => cssText = file.contents.toString())
+    .on('data', file => (cssText = file.contents.toString()))
     .on('end', () => {
-
       stream = stream.pipe(g.replace('/*INJECT:CSS*/', cssText));
 
       let jsText;
 
       buildJS()
-        .on('data', file => jsText = file.contents.toString())
+        .on('data', file => (jsText = file.contents.toString()))
         .on('end', () => {
-
           stream = stream
             .pipe(g.replace('//INJECT:JS', jsText))
             .pipe(g.rename('index.html'));
 
-          if (environment === 'live') {
+          if (environment === 'prod') {
             stream = stream.pipe(g.htmlmin(HTML_MIN_OPTS));
           }
 
-          stream.pipe(gulp.dest(destPath));
+          stream.pipe(gulp.dest('./build'));
 
           g.util.log(`BUILD HOME PAGE FILES => ${new Date().toLocaleString()}`);
         });
@@ -77,12 +67,9 @@ const buildHTML = () => {
 
 const copyAssets = () => {
   gulp
-    .src([
-      `${__dirname}/src/images/*.png`,
-      `${__dirname}/src/images/*.jpg`,
-    ])
+    .src(['./src/images/*.png'])
     .pipe(g.imagemin())
-    .pipe(gulp.dest(`${destPath}/home/images`));
+    .pipe(gulp.dest('./build/images'));
 };
 
 const createServer = () => {
@@ -96,9 +83,9 @@ const createServer = () => {
 //-------------------------------------------------------
 //----------------- Main Tasks --------------------------
 gulp.task('watch', () => {
-  createServer();
   buildHTML();
   copyAssets();
+  setTimeout(createServer, 2000);
   gulp
     .watch(['./src/template.html', './src/styles.less', './src/scripts.js'], buildHTML)
     .on('change', browserSync.reload);
@@ -108,9 +95,8 @@ gulp.task('default', ['watch']);
 
 //-------------------------------------------------------
 //----------------- Builds Tasks ------------------------
-gulp.task('build-live', () => {
-  environment = 'live';
-  destPath = './../website-router/public';
+gulp.task('build', () => {
+  environment = 'prod';
   buildHTML();
   copyAssets();
 });
