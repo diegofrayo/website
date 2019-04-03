@@ -58,7 +58,7 @@ const buildHTML = () => {
             stream = stream.pipe(g.htmlmin(HTML_MIN_OPTS));
           }
 
-          stream.pipe(gulp.dest('./build'));
+          stream.pipe(gulp.dest('./public'));
 
           g.util.log(`BUILD HOME PAGE FILES => ${new Date().toLocaleString()}`);
         });
@@ -69,13 +69,13 @@ const copyAssets = () => {
   gulp
     .src(['./src/images/*.png'])
     .pipe(g.imagemin())
-    .pipe(gulp.dest('./build/images'));
+    .pipe(gulp.dest('./public/images'));
 };
 
 const createServer = () => {
   browserSync.init({
     server: {
-      baseDir: './build',
+      baseDir: './public',
     },
   });
 };
