@@ -38,6 +38,7 @@ const buildCSS = () => {
 
 const buildHTML = () => {
   let stream = gulp.src('./src/template.html');
+  let signInStream;
   let cssText;
 
   buildCSS()
@@ -54,11 +55,15 @@ const buildHTML = () => {
             .pipe(g.replace('//INJECT:JS', jsText))
             .pipe(g.rename('index.html'));
 
+          signInStream = gulp.src('./src/sign-in.html');
+
           if (environment === 'prod') {
             stream = stream.pipe(g.htmlmin(HTML_MIN_OPTS));
+            signInStream = signInStream.pipe(g.htmlmin(HTML_MIN_OPTS));
           }
 
           stream.pipe(gulp.dest('./public'));
+          signInStream.pipe(gulp.dest('./public'));
 
           g.util.log(`BUILD HOME PAGE FILES => ${new Date().toLocaleString()}`);
         });
@@ -83,11 +88,11 @@ const createServer = () => {
 //-------------------------------------------------------
 //----------------- Main Tasks --------------------------
 gulp.task('watch', () => {
+  setTimeout(createServer, 1000);
   buildHTML();
   copyAssets();
-  setTimeout(createServer, 2000);
   gulp
-    .watch(['./src/template.html', './src/styles.less', './src/scripts.js'], buildHTML)
+    .watch(['./src/*.html', './src/styles.less', './src/scripts.js'], buildHTML)
     .on('change', browserSync.reload);
 });
 
