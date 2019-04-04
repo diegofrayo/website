@@ -67,9 +67,9 @@ const buildHTML = () => {
 
 const copyAssets = () => {
   gulp
-    .src(['./src/images/*.png'])
+    .src(['./assets/**/*'])
     .pipe(g.imagemin())
-    .pipe(gulp.dest('./public/images'));
+    .pipe(gulp.dest('./public'));
 };
 
 const createServer = () => {

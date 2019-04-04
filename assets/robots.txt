@@ -1,0 +1,3 @@
+user-agent: *
+
+Sitemap: https://diegofrayo.netlify.com/sitemap.xml
