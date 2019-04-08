@@ -18,7 +18,7 @@
   "author": {
     "name": "Diego Rayo",
     "email": "diegofrayo@gmail.com",
-    "url": "https://diegofrayo.com"
+    "url": "https://diegofrayo.netlify.com"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,5 @@
   },
   "engines": {
     "node": ">=8.15.1"
-  },
-  "dependencies": {}
+  }
 }
