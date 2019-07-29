@@ -1,7 +1,7 @@
 {
-  "name": "homepage",
-  "version": "2.0.0",
-  "description": "My website's homepage",
+  "name": "website",
+  "version": "3.0.0",
+  "description": "My personal website",
   "private": true,
   "keywords": [
     "html",
@@ -9,10 +9,10 @@
     "javascript",
     "gulp"
   ],
-  "homepage": "https://github.com/diegofrayo/homepage#readme",
+  "website": "https://github.com/diegofrayo/website#readme",
   "bugs": {
     "email": "diegofrayo@gmail.com",
-    "url": "https://github.com/diegofrayo/homepage/issues"
+    "url": "https://github.com/diegofrayo/website/issues"
   },
   "license": "MIT",
   "author": {
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/diegofrayo/homepage.git"
+    "url": "git+https://github.com/diegofrayo/website.git"
   },
   "scripts": {
     "start": "gulp",

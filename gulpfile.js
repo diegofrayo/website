@@ -16,8 +16,19 @@ let environment = 'dev';
 
 //--------------------------------------------------------------
 //------------------------- Util Functions ---------------------
-const buildJS = () => {
-  let stream = gulp.src('./src/scripts.js');
+const readData = stream => {
+  return new Promise((resolve, reject) => {
+    let content;
+    stream
+      .on('data', file => (content = file.contents.toString()))
+      .on('end', () => {
+        resolve(content);
+      });
+  });
+};
+
+const buildJS = page => {
+  let stream = gulp.src(`./src/js/${page}.js`);
 
   if (environment === 'prod') {
     stream = stream.pipe(g.terser());
@@ -26,8 +37,8 @@ const buildJS = () => {
   return stream;
 };
 
-const buildCSS = () => {
-  let stream = gulp.src('./src/styles.less').pipe(g.less());
+const buildCSS = page => {
+  let stream = gulp.src(`./src/styles/${page}.less`).pipe(g.less());
 
   if (environment === 'prod') {
     stream = stream.pipe(g.minifyCss());
@@ -36,38 +47,22 @@ const buildCSS = () => {
   return stream;
 };
 
-const buildHTML = () => {
-  let stream = gulp.src('./src/template.html');
-  let signInStream;
-  let cssText;
+const buildHTML = page => {
+  Promise.all([readData(buildCSS(page)), readData(buildJS(page))]).then(
+    ([cssText, jsText]) => {
+      let stream = gulp
+        .src(`./src/pages/${page}.html`)
+        .pipe(g.replace('/*INJECT:CSS*/', cssText))
+        .pipe(g.replace('//INJECT:JS', jsText));
 
-  buildCSS()
-    .on('data', file => (cssText = file.contents.toString()))
-    .on('end', () => {
-      stream = stream.pipe(g.replace('/*INJECT:CSS*/', cssText));
+      if (environment === 'prod') {
+        stream = stream.pipe(g.htmlmin(HTML_MIN_OPTS));
+      }
 
-      let jsText;
-
-      buildJS()
-        .on('data', file => (jsText = file.contents.toString()))
-        .on('end', () => {
-          stream = stream
-            .pipe(g.replace('//INJECT:JS', jsText))
-            .pipe(g.rename('index.html'));
-
-          signInStream = gulp.src('./src/sign-in.html');
-
-          if (environment === 'prod') {
-            stream = stream.pipe(g.htmlmin(HTML_MIN_OPTS));
-            signInStream = signInStream.pipe(g.htmlmin(HTML_MIN_OPTS));
-          }
-
-          stream.pipe(gulp.dest('./public'));
-          signInStream.pipe(gulp.dest('./public'));
-
-          g.util.log(`BUILD HOME PAGE FILES => ${new Date().toLocaleString()}`);
-        });
-    });
+      stream.pipe(gulp.dest('./public'));
+      g.util.log(`BUILD ${page} FILES => ${new Date().toLocaleString()}`);
+    },
+  );
 };
 
 const copyAssets = () => {
@@ -89,10 +84,34 @@ const createServer = () => {
 //----------------- Main Tasks --------------------------
 gulp.task('watch', () => {
   setTimeout(createServer, 1000);
-  buildHTML();
+
+  buildHTML('index');
+  buildHTML('about');
+  buildHTML('sign-in');
   copyAssets();
+
   gulp
-    .watch(['./src/*.html', './src/styles.less', './src/scripts.js'], buildHTML)
+    .watch(
+      ['./src/pages/index.html', './src/styles/index.less', './src/scripts.js'],
+      () => {
+        buildHTML('index');
+      },
+    )
+    .on('change', browserSync.reload);
+
+  gulp
+    .watch(
+      ['./src/pages/about.html', './src/styles/about.less', './src/scripts.js'],
+      () => {
+        buildHTML('about');
+      },
+    )
+    .on('change', browserSync.reload);
+
+  gulp
+    .watch(['./src/pages/sign-in.html'], () => {
+      buildHTML('sign-in');
+    })
     .on('change', browserSync.reload);
 });
 
@@ -102,6 +121,8 @@ gulp.task('default', ['watch']);
 //----------------- Builds Tasks ------------------------
 gulp.task('build', () => {
   environment = 'prod';
-  buildHTML();
+  buildHTML('index');
+  buildHTML('about');
+  buildHTML('sign-in');
   copyAssets();
 });

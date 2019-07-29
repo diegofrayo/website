@@ -1,0 +1,209 @@
+// VARS
+@red: #E63946;
+@light: #F1FAEE;
+@aquamarine: #A8DADC;
+@blue: #457B9D;
+@dark-blue: #1D3557;
+
+// BASE
+* {
+  box-sizing: border-box;
+  line-height: 1.3em;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  background-color: @dark-blue;
+  cursor: default;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  padding: 20px;
+}
+
+span {
+  vertical-align: middle;
+}
+
+// LAYOUT
+.main-container {
+  background-color: @blue;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  max-width: 500px;
+  padding: 20px;
+  width: 100%;
+}
+
+.header {
+  flex-direction: row;
+
+  .profile-picture {
+    border-radius: 100%;
+    border: 5px solid white;
+    height: 100px;
+    width: 100px;
+  }
+
+  .header-info-column {
+    padding: 20px;
+
+    .emoji {
+      font-size: 1rem;
+      margin-right: 5px;
+    }
+
+    .name {
+      color: white;
+      font-size: 1.2em;
+      font-weight: 700;
+      margin: 0 0 0.2em 0;
+    }
+
+    .profession {
+      color: @light;
+      font-size: 1em;
+      font-weight: 400;
+    }
+
+    .location {
+      color: @light;
+      font-size: 0.8em;
+      font-weight: 100;
+      text-decoration: none;
+    }
+  }
+}
+
+.body {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+
+  .block {
+    .main {
+      color: white;
+      font-weight: 700;
+
+      .emoji {
+        font-size: 1.5em;
+        margin-right: 5px;
+      }
+    }
+
+    .description {
+      color: @light;
+      font-style: italic;
+
+      .repo-link,
+      .link {
+        background-color: @light;
+        border-radius: 5px;
+        color: @blue;
+        display: inline-block;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 700;
+        margin: 3px;
+        padding: 2px 5px;
+        text-decoration: none;
+        vertical-align: middle;
+      }
+
+      .emoji {
+        font-style: normal;
+        font-size: 1.3rem;
+        margin-right: 5px;
+      }
+    }
+
+    &--experience {
+      .link {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+#login-flag {
+  background-color: @light;
+  bottom: 10px;
+  display: none;
+  height: 10px;
+  position: fixed;
+  right: 10px;
+  width: 10px;
+}
+
+// SCROLLBAR
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: lighten(@blue, 10%);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: lighten(@blue, 20%);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: @light;
+}
+
+// UTIL
+.u-text-center {
+  text-align: center;
+}
+
+.u-text-right {
+  text-align: right;
+}
+
+.u-text-left {
+  text-align: left;
+}
+
+.u-flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+// MEDIA-QUERIES
+@media screen and (max-width: 767px) {
+  .header {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  body {
+    height: auto;
+    overflow: auto;
+    width: auto;
+  }
+
+  .main-container {
+    height: auto;
+  }
+
+  .body {
+    overflow: hidden;
+  }
+}

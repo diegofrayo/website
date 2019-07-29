@@ -9,7 +9,7 @@
 
     ga('website.send', {
       hitType: 'event',
-      eventCategory: 'homepage',
+      eventCategory: 'about-page',
       eventAction: 'click',
       eventLabel: elementNameClicked,
     });
@@ -29,7 +29,7 @@
     const isLoggedIn = dfrz.getCookie('auth');
 
     if (APP_CONFIGURATION.ENVIRONMENT === 'production' && isLoggedIn === false) {
-      dfrz.initGA();
+      dfrz.initGA('about');
       configureGAEvents();
     } else {
       document.getElementById('login-flag').style.display = 'block';
