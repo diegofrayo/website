@@ -92,7 +92,7 @@ gulp.task('watch', () => {
 
   gulp
     .watch(
-      ['./src/pages/index.html', './src/styles/index.less', './src/scripts.js'],
+      ['./src/pages/index.html', './src/styles/index.less', './src/js/index.js'],
       () => {
         buildHTML('index');
       },
@@ -101,7 +101,7 @@ gulp.task('watch', () => {
 
   gulp
     .watch(
-      ['./src/pages/about.html', './src/styles/about.less', './src/scripts.js'],
+      ['./src/pages/about.html', './src/styles/about.less', './src/js/about.js'],
       () => {
         buildHTML('about');
       },

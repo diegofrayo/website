@@ -49,6 +49,8 @@ span {
 
 .header {
   flex-direction: row;
+  flex-shrink: 0;
+  margin-bottom: 20px;
 
   .profile-picture {
     border-radius: 100%;
@@ -189,19 +191,8 @@ span {
 }
 
 // MEDIA-QUERIES
+
 @media screen and (max-width: 767px) {
-  .header {
-    flex-direction: column;
-
-    .profile-picture {
-      border: 3px solid white;
-      height: 75px;
-      width: 75px;
-    }
-  }
-}
-
-@media screen and (max-width: 767px) and (orientation: landscape) {
   body {
     height: auto;
     overflow: auto;
@@ -210,6 +201,23 @@ span {
 
   .main-container {
     height: auto;
+  }
+
+  .header {
+    flex-direction: column;
+    margin-bottom: 0;
+
+    .header-info-column {
+      padding-left: 0;
+      padding-right: 0;
+      text-align: center;
+    }
+
+    .profile-picture {
+      border: 3px solid white;
+      height: 75px;
+      width: 75px;
+    }
   }
 
   .body {
