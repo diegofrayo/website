@@ -24,7 +24,7 @@ body {
 body {
   background-color: @dark-blue;
   cursor: default;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Handlee', cursive;
   font-size: 18px;
   padding: 20px;
 }
@@ -38,6 +38,7 @@ span {
   background-color: @blue;
   border-bottom-right-radius: 20px;
   border-top-left-radius: 20px;
+  box-shadow: 2px 2px 3px 0px darken(@blue, 40%);
   display: flex;
   flex-direction: column;
   max-height: 100%;
@@ -124,8 +125,8 @@ span {
       }
 
       .emoji {
-        font-style: normal;
         font-size: 1.3rem;
+        font-style: normal;
         margin-right: 5px;
       }
     }
@@ -191,6 +192,12 @@ span {
 @media screen and (max-width: 767px) {
   .header {
     flex-direction: column;
+
+    .profile-picture {
+      border: 3px solid white;
+      height: 75px;
+      width: 75px;
+    }
   }
 }
 
