@@ -1,9 +1,6 @@
 // VARS
-@red: #E63946;
-@light: #F1FAEE;
-@aquamarine: #A8DADC;
-@blue: #457B9D;
-@dark-blue: #1D3557;
+@blue: #0093ff;
+@gray: #585858;
 
 // BASE
 * {
@@ -22,7 +19,7 @@ body {
 }
 
 body {
-  background-color: @dark-blue;
+  color: white;
   cursor: default;
   font-family: 'Handlee', cursive;
   font-size: 18px;
@@ -35,26 +32,22 @@ span {
 
 // LAYOUT
 .main-container {
-  background-color: @blue;
-  border-bottom-right-radius: 20px;
-  border-top-left-radius: 20px;
-  box-shadow: 2px 2px 3px 0px darken(@blue, 40%);
+  box-shadow: 0px 0px 5px 0px #b5b5b5;
   display: flex;
   flex-direction: column;
+  height: 100%;
   max-height: 100%;
   max-width: 500px;
-  padding: 20px;
   width: 100%;
 }
 
 .header {
+  background-color: @blue;
   flex-direction: row;
   flex-shrink: 0;
-  margin-bottom: 20px;
 
   .profile-picture {
     border-radius: 100%;
-    border: 5px solid white;
     height: 100px;
     width: 100px;
   }
@@ -68,20 +61,18 @@ span {
     }
 
     .name {
-      color: white;
       font-size: 1.2em;
       font-weight: 700;
       margin: 0 0 0.2em 0;
     }
 
     .profession {
-      color: @light;
       font-size: 1em;
       font-weight: 400;
     }
 
     .location {
-      color: @light;
+      color: white !important;
       font-size: 0.8em;
       font-weight: 100;
       text-decoration: none;
@@ -90,15 +81,20 @@ span {
 }
 
 .body {
+  background-color: white;
   flex-grow: 1;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding-bottom: 10px;
-  padding-right: 10px;
+  padding: 20px;
+
+  > section {
+    height: 0;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 
   .block {
     .main {
-      color: white;
+      color: black;
       font-weight: 700;
 
       .emoji {
@@ -108,14 +104,14 @@ span {
     }
 
     .description {
-      color: @light;
+      color: @gray;
       font-style: italic;
 
       .repo-link,
       .link {
-        background-color: @light;
+        background-color: darken(white, 5%);
         border-radius: 5px;
-        color: @blue;
+        color: @gray !important;
         display: inline-block;
         font-size: 1rem;
         font-style: normal;
@@ -158,12 +154,12 @@ span {
 }
 
 #login-flag {
-  background-color: @light;
-  bottom: 10px;
+  background-color: @gray;
+  bottom: 5px;
   display: none;
   height: 10px;
   position: fixed;
-  right: 10px;
+  right: 5px;
   width: 10px;
 }
 
@@ -174,17 +170,17 @@ span {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: lighten(@blue, 10%);
+  background-color: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: lighten(@blue, 20%);
+  background-color: transparent;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: @light;
+  background-color: transparent;
 }
 
 // UTIL
@@ -221,7 +217,7 @@ span {
 
   .header {
     flex-direction: column;
-    margin-bottom: 0;
+    padding-top: 20px;
 
     .header-info-column {
       padding-left: 0;
@@ -230,13 +226,16 @@ span {
     }
 
     .profile-picture {
-      border: 3px solid white;
       height: 75px;
       width: 75px;
     }
   }
 
   .body {
-    overflow: hidden;
+    > section {
+      height: auto;
+      min-height: auto;
+      overflow: hidden;
+    }
   }
 }
