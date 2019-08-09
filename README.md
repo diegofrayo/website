@@ -2,4 +2,6 @@
 
 My personal website
 
-![Hosted by Netlify](https://www.netlify.com/img/global/badges/netlify-color-accent.svg "Hosted by Netlify")
+<Enter>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3c2ac10c-615d-4d95-a148-b39ac2d99335/deploy-status)](https://app.netlify.com/sites/diegofrayo/deploys)
