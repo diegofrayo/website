@@ -28,7 +28,7 @@ const readData = stream => {
 };
 
 const buildJS = page => {
-  let stream = gulp.src(`./src/js/${page}.js`);
+  let stream = gulp.src(`./src/js/${page}.js`, { allowEmpty: true });
 
   if (environment === 'prod') {
     stream = stream.pipe(g.terser());
@@ -38,7 +38,7 @@ const buildJS = page => {
 };
 
 const buildCSS = page => {
-  let stream = gulp.src(`./src/styles/${page}.less`).pipe(g.less());
+  let stream = gulp.src(`./src/styles/${page}.less`, { allowEmpty: true }).pipe(g.less());
 
   if (environment === 'prod') {
     stream = stream.pipe(g.minifyCss());
@@ -115,7 +115,7 @@ gulp.task('watch', () => {
     .on('change', browserSync.reload);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', gulp.series('watch'));
 
 //-------------------------------------------------------
 //----------------- Builds Tasks ------------------------
