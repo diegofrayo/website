@@ -119,10 +119,12 @@ gulp.task('default', gulp.series('watch'));
 
 //-------------------------------------------------------
 //----------------- Builds Tasks ------------------------
-gulp.task('build', () => {
+gulp.task('build', done => {
   environment = 'prod';
   buildHTML('index');
   buildHTML('about');
   buildHTML('sign-in');
   copyAssets();
+
+  done();
 });
