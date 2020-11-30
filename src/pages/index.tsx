@@ -3,22 +3,67 @@ import * as React from "react";
 import { Page } from "~/components/layout";
 
 function Home(): any {
+  const SOCIAL_NETWORKS = [
+    { icon: "github", url: "https://github.com/diegofrayo" },
+    { icon: "twitter", url: "https://twitter.com/diegofrayo" },
+    {
+      icon: "linkedin",
+      url: "https://www.linkedin.com/in/diegofrayo/",
+    },
+    {
+      icon: "500px",
+      url: "https://500px.com/p/diegofrayo?view=photos",
+    },
+  ];
+
   return (
     <Page>
-      <div className="tw-p-4">
-        <h1 className="tw-text-3xl tw-text-gray-900 tw-mb-4">
+      <div className="tw-max-w-screen-md tw-p-6 sm:tw-p-8 tw-mx-auto">
+        <section className="tw-text-center tw-mb-3">
+          <span className="tw-inline-block tw-border-4 tw-border-blue-500 tw-bg-blue-200 tw-rounded-full tw-p-4 tw-text-6xl">
+            👨‍💻
+          </span>
+        </section>
+
+        <h1 className="tw-text-center tw-text-3xl tw-text-gray-900 tw-mb-8">
           Hola, soy <strong>Diego Rayo</strong> 👋
         </h1>
 
-        <p className="tw-mb-8 tw-text-gray-700">
-          Este es mi sitio web, acabo de migrarlo a Next.js y Vercel, todavía no se que
-          voy a poner aquí, tengo planeado escribir sobre varios temas, especialmente
-          JavaScript y React, de a poco lo iré construyendo
+        <p className="tw-text-gray-700 tw-text-justify tw-mb-12 tw-leading-snug">
+          Soy desarrollador de Software. Trabajo usualmente con JavaScript, React,
+          Next.js, TailwindCSS, Node y GraphQL. Acabo de crear este sitio web en donde
+          espero escribir acerca de mi experiencia usando las herramientas que uso día a
+          día y con algunas que quiero probar y aún no le he hecho. 🤓 <br /> Así que
+          planeo construir este sitio web con un montón de herramientas innecesarias para
+          la simplicidad de este sitio. 🙈
         </p>
 
-        <p className="tw-text-center tw-text-6xl">👨‍💻</p>
+        <section className="tw-text-center tw-border-t tw-border-gray-200 tw-pt-2">
+          {SOCIAL_NETWORKS.map(item => (
+            <SocialIcon key={item.icon} {...item}></SocialIcon>
+          ))}
+        </section>
       </div>
     </Page>
+  );
+}
+
+// --- Components ---
+
+function SocialIcon({ icon, url }) {
+  return (
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href={url}
+      className="tw-inline-block tw-m-2 tw-bg-gray-300 tw-rounded-md tw-p-3 tw-border tw-border-gray-200 hover:tw-opacity-75 tw-transition-opacity"
+    >
+      <img
+        src={`/images/icons/${icon}.svg`}
+        alt={`${icon} icon`}
+        className="tw-h-5 tw-w-5"
+      />
+    </a>
   );
 }
 
