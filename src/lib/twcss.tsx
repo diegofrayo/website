@@ -140,7 +140,7 @@ const HTML_TAGS = [
 const twcssObject: Record<string, any> = {};
 
 function twcss(Tag: string): any {
-  return function (styles: string | Record<string, string>): any {
+  return function (styles: string | Record<string, string>, props): any {
     return function TWCSS_Component({
       children,
       className = "",
@@ -156,7 +156,7 @@ function twcss(Tag: string): any {
       );
 
       return (
-        <Element className={finalClassName} {...rest}>
+        <Element className={finalClassName} {...props} {...rest}>
           {children}
         </Element>
       );
@@ -165,7 +165,7 @@ function twcss(Tag: string): any {
 }
 
 function generateClassName(styles, className, twVariant) {
-  if (Array.isArray(styles)) {
+  if (Array.isArray(styles) || typeof styles === "string") {
     return `${styles} ${className}`.trim();
   }
 

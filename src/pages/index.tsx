@@ -84,14 +84,21 @@ function MainMenu() {
 
   return (
     <nav className="tw-border tw-border-gray-100">
-      <ul className="tw-flex tw-flex-no-wrap">
-        <MainMenuItem onClick={handleItemClick}>🤚 Acerca de mi</MainMenuItem>
-        <MainMenuItem onClick={handleItemClick}>✍️ Blog</MainMenuItem>
+      <ul className="tw-flex tw-flex-wrap">
+        <MainMenuItem onClick={handleItemClick}>
+          <span className="tw-mr-1">🤚</span> Acerca de mi
+        </MainMenuItem>
+        <MainMenuItem onClick={handleItemClick}>
+          <span className="tw-mr-1">✍️</span> Blog
+        </MainMenuItem>
       </ul>
     </nav>
   );
 }
 
-const MainMenuItem = tw.li`tw-flex-1 tw-flex-shrink-0 tw-text-center tw-border tw-border-gray-200 tw-p-1 hover:tw-bg-gray-200 tw-cursor-pointer tw-transition-all tw-text-gray-800`;
+const MainMenuItem = tw.li(
+  "tw-flex sm:tw-flex-1 sm:tw-flex-shrink-0 tw-text-center tw-border tw-border-gray-200 tw-p-1 hover:tw-bg-gray-200 tw-cursor-pointer tw-transition-all tw-text-gray-800 tw-items-center tw-justify-center tw-w-full sm:tw-w-auto",
+  { style: { margin: 0.2 } },
+);
 
 export default Home;
