@@ -32,18 +32,13 @@ function Home(): any {
             Hola, soy <strong>Diego Rayo</strong> 👋
           </h1>
 
-          <p className="tw-text-gray-700 tw-text-justify tw-leading-snug tw-mb-4">
+          <p className="tw-text-gray-700 tw-text-justify tw-leading-snug tw-mb-8">
             Soy desarrollador de Software. Trabajo usualmente con JavaScript, React,
             Next.js, Tailwind CSS, Node.js y GraphQL. Acabo de crear este sitio web en
             donde quiero escribir acerca de mi experiencia usando las herramientas que uso
             día a día y con algunas que quiero probar y aún no le he hecho. 🤓 <br /> Así
             que planeo construir este sitio web con un montón de herramientas innecesarias
             para la simplicidad de este sitio. 🙈
-          </p>
-
-          <p className="tw-bg-yellow-200 tw-border tw-border-yellow-400 tw-p-4 tw-text-center tw-block tw-text-base tw-text-yellow-700 tw-text-opacity-75 tw-rounded-sm tw-shadow-md tw-font-bold tw-mb-8">
-            Es altamente probable que nunca construya este sitio web y en una semana no me
-            vuelva a acordar de esto. 😬
           </p>
 
           <MainMenu></MainMenu>

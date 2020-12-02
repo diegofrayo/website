@@ -35,6 +35,12 @@ export async function getStaticProps({
             ? "http://localhost:3000"
             : "https://diegofrayo.vercel.app"
         }/static/blog/${blogPost.date}-${blogPost.slug}.mdx`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "text/plain",
+          },
+        },
       )
     ).text();
   } catch (error) {
