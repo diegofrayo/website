@@ -1,0 +1,9 @@
+{
+  "blog": {
+    "mi-primer-post": {
+      "date": "01-12-2020",
+      "slug": "mi-primer-post",
+      "title": "Mi primer post"
+    }
+  }
+}

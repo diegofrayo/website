@@ -1,3 +1,4 @@
+import Router from "next/router";
 import * as React from "react";
 
 import { Page } from "~/components/layout";
@@ -69,7 +70,7 @@ function SocialIcon({ icon, url }) {
       className="tw-inline-block tw-m-2 tw-bg-gray-100 tw-rounded-md tw-p-3 tw-border tw-border-gray-200 hover:tw-opacity-75 tw-transition-opacity"
     >
       <img
-        src={`/images/icons/${icon}.svg`}
+        src={`/static/images/icons/${icon}.svg`}
         alt={`${icon} icon`}
         className="tw-h-5 tw-w-5"
       />
@@ -88,7 +89,11 @@ function MainMenu() {
         <MainMenuItem onClick={handleItemClick}>
           <span className="tw-mr-1">🤚</span> Acerca de mi
         </MainMenuItem>
-        <MainMenuItem onClick={handleItemClick}>
+        <MainMenuItem
+          onClick={() => {
+            Router.push("/blog");
+          }}
+        >
           <span className="tw-mr-1">✍️</span> Blog
         </MainMenuItem>
       </ul>
