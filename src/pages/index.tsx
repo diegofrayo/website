@@ -21,7 +21,7 @@ function Home(): any {
   return (
     <Page>
       <div className="tw-flex tw-flex-col tw-h-full">
-        <section className="tw-mx-auto tw-max-w-screen-md tw-flex-1 tw-overflow-auto tw-p-6">
+        <section className="tw-mx-auto tw-max-w-screen-md tw-w-full tw-flex-1 tw-overflow-auto tw-p-6">
           <section className="tw-text-center tw-mb-3">
             <span className="tw-inline-block tw-border-4 tw-border-blue-500 tw-bg-blue-200 tw-rounded-full tw-p-4 tw-text-6xl">
               👨‍💻
@@ -74,21 +74,19 @@ function SocialIcon({ icon, url }) {
 }
 
 function MainMenu() {
-  function handleItemClick() {
-    alert("Trabajo en progreso...");
+  function handleItemClick(route: string) {
+    return () => {
+      Router.push(route);
+    };
   }
 
   return (
     <nav className="tw-border tw-border-gray-100">
       <ul className="tw-flex tw-flex-wrap">
-        <MainMenuItem onClick={handleItemClick}>
+        <MainMenuItem onClick={handleItemClick("/acerca-de-mi")}>
           <span className="tw-mr-1">🤚</span> Acerca de mi
         </MainMenuItem>
-        <MainMenuItem
-          onClick={() => {
-            Router.push("/blog");
-          }}
-        >
+        <MainMenuItem onClick={handleItemClick("/blog")}>
           <span className="tw-mr-1">✍️</span> Blog
         </MainMenuItem>
       </ul>

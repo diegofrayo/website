@@ -9,6 +9,7 @@ const {
 module.exports = {
   prefix: "tw-",
   important: false,
+  plugins: [require("@tailwindcss/typography")],
   purge: {
     content: ["./src/components/**/*.tsx", "./src/pages/**/*.tsx"],
     options: {

@@ -10,10 +10,11 @@
     "style": "prettier --write \"{src,scripts}/**/*.{js,ts,tsx,json}\""
   },
   "dependencies": {
-    "autoprefixer": "^9.8.6",
+    "@tailwindcss/typography": "^0.3.1",
+    "autoprefixer": "^10.0.4",
     "classnames": "^2.2.6",
     "next": "10.0.3",
-    "postcss": "^7.0.35",
+    "postcss": "^8.1.10",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^13.0.0",
     "postcss-nested": "^5.0.1",
@@ -22,7 +23,7 @@
     "react-dom": "17.0.1",
     "react-ga": "^3.3.0",
     "styled-jsx-plugin-postcss": "^4.0.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1"
+    "tailwindcss": "^2.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
