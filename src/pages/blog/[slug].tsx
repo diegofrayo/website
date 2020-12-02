@@ -7,8 +7,6 @@ import { Page } from "~/components/layout";
 import { blog as BlogEntries } from "~/data/blog/posts.json";
 
 function BlogEntry({ content, post }: Record<string, any>): any {
-  if (!content || !post) return null;
-
   const mdxContent = hydrate(content);
 
   return (
@@ -53,7 +51,7 @@ export async function getStaticPaths(): Promise<Record<string, any>> {
     paths: Object.keys(BlogEntries).map(slug => {
       return { params: { slug } };
     }),
-    fallback: true,
+    fallback: false,
   };
 }
 
