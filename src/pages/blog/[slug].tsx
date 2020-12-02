@@ -1,6 +1,7 @@
 import * as React from "react";
 import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
+import fs from "fs";
 
 import { Page } from "~/components/layout";
 
@@ -28,22 +29,12 @@ export async function getStaticProps({
   let note = "";
 
   try {
-    note = await (
-      await fetch(
-        `${
-          process.env.NEXT_PUBLIC_IS_LOCALHOST === "true"
-            ? "http://localhost:3000"
-            : "https://diegofrayo.vercel.app"
-        }/static/blog/${blogPost.date}-${blogPost.slug}.mdx`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "text/plain",
-          },
-        },
-      )
-    ).text();
+    note = fs.readFileSync(
+      `${process.cwd()}/public/static/blog/${blogPost.date}-${blogPost.slug}.mdx`,
+      "utf8",
+    );
   } catch (error) {
+    console.log(error);
     note = "No se pudo cargar el contenido";
   }
 
