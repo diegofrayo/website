@@ -1,93 +1,61 @@
-import Router from "next/router";
 import * as React from "react";
+import Link from "next/link";
 
-import { Page } from "~/components/layout";
+import { Page, MainLayout } from "~/components/layout";
+import { Separator } from "~/components/primitive";
 import tw from "~/lib/twcss";
+import { Routes } from "~/utils/constants";
 
 function Home(): any {
-  const SOCIAL_NETWORKS = [
-    { icon: "github", url: "https://github.com/diegofrayo" },
-    { icon: "twitter", url: "https://twitter.com/diegofrayo" },
-    {
-      icon: "linkedin",
-      url: "https://www.linkedin.com/in/diegofrayo/",
-    },
-    {
-      icon: "500px",
-      url: "https://500px.com/p/diegofrayo?view=photos",
-    },
-  ];
-
   return (
     <Page>
-      <div className="tw-flex tw-flex-col tw-h-full">
-        <section className="tw-mx-auto tw-max-w-screen-md tw-w-full tw-flex-1 tw-overflow-auto tw-p-6">
-          <section className="tw-text-center tw-mb-3">
-            <span className="tw-inline-block tw-border-4 tw-border-blue-500 tw-bg-blue-200 tw-rounded-full tw-p-4 tw-text-6xl">
-              👨‍💻
-            </span>
-          </section>
-
-          <h1 className="tw-text-center tw-text-3xl tw-text-gray-900 tw-mb-8">
-            Hola, soy <strong>Diego Rayo</strong> 👋
-          </h1>
-
-          <p className="tw-text-gray-700 tw-text-justify tw-leading-snug tw-mb-8">
-            Soy desarrollador de Software. Trabajo usualmente con JavaScript, React,
-            Next.js, Tailwind CSS, Node.js y GraphQL. Acabo de crear este sitio web en
-            donde quiero escribir acerca de mi experiencia usando las herramientas que uso
-            día a día y con algunas que quiero probar y aún no le he hecho. 🤓 <br /> Así
-            que planeo construir este sitio web con un montón de herramientas innecesarias
-            para la simplicidad de este sitio. 🙈
+      <MainLayout>
+        <Separator size={4}></Separator>
+        <Content>
+          <p className="tw-text-xl tw-text-gray-700 tw-text-justify tw-leading-8">
+            Bienvenido a mi sitio web 🖐️
+            <br />
+            En donde quiero escribir acerca de mi experiencia usando las herramientas que
+            uso día a día{" "}
+            <span className="tw-italic tw-font-bold">
+              (JavaScript, React, Next.js, Tailwind CSS, Node.js y GraphQL){" "}
+            </span>{" "}
+            y con algunas que aún no he usado. 🛠️ <br />
+            También me gustaría escribir acerca de otros temas diferentes a programación
+            pero no tengo idea cuales. 🤷‍♂️
+            <br />
+            Así que planeo construir este sitio web con un montón de herramientas
+            innecesarias para la simplicidad de este sitio y desconocidas para mi. 🙈
           </p>
-
+          <Separator size={4}></Separator>
           <MainMenu></MainMenu>
-        </section>
-
-        <footer className="tw-text-center tw-bg-gray-800 tw-pt-2 tw-mt-4">
-          {SOCIAL_NETWORKS.map(item => (
-            <SocialIcon key={item.icon} {...item}></SocialIcon>
-          ))}
-        </footer>
-      </div>
+        </Content>
+      </MainLayout>
     </Page>
   );
 }
 
 // --- Components ---
 
-function SocialIcon({ icon, url }) {
-  return (
-    <a
-      target="_blank"
-      rel="noreferrer"
-      href={url}
-      className="tw-inline-block tw-m-2 tw-bg-gray-100 tw-rounded-md tw-p-3 tw-border tw-border-gray-200 hover:tw-opacity-75 tw-transition-opacity"
-    >
-      <img
-        src={`/static/images/icons/${icon}.svg`}
-        alt={`${icon} icon`}
-        className="tw-h-5 tw-w-5"
-      />
-    </a>
-  );
-}
+const Content = tw.section`tw-border-l-8 tw-border-gray-700 tw-pl-4`;
 
 function MainMenu() {
-  function handleItemClick(route: string) {
-    return () => {
-      Router.push(route);
-    };
-  }
-
   return (
-    <nav className="tw-border tw-border-gray-100">
+    <nav>
       <ul className="tw-flex tw-flex-wrap">
-        <MainMenuItem onClick={handleItemClick("/acerca-de-mi")}>
-          <span className="tw-mr-1">🤚</span> Acerca de mi
+        <MainMenuItem>
+          <Link href={Routes.ABOUT_ME}>
+            <a className="tw-flex tw-items-center tw-justify-center tw-w-full tw-p-2">
+              <span className="tw-mr-1">🤚</span> Acerca de mi
+            </a>
+          </Link>
         </MainMenuItem>
-        <MainMenuItem onClick={handleItemClick("/blog")}>
-          <span className="tw-mr-1">✍️</span> Blog
+        <MainMenuItem>
+          <Link href={Routes.BLOG()}>
+            <a className="tw-flex tw-items-center tw-justify-center tw-w-full tw-p-2">
+              <span className="tw-mr-1">✍️</span> Blog
+            </a>
+          </Link>
         </MainMenuItem>
       </ul>
     </nav>
@@ -95,8 +63,7 @@ function MainMenu() {
 }
 
 const MainMenuItem = tw.li(
-  "tw-flex sm:tw-flex-1 sm:tw-flex-shrink-0 tw-text-center tw-border tw-border-gray-200 tw-p-1 hover:tw-bg-gray-200 tw-cursor-pointer tw-transition-all tw-text-gray-800 tw-items-center tw-justify-center tw-w-full sm:tw-w-auto",
-  { style: { margin: 0.2 } },
+  "tw-inline-block tw-w-full sm:tw-w-48 tw-border-l-4 tw-border-b-4 tw-border-gray-200 tw-transition-all tw-text-gray-800 hover:tw-border-gray-700 tw-mr-0 sm:tw-mr-1 tw-mb-3 last:tw-mb-0 sm:tw-mb-0 tw-cursor-pointer",
 );
 
 export default Home;
