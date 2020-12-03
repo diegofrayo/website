@@ -36,3 +36,4 @@ yarn-error.log*
 # personal
 _legacy
 package-lock.json
+.env

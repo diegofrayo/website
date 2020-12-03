@@ -1,6 +1,6 @@
 import "../styles.css";
 
-import React from "react";
+import * as React from "react";
 import App from "next/app";
 import Router from "next/router";
 
@@ -16,7 +16,6 @@ class CustomApp extends App {
 
     function onRouteChangeComplete() {
       console.log("onRouteChangeComplete");
-      // document.getElementById("__next").scrollTop = 0;
     }
 
     Router.events.on("routeChangeComplete", onRouteChangeComplete);
@@ -25,7 +24,6 @@ class CustomApp extends App {
     });
 
     if (this.state.loadFromServer) {
-      console.log("loadFromServer");
       onRouteChangeComplete();
       this.setState({ loadFromServer: false });
 

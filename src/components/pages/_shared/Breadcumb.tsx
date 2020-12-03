@@ -1,18 +1,17 @@
-import React from "react";
+import * as React from "react";
 import Link from "next/link";
 
 import { slugify } from "~/utils/misc";
 
 function Breadcumb({ items }: Record<string, any>): any {
+  const moreThanOneItem = items.length > 1;
+
   return (
-    <ul className="tw-block tw-text-left tw-pb-1">
+    <ul className="root tw-block tw-text-left tw-pb-1">
       {items.map((item, index) => {
-        if (index === items.length - 1) {
+        if (index === items.length - 1 && moreThanOneItem) {
           return (
-            <li
-              key={`Breadcumb-li-${slugify(item.text)}`}
-              className="tw-block sm:tw-inline-block"
-            >
+            <li key={`Breadcumb-li-${slugify(item.text)}`} className="tw-inline-block">
               <span className="tw-text-base tw-text-gray-700">{item.text}</span>
             </li>
           );
@@ -21,7 +20,7 @@ function Breadcumb({ items }: Record<string, any>): any {
         return (
           <li
             key={`Breadcumb-li-${slugify(item.text)}`}
-            className="tw-block sm:tw-inline-block tw-mr-0 sm:tw-mr-4"
+            className="tw-inline-block tw-mr-2"
           >
             <Link href={item.url} passHref>
               <a className="tw-text-base tw-text-gray-700 tw-font-bold">
@@ -35,7 +34,7 @@ function Breadcumb({ items }: Record<string, any>): any {
       <style jsx>
         {`
           a:after {
-            content: "▶️";
+            ${moreThanOneItem ? 'content: "►";' : ""}
             @apply tw-ml-1;
           }
         `}

@@ -1,17 +1,32 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { Separator } from "~/components/primitive";
+import { Breadcumb } from "~/components/pages/_shared";
 import twcss from "~/lib/twcss";
 
-export default function MainLayout({ children }: Record<string, unknown>): any {
+function MainLayout({ children, breadcumb, title }: Record<string, unknown>): any {
   return (
     <Main>
       <Header></Header>
-      <Separator size={1}></Separator>
-      <section>{children}</section>
+      <Separator size={2}></Separator>
+      <section>
+        {breadcumb && <Breadcumb items={breadcumb} />}
+        <Separator size={4}></Separator>
+        {title && (
+          <Fragment>
+            <h1 className="tw-text-left tw-text-3xl tw-text-gray-900 tw-font-bold">
+              {title}
+            </h1>
+            <Separator size={3}></Separator>
+          </Fragment>
+        )}
+        {children}
+      </section>
     </Main>
   );
 }
+
+export default MainLayout;
 
 // --- Components ---
 
@@ -19,13 +34,13 @@ const Main = twcss.main`tw-max-w-screen-md tw-w-full tw-p-6 tw-mx-auto`;
 
 function Header() {
   return (
-    <header className="tw-flex sm:tw-items-center tw-border-b tw-border-gray-100 tw-pb-3">
-      <section className="tw-flex tw-items-center tw-justify-center tw-w-16 tw-h-16 tw-border-4 tw-border-blue-500 tw-bg-blue-200 tw-mr-4 tw-rounded-full">
-        <span className="tw-text-3xl">👨‍💻</span>
+    <header className="tw-flex sm:tw-items-center tw-border-b tw-border-gray-200 tw-pb-3">
+      <section className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 tw-bg-blue-200 tw-mr-4 tw-rounded-full">
+        <span className="tw-text-2xl sm:tw-text-2xl">👨‍💻</span>
       </section>
       <section className="tw-flex-1 tw-text-left">
         <h1 className="tw-text-3xl tw-text-gray-900">
-          <strong>Diego Rayo</strong> 👋
+          <strong>Diego Rayo</strong>
         </h1>
         <section className="tw-flex tw-flex-wrap tw-items-center">
           <p className="tw-text-gray-800 tw-inline-block tw-mr-2">Software Developer</p>

@@ -2,26 +2,19 @@ import * as React from "react";
 import Link from "next/link";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Separator } from "~/components/primitive";
-import { Breadcumb } from "~/components/pages/_shared";
 import { blog as BlogEntries } from "~/data/blog/posts.json";
 import { Routes } from "~/utils/constants";
 
-function Blog(): any {
+function BlogPage(): any {
   return (
     <Page>
-      <MainLayout>
-        <Breadcumb
-          items={[
-            { text: "Inicio", url: Routes.HOME },
-            { text: "Blog", url: Routes.BLOG() },
-          ]}
-        />
-        <Separator size={4}></Separator>
-        <h1 className="tw-text-left tw-text-3xl tw-text-gray-900 tw-font-bold">
-          ✍️ Blog
-        </h1>
-        <Separator size={3}></Separator>
+      <MainLayout
+        breadcumb={[
+          { text: "Inicio", url: Routes.HOME },
+          { text: "Blog", url: Routes.BLOG() },
+        ]}
+        title="✍️ Blog"
+      >
         <ul>
           {Object.values(BlogEntries).map(item => (
             <BlogEntry key={item.slug} {...item}></BlogEntry>
@@ -31,6 +24,8 @@ function Blog(): any {
     </Page>
   );
 }
+
+export default BlogPage;
 
 // --- Components ---
 
@@ -48,5 +43,3 @@ function BlogEntry({ slug, title, date }) {
     </li>
   );
 }
-
-export default Blog;
