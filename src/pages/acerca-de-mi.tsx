@@ -11,7 +11,7 @@ function AboutMePage(): any {
           { text: "Inicio", url: Routes.HOME },
           { text: "Acerca de mi", url: Routes.ABOUT_ME },
         ]}
-        title="🤚 Acerca de mi"
+        title="🙋‍♂️ Acerca de mi"
       >
         <p>En construcción... 🚧</p>
       </MainLayout>

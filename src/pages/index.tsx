@@ -35,7 +35,7 @@ const Content = tw.section`tw-border-l-8 tw-border-gray-700 tw-pl-4`;
 
 function MainMenu() {
   const ITEMS = [
-    { label: "🤚 Acerca de mi", url: Routes.ABOUT_ME },
+    { label: "🙋‍♂️ Acerca de mi", url: Routes.ABOUT_ME },
     { label: "✍️ Blog", url: Routes.BLOG() },
   ];
 

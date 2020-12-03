@@ -7,9 +7,10 @@ import { Page, MainLayout } from "~/components/layout";
 import BlogPostContent from "~/components/pages/blog-post/BlogPostContent";
 import { blog as Posts } from "~/data/blog/posts.json";
 import { Routes } from "~/utils/constants";
+import * as BlogPostsComponents from "~/components/pages/blog-post/BlogPostsComponents";
 
 function BlogPostPage({ post, content }: Record<string, any>): any {
-  const mdxContent = hydrate(content);
+  const mdxContent = hydrate(content, { components: BlogPostsComponents });
 
   return (
     <Page>
@@ -44,7 +45,7 @@ export async function getStaticProps({
     `${process.cwd()}/src/data/blog/content/${post.date}-${post.slug}.mdx`,
     "utf8",
   );
-  const content = await renderToString(note);
+  const content = await renderToString(note, { components: BlogPostsComponents });
 
   return { props: { post, content }, revalidate: 1 };
 }

@@ -31,11 +31,11 @@ export default BlogPage;
 
 function BlogEntry({ slug, title, date }) {
   return (
-    <li className="tw-list-disc tw-list-inside">
+    <li className="tw-mb-4 sm:tw-mb-2">
       <Link href={`/blog/${slug}`}>
-        <a className="hover:tw-opacity-75 tw-transition-opacity">
-          <span>{title}</span>
-          <span className="tw-bg-gray-200 tw-text-sm tw-p-1 tw-rounded-md tw-mx-2 tw-text-gray-600 tw-font-bold">
+        <a className="tw-block hover:tw-opacity-75 tw-transition-opacity tw-overflow-auto">
+          <span className="tw-block sm:tw-inline-block">&#8227; {title}</span>
+          <span className="tw-inline-block tw-bg-gray-200 tw-text-sm tw-p-1 tw-rounded-md tw-text-gray-600 tw-font-bold tw-float-right sm:tw-float-none tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">
             🗓️ {date}
           </span>
         </a>

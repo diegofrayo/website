@@ -34,7 +34,7 @@ function Breadcumb({ items }: Record<string, any>): any {
       <style jsx>
         {`
           a:after {
-            ${moreThanOneItem ? 'content: "►";' : ""}
+            ${moreThanOneItem ? 'content: "‣";' : ""}
             @apply tw-ml-1;
           }
         `}
