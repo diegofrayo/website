@@ -2,6 +2,7 @@ import * as React from "react";
 import Link from "next/link";
 
 import { Page, MainLayout } from "~/components/layout";
+import { BlogDate } from "~/components/pages/_shared";
 import { blog as BlogEntries } from "~/data/blog/posts.json";
 import { Routes } from "~/utils/constants";
 
@@ -35,9 +36,9 @@ function BlogEntry({ slug, title, date }) {
       <Link href={`/blog/${slug}`}>
         <a className="tw-block hover:tw-opacity-75 tw-transition-opacity tw-overflow-auto">
           <span className="tw-block sm:tw-inline-block">&#8227; {title}</span>
-          <span className="tw-inline-block tw-bg-gray-200 tw-text-sm tw-p-1 tw-rounded-md tw-text-gray-600 tw-font-bold tw-float-right sm:tw-float-none tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">
-            🗓️ {date}
-          </span>
+          <BlogDate className="tw-text-sm tw-float-right sm:tw-float-none tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">
+            {date}
+          </BlogDate>
         </a>
       </Link>
     </li>

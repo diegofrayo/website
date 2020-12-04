@@ -9,8 +9,10 @@ import { blog as Posts } from "~/data/blog/posts.json";
 import { Routes } from "~/utils/constants";
 import * as BlogPostsComponents from "~/components/pages/blog-post/BlogPostsComponents";
 
+const MDXComponents = { ...BlogPostsComponents, a: BlogPostsComponents.Link };
+
 function BlogPostPage({ post, content }: Record<string, any>): any {
-  const mdxContent = hydrate(content, { components: BlogPostsComponents });
+  const mdxContent = hydrate(content, { components: MDXComponents });
 
   return (
     <Page>
@@ -21,6 +23,7 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
           { text: post.title, url: Routes.BLOG(post.slug) },
         ]}
         title={post.title}
+        blogMetadata={{ author: "@diegofrayo", date: post.date }}
       >
         <BlogPostContent content={mdxContent} />
       </MainLayout>
@@ -45,7 +48,7 @@ export async function getStaticProps({
     `${process.cwd()}/src/data/blog/content/${post.date}-${post.slug}.mdx`,
     "utf8",
   );
-  const content = await renderToString(note, { components: BlogPostsComponents });
+  const content = await renderToString(note, { components: MDXComponents });
 
   return { props: { post, content }, revalidate: 1 };
 }

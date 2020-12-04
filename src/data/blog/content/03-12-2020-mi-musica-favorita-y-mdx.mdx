@@ -1,18 +1,16 @@
-> En construcción... 🚧
-
 Spotify acaba de hacer una lista con mi top de canciones escuchadas en este 2020, así que aproveché para hacer un post acerca de **MDX.**
 
-> MDX es una extension del lenguaje **Markdown**. Permite combinar la simplicidad de escribir texto usando **Markdown** ☺️ con la complejidad de **JSX** 🙊. En resumen se puede definir como una mejora del formato de **Markdown**, haciendolo mucho mas potente y personalizable, ya que permite usar y renderizar componentes React dentro de nuestros archivos Markdown 🤯
+> **MDX** es una extensión del lenguaje **Markdown**. Permite combinar la simplicidad de escribir texto usando **Markdown** 🙂 con la complejidad de **JSX** 🙊. En resumen se puede definir como una mejora del formato de **Markdown**, haciendolo mucho más potente y personalizable, ya que permite usar y renderizar componentes **React** dentro de nuestros archivos **Markdown** 🤯.
 
-A continuacion, un ejemplo de un componente React renderizado en este archivo **MDX**:
+A continuación, un ejemplo de un componente **React** renderizado en este archivo **MDX:**
 
 <HelloWorldMDX />
 
 ```
 // source code
-export function HelloWorldMDX() {
+export function HelloWorldMDX(): any {
   return (
-    <p className="tw-text-red-700">
+    <p className="tw-bg-red-200 tw-block tw-p-1 tw-text-red-700 tw-rounded-md">
       Hola, soy un componente React que usa Tailwind CSS para sus estilos
     </p>
   );
@@ -22,70 +20,32 @@ export function HelloWorldMDX() {
 <HelloWorldMDX />
 ```
 
-Este sitio web lo construi con Next.js y voy a hablar un poco sobre como configure MDX para crear el blog. Para lograr esto, me fue de gran ayuda este [articulo](https://sergiodxa.com/articles/using-mdx-with-remote-content) publicado por [Sergio Xalambri](https://twitter.com/sergiodxa)
+Este sitio web lo construí usando **Next.js** y voy a hablar un poco sobre como configuré **MDX** para crear la sección del blog. Para lograr esto, me fue de gran ayuda este [artículo](https://sergiodxa.com/articles/using-mdx-with-remote-content) publicado por [Sergio Xalambrí.](https://twitter.com/sergiodxa)
 
-Entonces, primero hay que instalar **MDX** en nuestro proyecto de **Next.js**. Aqui estan las [instrucciones](https://mdxjs.com/getting-started/next), es realmente facil
+Entonces, primero hay que instalar **MDX** en nuestro proyecto de **Next.js**. Aquí estan las [instrucciones](https://mdxjs.com/getting-started/next), es realmente fácil lograrlo.
 
-Despues, instalar el paquete [next-mdx-remote (Github)](https://github.com/hashicorp/next-mdx-remote). Este paquete permite renderizar archivos MDX de manera dinamica. Por los ejemplos que he encontrado en Github, entiendo que usualmente hay que crear una pagina en Next.js para cada archivo MDX que se quiera mostrar. Ademas, los archivos MDX se guardan en el mismo repositorio del proyecto. next-mdx-remote permite renderizar archivos MDX de manera dinamica, que se pueden encontrar en un lugar diferente al repositorio del proyecto, por ejemplo, un CMS, un CDN de archivos estaticos, o cualquier otro lugar. Asi que por performance y otras razones mas [(aqui las pueden leer)](https://github.com/hashicorp/next-mdx-remote#background--theory), este paquete me fue muy util para lograr lo que queria
+Después, hay que instalar el paquete [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote). Este paquete permite renderizar archivos **MDX** que pueden estar alojados en un sitio diferente a nuestro proyecto, como por ejemplo un CMS, un CDN, una base de datos o cualquier otro lugar. Hay otras razones más por las cuales es útil usar este paquete, en esta [sección de su repositorio de Github](https://github.com/hashicorp/next-mdx-remote#background--theory) puedes conocer más acerca de los problemas que soluciona **next-mdx-remote.**
 
-Ahora, un ejemplo de como uso **next-mdx-remote** en una pagina de Next.js que carga un blog post de acuerdo a un parametro de URL. `/blog/[slug]`
+Ahora, voy a mostrar algunos de los pasos que hice para usar **next-mdx-remote** en la página de **Next.js** de mi sitio web que se encarga cargar el contenido **MDX** de un blog post de acuerdo a un parámetro de URL. `/blog/[slug]`
 
-Hay que importar algunas funciones de **next-mdx-remote**
+Primero, importé algunas funciones de **next-mdx-remote:**
 
 ```
-// Importar las dependencias
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 ```
 
-Importar los componentes que queremos usar dentros nuestros archivos MDX
+Después, importé los componentes que uso dentro de los archivos **MDX:**
 
 ```
 import * as BlogPostsComponents from "~/components/pages/blog-post/BlogPostsComponents";
 ```
 
-Este es el componente de nuestra pagina de Next.js, el cual va a renderizar el archivo MDX
-
 ```
-function BlogPostPage({ post, content }: Record<string, any>): any {
-  const mdxContent = hydrate(content, { components: BlogPostsComponents });
-
-  return (
-    <Page>
-      <MainLayout
-        breadcumb={[
-          { text: "Inicio", url: Routes.HOME },
-          { text: "Blog", url: Routes.BLOG() },
-          { text: post.title, url: Routes.BLOG(post.slug) },
-        ]}
-        title={post.title}
-      >
-        <BlogPostContent content={mdxContent} />
-      </MainLayout>
-    </Page>
-  );
-}
-
-export default BlogPostPage;
-```
-
-Este componente renderiza el
-
-```
-function BlogPostContent({ content }: Record<string, any>): any {
-  return <article className="tw-prose tw-max-w-full">{content}</article>;
-}
-```
-
-```
-export async function getStaticPaths(): Promise<Record<string, any>> {
-  return {
-    paths: Object.keys(Posts).map(slug => {
-      return { params: { slug } };
-    }),
-    fallback: false,
-  };
-}
+// In progress...
+<SourceCodeLink href="https://github.com/diegofrayo/website/blob/master/src/components/pages/blog-post/BlogPostsComponents.tsx">
+  Ver código fuente
+</SourceCodeLink>
 ```
 
 <IframeContainer>

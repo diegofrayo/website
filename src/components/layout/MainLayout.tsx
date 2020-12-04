@@ -1,10 +1,15 @@
 import React, { Fragment } from "react";
 
 import { Separator } from "~/components/primitive";
-import { Breadcumb } from "~/components/pages/_shared";
+import { BlogDate, Breadcumb } from "~/components/pages/_shared";
 import twcss from "~/lib/twcss";
 
-function MainLayout({ children, breadcumb, title }: Record<string, unknown>): any {
+function MainLayout({
+  children,
+  breadcumb,
+  title,
+  blogMetadata,
+}: Record<string, any>): any {
   return (
     <Main>
       <Header></Header>
@@ -17,6 +22,14 @@ function MainLayout({ children, breadcumb, title }: Record<string, unknown>): an
             <h1 className="tw-text-left tw-text-3xl tw-text-gray-900 tw-font-bold">
               {title}
             </h1>
+            {blogMetadata && (
+              <section className="tw-mt-1">
+                <span className="tw-inline-block tw-text-sm tw-bg-green-100 tw-py-1 tw-px-2 tw-rounded-md tw-font-bold tw-mr-2 tw-my-1">
+                  👨‍🏫 {blogMetadata.author}
+                </span>
+                <BlogDate className="tw-text-sm tw-my-1">{blogMetadata.date}</BlogDate>
+              </section>
+            )}
             <Separator size={3}></Separator>
           </Fragment>
         )}
