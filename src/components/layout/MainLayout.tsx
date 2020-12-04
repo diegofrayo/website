@@ -79,7 +79,7 @@ function SocialIcons() {
   ];
 
   return (
-    <section className="tw-inline-flex tw-items-center tw-my-1">
+    <section className="tw-inline-flex tw-items-center tw-my-1 tw-flex-wrap">
       {SOCIAL_NETWORKS.map(item => (
         <SocialIcon key={item.icon} {...item}></SocialIcon>
       ))}
@@ -93,7 +93,7 @@ function SocialIcon({ icon, url }) {
       target="_blank"
       rel="noreferrer"
       href={url}
-      className="tw-inline-block tw-bg-gray-100 tw-p-1 tw-border tw-border-gray-200 hover:tw-opacity-75 tw-transition-opacity tw-rounded-full tw-mr-2"
+      className="tw-inline-block tw-bg-gray-100 tw-p-1 tw-border tw-border-gray-200 hover:tw-opacity-75 tw-transition-opacity tw-rounded-full tw-mr-2 tw-my-1"
     >
       <img
         src={`/static/images/icons/${icon}.svg`}

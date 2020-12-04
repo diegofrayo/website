@@ -16,6 +16,7 @@ class CustomApp extends App {
 
     function onRouteChangeComplete() {
       console.log("onRouteChangeComplete");
+      document.getElementById("__next").scrollTop = 0;
     }
 
     Router.events.on("routeChangeComplete", onRouteChangeComplete);

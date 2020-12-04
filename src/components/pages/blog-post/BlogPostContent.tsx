@@ -40,6 +40,7 @@ function BlogPostContent({ content }: Record<string, any>): any {
           @apply tw-text-gray-300;
           max-width: 100%;
           overflow-x: auto;
+          word-break: keep-all;
         }
 
         :global(.mdx-content) :global(blockquote) {

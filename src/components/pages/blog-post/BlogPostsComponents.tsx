@@ -12,7 +12,7 @@ export function Link({ children, href, className }: Record<string, any>): any {
 
 // shared
 
-export function CustomCode({ children, source }) {
+export function CustomCode({ children, source }: Record<string, any>): any {
   return (
     <section className="root tw-overflow-auto">
       <pre>{children}</pre>
@@ -35,7 +35,7 @@ export function CustomCode({ children, source }) {
   );
 }
 
-export function GithubRepo({ name, url, description }) {
+export function GithubRepo({ name, url, description }: Record<string, any>): any {
   return (
     <section className="root tw-mb-8">
       <Link
