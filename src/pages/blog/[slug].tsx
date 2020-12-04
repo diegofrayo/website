@@ -9,7 +9,10 @@ import { blog as Posts } from "~/data/blog/posts.json";
 import { Routes } from "~/utils/constants";
 import * as BlogPostsComponents from "~/components/pages/blog-post/BlogPostsComponents";
 
-const MDXComponents = { ...BlogPostsComponents, a: BlogPostsComponents.Link };
+const MDXComponents = {
+  ...BlogPostsComponents,
+  a: BlogPostsComponents.Link,
+};
 
 function BlogPostPage({ post, content }: Record<string, any>): any {
   const mdxContent = hydrate(content, { components: MDXComponents });

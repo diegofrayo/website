@@ -1,30 +1,20 @@
 import React from "react";
-import classnames from "classnames";
 
 // general
 
 export function Link({ children, href, className }: Record<string, any>): any {
   return (
-    <a
-      target="_blank"
-      rel="noreferrer"
-      href={href}
-      className={classnames("tw-underline", className)}
-    >
+    <a target="_blank" rel="noreferrer" href={href} className={className}>
       {children}
-
-      <style jsx>{`
-        a {
-          @apply tw-text-blue-600;
-        }
-      `}</style>
     </a>
   );
 }
 
+// shared
+
 export function CustomCode({ children, source }) {
   return (
-    <section className="tw-overflow-auto">
+    <section className="root tw-overflow-auto">
       <pre>{children}</pre>
       <Link className="tw-float-right tw-inline-block" href={source}>
         <img
@@ -36,8 +26,8 @@ export function CustomCode({ children, source }) {
       </Link>
 
       <style jsx>{`
-        pre,
-        img {
+        .root pre,
+        .root img {
           @apply tw-my-0;
         }
       `}</style>
@@ -49,7 +39,7 @@ export function GithubRepo({ name, url, description }) {
   return (
     <section className="root tw-mb-8">
       <Link
-        className="tw-inline-flex tw-p-4 tw-bg-gray-100 tw-rounded-md tw-items-center tw-border tw-border-gray-200 tw-max-w-sm"
+        className="tw-flex sm:tw-inline-flex tw-p-4 tw-bg-gray-100 tw-rounded-md tw-items-center tw-border tw-border-gray-200"
         href={url}
       >
         <img
@@ -58,7 +48,7 @@ export function GithubRepo({ name, url, description }) {
           className="tw-h-8 tw-w-8 tw-mr-3"
         />
         <section className="tw-flex-1">
-          <h3>diegofayo/{name}</h3>
+          <h3>diegofrayo/{name}</h3>
           <p className="tw-text-gray-700 tw-text-sm">{description}</p>
         </section>
       </Link>
@@ -68,10 +58,18 @@ export function GithubRepo({ name, url, description }) {
           @apply tw-no-underline;
         }
 
-        img,
-        h3,
-        p {
+        .root img,
+        .root h3,
+        .root p {
           @apply tw-my-0;
+        }
+
+        .root h3 {
+          @apply tw-text-base;
+
+          @screen sm {
+            @apply tw-text-lg;
+          }
         }
       `}</style>
     </section>
