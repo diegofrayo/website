@@ -2,6 +2,10 @@ import * as React from "react";
 import classnames from "classnames";
 
 import Breadcumb from "./Breadcumb";
+import BlogPostContent from "./BlogPostContent";
+import ErrorPage from "./ErrorPage";
+import MainLayout from "./MainLayout";
+import Page from "./Page";
 
 function BlogDate({ children, className }: Record<string, any>): any {
   return (
@@ -15,4 +19,9 @@ function BlogDate({ children, className }: Record<string, any>): any {
     </span>
   );
 }
-export { Breadcumb, BlogDate };
+
+function Separator({ size = 2 }: Record<string, any>): any {
+  return <hr className={classnames("tw-border-0", `tw-my-${size}`)} />;
+}
+
+export { BlogDate, BlogPostContent, Breadcumb, ErrorPage, MainLayout, Page, Separator };

@@ -1,8 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 
-import { Page, MainLayout } from "~/components/layout";
-import { BlogDate } from "~/components/pages/_shared";
+import { Page, MainLayout, BlogDate } from "~/components";
 import { blog as BlogEntries } from "~/data/blog/posts.json";
 import { Routes } from "~/utils/constants";
 

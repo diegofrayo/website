@@ -1,0 +1,10 @@
+{
+  "website": {
+    "name": "website",
+    "url": "https://github.com/diegofrayo/website",
+    "description": "My personal website",
+    "files": {
+      "MDXComponents": "https://github.com/diegofrayo/website/blob/master/src/components/MDXComponents.tsx"
+    }
+  }
+}

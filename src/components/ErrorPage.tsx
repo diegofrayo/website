@@ -1,7 +1,9 @@
 import * as React from "react";
 
-import { Page, MainLayout } from "~/components/layout";
 import { Routes } from "~/utils/constants";
+
+import MainLayout from "./MainLayout";
+import Page from "./Page";
 
 function ErrorPage({ statusCode }: Record<string, unknown>): any {
   return (

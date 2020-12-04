@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Page, MainLayout } from "~/components/layout";
+import { Page, MainLayout } from "~/components";
 import { Routes } from "~/utils/constants";
 
 function AboutMePage(): any {
@@ -18,7 +18,7 @@ function AboutMePage(): any {
         </Item>
         <Item emoji="📚">
           Estudié <strong>Ingeniería de Sistemas y Computación</strong> y me costó mucho
-          graduarme
+          graduarme, por poco no lo logro
         </Item>
         <Item emoji="🏠">
           Nací y vivo en{" "}
@@ -35,62 +35,67 @@ function AboutMePage(): any {
         </Item>
         <Item emoji="🤓">
           Me gusta mucho trabajar con <strong>React.</strong>{" "}
-          <i>
-            [<strong>React</strong> es como un lego para nerds]
-          </i>
+          <i>[React es como un lego para nerds]</i>
+        </Item>
+        <Item emoji="👀">
+          La <strong>industria</strong> en donde trabajo es <strong>puro humo</strong>. Lo
+          más importante es saber <strong>inglés</strong>, no importa si eres horrendo
+          trabajando. <i>[Me va mal con el inglés]</i>
         </Item>
         <Item emoji="⚽">
-          Me gusta mucho el <strong>fútbol</strong>, mi equipo favorito ahora es River
-          Plate y dame siempre la libertadores
+          Me gusta mucho el <strong>fútbol</strong>, mi equipo favorito ahora es{" "}
+          <strong>River Plate</strong> y dame siempre <strong>la Libertadores</strong>
         </Item>
         <Item emoji="🎸">
-          Me gusta mucho tocar guitarra y la música que más toco es Rock Argentino,
-          especialmente{" "}
+          Me gusta mucho tocar <strong>guitarra</strong> y la música que más toco es{" "}
+          <strong>Rock Argentino</strong>, especialmente{" "}
           <Link href="https://open.spotify.com/playlist/31SXdwCzbsC2j0HdAEXMwA?si=oQTNbKgMRRG9eOwhE7xp4Q">
             Spinetta.
           </Link>{" "}
           <i>[Aunque esto no significa que toque bien sus canciones] </i>
         </Item>
         <Item emoji="📸">
-          Me gusta tomar fotos, dicen que tomo buenas fotos, es gracias al{" "}
-          <strong>iPhone</strong>, no a mi
+          Me gusta <strong>tomar fotos</strong>, dicen que soy bueno en esto, creo que es
+          gracias a mi <strong>iPhone</strong>, no a mí
         </Item>
-        <Item emoji="😁">Otros de mis hobbies son 🏞 🏓 🏃‍♂️</Item>
+        <Item emoji="😁">
+          Algunos otros <strong>hobbies</strong> son 🏞 🏓 🏃‍♂️
+        </Item>
         <Item emoji="🎶">
-          Mi top 2020 de canciones de{" "}
-          <Link href="https://open.spotify.com/playlist/37i9dQZF1EM1nsROE2cRZE?si=idAiJNb5SL-nVpnDDckW_w">
+          Mis canciones favoritas en{" "}
+          <Link href="https://open.spotify.com/playlist/2iSnWl4KZ7znS5gzBDurYN?si=4mNoMmK6T1alQbXZP-QilQ">
             Spotify
           </Link>{" "}
-          | Mis canciones favoritas en{" "}
-          <Link href="https://open.spotify.com/playlist/2iSnWl4KZ7znS5gzBDurYN?si=4mNoMmK6T1alQbXZP-QilQ">
+          | Mi top de canciones más escuchadas en el 2020 en{" "}
+          <Link href="https://open.spotify.com/playlist/37i9dQZF1EM1nsROE2cRZE?si=idAiJNb5SL-nVpnDDckW_w">
             Spotify
           </Link>
         </Item>
         <Item emoji="🌍">
-          Viajé hace unos años por Suramérica durante un par de meses y creo que ese viaje
-          le aportó muchas cosas buenas a mi vida y por otro lado redujo mis ganas de
-          viajar
+          <strong>Viajé</strong> hace unos años por <strong>Suramérica</strong> durante un
+          par de meses y creo que ese viaje le aportó muchas cosas buenas a mi vida y por
+          otro lado redujo mis ganas de viajar
         </Item>
         <Item emoji="🤷‍♂️">
-          Soy introvertido, pero me gusta conocer gente aunque también me gusta no conocer
-          a nadie
+          Soy demasiado <strong>ordenado</strong> para mi gusto
         </Item>
-        <Item emoji="👀">
-          La industria para la cual trabajo es puro humo. Lo más importante es saber{" "}
-          <strong>inglés</strong>, por encima de cualquier otra cosa.{" "}
-          <i>[Me va mal con el inglés] </i>
+        <Item emoji="🤔">
+          Soy <strong>introvertido</strong>, pero me gusta conocer gente aunque usualmente
+          no me gusta conocer gente
         </Item>
       </MainLayout>
     </Page>
   );
 }
 
+export default AboutMePage;
+
 // --- Components ---
 
 function Item({ children, emoji }) {
   return (
     <section className="tw-flex tw-flex-no-wrap tw-mb-3">
-      {emoji && <span className="tw-text-2xl tw-mr-3">{emoji}</span>}
+      {emoji && <span className="tw-text-xl tw-mr-3">{emoji}</span>}
       <p className="tw-flex-1">{children}</p>
     </section>
   );
@@ -108,5 +113,3 @@ function Link({ children, href }) {
     </a>
   );
 }
-
-export default AboutMePage;

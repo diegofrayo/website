@@ -1,8 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 
-import { Page, MainLayout } from "~/components/layout";
-import { Separator } from "~/components/primitive";
+import { Page, MainLayout, Separator } from "~/components";
 import { Routes } from "~/utils/constants";
 
 function HomePage(): any {
@@ -41,7 +40,7 @@ function MainMenu() {
           return (
             <li
               key={`MainMenuItem-${index}`}
-              className="tw-inline-block tw-w-full sm:tw-w-48 tw-border-l-4 tw-border-b-4 tw-border-gray-200 tw-transition-all tw-text-gray-800 hover:tw-border-gray-700 tw-mr-0 sm:tw-mr-1 tw-mb-3 last:tw-mb-0 sm:tw-mb-0 tw-cursor-pointer"
+              className="tw-inline-block tw-w-full sm:tw-w-48 tw-border-l-4 tw-border-b-4 tw-border-gray-200 tw-transition-all tw-text-gray-800 hover:tw-border-gray-700 tw-mr-0 sm:tw-mr-1 tw-mb-3 last:tw-mb-0 sm:tw-mb-0 tw-cursor-pointer tw-relative hover:tw-top-1"
             >
               <Link href={item.url}>
                 <a className="tw-flex tw-items-center tw-justify-center tw-w-full tw-p-2">
@@ -52,6 +51,12 @@ function MainMenu() {
           );
         })}
       </ul>
+
+      <style jsx>{`
+        li:hover {
+          top: 1px;
+        }
+      `}</style>
     </nav>
   );
 }

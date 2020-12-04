@@ -21,7 +21,6 @@ function BlogPostContent({ content }: Record<string, any>): any {
 
         :global(.mdx-content) :global(p) :global(code) {
           @apply tw-text-red-700;
-          @apply tw-text-base;
         }
 
         :global(.mdx-content) :global(p) :global(code)::after {

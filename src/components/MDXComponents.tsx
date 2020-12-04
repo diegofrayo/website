@@ -78,15 +78,26 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
 
 // mi-musica-favorita-y-mdx
 
-export function IframeContainer({ children }: Record<string, any>): any {
-  // return null;
-  return <section className="tw-border-4 tw-border-pink-400">{children}</section>;
-}
-
 export function HelloWorldMDX(): any {
   return (
-    <p className="tw-bg-red-200 tw-block tw-p-1 tw-text-red-700 tw-rounded-md">
+    <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">
       Hola, soy un componente React que usa Tailwind CSS para sus estilos
     </p>
+  );
+}
+
+export function SpotifyPlaylist(): any {
+  // return null;
+  return (
+    <section className="tw-border-4 tw-border-pink-400">
+      <iframe
+        src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"
+        width="100%"
+        height="380"
+        frameBorder="0"
+        allow="encrypted-media"
+        allowTransparency
+      ></iframe>
+    </section>
   );
 }

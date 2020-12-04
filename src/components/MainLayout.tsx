@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 
-import { Separator } from "~/components/primitive";
-import { BlogDate, Breadcumb } from "~/components/pages/_shared";
 import twcss from "~/lib/twcss";
+
+import Breadcumb from "./Breadcumb";
+import { BlogDate, Separator } from "./";
 
 function MainLayout({
   children,
@@ -93,13 +94,19 @@ function SocialIcon({ icon, url }) {
       target="_blank"
       rel="noreferrer"
       href={url}
-      className="tw-inline-block tw-bg-gray-100 tw-p-1 tw-border tw-border-gray-200 hover:tw-opacity-75 tw-transition-opacity tw-rounded-full tw-mr-2 tw-my-1"
+      className="tw-inline-block tw-bg-gray-100 tw-p-1 tw-border tw-border-gray-200 hover:tw-bg-gray-200 tw-transition-opacity tw-rounded-full tw-mr-2 tw-my-1 tw-relative"
     >
       <img
         src={`/static/images/icons/${icon}.svg`}
         alt={`${icon} icon`}
         className="tw-h-4 tw-w-4"
       />
+
+      <style jsx>{`
+        a:hover {
+          top: 1px;
+        }
+      `}</style>
     </a>
   );
 }

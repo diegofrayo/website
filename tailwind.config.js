@@ -1,10 +1,4 @@
-const {
-  borderRadius,
-  leading,
-  width,
-  height,
-  minHeight,
-} = require("tailwindcss/defaultTheme");
+const { borderRadius, leading } = require("tailwindcss/defaultTheme");
 
 module.exports = {
   prefix: "tw-",
@@ -26,32 +20,14 @@ module.exports = {
         ...leading,
         0: "0",
       },
-      width: {
-        ...width,
-        300: "300px",
-        400: "400px",
-        500: "500px",
-        600: "600px",
-      },
-      height: {
-        ...height,
-        300: "300px",
-        400: "400px",
-        500: "500px",
-        600: "600px",
-      },
-      minHeight: {
-        ...minHeight,
-        300: "300px",
-        400: "400px",
-        500: "500px",
-        600: "600px",
-      },
     },
   },
   variants: {
-    borderWidth: ["responsive", "last"],
-    margin: ["responsive", "last"],
+    extends: {
+      borderWidth: ["responsive", "last"],
+      margin: ["responsive", "last"],
+      inset: ["hover"],
+    },
   },
 };
 

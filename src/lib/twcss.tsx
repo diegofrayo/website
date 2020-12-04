@@ -146,14 +146,10 @@ function twcss(Tag: string): any {
       className = "",
       is,
       ["tw-variant"]: twVariant,
-      ["tw-classnames-overrides"]: twClassNamesOverrides,
       ...rest
     }: Record<string, unknown>): any {
       const Element: any = is || Tag;
-      const finalClassName = applyOverridesToClassNames(
-        generateClassName(styles, className, twVariant),
-        twClassNamesOverrides,
-      );
+      const finalClassName = generateClassName(styles, className, twVariant);
 
       return (
         <Element className={finalClassName} {...props} {...rest}>
@@ -192,20 +188,6 @@ function generateClassName(styles, className, twVariant) {
   }
 
   return className.trim();
-}
-
-function applyOverridesToClassNames(className, twClassNamesOverrides) {
-  if (!twClassNamesOverrides) return className;
-
-  return twClassNamesOverrides
-    .split(">")[1]
-    .split("|")
-    .reduce((acum, duple) => {
-      const [currentClass, overrideClass] = duple.split("=");
-      acum = acum.replace(currentClass, overrideClass);
-      return acum;
-    }, className)
-    .trim();
 }
 
 HTML_TAGS.forEach((tagName: string) => {

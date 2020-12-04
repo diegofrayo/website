@@ -10,19 +10,16 @@ A continuación, un ejemplo de un componente **React** renderizado en este archi
 
 <HelloWorldMDX />
 
-```
-// source code
+<CustomCode source={github.website.files.MDXComponents}>
+  {`// source code
 export function HelloWorldMDX(): any {
   return (
-    <p className="tw-bg-red-200 tw-block tw-p-1 tw-text-red-700 tw-rounded-md">
+    <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">
       Hola, soy un componente React que usa Tailwind CSS para sus estilos
     </p>
   );
-}
-
-// how to use
-<HelloWorldMDX />
-```
+}`}
+</CustomCode>
 
 <br />
 
@@ -45,25 +42,16 @@ import renderToString from "next-mdx-remote/render-to-string";
 
 Después, importé los componentes que uso dentro de los archivos **MDX:**
 
-<CustomCode source="https://github.com/diegofrayo/website/blob/master/src/components/pages/blog-post/BlogPostsComponents.tsx">
-  import * as BlogPostsComponents from "~/components/pages/blog-post/BlogPostsComponents";
+<CustomCode source={github.website.files.MDXComponents}>
+  import * as MDXComponents from "~/components/MDXComponents";
 </CustomCode>
 
 Aquí dejo la URL del repositorio de este proyecto en **Github:**
 
 <GithubRepo
-  name="website"
-  url="https://github.com/diegofrayo/website"
-  description="My personal website"
+  name={github.website.name}
+  url={github.website.url}
+  description={github.website.description}
 />
 
-<IframeContainer>
-  <iframe
-    src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"
-    width="100%"
-    height="380"
-    frameBorder="0"
-    allowtransparency="true"
-    allow="encrypted-media"
-  ></iframe>
-</IframeContainer>
+<SpotifyPlaylist />
