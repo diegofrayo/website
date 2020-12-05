@@ -1,7 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 
-import { Page, MainLayout } from "~/components";
+import { Page, MainLayout, UL } from "~/components";
 import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { getSiteTexts } from "~/i18n";
 import { Routes, DEFAULT_LOCALE } from "~/utils/constants";
@@ -18,7 +18,7 @@ function BlogPage(): any {
         ]}
         title={SiteTexts.page.title}
       >
-        <ul>
+        <UL>
           {Object.values(BlogPosts).map(item => {
             return (
               <BlogEntry
@@ -28,7 +28,7 @@ function BlogPage(): any {
               ></BlogEntry>
             );
           })}
-        </ul>
+        </UL>
       </MainLayout>
     </Page>
   );
@@ -40,11 +40,9 @@ export default BlogPage;
 
 function BlogEntry({ slug, title }) {
   return (
-    <li className="tw-mb-4 sm:tw-mb-2">
+    <li>
       <Link href={`/blog/${slug}`}>
-        <a className="hover:tw-opacity-75 tw-transition-opacity">
-          <strong className="tw-text-black tw-text-xl">&#8227;</strong> {title}
-        </a>
+        <a className="hover:tw-opacity-75 tw-transition-opacity">{title}</a>
       </Link>
     </li>
   );

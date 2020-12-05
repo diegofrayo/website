@@ -39,6 +39,26 @@ export function Link({ children, href, className, ...rest }: Record<string, any>
   );
 }
 
+export function UL({ children }: Record<string, any>): any {
+  return (
+    <ul className="tw-list-inside tw-list-none">
+      {children}
+
+      <style jsx>{`
+        ul :global(li) {
+          @apply tw-mb-2;
+        }
+
+        ul :global(li):before {
+          @apply tw-mr-2;
+          content: "‣";
+          font-weight: bold;
+        }
+      `}</style>
+    </ul>
+  );
+}
+
 export function Separator({ size, className }: Record<string, any>): any {
   return (
     <hr

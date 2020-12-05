@@ -1,7 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 
-import { Page, MainLayout, Separator } from "~/components";
+import { Page, MainLayout, UL, Separator } from "~/components";
 import { getSiteTexts } from "~/i18n";
 import { Routes } from "~/utils/constants";
 
@@ -13,12 +13,15 @@ function HomePage(): any {
       <MainLayout title={SiteTexts.page.title}>
         <section className="tw-border-l-4 tw-border-black tw-pl-4">
           <p
-            className="tw-text-black tw-italic tw-mb-5"
+            className="tw-text-black tw-italic"
             dangerouslySetInnerHTML={{ __html: SiteTexts.page.body }}
           ></p>
+          <Separator size={4}></Separator>
+          <MainMenu></MainMenu>
+          <Separator className="tw-mt-6 tw-mb-4 tw-border-t tw-border-gray-200"></Separator>
           <section className="tw-text-black">
-            <h2 className="tw-text-xl">Roadmap 🚀</h2>
-            <ul className="tw-list-inside tw-list-disc">
+            <h2 className="tw-text-xl tw-mb-2">Roadmap 🚀</h2>
+            <UL>
               <li>
                 Terminar de escribir los <strong>blog posts</strong> que están en
                 construcción
@@ -28,13 +31,18 @@ function HomePage(): any {
                 <strong>inglés</strong>
               </li>
               <li>
+                Mejorar el <strong>SEO</strong>
+              </li>
+              <li>
+                Configurar <strong>ESLint</strong> para <strong> TypeScript</strong> y{" "}
+                <strong>React Hooks</strong>
+              </li>
+              <li>
                 Aprender y usar bien <strong>TypeScript</strong> para dejar de usar{" "}
                 <strong>any</strong> en todos lados
               </li>
-            </ul>
+            </UL>
           </section>
-          <Separator size={4}></Separator>
-          <MainMenu></MainMenu>
         </section>
       </MainLayout>
     </Page>
