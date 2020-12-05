@@ -46,16 +46,18 @@ const Main = twcss.main`tw-max-w-screen-md tw-w-full tw-p-6 tw-mx-auto`;
 
 function Header() {
   return (
-    <header className="tw-flex sm:tw-items-center tw-border-b tw-border-gray-200 tw-pb-3">
-      <section className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 tw-bg-blue-200 tw-mr-4 tw-rounded-full">
+    <header className="tw-flex sm:tw-igftems-center tw-border-b tw-border-gray-200 tw-pb-3">
+      <section className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 tw-bg-blue-200 tw-mr-4 tw-rounded-lg">
         <span className="tw-text-2xl sm:tw-text-2xl">👨‍💻</span>
       </section>
-      <section className="tw-flex-1 tw-text-left">
+      <section className="tw-flex-1">
         <h1 className="tw-text-2xl sm:tw-text-4xl">
           <strong>Diego Rayo</strong>
         </h1>
         <section className="tw-flex tw-flex-wrap tw-items-center">
-          <p className="tw-inline-block tw-mr-2">Desarrollador de Software</p>
+          <p className="tw-text-sm sm:tw-text-base tw-inline-block tw-mr-2">
+            Desarrollador de Software
+          </p>
           <SocialIcons></SocialIcons>
         </section>
       </section>
@@ -92,7 +94,7 @@ function SocialIcon({ icon, url }) {
       target="_blank"
       rel="noreferrer"
       href={url}
-      className="tw-inline-block tw-bg-gray-100 hover:tw-bg-gray-200 tw-p-1 tw-border tw-border-gray-200 tw-transition-all tw-rounded-full tw-mr-2 tw-my-1 tw-relative"
+      className="tw-inline-block tw-bg-gray-100 hover:tw-bg-gray-200 tw-p-1 tw-border tw-border-gray-200 tw-transition-all tw-rounded-full tw-mr-2 tw-mb-1 sm:tw-mb-0 tw-relative"
     >
       <img
         src={`/static/images/icons/${icon}.svg`}

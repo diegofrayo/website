@@ -7,7 +7,7 @@ import { trackPageLoaded } from "~/utils/analytics";
 function Page({ children, metadata: metadataProp = {} }: Record<string, any>): any {
   const DEFAULT_METADATA = {
     description:
-      "Software Developer, I have 4 years of experience building web applications and 1 year of experience building mobile applications. I work mainly with JavaScript, React, React Native, Redux, Node.js, Next.js and GraphQL.",
+      "Software Developer, I have 5 years of experience building web applications and 1 year of experience building mobile applications. I work mainly with JavaScript, React, React Native, Redux, Node.js, Next.js and GraphQL.",
     title: "Diego Rayo | Software Developer",
     url: "https://diegofrayo.vercel.app",
   };

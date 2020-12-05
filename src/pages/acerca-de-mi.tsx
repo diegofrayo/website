@@ -24,6 +24,29 @@ function AboutMePage(): any {
           Soy <strong>introvertido</strong>, pero me gusta conocer gente aunque usualmente
           no me gusta conocer gente
         </Item>
+        <Item emoji="🤷‍♂️">
+          Soy demasiado <strong>ordenado</strong> para mi gusto
+        </Item>
+        <Item emoji="🌝">
+          La <strong>red social</strong> que más me gusta es{" "}
+          <Link href="https://twitter.com/diegofrayo">Twitter,</Link> las demás las uso
+          muy poco
+        </Item>
+        <Item emoji="🌍">
+          <strong>Viajé</strong> hace unos años por <strong>Suramérica</strong> durante un
+          par de meses y creo que ese viaje le aportó muchas cosas buenas a mi vida y por
+          otro lado redujo mis ganas de viajar
+        </Item>
+        <Item emoji="🎶">
+          Mis canciones favoritas en{" "}
+          <Link href="https://open.spotify.com/playlist/2iSnWl4KZ7znS5gzBDurYN?si=4mNoMmK6T1alQbXZP-QilQ">
+            Spotify.
+          </Link>{" "}
+          Mi top de canciones más escuchadas en el 2020 según{" "}
+          <Link href="https://open.spotify.com/playlist/37i9dQZF1EM1nsROE2cRZE?si=idAiJNb5SL-nVpnDDckW_w">
+            Spotify
+          </Link>
+        </Item>
         <Item emoji="⚽">
           Me gusta mucho el <strong>fútbol</strong>, mi equipo favorito ahora es{" "}
           <strong>River Plate</strong> y dame siempre <strong>la Libertadores</strong>
@@ -32,9 +55,13 @@ function AboutMePage(): any {
           Me gusta mucho tocar <strong>guitarra</strong> y la música que más toco es{" "}
           <strong>Rock Argentino</strong>, especialmente{" "}
           <Link href="https://open.spotify.com/playlist/31SXdwCzbsC2j0HdAEXMwA?si=oQTNbKgMRRG9eOwhE7xp4Q">
-            Spinetta.
+            Spinetta
           </Link>{" "}
-          <i>[Aunque esto no significa que toque bien sus canciones] </i>
+          <i>[Aunque esto no significa que toque bien sus canciones].</i> Esta es la{" "}
+          <Link href="https://open.spotify.com/track/0BY5HwsqIojR8HBmOtr8Qd?si=6u90Qb25TXu0VTgAmqXJdw">
+            canción
+          </Link>{" "}
+          que mejor me sale en <strong>guitarra</strong>
         </Item>
         <Item emoji="📸">
           Me gusta <strong>tomar fotos</strong>, dicen que soy bueno en esto, creo que es
@@ -42,29 +69,6 @@ function AboutMePage(): any {
         </Item>
         <Item emoji="😁">
           Algunos otros <strong>hobbies:</strong> 👨‍🍳 🏓 🏃‍♂️
-        </Item>
-        <Item emoji="🌝">
-          La <strong>red social</strong> que más me gusta es{" "}
-          <Link href="https://twitter.com/diegofrayo">Twitter,</Link> las demás las uso
-          muy poco
-        </Item>
-        <Item emoji="🤷‍♂️">
-          Soy demasiado <strong>ordenado</strong> para mi gusto
-        </Item>
-        <Item emoji="🎶">
-          Mis canciones favoritas en{" "}
-          <Link href="https://open.spotify.com/playlist/2iSnWl4KZ7znS5gzBDurYN?si=4mNoMmK6T1alQbXZP-QilQ">
-            Spotify
-          </Link>{" "}
-          | Mi top de canciones más escuchadas en el 2020 según{" "}
-          <Link href="https://open.spotify.com/playlist/37i9dQZF1EM1nsROE2cRZE?si=idAiJNb5SL-nVpnDDckW_w">
-            Spotify
-          </Link>
-        </Item>
-        <Item emoji="🌍">
-          <strong>Viajé</strong> hace unos años por <strong>Suramérica</strong> durante un
-          par de meses y creo que ese viaje le aportó muchas cosas buenas a mi vida y por
-          otro lado redujo mis ganas de viajar
         </Item>
         <Item emoji="📚">
           Estudié <strong>Ingeniería de Sistemas y Computación</strong>, me costó mucho
@@ -96,15 +100,15 @@ function AboutMePage(): any {
             <strong>Tech Lead</strong>]
           </i>
         </Item>
-        <Item emoji="😔">
-          Hay algo que se llama <strong>Scrum,</strong> esto realmente si que es humo y
-          poco efectivo.{" "}
+        <Item emoji="😴">
+          Hay algo que se llama <strong>Scrum,</strong> esto realmente si que es puro humo
+          y muy sobrevalorado.{" "}
           <i>
             [Fui <strong>Scrum Master</strong>, ya se me venció la certificación entonces
             todo lo que sabía automaticámente se me olvidó]
           </i>
         </Item>
-        <Item emoji="😑">
+        <Item emoji="🤡">
           Entrar al <strong>feed</strong> de{" "}
           <Link href="https://www.linkedin.com/in/diegofrayo">LinkedIn</Link> me parece
           horrendo, se me nubla la vista por tanto humo
