@@ -9,7 +9,7 @@ import { getSiteTexts } from "~/i18n";
 import { Routes, DEFAULT_LOCALE } from "~/utils/constants";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 
-const SiteTexts = getSiteTexts({ page: Routes.BLOG, layout: true });
+const SiteTexts = getSiteTexts({ page: Routes.BLOG(), layout: true });
 
 function BlogPostPage({ post, content }: Record<string, any>): any {
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
@@ -25,7 +25,7 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
             url: Routes.BLOG(post.slug),
           },
         ]}
-        title={post.title}
+        title={post[DEFAULT_LOCALE].title}
         blogMetadata={{ author: "@diegofrayo", date: post.date }}
       >
         <BlogPostContent content={mdxContent} />
@@ -48,7 +48,7 @@ export async function getStaticProps({
 }: Record<string, any>): Promise<Record<string, any>> {
   const post = BlogPosts[params.slug];
   const note = fs.readFileSync(
-    `${process.cwd()}/src/data/blog/content/${DEFAULT_LOCALE}/${post.date}-${
+    `${process.cwd()}/src/data/blog/posts/${DEFAULT_LOCALE}/${post.date}-${
       post.slug
     }.mdx`,
     "utf8",

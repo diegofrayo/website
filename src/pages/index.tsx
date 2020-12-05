@@ -34,12 +34,19 @@ function HomePage(): any {
                 Mejorar el <strong>SEO</strong>
               </li>
               <li>
-                Configurar <strong>ESLint</strong> para <strong> TypeScript</strong> y{" "}
-                <strong>React Hooks</strong>
+                Soportar <strong>Multilenguaje [es/en]</strong>
               </li>
               <li>
-                Aprender y usar bien <strong>TypeScript</strong> para dejar de usar{" "}
+                Configurar <strong>ESLint</strong> y los plugins para{" "}
+                <strong> TypeScript</strong> y <strong>React Hooks</strong>
+              </li>
+              <li>
+                Aprender <strong>TypeScript</strong> para dejar de usar{" "}
                 <strong>any</strong> en todos lados
+              </li>
+              <li>
+                Añadir <strong>sistema de comentarios</strong> para los{" "}
+                <strong>blog posts</strong>
               </li>
             </UL>
           </section>
@@ -61,12 +68,12 @@ function MainMenu() {
 
   return (
     <nav>
-      <ul className="tw-flex tw-flex-wrap">
+      <ul className="tw-flex tw-flex-wrap tw-justify-between">
         {ITEMS.map((item, index) => {
           return (
             <li
               key={`MainMenuItem-${index}`}
-              className="tw-inline-block tw-w-full sm:tw-w-48 tw-border-l-4 tw-border-b-4 tw-border-gray-200 tw-transition-all  hover:tw-border-black hover:tw-text-black tw-mr-0 sm:tw-mr-3 tw-mb-3 last:tw-mb-0 sm:tw-mb-0 tw-cursor-pointer tw-relative hover:tw-top-0.5"
+              className="tw-inline-block tw-border-l-4 tw-border-b-4 tw-border-gray-200 tw-transition-all  hover:tw-border-black hover:tw-text-black tw-mr-0 sm:tw-mr-3 last:tw-mr-0 tw-mb-3 last:tw-mb-0 sm:tw-mb-0 tw-cursor-pointer tw-relative hover:tw-top-0.5"
             >
               <Link href={item.url}>
                 <a className="tw-flex tw-items-center tw-justify-center tw-w-full tw-p-2 tw-font-bold">
@@ -77,6 +84,16 @@ function MainMenu() {
           );
         })}
       </ul>
+
+      <style jsx>{`
+        li {
+          width: 100%;
+
+          @screen sm {
+            width: 48%;
+          }
+        }
+      `}</style>
     </nav>
   );
 }

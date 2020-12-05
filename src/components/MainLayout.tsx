@@ -101,19 +101,13 @@ function SocialIcon({ icon, url }) {
       target="_blank"
       rel="noreferrer"
       href={url}
-      className="tw-inline-block tw-bg-gray-100 hover:tw-bg-gray-200 tw-p-1 tw-border tw-border-gray-200 tw-transition-all tw-rounded-full tw-mr-2 tw-mb-1 sm:tw-mb-0 tw-relative"
+      className="tw-inline-block tw-bg-gray-100 hover:tw-bg-gray-200 tw-p-1 tw-border tw-border-gray-200 tw-transition-all tw-rounded-full tw-mr-2 tw-mb-1 sm:tw-mb-0 tw-relative hover:tw-top-0.5"
     >
       <img
         src={`/static/images/icons/${icon}.svg`}
         alt={`${icon} icon`}
         className="tw-h-4 tw-w-4"
       />
-
-      <style jsx>{`
-        a:hover {
-          top: 1px;
-        }
-      `}</style>
     </a>
   );
 }
