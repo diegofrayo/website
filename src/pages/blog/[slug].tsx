@@ -3,16 +3,13 @@ import fs from "fs";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
-import { Page, MainLayout, BlogPostContent, Link } from "~/components";
-import * as MDXComponents from "~/components/MDXComponents";
+import { Page, MainLayout, BlogPostContent } from "~/components";
 import { blog as Posts } from "~/data/blog/posts.json";
-import GithubData from "~/data/github.json";
-import { Routes } from "~/utils/constants";
+import { getSiteTexts } from "~/i18n";
+import { Routes, DEFAULT_LOCALE } from "~/utils/constants";
+import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 
-const MDXComponentsConfig = {
-  ...MDXComponents,
-  a: Link,
-};
+const SiteTexts = getSiteTexts({ page: Routes.BLOG, layout: true });
 
 function BlogPostPage({ post, content }: Record<string, any>): any {
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
@@ -21,9 +18,12 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
     <Page>
       <MainLayout
         breadcumb={[
-          { text: "Inicio", url: Routes.HOME },
-          { text: "Blog", url: Routes.BLOG() },
-          { text: post.title, url: Routes.BLOG(post.slug) },
+          { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },
+          { text: SiteTexts.layout.breadcumb.blog, url: Routes.BLOG() },
+          {
+            text: post[DEFAULT_LOCALE].title,
+            url: Routes.BLOG(post[DEFAULT_LOCALE].slug),
+          },
         ]}
         title={post.title}
         blogMetadata={{ author: "@diegofrayo", date: post.date }}
@@ -48,12 +48,14 @@ export async function getStaticProps({
 }: Record<string, any>): Promise<Record<string, any>> {
   const post = Posts[params.slug];
   const note = fs.readFileSync(
-    `${process.cwd()}/src/data/blog/content/${post.date}-${post.slug}.mdx`,
+    `${process.cwd()}/src/data/blog/content/${DEFAULT_LOCALE}/${post.date}-${
+      post[DEFAULT_LOCALE].slug
+    }.mdx`,
     "utf8",
   );
   const content = await renderToString(note, {
     components: MDXComponentsConfig,
-    scope: { github: GithubData },
+    scope: MDXScope,
   });
 
   return { props: { post, content }, revalidate: 1 };

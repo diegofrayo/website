@@ -1,22 +1,21 @@
 import * as React from "react";
 
+import { getSiteTexts } from "~/i18n";
 import { Routes } from "~/utils/constants";
 
 import MainLayout from "./MainLayout";
 import Page from "./Page";
 
 function ErrorPage({ statusCode }: Record<string, unknown>): any {
+  const SiteTexts = getSiteTexts({ page: Routes[`ERROR_${statusCode}`] });
+
   return (
     <Page>
       <MainLayout
-        breadcumb={[{ text: "Ir al inicio", url: Routes.HOME }]}
-        title={`${statusCode === 404 ? "🙉" : "🙈"} Error ${statusCode}`}
+        breadcumb={[{ text: SiteTexts.page.breadcumb, url: Routes.HOME }]}
+        title={SiteTexts.page.title}
       >
-        <p>
-          {statusCode === 404
-            ? "Esta página no existe"
-            : "Trataré de arreglar el error lo más pronto posible, sin afectar la meta del actual sprint para así lograr darle el mayor valor posible al cliente"}
-        </p>
+        <p>{SiteTexts.page.body}</p>
       </MainLayout>
     </Page>
   );

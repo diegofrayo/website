@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import Link from "next/link";
 
+import { getSiteTexts } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { Routes } from "~/utils/constants";
 
@@ -44,9 +45,11 @@ export default MainLayout;
 
 // --- Components ---
 
-const Main = twcss.main`tw-max-w-screen-md tw-w-full tw-p-6 tw-mx-auto`;
+const Main = twcss.main`tw-w-full tw-max-w-screen-md tw-p-6 tw-mx-auto`;
 
 function Header() {
+  const SiteTexts = getSiteTexts({ layout: true });
+
   return (
     <header className="tw-flex tw-border-b tw-border-gray-200 tw-pb-3">
       <Link href={Routes.HOME}>
@@ -60,7 +63,7 @@ function Header() {
         </h1>
         <section className="tw-flex tw-flex-wrap tw-items-center">
           <p className="tw-text-sm sm:tw-text-base tw-inline-block tw-mr-2">
-            Desarrollador de Software
+            {SiteTexts.layout.header.job_title}
           </p>
           <SocialIcons></SocialIcons>
         </section>

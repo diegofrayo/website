@@ -1,0 +1,39 @@
+{
+  "es-419": {
+    "layout": {
+      "header": {
+        "job_title": "Desarrollador de Software"
+      },
+      "breadcumb": {
+        "home": "Inicio",
+        "about_me": "Acerca de mí",
+        "blog": "Blog"
+      }
+    },
+    "pages": {
+      "/": {
+        "title": "👋 Bienvenido",
+        "body": "En este sitio web quiero escribir acerca de mi experiencia trabajando con las herramientas que uso a diario en mi trabajo como Desarrollador de Software y también acerca de algunas herramientas que quiero aprender y explorar 🧐.<br />Además, me gustaría escribir acerca de otros temas diferentes a programación pero no tengo idea cuales 🤷‍♂️.",
+        "menu_item_about_me": "🙋‍♂️ Acerca de mí",
+        "menu_item_blog": "✍️ Blog"
+      },
+      "/acerca-de-mi": {
+        "title": "🙋‍♂️ Acerca de mí"
+      },
+      "/blog": {
+        "title": "✍️ Blog"
+      },
+      "/404": {
+        "breadcumb": "Ir al inicio",
+        "title": "🙉 Error 404",
+        "body": "Esta página no existe"
+      },
+      "/500": {
+        "breadcumb": "Ir al inicio",
+        "title": "🙈 Error 500",
+        "body": "Trataré de arreglar el error lo más pronto posible, sin afectar la meta del actual sprint para así lograr darle el mayor valor posible al cliente"
+      }
+    }
+  },
+  "en-US": {}
+}

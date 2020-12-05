@@ -3,21 +3,31 @@ import Link from "next/link";
 
 import { Page, MainLayout, BlogDate } from "~/components";
 import { blog as BlogEntries } from "~/data/blog/posts.json";
-import { Routes } from "~/utils/constants";
+import { getSiteTexts } from "~/i18n";
+import { Routes, DEFAULT_LOCALE } from "~/utils/constants";
+
+const SiteTexts = getSiteTexts({ page: Routes.BLOG, layout: true });
 
 function BlogPage(): any {
   return (
     <Page>
       <MainLayout
         breadcumb={[
-          { text: "Inicio", url: Routes.HOME },
-          { text: "Blog", url: Routes.BLOG() },
+          { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },
+          { text: SiteTexts.layout.breadcumb.blog, url: Routes.BLOG() },
         ]}
-        title="✍️ Blog"
+        title={SiteTexts.title}
       >
         <ul>
           {Object.values(BlogEntries).map(item => {
-            return <BlogEntry key={item.slug} {...item}></BlogEntry>;
+            return (
+              <BlogEntry
+                key={item[DEFAULT_LOCALE].slug}
+                date={item.date}
+                slug={item[DEFAULT_LOCALE].slug}
+                title={item[DEFAULT_LOCALE].title}
+              ></BlogEntry>
+            );
           })}
         </ul>
       </MainLayout>

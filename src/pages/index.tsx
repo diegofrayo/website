@@ -2,19 +2,20 @@ import * as React from "react";
 import Link from "next/link";
 
 import { Page, MainLayout, Separator } from "~/components";
+import { getSiteTexts } from "~/i18n";
 import { Routes } from "~/utils/constants";
+
+const SiteTexts = getSiteTexts({ page: Routes.HOME });
 
 function HomePage(): any {
   return (
     <Page>
-      <MainLayout title="👋 Bienvenido">
+      <MainLayout title={SiteTexts.page.title}>
         <section className="tw-border-l-4 tw-border-black tw-pl-4">
-          <p className="tw-text-black tw-italic">
-            En este sitio web quiero escribir acerca de mi experiencia trabajando con las
-            herramientas que uso a diario en mi trabajo como desarrollador de Software y
-            con algunas que aún no he usado 🧐. También me gustaría escribir acerca de
-            otros temas diferentes a programación pero no tengo idea cuales 🤷‍♂️.
-          </p>
+          <p
+            className="tw-text-black tw-italic"
+            dangerouslySetInnerHTML={{ __html: SiteTexts.page.body }}
+          ></p>
           <Separator size={4}></Separator>
           <MainMenu></MainMenu>
         </section>
@@ -29,8 +30,8 @@ export default HomePage;
 
 function MainMenu() {
   const ITEMS = [
-    { label: "🙋‍♂️ Acerca de mí", url: Routes.ABOUT_ME },
-    { label: "✍️ Blog", url: Routes.BLOG() },
+    { label: SiteTexts.page.menu_item_about_me, url: Routes.ABOUT_ME },
+    { label: SiteTexts.page.menu_item_blog, url: Routes.BLOG() },
   ];
 
   return (

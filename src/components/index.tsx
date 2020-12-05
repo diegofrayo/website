@@ -7,7 +7,7 @@ import ErrorPage from "./ErrorPage";
 import MainLayout from "./MainLayout";
 import Page from "./Page";
 
-function TextWithEmoji({ children, emoji }): any {
+function TextWithEmoji({ children, emoji }: Record<string, any>): any {
   return (
     <section className="tw-flex tw-flex-no-wrap tw-mb-3">
       <span className="tw-text-xl tw-mr-3">{emoji}</span>
