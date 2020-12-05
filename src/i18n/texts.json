@@ -21,7 +21,9 @@
         "title": "🙋‍♂️ Acerca de mí"
       },
       "/blog": {
-        "title": "✍️ Blog"
+        "title": "✍️ Blog",
+        "see_source_code": "Ver código fuente",
+        "copy_to_clipboard": "📋 Copiar al portapeles"
       },
       "/404": {
         "breadcumb": "Ir al inicio",

@@ -7,4 +7,13 @@ module.exports = withMDX({
     defaultLocale: "en",
   },
   */
+  redirects() {
+    return [
+      {
+        source: "/acerca-de-mi",
+        destination: "/about-me",
+        permanent: true,
+      },
+    ];
+  },
 });

@@ -8,14 +8,12 @@ Spotify acaba de hacer una lista con mi top de canciones escuchadas en este 2020
 
 A continuación, un ejemplo de un componente **React** renderizado en este archivo **MDX:**
 
-<HelloWorldMDX />
+<HelloWorldMDX text="Hola, soy un componente React que usa Tailwind CSS para sus estilos" />
 
 <Code source={github.website.files.MDXComponents}>
-  {`export function HelloWorldMDX(): any {
+  {`export function HelloWorldMDX({ text }: Record<string, any>): any {
   return (
-    <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">
-      Hola, soy un componente React que usa Tailwind CSS para sus estilos
-    </p>
+    <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">{text}</p>
   );
 }`}
 </Code>

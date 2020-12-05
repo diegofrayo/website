@@ -2,14 +2,19 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
 
-import { Link, TextWithEmoji } from "./";
+import { getSiteTexts } from "~/i18n";
 import twcss from "~/lib/twcss";
+import { Routes } from "~/utils/constants";
+
+import { Link, TextWithEmoji } from "./";
 
 // shared
 
 export { Link, TextWithEmoji };
 
 export function Code({ children, source }: Record<string, any>): any {
+  const SiteTexts = getSiteTexts({ page: Routes.BLOG() });
+
   return (
     <section className="root tw-mb-6">
       <Highlight {...defaultProps} code={children} language="jsx" theme={dracula}>
@@ -40,7 +45,9 @@ export function Code({ children, source }: Record<string, any>): any {
               alt="Github icon"
               className="tw-h-3 tw-w-3 tw-inline-block tw-align-middle tw-mr-1"
             />
-            <span className="tw-inline-block tw-text-sm">Ver código fuente</span>
+            <span className="tw-inline-block tw-text-sm">
+              {SiteTexts.page.see_source_code}
+            </span>
           </Link>
         )}
         <Link
@@ -48,7 +55,7 @@ export function Code({ children, source }: Record<string, any>): any {
           className="clipboard tw-block sm:tw-inline-block tw-text-sm  tw-mt-1 sm:tw-mt-0 tw-no-underline"
           role="button"
         >
-          📋 Copiar al portapeles
+          {SiteTexts.page.copy_to_clipboard}
         </Link>
       </section>
 
@@ -109,11 +116,9 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
 
 // mi-musica-favorita-y-mdx
 
-export function HelloWorldMDX(): any {
+export function HelloWorldMDX({ text }: Record<string, any>): any {
   return (
-    <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">
-      Hola, soy un componente React que usa Tailwind CSS para sus estilos
-    </p>
+    <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">{text}</p>
   );
 }
 
