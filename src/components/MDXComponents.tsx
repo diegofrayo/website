@@ -2,10 +2,12 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
 
-import { Link } from "./";
+import { Link, TextWithEmoji } from "./";
 import twcss from "~/lib/twcss";
 
 // shared
+
+export { Link, TextWithEmoji };
 
 export function Code({ children, source }: Record<string, any>): any {
   return (

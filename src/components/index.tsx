@@ -7,6 +7,15 @@ import ErrorPage from "./ErrorPage";
 import MainLayout from "./MainLayout";
 import Page from "./Page";
 
+function TextWithEmoji({ children, emoji }): any {
+  return (
+    <section className="tw-flex tw-flex-no-wrap tw-mb-3">
+      <span className="tw-text-xl tw-mr-3">{emoji}</span>
+      <p className="tw-flex-1">{children}</p>
+    </section>
+  );
+}
+
 function BlogDate({ children, className }: Record<string, any>): any {
   return (
     <span
@@ -49,4 +58,13 @@ function Separator({ size, className }: Record<string, any>): any {
   );
 }
 
-export { BlogDate, BlogPostContent, Breadcumb, ErrorPage, MainLayout, Page, Separator };
+export {
+  BlogDate,
+  BlogPostContent,
+  Breadcumb,
+  ErrorPage,
+  MainLayout,
+  Page,
+  Separator,
+  TextWithEmoji,
+};
