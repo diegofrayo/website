@@ -13,9 +13,26 @@ function HomePage(): any {
       <MainLayout title={SiteTexts.page.title}>
         <section className="tw-border-l-4 tw-border-black tw-pl-4">
           <p
-            className="tw-text-black tw-italic"
+            className="tw-text-black tw-italic tw-mb-5"
             dangerouslySetInnerHTML={{ __html: SiteTexts.page.body }}
           ></p>
+          <section className="tw-text-black">
+            <h2 className="tw-text-xl">Roadmap 🚀</h2>
+            <ul className="tw-list-inside tw-list-disc">
+              <li>
+                Terminar de escribir los <strong>blog posts</strong> que están en
+                construcción
+              </li>
+              <li>
+                Traducir el contenido de <strong>español</strong> a{" "}
+                <strong>inglés</strong>
+              </li>
+              <li>
+                Aprender y usar bien <strong>TypeScript</strong> para dejar de usar{" "}
+                <strong>any</strong> en todos lados
+              </li>
+            </ul>
+          </section>
           <Separator size={4}></Separator>
           <MainMenu></MainMenu>
         </section>

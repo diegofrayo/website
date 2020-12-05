@@ -30,7 +30,7 @@ function AboutMePage({ content }: Record<string, any>): any {
 
 export async function getStaticProps(): Promise<Record<string, any>> {
   const file = fs.readFileSync(
-    `${process.cwd()}/src/data/pages/${DEFAULT_LOCALE}/acerca-de-mi.mdx`,
+    `${process.cwd()}/src/data/pages/${DEFAULT_LOCALE}/about-me.mdx`,
     "utf8",
   );
   const content = await renderToString(file, {

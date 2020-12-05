@@ -1,5 +1,5 @@
 {
-  "es-419": {
+  "es": {
     "layout": {
       "header": {
         "job_title": "Desarrollador de Software"
@@ -17,7 +17,7 @@
         "menu_item_about_me": "🙋‍♂️ Acerca de mí",
         "menu_item_blog": "✍️ Blog"
       },
-      "/acerca-de-mi": {
+      "/about-me": {
         "title": "🙋‍♂️ Acerca de mí"
       },
       "/blog": {
@@ -35,5 +35,5 @@
       }
     }
   },
-  "en-US": {}
+  "en": {}
 }

@@ -4,7 +4,7 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout, BlogPostContent } from "~/components";
-import { blog as Posts } from "~/data/blog/posts.json";
+import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { getSiteTexts } from "~/i18n";
 import { Routes, DEFAULT_LOCALE } from "~/utils/constants";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
@@ -22,7 +22,7 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
           { text: SiteTexts.layout.breadcumb.blog, url: Routes.BLOG() },
           {
             text: post[DEFAULT_LOCALE].title,
-            url: Routes.BLOG(post[DEFAULT_LOCALE].slug),
+            url: Routes.BLOG(post.slug),
           },
         ]}
         title={post.title}
@@ -36,7 +36,7 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
 
 export async function getStaticPaths(): Promise<Record<string, any>> {
   return {
-    paths: Object.keys(Posts).map(slug => {
+    paths: Object.keys(BlogPosts).map(slug => {
       return { params: { slug } };
     }),
     fallback: false,
@@ -46,10 +46,10 @@ export async function getStaticPaths(): Promise<Record<string, any>> {
 export async function getStaticProps({
   params,
 }: Record<string, any>): Promise<Record<string, any>> {
-  const post = Posts[params.slug];
+  const post = BlogPosts[params.slug];
   const note = fs.readFileSync(
     `${process.cwd()}/src/data/blog/content/${DEFAULT_LOCALE}/${post.date}-${
-      post[DEFAULT_LOCALE].slug
+      post.slug
     }.mdx`,
     "utf8",
   );

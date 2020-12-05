@@ -1,23 +1,23 @@
 {
-  "blog": {
-    "pensamientos-sobre-mi-profesion": {
+  "posts": {
+    "thoughts-about-my-profession": {
       "date": "05-12-2020",
-      "es-419": {
-        "slug": "pensamientos-sobre-mi-profesion",
+      "slug": "thoughts-about-my-profession",
+      "es": {
         "title": "Pensamientos sobre mi profesión"
       }
     },
-    "mi-musica-favorita-y-mdx": {
+    "my-favorite-music-and-mdx": {
       "date": "03-12-2020",
-      "es-419": {
-        "slug": "mi-musica-favorita-y-mdx",
+      "slug": "my-favorite-music-and-mdx",
+      "es": {
         "title": "Mi música favorita y MDX"
       }
     },
-    "mi-primer-post": {
+    "my-first-post": {
       "date": "01-12-2020",
-      "es-419": {
-        "slug": "mi-primer-post",
+      "slug": "my-first-post",
+      "es": {
         "title": "Mi primer post"
       }
     }

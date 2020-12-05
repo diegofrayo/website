@@ -7,16 +7,9 @@ import ErrorPage from "./ErrorPage";
 import MainLayout from "./MainLayout";
 import Page from "./Page";
 
-function TextWithEmoji({ children, emoji }: Record<string, any>): any {
-  return (
-    <section className="tw-flex tw-flex-no-wrap tw-mb-3">
-      <span className="tw-text-xl tw-mr-3">{emoji}</span>
-      <p className="tw-flex-1">{children}</p>
-    </section>
-  );
-}
+export { BlogPostContent, Breadcumb, ErrorPage, MainLayout, Page };
 
-function BlogDate({ children, className }: Record<string, any>): any {
+export function DateLabel({ children, className }: Record<string, any>): any {
   return (
     <span
       className={classnames(
@@ -46,7 +39,7 @@ export function Link({ children, href, className, ...rest }: Record<string, any>
   );
 }
 
-function Separator({ size, className }: Record<string, any>): any {
+export function Separator({ size, className }: Record<string, any>): any {
   return (
     <hr
       className={classnames(
@@ -58,13 +51,11 @@ function Separator({ size, className }: Record<string, any>): any {
   );
 }
 
-export {
-  BlogDate,
-  BlogPostContent,
-  Breadcumb,
-  ErrorPage,
-  MainLayout,
-  Page,
-  Separator,
-  TextWithEmoji,
-};
+export function TextWithEmoji({ children, emoji }: Record<string, any>): any {
+  return (
+    <section className="tw-flex tw-flex-no-wrap tw-mb-3">
+      <span className="tw-text-xl tw-mr-3">{emoji}</span>
+      <p className="tw-flex-1">{children}</p>
+    </section>
+  );
+}

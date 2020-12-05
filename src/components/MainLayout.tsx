@@ -6,7 +6,7 @@ import twcss from "~/lib/twcss";
 import { Routes } from "~/utils/constants";
 
 import Breadcumb from "./Breadcumb";
-import { BlogDate, Separator } from "./";
+import { DateLabel, Separator } from "./";
 
 function MainLayout({
   children,
@@ -29,7 +29,7 @@ function MainLayout({
                 <span className="tw-inline-block tw-text-sm tw-bg-green-100 tw-py-1 tw-px-2 tw-rounded-md tw-font-bold tw-mr-2 tw-my-1">
                   👨‍🏫 {blogMetadata.author}
                 </span>
-                <BlogDate className="tw-my-1">{blogMetadata.date}</BlogDate>
+                <DateLabel className="tw-my-1">{blogMetadata.date}</DateLabel>
               </section>
             )}
             <Separator size={3}></Separator>

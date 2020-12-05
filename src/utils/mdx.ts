@@ -2,11 +2,14 @@ import { Link } from "~/components";
 import * as MDXComponents from "~/components/MDXComponents";
 import GithubData from "~/data/github.json";
 
-const MDXComponentsConfig = {
+import { Routes } from "./constants";
+
+export const MDXComponentsConfig = {
   ...MDXComponents,
   a: Link,
 };
 
-const MDXScope = { github: GithubData };
-
-export { MDXComponentsConfig, MDXScope };
+export const MDXScope = {
+  github: GithubData,
+  Routes: { ...Routes, BLOG: Routes.BLOG() },
+};
