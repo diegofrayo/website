@@ -11,8 +11,7 @@ A continuación, un ejemplo de un componente **React** renderizado en este archi
 <HelloWorldMDX />
 
 <Code source={github.website.files.MDXComponents}>
-  {`// source code
-export function HelloWorldMDX(): any {
+  {`export function HelloWorldMDX(): any {
   return (
     <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">
       Hola, soy un componente React que usa Tailwind CSS para sus estilos
@@ -35,15 +34,15 @@ Ahora, voy a mostrar algunos de los pasos que hice para usar **next-mdx-remote**
 
 Primero, importé algunas funciones de **next-mdx-remote:**
 
-```
-import hydrate from "next-mdx-remote/hydrate";
-import renderToString from "next-mdx-remote/render-to-string";
-```
+<Code>
+  {`import hydrate from "next-mdx-remote/hydrate";
+import renderToString from "next-mdx-remote/render-to-string";`}
+</Code>
 
 Después, importé los componentes que uso dentro de los archivos **MDX:**
 
 <Code source={github.website.files.MDXComponents}>
-  import * as MDXComponents from "~/components/MDXComponents";
+  {`import * as MDXComponents from "~/components/MDXComponents";`}
 </Code>
 
 > Aquí voy, algún día terminaré... 🚧

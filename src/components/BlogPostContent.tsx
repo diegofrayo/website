@@ -1,6 +1,15 @@
 import * as React from "react";
 
+import ClipboardJS from "clipboard";
+import { useDidMount } from "~/hooks";
+
 function BlogPostContent({ content }: Record<string, any>): any {
+  useDidMount(() => {
+    setTimeout(() => {
+      new ClipboardJS(".clipboard");
+    }, 2000);
+  });
+
   return (
     <article className="mdx-content">
       {content}

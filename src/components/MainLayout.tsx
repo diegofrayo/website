@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
+import Link from "next/link";
 
 import twcss from "~/lib/twcss";
+import { Routes } from "~/utils/constants";
 
 import Breadcumb from "./Breadcumb";
 import { BlogDate, Separator } from "./";
@@ -46,10 +48,12 @@ const Main = twcss.main`tw-max-w-screen-md tw-w-full tw-p-6 tw-mx-auto`;
 
 function Header() {
   return (
-    <header className="tw-flex sm:tw-igftems-center tw-border-b tw-border-gray-200 tw-pb-3">
-      <section className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 tw-bg-blue-200 tw-mr-4 tw-rounded-lg">
-        <span className="tw-text-2xl sm:tw-text-2xl">👨‍💻</span>
-      </section>
+    <header className="tw-flex tw-border-b tw-border-gray-200 tw-pb-3">
+      <Link href={Routes.HOME}>
+        <a className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 tw-bg-blue-200 tw-mr-4 tw-rounded-lg tw-text-2xl sm:tw-text-2xl">
+          👨‍💻
+        </a>
+      </Link>
       <section className="tw-flex-1">
         <h1 className="tw-text-2xl sm:tw-text-4xl">
           <strong>Diego Rayo</strong>
@@ -81,9 +85,9 @@ function SocialIcons() {
 
   return (
     <section className="tw-inline-flex tw-items-center tw-my-1 tw-flex-wrap">
-      {SOCIAL_NETWORKS.map(item => (
-        <SocialIcon key={item.icon} {...item}></SocialIcon>
-      ))}
+      {SOCIAL_NETWORKS.map(item => {
+        return <SocialIcon key={item.icon} {...item}></SocialIcon>;
+      })}
     </section>
   );
 }

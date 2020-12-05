@@ -20,7 +20,7 @@ function BlogDate({ children, className }: Record<string, any>): any {
   );
 }
 
-export function Link({ children, href, className }: Record<string, any>): any {
+export function Link({ children, href, className, ...rest }: Record<string, any>): any {
   return (
     <a
       target="_blank"
@@ -30,6 +30,7 @@ export function Link({ children, href, className }: Record<string, any>): any {
         "tw-font-bold tw-underline tw-text-blue-700 hover:tw-opacity-75 tw-transition-opacity",
         className,
       )}
+      {...rest}
     >
       {children}
     </a>

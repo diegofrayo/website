@@ -16,9 +16,9 @@ function BlogPage(): any {
         title="✍️ Blog"
       >
         <ul>
-          {Object.values(BlogEntries).map(item => (
-            <BlogEntry key={item.slug} {...item}></BlogEntry>
-          ))}
+          {Object.values(BlogEntries).map(item => {
+            return <BlogEntry key={item.slug} {...item}></BlogEntry>;
+          })}
         </ul>
       </MainLayout>
     </Page>

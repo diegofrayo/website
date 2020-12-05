@@ -94,10 +94,10 @@ function AboutMePage(): any {
         </Item>
         <Item emoji="😐">
           Constantemente tengo el <strong>síndrome del impostor</strong> y siento que no
-          se nada{" "}
+          se nada.{" "}
           <i>
             [En mi actual trabajo fui <strong>Desarrollador Senior</strong> y ahora soy{" "}
-            <strong>Tech Lead</strong>]
+            <strong>Tech Lead</strong> y no se como lo logré]
           </i>
         </Item>
         <Item emoji="😴">
@@ -109,9 +109,9 @@ function AboutMePage(): any {
           </i>
         </Item>
         <Item emoji="🤡">
-          Entrar al <strong>feed</strong> de{" "}
-          <Link href="https://www.linkedin.com/in/diegofrayo">LinkedIn</Link> me parece
-          horrendo, se me nubla la vista por tanto humo
+          Al entrar <strong>feed</strong> de{" "}
+          <Link href="https://www.linkedin.com/in/diegofrayo">LinkedIn</Link> se me nubla
+          la vista por tanto humo
         </Item>
       </MainLayout>
     </Page>
