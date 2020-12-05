@@ -6,28 +6,23 @@ function BlogPostContent({ content }: Record<string, any>): any {
       {content}
 
       <style jsx>{`
-        :global(.mdx-content) {
-          @apply tw-text-gray-700;
-        }
-
         :global(.mdx-content) > :global(p),
         :global(.mdx-content) :global(pre),
         :global(.mdx-content) :global(blockquote),
         :global(.mdx-content) :global(img) {
           @apply tw-mt-3;
           @apply tw-mb-6;
-          overflow: auto;
         }
 
         :global(.mdx-content) :global(p) :global(code) {
           @apply tw-text-red-700;
         }
 
-        :global(.mdx-content) :global(p) :global(code)::after {
+        :global(.mdx-content) :global(p) :global(code):after {
           content: "\`";
         }
 
-        :global(.mdx-content) :global(p) :global(code)::before {
+        :global(.mdx-content) :global(p) :global(code):before {
           content: "\`";
         }
 
@@ -50,19 +45,11 @@ function BlogPostContent({ content }: Record<string, any>): any {
           font-style: italic;
         }
 
-        :global(.mdx-content) :global(a) {
-          @apply tw-text-blue-600;
-          text-decoration: underline;
-        }
-
         :global(.mdx-content) :global(h1),
         :global(.mdx-content) :global(h2),
         :global(.mdx-content) :global(h3),
         :global(.mdx-content) :global(h4) {
           @apply tw-mb-3;
-          color: black;
-          font-weight: bold;
-          overflow: auto;
         }
 
         :global(.mdx-content) :global(h1) {

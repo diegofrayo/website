@@ -8,12 +8,12 @@ function HomePage(): any {
   return (
     <Page>
       <MainLayout title="👋 Bienvenido">
-        <section className="tw-border-l-8 tw-border-gray-700 tw-pl-4">
-          <p className="tw-text-lg sm:tw-text-xl tw-text-gray-700 tw-text-justify tw-leading-6">
-            En este sitio web quiero escribir acerca de mi experiencia usando las
-            herramientas que uso día a día como desarrollador de Software y con algunas
-            que aún no he usado 🧐. También me gustaría escribir acerca de otros temas
-            diferentes a programación pero no tengo idea cuales 🤷‍♂️.
+        <section className="tw-border-l-4 tw-border-black tw-pl-4">
+          <p className="tw-text-black tw-italic">
+            En este sitio web quiero escribir acerca de mi experiencia trabajando con las
+            herramientas que uso a diario en mi trabajo como desarrollador de Software y
+            con algunas que aún no he usado 🧐. También me gustaría escribir acerca de
+            otros temas diferentes a programación pero no tengo idea cuales 🤷‍♂️.
           </p>
           <Separator size={4}></Separator>
           <MainMenu></MainMenu>
@@ -29,7 +29,7 @@ export default HomePage;
 
 function MainMenu() {
   const ITEMS = [
-    { label: "🙋‍♂️ Acerca de mi", url: Routes.ABOUT_ME },
+    { label: "🙋‍♂️ Acerca de mí", url: Routes.ABOUT_ME },
     { label: "✍️ Blog", url: Routes.BLOG() },
   ];
 
@@ -40,10 +40,10 @@ function MainMenu() {
           return (
             <li
               key={`MainMenuItem-${index}`}
-              className="tw-inline-block tw-w-full sm:tw-w-48 tw-border-l-4 tw-border-b-4 tw-border-gray-200 tw-transition-all tw-text-gray-800 hover:tw-border-gray-700 tw-mr-0 sm:tw-mr-1 tw-mb-3 last:tw-mb-0 sm:tw-mb-0 tw-cursor-pointer tw-relative hover:tw-top-1"
+              className="tw-inline-block tw-w-full sm:tw-w-48 tw-border-l-4 tw-border-b-4 tw-border-gray-200 tw-transition-all  hover:tw-border-black hover:tw-text-black tw-mr-0 sm:tw-mr-1 tw-mb-3 last:tw-mb-0 sm:tw-mb-0 tw-cursor-pointer tw-relative hover:tw-top-0.5"
             >
               <Link href={item.url}>
-                <a className="tw-flex tw-items-center tw-justify-center tw-w-full tw-p-2">
+                <a className="tw-flex tw-items-center tw-justify-center tw-w-full tw-p-2 tw-font-bold">
                   {item.label}
                 </a>
               </Link>
@@ -51,12 +51,6 @@ function MainMenu() {
           );
         })}
       </ul>
-
-      <style jsx>{`
-        li:hover {
-          top: 1px;
-        }
-      `}</style>
     </nav>
   );
 }

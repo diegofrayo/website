@@ -20,15 +20,13 @@ function MainLayout({
         <Separator size={4}></Separator>
         {title && (
           <Fragment>
-            <h1 className="tw-text-left tw-text-3xl tw-text-gray-900 tw-font-bold">
-              {title}
-            </h1>
+            <h1 className="tw-text-left tw-text-3xl tw-font-bold">{title}</h1>
             {blogMetadata && (
               <section className="tw-mt-1">
                 <span className="tw-inline-block tw-text-sm tw-bg-green-100 tw-py-1 tw-px-2 tw-rounded-md tw-font-bold tw-mr-2 tw-my-1">
                   👨‍🏫 {blogMetadata.author}
                 </span>
-                <BlogDate className="tw-text-sm tw-my-1">{blogMetadata.date}</BlogDate>
+                <BlogDate className="tw-my-1">{blogMetadata.date}</BlogDate>
               </section>
             )}
             <Separator size={3}></Separator>
@@ -53,11 +51,11 @@ function Header() {
         <span className="tw-text-2xl sm:tw-text-2xl">👨‍💻</span>
       </section>
       <section className="tw-flex-1 tw-text-left">
-        <h1 className="tw-text-3xl tw-text-gray-900">
+        <h1 className="tw-text-2xl sm:tw-text-4xl">
           <strong>Diego Rayo</strong>
         </h1>
         <section className="tw-flex tw-flex-wrap tw-items-center">
-          <p className="tw-text-gray-800 tw-inline-block tw-mr-2">Software Developer</p>
+          <p className="tw-inline-block tw-mr-2">Desarrollador de Software</p>
           <SocialIcons></SocialIcons>
         </section>
       </section>
@@ -71,7 +69,7 @@ function SocialIcons() {
     { icon: "twitter", url: "https://twitter.com/diegofrayo" },
     {
       icon: "linkedin",
-      url: "https://www.linkedin.com/in/diegofrayo/",
+      url: "https://www.linkedin.com/in/diegofrayo",
     },
     {
       icon: "500px",
@@ -94,7 +92,7 @@ function SocialIcon({ icon, url }) {
       target="_blank"
       rel="noreferrer"
       href={url}
-      className="tw-inline-block tw-bg-gray-100 tw-p-1 tw-border tw-border-gray-200 hover:tw-bg-gray-200 tw-transition-opacity tw-rounded-full tw-mr-2 tw-my-1 tw-relative"
+      className="tw-inline-block tw-bg-gray-100 hover:tw-bg-gray-200 tw-p-1 tw-border tw-border-gray-200 tw-transition-all tw-rounded-full tw-mr-2 tw-my-1 tw-relative"
     >
       <img
         src={`/static/images/icons/${icon}.svg`}

@@ -1,20 +1,12 @@
 import React from "react";
 
-// general
-
-export function Link({ children, href, className }: Record<string, any>): any {
-  return (
-    <a target="_blank" rel="noreferrer" href={href} className={className}>
-      {children}
-    </a>
-  );
-}
+import { Link } from "./";
 
 // shared
 
-export function CustomCode({ children, source }: Record<string, any>): any {
+export function Code({ children, source }: Record<string, any>): any {
   return (
-    <section className="root tw-overflow-auto">
+    <section className="root tw-overflow-auto tw-mb-6">
       <pre>{children}</pre>
       <Link className="tw-float-right tw-inline-block" href={source}>
         <img
@@ -49,7 +41,7 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
         />
         <section className="tw-flex-1">
           <h3>diegofrayo/{name}</h3>
-          <p className="tw-text-gray-700 tw-text-sm">{description}</p>
+          <p className="tw-text-sm tw-text-gray-700">{description}</p>
         </section>
       </Link>
 

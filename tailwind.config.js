@@ -23,11 +23,9 @@ module.exports = {
     },
   },
   variants: {
-    extends: {
-      borderWidth: ["responsive", "last"],
-      margin: ["responsive", "last"],
-      inset: ["hover"],
-    },
+    borderWidth: ["responsive", "last"],
+    margin: ["responsive", "last"],
+    inset: ["hover"],
   },
 };
 

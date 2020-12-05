@@ -34,8 +34,10 @@ function BlogEntry({ slug, title, date }) {
     <li className="tw-mb-4 sm:tw-mb-2">
       <Link href={`/blog/${slug}`}>
         <a className="tw-block hover:tw-opacity-75 tw-transition-opacity tw-overflow-auto">
-          <span className="tw-block sm:tw-inline-block">&#8227; {title}</span>
-          <BlogDate className="tw-text-sm tw-float-right sm:tw-float-none tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">
+          <span className="tw-block sm:tw-inline-block">
+            <strong className="tw-text-black">&#8227;</strong> {title}
+          </span>
+          <BlogDate className="tw-float-right sm:tw-float-none tw-mt-1 sm:tw-mt-0 sm:tw-ml-2">
             {date}
           </BlogDate>
         </a>

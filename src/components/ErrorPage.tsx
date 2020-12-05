@@ -12,11 +12,11 @@ function ErrorPage({ statusCode }: Record<string, unknown>): any {
         breadcumb={[{ text: "Ir al inicio", url: Routes.HOME }]}
         title={`${statusCode === 404 ? "🙉" : "🙈"} Error ${statusCode}`}
       >
-        <section>
+        <p>
           {statusCode === 404
             ? "Esta página no existe"
-            : "Trataré de arreglarlo lo más pronto posible, sin afectar la meta del actual sprint para así lograr darle el mayor valor posible al cliente"}
-        </section>
+            : "Trataré de arreglar el error lo más pronto posible, sin afectar la meta del actual sprint para así lograr darle el mayor valor posible al cliente"}
+        </p>
       </MainLayout>
     </Page>
   );

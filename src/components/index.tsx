@@ -11,7 +11,7 @@ function BlogDate({ children, className }: Record<string, any>): any {
   return (
     <span
       className={classnames(
-        "tw-inline-block tw-bg-gray-200 tw-py-1 tw-px-2 tw-rounded-md tw-text-gray-600 tw-font-bold",
+        "tw-inline-block tw-bg-gray-100 tw-py-1 tw-px-2 tw-rounded-md  tw-font-bold tw-text-sm",
         className,
       )}
     >
@@ -20,8 +20,32 @@ function BlogDate({ children, className }: Record<string, any>): any {
   );
 }
 
-function Separator({ size = 2 }: Record<string, any>): any {
-  return <hr className={classnames("tw-border-0", `tw-my-${size}`)} />;
+export function Link({ children, href, className }: Record<string, any>): any {
+  return (
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href={href}
+      className={classnames(
+        "tw-font-bold tw-underline tw-text-blue-700 hover:tw-opacity-75 tw-transition-opacity",
+        className,
+      )}
+    >
+      {children}
+    </a>
+  );
+}
+
+function Separator({ size, className }: Record<string, any>): any {
+  return (
+    <hr
+      className={classnames(
+        "tw-border-0",
+        Number.isInteger(size) && `tw-my-${size}`,
+        className,
+      )}
+    />
+  );
 }
 
 export { BlogDate, BlogPostContent, Breadcumb, ErrorPage, MainLayout, Page, Separator };
