@@ -3,7 +3,7 @@ import * as React from "react";
 import ClipboardJS from "clipboard";
 import { useDidMount } from "~/hooks";
 
-function BlogPostContent({ content }: Record<string, any>): any {
+function MDXContent({ content }: Record<string, any>): any {
   useDidMount(() => {
     setTimeout(() => {
       new ClipboardJS(".clipboard");
@@ -18,21 +18,10 @@ function BlogPostContent({ content }: Record<string, any>): any {
         :global(.mdx-content) > :global(p),
         :global(.mdx-content) :global(pre),
         :global(.mdx-content) :global(blockquote),
-        :global(.mdx-content) :global(img) {
+        :global(.mdx-content) :global(img),
+        :global(.mdx-content) :global(hr) {
           @apply tw-mt-3;
           @apply tw-mb-6;
-        }
-
-        :global(.mdx-content) :global(p) :global(code) {
-          @apply tw-text-red-700;
-        }
-
-        :global(.mdx-content) :global(p) :global(code):after {
-          content: "\`";
-        }
-
-        :global(.mdx-content) :global(p) :global(code):before {
-          content: "\`";
         }
 
         :global(.mdx-content) :global(pre) {
@@ -52,6 +41,18 @@ function BlogPostContent({ content }: Record<string, any>): any {
           @apply tw-pl-4;
           color: black;
           font-style: italic;
+        }
+
+        :global(.mdx-content) :global(p) :global(code) {
+          @apply tw-text-red-700;
+        }
+
+        :global(.mdx-content) :global(p) :global(code):after {
+          content: "\`";
+        }
+
+        :global(.mdx-content) :global(p) :global(code):before {
+          content: "\`";
         }
 
         :global(.mdx-content) :global(h1),
@@ -81,4 +82,4 @@ function BlogPostContent({ content }: Record<string, any>): any {
   );
 }
 
-export default BlogPostContent;
+export default MDXContent;

@@ -1,13 +1,15 @@
 import * as React from "react";
 import classnames from "classnames";
 
+import twcss from "~/lib/twcss";
+
 import Breadcumb from "./Breadcumb";
-import BlogPostContent from "./BlogPostContent";
+import MDXContent from "./MDXContent";
 import ErrorPage from "./ErrorPage";
 import MainLayout from "./MainLayout";
 import Page from "./Page";
 
-export { BlogPostContent, Breadcumb, ErrorPage, MainLayout, Page };
+export { MDXContent, Breadcumb, ErrorPage, MainLayout, Page };
 
 export function DateLabel({ children, className }: Record<string, any>): any {
   return (
@@ -22,22 +24,35 @@ export function DateLabel({ children, className }: Record<string, any>): any {
   );
 }
 
-export function Link({ children, href, className, ...rest }: Record<string, any>): any {
+export function Link({
+  children,
+  href,
+  className,
+  is: Tag = "a",
+  ...rest
+}: Record<string, any>): any {
+  if (Tag === "a") {
+    return (
+      <LinkElement
+        target="_blank"
+        rel="noreferrer"
+        href={href}
+        className={className}
+        {...rest}
+      >
+        {children}
+      </LinkElement>
+    );
+  }
+
   return (
-    <a
-      target="_blank"
-      rel="noreferrer"
-      href={href}
-      className={classnames(
-        "tw-font-bold tw-underline tw-text-blue-700 hover:tw-opacity-75 tw-transition-opacity",
-        className,
-      )}
-      {...rest}
-    >
-      {children}
-    </a>
+    <Tag href={href} passHref>
+      <LinkElement className={className}>{children}</LinkElement>
+    </Tag>
   );
 }
+
+const LinkElement = twcss.a`tw-font-bold tw-underline tw-text-blue-700 hover:tw-opacity-75 tw-transition-opacity`;
 
 export function UL({ children }: Record<string, any>): any {
   return (
@@ -73,7 +88,7 @@ export function Separator({ size, className }: Record<string, any>): any {
 
 export function TextWithEmoji({ children, emoji }: Record<string, any>): any {
   return (
-    <section className="tw-flex tw-flex-no-wrap tw-mb-3">
+    <section className="tw-flex tw-flex-nowrap tw-mb-3">
       <span className="tw-text-xl tw-mr-3">{emoji}</span>
       <p className="tw-flex-1">{children}</p>
     </section>

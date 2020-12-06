@@ -35,6 +35,14 @@ export function slugify(str: string): string {
   return result;
 }
 
+export function toUpperCaseObjectProperty(url: string): string {
+  return url.toUpperCase().replace(/-+/g, "_");
+}
+
+export function toLowerCaseObjectProperty(url: string): string {
+  return url.toLowerCase().replace(/-+/g, "_");
+}
+
 export function isDevelopmentEnvironment(source?: string): boolean {
   /*
   if (source === "ANALYTICS") {

@@ -16,11 +16,11 @@ function MainLayout({
 }: Record<string, any>): any {
   return (
     <Main>
-      <Header></Header>
-      <Separator size={2}></Separator>
+      <Header />
+      <Separator size={2} />
       <section>
         {breadcumb && <Breadcumb items={breadcumb} />}
-        <Separator size={4}></Separator>
+        <Separator size={4} />
         {title && (
           <Fragment>
             <h1 className="tw-text-left tw-text-3xl tw-font-bold">{title}</h1>
@@ -32,7 +32,7 @@ function MainLayout({
                 <DateLabel className="tw-my-1">{blogMetadata.date}</DateLabel>
               </section>
             )}
-            <Separator size={3}></Separator>
+            <Separator size={3} />
           </Fragment>
         )}
         {children}
@@ -51,7 +51,7 @@ function Header() {
   const SiteTexts = getSiteTexts({ layout: true });
 
   return (
-    <header className="tw-flex tw-border-b tw-border-gray-200 tw-pb-3">
+    <header className="tw-flex tw-border-b tw-border-gray-200 tw-pb-3 tw-relative">
       <Link href={Routes.HOME}>
         <a className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 tw-bg-blue-200 tw-mr-4 tw-rounded-lg tw-text-2xl sm:tw-text-2xl">
           👨‍💻
@@ -65,9 +65,22 @@ function Header() {
           <p className="tw-text-sm sm:tw-text-base tw-inline-block tw-mr-2">
             {SiteTexts.layout.header.job_title}
           </p>
-          <SocialIcons></SocialIcons>
+          <SocialIcons />
         </section>
       </section>
+
+      <a
+        target="_blank"
+        rel="noreferrer"
+        href="https://github.com/diegofrayo/website"
+        className="tw-inline-block tw-top-0 tw-right-0 tw-absolute hover:tw-top-0.5 tw-transition-all"
+      >
+        <img
+          src="/static/images/icons/source-code.svg"
+          alt="Source code icon"
+          className="tw-h-6 sm:tw-h-8 tw-w-6 sm:tw-w-8"
+        />
+      </a>
     </header>
   );
 }
@@ -89,7 +102,7 @@ function SocialIcons() {
   return (
     <section className="tw-inline-flex tw-items-center tw-my-1 tw-flex-wrap">
       {SOCIAL_NETWORKS.map(item => {
-        return <SocialIcon key={item.icon} {...item}></SocialIcon>;
+        return <SocialIcon key={item.icon} {...item} />;
       })}
     </section>
   );

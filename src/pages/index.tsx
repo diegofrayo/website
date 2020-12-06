@@ -15,10 +15,10 @@ function HomePage(): any {
           <p
             className="tw-text-black tw-italic"
             dangerouslySetInnerHTML={{ __html: SiteTexts.page.body }}
-          ></p>
-          <Separator size={4}></Separator>
-          <MainMenu></MainMenu>
-          <Separator className="tw-mt-6 tw-mb-4 tw-border-t tw-border-gray-200"></Separator>
+          />
+          <Separator size={4} />
+          <MainMenu />
+          <Separator className="tw-mt-6 tw-mb-4 tw-border-t tw-border-gray-200" />
           <section className="tw-text-black">
             <h2 className="tw-text-xl tw-mb-2">Roadmap 🚀</h2>
             <UL>
@@ -48,6 +48,12 @@ function HomePage(): any {
                 Añadir <strong>sistema de comentarios</strong> para los{" "}
                 <strong>blog posts</strong>
               </li>
+              <li>
+                Soporte para <strong>dark-mode</strong>
+              </li>
+              <li>
+                <strong>RSS Feed</strong> para el <strong>blog</strong>
+              </li>
             </UL>
           </section>
         </section>
@@ -62,13 +68,14 @@ export default HomePage;
 
 function MainMenu() {
   const ITEMS = [
-    { label: SiteTexts.page.menu_item_about_me, url: Routes.ABOUT_ME },
     { label: SiteTexts.page.menu_item_blog, url: Routes.BLOG() },
+    { label: SiteTexts.page.menu_item_about_me, url: Routes.ABOUT_ME },
+    { label: SiteTexts.page.menu_item_resume, url: Routes.RESUME },
   ];
 
   return (
     <nav>
-      <ul className="tw-flex tw-flex-wrap tw-justify-between">
+      <ul className="tw-flex tw-flex-wrap sm:tw-flex-nowrap tw-justify-between">
         {ITEMS.map((item, index) => {
           return (
             <li
@@ -90,7 +97,7 @@ function MainMenu() {
           width: 100%;
 
           @screen sm {
-            width: 48%;
+            width: 32%;
           }
         }
       `}</style>

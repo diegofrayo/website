@@ -7,6 +7,7 @@
       "breadcumb": {
         "home": "Inicio",
         "about_me": "Acerca de mí",
+        "resume": "Experiencia",
         "blog": "Blog"
       }
     },
@@ -15,13 +16,18 @@
         "title": "👋 Bienvenido",
         "body": "En este sitio web quiero escribir acerca de mi experiencia trabajando con las herramientas que uso a diario en mi trabajo como Desarrollador de Software y también acerca de algunas herramientas que quiero aprender y explorar 🧐.<br />Además, me gustaría escribir acerca de otros temas diferentes a programación pero no tengo idea cuales 🤷‍♂️.",
         "menu_item_about_me": "🙋‍♂️ Acerca de mí",
-        "menu_item_blog": "✍️ Blog"
+        "menu_item_blog": "✍️ Blog",
+        "menu_item_resume": "📄 Experiencia"
       },
       "/about-me": {
         "title": "🙋‍♂️ Acerca de mí"
       },
+      "/resume": {
+        "title": "📄 Experiencia"
+      },
       "/blog": {
         "title": "✍️ Blog",
+        "description": "En este blog vas a encontrar tutoriales de programación, notas, pensamientos e ideas. Me dieron ganas de escribir y comunicar cosas. 😀",
         "see_source_code": "Ver código fuente",
         "copy_to_clipboard": "📋 Copiar al portapeles"
       },

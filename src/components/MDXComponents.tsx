@@ -6,11 +6,11 @@ import { getSiteTexts } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { Routes } from "~/utils/constants";
 
-import { Link, TextWithEmoji } from "./";
+import { Link, TextWithEmoji, Separator } from "./";
 
 // shared
 
-export { Link, TextWithEmoji };
+export { Link, TextWithEmoji, Separator };
 
 export function Code({ children, source }: Record<string, any>): any {
   const SiteTexts = getSiteTexts({ page: Routes.BLOG() });
@@ -133,7 +133,7 @@ export function SpotifyPlaylist(): any {
         frameBorder="0"
         allow="encrypted-media"
         allowTransparency
-      ></iframe>
+      />
     </section>
   );
 }

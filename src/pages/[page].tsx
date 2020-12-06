@@ -4,29 +4,29 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout, MDXContent } from "~/components";
-import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { getSiteTexts } from "~/i18n";
-import { Routes, DEFAULT_LOCALE } from "~/utils/constants";
+import { Routes, PAGES_NAMES, DEFAULT_LOCALE } from "~/utils/constants";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
+import { toLowerCaseObjectProperty, toUpperCaseObjectProperty } from "~/utils/misc";
 
-const SiteTexts = getSiteTexts({ page: Routes.BLOG(), layout: true });
-
-function BlogPostPage({ post, content }: Record<string, any>): any {
+function SitePage({ content, page }: Record<string, any>): any {
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
+  const SiteTexts = getSiteTexts({
+    page: Routes[toUpperCaseObjectProperty(page)],
+    layout: true,
+  });
 
   return (
     <Page>
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },
-          { text: SiteTexts.layout.breadcumb.blog, url: Routes.BLOG() },
           {
-            text: post[DEFAULT_LOCALE].title,
-            url: Routes.BLOG(post.slug),
+            text: SiteTexts.layout.breadcumb[toLowerCaseObjectProperty(page)],
+            url: Routes[toUpperCaseObjectProperty(page)],
           },
         ]}
-        title={post[DEFAULT_LOCALE].title}
-        blogMetadata={{ author: "@diegofrayo", date: post.date }}
+        title={SiteTexts.page.title}
       >
         <MDXContent content={mdxContent} />
       </MainLayout>
@@ -36,8 +36,8 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
 
 export async function getStaticPaths(): Promise<Record<string, any>> {
   return {
-    paths: Object.keys(BlogPosts).map(slug => {
-      return { params: { slug } };
+    paths: PAGES_NAMES.map(page => {
+      return { params: { page } };
     }),
     fallback: false,
   };
@@ -46,19 +46,16 @@ export async function getStaticPaths(): Promise<Record<string, any>> {
 export async function getStaticProps({
   params,
 }: Record<string, any>): Promise<Record<string, any>> {
-  const post = BlogPosts[params.slug];
-  const note = fs.readFileSync(
-    `${process.cwd()}/src/data/blog/posts/${DEFAULT_LOCALE}/${post.date}-${
-      post.slug
-    }.mdx`,
+  const file = fs.readFileSync(
+    `${process.cwd()}/src/data/pages/${DEFAULT_LOCALE}/${params.page}.mdx`,
     "utf8",
   );
-  const content = await renderToString(note, {
+  const content = await renderToString(file, {
     components: MDXComponentsConfig,
     scope: MDXScope,
   });
 
-  return { props: { post, content }, revalidate: 1 };
+  return { props: { content, page: params.page }, revalidate: 1 };
 }
 
-export default BlogPostPage;
+export default SitePage;

@@ -1,7 +1,7 @@
 import * as React from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 
-import { Page, MainLayout, UL } from "~/components";
+import { Page, MainLayout, UL, Link } from "~/components";
 import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { getSiteTexts } from "~/i18n";
 import { Routes, DEFAULT_LOCALE } from "~/utils/constants";
@@ -18,6 +18,7 @@ function BlogPage(): any {
         ]}
         title={SiteTexts.page.title}
       >
+        <p className="tw-mb-4">{SiteTexts.page.description}</p>
         <UL>
           {Object.values(BlogPosts).map(item => {
             return (
@@ -25,7 +26,7 @@ function BlogPage(): any {
                 key={item.slug}
                 slug={item.slug}
                 title={item[DEFAULT_LOCALE].title}
-              ></BlogEntry>
+              />
             );
           })}
         </UL>
@@ -41,8 +42,8 @@ export default BlogPage;
 function BlogEntry({ slug, title }) {
   return (
     <li>
-      <Link href={`/blog/${slug}`}>
-        <a className="hover:tw-opacity-75 tw-transition-opacity">{title}</a>
+      <Link is={NextLink} href={`/blog/${slug}`}>
+        {title}
       </Link>
     </li>
   );
