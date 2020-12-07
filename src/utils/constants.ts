@@ -2,9 +2,9 @@ import { posts } from "~/data/blog/posts.json";
 
 import { toUpperCaseObjectProperty } from "./misc";
 
-export const PAGES_NAMES = ["about-me", "resume"];
-
 export const DEFAULT_LOCALE = "es";
+
+export const PAGES_NAMES = ["about-me", "resume"];
 
 export const Routes: Record<string, any> = {
   HOME: "/",

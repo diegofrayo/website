@@ -5,6 +5,7 @@ import { Page, MainLayout, UL, Link } from "~/components";
 import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { getSiteTexts } from "~/i18n";
 import { Routes, DEFAULT_LOCALE } from "~/utils/constants";
+import { getDifferenceBetweenDates } from "~/utils/dates";
 
 const SiteTexts = getSiteTexts({ page: Routes.BLOG(), layout: true });
 
@@ -25,6 +26,7 @@ function BlogPage(): any {
               <BlogEntry
                 key={item.slug}
                 slug={item.slug}
+                updatedAt={item.updated_at}
                 title={item[DEFAULT_LOCALE].title}
               />
             );
@@ -39,12 +41,16 @@ export default BlogPage;
 
 // --- Components ---
 
-function BlogEntry({ slug, title }) {
+function BlogEntry({ slug, title, updatedAt }) {
   return (
     <li>
-      <Link is={NextLink} href={`/blog/${slug}`}>
+      <Link is={NextLink} href={Routes.BLOG(slug)}>
         {title}
       </Link>
+      <p className="tw-text-sm tw-ml-4 tw-italic">
+        <span>{SiteTexts.page.updated_at} </span>
+        <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
+      </p>
     </li>
   );
 }

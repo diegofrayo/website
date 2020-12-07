@@ -19,43 +19,7 @@ function HomePage(): any {
           <Separator size={4} />
           <MainMenu />
           <Separator className="tw-mt-6 tw-mb-4 tw-border-t tw-border-gray-200" />
-          <section className="tw-text-black">
-            <h2 className="tw-text-xl tw-mb-2">Roadmap 🚀</h2>
-            <UL>
-              <li>
-                Terminar de escribir los <strong>blog posts</strong> que están en
-                construcción
-              </li>
-              <li>
-                Traducir el contenido de <strong>español</strong> a{" "}
-                <strong>inglés</strong>
-              </li>
-              <li>
-                Mejorar el <strong>SEO</strong>
-              </li>
-              <li>
-                Soportar <strong>Multilenguaje [es/en]</strong>
-              </li>
-              <li>
-                Configurar <strong>ESLint</strong> y los plugins para{" "}
-                <strong> TypeScript</strong> y <strong>React Hooks</strong>
-              </li>
-              <li>
-                Aprender <strong>TypeScript</strong> para dejar de usar{" "}
-                <strong>any</strong> en todos lados
-              </li>
-              <li>
-                Añadir <strong>sistema de comentarios</strong> para los{" "}
-                <strong>blog posts</strong>
-              </li>
-              <li>
-                Soporte para <strong>dark-mode</strong>
-              </li>
-              <li>
-                <strong>RSS Feed</strong> para el <strong>blog</strong>
-              </li>
-            </UL>
-          </section>
+          <Roadmap />
         </section>
       </MainLayout>
     </Page>
@@ -102,5 +66,45 @@ function MainMenu() {
         }
       `}</style>
     </nav>
+  );
+}
+
+function Roadmap() {
+  return (
+    <section className="tw-text-black">
+      <h2 className="tw-text-xl tw-mb-2">Roadmap 🚀</h2>
+      <UL>
+        <li>
+          Terminar de escribir los <strong>blog posts</strong> que están en construcción
+        </li>
+        <li>
+          Traducir el contenido de <strong>español</strong> a <strong>inglés</strong>
+        </li>
+        <li>
+          Mejorar el <strong>SEO</strong>
+        </li>
+        <li>
+          Soportar <strong>Multilenguaje [es/en]</strong>
+        </li>
+        <li>
+          Configurar <strong>ESLint</strong> y los plugins para{" "}
+          <strong> TypeScript</strong> y <strong>React Hooks</strong>
+        </li>
+        <li>
+          Aprender <strong>TypeScript</strong> para dejar de usar <strong>any</strong> en
+          todos lados
+        </li>
+        <li>
+          Añadir <strong>sistema de comentarios</strong> para los{" "}
+          <strong>blog posts</strong>
+        </li>
+        <li>
+          Soporte para <strong>dark-mode</strong>
+        </li>
+        <li>
+          <strong>RSS Feed</strong> para el <strong>blog</strong>
+        </li>
+      </UL>
+    </section>
   );
 }

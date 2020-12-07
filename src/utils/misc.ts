@@ -56,3 +56,17 @@ export function isDevelopmentEnvironment(source?: string): boolean {
     ? !window.location.href.includes(".vercel.app")
     : process.env.NODE_ENV !== "production";
 }
+
+export const pluralize = (
+  number: number,
+  word: string | Record<string, any>,
+  { includeNumber = true }: Record<string, any> = {},
+): string => {
+  return `${includeNumber ? number : ""} ${
+    typeof word === "string"
+      ? word + (number === 1 ? "" : "s")
+      : number === 1
+      ? word.singular
+      : word.plural
+  }`.trim();
+};

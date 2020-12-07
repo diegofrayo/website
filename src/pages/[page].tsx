@@ -55,7 +55,7 @@ export async function getStaticProps({
     scope: MDXScope,
   });
 
-  return { props: { content, page: params.page }, revalidate: 1 };
+  return { props: { content, page: params.page } };
 }
 
 export default SitePage;

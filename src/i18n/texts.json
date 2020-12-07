@@ -28,6 +28,7 @@
       "/blog": {
         "title": "✍️ Blog",
         "description": "En este blog vas a encontrar tutoriales de programación, notas, pensamientos e ideas. Me dieron ganas de escribir y comunicar cosas. 😀",
+        "updated_at": "Actualizado",
         "see_source_code": "Ver código fuente",
         "copy_to_clipboard": "📋 Copiar al portapeles"
       },

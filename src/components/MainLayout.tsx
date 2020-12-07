@@ -26,11 +26,11 @@ function MainLayout({
             <h1 className="tw-text-left tw-text-3xl tw-font-bold">{title}</h1>
             {blogMetadata && (
               <section className="tw-flex tw-flex-wrap tw-mt-1">
+                <BlogMetadataItem className="tw-bg-gray-100 tw-mr-2">
+                  🗓️ {blogMetadata.created_at}
+                </BlogMetadataItem>
                 <BlogMetadataItem className="tw-bg-green-100 tw-mr-2">
                   👨‍🏫 {blogMetadata.author}
-                </BlogMetadataItem>
-                <BlogMetadataItem className="tw-bg-gray-100 tw-mr-2">
-                  🗓️ {blogMetadata.date}
                 </BlogMetadataItem>
                 <BlogMetadataItem
                   is="a"
@@ -140,4 +140,4 @@ function SocialIcon({ icon, url }) {
   );
 }
 
-const BlogMetadataItem = twcss.span`tw-inline-flex tw-items-center tw-justify-center tw-py-1 tw-px-2 tw-my-1 tw-rounded-md tw-font-bold tw-text-sm tw-h-7`;
+const BlogMetadataItem = twcss.span`tw-inline-flex tw-items-center tw-justify-center tw-py-1 tw-px-1 tw-my-1 tw-rounded-md tw-font-bold tw-text-sm tw-h-7`;

@@ -1,21 +1,32 @@
 {
   "posts": {
+    "how-i-use-tailwind-css": {
+      "created_at": "07-12-2020",
+      "updated_at": "07-12-2020",
+      "slug": "how-i-use-tailwind-css",
+      "es": {
+        "title": "Como uso Tailwind CSS"
+      }
+    },
     "thoughts-about-my-profession": {
-      "date": "05-12-2020",
+      "created_at": "05-12-2020",
+      "updated_at": "06-12-2020",
       "slug": "thoughts-about-my-profession",
       "es": {
         "title": "Pensamientos sobre mi profesión"
       }
     },
     "my-favorite-music-and-mdx": {
-      "date": "03-12-2020",
+      "created_at": "03-12-2020",
+      "updated_at": "07-12-2020",
       "slug": "my-favorite-music-and-mdx",
       "es": {
         "title": "Mi música favorita y MDX"
       }
     },
     "my-first-post": {
-      "date": "01-12-2020",
+      "created_at": "01-12-2020",
+      "updated_at": "05-12-2020",
       "slug": "my-first-post",
       "es": {
         "title": "Mi primer post"

@@ -1,4 +1,4 @@
-**Spotify** acaba de hacer una playlist con mi TOP de canciones más escuchadas en este 2020, así que aproveché para hacer un post sobre **MDX**.
+**Spotify** acaba de hacer una playlist con mi TOP de canciones más escuchadas en este 2020, así que aproveché para hacer un post sobre [MDX](https://mdxjs.com/).
 
 > **MDX** es una extensión del lenguaje **Markdown**, haciendolo mucho más potente y personalizable, ya que permite usar y renderizar **componentes React** dentro de archivos **Markdown** 🤯.
 
@@ -73,7 +73,7 @@ Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada blog 
 }: Record<string, any>): Promise<Record<string, any>> {
   const post = BlogPosts[params.slug];
   const note = fs.readFileSync(
-    \`\${process.cwd()}/src/data/blog/posts/\${DEFAULT_LOCALE}/\${post.date}-\${
+    \`\${process.cwd()}/src/data/blog/posts/\${DEFAULT_LOCALE}/\${post.created_at}-\${
       post.slug
     }.mdx\`,
     "utf8",
@@ -109,8 +109,8 @@ Por último, este es el componente que renderiza un blog post.
         title={post[DEFAULT_LOCALE].title}
         blogMetadata={{
           author: "@diegofrayo",
-          date: post.date,
-          sourceURL: \`\${post.date}-\${post.slug}\`,
+          created_at: post.created_at,
+          sourceURL: \`\${post.created_at}-\${post.slug}\`,
         }}
       >
         <MDXContent content={mdxContent} />
@@ -121,6 +121,163 @@ Por último, este es el componente que renderiza un blog post.
 />
 
 > **Importante:** Es necesario que el valor de la propiedad `components` sea igual en `hydrate(content, { components: MDXComponentsConfig });` como en `await renderToString(content, { components: MDXComponentsConfig });`
+
+Para manejar los estilos **CSS** del contenido compilado de los archivos **MDX**, usé al inicio este [plugin](https://tailwindcss.com/docs/typography-plugin) de [Tailwind CSS](https://tailwindcss.com), pero después lo dejé de usar y decidí construir un componente con mis propios estilos.
+
+<Code
+  sourceURL={github.website.files.MDXContent}
+  language="jsx"
+  code={`import * as React from "react";
+import ClipboardJS from "clipboard";
+import { useDidMount } from "~/hooks";
+function MDXContent({ content }: Record<string, any>): any {
+  useDidMount(() => {
+    setTimeout(() => {
+      new ClipboardJS(".clipboard");
+    }, 2000);
+  });
+  return (
+    <article className="mdx-content">
+      {content}
+      <style jsx>{\`
+        :global(.mdx-content) > :global(p),
+        :global(.mdx-content) :global(pre),
+        :global(.mdx-content) :global(blockquote),
+        :global(.mdx-content) :global(img),
+        :global(.mdx-content) :global(hr),
+        :global(.mdx-content) :global(ol) {
+          @apply tw-mt-3;
+          @apply tw-mb-6;
+        }
+        :global(.mdx-content) :global(ol) {
+          @apply tw-pl-6;
+          list-style-type: decimal;
+        }
+        :global(.mdx-content) :global(pre) {
+          @apply tw-bg-gray-800;
+          @apply tw-p-4;
+          @apply tw-rounded-md;
+          @apply tw-text-base;
+          @apply tw-text-gray-300;
+          max-width: 100%;
+          overflow-x: auto;
+          word-break: keep-all;
+        }
+        :global(.mdx-content) :global(blockquote) {
+          @apply tw-border-black;
+          @apply tw-border-l-4;
+          @apply tw-pl-4;
+          color: black;
+          font-style: italic;
+        }
+        :global(.mdx-content) :global(p) :global(code) {
+          @apply tw-text-red-700;
+          @apply tw-text-base;
+        }
+        :global(.mdx-content) :global(p) :global(code):after {
+          content: "\`";
+        }
+        :global(.mdx-content) :global(p) :global(code):before {
+          content: "\`";
+        }
+        :global(.mdx-content) :global(h1),
+        :global(.mdx-content) :global(h2),
+        :global(.mdx-content) :global(h3),
+        :global(.mdx-content) :global(h4) {
+          @apply tw-mb-3;
+        }
+        :global(.mdx-content) :global(h1) {
+          @apply tw-text-3xl;
+        }
+        :global(.mdx-content) :global(h2) {
+          @apply tw-text-2xl;
+        }
+        :global(.mdx-content) :global(h3) {
+          @apply tw-text-xl;
+        }
+        :global(.mdx-content) :global(h4) {
+          @apply tw-text-lg;
+        }
+      \`}</style>
+    </article>
+  );
+}
+export default MDXContent;`}
+/>
+
+> La directiva `@apply` me permite usar los estilos de **Tailwind CSS** dentro de mis declaraciones de estilos que construyo usando [styled-jsx](https://github.com/vercel/styled-jsx).
+
+El resaltado de síntaxis de código fuente lo hice con [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer).
+
+<Code
+  sourceURL={github.website.files.MDXComponents}
+  language="jsx"
+  code={`import Highlight, { defaultProps } from "prism-react-renderer";
+import dracula from "prism-react-renderer/themes/dracula";
+export function Code({ language, fileName, code, sourceURL }: Record<string, any>): any {
+  const SiteTexts = getSiteTexts({ page: Routes.BLOG() });
+  return (
+    <section className="root tw-mb-6">
+      {fileName ||
+        (sourceURL && (
+          <code className="tw-text-sm tw-mb-2 tw-font-bold">
+            {\`// \${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}\`}
+          </code>
+        ))}
+      <Highlight {...defaultProps} code={code} language={language} theme={dracula}>
+        {({ className, style, tokens, getLineProps, getTokenProps }) => {
+          return (
+            <pre className={className} style={style}>
+              {tokens.map((line, i) => {
+                return (
+                  <Line key={i} {...getLineProps({ line, key: i })}>
+                    <LineNo>{i + 1}</LineNo>
+                    <LineContent>
+                      {line.map((token, key) => {
+                        return <span key={key} {...getTokenProps({ token, key })} />;
+                      })}
+                    </LineContent>
+                  </Line>
+                );
+              })}
+            </pre>
+          );
+        }}
+      </Highlight>
+      <section className="tw-text-right">
+        {sourceURL && (
+          <Link className="tw-block sm:tw-inline-block sm:tw-mr-4" href={sourceURL}>
+            <img
+              src="/static/images/icons/github.svg"
+              alt="Github icon"
+              className="tw-h-3 tw-w-3 tw-inline-block tw-align-middle tw-mr-1"
+            />
+            <span className="tw-inline-block tw-text-sm">
+              {SiteTexts.page.see_source_code}
+            </span>
+          </Link>
+        )}
+        <Link
+          data-clipboard-text={code}
+          className="clipboard tw-block sm:tw-inline-block tw-text-sm  tw-mt-1 sm:tw-mt-0 tw-no-underline"
+          role="button"
+        >
+          {SiteTexts.page.copy_to_clipboard}
+        </Link>
+      </section>
+      <style jsx>{\`
+        .root pre,
+        .root img {
+          @apply tw-my-0;
+        }
+      \`}</style>
+    </section>
+  );
+}
+const Line = twcss.div\`tw-table-row\`;
+const LineNo = twcss.span\`tw-table-cell tw-text-right tw-pr-4 tw-opacity-50 tw-select-none\`;
+const LineContent = twcss.span\`tw-table-cell\`;`}
+/>
 
 Y bueno, esto fue todo, aquí comparto la **URL** del repositorio de este sitio web en **Github**.
 
@@ -136,12 +293,13 @@ Ahora voy a hablar acerca de la otra parte de este blog post, osea, la **música
 
 <SpotifyPlaylist />
 
-Después de ver esta playlist observo que.
+Después de ver esta playlist me doy cuenta que:
 
-1. **Par mil** es una de mis canciones favoritas y que más disfruto tocar en la guitarra
-1. Este año descubrí mucha música de **Pedro Aznar**, me parece un músico increíble
-1. **Parque Acuático** me parece una canción muy cool y la escuché mucho en la cuarentena
-1. Me asombra no ver canciones del album **Artaud** de **Spinetta** en el TOP 10 de esta playlist, porque escuché muchas veces ese album y es uno de mis favoritos
-1. Definitivamente me gusta mucho la música **Argentina**, es la que más escucho en mi día a día
+1. [Par mil](https://www.youtube.com/watch?v=Gd37vIRhqSA) es una de mis canciones favoritas y que más disfruto tocar en la guitarra
+1. Me gusta mucho [Divididos](https://www.youtube.com/watch?v=7OlzxfSKjtI) y especialmente sus canciones de folclore
+1. Este año descubrí mucha música de [Pedro Aznar](https://www.youtube.com/watch?v=MDSxcA389DE), me parece un músico increíble
+1. [Parque Acuático](https://www.youtube.com/watch?v=Ffkl2rOQEMg) me parece una canción muy buena y la escuché mucho en la cuarentena
+1. Me asombra no ver canciones del album [Artaud](https://www.youtube.com/watch?v=Tk23kQRFWcw&list=PLL0BXIloA_5y3uX2UO0ktpQtUcuc2zGj-) de [Spinetta](https://www.youtube.com/watch?v=hEL2AgzRmjc) en el TOP 10 de esta playlist, porque escuché muchas veces ese album y es uno de mis favoritos
+1. Definitivamente me gusta mucho la música [Argentina](https://www.youtube.com/watch?v=7YIkurDaHpc), es la que más escucho en mi día a día
 
 Si llegaste hasta aquí, gracias 😃
