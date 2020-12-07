@@ -6,12 +6,13 @@ import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { getSiteTexts } from "~/i18n";
 import { Routes, DEFAULT_LOCALE } from "~/utils/constants";
 import { getDifferenceBetweenDates } from "~/utils/dates";
+import { removeEmojiFromTitle } from "~/utils/misc";
 
 const SiteTexts = getSiteTexts({ page: Routes.BLOG(), layout: true });
 
 function BlogPage(): any {
   return (
-    <Page>
+    <Page metadata={{ title: removeEmojiFromTitle(SiteTexts.page.title) }}>
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },

@@ -1,6 +1,6 @@
 import * as React from "react";
-
 import ClipboardJS from "clipboard";
+
 import { useDidMount } from "~/hooks";
 
 function MDXContent({ content }: Record<string, any>): any {

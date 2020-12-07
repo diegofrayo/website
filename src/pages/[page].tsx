@@ -7,7 +7,11 @@ import { Page, MainLayout, MDXContent } from "~/components";
 import { getSiteTexts } from "~/i18n";
 import { Routes, PAGES_NAMES, DEFAULT_LOCALE } from "~/utils/constants";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
-import { toLowerCaseObjectProperty, toUpperCaseObjectProperty } from "~/utils/misc";
+import {
+  toLowerCaseObjectProperty,
+  toUpperCaseObjectProperty,
+  removeEmojiFromTitle,
+} from "~/utils/misc";
 
 function SitePage({ content, page }: Record<string, any>): any {
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
@@ -17,7 +21,7 @@ function SitePage({ content, page }: Record<string, any>): any {
   });
 
   return (
-    <Page>
+    <Page metadata={{ title: removeEmojiFromTitle(SiteTexts.page.title) }}>
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },

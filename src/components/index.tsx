@@ -4,12 +4,13 @@ import classnames from "classnames";
 import twcss from "~/lib/twcss";
 
 import Breadcumb from "./Breadcumb";
-import MDXContent from "./MDXContent";
 import ErrorPage from "./ErrorPage";
+import MDXContent from "./MDXContent";
 import MainLayout from "./MainLayout";
 import Page from "./Page";
+import ResumeTimeline from "./ResumeTimeline";
 
-export { MDXContent, Breadcumb, ErrorPage, MainLayout, Page };
+export { MDXContent, Breadcumb, ErrorPage, MainLayout, Page, ResumeTimeline };
 
 export function Link({
   children,

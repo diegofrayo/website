@@ -70,3 +70,7 @@ export const pluralize = (
       : word.plural
   }`.trim();
 };
+
+export function removeEmojiFromTitle(str: string): string {
+  return str.split(" ").slice(1).join(" ").trim();
+}

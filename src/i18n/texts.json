@@ -23,7 +23,19 @@
         "title": "🙋‍♂️ Acerca de mí"
       },
       "/resume": {
-        "title": "📄 Experiencia"
+        "title": "📄 Experiencia",
+        "timeline": [
+          {
+            "company": "Festa",
+            "date": "2015-2017",
+            "description": "Descripción"
+          },
+          {
+            "company": "HelloBuild",
+            "date": "2018-Presente",
+            "description": "Descripción"
+          }
+        ]
       },
       "/blog": {
         "title": "✍️ Blog",
