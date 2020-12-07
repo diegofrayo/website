@@ -12,12 +12,18 @@ import { Link, TextWithEmoji, Separator } from "./";
 
 export { Link, TextWithEmoji, Separator };
 
-export function Code({ children, source }: Record<string, any>): any {
+export function Code({ language, fileName, code, sourceURL }: Record<string, any>): any {
   const SiteTexts = getSiteTexts({ page: Routes.BLOG() });
 
   return (
     <section className="root tw-mb-6">
-      <Highlight {...defaultProps} code={children} language="jsx" theme={dracula}>
+      {fileName ||
+        (sourceURL && (
+          <code className="tw-text-sm tw-mb-2 tw-font-bold">
+            {`// ${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}`}
+          </code>
+        ))}
+      <Highlight {...defaultProps} code={code} language={language} theme={dracula}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           return (
             <pre className={className} style={style}>
@@ -38,8 +44,8 @@ export function Code({ children, source }: Record<string, any>): any {
         }}
       </Highlight>
       <section className="tw-text-right">
-        {source && (
-          <Link className="tw-block sm:tw-inline-block sm:tw-mr-4" href={source}>
+        {sourceURL && (
+          <Link className="tw-block sm:tw-inline-block sm:tw-mr-4" href={sourceURL}>
             <img
               src="/static/images/icons/github.svg"
               alt="Github icon"
@@ -51,7 +57,7 @@ export function Code({ children, source }: Record<string, any>): any {
           </Link>
         )}
         <Link
-          data-clipboard-text={children}
+          data-clipboard-text={code}
           className="clipboard tw-block sm:tw-inline-block tw-text-sm  tw-mt-1 sm:tw-mt-0 tw-no-underline"
           role="button"
         >
@@ -77,7 +83,7 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
   return (
     <section className="root tw-mb-8">
       <Link
-        className="tw-flex sm:tw-inline-flex tw-p-4 tw-bg-gray-100 tw-rounded-md tw-items-center tw-border tw-border-gray-200"
+        className="tw-flex sm:tw-inline-flex tw-p-4 tw-bg-gray-100 tw-rounded-md tw-items-center tw-border tw-border-gray-200 tw-relative tw-pr-8"
         href={url}
       >
         <img
@@ -89,6 +95,8 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
           <h3>diegofrayo/{name}</h3>
           <p className="tw-text-sm tw-text-gray-700">{description}</p>
         </section>
+
+        <span className="tw-absolute tw-top-1 tw-right-1">🔗</span>
       </Link>
 
       <style jsx>{`
@@ -123,7 +131,6 @@ export function HelloWorldMDX({ text }: Record<string, any>): any {
 }
 
 export function SpotifyPlaylist(): any {
-  // return null;
   return (
     <section className="tw-border-4 tw-border-pink-400">
       <iframe

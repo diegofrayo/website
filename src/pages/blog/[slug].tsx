@@ -15,7 +15,7 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
 
   return (
-    <Page>
+    <Page metadata={{ title: post[DEFAULT_LOCALE].title }}>
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },
@@ -26,7 +26,11 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
           },
         ]}
         title={post[DEFAULT_LOCALE].title}
-        blogMetadata={{ author: "@diegofrayo", date: post.date }}
+        blogMetadata={{
+          author: "@diegofrayo",
+          date: post.date,
+          sourceURL: `${post.date}-${post.slug}`,
+        }}
       >
         <MDXContent content={mdxContent} />
       </MainLayout>
@@ -58,7 +62,7 @@ export async function getStaticProps({
     scope: MDXScope,
   });
 
-  return { props: { post, content }, revalidate: 1 };
+  return { props: { post, content } };
 }
 
 export default BlogPostPage;

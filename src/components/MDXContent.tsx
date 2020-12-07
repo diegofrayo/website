@@ -19,9 +19,15 @@ function MDXContent({ content }: Record<string, any>): any {
         :global(.mdx-content) :global(pre),
         :global(.mdx-content) :global(blockquote),
         :global(.mdx-content) :global(img),
-        :global(.mdx-content) :global(hr) {
+        :global(.mdx-content) :global(hr),
+        :global(.mdx-content) :global(ol) {
           @apply tw-mt-3;
           @apply tw-mb-6;
+        }
+
+        :global(.mdx-content) :global(ol) {
+          @apply tw-pl-6;
+          list-style-type: decimal;
         }
 
         :global(.mdx-content) :global(pre) {
@@ -45,6 +51,7 @@ function MDXContent({ content }: Record<string, any>): any {
 
         :global(.mdx-content) :global(p) :global(code) {
           @apply tw-text-red-700;
+          @apply tw-text-base;
         }
 
         :global(.mdx-content) :global(p) :global(code):after {

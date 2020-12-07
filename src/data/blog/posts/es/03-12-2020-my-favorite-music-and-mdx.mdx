@@ -1,51 +1,128 @@
-> En construcción... 🚧
+**Spotify** acaba de hacer una playlist con mi TOP de canciones más escuchadas en este 2020, así que aproveché para hacer un post sobre **MDX**.
 
----
+> **MDX** es una extensión del lenguaje **Markdown**, haciendolo mucho más potente y personalizable, ya que permite usar y renderizar **componentes React** dentro de archivos **Markdown** 🤯.
 
-Spotify acaba de hacer una lista con mi top de canciones escuchadas en este 2020, así que aproveché para hacer un post acerca de **MDX.**
-
-> **MDX** es una extensión del lenguaje **Markdown**. Permite combinar la simplicidad de escribir texto usando **Markdown** 🙂 con la complejidad de **JSX** 🙊. En resumen se puede definir como una mejora del formato de **Markdown**, haciendolo mucho más potente y personalizable, ya que permite usar y renderizar componentes **React** dentro de nuestros archivos **Markdown** 🤯.
-
-A continuación, un ejemplo de un componente **React** renderizado en este archivo **MDX:**
+A continuación, un ejemplo de un **componente de React** renderizado en este archivo **MDX**.
 
 <HelloWorldMDX text="Hola, soy un componente React que usa Tailwind CSS para sus estilos" />
 
-<Code source={github.website.files.MDXComponents}>
-  {`export function HelloWorldMDX({ text }: Record<string, any>): any {
+<Code
+  language="jsx"
+  sourceURL={github.website.files.MDXComponents}
+  code={`export function HelloWorldMDX({ text }: Record<string, any>): any {
   return (
     <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">{text}</p>
   );
 }`}
-</Code>
+/>
 
 <br />
 
 ## Configurando Next.js y MDX
 
-Este sitio web lo construí usando **Next.js** y voy a hablar un poco sobre como configuré **MDX** para crear la sección del blog. Para lograr esto, me fue de gran ayuda este [artículo](https://sergiodxa.com/articles/using-mdx-with-remote-content) publicado por [Sergio Xalambrí.](https://twitter.com/sergiodxa)
+Este sitio web lo construí usando **Next.js**, voy a hablar acerca de como configuré **MDX** para crear la sección del blog. Para lograr esto, me fue de gran ayuda este [artículo](https://sergiodxa.com/articles/using-mdx-with-remote-content) publicado por [Sergio Xalambrí.](https://twitter.com/sergiodxa)
 
-Entonces, primero hay que instalar **MDX** en nuestro proyecto de **Next.js**. Aquí estan las [instrucciones](https://mdxjs.com/getting-started/next), es realmente fácil lograrlo.
+Entonces, primero configuré **MDX** con **Next.js**. Aquí están las [instrucciones](https://mdxjs.com/getting-started/next), realmente es muy fácil lograrlo.
 
-Después, hay que instalar el paquete [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote). Este paquete permite renderizar archivos **MDX** que pueden estar alojados en un sitio diferente a nuestro proyecto, como por ejemplo un CMS, un CDN, una base de datos o cualquier otro lugar. Hay otras razones más por las cuales es útil usar este paquete, en esta [sección de su repositorio de Github](https://github.com/hashicorp/next-mdx-remote#background--theory) puedes conocer más acerca de los problemas que soluciona **next-mdx-remote.**
+Después, instalé el paquete [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote). Este paquete permite renderizar archivos **MDX** que pueden estar alojados en un sitio diferente al proyecto, por ejemplo un **CMS**, un **CDN**, una **base de datos** o cualquier otro lugar. Hay otras razones más por las cuales es útil usar este paquete, en esta [sección de su repositorio de Github](https://github.com/hashicorp/next-mdx-remote#background--theory) puedes conocer más acerca de los problemas que soluciona **next-mdx-remote**.
 
-Ahora, voy a mostrar algunos de los pasos que hice para usar **next-mdx-remote** en la página de **Next.js** de mi sitio web que se encarga cargar el contenido **MDX** de un blog post de acuerdo a un parámetro de URL. `/blog/[slug]`
+Ahora, explicaré algunos de los pasos que realicé para usar **next-mdx-remote** en la página de **Next.js** de mi sitio web que se encarga de cargar el contenido **MDX** de un blog post de acuerdo a un parámetro de URL (`/blog/[slug]`).
 
-Primero, importé algunas funciones de **next-mdx-remote:**
+Primero, importé algunas funciones de **next-mdx-remote**.
 
-<Code>
-  {`import hydrate from "next-mdx-remote/hydrate";
+<Code
+  language="javascript"
+  sourceURL={github.website.files["[slug]"]}
+  code={`import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";`}
-</Code>
+/>
 
-Después, importé los componentes que uso dentro de los archivos **MDX:**
+Después, importé los **componentes React** y las **variables** que se usarán dentro de los archivos **MDX**.
 
-<Code source={github.website.files.MDXComponents}>
-  {`import * as MDXComponents from "~/components/MDXComponents";`}
-</Code>
+<Code
+  language="javascript"
+  sourceURL={github.website.files.mdx}
+  code={`import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";`}
+/>
 
-> Aquí voy, algún día terminaré... 🚧
+Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arreglo con los slugs de todos mis blog posts que voy a **pre-renderizar** como páginas. El listado de todos mis blog posts están definidos en un archivo <Link href={github.website.files.posts}>JSON</Link> dentro del proyecto, pero esta información se podría leer de una **base de datos**, un **CMS**, una **API**, etc.
 
-Aquí dejo la URL del repositorio de este proyecto en **Github:**
+<Code
+  language="typescript"
+  sourceURL={github.website.files["[slug]"]}
+  code={`export async function getStaticPaths(): Promise<Record<string, any>> {
+  return {
+    paths: Object.keys(BlogPosts).map(slug => {
+      return { params: { slug } };
+    }),
+    fallback: false,
+  };
+}
+// output: { paths: [{ params: { slug: "my-favorite-music-and-mdx" } }, ...more blog posts], fallback: false }`}
+/>
+
+> La razon de configurar `fallback: false` es porque estoy usando **Static Generation**, por lo tanto todas las páginas de este sitio web son **pre-renderizadas** en **tiempo de compilación**, esto trae beneficios de rendimiento y velocidad de carga. Elegí **Static Generation** porque tengo muy pocas páginas y blog posts en este momento, en un futuro cuando este sitio web crezca, usaré otra estrategia más eficiente y que mejor se adapte a mi situación. Les recomiendo leer la [documentación de Vercel](https://nextjs.org/docs/basic-features/data-fetching) acerca de este tema, es muy clara su explicación.
+
+Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada blog post. Esta función se ejecuta solo en el servidor. Por el momento tengo el contenido de los blog posts dentro de mi proyecto, en un futuro podría alojarlos en un **CMS**, por ejemplo.
+
+<Code
+  sourceURL={github.website.files["[slug]"]}
+  language="typescript"
+  code={`export async function getStaticProps({
+  params,
+}: Record<string, any>): Promise<Record<string, any>> {
+  const post = BlogPosts[params.slug];
+  const note = fs.readFileSync(
+    \`\${process.cwd()}/src/data/blog/posts/\${DEFAULT_LOCALE}/\${post.date}-\${
+      post.slug
+    }.mdx\`,
+    "utf8",
+  );
+  const content = await renderToString(note, {
+    components: MDXComponentsConfig,
+    scope: MDXScope,
+  });
+  return { props: { post, content } };
+}`}
+/>
+
+> El segundo parámetro de la función `renderToString` es un objeto de configuración. La propiedad `components` debe ser un objeto que contenga todos los **componentes React** que se usarán en los archivos **MDX**. La propiedad `scope` es muy útil, es un objeto en donde se puede guardar **variables** que se usarán en los archivos **MDX**.
+
+Por último, este es el componente que renderiza un blog post.
+
+<Code
+  sourceURL={github.website.files["[slug]"]}
+  language="jsx"
+  code={`function BlogPostPage({ post, content }: Record<string, any>): any {
+  const mdxContent = hydrate(content, { components: MDXComponentsConfig });
+  return (
+    <Page>
+      <MainLayout
+        breadcumb={[
+          { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },
+          { text: SiteTexts.layout.breadcumb.blog, url: Routes.BLOG() },
+          {
+            text: post[DEFAULT_LOCALE].title,
+            url: Routes.BLOG(post.slug),
+          },
+        ]}
+        title={post[DEFAULT_LOCALE].title}
+        blogMetadata={{
+          author: "@diegofrayo",
+          date: post.date,
+          sourceURL: \`\${post.date}-\${post.slug}\`,
+        }}
+      >
+        <MDXContent content={mdxContent} />
+      </MainLayout>
+    </Page>
+  );
+}`}
+/>
+
+> **Importante:** Es necesario que el valor de la propiedad `components` sea igual en `hydrate(content, { components: MDXComponentsConfig });` como en `await renderToString(content, { components: MDXComponentsConfig });`
+
+Y bueno, esto fue todo, aquí comparto la **URL** del repositorio de este sitio web en **Github**.
 
 <GithubRepo
   name={github.website.name}
@@ -53,4 +130,18 @@ Aquí dejo la URL del repositorio de este proyecto en **Github:**
   description={github.website.description}
 />
 
+---
+
+Ahora voy a hablar acerca de la otra parte de este blog post, osea, la **música** que más escuché este año. Mi idea inicial fue escribir el contenido de los blog posts usando solamente **Markdown**, pero gracias a **MDX** pude combinar **Markdown** con **React** y de esta forma pude insertar un **Widget HTML** para mostrar la playlist de canciones que **Spotify** hizo para mí.
+
 <SpotifyPlaylist />
+
+Después de ver esta playlist observo que.
+
+1. **Par mil** es una de mis canciones favoritas y que más disfruto tocar en la guitarra
+1. Este año descubrí mucha música de **Pedro Aznar**, me parece un músico increíble
+1. **Parque Acuático** me parece una canción muy cool y la escuché mucho en la cuarentena
+1. Me asombra no ver canciones del album **Artaud** de **Spinetta** en el TOP 10 de esta playlist, porque escuché muchas veces ese album y es uno de mis favoritos
+1. Definitivamente me gusta mucho la música **Argentina**, es la que más escucho en mi día a día
+
+Si llegaste hasta aquí, gracias 😃

@@ -4,7 +4,10 @@
     "url": "https://github.com/diegofrayo/website",
     "description": "My personal website",
     "files": {
-      "MDXComponents": "https://github.com/diegofrayo/website/blob/master/src/components/MDXComponents.tsx"
+      "MDXComponents": "https://github.com/diegofrayo/website/blob/master/src/components/MDXComponents.tsx",
+      "posts": "https://github.com/diegofrayo/website/blob/master/src/data/blog/posts.json",
+      "[slug]": "https://github.com/diegofrayo/website/blob/master/src/pages/blog/[slug].tsx",
+      "mdx": "https://github.com/diegofrayo/website/blob/master/src/utils/mdx.ts"
     }
   }
 }

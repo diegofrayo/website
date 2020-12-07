@@ -1,5 +1,3 @@
-const { borderRadius, leading } = require("tailwindcss/defaultTheme");
-
 module.exports = {
   prefix: "tw-",
   important: false,
@@ -13,12 +11,13 @@ module.exports = {
   theme: {
     extend: {
       borderRadius: {
-        ...borderRadius,
         full: "100%",
       },
       leading: {
-        ...leading,
         0: "0",
+      },
+      inset: {
+        "1px": "1px",
       },
     },
   },

@@ -11,19 +11,6 @@ import Page from "./Page";
 
 export { MDXContent, Breadcumb, ErrorPage, MainLayout, Page };
 
-export function DateLabel({ children, className }: Record<string, any>): any {
-  return (
-    <span
-      className={classnames(
-        "tw-inline-block tw-bg-gray-100 tw-py-1 tw-px-2 tw-rounded-md  tw-font-bold tw-text-sm",
-        className,
-      )}
-    >
-      🗓️ {children}
-    </span>
-  );
-}
-
 export function Link({
   children,
   href,

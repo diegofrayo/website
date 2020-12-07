@@ -14,6 +14,11 @@ module.exports = withMDX({
         destination: "/about-me",
         permanent: true,
       },
+      {
+        source: "/blog/mi-primer-post",
+        destination: "/blog/my-first-post",
+        permanent: true,
+      },
     ];
   },
 });

@@ -3,10 +3,10 @@ import Link from "next/link";
 
 import { getSiteTexts } from "~/i18n";
 import twcss from "~/lib/twcss";
-import { Routes } from "~/utils/constants";
+import { DEFAULT_LOCALE, Routes } from "~/utils/constants";
 
 import Breadcumb from "./Breadcumb";
-import { DateLabel, Separator } from "./";
+import { Separator } from "./";
 
 function MainLayout({
   children,
@@ -25,11 +25,26 @@ function MainLayout({
           <Fragment>
             <h1 className="tw-text-left tw-text-3xl tw-font-bold">{title}</h1>
             {blogMetadata && (
-              <section className="tw-mt-1">
-                <span className="tw-inline-block tw-text-sm tw-bg-green-100 tw-py-1 tw-px-2 tw-rounded-md tw-font-bold tw-mr-2 tw-my-1">
+              <section className="tw-flex tw-flex-wrap tw-mt-1">
+                <BlogMetadataItem className="tw-bg-green-100 tw-mr-2">
                   👨‍🏫 {blogMetadata.author}
-                </span>
-                <DateLabel className="tw-my-1">{blogMetadata.date}</DateLabel>
+                </BlogMetadataItem>
+                <BlogMetadataItem className="tw-bg-gray-100 tw-mr-2">
+                  🗓️ {blogMetadata.date}
+                </BlogMetadataItem>
+                <BlogMetadataItem
+                  is="a"
+                  target="_blank"
+                  rel="noreferrer"
+                  href={`https://raw.githubusercontent.com/diegofrayo/website/master/src/data/blog/posts/${DEFAULT_LOCALE}/${blogMetadata.sourceURL}.mdx`}
+                  className="tw-border tw-border-gray-200"
+                >
+                  <img
+                    src="/static/images/icons/source-code.svg"
+                    alt="Source code icon"
+                    className="tw-inline-block tw-h-4 tw-w-4"
+                  />
+                </BlogMetadataItem>
               </section>
             )}
             <Separator size={3} />
@@ -73,7 +88,7 @@ function Header() {
         target="_blank"
         rel="noreferrer"
         href="https://github.com/diegofrayo/website"
-        className="tw-inline-block tw-top-0 tw-right-0 tw-absolute hover:tw-top-0.5 tw-transition-all"
+        className="tw-inline-block tw-top-0 tw-right-0 tw-absolute hover:tw-top-1px tw-transition-all"
       >
         <img
           src="/static/images/icons/source-code.svg"
@@ -114,7 +129,7 @@ function SocialIcon({ icon, url }) {
       target="_blank"
       rel="noreferrer"
       href={url}
-      className="tw-inline-block tw-bg-gray-100 hover:tw-bg-gray-200 tw-p-1 tw-border tw-border-gray-200 tw-transition-all tw-rounded-full tw-mr-2 tw-mb-1 sm:tw-mb-0 tw-relative hover:tw-top-0.5"
+      className="tw-inline-block tw-bg-gray-100 hover:tw-bg-gray-200 tw-p-1 tw-border tw-border-gray-200 tw-transition-all tw-rounded-full tw-mr-2 tw-mb-1 sm:tw-mb-0 tw-relative hover:tw-top-1px"
     >
       <img
         src={`/static/images/icons/${icon}.svg`}
@@ -124,3 +139,5 @@ function SocialIcon({ icon, url }) {
     </a>
   );
 }
+
+const BlogMetadataItem = twcss.span`tw-inline-flex tw-items-center tw-justify-center tw-py-1 tw-px-2 tw-my-1 tw-rounded-md tw-font-bold tw-text-sm tw-h-7`;
