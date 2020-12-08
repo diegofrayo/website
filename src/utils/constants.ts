@@ -4,7 +4,7 @@ import { toUpperCaseObjectProperty } from "./misc";
 
 export const DEFAULT_LOCALE = "es";
 
-export const PAGES_NAMES = ["about-me", "resume"];
+export const PAGES_NAMES = ["about-me", "resume", "roadmap"];
 
 export const Routes: Record<string, any> = {
   HOME: "/",

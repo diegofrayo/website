@@ -8,7 +8,8 @@
         "home": "Inicio",
         "about_me": "Acerca de mí",
         "resume": "Experiencia laboral",
-        "blog": "Blog"
+        "blog": "Blog",
+        "roadmap": "Roadmap"
       }
     },
     "pages": {
@@ -17,10 +18,14 @@
         "body": "En este sitio web quiero escribir acerca de mi experiencia trabajando con las herramientas que uso a diario en mi trabajo como Desarrollador de Software y también acerca de algunas herramientas que quiero aprender y explorar 🧐.<br />Además, me gustaría escribir acerca de otros temas diferentes a programación pero no tengo idea cuales 🤷‍♂️.",
         "menu_item_about_me": "🙋‍♂️ Acerca de mí",
         "menu_item_blog": "✍️ Blog",
-        "menu_item_resume": "📄 Experiencia"
+        "menu_item_resume": "📄 Experiencia",
+        "menu_item_roadmap": "🚀 Roadmap"
       },
       "/about-me": {
         "title": "🙋‍♂️ Acerca de mí"
+      },
+      "/roadmap": {
+        "title": "🚀 Roadmap"
       },
       "/resume": {
         "title": "📄 Experiencia laboral",

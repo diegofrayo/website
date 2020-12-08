@@ -6,25 +6,31 @@ import { getSiteTexts } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { Routes } from "~/utils/constants";
 
-import { Link, TextWithEmoji, Separator } from "./";
+import { Link } from "./";
 
 // shared
 
 export * from "./pages/resume";
 export * from "./pages/my-favorite-music-and-mdx";
-export { Link, TextWithEmoji, Separator };
 
 export function Code({ language, fileName, code, sourceURL }: Record<string, any>): any {
   const SiteTexts = getSiteTexts({ page: Routes.BLOG() });
 
   return (
     <section className="root tw-mb-6">
-      {fileName ||
-        (sourceURL && (
-          <code className="tw-text-sm tw-mb-2 tw-font-bold">
-            {`// ${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}`}
-          </code>
-        ))}
+      <section className="header tw-flex tw-items-center tw-justify-between tw-px-2 tw-py-2 tw-rounded-t-md">
+        {fileName ||
+          (sourceURL && (
+            <code className="tw-text-sm tw-font-bold">
+              {`// ${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}`}
+            </code>
+          ))}
+
+        <span className="tw-rounded-md tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-4 tw-font-mono">
+          {language}
+        </span>
+      </section>
+
       <Highlight {...defaultProps} code={code} language={language} theme={dracula}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           return (
@@ -71,6 +77,15 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
         .root pre,
         .root img {
           @apply tw-my-0;
+        }
+
+        .root pre {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+
+        .header {
+          border: 1px solid #272b35;
         }
       `}</style>
     </section>

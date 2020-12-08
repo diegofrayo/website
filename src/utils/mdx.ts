@@ -1,4 +1,4 @@
-import { Link } from "~/components";
+import { Link, UL, TextWithEmoji } from "~/components";
 import * as MDXComponents from "~/components/MDXComponents";
 import GithubData from "~/data/github.json";
 import { getSiteTexts } from "~/i18n";
@@ -8,6 +8,9 @@ import { Routes } from "./constants";
 export const MDXComponentsConfig = {
   ...MDXComponents,
   a: Link,
+  ul: UL,
+  Link,
+  TextWithEmoji,
 };
 
 export const MDXScope = {

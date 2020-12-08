@@ -62,6 +62,10 @@ function MDXContent({ content }: Record<string, any>): any {
           content: "\`";
         }
 
+        :global(.mdx-content) :global(ul) :global(li) > :global(p) {
+          display: inline;
+        }
+
         :global(.mdx-content) :global(h1),
         :global(.mdx-content) :global(h2),
         :global(.mdx-content) :global(h3),
