@@ -8,9 +8,8 @@ import ErrorPage from "./ErrorPage";
 import MDXContent from "./MDXContent";
 import MainLayout from "./MainLayout";
 import Page from "./Page";
-import ResumeTimeline from "./ResumeTimeline";
 
-export { MDXContent, Breadcumb, ErrorPage, MainLayout, Page, ResumeTimeline };
+export { MDXContent, Breadcumb, ErrorPage, MainLayout, Page };
 
 export function Link({
   children,

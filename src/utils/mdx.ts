@@ -1,4 +1,4 @@
-import { Link, ResumeTimeline } from "~/components";
+import { Link } from "~/components";
 import * as MDXComponents from "~/components/MDXComponents";
 import GithubData from "~/data/github.json";
 import { getSiteTexts } from "~/i18n";
@@ -8,7 +8,6 @@ import { Routes } from "./constants";
 export const MDXComponentsConfig = {
   ...MDXComponents,
   a: Link,
-  ResumeTimeline,
 };
 
 export const MDXScope = {
