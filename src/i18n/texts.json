@@ -7,7 +7,7 @@
       "breadcumb": {
         "home": "Inicio",
         "about_me": "Acerca de mí",
-        "resume": "Experiencia",
+        "resume": "Experiencia laboral",
         "blog": "Blog"
       }
     },
@@ -23,17 +23,24 @@
         "title": "🙋‍♂️ Acerca de mí"
       },
       "/resume": {
-        "title": "📄 Experiencia",
+        "title": "📄 Experiencia laboral",
         "timeline": [
           {
             "company": "Festa",
-            "date": "2015-2017",
-            "description": "Descripción"
+            "url": "https://festa.co",
+            "date": "abril 2015 - diciembre 2016",
+            "description": "Ingresé a esta compañía como Desarrollador de Software Junior para construir un MVP usando JavaScript como lenguaje de programación principal. Trabajé principalmente en la construcción de un SPA (Single Page Application) usando Angular.js, Bootstrap Material y Firebase. También contribuí en el desarrollo de una aplicación back-end basada en Node.js, Sails.js y MongoDB."
+          },
+          {
+            "company": "Freelancing",
+            "date": "abril 2017 - mayo 2018",
+            "description": "Trabajé tiempo parcial en algunos proyectos web como freelancer."
           },
           {
             "company": "HelloBuild",
-            "date": "2018-Presente",
-            "description": "Descripción"
+            "url": "https://hellobuild.co",
+            "date": "junio 2018 - presente",
+            "description": "He trabajado en esta compañía como Desarrollador de Software Full-stack, Desarrollador de Software Senior y Lider Técnico."
           }
         ]
       },

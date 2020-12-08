@@ -75,9 +75,6 @@ function Roadmap() {
       <h2 className="tw-text-xl tw-mb-2">Roadmap 🚀</h2>
       <UL>
         <li>
-          Terminar de escribir los <strong>blog posts</strong> que están en construcción
-        </li>
-        <li>
           Traducir el contenido de <strong>español</strong> a <strong>inglés</strong>
         </li>
         <li>

@@ -37,7 +37,7 @@ function MainLayout({
                   target="_blank"
                   rel="noreferrer"
                   href={`https://raw.githubusercontent.com/diegofrayo/website/master/src/data/blog/posts/${DEFAULT_LOCALE}/${blogMetadata.sourceURL}.mdx`}
-                  className="tw-border tw-border-gray-200"
+                  className="tw-border tw-border-gray-200 hover:tw-border-gray-700 tw-transition-all"
                 >
                   <img
                     src="/static/images/icons/source-code.svg"
