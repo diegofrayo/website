@@ -5,6 +5,7 @@ import dracula from "prism-react-renderer/themes/dracula";
 import { getSiteTexts } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { Routes } from "~/utils/constants";
+import { copyToClipboard } from "~/utils/misc";
 
 import { Link } from "./";
 
@@ -18,7 +19,7 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
 
   return (
     <section className="root tw-mb-6">
-      <section className="header tw-flex tw-items-center tw-justify-between tw-px-2 tw-py-2 tw-rounded-t-md">
+      <section className="code-header tw-flex tw-items-center tw-justify-between tw-px-2 tw-py-2 tw-rounded-t-md">
         {fileName ||
           (sourceURL && (
             <code className="tw-text-sm tw-font-bold">
@@ -53,24 +54,27 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
       </Highlight>
       <section className="tw-text-right">
         {sourceURL && (
-          <Link className="tw-block sm:tw-inline-block sm:tw-mr-4" href={sourceURL}>
+          <Link
+            className="tw-block sm:tw-inline-block tw-ml-auto tw-mt-1 sm:tw-mt-0 sm:tw-mr-4"
+            href={sourceURL}
+          >
             <img
               src="/static/images/icons/github.svg"
               alt="Github icon"
-              className="tw-h-3 tw-w-3 tw-inline-block tw-align-middle tw-mr-1"
+              className="tw-h-4 tw-w-4 tw-inline-block tw-align-middle tw-mr-1"
             />
             <span className="tw-inline-block tw-text-sm">
               {SiteTexts.page.see_source_code}
             </span>
           </Link>
         )}
-        <Link
+        <button
+          className="clipboard tw-block sm:tw-inline-block tw-ml-auto tw-mt-1 sm:tw-mt-0 tw-text-sm tw-text-blue-700 tw-font-bold tw-text-right"
           data-clipboard-text={code}
-          className="clipboard tw-block sm:tw-inline-block tw-text-sm  tw-mt-1 sm:tw-mt-0 tw-no-underline"
-          role="button"
+          onClick={copyToClipboard}
         >
           {SiteTexts.page.copy_to_clipboard}
-        </Link>
+        </button>
       </section>
 
       <style jsx>{`
@@ -84,7 +88,7 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
           border-top-right-radius: 0;
         }
 
-        .header {
+        .code-header {
           border: 1px solid #272b35;
         }
       `}</style>
@@ -98,7 +102,7 @@ const LineContent = twcss.span`tw-table-cell`;
 
 export function GithubRepo({ name, url, description }: Record<string, any>): any {
   return (
-    <section className="root tw-mb-8">
+    <section className="root tw-mb-6 tw-text-right">
       <Link
         className="tw-flex sm:tw-inline-flex tw-p-4 tw-bg-gray-100 tw-rounded-md tw-items-center tw-border tw-border-gray-200 tw-relative tw-pr-8"
         href={url}
@@ -108,7 +112,7 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
           alt="Github icon"
           className="tw-h-8 tw-w-8 tw-mr-3"
         />
-        <section className="tw-flex-1">
+        <section className="tw-flex-1 tw-text-left">
           <h3>diegofrayo/{name}</h3>
           <p className="tw-text-sm tw-text-gray-700">{description}</p>
         </section>

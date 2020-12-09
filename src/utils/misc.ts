@@ -74,3 +74,65 @@ export const pluralize = (
 export function removeEmojiFromTitle(str: string): string {
   return str.split(" ").slice(1).join(" ").trim();
 }
+
+export function setScroll(val: number): void {
+  document.getElementById("__next").scrollTop = val;
+  document.documentElement.scrollTop = val;
+  document.body.scrollTop = val;
+}
+
+export function getScroll(): number {
+  return document.body.scrollTop || document.documentElement.scrollTop || 0;
+}
+
+export function onScrollStoppedListener({
+  onScroll,
+  onScrollStopped,
+  timeout,
+}: Record<string, any>): void {
+  let isScrolling;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      window.clearTimeout(isScrolling);
+
+      onScroll();
+
+      isScrolling = setTimeout(() => {
+        onScrollStopped();
+      }, timeout);
+    },
+    false,
+  );
+}
+
+export async function copyToClipboard(e: Record<string, any>): Promise<any> {
+  try {
+    const { currentTarget: element } = e;
+
+    if (!navigator.clipboard) {
+      element.select();
+      element.setSelectionRange(0, 99999); /* For mobile devices */
+      document.execCommand("copy");
+      return;
+    }
+
+    navigator.clipboard.writeText(element.getAttribute("data-clipboard-text")).then(
+      () => {
+        console.log("Copying to clipboard was successful");
+      },
+      err => {
+        console.error("Could not copy text:", err);
+      },
+    );
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export function delay(time: number): Promise<any> {
+  return new Promise(resolve => {
+    setTimeout(resolve, time);
+  });
+}

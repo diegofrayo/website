@@ -1,15 +1,21 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import NextLink from "next/link";
-import ClipboardJS from "clipboard";
 
 import { useDidMount } from "~/hooks";
 import { getSiteTexts } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { DEFAULT_LOCALE, Routes } from "~/utils/constants";
-import { createQueryFromObject } from "~/utils/misc";
+import { getDifferenceBetweenDates } from "~/utils/dates";
+import {
+  copyToClipboard,
+  createQueryFromObject,
+  getScroll,
+  onScrollStoppedListener,
+  setScroll,
+} from "~/utils/misc";
 
 import Breadcumb from "./Breadcumb";
-import { Separator } from "./";
+import { Link, Separator } from "./";
 
 const SiteTexts = getSiteTexts({ layout: true, page: Routes.BLOG() });
 
@@ -23,7 +29,7 @@ function MainLayout({
     <Main>
       <Header />
       <Separator size={2} />
-      <section>
+      <section className="tw-relative">
         {breadcumb && <Breadcumb items={breadcumb} />}
         <Separator size={4} />
         {title && (
@@ -33,7 +39,7 @@ function MainLayout({
           </Fragment>
         )}
         {children}
-        <BlogPostFooter blogMetadata={blogMetadata} title={title} />
+        {blogMetadata && <BlogPostFooter blogMetadata={blogMetadata} title={title} />}
       </section>
     </Main>
   );
@@ -45,7 +51,7 @@ export default MainLayout;
 
 const Main = twcss.main`tw-w-full tw-max-w-screen-md tw-p-6 tw-mx-auto`;
 
-function Header() {
+function Header(): any {
   return (
     <header className="tw-flex tw-border-b tw-border-gray-200 tw-pb-3 tw-relative">
       <NextLink href={Routes.HOME}>
@@ -81,7 +87,7 @@ function Header() {
   );
 }
 
-function SocialIcons() {
+function SocialIcons(): any {
   const SOCIAL_NETWORKS = [
     { icon: "github", url: "https://github.com/diegofrayo" },
     { icon: "twitter", url: "https://twitter.com/diegofrayo" },
@@ -104,7 +110,7 @@ function SocialIcons() {
   );
 }
 
-function SocialIcon({ icon, url }) {
+function SocialIcon({ icon, url }: Record<string, any>): any {
   return (
     <a
       target="_blank"
@@ -121,51 +127,65 @@ function SocialIcon({ icon, url }) {
   );
 }
 
-function BlogPostFooter({ blogMetadata, title }) {
-  useDidMount(() => {
-    if (!blogMetadata) return;
-    new ClipboardJS(".clipboard");
-  });
+function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
+  const [showGoToTopButton, setShowGoToTopButton] = useState(false);
 
-  if (!blogMetadata) return null;
+  useDidMount(() => {
+    onScrollStoppedListener({
+      onScroll: () => {
+        if (getScroll() > 0) {
+          setShowGoToTopButton(true);
+        } else {
+          setShowGoToTopButton(false);
+        }
+      },
+      onScrollStopped: () => {
+        if (showGoToTopButton === false) return;
+        setShowGoToTopButton(false);
+      },
+      timeout: 3000,
+    });
+  });
 
   return (
     <Fragment>
       <Separator size={8} />
       <section className="tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-border tw-border-gray-200 tw-p-4">
         <section className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
-          <p className="tw-flex tw-items-center tw-justify-start tw-my-1 tw-text-sm">
-            <img
+          <BlogPostFooterItem>
+            <BlogPostFooterItem.Icon
               src="/static/images/icons/calendar.svg"
               alt="Calendar icon"
-              className="tw-inline-block tw-h-4 tw-w-4 tw-mr-2"
             />
             <span className="tw-mr-1">{SiteTexts.page.published_at}</span>
             <strong>{blogMetadata.publishedAt.replace(/-+/g, "/")}</strong>
-          </p>
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href={`https://raw.githubusercontent.com/diegofrayo/website/master/src/data/blog/posts/${DEFAULT_LOCALE}/${
-              blogMetadata.publishedAt + "-" + blogMetadata.slug
-            }.mdx`}
-            className="tw-flex tw-items-center tw-justify-start tw-my-1 tw-text-sm tw-transition-opacity hover:tw-opacity-75"
-          >
-            <img
-              src="/static/images/icons/source-code.svg"
-              alt="Source code icon"
-              className="tw-inline-block tw-h-4 tw-w-4 tw-mr-2"
+          </BlogPostFooterItem>
+          <BlogPostFooterItem>
+            <BlogPostFooterItem.Icon
+              src="/static/images/icons/updated.svg"
+              alt="Document updated icon"
             />
-            <span>{SiteTexts.page.see_publication_source_code}</span>
-          </a>
+            <span className="tw-mr-1">{SiteTexts.page.updated_at}</span>
+            <strong>
+              {getDifferenceBetweenDates(blogMetadata.updatedAt, new Date())}
+            </strong>
+          </BlogPostFooterItem>
+          <BlogPostFooterItem>
+            <BlogPostFooterItem.Icon
+              src="/static/images/icons/person.svg"
+              alt="Person icon"
+            />
+            <span className="tw-mr-1">{SiteTexts.page.created_by}</span>
+            <Link href="https://twitter.com/diegofrayo">{blogMetadata.author}</Link>
+          </BlogPostFooterItem>
         </section>
         <Separator
-          size={5}
+          size={4}
           className="tw-w-full tw-border-t tw-border-gray-200 tw-block sm:tw-hidden"
         />
-        <section className="tw-w-full sm:tw-w-1/2">
-          <h3 className="tw-mb-3">{SiteTexts.page.share_blog_post}</h3>
-          <a
+        <section className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start sm:tw-items-end tw-justify-center tw-flex-col">
+          <BlogPostFooterItem
+            is="a"
             href={`https://twitter.com/intent/tweet?${createQueryFromObject({
               text: title,
               url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}${Routes.BLOG(
@@ -173,34 +193,61 @@ function BlogPostFooter({ blogMetadata, title }) {
               )}`,
               via: blogMetadata.author.substring(1),
             })}`}
-            className="tw-inline-flex tw-items-center tw-flex-no-wrap tw-mr-6 tw-transition-opacity hover:tw-opacity-75"
             target="_blank"
             rel="noreferrer"
+            className="tw-transition-opacity hover:tw-opacity-75"
           >
-            <img
+            <BlogPostFooterItem.Icon
               src="/static/images/icons/twitter.svg"
               alt="Twitter icon"
-              className="tw-inline-block tw-h-4 tw-w-4 tw-mr-2 sm:tw-mr-1"
             />
-            <span className="tw-text-sm tw-text-left">Twitter</span>
-          </a>
-          <button
+            <span>{SiteTexts.page.share_blog_post_twitter}</span>
+          </BlogPostFooterItem>
+          <BlogPostFooterItem
+            is="button"
+            className="clipboard tw-transition-opacity hover:tw-opacity-75"
             data-clipboard-text={`${title} - ${
               process.env.NEXT_PUBLIC_WEBSITE_URL
             }${Routes.BLOG(blogMetadata.slug)} via @diegofrayo`}
-            className="clipboard tw-inline-flex tw-items-center tw-flex-no-wrap tw-transition-opacity hover:tw-opacity-75"
+            onClick={copyToClipboard}
           >
-            <img
+            <BlogPostFooterItem.Icon
               src="/static/images/icons/link.svg"
               alt="Link icon"
-              className="tw-inline-block tw-h-4 tw-w-4 tw-mr-2 sm:tw-mr-1"
             />
-            <span className="tw-text-sm tw-text-left">
-              {SiteTexts.page.copy_url_to_clipboard}
-            </span>
-          </button>
+            <span>{SiteTexts.page.copy_url_to_clipboard}</span>
+          </BlogPostFooterItem>
+          <BlogPostFooterItem
+            is="a"
+            href={`https://raw.githubusercontent.com/diegofrayo/website/master/src/data/blog/posts/${DEFAULT_LOCALE}/${
+              blogMetadata.publishedAt + "-" + blogMetadata.slug
+            }.mdx`}
+            target="_blank"
+            rel="noreferrer"
+            className="tw-transition-opacity hover:tw-opacity-75"
+          >
+            <BlogPostFooterItem.Icon
+              src="/static/images/icons/source-code.svg"
+              alt="Source code icon"
+            />
+            <span>{SiteTexts.page.see_publication_source_code}</span>
+          </BlogPostFooterItem>
         </section>
       </section>
+      {showGoToTopButton && (
+        <button
+          className="tw-fixed tw-bg-black tw-opacity-50 tw-text-2xl tw-bottom-2 tw-right-2 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-text-white tw-font-bold tw-transition-opacity hover:tw-opacity-75"
+          onClick={() => {
+            setScroll(0);
+          }}
+        >
+          ↑
+        </button>
+      )}
     </Fragment>
   );
 }
+
+const BlogPostFooterItem = twcss.p`tw-flex tw-items-center tw-justify-start tw-my-1 tw-text-sm tw-text-left`;
+
+BlogPostFooterItem.Icon = twcss.img`tw-inline-block tw-h-4 tw-w-4 tw-mr-2`;

@@ -54,9 +54,10 @@
         "description": "En este blog vas a encontrar tutoriales de programación, notas, pensamientos e ideas. Me dieron ganas de escribir y comunicar cosas. 😀",
         "updated_at": "Actualizado",
         "published_at": "Publicado en",
+        "created_by": "Creado por",
         "see_source_code": "Ver código fuente",
         "copy_to_clipboard": "📋 Copiar al portapeles",
-        "share_blog_post": "Comparte esta publicación",
+        "share_blog_post_twitter": "Compartir en Twitter",
         "copy_url_to_clipboard": "Copiar URL al portapeles",
         "see_publication_source_code": "Ver código fuente en Github"
       },

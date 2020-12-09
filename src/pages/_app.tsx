@@ -5,6 +5,7 @@ import App from "next/app";
 import Router from "next/router";
 
 import { initAnalytics } from "~/utils/analytics";
+import { setScroll } from "~/utils/misc";
 
 import ErrorPage from "./_error";
 
@@ -16,7 +17,7 @@ class CustomApp extends App {
 
     function onRouteChangeComplete() {
       console.log("onRouteChangeComplete");
-      document.getElementById("__next").scrollTop = 0;
+      setScroll(0);
     }
 
     Router.events.on("routeChangeComplete", onRouteChangeComplete);
