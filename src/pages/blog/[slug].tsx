@@ -15,7 +15,12 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
 
   return (
-    <Page metadata={{ title: post[DEFAULT_LOCALE].title }}>
+    <Page
+      metadata={{
+        title: post[DEFAULT_LOCALE].title,
+        url: Routes.BLOG(post.slug),
+      }}
+    >
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },

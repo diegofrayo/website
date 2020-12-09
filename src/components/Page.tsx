@@ -3,24 +3,24 @@ import Head from "next/head";
 
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import { trackPageLoaded } from "~/utils/analytics";
+import { isDevelopmentEnvironment } from "~/utils/misc";
 
 function Page({ children, metadata: metadataProp = {} }: Record<string, any>): any {
   const DEFAULT_METADATA = {
-    description:
-      "Software Developer, I have over 5 years of experience developing Web Solutions. I work mainly with JavaScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.",
     title: "Diego Rayo | Software Developer",
-    url: "https://diegofrayo.vercel.app",
+    description:
+      "Software Developer, I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.",
+    url: process.env.NEXT_PUBLIC_WEBSITE_URL,
   };
   const metadata = {
     ...DEFAULT_METADATA,
     ...metadataProp,
-    url: metadataProp.url
-      ? `${DEFAULT_METADATA.url}/${metadataProp.url}`
-      : DEFAULT_METADATA.url,
     title: metadataProp.title
       ? `${metadataProp.title} - ${DEFAULT_METADATA.title}`
       : DEFAULT_METADATA.title,
-    description: metadataProp.description || DEFAULT_METADATA.description,
+    url: metadataProp.url
+      ? `${DEFAULT_METADATA.url}${metadataProp.url}`
+      : DEFAULT_METADATA.url,
   };
 
   useDocumentTitle(metadata.title);
@@ -46,13 +46,37 @@ function Page({ children, metadata: metadataProp = {} }: Record<string, any>): a
         <meta property="og:url" content={metadata.url} />
         <meta property="og:site_name" content={metadata.title} />
 
-        <link rel="canonical" href="https://diegofrayo.vercel.app" />
-        <link rel="icon" href="/favicon.png" />
+        <link rel="canonical" href={DEFAULT_METADATA.url} />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/static/images/favicon/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/static/images/favicon/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/static/images/favicon/favicon-16x16.png"
+        />
+        <link
+          rel="icon"
+          href={`/static/images/favicon/favicon${
+            isDevelopmentEnvironment() ? "-dev" : ""
+          }.ico?v=1`}
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+
         <script
           dangerouslySetInnerHTML={{
             __html: `

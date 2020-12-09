@@ -86,7 +86,7 @@ Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada publi
 }`}
 />
 
-> **Problema:** **next-mdx-remote** no permite importar componentes o variables dentro de los archivos **MDX** usando `import`. En este [link](https://github.com/hashicorp/next-mdx-remote#caveats) puedes leer más acerca de esto.
+> **Problema:** Al usar **next-mdx-remote**, no puedo importar componentes o variables dentro de los archivos **MDX** usando `import`. En este [link](https://github.com/hashicorp/next-mdx-remote#caveats) puedes leer más acerca de esto.
 
 > **Solución:** Tuve que pasar un objeto de configuración cuando invoqué la función `renderToString`. La propiedad `components` debe ser un objeto que contenga todos los **componentes React** que se usarán en los archivos **MDX**. La propiedad `scope` es un objeto en donde se puede guardar **variables** que se usarán en los archivos **MDX**.
 

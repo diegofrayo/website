@@ -12,7 +12,12 @@ const SiteTexts = getSiteTexts({ page: Routes.BLOG(), layout: true });
 
 function BlogPage(): any {
   return (
-    <Page metadata={{ title: removeEmojiFromTitle(SiteTexts.page.title) }}>
+    <Page
+      metadata={{
+        title: removeEmojiFromTitle(SiteTexts.page.title),
+        url: Routes.BLOG(),
+      }}
+    >
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },

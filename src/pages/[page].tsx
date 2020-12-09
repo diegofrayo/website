@@ -21,7 +21,12 @@ function SitePage({ content, page }: Record<string, any>): any {
   });
 
   return (
-    <Page metadata={{ title: removeEmojiFromTitle(SiteTexts.page.title) }}>
+    <Page
+      metadata={{
+        title: removeEmojiFromTitle(SiteTexts.page.title),
+        url: Routes[toUpperCaseObjectProperty(page)],
+      }}
+    >
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },

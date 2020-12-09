@@ -52,9 +52,7 @@ export function isDevelopmentEnvironment(source?: string): boolean {
 
   console.log(source);
 
-  return typeof window !== "undefined"
-    ? !window.location.href.includes(".vercel.app")
-    : process.env.NODE_ENV !== "production";
+  return !process.env.NEXT_PUBLIC_WEBSITE_URL.includes("vercel.app");
 }
 
 export function removeEmojiFromTitle(str: string): string {
