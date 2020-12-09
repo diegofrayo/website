@@ -4,7 +4,7 @@ import * as React from "react";
 import App from "next/app";
 import Router from "next/router";
 
-import { initAnalytics } from "~/utils/analytics";
+import { initAnalytics, configureAnalytics } from "~/utils/analytics";
 import { setScroll } from "~/utils/misc";
 
 import ErrorPage from "./_error";
@@ -26,14 +26,9 @@ class CustomApp extends App {
     });
 
     if (this.state.loadFromServer) {
+      configureAnalytics();
       onRouteChangeComplete();
       this.setState({ loadFromServer: false });
-
-      if (window.location.href.includes("noga=true")) {
-        window.localStorage.setItem("noga", "true");
-      } else if (window.location.href.includes("noga=false")) {
-        window.localStorage.removeItem("noga");
-      }
     }
   }
 

@@ -3,13 +3,11 @@ import classnames from "classnames";
 
 import twcss from "~/lib/twcss";
 
-import Breadcumb from "./Breadcumb";
-import ErrorPage from "./ErrorPage";
-import MDXContent from "./MDXContent";
-import MainLayout from "./MainLayout";
-import Page from "./Page";
-
-export { MDXContent, Breadcumb, ErrorPage, MainLayout, Page };
+export { default as Breadcumb } from "./Breadcumb";
+export { default as ErrorPage } from "./ErrorPage";
+export { default as MDXContent } from "./MDXContent";
+export { default as MainLayout } from "./MainLayout";
+export { default as Page } from "./Page";
 
 export function Link({
   children,

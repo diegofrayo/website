@@ -1,5 +1,3 @@
-import useDidMount from "./useDidMount";
-import useDocumentTitle from "./useDocumentTitle";
-import useWindowResize from "./useWindowResize";
-
-export { useDocumentTitle, useDidMount, useWindowResize };
+export { default as useDidMount } from "./useDidMount";
+export { default as useDocumentTitle } from "./useDocumentTitle";
+export { default as useWindowResize } from "./useWindowResize";

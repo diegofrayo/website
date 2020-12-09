@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import Head from "next/head";
 
 import { useDidMount, useDocumentTitle } from "~/hooks";
-import { trackPageLoaded } from "~/utils/analytics";
+import { isAnalyticsDisabled, trackPageLoaded } from "~/utils/analytics";
 import { isDevelopmentEnvironment } from "~/utils/misc";
 
 function Page({ children, metadata: metadataProp = {} }: Record<string, any>): any {
@@ -109,6 +109,9 @@ function Page({ children, metadata: metadataProp = {} }: Record<string, any>): a
         </script>
       </Head>
       {children}
+      {isAnalyticsDisabled && (
+        <span className="tw-absolute tw-top-1 tw-left-1 tw-w-1 tw-h-1 tw-bg-black" />
+      )}
     </Fragment>
   );
 }
