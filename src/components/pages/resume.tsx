@@ -3,10 +3,10 @@ import classnames from "classnames";
 
 import { Link } from "../.";
 
-export function ResumeTimeline({ timeline }: Record<string, any>): any {
+export function ResumeTimeline({ title, timeline }: Record<string, any>): any {
   return (
     <section>
-      <h2>Línea de tiempo</h2>
+      <h2>{title}</h2>
       <section className="tw-border-l-4 tw-border-black tw-pl-6 tw-ml-3">
         {timeline.map((item, index) => {
           return <TimelineItem key={`TimelineItem-${index}`} {...item} />;

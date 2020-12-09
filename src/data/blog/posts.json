@@ -6,6 +6,9 @@
       "slug": "how-i-use-tailwind-css",
       "es": {
         "title": "Como uso Tailwind CSS"
+      },
+      "en": {
+        "title": "How I use Tailwind CSS"
       }
     },
     "thoughts-about-my-profession": {
@@ -14,6 +17,9 @@
       "slug": "thoughts-about-my-profession",
       "es": {
         "title": "Pensamientos sobre mi profesión"
+      },
+      "en": {
+        "title": "Thoughts about my profession"
       }
     },
     "my-favorite-music-and-mdx": {
@@ -22,6 +28,9 @@
       "slug": "my-favorite-music-and-mdx",
       "es": {
         "title": "Mi música favorita y MDX"
+      },
+      "en": {
+        "title": "My favorite music and MDX"
       }
     },
     "my-first-post": {
@@ -30,6 +39,9 @@
       "slug": "my-first-post",
       "es": {
         "title": "Mi primer post"
+      },
+      "en": {
+        "title": "My first post"
       }
     }
   }

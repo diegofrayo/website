@@ -15,3 +15,23 @@ export function getSiteTexts({ page, layout }: Record<string, any>): Record<stri
 
   return result;
 }
+
+export const pluralize = (
+  number: number,
+  word: string | Record<string, any>,
+  { includeNumber = true }: Record<string, any> = {},
+): string => {
+  return `${includeNumber ? number : ""} ${
+    typeof word === "string"
+      ? word + (number === 1 ? "" : "s")
+      : number === 1
+      ? word.singular
+      : word.plural
+  }`.trim();
+};
+
+export const parseSiteText = (text: string, words: Record<string, any>): string => {
+  return Object.entries(words).reduce((acum, [key, value]) => {
+    return acum.replace(`<${key}>`, value);
+  }, text);
+};

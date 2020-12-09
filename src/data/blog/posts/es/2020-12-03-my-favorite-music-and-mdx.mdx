@@ -20,7 +20,7 @@ A continuación, un ejemplo de un **componente de React** renderizado en este ar
 
 ## Configurando Next.js y MDX
 
-Este sitio web lo construí usando **Next.js**, voy a hablar acerca de como configuré **MDX** para crear la sección del blog. Para lograr esto, me fue de gran ayuda este [artículo](https://sergiodxa.com/articles/using-mdx-with-remote-content) publicado por [Sergio Xalambrí.](https://twitter.com/sergiodxa)
+Este sitio web lo construí usando **Next.js**, voy a hablar acerca de como configuré **MDX** para crear la sección del blog. Para lograr esto, me fue de gran ayuda este [artículo](https://sergiodxa.com/articles/using-mdx-with-remote-content) publicado por [Sergio Xalambrí](https://twitter.com/sergiodxa).
 
 Entonces, primero configuré **MDX** con **Next.js**. Aquí están las [instrucciones](https://mdxjs.com/getting-started/next), realmente es muy fácil lograrlo.
 
@@ -122,7 +122,7 @@ Por último, este es el componente que renderiza una publicación.
 }`}
 />
 
-> **Importante:** Es necesario que el valor de la propiedad `components` sea igual en `hydrate(content, { components: MDXComponentsConfig });` como en `await renderToString(content, { components: MDXComponentsConfig });`
+> **Importante:** Es necesario que el valor de la propiedad `components` sea igual en `hydrate(content, { components: MDXComponentsConfig });` como en `await renderToString(content, { components: MDXComponentsConfig });`.
 
 Para manejar los estilos **CSS** del contenido compilado de los archivos **MDX**, usé al inicio este [plugin](https://tailwindcss.com/docs/typography-plugin) de [Tailwind CSS](https://tailwindcss.com), pero después lo dejé de usar y decidí construir un componente con mis propios estilos.
 

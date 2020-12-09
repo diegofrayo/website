@@ -57,20 +57,6 @@ export function isDevelopmentEnvironment(source?: string): boolean {
     : process.env.NODE_ENV !== "production";
 }
 
-export const pluralize = (
-  number: number,
-  word: string | Record<string, any>,
-  { includeNumber = true }: Record<string, any> = {},
-): string => {
-  return `${includeNumber ? number : ""} ${
-    typeof word === "string"
-      ? word + (number === 1 ? "" : "s")
-      : number === 1
-      ? word.singular
-      : word.plural
-  }`.trim();
-};
-
 export function removeEmojiFromTitle(str: string): string {
   return str.split(" ").slice(1).join(" ").trim();
 }
