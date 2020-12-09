@@ -113,7 +113,11 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
           <p className="tw-text-sm tw-text-gray-700">{description}</p>
         </section>
 
-        <span className="tw-absolute tw-top-1 tw-right-1">🔗</span>
+        <img
+          src="/static/images/icons/link.svg"
+          alt="Link icon"
+          className="tw-absolute tw-top-2 tw-right-2 tw-h-4 tw-w-4"
+        />
       </Link>
 
       <style jsx>{`

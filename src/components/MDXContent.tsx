@@ -5,9 +5,7 @@ import { useDidMount } from "~/hooks";
 
 function MDXContent({ content }: Record<string, any>): any {
   useDidMount(() => {
-    setTimeout(() => {
-      new ClipboardJS(".clipboard");
-    }, 2000);
+    new ClipboardJS(".clipboard");
   });
 
   return (

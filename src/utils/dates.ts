@@ -5,8 +5,8 @@ import { pluralize } from "./misc";
 
 dayjs.extend(customParseFormat);
 
-export function getDifferenceBetweenDates(startDate: Date, endDate: Date): string {
-  const difference = dayjs(endDate).diff(dayjs(startDate, "DD-MM-YYYY"), "day");
+export function getDifferenceBetweenDates(startDate: string, endDate: Date): string {
+  const difference = dayjs(endDate).diff(dayjs(startDate, "YYYY/MM/DD"), "day");
 
   if (difference === 0) {
     return "hoy";

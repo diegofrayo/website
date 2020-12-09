@@ -8,7 +8,7 @@ export function HelloWorldMDX({ text }: Record<string, any>): any {
 
 export function SpotifyPlaylist(): any {
   return (
-    <section className="tw-border-4 tw-border-pink-400">
+    <section className="tw-border-4 tw-border-pink-400 tw-mb-6">
       <iframe
         src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"
         width="100%"

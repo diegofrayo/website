@@ -28,8 +28,8 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
         title={post[DEFAULT_LOCALE].title}
         blogMetadata={{
           author: "@diegofrayo",
-          created_at: post.created_at,
-          sourceURL: `${post.created_at}-${post.slug}`,
+          slug: post.slug,
+          publishedAt: post.published_at,
         }}
       >
         <MDXContent content={mdxContent} />
@@ -52,7 +52,7 @@ export async function getStaticProps({
 }: Record<string, any>): Promise<Record<string, any>> {
   const post = BlogPosts[params.slug];
   const note = fs.readFileSync(
-    `${process.cwd()}/src/data/blog/posts/${DEFAULT_LOCALE}/${post.created_at}-${
+    `${process.cwd()}/src/data/blog/posts/${DEFAULT_LOCALE}/${post.published_at}-${
       post.slug
     }.mdx`,
     "utf8",

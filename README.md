@@ -16,7 +16,10 @@ My personal website
 1. `cd website`
 1. `npm i`
 1. `npm run dev`
-
+1. Create a `.env` file
+  ```
+  NEXT_PUBLIC_WEBSITE_URL='http://localhost:3000'
+  ```
 ---
 
 Hosted on [Vercel](https://vercel.com)

@@ -26,7 +26,7 @@ Entonces, primero configuré **MDX** con **Next.js**. Aquí están las [instrucc
 
 Después, instalé el paquete [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote). Este paquete permite renderizar archivos **MDX** que pueden estar alojados en un sitio diferente al proyecto, por ejemplo un **CMS**, un **CDN**, una **base de datos** o cualquier otro lugar. Hay otras razones más por las cuales es útil usar este paquete, en esta [sección de su repositorio de Github](https://github.com/hashicorp/next-mdx-remote#background--theory) puedes conocer más acerca de los problemas que soluciona **next-mdx-remote**.
 
-Ahora, explicaré algunos de los pasos que realicé para usar **next-mdx-remote** en la página de **Next.js** de mi sitio web que se encarga de cargar el contenido **MDX** de un blog post de acuerdo a un parámetro de URL (`/blog/[slug]`).
+Ahora, explicaré algunos de los pasos que realicé para usar **next-mdx-remote** en la página de **Next.js** de mi sitio web que se encarga de cargar el contenido **MDX** de una publicación de acuerdo a un parámetro de URL (`/blog/[slug]`).
 
 Primero, importé algunas funciones de **next-mdx-remote**.
 
@@ -45,7 +45,7 @@ Después, importé los **componentes React** y las **variables** que se usarán 
   code={`import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";`}
 />
 
-Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arreglo con los slugs de todos mis blog posts que voy a **pre-renderizar** como páginas. El listado de todos mis blog posts están definidos en un archivo <Link href={github.website.files.posts}>JSON</Link> dentro del proyecto, pero esta información se podría leer de una **base de datos**, un **CMS**, una **API**, etc.
+Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arreglo con los slugs de todos mis publicaciones que voy a **pre-renderizar** como páginas. El listado de todos mis publicaciones están definidos en un archivo <Link href={github.website.files.posts}>JSON</Link> dentro del proyecto, pero esta información se podría leer de una **base de datos**, un **CMS**, una **API**, etc.
 
 <Code
   language="typescript"
@@ -61,9 +61,9 @@ Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arre
 // output: { paths: [{ params: { slug: "my-favorite-music-and-mdx" } }, ...more blog posts], fallback: false }`}
 />
 
-> La razon de configurar `fallback: false` es porque estoy usando **Static Generation**, por lo tanto todas las páginas de este sitio web son **pre-renderizadas** en **tiempo de compilación**, esto trae beneficios de rendimiento y velocidad de carga. Elegí **Static Generation** porque tengo muy pocas páginas y blog posts en este momento, en un futuro cuando este sitio web crezca, usaré otra estrategia más eficiente y que mejor se adapte a mi situación. Les recomiendo leer la [documentación de Vercel](https://nextjs.org/docs/basic-features/data-fetching) acerca de este tema, es muy clara su explicación.
+> La razon de configurar `fallback: false` es porque estoy usando **Static Generation**, por lo tanto todas las páginas de este sitio web son **pre-renderizadas** en **tiempo de compilación**, esto trae beneficios de rendimiento y velocidad de carga. Elegí **Static Generation** porque tengo muy pocas páginas y publicaciones en este momento, en un futuro cuando este sitio web crezca, usaré otra estrategia más eficiente y que mejor se adapte a mi situación. Les recomiendo leer la [documentación de Vercel](https://nextjs.org/docs/basic-features/data-fetching) acerca de este tema, es muy clara su explicación.
 
-Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada blog post. Esta función se ejecuta solo en el servidor. Por el momento tengo el contenido de los blog posts dentro de mi proyecto, en un futuro podría alojarlos en un **CMS**, por ejemplo.
+Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada publicación. Esta función se ejecuta solo en el servidor. Por el momento tengo el contenido de las publicaciones dentro de mi proyecto, en un futuro podría alojarlos en un **CMS**, por ejemplo.
 
 <Code
   sourceURL={github.website.files["[slug]"]}
@@ -73,7 +73,7 @@ Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada blog 
 }: Record<string, any>): Promise<Record<string, any>> {
   const post = BlogPosts[params.slug];
   const note = fs.readFileSync(
-    \`\${process.cwd()}/src/data/blog/posts/\${DEFAULT_LOCALE}/\${post.created_at}-\${
+    \`\${process.cwd()}/src/data/blog/posts/\${DEFAULT_LOCALE}/\${post.published_at}-\${
       post.slug
     }.mdx\`,
     "utf8",
@@ -90,7 +90,7 @@ Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada blog 
 
 > **Solución:** Tuve que pasar un objeto de configuración cuando invoqué la función `renderToString`. La propiedad `components` debe ser un objeto que contenga todos los **componentes React** que se usarán en los archivos **MDX**. La propiedad `scope` es un objeto en donde se puede guardar **variables** que se usarán en los archivos **MDX**.
 
-Por último, este es el componente que renderiza un blog post.
+Por último, este es el componente que renderiza una publicación.
 
 <Code
   sourceURL={github.website.files["[slug]"]}
@@ -98,7 +98,7 @@ Por último, este es el componente que renderiza un blog post.
   code={`function BlogPostPage({ post, content }: Record<string, any>): any {
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
   return (
-    <Page>
+    <Page metadata={{ title: post[DEFAULT_LOCALE].title }}>
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },
@@ -111,8 +111,8 @@ Por último, este es el componente que renderiza un blog post.
         title={post[DEFAULT_LOCALE].title}
         blogMetadata={{
           author: "@diegofrayo",
-          created_at: post.created_at,
-          sourceURL: \`\${post.created_at}-\${post.slug}\`,
+          slug: post.slug,
+          publishedAt: post.published_at,
         }}
       >
         <MDXContent content={mdxContent} />
@@ -134,9 +134,7 @@ import ClipboardJS from "clipboard";
 import { useDidMount } from "~/hooks";
 function MDXContent({ content }: Record<string, any>): any {
   useDidMount(() => {
-    setTimeout(() => {
-      new ClipboardJS(".clipboard");
-    }, 2000);
+    new ClipboardJS(".clipboard");
   });
   return (
     <article className="mdx-content">
@@ -281,7 +279,9 @@ const LineNo = twcss.span\`tw-table-cell tw-text-right tw-pr-4 tw-opacity-50 tw-
 const LineContent = twcss.span\`tw-table-cell\`;`}
 />
 
-Y bueno, esto fue todo, aquí comparto la **URL** del repositorio de este sitio web en **Github**.
+## Conclusión
+
+Y bueno, esto fue todo, aquí comparto la URL del repositorio por si quieres ver con más detalle la implementación de este sitio web. Espero que esta publicación te sirva para iniciar a trabajar con **MDX**.
 
 <GithubRepo
   name={github.website.name}
@@ -291,7 +291,9 @@ Y bueno, esto fue todo, aquí comparto la **URL** del repositorio de este sitio 
 
 ---
 
-Ahora voy a hablar acerca de la otra parte de este blog post, osea, la **música** que más escuché este año. Mi idea inicial fue escribir el contenido de los blog posts usando solamente **Markdown**, pero gracias a **MDX** pude combinar **Markdown** con **React** y de esta forma pude insertar un **Widget HTML** para mostrar la playlist de canciones que **Spotify** hizo para mí.
+# Bonus 😁
+
+No puedo terminar sin hablar acerca de la otra parte importante de esta publicación, osea, la música que más escuché este año. Mi idea inicial fue escribir el contenido de las publicaciones usando solamente **Markdown**, pero gracias a **MDX** pude combinar **Markdown** con **React** y de esta forma pude insertar un **Widget HTML** para mostrar la playlist de canciones que **Spotify** hizo para mí.
 
 <SpotifyPlaylist />
 
@@ -303,6 +305,6 @@ Después de ver esta playlist me doy cuenta que:
 1. [Parque Acuático](https://www.youtube.com/watch?v=Ffkl2rOQEMg) me parece una canción muy buena y la escuché mucho en la cuarentena
 1. Me asombra no ver canciones del album [Artaud](https://www.youtube.com/watch?v=Tk23kQRFWcw&list=PLL0BXIloA_5y3uX2UO0ktpQtUcuc2zGj-) de [Spinetta](https://www.youtube.com/watch?v=hEL2AgzRmjc) en el TOP 10 de esta playlist, porque escuché muchas veces ese album y es uno de mis favoritos
 1. Descubrí a [LosPetitFellas](https://www.youtube.com/watch?v=u9zWGJ-xNlE), esta [canción](https://www.youtube.com/watch?v=iX2kyzuJ4ck) es una delicia
-1. Definitivamente me gusta mucho la música [Argentina](https://www.youtube.com/watch?v=7YIkurDaHpc), es la que más escucho en mi día a día
+1. Definitivamente me gusta mucho la música de [Argentina](https://www.youtube.com/watch?v=7YIkurDaHpc), es la que más escucho en mi día a día
 
-Si llegaste hasta aquí, gracias 😃
+Hasta la próxima ✌️
