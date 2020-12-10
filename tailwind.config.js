@@ -1,5 +1,6 @@
 module.exports = {
   prefix: "tw-",
+  darkMode: "class",
   important: false,
   plugins: [],
   purge: {

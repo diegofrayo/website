@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import NextLink from "next/link";
+import { useTheme } from "next-themes";
 
 import { useDidMount } from "~/hooks";
 import { getSiteTexts } from "~/i18n";
@@ -49,13 +50,15 @@ export default MainLayout;
 
 // --- Components ---
 
-const Main = twcss.main`tw-w-full tw-max-w-screen-md tw-p-6 tw-mx-auto`;
+const Main = twcss.main`tw-w-full tw-max-w-screen-md tw-p-6 tw-mx-auto dark:tw-bg-black dark:bg-black`;
 
 function Header(): any {
+  const { theme, setTheme } = useTheme();
+
   return (
     <header className="tw-flex tw-border-b tw-border-gray-200 tw-pb-3 tw-relative">
       <NextLink href={Routes.HOME}>
-        <a className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 tw-bg-blue-200 tw-mr-4 tw-rounded-lg tw-text-2xl sm:tw-text-2xl">
+        <a className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 tw-bg-blue-200 tw-mr-4 tw-rounded-lg tw-text-2xl sm:tw-text-2xl tw-relative tw-top-1">
           👨‍💻
         </a>
       </NextLink>
@@ -70,19 +73,29 @@ function Header(): any {
           <SocialIcons />
         </section>
       </section>
-
-      <a
-        target="_blank"
-        rel="noreferrer"
-        href="https://github.com/diegofrayo/website"
-        className="tw-inline-block tw-top-0 tw-right-0 tw-absolute hover:tw-top-1px tw-transition-all"
-      >
-        <img
-          src="/static/images/icons/source-code.svg"
-          alt="Source code icon"
-          className="tw-h-6 sm:tw-h-8 tw-w-6 sm:tw-w-8"
-        />
-      </a>
+      <section className="tw-flex-shrink-0 tw-pt-1">
+        <button
+          className="tw-flex tw-items-center"
+          onClick={() => {
+            setTheme(theme === "dark" ? "light" : "dark");
+          }}
+        >
+          {theme === "dark" ? (
+            <img
+              src="/static/images/icons/sun.svg"
+              alt="Sun icon"
+              className="tw-h-5 tw-w-5 tw-inline-block tw-mr-1"
+            />
+          ) : (
+            <img
+              src="/static/images/icons/moon.svg"
+              alt="Moon icon"
+              className="tw-h-5 tw-w-5 tw-inline-block tw-mr-1"
+            />
+          )}
+          <span className="tw-text-xs">{theme}</span>
+        </button>
+      </section>
     </header>
   );
 }

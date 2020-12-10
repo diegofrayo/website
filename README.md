@@ -18,7 +18,7 @@ My personal website
 1. `npm run dev`
 1. Create a `.env` file
   ```
-  NEXT_PUBLIC_WEBSITE_URL='http://localhost:3000'
+  NEXT_PUBLIC_WEBSITE_URL=http://localhost:3000
   ```
 ---
 

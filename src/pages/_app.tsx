@@ -3,6 +3,7 @@ import "../styles.css";
 import * as React from "react";
 import App from "next/app";
 import Router from "next/router";
+import { ThemeProvider } from "next-themes";
 
 import { initAnalytics, configureAnalytics } from "~/utils/analytics";
 import { setScroll } from "~/utils/misc";
@@ -45,11 +46,11 @@ class CustomApp extends App {
     const { Component, pageProps } = this.props;
     const { error } = this.state;
 
-    if (error) {
-      return <ErrorPage />;
-    }
-
-    return <Component {...pageProps} />;
+    return (
+      <ThemeProvider attribute="class">
+        {error ? <ErrorPage /> : <Component {...pageProps} />}
+      </ThemeProvider>
+    );
   }
 }
 
