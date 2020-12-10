@@ -29,3 +29,13 @@ h6 {
   color: black;
   font-weight: bold;
 }
+
+button,
+a {
+  @apply tw-transition-opacity;
+}
+
+button:hover,
+a:hover {
+  @apply tw-opacity-75;
+}

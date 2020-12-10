@@ -63,39 +63,52 @@ function Header(): any {
         </a>
       </NextLink>
       <section className="tw-flex-1">
-        <h1 className="tw-text-2xl sm:tw-text-4xl">
+        <h1 className="tw-text-2xl sm:tw-text-4xl tw-pr-10">
           <strong>Diego Rayo</strong>
         </h1>
-        <section className="tw-flex tw-flex-wrap tw-items-center">
+        <section className="tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center">
           <p className="tw-text-sm sm:tw-text-base tw-inline-block tw-mr-2">
             {SiteTexts.layout.header.job_title}
           </p>
           <SocialIcons />
         </section>
       </section>
-      <section className="tw-flex-shrink-0 tw-pt-1">
-        <button
-          className="tw-flex tw-items-center"
-          onClick={() => {
-            setTheme(theme === "dark" ? "light" : "dark");
-          }}
-        >
-          {theme === "dark" ? (
-            <img
-              src="/static/images/icons/sun.svg"
-              alt="Sun icon"
-              className="tw-h-5 tw-w-5 tw-inline-block tw-mr-1"
-            />
-          ) : (
-            <img
-              src="/static/images/icons/moon.svg"
-              alt="Moon icon"
-              className="tw-h-5 tw-w-5 tw-inline-block tw-mr-1"
-            />
-          )}
-          <span className="tw-text-xs">{theme}</span>
-        </button>
-      </section>
+
+      <button
+        className="tw-flex tw-items-center tw-p-1 tw-absolute tw-top-1 tw-right-1"
+        onClick={() => {
+          const newTheme = theme === "dark" ? "light" : "dark";
+          setTheme(newTheme);
+          alert(`${newTheme}-mode selected`);
+        }}
+      >
+        {theme === "dark" ? (
+          <img
+            src="/static/images/icons/sun.svg"
+            alt="Sun icon"
+            className="tw-h-4 tw-w-4 tw-inline-block"
+          />
+        ) : (
+          <img
+            src="/static/images/icons/moon.svg"
+            alt="Moon icon"
+            className="tw-h-4 tw-w-4 tw-inline-block"
+          />
+        )}
+      </button>
+
+      <a
+        href="https://github.com/diegofrayo/website"
+        target="_blank"
+        rel="noreferrer"
+        className="tw-inline-block tw-bottom-1 tw-right-1 tw-absolute tw-p-1"
+      >
+        <img
+          src="/static/images/icons/source-code.svg"
+          alt="Source code icon"
+          className="tw-h-4 tw-w-4"
+        />
+      </a>
     </header>
   );
 }
@@ -129,7 +142,7 @@ function SocialIcon({ icon, url }: Record<string, any>): any {
       target="_blank"
       rel="noreferrer"
       href={url}
-      className="tw-inline-block tw-bg-gray-100 hover:tw-bg-gray-200 tw-p-1 tw-border tw-border-gray-200 tw-transition-all tw-rounded-full tw-mr-2 tw-mb-1 sm:tw-mb-0 tw-relative hover:tw-top-1px"
+      className="tw-inline-block tw-bg-gray-100 hover:tw-bg-gray-200 tw-p-1 tw-border tw-border-gray-200 tw-transition-all tw-rounded-full tw-mr-2 tw-mb-1 sm:tw-mb-0"
     >
       <img
         src={`/static/images/icons/${icon}.svg`}
@@ -208,7 +221,6 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
             })}`}
             target="_blank"
             rel="noreferrer"
-            className="tw-transition-opacity hover:tw-opacity-75"
           >
             <BlogPostFooterItem.Icon
               src="/static/images/icons/twitter.svg"
@@ -218,7 +230,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
           </BlogPostFooterItem>
           <BlogPostFooterItem
             is="button"
-            className="clipboard tw-transition-opacity hover:tw-opacity-75"
+            className="clipboard"
             data-clipboard-text={`${title} - ${
               process.env.NEXT_PUBLIC_WEBSITE_URL
             }${Routes.BLOG(blogMetadata.slug)} via @diegofrayo`}
@@ -237,7 +249,6 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
             }.mdx`}
             target="_blank"
             rel="noreferrer"
-            className="tw-transition-opacity hover:tw-opacity-75"
           >
             <BlogPostFooterItem.Icon
               src="/static/images/icons/source-code.svg"
@@ -249,7 +260,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
       </section>
       {showGoToTopButton && (
         <button
-          className="tw-fixed tw-bg-black tw-opacity-50 tw-text-2xl tw-bottom-2 tw-right-2 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-text-white tw-font-bold tw-transition-opacity hover:tw-opacity-75"
+          className="tw-fixed tw-bg-black tw-opacity-50 tw-text-2xl tw-bottom-2 tw-right-2 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-text-white tw-font-bold"
           onClick={() => {
             setScroll(0);
           }}

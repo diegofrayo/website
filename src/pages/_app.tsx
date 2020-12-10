@@ -47,7 +47,7 @@ class CustomApp extends App {
     const { error } = this.state;
 
     return (
-      <ThemeProvider attribute="class">
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
         {error ? <ErrorPage /> : <Component {...pageProps} />}
       </ThemeProvider>
     );

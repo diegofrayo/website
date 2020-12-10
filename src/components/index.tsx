@@ -37,7 +37,7 @@ export function Link({
   );
 }
 
-const LinkElement = twcss.a`tw-font-bold tw-underline tw-text-blue-700 hover:tw-opacity-75 tw-transition-opacity`;
+const LinkElement = twcss.a`tw-font-bold tw-underline tw-text-blue-700`;
 
 export function UL({ children }: Record<string, any>): any {
   return (
