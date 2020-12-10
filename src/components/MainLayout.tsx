@@ -169,7 +169,6 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
         }
       },
       onScrollStopped: () => {
-        if (showGoToTopButton === false) return;
         setShowGoToTopButton(false);
       },
       timeout: 3000,

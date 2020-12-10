@@ -38,8 +38,17 @@ function Page({ children, metadata: metadataProp = {} }: Record<string, any>): a
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no, minimum-scale=1, maximum-scale=1"
         />
-        <meta name="robots" content="index,follow" />
-        <meta name="google" content="notranslate" />
+        {metadata.noRobots ? (
+          <Fragment>
+            <meta name="googlebot" content="noindex,nofollow" />
+            <meta name="robots" content="noindex,nofollow" />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <meta name="robots" content="index,follow" />
+            <meta name="google" content="notranslate" />
+          </Fragment>
+        )}
         <meta property="og:type" content="article" />
         <meta property="og:title" content={metadata.title} />
         <meta property="og:description" content={metadata.description} />
