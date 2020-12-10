@@ -10,16 +10,16 @@ function BariaPage(): any {
 
   return (
     <Page metadata={{ noRobots: true }}>
-      <section className="tw-bg-gray-800 tw-w-full tw-h-screen tw-p-4 tw-relative tw-overflow-auto sm:tw-flex sm:tw-flex-no-wrap sm:tw-items-center">
+      <section className="tw-max-w-screen-md tw-mx-auto tw-w-full tw-h-full md:tw-h-screen tw-py-8 tw-px-4 tw-overflow-auto md:tw-flex md:tw-flex-no-wrap md:tw-items-center">
         <img
           src="/projects/baria/imagen.jpg"
-          className="tw-max-h-full tw-max-w-full tw-flex-shrink-0 tw-mr-4 tw-rounded-tl-lg tw-rounded-br-lg"
+          className="tw-max-h-full tw-w-full tw-flex-shrink-0 tw-rounded-tl-lg tw-rounded-br-lg tw-max-w-sm tw-mx-auto md:tw-mr-4"
           onClick={() => {
             const audio: any = document.getElementById("myAudio");
             audio.play();
           }}
         />
-        <div className="tw-flex-1 tw-h-full tw-relative tw-flex tw-flex-col tw-justify-center">
+        <div className="tw-relative tw-py-4 md:tw-flex-1 md:tw-h-full md:tw-flex md:tw-flex-col md:tw-justify-center">
           <h1 className="tw-text-gray-100 tw-text-2xl tw-text-right">
             🎂 Feliz cumpleaños <strong>Baría!!!</strong>
           </h1>
@@ -30,12 +30,11 @@ function BariaPage(): any {
             He vivido cosas muy lindas contigo, ojalá podamos seguir conociendonos y
             disfrutando por mucho tiempo más!!! 😘
           </p>
-          <p className="tw-absolute tw-bottom-0 tw-right-0 tw-m-4 tw-text-xs tw-w-4/5 tw-text-right tw-text-gray-500">
+          <p className="tw-text-xs tw-text-right tw-text-gray-500 md:tw-w-4/5 md:tw-ml-auto tw-mt-10">
             espero que ya entiendas un poquito mas que hago en mi trabajo y que te animes
             a aprender a programar 😄
           </p>
         </div>
-
         <audio id="myAudio">
           <source src="/projects/baria/sound.mp3" type="audio/mpeg" />
         </audio>
@@ -44,7 +43,8 @@ function BariaPage(): any {
           :global(body),
           :global(html),
           :global(#__next) {
-            height: 100vh;
+            @apply tw-bg-gray-800;
+            height: 100%;
             overflow: hidden;
             width: 100%;
           }

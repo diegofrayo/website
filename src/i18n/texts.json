@@ -15,11 +15,10 @@
     "pages": {
       "/": {
         "title": "👋 Bienvenido",
-        "body": "En este sitio web quiero escribir acerca de mi experiencia trabajando con las herramientas que uso a diario en mi trabajo como Desarrollador de Software y también acerca de algunas herramientas que quiero aprender y explorar 🧐.<br />Además, me gustaría escribir acerca de otros temas diferentes a programación pero no tengo idea cuales 🤷‍♂️.",
-        "menu_item_about_me": "🙋‍♂️ Acerca de mí",
-        "menu_item_blog": "✍️ Blog",
-        "menu_item_resume": "📄 Experiencia",
-        "menu_item_roadmap": "🚀 Roadmap"
+        "menu_item_about_me": "Acerca de mí",
+        "menu_item_blog": "Blog",
+        "menu_item_resume": "Experiencia",
+        "menu_item_roadmap": "Roadmap"
       },
       "/about-me": {
         "title": "🙋‍♂️ Acerca de mí"
@@ -98,11 +97,10 @@
     "pages": {
       "/": {
         "title": "👋 Welcome",
-        "body": "On this website, I want to write about my experience working with some tools I usually use as a Software Developer and also about some tools I want to learn and explore 🧐.<br />Also, I would like to write about other topics but I have no idea yet 🤷‍♂️.",
-        "menu_item_about_me": "🙋‍♂️ About me",
-        "menu_item_blog": "✍️ Blog",
-        "menu_item_resume": "📄 Experience",
-        "menu_item_roadmap": "🚀 Roadmap"
+        "menu_item_about_me": "About me",
+        "menu_item_blog": "Blog",
+        "menu_item_resume": "Experience",
+        "menu_item_roadmap": "Roadmap"
       },
       "/about-me": {
         "title": "🙋‍♂️ About me"

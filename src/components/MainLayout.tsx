@@ -99,7 +99,6 @@ function Header(): any {
           />
         )}
       </button>
-
       <a
         href="https://github.com/diegofrayo/website"
         target="_blank"
