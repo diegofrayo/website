@@ -11,7 +11,7 @@ function HomePage(): any {
   return (
     <Page>
       <MainLayout title={SiteTexts.page.title}>
-        <section className="tw-border-l-4 tw-border-black tw-pl-4 tw-pt-2 md:tw-pt-0">
+        <section className="tw-border-l-4 tw-border-black tw-pl-4">
           <p
             className="tw-text-black tw-italic"
             dangerouslySetInnerHTML={{ __html: SiteTexts.page.body }}
@@ -43,10 +43,10 @@ function MainMenu() {
           return (
             <li
               key={`MainMenuItem-${index}`}
-              className="tw-inline-block tw-border-l-4 tw-border-b-4 tw-border-gray-200 tw-transition-all  hover:tw-border-black hover:tw-text-black tw-mb-3 md:tw-mb-0 tw-cursor-pointer tw-relative hover:tw-top-1px"
+              className="tw-inline-block tw-border-l-4 tw-border-b-4 tw-border-gray-200 tw-transition-all hover:tw-border-black hover:tw-text-black md:tw-mb-0 tw-cursor-pointer tw-relative hover:tw-top-1px"
             >
               <Link href={item.url}>
-                <a className="tw-flex tw-items-center tw-justify-center tw-w-full tw-p-2 tw-font-bold">
+                <a className="tw-flex tw-items-center tw-justify-start tw-w-full tw-pl-3 tw-py-2 tw-font-bold">
                   {item.label}
                 </a>
               </Link>
@@ -57,6 +57,7 @@ function MainMenu() {
 
       <style jsx>{`
         li {
+          @apply tw-mb-4;
           width: 100%;
 
           @screen sm {
@@ -64,7 +65,18 @@ function MainMenu() {
           }
 
           @screen md {
+            @apply tw-mb-0;
             width: 23%;
+          }
+        }
+
+        li:last-child {
+          @apply tw-mb-0;
+        }
+
+        li:nth-last-child(-n + 2) {
+          @screen sm {
+            @apply tw-mb-0;
           }
         }
       `}</style>

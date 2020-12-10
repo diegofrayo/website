@@ -29,7 +29,7 @@ export function isAnalyticsDisabled(): boolean {
   return (
     window.location.href.includes("noga=true") ||
     window.localStorage.getItem("noga") === "true" ||
-    isDevelopmentEnvironment("ANALYTICS")
+    isDevelopmentEnvironment()
   );
 }
 

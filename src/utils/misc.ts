@@ -43,15 +43,7 @@ export function toLowerCaseObjectProperty(url: string): string {
   return url.toLowerCase().replace(/-+/g, "_");
 }
 
-export function isDevelopmentEnvironment(source?: string): boolean {
-  /*
-  if (source === "ANALYTICS") {
-    return true;
-  }
-  */
-
-  console.log(source);
-
+export function isDevelopmentEnvironment(): boolean {
   return !process.env.NEXT_PUBLIC_WEBSITE_URL.includes("vercel.app");
 }
 
