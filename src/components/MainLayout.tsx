@@ -50,10 +50,15 @@ export default MainLayout;
 
 // --- Components ---
 
-const Main = twcss.main`tw-w-full tw-max-w-screen-md tw-p-6 tw-mx-auto dark:tw-bg-black dark:bg-black`;
+const Main = twcss.main`tw-w-full tw-max-w-screen-md tw-p-6 tw-mx-auto dark:tw-bg-black dark:bg-black dark:tw-text-white dark:text-white`;
 
 function Header(): any {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useDidMount(() => setMounted(true));
+
+  if (!mounted) return null;
 
   return (
     <header className="tw-flex tw-border-b tw-border-gray-200 tw-pb-3 tw-relative">
@@ -77,9 +82,7 @@ function Header(): any {
       <button
         className="tw-flex tw-items-center tw-p-1 tw-absolute tw-top-1 tw-right-1"
         onClick={() => {
-          const newTheme = theme === "dark" ? "light" : "dark";
-          setTheme(newTheme);
-          alert(`${newTheme}-mode selected`);
+          setTheme(theme === "dark" ? "light" : "dark");
         }}
       >
         {theme === "dark" ? (

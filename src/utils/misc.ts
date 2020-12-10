@@ -52,9 +52,13 @@ export function removeEmojiFromTitle(str: string): string {
 }
 
 export function setScroll(val: number): void {
+  /*
   document.getElementById("__next").scrollTop = val;
   document.documentElement.scrollTop = val;
   document.body.scrollTop = val;
+  */
+
+  window.scroll({ top: val, behavior: "smooth" });
 }
 
 export function getScroll(): number {
