@@ -92,10 +92,7 @@ export async function copyToClipboard(e: Record<string, any>): Promise<any> {
     const { currentTarget: element } = e;
 
     if (!navigator.clipboard) {
-      element.select();
-      element.setSelectionRange(0, 99999); /* For mobile devices */
-      document.execCommand("copy");
-      return;
+      throw new Error("Clipboard not supported");
     }
 
     navigator.clipboard.writeText(element.getAttribute("data-clipboard-text")).then(

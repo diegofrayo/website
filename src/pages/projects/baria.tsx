@@ -10,7 +10,7 @@ function BariaPage(): any {
 
   return (
     <Page metadata={{ noRobots: true }}>
-      <section className="tw-max-w-screen-md tw-mx-auto tw-w-full tw-h-full md:tw-h-screen tw-py-8 tw-px-4 tw-overflow-auto md:tw-flex md:tw-flex-no-wrap md:tw-items-center">
+      <section className="twc-max-w-base tw-mx-auto tw-w-full tw-h-full md:tw-h-screen tw-py-8 tw-px-4 tw-overflow-auto md:tw-flex md:tw-flex-no-wrap md:tw-items-center">
         <img
           src="/projects/baria/imagen.jpg"
           className="tw-max-h-full tw-w-full tw-flex-shrink-0 tw-rounded-tl-lg tw-rounded-br-lg tw-max-w-sm tw-mx-auto md:tw-mr-4"

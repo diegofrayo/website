@@ -1,5 +1,5 @@
 import * as React from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 
 import { Page, MainLayout } from "~/components";
 import { getSiteTexts } from "~/i18n";
@@ -23,8 +23,8 @@ export default HomePage;
 
 function MainMenu() {
   const ITEMS = [
-    { emoji: "🙋‍♂️", label: SiteTexts.page.menu_item_blog, url: Routes.BLOG() },
-    { emoji: "✍️", label: SiteTexts.page.menu_item_about_me, url: Routes.ABOUT_ME },
+    { emoji: "✍️", label: SiteTexts.page.menu_item_blog, url: Routes.BLOG() },
+    { emoji: "🙋‍♂️", label: SiteTexts.page.menu_item_about_me, url: Routes.ABOUT_ME },
     { emoji: "📄", label: SiteTexts.page.menu_item_resume, url: Routes.RESUME },
     { emoji: "🚀", label: SiteTexts.page.menu_item_roadmap, url: Routes.ROADMAP },
   ];
@@ -38,12 +38,12 @@ function MainMenu() {
               key={`MainMenuItem-${index}`}
               className="tw-inline-block tw-border tw-border-gray-200 tw-transition-all tw-relative tw-mb-4 md:tw-mb-0 tw-mx-2 tw-cursor-pointer tw-rounded-md hover:tw-opacity-75 hover:tw-top-1px"
             >
-              <Link href={item.url}>
+              <NextLink href={item.url}>
                 <a className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-py-2 tw-font-bold tw-h-full">
                   <span>{item.emoji}</span>
                   <span className="tw-text-center">{item.label}</span>
                 </a>
-              </Link>
+              </NextLink>
             </li>
           );
         })}

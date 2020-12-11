@@ -14,15 +14,17 @@ export function Link({
   href,
   className,
   is: Tag = "a",
+  styled = true,
+  external = true,
   ...rest
 }: Record<string, any>): any {
   if (Tag === "a") {
     return (
       <LinkElement
-        target="_blank"
-        rel="noreferrer"
         href={href}
         className={className}
+        tw-variant={styled && "styled"}
+        {...(external && { target: "_blank", rel: "noreferrer" })}
         {...rest}
       >
         {children}
@@ -32,12 +34,14 @@ export function Link({
 
   return (
     <Tag href={href} passHref>
-      <LinkElement className={className}>{children}</LinkElement>
+      <LinkElement tw-variant={styled ? "styled" : "empty"} className={className}>
+        {children}
+      </LinkElement>
     </Tag>
   );
 }
 
-const LinkElement = twcss.a`tw-font-bold tw-underline tw-text-blue-700`;
+const LinkElement = twcss.a({ styled: `tw-font-bold tw-underline twc-text-color-links` });
 
 export function UL({ children }: Record<string, any>): any {
   return (

@@ -12,7 +12,7 @@ body {
 }
 
 body {
-  @apply tw-text-gray-700;
+  @apply twc-text-color-base;
   cursor: default;
   font-size: 18px;
   overflow: auto;
@@ -26,7 +26,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: black;
+  @apply twc-text-color-secondary;
   font-weight: bold;
 }
 
@@ -38,4 +38,20 @@ a {
 button:hover,
 a:hover {
   @apply tw-opacity-75;
+}
+
+/* --- Dark mode --- */
+
+.tw-dark body {
+  @apply tw-bg-gray-800;
+  @apply tw-text-gray-400;
+}
+
+.tw-dark h1,
+.tw-dark h2,
+.tw-dark h3,
+.tw-dark h4,
+.tw-dark h5,
+.tw-dark h6 {
+  @apply tw-text-gray-600;
 }

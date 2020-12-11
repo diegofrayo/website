@@ -5,7 +5,7 @@ import { Link } from "../.";
 
 export function ResumeTimeline({ title, timeline }: Record<string, any>): any {
   return (
-    <section>
+    <section data-block>
       <h2>{title}</h2>
       <section className="tw-border-l-4 tw-border-black tw-pl-6 tw-ml-3">
         {timeline.map((item, index) => {
@@ -43,7 +43,7 @@ function TimelineItem({ company, date, description, url }: Record<string, any>):
 
 export function ResumeFAQ({ children }: Record<string, any>): any {
   return (
-    <section>
+    <section data-block>
       <h2>FAQ</h2>
       <section>{children}</section>
     </section>
@@ -77,7 +77,7 @@ export function ResumeFAQItem({ question, children }: Record<string, any>): any 
       <p
         className={classnames(
           "tw-pl-3",
-          collapsed ? "tw-hidden tw-mb-0" : "tw-block tw-mb-6",
+          collapsed ? "tw-hidden tw-mb-0" : "tw-block twc-mb-base",
         )}
       >
         {children}

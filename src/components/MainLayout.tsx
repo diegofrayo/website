@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import NextLink from "next/link";
-import { useTheme } from "next-themes";
+// import { useTheme } from "next-themes";
 
 import { useDidMount } from "~/hooks";
 import { getSiteTexts } from "~/i18n";
@@ -50,10 +50,10 @@ export default MainLayout;
 
 // --- Components ---
 
-const Main = twcss.main`tw-w-full tw-max-w-screen-md tw-p-6 tw-mx-auto dark:tw-bg-black dark:bg-black dark:tw-text-white dark:text-white`;
+const Main = twcss.main`twc-max-w-base tw-w-full tw-p-6 tw-mx-auto`;
 
 function Header(): any {
-  const { theme, setTheme } = useTheme();
+  // const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useDidMount(() => setMounted(true));
@@ -79,6 +79,7 @@ function Header(): any {
         </section>
       </section>
 
+      {/*
       <button
         className="tw-flex tw-items-center tw-p-1 tw-absolute tw-top-1 tw-right-1"
         onClick={() => {
@@ -99,10 +100,9 @@ function Header(): any {
           />
         )}
       </button>
-      <a
+      */}
+      <Link
         href="https://github.com/diegofrayo/website"
-        target="_blank"
-        rel="noreferrer"
         className="tw-inline-block tw-bottom-1 tw-right-1 tw-absolute tw-p-1"
       >
         <img
@@ -110,7 +110,7 @@ function Header(): any {
           alt="Source code icon"
           className="tw-h-4 tw-w-4"
         />
-      </a>
+      </Link>
     </header>
   );
 }
@@ -140,9 +140,7 @@ function SocialIcons(): any {
 
 function SocialIcon({ icon, url }: Record<string, any>): any {
   return (
-    <a
-      target="_blank"
-      rel="noreferrer"
+    <Link
       href={url}
       className="tw-inline-block tw-bg-gray-100 hover:tw-bg-gray-200 tw-p-1 tw-border tw-border-gray-200 tw-transition-all tw-rounded-full tw-mr-2 tw-mb-1 sm:tw-mb-0"
     >
@@ -151,7 +149,7 @@ function SocialIcon({ icon, url }: Record<string, any>): any {
         alt={`${icon} icon`}
         className="tw-h-4 tw-w-4"
       />
-    </a>
+    </Link>
   );
 }
 
@@ -212,7 +210,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
         />
         <section className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start sm:tw-items-end tw-justify-center tw-flex-col">
           <BlogPostFooterItem
-            is="a"
+            is={Link}
             href={`https://twitter.com/intent/tweet?${createQueryFromObject({
               text: title,
               url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}${Routes.BLOG(
@@ -220,8 +218,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
               )}`,
               via: blogMetadata.author.substring(1),
             })}`}
-            target="_blank"
-            rel="noreferrer"
+            styled={false}
           >
             <BlogPostFooterItem.Icon
               src="/static/images/icons/twitter.svg"
@@ -244,12 +241,11 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
             <span>{SiteTexts.page.copy_url_to_clipboard}</span>
           </BlogPostFooterItem>
           <BlogPostFooterItem
-            is="a"
+            is={Link}
             href={`https://raw.githubusercontent.com/diegofrayo/website/master/src/data/blog/posts/${DEFAULT_LOCALE}/${
               blogMetadata.publishedAt + "-" + blogMetadata.slug
             }.mdx`}
-            target="_blank"
-            rel="noreferrer"
+            styled={false}
           >
             <BlogPostFooterItem.Icon
               src="/static/images/icons/source-code.svg"

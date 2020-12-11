@@ -1,8 +1,43 @@
+const plugin = require("tailwindcss/plugin");
+
+const prefix = "tw-";
 module.exports = {
-  prefix: "tw-",
+  prefix,
   darkMode: "class",
   important: false,
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities, config }) {
+      const newUtilities = {
+        ".twc-mt-base": {
+          marginTop: config("theme.spacing")["3"],
+        },
+
+        ".twc-mb-base": {
+          marginBottom: config("theme.spacing")["6"],
+        },
+
+        ".twc-max-w-base": {
+          maxWidth: config("theme.screens")["md"],
+        },
+
+        ".twc-text-color-base": {
+          color: config("theme.colors").gray["700"],
+        },
+
+        ".twc-text-color-secondary": {
+          color: config("theme.colors").black,
+        },
+
+        ".twc-text-color-links": {
+          color: config("theme.colors").blue["700"],
+        },
+      };
+
+      addUtilities(newUtilities, {
+        respectPrefix: false,
+      });
+    }),
+  ],
   purge: {
     content: ["./src/components/**/*.tsx", "./src/pages/**/*.tsx"],
     options: {

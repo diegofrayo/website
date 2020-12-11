@@ -1,5 +1,5 @@
 import * as React from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 
 import { slugify } from "~/utils/misc";
 
@@ -22,11 +22,11 @@ function Breadcumb({ items }: Record<string, any>): any {
             key={`Breadcumb-li-${slugify(item.text)}`}
             className="tw-inline-block tw-mr-2"
           >
-            <Link href={item.url} passHref>
+            <NextLink href={item.url} passHref>
               <a className="tw-text-base tw-font-bold">
                 <span className="tw-underline">{item.text}</span>
               </a>
-            </Link>
+            </NextLink>
           </li>
         );
       })}

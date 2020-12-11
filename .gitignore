@@ -37,3 +37,4 @@ yarn-error.log*
 _legacy
 package-lock.json
 .env
+report*.json

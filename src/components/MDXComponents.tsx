@@ -18,7 +18,7 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
   const SiteTexts = getSiteTexts({ page: Routes.BLOG() });
 
   return (
-    <section className="root tw-mb-6">
+    <section className="root" data-block>
       <section className="code-header tw-flex tw-items-center tw-justify-between tw-px-2 tw-py-2 tw-rounded-t-md">
         {fileName ||
           (sourceURL && (
@@ -69,7 +69,7 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
           </Link>
         )}
         <button
-          className="clipboard tw-block sm:tw-inline-block tw-ml-auto tw-mt-1 sm:tw-mt-0 tw-text-sm tw-text-blue-700 tw-font-bold tw-text-right"
+          className="clipboard twc-text-color-links tw-block sm:tw-inline-block tw-ml-auto tw-mt-1 sm:tw-mt-0 tw-text-sm tw-font-bold tw-text-right"
           data-clipboard-text={code}
           onClick={copyToClipboard}
         >
@@ -102,10 +102,11 @@ const LineContent = twcss.span`tw-table-cell`;
 
 export function GithubRepo({ name, url, description }: Record<string, any>): any {
   return (
-    <section className="root tw-mb-6 tw-text-right">
+    <section className="root tw-text-right" data-block>
       <Link
         className="tw-flex sm:tw-inline-flex tw-p-4 tw-bg-gray-100 tw-rounded-md tw-items-center tw-border tw-border-gray-200 tw-relative tw-pr-8"
         href={url}
+        styled={false}
       >
         <img
           src="/static/images/icons/github.svg"
@@ -125,10 +126,6 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
       </Link>
 
       <style jsx>{`
-        .root :global(a) {
-          @apply tw-no-underline;
-        }
-
         .root img,
         .root h3,
         .root p {
