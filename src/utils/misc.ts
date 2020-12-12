@@ -113,3 +113,48 @@ export function delay(time: number): Promise<any> {
     setTimeout(resolve, time);
   });
 }
+
+export function detectEmojisSupport(): void {
+  try {
+    const pixelRatio = window.devicePixelRatio || 1;
+    const offset = 12 * pixelRatio;
+    const node = window.document.createElement("canvas");
+    const ctx = node.getContext("2d");
+
+    if (!ctx) {
+      throw new Error();
+    }
+
+    ctx.fillStyle = "#f00";
+    ctx.textBaseline = "top";
+    ctx.font = "32px Arial";
+    ctx.fillText("\ud83d\udc28", 0, 0); // U+1F428 KOALA
+
+    if (ctx.getImageData(offset, offset, 1, 1).data[0] === 0) {
+      throw new Error();
+    }
+
+    if (isAndroid() && getAndroidVersion() < 5) {
+      throw new Error();
+    }
+  } catch (e) {
+    document.documentElement.classList.add("no-emojis");
+  }
+}
+
+export function isAndroid(): boolean {
+  return navigator.userAgent.toLowerCase().indexOf("android") > -1;
+}
+
+export function getAndroidVersion(): number {
+  try {
+    const ua = navigator.userAgent.toLowerCase();
+    const match = ua.match(/android\s([0-9\.]*)/);
+
+    if (!match) throw new Error();
+
+    return parseFloat(match[1]);
+  } catch (error) {
+    return -1;
+  }
+}

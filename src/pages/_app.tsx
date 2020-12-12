@@ -8,7 +8,7 @@ import Router from "next/router";
 import { ThemeProvider } from "next-themes";
 
 import { initAnalytics, configureAnalytics } from "~/utils/analytics";
-import { setScroll } from "~/utils/misc";
+import { detectEmojisSupport, setScroll } from "~/utils/misc";
 
 import ErrorPage from "./_error";
 
@@ -17,6 +17,7 @@ class CustomApp extends App {
 
   componentDidMount(): void {
     initAnalytics();
+    detectEmojisSupport();
 
     function onRouteChangeComplete() {
       console.log("onRouteChangeComplete");

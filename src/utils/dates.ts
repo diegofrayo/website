@@ -19,8 +19,22 @@ export function getDifferenceBetweenDates(startDate: string, endDate: Date): str
     return SiteTexts.page.yesterday;
   }
 
-  if (difference < 30) {
+  if (difference < 7) {
     return parseSiteText(SiteTexts.page.days_ago, { days: difference });
+  }
+
+  if (difference < 30) {
+    return parseSiteText(SiteTexts.page.weeks_ago, {
+      weeks_value: Math.round(difference / 7),
+      weeks_text: pluralize(
+        Math.round(difference / 7),
+        {
+          singular: SiteTexts.page.week,
+          plural: SiteTexts.page.weeks,
+        },
+        { includeNumber: false },
+      ),
+    });
   }
 
   if (difference < 365) {

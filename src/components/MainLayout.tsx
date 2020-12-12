@@ -17,7 +17,7 @@ import {
 } from "~/utils/misc";
 
 import Breadcumb from "./Breadcumb";
-import { Link, Separator } from "./";
+import { Link, Separator, Emoji } from "./";
 
 const SiteTexts = getSiteTexts({ layout: true, page: Routes.BLOG() });
 
@@ -60,7 +60,7 @@ const Header = safeRender(function Header(): any {
     <header className="twc-border-color-primary tw-flex tw-border-b tw-pb-3 tw-relative">
       <NextLink href={Routes.HOME}>
         <a className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:tw-border-gray-500 tw-bg-blue-200 dark:tw-bg-gray-200 tw-mr-4 tw-rounded-lg tw-text-2xl sm:tw-text-2xl tw-relative tw-top-1">
-          👨‍💻
+          <Emoji>👨‍💻</Emoji>
         </a>
       </NextLink>
       <section className="tw-flex-1">

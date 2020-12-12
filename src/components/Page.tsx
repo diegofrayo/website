@@ -56,11 +56,6 @@ function Page({ children, metadata: metadataProp = {} }: Record<string, any>): a
         <meta property="og:site_name" content={metadata.title} />
 
         <link rel="canonical" href={DEFAULT_METADATA.url} />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

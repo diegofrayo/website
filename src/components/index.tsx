@@ -34,7 +34,7 @@ export function Link({
 
   return (
     <Tag href={href} passHref>
-      <LinkElement tw-variant={styled ? "styled" : "empty"} className={className}>
+      <LinkElement tw-variant={styled && "styled"} className={className}>
         {children}
       </LinkElement>
     </Tag>
@@ -80,8 +80,12 @@ export function Separator({ size, className }: Record<string, any>): any {
 export function TextWithEmoji({ children, emoji }: Record<string, any>): any {
   return (
     <section className="tw-flex tw-flex-nowrap tw-mb-3">
-      <span className="tw-text-xl tw-mr-3">{emoji}</span>
+      <Emoji className="tw-text-xl tw-mr-3">{emoji}</Emoji>
       <p className="tw-flex-1">{children}</p>
     </section>
   );
+}
+
+export function Emoji({ children, className }: Record<string, any>): any {
+  return <span className={classnames("emoji", className)}>{children}</span>;
 }

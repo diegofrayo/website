@@ -46,9 +46,11 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
 
 export async function getStaticPaths(): Promise<Record<string, any>> {
   return {
-    paths: Object.keys(BlogPosts).map(slug => {
-      return { params: { slug } };
-    }),
+    paths: Object.values(BlogPosts)
+      .filter(item => item.is_draft === false)
+      .map(({ slug }) => {
+        return { params: { slug } };
+      }),
     fallback: false,
   };
 }

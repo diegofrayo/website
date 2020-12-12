@@ -28,6 +28,8 @@ function BlogPage(): any {
         <p className="tw-mb-4">{SiteTexts.page.description}</p>
         <UL>
           {Object.values(BlogPosts).map(item => {
+            if (item.is_draft) return null;
+
             return (
               <BlogEntry
                 key={item.slug}
