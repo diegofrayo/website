@@ -1,5 +1,3 @@
-/* purgecss start ignore */
-
 html,
 body {
   font-family: "Raleway", -apple-system, BlinkMacSystemFont, Segoe UI, Raleway, Oxygen,
@@ -7,6 +5,7 @@ body {
 }
 
 body {
+  @apply twc-bg-main;
   @apply twc-text-color-primary;
   cursor: default;
   font-size: 18px;
@@ -38,8 +37,8 @@ a:hover {
 /* --- Dark mode --- */
 
 .tw-dark body {
-  @apply twc-text-color-primary--dark;
-  background-color: #282c34;
+  @apply value:dark:twc-bg-main;
+  @apply value:dark:twc-text-color-primary;
 }
 
 .tw-dark h1,
@@ -48,23 +47,9 @@ a:hover {
 .tw-dark h4,
 .tw-dark h5,
 .tw-dark h6 {
-  @apply twc-text-color-secondary--dark;
-}
-
-.tw-dark .dark\:twc-text-color-primary {
-  @apply twc-text-color-primary--dark;
-}
-
-.tw-dark .dark\:twc-text-color-secondary {
-  @apply twc-text-color-secondary--dark;
-}
-
-.tw-dark .dark\:twc-text-color-links {
-  @apply twc-text-color-links--dark;
+  @apply value:dark:twc-text-color-secondary;
 }
 
 .tw-dark .twc-border-color-primary {
-  @apply twc-border-color-primary--dark;
+  @apply value:dark:twc-border-color-primary;
 }
-
-/* purgecss end ignore */

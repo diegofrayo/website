@@ -46,6 +46,7 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-unicorn": "^23.0.0",
+    "feed": "^4.2.1",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "next-mdx-remote": "^1.0.0",

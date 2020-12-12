@@ -73,7 +73,7 @@ function MDXContent({ content }: Record<string, any>): any {
         }
 
         :global(.mdx-content--dark) :global(hr) {
-          @apply twc-border-color-primary--dark;
+          @apply value:dark:twc-border-color-primary;
         }
 
         :global(.mdx-content) :global(ul) :global(li) > :global(p) {
