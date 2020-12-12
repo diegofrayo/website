@@ -1,4 +1,6 @@
-import "../styles.css";
+import "~/styles/tailwind.css";
+import "~/styles/index.css";
+import "~/styles/tailwind-utils.css";
 
 import * as React from "react";
 import App from "next/app";

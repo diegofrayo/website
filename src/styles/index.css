@@ -1,9 +1,4 @@
-@tailwind base;
-@tailwind components;
-
-/* Start purging... */
-@tailwind utilities;
-/* Stop purging. */
+/* purgecss start ignore */
 
 html,
 body {
@@ -12,7 +7,7 @@ body {
 }
 
 body {
-  @apply twc-text-color-base;
+  @apply twc-text-color-primary;
   cursor: default;
   font-size: 18px;
   overflow: auto;
@@ -43,8 +38,8 @@ a:hover {
 /* --- Dark mode --- */
 
 .tw-dark body {
-  @apply tw-bg-gray-800;
-  @apply tw-text-gray-400;
+  @apply twc-text-color-primary--dark;
+  background-color: #282c34;
 }
 
 .tw-dark h1,
@@ -53,5 +48,23 @@ a:hover {
 .tw-dark h4,
 .tw-dark h5,
 .tw-dark h6 {
-  @apply tw-text-gray-600;
+  @apply twc-text-color-secondary--dark;
 }
+
+.tw-dark .dark\:twc-text-color-primary {
+  @apply twc-text-color-primary--dark;
+}
+
+.tw-dark .dark\:twc-text-color-secondary {
+  @apply twc-text-color-secondary--dark;
+}
+
+.tw-dark .dark\:twc-text-color-links {
+  @apply twc-text-color-links--dark;
+}
+
+.tw-dark .twc-border-color-primary {
+  @apply twc-border-color-primary--dark;
+}
+
+/* purgecss end ignore */

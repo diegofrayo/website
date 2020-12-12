@@ -35,7 +35,6 @@ function Breadcumb({ items }: Record<string, any>): any {
         {`
           a:after {
             @apply tw-ml-1;
-            color: black;
             ${moreThanOneItem ? 'content: "‣";' : ""}
           }
         `}

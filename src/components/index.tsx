@@ -41,7 +41,9 @@ export function Link({
   );
 }
 
-const LinkElement = twcss.a({ styled: `tw-font-bold tw-underline twc-text-color-links` });
+const LinkElement = twcss.a({
+  styled: `tw-font-bold tw-underline twc-text-color-links dark:twc-text-color-links`,
+});
 
 export function UL({ children }: Record<string, any>): any {
   return (

@@ -7,7 +7,7 @@ export function ResumeTimeline({ title, timeline }: Record<string, any>): any {
   return (
     <section data-block>
       <h2>{title}</h2>
-      <section className="tw-border-l-4 tw-border-black tw-pl-6 tw-ml-3">
+      <section className="tw-border-l-4 tw-border-black dark:twc-border-color-primary tw-pl-6 tw-ml-3">
         {timeline.map((item, index) => {
           return <TimelineItem key={`TimelineItem-${index}`} {...item} />;
         })}
@@ -19,13 +19,13 @@ export function ResumeTimeline({ title, timeline }: Record<string, any>): any {
 function TimelineItem({ company, date, description, url }: Record<string, any>): any {
   return (
     <section className="root tw-relative tw-mb-8 last:tw-mb-0">
-      <span className="tw-absolute tw--left-10 tw-border-4 tw-border-black tw-w-7 tw-h-7 tw-rounded-full tw-bg-white" />
+      <span className="tw-absolute tw--left-10 tw-border-4 tw-border-black dark:twc-border-color-primary tw-w-7 tw-h-7 tw-rounded-full tw-bg-white" />
       {url ? (
         <Link className="tw-text-xl" href={url}>
           {company}
         </Link>
       ) : (
-        <h3 className="tw-underline">{company}</h3>
+        <h3 className="dark:twc-text-color-primary">{company}</h3>
       )}
       <span className="tw-block tw-text-sm tw-italic">{date}</span>
       <p className="tw-mt-3">{description}</p>
@@ -57,7 +57,7 @@ export function ResumeFAQItem({ question, children }: Record<string, any>): any 
     <section className="root tw-mb-4">
       <section>
         <h3
-          className="tw-inline-block tw-cursor-pointer"
+          className="dark:twc-text-color-primary tw-inline-block tw-cursor-pointer"
           onClick={() => {
             setCollapsed(cv => !cv);
           }}

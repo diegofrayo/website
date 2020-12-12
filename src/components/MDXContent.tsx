@@ -1,8 +1,16 @@
-import * as React from "react";
+import React from "react";
+import classnames from "classnames";
+import { useTheme } from "next-themes";
+
+import { safeRender } from "~/hocs";
 
 function MDXContent({ content }: Record<string, any>): any {
+  const { theme } = useTheme();
+
   return (
-    <article className="mdx-content">
+    <article
+      className={classnames("mdx-content", theme === "dark" && "mdx-content--dark")}
+    >
       {content}
 
       <style jsx>{`
@@ -23,6 +31,18 @@ function MDXContent({ content }: Record<string, any>): any {
           list-style-type: decimal;
         }
 
+        :global(.mdx-content) :global(blockquote) {
+          @apply twc-border-color-primary;
+          @apply tw-border-l-4;
+          @apply tw-pl-4;
+          @apply twc-text-color-secondary;
+          font-style: italic;
+        }
+
+        :global(.mdx-content--dark) :global(blockquote) {
+          @apply tw-text-gray-400;
+        }
+
         :global(.mdx-content) :global(pre) {
           @apply tw-bg-gray-800;
           @apply tw-p-4;
@@ -34,17 +54,14 @@ function MDXContent({ content }: Record<string, any>): any {
           word-break: keep-all;
         }
 
-        :global(.mdx-content) :global(blockquote) {
-          @apply twc-text-color-secondary;
-          @apply tw-border-l-4;
-          @apply tw-pl-4;
-          color: black;
+        :global(.mdx-content) :global(p) :global(code) {
+          @apply tw-text-base;
+          @apply tw-text-red-700;
           font-style: italic;
         }
 
-        :global(.mdx-content) :global(p) :global(code) {
-          @apply tw-text-red-700;
-          @apply tw-text-base;
+        :global(.mdx-content--dark) :global(p) :global(code) {
+          @apply tw-text-red-400;
         }
 
         :global(.mdx-content) :global(p) :global(code):after {
@@ -53,6 +70,10 @@ function MDXContent({ content }: Record<string, any>): any {
 
         :global(.mdx-content) :global(p) :global(code):before {
           content: "\`";
+        }
+
+        :global(.mdx-content--dark) :global(hr) {
+          @apply twc-border-color-primary--dark;
         }
 
         :global(.mdx-content) :global(ul) :global(li) > :global(p) {
@@ -86,4 +107,4 @@ function MDXContent({ content }: Record<string, any>): any {
   );
 }
 
-export default MDXContent;
+export default safeRender(MDXContent);

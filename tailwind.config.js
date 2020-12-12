@@ -1,35 +1,67 @@
 const plugin = require("tailwindcss/plugin");
 
-const prefix = "tw-";
 module.exports = {
-  prefix,
+  prefix: "tw-",
   darkMode: "class",
   important: false,
   plugins: [
-    plugin(function ({ addUtilities, config }) {
+    plugin(function ({ addUtilities, config, e }) {
       const newUtilities = {
         ".twc-mt-base": {
           marginTop: config("theme.spacing")["3"],
         },
-
         ".twc-mb-base": {
           marginBottom: config("theme.spacing")["6"],
         },
-
         ".twc-max-w-base": {
           maxWidth: config("theme.screens")["md"],
         },
 
-        ".twc-text-color-base": {
+        ".twc-text-color-primary": {
           color: config("theme.colors").gray["700"],
         },
-
         ".twc-text-color-secondary": {
           color: config("theme.colors").black,
         },
-
         ".twc-text-color-links": {
           color: config("theme.colors").blue["700"],
+        },
+        ".twc-border-color-primary": {
+          borderColor: config("theme.colors").gray["200"],
+        },
+        ".twc-bg-icons": {
+          backgroundColor: config("theme.colors").gray["100"],
+        },
+
+        ".twc-text-color-primary--dark": {
+          color: "#ffffff",
+        },
+        ".twc-text-color-secondary--dark": {
+          color: "#FAC863",
+        },
+        ".twc-text-color-links--dark": {
+          color: "#8CC790",
+        },
+        ".twc-border-color-primary--dark": {
+          borderColor: config("theme.colors").gray["600"],
+        },
+        ".twc-bg-icons--dark": {
+          backgroundColor: config("theme.colors").gray["100"],
+        },
+        [".tw-dark ." + e("dark:twc-text-color-primary")]: {
+          color: "#ffffff",
+        },
+        [".tw-dark ." + e("dark:twc-text-color-secondary")]: {
+          color: "#FAC863",
+        },
+        [".tw-dark ." + e("dark:twc-text-color-links")]: {
+          color: "#8CC790",
+        },
+        [".tw-dark ." + e("dark:twc-border-color-primary")]: {
+          borderColor: config("theme.colors").gray["600"],
+        },
+        [".tw-dark ." + e("dark:twc-bg-icons")]: {
+          backgroundColor: config("theme.colors").gray["100"],
         },
       };
 
@@ -58,9 +90,11 @@ module.exports = {
     },
   },
   variants: {
-    borderWidth: ["responsive", "last", "hover"],
-    margin: ["responsive", "last"],
+    borderRadius: ["responsive", "last", "hover", "dark"],
+    borderWidth: ["responsive", "last", "hover", "dark"],
     inset: ["responsive", "hover"],
+    margin: ["responsive", "last"],
+    padding: ["responsive", "last", "hover", "dark"],
   },
 };
 

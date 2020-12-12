@@ -18,8 +18,11 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
   const SiteTexts = getSiteTexts({ page: Routes.BLOG() });
 
   return (
-    <section className="root" data-block>
-      <section className="code-header tw-flex tw-items-center tw-justify-between tw-px-2 tw-py-2 tw-rounded-t-md">
+    <section
+      className="root tw-rounded-md tw-border twc-border-color-primary dark:tw-border-0 dark:tw-bg-gray-700"
+      data-block
+    >
+      <section className="tw-flex tw-items-center tw-justify-between tw-px-2 tw-py-2">
         {fileName ||
           (sourceURL && (
             <code className="tw-text-sm tw-font-bold">
@@ -52,24 +55,24 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
           );
         }}
       </Highlight>
-      <section className="tw-text-right">
+      <section className="tw-text-right tw-p-2 tw-pt-1">
         {sourceURL && (
           <Link
-            className="tw-block sm:tw-inline-block tw-ml-auto tw-mt-1 sm:tw-mt-0 sm:tw-mr-4"
+            className="tw-block sm:tw-inline-block tw-ml-auto sm:tw-mr-4"
             href={sourceURL}
           >
             <img
               src="/static/images/icons/github.svg"
               alt="Github icon"
-              className="tw-h-4 tw-w-4 tw-inline-block tw-align-middle tw-mr-1"
+              className="tw-h-4 tw-w-4 tw-inline-block tw-align-middle tw-mr-1 dark:tw-rounded-full dark:twc-bg-icons dark:tw-p-0.5"
             />
-            <span className="tw-inline-block tw-text-sm">
+            <span className="tw-inline-block tw-text-sm dark:twc-text-color-primary">
               {SiteTexts.page.see_source_code}
             </span>
           </Link>
         )}
         <button
-          className="clipboard twc-text-color-links tw-block sm:tw-inline-block tw-ml-auto tw-mt-1 sm:tw-mt-0 tw-text-sm tw-font-bold tw-text-right"
+          className="clipboard twc-text-color-links dark:twc-text-color-primary tw-block sm:tw-inline-block tw-ml-auto tw-mt-1 sm:tw-mt-0 tw-text-sm tw-font-bold tw-text-right"
           data-clipboard-text={code}
           onClick={copyToClipboard}
         >
@@ -84,12 +87,7 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
         }
 
         .root pre {
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-        }
-
-        .code-header {
-          border: 1px solid #272b35;
+          border-radius: 0;
         }
       `}</style>
     </section>
@@ -104,7 +102,7 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
   return (
     <section className="root tw-text-right" data-block>
       <Link
-        className="tw-flex sm:tw-inline-flex tw-p-4 tw-bg-gray-100 tw-rounded-md tw-items-center tw-border tw-border-gray-200 tw-relative tw-pr-8"
+        className="twc-border-color-primary tw-border dark:tw-border-0 tw-flex sm:tw-inline-flex tw-p-4 twc-bg-icons tw-rounded-md tw-items-center tw-relative tw-pr-8"
         href={url}
         styled={false}
       >
@@ -134,6 +132,7 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
 
         .root h3 {
           @apply tw-text-base;
+          @apply twc-text-color-secondary;
 
           @screen sm {
             @apply tw-text-lg;

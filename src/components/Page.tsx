@@ -119,7 +119,7 @@ function Page({ children, metadata: metadataProp = {} }: Record<string, any>): a
       </Head>
       {children}
       {isAnalyticsDisabled && (
-        <span className="tw-absolute tw-top-1 tw-left-1 tw-w-1 tw-h-1 tw-bg-black" />
+        <span className="tw-absolute tw-top-1 tw-left-1 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white" />
       )}
     </Fragment>
   );

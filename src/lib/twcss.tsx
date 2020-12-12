@@ -140,7 +140,10 @@ const HTML_TAGS = [
 const twcssObject: Record<string, any> = {};
 
 function twcss(Tag: string): any {
-  return function (styles: string | Record<string, string>, props): any {
+  return function (
+    styles: string | Record<string, string>,
+    staticProps: Record<string, string> = {},
+  ): any {
     return function TWCSS_Component({
       children,
       className = "",
@@ -149,10 +152,14 @@ function twcss(Tag: string): any {
       ...rest
     }: Record<string, unknown>): any {
       const Element: any = is || Tag;
-      const finalClassName = generateClassName(styles, className, twVariant);
+      const finalClassName = generateClassName(
+        styles,
+        className,
+        twVariant || staticProps["tw-variant"],
+      );
 
       return (
-        <Element className={finalClassName} {...props} {...rest}>
+        <Element className={finalClassName} {...staticProps} {...rest}>
           {children}
         </Element>
       );
@@ -185,6 +192,8 @@ function generateClassName(styles, className, twVariant) {
     if (typeof twVariant === "string") {
       return `${styles.__base || ""} ${styles[twVariant] || ""} ${className}`.trim();
     }
+
+    return `${styles.__base || ""} ${className}`.trim();
   }
 
   return className.trim();

@@ -1,8 +1,9 @@
 import React, { Fragment, useState } from "react";
 import NextLink from "next/link";
-// import { useTheme } from "next-themes";
+import { useTheme } from "next-themes";
 
 import { useDidMount } from "~/hooks";
+import { safeRender } from "~/hocs";
 import { getSiteTexts } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { DEFAULT_LOCALE, Routes } from "~/utils/constants";
@@ -36,7 +37,7 @@ function MainLayout({
         {title && (
           <Fragment>
             <h1 className="tw-text-left tw-text-3xl tw-font-bold">{title}</h1>
-            <Separator size={3} />
+            <Separator className="tw-my-6 sm:tw-my-3" />
           </Fragment>
         )}
         {children}
@@ -52,18 +53,13 @@ export default MainLayout;
 
 const Main = twcss.main`twc-max-w-base tw-w-full tw-p-6 tw-mx-auto`;
 
-function Header(): any {
-  // const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useDidMount(() => setMounted(true));
-
-  if (!mounted) return null;
+const Header = safeRender(function Header(): any {
+  const { theme, setTheme } = useTheme();
 
   return (
-    <header className="tw-flex tw-border-b tw-border-gray-200 tw-pb-3 tw-relative">
+    <header className="twc-border-color-primary tw-flex tw-border-b tw-pb-3 tw-relative">
       <NextLink href={Routes.HOME}>
-        <a className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 tw-bg-blue-200 tw-mr-4 tw-rounded-lg tw-text-2xl sm:tw-text-2xl tw-relative tw-top-1">
+        <a className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:tw-border-gray-500 tw-bg-blue-200 dark:tw-bg-gray-200 tw-mr-4 tw-rounded-lg tw-text-2xl sm:tw-text-2xl tw-relative tw-top-1">
           👨‍💻
         </a>
       </NextLink>
@@ -79,9 +75,8 @@ function Header(): any {
         </section>
       </section>
 
-      {/*
       <button
-        className="tw-flex tw-items-center tw-p-1 tw-absolute tw-top-1 tw-right-1"
+        className="tw-flex tw-items-center tw-top-1 tw-right-1 tw-absolute tw-p-1 tw-rounded-md dark:twc-bg-icons"
         onClick={() => {
           setTheme(theme === "dark" ? "light" : "dark");
         }}
@@ -100,20 +95,9 @@ function Header(): any {
           />
         )}
       </button>
-      */}
-      <Link
-        href="https://github.com/diegofrayo/website"
-        className="tw-inline-block tw-bottom-1 tw-right-1 tw-absolute tw-p-1"
-      >
-        <img
-          src="/static/images/icons/source-code.svg"
-          alt="Source code icon"
-          className="tw-h-4 tw-w-4"
-        />
-      </Link>
     </header>
   );
-}
+});
 
 function SocialIcons(): any {
   const SOCIAL_NETWORKS = [
@@ -130,10 +114,21 @@ function SocialIcons(): any {
   ];
 
   return (
-    <section className="tw-inline-flex tw-items-center tw-my-1 tw-flex-wrap">
+    <section className="tw-inline-flex tw-items-center tw-my-1 tw-flex-wrap tw-relative tw-flex-1 tw-pr-10">
       {SOCIAL_NETWORKS.map(item => {
         return <SocialIcon key={item.icon} {...item} />;
       })}
+
+      <Link
+        href="https://github.com/diegofrayo/website"
+        className="tw-inline-block tw-right-1 tw-bottom-1 sm:tw-bottom-0  tw-absolute tw-p-1 tw-rounded-md dark:twc-bg-icons"
+      >
+        <img
+          src="/static/images/icons/source-code.svg"
+          alt="Source code icon"
+          className="tw-h-4 tw-w-4"
+        />
+      </Link>
     </section>
   );
 }
@@ -142,7 +137,7 @@ function SocialIcon({ icon, url }: Record<string, any>): any {
   return (
     <Link
       href={url}
-      className="tw-inline-block tw-bg-gray-100 hover:tw-bg-gray-200 tw-p-1 tw-border tw-border-gray-200 tw-transition-all tw-rounded-full tw-mr-2 tw-mb-1 sm:tw-mb-0"
+      className="tw-inline-block twc-bg-icons hover:tw-bg-gray-200 tw-p-1 tw-transition-all tw-rounded-md tw-mr-2 tw-mb-1 sm:tw-mb-0"
     >
       <img
         src={`/static/images/icons/${icon}.svg`}
@@ -175,12 +170,13 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
   return (
     <Fragment>
       <Separator size={8} />
-      <section className="tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-border tw-border-gray-200 tw-p-4">
+      <section className="twc-border-color-primary tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-border tw-p-4">
         <section className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
           <BlogPostFooterItem>
             <BlogPostFooterItem.Icon
               src="/static/images/icons/calendar.svg"
               alt="Calendar icon"
+              tw-variant="withoutDarkMode"
             />
             <span className="tw-mr-1">{SiteTexts.page.published_at}</span>
             <strong>{blogMetadata.publishedAt.replace(/-+/g, "/")}</strong>
@@ -206,7 +202,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
         </section>
         <Separator
           size={4}
-          className="tw-w-full tw-border-t tw-border-gray-200 tw-block sm:tw-hidden"
+          className="tw-w-full tw-border-t twc-border-color-primary dark:twc-border-color-primary tw-block sm:tw-hidden"
         />
         <section className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start sm:tw-items-end tw-justify-center tw-flex-col">
           <BlogPostFooterItem
@@ -271,4 +267,13 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
 
 const BlogPostFooterItem = twcss.p`tw-flex tw-items-center tw-justify-start tw-my-1 tw-text-sm tw-text-left`;
 
-BlogPostFooterItem.Icon = twcss.img`tw-inline-block tw-h-4 tw-w-4 tw-mr-2`;
+BlogPostFooterItem.Icon = twcss.img(
+  {
+    __base: "tw-inline-block tw-h-4 tw-w-4 tw-mr-2",
+    withDarkMode: "dark:tw-rounded-md dark:twc-bg-icons dark:tw-p-1",
+    withoutDarkMode: "",
+  },
+  {
+    "tw-variant": "withDarkMode",
+  },
+);
