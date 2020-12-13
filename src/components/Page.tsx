@@ -1,17 +1,12 @@
 import React, { Fragment } from "react";
 import Head from "next/head";
 
+import DEFAULT_METADATA from "~/data/metadata";
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import { isAnalyticsDisabled, trackPageLoaded } from "~/utils/analytics";
 import { isDevelopmentEnvironment } from "~/utils/misc";
 
 function Page({ children, metadata: metadataProp = {} }: Record<string, any>): any {
-  const DEFAULT_METADATA = {
-    title: "Diego Rayo | Software Developer",
-    description:
-      "Software Developer, I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.",
-    url: process.env.NEXT_PUBLIC_WEBSITE_URL,
-  };
   const metadata = {
     ...DEFAULT_METADATA,
     ...metadataProp,

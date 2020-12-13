@@ -1,172 +1,120 @@
-import * as React from "react";
+import React, { useState } from "react";
 
 import { Page } from "~/components";
-import { useDidMount } from "~/hooks";
+import { capitalize, copyToClipboard } from "~/utils/misc";
 
 function TextPage(): any {
-  useDidMount(() => {
-    const upper = document.querySelectorAll("textarea.upper")[0];
-    const lower = document.querySelectorAll("textarea.lower")[0];
-    const capitalize = document.querySelectorAll("textarea.capitalize")[0];
-    const capOF = document.querySelectorAll("textarea.cap-of")[0];
-
-    const onchange = event => {
-      const text = event.currentTarget.value.toLowerCase();
-      upper.innerHTML = text;
-      lower.innerHTML = text;
-      capitalize.innerHTML = text;
-      capOF.innerHTML = text[0].toUpperCase() + text.substring(1);
-    };
-
-    document.getElementById("textarea").focus();
-    document.getElementById("textarea").addEventListener("input", onchange);
+  const [texts, setTexts] = useState({
+    input: "",
+    upper: "",
+    lower: "",
+    capitalize: "",
+    capitalizeOnlyFirst: "",
   });
+
+  function handleTextAreaChange(e) {
+    const value = e.currentTarget.value || "";
+
+    setTexts({
+      input: value,
+      upper: value.toUpperCase(),
+      lower: value.toLowerCase(),
+      capitalize: capitalize(value),
+      capitalizeOnlyFirst: value ? value[0].toUpperCase() + value.substring(1) : "",
+    });
+  }
+
+  function handleCopyText(e) {
+    copyToClipboard(e);
+  }
 
   return (
     <Page metadata={{ title: "Text transform tool", noRobots: true }}>
-      <section id="container">
-        <span id="textarea-label" className="upper">
-          type your text
-        </span>
-        <textarea id="textarea"></textarea>
-        <span className="upper">
-          uppercase
-          <button
-            type="button"
-            className="button"
-            data-target="upper"
-            data-clipboard-target=".upper"
-          >
-            copy
-          </button>
-        </span>
-        <textarea readOnly className="upper"></textarea>
+      <section className="twc-max-w-base tw-mx-auto tw-w-full tw-h-full tw-p-6 tw-overflow-auto">
+        <section className="tw-mb-8">
+          <h1 className="tw-bg-gray-700 tw-text-white tw-text-center tw-p-2">
+            type your text
+          </h1>
+          <textarea
+            className="tw-border tw-border-gray-200 tw-block tw-p-3 tw-resize-none tw-w-full"
+            value={texts.input}
+            onChange={handleTextAreaChange}
+          />
+        </section>
 
-        <span className="lower">
-          lowercase
+        <section className="tw-my-4">
+          <p className="tw-font-bold tw-uppercase">uppercase</p>
+          <textarea
+            className="tw-uppercase tw-my-1 tw-border tw-border-gray-200 tw-block tw-p-3 tw-resize-none tw-w-full"
+            value={texts.upper}
+            readOnly
+          ></textarea>
           <button
             type="button"
-            className="button"
-            data-target="lower"
-            data-clipboard-target=".lower"
+            className="tw-block tw-ml-auto tw-text-sm"
+            data-clipboard-text={texts.upper}
+            onClick={handleCopyText}
           >
             copy
           </button>
-        </span>
-        <textarea readOnly className="lower"></textarea>
+        </section>
 
-        <span className="capitalize">
-          capitalize
+        <section className="tw-my-4">
+          <p className="tw-font-bold tw-lowercase">lowercase</p>
+          <textarea
+            className="tw-lowercase tw-my-1 tw-border tw-border-gray-200 tw-block tw-p-3 tw-resize-none tw-w-full"
+            value={texts.lower}
+            readOnly
+          ></textarea>
           <button
             type="button"
-            className="button"
-            data-target="capitalize"
-            data-clipboard-target=".capitalize"
+            className="tw-block tw-ml-auto tw-text-sm"
+            data-clipboard-text={texts.lower}
+            onClick={handleCopyText}
           >
             copy
           </button>
-        </span>
-        <textarea readOnly className="capitalize"></textarea>
+        </section>
 
-        <span>
-          Capitalize only first word
+        <section className="tw-my-4">
+          <p className="tw-font-bold tw-capitalize">capitalize</p>
+          <textarea
+            className="tw-capitalize tw-my-1 tw-border tw-border-gray-200 tw-block tw-p-3 tw-resize-none tw-w-full"
+            value={texts.capitalize}
+            readOnly
+          ></textarea>
           <button
             type="button"
-            className="button"
-            data-target="cap-of"
-            data-clipboard-target=".cap-of"
+            className="tw-block tw-ml-auto tw-text-sm"
+            data-clipboard-text={texts.capitalize}
+            onClick={handleCopyText}
           >
             copy
           </button>
-        </span>
-        <textarea readOnly className="cap-of"></textarea>
+        </section>
+
+        <section className="tw-my-4">
+          <p className="tw-font-bold">Capitalize only first word</p>
+          <textarea
+            className="tw-my-1 tw-border tw-border-gray-200 tw-block tw-p-3 tw-resize-none tw-w-full"
+            value={texts.capitalizeOnlyFirst}
+            readOnly
+          ></textarea>
+          <button
+            type="button"
+            className="tw-block tw-ml-auto tw-text-sm"
+            data-clipboard-text={texts.capitalizeOnlyFirst}
+            onClick={handleCopyText}
+          >
+            copy
+          </button>
+        </section>
       </section>
 
       <style jsx>
         {`
-          * {
-            box-sizing: border-box;
-            cursor: default;
-            font-size: 1em;
-          }
-
-          body {
-            background-color: #efefef;
-            font-size: 18px;
-            margin: 0;
-            padding: 10px;
-          }
-
           textarea {
-            background-color: white;
-            border: 1px solid #d8d8d8;
-            display: block;
-            margin-bottom: 50px;
-            margin: 0 0 20px 0;
             min-height: 50px;
-            padding: 10px;
-            resize: none;
-            width: 100%;
-          }
-
-          textarea:last-child {
-            margin-bottom: 0;
-          }
-
-          span {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-          }
-
-          button {
-            background-color: transparent;
-            cursor: pointer;
-            font-size: 0.6em;
-            font-weight: 100;
-            margin-left: 5px;
-            padding-bottom: 4px;
-            position: relative;
-            top: -1px;
-            vertical-align: middle;
-          }
-
-          #container {
-            background-color: #ffffff;
-            border: 5px solid #424242;
-            margin: 0 auto;
-            max-width: 700px;
-            padding: 10px;
-            width: 100%;
-          }
-
-          #textarea-label {
-            background-color: #424242;
-            color: white;
-            font-size: 1em;
-            margin: 0;
-            padding: 10px;
-            text-align: center;
-          }
-
-          #textarea {
-            display: block;
-            height: 100px;
-            margin-bottom: 50px;
-            resize: none;
-            width: 100%;
-          }
-
-          .upper {
-            text-transform: uppercase;
-          }
-
-          .lower {
-            text-transform: lowercase;
-          }
-
-          .capitalize {
-            text-transform: capitalize;
           }
         `}
       </style>

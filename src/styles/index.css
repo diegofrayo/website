@@ -37,16 +37,6 @@ h6 {
   font-weight: bold;
 }
 
-button,
-a {
-  @apply tw-transition-opacity;
-}
-
-button:hover,
-a:hover {
-  @apply tw-opacity-75;
-}
-
 /* --- Dark mode --- */
 
 .tw-dark body {

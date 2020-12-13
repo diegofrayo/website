@@ -29,6 +29,7 @@ module.exports = {
     borderWidth: ["responsive", "last", "hover", "dark"],
     inset: ["responsive", "hover"],
     margin: ["responsive", "last"],
+    opacity: ["responsive", "hover", "dark"],
     padding: ["responsive", "last", "hover", "dark"],
   },
 };
@@ -109,7 +110,7 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
         backgroundColor: config("theme.colors").gray["100"],
       },
       dark: {
-        backgroundColor: config("theme.colors").gray["100"],
+        backgroundColor: config("theme.colors").gray["500"],
       },
     },
   };

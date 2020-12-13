@@ -31,18 +31,22 @@ function MainLayout({
     <Main>
       <Header />
       <Separator size={2} />
-      <section className="tw-relative">
+
+      <Body>
         {breadcumb && <Breadcumb items={breadcumb} />}
         <Separator size={4} />
         {title && (
           <Fragment>
             <h1 className="tw-text-left tw-text-3xl tw-font-bold">{title}</h1>
-            <Separator className="tw-my-6 sm:tw-my-3" />
+            <Separator className="tw-my-5 sm:tw-my-3" />
           </Fragment>
         )}
         {children}
         {blogMetadata && <BlogPostFooter blogMetadata={blogMetadata} title={title} />}
-      </section>
+      </Body>
+      <Separator size={8} />
+
+      <Footer />
     </Main>
   );
 }
@@ -51,15 +55,15 @@ export default MainLayout;
 
 // --- Components ---
 
-const Main = twcss.main`twc-max-w-base tw-w-full tw-p-6 tw-mx-auto`;
+const Main = twcss.main`twc-max-w-base tw-w-full tw-py-4 tw-px-6 tw-mx-auto`;
 
 const Header = safeRender(function Header(): any {
   const { theme, setTheme } = useTheme();
 
   return (
-    <header className="twc-border-color-primary tw-flex tw-border-b tw-pb-3 tw-relative">
+    <header className="twc-border-color-primary tw-border-b tw-pb-4 tw-flex tw-relative">
       <NextLink href={Routes.HOME}>
-        <a className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:tw-border-gray-500 tw-bg-blue-200 dark:tw-bg-gray-200 tw-mr-4 tw-rounded-lg tw-text-2xl sm:tw-text-2xl tw-relative tw-top-1">
+        <a className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:twc-border-color-primary tw-bg-blue-200 dark:tw-bg-gray-300 tw-mr-4 tw-rounded-lg tw-text-2xl tw-relative tw-top-1 tw-transition-opacity hover:tw-opacity-75">
           <Emoji>👨‍💻</Emoji>
         </a>
       </NextLink>
@@ -71,82 +75,26 @@ const Header = safeRender(function Header(): any {
           <p className="tw-text-sm sm:tw-text-base tw-inline-block tw-mr-2">
             {SiteTexts.layout.header.job_title}
           </p>
-          <SocialIcons />
         </section>
       </section>
 
       <button
-        className="tw-flex tw-items-center tw-top-1 tw-right-1 tw-absolute tw-p-1 tw-rounded-md dark:twc-bg-icons"
+        className="tw-flex tw-items-center tw-top-1 tw--right-1 tw-absolute tw-p-1 tw-rounded-md dark:twc-bg-icons tw-transition-opacity hover:tw-opacity-50  dark:hover:tw-opacity-75"
         onClick={() => {
           setTheme(theme === "dark" ? "light" : "dark");
         }}
       >
-        {theme === "dark" ? (
-          <img
-            src="/static/images/icons/sun.svg"
-            alt="Sun icon"
-            className="tw-h-4 tw-w-4 tw-inline-block"
-          />
-        ) : (
-          <img
-            src="/static/images/icons/moon.svg"
-            alt="Moon icon"
-            className="tw-h-4 tw-w-4 tw-inline-block"
-          />
-        )}
+        <img
+          src={`/static/images/icons/${theme === "dark" ? "sun" : "moon"}.svg`}
+          alt="Switch mode icon"
+          className="tw-h-5 tw-w-5"
+        />
       </button>
     </header>
   );
 });
 
-function SocialIcons(): any {
-  const SOCIAL_NETWORKS = [
-    { icon: "github", url: "https://github.com/diegofrayo" },
-    { icon: "twitter", url: "https://twitter.com/diegofrayo" },
-    {
-      icon: "linkedin",
-      url: "https://www.linkedin.com/in/diegofrayo",
-    },
-    {
-      icon: "500px",
-      url: "https://500px.com/p/diegofrayo?view=photos",
-    },
-  ];
-
-  return (
-    <section className="tw-inline-flex tw-items-center tw-my-1 tw-flex-wrap tw-relative tw-flex-1 tw-pr-10">
-      {SOCIAL_NETWORKS.map(item => {
-        return <SocialIcon key={item.icon} {...item} />;
-      })}
-
-      <Link
-        href="https://github.com/diegofrayo/website"
-        className="tw-inline-block tw-right-1 tw-bottom-1 sm:tw-bottom-0  tw-absolute tw-p-1 tw-rounded-md dark:twc-bg-icons"
-      >
-        <img
-          src="/static/images/icons/source-code.svg"
-          alt="Source code icon"
-          className="tw-h-4 tw-w-4"
-        />
-      </Link>
-    </section>
-  );
-}
-
-function SocialIcon({ icon, url }: Record<string, any>): any {
-  return (
-    <Link
-      href={url}
-      className="tw-inline-block twc-bg-icons hover:tw-bg-gray-200 tw-p-1 tw-transition-all tw-rounded-md tw-mr-2 tw-mb-1 sm:tw-mb-0"
-    >
-      <img
-        src={`/static/images/icons/${icon}.svg`}
-        alt={`${icon} icon`}
-        className="tw-h-4 tw-w-4"
-      />
-    </Link>
-  );
-}
+const Body = twcss.section``;
 
 function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
   const [showGoToTopButton, setShowGoToTopButton] = useState(false);
@@ -215,6 +163,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
               via: blogMetadata.author.substring(1),
             })}`}
             styled={false}
+            tw-variant="withHover"
           >
             <BlogPostFooterItem.Icon
               src="/static/images/icons/twitter.svg"
@@ -225,6 +174,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
           <BlogPostFooterItem
             is="button"
             className="clipboard"
+            tw-variant="withHover"
             data-clipboard-text={`${title} - ${
               process.env.NEXT_PUBLIC_WEBSITE_URL
             }${Routes.BLOG(blogMetadata.slug)} via @diegofrayo`}
@@ -242,6 +192,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
               blogMetadata.publishedAt + "-" + blogMetadata.slug
             }.mdx`}
             styled={false}
+            tw-variant="withHover"
           >
             <BlogPostFooterItem.Icon
               src="/static/images/icons/source-code.svg"
@@ -253,7 +204,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
       </section>
       {showGoToTopButton && (
         <button
-          className="tw-fixed tw-bg-black tw-opacity-50 tw-text-2xl tw-bottom-2 tw-right-2 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-text-white tw-font-bold"
+          className="tw-fixed tw-bg-black tw-opacity-50 tw-text-2xl tw-bottom-2 tw-right-2 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-text-white tw-font-bold tw-transition-opacity hover:tw-opacity-75"
           onClick={() => {
             setScroll(0);
           }}
@@ -265,7 +216,10 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
   );
 }
 
-const BlogPostFooterItem = twcss.p`tw-flex tw-items-center tw-justify-start tw-my-1 tw-text-sm tw-text-left`;
+const BlogPostFooterItem = twcss.section({
+  __base: `tw-flex tw-items-center tw-justify-start tw-my-1 tw-text-sm tw-text-left`,
+  withHover: "tw-transition-opacity hover:tw-opacity-75",
+});
 
 BlogPostFooterItem.Icon = twcss.img(
   {
@@ -277,3 +231,59 @@ BlogPostFooterItem.Icon = twcss.img(
     "tw-variant": "withDarkMode",
   },
 );
+
+function Footer() {
+  return (
+    <footer className="twc-border-color-primary tw-border-t tw-pt-4 tw-text-center">
+      <SocialIcons />
+    </footer>
+  );
+}
+
+function SocialIcons(): any {
+  const SOCIAL_NETWORKS = [
+    { icon: "github", url: "https://github.com/diegofrayo" },
+    { icon: "twitter", url: "https://twitter.com/diegofrayo" },
+    {
+      icon: "linkedin",
+      url: "https://www.linkedin.com/in/diegofrayo",
+    },
+    {
+      icon: "email",
+      url: "mailto:diegofrayo@gmail.com",
+    },
+    {
+      icon: "spotify",
+      url:
+        "https://open.spotify.com/user/225gv7ppksrad4xzfwoyej4iq?si=iITcpGN7RjiwbgTFXy5P6Q",
+    },
+    {
+      icon: "500px",
+      url: "https://500px.com/p/diegofrayo?view=photos",
+    },
+  ];
+
+  return (
+    <section>
+      {SOCIAL_NETWORKS.map(item => {
+        return <SocialIcon key={item.icon} {...item} />;
+      })}
+    </section>
+  );
+}
+
+function SocialIcon({ icon, url }: Record<string, any>): any {
+  return (
+    <Link
+      href={url}
+      className="tw-inline-block dark:twc-bg-icons tw-p-1 dark:tw-rounded-md tw-mx-1 tw-my-1 sm:tw-my-0 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
+      styled={false}
+    >
+      <img
+        src={`/static/images/icons/${icon}.svg`}
+        alt={`${icon} icon`}
+        className="tw-h-5 tw-w-5"
+      />
+    </Link>
+  );
+}

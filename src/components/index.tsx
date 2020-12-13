@@ -42,7 +42,7 @@ export function Link({
 }
 
 const LinkElement = twcss.a({
-  styled: `tw-font-bold tw-underline twc-text-color-links dark:twc-text-color-links`,
+  styled: `tw-font-bold tw-underline twc-text-color-links dark:twc-text-color-links tw-transition-opacity hover:tw-opacity-75`,
 });
 
 export function UL({ children }: Record<string, any>): any {

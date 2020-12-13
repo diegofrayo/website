@@ -43,6 +43,15 @@ export function toLowerCaseObjectProperty(url: string): string {
   return url.toLowerCase().replace(/-+/g, "_");
 }
 
+export function capitalize(str: string): string {
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map(item => (item ? item[0].toUpperCase() + item.substring(1) : ""))
+    .join(" ")
+    .trim();
+}
+
 export function isDevelopmentEnvironment(): boolean {
   return !process.env.NEXT_PUBLIC_WEBSITE_URL.includes("vercel.app");
 }
@@ -87,15 +96,23 @@ export function onScrollStoppedListener({
   );
 }
 
-export async function copyToClipboard(e: Record<string, any>): Promise<any> {
+export async function copyToClipboard(
+  e?: Record<string, any>,
+  text?: string,
+): Promise<any> {
   try {
-    const { currentTarget: element } = e;
+    if (!e && !text) throw new Error("Invalid params");
+    if (!navigator.clipboard) throw new Error("Clipboard not supported");
 
-    if (!navigator.clipboard) {
-      throw new Error("Clipboard not supported");
+    let clipboardText = "";
+    if (e) {
+      const { currentTarget: element } = e;
+      clipboardText = element.getAttribute("data-clipboard-text");
+    } else if (text) {
+      clipboardText = text;
     }
 
-    navigator.clipboard.writeText(element.getAttribute("data-clipboard-text")).then(
+    navigator.clipboard.writeText(clipboardText).then(
       () => {
         console.log("Copying to clipboard was successful");
       },
