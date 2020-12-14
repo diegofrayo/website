@@ -1,7 +1,7 @@
 {
   "posts": {
     "how-i-use-tailwind-css": {
-      "is_draft": true,
+      "is_published": false,
       "published_at": "2020-12-07",
       "updated_at": "2020-12-07",
       "slug": "how-i-use-tailwind-css",
@@ -13,7 +13,7 @@
       }
     },
     "thoughts-about-my-profession": {
-      "is_draft": false,
+      "is_published": true,
       "published_at": "2020-12-05",
       "updated_at": "2020-12-06",
       "slug": "thoughts-about-my-profession",
@@ -25,7 +25,7 @@
       }
     },
     "my-favorite-music-and-mdx": {
-      "is_draft": false,
+      "is_published": true,
       "published_at": "2020-12-03",
       "updated_at": "2020-12-08",
       "slug": "my-favorite-music-and-mdx",
@@ -37,7 +37,7 @@
       }
     },
     "my-first-post": {
-      "is_draft": false,
+      "is_published": true,
       "published_at": "2020-12-01",
       "updated_at": "2020-12-05",
       "slug": "my-first-post",

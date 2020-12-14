@@ -1,0 +1,73 @@
+{
+  "name": "diegofrayo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --ext .ts,.tsx --fix",
+    "style": "prettier --write \"{src,scripts}/**/*.{js,ts,tsx,json}\""
+  },
+  "dependencies": {
+    "autoprefixer": "^10.0.4",
+    "classnames": "^2.2.6",
+    "crypto-js": "^4.0.0",
+    "dayjs": "^1.9.7",
+    "next": "10.0.3",
+    "next-themes": "^0.0.10",
+    "postcss": "^8.1.10",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^13.0.0",
+    "postcss-nested": "^5.0.1",
+    "postcss-preset-env": "^6.7.0",
+    "prism-react-renderer": "^1.1.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-ga": "^3.3.0",
+    "styled-jsx-plugin-postcss": "^4.0.0",
+    "tailwindcss": "^2.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@mdx-js/loader": "^1.6.22",
+    "@next/mdx": "^10.0.3",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "babel-eslint": "^10.1.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-unicorn": "^23.0.0",
+    "feed": "^4.2.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "next-mdx-remote": "^1.0.0",
+    "prettier": "^2.0.5",
+    "typescript": "^4.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && yarn build"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "src/**/*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

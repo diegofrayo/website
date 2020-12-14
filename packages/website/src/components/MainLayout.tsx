@@ -243,17 +243,17 @@ function Footer() {
 function SocialIcons(): any {
   const SOCIAL_NETWORKS = [
     { icon: "github", url: "https://github.com/diegofrayo" },
-    { icon: "twitter", url: "https://twitter.com/diegofrayo" },
+    { icon: "twitter-colorful", url: "https://twitter.com/diegofrayo" },
     {
-      icon: "linkedin",
+      icon: "linkedin-colorful",
       url: "https://www.linkedin.com/in/diegofrayo",
     },
     {
-      icon: "email",
+      icon: "email-colorful",
       url: "mailto:diegofrayo@gmail.com",
     },
     {
-      icon: "spotify",
+      icon: "spotify-colorful",
       url:
         "https://open.spotify.com/user/225gv7ppksrad4xzfwoyej4iq?si=iITcpGN7RjiwbgTFXy5P6Q",
     },
