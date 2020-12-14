@@ -9,7 +9,8 @@
         "about_me": "Acerca de mí",
         "resume": "Experiencia laboral",
         "blog": "Blog",
-        "roadmap": "Roadmap"
+        "roadmap": "Roadmap",
+        "projects": "Proyectos"
       }
     },
     "pages": {
@@ -18,7 +19,8 @@
         "menu_item_about_me": "Acerca de mí",
         "menu_item_blog": "Blog",
         "menu_item_resume": "Experiencia",
-        "menu_item_roadmap": "Roadmap"
+        "menu_item_roadmap": "Roadmap",
+        "menu_item_projects": "Proyectos"
       },
       "/about-me": {
         "title": "🙋‍♂️ Acerca de mí"
@@ -94,7 +96,8 @@
         "about_me": "About me",
         "resume": "Work experience",
         "blog": "Blog",
-        "roadmap": "Roadmap"
+        "roadmap": "Roadmap",
+        "projects": "Projects"
       }
     },
     "pages": {
@@ -103,7 +106,8 @@
         "menu_item_about_me": "About me",
         "menu_item_blog": "Blog",
         "menu_item_resume": "Experience",
-        "menu_item_roadmap": "Roadmap"
+        "menu_item_roadmap": "Roadmap",
+        "menu_item_projects": "Projects"
       },
       "/about-me": {
         "title": "🙋‍♂️ About me"

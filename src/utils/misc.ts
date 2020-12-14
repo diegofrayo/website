@@ -175,3 +175,26 @@ export function getAndroidVersion(): number {
     return -1;
   }
 }
+
+export function isUserLoggedIn(): boolean {
+  let isLoggedIn = isDevelopmentEnvironment();
+
+  if (isBrowser()) {
+    isLoggedIn =
+      window.location.href.includes("login=true") ||
+      window.localStorage.getItem("login") === "true" ||
+      isLoggedIn;
+
+    if (isLoggedIn) {
+      window.localStorage.setItem("login", "true");
+    } else {
+      window.localStorage.setItem("login", "false");
+    }
+  }
+
+  return isLoggedIn;
+}
+
+export function isBrowser(): boolean {
+  return typeof window !== "undefined";
+}

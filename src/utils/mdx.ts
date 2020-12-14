@@ -16,6 +16,6 @@ export const MDXComponentsConfig = {
 
 export const MDXScope = {
   github: GithubData,
-  Routes: { ...Routes, BLOG: Routes.BLOG() },
+  Routes: { ...Routes, BLOG: Routes.BLOG(), PROJECTS: Routes.PROJECTS() },
   resume: getSiteTexts({ page: Routes.RESUME }).page,
 };

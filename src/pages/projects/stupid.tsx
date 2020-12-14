@@ -1,10 +1,13 @@
 import React, { useState, useRef } from "react";
 import CryptoJS from "crypto-js";
 
-import { Page } from "~/components";
+import { MainLayout, Page } from "~/components";
+import { getSiteTexts } from "~/i18n";
+import { Routes } from "~/utils/constants";
 import { copyToClipboard } from "~/utils/misc";
 
 const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";
+const SiteTexts = getSiteTexts({ layout: true });
 
 function PasswordsPage(): any {
   const [output, setOutput] = useState("");
@@ -33,15 +36,25 @@ function PasswordsPage(): any {
   }
 
   return (
-    <Page metadata={{ title: "Stupid tool", noRobots: true }}>
-      <section className="twc-max-w-base tw-mx-auto tw-w-full tw-h-full tw-p-6 tw-overflow-auto">
+    <Page metadata={{ title: "stupid", noRobots: true }}>
+      <MainLayout
+        breadcumb={[
+          { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },
+          { text: SiteTexts.layout.breadcumb.projects, url: Routes.PROJECTS() },
+          {
+            text: "stupid",
+            url: Routes.PROJECTS("stupid"),
+          },
+        ]}
+        title={"stupid"}
+      >
         <section className="tw-mb-8">
-          <h1 className="tw-bg-gray-700 tw-text-white tw-text-center tw-p-2">
-            stupid tool
-          </h1>
+          <h2 className="tw-bg-gray-700 tw-text-white tw-text-center tw-p-2">
+            type your text
+          </h2>
           <input
             id="input"
-            className="tw-border tw-border-gray-200 tw-block tw-p-2 tw-w-full"
+            className="tw-border twc-border-color-primary tw-block tw-p-2 tw-w-full"
             ref={inputRef}
           />
           <section className="tw-flex tw-flex-wrap tw-justify-between tw-py-1">
@@ -63,8 +76,8 @@ function PasswordsPage(): any {
         </section>
 
         <section className="tw-my-4">
-          <p className="tw-font-bold tw-uppercase">output</p>
-          <p className="tw-my-1 tw-border tw-border-gray-200 tw-block tw-p-3 tw-w-full">
+          <p className="tw-font-bold">output</p>
+          <p className="tw-my-1 tw-border twc-border-color-primary tw-block tw-p-3 tw-w-full">
             {output}
           </p>
           <button
@@ -76,7 +89,7 @@ function PasswordsPage(): any {
             copy
           </button>
         </section>
-      </section>
+      </MainLayout>
     </Page>
   );
 }

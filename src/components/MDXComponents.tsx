@@ -64,7 +64,7 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
             <img
               src="/static/images/icons/github.svg"
               alt="Github icon"
-              className="tw-h-4 tw-w-4 tw-inline-block tw-align-middle tw-mr-1 dark:tw-rounded-full dark:twc-bg-icons dark:tw-p-0.5"
+              className="tw-h-4 tw-w-4 tw-inline-block tw-align-middle tw-mr-1 dark:tw-rounded-full dark:twc-bg-secondary dark:tw-p-0.5"
             />
             <span className="tw-inline-block tw-text-sm dark:twc-text-color-primary">
               {SiteTexts.page.see_source_code}
@@ -102,7 +102,7 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
   return (
     <section className="root tw-text-right" data-block>
       <Link
-        className="twc-border-color-primary tw-border dark:tw-border-0 tw-flex sm:tw-inline-flex tw-p-4 twc-bg-icons tw-rounded-md tw-items-center tw-relative tw-pr-8"
+        className="twc-border-color-primary tw-border dark:tw-border-0 tw-flex sm:tw-inline-flex tw-p-4 twc-bg-secondary tw-rounded-md tw-items-center tw-relative tw-pr-8"
         href={url}
         styled={false}
       >

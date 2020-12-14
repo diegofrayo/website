@@ -79,7 +79,7 @@ const Header = safeRender(function Header(): any {
       </section>
 
       <button
-        className="tw-flex tw-items-center tw-top-1 tw--right-1 tw-absolute tw-p-1 tw-rounded-md dark:twc-bg-icons tw-transition-opacity hover:tw-opacity-50  dark:hover:tw-opacity-75"
+        className="tw-flex tw-items-center tw-top-1 tw--right-1 tw-absolute tw-p-1 tw-rounded-md dark:twc-bg-secondary tw-transition-opacity hover:tw-opacity-50  dark:hover:tw-opacity-75"
         onClick={() => {
           setTheme(theme === "dark" ? "light" : "dark");
         }}
@@ -224,7 +224,7 @@ const BlogPostFooterItem = twcss.section({
 BlogPostFooterItem.Icon = twcss.img(
   {
     __base: "tw-inline-block tw-h-4 tw-w-4 tw-mr-2",
-    withDarkMode: "dark:tw-rounded-md dark:twc-bg-icons dark:tw-p-1",
+    withDarkMode: "dark:tw-rounded-md dark:twc-bg-secondary dark:tw-p-1",
     withoutDarkMode: "",
   },
   {
@@ -243,17 +243,17 @@ function Footer() {
 function SocialIcons(): any {
   const SOCIAL_NETWORKS = [
     { icon: "github", url: "https://github.com/diegofrayo" },
-    { icon: "twitter", url: "https://twitter.com/diegofrayo" },
+    { icon: "twitter-colorful", url: "https://twitter.com/diegofrayo" },
     {
-      icon: "linkedin",
+      icon: "linkedin-colorful",
       url: "https://www.linkedin.com/in/diegofrayo",
     },
     {
-      icon: "email",
+      icon: "email-colorful",
       url: "mailto:diegofrayo@gmail.com",
     },
     {
-      icon: "spotify",
+      icon: "spotify-colorful",
       url:
         "https://open.spotify.com/user/225gv7ppksrad4xzfwoyej4iq?si=iITcpGN7RjiwbgTFXy5P6Q",
     },
@@ -276,7 +276,7 @@ function SocialIcon({ icon, url }: Record<string, any>): any {
   return (
     <Link
       href={url}
-      className="tw-inline-block dark:twc-bg-icons tw-p-1 dark:tw-rounded-md tw-mx-1 tw-my-1 sm:tw-my-0 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
+      className="tw-inline-block dark:twc-bg-secondary tw-p-1 dark:tw-rounded-md tw-mx-1 tw-my-1 sm:tw-my-0 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
       styled={false}
     >
       <img

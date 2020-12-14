@@ -65,12 +65,20 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
       maxWidth: config("theme.screens")["md"],
     },
 
-    "twc-bg-main": {
+    "twc-bg-primary": {
       light: {
         backgroundColor: "white",
       },
       dark: {
         backgroundColor: "#282c34",
+      },
+    },
+    "twc-bg-secondary": {
+      light: {
+        backgroundColor: config("theme.colors").gray["100"],
+      },
+      dark: {
+        backgroundColor: config("theme.colors").gray["500"],
       },
     },
     "twc-text-color-primary": {
@@ -103,14 +111,6 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
       },
       dark: {
         borderColor: config("theme.colors").gray["600"],
-      },
-    },
-    "twc-bg-icons": {
-      light: {
-        backgroundColor: config("theme.colors").gray["100"],
-      },
-      dark: {
-        backgroundColor: config("theme.colors").gray["500"],
       },
     },
   };

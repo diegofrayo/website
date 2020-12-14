@@ -12,13 +12,19 @@ export const Routes: Record<string, any> = {
     acum[toUpperCaseObjectProperty(curr)] = `/${curr}`;
     return acum;
   }, {}),
-
+  PROJECTS: createUrl("projects"),
   ERROR_404: "/404",
   ERROR_500: "/500",
 
-  BLOG: (slug?: string): string => `/blog${slug ? "/" + slug : ""}`,
+  BLOG: createUrl("blog"),
   ...Object.keys(posts).reduce((acum, curr) => {
     acum[toUpperCaseObjectProperty(curr)] = `/blog/${curr}`;
     return acum;
   }, {}),
 };
+
+function createUrl(root: string): any {
+  return function createUrl_return(slug?: string) {
+    return `/${root}${slug ? "/" + slug : ""}`;
+  };
+}

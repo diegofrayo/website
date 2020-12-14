@@ -3,8 +3,8 @@ import Head from "next/head";
 
 import DEFAULT_METADATA from "~/data/metadata";
 import { useDidMount, useDocumentTitle } from "~/hooks";
-import { isAnalyticsDisabled, trackPageLoaded } from "~/utils/analytics";
-import { isDevelopmentEnvironment } from "~/utils/misc";
+import { trackPageLoaded } from "~/utils/analytics";
+import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 
 function Page({ children, metadata: metadataProp = {} }: Record<string, any>): any {
   const metadata = {
@@ -108,7 +108,7 @@ function Page({ children, metadata: metadataProp = {} }: Record<string, any>): a
         </script>
       </Head>
       {children}
-      {isAnalyticsDisabled && (
+      {isUserLoggedIn() && (
         <span className="tw-absolute tw-top-1 tw-left-1 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white" />
       )}
     </Fragment>

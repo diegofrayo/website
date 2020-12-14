@@ -18,7 +18,7 @@ body {
 }
 
 body {
-  @apply twc-bg-main;
+  @apply twc-bg-primary;
   @apply twc-text-color-primary;
   cursor: default;
   font-size: 18px;
@@ -40,7 +40,7 @@ h6 {
 /* --- Dark mode --- */
 
 .tw-dark body {
-  @apply value:dark:twc-bg-main;
+  @apply value:dark:twc-bg-primary;
   @apply value:dark:twc-text-color-primary;
 }
 
@@ -55,6 +55,12 @@ h6 {
 
 .tw-dark .twc-border-color-primary {
   @apply value:dark:twc-border-color-primary;
+}
+
+.tw-dark input,
+.tw-dark textarea {
+  @apply value:dark:twc-bg-secondary;
+  @apply value:dark:twc-text-color-primary;
 }
 
 /* --- ScrollBar --- */

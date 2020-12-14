@@ -7,7 +7,7 @@ import App from "next/app";
 import Router from "next/router";
 import { ThemeProvider } from "next-themes";
 
-import { initAnalytics, configureAnalytics } from "~/utils/analytics";
+import { initAnalytics } from "~/utils/analytics";
 import { detectEmojisSupport, setScroll } from "~/utils/misc";
 
 import ErrorPage from "./_error";
@@ -30,7 +30,6 @@ class CustomApp extends App {
     });
 
     if (this.state.loadFromServer) {
-      configureAnalytics();
       onRouteChangeComplete();
       this.setState({ loadFromServer: false });
     }
