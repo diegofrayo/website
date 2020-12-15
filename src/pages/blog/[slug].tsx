@@ -4,6 +4,7 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout, MDXContent } from "~/components";
+import { WEBSITE_METADATA } from "~/data/metadata";
 import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { getSiteTexts } from "~/i18n";
 import { Routes, DEFAULT_LOCALE } from "~/utils/constants";
@@ -32,7 +33,7 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
         ]}
         title={post[DEFAULT_LOCALE].title}
         blogMetadata={{
-          author: "@diegofrayo",
+          author: `@${WEBSITE_METADATA.username}`,
           slug: post.slug,
           publishedAt: post.published_at,
           updatedAt: post.updated_at,

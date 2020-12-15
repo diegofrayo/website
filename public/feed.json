@@ -1,0 +1,47 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Diego Rayo | Software Developer",
+    "home_page_url": "https://diegofrayo.vercel.app",
+    "feed_url": "https://diegofrayo.vercel.app/feed.json",
+    "description": "Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.",
+    "icon": "https://diegofrayo.vercel.app/static/images/favicon/favicon.ico",
+    "author": {
+        "name": "Diego Fernando Rayo Zamora",
+        "url": "https://diegofrayo.vercel.app"
+    },
+    "items": [
+        {
+            "id": "https://diegofrayo.vercel.app/blog/thoughts-about-my-profession",
+            "content_html": "",
+            "url": "https://diegofrayo.vercel.app/blog/thoughts-about-my-profession",
+            "title": "Thoughts about my profession",
+            "date_modified": "2020-12-05T00:00:00.000Z",
+            "author": {
+                "name": "Diego Rayo",
+                "url": "https://diegofrayo.vercel.app/about-me"
+            }
+        },
+        {
+            "id": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
+            "content_html": "",
+            "url": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
+            "title": "My favorite music and MDX",
+            "date_modified": "2020-12-03T00:00:00.000Z",
+            "author": {
+                "name": "Diego Rayo",
+                "url": "https://diegofrayo.vercel.app/about-me"
+            }
+        },
+        {
+            "id": "https://diegofrayo.vercel.app/blog/my-first-post",
+            "content_html": "",
+            "url": "https://diegofrayo.vercel.app/blog/my-first-post",
+            "title": "My first post",
+            "date_modified": "2020-12-01T00:00:00.000Z",
+            "author": {
+                "name": "Diego Rayo",
+                "url": "https://diegofrayo.vercel.app/about-me"
+            }
+        }
+    ]
+}

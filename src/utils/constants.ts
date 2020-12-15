@@ -2,7 +2,7 @@ import { posts } from "~/data/blog/posts.json";
 
 import { toUpperCaseObjectProperty } from "./misc";
 
-export const DEFAULT_LOCALE = "es";
+export const DEFAULT_LOCALE = "en";
 
 export const PAGES_NAMES = ["about-me", "resume", "roadmap"];
 

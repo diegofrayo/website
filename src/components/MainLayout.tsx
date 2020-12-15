@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import NextLink from "next/link";
 import { useTheme } from "next-themes";
 
+import { WEBSITE_METADATA } from "~/data/metadata";
 import { useDidMount } from "~/hooks";
 import { safeRender } from "~/hocs";
 import { getSiteTexts } from "~/i18n";
@@ -145,7 +146,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
               alt="Person icon"
             />
             <span className="tw-mr-1">{SiteTexts.page.created_by}</span>
-            <Link href="https://twitter.com/diegofrayo">{blogMetadata.author}</Link>
+            <Link href={WEBSITE_METADATA.social.twitter}>{blogMetadata.author}</Link>
           </BlogPostFooterItem>
         </section>
         <Separator
@@ -157,10 +158,8 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
             is={Link}
             href={`https://twitter.com/intent/tweet?${createQueryFromObject({
               text: title,
-              url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}${Routes.BLOG(
-                blogMetadata.slug,
-              )}`,
-              via: blogMetadata.author.substring(1),
+              url: `${WEBSITE_METADATA.url}${Routes.BLOG(blogMetadata.slug)}`,
+              via: WEBSITE_METADATA.username,
             })}`}
             styled={false}
             tw-variant="withHover"
@@ -175,9 +174,9 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
             is="button"
             className="clipboard"
             tw-variant="withHover"
-            data-clipboard-text={`${title} - ${
-              process.env.NEXT_PUBLIC_WEBSITE_URL
-            }${Routes.BLOG(blogMetadata.slug)} via @diegofrayo`}
+            data-clipboard-text={`${title} - ${WEBSITE_METADATA.url}${Routes.BLOG(
+              blogMetadata.slug,
+            )} via @${WEBSITE_METADATA.username}`}
             onClick={copyToClipboard}
           >
             <BlogPostFooterItem.Icon
@@ -242,24 +241,23 @@ function Footer() {
 
 function SocialIcons(): any {
   const SOCIAL_NETWORKS = [
-    { icon: "github", url: "https://github.com/diegofrayo" },
-    { icon: "twitter-colorful", url: "https://twitter.com/diegofrayo" },
+    { icon: "github", url: WEBSITE_METADATA.social.github },
+    { icon: "twitter-colorful", url: WEBSITE_METADATA.social.twitter },
     {
       icon: "linkedin-colorful",
-      url: "https://www.linkedin.com/in/diegofrayo",
+      url: WEBSITE_METADATA.social.linkedin,
     },
     {
       icon: "email-colorful",
-      url: "mailto:diegofrayo@gmail.com",
+      url: `mailto:${WEBSITE_METADATA.email}`,
     },
     {
       icon: "spotify-colorful",
-      url:
-        "https://open.spotify.com/user/225gv7ppksrad4xzfwoyej4iq?si=iITcpGN7RjiwbgTFXy5P6Q",
+      url: WEBSITE_METADATA.social.spotify,
     },
     {
       icon: "500px",
-      url: "https://500px.com/p/diegofrayo?view=photos",
+      url: WEBSITE_METADATA.social["500px"],
     },
   ];
 

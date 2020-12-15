@@ -6,6 +6,7 @@
       "published_at": "",
       "updated_at": "",
       "slug": "im-tired-to-reinvent-the-wheel",
+      "description": "",
       "es": {
         "title": "Me cansé de reinventar la rueda"
       },
@@ -19,6 +20,7 @@
       "published_at": "",
       "updated_at": "",
       "slug": "how-i-use-tailwind-css",
+      "description": "",
       "es": {
         "title": "Como uso Tailwind CSS"
       },
@@ -32,6 +34,7 @@
       "published_at": "2020-12-05",
       "updated_at": "2020-12-06",
       "slug": "thoughts-about-my-profession",
+      "description": "",
       "es": {
         "title": "Pensamientos sobre mi profesión"
       },
@@ -45,6 +48,7 @@
       "published_at": "2020-12-03",
       "updated_at": "2020-12-08",
       "slug": "my-favorite-music-and-mdx",
+      "description": "",
       "es": {
         "title": "Mi música favorita y MDX"
       },
@@ -58,6 +62,7 @@
       "published_at": "2020-12-01",
       "updated_at": "2020-12-05",
       "slug": "my-first-post",
+      "description": "",
       "es": {
         "title": "Mi primer post"
       },

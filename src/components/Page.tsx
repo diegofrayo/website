@@ -1,21 +1,19 @@
 import React, { Fragment } from "react";
 import Head from "next/head";
 
-import DEFAULT_METADATA from "~/data/metadata";
+import { SEO_METADATA, WEBSITE_METADATA } from "~/data/metadata";
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import { trackPageLoaded } from "~/utils/analytics";
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 
 function Page({ children, metadata: metadataProp = {} }: Record<string, any>): any {
   const metadata = {
-    ...DEFAULT_METADATA,
+    ...SEO_METADATA,
     ...metadataProp,
     title: metadataProp.title
-      ? `${metadataProp.title} - ${DEFAULT_METADATA.title}`
-      : DEFAULT_METADATA.title,
-    url: metadataProp.url
-      ? `${DEFAULT_METADATA.url}${metadataProp.url}`
-      : DEFAULT_METADATA.url,
+      ? `${metadataProp.title} - ${SEO_METADATA.title}`
+      : SEO_METADATA.title,
+    url: metadataProp.url ? `${SEO_METADATA.url}${metadataProp.url}` : SEO_METADATA.url,
   };
 
   useDocumentTitle(metadata.title);
@@ -50,7 +48,8 @@ function Page({ children, metadata: metadataProp = {} }: Record<string, any>): a
         <meta property="og:url" content={metadata.url} />
         <meta property="og:site_name" content={metadata.title} />
 
-        <link rel="canonical" href={DEFAULT_METADATA.url} />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="canonical" href={SEO_METADATA.url} />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -74,7 +73,18 @@ function Page({ children, metadata: metadataProp = {} }: Record<string, any>): a
             isDevelopmentEnvironment() ? "-dev" : ""
           }.ico?v=1`}
         />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={`RSS Feed for ${WEBSITE_METADATA.urlProd.replace("https://", "")}`}
+          href="/rss.xml"
+        />
+        <link
+          rel="alternate"
+          type="application/rss+atom"
+          title={`Atom Feed for ${WEBSITE_METADATA.urlProd.replace("https://", "")}`}
+          href="/atom.xml"
+        />
 
         <script
           dangerouslySetInnerHTML={{
@@ -95,14 +105,14 @@ function Page({ children, metadata: metadataProp = {} }: Record<string, any>): a
               "addressLocality": "Armenia",
               "addressRegion": "Quindío"
             },
-            "email": "mailto:diegofrayo@gmail.com",
-            "jobTitle": "Software Developer",
-            "name": "Diego Fernando Rayo Zamora",
-            "url": "https://www.diegofrayo.vercel.app",
+            "email": "mailto:${WEBSITE_METADATA.email}",
+            "jobTitle": "${WEBSITE_METADATA.jobTitle}",
+            "name": "${WEBSITE_METADATA.fullName}",
+            "url": "${WEBSITE_METADATA.url}",
             "sameAs": [
-              "https://www.github.com/diegofrayo",
-              "https://www.twitter.com/diegofrayo",
-              "https://www.linkedin.com/in/diegofrayo"
+              "${WEBSITE_METADATA.social.github}",
+              "${WEBSITE_METADATA.social.twitter}",
+              "${WEBSITE_METADATA.social.linkedin}",
             ]
           `}
         </script>

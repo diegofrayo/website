@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
 import CryptoJS from "crypto-js";
 
-import { MainLayout, Page } from "~/components";
+import { MainLayout, Page, Separator } from "~/components";
 import { getSiteTexts } from "~/i18n";
 import { Routes } from "~/utils/constants";
 import { copyToClipboard } from "~/utils/misc";
+import { useDidMount } from "~/hooks";
 
 const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";
 const SiteTexts = getSiteTexts({ layout: true });
@@ -12,6 +13,11 @@ const SiteTexts = getSiteTexts({ layout: true });
 function PasswordsPage(): any {
   const [output, setOutput] = useState("");
   const inputRef = useRef(null);
+
+  useDidMount(() => {
+    inputRef.current.focus();
+    inputRef.current.click();
+  });
 
   function handleEncrypt() {
     const encryptedText = CryptoJS.AES.encrypt(
@@ -28,7 +34,7 @@ function PasswordsPage(): any {
       MY_STUPID_SECRET_KEY,
     ).toString(CryptoJS.enc.Utf8);
 
-    setOutput(decryptedText);
+    setOutput(decryptedText || "Error, the text was not decrypted :(");
   }
 
   function handleCopyText(e) {
@@ -49,15 +55,15 @@ function PasswordsPage(): any {
         title={"stupid"}
       >
         <section className="tw-mb-8">
-          <h2 className="tw-bg-gray-700 tw-text-white tw-text-center tw-p-2">
-            type your text
-          </h2>
-          <input
-            id="input"
-            className="tw-border twc-border-color-primary tw-block tw-p-2 tw-w-full"
-            ref={inputRef}
-          />
-          <section className="tw-flex tw-flex-wrap tw-justify-between tw-py-1">
+          <label htmlFor="input">
+            <p className="tw-font-bold tw-cursor-pointer">type your text</p>
+            <input
+              id="input"
+              className="tw-border tw-border-b-4 twc-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
+              ref={inputRef}
+            />
+          </label>
+          <section className="tw-flex tw-flex-wrap tw-justify-between">
             <button
               type="button"
               className="tw-inline-block tw-text-sm tw-mx-1 tw-font-bold"
@@ -75,9 +81,11 @@ function PasswordsPage(): any {
           </section>
         </section>
 
-        <section className="tw-my-4">
+        <Separator size={10} className="tw-border-t twc-border-color-primary" />
+
+        <section>
           <p className="tw-font-bold">output</p>
-          <p className="tw-my-1 tw-border twc-border-color-primary tw-block tw-p-3 tw-w-full">
+          <p className="output tw-my-1 tw-border twc-border-color-primary tw-block tw-p-3 tw-w-full">
             {output}
           </p>
           <button
@@ -89,6 +97,14 @@ function PasswordsPage(): any {
             copy
           </button>
         </section>
+
+        <style jsx>
+          {`
+            .output {
+              min-height: 40px;
+            }
+          `}
+        </style>
       </MainLayout>
     </Page>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
 
+import { WEBSITE_METADATA } from "~/data/metadata";
 import { getSiteTexts } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { Routes } from "~/utils/constants";
@@ -112,7 +113,9 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
           className="tw-h-8 tw-w-8 tw-mr-3"
         />
         <section className="tw-flex-1 tw-text-left">
-          <h3>diegofrayo/{name}</h3>
+          <h3>
+            {WEBSITE_METADATA.username}/{name}
+          </h3>
           <p className="tw-text-sm tw-text-gray-700">{description}</p>
         </section>
 
