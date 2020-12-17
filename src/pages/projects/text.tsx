@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 
 import { MainLayout, Page, Separator } from "~/components";
 import { useDidMount } from "~/hooks";
-import { getSiteTexts } from "~/i18n";
 import { Routes } from "~/utils/constants";
+import { getSiteTexts } from "~/utils/i18n";
 import { capitalize, copyToClipboard, slugify } from "~/utils/misc";
 
 const SiteTexts = getSiteTexts({ layout: true });
@@ -43,14 +43,17 @@ function TextPage(): any {
     <Page metadata={{ title: "text", noRobots: true }}>
       <MainLayout
         breadcumb={[
-          { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },
-          { text: SiteTexts.layout.breadcumb.projects, url: Routes.PROJECTS() },
+          { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
+          {
+            text: SiteTexts.layout.current_locale.breadcumb.projects,
+            url: Routes.PROJECTS(),
+          },
           {
             text: "text",
             url: Routes.PROJECTS("text"),
           },
         ]}
-        title={"text"}
+        title="text"
       >
         <section>
           <p className="tw-font-bold tw-mb-1">type your text</p>

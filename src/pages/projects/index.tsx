@@ -2,20 +2,23 @@ import * as React from "react";
 import NextLink from "next/link";
 
 import { MainLayout, Page, UL, Link } from "~/components";
-import { getSiteTexts } from "~/i18n";
 import { Routes } from "~/utils/constants";
+import { getSiteTexts } from "~/utils/i18n";
 
-const SiteTexts = getSiteTexts({ layout: true });
+const SiteTexts = getSiteTexts({ page: Routes.PROJECTS(), layout: true });
 
 function ProjectsPage(): any {
   return (
-    <Page>
+    <Page metadata={{ noRobots: true }}>
       <MainLayout
         breadcumb={[
-          { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },
-          { text: SiteTexts.layout.breadcumb.projects, url: Routes.PROJECTS() },
+          { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
+          {
+            text: SiteTexts.layout.current_locale.breadcumb.projects,
+            url: Routes.PROJECTS(),
+          },
         ]}
-        title={SiteTexts.layout.breadcumb.projects}
+        title={SiteTexts.page.current_locale.title}
       >
         <UL>
           <li>

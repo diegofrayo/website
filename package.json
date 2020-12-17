@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --ext .ts,.tsx --fix",
-    "style": "prettier --write \"{src,scripts}/**/*.{js,ts,tsx,json}\""
+    "style": "prettier --write \"{src,scripts}/**/*.{js,ts,tsx,json}\"",
+    "build:seo-files": "node scripts/rss.js && node scripts/sitemap.js"
   },
   "dependencies": {
     "autoprefixer": "^10.0.4",
@@ -52,6 +53,7 @@
     "lint-staged": "^10.2.11",
     "next-mdx-remote": "^1.0.0",
     "prettier": "^2.0.5",
+    "sitemap-generator": "^8.5.1",
     "typescript": "^4.1.2"
   },
   "husky": {

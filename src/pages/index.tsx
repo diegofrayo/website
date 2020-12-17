@@ -2,16 +2,21 @@ import * as React from "react";
 import NextLink from "next/link";
 
 import { Page, MainLayout, Emoji } from "~/components";
-import { getSiteTexts } from "~/i18n";
 import { Routes } from "~/utils/constants";
+import { getSiteTexts } from "~/utils/i18n";
 import { isUserLoggedIn } from "~/utils/misc";
 
 const SiteTexts = getSiteTexts({ page: Routes.HOME });
 
 function HomePage(): any {
   return (
-    <Page>
-      <MainLayout title={SiteTexts.page.title}>
+    <Page
+      metadata={{
+        description: SiteTexts.page.current_locale.meta_description,
+        pathname: Routes.HOME,
+      }}
+    >
+      <MainLayout title={SiteTexts.page.current_locale.title}>
         <MainMenu />
       </MainLayout>
     </Page>
@@ -24,13 +29,34 @@ export default HomePage;
 
 function MainMenu() {
   const ITEMS = [
-    { emoji: "✍️", label: SiteTexts.page.menu_item_blog, url: Routes.BLOG() },
-    { emoji: "🙋‍♂️", label: SiteTexts.page.menu_item_about_me, url: Routes.ABOUT_ME },
-    { emoji: "📄", label: SiteTexts.page.menu_item_resume, url: Routes.RESUME },
-    { emoji: "🚀", label: SiteTexts.page.menu_item_roadmap, url: Routes.ROADMAP },
+    {
+      emoji: "✍️",
+      label: SiteTexts.page.common.menu_item_blog,
+      url: Routes.BLOG(),
+    },
+    {
+      emoji: "🙋‍♂️",
+      label: SiteTexts.page.current_locale.menu_item_about_me,
+      url: Routes.ABOUT_ME,
+    },
+    {
+      emoji: "📄",
+      label: SiteTexts.page.current_locale.menu_item_resume,
+      url: Routes.RESUME,
+    },
+    {
+      emoji: "🚀",
+      label: SiteTexts.page.common.menu_item_roadmap,
+      url: Routes.ROADMAP,
+    },
+    {
+      emoji: "🛠️",
+      label: SiteTexts.page.common.menu_item_snippets,
+      url: Routes.SNIPPETS,
+    },
     isUserLoggedIn() && {
       emoji: "🔮",
-      label: SiteTexts.page.menu_item_projects,
+      label: SiteTexts.page.current_locale.menu_item_projects,
       url: Routes.PROJECTS(),
     },
   ].filter(Boolean);

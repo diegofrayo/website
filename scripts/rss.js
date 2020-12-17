@@ -1,12 +1,14 @@
 require("dotenv").config({ path: ".env" });
 const Feed = require("feed").Feed;
+const fs = require("fs");
 
 const { WEBSITE_METADATA, SEO_METADATA } = require("../src/data/metadata");
 const { posts } = require("../src/data/blog/posts.json");
+const { pages } = require("../src/data/texts.json");
 
 const feed = new Feed({
   title: SEO_METADATA.title,
-  description: SEO_METADATA.description,
+  description: pages["/"].en.meta_description,
   id: WEBSITE_METADATA.username,
   link: WEBSITE_METADATA.urlProd,
   language: "en",
@@ -34,8 +36,8 @@ Object.values(posts).forEach(post => {
     title: post.en.title,
     id: url,
     link: url,
-    description: post.description,
-    content: post.description,
+    description: post.en.description,
+    content: post.en.description,
     author: [
       {
         name: WEBSITE_METADATA.shortName,
@@ -51,7 +53,7 @@ Object.values(posts).forEach(post => {
   feed.addCategory,
 );
 
-fs = require("fs");
 fs.writeFileSync("./public/rss.xml", feed.rss2());
 fs.writeFileSync("./public/atom.xml", feed.atom1());
 fs.writeFileSync("./public/feed.json", feed.json1());
+console.log("RSS files created");

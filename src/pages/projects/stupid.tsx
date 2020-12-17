@@ -2,10 +2,10 @@ import React, { useState, useRef } from "react";
 import CryptoJS from "crypto-js";
 
 import { MainLayout, Page, Separator } from "~/components";
-import { getSiteTexts } from "~/i18n";
-import { Routes } from "~/utils/constants";
-import { copyToClipboard } from "~/utils/misc";
 import { useDidMount } from "~/hooks";
+import { Routes } from "~/utils/constants";
+import { getSiteTexts } from "~/utils/i18n";
+import { copyToClipboard } from "~/utils/misc";
 
 const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";
 const SiteTexts = getSiteTexts({ layout: true });
@@ -45,14 +45,17 @@ function PasswordsPage(): any {
     <Page metadata={{ title: "stupid", noRobots: true }}>
       <MainLayout
         breadcumb={[
-          { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },
-          { text: SiteTexts.layout.breadcumb.projects, url: Routes.PROJECTS() },
+          { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
+          {
+            text: SiteTexts.layout.current_locale.breadcumb.projects,
+            url: Routes.PROJECTS(),
+          },
           {
             text: "stupid",
             url: Routes.PROJECTS("stupid"),
           },
         ]}
-        title={"stupid"}
+        title="stupid"
       >
         <section className="tw-mb-8">
           <label htmlFor="input">

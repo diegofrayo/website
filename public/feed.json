@@ -12,9 +12,10 @@
     "items": [
         {
             "id": "https://diegofrayo.vercel.app/blog/thoughts-about-my-profession",
-            "content_html": "",
+            "content_html": "I want to recopile some thoughts about my job and this industry.",
             "url": "https://diegofrayo.vercel.app/blog/thoughts-about-my-profession",
             "title": "Thoughts about my profession",
+            "summary": "I want to recopile some thoughts about my job and this industry.",
             "date_modified": "2020-12-05T00:00:00.000Z",
             "author": {
                 "name": "Diego Rayo",
@@ -23,9 +24,10 @@
         },
         {
             "id": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
-            "content_html": "",
+            "content_html": "MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.",
             "url": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
             "title": "My favorite music and MDX",
+            "summary": "MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.",
             "date_modified": "2020-12-03T00:00:00.000Z",
             "author": {
                 "name": "Diego Rayo",
@@ -34,9 +36,10 @@
         },
         {
             "id": "https://diegofrayo.vercel.app/blog/my-first-post",
-            "content_html": "",
+            "content_html": "This is my first post, here I want to welcome you to my website and explain why I built it.",
             "url": "https://diegofrayo.vercel.app/blog/my-first-post",
             "title": "My first post",
+            "summary": "This is my first post, here I want to welcome you to my website and explain why I built it.",
             "date_modified": "2020-12-01T00:00:00.000Z",
             "author": {
                 "name": "Diego Rayo",

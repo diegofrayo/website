@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-import { getSiteTexts, parseSiteText, pluralize } from "~/i18n";
+import { getSiteTexts, parseSiteText, pluralize } from "~/utils/i18n";
 
 import { Routes } from "./constants";
 
@@ -12,25 +12,25 @@ export function getDifferenceBetweenDates(startDate: string, endDate: Date): str
   const difference = dayjs(endDate).diff(dayjs(startDate, "YYYY/MM/DD"), "day");
 
   if (difference === 0) {
-    return SiteTexts.page.today;
+    return SiteTexts.page.current_locale.today;
   }
 
   if (difference === 1) {
-    return SiteTexts.page.yesterday;
+    return SiteTexts.page.current_locale.yesterday;
   }
 
   if (difference < 7) {
-    return parseSiteText(SiteTexts.page.days_ago, { days: difference });
+    return parseSiteText(SiteTexts.page.current_locale.days_ago, { days: difference });
   }
 
   if (difference < 30) {
-    return parseSiteText(SiteTexts.page.weeks_ago, {
+    return parseSiteText(SiteTexts.page.current_locale.weeks_ago, {
       weeks_value: Math.round(difference / 7),
       weeks_text: pluralize(
         Math.round(difference / 7),
         {
-          singular: SiteTexts.page.week,
-          plural: SiteTexts.page.weeks,
+          singular: SiteTexts.page.current_locale.week,
+          plural: SiteTexts.page.current_locale.weeks,
         },
         { includeNumber: false },
       ),
@@ -38,26 +38,26 @@ export function getDifferenceBetweenDates(startDate: string, endDate: Date): str
   }
 
   if (difference < 365) {
-    return parseSiteText(SiteTexts.page.months_ago, {
+    return parseSiteText(SiteTexts.page.current_locale.months_ago, {
       months_value: Math.round(difference / 30),
       months_text: pluralize(
         Math.round(difference / 30),
         {
-          singular: SiteTexts.page.month,
-          plural: SiteTexts.page.months,
+          singular: SiteTexts.page.current_locale.month,
+          plural: SiteTexts.page.current_locale.months,
         },
         { includeNumber: false },
       ),
     });
   }
 
-  return parseSiteText(SiteTexts.page.years_ago, {
+  return parseSiteText(SiteTexts.page.current_locale.years_ago, {
     years_value: Math.round(difference / 365),
     years_text: pluralize(
       Math.round(difference / 365),
       {
-        singular: SiteTexts.page.year,
-        plural: SiteTexts.page.years,
+        singular: SiteTexts.page.current_locale.year,
+        plural: SiteTexts.page.current_locale.years,
       },
       { includeNumber: false },
     ),

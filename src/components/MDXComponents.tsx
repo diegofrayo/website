@@ -3,10 +3,10 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
 
 import { WEBSITE_METADATA } from "~/data/metadata";
-import { getSiteTexts } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { Routes } from "~/utils/constants";
-import { copyToClipboard } from "~/utils/misc";
+import { getSiteTexts } from "~/utils/i18n";
+import { copyToClipboard, slugify } from "~/utils/misc";
 
 import { Link } from "./";
 
@@ -24,13 +24,13 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
       data-block
     >
       <section className="tw-flex tw-items-center tw-justify-between tw-px-2 tw-py-2">
-        {fileName ||
-          (sourceURL && (
-            <code className="tw-text-sm tw-font-bold">
-              {`// ${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}`}
-            </code>
-          ))}
-
+        <code className="tw-text-sm tw-font-bold">
+          {fileName
+            ? `// ${slugify(fileName)}`
+            : sourceURL
+            ? `// ${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}`
+            : ""}
+        </code>
         <span className="tw-rounded-md tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-4 tw-font-mono">
           {language}
         </span>
@@ -68,7 +68,7 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
               className="tw-h-4 tw-w-4 tw-inline-block tw-align-middle tw-mr-1 dark:tw-rounded-full dark:twc-bg-secondary dark:tw-p-0.5"
             />
             <span className="tw-inline-block tw-text-sm dark:twc-text-color-primary">
-              {SiteTexts.page.see_source_code}
+              {SiteTexts.page.current_locale.see_source_code}
             </span>
           </Link>
         )}
@@ -77,7 +77,7 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
           data-clipboard-text={code}
           onClick={copyToClipboard}
         >
-          {SiteTexts.page.copy_to_clipboard}
+          {SiteTexts.page.current_locale.copy_to_clipboard}
         </button>
       </section>
 

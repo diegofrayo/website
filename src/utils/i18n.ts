@@ -1,16 +1,30 @@
+import Texts from "~/data/texts.json";
 import { DEFAULT_LOCALE } from "~/utils/constants";
-
-import Texts from "./texts.json";
 
 export function getSiteTexts({ page, layout }: Record<string, any>): Record<string, any> {
   const result: Record<string, any> = {};
 
   if (layout) {
-    result.layout = Texts[DEFAULT_LOCALE].layout;
+    result.layout = {
+      config: Texts.layout.config,
+      common: Texts.layout.common,
+      current_locale: Texts.layout[DEFAULT_LOCALE],
+    };
   }
 
   if (page) {
-    result.page = Texts[DEFAULT_LOCALE].pages[page];
+    const pageContent = Texts.pages[page];
+
+    result.page = {
+      config: pageContent.config || {},
+      common: pageContent.common || {},
+      current_locale:
+        pageContent[
+          pageContent.config && pageContent.config.default_locale
+            ? pageContent.config.default_locale
+            : DEFAULT_LOCALE
+        ],
+    };
   }
 
   return result;

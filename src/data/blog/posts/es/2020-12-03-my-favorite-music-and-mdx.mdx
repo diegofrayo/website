@@ -101,8 +101,8 @@ Por último, este es el componente que renderiza una publicación.
     <Page metadata={{ title: post[DEFAULT_LOCALE].title }}>
       <MainLayout
         breadcumb={[
-          { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },
-          { text: SiteTexts.layout.breadcumb.blog, url: Routes.BLOG() },
+          { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
+          { text: SiteTexts.layout.current_locale.breadcumb.blog, url: Routes.BLOG() },
           {
             text: post[DEFAULT_LOCALE].title,
             url: Routes.BLOG(post.slug),
@@ -253,7 +253,7 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
               className="tw-h-3 tw-w-3 tw-inline-block tw-align-middle tw-mr-1"
             />
             <span className="tw-inline-block tw-text-sm">
-              {SiteTexts.page.see_source_code}
+              {SiteTexts.page.current_locale.see_source_code}
             </span>
           </Link>
         )}
@@ -262,7 +262,7 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
           className="clipboard tw-block sm:tw-inline-block tw-text-sm  tw-mt-1 sm:tw-mt-0 tw-no-underline"
           role="button"
         >
-          {SiteTexts.page.copy_to_clipboard}
+          {SiteTexts.page.current_locale.copy_to_clipboard}
         </Link>
       </section>
       <style jsx>{\`

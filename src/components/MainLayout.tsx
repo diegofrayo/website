@@ -1,14 +1,15 @@
 import React, { Fragment, useState } from "react";
 import NextLink from "next/link";
 import { useTheme } from "next-themes";
+import classnames from "classnames";
 
 import { WEBSITE_METADATA } from "~/data/metadata";
 import { useDidMount } from "~/hooks";
 import { safeRender } from "~/hocs";
-import { getSiteTexts } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { DEFAULT_LOCALE, Routes } from "~/utils/constants";
 import { getDifferenceBetweenDates } from "~/utils/dates";
+import { getSiteTexts } from "~/utils/i18n";
 import {
   copyToClipboard,
   createQueryFromObject,
@@ -59,8 +60,6 @@ export default MainLayout;
 const Main = twcss.main`twc-max-w-base tw-w-full tw-py-4 tw-px-6 tw-mx-auto`;
 
 const Header = safeRender(function Header(): any {
-  const { theme, setTheme } = useTheme();
-
   return (
     <header className="twc-border-color-primary tw-border-b tw-pb-4 tw-flex tw-relative">
       <NextLink href={Routes.HOME}>
@@ -74,26 +73,43 @@ const Header = safeRender(function Header(): any {
         </h1>
         <section className="tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center">
           <p className="tw-text-sm sm:tw-text-base tw-inline-block tw-mr-2">
-            {SiteTexts.layout.header.job_title}
+            {SiteTexts.layout.current_locale.header.job_title}
           </p>
         </section>
       </section>
 
-      <button
-        className="tw-flex tw-items-center tw-top-1 tw--right-1 tw-absolute tw-p-1 tw-rounded-md dark:twc-bg-secondary tw-transition-opacity hover:tw-opacity-50  dark:hover:tw-opacity-75"
-        onClick={() => {
-          setTheme(theme === "dark" ? "light" : "dark");
-        }}
-      >
-        <img
-          src={`/static/images/icons/${theme === "dark" ? "sun" : "moon"}.svg`}
-          alt="Switch mode icon"
-          className="tw-h-5 tw-w-5"
-        />
-      </button>
+      <span className="tw-absolute tw-top-1 tw-right-0">
+        <DarkModeToggle />
+      </span>
     </header>
   );
 });
+
+function DarkModeToggle(): any {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <button
+      className="tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md tw-bg-black dark:twc-bg-secondary"
+      onClick={() => {
+        setTheme(theme === "dark" ? "light" : "dark");
+      }}
+    >
+      <span
+        className={classnames(
+          "tw-rounded-full tw-p-1 tw-w-7 tw-h-7 tw-absolute tw--top-0.5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border tw-border-black dark:tw-border-white",
+          theme === "dark" ? "tw--left-0.5" : "tw--right-0.5",
+        )}
+      >
+        <img
+          src={`/static/images/icons/${theme === "light" ? "sun" : "moon"}.svg`}
+          alt="Switch mode icon"
+          className="tw-h-3 tw-w-3"
+        />
+      </span>
+    </button>
+  );
+}
 
 const Body = twcss.section``;
 
@@ -127,7 +143,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
               alt="Calendar icon"
               tw-variant="withoutDarkMode"
             />
-            <span className="tw-mr-1">{SiteTexts.page.published_at}</span>
+            <span className="tw-mr-1">{SiteTexts.page.current_locale.published_at}</span>
             <strong>{blogMetadata.publishedAt.replace(/-+/g, "/")}</strong>
           </BlogPostFooterItem>
           <BlogPostFooterItem>
@@ -135,7 +151,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
               src="/static/images/icons/updated.svg"
               alt="Document updated icon"
             />
-            <span className="tw-mr-1">{SiteTexts.page.updated_at}</span>
+            <span className="tw-mr-1">{SiteTexts.page.current_locale.updated_at}</span>
             <strong>
               {getDifferenceBetweenDates(blogMetadata.updatedAt, new Date())}
             </strong>
@@ -145,7 +161,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
               src="/static/images/icons/person.svg"
               alt="Person icon"
             />
-            <span className="tw-mr-1">{SiteTexts.page.created_by}</span>
+            <span className="tw-mr-1">{SiteTexts.page.current_locale.created_by}</span>
             <Link href={WEBSITE_METADATA.social.twitter}>{blogMetadata.author}</Link>
           </BlogPostFooterItem>
         </section>
@@ -168,7 +184,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
               src="/static/images/icons/twitter.svg"
               alt="Twitter icon"
             />
-            <span>{SiteTexts.page.share_blog_post_twitter}</span>
+            <span>{SiteTexts.page.current_locale.share_blog_post_twitter}</span>
           </BlogPostFooterItem>
           <BlogPostFooterItem
             is="button"
@@ -183,7 +199,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
               src="/static/images/icons/link.svg"
               alt="Link icon"
             />
-            <span>{SiteTexts.page.copy_url_to_clipboard}</span>
+            <span>{SiteTexts.page.current_locale.copy_url_to_clipboard}</span>
           </BlogPostFooterItem>
           <BlogPostFooterItem
             is={Link}
@@ -197,7 +213,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
               src="/static/images/icons/source-code.svg"
               alt="Source code icon"
             />
-            <span>{SiteTexts.page.see_publication_source_code}</span>
+            <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
           </BlogPostFooterItem>
         </section>
       </section>

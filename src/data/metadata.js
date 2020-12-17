@@ -5,8 +5,6 @@ const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 module.exports = {
   SEO_METADATA: {
     title: `${SHORT_NAME} | ${JOB_TITLE}`,
-    description:
-      "Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.",
     url: WEBSITE_URL,
   },
   WEBSITE_METADATA: {

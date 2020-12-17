@@ -6,8 +6,8 @@ import renderToString from "next-mdx-remote/render-to-string";
 import { Page, MainLayout, MDXContent } from "~/components";
 import { WEBSITE_METADATA } from "~/data/metadata";
 import { posts as BlogPosts } from "~/data/blog/posts.json";
-import { getSiteTexts } from "~/i18n";
 import { Routes, DEFAULT_LOCALE } from "~/utils/constants";
+import { getSiteTexts } from "~/utils/i18n";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 
 const SiteTexts = getSiteTexts({ page: Routes.BLOG(), layout: true });
@@ -19,13 +19,14 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
     <Page
       metadata={{
         title: post[DEFAULT_LOCALE].title,
-        url: Routes.BLOG(post.slug),
+        pathname: Routes.BLOG(post.slug),
+        description: post[DEFAULT_LOCALE].description,
       }}
     >
       <MainLayout
         breadcumb={[
-          { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },
-          { text: SiteTexts.layout.breadcumb.blog, url: Routes.BLOG() },
+          { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
+          { text: SiteTexts.layout.current_locale.breadcumb.blog, url: Routes.BLOG() },
           {
             text: post[DEFAULT_LOCALE].title,
             url: Routes.BLOG(post.slug),
