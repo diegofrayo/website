@@ -1,5 +1,5 @@
 import Texts from "~/data/texts.json";
-import { DEFAULT_LOCALE } from "~/utils/constants";
+import { CURRENT_LOCALE } from "~/utils/constants";
 
 export function getSiteTexts({ page, layout }: Record<string, any>): Record<string, any> {
   const result: Record<string, any> = {};
@@ -8,7 +8,7 @@ export function getSiteTexts({ page, layout }: Record<string, any>): Record<stri
     result.layout = {
       config: Texts.layout.config,
       common: Texts.layout.common,
-      current_locale: Texts.layout[DEFAULT_LOCALE],
+      current_locale: Texts.layout[CURRENT_LOCALE],
     };
   }
 
@@ -22,7 +22,7 @@ export function getSiteTexts({ page, layout }: Record<string, any>): Record<stri
         pageContent[
           pageContent.config && pageContent.config.default_locale
             ? pageContent.config.default_locale
-            : DEFAULT_LOCALE
+            : CURRENT_LOCALE
         ],
     };
   }

@@ -3,7 +3,7 @@ import NextLink from "next/link";
 
 import { Page, MainLayout, UL, Link } from "~/components";
 import { posts as BlogPosts } from "~/data/blog/posts.json";
-import { Routes, DEFAULT_LOCALE } from "~/utils/constants";
+import { Routes, CURRENT_LOCALE } from "~/utils/constants";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { getSiteTexts } from "~/utils/i18n";
 import { removeEmojiFromTitle } from "~/utils/misc";
@@ -36,7 +36,7 @@ function BlogPage(): any {
                 key={item.slug}
                 slug={item.slug}
                 updatedAt={item.updated_at}
-                title={item[DEFAULT_LOCALE].title}
+                title={item[CURRENT_LOCALE].title}
               />
             );
           })}

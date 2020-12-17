@@ -1,47 +1,19 @@
-<Code
-  language="javascript"
-  fileName="Concat regex with variables"
-  code={`const replacement = "my";
-"my string my string".replace(new RegExp(replacement, "g"), "your");
-// output: "your string your string"`}
-/>
+# Table of Content
 
-<Code
-  language="javascript"
-  fileName="Create array with N elements"
-  code={`function createArray(length: number): Array<number> {
-  return Array.from(Array(length).keys()).map(value => value + 1);
-}`}
-/>
+- [JavaScript](#javascript)
+  - [Capitalize string](#capitalize-string)
+  - [Concat regex with variables](#concat-regex-with-variables)
+  - [Copy to clipboard](#copy-to-clipboard)
+  - [Create array with N elements](#create-array-with-n-elements)
+  - [Delay](#delay)
+  - [Slugify string](#slugify-string)
+- [CSS](#css)
 
-<Code
-  language="typescript"
-  fileName="Delay"
-  code={`function delay(time: number): Promise<any> {
-  return new Promise(resolve => {
-    setTimeout(resolve, time);
-  });
-}`}
-/>
+---
 
-<Code
-  language="typescript"
-  fileName="Slugify string"
-  code={`function slugify(str: string): string {
-  let result = str.replace(/^\s+|\s+$/g, "").toLowerCase();
-  // remove accents, swap ñ for n, etc
-  const FROM = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
-  const TO = "aaaaeeeeiiiioooouuuunc------";
-  for (let i = 0, l = FROM.length; i < l; i += 1) {
-    result = result.replace(new RegExp(FROM.charAt(i), "g"), TO.charAt(i));
-  }
-  result = result
-    .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
-    .replace(/\s+/g, "-") // collapse whitespace and replace by -
-    .replace(/-+/g, "-"); // collapse dashes
-  return result;
-}`}
-/>
+# JavaScript
+
+## Capitalize string
 
 <Code
   language="typescript"
@@ -55,6 +27,18 @@
     .trim();
 }`}
 />
+
+## Concat regex with variables
+
+<Code
+  language="javascript"
+  fileName="Concat regex with variables"
+  code={`const replacement = "my";
+"my string my string".replace(new RegExp(replacement, "g"), "your");
+// output: "your string your string"`}
+/>
+
+## Copy to clipboard
 
 <Code
   language="typescript"
@@ -86,3 +70,48 @@
   }
 }`}
 />
+
+## Create array with N elements
+
+<Code
+  language="javascript"
+  fileName="Create array with N elements"
+  code={`function createArray(length: number): Array<number> {
+  return Array.from(Array(length).keys()).map(value => value + 1);
+}`}
+/>
+
+## Delay
+
+<Code
+  language="typescript"
+  fileName="Delay"
+  code={`function delay(time: number): Promise<any> {
+  return new Promise(resolve => {
+    setTimeout(resolve, time);
+  });
+}`}
+/>
+
+## Slugify string
+
+<Code
+  language="typescript"
+  fileName="Slugify string"
+  code={`function slugify(str: string): string {
+  let result = str.replace(/^\s+|\s+$/g, "").toLowerCase();
+  // remove accents, swap ñ for n, etc
+  const FROM = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+  const TO = "aaaaeeeeiiiioooouuuunc------";
+  for (let i = 0, l = FROM.length; i < l; i += 1) {
+    result = result.replace(new RegExp(FROM.charAt(i), "g"), TO.charAt(i));
+  }
+  result = result
+    .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
+    .replace(/\s+/g, "-") // collapse whitespace and replace by -
+    .replace(/-+/g, "-"); // collapse dashes
+  return result;
+}`}
+/>
+
+# CSS

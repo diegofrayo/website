@@ -7,7 +7,7 @@ import { WEBSITE_METADATA } from "~/data/metadata";
 import { useDidMount } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
-import { DEFAULT_LOCALE, Routes } from "~/utils/constants";
+import { CURRENT_LOCALE, Routes } from "~/utils/constants";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { getSiteTexts } from "~/utils/i18n";
 import {
@@ -203,7 +203,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
           </BlogPostFooterItem>
           <BlogPostFooterItem
             is={Link}
-            href={`https://raw.githubusercontent.com/diegofrayo/website/master/src/data/blog/posts/${DEFAULT_LOCALE}/${
+            href={`https://raw.githubusercontent.com/diegofrayo/website/master/src/data/blog/posts/${CURRENT_LOCALE}/${
               blogMetadata.publishedAt + "-" + blogMetadata.slug
             }.mdx`}
             styled={false}

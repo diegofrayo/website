@@ -47,10 +47,9 @@ function Page({ children, metadata: metadataProp = {} }: Record<string, any>): a
         <meta property="og:description" content={metadata.description} />
         <meta property="og:url" content={metadata.url} />
         <meta property="og:site_name" content={SEO_METADATA.title} />
+
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="canonical" href={metadata.url} />
-        <link rel="alternate" hrefLang="en" href={metadata.url} />
-        <link rel="alternate" hrefLang="es" href={metadata.url} />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

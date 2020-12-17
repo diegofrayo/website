@@ -6,7 +6,7 @@ import renderToString from "next-mdx-remote/render-to-string";
 import { Page, MainLayout, MDXContent } from "~/components";
 import { WEBSITE_METADATA } from "~/data/metadata";
 import { posts as BlogPosts } from "~/data/blog/posts.json";
-import { Routes, DEFAULT_LOCALE } from "~/utils/constants";
+import { Routes, CURRENT_LOCALE } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 
@@ -18,9 +18,9 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
   return (
     <Page
       metadata={{
-        title: post[DEFAULT_LOCALE].title,
+        title: post[CURRENT_LOCALE].title,
         pathname: Routes.BLOG(post.slug),
-        description: post[DEFAULT_LOCALE].description,
+        description: post[CURRENT_LOCALE].description,
       }}
     >
       <MainLayout
@@ -28,11 +28,11 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
           { text: SiteTexts.layout.current_locale.breadcumb.blog, url: Routes.BLOG() },
           {
-            text: post[DEFAULT_LOCALE].title,
+            text: post[CURRENT_LOCALE].title,
             url: Routes.BLOG(post.slug),
           },
         ]}
-        title={post[DEFAULT_LOCALE].title}
+        title={post[CURRENT_LOCALE].title}
         blogMetadata={{
           author: `@${WEBSITE_METADATA.username}`,
           slug: post.slug,
@@ -62,7 +62,7 @@ export async function getStaticProps({
 }: Record<string, any>): Promise<Record<string, any>> {
   const post = BlogPosts[params.slug];
   const note = fs.readFileSync(
-    `${process.cwd()}/src/data/blog/posts/${DEFAULT_LOCALE}/${post.published_at}-${
+    `${process.cwd()}/src/data/blog/posts/${CURRENT_LOCALE}/${post.published_at}-${
       post.slug
     }.mdx`,
     "utf8",

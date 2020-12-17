@@ -4,7 +4,7 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout, MDXContent } from "~/components";
-import { Routes, PAGES_NAMES, DEFAULT_LOCALE } from "~/utils/constants";
+import { Routes, PAGES_NAMES, CURRENT_LOCALE } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 import {
@@ -64,7 +64,7 @@ export async function getStaticProps({
 
   const file = fs.readFileSync(
     `${process.cwd()}/src/data/pages/${
-      SiteTexts.page.config.default_locale || DEFAULT_LOCALE
+      SiteTexts.page.config.default_locale || CURRENT_LOCALE
     }/${params.page}.mdx`,
     "utf8",
   );
