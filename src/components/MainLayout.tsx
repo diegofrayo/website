@@ -90,14 +90,14 @@ function DarkModeToggle(): any {
 
   return (
     <button
-      className="tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md tw-bg-black dark:twc-bg-secondary"
+      className="tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md twc-bg-secondary dark:twc-bg-secondary"
       onClick={() => {
         setTheme(theme === "dark" ? "light" : "dark");
       }}
     >
       <span
         className={classnames(
-          "tw-rounded-full tw-p-1 tw-w-7 tw-h-7 tw-absolute tw--top-0.5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border tw-border-black dark:tw-border-white",
+          "tw-rounded-full tw-p-1 tw-w-7 tw-h-7 tw-absolute tw--top-0.5 tw-flex tw-items-center tw-justify-center tw-bg-black dark:tw-bg-white tw-shadow-md tw-border tw-border-black dark:tw-border-white",
           theme === "dark" ? "tw--left-0.5" : "tw--right-0.5",
         )}
       >

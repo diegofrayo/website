@@ -145,3 +145,9 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
     </section>
   );
 }
+
+export function Title(Tag: any): any {
+  return function TitleComponent({ children }: Record<string, any>): any {
+    return <Tag id={slugify(children)}>{children}</Tag>;
+  };
+}

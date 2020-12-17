@@ -1,27 +1,15 @@
-import React, { useRef } from "react";
+import React from "react";
 import classnames from "classnames";
 import { useTheme } from "next-themes";
 
 import { safeRender } from "~/hocs";
-import { useDidMount } from "~/hooks";
-import { slugify } from "~/utils/misc";
 
 function MDXContent({ content }: Record<string, any>): any {
   const { theme } = useTheme();
-  const container = useRef(null);
-
-  useDidMount(() => {
-    setTimeout(() => {
-      container.current.querySelectorAll(":scope > h1, :scope > h2").forEach(element => {
-        element.setAttribute("id", slugify(element.innerText));
-      });
-    }, 1000);
-  });
 
   return (
     <article
       className={classnames("mdx-content", theme === "dark" && "mdx-content--dark")}
-      ref={container}
     >
       {content}
 
@@ -94,6 +82,7 @@ function MDXContent({ content }: Record<string, any>): any {
 
         :global(.mdx-content) :global(ul) :global(li) > :global(ul) {
           @apply tw-pl-6;
+          margin-bottom: 0;
         }
 
         :global(.mdx-content) :global(h1),
