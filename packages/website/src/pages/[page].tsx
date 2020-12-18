@@ -4,8 +4,8 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout, MDXContent } from "~/components";
-import { getSiteTexts } from "~/i18n";
-import { Routes, PAGES_NAMES, DEFAULT_LOCALE } from "~/utils/constants";
+import { Routes, PAGES_NAMES, CURRENT_LOCALE } from "~/utils/constants";
+import { getSiteTexts } from "~/utils/i18n";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 import {
   toLowerCaseObjectProperty,
@@ -23,19 +23,22 @@ function SitePage({ content, page }: Record<string, any>): any {
   return (
     <Page
       metadata={{
-        title: removeEmojiFromTitle(SiteTexts.page.title),
-        url: Routes[toUpperCaseObjectProperty(page)],
+        title: removeEmojiFromTitle(SiteTexts.page.current_locale.title),
+        pathname: Routes[toUpperCaseObjectProperty(page)],
+        description: SiteTexts.page.current_locale.meta_description,
+        noRobots: SiteTexts.page.current_locale.meta_no_robots,
       }}
     >
       <MainLayout
         breadcumb={[
-          { text: SiteTexts.layout.breadcumb.home, url: Routes.HOME },
+          { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
           {
-            text: SiteTexts.layout.breadcumb[toLowerCaseObjectProperty(page)],
+            text:
+              SiteTexts.layout.current_locale.breadcumb[toLowerCaseObjectProperty(page)],
             url: Routes[toUpperCaseObjectProperty(page)],
           },
         ]}
-        title={SiteTexts.page.title}
+        title={SiteTexts.page.current_locale.title}
       >
         <MDXContent content={mdxContent} />
       </MainLayout>
@@ -55,8 +58,14 @@ export async function getStaticPaths(): Promise<Record<string, any>> {
 export async function getStaticProps({
   params,
 }: Record<string, any>): Promise<Record<string, any>> {
+  const SiteTexts = getSiteTexts({
+    page: Routes[toUpperCaseObjectProperty(params.page)],
+  });
+
   const file = fs.readFileSync(
-    `${process.cwd()}/src/data/pages/${DEFAULT_LOCALE}/${params.page}.mdx`,
+    `${process.cwd()}/src/data/pages/${
+      SiteTexts.page.config.default_locale || CURRENT_LOCALE
+    }/${params.page}.mdx`,
     "utf8",
   );
   const content = await renderToString(file, {

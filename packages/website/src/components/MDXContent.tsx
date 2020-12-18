@@ -80,6 +80,11 @@ function MDXContent({ content }: Record<string, any>): any {
           display: inline;
         }
 
+        :global(.mdx-content) :global(ul) :global(li) > :global(ul) {
+          @apply tw-pl-6;
+          margin-bottom: 0;
+        }
+
         :global(.mdx-content) :global(h1),
         :global(.mdx-content) :global(h2),
         :global(.mdx-content) :global(h3),

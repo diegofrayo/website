@@ -24,7 +24,8 @@ export function Link({
         href={href}
         className={className}
         tw-variant={styled && "styled"}
-        {...(external && { target: "_blank", rel: "noreferrer" })}
+        {...(external &&
+          !href.startsWith("#") && { target: "_blank", rel: "noreferrer" })}
         {...rest}
       >
         {children}

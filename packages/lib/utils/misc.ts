@@ -1,3 +1,5 @@
+import { WEBSITE_METADATA } from "~/data/metadata";
+
 export function createArray(length: number): Array<number> {
   return Array.from(Array(length).keys()).map(value => value + 1);
 }
@@ -53,7 +55,7 @@ export function capitalize(str: string): string {
 }
 
 export function isDevelopmentEnvironment(): boolean {
-  return !process.env.NEXT_PUBLIC_WEBSITE_URL.includes("vercel.app");
+  return !WEBSITE_METADATA.url.includes("vercel.app");
 }
 
 export function removeEmojiFromTitle(str: string): string {
@@ -174,4 +176,27 @@ export function getAndroidVersion(): number {
   } catch (error) {
     return -1;
   }
+}
+
+export function isUserLoggedIn(): boolean {
+  let isLoggedIn = isDevelopmentEnvironment();
+
+  if (isBrowser()) {
+    isLoggedIn =
+      window.location.href.includes("login=true") ||
+      window.localStorage.getItem("login") === "true" ||
+      isLoggedIn;
+
+    if (isLoggedIn) {
+      window.localStorage.setItem("login", "true");
+    } else {
+      window.localStorage.setItem("login", "false");
+    }
+  }
+
+  return isLoggedIn;
+}
+
+export function isBrowser(): boolean {
+  return typeof window !== "undefined";
 }

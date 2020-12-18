@@ -1,14 +1,23 @@
 import React, { useState, useRef } from "react";
 import CryptoJS from "crypto-js";
 
-import { Page } from "~/components";
+import { MainLayout, Page, Separator } from "~/components";
+import { useDidMount } from "~/hooks";
+import { Routes } from "~/utils/constants";
+import { getSiteTexts } from "~/utils/i18n";
 import { copyToClipboard } from "~/utils/misc";
 
 const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";
+const SiteTexts = getSiteTexts({ layout: true });
 
 function PasswordsPage(): any {
   const [output, setOutput] = useState("");
   const inputRef = useRef(null);
+
+  useDidMount(() => {
+    inputRef.current.focus();
+    inputRef.current.click();
+  });
 
   function handleEncrypt() {
     const encryptedText = CryptoJS.AES.encrypt(
@@ -25,7 +34,7 @@ function PasswordsPage(): any {
       MY_STUPID_SECRET_KEY,
     ).toString(CryptoJS.enc.Utf8);
 
-    setOutput(decryptedText);
+    setOutput(decryptedText || "Error, the text was not decrypted :(");
   }
 
   function handleCopyText(e) {
@@ -33,18 +42,31 @@ function PasswordsPage(): any {
   }
 
   return (
-    <Page metadata={{ title: "Stupid tool", noRobots: true }}>
-      <section className="twc-max-w-base tw-mx-auto tw-w-full tw-h-full tw-p-6 tw-overflow-auto">
+    <Page metadata={{ title: "stupid", noRobots: true }}>
+      <MainLayout
+        breadcumb={[
+          { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
+          {
+            text: SiteTexts.layout.current_locale.breadcumb.projects,
+            url: Routes.PROJECTS(),
+          },
+          {
+            text: "stupid",
+            url: Routes.PROJECTS("stupid"),
+          },
+        ]}
+        title="stupid"
+      >
         <section className="tw-mb-8">
-          <h1 className="tw-bg-gray-700 tw-text-white tw-text-center tw-p-2">
-            stupid tool
-          </h1>
-          <input
-            id="input"
-            className="tw-border tw-border-gray-200 tw-block tw-p-2 tw-w-full"
-            ref={inputRef}
-          />
-          <section className="tw-flex tw-flex-wrap tw-justify-between tw-py-1">
+          <label htmlFor="input">
+            <p className="tw-font-bold tw-cursor-pointer">type your text</p>
+            <input
+              id="input"
+              className="tw-border tw-border-b-4 twc-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
+              ref={inputRef}
+            />
+          </label>
+          <section className="tw-flex tw-flex-wrap tw-justify-between">
             <button
               type="button"
               className="tw-inline-block tw-text-sm tw-mx-1 tw-font-bold"
@@ -62,9 +84,11 @@ function PasswordsPage(): any {
           </section>
         </section>
 
-        <section className="tw-my-4">
-          <p className="tw-font-bold tw-uppercase">output</p>
-          <p className="tw-my-1 tw-border tw-border-gray-200 tw-block tw-p-3 tw-w-full">
+        <Separator size={10} className="tw-border-t twc-border-color-primary" />
+
+        <section>
+          <p className="tw-font-bold">output</p>
+          <p className="output tw-my-1 tw-border twc-border-color-primary tw-block tw-p-3 tw-w-full">
             {output}
           </p>
           <button
@@ -76,7 +100,15 @@ function PasswordsPage(): any {
             copy
           </button>
         </section>
-      </section>
+
+        <style jsx>
+          {`
+            .output {
+              min-height: 40px;
+            }
+          `}
+        </style>
+      </MainLayout>
     </Page>
   );
 }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>diegofrayo</id>
+    <title>Diego Rayo | Software Developer</title>
+    <updated>2020-12-17T03:45:53.644Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>Diego Fernando Rayo Zamora</name>
+        <email>diegofrayo@gmail.com</email>
+        <uri>https://diegofrayo.vercel.app</uri>
+    </author>
+    <link rel="alternate" href="https://diegofrayo.vercel.app"/>
+    <link rel="self" href="https://diegofrayo.vercel.app/atom.xml"/>
+    <subtitle>Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.</subtitle>
+    <logo>https://diegofrayo.vercel.app/static/images/favicon/favicon.ico</logo>
+    <icon>https://diegofrayo.vercel.app/static/images/favicon/android-chrome-512x512.png</icon>
+    <rights>All rights reserved 2020, Diego Rayo</rights>
+    <category term="Tech"/>
+    <category term="Programming"/>
+    <category term="Software Development"/>
+    <category term="React"/>
+    <category term="Next.js"/>
+    <category term="Blog"/>
+    <entry>
+        <title type="html"><![CDATA[Thoughts about my profession]]></title>
+        <id>https://diegofrayo.vercel.app/blog/thoughts-about-my-profession</id>
+        <link href="https://diegofrayo.vercel.app/blog/thoughts-about-my-profession"/>
+        <updated>2020-12-05T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[I want to recopile some thoughts about my job and this industry.]]></summary>
+        <content type="html"><![CDATA[I want to recopile some thoughts about my job and this industry.]]></content>
+        <author>
+            <name>Diego Rayo</name>
+            <email>diegofrayo@gmail.com</email>
+            <uri>https://diegofrayo.vercel.app/about-me</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[My favorite music and MDX]]></title>
+        <id>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</id>
+        <link href="https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx"/>
+        <updated>2020-12-03T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.]]></summary>
+        <content type="html"><![CDATA[MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.]]></content>
+        <author>
+            <name>Diego Rayo</name>
+            <email>diegofrayo@gmail.com</email>
+            <uri>https://diegofrayo.vercel.app/about-me</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[My first post]]></title>
+        <id>https://diegofrayo.vercel.app/blog/my-first-post</id>
+        <link href="https://diegofrayo.vercel.app/blog/my-first-post"/>
+        <updated>2020-12-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This is my first post, here I want to welcome you to my website and explain why I built it.]]></summary>
+        <content type="html"><![CDATA[This is my first post, here I want to welcome you to my website and explain why I built it.]]></content>
+        <author>
+            <name>Diego Rayo</name>
+            <email>diegofrayo@gmail.com</email>
+            <uri>https://diegofrayo.vercel.app/about-me</uri>
+        </author>
+    </entry>
+</feed>
