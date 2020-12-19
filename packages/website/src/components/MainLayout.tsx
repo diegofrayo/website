@@ -91,15 +91,15 @@ function DarkModeToggle(): any {
 
   return (
     <button
-      className="tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md twc-bg-secondary dark:twc-bg-secondary"
+      className="tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md tw-bg-black"
       onClick={() => {
         setTheme(theme === "dark" ? "light" : "dark");
       }}
     >
       <span
         className={classnames(
-          "tw-rounded-full tw-p-1 tw-w-7 tw-h-7 tw-absolute tw--top-0.5 tw-flex tw-items-center tw-justify-center tw-bg-black dark:tw-bg-white tw-shadow-md tw-border tw-border-black dark:tw-border-white",
-          theme === "dark" ? "tw--left-0.5" : "tw--right-0.5",
+          "tw-rounded-full tw-p-1 tw-w-7 tw-h-7 tw-absolute tw--top-0.5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-border tw-border-black",
+          theme === "dark" ? "tw--right-0.5" : "tw--left-0.5",
         )}
       >
         <img
@@ -133,7 +133,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
     });
   });
 
-  function generateBlogPostRawContent() {
+  function generateBlogPostRawContentLink() {
     return GITHUB.monorepo.website.files["raw-post"]
       .replace("CURRENT_LOCALE", CURRENT_LOCALE)
       .replace("FILE_NAME", `${blogMetadata.published_at}-${blogMetadata.slug}`);
@@ -210,7 +210,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
           </BlogPostFooterItem>
           <BlogPostFooterItem
             is={Link}
-            href={generateBlogPostRawContent()}
+            href={generateBlogPostRawContentLink()}
             styled={false}
             tw-variant="withHover"
           >
