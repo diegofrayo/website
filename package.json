@@ -3,28 +3,10 @@
   "private": "true",
   "version": "1.0.0",
   "scripts": {
-    "website:dev": "yarn --cwd packages/website dev",
-    "website:build": "yarn --cwd packages/website build",
-    "website:start": "yarn --cwd packages/website start"
+    "website:dev": "yarn --cwd packages/website dev"
   },
   "workspaces": [
     "packages/*"
   ],
-  "license": "MIT",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && yarn website:build"
-    }
-  },
-  "lint-staged": {
-    "packages/website/src/**/*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ],
-    "packages/website/src/**/*.json": [
-      "prettier --write",
-      "git add"
-    ]
-  }
+  "license": "MIT"
 }
