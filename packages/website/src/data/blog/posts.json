@@ -1,0 +1,79 @@
+{
+  "posts": {
+    "im-tired-to-reinvent-the-wheel": {
+      "is_published": false,
+      "created_at": "2020-12-14",
+      "published_at": "",
+      "updated_at": "",
+      "slug": "im-tired-to-reinvent-the-wheel",
+      "es": {
+        "title": "Me cansé de reinventar la rueda",
+        "description": ""
+      },
+      "en": {
+        "title": "I'm tired to reinvent the wheel",
+        "description": ""
+      }
+    },
+    "how-i-use-tailwind-css": {
+      "is_published": false,
+      "created_at": "2020-12-07",
+      "published_at": "",
+      "updated_at": "",
+      "slug": "how-i-use-tailwind-css",
+      "es": {
+        "title": "Como uso Tailwind CSS",
+        "description": ""
+      },
+      "en": {
+        "title": "How I use Tailwind CSS",
+        "description": ""
+      }
+    },
+    "thoughts-about-my-profession": {
+      "is_published": true,
+      "created_at": "2020-11-29",
+      "published_at": "2020-12-05",
+      "updated_at": "2020-12-06",
+      "slug": "thoughts-about-my-profession",
+      "es": {
+        "title": "Pensamientos sobre mi profesión",
+        "description": "Quiero recopilar algunos pensamientos acerca de mi trabajo y la industria."
+      },
+      "en": {
+        "title": "Thoughts about my profession",
+        "description": "I want to recopile some thoughts about my job and this industry."
+      }
+    },
+    "my-favorite-music-and-mdx": {
+      "is_published": true,
+      "created_at": "2020-11-28",
+      "published_at": "2020-12-03",
+      "updated_at": "2020-12-08",
+      "slug": "my-favorite-music-and-mdx",
+      "es": {
+        "title": "Mi música favorita y MDX",
+        "description": "MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify."
+      },
+      "en": {
+        "title": "My favorite music and MDX",
+        "description": "MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify."
+      }
+    },
+    "my-first-post": {
+      "is_published": true,
+      "created_at": "2020-11-27",
+      "published_at": "2020-12-01",
+      "updated_at": "2020-12-05",
+      "slug": "my-first-post",
+      "es": {
+        "title": "Mi primera publicación",
+        "description": "Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí."
+      },
+      "en": {
+        "title": "My first post",
+        "description": "This is my first post, here I want to welcome you to my website and explain why I built it."
+      }
+    }
+  }
+}

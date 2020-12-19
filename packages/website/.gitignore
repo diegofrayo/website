@@ -38,4 +38,3 @@ _legacy
 package-lock.json
 .env
 report*.json
-*.orig
