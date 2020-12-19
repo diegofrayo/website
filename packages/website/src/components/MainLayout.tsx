@@ -19,8 +19,7 @@ import {
   setScroll,
 } from "~/utils/misc";
 
-import Breadcumb from "./Breadcumb";
-import { Link, Separator, Emoji } from "./";
+import { Link, Separator, Emoji, Breadcumb } from "./";
 
 const SiteTexts = getSiteTexts({ layout: true, page: Routes.BLOG() });
 
@@ -88,24 +87,30 @@ const Header = safeRender(function Header(): any {
 
 function DarkModeToggle(): any {
   const { theme, setTheme } = useTheme();
+  const isDarkMode = theme === "dark";
 
   return (
     <button
       className="tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md tw-bg-black"
       onClick={() => {
-        setTheme(theme === "dark" ? "light" : "dark");
+        setTheme(isDarkMode ? "light" : "dark");
       }}
     >
       <span
         className={classnames(
-          "tw-rounded-full tw-p-1 tw-w-7 tw-h-7 tw-absolute tw--top-0.5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-border tw-border-black",
-          theme === "dark" ? "tw--right-0.5" : "tw--left-0.5",
+          "tw-rounded-full tw-p-1 tw-w-7 tw-h-7 tw-absolute tw--top-0.5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-border tw-border-black dark:tw-border-white",
+          isDarkMode ? "tw--right-0.5" : "tw--left-0.5",
         )}
       >
         <img
-          src={`/static/images/icons/${theme === "light" ? "sun" : "moon"}.svg`}
-          alt="Switch mode icon"
-          className="tw-h-3 tw-w-3"
+          src="/static/images/icons/sun.svg"
+          alt="Sun icon"
+          className={classnames("tw-h-3 tw-w-3", isDarkMode && "tw-hidden")}
+        />
+        <img
+          src="/static/images/icons/moon.svg"
+          alt="Moon icon"
+          className={classnames("tw-h-3 tw-w-3", !isDarkMode && "tw-hidden")}
         />
       </span>
     </button>
