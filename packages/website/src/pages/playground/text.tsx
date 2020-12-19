@@ -45,12 +45,12 @@ function TextPage(): any {
         breadcumb={[
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
           {
-            text: SiteTexts.layout.current_locale.breadcumb.projects,
-            url: Routes.PROJECTS(),
+            text: SiteTexts.layout.current_locale.breadcumb.playground,
+            url: Routes.PLAYGROUND(),
           },
           {
             text: "text",
-            url: Routes.PROJECTS("text"),
+            url: Routes.PLAYGROUND("text"),
           },
         ]}
         title="text"

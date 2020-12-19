@@ -10,7 +10,7 @@ import { copyToClipboard } from "~/utils/misc";
 const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";
 const SiteTexts = getSiteTexts({ layout: true });
 
-function PasswordsPage(): any {
+function StupidPage(): any {
   const [output, setOutput] = useState("");
   const inputRef = useRef(null);
 
@@ -47,12 +47,12 @@ function PasswordsPage(): any {
         breadcumb={[
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
           {
-            text: SiteTexts.layout.current_locale.breadcumb.projects,
-            url: Routes.PROJECTS(),
+            text: SiteTexts.layout.current_locale.breadcumb.playground,
+            url: Routes.PLAYGROUND(),
           },
           {
             text: "stupid",
-            url: Routes.PROJECTS("stupid"),
+            url: Routes.PLAYGROUND("stupid"),
           },
         ]}
         title="stupid"
@@ -113,4 +113,4 @@ function PasswordsPage(): any {
   );
 }
 
-export default PasswordsPage;
+export default StupidPage;

@@ -4,7 +4,6 @@ import NextLink from "next/link";
 import { Page, MainLayout, Emoji } from "~/components";
 import { Routes } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
-import { isUserLoggedIn } from "~/utils/misc";
 
 const SiteTexts = getSiteTexts({ page: Routes.HOME });
 
@@ -54,12 +53,12 @@ function MainMenu() {
       label: SiteTexts.page.common.menu_item_snippets,
       url: Routes.SNIPPETS,
     },
-    isUserLoggedIn() && {
+    {
       emoji: "🔮",
-      label: SiteTexts.page.current_locale.menu_item_projects,
-      url: Routes.PROJECTS(),
+      label: SiteTexts.page.current_locale.menu_item_playground,
+      url: Routes.PLAYGROUND(),
     },
-  ].filter(Boolean);
+  ];
 
   return (
     <nav className="tw-mt-8 tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">

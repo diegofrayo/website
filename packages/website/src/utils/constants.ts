@@ -12,7 +12,7 @@ export const Routes: Record<string, any> = {
     acum[toUpperCaseObjectProperty(curr)] = `/${curr}`;
     return acum;
   }, {}),
-  PROJECTS: urlCreatorHelper("projects"),
+  PLAYGROUND: urlCreatorHelper("playground"),
   ERROR_404: "/404",
   ERROR_500: "/500",
 

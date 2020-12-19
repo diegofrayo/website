@@ -10,7 +10,7 @@
         "home": "Home",
         "about_me": "About me",
         "resume": "Work experience",
-        "projects": "Projects",
+        "playground": "Playground",
         "blog": "Blog",
         "roadmap": "Roadmap",
         "snippets": "Snippets"
@@ -24,7 +24,7 @@
         "home": "Inicio",
         "about_me": "Acerca de mí",
         "resume": "Experiencia laboral",
-        "projects": "Proyectos",
+        "playground": "Playground",
         "blog": "Blog",
         "roadmap": "Roadmap",
         "snippets": "Snippets"
@@ -43,14 +43,14 @@
         "meta_description": "Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.",
         "menu_item_about_me": "About me",
         "menu_item_resume": "Experience",
-        "menu_item_projects": "Projects"
+        "menu_item_playground": "Playground"
       },
       "es": {
         "title": "👋 Bienvenido",
         "meta_description": "Hola, Soy Diego, Desarrollador de Software. Tengo poco más de 5 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.",
         "menu_item_about_me": "Acerca de mí",
         "menu_item_resume": "Experiencia",
-        "menu_item_projects": "Proyectos"
+        "menu_item_playground": "Playground"
       }
     },
     "/about-me": {
@@ -75,15 +75,13 @@
         "title": "🚀 Roadmap"
       }
     },
-    "/projects": {
+    "/playground": {
       "config": {
+        "default_locale": "en",
         "meta_no_robots": true
       },
       "en": {
-        "title": "🔮 Projects"
-      },
-      "es": {
-        "title": "🔮 Proyectos"
+        "title": "🔮 playground"
       }
     },
     "/snippets": {

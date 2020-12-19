@@ -5,30 +5,35 @@ import { MainLayout, Page, UL, Link } from "~/components";
 import { Routes } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
 
-const SiteTexts = getSiteTexts({ page: Routes.PROJECTS(), layout: true });
+const SiteTexts = getSiteTexts({ page: Routes.PLAYGROUND(), layout: true });
 
-function ProjectsPage(): any {
+function PlaygroundPage(): any {
   return (
     <Page metadata={{ noRobots: true }}>
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
           {
-            text: SiteTexts.layout.current_locale.breadcumb.projects,
-            url: Routes.PROJECTS(),
+            text: SiteTexts.layout.current_locale.breadcumb.playground,
+            url: Routes.PLAYGROUND(),
           },
         ]}
         title={SiteTexts.page.current_locale.title}
       >
         <UL>
           <li>
-            <Link is={NextLink} href="/projects/stupid">
+            <Link is={NextLink} href={Routes.PLAYGROUND("stupid")}>
               <a>stupid</a>
             </Link>
           </li>
           <li>
-            <Link is={NextLink} href="/projects/text">
+            <Link is={NextLink} href={Routes.PLAYGROUND("text")}>
               <a>text</a>
+            </Link>
+          </li>
+          <li>
+            <Link is={NextLink} href={Routes.PLAYGROUND("virtual-reality")}>
+              <a>virtual-reality</a>
             </Link>
           </li>
         </UL>
@@ -37,4 +42,4 @@ function ProjectsPage(): any {
   );
 }
 
-export default ProjectsPage;
+export default PlaygroundPage;

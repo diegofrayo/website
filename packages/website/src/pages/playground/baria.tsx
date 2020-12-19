@@ -12,7 +12,7 @@ function BariaPage(): any {
     <Page metadata={{ noRobots: true }}>
       <section className="twc-max-w-base tw-mx-auto tw-w-full tw-h-full md:tw-h-screen tw-py-8 tw-px-4 tw-overflow-auto md:tw-flex md:tw-flex-no-wrap md:tw-items-center">
         <img
-          src="/projects/baria/imagen.jpg"
+          src="/static/playground/baria/imagen.jpg"
           className="tw-max-h-full tw-w-full tw-flex-shrink-0 tw-rounded-tl-lg tw-rounded-br-lg tw-max-w-sm tw-mx-auto md:tw-mr-4"
           onClick={() => {
             const audio: any = document.getElementById("myAudio");
@@ -36,7 +36,7 @@ function BariaPage(): any {
           </p>
         </div>
         <audio id="myAudio">
-          <source src="/projects/baria/sound.mp3" type="audio/mpeg" />
+          <source src="/static/playground/baria/sound.mp3" type="audio/mpeg" />
         </audio>
 
         <style jsx>{`

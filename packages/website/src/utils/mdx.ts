@@ -26,7 +26,7 @@ export const MDXScope = {
     routes: {
       ...Routes,
       BLOG: Routes.BLOG(),
-      PROJECTS: Routes.PROJECTS(),
+      PLAYGROUND: Routes.PLAYGROUND(),
     },
   },
 };
