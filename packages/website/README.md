@@ -1,4 +1,4 @@
-# website
+# monorepo/website
 
 My personal website
 
@@ -12,14 +12,19 @@ My personal website
 
 ## Setup
 
-1. `git clone https://github.com/diegofrayo/website.git`
-1. `cd website`
-1. `npm i`
-1. `npm run dev`
-1. Create a `.env` file
+1. `git clone https://github.com/diegofrayo/monorepo.git`
+
+2. `cd monorepo/packages/website`
+
+3. `yarn install`
+
+4. Create a `.env` file
   ```
   NEXT_PUBLIC_WEBSITE_URL=http://localhost:3000
   ```
+
+5. `yarn dev`
+
 ---
 
 Hosted on [Vercel](https://vercel.com)

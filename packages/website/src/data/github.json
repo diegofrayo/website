@@ -1,7 +1,7 @@
 {
   "monorepo": {
     "website": {
-      "name": "website",
+      "name": "monorepo/website",
       "url": "https://github.com/diegofrayo/monorepo/tree/master/packages/website",
       "description": "My personal website",
       "files": {

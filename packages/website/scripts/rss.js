@@ -56,4 +56,5 @@ Object.values(posts).forEach(post => {
 fs.writeFileSync("./public/rss.xml", feed.rss2());
 fs.writeFileSync("./public/atom.xml", feed.atom1());
 fs.writeFileSync("./public/feed.json", feed.json1());
+
 console.log("RSS files created");

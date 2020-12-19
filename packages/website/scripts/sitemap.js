@@ -11,7 +11,6 @@ const pagesToIgnore = Object.entries(pages)
   })
   .filter(Boolean);
 
-// create generator
 const generator = SitemapGenerator(WEBSITE_METADATA.url, {
   stripQuerystring: false,
   filepath: "./public/sitemap.xml",
@@ -20,7 +19,6 @@ const generator = SitemapGenerator(WEBSITE_METADATA.url, {
   },
 });
 
-// register event listeners
 generator.on("done", () => {
   try {
     fs.writeFileSync(
@@ -36,5 +34,4 @@ generator.on("done", () => {
   }
 });
 
-// start the crawler
 generator.start();
