@@ -8,7 +8,7 @@ A continuación, un ejemplo de un **componente de React** renderizado en este ar
 
 <Code
   language="jsx"
-  sourceURL={DATA.github.website.files.MDXComponents}
+  sourceURL={DATA.github.monorepo.files.MDXComponents}
   code={`export function HelloWorldMDX({ text }: Record<string, any>): any {
   return (
     <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">{text}</p>
@@ -32,7 +32,7 @@ Primero, importé algunas funciones de **next-mdx-remote**.
 
 <Code
   language="javascript"
-  sourceURL={DATA.github.website.files["[slug]"]}
+  sourceURL={DATA.github.monorepo.files["[slug]"]}
   code={`import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";`}
 />
@@ -41,15 +41,15 @@ Después, importé los **componentes React** y las **variables** que se usarán 
 
 <Code
   language="javascript"
-  sourceURL={DATA.github.website.files.mdx}
+  sourceURL={DATA.github.monorepo.files.mdx}
   code={`import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";`}
 />
 
-Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arreglo con los slugs de todos mis publicaciones que voy a **pre-renderizar** como páginas. El listado de todos mis publicaciones están definidos en un archivo <Link href={DATA.github.website.files.posts}>JSON</Link> dentro del proyecto, pero esta información se podría leer de una **base de datos**, un **CMS**, una **API**, etc.
+Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arreglo con los slugs de todos mis publicaciones que voy a **pre-renderizar** como páginas. El listado de todos mis publicaciones están definidos en un archivo <Link href={DATA.github.monorepo.files.posts}>JSON</Link> dentro del proyecto, pero esta información se podría leer de una **base de datos**, un **CMS**, una **API**, etc.
 
 <Code
   language="typescript"
-  sourceURL={DATA.github.website.files["[slug]"]}
+  sourceURL={DATA.github.monorepo.files["[slug]"]}
   code={`export async function getStaticPaths(): Promise<Record<string, any>> {
   return {
     paths: Object.keys(BlogPosts).map(slug => {
@@ -66,7 +66,7 @@ Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arre
 Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada publicación. Esta función se ejecuta solo en el servidor. Por el momento tengo el contenido de las publicaciones dentro de mi proyecto, en un futuro podría alojarlos en un **CMS**, por ejemplo.
 
 <Code
-  sourceURL={DATA.github.website.files["[slug]"]}
+  sourceURL={DATA.github.monorepo.files["[slug]"]}
   language="typescript"
   code={`export async function getStaticProps({
   params,
@@ -93,7 +93,7 @@ Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada publi
 Por último, este es el componente que renderiza una publicación.
 
 <Code
-  sourceURL={DATA.github.website.files["[slug]"]}
+  sourceURL={DATA.github.monorepo.files["[slug]"]}
   language="jsx"
   code={`function BlogPostPage({ post, content }: Record<string, any>): any {
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
@@ -127,7 +127,7 @@ Por último, este es el componente que renderiza una publicación.
 Para manejar los estilos **CSS** del contenido compilado de los archivos **MDX**, usé al inicio este [plugin](https://tailwindcss.com/docs/typography-plugin) de [Tailwind CSS](https://tailwindcss.com), pero después lo dejé de usar y decidí construir un componente con mis propios estilos.
 
 <Code
-  sourceURL={DATA.github.website.files.MDXContent}
+  sourceURL={DATA.github.monorepo.files.MDXContent}
   language="jsx"
   code={`import * as React from "react";
 import ClipboardJS from "clipboard";
@@ -210,7 +210,7 @@ export default MDXContent;`}
 El resaltado de síntaxis de código fuente lo hice con [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer).
 
 <Code
-  sourceURL={DATA.github.website.files.MDXComponents}
+  sourceURL={DATA.github.monorepo.files.MDXComponents}
   language="jsx"
   code={`import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
@@ -284,9 +284,9 @@ const LineContent = twcss.span\`tw-table-cell\`;`}
 Y bueno, esto fue todo, aquí comparto la URL del repositorio por si quieres ver con más detalle la implementación de este sitio web. Espero que esta publicación te sirva para iniciar a trabajar con **MDX**.
 
 <GithubRepo
-  name={DATA.github.website.name}
-  url={DATA.github.website.url}
-  description={DATA.github.website.description}
+  name={DATA.github.monorepo.name}
+  url={DATA.github.monorepo.url}
+  description={DATA.github.monorepo.description}
 />
 
 ---

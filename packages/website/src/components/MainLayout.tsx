@@ -3,6 +3,7 @@ import NextLink from "next/link";
 import { useTheme } from "next-themes";
 import classnames from "classnames";
 
+import GITHUB from "~/data/github.json";
 import { WEBSITE_METADATA } from "~/data/metadata";
 import { useDidMount } from "~/hooks";
 import { safeRender } from "~/hocs";
@@ -132,6 +133,12 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
     });
   });
 
+  function generateBlogPostRawContent() {
+    return GITHUB.monorepo.website.files["raw-post"]
+      .replace("CURRENT_LOCALE", CURRENT_LOCALE)
+      .replace("FILE_NAME", `${blogMetadata.published_at}-${blogMetadata.slug}`);
+  }
+
   return (
     <Fragment>
       <Separator size={8} />
@@ -203,9 +210,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
           </BlogPostFooterItem>
           <BlogPostFooterItem
             is={Link}
-            href={`https://raw.githubusercontent.com/diegofrayo/website/master/src/data/blog/posts/${CURRENT_LOCALE}/${
-              blogMetadata.publishedAt + "-" + blogMetadata.slug
-            }.mdx`}
+            href={generateBlogPostRawContent()}
             styled={false}
             tw-variant="withHover"
           >
