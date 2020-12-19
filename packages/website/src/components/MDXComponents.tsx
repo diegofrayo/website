@@ -113,7 +113,7 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
         />
         <section className="tw-flex-1 tw-text-left">
           <h3>{name}</h3>
-          <p className="tw-text-sm">{description}</p>
+          <p className="tw-text-sm twc-text-color-primary">{description}</p>
         </section>
 
         <img

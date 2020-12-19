@@ -63,8 +63,9 @@ const Header = safeRender(function Header(): any {
   return (
     <header className="twc-border-color-primary tw-border-b tw-pb-4 tw-flex tw-relative">
       <NextLink href={Routes.HOME}>
-        <a className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:twc-border-color-primary tw-bg-blue-200 dark:tw-bg-gray-300 tw-mr-4 tw-rounded-lg tw-text-2xl tw-relative tw-top-1 tw-transition-opacity hover:tw-opacity-75">
-          <Emoji>👨‍💻</Emoji>
+        <a className="header-emoji-container tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:twc-border-color-primary tw-bg-blue-200 dark:tw-bg-gray-300 tw-mr-4 tw-rounded-lg tw-text-2xl tw-relative tw-top-1 tw-transition-opacity hover:tw-opacity-75">
+          <Emoji className="tw-inline-block">👨‍💻</Emoji>
+          <Emoji className="tw-hidden">🏃‍♂️</Emoji>
         </a>
       </NextLink>
       <section className="tw-flex-1">
@@ -81,6 +82,16 @@ const Header = safeRender(function Header(): any {
       <span className="tw-absolute tw-top-1 tw-right-0">
         <DarkModeToggle />
       </span>
+
+      <style jsx>{`
+        .header-emoji-container:hover :global(:nth-child(1)) {
+          display: none;
+        }
+
+        .header-emoji-container:hover :global(:nth-child(2)) {
+          display: inline;
+        }
+      `}</style>
     </header>
   );
 });
