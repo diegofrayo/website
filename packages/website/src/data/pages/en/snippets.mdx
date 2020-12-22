@@ -1,15 +1,39 @@
 # Table of Content
 
+- [CSS](#css)
+  - [Set height 100% to a child element of flex-row parent](#set-height-100-to-a-child-element-of-flex-row-parent)
 - [JavaScript](#javascript)
   - [Capitalize string](#capitalize-string)
   - [Concat regex with variables](#concat-regex-with-variables)
   - [Copy to clipboard](#copy-to-clipboard)
   - [Create array with N elements](#create-array-with-n-elements)
   - [Delay](#delay)
+  - [Focus and select the text inside the textarea](#focus-and-select-the-text-inside-the-textarea)
   - [Slugify string](#slugify-string)
-- [CSS](#css)
+- [React](#react)
+  - [Component to show the window resolution using Tailwind CSS classes](#component-to-show-the-window-resolution-using-tailwind-css-classes)
+- [Git](#git)
+  - [Alias](#alias)
+  - [Remote branches](#remote-branches)
+  - [Stash](#stash)
 
 ---
+
+# CSS
+
+## Set height 100% to a child element of flex-row parent
+
+<Code
+  language="css"
+  fileName="Set height 100% to a child element of flex-row parent"
+  code={`.parent{
+  align-items: stretch;
+}
+// or
+.child{
+  align-self: stretch;
+}`}
+/>
 
 # JavaScript
 
@@ -93,6 +117,16 @@
 }`}
 />
 
+## Focus and select the text inside the textarea
+
+<Code
+  language="typescript"
+  fileName="Delay"
+  code={`const element = document.getElementById('my-textarea');
+element.focus();
+element.select();`}
+/>
+
 ## Slugify string
 
 <Code
@@ -114,4 +148,88 @@
 }`}
 />
 
-# CSS
+# React
+
+## Component to show the window resolution using Tailwind CSS classes
+
+<Code
+  language="jsx"
+  fileName="Component to show the window resolution using Tailwind CSS classes"
+  code={`import { useState, useLayoutEffect } from 'react';
+const WindowSize = () => {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    const updateSize = () => {
+      setSize([window.innerWidth, window.innerHeight]);
+    };
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return (
+    <div className="root">
+      <span>{size.join('x')} | </span>
+      <span className="inline-block sm:hidden">mobile</span>{' '}
+      <span className="hidden sm:inline-block md:hidden">sm</span>{' '}
+      <span className="hidden md:inline-block lg:hidden">md</span>{' '}
+      <span className="hidden lg:inline-block">lg</span>
+      <style jsx>
+        {\`
+          .root {
+            background-color: rgba(0, 0, 0, 0.5);
+            bottom: 0;
+            color: white;
+            font-weight: bold;
+            left: 0;
+            padding: 10px;
+            position: fixed;
+          }
+        \`}
+      </style>
+    </div>
+  );
+};`}
+/>
+
+# Git
+
+## Alias
+
+<Code
+  language="bash"
+  fileName="Alias"
+  code={`# superlog
+git config --global alias.superlog "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+# alias with parameters
+git config --global alias.pt-pull '!f() { git checkout development; git pull; git checkout task/PTRAK-$1; git pull; git merge development; }; f'`}
+/>
+
+## Remote branches
+
+<Code
+  language="bash"
+  fileName="Remote branches"
+  code={`# show remote branches
+git remote -v
+# prune remote branches list
+git remote update origin --prune`}
+/>
+
+## Stash
+
+<Code
+  language="bash"
+  fileName="Stash"
+  code={`# Save a stash
+git stash
+# Restore all changes of the last stash
+git stash apply
+# Show all specific stash changes
+git stash show stash@{0} -u
+# Delete a specific stash
+git stash drop -q stash@{0}
+# Show all saved stashes
+git stash list
+# Restore all changes of a specific stash
+git stash apply stash@{0}`}
+/>

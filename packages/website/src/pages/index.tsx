@@ -44,11 +44,6 @@ function MainMenu() {
       url: Routes.RESUME,
     },
     {
-      emoji: "🚀",
-      label: SiteTexts.page.common.menu_item_roadmap,
-      url: Routes.ROADMAP,
-    },
-    {
       emoji: "🛠️",
       label: SiteTexts.page.common.menu_item_snippets,
       url: Routes.SNIPPETS,
@@ -57,6 +52,11 @@ function MainMenu() {
       emoji: "🔮",
       label: SiteTexts.page.current_locale.menu_item_playground,
       url: Routes.PLAYGROUND(),
+    },
+    {
+      emoji: "🚀",
+      label: SiteTexts.page.common.menu_item_roadmap,
+      url: Routes.ROADMAP,
     },
   ];
 

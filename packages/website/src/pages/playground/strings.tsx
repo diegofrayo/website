@@ -8,8 +8,9 @@ import { capitalize, copyToClipboard, slugify } from "~/utils/misc";
 
 const SiteTexts = getSiteTexts({ layout: true });
 
-function TextPage(): any {
+function StringsPage(): any {
   const [texts, setTexts] = useState({
+    input: "",
     upper: "",
     lower: "",
     capitalize: "",
@@ -27,6 +28,7 @@ function TextPage(): any {
     const text = e.currentTarget.value || "";
 
     setTexts({
+      input: text,
       slug: slugify(text),
       upper: text.toUpperCase(),
       lower: text.toLowerCase(),
@@ -40,7 +42,7 @@ function TextPage(): any {
   }
 
   return (
-    <Page metadata={{ title: "text", noRobots: true }}>
+    <Page metadata={{ title: "strings", noRobots: true }}>
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
@@ -49,11 +51,11 @@ function TextPage(): any {
             url: Routes.PLAYGROUND(),
           },
           {
-            text: "text",
-            url: Routes.PLAYGROUND("text"),
+            text: "strings",
+            url: Routes.PLAYGROUND("strings"),
           },
         ]}
-        title="text"
+        title="strings"
       >
         <section>
           <p className="tw-font-bold tw-mb-1">type your text</p>
@@ -61,7 +63,23 @@ function TextPage(): any {
             className="tw-border tw-border-b-4 twc-border-color-primary tw-block tw-p-3 tw-resize-none tw-w-full tw-rounded-md"
             ref={textareaRef}
             onChange={handleTextAreaChange}
+            onClick={e => {
+              try {
+                e.currentTarget.focus();
+                e.currentTarget.select();
+              } catch (e) {
+                console.log(e);
+              }
+            }}
           />
+          <button
+            type="button"
+            className="tw-block tw-ml-auto tw-text-sm"
+            data-clipboard-text={texts.input}
+            onClick={handleCopyText}
+          >
+            copy
+          </button>
         </section>
 
         <Separator size={10} className="tw-border-t twc-border-color-primary" />
@@ -157,4 +175,4 @@ function TextPage(): any {
   );
 }
 
-export default TextPage;
+export default StringsPage;

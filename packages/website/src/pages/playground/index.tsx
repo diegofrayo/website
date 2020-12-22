@@ -27,8 +27,8 @@ function PlaygroundPage(): any {
             </Link>
           </li>
           <li>
-            <Link is={NextLink} href={Routes.PLAYGROUND("text")}>
-              <a>text</a>
+            <Link is={NextLink} href={Routes.PLAYGROUND("strings")}>
+              <a>strings</a>
             </Link>
           </li>
           <li>
