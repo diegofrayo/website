@@ -9,8 +9,6 @@ import { copyToClipboard, slugify } from "~/utils/misc";
 
 import { Link } from "./";
 
-// shared
-
 export * from "./pages/resume";
 export * from "./pages/my-favorite-music-and-mdx";
 

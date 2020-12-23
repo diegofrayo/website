@@ -10,6 +10,7 @@
   - [Create array with N elements](#create-array-with-n-elements)
   - [Delay](#delay)
   - [Focus and select the text inside the textarea](#focus-and-select-the-text-inside-the-textarea)
+  - [Simple encrypt/decrypt](#simple-encrypt-decrypt)
   - [Slugify string](#slugify-string)
 - [React](#react)
   - [Component to show the window resolution using Tailwind CSS classes](#component-to-show-the-window-resolution-using-tailwind-css-classes)
@@ -138,6 +139,22 @@
   code={`const element = document.getElementById('my-textarea');
 element.focus();
 element.select();`}
+/>
+
+## Simple encrypt/decrypt
+
+<Code
+  language="typescript"
+  fileName="Simple encrypt/decrypt"
+  code={`const { AES, enc } = require('crypto-js');
+const { CRYPTO_KEY } = process.env;
+function encrypt(str) {
+  return AES.encrypt(str, CRYPTO_KEY).toString();
+}
+function decrypt(str) {
+  const bytes = AES.decrypt(str, CRYPTO_KEY);
+  return bytes.toString(enc.Utf8);
+}`}
 />
 
 ## Slugify string

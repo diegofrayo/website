@@ -43,7 +43,8 @@ export function Link({
 }
 
 const LinkElement = twcss.a({
-  styled: `tw-font-bold tw-underline twc-text-color-links dark:twc-text-color-links tw-transition-opacity hover:tw-opacity-75`,
+  __base: "tw-transition-opacity hover:tw-opacity-75",
+  styled: `tw-font-bold tw-underline twc-text-color-links dark:twc-text-color-links`,
 });
 
 export function UL({ children }: Record<string, any>): any {
@@ -52,11 +53,11 @@ export function UL({ children }: Record<string, any>): any {
       {children}
 
       <style jsx>{`
-        ul :global(li) {
-          @apply tw-mb-2;
+        ul > :global(li) {
+          @apply tw-mb-1;
         }
 
-        ul :global(li):before {
+        ul > :global(li):before {
           @apply tw-mr-2;
           content: "‣";
           font-weight: bold;

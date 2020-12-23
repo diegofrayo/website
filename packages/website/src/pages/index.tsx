@@ -1,7 +1,7 @@
 import * as React from "react";
 import NextLink from "next/link";
 
-import { Page, MainLayout, Emoji } from "~/components";
+import { Page, MainLayout, Emoji, Link } from "~/components";
 import { Routes } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
 import { isUserLoggedIn } from "~/utils/misc";
@@ -67,14 +67,17 @@ function MainMenu() {
         return (
           <section
             key={`MainMenuItem-${index}`}
-            className="twc-border-color-primary tw-border tw-inline-block tw-transition-all tw-relative tw-mb-4 tw-mx-2 tw-cursor-pointer tw-rounded-md hover:tw-opacity-75 hover:tw-top-1px hover:tw-left-1px"
+            className="tw-relative twc-border-color-primary tw-border tw-inline-block tw-mb-4 tw-mx-2 tw-cursor-pointer tw-rounded-md"
           >
-            <NextLink href={item.url}>
-              <a className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-py-2 tw-font-bold tw-h-full">
-                <Emoji>{item.emoji}</Emoji>
-                <span className="tw-text-center">{item.label}</span>
-              </a>
-            </NextLink>
+            <Link
+              is={NextLink}
+              href={item.url}
+              className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-py-2 tw-font-bold tw-h-full tw-relative hover:tw-top-1px hover:tw-left-1px"
+              styled={false}
+            >
+              <Emoji>{item.emoji}</Emoji>
+              <span className="tw-text-center">{item.label}</span>
+            </Link>
             <Emoji className="twc-bg-secondary twc-border-color-primary dark:twc-bg-secondary tw-border tw-absolute tw--top-2 tw--left-2 tw-rounded-full tw-p-1 tw-text-sm tw-w-8 tw-h-8 tw-flex tw-items-center tw-justify-center">
               📎
             </Emoji>

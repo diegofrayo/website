@@ -82,7 +82,8 @@ function MDXContent({ content }: Record<string, any>): any {
 
         :global(.mdx-content) :global(ul) :global(li) > :global(ul) {
           @apply tw-pl-6;
-          margin-bottom: 0;
+          @apply tw-mt-1;
+          @apply tw-mb-3;
         }
 
         :global(.mdx-content) :global(h1),
