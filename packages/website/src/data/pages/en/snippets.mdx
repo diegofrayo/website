@@ -1,7 +1,8 @@
 # Table of Content
 
 - [CSS](#css)
-  - [Set height 100% to a child element of flex-row parent](#set-height-100-to-a-child-element-of-flex-row-parent)
+  - [Set height 100% to a child element of a flex-row parent](#set-height-100-to-a-child-element-of-a-flex-row-parent)
+  - [Text ellipsis](#text-ellipsis)
 - [JavaScript](#javascript)
   - [Capitalize string](#capitalize-string)
   - [Concat regex with variables](#concat-regex-with-variables)
@@ -21,7 +22,7 @@
 
 # CSS
 
-## Set height 100% to a child element of flex-row parent
+## Set height 100% to a child element of a flex-row parent
 
 <Code
   language="css"
@@ -32,6 +33,18 @@
 // or
 .child{
   align-self: stretch;
+}`}
+/>
+
+## Text ellipsis
+
+<Code
+  language="css"
+  fileName="Text ellipsis"
+  code={`.ellipsis{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }`}
 />
 
