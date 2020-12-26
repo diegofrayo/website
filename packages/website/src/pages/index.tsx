@@ -11,7 +11,7 @@ const SiteTexts = getSiteTexts({ page: Routes.HOME });
 function HomePage(): any {
   return (
     <Page
-      metadata={{
+      config={{
         description: SiteTexts.page.current_locale.meta_description,
         pathname: Routes.HOME,
       }}

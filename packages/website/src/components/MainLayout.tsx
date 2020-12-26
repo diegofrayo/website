@@ -5,7 +5,7 @@ import classnames from "classnames";
 
 import GITHUB from "~/data/github.json";
 import { WEBSITE_METADATA } from "~/data/metadata";
-import { useDidMount } from "~/hooks";
+import { useDidMount, useAssets } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
 import { CURRENT_LOCALE, Routes } from "~/utils/constants";
@@ -19,7 +19,7 @@ import {
   setScroll,
 } from "~/utils/misc";
 
-import { Link, Separator, Emoji, Breadcumb } from "./";
+import { Link, Separator, Emoji, Breadcumb, Image } from "./";
 
 const SiteTexts = getSiteTexts({ layout: true, page: Routes.BLOG() });
 
@@ -90,6 +90,8 @@ const Header = safeRender(function Header(): any {
 
 function DarkModeToggle(): any {
   const { theme, setTheme } = useTheme();
+  const { HeaderAssets } = useAssets();
+
   const isDarkMode = theme === "dark";
 
   return (
@@ -105,13 +107,13 @@ function DarkModeToggle(): any {
           isDarkMode ? "tw--right-0.5" : "tw--left-0.5",
         )}
       >
-        <img
-          src="/static/images/icons/sun.svg"
+        <Image
+          src={HeaderAssets.SUN}
           alt="Sun icon"
           className={classnames("tw-h-3 tw-w-3", isDarkMode && "tw-hidden")}
         />
-        <img
-          src="/static/images/icons/moon.svg"
+        <Image
+          src={HeaderAssets.MOON}
           alt="Moon icon"
           className={classnames("tw-h-3 tw-w-3", !isDarkMode && "tw-hidden")}
         />
@@ -123,6 +125,8 @@ function DarkModeToggle(): any {
 const Body = twcss.section``;
 
 function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
+  const { BlogPostAssets } = useAssets();
+
   const [showGoToTopButton, setShowGoToTopButton] = useState(false);
 
   useDidMount(() => {
@@ -154,7 +158,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
         <section className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
           <BlogPostFooterItem>
             <BlogPostFooterItem.Icon
-              src="/static/images/icons/calendar.svg"
+              src={BlogPostAssets.CALENDAR}
               alt="Calendar icon"
               tw-variant="withoutDarkMode"
             />
@@ -163,7 +167,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
           </BlogPostFooterItem>
           <BlogPostFooterItem>
             <BlogPostFooterItem.Icon
-              src="/static/images/icons/updated.svg"
+              src={BlogPostAssets.UPDATED}
               alt="Document updated icon"
             />
             <span className="tw-mr-1">{SiteTexts.page.current_locale.updated_at}</span>
@@ -172,10 +176,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
             </strong>
           </BlogPostFooterItem>
           <BlogPostFooterItem>
-            <BlogPostFooterItem.Icon
-              src="/static/images/icons/person.svg"
-              alt="Person icon"
-            />
+            <BlogPostFooterItem.Icon src={BlogPostAssets.PERSON} alt="Person icon" />
             <span className="tw-mr-1">{SiteTexts.page.current_locale.created_by}</span>
             <Link href={WEBSITE_METADATA.social.twitter}>{blogMetadata.author}</Link>
           </BlogPostFooterItem>
@@ -195,10 +196,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
             styled={false}
             tw-variant="withHover"
           >
-            <BlogPostFooterItem.Icon
-              src="/static/images/icons/twitter.svg"
-              alt="Twitter icon"
-            />
+            <BlogPostFooterItem.Icon src={BlogPostAssets.TWITTER} alt="Twitter icon" />
             <span>{SiteTexts.page.current_locale.share_blog_post_twitter}</span>
           </BlogPostFooterItem>
           <BlogPostFooterItem
@@ -210,10 +208,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
             )} via @${WEBSITE_METADATA.username}`}
             onClick={copyToClipboard}
           >
-            <BlogPostFooterItem.Icon
-              src="/static/images/icons/link.svg"
-              alt="Link icon"
-            />
+            <BlogPostFooterItem.Icon src={BlogPostAssets.LINK} alt="Link icon" />
             <span>{SiteTexts.page.current_locale.copy_url_to_clipboard}</span>
           </BlogPostFooterItem>
           <BlogPostFooterItem
@@ -223,7 +218,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
             tw-variant="withHover"
           >
             <BlogPostFooterItem.Icon
-              src="/static/images/icons/source-code.svg"
+              src={BlogPostAssets.SOURCE_CODE}
               alt="Source code icon"
             />
             <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
@@ -249,7 +244,7 @@ const BlogPostFooterItem = twcss.section({
   withHover: "tw-transition-opacity hover:tw-opacity-75",
 });
 
-BlogPostFooterItem.Icon = twcss.img(
+BlogPostFooterItem.Icon = twcss(Image)(
   {
     __base: "tw-inline-block tw-h-4 tw-w-4 tw-mr-2",
     withDarkMode: "dark:tw-rounded-md dark:twc-bg-secondary dark:tw-p-1",
@@ -269,23 +264,37 @@ function Footer() {
 }
 
 function SocialIcons(): any {
+  const { FooterAssets } = useAssets();
+
   const SOCIAL_NETWORKS = [
-    { icon: "github", url: WEBSITE_METADATA.social.github },
-    { icon: "twitter-colorful", url: WEBSITE_METADATA.social.twitter },
     {
-      icon: "linkedin-colorful",
+      name: "github",
+      icon: FooterAssets.GITHUB,
+      url: WEBSITE_METADATA.social.github,
+    },
+    {
+      name: "twitter",
+      icon: FooterAssets.TWITTER_COLORFUL,
+      url: WEBSITE_METADATA.social.twitter,
+    },
+    {
+      name: "linkedin",
+      icon: FooterAssets.LINKEDIN,
       url: WEBSITE_METADATA.social.linkedin,
     },
     {
-      icon: "email-colorful",
+      name: "email",
+      icon: FooterAssets.EMAIL,
       url: `mailto:${WEBSITE_METADATA.email}`,
     },
     {
-      icon: "spotify-colorful",
+      name: "spotify",
+      icon: FooterAssets.SPOTIFY,
       url: WEBSITE_METADATA.social.spotify,
     },
     {
-      icon: "500px",
+      name: "500px",
+      icon: FooterAssets["500_PX"],
       url: WEBSITE_METADATA.social["500px"],
     },
   ];
@@ -293,24 +302,20 @@ function SocialIcons(): any {
   return (
     <section>
       {SOCIAL_NETWORKS.map(item => {
-        return <SocialIcon key={item.icon} {...item} />;
+        return <SocialIcon key={item.name} {...item} />;
       })}
     </section>
   );
 }
 
-function SocialIcon({ icon, url }: Record<string, any>): any {
+function SocialIcon({ icon, url, name }: Record<string, any>): any {
   return (
     <Link
       href={url}
       className="tw-inline-block dark:twc-bg-secondary tw-p-1 dark:tw-rounded-md tw-mx-1 tw-my-1 sm:tw-my-0 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
       styled={false}
     >
-      <img
-        src={`/static/images/icons/${icon}.svg`}
-        alt={`${icon} icon`}
-        className="tw-h-5 tw-w-5"
-      />
+      <Image src={icon} alt={`${name} icon`} className="tw-h-5 tw-w-5" />
     </Link>
   );
 }

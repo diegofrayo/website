@@ -13,7 +13,7 @@ const SiteTexts = getSiteTexts({ page: Routes.BLOG(), layout: true });
 function BlogPage(): any {
   return (
     <Page
-      metadata={{
+      config={{
         title: removeEmojiFromTitle(SiteTexts.page.current_locale.title),
         pathname: Routes.BLOG(),
         description: SiteTexts.page.current_locale.meta_description,

@@ -4,18 +4,15 @@ import Head from "next/head";
 import { SEO_METADATA, WEBSITE_METADATA } from "~/data/metadata";
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import { trackPageLoaded } from "~/utils/analytics";
+import { getAssets } from "~/utils/assets";
 import { Routes } from "~/utils/constants";
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 
-function Page({ children, metadata: metadataProp = {} }: Record<string, any>): any {
+function Page({ children, config = {} }: Record<string, any>): any {
   const metadata = {
-    title: metadataProp.title
-      ? `${metadataProp.title} - ${SEO_METADATA.title}`
-      : SEO_METADATA.title,
-    url: metadataProp.pathname
-      ? `${SEO_METADATA.url}${metadataProp.pathname}`
-      : SEO_METADATA.url,
-    description: metadataProp.description || "",
+    title: config.title ? `${config.title} - ${SEO_METADATA.title}` : SEO_METADATA.title,
+    url: config.pathname ? `${SEO_METADATA.url}${config.pathname}` : SEO_METADATA.url,
+    description: config.description || "",
   };
 
   useDocumentTitle(metadata.title);
@@ -37,7 +34,7 @@ function Page({ children, metadata: metadataProp = {} }: Record<string, any>): a
           name="google-site-verification"
           content="Gf-6mROjwXEjbtUUtl2rX5NgzWuzWxgxoKYTaGsqvtw"
         />
-        {metadataProp.noRobots && (
+        {config.noRobots && (
           <Fragment>
             <meta name="robots" content="noindex,nofollow" />
           </Fragment>
@@ -95,35 +92,45 @@ function Page({ children, metadata: metadataProp = {} }: Record<string, any>): a
           `,
           }}
         />
-        {(metadataProp.pathname === Routes.HOME ||
-          metadataProp.pathname === Routes.RESUME ||
-          metadataProp.pathname === Routes.ABOUT_ME) && (
-          <script type="application/ld+json">
-            {`
-            "@context": "http://schema.org",
-            "@type": "Person",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Armenia",
-              "addressRegion": "Quindío"
-            },
-            "email": "mailto:${WEBSITE_METADATA.email}",
-            "jobTitle": "${WEBSITE_METADATA.jobTitle}",
-            "name": "${WEBSITE_METADATA.fullName}",
-            "url": "${WEBSITE_METADATA.url}",
-            "sameAs": [
-              "${WEBSITE_METADATA.social.github}",
-              "${WEBSITE_METADATA.social.twitter}",
-              "${WEBSITE_METADATA.social.linkedin}",
-            ]
-          `}
-          </script>
+        {(config.pathname === Routes.HOME ||
+          config.pathname === Routes.RESUME ||
+          config.pathname === Routes.ABOUT_ME) && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "http://schema.org",
+                "@type": "Person",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Armenia",
+                  addressRegion: "Quindío",
+                },
+                email: `mailto:${WEBSITE_METADATA.email}`,
+                jobTitle: WEBSITE_METADATA.jobTitle,
+                name: WEBSITE_METADATA.fullName,
+                url: WEBSITE_METADATA.url,
+                sameAs: [
+                  WEBSITE_METADATA.social.github,
+                  WEBSITE_METADATA.social.twitter,
+                  WEBSITE_METADATA.social.linkedin,
+                ],
+              }),
+            }}
+          />
         )}
       </Head>
       {children}
       {isUserLoggedIn() && (
         <span className="tw-absolute tw-top-1 tw-left-1 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white" />
       )}
+      <script
+        type="application/json"
+        id="assets"
+        dangerouslySetInnerHTML={{
+          __html: getAssets(["header", "footer", ...(config.assets || [])]),
+        }}
+      />
     </Fragment>
   );
 }

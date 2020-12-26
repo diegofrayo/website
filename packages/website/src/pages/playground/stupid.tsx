@@ -7,8 +7,9 @@ import { Routes } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
 import { copyToClipboard } from "~/utils/misc";
 
-const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";
 const SiteTexts = getSiteTexts({ layout: true });
+const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";
+const PAGE_NAME = "stupid";
 
 function StupidPage(): any {
   const [output, setOutput] = useState("");
@@ -42,7 +43,7 @@ function StupidPage(): any {
   }
 
   return (
-    <Page metadata={{ title: "stupid", noRobots: true }}>
+    <Page config={{ title: PAGE_NAME, noRobots: true }}>
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
@@ -51,11 +52,11 @@ function StupidPage(): any {
             url: Routes.PLAYGROUND(),
           },
           {
-            text: "stupid",
-            url: Routes.PLAYGROUND("stupid"),
+            text: PAGE_NAME,
+            url: Routes.PLAYGROUND(PAGE_NAME),
           },
         ]}
-        title="stupid"
+        title={PAGE_NAME}
       >
         <section className="tw-mb-8">
           <label htmlFor="input">
@@ -64,6 +65,14 @@ function StupidPage(): any {
               id="input"
               className="tw-border tw-border-b-4 twc-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
               ref={inputRef}
+              onClick={e => {
+                try {
+                  e.currentTarget.focus();
+                  e.currentTarget.select();
+                } catch (e) {
+                  console.log(e);
+                }
+              }}
             />
           </label>
           <section className="tw-flex tw-flex-wrap tw-justify-between">

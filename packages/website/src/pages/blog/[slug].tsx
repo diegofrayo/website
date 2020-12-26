@@ -17,10 +17,11 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
 
   return (
     <Page
-      metadata={{
+      config={{
         title: post[CURRENT_LOCALE].title,
         pathname: Routes.BLOG(post.slug),
         description: post[CURRENT_LOCALE].description,
+        assets: ["blog_post"],
       }}
     >
       <MainLayout

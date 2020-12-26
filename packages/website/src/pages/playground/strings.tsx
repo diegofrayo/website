@@ -7,6 +7,7 @@ import { getSiteTexts } from "~/utils/i18n";
 import { capitalize, copyToClipboard, slugify } from "~/utils/misc";
 
 const SiteTexts = getSiteTexts({ layout: true });
+const PAGE_NAME = "strings";
 
 function StringsPage(): any {
   const [texts, setTexts] = useState({
@@ -42,7 +43,7 @@ function StringsPage(): any {
   }
 
   return (
-    <Page metadata={{ title: "strings", noRobots: true }}>
+    <Page config={{ title: PAGE_NAME, noRobots: true }}>
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
@@ -51,11 +52,11 @@ function StringsPage(): any {
             url: Routes.PLAYGROUND(),
           },
           {
-            text: "strings",
-            url: Routes.PLAYGROUND("strings"),
+            text: PAGE_NAME,
+            url: Routes.PLAYGROUND(PAGE_NAME),
           },
         ]}
-        title="strings"
+        title={PAGE_NAME}
       >
         <section>
           <p className="tw-font-bold tw-mb-1">type your text</p>

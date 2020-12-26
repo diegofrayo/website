@@ -1,14 +1,18 @@
 import React from "react";
 
 import { MainLayout, Page, UL, Link } from "~/components";
+import { useAssets } from "~/hooks";
 import { Routes } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
 
-function StupidPage(): any {
+function VRPage(): any {
+  const { VRAssets } = useAssets();
+
   const SiteTexts = getSiteTexts({ layout: true });
+  const PAGE_NAME = "virtual-reality";
 
   return (
-    <Page metadata={{ title: "virtual-reality", noRobots: true }}>
+    <Page config={{ title: PAGE_NAME, noRobots: true, assets: ["vr"] }}>
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
@@ -17,18 +21,18 @@ function StupidPage(): any {
             url: Routes.PLAYGROUND(),
           },
           {
-            text: "virtual-reality",
-            url: Routes.PLAYGROUND("virtual-reality"),
+            text: PAGE_NAME,
+            url: Routes.PLAYGROUND(PAGE_NAME),
           },
         ]}
-        title="virtual-reality"
+        title={PAGE_NAME}
       >
         <UL>
           <li>
-            <Link href="/static/playground/virtual-reality/index.html">example.html</Link>
+            <Link href={VRAssets.INDEX}>index.html</Link>
           </li>
           <li>
-            <Link href="/static/playground/virtual-reality/snippets.md">snippets.md</Link>
+            <Link href={VRAssets.SNIPPETS}>snippets.md</Link>
           </li>
         </UL>
       </MainLayout>
@@ -36,4 +40,4 @@ function StupidPage(): any {
   );
 }
 
-export default StupidPage;
+export default VRPage;

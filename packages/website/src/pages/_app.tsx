@@ -7,32 +7,26 @@ import App from "next/app";
 import Router from "next/router";
 import { ThemeProvider } from "next-themes";
 
+import { AssetsProvider } from "~/hooks/useAssets";
 import { initAnalytics } from "~/utils/analytics";
 import { detectEmojisSupport, setScroll } from "~/utils/misc";
 
 import ErrorPage from "./_error";
 
 class CustomApp extends App {
-  state = { error: null, loadFromServer: true };
+  state = { error: null };
 
   componentDidMount(): void {
     initAnalytics();
     detectEmojisSupport();
 
-    function onRouteChangeComplete() {
-      console.log("onRouteChangeComplete");
+    Router.events.on("routeChangeComplete", function routeChangeComplete() {
       setScroll(0);
-    }
+    });
 
-    Router.events.on("routeChangeComplete", onRouteChangeComplete);
     Router.events.on("routeChangeStart", () => {
       this.setState({ error: null });
     });
-
-    if (this.state.loadFromServer) {
-      onRouteChangeComplete();
-      this.setState({ loadFromServer: false });
-    }
   }
 
   componentDidCatch(error: Error, info: React.ErrorInfo): void {
@@ -55,7 +49,13 @@ class CustomApp extends App {
         enableSystem={false}
         value={{ light: "tw-light", dark: "tw-dark" }}
       >
-        {error ? <ErrorPage /> : <Component {...pageProps} />}
+        {error ? (
+          <ErrorPage />
+        ) : (
+          <AssetsProvider>
+            <Component {...pageProps} />
+          </AssetsProvider>
+        )}
       </ThemeProvider>
     );
   }

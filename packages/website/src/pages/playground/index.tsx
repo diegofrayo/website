@@ -9,7 +9,7 @@ const SiteTexts = getSiteTexts({ page: Routes.PLAYGROUND(), layout: true });
 
 function PlaygroundPage(): any {
   return (
-    <Page metadata={{ noRobots: true }}>
+    <Page config={{ noRobots: true }}>
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },

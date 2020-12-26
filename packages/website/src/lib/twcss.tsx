@@ -137,9 +137,7 @@ const HTML_TAGS = [
   "tspan",
 ];
 
-const twcssObject: Record<string, any> = {};
-
-function twcss(Tag: string): any {
+function twcssCreator(Tag: string | any): any {
   return function (
     styles: string | Record<string, string>,
     staticProps: Record<string, string> = {},
@@ -166,6 +164,14 @@ function twcss(Tag: string): any {
     };
   };
 }
+
+const twcss: any = Object.assign(
+  twcssCreator,
+  HTML_TAGS.reduce((result, tagName) => {
+    result[tagName] = twcssCreator(tagName);
+    return result;
+  }, {}),
+);
 
 function generateClassName(styles, className, twVariant) {
   if (Array.isArray(styles) || typeof styles === "string") {
@@ -199,8 +205,4 @@ function generateClassName(styles, className, twVariant) {
   return className.trim();
 }
 
-HTML_TAGS.forEach((tagName: string) => {
-  twcssObject[tagName] = twcss(tagName);
-});
-
-export default twcssObject;
+export default twcss;

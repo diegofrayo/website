@@ -11,7 +11,7 @@ export { default as Page } from "./Page";
 
 export function Link({
   children,
-  href,
+  href = "",
   className,
   is: Tag = "a",
   styled = true,
@@ -65,6 +65,10 @@ export function UL({ children }: Record<string, any>): any {
       `}</style>
     </ul>
   );
+}
+
+export function Image(props: Record<string, any>): any {
+  return <img {...props} />;
 }
 
 export function Separator({ size, className }: Record<string, any>): any {

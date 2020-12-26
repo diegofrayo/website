@@ -22,7 +22,7 @@ function SitePage({ content, page }: Record<string, any>): any {
 
   return (
     <Page
-      metadata={{
+      config={{
         title: removeEmojiFromTitle(SiteTexts.page.current_locale.title),
         pathname: Routes[toUpperCaseObjectProperty(page)],
         description: SiteTexts.page.current_locale.meta_description,

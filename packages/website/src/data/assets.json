@@ -1,0 +1,28 @@
+{
+  "header": {
+    "SUN": "/static/images/icons/sun.svg",
+    "MOON": "/static/images/icons/moon.svg"
+  },
+  "blog_post": {
+    "CALENDAR": "/static/images/icons/calendar.svg",
+    "UPDATED": "/static/images/icons/updated.svg",
+    "PERSON": "/static/images/icons/person.svg",
+    "TWITTER": "/static/images/icons/twitter.svg",
+    "LINK": "/static/images/icons/link.svg",
+    "SOURCE_CODE": "/static/images/icons/source-code.svg",
+    "GITHUB": "/static/images/icons/github.svg"
+  },
+  "footer": {
+    "500_PX": "/static/images/icons/500px.svg",
+    "EMAIL": "/static/images/icons/email-colorful.svg",
+    "GITHUB": "/static/images/icons/github.svg",
+    "LINKEDIN": "/static/images/icons/linkedin-colorful.svg",
+    "SPOTIFY": "/static/images/icons/spotify-colorful.svg",
+    "TWITTER": "/static/images/icons/twitter.svg",
+    "TWITTER_COLORFUL": "/static/images/icons/twitter-colorful.svg"
+  },
+  "vr": {
+    "SNIPPETS": "/static/playground/virtual-reality/snippets.md",
+    "INDEX": "/static/playground/virtual-reality/index.html"
+  }
+}

@@ -2,17 +2,20 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
 
+import { useAssets } from "~/hooks";
 import twcss from "~/lib/twcss";
 import { Routes } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
 import { copyToClipboard, slugify } from "~/utils/misc";
 
-import { Link } from "./";
+import { Link, Image } from "./";
 
 export * from "./pages/resume";
 export * from "./pages/my-favorite-music-and-mdx";
 
 export function Code({ language, fileName, code, sourceURL }: Record<string, any>): any {
+  const { BlogPostAssets } = useAssets();
+
   const SiteTexts = getSiteTexts({ page: Routes.BLOG() });
 
   return (
@@ -59,8 +62,8 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
             className="tw-block sm:tw-inline-block tw-ml-auto sm:tw-mr-4"
             href={sourceURL}
           >
-            <img
-              src="/static/images/icons/github.svg"
+            <Image
+              src={BlogPostAssets.GITHUB}
               alt="Github icon"
               className="tw-h-4 tw-w-4 tw-inline-block tw-align-middle tw-mr-1 dark:tw-rounded-full dark:twc-bg-secondary dark:tw-p-0.5"
             />
@@ -80,7 +83,7 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
 
       <style jsx>{`
         .root pre,
-        .root img {
+        .root :global(img) {
           @apply tw-my-0;
         }
 
@@ -97,6 +100,8 @@ const LineNo = twcss.span`tw-table-cell tw-text-right tw-pr-4 tw-opacity-50 tw-s
 const LineContent = twcss.span`tw-table-cell`;
 
 export function GithubRepo({ name, url, description }: Record<string, any>): any {
+  const { BlogPostAssets } = useAssets();
+
   return (
     <section className="root tw-text-right" data-block>
       <Link
@@ -104,8 +109,8 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
         href={url}
         styled={false}
       >
-        <img
-          src="/static/images/icons/github.svg"
+        <Image
+          src={BlogPostAssets.GITHUB}
           alt="Github icon"
           className="tw-h-8 tw-w-8 tw-mr-3"
         />
@@ -114,15 +119,15 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
           <p className="tw-text-sm twc-text-color-primary">{description}</p>
         </section>
 
-        <img
-          src="/static/images/icons/link.svg"
+        <Image
+          src={BlogPostAssets.LINK}
           alt="Link icon"
           className="tw-absolute tw-top-2 tw-right-2 tw-h-4 tw-w-4"
         />
       </Link>
 
       <style jsx>{`
-        .root img,
+        .root :global(img),
         .root h3,
         .root p {
           @apply tw-my-0;

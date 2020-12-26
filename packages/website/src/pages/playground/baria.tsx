@@ -9,7 +9,7 @@ function BariaPage(): any {
   });
 
   return (
-    <Page metadata={{ noRobots: true }}>
+    <Page config={{ noRobots: true }}>
       <section className="twc-max-w-base tw-mx-auto tw-w-full tw-h-full md:tw-h-screen tw-py-8 tw-px-4 tw-overflow-auto md:tw-flex md:tw-flex-no-wrap md:tw-items-center">
         <img
           src="/static/playground/baria/imagen.jpg"
