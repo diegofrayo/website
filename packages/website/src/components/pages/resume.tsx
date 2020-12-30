@@ -80,7 +80,7 @@ export function ResumeFAQItem({ question, children }: Record<string, any>): any 
           collapsed ? "tw-hidden tw-mb-0" : "tw-block twc-mb-base",
         )}
       >
-        {children}
+        <blockquote>{children}</blockquote>
       </p>
 
       <style jsx>

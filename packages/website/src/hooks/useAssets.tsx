@@ -24,14 +24,18 @@ export function AssetsProvider({ children }: Record<string, any>): any {
   });
 
   function updateAssets() {
-    const data = JSON.parse(document.getElementById("assets").innerHTML);
+    try {
+      const data = JSON.parse(document.getElementById("assets").innerHTML);
 
-    setAssets({
-      HeaderAssets: data.header || {},
-      BlogPostAssets: data.blog_post || {},
-      FooterAssets: data.footer || {},
-      VR_Assets: data.vr || {},
-    });
+      setAssets({
+        HeaderAssets: data.header || {},
+        BlogPostAssets: data.blog_post || {},
+        FooterAssets: data.footer || {},
+        VR_Assets: data.vr || {},
+      });
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   return <AssetsContext.Provider value={assets}>{children}</AssetsContext.Provider>;

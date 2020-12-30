@@ -34,11 +34,7 @@ function Page({ children, config = {} }: Record<string, any>): any {
           name="google-site-verification"
           content="Gf-6mROjwXEjbtUUtl2rX5NgzWuzWxgxoKYTaGsqvtw"
         />
-        {config.noRobots && (
-          <Fragment>
-            <meta name="robots" content="noindex,nofollow" />
-          </Fragment>
-        )}
+        {config.noRobots && <meta name="robots" content="noindex,nofollow" />}
         <meta name="description" content={metadata.description} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={metadata.title} />

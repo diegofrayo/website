@@ -1,9 +1,8 @@
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-import { getSiteTexts, parseSiteText, pluralize } from "~/utils/i18n";
-
 import { Routes } from "./constants";
+import { getSiteTexts, parseSiteText, pluralize } from "./i18n";
 
 dayjs.extend(customParseFormat);
 const SiteTexts = getSiteTexts({ page: Routes.BLOG() });

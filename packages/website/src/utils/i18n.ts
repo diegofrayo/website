@@ -1,5 +1,6 @@
 import Texts from "~/data/texts.json";
-import { CURRENT_LOCALE } from "~/utils/constants";
+
+import { CURRENT_LOCALE } from "./constants";
 
 export function getSiteTexts({ page, layout }: Record<string, any>): Record<string, any> {
   const result: Record<string, any> = {};

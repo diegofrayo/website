@@ -123,7 +123,7 @@ export async function copyToClipboard(
       },
     );
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }
 

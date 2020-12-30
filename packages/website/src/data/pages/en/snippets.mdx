@@ -5,11 +5,11 @@
   - [Text ellipsis](#text-ellipsis)
 - [JavaScript](#javascript)
   - [Capitalize string](#capitalize-string)
-  - [Concat regex with variables](#concat-regex-with-variables)
   - [Copy to clipboard](#copy-to-clipboard)
   - [Create array with N elements](#create-array-with-n-elements)
   - [Delay](#delay)
   - [Focus and select the text inside the textarea](#focus-and-select-the-text-inside-the-textarea)
+  - [Regex examples](#regex-examples)
   - [Simple encrypt/decrypt](#simple-encrypt-decrypt)
   - [Slugify string](#slugify-string)
 - [React](#react)
@@ -66,16 +66,6 @@
 }`}
 />
 
-## Concat regex with variables
-
-<Code
-  language="javascript"
-  fileName="Concat regex with variables"
-  code={`const replacement = "my";
-"my string my string".replace(new RegExp(replacement, "g"), "your");
-// output: "your string your string"`}
-/>
-
 ## Copy to clipboard
 
 <Code
@@ -104,7 +94,7 @@
       },
     );
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }`}
 />
@@ -139,6 +129,23 @@
   code={`const element = document.getElementById('my-textarea');
 element.focus();
 element.select();`}
+/>
+
+## Regex examples
+
+<Code
+  language="javascript"
+  fileName="Regex examples"
+  code={`const replacement = "my";
+"my string my string".replace(new RegExp(replacement, "g"), "your");
+// output: "your string your string"
+// -----
+// /^(sm:|md:|lg:|xl:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/
+// ^ => starts with
+// (x,y,z) => OR
+// ? => optional
+// /d{1,2} => numbers one or two digits
+// $ => ends`}
 />
 
 ## Simple encrypt/decrypt

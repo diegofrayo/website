@@ -69,7 +69,7 @@ function StringsPage(): any {
                 e.currentTarget.focus();
                 e.currentTarget.select();
               } catch (e) {
-                console.log(e);
+                console.error(e);
               }
             }}
           />
