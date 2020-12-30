@@ -22,7 +22,7 @@
     "TWITTER_COLORFUL": "/static/images/icons/twitter-colorful.svg"
   },
   "vr": {
-    "SNIPPETS": "/static/playground/virtual-reality/snippets.md",
-    "INDEX": "/static/playground/virtual-reality/index.html"
+    "SNIPPETS": "/static/pages/playground/virtual-reality/snippets.md",
+    "INDEX": "/static/pages/playground/virtual-reality/index.html"
   }
 }
