@@ -81,8 +81,9 @@ const Header = safeRender(function Header(): any {
             is={NextLink}
             href={Routes.HOME}
             className="tw-flex tw-items-center tw-justify-center tw-w-10 tw-h-10 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:twc-border-color-primary tw-bg-blue-200 dark:tw-bg-gray-300 tw-mr-4 tw-rounded-lg tw-text-xl"
-            role="button"
             styled={false}
+            role="button"
+            aria-label="Go to home page"
           >
             <Emoji>👨‍💻</Emoji>
           </Link>
@@ -110,8 +111,9 @@ const Header = safeRender(function Header(): any {
         is={NextLink}
         href={Routes.HOME}
         className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:twc-border-color-primary tw-bg-blue-200 dark:tw-bg-gray-300 tw-mr-4 tw-rounded-lg tw-text-2xl tw-relative tw-top-1"
-        role="button"
         styled={false}
+        role="button"
+        aria-label="Go to home page"
       >
         <Emoji>👨‍💻</Emoji>
       </Link>

@@ -39,7 +39,7 @@ function Page({ children, config = {} }: Record<string, any>): any {
             <meta name="robots" content="noindex,nofollow" />
           </Fragment>
         )}
-        <meta property="description" content={metadata.description} />
+        <meta name="description" content={metadata.description} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={metadata.title} />
         <meta property="og:description" content={metadata.description} />
