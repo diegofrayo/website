@@ -1,4 +1,4 @@
 Sitemap: https://diegofrayo.vercel.app/sitemap.xml
 
-User-agent: *
-Disallow /static/
+user-agent: *
+disallow: /static/

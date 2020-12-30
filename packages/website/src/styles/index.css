@@ -3,12 +3,14 @@
   src: url("/static/fonts/raleway/Raleway.ttf") format("truetype");
   font-style: normal;
   font-weight: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Raleway";
   src: url("/static/fonts/raleway/Raleway-Bold.ttf") format("truetype");
   font-weight: bold;
+  font-display: swap;
 }
 
 html,

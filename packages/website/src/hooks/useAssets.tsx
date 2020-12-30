@@ -7,7 +7,7 @@ const DEFAULT_VALUE: Record<string, any> = {
   HeaderAssets: {},
   BlogPostAssets: {},
   FooterAssets: {},
-  VRAssets: {},
+  VR_Assets: {},
 };
 const AssetsContext = createContext(DEFAULT_VALUE);
 const useAssetsContext = () => useContext(AssetsContext);
@@ -25,11 +25,12 @@ export function AssetsProvider({ children }: Record<string, any>): any {
 
   function updateAssets() {
     const data = JSON.parse(document.getElementById("assets").innerHTML);
+
     setAssets({
       HeaderAssets: data.header || {},
       BlogPostAssets: data.blog_post || {},
       FooterAssets: data.footer || {},
-      VRAssets: data.vr || {},
+      VR_Assets: data.vr || {},
     });
   }
 

@@ -1,22 +1,22 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useRef } from "react";
 import NextLink from "next/link";
 import { useTheme } from "next-themes";
 import classnames from "classnames";
 
 import GITHUB from "~/data/github.json";
 import { WEBSITE_METADATA } from "~/data/metadata";
-import { useDidMount, useAssets } from "~/hooks";
+import { useDidMount, useAssets, useOnWindowScroll } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
 import { CURRENT_LOCALE, Routes } from "~/utils/constants";
-import { getDifferenceBetweenDates } from "~/utils/dates";
+import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
 import { getSiteTexts } from "~/utils/i18n";
 import {
   copyToClipboard,
   createQueryFromObject,
-  getScroll,
+  getScrollPosition,
   onScrollStoppedListener,
-  setScroll,
+  setScrollPosition,
 } from "~/utils/misc";
 
 import { Link, Separator, Emoji, Breadcumb, Image } from "./";
@@ -57,30 +57,70 @@ export default MainLayout;
 
 // --- Components ---
 
-const Main = twcss.main`twc-max-w-base tw-w-full tw-py-4 tw-px-6 tw-mx-auto`;
+const Main = twcss.main`twc-max-w-base tw-w-full tw-py-4 tw-px-6 tw-mx-auto tw-relative`;
 
 const Header = safeRender(function Header(): any {
+  const [fixedHeader, setFixedHeader] = useState(false);
+  const headerRef = useRef(null);
+
+  useOnWindowScroll(() => {
+    const scrollPosition = getScrollPosition();
+
+    if (headerRef.current && scrollPosition > headerRef.current.offsetHeight) {
+      setFixedHeader(true);
+    } else if (scrollPosition === 0) {
+      setFixedHeader(false);
+    }
+  });
+
+  if (fixedHeader) {
+    return (
+      <header className="root tw-fixed tw-w-full tw-left-0 tw-top-0 tw-z-30 twc-bg-secondary dark:tw-bg-black tw-shadow-md">
+        <section className="tw-p-4 tw-flex twc-max-w-base tw-mx-auto tw-items-center">
+          <Link
+            is={NextLink}
+            href={Routes.HOME}
+            className="tw-flex tw-items-center tw-justify-center tw-w-10 tw-h-10 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:twc-border-color-primary tw-bg-blue-200 dark:tw-bg-gray-300 tw-mr-4 tw-rounded-lg tw-text-xl"
+            role="button"
+            styled={false}
+          >
+            <Emoji>👨‍💻</Emoji>
+          </Link>
+          <h1 className="tw-text-2xl sm:tw-text-4xl tw-pr-10 tw-flex-1  tw-font-bold">
+            Diego Rayo
+          </h1>
+          <DarkModeToggle />
+        </section>
+
+        <style jsx>{`
+          :global(.tw-dark) .root :global(.dark-mode-button) {
+            @apply value:dark:twc-bg-secondary;
+          }
+        `}</style>
+      </header>
+    );
+  }
+
   return (
-    <header className="twc-border-color-primary tw-border-b tw-pb-4 tw-flex tw-relative">
+    <header
+      className="twc-border-color-primary tw-border-b tw-pb-4 tw-flex tw-relative"
+      ref={headerRef}
+    >
       <Link
         is={NextLink}
         href={Routes.HOME}
         className="tw-flex tw-items-center tw-justify-center tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:twc-border-color-primary tw-bg-blue-200 dark:tw-bg-gray-300 tw-mr-4 tw-rounded-lg tw-text-2xl tw-relative tw-top-1"
+        role="button"
         styled={false}
       >
         <Emoji>👨‍💻</Emoji>
       </Link>
       <section className="tw-flex-1">
-        <h1 className="tw-text-2xl sm:tw-text-4xl tw-pr-10">
-          <strong>Diego Rayo</strong>
-        </h1>
-        <section className="tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-center">
-          <p className="tw-text-sm sm:tw-text-base tw-inline-block tw-mr-2">
-            {SiteTexts.layout.current_locale.header.job_title}
-          </p>
-        </section>
+        <h1 className="tw-text-2xl sm:tw-text-4xl tw-pr-10 tw-font-bold">Diego Rayo</h1>
+        <p className="tw-text-sm sm:tw-text-base">
+          {SiteTexts.layout.current_locale.header.job_title}
+        </p>
       </section>
-
       <span className="tw-absolute tw-top-1 tw-right-0">
         <DarkModeToggle />
       </span>
@@ -96,7 +136,7 @@ function DarkModeToggle(): any {
 
   return (
     <button
-      className="tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md tw-bg-black"
+      className="dark-mode-button tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md tw-bg-black"
       onClick={() => {
         setTheme(isDarkMode ? "light" : "dark");
       }}
@@ -132,7 +172,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
   useDidMount(() => {
     onScrollStoppedListener({
       onScroll: () => {
-        if (getScroll() > 0) {
+        if (getScrollPosition() > 0) {
           setShowGoToTopButton(true);
         } else {
           setShowGoToTopButton(false);
@@ -163,7 +203,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
               tw-variant="withoutDarkMode"
             />
             <span className="tw-mr-1">{SiteTexts.page.current_locale.published_at}</span>
-            <strong>{blogMetadata.publishedAt.replace(/-+/g, "/")}</strong>
+            <strong>{formatDate(blogMetadata.publishedAt)}</strong>
           </BlogPostFooterItem>
           <BlogPostFooterItem>
             <BlogPostFooterItem.Icon
@@ -229,7 +269,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
         <button
           className="tw-fixed tw-bg-black tw-opacity-50 tw-text-2xl tw-bottom-2 tw-right-2 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-text-white tw-font-bold tw-transition-opacity hover:tw-opacity-75"
           onClick={() => {
-            setScroll(0);
+            setScrollPosition(0);
           }}
         >
           ↑

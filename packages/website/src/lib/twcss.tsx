@@ -8,7 +8,6 @@ const HTML_TAGS = [
   "article",
   "aside",
   "audio",
-  "b",
   "base",
   "bdi",
   "bdo",

@@ -9,7 +9,7 @@ import { ThemeProvider } from "next-themes";
 
 import { AssetsProvider } from "~/hooks/useAssets";
 import { initAnalytics } from "~/utils/analytics";
-import { detectEmojisSupport, setScroll } from "~/utils/misc";
+import { detectEmojisSupport, setScrollPosition } from "~/utils/misc";
 
 import ErrorPage from "./_error";
 
@@ -21,7 +21,7 @@ class CustomApp extends App {
     detectEmojisSupport();
 
     Router.events.on("routeChangeComplete", function routeChangeComplete() {
-      setScroll(0);
+      setScrollPosition(0);
     });
 
     Router.events.on("routeChangeStart", () => {

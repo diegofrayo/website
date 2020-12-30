@@ -6,7 +6,7 @@ import { Routes } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
 
 function VRPage(): any {
-  const { VRAssets } = useAssets();
+  const { VR_Assets } = useAssets();
 
   const SiteTexts = getSiteTexts({ layout: true });
   const PAGE_NAME = "virtual-reality";
@@ -29,10 +29,10 @@ function VRPage(): any {
       >
         <UL>
           <li>
-            <Link href={VRAssets.INDEX}>index.html</Link>
+            <Link href={VR_Assets.INDEX}>index.html</Link>
           </li>
           <li>
-            <Link href={VRAssets.SNIPPETS}>snippets.md</Link>
+            <Link href={VR_Assets.SNIPPETS}>snippets.md</Link>
           </li>
         </UL>
       </MainLayout>

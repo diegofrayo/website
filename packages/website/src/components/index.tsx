@@ -35,7 +35,7 @@ export function Link({
 
   return (
     <Tag href={href} passHref>
-      <LinkElement tw-variant={styled && "styled"} className={className}>
+      <LinkElement tw-variant={styled && "styled"} className={className} {...rest}>
         {children}
       </LinkElement>
     </Tag>

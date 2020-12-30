@@ -62,7 +62,7 @@ export function removeEmojiFromTitle(str: string): string {
   return str.split(" ").slice(1).join(" ").trim();
 }
 
-export function setScroll(val: number): void {
+export function setScrollPosition(val: number): void {
   /*
   document.getElementById("__next").scrollTop = val;
   document.documentElement.scrollTop = val;
@@ -72,7 +72,7 @@ export function setScroll(val: number): void {
   window.scroll({ top: val, behavior: "smooth" });
 }
 
-export function getScroll(): number {
+export function getScrollPosition(): number {
   return document.body.scrollTop || document.documentElement.scrollTop || 0;
 }
 

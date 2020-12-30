@@ -63,3 +63,7 @@ export function getDifferenceBetweenDates(startDate: string, endDate: Date): str
     ),
   });
 }
+
+export function formatDate(date: string): string {
+  return date.replace(/-+/g, "/");
+}
