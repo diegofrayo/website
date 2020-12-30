@@ -190,7 +190,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
   function generateBlogPostRawContentLink() {
     return GITHUB.monorepo.website.files["raw-post"]
       .replace("CURRENT_LOCALE", CURRENT_LOCALE)
-      .replace("FILE_NAME", `${blogMetadata.publishedAt}-${blogMetadata.slug}`);
+      .replace("FILE_NAME", `${blogMetadata.createdAt}-${blogMetadata.slug}`);
   }
 
   return (

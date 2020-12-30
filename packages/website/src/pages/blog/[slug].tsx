@@ -39,6 +39,7 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
           slug: post.slug,
           publishedAt: post.published_at,
           updatedAt: post.updated_at,
+          createdAt: post.created_at,
         }}
       >
         <MDXContent content={mdxContent} />
