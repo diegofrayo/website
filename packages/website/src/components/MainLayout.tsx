@@ -198,6 +198,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
     <Fragment>
       <Separator size={8} />
 
+      {/*
       <section className="tw-mb-4 tw-flex-1 tw-flex tw-items-center tw-text-sm">
         <p className="tw-mr-4 tw-italic">
           {SiteTexts.page.current_locale.like_blog_post}
@@ -214,6 +215,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
           </section>
         </button>
       </section>
+      */}
 
       <section className="twc-border-color-primary tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-border tw-p-4">
         <section className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
