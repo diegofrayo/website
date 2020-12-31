@@ -14,7 +14,7 @@ function Breadcumb({ items }: Record<string, any>): any {
         if (index === items.length - 1 && moreThanOneItem) {
           return (
             <li key={`Breadcumb-li-${slugify(item.text)}`} className="tw-inline-block">
-              <span className="tw-text-base">{item.text}</span>
+              <span className="tw-text-base tw-italic">{item.text}</span>
             </li>
           );
         }

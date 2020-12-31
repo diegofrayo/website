@@ -2,7 +2,7 @@ import * as React from "react";
 import NextLink from "next/link";
 
 import { Page, MainLayout, Emoji, Link } from "~/components";
-import { Routes } from "~/utils/constants";
+import Routes from "~/data/routes.json";
 import { getSiteTexts } from "~/utils/i18n";
 import { isUserLoggedIn } from "~/utils/misc";
 
@@ -32,7 +32,7 @@ function MainMenu() {
     {
       emoji: "✍️",
       label: SiteTexts.page.common.menu_item_blog,
-      url: Routes.BLOG(),
+      url: Routes.BLOG,
     },
     {
       emoji: "🙋‍♂️",
@@ -52,7 +52,7 @@ function MainMenu() {
     {
       emoji: "🔮",
       label: SiteTexts.page.current_locale.menu_item_playground,
-      url: Routes.PLAYGROUND(),
+      url: Routes.PLAYGROUND,
     },
     isUserLoggedIn() && {
       emoji: "🚀",

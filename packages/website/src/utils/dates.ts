@@ -1,11 +1,12 @@
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-import { Routes } from "./constants";
+import Routes from "~/data/routes.json";
+
 import { getSiteTexts, parseSiteText, pluralize } from "./i18n";
 
 dayjs.extend(customParseFormat);
-const SiteTexts = getSiteTexts({ page: Routes.BLOG() });
+const SiteTexts = getSiteTexts({ page: Routes.BLOG });
 
 export function getDifferenceBetweenDates(startDate: string, endDate: Date): string {
   const difference = dayjs(endDate).diff(dayjs(startDate, "YYYY/MM/DD"), "day");

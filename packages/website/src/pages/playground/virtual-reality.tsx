@@ -1,8 +1,8 @@
 import React from "react";
 
 import { MainLayout, Page, UL, Link } from "~/components";
+import Routes from "~/data/routes.json";
 import { useAssets } from "~/hooks";
-import { Routes } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
 
 function VRPage(): any {
@@ -18,11 +18,11 @@ function VRPage(): any {
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND(),
+            url: Routes.PLAYGROUND,
           },
           {
             text: PAGE_NAME,
-            url: Routes.PLAYGROUND(PAGE_NAME),
+            url: Routes.PLAYGROUND_PROJECTS[PAGE_NAME],
           },
         ]}
         title={PAGE_NAME}

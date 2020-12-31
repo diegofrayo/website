@@ -33,11 +33,11 @@ Object.values(posts).forEach(post => {
   const url = `${WEBSITE_METADATA.urlProd}/blog/${post.slug}`;
 
   feed.addItem({
-    title: post.en.title,
+    title: post[post.default_language].title,
     id: url,
     link: url,
-    description: post.en.description,
-    content: post.en.description,
+    description: post[post.default_language].description,
+    content: post[post.default_language].description,
     author: [
       {
         name: WEBSITE_METADATA.shortName,

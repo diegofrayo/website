@@ -21,6 +21,8 @@ module.exports = {
       },
       inset: {
         "1px": "1px",
+        "2px": "2px",
+        "3px": "3px",
       },
     },
   },
@@ -35,23 +37,6 @@ module.exports = {
 };
 
 // --- Utilities ---
-
-function createWhitelist() {
-  const breakpoints = ["", "sm:", "md:", "lg:", "xl:"];
-  const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64];
-  const margins = ["tw-my-", "tw-mx-", "tw-mb-", "tw-mt-"];
-  const whitelist = [];
-
-  margins.forEach(margin => {
-    numbers.forEach(number => {
-      breakpoints.forEach(breakpoint => {
-        whitelist.push(`${breakpoint}${margin}${number}`);
-      });
-    });
-  });
-
-  return whitelist;
-}
 
 function myCustomClassesPlugin({ addUtilities, config, e }) {
   const newClasses = {

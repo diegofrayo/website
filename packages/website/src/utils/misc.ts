@@ -1,4 +1,4 @@
-import { WEBSITE_METADATA } from "~/data/metadata";
+import { WEBSITE_METADATA } from "~/data/metadata.json";
 
 export function createArray(length: number): Array<number> {
   return Array.from(Array(length).keys()).map(value => value + 1);

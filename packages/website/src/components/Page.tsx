@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import Head from "next/head";
 
-import { SEO_METADATA, WEBSITE_METADATA } from "~/data/metadata";
+import { SEO_METADATA, WEBSITE_METADATA } from "~/data/metadata.json";
+import Routes from "~/data/routes.json";
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import { trackPageLoaded } from "~/utils/analytics";
 import { getAssets } from "~/utils/assets";
-import { Routes } from "~/utils/constants";
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 
 function Page({ children, config = {} }: Record<string, any>): any {

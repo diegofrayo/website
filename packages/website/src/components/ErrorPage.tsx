@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Routes } from "~/utils/constants";
+import Routes from "~/data/routes.json";
 import { getSiteTexts } from "~/utils/i18n";
 
 import MainLayout from "./MainLayout";

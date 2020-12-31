@@ -4,7 +4,8 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout, MDXContent } from "~/components";
-import { Routes, PAGES_NAMES, CURRENT_LOCALE } from "~/utils/constants";
+import Routes from "~/data/routes.json";
+import { CURRENT_LOCALE } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 import {
@@ -48,7 +49,7 @@ function SitePage({ content, page }: Record<string, any>): any {
 
 export async function getStaticPaths(): Promise<Record<string, any>> {
   return {
-    paths: PAGES_NAMES.map(page => {
+    paths: Routes.__DYNAMIC_PAGES.map(page => {
       return { params: { page } };
     }),
     fallback: false,

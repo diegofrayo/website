@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import CryptoJS from "crypto-js";
 
 import { MainLayout, Page, Separator } from "~/components";
+import Routes from "~/data/routes.json";
 import { useDidMount } from "~/hooks";
-import { Routes } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
 import { copyToClipboard } from "~/utils/misc";
 
@@ -49,11 +49,11 @@ function StupidPage(): any {
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND(),
+            url: Routes.PLAYGROUND,
           },
           {
             text: PAGE_NAME,
-            url: Routes.PLAYGROUND(PAGE_NAME),
+            url: Routes.PLAYGROUND_PROJECTS[PAGE_NAME],
           },
         ]}
         title={PAGE_NAME}

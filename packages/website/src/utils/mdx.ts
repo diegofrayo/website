@@ -1,9 +1,9 @@
 import { Link, UL, TextWithEmoji, Emoji, Image } from "~/components";
 import * as MDXComponents from "~/components/MDXComponents";
 import GithubData from "~/data/github.json";
-import { WEBSITE_METADATA } from "~/data/metadata";
+import { WEBSITE_METADATA } from "~/data/metadata.json";
+import Routes from "~/data/routes.json";
 
-import { Routes } from "./constants";
 import { getSiteTexts } from "./i18n";
 
 export const MDXComponentsConfig = {
@@ -24,10 +24,6 @@ export const MDXScope = {
     github: GithubData,
     resume: getSiteTexts({ page: Routes.RESUME }).page.current_locale,
     website: WEBSITE_METADATA,
-    routes: {
-      ...Routes,
-      BLOG: Routes.BLOG(),
-      PLAYGROUND: Routes.PLAYGROUND(),
-    },
+    routes: Routes,
   },
 };

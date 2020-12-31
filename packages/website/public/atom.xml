@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>diegofrayo</id>
     <title>Diego Rayo | Software Developer</title>
-    <updated>2020-12-17T03:45:53.644Z</updated>
+    <updated>2020-12-31T21:29:07.725Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Diego Fernando Rayo Zamora</name>
@@ -22,12 +22,12 @@
     <category term="Next.js"/>
     <category term="Blog"/>
     <entry>
-        <title type="html"><![CDATA[Thoughts about my profession]]></title>
+        <title type="html"><![CDATA[Pensamientos sobre mi profesión]]></title>
         <id>https://diegofrayo.vercel.app/blog/thoughts-about-my-profession</id>
         <link href="https://diegofrayo.vercel.app/blog/thoughts-about-my-profession"/>
         <updated>2020-12-05T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[I want to recopile some thoughts about my job and this industry.]]></summary>
-        <content type="html"><![CDATA[I want to recopile some thoughts about my job and this industry.]]></content>
+        <summary type="html"><![CDATA[Quiero recopilar algunos pensamientos acerca de mi trabajo y la industria.]]></summary>
+        <content type="html"><![CDATA[Quiero recopilar algunos pensamientos acerca de mi trabajo y la industria.]]></content>
         <author>
             <name>Diego Rayo</name>
             <email>diegofrayo@gmail.com</email>
@@ -35,12 +35,12 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[My favorite music and MDX]]></title>
+        <title type="html"><![CDATA[Mi música favorita y MDX]]></title>
         <id>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</id>
         <link href="https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx"/>
         <updated>2020-12-03T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.]]></summary>
-        <content type="html"><![CDATA[MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.]]></content>
+        <summary type="html"><![CDATA[MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify.]]></summary>
+        <content type="html"><![CDATA[MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify.]]></content>
         <author>
             <name>Diego Rayo</name>
             <email>diegofrayo@gmail.com</email>
@@ -48,12 +48,25 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[My first post]]></title>
+        <title type="html"><![CDATA[Mi primera publicación]]></title>
         <id>https://diegofrayo.vercel.app/blog/my-first-post</id>
         <link href="https://diegofrayo.vercel.app/blog/my-first-post"/>
         <updated>2020-12-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[This is my first post, here I want to welcome you to my website and explain why I built it.]]></summary>
-        <content type="html"><![CDATA[This is my first post, here I want to welcome you to my website and explain why I built it.]]></content>
+        <summary type="html"><![CDATA[Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí.]]></summary>
+        <content type="html"><![CDATA[Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí.]]></content>
+        <author>
+            <name>Diego Rayo</name>
+            <email>diegofrayo@gmail.com</email>
+            <uri>https://diegofrayo.vercel.app/about-me</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Conectando un proyecto de Firebase con un dominio de Go Daddy]]></title>
+        <id>https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy</id>
+        <link href="https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy"/>
+        <updated>2020-12-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase.]]></summary>
+        <content type="html"><![CDATA[En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase.]]></content>
         <author>
             <name>Diego Rayo</name>
             <email>diegofrayo@gmail.com</email>

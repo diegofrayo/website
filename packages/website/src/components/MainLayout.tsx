@@ -4,11 +4,12 @@ import { useTheme } from "next-themes";
 import classnames from "classnames";
 
 import GITHUB from "~/data/github.json";
-import { WEBSITE_METADATA } from "~/data/metadata";
+import { WEBSITE_METADATA } from "~/data/metadata.json";
+import Routes from "~/data/routes.json";
 import { useDidMount, useAssets, useOnWindowScroll } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
-import { CURRENT_LOCALE, Routes } from "~/utils/constants";
+import { CURRENT_LOCALE } from "~/utils/constants";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
 import { getSiteTexts } from "~/utils/i18n";
 import {
@@ -21,7 +22,7 @@ import {
 
 import { Link, Separator, Emoji, Breadcumb, Image } from "./";
 
-const SiteTexts = getSiteTexts({ layout: true, page: Routes.BLOG() });
+const SiteTexts = getSiteTexts({ layout: true, page: Routes.BLOG });
 
 function MainLayout({
   children,
@@ -196,6 +197,24 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
   return (
     <Fragment>
       <Separator size={8} />
+
+      <section className="tw-mb-4 tw-flex-1 tw-flex tw-items-center tw-text-sm">
+        <p className="tw-mr-4 tw-italic">
+          {SiteTexts.page.current_locale.like_blog_post}
+        </p>
+        <button
+          className="tw-border twc-border-color-primary dark:twc-border-color-primary twc-bg-secondary dark:twc-bg-secondary tw-flex tw-items-center tw-flex-shrink-0 tw-rounded-md tw-text-sm"
+          onClick={() => {
+            alert("En progreso...");
+          }}
+        >
+          <Emoji className="tw-px-2">👍</Emoji>
+          <section className="tw-border-l twc-border-color-primary dark:twc-border-color-primary tw-flex tw-items-center tw-px-2 tw-py-1 tw-h-full">
+            <span className="tw-relative tw--top-2px tw-font-bold">0</span>
+          </section>
+        </button>
+      </section>
+
       <section className="twc-border-color-primary tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-border tw-p-4">
         <section className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
           <BlogPostFooterItem>
@@ -232,7 +251,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
             is={Link}
             href={`https://twitter.com/intent/tweet?${createQueryFromObject({
               text: title,
-              url: `${WEBSITE_METADATA.url}${Routes.BLOG(blogMetadata.slug)}`,
+              url: `${WEBSITE_METADATA.url}${Routes.BLOG_POSTS[blogMetadata.slug]}`,
               via: WEBSITE_METADATA.username,
             })}`}
             styled={false}
@@ -245,9 +264,9 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
             is="button"
             className="clipboard"
             tw-variant="withHover"
-            data-clipboard-text={`${title} - ${WEBSITE_METADATA.url}${Routes.BLOG(
-              blogMetadata.slug,
-            )} via @${WEBSITE_METADATA.username}`}
+            data-clipboard-text={`${title} - ${WEBSITE_METADATA.url}${
+              Routes.BLOG_POSTS[blogMetadata.slug]
+            } via @${WEBSITE_METADATA.username}`}
             onClick={copyToClipboard}
           >
             <BlogPostFooterItem.Icon src={BlogPostAssets.LINK} alt="Link icon" />

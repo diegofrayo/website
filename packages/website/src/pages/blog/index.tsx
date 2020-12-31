@@ -3,12 +3,13 @@ import NextLink from "next/link";
 
 import { Page, MainLayout, UL, Link } from "~/components";
 import { posts as BlogPosts } from "~/data/blog/posts.json";
-import { Routes, CURRENT_LOCALE } from "~/utils/constants";
+import Routes from "~/data/routes.json";
+import { CURRENT_LOCALE } from "~/utils/constants";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { getSiteTexts } from "~/utils/i18n";
 import { removeEmojiFromTitle } from "~/utils/misc";
 
-const SiteTexts = getSiteTexts({ page: Routes.BLOG(), layout: true });
+const SiteTexts = getSiteTexts({ page: Routes.BLOG, layout: true });
 
 function BlogPage(): any {
   function sortBlogPostsByPublishedDate(a, b) {
@@ -27,14 +28,14 @@ function BlogPage(): any {
     <Page
       config={{
         title: removeEmojiFromTitle(SiteTexts.page.current_locale.title),
-        pathname: Routes.BLOG(),
+        pathname: Routes.BLOG,
         description: SiteTexts.page.current_locale.meta_description,
       }}
     >
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
-          { text: SiteTexts.layout.current_locale.breadcumb.blog, url: Routes.BLOG() },
+          { text: SiteTexts.layout.current_locale.breadcumb.blog, url: Routes.BLOG },
         ]}
         title={SiteTexts.page.current_locale.title}
       >
@@ -67,7 +68,7 @@ export default BlogPage;
 function BlogEntry({ slug, title, updatedAt }) {
   return (
     <li>
-      <Link is={NextLink} href={Routes.BLOG(slug)}>
+      <Link is={NextLink} href={Routes.BLOG_POSTS[slug]}>
         {title}
       </Link>
       <p className="tw-text-sm tw-ml-4 tw-italic">

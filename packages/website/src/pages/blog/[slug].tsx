@@ -4,13 +4,14 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout, MDXContent } from "~/components";
-import { WEBSITE_METADATA } from "~/data/metadata";
 import { posts as BlogPosts } from "~/data/blog/posts.json";
-import { Routes, CURRENT_LOCALE } from "~/utils/constants";
+import { WEBSITE_METADATA } from "~/data/metadata.json";
+import Routes from "~/data/routes.json";
+import { CURRENT_LOCALE } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 
-const SiteTexts = getSiteTexts({ page: Routes.BLOG(), layout: true });
+const SiteTexts = getSiteTexts({ page: Routes.BLOG, layout: true });
 
 function BlogPostPage({ post, content }: Record<string, any>): any {
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
@@ -19,7 +20,7 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
     <Page
       config={{
         title: post[CURRENT_LOCALE].title,
-        pathname: Routes.BLOG(post.slug),
+        pathname: Routes.BLOG_POSTS[post.slug],
         description: post[CURRENT_LOCALE].description,
         assets: ["blog_post"],
       }}
@@ -27,10 +28,10 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
       <MainLayout
         breadcumb={[
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
-          { text: SiteTexts.layout.current_locale.breadcumb.blog, url: Routes.BLOG() },
+          { text: SiteTexts.layout.current_locale.breadcumb.blog, url: Routes.BLOG },
           {
             text: post[CURRENT_LOCALE].title,
-            url: Routes.BLOG(post.slug),
+            url: Routes.BLOG_POSTS[post.slug],
           },
         ]}
         title={post[CURRENT_LOCALE].title}

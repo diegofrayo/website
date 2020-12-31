@@ -12,10 +12,10 @@
     "items": [
         {
             "id": "https://diegofrayo.vercel.app/blog/thoughts-about-my-profession",
-            "content_html": "I want to recopile some thoughts about my job and this industry.",
+            "content_html": "Quiero recopilar algunos pensamientos acerca de mi trabajo y la industria.",
             "url": "https://diegofrayo.vercel.app/blog/thoughts-about-my-profession",
-            "title": "Thoughts about my profession",
-            "summary": "I want to recopile some thoughts about my job and this industry.",
+            "title": "Pensamientos sobre mi profesión",
+            "summary": "Quiero recopilar algunos pensamientos acerca de mi trabajo y la industria.",
             "date_modified": "2020-12-05T00:00:00.000Z",
             "author": {
                 "name": "Diego Rayo",
@@ -24,10 +24,10 @@
         },
         {
             "id": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
-            "content_html": "MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.",
+            "content_html": "MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify.",
             "url": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
-            "title": "My favorite music and MDX",
-            "summary": "MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.",
+            "title": "Mi música favorita y MDX",
+            "summary": "MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify.",
             "date_modified": "2020-12-03T00:00:00.000Z",
             "author": {
                 "name": "Diego Rayo",
@@ -36,11 +36,23 @@
         },
         {
             "id": "https://diegofrayo.vercel.app/blog/my-first-post",
-            "content_html": "This is my first post, here I want to welcome you to my website and explain why I built it.",
+            "content_html": "Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí.",
             "url": "https://diegofrayo.vercel.app/blog/my-first-post",
-            "title": "My first post",
-            "summary": "This is my first post, here I want to welcome you to my website and explain why I built it.",
+            "title": "Mi primera publicación",
+            "summary": "Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí.",
             "date_modified": "2020-12-01T00:00:00.000Z",
+            "author": {
+                "name": "Diego Rayo",
+                "url": "https://diegofrayo.vercel.app/about-me"
+            }
+        },
+        {
+            "id": "https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy",
+            "content_html": "En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase.",
+            "url": "https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy",
+            "title": "Conectando un proyecto de Firebase con un dominio de Go Daddy",
+            "summary": "En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase.",
+            "date_modified": "2020-12-30T00:00:00.000Z",
             "author": {
                 "name": "Diego Rayo",
                 "url": "https://diegofrayo.vercel.app/about-me"

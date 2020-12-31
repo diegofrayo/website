@@ -2,9 +2,9 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
 
+import Routes from "~/data/routes.json";
 import { useAssets } from "~/hooks";
 import twcss from "~/lib/twcss";
-import { Routes } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/i18n";
 import { copyToClipboard, slugify } from "~/utils/misc";
 
@@ -16,7 +16,7 @@ export * from "./pages/my-favorite-music-and-mdx";
 export function Code({ language, fileName, code, sourceURL }: Record<string, any>): any {
   const { BlogPostAssets } = useAssets();
 
-  const SiteTexts = getSiteTexts({ page: Routes.BLOG() });
+  const SiteTexts = getSiteTexts({ page: Routes.BLOG });
 
   return (
     <section
