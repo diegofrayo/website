@@ -7,7 +7,7 @@ import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
-import { removeEmojiFromTitle } from "~/utils/misc";
+import { getBlogTitle, removeEmojiFromTitle } from "~/utils/misc";
 
 function BlogPage(): any {
   const { SiteTexts, currentLocale } = useInternationalization({
@@ -61,7 +61,7 @@ function BlogPage(): any {
                   key={post.slug}
                   slug={post.slug}
                   updatedAt={post.updated_at}
-                  title={`${post.is_legacy ? "[LEGACY] " : ""}${post[locale].title}`}
+                  title={getBlogTitle(post, locale)}
                   locale={locale}
                 />
               );

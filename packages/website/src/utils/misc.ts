@@ -200,3 +200,7 @@ export function isUserLoggedIn(): boolean {
 export function isBrowser(): boolean {
   return typeof window !== "undefined";
 }
+
+export function getBlogTitle(post, locale): string {
+  return `${post.is_legacy ? "[LEGACY] " : ""}${post[locale].title}`;
+}

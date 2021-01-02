@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import CryptoJS from "crypto-js";
 
 import { MainLayout, Page, Separator } from "~/components";
 import Routes from "~/data/routes.json";
@@ -20,7 +19,9 @@ function StupidPage(): any {
     inputRef.current.click();
   });
 
-  function handleEncrypt() {
+  async function handleEncrypt() {
+    const CryptoJS = await import("crypto-js");
+
     const encryptedText = CryptoJS.AES.encrypt(
       inputRef.current.value,
       MY_STUPID_SECRET_KEY,
@@ -29,7 +30,9 @@ function StupidPage(): any {
     setOutput(encryptedText);
   }
 
-  function handleDecrypt() {
+  async function handleDecrypt() {
+    const CryptoJS = await import("crypto-js");
+
     const decryptedText = CryptoJS.AES.decrypt(
       inputRef.current.value,
       MY_STUPID_SECRET_KEY,

@@ -10,6 +10,7 @@ import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
+import { getBlogTitle } from "~/utils/misc";
 
 function BlogPostPage({ post, content }: Record<string, any>): any {
   const { SiteTexts, currentLocale } = useInternationalization({
@@ -34,11 +35,11 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
           { text: SiteTexts.layout.current_locale.breadcumb.blog, url: Routes.BLOG },
           {
-            text: post[currentLocale].title,
+            text: getBlogTitle(post, currentLocale),
             url: Routes.BLOG_POSTS[post.slug],
           },
         ]}
-        title={post[currentLocale].title}
+        title={getBlogTitle(post, currentLocale)}
         blogMetadata={{
           author: `@${WEBSITE_METADATA.username}`,
           slug: post.slug,
