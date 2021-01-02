@@ -69,7 +69,7 @@
       },
       "en": {
         "title": "My favorite music and MDX",
-        "description": "MDX is an extension of Markdown locale and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify."
+        "description": "MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify."
       }
     },
     "my-first-post": {

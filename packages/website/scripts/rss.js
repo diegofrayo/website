@@ -8,7 +8,7 @@ const { pages } = require("../src/data/texts.json");
 
 const feed = new Feed({
   title: SEO_METADATA.title,
-  description: pages["/"].en.meta_description,
+  description: pages["/"][pages["/"].config.default_locale].meta_description,
   id: WEBSITE_METADATA.username,
   link: WEBSITE_METADATA.urlProd,
   language: "en",
@@ -33,11 +33,11 @@ Object.values(posts).forEach(post => {
   const url = `${WEBSITE_METADATA.urlProd}/blog/${post.slug}`;
 
   feed.addItem({
-    title: post[post.default_language].title,
+    title: post[post.default_locale].title,
     id: url,
     link: url,
-    description: post[post.default_language].description,
-    content: post[post.default_language].description,
+    description: post[post.default_locale].description,
+    content: post[post.default_locale].description,
     author: [
       {
         name: WEBSITE_METADATA.shortName,

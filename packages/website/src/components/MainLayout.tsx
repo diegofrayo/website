@@ -98,9 +98,7 @@ const Header = safeRender(function Header({ locales }): any {
           <h1 className="tw-text-2xl sm:tw-text-4xl tw-pr-10 tw-flex-1  tw-font-bold">
             Diego Rayo
           </h1>
-          <section className="tw-flex tw-flex-col tw-items-end">
-            <DarkModeToggle />
-          </section>
+          <DarkModeToggle />
         </section>
 
         <style jsx>{`

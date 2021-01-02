@@ -9,9 +9,7 @@ function withTranslations(Component: any, config: Record<string, any>): any {
     const { locale } = useRouter();
     setCurrentLocale(locale);
 
-    const SiteTexts = getSiteTexts({ ...config, locale });
-
-    return <Component SiteTexts={SiteTexts} {...props} />;
+    return <Component SiteTexts={getSiteTexts({ ...config, locale })} {...props} />;
   };
 }
 
