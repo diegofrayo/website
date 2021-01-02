@@ -1,3 +1,4 @@
 import safeRender from "./safeRender";
+import withTranslations from "./withTranslations";
 
-export { safeRender };
+export { safeRender, withTranslations };

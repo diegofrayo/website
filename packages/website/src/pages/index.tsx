@@ -3,12 +3,11 @@ import NextLink from "next/link";
 
 import { Page, MainLayout, Emoji, Link } from "~/components";
 import Routes from "~/data/routes.json";
-import { getSiteTexts } from "~/utils/i18n";
+import { withTranslations } from "~/hocs";
+import { generateSupportedLocales } from "~/utils/internationalization";
 import { isUserLoggedIn } from "~/utils/misc";
 
-const SiteTexts = getSiteTexts({ page: Routes.HOME });
-
-function HomePage(): any {
+function HomePage({ SiteTexts }): any {
   return (
     <Page
       config={{
@@ -16,18 +15,21 @@ function HomePage(): any {
         pathname: Routes.HOME,
       }}
     >
-      <MainLayout title={SiteTexts.page.current_locale.title}>
-        <MainMenu />
+      <MainLayout
+        locales={generateSupportedLocales(SiteTexts.page.config.locales, Routes.HOME)}
+        title={SiteTexts.page.current_locale.title}
+      >
+        <MainMenu SiteTexts={SiteTexts} />
       </MainLayout>
     </Page>
   );
 }
 
-export default HomePage;
+export default withTranslations(HomePage, { page: Routes.HOME });
 
 // --- Components ---
 
-function MainMenu() {
+function MainMenu({ SiteTexts }) {
   const ITEMS = [
     {
       emoji: "✍️",
@@ -62,7 +64,7 @@ function MainMenu() {
   ].filter(Boolean);
 
   return (
-    <nav className="tw-mt-8 tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
+    <nav className="tw-mt-8 tw-flex tw-flex-wrap tw-justify-center">
       {ITEMS.map((item, index) => {
         return (
           <section

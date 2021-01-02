@@ -9,6 +9,7 @@ import { ThemeProvider } from "next-themes";
 
 import { AssetsProvider } from "~/hooks/useAssets";
 import { initAnalytics } from "~/utils/analytics";
+import { extractLocaleFromUrl, setCurrentLocale } from "~/utils/internationalization";
 import { detectEmojisSupport, setScrollPosition } from "~/utils/misc";
 
 import ErrorPage from "./_error";
@@ -19,6 +20,7 @@ class CustomApp extends App {
   componentDidMount(): void {
     initAnalytics();
     detectEmojisSupport();
+    setCurrentLocale(extractLocaleFromUrl());
 
     Router.events.on("routeChangeComplete", function routeChangeComplete() {
       setScrollPosition(0);

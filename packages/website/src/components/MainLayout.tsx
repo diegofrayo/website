@@ -6,12 +6,15 @@ import classnames from "classnames";
 import GITHUB from "~/data/github.json";
 import { WEBSITE_METADATA } from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
-import { useDidMount, useAssets, useOnWindowScroll } from "~/hooks";
+import {
+  useAssets,
+  useDidMount,
+  useInternationalization,
+  useOnWindowScroll,
+} from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
-import { CURRENT_LOCALE } from "~/utils/constants";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
-import { getSiteTexts } from "~/utils/i18n";
 import {
   copyToClipboard,
   createQueryFromObject,
@@ -22,17 +25,16 @@ import {
 
 import { Link, Separator, Emoji, Breadcumb, Image } from "./";
 
-const SiteTexts = getSiteTexts({ layout: true, page: Routes.BLOG });
-
 function MainLayout({
   children,
+  locales,
   breadcumb,
   title,
   blogMetadata,
 }: Record<string, any>): any {
   return (
     <Main>
-      <Header />
+      <Header locales={locales} />
       <Separator size={2} />
 
       <Body>
@@ -60,7 +62,12 @@ export default MainLayout;
 
 const Main = twcss.main`twc-max-w-base tw-w-full tw-py-4 tw-px-6 tw-mx-auto tw-relative`;
 
-const Header = safeRender(function Header(): any {
+const Header = safeRender(function Header({ locales }): any {
+  const { SiteTexts, currentLocale } = useInternationalization({
+    page: Routes.BLOG,
+    layout: true,
+  });
+
   const [fixedHeader, setFixedHeader] = useState(false);
   const headerRef = useRef(null);
 
@@ -91,7 +98,9 @@ const Header = safeRender(function Header(): any {
           <h1 className="tw-text-2xl sm:tw-text-4xl tw-pr-10 tw-flex-1  tw-font-bold">
             Diego Rayo
           </h1>
-          <DarkModeToggle />
+          <section className="tw-flex tw-flex-col tw-items-end">
+            <DarkModeToggle />
+          </section>
         </section>
 
         <style jsx>{`
@@ -105,7 +114,7 @@ const Header = safeRender(function Header(): any {
 
   return (
     <header
-      className="twc-border-color-primary tw-border-b tw-pb-4 tw-flex tw-relative"
+      className="twc-border-color-primary tw-border-b tw-pb-4 tw-flex"
       ref={headerRef}
     >
       <Link
@@ -124,9 +133,11 @@ const Header = safeRender(function Header(): any {
           {SiteTexts.layout.current_locale.header.job_title}
         </p>
       </section>
-      <span className="tw-absolute tw-top-1 tw-right-0">
+      <section className="tw-flex tw-flex-shrink-0 tw-h-full tw-relative tw-flex-col tw-justify-between tw-items-end tw-ml-2">
         <DarkModeToggle />
-      </span>
+        <Separator size={2} />
+        <LocalesSelector locales={locales} currentLocale={currentLocale} />
+      </section>
     </header>
   );
 });
@@ -165,10 +176,38 @@ function DarkModeToggle(): any {
   );
 }
 
+function LocalesSelector({ locales, currentLocale }): any {
+  if (!locales) return null;
+
+  return (
+    <section className="tw-border tw-py-1 tw-px-2 tw-text-sm twc-border-color-primary dark:twc-border-color-primary">
+      {locales.map((locale, index) => {
+        return (
+          <Fragment key={`LocaleToggle-${locale.name}`}>
+            {currentLocale === locale.name ? (
+              <span className="tw-font-bold">{locale.name}</span>
+            ) : (
+              <Link is={NextLink} href={locale.route} locale={locale.name}>
+                {locale.name}
+              </Link>
+            )}
+
+            {index !== locales.length - 1 && <span className="tw-mx-1">|</span>}
+          </Fragment>
+        );
+      })}
+    </section>
+  );
+}
+
 const Body = twcss.section``;
 
 function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
   const { BlogPostAssets } = useAssets();
+  const { SiteTexts, currentLocale } = useInternationalization({
+    page: Routes.BLOG,
+    layout: true,
+  });
 
   const [showGoToTopButton, setShowGoToTopButton] = useState(false);
 
@@ -190,7 +229,7 @@ function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
 
   function generateBlogPostRawContentLink() {
     return GITHUB.monorepo.website.files["raw-post"]
-      .replace("CURRENT_LOCALE", CURRENT_LOCALE)
+      .replace("CURRENT_LOCALE", currentLocale)
       .replace("FILE_NAME", `${blogMetadata.createdAt}-${blogMetadata.slug}`);
   }
 

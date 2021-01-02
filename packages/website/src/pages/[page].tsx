@@ -5,21 +5,20 @@ import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout, MDXContent } from "~/components";
 import Routes from "~/data/routes.json";
-import { CURRENT_LOCALE } from "~/utils/constants";
-import { getSiteTexts } from "~/utils/i18n";
+import {
+  generateSupportedLocales,
+  getItemLocale,
+  getSiteTexts,
+} from "~/utils/internationalization";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 import {
+  removeEmojiFromTitle,
   toLowerCaseObjectProperty,
   toUpperCaseObjectProperty,
-  removeEmojiFromTitle,
 } from "~/utils/misc";
 
-function SitePage({ content, page }: Record<string, any>): any {
+function SitePage({ content, page, SiteTexts }: Record<string, any>): any {
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
-  const SiteTexts = getSiteTexts({
-    page: Routes[toUpperCaseObjectProperty(page)],
-    layout: true,
-  });
 
   return (
     <Page
@@ -31,6 +30,14 @@ function SitePage({ content, page }: Record<string, any>): any {
       }}
     >
       <MainLayout
+        locales={
+          SiteTexts.page.config.meta_no_robots
+            ? undefined
+            : generateSupportedLocales(
+                SiteTexts.page.config.locales,
+                Routes[toUpperCaseObjectProperty(page)],
+              )
+        }
         breadcumb={[
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
           {
@@ -47,34 +54,44 @@ function SitePage({ content, page }: Record<string, any>): any {
   );
 }
 
-export async function getStaticPaths(): Promise<Record<string, any>> {
+export async function getStaticPaths({ locales }): Promise<Record<string, any>> {
   return {
-    paths: Routes.__DYNAMIC_PAGES.map(page => {
-      return { params: { page } };
-    }),
+    paths: Routes.__DYNAMIC_PAGES.reduce((result, page) => {
+      return result.concat(
+        locales.map(locale => {
+          return { params: { page }, locale };
+        }),
+      );
+    }, []),
     fallback: false,
   };
 }
 
 export async function getStaticProps({
   params,
+  locale,
 }: Record<string, any>): Promise<Record<string, any>> {
   const SiteTexts = getSiteTexts({
     page: Routes[toUpperCaseObjectProperty(params.page)],
+    layout: true,
+    locale,
   });
 
   const file = fs.readFileSync(
-    `${process.cwd()}/src/data/pages/${
-      SiteTexts.page.config.default_locale || CURRENT_LOCALE
-    }/${params.page}.mdx`,
+    `${process.cwd()}/src/data/pages/${getItemLocale(
+      SiteTexts.page.config.locales,
+      SiteTexts.page.config.default_locale,
+      locale,
+    )}/${params.page}.mdx`,
     "utf8",
   );
+
   const content = await renderToString(file, {
     components: MDXComponentsConfig,
     scope: MDXScope,
   });
 
-  return { props: { content, page: params.page } };
+  return { props: { content, page: params.page, SiteTexts } };
 }
 
 export default SitePage;

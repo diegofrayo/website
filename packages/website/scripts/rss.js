@@ -2,8 +2,8 @@ require("dotenv").config({ path: ".env" });
 const Feed = require("feed").Feed;
 const fs = require("fs");
 
-const { WEBSITE_METADATA, SEO_METADATA } = require("../src/data/metadata");
 const { posts } = require("../src/data/blog/posts.json");
+const { WEBSITE_METADATA, SEO_METADATA } = require("../src/data/metadata.json");
 const { pages } = require("../src/data/texts.json");
 
 const feed = new Feed({

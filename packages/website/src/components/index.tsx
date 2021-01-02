@@ -34,7 +34,7 @@ export function Link({
   }
 
   return (
-    <Tag href={href} passHref>
+    <Tag href={href} locale={rest.locale} passHref>
       <LinkElement tw-variant={styled && "styled"} className={className} {...rest}>
         {children}
       </LinkElement>

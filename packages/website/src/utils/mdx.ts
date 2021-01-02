@@ -4,7 +4,7 @@ import GithubData from "~/data/github.json";
 import { WEBSITE_METADATA } from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
 
-import { getSiteTexts } from "./i18n";
+import { getSiteTexts } from "./internationalization";
 
 export const MDXComponentsConfig = {
   ...MDXComponents,

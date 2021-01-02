@@ -5,7 +5,7 @@ import dracula from "prism-react-renderer/themes/dracula";
 import Routes from "~/data/routes.json";
 import { useAssets } from "~/hooks";
 import twcss from "~/lib/twcss";
-import { getSiteTexts } from "~/utils/i18n";
+import { getSiteTexts } from "~/utils/internationalization";
 import { copyToClipboard, slugify } from "~/utils/misc";
 
 import { Link, Image } from "./";

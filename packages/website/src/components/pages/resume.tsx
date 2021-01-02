@@ -74,14 +74,14 @@ export function ResumeFAQItem({ question, children }: Record<string, any>): any 
         </h3>
       </section>
 
-      <p
+      <section
         className={classnames(
           "tw-pl-3",
           collapsed ? "tw-hidden tw-mb-0" : "tw-block twc-mb-base",
         )}
       >
         <blockquote>{children}</blockquote>
-      </p>
+      </section>
 
       <style jsx>
         {`

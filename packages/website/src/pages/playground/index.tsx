@@ -3,11 +3,9 @@ import NextLink from "next/link";
 
 import { MainLayout, Page, UL, Link } from "~/components";
 import Routes from "~/data/routes.json";
-import { getSiteTexts } from "~/utils/i18n";
+import { withTranslations } from "~/hocs";
 
-const SiteTexts = getSiteTexts({ page: Routes.PLAYGROUND, layout: true });
-
-function PlaygroundPage(): any {
+function PlaygroundPage({ SiteTexts }): any {
   return (
     <Page config={{ noRobots: true }}>
       <MainLayout
@@ -23,17 +21,17 @@ function PlaygroundPage(): any {
         <UL>
           <li>
             <Link is={NextLink} href={Routes.PLAYGROUND_PROJECTS["stupid"]}>
-              <a>stupid</a>
+              stupid
             </Link>
           </li>
           <li>
             <Link is={NextLink} href={Routes.PLAYGROUND_PROJECTS["strings"]}>
-              <a>strings</a>
+              strings
             </Link>
           </li>
           <li>
             <Link is={NextLink} href={Routes.PLAYGROUND_PROJECTS["virtual-reality"]}>
-              <a>virtual-reality</a>
+              virtual-reality
             </Link>
           </li>
         </UL>
@@ -42,4 +40,7 @@ function PlaygroundPage(): any {
   );
 }
 
-export default PlaygroundPage;
+export default withTranslations(PlaygroundPage, {
+  page: Routes.PLAYGROUND,
+  layout: true,
+});

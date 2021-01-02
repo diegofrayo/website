@@ -31,7 +31,7 @@ function MDXContent({ content }: Record<string, any>): any {
           list-style-type: decimal;
         }
 
-        :global(.mdx-content) :global(img) {
+        :global(.mdx-content) > :global(img) {
           margin-left: auto;
           margin-right: auto;
           max-width: 100%;

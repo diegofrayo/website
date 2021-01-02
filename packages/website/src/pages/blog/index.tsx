@@ -4,14 +4,17 @@ import NextLink from "next/link";
 import { Page, MainLayout, UL, Link } from "~/components";
 import { posts as BlogPosts } from "~/data/blog/posts.json";
 import Routes from "~/data/routes.json";
-import { CURRENT_LOCALE } from "~/utils/constants";
+import { useInternationalization } from "~/hooks";
 import { getDifferenceBetweenDates } from "~/utils/dates";
-import { getSiteTexts } from "~/utils/i18n";
+import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { removeEmojiFromTitle } from "~/utils/misc";
 
-const SiteTexts = getSiteTexts({ page: Routes.BLOG, layout: true });
-
 function BlogPage(): any {
+  const { SiteTexts, currentLocale } = useInternationalization({
+    page: Routes.BLOG,
+    layout: true,
+  });
+
   function sortBlogPostsByPublishedDate(a, b) {
     if (a.published_at > b.published_at) {
       return -1;
@@ -33,6 +36,7 @@ function BlogPage(): any {
       }}
     >
       <MainLayout
+        locales={generateSupportedLocales(SiteTexts.page.config.locales, Routes.BLOG)}
         breadcumb={[
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
           { text: SiteTexts.layout.current_locale.breadcumb.blog, url: Routes.BLOG },
@@ -43,15 +47,22 @@ function BlogPage(): any {
         <UL>
           {Object.values(BlogPosts)
             .sort(sortBlogPostsByPublishedDate)
-            .map(item => {
-              if (item.is_published === false) return null;
+            .map(post => {
+              if (post.is_published === false) return null;
+
+              const locale = getItemLocale(
+                post.locales,
+                post.default_locale,
+                currentLocale,
+              );
 
               return (
                 <BlogEntry
-                  key={item.slug}
-                  slug={item.slug}
-                  updatedAt={item.updated_at}
-                  title={item[CURRENT_LOCALE].title}
+                  key={post.slug}
+                  slug={post.slug}
+                  updatedAt={post.updated_at}
+                  title={`${post.is_legacy ? "[LEGACY] " : ""}${post[locale].title}`}
+                  locale={locale}
                 />
               );
             })}
@@ -65,10 +76,12 @@ export default BlogPage;
 
 // --- Components ---
 
-function BlogEntry({ slug, title, updatedAt }) {
+function BlogEntry({ slug, title, locale, updatedAt }) {
+  const { SiteTexts } = useInternationalization({ page: Routes.BLOG, layout: true });
+
   return (
     <li>
-      <Link is={NextLink} href={Routes.BLOG_POSTS[slug]}>
+      <Link is={NextLink} href={Routes.BLOG_POSTS[slug]} locale={locale}>
         {title}
       </Link>
       <p className="tw-text-sm tw-ml-4 tw-italic">

@@ -7,34 +7,38 @@ import { Page, MainLayout, MDXContent } from "~/components";
 import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { WEBSITE_METADATA } from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
-import { CURRENT_LOCALE } from "~/utils/constants";
-import { getSiteTexts } from "~/utils/i18n";
+import { useInternationalization } from "~/hooks";
+import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 
-const SiteTexts = getSiteTexts({ page: Routes.BLOG, layout: true });
-
 function BlogPostPage({ post, content }: Record<string, any>): any {
+  const { SiteTexts, currentLocale } = useInternationalization({
+    page: Routes.BLOG,
+    layout: true,
+  });
+
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
 
   return (
     <Page
       config={{
-        title: post[CURRENT_LOCALE].title,
+        title: post[currentLocale].title,
         pathname: Routes.BLOG_POSTS[post.slug],
-        description: post[CURRENT_LOCALE].description,
+        description: post[currentLocale].description,
         assets: ["blog_post"],
       }}
     >
       <MainLayout
+        locales={generateSupportedLocales(post.locales, Routes.BLOG_POSTS[post.slug])}
         breadcumb={[
           { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
           { text: SiteTexts.layout.current_locale.breadcumb.blog, url: Routes.BLOG },
           {
-            text: post[CURRENT_LOCALE].title,
+            text: post[currentLocale].title,
             url: Routes.BLOG_POSTS[post.slug],
           },
         ]}
-        title={post[CURRENT_LOCALE].title}
+        title={post[currentLocale].title}
         blogMetadata={{
           author: `@${WEBSITE_METADATA.username}`,
           slug: post.slug,
@@ -53,23 +57,28 @@ export async function getStaticPaths(): Promise<Record<string, any>> {
   return {
     paths: Object.values(BlogPosts)
       .filter(item => item.is_published === true)
-      .map(({ slug }) => {
-        return { params: { slug } };
-      }),
+      .reduce((result, post) => {
+        return result.concat(
+          post.locales.map(locale => {
+            return { params: { slug: post.slug }, locale };
+          }),
+        );
+      }, []),
     fallback: false,
   };
 }
 
 export async function getStaticProps({
   params,
+  locale,
 }: Record<string, any>): Promise<Record<string, any>> {
   const post = BlogPosts[params.slug];
-  const language =
-    post.languages.indexOf(CURRENT_LOCALE) !== -1 ? CURRENT_LOCALE : post.languages[0];
   const note = fs.readFileSync(
-    `${process.cwd()}/src/data/blog/posts/${language}/${post.created_at}-${
-      post.slug
-    }.mdx`,
+    `${process.cwd()}/src/data/blog/posts/${getItemLocale(
+      post.locales,
+      post.default_locale,
+      locale,
+    )}/${post.created_at}-${post.slug}.mdx`,
     "utf8",
   );
   const content = await renderToString(note, {

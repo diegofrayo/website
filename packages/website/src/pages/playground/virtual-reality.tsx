@@ -3,13 +3,13 @@ import React from "react";
 import { MainLayout, Page, UL, Link } from "~/components";
 import Routes from "~/data/routes.json";
 import { useAssets } from "~/hooks";
-import { getSiteTexts } from "~/utils/i18n";
+import { getSiteTexts } from "~/utils/internationalization";
+
+const SiteTexts = getSiteTexts({ layout: true });
+const PAGE_NAME = "virtual-reality";
 
 function VRPage(): any {
   const { VR_Assets } = useAssets();
-
-  const SiteTexts = getSiteTexts({ layout: true });
-  const PAGE_NAME = "virtual-reality";
 
   return (
     <Page config={{ title: PAGE_NAME, noRobots: true, assets: ["vr"] }}>

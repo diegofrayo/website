@@ -4,7 +4,7 @@ import CryptoJS from "crypto-js";
 import { MainLayout, Page, Separator } from "~/components";
 import Routes from "~/data/routes.json";
 import { useDidMount } from "~/hooks";
-import { getSiteTexts } from "~/utils/i18n";
+import { getSiteTexts } from "~/utils/internationalization";
 import { copyToClipboard } from "~/utils/misc";
 
 const SiteTexts = getSiteTexts({ layout: true });

@@ -1,13 +1,13 @@
 import * as React from "react";
 
 import Routes from "~/data/routes.json";
-import { getSiteTexts } from "~/utils/i18n";
+import { useInternationalization } from "~/hooks";
 
 import MainLayout from "./MainLayout";
 import Page from "./Page";
 
 function ErrorPage({ statusCode }: Record<string, unknown>): any {
-  const SiteTexts = getSiteTexts({ page: Routes[`ERROR_${statusCode}`] });
+  const { SiteTexts } = useInternationalization({ page: Routes[`ERROR_${statusCode}`] });
 
   return (
     <Page metadata={{ noRobots: true }}>

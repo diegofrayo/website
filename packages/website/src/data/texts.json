@@ -33,6 +33,10 @@
   },
   "pages": {
     "/": {
+      "config": {
+        "locales": ["es", "en"],
+        "default_locale": "es"
+      },
       "common": {
         "menu_item_blog": "Blog",
         "menu_item_roadmap": "Roadmap",
@@ -54,6 +58,10 @@
       }
     },
     "/about-me": {
+      "config": {
+        "locales": ["es", "en"],
+        "default_locale": "es"
+      },
       "en": {
         "title": "🙋‍♂️ About me",
         "meta_description": "Know more about me."
@@ -65,6 +73,7 @@
     },
     "/roadmap": {
       "config": {
+        "locales": ["en"],
         "default_locale": "en",
         "meta_no_robots": true
       },
@@ -77,6 +86,7 @@
     },
     "/playground": {
       "config": {
+        "locales": ["en"],
         "default_locale": "en",
         "meta_no_robots": true
       },
@@ -86,6 +96,7 @@
     },
     "/snippets": {
       "config": {
+        "locales": ["en"],
         "default_locale": "en",
         "meta_no_robots": true
       },
@@ -97,6 +108,10 @@
       }
     },
     "/resume": {
+      "config": {
+        "locales": ["es", "en"],
+        "default_locale": "es"
+      },
       "en": {
         "title": "📄 Work experience",
         "meta_description": "This is my work experience as a Software Developer",
@@ -145,6 +160,10 @@
       }
     },
     "/blog": {
+      "config": {
+        "locales": ["es", "en"],
+        "default_locale": "es"
+      },
       "en": {
         "title": "✍️ Blog",
         "meta_description": "On this blog, You will find out programming tutorials, notes, thoughts and, ideas. I feel like writting and communicate things 😀.",
@@ -200,6 +219,8 @@
     },
     "/404": {
       "config": {
+        "locales": ["es", "en"],
+        "default_locale": "es",
         "meta_no_robots": true
       },
       "en": {
@@ -215,6 +236,8 @@
     },
     "/500": {
       "config": {
+        "locales": ["es", "en"],
+        "default_locale": "es",
         "meta_no_robots": true
       },
       "en": {

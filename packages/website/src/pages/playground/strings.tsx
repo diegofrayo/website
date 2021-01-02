@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import { MainLayout, Page, Separator } from "~/components";
 import Routes from "~/data/routes.json";
 import { useDidMount } from "~/hooks";
-import { getSiteTexts } from "~/utils/i18n";
+import { getSiteTexts } from "~/utils/internationalization";
 import { capitalize, copyToClipboard, slugify } from "~/utils/misc";
 
 const SiteTexts = getSiteTexts({ layout: true });

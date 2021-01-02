@@ -2,7 +2,7 @@ require("dotenv").config({ path: ".env" });
 const SitemapGenerator = require("sitemap-generator");
 const fs = require("fs");
 
-const { WEBSITE_METADATA } = require("../src/data/metadata");
+const { WEBSITE_METADATA } = require("../src/data/metadata.json");
 const { pages } = require("../src/data/texts.json");
 
 const pagesToIgnore = Object.entries(pages)
