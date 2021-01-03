@@ -14,14 +14,14 @@ import {
 } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
-import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
 import {
   copyToClipboard,
-  createQueryFromObject,
   getScrollPosition,
   onScrollStoppedListener,
   setScrollPosition,
-} from "~/utils/misc";
+} from "~/utils/browser";
+import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
+import { createQueryFromObject } from "~/utils/misc";
 
 import { Link, Separator, Emoji, Breadcumb, Image } from "./";
 

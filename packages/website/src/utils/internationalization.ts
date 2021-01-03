@@ -1,15 +1,22 @@
 import Texts from "~/data/texts.json";
+import { TypeLocale, TypeSiteTexts } from "~/types";
 
-const LOCALES = ["es", "en"];
-export const DEFAULT_LOCALE = LOCALES[0];
-let CURRENT_LOCALE = DEFAULT_LOCALE;
+const LOCALES: TypeLocale[] = ["es", "en"];
+export const DEFAULT_LOCALE: TypeLocale = LOCALES[0];
+let CURRENT_LOCALE: TypeLocale = DEFAULT_LOCALE;
+
+type TypeGetSiteTexts = {
+  page?: string; // TODO: Set posible pages
+  layout?: boolean;
+  locale?: TypeLocale;
+};
 
 export function getSiteTexts({
   page,
   layout,
   locale = CURRENT_LOCALE,
-}: Record<string, any>): Record<string, any> {
-  const result: Record<string, any> = {};
+}: TypeGetSiteTexts): TypeSiteTexts {
+  const result: TypeSiteTexts = {};
 
   if (layout) {
     result.layout = {
@@ -39,39 +46,57 @@ export function getSiteTexts({
   return result;
 }
 
-export function getCurrentLocale() {
+export function getCurrentLocale(): TypeLocale {
   return CURRENT_LOCALE;
 }
 
-export function setCurrentLocale(locale) {
+export function setCurrentLocale(locale: TypeLocale): void {
   CURRENT_LOCALE = locale;
 }
 
-export function extractLocaleFromUrl() {
+export function extractLocaleFromUrl(): TypeLocale {
   const [locale] = window.location.pathname.split("/");
 
-  if (LOCALES.indexOf(locale) !== -1) {
-    return locale;
+  if (LOCALES.indexOf(<TypeLocale>locale) !== -1) {
+    return locale as TypeLocale;
   }
 
   return CURRENT_LOCALE;
 }
 
-export function getItemLocale(locales, defaultLocale, currentLocale) {
+export function getItemLocale(
+  locales: TypeLocale[],
+  defaultLocale: TypeLocale,
+  currentLocale: TypeLocale,
+): TypeLocale {
   return locales.indexOf(currentLocale) !== -1 ? currentLocale : defaultLocale;
 }
 
-export function generateSupportedLocales(locales, route) {
-  return locales.map(locale => ({
+type TypeGenerateSupportedLocalesReturn = Array<{ name: TypeLocale; route: string }>;
+
+export function generateSupportedLocales(
+  locales: TypeLocale[],
+  route: string,
+): TypeGenerateSupportedLocalesReturn {
+  return locales.map((locale: TypeLocale) => ({
     name: locale,
-    route,
+    route, // TODO: Set type (possible values)
   }));
 }
 
+type TypePluralizeWordParam =
+  | string
+  | {
+      singular: string;
+      plural: string;
+    };
+
+type TypePluralizeConfigParam = { includeNumber?: boolean };
+
 export const pluralize = (
   number: number,
-  word: string | Record<string, any>,
-  { includeNumber = true }: Record<string, any> = {},
+  word: TypePluralizeWordParam,
+  { includeNumber = true }: TypePluralizeConfigParam = {},
 ): string => {
   return `${includeNumber ? number : ""} ${
     typeof word === "string"
@@ -82,8 +107,11 @@ export const pluralize = (
   }`.trim();
 };
 
-export const parseSiteText = (text: string, words: Record<string, any>): string => {
+export const parseSiteText = (
+  text: string,
+  words: Record<string, string | number>,
+): string => {
   return Object.entries(words).reduce((acum, [key, value]) => {
-    return acum.replace(`<${key}>`, value);
+    return acum.replace(`<${key}>`, value as any); // TODO: Avoid any
   }, text);
 };

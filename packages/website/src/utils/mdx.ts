@@ -19,6 +19,7 @@ export const MDXComponentsConfig = {
   Emoji,
 };
 
+// TODO: Set type for this const
 export const MDXScope = {
   DATA: {
     github: GithubData,

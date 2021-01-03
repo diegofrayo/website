@@ -2,7 +2,6 @@ import ReactGA from "react-ga";
 
 import { isUserLoggedIn } from "./misc";
 
-declare let window: any;
 const ANALYTICS_PROPERTY_NAME = "website";
 const ANALYTICS_TRACKING_ID = "UA-98284306-1";
 

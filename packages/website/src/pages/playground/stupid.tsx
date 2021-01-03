@@ -3,8 +3,8 @@ import React, { useState, useRef } from "react";
 import { MainLayout, Page, Separator } from "~/components";
 import Routes from "~/data/routes.json";
 import { useDidMount } from "~/hooks";
+import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
-import { copyToClipboard } from "~/utils/misc";
 
 const SiteTexts = getSiteTexts({ layout: true });
 const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";

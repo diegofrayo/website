@@ -64,7 +64,7 @@ function Page({ children, config = {} }: Record<string, any>): any {
         <link
           rel="icon"
           href={`/static/images/favicon/favicon${
-            isDevelopmentEnvironment() ? "-dev" : ""
+            isDevelopmentEnvironment(WEBSITE_METADATA.url) ? "-dev" : ""
           }.ico?v=1`}
         />
         <link

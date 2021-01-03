@@ -3,8 +3,9 @@ import React, { useState, useRef } from "react";
 import { MainLayout, Page, Separator } from "~/components";
 import Routes from "~/data/routes.json";
 import { useDidMount } from "~/hooks";
+import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
-import { capitalize, copyToClipboard, slugify } from "~/utils/misc";
+import { capitalize, slugify } from "~/utils/strings";
 
 const SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "strings";

@@ -1,7 +1,7 @@
 import * as React from "react";
 import NextLink from "next/link";
 
-import { slugify } from "~/utils/misc";
+import { slugify } from "~/utils/strings";
 
 import { Link } from "./";
 

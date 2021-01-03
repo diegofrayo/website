@@ -9,8 +9,8 @@ import { ThemeProvider } from "next-themes";
 
 import { AssetsProvider } from "~/hooks/useAssets";
 import { initAnalytics } from "~/utils/analytics";
+import { setScrollPosition, detectEmojisSupport } from "~/utils/browser";
 import { extractLocaleFromUrl, setCurrentLocale } from "~/utils/internationalization";
-import { detectEmojisSupport, setScrollPosition } from "~/utils/misc";
 
 import ErrorPage from "./_error";
 

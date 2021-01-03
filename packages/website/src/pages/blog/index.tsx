@@ -2,30 +2,19 @@ import * as React from "react";
 import NextLink from "next/link";
 
 import { Page, MainLayout, UL, Link } from "~/components";
-import { posts as BlogPosts } from "~/data/blog/posts.json";
 import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
+import { getBlogPosts, getBlogTitle } from "~/utils/blog";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
-import { getBlogTitle, removeEmojiFromTitle } from "~/utils/misc";
+import { removeEmojiFromTitle } from "~/utils/strings";
+import { TypeBlogPost, TypeLocale } from "~/types";
 
 function BlogPage(): any {
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
     layout: true,
   });
-
-  function sortBlogPostsByPublishedDate(a, b) {
-    if (a.published_at > b.published_at) {
-      return -1;
-    }
-
-    if (a.published_at < b.published_at) {
-      return 1;
-    }
-
-    return 0;
-  }
 
   return (
     <Page
@@ -45,27 +34,23 @@ function BlogPage(): any {
       >
         <p className="tw-mb-4">{SiteTexts.page.current_locale.description}</p>
         <UL>
-          {Object.values(BlogPosts)
-            .sort(sortBlogPostsByPublishedDate)
-            .map(post => {
-              if (post.is_published === false) return null;
+          {getBlogPosts().map((post: TypeBlogPost) => {
+            const locale: TypeLocale = getItemLocale(
+              post.locales,
+              post.default_locale,
+              currentLocale,
+            );
 
-              const locale = getItemLocale(
-                post.locales,
-                post.default_locale,
-                currentLocale,
-              );
-
-              return (
-                <BlogEntry
-                  key={post.slug}
-                  slug={post.slug}
-                  updatedAt={post.updated_at}
-                  title={getBlogTitle(post, locale)}
-                  locale={locale}
-                />
-              );
-            })}
+            return (
+              <BlogEntry
+                key={post.slug}
+                slug={post.slug}
+                updatedAt={post.updated_at}
+                title={getBlogTitle(post, locale)}
+                locale={locale}
+              />
+            );
+          })}
         </UL>
       </MainLayout>
     </Page>

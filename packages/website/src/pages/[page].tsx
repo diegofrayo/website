@@ -15,7 +15,7 @@ import {
   removeEmojiFromTitle,
   toLowerCaseObjectProperty,
   toUpperCaseObjectProperty,
-} from "~/utils/misc";
+} from "~/utils/strings";
 
 function SitePage({ content, page, SiteTexts }: Record<string, any>): any {
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });

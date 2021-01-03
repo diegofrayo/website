@@ -8,9 +8,10 @@ import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { WEBSITE_METADATA } from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
+import { getBlogPosts, getBlogTitle } from "~/utils/blog";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
-import { getBlogTitle } from "~/utils/misc";
+import { TypeBlogPost } from "~/types";
 
 function BlogPostPage({ post, content }: Record<string, any>): any {
   const { SiteTexts, currentLocale } = useInternationalization({
@@ -56,15 +57,13 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
 
 export async function getStaticPaths(): Promise<Record<string, any>> {
   return {
-    paths: Object.values(BlogPosts)
-      .filter(item => item.is_published === true)
-      .reduce((result, post) => {
-        return result.concat(
-          post.locales.map(locale => {
-            return { params: { slug: post.slug }, locale };
-          }),
-        );
-      }, []),
+    paths: getBlogPosts().reduce((result, post: TypeBlogPost) => {
+      return result.concat(
+        post.locales.map(locale => {
+          return { params: { slug: post.slug }, locale };
+        }),
+      );
+    }, []),
     fallback: false,
   };
 }
