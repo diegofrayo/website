@@ -4,8 +4,13 @@ import NextLink from "next/link";
 import { MainLayout, Page, UL, Link } from "~/components";
 import Routes from "~/data/routes.json";
 import { withTranslations } from "~/hocs";
+import { TypeSiteTexts } from "~/types";
 
-function PlaygroundPage({ SiteTexts }): any {
+type TypePlaygroundPageProps = {
+  SiteTexts: TypeSiteTexts;
+};
+
+function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
   return (
     <Page config={{ noRobots: true }}>
       <MainLayout

@@ -2,6 +2,7 @@ import * as React from "react";
 import classnames from "classnames";
 
 import twcss from "~/lib/twcss";
+import { TypeLocale } from "~/types";
 
 export { default as Breadcumb } from "./Breadcumb";
 export { default as ErrorPage } from "./ErrorPage";
@@ -9,15 +10,26 @@ export { default as MDXContent } from "./MDXContent";
 export { default as MainLayout } from "./MainLayout";
 export { default as Page } from "./Page";
 
+type TypeLinkProps = {
+  children: any;
+  href: string;
+  className?: string;
+  is?: string | any;
+  styled?: boolean;
+  external?: boolean;
+  locale?: TypeLocale;
+  role?: "button";
+};
+
 export function Link({
   children,
-  href = "",
+  href,
   className,
   is: Tag = "a",
   styled = true,
   external = true,
   ...rest
-}: Record<string, any>): any {
+}: TypeLinkProps): any {
   if (Tag === "a") {
     return (
       <LinkElement
@@ -67,11 +79,18 @@ export function UL({ children }: Record<string, any>): any {
   );
 }
 
-export function Image(props: Record<string, any>): any {
-  return <img {...props} />;
+export function Image({ src, ...rest }: Record<string, any>): any {
+  if (!src) return null; // TODO: Remove this
+
+  return <img src={src} {...rest} />;
 }
 
-export function Separator({ size, className }: Record<string, any>): any {
+type TypeSeparatorProps = {
+  size?: number;
+  className?: string;
+};
+
+export function Separator({ size, className }: TypeSeparatorProps): any {
   return (
     <hr
       className={classnames(
@@ -83,7 +102,12 @@ export function Separator({ size, className }: Record<string, any>): any {
   );
 }
 
-export function TextWithEmoji({ children, emoji }: Record<string, any>): any {
+type TypeTextWithEmojiProps = {
+  emoji: string;
+  children: any;
+};
+
+export function TextWithEmoji({ emoji, children }: TypeTextWithEmojiProps): any {
   return (
     <section className="tw-flex tw-flex-nowrap tw-mb-3">
       <Emoji className="tw-text-xl tw-mr-3">{emoji}</Emoji>
@@ -92,6 +116,11 @@ export function TextWithEmoji({ children, emoji }: Record<string, any>): any {
   );
 }
 
-export function Emoji({ children, className }: Record<string, any>): any {
+type TypeEmojiProps = {
+  className?: string;
+  children: string;
+};
+
+export function Emoji({ children, className }: TypeEmojiProps): any {
   return <span className={classnames("emoji", className)}>{children}</span>;
 }

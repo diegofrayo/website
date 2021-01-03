@@ -14,7 +14,14 @@ import { Link, Image } from "./";
 export * from "./pages/resume";
 export * from "./pages/my-favorite-music-and-mdx";
 
-export function Code({ language, fileName, code, sourceURL }: Record<string, any>): any {
+type TypeCodeProps = {
+  language: "jsx" | "css" | "typescript";
+  code: any;
+  fileName?: string;
+  sourceURL?: string;
+};
+
+export function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
   const { BlogPostAssets } = useAssets();
 
   const SiteTexts = getSiteTexts({ page: Routes.BLOG });
@@ -100,6 +107,12 @@ const Line = twcss.div`tw-table-row`;
 const LineNo = twcss.span`tw-table-cell tw-text-right tw-pr-4 tw-opacity-50 tw-select-none`;
 const LineContent = twcss.span`tw-table-cell`;
 
+type TypeGithubRepoProps = {
+  name: string;
+  url: string;
+  description: string;
+};
+
 export function GithubRepo({ name, url, description }: Record<string, any>): any {
   const { BlogPostAssets } = useAssets();
 
@@ -147,7 +160,7 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
   );
 }
 
-export function Title(Tag: any): any {
+export function Title(Tag: "h1" | "h2" | "h3"): any {
   return function TitleComponent({ children }: Record<string, any>): any {
     return <Tag id={slugify(children)}>{children}</Tag>;
   };

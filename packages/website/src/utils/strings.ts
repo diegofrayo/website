@@ -12,7 +12,7 @@ export function removeEmojiFromTitle(str: string): string {
 }
 
 export function slugify(str: string): string {
-  let result = str.replace(/^\s+|\s+$/g, "").toLowerCase();
+  let result: string = str.replace(/^\s+|\s+$/g, "").toLowerCase();
 
   // remove accents, swap ñ for n, etc
   const FROM = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";

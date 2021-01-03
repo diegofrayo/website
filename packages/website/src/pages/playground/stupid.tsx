@@ -3,16 +3,17 @@ import React, { useState, useRef } from "react";
 import { MainLayout, Page, Separator } from "~/components";
 import Routes from "~/data/routes.json";
 import { useDidMount } from "~/hooks";
+import { TypeSiteTexts } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 
-const SiteTexts = getSiteTexts({ layout: true });
+const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
 const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";
 const PAGE_NAME = "stupid";
 
 function StupidPage(): any {
   const [output, setOutput] = useState("");
-  const inputRef = useRef(null);
+  const inputRef = useRef(undefined);
 
   useDidMount(() => {
     inputRef.current.focus();

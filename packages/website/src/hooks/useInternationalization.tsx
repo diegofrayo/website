@@ -1,14 +1,16 @@
 import { useRouter } from "next/router";
 
-import { TypeLocale, TypeSiteTexts } from "~/types";
+import { TypeGetSiteTextsParam, TypeLocale, TypeSiteTexts } from "~/types";
 import { getSiteTexts, setCurrentLocale } from "~/utils/internationalization";
 
-type TypeUseInternationalizationReturn = {
+type TypeUseInternationalization = {
   SiteTexts: TypeSiteTexts;
   currentLocale: TypeLocale;
 };
 
-function useInternationalization(config): TypeUseInternationalizationReturn {
+function useInternationalization(
+  config: TypeGetSiteTextsParam,
+): TypeUseInternationalization {
   const { locale } = useRouter();
   setCurrentLocale(locale as TypeLocale);
 

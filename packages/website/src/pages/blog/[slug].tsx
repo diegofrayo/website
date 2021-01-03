@@ -11,9 +11,14 @@ import { useInternationalization } from "~/hooks";
 import { getBlogPosts, getBlogTitle } from "~/utils/blog";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
-import { TypeBlogPost } from "~/types";
+import { TypeBlogPost, TypeLocale } from "~/types";
 
-function BlogPostPage({ post, content }: Record<string, any>): any {
+type TypeBlogPostPageProps = {
+  post: TypeBlogPost;
+  content: unknown;
+};
+
+function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
     layout: true,
@@ -55,11 +60,12 @@ function BlogPostPage({ post, content }: Record<string, any>): any {
   );
 }
 
+// TODO: Next types
 export async function getStaticPaths(): Promise<Record<string, any>> {
   return {
     paths: getBlogPosts().reduce((result, post: TypeBlogPost) => {
       return result.concat(
-        post.locales.map(locale => {
+        post.locales.map((locale: TypeLocale) => {
           return { params: { slug: post.slug }, locale };
         }),
       );
@@ -68,11 +74,12 @@ export async function getStaticPaths(): Promise<Record<string, any>> {
   };
 }
 
+// TODO: Next types
 export async function getStaticProps({
   params,
   locale,
 }: Record<string, any>): Promise<Record<string, any>> {
-  const post = BlogPosts[params.slug];
+  const post: TypeBlogPost = BlogPosts[params.slug];
   const note = fs.readFileSync(
     `${process.cwd()}/src/data/blog/posts/${getItemLocale(
       post.locales,

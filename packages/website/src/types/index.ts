@@ -34,3 +34,23 @@ export type TypeBlogPost = {
   };
   assets?: Record<string, string>;
 };
+
+export type TypeGetSiteTextsParam = {
+  page?: string; // TODO: Set posible pages
+  layout?: boolean;
+  locale?: TypeLocale;
+};
+
+export type TypeBreadcumbProps = {
+  items: Array<{
+    text: string;
+    url: string;
+  }>;
+};
+
+export type TypeGenerateSupportedLocales = Array<{
+  name: TypeLocale;
+  route: string;
+}>;
+
+export type TypeGetAssetsParam = Array<"header" | "blog_post" | "footer" | "vr">;

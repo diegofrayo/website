@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { SetStateAction, useState } from "react";
 import classnames from "classnames";
 
 import { Link } from "../.";
 
-export function ResumeTimeline({ title, timeline }: Record<string, any>): any {
+type TypeResumeTimelineProps = {
+  title: string;
+  timeline: Array<{
+    company: string;
+    date: string;
+    description: string;
+    url?: string;
+  }>;
+};
+
+export function ResumeTimeline({ title, timeline }: TypeResumeTimelineProps): any {
   return (
     <section data-block>
       <h2>{title}</h2>
@@ -50,8 +60,16 @@ export function ResumeFAQ({ children }: Record<string, any>): any {
   );
 }
 
+type TypeResumeFAQItemProps = {
+  question: string;
+  children: string | any;
+};
+
 export function ResumeFAQItem({ question, children }: Record<string, any>): any {
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed]: [
+    boolean,
+    React.Dispatch<SetStateAction<boolean>>,
+  ] = useState(true);
 
   return (
     <section className="root tw-mb-4">

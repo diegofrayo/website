@@ -1,21 +1,20 @@
 import Texts from "~/data/texts.json";
-import { TypeLocale, TypeSiteTexts } from "~/types";
+import {
+  TypeGenerateSupportedLocales,
+  TypeGetSiteTextsParam,
+  TypeLocale,
+  TypeSiteTexts,
+} from "~/types";
 
 const LOCALES: TypeLocale[] = ["es", "en"];
 export const DEFAULT_LOCALE: TypeLocale = LOCALES[0];
 let CURRENT_LOCALE: TypeLocale = DEFAULT_LOCALE;
 
-type TypeGetSiteTexts = {
-  page?: string; // TODO: Set posible pages
-  layout?: boolean;
-  locale?: TypeLocale;
-};
-
 export function getSiteTexts({
   page,
   layout,
   locale = CURRENT_LOCALE,
-}: TypeGetSiteTexts): TypeSiteTexts {
+}: TypeGetSiteTextsParam): TypeSiteTexts {
   const result: TypeSiteTexts = {};
 
   if (layout) {
@@ -72,12 +71,10 @@ export function getItemLocale(
   return locales.indexOf(currentLocale) !== -1 ? currentLocale : defaultLocale;
 }
 
-type TypeGenerateSupportedLocalesReturn = Array<{ name: TypeLocale; route: string }>;
-
 export function generateSupportedLocales(
   locales: TypeLocale[],
   route: string,
-): TypeGenerateSupportedLocalesReturn {
+): TypeGenerateSupportedLocales {
   return locales.map((locale: TypeLocale) => ({
     name: locale,
     route, // TODO: Set type (possible values)
@@ -85,11 +82,11 @@ export function generateSupportedLocales(
 }
 
 type TypePluralizeWordParam =
-  | string
   | {
       singular: string;
       plural: string;
-    };
+    }
+  | string;
 
 type TypePluralizeConfigParam = { includeNumber?: boolean };
 

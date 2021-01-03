@@ -4,10 +4,15 @@ import NextLink from "next/link";
 import { Page, MainLayout, Emoji, Link } from "~/components";
 import Routes from "~/data/routes.json";
 import { withTranslations } from "~/hocs";
+import { TypeSiteTexts } from "~/types";
 import { generateSupportedLocales } from "~/utils/internationalization";
 import { isUserLoggedIn } from "~/utils/misc";
 
-function HomePage({ SiteTexts }): any {
+type TypeHomePageProps = {
+  SiteTexts: TypeSiteTexts;
+};
+
+function HomePage({ SiteTexts }: TypeHomePageProps): any {
   return (
     <Page
       config={{

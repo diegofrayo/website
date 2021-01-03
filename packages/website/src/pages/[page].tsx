@@ -5,6 +5,7 @@ import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout, MDXContent } from "~/components";
 import Routes from "~/data/routes.json";
+import { TypeLocale, TypeSiteTexts } from "~/types";
 import {
   generateSupportedLocales,
   getItemLocale,
@@ -17,7 +18,13 @@ import {
   toUpperCaseObjectProperty,
 } from "~/utils/strings";
 
-function SitePage({ content, page, SiteTexts }: Record<string, any>): any {
+type TypeSitePageProps = {
+  content: unknown;
+  page: string; // TODO: Set possible values
+  SiteTexts: TypeSiteTexts;
+};
+
+function SitePage({ content, page, SiteTexts }: TypeSitePageProps): any {
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
 
   return (
@@ -54,11 +61,12 @@ function SitePage({ content, page, SiteTexts }: Record<string, any>): any {
   );
 }
 
+// TODO: Next types
 export async function getStaticPaths({ locales }): Promise<Record<string, any>> {
   return {
-    paths: Routes.__DYNAMIC_PAGES.reduce((result, page) => {
+    paths: Routes.__DYNAMIC_PAGES.reduce((result, page: string) => {
       return result.concat(
-        locales.map(locale => {
+        locales.map((locale: TypeLocale) => {
           return { params: { page }, locale };
         }),
       );
@@ -67,11 +75,12 @@ export async function getStaticPaths({ locales }): Promise<Record<string, any>> 
   };
 }
 
+// TODO: Next types
 export async function getStaticProps({
   params,
   locale,
 }: Record<string, any>): Promise<Record<string, any>> {
-  const SiteTexts = getSiteTexts({
+  const SiteTexts: TypeSiteTexts = getSiteTexts({
     page: Routes[toUpperCaseObjectProperty(params.page)],
     layout: true,
     locale,

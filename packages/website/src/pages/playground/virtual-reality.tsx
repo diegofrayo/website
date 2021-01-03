@@ -3,9 +3,10 @@ import React from "react";
 import { MainLayout, Page, UL, Link } from "~/components";
 import Routes from "~/data/routes.json";
 import { useAssets } from "~/hooks";
+import { TypeSiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
 
-const SiteTexts = getSiteTexts({ layout: true });
+const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "virtual-reality";
 
 function VRPage(): any {

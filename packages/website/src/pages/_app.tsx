@@ -15,7 +15,7 @@ import { extractLocaleFromUrl, setCurrentLocale } from "~/utils/internationaliza
 import ErrorPage from "./_error";
 
 class CustomApp extends App {
-  state = { error: null };
+  state = { error: undefined };
 
   componentDidMount(): void {
     initAnalytics();
@@ -27,7 +27,7 @@ class CustomApp extends App {
     });
 
     Router.events.on("routeChangeStart", () => {
-      this.setState({ error: null });
+      this.setState({ error: undefined });
     });
   }
 

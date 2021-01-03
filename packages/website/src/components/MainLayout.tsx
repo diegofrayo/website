@@ -14,6 +14,7 @@ import {
 } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
+import { TypeBreadcumbProps, TypeGenerateSupportedLocales, TypeLocale } from "~/types";
 import {
   copyToClipboard,
   getScrollPosition,
@@ -25,13 +26,27 @@ import { createQueryFromObject } from "~/utils/misc";
 
 import { Link, Separator, Emoji, Breadcumb, Image } from "./";
 
+type TypeMainLayoutProps = {
+  title: string;
+  children: any;
+  locales?: TypeGenerateSupportedLocales;
+  breadcumb?: TypeBreadcumbProps["items"];
+  blogMetadata?: {
+    author: string;
+    createdAt: string;
+    publishedAt: string;
+    slug: string;
+    updatedAt: string;
+  };
+};
+
 function MainLayout({
   children,
   locales,
   breadcumb,
   title,
   blogMetadata,
-}: Record<string, any>): any {
+}: TypeMainLayoutProps): any {
   return (
     <Main>
       <Header locales={locales} />
@@ -40,13 +55,12 @@ function MainLayout({
       <Body>
         {breadcumb && <Breadcumb items={breadcumb} />}
         <Separator size={4} />
-        {title && (
-          <Fragment>
-            <h1 className="tw-text-left tw-text-3xl tw-font-bold">{title}</h1>
-            <Separator className="tw-my-5 sm:tw-my-3" />
-          </Fragment>
-        )}
+
+        <h1 className="tw-text-left tw-text-3xl tw-font-bold">{title}</h1>
+        <Separator className="tw-my-5 sm:tw-my-3" />
+
         {children}
+
         {blogMetadata && <BlogPostFooter blogMetadata={blogMetadata} title={title} />}
       </Body>
       <Separator size={8} />
@@ -62,14 +76,18 @@ export default MainLayout;
 
 const Main = twcss.main`twc-max-w-base tw-w-full tw-py-4 tw-px-6 tw-mx-auto tw-relative`;
 
-const Header = safeRender(function Header({ locales }): any {
+type TypeHeaderProps = {
+  locales: TypeMainLayoutProps["locales"];
+};
+
+const Header = safeRender(function Header({ locales }: TypeHeaderProps): any {
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
     layout: true,
   });
 
   const [fixedHeader, setFixedHeader] = useState(false);
-  const headerRef = useRef(null);
+  const headerRef = useRef(undefined);
 
   useOnWindowScroll(() => {
     const scrollPosition = getScrollPosition();
@@ -134,7 +152,7 @@ const Header = safeRender(function Header({ locales }): any {
       <section className="tw-flex tw-flex-shrink-0 tw-h-full tw-relative tw-flex-col tw-justify-between tw-items-end tw-ml-2">
         <DarkModeToggle />
         <Separator size={2} />
-        <LocalesSelector locales={locales} currentLocale={currentLocale} />
+        {locales && <LocalesSelector locales={locales} currentLocale={currentLocale} />}
       </section>
     </header>
   );
@@ -174,9 +192,12 @@ function DarkModeToggle(): any {
   );
 }
 
-function LocalesSelector({ locales, currentLocale }): any {
-  if (!locales) return null;
+type TypeLocalesSelectorProps = {
+  locales: TypeMainLayoutProps["locales"];
+  currentLocale: TypeLocale;
+};
 
+function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): any {
   return (
     <section className="tw-border tw-py-1 tw-px-2 tw-text-sm twc-border-color-primary dark:twc-border-color-primary">
       {locales.map((locale, index) => {
@@ -200,7 +221,12 @@ function LocalesSelector({ locales, currentLocale }): any {
 
 const Body = twcss.section``;
 
-function BlogPostFooter({ blogMetadata, title }: Record<string, any>): any {
+type TypeBlogPostFooterProps = {
+  blogMetadata: TypeMainLayoutProps["blogMetadata"];
+  title: string;
+};
+
+function BlogPostFooter({ blogMetadata, title }: TypeBlogPostFooterProps): any {
   const { BlogPostAssets } = useAssets();
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
@@ -408,7 +434,13 @@ function SocialIcons(): any {
   );
 }
 
-function SocialIcon({ icon, url, name }: Record<string, any>): any {
+type TypeSocialIconProps = {
+  icon: string;
+  url: string;
+  name: string;
+};
+
+function SocialIcon({ icon, url, name }: TypeSocialIconProps): any {
   return (
     <Link
       href={url}

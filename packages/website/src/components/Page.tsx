@@ -4,11 +4,23 @@ import Head from "next/head";
 import { SEO_METADATA, WEBSITE_METADATA } from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
 import { useDidMount, useDocumentTitle } from "~/hooks";
+import { TypeGetAssetsParam } from "~/types";
 import { trackPageLoaded } from "~/utils/analytics";
 import { getAssets } from "~/utils/assets";
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 
-function Page({ children, config = {} }: Record<string, any>): any {
+type TypePageProps = {
+  children: any;
+  config: {
+    title?: string;
+    pathname?: string;
+    description?: string;
+    noRobots?: boolean;
+    assets?: TypeGetAssetsParam;
+  };
+};
+
+function Page({ children, config = {} }: TypePageProps): any {
   const metadata = {
     title: config.title ? `${config.title} - ${SEO_METADATA.title}` : SEO_METADATA.title,
     url: config.pathname ? `${SEO_METADATA.url}${config.pathname}` : SEO_METADATA.url,

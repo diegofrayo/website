@@ -32,5 +32,31 @@ module.exports = {
       },
       "hocs",
     ],
+    /*
+    [
+      "import",
+      {
+        libraryName: "~/components",
+        libraryDirectory: "",
+        camel2DashComponentName: false,
+        customName: name => {
+          const components = [
+            "Breadcumb",
+            "ErrorPage",
+            "MDXContent",
+            "MainLayout",
+            "Page",
+          ];
+
+          if (components.indexOf(name) !== -1) {
+            return `~/components/${name}`;
+          }
+
+          return "~/components";
+        },
+      },
+      "components",
+    ],
+    */
   ],
 };

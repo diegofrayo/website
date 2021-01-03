@@ -61,7 +61,15 @@ export default BlogPage;
 
 // --- Components ---
 
-function BlogEntry({ slug, title, locale, updatedAt }) {
+// TODO: Reuse TypeBlogPosts
+type TypeBlogEntryProps = {
+  slug: string;
+  title: string;
+  locale: TypeLocale;
+  updatedAt: string;
+};
+
+function BlogEntry({ slug, title, locale, updatedAt }: TypeBlogEntryProps): any {
   const { SiteTexts } = useInternationalization({ page: Routes.BLOG, layout: true });
 
   return (

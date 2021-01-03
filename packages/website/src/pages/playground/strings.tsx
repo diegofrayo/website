@@ -3,11 +3,12 @@ import React, { useState, useRef } from "react";
 import { MainLayout, Page, Separator } from "~/components";
 import Routes from "~/data/routes.json";
 import { useDidMount } from "~/hooks";
+import { TypeSiteTexts } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 import { capitalize, slugify } from "~/utils/strings";
 
-const SiteTexts = getSiteTexts({ layout: true });
+const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "strings";
 
 function StringsPage(): any {
@@ -19,7 +20,7 @@ function StringsPage(): any {
     capitalizeOnlyFirst: "",
     slug: "",
   });
-  const textareaRef = useRef(null);
+  const textareaRef = useRef(undefined);
 
   useDidMount(() => {
     textareaRef.current.focus();

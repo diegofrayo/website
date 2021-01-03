@@ -1,11 +1,12 @@
 import * as React from "react";
 import NextLink from "next/link";
 
+import { TypeBreadcumbProps } from "~/types";
 import { slugify } from "~/utils/strings";
 
 import { Link } from "./";
 
-function Breadcumb({ items }: Record<string, any>): any {
+function Breadcumb({ items }: TypeBreadcumbProps): any {
   const moreThanOneItem = items.length > 1;
 
   return (
