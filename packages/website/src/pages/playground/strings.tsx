@@ -20,7 +20,7 @@ function StringsPage(): any {
     capitalizeOnlyFirst: "",
     slug: "",
   });
-  const textareaRef = useRef(undefined);
+  const textareaRef: { current: undefined | any } = useRef(undefined);
 
   useDidMount(() => {
     textareaRef.current.focus();

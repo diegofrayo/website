@@ -61,12 +61,17 @@ function MainMenu({ SiteTexts }) {
       label: SiteTexts.page.current_locale.menu_item_playground,
       url: Routes.PLAYGROUND,
     },
-    isUserLoggedIn() && {
-      emoji: "🚀",
-      label: SiteTexts.page.common.menu_item_roadmap,
-      url: Routes.ROADMAP,
-    },
-  ].filter(Boolean);
+  ].concat(
+    isUserLoggedIn()
+      ? [
+          {
+            emoji: "🚀",
+            label: SiteTexts.page.common.menu_item_roadmap,
+            url: Routes.ROADMAP,
+          },
+        ]
+      : [],
+  );
 
   return (
     <nav className="tw-mt-8 tw-flex tw-flex-wrap tw-justify-center">

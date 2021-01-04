@@ -15,7 +15,18 @@ export function getSiteTexts({
   layout,
   locale = CURRENT_LOCALE,
 }: TypeGetSiteTextsParam): TypeSiteTexts {
-  const result: TypeSiteTexts = {};
+  const result: TypeSiteTexts = {
+    layout: {
+      config: {},
+      common: {},
+      current_locale: {},
+    },
+    page: {
+      config: {},
+      common: {},
+      current_locale: {},
+    },
+  };
 
   if (layout) {
     result.layout = {

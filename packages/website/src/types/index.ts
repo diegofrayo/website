@@ -1,11 +1,11 @@
 // TODO: Improve this type (avoid any)
 export type TypeSiteTexts = {
-  page?: {
+  page: {
     config: Record<string, any>;
     common: Record<string, any>;
     current_locale: Record<string, any>;
   };
-  layout?: {
+  layout: {
     config: Record<string, any>;
     common: Record<string, any>;
     current_locale: Record<string, any>;

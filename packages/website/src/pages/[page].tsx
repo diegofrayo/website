@@ -19,7 +19,7 @@ import {
 } from "~/utils/strings";
 
 type TypeSitePageProps = {
-  content: unknown;
+  content: any;
   page: string; // TODO: Set possible values
   SiteTexts: TypeSiteTexts;
 };

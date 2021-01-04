@@ -2,7 +2,7 @@ import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { TypeLocale, TypeBlogPost } from "~/types";
 
 export function getBlogTitle(post: TypeBlogPost, locale: TypeLocale): string {
-  return `${post.is_legacy ? "[LEGACY] " : ""}${post[locale].title}`;
+  return `${post.is_legacy ? "[LEGACY] " : ""}${post[locale]?.title}`;
 }
 
 // TODO: Improve this types (avoid casting many times)

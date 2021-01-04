@@ -13,7 +13,7 @@ const PAGE_NAME = "stupid";
 
 function StupidPage(): any {
   const [output, setOutput] = useState("");
-  const inputRef = useRef(undefined);
+  const inputRef: { current: undefined | any } = useRef(undefined);
 
   useDidMount(() => {
     inputRef.current.focus();

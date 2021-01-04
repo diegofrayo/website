@@ -26,18 +26,20 @@ import { createQueryFromObject } from "~/utils/misc";
 
 import { Link, Separator, Emoji, Breadcumb, Image } from "./";
 
+type TypeBlogMetadata = {
+  author: string;
+  createdAt: string;
+  publishedAt: string;
+  slug: string;
+  updatedAt: string;
+};
+
 type TypeMainLayoutProps = {
   title: string;
   children: any;
   locales?: TypeGenerateSupportedLocales;
   breadcumb?: TypeBreadcumbProps["items"];
-  blogMetadata?: {
-    author: string;
-    createdAt: string;
-    publishedAt: string;
-    slug: string;
-    updatedAt: string;
-  };
+  blogMetadata?: TypeBlogMetadata;
 };
 
 function MainLayout({
@@ -77,7 +79,7 @@ export default MainLayout;
 const Main = twcss.main`twc-max-w-base tw-w-full tw-py-4 tw-px-6 tw-mx-auto tw-relative`;
 
 type TypeHeaderProps = {
-  locales: TypeMainLayoutProps["locales"];
+  locales: TypeGenerateSupportedLocales;
 };
 
 const Header = safeRender(function Header({ locales }: TypeHeaderProps): any {
@@ -87,7 +89,7 @@ const Header = safeRender(function Header({ locales }: TypeHeaderProps): any {
   });
 
   const [fixedHeader, setFixedHeader] = useState(false);
-  const headerRef = useRef(undefined);
+  const headerRef: { current: undefined | any } = useRef(undefined);
 
   useOnWindowScroll(() => {
     const scrollPosition = getScrollPosition();
@@ -193,7 +195,7 @@ function DarkModeToggle(): any {
 }
 
 type TypeLocalesSelectorProps = {
-  locales: TypeMainLayoutProps["locales"];
+  locales: TypeGenerateSupportedLocales;
   currentLocale: TypeLocale;
 };
 
@@ -222,7 +224,7 @@ function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): 
 const Body = twcss.section``;
 
 type TypeBlogPostFooterProps = {
-  blogMetadata: TypeMainLayoutProps["blogMetadata"];
+  blogMetadata: TypeBlogMetadata;
   title: string;
 };
 

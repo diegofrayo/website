@@ -1,14 +1,14 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useContext, createContext, SetStateAction } from "react";
 import Router from "next/router";
 
 import useDidMount from "./useDidMount";
 
 type TypeDefaultValue = {
-  HeaderAssets?: {
+  HeaderAssets: {
     SUN: string;
     MOON: string;
   };
-  BlogPostAssets?: {
+  BlogPostAssets: {
     CALENDAR: string;
     UPDATED: string;
     PERSON: string;
@@ -17,7 +17,7 @@ type TypeDefaultValue = {
     SOURCE_CODE: string;
     GITHUB: string;
   };
-  FooterAssets?: {
+  FooterAssets: {
     "500_PX": string;
     EMAIL: string;
     GITHUB: string;
@@ -26,7 +26,7 @@ type TypeDefaultValue = {
     TWITTER: string;
     TWITTER_COLORFUL: string;
   };
-  VR_Assets?: {
+  VR_Assets: {
     SNIPPETS: string;
     INDEX: string;
   };
@@ -66,7 +66,7 @@ const useAssetsContext = () => useContext(AssetsContext);
 export function AssetsProvider({ children }: any): any {
   const [assets, setAssets]: [
     TypeDefaultValue,
-    (param: TypeDefaultValue) => void,
+    React.Dispatch<SetStateAction<TypeDefaultValue>>,
   ] = useState(DEFAULT_VALUE);
 
   useDidMount(() => {
@@ -79,7 +79,8 @@ export function AssetsProvider({ children }: any): any {
 
   function updateAssets() {
     try {
-      const data = JSON.parse(document.getElementById("assets").innerHTML);
+      const assetsElement = document.getElementById("assets")!;
+      const data = JSON.parse(assetsElement.innerHTML);
 
       setAssets({
         HeaderAssets: data.header || {},

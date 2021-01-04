@@ -141,14 +141,14 @@ type TypeTWCSS_ComponentProps = {
   children?: any;
   className?: string;
   is: string | any;
-  "tw-variant": string | Record<string, boolean>;
+  "tw-variant": string | Record<string, boolean> | undefined;
 };
 type TypeStaticPropsParam = {
   "tw-variant"?: TypeTWCSS_ComponentProps["tw-variant"];
 };
 
-// TODO: Element instead unknown
-function twcssCreator(Tag: string | unknown): any {
+// TODO: Element instead any
+function twcssCreator(Tag: string | any): any {
   return function (styles: TypeStylesParam, staticProps: TypeStaticPropsParam = {}): any {
     return function TWCSS_Component({
       children,

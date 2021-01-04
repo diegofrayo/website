@@ -72,7 +72,7 @@ export function detectEmojisSupport(): void {
     const pixelRatio: number = window.devicePixelRatio || 1;
     const offset: number = 12 * pixelRatio;
     const node = window.document.createElement("canvas"); // TODO: Set type
-    const ctx: CanvasRenderingContext2D = node.getContext("2d");
+    const ctx: CanvasRenderingContext2D | null = node.getContext("2d");
 
     if (!ctx) {
       throw new Error();
@@ -98,7 +98,7 @@ export function detectEmojisSupport(): void {
 export function getAndroidVersion(): number {
   try {
     const ua: string = navigator.userAgent.toLowerCase();
-    const match: RegExpMatchArray = ua.match(/android\s([0-9\.]*)/);
+    const match: RegExpMatchArray | null = ua.match(/android\s([0-9\.]*)/);
 
     if (!match) throw new Error();
 

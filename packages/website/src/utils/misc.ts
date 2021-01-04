@@ -21,7 +21,7 @@ export function createQueryFromObject(
   return result;
 }
 
-export function delay(time: number): Promise<unknown> {
+export function delay(time: number): Promise<any> {
   return new Promise(resolve => {
     setTimeout(resolve, time);
   });
@@ -30,7 +30,7 @@ export function delay(time: number): Promise<unknown> {
 export function isDevelopmentEnvironment(url?: string): boolean {
   return !(isBrowser()
     ? window.location.href
-    : url || process.env.NEXT_PUBLIC_WEBSITE_URL
+    : url || process.env.NEXT_PUBLIC_WEBSITE_URL || ""
   ).includes("vercel.app");
 }
 

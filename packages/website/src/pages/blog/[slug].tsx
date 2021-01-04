@@ -15,7 +15,7 @@ import { TypeBlogPost, TypeLocale } from "~/types";
 
 type TypeBlogPostPageProps = {
   post: TypeBlogPost;
-  content: unknown;
+  content: any;
 };
 
 function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
@@ -29,9 +29,9 @@ function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
   return (
     <Page
       config={{
-        title: post[currentLocale].title,
+        title: post[currentLocale]?.title,
         pathname: Routes.BLOG_POSTS[post.slug],
-        description: post[currentLocale].description,
+        description: post[currentLocale]?.description,
         assets: ["blog_post"],
       }}
     >
@@ -69,7 +69,7 @@ export async function getStaticPaths(): Promise<Record<string, any>> {
           return { params: { slug: post.slug }, locale };
         }),
       );
-    }, []),
+    }, [] as Array<any>),
     fallback: false,
   };
 }
