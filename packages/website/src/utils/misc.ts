@@ -71,3 +71,11 @@ export function sortBy(param: string, order?: "asc" | "desc") {
     return 0;
   };
 }
+
+export function safeCastNumber(string: string) {
+  const number = Number(string);
+
+  if (Number.isNaN(number)) return 0;
+
+  return number;
+}

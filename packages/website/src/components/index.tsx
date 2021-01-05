@@ -88,14 +88,18 @@ export function Image({ src, ...rest }: Record<string, any>): any {
 type TypeSeparatorProps = {
   size?: number;
   className?: string;
+  dir?: "h" | "v";
 };
 
-export function Separator({ size, className }: TypeSeparatorProps): any {
+export function Separator({ size, className, dir = "h" }: TypeSeparatorProps): any {
+  const isHorizontalDir = dir === "h";
+
   return (
     <hr
       className={classnames(
         "tw-border-0",
-        Number.isInteger(size) && `tw-my-${size}`,
+        Number.isInteger(size) && `tw-${isHorizontalDir ? "my" : "mx"}-${size}`,
+        !isHorizontalDir && "tw-inline-block tw-h-1",
         className,
       )}
     />

@@ -446,7 +446,7 @@ function SocialIcon({ icon, url, name }: TypeSocialIconProps): any {
   return (
     <Link
       href={url}
-      className="tw-inline-block dark:twc-bg-secondary tw-p-1 dark:tw-rounded-md tw-mx-1 tw-my-1 sm:tw-my-0 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
+      className="tw-inline-block dark:twc-bg-secondary tw-p-1 dark:tw-rounded-md tw-mx-2 tw-my-1 sm:tw-my-0 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
       styled={false}
     >
       <Image src={icon} alt={`${name} icon`} className="tw-h-5 tw-w-5" />
