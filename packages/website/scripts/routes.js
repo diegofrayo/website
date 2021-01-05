@@ -23,7 +23,7 @@ const ROUTES = {
 
   PLAYGROUND: "/playground",
   PLAYGROUND_PROJECTS: {
-    ...["stupid", "virtual-reality", "strings"].reduce((acum, curr) => {
+    ...["chords", "strings", "stupid", "virtual-reality"].reduce((acum, curr) => {
       acum[curr] = `/playground/${curr}`;
       return acum;
     }, {}),

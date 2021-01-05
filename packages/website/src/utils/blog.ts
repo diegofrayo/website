@@ -1,5 +1,6 @@
 import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { TypeLocale, TypeBlogPost } from "~/types";
+import { sortBy } from "./misc";
 
 export function getBlogTitle(post: TypeBlogPost, locale: TypeLocale): string {
   return `${post.is_legacy ? "[LEGACY] " : ""}${post[locale]?.title}`;
@@ -11,19 +12,7 @@ export function getBlogPosts(): TypeBlogPost[] {
     (post: TypeBlogPost) => {
       return post.is_published === true;
     },
-  ) as TypeBlogPost[]).sort(sortBlogPostsByPublishedDate);
+  ) as TypeBlogPost[]).sort(sortBy("published_at", "desc"));
 
   return result;
-}
-
-function sortBlogPostsByPublishedDate(a: TypeBlogPost, b: TypeBlogPost): number {
-  if (a.published_at > b.published_at) {
-    return -1;
-  }
-
-  if (a.published_at < b.published_at) {
-    return 1;
-  }
-
-  return 0;
 }

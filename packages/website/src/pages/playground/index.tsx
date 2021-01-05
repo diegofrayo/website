@@ -24,21 +24,15 @@ function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
         title={SiteTexts.page.current_locale.title}
       >
         <UL>
-          <li>
-            <Link is={NextLink} href={Routes.PLAYGROUND_PROJECTS["stupid"]}>
-              stupid
-            </Link>
-          </li>
-          <li>
-            <Link is={NextLink} href={Routes.PLAYGROUND_PROJECTS["strings"]}>
-              strings
-            </Link>
-          </li>
-          <li>
-            <Link is={NextLink} href={Routes.PLAYGROUND_PROJECTS["virtual-reality"]}>
-              virtual-reality
-            </Link>
-          </li>
+          {Object.entries(Routes.PLAYGROUND_PROJECTS).map(([name, route]) => {
+            return (
+              <li key={`PlaygroundPage-${name}`}>
+                <Link is={NextLink} href={route}>
+                  {name}
+                </Link>
+              </li>
+            );
+          })}
         </UL>
       </MainLayout>
     </Page>

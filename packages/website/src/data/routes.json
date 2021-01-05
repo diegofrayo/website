@@ -17,9 +17,10 @@
   },
   "PLAYGROUND": "/playground",
   "PLAYGROUND_PROJECTS": {
+    "chords": "/playground/chords",
+    "strings": "/playground/strings",
     "stupid": "/playground/stupid",
-    "virtual-reality": "/playground/virtual-reality",
-    "strings": "/playground/strings"
+    "virtual-reality": "/playground/virtual-reality"
   },
   "__DYNAMIC_PAGES": ["about-me", "resume", "roadmap", "snippets"]
 }

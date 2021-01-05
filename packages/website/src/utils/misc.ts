@@ -1,7 +1,7 @@
 import { isBrowser } from "./browser";
 
-export function createArray(length: number): number[] {
-  return Array.from(Array(length).keys()).map(value => value + 1);
+export function createArray(length: number, start?: number): number[] {
+  return Array.from(Array(length).keys()).map(value => value + (start || 0));
 }
 
 export function createQueryFromObject(
@@ -51,4 +51,21 @@ export function isUserLoggedIn(): boolean {
   }
 
   return isLoggedIn;
+}
+
+export function sortBy(param: string, order?: "asc" | "desc") {
+  return function sortByReturn(a, b): number {
+    const greater = order === "desc" ? -1 : 1;
+    const smaller = order === "desc" ? 1 : -1;
+
+    if (a[param] > b[param]) {
+      return greater;
+    }
+
+    if (a[param] < b[param]) {
+      return smaller;
+    }
+
+    return 0;
+  };
 }
