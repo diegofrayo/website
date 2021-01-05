@@ -9,13 +9,15 @@
     "dev": "next dev",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --ext .ts,.tsx --fix",
     "style": "prettier --write \"{src,scripts}/**/*.{js,ts,tsx,json}\"",
-    "build:seo-files": "node scripts/rss.js && node scripts/sitemap.js"
+    "build:seo-files": "node scripts/rss.js && node scripts/sitemap.js",
+    "build:static-files": "node scripts/routes.js && node scripts/metadata.js"
   },
   "dependencies": {
     "autoprefixer": "^10.0.4",
     "classnames": "^2.2.6",
     "crypto-js": "^4.0.0",
     "dayjs": "^1.9.7",
+    "dom-to-image": "^2.6.0",
     "next": "10.0.3",
     "next-themes": "^0.0.10",
     "postcss": "^8.1.10",

@@ -42,16 +42,10 @@ function ChordsPage(): any {
             { finger: 2, fret: 2, string: 4 },
             { finger: 1, fret: 1, string: 2 },
           ]}
+          skip={[6]}
         />
         <Separator size={8} />
-        <Chords
-          name="LA Mayor (A)"
-          chords={[
-            { finger: 1, fret: 2, string: 4 },
-            { finger: 2, fret: 2, string: 3 },
-            { finger: 3, fret: 2, string: 2 },
-          ]}
-        />
+        <Chords name="LA Mayor (A)" chords="4,2,1|3,2,2|2,2,3" skip={[6]} />
         <Separator size={8} />
       </MainLayout>
     </Page>

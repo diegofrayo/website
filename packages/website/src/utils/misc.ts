@@ -1,7 +1,9 @@
 import { isBrowser } from "./browser";
 
 export function createArray(length: number, start?: number): number[] {
-  return Array.from(Array(length).keys()).map(value => value + (start || 0));
+  return Array.from(Array(length).keys()).map(
+    value => value + (start === undefined ? 1 : start),
+  );
 }
 
 export function createQueryFromObject(

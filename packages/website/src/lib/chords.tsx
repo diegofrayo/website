@@ -1,6 +1,7 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef } from "react";
 import classnames from "classnames";
 
+import { Emoji } from "~/components";
 import { createArray } from "~/utils/misc";
 
 import twcss from "./twcss";
@@ -13,31 +14,58 @@ type TypeChord = {
 
 type TypeChordsProps = {
   name: string;
-  chords: Array<TypeChord>;
+  chords: Array<TypeChord> | string; // "STRING,FRET,FINGER"
+  skip?: Array<number>;
 };
 
-function Chords({ name, chords }: TypeChordsProps): any {
-  const { firstFret, lastFret, chordsGroupedByFret } = groudChordsByFret(chords);
+function Chords({ name, chords, skip }: TypeChordsProps): any {
+  const chordRef: { current: any } = useRef(undefined);
+
+  const { firstFret, lastFret, chordsGroupedByFret } = groupChordsByFret(chords);
+
+  async function handleDownloadAsImage(): Promise<void> {
+    const domtoimage = await import("dom-to-image");
+
+    domtoimage.toPng(chordRef.current, { quality: 0.95 }).then(dataUrl => {
+      const link = document.createElement("a");
+      link.download = `${name}.jpeg`;
+      link.href = dataUrl;
+      link.click();
+    });
+  }
 
   return (
-    <article className="tw-w-full tw-max-w-full tw-overflow-x-auto">
-      <h1 className="tw-text-center tw-font-bold tw-mb-1">{name}</h1>
-      <section className="tw-flex tw-flex-no-wrap tw-justify-start sm:tw-justify-center">
-        <Fret variant="strings-names" />
-        <section className="tw-flex">
-          <Fret fret={lastFret + 1} variant="strings-empty"></Fret>
-          <section className="tw-flex">
-            {Object.entries(chordsGroupedByFret)
-              .reverse()
-              .map(([fret, chords]: [string, TypeChord[]]) => {
-                return (
-                  <Fret key={`Fret-${fret}`} fret={Number(fret)} chords={chords}></Fret>
-                );
-              })}
-          </section>
-          {firstFret - 1 > 0 && <Fret fret={firstFret - 1} variant="strings-empty" />}
+    <article className="tw-max-w-full tw-text-center">
+      <section ref={chordRef}>
+        <h1 className="tw-text-center tw-font-bold tw-mb-1">{name}</h1>
+
+        <section className="tw-flex tw-flex-no-wrap tw-justify-start sm:tw-justify-center tw-overflow-x-auto">
+          <Fret variant="FRET_STRINGS_NAMES" />
+          <Fret variant="FRET_EMPTY" fret={lastFret + 1}></Fret>
+          {Object.entries(chordsGroupedByFret)
+            .reverse()
+            .map(([fret, chords]: [string, TypeChord[]]) => {
+              return (
+                <Fret
+                  key={`Fret-${fret}`}
+                  variant="FRET_DEFAULT"
+                  fret={Number(fret)}
+                  chords={chords}
+                />
+              );
+            })}
+          {firstFret - 1 > 0 && <Fret variant="FRET_EMPTY" fret={firstFret - 1} />}
+          {skip && <Fret variant="FRET_SKIP_STRINGS" skip={skip} />}
         </section>
       </section>
+
+      <button
+        className="tw-text-sm tw-font-bold tw-mt-2 tw-p-1"
+        onClick={handleDownloadAsImage}
+      >
+        <Emoji className="tw-mr-1">⬇️</Emoji>
+        <span>download as image</span>
+      </button>
     </article>
   );
 }
@@ -45,15 +73,17 @@ function Chords({ name, chords }: TypeChordsProps): any {
 // --- Components ---
 
 type TypeFretProps = {
-  chords?: undefined | Array<TypeChord>;
+  variant: "FRET_DEFAULT" | "FRET_STRINGS_NAMES" | "FRET_EMPTY" | "FRET_SKIP_STRINGS";
   fret?: undefined | number;
-  variant?: undefined | "strings-names" | "strings-empty";
+  chords?: undefined | Array<TypeChord>;
+  skip?: TypeChordsProps["skip"];
 };
 
-function Fret({ fret, chords, variant }: TypeFretProps) {
-  const isStringsEmptyVariant = variant === "strings-empty";
-  const isStringsNamesVariant = variant === "strings-names";
-  const isDefaultVariant = !variant;
+function Fret({ variant, fret, chords, skip }: TypeFretProps): any {
+  const isEmptyVariant = variant === "FRET_EMPTY";
+  const isStringsNamesVariant = variant === "FRET_STRINGS_NAMES";
+  const isDefaultVariant = variant === "FRET_DEFAULT";
+  const isSkipStringsVariant = variant === "FRET_SKIP_STRINGS";
   const STRINGS_NAMES = [
     "E (mi)",
     "A (la)",
@@ -64,64 +94,67 @@ function Fret({ fret, chords, variant }: TypeFretProps) {
   ].reverse();
 
   return (
-    <div
+    <section
       className={classnames(
         "tw-text-center tw-flex-shrink-0 tw-text-sm",
-        isStringsNamesVariant ? "tw-w-20" : "tw-w-16",
+        isStringsNamesVariant || isSkipStringsVariant ? "tw-auto" : "tw-w-16",
       )}
     >
-      <div className="tw-flex tw-items-center tw-justify-center tw-h-10 tw-font-bold">
+      <section className="tw-flex tw-items-center tw-justify-center tw-h-10 tw-font-bold">
         {fret || ""}
-      </div>
-      <div
+      </section>
+      <section
         className={classnames(
           "tw-w-full",
           !isStringsNamesVariant &&
-            "tw-border-l-2 tw-border-r-2 tw-border-yellow-300 tw-bg-yellow-700",
+            !isSkipStringsVariant &&
+            "tw-border-l-2 tw-border-r-2 tw-border-yellow-400 tw-bg-yellow-700",
         )}
       >
-        {createArray(6, 1)
+        {createArray(6)
           .reverse()
-          .map(item => {
+          .map(string => {
             const chord =
-              isDefaultVariant && chords?.find(chord => chord.string === item);
+              isDefaultVariant && chords?.find(chord => chord.string === string);
 
             return (
-              <div
+              <section
                 key={`Fret-${
-                  isStringsEmptyVariant
-                    ? `empty-${item}`
+                  isEmptyVariant
+                    ? `empty-${string}`
                     : isStringsNamesVariant
-                    ? `names-${item}`
+                    ? `string-${string}`
                     : chord
                     ? `${chord.string}-${chord.finger}`
-                    : `string-${item}`
+                    : `${Date.now()}-${string}`
                 }`}
                 className="tw-flex tw-items-center tw-w-full tw-h-10"
               >
                 {isStringsNamesVariant ? (
-                  <div className="tw-flex tw-justify-between tw-px-2 tw-w-full">
-                    <span>{STRINGS_NAMES[item - 1]}</span>
-                    <strong>{item}</strong>
-                  </div>
-                ) : (
+                  <section className="tw-flex tw-justify-between tw-px-2 tw-w-full">
+                    <span>{STRINGS_NAMES[string - 1]}</span>
+                    <strong className="tw-ml-2">{string}</strong>
+                  </section>
+                ) : isSkipStringsVariant ? (
+                  <span className="tw-px-2">
+                    {skip?.indexOf(Number(string)) != -1 ? "x" : ""}
+                  </span>
+                ) : chord ? (
                   <Fragment>
-                    <String></String>
-                    {chord && (
-                      <Fragment>
-                        <span className="tw-rounded-full tw-h-6 tw-w-6 tw-border tw-font-bold tw-bg-white tw-text-black">
-                          {chord.finger}
-                        </span>
-                        <String></String>
-                      </Fragment>
-                    )}
+                    <String />
+                    <span className="tw-rounded-full tw-h-6 tw-w-6 tw-border tw-font-bold tw-bg-white tw-text-black">
+                      {chord.finger}
+                    </span>
+                    <String />
                   </Fragment>
+                ) : (
+                  <String />
                 )}
-              </div>
+              </section>
             );
           })}
-      </div>
-    </div>
+      </section>
+    </section>
   );
 }
 
@@ -129,7 +162,24 @@ const String = twcss.span`tw-border tw-border-black tw-bg-black tw-block tw-h-1 
 
 // --- Utils ---
 
-function groudChordsByFret(chords) {
+type TypeGroupChordsByFretParams = TypeChordsProps["chords"];
+
+function groupChordsByFret(chordsParam: TypeGroupChordsByFretParams) {
+  const chords =
+    typeof chordsParam === "string"
+      ? chordsParam.split("|").map(
+          (item: string): TypeChord => {
+            const [string, fret, finger] = item.split(",");
+
+            return {
+              finger: Number(finger),
+              string: Number(string),
+              fret: Number(fret),
+            };
+          },
+        )
+      : chordsParam;
+
   const chordsGroupedByFret = chords.reduce((result, chord) => {
     if (!result[`${chord.fret}`]) {
       result[`${chord.fret}`] = [];
