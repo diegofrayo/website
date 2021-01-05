@@ -6,7 +6,7 @@ module.exports = {
   important: false,
   plugins: [plugin(myCustomClassesPlugin)],
   purge: {
-    content: ["./src/components/**/*.tsx", "./src/pages/**/*.tsx"],
+    content: ["./src/components/**/*.tsx", "./src/pages/**/*.tsx", "./src/lib/**/*.tsx"],
     options: {
       safelist: [/^(sm:|md:|lg:|xl:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/],
     },

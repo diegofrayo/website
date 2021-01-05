@@ -21,10 +21,10 @@ function Chords({ name, chords }: TypeChordsProps): any {
 
   return (
     <article className="tw-w-full tw-max-w-full tw-overflow-x-auto">
-      <h1 className="tw-text-center tw-font-bold tw-mb-4">{name}</h1>
+      <h1 className="tw-text-center tw-font-bold tw-mb-1">{name}</h1>
       <section className="tw-flex tw-flex-no-wrap tw-justify-start sm:tw-justify-center">
         <Fret variant="strings-names" />
-        <section className="tw-flex tw-bg-yellow-700">
+        <section className="tw-flex">
           <Fret fret={lastFret + 1} variant="strings-empty"></Fret>
           <section className="tw-flex">
             {Object.entries(chordsGroupedByFret)
@@ -70,13 +70,14 @@ function Fret({ fret, chords, variant }: TypeFretProps) {
         isStringsNamesVariant ? "tw-w-20" : "tw-w-16",
       )}
     >
-      <div className="tw-flex tw-items-center tw-justify-center tw-h-10 tw-font-bold tw-bg-white">
+      <div className="tw-flex tw-items-center tw-justify-center tw-h-10 tw-font-bold">
         {fret || ""}
       </div>
       <div
         className={classnames(
           "tw-w-full",
-          !isStringsNamesVariant && "tw-border-l-2 tw-border-r-2 tw-border-yellow-300",
+          !isStringsNamesVariant &&
+            "tw-border-l-2 tw-border-r-2 tw-border-yellow-300 tw-bg-yellow-700",
         )}
       >
         {createArray(6, 1)
