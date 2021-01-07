@@ -14,7 +14,12 @@ import {
 } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
-import { TypeBreadcumbProps, TypeGenerateSupportedLocales, TypeLocale } from "~/types";
+import {
+  TypeBreadcumbProps,
+  TypeGenerateSupportedLocales,
+  TypeLocale,
+  TypePagesRoutes,
+} from "~/types";
 import {
   copyToClipboard,
   getScrollPosition,
@@ -84,7 +89,7 @@ type TypeHeaderProps = {
 
 const Header = safeRender(function Header({ locales }: TypeHeaderProps): any {
   const { SiteTexts, currentLocale } = useInternationalization({
-    page: Routes.BLOG,
+    page: Routes.BLOG as TypePagesRoutes,
     layout: true,
   });
 
@@ -231,7 +236,7 @@ type TypeBlogPostFooterProps = {
 function BlogPostFooter({ blogMetadata, title }: TypeBlogPostFooterProps): any {
   const { BlogPostAssets } = useAssets();
   const { SiteTexts, currentLocale } = useInternationalization({
-    page: Routes.BLOG,
+    page: Routes.BLOG as TypePagesRoutes,
     layout: true,
   });
 
@@ -318,7 +323,7 @@ function BlogPostFooter({ blogMetadata, title }: TypeBlogPostFooterProps): any {
             is={Link}
             href={`https://twitter.com/intent/tweet?${createQueryFromObject({
               text: title,
-              url: `${WEBSITE_METADATA.url}${Routes.BLOG_POSTS[blogMetadata.slug]}`,
+              url: `${WEBSITE_METADATA.url}${Routes.BLOG}/${blogMetadata.slug}`,
               via: WEBSITE_METADATA.username,
             })}`}
             styled={false}
@@ -331,9 +336,7 @@ function BlogPostFooter({ blogMetadata, title }: TypeBlogPostFooterProps): any {
             is="button"
             className="clipboard"
             tw-variant="withHover"
-            data-clipboard-text={`${title} - ${WEBSITE_METADATA.url}${
-              Routes.BLOG_POSTS[blogMetadata.slug]
-            } via @${WEBSITE_METADATA.username}`}
+            data-clipboard-text={`${title} - ${WEBSITE_METADATA.url}${Routes.BLOG}/${blogMetadata.slug} via @${WEBSITE_METADATA.username}`}
             onClick={copyToClipboard}
           >
             <BlogPostFooterItem.Icon src={BlogPostAssets.LINK} alt="Link icon" />

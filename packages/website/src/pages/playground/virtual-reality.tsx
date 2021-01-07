@@ -3,7 +3,7 @@ import React from "react";
 import { MainLayout, Page, UL, Link } from "~/components";
 import Routes from "~/data/routes.json";
 import { useAssets } from "~/hooks";
-import { TypeSiteTexts } from "~/types";
+import { TypeSiteTexts, TypePagesRoutes } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
 
 const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
@@ -16,14 +16,16 @@ function VRPage(): any {
     <Page config={{ title: PAGE_NAME, noRobots: true, assets: ["vr"] }}>
       <MainLayout
         breadcumb={[
-          { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
+          {
+            text: SiteTexts.layout.current_locale.breadcumb.home,
+            url: Routes.HOME as TypePagesRoutes,
+          },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND,
+            url: Routes.PLAYGROUND as TypePagesRoutes,
           },
           {
             text: PAGE_NAME,
-            url: Routes.PLAYGROUND_PROJECTS[PAGE_NAME],
           },
         ]}
         title={PAGE_NAME}

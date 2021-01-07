@@ -5,22 +5,29 @@ import { Emoji, Separator } from "~/components";
 import { createArray } from "~/utils/misc";
 
 import twcss from "./twcss";
-import { isArrayNoEmpty, isString } from "~/utils/validations";
 
-type TypeChord = {
+interface TypeChordBase {
   fret: number;
   finger?: number;
-  string?: number | string | undefined;
-  barre?: { until: number };
-};
+}
+
+interface TypeChordWithString extends TypeChordBase {
+  string: number;
+}
+
+interface TypeChordWithBarre extends TypeChordBase {
+  barre: { until: number };
+}
+
+type TypeChord = TypeChordWithString | TypeChordWithBarre;
 
 type TypeChordsProps = {
   name: string;
-  chords: Array<TypeChord> | string; // "STRING,FRET,FINGER"
-  skip?: Array<number> | string; // "Number,Number"
+  chords: Array<TypeChord> | string; // "STRING,FRET,FINGER" | "STRING,FRET"
+  stringsToSkip?: Array<number> | string; // "Number,Number"
 };
 
-function Chords({ name, chords, skip }: TypeChordsProps): any {
+function Chords({ name, chords, stringsToSkip }: TypeChordsProps): any {
   const chordRef: { current: any } = useRef(undefined);
   const [showInput, setShowInput] = useState(false);
 
@@ -29,7 +36,7 @@ function Chords({ name, chords, skip }: TypeChordsProps): any {
   async function handleDownloadAsImage(): Promise<void> {
     const domtoimage = await import("dom-to-image");
 
-    domtoimage.toPng(chordRef.current, { quality: 0.95 }).then(dataUrl => {
+    domtoimage.toPng(chordRef.current, { quality: 1 }).then(dataUrl => {
       const link = document.createElement("a");
       link.download = `${name}.jpeg`;
       link.href = dataUrl;
@@ -37,8 +44,16 @@ function Chords({ name, chords, skip }: TypeChordsProps): any {
     });
   }
 
+  function handleShowInput(): void {
+    setShowInput(cs => !cs);
+  }
+
   if (error) {
-    return <strong className="tw-block tw-text-red-700">Chords syntax error</strong>;
+    return (
+      <strong className="tw-block tw-text-red-700">
+        Chords syntax error: {error.message}
+      </strong>
+    );
   }
 
   return (
@@ -48,7 +63,7 @@ function Chords({ name, chords, skip }: TypeChordsProps): any {
 
         <section className="tw-inline-flex tw-flex-no-wrap tw-overflow-x-auto tw-max-w-full">
           <Fret variant="FRET_STRINGS_NAMES" />
-          <Fret variant="FRET_EMPTY" fret={lastFret + 1}></Fret>
+          <Fret variant="FRET_EMPTY" fret={lastFret + 1} />
           {Object.entries(chordsGroupedByFret)
             .reverse()
             .map(([fret, chords]: [string, TypeChord[]]) => {
@@ -62,7 +77,9 @@ function Chords({ name, chords, skip }: TypeChordsProps): any {
               );
             })}
           {firstFret - 1 > 0 && <Fret variant="FRET_EMPTY" fret={firstFret - 1} />}
-          {skip && <Fret variant="FRET_SKIP_STRINGS" skip={skip} />}
+          {stringsToSkip && (
+            <Fret variant="FRET_SKIP_STRINGS" stringsToSkip={stringsToSkip} />
+          )}
         </section>
       </section>
 
@@ -74,12 +91,10 @@ function Chords({ name, chords, skip }: TypeChordsProps): any {
           <Emoji className="tw-mr-1">⬇️</Emoji>
           <span>download as image</span>
         </button>
-        <Separator size={1} dir="v"></Separator>
+        <Separator size={1} dir="v" />
         <button
           className="tw-text-sm tw-font-bold tw-mt-2 tw-p-1 tw-transition-opacity hover:tw-opacity-75"
-          onClick={() => {
-            setShowInput(cs => !cs);
-          }}
+          onClick={handleShowInput}
         >
           <span
             className={classnames(
@@ -95,9 +110,9 @@ function Chords({ name, chords, skip }: TypeChordsProps): any {
 
       {showInput && (
         <section className="tw-text-sm tw-mt-4">
-          <strong>input:</strong>
+          <strong className="tw-block tw-mb-1">input:</strong>
           <pre className="tw-whitespace-pre-line tw-text-sm tw-break-all">
-            {JSON.stringify(chords)}
+            {chordsToString(chords)}
           </pre>
         </section>
       )}
@@ -111,14 +126,14 @@ type TypeFretProps = {
   variant: "FRET_DEFAULT" | "FRET_STRINGS_NAMES" | "FRET_EMPTY" | "FRET_SKIP_STRINGS";
   fret?: undefined | number;
   chords?: undefined | Array<TypeChord>;
-  skip?: TypeChordsProps["skip"];
+  stringsToSkip?: TypeChordsProps["stringsToSkip"];
 };
 
-function Fret({ variant, fret, chords, skip }: TypeFretProps): any {
+function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
   const isEmptyVariant = variant === "FRET_EMPTY";
   const isStringsNamesVariant = variant === "FRET_STRINGS_NAMES";
-  const isDefaultVariant = variant === "FRET_DEFAULT";
   const isSkipStringsVariant = variant === "FRET_SKIP_STRINGS";
+  const isDefaultVariant = variant === "FRET_DEFAULT";
   const STRINGS_NAMES = [
     "E-[mi]",
     "A-[la]",
@@ -131,8 +146,8 @@ function Fret({ variant, fret, chords, skip }: TypeFretProps): any {
   return (
     <section
       className={classnames(
-        "tw-text-center tw-flex-shrink-0 tw-text-xs",
-        isStringsNamesVariant || isSkipStringsVariant ? "tw-auto" : "tw-w-12",
+        "tw-flex-shrink-0 tw-text-xs",
+        isSkipStringsVariant ? "tw-auto" : isStringsNamesVariant ? "tw-w-16" : "tw-w-10",
       )}
     >
       <section className="tw-flex tw-items-center tw-justify-center tw-h-6 tw-font-bold">
@@ -140,7 +155,6 @@ function Fret({ variant, fret, chords, skip }: TypeFretProps): any {
       </section>
       <section
         className={classnames(
-          "tw-w-full",
           !isStringsNamesVariant &&
             !isSkipStringsVariant &&
             "tw-border-l-2 tw-border-r-2 tw-border-yellow-400 tw-bg-yellow-700",
@@ -151,13 +165,14 @@ function Fret({ variant, fret, chords, skip }: TypeFretProps): any {
           .map(string => {
             const isBarreChord =
               isDefaultVariant &&
-              isArrayNoEmpty(chords) &&
-              (chords ? chords[0] : {}).barre !== undefined;
+              Array.isArray(chords) &&
+              ((chords.length > 0 ? chords[0] : {}) as TypeChordWithBarre).barre !==
+                undefined;
             const chord =
               isBarreChord && chords
                 ? chords[0]
                 : isDefaultVariant
-                ? chords?.find(chord => chord.string === string)
+                ? chords?.find((chord: TypeChordWithString) => chord.string === string)
                 : undefined;
 
             return (
@@ -168,23 +183,25 @@ function Fret({ variant, fret, chords, skip }: TypeFretProps): any {
                     : isStringsNamesVariant
                     ? `string-${string}`
                     : isBarreChord
-                    ? `barre-${string}`
+                    ? `barre-${string}-${(chord as TypeChordWithBarre).fret}`
                     : chord
-                    ? `${chord.string}-${chord.finger}`
-                    : `${Date.now()}-${string}`
+                    ? `default-${(chord as TypeChordWithString).string}-${
+                        chord.finger || ""
+                      }`
+                    : `${string}-${Date.now()}`
                 }`}
-                className="tw-flex tw-items-center tw-w-full tw-h-6"
+                className="tw-flex tw-items-center tw-h-6"
               >
                 {isStringsNamesVariant ? (
-                  <section className="tw-flex tw-justify-between tw-px-2 tw-w-full">
+                  <section className="tw-flex tw-justify-between tw-w-full tw-px-2">
                     <span>{STRINGS_NAMES[string - 1]}</span>
-                    <strong className="tw-ml-2">{string}</strong>
+                    <strong>{string}</strong>
                   </section>
                 ) : isSkipStringsVariant ? (
                   <span className="tw-px-2">
-                    {(typeof skip === "string"
-                      ? skip.split(",").map(Number)
-                      : skip
+                    {(typeof stringsToSkip === "string"
+                      ? stringsToSkip.split(",").map(Number)
+                      : stringsToSkip
                     )?.indexOf(Number(string)) != -1
                       ? "x"
                       : ""}
@@ -192,10 +209,8 @@ function Fret({ variant, fret, chords, skip }: TypeFretProps): any {
                 ) : isBarreChord ? (
                   <Fragment>
                     <String />
-                    {((chord?.barre?.until as number) >= string ||
-                      (chord?.string as string) === "x") && (
-                      <span className="tw-h-full tw-border-4" />
-                    )}
+                    {((chord as TypeChordWithBarre)?.barre?.until as number) >=
+                      string && <span className="tw-h-full tw-border-4" />}
                     <String />
                   </Fragment>
                 ) : chord ? (
@@ -228,27 +243,36 @@ function groupChordsByFret(chordsParam: TypeGroupChordsByFretParams) {
     const chords: TypeChord[] =
       chordsParam === ""
         ? []
-        : isString(chordsParam)
-        ? (chordsParam as string).split("|").map(
+        : typeof chordsParam === "string"
+        ? chordsParam.split("|").map(
             (item: string): TypeChord => {
               const [string, fret, finger, ...more] = item.split(",");
 
               if (!item || more.length > 0) throw new Error("Syntax error");
 
-              const chord: TypeChord = {
-                finger: Number(finger),
-                fret: Number(fret),
-              };
-
               if (string.includes("x")) {
-                chord.barre = {
-                  until: string.length === 2 ? Number(string[0]) : 6,
+                const chord: TypeChordWithBarre = {
+                  finger: finger === undefined ? undefined : Number(finger),
+                  fret: Number(fret),
+                  barre: {
+                    until: string.length === 2 ? Number(string[0]) : 6,
+                  },
                 };
-              } else {
-                chord.string = Number(string);
+
+                checkFretValidity(chord.fret);
+
+                return chord;
               }
 
-              return createSafeChord(chord);
+              const chord: TypeChordWithString = {
+                finger: finger === undefined ? undefined : Number(finger),
+                fret: Number(fret),
+                string: Number(string),
+              };
+
+              checkFretValidity(chord.fret);
+
+              return chord;
             },
           )
         : (chordsParam as TypeChord[]);
@@ -260,7 +284,26 @@ function groupChordsByFret(chordsParam: TypeGroupChordsByFretParams) {
         ? {}
         : chords.reduce(
             (result, chord) => {
-              result[`${chord.fret}`].push(createSafeChord(chord));
+              checkFingerValidity(chord.finger);
+
+              if ((chord as TypeChordWithBarre).barre !== undefined) {
+                checkBarreValidity((chord as TypeChordWithBarre).barre.until);
+              } else {
+                checkStringValidity((chord as TypeChordWithString).string);
+              }
+
+              result[`${chord.fret}`].push(chord);
+
+              if (
+                result[`${chord.fret}`].find(item => item.barre !== undefined) !==
+                  undefined &&
+                result[`${chord.fret}`].length > 1
+              ) {
+                throw new Error(
+                  "A fret contains a barre chord can't have multiple chords",
+                );
+              }
+
               return result;
             },
             createArray(
@@ -273,44 +316,46 @@ function groupChordsByFret(chordsParam: TypeGroupChordsByFretParams) {
           );
 
     return {
-      error: false,
+      error: undefined,
       firstFret: frets.length > 0 ? frets[0] : 0,
       lastFret: frets.length > 0 ? frets[frets.length - 1] : 0,
       chordsGroupedByFret,
     };
   } catch (e) {
     console.error(e);
-    return { firstFret: 0, lastFret: 0, chordsGroupedByFret: {}, error: true };
+
+    return { firstFret: 0, lastFret: 0, chordsGroupedByFret: {}, error: e };
   }
 }
 
-function createSafeChord(chord: TypeChord): TypeChord {
-  const possibleStrings = createArray(6);
-  const possibleFrets = createArray(16);
-  const possibleFingers = createArray(4);
-  const safeChord: TypeChord = {
-    finger: possibleFingers.indexOf(chord.finger || 0) === -1 ? 0 : chord.finger,
-    fret: possibleFrets.indexOf(chord.fret) === -1 ? 1 : chord.fret,
-  };
+function checkFingerValidity(finger?: number): void {
+  if (finger === undefined) return;
 
-  if (chord.barre) {
-    safeChord.barre = {
-      until: possibleStrings.indexOf(chord.barre.until) === -1 ? 6 : chord.barre.until,
-    };
-  } else {
-    safeChord.string =
-      possibleStrings.indexOf(chord.string as number) === -1 ? 0 : chord.string;
+  if (Number.isNaN(finger) || finger < 1 || finger > 4) {
+    throw new Error("Invalid finger");
   }
+}
 
-  if (
-    Number.isNaN(chord.finger) ||
-    Number.isNaN(chord.fret) ||
-    Number.isNaN(chord.string)
-  ) {
-    throw new Error("Syntax error");
+function checkFretValidity(fret: number): void {
+  if (Number.isNaN(fret) || fret < 1 || fret > 20) {
+    throw new Error("Invalid fret");
   }
+}
 
-  return safeChord;
+function checkStringValidity(string: number): void {
+  if (Number.isNaN(string) || string < 1 || string > 6) {
+    throw new Error("Invalid string");
+  }
+}
+
+function checkBarreValidity(until: number): void {
+  if (Number.isNaN(until) || until < 3 || until > 6) {
+    throw new Error("Invalid until");
+  }
+}
+
+function chordsToString(chords: TypeChordsProps["chords"]): string {
+  return JSON.stringify(chords);
 }
 
 export default Chords;

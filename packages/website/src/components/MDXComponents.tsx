@@ -5,6 +5,7 @@ import dracula from "prism-react-renderer/themes/dracula";
 import Routes from "~/data/routes.json";
 import { useAssets } from "~/hooks";
 import twcss from "~/lib/twcss";
+import { TypePagesRoutes } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 import { slugify } from "~/utils/strings";
@@ -15,7 +16,7 @@ export * from "./pages/resume";
 export * from "./pages/my-favorite-music-and-mdx";
 
 type TypeCodeProps = {
-  language: "jsx" | "css" | "typescript";
+  language: "jsx" | "css" | "typescript" | "javascript" | "bash";
   code: any;
   fileName?: string;
   sourceURL?: string;
@@ -24,7 +25,7 @@ type TypeCodeProps = {
 export function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
   const { BlogPostAssets } = useAssets();
 
-  const SiteTexts = getSiteTexts({ page: Routes.BLOG });
+  const SiteTexts = getSiteTexts({ page: Routes.BLOG as TypePagesRoutes });
 
   return (
     <section

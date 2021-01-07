@@ -79,7 +79,7 @@ export function AssetsProvider({ children }: any): any {
 
   function updateAssets() {
     try {
-      const assetsElement = document.getElementById("assets")!;
+      const assetsElement = document.getElementById("assets") || { innerHTML: "" };
       const data = JSON.parse(assetsElement.innerHTML);
 
       setAssets({

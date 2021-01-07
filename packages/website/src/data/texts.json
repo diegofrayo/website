@@ -57,108 +57,6 @@
         "menu_item_playground": "Playground"
       }
     },
-    "/about-me": {
-      "config": {
-        "locales": ["es", "en"],
-        "default_locale": "es"
-      },
-      "en": {
-        "title": "🙋‍♂️ About me",
-        "meta_description": "Know more about me."
-      },
-      "es": {
-        "title": "🙋‍♂️ Acerca de mí",
-        "meta_description": "Conoce un poco más acerca de mí."
-      }
-    },
-    "/roadmap": {
-      "config": {
-        "locales": ["en"],
-        "default_locale": "en",
-        "meta_no_robots": true
-      },
-      "en": {
-        "title": "🚀 Roadmap"
-      },
-      "es": {
-        "title": "🚀 Roadmap"
-      }
-    },
-    "/playground": {
-      "config": {
-        "locales": ["en"],
-        "default_locale": "en",
-        "meta_no_robots": true
-      },
-      "en": {
-        "title": "🔮 playground"
-      }
-    },
-    "/snippets": {
-      "config": {
-        "locales": ["en"],
-        "default_locale": "en",
-        "meta_no_robots": true
-      },
-      "en": {
-        "title": "🛠️ Snippets"
-      },
-      "es": {
-        "title": "🛠️ Snippets"
-      }
-    },
-    "/resume": {
-      "config": {
-        "locales": ["es", "en"],
-        "default_locale": "es"
-      },
-      "en": {
-        "title": "📄 Work experience",
-        "meta_description": "This is my work experience as a Software Developer",
-        "timeline": [
-          {
-            "company": "Festa",
-            "url": "https://festa.co",
-            "date": "april 2015 - december 2016",
-            "description": "I joined this company as a Junior Software Developer to rebuild its MVP using JavaScript as the main language. I worked mainly in the construction of a Single Page Application using Angular.js, Bootstrap Material, and Firebase. Also, I contributed to the development of a back-end application based on Node.js, Sails.js, and MongoDB."
-          },
-          {
-            "company": "Freelancing",
-            "date": "april 2017 - may 2018",
-            "description": "I worked part-time on some web projects as a freelancer."
-          },
-          {
-            "company": "HelloBuild",
-            "url": "https://hellobuild.co",
-            "date": "junio 2018 - presente",
-            "description": "I worked on this company as a Full-stack Software Developer, Senior Software Developer, and Tech lead. The main stack we used to use on almost all projects was: React, Node.js (Serverless), and GraphQL. In the last time, we started to adopt Prisma.io as ORM for the back-end. Also, I worked on the construction of one mobile app using React Native/Redux/GraphQL. In my Tech lead role, my main responsibilities were to give support to the team and design the front-end architecture for a few projects."
-          }
-        ]
-      },
-      "es": {
-        "title": "📄 Experiencia laboral",
-        "meta_description": "Esta es mi experiencia laboral como Desarrollador de Software.",
-        "timeline": [
-          {
-            "company": "Festa",
-            "url": "https://festa.co",
-            "date": "abril 2015 - diciembre 2016",
-            "description": "Ingresé a esta compañía como Desarrollador de Software Junior para construir un MVP usando JavaScript como lenguaje de programación principal. Trabajé principalmente en la construcción de un SPA (Single Page Application) usando Angular.js, Bootstrap Material y Firebase. También contribuí en el desarrollo de una aplicación back-end basada en Node.js, Sails.js y MongoDB."
-          },
-          {
-            "company": "Freelancing",
-            "date": "abril 2017 - mayo 2018",
-            "description": "Trabajé tiempo parcial en algunos proyectos web como freelancer."
-          },
-          {
-            "company": "HelloBuild",
-            "url": "https://hellobuild.co",
-            "date": "junio 2018 - presente",
-            "description": "Trabajé en esta compañía como Desarrollador de Software Full-stack, Desarrollador de Software Senior y Lider Técnico. El stack principal que manejabamos para todos los proyectos era React, Node.js (Serverless) y GraphQL. En el ultimo tiempo, comenzamos a adoptar prisma.io como ORM para el back-end. También trabajé en la creación de una aplicación móvil usando React Native/Redux/GraphQL. En mi rol como Lider Técnico, mis funciones principales eran ayudar a diseñar la arquitectura de los proyectos front-end y en dar soporte técnico a los miembros del equipo."
-          }
-        ]
-      }
-    },
     "/blog": {
       "config": {
         "locales": ["es", "en"],
@@ -215,6 +113,108 @@
         "months": "meses",
         "year": "año",
         "years": "años"
+      }
+    },
+    "/about-me": {
+      "config": {
+        "locales": ["es", "en"],
+        "default_locale": "es"
+      },
+      "en": {
+        "title": "🙋‍♂️ About me",
+        "meta_description": "Know more about me."
+      },
+      "es": {
+        "title": "🙋‍♂️ Acerca de mí",
+        "meta_description": "Conoce un poco más acerca de mí."
+      }
+    },
+    "/resume": {
+      "config": {
+        "locales": ["es", "en"],
+        "default_locale": "es"
+      },
+      "en": {
+        "title": "📄 Work experience",
+        "meta_description": "This is my work experience as a Software Developer",
+        "timeline": [
+          {
+            "company": "Festa",
+            "url": "https://festa.co",
+            "date": "april 2015 - december 2016",
+            "description": "I joined this company as a Junior Software Developer to rebuild its MVP using JavaScript as the main language. I worked mainly in the construction of a Single Page Application using Angular.js, Bootstrap Material, and Firebase. Also, I contributed to the development of a back-end application based on Node.js, Sails.js, and MongoDB."
+          },
+          {
+            "company": "Freelancing",
+            "date": "april 2017 - may 2018",
+            "description": "I worked part-time on some web projects as a freelancer."
+          },
+          {
+            "company": "HelloBuild",
+            "url": "https://hellobuild.co",
+            "date": "junio 2018 - presente",
+            "description": "I worked on this company as a Full-stack Software Developer, Senior Software Developer, and Tech lead. The main stack we used to use on almost all projects was: React, Node.js (Serverless), and GraphQL. In the last time, we started to adopt Prisma.io as ORM for the back-end. Also, I worked on the construction of one mobile app using React Native/Redux/GraphQL. In my Tech lead role, my main responsibilities were to give support to the team and design the front-end architecture for a few projects."
+          }
+        ]
+      },
+      "es": {
+        "title": "📄 Experiencia laboral",
+        "meta_description": "Esta es mi experiencia laboral como Desarrollador de Software.",
+        "timeline": [
+          {
+            "company": "Festa",
+            "url": "https://festa.co",
+            "date": "abril 2015 - diciembre 2016",
+            "description": "Ingresé a esta compañía como Desarrollador de Software Junior para construir un MVP usando JavaScript como lenguaje de programación principal. Trabajé principalmente en la construcción de un SPA (Single Page Application) usando Angular.js, Bootstrap Material y Firebase. También contribuí en el desarrollo de una aplicación back-end basada en Node.js, Sails.js y MongoDB."
+          },
+          {
+            "company": "Freelancing",
+            "date": "abril 2017 - mayo 2018",
+            "description": "Trabajé tiempo parcial en algunos proyectos web como freelancer."
+          },
+          {
+            "company": "HelloBuild",
+            "url": "https://hellobuild.co",
+            "date": "junio 2018 - presente",
+            "description": "Trabajé en esta compañía como Desarrollador de Software Full-stack, Desarrollador de Software Senior y Lider Técnico. El stack principal que manejabamos para todos los proyectos era React, Node.js (Serverless) y GraphQL. En el ultimo tiempo, comenzamos a adoptar prisma.io como ORM para el back-end. También trabajé en la creación de una aplicación móvil usando React Native/Redux/GraphQL. En mi rol como Lider Técnico, mis funciones principales eran ayudar a diseñar la arquitectura de los proyectos front-end y en dar soporte técnico a los miembros del equipo."
+          }
+        ]
+      }
+    },
+    "/snippets": {
+      "config": {
+        "locales": ["en"],
+        "default_locale": "en",
+        "meta_no_robots": true
+      },
+      "en": {
+        "title": "🛠️ Snippets"
+      },
+      "es": {
+        "title": "🛠️ Snippets"
+      }
+    },
+    "/playground": {
+      "config": {
+        "locales": ["en"],
+        "default_locale": "en",
+        "meta_no_robots": true
+      },
+      "en": {
+        "title": "🔮 playground"
+      }
+    },
+    "/roadmap": {
+      "config": {
+        "locales": ["en"],
+        "default_locale": "en",
+        "meta_no_robots": true
+      },
+      "en": {
+        "title": "🚀 Roadmap"
+      },
+      "es": {
+        "title": "🚀 Roadmap"
       }
     },
     "/404": {

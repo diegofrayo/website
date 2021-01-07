@@ -5,15 +5,16 @@
   - [Text ellipsis](#text-ellipsis)
 - [JavaScript](#javascript)
   - [Capitalize string](#capitalize-string)
+  - [Component to show the window resolution using Tailwind CSS classes](#component-to-show-the-window-resolution-using-tailwind-css-classes)
   - [Copy to clipboard](#copy-to-clipboard)
   - [Create array with N elements](#create-array-with-n-elements)
   - [Delay](#delay)
   - [Focus and select the text inside the textarea](#focus-and-select-the-text-inside-the-textarea)
+  - [Generate simple random string](#generate-simple-random-string)
   - [Regex examples](#regex-examples)
   - [Simple encrypt/decrypt](#simple-encrypt-decrypt)
   - [Slugify string](#slugify-string)
 - [React](#react)
-  - [Component to show the window resolution using Tailwind CSS classes](#component-to-show-the-window-resolution-using-tailwind-css-classes)
 - [Git](#git)
   - [Alias](#alias)
   - [Remote branches](#remote-branches)
@@ -129,6 +130,22 @@
   code={`const element = document.getElementById('my-textarea');
 element.focus();
 element.select();`}
+/>
+
+## Generate simple random string
+
+<Code
+  language="javascript"
+  fileName="Delay"
+  code={`function makeSimpleRandomString(length) {
+  let result = "";
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}`}
 />
 
 ## Regex examples

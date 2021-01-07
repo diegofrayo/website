@@ -25,7 +25,7 @@ function Breadcumb({ items }: TypeBreadcumbProps): any {
             key={`Breadcumb-li-${slugify(item.text)}`}
             className="tw-inline-block tw-mr-2"
           >
-            <Link is={NextLink} href={item.url} styled={false}>
+            <Link is={NextLink} href={item.url || "/"} styled={false}>
               <span className="tw-underline tw-font-bold tw-text-base">{item.text}</span>
             </Link>
           </li>

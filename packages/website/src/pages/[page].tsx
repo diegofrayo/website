@@ -5,7 +5,7 @@ import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout, MDXContent } from "~/components";
 import Routes from "~/data/routes.json";
-import { TypeLocale, TypeSiteTexts } from "~/types";
+import { TypeLocale, TypeSiteTexts, TypePagesRoutes } from "~/types";
 import {
   generateSupportedLocales,
   getItemLocale,
@@ -20,7 +20,7 @@ import {
 
 type TypeSitePageProps = {
   content: any;
-  page: string; // TODO: Set possible values
+  page: TypePagesRoutes;
   SiteTexts: TypeSiteTexts;
 };
 
@@ -46,11 +46,13 @@ function SitePage({ content, page, SiteTexts }: TypeSitePageProps): any {
               )
         }
         breadcumb={[
-          { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
+          {
+            text: SiteTexts.layout.current_locale.breadcumb.home,
+            url: Routes.HOME as TypePagesRoutes,
+          },
           {
             text:
               SiteTexts.layout.current_locale.breadcumb[toLowerCaseObjectProperty(page)],
-            url: Routes[toUpperCaseObjectProperty(page)],
           },
         ]}
         title={SiteTexts.page.current_locale.title}

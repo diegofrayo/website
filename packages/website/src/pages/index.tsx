@@ -4,7 +4,7 @@ import NextLink from "next/link";
 import { Page, MainLayout, Emoji, Link } from "~/components";
 import Routes from "~/data/routes.json";
 import { withTranslations } from "~/hocs";
-import { TypeSiteTexts } from "~/types";
+import { TypePagesRoutes, TypeSiteTexts } from "~/types";
 import { generateSupportedLocales } from "~/utils/internationalization";
 import { isUserLoggedIn } from "~/utils/misc";
 
@@ -30,7 +30,7 @@ function HomePage({ SiteTexts }: TypeHomePageProps): any {
   );
 }
 
-export default withTranslations(HomePage, { page: Routes.HOME });
+export default withTranslations(HomePage, { page: Routes.HOME as TypePagesRoutes });
 
 // --- Components ---
 

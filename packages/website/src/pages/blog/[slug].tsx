@@ -8,10 +8,10 @@ import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { WEBSITE_METADATA } from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
+import { TypeBlogPost, TypeLocale, TypePagesRoutes } from "~/types";
 import { getBlogPosts, getBlogTitle } from "~/utils/blog";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
-import { TypeBlogPost, TypeLocale } from "~/types";
 
 type TypeBlogPostPageProps = {
   post: TypeBlogPost;
@@ -20,7 +20,7 @@ type TypeBlogPostPageProps = {
 
 function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
   const { SiteTexts, currentLocale } = useInternationalization({
-    page: Routes.BLOG,
+    page: Routes.BLOG as TypePagesRoutes,
     layout: true,
   });
 
@@ -30,19 +30,24 @@ function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
     <Page
       config={{
         title: post[currentLocale]?.title,
-        pathname: Routes.BLOG_POSTS[post.slug],
+        pathname: `${Routes.BLOG}/${post.slug}`,
         description: post[currentLocale]?.description,
         assets: ["blog_post"],
       }}
     >
       <MainLayout
-        locales={generateSupportedLocales(post.locales, Routes.BLOG_POSTS[post.slug])}
+        locales={generateSupportedLocales(post.locales, Routes.BLOG[post.slug])}
         breadcumb={[
-          { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
-          { text: SiteTexts.layout.current_locale.breadcumb.blog, url: Routes.BLOG },
+          {
+            text: SiteTexts.layout.current_locale.breadcumb.home,
+            url: Routes.HOME as TypePagesRoutes,
+          },
+          {
+            text: SiteTexts.layout.current_locale.breadcumb.blog,
+            url: Routes.BLOG as TypePagesRoutes,
+          },
           {
             text: getBlogTitle(post, currentLocale),
-            url: Routes.BLOG_POSTS[post.slug],
           },
         ]}
         title={getBlogTitle(post, currentLocale)}

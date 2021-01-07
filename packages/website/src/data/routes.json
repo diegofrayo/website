@@ -1,26 +1,12 @@
 {
   "HOME": "/",
+  "BLOG": "/blog",
   "ABOUT_ME": "/about-me",
   "RESUME": "/resume",
-  "ROADMAP": "/roadmap",
   "SNIPPETS": "/snippets",
+  "PLAYGROUND": "/playground",
+  "ROADMAP": "/roadmap",
   "ERROR_404": "/404",
   "ERROR_500": "/500",
-  "BLOG": "/blog",
-  "BLOG_POSTS": {
-    "im-tired-to-reinvent-the-wheel": "/blog/im-tired-to-reinvent-the-wheel",
-    "how-i-use-tailwind-css": "/blog/how-i-use-tailwind-css",
-    "thoughts-about-my-profession": "/blog/thoughts-about-my-profession",
-    "my-favorite-music-and-mdx": "/blog/my-favorite-music-and-mdx",
-    "my-first-post": "/blog/my-first-post",
-    "conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy": "/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy"
-  },
-  "PLAYGROUND": "/playground",
-  "PLAYGROUND_PROJECTS": {
-    "chords": "/playground/chords",
-    "strings": "/playground/strings",
-    "stupid": "/playground/stupid",
-    "virtual-reality": "/playground/virtual-reality"
-  },
   "__DYNAMIC_PAGES": ["about-me", "resume", "roadmap", "snippets"]
 }

@@ -2,6 +2,7 @@ import * as React from "react";
 
 import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
+import { TypePagesRoutes } from "~/types";
 
 import MainLayout from "./MainLayout";
 import Page from "./Page";
@@ -16,7 +17,12 @@ function ErrorPage({ statusCode }: TypeErrorPageProps): any {
   return (
     <Page config={{ noRobots: true }}>
       <MainLayout
-        breadcumb={[{ text: SiteTexts.page.current_locale.breadcumb, url: Routes.HOME }]}
+        breadcumb={[
+          {
+            text: SiteTexts.page.current_locale.breadcumb,
+            url: Routes.HOME as TypePagesRoutes,
+          },
+        ]}
         title={SiteTexts.page.current_locale.title}
       >
         <p>{SiteTexts.page.current_locale.body}</p>

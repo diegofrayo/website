@@ -40,28 +40,23 @@ export function onScrollStoppedListener({
   );
 }
 
-// TODO: Set e type
-export async function copyToClipboard(e?: any, text?: string): Promise<any> {
+// TODO: Set event type
+export function copyToClipboard(event?: any, textToCopy?: string): void {
   try {
-    if (!e && !text) throw new Error("Invalid params");
+    if (!event && !textToCopy) throw new Error("Invalid params");
     if (!navigator.clipboard) throw new Error("Clipboard not supported");
 
     let clipboardText = "";
-    if (e) {
-      const { currentTarget: element } = e;
-      clipboardText = element.getAttribute("data-clipboard-text");
-    } else if (text) {
-      clipboardText = text;
+    if (event) {
+      const { currentTarget: element } = event;
+      clipboardText = element.getAttribute("data-clipboard-text") || "";
+    } else if (textToCopy) {
+      clipboardText = textToCopy;
     }
 
-    navigator.clipboard.writeText(clipboardText).then(
-      () => {
-        console.log("Copying to clipboard was successful");
-      },
-      err => {
-        console.error("Could not copy text:", err);
-      },
-    );
+    if (!clipboardText) throw new Error("Any text was selected to copy");
+
+    navigator.clipboard.writeText(clipboardText);
   } catch (e) {
     console.error(e);
   }
@@ -103,7 +98,8 @@ export function getAndroidVersion(): number {
     if (!match) throw new Error();
 
     return parseFloat(match[1]);
-  } catch (error) {
+  } catch (e) {
+    console.error(e);
     return -1;
   }
 }

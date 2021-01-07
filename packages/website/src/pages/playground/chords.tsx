@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { MainLayout, Page, Separator } from "~/components";
 import Routes from "~/data/routes.json";
 import Chords from "~/lib/chords";
-import { TypeSiteTexts } from "~/types";
+import { TypePagesRoutes, TypeSiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
 
 const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
@@ -16,14 +16,16 @@ function ChordsPage(): any {
     <Page config={{ title: PAGE_NAME, noRobots: true }}>
       <MainLayout
         breadcumb={[
-          { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
+          {
+            text: SiteTexts.layout.current_locale.breadcumb.home,
+            url: Routes.HOME as TypePagesRoutes,
+          },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND,
+            url: Routes.PLAYGROUND as TypePagesRoutes,
           },
           {
             text: PAGE_NAME,
-            url: Routes.PLAYGROUND_PROJECTS[PAGE_NAME],
           },
         ]}
         title={PAGE_NAME}
@@ -55,9 +57,12 @@ function ChordsPage(): any {
               }}
             />
             <code className="tw-block">
-              Format: STRING,FRET,FINGER|STRING,FRET,FINGER
+              Format: STRING,FRET,FINGER?|STRING,FRET,FINGER?
             </code>
-            <code className="tw-block">Example: &ldquo;3,2,1|1,2,2|2,3,3&ldquo;</code>
+            <code className="tw-block">
+              Examples: &ldquo;3,2,1|1,2,2|2,3,3&ldquo; |
+              &ldquo;5x,2|4,4,2|3,4,3|2,4,4&ldquo;
+            </code>
           </label>
           <Separator size={6} />
 
@@ -87,12 +92,12 @@ function ChordsPage(): any {
               { finger: 2, fret: 2, string: 4 },
               { finger: 1, fret: 1, string: 2 },
             ]}
-            skip={[6]}
+            stringsToSkip={[6]}
           />
           <Separator size={8} />
-          <Chords name="LA Mayor (A)" chords="4,2,1|3,2,2|2,2,3" skip={[6]} />
+          <Chords name="LA Mayor (A)" chords="4,2,1|3,2,2|2,2,3" stringsToSkip={[6]} />
           <Separator size={8} />
-          <Chords name="RE Mayor (D)" chords="3,2,1|1,2,2|2,3,3" skip="6,5" />
+          <Chords name="RE Mayor (D)" chords="3,2,1|1,2,2|2,3,3" stringsToSkip="6,5" />
           <Separator size={8} />
           <Chords
             name="SI Mayor (B)"

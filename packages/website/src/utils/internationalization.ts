@@ -37,7 +37,7 @@ export function getSiteTexts({
   }
 
   if (page) {
-    const pageContent = Texts.pages[page];
+    const pageContent: any = Texts.pages[page];
 
     result.page = {
       config: pageContent.config || {},
@@ -65,10 +65,10 @@ export function setCurrentLocale(locale: TypeLocale): void {
 }
 
 export function extractLocaleFromUrl(): TypeLocale {
-  const [locale] = window.location.pathname.split("/");
+  const [locale] = window.location.pathname.split("/") as TypeLocale[];
 
-  if (LOCALES.indexOf(<TypeLocale>locale) !== -1) {
-    return locale as TypeLocale;
+  if (LOCALES.indexOf(locale) !== -1) {
+    return locale;
   }
 
   return CURRENT_LOCALE;
@@ -88,31 +88,24 @@ export function generateSupportedLocales(
 ): TypeGenerateSupportedLocales {
   return locales.map((locale: TypeLocale) => ({
     name: locale,
-    route, // TODO: Set type (possible values)
+    route,
   }));
 }
 
-type TypePluralizeWordParam =
-  | {
-      singular: string;
-      plural: string;
-    }
-  | string;
-
-type TypePluralizeConfigParam = { includeNumber?: boolean };
-
 export const pluralize = (
   number: number,
-  word: TypePluralizeWordParam,
-  { includeNumber = true }: TypePluralizeConfigParam = {},
+  word: { singular: string; plural: string } | string,
+  { includeNumber = true }: { includeNumber?: boolean } = {},
 ): string => {
-  return `${includeNumber ? number : ""} ${
-    typeof word === "string"
-      ? word + (number === 1 ? "" : "s")
-      : number === 1
-      ? word.singular
-      : word.plural
-  }`.trim();
+  let result = `${includeNumber ? number : ""}`;
+
+  if (typeof word === "string") {
+    result += word + (number === 1 ? "" : "s");
+  } else {
+    result += number === 1 ? word.singular : word.plural;
+  }
+
+  return result.trim();
 };
 
 export const parseSiteText = (
@@ -120,6 +113,6 @@ export const parseSiteText = (
   words: Record<string, string | number>,
 ): string => {
   return Object.entries(words).reduce((acum, [key, value]) => {
-    return acum.replace(`<${key}>`, value as any); // TODO: Avoid any
+    return acum.replace(`<${key}>`, String(value));
   }, text);
 };

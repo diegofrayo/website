@@ -4,7 +4,7 @@ import NextLink from "next/link";
 import { MainLayout, Page, UL, Link } from "~/components";
 import Routes from "~/data/routes.json";
 import { withTranslations } from "~/hocs";
-import { TypeSiteTexts } from "~/types";
+import { TypePagesRoutes, TypeSiteTexts } from "~/types";
 
 type TypePlaygroundPageProps = {
   SiteTexts: TypeSiteTexts;
@@ -15,19 +15,21 @@ function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
     <Page config={{ noRobots: true }}>
       <MainLayout
         breadcumb={[
-          { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
+          {
+            text: SiteTexts.layout.current_locale.breadcumb.home,
+            url: Routes.HOME as TypePagesRoutes,
+          },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND,
           },
         ]}
         title={SiteTexts.page.current_locale.title}
       >
         <UL>
-          {Object.entries(Routes.PLAYGROUND_PROJECTS).map(([name, route]) => {
+          {["chords", "strings", "stupid", "virtual-reality"].sort().map(name => {
             return (
               <li key={`PlaygroundPage-${name}`}>
-                <Link is={NextLink} href={route}>
+                <Link is={NextLink} href={`${Routes.PLAYGROUND}/${name}`}>
                   {name}
                 </Link>
               </li>
@@ -40,6 +42,6 @@ function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
 }
 
 export default withTranslations(PlaygroundPage, {
-  page: Routes.PLAYGROUND,
+  page: Routes.PLAYGROUND as TypePagesRoutes,
   layout: true,
 });

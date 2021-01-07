@@ -15,7 +15,7 @@ export function createQueryFromObject(
         return "";
       }
 
-      return `${key}=${encodeURIComponent(value)}`;
+      return `${key}=${encodeURIComponent(String(value))}`;
     })
     .filter(Boolean)
     .join("&");
@@ -72,10 +72,12 @@ export function sortBy(param: string, order?: "asc" | "desc") {
   };
 }
 
-export function safeCastNumber(string: string) {
+export function safeCastNumber(string: string, defaultNumber?: number) {
   const number = Number(string);
 
-  if (Number.isNaN(number)) return 0;
+  if (Number.isNaN(number)) {
+    return Number.isInteger(defaultNumber) ? defaultNumber : 0;
+  }
 
   return number;
 }

@@ -3,6 +3,7 @@ import * as MDXComponents from "~/components/MDXComponents";
 import GithubData from "~/data/github.json";
 import { WEBSITE_METADATA } from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
+import { TypePagesRoutes } from "~/types";
 
 import { getSiteTexts } from "./internationalization";
 
@@ -19,11 +20,10 @@ export const MDXComponentsConfig = {
   Emoji,
 };
 
-// TODO: Set type for this const
 export const MDXScope = {
   DATA: {
     github: GithubData,
-    resume: getSiteTexts({ page: Routes.RESUME }).page.current_locale,
+    resume: getSiteTexts({ page: Routes.RESUME as TypePagesRoutes }).page.current_locale,
     website: WEBSITE_METADATA,
     routes: Routes,
   },

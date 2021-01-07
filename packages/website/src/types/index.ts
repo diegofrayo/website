@@ -1,4 +1,29 @@
-// TODO: Improve this type (avoid any)
+// --- Primitives ---
+
+export type TypePrimitive = string | number | boolean;
+
+export type TypeObjectWithPrimitives = Record<string, TypePrimitive>;
+
+// --- Internationalization ---
+
+export type TypeLocale = "es" | "en";
+
+export type TypePagesRoutes =
+  | "/"
+  | "/blog"
+  | "/about-me"
+  | "/resume"
+  | "/snippets"
+  | "/playground"
+  | "/roadmap"
+  | "/404"
+  | "/500";
+
+export type TypeGenerateSupportedLocales = Array<{
+  name: TypeLocale;
+  route: string;
+}>;
+
 export type TypeSiteTexts = {
   page: {
     config: Record<string, any>;
@@ -12,10 +37,17 @@ export type TypeSiteTexts = {
   };
 };
 
-export type TypeLocale = "es" | "en";
+export type TypeGetSiteTextsParam = {
+  page?: TypePagesRoutes;
+  layout?: boolean;
+  locale?: TypeLocale;
+};
 
-// TODO: ES or EN is required
-export type TypeBlogPost = {
+export type TypeGetAssetsParam = Array<"header" | "blog_post" | "footer" | "vr">;
+
+// --- Blog ---
+
+interface TypeBlogPostBase {
   is_legacy: boolean;
   locales: TypeLocale[];
   default_locale: TypeLocale;
@@ -24,33 +56,30 @@ export type TypeBlogPost = {
   published_at: string;
   updated_at: string;
   slug: string;
-  es?: {
-    title: string;
-    description: string;
-  };
-  en?: {
-    title: string;
-    description: string;
-  };
   assets?: Record<string, string>;
-};
+}
 
-export type TypeGetSiteTextsParam = {
-  page?: string; // TODO: Set posible pages
-  layout?: boolean;
-  locale?: TypeLocale;
-};
+interface TypeBlogPostBaseWithES extends TypeBlogPostBase {
+  es: {
+    title: string;
+    description: string;
+  };
+}
+
+interface TypeBlogPostBaseWithEN extends TypeBlogPostBase {
+  en: {
+    title: string;
+    description: string;
+  };
+}
+
+export type TypeBlogPost = TypeBlogPostBaseWithES | TypeBlogPostBaseWithEN;
+
+// --- Components props ---
 
 export type TypeBreadcumbProps = {
   items: Array<{
     text: string;
-    url: string;
+    url?: TypePagesRoutes;
   }>;
 };
-
-export type TypeGenerateSupportedLocales = Array<{
-  name: TypeLocale;
-  route: string;
-}>;
-
-export type TypeGetAssetsParam = Array<"header" | "blog_post" | "footer" | "vr">;

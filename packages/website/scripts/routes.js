@@ -14,20 +14,7 @@ const ROUTES = {
   ERROR_500: "/500",
 
   BLOG: "/blog",
-  BLOG_POSTS: {
-    ...Object.keys(posts).reduce((acum, curr) => {
-      acum[curr] = `/blog/${curr}`;
-      return acum;
-    }, {}),
-  },
-
   PLAYGROUND: "/playground",
-  PLAYGROUND_PROJECTS: {
-    ...["chords", "strings", "stupid", "virtual-reality"].reduce((acum, curr) => {
-      acum[curr] = `/playground/${curr}`;
-      return acum;
-    }, {}),
-  },
 
   __DYNAMIC_PAGES: DYNAMIC_PAGES,
 };
