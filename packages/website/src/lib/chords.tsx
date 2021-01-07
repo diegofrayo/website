@@ -2,6 +2,7 @@ import React, { Fragment, useRef, useState } from "react";
 import classnames from "classnames";
 
 import { Emoji, Separator } from "~/components";
+import { copyToClipboard } from "~/utils/browser";
 import { createArray } from "~/utils/misc";
 
 import twcss from "./twcss";
@@ -31,7 +32,13 @@ function Chords({ name, chords, stringsToSkip }: TypeChordsProps): any {
   const chordRef: { current: any } = useRef(undefined);
   const [showInput, setShowInput] = useState(false);
 
-  const { firstFret, lastFret, chordsGroupedByFret, error } = groupChordsByFret(chords);
+  const {
+    error,
+    chordsGroupedByFret,
+    chordsToString,
+    firstFret,
+    lastFret,
+  } = groupChordsByFret(chords);
 
   async function handleDownloadAsImage(): Promise<void> {
     const domtoimage = await import("dom-to-image");
@@ -83,28 +90,40 @@ function Chords({ name, chords, stringsToSkip }: TypeChordsProps): any {
         </section>
       </section>
 
-      <section>
+      <section className="tw-pt-2">
         <button
-          className="tw-text-sm tw-font-bold tw-mt-2 tw-p-1 tw-transition-opacity hover:tw-opacity-75"
+          className="tw-text-sm tw-font-bold tw-p-1 tw-transition-opacity hover:tw-opacity-75"
           onClick={handleDownloadAsImage}
         >
           <Emoji className="tw-mr-1">⬇️</Emoji>
           <span>download as image</span>
         </button>
         <Separator size={1} dir="v" />
+        {chordsToString && (
+          <Fragment>
+            <button
+              className="tw-text-sm tw-font-bold tw-p-1 tw-transition-opacity hover:tw-opacity-75"
+              onClick={handleShowInput}
+            >
+              <span
+                className={classnames(
+                  "tw-inline-block tw-transition-all tw-transform tw-mx-1",
+                  showInput && "tw-rotate-90",
+                )}
+              >
+                ‣
+              </span>
+              <span>{showInput ? "hide" : "show"} input</span>
+            </button>
+            <Separator size={1} dir="v" />
+          </Fragment>
+        )}
         <button
-          className="tw-text-sm tw-font-bold tw-mt-2 tw-p-1 tw-transition-opacity hover:tw-opacity-75"
-          onClick={handleShowInput}
+          className="tw-text-sm tw-font-bold tw-p-1 tw-transition-opacity hover:tw-opacity-75"
+          data-clipboard-text={chordsToString || "Empty chord"}
+          onClick={copyToClipboard}
         >
-          <span
-            className={classnames(
-              "tw-inline-block tw-transition-all tw-transform tw-mr-1",
-              showInput && "tw-rotate-90",
-            )}
-          >
-            ‣
-          </span>
-          <span>{showInput ? "hide" : "show"} input</span>
+          <Emoji>📋</Emoji> copy input to clipboard
         </button>
       </section>
 
@@ -112,7 +131,7 @@ function Chords({ name, chords, stringsToSkip }: TypeChordsProps): any {
         <section className="tw-text-sm tw-mt-4">
           <strong className="tw-block tw-mb-1">input:</strong>
           <pre className="tw-whitespace-pre-line tw-text-sm tw-break-all">
-            {chordsToString(chords)}
+            {chordsToString}
           </pre>
         </section>
       )}
@@ -310,6 +329,7 @@ function groupChordsByFret(chordsParam: TypeGroupChordsByFretParams) {
 
     return {
       error: undefined,
+      chordsToString: chordsToString(chordsParam),
       firstFret: frets.length > 0 ? frets[0] : 0,
       lastFret: frets.length > 0 ? frets[frets.length - 1] : 0,
       chordsGroupedByFret,
@@ -317,7 +337,13 @@ function groupChordsByFret(chordsParam: TypeGroupChordsByFretParams) {
   } catch (e) {
     console.error(e);
 
-    return { firstFret: 0, lastFret: 0, chordsGroupedByFret: {}, error: e };
+    return {
+      chordsToString: "",
+      firstFret: 0,
+      lastFret: 0,
+      chordsGroupedByFret: {},
+      error: e,
+    };
   }
 }
 
@@ -354,11 +380,11 @@ function chordsToString(chords: TypeChordsProps["chords"]): string {
 
   return chords
     .map(chord => {
-      return `"${
+      return `${
         (chord as TypeChordWithString).string
           ? (chord as TypeChordWithString).string
           : `${(chord as TypeChordWithBarre).barre.until}x`
-      },${chord.fret}${chord.finger ? `,${chord.finger}` : ""}"`;
+      },${chord.fret}${chord.finger ? `,${chord.finger}` : ""}`;
     })
     .join("|");
 }

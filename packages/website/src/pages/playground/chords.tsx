@@ -36,9 +36,10 @@ function ChordsPage(): any {
           <label htmlFor="input-name">
             <strong className="tw-cursor-pointer">Name</strong>
             <input
+              id="input-name"
+              placeholder="Example: A"
               className="tw-border tw-border-b-4 twc-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
               value={inputs.name}
-              id="input-name"
               onChange={e => {
                 setInputs({ ...inputs, name: e.currentTarget.value });
               }}
@@ -50,20 +51,20 @@ function ChordsPage(): any {
             <strong className="tw-cursor-pointer">Chords</strong>
             <input
               id="input-chords"
+              placeholder="4,2,1|3,2,2|2,2,3"
               className="tw-border tw-border-b-4 twc-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
               value={inputs.chords}
               onChange={e => {
                 setInputs({ ...inputs, chords: e.currentTarget.value });
               }}
             />
-            <code className="tw-block">
-              Format: STRING,FRET,FINGER?|STRING,FRET,FINGER?
-            </code>
-            <code className="tw-block">
-              Examples: (D) &ldquo;3,2,1|1,2,2|2,3,3&ldquo; | (B)
-              &ldquo;5x,2|4,4|3,4|2,4&ldquo;
-            </code>
           </label>
+          <code className="tw-block">
+            Format: STRING,FRET,FINGER?|STRING,FRET,FINGER?
+          </code>
+          <code className="tw-block">
+            Examples: (D) 3,2,1|1,2,2|2,3,3 / (B) 5x,2|4,4|3,4|2,4
+          </code>
           <Separator size={6} />
 
           <section className="tw-border tw-p-2">
