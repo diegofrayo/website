@@ -34,7 +34,7 @@ function ChordsPage(): any {
           <h2 className="tw-text-2xl tw-mb-4">Create your chord</h2>
 
           <label htmlFor="input-name">
-            <strong className="tw-cursor-pointer">Chord name</strong>
+            <strong className="tw-cursor-pointer">Name</strong>
             <input
               className="tw-border tw-border-b-4 twc-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
               value={inputs.name}
@@ -60,8 +60,8 @@ function ChordsPage(): any {
               Format: STRING,FRET,FINGER?|STRING,FRET,FINGER?
             </code>
             <code className="tw-block">
-              Examples: &ldquo;3,2,1|1,2,2|2,3,3&ldquo; |
-              &ldquo;5x,2|4,4,2|3,4,3|2,4,4&ldquo;
+              Examples: (D) &ldquo;3,2,1|1,2,2|2,3,3&ldquo; | (B)
+              &ldquo;5x,2|4,4|3,4|2,4&ldquo;
             </code>
           </label>
           <Separator size={6} />
@@ -103,9 +103,9 @@ function ChordsPage(): any {
             name="SI Mayor (B)"
             chords={[
               { finger: 1, fret: 2, barre: { until: 5 } },
-              { finger: 2, fret: 4, string: 2 },
-              { finger: 3, fret: 4, string: 3 },
               { finger: 4, fret: 4, string: 4 },
+              { finger: 3, fret: 4, string: 3 },
+              { finger: 2, fret: 4, string: 2 },
             ]}
           />
         </section>

@@ -38,7 +38,7 @@ function Chords({ name, chords, stringsToSkip }: TypeChordsProps): any {
 
     domtoimage.toPng(chordRef.current, { quality: 1 }).then(dataUrl => {
       const link = document.createElement("a");
-      link.download = `${name}.jpeg`;
+      link.download = `${name}.png`;
       link.href = dataUrl;
       link.click();
     });
@@ -250,29 +250,22 @@ function groupChordsByFret(chordsParam: TypeGroupChordsByFretParams) {
 
               if (!item || more.length > 0) throw new Error("Syntax error");
 
-              if (string.includes("x")) {
-                const chord: TypeChordWithBarre = {
-                  finger: finger === undefined ? undefined : Number(finger),
-                  fret: Number(fret),
-                  barre: {
-                    until: string.length === 2 ? Number(string[0]) : 6,
-                  },
-                };
-
-                checkFretValidity(chord.fret);
-
-                return chord;
-              }
-
-              const chord: TypeChordWithString = {
+              const chord: Partial<TypeChord> = {
                 finger: finger === undefined ? undefined : Number(finger),
                 fret: Number(fret),
-                string: Number(string),
               };
 
-              checkFretValidity(chord.fret);
+              checkFretValidity(chord.fret || 0);
 
-              return chord;
+              if (string.includes("x")) {
+                (chord as TypeChordWithBarre).barre = {
+                  until: string.length === 2 ? Number(string[0]) : 6,
+                };
+              } else {
+                (chord as TypeChordWithString).string = Number(string);
+              }
+
+              return chord as TypeChord;
             },
           )
         : (chordsParam as TypeChord[]);
@@ -350,12 +343,24 @@ function checkStringValidity(string: number): void {
 
 function checkBarreValidity(until: number): void {
   if (Number.isNaN(until) || until < 3 || until > 6) {
-    throw new Error("Invalid until");
+    throw new Error("Invalid barre chord");
   }
 }
 
 function chordsToString(chords: TypeChordsProps["chords"]): string {
-  return JSON.stringify(chords);
+  if (typeof chords === "string") {
+    return chords;
+  }
+
+  return chords
+    .map(chord => {
+      return `"${
+        (chord as TypeChordWithString).string
+          ? (chord as TypeChordWithString).string
+          : `${(chord as TypeChordWithBarre).barre.until}x`
+      },${chord.fret}${chord.finger ? `,${chord.finger}` : ""}"`;
+    })
+    .join("|");
 }
 
 export default Chords;
