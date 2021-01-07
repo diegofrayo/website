@@ -36,7 +36,7 @@ function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
       }}
     >
       <MainLayout
-        locales={generateSupportedLocales(post.locales, Routes.BLOG[post.slug])}
+        locales={generateSupportedLocales(post.locales, `${Routes.BLOG}/${[post.slug]}`)}
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
