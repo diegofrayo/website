@@ -2,11 +2,12 @@ import "~/styles/tailwind.css";
 import "~/styles/index.css";
 import "~/styles/tailwind-utils.css";
 
-import * as React from "react";
-import App from "next/app";
+import React, { useState } from "react";
+import type { AppProps } from "next/app";
 import Router from "next/router";
 import { ThemeProvider } from "next-themes";
 
+import { useDidMount } from "~/hooks";
 import { AssetsProvider } from "~/hooks/useAssets";
 import { initAnalytics } from "~/utils/analytics";
 import { setScrollPosition, detectEmojisSupport } from "~/utils/browser";
@@ -14,10 +15,10 @@ import { extractLocaleFromUrl, setCurrentLocale } from "~/utils/internationaliza
 
 import ErrorPage from "./_error";
 
-class CustomApp extends App {
-  state = { error: undefined };
+function App({ Component, pageProps }: AppProps) {
+  const [error, setError] = useState(undefined);
 
-  componentDidMount(): void {
+  useDidMount(() => {
     initAnalytics();
     detectEmojisSupport();
     setCurrentLocale(extractLocaleFromUrl());
@@ -27,10 +28,29 @@ class CustomApp extends App {
     });
 
     Router.events.on("routeChangeStart", () => {
-      this.setState({ error: undefined });
+      setError(undefined);
     });
-  }
+  });
 
+  return (
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="light"
+      enableSystem={false}
+      value={{ light: "tw-light", dark: "tw-dark" }}
+    >
+      {error ? (
+        <ErrorPage />
+      ) : (
+        <AssetsProvider>
+          <Component {...pageProps} />
+        </AssetsProvider>
+      )}
+    </ThemeProvider>
+  );
+}
+
+/*
   componentDidCatch(error: Error, info: React.ErrorInfo): void {
     console.group("componentDidCatch");
     console.error(error);
@@ -39,28 +59,6 @@ class CustomApp extends App {
 
     this.setState({ error });
   }
+*/
 
-  render(): any {
-    const { Component, pageProps } = this.props;
-    const { error } = this.state;
-
-    return (
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="light"
-        enableSystem={false}
-        value={{ light: "tw-light", dark: "tw-dark" }}
-      >
-        {error ? (
-          <ErrorPage />
-        ) : (
-          <AssetsProvider>
-            <Component {...pageProps} />
-          </AssetsProvider>
-        )}
-      </ThemeProvider>
-    );
-  }
-}
-
-export default CustomApp;
+export default App;

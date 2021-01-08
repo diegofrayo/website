@@ -34,7 +34,7 @@ function ChordsPage(): any {
           <h2 className="tw-text-2xl tw-mb-4">Create your chord</h2>
 
           <label htmlFor="input-name">
-            <strong className="tw-cursor-pointer">Name</strong>
+            <strong className="tw-block tw-cursor-pointer">Name</strong>
             <input
               id="input-name"
               placeholder="Example: A"
@@ -48,7 +48,7 @@ function ChordsPage(): any {
           <Separator size={4} />
 
           <label htmlFor="input-chords">
-            <strong className="tw-cursor-pointer">Chords</strong>
+            <strong className="tw-block tw-cursor-pointer">Chords</strong>
             <input
               id="input-chords"
               placeholder="4,2,1|3,2,2|2,2,3"

@@ -30,6 +30,8 @@ export function Link({
   external = true,
   ...rest
 }: TypeLinkProps): any {
+  if (!href) return null;
+
   if (Tag === "a") {
     return (
       <LinkElement

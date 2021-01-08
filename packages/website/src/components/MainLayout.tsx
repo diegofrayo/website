@@ -27,7 +27,7 @@ import {
   setScrollPosition,
 } from "~/utils/browser";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
-import { createQueryFromObject } from "~/utils/misc";
+import { createQueryFromObject, sortBy } from "~/utils/misc";
 
 import { Link, Separator, Emoji, Breadcumb, Image } from "./";
 
@@ -207,7 +207,7 @@ type TypeLocalesSelectorProps = {
 function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): any {
   return (
     <section className="tw-border tw-py-1 tw-px-2 tw-text-sm twc-border-color-primary dark:twc-border-color-primary">
-      {locales.map((locale, index) => {
+      {locales.sort(sortBy("name", "asc")).map((locale, index) => {
         return (
           <Fragment key={`LocaleToggle-${locale.name}`}>
             {currentLocale === locale.name ? (

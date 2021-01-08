@@ -102,12 +102,12 @@ function Chords({ name, chords, stringsToSkip }: TypeChordsProps): any {
         {chordsToString && (
           <Fragment>
             <button
-              className="tw-text-sm tw-font-bold tw-p-1 tw-transition-opacity hover:tw-opacity-75"
+              className="tw-text-sm tw-font-bold tw-py-1 tw-px-2 tw-transition-opacity hover:tw-opacity-75"
               onClick={handleShowInput}
             >
               <span
                 className={classnames(
-                  "tw-inline-block tw-transition-all tw-transform tw-mx-1",
+                  "tw-inline-block tw-transition-all tw-transform tw-mr-1",
                   showInput && "tw-rotate-90",
                 )}
               >

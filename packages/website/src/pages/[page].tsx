@@ -2,6 +2,7 @@ import * as React from "react";
 import fs from "fs";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
+import { GetStaticProps, GetStaticPaths } from "next";
 
 import { Page, MainLayout, MDXContent } from "~/components";
 import Routes from "~/data/routes.json";
@@ -63,37 +64,32 @@ function SitePage({ content, page, SiteTexts }: TypeSitePageProps): any {
   );
 }
 
-// TODO: Next types
-export async function getStaticPaths({ locales }): Promise<Record<string, any>> {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   return {
     paths: Routes.__DYNAMIC_PAGES.reduce((result, page: string) => {
-      return result.concat(
-        locales.map((locale: TypeLocale) => {
+      return (result as any[]).concat(
+        locales?.map(locale => {
           return { params: { page }, locale };
         }),
       );
     }, []),
     fallback: false,
   };
-}
+};
 
-// TODO: Next types
-export async function getStaticProps({
-  params,
-  locale,
-}: Record<string, any>): Promise<Record<string, any>> {
+export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const SiteTexts: TypeSiteTexts = getSiteTexts({
-    page: Routes[toUpperCaseObjectProperty(params.page)],
+    page: Routes[toUpperCaseObjectProperty(params?.page as string)],
     layout: true,
-    locale,
+    locale: locale as TypeLocale,
   });
 
   const file = fs.readFileSync(
     `${process.cwd()}/src/data/pages/${getItemLocale(
       SiteTexts.page.config.locales,
       SiteTexts.page.config.default_locale,
-      locale,
-    )}/${params.page}.mdx`,
+      locale as TypeLocale,
+    )}/${params?.page}.mdx`,
     "utf8",
   );
 
@@ -102,7 +98,7 @@ export async function getStaticProps({
     scope: MDXScope,
   });
 
-  return { props: { content, page: params.page, SiteTexts } };
-}
+  return { props: { content, page: params?.page, SiteTexts } };
+};
 
 export default SitePage;
