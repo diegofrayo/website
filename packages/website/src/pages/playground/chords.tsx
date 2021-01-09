@@ -40,6 +40,7 @@ function ChordsPage(): any {
               placeholder="Example: A"
               className="tw-border tw-border-b-4 twc-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
               value={inputs.name}
+              maxLength={15}
               onChange={e => {
                 setInputs({ ...inputs, name: e.currentTarget.value });
               }}
@@ -67,7 +68,7 @@ function ChordsPage(): any {
           </code>
           <Separator size={6} />
 
-          <section className="tw-border tw-p-2">
+          <section className="tw-border tw-p-4">
             <strong>output</strong>
             <Chords name={inputs.name} chords={inputs.chords} />
           </section>

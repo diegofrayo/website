@@ -66,24 +66,28 @@ function Chords({ name, chords, stringsToSkip }: TypeChordsProps): any {
   return (
     <article className="tw-max-w-full tw-text-center">
       <section ref={chordRef}>
-        <h1 className="tw-text-center tw-font-bold tw-mb-1">{name}</h1>
-
-        <section className="tw-inline-flex tw-flex-no-wrap tw-overflow-x-auto tw-max-w-full">
+        <section className="tw-inline-flex tw-flex-no-wrap tw-overflow-x-auto tw-max-w-full tw-pt-8">
           <Fret variant="FRET_STRINGS_NAMES" />
-          <Fret variant="FRET_EMPTY" fret={lastFret + 1} />
-          {Object.entries(chordsGroupedByFret)
-            .reverse()
-            .map(([fret, chords]: [string, TypeChord[]]) => {
-              return (
-                <Fret
-                  key={`Fret-${fret}`}
-                  variant="FRET_DEFAULT"
-                  fret={Number(fret)}
-                  chords={chords}
-                />
-              );
-            })}
-          {firstFret - 1 > 0 && <Fret variant="FRET_EMPTY" fret={firstFret - 1} />}
+          <section className="tw-relative tw-inline-flex tw-flex-no-wrap">
+            <h1 className="tw-truncate tw-text-xs tw-absolute tw-text-center tw-font-bold tw-w-full tw--top-6">
+              {name}
+            </h1>
+
+            <Fret variant="FRET_EMPTY" fret={lastFret + 1} />
+            {Object.entries(chordsGroupedByFret)
+              .reverse()
+              .map(([fret, chords]: [string, TypeChord[]]) => {
+                return (
+                  <Fret
+                    key={`Fret-${fret}`}
+                    variant="FRET_DEFAULT"
+                    fret={Number(fret)}
+                    chords={chords}
+                  />
+                );
+              })}
+            {firstFret - 1 > 0 && <Fret variant="FRET_EMPTY" fret={firstFret - 1} />}
+          </section>
           {stringsToSkip && (
             <Fret variant="FRET_SKIP_STRINGS" stringsToSkip={stringsToSkip} />
           )}

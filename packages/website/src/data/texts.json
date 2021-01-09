@@ -44,14 +44,14 @@
       },
       "en": {
         "title": "👋 Welcome",
-        "meta_description": "Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.",
+        "meta_description": "Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.",
         "menu_item_about_me": "About me",
         "menu_item_resume": "Experience",
         "menu_item_playground": "Playground"
       },
       "es": {
         "title": "👋 Bienvenido",
-        "meta_description": "Hola, Soy Diego, Desarrollador de Software. Tengo poco más de 5 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.",
+        "meta_description": "Hola, Soy Diego, Desarrollador de Software. Tengo poco más de 5 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.",
         "menu_item_about_me": "Acerca de mí",
         "menu_item_resume": "Experiencia",
         "menu_item_playground": "Playground"

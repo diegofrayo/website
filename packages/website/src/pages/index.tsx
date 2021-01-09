@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import NextLink from "next/link";
 
 import { Page, MainLayout, Emoji, Link } from "~/components";
@@ -74,12 +74,12 @@ function MainMenu({ SiteTexts }) {
   );
 
   return (
-    <nav className="tw-mt-8 tw-flex tw-flex-wrap tw-justify-center">
+    <section className="tw-mt-8 tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
       {ITEMS.map((item, index) => {
         return (
           <section
             key={`MainMenuItem-${index}`}
-            className="tw-relative twc-border-color-primary tw-border tw-inline-block tw-mb-4 tw-mx-2 tw-cursor-pointer tw-rounded-md"
+            className="tw-relative twc-border-color-primary tw-border-l tw-border-b tw-inline-block tw-mb-8 sm:tw-mb-6 tw-cursor-pointer tw-rounded-md"
           >
             <Link
               is={NextLink}
@@ -97,12 +97,17 @@ function MainMenu({ SiteTexts }) {
             <style jsx>{`
               section {
                 height: 100px;
-                width: 150px;
+                max-width: 100%;
+                width: 300px;
+
+                @screen sm {
+                  width: 47%;
+                }
               }
             `}</style>
           </section>
         );
       })}
-    </nav>
+    </section>
   );
 }

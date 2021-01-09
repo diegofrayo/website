@@ -99,7 +99,7 @@ export function Separator({ size, className, dir = "h" }: TypeSeparatorProps): a
   return (
     <hr
       className={classnames(
-        "tw-border-0",
+        "tw-border-0 tw-flex-shrink-0",
         Number.isInteger(size) && `tw-${isHorizontalDir ? "my" : "mx"}-${size}`,
         !isHorizontalDir && "tw-inline-block tw-h-1",
         className,
