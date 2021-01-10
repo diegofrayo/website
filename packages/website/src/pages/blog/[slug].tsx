@@ -85,7 +85,7 @@ export async function getStaticProps({
   locale,
 }: Record<string, any>): Promise<Record<string, any>> {
   const post: TypeBlogPost = BlogPosts[params.slug];
-  const note = fs.readFileSync(
+  const file = fs.readFileSync(
     `${process.cwd()}/src/data/blog/posts/${getItemLocale(
       post.locales,
       post.default_locale,
@@ -93,7 +93,7 @@ export async function getStaticProps({
     )}/${post.created_at}-${post.slug}.mdx`,
     "utf8",
   );
-  const content = await renderToString(note, {
+  const content = await renderToString(file, {
     components: MDXComponentsConfig,
     scope: { DATA: { ...MDXScope.DATA, blog_post: post } },
   });

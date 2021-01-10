@@ -1,12 +1,13 @@
 {
   "HOME": "/",
-  "BLOG": "/blog",
   "ABOUT_ME": "/about-me",
   "RESUME": "/resume",
-  "SNIPPETS": "/snippets",
-  "PLAYGROUND": "/playground",
   "ROADMAP": "/roadmap",
+  "SNIPPETS": "/snippets",
   "ERROR_404": "/404",
   "ERROR_500": "/500",
+  "BLOG": "/blog",
+  "PLAYGROUND": "/playground",
+  "MUSIC": "/music",
   "__DYNAMIC_PAGES": ["about-me", "resume", "roadmap", "snippets"]
 }

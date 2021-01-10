@@ -75,6 +75,16 @@ interface TypeBlogPostBaseWithEN extends TypeBlogPostBase {
 
 export type TypeBlogPost = TypeBlogPostBaseWithES | TypeBlogPostBaseWithEN;
 
+// --- Music ---
+
+export type TypeSong = {
+  id: string;
+  title: string;
+  artist: string;
+  album: string;
+  created_at: string;
+};
+
 // --- Components props ---
 
 export type TypeBreadcumbProps = {

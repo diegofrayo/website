@@ -1,8 +1,6 @@
 require("dotenv").config({ path: ".env" });
 const fs = require("fs");
 
-const { posts } = require("../src/data/blog/posts.json");
-
 const DYNAMIC_PAGES = ["about-me", "resume", "roadmap", "snippets"];
 const ROUTES = {
   HOME: "/",
@@ -15,6 +13,7 @@ const ROUTES = {
 
   BLOG: "/blog",
   PLAYGROUND: "/playground",
+  MUSIC: "/music",
 
   __DYNAMIC_PAGES: DYNAMIC_PAGES,
 };

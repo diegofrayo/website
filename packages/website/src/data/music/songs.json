@@ -1,0 +1,26 @@
+{
+  "songs": [
+    {
+      "id": "bajan",
+      "title": "Bajan",
+      "artist": "Pescado Rabioso",
+      "album": "Artaud",
+      "created_at": "10/02/2021"
+    },
+    {
+      "id": "vasos-vacios",
+      "title": "Vasos vacíos",
+      "artist": "Los Fabulosos Cadillacs",
+      "album": "El ritmo mundial",
+      "created_at": "10/02/2021"
+    }
+  ],
+  "chords": {
+    "E": "5,2,3|4,2,2|3,1,1",
+    "F#m": "()",
+    "C#m": "()",
+    "B": "5x,2,1|4,4,4|3,4,3|2,4,2",
+    "G#m": "()",
+    "Am7": "()"
+  }
+}

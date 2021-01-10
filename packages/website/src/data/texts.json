@@ -8,12 +8,13 @@
       },
       "breadcumb": {
         "home": "Home",
+        "blog": "Blog",
         "about_me": "About me",
         "resume": "Work experience",
+        "snippets": "Snippets",
         "playground": "Playground",
-        "blog": "Blog",
-        "roadmap": "Roadmap",
-        "snippets": "Snippets"
+        "music": "Music",
+        "roadmap": "Roadmap"
       }
     },
     "es": {
@@ -22,12 +23,13 @@
       },
       "breadcumb": {
         "home": "Inicio",
+        "blog": "Blog",
         "about_me": "Acerca de mí",
         "resume": "Experiencia laboral",
+        "snippets": "Snippets",
         "playground": "Playground",
-        "blog": "Blog",
-        "roadmap": "Roadmap",
-        "snippets": "Snippets"
+        "music": "Música",
+        "roadmap": "Roadmap"
       }
     }
   },
@@ -47,14 +49,16 @@
         "meta_description": "Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.",
         "menu_item_about_me": "About me",
         "menu_item_resume": "Experience",
-        "menu_item_playground": "Playground"
+        "menu_item_playground": "Playground",
+        "menu_item_music": "Music"
       },
       "es": {
         "title": "👋 Bienvenido",
         "meta_description": "Hola, Soy Diego, Desarrollador de Software. Tengo poco más de 5 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.",
         "menu_item_about_me": "Acerca de mí",
         "menu_item_resume": "Experiencia",
-        "menu_item_playground": "Playground"
+        "menu_item_playground": "Playground",
+        "menu_item_music": "Música"
       }
     },
     "/blog": {
@@ -202,6 +206,19 @@
       },
       "en": {
         "title": "🔮 playground"
+      }
+    },
+    "/music": {
+      "config": {
+        "locales": ["es"],
+        "default_locale": "es",
+        "meta_no_robots": true
+      },
+      "es": {
+        "title": "🎸 Música",
+        "description": "Aquí están las letras de las canciones que me gusta tocar en guitarra con sus respectivos acordes.",
+        "artist": "Artista",
+        "album": "Album"
       }
     },
     "/roadmap": {

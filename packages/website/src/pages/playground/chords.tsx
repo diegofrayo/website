@@ -79,7 +79,7 @@ function ChordsPage(): any {
           <h2 className="tw-text-2xl tw-mb-4">Examples</h2>
 
           <Chords
-            name="MI Mayor (M)"
+            name="MI Mayor (E)"
             chords={[
               { finger: 3, fret: 2, string: 5 },
               { finger: 2, fret: 2, string: 4 },

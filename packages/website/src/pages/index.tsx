@@ -61,6 +61,11 @@ function MainMenu({ SiteTexts }) {
       label: SiteTexts.page.current_locale.menu_item_playground,
       url: Routes.PLAYGROUND,
     },
+    {
+      emoji: "🎸",
+      label: SiteTexts.page.current_locale.menu_item_music,
+      url: Routes.MUSIC,
+    },
   ].concat(
     isUserLoggedIn()
       ? [
