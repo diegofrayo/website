@@ -55,16 +55,28 @@ export function isUserLoggedIn(): boolean {
   return isLoggedIn;
 }
 
-export function sortBy(param: string, order?: "asc" | "desc") {
+export function sortBy(param?: string, order?: "asc" | "desc") {
   return function sortByReturn(a, b): number {
     const greater = order === "desc" ? -1 : 1;
     const smaller = order === "desc" ? 1 : -1;
 
-    if (a[param] > b[param]) {
+    if (param) {
+      if (a[param] > b[param]) {
+        return greater;
+      }
+
+      if (a[param] < b[param]) {
+        return smaller;
+      }
+
+      return 0;
+    }
+
+    if (a > b) {
       return greater;
     }
 
-    if (a[param] < b[param]) {
+    if (a < b) {
       return smaller;
     }
 
@@ -80,4 +92,8 @@ export function safeCastNumber(string: string, defaultNumber?: number) {
   }
 
   return number;
+}
+
+export function escapeRegExp(text: string): string {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }

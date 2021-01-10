@@ -26,9 +26,15 @@ type TypeChordsProps = {
   name: string;
   chords: Array<TypeChord> | string; // "STRING,FRET,FINGER" | "STRING,FRET"
   stringsToSkip?: Array<number> | string; // "Number,Number"
+  showOptions?: boolean;
 };
 
-function Chords({ name, chords, stringsToSkip }: TypeChordsProps): any {
+function Chords({
+  name,
+  chords,
+  stringsToSkip,
+  showOptions = true,
+}: TypeChordsProps): any {
   const chordRef: { current: any } = useRef(undefined);
   const [showInput, setShowInput] = useState(false);
 
@@ -94,54 +100,59 @@ function Chords({ name, chords, stringsToSkip }: TypeChordsProps): any {
         </section>
       </section>
 
-      <section className="tw-pt-2">
-        <button
-          className="tw-text-sm tw-font-bold tw-p-1 tw-transition-opacity hover:tw-opacity-75"
-          onClick={handleDownloadAsImage}
-        >
-          <Emoji className="tw-mr-1">⬇️</Emoji>
-          <span>download as image</span>
-        </button>
-        <Separator size={1} dir="v" />
-        {chordsToString && (
-          <Fragment>
+      {showOptions && (
+        <Fragment>
+          <section className="tw-pt-2">
             <button
-              className="tw-text-sm tw-font-bold tw-py-1 tw-px-2 tw-transition-opacity hover:tw-opacity-75"
-              onClick={handleShowInput}
+              className="tw-text-sm tw-font-bold tw-p-1 tw-transition-opacity hover:tw-opacity-75"
+              onClick={handleDownloadAsImage}
             >
-              <span
-                className={classnames(
-                  "tw-inline-block tw-transition-all tw-transform tw-mr-1",
-                  showInput && "tw-rotate-90",
-                )}
-              >
-                ‣
-              </span>
-              <span>{showInput ? "hide" : "show"} input</span>
+              <Emoji className="tw-mr-1">⬇️</Emoji>
+              <span>download as image</span>
             </button>
             <Separator size={1} dir="v" />
-          </Fragment>
-        )}
-        <button
-          className="tw-text-sm tw-font-bold tw-p-1 tw-transition-opacity hover:tw-opacity-75"
-          data-clipboard-text={chordsToString || "Empty chord"}
-          onClick={copyToClipboard}
-        >
-          <Emoji>📋</Emoji> copy input to clipboard
-        </button>
-      </section>
-
-      {showInput && (
-        <section className="tw-text-sm tw-mt-4">
-          <strong className="tw-block tw-mb-1">input:</strong>
-          <pre className="tw-whitespace-pre-line tw-text-sm tw-break-all">
-            {chordsToString}
-          </pre>
-        </section>
+            {chordsToString && (
+              <Fragment>
+                <button
+                  className="tw-text-sm tw-font-bold tw-py-1 tw-px-2 tw-transition-opacity hover:tw-opacity-75"
+                  onClick={handleShowInput}
+                >
+                  <span
+                    className={classnames(
+                      "tw-inline-block tw-transition-all tw-transform tw-mr-1",
+                      showInput && "tw-rotate-90",
+                    )}
+                  >
+                    ‣
+                  </span>
+                  <span>{showInput ? "hide" : "show"} input</span>
+                </button>
+                <Separator size={1} dir="v" />
+              </Fragment>
+            )}
+            <button
+              className="tw-text-sm tw-font-bold tw-p-1 tw-transition-opacity hover:tw-opacity-75"
+              data-clipboard-text={chordsToString || "Empty chord"}
+              onClick={copyToClipboard}
+            >
+              <Emoji>📋</Emoji> copy input to clipboard
+            </button>
+          </section>
+          {showInput && (
+            <section className="tw-text-sm tw-mt-4">
+              <strong className="tw-block tw-mb-1">input:</strong>
+              <pre className="tw-whitespace-pre-line tw-text-sm tw-break-all">
+                {chordsToString}
+              </pre>
+            </section>
+          )}
+        </Fragment>
       )}
     </article>
   );
 }
+
+export default Chords;
 
 // --- Components ---
 
@@ -392,5 +403,3 @@ function chordsToString(chords: TypeChordsProps["chords"]): string {
     })
     .join("|");
 }
-
-export default Chords;

@@ -8,6 +8,7 @@ export { default as Breadcumb } from "./Breadcumb";
 export { default as ErrorPage } from "./ErrorPage";
 export { default as MDXContent } from "./MDXContent";
 export { default as MainLayout } from "./MainLayout";
+export { default as Modal } from "./Modal";
 export { default as Page } from "./Page";
 
 type TypeLinkProps = {

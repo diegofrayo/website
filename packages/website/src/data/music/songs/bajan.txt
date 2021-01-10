@@ -1,34 +1,52 @@
 E                   F#m
     Tengo tiempo                para saber
 
-C#m              D#dim   B
+C#m              ?1         B
     si  lo  que  sueño  concluye  en  algo
 
 E                   F#m
     No te apures                ya más loco
 
-C#m                D#dim             B
+C#m             ?1             B
     porque es entonces cuando las horas
 
 
-C#m        G#m    B              C#m
-bajan, el  día  es  vidrio  sin  sol
+C#m        G#m      B            C#m
+Bajan, el  día  es  vidrio  sin  sol
 
-          G#m         B      Cdim    C#m
-Bajan, la noche te ocul  -  ta   la   voz
+          G#m       B            C#m
+Bajan, la noche te oculta   la   voz
 
-         C             Am7  G#7     F#m
+
+       C    Am7    G#m    F#m
 Y además    vos    querés sol
 
-      C#m        D#(+5)                 C#m - C#m/D# - C#m/E - Amaj7
+   C#m        G#                 C#m - G#m - E - A
 Despacio también podés hallar la luna
 
 
-Viejo roble del camino, tus hojas siempre se agitan algo
-Nena, nena, que bien te ves
-Cuando en tus ojos no importa si las horas
-bajan, el día se sienta a morir
+E                   F#m
+    Viejo roble                del camino,
+
+C#m           ?1          B
+    tus hojas siempre se agitan algo
+
+E                   F#m
+    Nena, nena,                que bien te ves
+
+C#m               ?1         B
+    Cuando en tus ojos no importa si las horas
+
+
+C#m       G#m      B        C#m
+Bajan, el día se sienta a morir
+
+C#m        G#m      B        C#m
 Bajan, la noche se nubla sin fin
 
-Y además vos sos el sol
+
+       C    Am7    G#m    F#m
+Y además    vos    sos el sol
+
+   C#m        G#                C#m - G#m - E - A
 Despacio también podés ser la luna.

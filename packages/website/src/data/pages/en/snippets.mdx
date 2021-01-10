@@ -153,8 +153,11 @@ element.select();`}
 <Code
   language="javascript"
   fileName="Regex examples"
-  code={`const replacement = "my";
-"my string my string".replace(new RegExp(replacement, "g"), "your");
+  code={`function escapeRegExp(text: string): string {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
+const replacement = "my";
+"my string my string".replace(new RegExp(escapeRegExp(replacement), "g"), "your");
 // output: "your string your string"
 // -----
 // /^(sm:|md:|lg:|xl:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/

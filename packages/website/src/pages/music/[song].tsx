@@ -1,11 +1,12 @@
-import * as React from "react";
+import React, { useState } from "react";
 import fs from "fs";
 
-import { Page, MainLayout } from "~/components";
+import { Page, MainLayout, Modal, Separator } from "~/components";
 import Routes from "~/data/routes.json";
 import { useDidMount, useInternationalization } from "~/hooks";
+import Chords from "~/lib/chords";
 import { TypeSong, TypePagesRoutes } from "~/types";
-import { getSongsList, parseSong } from "~/utils/music";
+import { getChord, getSongsList, parseSong } from "~/utils/music";
 
 type TypeSongPageProps = {
   song: TypeSong;
@@ -18,13 +19,22 @@ function SongPage({ song, songContent }: TypeSongPageProps): any {
     layout: true,
   });
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedChord, setSelectedChord] = useState(undefined);
+
   useDidMount(() => {
     document.querySelectorAll(".chord")?.forEach(button => {
       button.addEventListener("click", function (event: any) {
-        alert(event?.target?.innerText);
+        setSelectedChord(getChord(event.target.innerText) as any);
+        setIsModalVisible(true);
       });
     });
   });
+
+  function handleModalClose() {
+    setIsModalVisible(false);
+    setSelectedChord(undefined);
+  }
 
   return (
     <Page
@@ -59,7 +69,25 @@ function SongPage({ song, songContent }: TypeSongPageProps): any {
             <span>{song.album}</span>
           </section>
         </section>
-
+        <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
+          <section className="tw-bg-white tw-p-4 tw-rounded-md tw-relative">
+            {selectedChord && (
+              <Chords
+                name={(selectedChord as any)?.name || ""}
+                chords={(selectedChord as any)?.chords || ""}
+                stringsToSkip={(selectedChord as any)?.stringsToSkip || ""}
+                showOptions={false}
+              />
+            )}
+            <Separator className="tw-border-t twc-border-color-primary dark:twc-border-color-primary tw-mt-6 tw-mb-1"></Separator>
+            <button
+              className="tw-text-center tw-text-sm tw-block tw-font-bold tw-w-full"
+              onClick={handleModalClose}
+            >
+              cerrar
+            </button>
+          </section>
+        </Modal>
         <pre
           className="tw-text-sm tw-max-w-full tw-overflow-x-auto"
           dangerouslySetInnerHTML={{
