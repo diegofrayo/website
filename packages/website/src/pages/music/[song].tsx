@@ -1,41 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import fs from "fs";
+import hydrate from "next-mdx-remote/hydrate";
+import renderToString from "next-mdx-remote/render-to-string";
 
-import { Page, MainLayout, Modal, Separator } from "~/components";
+import { Page, MainLayout, MDXContent } from "~/components";
 import { SongInfo } from "~/components/pages/music";
 import Routes from "~/data/routes.json";
-import { useDidMount, useInternationalization } from "~/hooks";
-import Chords from "~/lib/chords";
+import { useInternationalization } from "~/hooks";
 import { TypeSong, TypePagesRoutes } from "~/types";
-import { getChord, getSongsList, parseSong } from "~/utils/music";
+import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
+import { getSongsList } from "~/utils/music";
 
 type TypeSongPageProps = {
   song: TypeSong;
-  songContent: any;
+  content: any;
 };
 
-function SongPage({ song, songContent }: TypeSongPageProps): any {
+function SongPage({ song, content }: TypeSongPageProps): any {
   const { SiteTexts } = useInternationalization({
     page: Routes.MUSIC as TypePagesRoutes,
     layout: true,
   });
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedChord, setSelectedChord] = useState(undefined);
-
-  useDidMount(() => {
-    document.querySelectorAll(".chord")?.forEach(button => {
-      button.addEventListener("click", function (event: any) {
-        setSelectedChord(getChord(event.target.innerText) as any);
-        setIsModalVisible(true);
-      });
-    });
-  });
-
-  function handleModalClose() {
-    setIsModalVisible(false);
-    setSelectedChord(undefined);
-  }
+  const mdxContent = hydrate(content, { components: MDXComponentsConfig });
 
   return (
     <Page
@@ -61,32 +48,9 @@ function SongPage({ song, songContent }: TypeSongPageProps): any {
         title={song.title}
       >
         <SongInfo song={song} SiteTexts={SiteTexts} />
-        <pre
-          className="tw-text-sm tw-max-w-full tw-overflow-x-auto tw-border tw-p-2 twc-border-color-primary dark:twc-border-color-primary"
-          dangerouslySetInnerHTML={{
-            __html: songContent,
-          }}
-        />
-
-        <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
-          <section className="tw-bg-white dark:tw-bg-black tw-p-4 tw-rounded-md">
-            {selectedChord && (
-              <Chords
-                name={(selectedChord as any)?.name || ""}
-                chords={(selectedChord as any)?.chords || ""}
-                stringsToSkip={(selectedChord as any)?.stringsToSkip || ""}
-                showOptions={false}
-              />
-            )}
-            <Separator className="tw-mt-6 tw-mb-1" />
-            <button
-              className="tw-text-center tw-text-sm tw-block tw-font-bold tw-w-full tw-transition-opacity hover:tw-opacity-75 tw-border twc-border-color-primary dark:twc-border-color-primary"
-              onClick={handleModalClose}
-            >
-              cerrar
-            </button>
-          </section>
-        </Modal>
+        <section className="tw-p-2 tw-max-w-full tw-overflow-x-auto tw-border twc-border-color-primary dark:twc-border-color-primary">
+          <MDXContent content={mdxContent} />
+        </section>
       </MainLayout>
     </Page>
   );
@@ -107,12 +71,17 @@ export async function getStaticProps({
   params,
 }: Record<string, any>): Promise<Record<string, any>> {
   const song: TypeSong | undefined = getSongsList().find(song => song.id === params.song);
+
   const file = fs.readFileSync(
-    `${process.cwd()}/src/data/music/songs/${song?.id}.txt`,
+    `${process.cwd()}/src/data/music/songs/${song?.id}.mdx`,
     "utf8",
   );
+  const content = await renderToString(file, {
+    components: MDXComponentsConfig,
+    scope: { DATA: { ...MDXScope.DATA } },
+  });
 
-  return { props: { song, songContent: parseSong(file.toString()) } };
+  return { props: { song, content } };
 }
 
 export default SongPage;

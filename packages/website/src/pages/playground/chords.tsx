@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { MainLayout, Page, Separator } from "~/components";
 import Routes from "~/data/routes.json";
-import Chords from "~/lib/chords";
+import { Chords } from "~/lib/chords";
 import { TypePagesRoutes, TypeSiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
 

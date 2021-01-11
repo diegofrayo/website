@@ -29,7 +29,7 @@ type TypeChordsProps = {
   showOptions?: boolean;
 };
 
-function Chords({
+export function Chords({
   name,
   chords,
   stringsToSkip,
@@ -152,7 +152,47 @@ function Chords({
   );
 }
 
-export default Chords;
+export function Solo({ positions, notes }) {
+  return (
+    <article className="tw-text-sm tw-pr-2">
+      <section className="tw-flex">
+        <Fret variant="FRET_STRINGS_NAMES" />
+
+        {["|", ...positions.split("|"), "|"].map((item, index) => {
+          const [string, fret, finger] = item.split(",");
+
+          return (
+            <section key={`position-${index}`} className="tw-ml-1">
+              <section className="tw-h-6" />
+              <section>
+                {createArray(6)
+                  .reverse()
+                  .map(i => {
+                    if (i === Number(string)) {
+                      return (
+                        <section key={`idk-${i}`} className="tw-h-6">
+                          {finger !== undefined ? fret : "0"}
+                        </section>
+                      );
+                    }
+
+                    return (
+                      <section key={`idk-${i}`} className="tw-h-6">
+                        -
+                      </section>
+                    );
+                  })}
+              </section>
+            </section>
+          );
+        })}
+      </section>
+      <blockquote className="tw-ml-2 tw-whitespace-pre-line tw-break-word">
+        {notes}
+      </blockquote>
+    </article>
+  );
+}
 
 // --- Components ---
 

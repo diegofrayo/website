@@ -1,6 +1,7 @@
 import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
+import classnames from "classnames";
 
 import Routes from "~/data/routes.json";
 import { useAssets } from "~/hooks";
@@ -12,8 +13,9 @@ import { slugify } from "~/utils/strings";
 
 import { Link, Image } from "./";
 
-export * from "./pages/resume";
+export * from "./pages/music";
 export * from "./pages/my-favorite-music-and-mdx";
+export * from "./pages/resume";
 
 type TypeCodeProps = {
   language: "jsx" | "css" | "typescript" | "javascript" | "bash";
@@ -48,7 +50,7 @@ export function Code({ language, fileName, code, sourceURL }: TypeCodeProps): an
       <Highlight {...defaultProps} code={code} language={language} theme={dracula}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           return (
-            <pre className={className} style={style}>
+            <pre className={classnames("code-highlighted", className)} style={style}>
               {tokens.map((line, i) => {
                 return (
                   <Line key={i} {...getLineProps({ line, key: i })}>

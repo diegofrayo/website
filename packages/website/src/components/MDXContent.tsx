@@ -15,10 +15,10 @@ function MDXContent({ content }: Record<string, any>): any {
 
       <style jsx>{`
         :global(.mdx-content) > :global(p),
-        :global(.mdx-content) :global(pre),
+        :global(.mdx-content) > :global(pre),
         :global(.mdx-content) :global(blockquote),
         :global(.mdx-content) :global(img),
-        :global(.mdx-content) :global(hr),
+        :global(.mdx-content) > :global(hr),
         :global(.mdx-content) :global(ol),
         :global(.mdx-content) :global(ul),
         :global(.mdx-content) > :global(section[data-block]) {
@@ -49,7 +49,8 @@ function MDXContent({ content }: Record<string, any>): any {
           @apply tw-text-gray-400;
         }
 
-        :global(.mdx-content) :global(pre) {
+        :global(.mdx-content) > :global(pre),
+        :global(.mdx-content) :global(pre.code-highlighted) {
           @apply tw-bg-gray-800;
           @apply tw-p-4;
           @apply tw-rounded-md;
@@ -92,26 +93,26 @@ function MDXContent({ content }: Record<string, any>): any {
           @apply tw-mb-3;
         }
 
-        :global(.mdx-content) :global(h1),
-        :global(.mdx-content) :global(h2),
-        :global(.mdx-content) :global(h3),
-        :global(.mdx-content) :global(h4) {
+        :global(.mdx-content) > :global(h1),
+        :global(.mdx-content) > :global(h2),
+        :global(.mdx-content) > :global(h3),
+        :global(.mdx-content) > :global(h4) {
           @apply tw-mb-3;
         }
 
-        :global(.mdx-content) :global(h1) {
+        :global(.mdx-content) > :global(h1) {
           @apply tw-text-3xl;
         }
 
-        :global(.mdx-content) :global(h2) {
+        :global(.mdx-content) > :global(h2) {
           @apply tw-text-2xl;
         }
 
-        :global(.mdx-content) :global(h3) {
+        :global(.mdx-content) > :global(h3) {
           @apply tw-text-xl;
         }
 
-        :global(.mdx-content) :global(h4) {
+        :global(.mdx-content) > :global(h4) {
           @apply tw-text-lg;
         }
       `}</style>

@@ -1,4 +1,4 @@
-import { Link, UL, TextWithEmoji, Emoji, Image } from "~/components";
+import { Link, UL, TextWithEmoji, Emoji, Image, Separator } from "~/components";
 import * as MDXComponents from "~/components/MDXComponents";
 import GithubData from "~/data/github.json";
 import { WEBSITE_METADATA } from "~/data/metadata.json";
@@ -18,6 +18,7 @@ export const MDXComponentsConfig = {
   Link,
   TextWithEmoji,
   Emoji,
+  Separator,
 };
 
 export const MDXScope = {
