@@ -117,7 +117,9 @@ type TypeTextWithEmojiProps = {
 export function TextWithEmoji({ emoji, children }: TypeTextWithEmojiProps): any {
   return (
     <section className="tw-flex tw-flex-nowrap tw-mb-3">
-      <Emoji className="tw-text-xl tw-mr-3">{emoji}</Emoji>
+      <Emoji className="tw-text-xl tw-mr-3 tw-w-6 tw-h-6 tw-flex-shrink-0 tw-overflow-hidden">
+        {emoji}
+      </Emoji>
       <p className="tw-flex-1">{children}</p>
     </section>
   );

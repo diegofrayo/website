@@ -2,6 +2,7 @@ import * as React from "react";
 import NextLink from "next/link";
 
 import { Page, MainLayout, UL, Link } from "~/components";
+import { SongInfo } from "~/components/pages/music";
 import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
 import { TypePagesRoutes, TypeSong } from "~/types";
@@ -42,16 +43,7 @@ function MusicPage(): any {
                 <Link is={NextLink} href={`${Routes.MUSIC}/${song.id}`}>
                   {song.title}
                 </Link>
-                <section className="tw-text-sm tw-ml-4 tw-italic">
-                  <section>
-                    <strong>{SiteTexts.page.current_locale.artist}:</strong>{" "}
-                    <span>{song.artist}</span>
-                  </section>
-                  <section>
-                    <strong>{SiteTexts.page.current_locale.album}:</strong>{" "}
-                    <span>{song.album}</span>
-                  </section>
-                </section>
+                <SongInfo song={song} SiteTexts={SiteTexts} className="tw-ml-4 tw-mb-4" />
               </li>
             );
           })}

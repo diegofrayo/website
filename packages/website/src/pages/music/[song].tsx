@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import fs from "fs";
 
 import { Page, MainLayout, Modal, Separator } from "~/components";
+import { SongInfo } from "~/components/pages/music";
 import Routes from "~/data/routes.json";
 import { useDidMount, useInternationalization } from "~/hooks";
 import Chords from "~/lib/chords";
@@ -59,18 +60,16 @@ function SongPage({ song, songContent }: TypeSongPageProps): any {
         ]}
         title={song.title}
       >
-        <section className="tw-text-sm tw-mb-8 tw-italic">
-          <section>
-            <strong>{SiteTexts.page.current_locale.artist}:</strong>{" "}
-            <span>{song.artist}</span>
-          </section>
-          <section>
-            <strong>{SiteTexts.page.current_locale.album}:</strong>{" "}
-            <span>{song.album}</span>
-          </section>
-        </section>
+        <SongInfo song={song} SiteTexts={SiteTexts} />
+        <pre
+          className="tw-text-sm tw-max-w-full tw-overflow-x-auto tw-border tw-p-2 twc-border-color-primary dark:twc-border-color-primary"
+          dangerouslySetInnerHTML={{
+            __html: songContent,
+          }}
+        />
+
         <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
-          <section className="tw-bg-white tw-p-4 tw-rounded-md tw-relative">
+          <section className="tw-bg-white dark:tw-bg-black tw-p-4 tw-rounded-md">
             {selectedChord && (
               <Chords
                 name={(selectedChord as any)?.name || ""}
@@ -79,21 +78,15 @@ function SongPage({ song, songContent }: TypeSongPageProps): any {
                 showOptions={false}
               />
             )}
-            <Separator className="tw-border-t twc-border-color-primary dark:twc-border-color-primary tw-mt-6 tw-mb-1"></Separator>
+            <Separator className="tw-mt-6 tw-mb-1" />
             <button
-              className="tw-text-center tw-text-sm tw-block tw-font-bold tw-w-full"
+              className="tw-text-center tw-text-sm tw-block tw-font-bold tw-w-full tw-transition-opacity hover:tw-opacity-75 tw-border twc-border-color-primary dark:twc-border-color-primary"
               onClick={handleModalClose}
             >
               cerrar
             </button>
           </section>
         </Modal>
-        <pre
-          className="tw-text-sm tw-max-w-full tw-overflow-x-auto"
-          dangerouslySetInnerHTML={{
-            __html: songContent,
-          }}
-        />
       </MainLayout>
     </Page>
   );
