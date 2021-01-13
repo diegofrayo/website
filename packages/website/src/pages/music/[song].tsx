@@ -49,7 +49,7 @@ function SongPage({ song, content }: TypeSongPageProps): any {
       >
         <SongInfo song={song} SiteTexts={SiteTexts} />
         <section className="tw-p-2 tw-max-w-full tw-overflow-x-auto tw-border twc-border-color-primary dark:twc-border-color-primary">
-          <MDXContent content={mdxContent} />
+          <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
         </section>
       </MainLayout>
     </Page>

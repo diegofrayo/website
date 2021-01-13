@@ -15,6 +15,14 @@
       "album": "El ritmo mundial",
       "created_at": "10/02/2021",
       "chords": ["G", "Em", "C", "D"]
+    },
+    {
+      "id": "cancion-para-los-dias-de-la-vida",
+      "title": "Canción para los días de la vida",
+      "artist": "Invisible",
+      "album": "A 18' del sol",
+      "created_at": "12/02/2021",
+      "chords": []
     }
   ],
   "chords": {

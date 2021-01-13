@@ -8,6 +8,7 @@ import { useInternationalization } from "~/hooks";
 import { TypePagesRoutes, TypeSong } from "~/types";
 import { getSongsList } from "~/utils/music";
 import { removeEmojiFromTitle } from "~/utils/strings";
+import { sortBy } from "~/utils/misc";
 
 function MusicPage(): any {
   const { SiteTexts } = useInternationalization({
@@ -37,16 +38,22 @@ function MusicPage(): any {
       >
         <p className="tw-mb-4">{SiteTexts.page.current_locale.description}</p>
         <UL>
-          {getSongsList().map((song: TypeSong) => {
-            return (
-              <li key={`SongItem-${song.id}`}>
-                <Link is={NextLink} href={`${Routes.MUSIC}/${song.id}`}>
-                  {song.title}
-                </Link>
-                <SongInfo song={song} SiteTexts={SiteTexts} className="tw-ml-4 tw-mb-4" />
-              </li>
-            );
-          })}
+          {getSongsList()
+            .sort(sortBy("title"))
+            .map((song: TypeSong) => {
+              return (
+                <li key={`SongItem-${song.id}`}>
+                  <Link is={NextLink} href={`${Routes.MUSIC}/${song.id}`}>
+                    {song.title}
+                  </Link>
+                  <SongInfo
+                    song={song}
+                    SiteTexts={SiteTexts}
+                    className="tw-ml-4 tw-mb-4"
+                  />
+                </li>
+              );
+            })}
         </UL>
       </MainLayout>
     </Page>

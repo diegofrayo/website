@@ -4,12 +4,23 @@ import { useTheme } from "next-themes";
 
 import { safeRender } from "~/hocs";
 
-function MDXContent({ content }: Record<string, any>): any {
+type TypeMDXContentProps = {
+  content: any;
+  variant?: "DEFAULT" | "UNSTYLED";
+};
+
+function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any {
   const { theme } = useTheme();
 
   return (
     <article
-      className={classnames("mdx-content", theme === "dark" && "mdx-content--dark")}
+      className={classnames(
+        "mdx-content",
+        variant === MDXContent.variant.DEFAULT
+          ? "mdx-content--default"
+          : "mdx-content--unstyled",
+        theme === "dark" && "mdx-content--dark",
+      )}
     >
       {content}
 
@@ -93,31 +104,36 @@ function MDXContent({ content }: Record<string, any>): any {
           @apply tw-mb-3;
         }
 
-        :global(.mdx-content) > :global(h1),
-        :global(.mdx-content) > :global(h2),
-        :global(.mdx-content) > :global(h3),
-        :global(.mdx-content) > :global(h4) {
+        :global(.mdx-content--default) :global(h1),
+        :global(.mdx-content--default) :global(h2),
+        :global(.mdx-content--default) :global(h3),
+        :global(.mdx-content--default) :global(h4) {
           @apply tw-mb-3;
         }
 
-        :global(.mdx-content) > :global(h1) {
+        :global(.mdx-content--default) :global(h1) {
           @apply tw-text-3xl;
         }
 
-        :global(.mdx-content) > :global(h2) {
+        :global(.mdx-content--default) :global(h2) {
           @apply tw-text-2xl;
         }
 
-        :global(.mdx-content) > :global(h3) {
+        :global(.mdx-content--default) :global(h3) {
           @apply tw-text-xl;
         }
 
-        :global(.mdx-content) > :global(h4) {
+        :global(.mdx-content--default) :global(h4) {
           @apply tw-text-lg;
         }
       `}</style>
     </article>
   );
 }
+
+MDXContent.variant = {
+  DEFAULT: "DEFAULT",
+  UNSTYLED: "UNSTYLED",
+};
 
 export default safeRender(MDXContent);
