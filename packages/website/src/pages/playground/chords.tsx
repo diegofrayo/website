@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-import { MainLayout, Page, Separator } from "~/components";
+import { Page, MainLayout } from "~/components/layout";
+import { Separator } from "~/components/primitive";
 import Routes from "~/data/routes.json";
 import { Chords } from "~/lib/chords";
 import { TypePagesRoutes, TypeSiteTexts } from "~/types";

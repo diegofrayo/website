@@ -1,7 +1,7 @@
 import React, { SetStateAction, useState } from "react";
 import classnames from "classnames";
 
-import { Link } from "../.";
+import { Link } from "~/components/primitive";
 
 type TypeResumeTimelineProps = {
   title: string;
@@ -65,7 +65,7 @@ type TypeResumeFAQItemProps = {
   children: string | any;
 };
 
-export function ResumeFAQItem({ question, children }: Record<string, any>): any {
+export function ResumeFAQItem({ question, children }: TypeResumeFAQItemProps): any {
   const [collapsed, setCollapsed]: [
     boolean,
     React.Dispatch<SetStateAction<boolean>>,

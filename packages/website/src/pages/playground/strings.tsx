@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 
-import { MainLayout, Page, Separator } from "~/components";
+import { Page, MainLayout } from "~/components/layout";
+import { Separator } from "~/components/primitive";
 import Routes from "~/data/routes.json";
 import { useDidMount } from "~/hooks";
 import { TypeSiteTexts, TypePagesRoutes } from "~/types";

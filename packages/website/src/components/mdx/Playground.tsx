@@ -3,7 +3,7 @@ import classnames from "classnames";
 
 import { TypeCodeProps } from "~/types";
 
-import { Code } from "./MDXComponents";
+import Code from "./Code";
 
 type TypePlaygroundProps = {
   Component: any;

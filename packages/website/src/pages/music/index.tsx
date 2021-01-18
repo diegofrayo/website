@@ -1,8 +1,10 @@
 import * as React from "react";
 import NextLink from "next/link";
 
-import { Page, MainLayout, UL, Link, Render } from "~/components";
-import { SongInfo } from "~/components/pages/music";
+import { Page, MainLayout } from "~/components/layout";
+import { UL, Link } from "~/components/primitive";
+import { Render } from "~/components/shared";
+import { SongInfo } from "~/components/mdx/blog-posts/music";
 import Routes from "~/data/routes.json";
 import { useInternationalization, useQuery } from "~/hooks";
 import { TypePagesRoutes, TypeSong } from "~/types";

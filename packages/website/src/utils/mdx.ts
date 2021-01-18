@@ -1,5 +1,6 @@
-import { Link, UL, TextWithEmoji, Emoji, Image, Separator } from "~/components";
-import * as MDXComponents from "~/components/MDXComponents";
+import { Collapsible, Image, Link, Separator, UL } from "~/components/primitive";
+import { Emoji, TextWithEmoji, ToDoList } from "~/components/shared";
+import * as MDXComponents from "~/components/mdx";
 import GithubData from "~/data/github.json";
 import { WEBSITE_METADATA } from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
@@ -15,10 +16,13 @@ export const MDXComponentsConfig = {
   h1: MDXComponents.Title("h1"),
   h2: MDXComponents.Title("h2"),
   h3: MDXComponents.Title("h3"),
-  Link,
-  TextWithEmoji,
+  h4: MDXComponents.Title("h4"),
+  Collapsible,
   Emoji,
+  Link,
   Separator,
+  TextWithEmoji,
+  ToDoList,
 };
 
 export const MDXScope = {

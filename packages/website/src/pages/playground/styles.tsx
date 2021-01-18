@@ -2,7 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import { useTheme } from "next-themes";
 
-import { MainLayout, Page } from "~/components";
+import { Page, MainLayout } from "~/components/layout";
 import Routes from "~/data/routes.json";
 import { safeRender } from "~/hocs";
 import { TypeSiteTexts, TypePagesRoutes } from "~/types";
@@ -91,7 +91,7 @@ function Section({ title, classes, theme }) {
           return (
             <div
               key={`Section-${title}-${index}`}
-              className="tw-w-full sm:tw-w-auto sm:tw-ml-4 tw-mb-4 tw-cursor-pointer"
+              className="tw-w-full sm:tw-w-auto sm:tw-ml-4 tw-mb-4"
               role="button"
               data-clipboard-text={classNameWithTheme}
               onClick={copyToClipboard}

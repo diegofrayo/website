@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Page } from "~/components";
+import { Page } from "~/components/layout";
 import { useDidMount } from "~/hooks";
 
 function BariaPage(): any {

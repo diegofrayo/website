@@ -1,11 +1,9 @@
 import * as React from "react";
 
+import { MainLayout, Page } from "~/components/layout";
 import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
 import { TypePagesRoutes } from "~/types";
-
-import MainLayout from "./MainLayout";
-import Page from "./Page";
 
 type TypeErrorPageProps = {
   statusCode: 404 | 500;

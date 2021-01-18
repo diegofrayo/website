@@ -1,7 +1,8 @@
 import * as React from "react";
 import NextLink from "next/link";
 
-import { MainLayout, Page, UL, Link } from "~/components";
+import { Page, MainLayout } from "~/components/layout";
+import { Link, UL } from "~/components/primitive";
 import Routes from "~/data/routes.json";
 import { withTranslations } from "~/hocs";
 import { TypePagesRoutes, TypeSiteTexts } from "~/types";

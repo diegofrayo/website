@@ -1,7 +1,8 @@
 import React, { Fragment, useRef, useState } from "react";
 import classnames from "classnames";
 
-import { Emoji, Separator } from "~/components";
+import { Separator } from "~/components/primitive";
+import { Emoji } from "~/components/shared";
 import { copyToClipboard } from "~/utils/browser";
 import { createArray } from "~/utils/misc";
 

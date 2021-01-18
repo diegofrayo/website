@@ -1,6 +1,7 @@
 import React from "react";
 
-import { MainLayout, Page, UL, Link } from "~/components";
+import { Page, MainLayout } from "~/components/layout";
+import { UL, Link } from "~/components/primitive";
 import Routes from "~/data/routes.json";
 import { useAssets } from "~/hooks";
 import { TypeSiteTexts, TypePagesRoutes } from "~/types";

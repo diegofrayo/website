@@ -29,6 +29,10 @@ body {
   word-break: break-word;
 }
 
+body.modal-opened {
+  overflow: hidden;
+}
+
 h1,
 h2,
 h3,

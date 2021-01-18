@@ -3,6 +3,8 @@ import NextLink from "next/link";
 import { useTheme } from "next-themes";
 import classnames from "classnames";
 
+import { Link, Separator, Image } from "~/components/primitive";
+import { Emoji } from "~/components/shared";
 import { WEBSITE_METADATA } from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
 import { useAssets, useInternationalization, useOnWindowScroll } from "~/hooks";
@@ -16,8 +18,7 @@ import {
 } from "~/types";
 import { getScrollPosition } from "~/utils/browser";
 import { sortBy } from "~/utils/misc";
-
-import { Link, Separator, Emoji, Breadcumb, Image } from "./";
+import { generateSlug } from "~/utils/strings";
 
 type TypeMainLayoutProps = {
   title: string;
@@ -135,7 +136,7 @@ const Header = safeRender(function Header({ locales }: TypeHeaderProps): any {
         <div className="tw-relative tw-top-2">
           <DarkModeToggle />
         </div>
-        <Separator size={3} />
+        <Separator size={4} />
         {locales && <LocalesSelector locales={locales} currentLocale={currentLocale} />}
       </div>
     </header>
@@ -185,7 +186,7 @@ type TypeLocalesSelectorProps = {
 
 function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): any {
   return (
-    <div className="tw-border tw-py-1 tw-px-2 tw-text-sm dfr-border-color-primary dark:dfr-border-color-primary">
+    <div className="tw-text-sm">
       {locales.sort(sortBy("name", "asc")).map((locale, index) => {
         return (
           <Fragment key={`LocalesSelector-${locale.name}`}>
@@ -202,6 +203,47 @@ function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): 
         );
       })}
     </div>
+  );
+}
+
+function Breadcumb({ items }: TypeBreadcumbProps): any {
+  const moreThanOneItem = items.length > 1;
+
+  return (
+    <ul className="root tw-block tw-text-left tw-pb-1">
+      {items.map((item, index) => {
+        if (index === items.length - 1 && moreThanOneItem) {
+          return (
+            <li
+              key={`Breadcumb-li-${generateSlug(item.text)}`}
+              className="tw-inline-block"
+            >
+              <span className="tw-text-base tw-italic">{item.text}</span>
+            </li>
+          );
+        }
+
+        return (
+          <li
+            key={`Breadcumb-li-${generateSlug(item.text)}`}
+            className="tw-inline-block tw-mr-2"
+          >
+            <Link is={NextLink} href={item.url || "/"} styled={false}>
+              <span className="tw-underline tw-font-bold tw-text-base">{item.text}</span>
+            </Link>
+          </li>
+        );
+      })}
+
+      <style jsx>
+        {`
+          .root :global(a:after) {
+            @apply tw-ml-1;
+            ${moreThanOneItem ? 'content: "‣";' : ""}
+          }
+        `}
+      </style>
+    </ul>
   );
 }
 

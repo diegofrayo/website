@@ -4,7 +4,8 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import { GetStaticProps, GetStaticPaths } from "next";
 
-import { Page, MainLayout, MDXContent } from "~/components";
+import { Page, MainLayout } from "~/components/layout";
+import { MDXContent } from "~/components/shared";
 import Routes from "~/data/routes.json";
 import { TypeLocale, TypeSiteTexts, TypePagesRoutes } from "~/types";
 import {

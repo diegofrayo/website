@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 
-import { Modal, Separator } from "~/components";
+import { Modal, Separator } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { Chords } from "~/lib/chords";
 import { TypeSiteTexts, TypeSong } from "~/types";

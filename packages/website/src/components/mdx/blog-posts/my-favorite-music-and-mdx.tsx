@@ -1,10 +1,6 @@
 import * as React from "react";
 
-type TypeHelloWorldMDXProps = {
-  text: string;
-};
-
-export function HelloWorldMDX({ text }: TypeHelloWorldMDXProps): any {
+export function HelloWorldMDX({ text }: { text: string }): any {
   return (
     <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">{text}</p>
   );

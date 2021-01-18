@@ -24,6 +24,8 @@ function Modal({ children, visible, onCloseHandler }: Record<string, any>): any 
   );
 }
 
+export default Modal;
+
 // --- Context ---
 
 const Context = createContext({
@@ -71,5 +73,3 @@ function Backdrop({ children, closeModalHandler }) {
     </div>
   );
 }
-
-export default Modal;

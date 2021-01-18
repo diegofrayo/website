@@ -1,15 +1,16 @@
 import * as React from "react";
 import NextLink from "next/link";
 
-import { Page, MainLayout, UL, Link, Render } from "~/components";
+import { Page, MainLayout } from "~/components/layout";
+import { UL, Link } from "~/components/primitive";
+import { Render } from "~/components/shared";
 import Routes from "~/data/routes.json";
-import { useInternationalization } from "~/hooks";
+import { useInternationalization, useQuery } from "~/hooks";
 import { TypeBlogPost, TypeLocale, TypePagesRoutes } from "~/types";
 import BlogService from "~/utils/blog";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { removeEmojiFromPageTitle } from "~/utils/strings";
-import { useQuery } from "react-query";
 
 function BlogPage(): any {
   const { SiteTexts, currentLocale } = useInternationalization({

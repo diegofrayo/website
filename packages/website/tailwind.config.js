@@ -8,7 +8,7 @@ module.exports = {
   purge: {
     content: ["./src/components/**/*.tsx", "./src/pages/**/*.tsx", "./src/lib/**/*.tsx"],
     options: {
-      safelist: [/^(sm:|md:|lg:|xl:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/],
+      safelist: [/^(sm:|md:|lg:|xl:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/, /dfr-/],
     },
   },
   theme: {

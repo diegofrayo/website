@@ -3,8 +3,9 @@ import fs from "fs";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
-import { Page, MainLayout, MDXContent } from "~/components";
-import { SongInfo } from "~/components/pages/music";
+import { Page, MainLayout } from "~/components/layout";
+import { SongInfo } from "~/components/mdx/blog-posts/music";
+import { MDXContent } from "~/components/shared";
 import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
 import { TypeSong, TypePagesRoutes } from "~/types";

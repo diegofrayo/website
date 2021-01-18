@@ -3,7 +3,9 @@ import fs from "fs";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
-import { Image, Link, MDXContent, MainLayout, Page, Separator } from "~/components";
+import { Page, MainLayout } from "~/components/layout";
+import { Image, Link, Separator } from "~/components/primitive";
+import { MDXContent } from "~/components/shared";
 import GITHUB from "~/data/github.json";
 import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { WEBSITE_METADATA } from "~/data/metadata.json";

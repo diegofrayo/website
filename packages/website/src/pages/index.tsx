@@ -1,7 +1,9 @@
 import React from "react";
 import NextLink from "next/link";
 
-import { Page, MainLayout, Emoji, Link } from "~/components";
+import { Page, MainLayout } from "~/components/layout";
+import { Link } from "~/components/primitive";
+import { Emoji } from "~/components/shared";
 import Routes from "~/data/routes.json";
 import { withTranslations } from "~/hocs";
 import { TypePagesRoutes, TypeSiteTexts } from "~/types";
