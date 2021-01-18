@@ -1,28 +1,22 @@
 import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
-import classnames from "classnames";
 
 import Routes from "~/data/routes.json";
 import { useAssets } from "~/hooks";
 import twcss from "~/lib/twcss";
-import { TypePagesRoutes } from "~/types";
+import { TypeCodeProps, TypePagesRoutes } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
-import { slugify } from "~/utils/strings";
+import { generateSlug } from "~/utils/strings";
 
 import { Link, Image } from "./";
 
+export * from "./pages/html-semantic-tags";
 export * from "./pages/music";
 export * from "./pages/my-favorite-music-and-mdx";
 export * from "./pages/resume";
-
-type TypeCodeProps = {
-  language: "jsx" | "css" | "typescript" | "javascript" | "bash";
-  code: any;
-  fileName?: string;
-  sourceURL?: string;
-};
+export { default as Playground } from "./Playground";
 
 export function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
   const { BlogPostAssets } = useAssets();
@@ -30,14 +24,14 @@ export function Code({ language, fileName, code, sourceURL }: TypeCodeProps): an
   const SiteTexts = getSiteTexts({ page: Routes.BLOG as TypePagesRoutes });
 
   return (
-    <section
-      className="root tw-rounded-md tw-border twc-border-color-primary dark:tw-border-0 dark:tw-bg-gray-700"
+    <div
+      className="Code root tw-rounded-md tw-border dfr-border-color-primary dark:tw-border-0 dark:tw-bg-gray-700"
       data-block
     >
-      <section className="tw-flex tw-items-center tw-justify-between tw-px-2 tw-py-2">
+      <div className="tw-flex tw-items-center tw-justify-between tw-px-2 tw-py-2">
         <code className="tw-text-sm tw-font-bold">
           {fileName
-            ? `// ${slugify(fileName)}`
+            ? `// ${generateSlug(fileName)}`
             : sourceURL
             ? `// ${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}`
             : ""}
@@ -45,12 +39,12 @@ export function Code({ language, fileName, code, sourceURL }: TypeCodeProps): an
         <span className="tw-rounded-md tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-4 tw-font-mono">
           {language}
         </span>
-      </section>
+      </div>
 
       <Highlight {...defaultProps} code={code} language={language} theme={dracula}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           return (
-            <pre className={classnames("code-highlighted", className)} style={style}>
+            <pre className={className} style={style}>
               {tokens.map((line, i) => {
                 return (
                   <Line key={i} {...getLineProps({ line, key: i })}>
@@ -67,7 +61,7 @@ export function Code({ language, fileName, code, sourceURL }: TypeCodeProps): an
           );
         }}
       </Highlight>
-      <section className="tw-text-right tw-p-2 tw-pt-1">
+      <div className="tw-text-right tw-p-2 tw-pt-1">
         {sourceURL && (
           <Link
             className="tw-block sm:tw-inline-block tw-ml-auto sm:tw-mr-4"
@@ -76,21 +70,21 @@ export function Code({ language, fileName, code, sourceURL }: TypeCodeProps): an
             <Image
               src={BlogPostAssets.GITHUB}
               alt="Github icon"
-              className="tw-h-4 tw-w-4 tw-inline-block tw-align-middle tw-mr-1 dark:tw-rounded-full dark:twc-bg-secondary dark:tw-p-0.5"
+              className="tw-h-4 tw-w-4 tw-inline-block tw-align-middle tw-mr-1 dark:tw-rounded-full dark:dfr-bg-secondary dark:tw-p-0.5"
             />
-            <span className="tw-inline-block tw-text-sm dark:twc-text-color-primary">
+            <span className="tw-inline-block tw-text-sm dark:dfr-text-color-primary">
               {SiteTexts.page.current_locale.see_source_code}
             </span>
           </Link>
         )}
         <button
-          className="clipboard twc-text-color-links dark:twc-text-color-primary tw-block sm:tw-inline-block tw-ml-auto tw-mt-1 sm:tw-mt-0 tw-text-sm tw-font-bold tw-text-right"
+          className="clipboard dfr-text-color-links dark:dfr-text-color-primary tw-block sm:tw-inline-block tw-ml-auto tw-mt-1 sm:tw-mt-0 tw-text-sm tw-font-bold tw-text-right"
           data-clipboard-text={code}
           onClick={copyToClipboard}
         >
           {SiteTexts.page.current_locale.copy_to_clipboard}
         </button>
-      </section>
+      </div>
 
       <style jsx>{`
         .root pre,
@@ -102,7 +96,7 @@ export function Code({ language, fileName, code, sourceURL }: TypeCodeProps): an
           border-radius: 0;
         }
       `}</style>
-    </section>
+    </div>
   );
 }
 
@@ -120,9 +114,9 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
   const { BlogPostAssets } = useAssets();
 
   return (
-    <section className="root tw-text-right" data-block>
+    <div className="root tw-text-right" data-block>
       <Link
-        className="twc-border-color-primary tw-border dark:tw-border-0 tw-flex sm:tw-inline-flex tw-p-4 twc-bg-secondary tw-rounded-md tw-items-center tw-relative tw-pr-8"
+        className="dfr-border-color-primary tw-border dark:tw-border-0 tw-flex sm:tw-inline-flex tw-p-4 dfr-bg-secondary tw-rounded-md tw-items-center tw-relative tw-pr-8"
         href={url}
         styled={false}
       >
@@ -131,10 +125,10 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
           alt="Github icon"
           className="tw-h-8 tw-w-8 tw-mr-3"
         />
-        <section className="tw-flex-1 tw-text-left">
+        <div className="tw-flex-1 tw-text-left">
           <h3>{name}</h3>
-          <p className="tw-text-sm twc-text-color-primary">{description}</p>
-        </section>
+          <p className="tw-text-sm dfr-text-color-primary">{description}</p>
+        </div>
 
         <Image
           src={BlogPostAssets.LINK}
@@ -152,19 +146,19 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
 
         .root h3 {
           @apply tw-text-base;
-          @apply twc-text-color-secondary;
+          @apply dfr-text-color-secondary;
 
           @screen sm {
             @apply tw-text-lg;
           }
         }
       `}</style>
-    </section>
+    </div>
   );
 }
 
 export function Title(Tag: "h1" | "h2" | "h3"): any {
   return function TitleComponent({ children }: Record<string, any>): any {
-    return <Tag id={slugify(children)}>{children}</Tag>;
+    return <Tag id={generateSlug(children)}>{children}</Tag>;
   };
 }

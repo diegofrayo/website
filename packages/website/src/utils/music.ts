@@ -3,15 +3,11 @@ import { TypeSong } from "~/types";
 
 import { escapeRegExp, sortBy } from "./misc";
 
-export function getSongTitle(song: TypeSong): string {
-  return `${song.title} | ${song.artist} | ${song.album}`;
-}
-
-export function getSongsList(): TypeSong[] {
+async function fetchSongsList(): Promise<TypeSong[]> {
   return songs;
 }
 
-export function parseSong(songContent): string {
+function parseLyricsAndChords(songContent): string {
   const result = songContent
     .split("\n")
     .map(line => {
@@ -47,7 +43,7 @@ export function parseSong(songContent): string {
   return result;
 }
 
-export function getChord(chord: string) {
+function findChord(chord: string) {
   const chordData = chords[chord];
 
   if (!chordData) return undefined;
@@ -59,9 +55,17 @@ export function getChord(chord: string) {
   };
 }
 
+export default {
+  findChord,
+  fetchSongsList,
+  parseLyricsAndChords,
+};
+
+// --- Private ---
+
 function insertChord(chord: string): string {
-  if (getChord(chord)) {
-    return `<button class="chord twc-text-color-links dark:twc-text-color-links">${chord}</button>`;
+  if (findChord(chord)) {
+    return `<button class="chord dfr-text-color-links dark:dfr-text-color-links">${chord}</button>`;
   }
 
   return chord;

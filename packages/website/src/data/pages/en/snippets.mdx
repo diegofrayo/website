@@ -4,7 +4,7 @@
   - [Set height 100% to a child element of a flex-row parent](#set-height-100-to-a-child-element-of-a-flex-row-parent)
   - [Text ellipsis](#text-ellipsis)
 - [JavaScript](#javascript)
-  - [Capitalize string](#capitalize-string)
+  - [Capitalize string](#convertToCapitalLetter-string)
   - [Component to show the window resolution using Tailwind CSS classes](#component-to-show-the-window-resolution-using-tailwind-css-classes)
   - [Copy to clipboard](#copy-to-clipboard)
   - [Create array with N elements](#create-array-with-n-elements)
@@ -13,7 +13,7 @@
   - [Generate simple random string](#generate-simple-random-string)
   - [Regex examples](#regex-examples)
   - [Simple encrypt/decrypt](#simple-encrypt-decrypt)
-  - [Slugify string](#slugify-string)
+  - [Slugify string](#generateSlug-string)
 - [React](#react)
 - [Git](#git)
   - [Alias](#alias)
@@ -57,7 +57,7 @@
 <Code
   language="typescript"
   fileName="Capitalize string"
-  code={`function capitalize(str: string): string {
+  code={`function convertToCapitalLetter(str: string): string {
   return str
     .toLowerCase()
     .split(" ")
@@ -189,7 +189,7 @@ function decrypt(str) {
 <Code
   language="typescript"
   fileName="Slugify string"
-  code={`function slugify(str: string): string {
+  code={`function generateSlug(str: string): string {
   let result = str.replace(/^\s+|\s+$/g, "").toLowerCase();
   // remove accents, swap ñ for n, etc
   const FROM = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";

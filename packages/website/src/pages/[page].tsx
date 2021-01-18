@@ -14,9 +14,9 @@ import {
 } from "~/utils/internationalization";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 import {
-  removeEmojiFromTitle,
-  toLowerCaseObjectProperty,
-  toUpperCaseObjectProperty,
+  removeEmojiFromPageTitle,
+  generateObjectKeyInLowerCase,
+  generateObjectKeyInUpperCase,
 } from "~/utils/strings";
 
 type TypeSitePageProps = {
@@ -31,8 +31,8 @@ function SitePage({ content, page, SiteTexts }: TypeSitePageProps): any {
   return (
     <Page
       config={{
-        title: removeEmojiFromTitle(SiteTexts.page.current_locale.title),
-        pathname: Routes[toUpperCaseObjectProperty(page)],
+        title: removeEmojiFromPageTitle(SiteTexts.page.current_locale.title),
+        pathname: Routes[generateObjectKeyInUpperCase(page)],
         description: SiteTexts.page.current_locale.meta_description,
         noRobots: SiteTexts.page.current_locale.meta_no_robots,
       }}
@@ -43,7 +43,7 @@ function SitePage({ content, page, SiteTexts }: TypeSitePageProps): any {
             ? undefined
             : generateSupportedLocales(
                 SiteTexts.page.config.locales,
-                Routes[toUpperCaseObjectProperty(page)],
+                Routes[generateObjectKeyInUpperCase(page)],
               )
         }
         breadcumb={[
@@ -53,7 +53,9 @@ function SitePage({ content, page, SiteTexts }: TypeSitePageProps): any {
           },
           {
             text:
-              SiteTexts.layout.current_locale.breadcumb[toLowerCaseObjectProperty(page)],
+              SiteTexts.layout.current_locale.breadcumb[
+                generateObjectKeyInLowerCase(page)
+              ],
           },
         ]}
         title={SiteTexts.page.current_locale.title}
@@ -79,7 +81,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const SiteTexts: TypeSiteTexts = getSiteTexts({
-    page: Routes[toUpperCaseObjectProperty(params?.page as string)],
+    page: Routes[generateObjectKeyInUpperCase(params?.page as string)],
     layout: true,
     locale: locale as TypeLocale,
   });

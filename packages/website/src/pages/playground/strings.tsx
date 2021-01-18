@@ -6,7 +6,7 @@ import { useDidMount } from "~/hooks";
 import { TypeSiteTexts, TypePagesRoutes } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
-import { capitalize, slugify } from "~/utils/strings";
+import { convertToCapitalLetter, generateSlug } from "~/utils/strings";
 
 const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "strings";
@@ -16,8 +16,8 @@ function StringsPage(): any {
     input: "",
     upper: "",
     lower: "",
-    capitalize: "",
-    capitalizeOnlyFirst: "",
+    convertToCapitalLetter: "",
+    convertToCapitalLetterOnlyFirst: "",
     slug: "",
   });
   const textareaRef: { current: undefined | any } = useRef(undefined);
@@ -32,11 +32,13 @@ function StringsPage(): any {
 
     setTexts({
       input: text,
-      slug: slugify(text),
+      slug: generateSlug(text),
       upper: text.toUpperCase(),
       lower: text.toLowerCase(),
-      capitalize: capitalize(text),
-      capitalizeOnlyFirst: text ? text[0].toUpperCase() + text.substring(1) : "",
+      convertToCapitalLetter: convertToCapitalLetter(text),
+      convertToCapitalLetterOnlyFirst: text
+        ? text[0].toUpperCase() + text.substring(1)
+        : "",
     });
   }
 
@@ -62,10 +64,10 @@ function StringsPage(): any {
         ]}
         title={PAGE_NAME}
       >
-        <section>
+        <div>
           <p className="tw-font-bold tw-mb-1">type your text</p>
           <textarea
-            className="tw-border tw-border-b-4 twc-border-color-primary tw-block tw-p-3 tw-resize-none tw-w-full tw-rounded-md"
+            className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-3 tw-resize-none tw-w-full tw-rounded-md"
             ref={textareaRef}
             onChange={handleTextAreaChange}
             onClick={e => {
@@ -85,15 +87,15 @@ function StringsPage(): any {
           >
             copy
           </button>
-        </section>
+        </div>
 
-        <Separator size={10} className="tw-border-t twc-border-color-primary" />
+        <Separator size={10} className="tw-border-t dfr-border-color-primary" />
 
-        <section className="tw-mb-4">
+        <div className="tw-mb-4">
           <p className="tw-font-bold">slug</p>
-          <p className="output tw-border twc-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
+          <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
             {texts.slug}
-          </p>
+          </output>
           <button
             type="button"
             className="tw-block tw-ml-auto tw-text-sm"
@@ -102,13 +104,13 @@ function StringsPage(): any {
           >
             copy
           </button>
-        </section>
+        </div>
 
-        <section className="tw-my-4">
+        <div className="tw-my-4">
           <p className="tw-font-bold tw-uppercase">uppercase</p>
-          <p className="output tw-border twc-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
+          <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
             {texts.upper}
-          </p>
+          </output>
           <button
             type="button"
             className="tw-block tw-ml-auto tw-text-sm"
@@ -117,13 +119,13 @@ function StringsPage(): any {
           >
             copy
           </button>
-        </section>
+        </div>
 
-        <section className="tw-my-4">
+        <div className="tw-my-4">
           <p className="tw-font-bold tw-lowercase">lowercase</p>
-          <p className="output tw-border twc-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
+          <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
             {texts.lower}
-          </p>
+          </output>
           <button
             type="button"
             className="tw-block tw-ml-auto tw-text-sm"
@@ -132,37 +134,37 @@ function StringsPage(): any {
           >
             copy
           </button>
-        </section>
+        </div>
 
-        <section className="tw-my-4">
-          <p className="tw-font-bold tw-capitalize">capitalize</p>
-          <p className="output tw-border twc-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
-            {texts.capitalize}
-          </p>
+        <div className="tw-my-4">
+          <p className="tw-font-bold tw-capitalize">capital letter</p>
+          <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
+            {texts.convertToCapitalLetter}
+          </output>
           <button
             type="button"
             className="tw-block tw-ml-auto tw-text-sm"
-            data-clipboard-text={texts.capitalize}
+            data-clipboard-text={texts.convertToCapitalLetter}
             onClick={handleCopyText}
           >
             copy
           </button>
-        </section>
+        </div>
 
-        <section className="tw-my-4">
+        <div className="tw-my-4">
           <p className="tw-font-bold">Capitalize only first word</p>
-          <p className="output tw-border twc-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
-            {texts.capitalizeOnlyFirst}
-          </p>
+          <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
+            {texts.convertToCapitalLetterOnlyFirst}
+          </output>
           <button
             type="button"
             className="tw-block tw-ml-auto tw-text-sm"
-            data-clipboard-text={texts.capitalizeOnlyFirst}
+            data-clipboard-text={texts.convertToCapitalLetterOnlyFirst}
             onClick={handleCopyText}
           >
             copy
           </button>
-        </section>
+        </div>
       </MainLayout>
 
       <style jsx>

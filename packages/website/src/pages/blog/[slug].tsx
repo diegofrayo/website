@@ -11,7 +11,7 @@ import Routes from "~/data/routes.json";
 import { useInternationalization, useAssets, useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
 import { TypeBlogPost, TypeLocale, TypePagesRoutes } from "~/types";
-import { getBlogPosts, getBlogTitle } from "~/utils/blog";
+import BlogService from "~/utils/blog";
 import {
   copyToClipboard,
   getScrollPosition,
@@ -57,10 +57,10 @@ function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
             url: Routes.BLOG as TypePagesRoutes,
           },
           {
-            text: getBlogTitle(post, currentLocale),
+            text: BlogService.composeTitle(post, currentLocale),
           },
         ]}
-        title={getBlogTitle(post, currentLocale)}
+        title={BlogService.composeTitle(post, currentLocale)}
       >
         <MDXContent content={mdxContent} />
         <BlogPostFooter
@@ -68,7 +68,7 @@ function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
           createdAt={post.created_at}
           publishedAt={post.published_at}
           slug={post.slug}
-          title={getBlogTitle(post, currentLocale)}
+          title={BlogService.composeTitle(post, currentLocale)}
           updatedAt={post.updated_at}
         />
       </MainLayout>
@@ -79,7 +79,7 @@ function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
 // TODO: Next types
 export async function getStaticPaths(): Promise<Record<string, any>> {
   return {
-    paths: getBlogPosts().reduce((result, post: TypeBlogPost) => {
+    paths: (await BlogService.fetchPosts()).reduce((result, post: TypeBlogPost) => {
       return result.concat(
         post.locales.map((locale: TypeLocale) => {
           return { params: { slug: post.slug }, locale };
@@ -168,26 +168,26 @@ function BlogPostFooter({
       <Separator size={8} />
 
       {/*
-      <section className="tw-mb-4 tw-flex-1 tw-flex tw-items-center tw-text-sm">
+      <div className="tw-mb-4 tw-flex-1 tw-flex tw-items-center tw-text-sm">
         <p className="tw-mr-4 tw-italic">
           {SiteTexts.page.current_locale.like_blog_post}
         </p>
         <button
-          className="tw-border twc-border-color-primary dark:twc-border-color-primary twc-bg-secondary dark:twc-bg-secondary tw-flex tw-items-center tw-flex-shrink-0 tw-rounded-md tw-text-sm"
+          className="tw-border dfr-border-color-primary dark:dfr-border-color-primary dfr-bg-secondary dark:dfr-bg-secondary tw-flex tw-items-center tw-flex-shrink-0 tw-rounded-md tw-text-sm"
           onClick={() => {
             alert("En progreso...");
           }}
         >
           <Emoji className="tw-px-2">👍</Emoji>
-          <section className="tw-border-l twc-border-color-primary dark:twc-border-color-primary tw-flex tw-items-center tw-px-2 tw-py-1 tw-h-full">
+          <div className="tw-border-l dfr-border-color-primary dark:dfr-border-color-primary tw-flex tw-items-center tw-px-2 tw-py-1 tw-h-full">
             <span className="tw-relative tw--top-2px tw-font-bold">0</span>
-          </section>
+          </div>
         </button>
-      </section>
+      </div>
       */}
 
-      <section className="twc-border-color-primary tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-border tw-p-4">
-        <section className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
+      <div className="dfr-border-color-primary tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-border tw-p-4">
+        <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
           <BlogPostFooterItem>
             <BlogPostFooterItem.Icon
               src={BlogPostAssets.CALENDAR}
@@ -210,12 +210,12 @@ function BlogPostFooter({
             <span className="tw-mr-1">{SiteTexts.page.current_locale.created_by}</span>
             <Link href={WEBSITE_METADATA.social.twitter}>{author}</Link>
           </BlogPostFooterItem>
-        </section>
+        </div>
         <Separator
           size={4}
-          className="tw-w-full tw-border-t twc-border-color-primary dark:twc-border-color-primary tw-block sm:tw-hidden"
+          className="tw-w-full tw-border-t dfr-border-color-primary dark:dfr-border-color-primary tw-block sm:tw-hidden"
         />
-        <section className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start sm:tw-items-end tw-justify-center tw-flex-col">
+        <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start sm:tw-items-end tw-justify-center tw-flex-col">
           <BlogPostFooterItem
             is={Link}
             href={`https://twitter.com/intent/tweet?${createQueryFromObject({
@@ -251,8 +251,8 @@ function BlogPostFooter({
             />
             <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
           </BlogPostFooterItem>
-        </section>
-      </section>
+        </div>
+      </div>
       {showGoToTopButton && (
         <button
           className="tw-fixed tw-bg-black tw-opacity-50 tw-text-2xl tw-bottom-2 tw-right-2 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-text-white tw-font-bold tw-transition-opacity hover:tw-opacity-75"
@@ -267,7 +267,7 @@ function BlogPostFooter({
   );
 }
 
-const BlogPostFooterItem = twcss.section({
+const BlogPostFooterItem = twcss.div({
   __base: `tw-flex tw-items-center tw-justify-start tw-my-1 tw-text-sm tw-text-left`,
   withHover: "tw-transition-opacity hover:tw-opacity-75",
 });
@@ -275,7 +275,7 @@ const BlogPostFooterItem = twcss.section({
 BlogPostFooterItem.Icon = twcss(Image)(
   {
     __base: "tw-inline-block tw-h-4 tw-w-4 tw-mr-2",
-    withDarkMode: "dark:tw-rounded-md dark:twc-bg-secondary dark:tw-p-1",
+    withDarkMode: "dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1",
     withoutDarkMode: "",
   },
   {

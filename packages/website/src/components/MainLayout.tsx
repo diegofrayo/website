@@ -36,10 +36,12 @@ function MainLayout({ children, locales, breadcumb, title }: TypeMainLayoutProps
         {breadcumb && <Breadcumb items={breadcumb} />}
         <Separator size={4} />
 
-        <h1 className="tw-text-left tw-text-3xl tw-font-bold">{title}</h1>
-        <Separator className="tw-my-5 sm:tw-my-3" />
+        <div>
+          <h1 className="tw-text-left tw-text-3xl tw-font-bold">{title}</h1>
+          <Separator className="tw-my-5 sm:tw-my-3" />
 
-        {children}
+          {children}
+        </div>
       </Body>
       <Separator size={8} />
 
@@ -52,9 +54,9 @@ export default MainLayout;
 
 // --- Components ---
 
-const Main = twcss.main`twc-max-w-base tw-w-full tw-py-4 tw-px-6 tw-mx-auto tw-relative`;
+const Main = twcss.main`dfr-max-w-base tw-w-full tw-py-4 tw-px-6 tw-mx-auto tw-relative`;
 
-const Body = twcss.section``;
+const Body = twcss.div``;
 
 type TypeHeaderProps = {
   locales: TypeGenerateSupportedLocales;
@@ -81,12 +83,12 @@ const Header = safeRender(function Header({ locales }: TypeHeaderProps): any {
 
   if (fixedHeader) {
     return (
-      <header className="root tw-fixed tw-w-full tw-left-0 tw-top-0 tw-z-30 twc-bg-secondary dark:tw-bg-black tw-shadow-md">
-        <section className="tw-p-4 tw-flex twc-max-w-base tw-mx-auto tw-items-center">
+      <header className="root tw-fixed tw-w-full tw-left-0 tw-top-0 tw-z-30 dfr-bg-secondary dark:tw-bg-black tw-shadow-md">
+        <div className="tw-p-4 tw-flex dfr-max-w-base tw-mx-auto tw-items-center">
           <Link
             is={NextLink}
             href={Routes.HOME}
-            className="tw-flex tw-items-center tw-justify-center tw-w-10 tw-h-10 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:twc-border-color-primary tw-bg-blue-200 dark:tw-bg-gray-300 tw-mr-4 tw-rounded-lg tw-text-xl"
+            className="tw-flex tw-items-center tw-justify-center tw-w-10 tw-h-10 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:dfr-border-color-primary tw-bg-blue-200 dark:tw-bg-gray-300 tw-mr-4 tw-rounded-lg tw-text-xl"
             styled={false}
             role="button"
             aria-label="Go to home page"
@@ -97,11 +99,11 @@ const Header = safeRender(function Header({ locales }: TypeHeaderProps): any {
             Diego Rayo
           </h1>
           <DarkModeToggle />
-        </section>
+        </div>
 
         <style jsx>{`
-          :global(.tw-dark) .root :global(.dark-mode-button) {
-            @apply value:dark:twc-bg-secondary;
+          :global(.tw-dark) .root :global(.DarkModeToggle) {
+            @apply value:dark:dfr-bg-secondary;
           }
         `}</style>
       </header>
@@ -110,32 +112,32 @@ const Header = safeRender(function Header({ locales }: TypeHeaderProps): any {
 
   return (
     <header
-      className="twc-border-color-primary tw-border-b tw-pb-4 tw-flex tw-items-center sm:tw-items-start"
+      className="dfr-border-color-primary tw-border-b tw-pb-4 tw-flex tw-items-center sm:tw-items-start"
       ref={headerRef}
     >
       <Link
         is={NextLink}
         href={Routes.HOME}
-        className="tw-flex tw-items-center tw-justify-center tw-w-10 sm:tw-w-16 tw-h-10 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:twc-border-color-primary tw-bg-blue-200 dark:tw-bg-gray-300 tw-rounded-lg tw-text-2xl tw-relative sm:tw-top-1"
+        className="tw-flex tw-items-center tw-justify-center tw-w-10 sm:tw-w-16 tw-h-10 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:dfr-border-color-primary tw-bg-blue-200 dark:tw-bg-gray-300 tw-rounded-lg tw-text-2xl tw-relative sm:tw-top-1"
         styled={false}
         role="button"
         aria-label="Go to home page"
       >
         <Emoji>👨‍💻</Emoji>
       </Link>
-      <section className="tw-flex-1 tw-mx-4">
+      <div className="tw-flex-1 tw-mx-4">
         <h1 className="tw-text-2xl sm:tw-text-4xl tw-font-bold">Diego Rayo</h1>
         <p className="tw-text-sm sm:tw-text-base">
           {SiteTexts.layout.current_locale.header.job_title}
         </p>
-      </section>
-      <section className="tw-flex tw-flex-shrink-0 tw-self-stretch tw-relative tw-flex-col tw-justify-between tw-items-end">
-        <section className="tw-relative tw-top-2">
+      </div>
+      <div className="tw-flex tw-flex-shrink-0 tw-self-stretch tw-relative tw-flex-col tw-justify-between tw-items-end">
+        <div className="tw-relative tw-top-2">
           <DarkModeToggle />
-        </section>
+        </div>
         <Separator size={3} />
         {locales && <LocalesSelector locales={locales} currentLocale={currentLocale} />}
-      </section>
+      </div>
     </header>
   );
 });
@@ -149,7 +151,7 @@ function DarkModeToggle(): any {
   return (
     <button
       className={
-        "dark-mode-button tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md tw-bg-black"
+        "DarkModeToggle tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md tw-bg-black"
       }
       onClick={() => {
         setTheme(isDarkMode ? "light" : "dark");
@@ -183,10 +185,10 @@ type TypeLocalesSelectorProps = {
 
 function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): any {
   return (
-    <section className="tw-border tw-py-1 tw-px-2 tw-text-sm twc-border-color-primary dark:twc-border-color-primary">
+    <div className="tw-border tw-py-1 tw-px-2 tw-text-sm dfr-border-color-primary dark:dfr-border-color-primary">
       {locales.sort(sortBy("name", "asc")).map((locale, index) => {
         return (
-          <Fragment key={`LocaleToggle-${locale.name}`}>
+          <Fragment key={`LocalesSelector-${locale.name}`}>
             {currentLocale === locale.name ? (
               <span className="tw-font-bold">{locale.name}</span>
             ) : (
@@ -199,13 +201,13 @@ function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): 
           </Fragment>
         );
       })}
-    </section>
+    </div>
   );
 }
 
 function Footer() {
   return (
-    <footer className="twc-border-color-primary tw-border-t tw-pt-4 tw-text-center">
+    <footer className="dfr-border-color-primary tw-border-t tw-pt-4 tw-text-center">
       <SocialIcons />
     </footer>
   );
@@ -248,11 +250,11 @@ function SocialIcons(): any {
   ];
 
   return (
-    <section>
+    <div>
       {SOCIAL_NETWORKS.map(item => {
         return <SocialIcon key={item.name} {...item} />;
       })}
-    </section>
+    </div>
   );
 }
 
@@ -266,7 +268,7 @@ function SocialIcon({ icon, url, name }: TypeSocialIconProps): any {
   return (
     <Link
       href={url}
-      className="tw-inline-block dark:twc-bg-secondary tw-p-1 dark:tw-rounded-md tw-mx-2 tw-my-1 sm:tw-my-0 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
+      className="tw-inline-block dark:dfr-bg-secondary tw-p-1 dark:tw-rounded-md tw-mx-2 tw-my-1 sm:tw-my-0 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
       styled={false}
     >
       <Image src={icon} alt={`${name} icon`} className="tw-h-5 tw-w-5" />

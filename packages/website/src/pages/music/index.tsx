@@ -1,14 +1,14 @@
 import * as React from "react";
 import NextLink from "next/link";
 
-import { Page, MainLayout, UL, Link } from "~/components";
+import { Page, MainLayout, UL, Link, Render } from "~/components";
 import { SongInfo } from "~/components/pages/music";
 import Routes from "~/data/routes.json";
-import { useInternationalization } from "~/hooks";
+import { useInternationalization, useQuery } from "~/hooks";
 import { TypePagesRoutes, TypeSong } from "~/types";
-import { getSongsList } from "~/utils/music";
-import { removeEmojiFromTitle } from "~/utils/strings";
+import MusicService from "~/utils/music";
 import { sortBy } from "~/utils/misc";
+import { removeEmojiFromPageTitle } from "~/utils/strings";
 
 function MusicPage(): any {
   const { SiteTexts } = useInternationalization({
@@ -16,10 +16,12 @@ function MusicPage(): any {
     layout: true,
   });
 
+  const { isLoading, error, data } = useQuery("songsList", MusicService.fetchSongsList);
+
   return (
     <Page
       config={{
-        title: removeEmojiFromTitle(SiteTexts.page.current_locale.title),
+        title: removeEmojiFromPageTitle(SiteTexts.page.current_locale.title),
         pathname: Routes.MUSIC,
         description: SiteTexts.page.current_locale.meta_description,
       }}
@@ -37,24 +39,29 @@ function MusicPage(): any {
         title={SiteTexts.page.current_locale.title}
       >
         <p className="tw-mb-4">{SiteTexts.page.current_locale.description}</p>
-        <UL>
-          {getSongsList()
-            .sort(sortBy("title"))
-            .map((song: TypeSong) => {
-              return (
-                <li key={`SongItem-${song.id}`}>
-                  <Link is={NextLink} href={`${Routes.MUSIC}/${song.id}`}>
-                    {song.title}
-                  </Link>
-                  <SongInfo
-                    song={song}
-                    SiteTexts={SiteTexts}
-                    className="tw-ml-4 tw-mb-4"
-                  />
-                </li>
-              );
-            })}
-        </UL>
+
+        <Render isLoading={isLoading} error={error} data={data}>
+          {data => {
+            return (
+              <UL>
+                {data.sort(sortBy("title")).map((song: TypeSong) => {
+                  return (
+                    <li key={song.id}>
+                      <Link is={NextLink} href={`${Routes.MUSIC}/${song.id}`}>
+                        {song.title}
+                      </Link>
+                      <SongInfo
+                        song={song}
+                        SiteTexts={SiteTexts}
+                        className="tw-ml-4 tw-mb-4"
+                      />
+                    </li>
+                  );
+                })}
+              </UL>
+            );
+          }}
+        </Render>
       </MainLayout>
     </Page>
   );

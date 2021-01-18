@@ -1,14 +1,15 @@
 import * as React from "react";
 import NextLink from "next/link";
 
-import { Page, MainLayout, UL, Link } from "~/components";
+import { Page, MainLayout, UL, Link, Render } from "~/components";
 import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
 import { TypeBlogPost, TypeLocale, TypePagesRoutes } from "~/types";
-import { getBlogPosts, getBlogTitle } from "~/utils/blog";
+import BlogService from "~/utils/blog";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
-import { removeEmojiFromTitle } from "~/utils/strings";
+import { removeEmojiFromPageTitle } from "~/utils/strings";
+import { useQuery } from "react-query";
 
 function BlogPage(): any {
   const { SiteTexts, currentLocale } = useInternationalization({
@@ -16,10 +17,12 @@ function BlogPage(): any {
     layout: true,
   });
 
+  const { isLoading, error, data } = useQuery("blogPosts", BlogService.fetchPosts);
+
   return (
     <Page
       config={{
-        title: removeEmojiFromTitle(SiteTexts.page.current_locale.title),
+        title: removeEmojiFromPageTitle(SiteTexts.page.current_locale.title),
         pathname: Routes.BLOG,
         description: SiteTexts.page.current_locale.meta_description,
       }}
@@ -38,25 +41,31 @@ function BlogPage(): any {
         title={SiteTexts.page.current_locale.title}
       >
         <p className="tw-mb-4">{SiteTexts.page.current_locale.description}</p>
-        <UL>
-          {getBlogPosts().map((post: TypeBlogPost) => {
-            const locale: TypeLocale = getItemLocale(
-              post.locales,
-              post.default_locale,
-              currentLocale,
-            );
-
+        <Render isLoading={isLoading} error={error} data={data}>
+          {data => {
             return (
-              <BlogEntry
-                key={post.slug}
-                slug={post.slug}
-                updatedAt={post.updated_at}
-                title={getBlogTitle(post, locale)}
-                locale={locale}
-              />
+              <UL>
+                {data.map((post: TypeBlogPost) => {
+                  const locale: TypeLocale = getItemLocale(
+                    post.locales,
+                    post.default_locale,
+                    currentLocale,
+                  );
+
+                  return (
+                    <BlogEntry
+                      key={`BlogEntry-${post.slug}`}
+                      slug={post.slug}
+                      updatedAt={post.updated_at}
+                      title={BlogService.composeTitle(post, locale)}
+                      locale={locale}
+                    />
+                  );
+                })}
+              </UL>
             );
-          })}
-        </UL>
+          }}
+        </Render>
       </MainLayout>
     </Page>
   );

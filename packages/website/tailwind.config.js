@@ -40,17 +40,17 @@ module.exports = {
 
 function myCustomClassesPlugin({ addUtilities, config, e }) {
   const newClasses = {
-    "twc-mt-base": {
+    "dfr-mt-base": {
       marginTop: config("theme.spacing")["3"],
     },
-    "twc-mb-base": {
+    "dfr-mb-base": {
       marginBottom: config("theme.spacing")["6"],
     },
-    "twc-max-w-base": {
+    "dfr-max-w-base": {
       maxWidth: config("theme.screens")["md"],
     },
 
-    "twc-bg-primary": {
+    "dfr-bg-primary": {
       light: {
         backgroundColor: "white",
       },
@@ -58,7 +58,7 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
         backgroundColor: "#282c34",
       },
     },
-    "twc-bg-secondary": {
+    "dfr-bg-secondary": {
       light: {
         backgroundColor: config("theme.colors").gray["100"],
       },
@@ -66,7 +66,7 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
         backgroundColor: config("theme.colors").gray["500"],
       },
     },
-    "twc-text-color-primary": {
+    "dfr-text-color-primary": {
       light: {
         color: config("theme.colors").gray["700"],
       },
@@ -74,7 +74,7 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
         color: "#ffffff",
       },
     },
-    "twc-text-color-secondary": {
+    "dfr-text-color-secondary": {
       light: {
         color: config("theme.colors").black,
       },
@@ -82,7 +82,7 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
         color: "#FAC863",
       },
     },
-    "twc-text-color-links": {
+    "dfr-text-color-links": {
       light: {
         color: config("theme.colors").blue["700"],
       },
@@ -90,7 +90,7 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
         color: "#8CC790",
       },
     },
-    "twc-border-color-primary": {
+    "dfr-border-color-primary": {
       light: {
         borderColor: config("theme.colors").gray["200"],
       },

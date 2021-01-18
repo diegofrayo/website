@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import type { AppProps } from "next/app";
 import Router from "next/router";
 import { ThemeProvider } from "next-themes";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 import { useDidMount } from "~/hooks";
 import { AssetsProvider } from "~/hooks/useAssets";
@@ -14,6 +15,8 @@ import { setScrollPosition, detectEmojisSupport } from "~/utils/browser";
 import { extractLocaleFromUrl, setCurrentLocale } from "~/utils/internationalization";
 
 import ErrorPage from "./_error";
+
+const queryClient = new QueryClient();
 
 function App({ Component, pageProps }: AppProps) {
   const [error, setError] = useState(undefined);
@@ -33,20 +36,22 @@ function App({ Component, pageProps }: AppProps) {
   });
 
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="light"
-      enableSystem={false}
-      value={{ light: "tw-light", dark: "tw-dark" }}
-    >
-      {error ? (
-        <ErrorPage />
-      ) : (
-        <AssetsProvider>
-          <Component {...pageProps} />
-        </AssetsProvider>
-      )}
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="light"
+        enableSystem={false}
+        value={{ light: "tw-light", dark: "tw-dark" }}
+      >
+        {error ? (
+          <ErrorPage />
+        ) : (
+          <AssetsProvider>
+            <Component {...pageProps} />
+          </AssetsProvider>
+        )}
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 

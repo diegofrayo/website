@@ -1,0 +1,181 @@
+## Layout
+
+<Playground
+  Component={() => {
+    return <HSTMain />;
+  }}
+  code={`<main>
+  <header>
+    <h1>Page title</h1>
+    <nav>
+      <ul>
+        <li>
+          <a href="/page-1">Page 1</a>
+        </li>
+        <li>
+          <a href="/page-2">Page 2</a>
+        </li>
+        <li>
+          <a href="/page-3">Page 3</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div>
+    <aside>
+      <section>
+        <h2>About me</h2>
+        <p>Hello, strong span</p>
+      </section>
+      <section>
+        <h2>Links</h2>
+        <div>content...</div>
+      </section>
+    </aside>
+    <section>
+      <h2>Main content</h2>
+      <article>
+        <header>
+          <h1>Item title 1</h1>
+        </header>
+        <div>
+          <p>Content...</p>
+        </div>
+        <footer>Item footer</footer>
+      </article>
+      <article>
+        <header>
+          <h1>Item title 2</h1>
+        </header>
+        <div>
+          <p>Content...</p>
+        </div>
+        <footer>Item footer</footer>
+      </article>
+    </section>
+  </div>
+  <footer>Page footer</footer>
+</main>`}
+  language="html"
+/>
+
+- solo deberia existir un elemento `main` por página
+- es el elemento principal de una pagina web
+- Agrupa una seccion en particular, un bloque (noticias, lista de algo, contact information). Puede contener muchas cosas
+  A section is a thematic grouping of content, typically with a heading.
+- Componente que contiene info relacionada,
+- se puede mover a cualquier lado y su info siempre se entendera.
+- Puede contener header y footer y h1
+- Tip: syndication refers to a process of making reusable content, which can be incorporated into multiple web sites or documents.
+  Aside: Barra lateral
+  contains information which is not directly related to the main purpose or idea of a web page.
+  The aside content should be indirectly related to the surrounding content.
+  p y span
+- section vs article vs div vs span
+
+## More interesting tags
+
+### details
+
+<Playground
+  Component={() => {
+    return (
+      <details>
+        <summary>Click here to hide or show</summary>
+        <p>- Visible</p>
+      </details>
+    );
+  }}
+  code={`<details>
+  <summary>Click here to hide or show</summary>
+  <p>- Visible</p>
+</details>`}
+  language="html"
+/>
+
+### output
+
+<Playground
+  Component={() => {
+    return null;
+  }}
+  code={`l`}
+  language="html"
+/>
+
+- The HTML Output element `<output>` is a container element into which a site or app can inject the results of a calculation or the outcome of a user action.
+
+### figure
+
+<Playground
+  Component={() => {
+    return (
+      <figure>
+        <img
+          src="https://www.dogstrust.org.uk/help-advice/_images/164742v800_puppy-1.jpg"
+          alt="Puppy"
+          width="150"
+          height="150"
+        />
+        <figcaption>Puppy</figcaption>
+      </figure>
+    );
+  }}
+  code={`<figure>
+  <img
+    src="https://www.dogstrust.org.uk/help-advice/_images/164742v800_puppy-1.jpg"
+    alt="Puppy"
+    width="150"
+    height="150"
+  />
+  <figcaption>Puppy</figcaption>
+</figure>`}
+  language="html"
+/>
+
+### mark
+
+<Playground
+  Component={() => {
+    return (
+      <p>
+        The mark tag is <mark>useful</mark> when you need to highlight important
+        information.
+      </p>
+    );
+  }}
+  code={`<p>The mark tag is <mark>useful</mark> when you need to highlight important information.</p>`}
+  language="html"
+/>
+
+### progress
+
+<Playground
+  Component={() => {
+    return (
+      <div>
+        <p>Donuts eaten:</p>
+        <progress value="60" max="100"></progress>
+      </div>
+    );
+  }}
+  code={`<div>
+  <p>Donuts eaten:</p>
+  <progress value="60" max="100"></progress>
+</div>`}
+  language="html"
+/>
+
+### dialog
+
+<Playground
+  Component={() => {
+    return <dialog open>This is an open dialog window</dialog>;
+  }}
+  code={`<dialog open>This is an open dialog window</dialog>`}
+  language="html"
+/>
+
+- Dialog: No muy sportado aun
+
+Source: [HTML5 Tags List: Get to Know the Most Useful Elements](https://www.bitdegree.org/learn/html5-tags)

@@ -32,9 +32,9 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
         :global(.mdx-content) > :global(hr),
         :global(.mdx-content) :global(ol),
         :global(.mdx-content) :global(ul),
-        :global(.mdx-content) > :global(section[data-block]) {
-          @apply twc-mt-base;
-          @apply twc-mb-base;
+        :global(.mdx-content) > :global(div[data-block]) {
+          @apply dfr-mt-base;
+          @apply dfr-mb-base;
         }
 
         :global(.mdx-content) :global(ol) {
@@ -49,10 +49,10 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
         }
 
         :global(.mdx-content) :global(blockquote) {
-          @apply twc-border-color-primary;
+          @apply dfr-border-color-primary;
           @apply tw-border-l-4;
           @apply tw-pl-4;
-          @apply twc-text-color-secondary;
+          @apply dfr-text-color-secondary;
           font-style: italic;
         }
 
@@ -61,7 +61,7 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
         }
 
         :global(.mdx-content) > :global(pre),
-        :global(.mdx-content) :global(pre.code-highlighted) {
+        :global(.mdx-content) :global(.Code) :global(pre) {
           @apply tw-bg-gray-800;
           @apply tw-p-4;
           @apply tw-rounded-md;
@@ -91,7 +91,7 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
         }
 
         :global(.mdx-content--dark) :global(hr) {
-          @apply value:dark:twc-border-color-primary;
+          @apply value:dark:dfr-border-color-primary;
         }
 
         :global(.mdx-content) :global(ul) :global(li) > :global(p) {

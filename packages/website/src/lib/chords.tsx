@@ -71,10 +71,10 @@ export function Chords({
 
   return (
     <article className="tw-max-w-full tw-text-center">
-      <section ref={chordRef}>
-        <section className="tw-inline-flex tw-flex-no-wrap tw-overflow-x-auto tw-max-w-full tw-pt-8">
+      <div ref={chordRef}>
+        <div className="tw-inline-flex tw-flex-no-wrap tw-overflow-x-auto tw-max-w-full tw-pt-8">
           <Fret variant="FRET_STRINGS_NAMES" />
-          <section className="tw-relative tw-inline-flex tw-flex-no-wrap">
+          <div className="tw-relative tw-inline-flex tw-flex-no-wrap">
             <h1 className="tw-truncate tw-text-xs tw-absolute tw-text-center tw-font-bold tw-w-full tw--top-6">
               {name}
             </h1>
@@ -93,16 +93,16 @@ export function Chords({
                 );
               })}
             {firstFret - 1 > 0 && <Fret variant="FRET_EMPTY" fret={firstFret - 1} />}
-          </section>
+          </div>
           {stringsToSkip && (
             <Fret variant="FRET_SKIP_STRINGS" stringsToSkip={stringsToSkip} />
           )}
-        </section>
-      </section>
+        </div>
+      </div>
 
       {showOptions && (
         <Fragment>
-          <section className="tw-pt-2">
+          <div className="tw-pt-2">
             <button
               className="tw-text-sm tw-font-bold tw-p-1 tw-transition-opacity hover:tw-opacity-75"
               onClick={handleDownloadAsImage}
@@ -137,14 +137,14 @@ export function Chords({
             >
               <Emoji>📋</Emoji> copy input to clipboard
             </button>
-          </section>
+          </div>
           {showInput && (
-            <section className="tw-text-sm tw-mt-4">
+            <div className="tw-text-sm tw-mt-4">
               <strong className="tw-block tw-mb-1">input:</strong>
               <pre className="tw-whitespace-pre-line tw-text-sm tw-break-all">
                 {chordsToString}
               </pre>
-            </section>
+            </div>
           )}
         </Fragment>
       )}
@@ -155,38 +155,38 @@ export function Chords({
 export function Solo({ positions, notes }) {
   return (
     <article className="tw-text-sm tw-pr-2">
-      <section className="tw-flex">
+      <div className="tw-flex">
         <Fret variant="FRET_STRINGS_NAMES" />
 
         {["|", ...positions.split("|"), "|"].map((item, index) => {
           const [string, fret, finger] = item.split(",");
 
           return (
-            <section key={`position-${index}`} className="tw-ml-1">
-              <section className="tw-h-6" />
-              <section>
+            <div key={`Solo-position-${index}`} className="tw-ml-1">
+              <div className="tw-h-6" />
+              <div>
                 {createArray(6)
                   .reverse()
                   .map(i => {
                     if (i === Number(string)) {
                       return (
-                        <section key={`idk-${i}`} className="tw-h-6">
+                        <div key={`Solo-position-${index}-${i}`} className="tw-h-6">
                           {finger !== undefined ? fret : "0"}
-                        </section>
+                        </div>
                       );
                     }
 
                     return (
-                      <section key={`idk-${i}`} className="tw-h-6">
+                      <div key={`Solo-position-${index}-${i}`} className="tw-h-6">
                         -
-                      </section>
+                      </div>
                     );
                   })}
-              </section>
-            </section>
+              </div>
+            </div>
           );
         })}
-      </section>
+      </div>
       <blockquote className="tw-ml-2 tw-whitespace-pre-line tw-break-word">
         {notes}
       </blockquote>
@@ -218,16 +218,16 @@ function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
   ].reverse();
 
   return (
-    <section
+    <div
       className={classnames(
         "tw-flex-shrink-0 tw-text-xs",
         isSkipStringsVariant ? "tw-auto" : isStringsNamesVariant ? "tw-w-16" : "tw-w-10",
       )}
     >
-      <section className="tw-flex tw-items-center tw-justify-center tw-h-6 tw-font-bold">
+      <div className="tw-flex tw-items-center tw-justify-center tw-h-6 tw-font-bold">
         {fret || ""}
-      </section>
-      <section
+      </div>
+      <div
         className={classnames(
           !isStringsNamesVariant &&
             !isSkipStringsVariant &&
@@ -250,7 +250,7 @@ function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
                 : undefined;
 
             return (
-              <section
+              <div
                 key={`Fret-${
                   isEmptyVariant
                     ? `empty-${string}`
@@ -267,10 +267,10 @@ function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
                 className="tw-flex tw-items-center tw-h-6"
               >
                 {isStringsNamesVariant ? (
-                  <section className="tw-flex tw-justify-between tw-w-full tw-px-2">
+                  <div className="tw-flex tw-justify-between tw-w-full tw-px-2">
                     <span>{STRINGS_NAMES[string - 1]}</span>
                     <strong>{string}</strong>
-                  </section>
+                  </div>
                 ) : isSkipStringsVariant ? (
                   <span className="tw-px-2">
                     {(typeof stringsToSkip === "string"
@@ -298,11 +298,11 @@ function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
                 ) : (
                   <String />
                 )}
-              </section>
+              </div>
             );
           })}
-      </section>
-    </section>
+      </div>
+    </div>
   );
 }
 

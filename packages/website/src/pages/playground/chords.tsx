@@ -30,7 +30,7 @@ function ChordsPage(): any {
         ]}
         title={PAGE_NAME}
       >
-        <section>
+        <div>
           <h2 className="tw-text-2xl tw-mb-4">Create your chord</h2>
 
           <label htmlFor="input-name">
@@ -38,7 +38,7 @@ function ChordsPage(): any {
             <input
               id="input-name"
               placeholder="Example: A"
-              className="tw-border tw-border-b-4 twc-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
+              className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
               value={inputs.name}
               maxLength={15}
               onChange={e => {
@@ -53,7 +53,7 @@ function ChordsPage(): any {
             <input
               id="input-chords"
               placeholder="4,2,1|3,2,2|2,2,3"
-              className="tw-border tw-border-b-4 twc-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
+              className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
               value={inputs.chords}
               onChange={e => {
                 setInputs({ ...inputs, chords: e.currentTarget.value });
@@ -68,14 +68,14 @@ function ChordsPage(): any {
           </code>
           <Separator size={6} />
 
-          <section className="tw-border tw-p-4">
+          <div className="tw-border tw-p-4">
             <strong>output</strong>
             <Chords name={inputs.name} chords={inputs.chords} />
-          </section>
-        </section>
+          </div>
+        </div>
         <Separator size={8} className="tw-border-b" />
 
-        <section>
+        <div>
           <h2 className="tw-text-2xl tw-mb-4">Examples</h2>
 
           <Chords
@@ -110,7 +110,7 @@ function ChordsPage(): any {
               { finger: 2, fret: 4, string: 2 },
             ]}
           />
-        </section>
+        </div>
       </MainLayout>
     </Page>
   );

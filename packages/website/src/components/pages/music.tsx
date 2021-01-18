@@ -5,7 +5,7 @@ import { Modal, Separator } from "~/components";
 import { useDidMount } from "~/hooks";
 import { Chords } from "~/lib/chords";
 import { TypeSiteTexts, TypeSong } from "~/types";
-import { getChord, parseSong } from "~/utils/music";
+import MusicService from "~/utils/music";
 
 export { Solo } from "~/lib/chords";
 
@@ -19,15 +19,15 @@ export function SongInfo({
   className?: string;
 }): any {
   return (
-    <section className={classnames("tw-text-sm tw-italic tw-mb-4", className)}>
-      <section>
+    <div className={classnames("tw-text-sm tw-italic tw-mb-4", className)}>
+      <div>
         <strong>{SiteTexts.page.current_locale.artist}:</strong>{" "}
         <span>{song.artist}</span>
-      </section>
-      <section>
+      </div>
+      <div>
         <strong>{SiteTexts.page.current_locale.album}:</strong> <span>{song.album}</span>
-      </section>
-    </section>
+      </div>
+    </div>
   );
 }
 
@@ -38,7 +38,7 @@ export function LyricsAndChords({ children }): any {
   useDidMount(() => {
     document.querySelectorAll(".chord")?.forEach(button => {
       button.addEventListener("click", function (event: any) {
-        setSelectedChord(getChord(event.target.innerText) as any);
+        setSelectedChord(MusicService.findChord(event.target.innerText) as any);
         setIsModalVisible(true);
       });
     });
@@ -50,16 +50,16 @@ export function LyricsAndChords({ children }): any {
   }
 
   return (
-    <section>
+    <div>
       <pre
         className="tw-text-sm tw-p-1"
         dangerouslySetInnerHTML={{
-          __html: parseSong(children),
+          __html: MusicService.parseLyricsAndChords(children),
         }}
       />
 
       <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
-        <section className="tw-bg-white dark:tw-bg-black tw-p-4 tw-rounded-md">
+        <div className="tw-bg-white dark:tw-bg-black tw-p-4 tw-rounded-md">
           {selectedChord && (
             <Chords
               name={(selectedChord as any)?.name || ""}
@@ -70,13 +70,13 @@ export function LyricsAndChords({ children }): any {
           )}
           <Separator className="tw-mt-6 tw-mb-1" />
           <button
-            className="tw-text-center tw-text-sm tw-block tw-font-bold tw-w-full tw-transition-opacity hover:tw-opacity-75 tw-border twc-border-color-primary dark:twc-border-color-primary"
+            className="tw-text-center tw-text-sm tw-block tw-font-bold tw-w-full tw-transition-opacity hover:tw-opacity-75 tw-border dfr-border-color-primary dark:dfr-border-color-primary"
             onClick={handleModalClose}
           >
             cerrar
           </button>
-        </section>
+        </div>
       </Modal>
-    </section>
+    </div>
   );
 }

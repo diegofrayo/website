@@ -1,4 +1,4 @@
-export function capitalize(str: string): string {
+export function convertToCapitalLetter(str: string): string {
   return str
     .toLowerCase()
     .split(" ")
@@ -7,11 +7,11 @@ export function capitalize(str: string): string {
     .trim();
 }
 
-export function removeEmojiFromTitle(str: string): string {
+export function removeEmojiFromPageTitle(str: string): string {
   return str.split(" ").slice(1).join(" ").trim();
 }
 
-export function slugify(str: string): string {
+export function generateSlug(str: string): string {
   let result: string = str.replace(/^\s+|\s+$/g, "").toLowerCase();
 
   // remove accents, swap ñ for n, etc
@@ -29,10 +29,10 @@ export function slugify(str: string): string {
   return result;
 }
 
-export function toUpperCaseObjectProperty(url: string): string {
+export function generateObjectKeyInUpperCase(url: string): string {
   return url.toUpperCase().replace(/-+/g, "_");
 }
 
-export function toLowerCaseObjectProperty(url: string): string {
+export function generateObjectKeyInLowerCase(url: string): string {
   return url.toLowerCase().replace(/-+/g, "_");
 }

@@ -30,6 +30,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-ga": "^3.3.0",
+    "react-query": "^3.5.16",
     "styled-jsx-plugin-postcss": "^4.0.0",
     "tailwindcss": "^2.0.1"
   },

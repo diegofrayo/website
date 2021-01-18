@@ -2,7 +2,7 @@ import * as React from "react";
 import NextLink from "next/link";
 
 import { TypeBreadcumbProps } from "~/types";
-import { slugify } from "~/utils/strings";
+import { generateSlug } from "~/utils/strings";
 
 import { Link } from "./";
 
@@ -14,7 +14,10 @@ function Breadcumb({ items }: TypeBreadcumbProps): any {
       {items.map((item, index) => {
         if (index === items.length - 1 && moreThanOneItem) {
           return (
-            <li key={`Breadcumb-li-${slugify(item.text)}`} className="tw-inline-block">
+            <li
+              key={`Breadcumb-li-${generateSlug(item.text)}`}
+              className="tw-inline-block"
+            >
               <span className="tw-text-base tw-italic">{item.text}</span>
             </li>
           );
@@ -22,7 +25,7 @@ function Breadcumb({ items }: TypeBreadcumbProps): any {
 
         return (
           <li
-            key={`Breadcumb-li-${slugify(item.text)}`}
+            key={`Breadcumb-li-${generateSlug(item.text)}`}
             className="tw-inline-block tw-mr-2"
           >
             <Link is={NextLink} href={item.url || "/"} styled={false}>

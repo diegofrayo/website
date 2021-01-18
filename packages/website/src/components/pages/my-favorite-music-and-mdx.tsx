@@ -12,7 +12,7 @@ export function HelloWorldMDX({ text }: TypeHelloWorldMDXProps): any {
 
 export function SpotifyPlaylist(): any {
   return (
-    <section className="tw-border-4 tw-border-pink-400" data-block>
+    <div className="tw-border-4 tw-border-pink-400" data-block>
       <iframe
         src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"
         width="100%"
@@ -21,6 +21,6 @@ export function SpotifyPlaylist(): any {
         allow="encrypted-media"
         allowTransparency
       />
-    </section>
+    </div>
   );
 }

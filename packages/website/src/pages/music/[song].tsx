@@ -9,7 +9,7 @@ import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
 import { TypeSong, TypePagesRoutes } from "~/types";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
-import { getSongsList } from "~/utils/music";
+import SongsService from "~/utils/music";
 
 type TypeSongPageProps = {
   song: TypeSong;
@@ -48,9 +48,9 @@ function SongPage({ song, content }: TypeSongPageProps): any {
         title={song.title}
       >
         <SongInfo song={song} SiteTexts={SiteTexts} />
-        <section className="tw-p-2 tw-max-w-full tw-overflow-x-auto tw-border twc-border-color-primary dark:twc-border-color-primary">
+        <div className="tw-p-2 tw-max-w-full tw-overflow-x-auto tw-border dfr-border-color-primary dark:dfr-border-color-primary">
           <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
-        </section>
+        </div>
       </MainLayout>
     </Page>
   );
@@ -59,7 +59,7 @@ function SongPage({ song, content }: TypeSongPageProps): any {
 // TODO: Next types
 export async function getStaticPaths(): Promise<Record<string, any>> {
   return {
-    paths: getSongsList().reduce((result, song: TypeSong) => {
+    paths: (await SongsService.fetchSongsList()).reduce((result, song: TypeSong) => {
       return result.concat([{ params: { song: song.id } }]);
     }, [] as Array<any>),
     fallback: false,
@@ -70,7 +70,9 @@ export async function getStaticPaths(): Promise<Record<string, any>> {
 export async function getStaticProps({
   params,
 }: Record<string, any>): Promise<Record<string, any>> {
-  const song: TypeSong | undefined = getSongsList().find(song => song.id === params.song);
+  const song: TypeSong | undefined = (await SongsService.fetchSongsList()).find(
+    song => song.id === params.song,
+  );
 
   const file = fs.readFileSync(
     `${process.cwd()}/src/data/music/songs/${song?.id}.mdx`,

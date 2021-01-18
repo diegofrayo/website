@@ -79,12 +79,12 @@ function MainMenu({ SiteTexts }) {
   );
 
   return (
-    <section className="tw-mt-8 tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
+    <div className="tw-mt-8 tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
       {ITEMS.map((item, index) => {
         return (
-          <section
-            key={`MainMenuItem-${index}`}
-            className="tw-relative twc-border-color-primary tw-border-l tw-border-b tw-inline-block tw-mb-8 sm:tw-mb-6 tw-cursor-pointer tw-rounded-md"
+          <div
+            key={`MainMenu-item-${index}`}
+            className="tw-relative dfr-border-color-primary tw-border-l tw-border-b tw-inline-block tw-mb-8 sm:tw-mb-6 tw-cursor-pointer tw-rounded-md"
           >
             <Link
               is={NextLink}
@@ -95,12 +95,12 @@ function MainMenu({ SiteTexts }) {
               <Emoji>{item.emoji}</Emoji>
               <span className="tw-text-center">{item.label}</span>
             </Link>
-            <Emoji className="twc-bg-secondary twc-border-color-primary dark:twc-bg-secondary tw-border tw-absolute tw--top-2 tw--left-2 tw-rounded-full tw-p-1 tw-text-sm tw-w-8 tw-h-8 tw-flex tw-items-center tw-justify-center">
+            <Emoji className="dfr-bg-secondary dfr-border-color-primary dark:dfr-bg-secondary tw-border tw-absolute tw--top-2 tw--left-2 tw-rounded-full tw-p-1 tw-text-sm tw-w-8 tw-h-8 tw-flex tw-items-center tw-justify-center">
               📎
             </Emoji>
 
             <style jsx>{`
-              section {
+              div {
                 height: 100px;
                 max-width: 100%;
                 width: 300px;
@@ -110,9 +110,9 @@ function MainMenu({ SiteTexts }) {
                 }
               }
             `}</style>
-          </section>
+          </div>
         );
       })}
-    </section>
+    </div>
   );
 }

@@ -20,8 +20,8 @@ body {
 }
 
 body {
-  @apply twc-bg-primary;
-  @apply twc-text-color-primary;
+  @apply dfr-bg-primary;
+  @apply dfr-text-color-primary;
   cursor: default;
   font-size: 18px;
   overflow: auto;
@@ -35,15 +35,15 @@ h3,
 h4,
 h5,
 h6 {
-  @apply twc-text-color-secondary;
+  @apply dfr-text-color-secondary;
   font-weight: bold;
 }
 
 /* --- Dark mode --- */
 
 .tw-dark body {
-  @apply value:dark:twc-bg-primary;
-  @apply value:dark:twc-text-color-primary;
+  @apply value:dark:dfr-bg-primary;
+  @apply value:dark:dfr-text-color-primary;
 }
 
 .tw-dark h1,
@@ -52,17 +52,17 @@ h6 {
 .tw-dark h4,
 .tw-dark h5,
 .tw-dark h6 {
-  @apply value:dark:twc-text-color-secondary;
+  @apply value:dark:dfr-text-color-secondary;
 }
 
-.tw-dark .twc-border-color-primary {
-  @apply value:dark:twc-border-color-primary;
+.tw-dark .dfr-border-color-primary {
+  @apply value:dark:dfr-border-color-primary;
 }
 
 .tw-dark input,
 .tw-dark textarea {
-  @apply value:dark:twc-bg-secondary;
-  @apply value:dark:twc-text-color-primary;
+  @apply value:dark:dfr-bg-secondary;
+  @apply value:dark:dfr-text-color-primary;
 }
 
 /* --- ScrollBar --- */

@@ -93,3 +93,10 @@ export type TypeBreadcumbProps = {
     url?: TypePagesRoutes;
   }>;
 };
+
+export type TypeCodeProps = {
+  language: "jsx" | "css" | "typescript" | "javascript" | "bash";
+  code: any;
+  fileName?: string;
+  sourceURL?: string;
+};

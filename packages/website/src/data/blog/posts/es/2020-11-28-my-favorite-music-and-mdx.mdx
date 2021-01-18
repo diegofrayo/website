@@ -217,7 +217,7 @@ import dracula from "prism-react-renderer/themes/dracula";
 export function Code({ language, fileName, code, sourceURL }: Record<string, any>): any {
   const SiteTexts = getSiteTexts({ page: Routes.BLOG() });
   return (
-    <section className="root tw-mb-6">
+    <div className="root tw-mb-6">
       {fileName ||
         (sourceURL && (
           <code className="tw-text-sm tw-mb-2 tw-font-bold">
@@ -244,7 +244,7 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
           );
         }}
       </Highlight>
-      <section className="tw-text-right">
+      <div className="tw-text-right">
         {sourceURL && (
           <Link className="tw-block sm:tw-inline-block sm:tw-mr-4" href={sourceURL}>
             <Image
@@ -264,14 +264,14 @@ export function Code({ language, fileName, code, sourceURL }: Record<string, any
         >
           {SiteTexts.page.current_locale.copy_to_clipboard}
         </Link>
-      </section>
+      </div>
       <style jsx>{\`
         .root pre,
         .root img {
           @apply tw-my-0;
         }
       \`}</style>
-    </section>
+    </div>
   );
 }
 const Line = twcss.div\`tw-table-row\`;
