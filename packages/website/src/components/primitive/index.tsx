@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import classnames from "classnames";
 
 import twcss from "~/lib/twcss";
@@ -110,22 +110,35 @@ export function Collapsible({
   htmlAttrs,
 }: {
   children: any;
-  title: string;
+  title?: string;
   htmlAttrs?: { openByDefault?: boolean };
 }) {
-  const props: any = {};
+  const [show, setShow] = useState(htmlAttrs?.openByDefault === true ? true : false);
+  const containerRef: any = useRef(undefined);
 
-  if (htmlAttrs?.openByDefault === true) {
-    props.open = true;
-  }
+  useEffect(() => {
+    if (!containerRef || !containerRef.current) return;
+
+    if (show === true) {
+      containerRef?.current.setAttribute("open", "");
+    } else {
+      containerRef?.current.removeAttribute("open");
+    }
+  }, [containerRef]);
 
   return (
-    <details data-block {...props}>
-      <summary className="tw-font-bold" role="button">
-        {title}
+    <details ref={containerRef} data-block>
+      <summary
+        className="tw-font-bold"
+        role="button"
+        onClick={() => {
+          setShow(cv => !cv);
+        }}
+      >
+        {title || show ? "Hide" : "Show"}
       </summary>
 
-      <div className="tw-pl-5 tw-pr-2">{children}</div>
+      <div className="tw-pl-5">{children}</div>
     </details>
   );
 }

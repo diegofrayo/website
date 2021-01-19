@@ -27,38 +27,43 @@
 
 ## Set height 100% to a child element of a flex-row parent
 
-<Code
-  language="css"
-  fileName="Set height 100% to a child element of flex-row parent"
-  code={`.parent{
+<Collapsible>
+  <Code
+    language="css"
+    fileName="Set height 100% to a child element of flex-row parent"
+    code={`.parent{
   align-items: stretch;
 }
 // or
 .child{
   align-self: stretch;
 }`}
-/>
+  />
+</Collapsible>
 
 ## Text ellipsis
 
-<Code
-  language="css"
-  fileName="Text ellipsis"
-  code={`.ellipsis{
+<Collapsible>
+  <Code
+    language="css"
+    fileName="Text ellipsis"
+    code={`.ellipsis{
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }`}
-/>
+  />
+</Collapsible>
 
 # JavaScript
 
 ## Capitalize string
 
-<Code
-  language="typescript"
-  fileName="Capitalize string"
-  code={`function convertToCapitalLetter(str: string): string {
+<Collapsible>
+  <Code
+    language="typescript"
+    fileName="Capitalize string"
+    code={`function convertToCapitalLetter(str: string): string {
   return str
     .toLowerCase()
     .split(" ")
@@ -66,14 +71,16 @@
     .join(" ")
     .trim();
 }`}
-/>
+  />
+</Collapsible>
 
 ## Copy to clipboard
 
-<Code
-  language="typescript"
-  fileName="Copy to clipboard"
-  code={`async function copyToClipboard(
+<Collapsible>
+  <Code
+    language="typescript"
+    fileName="Copy to clipboard"
+    code={`async function copyToClipboard(
   e?: Record<string, any>,
   text?: string,
 ): Promise<any> {
@@ -99,46 +106,54 @@
     console.error(e);
   }
 }`}
-/>
+  />
+</Collapsible>
 
 ## Create array with N elements
 
-<Code
-  language="typescript"
-  fileName="Create array with N elements"
-  code={`function createArray(length: number): Array<number> {
+<Collapsible>
+  <Code
+    language="typescript"
+    fileName="Create array with N elements"
+    code={`function createArray(length: number): Array<number> {
   return Array.from(Array(length).keys()).map(value => value + 1);
 }`}
-/>
+  />
+</Collapsible>
 
 ## Delay
 
-<Code
-  language="typescript"
-  fileName="Delay"
-  code={`function delay(time: number): Promise<any> {
+<Collapsible>
+  <Code
+    language="typescript"
+    fileName="Delay"
+    code={`function delay(time: number): Promise<any> {
   return new Promise(resolve => {
     setTimeout(resolve, time);
   });
 }`}
-/>
+  />
+</Collapsible>
 
 ## Focus and select the text inside the textarea
 
-<Code
-  language="typescript"
-  fileName="Delay"
-  code={`const element = document.getElementById('my-textarea');
+<Collapsible>
+  <Code
+    language="typescript"
+    fileName="Delay"
+    code={`const element = document.getElementById('my-textarea');
 element.focus();
 element.select();`}
-/>
+  />
+</Collapsible>
 
 ## Generate simple random string
 
-<Code
-  language="javascript"
-  fileName="Delay"
-  code={`function makeSimpleRandomString(length) {
+<Collapsible>
+  <Code
+    language="javascript"
+    fileName="Delay"
+    code={`function makeSimpleRandomString(length) {
   let result = "";
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   const charactersLength = characters.length;
@@ -147,14 +162,16 @@ element.select();`}
   }
   return result;
 }`}
-/>
+  />
+</Collapsible>
 
 ## Regex examples
 
-<Code
-  language="javascript"
-  fileName="Regex examples"
-  code={`function escapeRegExp(text: string): string {
+<Collapsible>
+  <Code
+    language="javascript"
+    fileName="Regex examples"
+    code={`function escapeRegExp(text: string): string {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
 const replacement = "my";
@@ -167,14 +184,16 @@ const replacement = "my";
 // ? => optional
 // /d{1,2} => numbers one or two digits
 // $ => ends`}
-/>
+  />
+</Collapsible>
 
 ## Simple encrypt/decrypt
 
-<Code
-  language="typescript"
-  fileName="Simple encrypt/decrypt"
-  code={`const { AES, enc } = require('crypto-js');
+<Collapsible>
+  <Code
+    language="typescript"
+    fileName="Simple encrypt/decrypt"
+    code={`const { AES, enc } = require('crypto-js');
 const { CRYPTO_KEY } = process.env;
 function encrypt(str) {
   return AES.encrypt(str, CRYPTO_KEY).toString();
@@ -183,14 +202,16 @@ function decrypt(str) {
   const bytes = AES.decrypt(str, CRYPTO_KEY);
   return bytes.toString(enc.Utf8);
 }`}
-/>
+  />
+</Collapsible>
 
 ## Slugify string
 
-<Code
-  language="typescript"
-  fileName="Slugify string"
-  code={`function generateSlug(str: string): string {
+<Collapsible>
+  <Code
+    language="typescript"
+    fileName="Slugify string"
+    code={`function generateSlug(str: string): string {
   let result = str.replace(/^\s+|\s+$/g, "").toLowerCase();
   // remove accents, swap ñ for n, etc
   const FROM = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
@@ -204,16 +225,18 @@ function decrypt(str) {
     .replace(/-+/g, "-"); // collapse dashes
   return result;
 }`}
-/>
+  />
+</Collapsible>
 
 # React
 
 ## Component to show the window resolution using Tailwind CSS classes
 
-<Code
-  language="jsx"
-  fileName="Component to show the window resolution using Tailwind CSS classes"
-  code={`import { useState, useLayoutEffect } from 'react';
+<Collapsible>
+  <Code
+    language="jsx"
+    fileName="Component to show the window resolution using Tailwind CSS classes"
+    code={`import { useState, useLayoutEffect } from 'react';
 const WindowSize = () => {
   const [size, setSize] = useState([0, 0]);
   useLayoutEffect(() => {
@@ -247,14 +270,16 @@ const WindowSize = () => {
     </div>
   );
 };`}
-/>
+  />
+</Collapsible>
 
 ## Iterate a children prop
 
-<Code
-  language="jsx"
-  fileName="Iterate a children prop"
-  code={`<ul>
+<Collapsible>
+  <Code
+    language="jsx"
+    fileName="Iterate a children prop"
+    code={`<ul>
   {React.Children.map(children, child => {
     if (child.props.myProp === 'x') {
       return (
@@ -269,38 +294,44 @@ const WindowSize = () => {
     return child;
   })}
 </ul>`}
-/>
+  />
+</Collapsible>
 
 # Git
 
 ## Alias
 
-<Code
-  language="bash"
-  fileName="Alias"
-  code={`# superlog
+<Collapsible>
+  <Code
+    language="bash"
+    fileName="Alias"
+    code={`# superlog
 git config --global alias.superlog "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 # alias with parameters
 git config --global alias.pt-pull '!f() { git checkout development; git pull; git checkout task/PTRAK-$1; git pull; git merge development; }; f'`}
-/>
+  />
+</Collapsible>
 
 ## Remote branches
 
-<Code
-  language="bash"
-  fileName="Remote branches"
-  code={`# show remote branches
+<Collapsible>
+  <Code
+    language="bash"
+    fileName="Remote branches"
+    code={`# show remote branches
 git remote -v
 # prune remote branches list
 git remote update origin --prune`}
-/>
+  />
+</Collapsible>
 
 ## Stash
 
-<Code
-  language="bash"
-  fileName="Stash"
-  code={`# Save a stash
+<Collapsible>
+  <Code
+    language="bash"
+    fileName="Stash"
+    code={`# Save a stash
 git stash
 # Restore all changes of the last stash
 git stash apply
@@ -312,4 +343,5 @@ git stash drop -q stash@{0}
 git stash list
 # Restore all changes of a specific stash
 git stash apply stash@{0}`}
-/>
+  />
+</Collapsible>

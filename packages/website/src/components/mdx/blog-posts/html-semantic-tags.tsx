@@ -2,7 +2,7 @@ import React from "react";
 
 export function HSTMain() {
   return (
-    <main className="tw-bg-white">
+    <main className="root tw-bg-white">
       <header className="tw-bg-gray-200 tw-text-center">
         <h1>header</h1>
         <nav>
@@ -57,6 +57,14 @@ export function HSTMain() {
       <footer className="tw-bg-black tw-p-2 tw-text-white tw-text-center tw-mt-6">
         footer
       </footer>
+
+      <style jsx>
+        {`
+          .root {
+            min-width: 500px;
+          }
+        `}
+      </style>
     </main>
   );
 }

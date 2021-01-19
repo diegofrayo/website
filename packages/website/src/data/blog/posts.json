@@ -2,14 +2,14 @@
   "posts": {
     "html-semantic-tags": {
       "is_legacy": false,
-      "locales": ["en"],
-      "default_locale": "en",
-      "is_published": false,
+      "locales": ["es"],
+      "default_locale": "es",
+      "is_published": true,
       "created_at": "2021-01-12",
-      "published_at": "2021-01-12",
-      "updated_at": "2021-01-12",
+      "published_at": "2021-01-19",
+      "updated_at": "2021-01-19",
       "slug": "html-semantic-tags",
-      "en": {
+      "es": {
         "title": "HTML semantic tags 🤔",
         "meta_no_robots": true
       }
