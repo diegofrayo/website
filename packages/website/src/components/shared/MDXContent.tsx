@@ -32,7 +32,7 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
         :global(.mdx-content) > :global(hr),
         :global(.mdx-content) :global(ol),
         :global(.mdx-content) :global(ul),
-        :global(.mdx-content) > :global(div[data-block]) {
+        :global(.mdx-content) :global(*[data-block]) {
           @apply dfr-mt-base;
           @apply dfr-mb-base;
         }
@@ -88,6 +88,10 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
 
         :global(.mdx-content) :global(p) :global(code):before {
           content: "\`";
+        }
+
+        :global(.mdx-content) :global(hr) {
+          border-style: dashed;
         }
 
         :global(.mdx-content--dark) :global(hr) {

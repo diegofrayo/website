@@ -86,7 +86,7 @@ export function detectEmojisSupport(): void {
       throw new Error();
     }
   } catch (e) {
-    document.documentElement.classList.add("no-emojis");
+    document.body.classList.add("no-emojis");
   }
 }
 

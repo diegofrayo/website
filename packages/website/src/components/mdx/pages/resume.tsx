@@ -1,7 +1,6 @@
-import React, { SetStateAction, useState } from "react";
-import classnames from "classnames";
+import React from "react";
 
-import { Link } from "~/components/primitive";
+import { Link, Collapsible } from "~/components/primitive";
 
 type TypeResumeTimelineProps = {
   title: string;
@@ -66,48 +65,9 @@ type TypeResumeFAQItemProps = {
 };
 
 export function ResumeFAQItem({ question, children }: TypeResumeFAQItemProps): any {
-  const [collapsed, setCollapsed]: [
-    boolean,
-    React.Dispatch<SetStateAction<boolean>>,
-  ] = useState(true);
-
   return (
-    <div className="root tw-mb-4">
-      <div>
-        <h3
-          className="dark:dfr-text-color-primary tw-inline-block tw-cursor-pointer"
-          onClick={() => {
-            setCollapsed(cv => !cv);
-          }}
-        >
-          <span
-            className={classnames(
-              "tw-inline-block tw-transition-all tw-transform tw-mr-0",
-              !collapsed && "tw-rotate-90",
-            )}
-          >
-            ‣
-          </span>{" "}
-          {question}
-        </h3>
-      </div>
-
-      <div
-        className={classnames(
-          "tw-pl-3",
-          collapsed ? "tw-hidden tw-mb-0" : "tw-block dfr-mb-base",
-        )}
-      >
-        <blockquote>{children}</blockquote>
-      </div>
-
-      <style jsx>
-        {`
-          .root :global(h3) {
-            @apply tw-mb-1;
-          }
-        `}
-      </style>
-    </div>
+    <Collapsible title={question}>
+      <blockquote>{children}</blockquote>
+    </Collapsible>
   );
 }

@@ -1,7 +1,6 @@
 import { songs, chords } from "~/data/music/songs.json";
 import { TypeSong } from "~/types";
-
-import { escapeRegExp, sortBy } from "./misc";
+import { escapeRegExp, sortBy } from "~/utils/misc";
 
 async function fetchSongsList(): Promise<TypeSong[]> {
   return songs;

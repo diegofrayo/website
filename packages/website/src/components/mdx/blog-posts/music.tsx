@@ -4,8 +4,8 @@ import classnames from "classnames";
 import { Modal, Separator } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { Chords } from "~/lib/chords";
+import MusicService from "~/services/music";
 import { TypeSiteTexts, TypeSong } from "~/types";
-import MusicService from "~/utils/music";
 
 export { Solo } from "~/lib/chords";
 

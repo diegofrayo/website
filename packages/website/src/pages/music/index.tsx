@@ -7,8 +7,8 @@ import { Render } from "~/components/shared";
 import { SongInfo } from "~/components/mdx/blog-posts/music";
 import Routes from "~/data/routes.json";
 import { useInternationalization, useQuery } from "~/hooks";
+import MusicService from "~/services/music";
 import { TypePagesRoutes, TypeSong } from "~/types";
-import MusicService from "~/utils/music";
 import { sortBy } from "~/utils/misc";
 import { removeEmojiFromPageTitle } from "~/utils/strings";
 

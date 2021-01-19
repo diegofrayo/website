@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "node scripts/metadata.js",
     "start": "next start",
+    "postinstall": "node scripts/metadata.js",
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --ext .ts,.tsx --fix",
-    "style": "prettier --write \"{src,scripts}/**/*.{js,ts,tsx,json}\"",
+    "format": "prettier --write \"{src,scripts}/**/*.{js,ts,tsx,json,css}\"",
     "build:seo-files": "node scripts/rss.js && node scripts/sitemap.js",
     "build:static-files": "node scripts/routes.js && node scripts/metadata.js"
   },
@@ -73,7 +73,7 @@
       "prettier --write",
       "git add"
     ],
-    "src/**/*.json": [
+    "src/**/*.{json,css}": [
       "prettier --write",
       "git add"
     ]

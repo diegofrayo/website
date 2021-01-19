@@ -97,8 +97,8 @@ function MainMenu({ SiteTexts }) {
               <Emoji>{item.emoji}</Emoji>
               <span className="tw-text-center">{item.label}</span>
             </Link>
-            <Emoji className="dfr-bg-secondary dfr-border-color-primary dark:dfr-bg-secondary tw-border tw-absolute tw--top-2 tw--left-2 tw-rounded-full tw-p-1 tw-text-sm tw-w-8 tw-h-8 tw-flex tw-items-center tw-justify-center">
-              📎
+            <Emoji className="dfr-bg-secondary dfr-border-color-primary tw-border tw-absolute tw--top-2 tw--left-2 tw-rounded-full tw-p-1 tw-text-sm tw-w-8 tw-h-8 tw-flex tw-items-center tw-justify-center tw-transform tw--rotate-90">
+              📌
             </Emoji>
 
             <style jsx>{`

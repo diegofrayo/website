@@ -115,7 +115,7 @@ export function ToDoList({ children }) {
         if (child.props["data-completed"]) {
           return (
             <li>
-              <span className="tw-font-bold tw-mr-1">☑</span>
+              <span className="tw-mr-2">☑</span>
               <span className="tw-line-through tw-italic tw-opacity-75">
                 {child.props.children}
               </span>
@@ -125,7 +125,7 @@ export function ToDoList({ children }) {
 
         return (
           <li>
-            <span className="tw-font-bold tw-mr-1">☒</span>
+            <span className="tw-mr-2">☒</span>
             <span>{child.props.children}</span>
           </li>
         );

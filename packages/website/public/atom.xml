@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>diegofrayo</id>
     <title>Diego Rayo | Software Developer</title>
-    <updated>2021-01-02T19:49:23.330Z</updated>
+    <updated>2021-01-19T01:19:34.018Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Diego Fernando Rayo Zamora</name>
@@ -11,7 +11,7 @@
     </author>
     <link rel="alternate" href="https://diegofrayo.vercel.app"/>
     <link rel="self" href="https://diegofrayo.vercel.app/atom.xml"/>
-    <subtitle>Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.</subtitle>
+    <subtitle>Hola, Soy Diego, Desarrollador de Software. Tengo poco más de 5 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.</subtitle>
     <logo>https://diegofrayo.vercel.app/static/images/favicon/favicon.ico</logo>
     <icon>https://diegofrayo.vercel.app/static/images/favicon/android-chrome-512x512.png</icon>
     <rights>All rights reserved 2020, Diego Rayo</rights>

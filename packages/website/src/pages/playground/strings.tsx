@@ -153,7 +153,7 @@ function StringsPage(): any {
         </div>
 
         <div className="tw-my-4">
-          <p className="tw-font-bold">Capitalize only first word</p>
+          <p className="tw-font-bold">Upper case only the first word</p>
           <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
             {texts.convertToCapitalLetterOnlyFirst}
           </output>

@@ -8,9 +8,9 @@ import { SongInfo } from "~/components/mdx/blog-posts/music";
 import { MDXContent } from "~/components/shared";
 import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
+import SongsService from "~/services/music";
 import { TypeSong, TypePagesRoutes } from "~/types";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
-import SongsService from "~/utils/music";
 
 type TypeSongPageProps = {
   song: TypeSong;

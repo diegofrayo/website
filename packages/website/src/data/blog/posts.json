@@ -16,7 +16,7 @@
     },
     "im-tired-to-reinvent-the-wheel": {
       "is_legacy": false,
-      "locales": ["en", "es"],
+      "locales": ["es"],
       "default_locale": "es",
       "is_published": false,
       "created_at": "2020-12-14",
@@ -34,7 +34,7 @@
     },
     "how-i-use-tailwind-css": {
       "is_legacy": false,
-      "locales": ["en", "es"],
+      "locales": ["es"],
       "default_locale": "es",
       "is_published": false,
       "created_at": "2020-12-07",
@@ -52,7 +52,7 @@
     },
     "thoughts-about-my-profession": {
       "is_legacy": false,
-      "locales": ["en", "es"],
+      "locales": ["es"],
       "default_locale": "es",
       "is_published": true,
       "created_at": "2020-12-01",
@@ -70,7 +70,7 @@
     },
     "my-favorite-music-and-mdx": {
       "is_legacy": false,
-      "locales": ["en", "es"],
+      "locales": ["es"],
       "default_locale": "es",
       "is_published": true,
       "created_at": "2020-11-28",
@@ -88,7 +88,7 @@
     },
     "my-first-post": {
       "is_legacy": false,
-      "locales": ["en", "es"],
+      "locales": ["es"],
       "default_locale": "es",
       "is_published": true,
       "created_at": "2020-11-27",

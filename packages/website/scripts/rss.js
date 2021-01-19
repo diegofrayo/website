@@ -11,7 +11,7 @@ const feed = new Feed({
   description: pages["/"][pages["/"].config.default_locale].meta_description,
   id: WEBSITE_METADATA.username,
   link: WEBSITE_METADATA.urlProd,
-  language: "en",
+  language: "es",
   image: `${WEBSITE_METADATA.urlProd}/static/images/favicon/favicon.ico`,
   favicon: `${WEBSITE_METADATA.urlProd}/static/images/favicon/android-chrome-512x512.png`,
   copyright: `All rights reserved 2020, ${WEBSITE_METADATA.shortName}`,

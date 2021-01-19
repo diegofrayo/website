@@ -185,6 +185,8 @@ type TypeLocalesSelectorProps = {
 };
 
 function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): any {
+  return null;
+
   return (
     <div className="tw-text-sm">
       {locales.sort(sortBy("name", "asc")).map((locale, index) => {

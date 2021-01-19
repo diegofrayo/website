@@ -3,11 +3,11 @@
     <channel>
         <title>Diego Rayo | Software Developer</title>
         <link>https://diegofrayo.vercel.app</link>
-        <description>Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.</description>
-        <lastBuildDate>Sat, 02 Jan 2021 19:49:23 GMT</lastBuildDate>
+        <description>Hola, Soy Diego, Desarrollador de Software. Tengo poco más de 5 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.</description>
+        <lastBuildDate>Tue, 19 Jan 2021 01:19:34 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
-        <language>en</language>
+        <language>es</language>
         <image>
             <title>Diego Rayo | Software Developer</title>
             <url>https://diegofrayo.vercel.app/static/images/favicon/favicon.ico</url>

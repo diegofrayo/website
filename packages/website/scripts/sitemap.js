@@ -2,6 +2,7 @@ require("dotenv").config({ path: ".env" });
 const SitemapGenerator = require("sitemap-generator");
 const fs = require("fs");
 
+const { posts } = require("../src/data/blog/posts.json");
 const { WEBSITE_METADATA } = require("../src/data/metadata.json");
 const { pages } = require("../src/data/texts.json");
 
@@ -19,6 +20,15 @@ const generator = SitemapGenerator(WEBSITE_METADATA.url, {
   },
 });
 
+generator.start();
+
+Object.values(posts).forEach(post => {
+  if (post.is_published === false) return;
+
+  const url = `${WEBSITE_METADATA.url}/blog/${post.slug}`;
+  generator.queueURL(url);
+});
+
 generator.on("done", () => {
   try {
     fs.writeFileSync(
@@ -33,5 +43,3 @@ generator.on("done", () => {
     console.error(err);
   }
 });
-
-generator.start();

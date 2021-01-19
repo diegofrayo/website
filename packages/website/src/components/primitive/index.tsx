@@ -104,9 +104,23 @@ export function UL({ children }: Record<string, any>): any {
   );
 }
 
-export function Collapsible({ children, title }: { children: any; title: string }) {
+export function Collapsible({
+  children,
+  title,
+  htmlAttrs,
+}: {
+  children: any;
+  title: string;
+  htmlAttrs?: { openByDefault?: boolean };
+}) {
+  const props: any = {};
+
+  if (htmlAttrs?.openByDefault === true) {
+    props.open = true;
+  }
+
   return (
-    <details data-block>
+    <details data-block {...props}>
       <summary className="tw-font-bold" role="button">
         {title}
       </summary>

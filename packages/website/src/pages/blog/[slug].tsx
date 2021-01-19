@@ -12,8 +12,8 @@ import { WEBSITE_METADATA } from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
 import { useInternationalization, useAssets, useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
+import BlogService from "~/services/blog";
 import { TypeBlogPost, TypeLocale, TypePagesRoutes } from "~/types";
-import BlogService from "~/utils/blog";
 import {
   copyToClipboard,
   getScrollPosition,

@@ -2,7 +2,7 @@ const withMDX = require("@next/mdx")();
 
 module.exports = withMDX({
   i18n: {
-    locales: ["en", "es"],
+    locales: ["es"],
     defaultLocale: "es",
     localeDetection: false,
   },

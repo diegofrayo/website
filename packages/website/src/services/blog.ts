@@ -1,6 +1,6 @@
 import { posts as BlogPosts } from "~/data/blog/posts.json";
 import { TypeLocale, TypeBlogPost } from "~/types";
-import { sortBy } from "./misc";
+import { sortBy } from "~/utils/misc";
 
 function composeTitle(post: TypeBlogPost, locale: TypeLocale): string {
   return `${post.is_legacy ? "[LEGACY] " : ""}${post[locale]?.title}`;
