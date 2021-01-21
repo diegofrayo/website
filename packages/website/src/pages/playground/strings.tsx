@@ -28,8 +28,8 @@ function StringsPage(): any {
     textareaRef.current.click();
   });
 
-  function handleTextAreaChange(e) {
-    const text = e.currentTarget.value || "";
+  function handleTextAreaChange(event) {
+    const text = event.currentTarget.value || "";
 
     setTexts({
       input: text,
@@ -43,8 +43,8 @@ function StringsPage(): any {
     });
   }
 
-  function handleCopyText(e) {
-    copyToClipboard(e);
+  function handleCopyText(error) {
+    copyToClipboard(error);
   }
 
   return (
@@ -75,8 +75,8 @@ function StringsPage(): any {
               try {
                 e.currentTarget.focus();
                 e.currentTarget.select();
-              } catch (e) {
-                console.error(e);
+              } catch (error) {
+                console.error(error);
               }
             }}
           />

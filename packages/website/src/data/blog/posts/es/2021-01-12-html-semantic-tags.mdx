@@ -1,14 +1,12 @@
-> En progreso... 🚧
-
 ## Layout
 
 <Playground
   Component={() => {
     return <HSTMain />;
   }}
-  code={`<main>
+  code={`<main role="main">
   <header>
-    <h1>Page title</h1>
+    <h1>header</h1>
     <nav>
       <ul>
         <li>
@@ -27,8 +25,9 @@
     <aside>
       <section>
         <h2>About me</h2>
-        <p>Hello, strong span</p>
+        <div>content...</div>
       </section>
+      <hr />
       <section>
         <h2>Links</h2>
         <div>content...</div>
@@ -38,44 +37,62 @@
       <h2>Main content</h2>
       <article>
         <header>
-          <h1>Item title 1</h1>
+          <h1>article header</h1>
         </header>
         <div>
-          <p>Content...</p>
+          <p>article content</p>
         </div>
-        <footer>Item footer</footer>
+        <footer>article footer</footer>
       </article>
+      <hr />
       <article>
         <header>
-          <h1>Item title 2</h1>
+          <h1>article header</h1>
         </header>
         <div>
-          <p>Content...</p>
+          <p>article content</p>
         </div>
-        <footer>Item footer</footer>
+        <footer>article footer</footer>
       </article>
     </section>
   </div>
-  <footer>Page footer</footer>
+  <footer>footer</footer>
 </main>`}
   language="html"
 />
 
-<!--
-- solo deberia existir un elemento `main` por página
-- es el elemento principal de una pagina web
-- Agrupa una seccion en particular, un bloque (noticias, lista de algo, contact information). Puede contener muchas cosas
-  A section is a thematic grouping of content, typically with a heading.
-- Componente que contiene info relacionada,
-- se puede mover a cualquier lado y su info siempre se entendera.
-- Puede contener header y footer y h1
-- Tip: syndication refers to a process of making reusable content, which can be incorporated into multiple web sites or documents.
-  Aside: Barra lateral
-  contains information which is not directly related to the main purpose or idea of a web page.
-  The aside content should be indirectly related to the surrounding content.
-  p y span
-- section vs article vs div vs span
--->
+- **main**
+  - solo debería existir un elemento de este tipo por página
+  - debe ser el elemento principal de una página
+
+- **section**
+  - es un contenedor que agrupa contenido relacionado
+  - por lo general contiene un título al inicio
+  - ejemplos: formulario de contácto, sección de comentarios, noticias relacionadas
+
+- **aside**
+  - contiene información complementaria que puede estar relacionada o no al contenido principal de la página
+  - no necesariamente hay que verla como una sección lateral de una página
+
+- **article**
+  - puede contener header, footer y títulos (h1)
+  - su contenido está relacionado, es independiente y reusable para usar en varias páginas e incluso en multiples sitios web
+  - un elemento de este tipo puede cambiar de lugar y su información se deberá seguir entendiendo
+
+- **div**
+  - puede contener cualquier tipo de elementos
+  - sus elementos podrían no estar relacionados entre si
+
+- **span**
+  - es un contenedor en línea
+  - usualmente contiene textos muy cortos o iconos
+
+> En progreso... 🚧
+
+## Texts
+
+- p y span
+
 
 ## More interesting tags
 

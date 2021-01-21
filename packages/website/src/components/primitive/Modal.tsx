@@ -39,8 +39,8 @@ Modal.Context = Context;
 function Backdrop({ children, closeModalHandler }) {
   const backdropRef = useRef(null);
 
-  function handleBackdropClick(e) {
-    if (backdropRef && backdropRef.current === e.target) {
+  function handleBackdropClick(event) {
+    if (backdropRef && backdropRef.current === event.target) {
       closeModalHandler();
     }
   }

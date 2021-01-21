@@ -43,8 +43,8 @@ function StupidPage(): any {
     setOutput(decryptedText || "Error, the text was not decrypted :(");
   }
 
-  function handleCopyText(e) {
-    copyToClipboard(e);
+  function handleCopyText(error) {
+    copyToClipboard(error);
   }
 
   return (
@@ -76,8 +76,8 @@ function StupidPage(): any {
                 try {
                   e.currentTarget.focus();
                   e.currentTarget.select();
-                } catch (e) {
-                  console.error(e);
+                } catch (error) {
+                  console.error(error);
                 }
               }}
             />

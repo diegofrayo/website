@@ -57,8 +57,8 @@ export function copyToClipboard(event?: any, textToCopy?: string): void {
     if (!clipboardText) throw new Error("Any text was selected to copy");
 
     navigator.clipboard.writeText(clipboardText);
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
   }
 }
 
@@ -85,7 +85,7 @@ export function detectEmojisSupport(): void {
     if (isAndroid() && getAndroidVersion() < 5) {
       throw new Error();
     }
-  } catch (e) {
+  } catch (error) {
     document.body.classList.add("no-emojis");
   }
 }
@@ -98,8 +98,8 @@ export function getAndroidVersion(): number {
     if (!match) throw new Error();
 
     return parseFloat(match[1]);
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return -1;
   }
 }

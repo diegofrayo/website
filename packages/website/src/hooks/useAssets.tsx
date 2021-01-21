@@ -88,8 +88,8 @@ export function AssetsProvider({ children }: any): any {
         FooterAssets: data.footer || {},
         VR_Assets: data.vr || {},
       });
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     }
   }
 

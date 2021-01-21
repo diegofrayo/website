@@ -390,15 +390,15 @@ function groupChordsByFret(chordsParam: TypeGroupChordsByFretParams) {
       lastFret: frets.length > 0 ? frets[frets.length - 1] : 0,
       chordsGroupedByFret,
     };
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
 
     return {
       chordsToString: "",
       firstFret: 0,
       lastFret: 0,
       chordsGroupedByFret: {},
-      error: e,
+      error,
     };
   }
 }

@@ -135,7 +135,7 @@ export function Collapsible({
           setShow(cv => !cv);
         }}
       >
-        {title || show ? "Hide" : "Show"}
+        {title ? title : show ? "Hide" : "Show"}
       </summary>
 
       <div className="tw-pl-5">{children}</div>

@@ -88,7 +88,7 @@
     if (!e && !text) throw new Error("Invalid params");
     if (!navigator.clipboard) throw new Error("Clipboard not supported");
     let clipboardText = "";
-    if (e) {
+    if (error) {
       const { currentTarget: element } = e;
       clipboardText = element.getAttribute("data-clipboard-text");
     } else if (text) {
@@ -102,8 +102,8 @@
         console.error("Could not copy text:", err);
       },
     );
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
   }
 }`}
   />
