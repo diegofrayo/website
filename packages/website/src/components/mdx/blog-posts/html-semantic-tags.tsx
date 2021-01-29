@@ -73,3 +73,77 @@ export function HSTMain() {
     </main>
   );
 }
+
+export function HSTTexts() {
+  return (
+    <section>
+      <h2>text elements</h2>
+
+      <div>
+        <p>
+          Simple text and <b>Bold text</b> and <strong>Important text</strong> and{" "}
+          <i>Italic text</i> <em>Emphasized text</em> and <mark>Marked text</mark> and{" "}
+          <small>Smaller text</small> and <del>Deleted text</del> and{" "}
+          <ins>Inserted text</ins> and <sub>Subscript text</sub> and{" "}
+          <sup>Superscript text</sup>.
+        </p>
+
+        <br />
+
+        <p>
+          This is a time (<time>21:00</time>) element.
+        </p>
+
+        <br />
+
+        <address>Address element: Street, City, State, Country.</address>
+
+        <br />
+
+        <p>
+          longlonglonglong
+          <wbr />
+          ThisIsUnbreakable
+          <wbr />
+          longlonglonglong
+        </p>
+      </div>
+
+      <style jsx>{``}</style>
+    </section>
+  );
+}
+
+export function HSTMeasure() {
+  return (
+    <div>
+      <p>Donuts eaten:</p>
+      <progress value="60" max="100"></progress>
+
+      <p>
+        Karma points:{" "}
+        <meter optimum={30} high={80} max="100" value="85">
+          85%
+        </meter>
+      </p>
+      <p>
+        Gas in Tanker:{" "}
+        <meter low={20} max="100" value="11">
+          11%
+        </meter>
+      </p>
+      <p>
+        Animals Petted:{" "}
+        <meter low={10} high={60} min="0" max="50" value="43" title="Animals">
+          Petting
+        </meter>
+      </p>
+      <p>
+        Satisfaction:{" "}
+        <meter max="100" optimum={100} value="100">
+          100%
+        </meter>
+      </p>
+    </div>
+  );
+}

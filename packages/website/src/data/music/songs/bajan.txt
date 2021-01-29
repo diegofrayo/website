@@ -1,3 +1,7 @@
+6,2,3|6,2||1,2|2,2|3,2|2,2,3|1,2||6,2,3|6,2|||||6,2,3|6,2||1,2|2,2|3,2|2,2,3|1,2||6,2,3|6,2|||||6,2,3|6,2||1,2|2,2|3,2|2,2,3|1,2||6,2,3|6,2|||||6,2,3|6,2||1,2|2,2|3,2|2,2,3|1,2||6,2,3|6,2
+
+Este intro se toca pulsando la cuerda 3 en el traste 1 y la cuerda 4 en el traste 2. Se repite 4 veces
+
 E                   F#m
     Tengo tiempo                para saber
 

@@ -1,9 +1,7 @@
 ## Layout
 
 <Playground
-  Component={() => {
-    return <HSTMain />;
-  }}
+  Component={() => <HSTMain />}
   code={`<main role="main">
   <header>
     <h1>header</h1>
@@ -62,24 +60,29 @@
 />
 
 - **main**
+
   - solo debería existir un elemento de este tipo por página
   - debe ser el elemento principal de una página
 
 - **section**
+
   - es un contenedor que agrupa contenido relacionado
   - por lo general contiene un título al inicio
   - ejemplos: formulario de contácto, sección de comentarios, noticias relacionadas
 
 - **aside**
+
   - contiene información complementaria que puede estar relacionada o no al contenido principal de la página
   - no necesariamente hay que verla como una sección lateral de una página
 
 - **article**
+
   - puede contener header, footer y títulos (h1)
   - su contenido está relacionado, es independiente y reusable para usar en varias páginas e incluso en multiples sitios web
   - un elemento de este tipo puede cambiar de lugar y su información se deberá seguir entendiendo
 
 - **div**
+
   - puede contener cualquier tipo de elementos
   - sus elementos podrían no estar relacionados entre si
 
@@ -91,8 +94,7 @@
 
 ## Texts
 
-- p y span
-
+<Playground Component={() => <HSTTexts />} code={``} language="html" />
 
 ## More interesting tags
 
@@ -114,20 +116,6 @@
   language="html"
 />
 
-### output
-
-<Playground
-  Component={() => {
-    return null;
-  }}
-  code={`l`}
-  language="html"
-/>
-
-<!--
-- The HTML Output element `<output>` is a container element into which a site or app can inject the results of a calculation or the outcome of a user action.
- -->
-
 ### figure
 
 <Playground
@@ -135,7 +123,7 @@
     return (
       <figure>
         <img
-          src="https://www.dogstrust.org.uk/help-advice/_images/164742v800_puppy-1.jpg"
+          src="https://pbs.twimg.com/profile_images/584210917384159233/_R5HuMuR.jpg"
           alt="Puppy"
           width="150"
           height="150"
@@ -146,7 +134,7 @@
   }}
   code={`<figure>
   <img
-    src="https://www.dogstrust.org.uk/help-advice/_images/164742v800_puppy-1.jpg"
+    src="https://pbs.twimg.com/profile_images/584210917384159233/_R5HuMuR.jpg"
     alt="Puppy"
     width="150"
     height="150"
@@ -156,38 +144,9 @@
   language="html"
 />
 
-### mark
-
-<Playground
-  Component={() => {
-    return (
-      <p>
-        The mark tag is <mark>useful</mark> when you need to highlight important
-        information.
-      </p>
-    );
-  }}
-  code={`<p>The mark tag is <mark>useful</mark> when you need to highlight important information.</p>`}
-  language="html"
-/>
-
 ### progress
 
-<Playground
-  Component={() => {
-    return (
-      <div>
-        <p>Donuts eaten:</p>
-        <progress value="60" max="100"></progress>
-      </div>
-    );
-  }}
-  code={`<div>
-  <p>Donuts eaten:</p>
-  <progress value="60" max="100"></progress>
-</div>`}
-  language="html"
-/>
+<Playground Component={() => <HSTMeasure />} code={``} language="html" />
 
 ### dialog
 
@@ -199,8 +158,36 @@
   language="html"
 />
 
+### output
+
+<Playground
+  Component={() => {
+    return null;
+  }}
+  code={`l`}
+  language="html"
+/>
+
+## datalist
+
+<Playground
+  Component={() => {
+    return (
+      <div>
+        <input list="books" />
+        <datalist id="books">
+          <option value="Fiction" />
+          <option value="Non-Fiction" />
+        </datalist>
+      </div>
+    );
+  }}
+  code={`l`}
+  language="html"
+/>
+
 <!--
-- Dialog: No muy sportado aun
- -->
+- The HTML Output element <output>` is a container element into which a site or app can inject the results of a calculation or the outcome of a user action.
+-->
 
 Source: [HTML5 Tags List: Get to Know the Most Useful Elements](https://www.bitdegree.org/learn/html5-tags)
