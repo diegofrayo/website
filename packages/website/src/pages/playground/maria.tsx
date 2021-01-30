@@ -1,10 +1,11 @@
 import React, { useState, Fragment } from "react";
 
 import { Page } from "~/components/layout";
-import { UL, Link } from "~/components/primitive";
+import { Link } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
+import { setScrollPosition } from "~/utils/browser";
 
 function MariaPage(): any {
   const [section, setSection] = useState("");
@@ -18,7 +19,9 @@ function MariaPage(): any {
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <main className="dfr-max-w-base tw-mx-auto tw-w-full md:tw-shadow-md tw-h-full">
         <header className="tw-bg-blue-100 tw-py-3 tw-px-4">
-          <h1 className="tw-text-3xl tw-text-blue-900">💃 Bienvenida a María App</h1>
+          <h1 className="tw-text-xl sm:tw-text-3xl tw-text-blue-900">
+            <Emoji className="tw-mr-2">💃</Emoji> <span>Bienvenida a María App</span>
+          </h1>
         </header>
 
         <section className="tw-py-8 tw-px-4">
@@ -28,7 +31,7 @@ function MariaPage(): any {
                 className="tw-mb-8 tw-font-bold tw-cursor-pointer"
                 onClick={() => setSection("")}
               >
-                <Emoji className="tw-mr-2">⬅️</Emoji>
+                <Emoji className="tw-mr-3">⬅️</Emoji>
                 <span>Volver atrás</span>
               </div>
               <div>
@@ -43,12 +46,16 @@ function MariaPage(): any {
             </Fragment>
           ) : (
             <Fragment>
-              <h2 className="tw-mb-4 tw-text-xl tw-text-center">Elije una opción 🙋‍♀️</h2>
+              <h2 className="tw-mb-6 tw-text-xl tw-text-center">Elije una opción 🙋‍♀️</h2>
 
               <div className="tw-flex tw-flex-wrap tw-justify-evenly">
                 <MenuItem
                   onClick={() => {
-                    setSection("WHATSAPP");
+                    // setSection("WHATSAPP");
+                    // setScrollPosition(0);
+                    window.open(
+                      "https://api.whatsapp.com/send?phone=573113728898&text=Hola Diego ⚡",
+                    );
                   }}
                 >
                   <img
@@ -56,11 +63,14 @@ function MariaPage(): any {
                     className="tw-mx-auto tw-mb-2"
                     alt="WhatsApp icon"
                   />
-                  <p className="tw-font-bold tw-text-lg">Enviar mensaje a un amigo</p>
+                  <p className="tw-font-bold tw-text-lg tw-text-center tw-mt-2">
+                    Enviar mensaje a un amigo
+                  </p>
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
                     setSection("YOUTUBE");
+                    setScrollPosition(0);
                   }}
                 >
                   <img
@@ -68,24 +78,27 @@ function MariaPage(): any {
                     className="tw-mx-auto tw-mb-2"
                     alt="YouTube icon"
                   />
-                  <p className="tw-font-bold tw-text-lg">
+                  <p className="tw-font-bold tw-text-lg tw-text-center tw-mt-2">
                     Escuchar música favorita en YouTube
                   </p>
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
                     setSection("BIBLE");
+                    setScrollPosition(0);
                   }}
                 >
                   <Emoji className="tw-text-5xl">📖</Emoji>
-                  <p className="tw-font-bold tw-text-lg">Versículo del día</p>
+                  <p className="tw-font-bold tw-text-lg tw-text-center tw-mt-2">
+                    Versículo del día
+                  </p>
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
                     alert("Diego te quiere mucho");
                   }}
                 >
-                  <Emoji className="tw-text-5xl">⚡</Emoji>
+                  <Emoji className="tw-text-5xl tw-text-center">⚡</Emoji>
                 </MenuItem>
               </div>
             </Fragment>
@@ -100,43 +113,44 @@ export default MariaPage;
 
 // --- Components ---
 
-const MenuItem = twcss.div`tw-cursor-pointer tw-m-2 tw-h-64 tw-w-64 tw-text-center tw-border tw-rounded-md tw-flex tw-items-center tw-justify-center tw-flex-col tw-p-4`;
+const MenuItem = twcss.div`tw-cursor-pointer tw-m-2 tw-h-64 tw-w-64 tw-border tw-rounded-md tw-flex tw-items-center tw-justify-center tw-flex-col tw-p-4 tw-max-w-full`;
 
 function YouTube() {
   const PLAYLISTS = [
     {
-      name: "Baria belos bangeles",
+      name: "🙏☀️",
       url: "https://www.youtube.com/playlist?list=PLggewE8gQHKqhV48ggHU3GqItQ_fQaRUf",
     },
     {
-      name: "Bailablinchi 🕺💃",
+      name: "🕺💃",
       url: "https://www.youtube.com/playlist?list=PLggewE8gQHKpgBFZgMOAoKX9vBByk5wRb",
     },
     {
-      name: "Romantics 💛",
+      name: "💛🎼",
       url: "https://www.youtube.com/playlist?list=PLggewE8gQHKogTIFnxtQVzKjd5jz_xEKC",
     },
     {
-      name: "MARIA DE LOS",
+      name: "😌💖🙋",
       url: "https://www.youtube.com/playlist?list=PLggewE8gQHKqhJ4pJpksMGHBGNO_W1OCt",
     },
   ];
 
   return (
-    <div>
-      <h2 className="tw-mb-3 tw-text-3xl">
-        🎶 Estas son tus listas ¿Que quieres escuchar?
-      </h2>
-      <UL>
+    <section>
+      <h2 className="tw-mb-4 tw-text-3xl">🎶 ¿Que quieres escuchar?</h2>
+
+      <div className="tw-flex tw-flex-wrap tw-justify-evenly">
         {PLAYLISTS.map((playlist, index) => {
           return (
-            <li key={`Playlist-${index}`}>
-              <Link href={playlist.url}>{playlist.name}</Link>
-            </li>
+            <Link key={`Playlist-${index}`} href={playlist.url} styled={false}>
+              <MenuItem>
+                <Emoji className="tw-text-5xl">{playlist.name}</Emoji>
+              </MenuItem>
+            </Link>
           );
         })}
-      </UL>
-    </div>
+      </div>
+    </section>
   );
 }
 
