@@ -8,9 +8,7 @@ type TypeUseInternationalization = {
   currentLocale: TypeLocale;
 };
 
-function useInternationalization(
-  config: TypeGetSiteTextsParam,
-): TypeUseInternationalization {
+function useInternationalization(config: TypeGetSiteTextsParam): TypeUseInternationalization {
   const { locale } = useRouter();
   setCurrentLocale(locale as TypeLocale);
 

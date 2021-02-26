@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>diegofrayo</id>
     <title>Diego Rayo | Software Developer</title>
-    <updated>2021-01-19T01:19:34.018Z</updated>
+    <updated>2021-02-26T04:28:47.582Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Diego Fernando Rayo Zamora</name>
@@ -11,7 +11,7 @@
     </author>
     <link rel="alternate" href="https://diegofrayo.vercel.app"/>
     <link rel="self" href="https://diegofrayo.vercel.app/atom.xml"/>
-    <subtitle>Hola, Soy Diego, Desarrollador de Software. Tengo poco más de 5 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.</subtitle>
+    <subtitle>Hola, Soy Diego, Desarrollador de Software. Tengo poco más de 6 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.</subtitle>
     <logo>https://diegofrayo.vercel.app/static/images/favicon/favicon.ico</logo>
     <icon>https://diegofrayo.vercel.app/static/images/favicon/android-chrome-512x512.png</icon>
     <rights>All rights reserved 2020, Diego Rayo</rights>
@@ -21,19 +21,6 @@
     <category term="React"/>
     <category term="Next.js"/>
     <category term="Blog"/>
-    <entry>
-        <title type="html"><![CDATA[Pensamientos sobre mi profesión]]></title>
-        <id>https://diegofrayo.vercel.app/blog/thoughts-about-my-profession</id>
-        <link href="https://diegofrayo.vercel.app/blog/thoughts-about-my-profession"/>
-        <updated>2020-12-05T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Quiero recopilar algunos pensamientos acerca de mi trabajo y la industria.]]></summary>
-        <content type="html"><![CDATA[Quiero recopilar algunos pensamientos acerca de mi trabajo y la industria.]]></content>
-        <author>
-            <name>Diego Rayo</name>
-            <email>diegofrayo@gmail.com</email>
-            <uri>https://diegofrayo.vercel.app/about-me</uri>
-        </author>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Mi música favorita y MDX]]></title>
         <id>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</id>

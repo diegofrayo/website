@@ -75,10 +75,7 @@ export async function getStaticProps({
     song => song.id === params.song,
   );
 
-  const file = fs.readFileSync(
-    `${process.cwd()}/src/data/music/songs/${song?.id}.mdx`,
-    "utf8",
-  );
+  const file = fs.readFileSync(`${process.cwd()}/src/data/music/songs/${song?.id}.mdx`, "utf8");
   const content = await renderToString(file, {
     components: MDXComponentsConfig,
     scope: { DATA: { ...MDXScope.DATA } },

@@ -1,14 +1,10 @@
 import { isBrowser } from "./browser";
 
 export function createArray(length: number, start?: number): number[] {
-  return Array.from(Array(length).keys()).map(
-    value => value + (start === undefined ? 1 : start),
-  );
+  return Array.from(Array(length).keys()).map(value => value + (start === undefined ? 1 : start));
 }
 
-export function createQueryFromObject(
-  object: Record<string, string | number | boolean>,
-): string {
+export function createQueryFromObject(object: Record<string, string | number | boolean>): string {
   const result = Object.entries(object)
     .map(([key, value]) => {
       if (value === "" || value === null || value === undefined) {

@@ -200,10 +200,7 @@ function BlogPostFooter({
             <strong>{formatDate(publishedAt)}</strong>
           </BlogPostFooterItem>
           <BlogPostFooterItem>
-            <BlogPostFooterItem.Icon
-              src={BlogPostAssets.UPDATED}
-              alt="Document updated icon"
-            />
+            <BlogPostFooterItem.Icon src={BlogPostAssets.UPDATED} alt="Document updated icon" />
             <span className="tw-mr-1">{SiteTexts.page.current_locale.updated_at}</span>
             <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
           </BlogPostFooterItem>
@@ -247,10 +244,7 @@ function BlogPostFooter({
             styled={false}
             tw-variant="withHover"
           >
-            <BlogPostFooterItem.Icon
-              src={BlogPostAssets.SOURCE_CODE}
-              alt="Source code icon"
-            />
+            <BlogPostFooterItem.Icon src={BlogPostAssets.SOURCE_CODE} alt="Source code icon" />
             <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
           </BlogPostFooterItem>
         </div>

@@ -160,8 +160,7 @@ function Bible() {
   useDidMount(() => {
     (window as any).$.ajax({
       url:
-        "https://dailyverses.net/get/verse?language=nvi&isdirect=1&url=" +
-        "diegofrayo.vercel.app",
+        "https://dailyverses.net/get/verse?language=nvi&isdirect=1&url=" + "diegofrayo.vercel.app",
       dataType: "JSONP",
       success: function (json) {
         setContent(json.html);

@@ -27,17 +27,15 @@ function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
         title={SiteTexts.page.current_locale.title}
       >
         <UL>
-          {["chords", "strings", "stupid", "virtual-reality", "styles"]
-            .sort()
-            .map(name => {
-              return (
-                <li key={`PlaygroundPage-${name}`}>
-                  <Link is={NextLink} href={`${Routes.PLAYGROUND}/${name}`}>
-                    {name}
-                  </Link>
-                </li>
-              );
-            })}
+          {["chords", "strings", "stupid", "virtual-reality", "styles"].sort().map(name => {
+            return (
+              <li key={`PlaygroundPage-${name}`}>
+                <Link is={NextLink} href={`${Routes.PLAYGROUND}/${name}`}>
+                  {name}
+                </Link>
+              </li>
+            );
+          })}
         </UL>
       </MainLayout>
     </Page>

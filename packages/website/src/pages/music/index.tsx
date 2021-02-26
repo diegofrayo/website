@@ -52,11 +52,7 @@ function MusicPage(): any {
                       <Link is={NextLink} href={`${Routes.MUSIC}/${song.id}`}>
                         {song.title}
                       </Link>
-                      <SongInfo
-                        song={song}
-                        SiteTexts={SiteTexts}
-                        className="tw-ml-4 tw-mb-4"
-                      />
+                      <SongInfo song={song} SiteTexts={SiteTexts} className="tw-ml-4 tw-mb-4" />
                     </li>
                   );
                 })}

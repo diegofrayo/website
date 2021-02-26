@@ -96,9 +96,7 @@ const Header = safeRender(function Header({ locales }: TypeHeaderProps): any {
           >
             <Emoji>👨‍💻</Emoji>
           </Link>
-          <h1 className="tw-text-2xl sm:tw-text-4xl tw-flex-1 tw-font-bold">
-            Diego Rayo
-          </h1>
+          <h1 className="tw-text-2xl sm:tw-text-4xl tw-flex-1 tw-font-bold">Diego Rayo</h1>
           <DarkModeToggle />
         </div>
 
@@ -216,20 +214,14 @@ function Breadcumb({ items }: TypeBreadcumbProps): any {
       {items.map((item, index) => {
         if (index === items.length - 1 && moreThanOneItem) {
           return (
-            <li
-              key={`Breadcumb-li-${generateSlug(item.text)}`}
-              className="tw-inline-block"
-            >
+            <li key={`Breadcumb-li-${generateSlug(item.text)}`} className="tw-inline-block">
               <span className="tw-text-base tw-italic">{item.text}</span>
             </li>
           );
         }
 
         return (
-          <li
-            key={`Breadcumb-li-${generateSlug(item.text)}`}
-            className="tw-inline-block tw-mr-2"
-          >
+          <li key={`Breadcumb-li-${generateSlug(item.text)}`} className="tw-inline-block tw-mr-2">
             <Link is={NextLink} href={item.url || "/"} styled={false}>
               <span className="tw-underline tw-font-bold tw-text-base">{item.text}</span>
             </Link>

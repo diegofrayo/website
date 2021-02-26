@@ -58,20 +58,11 @@ const Content = safeRender(function Content() {
         }
 
         if (property === "text") {
-          return (
-            <Section key="Section-text" title="text" classes={classes} theme={theme} />
-          );
+          return <Section key="Section-text" title="text" classes={classes} theme={theme} />;
         }
 
         if (property === "border") {
-          return (
-            <Section
-              key="Section-border"
-              title="border"
-              classes={classes}
-              theme={theme}
-            />
-          );
+          return <Section key="Section-border" title="border" classes={classes} theme={theme} />;
         }
 
         return null;

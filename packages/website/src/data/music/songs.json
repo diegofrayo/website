@@ -5,7 +5,7 @@
       "title": "Bajan",
       "artist": "Pescado Rabioso",
       "album": "Artaud",
-      "created_at": "10/02/2021",
+      "created_at": "10/01/2021",
       "chords": ["E", "F#m", "C#m", "?1", "B", "G#m", "C", "Am7", "G#"]
     },
     {
@@ -13,7 +13,7 @@
       "title": "Vasos vacíos",
       "artist": "Los Fabulosos Cadillacs",
       "album": "El ritmo mundial",
-      "created_at": "10/02/2021",
+      "created_at": "10/01/2021",
       "chords": ["G", "Em", "C", "D"]
     },
     {
@@ -21,8 +21,16 @@
       "title": "Canción para los días de la vida",
       "artist": "Invisible",
       "album": "A 18' del sol",
-      "created_at": "12/02/2021",
+      "created_at": "12/01/2021",
       "chords": []
+    },
+    {
+      "id": "antes-y-despues",
+      "title": "Antes y después",
+      "artist": "Ciro y los Persas",
+      "album": "Espejos",
+      "created_at": "25/02/2021",
+      "chords": ["E", "D", "A", "Bm", "Em", "G", "F#m", "B7"]
     }
   ],
   "chords": {
@@ -30,6 +38,7 @@
     "Am7": { "chords": "4,2,2|2,1,1", "strings_to_skip": "6" },
     "B": { "chords": "6x,2|4,4,2|3,4,3|2,4,4", "strings_to_skip": "6" },
     "Bm": { "chords": "6x,2|2,3,2|4,4,3|3,4,4", "strings_to_skip": "6" },
+    "B7": { "chords": "6x,2|4,4,2|2,4,3", "strings_to_skip": "6" },
     "C": { "chords": "5,3,3|4,2,2|2,1,1", "strings_to_skip": "6" },
     "C#m": { "chords": "5x,4|4,6,3|3,6,4|2,5,2", "strings_to_skip": "" },
     "D": { "chords": "3,2,1|1,2,2|2,3,3", "strings_to_skip": "6,5" },

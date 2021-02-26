@@ -12,16 +12,11 @@ function withTranslations(Component: any, config: TypeGetSiteTextsParam): any {
     setCurrentLocale(locale as TypeLocale);
 
     return (
-      <Component
-        SiteTexts={getSiteTexts({ ...config, locale: locale as TypeLocale })}
-        {...props}
-      />
+      <Component SiteTexts={getSiteTexts({ ...config, locale: locale as TypeLocale })} {...props} />
     );
   };
 
-  WithTranslationsHOC.displayName = `withTranslations(${
-    Component.displayName || Component.name
-  })`;
+  WithTranslationsHOC.displayName = `withTranslations(${Component.displayName || Component.name})`;
 
   return hoistNonReactStatics(WithTranslationsHOC, Component);
 }

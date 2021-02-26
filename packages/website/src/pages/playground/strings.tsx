@@ -37,9 +37,7 @@ function StringsPage(): any {
       upper: text.toUpperCase(),
       lower: text.toLowerCase(),
       convertToCapitalLetter: convertToCapitalLetter(text),
-      convertToCapitalLetterOnlyFirst: text
-        ? text[0].toUpperCase() + text.substring(1)
-        : "",
+      convertToCapitalLetterOnlyFirst: text ? text[0].toUpperCase() + text.substring(1) : "",
     });
   }
 

@@ -59,9 +59,7 @@ export function HSTMain() {
           </article>
         </section>
       </div>
-      <footer className="tw-bg-black tw-p-2 tw-text-white tw-text-center tw-mt-6">
-        footer
-      </footer>
+      <footer className="tw-bg-black tw-p-2 tw-text-white tw-text-center tw-mt-6">footer</footer>
 
       <style jsx>
         {`
@@ -83,9 +81,8 @@ export function HSTTexts() {
         <p>
           Simple text and <b>Bold text</b> and <strong>Important text</strong> and{" "}
           <i>Italic text</i> <em>Emphasized text</em> and <mark>Marked text</mark> and{" "}
-          <small>Smaller text</small> and <del>Deleted text</del> and{" "}
-          <ins>Inserted text</ins> and <sub>Subscript text</sub> and{" "}
-          <sup>Superscript text</sup>.
+          <small>Smaller text</small> and <del>Deleted text</del> and <ins>Inserted text</ins> and{" "}
+          <sub>Subscript text</sub> and <sup>Superscript text</sup>.
         </p>
 
         <br />

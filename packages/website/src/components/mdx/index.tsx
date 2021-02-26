@@ -28,11 +28,7 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
         href={url}
         styled={false}
       >
-        <Image
-          src={BlogPostAssets.GITHUB}
-          alt="Github icon"
-          className="tw-h-8 tw-w-8 tw-mr-3"
-        />
+        <Image src={BlogPostAssets.GITHUB} alt="Github icon" className="tw-h-8 tw-w-8 tw-mr-3" />
         <div className="tw-flex-1 tw-text-left">
           <h3>{name}</h3>
           <p className="tw-text-sm dfr-text-color-primary">{description}</p>

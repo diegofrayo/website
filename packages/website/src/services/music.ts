@@ -24,14 +24,8 @@ function parseLyricsAndChords(songContent): string {
             );
           } else {
             transformedLine = transformedLine
-              .replace(
-                new RegExp(escapeRegExp(`${chord} `), "g"),
-                `${insertChord(chord)} `,
-              )
-              .replace(
-                new RegExp(escapeRegExp(` ${chord}`), "g"),
-                ` ${insertChord(chord)}`,
-              );
+              .replace(new RegExp(escapeRegExp(`${chord} `), "g"), `${insertChord(chord)} `)
+              .replace(new RegExp(escapeRegExp(` ${chord}`), "g"), ` ${insertChord(chord)}`);
           }
         });
 

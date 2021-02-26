@@ -30,22 +30,13 @@ type TypeChordsProps = {
   showOptions?: boolean;
 };
 
-export function Chords({
-  name,
-  chords,
-  stringsToSkip,
-  showOptions = true,
-}: TypeChordsProps): any {
+export function Chords({ name, chords, stringsToSkip, showOptions = true }: TypeChordsProps): any {
   const chordRef: { current: any } = useRef(undefined);
   const [showInput, setShowInput] = useState(false);
 
-  const {
-    error,
-    chordsGroupedByFret,
-    chordsToString,
-    firstFret,
-    lastFret,
-  } = groupChordsByFret(chords);
+  const { error, chordsGroupedByFret, chordsToString, firstFret, lastFret } = groupChordsByFret(
+    chords,
+  );
 
   async function handleDownloadAsImage(): Promise<void> {
     const domtoimage = await import("dom-to-image");
@@ -64,9 +55,7 @@ export function Chords({
 
   if (error) {
     return (
-      <strong className="tw-block tw-text-red-700">
-        Chords syntax error: {error.message}
-      </strong>
+      <strong className="tw-block tw-text-red-700">Chords syntax error: {error.message}</strong>
     );
   }
 
@@ -95,9 +84,7 @@ export function Chords({
               })}
             {firstFret - 1 > 0 && <Fret variant="FRET_EMPTY" fret={firstFret - 1} />}
           </div>
-          {stringsToSkip && (
-            <Fret variant="FRET_SKIP_STRINGS" stringsToSkip={stringsToSkip} />
-          )}
+          {stringsToSkip && <Fret variant="FRET_SKIP_STRINGS" stringsToSkip={stringsToSkip} />}
         </div>
       </div>
 
@@ -142,9 +129,7 @@ export function Chords({
           {showInput && (
             <div className="tw-text-sm tw-mt-4">
               <strong className="tw-block tw-mb-1">input:</strong>
-              <pre className="tw-whitespace-pre-line tw-text-sm tw-break-all">
-                {chordsToString}
-              </pre>
+              <pre className="tw-whitespace-pre-line tw-text-sm tw-break-all">{chordsToString}</pre>
             </div>
           )}
         </Fragment>
@@ -188,9 +173,7 @@ export function Solo({ positions, notes }) {
           );
         })}
       </div>
-      <blockquote className="tw-ml-2 tw-whitespace-pre-line tw-break-word">
-        {notes}
-      </blockquote>
+      <blockquote className="tw-ml-2 tw-whitespace-pre-line tw-break-word">{notes}</blockquote>
     </article>
   );
 }
@@ -209,14 +192,7 @@ function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
   const isStringsNamesVariant = variant === "FRET_STRINGS_NAMES";
   const isSkipStringsVariant = variant === "FRET_SKIP_STRINGS";
   const isDefaultVariant = variant === "FRET_DEFAULT";
-  const STRINGS_NAMES = [
-    "E-[mi]",
-    "A-[la]",
-    "D-[re]",
-    "G-[sol]",
-    "B-[si]",
-    "E-[mi]",
-  ].reverse();
+  const STRINGS_NAMES = ["E-[mi]", "A-[la]", "D-[re]", "G-[sol]", "B-[si]", "E-[mi]"].reverse();
 
   return (
     <div
@@ -241,8 +217,7 @@ function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
             const isBarreChord =
               isDefaultVariant &&
               Array.isArray(chords) &&
-              ((chords.length > 0 ? chords[0] : {}) as TypeChordWithBarre).barre !==
-                undefined;
+              ((chords.length > 0 ? chords[0] : {}) as TypeChordWithBarre).barre !== undefined;
             const chord =
               isBarreChord && chords
                 ? chords[0]
@@ -260,9 +235,7 @@ function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
                     : isBarreChord
                     ? `barre-${string}-${(chord as TypeChordWithBarre).fret}`
                     : chord
-                    ? `default-${(chord as TypeChordWithString).string}-${
-                        chord.finger || ""
-                      }`
+                    ? `default-${(chord as TypeChordWithString).string}-${chord.finger || ""}`
                     : `${string}-${Date.now()}`
                 }`}
                 className="tw-flex tw-items-center tw-h-6"
@@ -284,8 +257,9 @@ function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
                 ) : isBarreChord ? (
                   <Fragment>
                     <String />
-                    {((chord as TypeChordWithBarre)?.barre?.until as number) >=
-                      string && <span className="tw-h-full tw-border-4" />}
+                    {((chord as TypeChordWithBarre)?.barre?.until as number) >= string && (
+                      <span className="tw-h-full tw-border-4" />
+                    )}
                     <String />
                   </Fragment>
                 ) : chord ? (
@@ -363,24 +337,21 @@ function groupChordsByFret(chordsParam: TypeGroupChordsByFretParams) {
               result[`${chord.fret}`].push(chord);
 
               if (
-                result[`${chord.fret}`].find(item => item.barre !== undefined) !==
-                  undefined &&
+                result[`${chord.fret}`].find(item => item.barre !== undefined) !== undefined &&
                 result[`${chord.fret}`].length > 1
               ) {
-                throw new Error(
-                  "A fret contains a barre chord can't have multiple chords",
-                );
+                throw new Error("A fret contains a barre chord can't have multiple chords");
               }
 
               return result;
             },
-            createArray(
-              Math.max(...frets) - Math.min(...frets) + 1,
-              Math.min(...frets),
-            ).reduce((result, fret) => {
-              result[`${fret}`] = [];
-              return result;
-            }, {}),
+            createArray(Math.max(...frets) - Math.min(...frets) + 1, Math.min(...frets)).reduce(
+              (result, fret) => {
+                result[`${fret}`] = [];
+                return result;
+              },
+              {},
+            ),
           );
 
     return {

@@ -27,12 +27,12 @@ function BariaPage(): any {
             Te quiero mucho!!! ♥️
           </h2>
           <p className="tw-text-gray-500 tw-text-justify">
-            He vivido cosas muy lindas contigo, ojalá podamos seguir conociendonos y
-            disfrutando por mucho tiempo más!!! 😘
+            He vivido cosas muy lindas contigo, ojalá podamos seguir conociendonos y disfrutando por
+            mucho tiempo más!!! 😘
           </p>
           <p className="tw-text-xs tw-text-right tw-text-gray-500 md:tw-w-4/5 md:tw-ml-auto tw-mt-10">
-            espero que ya entiendas un poquito mas que hago en mi trabajo y que te animes
-            a aprender a programar 😄
+            espero que ya entiendas un poquito mas que hago en mi trabajo y que te animes a aprender
+            a programar 😄
           </p>
         </div>
         <audio id="myAudio">

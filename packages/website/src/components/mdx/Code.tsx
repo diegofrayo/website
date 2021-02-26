@@ -56,10 +56,7 @@ function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
       </Highlight>
       <div className="tw-text-right tw-p-2 tw-pt-1">
         {sourceURL && (
-          <Link
-            className="tw-block sm:tw-inline-block tw-ml-auto sm:tw-mr-4"
-            href={sourceURL}
-          >
+          <Link className="tw-block sm:tw-inline-block tw-ml-auto sm:tw-mr-4" href={sourceURL}>
             <Image
               src={BlogPostAssets.GITHUB}
               alt="Github icon"

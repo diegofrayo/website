@@ -53,10 +53,7 @@ function SitePage({ content, page, SiteTexts }: TypeSitePageProps): any {
             url: Routes.HOME as TypePagesRoutes,
           },
           {
-            text:
-              SiteTexts.layout.current_locale.breadcumb[
-                generateObjectKeyInLowerCase(page)
-              ],
+            text: SiteTexts.layout.current_locale.breadcumb[generateObjectKeyInLowerCase(page)],
           },
         ]}
         title={SiteTexts.page.current_locale.title}

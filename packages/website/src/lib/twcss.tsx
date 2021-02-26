@@ -202,9 +202,7 @@ function generateClassName(
         }, "")
         .trim();
 
-      return `${styles.__base || ""} ${
-        twVariantStyles || styles.initial
-      } ${className}`.trim();
+      return `${styles.__base || ""} ${twVariantStyles || styles.initial} ${className}`.trim();
     }
 
     if (typeof twVariant === "string") {

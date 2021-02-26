@@ -61,12 +61,8 @@ function ChordsPage(): any {
               }}
             />
           </label>
-          <code className="tw-block">
-            Format: STRING,FRET,FINGER?|STRING,FRET,FINGER?
-          </code>
-          <code className="tw-block">
-            Examples: (D) 3,2,1|1,2,2|2,3,3 / (B) 5x,2|4,4|3,4|2,4
-          </code>
+          <code className="tw-block">Format: STRING,FRET,FINGER?|STRING,FRET,FINGER?</code>
+          <code className="tw-block">Examples: (D) 3,2,1|1,2,2|2,3,3 / (B) 5x,2|4,4|3,4|2,4</code>
           <Separator size={6} />
 
           <div className="tw-border tw-p-4">

@@ -1,9 +1,7 @@
 import * as React from "react";
 
 export function HelloWorldMDX({ text }: { text: string }): any {
-  return (
-    <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">{text}</p>
-  );
+  return <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">{text}</p>;
 }
 
 export function SpotifyPlaylist(): any {

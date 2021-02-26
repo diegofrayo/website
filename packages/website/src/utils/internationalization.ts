@@ -44,11 +44,7 @@ export function getSiteTexts({
       common: pageContent.common || {},
       current_locale:
         pageContent[
-          getItemLocale(
-            pageContent.config.locales,
-            pageContent.config.default_locale,
-            locale,
-          )
+          getItemLocale(pageContent.config.locales, pageContent.config.default_locale, locale)
         ],
     };
   }
@@ -108,10 +104,7 @@ export const pluralize = (
   return result.trim();
 };
 
-export const parseSiteText = (
-  text: string,
-  words: Record<string, string | number>,
-): string => {
+export const parseSiteText = (text: string, words: Record<string, string | number>): string => {
   return Object.entries(words).reduce((acum, [key, value]) => {
     return acum.replace(`<${key}>`, String(value));
   }, text);

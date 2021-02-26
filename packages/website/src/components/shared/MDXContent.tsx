@@ -16,9 +16,7 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
     <article
       className={classnames(
         "mdx-content",
-        variant === MDXContent.variant.DEFAULT
-          ? "mdx-content--default"
-          : "mdx-content--unstyled",
+        variant === MDXContent.variant.DEFAULT ? "mdx-content--default" : "mdx-content--unstyled",
         theme === "dark" && "mdx-content--dark",
       )}
     >
