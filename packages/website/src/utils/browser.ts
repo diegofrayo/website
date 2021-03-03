@@ -1,3 +1,9 @@
+import { toast } from "react-toastify";
+
+import { TypeSiteTexts } from "~/types";
+
+import { getSiteTexts } from "./internationalization";
+
 export function getScrollPosition(): number {
   return document.body.scrollTop || document.documentElement.scrollTop || 0;
 }
@@ -41,7 +47,7 @@ export function onScrollStoppedListener({
 }
 
 // TODO: Set event type
-export function copyToClipboard(event?: any, textToCopy?: string): void {
+export async function copyToClipboard(event?: any, textToCopy?: string): Promise<void> {
   try {
     if (!event && !textToCopy) throw new Error("Invalid params");
     if (!navigator.clipboard) throw new Error("Clipboard not supported");
@@ -56,9 +62,19 @@ export function copyToClipboard(event?: any, textToCopy?: string): void {
 
     if (!clipboardText) throw new Error("Any text was selected to copy");
 
-    navigator.clipboard.writeText(clipboardText);
+    await navigator.clipboard.writeText(clipboardText);
+
+    const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
+    toast.success(SiteTexts.layout.current_locale.misc.copy_to_clipboard, {
+      position: toast.POSITION.BOTTOM_CENTER,
+      toastId: "copy-to-clipboard",
+    });
   } catch (error) {
     console.error(error);
+    toast.error("Error", {
+      position: toast.POSITION.BOTTOM_CENTER,
+      toastId: "copy-to-clipboard",
+    });
   }
 }
 

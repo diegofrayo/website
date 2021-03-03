@@ -1,3 +1,4 @@
+import "react-toastify/dist/ReactToastify.min.css";
 import "~/styles/tailwind.css";
 import "~/styles/index.css";
 import "~/styles/tailwind-utils.css";
@@ -7,6 +8,7 @@ import type { AppProps } from "next/app";
 import Router from "next/router";
 import { ThemeProvider } from "next-themes";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ToastContainer } from "react-toastify";
 
 import { useDidMount } from "~/hooks";
 import { AssetsProvider } from "~/hooks/useAssets";
@@ -50,6 +52,7 @@ function App({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </AssetsProvider>
         )}
+        <ToastContainer autoClose={3000} />
       </ThemeProvider>
     </QueryClientProvider>
   );

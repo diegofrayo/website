@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, Fragment } from "react";
 import NextLink from "next/link";
 import { useTheme } from "next-themes";
 import classnames from "classnames";
@@ -26,9 +26,12 @@ function MainLayout({ children, locales, breadcumb, title }: TypeMainLayoutProps
       <Separator size={2} />
 
       <Body>
-        {breadcumb && <Breadcumb items={breadcumb} />}
-        <Separator size={4} />
-
+        {breadcumb && (
+          <Fragment>
+            <Breadcumb items={breadcumb} />
+            <Separator size={4} />
+          </Fragment>
+        )}
         <div>
           <h1 className="tw-text-left tw-text-3xl tw-font-bold">{title}</h1>
           <Separator className="tw-my-5 sm:tw-my-3" />
