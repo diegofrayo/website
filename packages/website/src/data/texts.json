@@ -3,9 +3,7 @@
     "config": {},
     "common": {},
     "en": {
-      "header": {
-        "job_title": "Software Developer"
-      },
+      "header": {},
       "breadcumb": {
         "home": "Home",
         "blog": "Blog",
@@ -18,9 +16,7 @@
       }
     },
     "es": {
-      "header": {
-        "job_title": "Desarrollador de Software"
-      },
+      "header": {},
       "breadcumb": {
         "home": "Inicio",
         "blog": "Blog",

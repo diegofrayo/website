@@ -1,27 +1,19 @@
-import React, { Fragment, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import NextLink from "next/link";
 import { useTheme } from "next-themes";
 import classnames from "classnames";
 
 import { Link, Separator, Image } from "~/components/primitive";
-import { Emoji } from "~/components/shared";
 import { WEBSITE_METADATA } from "~/data/metadata.json";
-import Routes from "~/data/routes.json";
-import { useAssets, useInternationalization, useOnWindowScroll } from "~/hooks";
+import { useAssets, useOnWindowScroll } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
-import {
-  TypeBreadcumbProps,
-  TypeGenerateSupportedLocales,
-  TypeLocale,
-  TypePagesRoutes,
-} from "~/types";
+import { TypeBreadcumbProps, TypeGenerateSupportedLocales } from "~/types";
 import { getScrollPosition } from "~/utils/browser";
-import { sortBy } from "~/utils/misc";
 import { generateSlug } from "~/utils/strings";
 
 type TypeMainLayoutProps = {
-  title: string;
+  title?: string;
   children: any;
   locales?: TypeGenerateSupportedLocales;
   breadcumb?: TypeBreadcumbProps["items"];
@@ -59,15 +51,19 @@ const Main = twcss.main`dfr-max-w-base tw-w-full tw-py-4 tw-px-6 tw-mx-auto tw-r
 
 const Body = twcss.div``;
 
+/*
 type TypeHeaderProps = {
   locales: TypeGenerateSupportedLocales;
 };
+*/
 
-const Header = safeRender(function Header({ locales }: TypeHeaderProps): any {
+const Header = safeRender(function Header(): any {
+  /*
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG as TypePagesRoutes,
     layout: true,
   });
+  */
 
   const [fixedHeader, setFixedHeader] = useState(false);
   const headerRef: { current: undefined | any } = useRef(undefined);
@@ -86,16 +82,6 @@ const Header = safeRender(function Header({ locales }: TypeHeaderProps): any {
     return (
       <header className="root tw-fixed tw-w-full tw-left-0 tw-top-0 tw-z-30 dfr-bg-secondary dark:tw-bg-black tw-shadow-md">
         <div className="tw-p-4 tw-flex dfr-max-w-base tw-mx-auto tw-items-center">
-          <Link
-            is={NextLink}
-            href={Routes.HOME}
-            className="tw-flex tw-items-center tw-justify-center tw-w-10 tw-h-10 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:dfr-border-color-primary tw-bg-blue-200 dark:tw-bg-gray-300 tw-mr-4 tw-rounded-lg tw-text-xl"
-            styled={false}
-            role="button"
-            aria-label="Go to home page"
-          >
-            <Emoji>👨‍💻</Emoji>
-          </Link>
           <h1 className="tw-text-2xl sm:tw-text-4xl tw-flex-1 tw-font-bold">Diego Rayo</h1>
           <DarkModeToggle />
         </div>
@@ -110,26 +96,12 @@ const Header = safeRender(function Header({ locales }: TypeHeaderProps): any {
   }
 
   return (
-    <header
-      className="dfr-border-color-primary tw-border-b tw-pb-4 tw-flex tw-items-center sm:tw-items-start"
-      ref={headerRef}
-    >
-      <Link
-        is={NextLink}
-        href={Routes.HOME}
-        className="tw-flex tw-items-center tw-justify-center tw-w-10 sm:tw-w-16 tw-h-10 sm:tw-h-16 tw-border-2 sm:tw-border-4 tw-border-blue-500 dark:dfr-border-color-primary tw-bg-blue-200 dark:tw-bg-gray-300 tw-rounded-lg tw-text-2xl tw-relative sm:tw-top-1"
-        styled={false}
-        role="button"
-        aria-label="Go to home page"
-      >
-        <Emoji>👨‍💻</Emoji>
-      </Link>
-      <div className="tw-flex-1 tw-mx-4">
+    <header className="tw-flex tw-items-center tw-justify-between" ref={headerRef}>
+      <div className="tw-flex-1 tw-mr-4">
         <h1 className="tw-text-2xl sm:tw-text-4xl tw-font-bold">Diego Rayo</h1>
-        <p className="tw-text-sm sm:tw-text-base">
-          {SiteTexts.layout.current_locale.header.job_title}
-        </p>
       </div>
+      <DarkModeToggle />
+      {/*
       <div className="tw-flex tw-flex-shrink-0 tw-self-stretch tw-relative tw-flex-col tw-justify-between tw-items-end">
         <div className="tw-relative tw-top-2">
           <DarkModeToggle />
@@ -137,6 +109,7 @@ const Header = safeRender(function Header({ locales }: TypeHeaderProps): any {
         <Separator size={4} />
         {locales && <LocalesSelector locales={locales} currentLocale={currentLocale} />}
       </div>
+      */}
     </header>
   );
 });
@@ -177,6 +150,7 @@ function DarkModeToggle(): any {
   );
 }
 
+/*
 type TypeLocalesSelectorProps = {
   locales: TypeGenerateSupportedLocales;
   currentLocale: TypeLocale;
@@ -205,6 +179,7 @@ function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): 
     </div>
   );
 }
+*/
 
 function Breadcumb({ items }: TypeBreadcumbProps): any {
   const moreThanOneItem = items.length > 1;
@@ -243,7 +218,7 @@ function Breadcumb({ items }: TypeBreadcumbProps): any {
 
 function Footer() {
   return (
-    <footer className="dfr-border-color-primary tw-border-t tw-pt-4 tw-text-center">
+    <footer className="tw-text-right">
       <SocialIcons />
     </footer>
   );
@@ -304,7 +279,7 @@ function SocialIcon({ icon, url, name }: TypeSocialIconProps): any {
   return (
     <Link
       href={url}
-      className="tw-inline-block dark:dfr-bg-secondary tw-p-1 dark:tw-rounded-md tw-mx-2 tw-my-1 sm:tw-my-0 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
+      className="tw-inline-block dark:dfr-bg-secondary tw-p-1 dark:tw-rounded-md tw-ml-2 tw-mb-1 sm:tw-my-0 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
       styled={false}
     >
       <Image src={icon} alt={`${name} icon`} className="tw-h-5 tw-w-5" />

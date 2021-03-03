@@ -20,20 +20,22 @@ C#m                D
 Después vos me invitabas
 
          A              B7            G
-A ver la luna, la misma luna en tu ventana
+a ver la luna, la misma luna en tu ventana
+
 
 RIFF
+
 
 E
 Antes, hace ya tiempo
 
-          D    A                         E
+          D              A               E
 Conquistadores  nos imponían su dios del miedo
 
 E
 Después vos me abrazabas
 
-         Bm D                     E
+         Bm            D          E
 Y me lamias en cada herida y cada yaga
 
 C#m                D
@@ -61,7 +63,9 @@ No decimos sin hablar
                       F#m                   E
 Hoy todo vuelve a empezar y será lo que ya fue
 
+
 RIFF
+
 
 C#m                D
 Después me regalabas

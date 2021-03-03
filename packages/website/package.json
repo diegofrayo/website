@@ -8,7 +8,7 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --ext .ts,.tsx --fix",
-    "format": "prettier --write \"{src,scripts}/**/*.{js,ts,tsx,json,css}\"",
+    "format": "prettier --write \"{src,scripts,public}/**/*.{js,ts,tsx,json,css,xml}\"",
     "build:seo-files": "node scripts/rss.js && node scripts/sitemap.js",
     "build:static-files": "node scripts/routes.js && node scripts/metadata.js"
   },
@@ -39,6 +39,7 @@
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^10.0.3",
+    "@prettier/plugin-xml": "^0.13.0",
     "@types/node": "^14.14.10",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^3.4.0",
@@ -58,7 +59,7 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "next-mdx-remote": "^1.0.0",
-    "prettier": "^2.0.5",
+    "prettier": "^2.2.1",
     "sitemap-generator": "^8.5.1",
     "typescript": "^4.1.2"
   },
@@ -73,7 +74,7 @@
       "prettier --write",
       "git add"
     ],
-    "src/**/*.{json,css}": [
+    "{src,public}/**/*.{json,css,xml}": [
       "prettier --write",
       "git add"
     ]
