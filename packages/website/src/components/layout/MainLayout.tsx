@@ -85,12 +85,13 @@ const Header = safeRender(function Header(): any {
     return (
       <header className="root tw-fixed tw-w-full tw-left-0 tw-top-0 tw-z-30 dfr-bg-secondary dark:tw-bg-black tw-shadow-md">
         <div className="dfr-max-w-base tw-p-4 tw-flex tw-mx-auto tw-items-center">
-          <h1 className="tw-text-2xl sm:tw-text-4xl tw-font-bold tw-font-sans tw-flex-1">
-            <Link is={NextLink} href="/" styled={false}>
-              Diego Rayo
-            </Link>
-          </h1>
-
+          <div className="tw-flex-1 tw-mr-4">
+            <h1 className="tw-text-2xl sm:tw-text-4xl tw-font-bold tw-font-sans dfr-text-color-links">
+              <Link is={NextLink} href="/" styled={false}>
+                Diego Rayo
+              </Link>
+            </h1>
+          </div>
           <DarkModeToggle />
         </div>
 
@@ -106,22 +107,13 @@ const Header = safeRender(function Header(): any {
   return (
     <header className="tw-flex tw-items-center tw-justify-between tw-h-32" ref={headerRef}>
       <div className="tw-flex-1 tw-mr-4">
-        <h1 className="tw-text-2xl sm:tw-text-4xl tw-font-bold tw-font-sans">
+        <h1 className="tw-text-2xl sm:tw-text-4xl tw-font-bold tw-font-sans dfr-text-color-links">
           <Link is={NextLink} href="/" styled={false}>
             Diego Rayo
           </Link>
         </h1>
       </div>
       <DarkModeToggle />
-      {/*
-      <div className="tw-flex tw-flex-shrink-0 tw-self-stretch tw-relative tw-flex-col tw-justify-between tw-items-end">
-        <div className="tw-relative tw-top-2">
-          <DarkModeToggle />
-        </div>
-        <Separator size={4} />
-        {locales && <LocalesSelector locales={locales} currentLocale={currentLocale} />}
-      </div>
-      */}
     </header>
   );
 });
@@ -240,25 +232,22 @@ function SocialIcons(): any {
   const { FooterAssets } = useAssets();
 
   const SOCIAL_NETWORKS = [
-    {
-      name: "github",
-      icon: FooterAssets.GITHUB,
-      url: WEBSITE_METADATA.social.github,
-    },
-    {
-      name: "twitter",
-      icon: FooterAssets.TWITTER_COLORFUL,
-      url: WEBSITE_METADATA.social.twitter,
-    },
+    /*
     {
       name: "linkedin",
       icon: FooterAssets.LINKEDIN,
       url: WEBSITE_METADATA.social.linkedin,
     },
+    */
     {
       name: "email",
       icon: FooterAssets.EMAIL,
       url: `mailto:${WEBSITE_METADATA.email}`,
+    },
+    {
+      name: "github",
+      icon: FooterAssets.GITHUB,
+      url: WEBSITE_METADATA.social.github,
     },
     {
       name: "spotify",

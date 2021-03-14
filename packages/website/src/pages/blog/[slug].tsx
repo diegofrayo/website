@@ -23,7 +23,6 @@ import {
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
-import { createQueryFromObject } from "~/utils/misc";
 
 type TypeBlogPostPageProps = {
   post: TypeBlogPost;
@@ -66,7 +65,6 @@ function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
       >
         <MDXContent content={mdxContent} />
         <BlogPostFooter
-          author={`@${WEBSITE_METADATA.username}`}
           createdAt={post.created_at}
           publishedAt={post.published_at}
           slug={post.slug}
@@ -119,7 +117,6 @@ export default BlogPostPage;
 // --- Components ---
 
 type TypeBlogPostFooterProps = {
-  author: string;
   createdAt: string;
   publishedAt: string;
   slug: string;
@@ -128,7 +125,6 @@ type TypeBlogPostFooterProps = {
 };
 
 function BlogPostFooter({
-  author,
   createdAt,
   publishedAt,
   slug,
@@ -188,7 +184,7 @@ function BlogPostFooter({
       </div>
       */}
 
-      <div className="dfr-border-color-primary tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-border tw-p-4">
+      <div className="dfr-border-color-primary tw-border-l-4 tw-pl-4 tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-my-4">
         <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
           <BlogPostFooterItem>
             <BlogPostFooterItem.Icon
@@ -204,30 +200,8 @@ function BlogPostFooter({
             <span className="tw-mr-1">{SiteTexts.page.current_locale.updated_at}</span>
             <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
           </BlogPostFooterItem>
-          <BlogPostFooterItem>
-            <BlogPostFooterItem.Icon src={BlogPostAssets.PERSON} alt="Person icon" />
-            <span className="tw-mr-1">{SiteTexts.page.current_locale.created_by}</span>
-            <Link href={WEBSITE_METADATA.social.twitter}>{author}</Link>
-          </BlogPostFooterItem>
         </div>
-        <Separator
-          size={4}
-          className="tw-w-full tw-border-t dfr-border-color-primary dark:dfr-border-color-primary tw-block sm:tw-hidden"
-        />
         <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start sm:tw-items-end tw-justify-center tw-flex-col">
-          <BlogPostFooterItem
-            is={Link}
-            href={`https://twitter.com/intent/tweet?${createQueryFromObject({
-              text: title,
-              url: `${WEBSITE_METADATA.url}${Routes.BLOG}/${slug}`,
-              via: WEBSITE_METADATA.username,
-            })}`}
-            styled={false}
-            tw-variant="withHover"
-          >
-            <BlogPostFooterItem.Icon src={BlogPostAssets.TWITTER} alt="Twitter icon" />
-            <span>{SiteTexts.page.current_locale.share_blog_post_twitter}</span>
-          </BlogPostFooterItem>
           <BlogPostFooterItem
             is="button"
             className="clipboard"

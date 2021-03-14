@@ -4,7 +4,7 @@
   - [Set height 100% to a child element of a flex-row parent](#set-height-100-to-a-child-element-of-a-flex-row-parent)
   - [Text ellipsis](#text-ellipsis)
 - [JavaScript](#javascript)
-  - [Capitalize string](#convertToCapitalLetter-string)
+  - [Capitalize string](#capitalize-string)
   - [Copy to clipboard](#copy-to-clipboard)
   - [Create array with N elements](#create-array-with-n-elements)
   - [Delay](#delay)
@@ -12,7 +12,8 @@
   - [Generate simple random string](#generate-simple-random-string)
   - [Regex examples](#regex-examples)
   - [Simple encrypt/decrypt](#simple-encrypt-decrypt)
-  - [Slugify string](#generateSlug-string)
+  - [Slugify string](#slugify-string)
+  - [Update scroll position](#update-scroll-position)
 - [React](#react)
   - [Component to show the window resolution using Tailwind CSS classes](#component-to-show-the-window-resolution-using-tailwind-css-classes)
   - [Iterate a children prop](#iterate-a-children-prop)
@@ -225,6 +226,21 @@ function decrypt(str) {
     .replace(/\s+/g, "-") // collapse whitespace and replace by -
     .replace(/-+/g, "-"); // collapse dashes
   return result;
+}`}
+  />
+</Collapsible>
+
+## Update scroll position
+
+<Collapsible>
+  <Code
+    language="typescript"
+    fileName="Update scroll position"
+    code={`function scroll(position: number): void {
+  document.getElementById("__next").scrollTop = position;
+  document.documentElement.scrollTop = position;
+  document.body.scrollTop = position;
+  window.scroll({ top: position, behavior: "smooth" });
 }`}
   />
 </Collapsible>

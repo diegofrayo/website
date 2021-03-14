@@ -20,7 +20,6 @@ const DATA = {
     social: {
       github: "https://www.github.com/diegofrayo",
       linkedin: "https://www.linkedin.com/in/diegofrayo",
-      twitter: "https://www.twitter.com/diegofrayo",
       spotify: "https://open.spotify.com/user/225gv7ppksrad4xzfwoyej4iq?si=iITcpGN7RjiwbgTFXy5P6Q",
       "500px": "https://500px.com/p/diegofrayo?view=photos",
     },
