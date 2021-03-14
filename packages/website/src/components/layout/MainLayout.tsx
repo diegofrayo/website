@@ -99,7 +99,7 @@ const Header = safeRender(function Header(): any {
   }
 
   return (
-    <header className="tw-flex tw-items-center tw-justify-between" ref={headerRef}>
+    <header className="tw-flex tw-items-center tw-justify-between tw-h-32" ref={headerRef}>
       <div className="tw-flex-1 tw-mr-4">
         <h1 className="tw-text-2xl sm:tw-text-4xl tw-font-bold">Diego Rayo</h1>
       </div>

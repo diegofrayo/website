@@ -47,6 +47,8 @@ function MusicPage(): any {
             return (
               <UL>
                 {data.sort(sortBy("title")).map((song: TypeSong) => {
+                  if (!song.published) return null;
+
                   return (
                     <li key={song.id}>
                       <Link is={NextLink} href={`${Routes.MUSIC}/${song.id}`}>

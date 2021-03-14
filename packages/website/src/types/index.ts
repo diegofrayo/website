@@ -83,6 +83,7 @@ export type TypeSong = {
   artist: string;
   album: string;
   created_at: string;
+  published: boolean;
 };
 
 // --- Components props ---

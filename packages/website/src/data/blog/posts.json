@@ -1,5 +1,19 @@
 {
   "posts": {
+    "i-quit": {
+      "is_legacy": false,
+      "locales": ["es"],
+      "default_locale": "es",
+      "is_published": true,
+      "created_at": "2021-03-14",
+      "published_at": "2021-03-14",
+      "updated_at": "2021-03-14",
+      "slug": "i-quit",
+      "es": {
+        "title": "Renuncio",
+        "meta_no_robots": true
+      }
+    },
     "html-semantic-tags": {
       "is_legacy": false,
       "locales": ["es"],
@@ -61,11 +75,13 @@
       "slug": "thoughts-about-my-profession",
       "es": {
         "title": "Pensamientos sobre mi profesión",
-        "description": "Quiero recopilar algunos pensamientos acerca de mi trabajo y la industria."
+        "description": "Quiero recopilar algunos pensamientos acerca de mi trabajo y la industria.",
+        "meta_no_robots": true
       },
       "en": {
         "title": "Thoughts about my profession",
-        "description": "I want to recopile some thoughts about my job and this industry."
+        "description": "I want to recopile some thoughts about my job and this industry.",
+        "meta_no_robots": true
       }
     },
     "my-favorite-music-and-mdx": {
@@ -97,11 +113,13 @@
       "slug": "my-first-post",
       "es": {
         "title": "Mi primera publicación",
-        "description": "Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí."
+        "description": "Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí.",
+        "meta_no_robots": true
       },
       "en": {
         "title": "My first post",
-        "description": "This is my first post, here I want to welcome you to my website and explain why I built it."
+        "description": "This is my first post, here I want to welcome you to my website and explain why I built it.",
+        "meta_no_robots": true
       }
     },
     "conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy": {

@@ -6,6 +6,7 @@
       "artist": "Pescado Rabioso",
       "album": "Artaud",
       "created_at": "10/01/2021",
+      "published": true,
       "chords": ["E", "F#m", "C#m", "?1", "B", "G#m", "C", "Am7", "G#"]
     },
     {
@@ -14,6 +15,7 @@
       "artist": "Los Fabulosos Cadillacs",
       "album": "El ritmo mundial",
       "created_at": "10/01/2021",
+      "published": true,
       "chords": ["G", "Em", "C", "D"]
     },
     {
@@ -22,6 +24,7 @@
       "artist": "Invisible",
       "album": "A 18' del sol",
       "created_at": "12/01/2021",
+      "published": false,
       "chords": []
     },
     {
@@ -30,6 +33,7 @@
       "artist": "Ciro y los Persas",
       "album": "Espejos",
       "created_at": "25/02/2021",
+      "published": true,
       "chords": ["E", "D", "A", "Bm", "Em", "G", "F#m", "B7", "F"]
     }
   ],
