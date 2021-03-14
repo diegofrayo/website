@@ -10,7 +10,7 @@ function composeTitle(post: TypeBlogPost, locale: TypeLocale): string {
 async function fetchPosts(): Promise<TypeBlogPost[]> {
   const result: TypeBlogPost[] = ((Object.values(BlogPosts) as TypeBlogPost[]).filter(
     (post: TypeBlogPost) => {
-      return post.is_published === true;
+      return post.config.is_published === true;
     },
   ) as TypeBlogPost[]).sort(sortBy("published_at", "desc"));
 

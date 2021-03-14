@@ -20,4 +20,12 @@ module.exports = withMDX({
       },
     ];
   },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.mdx/,
+      use: [{ loader: "xdm/webpack.cjs", options: {} }],
+    });
+
+    return config;
+  },
 });

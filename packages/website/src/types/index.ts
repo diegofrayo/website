@@ -48,14 +48,17 @@ export type TypeGetAssetsParam = Array<"header" | "blog_post" | "footer" | "vr">
 // --- Blog ---
 
 interface TypeBlogPostBase {
+  slug: string;
   is_legacy: boolean;
-  locales: TypeLocale[];
   default_locale: TypeLocale;
-  is_published: boolean;
+  locales: TypeLocale[];
   created_at: string;
   published_at: string;
   updated_at: string;
-  slug: string;
+  config: {
+    is_published: boolean;
+    meta_no_robots: boolean;
+  };
   assets?: Record<string, string>;
 }
 

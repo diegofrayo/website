@@ -41,7 +41,6 @@ function BlogPage(): any {
         ]}
         title={SiteTexts.page.current_locale.title}
       >
-        <p className="tw-mb-4">{SiteTexts.page.current_locale.description}</p>
         <Render isLoading={isLoading} error={error} data={data}>
           {data => {
             return (

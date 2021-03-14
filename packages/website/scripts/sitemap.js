@@ -23,7 +23,9 @@ const generator = SitemapGenerator(WEBSITE_METADATA.url, {
 generator.start();
 
 Object.values(posts).forEach(post => {
-  if (post.is_published === false) return;
+  if (post.config.is_published === false || post.config.meta_no_robots === true) {
+    return;
+  }
 
   const url = `${WEBSITE_METADATA.url}/blog/${post.slug}`;
   generator.queueURL(url);

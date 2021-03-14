@@ -11,6 +11,16 @@
   },
   "items": [
     {
+      "id": "https://diegofrayo.vercel.app/blog/i-quit",
+      "url": "https://diegofrayo.vercel.app/blog/i-quit",
+      "title": "Renuncio",
+      "date_modified": "2021-03-14T00:00:00.000Z",
+      "author": {
+        "name": "Diego Rayo",
+        "url": "https://diegofrayo.vercel.app/about-me"
+      }
+    },
+    {
       "id": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
       "content_html": "MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify.",
       "url": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
