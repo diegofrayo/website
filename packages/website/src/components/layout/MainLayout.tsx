@@ -39,7 +39,7 @@ function MainLayout({ children, locales, breadcumb, title }: TypeMainLayoutProps
           {children}
         </div>
       </Body>
-      <Separator size={8} />
+      <Separator size={2} />
 
       <Footer />
     </Main>
@@ -81,42 +81,64 @@ const Header = safeRender(function Header(): any {
     }
   });
 
-  if (fixedHeader) {
-    return (
-      <header className="root tw-fixed tw-w-full tw-left-0 tw-top-0 tw-z-30 dfr-bg-secondary dark:tw-bg-black tw-shadow-md">
-        <div className="dfr-max-w-base tw-p-4 tw-flex tw-mx-auto tw-items-center">
-          <div className="tw-flex-1 tw-mr-4">
-            <h1 className="tw-text-2xl sm:tw-text-4xl tw-font-bold tw-font-sans dfr-text-color-links">
-              <Link is={NextLink} href="/" styled={false}>
-                Diego Rayo
-              </Link>
-            </h1>
-          </div>
-          <DarkModeToggle />
-        </div>
-
-        <style jsx>{`
-          :global(.tw-dark) .root :global(.DarkModeToggle) {
-            @apply value:dark:dfr-bg-secondary;
-          }
-        `}</style>
-      </header>
-    );
-  }
-
   return (
-    <header className="tw-flex tw-items-center tw-justify-between tw-h-32" ref={headerRef}>
+    <header
+      className={classnames(
+        fixedHeader
+          ? "root--fixed tw-w-full tw-fixed tw-left-0 tw-top-0 tw-z-30 tw-shadow-sm"
+          : "tw-h-32",
+      )}
+      ref={headerRef}
+    >
+      {fixedHeader ? (
+        <div className="dfr-max-w-base tw-p-4 tw-mx-auto">
+          <HeaderContent />
+        </div>
+      ) : (
+        <HeaderContent />
+      )}
+
+      <style jsx>{`
+        .root--fixed {
+          background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        :global(.tw-dark) .root--fixed {
+          background-color: rgba(0, 0, 0, 0.9);
+        }
+      `}</style>
+    </header>
+  );
+});
+
+function HeaderContent() {
+  return (
+    <div className="root tw-flex tw-items-center tw-w-full tw-h-full">
       <div className="tw-flex-1 tw-mr-4">
-        <h1 className="tw-text-2xl sm:tw-text-4xl tw-font-bold tw-font-sans dfr-text-color-links">
+        <h1 className="tw-text-4xl tw-font-bold tw-font-sans">
           <Link is={NextLink} href="/" styled={false}>
             Diego Rayo
           </Link>
         </h1>
       </div>
       <DarkModeToggle />
-    </header>
+
+      <style jsx>{`
+        .root :global(h1) {
+          color: #f44336;
+        }
+
+        :global(.tw-dark) .root :global(h1) {
+          color: #2196f3;
+        }
+
+        :global(.tw-dark) .root :global(.DarkModeToggle) {
+          @apply value:dark:dfr-bg-secondary;
+        }
+      `}</style>
+    </div>
   );
-});
+}
 
 function DarkModeToggle(): any {
   const { theme, setTheme } = useTheme();
@@ -222,7 +244,7 @@ function Breadcumb({ items }: TypeBreadcumbProps): any {
 
 function Footer() {
   return (
-    <footer className="tw-text-right">
+    <footer className="tw-flex tw-justify-end tw-items-end tw-h-32">
       <SocialIcons />
     </footer>
   );

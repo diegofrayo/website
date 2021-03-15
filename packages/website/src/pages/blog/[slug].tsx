@@ -223,17 +223,27 @@ function BlogPostFooter({
           </BlogPostFooterItem>
         </div>
       </div>
-      {showGoToTopButton && (
-        <button
-          className="tw-fixed tw-bg-black tw-opacity-50 tw-text-2xl tw-bottom-2 tw-right-2 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-text-white tw-font-bold tw-transition-opacity hover:tw-opacity-75"
-          onClick={() => {
-            setScrollPosition(0);
-          }}
-        >
-          ↑
-        </button>
-      )}
+      {showGoToTopButton && <GoToTopButton />}
     </Fragment>
+  );
+}
+
+function GoToTopButton() {
+  return (
+    <button
+      className="root tw-fixed tw-text-2xl tw-bottom-2 tw-right-2 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-transition-opacity hover:tw-opacity-75"
+      onClick={() => {
+        setScrollPosition(0);
+      }}
+    >
+      <span className="tw-relative tw--top-0.5 tw-text-white tw-font-bold">↑</span>
+
+      <style jsx>{`
+        .root {
+          background-color: rgba(0, 0, 0, 0.75);
+        }
+      `}</style>
+    </button>
   );
 }
 
