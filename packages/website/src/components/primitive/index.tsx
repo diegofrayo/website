@@ -90,13 +90,18 @@ export function UL({ children }: Record<string, any>): any {
 
       <style jsx>{`
         ul > :global(li) {
-          @apply tw-mb-1;
+          @apply tw-mb-2;
         }
 
         ul > :global(li):before {
           @apply tw-mr-2;
+          @apply tw-text-black;
           content: "❯";
           font-weight: bold;
+        }
+
+        :global(.tw-dark) ul > :global(li):before {
+          @apply tw-text-gray-400;
         }
       `}</style>
     </ul>

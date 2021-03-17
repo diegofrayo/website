@@ -84,9 +84,7 @@ const Header = safeRender(function Header(): any {
   return (
     <header
       className={classnames(
-        fixedHeader
-          ? "root--fixed tw-w-full tw-fixed tw-left-0 tw-top-0 tw-z-30 tw-shadow-sm"
-          : "tw-h-32",
+        fixedHeader ? "root--fixed tw-w-full tw-fixed tw-left-0 tw-top-0 tw-z-30" : "tw-h-32",
       )}
       ref={headerRef}
     >
@@ -104,7 +102,7 @@ const Header = safeRender(function Header(): any {
         }
 
         :global(.tw-dark) .root--fixed {
-          background-color: rgba(0, 0, 0, 0.9);
+          background-color: rgba(40, 45, 51, 0.95);
         }
       `}</style>
     </header>
@@ -125,11 +123,11 @@ function HeaderContent() {
 
       <style jsx>{`
         .root :global(h1) {
-          color: #f44336;
+          color: black;
         }
 
         :global(.tw-dark) .root :global(h1) {
-          color: #2196f3;
+          color: white;
         }
 
         :global(.tw-dark) .root :global(.DarkModeToggle) {
@@ -224,7 +222,9 @@ function Breadcumb({ items }: TypeBreadcumbProps): any {
         return (
           <li key={`Breadcumb-li-${generateSlug(item.text)}`} className="tw-inline-block tw-mr-2">
             <Link is={NextLink} href={item.url || "/"} styled={false}>
-              <span className="tw-underline tw-font-bold tw-text-base">{item.text}</span>
+              <span className="tw-underline tw-font-bold tw-text-base tw-text-black dark:tw-text-white">
+                {item.text}
+              </span>
             </Link>
           </li>
         );
@@ -234,7 +234,12 @@ function Breadcumb({ items }: TypeBreadcumbProps): any {
         {`
           .root :global(a:after) {
             @apply tw-ml-1;
+            color: black;
             ${moreThanOneItem ? 'content: "‣";' : ""}
+          }
+
+          :global(.tw-dark) .root :global(a:after) {
+            color: white;
           }
         `}
       </style>

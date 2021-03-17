@@ -60,7 +60,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: Type
   }
 
   return (
-    <article className="tw-max-w-full tw-text-center">
+    <article className="tw-max-w-full tw-text-center tw-font-serif">
       <div ref={chordRef}>
         <div className="tw-inline-flex tw-flex-no-wrap tw-overflow-x-auto tw-max-w-full tw-pt-8">
           <Fret variant="FRET_STRINGS_NAMES" />

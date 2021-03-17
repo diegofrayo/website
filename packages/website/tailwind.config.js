@@ -71,7 +71,7 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
         color: config("theme.colors").gray["700"],
       },
       dark: {
-        color: "#ffffff",
+        color: config("theme.colors").gray["200"],
       },
     },
     "dfr-text-color-secondary": {
@@ -100,20 +100,17 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
     },
   };
 
-  const transformedNewClasses = Object.entries(newClasses).reduce(
-    (acum, [key, value]) => {
-      if (value.light && value.dark) {
-        acum[`.${key}`] = value.light;
-        acum[`.${e(`value:dark:${key}`)}`] = value.dark;
-        acum[`.tw-dark .${e(`dark:${key}`)}`] = value.dark;
-      } else {
-        acum[`.${key}`] = value;
-      }
+  const transformedNewClasses = Object.entries(newClasses).reduce((acum, [key, value]) => {
+    if (value.light && value.dark) {
+      acum[`.${key}`] = value.light;
+      acum[`.${e(`value:dark:${key}`)}`] = value.dark;
+      acum[`.tw-dark .${e(`dark:${key}`)}`] = value.dark;
+    } else {
+      acum[`.${key}`] = value;
+    }
 
-      return acum;
-    },
-    {},
-  );
+    return acum;
+  }, {});
 
   addUtilities(transformedNewClasses, {
     respectPrefix: false,
