@@ -95,6 +95,7 @@ h6 {
 .Toastify__toast-container--bottom-left {
 }
 .Toastify__toast-container--bottom-center {
+  bottom: 0;
 }
 .Toastify__toast-container--bottom-right {
 }

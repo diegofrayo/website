@@ -52,7 +52,7 @@ function App({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </AssetsProvider>
         )}
-        <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={3000} hideProgressBar />
       </ThemeProvider>
     </QueryClientProvider>
   );

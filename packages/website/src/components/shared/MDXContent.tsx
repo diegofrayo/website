@@ -102,7 +102,7 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
 
         :global(.mdx-content) :global(ul) :global(li) > :global(ul) {
           @apply tw-pl-6;
-          @apply tw-mt-1;
+          @apply tw-mt-2;
           @apply tw-mb-3;
         }
 

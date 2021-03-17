@@ -48,8 +48,8 @@ function SongPage({ song, content }: TypeSongPageProps): any {
         ]}
         title={song.title}
       >
-        <SongInfo song={song} SiteTexts={SiteTexts} />
-        <div className="tw-p-2 tw-max-w-full tw-overflow-x-auto tw-border dfr-border-color-primary dark:dfr-border-color-primary">
+        <SongInfo song={song} SiteTexts={SiteTexts} className="tw-mb-6" />
+        <div className="dfr-border-color-primary dark:dfr-border-color-primary tw-border-l-4 tw-pl-4 tw-max-w-full tw-overflow-x-auto">
           <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
         </div>
       </MainLayout>

@@ -40,7 +40,7 @@ function MusicPage(): any {
         ]}
         title={SiteTexts.page.current_locale.title}
       >
-        <p className="tw-mb-4">{SiteTexts.page.current_locale.description}</p>
+        <p className="tw-mb-6">{SiteTexts.page.current_locale.description}</p>
 
         <Render isLoading={isLoading} error={error} data={data}>
           {data => {
@@ -59,7 +59,7 @@ function MusicPage(): any {
                       >
                         {song.title}
                       </Link>
-                      <SongInfo song={song} SiteTexts={SiteTexts} className="tw-ml-4 tw-mb-4" />
+                      <SongInfo song={song} SiteTexts={SiteTexts} />
                     </li>
                   );
                 })}

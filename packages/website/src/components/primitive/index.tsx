@@ -86,24 +86,16 @@ const LinkElement = twcss.a({
 export function UL({ children }: Record<string, any>): any {
   return (
     <ul className="tw-list-inside tw-list-none">
-      {children}
+      {React.Children.map(children, child => {
+        if (!child) return child;
 
-      <style jsx>{`
-        ul > :global(li) {
-          @apply tw-mb-3;
-        }
-
-        ul > :global(li):before {
-          @apply tw-mr-2;
-          @apply tw-text-black;
-          content: "❯";
-          font-weight: bold;
-        }
-
-        :global(.tw-dark) ul > :global(li):before {
-          @apply tw-text-white;
-        }
-      `}</style>
+        return (
+          <li className="tw-flex tw-flex-no-wrap tw-mb-3">
+            <span className="tw-font-bold tw-mr-2 tw-text-black dark:tw-text-white">{"❯"}</span>
+            <div className="tw-flex-1">{child.props.children || child}</div>
+          </li>
+        );
+      })}
     </ul>
   );
 }

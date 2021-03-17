@@ -19,7 +19,7 @@ export function SongInfo({
   className?: string;
 }): any {
   return (
-    <div className={classnames("tw-text-sm tw-italic tw-mb-4", className)}>
+    <div className={classnames("tw-text-sm tw-italic", className)}>
       <div>
         <strong>{SiteTexts.page.current_locale.artist}:</strong> <span>{song.artist}</span>
       </div>

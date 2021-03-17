@@ -100,7 +100,7 @@ function BlogEntry({ slug, title, locale, updatedAt }: TypeBlogEntryProps): any 
       >
         {title}
       </Link>
-      <p className="tw-text-sm tw-ml-4 tw-italic">
+      <p className="tw-text-sm tw-italic">
         <span>{SiteTexts.page.current_locale.updated_at} </span>
         <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
       </p>

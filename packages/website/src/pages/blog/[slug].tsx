@@ -68,7 +68,6 @@ function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
           createdAt={post.created_at}
           publishedAt={post.published_at}
           slug={post.slug}
-          title={BlogService.composeTitle(post, currentLocale)}
           updatedAt={post.updated_at}
         />
       </MainLayout>
@@ -120,17 +119,10 @@ type TypeBlogPostFooterProps = {
   createdAt: string;
   publishedAt: string;
   slug: string;
-  title: string;
   updatedAt: string;
 };
 
-function BlogPostFooter({
-  createdAt,
-  publishedAt,
-  slug,
-  title,
-  updatedAt,
-}: TypeBlogPostFooterProps): any {
+function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPostFooterProps): any {
   const { BlogPostAssets } = useAssets();
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG as TypePagesRoutes,
@@ -192,12 +184,12 @@ function BlogPostFooter({
               alt="Calendar icon"
               tw-variant="withoutDarkMode"
             />
-            <span className="tw-mr-1">{SiteTexts.page.current_locale.published_at}</span>
+            <span className="tw-mr-2">{SiteTexts.page.current_locale.published_at}</span>
             <strong>{formatDate(publishedAt)}</strong>
           </BlogPostFooterItem>
           <BlogPostFooterItem>
             <BlogPostFooterItem.Icon src={BlogPostAssets.UPDATED} alt="Document updated icon" />
-            <span className="tw-mr-1">{SiteTexts.page.current_locale.updated_at}</span>
+            <span className="tw-mr-2">{SiteTexts.page.current_locale.updated_at}</span>
             <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
           </BlogPostFooterItem>
         </div>
@@ -206,7 +198,7 @@ function BlogPostFooter({
             is="button"
             className="clipboard"
             tw-variant="withHover"
-            data-clipboard-text={`${title} - ${WEBSITE_METADATA.url}${Routes.BLOG}/${slug} via @${WEBSITE_METADATA.username}`}
+            data-clipboard-text={`${WEBSITE_METADATA.url}${Routes.BLOG}/${slug}`}
             onClick={copyToClipboard}
           >
             <BlogPostFooterItem.Icon src={BlogPostAssets.LINK} alt="Link icon" />
