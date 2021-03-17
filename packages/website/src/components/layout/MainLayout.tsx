@@ -102,7 +102,7 @@ const Header = safeRender(function Header(): any {
         }
 
         :global(.tw-dark) .root--fixed {
-          background-color: rgba(40, 45, 51, 0.95);
+          background-color: rgba(40, 44, 52, 0.95);
         }
       `}</style>
     </header>

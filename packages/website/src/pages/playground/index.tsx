@@ -30,7 +30,7 @@ function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
           {["chords", "strings", "stupid", "virtual-reality", "styles"].sort().map(name => {
             return (
               <li key={`PlaygroundPage-${name}`}>
-                <Link is={NextLink} href={`${Routes.PLAYGROUND}/${name}`}>
+                <Link is={NextLink} href={`${Routes.PLAYGROUND}/${name}`} styled={false}>
                   {name}
                 </Link>
               </li>

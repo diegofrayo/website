@@ -51,7 +51,12 @@ function MusicPage(): any {
 
                   return (
                     <li key={song.id}>
-                      <Link is={NextLink} href={`${Routes.MUSIC}/${song.id}`}>
+                      <Link
+                        is={NextLink}
+                        href={`${Routes.MUSIC}/${song.id}`}
+                        styled={false}
+                        className="tw-font-bold tw-text-black dark:tw-text-white"
+                      >
                         {song.title}
                       </Link>
                       <SongInfo song={song} SiteTexts={SiteTexts} className="tw-ml-4 tw-mb-4" />

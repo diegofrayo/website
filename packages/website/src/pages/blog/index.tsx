@@ -91,10 +91,16 @@ function BlogEntry({ slug, title, locale, updatedAt }: TypeBlogEntryProps): any 
 
   return (
     <li>
-      <Link is={NextLink} href={`${Routes.BLOG}/${slug}`} locale={locale} styled={false}>
+      <Link
+        is={NextLink}
+        href={`${Routes.BLOG}/${slug}`}
+        locale={locale}
+        styled={false}
+        className="tw-font-bold tw-text-black dark:tw-text-white"
+      >
         {title}
       </Link>
-      <p className="tw-text-sm tw-ml-4 tw-italic tw-text-black dark:tw-text-gray-400">
+      <p className="tw-text-sm tw-ml-4 tw-italic">
         <span>{SiteTexts.page.current_locale.updated_at} </span>
         <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
       </p>

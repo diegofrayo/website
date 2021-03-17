@@ -78,11 +78,16 @@ function MainMenu({ SiteTexts }) {
   );
 
   return (
-    <UL className="tw-mt-8">
+    <UL>
       {ITEMS.map((item, index) => {
         return (
-          <li key={`MainMenu-item-${index}`} className="tw-mb-8 sm:tw-mb-6">
-            <Link is={NextLink} href={item.url} className="tw-inline-block tw-mb-2" styled={false}>
+          <li key={`MainMenu-item-${index}`}>
+            <Link
+              is={NextLink}
+              href={item.url}
+              className="tw-inline-block tw-text-black dark:tw-text-white"
+              styled={false}
+            >
               <Emoji>{item.emoji}</Emoji>
               <span className="tw-ml-2">{item.label}</span>
             </Link>
