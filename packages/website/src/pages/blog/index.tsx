@@ -1,5 +1,6 @@
 import * as React from "react";
 import NextLink from "next/link";
+import classnames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
 import { UL, Link } from "~/components/primitive";
@@ -56,9 +57,10 @@ function BlogPage(): any {
                     <BlogEntry
                       key={`BlogEntry-${post.slug}`}
                       slug={post.slug}
-                      updatedAt={post.updated_at}
                       title={BlogService.composeTitle(post, locale)}
                       locale={locale}
+                      categories={post[locale].categories}
+                      updatedAt={post.updated_at}
                     />
                   );
                 })}
@@ -80,14 +82,20 @@ type TypeBlogEntryProps = {
   slug: string;
   title: string;
   locale: TypeLocale;
+  categories: [{ id: number; value: string }];
   updatedAt: string;
 };
 
-function BlogEntry({ slug, title, locale, updatedAt }: TypeBlogEntryProps): any {
+function BlogEntry({ slug, title, locale, categories, updatedAt }: TypeBlogEntryProps): any {
   const { SiteTexts } = useInternationalization({
     page: Routes.BLOG as TypePagesRoutes,
     layout: true,
   });
+
+  const CATEGORIES_COLORS = {
+    1: "tw-bg-gray-200 dark:tw-bg-gray-600",
+    2: "tw-bg-green-200 dark:tw-bg-green-600",
+  };
 
   return (
     <li>
@@ -103,6 +111,21 @@ function BlogEntry({ slug, title, locale, updatedAt }: TypeBlogEntryProps): any 
       <p className="tw-text-sm tw-italic">
         <span>{SiteTexts.page.current_locale.updated_at} </span>
         <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
+      </p>
+      <p className="tw-text-xs tw-my-2">
+        {categories.map(category => {
+          return (
+            <span
+              key={`category-${category.id}`}
+              className={classnames(
+                "tw-py-1 tw-px-1 tw-rounded-sm tw-font-semibold",
+                CATEGORIES_COLORS[category.id],
+              )}
+            >
+              {category.value}
+            </span>
+          );
+        })}
       </p>
     </li>
   );

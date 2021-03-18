@@ -76,32 +76,29 @@ const Header = safeRender(function Header(): any {
 
     if (headerRef.current && scrollPosition > headerRef.current.offsetHeight) {
       setFixedHeader(true);
-    } else if (scrollPosition === 0) {
+    } else if (scrollPosition <= 0) {
       setFixedHeader(false);
     }
   });
 
   return (
-    <header
-      className={classnames(
-        fixedHeader ? "root--fixed tw-w-full tw-fixed tw-left-0 tw-top-0 tw-z-30" : "tw-h-32",
-      )}
-      ref={headerRef}
-    >
+    <header className={classnames("tw-h-32", fixedHeader && "root--fixed")} ref={headerRef}>
       {fixedHeader ? (
-        <div className="dfr-max-w-base tw-p-4 tw-mx-auto">
-          <HeaderContent />
+        <div className="tw-w-full tw-fixed tw-left-0 tw-top-0 tw-z-30">
+          <div className="dfr-max-w-base tw-py-4 tw-px-6 tw-mx-auto">
+            <HeaderContent />
+          </div>
         </div>
       ) : (
         <HeaderContent />
       )}
 
       <style jsx>{`
-        .root--fixed {
+        .root--fixed > div {
           background-color: rgba(255, 255, 255, 0.95);
         }
 
-        :global(.tw-dark) .root--fixed {
+        :global(.tw-dark) .root--fixed > div {
           background-color: rgba(40, 44, 52, 0.95);
         }
       `}</style>

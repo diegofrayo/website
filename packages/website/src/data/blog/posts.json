@@ -13,7 +13,8 @@
         "meta_no_robots": true
       },
       "es": {
-        "title": "Renuncio"
+        "title": "Renuncié",
+        "categories": [{ "id": 2, "value": "personal" }]
       }
     },
     "html-semantic-tags": {
@@ -30,7 +31,8 @@
         "meta_no_robots": true
       },
       "es": {
-        "title": "HTML semantic tags 🤔"
+        "title": "HTML semantic tags 🤔",
+        "categories": [{ "id": 1, "value": "tech" }]
       }
     },
     "im-tired-to-reinvent-the-wheel": {
@@ -47,7 +49,8 @@
       },
       "es": {
         "title": "Me cansé de reinventar la rueda",
-        "description": ""
+        "description": "",
+        "categories": [{ "id": 1, "value": "tech" }]
       },
       "en": {
         "title": "I'm tired to reinvent the wheel",
@@ -68,7 +71,8 @@
       },
       "es": {
         "title": "Como uso Tailwind CSS",
-        "description": ""
+        "description": "",
+        "categories": [{ "id": 1, "value": "tech" }]
       },
       "en": {
         "title": "How I use Tailwind CSS",
@@ -89,7 +93,8 @@
       },
       "es": {
         "title": "Pensamientos sobre mi profesión",
-        "description": "Quiero recopilar algunos pensamientos acerca de mi trabajo y la industria."
+        "description": "Quiero recopilar algunos pensamientos acerca de mi trabajo y la industria.",
+        "categories": [{ "id": 2, "value": "personal" }]
       },
       "en": {
         "title": "Thoughts about my profession",
@@ -110,7 +115,8 @@
       },
       "es": {
         "title": "Mi música favorita y MDX",
-        "description": "MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify."
+        "description": "MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify.",
+        "categories": [{ "id": 1, "value": "tech" }]
       },
       "en": {
         "title": "My favorite music and MDX",
@@ -131,7 +137,8 @@
       },
       "es": {
         "title": "Mi primera publicación",
-        "description": "Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí."
+        "description": "Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí.",
+        "categories": [{ "id": 2, "value": "personal" }]
       },
       "en": {
         "title": "My first post",
@@ -152,7 +159,8 @@
       },
       "es": {
         "title": "Conectando un proyecto de Firebase con un dominio de Go Daddy",
-        "description": "En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase."
+        "description": "En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase.",
+        "categories": [{ "id": 1, "value": "tech" }]
       },
       "assets": {
         "image_1": "/static/pages/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy/1.png",
