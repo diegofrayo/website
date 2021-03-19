@@ -1,4 +1,4 @@
-En este tutorial quiero explicar como subir un paquete privado de npm a Github Packages usando Github Actions. Además el paquete estará asociado a un repositorio privado perteneciente a una organización.
+En este tutorial quiero explicar como subir un paquete privado de npm a Github Packages usando Github Actions. Además el paquete estará asociado a un repositorio privado perteneciente a una organización. Para este tutorial, voy a usar `my-pkg` como nombre del paquete y `@my-organization` como nombre de la organización.
 
 ## Publicando el paquete
 
@@ -88,7 +88,7 @@ En este tutorial quiero explicar como subir un paquete privado de npm a Github P
   ```
 
   > **Importante:**
-  > - `"name": "@my-organization/my-pkg"` | El nombre del paquete debe tener la estructura **@YOUR_ORGANIZATION/YOUR_PACKAGE_NAME**
+  > - `"name": "@my-organization/my-pkg"` | El nombre del paquete debe tener la estructura **@organization/package-name**
   > - `"repository": "git://github.com/my-organization/my-pkg.git"` | Aquí debes configurar la URL de tu repositorio
   > - `"publishConfig": {"registry": "https://npm.pkg.github.com"}` | Este atributo sirve para indicarle a Github que vas a subir el paquete a su registro de paquetes
   > - `"private": false` | Aunque el paquete será privado, el valor de este atributo debe ser **false**
@@ -96,7 +96,7 @@ En este tutorial quiero explicar como subir un paquete privado de npm a Github P
 1. Crear el archivo `.yml` del workflow en la carpeta `.github/workflows`.
 
   ```
-  name: Publish my-pkg
+  name: Publishing my-pkg
 
   on:
     push:
@@ -122,7 +122,9 @@ En este tutorial quiero explicar como subir un paquete privado de npm a Github P
 
         - uses: actions/setup-node@v2
           with:
+            node-version: 12
             registry-url: "https://npm.pkg.github.com"
+            scope: "@my-organization"
 
         - name: Publish package
           run: npm publish
@@ -131,7 +133,7 @@ En este tutorial quiero explicar como subir un paquete privado de npm a Github P
   ```
 
   > **Importante:**
-  > - Este workflow se encarga de instalar y construir el paquete usando npm a través de los steps `name: Install dependencies` y `name: Build package`.
+  > - Este workflow se ejecuta cuando se hace un push a la rama `master`. Se encarga de instalar y construir el paquete usando npm a través de los steps `name: Install dependencies` y `name: Build package`.
   > - Antes de ejecutar los dos steps anteriores es importante configurar `registry-url: "https://registry.npmjs.org"` para indicarle a Github que vas a usar el registro de npm para construir el paquete.
   > - Antes de publicar el paquete, es necesario configurar `registry-url: "https://npm.pkg.github.com"` para indicarle a Github que vas a subir el paquete al registro de Github.
   > - Para subir el paquete es necesario usar `NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}`, el cual es un [secreto](https://docs.github.com/en/actions/reference/authentication-in-a-workflow) creado por Github automáticamente en el repositorio del proyecto. También se puede usar otra forma de autenticación, **personal access tokens**. En este [link](https://docs.github.com/en/packages/guides/configuring-npm-for-use-with-github-packages#authenticating-to-github-packages) puedes leer más acerca de esto.
@@ -141,7 +143,7 @@ En este tutorial quiero explicar como subir un paquete privado de npm a Github P
 1. Crear un archivo `.npmrc` en la carpeta raíz del proyecto que va a usar el paquete que publicaste.
 
   ```
-  @YOUR_ORGANIZATION:registry=https://npm.pkg.github.com
+  @my-organization:registry=https://npm.pkg.github.com
   //npm.pkg.github.com/:_authToken=YOUR_PERSONAL_ACCESS_TOKEN
   ```
 

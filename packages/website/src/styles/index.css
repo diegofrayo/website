@@ -115,6 +115,9 @@ h6 {
 .Toastify__toast--success {
   background-color: rgba(35, 38, 35, 0.75);
 }
+.tw-dark .Toastify__toast--success {
+  background-color: rgba(182, 182, 182, 0.75);
+}
 .Toastify__toast--warning {
 }
 .Toastify__toast--error {

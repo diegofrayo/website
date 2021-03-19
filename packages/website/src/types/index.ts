@@ -99,7 +99,7 @@ export type TypeBreadcumbProps = {
 };
 
 export type TypeCodeProps = {
-  language: "jsx" | "css" | "typescript" | "javascript" | "bash";
+  language: "jsx" | "css" | "typescript" | "javascript" | "bash" | "yaml";
   code: any;
   fileName?: string;
   sourceURL?: string;

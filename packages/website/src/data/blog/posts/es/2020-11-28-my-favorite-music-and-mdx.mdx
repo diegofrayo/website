@@ -61,7 +61,7 @@ Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arre
 // output: { paths: [{ params: { slug: "my-favorite-music-and-mdx" } }, ...more blog posts], fallback: false }`}
 />
 
-> La razon de configurar `fallback: false` es porque estoy usando **Static Generation**, por lo tanto todas las páginas de este sitio web son **pre-renderizadas** en **tiempo de compilación**, esto trae beneficios de rendimiento y velocidad de carga. Elegí **Static Generation** porque tengo muy pocas páginas y publicaciones en este momento, en un futuro cuando este sitio web crezca, usaré otra estrategia más eficiente y que mejor se adapte a mi situación. Les recomiendo leer la [documentación de Vercel](https://nextjs.org/docs/basic-features/data-fetching) acerca de este tema, es muy clara su explicación.
+> La razon de configurar `fallback: false` es porque estoy usando **Static Generation**, por lo tanto todas las páginas de este sitio web son **pre-renderizadas** en **tiempo de compilación**, esto trae beneficios de rendimiento y velocidad de carga. Elegí **Static Generation** porque tengo muy pocas páginas y publicaciones en este momento, en un futuro cuando este sitio web crezca, usaré otra estrategia más eficiente y que mejor se adapte a mi situación. Les recomiendo leer la [documentación de Next.js](https://nextjs.org/docs/basic-features/data-fetching) acerca de este tema, es muy clara su explicación.
 
 Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada publicación. Esta función se ejecuta solo en el servidor. Por el momento tengo el contenido de las publicaciones dentro de mi proyecto, en un futuro podría alojarlos en un **CMS**, por ejemplo.
 

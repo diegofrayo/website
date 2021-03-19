@@ -118,7 +118,7 @@ function BlogEntry({ slug, title, locale, categories, updatedAt }: TypeBlogEntry
             <span
               key={`category-${category.id}`}
               className={classnames(
-                "tw-py-1 tw-px-1 tw-rounded-sm tw-font-semibold",
+                "tw-py-1 tw-px-2 tw-rounded-sm tw-font-semibold",
                 CATEGORIES_COLORS[category.id],
               )}
             >

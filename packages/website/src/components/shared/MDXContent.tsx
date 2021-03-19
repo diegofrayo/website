@@ -37,7 +37,7 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
         }
 
         :global(.mdx-content) :global(ol) {
-          @apply tw-pl-8;
+          @apply tw-pl-9;
           list-style-type: decimal;
         }
 
@@ -83,7 +83,8 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
           font-style: italic;
         }
 
-        :global(.mdx-content--dark) :global(p) :global(code) {
+        :global(.mdx-content--dark) :global(p) :global(code),
+        :global(.mdx-content--dark) :global(li) :global(div) :global(code) {
           @apply tw-text-red-400;
         }
 
