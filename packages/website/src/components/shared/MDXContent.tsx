@@ -25,6 +25,7 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
       <style jsx>{`
         :global(.mdx-content) > :global(p),
         :global(.mdx-content) > :global(pre),
+        :global(.mdx-content) :global(li) > :global(pre),
         :global(.mdx-content) :global(blockquote),
         :global(.mdx-content) :global(img),
         :global(.mdx-content) > :global(hr),
@@ -36,8 +37,12 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
         }
 
         :global(.mdx-content) :global(ol) {
-          @apply tw-pl-6;
+          @apply tw-pl-8;
           list-style-type: decimal;
+        }
+
+        :global(.mdx-content) :global(ol) > :global(li) {
+          @apply tw-mb-2;
         }
 
         :global(.mdx-content) > :global(img) {
@@ -59,6 +64,7 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
         }
 
         :global(.mdx-content) > :global(pre),
+        :global(.mdx-content) :global(li) > :global(pre),
         :global(.mdx-content) :global(.Code) :global(pre) {
           @apply tw-bg-gray-800;
           @apply tw-p-4;
@@ -70,7 +76,8 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
           word-break: keep-all;
         }
 
-        :global(.mdx-content) :global(p) :global(code) {
+        :global(.mdx-content) :global(p) :global(code),
+        :global(.mdx-content) :global(li) :global(div) :global(code) {
           @apply tw-text-base;
           @apply tw-text-red-700;
           font-style: italic;

@@ -133,7 +133,7 @@ function Page({ children, config = {} }: TypePageProps): any {
       </Head>
       {children}
       {isUserLoggedIn() && (
-        <span className="tw-absolute tw-top-1 tw-left-1 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white" />
+        <span className="tw-fixed tw-top-1 tw-left-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white" />
       )}
       <script
         type="application/json"

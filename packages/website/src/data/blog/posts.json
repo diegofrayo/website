@@ -1,5 +1,22 @@
 {
   "posts": {
+    "publishing-a-npm-private-package-to-github-packages-using-github-actions": {
+      "slug": "publishing-a-npm-private-package-to-github-packages-using-github-actions",
+      "is_legacy": false,
+      "default_locale": "es",
+      "locales": ["es"],
+      "created_at": "2021-03-19",
+      "published_at": "2021-03-19",
+      "updated_at": "2021-03-19",
+      "config": {
+        "is_published": true,
+        "meta_no_robots": false
+      },
+      "es": {
+        "title": "Publicando un paquete privado de npm a Github Packages usando Github Actions",
+        "categories": [{ "id": 1, "value": "tech" }]
+      }
+    },
     "i-quit": {
       "slug": "i-quit",
       "is_legacy": false,
