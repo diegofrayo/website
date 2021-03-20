@@ -6,7 +6,8 @@ import { Emoji } from "~/components/shared";
 import { copyToClipboard } from "~/utils/browser";
 import { createArray } from "~/utils/misc";
 
-import twcss from "./twcss";
+import twcss from "./../twcss";
+import Service from "./service";
 
 interface TypeChordBase {
   fret: number;
@@ -30,23 +31,22 @@ type TypeChordsProps = {
   showOptions?: boolean;
 };
 
+const ChordsService = new Service();
+
 export function Chords({ name, chords, stringsToSkip, showOptions = true }: TypeChordsProps): any {
   const chordRef: { current: any } = useRef(undefined);
   const [showInput, setShowInput] = useState(false);
 
-  const { error, chordsGroupedByFret, chordsToString, firstFret, lastFret } = groupChordsByFret(
-    chords,
-  );
+  const {
+    error,
+    chordsGroupedByFret,
+    chordsToString,
+    firstFret,
+    lastFret,
+  } = ChordsService.groupChordsByFret(chords);
 
-  async function handleDownloadAsImage(): Promise<void> {
-    const domtoimage = await import("dom-to-image");
-
-    domtoimage.toPng(chordRef.current, { quality: 1 }).then(dataUrl => {
-      const link = document.createElement("a");
-      link.download = `${name}.png`;
-      link.href = dataUrl;
-      link.click();
-    });
+  function handleDownloadAsImage(): void {
+    ChordsService.downloadChordAsImage(chordRef);
   }
 
   function handleShowInput(): void {
@@ -282,136 +282,3 @@ function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
 }
 
 const String = twcss.span`tw-border tw-border-black tw-bg-black tw-block tw-h-1 tw-flex-1`;
-
-// --- Utils ---
-
-type TypeGroupChordsByFretParams = TypeChordsProps["chords"];
-
-function groupChordsByFret(chordsParam: TypeGroupChordsByFretParams) {
-  try {
-    const chords: TypeChord[] =
-      chordsParam === ""
-        ? []
-        : typeof chordsParam === "string"
-        ? chordsParam.split("|").map(
-            (item: string): TypeChord => {
-              const [string, fret, finger, ...more] = item.split(",");
-
-              if (!item || more.length > 0) throw new Error("Syntax error");
-
-              const chord: Partial<TypeChord> = {
-                finger: finger === undefined ? undefined : Number(finger),
-                fret: Number(fret),
-              };
-
-              checkFretValidity(chord.fret || 0);
-
-              if (string.includes("x")) {
-                (chord as TypeChordWithBarre).barre = {
-                  until: string.length === 2 ? Number(string[0]) : 6,
-                };
-              } else {
-                (chord as TypeChordWithString).string = Number(string);
-              }
-
-              return chord as TypeChord;
-            },
-          )
-        : (chordsParam as TypeChord[]);
-
-    const frets: number[] = chords.map(chord => chord.fret).sort();
-
-    const chordsGroupedByFret =
-      chords.length === 0
-        ? {}
-        : chords.reduce(
-            (result, chord) => {
-              checkFingerValidity(chord.finger);
-
-              if ((chord as TypeChordWithBarre).barre !== undefined) {
-                checkBarreValidity((chord as TypeChordWithBarre).barre.until);
-              } else {
-                checkStringValidity((chord as TypeChordWithString).string);
-              }
-
-              result[`${chord.fret}`].push(chord);
-
-              if (
-                result[`${chord.fret}`].find(item => item.barre !== undefined) !== undefined &&
-                result[`${chord.fret}`].length > 1
-              ) {
-                throw new Error("A fret contains a barre chord can't have multiple chords");
-              }
-
-              return result;
-            },
-            createArray(Math.max(...frets) - Math.min(...frets) + 1, Math.min(...frets)).reduce(
-              (result, fret) => {
-                result[`${fret}`] = [];
-                return result;
-              },
-              {},
-            ),
-          );
-
-    return {
-      error: undefined,
-      chordsToString: chordsToString(chordsParam),
-      firstFret: frets.length > 0 ? frets[0] : 0,
-      lastFret: frets.length > 0 ? frets[frets.length - 1] : 0,
-      chordsGroupedByFret,
-    };
-  } catch (error) {
-    console.error(error);
-
-    return {
-      chordsToString: "",
-      firstFret: 0,
-      lastFret: 0,
-      chordsGroupedByFret: {},
-      error,
-    };
-  }
-}
-
-function checkFingerValidity(finger?: number): void {
-  if (finger === undefined) return;
-
-  if (Number.isNaN(finger) || finger < 1 || finger > 4) {
-    throw new Error("Invalid finger");
-  }
-}
-
-function checkFretValidity(fret: number): void {
-  if (Number.isNaN(fret) || fret < 1 || fret > 20) {
-    throw new Error("Invalid fret");
-  }
-}
-
-function checkStringValidity(string: number): void {
-  if (Number.isNaN(string) || string < 1 || string > 6) {
-    throw new Error("Invalid string");
-  }
-}
-
-function checkBarreValidity(until: number): void {
-  if (Number.isNaN(until) || until < 3 || until > 6) {
-    throw new Error("Invalid barre chord");
-  }
-}
-
-function chordsToString(chords: TypeChordsProps["chords"]): string {
-  if (typeof chords === "string") {
-    return chords;
-  }
-
-  return chords
-    .map(chord => {
-      return `${
-        (chord as TypeChordWithString).string
-          ? (chord as TypeChordWithString).string
-          : `${(chord as TypeChordWithBarre).barre.until}x`
-      },${chord.fret}${chord.finger ? `,${chord.finger}` : ""}`;
-    })
-    .join("|");
-}

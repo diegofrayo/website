@@ -6,6 +6,7 @@ import { Link, UL } from "~/components/primitive";
 import Routes from "~/data/routes.json";
 import { withTranslations } from "~/hocs";
 import { TypePagesRoutes, TypeSiteTexts } from "~/types";
+import { isUserLoggedIn } from "~/utils/misc";
 
 type TypePlaygroundPageProps = {
   SiteTexts: TypeSiteTexts;
@@ -27,15 +28,18 @@ function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
         title={SiteTexts.page.current_locale.title}
       >
         <UL>
-          {["chords", "strings", "stupid", "virtual-reality", "styles"].sort().map(name => {
-            return (
-              <li key={`PlaygroundPage-${name}`}>
-                <Link is={NextLink} href={`${Routes.PLAYGROUND}/${name}`} styled={false}>
-                  {name}
-                </Link>
-              </li>
-            );
-          })}
+          {["chords", "strings", "stupid", "virtual-reality", "styles"]
+            .sort()
+            .concat(isUserLoggedIn() ? ["lab"] : [])
+            .map(name => {
+              return (
+                <li key={`PlaygroundPage-${name}`}>
+                  <Link is={NextLink} href={`${Routes.PLAYGROUND}/${name}`} styled={false}>
+                    {name}
+                  </Link>
+                </li>
+              );
+            })}
         </UL>
       </MainLayout>
     </Page>
