@@ -51,8 +51,6 @@ function MariaPage(): any {
               <div className="tw-flex tw-flex-wrap tw-justify-evenly">
                 <MenuItem
                   onClick={() => {
-                    // setSection("WHATSAPP");
-                    // setScrollPosition(0);
                     window.open(
                       "https://api.whatsapp.com/send?phone=573113728898&text=Hola Diego ⚡",
                     );
