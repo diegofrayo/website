@@ -7,8 +7,8 @@
       "album": "Artaud",
       "created_at": "10/01/2021",
       "published": true,
-      "spotifyUrl": "",
-      "youtubeUrl": "",
+      "spotifyUrl": "https://open.spotify.com/track/6hmYi0E6EBEmDeztQHaH0C?si=XZhRiHNWSvO7RNDEbVYnDw",
+      "youtubeUrl": "https://youtu.be/bZcMPnY9_dg",
       "chords": ["E", "F#m", "C#m", "?1", "B", "G#m", "C", "Am7", "G#"]
     },
     {
@@ -18,8 +18,8 @@
       "album": "El ritmo mundial",
       "created_at": "10/01/2021",
       "published": true,
-      "spotifyUrl": "",
-      "youtubeUrl": "",
+      "spotifyUrl": "https://open.spotify.com/track/6G9painkkIlE8HauZrG4Vw?si=2pnzv_-6Q6K8tFe0CclMMA",
+      "youtubeUrl": "https://youtu.be/8Zdhan166z0",
       "chords": ["G", "Em", "C", "D"]
     },
     {
@@ -40,8 +40,8 @@
       "album": "Espejos",
       "created_at": "25/02/2021",
       "published": true,
-      "spotifyUrl": "",
-      "youtubeUrl": "",
+      "spotifyUrl": "https://open.spotify.com/track/7dVj5UjkSMybmGDCdyVPUt?si=1DEm17xGSImA7g3M_T2XjA",
+      "youtubeUrl": "https://youtu.be/e5egGC28OcY",
       "chords": ["E", "D", "A", "Bm", "Em", "G", "F#m", "B7", "F"]
     },
     {
@@ -51,8 +51,8 @@
       "album": "3er arco",
       "created_at": "23/03/2021",
       "published": true,
-      "spotifyUrl": "",
-      "youtubeUrl": "",
+      "spotifyUrl": "https://open.spotify.com/track/1NXvuBAq48QrxRFQZVmORQ?si=k2nEIqKcRMSd6L1owJaLTw",
+      "youtubeUrl": "https://youtu.be/DaVRJca0z5c",
       "chords": ["G", "D", "A"]
     },
     {

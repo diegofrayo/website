@@ -140,7 +140,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: Type
 
 export function Solo({ positions, notes }) {
   return (
-    <article className="tw-text-sm tw-pr-2">
+    <div className="tw-text-sm tw-pr-2 tw-font-serif">
       <div className="tw-flex">
         <Fret variant="FRET_STRINGS_NAMES" />
 
@@ -173,8 +173,10 @@ export function Solo({ positions, notes }) {
           );
         })}
       </div>
-      <blockquote className="tw-ml-2 tw-whitespace-pre-line tw-break-word">{notes}</blockquote>
-    </article>
+      <p className="tw-mt-4 tw-ml-2 tw-whitespace-pre-line tw-break-word tw-italic">
+        {`"${notes}"`}
+      </p>
+    </div>
   );
 }
 

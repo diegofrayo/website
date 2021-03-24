@@ -26,15 +26,15 @@ export function SongInfo({
       <div>
         <strong>{SiteTexts.page.current_locale.album}:</strong> <span>{song.album}</span>
       </div>
-      <div className="tw-flex tw-items-center">
-        <Link href={song.spotifyUrl} styled={false} className="tw-mr-1">
+      <div className="tw-flex tw-items-center tw-mt-1">
+        <Link href={song.spotifyUrl} styled={false} className="tw-mr-2">
           <img
             src="/static/images/icons/spotify.svg"
             alt="Spotify icon"
             className="tw-w-5 tw-h-5"
           />
         </Link>
-        <Link href={song.youtubeUrl} styled={false} className="tw-mr-1">
+        <Link href={song.youtubeUrl} styled={false}>
           <img
             src="/static/images/icons/youtube.svg"
             alt="Spotify icon"
@@ -67,7 +67,7 @@ export function LyricsAndChords({ children }: { children: any }): any {
   return (
     <div>
       <pre
-        className="tw-text-sm tw-p-1"
+        className="tw-text-sm tw-p-1 tw-break-normal"
         dangerouslySetInnerHTML={{
           __html: MusicService.parseLyricsAndChords(children),
         }}
