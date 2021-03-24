@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 
-import { Modal, Separator } from "~/components/primitive";
+import { Modal, Separator, Link } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { Chords } from "~/lib/chords";
 import MusicService from "~/services/music";
@@ -26,11 +26,27 @@ export function SongInfo({
       <div>
         <strong>{SiteTexts.page.current_locale.album}:</strong> <span>{song.album}</span>
       </div>
+      <div className="tw-flex tw-items-center">
+        <Link href={song.spotifyUrl} styled={false} className="tw-mr-1">
+          <img
+            src="/static/images/icons/spotify.svg"
+            alt="Spotify icon"
+            className="tw-w-5 tw-h-5"
+          />
+        </Link>
+        <Link href={song.youtubeUrl} styled={false} className="tw-mr-1">
+          <img
+            src="/static/images/icons/youtube.svg"
+            alt="Spotify icon"
+            className="tw-w-6 tw-h-6"
+          />
+        </Link>
+      </div>
     </div>
   );
 }
 
-export function LyricsAndChords({ children }): any {
+export function LyricsAndChords({ children }: { children: any }): any {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedChord, setSelectedChord] = useState(undefined);
 

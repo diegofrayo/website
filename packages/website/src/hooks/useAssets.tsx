@@ -24,7 +24,6 @@ type TypeDefaultValue = {
     LINKEDIN: string;
     SPOTIFY: string;
     TWITTER: string;
-    TWITTER_COLORFUL: string;
   };
   VR_Assets: {
     SNIPPETS: string;
@@ -53,7 +52,6 @@ const DEFAULT_VALUE: TypeDefaultValue = {
     LINKEDIN: "",
     SPOTIFY: "",
     TWITTER: "",
-    TWITTER_COLORFUL: "",
   },
   VR_Assets: {
     SNIPPETS: "",

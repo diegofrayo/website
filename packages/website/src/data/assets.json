@@ -14,12 +14,11 @@
   },
   "footer": {
     "500_PX": "/static/images/icons/500px.svg",
-    "EMAIL": "/static/images/icons/email-colorful.svg",
+    "EMAIL": "/static/images/icons/email.svg",
     "GITHUB": "/static/images/icons/github.svg",
-    "LINKEDIN": "/static/images/icons/linkedin-colorful.svg",
-    "SPOTIFY": "/static/images/icons/spotify-colorful.svg",
-    "TWITTER": "/static/images/icons/twitter.svg",
-    "TWITTER_COLORFUL": "/static/images/icons/twitter-colorful.svg"
+    "LINKEDIN": "/static/images/icons/linkedin.svg",
+    "SPOTIFY": "/static/images/icons/spotify.svg",
+    "TWITTER": "/static/images/icons/twitter.svg"
   },
   "vr": {
     "SNIPPETS": "/static/pages/playground/virtual-reality/snippets.md",

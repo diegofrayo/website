@@ -102,39 +102,46 @@ export function UL({ children }: Record<string, any>): any {
 
 export function Collapsible({
   children,
-  title,
+  title: titleProp,
   htmlAttrs,
 }: {
   children: any;
   title?: string;
   htmlAttrs?: { openByDefault?: boolean };
 }) {
-  const [show, setShow] = useState(htmlAttrs?.openByDefault === true ? true : false);
+  const { toggleIsCollapsed, title, containerRef } = useCollapsible({
+    htmlAttrs,
+    title: titleProp,
+  });
+
+  return (
+    <details ref={containerRef} data-block>
+      <summary className="tw-font-bold" role="button" onClick={toggleIsCollapsed}>
+        {title}
+      </summary>
+      <div className="tw-pl-5">{children}</div>
+    </details>
+  );
+}
+
+function useCollapsible({ htmlAttrs, title }) {
+  const [isCollapsed, setIsCollapsed] = useState(htmlAttrs?.openByDefault === true ? true : false);
   const containerRef: any = useRef(undefined);
 
   useEffect(() => {
     if (!containerRef || !containerRef.current) return;
 
-    if (show === true) {
+    if (isCollapsed === true) {
       containerRef?.current.setAttribute("open", "");
     } else {
       containerRef?.current.removeAttribute("open");
     }
   }, [containerRef]);
 
-  return (
-    <details ref={containerRef} data-block>
-      <summary
-        className="tw-font-bold"
-        role="button"
-        onClick={() => {
-          setShow(cv => !cv);
-        }}
-      >
-        {title ? title : show ? "Hide" : "Show"}
-      </summary>
-
-      <div className="tw-pl-5">{children}</div>
-    </details>
-  );
+  return {
+    isCollapsed,
+    toggleIsCollapsed: () => setIsCollapsed(cv => !cv),
+    containerRef,
+    title: title ? title : isCollapsed ? "Hide" : "Show",
+  };
 }

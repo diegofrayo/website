@@ -7,6 +7,8 @@
       "album": "Artaud",
       "created_at": "10/01/2021",
       "published": true,
+      "spotifyUrl": "",
+      "youtubeUrl": "",
       "chords": ["E", "F#m", "C#m", "?1", "B", "G#m", "C", "Am7", "G#"]
     },
     {
@@ -16,6 +18,8 @@
       "album": "El ritmo mundial",
       "created_at": "10/01/2021",
       "published": true,
+      "spotifyUrl": "",
+      "youtubeUrl": "",
       "chords": ["G", "Em", "C", "D"]
     },
     {
@@ -25,6 +29,8 @@
       "album": "A 18' del sol",
       "created_at": "12/01/2021",
       "published": false,
+      "spotifyUrl": "",
+      "youtubeUrl": "",
       "chords": []
     },
     {
@@ -34,22 +40,55 @@
       "album": "Espejos",
       "created_at": "25/02/2021",
       "published": true,
+      "spotifyUrl": "",
+      "youtubeUrl": "",
       "chords": ["E", "D", "A", "Bm", "Em", "G", "F#m", "B7", "F"]
+    },
+    {
+      "id": "verano-del-92",
+      "title": "Verano del 92",
+      "artist": "Los Piojos",
+      "album": "3er arco",
+      "created_at": "23/03/2021",
+      "published": true,
+      "spotifyUrl": "",
+      "youtubeUrl": "",
+      "chords": ["G", "D", "A"]
+    },
+    {
+      "id": "que-ves-el-cielo",
+      "title": "Que ves el cielo",
+      "artist": "Invisible",
+      "album": "El jardín de los presentes",
+      "created_at": "23/03/2021",
+      "published": true,
+      "spotifyUrl": "https://open.spotify.com/track/2G6XFgIRMn0ZdIBao0ggoM?si=ubF1yNbXSpyV2jv1lIZLbg",
+      "youtubeUrl": "https://youtu.be/OU_HZZF_bl8",
+      "chords": ["A", "E", "D", "Bm", "C", "Asus", "Esus", "Dsus"]
     }
   ],
   "chords": {
     "A": { "chords": "4,2,1|3,2,2|2,2,3", "strings_to_skip": "6" },
     "Am7": { "chords": "4,2,2|2,1,1", "strings_to_skip": "6" },
+    "Asus": { "chords": "4,2,1|3,2,2|2,2,3|2,3,4", "strings_to_skip": "6" },
+
     "B": { "chords": "6x,2|4,4,2|3,4,3|2,4,4", "strings_to_skip": "6" },
     "Bm": { "chords": "6x,2|2,3,2|4,4,3|3,4,4", "strings_to_skip": "6" },
     "B7": { "chords": "6x,2|4,4,2|2,4,3", "strings_to_skip": "6" },
+
     "C": { "chords": "5,3,3|4,2,2|2,1,1", "strings_to_skip": "6" },
     "C#m": { "chords": "5x,4|4,6,3|3,6,4|2,5,2", "strings_to_skip": "" },
+
     "D": { "chords": "3,2,1|1,2,2|2,3,3", "strings_to_skip": "6,5" },
+    "Dsus": { "chords": "3,2,1|1,2,2|2,3,3|1,3,4", "strings_to_skip": "6,5" },
+
     "E": { "chords": "5,2,3|4,2,2|3,1,1", "strings_to_skip": "" },
     "Em": { "chords": "5,2,2|4,2,3", "strings_to_skip": "" },
+    "Esus": { "chords": "5,2,3|4,2,2|3,1,1|3,2,4", "strings_to_skip": "" },
+
     "F": { "chords": "6x,1|5,3,3|4,3,4|3,2,2", "strings_to_skip": "" },
     "F#m": { "chords": "6x,2|5,4,3|4,4,4", "strings_to_skip": "" },
+
     "G": { "chords": "5,2,1|6,3,2|1,3,3", "strings_to_skip": "" },
     "G#": { "chords": "6x,4|5,6,3|4,6,4|3,5,2", "strings_to_skip": "" },
     "G#m": { "chords": "6x,4|5,6,3|4,6,4", "strings_to_skip": "" },
