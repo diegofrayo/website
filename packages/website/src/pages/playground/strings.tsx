@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, RefObject } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Separator } from "~/components/primitive";
@@ -12,38 +12,8 @@ import { convertToCapitalLetter, generateSlug } from "~/utils/strings";
 const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "strings";
 
-function StringsPage(): any {
-  const [texts, setTexts] = useState({
-    input: "",
-    upper: "",
-    lower: "",
-    convertToCapitalLetter: "",
-    convertToCapitalLetterOnlyFirst: "",
-    slug: "",
-  });
-  const textareaRef: { current: undefined | any } = useRef(undefined);
-
-  useDidMount(() => {
-    textareaRef.current.focus();
-    textareaRef.current.click();
-  });
-
-  function handleTextAreaChange(event) {
-    const text = event.currentTarget.value || "";
-
-    setTexts({
-      input: text,
-      slug: generateSlug(text),
-      upper: text.toUpperCase(),
-      lower: text.toLowerCase(),
-      convertToCapitalLetter: convertToCapitalLetter(text),
-      convertToCapitalLetterOnlyFirst: text ? text[0].toUpperCase() + text.substring(1) : "",
-    });
-  }
-
-  function handleCopyText(error) {
-    copyToClipboard(error);
-  }
+function StringsPage(): JSX.Element {
+  const { texts, textareaRef, handleTextAreaChange, handleCopyText } = usePageHook();
 
   return (
     <Page config={{ title: PAGE_NAME, noRobots: true }}>
@@ -182,3 +152,63 @@ function StringsPage(): any {
 }
 
 export default StringsPage;
+
+// --- Hooks ---
+
+type TypeOnClickEvent = React.MouseEvent<HTMLButtonElement>;
+
+type TypeUsePageHook = {
+  texts: {
+    input: string;
+    upper: string;
+    lower: string;
+    convertToCapitalLetter: string;
+    convertToCapitalLetterOnlyFirst: string;
+    slug: string;
+  };
+  handleTextAreaChange: React.ChangeEventHandler<HTMLTextAreaElement>;
+  handleCopyText: (e: TypeOnClickEvent) => void;
+  textareaRef: RefObject<HTMLTextAreaElement>;
+};
+
+function usePageHook(): TypeUsePageHook {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [texts, setTexts] = useState<TypeUsePageHook["texts"]>({
+    input: "",
+    upper: "",
+    lower: "",
+    convertToCapitalLetter: "",
+    convertToCapitalLetterOnlyFirst: "",
+    slug: "",
+  });
+
+  useDidMount(() => {
+    if (!textareaRef?.current) return;
+    textareaRef.current.focus();
+    textareaRef.current.click();
+  });
+
+  function handleTextAreaChange(event: React.FormEvent<HTMLTextAreaElement>) {
+    const text: string = event.currentTarget.value || "";
+
+    setTexts({
+      input: text,
+      slug: generateSlug(text),
+      upper: text.toUpperCase(),
+      lower: text.toLowerCase(),
+      convertToCapitalLetter: convertToCapitalLetter(text),
+      convertToCapitalLetterOnlyFirst: text ? text[0].toUpperCase() + text.substring(1) : "",
+    });
+  }
+
+  function handleCopyText(e: TypeOnClickEvent): void {
+    copyToClipboard(e);
+  }
+
+  return {
+    texts,
+    handleTextAreaChange,
+    handleCopyText,
+    textareaRef,
+  };
+}

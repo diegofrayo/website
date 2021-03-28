@@ -46,18 +46,18 @@ export function onScrollStoppedListener({
   );
 }
 
-// TODO: Set event type
-export async function copyToClipboard(event?: any, textToCopy?: string): Promise<void> {
+export async function copyToClipboard(
+  event?: React.MouseEvent<HTMLDivElement | HTMLButtonElement>,
+  textToCopy?: string,
+): Promise<void> {
   try {
     if (!event && !textToCopy) throw new Error("Invalid params");
     if (!navigator.clipboard) throw new Error("Clipboard not supported");
 
-    let clipboardText = "";
+    let clipboardText = textToCopy;
     if (event) {
       const { currentTarget: element } = event;
       clipboardText = element.getAttribute("data-clipboard-text") || "";
-    } else if (textToCopy) {
-      clipboardText = textToCopy;
     }
 
     if (!clipboardText) throw new Error("Any text was selected to copy");

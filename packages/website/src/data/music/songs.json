@@ -76,6 +76,17 @@
       "spotifyUrl": "https://open.spotify.com/track/4vsmIkU6VJa9dXXqasvzx0?si=VIwbzG8QThOlLS35dhYEMQ",
       "youtubeUrl": "https://youtu.be/qfLfimOh1nU",
       "chords": ["Dm7", "C", "F", "C#", "Dm"]
+    },
+    {
+      "id": "par-mil",
+      "title": "Par mil",
+      "artist": "Divididos",
+      "album": "Narigón del siglo",
+      "created_at": "28/03/2021",
+      "published": false,
+      "spotifyUrl": "https://open.spotify.com/track/2Jm3VE0qGqKSxqPbbVt6oC?si=67f9f66f33294f5c",
+      "youtubeUrl": "https://youtu.be/Z_tHBX0mj1s",
+      "chords": []
     }
   ],
   "chords": {
