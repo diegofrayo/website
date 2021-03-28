@@ -26,7 +26,7 @@
       "published_at": "2021-03-14",
       "updated_at": "2021-03-21",
       "config": {
-        "is_published": false,
+        "is_published": true,
         "meta_no_robots": true
       },
       "es": {
