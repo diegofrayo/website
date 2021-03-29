@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { Fragment } from "react";
 import NextLink from "next/link";
 
 import { Page, MainLayout } from "~/components/layout";
@@ -50,7 +50,7 @@ function MusicPage(): any {
                   if (!song.published) return null;
 
                   return (
-                    <li key={song.id}>
+                    <Fragment key={song.id}>
                       <Link
                         is={NextLink}
                         href={`${Routes.MUSIC}/${song.id}`}
@@ -60,7 +60,7 @@ function MusicPage(): any {
                         {song.title}
                       </Link>
                       <SongInfo song={song} SiteTexts={SiteTexts} />
-                    </li>
+                    </Fragment>
                   );
                 })}
               </UL>

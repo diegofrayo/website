@@ -9,6 +9,7 @@
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/6hmYi0E6EBEmDeztQHaH0C?si=XZhRiHNWSvO7RNDEbVYnDw",
       "youtubeUrl": "https://youtu.be/bZcMPnY9_dg",
+      "sources": [],
       "chords": ["E", "F#m", "C#m", "?1", "B", "G#m", "C", "Am7", "G#"]
     },
     {
@@ -20,6 +21,7 @@
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/6G9painkkIlE8HauZrG4Vw?si=2pnzv_-6Q6K8tFe0CclMMA",
       "youtubeUrl": "https://youtu.be/8Zdhan166z0",
+      "sources": [],
       "chords": ["G", "Em", "C", "D"]
     },
     {
@@ -31,6 +33,7 @@
       "published": false,
       "spotifyUrl": "",
       "youtubeUrl": "",
+      "sources": [],
       "chords": []
     },
     {
@@ -42,6 +45,7 @@
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/7dVj5UjkSMybmGDCdyVPUt?si=1DEm17xGSImA7g3M_T2XjA",
       "youtubeUrl": "https://youtu.be/e5egGC28OcY",
+      "sources": [],
       "chords": ["E", "D", "A", "Bm", "Em", "G", "F#m", "B7", "F"]
     },
     {
@@ -53,6 +57,7 @@
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/1NXvuBAq48QrxRFQZVmORQ?si=k2nEIqKcRMSd6L1owJaLTw",
       "youtubeUrl": "https://youtu.be/DaVRJca0z5c",
+      "sources": [],
       "chords": ["G", "D", "A"]
     },
     {
@@ -64,6 +69,12 @@
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/2G6XFgIRMn0ZdIBao0ggoM?si=ubF1yNbXSpyV2jv1lIZLbg",
       "youtubeUrl": "https://youtu.be/OU_HZZF_bl8",
+      "sources": [
+        {
+          "text": "Que ves el cielo | LaCuerda.Net",
+          "url": "https://acordes.lacuerda.net/invisible/que_ves_el_cielo.shtml"
+        }
+      ],
       "chords": ["A", "E", "D", "Bm", "C", "Asus", "Esus", "Dsus"]
     },
     {
@@ -75,6 +86,7 @@
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/4vsmIkU6VJa9dXXqasvzx0?si=VIwbzG8QThOlLS35dhYEMQ",
       "youtubeUrl": "https://youtu.be/qfLfimOh1nU",
+      "sources": [],
       "chords": ["Dm7", "C", "F", "C#", "Dm"]
     },
     {
@@ -86,6 +98,7 @@
       "published": false,
       "spotifyUrl": "https://open.spotify.com/track/2Jm3VE0qGqKSxqPbbVt6oC?si=67f9f66f33294f5c",
       "youtubeUrl": "https://youtu.be/Z_tHBX0mj1s",
+      "sources": [],
       "chords": []
     }
   ],

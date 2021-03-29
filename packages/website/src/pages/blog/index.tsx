@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { Fragment } from "react";
 import NextLink from "next/link";
 import classnames from "classnames";
 
@@ -98,7 +98,7 @@ function BlogEntry({ slug, title, locale, categories, updatedAt }: TypeBlogEntry
   };
 
   return (
-    <li>
+    <Fragment>
       <Link
         is={NextLink}
         href={`${Routes.BLOG}/${slug}`}
@@ -127,6 +127,6 @@ function BlogEntry({ slug, title, locale, categories, updatedAt }: TypeBlogEntry
           );
         })}
       </p>
-    </li>
+    </Fragment>
   );
 }

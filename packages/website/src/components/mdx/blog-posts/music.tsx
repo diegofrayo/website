@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 
-import { Modal, Separator, Link } from "~/components/primitive";
+import { Modal, Separator, Link, UL } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { Chords } from "~/lib/chords";
 import MusicService from "~/services/music";
 import { TypeSiteTexts, TypeSong } from "~/types";
+import { generateSlug } from "~/utils/strings";
 
 export { Solo } from "~/lib/chords";
 
@@ -93,5 +94,24 @@ export function LyricsAndChords({ children }: { children: any }): any {
         </div>
       </Modal>
     </div>
+  );
+}
+
+export function SongSources({ sources }: { sources: TypeSong["sources"] }): any {
+  if (sources.length === 0) return null;
+
+  return (
+    <section>
+      <h2 className="tw-font-bold tw-text-base tw-mb-1">Fuentes</h2>
+      <UL className="tw-text-sm">
+        {sources.map(source => {
+          return (
+            <Link key={generateSlug(source.text)} href={source.url}>
+              {source.text}
+            </Link>
+          );
+        })}
+      </UL>
+    </section>
   );
 }

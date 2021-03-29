@@ -33,11 +33,15 @@ function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
             .concat(isUserLoggedIn() ? ["lab"] : [])
             .map(name => {
               return (
-                <li key={`PlaygroundPage-${name}`}>
-                  <Link is={NextLink} href={`${Routes.PLAYGROUND}/${name}`} styled={false}>
-                    {name}
-                  </Link>
-                </li>
+                <Link
+                  key={`PlaygroundPage-${name}`}
+                  is={NextLink}
+                  href={`${Routes.PLAYGROUND}/${name}`}
+                  className="tw-text-black dark:tw-text-white"
+                  styled={false}
+                >
+                  {name}
+                </Link>
               );
             })}
         </UL>

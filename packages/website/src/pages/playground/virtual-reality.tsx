@@ -32,12 +32,8 @@ function VRPage(): any {
         title={PAGE_NAME}
       >
         <UL>
-          <li>
-            <Link href={VR_Assets.INDEX}>index.html</Link>
-          </li>
-          <li>
-            <Link href={VR_Assets.SNIPPETS}>snippets.md</Link>
-          </li>
+          <Link href={VR_Assets.INDEX}>index.html</Link>
+          <Link href={VR_Assets.SNIPPETS}>snippets.md</Link>
         </UL>
       </MainLayout>
     </Page>

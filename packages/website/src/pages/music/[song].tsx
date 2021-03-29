@@ -4,7 +4,7 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout } from "~/components/layout";
-import { SongInfo } from "~/components/mdx/blog-posts/music";
+import { SongInfo, SongSources } from "~/components/mdx/blog-posts/music";
 import { MDXContent } from "~/components/shared";
 import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
@@ -49,9 +49,10 @@ function SongPage({ song, content }: TypeSongPageProps): any {
         title={song.title}
       >
         <SongInfo song={song} SiteTexts={SiteTexts} className="tw-mb-6" />
-        <div className="dfr-border-color-primary dark:dfr-border-color-primary tw-border-l-4 tw-pl-4 tw-max-w-full tw-overflow-x-auto">
+        <div className="dfr-border-color-primary dark:dfr-border-color-primary tw-border-l-4 tw-pl-4 tw-max-w-full tw-overflow-x-auto tw-mb-8">
           <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
         </div>
+        <SongSources sources={song.sources} />
       </MainLayout>
     </Page>
   );
