@@ -72,7 +72,8 @@
       "sources": [
         {
           "text": "Que ves el cielo | LaCuerda.Net",
-          "url": "https://acordes.lacuerda.net/invisible/que_ves_el_cielo.shtml"
+          "url": "https://acordes.lacuerda.net/invisible/que_ves_el_cielo.shtml",
+          "source": "lacuerda"
         }
       ],
       "chords": ["A", "E", "D", "Bm", "C", "Asus", "Esus", "Dsus"]
@@ -86,7 +87,18 @@
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/4vsmIkU6VJa9dXXqasvzx0?si=VIwbzG8QThOlLS35dhYEMQ",
       "youtubeUrl": "https://youtu.be/qfLfimOh1nU",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Ando ganas",
+          "url": "https://acordes.lacuerda.net/piojos/ando_ganas-5.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Ando Ganas - Los Piojos - Cover",
+          "url": "https://youtu.be/ygy53pb51Nk",
+          "source": "youtube"
+        }
+      ],
       "chords": ["Dm7", "C", "F", "C#", "Dm"]
     },
     {

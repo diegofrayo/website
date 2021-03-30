@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 
-import { Modal, Separator, Link, UL } from "~/components/primitive";
+import { Modal, Separator, Link } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { Chords } from "~/lib/chords";
 import MusicService from "~/services/music";
@@ -102,16 +102,49 @@ export function SongSources({ sources }: { sources: TypeSong["sources"] }): any 
 
   return (
     <section>
-      <h2 className="tw-font-bold tw-text-base tw-mb-1">Fuentes</h2>
-      <UL className="tw-text-sm">
-        {sources.map(source => {
-          return (
-            <Link key={generateSlug(source.text)} href={source.url}>
-              {source.text}
-            </Link>
-          );
-        })}
-      </UL>
+      <h2 className="tw-font-bold tw-text-2xl tw-mb-2">Fuentes</h2>
+
+      {sources.map((source, index) => {
+        return <SongSourcesItem key={`SongSourcesItem-${index}`} source={source} />;
+      })}
     </section>
   );
+}
+
+function SongSourcesItem({ source }) {
+  const { isLaCuerdaSource, isYouTubeSource } = useSongSources();
+
+  return (
+    <Link key={generateSlug(source.text)} href={source.url} styled={false}>
+      <div className="dfr-bg-secondary dark:dfr-bg-secondary tw-flex tw-items-center tw-p-2 tw-rounded-md tw-mb-1 tw-transition-opacity hover:tw-opacity-75">
+        <img
+          className="tw-w-8 tw-h-8 tw-mr-4 tw-rounded-md"
+          {...(isLaCuerdaSource(source.source)
+            ? { src: "/static/images/icons/la-cuerda.png", alt: "La cuerda icon" }
+            : isYouTubeSource(source.source)
+            ? { src: "/static/images/icons/youtube-black.svg", alt: "YouTube icon" }
+            : { src: "/static/images/icons/link.svg", alt: "Link icon" })}
+        />
+        <div>
+          <p className="tw-font-bold tw-text-sm tw-text-black dark:tw-text-white">{source.text}</p>
+          <p className="tw-text-xs tw-italic">{source.source}</p>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function useSongSources() {
+  function isLaCuerdaSource(source: string): boolean {
+    return source.includes("lacuerda");
+  }
+
+  function isYouTubeSource(source: string): boolean {
+    return source.includes("youtube");
+  }
+
+  return {
+    isLaCuerdaSource,
+    isYouTubeSource,
+  };
 }

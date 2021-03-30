@@ -20,7 +20,7 @@
     "dayjs": "^1.9.7",
     "dom-to-image": "^2.6.0",
     "hoist-non-react-statics": "^3.3.2",
-    "next": "^10.0.7",
+    "next": "^10.1.0",
     "next-themes": "^0.0.10",
     "postcss": "^8.1.10",
     "postcss-flexbugs-fixes": "^5.0.2",

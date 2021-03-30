@@ -89,7 +89,7 @@ export type TypeSong = {
   youtubeUrl: string;
   created_at: string;
   published: boolean;
-  sources: { text: string; url: string }[];
+  sources: { text: string; url: string; source: string }[];
 };
 
 // --- Components props ---
