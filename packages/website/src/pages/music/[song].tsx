@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import fs from "fs";
+import classnames from "classnames";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout } from "~/components/layout";
 import { SongInfo, SongSources } from "~/components/mdx/blog-posts/music";
 import { MDXContent } from "~/components/shared";
+import Metadata from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
 import { useInternationalization } from "~/hooks";
 import SongsService from "~/services/music";
 import { TypeSong, TypePagesRoutes } from "~/types";
+import { copyToClipboard } from "~/utils/browser";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 
 type TypeSongPageProps = {
@@ -57,13 +60,12 @@ function SongPage({ song, content }: TypeSongPageProps): any {
         >
           <div className="tw-absolute tw-top-0 tw-left-0 tw-pl-4 tw-flex tw-items-start">
             <button
-              className="tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
-              onClick={() => {
-                setFontSize(cv => {
-                  if (cv === 2) return cv;
-                  return Number((cv + 0.2).toFixed(1));
-                });
-              }}
+              className={classnames(
+                "tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75",
+                fontSize === 2 && "tw-opacity-25 dark:tw-opacity-50",
+              )}
+              disabled={fontSize === 2}
+              onClick={() => setFontSize(cv => Number((cv + 0.2).toFixed(1)))}
             >
               <img
                 src="/static/images/icons/zoom-in.svg"
@@ -72,18 +74,31 @@ function SongPage({ song, content }: TypeSongPageProps): any {
               />
             </button>
             <button
-              className="tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
-              onClick={() => {
-                setFontSize(cv => {
-                  if (cv === 0.6) return cv;
-                  return Number((cv - 0.2).toFixed(1));
-                });
-              }}
+              className={classnames(
+                "tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75",
+                fontSize === 0.6 && "tw-opacity-25 dark:tw-opacity-50",
+              )}
+              disabled={fontSize === 0.6}
+              onClick={() => setFontSize(cv => Number((cv - 0.2).toFixed(1)))}
             >
               <img
                 src="/static/images/icons/zoom-out.svg"
                 className="tw-h-6 tw-w-6"
                 alt="Zoom out icon"
+              />
+            </button>
+            <button
+              className="tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
+              data-clipboard-text={`${Metadata.WEBSITE_METADATA.url}${Routes.MUSIC}/${song.id}`}
+              onClick={e => {
+                copyToClipboard(e);
+              }}
+            >
+              <img
+                src="/static/images/icons/link.svg"
+                width="21"
+                className="tw-h-6 dark:tw-w-6"
+                alt="Link icon"
               />
             </button>
           </div>

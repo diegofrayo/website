@@ -101,7 +101,6 @@ function Page({ children, config = {} }: TypePageProps): any {
           rel="stylesheet"
         />
 
-        <script async src="https://cdn.splitbee.io/sb.js"></script>
         {(config.pathname === Routes.HOME ||
           config.pathname === Routes.RESUME ||
           config.pathname === Routes.ABOUT_ME) && (

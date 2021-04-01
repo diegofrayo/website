@@ -33,6 +33,7 @@ module.exports = {
     margin: ["responsive", "last"],
     opacity: ["responsive", "hover", "dark"],
     padding: ["responsive", "last", "hover", "dark"],
+    width: ["responsive", "last", "hover", "dark"],
   },
 };
 

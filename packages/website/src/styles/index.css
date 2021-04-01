@@ -43,6 +43,10 @@ body.no-emojis .emoji {
   display: none;
 }
 
+button {
+  outline: transparent !important;
+}
+
 h1,
 h2,
 h3,
