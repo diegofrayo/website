@@ -1,8 +1,8 @@
-import splitbee from "@splitbee/web";
 import { isUserLoggedIn } from "./misc";
 
-export function initAnalytics(): void {
+export async function initAnalytics(): Promise<void> {
   if (isUserLoggedIn() === true) return;
+  const splitbee: any = await import("@splitbee/web");
   splitbee.init();
 }
 

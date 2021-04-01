@@ -7,8 +7,8 @@ import { Page, MainLayout } from "~/components/layout";
 import { Image, Link, Separator } from "~/components/primitive";
 import { MDXContent } from "~/components/shared";
 import GITHUB from "~/data/github.json";
-import { posts as BlogPosts } from "~/data/blog/posts.json";
-import { WEBSITE_METADATA } from "~/data/metadata.json";
+import Posts from "~/data/blog/posts.json";
+import Metadata from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
 import { useInternationalization, useAssets, useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
@@ -94,7 +94,7 @@ export async function getStaticProps({
   params,
   locale,
 }: Record<string, any>): Promise<Record<string, any>> {
-  const post: TypeBlogPost = BlogPosts[params.slug];
+  const post: TypeBlogPost = Posts.posts[params.slug];
   const file = fs.readFileSync(
     `${process.cwd()}/src/data/blog/posts/${getItemLocale(
       post.locales,
@@ -198,7 +198,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
             is="button"
             className="clipboard"
             tw-variant="withHover"
-            data-clipboard-text={`${WEBSITE_METADATA.url}${Routes.BLOG}/${slug}`}
+            data-clipboard-text={`${Metadata.WEBSITE_METADATA.url}${Routes.BLOG}/${slug}`}
             onClick={copyToClipboard}
           >
             <BlogPostFooterItem.Icon src={BlogPostAssets.LINK} alt="Link icon" />

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Head from "next/head";
 
-import { SEO_METADATA, WEBSITE_METADATA } from "~/data/metadata.json";
+import Metadata from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import { TypeGetAssetsParam } from "~/types";
@@ -22,8 +22,12 @@ type TypePageProps = {
 
 function Page({ children, config = {} }: TypePageProps): any {
   const metadata = {
-    title: config.title ? `${config.title} - ${SEO_METADATA.title}` : SEO_METADATA.title,
-    url: config.pathname ? `${SEO_METADATA.url}${config.pathname}` : SEO_METADATA.url,
+    title: config.title
+      ? `${config.title} - ${Metadata.SEO_METADATA.title}`
+      : Metadata.SEO_METADATA.title,
+    url: config.pathname
+      ? `${Metadata.SEO_METADATA.url}${config.pathname}`
+      : Metadata.SEO_METADATA.url,
     description: config.description || "",
   };
 
@@ -52,7 +56,7 @@ function Page({ children, config = {} }: TypePageProps): any {
         <meta property="og:title" content={metadata.title} />
         <meta property="og:description" content={metadata.description} />
         <meta property="og:url" content={metadata.url} />
-        <meta property="og:site_name" content={SEO_METADATA.title} />
+        <meta property="og:site_name" content={Metadata.SEO_METADATA.title} />
 
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="canonical" href={metadata.url} />
@@ -76,19 +80,19 @@ function Page({ children, config = {} }: TypePageProps): any {
         <link
           rel="icon"
           href={`/static/images/favicon/favicon${
-            isDevelopmentEnvironment(WEBSITE_METADATA.url) ? "-dev" : ""
+            isDevelopmentEnvironment(Metadata.WEBSITE_METADATA.url) ? "-dev" : ""
           }.ico?v=1`}
         />
         <link
           rel="alternate"
           type="application/rss+xml"
-          title={`RSS Feed for ${WEBSITE_METADATA.url.replace("https://", "")}`}
+          title={`RSS Feed for ${Metadata.WEBSITE_METADATA.url.replace("https://", "")}`}
           href="/rss.xml"
         />
         <link
           rel="alternate"
           type="application/rss+atom"
-          title={`Atom Feed for ${WEBSITE_METADATA.url.replace("https://", "")}`}
+          title={`Atom Feed for ${Metadata.WEBSITE_METADATA.url.replace("https://", "")}`}
           href="/atom.xml"
         />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -112,11 +116,14 @@ function Page({ children, config = {} }: TypePageProps): any {
                   addressLocality: "Armenia",
                   addressRegion: "Quindío",
                 },
-                email: `mailto:${WEBSITE_METADATA.email}`,
-                jobTitle: WEBSITE_METADATA.jobTitle,
-                name: WEBSITE_METADATA.fullName,
-                url: WEBSITE_METADATA.url,
-                sameAs: [WEBSITE_METADATA.social.github, WEBSITE_METADATA.social.linkedin],
+                email: `mailto:${Metadata.WEBSITE_METADATA.email}`,
+                jobTitle: Metadata.WEBSITE_METADATA.jobTitle,
+                name: Metadata.WEBSITE_METADATA.fullName,
+                url: Metadata.WEBSITE_METADATA.url,
+                sameAs: [
+                  Metadata.WEBSITE_METADATA.social.github,
+                  Metadata.WEBSITE_METADATA.social.linkedin,
+                ],
               }),
             }}
           />

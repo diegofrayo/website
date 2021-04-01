@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import classnames from "classnames";
 
 import { Link, Separator, Image } from "~/components/primitive";
-import { WEBSITE_METADATA } from "~/data/metadata.json";
+import Metadata from "~/data/metadata.json";
 import { useAssets, useOnWindowScroll } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
@@ -266,22 +266,22 @@ function SocialIcons(): any {
     {
       name: "email",
       icon: FooterAssets.EMAIL,
-      url: `mailto:${WEBSITE_METADATA.email}`,
+      url: `mailto:${Metadata.WEBSITE_METADATA.email}`,
     },
     {
       name: "github",
       icon: FooterAssets.GITHUB,
-      url: WEBSITE_METADATA.social.github,
+      url: Metadata.WEBSITE_METADATA.social.github,
     },
     {
       name: "spotify",
       icon: FooterAssets.SPOTIFY,
-      url: WEBSITE_METADATA.social.spotify,
+      url: Metadata.WEBSITE_METADATA.social.spotify,
     },
     {
       name: "500px",
       icon: FooterAssets["500_PX"],
-      url: WEBSITE_METADATA.social["500px"],
+      url: Metadata.WEBSITE_METADATA.social["500px"],
     },
   ];
 

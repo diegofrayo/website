@@ -68,7 +68,7 @@ export function LyricsAndChords({ children }: { children: any }): any {
   return (
     <div>
       <pre
-        className="tw-text-sm tw-p-1 tw-break-normal"
+        className="tw-p-1 tw-break-normal"
         dangerouslySetInnerHTML={{
           __html: MusicService.parseLyricsAndChords(children),
         }}
@@ -112,21 +112,16 @@ export function SongSources({ sources }: { sources: TypeSong["sources"] }): any 
 }
 
 function SongSourcesItem({ source }) {
-  const { isLaCuerdaSource, isYouTubeSource } = useSongSources();
+  const { getImageProps } = useSongSourcesItemController();
 
   return (
     <Link key={generateSlug(source.text)} href={source.url} styled={false}>
-      <div className="dfr-bg-secondary dark:dfr-bg-secondary tw-flex tw-items-center tw-p-2 tw-rounded-md tw-mb-1 tw-transition-opacity hover:tw-opacity-75">
-        <img
-          className="tw-w-8 tw-h-8 tw-mr-4 tw-rounded-md"
-          {...(isLaCuerdaSource(source.source)
-            ? { src: "/static/images/icons/la-cuerda.png", alt: "La cuerda icon" }
-            : isYouTubeSource(source.source)
-            ? { src: "/static/images/icons/youtube-black.svg", alt: "YouTube icon" }
-            : { src: "/static/images/icons/link.svg", alt: "Link icon" })}
-        />
-        <div>
-          <p className="tw-font-bold tw-text-sm tw-text-black dark:tw-text-white">{source.text}</p>
+      <div className="dfr-bg-secondary dark:dfr-bg-secondary tw-flex tw-items-center tw-p-2 tw-rounded-md tw-mb-2 tw-transition-opacity hover:tw-opacity-75 tw-max-w-sm tw-h-12">
+        <img className="tw-w-8 tw-h-8 tw-mr-2 tw-rounded-md" {...getImageProps(source.source)} />
+        <div className="tw-flex-1 tw-min-w-0">
+          <p className="tw-font-bold tw-text-sm tw-text-black dark:tw-text-white tw-truncate">
+            {source.text}
+          </p>
           <p className="tw-text-xs tw-italic">{source.source}</p>
         </div>
       </div>
@@ -134,17 +129,21 @@ function SongSourcesItem({ source }) {
   );
 }
 
-function useSongSources() {
-  function isLaCuerdaSource(source: string): boolean {
-    return source.includes("lacuerda");
+function useSongSourcesItemController() {
+  function getImageProps(source) {
+    let props = {
+      src: "/static/images/icons/link.svg",
+      alt: "Link icon",
+    };
+
+    if (source.includes("lacuerda")) {
+      props = { src: "/static/images/icons/la-cuerda.png", alt: "La cuerda icon" };
+    } else if (source.includes("youtube")) {
+      props = { src: "/static/images/icons/youtube-black.svg", alt: "YouTube icon" };
+    }
+
+    return props;
   }
 
-  function isYouTubeSource(source: string): boolean {
-    return source.includes("youtube");
-  }
-
-  return {
-    isLaCuerdaSource,
-    isYouTubeSource,
-  };
+  return { getImageProps };
 }

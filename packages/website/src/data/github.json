@@ -5,8 +5,8 @@
       "url": "https://github.com/diegofrayo/monorepo/tree/master/packages/website",
       "description": "My personal website",
       "files": {
-        "MDXComponents": "https://github.com/diegofrayo/monorepo/blob/master/packages/website/src/components/MDXComponents.tsx",
-        "MDXContent": "https://github.com/diegofrayo/monorepo/blob/master/packages/website/src/components/MDXContent.tsx",
+        "MDXComponents": "https://github.com/diegofrayo/monorepo/blob/master/packages/website/src/components/mdx/index.tsx",
+        "MDXContent": "https://github.com/diegofrayo/monorepo/blob/master/packages/website/src/components/shared/MDXContent.tsx",
         "posts": "https://github.com/diegofrayo/monorepo/blob/master/packages/website/src/data/blog/posts.json",
         "[slug]": "https://github.com/diegofrayo/monorepo/blob/master/packages/website/src/pages/blog/[slug].tsx",
         "mdx": "https://github.com/diegofrayo/monorepo/blob/master/packages/website/src/utils/mdx.ts",

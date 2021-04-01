@@ -1,9 +1,9 @@
-import { songs, chords } from "~/data/music/songs.json";
+import Data from "~/data/music/songs.json";
 import { TypeSong } from "~/types";
 import { escapeRegExp, sortBy } from "~/utils/misc";
 
 async function fetchSongsList(): Promise<TypeSong[]> {
-  return songs;
+  return Data.songs;
 }
 
 function parseLyricsAndChords(songContent): string {
@@ -37,7 +37,7 @@ function parseLyricsAndChords(songContent): string {
 }
 
 function findChord(chord: string) {
-  const chordData = chords[chord];
+  const chordData = Data.chords[chord];
 
   if (!chordData) return undefined;
 
@@ -58,7 +58,7 @@ export default {
 
 function insertChord(chord: string): string {
   if (findChord(chord)) {
-    return `<button class="chord dfr-text-color-links dark:dfr-text-color-links">${chord}</button>`;
+    return `<button class="chord dfr-text-color-links dark:dfr-text-color-links tw-mt-4">${chord}</button>`;
   }
 
   return chord;

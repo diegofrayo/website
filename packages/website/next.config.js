@@ -1,6 +1,9 @@
 const withMDX = require("@next/mdx")();
 
 module.exports = withMDX({
+  future: {
+    webpack5: true,
+  },
   i18n: {
     locales: ["es"],
     defaultLocale: "es",
@@ -21,10 +24,12 @@ module.exports = withMDX({
     ];
   },
   webpack(config) {
-    config.module.rules.push({
-      test: /\.mdx/,
-      use: [{ loader: "xdm/webpack.cjs", options: {} }],
-    });
+    config.module.rules.concat([
+      {
+        test: /\.mdx/,
+        use: [{ loader: "xdm/webpack.cjs", options: {} }],
+      },
+    ]);
 
     return config;
   },

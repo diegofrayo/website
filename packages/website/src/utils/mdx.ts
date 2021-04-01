@@ -2,7 +2,7 @@ import { Collapsible, Image, Link, Separator, UL } from "~/components/primitive"
 import { Emoji, TextWithEmoji, ToDoList } from "~/components/shared";
 import * as MDXComponents from "~/components/mdx";
 import GithubData from "~/data/github.json";
-import { WEBSITE_METADATA } from "~/data/metadata.json";
+import Metadata from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
 import { TypePagesRoutes } from "~/types";
 
@@ -29,7 +29,7 @@ export const MDXScope = {
   DATA: {
     github: GithubData,
     resume: getSiteTexts({ page: Routes.RESUME as TypePagesRoutes }).page.current_locale,
-    website: WEBSITE_METADATA,
+    website: Metadata.WEBSITE_METADATA,
     routes: Routes,
   },
 };

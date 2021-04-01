@@ -1,4 +1,4 @@
-import { posts as BlogPosts } from "~/data/blog/posts.json";
+import Data from "~/data/blog/posts.json";
 import { TypeLocale, TypeBlogPost } from "~/types";
 import { sortBy } from "~/utils/misc";
 
@@ -8,7 +8,7 @@ function composeTitle(post: TypeBlogPost, locale: TypeLocale): string {
 
 // TODO: Improve this types (avoid casting many times)
 async function fetchPosts(): Promise<TypeBlogPost[]> {
-  const result: TypeBlogPost[] = ((Object.values(BlogPosts) as TypeBlogPost[]).filter(
+  const result: TypeBlogPost[] = ((Object.values(Data.posts) as TypeBlogPost[]).filter(
     (post: TypeBlogPost) => {
       return post.config.is_published === true;
     },

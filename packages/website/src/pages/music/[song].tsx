@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import fs from "fs";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
@@ -22,6 +22,8 @@ function SongPage({ song, content }: TypeSongPageProps): any {
     page: Routes.MUSIC as TypePagesRoutes,
     layout: true,
   });
+
+  const [fontSize, setFontSize] = useState(0.8);
 
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
 
@@ -49,7 +51,43 @@ function SongPage({ song, content }: TypeSongPageProps): any {
         title={song.title}
       >
         <SongInfo song={song} SiteTexts={SiteTexts} className="tw-mb-6" />
-        <div className="dfr-border-color-primary dark:dfr-border-color-primary tw-border-l-4 tw-pl-4 tw-max-w-full tw-overflow-x-auto tw-mb-8">
+        <div
+          className="dfr-border-color-primary dark:dfr-border-color-primary tw-border-l-4 tw-pl-4 tw-max-w-full tw-overflow-x-auto tw-mb-8 tw-relative tw-pt-10"
+          style={{ fontSize: `${fontSize}rem` }}
+        >
+          <div className="tw-absolute tw-top-0 tw-left-0 tw-pl-4 tw-flex tw-items-start">
+            <button
+              className="tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
+              onClick={() => {
+                setFontSize(cv => {
+                  if (cv === 2) return cv;
+                  return Number((cv + 0.2).toFixed(1));
+                });
+              }}
+            >
+              <img
+                src="/static/images/icons/zoom-in.svg"
+                className="tw-h-6 tw-w-6"
+                alt="Zoom in icon"
+              />
+            </button>
+            <button
+              className="tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
+              onClick={() => {
+                setFontSize(cv => {
+                  if (cv === 0.6) return cv;
+                  return Number((cv - 0.2).toFixed(1));
+                });
+              }}
+            >
+              <img
+                src="/static/images/icons/zoom-out.svg"
+                className="tw-h-6 tw-w-6"
+                alt="Zoom out icon"
+              />
+            </button>
+          </div>
+
           <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
         </div>
         <SongSources sources={song.sources} />

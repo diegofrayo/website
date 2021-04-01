@@ -3,7 +3,7 @@
   "title": "Diego Rayo | Software Developer",
   "home_page_url": "https://diegofrayo.vercel.app",
   "feed_url": "https://diegofrayo.vercel.app/feed.json",
-  "description": "Hola, Soy Diego, Desarrollador de Software. Tengo poco más de 6 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.",
+  "description": "Hola, Soy Diego, desarrollador de Software. Tengo poco más de 6 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.",
   "icon": "https://diegofrayo.vercel.app/static/images/favicon/favicon.ico",
   "author": {
     "name": "Diego Fernando Rayo Zamora",
@@ -11,10 +11,10 @@
   },
   "items": [
     {
-      "id": "https://diegofrayo.vercel.app/blog/i-quit",
-      "url": "https://diegofrayo.vercel.app/blog/i-quit",
-      "title": "Renuncio",
-      "date_modified": "2021-03-14T00:00:00.000Z",
+      "id": "https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions",
+      "url": "https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions",
+      "title": "Publicando un paquete privado de npm a Github Packages usando Github Actions",
+      "date_modified": "2021-03-19T00:00:00.000Z",
       "author": {
         "name": "Diego Rayo",
         "url": "https://diegofrayo.vercel.app/about-me"

@@ -21,25 +21,37 @@ function Lab() {
           <ul className="tw-block md:tw-flex tw-mt-4 tw-justify-between">
             <li
               className="tw-block md:tw-inline-block tw-cursor-pointer tw-font-bold tw-text-yellow-400 tw-mr-6"
-              onClick={() => setPage("home")}
+              onClick={() => {
+                setShowMenu(false);
+                setPage("home");
+              }}
             >
               Inicio
             </li>
             <li
               className="tw-block md:tw-inline-block tw-cursor-pointer tw-font-bold tw-text-yellow-400 tw-mr-6"
-              onClick={() => setPage("who-us")}
+              onClick={() => {
+                setShowMenu(false);
+                setPage("who-us");
+              }}
             >
               Quienes somos
             </li>
             <li
               className="tw-block md:tw-inline-block tw-cursor-pointer tw-font-bold tw-text-yellow-400 tw-mr-6"
-              onClick={() => setPage("how-to-recycle")}
+              onClick={() => {
+                setShowMenu(false);
+                setPage("how-to-recycle");
+              }}
             >
               Como reciclar
             </li>
             <li
               className="tw-block md:tw-inline-block tw-cursor-pointer tw-font-bold tw-text-yellow-400 md:tw-text-right"
-              onClick={() => setPage("directory")}
+              onClick={() => {
+                setShowMenu(false);
+                setPage("directory");
+              }}
             >
               Directorio
             </li>
@@ -95,7 +107,7 @@ function HowToRecycle() {
   return (
     <article className="tw-max-w-sm tw-mx-auto tw-border tw-px-6 tw-py-6">
       <h1 className="tw-text-center tw-text-2xl">Titulo</h1>
-      <span className="tw-bg-gray-300 tw-text-white tw-flex  tw-items-center tw-justify-center tw-w-64 tw-h-64 tw-mx-auto tw-my-10">
+      <span className="tw-bg-gray-300 tw-text-white tw-flex  tw-items-center tw-justify-center tw-w-64 tw-h-64 tw-mx-auto tw-my-10 tw-max-w-full">
         Imagen
       </span>
       <div>
