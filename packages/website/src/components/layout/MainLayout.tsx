@@ -109,8 +109,8 @@ const Header = safeRender(function Header(): any {
 function HeaderContent() {
   return (
     <div className="root tw-flex tw-items-center tw-w-full tw-h-full">
-      <div className="tw-flex-1 tw-mr-4">
-        <h1 className="tw-text-4xl tw-font-bold tw-font-sans">
+      <div className="tw-flex-1 tw-min-h-0 tw-mr-4">
+        <h1 className="tw-text-4xl tw-font-bold tw-font-sans tw-truncate">
           <Link is={NextLink} href="/" styled={false}>
             Diego Rayo
           </Link>

@@ -88,7 +88,7 @@ function SongPage({ song, content }: TypeSongPageProps): any {
               />
             </button>
             <button
-              className="tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
+              className="tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75 tw-transform tw-rotate-45"
               data-clipboard-text={`${Metadata.WEBSITE_METADATA.url}${Routes.MUSIC}/${song.id}`}
               onClick={e => {
                 copyToClipboard(e);

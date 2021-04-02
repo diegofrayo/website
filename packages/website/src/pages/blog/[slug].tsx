@@ -201,7 +201,11 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
             data-clipboard-text={`${Metadata.WEBSITE_METADATA.url}${Routes.BLOG}/${slug}`}
             onClick={copyToClipboard}
           >
-            <BlogPostFooterItem.Icon src={BlogPostAssets.LINK} alt="Link icon" />
+            <BlogPostFooterItem.Icon
+              src={BlogPostAssets.LINK}
+              alt="Link icon"
+              className="tw-transform tw-rotate-45"
+            />
             <span>{SiteTexts.page.current_locale.copy_url_to_clipboard}</span>
           </BlogPostFooterItem>
           <BlogPostFooterItem
@@ -223,7 +227,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
 function GoToTopButton() {
   return (
     <button
-      className="root tw-fixed tw-text-2xl tw-bottom-2 tw-right-2 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-transition-opacity hover:tw-opacity-75"
+      className="root tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-transition-opacity hover:tw-opacity-75"
       onClick={() => {
         setScrollPosition(0);
       }}

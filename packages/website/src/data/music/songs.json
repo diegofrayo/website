@@ -5,6 +5,7 @@
       "title": "Bajan",
       "artist": "Pescado Rabioso",
       "album": "Artaud",
+      "year": 1973,
       "created_at": "10/01/2021",
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/6hmYi0E6EBEmDeztQHaH0C?si=XZhRiHNWSvO7RNDEbVYnDw",
@@ -17,6 +18,7 @@
       "title": "Vasos vacíos",
       "artist": "Los Fabulosos Cadillacs",
       "album": "El ritmo mundial",
+      "year": 1998,
       "created_at": "10/01/2021",
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/6G9painkkIlE8HauZrG4Vw?si=2pnzv_-6Q6K8tFe0CclMMA",
@@ -29,6 +31,7 @@
       "title": "Canción para los días de la vida",
       "artist": "Invisible",
       "album": "A 18' del sol",
+      "year": 1977,
       "created_at": "12/01/2021",
       "published": false,
       "spotifyUrl": "",
@@ -41,6 +44,7 @@
       "title": "Antes y después",
       "artist": "Ciro y los Persas",
       "album": "Espejos",
+      "year": 2010,
       "created_at": "25/02/2021",
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/7dVj5UjkSMybmGDCdyVPUt?si=1DEm17xGSImA7g3M_T2XjA",
@@ -53,6 +57,7 @@
       "title": "Verano del 92",
       "artist": "Los Piojos",
       "album": "3er arco",
+      "year": 1996,
       "created_at": "23/03/2021",
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/1NXvuBAq48QrxRFQZVmORQ?si=k2nEIqKcRMSd6L1owJaLTw",
@@ -65,6 +70,7 @@
       "title": "Que ves el cielo",
       "artist": "Invisible",
       "album": "El jardín de los presentes",
+      "year": 1976,
       "created_at": "23/03/2021",
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/2G6XFgIRMn0ZdIBao0ggoM?si=ubF1yNbXSpyV2jv1lIZLbg",
@@ -83,6 +89,7 @@
       "title": "Ando ganas",
       "artist": "Los Piojos",
       "album": "Ay ay ay",
+      "year": 1994,
       "created_at": "27/03/2021",
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/4vsmIkU6VJa9dXXqasvzx0?si=VIwbzG8QThOlLS35dhYEMQ",
@@ -106,12 +113,42 @@
       "title": "Par mil",
       "artist": "Divididos",
       "album": "Narigón del siglo",
+      "year": 2000,
       "created_at": "28/03/2021",
       "published": false,
       "spotifyUrl": "https://open.spotify.com/track/2Jm3VE0qGqKSxqPbbVt6oC?si=67f9f66f33294f5c",
       "youtubeUrl": "https://youtu.be/Z_tHBX0mj1s",
       "sources": [],
       "chords": []
+    },
+    {
+      "id": "veo-chiquito",
+      "title": "Veo chiquito",
+      "artist": "Perotá Chingó",
+      "album": "Aguas",
+      "year": 2017,
+      "created_at": "01/04/2021",
+      "published": true,
+      "spotifyUrl": "https://open.spotify.com/track/44q38EV7P1sjbLI8RB6k9M?si=j5rL7NNRRxu5uSdeKZKs_Q",
+      "youtubeUrl": "https://youtu.be/YLG3T74iy1o",
+      "sources": [
+        {
+          "text": "Roots session - Cover Perota Chingo -Veo chiquito",
+          "url": "https://youtu.be/DVvJ6ggFgv0",
+          "source": "youtube"
+        },
+        {
+          "text": "Veo chiquito - perotá chingó | Cover Carely",
+          "url": "https://youtu.be/2DCNlds65jk",
+          "source": "youtube"
+        },
+        {
+          "text": "Veo chiquito",
+          "url": "https://acordes.lacuerda.net/perota_chingo/veo_chiquito.shtml",
+          "source": "lacuerda"
+        }
+      ],
+      "chords": ["C#m", "G#m", "E", "F#m"]
     }
   ],
   "chords": {

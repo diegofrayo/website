@@ -218,7 +218,8 @@
         "title": "🎸 Música",
         "description": "Aquí están las letras de las canciones que me gusta tocar en guitarra con sus respectivos acordes.",
         "artist": "Artista",
-        "album": "Album"
+        "album": "Album",
+        "year": "Año"
       }
     },
     "/roadmap": {

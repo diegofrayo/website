@@ -55,7 +55,9 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: Type
 
   if (error) {
     return (
-      <strong className="tw-block tw-text-red-700">Chords syntax error: {error.message}</strong>
+      <strong className="tw-block tw-text-red-700 dark:tw-text-red-400 tw-mt-2">
+        Chords syntax error: {error.message}
+      </strong>
     );
   }
 

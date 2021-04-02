@@ -27,6 +27,9 @@ export function SongInfo({
       <div>
         <strong>{SiteTexts.page.current_locale.album}:</strong> <span>{song.album}</span>
       </div>
+      <div>
+        <strong>{SiteTexts.page.current_locale.year}:</strong> <span>{song.year}</span>
+      </div>
       <div className="tw-flex tw-items-center tw-mt-1">
         <Link href={song.spotifyUrl} styled={false} className="tw-mr-2">
           <img
@@ -114,10 +117,15 @@ export function SongSources({ sources }: { sources: TypeSong["sources"] }): any 
 function SongSourcesItem({ source }) {
   const { getImageProps } = useSongSourcesItemController();
 
+  const imageProps = getImageProps(source.source);
+
   return (
     <Link key={generateSlug(source.text)} href={source.url} styled={false}>
       <div className="dfr-bg-secondary dark:dfr-bg-secondary tw-flex tw-items-center tw-p-2 tw-rounded-md tw-mb-2 tw-transition-opacity hover:tw-opacity-75 tw-max-w-sm tw-h-12">
-        <img className="tw-w-8 tw-h-8 tw-mr-2 tw-rounded-md" {...getImageProps(source.source)} />
+        <img
+          {...imageProps}
+          className={classnames("tw-w-8 tw-h-8 tw-mr-2 tw-rounded-md", imageProps.className)}
+        />
         <div className="tw-flex-1 tw-min-w-0">
           <p className="tw-font-bold tw-text-sm tw-text-black dark:tw-text-white tw-truncate">
             {source.text}
@@ -134,12 +142,13 @@ function useSongSourcesItemController() {
     let props = {
       src: "/static/images/icons/link.svg",
       alt: "Link icon",
+      className: "tw-transform tw-rotate-45",
     };
 
     if (source.includes("lacuerda")) {
-      props = { src: "/static/images/icons/la-cuerda.png", alt: "La cuerda icon" };
+      props = { src: "/static/images/icons/la-cuerda.png", alt: "La cuerda icon", className: "" };
     } else if (source.includes("youtube")) {
-      props = { src: "/static/images/icons/youtube-black.svg", alt: "YouTube icon" };
+      props = { src: "/static/images/icons/youtube-black.svg", alt: "YouTube icon", className: "" };
     }
 
     return props;
