@@ -6,6 +6,7 @@ import { useDidMount } from "~/hooks";
 import { Chords } from "~/lib/chords";
 import MusicService from "~/services/music";
 import { TypeSiteTexts, TypeSong } from "~/types";
+import { createArray } from "~/utils/misc";
 import { generateSlug } from "~/utils/strings";
 
 export { Solo } from "~/lib/chords";
@@ -29,6 +30,27 @@ export function SongInfo({
       </div>
       <div>
         <strong>{SiteTexts.page.current_locale.year}:</strong> <span>{song.year}</span>
+      </div>
+      <div className="tw-flex tw-items-center">
+        <strong className="tw-mr-2">{SiteTexts.page.current_locale.progress}:</strong>
+        {createArray(5).map(item => {
+          return (
+            <span
+              key={`Progress-item-${item}`}
+              className={classnames(
+                "tw-inline-block tw-rounded-sm tw-h-3 tw-w-3 tw-mr-0.5",
+                {
+                  1: "tw-bg-red-500",
+                  2: "tw-bg-red-400",
+                  3: "tw-bg-yellow-400",
+                  4: "tw-bg-green-400",
+                  5: "tw-bg-green-500",
+                  default: "tw-opacity-75 tw-bg-gray-200",
+                }[item <= song.progress ? song.progress : "default"],
+              )}
+            />
+          );
+        })}
       </div>
       <div className="tw-flex tw-items-center tw-mt-1">
         <Link href={song.spotifyUrl} styled={false} className="tw-mr-2">

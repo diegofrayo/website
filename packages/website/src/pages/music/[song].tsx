@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import fs from "fs";
 import classnames from "classnames";
 import hydrate from "next-mdx-remote/hydrate";
@@ -9,10 +9,10 @@ import { SongInfo, SongSources } from "~/components/mdx/blog-posts/music";
 import { MDXContent } from "~/components/shared";
 import Metadata from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
-import { useInternationalization } from "~/hooks";
+import { useDidMount, useInternationalization } from "~/hooks";
 import SongsService from "~/services/music";
 import { TypeSong, TypePagesRoutes } from "~/types";
-import { copyToClipboard } from "~/utils/browser";
+import { copyToClipboard, isBrowser } from "~/utils/browser";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 
 type TypeSongPageProps = {
@@ -26,9 +26,30 @@ function SongPage({ song, content }: TypeSongPageProps): any {
     layout: true,
   });
 
-  const [fontSize, setFontSize] = useState(0.8);
+  const [fontSize, setFontSize] = useState(0);
 
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
+
+  useDidMount(() => {
+    setFontSize(getFontSize());
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("MUSIC_FONT_SIZE", `${fontSize}`);
+  }, [fontSize]);
+
+  function getFontSize(): number {
+    const INITIAL_VALUE = 0.8;
+    const fontSize = isBrowser()
+      ? Number(window.localStorage.getItem("MUSIC_FONT_SIZE"))
+      : INITIAL_VALUE;
+
+    if (!fontSize || Number.isNaN(fontSize)) {
+      return INITIAL_VALUE;
+    }
+
+    return fontSize;
+  }
 
   return (
     <Page

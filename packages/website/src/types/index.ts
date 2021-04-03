@@ -86,6 +86,7 @@ export type TypeSong = {
   artist: string;
   album: string;
   year: number;
+  progress: number;
   spotifyUrl: string;
   youtubeUrl: string;
   created_at: string;
