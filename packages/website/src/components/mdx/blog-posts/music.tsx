@@ -39,14 +39,37 @@ export function SongInfo({
               key={`Progress-item-${item}`}
               className={classnames(
                 "tw-inline-block tw-rounded-sm tw-h-3 tw-w-3 tw-mr-0.5",
-                {
-                  1: "tw-bg-red-500",
-                  2: "tw-bg-red-400",
-                  3: "tw-bg-yellow-400",
-                  4: "tw-bg-green-400",
-                  5: "tw-bg-green-500",
-                  default: "tw-opacity-75 tw-bg-gray-200",
-                }[item <= song.progress ? song.progress : "default"],
+                item <= song.progress
+                  ? (song.progress === 1
+                      ? {
+                          1: "tw-bg-red-500",
+                        }
+                      : song.progress === 2
+                      ? {
+                          1: "tw-bg-yellow-400",
+                          2: "tw-bg-yellow-500",
+                        }
+                      : song.progress === 3
+                      ? {
+                          1: "tw-bg-yellow-300",
+                          2: "tw-bg-yellow-400",
+                          3: "tw-bg-yellow-500",
+                        }
+                      : song.progress === 4
+                      ? {
+                          1: "tw-bg-green-300",
+                          2: "tw-bg-green-400",
+                          3: "tw-bg-green-500",
+                          4: "tw-bg-green-600",
+                        }
+                      : {
+                          1: "tw-bg-green-300",
+                          2: "tw-bg-green-400",
+                          3: "tw-bg-green-500",
+                          4: "tw-bg-green-600",
+                          5: "tw-bg-green-700",
+                        })[item]
+                  : "tw-opacity-75 tw-bg-gray-200",
               )}
             />
           );

@@ -2,7 +2,7 @@ const withMDX = require("@next/mdx")();
 
 module.exports = withMDX({
   future: {
-    webpack5: process.env.NODE_ENV === "production",
+    webpack5: false,
   },
   i18n: {
     locales: ["es"],
