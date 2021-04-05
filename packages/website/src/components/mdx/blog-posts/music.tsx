@@ -172,7 +172,10 @@ function SongSourcesItem({ source }) {
           className={classnames("tw-w-8 tw-h-8 tw-mr-2 tw-rounded-md", imageProps.className)}
         />
         <div className="tw-flex-1 tw-min-w-0">
-          <p className="tw-font-bold tw-text-sm tw-text-black dark:tw-text-white tw-truncate">
+          <p
+            className="tw-font-bold tw-text-sm tw-text-black dark:tw-text-white tw-truncate"
+            title={source.text}
+          >
             {source.text}
           </p>
           <p className="tw-text-xs tw-italic">{source.source}</p>

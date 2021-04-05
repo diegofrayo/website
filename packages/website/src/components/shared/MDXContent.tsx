@@ -41,6 +41,10 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
           list-style-type: decimal;
         }
 
+        :global(.mdx-content) :global(br[data-separator]) {
+          display: none;
+        }
+
         :global(.mdx-content) :global(ol) > :global(li) {
           @apply tw-mb-2;
         }

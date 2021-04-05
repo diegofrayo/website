@@ -58,7 +58,7 @@ export default {
 
 function insertChord(chord: string): string {
   if (findChord(chord)) {
-    return `<button class="chord dfr-text-color-links dark:dfr-text-color-links tw-mt-4">${chord}</button>`;
+    return `<button class="chord dfr-text-color-links dark:dfr-text-color-links">${chord}</button>`;
   }
 
   return chord;

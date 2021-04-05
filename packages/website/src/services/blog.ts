@@ -12,7 +12,7 @@ async function fetchPosts(): Promise<TypeBlogPost[]> {
     (post: TypeBlogPost) => {
       return post.config.is_published === true;
     },
-  ) as TypeBlogPost[]).sort(sortBy("published_at", "desc"));
+  ) as TypeBlogPost[]).sort(sortBy([{ param: "published_at", order: "desc" }]));
 
   return result;
 }

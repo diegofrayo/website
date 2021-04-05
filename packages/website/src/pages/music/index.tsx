@@ -46,23 +46,30 @@ function MusicPage(): any {
           {data => {
             return (
               <UL>
-                {data.sort(sortBy("title")).map((song: TypeSong) => {
-                  if (!song.published) return null;
+                {data
+                  .sort(
+                    sortBy([
+                      { param: "progress", order: "desc" },
+                      { param: "title", order: "asc" },
+                    ]),
+                  )
+                  .map((song: TypeSong) => {
+                    if (!song.published) return null;
 
-                  return (
-                    <Fragment key={song.id}>
-                      <Link
-                        is={NextLink}
-                        href={`${Routes.MUSIC}/${song.id}`}
-                        styled={false}
-                        className="tw-font-bold tw-text-black dark:tw-text-white"
-                      >
-                        {song.title}
-                      </Link>
-                      <SongInfo song={song} SiteTexts={SiteTexts} />
-                    </Fragment>
-                  );
-                })}
+                    return (
+                      <Fragment key={song.id}>
+                        <Link
+                          is={NextLink}
+                          href={`${Routes.MUSIC}/${song.id}`}
+                          styled={false}
+                          className="tw-font-bold tw-text-black dark:tw-text-white"
+                        >
+                          {song.title}
+                        </Link>
+                        <SongInfo song={song} SiteTexts={SiteTexts} />
+                      </Fragment>
+                    );
+                  })}
               </UL>
             );
           }}

@@ -147,7 +147,7 @@ export function Solo({ positions, notes }) {
         <Fret variant="FRET_STRINGS_NAMES" />
 
         {["|", ...positions.split("|"), "|"].map((item, index) => {
-          const [string, fret, finger] = item.split(",");
+          const [string, fret] = item.split(",");
 
           return (
             <div key={`Solo-position-${index}`} className="tw-ml-1">
@@ -159,7 +159,7 @@ export function Solo({ positions, notes }) {
                     if (i === Number(string)) {
                       return (
                         <div key={`Solo-position-${index}-${i}`} className="tw-h-6">
-                          {finger !== undefined ? fret : "0"}
+                          {fret !== undefined ? fret : "0"}
                         </div>
                       );
                     }

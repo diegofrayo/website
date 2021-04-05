@@ -51,32 +51,39 @@ export function isUserLoggedIn(): boolean {
   return isLoggedIn;
 }
 
-export function sortBy(param?: string, order?: "asc" | "desc") {
+export function sortBy(
+  params?: { param: string; order: "asc" | "desc" }[],
+  order?: "asc" | "desc",
+) {
   return function sortByReturn(a, b): number {
-    const greater = order === "desc" ? -1 : 1;
-    const smaller = order === "desc" ? 1 : -1;
+    let paramsFinal = params;
 
-    if (param) {
-      if (a[param] > b[param]) {
-        return greater;
-      }
-
-      if (a[param] < b[param]) {
-        return smaller;
-      }
-
-      return 0;
+    if (!paramsFinal) {
+      paramsFinal = [{ param: "", order: order || "asc" }];
     }
 
-    if (a > b) {
-      return greater;
-    }
+    return paramsFinal.reduce(
+      (result, { param, order }) => {
+        if (result.finish) return result;
 
-    if (a < b) {
-      return smaller;
-    }
+        const greater = order === "desc" ? -1 : 1;
+        const smaller = order === "desc" ? 1 : -1;
 
-    return 0;
+        const aParam = param ? a[param] : a;
+        const bParam = param ? b[param] : b;
+
+        if (aParam > bParam) {
+          return { result: greater, finish: true };
+        }
+
+        if (aParam < bParam) {
+          return { result: smaller, finish: true };
+        }
+
+        return result;
+      },
+      { result: 0, finish: false },
+    ).result;
   };
 }
 

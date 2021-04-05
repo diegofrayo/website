@@ -182,7 +182,7 @@ function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): 
 
   return (
     <div className="tw-text-sm">
-      {locales.sort(sortBy("name", "asc")).map((locale, index) => {
+      {locales.sort(sortBy([{param: "name", order: "asc"}])).map((locale, index) => {
         return (
           <Fragment key={`LocalesSelector-${locale.name}`}>
             {currentLocale === locale.name ? (

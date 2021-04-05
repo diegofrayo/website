@@ -11,7 +11,18 @@
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/6hmYi0E6EBEmDeztQHaH0C?si=XZhRiHNWSvO7RNDEbVYnDw",
       "youtubeUrl": "https://youtu.be/bZcMPnY9_dg",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Bajan",
+          "url": "https://acordes.lacuerda.net/luis_a_spinetta/bajan-2.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Bajan - Luis Alberto Spinetta",
+          "url": "https://youtu.be/ru5kV95Q8WE",
+          "source": "youtube"
+        }
+      ],
       "chords": ["E", "F#m", "C#m", "?1", "B", "G#m", "C", "Am7", "G#"]
     },
     {
@@ -25,7 +36,23 @@
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/6G9painkkIlE8HauZrG4Vw?si=2pnzv_-6Q6K8tFe0CclMMA",
       "youtubeUrl": "https://youtu.be/8Zdhan166z0",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Vasos vacíos",
+          "url": "https://acordes.lacuerda.net/fabulosos/vasos_vacios-5.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Vicentico - Vasos Vacíos “Version Acústica” (Campaña Codo a Codo 2020)",
+          "url": "https://youtu.be/S2HxHyv8I1s",
+          "source": "youtube"
+        },
+        {
+          "text": "cómo tocar en guitarra VASOS VACIOS de LOS FABULOSOS CADILLACS tutorial COMPLETO acordes fácil",
+          "url": "https://youtu.be/ZDmAf6KyYPU",
+          "source": "youtube"
+        }
+      ],
       "chords": ["G", "Em", "C", "D"]
     },
     {
@@ -37,9 +64,15 @@
       "progress": 1,
       "created_at": "12/01/2021",
       "published": true,
-      "spotifyUrl": "",
-      "youtubeUrl": "",
-      "sources": [],
+      "spotifyUrl": "https://open.spotify.com/track/3T5SksrlFxunlotQ0lmSwv?si=6c94d32477c64784",
+      "youtubeUrl": "https://youtu.be/q1Sr16pdF64",
+      "sources": [
+        {
+          "text": "",
+          "url": "",
+          "source": ""
+        }
+      ],
       "chords": []
     },
     {
@@ -53,7 +86,13 @@
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/7dVj5UjkSMybmGDCdyVPUt?si=1DEm17xGSImA7g3M_T2XjA",
       "youtubeUrl": "https://youtu.be/e5egGC28OcY",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Antes y después",
+          "url": "https://acordes.lacuerda.net/ciro_y_los_persas/antes_y_despues.shtml",
+          "source": "lacuerda"
+        }
+      ],
       "chords": ["E", "D", "A", "Bm", "Em", "G", "F#m", "B7", "F"]
     },
     {
@@ -62,12 +101,28 @@
       "artist": "Los Piojos",
       "album": "3er arco",
       "year": 1996,
-      "progress": 3,
+      "progress": 5,
       "created_at": "23/03/2021",
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/1NXvuBAq48QrxRFQZVmORQ?si=k2nEIqKcRMSd6L1owJaLTw",
       "youtubeUrl": "https://youtu.be/DaVRJca0z5c",
-      "sources": [],
+      "sources": [
+        {
+          "text": "Verano del 92",
+          "url": "https://acordes.lacuerda.net/piojos/verano_del_92.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "GUITARRA | Verano Del 92 - Los Piojos (Guitarra cover/tutorial) Martin Lopez",
+          "url": "https://youtu.be/LrR3DVPh7aU",
+          "source": "youtube"
+        },
+        {
+          "text": "Francisco Lago y Diego Maggio - Verano del '92 (Los piojos)",
+          "url": "https://youtu.be/wUcO41tE9RE",
+          "source": "youtube"
+        }
+      ],
       "chords": ["G", "D", "A"]
     },
     {
@@ -86,6 +141,11 @@
           "text": "Que ves el cielo",
           "url": "https://acordes.lacuerda.net/invisible/que_ves_el_cielo.shtml",
           "source": "lacuerda"
+        },
+        {
+          "text": "Cómo tocar Spinetta (Invisible) Que ves el cielo con Acordes Tutorial Letra Cover Pedro Aznar",
+          "url": "https://youtu.be/IX4BZ3PkbZ4",
+          "source": "youtube"
         }
       ],
       "chords": ["A", "E", "D", "Bm", "C", "Asus", "Esus", "Dsus"]
@@ -126,7 +186,13 @@
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/2Jm3VE0qGqKSxqPbbVt6oC?si=67f9f66f33294f5c",
       "youtubeUrl": "https://youtu.be/Z_tHBX0mj1s",
-      "sources": [],
+      "sources": [
+        {
+          "text": "",
+          "url": "",
+          "source": ""
+        }
+      ],
       "chords": []
     },
     {
@@ -135,7 +201,7 @@
       "artist": "Perotá Chingó",
       "album": "Aguas",
       "year": 2017,
-      "progress": 3,
+      "progress": 4,
       "created_at": "01/04/2021",
       "published": true,
       "spotifyUrl": "https://open.spotify.com/track/44q38EV7P1sjbLI8RB6k9M?si=j5rL7NNRRxu5uSdeKZKs_Q",
@@ -158,6 +224,26 @@
         }
       ],
       "chords": ["C#m", "G#m", "E", "F#m"]
+    },
+    {
+      "id": "todas-las-hojas-son-del-viento",
+      "title": "Todas las hojas son del viento",
+      "artist": "Pescado Rabioso",
+      "album": "Artaud",
+      "year": 1973,
+      "progress": 0,
+      "created_at": "04/04/2021",
+      "published": true,
+      "spotifyUrl": "https://open.spotify.com/track/689lBKIELtWGHfsPWpR6rv?si=34945449901e4181",
+      "youtubeUrl": "https://youtu.be/b-u-bchAnW4",
+      "sources": [
+        {
+          "text": "",
+          "url": "",
+          "source": ""
+        }
+      ],
+      "chords": []
     }
   ],
   "chords": {
