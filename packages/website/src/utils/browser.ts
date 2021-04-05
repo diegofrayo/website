@@ -9,12 +9,6 @@ export function getScrollPosition(): number {
 }
 
 export function setScrollPosition(val: number): void {
-  /*
-  document.getElementById("__next").scrollTop = val;
-  document.documentElement.scrollTop = val;
-  document.body.scrollTop = val;
-  */
-
   window.scroll({ top: val, behavior: "smooth" });
 }
 
@@ -47,21 +41,13 @@ export function onScrollStoppedListener({
 }
 
 export async function copyToClipboard(
-  event?: React.MouseEvent<HTMLDivElement | HTMLButtonElement>,
-  textToCopy?: string,
+  event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>,
 ): Promise<void> {
   try {
-    if (!event && !textToCopy) throw new Error("Invalid params");
     if (!navigator.clipboard) throw new Error("Clipboard not supported");
 
-    let clipboardText = textToCopy;
-    if (event) {
-      const { currentTarget: element } = event;
-      clipboardText = element.getAttribute("data-clipboard-text") || "";
-    }
-
+    const clipboardText = event.currentTarget.getAttribute("data-clipboard-text") || "";
     if (!clipboardText) throw new Error("Any text was selected to copy");
-
     await navigator.clipboard.writeText(clipboardText);
 
     const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
@@ -70,6 +56,7 @@ export async function copyToClipboard(
       toastId: "copy-to-clipboard",
     });
   } catch (error) {
+    console.error("Error copying text to the clipboard");
     console.error(error);
     toast.error("Error", {
       position: toast.POSITION.BOTTOM_CENTER,
@@ -102,11 +89,19 @@ export function detectEmojisSupport(): void {
       throw new Error();
     }
   } catch (error) {
+    console.error("Emojis not supported");
+    console.error(error);
     document.body.classList.add("no-emojis");
   }
 }
 
-export function getAndroidVersion(): number {
+export function isBrowser(): boolean {
+  return typeof window !== "undefined";
+}
+
+// --- Private functions ---
+
+function getAndroidVersion(): number {
   try {
     const ua: string = navigator.userAgent.toLowerCase();
     const match: RegExpMatchArray | null = ua.match(/android\s([0-9\.]*)/);
@@ -120,10 +115,6 @@ export function getAndroidVersion(): number {
   }
 }
 
-export function isAndroid(): boolean {
+function isAndroid(): boolean {
   return navigator.userAgent.toLowerCase().indexOf("android") > -1;
-}
-
-export function isBrowser(): boolean {
-  return typeof window !== "undefined";
 }

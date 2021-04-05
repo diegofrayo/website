@@ -30,7 +30,11 @@ function TimelineItem({ company, date, description, url }: Record<string, any>):
     <div className="root tw-relative tw-mb-8 last:tw-mb-0">
       <span className="tw-absolute tw--left-10 tw-border-4 tw-border-black dark:dfr-border-color-primary tw-w-7 tw-h-7 tw-rounded-full tw-bg-white" />
       {url ? (
-        <Link className="tw-text-xl" href={url}>
+        <Link
+          className="tw-text-xl tw-text-black dark:tw-text-white tw-font-bold tw-underline"
+          href={url}
+          styled={false}
+        >
           {company}
         </Link>
       ) : (

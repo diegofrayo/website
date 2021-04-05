@@ -19,7 +19,7 @@ type TypeGithubRepoProps = {
 };
 
 export function GithubRepo({ name, url, description }: Record<string, any>): any {
-  const { BlogPostAssets } = useAssets();
+  const { BlogAssets } = useAssets();
 
   return (
     <div className="root tw-text-right" data-block>
@@ -28,14 +28,14 @@ export function GithubRepo({ name, url, description }: Record<string, any>): any
         href={url}
         styled={false}
       >
-        <Image src={BlogPostAssets.GITHUB} alt="Github icon" className="tw-h-8 tw-w-8 tw-mr-3" />
+        <Image src={BlogAssets.GITHUB} alt="Github icon" className="tw-h-8 tw-w-8 tw-mr-3" />
         <div className="tw-flex-1 tw-text-left">
           <h3>{name}</h3>
           <p className="tw-text-sm dfr-text-color-primary">{description}</p>
         </div>
 
         <Image
-          src={BlogPostAssets.LINK}
+          src={BlogAssets.LINK}
           alt="Link icon"
           className="tw-absolute tw-top-2 tw-right-2 tw-h-4 tw-w-4"
         />

@@ -43,7 +43,7 @@ function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
         title: post[currentLocale]?.title,
         pathname: `${Routes.BLOG}/${post.slug}`,
         description: post[currentLocale]?.description,
-        assets: ["blog_post"],
+        assets: ["blog"],
       }}
     >
       <MainLayout
@@ -123,7 +123,7 @@ type TypeBlogPostFooterProps = {
 };
 
 function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPostFooterProps): any {
-  const { BlogPostAssets } = useAssets();
+  const { BlogAssets } = useAssets();
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG as TypePagesRoutes,
     layout: true,
@@ -180,7 +180,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
         <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
           <BlogPostFooterItem>
             <BlogPostFooterItem.Icon
-              src={BlogPostAssets.CALENDAR}
+              src={BlogAssets.CALENDAR}
               alt="Calendar icon"
               tw-variant="withoutDarkMode"
             />
@@ -188,7 +188,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
             <strong>{formatDate(publishedAt)}</strong>
           </BlogPostFooterItem>
           <BlogPostFooterItem>
-            <BlogPostFooterItem.Icon src={BlogPostAssets.UPDATED} alt="Document updated icon" />
+            <BlogPostFooterItem.Icon src={BlogAssets.EDIT} alt="Document updated icon" />
             <span className="tw-mr-2">{SiteTexts.page.current_locale.updated_at}</span>
             <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
           </BlogPostFooterItem>
@@ -202,7 +202,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
             onClick={copyToClipboard}
           >
             <BlogPostFooterItem.Icon
-              src={BlogPostAssets.LINK}
+              src={BlogAssets.LINK}
               alt="Link icon"
               className="tw-transform tw-rotate-45"
             />
@@ -214,7 +214,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
             styled={false}
             tw-variant="withHover"
           >
-            <BlogPostFooterItem.Icon src={BlogPostAssets.SOURCE_CODE} alt="Source code icon" />
+            <BlogPostFooterItem.Icon src={BlogAssets.SOURCE_CODE} alt="Source code icon" />
             <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
           </BlogPostFooterItem>
         </div>

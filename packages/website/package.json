@@ -9,11 +9,16 @@
     "dev": "next dev",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --ext .ts,.tsx --fix",
     "format": "prettier --write \"{src,scripts,public}/**/*.{js,ts,tsx,json,css,xml}\"",
+    "storybook": "start-storybook -p 6006",
+    "storybook:build": "build-storybook",
     "build:seo-files": "node scripts/rss.js && node scripts/sitemap.js",
     "build:static-files": "node scripts/routes.js && node scripts/metadata.js"
   },
   "dependencies": {
     "@splitbee/web": "^0.2.4",
+    "@storybook/addon-essentials": "^6.2.3",
+    "@storybook/addon-links": "^6.2.3",
+    "@storybook/react": "^6.2.3",
     "autoprefixer": "^10.0.4",
     "classnames": "^2.2.6",
     "crypto-js": "^4.0.0",

@@ -87,6 +87,7 @@ class ChordsService {
         chordsGroupedByFret,
       };
     } catch (error) {
+      console.error("Error parsing chords");
       console.error(error);
 
       return {

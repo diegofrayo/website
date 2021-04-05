@@ -8,22 +8,18 @@ type TypeDefaultValue = {
     SUN: string;
     MOON: string;
   };
-  BlogPostAssets: {
-    CALENDAR: string;
-    UPDATED: string;
-    PERSON: string;
-    TWITTER: string;
-    LINK: string;
-    SOURCE_CODE: string;
-    GITHUB: string;
-  };
   FooterAssets: {
     "500_PX": string;
     EMAIL: string;
     GITHUB: string;
-    LINKEDIN: string;
     SPOTIFY: string;
-    TWITTER: string;
+  };
+  BlogAssets: {
+    CALENDAR: string;
+    EDIT: string;
+    LINK: string;
+    SOURCE_CODE: string;
+    GITHUB: string;
   };
   VR_Assets: {
     SNIPPETS: string;
@@ -36,22 +32,18 @@ const DEFAULT_VALUE: TypeDefaultValue = {
     SUN: "",
     MOON: "",
   },
-  BlogPostAssets: {
-    CALENDAR: "",
-    UPDATED: "",
-    PERSON: "",
-    TWITTER: "",
-    LINK: "",
-    SOURCE_CODE: "",
-    GITHUB: "",
-  },
   FooterAssets: {
     "500_PX": "",
     EMAIL: "",
     GITHUB: "",
-    LINKEDIN: "",
     SPOTIFY: "",
-    TWITTER: "",
+  },
+  BlogAssets: {
+    CALENDAR: "",
+    EDIT: "",
+    LINK: "",
+    SOURCE_CODE: "",
+    GITHUB: "",
   },
   VR_Assets: {
     SNIPPETS: "",
@@ -82,11 +74,12 @@ export function AssetsProvider({ children }: any): any {
 
       setAssets({
         HeaderAssets: data.header || {},
-        BlogPostAssets: data.blog_post || {},
         FooterAssets: data.footer || {},
+        BlogAssets: data.blog || {},
         VR_Assets: data.vr || {},
       });
     } catch (error) {
+      console.error("Error updating assets url");
       console.error(error);
     }
   }

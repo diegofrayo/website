@@ -43,7 +43,7 @@ export type TypeGetSiteTextsParam = {
   locale?: TypeLocale;
 };
 
-export type TypeGetAssetsParam = Array<"header" | "blog_post" | "footer" | "vr">;
+export type TypeGetAssetsParam = Array<"header" | "footer" | "blog" | "vr">;
 
 // --- Blog ---
 

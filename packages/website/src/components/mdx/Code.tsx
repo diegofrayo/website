@@ -12,7 +12,7 @@ import { getSiteTexts } from "~/utils/internationalization";
 import { generateSlug } from "~/utils/strings";
 
 function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
-  const { BlogPostAssets } = useAssets();
+  const { BlogAssets } = useAssets();
 
   const SiteTexts = getSiteTexts({ page: Routes.BLOG as TypePagesRoutes });
 
@@ -58,7 +58,7 @@ function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
         {sourceURL && (
           <Link className="tw-block sm:tw-inline-block tw-ml-auto sm:tw-mr-4" href={sourceURL}>
             <Image
-              src={BlogPostAssets.GITHUB}
+              src={BlogAssets.GITHUB}
               alt="Github icon"
               className="tw-h-4 tw-w-4 tw-inline-block tw-align-middle tw-mr-1 dark:tw-rounded-full dark:dfr-bg-secondary dark:tw-p-0.5"
             />

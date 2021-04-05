@@ -95,7 +95,7 @@ export function SongInfo({
   );
 }
 
-export function LyricsAndChords({ children }: { children: any }): any {
+export function LyricsAndChords({ children, chords }: { children: any; chords?: string[] }): any {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedChord, setSelectedChord] = useState(undefined);
 
@@ -115,6 +115,14 @@ export function LyricsAndChords({ children }: { children: any }): any {
 
   return (
     <div>
+      {chords && (
+        <pre
+          className="tw-p-1 tw-break-normal tw-mb-8"
+          dangerouslySetInnerHTML={{
+            __html: MusicService.parseLyricsAndChords(["Acordes:", ...chords].join("     ")),
+          }}
+        />
+      )}
       <pre
         className="tw-p-1 tw-break-normal"
         dangerouslySetInnerHTML={{
@@ -166,10 +174,10 @@ function SongSourcesItem({ source }) {
 
   return (
     <Link key={generateSlug(source.text)} href={source.url} styled={false}>
-      <div className="dfr-bg-secondary dark:dfr-bg-secondary tw-flex tw-items-center tw-p-2 tw-rounded-md tw-mb-2 tw-transition-opacity hover:tw-opacity-75 tw-max-w-sm tw-h-12">
+      <div className="dfr-bg-secondary dark:dfr-bg-secondary tw-flex tw-items-center tw-p-3 tw-rounded-md tw-mb-2 tw-transition-opacity hover:tw-opacity-75 tw-max-w-lg tw-h-12">
         <img
           {...imageProps}
-          className={classnames("tw-w-8 tw-h-8 tw-mr-2 tw-rounded-md", imageProps.className)}
+          className={classnames("tw-w-8 tw-h-8 tw-mr-3 tw-rounded-md", imageProps.className)}
         />
         <div className="tw-flex-1 tw-min-w-0">
           <p

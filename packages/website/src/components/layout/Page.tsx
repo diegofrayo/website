@@ -5,8 +5,8 @@ import Metadata from "~/data/metadata.json";
 import Routes from "~/data/routes.json";
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import { TypeGetAssetsParam } from "~/types";
-import { trackPageLoaded } from "~/utils/analytics";
-import { getAssets } from "~/utils/assets";
+import AnalyticsService from "~/services/analytics";
+import { getAssetsURL } from "~/utils/assets";
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 
 type TypePageProps = {
@@ -34,7 +34,7 @@ function Page({ children, config = {} }: TypePageProps): any {
   useDocumentTitle(metadata.title);
 
   useDidMount(() => {
-    trackPageLoaded();
+    AnalyticsService.trackPageLoaded();
   });
 
   return (
@@ -136,7 +136,7 @@ function Page({ children, config = {} }: TypePageProps): any {
         type="application/json"
         id="assets"
         dangerouslySetInnerHTML={{
-          __html: getAssets(["header", "footer", ...(config.assets || [])]),
+          __html: getAssetsURL(["header", "footer", ...(config.assets || [])]),
         }}
       />
     </Fragment>

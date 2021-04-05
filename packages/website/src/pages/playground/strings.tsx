@@ -44,6 +44,7 @@ function StringsPage(): JSX.Element {
                 e.currentTarget.focus();
                 e.currentTarget.select();
               } catch (error) {
+                console.error("Error focussing a textarea");
                 console.error(error);
               }
             }}

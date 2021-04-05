@@ -43,10 +43,6 @@ function StupidPage(): any {
     setOutput(decryptedText || "Error, the text was not decrypted :(");
   }
 
-  function handleCopyText(error) {
-    copyToClipboard(error);
-  }
-
   return (
     <Page config={{ title: PAGE_NAME, noRobots: true }}>
       <MainLayout
@@ -77,6 +73,7 @@ function StupidPage(): any {
                   e.currentTarget.focus();
                   e.currentTarget.select();
                 } catch (error) {
+                  console.error("Error focussing a textarea");
                   console.error(error);
                 }
               }}
@@ -111,7 +108,7 @@ function StupidPage(): any {
             type="button"
             className="tw-block tw-ml-auto tw-text-sm"
             data-clipboard-text={output}
-            onClick={handleCopyText}
+            onClick={copyToClipboard}
           >
             copy
           </button>

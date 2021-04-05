@@ -111,9 +111,7 @@ function SongPage({ song, content }: TypeSongPageProps): any {
             <button
               className="tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
               data-clipboard-text={`${Metadata.WEBSITE_METADATA.url}${Routes.MUSIC}/${song.id}`}
-              onClick={e => {
-                copyToClipboard(e);
-              }}
+              onClick={copyToClipboard}
             >
               <img
                 src="/static/images/icons/link.svg"
@@ -153,7 +151,7 @@ export async function getStaticProps({
   const file = fs.readFileSync(`${process.cwd()}/src/data/music/songs/${song?.id}.mdx`, "utf8");
   const content = await renderToString(file, {
     components: MDXComponentsConfig,
-    scope: { DATA: { ...MDXScope.DATA } },
+    scope: { DATA: { ...MDXScope.DATA, song } },
   });
 
   return { props: { song, content } };

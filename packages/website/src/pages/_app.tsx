@@ -12,7 +12,7 @@ import { ToastContainer } from "react-toastify";
 
 import { useDidMount } from "~/hooks";
 import { AssetsProvider } from "~/hooks/useAssets";
-import { initAnalytics } from "~/utils/analytics";
+import AnalyticsService from "~/services/analytics";
 import { setScrollPosition, detectEmojisSupport } from "~/utils/browser";
 import { extractLocaleFromUrl, setCurrentLocale } from "~/utils/internationalization";
 
@@ -24,7 +24,7 @@ function App({ Component, pageProps }: AppProps) {
   const [error, setError] = useState(undefined);
 
   useDidMount(() => {
-    initAnalytics();
+    AnalyticsService.initAnalytics();
     detectEmojisSupport();
     setCurrentLocale(extractLocaleFromUrl());
 
