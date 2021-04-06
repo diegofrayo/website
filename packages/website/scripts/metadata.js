@@ -5,11 +5,11 @@ const JOB_TITLE = "Software Developer";
 const SHORT_NAME = "Diego Rayo";
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 const DATA = {
-  SEO_METADATA: {
+  seo: {
     title: `${SHORT_NAME} | ${JOB_TITLE}`,
     url: WEBSITE_URL,
   },
-  WEBSITE_METADATA: {
+  website: {
     email: "diegofrayo@gmail.com",
     jobTitle: JOB_TITLE,
     fullName: "Diego Fernando Rayo Zamora",

@@ -11,8 +11,8 @@
     "format": "prettier --write \"{src,scripts,public}/**/*.{js,ts,tsx,json,css,xml}\"",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
-    "build:seo-files": "node scripts/rss.js && node scripts/sitemap.js",
-    "build:static-files": "node scripts/routes.js && node scripts/metadata.js"
+    "build:seo-files": "node scripts/rss.js && node scripts/sitemap.js && yarn format",
+    "build:static-files": "node scripts/routes.js && node scripts/metadata.js && yarn format"
   },
   "dependencies": {
     "@splitbee/web": "^0.2.4",

@@ -3,7 +3,7 @@ const SitemapGenerator = require("sitemap-generator");
 const fs = require("fs");
 
 const { posts } = require("../src/data/blog/posts.json");
-const { WEBSITE_METADATA } = require("../src/data/metadata.json");
+const { website: WebsiteMetadata } = require("../src/data/metadata.json");
 const { pages } = require("../src/data/texts.json");
 
 const pagesToIgnore = Object.entries(pages)
@@ -12,7 +12,7 @@ const pagesToIgnore = Object.entries(pages)
   })
   .filter(Boolean);
 
-const generator = SitemapGenerator(WEBSITE_METADATA.url, {
+const generator = SitemapGenerator(WebsiteMetadata.url, {
   stripQuerystring: false,
   filepath: "./public/sitemap.xml",
   ignore: url => {
@@ -27,7 +27,7 @@ Object.values(posts).forEach(post => {
     return;
   }
 
-  const url = `${WEBSITE_METADATA.url}/blog/${post.slug}`;
+  const url = `${WebsiteMetadata.url}/blog/${post.slug}`;
   generator.queueURL(url);
 });
 
@@ -37,7 +37,7 @@ generator.on("done", () => {
       "./public/sitemap.xml",
       fs
         .readFileSync("./public/sitemap.xml", "utf8")
-        .replace(new RegExp(WEBSITE_METADATA.url, "g"), WEBSITE_METADATA.urlProd),
+        .replace(new RegExp(WebsiteMetadata.url, "g"), WebsiteMetadata.urlProd),
     );
 
     console.log("Sitemap created");

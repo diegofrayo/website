@@ -42,6 +42,10 @@ function Code({ children, variant = "DEFAULT", ...rest }) {
           overflow-x: auto;
           word-break: keep-all;
         }
+
+        :global(.tw-dark) pre {
+          @apply tw-bg-gray-700;
+        }
       `}</style>
     </pre>
   );

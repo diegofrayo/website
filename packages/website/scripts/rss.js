@@ -3,34 +3,34 @@ const Feed = require("feed").Feed;
 const fs = require("fs");
 
 const { posts } = require("../src/data/blog/posts.json");
-const { WEBSITE_METADATA, SEO_METADATA } = require("../src/data/metadata.json");
+const { website: WebsiteMetadata, seo: SEOMetadata } = require("../src/data/metadata.json");
 const { pages } = require("../src/data/texts.json");
 
 const feed = new Feed({
-  title: SEO_METADATA.title,
+  title: SEOMetadata.title,
   description: pages["/"][pages["/"].config.default_locale].meta_description,
-  id: WEBSITE_METADATA.username,
-  link: WEBSITE_METADATA.urlProd,
+  id: WebsiteMetadata.username,
+  link: WebsiteMetadata.urlProd,
   language: "es",
-  image: `${WEBSITE_METADATA.urlProd}/static/images/favicon/favicon.ico`,
-  favicon: `${WEBSITE_METADATA.urlProd}/static/images/favicon/android-chrome-512x512.png`,
-  copyright: `All rights reserved 2020, ${WEBSITE_METADATA.shortName}`,
+  image: `${WebsiteMetadata.urlProd}/static/images/favicon/favicon.ico`,
+  favicon: `${WebsiteMetadata.urlProd}/static/images/favicon/android-chrome-512x512.png`,
+  copyright: `All rights reserved 2020, ${WebsiteMetadata.shortName}`,
   feedLinks: {
-    json: `${WEBSITE_METADATA.urlProd}/feed.json`,
-    atom: `${WEBSITE_METADATA.urlProd}/atom.xml`,
-    rss: `${WEBSITE_METADATA.urlProd}/rss.xml`,
+    json: `${WebsiteMetadata.urlProd}/feed.json`,
+    atom: `${WebsiteMetadata.urlProd}/atom.xml`,
+    rss: `${WebsiteMetadata.urlProd}/rss.xml`,
   },
   author: {
-    name: WEBSITE_METADATA.fullName,
-    email: WEBSITE_METADATA.email,
-    link: WEBSITE_METADATA.urlProd,
+    name: WebsiteMetadata.fullName,
+    email: WebsiteMetadata.email,
+    link: WebsiteMetadata.urlProd,
   },
 });
 
 Object.values(posts).forEach(post => {
   if (post.config.is_published === false) return null;
 
-  const url = `${WEBSITE_METADATA.urlProd}/blog/${post.slug}`;
+  const url = `${WebsiteMetadata.urlProd}/blog/${post.slug}`;
 
   feed.addItem({
     title: post[post.default_locale].title,
@@ -40,9 +40,9 @@ Object.values(posts).forEach(post => {
     content: post[post.default_locale].description,
     author: [
       {
-        name: WEBSITE_METADATA.shortName,
-        email: WEBSITE_METADATA.email,
-        link: `${WEBSITE_METADATA.urlProd}/about-me`,
+        name: WebsiteMetadata.shortName,
+        email: WebsiteMetadata.email,
+        link: `${WebsiteMetadata.urlProd}/about-me`,
       },
     ],
     date: new Date(post.published_at),
