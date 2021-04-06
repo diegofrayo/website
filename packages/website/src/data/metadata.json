@@ -1,6 +1,6 @@
 {
-  "seo": { "title": "Diego Rayo | Software Developer", "url": "http://localhost:3000" },
-  "website": {
+  "SEO_METADATA": { "title": "Diego Rayo | Software Developer", "url": "http://localhost:3000" },
+  "WEBSITE_METADATA": {
     "email": "diegofrayo@gmail.com",
     "jobTitle": "Software Developer",
     "fullName": "Diego Fernando Rayo Zamora",

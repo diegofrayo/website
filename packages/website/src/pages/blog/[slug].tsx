@@ -41,7 +41,6 @@ function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
         title: post[currentLocale]?.title,
         pathname: `${Routes.BLOG}/${post.slug}`,
         description: post[currentLocale]?.description,
-        assets: ["blog"],
       }}
     >
       <MainLayout

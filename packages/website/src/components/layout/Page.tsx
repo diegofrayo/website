@@ -129,7 +129,7 @@ function Page({ children, config = {} }: TypePageProps): any {
         type="application/json"
         id="assets"
         dangerouslySetInnerHTML={{
-          __html: getAssetsURL(["header", "footer", ...(config.assets || [])]),
+          __html: getAssetsURL([...(config.assets || [])]),
         }}
       />
     </Fragment>
