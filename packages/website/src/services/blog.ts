@@ -1,23 +1,32 @@
 import Data from "~/data/blog/posts.json";
-import { TypeLocale, TypeBlogPost } from "~/types";
+import { TypeLocale, TypeBlogPost, TypePrimitive } from "~/types";
 import { sortBy } from "~/utils/misc";
 
-function composeTitle(post: TypeBlogPost, locale: TypeLocale): string {
-  return `${post.is_legacy ? "[LEGACY] " : ""}${post[locale]?.title}`;
+class BlogService {
+  composeTitle(post: TypeBlogPost, locale: TypeLocale): string {
+    return `${post.is_legacy ? "[LEGACY] " : ""}${post[locale]?.title}`;
+  }
+
+  async fetchPosts(): Promise<TypeBlogPost[]> {
+    const result: TypeBlogPost[] = ((Object.values(Data.posts) as TypeBlogPost[]).filter(
+      (post: TypeBlogPost) => {
+        return post.config.is_published === true;
+      },
+    ) as TypeBlogPost[]).sort(sortBy([{ param: "published_at", order: "desc" }]));
+
+    return result;
+  }
+
+  async getPost(config: Record<"slug", TypePrimitive>): Promise<TypeBlogPost> {
+    const posts = await this.fetchPosts();
+    const post = posts.find(post => post.slug === config.slug);
+
+    if (post === undefined) {
+      throw new Error(`Post not found. { config: "${JSON.stringify(config)}" }`);
+    }
+
+    return post;
+  }
 }
 
-// TODO: Improve this types (avoid casting many times)
-async function fetchPosts(): Promise<TypeBlogPost[]> {
-  const result: TypeBlogPost[] = ((Object.values(Data.posts) as TypeBlogPost[]).filter(
-    (post: TypeBlogPost) => {
-      return post.config.is_published === true;
-    },
-  ) as TypeBlogPost[]).sort(sortBy([{ param: "published_at", order: "desc" }]));
-
-  return result;
-}
-
-export default {
-  composeTitle,
-  fetchPosts,
-};
+export default new BlogService();

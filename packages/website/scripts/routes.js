@@ -1,7 +1,7 @@
 require("dotenv").config({ path: ".env" });
 const fs = require("fs");
 
-const DYNAMIC_PAGES = ["about-me", "resume", "roadmap", "snippets"];
+const DYNAMIC_PAGES = ["about-me", "resume", "snippets"];
 const ROUTES = {
   HOME: "/",
   ...DYNAMIC_PAGES.reduce((acum, curr) => {

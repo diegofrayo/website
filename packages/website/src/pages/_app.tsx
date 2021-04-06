@@ -1,6 +1,6 @@
 import "react-toastify/dist/ReactToastify.min.css";
 import "~/styles/tailwind.css";
-import "~/styles/index.css";
+import "~/styles/index.post.css";
 import "~/styles/tailwind-utils.css";
 
 import React, { useState } from "react";

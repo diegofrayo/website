@@ -5,8 +5,8 @@ import renderToString from "next-mdx-remote/render-to-string";
 import { GetStaticProps, GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
-import { MDXContent } from "~/components/shared";
-import Routes from "~/data/routes.json";
+import { MDXContent } from "~/components/pages/_shared";
+import { DYNAMIC_MAIN_PAGES, Routes } from "~/utils/routing";
 import { TypeLocale, TypeSiteTexts, TypePagesRoutes } from "~/types";
 import {
   generateSupportedLocales,
@@ -50,7 +50,7 @@ function SitePage({ content, page, SiteTexts }: TypeSitePageProps): any {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME as TypePagesRoutes,
+            url: Routes.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb[generateObjectKeyInLowerCase(page)],
@@ -66,7 +66,7 @@ function SitePage({ content, page, SiteTexts }: TypeSitePageProps): any {
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   return {
-    paths: Routes.__DYNAMIC_PAGES.reduce((result, page: string) => {
+    paths: DYNAMIC_MAIN_PAGES.reduce((result, page: string) => {
       return (result as any[]).concat(
         locales?.map(locale => {
           return { params: { page }, locale };

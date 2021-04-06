@@ -1,9 +1,8 @@
 import * as React from "react";
-import NextLink from "next/link";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Link, UL } from "~/components/primitive";
-import Routes from "~/data/routes.json";
+import { Link, List } from "~/components/primitive";
+import { Routes } from "~/utils/routing";
 import { withTranslations } from "~/hocs";
 import { TypePagesRoutes, TypeSiteTexts } from "~/types";
 import { isUserLoggedIn } from "~/utils/misc";
@@ -19,7 +18,7 @@ function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME as TypePagesRoutes,
+            url: Routes.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
@@ -27,7 +26,7 @@ function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
         ]}
         title={SiteTexts.page.current_locale.title}
       >
-        <UL>
+        <List>
           {["chords", "strings", "stupid", "virtual-reality", "styles"]
             .sort()
             .concat(isUserLoggedIn() ? ["lab"] : [])
@@ -35,22 +34,22 @@ function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
               return (
                 <Link
                   key={`PlaygroundPage-${name}`}
-                  is={NextLink}
+                  isNextLink
                   href={`${Routes.PLAYGROUND}/${name}`}
                   className="tw-text-black dark:tw-text-white"
-                  styled={false}
+                  variant={Link.variant.UNSTYLED}
                 >
                   {name}
                 </Link>
               );
             })}
-        </UL>
+        </List>
       </MainLayout>
     </Page>
   );
 }
 
 export default withTranslations(PlaygroundPage, {
-  page: Routes.PLAYGROUND as TypePagesRoutes,
+  page: Routes.PLAYGROUND,
   layout: true,
 });

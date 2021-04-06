@@ -38,3 +38,5 @@ yarn-error.log*
 package-lock.json
 report*.json
 *.orig
+
+notes.md

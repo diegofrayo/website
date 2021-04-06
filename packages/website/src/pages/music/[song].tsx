@@ -5,15 +5,16 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout } from "~/components/layout";
-import { SongInfo, SongSources } from "~/components/mdx/blog-posts/music";
-import { MDXContent } from "~/components/shared";
-import Metadata from "~/data/metadata.json";
-import Routes from "~/data/routes.json";
+import { MDXContent } from "~/components/pages/_shared";
+import { SongDetails, SongSources } from "~/components/pages/music";
 import { useDidMount, useInternationalization } from "~/hooks";
-import SongsService from "~/services/music";
-import { TypeSong, TypePagesRoutes } from "~/types";
+import MusicService from "~/services/music";
+import { TypeSong } from "~/types";
 import { copyToClipboard, isBrowser } from "~/utils/browser";
+import { WebsiteMetadata } from "~/utils/constants";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
+import { Routes } from "~/utils/routing";
+import { Icon } from "~/components/primitive";
 
 type TypeSongPageProps = {
   song: TypeSong;
@@ -22,7 +23,7 @@ type TypeSongPageProps = {
 
 function SongPage({ song, content }: TypeSongPageProps): any {
   const { SiteTexts } = useInternationalization({
-    page: Routes.MUSIC as TypePagesRoutes,
+    page: Routes.MUSIC,
     layout: true,
   });
 
@@ -62,11 +63,11 @@ function SongPage({ song, content }: TypeSongPageProps): any {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME as TypePagesRoutes,
+            url: Routes.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.music,
-            url: Routes.MUSIC as TypePagesRoutes,
+            url: Routes.MUSIC,
           },
           {
             text: song.title,
@@ -74,7 +75,7 @@ function SongPage({ song, content }: TypeSongPageProps): any {
         ]}
         title={song.title}
       >
-        <SongInfo song={song} SiteTexts={SiteTexts} className="tw-mb-6" />
+        <SongDetails song={song} SiteTexts={SiteTexts} className="tw-mb-6" />
         <div
           className="dfr-border-color-primary dark:dfr-border-color-primary tw-border-l-4 tw-pl-4 tw-max-w-full tw-overflow-x-auto tw-mb-8 tw-relative tw-pt-10"
           style={{ fontSize: `${fontSize}rem` }}
@@ -88,11 +89,7 @@ function SongPage({ song, content }: TypeSongPageProps): any {
               disabled={fontSize === 2}
               onClick={() => setFontSize(cv => Number((cv + 0.2).toFixed(1)))}
             >
-              <img
-                src="/static/images/icons/zoom-in.svg"
-                className="tw-h-6 tw-w-6"
-                alt="Zoom in icon"
-              />
+              <Icon icon={Icon.icon.ZOOM_IN} className="tw-h-6 tw-w-6" />
             </button>
             <button
               className={classnames(
@@ -102,23 +99,14 @@ function SongPage({ song, content }: TypeSongPageProps): any {
               disabled={fontSize === 0.6}
               onClick={() => setFontSize(cv => Number((cv - 0.2).toFixed(1)))}
             >
-              <img
-                src="/static/images/icons/zoom-out.svg"
-                className="tw-h-6 tw-w-6"
-                alt="Zoom out icon"
-              />
+              <Icon icon={Icon.icon.ZOOM_OUT} className="tw-h-6 tw-w-6" />
             </button>
             <button
               className="tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
-              data-clipboard-text={`${Metadata.WEBSITE_METADATA.url}${Routes.MUSIC}/${song.id}`}
+              data-clipboard-text={`${WebsiteMetadata.url}${Routes.MUSIC}/${song.id}`}
               onClick={copyToClipboard}
             >
-              <img
-                src="/static/images/icons/link.svg"
-                width="21"
-                className="tw-h-6 dark:tw-w-6 tw-transform tw-rotate-45"
-                alt="Link icon"
-              />
+              <Icon icon={Icon.icon.LINK} className="tw-h-6 dark:tw-w-6" size="21" />
             </button>
           </div>
 
@@ -133,7 +121,7 @@ function SongPage({ song, content }: TypeSongPageProps): any {
 // TODO: Next types
 export async function getStaticPaths(): Promise<Record<string, any>> {
   return {
-    paths: (await SongsService.fetchSongsList()).reduce((result, song: TypeSong) => {
+    paths: (await MusicService.fetchSongsList()).reduce((result, song: TypeSong) => {
       return result.concat([{ params: { song: song.id } }]);
     }, [] as Array<any>),
     fallback: false,
@@ -144,7 +132,7 @@ export async function getStaticPaths(): Promise<Record<string, any>> {
 export async function getStaticProps({
   params,
 }: Record<string, any>): Promise<Record<string, any>> {
-  const song: TypeSong | undefined = (await SongsService.fetchSongsList()).find(
+  const song: TypeSong | undefined = (await MusicService.fetchSongsList()).find(
     song => song.id === params.song,
   );
 

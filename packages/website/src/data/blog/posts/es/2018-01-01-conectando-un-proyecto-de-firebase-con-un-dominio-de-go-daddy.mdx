@@ -18,11 +18,11 @@ En este tutorial quiero explicar como conectar un dominio que tengamos en **Go D
 4. Despues de que **Firebase** compruebe que el dominio es nuestro, podemos ir al tercer paso, el cual consiste en crear los **Registros A** con los datos que **Firebase** nos proporciona. Para hacer esto, debemos ir a la configuración de nuestro dominio en **Go Daddy** y crear los **Registros A** de la misma forma que creamos el **Registro TXT** en el paso anterior. Antes de crear estos registros, es importante eliminar los **Registros A** que ya tengamos creados.
 > **IMPORTANTE:** <br/> Para crear un **Registro A**, es necesario ingresar un _Host_ y la _dirección IP_ a donde apuntará nuestro dominio. **Firebase** propone usar como _Host_ el nombre de nuestro dominio, por ejemplo `diegofrayo.com`. Yo **NO** usé el nombre de mi dominio como _Host_ de los **Registros A**, en vez de esto, usé el simbolo `@`.
 
-  <img src={DATA.blog_post.assets.image_1} alt="Creando un Registro A" />
+  <Image src={DATA.blog_post.assets.image_1} alt="Creando un Registro A" />
 
   La configuración de nuestro dominio en **Go Daddy** debería quedar de la siguiente manera:
 
-  <img src={DATA.blog_post.assets.image_2} alt="Configuración de nuestro dominio" />
+  <Image src={DATA.blog_post.assets.image_2} alt="Configuración de nuestro dominio" />
 
 5. Ahora debemos esperar un par de horas hasta que los cambios surtan efecto. _Yo esperé alrededor de 4 horas_.
 Después de ejecutar estos pasos, ya tendremos nuestro dominio de **Go Daddy** conectado con nuestro proyecto de **Firebase.**
@@ -45,7 +45,7 @@ Para desplegar nuestro sitio o aplicación en **Firebase Hosting**, debemos segu
 
 3. Después de iniciar el proyecto, deberíamos tener la siguiente estructura de archivos.
 
-  <img src={DATA.blog_post.assets.image_3} alt="Estructura de nuestro proyecto" />
+  <Image src={DATA.blog_post.assets.image_3} alt="Estructura de nuestro proyecto" />
 
   En la carpeta `public` debemos almacenar todos los assets de nuestra aplicación o sitio.  El archivo `firebase.json` queda de la siguiente manera:
 

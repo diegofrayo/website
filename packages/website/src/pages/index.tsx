@@ -1,14 +1,12 @@
 import React from "react";
-import NextLink from "next/link";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Link, UL } from "~/components/primitive";
-import { Emoji } from "~/components/shared";
-import Routes from "~/data/routes.json";
+import { Link, List } from "~/components/primitive";
+import { Emoji } from "~/components/pages/_shared";
 import { withTranslations } from "~/hocs";
-import { TypePagesRoutes, TypeSiteTexts } from "~/types";
+import { TypeSiteTexts } from "~/types";
 import { generateSupportedLocales } from "~/utils/internationalization";
-import { isUserLoggedIn } from "~/utils/misc";
+import { Routes } from "~/utils/routing";
 
 type TypeHomePageProps = {
   SiteTexts: TypeSiteTexts;
@@ -29,7 +27,7 @@ function HomePage({ SiteTexts }: TypeHomePageProps): any {
   );
 }
 
-export default withTranslations(HomePage, { page: Routes.HOME as TypePagesRoutes });
+export default withTranslations(HomePage, { page: Routes.HOME });
 
 // --- Components ---
 
@@ -65,34 +63,24 @@ function MainMenu({ SiteTexts }) {
       label: SiteTexts.page.current_locale.menu_item_music,
       url: Routes.MUSIC,
     },
-  ].concat(
-    isUserLoggedIn()
-      ? [
-          {
-            emoji: "🚀",
-            label: SiteTexts.page.common.menu_item_roadmap,
-            url: Routes.ROADMAP,
-          },
-        ]
-      : [],
-  );
+  ];
 
   return (
-    <UL>
+    <List>
       {ITEMS.map((item, index) => {
         return (
           <Link
             key={`MainMenu-item-${index}`}
-            is={NextLink}
             href={item.url}
-            className="tw-inline-block tw-text-black dark:tw-text-white"
-            styled={false}
+            className="tw-block sm:tw-inline-block"
+            variant={Link.variant.SECONDARY}
+            isNextLink
           >
             <Emoji>{item.emoji}</Emoji>
             <span className="tw-ml-2">{item.label}</span>
           </Link>
         );
       })}
-    </UL>
+    </List>
   );
 }

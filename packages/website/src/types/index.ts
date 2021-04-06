@@ -15,7 +15,7 @@ export type TypePagesRoutes =
   | "/resume"
   | "/snippets"
   | "/playground"
-  | "/roadmap"
+  | "/music"
   | "/404"
   | "/500";
 

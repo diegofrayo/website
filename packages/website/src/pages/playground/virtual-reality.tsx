@@ -1,11 +1,11 @@
 import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { UL, Link } from "~/components/primitive";
-import Routes from "~/data/routes.json";
+import { List, Link } from "~/components/primitive";
 import { useAssets } from "~/hooks";
-import { TypeSiteTexts, TypePagesRoutes } from "~/types";
+import { TypeSiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
+import { Routes } from "~/utils/routing";
 
 const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "virtual-reality";
@@ -19,11 +19,11 @@ function VRPage(): any {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME as TypePagesRoutes,
+            url: Routes.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND as TypePagesRoutes,
+            url: Routes.PLAYGROUND,
           },
           {
             text: PAGE_NAME,
@@ -31,10 +31,10 @@ function VRPage(): any {
         ]}
         title={PAGE_NAME}
       >
-        <UL>
+        <List>
           <Link href={VR_Assets.INDEX}>index.html</Link>
           <Link href={VR_Assets.SNIPPETS}>snippets.md</Link>
-        </UL>
+        </List>
       </MainLayout>
     </Page>
   );

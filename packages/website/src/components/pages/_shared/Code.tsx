@@ -2,19 +2,16 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
 
-import { Link, Image } from "~/components/primitive";
-import Routes from "~/data/routes.json";
-import { useAssets } from "~/hooks";
+import { Link, Icon, Code as CodePrimitive } from "~/components/primitive";
 import twcss from "~/lib/twcss";
-import { TypeCodeProps, TypePagesRoutes } from "~/types";
+import { TypeCodeProps } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
+import { Routes } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
 
 function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
-  const { BlogAssets } = useAssets();
-
-  const SiteTexts = getSiteTexts({ page: Routes.BLOG as TypePagesRoutes });
+  const SiteTexts = getSiteTexts({ page: Routes.BLOG });
 
   return (
     <div
@@ -37,7 +34,7 @@ function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
       <Highlight {...defaultProps} code={code} language={language} theme={dracula}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           return (
-            <pre className={className} style={style}>
+            <CodePrimitive className={className} style={style}>
               {tokens.map((line, i) => {
                 return (
                   <Line key={i} {...getLineProps({ line, key: i })}>
@@ -50,16 +47,15 @@ function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
                   </Line>
                 );
               })}
-            </pre>
+            </CodePrimitive>
           );
         }}
       </Highlight>
       <div className="tw-text-right tw-p-2 tw-pt-1">
         {sourceURL && (
           <Link className="tw-block sm:tw-inline-block tw-ml-auto sm:tw-mr-4" href={sourceURL}>
-            <Image
-              src={BlogAssets.GITHUB}
-              alt="Github icon"
+            <Icon
+              icon={Icon.icon.GITHUB}
               className="tw-h-4 tw-w-4 tw-inline-block tw-align-middle tw-mr-1 dark:tw-rounded-full dark:dfr-bg-secondary dark:tw-p-0.5"
             />
             <span className="tw-inline-block tw-text-sm dark:dfr-text-color-primary">
@@ -82,7 +78,7 @@ function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
           @apply tw-my-0;
         }
 
-        .root pre {
+        .root :global(pre) {
           border-radius: 0;
         }
       `}</style>

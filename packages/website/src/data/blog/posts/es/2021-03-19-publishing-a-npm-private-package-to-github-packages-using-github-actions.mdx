@@ -138,6 +138,7 @@ En este tutorial quiero explicar como subir un paquete privado de npm a Github P
   > - Antes de publicar el paquete, es necesario configurar `registry-url: "https://npm.pkg.github.com"` para indicarle a Github que vas a subir el paquete al registro de Github.
   > - Para subir el paquete es necesario usar `NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}`, el cual es un [secreto](https://docs.github.com/en/actions/reference/authentication-in-a-workflow) creado por Github automáticamente en el repositorio del proyecto. También se puede usar otra forma de autenticación, **personal access tokens**. En este [link](https://docs.github.com/en/packages/guides/configuring-npm-for-use-with-github-packages#authenticating-to-github-packages) puedes leer más acerca de esto.
 
+
 ## Instalando el paquete publicado en otro proyecto
 
 1. Crear un archivo `.npmrc` en la carpeta raíz del proyecto que va a usar el paquete que publicaste.

@@ -24,8 +24,7 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
 
       <style jsx>{`
         :global(.mdx-content) > :global(p),
-        :global(.mdx-content) > :global(pre),
-        :global(.mdx-content) :global(li) > :global(pre),
+        :global(.mdx-content--styled) :global(pre),
         :global(.mdx-content) :global(blockquote),
         :global(.mdx-content) :global(img),
         :global(.mdx-content) > :global(hr),
@@ -67,9 +66,8 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
           @apply tw-text-gray-400;
         }
 
-        :global(.mdx-content) > :global(pre),
-        :global(.mdx-content) :global(li) > :global(pre),
-        :global(.mdx-content) :global(.Code) :global(pre) {
+        :global(.mdx-content--styled) :global(pre),
+        :global(.mdx-content--styled) :global(.Code) :global(pre) {
           @apply tw-bg-gray-800;
           @apply tw-p-4;
           @apply tw-rounded-md;

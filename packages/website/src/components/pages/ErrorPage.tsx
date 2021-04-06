@@ -1,9 +1,8 @@
 import * as React from "react";
 
 import { MainLayout, Page } from "~/components/layout";
-import Routes from "~/data/routes.json";
+import { Routes } from "~/utils/routing";
 import { useInternationalization } from "~/hooks";
-import { TypePagesRoutes } from "~/types";
 
 type TypeErrorPageProps = {
   statusCode: 404 | 500;
@@ -18,7 +17,7 @@ function ErrorPage({ statusCode }: TypeErrorPageProps): any {
         breadcumb={[
           {
             text: SiteTexts.page.current_locale.breadcumb,
-            url: Routes.HOME as TypePagesRoutes,
+            url: Routes.HOME,
           },
         ]}
         title={SiteTexts.page.current_locale.title}

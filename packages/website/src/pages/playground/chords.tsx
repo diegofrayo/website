@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Separator } from "~/components/primitive";
-import Routes from "~/data/routes.json";
+import { Space } from "~/components/primitive";
+import { Routes } from "~/utils/routing";
 import { Chords } from "~/lib/chords";
 import { TypePagesRoutes, TypeSiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
@@ -19,11 +19,11 @@ function ChordsPage(): any {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME as TypePagesRoutes,
+            url: Routes.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND as TypePagesRoutes,
+            url: Routes.PLAYGROUND,
           },
           {
             text: PAGE_NAME,
@@ -47,7 +47,7 @@ function ChordsPage(): any {
               }}
             />
           </label>
-          <Separator size={4} />
+          <Space size={4} />
 
           <label htmlFor="input-chords">
             <strong className="tw-block tw-cursor-pointer">Chords</strong>
@@ -67,14 +67,14 @@ function ChordsPage(): any {
           <code className="tw-block tw-text-sm">
             Examples: (D) 3,2,1|1,2,2|2,3,3 / (B) 5x,2|4,4|3,4|2,4
           </code>
-          <Separator size={6} />
+          <Space size={6} />
 
           <div className="tw-border tw-p-4">
             <strong>output</strong>
             <Chords name={inputs.name} chords={inputs.chords} />
           </div>
         </div>
-        <Separator size={8} className="tw-border-b" />
+        <Space size={8} className="tw-border-b" />
 
         <div>
           <h2 className="tw-text-2xl tw-mb-4">Examples</h2>
@@ -87,7 +87,7 @@ function ChordsPage(): any {
               { finger: 1, fret: 1, string: 3 },
             ]}
           />
-          <Separator size={8} />
+          <Space size={8} />
           <Chords
             name="DO Mayor (C)"
             chords={[
@@ -97,11 +97,11 @@ function ChordsPage(): any {
             ]}
             stringsToSkip={[6]}
           />
-          <Separator size={8} />
+          <Space size={8} />
           <Chords name="LA Mayor (A)" chords="4,2,1|3,2,2|2,2,3" stringsToSkip={[6]} />
-          <Separator size={8} />
+          <Space size={8} />
           <Chords name="RE Mayor (D)" chords="3,2,1|1,2,2|2,3,3" stringsToSkip="6,5" />
-          <Separator size={8} />
+          <Space size={8} />
           <Chords
             name="SI Mayor (B)"
             chords={[

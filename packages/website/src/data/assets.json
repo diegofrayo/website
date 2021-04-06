@@ -1,21 +1,4 @@
 {
-  "header": {
-    "SUN": "/static/images/icons/sun.svg",
-    "MOON": "/static/images/icons/moon.svg"
-  },
-  "footer": {
-    "500_PX": "/static/images/icons/500px.svg",
-    "EMAIL": "/static/images/icons/email.svg",
-    "GITHUB": "/static/images/icons/github.svg",
-    "SPOTIFY": "/static/images/icons/spotify.svg"
-  },
-  "blog": {
-    "CALENDAR": "/static/images/icons/calendar.svg",
-    "EDIT": "/static/images/icons/edit.svg",
-    "LINK": "/static/images/icons/link.svg",
-    "SOURCE_CODE": "/static/images/icons/source-code.svg",
-    "GITHUB": "/static/images/icons/github.svg"
-  },
   "vr": {
     "SNIPPETS": "/static/pages/playground/virtual-reality/snippets.md",
     "INDEX": "/static/pages/playground/virtual-reality/index.html"

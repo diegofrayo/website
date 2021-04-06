@@ -11,8 +11,7 @@
         "resume": "Work experience",
         "snippets": "Snippets",
         "playground": "Playground",
-        "music": "Music",
-        "roadmap": "Roadmap"
+        "music": "Music"
       },
       "misc": {
         "copy_to_clipboard": "Copied"
@@ -27,8 +26,7 @@
         "resume": "Experiencia laboral",
         "snippets": "Snippets",
         "playground": "Playground",
-        "music": "Música",
-        "roadmap": "Roadmap"
+        "music": "Música"
       },
       "misc": {
         "copy_to_clipboard": "Copiado"
@@ -43,7 +41,6 @@
       },
       "common": {
         "menu_item_blog": "Blog",
-        "menu_item_roadmap": "Roadmap",
         "menu_item_snippets": "Snippets"
       },
       "en": {
@@ -221,19 +218,6 @@
         "album": "Album",
         "year": "Año",
         "progress": "Progreso"
-      }
-    },
-    "/roadmap": {
-      "config": {
-        "locales": ["en"],
-        "default_locale": "en",
-        "meta_no_robots": true
-      },
-      "en": {
-        "title": "🚀 Roadmap"
-      },
-      "es": {
-        "title": "🚀 Roadmap"
       }
     },
     "/404": {

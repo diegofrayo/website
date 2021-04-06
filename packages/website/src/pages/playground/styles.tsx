@@ -3,11 +3,11 @@ import classnames from "classnames";
 import { useTheme } from "next-themes";
 
 import { Page, MainLayout } from "~/components/layout";
-import Routes from "~/data/routes.json";
 import { safeRender } from "~/hocs";
-import { TypeSiteTexts, TypePagesRoutes } from "~/types";
+import { TypeSiteTexts } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
+import { Routes } from "~/utils/routing";
 
 const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "styles";
@@ -19,11 +19,11 @@ function StylesPage(): any {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME as TypePagesRoutes,
+            url: Routes.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND as TypePagesRoutes,
+            url: Routes.PLAYGROUND,
           },
           {
             text: PAGE_NAME,
@@ -31,7 +31,7 @@ function StylesPage(): any {
         ]}
         title={PAGE_NAME}
       >
-        <Content></Content>
+        <Content />
       </MainLayout>
     </Page>
   );

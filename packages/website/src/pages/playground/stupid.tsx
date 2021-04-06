@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Separator } from "~/components/primitive";
-import Routes from "~/data/routes.json";
+import { Space } from "~/components/primitive";
+import { Routes } from "~/utils/routing";
 import { useDidMount } from "~/hooks";
-import { TypeSiteTexts, TypePagesRoutes } from "~/types";
+import { TypeSiteTexts } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 
@@ -49,11 +49,11 @@ function StupidPage(): any {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME as TypePagesRoutes,
+            url: Routes.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND as TypePagesRoutes,
+            url: Routes.PLAYGROUND,
           },
           {
             text: PAGE_NAME,
@@ -97,7 +97,7 @@ function StupidPage(): any {
           </div>
         </div>
 
-        <Separator size={10} className="tw-border-t dfr-border-color-primary" />
+        <Space size={10} className="tw-border-t dfr-border-color-primary" />
 
         <div>
           <p className="tw-font-bold">output</p>

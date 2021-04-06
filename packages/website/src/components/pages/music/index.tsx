@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 
-import { Modal, Separator, Link } from "~/components/primitive";
+import { Modal, Space, Link, Icon } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { Chords } from "~/lib/chords";
 import MusicService from "~/services/music";
@@ -11,7 +11,7 @@ import { generateSlug } from "~/utils/strings";
 
 export { Solo } from "~/lib/chords";
 
-export function SongInfo({
+export function SongDetails({
   song,
   SiteTexts,
   className,
@@ -76,19 +76,11 @@ export function SongInfo({
         })}
       </div>
       <div className="tw-flex tw-items-center tw-mt-1">
-        <Link href={song.spotifyUrl} styled={false} className="tw-mr-2">
-          <img
-            src="/static/images/icons/spotify.svg"
-            alt="Spotify icon"
-            className="tw-w-5 tw-h-5"
-          />
+        <Link href={song.spotifyUrl} variant={Link.variant.UNSTYLED} className="tw-mr-2">
+          <Icon icon={Icon.icon.SPOTIFY} className="tw-w-5 tw-h-5" />
         </Link>
-        <Link href={song.youtubeUrl} styled={false}>
-          <img
-            src="/static/images/icons/youtube.svg"
-            alt="Spotify icon"
-            className="tw-w-6 tw-h-6"
-          />
+        <Link href={song.youtubeUrl} variant={Link.variant.UNSTYLED}>
+          <Icon icon={Icon.icon.YOUTUBE} className="tw-w-6 tw-h-6" />
         </Link>
       </div>
     </div>
@@ -123,6 +115,7 @@ export function LyricsAndChords({ children, chords }: { children: any; chords?: 
           }}
         />
       )}
+
       <pre
         className="tw-p-1 tw-break-normal"
         dangerouslySetInnerHTML={{
@@ -140,7 +133,7 @@ export function LyricsAndChords({ children, chords }: { children: any; chords?: 
               showOptions={false}
             />
           )}
-          <Separator className="tw-mt-6 tw-mb-1" />
+          <Space className="tw-mt-6 tw-mb-1" />
           <button
             className="tw-text-center tw-text-sm tw-block tw-font-bold tw-w-full tw-transition-opacity hover:tw-opacity-75 tw-border dfr-border-color-primary dark:dfr-border-color-primary"
             onClick={handleModalClose}
@@ -168,17 +161,14 @@ export function SongSources({ sources }: { sources: TypeSong["sources"] }): any 
 }
 
 function SongSourcesItem({ source }) {
-  const { getImageProps } = useSongSourcesItemController();
+  const { getIconProps } = useSongSourcesItemController();
 
-  const imageProps = getImageProps(source.source);
+  const imageProps = getIconProps(source.source);
 
   return (
-    <Link key={generateSlug(source.text)} href={source.url} styled={false}>
+    <Link key={generateSlug(source.text)} href={source.url} variant={Link.variant.UNSTYLED}>
       <div className="dfr-bg-secondary dark:dfr-bg-secondary tw-flex tw-items-center tw-p-3 tw-rounded-md tw-mb-2 tw-transition-opacity hover:tw-opacity-75 tw-max-w-lg tw-h-12">
-        <img
-          {...imageProps}
-          className={classnames("tw-w-8 tw-h-8 tw-mr-3 tw-rounded-md", imageProps.className)}
-        />
+        <Icon {...imageProps} className={"tw-w-8 tw-h-8 tw-mr-3 tw-rounded-md"} />
         <div className="tw-flex-1 tw-min-w-0">
           <p
             className="tw-font-bold tw-text-sm tw-text-black dark:tw-text-white tw-truncate"
@@ -194,21 +184,26 @@ function SongSourcesItem({ source }) {
 }
 
 function useSongSourcesItemController() {
-  function getImageProps(source) {
+  function getIconProps(source) {
     let props = {
-      src: "/static/images/icons/link.svg",
-      alt: "Link icon",
-      className: "tw-transform tw-rotate-45",
+      icon: Icon.icon.LINK,
+      alt: "",
     };
 
     if (source.includes("lacuerda")) {
-      props = { src: "/static/images/icons/la-cuerda.png", alt: "La cuerda icon", className: "" };
+      props = {
+        icon: "/static/images/icons/la-cuerda.png",
+        alt: "La cuerda icon",
+      };
     } else if (source.includes("youtube")) {
-      props = { src: "/static/images/icons/youtube-black.svg", alt: "YouTube icon", className: "" };
+      props = {
+        icon: Icon.icon.YOUTUBE_DARK,
+        alt: "",
+      };
     }
 
     return props;
   }
 
-  return { getImageProps };
+  return { getIconProps };
 }

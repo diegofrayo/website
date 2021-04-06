@@ -4,25 +4,23 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Image, Link, Separator } from "~/components/primitive";
-import { MDXContent } from "~/components/shared";
-import GITHUB from "~/data/github.json";
-import Posts from "~/data/blog/posts.json";
-import Metadata from "~/data/metadata.json";
-import Routes from "~/data/routes.json";
-import { useInternationalization, useAssets, useDidMount } from "~/hooks";
+import { Icon, Link, Space } from "~/components/primitive";
+import { MDXContent } from "~/components/pages/_shared";
+import { useInternationalization, useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
 import BlogService from "~/services/blog";
-import { TypeBlogPost, TypeLocale, TypePagesRoutes } from "~/types";
+import { TypeBlogPost, TypeLocale } from "~/types";
 import {
   copyToClipboard,
   getScrollPosition,
   onScrollStoppedListener,
   setScrollPosition,
 } from "~/utils/browser";
+import { WebsiteMetadata, GithubData } from "~/utils/constants";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
+import { Routes } from "~/utils/routing";
 
 type TypeBlogPostPageProps = {
   post: TypeBlogPost;
@@ -31,7 +29,7 @@ type TypeBlogPostPageProps = {
 
 function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
   const { SiteTexts, currentLocale } = useInternationalization({
-    page: Routes.BLOG as TypePagesRoutes,
+    page: Routes.BLOG,
     layout: true,
   });
 
@@ -51,11 +49,11 @@ function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME as TypePagesRoutes,
+            url: Routes.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.blog,
-            url: Routes.BLOG as TypePagesRoutes,
+            url: Routes.BLOG,
           },
           {
             text: BlogService.composeTitle(post, currentLocale),
@@ -94,7 +92,7 @@ export async function getStaticProps({
   params,
   locale,
 }: Record<string, any>): Promise<Record<string, any>> {
-  const post: TypeBlogPost = Posts.posts[params.slug];
+  const post: TypeBlogPost = await BlogService.getPost({ slug: params.slug });
   const file = fs.readFileSync(
     `${process.cwd()}/src/data/blog/posts/${getItemLocale(
       post.locales,
@@ -123,9 +121,8 @@ type TypeBlogPostFooterProps = {
 };
 
 function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPostFooterProps): any {
-  const { BlogAssets } = useAssets();
   const { SiteTexts, currentLocale } = useInternationalization({
-    page: Routes.BLOG as TypePagesRoutes,
+    page: Routes.BLOG,
     layout: true,
   });
 
@@ -148,14 +145,14 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
   });
 
   function generateBlogPostRawContentLink() {
-    return GITHUB.monorepo.website.files["raw-post"]
+    return GithubData.monorepo.website.files["raw-post"]
       .replace("CURRENT_LOCALE", currentLocale)
       .replace("FILE_NAME", `${createdAt}-${slug}`);
   }
 
   return (
     <Fragment>
-      <Separator size={8} />
+      <Space size={8} />
 
       {/*
       <div className="tw-mb-4 tw-flex-1 tw-flex tw-items-center tw-text-sm">
@@ -179,16 +176,12 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
       <div className="dfr-border-color-primary tw-border-l-4 tw-pl-4 tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-my-4 tw-text-black dark:tw-text-white">
         <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
           <BlogPostFooterItem>
-            <BlogPostFooterItem.Icon
-              src={BlogAssets.CALENDAR}
-              alt="Calendar icon"
-              tw-variant="withoutDarkMode"
-            />
+            <BlogPostFooterItem.Icon icon={Icon.icon.CALENDAR} tw-variant="withoutDarkMode" />
             <span className="tw-mr-2">{SiteTexts.page.current_locale.published_at}</span>
             <strong>{formatDate(publishedAt)}</strong>
           </BlogPostFooterItem>
           <BlogPostFooterItem>
-            <BlogPostFooterItem.Icon src={BlogAssets.EDIT} alt="Document updated icon" />
+            <BlogPostFooterItem.Icon icon={Icon.icon.EDIT} />
             <span className="tw-mr-2">{SiteTexts.page.current_locale.updated_at}</span>
             <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
           </BlogPostFooterItem>
@@ -198,23 +191,19 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
             is="button"
             className="clipboard"
             tw-variant="withHover"
-            data-clipboard-text={`${Metadata.WEBSITE_METADATA.url}${Routes.BLOG}/${slug}`}
+            data-clipboard-text={`${WebsiteMetadata.url}${Routes.BLOG}/${slug}`}
             onClick={copyToClipboard}
           >
-            <BlogPostFooterItem.Icon
-              src={BlogAssets.LINK}
-              alt="Link icon"
-              className="tw-transform tw-rotate-45"
-            />
+            <BlogPostFooterItem.Icon icon={Icon.icon.LINK} />
             <span>{SiteTexts.page.current_locale.copy_url_to_clipboard}</span>
           </BlogPostFooterItem>
           <BlogPostFooterItem
             is={Link}
             href={generateBlogPostRawContentLink()}
-            styled={false}
+            variant={Link.variant.UNSTYLED}
             tw-variant="withHover"
           >
-            <BlogPostFooterItem.Icon src={BlogAssets.SOURCE_CODE} alt="Source code icon" />
+            <BlogPostFooterItem.Icon icon={Icon.icon.SOURCE_CODE} />
             <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
           </BlogPostFooterItem>
         </div>
@@ -248,7 +237,7 @@ const BlogPostFooterItem = twcss.div({
   withHover: "tw-transition-opacity hover:tw-opacity-75",
 });
 
-BlogPostFooterItem.Icon = twcss(Image)(
+BlogPostFooterItem.Icon = twcss(Icon)(
   {
     __base: "tw-inline-block tw-h-4 tw-w-4 tw-mr-2",
     withDarkMode: "dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1",

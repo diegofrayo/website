@@ -1,21 +1,20 @@
 import React, { Fragment } from "react";
-import NextLink from "next/link";
 import classnames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
-import { UL, Link } from "~/components/primitive";
-import { Render } from "~/components/shared";
-import Routes from "~/data/routes.json";
+import { List, Link } from "~/components/primitive";
+import { Render } from "~/components/pages/_shared";
 import { useInternationalization, useQuery } from "~/hooks";
 import BlogService from "~/services/blog";
-import { TypeBlogPost, TypeLocale, TypePagesRoutes } from "~/types";
+import { TypeBlogPost, TypeLocale } from "~/types";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
+import { Routes } from "~/utils/routing";
 import { removeEmojiFromPageTitle } from "~/utils/strings";
 
 function BlogPage(): any {
   const { SiteTexts, currentLocale } = useInternationalization({
-    page: Routes.BLOG as TypePagesRoutes,
+    page: Routes.BLOG,
     layout: true,
   });
 
@@ -34,7 +33,7 @@ function BlogPage(): any {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME as TypePagesRoutes,
+            url: Routes.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.blog,
@@ -45,7 +44,7 @@ function BlogPage(): any {
         <Render isLoading={isLoading} error={error} data={data}>
           {data => {
             return (
-              <UL>
+              <List>
                 {data.map((post: TypeBlogPost) => {
                   const locale: TypeLocale = getItemLocale(
                     post.locales,
@@ -64,7 +63,7 @@ function BlogPage(): any {
                     />
                   );
                 })}
-              </UL>
+              </List>
             );
           }}
         </Render>
@@ -88,7 +87,7 @@ type TypeBlogEntryProps = {
 
 function BlogEntry({ slug, title, locale, categories, updatedAt }: TypeBlogEntryProps): any {
   const { SiteTexts } = useInternationalization({
-    page: Routes.BLOG as TypePagesRoutes,
+    page: Routes.BLOG,
     layout: true,
   });
 
@@ -100,10 +99,10 @@ function BlogEntry({ slug, title, locale, categories, updatedAt }: TypeBlogEntry
   return (
     <Fragment>
       <Link
-        is={NextLink}
+        isNextLink
         href={`${Routes.BLOG}/${slug}`}
         locale={locale}
-        styled={false}
+        variant={Link.variant.UNSTYLED}
         className="tw-font-bold tw-text-black dark:tw-text-white"
       >
         {title}

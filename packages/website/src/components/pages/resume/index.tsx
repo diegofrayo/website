@@ -33,7 +33,7 @@ function TimelineItem({ company, date, description, url }: Record<string, any>):
         <Link
           className="tw-text-xl tw-text-black dark:tw-text-white tw-font-bold tw-underline"
           href={url}
-          styled={false}
+          variant={Link.variant.UNSTYLED}
         >
           {company}
         </Link>

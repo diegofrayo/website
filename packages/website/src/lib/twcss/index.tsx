@@ -17,13 +17,16 @@ function twcssCreator(
   Tag: string | JSX.Element,
 ): (styles: TypeStylesParam, staticProps: TypeStaticPropsParam) => React.FC {
   return function (styles: TypeStylesParam, staticProps: TypeStaticPropsParam = {}): React.FC {
-    return function TWCSS_Component({
-      children,
-      className = "",
-      is,
-      ["tw-variant"]: twVariant,
-      ...rest
-    }: TypeTWCSS_ComponentProps): JSX.Element {
+    return React.forwardRef(function TWCSS_Component(
+      {
+        children,
+        className = "",
+        is,
+        ["tw-variant"]: twVariant,
+        ...rest
+      }: TypeTWCSS_ComponentProps,
+      ref,
+    ): JSX.Element {
       const Element: string | any = is || Tag;
       const finalClassName: string = generateClassName(
         styles,
@@ -32,11 +35,11 @@ function twcssCreator(
       );
 
       return (
-        <Element className={finalClassName} {...staticProps} {...rest}>
+        <Element className={finalClassName} ref={ref} {...staticProps} {...rest}>
           {children}
         </Element>
       );
-    };
+    });
   };
 }
 

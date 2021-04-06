@@ -1,9 +1,10 @@
 import * as React from "react";
 import classnames from "classnames";
 
-import { UL } from "~/components/primitive";
+import { Link, Icon, Title as TitlePrimitive, List } from "~/components/primitive";
 
-export { default as ErrorPage } from "./ErrorPage";
+export { default as Code } from "./Code";
+export { default as Playground } from "./Playground";
 export { default as MDXContent } from "./MDXContent";
 
 type TypeEmojiProps = {
@@ -64,8 +65,8 @@ export function Render({
 function Loader() {
   return (
     <div className="root">
-      <span></span>
-      <span></span>
+      <span />
+      <span />
       <style jsx>{`
         .root {
           display: inline-block;
@@ -110,7 +111,7 @@ function Loader() {
 
 export function ToDoList({ children }) {
   return (
-    <UL>
+    <List>
       {React.Children.map(children, child => {
         if (child.props["data-completed"]) {
           return (
@@ -130,6 +131,55 @@ export function ToDoList({ children }) {
           </li>
         );
       })}
-    </UL>
+    </List>
   );
+}
+
+type TypeGithubRepoProps = {
+  name: string;
+  url: string;
+  description: string;
+};
+
+export function GithubRepo({ name, url, description }: TypeGithubRepoProps): any {
+  return (
+    <div className="root tw-text-right" data-block>
+      <Link
+        className="dfr-border-color-primary tw-border dark:tw-border-0 tw-flex sm:tw-inline-flex tw-p-4 dfr-bg-secondary tw-rounded-md tw-items-center tw-relative tw-pr-8"
+        href={url}
+        variant={Link.variant.UNSTYLED}
+      >
+        <Icon icon={Icon.icon.GITHUB} className="tw-h-8 tw-w-8 tw-mr-3" />
+        <div className="tw-flex-1 tw-text-left">
+          <h3>{name}</h3>
+          <p className="tw-text-sm dfr-text-color-primary">{description}</p>
+        </div>
+
+        <Icon icon={Icon.icon.LINK} className="tw-absolute tw-top-2 tw-right-2 tw-h-4 tw-w-4" />
+      </Link>
+
+      <style jsx>{`
+        .root :global(img),
+        .root h3,
+        .root p {
+          @apply tw-my-0;
+        }
+
+        .root h3 {
+          @apply tw-text-base;
+          @apply dfr-text-color-secondary;
+
+          @screen sm {
+            @apply tw-text-lg;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+export function Title(Tag: "h1" | "h2" | "h3" | "h4"): any {
+  return function TitleComponent({ children }: Record<string, any>): any {
+    return <TitlePrimitive is={Tag}>{children}</TitlePrimitive>;
+  };
 }

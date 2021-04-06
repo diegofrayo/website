@@ -1,15 +1,14 @@
 import React, { useState, useRef, Fragment } from "react";
-import NextLink from "next/link";
 import { useTheme } from "next-themes";
 import classnames from "classnames";
 
-import { Link, Separator, Image } from "~/components/primitive";
-import Metadata from "~/data/metadata.json";
-import { useAssets, useOnWindowScroll } from "~/hooks";
+import { Link, Space, Title, Icon } from "~/components/primitive";
+import { useOnWindowScroll } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
 import { TypeBreadcumbProps, TypeGenerateSupportedLocales } from "~/types";
 import { getScrollPosition } from "~/utils/browser";
+import { WebsiteMetadata } from "~/utils/constants";
 import { generateSlug } from "~/utils/strings";
 
 type TypeMainLayoutProps = {
@@ -23,23 +22,23 @@ function MainLayout({ children, locales, breadcumb, title }: TypeMainLayoutProps
   return (
     <Main>
       <Header locales={locales} />
-      <Separator size={2} />
+      <Space size={2} />
 
       <Body>
         {breadcumb && (
           <Fragment>
             <Breadcumb items={breadcumb} />
-            <Separator size={4} />
+            <Space size={4} />
           </Fragment>
         )}
         <div>
           <h1 className="tw-text-left tw-text-3xl tw-font-bold">{title}</h1>
-          <Separator className="tw-my-5 sm:tw-my-3" />
+          <Space className="tw-my-5 sm:tw-my-3" />
 
           {children}
         </div>
       </Body>
-      <Separator size={2} />
+      <Space size={2} />
 
       <Footer />
     </Main>
@@ -63,7 +62,7 @@ type TypeHeaderProps = {
 const Header = safeRender(function Header(): any {
   /*
   const { SiteTexts, currentLocale } = useInternationalization({
-    page: Routes.BLOG as TypePagesRoutes,
+    page: Routes.BLOG,
     layout: true,
   });
   */
@@ -110,11 +109,11 @@ function HeaderContent() {
   return (
     <div className="root tw-flex tw-items-center tw-w-full tw-h-full">
       <div className="tw-flex-1 tw-min-h-0 tw-mr-4">
-        <h1 className="tw-text-4xl tw-font-bold tw-font-sans tw-truncate">
-          <Link is={NextLink} href="/" styled={false}>
+        <Title is="h1" className="tw-truncate">
+          <Link href="/" variant={Link.variant.UNSTYLED} isNextLink>
             Diego Rayo
           </Link>
-        </h1>
+        </Title>
       </div>
       <DarkModeToggle />
 
@@ -137,7 +136,6 @@ function HeaderContent() {
 
 function DarkModeToggle(): any {
   const { theme, setTheme } = useTheme();
-  const { HeaderAssets } = useAssets();
 
   const isDarkMode = theme === "dark";
 
@@ -156,14 +154,12 @@ function DarkModeToggle(): any {
           isDarkMode ? "tw--right-0.5" : "tw--left-0.5",
         )}
       >
-        <Image
-          src={HeaderAssets.SUN}
-          alt="Sun icon"
+        <Icon
+          icon={Icon.icon.SUN}
           className={classnames("tw-h-3 tw-w-3", isDarkMode && "tw-hidden")}
         />
-        <Image
-          src={HeaderAssets.MOON}
-          alt="Moon icon"
+        <Icon
+          icon={Icon.icon.MOON}
           className={classnames("tw-h-3 tw-w-3", !isDarkMode && "tw-hidden")}
         />
       </span>
@@ -188,7 +184,7 @@ function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): 
             {currentLocale === locale.name ? (
               <span className="tw-font-bold">{locale.name}</span>
             ) : (
-              <Link is={NextLink} href={locale.route} locale={locale.name}>
+              <Link isNextLink href={locale.route} locale={locale.name}>
                 {locale.name}
               </Link>
             )}
@@ -218,7 +214,7 @@ function Breadcumb({ items }: TypeBreadcumbProps): any {
 
         return (
           <li key={`Breadcumb-li-${generateSlug(item.text)}`} className="tw-inline-block tw-mr-2">
-            <Link is={NextLink} href={item.url || "/"} styled={false}>
+            <Link isNextLink href={item.url || "/"} variant={Link.variant.UNSTYLED}>
               <span className="tw-underline tw-font-bold tw-text-base tw-text-black dark:tw-text-white">
                 {item.text}
               </span>
@@ -252,36 +248,27 @@ function Footer() {
   );
 }
 
-function SocialIcons(): any {
-  const { FooterAssets } = useAssets();
-
+function SocialIcons(): JSX.Element {
   const SOCIAL_NETWORKS = [
-    /*
-    {
-      name: "linkedin",
-      icon: FooterAssets.LINKEDIN,
-      url: WEBSITE_METADATA.social.linkedin,
-    },
-    */
     {
       name: "email",
-      icon: FooterAssets.EMAIL,
-      url: `mailto:${Metadata.WEBSITE_METADATA.email}`,
+      icon: Icon.icon.EMAIL,
+      url: `mailto:${WebsiteMetadata.email}`,
     },
     {
       name: "github",
-      icon: FooterAssets.GITHUB,
-      url: Metadata.WEBSITE_METADATA.social.github,
+      icon: Icon.icon.GITHUB,
+      url: WebsiteMetadata.social.github,
     },
     {
       name: "spotify",
-      icon: FooterAssets.SPOTIFY,
-      url: Metadata.WEBSITE_METADATA.social.spotify,
+      icon: Icon.icon.SPOTIFY,
+      url: WebsiteMetadata.social.spotify,
     },
     {
       name: "500px",
-      icon: FooterAssets["500_PX"],
-      url: Metadata.WEBSITE_METADATA.social["500px"],
+      icon: Icon.icon["500_PX"],
+      url: WebsiteMetadata.social["500px"],
     },
   ];
 
@@ -300,14 +287,14 @@ type TypeSocialIconProps = {
   name: string;
 };
 
-function SocialIcon({ icon, url, name }: TypeSocialIconProps): any {
+function SocialIcon({ icon, url }: TypeSocialIconProps): any {
   return (
     <Link
       href={url}
       className="tw-inline-block dark:dfr-bg-secondary tw-p-1 dark:tw-rounded-md tw-ml-2 tw-mb-1 sm:tw-my-0 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
-      styled={false}
+      variant={Link.variant.UNSTYLED}
     >
-      <Image src={icon} alt={`${name} icon`} className="tw-h-5 tw-w-5" />
+      <Icon icon={icon} className="tw-h-5 tw-w-5" />
     </Link>
   );
 }

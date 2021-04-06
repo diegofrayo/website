@@ -1,6 +1,6 @@
 import React from "react";
 
-export function HSTMain() {
+export function Main() {
   return (
     <main role="main" className="root tw-bg-white dark:tw-bg-gray-400 tw-border">
       <header className="tw-bg-gray-200 dark:tw-bg-gray-600 tw-text-center tw-p-2">
@@ -72,7 +72,7 @@ export function HSTMain() {
   );
 }
 
-export function HSTTexts() {
+export function Texts() {
   return (
     <section>
       <h2>text elements</h2>
@@ -111,11 +111,11 @@ export function HSTTexts() {
   );
 }
 
-export function HSTMeasure() {
+export function Measure() {
   return (
     <div>
       <p>Donuts eaten:</p>
-      <progress value="60" max="100"></progress>
+      <progress value="60" max="100" />
 
       <p>
         Karma points:{" "}

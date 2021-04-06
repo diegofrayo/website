@@ -1,10 +1,10 @@
 import React, { useState, useRef, RefObject } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Separator } from "~/components/primitive";
-import Routes from "~/data/routes.json";
+import { Space } from "~/components/primitive";
+import { Routes } from "~/utils/routing";
 import { useDidMount } from "~/hooks";
-import { TypeSiteTexts, TypePagesRoutes } from "~/types";
+import { TypeSiteTexts } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 import { convertToCapitalLetter, generateSlug } from "~/utils/strings";
@@ -21,11 +21,11 @@ function StringsPage(): JSX.Element {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME as TypePagesRoutes,
+            url: Routes.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND as TypePagesRoutes,
+            url: Routes.PLAYGROUND,
           },
           {
             text: PAGE_NAME,
@@ -59,7 +59,7 @@ function StringsPage(): JSX.Element {
           </button>
         </div>
 
-        <Separator size={10} className="tw-border-t dfr-border-color-primary" />
+        <Space size={10} className="tw-border-t dfr-border-color-primary" />
 
         <div className="tw-mb-4">
           <p className="tw-font-bold">slug</p>

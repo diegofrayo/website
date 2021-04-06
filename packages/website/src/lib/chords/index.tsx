@@ -1,8 +1,8 @@
 import React, { Fragment, useRef, useState } from "react";
 import classnames from "classnames";
 
-import { Separator } from "~/components/primitive";
-import { Emoji } from "~/components/shared";
+import { Space } from "~/components/primitive";
+import { Emoji } from "~/components/pages/_shared";
 import { copyToClipboard } from "~/utils/browser";
 import { createArray } from "~/utils/misc";
 
@@ -100,7 +100,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: Type
               <Emoji className="tw-mr-1">⬇️</Emoji>
               <span>download as image</span>
             </button>
-            <Separator size={1} dir="v" />
+            <Space size={1} dir="v" />
             {chordsToString && (
               <Fragment>
                 <button
@@ -117,7 +117,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: Type
                   </span>
                   <span>{showInput ? "hide" : "show"} input</span>
                 </button>
-                <Separator size={1} dir="v" />
+                <Space size={1} dir="v" />
               </Fragment>
             )}
             <button

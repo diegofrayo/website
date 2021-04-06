@@ -1,20 +1,12 @@
 const path = require("path");
-const { lstatSync, readdirSync } = require("fs");
+const fs = require("fs");
 
-function getSrcDirectories() {
-  const isDirectory = source => lstatSync(source).isDirectory();
-
-  const source = path.resolve(__dirname, "../src");
-
-  return readdirSync(source)
-    .map(name => path.join(source, name))
-    .filter(isDirectory)
-    .map(directory => directory.substring(directory.lastIndexOf("/") + 1));
-}
+const SOURCE_CODE_PATHNAME = path.resolve(__dirname, "../src");
 
 module.exports = {
   stories: ["../src/**/*.stories.tsx"],
   addons: [
+    "storybook-addon-themes",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     {
@@ -25,20 +17,44 @@ module.exports = {
         },
       },
     },
-    "storybook-addon-themes",
   ],
   webpackFinal: async baseConfig => {
     const nextConfig = require("../next.config.js");
 
     baseConfig.resolve = {
       extensions: [".ts", ".tsx", ".js", ".jsx"],
-      modules: [path.resolve(__dirname, "../src"), "node_modules"],
-      alias: getSrcDirectories().reduce((result, directory) => {
-        result[`~/${directory}`] = path.resolve(__dirname, `../src/${directory}`);
-        return result;
-      }, {}),
+      modules: [SOURCE_CODE_PATHNAME, "node_modules"],
+      alias: generateDirectoriesAlias(SOURCE_CODE_PATHNAME),
     };
 
     return { ...nextConfig.webpack, ...baseConfig };
   },
 };
+
+// --- Utils ---
+
+function generateDirectoriesAlias(source) {
+  function isDirectory(source) {
+    return fs.lstatSync(source).isDirectory();
+  }
+
+  function getAllChildsName(name) {
+    return path.join(source, name);
+  }
+
+  function getDirectoryName(directory) {
+    return directory.substring(directory.lastIndexOf("/") + 1);
+  }
+
+  return fs
+    .readdirSync(source)
+    .map(getAllChildsName)
+    .filter(isDirectory)
+    .map(getDirectoryName)
+    .reduce((result, directory) => {
+      return {
+        ...result,
+        [`~/${directory}`]: path.resolve(source, directory),
+      };
+    }, {});
+}

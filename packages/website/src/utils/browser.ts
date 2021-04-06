@@ -69,7 +69,7 @@ export function detectEmojisSupport(): void {
   try {
     const pixelRatio: number = window.devicePixelRatio || 1;
     const offset: number = 12 * pixelRatio;
-    const node = window.document.createElement("canvas"); // TODO: Set type
+    const node = <HTMLCanvasElement>window.document.createElement("canvas");
     const ctx: CanvasRenderingContext2D | null = node.getContext("2d");
 
     if (!ctx) {

@@ -1,20 +1,19 @@
 import React, { Fragment } from "react";
-import NextLink from "next/link";
 
 import { Page, MainLayout } from "~/components/layout";
-import { UL, Link } from "~/components/primitive";
-import { Render } from "~/components/shared";
-import { SongInfo } from "~/components/mdx/blog-posts/music";
-import Routes from "~/data/routes.json";
+import { List, Link } from "~/components/primitive";
+import { Render } from "~/components/pages/_shared";
+import { SongDetails } from "~/components/pages/music";
+import { Routes } from "~/utils/routing";
 import { useInternationalization, useQuery } from "~/hooks";
 import MusicService from "~/services/music";
-import { TypePagesRoutes, TypeSong } from "~/types";
+import { TypeSong } from "~/types";
 import { sortBy } from "~/utils/misc";
 import { removeEmojiFromPageTitle } from "~/utils/strings";
 
 function MusicPage(): any {
   const { SiteTexts } = useInternationalization({
-    page: Routes.MUSIC as TypePagesRoutes,
+    page: Routes.MUSIC,
     layout: true,
   });
 
@@ -32,7 +31,7 @@ function MusicPage(): any {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME as TypePagesRoutes,
+            url: Routes.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.music,
@@ -45,7 +44,7 @@ function MusicPage(): any {
         <Render isLoading={isLoading} error={error} data={data}>
           {data => {
             return (
-              <UL>
+              <List>
                 {data
                   .sort(
                     sortBy([
@@ -59,18 +58,18 @@ function MusicPage(): any {
                     return (
                       <Fragment key={song.id}>
                         <Link
-                          is={NextLink}
                           href={`${Routes.MUSIC}/${song.id}`}
-                          styled={false}
-                          className="tw-font-bold tw-text-black dark:tw-text-white"
+                          variant={Link.variant.SECONDARY}
+                          className="tw-font-bold"
+                          isNextLink
                         >
                           {song.title}
                         </Link>
-                        <SongInfo song={song} SiteTexts={SiteTexts} />
+                        <SongDetails song={song} SiteTexts={SiteTexts} />
                       </Fragment>
                     );
                   })}
-              </UL>
+              </List>
             );
           }}
         </Render>

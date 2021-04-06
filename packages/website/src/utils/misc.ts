@@ -100,3 +100,10 @@ export function safeCastNumber(string: string, defaultNumber?: number) {
 export function escapeRegExp(text: string): string {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
+
+export function mirror(array: (string | number)[]): Record<string | number, string | number> {
+  return array.reduce((result, item) => {
+    result[item] = item;
+    return result;
+  }, {});
+}

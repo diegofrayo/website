@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { Page } from "~/components/layout";
+import { Image } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 
 function BariaPage(): any {
@@ -11,7 +12,7 @@ function BariaPage(): any {
   return (
     <Page config={{ noRobots: true }}>
       <div className="dfr-max-w-base tw-mx-auto tw-w-full tw-h-full md:tw-h-screen tw-py-8 tw-px-4 tw-overflow-auto md:tw-flex md:tw-flex-no-wrap md:tw-items-center">
-        <img
+        <Image
           src="/static/pages/playground/baria/imagen.jpg"
           className="tw-max-h-full tw-w-full tw-flex-shrink-0 tw-rounded-tl-lg tw-rounded-br-lg tw-max-w-sm tw-mx-auto md:tw-mr-4"
           onClick={() => {

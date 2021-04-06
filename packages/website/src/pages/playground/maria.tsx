@@ -1,8 +1,8 @@
 import React, { useState, Fragment } from "react";
 
 import { Page } from "~/components/layout";
-import { Link } from "~/components/primitive";
-import { Emoji } from "~/components/shared";
+import { Icon, Link } from "~/components/primitive";
+import { Emoji } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
 import { setScrollPosition } from "~/utils/browser";
@@ -16,7 +16,7 @@ function MariaPage(): any {
 
   return (
     <Page config={{ noRobots: true }}>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" />
       <main className="dfr-max-w-base tw-mx-auto tw-w-full md:tw-shadow-md tw-h-full">
         <header className="tw-bg-blue-100 tw-py-3 tw-px-4">
           <h1 className="tw-text-xl sm:tw-text-3xl tw-text-blue-900">
@@ -56,11 +56,7 @@ function MariaPage(): any {
                     );
                   }}
                 >
-                  <img
-                    src="/static/pages/playground/maria/whatsapp.svg"
-                    className="tw-mx-auto tw-mb-2"
-                    alt="WhatsApp icon"
-                  />
+                  <Icon icon={Icon.icon.WHATSAPP} className="tw-mx-auto tw-mb-2" />
                   <p className="tw-font-bold tw-text-lg tw-text-center tw-mt-2">
                     Enviar mensaje a un amigo
                   </p>
@@ -71,11 +67,7 @@ function MariaPage(): any {
                     setScrollPosition(0);
                   }}
                 >
-                  <img
-                    src="/static/pages/playground/maria/youtube.svg"
-                    className="tw-mx-auto tw-mb-2"
-                    alt="YouTube icon"
-                  />
+                  <Icon icon={Icon.icon.YOUTUBE} className="tw-mx-auto tw-mb-2" />
                   <p className="tw-font-bold tw-text-lg tw-text-center tw-mt-2">
                     Escuchar música favorita en YouTube
                   </p>
@@ -140,7 +132,7 @@ function YouTube() {
       <div className="tw-flex tw-flex-wrap tw-justify-evenly">
         {PLAYLISTS.map((playlist, index) => {
           return (
-            <Link key={`Playlist-${index}`} href={playlist.url} styled={false}>
+            <Link key={`Playlist-${index}`} href={playlist.url} variant={Link.variant.UNSTYLED}>
               <MenuItem>
                 <Emoji className="tw-text-5xl">{playlist.name}</Emoji>
               </MenuItem>

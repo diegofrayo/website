@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { UL, Separator } from "~/components/primitive";
+import { List, Space } from "~/components/primitive";
 
 function Lab() {
   const [page, setPage] = useState("home");
@@ -12,9 +12,9 @@ function Lab() {
         <div className="tw-flex tw-justify-between tw-flex-no-wrap">
           <h1 className="tw-text-3xl tw-text-yellow-100 tw-mr-4">Logo</h1>
           <button className="tw-inline-block md:tw-hidden" onClick={() => setShowMenu(c => !c)}>
-            <span className="tw-block tw-my-1 tw-w-6 tw-bg-white tw-h-0.5"></span>
-            <span className="tw-block tw-my-1 tw-w-6 tw-bg-white tw-h-0.5"></span>
-            <span className="tw-block tw-my-1 tw-w-6 tw-bg-white tw-h-0.5"></span>
+            <span className="tw-block tw-my-1 tw-w-6 tw-bg-white tw-h-0.5" />
+            <span className="tw-block tw-my-1 tw-w-6 tw-bg-white tw-h-0.5" />
+            <span className="tw-block tw-my-1 tw-w-6 tw-bg-white tw-h-0.5" />
           </button>
         </div>
         {showMenu && (
@@ -113,22 +113,22 @@ function HowToRecycle() {
       <div>
         <div>
           <h2 className="tw-text-xl tw-mb-3">Usos</h2>
-          <UL>
+          <List>
             <li>Uso 1</li>
             <li>Uso 2</li>
             <li>Uso 3</li>
             <li>Uso 4</li>
-          </UL>
+          </List>
         </div>
-        <Separator size={4}></Separator>
+        <Space size={4} />
         <div>
           <h2 className="tw-text-xl tw-mb-3">Fuentes</h2>
-          <UL>
+          <List>
             <li>Fuente 1</li>
             <li>Fuente 2</li>
             <li>Fuente 3</li>
             <li>Fuente 4</li>
-          </UL>
+          </List>
         </div>
       </div>
     </article>

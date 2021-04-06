@@ -2,8 +2,8 @@ import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import Lab from "~/components/pages/playground/lab";
-import Routes from "~/data/routes.json";
-import { TypeSiteTexts, TypePagesRoutes } from "~/types";
+import { Routes } from "~/utils/routing";
+import { TypeSiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
 
 const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
@@ -16,11 +16,11 @@ function LabPage(): any {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME as TypePagesRoutes,
+            url: Routes.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND as TypePagesRoutes,
+            url: Routes.PLAYGROUND,
           },
           {
             text: PAGE_NAME,
