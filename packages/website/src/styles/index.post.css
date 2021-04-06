@@ -47,30 +47,11 @@ button {
   outline: transparent !important;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply dfr-text-color-secondary;
-  font-weight: bold;
-}
-
 /* --- Dark mode --- */
 
 .tw-dark body {
   @apply value:dark:dfr-bg-primary;
   @apply value:dark:dfr-text-color-primary;
-}
-
-.tw-dark h1,
-.tw-dark h2,
-.tw-dark h3,
-.tw-dark h4,
-.tw-dark h5,
-.tw-dark h6 {
-  @apply value:dark:dfr-text-color-secondary;
 }
 
 .tw-dark .dfr-border-color-primary {

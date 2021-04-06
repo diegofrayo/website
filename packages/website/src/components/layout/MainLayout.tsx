@@ -3,6 +3,7 @@ import { useTheme } from "next-themes";
 import classnames from "classnames";
 
 import { Link, Space, Title, Icon } from "~/components/primitive";
+import { Emoji } from "~/components/pages/_shared";
 import { useOnWindowScroll } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
@@ -32,7 +33,11 @@ function MainLayout({ children, locales, breadcumb, title }: TypeMainLayoutProps
           </Fragment>
         )}
         <div>
-          <h1 className="tw-text-left tw-text-3xl tw-font-bold">{title}</h1>
+          {title && (
+            <Title is="h1" className="tw-text-left">
+              {title}
+            </Title>
+          )}
           <Space className="tw-my-5 sm:tw-my-3" />
 
           {children}
@@ -111,7 +116,7 @@ function HeaderContent() {
       <div className="tw-flex-1 tw-min-h-0 tw-mr-4">
         <Title is="h1" className="tw-truncate">
           <Link href="/" variant={Link.variant.UNSTYLED} isNextLink>
-            Diego Rayo
+            Diego <Emoji className="tw-text-2xl">⚡</Emoji>
           </Link>
         </Title>
       </div>
@@ -119,11 +124,11 @@ function HeaderContent() {
 
       <style jsx>{`
         .root :global(h1) {
-          color: black;
+          @apply tw-text-yellow-500;
         }
 
         :global(.tw-dark) .root :global(h1) {
-          color: white;
+          @apply tw-text-white;
         }
 
         :global(.tw-dark) .root :global(.DarkModeToggle) {
@@ -156,11 +161,13 @@ function DarkModeToggle(): any {
       >
         <Icon
           icon={Icon.icon.SUN}
-          className={classnames("tw-h-3 tw-w-3", isDarkMode && "tw-hidden")}
+          variant={Icon.variant.UNSTYLED}
+          className={classnames(isDarkMode && "tw-hidden")}
         />
         <Icon
           icon={Icon.icon.MOON}
-          className={classnames("tw-h-3 tw-w-3", !isDarkMode && "tw-hidden")}
+          variant={Icon.variant.UNSTYLED}
+          className={classnames(!isDarkMode && "tw-hidden")}
         />
       </span>
     </button>
@@ -289,12 +296,8 @@ type TypeSocialIconProps = {
 
 function SocialIcon({ icon, url }: TypeSocialIconProps): any {
   return (
-    <Link
-      href={url}
-      className="tw-inline-block dark:dfr-bg-secondary tw-p-1 dark:tw-rounded-md tw-ml-2 tw-mb-1 sm:tw-my-0 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
-      variant={Link.variant.UNSTYLED}
-    >
-      <Icon icon={icon} className="tw-h-5 tw-w-5" />
+    <Link href={url} className="tw-inline-block tw-ml-3" variant={Link.variant.UNSTYLED}>
+      <Icon icon={icon} />
     </Link>
   );
 }

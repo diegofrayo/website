@@ -22,13 +22,13 @@ import { getSiteTexts } from "./internationalization";
 export const MDXComponentsConfig = {
   a: Link,
   blockquote: Blockquote,
-  br: Space,
   h1: Title("h1"),
   h2: Title("h2"),
   h3: Title("h3"),
   h4: Title("h4"),
   img: Image,
   ul: List,
+  pre: CodePrimitive,
   inlineCode: function InlineCode({ children, ...rest }) {
     return (
       <CodePrimitive variant={CodePrimitive.variant.INLINE} {...rest}>

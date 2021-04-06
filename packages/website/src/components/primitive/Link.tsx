@@ -62,13 +62,13 @@ function Link({
   );
 }
 
-const variant: Record<string, "DEFAULT" | "SECONDARY" | "UNSTYLED"> = {
+const VARIANTS: Record<string, "DEFAULT" | "SECONDARY" | "UNSTYLED"> = {
   DEFAULT: "DEFAULT",
   SECONDARY: "SECONDARY",
   UNSTYLED: "UNSTYLED",
 };
 
-Link.variant = variant;
+Link.variant = VARIANTS;
 
 export default Link;
 

@@ -73,11 +73,6 @@ function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
       </div>
 
       <style jsx>{`
-        .root pre,
-        .root :global(img) {
-          @apply tw-my-0;
-        }
-
         .root :global(pre) {
           border-radius: 0;
         }

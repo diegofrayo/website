@@ -6,137 +6,76 @@ import { safeRender } from "~/hocs";
 
 type TypeMDXContentProps = {
   content: any;
-  variant?: "DEFAULT" | "UNSTYLED";
+  variant?: "STYLED" | "UNSTYLED";
 };
 
-function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any {
+function MDXContent({ content, variant = "STYLED" }: TypeMDXContentProps): any {
   const { theme } = useTheme();
 
   return (
     <article
       className={classnames(
         "mdx-content",
-        variant === MDXContent.variant.DEFAULT ? "mdx-content--default" : "mdx-content--unstyled",
+        variant === MDXContent.variant.STYLED ? "mdx-content--styled" : "mdx-content--unstyled",
         theme === "dark" && "mdx-content--dark",
       )}
     >
       {content}
 
       <style jsx>{`
-        :global(.mdx-content) > :global(p),
-        :global(.mdx-content--styled) :global(pre),
-        :global(.mdx-content) :global(blockquote),
-        :global(.mdx-content) :global(img),
-        :global(.mdx-content) > :global(hr),
-        :global(.mdx-content) :global(ol),
-        :global(.mdx-content) :global(ul),
-        :global(.mdx-content) :global(*[data-block]) {
-          @apply dfr-mt-base;
-          @apply dfr-mb-base;
+        /* Spacing: parent components */
+        :global(.mdx-content--styled) > :global(blockquote),
+        :global(.mdx-content--styled) > :global(hr),
+        :global(.mdx-content--styled) > :global(img),
+        :global(.mdx-content--styled) > :global(ol),
+        :global(.mdx-content--styled) > :global(p),
+        :global(.mdx-content--styled) > :global(pre),
+        :global(.mdx-content--styled) > :global(ul),
+        :global(.mdx-content--styled) :global(*[data-block]) {
+          @apply tw-mb-6;
         }
 
-        :global(.mdx-content) :global(ol) {
+        /* Spacing: nested components */
+        :global(.mdx-content--styled) :global(li) > :global(p),
+        :global(.mdx-content--styled) :global(li) > :global(pre),
+        :global(.mdx-content--styled) :global(li) > :global(blockquote),
+        :global(.mdx-content--styled) :global(li) > :global(img),
+        :global(.mdx-content--styled) :global(blockquote) > :global(p) {
+          @apply tw-mb-3;
+        }
+
+        /* Spacing: titles */
+        :global(.mdx-content--styled) > :global(h1),
+        :global(.mdx-content--styled) > :global(h2),
+        :global(.mdx-content--styled) > :global(h3),
+        :global(.mdx-content--styled) > :global(h4) {
+          @apply tw-mt-6;
+          @apply tw-mb-3;
+        }
+
+        /* Spacing: nested UL lists */
+        :global(.mdx-content--styled) :global(li) > :global(ul) {
+          @apply tw-mt-3;
+        }
+
+        /* Ordered lists */
+        :global(.mdx-content--styled) :global(ol) {
           @apply tw-pl-9;
           list-style-type: decimal;
         }
 
-        :global(.mdx-content) :global(br[data-separator]) {
-          display: none;
+        :global(.mdx-content--styled) :global(ol) > :global(li) {
+          @apply tw-mb-6;
         }
 
-        :global(.mdx-content) :global(ol) > :global(li) {
-          @apply tw-mb-2;
-        }
-
-        :global(.mdx-content) > :global(img) {
-          margin-left: auto;
-          margin-right: auto;
-          max-width: 100%;
-        }
-
-        :global(.mdx-content) :global(blockquote) {
-          @apply dfr-border-color-primary;
-          @apply tw-border-l-4;
-          @apply tw-pl-4;
-          @apply dfr-text-color-secondary;
-          font-style: italic;
-        }
-
-        :global(.mdx-content--dark) :global(blockquote) {
-          @apply tw-text-gray-400;
-        }
-
-        :global(.mdx-content--styled) :global(pre),
-        :global(.mdx-content--styled) :global(.Code) :global(pre) {
-          @apply tw-bg-gray-800;
-          @apply tw-p-4;
-          @apply tw-rounded-md;
-          @apply tw-text-base;
-          @apply tw-text-gray-300;
-          max-width: 100%;
-          overflow-x: auto;
-          word-break: keep-all;
-        }
-
-        :global(.mdx-content) :global(p) :global(code),
-        :global(.mdx-content) :global(li) :global(div) :global(code) {
-          @apply tw-text-base;
-          @apply tw-text-red-700;
-          font-style: italic;
-        }
-
-        :global(.mdx-content--dark) :global(p) :global(code),
-        :global(.mdx-content--dark) :global(li) :global(div) :global(code) {
-          @apply tw-text-red-400;
-        }
-
-        :global(.mdx-content) :global(p) :global(code):after {
-          content: "\`";
-        }
-
-        :global(.mdx-content) :global(p) :global(code):before {
-          content: "\`";
-        }
-
-        :global(.mdx-content) :global(hr) {
+        /* Separators */
+        :global(.mdx-content--styled) :global(hr) {
           border-style: dashed;
         }
 
-        :global(.mdx-content--dark) :global(hr) {
-          @apply value:dark:dfr-border-color-primary;
-        }
-
-        :global(.mdx-content) :global(ul) :global(li) > :global(p) {
-          display: inline;
-        }
-
-        :global(.mdx-content) :global(ul) :global(li) > :global(ul) {
-          @apply tw-pl-6;
-          @apply tw-mt-2;
-          @apply tw-mb-3;
-        }
-
-        :global(.mdx-content--default) :global(h1),
-        :global(.mdx-content--default) :global(h2),
-        :global(.mdx-content--default) :global(h3),
-        :global(.mdx-content--default) :global(h4) {
-          @apply tw-mb-3;
-        }
-
-        :global(.mdx-content--default) :global(h1) {
-          @apply tw-text-3xl;
-        }
-
-        :global(.mdx-content--default) :global(h2) {
-          @apply tw-text-2xl;
-        }
-
-        :global(.mdx-content--default) :global(h3) {
-          @apply tw-text-xl;
-        }
-
-        :global(.mdx-content--default) :global(h4) {
-          @apply tw-text-lg;
+        /* For music pages (Custom line breaks) */
+        :global(.mdx-content--unstyled) :global(br[data-separator]) {
+          display: none;
         }
       `}</style>
     </article>
@@ -144,7 +83,7 @@ function MDXContent({ content, variant = "DEFAULT" }: TypeMDXContentProps): any 
 }
 
 MDXContent.variant = {
-  DEFAULT: "DEFAULT",
+  STYLED: "STYLED",
   UNSTYLED: "UNSTYLED",
 };
 

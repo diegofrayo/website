@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 
-import { Modal, Space, Link, Icon } from "~/components/primitive";
+import { Modal, Space, Link, Icon, Title } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { Chords } from "~/lib/chords";
 import MusicService from "~/services/music";
@@ -77,10 +77,18 @@ export function SongDetails({
       </div>
       <div className="tw-flex tw-items-center tw-mt-1">
         <Link href={song.spotifyUrl} variant={Link.variant.UNSTYLED} className="tw-mr-2">
-          <Icon icon={Icon.icon.SPOTIFY} className="tw-w-5 tw-h-5" />
+          <Icon
+            icon={Icon.icon.SPOTIFY}
+            variant={Icon.variant.UNSTYLED}
+            className="tw-w-5 tw-h-5"
+          />
         </Link>
         <Link href={song.youtubeUrl} variant={Link.variant.UNSTYLED}>
-          <Icon icon={Icon.icon.YOUTUBE} className="tw-w-6 tw-h-6" />
+          <Icon
+            icon={Icon.icon.YOUTUBE}
+            variant={Icon.variant.UNSTYLED}
+            className="tw-w-6 tw-h-6"
+          />
         </Link>
       </div>
     </div>
@@ -151,7 +159,9 @@ export function SongSources({ sources }: { sources: TypeSong["sources"] }): any 
 
   return (
     <section>
-      <h2 className="tw-font-bold tw-text-2xl tw-mb-2">Fuentes</h2>
+      <Title is="h2" className="tw-mb-2">
+        Fuentes
+      </Title>
 
       {sources.map((source, index) => {
         return <SongSourcesItem key={`SongSourcesItem-${index}`} source={source} />;
@@ -188,17 +198,23 @@ function useSongSourcesItemController() {
     let props = {
       icon: Icon.icon.LINK,
       alt: "",
+      size: 0,
+      variant: Icon.variant.DEFAULT,
     };
 
     if (source.includes("lacuerda")) {
       props = {
         icon: "/static/images/icons/la-cuerda.png",
         alt: "La cuerda icon",
+        size: 0,
+        variant: Icon.variant.DEFAULT,
       };
     } else if (source.includes("youtube")) {
       props = {
         icon: Icon.icon.YOUTUBE_DARK,
         alt: "",
+        size: 22,
+        variant: Icon.variant.UNSTYLED,
       };
     }
 

@@ -11,6 +11,11 @@ function Icon(props) {
   return <Image src={src} className={className} alt={`${alt} icon`} width={size} {...rest} />;
 }
 
+Icon.variant = {
+  DEFAULT: "DEFAULT",
+  UNSTYLED: "UNSTYLED",
+};
+
 Icon.icon = {
   "500_PX": "500_PX",
   CALENDAR: "CALENDAR",
@@ -111,12 +116,12 @@ const ICONS = {
   },
 };
 
-function useController({ icon: iconName, className, ...rest }) {
+function useController({ icon: iconName, className, variant = "DEFAULT", size, ...rest }) {
   const icon = ICONS[iconName];
   const isUrl = iconName.startsWith("/");
 
   if (isUrl) {
-    return { ...rest, src: iconName, className };
+    return { ...rest, src: iconName, size, className };
   }
 
   if (!icon) {
@@ -127,6 +132,14 @@ function useController({ icon: iconName, className, ...rest }) {
   return {
     ...rest,
     ...icon,
-    className: classnames(icon.className, className),
+    size,
+    className: classnames(
+      variant !== "UNSTYLED" &&
+        "dark:tw-p-1 dark:dfr-bg-secondary dark:tw-rounded-md tw-overflow-hidden",
+      !size && "tw-h-6 tw-w-6",
+      !size && variant !== "UNSTYLED" && "dark:tw-h-8 dark:tw-w-8",
+      icon.className,
+      className,
+    ),
   };
 }

@@ -5,7 +5,6 @@ export function HelloWorldMDX({ text }: { text: string }): any {
 }
 
 export function SpotifyPlaylist(): any {
-  return null;
   return (
     <div className="tw-border-4 tw-border-pink-400" data-block>
       <iframe

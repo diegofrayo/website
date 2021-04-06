@@ -1,4 +1,4 @@
-# Table of Content
+## Table of Content
 
 - [CSS](#css)
   - [Set height 100% to a child element of a flex-row parent](#set-height-100-to-a-child-element-of-a-flex-row-parent)
@@ -24,9 +24,9 @@
 
 ---
 
-# CSS
+## CSS
 
-## Set height 100% to a child element of a flex-row parent
+### Set height 100% to a child element of a flex-row parent
 
 <Collapsible>
   <Code
@@ -42,7 +42,7 @@
   />
 </Collapsible>
 
-## Text ellipsis
+### Text ellipsis
 
 <Collapsible>
   <Code
@@ -56,9 +56,9 @@
   />
 </Collapsible>
 
-# JavaScript
+## JavaScript
 
-## Capitalize string
+### Capitalize string
 
 <Collapsible>
   <Code
@@ -75,7 +75,7 @@
   />
 </Collapsible>
 
-## Copy to clipboard
+### Copy to clipboard
 
 <Collapsible>
   <Code
@@ -110,7 +110,7 @@
   />
 </Collapsible>
 
-## Create array with N elements
+### Create array with N elements
 
 <Collapsible>
   <Code
@@ -122,7 +122,7 @@
   />
 </Collapsible>
 
-## Delay
+### Delay
 
 <Collapsible>
   <Code
@@ -136,7 +136,7 @@
   />
 </Collapsible>
 
-## Focus and select the text inside the textarea
+### Focus and select the text inside the textarea
 
 <Collapsible>
   <Code
@@ -148,7 +148,7 @@ element.select();`}
   />
 </Collapsible>
 
-## Generate simple random string
+### Generate simple random string
 
 <Collapsible>
   <Code
@@ -166,7 +166,7 @@ element.select();`}
   />
 </Collapsible>
 
-## Regex examples
+### Regex examples
 
 <Collapsible>
   <Code
@@ -189,7 +189,7 @@ const replacement = "my";
   />
 </Collapsible>
 
-## Simple encrypt/decrypt
+### Simple encrypt/decrypt
 
 <Collapsible>
   <Code
@@ -207,7 +207,7 @@ function decrypt(str) {
   />
 </Collapsible>
 
-## Slugify string
+### Slugify string
 
 <Collapsible>
   <Code
@@ -230,7 +230,7 @@ function decrypt(str) {
   />
 </Collapsible>
 
-## Update scroll position
+### Update scroll position
 
 <Collapsible>
   <Code
@@ -245,9 +245,9 @@ function decrypt(str) {
   />
 </Collapsible>
 
-# React
+## React
 
-## Component to show the window resolution using Tailwind CSS classes
+### Component to show the window resolution using Tailwind CSS classes
 
 <Collapsible>
   <Code
@@ -290,7 +290,7 @@ const WindowSize = () => {
   />
 </Collapsible>
 
-## Iterate a children prop
+### Iterate a children prop
 
 <Collapsible>
   <Code
@@ -314,9 +314,9 @@ const WindowSize = () => {
   />
 </Collapsible>
 
-# Git
+## Git
 
-## Alias
+### Alias
 
 <Collapsible>
   <Code
@@ -324,12 +324,12 @@ const WindowSize = () => {
     fileName="Alias"
     code={`# superlog
 git config --global alias.superlog "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
-# alias with parameters
+## alias with parameters
 git config --global alias.pt-pull '!f() { git checkout development; git pull; git checkout task/PTRAK-$1; git pull; git merge development; }; f'`}
   />
 </Collapsible>
 
-## Remote branches
+### Remote branches
 
 <Collapsible>
   <Code
@@ -337,12 +337,12 @@ git config --global alias.pt-pull '!f() { git checkout development; git pull; gi
     fileName="Remote branches"
     code={`# show remote branches
 git remote -v
-# prune remote branches list
+## prune remote branches list
 git remote update origin --prune`}
   />
 </Collapsible>
 
-## Stash
+### Stash
 
 <Collapsible>
   <Code
@@ -350,15 +350,15 @@ git remote update origin --prune`}
     fileName="Stash"
     code={`# Save a stash
 git stash
-# Restore all changes of the last stash
+## Restore all changes of the last stash
 git stash apply
-# Show all specific stash changes
+## Show all specific stash changes
 git stash show stash@{0} -u
-# Delete a specific stash
+## Delete a specific stash
 git stash drop -q stash@{0}
-# Show all saved stashes
+## Show all saved stashes
 git stash list
-# Restore all changes of a specific stash
+## Restore all changes of a specific stash
 git stash apply stash@{0}`}
   />
 </Collapsible>

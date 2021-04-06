@@ -4,7 +4,7 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Icon, Link, Space } from "~/components/primitive";
+import { Blockquote, Icon, Link, Space } from "~/components/primitive";
 import { MDXContent } from "~/components/pages/_shared";
 import { useInternationalization, useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
@@ -153,27 +153,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
   return (
     <Fragment>
       <Space size={8} />
-
-      {/*
-      <div className="tw-mb-4 tw-flex-1 tw-flex tw-items-center tw-text-sm">
-        <p className="tw-mr-4 tw-italic">
-          {SiteTexts.page.current_locale.like_blog_post}
-        </p>
-        <button
-          className="tw-border dfr-border-color-primary dark:dfr-border-color-primary dfr-bg-secondary dark:dfr-bg-secondary tw-flex tw-items-center tw-flex-shrink-0 tw-rounded-md tw-text-sm"
-          onClick={() => {
-            alert("En progreso...");
-          }}
-        >
-          <Emoji className="tw-px-2">👍</Emoji>
-          <div className="tw-border-l dfr-border-color-primary dark:dfr-border-color-primary tw-flex tw-items-center tw-px-2 tw-py-1 tw-h-full">
-            <span className="tw-relative tw--top-2px tw-font-bold">0</span>
-          </div>
-        </button>
-      </div>
-      */}
-
-      <div className="dfr-border-color-primary tw-border-l-4 tw-pl-4 tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-my-4 tw-text-black dark:tw-text-white">
+      <Blockquote className="tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-my-4 tw-text-black dark:tw-text-white">
         <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
           <BlogPostFooterItem>
             <BlogPostFooterItem.Icon icon={Icon.icon.CALENDAR} tw-variant="withoutDarkMode" />
@@ -207,7 +187,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
             <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
           </BlogPostFooterItem>
         </div>
-      </div>
+      </Blockquote>
       {showGoToTopButton && <GoToTopButton />}
     </Fragment>
   );
@@ -245,5 +225,6 @@ BlogPostFooterItem.Icon = twcss(Icon)(
   },
   {
     "tw-variant": "withDarkMode",
+    variant: Icon.variant.UNSTYLED,
   },
 );

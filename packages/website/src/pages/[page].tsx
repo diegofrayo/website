@@ -58,7 +58,12 @@ function SitePage({ content, page, SiteTexts }: TypeSitePageProps): any {
         ]}
         title={SiteTexts.page.current_locale.title}
       >
-        <MDXContent content={mdxContent} />
+        <MDXContent
+          variant={
+            `/${page}` === Routes.SNIPPETS ? MDXContent.variant.STYLED : MDXContent.variant.UNSTYLED
+          }
+          content={mdxContent}
+        />
       </MainLayout>
     </Page>
   );

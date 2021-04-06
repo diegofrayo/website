@@ -5,6 +5,7 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout } from "~/components/layout";
+import { Blockquote, Icon } from "~/components/primitive";
 import { MDXContent } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
 import { useDidMount, useInternationalization } from "~/hooks";
@@ -14,7 +15,6 @@ import { copyToClipboard, isBrowser } from "~/utils/browser";
 import { WebsiteMetadata } from "~/utils/constants";
 import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
 import { Routes } from "~/utils/routing";
-import { Icon } from "~/components/primitive";
 
 type TypeSongPageProps = {
   song: TypeSong;
@@ -76,8 +76,8 @@ function SongPage({ song, content }: TypeSongPageProps): any {
         title={song.title}
       >
         <SongDetails song={song} SiteTexts={SiteTexts} className="tw-mb-6" />
-        <div
-          className="dfr-border-color-primary dark:dfr-border-color-primary tw-border-l-4 tw-pl-4 tw-max-w-full tw-overflow-x-auto tw-mb-8 tw-relative tw-pt-10"
+        <Blockquote
+          className="tw-max-w-full tw-overflow-x-auto tw-mb-8 tw-relative tw-pt-16"
           style={{ fontSize: `${fontSize}rem` }}
         >
           <div className="tw-absolute tw-top-0 tw-left-0 tw-pl-4 tw-flex tw-items-start">
@@ -106,12 +106,12 @@ function SongPage({ song, content }: TypeSongPageProps): any {
               data-clipboard-text={`${WebsiteMetadata.url}${Routes.MUSIC}/${song.id}`}
               onClick={copyToClipboard}
             >
-              <Icon icon={Icon.icon.LINK} className="tw-h-6 dark:tw-w-6" size="21" />
+              <Icon icon={Icon.icon.LINK} />
             </button>
           </div>
 
           <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
-        </div>
+        </Blockquote>
         <SongSources sources={song.sources} />
       </MainLayout>
     </Page>

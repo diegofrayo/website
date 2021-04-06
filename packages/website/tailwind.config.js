@@ -34,6 +34,7 @@ module.exports = {
     opacity: ["responsive", "hover", "dark"],
     padding: ["responsive", "last", "hover", "dark"],
     width: ["responsive", "last", "hover", "dark"],
+    height: ["responsive", "last", "hover", "dark"],
   },
 };
 
@@ -41,12 +42,6 @@ module.exports = {
 
 function myCustomClassesPlugin({ addUtilities, config, e }) {
   const newClasses = {
-    "dfr-mt-base": {
-      marginTop: config("theme.spacing")["3"],
-    },
-    "dfr-mb-base": {
-      marginBottom: config("theme.spacing")["6"],
-    },
     "dfr-max-w-base": {
       maxWidth: config("theme.screens")["md"],
     },
