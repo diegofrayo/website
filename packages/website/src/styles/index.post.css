@@ -48,6 +48,11 @@ summary {
   outline: transparent !important;
 }
 
+a[disabled] {
+  opacity: 0.75;
+  pointer-events: none;
+}
+
 /* --- Dark mode --- */
 
 .tw-dark body {

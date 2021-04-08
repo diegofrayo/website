@@ -1,13 +1,13 @@
 import React from "react";
-import classnames from "classnames";
+import classNames from "classnames";
 import {
   CalendarIcon,
   CodeIcon,
   LinkIcon,
   PencilAltIcon,
+  XIcon,
   ZoomInIcon,
   ZoomOutIcon,
-  XIcon,
 } from "@heroicons/react/outline";
 import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 
@@ -199,7 +199,7 @@ function useController({
   }
 
   const wrapperProps = {
-    className: classnames(
+    className: classNames(
       withDarkModeBackground &&
         !icon.isLibraryIcon &&
         "dark:tw-p-1 dark:dfr-bg-secondary dark:tw-rounded-md tw-overflow-hidden",
@@ -209,7 +209,7 @@ function useController({
   const IconComponent = icon.isLibraryIcon ? icon.icon : Image;
   const iconComponentProps = icon.isLibraryIcon
     ? {
-        className: classnames(
+        className: classNames(
           icon.props.color || "tw-text-black",
           !icon.props.color && !withDarkModeBackground && "dark:tw-text-white",
           "tw-inline-block",
@@ -223,7 +223,7 @@ function useController({
     : {
         src: icon.icon,
         alt: `${icon.props.alt} icon`,
-        className: classnames(
+        className: classNames(
           "tw-inline-block",
           size === undefined && "tw-w-4 tw-h-4",
           typeof size === "string" && size,
@@ -240,7 +240,7 @@ function useController({
 
 function Wrapper({ children, className }: { children: JSX.Element; className?: string }) {
   return (
-    <span className={classnames("tw-inline-flex tw-items-center tw-justify-center", className)}>
+    <span className={classNames("tw-inline-flex tw-items-center tw-justify-center", className)}>
       {children}
     </span>
   );

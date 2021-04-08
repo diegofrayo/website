@@ -1,13 +1,13 @@
 import React from "react";
 
 import {
+  Blockquote,
+  Code as CodePrimitive,
   Collapsible,
   Image,
   Link,
-  Space,
   List,
-  Blockquote,
-  Code as CodePrimitive,
+  Space,
 } from "~/components/primitive";
 import { Code, Title, TextWithEmoji, GithubRepo } from "~/components/pages/_shared";
 import { Main, Texts, Measure } from "~/components/pages/blog/components/html-semantic-tags";
@@ -22,7 +22,7 @@ import { Routes } from "~/utils/routing";
 
 import { getSiteTexts } from "./internationalization";
 
-export const MDXComponentsConfig = {
+export const MDXComponents = {
   a: Link,
   blockquote: Blockquote,
   h1: Title("h1"),
@@ -38,6 +38,9 @@ export const MDXComponentsConfig = {
         {children}
       </CodePrimitive>
     );
+  },
+  hr: function HR() {
+    return <Space variant={Space.variant.DASHED} />;
   },
 
   Code,

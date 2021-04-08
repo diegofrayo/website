@@ -47,6 +47,7 @@ function WPPage(): any {
               ref={inputRef}
               value={phone}
               placeholder="+57"
+              pattern="[0-9]{10}"
               onChange={e => setPhone(e.currentTarget.value)}
             />
           </label>
@@ -55,6 +56,7 @@ function WPPage(): any {
             className="tw-self-end tw-flex"
             href={`https://api.whatsapp.com/send?phone=57${phone}`}
             variant={Link.variant.UNSTYLED}
+            disabled={!inputRef?.current?.validity?.valid || !phone}
           >
             <Icon icon={Icon.icon.WHATSAPP} size={48} />
           </Link>

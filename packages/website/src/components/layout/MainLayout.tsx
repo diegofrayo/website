@@ -1,6 +1,6 @@
 import React, { useState, useRef, Fragment } from "react";
 import { useTheme } from "next-themes";
-import classnames from "classnames";
+import classNames from "classnames";
 
 import { Link, Space, Title, Icon, Button } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
@@ -87,7 +87,7 @@ const Header = safeRender(function Header(): any {
   });
 
   return (
-    <header className={classnames("tw-h-32", fixedHeader && "root--fixed")} ref={headerRef}>
+    <header className={classNames("tw-h-32", fixedHeader && "root--fixed")} ref={headerRef}>
       {fixedHeader ? (
         <div className="tw-w-full tw-fixed tw-left-0 tw-top-0 tw-z-30">
           <div className="dfr-max-w-base tw-py-4 tw-px-6 tw-mx-auto">
@@ -149,13 +149,13 @@ function DarkModeToggle(): any {
       }}
     >
       <span
-        className={classnames(
+        className={classNames(
           "tw-rounded-full tw-p-1 tw-w-7 tw-h-7 tw-absolute tw--top-0.5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-t tw-border-l dfr-border-color-primary dark:tw-border-0",
           isDarkMode ? "tw--right-0.5" : "tw--left-0.5",
         )}
       >
-        <Icon icon={Icon.icon.SUN} wrapperClassName={classnames(isDarkMode && "tw-hidden")} />
-        <Icon icon={Icon.icon.MOON} wrapperClassName={classnames(!isDarkMode && "tw-hidden")} />
+        <Icon icon={Icon.icon.SUN} wrapperClassName={classNames(isDarkMode && "tw-hidden")} />
+        <Icon icon={Icon.icon.MOON} wrapperClassName={classNames(!isDarkMode && "tw-hidden")} />
       </span>
     </Button>
   );

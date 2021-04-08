@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classnames from "classnames";
+import classNames from "classnames";
 
 import {
   Modal,
@@ -31,7 +31,7 @@ export function SongDetails({
   className?: string;
 }): any {
   return (
-    <div className={classnames("tw-text-sm tw-italic", className)}>
+    <div className={classNames("tw-text-sm tw-italic", className)}>
       <div>
         <strong>{SiteTexts.page.current_locale.artist}:</strong> <span>{song.artist}</span>
       </div>
@@ -47,7 +47,7 @@ export function SongDetails({
           return (
             <span
               key={`Progress-item-${item}`}
-              className={classnames(
+              className={classNames(
                 "tw-inline-block tw-rounded-sm tw-h-3 tw-w-3 tw-mr-0.5",
                 item <= song.progress
                   ? (song.progress === 1
@@ -118,7 +118,7 @@ export function LyricsAndChords({ children, chords }: { children: any; chords?: 
   return (
     <div>
       {chords && (
-        <Blockquote className="tw-p-1 tw-mb-8 tw-border" variant={Blockquote.variant.UNSTYLED}>
+        <Blockquote className="tw-p-4 tw-mb-8 tw-border" variant={Blockquote.variant.UNSTYLED}>
           <strong className="tw-block tw-mb-2">Acordes</strong>
           <pre
             className="tw-break-all tw-max-w-full tw-whitespace-normal"
@@ -148,7 +148,7 @@ export function LyricsAndChords({ children, chords }: { children: any; chords?: 
           )}
           <Space className="tw-mt-6 tw-mb-1" />
           <Button className="tw-text-center tw-block tw-w-full" onClick={handleModalClose}>
-            <Icon icon={Icon.icon.X} size={32} />
+            <Icon icon={Icon.icon.X} size={24} />
           </Button>
         </div>
       </Modal>

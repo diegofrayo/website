@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import fs from "fs";
-import classnames from "classnames";
+import classNames from "classnames";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
@@ -13,7 +13,7 @@ import MusicService from "~/services/music";
 import { TypeSong } from "~/types";
 import { copyToClipboard, isBrowser } from "~/utils/browser";
 import { WebsiteMetadata } from "~/utils/constants";
-import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
+import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { Routes } from "~/utils/routing";
 
 type TypeSongPageProps = {
@@ -29,7 +29,7 @@ function SongPage({ song, content }: TypeSongPageProps): any {
 
   const [fontSize, setFontSize] = useState(0);
 
-  const mdxContent = hydrate(content, { components: MDXComponentsConfig });
+  const mdxContent = hydrate(content, { components: MDXComponents });
 
   useDidMount(() => {
     setFontSize(getFontSize());
@@ -75,16 +75,17 @@ function SongPage({ song, content }: TypeSongPageProps): any {
         ]}
         title={song.title}
       >
-        <SongDetails song={song} SiteTexts={SiteTexts} className="tw-mb-6" />
+        <SongDetails song={song} SiteTexts={SiteTexts} className="tw-mb-8" />
+
         <Blockquote
-          className="tw-max-w-full tw-overflow-x-auto tw-mb-8 tw-relative tw-pt-16"
+          className="tw-mb-8"
           style={{ fontSize: `${fontSize}rem` }}
           variant={Blockquote.variant.UNSTYLED}
         >
-          <div className="tw-absolute tw-top-0 tw-left-0 tw-pl-4 tw-flex tw-items-start">
+          <div className="tw-mb-8">
             <Button
-              className={classnames(
-                "tw-text-sm tw-inline-block tw-mr-2 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75",
+              className={classNames(
+                "tw-text-sm tw-inline-block tw-mr-3",
                 fontSize === 2 && "tw-opacity-25 dark:tw-opacity-50",
               )}
               disabled={fontSize === 2}
@@ -93,8 +94,8 @@ function SongPage({ song, content }: TypeSongPageProps): any {
               <Icon icon={Icon.icon.ZOOM_IN} size={24} />
             </Button>
             <Button
-              className={classnames(
-                "tw-text-sm tw-inline-block tw-mr-2 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75",
+              className={classNames(
+                "tw-text-sm tw-inline-block tw-mr-3",
                 fontSize === 0.6 && "tw-opacity-25 dark:tw-opacity-50",
               )}
               disabled={fontSize === 0.6}
@@ -103,7 +104,7 @@ function SongPage({ song, content }: TypeSongPageProps): any {
               <Icon icon={Icon.icon.ZOOM_OUT} size={24} />
             </Button>
             <Button
-              className="tw-text-sm tw-inline-block tw-mr-2 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
+              className="tw-text-sm tw-inline-block tw-mr-3"
               data-clipboard-text={`${WebsiteMetadata.url}${Routes.MUSIC}/${song.id}`}
               onClick={copyToClipboard}
             >
@@ -111,8 +112,11 @@ function SongPage({ song, content }: TypeSongPageProps): any {
             </Button>
           </div>
 
-          <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
+          <div className="tw-max-w-full tw-overflow-x-auto">
+            <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
+          </div>
         </Blockquote>
+
         <SongSources sources={song.sources} />
       </MainLayout>
     </Page>
@@ -139,7 +143,7 @@ export async function getStaticProps({
 
   const file = fs.readFileSync(`${process.cwd()}/src/data/music/songs/${song?.id}.mdx`, "utf8");
   const content = await renderToString(file, {
-    components: MDXComponentsConfig,
+    components: MDXComponents,
     scope: { DATA: { ...MDXScope.DATA, song } },
   });
 

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import classnames from "classnames";
+import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
 import { List, Link } from "~/components/primitive";
@@ -121,7 +121,7 @@ function BlogEntry({
           return (
             <span
               key={`BlogEntry-category-${category.id}`}
-              className={classnames(
+              className={classNames(
                 "tw-py-1 tw-px-2 tw-rounded-sm tw-font-semibold",
                 CATEGORIES_COLORS[category.id],
               )}

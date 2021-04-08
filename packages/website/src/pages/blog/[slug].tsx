@@ -19,7 +19,7 @@ import {
 import { WebsiteMetadata, GithubData } from "~/utils/constants";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
-import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
+import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { Routes } from "~/utils/routing";
 
 type TypeBlogPostPageProps = {
@@ -33,7 +33,7 @@ function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
     layout: true,
   });
 
-  const mdxContent = hydrate(content, { components: MDXComponentsConfig });
+  const mdxContent = hydrate(content, { components: MDXComponents });
 
   return (
     <Page
@@ -101,7 +101,7 @@ export async function getStaticProps({
     "utf8",
   );
   const content = await renderToString(file, {
-    components: MDXComponentsConfig,
+    components: MDXComponents,
     scope: { DATA: { ...MDXScope.DATA, blog_post: post } },
   });
 

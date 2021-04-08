@@ -1,7 +1,7 @@
 import React, { Fragment, useRef, useState } from "react";
-import classnames from "classnames";
+import classNames from "classnames";
 
-import { Space, Button } from "~/components/primitive";
+import { Space, Button, Title } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { copyToClipboard } from "~/utils/browser";
 import { createArray } from "~/utils/misc";
@@ -63,14 +63,17 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: Type
 
   return (
     <article className="tw-max-w-full tw-text-center tw-font-serif">
-      <div ref={chordRef}>
-        <div className="tw-inline-flex tw-flex-no-wrap tw-overflow-x-auto tw-max-w-full tw-pt-8">
+      <section ref={chordRef}>
+        <Title
+          is="h1"
+          variant={Title.variant.UNSTYLED}
+          className="tw-truncate tw-text-center tw-mb-2 tw-text-2xl"
+        >
+          {name}
+        </Title>
+        <div className="tw-inline-flex tw-flex-no-wrap tw-overflow-x-auto tw-max-w-full tw-items-end">
           <Fret variant="FRET_STRINGS_NAMES" />
           <div className="tw-relative tw-inline-flex tw-flex-no-wrap">
-            <h1 className="tw-truncate tw-text-xs tw-absolute tw-text-center tw-font-bold tw-w-full tw--top-6">
-              {name}
-            </h1>
-
             <Fret variant="FRET_EMPTY" fret={lastFret + 1} />
             {Object.entries(chordsGroupedByFret)
               .reverse()
@@ -88,7 +91,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: Type
           </div>
           {stringsToSkip && <Fret variant="FRET_SKIP_STRINGS" stringsToSkip={stringsToSkip} />}
         </div>
-      </div>
+      </section>
 
       {showOptions && (
         <Fragment>
@@ -108,7 +111,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: Type
                   onClick={handleShowInput}
                 >
                   <span
-                    className={classnames(
+                    className={classNames(
                       "tw-inline-block tw-transition-all tw-transform tw-mr-1",
                       showInput && "tw-rotate-90",
                     )}
@@ -143,7 +146,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: Type
 export function Solo({ positions, notes }) {
   return (
     <div className="tw-text-sm tw-pr-2 tw-font-serif">
-      <div className="tw-flex">
+      <div className="tw-flex tw-items-end">
         <Fret variant="FRET_STRINGS_NAMES" />
 
         {["|", ...positions.split("|"), "|"].map((item, index) => {
@@ -151,7 +154,6 @@ export function Solo({ positions, notes }) {
 
           return (
             <div key={`Solo-position-${index}`} className="tw-ml-1">
-              <div className="tw-h-6" />
               <div>
                 {createArray(6)
                   .reverse()
@@ -200,16 +202,18 @@ function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
 
   return (
     <div
-      className={classnames(
+      className={classNames(
         "tw-flex-shrink-0 tw-text-xs",
         isSkipStringsVariant ? "tw-auto" : isStringsNamesVariant ? "tw-w-16" : "tw-w-10",
       )}
     >
-      <div className="tw-flex tw-items-center tw-justify-center tw-h-6 tw-font-bold">
-        {fret || ""}
-      </div>
+      {!isStringsNamesVariant && (
+        <div className="tw-flex tw-items-center tw-justify-center tw-h-6 tw-font-bold">
+          {fret || ""}
+        </div>
+      )}
       <div
-        className={classnames(
+        className={classNames(
           !isStringsNamesVariant &&
             !isSkipStringsVariant &&
             "tw-border-l-2 tw-border-r-2 tw-border-yellow-400 tw-bg-yellow-700",

@@ -1,12 +1,12 @@
 import React from "react";
-import classnames from "classnames";
+import classNames from "classnames";
 
 import { generateSlug } from "~/utils/strings";
 
 type TypeTitle = {
   is: "h1" | "h2" | "h3" | "h4";
   children: string | JSX.Element;
-  variant?: "PRIMARY" | "SECONDARY";
+  variant?: "PRIMARY" | "SECONDARY" | "UNSTYLED";
   className?: string;
 };
 
@@ -20,9 +20,10 @@ function Title(props: TypeTitle): JSX.Element {
   );
 }
 
-const VARIANTS: Record<string, "PRIMARY" | "SECONDARY"> = {
+const VARIANTS: Record<string, "PRIMARY" | "SECONDARY" | "UNSTYLED"> = {
   PRIMARY: "PRIMARY",
   SECONDARY: "SECONDARY",
+  UNSTYLED: "UNSTYLED",
 };
 
 Title.variant = VARIANTS;
@@ -44,16 +45,18 @@ function useController({
   Tag: TypeTitle["is"];
 } {
   function generateStyles(tag: TypeTitle["is"]): string {
-    return classnames(
-      {
-        h1: "tw-text-4xl",
-        h2: "tw-text-3xl",
-        h3: "tw-text-2xl",
-        h4: "tw-text-xl",
-      }[tag],
+    return classNames(
+      variant !== "UNSTYLED" &&
+        {
+          h1: "tw-text-4xl",
+          h2: "tw-text-3xl",
+          h3: "tw-text-2xl",
+          h4: "tw-text-xl",
+        }[tag],
       {
         PRIMARY: "dfr-text-color-secondary dark:dfr-text-color-secondary",
         SECONDARY: "tw-text-black dark:tw-text-white",
+        UNSTYLED: "",
       }[variant || ""],
     );
   }
@@ -62,6 +65,6 @@ function useController({
     id: typeof children === "string" ? generateSlug(children) : "",
     children,
     Tag,
-    className: classnames("tw-font-bold tw-font-sans", generateStyles(Tag), className),
+    className: classNames("tw-font-bold tw-font-sans", generateStyles(Tag), className),
   };
 }

@@ -16,26 +16,24 @@ type TypeLinkProps = {
   external?: boolean;
   isNextLink?: boolean;
   locale?: TypeLocale;
+  disabled?: boolean;
 };
 
 function Link({
   children,
-  href,
-  className,
+  href = "",
+  className = "",
   is = "a",
   external = true,
   isNextLink = false,
-  variant = "DEFAULT",
+  variant = VARIANTS.DEFAULT,
   ...rest
-}: TypeLinkProps): any {
+}: TypeLinkProps): JSX.Element | null {
+  const { getExternalAttrs } = useController();
+
   if (!href || !children) {
     console.warn("Link component: href or children are falsy");
     return null;
-  }
-
-  function getExternalAttrs() {
-    if (external === false || href.startsWith("#")) return {};
-    return { target: "_blank", rel: "noreferrer" };
   }
 
   if (isNextLink === true) {
@@ -54,7 +52,7 @@ function Link({
       className={className}
       tw-variant={variant}
       is={is}
-      {...getExternalAttrs()}
+      {...getExternalAttrs(href, external)}
       {...rest}
     >
       {children}
@@ -62,7 +60,7 @@ function Link({
   );
 }
 
-const VARIANTS: Record<string, "DEFAULT" | "SECONDARY" | "UNSTYLED"> = {
+const VARIANTS: Record<string, TypeLinkProps["variant"]> = {
   DEFAULT: "DEFAULT",
   SECONDARY: "SECONDARY",
   UNSTYLED: "UNSTYLED",
@@ -71,6 +69,17 @@ const VARIANTS: Record<string, "DEFAULT" | "SECONDARY" | "UNSTYLED"> = {
 Link.variant = VARIANTS;
 
 export default Link;
+
+// --- Controller ---
+
+function useController() {
+  function getExternalAttrs(href, external) {
+    if (external === false || href.startsWith("#")) return {};
+    return { target: "_blank", rel: "noreferrer" };
+  }
+
+  return { getExternalAttrs };
+}
 
 // --- Components ---
 

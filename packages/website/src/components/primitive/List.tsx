@@ -1,9 +1,9 @@
 import React from "react";
-import classnames from "classnames";
+import classNames from "classnames";
 
 export function List({ children, className }: Record<string, any>): any {
   return (
-    <ul className={classnames("tw-list-inside tw-list-none", className)}>
+    <ul className={classNames("tw-list-inside tw-list-none", className)}>
       {React.Children.map(children, child => {
         if (!child) return child;
 

@@ -14,5 +14,11 @@ export default {
 
 export const Default = Story.bind({});
 Default.args = {
-  children: "I'm a Blockquote",
+  children: "I'm a [Default]  Blockquote",
+};
+
+export const Unstyled = Story.bind({});
+Unstyled.args = {
+  children: "I'm a [Unstyled] Blockquote",
+  variant: Blockquote.variant.UNSTYLED,
 };

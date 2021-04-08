@@ -165,12 +165,13 @@
         "timeline": [
           {
             "company": "Festa",
-            "url": "https://festa.co",
+            "url": "",
             "date": "abril 2015 - diciembre 2016",
             "description": "Ingresé a esta compañía como Desarrollador de Software Junior para construir un MVP usando JavaScript como lenguaje de programación principal. Trabajé principalmente en la construcción de un SPA (Single Page Application) usando Angular.js, Bootstrap Material y Firebase. También contribuí en el desarrollo de una aplicación back-end basada en Node.js, Sails.js y MongoDB"
           },
           {
             "company": "Freelancing",
+            "url": "",
             "date": "abril 2017 - mayo 2018",
             "description": "Trabajé tiempo parcial en algunos proyectos web como freelancer"
           },

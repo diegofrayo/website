@@ -1,5 +1,5 @@
 import * as React from "react";
-import classnames from "classnames";
+import classNames from "classnames";
 
 import { Link, Icon, Title as TitlePrimitive, List } from "~/components/primitive";
 
@@ -13,7 +13,7 @@ type TypeEmojiProps = {
 };
 
 export function Emoji({ children, className }: TypeEmojiProps): any {
-  return <span className={classnames("emoji", className)}>{children}</span>;
+  return <span className={classNames("emoji", className)}>{children}</span>;
 }
 
 type TypeTextWithEmojiProps = {

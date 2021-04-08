@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classnames from "classnames";
+import classNames from "classnames";
 
 import { TypeCodeProps } from "~/types";
 
@@ -21,7 +21,7 @@ function Playground({ Component, code, language }: TypePlaygroundProps) {
       </div>
       <div className="tw-flex tw-flex-no-wrap tw-text-sm">
         <div
-          className={classnames(
+          className={classNames(
             "tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-flex-1 tw-text-center tw-cursor-pointer tw-p-1",
             tab === 0 && "tw-font-bold dfr-bg-secondary dark:dfr-bg-secondary",
           )}
@@ -33,7 +33,7 @@ function Playground({ Component, code, language }: TypePlaygroundProps) {
           Source Code
         </div>
         <div
-          className={classnames(
+          className={classNames(
             "tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-flex-1 tw-text-center tw-cursor-pointer tw-p-1",
             tab === 1 && "tw-font-bold dfr-bg-secondary dark:dfr-bg-secondary",
           )}

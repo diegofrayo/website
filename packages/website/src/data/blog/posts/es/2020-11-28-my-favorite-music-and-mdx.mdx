@@ -42,7 +42,7 @@ Después, importé los **componentes React** y las **variables** que se usarán 
 <Code
   language="javascript"
   sourceURL={DATA.github.monorepo.website.files.mdx}
-  code={`import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";`}
+  code={`import { MDXComponents, MDXScope } from "~/utils/mdx";`}
 />
 
 Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arreglo con los slugs de todos mis publicaciones que voy a **pre-renderizar** como páginas. El listado de todos mis publicaciones están definidos en un archivo <Link href={DATA.github.monorepo.website.files.posts}>JSON</Link> dentro del proyecto, pero esta información se podría leer de una **base de datos**, un **CMS**, una **API**, etc.
@@ -79,7 +79,7 @@ Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada publi
     "utf8",
   );
   const content = await renderToString(note, {
-    components: MDXComponentsConfig,
+    components: MDXComponents,
     scope: MDXScope,
   });
   return { props: { post, content } };
@@ -96,7 +96,7 @@ Por último, este es el componente que renderiza una publicación.
   sourceURL={DATA.github.monorepo.website.files["[slug]"]}
   language="jsx"
   code={`function BlogPostPage({ post, content }: Record<string, any>): any {
-  const mdxContent = hydrate(content, { components: MDXComponentsConfig });
+  const mdxContent = hydrate(content, { components: MDXComponents });
   return (
     <Page metadata={{ title: post[CURRENT_LOCALE].title }}>
       <MainLayout
@@ -122,7 +122,7 @@ Por último, este es el componente que renderiza una publicación.
 }`}
 />
 
-> **Importante:** Es necesario que el valor de la propiedad `components` sea igual en `hydrate(content, { components: MDXComponentsConfig });` como en `await renderToString(content, { components: MDXComponentsConfig });`.
+> **Importante:** Es necesario que el valor de la propiedad `components` sea igual en `hydrate(content, { components: MDXComponents });` como en `await renderToString(content, { components: MDXComponents });`.
 
 Para manejar los estilos **CSS** del contenido compilado de los archivos **MDX**, usé al inicio este [plugin](https://tailwindcss.com/docs/typography-plugin) de [Tailwind CSS](https://tailwindcss.com), pero después lo dejé de usar y decidí construir un componente con mis propios estilos.
 
@@ -210,7 +210,7 @@ export default MDXContent;`}
 El resaltado de síntaxis de código fuente lo hice con [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer).
 
 <Code
-  sourceURL={DATA.github.monorepo.website.files.MDXComponents}
+  sourceURL={DATA.github.monorepo.website.files.CODE}
   language="jsx"
   code={`import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";

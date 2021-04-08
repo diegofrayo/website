@@ -1,5 +1,5 @@
 import React from "react";
-import classnames from "classnames";
+import classNames from "classnames";
 import { useTheme } from "next-themes";
 
 import { Page, MainLayout } from "~/components/layout";
@@ -88,7 +88,7 @@ function Section({ title, classes, theme }) {
               onClick={copyToClipboard}
             >
               <div
-                className={classnames(
+                className={classNames(
                   "tw-border tw-p-2 tw-text-left",
                   className,
                   `dark:${className}`,

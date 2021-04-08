@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Space } from "~/components/primitive";
+import { Space, Title } from "~/components/primitive";
 import { Routes } from "~/utils/routing";
 import { Chords } from "~/lib/chords";
 import { TypeSiteTexts } from "~/types";
@@ -32,7 +32,9 @@ function ChordsPage(): any {
         title={PAGE_NAME}
       >
         <div>
-          <h2 className="tw-text-2xl tw-mb-4">Create your chord</h2>
+          <Title is="h2" className="tw-mb-4">
+            Create your chord
+          </Title>
 
           <label htmlFor="input-name">
             <strong className="tw-block tw-cursor-pointer">Name</strong>
@@ -74,10 +76,12 @@ function ChordsPage(): any {
             <Chords name={inputs.name} chords={inputs.chords} />
           </div>
         </div>
-        <Space size={8} className="tw-border-b" />
+        <Space size={8} variant={Space.variant.DASHED} />
 
         <div>
-          <h2 className="tw-text-2xl tw-mb-4">Examples</h2>
+          <Title is="h2" className="tw-mb-4">
+            Examples
+          </Title>
 
           <Chords
             name="MI Mayor (E)"
@@ -88,6 +92,7 @@ function ChordsPage(): any {
             ]}
           />
           <Space size={8} />
+
           <Chords
             name="DO Mayor (C)"
             chords={[
@@ -98,10 +103,13 @@ function ChordsPage(): any {
             stringsToSkip={[6]}
           />
           <Space size={8} />
+
           <Chords name="LA Mayor (A)" chords="4,2,1|3,2,2|2,2,3" stringsToSkip={[6]} />
           <Space size={8} />
+
           <Chords name="RE Mayor (D)" chords="3,2,1|1,2,2|2,3,3" stringsToSkip="6,5" />
           <Space size={8} />
+
           <Chords
             name="SI Mayor (B)"
             chords={[

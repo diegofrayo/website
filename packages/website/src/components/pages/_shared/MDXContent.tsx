@@ -1,5 +1,5 @@
 import React from "react";
-import classnames from "classnames";
+import classNames from "classnames";
 import { useTheme } from "next-themes";
 
 import { safeRender } from "~/hocs";
@@ -14,7 +14,7 @@ function MDXContent({ content, variant = "STYLED" }: TypeMDXContentProps): any {
 
   return (
     <article
-      className={classnames(
+      className={classNames(
         "mdx-content",
         variant === MDXContent.variant.STYLED ? "mdx-content--styled" : "mdx-content--unstyled",
         theme === "dark" && "mdx-content--dark",
@@ -66,11 +66,6 @@ function MDXContent({ content, variant = "STYLED" }: TypeMDXContentProps): any {
 
         :global(.mdx-content--styled) :global(ol) > :global(li) {
           @apply tw-mb-6;
-        }
-
-        /* Separators */
-        :global(.mdx-content--styled) :global(hr) {
-          border-style: dashed;
         }
 
         /* Images */

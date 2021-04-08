@@ -13,7 +13,7 @@ import {
   getItemLocale,
   getSiteTexts,
 } from "~/utils/internationalization";
-import { MDXComponentsConfig, MDXScope } from "~/utils/mdx";
+import { MDXComponents, MDXScope } from "~/utils/mdx";
 import {
   removeEmojiFromPageTitle,
   generateObjectKeyInLowerCase,
@@ -27,7 +27,7 @@ type TypeSitePageProps = {
 };
 
 function SitePage({ content, page, SiteTexts }: TypeSitePageProps): TypeReactChildren {
-  const mdxContent = hydrate(content, { components: MDXComponentsConfig });
+  const mdxContent = hydrate(content, { components: MDXComponents });
 
   return (
     <Page
@@ -99,7 +99,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   );
 
   const content = await renderToString(file, {
-    components: MDXComponentsConfig,
+    components: MDXComponents,
     scope: MDXScope,
   });
 
