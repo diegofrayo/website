@@ -208,7 +208,7 @@ function useSongSourcesItemController(source) {
           <Image
             src="/static/images/misc/la-cuerda.png"
             alt="La cuerda icon"
-            className="tw-w-8 tw-h-8 tw-mr-2 tw-rounded-lg"
+            className="tw-w-8 tw-h-8 tw-mr-2 tw-rounded-lg dark:tw-p-1 dark:dfr-bg-secondary dark:tw-rounded-md tw-overflow-hidden dark:tw-h-9 dark:tw-w-9"
           />
         );
       },

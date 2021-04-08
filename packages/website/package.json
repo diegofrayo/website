@@ -5,6 +5,7 @@
   "scripts": {
     "start": "next start",
     "postinstall": "node scripts/metadata.js",
+    "no-opt-install": "yarn install --ignore-optional",
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --ext .ts,.tsx --fix",
