@@ -12,7 +12,8 @@ export default {
 
 // --- Stories ---
 
-export const YouTube = Story.bind({});
-YouTube.args = {
-  icon: Icon.icon.YOUTUBE,
+export const Code = Story.bind({});
+Code.args = {
+  icon: Icon.icon.CODE,
+  size: 32,
 };

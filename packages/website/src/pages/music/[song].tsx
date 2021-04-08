@@ -90,7 +90,7 @@ function SongPage({ song, content }: TypeSongPageProps): any {
               disabled={fontSize === 2}
               onClick={() => setFontSize(cv => Number((cv + 0.2).toFixed(1)))}
             >
-              <Icon icon={Icon.icon.ZOOM_IN} size={24} withDarkModeBackground />
+              <Icon icon={Icon.icon.ZOOM_IN} size={24} />
             </Button>
             <Button
               className={classnames(
@@ -100,14 +100,14 @@ function SongPage({ song, content }: TypeSongPageProps): any {
               disabled={fontSize === 0.6}
               onClick={() => setFontSize(cv => Number((cv - 0.2).toFixed(1)))}
             >
-              <Icon icon={Icon.icon.ZOOM_OUT} size={24} withDarkModeBackground />
+              <Icon icon={Icon.icon.ZOOM_OUT} size={24} />
             </Button>
             <Button
               className="tw-text-sm tw-inline-block tw-mr-2 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
               data-clipboard-text={`${WebsiteMetadata.url}${Routes.MUSIC}/${song.id}`}
               onClick={copyToClipboard}
             >
-              <Icon icon={Icon.icon.LINK} size={24} withDarkModeBackground />
+              <Icon icon={Icon.icon.LINK} size={24} />
             </Button>
           </div>
 

@@ -147,14 +147,14 @@ const ICONS = {
     isLibraryIcon: true,
     icon: SunIcon,
     props: {
-      className: "tw-text-yellow-600",
+      color: "tw-text-yellow-600",
     },
   },
   MOON: {
     isLibraryIcon: true,
     icon: MoonIcon,
     props: {
-      className: "tw-text-purple-600",
+      color: "tw-text-purple-600",
     },
   },
   ZOOM_IN: {
@@ -201,6 +201,7 @@ function useController({
   const wrapperProps = {
     className: classnames(
       withDarkModeBackground &&
+        !icon.isLibraryIcon &&
         "dark:tw-p-1 dark:dfr-bg-secondary dark:tw-rounded-md tw-overflow-hidden",
       wrapperClassName,
     ),
@@ -209,7 +210,9 @@ function useController({
   const iconComponentProps = icon.isLibraryIcon
     ? {
         className: classnames(
-          "tw-inline-block tw-text-black",
+          icon.props.color || "tw-text-black",
+          !icon.props.color && !withDarkModeBackground && "dark:tw-text-white",
+          "tw-inline-block",
           size === undefined && "tw-w-4 tw-h-4",
           typeof size === "string" && size,
           icon.props.className,

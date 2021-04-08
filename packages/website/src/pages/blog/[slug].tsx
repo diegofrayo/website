@@ -204,7 +204,6 @@ BlogPostFooterItem.Icon = twcss(Icon)(
   {},
   {
     wrapperClassName: "tw-mr-2",
-    withDarkModeBackground: true,
     size: 16,
   },
 );
