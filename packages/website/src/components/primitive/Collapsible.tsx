@@ -12,7 +12,7 @@ function Collapsible({ children, ...rest }: TypeCollapsible) {
   const { toggleIsCollapsed, title, containerRef } = useController(rest);
 
   return (
-    <details ref={containerRef} data-block>
+    <details ref={containerRef} data-markdown-block>
       <summary className="tw-font-bold" role="button" onClick={toggleIsCollapsed}>
         {title}
       </summary>

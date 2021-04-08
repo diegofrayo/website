@@ -27,12 +27,12 @@ export type TypeGenerateSupportedLocales = Array<{
 }>;
 
 export type TypeSiteTexts = {
-  page: {
+  layout: {
     config: Record<string, any>;
     common: Record<string, any>;
     current_locale: Record<string, any>;
   };
-  layout: {
+  page: {
     config: Record<string, any>;
     common: Record<string, any>;
     current_locale: Record<string, any>;

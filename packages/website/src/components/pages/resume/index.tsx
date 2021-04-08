@@ -14,7 +14,7 @@ type TypeResumeTimelineProps = {
 
 export function ResumeTimeline({ title, timeline }: TypeResumeTimelineProps): any {
   return (
-    <div data-block>
+    <div data-markdown-block>
       <Title is="h2">{title}</Title>
       <div className="tw-border-l-4 tw-border-black dark:dfr-border-color-primary tw-pl-6 tw-ml-3 tw-mt-3">
         {timeline.map((item, index) => {
@@ -55,7 +55,7 @@ function TimelineItem({ company, date, description, url }: Record<string, any>):
 
 export function ResumeFAQ({ children }: Record<string, any>): any {
   return (
-    <div data-block>
+    <div data-markdown-block>
       <Title is="h2">FAQ</Title>
       <div>{children}</div>
     </div>

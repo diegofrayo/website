@@ -141,12 +141,13 @@
         "timeline": [
           {
             "company": "Festa",
-            "url": "https://festa.co",
+            "url": "",
             "date": "abril 2015 - december 2016",
             "description": "I joined this company as a Junior Software Developer to rebuild its MVP using JavaScript as the main language. I worked mainly in the construction of a Single Page Application using Angular.js, Bootstrap Material, and Firebase. Also, I contributed to the development of a back-end application based on Node.js, Sails.js, and MongoDB"
           },
           {
             "company": "Freelancing",
+            "url": "",
             "date": "april 2017 - may 2018",
             "description": "I worked part-time on some web projects as a freelancer"
           },

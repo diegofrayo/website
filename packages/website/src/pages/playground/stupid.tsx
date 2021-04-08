@@ -5,7 +5,7 @@ import { Space, Button } from "~/components/primitive";
 import { Routes } from "~/utils/routing";
 import { useDidMount } from "~/hooks";
 import { TypeSiteTexts } from "~/types";
-import { copyToClipboard } from "~/utils/browser";
+import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 
 const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
@@ -17,8 +17,8 @@ function StupidPage(): any {
   const inputRef: { current: undefined | any } = useRef(undefined);
 
   useDidMount(() => {
-    inputRef.current.focus();
-    inputRef.current.click();
+    if (isSmallScreen()) return;
+    focusElement(inputRef.current);
   });
 
   async function handleEncrypt() {

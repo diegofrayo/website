@@ -143,7 +143,7 @@ type TypeGithubRepoProps = {
 
 export function GithubRepo({ name, url, description }: TypeGithubRepoProps): any {
   return (
-    <div className="root tw-text-right" data-block>
+    <div className="root tw-text-right" data-markdown-block>
       <Link
         className="tw-flex sm:tw-inline-flex tw-p-4 dfr-bg-secondary tw-rounded-md tw-items-center tw-relative tw-pr-8"
         href={url}

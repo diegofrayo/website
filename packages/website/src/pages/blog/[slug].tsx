@@ -158,34 +158,32 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
       >
         <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
           <BlogPostFooterItem>
-            <BlogPostFooterItem.Icon icon={Icon.icon.CALENDAR} />
+            <Icon icon={Icon.icon.CALENDAR} wrapperClassName="tw-mr-2" />
             <span className="tw-mr-2">{SiteTexts.page.current_locale.published_at}</span>
             <strong>{formatDate(publishedAt)}</strong>
           </BlogPostFooterItem>
           <BlogPostFooterItem>
-            <BlogPostFooterItem.Icon icon={Icon.icon.EDIT} />
+            <Icon icon={Icon.icon.EDIT} wrapperClassName="tw-mr-2" />
             <span className="tw-mr-2">{SiteTexts.page.current_locale.updated_at}</span>
             <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
           </BlogPostFooterItem>
         </div>
         <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start  tw-justify-center tw-flex-col sm:tw-items-end tw-mt-2 sm:tw-mt-0">
           <BlogPostFooterItem
-            is="button"
+            is={Button}
             className="clipboard"
-            tw-variant="withHover"
             data-clipboard-text={`${WebsiteMetadata.url}${Routes.BLOG}/${slug}`}
             onClick={copyToClipboard}
           >
-            <BlogPostFooterItem.Icon icon={Icon.icon.LINK} />
+            <Icon icon={Icon.icon.LINK} wrapperClassName="tw-mr-2" />
             <span>{SiteTexts.page.current_locale.copy_url_to_clipboard}</span>
           </BlogPostFooterItem>
           <BlogPostFooterItem
             is={Link}
             href={generateBlogPostRawContentLink()}
             variant={Link.variant.UNSTYLED}
-            tw-variant="withHover"
           >
-            <BlogPostFooterItem.Icon icon={Icon.icon.CODE} />
+            <Icon icon={Icon.icon.CODE} wrapperClassName="tw-mr-2" />
             <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
           </BlogPostFooterItem>
         </div>
@@ -195,18 +193,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
   );
 }
 
-const BlogPostFooterItem = twcss.div({
-  __base: `tw-flex tw-items-center tw-justify-start tw-mb-2 last:tw-mb-0 tw-text-sm tw-text-left`,
-  withHover: "tw-transition-opacity hover:tw-opacity-75",
-});
-
-BlogPostFooterItem.Icon = twcss(Icon)(
-  {},
-  {
-    wrapperClassName: "tw-mr-2",
-    size: 16,
-  },
-);
+const BlogPostFooterItem = twcss.div`tw-flex tw-items-center tw-justify-start tw-mb-2 last:tw-mb-0 tw-text-sm tw-text-left`;
 
 function GoToTopButton() {
   return (

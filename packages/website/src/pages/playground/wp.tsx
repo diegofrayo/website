@@ -5,6 +5,7 @@ import { Icon, Link } from "~/components/primitive";
 import { Routes } from "~/utils/routing";
 import { useDidMount } from "~/hooks";
 import { TypeSiteTexts } from "~/types";
+import { focusElement, isSmallScreen } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 
 const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
@@ -15,8 +16,8 @@ function WPPage(): any {
   const inputRef: { current: undefined | any } = useRef(undefined);
 
   useDidMount(() => {
-    inputRef.current.focus();
-    inputRef.current.click();
+    if (isSmallScreen()) return;
+    focusElement(inputRef.current);
   });
 
   return (

@@ -10,8 +10,11 @@ import {
   Code as CodePrimitive,
 } from "~/components/primitive";
 import { Code, Title, TextWithEmoji, GithubRepo } from "~/components/pages/_shared";
-import { Main, Texts, Measure } from "~/components/pages/blog/html-semantic-tags";
-import { HelloWorldMDX, SpotifyPlaylist } from "~/components/pages/blog/my-favorite-music-and-mdx";
+import { Main, Texts, Measure } from "~/components/pages/blog/components/html-semantic-tags";
+import {
+  HelloWorldMDX,
+  SpotifyPlaylist,
+} from "~/components/pages/blog/components/my-favorite-music-and-mdx";
 import { SongDetails, LyricsAndChords, Solo } from "~/components/pages/music";
 import { ResumeTimeline } from "~/components/pages/resume";
 import { WebsiteMetadata, GithubData } from "~/utils/constants";

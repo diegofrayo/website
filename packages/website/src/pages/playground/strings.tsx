@@ -5,7 +5,7 @@ import { Space, Button } from "~/components/primitive";
 import { Routes } from "~/utils/routing";
 import { useDidMount } from "~/hooks";
 import { TypeSiteTexts } from "~/types";
-import { copyToClipboard } from "~/utils/browser";
+import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 import { convertToCapitalLetter, generateSlug } from "~/utils/strings";
 
@@ -178,9 +178,8 @@ function usePageHook(): TypeUsePageHook {
   });
 
   useDidMount(() => {
-    if (!textareaRef?.current) return;
-    textareaRef.current.focus();
-    textareaRef.current.click();
+    if (!textareaRef?.current || isSmallScreen()) return;
+    focusElement(textareaRef.current);
   });
 
   function handleTextAreaChange(event: React.FormEvent<HTMLTextAreaElement>) {

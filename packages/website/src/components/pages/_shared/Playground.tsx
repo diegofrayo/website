@@ -15,7 +15,7 @@ function Playground({ Component, code, language }: TypePlaygroundProps) {
   const [tab, setTab] = useState(0);
 
   return (
-    <div className="root tw-flex tw-flex-col" data-block>
+    <div className="root tw-flex tw-flex-col" data-markdown-block>
       <div className="content tw-flex-1 tw-p-2 tw-border-t tw-border-l tw-border-r dfr-border-color-primary dark:dfr-border-color-primary">
         {tab === 0 ? <Code language={language} code={code} /> : <Component />}
       </div>
@@ -56,7 +56,7 @@ function Playground({ Component, code, language }: TypePlaygroundProps) {
           overflow: auto;
         }
 
-        .root :global(.Code) {
+        .root :global(.dfr-Code) {
           border: 0;
         }
       `}</style>

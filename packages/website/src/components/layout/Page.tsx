@@ -115,7 +115,10 @@ function Page({ children, config = {} }: TypePageProps): any {
                 jobTitle: WebsiteMetadata.jobTitle,
                 name: WebsiteMetadata.fullName,
                 url: WebsiteMetadata.url,
-                sameAs: [WebsiteMetadata.social.github, WebsiteMetadata.social.linkedin],
+                sameAs: [
+                  WebsiteMetadata.social.github,
+                  // WebsiteMetadata.social.linkedin
+                ],
               }),
             }}
           />

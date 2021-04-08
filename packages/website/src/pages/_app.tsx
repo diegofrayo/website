@@ -25,8 +25,8 @@ function App({ Component, pageProps }: AppProps) {
 
   useDidMount(() => {
     AnalyticsService.initAnalytics();
-    detectEmojisSupport();
     setCurrentLocale(extractLocaleFromUrl());
+    detectEmojisSupport();
 
     Router.events.on("routeChangeComplete", function routeChangeComplete() {
       setScrollPosition(0);

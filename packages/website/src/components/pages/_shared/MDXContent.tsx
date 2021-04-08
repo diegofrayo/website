@@ -31,7 +31,7 @@ function MDXContent({ content, variant = "STYLED" }: TypeMDXContentProps): any {
         :global(.mdx-content--styled) > :global(p),
         :global(.mdx-content--styled) > :global(pre),
         :global(.mdx-content--styled) > :global(ul),
-        :global(.mdx-content--styled) :global(*[data-block]) {
+        :global(.mdx-content--styled) :global(*[data-markdown-block]) {
           @apply tw-mb-6;
         }
 

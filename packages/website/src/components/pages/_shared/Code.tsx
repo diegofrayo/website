@@ -15,8 +15,8 @@ function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
 
   return (
     <div
-      className="Code root tw-rounded-md tw-border dfr-border-color-primary dark:tw-border-0 dark:tw-bg-gray-700"
-      data-block
+      className="dfr-Code root tw-rounded-md tw-border dfr-border-color-primary dark:tw-bg-gray-700"
+      data-markdown-block
     >
       <div className="tw-flex tw-items-center tw-justify-between tw-px-2 tw-py-2">
         <code className="tw-text-sm tw-font-bold">

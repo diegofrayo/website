@@ -20,7 +20,7 @@ type TypeMainLayoutProps = {
   breadcumb?: TypeBreadcumbProps["items"];
 };
 
-function MainLayout({ children, locales, breadcumb, title }: TypeMainLayoutProps): any {
+function MainLayout({ children, locales, breadcumb, title }: TypeMainLayoutProps): JSX.Element {
   return (
     <Main>
       <Header locales={locales} />
@@ -143,14 +143,14 @@ function DarkModeToggle(): any {
 
   return (
     <Button
-      className="tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md tw-bg-black dark:dfr-bg-secondary"
+      className="tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md dfr-bg-secondary dark:dfr-bg-secondary"
       onClick={() => {
         setTheme(isDarkMode ? "light" : "dark");
       }}
     >
       <span
         className={classnames(
-          "tw-rounded-full tw-p-1 tw-w-7 tw-h-7 tw-absolute tw--top-0.5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md",
+          "tw-rounded-full tw-p-1 tw-w-7 tw-h-7 tw-absolute tw--top-0.5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-t tw-border-l dfr-border-color-primary dark:tw-border-0",
           isDarkMode ? "tw--right-0.5" : "tw--left-0.5",
         )}
       >

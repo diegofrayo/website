@@ -7,7 +7,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { Page, MainLayout } from "~/components/layout";
 import { MDXContent } from "~/components/pages/_shared";
 import { DYNAMIC_MAIN_PAGES, Routes } from "~/utils/routing";
-import { TypeLocale, TypeSiteTexts, TypePagesRoutes } from "~/types";
+import { TypeLocale, TypeSiteTexts, TypePagesRoutes, TypeReactChildren } from "~/types";
 import {
   generateSupportedLocales,
   getItemLocale,
@@ -26,7 +26,7 @@ type TypeSitePageProps = {
   SiteTexts: TypeSiteTexts;
 };
 
-function SitePage({ content, page, SiteTexts }: TypeSitePageProps): any {
+function SitePage({ content, page, SiteTexts }: TypeSitePageProps): TypeReactChildren {
   const mdxContent = hydrate(content, { components: MDXComponentsConfig });
 
   return (

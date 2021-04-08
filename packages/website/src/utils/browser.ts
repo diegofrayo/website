@@ -95,6 +95,15 @@ export function detectEmojisSupport(): void {
   }
 }
 
+export function focusElement(element) {
+  element.focus();
+  element.click();
+}
+
+export function isSmallScreen() {
+  return getScreenSize() === "SM";
+}
+
 export function isBrowser(): boolean {
   return typeof window !== "undefined";
 }
@@ -117,4 +126,22 @@ function getAndroidVersion(): number {
 
 function isAndroid(): boolean {
   return navigator.userAgent.toLowerCase().indexOf("android") > -1;
+}
+
+function getScreenSize() {
+  const width = window.innerWidth;
+
+  if (width < 768) {
+    return "SM";
+  }
+
+  if (width < 1024) {
+    return "MD";
+  }
+
+  if (width < 1280) {
+    return "LG";
+  }
+
+  return "XL";
 }
