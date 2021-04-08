@@ -246,6 +246,7 @@ function SocialIcons(): JSX.Element {
       name: "github",
       icon: Icon.icon.GITHUB,
       url: WebsiteMetadata.social.github,
+      withDarkModeBackground: true,
     },
     {
       name: "spotify",
@@ -256,6 +257,7 @@ function SocialIcons(): JSX.Element {
       name: "500px",
       icon: Icon.icon["500_PX"],
       url: WebsiteMetadata.social["500px"],
+      withDarkModeBackground: true,
     },
   ];
 
@@ -272,16 +274,13 @@ type TypeSocialIconProps = {
   icon: string;
   url: string;
   name: string;
+  withDarkModeBackground?: boolean;
 };
 
-function SocialIcon({ icon, url }: TypeSocialIconProps): any {
+function SocialIcon({ icon, url, withDarkModeBackground }: TypeSocialIconProps): any {
   return (
-    <Link
-      href={url}
-      className="tw-inline-block tw-ml-4 dark:tw-ml-2"
-      variant={Link.variant.UNSTYLED}
-    >
-      <Icon icon={icon} size={24} withDarkModeBackground />
+    <Link href={url} className="tw-inline-block tw-ml-4" variant={Link.variant.UNSTYLED}>
+      <Icon icon={icon} size={24} withDarkModeBackground={withDarkModeBackground} />
     </Link>
   );
 }

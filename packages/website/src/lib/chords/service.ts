@@ -1,12 +1,12 @@
 import { createArray } from "~/utils/misc";
 
 class ChordsService {
-  async downloadChordAsImage(containerRef): Promise<void> {
+  async downloadChordAsImage(containerRef, chordName): Promise<void> {
     const domtoimage = await import("dom-to-image");
 
     domtoimage.toPng(containerRef.current, { quality: 1 }).then(dataUrl => {
       const link = document.createElement("a");
-      link.download = `${name}.png`;
+      link.download = `${chordName}.png`;
       link.href = dataUrl;
       link.click();
     });

@@ -51,7 +51,7 @@ class MusicService {
 
   private insertChord(chord: string): string {
     if (this.findChord(chord)) {
-      return `<Button class="chord dfr-text-color-links dark:dfr-text-color-links">${chord}</Button>`;
+      return `<button class="chord dfr-text-color-links dark:dfr-text-color-links tw-mt-3 tw-mb-1">${chord}</button>`;
     }
 
     return chord;

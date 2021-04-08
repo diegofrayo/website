@@ -71,8 +71,10 @@ function ChordsPage(): any {
           </code>
           <Space size={6} />
 
-          <div className="tw-border tw-p-4">
-            <strong>output</strong>
+          <div className="tw-border tw-rounded-md tw-p-3">
+            <Title is="h2" className="tw-mb-4">
+              Output
+            </Title>
             <Chords name={inputs.name} chords={inputs.chords} />
           </div>
         </div>

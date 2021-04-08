@@ -40,7 +40,6 @@ Icon.icon = {
   SPOTIFY: "SPOTIFY",
   WHATSAPP: "WHATSAPP",
   YOUTUBE: "YOUTUBE",
-  YOUTUBE_DARK: "YOUTUBE_DARK",
 
   CALENDAR: "CALENDAR",
   CODE: "CODE",
@@ -104,14 +103,6 @@ const ICONS = {
     props: {
       className: "",
       alt: "YouTube",
-    },
-  },
-  YOUTUBE_DARK: {
-    isLibraryIcon: false,
-    icon: "/static/images/icons/youtube-dark.svg",
-    props: {
-      className: "",
-      alt: "YouTube dark",
     },
   },
 
@@ -202,7 +193,7 @@ function useController({
     className: classNames(
       withDarkModeBackground &&
         !icon.isLibraryIcon &&
-        "dark:tw-p-1 dark:dfr-bg-secondary dark:tw-rounded-md tw-overflow-hidden",
+        "dark:dfr-bg-secondary dark:tw-rounded-full tw-overflow-hidden",
       wrapperClassName,
     ),
   };
@@ -210,13 +201,14 @@ function useController({
   const iconComponentProps = icon.isLibraryIcon
     ? {
         className: classNames(
-          icon.props.color || "tw-text-black",
-          !icon.props.color && !withDarkModeBackground && "dark:tw-text-white",
           "tw-inline-block",
           size === undefined && "tw-w-4 tw-h-4",
           typeof size === "string" && size,
           icon.props.className,
           iconClassName,
+
+          icon.props.color || "tw-text-black",
+          !icon.props.color && "dark:tw-text-white",
         ),
         ...(typeof size === "number" && { style: { width: size, height: size } }),
       }
@@ -229,6 +221,8 @@ function useController({
           typeof size === "string" && size,
           icon.props.className,
           iconClassName,
+
+          withDarkModeBackground && "dark:tw-p-0.5",
         ),
         ...(typeof size === "number" && { style: { width: size, height: size } }),
       };

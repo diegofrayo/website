@@ -46,7 +46,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: Type
   } = ChordsService.groupChordsByFret(chords);
 
   function handleDownloadAsImage(): void {
-    ChordsService.downloadChordAsImage(chordRef);
+    ChordsService.downloadChordAsImage(chordRef, name);
   }
 
   function handleShowInput(): void {

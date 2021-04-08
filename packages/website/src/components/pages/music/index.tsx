@@ -130,7 +130,7 @@ export function LyricsAndChords({ children, chords }: { children: any; chords?: 
       )}
 
       <pre
-        className="tw-p-1 tw-break-normal"
+        className="tw-p-1 tw-break-normal tw-leading-none"
         dangerouslySetInnerHTML={{
           __html: MusicService.parseLyricsAndChords(children),
         }}
@@ -208,25 +208,18 @@ function useSongSourcesItemController(source) {
           <Image
             src="/static/images/misc/la-cuerda.png"
             alt="La cuerda icon"
-            className="tw-w-8 tw-h-8 tw-mr-2 tw-rounded-lg dark:tw-p-1 dark:dfr-bg-secondary dark:tw-rounded-md tw-overflow-hidden dark:tw-h-9 dark:tw-w-9"
+            className="tw-w-8 tw-h-8 tw-mr-2 tw-rounded-full"
           />
         );
       },
     };
   }
 
-  const icon = source.includes("youtube") ? Icon.icon.YOUTUBE_DARK : Icon.icon.LINK;
+  const icon = source.includes("youtube") ? Icon.icon.YOUTUBE : Icon.icon.LINK;
 
   return {
     ImageComponent: function ImageComponent() {
-      return (
-        <Icon
-          icon={icon}
-          size="tw-w-8 tw-h-8 dark:tw-h-7 dark:tw-w-7"
-          wrapperClassName="tw-mr-2"
-          withDarkModeBackground
-        />
-      );
+      return <Icon icon={icon} size="tw-w-8 tw-h-8" wrapperClassName="tw-mr-2" />;
     },
   };
 }

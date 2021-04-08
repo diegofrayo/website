@@ -22,7 +22,7 @@ module.exports = {
     const nextConfig = require("../next.config.js");
 
     baseConfig.resolve = {
-      extensions: [".ts", ".tsx", ".js", ".jsx"],
+      extensions: [".js", ".jsx", ".ts", ".tsx"],
       modules: [SOURCE_CODE_PATHNAME, "node_modules"],
       alias: generateDirectoriesAlias(SOURCE_CODE_PATHNAME),
     };
