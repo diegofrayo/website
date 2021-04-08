@@ -145,17 +145,17 @@ export function GithubRepo({ name, url, description }: TypeGithubRepoProps): any
   return (
     <div className="root tw-text-right" data-block>
       <Link
-        className="dfr-border-color-primary tw-border dark:tw-border-0 tw-flex sm:tw-inline-flex tw-p-4 dfr-bg-secondary tw-rounded-md tw-items-center tw-relative tw-pr-8"
+        className="tw-flex sm:tw-inline-flex tw-p-4 dfr-bg-secondary tw-rounded-md tw-items-center tw-relative tw-pr-8"
         href={url}
         variant={Link.variant.UNSTYLED}
       >
-        <Icon icon={Icon.icon.GITHUB} className="tw-h-8 tw-w-8 tw-mr-3" />
+        <Icon icon={Icon.icon.GITHUB} wrapperClassName="tw-mr-3" size={32} />
         <div className="tw-flex-1 tw-text-left">
           <h3>{name}</h3>
           <p className="tw-text-sm dfr-text-color-primary">{description}</p>
         </div>
 
-        <Icon icon={Icon.icon.LINK} className="tw-absolute tw-top-2 tw-right-2 tw-h-4 tw-w-4" />
+        <Icon icon={Icon.icon.LINK} wrapperClassName="tw-absolute tw-top-2 tw-right-2" />
       </Link>
 
       <style jsx>{`

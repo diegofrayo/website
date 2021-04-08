@@ -73,6 +73,13 @@ function MDXContent({ content, variant = "STYLED" }: TypeMDXContentProps): any {
           border-style: dashed;
         }
 
+        /* Images */
+        :global(.mdx-content--styled) > :global(img),
+        :global(.mdx-content--styled) :global(li) > :global(img) {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
         /* For music pages (Custom line breaks) */
         :global(.mdx-content--unstyled) :global(br[data-separator]) {
           display: none;

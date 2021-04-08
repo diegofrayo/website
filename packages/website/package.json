@@ -15,6 +15,7 @@
     "build:static-files": "node scripts/routes.js && node scripts/metadata.js && yarn format"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.0",
     "@splitbee/web": "^0.2.4",
     "autoprefixer": "^10.0.4",
     "classnames": "^2.2.6",

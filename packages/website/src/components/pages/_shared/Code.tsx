@@ -2,7 +2,7 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
 
-import { Link, Icon, Code as CodePrimitive } from "~/components/primitive";
+import { Link, Icon, Code as CodePrimitive, Button } from "~/components/primitive";
 import twcss from "~/lib/twcss";
 import { TypeCodeProps } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
@@ -56,20 +56,21 @@ function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
           <Link className="tw-block sm:tw-inline-block tw-ml-auto sm:tw-mr-4" href={sourceURL}>
             <Icon
               icon={Icon.icon.GITHUB}
-              className="tw-h-4 tw-w-4 tw-inline-block tw-align-middle tw-mr-1 dark:tw-rounded-full dark:dfr-bg-secondary dark:tw-p-0.5"
+              wrapperClassName="tw-align-middle tw-mr-1"
+              withDarkModeBackground
             />
             <span className="tw-inline-block tw-text-sm dark:dfr-text-color-primary">
               {SiteTexts.page.current_locale.see_source_code}
             </span>
           </Link>
         )}
-        <button
+        <Button
           className="clipboard dfr-text-color-links dark:dfr-text-color-primary tw-block sm:tw-inline-block tw-ml-auto tw-mt-1 sm:tw-mt-0 tw-text-sm tw-font-bold tw-text-right"
           data-clipboard-text={code}
           onClick={copyToClipboard}
         >
           {SiteTexts.page.current_locale.copy_to_clipboard}
-        </button>
+        </Button>
       </div>
 
       <style jsx>{`

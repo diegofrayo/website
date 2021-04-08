@@ -5,7 +5,7 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Blockquote, Icon } from "~/components/primitive";
+import { Blockquote, Icon, Button } from "~/components/primitive";
 import { MDXContent } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
 import { useDidMount, useInternationalization } from "~/hooks";
@@ -79,35 +79,36 @@ function SongPage({ song, content }: TypeSongPageProps): any {
         <Blockquote
           className="tw-max-w-full tw-overflow-x-auto tw-mb-8 tw-relative tw-pt-16"
           style={{ fontSize: `${fontSize}rem` }}
+          variant={Blockquote.variant.UNSTYLED}
         >
           <div className="tw-absolute tw-top-0 tw-left-0 tw-pl-4 tw-flex tw-items-start">
-            <button
+            <Button
               className={classnames(
-                "tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75",
+                "tw-text-sm tw-inline-block tw-mr-2 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75",
                 fontSize === 2 && "tw-opacity-25 dark:tw-opacity-50",
               )}
               disabled={fontSize === 2}
               onClick={() => setFontSize(cv => Number((cv + 0.2).toFixed(1)))}
             >
-              <Icon icon={Icon.icon.ZOOM_IN} className="tw-h-6 tw-w-6" />
-            </button>
-            <button
+              <Icon icon={Icon.icon.ZOOM_IN} size={24} withDarkModeBackground />
+            </Button>
+            <Button
               className={classnames(
-                "tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75",
+                "tw-text-sm tw-inline-block tw-mr-2 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75",
                 fontSize === 0.6 && "tw-opacity-25 dark:tw-opacity-50",
               )}
               disabled={fontSize === 0.6}
               onClick={() => setFontSize(cv => Number((cv - 0.2).toFixed(1)))}
             >
-              <Icon icon={Icon.icon.ZOOM_OUT} className="tw-h-6 tw-w-6" />
-            </button>
-            <button
-              className="tw-inline-block tw-mr-2 dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
+              <Icon icon={Icon.icon.ZOOM_OUT} size={24} withDarkModeBackground />
+            </Button>
+            <Button
+              className="tw-text-sm tw-inline-block tw-mr-2 tw-transition-opacity hover:tw-opacity-50 dark:hover:tw-opacity-75"
               data-clipboard-text={`${WebsiteMetadata.url}${Routes.MUSIC}/${song.id}`}
               onClick={copyToClipboard}
             >
-              <Icon icon={Icon.icon.LINK} />
-            </button>
+              <Icon icon={Icon.icon.LINK} size={24} withDarkModeBackground />
+            </Button>
           </div>
 
           <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />

@@ -10,7 +10,7 @@ export function List({ children, className }: Record<string, any>): any {
         return (
           <li className="tw-flex tw-flex-no-wrap tw-mb-3 last:tw-mb-0">
             <span className="tw-font-bold tw-mr-2 tw-text-black dark:tw-text-white">{"❯"}</span>
-            <div className="tw-flex-1">{child}</div>
+            <div className="tw-flex-1 tw-min-w-0">{child}</div>
           </li>
         );
       })}

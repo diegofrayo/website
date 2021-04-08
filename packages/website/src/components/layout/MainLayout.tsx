@@ -2,7 +2,7 @@ import React, { useState, useRef, Fragment } from "react";
 import { useTheme } from "next-themes";
 import classnames from "classnames";
 
-import { Link, Space, Title, Icon } from "~/components/primitive";
+import { Link, Space, Title, Icon, Button } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { useOnWindowScroll } from "~/hooks";
 import { safeRender } from "~/hocs";
@@ -11,6 +11,7 @@ import { TypeBreadcumbProps, TypeGenerateSupportedLocales } from "~/types";
 import { getScrollPosition } from "~/utils/browser";
 import { WebsiteMetadata } from "~/utils/constants";
 import { generateSlug } from "~/utils/strings";
+import { Routes } from "~/utils/routing";
 
 type TypeMainLayoutProps = {
   title?: string;
@@ -130,10 +131,6 @@ function HeaderContent() {
         :global(.tw-dark) .root :global(h1) {
           @apply tw-text-white;
         }
-
-        :global(.tw-dark) .root :global(.DarkModeToggle) {
-          @apply value:dark:dfr-bg-secondary;
-        }
       `}</style>
     </div>
   );
@@ -145,32 +142,22 @@ function DarkModeToggle(): any {
   const isDarkMode = theme === "dark";
 
   return (
-    <button
-      className={
-        "DarkModeToggle tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md tw-bg-black"
-      }
+    <Button
+      className="tw-flex tw-h-6 tw-w-12 tw-relative tw-rounded-xl tw-shadow-md tw-bg-black dark:dfr-bg-secondary"
       onClick={() => {
         setTheme(isDarkMode ? "light" : "dark");
       }}
     >
       <span
         className={classnames(
-          "tw-rounded-full tw-p-1 tw-w-7 tw-h-7 tw-absolute tw--top-0.5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-border tw-border-black dark:tw-border-white",
+          "tw-rounded-full tw-p-1 tw-w-7 tw-h-7 tw-absolute tw--top-0.5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md",
           isDarkMode ? "tw--right-0.5" : "tw--left-0.5",
         )}
       >
-        <Icon
-          icon={Icon.icon.SUN}
-          variant={Icon.variant.UNSTYLED}
-          className={classnames(isDarkMode && "tw-hidden")}
-        />
-        <Icon
-          icon={Icon.icon.MOON}
-          variant={Icon.variant.UNSTYLED}
-          className={classnames(!isDarkMode && "tw-hidden")}
-        />
+        <Icon icon={Icon.icon.SUN} wrapperClassName={classnames(isDarkMode && "tw-hidden")} />
+        <Icon icon={Icon.icon.MOON} wrapperClassName={classnames(!isDarkMode && "tw-hidden")} />
       </span>
-    </button>
+    </Button>
   );
 }
 
@@ -205,13 +192,13 @@ function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): 
 }
 */
 
-function Breadcumb({ items }: TypeBreadcumbProps): any {
-  const moreThanOneItem = items.length > 1;
+function Breadcumb({ items }: TypeBreadcumbProps): JSX.Element {
+  const hasMoreThanOneItem: boolean = items.length > 1;
 
   return (
     <ul className="root tw-block tw-text-left tw-pb-1">
       {items.map((item, index) => {
-        if (index === items.length - 1 && moreThanOneItem) {
+        if (index === items.length - 1 && hasMoreThanOneItem) {
           return (
             <li key={`Breadcumb-li-${generateSlug(item.text)}`} className="tw-inline-block">
               <span className="tw-text-base tw-italic">{item.text}</span>
@@ -221,10 +208,8 @@ function Breadcumb({ items }: TypeBreadcumbProps): any {
 
         return (
           <li key={`Breadcumb-li-${generateSlug(item.text)}`} className="tw-inline-block tw-mr-2">
-            <Link isNextLink href={item.url || "/"} variant={Link.variant.UNSTYLED}>
-              <span className="tw-underline tw-font-bold tw-text-base tw-text-black dark:tw-text-white">
-                {item.text}
-              </span>
+            <Link href={item.url || Routes.HOME} variant={Link.variant.SECONDARY} isNextLink>
+              <span className="tw-underline tw-font-bold tw-text-base">{item.text}</span>
             </Link>
           </li>
         );
@@ -234,12 +219,7 @@ function Breadcumb({ items }: TypeBreadcumbProps): any {
         {`
           .root :global(a:after) {
             @apply tw-ml-1;
-            color: black;
-            ${moreThanOneItem ? 'content: "‣";' : ""}
-          }
-
-          :global(.tw-dark) .root :global(a:after) {
-            color: white;
+            ${hasMoreThanOneItem ? 'content: "‣";' : ""}
           }
         `}
       </style>
@@ -259,7 +239,7 @@ function SocialIcons(): JSX.Element {
   const SOCIAL_NETWORKS = [
     {
       name: "email",
-      icon: Icon.icon.EMAIL,
+      icon: Icon.icon.GMAIL,
       url: `mailto:${WebsiteMetadata.email}`,
     },
     {
@@ -296,8 +276,12 @@ type TypeSocialIconProps = {
 
 function SocialIcon({ icon, url }: TypeSocialIconProps): any {
   return (
-    <Link href={url} className="tw-inline-block tw-ml-3" variant={Link.variant.UNSTYLED}>
-      <Icon icon={icon} />
+    <Link
+      href={url}
+      className="tw-inline-block tw-ml-4 dark:tw-ml-2"
+      variant={Link.variant.UNSTYLED}
+    >
+      <Icon icon={icon} size={24} withDarkModeBackground />
     </Link>
   );
 }

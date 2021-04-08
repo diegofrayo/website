@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 
-import { Modal, Space, Link, Icon, Title } from "~/components/primitive";
+import {
+  Modal,
+  Space,
+  Link,
+  Icon,
+  Title,
+  Image,
+  List,
+  Blockquote,
+  Button,
+} from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { Chords } from "~/lib/chords";
 import MusicService from "~/services/music";
@@ -77,18 +87,10 @@ export function SongDetails({
       </div>
       <div className="tw-flex tw-items-center tw-mt-1">
         <Link href={song.spotifyUrl} variant={Link.variant.UNSTYLED} className="tw-mr-2">
-          <Icon
-            icon={Icon.icon.SPOTIFY}
-            variant={Icon.variant.UNSTYLED}
-            className="tw-w-5 tw-h-5"
-          />
+          <Icon icon={Icon.icon.SPOTIFY} size={24} />
         </Link>
         <Link href={song.youtubeUrl} variant={Link.variant.UNSTYLED}>
-          <Icon
-            icon={Icon.icon.YOUTUBE}
-            variant={Icon.variant.UNSTYLED}
-            className="tw-w-6 tw-h-6"
-          />
+          <Icon icon={Icon.icon.YOUTUBE} size={24} />
         </Link>
       </div>
     </div>
@@ -116,12 +118,15 @@ export function LyricsAndChords({ children, chords }: { children: any; chords?: 
   return (
     <div>
       {chords && (
-        <pre
-          className="tw-p-1 tw-break-normal tw-mb-8"
-          dangerouslySetInnerHTML={{
-            __html: MusicService.parseLyricsAndChords(["Acordes:", ...chords].join("     ")),
-          }}
-        />
+        <Blockquote className="tw-p-1 tw-mb-8 tw-border" variant={Blockquote.variant.UNSTYLED}>
+          <strong className="tw-block tw-mb-2">Acordes</strong>
+          <pre
+            className="tw-break-all tw-max-w-full tw-whitespace-normal"
+            dangerouslySetInnerHTML={{
+              __html: MusicService.parseLyricsAndChords(chords.join(" | ")),
+            }}
+          />
+        </Blockquote>
       )}
 
       <pre
@@ -142,12 +147,9 @@ export function LyricsAndChords({ children, chords }: { children: any; chords?: 
             />
           )}
           <Space className="tw-mt-6 tw-mb-1" />
-          <button
-            className="tw-text-center tw-text-sm tw-block tw-font-bold tw-w-full tw-transition-opacity hover:tw-opacity-75 tw-border dfr-border-color-primary dark:dfr-border-color-primary"
-            onClick={handleModalClose}
-          >
-            cerrar
-          </button>
+          <Button className="tw-text-center tw-block tw-w-full" onClick={handleModalClose}>
+            <Icon icon={Icon.icon.X} size={32} />
+          </Button>
         </div>
       </Modal>
     </div>
@@ -163,22 +165,27 @@ export function SongSources({ sources }: { sources: TypeSong["sources"] }): any 
         Fuentes
       </Title>
 
-      {sources.map((source, index) => {
-        return <SongSourcesItem key={`SongSourcesItem-${index}`} source={source} />;
-      })}
+      <List>
+        {sources.map((source, index) => {
+          return <SongSourcesItem key={`SongSourcesItem-${index}`} source={source} />;
+        })}
+      </List>
     </section>
   );
 }
 
 function SongSourcesItem({ source }) {
-  const { getIconProps } = useSongSourcesItemController();
-
-  const imageProps = getIconProps(source.source);
+  const { ImageComponent } = useSongSourcesItemController(source.source);
 
   return (
-    <Link key={generateSlug(source.text)} href={source.url} variant={Link.variant.UNSTYLED}>
-      <div className="dfr-bg-secondary dark:dfr-bg-secondary tw-flex tw-items-center tw-p-3 tw-rounded-md tw-mb-2 tw-transition-opacity hover:tw-opacity-75 tw-max-w-lg tw-h-12">
-        <Icon {...imageProps} className={"tw-w-8 tw-h-8 tw-mr-3 tw-rounded-md"} />
+    <div className="tw-max-w-lg">
+      <Link
+        key={generateSlug(source.text)}
+        href={source.url}
+        variant={Link.variant.UNSTYLED}
+        className="tw-flex tw-items-center tw-py-1"
+      >
+        <ImageComponent />
         <div className="tw-flex-1 tw-min-w-0">
           <p
             className="tw-font-bold tw-text-sm tw-text-black dark:tw-text-white tw-truncate"
@@ -188,38 +195,38 @@ function SongSourcesItem({ source }) {
           </p>
           <p className="tw-text-xs tw-italic">{source.source}</p>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
 
-function useSongSourcesItemController() {
-  function getIconProps(source) {
-    let props = {
-      icon: Icon.icon.LINK,
-      alt: "",
-      size: 0,
-      variant: Icon.variant.DEFAULT,
+function useSongSourcesItemController(source) {
+  if (source.includes("lacuerda")) {
+    return {
+      ImageComponent: function ImageComponent() {
+        return (
+          <Image
+            src="/static/images/misc/la-cuerda.png"
+            alt="La cuerda icon"
+            className="tw-w-8 tw-h-8 tw-mr-2 tw-rounded-lg"
+          />
+        );
+      },
     };
-
-    if (source.includes("lacuerda")) {
-      props = {
-        icon: "/static/images/icons/la-cuerda.png",
-        alt: "La cuerda icon",
-        size: 0,
-        variant: Icon.variant.DEFAULT,
-      };
-    } else if (source.includes("youtube")) {
-      props = {
-        icon: Icon.icon.YOUTUBE_DARK,
-        alt: "",
-        size: 22,
-        variant: Icon.variant.UNSTYLED,
-      };
-    }
-
-    return props;
   }
 
-  return { getIconProps };
+  const icon = source.includes("youtube") ? Icon.icon.YOUTUBE_DARK : Icon.icon.LINK;
+
+  return {
+    ImageComponent: function ImageComponent() {
+      return (
+        <Icon
+          icon={icon}
+          size="tw-w-8 tw-h-8 dark:tw-h-7 dark:tw-w-7"
+          wrapperClassName="tw-mr-2"
+          withDarkModeBackground
+        />
+      );
+    },
+  };
 }

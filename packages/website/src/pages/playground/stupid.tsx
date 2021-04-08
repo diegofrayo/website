@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Space } from "~/components/primitive";
+import { Space, Button } from "~/components/primitive";
 import { Routes } from "~/utils/routing";
 import { useDidMount } from "~/hooks";
 import { TypeSiteTexts } from "~/types";
@@ -80,20 +80,18 @@ function StupidPage(): any {
             />
           </label>
           <div className="tw-flex tw-flex-wrap tw-justify-between">
-            <button
-              type="button"
+            <Button
               className="tw-inline-block tw-text-sm tw-mx-1 tw-font-bold"
               onClick={handleEncrypt}
             >
               encrypt
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
               className="tw-inline-block tw-text-sm tw-mx-1 tw-font-bold"
               onClick={handleDecrypt}
             >
               decrypt
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -104,14 +102,13 @@ function StupidPage(): any {
           <output className="output tw-my-1 tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full">
             {output}
           </output>
-          <button
-            type="button"
+          <Button
             className="tw-block tw-ml-auto tw-text-sm"
             data-clipboard-text={output}
             onClick={copyToClipboard}
           >
             copy
-          </button>
+          </Button>
         </div>
 
         <style jsx>

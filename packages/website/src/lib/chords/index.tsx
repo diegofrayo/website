@@ -1,7 +1,7 @@
 import React, { Fragment, useRef, useState } from "react";
 import classnames from "classnames";
 
-import { Space } from "~/components/primitive";
+import { Space, Button } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { copyToClipboard } from "~/utils/browser";
 import { createArray } from "~/utils/misc";
@@ -93,17 +93,17 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: Type
       {showOptions && (
         <Fragment>
           <div className="tw-pt-2">
-            <button
+            <Button
               className="tw-text-sm tw-font-bold tw-p-1 tw-transition-opacity hover:tw-opacity-75"
               onClick={handleDownloadAsImage}
             >
               <Emoji className="tw-mr-1">⬇️</Emoji>
               <span>download as image</span>
-            </button>
+            </Button>
             <Space size={1} dir="v" />
             {chordsToString && (
               <Fragment>
-                <button
+                <Button
                   className="tw-text-sm tw-font-bold tw-py-1 tw-px-2 tw-transition-opacity hover:tw-opacity-75"
                   onClick={handleShowInput}
                 >
@@ -116,17 +116,17 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: Type
                     ‣
                   </span>
                   <span>{showInput ? "hide" : "show"} input</span>
-                </button>
+                </Button>
                 <Space size={1} dir="v" />
               </Fragment>
             )}
-            <button
+            <Button
               className="tw-text-sm tw-font-bold tw-p-1 tw-transition-opacity hover:tw-opacity-75"
               data-clipboard-text={chordsToString || "Empty chord"}
               onClick={copyToClipboard}
             >
               <Emoji>📋</Emoji> copy input to clipboard
-            </button>
+            </Button>
           </div>
           {showInput && (
             <div className="tw-text-sm tw-mt-4">

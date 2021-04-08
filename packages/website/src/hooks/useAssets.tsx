@@ -4,23 +4,6 @@ import Router from "next/router";
 import useDidMount from "./useDidMount";
 
 type TypeDefaultValue = {
-  HeaderAssets: {
-    SUN: string;
-    MOON: string;
-  };
-  FooterAssets: {
-    "500_PX": string;
-    EMAIL: string;
-    GITHUB: string;
-    SPOTIFY: string;
-  };
-  BlogAssets: {
-    CALENDAR: string;
-    EDIT: string;
-    LINK: string;
-    SOURCE_CODE: string;
-    GITHUB: string;
-  };
   VR_Assets: {
     SNIPPETS: string;
     INDEX: string;
@@ -28,23 +11,6 @@ type TypeDefaultValue = {
 };
 
 const DEFAULT_VALUE: TypeDefaultValue = {
-  HeaderAssets: {
-    SUN: "",
-    MOON: "",
-  },
-  FooterAssets: {
-    "500_PX": "",
-    EMAIL: "",
-    GITHUB: "",
-    SPOTIFY: "",
-  },
-  BlogAssets: {
-    CALENDAR: "",
-    EDIT: "",
-    LINK: "",
-    SOURCE_CODE: "",
-    GITHUB: "",
-  },
   VR_Assets: {
     SNIPPETS: "",
     INDEX: "",
@@ -73,9 +39,6 @@ export function AssetsProvider({ children }: any): any {
       const data = JSON.parse(assetsElement.innerHTML);
 
       setAssets({
-        HeaderAssets: data.header || {},
-        FooterAssets: data.footer || {},
-        BlogAssets: data.blog || {},
         VR_Assets: data.vr || {},
       });
     } catch (error) {

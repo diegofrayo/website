@@ -56,7 +56,7 @@ function MariaPage(): any {
                     );
                   }}
                 >
-                  <Icon icon={Icon.icon.WHATSAPP} className="tw-mx-auto tw-mb-2" />
+                  <Icon icon={Icon.icon.WHATSAPP} wrapperClassName="tw-mx-auto tw-mb-2" />
                   <p className="tw-font-bold tw-text-lg tw-text-center tw-mt-2">
                     Enviar mensaje a un amigo
                   </p>
@@ -67,7 +67,7 @@ function MariaPage(): any {
                     setScrollPosition(0);
                   }}
                 >
-                  <Icon icon={Icon.icon.YOUTUBE} className="tw-mx-auto tw-mb-2" />
+                  <Icon icon={Icon.icon.YOUTUBE} wrapperClassName="tw-mx-auto tw-mb-2" />
                   <p className="tw-font-bold tw-text-lg tw-text-center tw-mt-2">
                     Escuchar música favorita en YouTube
                   </p>

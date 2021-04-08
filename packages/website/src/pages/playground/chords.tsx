@@ -4,7 +4,7 @@ import { Page, MainLayout } from "~/components/layout";
 import { Space } from "~/components/primitive";
 import { Routes } from "~/utils/routing";
 import { Chords } from "~/lib/chords";
-import { TypePagesRoutes, TypeSiteTexts } from "~/types";
+import { TypeSiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
 
 const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });

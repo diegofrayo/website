@@ -4,7 +4,7 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Blockquote, Icon, Link, Space } from "~/components/primitive";
+import { Blockquote, Icon, Link, Space, Button } from "~/components/primitive";
 import { MDXContent } from "~/components/pages/_shared";
 import { useInternationalization, useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
@@ -152,10 +152,13 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
   return (
     <Fragment>
       <Space size={8} />
-      <Blockquote className="tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-my-4 tw-text-black dark:tw-text-white">
+      <Blockquote
+        className="tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-my-4 tw-text-black dark:tw-text-white"
+        variant={Blockquote.variant.UNSTYLED}
+      >
         <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
           <BlogPostFooterItem>
-            <BlogPostFooterItem.Icon icon={Icon.icon.CALENDAR} tw-variant="withoutDarkMode" />
+            <BlogPostFooterItem.Icon icon={Icon.icon.CALENDAR} />
             <span className="tw-mr-2">{SiteTexts.page.current_locale.published_at}</span>
             <strong>{formatDate(publishedAt)}</strong>
           </BlogPostFooterItem>
@@ -165,7 +168,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
             <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
           </BlogPostFooterItem>
         </div>
-        <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start sm:tw-items-end tw-justify-center tw-flex-col">
+        <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start  tw-justify-center tw-flex-col sm:tw-items-end tw-mt-2 sm:tw-mt-0">
           <BlogPostFooterItem
             is="button"
             className="clipboard"
@@ -182,7 +185,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
             variant={Link.variant.UNSTYLED}
             tw-variant="withHover"
           >
-            <BlogPostFooterItem.Icon icon={Icon.icon.SOURCE_CODE} />
+            <BlogPostFooterItem.Icon icon={Icon.icon.CODE} />
             <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
           </BlogPostFooterItem>
         </div>
@@ -192,38 +195,30 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPos
   );
 }
 
+const BlogPostFooterItem = twcss.div({
+  __base: `tw-flex tw-items-center tw-justify-start tw-mb-2 last:tw-mb-0 tw-text-sm tw-text-left`,
+  withHover: "tw-transition-opacity hover:tw-opacity-75",
+});
+
+BlogPostFooterItem.Icon = twcss(Icon)(
+  {},
+  {
+    wrapperClassName: "tw-mr-2",
+    withDarkModeBackground: true,
+    size: 16,
+  },
+);
+
 function GoToTopButton() {
   return (
-    <button
+    <Button
       className="root tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-transition-opacity hover:tw-opacity-75"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.75)" }}
       onClick={() => {
         setScrollPosition(0);
       }}
     >
       <span className="tw-relative tw--top-0.5 tw-text-white tw-font-bold">↑</span>
-
-      <style jsx>{`
-        .root {
-          background-color: rgba(0, 0, 0, 0.75);
-        }
-      `}</style>
-    </button>
+    </Button>
   );
 }
-
-const BlogPostFooterItem = twcss.div({
-  __base: `tw-flex tw-items-center tw-justify-start tw-my-1 tw-text-sm tw-text-left`,
-  withHover: "tw-transition-opacity hover:tw-opacity-75",
-});
-
-BlogPostFooterItem.Icon = twcss(Icon)(
-  {
-    __base: "tw-inline-block tw-h-4 tw-w-4 tw-mr-2",
-    withDarkMode: "dark:tw-rounded-md dark:dfr-bg-secondary dark:tw-p-1",
-    withoutDarkMode: "",
-  },
-  {
-    "tw-variant": "withDarkMode",
-    variant: Icon.variant.UNSTYLED,
-  },
-);

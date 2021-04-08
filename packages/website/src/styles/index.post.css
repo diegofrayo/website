@@ -43,7 +43,8 @@ body.no-emojis .emoji {
   display: none;
 }
 
-button {
+button,
+summary {
   outline: transparent !important;
 }
 

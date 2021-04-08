@@ -4,7 +4,7 @@ import { Page, MainLayout } from "~/components/layout";
 import { Link, List } from "~/components/primitive";
 import { Routes } from "~/utils/routing";
 import { withTranslations } from "~/hocs";
-import { TypePagesRoutes, TypeSiteTexts } from "~/types";
+import { TypeSiteTexts } from "~/types";
 import { isUserLoggedIn } from "~/utils/misc";
 
 type TypePlaygroundPageProps = {
@@ -27,17 +27,16 @@ function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
         title={SiteTexts.page.current_locale.title}
       >
         <List>
-          {["chords", "strings", "stupid", "virtual-reality", "styles"]
+          {["chords", "strings", "stupid", "virtual-reality", "styles", "wp"]
             .sort()
             .concat(isUserLoggedIn() ? ["lab"] : [])
             .map(name => {
               return (
                 <Link
                   key={`PlaygroundPage-${name}`}
-                  isNextLink
                   href={`${Routes.PLAYGROUND}/${name}`}
-                  className="tw-text-black dark:tw-text-white"
                   variant={Link.variant.UNSTYLED}
+                  isNextLink
                 >
                   {name}
                 </Link>

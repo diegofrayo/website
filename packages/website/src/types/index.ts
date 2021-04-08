@@ -4,6 +4,8 @@ export type TypePrimitive = string | number | boolean;
 
 export type TypeObjectWithPrimitives = Record<string, TypePrimitive>;
 
+export type TypeReactChildren = JSX.Element | JSX.Element[];
+
 // --- Internationalization ---
 
 export type TypeLocale = "es" | "en";

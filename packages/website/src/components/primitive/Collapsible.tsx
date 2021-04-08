@@ -1,25 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 
-function Collapsible({
-  children,
-  title: titleProp,
-  htmlAttrs,
-}: {
-  children: any;
+import { TypeReactChildren } from "~/types";
+
+type TypeCollapsible = {
+  children: TypeReactChildren;
   title?: string;
   htmlAttrs?: { openByDefault?: boolean };
-}) {
-  const { toggleIsCollapsed, title, containerRef } = useController({
-    htmlAttrs,
-    title: titleProp,
-  });
+};
+
+function Collapsible({ children, ...rest }: TypeCollapsible) {
+  const { toggleIsCollapsed, title, containerRef } = useController(rest);
 
   return (
     <details ref={containerRef} data-block>
       <summary className="tw-font-bold" role="button" onClick={toggleIsCollapsed}>
         {title}
       </summary>
-      <div className="tw-pl-5">{children}</div>
+      <div className="tw-pl-5 tw-mt-2">{children}</div>
     </details>
   );
 }
@@ -28,7 +25,7 @@ export default Collapsible;
 
 // --- Controller ---
 
-function useController({ htmlAttrs, title }) {
+function useController({ htmlAttrs, title }: Omit<TypeCollapsible, "children">) {
   const [isCollapsed, setIsCollapsed] = useState(htmlAttrs?.openByDefault === true ? true : false);
   const containerRef: any = useRef(undefined);
 

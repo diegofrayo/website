@@ -73,7 +73,7 @@ function MainMenu({ SiteTexts }) {
             key={`MainMenu-item-${index}`}
             href={item.url}
             className="tw-block sm:tw-inline-block"
-            variant={Link.variant.SECONDARY}
+            variant={Link.variant.UNSTYLED}
             isNextLink
           >
             <Emoji>{item.emoji}</Emoji>

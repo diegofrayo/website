@@ -4,6 +4,14 @@ import Link from "./Link";
 
 const Story = props => <Link {...props} />;
 
+export default {
+  title: "Link",
+  component: Link,
+  argTypes: {},
+};
+
+// --- Stories ---
+
 export const Default = Story.bind({});
 Default.args = {
   children: "Default link",
@@ -47,10 +55,4 @@ PageElementLink.args = {
   children: "PageElementLink",
   href: "#",
   external: true,
-};
-
-export default {
-  title: "Link",
-  component: Link,
-  argTypes: {},
 };

@@ -30,7 +30,7 @@ module.exports = {
     borderRadius: ["responsive", "last", "hover", "dark"],
     borderWidth: ["responsive", "last", "hover", "dark"],
     inset: ["responsive", "hover"],
-    margin: ["responsive", "last"],
+    margin: ["responsive", "last", "dark"],
     opacity: ["responsive", "hover", "dark"],
     padding: ["responsive", "last", "hover", "dark"],
     width: ["responsive", "last", "hover", "dark"],

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { List, Space } from "~/components/primitive";
+import { List, Space, Button } from "~/components/primitive";
 
 function Lab() {
   const [page, setPage] = useState("home");
@@ -11,11 +11,11 @@ function Lab() {
       <nav className="tw-bg-yellow-900 tw-p-3">
         <div className="tw-flex tw-justify-between tw-flex-no-wrap">
           <h1 className="tw-text-3xl tw-text-yellow-100 tw-mr-4">Logo</h1>
-          <button className="tw-inline-block md:tw-hidden" onClick={() => setShowMenu(c => !c)}>
+          <Button className="tw-inline-block md:tw-hidden" onClick={() => setShowMenu(c => !c)}>
             <span className="tw-block tw-my-1 tw-w-6 tw-bg-white tw-h-0.5" />
             <span className="tw-block tw-my-1 tw-w-6 tw-bg-white tw-h-0.5" />
             <span className="tw-block tw-my-1 tw-w-6 tw-bg-white tw-h-0.5" />
-          </button>
+          </Button>
         </div>
         {showMenu && (
           <ul className="tw-block md:tw-flex tw-mt-4 tw-justify-between">
@@ -60,12 +60,12 @@ function Lab() {
       </nav>
       <div>
         <div className="tw-text-right tw-px-2 tw-my-4">
-          <button onClick={() => setPage("my-profile")}>
+          <Button onClick={() => setPage("my-profile")}>
             <span className="tw-rounded-full tw-inline-flex tw-items-center tw-justify-center tw-bg-gray-700 tw-h-6 tw-w-6 tw-text-white tw-mr-2">
               A
             </span>
             <span>Mi perfil</span>
-          </button>
+          </Button>
         </div>
         {page === "home" ? (
           <Home />

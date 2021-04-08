@@ -1,7 +1,7 @@
 import React, { useState, useRef, RefObject } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Space } from "~/components/primitive";
+import { Space, Button } from "~/components/primitive";
 import { Routes } from "~/utils/routing";
 import { useDidMount } from "~/hooks";
 import { TypeSiteTexts } from "~/types";
@@ -49,14 +49,13 @@ function StringsPage(): JSX.Element {
               }
             }}
           />
-          <button
-            type="button"
+          <Button
             className="tw-block tw-ml-auto tw-text-sm"
             data-clipboard-text={texts.input}
             onClick={handleCopyText}
           >
             copy
-          </button>
+          </Button>
         </div>
 
         <Space size={10} className="tw-border-t dfr-border-color-primary" />
@@ -66,14 +65,13 @@ function StringsPage(): JSX.Element {
           <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
             {texts.slug}
           </output>
-          <button
-            type="button"
+          <Button
             className="tw-block tw-ml-auto tw-text-sm"
             data-clipboard-text={texts.slug}
             onClick={handleCopyText}
           >
             copy
-          </button>
+          </Button>
         </div>
 
         <div className="tw-my-4">
@@ -81,14 +79,13 @@ function StringsPage(): JSX.Element {
           <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
             {texts.upper}
           </output>
-          <button
-            type="button"
+          <Button
             className="tw-block tw-ml-auto tw-text-sm"
             data-clipboard-text={texts.upper}
             onClick={handleCopyText}
           >
             copy
-          </button>
+          </Button>
         </div>
 
         <div className="tw-my-4">
@@ -96,14 +93,13 @@ function StringsPage(): JSX.Element {
           <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
             {texts.lower}
           </output>
-          <button
-            type="button"
+          <Button
             className="tw-block tw-ml-auto tw-text-sm"
             data-clipboard-text={texts.lower}
             onClick={handleCopyText}
           >
             copy
-          </button>
+          </Button>
         </div>
 
         <div className="tw-my-4">
@@ -111,14 +107,13 @@ function StringsPage(): JSX.Element {
           <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
             {texts.convertToCapitalLetter}
           </output>
-          <button
-            type="button"
+          <Button
             className="tw-block tw-ml-auto tw-text-sm"
             data-clipboard-text={texts.convertToCapitalLetter}
             onClick={handleCopyText}
           >
             copy
-          </button>
+          </Button>
         </div>
 
         <div className="tw-my-4">
@@ -126,14 +121,13 @@ function StringsPage(): JSX.Element {
           <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
             {texts.convertToCapitalLetterOnlyFirst}
           </output>
-          <button
-            type="button"
+          <Button
             className="tw-block tw-ml-auto tw-text-sm"
             data-clipboard-text={texts.convertToCapitalLetterOnlyFirst}
             onClick={handleCopyText}
           >
             copy
-          </button>
+          </Button>
         </div>
       </MainLayout>
 
