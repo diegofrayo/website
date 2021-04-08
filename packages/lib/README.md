@@ -1,0 +1,3 @@
+# monorepo/lib
+
+Work in progress...

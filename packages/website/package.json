@@ -13,7 +13,7 @@
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
     "build:seo-files": "node scripts/rss.js && node scripts/sitemap.js && yarn format",
-    "build:static-files": "node scripts/routes.js && node scripts/metadata.js && yarn format"
+    "build:static-files": "node scripts/metadata.js && yarn format"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.0",

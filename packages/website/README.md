@@ -1,6 +1,6 @@
 # monorepo/website
 
-My personal website
+My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 
 ## Tech stack
 
@@ -8,23 +8,24 @@ My personal website
 - React
 - Next.js
 - Tailwind CSS
-- MDX
+- MDX ([xdm](https://www.npmjs.com/package/xdm))
 
 ## Setup
 
 1. `git clone https://github.com/diegofrayo/monorepo.git`
 
-2. `cd monorepo/packages/website`
+1. `cd monorepo/packages/website`
 
-3. `yarn install`
+1. `yarn install`
 
-4. Create a `.env` file
-  ```
-  NEXT_PUBLIC_WEBSITE_URL=http://localhost:3000
-  ```
+1. Create a `.env` file
 
-5. `yarn dev`
+   ```
+   NEXT_PUBLIC_WEBSITE_URL=http://localhost:3000
+   ```
+
+1. `yarn dev`
 
 ---
 
-Hosted on [Vercel](https://vercel.com)
+> Hosted on [Vercel](https://vercel.com)
