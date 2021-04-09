@@ -1,6 +1,6 @@
-import { TypePagesRoutes } from "~/types";
+import { T_PagesRoutes } from "~/types";
 
-export const Routes: Record<string, TypePagesRoutes> = {
+export const Routes: Record<string, T_PagesRoutes> = {
   HOME: "/",
   ABOUT_ME: "/about-me",
   RESUME: "/resume",

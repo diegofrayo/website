@@ -2,11 +2,11 @@ import React from "react";
 import NextLink from "next/link";
 
 import twcss from "~/lib/twcss";
-import { TypeLocale } from "~/types";
+import { T_Locale } from "~/types";
 
 type NextLink = any;
 
-type TypeLinkProps = {
+type T_LinkProps = {
   children: any;
   href: string;
   className?: string;
@@ -15,7 +15,7 @@ type TypeLinkProps = {
   is?: string | NextLink;
   external?: boolean;
   isNextLink?: boolean;
-  locale?: TypeLocale;
+  locale?: T_Locale;
   disabled?: boolean;
 };
 
@@ -28,7 +28,7 @@ function Link({
   isNextLink = false,
   variant = VARIANTS.DEFAULT,
   ...rest
-}: TypeLinkProps): JSX.Element | null {
+}: T_LinkProps): JSX.Element | null {
   const { getExternalAttrs } = useController();
 
   if (!href || !children) {
@@ -60,7 +60,7 @@ function Link({
   );
 }
 
-const VARIANTS: Record<string, TypeLinkProps["variant"]> = {
+const VARIANTS: Record<string, T_LinkProps["variant"]> = {
   DEFAULT: "DEFAULT",
   SECONDARY: "SECONDARY",
   UNSTYLED: "UNSTYLED",

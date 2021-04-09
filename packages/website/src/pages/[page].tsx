@@ -7,7 +7,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { Page, MainLayout } from "~/components/layout";
 import { MDXContent } from "~/components/pages/_shared";
 import { DYNAMIC_MAIN_PAGES, Routes } from "~/utils/routing";
-import { TypeLocale, TypeSiteTexts, TypePagesRoutes, TypeReactChildren } from "~/types";
+import { T_Locale, T_SiteTexts, T_PagesRoutes, T_ReactChildrenProp } from "~/types";
 import {
   generateSupportedLocales,
   getItemLocale,
@@ -20,13 +20,13 @@ import {
   generateObjectKeyInUpperCase,
 } from "~/utils/strings";
 
-type TypeSitePageProps = {
+type T_SitePageProps = {
   content: any;
-  page: TypePagesRoutes;
-  SiteTexts: TypeSiteTexts;
+  page: T_PagesRoutes;
+  SiteTexts: T_SiteTexts;
 };
 
-function SitePage({ content, page, SiteTexts }: TypeSitePageProps): TypeReactChildren {
+function SitePage({ content, page, SiteTexts }: T_SitePageProps): T_ReactChildrenProp {
   const mdxContent = hydrate(content, { components: MDXComponents });
 
   return (
@@ -83,17 +83,17 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
-  const SiteTexts: TypeSiteTexts = getSiteTexts({
+  const SiteTexts: T_SiteTexts = getSiteTexts({
     page: Routes[generateObjectKeyInUpperCase(params?.page as string)],
     layout: true,
-    locale: locale as TypeLocale,
+    locale: locale as T_Locale,
   });
 
   const file = fs.readFileSync(
     `${process.cwd()}/src/data/pages/${getItemLocale(
       SiteTexts.page.config.locales,
       SiteTexts.page.config.default_locale,
-      locale as TypeLocale,
+      locale as T_Locale,
     )}/${params?.page}.mdx`,
     "utf8",
   );

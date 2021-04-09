@@ -3,10 +3,10 @@ import React from "react";
 import { Page, MainLayout } from "~/components/layout";
 import Lab from "~/components/pages/playground/lab";
 import { Routes } from "~/utils/routing";
-import { TypeSiteTexts } from "~/types";
+import { T_SiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
 
-const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
+const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "lab";
 
 function LabPage(): any {

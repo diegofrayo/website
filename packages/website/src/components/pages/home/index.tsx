@@ -4,11 +4,11 @@ import { Page, MainLayout } from "~/components/layout";
 import { Link, List } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { withTranslations } from "~/hocs";
-import { TypePagesRoutes, TypeReactChildren, TypeSiteTexts } from "~/types";
+import { T_PagesRoutes, T_ReactChildrenProp, T_SiteTexts } from "~/types";
 import { generateSupportedLocales } from "~/utils/internationalization";
 import { Routes } from "~/utils/routing";
 
-function HomePage({ SiteTexts }: { SiteTexts: TypeSiteTexts }): TypeReactChildren {
+function HomePage({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactChildrenProp {
   return (
     <Page
       config={{
@@ -28,7 +28,7 @@ export default withTranslations(HomePage, { page: Routes.HOME });
 // --- Components ---
 
 function Content({ SiteTexts }) {
-  const ITEMS: { emoji: string; label: string; url: TypePagesRoutes }[] = [
+  const ITEMS: { emoji: string; label: string; url: T_PagesRoutes }[] = [
     {
       emoji: "✍️",
       label: SiteTexts.page.common.menu_item_blog,
@@ -65,15 +65,12 @@ function Content({ SiteTexts }) {
     <List>
       {ITEMS.map((item, index) => {
         return (
-          <Link
-            key={`Content-item-${index}`}
-            href={item.url}
-            variant={Link.variant.UNSTYLED}
-            isNextLink
-          >
-            <Emoji className="tw-mr-2">{item.emoji}</Emoji>
-            <span>{item.label}</span>
-          </Link>
+          <List.Item key={`Content-item-${index}`}>
+            <Link href={item.url} variant={Link.variant.UNSTYLED} isNextLink>
+              <Emoji className="tw-mr-2">{item.emoji}</Emoji>
+              <span>{item.label}</span>
+            </Link>
+          </List.Item>
         );
       })}
     </List>

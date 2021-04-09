@@ -4,12 +4,12 @@ import { Page, MainLayout } from "~/components/layout";
 import { Space, Button } from "~/components/primitive";
 import { Routes } from "~/utils/routing";
 import { useDidMount } from "~/hooks";
-import { TypeSiteTexts } from "~/types";
+import { T_SiteTexts } from "~/types";
 import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 import { convertToCapitalLetter, generateSlug } from "~/utils/strings";
 
-const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
+const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "strings";
 
 function StringsPage(): JSX.Element {
@@ -150,9 +150,9 @@ export default StringsPage;
 
 // --- Hooks ---
 
-type TypeOnClickEvent = React.MouseEvent<HTMLButtonElement>;
+type T_OnClickEvent = React.MouseEvent<HTMLButtonElement>;
 
-type TypeUsePageHook = {
+type T_UsePageHook = {
   texts: {
     input: string;
     upper: string;
@@ -162,13 +162,13 @@ type TypeUsePageHook = {
     slug: string;
   };
   handleTextAreaChange: React.ChangeEventHandler<HTMLTextAreaElement>;
-  handleCopyText: (e: TypeOnClickEvent) => void;
+  handleCopyText: (e: T_OnClickEvent) => void;
   textareaRef: RefObject<HTMLTextAreaElement>;
 };
 
-function usePageHook(): TypeUsePageHook {
+function usePageHook(): T_UsePageHook {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const [texts, setTexts] = useState<TypeUsePageHook["texts"]>({
+  const [texts, setTexts] = useState<T_UsePageHook["texts"]>({
     input: "",
     upper: "",
     lower: "",
@@ -195,7 +195,7 @@ function usePageHook(): TypeUsePageHook {
     });
   }
 
-  function handleCopyText(e: TypeOnClickEvent): void {
+  function handleCopyText(e: T_OnClickEvent): void {
     copyToClipboard(e);
   }
 

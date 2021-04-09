@@ -1,7 +1,7 @@
 import Data from "~/data/assets.json";
-import { TypeGetAssetsParam } from "~/types";
+import { T_GetAssetsParam } from "~/types";
 
-export function getAssetsURL(assets: TypeGetAssetsParam): string {
+export function getAssetsURL(assets: T_GetAssetsParam): string {
   return JSON.stringify(
     assets.reduce((acum: Record<string, Record<string, string>>, assetKey: string) => {
       acum[assetKey] = Data[assetKey];

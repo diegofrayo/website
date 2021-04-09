@@ -4,12 +4,12 @@ import { useTheme } from "next-themes";
 
 import { Page, MainLayout } from "~/components/layout";
 import { safeRender } from "~/hocs";
-import { TypeSiteTexts } from "~/types";
+import { T_SiteTexts } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 import { Routes } from "~/utils/routing";
 
-const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
+const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "styles";
 
 function StylesPage(): any {

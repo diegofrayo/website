@@ -1,26 +1,33 @@
 import React from "react";
 import classNames from "classnames";
 
-import { TypeReactChildren } from "~/types";
+import { T_ReactChildrenProp, T_ReactFCReturn, T_ReactStylesProp } from "~/types";
 
-type TypeBlockquote = {
-  children: TypeReactChildren;
+enum E_Variants {
+  DEFAULT = "DEFAULT",
+  UNSTYLED = "UNSTYLED",
+}
+
+type T_Blockquote = {
+  children: T_ReactChildrenProp;
+  variant?: E_Variants;
+
   className?: string;
-  variant?: "DEFAULT" | "UNSTYLED";
-  style?: any;
+  style?: T_ReactStylesProp;
 };
 
-export function Blockquote({
+function Blockquote({
   children,
-  className,
-  variant = "DEFAULT",
+  className = "",
+  variant = E_Variants.DEFAULT,
   ...rest
-}: TypeBlockquote): JSX.Element {
+}: T_Blockquote): T_ReactFCReturn {
   return (
     <blockquote
       className={classNames(
         "dfr-border-color-primary tw-border-l-4 tw-pl-4",
-        variant === "DEFAULT" && "dfr-text-color-secondary tw-italic dark:tw-text-gray-400",
+        variant === E_Variants.DEFAULT &&
+          "dfr-text-color-secondary dark:tw-text-gray-400 tw-italic",
         className,
       )}
       {...rest}
@@ -30,11 +37,6 @@ export function Blockquote({
   );
 }
 
-const VARIANTS: Record<string, TypeBlockquote["variant"]> = {
-  DEFAULT: "DEFAULT",
-  UNSTYLED: "UNSTYLED",
-};
-
-Blockquote.variant = VARIANTS;
+Blockquote.variant = E_Variants;
 
 export default Blockquote;

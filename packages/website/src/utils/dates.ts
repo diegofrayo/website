@@ -2,14 +2,14 @@ import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
 import { Routes } from "~/utils/routing";
-import { TypePagesRoutes, TypeSiteTexts } from "~/types";
+import { T_PagesRoutes, T_SiteTexts } from "~/types";
 
 import { getSiteTexts, parseSiteText, pluralize } from "./internationalization";
 
 dayjs.extend(customParseFormat);
 
 export function getDifferenceBetweenDates(startDate: string, endDate: Date): string {
-  const SiteTexts: TypeSiteTexts = getSiteTexts({ page: Routes.BLOG });
+  const SiteTexts: T_SiteTexts = getSiteTexts({ page: Routes.BLOG });
   const difference: number = dayjs(endDate).diff(dayjs(startDate, "YYYY/MM/DD"), "day");
 
   if (difference === 0) {

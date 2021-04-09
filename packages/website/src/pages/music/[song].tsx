@@ -10,18 +10,18 @@ import { MDXContent } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
 import { useDidMount, useInternationalization } from "~/hooks";
 import MusicService from "~/services/music";
-import { TypeSong } from "~/types";
+import { T_Song } from "~/types";
 import { copyToClipboard, isBrowser } from "~/utils/browser";
 import { WebsiteMetadata } from "~/utils/constants";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { Routes } from "~/utils/routing";
 
-type TypeSongPageProps = {
-  song: TypeSong;
+type T_SongPageProps = {
+  song: T_Song;
   content: any;
 };
 
-function SongPage({ song, content }: TypeSongPageProps): any {
+function SongPage({ song, content }: T_SongPageProps): any {
   const { SiteTexts } = useInternationalization({
     page: Routes.MUSIC,
     layout: true,
@@ -82,7 +82,7 @@ function SongPage({ song, content }: TypeSongPageProps): any {
           style={{ fontSize: `${fontSize}rem` }}
           variant={Blockquote.variant.UNSTYLED}
         >
-          <div className="tw-mb-8">
+          <div className="tw-mb-10">
             <Button
               className={classNames(
                 "tw-text-sm tw-inline-block tw-mr-3",
@@ -126,7 +126,7 @@ function SongPage({ song, content }: TypeSongPageProps): any {
 // TODO: Next types
 export async function getStaticPaths(): Promise<Record<string, any>> {
   return {
-    paths: (await MusicService.fetchSongsList()).reduce((result, song: TypeSong) => {
+    paths: (await MusicService.fetchSongsList()).reduce((result, song: T_Song) => {
       return result.concat([{ params: { song: song.id } }]);
     }, [] as Array<any>),
     fallback: false,
@@ -137,7 +137,7 @@ export async function getStaticPaths(): Promise<Record<string, any>> {
 export async function getStaticProps({
   params,
 }: Record<string, any>): Promise<Record<string, any>> {
-  const song: TypeSong | undefined = (await MusicService.fetchSongsList()).find(
+  const song: T_Song | undefined = (await MusicService.fetchSongsList()).find(
     song => song.id === params.song,
   );
 

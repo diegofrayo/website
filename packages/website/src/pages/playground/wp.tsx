@@ -4,11 +4,11 @@ import { Page, MainLayout } from "~/components/layout";
 import { Icon, Link } from "~/components/primitive";
 import { Routes } from "~/utils/routing";
 import { useDidMount } from "~/hooks";
-import { TypeSiteTexts } from "~/types";
+import { T_SiteTexts } from "~/types";
 import { focusElement, isSmallScreen } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 
-const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
+const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "wp";
 
 function WPPage(): any {

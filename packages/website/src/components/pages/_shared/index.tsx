@@ -1,27 +1,27 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { Link, Icon, Title as TitlePrimitive, List } from "~/components/primitive";
+import { Link, Icon, Title as TitlePrimitive } from "~/components/primitive";
 
 export { default as Code } from "./Code";
 export { default as Playground } from "./Playground";
 export { default as MDXContent } from "./MDXContent";
 
-type TypeEmojiProps = {
+type T_EmojiProps = {
   className?: string;
   children: string;
 };
 
-export function Emoji({ children, className }: TypeEmojiProps): any {
+export function Emoji({ children, className }: T_EmojiProps): any {
   return <span className={classNames("emoji", className)}>{children}</span>;
 }
 
-type TypeTextWithEmojiProps = {
+type T_TextWithEmojiProps = {
   emoji: string;
   children: any;
 };
 
-export function TextWithEmoji({ emoji, children }: TypeTextWithEmojiProps): any {
+export function TextWithEmoji({ emoji, children }: T_TextWithEmojiProps): any {
   return (
     <div className="tw-flex tw-flex-nowrap tw-mb-3">
       <Emoji className="tw-text-xl tw-mr-3 tw-w-6 tw-h-6 tw-flex-shrink-0 tw-overflow-hidden tw-relative tw--top-0.5">
@@ -109,65 +109,42 @@ function Loader() {
   );
 }
 
-export function ToDoList({ children }) {
-  return (
-    <List>
-      {React.Children.map(children, child => {
-        if (child.props["data-completed"]) {
-          return (
-            <li>
-              <span className="tw-mr-2">☑</span>
-              <span className="tw-line-through tw-italic tw-opacity-75">
-                {child.props.children}
-              </span>
-            </li>
-          );
-        }
-
-        return (
-          <li>
-            <span className="tw-mr-2">☒</span>
-            <span>{child.props.children}</span>
-          </li>
-        );
-      })}
-    </List>
-  );
-}
-
-type TypeGithubRepoProps = {
+type T_GithubRepoProps = {
   name: string;
   url: string;
   description: string;
 };
 
-export function GithubRepo({ name, url, description }: TypeGithubRepoProps): any {
+export function GithubRepo({ name, url, description }: T_GithubRepoProps): any {
   return (
     <div className="root tw-text-right" data-markdown-block>
       <Link
-        className="tw-flex sm:tw-inline-flex tw-p-4 dfr-bg-secondary tw-rounded-md tw-items-center tw-relative tw-pr-8"
+        className="tw-flex sm:tw-inline-flex tw-p-4 dfr-bg-secondary dark:dfr-bg-secondary tw-rounded-md tw-items-center tw-relative tw-pr-8 tw-border dfr-border-color-primary dark:dfr-border-color-primary"
         href={url}
         variant={Link.variant.UNSTYLED}
       >
         <Icon icon={Icon.icon.GITHUB} wrapperClassName="tw-mr-3" size={32} />
         <div className="tw-flex-1 tw-text-left">
-          <h3>{name}</h3>
-          <p className="tw-text-sm dfr-text-color-primary">{description}</p>
+          <TitlePrimitive
+            is="h3"
+            className="tw-text-black"
+            variant={TitlePrimitive.variant.UNSTYLED}
+          >
+            {name}
+          </TitlePrimitive>
+          <p className="tw-text-sm">{description}</p>
         </div>
 
-        <Icon icon={Icon.icon.LINK} wrapperClassName="tw-absolute tw-top-2 tw-right-2" />
+        <Icon
+          icon={Icon.icon.LINK}
+          wrapperClassName="tw-absolute tw-top-2 tw-right-2"
+          iconClassName="tw-text-black"
+        />
       </Link>
 
       <style jsx>{`
-        .root :global(img),
-        .root h3,
-        .root p {
-          @apply tw-my-0;
-        }
-
-        .root h3 {
+        .root :global(h3) {
           @apply tw-text-base;
-          @apply dfr-text-color-secondary;
 
           @screen sm {
             @apply tw-text-lg;

@@ -114,20 +114,20 @@ function HowToRecycle() {
         <div>
           <h2 className="tw-text-xl tw-mb-3">Usos</h2>
           <List>
-            <li>Uso 1</li>
-            <li>Uso 2</li>
-            <li>Uso 3</li>
-            <li>Uso 4</li>
+            <List.Item>Uso 1</List.Item>
+            <List.Item>Uso 2</List.Item>
+            <List.Item>Uso 3</List.Item>
+            <List.Item>Uso 4</List.Item>
           </List>
         </div>
         <Space size={4} />
         <div>
           <h2 className="tw-text-xl tw-mb-3">Fuentes</h2>
           <List>
-            <li>Fuente 1</li>
-            <li>Fuente 2</li>
-            <li>Fuente 3</li>
-            <li>Fuente 4</li>
+            <List.Item>Fuente 1</List.Item>
+            <List.Item>Fuente 2</List.Item>
+            <List.Item>Fuente 3</List.Item>
+            <List.Item>Fuente 4</List.Item>
           </List>
         </div>
       </div>

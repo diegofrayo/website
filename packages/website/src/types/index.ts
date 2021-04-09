@@ -1,16 +1,24 @@
+import { CSSProperties, RefObject } from "react";
+
 // --- Primitives ---
 
-export type TypePrimitive = string | number | boolean;
+export type T_Primitive = string | number | boolean;
 
-export type TypeObjectWithPrimitives = Record<string, TypePrimitive>;
+export type T_ObjectWithPrimitives = Record<string, T_Primitive>;
 
-export type TypeReactChildren = JSX.Element | JSX.Element[];
+export type T_ReactChildrenProp = JSX.Element | string | (JSX.Element | string)[];
+
+export type T_ReactFCReturn = JSX.Element | null;
+
+export type T_ReactStylesProp = CSSProperties;
+
+export type T_ReactRefObject<Type> = RefObject<Type>;
 
 // --- Internationalization ---
 
-export type TypeLocale = "es" | "en";
+export type T_Locale = "es" | "en";
 
-export type TypePagesRoutes =
+export type T_PagesRoutes =
   | "/"
   | "/blog"
   | "/about-me"
@@ -21,12 +29,12 @@ export type TypePagesRoutes =
   | "/404"
   | "/500";
 
-export type TypeGenerateSupportedLocales = Array<{
-  name: TypeLocale;
+export type T_GenerateSupportedLocales = {
+  name: T_Locale;
   route: string;
-}>;
+}[];
 
-export type TypeSiteTexts = {
+export type T_SiteTexts = {
   layout: {
     config: Record<string, any>;
     common: Record<string, any>;
@@ -39,21 +47,21 @@ export type TypeSiteTexts = {
   };
 };
 
-export type TypeGetSiteTextsParam = {
-  page?: TypePagesRoutes;
+export type T_GetSiteTextsParam = {
+  page?: T_PagesRoutes;
   layout?: boolean;
-  locale?: TypeLocale;
+  locale?: T_Locale;
 };
 
-export type TypeGetAssetsParam = Array<"vr">;
+export type T_GetAssetsParam = "vr"[];
 
 // --- Blog ---
 
-interface TypeBlogPostBase {
+interface T_BlogPostBase {
   slug: string;
   is_legacy: boolean;
-  default_locale: TypeLocale;
-  locales: TypeLocale[];
+  default_locale: T_Locale;
+  locales: T_Locale[];
   created_at: string;
   published_at: string;
   updated_at: string;
@@ -64,25 +72,25 @@ interface TypeBlogPostBase {
   assets?: Record<string, string>;
 }
 
-interface TypeBlogPostBaseWithES extends TypeBlogPostBase {
+interface T_BlogPostBaseWithES extends T_BlogPostBase {
   es: {
     title: string;
     description: string;
   };
 }
 
-interface TypeBlogPostBaseWithEN extends TypeBlogPostBase {
+interface T_BlogPostBaseWithEN extends T_BlogPostBase {
   en: {
     title: string;
     description: string;
   };
 }
 
-export type TypeBlogPost = TypeBlogPostBaseWithES | TypeBlogPostBaseWithEN;
+export type T_BlogPost = T_BlogPostBaseWithES | T_BlogPostBaseWithEN;
 
 // --- Music ---
 
-export type TypeSong = {
+export type T_Song = {
   id: string;
   title: string;
   artist: string;
@@ -98,14 +106,14 @@ export type TypeSong = {
 
 // --- Components props ---
 
-export type TypeBreadcumbProps = {
-  items: Array<{
+export type T_BreadcumbProps = {
+  items: {
     text: string;
-    url?: TypePagesRoutes;
-  }>;
+    url?: T_PagesRoutes;
+  }[];
 };
 
-export type TypeCodeProps = {
+export type T_CodeProps = {
   language: "jsx" | "css" | "typescript" | "javascript" | "bash" | "yaml";
   code: any;
   fileName?: string;

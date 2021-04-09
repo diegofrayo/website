@@ -4,13 +4,13 @@ import dracula from "prism-react-renderer/themes/dracula";
 
 import { Link, Icon, Code as CodePrimitive, Button } from "~/components/primitive";
 import twcss from "~/lib/twcss";
-import { TypeCodeProps } from "~/types";
+import { T_CodeProps } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 import { Routes } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
 
-function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
+function Code({ language, fileName, code, sourceURL }: T_CodeProps): any {
   const SiteTexts = getSiteTexts({ page: Routes.BLOG });
 
   return (
@@ -65,7 +65,7 @@ function Code({ language, fileName, code, sourceURL }: TypeCodeProps): any {
           </Link>
         )}
         <Button
-          className="clipboard dfr-text-color-links dark:dfr-text-color-primary tw-block sm:tw-inline-block tw-ml-auto tw-mt-1 sm:tw-mt-0 tw-text-sm tw-font-bold tw-text-right"
+          className="tw-block sm:tw-inline-block tw-ml-auto tw-mt-1 sm:tw-mt-0 tw-text-sm tw-font-bold tw-text-right"
           data-clipboard-text={code}
           onClick={copyToClipboard}
         >

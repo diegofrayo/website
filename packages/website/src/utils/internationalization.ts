@@ -1,21 +1,16 @@
 import Texts from "~/data/texts.json";
-import {
-  TypeGenerateSupportedLocales,
-  TypeGetSiteTextsParam,
-  TypeLocale,
-  TypeSiteTexts,
-} from "~/types";
+import { T_GenerateSupportedLocales, T_GetSiteTextsParam, T_Locale, T_SiteTexts } from "~/types";
 
-const LOCALES: TypeLocale[] = ["es", "en"];
-export const DEFAULT_LOCALE: TypeLocale = LOCALES[0];
-let CURRENT_LOCALE: TypeLocale = DEFAULT_LOCALE;
+const LOCALES: T_Locale[] = ["es", "en"];
+export const DEFAULT_LOCALE: T_Locale = LOCALES[0];
+let CURRENT_LOCALE: T_Locale = DEFAULT_LOCALE;
 
 export function getSiteTexts({
   page,
   layout,
   locale = CURRENT_LOCALE,
-}: TypeGetSiteTextsParam): TypeSiteTexts {
-  const result: TypeSiteTexts = {
+}: T_GetSiteTextsParam): T_SiteTexts {
+  const result: T_SiteTexts = {
     layout: {
       config: {},
       common: {},
@@ -52,16 +47,16 @@ export function getSiteTexts({
   return result;
 }
 
-export function getCurrentLocale(): TypeLocale {
+export function getCurrentLocale(): T_Locale {
   return CURRENT_LOCALE;
 }
 
-export function setCurrentLocale(locale: TypeLocale): void {
+export function setCurrentLocale(locale: T_Locale): void {
   CURRENT_LOCALE = locale;
 }
 
-export function extractLocaleFromUrl(): TypeLocale {
-  const [locale] = window.location.pathname.split("/") as TypeLocale[];
+export function extractLocaleFromUrl(): T_Locale {
+  const [locale] = window.location.pathname.split("/") as T_Locale[];
 
   if (LOCALES.indexOf(locale) !== -1) {
     return locale;
@@ -71,18 +66,18 @@ export function extractLocaleFromUrl(): TypeLocale {
 }
 
 export function getItemLocale(
-  locales: TypeLocale[],
-  defaultLocale: TypeLocale,
-  currentLocale: TypeLocale,
-): TypeLocale {
+  locales: T_Locale[],
+  defaultLocale: T_Locale,
+  currentLocale: T_Locale,
+): T_Locale {
   return locales.indexOf(currentLocale) !== -1 ? currentLocale : defaultLocale;
 }
 
 export function generateSupportedLocales(
-  locales: TypeLocale[],
+  locales: T_Locale[],
   route: string,
-): TypeGenerateSupportedLocales {
-  return locales.map((locale: TypeLocale) => ({
+): T_GenerateSupportedLocales {
+  return locales.map((locale: T_Locale) => ({
     name: locale,
     route,
   }));

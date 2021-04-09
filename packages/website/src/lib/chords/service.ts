@@ -12,19 +12,19 @@ class ChordsService {
     });
   }
 
-  groupChordsByFret(chordsParam: TypeGroupChordsByFretParams) {
+  groupChordsByFret(chordsParam: T_GroupChordsByFretParams) {
     try {
-      const chords: TypeChord[] =
+      const chords: T_Chord[] =
         chordsParam === ""
           ? []
           : typeof chordsParam === "string"
           ? chordsParam.split("|").map(
-              (item: string): TypeChord => {
+              (item: string): T_Chord => {
                 const [string, fret, finger, ...more] = item.split(",");
 
                 if (!item || more.length > 0) throw new Error("Syntax error");
 
-                const chord: Partial<TypeChord> = {
+                const chord: Partial<T_Chord> = {
                   finger: finger === undefined ? undefined : Number(finger),
                   fret: Number(fret),
                 };
@@ -32,17 +32,17 @@ class ChordsService {
                 this.checkFretValidity(chord.fret || 0);
 
                 if (string.includes("x")) {
-                  (chord as TypeChordWithBarre).barre = {
+                  (chord as T_ChordWithBarre).barre = {
                     until: string.length === 2 ? Number(string[0]) : 6,
                   };
                 } else {
-                  (chord as TypeChordWithString).string = Number(string);
+                  (chord as T_ChordWithString).string = Number(string);
                 }
 
-                return chord as TypeChord;
+                return chord as T_Chord;
               },
             )
-          : (chordsParam as TypeChord[]);
+          : (chordsParam as T_Chord[]);
 
       const frets: number[] = chords.map(chord => chord.fret).sort();
 
@@ -53,10 +53,10 @@ class ChordsService {
               (result, chord) => {
                 this.checkFingerValidity(chord.finger);
 
-                if ((chord as TypeChordWithBarre).barre !== undefined) {
-                  this.checkBarreValidity((chord as TypeChordWithBarre).barre.until);
+                if ((chord as T_ChordWithBarre).barre !== undefined) {
+                  this.checkBarreValidity((chord as T_ChordWithBarre).barre.until);
                 } else {
-                  this.checkStringValidity((chord as TypeChordWithString).string);
+                  this.checkStringValidity((chord as T_ChordWithString).string);
                 }
 
                 result[`${chord.fret}`].push(chord);
@@ -126,7 +126,7 @@ class ChordsService {
     }
   }
 
-  chordsToString(chords: TypeChordsProps["chords"]): string {
+  chordsToString(chords: T_ChordsProps["chords"]): string {
     if (typeof chords === "string") {
       return chords;
     }
@@ -134,9 +134,9 @@ class ChordsService {
     return chords
       .map(chord => {
         return `${
-          (chord as TypeChordWithString).string
-            ? (chord as TypeChordWithString).string
-            : `${(chord as TypeChordWithBarre).barre.until}x`
+          (chord as T_ChordWithString).string
+            ? (chord as T_ChordWithString).string
+            : `${(chord as T_ChordWithBarre).barre.until}x`
         },${chord.fret}${chord.finger ? `,${chord.finger}` : ""}`;
       })
       .join("|");
@@ -145,28 +145,28 @@ class ChordsService {
 
 export default ChordsService;
 
-// --- Types ---
+// --- T_s ---
 
-type TypeGroupChordsByFretParams = TypeChordsProps["chords"];
+type T_GroupChordsByFretParams = T_ChordsProps["chords"];
 
-interface TypeChordBase {
+interface T_ChordBase {
   fret: number;
   finger?: number;
 }
 
-interface TypeChordWithString extends TypeChordBase {
+interface T_ChordWithString extends T_ChordBase {
   string: number;
 }
 
-interface TypeChordWithBarre extends TypeChordBase {
+interface T_ChordWithBarre extends T_ChordBase {
   barre: { until: number };
 }
 
-type TypeChord = TypeChordWithString | TypeChordWithBarre;
+type T_Chord = T_ChordWithString | T_ChordWithBarre;
 
-type TypeChordsProps = {
+type T_ChordsProps = {
   name: string;
-  chords: Array<TypeChord> | string; // "STRING,FRET,FINGER" | "STRING,FRET"
-  stringsToSkip?: Array<number> | string; // "Number,Number"
+  chords: T_Chord[] | string; // "STRING,FRET,FINGER" | "STRING,FRET"
+  stringsToSkip?: number[] | string; // "Number,Number"
   showOptions?: boolean;
 };

@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import { TypeReactChildren } from "~/types";
+import { T_ReactChildrenProp, T_ReactFCReturn, T_ReactRefObject } from "~/types";
 
-type TypeCollapsible = {
-  children: TypeReactChildren;
+type T_Collapsible = {
+  children: T_ReactChildrenProp;
   title?: string;
-  htmlAttrs?: { openByDefault?: boolean };
+  openByDefault?: boolean;
 };
 
-function Collapsible({ children, ...rest }: TypeCollapsible) {
+function Collapsible({ children, ...rest }: T_Collapsible): T_ReactFCReturn {
   const { toggleIsCollapsed, title, containerRef } = useController(rest);
 
   return (
@@ -25,24 +25,34 @@ export default Collapsible;
 
 // --- Controller ---
 
-function useController({ htmlAttrs, title }: Omit<TypeCollapsible, "children">) {
-  const [isCollapsed, setIsCollapsed] = useState(htmlAttrs?.openByDefault === true ? true : false);
-  const containerRef: any = useRef(undefined);
+type T_UseController = {
+  isCollapsed: boolean;
+  title: string;
+  toggleIsCollapsed: () => void;
+  containerRef: T_ReactRefObject<HTMLDetailsElement>;
+};
+
+function useController({
+  openByDefault = false,
+  title = "",
+}: Omit<T_Collapsible, "children">): T_UseController {
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(openByDefault);
+  const containerRef = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
     if (!containerRef || !containerRef.current) return;
 
     if (isCollapsed === true) {
-      containerRef?.current.setAttribute("open", "");
+      containerRef.current.setAttribute("open", "");
     } else {
-      containerRef?.current.removeAttribute("open");
+      containerRef.current.removeAttribute("open");
     }
   }, [containerRef]);
 
   return {
     isCollapsed,
+    title: title ? title : isCollapsed ? "Hide" : "Show",
     toggleIsCollapsed: () => setIsCollapsed(cv => !cv),
     containerRef,
-    title: title ? title : isCollapsed ? "Hide" : "Show",
   };
 }

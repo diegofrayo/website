@@ -3,14 +3,14 @@ import Router from "next/router";
 
 import useDidMount from "./useDidMount";
 
-type TypeDefaultValue = {
+type T_DefaultValue = {
   VR_Assets: {
     SNIPPETS: string;
     INDEX: string;
   };
 };
 
-const DEFAULT_VALUE: TypeDefaultValue = {
+const DEFAULT_VALUE: T_DefaultValue = {
   VR_Assets: {
     SNIPPETS: "",
     INDEX: "",
@@ -21,8 +21,8 @@ const useAssetsContext = () => useContext(AssetsContext);
 
 export function AssetsProvider({ children }: any): any {
   const [assets, setAssets]: [
-    TypeDefaultValue,
-    React.Dispatch<SetStateAction<TypeDefaultValue>>,
+    T_DefaultValue,
+    React.Dispatch<SetStateAction<T_DefaultValue>>,
   ] = useState(DEFAULT_VALUE);
 
   useDidMount(() => {

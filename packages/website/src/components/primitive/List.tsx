@@ -1,19 +1,37 @@
 import React from "react";
 import classNames from "classnames";
 
-export function List({ children, className }: Record<string, any>): any {
+function List({ children, className }: Record<string, any>): any {
   return (
-    <ul className={classNames("tw-list-inside tw-list-none", className)}>
-      {React.Children.map(children, child => {
-        if (!child) return child;
+    <ul className={classNames("root tw-list-inside tw-list-none", className)}>
+      {children}
 
-        return (
-          <li className="tw-flex tw-flex-no-wrap tw-mb-3 last:tw-mb-0">
-            <span className="tw-font-bold tw-mr-2 tw-text-black dark:tw-text-white">{"❯"}</span>
-            <div className="tw-flex-1 tw-min-w-0">{child}</div>
-          </li>
-        );
-      })}
+      <style jsx>
+        {`
+          .root {
+            padding-left: 19px;
+          }
+
+          .root :global(li) {
+            position: relative;
+            @apply tw-mb-3;
+            @apply last:tw-mb-0;
+          }
+
+          .root :global(li::before) {
+            color: black;
+            content: "❯";
+            font-weight: bold;
+            left: -19px;
+            position: absolute;
+            top: 0;
+          }
+
+          :global(.tw-dark) .root :global(li::before) {
+            color: white;
+          }
+        `}
+      </style>
     </ul>
   );
 }
@@ -22,6 +40,10 @@ export default List;
 
 // --- Components ---
 
-List.Item = function ListItem({ children }) {
-  return <p>{children}</p>;
+List.Item = function ListItem({ children, className = "", ...rest }) {
+  return (
+    <li className={className} {...rest}>
+      {children}
+    </li>
+  );
 };

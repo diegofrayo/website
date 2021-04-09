@@ -2,29 +2,23 @@ import React from "react";
 
 import HTML_TAGS from "./tags";
 
-type TypeStylesParam = { __base: string; initial: string } | string[] | string;
-type TypeTWCSS_ComponentProps = {
+type T_StylesParam = { __base: string; initial: string } | string[] | string;
+type T_TWCSS_ComponentProps = {
   children?: any;
   className?: string;
   is: string | any;
   "tw-variant": string | Record<string, boolean> | undefined;
 };
-type TypeStaticPropsParam = {
-  "tw-variant"?: TypeTWCSS_ComponentProps["tw-variant"];
+type T_StaticPropsParam = {
+  "tw-variant"?: T_TWCSS_ComponentProps["tw-variant"];
 };
 
 function twcssCreator(
   Tag: string | JSX.Element,
-): (styles: TypeStylesParam, staticProps: TypeStaticPropsParam) => React.FC {
-  return function (styles: TypeStylesParam, staticProps: TypeStaticPropsParam = {}): React.FC {
+): (styles: T_StylesParam, staticProps: T_StaticPropsParam) => React.FC {
+  return function (styles: T_StylesParam, staticProps: T_StaticPropsParam = {}): React.FC {
     return React.forwardRef(function TWCSS_Component(
-      {
-        children,
-        className = "",
-        is,
-        ["tw-variant"]: twVariant,
-        ...rest
-      }: TypeTWCSS_ComponentProps,
+      { children, className = "", is, ["tw-variant"]: twVariant, ...rest }: T_TWCSS_ComponentProps,
       ref,
     ): JSX.Element {
       const Element: string | any = is || Tag;
@@ -52,9 +46,9 @@ const twcss: any = Object.assign(
 );
 
 function generateClassName(
-  styles: TypeStylesParam,
+  styles: T_StylesParam,
   className: string,
-  twVariant: TypeTWCSS_ComponentProps["tw-variant"],
+  twVariant: T_TWCSS_ComponentProps["tw-variant"],
 ): string {
   if (Array.isArray(styles) || typeof styles === "string") {
     return `${styles} ${className}`.trim();

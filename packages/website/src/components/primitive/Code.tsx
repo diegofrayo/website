@@ -1,22 +1,28 @@
 import React from "react";
+import classNames from "classnames";
 
-function Code({ children, variant = "DEFAULT", ...rest }) {
-  if (variant === "INLINE") {
+import { T_ReactChildrenProp, T_ReactStylesProp } from "~/types";
+
+enum E_Variants {
+  MULTILINE = "MULTILINE",
+  INLINE = "INLINE",
+}
+
+type T_Code = {
+  children: T_ReactChildrenProp;
+  variant?: E_Variants;
+
+  className?: string;
+  style?: T_ReactStylesProp;
+};
+
+function Code({ children, variant = E_Variants.MULTILINE, className, ...rest }: T_Code) {
+  if (variant === E_Variants.INLINE) {
     return (
-      <code>
+      <code className="tw-text-base tw-italic tw-text-red-700 dark:tw-text-red-400">
         {children}
 
         <style jsx>{`
-          code {
-            @apply tw-text-base;
-            @apply tw-text-red-700;
-            font-style: italic;
-          }
-
-          :global(.tw-dark) code {
-            @apply tw-text-red-400;
-          }
-
           code::before,
           code::after {
             content: "\`";
@@ -27,33 +33,24 @@ function Code({ children, variant = "DEFAULT", ...rest }) {
   }
 
   return (
-    <pre {...rest}>
+    <pre
+      className={classNames(
+        "tw-bg-gray-800 dark:tw-bg-gray-700 tw-block tw-p-4 tw-text-base tw-text-gray-300 tw-rounded-md tw-max-w-full tw-overflow-x-auto",
+        className,
+      )}
+      {...rest}
+    >
       <code>{children}</code>
 
       <style jsx>{`
         pre {
-          @apply tw-bg-gray-800;
-          @apply tw-p-4;
-          @apply tw-text-base;
-          @apply tw-text-gray-300;
-          @apply tw-rounded-md;
-          display: block;
-          max-width: 100%;
-          overflow-x: auto;
           word-break: keep-all;
-        }
-
-        :global(.tw-dark) pre {
-          @apply tw-bg-gray-700;
         }
       `}</style>
     </pre>
   );
 }
 
-Code.variant = {
-  DEFAULT: "DEFAULT",
-  INLINE: "INLINE",
-};
+Code.variant = E_Variants;
 
 export default Code;

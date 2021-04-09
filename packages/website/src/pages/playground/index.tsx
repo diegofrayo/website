@@ -4,14 +4,14 @@ import { Page, MainLayout } from "~/components/layout";
 import { Link, List } from "~/components/primitive";
 import { Routes } from "~/utils/routing";
 import { withTranslations } from "~/hocs";
-import { TypeSiteTexts } from "~/types";
+import { T_SiteTexts } from "~/types";
 import { isUserLoggedIn } from "~/utils/misc";
 
-type TypePlaygroundPageProps = {
-  SiteTexts: TypeSiteTexts;
+type T_PlaygroundPageProps = {
+  SiteTexts: T_SiteTexts;
 };
 
-function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
+function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): any {
   return (
     <Page config={{ noRobots: true }}>
       <MainLayout
@@ -32,14 +32,15 @@ function PlaygroundPage({ SiteTexts }: TypePlaygroundPageProps): any {
             .concat(isUserLoggedIn() ? ["lab"] : [])
             .map(name => {
               return (
-                <Link
-                  key={`PlaygroundPage-${name}`}
-                  href={`${Routes.PLAYGROUND}/${name}`}
-                  variant={Link.variant.UNSTYLED}
-                  isNextLink
-                >
-                  {name}
-                </Link>
+                <List.Item key={`PlaygroundPage-${name}`}>
+                  <Link
+                    href={`${Routes.PLAYGROUND}/${name}`}
+                    variant={Link.variant.UNSTYLED}
+                    isNextLink
+                  >
+                    {name}
+                  </Link>
+                </List.Item>
               );
             })}
         </List>

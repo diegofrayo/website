@@ -3,14 +3,14 @@ import classNames from "classnames";
 
 import { generateSlug } from "~/utils/strings";
 
-type TypeTitle = {
+type T_Title = {
   is: "h1" | "h2" | "h3" | "h4";
   children: string | JSX.Element;
   variant?: "PRIMARY" | "SECONDARY" | "UNSTYLED";
   className?: string;
 };
 
-function Title(props: TypeTitle): JSX.Element {
+function Title(props: T_Title): JSX.Element {
   const { Tag, id, className, children } = useController(props);
 
   return (
@@ -38,13 +38,13 @@ function useController({
   is: Tag,
   className,
   variant = VARIANTS.PRIMARY,
-}: TypeTitle): {
+}: T_Title): {
   id: string;
   className: string;
-  children: TypeTitle["children"];
-  Tag: TypeTitle["is"];
+  children: T_Title["children"];
+  Tag: T_Title["is"];
 } {
-  function generateStyles(tag: TypeTitle["is"]): string {
+  function generateStyles(tag: T_Title["is"]): string {
     return classNames(
       variant !== "UNSTYLED" &&
         {

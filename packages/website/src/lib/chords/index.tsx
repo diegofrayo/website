@@ -9,31 +9,31 @@ import { createArray } from "~/utils/misc";
 import twcss from "./../twcss";
 import Service from "./service";
 
-interface TypeChordBase {
+interface T_ChordBase {
   fret: number;
   finger?: number;
 }
 
-interface TypeChordWithString extends TypeChordBase {
+interface T_ChordWithString extends T_ChordBase {
   string: number;
 }
 
-interface TypeChordWithBarre extends TypeChordBase {
+interface T_ChordWithBarre extends T_ChordBase {
   barre: { until: number };
 }
 
-type TypeChord = TypeChordWithString | TypeChordWithBarre;
+type T_Chord = T_ChordWithString | T_ChordWithBarre;
 
-type TypeChordsProps = {
+type T_ChordsProps = {
   name: string;
-  chords: Array<TypeChord> | string; // "STRING,FRET,FINGER" | "STRING,FRET"
+  chords: Array<T_Chord> | string; // "STRING,FRET,FINGER" | "STRING,FRET"
   stringsToSkip?: Array<number> | string; // "Number,Number"
   showOptions?: boolean;
 };
 
 const ChordsService = new Service();
 
-export function Chords({ name, chords, stringsToSkip, showOptions = true }: TypeChordsProps): any {
+export function Chords({ name, chords, stringsToSkip, showOptions = true }: T_ChordsProps): any {
   const chordRef: { current: any } = useRef(undefined);
   const [showInput, setShowInput] = useState(false);
 
@@ -77,7 +77,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: Type
             <Fret variant="FRET_EMPTY" fret={lastFret + 1} />
             {Object.entries(chordsGroupedByFret)
               .reverse()
-              .map(([fret, chords]: [string, TypeChord[]]) => {
+              .map(([fret, chords]: [string, T_Chord[]]) => {
                 return (
                   <Fret
                     key={`Fret-${fret}`}
@@ -186,14 +186,14 @@ export function Solo({ positions, notes }) {
 
 // --- Components ---
 
-type TypeFretProps = {
+type T_FretProps = {
   variant: "FRET_DEFAULT" | "FRET_STRINGS_NAMES" | "FRET_EMPTY" | "FRET_SKIP_STRINGS";
   fret?: undefined | number;
-  chords?: undefined | Array<TypeChord>;
-  stringsToSkip?: TypeChordsProps["stringsToSkip"];
+  chords?: undefined | Array<T_Chord>;
+  stringsToSkip?: T_ChordsProps["stringsToSkip"];
 };
 
-function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
+function Fret({ variant, fret, chords, stringsToSkip }: T_FretProps): any {
   const isEmptyVariant = variant === "FRET_EMPTY";
   const isStringsNamesVariant = variant === "FRET_STRINGS_NAMES";
   const isSkipStringsVariant = variant === "FRET_SKIP_STRINGS";
@@ -225,12 +225,12 @@ function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
             const isBarreChord =
               isDefaultVariant &&
               Array.isArray(chords) &&
-              ((chords.length > 0 ? chords[0] : {}) as TypeChordWithBarre).barre !== undefined;
+              ((chords.length > 0 ? chords[0] : {}) as T_ChordWithBarre).barre !== undefined;
             const chord =
               isBarreChord && chords
                 ? chords[0]
                 : isDefaultVariant
-                ? chords?.find((chord: TypeChordWithString) => chord.string === string)
+                ? chords?.find((chord: T_ChordWithString) => chord.string === string)
                 : undefined;
 
             return (
@@ -241,9 +241,9 @@ function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
                     : isStringsNamesVariant
                     ? `string-${string}`
                     : isBarreChord
-                    ? `barre-${string}-${(chord as TypeChordWithBarre).fret}`
+                    ? `barre-${string}-${(chord as T_ChordWithBarre).fret}`
                     : chord
-                    ? `default-${(chord as TypeChordWithString).string}-${chord.finger || ""}`
+                    ? `default-${(chord as T_ChordWithString).string}-${chord.finger || ""}`
                     : `${string}-${Date.now()}`
                 }`}
                 className="tw-flex tw-items-center tw-h-6"
@@ -265,7 +265,7 @@ function Fret({ variant, fret, chords, stringsToSkip }: TypeFretProps): any {
                 ) : isBarreChord ? (
                   <Fragment>
                     <String />
-                    {((chord as TypeChordWithBarre)?.barre?.until as number) >= string && (
+                    {((chord as T_ChordWithBarre)?.barre?.until as number) >= string && (
                       <span className="tw-h-full tw-border-4" />
                     )}
                     <String />

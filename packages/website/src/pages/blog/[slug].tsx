@@ -9,7 +9,7 @@ import { MDXContent } from "~/components/pages/_shared";
 import { useInternationalization, useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
 import BlogService from "~/services/blog";
-import { TypeBlogPost, TypeLocale } from "~/types";
+import { T_BlogPost, T_Locale } from "~/types";
 import {
   copyToClipboard,
   getScrollPosition,
@@ -22,12 +22,12 @@ import { generateSupportedLocales, getItemLocale } from "~/utils/internationaliz
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { Routes } from "~/utils/routing";
 
-type TypeBlogPostPageProps = {
-  post: TypeBlogPost;
+type T_BlogPostPageProps = {
+  post: T_BlogPost;
   content: any;
 };
 
-function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
+function BlogPostPage({ post, content }: T_BlogPostPageProps): any {
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
     layout: true,
@@ -75,9 +75,9 @@ function BlogPostPage({ post, content }: TypeBlogPostPageProps): any {
 // TODO: Next types
 export async function getStaticPaths(): Promise<Record<string, any>> {
   return {
-    paths: (await BlogService.fetchPosts()).reduce((result, post: TypeBlogPost) => {
+    paths: (await BlogService.fetchPosts()).reduce((result, post: T_BlogPost) => {
       return result.concat(
-        post.locales.map((locale: TypeLocale) => {
+        post.locales.map((locale: T_Locale) => {
           return { params: { slug: post.slug }, locale };
         }),
       );
@@ -91,7 +91,7 @@ export async function getStaticProps({
   params,
   locale,
 }: Record<string, any>): Promise<Record<string, any>> {
-  const post: TypeBlogPost = await BlogService.getPost({ slug: params.slug });
+  const post: T_BlogPost = await BlogService.getPost({ slug: params.slug });
   const file = fs.readFileSync(
     `${process.cwd()}/src/data/blog/posts/${getItemLocale(
       post.locales,
@@ -112,14 +112,14 @@ export default BlogPostPage;
 
 // --- Components ---
 
-type TypeBlogPostFooterProps = {
+type T_BlogPostFooterProps = {
   createdAt: string;
   publishedAt: string;
   slug: string;
   updatedAt: string;
 };
 
-function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: TypeBlogPostFooterProps): any {
+function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: T_BlogPostFooterProps): any {
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
     layout: true,

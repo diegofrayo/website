@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-import { TypeSiteTexts } from "~/types";
+import { T_SiteTexts } from "~/types";
 
 import { getSiteTexts } from "./internationalization";
 
@@ -12,7 +12,7 @@ export function setScrollPosition(val: number): void {
   window.scroll({ top: val, behavior: "smooth" });
 }
 
-type TypeOnScrollStoppedListenerParams = {
+type T_OnScrollStoppedListenerParams = {
   onScroll: () => void;
   onScrollStopped: () => void;
   timeout: number;
@@ -22,7 +22,7 @@ export function onScrollStoppedListener({
   onScroll,
   onScrollStopped,
   timeout,
-}: TypeOnScrollStoppedListenerParams): void {
+}: T_OnScrollStoppedListenerParams): void {
   let isScrolling: number;
 
   window.addEventListener(
@@ -50,7 +50,7 @@ export async function copyToClipboard(
     if (!clipboardText) throw new Error("Any text was selected to copy");
     await navigator.clipboard.writeText(clipboardText);
 
-    const SiteTexts: TypeSiteTexts = getSiteTexts({ layout: true });
+    const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
     toast.success(SiteTexts.layout.current_locale.misc.copy_to_clipboard, {
       position: toast.POSITION.BOTTOM_CENTER,
       toastId: "copy-to-clipboard",

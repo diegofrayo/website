@@ -52,7 +52,7 @@ export function isUserLoggedIn(): boolean {
 }
 
 export function sortBy(
-  params?: { param: string; order: "asc" | "desc" }[],
+  params?: { param: string; order?: "asc" | "desc" }[],
   order?: "asc" | "desc",
 ) {
   return function sortByReturn(a, b): number {
@@ -99,11 +99,4 @@ export function safeCastNumber(string: string, defaultNumber?: number) {
 
 export function escapeRegExp(text: string): string {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-}
-
-export function mirror(array: (string | number)[]): Record<string | number, string | number> {
-  return array.reduce((result, item) => {
-    result[item] = item;
-    return result;
-  }, {});
 }

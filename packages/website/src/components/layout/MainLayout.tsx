@@ -7,20 +7,20 @@ import { Emoji } from "~/components/pages/_shared";
 import { useOnWindowScroll } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
-import { TypeBreadcumbProps, TypeGenerateSupportedLocales } from "~/types";
+import { T_BreadcumbProps, T_GenerateSupportedLocales } from "~/types";
 import { getScrollPosition } from "~/utils/browser";
 import { WebsiteMetadata } from "~/utils/constants";
 import { generateSlug } from "~/utils/strings";
 import { Routes } from "~/utils/routing";
 
-type TypeMainLayoutProps = {
+type T_MainLayoutProps = {
   title?: string;
   children: any;
-  locales?: TypeGenerateSupportedLocales;
-  breadcumb?: TypeBreadcumbProps["items"];
+  locales?: T_GenerateSupportedLocales;
+  breadcumb?: T_BreadcumbProps["items"];
 };
 
-function MainLayout({ children, locales, breadcumb, title }: TypeMainLayoutProps): JSX.Element {
+function MainLayout({ children, locales, breadcumb, title }: T_MainLayoutProps): JSX.Element {
   return (
     <Main>
       <Header locales={locales} />
@@ -60,8 +60,8 @@ const Main = twcss.main`dfr-max-w-base tw-w-full tw-py-4 tw-px-6 tw-mx-auto tw-r
 const Body = twcss.div``;
 
 /*
-type TypeHeaderProps = {
-  locales: TypeGenerateSupportedLocales;
+type T_HeaderProps = {
+  locales: T_GenerateSupportedLocales;
 };
 */
 
@@ -162,12 +162,12 @@ function DarkModeToggle(): any {
 }
 
 /*
-type TypeLocalesSelectorProps = {
-  locales: TypeGenerateSupportedLocales;
-  currentLocale: TypeLocale;
+type T_LocalesSelectorProps = {
+  locales: T_GenerateSupportedLocales;
+  currentLocale: T_Locale;
 };
 
-function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): any {
+function LocalesSelector({ locales, currentLocale }: T_LocalesSelectorProps): any {
   return null;
 
   return (
@@ -192,7 +192,7 @@ function LocalesSelector({ locales, currentLocale }: TypeLocalesSelectorProps): 
 }
 */
 
-function Breadcumb({ items }: TypeBreadcumbProps): JSX.Element {
+function Breadcumb({ items }: T_BreadcumbProps): JSX.Element {
   const hasMoreThanOneItem: boolean = items.length > 1;
 
   return (
@@ -270,14 +270,14 @@ function SocialIcons(): JSX.Element {
   );
 }
 
-type TypeSocialIconProps = {
+type T_SocialIconProps = {
   icon: string;
   url: string;
   name: string;
   withDarkModeBackground?: boolean;
 };
 
-function SocialIcon({ icon, url, withDarkModeBackground }: TypeSocialIconProps): any {
+function SocialIcon({ icon, url, withDarkModeBackground }: T_SocialIconProps): any {
   return (
     <Link href={url} className="tw-inline-block tw-ml-4" variant={Link.variant.UNSTYLED}>
       <Icon icon={icon} size={24} withDarkModeBackground={withDarkModeBackground} />

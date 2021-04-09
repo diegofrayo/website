@@ -4,12 +4,12 @@ import { useTheme } from "next-themes";
 
 import { safeRender } from "~/hocs";
 
-type TypeMDXContentProps = {
+type T_MDXContentProps = {
   content: any;
   variant?: "STYLED" | "UNSTYLED";
 };
 
-function MDXContent({ content, variant = "STYLED" }: TypeMDXContentProps): any {
+function MDXContent({ content, variant = "STYLED" }: T_MDXContentProps): any {
   const { theme } = useTheme();
 
   return (

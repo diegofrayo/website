@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-import { TypeCodeProps } from "~/types";
+import { T_CodeProps } from "~/types";
 
 import Code from "./Code";
 
-type TypePlaygroundProps = {
+type T_PlaygroundProps = {
   Component: any;
-  code: TypeCodeProps["code"];
-  language: TypeCodeProps["language"];
+  code: T_CodeProps["code"];
+  language: T_CodeProps["language"];
 };
 
-function Playground({ Component, code, language }: TypePlaygroundProps) {
+function Playground({ Component, code, language }: T_PlaygroundProps) {
   const [tab, setTab] = useState(0);
 
   return (

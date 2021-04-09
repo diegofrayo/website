@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { List, Link } from "~/components/primitive";
@@ -7,7 +7,7 @@ import { SongDetails } from "~/components/pages/music";
 import { Routes } from "~/utils/routing";
 import { useInternationalization, useQuery } from "~/hooks";
 import MusicService from "~/services/music";
-import { TypeSong } from "~/types";
+import { T_Song } from "~/types";
 import { sortBy } from "~/utils/misc";
 import { removeEmojiFromPageTitle } from "~/utils/strings";
 
@@ -52,11 +52,11 @@ function MusicPage(): any {
                       { param: "title", order: "asc" },
                     ]),
                   )
-                  .map((song: TypeSong) => {
+                  .map((song: T_Song) => {
                     if (!song.published) return null;
 
                     return (
-                      <Fragment key={song.id}>
+                      <List.Item key={song.id}>
                         <Link
                           href={`${Routes.MUSIC}/${song.id}`}
                           variant={Link.variant.SECONDARY}
@@ -66,7 +66,7 @@ function MusicPage(): any {
                           {song.title}
                         </Link>
                         <SongDetails song={song} SiteTexts={SiteTexts} />
-                      </Fragment>
+                      </List.Item>
                     );
                   })}
               </List>

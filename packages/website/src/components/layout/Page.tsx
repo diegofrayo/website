@@ -3,24 +3,24 @@ import Head from "next/head";
 
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import AnalyticsService from "~/services/analytics";
-import { TypeGetAssetsParam } from "~/types";
+import { T_GetAssetsParam } from "~/types";
 import { getAssetsURL } from "~/utils/assets";
 import { WebsiteMetadata, SEOMetadata } from "~/utils/constants";
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 import { Routes } from "~/utils/routing";
 
-type TypePageProps = {
+type T_PageProps = {
   children: any;
   config: {
     title?: string;
     pathname?: string;
     description?: string;
     noRobots?: boolean;
-    assets?: TypeGetAssetsParam;
+    assets?: T_GetAssetsParam;
   };
 };
 
-function Page({ children, config = {} }: TypePageProps): any {
+function Page({ children, config = {} }: T_PageProps): any {
   const metadata = {
     title: config.title ? `${config.title} - ${SEOMetadata.title}` : SEOMetadata.title,
     url: config.pathname ? `${SEOMetadata.url}${config.pathname}` : SEOMetadata.url,

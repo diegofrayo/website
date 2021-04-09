@@ -1,20 +1,20 @@
 import React from "react";
 import classNames from "classnames";
 
-type TypeSpaceProps = {
+type T_SpaceProps = {
   size?: number;
   className?: string;
   dir?: "h" | "v";
   variant?: "DEFAULT" | "DASHED";
 };
 
-function Space(props: TypeSpaceProps): JSX.Element {
+function Space(props: T_SpaceProps): JSX.Element {
   const { className } = useController(props);
 
   return <hr className={className} />;
 }
 
-const VARIANTS: Record<string, TypeSpaceProps["variant"]> = {
+const VARIANTS: Record<string, T_SpaceProps["variant"]> = {
   DEFAULT: "DEFAULT",
   DASHED: "DASHED",
 };
@@ -25,7 +25,7 @@ export default Space;
 
 // --- Controller ---
 
-function useController({ size, className, dir = "h", variant = VARIANTS.DEFAULT }: TypeSpaceProps) {
+function useController({ size, className, dir = "h", variant = VARIANTS.DEFAULT }: T_SpaceProps) {
   const isHorizontalDir = dir === "h";
 
   return {

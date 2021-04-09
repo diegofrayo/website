@@ -1,9 +1,9 @@
 import Data from "~/data/music/songs.json";
-import { TypeSong } from "~/types";
+import { T_Song } from "~/types";
 import { escapeRegExp, sortBy } from "~/utils/misc";
 
 class MusicService {
-  async fetchSongsList(): Promise<TypeSong[]> {
+  async fetchSongsList(): Promise<T_Song[]> {
     return Data.songs;
   }
 

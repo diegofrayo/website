@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
@@ -6,7 +6,7 @@ import { List, Link } from "~/components/primitive";
 import { Render } from "~/components/pages/_shared";
 import { useInternationalization, useQuery } from "~/hooks";
 import BlogService from "~/services/blog";
-import { TypeBlogPost, TypeLocale } from "~/types";
+import { T_BlogPost, T_Locale, T_ReactFCReturn } from "~/types";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { Routes } from "~/utils/routing";
@@ -41,11 +41,11 @@ function BlogPage(): any {
         title={SiteTexts.page.current_locale.title}
       >
         <Render isLoading={isLoading} error={error} data={data}>
-          {(data: TypeBlogPost[]) => {
+          {(data: T_BlogPost[]) => {
             return (
               <List>
                 {data.map(post => {
-                  const locale: TypeLocale = getItemLocale(
+                  const locale: T_Locale = getItemLocale(
                     post.locales,
                     post.default_locale,
                     currentLocale,
@@ -75,11 +75,11 @@ export default BlogPage;
 
 // --- Components ---
 
-// TODO: Reuse TypeBlogPosts
-type TypeBlogEntryProps = {
+// TODO: Reuse T_BlogPosts
+type T_BlogEntryProps = {
   slug: string;
   title: string;
-  locale: TypeLocale;
+  locale: T_Locale;
   categories: [{ id: number; value: string }];
   updatedAt: string;
 };
@@ -90,7 +90,7 @@ function BlogEntry({
   locale,
   categories,
   updatedAt,
-}: TypeBlogEntryProps): JSX.Element {
+}: T_BlogEntryProps): T_ReactFCReturn {
   const { SiteTexts } = useInternationalization({
     page: Routes.BLOG,
     layout: true,
@@ -102,7 +102,7 @@ function BlogEntry({
   };
 
   return (
-    <Fragment>
+    <List.Item>
       <Link
         href={`${Routes.BLOG}/${slug}`}
         locale={locale}
@@ -116,13 +116,13 @@ function BlogEntry({
         <span>{SiteTexts.page.current_locale.updated_at} </span>
         <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
       </p>
-      <p className="tw-text-xs tw-my-2">
+      <div className="tw-pb-1">
         {categories.map(category => {
           return (
             <span
               key={`BlogEntry-category-${category.id}`}
               className={classNames(
-                "tw-py-1 tw-px-2 tw-rounded-sm tw-font-semibold",
+                "tw-inline-block tw-py-1 tw-px-2 tw-rounded-sm tw-font-semibold tw-text-xs",
                 CATEGORIES_COLORS[category.id],
               )}
             >
@@ -130,7 +130,7 @@ function BlogEntry({
             </span>
           );
         })}
-      </p>
-    </Fragment>
+      </div>
+    </List.Item>
   );
 }

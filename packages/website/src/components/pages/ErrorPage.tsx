@@ -4,11 +4,11 @@ import { MainLayout, Page } from "~/components/layout";
 import { Routes } from "~/utils/routing";
 import { useInternationalization } from "~/hooks";
 
-type TypeErrorPageProps = {
+type T_ErrorPageProps = {
   statusCode: 404 | 500;
 };
 
-function ErrorPage({ statusCode }: TypeErrorPageProps): any {
+function ErrorPage({ statusCode }: T_ErrorPageProps): any {
   const { SiteTexts } = useInternationalization({ page: Routes[`ERROR_${statusCode}`] });
 
   return (

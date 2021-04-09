@@ -21,4 +21,5 @@ export const Unstyled = Story.bind({});
 Unstyled.args = {
   children: "I'm a [Unstyled] Blockquote",
   variant: Blockquote.variant.UNSTYLED,
+  className: "tw-text-red-300",
 };
