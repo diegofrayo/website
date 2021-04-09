@@ -115,23 +115,18 @@ function HeaderContent() {
   return (
     <div className="root tw-flex tw-items-center tw-w-full tw-h-full">
       <div className="tw-flex-1 tw-min-h-0 tw-mr-4">
-        <Title is="h1" className="tw-truncate">
+        <Title
+          is="h1"
+          variant={Title.variant.UNSTYLED}
+          size={Title.size.XL}
+          className="tw-truncate tw-text-yellow-500 dark:tw-text-white"
+        >
           <Link href="/" variant={Link.variant.UNSTYLED} isNextLink>
             Diego <Emoji className="tw-text-2xl">⚡</Emoji>
           </Link>
         </Title>
       </div>
       <DarkModeToggle />
-
-      <style jsx>{`
-        .root :global(h1) {
-          @apply tw-text-yellow-500;
-        }
-
-        :global(.tw-dark) .root :global(h1) {
-          @apply tw-text-white;
-        }
-      `}</style>
     </div>
   );
 }
@@ -154,7 +149,10 @@ function DarkModeToggle(): any {
           isDarkMode ? "tw--right-0.5" : "tw--left-0.5",
         )}
       >
-        <Icon icon={Icon.icon.SUN} wrapperClassName={classNames(isDarkMode && "tw-hidden")} />
+        <Icon
+          icon={Icon.icon.SUN}
+          wrapperClassName={classNames("tw-relative tw--left-1px", isDarkMode && "tw-hidden")}
+        />
         <Icon icon={Icon.icon.MOON} wrapperClassName={classNames(!isDarkMode && "tw-hidden")} />
       </span>
     </Button>

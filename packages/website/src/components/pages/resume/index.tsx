@@ -17,14 +17,14 @@ type T_ResumeTimelineProps = {
 
 export function ResumeTimeline({ title, timeline }: T_ResumeTimelineProps): T_ReactFCReturn {
   return (
-    <div data-markdown-block>
+    <section data-markdown-block>
       <Title is="h2">{title}</Title>
       <div className="tw-border-l-4 tw-border-black dark:dfr-border-color-primary tw-pl-6 tw-ml-3 tw-mt-3">
         {timeline.map((item, index) => {
           return <TimelineItem key={`TimelineItem-${index}`} {...item} />;
         })}
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -35,10 +35,10 @@ function TimelineItem({
   url = "",
 }: T_ResumeTimelineItem): T_ReactFCReturn {
   return (
-    <div className="root tw-relative tw-mb-8 last:tw-mb-0">
+    <div className="tw-relative tw-mb-8 last:tw-mb-0">
       <span className="tw-absolute tw--left-10 tw-border-4 tw-border-black dark:dfr-border-color-primary tw-w-7 tw-h-7 tw-rounded-full tw-bg-white tw-top-0.5" />
 
-      <Title is="h3" variant={Title.variant.SECONDARY}>
+      <Title is="h3" variant={Title.variant.SECONDARY} size={Title.size.MD}>
         {url ? (
           <Link className="tw-underline" href={url} variant={Link.variant.UNSTYLED}>
             {company}

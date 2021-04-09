@@ -19,7 +19,7 @@ type T_Code = {
 function Code({ children, variant = E_Variants.MULTILINE, className, ...rest }: T_Code) {
   if (variant === E_Variants.INLINE) {
     return (
-      <code className="tw-text-base tw-italic tw-text-red-700 dark:tw-text-red-400">
+      <code className="dfr-Code tw-text-base tw-italic tw-text-red-700 dark:tw-text-red-400">
         {children}
 
         <style jsx>{`
@@ -35,7 +35,7 @@ function Code({ children, variant = E_Variants.MULTILINE, className, ...rest }: 
   return (
     <pre
       className={classNames(
-        "tw-bg-gray-800 dark:tw-bg-gray-700 tw-block tw-p-4 tw-text-base tw-text-gray-300 tw-rounded-md tw-max-w-full tw-overflow-x-auto",
+        "dfr-Code tw-bg-gray-800 dark:tw-bg-gray-700 tw-block tw-p-4 tw-text-base tw-text-gray-300 tw-rounded-md tw-max-w-full tw-overflow-x-auto",
         className,
       )}
       {...rest}

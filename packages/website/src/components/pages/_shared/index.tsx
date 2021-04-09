@@ -127,7 +127,7 @@ export function GithubRepo({ name, url, description }: T_GithubRepoProps): any {
         <div className="tw-flex-1 tw-text-left">
           <TitlePrimitive
             is="h3"
-            className="tw-text-black"
+            className="tw-text-black tw-text-base sm:tw-text-lg"
             variant={TitlePrimitive.variant.UNSTYLED}
           >
             {name}
@@ -141,16 +141,6 @@ export function GithubRepo({ name, url, description }: T_GithubRepoProps): any {
           iconClassName="tw-text-black"
         />
       </Link>
-
-      <style jsx>{`
-        .root :global(h3) {
-          @apply tw-text-base;
-
-          @screen sm {
-            @apply tw-text-lg;
-          }
-        }
-      `}</style>
     </div>
   );
 }

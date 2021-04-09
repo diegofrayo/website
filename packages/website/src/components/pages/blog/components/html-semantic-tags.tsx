@@ -105,8 +105,6 @@ export function Texts() {
           longlonglonglong
         </p>
       </div>
-
-      <style jsx>{``}</style>
     </section>
   );
 }

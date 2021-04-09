@@ -74,7 +74,7 @@ function Code({ language, fileName, code, sourceURL }: T_CodeProps): any {
       </div>
 
       <style jsx>{`
-        .root :global(pre) {
+        .root :global(.dfr-Code) {
           border-radius: 0;
         }
       `}</style>
