@@ -1,12 +1,13 @@
 import React from "react";
 import classNames from "classnames";
 
+import { T_ReactChildrenProp, E_Icons } from "~/types";
+
 import Image from "../Image";
 import ICONS from "./icons";
 
-// TODO: Color prop
 type IconProps = {
-  icon: string;
+  icon: E_Icons;
   size?: number | string; // number: width | string: className
   iconClassName?: string;
   wrapperClassName?: string;
@@ -25,24 +26,7 @@ function Icon(props: IconProps) {
   );
 }
 
-Icon.icon = {
-  "500_PX": "500_PX",
-  GITHUB: "GITHUB",
-  GMAIL: "GMAIL",
-  SPOTIFY: "SPOTIFY",
-  WHATSAPP: "WHATSAPP",
-  YOUTUBE: "YOUTUBE",
-
-  CALENDAR: "CALENDAR",
-  CODE: "CODE",
-  EDIT: "EDIT",
-  LINK: "LINK",
-  MOON: "MOON",
-  SUN: "SUN",
-  X: "X",
-  ZOOM_IN: "ZOOM_IN",
-  ZOOM_OUT: "ZOOM_OUT",
-};
+Icon.icon = E_Icons;
 
 export default Icon;
 
@@ -54,7 +38,18 @@ function useController({
   iconClassName = "",
   wrapperClassName = "",
   withDarkModeBackground = false,
-}: IconProps) {
+}: IconProps): {
+  wrapperProps: { className: string } | undefined;
+  IconComponent: any;
+  iconComponentProps:
+    | {
+        src?: string;
+        alt?: string;
+        className: string;
+        style?: { width: number; height: number };
+      }
+    | undefined;
+} {
   const icon = ICONS[iconName];
 
   if (!icon) {
@@ -90,7 +85,7 @@ function useController({
         ...(typeof size === "number" && { style: { width: size, height: size } }),
       }
     : {
-        src: icon.icon,
+        src: icon.icon as string,
         alt: `${icon.props.alt} icon`,
         className: classNames(
           "tw-inline-block",
@@ -109,7 +104,13 @@ function useController({
 
 // --- Components ---
 
-function Wrapper({ children, className }: { children: JSX.Element; className?: string }) {
+function Wrapper({
+  children,
+  className = "",
+}: {
+  children: T_ReactChildrenProp;
+  className?: string;
+}) {
   return (
     <span className={classNames("tw-inline-flex tw-items-center tw-justify-center", className)}>
       {children}

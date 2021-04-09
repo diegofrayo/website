@@ -1,7 +1,14 @@
 import React from "react";
 import classNames from "classnames";
+import { T_ReactChildrenProp, T_ReactFCReturn } from "~/types";
 
-function List({ children, className }: Record<string, any>): any {
+function List({
+  children,
+  className = "",
+}: {
+  children: T_ReactChildrenProp;
+  className?: string;
+}): T_ReactFCReturn {
   return (
     <ul className={classNames("root tw-list-inside tw-list-none", className)}>
       {children}
@@ -13,9 +20,9 @@ function List({ children, className }: Record<string, any>): any {
           }
 
           .root :global(li) {
-            position: relative;
             @apply tw-mb-3;
             @apply last:tw-mb-0;
+            position: relative;
           }
 
           .root :global(li::before) {
@@ -40,7 +47,14 @@ export default List;
 
 // --- Components ---
 
-List.Item = function ListItem({ children, className = "", ...rest }) {
+List.Item = function ListItem({
+  children,
+  className = "",
+  ...rest
+}: {
+  children: T_ReactChildrenProp;
+  className?: string;
+}): T_ReactFCReturn {
   return (
     <li className={className} {...rest}>
       {children}

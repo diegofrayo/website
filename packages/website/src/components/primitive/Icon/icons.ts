@@ -9,7 +9,20 @@ import {
 } from "@heroicons/react/outline";
 import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 
-const ICONS = {
+import { E_Icons } from "~/types";
+
+const ICONS: Record<
+  E_Icons,
+  {
+    isLibraryIcon: boolean;
+    icon: string | any;
+    props: {
+      className?: string;
+      alt?: string;
+      color?: string;
+    };
+  }
+> = {
   "500_PX": {
     isLibraryIcon: false,
     icon: "/static/images/icons/500px.svg",

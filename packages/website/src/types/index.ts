@@ -1,4 +1,4 @@
-import { CSSProperties, RefObject } from "react";
+import React, { CSSProperties, RefObject } from "react";
 
 // --- Primitives ---
 
@@ -6,7 +6,7 @@ export type T_Primitive = string | number | boolean;
 
 export type T_ObjectWithPrimitives = Record<string, T_Primitive>;
 
-export type T_ReactChildrenProp = JSX.Element | string | (JSX.Element | string)[];
+export type T_ReactChildrenProp = React.ReactNode;
 
 export type T_ReactFCReturn = JSX.Element | null;
 
@@ -119,3 +119,22 @@ export type T_CodeProps = {
   fileName?: string;
   sourceURL?: string;
 };
+
+export enum E_Icons {
+  "500_PX" = "500_PX",
+  "GITHUB" = "GITHUB",
+  "GMAIL" = "GMAIL",
+  "SPOTIFY" = "SPOTIFY",
+  "WHATSAPP" = "WHATSAPP",
+  "YOUTUBE" = "YOUTUBE",
+
+  "CALENDAR" = "CALENDAR",
+  "CODE" = "CODE",
+  "EDIT" = "EDIT",
+  "LINK" = "LINK",
+  "MOON" = "MOON",
+  "SUN" = "SUN",
+  "X" = "X",
+  "ZOOM_IN" = "ZOOM_IN",
+  "ZOOM_OUT" = "ZOOM_OUT",
+}

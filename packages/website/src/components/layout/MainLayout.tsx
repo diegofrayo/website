@@ -7,7 +7,7 @@ import { Emoji } from "~/components/pages/_shared";
 import { useOnWindowScroll } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
-import { T_BreadcumbProps, T_GenerateSupportedLocales } from "~/types";
+import { E_Icons, T_BreadcumbProps, T_GenerateSupportedLocales } from "~/types";
 import { getScrollPosition } from "~/utils/browser";
 import { WebsiteMetadata } from "~/utils/constants";
 import { generateSlug } from "~/utils/strings";
@@ -271,7 +271,7 @@ function SocialIcons(): JSX.Element {
 }
 
 type T_SocialIconProps = {
-  icon: string;
+  icon: E_Icons;
   url: string;
   name: string;
   withDarkModeBackground?: boolean;

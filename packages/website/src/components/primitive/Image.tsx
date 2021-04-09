@@ -1,6 +1,10 @@
 import React from "react";
 
-function Image({ src, ...rest }: Record<string, any>): JSX.Element | null {
+import { T_ReactFCReturn } from "~/types";
+
+type T_Image = JSX.IntrinsicElements["img"];
+
+function Image({ src, ...rest }: T_Image): T_ReactFCReturn {
   if (!src) {
     console.warn("Image component: src is empty");
     return null;

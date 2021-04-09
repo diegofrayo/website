@@ -2,21 +2,26 @@ import React from "react";
 import NextLink from "next/link";
 
 import twcss from "~/lib/twcss";
-import { T_Locale } from "~/types";
+import { T_Locale, T_ReactChildrenProp, T_ReactFCReturn } from "~/types";
 
-type NextLink = any;
+enum E_Variants {
+  DEFAULT = "DEFAULT",
+  SECONDARY = "SECONDARY",
+  UNSTYLED = "UNSTYLED",
+}
 
 type T_LinkProps = {
-  children: any;
-  href: string;
-  className?: string;
-  role?: "button";
-  variant?: "DEFAULT" | "SECONDARY" | "UNSTYLED";
-  is?: string | NextLink;
+  children: T_ReactChildrenProp;
+  disabled?: boolean;
   external?: boolean;
+  is?: string;
   isNextLink?: boolean;
   locale?: T_Locale;
-  disabled?: boolean;
+  role?: "button";
+  variant?: E_Variants;
+
+  href: string;
+  className?: string;
 };
 
 function Link({
@@ -26,9 +31,9 @@ function Link({
   is = "a",
   external = true,
   isNextLink = false,
-  variant = VARIANTS.DEFAULT,
+  variant = E_Variants.DEFAULT,
   ...rest
-}: T_LinkProps): JSX.Element | null {
+}: T_LinkProps): T_ReactFCReturn {
   const { getExternalAttrs } = useController();
 
   if (!href || !children) {
@@ -60,13 +65,7 @@ function Link({
   );
 }
 
-const VARIANTS: Record<string, T_LinkProps["variant"]> = {
-  DEFAULT: "DEFAULT",
-  SECONDARY: "SECONDARY",
-  UNSTYLED: "UNSTYLED",
-};
-
-Link.variant = VARIANTS;
+Link.variant = E_Variants;
 
 export default Link;
 
