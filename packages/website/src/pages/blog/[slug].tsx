@@ -10,12 +10,7 @@ import { useInternationalization, useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
 import BlogService from "~/services/blog";
 import { T_BlogPost, T_Locale } from "~/types";
-import {
-  copyToClipboard,
-  getScrollPosition,
-  onScrollStoppedListener,
-  setScrollPosition,
-} from "~/utils/browser";
+import { copyToClipboard, getScrollPosition, setScrollPosition } from "~/utils/browser";
 import { WebsiteMetadata, GithubData } from "~/utils/constants";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
@@ -128,19 +123,40 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: T_BlogPostF
   const [showGoToTopButton, setShowGoToTopButton] = useState(false);
 
   useDidMount(() => {
-    onScrollStoppedListener({
-      onScroll: () => {
-        if (getScrollPosition() > 0) {
-          setShowGoToTopButton(true);
-        } else {
-          setShowGoToTopButton(false);
-        }
-      },
-      onScrollStopped: () => {
+    // TODO: Isolate this code
+
+    function onScroll() {
+      if (getScrollPosition() > 0) {
+        setShowGoToTopButton(true);
+      } else {
         setShowGoToTopButton(false);
-      },
-      timeout: 3000,
-    });
+      }
+    }
+
+    function onScrollStopped() {
+      if (!mounted) return;
+      setShowGoToTopButton(false);
+    }
+
+    let isScrolling = 0;
+    let mounted = true;
+
+    function onScrollCallback() {
+      window.clearTimeout(isScrolling);
+
+      onScroll();
+
+      isScrolling = window.setTimeout(() => {
+        onScrollStopped();
+      }, 3000);
+    }
+
+    window.addEventListener("scroll", onScrollCallback, false);
+
+    return () => {
+      mounted = false;
+      window.removeEventListener("scroll", onScrollCallback, false);
+    };
   });
 
   function generateBlogPostRawContentLink() {

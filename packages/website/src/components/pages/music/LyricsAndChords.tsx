@@ -48,7 +48,7 @@ function LyricsAndChords(props: T_LyricsAndChords): JSX.Element {
           )}
           <Space className="tw-mt-6 tw-mb-1" />
           <Button className="tw-text-center tw-block tw-w-full" onClick={handleModalClose}>
-            <Icon icon={Icon.icon.X} size={24} />
+            <Icon icon={Icon.icon.X} size={20} />
           </Button>
         </div>
       </Modal>

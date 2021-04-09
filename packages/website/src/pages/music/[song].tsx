@@ -82,10 +82,10 @@ function SongPage({ song, content }: T_SongPageProps): any {
           style={{ fontSize: `${fontSize}rem` }}
           variant={Blockquote.variant.UNSTYLED}
         >
-          <div className="tw-mb-10">
+          <div className="tw-mb-10 tw-text-sm">
             <Button
               className={classNames(
-                "tw-text-sm tw-inline-block tw-mr-3",
+                "tw-inline-block tw-mr-3",
                 fontSize === 2 && "tw-opacity-25 dark:tw-opacity-50",
               )}
               disabled={fontSize === 2}
@@ -95,7 +95,7 @@ function SongPage({ song, content }: T_SongPageProps): any {
             </Button>
             <Button
               className={classNames(
-                "tw-text-sm tw-inline-block tw-mr-3",
+                "tw-inline-block tw-mr-3",
                 fontSize === 0.6 && "tw-opacity-25 dark:tw-opacity-50",
               )}
               disabled={fontSize === 0.6}
@@ -104,7 +104,7 @@ function SongPage({ song, content }: T_SongPageProps): any {
               <Icon icon={Icon.icon.ZOOM_OUT} size={24} />
             </Button>
             <Button
-              className="tw-text-sm tw-inline-block tw-mr-3"
+              className="tw-inline-block tw-mr-3"
               data-clipboard-text={`${WebsiteMetadata.url}${Routes.MUSIC}/${song.id}`}
               onClick={copyToClipboard}
             >

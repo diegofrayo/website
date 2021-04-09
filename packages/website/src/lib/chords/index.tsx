@@ -66,8 +66,9 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: T_Ch
       <section ref={chordRef}>
         <Title
           is="h1"
-          variant={Title.variant.UNSTYLED}
-          className="tw-truncate tw-text-center tw-mb-2 tw-text-2xl"
+          variant={Title.variant.SECONDARY}
+          className="tw-truncate tw-text-center tw-mb-2"
+          size={Title.size.MD}
         >
           {name}
         </Title>
