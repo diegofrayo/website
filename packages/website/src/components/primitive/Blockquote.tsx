@@ -1,19 +1,15 @@
 import React from "react";
 import classNames from "classnames";
 
-import { T_ReactChildrenProp, T_ReactFCReturn, T_ReactStylesProp } from "~/types";
+import { T_HTML_Attributes, T_ReactFCReturn } from "~/types";
 
 enum E_Variants {
   DEFAULT = "DEFAULT",
   UNSTYLED = "UNSTYLED",
 }
 
-type T_Blockquote = {
-  children: T_ReactChildrenProp;
+type T_BlockquoteProps = T_HTML_Attributes["blockquote"] & {
   variant?: E_Variants;
-
-  className?: string;
-  style?: T_ReactStylesProp;
 };
 
 function Blockquote({
@@ -21,7 +17,7 @@ function Blockquote({
   className = "",
   variant = E_Variants.DEFAULT,
   ...rest
-}: T_Blockquote): T_ReactFCReturn {
+}: T_BlockquoteProps): T_ReactFCReturn {
   return (
     <blockquote
       className={classNames(

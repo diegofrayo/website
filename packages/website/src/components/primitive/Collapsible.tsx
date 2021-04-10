@@ -2,13 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { T_ReactChildrenProp, T_ReactFCReturn, T_ReactRefObject } from "~/types";
 
-type T_Collapsible = {
+type T_CollapsibleProps = {
   children: T_ReactChildrenProp;
   title?: string;
   openByDefault?: boolean;
 };
 
-function Collapsible({ children, ...rest }: T_Collapsible): T_ReactFCReturn {
+function Collapsible({ children, ...rest }: T_CollapsibleProps): T_ReactFCReturn {
   const { toggleIsCollapsed, title, containerRef } = useController(rest);
 
   return (
@@ -35,12 +35,12 @@ type T_UseController = {
 function useController({
   openByDefault = false,
   title = "",
-}: Omit<T_Collapsible, "children">): T_UseController {
+}: Omit<T_CollapsibleProps, "children">): T_UseController {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(openByDefault);
   const containerRef = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
-    if (!containerRef || !containerRef.current) return;
+    if (!containerRef?.current) return;
 
     if (isCollapsed === true) {
       containerRef.current.setAttribute("open", "");

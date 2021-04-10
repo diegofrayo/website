@@ -1,18 +1,20 @@
 import Data from "~/data/blog/posts.json";
 import { T_Locale, T_BlogPost, T_Primitive } from "~/types";
-import { sortBy } from "~/utils/misc";
+import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 
 class BlogService {
   composeTitle(post: T_BlogPost, locale: T_Locale): string {
-    return `${post.is_legacy ? "[LEGACY] " : ""}${post[locale]?.title}`;
+    return `${post.isLegacy ? "[LEGACY] " : ""}${post[locale]?.title}`;
   }
 
   async fetchPosts(): Promise<T_BlogPost[]> {
-    const result: T_BlogPost[] = ((Object.values(Data.posts) as T_BlogPost[]).filter(
-      (post: T_BlogPost) => {
-        return post.config.is_published === true;
-      },
-    ) as T_BlogPost[]).sort(sortBy([{ param: "published_at", order: "desc" }]));
+    const result = (Object.values(Data.posts).map(
+      transformObjectKeysFromSnakeCaseToLowerCamelCase,
+    ) as T_BlogPost[])
+      .filter((post: T_BlogPost) => {
+        return post.config.isPublished === true;
+      })
+      .sort(sortBy([{ param: "published_at", order: "desc" }]));
 
     return result;
   }
@@ -25,7 +27,7 @@ class BlogService {
       throw new Error(`Post not found. { config: "${JSON.stringify(config)}" }`);
     }
 
-    return post;
+    return transformObjectKeysFromSnakeCaseToLowerCamelCase(post);
   }
 }
 

@@ -1,4 +1,5 @@
 import { isBrowser } from "./browser";
+import { convertSnakeCaseToLowerCamelCase } from "./strings";
 
 export function createArray(length: number, start?: number): number[] {
   return Array.from(Array(length).keys()).map(value => value + (start === undefined ? 1 : start));
@@ -99,4 +100,32 @@ export function safeCastNumber(string: string, defaultNumber?: number) {
 
 export function escapeRegExp(text: string): string {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
+
+export function isPrimitiveValue(value) {
+  return (
+    value === undefined ||
+    value === null ||
+    typeof value === "string" ||
+    typeof value === "boolean" ||
+    typeof value === "number"
+  );
+}
+
+export function transformObjectKeysFromSnakeCaseToLowerCamelCase(object: any): any {
+  if (isPrimitiveValue(object)) return object;
+
+  return Object.entries(object).reduce((result, [key, value]) => {
+    const transformedKey = convertSnakeCaseToLowerCamelCase(key);
+
+    if (isPrimitiveValue(value)) {
+      result[transformedKey] = value;
+    } else if (Array.isArray(value)) {
+      result[transformedKey] = value.map(transformObjectKeysFromSnakeCaseToLowerCamelCase);
+    } else if (typeof value === "object") {
+      result[transformedKey] = transformObjectKeysFromSnakeCaseToLowerCamelCase(value);
+    }
+
+    return result;
+  }, {});
 }

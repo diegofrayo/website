@@ -1,22 +1,18 @@
 import React from "react";
 import classNames from "classnames";
 
-import { T_ReactChildrenProp, T_ReactStylesProp } from "~/types";
+import { T_HTML_Attributes } from "~/types";
 
 enum E_Variants {
   MULTILINE = "MULTILINE",
   INLINE = "INLINE",
 }
 
-type T_Code = {
-  children: T_ReactChildrenProp;
+type T_CodeProps = T_HTML_Attributes["pre"] & {
   variant?: E_Variants;
-
-  className?: string;
-  style?: T_ReactStylesProp;
 };
 
-function Code({ children, variant = E_Variants.MULTILINE, className, ...rest }: T_Code) {
+function Code({ children, variant = E_Variants.MULTILINE, className, ...rest }: T_CodeProps) {
   if (variant === E_Variants.INLINE) {
     return (
       <code className="dfr-Code tw-text-base tw-italic tw-text-red-700 dark:tw-text-red-400">

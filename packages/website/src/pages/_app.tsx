@@ -3,70 +3,56 @@ import "~/styles/tailwind.css";
 import "~/styles/index.post.css";
 import "~/styles/tailwind-utils.css";
 
-import React, { useState } from "react";
+import React from "react";
 import type { AppProps } from "next/app";
-import Router from "next/router";
 import { ThemeProvider } from "next-themes";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ToastContainer } from "react-toastify";
+import { ErrorBoundary } from "react-error-boundary";
 
 import { useDidMount } from "~/hooks";
 import { AssetsProvider } from "~/hooks/useAssets";
 import AnalyticsService from "~/services/analytics";
-import { setScrollPosition, detectEmojisSupport } from "~/utils/browser";
+import { T_ReactFCReturn } from "~/types";
+import { detectEmojisSupport } from "~/utils/browser";
 import { extractLocaleFromUrl, setCurrentLocale } from "~/utils/internationalization";
 
 import ErrorPage from "./_error";
 
 const queryClient = new QueryClient();
 
-function App({ Component, pageProps }: AppProps) {
-  const [error, setError] = useState(undefined);
-
+function App({ Component, pageProps }: AppProps): T_ReactFCReturn {
   useDidMount(() => {
     AnalyticsService.initAnalytics();
     setCurrentLocale(extractLocaleFromUrl());
     detectEmojisSupport();
-
-    Router.events.on("routeChangeComplete", function routeChangeComplete() {
-      setScrollPosition(0);
-    });
-
-    Router.events.on("routeChangeStart", () => {
-      setError(undefined);
-    });
   });
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="light"
-        enableSystem={false}
-        value={{ light: "tw-light", dark: "tw-dark" }}
-      >
-        {error ? (
-          <ErrorPage />
-        ) : (
+    <ErrorBoundary
+      FallbackComponent={ErrorPage}
+      onError={function onError(error: Error, info: { componentStack: string }) {
+        console.group("componentDidCatch (ErrorBoundary)");
+        console.error(error);
+        console.error(info);
+        console.groupEnd();
+      }}
+    >
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          value={{ light: "tw-light", dark: "tw-dark" }}
+        >
           <AssetsProvider>
             <Component {...pageProps} />
           </AssetsProvider>
-        )}
-        <ToastContainer autoClose={3000} hideProgressBar />
-      </ThemeProvider>
-    </QueryClientProvider>
+          <ToastContainer autoClose={3000} hideProgressBar />
+        </ThemeProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
-
-/*
-  componentDidCatch(error: Error, info: React.ErrorInfo): void {
-    console.group("componentDidCatch");
-    console.error(error);
-    console.error(info);
-    console.groupEnd();
-
-    this.setState({ error });
-  }
-*/
 
 export default App;

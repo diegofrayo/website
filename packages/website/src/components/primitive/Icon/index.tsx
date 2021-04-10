@@ -1,14 +1,15 @@
 import React from "react";
 import classNames from "classnames";
 
-import { T_ReactChildrenProp, E_Icons } from "~/types";
+import { E_Icons, T_HTML_Attributes } from "~/types";
 
 import Image from "../Image";
-import ICONS from "./icons";
+import { ICONS, T_Icon } from "./icons";
 
 type IconProps = {
   icon: E_Icons;
   size?: number | string; // number: width | string: className
+  color?: string;
   iconClassName?: string;
   wrapperClassName?: string;
   withDarkModeBackground?: boolean;
@@ -35,6 +36,7 @@ export default Icon;
 function useController({
   icon: iconName,
   size = undefined,
+  color = undefined,
   iconClassName = "",
   wrapperClassName = "",
   withDarkModeBackground = false,
@@ -61,11 +63,21 @@ function useController({
     };
   }
 
+  function getColorStyles(icon: T_Icon, color?: string): string {
+    if (color) {
+      return color;
+    }
+
+    if (icon.props.color) {
+      return icon.props.color;
+    }
+
+    return "tw-text-black dark:tw-text-white";
+  }
+
   const wrapperProps = {
     className: classNames(
-      withDarkModeBackground &&
-        !icon.isLibraryIcon &&
-        "dark:dfr-bg-secondary dark:tw-rounded-full tw-overflow-hidden",
+      withDarkModeBackground && "dark:dfr-bg-secondary dark:tw-rounded-full tw-overflow-hidden",
       wrapperClassName,
     ),
   };
@@ -79,8 +91,7 @@ function useController({
           icon.props.className,
           iconClassName,
 
-          icon.props.color || "tw-text-black",
-          !icon.props.color && "dark:tw-text-white",
+          getColorStyles(icon, color),
         ),
         ...(typeof size === "number" && { style: { width: size, height: size } }),
       }
@@ -104,13 +115,7 @@ function useController({
 
 // --- Components ---
 
-function Wrapper({
-  children,
-  className = "",
-}: {
-  children: T_ReactChildrenProp;
-  className?: string;
-}) {
+function Wrapper({ children, className = "" }: T_HTML_Attributes["span"]) {
   return (
     <span className={classNames("tw-inline-flex tw-items-center tw-justify-center", className)}>
       {children}

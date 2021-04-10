@@ -57,10 +57,10 @@ function BlogPostPage({ post, content }: T_BlogPostPageProps): any {
       >
         <MDXContent content={mdxContent} />
         <BlogPostFooter
-          createdAt={post.created_at}
-          publishedAt={post.published_at}
+          createdAt={post.createdAt}
+          publishedAt={post.publishedAt}
           slug={post.slug}
-          updatedAt={post.updated_at}
+          updatedAt={post.updatedAt}
         />
       </MainLayout>
     </Page>
@@ -90,9 +90,9 @@ export async function getStaticProps({
   const file = fs.readFileSync(
     `${process.cwd()}/src/data/blog/posts/${getItemLocale(
       post.locales,
-      post.default_locale,
+      post.defaultLocale,
       locale,
-    )}/${post.created_at}-${post.slug}.mdx`,
+    )}/${post.createdAt}-${post.slug}.mdx`,
     "utf8",
   );
   const content = await renderToString(file, {
@@ -107,12 +107,7 @@ export default BlogPostPage;
 
 // --- Components ---
 
-type T_BlogPostFooterProps = {
-  createdAt: string;
-  publishedAt: string;
-  slug: string;
-  updatedAt: string;
-};
+type T_BlogPostFooterProps = Pick<T_BlogPost, "createdAt" | "publishedAt" | "slug" | "updatedAt">;
 
 function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: T_BlogPostFooterProps): any {
   const { SiteTexts, currentLocale } = useInternationalization({
@@ -120,7 +115,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: T_BlogPostF
     layout: true,
   });
 
-  const [showGoToTopButton, setShowGoToTopButton] = useState(false);
+  const [showGoToTopButton, setShowGoToTopButton] = useState<boolean>(false);
 
   useDidMount(() => {
     // TODO: Isolate this code
@@ -184,7 +179,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: T_BlogPostF
             <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
           </BlogPostFooterItem>
         </div>
-        <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start  tw-justify-center tw-flex-col sm:tw-items-end tw-mt-2 sm:tw-mt-0">
+        <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col sm:tw-items-end tw-mt-2 sm:tw-mt-0">
           <BlogPostFooterItem
             is={Button}
             className="clipboard"

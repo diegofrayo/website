@@ -7,6 +7,16 @@ export function convertToCapitalLetter(str: string): string {
     .trim();
 }
 
+export function convertSnakeCaseToLowerCamelCase(str: string): string {
+  return str
+    .split("_")
+    .map((item: string, index: number) => {
+      return index === 0 ? item : item[0].toUpperCase() + item.substring(1);
+    })
+    .join("")
+    .trim();
+}
+
 export function removeEmojiFromPageTitle(str: string): string {
   return str.split(" ").slice(1).join(" ").trim();
 }

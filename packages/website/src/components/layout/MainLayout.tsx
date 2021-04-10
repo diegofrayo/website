@@ -170,7 +170,7 @@ function LocalesSelector({ locales, currentLocale }: T_LocalesSelectorProps): an
 
   return (
     <div className="tw-text-sm">
-      {locales.sort(sortBy([{param: "name", order: "asc"}])).map((locale, index) => {
+      {locales.sort(sortBy([{ param: "name", order: "asc" }])).map((locale, index) => {
         return (
           <Fragment key={`LocalesSelector-${locale.name}`}>
             {currentLocale === locale.name ? (
@@ -195,19 +195,24 @@ function Breadcumb({ items }: T_BreadcumbProps): JSX.Element {
 
   return (
     <ul className="root tw-block tw-text-left tw-pb-1">
-      {items.map((item, index) => {
+      {items.map(({ text, url = Routes.HOME, isNextLink = true }, index) => {
         if (index === items.length - 1 && hasMoreThanOneItem) {
           return (
-            <li key={`Breadcumb-li-${generateSlug(item.text)}`} className="tw-inline-block">
-              <span className="tw-text-base tw-italic">{item.text}</span>
+            <li key={`Breadcumb-li-${generateSlug(text)}`} className="tw-inline-block">
+              <span className="tw-text-base tw-italic">{text}</span>
             </li>
           );
         }
 
         return (
-          <li key={`Breadcumb-li-${generateSlug(item.text)}`} className="tw-inline-block tw-mr-2">
-            <Link href={item.url || Routes.HOME} variant={Link.variant.SECONDARY} isNextLink>
-              <span className="tw-underline tw-font-bold tw-text-base">{item.text}</span>
+          <li key={`Breadcumb-li-${generateSlug(text)}`} className="tw-inline-block tw-mr-2">
+            <Link
+              href={url}
+              variant={Link.variant.SECONDARY}
+              isNextLink={isNextLink}
+              external={false}
+            >
+              <span className="tw-underline tw-font-bold tw-text-base">{text}</span>
             </Link>
           </li>
         );

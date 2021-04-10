@@ -18,6 +18,7 @@ function ErrorPage({ statusCode }: T_ErrorPageProps): any {
           {
             text: SiteTexts.page.current_locale.breadcumb,
             url: Routes.HOME,
+            isNextLink: false,
           },
         ]}
         title={SiteTexts.page.current_locale.title}

@@ -107,7 +107,7 @@ function HowToRecycle() {
   return (
     <article className="tw-max-w-sm tw-mx-auto tw-border tw-px-6 tw-py-6">
       <h1 className="tw-text-center tw-text-2xl">Titulo</h1>
-      <span className="tw-bg-gray-300 tw-text-white tw-flex  tw-items-center tw-justify-center tw-w-64 tw-h-64 tw-mx-auto tw-my-10 tw-max-w-full">
+      <span className="tw-bg-gray-300 tw-text-white tw-flex tw-items-center tw-justify-center tw-w-64 tw-h-64 tw-mx-auto tw-my-10 tw-max-w-full">
         Imagen
       </span>
       <div>

@@ -1,16 +1,9 @@
 import React from "react";
 import classNames from "classnames";
 
-import { T_ReactChildrenProp, T_ReactFCReturn, T_ReactStylesProp } from "~/types";
+import { T_HTML_Attributes, T_ReactFCReturn } from "~/types";
 
-type T_Button = {
-  children: T_ReactChildrenProp;
-
-  disabled?: boolean;
-  className?: string;
-  style?: T_ReactStylesProp;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => unknown;
-};
+type T_ButtonProps = T_HTML_Attributes["button"];
 
 function Button({
   children,
@@ -18,7 +11,7 @@ function Button({
   className = "",
   onClick,
   ...rest
-}: T_Button): T_ReactFCReturn {
+}: T_ButtonProps): T_ReactFCReturn {
   return (
     <button
       className={classNames("tw-transition-opacity hover:tw-opacity-75", className)}

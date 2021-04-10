@@ -6,7 +6,7 @@ import { List, Link } from "~/components/primitive";
 import { Render } from "~/components/pages/_shared";
 import { useInternationalization, useQuery } from "~/hooks";
 import BlogService from "~/services/blog";
-import { T_BlogPost, T_Locale, T_ReactFCReturn } from "~/types";
+import { T_BlogPost, T_BlogPostLocaleData, T_Locale, T_ReactFCReturn } from "~/types";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { Routes } from "~/utils/routing";
@@ -47,7 +47,7 @@ function BlogPage(): any {
                 {data.map(post => {
                   const locale: T_Locale = getItemLocale(
                     post.locales,
-                    post.default_locale,
+                    post.defaultLocale,
                     currentLocale,
                   );
 
@@ -58,7 +58,7 @@ function BlogPage(): any {
                       title={BlogService.composeTitle(post, locale)}
                       locale={locale}
                       categories={post[locale].categories}
-                      updatedAt={post.updated_at}
+                      updatedAt={post.updatedAt}
                     />
                   );
                 })}
@@ -75,14 +75,10 @@ export default BlogPage;
 
 // --- Components ---
 
-// TODO: Reuse T_BlogPosts
-type T_BlogEntryProps = {
-  slug: string;
-  title: string;
-  locale: T_Locale;
-  categories: [{ id: number; value: string }];
-  updatedAt: string;
-};
+type T_BlogEntryProps = Pick<T_BlogPost, "slug" | "updatedAt"> &
+  Pick<T_BlogPostLocaleData, "title" | "categories"> & {
+    locale: T_Locale;
+  };
 
 function BlogEntry({
   slug,

@@ -14,6 +14,8 @@ export type T_ReactStylesProp = CSSProperties;
 
 export type T_ReactRefObject<Type> = RefObject<Type>;
 
+export type T_HTML_Attributes = JSX.IntrinsicElements;
+
 // --- Internationalization ---
 
 export type T_Locale = "es" | "en";
@@ -59,31 +61,31 @@ export type T_GetAssetsParam = "vr"[];
 
 interface T_BlogPostBase {
   slug: string;
-  is_legacy: boolean;
-  default_locale: T_Locale;
+  isLegacy: boolean;
+  defaultLocale: T_Locale;
   locales: T_Locale[];
-  created_at: string;
-  published_at: string;
-  updated_at: string;
+  createdAt: string;
+  publishedAt: string;
+  updatedAt: string;
   config: {
-    is_published: boolean;
-    meta_no_robots: boolean;
+    isPublished: boolean;
+    metaNoRobots: boolean;
   };
   assets?: Record<string, string>;
 }
 
+export type T_BlogPostLocaleData = {
+  title: string;
+  description: string;
+  categories: [{ id: number; value: string }];
+};
+
 interface T_BlogPostBaseWithES extends T_BlogPostBase {
-  es: {
-    title: string;
-    description: string;
-  };
+  es: T_BlogPostLocaleData;
 }
 
 interface T_BlogPostBaseWithEN extends T_BlogPostBase {
-  en: {
-    title: string;
-    description: string;
-  };
+  en: T_BlogPostLocaleData;
 }
 
 export type T_BlogPost = T_BlogPostBaseWithES | T_BlogPostBaseWithEN;
@@ -110,6 +112,7 @@ export type T_BreadcumbProps = {
   items: {
     text: string;
     url?: T_PagesRoutes;
+    isNextLink?: boolean;
   }[];
 };
 

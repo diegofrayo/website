@@ -27,7 +27,7 @@ export default withTranslations(HomePage, { page: Routes.HOME });
 
 // --- Components ---
 
-function Content({ SiteTexts }) {
+function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }) {
   const ITEMS: { emoji: string; label: string; url: T_PagesRoutes }[] = [
     {
       emoji: "✍️",
