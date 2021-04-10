@@ -1,3 +1,5 @@
+import { createArray } from "./misc";
+
 export function convertToCapitalLetter(str: string): string {
   return str
     .toLowerCase()
@@ -27,9 +29,10 @@ export function generateSlug(str: string): string {
   // remove accents, swap ñ for n, etc
   const FROM = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
   const TO = "aaaaeeeeiiiioooouuuunc------";
-  for (let i = 0, l = FROM.length; i < l; i += 1) {
+
+  createArray(FROM.length).forEach((i) => {
     result = result.replace(new RegExp(FROM.charAt(i), "g"), TO.charAt(i));
-  }
+  });
 
   result = result
     .replace(/[^a-z0-9 -]/g, "") // remove invalid chars

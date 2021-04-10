@@ -1,10 +1,21 @@
 import Data from "~/data/music/songs.json";
-import { T_Song } from "~/types";
+import { T_Primitive, T_Song } from "~/types";
 import { escapeRegExp, sortBy } from "~/utils/misc";
 
 class MusicService {
   async fetchSongsList(): Promise<T_Song[]> {
     return Data.songs;
+  }
+
+  async getSong(config: Record<"id", T_Primitive>): Promise<T_Song> {
+    const songs = await this.fetchSongsList();
+    const song = songs.find((song) => song.id === config.id);
+
+    if (song === undefined) {
+      throw new Error(`Song not found. { config: "${JSON.stringify(config)}" }`);
+    }
+
+    return song;
   }
 
   parseLyricsAndChords(songContent): string {

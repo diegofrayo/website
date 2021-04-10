@@ -2,6 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Link, Icon, Title as TitlePrimitive } from "~/components/primitive";
+import { T_Object, T_ReactFCReturn } from "~/types";
 
 export { default as Code } from "./Code";
 export { default as Playground } from "./Playground";
@@ -42,7 +43,7 @@ export function Render({
   error: any;
   data: any;
   children: any;
-}) {
+}): T_ReactFCReturn {
   if (isLoading) {
     return (
       <div className="tw-p-2 tw-text-center">
@@ -145,8 +146,8 @@ export function GithubRepo({ name, url, description }: T_GithubRepoProps): any {
   );
 }
 
-export function Title(Tag: "h1" | "h2" | "h3" | "h4", props): any {
-  return function TitleComponent({ children }: Record<string, any>): any {
+export function Title(Tag: "h1" | "h2" | "h3" | "h4", props: T_Object): any {
+  return function TitleComponent({ children }: T_Object): any {
     return (
       <TitlePrimitive is={Tag} {...props}>
         {children}

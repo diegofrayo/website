@@ -2,7 +2,7 @@ import { useRef } from "react";
 
 import useDidMount from "./useDidMount";
 
-function useIsMountedRef() {
+function useIsMountedRef(): { isComponentMounted: boolean } {
   const isMountedRef = useRef(true);
 
   useDidMount(function didMount() {

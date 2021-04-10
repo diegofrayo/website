@@ -4,11 +4,11 @@ import classNames from "classnames";
 
 import { Link, Space, Title, Icon, Button } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
-import { useOnWindowScroll } from "~/hooks";
+import { useDidMount, useOnWindowScroll } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
-import { E_Icons, T_BreadcumbProps, T_GenerateSupportedLocales } from "~/types";
-import { getScrollPosition } from "~/utils/browser";
+import { E_Icons, T_BreadcumbProps, T_GenerateSupportedLocales, T_ReactFCReturn } from "~/types";
+import { getScrollPosition, setScrollPosition } from "~/utils/browser";
 import { WebsiteMetadata } from "~/utils/constants";
 import { generateSlug } from "~/utils/strings";
 import { Routes } from "~/utils/routing";
@@ -18,9 +18,16 @@ type T_MainLayoutProps = {
   children: any;
   locales?: T_GenerateSupportedLocales;
   breadcumb?: T_BreadcumbProps["items"];
+  showGoToTopButton?: boolean;
 };
 
-function MainLayout({ children, locales, breadcumb, title }: T_MainLayoutProps): JSX.Element {
+function MainLayout({
+  children,
+  locales,
+  breadcumb,
+  title = "",
+  showGoToTopButton = false,
+}: T_MainLayoutProps): T_ReactFCReturn {
   return (
     <Main>
       <Header locales={locales} />
@@ -46,7 +53,7 @@ function MainLayout({ children, locales, breadcumb, title }: T_MainLayoutProps):
       </Body>
       <Space size={2} />
 
-      <Footer />
+      <Footer showGoToTopButton={showGoToTopButton} />
     </Main>
   );
 }
@@ -65,7 +72,7 @@ type T_HeaderProps = {
 };
 */
 
-const Header = safeRender(function Header(): any {
+const Header = safeRender(function Header(): T_ReactFCReturn {
   /*
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
@@ -111,7 +118,7 @@ const Header = safeRender(function Header(): any {
   );
 });
 
-function HeaderContent() {
+function HeaderContent(): T_ReactFCReturn {
   return (
     <div className="root tw-flex tw-items-center tw-w-full tw-h-full">
       <div className="tw-flex-1 tw-min-h-0 tw-mr-4">
@@ -131,7 +138,7 @@ function HeaderContent() {
   );
 }
 
-function DarkModeToggle(): any {
+function DarkModeToggle(): T_ReactFCReturn {
   const { theme, setTheme } = useTheme();
 
   const isDarkMode = theme === "dark";
@@ -190,7 +197,7 @@ function LocalesSelector({ locales, currentLocale }: T_LocalesSelectorProps): an
 }
 */
 
-function Breadcumb({ items }: T_BreadcumbProps): JSX.Element {
+function Breadcumb({ items }: T_BreadcumbProps): T_ReactFCReturn {
   const hasMoreThanOneItem: boolean = items.length > 1;
 
   return (
@@ -230,15 +237,16 @@ function Breadcumb({ items }: T_BreadcumbProps): JSX.Element {
   );
 }
 
-function Footer() {
+function Footer({ showGoToTopButton }): T_ReactFCReturn {
   return (
     <footer className="tw-flex tw-justify-end tw-items-end tw-h-32">
       <SocialIcons />
+      {showGoToTopButton && <GoToTopButton />}
     </footer>
   );
 }
 
-function SocialIcons(): JSX.Element {
+function SocialIcons(): T_ReactFCReturn {
   const SOCIAL_NETWORKS = [
     {
       name: "email",
@@ -280,10 +288,65 @@ type T_SocialIconProps = {
   withDarkModeBackground?: boolean;
 };
 
-function SocialIcon({ icon, url, withDarkModeBackground }: T_SocialIconProps): any {
+function SocialIcon({ icon, url, withDarkModeBackground }: T_SocialIconProps): T_ReactFCReturn {
   return (
     <Link href={url} className="tw-inline-block tw-ml-4" variant={Link.variant.UNSTYLED}>
       <Icon icon={icon} size={24} withDarkModeBackground={withDarkModeBackground} />
     </Link>
+  );
+}
+
+function GoToTopButton(): T_ReactFCReturn {
+  const [showGoToTopButton, setShowGoToTopButton] = useState<boolean>(false);
+
+  useDidMount(() => {
+    // TODO: Isolate this code
+
+    function onScroll() {
+      if (getScrollPosition() > 0) {
+        setShowGoToTopButton(true);
+      } else {
+        setShowGoToTopButton(false);
+      }
+    }
+
+    function onScrollStopped() {
+      if (!mounted) return;
+      setShowGoToTopButton(false);
+    }
+
+    let isScrolling = 0;
+    let mounted = true;
+
+    function onScrollCallback() {
+      window.clearTimeout(isScrolling);
+
+      onScroll();
+
+      isScrolling = window.setTimeout(() => {
+        onScrollStopped();
+      }, 3000);
+    }
+
+    window.addEventListener("scroll", onScrollCallback, false);
+
+    return () => {
+      mounted = false;
+      window.removeEventListener("scroll", onScrollCallback, false);
+    };
+  });
+
+  if (!showGoToTopButton) return null;
+
+  return (
+    <Button
+      className="root tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-transition-opacity hover:tw-opacity-75"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.75)" }}
+      onClick={() => {
+        setScrollPosition(0);
+      }}
+    >
+      <span className="tw-relative tw--top-0.5 tw-text-white tw-font-bold">↑</span>
+    </Button>
   );
 }

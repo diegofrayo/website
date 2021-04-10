@@ -2,12 +2,11 @@ import React from "react";
 import { useRouter } from "next/router";
 import hoistNonReactStatics from "hoist-non-react-statics";
 
-import { T_GetSiteTextsParam, T_Locale } from "~/types";
+import { T_GetSiteTextsParam, T_Locale, T_Object, T_ReactFCReturn } from "~/types";
 import { getSiteTexts, setCurrentLocale } from "~/utils/internationalization";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function withTranslations(Component: any, config: T_GetSiteTextsParam): any {
-  const WithTranslationsHOC = (props: Record<string, any>): any => {
+  const WithTranslationsHOC = (props: T_Object): T_ReactFCReturn => {
     const { locale } = useRouter();
     setCurrentLocale(locale as T_Locale);
 

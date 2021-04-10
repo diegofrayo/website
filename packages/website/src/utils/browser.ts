@@ -1,11 +1,11 @@
 import { toast } from "react-toastify";
 
-import { T_SiteTexts } from "~/types";
+import { T_SiteTexts, T_HTMLElement } from "~/types";
 
 import { getSiteTexts } from "./internationalization";
 
-export function getScrollPosition(): number {
-  return document.body.scrollTop || document.documentElement.scrollTop || 0;
+export function getScrollPosition(element?: T_HTMLElement | null): number {
+  return element?.scrollTop || document.body.scrollTop || document.documentElement.scrollTop || 0;
 }
 
 export function setScrollPosition(val: number): void {
@@ -95,17 +95,33 @@ export function detectEmojisSupport(): void {
   }
 }
 
-export function focusElement(element) {
+export function focusElement(element: T_HTMLElement): void {
   element.focus();
   element.click();
 }
 
-export function isSmallScreen() {
-  return getScreenSize() === "SM";
+export function isSmallScreen(): boolean {
+  return getScreenSize() === "XS";
 }
 
 export function isBrowser(): boolean {
   return typeof window !== "undefined";
+}
+
+export function isInViewport(element?: HTMLElement | null): boolean {
+  if (!element) {
+    console.warn("isInViewport element param is invalid");
+    return false;
+  }
+
+  const bounding = element.getBoundingClientRect();
+
+  return (
+    bounding.top >= 0 &&
+    bounding.left >= 0 &&
+    bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
 }
 
 // --- Private functions ---
@@ -113,7 +129,7 @@ export function isBrowser(): boolean {
 function getAndroidVersion(): number {
   try {
     const ua: string = navigator.userAgent.toLowerCase();
-    const match: RegExpMatchArray | null = ua.match(/android\s([0-9\.]*)/);
+    const match: RegExpMatchArray | null = ua.match(/android\s([0-9.]*)/);
 
     if (!match) throw new Error();
 
@@ -130,6 +146,10 @@ function isAndroid(): boolean {
 
 function getScreenSize() {
   const width = window.innerWidth;
+
+  if (width < 640) {
+    return "XS";
+  }
 
   if (width < 768) {
     return "SM";

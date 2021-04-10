@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { T_HTML_Attributes } from "~/types";
+import { T_HTML_Attributes, T_ReactFCReturn } from "~/types";
 
 enum E_Variants {
   MULTILINE = "MULTILINE",
@@ -12,7 +12,12 @@ type T_CodeProps = T_HTML_Attributes["pre"] & {
   variant?: E_Variants;
 };
 
-function Code({ children, variant = E_Variants.MULTILINE, className, ...rest }: T_CodeProps) {
+function Code({
+  children,
+  variant = E_Variants.MULTILINE,
+  className,
+  ...rest
+}: T_CodeProps): T_ReactFCReturn {
   if (variant === E_Variants.INLINE) {
     return (
       <code className="dfr-Code tw-text-base tw-italic tw-text-red-700 dark:tw-text-red-400">

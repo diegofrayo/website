@@ -15,6 +15,7 @@ import { copyToClipboard, isBrowser } from "~/utils/browser";
 import { WebsiteMetadata } from "~/utils/constants";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { Routes } from "~/utils/routing";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 type T_SongPageProps = {
   song: T_Song;
@@ -77,6 +78,7 @@ function SongPage({ song, content }: T_SongPageProps): any {
           },
         ]}
         title={song.title}
+        showGoToTopButton
       >
         <SongDetails song={song} SiteTexts={SiteTexts} className="tw-mb-8" />
 
@@ -126,31 +128,28 @@ function SongPage({ song, content }: T_SongPageProps): any {
   );
 }
 
-// TODO: Next types
-export async function getStaticPaths(): Promise<Record<string, any>> {
+export const getStaticPaths: GetStaticPaths<{ song: string }> = async function getStaticPaths() {
   return {
     paths: (await MusicService.fetchSongsList()).reduce((result, song: T_Song) => {
       return result.concat([{ params: { song: song.id } }]);
     }, [] as Array<any>),
     fallback: false,
   };
-}
+};
 
-// TODO: Next types
-export async function getStaticProps({
-  params,
-}: Record<string, any>): Promise<Record<string, any>> {
-  const song: T_Song | undefined = (await MusicService.fetchSongsList()).find(
-    (song) => song.id === params.song,
-  );
+export const getStaticProps: GetStaticProps<
+  T_SongPageProps,
+  { song: string }
+> = async function getStaticProps({ params }) {
+  const song = await MusicService.getSong({ id: params?.song });
 
-  const file = fs.readFileSync(`${process.cwd()}/src/data/music/songs/${song?.id}.mdx`, "utf8");
+  const file = fs.readFileSync(`${process.cwd()}/src/data/music/songs/${song.id}.mdx`, "utf8");
   const content = await renderToString(file, {
     components: MDXComponents,
     scope: { DATA: { ...MDXScope.DATA, song } },
   });
 
   return { props: { song, content } };
-}
+};
 
 export default SongPage;

@@ -1,7 +1,12 @@
 import { createArray } from "~/utils/misc";
 
+import { T_ReactRefObject } from "~/types";
+
 class ChordsService {
-  async downloadChordAsImage(containerRef, chordName): Promise<void> {
+  async downloadChordAsImage(
+    containerRef: T_ReactRefObject<HTMLDivElement>,
+    chordName: string,
+  ): Promise<void> {
     const domtoimage = await import("dom-to-image");
 
     domtoimage.toPng(containerRef.current, { quality: 1 }).then((dataUrl) => {
@@ -12,7 +17,15 @@ class ChordsService {
     });
   }
 
-  groupChordsByFret(chordsParam: T_GroupChordsByFretParams) {
+  groupChordsByFret(
+    chordsParam: T_GroupChordsByFretParams,
+  ): {
+    chordsToString: string;
+    firstFret: number;
+    lastFret: number;
+    chordsGroupedByFret: any;
+    error: Error | undefined;
+  } {
     try {
       const chords: T_Chord[] =
         chordsParam === ""

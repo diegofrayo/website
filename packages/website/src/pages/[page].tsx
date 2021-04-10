@@ -57,6 +57,7 @@ function SitePage({ content, page, SiteTexts }: T_SitePageProps): T_ReactChildre
           },
         ]}
         title={SiteTexts.page.current_locale.title}
+        showGoToTopButton
       >
         <MDXContent
           variant={
@@ -69,7 +70,9 @@ function SitePage({ content, page, SiteTexts }: T_SitePageProps): T_ReactChildre
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+export const getStaticPaths: GetStaticPaths<{ page: string }> = async function getStaticPaths({
+  locales,
+}) {
   return {
     paths: DYNAMIC_MAIN_PAGES.reduce((result, page: string) => {
       return (result as any[]).concat(
@@ -82,7 +85,10 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
+export const getStaticProps: GetStaticProps<
+  T_SitePageProps,
+  { page: string }
+> = async function getStaticProps({ params, locale }) {
   const SiteTexts: T_SiteTexts = getSiteTexts({
     page: Routes[generateObjectKeyInUpperCase(params?.page as string)],
     layout: true,
@@ -103,7 +109,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     scope: MDXScope,
   });
 
-  return { props: { content, page: params?.page, SiteTexts } };
+  return { props: { content, page: params?.page as T_PagesRoutes, SiteTexts } };
 };
 
 export default SitePage;

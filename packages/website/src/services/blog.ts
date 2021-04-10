@@ -27,7 +27,7 @@ class BlogService {
       throw new Error(`Post not found. { config: "${JSON.stringify(config)}" }`);
     }
 
-    return transformObjectKeysFromSnakeCaseToLowerCamelCase(post);
+    return transformObjectKeysFromSnakeCaseToLowerCamelCase(post) as T_BlogPost;
   }
 }
 

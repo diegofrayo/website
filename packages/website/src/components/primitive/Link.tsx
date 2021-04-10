@@ -3,7 +3,8 @@ import classNames from "classnames";
 import NextLink from "next/link";
 
 import twcss from "~/lib/twcss";
-import { T_Locale, T_ReactChildrenProp, T_ReactFCReturn } from "~/types";
+import { T_Locale, T_ReactChildrenProp, T_ReactFCReturn, T_HTML_Attributes } from "~/types";
+import { getScrollPosition, isSmallScreen, setScrollPosition } from "~/utils/browser";
 
 enum E_Variants {
   DEFAULT = "DEFAULT",
@@ -11,7 +12,7 @@ enum E_Variants {
   UNSTYLED = "UNSTYLED",
 }
 
-type T_LinkProps = {
+type T_LinkProps = T_HTML_Attributes["a"] & {
   children: T_ReactChildrenProp;
   disabled?: boolean;
   external?: boolean;
@@ -20,9 +21,6 @@ type T_LinkProps = {
   locale?: T_Locale;
   role?: "button";
   variant?: E_Variants;
-
-  href: string;
-  className?: string;
 };
 
 function Link({
@@ -35,7 +33,7 @@ function Link({
   variant = E_Variants.DEFAULT,
   ...rest
 }: T_LinkProps): T_ReactFCReturn {
-  const { getExternalAttrs } = useController();
+  const { getExternalAttrs, onClick } = useController(href);
 
   if (!href || !children) {
     console.warn("Link component: href or children are falsy");
@@ -63,6 +61,7 @@ function Link({
       className={classNames("dfr-Link", className)}
       tw-variant={variant}
       is={is}
+      onClick={onClick}
       {...getExternalAttrs(href, external)}
       {...rest}
     >
@@ -77,13 +76,27 @@ export default Link;
 
 // --- Controller ---
 
-function useController() {
+function useController(href) {
   function getExternalAttrs(href, external) {
     if (external === false || href.startsWith("#")) return {};
     return { target: "_blank", rel: "noreferrer" };
   }
 
-  return { getExternalAttrs };
+  function onClick() {
+    setTimeout(() => {
+      if (!isSmallScreen()) {
+        return;
+      }
+
+      const currentScrollPosition = getScrollPosition();
+      setScrollPosition(currentScrollPosition - 80);
+    }, 10);
+  }
+
+  return {
+    getExternalAttrs,
+    onClick: href.startsWith("#") ? onClick : undefined,
+  };
 }
 
 // --- Components ---

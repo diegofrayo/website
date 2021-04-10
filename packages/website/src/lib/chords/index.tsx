@@ -8,6 +8,7 @@ import { createArray } from "~/utils/misc";
 
 import twcss from "./../twcss";
 import Service from "./service";
+import { T_ReactFCReturn } from "~/types";
 
 interface T_ChordBase {
   fret: number;
@@ -144,7 +145,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: T_Ch
   );
 }
 
-export function Solo({ positions, notes }) {
+export function Solo({ positions, notes }): T_ReactFCReturn {
   return (
     <div className="tw-text-sm tw-pr-2 tw-font-serif">
       <div className="tw-flex tw-items-end">

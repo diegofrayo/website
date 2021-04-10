@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { E_Icons, T_HTML_Attributes } from "~/types";
+import { E_Icons, T_HTML_Attributes, T_ReactFCReturn } from "~/types";
 
 import Image from "../Image";
 import { ICONS, T_Icon } from "./icons";
@@ -15,7 +15,7 @@ type IconProps = {
   withDarkModeBackground?: boolean;
 };
 
-function Icon(props: IconProps) {
+function Icon(props: IconProps): T_ReactFCReturn {
   const { wrapperProps, IconComponent, iconComponentProps } = useController(props);
 
   if (!IconComponent) return null;

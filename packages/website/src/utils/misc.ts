@@ -1,3 +1,5 @@
+import { T_Object, T_Primitive } from "~/types";
+
 import { isBrowser } from "./browser";
 import { convertSnakeCaseToLowerCamelCase } from "./strings";
 
@@ -56,7 +58,7 @@ export function sortBy(
   params?: { param: string; order?: "asc" | "desc" }[],
   order?: "asc" | "desc",
 ) {
-  return function sortByReturn(a, b): number {
+  return function sortByReturn(a: T_Object | T_Primitive, b: T_Object | T_Primitive): number {
     let paramsFinal = params;
 
     if (!paramsFinal) {
@@ -70,8 +72,8 @@ export function sortBy(
         const greater = order === "desc" ? -1 : 1;
         const smaller = order === "desc" ? 1 : -1;
 
-        const aParam = param ? a[param] : a;
-        const bParam = param ? b[param] : b;
+        const aParam = param ? (a as T_Object)[param] : a;
+        const bParam = param ? (b as T_Object)[param] : b;
 
         if (aParam > bParam) {
           return { result: greater, finish: true };
@@ -88,11 +90,11 @@ export function sortBy(
   };
 }
 
-export function safeCastNumber(string: string, defaultNumber?: number) {
+export function safeCastNumber(string: string, defaultNumber = 0): number {
   const number = Number(string);
 
   if (Number.isNaN(number)) {
-    return Number.isInteger(defaultNumber) ? defaultNumber : 0;
+    return defaultNumber;
   }
 
   return number;
@@ -102,7 +104,7 @@ export function escapeRegExp(text: string): string {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
 
-export function isPrimitiveValue(value) {
+export function isPrimitiveValue(value: T_Primitive | T_Object): boolean {
   return (
     value === undefined ||
     value === null ||
@@ -112,10 +114,12 @@ export function isPrimitiveValue(value) {
   );
 }
 
-export function transformObjectKeysFromSnakeCaseToLowerCamelCase(object: any): any {
+export function transformObjectKeysFromSnakeCaseToLowerCamelCase(
+  object: T_Object | T_Primitive,
+): T_Object | T_Primitive {
   if (isPrimitiveValue(object)) return object;
 
-  return Object.entries(object).reduce((result, [key, value]) => {
+  return Object.entries(object as T_Object).reduce((result, [key, value]) => {
     const transformedKey = convertSnakeCaseToLowerCamelCase(key);
 
     if (isPrimitiveValue(value)) {

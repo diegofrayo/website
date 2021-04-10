@@ -54,8 +54,13 @@ function Title(props: T_TitleProps): T_ReactFCReturn {
         {children}
 
         <style jsx>{`
-          :global(.dfr-Title--primary):hover :global(.dfr-Link) {
+          :global(.dfr-Title--primary):hover :global(.dfr-Link),
+          :global(.dfr-Title--primary):hover span {
             visibility: visible;
+          }
+
+          :global(.dfr-Title--primary) {
+            scroll-margin-top: 80px;
           }
         `}</style>
       </Tag>

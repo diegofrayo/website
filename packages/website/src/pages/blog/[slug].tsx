@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import fs from "fs";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
@@ -6,16 +6,17 @@ import renderToString from "next-mdx-remote/render-to-string";
 import { Page, MainLayout } from "~/components/layout";
 import { Blockquote, Icon, Link, Space, Button } from "~/components/primitive";
 import { MDXContent } from "~/components/pages/_shared";
-import { useInternationalization, useDidMount } from "~/hooks";
+import { useInternationalization } from "~/hooks";
 import twcss from "~/lib/twcss";
 import BlogService from "~/services/blog";
 import { T_BlogPost, T_Locale } from "~/types";
-import { copyToClipboard, getScrollPosition, setScrollPosition } from "~/utils/browser";
+import { copyToClipboard } from "~/utils/browser";
 import { WebsiteMetadata, GithubData } from "~/utils/constants";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { Routes } from "~/utils/routing";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 type T_BlogPostPageProps = {
   post: T_BlogPost;
@@ -54,6 +55,7 @@ function BlogPostPage({ post, content }: T_BlogPostPageProps): any {
           },
         ]}
         title={BlogService.composeTitle(post, currentLocale)}
+        showGoToTopButton
       >
         <MDXContent content={mdxContent} />
         <BlogPostFooter
@@ -67,8 +69,7 @@ function BlogPostPage({ post, content }: T_BlogPostPageProps): any {
   );
 }
 
-// TODO: Next types
-export async function getStaticPaths(): Promise<Record<string, any>> {
+export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function getStaticPaths() {
   return {
     paths: (await BlogService.fetchPosts()).reduce((result, post: T_BlogPost) => {
       return result.concat(
@@ -79,19 +80,18 @@ export async function getStaticPaths(): Promise<Record<string, any>> {
     }, [] as Array<any>),
     fallback: false,
   };
-}
+};
 
-// TODO: Next types
-export async function getStaticProps({
-  params,
-  locale,
-}: Record<string, any>): Promise<Record<string, any>> {
-  const post: T_BlogPost = await BlogService.getPost({ slug: params.slug });
+export const getStaticProps: GetStaticProps<
+  T_BlogPostPageProps,
+  { slug: string }
+> = async function getStaticProps({ params, locale }) {
+  const post: T_BlogPost = await BlogService.getPost({ slug: params?.slug });
   const file = fs.readFileSync(
     `${process.cwd()}/src/data/blog/posts/${getItemLocale(
       post.locales,
       post.defaultLocale,
-      locale,
+      locale as T_Locale,
     )}/${post.createdAt}-${post.slug}.mdx`,
     "utf8",
   );
@@ -101,7 +101,7 @@ export async function getStaticProps({
   });
 
   return { props: { post, content } };
-}
+};
 
 export default BlogPostPage;
 
@@ -113,45 +113,6 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: T_BlogPostF
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
     layout: true,
-  });
-
-  const [showGoToTopButton, setShowGoToTopButton] = useState<boolean>(false);
-
-  useDidMount(() => {
-    // TODO: Isolate this code
-
-    function onScroll() {
-      if (getScrollPosition() > 0) {
-        setShowGoToTopButton(true);
-      } else {
-        setShowGoToTopButton(false);
-      }
-    }
-
-    function onScrollStopped() {
-      if (!mounted) return;
-      setShowGoToTopButton(false);
-    }
-
-    let isScrolling = 0;
-    let mounted = true;
-
-    function onScrollCallback() {
-      window.clearTimeout(isScrolling);
-
-      onScroll();
-
-      isScrolling = window.setTimeout(() => {
-        onScrollStopped();
-      }, 3000);
-    }
-
-    window.addEventListener("scroll", onScrollCallback, false);
-
-    return () => {
-      mounted = false;
-      window.removeEventListener("scroll", onScrollCallback, false);
-    };
   });
 
   function generateBlogPostRawContentLink() {
@@ -215,23 +176,8 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: T_BlogPostF
           </BlogPostFooterItem>
         </div>
       </Blockquote>
-      {showGoToTopButton && <GoToTopButton />}
     </Fragment>
   );
 }
 
 const BlogPostFooterItem = twcss.div`tw-flex tw-items-start sm:tw-items-center tw-justify-start tw-mb-2 last:tw-mb-0 tw-text-sm tw-text-left`;
-
-function GoToTopButton() {
-  return (
-    <Button
-      className="root tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-transition-opacity hover:tw-opacity-75"
-      style={{ backgroundColor: "rgba(0, 0, 0, 0.75)" }}
-      onClick={() => {
-        setScrollPosition(0);
-      }}
-    >
-      <span className="tw-relative tw--top-0.5 tw-text-white tw-font-bold">↑</span>
-    </Button>
-  );
-}

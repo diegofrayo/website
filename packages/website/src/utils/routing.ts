@@ -14,6 +14,6 @@ export const Routes: Record<string, T_PagesRoutes> = {
 
 export const DYNAMIC_MAIN_PAGES = ["about-me", "resume", "snippets"];
 
-export function goTo() {
+export function goTo(): void {
   console.warn("Implement this someday...");
 }

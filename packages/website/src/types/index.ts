@@ -2,7 +2,7 @@ import React, { CSSProperties, RefObject } from "react";
 
 // --- Primitives ---
 
-export type T_Primitive = string | number | boolean;
+export type T_Primitive = string | number | boolean | undefined | null;
 
 export type T_ObjectWithPrimitives = Record<string, T_Primitive>;
 
@@ -15,6 +15,10 @@ export type T_ReactStylesProp = CSSProperties;
 export type T_ReactRefObject<Type> = RefObject<Type>;
 
 export type T_HTML_Attributes = JSX.IntrinsicElements;
+
+export type T_HTMLElement = HTMLElement;
+
+export type T_Object<T = any> = Record<string, T>;
 
 // --- Internationalization ---
 

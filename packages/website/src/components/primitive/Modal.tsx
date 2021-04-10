@@ -1,6 +1,8 @@
 import React, { useRef, createContext, useEffect } from "react";
 
-function Modal({ children, visible, onCloseHandler }: Record<string, any>): any {
+import { T_Object, T_ReactFCReturn } from "~/types";
+
+function Modal({ children, visible, onCloseHandler }: T_Object): T_ReactFCReturn {
   function closeModal() {
     onCloseHandler(false);
   }
@@ -39,7 +41,7 @@ Modal.Context = Context;
 
 // --- Components ---
 
-function Backdrop({ children, closeModalHandler }) {
+function Backdrop({ children, closeModalHandler }): T_ReactFCReturn {
   const backdropRef = useRef(null);
 
   function handleBackdropClick(event) {
