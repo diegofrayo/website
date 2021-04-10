@@ -2,7 +2,7 @@ import React from "react";
 
 import Link from "./Link";
 
-const Story = props => <Link {...props} />;
+const Story = (props) => <Link {...props} />;
 
 export default {
   title: "Link",

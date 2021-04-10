@@ -1,82 +1,78 @@
 import React from "react";
-import classNames from "classnames";
-import { useTheme } from "next-themes";
 
 import { safeRender } from "~/hocs";
+import { T_ReactChildrenProp } from "~/types";
+
+enum E_Variant {
+  STYLED = "STYLED",
+  UNSTYLED = "UNSTYLED",
+}
 
 type T_MDXContentProps = {
-  content: any;
+  content: T_ReactChildrenProp;
   variant?: "STYLED" | "UNSTYLED";
 };
 
-function MDXContent({ content, variant = "STYLED" }: T_MDXContentProps): any {
-  const { theme } = useTheme();
-
+function MDXContent({ content, variant = E_Variant.STYLED }: T_MDXContentProps): any {
   return (
-    <article
-      className={classNames(
-        "mdx-content",
-        variant === MDXContent.variant.STYLED ? "mdx-content--styled" : "mdx-content--unstyled",
-        theme === "dark" && "mdx-content--dark",
-      )}
-    >
+    <article className={`dfr-MDXContent dfr-MDXContent--${variant.toLowerCase()}`}>
       {content}
 
       <style jsx>{`
         /* Spacing: parent components */
-        :global(.mdx-content--styled) > :global(blockquote),
-        :global(.mdx-content--styled) > :global(hr),
-        :global(.mdx-content--styled) > :global(img),
-        :global(.mdx-content--styled) > :global(ol),
-        :global(.mdx-content--styled) > :global(p),
-        :global(.mdx-content--styled) > :global(pre),
-        :global(.mdx-content--styled) > :global(ul),
-        :global(.mdx-content--styled) :global(*[data-markdown-block]) {
+        :global(.dfr-MDXContent--styled) > :global(blockquote),
+        :global(.dfr-MDXContent--styled) > :global(hr),
+        :global(.dfr-MDXContent--styled) > :global(img),
+        :global(.dfr-MDXContent--styled) > :global(ol),
+        :global(.dfr-MDXContent--styled) > :global(p),
+        :global(.dfr-MDXContent--styled) > :global(pre),
+        :global(.dfr-MDXContent--styled) > :global(ul),
+        :global(.dfr-MDXContent--styled) :global(*[data-markdown-block]) {
           @apply tw-mb-6;
         }
 
         /* Spacing: nested components */
-        :global(.mdx-content--styled) :global(li) > :global(p),
-        :global(.mdx-content--styled) :global(li) > :global(pre),
-        :global(.mdx-content--styled) :global(li) > :global(blockquote),
-        :global(.mdx-content--styled) :global(li) > :global(img),
-        :global(.mdx-content--styled) :global(blockquote) > :global(p) {
+        :global(.dfr-MDXContent--styled) :global(li) > :global(p),
+        :global(.dfr-MDXContent--styled) :global(li) > :global(pre),
+        :global(.dfr-MDXContent--styled) :global(li) > :global(blockquote),
+        :global(.dfr-MDXContent--styled) :global(li) > :global(img),
+        :global(.dfr-MDXContent--styled) :global(blockquote) > :global(p) {
           @apply tw-mb-3;
         }
 
         /* Spacing: titles */
-        :global(.mdx-content--styled) > :global(h1),
-        :global(.mdx-content--styled) > :global(h2),
-        :global(.mdx-content--styled) > :global(h3),
-        :global(.mdx-content--styled) > :global(h4) {
+        :global(.dfr-MDXContent--styled) > :global(h1),
+        :global(.dfr-MDXContent--styled) > :global(h2),
+        :global(.dfr-MDXContent--styled) > :global(h3),
+        :global(.dfr-MDXContent--styled) > :global(h4) {
           @apply tw-mt-6;
           @apply tw-mb-3;
         }
 
         /* Spacing: nested UL lists */
-        :global(.mdx-content--styled) :global(li) > :global(ul) {
+        :global(.dfr-MDXContent--styled) :global(li) > :global(ul) {
           @apply tw-mt-3;
         }
 
         /* Ordered lists */
-        :global(.mdx-content--styled) :global(ol) {
+        :global(.dfr-MDXContent--styled) :global(ol) {
           @apply tw-pl-9;
           list-style-type: decimal;
         }
 
-        :global(.mdx-content--styled) :global(ol) > :global(li) {
+        :global(.dfr-MDXContent--styled) :global(ol) > :global(li) {
           @apply tw-mb-6;
         }
 
         /* Images */
-        :global(.mdx-content--styled) > :global(img),
-        :global(.mdx-content--styled) :global(li) > :global(img) {
+        :global(.dfr-MDXContent--styled) > :global(img),
+        :global(.dfr-MDXContent--styled) :global(li) > :global(img) {
           margin-left: auto;
           margin-right: auto;
         }
 
         /* For music pages (Custom line breaks) */
-        :global(.mdx-content--unstyled) :global(br[data-separator]) {
+        :global(.dfr-MDXContent--unstyled) :global(br[data-separator]) {
           display: none;
         }
       `}</style>
@@ -84,9 +80,6 @@ function MDXContent({ content, variant = "STYLED" }: T_MDXContentProps): any {
   );
 }
 
-MDXContent.variant = {
-  STYLED: "STYLED",
-  UNSTYLED: "UNSTYLED",
-};
+MDXContent.variant = E_Variant;
 
 export default safeRender(MDXContent);

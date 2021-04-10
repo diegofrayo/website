@@ -3,23 +3,26 @@ import { useEffect, useRef } from "react";
 function useOnWindowScroll(callback: (event: any) => void, when = true): void {
   const savedHandler = useRef(callback);
 
-  useEffect(() => {
+  useEffect(function updateCallbackRef() {
     savedHandler.current = callback;
   });
 
-  useEffect(() => {
-    if (!when) return;
+  useEffect(
+    function createScrollEventListener() {
+      if (!when) return;
 
-    function passedCb(event) {
-      savedHandler.current(event);
-    }
+      function passedCb(event) {
+        savedHandler.current(event);
+      }
 
-    window.addEventListener("scroll", passedCb);
+      window.addEventListener("scroll", passedCb);
 
-    return () => {
-      window.removeEventListener("scroll", passedCb);
-    };
-  }, [when]);
+      return () => {
+        window.removeEventListener("scroll", passedCb);
+      };
+    },
+    [when],
+  );
 }
 
 export default useOnWindowScroll;

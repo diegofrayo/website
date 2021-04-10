@@ -39,7 +39,7 @@ function StringsPage(): JSX.Element {
             className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-3 tw-resize-none tw-w-full tw-rounded-md"
             ref={textareaRef}
             onChange={handleTextAreaChange}
-            onClick={e => {
+            onClick={(e) => {
               try {
                 e.currentTarget.focus();
                 e.currentTarget.select();

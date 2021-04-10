@@ -5,13 +5,16 @@ function Modal({ children, visible, onCloseHandler }: Record<string, any>): any 
     onCloseHandler(false);
   }
 
-  useEffect(() => {
-    if (visible) {
-      document.body.classList.add("modal-opened");
-    } else {
-      document.body.classList.remove("modal-opened");
-    }
-  }, [visible]);
+  useEffect(
+    function toggleBodyClasses() {
+      if (visible) {
+        document.body.classList.add("modal-opened");
+      } else {
+        document.body.classList.remove("modal-opened");
+      }
+    },
+    [visible],
+  );
 
   if (!visible) {
     return null;

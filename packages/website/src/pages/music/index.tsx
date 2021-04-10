@@ -42,7 +42,7 @@ function MusicPage(): any {
         <p className="tw-mb-6">{SiteTexts.page.current_locale.description}</p>
 
         <Render isLoading={isLoading} error={error} data={data}>
-          {data => {
+          {(data) => {
             return (
               <List>
                 {data

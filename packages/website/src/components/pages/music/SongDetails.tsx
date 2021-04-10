@@ -29,7 +29,7 @@ function SongDetails({
       </div>
       <div className="tw-flex tw-items-center">
         <strong className="tw-mr-2">{SiteTexts.page.current_locale.progress}:</strong>
-        {createArray(5).map(index => {
+        {createArray(5).map((index) => {
           return (
             <span
               key={`Progress-item-${index}`}

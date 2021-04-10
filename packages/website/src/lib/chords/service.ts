@@ -4,7 +4,7 @@ class ChordsService {
   async downloadChordAsImage(containerRef, chordName): Promise<void> {
     const domtoimage = await import("dom-to-image");
 
-    domtoimage.toPng(containerRef.current, { quality: 1 }).then(dataUrl => {
+    domtoimage.toPng(containerRef.current, { quality: 1 }).then((dataUrl) => {
       const link = document.createElement("a");
       link.download = `${chordName}.png`;
       link.href = dataUrl;
@@ -44,7 +44,7 @@ class ChordsService {
             )
           : (chordsParam as T_Chord[]);
 
-      const frets: number[] = chords.map(chord => chord.fret).sort();
+      const frets: number[] = chords.map((chord) => chord.fret).sort();
 
       const chordsGroupedByFret =
         chords.length === 0
@@ -62,7 +62,7 @@ class ChordsService {
                 result[`${chord.fret}`].push(chord);
 
                 if (
-                  result[`${chord.fret}`].find(item => item.barre !== undefined) !== undefined &&
+                  result[`${chord.fret}`].find((item) => item.barre !== undefined) !== undefined &&
                   result[`${chord.fret}`].length > 1
                 ) {
                   throw new Error("A fret contains a barre chord can't have multiple chords");
@@ -132,7 +132,7 @@ class ChordsService {
     }
 
     return chords
-      .map(chord => {
+      .map((chord) => {
         return `${
           (chord as T_ChordWithString).string
             ? (chord as T_ChordWithString).string

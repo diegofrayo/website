@@ -39,20 +39,23 @@ function useController({
   const [isCollapsed, setIsCollapsed] = useState<boolean>(openByDefault);
   const containerRef = useRef<HTMLDetailsElement>(null);
 
-  useEffect(() => {
-    if (!containerRef?.current) return;
+  useEffect(
+    function toggleCollapse() {
+      if (!containerRef?.current) return;
 
-    if (isCollapsed === true) {
-      containerRef.current.setAttribute("open", "");
-    } else {
-      containerRef.current.removeAttribute("open");
-    }
-  }, [containerRef]);
+      if (isCollapsed === true) {
+        containerRef.current.setAttribute("open", "");
+      } else {
+        containerRef.current.removeAttribute("open");
+      }
+    },
+    [containerRef],
+  );
 
   return {
     isCollapsed,
     title: title ? title : isCollapsed ? "Hide" : "Show",
-    toggleIsCollapsed: () => setIsCollapsed(cv => !cv),
+    toggleIsCollapsed: () => setIsCollapsed((cv) => !cv),
     containerRef,
   };
 }

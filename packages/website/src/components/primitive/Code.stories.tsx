@@ -2,7 +2,7 @@ import React from "react";
 
 import Code from "./Code";
 
-const Story = props => <Code {...props} />;
+const Story = (props) => <Code {...props} />;
 
 export default {
   title: "Code",

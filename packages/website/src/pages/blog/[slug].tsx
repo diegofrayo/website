@@ -169,14 +169,24 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: T_BlogPostF
       >
         <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
           <BlogPostFooterItem>
-            <Icon icon={Icon.icon.CALENDAR} wrapperClassName="tw-mr-2" />
-            <span className="tw-mr-2">{SiteTexts.page.current_locale.published_at}</span>
-            <strong>{formatDate(publishedAt)}</strong>
+            <Icon
+              icon={Icon.icon.CALENDAR}
+              wrapperClassName="tw-mr-2 tw-relative tw-top-0.5 sm:tw-top-0"
+            />
+            <p>
+              <span className="tw-mr-2">{SiteTexts.page.current_locale.published_at}</span>
+              <strong>{formatDate(publishedAt)}</strong>
+            </p>
           </BlogPostFooterItem>
           <BlogPostFooterItem>
-            <Icon icon={Icon.icon.EDIT} wrapperClassName="tw-mr-2" />
-            <span className="tw-mr-2">{SiteTexts.page.current_locale.updated_at}</span>
-            <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
+            <Icon
+              icon={Icon.icon.EDIT}
+              wrapperClassName="tw-mr-2 tw-relative tw-top-0.5 sm:tw-top-0"
+            />
+            <p>
+              <span className="tw-mr-2">{SiteTexts.page.current_locale.updated_at}</span>
+              <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
+            </p>
           </BlogPostFooterItem>
         </div>
         <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col sm:tw-items-end tw-mt-2 sm:tw-mt-0">
@@ -186,7 +196,10 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: T_BlogPostF
             data-clipboard-text={`${WebsiteMetadata.url}${Routes.BLOG}/${slug}`}
             onClick={copyToClipboard}
           >
-            <Icon icon={Icon.icon.LINK} wrapperClassName="tw-mr-2" />
+            <Icon
+              icon={Icon.icon.LINK}
+              wrapperClassName="tw-mr-2 tw-relative tw-top-0.5 sm:tw-top-0"
+            />
             <span>{SiteTexts.page.current_locale.copy_url_to_clipboard}</span>
           </BlogPostFooterItem>
           <BlogPostFooterItem
@@ -194,7 +207,10 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: T_BlogPostF
             href={generateBlogPostRawContentLink()}
             variant={Link.variant.UNSTYLED}
           >
-            <Icon icon={Icon.icon.CODE} wrapperClassName="tw-mr-2" />
+            <Icon
+              icon={Icon.icon.CODE}
+              wrapperClassName="tw-mr-2 tw-relative tw-top-0.5 sm:tw-top-0"
+            />
             <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
           </BlogPostFooterItem>
         </div>
@@ -204,7 +220,7 @@ function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: T_BlogPostF
   );
 }
 
-const BlogPostFooterItem = twcss.div`tw-flex tw-items-center tw-justify-start tw-mb-2 last:tw-mb-0 tw-text-sm tw-text-left`;
+const BlogPostFooterItem = twcss.div`tw-flex tw-items-start sm:tw-items-center tw-justify-start tw-mb-2 last:tw-mb-0 tw-text-sm tw-text-left`;
 
 function GoToTopButton() {
   return (

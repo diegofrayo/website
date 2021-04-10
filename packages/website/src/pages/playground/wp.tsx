@@ -48,7 +48,7 @@ function WPPage(): any {
               value={phone}
               placeholder="+57"
               pattern="[0-9]{10}"
-              onChange={e => setPhone(e.currentTarget.value)}
+              onChange={(e) => setPhone(e.currentTarget.value)}
             />
           </label>
           <Link

@@ -2,7 +2,7 @@ import { isBrowser } from "./browser";
 import { convertSnakeCaseToLowerCamelCase } from "./strings";
 
 export function createArray(length: number, start?: number): number[] {
-  return Array.from(Array(length).keys()).map(value => value + (start === undefined ? 1 : start));
+  return Array.from(Array(length).keys()).map((value) => value + (start === undefined ? 1 : start));
 }
 
 export function createQueryFromObject(object: Record<string, string | number | boolean>): string {
@@ -21,7 +21,7 @@ export function createQueryFromObject(object: Record<string, string | number | b
 }
 
 export function delay(time: number): Promise<any> {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(resolve, time);
   });
 }

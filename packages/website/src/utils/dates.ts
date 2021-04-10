@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
 import { Routes } from "~/utils/routing";
-import { T_PagesRoutes, T_SiteTexts } from "~/types";
+import { T_SiteTexts } from "~/types";
 
 import { getSiteTexts, parseSiteText, pluralize } from "./internationalization";
 

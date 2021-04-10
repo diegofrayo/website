@@ -68,7 +68,7 @@ function StupidPage(): any {
               id="input"
               className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
               ref={inputRef}
-              onClick={e => {
+              onClick={(e) => {
                 try {
                   e.currentTarget.focus();
                   e.currentTarget.select();

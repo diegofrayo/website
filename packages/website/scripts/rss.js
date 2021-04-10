@@ -27,7 +27,7 @@ const feed = new Feed({
   },
 });
 
-Object.values(posts).forEach(post => {
+Object.values(posts).forEach((post) => {
   if (post.config.is_published === false) return null;
 
   const url = `${WebsiteMetadata.urlProd}/blog/${post.slug}`;

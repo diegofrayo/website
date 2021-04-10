@@ -2,7 +2,7 @@ import React from "react";
 
 import Icon from "./";
 
-const Story = props => <Icon {...props} />;
+const Story = (props) => <Icon {...props} />;
 
 export default {
   title: "Icon",

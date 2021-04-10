@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 function useOnWindowResize(callback: () => void): any {
-  useEffect(() => {
+  useEffect(function createResizeEventListener() {
     function handleWindowResize() {
       callback();
     }

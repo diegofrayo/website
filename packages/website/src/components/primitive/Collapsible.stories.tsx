@@ -2,7 +2,7 @@ import React from "react";
 
 import Collapsible from "./Collapsible";
 
-const Story = props => <Collapsible {...props} />;
+const Story = (props) => <Collapsible {...props} />;
 
 export default {
   title: "Collapsible",

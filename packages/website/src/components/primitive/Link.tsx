@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 import NextLink from "next/link";
 
 import twcss from "~/lib/twcss";
@@ -44,7 +45,12 @@ function Link({
   if (isNextLink === true) {
     return (
       <NextLink href={href} locale={rest.locale} passHref>
-        <LinkElement className={className} tw-variant={variant} is={is} {...rest}>
+        <LinkElement
+          className={classNames("dfr-Link", className)}
+          tw-variant={variant}
+          is={is}
+          {...rest}
+        >
           {children}
         </LinkElement>
       </NextLink>
@@ -54,7 +60,7 @@ function Link({
   return (
     <LinkElement
       href={href}
-      className={className}
+      className={classNames("dfr-Link", className)}
       tw-variant={variant}
       is={is}
       {...getExternalAttrs(href, external)}

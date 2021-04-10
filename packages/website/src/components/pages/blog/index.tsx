@@ -44,7 +44,7 @@ function BlogPage(): any {
           {(data: T_BlogPost[]) => {
             return (
               <List>
-                {data.map(post => {
+                {data.map((post) => {
                   const locale: T_Locale = getItemLocale(
                     post.locales,
                     post.defaultLocale,
@@ -113,7 +113,7 @@ function BlogEntry({
         <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
       </p>
       <div className="tw-pb-1">
-        {categories.map(category => {
+        {categories.map((category) => {
           return (
             <span
               key={`BlogEntry-category-${category.id}`}

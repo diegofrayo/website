@@ -50,7 +50,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: T_Ch
   }
 
   function handleShowInput(): void {
-    setShowInput(cs => !cs);
+    setShowInput((cs) => !cs);
   }
 
   if (error) {
@@ -158,7 +158,7 @@ export function Solo({ positions, notes }) {
               <div>
                 {createArray(6)
                   .reverse()
-                  .map(i => {
+                  .map((i) => {
                     if (i === Number(string)) {
                       return (
                         <div key={`Solo-position-${index}-${i}`} className="tw-h-6">
@@ -222,7 +222,7 @@ function Fret({ variant, fret, chords, stringsToSkip }: T_FretProps): any {
       >
         {createArray(6)
           .reverse()
-          .map(string => {
+          .map((string) => {
             const isBarreChord =
               isDefaultVariant &&
               Array.isArray(chords) &&

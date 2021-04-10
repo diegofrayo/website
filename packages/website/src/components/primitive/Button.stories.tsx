@@ -2,7 +2,7 @@ import React from "react";
 
 import Button from "./Button";
 
-const Story = props => <Button {...props} />;
+const Story = (props) => <Button {...props} />;
 
 export default {
   title: "Button",

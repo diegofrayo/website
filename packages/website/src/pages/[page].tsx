@@ -73,7 +73,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   return {
     paths: DYNAMIC_MAIN_PAGES.reduce((result, page: string) => {
       return (result as any[]).concat(
-        locales?.map(locale => {
+        locales?.map((locale) => {
           return { params: { page }, locale };
         }),
       );

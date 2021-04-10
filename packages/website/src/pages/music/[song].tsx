@@ -35,9 +35,12 @@ function SongPage({ song, content }: T_SongPageProps): any {
     setFontSize(getFontSize());
   });
 
-  useEffect(() => {
-    window.localStorage.setItem("MUSIC_FONT_SIZE", `${fontSize}`);
-  }, [fontSize]);
+  useEffect(
+    function updateFontSizeOnLocalStorage() {
+      window.localStorage.setItem("MUSIC_FONT_SIZE", `${fontSize}`);
+    },
+    [fontSize],
+  );
 
   function getFontSize(): number {
     const INITIAL_VALUE = 0.8;
@@ -89,7 +92,7 @@ function SongPage({ song, content }: T_SongPageProps): any {
                 fontSize === 2 && "tw-opacity-25 dark:tw-opacity-50",
               )}
               disabled={fontSize === 2}
-              onClick={() => setFontSize(cv => Number((cv + 0.2).toFixed(1)))}
+              onClick={() => setFontSize((cv) => Number((cv + 0.2).toFixed(1)))}
             >
               <Icon icon={Icon.icon.ZOOM_IN} size={24} />
             </Button>
@@ -99,7 +102,7 @@ function SongPage({ song, content }: T_SongPageProps): any {
                 fontSize === 0.6 && "tw-opacity-25 dark:tw-opacity-50",
               )}
               disabled={fontSize === 0.6}
-              onClick={() => setFontSize(cv => Number((cv - 0.2).toFixed(1)))}
+              onClick={() => setFontSize((cv) => Number((cv - 0.2).toFixed(1)))}
             >
               <Icon icon={Icon.icon.ZOOM_OUT} size={24} />
             </Button>
@@ -138,7 +141,7 @@ export async function getStaticProps({
   params,
 }: Record<string, any>): Promise<Record<string, any>> {
   const song: T_Song | undefined = (await MusicService.fetchSongsList()).find(
-    song => song.id === params.song,
+    (song) => song.id === params.song,
   );
 
   const file = fs.readFileSync(`${process.cwd()}/src/data/music/songs/${song?.id}.mdx`, "utf8");

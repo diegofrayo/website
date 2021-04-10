@@ -32,6 +32,9 @@ module.exports = {
         "3px": "3px",
         "-1px": "-1px",
       },
+      lineHeight: {
+        0: "0",
+      },
     },
   },
   variants: {

@@ -11,7 +11,7 @@ function Lab() {
       <nav className="tw-bg-yellow-900 tw-p-3">
         <div className="tw-flex tw-justify-between tw-flex-no-wrap">
           <h1 className="tw-text-3xl tw-text-yellow-100 tw-mr-4">Logo</h1>
-          <Button className="tw-inline-block md:tw-hidden" onClick={() => setShowMenu(c => !c)}>
+          <Button className="tw-inline-block md:tw-hidden" onClick={() => setShowMenu((c) => !c)}>
             <span className="tw-block tw-my-1 tw-w-6 tw-bg-white tw-h-0.5" />
             <span className="tw-block tw-my-1 tw-w-6 tw-bg-white tw-h-0.5" />
             <span className="tw-block tw-my-1 tw-w-6 tw-bg-white tw-h-0.5" />

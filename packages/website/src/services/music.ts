@@ -10,7 +10,7 @@ class MusicService {
   parseLyricsAndChords(songContent): string {
     const result = songContent
       .split("\n")
-      .map(line => {
+      .map((line) => {
         let transformedLine = line;
 
         line

@@ -8,7 +8,7 @@
     "no-opt-install": "yarn install --ignore-optional",
     "build": "next build",
     "dev": "next dev",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --ext .ts,.tsx --fix",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write \"{src,scripts,public}/**/*.{js,ts,tsx,json,css,xml}\"",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",

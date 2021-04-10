@@ -44,7 +44,7 @@ function ChordsPage(): any {
               className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
               value={inputs.name}
               maxLength={15}
-              onChange={e => {
+              onChange={(e) => {
                 setInputs({ ...inputs, name: e.currentTarget.value });
               }}
             />
@@ -58,7 +58,7 @@ function ChordsPage(): any {
               placeholder="4,2,1|3,2,2|2,2,3"
               className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
               value={inputs.chords}
-              onChange={e => {
+              onChange={(e) => {
                 setInputs({ ...inputs, chords: e.currentTarget.value });
               }}
             />

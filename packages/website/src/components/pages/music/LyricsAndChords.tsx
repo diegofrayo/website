@@ -65,7 +65,7 @@ function useController({ children, chords }: T_LyricsAndChords) {
   const [selectedChord, setSelectedChord] = useState(undefined);
 
   useDidMount(() => {
-    document.querySelectorAll(".chord")?.forEach(button => {
+    document.querySelectorAll(".chord")?.forEach((button) => {
       button.addEventListener("click", function (event: any) {
         setSelectedChord(MusicService.findChord(event.target.innerText) as any);
         setIsModalVisible(true);

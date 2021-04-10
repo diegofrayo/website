@@ -55,7 +55,7 @@ export default MainLayout;
 
 // --- Components ---
 
-const Main = twcss.main`dfr-max-w-base tw-w-full tw-py-4 tw-px-6 tw-mx-auto tw-relative`;
+const Main = twcss.main`dfr-max-w-base tw-w-full tw-py-4 tw-px-8 sm:tw-px-6 tw-mx-auto tw-relative`;
 
 const Body = twcss.div``;
 
@@ -266,7 +266,7 @@ function SocialIcons(): JSX.Element {
 
   return (
     <div>
-      {SOCIAL_NETWORKS.map(item => {
+      {SOCIAL_NETWORKS.map((item) => {
         return <SocialIcon key={item.name} {...item} />;
       })}
     </div>

@@ -30,7 +30,7 @@ function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): any {
           {["chords", "strings", "stupid", "virtual-reality", "styles", "wp"]
             .sort()
             .concat(isUserLoggedIn() ? ["lab"] : [])
-            .map(name => {
+            .map((name) => {
               return (
                 <List.Item key={`PlaygroundPage-${name}`}>
                   <Link

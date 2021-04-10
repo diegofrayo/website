@@ -15,14 +15,14 @@ const pagesToIgnore = Object.entries(pages)
 const generator = SitemapGenerator(WebsiteMetadata.url, {
   stripQuerystring: false,
   filepath: "./public/sitemap.xml",
-  ignore: url => {
-    return pagesToIgnore.filter(page => url.includes(page)).length > 0;
+  ignore: (url) => {
+    return pagesToIgnore.filter((page) => url.includes(page)).length > 0;
   },
 });
 
 generator.start();
 
-Object.values(posts).forEach(post => {
+Object.values(posts).forEach((post) => {
   if (post.config.is_published === false || post.config.meta_no_robots === true) {
     return;
   }

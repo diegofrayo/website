@@ -145,8 +145,12 @@ export function GithubRepo({ name, url, description }: T_GithubRepoProps): any {
   );
 }
 
-export function Title(Tag: "h1" | "h2" | "h3" | "h4"): any {
+export function Title(Tag: "h1" | "h2" | "h3" | "h4", props): any {
   return function TitleComponent({ children }: Record<string, any>): any {
-    return <TitlePrimitive is={Tag}>{children}</TitlePrimitive>;
+    return (
+      <TitlePrimitive is={Tag} {...props}>
+        {children}
+      </TitlePrimitive>
+    );
   };
 }

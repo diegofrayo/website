@@ -4,6 +4,9 @@ import classNames from "classnames";
 import { T_ReactChildrenProp, T_ReactFCReturn } from "~/types";
 import { generateSlug } from "~/utils/strings";
 
+import Icon from "./Icon";
+import Link from "./Link";
+
 enum E_Size {
   SM = "SM",
   MD = "MD",
@@ -17,20 +20,50 @@ enum E_Variants {
   "UNSTYLED" = "UNSTYLED",
 }
 
-type T_Title = {
+type T_TitleProps = {
   children: T_ReactChildrenProp;
   is: "h1" | "h2" | "h3" | "h4";
   variant?: E_Variants;
   size?: E_Size;
+  showLinkIcon?: boolean;
 
   className?: string;
 };
 
-function Title(props: T_Title): T_ReactFCReturn {
-  const { Tag, id, className, children } = useController(props);
+function Title(props: T_TitleProps): T_ReactFCReturn {
+  const { Tag, id, className, children, variant, showLinkIcon } = useController(props);
+
+  if (variant === E_Variants.PRIMARY && showLinkIcon) {
+    return (
+      <Tag id={id} className={className}>
+        <Link
+          href={`#${id}`}
+          className={classNames(
+            "tw-visible sm:tw-invisible tw-float-left tw--ml-5 tw-pr-1 tw-leading-0",
+            {
+              h1: "tw-pt-3",
+              h2: "tw-pt-2.5",
+              h3: "tw-pt-2",
+              h4: "tw-pt-1.5",
+            }[Tag],
+          )}
+        >
+          <Icon icon={Icon.icon.LINK} size={16} />
+        </Link>
+
+        {children}
+
+        <style jsx>{`
+          :global(.dfr-Title--primary):hover :global(.dfr-Link) {
+            visibility: visible;
+          }
+        `}</style>
+      </Tag>
+    );
+  }
 
   return (
-    <Tag id={id} className={className}>
+    <Tag id={id} className={classNames(className)}>
       {children}
     </Tag>
   );
@@ -49,11 +82,12 @@ function useController({
   className = "",
   size = undefined,
   variant = E_Variants.PRIMARY,
-}: T_Title): Omit<T_Title, "is" | "variant"> & {
+  showLinkIcon = false,
+}: T_TitleProps): Omit<T_TitleProps, "is"> & {
   id: string;
-  Tag: T_Title["is"];
+  Tag: T_TitleProps["is"];
 } {
-  function generateStyles(tag: T_Title["is"]): string {
+  function generateStyles(tag: T_TitleProps["is"]): string {
     return classNames(
       {
         PRIMARY: classNames(
@@ -79,9 +113,17 @@ function useController({
   }
 
   return {
-    id: typeof children === "string" ? generateSlug(children) : "",
+    id:
+      variant === E_Variants.PRIMARY && typeof children === "string" ? generateSlug(children) : "",
     children,
     Tag,
-    className: classNames("tw-font-bold tw-font-sans", generateStyles(Tag), className),
+    className: classNames(
+      `dfr-Title dfr-Title--${variant.toLowerCase()}`,
+      "tw-font-bold tw-font-sans",
+      generateStyles(Tag),
+      className,
+    ),
+    variant,
+    showLinkIcon,
   };
 }

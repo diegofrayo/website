@@ -14,14 +14,14 @@ class BlogService {
       .filter((post: T_BlogPost) => {
         return post.config.isPublished === true;
       })
-      .sort(sortBy([{ param: "published_at", order: "desc" }]));
+      .sort(sortBy([{ param: "publishedAt", order: "desc" }]));
 
     return result;
   }
 
   async getPost(config: Record<"slug", T_Primitive>): Promise<T_BlogPost> {
     const posts = await this.fetchPosts();
-    const post = posts.find(post => post.slug === config.slug);
+    const post = posts.find((post) => post.slug === config.slug);
 
     if (post === undefined) {
       throw new Error(`Post not found. { config: "${JSON.stringify(config)}" }`);

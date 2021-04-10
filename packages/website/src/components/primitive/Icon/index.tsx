@@ -77,6 +77,7 @@ function useController({
 
   const wrapperProps = {
     className: classNames(
+      "dfr-Icon",
       withDarkModeBackground && "dark:dfr-bg-secondary dark:tw-rounded-full tw-overflow-hidden",
       wrapperClassName,
     ),
