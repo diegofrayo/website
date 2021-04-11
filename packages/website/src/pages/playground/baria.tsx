@@ -1,10 +1,11 @@
-import * as React from "react";
+import React from "react";
 
 import { Page } from "~/components/layout";
 import { Image } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
+import { T_ReactFCReturn } from "~/types";
 
-function BariaPage(): any {
+function BariaPage(): T_ReactFCReturn {
   useDidMount(() => {
     document.title = "Baría - Feliz cumpleaños";
   });

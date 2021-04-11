@@ -12,7 +12,7 @@ import { generateSupportedLocales, getItemLocale } from "~/utils/internationaliz
 import { Routes } from "~/utils/routing";
 import { removeEmojiFromPageTitle } from "~/utils/strings";
 
-function BlogPage(): any {
+function BlogPage(): T_ReactFCReturn {
   const { isLoading, error, data } = useQuery("blogPosts", BlogService.fetchPosts);
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,

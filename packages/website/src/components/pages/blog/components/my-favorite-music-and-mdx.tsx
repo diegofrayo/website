@@ -1,10 +1,12 @@
-import * as React from "react";
+import React from "react";
 
-export function HelloWorldMDX({ text }: { text: string }): any {
+import { T_ReactFCReturn } from "~/types";
+
+export function HelloWorldMDX({ text }: { text: string }): T_ReactFCReturn {
   return <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">{text}</p>;
 }
 
-export function SpotifyPlaylist(): any {
+export function SpotifyPlaylist(): T_ReactFCReturn {
   return (
     <div className="tw-border-4 tw-border-pink-400" data-markdown-block>
       <iframe

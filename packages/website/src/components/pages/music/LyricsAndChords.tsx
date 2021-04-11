@@ -4,13 +4,14 @@ import { Blockquote, Button, Icon, Modal, Space } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { Chords } from "~/lib/chords";
 import MusicService from "~/services/music";
+import { T_ReactFCReturn } from "~/types";
 
 type T_LyricsAndChords = {
   children: any;
   chords: string[];
 };
 
-function LyricsAndChords(props: T_LyricsAndChords): JSX.Element {
+function LyricsAndChords(props: T_LyricsAndChords): T_ReactFCReturn {
   const {
     isModalVisible,
     selectedChord,

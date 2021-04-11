@@ -49,7 +49,7 @@ function useController({
         containerRef.current.removeAttribute("open");
       }
     },
-    [containerRef],
+    [containerRef, isCollapsed],
   );
 
   return {

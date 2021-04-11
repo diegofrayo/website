@@ -2,17 +2,17 @@ import React, { useState, useRef } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Space, Button } from "~/components/primitive";
-import { Routes } from "~/utils/routing";
 import { useDidMount } from "~/hooks";
-import { T_SiteTexts } from "~/types";
+import { T_ReactFCReturn, T_SiteTexts } from "~/types";
 import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
+import { Routes } from "~/utils/routing";
 
 const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";
 const PAGE_NAME = "stupid";
 
-function StupidPage(): any {
+function StupidPage(): T_ReactFCReturn {
   const [output, setOutput] = useState("");
   const inputRef: { current: undefined | any } = useRef(undefined);
 

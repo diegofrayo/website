@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import fs from "fs";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Blockquote, Icon, Link, Space, Button } from "~/components/primitive";
@@ -9,21 +10,20 @@ import { MDXContent } from "~/components/pages/_shared";
 import { useInternationalization } from "~/hooks";
 import twcss from "~/lib/twcss";
 import BlogService from "~/services/blog";
-import { T_BlogPost, T_Locale } from "~/types";
+import { T_BlogPost, T_Locale, T_ReactFCReturn } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { WebsiteMetadata, GithubData } from "~/utils/constants";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { Routes } from "~/utils/routing";
-import { GetStaticPaths, GetStaticProps } from "next";
 
 type T_BlogPostPageProps = {
   post: T_BlogPost;
   content: any;
 };
 
-function BlogPostPage({ post, content }: T_BlogPostPageProps): any {
+function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactFCReturn {
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
     layout: true,
@@ -109,7 +109,12 @@ export default BlogPostPage;
 
 type T_BlogPostFooterProps = Pick<T_BlogPost, "createdAt" | "publishedAt" | "slug" | "updatedAt">;
 
-function BlogPostFooter({ createdAt, publishedAt, slug, updatedAt }: T_BlogPostFooterProps): any {
+function BlogPostFooter({
+  createdAt,
+  publishedAt,
+  slug,
+  updatedAt,
+}: T_BlogPostFooterProps): T_ReactFCReturn {
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
     layout: true,

@@ -3,6 +3,7 @@ import fs from "fs";
 import classNames from "classnames";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Blockquote, Icon, Button } from "~/components/primitive";
@@ -10,19 +11,18 @@ import { MDXContent } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
 import { useDidMount, useInternationalization } from "~/hooks";
 import MusicService from "~/services/music";
-import { T_Song } from "~/types";
+import { T_ReactFCReturn, T_Song } from "~/types";
 import { copyToClipboard, isBrowser } from "~/utils/browser";
 import { WebsiteMetadata } from "~/utils/constants";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { Routes } from "~/utils/routing";
-import { GetStaticPaths, GetStaticProps } from "next";
 
 type T_SongPageProps = {
   song: T_Song;
   content: any;
 };
 
-function SongPage({ song, content }: T_SongPageProps): any {
+function SongPage({ song, content }: T_SongPageProps): T_ReactFCReturn {
   const { SiteTexts } = useInternationalization({
     page: Routes.MUSIC,
     layout: true,

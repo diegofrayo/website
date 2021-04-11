@@ -84,12 +84,9 @@ function useController(href) {
 
   function onClick() {
     setTimeout(() => {
-      if (!isSmallScreen()) {
-        return;
-      }
+      if (!isSmallScreen()) return;
 
-      const currentScrollPosition = getScrollPosition();
-      setScrollPosition(currentScrollPosition - 80);
+      setScrollPosition(getScrollPosition() - 80);
     }, 10);
   }
 

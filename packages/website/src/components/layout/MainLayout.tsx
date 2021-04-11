@@ -172,7 +172,7 @@ type T_LocalesSelectorProps = {
   currentLocale: T_Locale;
 };
 
-function LocalesSelector({ locales, currentLocale }: T_LocalesSelectorProps): any {
+function LocalesSelector({ locales, currentLocale }: T_LocalesSelectorProps): T_ReactFCReturn {
   return null;
 
   return (

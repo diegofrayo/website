@@ -2,15 +2,15 @@ import React, { useState } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Space, Title } from "~/components/primitive";
-import { Routes } from "~/utils/routing";
 import { Chords } from "~/lib/chords";
-import { T_SiteTexts } from "~/types";
+import { T_ReactFCReturn, T_SiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
+import { Routes } from "~/utils/routing";
 
 const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "chords";
 
-function ChordsPage(): any {
+function ChordsPage(): T_ReactFCReturn {
   const [inputs, setInputs] = useState({ name: "", chords: "" });
 
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { safeRender } from "~/hocs";
-import { T_ReactChildrenProp } from "~/types";
+import { T_ReactChildrenProp, T_ReactFCReturn } from "~/types";
 
 enum E_Variant {
   STYLED = "STYLED",
@@ -10,10 +10,10 @@ enum E_Variant {
 
 type T_MDXContentProps = {
   content: T_ReactChildrenProp;
-  variant?: "STYLED" | "UNSTYLED";
+  variant?: E_Variant;
 };
 
-function MDXContent({ content, variant = E_Variant.STYLED }: T_MDXContentProps): any {
+function MDXContent({ content, variant = E_Variant.STYLED }: T_MDXContentProps): T_ReactFCReturn {
   return (
     <article className={`dfr-MDXContent dfr-MDXContent--${variant.toLowerCase()}`}>
       {content}
@@ -71,8 +71,8 @@ function MDXContent({ content, variant = E_Variant.STYLED }: T_MDXContentProps):
           margin-right: auto;
         }
 
-        /* For music pages (Custom line breaks) */
-        :global(.dfr-MDXContent--unstyled) :global(br[data-separator]) {
+        /* For music pages (Custom line breaks | Temporary solution) */
+        :global(.dfr-MDXContent) :global(br[data-separator]) {
           display: none;
         }
       `}</style>

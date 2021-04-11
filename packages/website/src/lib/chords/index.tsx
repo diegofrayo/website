@@ -34,9 +34,14 @@ type T_ChordsProps = {
 
 const ChordsService = new Service();
 
-export function Chords({ name, chords, stringsToSkip, showOptions = true }: T_ChordsProps): any {
-  const chordRef: { current: any } = useRef(undefined);
-  const [showInput, setShowInput] = useState(false);
+export function Chords({
+  name,
+  chords,
+  stringsToSkip,
+  showOptions = true,
+}: T_ChordsProps): T_ReactFCReturn {
+  const chordRef: { current: HTMLDivElement | null } = useRef(null);
+  const [showInput, setShowInput] = useState<boolean>(false);
 
   const {
     error,
@@ -105,7 +110,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: T_Ch
               <Emoji className="tw-mr-1">⬇️</Emoji>
               <span>download as image</span>
             </Button>
-            <Space size={1} dir="v" />
+            <Space size={1} orientation="v" />
             {chordsToString && (
               <Fragment>
                 <Button
@@ -122,7 +127,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: T_Ch
                   </span>
                   <span>{showInput ? "hide" : "show"} input</span>
                 </Button>
-                <Space size={1} dir="v" />
+                <Space size={1} orientation="v" />
               </Fragment>
             )}
             <Button
@@ -145,7 +150,7 @@ export function Chords({ name, chords, stringsToSkip, showOptions = true }: T_Ch
   );
 }
 
-export function Solo({ positions, notes }): T_ReactFCReturn {
+export function Solo({ positions, notes }: { positions: string; notes: string }): T_ReactFCReturn {
   return (
     <div className="tw-text-sm tw-pr-2 tw-font-serif">
       <div className="tw-flex tw-items-end">
@@ -195,7 +200,7 @@ type T_FretProps = {
   stringsToSkip?: T_ChordsProps["stringsToSkip"];
 };
 
-function Fret({ variant, fret, chords, stringsToSkip }: T_FretProps): any {
+function Fret({ variant, fret, chords, stringsToSkip }: T_FretProps): T_ReactFCReturn {
   const isEmptyVariant = variant === "FRET_EMPTY";
   const isStringsNamesVariant = variant === "FRET_STRINGS_NAMES";
   const isSkipStringsVariant = variant === "FRET_SKIP_STRINGS";

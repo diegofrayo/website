@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import fs from "fs";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";

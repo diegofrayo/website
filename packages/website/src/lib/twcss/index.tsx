@@ -1,4 +1,5 @@
 import React from "react";
+import { T_ReactFCReturn } from "~/types";
 
 import HTML_TAGS from "./tags";
 
@@ -20,7 +21,7 @@ function twcssCreator(
     return React.forwardRef(function TWCSS_Component(
       { children, className = "", is, ["tw-variant"]: twVariant, ...rest }: T_TWCSS_ComponentProps,
       ref,
-    ): JSX.Element {
+    ): T_ReactFCReturn {
       const Element: string | any = is || Tag;
       const finalClassName: string = generateClassName(
         styles,

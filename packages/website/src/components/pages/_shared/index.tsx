@@ -1,8 +1,8 @@
-import * as React from "react";
+import React from "react";
 import classNames from "classnames";
 
 import { Link, Icon, Title as TitlePrimitive } from "~/components/primitive";
-import { T_Object, T_ReactFCReturn } from "~/types";
+import { T_Object, T_ReactChildrenProp, T_ReactFCReturn } from "~/types";
 
 export { default as Code } from "./Code";
 export { default as Playground } from "./Playground";
@@ -13,7 +13,7 @@ type T_EmojiProps = {
   children: string;
 };
 
-export function Emoji({ children, className }: T_EmojiProps): any {
+export function Emoji({ children, className }: T_EmojiProps): T_ReactFCReturn {
   return <span className={classNames("emoji", className)}>{children}</span>;
 }
 
@@ -22,7 +22,7 @@ type T_TextWithEmojiProps = {
   children: any;
 };
 
-export function TextWithEmoji({ emoji, children }: T_TextWithEmojiProps): any {
+export function TextWithEmoji({ emoji, children }: T_TextWithEmojiProps): T_ReactFCReturn {
   return (
     <div className="tw-flex tw-flex-nowrap tw-mb-3">
       <Emoji className="tw-text-xl tw-mr-3 tw-w-6 tw-h-6 tw-flex-shrink-0 tw-overflow-hidden tw-relative tw--top-0.5">
@@ -116,7 +116,7 @@ type T_GithubRepoProps = {
   description: string;
 };
 
-export function GithubRepo({ name, url, description }: T_GithubRepoProps): any {
+export function GithubRepo({ name, url, description }: T_GithubRepoProps): T_ReactFCReturn {
   return (
     <div className="root tw-text-right" data-markdown-block>
       <Link
@@ -147,7 +147,7 @@ export function GithubRepo({ name, url, description }: T_GithubRepoProps): any {
 }
 
 export function Title(Tag: "h1" | "h2" | "h3" | "h4", props: T_Object): any {
-  return function TitleComponent({ children }: T_Object): any {
+  return function TitleComponent({ children }: { children: T_ReactChildrenProp }): T_ReactFCReturn {
     return (
       <TitlePrimitive is={Tag} {...props}>
         {children}

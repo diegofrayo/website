@@ -1,7 +1,8 @@
-import React, { useState, useContext, createContext, SetStateAction } from "react";
-import Router from "next/router";
+import React, { useState, useContext, createContext } from "react";
+import { Router } from "next/router";
 
 import useDidMount from "./useDidMount";
+import { T_ReactChildrenProp, T_ReactFCReturn } from "~/types";
 
 type T_DefaultValue = {
   VR_Assets: {
@@ -16,14 +17,11 @@ const DEFAULT_VALUE: T_DefaultValue = {
     INDEX: "",
   },
 };
-const AssetsContext = createContext(DEFAULT_VALUE);
-const useAssetsContext = () => useContext(AssetsContext);
+const AssetsContext = createContext<T_DefaultValue>(DEFAULT_VALUE);
+const useAssetsContext = (): T_DefaultValue => useContext<T_DefaultValue>(AssetsContext);
 
-export function AssetsProvider({ children }: any): any {
-  const [assets, setAssets]: [
-    T_DefaultValue,
-    React.Dispatch<SetStateAction<T_DefaultValue>>,
-  ] = useState(DEFAULT_VALUE);
+export function AssetsProvider({ children }: { children: T_ReactChildrenProp }): T_ReactFCReturn {
+  const [assets, setAssets] = useState<T_DefaultValue>(DEFAULT_VALUE);
 
   useDidMount(() => {
     updateAssets();

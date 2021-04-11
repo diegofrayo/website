@@ -2,16 +2,16 @@ import React, { useState, useRef } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Icon, Link } from "~/components/primitive";
-import { Routes } from "~/utils/routing";
 import { useDidMount } from "~/hooks";
-import { T_SiteTexts } from "~/types";
+import { T_ReactFCReturn, T_SiteTexts } from "~/types";
 import { focusElement, isSmallScreen } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
+import { Routes } from "~/utils/routing";
 
 const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "wp";
 
-function WPPage(): any {
+function WPPage(): T_ReactFCReturn {
   const [phone, setPhone] = useState("");
   const inputRef: { current: undefined | any } = useRef(undefined);
 

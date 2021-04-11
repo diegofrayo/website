@@ -1,14 +1,15 @@
-import * as React from "react";
+import React from "react";
 
 import { MainLayout, Page } from "~/components/layout";
-import { Routes } from "~/utils/routing";
 import { useInternationalization } from "~/hooks";
+import { T_ReactFCReturn } from "~/types";
+import { Routes } from "~/utils/routing";
 
 type T_ErrorPageProps = {
   statusCode: 404 | 500;
 };
 
-function ErrorPage({ statusCode }: T_ErrorPageProps): any {
+function ErrorPage({ statusCode }: T_ErrorPageProps): T_ReactFCReturn {
   const { SiteTexts } = useInternationalization({ page: Routes[`ERROR_${statusCode}`] });
 
   return (

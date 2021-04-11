@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 
 import { Page, MainLayout } from "~/components/layout";
 import { safeRender } from "~/hocs";
-import { T_SiteTexts } from "~/types";
+import { T_ReactFCReturn, T_SiteTexts } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 import { Routes } from "~/utils/routing";
@@ -12,7 +12,7 @@ import { Routes } from "~/utils/routing";
 const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "styles";
 
-function StylesPage(): any {
+function StylesPage(): T_ReactFCReturn {
   return (
     <Page config={{ title: PAGE_NAME, noRobots: true }}>
       <MainLayout

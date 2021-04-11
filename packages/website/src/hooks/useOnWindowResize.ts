@@ -1,19 +1,22 @@
 import { useEffect } from "react";
 
-function useOnWindowResize(callback: () => void): any {
-  useEffect(function createResizeEventListener() {
-    function handleWindowResize() {
-      callback();
-    }
+function useOnWindowResize(callback: () => void): void {
+  useEffect(
+    function createResizeEventListener() {
+      function handleWindowResize(): void {
+        callback();
+      }
 
-    handleWindowResize();
+      handleWindowResize();
 
-    window.addEventListener("resize", handleWindowResize);
+      window.addEventListener("resize", handleWindowResize);
 
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
+      return () => {
+        window.removeEventListener("resize", handleWindowResize);
+      };
+    },
+    [callback],
+  );
 }
 
 export default useOnWindowResize;

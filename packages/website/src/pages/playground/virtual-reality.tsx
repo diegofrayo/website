@@ -3,14 +3,14 @@ import React from "react";
 import { Page, MainLayout } from "~/components/layout";
 import { List, Link } from "~/components/primitive";
 import { useAssets } from "~/hooks";
-import { T_SiteTexts } from "~/types";
+import { T_ReactFCReturn, T_SiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
 import { Routes } from "~/utils/routing";
 
 const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "virtual-reality";
 
-function VRPage(): any {
+function VRPage(): T_ReactFCReturn {
   const { VR_Assets } = useAssets();
 
   return (

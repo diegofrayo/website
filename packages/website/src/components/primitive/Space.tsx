@@ -1,40 +1,48 @@
 import React from "react";
 import classNames from "classnames";
 
+import { T_ReactFCReturn } from "~/types";
+
+enum E_Variants {
+  DEFAULT = "DEFAULT",
+  DASHED = "DASHED",
+}
+
 type T_SpaceProps = {
   size?: number;
   className?: string;
-  dir?: "h" | "v";
-  variant?: "DEFAULT" | "DASHED";
+  orientation?: "h" | "v";
+  variant?: E_Variants;
 };
 
-function Space(props: T_SpaceProps): JSX.Element {
+function Space(props: T_SpaceProps): T_ReactFCReturn {
   const { className } = useController(props);
 
   return <hr className={className} />;
 }
 
-const VARIANTS: Record<string, T_SpaceProps["variant"]> = {
-  DEFAULT: "DEFAULT",
-  DASHED: "DASHED",
-};
-
-Space.variant = VARIANTS;
+Space.variant = E_Variants;
 
 export default Space;
 
 // --- Controller ---
 
-function useController({ size, className, dir = "h", variant = VARIANTS.DEFAULT }: T_SpaceProps) {
-  const isHorizontalDir = dir === "h";
+function useController({
+  size: sizeProp,
+  className,
+  orientation = "h",
+  variant = E_Variants.DEFAULT,
+}: T_SpaceProps) {
+  const isHorizontalDir = orientation === "h";
+  const size = typeof sizeProp === "number" ? sizeProp : 2;
 
   return {
     className: classNames(
       "tw-flex-shrink-0",
-      typeof size === "number" && `tw-${isHorizontalDir ? "my" : "mx"}-${size}`,
+      `tw-${isHorizontalDir ? "my" : "mx"}-${size}`,
       !isHorizontalDir && "tw-inline-block tw-h-1",
-      variant === VARIANTS.DEFAULT && "tw-border-0",
-      variant === VARIANTS.DASHED &&
+      variant === E_Variants.DEFAULT && "tw-border-0",
+      variant === E_Variants.DASHED &&
         "tw-border-dashed dfr-border-color-primary dark:dfr-border-color-primary",
       className,
     ),

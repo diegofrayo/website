@@ -7,11 +7,11 @@ import { SongDetails } from "~/components/pages/music";
 import { Routes } from "~/utils/routing";
 import { useInternationalization, useQuery } from "~/hooks";
 import MusicService from "~/services/music";
-import { T_Song } from "~/types";
+import { T_ReactFCReturn, T_Song } from "~/types";
 import { sortBy } from "~/utils/misc";
 import { removeEmojiFromPageTitle } from "~/utils/strings";
 
-function MusicPage(): any {
+function MusicPage(): T_ReactFCReturn {
   const { SiteTexts } = useInternationalization({
     page: Routes.MUSIC,
     layout: true,
