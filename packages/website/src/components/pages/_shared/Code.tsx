@@ -51,21 +51,25 @@ function Code({ language, fileName, code, sourceURL }: T_CodeProps): T_ReactElem
           );
         }}
       </Highlight>
-      <div className="tw-text-right tw-p-2 tw-pt-1">
+      <div className="tw-p-2 tw-pt-1.5 tw-text-sm tw-text-right">
         {sourceURL && (
-          <Link className="tw-block sm:tw-inline-block tw-ml-auto sm:tw-mr-4" href={sourceURL}>
+          <Link
+            className="tw-block sm:tw-inline-block tw-ml-auto tw-font-bold sm:tw-mr-6 tw-mb-1 sm:tw-mb-0"
+            href={sourceURL}
+            variant={Link.variant.UNSTYLED}
+          >
             <Icon
               icon={Icon.icon.GITHUB}
-              wrapperClassName="tw-align-middle tw-mr-1"
+              wrapperClassName="tw-align-middle tw-mr-1.5"
               withDarkModeBackground
             />
-            <span className="tw-inline-block tw-text-sm dark:dfr-text-color-primary">
+            <span className="tw-align-middle tw-inline-block">
               {SiteTexts.page.current_locale.see_source_code}
             </span>
           </Link>
         )}
         <Button
-          className="tw-block sm:tw-inline-block tw-ml-auto tw-mt-1 sm:tw-mt-0 tw-text-sm tw-font-bold tw-text-right"
+          className="tw-block sm:tw-inline-block tw-ml-auto tw-font-bold tw-align-middle"
           data-clipboard-text={code}
           onClick={copyToClipboard}
         >
