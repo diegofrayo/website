@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 import { List, Space, Button } from "~/components/primitive";
-import { T_ReactFCReturn } from "~/types";
+import { T_ReactElement } from "~/types";
 
-function Lab(): T_ReactFCReturn {
+function Lab(): T_ReactElement {
   const [page, setPage] = useState("home");
   const [showMenu, setShowMenu] = useState(true);
 

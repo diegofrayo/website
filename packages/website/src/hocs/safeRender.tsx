@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import hoistNonReactStatics from "hoist-non-react-statics";
 
 import { useDidMount } from "~/hooks";
-import { T_Object, T_ReactFCReturn } from "~/types";
+import { T_Object, T_ReactElement } from "~/types";
 
 function safeRender(Component: any): any {
-  const SafeRenderHOC = (props: T_Object): T_ReactFCReturn => {
+  const SafeRenderHOC = (props: T_Object): T_ReactElement => {
     const [mounted, setMounted] = useState(false);
 
     useDidMount(() => setMounted(true));

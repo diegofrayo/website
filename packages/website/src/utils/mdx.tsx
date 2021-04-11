@@ -21,7 +21,7 @@ import { WebsiteMetadata, GithubData } from "~/utils/constants";
 import { Routes } from "~/utils/routing";
 
 import { getSiteTexts } from "./internationalization";
-import { T_ReactChildrenProp, T_ReactFCReturn } from "~/types";
+import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 
 export const MDXComponents = {
   a: Link,
@@ -38,14 +38,14 @@ export const MDXComponents = {
     ...rest
   }: {
     children: T_ReactChildrenProp;
-  }): T_ReactFCReturn {
+  }): T_ReactElement {
     return (
       <CodePrimitive variant={CodePrimitive.variant.INLINE} {...rest}>
         {children}
       </CodePrimitive>
     );
   },
-  hr: function HR(): T_ReactFCReturn {
+  hr: function HR(): T_ReactElement {
     return <Space variant={Space.variant.DASHED} />;
   },
 

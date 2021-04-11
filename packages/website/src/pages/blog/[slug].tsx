@@ -10,7 +10,7 @@ import { MDXContent } from "~/components/pages/_shared";
 import { useInternationalization } from "~/hooks";
 import twcss from "~/lib/twcss";
 import BlogService from "~/services/blog";
-import { T_BlogPost, T_Locale, T_ReactFCReturn } from "~/types";
+import { T_BlogPost, T_Locale, T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { WebsiteMetadata, GithubData } from "~/utils/constants";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
@@ -23,7 +23,7 @@ type T_BlogPostPageProps = {
   content: any;
 };
 
-function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactFCReturn {
+function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
     layout: true,
@@ -114,7 +114,7 @@ function BlogPostFooter({
   publishedAt,
   slug,
   updatedAt,
-}: T_BlogPostFooterProps): T_ReactFCReturn {
+}: T_BlogPostFooterProps): T_ReactElement {
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
     layout: true,

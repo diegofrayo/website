@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-import { T_CodeProps, T_ReactFCReturn } from "~/types";
+import { T_CodeProps, T_ReactElement } from "~/types";
 
 import Code from "./Code";
 
@@ -11,7 +11,7 @@ type T_PlaygroundProps = {
   language: T_CodeProps["language"];
 };
 
-function Playground({ Component, code, language }: T_PlaygroundProps): T_ReactFCReturn {
+function Playground({ Component, code, language }: T_PlaygroundProps): T_ReactElement {
   const [tab, setTab] = useState(0);
 
   return (

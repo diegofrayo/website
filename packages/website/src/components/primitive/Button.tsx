@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { T_HTML_Attributes, T_ReactFCReturn } from "~/types";
+import { T_HTML_Attributes, T_ReactElement } from "~/types";
 
 type T_ButtonProps = T_HTML_Attributes["button"];
 
@@ -11,7 +11,7 @@ function Button({
   className = "",
   onClick,
   ...rest
-}: T_ButtonProps): T_ReactFCReturn {
+}: T_ButtonProps): T_ReactElement {
   return (
     <button
       className={classNames("tw-transition-opacity hover:tw-opacity-75", className)}

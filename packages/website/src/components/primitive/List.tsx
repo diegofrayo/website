@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import { T_ReactChildrenProp, T_ReactFCReturn } from "~/types";
+import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 
 function List({
   children,
@@ -8,7 +8,7 @@ function List({
 }: {
   children: T_ReactChildrenProp;
   className?: string;
-}): T_ReactFCReturn {
+}): T_ReactElement {
   return (
     <ul className={classNames("root tw-list-inside tw-list-none", className)}>
       {children}
@@ -54,7 +54,7 @@ List.Item = function ListItem({
 }: {
   children: T_ReactChildrenProp;
   className?: string;
-}): T_ReactFCReturn {
+}): T_ReactElement {
   return (
     <li className={className} {...rest}>
       {children}

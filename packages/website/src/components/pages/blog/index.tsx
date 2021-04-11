@@ -6,13 +6,13 @@ import { List, Link } from "~/components/primitive";
 import { Render } from "~/components/pages/_shared";
 import { useInternationalization, useQuery } from "~/hooks";
 import BlogService from "~/services/blog";
-import { T_BlogPost, T_BlogPostLocaleData, T_Locale, T_ReactFCReturn } from "~/types";
+import { T_BlogPost, T_BlogPostLocaleData, T_Locale, T_ReactElement } from "~/types";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { Routes } from "~/utils/routing";
 import { removeEmojiFromPageTitle } from "~/utils/strings";
 
-function BlogPage(): T_ReactFCReturn {
+function BlogPage(): T_ReactElement {
   const { isLoading, error, data } = useQuery("blogPosts", BlogService.fetchPosts);
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
@@ -86,7 +86,7 @@ function BlogEntry({
   locale,
   categories,
   updatedAt,
-}: T_BlogEntryProps): T_ReactFCReturn {
+}: T_BlogEntryProps): T_ReactElement {
   const { SiteTexts } = useInternationalization({
     page: Routes.BLOG,
     layout: true,

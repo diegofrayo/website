@@ -1,7 +1,7 @@
 import React from "react";
 
 import { safeRender } from "~/hocs";
-import { T_ReactChildrenProp, T_ReactFCReturn } from "~/types";
+import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 
 enum E_Variant {
   STYLED = "STYLED",
@@ -13,7 +13,7 @@ type T_MDXContentProps = {
   variant?: E_Variant;
 };
 
-function MDXContent({ content, variant = E_Variant.STYLED }: T_MDXContentProps): T_ReactFCReturn {
+function MDXContent({ content, variant = E_Variant.STYLED }: T_MDXContentProps): T_ReactElement {
   return (
     <article className={`dfr-MDXContent dfr-MDXContent--${variant.toLowerCase()}`}>
       {content}

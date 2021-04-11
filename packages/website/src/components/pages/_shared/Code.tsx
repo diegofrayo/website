@@ -4,13 +4,13 @@ import dracula from "prism-react-renderer/themes/dracula";
 
 import { Link, Icon, Code as CodePrimitive, Button } from "~/components/primitive";
 import twcss from "~/lib/twcss";
-import { T_CodeProps, T_ReactFCReturn } from "~/types";
+import { T_CodeProps, T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 import { Routes } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
 
-function Code({ language, fileName, code, sourceURL }: T_CodeProps): T_ReactFCReturn {
+function Code({ language, fileName, code, sourceURL }: T_CodeProps): T_ReactElement {
   const SiteTexts = getSiteTexts({ page: Routes.BLOG });
 
   return (

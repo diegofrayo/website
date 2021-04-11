@@ -6,21 +6,21 @@ export type T_Primitive = string | number | boolean | undefined | null;
 
 export type T_ObjectWithPrimitives = Record<string, T_Primitive>;
 
-export type T_ReactChildrenProp = React.ReactNode;
+export type T_Object<T = any> = Record<string, T>;
 
-export type T_ReactFCReturn = JSX.Element | null;
+export type T_ReactChildrenProp = React.ReactNode;
 
 export type T_ReactStylesProp = CSSProperties;
 
+export type T_ReactElement = JSX.Element | null;
+
 export type T_ReactRefObject<Type> = RefObject<Type>;
+
+export type T_ReactEffectCallback = EffectCallback;
 
 export type T_HTML_Attributes = JSX.IntrinsicElements;
 
 export type T_HTMLElement = HTMLElement;
-
-export type T_EffectCallback = EffectCallback;
-
-export type T_Object<T = any> = Record<string, T>;
 
 // --- Internationalization ---
 

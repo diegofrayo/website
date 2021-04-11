@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import AnalyticsService from "~/services/analytics";
-import { T_GetAssetsParam, T_ReactFCReturn } from "~/types";
+import { T_GetAssetsParam, T_ReactElement } from "~/types";
 import { getAssetsURL } from "~/utils/assets";
 import { WebsiteMetadata, SEOMetadata } from "~/utils/constants";
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
@@ -20,7 +20,7 @@ type T_PageProps = {
   };
 };
 
-function Page({ children, config = {} }: T_PageProps): T_ReactFCReturn {
+function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   const metadata = {
     title: config.title ? `${config.title} - ${SEOMetadata.title}` : SEOMetadata.title,
     url: config.pathname ? `${SEOMetadata.url}${config.pathname}` : SEOMetadata.url,

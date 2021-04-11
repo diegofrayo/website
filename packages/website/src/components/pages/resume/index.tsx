@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Link, Collapsible, Title } from "~/components/primitive";
-import { T_ReactChildrenProp, T_ReactFCReturn } from "~/types";
+import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 
 type T_ResumeTimelineItem = {
   company: string;
@@ -15,7 +15,7 @@ type T_ResumeTimelineProps = {
   timeline: T_ResumeTimelineItem[];
 };
 
-export function ResumeTimeline({ title, timeline }: T_ResumeTimelineProps): T_ReactFCReturn {
+export function ResumeTimeline({ title, timeline }: T_ResumeTimelineProps): T_ReactElement {
   return (
     <section data-markdown-block>
       <Title is="h2">{title}</Title>
@@ -33,7 +33,7 @@ function TimelineItem({
   date,
   description,
   url = "",
-}: T_ResumeTimelineItem): T_ReactFCReturn {
+}: T_ResumeTimelineItem): T_ReactElement {
   return (
     <div className="tw-relative tw-mb-8 last:tw-mb-0">
       <span className="tw-absolute tw--left-10 tw-border-4 tw-border-black dark:dfr-border-color-primary tw-w-7 tw-h-7 tw-rounded-full tw-bg-white tw-top-0.5" />
@@ -53,7 +53,7 @@ function TimelineItem({
   );
 }
 
-export function ResumeFAQ({ children }: { children: T_ReactChildrenProp }): T_ReactFCReturn {
+export function ResumeFAQ({ children }: { children: T_ReactChildrenProp }): T_ReactElement {
   return (
     <div data-markdown-block>
       <Title is="h2">FAQ</Title>
@@ -67,7 +67,7 @@ type T_ResumeFAQItemProps = {
   children: T_ReactChildrenProp;
 };
 
-export function ResumeFAQItem({ question, children }: T_ResumeFAQItemProps): T_ReactFCReturn {
+export function ResumeFAQItem({ question, children }: T_ResumeFAQItemProps): T_ReactElement {
   return (
     <Collapsible title={question}>
       <blockquote>{children}</blockquote>

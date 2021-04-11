@@ -13,7 +13,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { useDidMount } from "~/hooks";
 import { AssetsProvider } from "~/hooks/useAssets";
 import AnalyticsService from "~/services/analytics";
-import { T_ReactFCReturn } from "~/types";
+import { T_ReactElement } from "~/types";
 import { detectEmojisSupport } from "~/utils/browser";
 import { extractLocaleFromUrl, setCurrentLocale } from "~/utils/internationalization";
 
@@ -21,7 +21,7 @@ import ErrorPage from "./_error";
 
 const queryClient = new QueryClient();
 
-function App({ Component, pageProps }: AppProps): T_ReactFCReturn {
+function App({ Component, pageProps }: AppProps): T_ReactElement {
   useDidMount(() => {
     AnalyticsService.initAnalytics();
     setCurrentLocale(extractLocaleFromUrl());

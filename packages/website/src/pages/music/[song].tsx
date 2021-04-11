@@ -11,7 +11,7 @@ import { MDXContent } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
 import { useDidMount, useInternationalization } from "~/hooks";
 import MusicService from "~/services/music";
-import { T_ReactFCReturn, T_Song } from "~/types";
+import { T_ReactElement, T_Song } from "~/types";
 import { copyToClipboard, isBrowser } from "~/utils/browser";
 import { WebsiteMetadata } from "~/utils/constants";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
@@ -22,7 +22,7 @@ type T_SongPageProps = {
   content: any;
 };
 
-function SongPage({ song, content }: T_SongPageProps): T_ReactFCReturn {
+function SongPage({ song, content }: T_SongPageProps): T_ReactElement {
   const { SiteTexts } = useInternationalization({
     page: Routes.MUSIC,
     layout: true,

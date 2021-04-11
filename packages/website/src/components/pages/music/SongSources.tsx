@@ -1,14 +1,14 @@
 import React from "react";
 
 import { Icon, Image, Link, List, Title } from "~/components/primitive";
-import { T_ReactFCReturn, T_Song } from "~/types";
+import { T_ReactElement, T_Song } from "~/types";
 import { sortBy } from "~/utils/misc";
 
 type T_SongSources = {
   sources: T_Song["sources"];
 };
 
-function SongSources(props: T_SongSources): T_ReactFCReturn {
+function SongSources(props: T_SongSources): T_ReactElement {
   const { sources, getImageComponent } = useController(props);
 
   if (sources.length === 0) return null;

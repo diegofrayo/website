@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 
 import { Icon, Link } from "~/components/primitive";
-import { T_ReactFCReturn, T_SiteTexts, T_Song } from "~/types";
+import { T_ReactElement, T_SiteTexts, T_Song } from "~/types";
 import { createArray } from "~/utils/misc";
 
 function SongDetails({
@@ -13,7 +13,7 @@ function SongDetails({
   song: T_Song;
   SiteTexts: T_SiteTexts;
   className?: string;
-}): T_ReactFCReturn {
+}): T_ReactElement {
   const { getProgressStyles } = useController();
 
   return (

@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import { Page, MainLayout } from "~/components/layout";
 import { Space, Title } from "~/components/primitive";
 import { Chords } from "~/lib/chords";
-import { T_ReactFCReturn, T_SiteTexts } from "~/types";
+import { T_ReactElement, T_SiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
 import { Routes } from "~/utils/routing";
 
 const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "chords";
 
-function ChordsPage(): T_ReactFCReturn {
+function ChordsPage(): T_ReactElement {
   const [inputs, setInputs] = useState({ name: "", chords: "" });
 
   return (

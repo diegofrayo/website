@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { T_ReactFCReturn } from "~/types";
+import { T_ReactElement } from "~/types";
 
 enum E_Variants {
   DEFAULT = "DEFAULT",
@@ -15,7 +15,7 @@ type T_SpaceProps = {
   variant?: E_Variants;
 };
 
-function Space(props: T_SpaceProps): T_ReactFCReturn {
+function Space(props: T_SpaceProps): T_ReactElement {
   const { className } = useController(props);
 
   return <hr className={className} />;

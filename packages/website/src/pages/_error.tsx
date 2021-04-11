@@ -1,9 +1,9 @@
 import React from "react";
 
 import ErrorPage from "~/components/pages/ErrorPage";
-import { T_ReactFCReturn } from "~/types";
+import { T_ReactElement } from "~/types";
 
-function Error(): T_ReactFCReturn {
+function Error(): T_ReactElement {
   return <ErrorPage statusCode={500} />;
 }
 

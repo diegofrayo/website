@@ -7,7 +7,7 @@ import { Emoji } from "~/components/pages/_shared";
 import { useDidMount, useOnWindowScroll } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
-import { E_Icons, T_BreadcumbProps, T_GenerateSupportedLocales, T_ReactFCReturn } from "~/types";
+import { E_Icons, T_BreadcumbProps, T_GenerateSupportedLocales, T_ReactElement } from "~/types";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
 import { WebsiteMetadata } from "~/utils/constants";
 import { generateSlug } from "~/utils/strings";
@@ -27,7 +27,7 @@ function MainLayout({
   breadcumb,
   title = "",
   showGoToTopButton = false,
-}: T_MainLayoutProps): T_ReactFCReturn {
+}: T_MainLayoutProps): T_ReactElement {
   return (
     <Main>
       <Header locales={locales} />
@@ -72,7 +72,7 @@ type T_HeaderProps = {
 };
 */
 
-const Header = safeRender(function Header(): T_ReactFCReturn {
+const Header = safeRender(function Header(): T_ReactElement {
   /*
   const { SiteTexts, currentLocale } = useInternationalization({
     page: Routes.BLOG,
@@ -118,7 +118,7 @@ const Header = safeRender(function Header(): T_ReactFCReturn {
   );
 });
 
-function HeaderContent(): T_ReactFCReturn {
+function HeaderContent(): T_ReactElement {
   return (
     <div className="root tw-flex tw-items-center tw-w-full tw-h-full">
       <div className="tw-flex-1 tw-min-h-0 tw-mr-4">
@@ -138,7 +138,7 @@ function HeaderContent(): T_ReactFCReturn {
   );
 }
 
-function DarkModeToggle(): T_ReactFCReturn {
+function DarkModeToggle(): T_ReactElement {
   const { theme, setTheme } = useTheme();
 
   const isDarkMode = theme === "dark";
@@ -172,7 +172,7 @@ type T_LocalesSelectorProps = {
   currentLocale: T_Locale;
 };
 
-function LocalesSelector({ locales, currentLocale }: T_LocalesSelectorProps): T_ReactFCReturn {
+function LocalesSelector({ locales, currentLocale }: T_LocalesSelectorProps): T_ReactElement {
   return null;
 
   return (
@@ -197,7 +197,7 @@ function LocalesSelector({ locales, currentLocale }: T_LocalesSelectorProps): T_
 }
 */
 
-function Breadcumb({ items }: T_BreadcumbProps): T_ReactFCReturn {
+function Breadcumb({ items }: T_BreadcumbProps): T_ReactElement {
   const hasMoreThanOneItem: boolean = items.length > 1;
 
   return (
@@ -237,7 +237,7 @@ function Breadcumb({ items }: T_BreadcumbProps): T_ReactFCReturn {
   );
 }
 
-function Footer({ showGoToTopButton }): T_ReactFCReturn {
+function Footer({ showGoToTopButton }): T_ReactElement {
   return (
     <footer className="tw-flex tw-justify-end tw-items-end tw-h-32">
       <SocialIcons />
@@ -246,7 +246,7 @@ function Footer({ showGoToTopButton }): T_ReactFCReturn {
   );
 }
 
-function SocialIcons(): T_ReactFCReturn {
+function SocialIcons(): T_ReactElement {
   const SOCIAL_NETWORKS = [
     {
       name: "email",
@@ -288,7 +288,7 @@ type T_SocialIconProps = {
   withDarkModeBackground?: boolean;
 };
 
-function SocialIcon({ icon, url, withDarkModeBackground }: T_SocialIconProps): T_ReactFCReturn {
+function SocialIcon({ icon, url, withDarkModeBackground }: T_SocialIconProps): T_ReactElement {
   return (
     <Link href={url} className="tw-inline-block tw-ml-4" variant={Link.variant.UNSTYLED}>
       <Icon icon={icon} size={24} withDarkModeBackground={withDarkModeBackground} />
@@ -296,7 +296,7 @@ function SocialIcon({ icon, url, withDarkModeBackground }: T_SocialIconProps): T
   );
 }
 
-function GoToTopButton(): T_ReactFCReturn {
+function GoToTopButton(): T_ReactElement {
   const [showGoToTopButton, setShowGoToTopButton] = useState<boolean>(false);
 
   useDidMount(() => {

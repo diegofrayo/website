@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import { T_ReactChildrenProp, T_ReactFCReturn, T_ReactRefObject } from "~/types";
+import { T_ReactChildrenProp, T_ReactElement, T_ReactRefObject } from "~/types";
 
 type T_CollapsibleProps = {
   children: T_ReactChildrenProp;
@@ -8,7 +8,7 @@ type T_CollapsibleProps = {
   openByDefault?: boolean;
 };
 
-function Collapsible({ children, ...rest }: T_CollapsibleProps): T_ReactFCReturn {
+function Collapsible({ children, ...rest }: T_CollapsibleProps): T_ReactElement {
   const { toggleIsCollapsed, title, containerRef } = useController(rest);
 
   return (

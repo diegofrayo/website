@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { T_HTML_Attributes, T_ReactFCReturn } from "~/types";
+import { T_HTML_Attributes, T_ReactElement } from "~/types";
 
 enum E_Variants {
   DEFAULT = "DEFAULT",
@@ -17,7 +17,7 @@ function Blockquote({
   className = "",
   variant = E_Variants.DEFAULT,
   ...rest
-}: T_BlockquoteProps): T_ReactFCReturn {
+}: T_BlockquoteProps): T_ReactElement {
   return (
     <blockquote
       className={classNames(

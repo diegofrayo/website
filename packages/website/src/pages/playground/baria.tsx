@@ -3,9 +3,9 @@ import React from "react";
 import { Page } from "~/components/layout";
 import { Image } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import { T_ReactFCReturn } from "~/types";
+import { T_ReactElement } from "~/types";
 
-function BariaPage(): T_ReactFCReturn {
+function BariaPage(): T_ReactElement {
   useDidMount(() => {
     document.title = "Baría - Feliz cumpleaños";
   });

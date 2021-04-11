@@ -8,7 +8,7 @@ import { createArray } from "~/utils/misc";
 
 import twcss from "./../twcss";
 import Service from "./service";
-import { T_ReactFCReturn } from "~/types";
+import { T_ReactElement } from "~/types";
 
 interface T_ChordBase {
   fret: number;
@@ -39,7 +39,7 @@ export function Chords({
   chords,
   stringsToSkip,
   showOptions = true,
-}: T_ChordsProps): T_ReactFCReturn {
+}: T_ChordsProps): T_ReactElement {
   const chordRef: { current: HTMLDivElement | null } = useRef(null);
   const [showInput, setShowInput] = useState<boolean>(false);
 
@@ -150,7 +150,7 @@ export function Chords({
   );
 }
 
-export function Solo({ positions, notes }: { positions: string; notes: string }): T_ReactFCReturn {
+export function Solo({ positions, notes }: { positions: string; notes: string }): T_ReactElement {
   return (
     <div className="tw-text-sm tw-pr-2 tw-font-serif">
       <div className="tw-flex tw-items-end">
@@ -200,7 +200,7 @@ type T_FretProps = {
   stringsToSkip?: T_ChordsProps["stringsToSkip"];
 };
 
-function Fret({ variant, fret, chords, stringsToSkip }: T_FretProps): T_ReactFCReturn {
+function Fret({ variant, fret, chords, stringsToSkip }: T_FretProps): T_ReactElement {
   const isEmptyVariant = variant === "FRET_EMPTY";
   const isStringsNamesVariant = variant === "FRET_STRINGS_NAMES";
   const isSkipStringsVariant = variant === "FRET_SKIP_STRINGS";

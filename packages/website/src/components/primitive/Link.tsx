@@ -3,7 +3,7 @@ import classNames from "classnames";
 import NextLink from "next/link";
 
 import twcss from "~/lib/twcss";
-import { T_Locale, T_ReactChildrenProp, T_ReactFCReturn, T_HTML_Attributes } from "~/types";
+import { T_Locale, T_ReactChildrenProp, T_ReactElement, T_HTML_Attributes } from "~/types";
 import { getScrollPosition, isSmallScreen, setScrollPosition } from "~/utils/browser";
 
 enum E_Variants {
@@ -32,7 +32,7 @@ function Link({
   isNextLink = false,
   variant = E_Variants.DEFAULT,
   ...rest
-}: T_LinkProps): T_ReactFCReturn {
+}: T_LinkProps): T_ReactElement {
   const { getExternalAttrs, onClick } = useController(href);
 
   if (!href || !children) {

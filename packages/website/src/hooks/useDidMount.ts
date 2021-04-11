@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-import { T_EffectCallback } from "~/types";
+import { T_ReactEffectCallback } from "~/types";
 
-function useDidMount(callback: T_EffectCallback): void {
+function useDidMount(callback: T_ReactEffectCallback): void {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(callback, []);
 }

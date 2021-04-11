@@ -5,10 +5,10 @@ import { Icon, Link } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
-import { T_ReactFCReturn } from "~/types";
+import { T_ReactElement } from "~/types";
 import { setScrollPosition } from "~/utils/browser";
 
-function MariaPage(): T_ReactFCReturn {
+function MariaPage(): T_ReactElement {
   const [section, setSection] = useState("");
 
   useDidMount(() => {

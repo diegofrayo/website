@@ -1,8 +1,8 @@
 import React, { useRef, createContext, useEffect } from "react";
 
-import { T_Object, T_ReactFCReturn } from "~/types";
+import { T_Object, T_ReactElement } from "~/types";
 
-function Modal({ children, visible, onCloseHandler }: T_Object): T_ReactFCReturn {
+function Modal({ children, visible, onCloseHandler }: T_Object): T_ReactElement {
   function closeModal() {
     onCloseHandler(false);
   }
@@ -41,7 +41,7 @@ Modal.Context = Context;
 
 // --- Components ---
 
-function Backdrop({ children, closeModalHandler }): T_ReactFCReturn {
+function Backdrop({ children, closeModalHandler }): T_ReactElement {
   const backdropRef = useRef(null);
 
   function handleBackdropClick(event) {

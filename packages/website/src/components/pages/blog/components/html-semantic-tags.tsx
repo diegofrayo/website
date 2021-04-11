@@ -1,8 +1,8 @@
 import React from "react";
 
-import { T_ReactFCReturn } from "~/types";
+import { T_ReactElement } from "~/types";
 
-export function Main(): T_ReactFCReturn {
+export function Main(): T_ReactElement {
   return (
     <main role="main" className="root tw-bg-white dark:tw-bg-gray-400 tw-border">
       <header className="tw-bg-gray-200 dark:tw-bg-gray-600 tw-text-center tw-p-2">
@@ -74,7 +74,7 @@ export function Main(): T_ReactFCReturn {
   );
 }
 
-export function Texts(): T_ReactFCReturn {
+export function Texts(): T_ReactElement {
   return (
     <section>
       <h2>text elements</h2>
@@ -111,7 +111,7 @@ export function Texts(): T_ReactFCReturn {
   );
 }
 
-export function Measure(): T_ReactFCReturn {
+export function Measure(): T_ReactElement {
   return (
     <div>
       <p>Donuts eaten:</p>

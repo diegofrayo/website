@@ -2,11 +2,11 @@ import React from "react";
 import { useRouter } from "next/router";
 import hoistNonReactStatics from "hoist-non-react-statics";
 
-import { T_GetSiteTextsParam, T_Locale, T_Object, T_ReactFCReturn } from "~/types";
+import { T_GetSiteTextsParam, T_Locale, T_Object, T_ReactElement } from "~/types";
 import { getSiteTexts, setCurrentLocale } from "~/utils/internationalization";
 
 function withTranslations(Component: any, config: T_GetSiteTextsParam): any {
-  const WithTranslationsHOC = (props: T_Object): T_ReactFCReturn => {
+  const WithTranslationsHOC = (props: T_Object): T_ReactElement => {
     const { locale } = useRouter();
     setCurrentLocale(locale as T_Locale);
 

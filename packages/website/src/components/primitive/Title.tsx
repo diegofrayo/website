@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { T_ReactChildrenProp, T_ReactFCReturn } from "~/types";
+import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { generateSlug } from "~/utils/strings";
 
 import Icon from "./Icon";
@@ -30,7 +30,7 @@ type T_TitleProps = {
   className?: string;
 };
 
-function Title(props: T_TitleProps): T_ReactFCReturn {
+function Title(props: T_TitleProps): T_ReactElement {
   const { Tag, id, className, children, variant, showLinkIcon } = useController(props);
 
   if (variant === E_Variants.PRIMARY && showLinkIcon) {
