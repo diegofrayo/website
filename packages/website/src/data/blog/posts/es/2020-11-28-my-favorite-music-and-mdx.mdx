@@ -50,15 +50,18 @@ Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arre
 <Code
   language="typescript"
   sourceURL={DATA.github.monorepo.website.files["[slug]"]}
-  code={`export async function getStaticPaths(): Promise<T_Object> {
+  code={`export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function getStaticPaths() {
   return {
-    paths: Object.keys(BlogPosts).map(slug => {
-      return { params: { slug } };
-    }),
+    paths: (await BlogService.fetchPosts()).reduce((result, post: T_BlogPost) => {
+      return result.concat(
+        post.locales.map((locale: T_Locale) => {
+          return { params: { slug: post.slug }, locale };
+        }),
+      );
+    }, [] as Array<any>),
     fallback: false,
   };
-}
-// output: { paths: [{ params: { slug: "my-favorite-music-and-mdx" } }, ...more blog posts], fallback: false }`}
+};`}
 />
 
 > La razon de configurar `fallback: false` es porque estoy usando **Static Generation**, por lo tanto todas las páginas de este sitio web son **pre-renderizadas** en **tiempo de compilación**, esto trae beneficios de rendimiento y velocidad de carga. Elegí **Static Generation** porque tengo muy pocas páginas y publicaciones en este momento, en un futuro cuando este sitio web crezca, usaré otra estrategia más eficiente y que mejor se adapte a mi situación. Les recomiendo leer la [documentación de Next.js](https://nextjs.org/docs/basic-features/data-fetching) acerca de este tema, es muy clara su explicación.
@@ -68,22 +71,25 @@ Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada publi
 <Code
   sourceURL={DATA.github.monorepo.website.files["[slug]"]}
   language="typescript"
-  code={`export async function getStaticProps({
-  params,
-}: T_Object): Promise<T_Object> {
-  const post = BlogPosts[params.slug];
-  const note = fs.readFileSync(
-    \`\${process.cwd()}/src/data/blog/posts/\${CURRENT_LOCALE}/\${post.published_at}-\${
-      post.slug
-    }.mdx\`,
+  code={`export const getStaticProps: GetStaticProps<
+  T_BlogPostPageProps,
+  { slug: string }
+> = async function getStaticProps({ params, locale }) {
+  const post: T_BlogPost = await BlogService.getPost({ slug: params?.slug });
+  const file = fs.readFileSync(
+    \`\${process.cwd()}/src/data/blog/posts/\${getItemLocale(
+      post.locales,
+      post.defaultLocale,
+      locale as T_Locale,
+    )}/\${post.createdAt}-\${post.slug}.mdx\`,
     "utf8",
   );
-  const content = await renderToString(note, {
+  const content = await renderToString(file, {
     components: MDXComponents,
-    scope: MDXScope,
+    scope: { DATA: { ...MDXScope.DATA, blog_post: post } },
   });
   return { props: { post, content } };
-}`}
+};`}
 />
 
 > **Problema:** Al usar **next-mdx-remote**, no puedo importar componentes o variables dentro de los archivos **MDX** usando `import`. En este [link](https://github.com/hashicorp/next-mdx-remote#caveats) puedes leer más acerca de esto.
@@ -95,27 +101,49 @@ Por último, este es el componente que renderiza una publicación.
 <Code
   sourceURL={DATA.github.monorepo.website.files["[slug]"]}
   language="jsx"
-  code={`function BlogPostPage({ post, content }: T_Object): any {
+  code={`type T_BlogPostPageProps = {
+  post: T_BlogPost;
+  content: any;
+};
+function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
+  const { SiteTexts, currentLocale } = useInternationalization({
+    page: Routes.BLOG,
+    layout: true,
+  });
   const mdxContent = hydrate(content, { components: MDXComponents });
   return (
-    <Page metadata={{ title: post[CURRENT_LOCALE].title }}>
+    <Page
+      config={{
+        title: post[currentLocale]?.title,
+        pathname: \`\${Routes.BLOG}/\${post.slug}\`,
+        description: post[currentLocale]?.description,
+      }}
+    >
       <MainLayout
+        locales={generateSupportedLocales(post.locales, \`\${Routes.BLOG}/\${[post.slug]}\`)}
         breadcumb={[
-          { text: SiteTexts.layout.current_locale.breadcumb.home, url: Routes.HOME },
-          { text: SiteTexts.layout.current_locale.breadcumb.blog, url: Routes.BLOG() },
           {
-            text: post[CURRENT_LOCALE].title,
-            url: Routes.BLOG(post.slug),
+            text: SiteTexts.layout.current_locale.breadcumb.home,
+            url: Routes.HOME,
+          },
+          {
+            text: SiteTexts.layout.current_locale.breadcumb.blog,
+            url: Routes.BLOG,
+          },
+          {
+            text: BlogService.composeTitle(post, currentLocale),
           },
         ]}
-        title={post[CURRENT_LOCALE].title}
-        blogMetadata={{
-          author: "@diegofrayo",
-          slug: post.slug,
-          publishedAt: post.published_at,
-        }}
+        title={BlogService.composeTitle(post, currentLocale)}
+        showGoToTopButton
       >
         <MDXContent content={mdxContent} />
+        <BlogPostFooter
+          createdAt={post.createdAt}
+          publishedAt={post.publishedAt}
+          slug={post.slug}
+          updatedAt={post.updatedAt}
+        />
       </MainLayout>
     </Page>
   );
@@ -130,79 +158,78 @@ Para manejar los estilos **CSS** del contenido compilado de los archivos **MDX**
   sourceURL={DATA.github.monorepo.website.files.MDXContent}
   language="jsx"
   code={`import React from "react";
-import ClipboardJS from "clipboard";
-import { useDidMount } from "~/hooks";
-function MDXContent({ content }: T_Object): any {
-  useDidMount(() => {
-    new ClipboardJS(".clipboard");
-  });
+import { safeRender } from "~/hocs";
+import { T_ReactChildrenProp, T_ReactElement } from "~/types";
+type T_Variants = "DEFAULT" | "UNSTYLED";
+const VARIANTS: Record<T_Variants, T_Variants> = {
+  DEFAULT: "DEFAULT",
+  UNSTYLED: "UNSTYLED",
+};
+type T_MDXContentProps = {
+  content: T_ReactChildrenProp;
+  variant?: T_Variants;
+};
+function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps): T_ReactElement {
   return (
-    <article className="mdx-content">
+    <article className={\`dfr-MDXContent dfr-MDXContent--\${variant.toLowerCase()}\`}>
       {content}
       <style jsx>{\`
-        :global(.mdx-content) > :global(p),
-        :global(.mdx-content) :global(pre),
-        :global(.mdx-content) :global(blockquote),
-        :global(.mdx-content) :global(img),
-        :global(.mdx-content) :global(hr),
-        :global(.mdx-content) :global(ol) {
-          @apply tw-mt-3;
+        /* Spacing: parent components */
+        :global(.dfr-MDXContent--styled) > :global(blockquote),
+        :global(.dfr-MDXContent--styled) > :global(hr),
+        :global(.dfr-MDXContent--styled) > :global(img),
+        :global(.dfr-MDXContent--styled) > :global(ol),
+        :global(.dfr-MDXContent--styled) > :global(p),
+        :global(.dfr-MDXContent--styled) > :global(pre),
+        :global(.dfr-MDXContent--styled) > :global(ul),
+        :global(.dfr-MDXContent--styled) :global(*[data-markdown-block]) {
           @apply tw-mb-6;
         }
-        :global(.mdx-content) :global(ol) {
-          @apply tw-pl-6;
-          list-style-type: decimal;
-        }
-        :global(.mdx-content) :global(pre) {
-          @apply tw-bg-gray-800;
-          @apply tw-p-4;
-          @apply tw-rounded-md;
-          @apply tw-text-base;
-          @apply tw-text-gray-300;
-          max-width: 100%;
-          overflow-x: auto;
-          word-break: keep-all;
-        }
-        :global(.mdx-content) :global(blockquote) {
-          @apply tw-border-black;
-          @apply tw-border-l-4;
-          @apply tw-pl-4;
-          color: black;
-          font-style: italic;
-        }
-        :global(.mdx-content) :global(p) :global(code) {
-          @apply tw-text-red-700;
-          @apply tw-text-base;
-        }
-        :global(.mdx-content) :global(p) :global(code):after {
-          content: "\`";
-        }
-        :global(.mdx-content) :global(p) :global(code):before {
-          content: "\`";
-        }
-        :global(.mdx-content) :global(h1),
-        :global(.mdx-content) :global(h2),
-        :global(.mdx-content) :global(h3),
-        :global(.mdx-content) :global(h4) {
+        /* Spacing: nested components */
+        :global(.dfr-MDXContent--styled) :global(li) > :global(p),
+        :global(.dfr-MDXContent--styled) :global(li) > :global(pre),
+        :global(.dfr-MDXContent--styled) :global(li) > :global(blockquote),
+        :global(.dfr-MDXContent--styled) :global(li) > :global(img),
+        :global(.dfr-MDXContent--styled) :global(blockquote) > :global(p) {
           @apply tw-mb-3;
         }
-        :global(.mdx-content) :global(h1) {
-          @apply tw-text-3xl;
+        /* Spacing: titles */
+        :global(.dfr-MDXContent--styled) > :global(h1),
+        :global(.dfr-MDXContent--styled) > :global(h2),
+        :global(.dfr-MDXContent--styled) > :global(h3),
+        :global(.dfr-MDXContent--styled) > :global(h4) {
+          @apply tw-mt-6;
+          @apply tw-mb-3;
         }
-        :global(.mdx-content) :global(h2) {
-          @apply tw-text-2xl;
+        /* Spacing: nested UL lists */
+        :global(.dfr-MDXContent--styled) :global(li) > :global(ul) {
+          @apply tw-mt-3;
         }
-        :global(.mdx-content) :global(h3) {
-          @apply tw-text-xl;
+        /* Ordered lists */
+        :global(.dfr-MDXContent--styled) :global(ol) {
+          @apply tw-pl-9;
+          list-style-type: decimal;
         }
-        :global(.mdx-content) :global(h4) {
-          @apply tw-text-lg;
+        :global(.dfr-MDXContent--styled) :global(ol) > :global(li) {
+          @apply tw-mb-6;
+        }
+        /* Images */
+        :global(.dfr-MDXContent--styled) > :global(img),
+        :global(.dfr-MDXContent--styled) :global(li) > :global(img) {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        /* For music pages (Custom line breaks | Temporary solution) */
+        :global(.dfr-MDXContent) :global(br[data-separator]) {
+          display: none;
         }
       \`}</style>
     </article>
   );
 }
-export default MDXContent;`}
+MDXContent.variant = VARIANTS;
+export default safeRender(MDXContent);
+`}
 />
 
 > La directiva `@apply` me permite usar los estilos de **Tailwind CSS** dentro de mis declaraciones de estilos que construyo usando [styled-jsx](https://github.com/vercel/styled-jsx).
@@ -212,22 +239,29 @@ El resaltado de síntaxis de código fuente lo hice con [prism-react-renderer](h
 <Code
   sourceURL={DATA.github.monorepo.website.files.Code}
   language="jsx"
-  code={`import Highlight, { defaultProps } from "prism-react-renderer";
-import dracula from "prism-react-renderer/themes/dracula";
-export function Code({ language, fileName, code, sourceURL }: T_Object): any {
-  const SiteTexts = getSiteTexts({ page: Routes.BLOG() });
+  code={`function Code({ language, fileName, code, sourceURL }: T_CodeProps): T_ReactElement {
+  const SiteTexts = getSiteTexts({ page: Routes.BLOG });
   return (
-    <div className="root tw-mb-6">
-      {fileName ||
-        (sourceURL && (
-          <code className="tw-text-sm tw-mb-2 tw-font-bold">
-            {\`// \${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}\`}
-          </code>
-        ))}
+    <div
+      className="dfr-Code root tw-rounded-md tw-border dfr-border-color-primary dark:tw-bg-gray-700"
+      data-markdown-block
+    >
+      <div className="tw-flex tw-items-center tw-justify-between tw-px-2 tw-py-2">
+        <code className="tw-text-sm tw-font-bold">
+          {fileName
+            ? \`// \${generateSlug(fileName)}\`
+            : sourceURL
+            ? \`// \${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}\`
+            : ""}
+        </code>
+        <span className="tw-rounded-md tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-4 tw-font-mono">
+          {language}
+        </span>
+      </div>
       <Highlight {...defaultProps} code={code} language={language} theme={dracula}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           return (
-            <pre className={className} style={style}>
+            <CodePrimitive className={className} style={style}>
               {tokens.map((line, i) => {
                 return (
                   <Line key={i} {...getLineProps({ line, key: i })}>
@@ -240,35 +274,38 @@ export function Code({ language, fileName, code, sourceURL }: T_Object): any {
                   </Line>
                 );
               })}
-            </pre>
+            </CodePrimitive>
           );
         }}
       </Highlight>
-      <div className="tw-text-right">
+      <div className="tw-p-2 tw-pt-1.5 tw-text-sm tw-text-right">
         {sourceURL && (
-          <Link className="tw-block sm:tw-inline-block sm:tw-mr-4" href={sourceURL}>
-            <Image
-              src="/static/images/icons/github.svg"
-              alt="Github icon"
-              className="tw-h-3 tw-w-3 tw-inline-block tw-align-middle tw-mr-1"
+          <Link
+            className="tw-block sm:tw-inline-block tw-ml-auto tw-font-bold sm:tw-mr-6 tw-mb-1 sm:tw-mb-0"
+            href={sourceURL}
+            variant={Link.variant.UNSTYLED}
+          >
+            <Icon
+              icon={Icon.icon.GITHUB}
+              wrapperClassName="tw-align-middle tw-mr-1.5"
+              withDarkModeBackground
             />
-            <span className="tw-inline-block tw-text-sm">
+            <span className="tw-align-middle tw-inline-block">
               {SiteTexts.page.current_locale.see_source_code}
             </span>
           </Link>
         )}
-        <Link
+        <Button
+          className="tw-block sm:tw-inline-block tw-ml-auto tw-font-bold tw-align-middle"
           data-clipboard-text={code}
-          className="clipboard tw-block sm:tw-inline-block tw-text-sm  tw-mt-1 sm:tw-mt-0 tw-no-underline"
-          role="button"
+          onClick={copyToClipboard}
         >
           {SiteTexts.page.current_locale.copy_to_clipboard}
-        </Link>
+        </Button>
       </div>
       <style jsx>{\`
-        .root pre,
-        .root img {
-          @apply tw-my-0;
+        .root :global(.dfr-Code) {
+          border-radius: 0;
         }
       \`}</style>
     </div>

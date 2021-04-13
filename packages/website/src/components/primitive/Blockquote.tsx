@@ -3,27 +3,27 @@ import classNames from "classnames";
 
 import { T_HTML_Attributes, T_ReactElement } from "~/types";
 
-enum E_Variants {
-  DEFAULT = "DEFAULT",
-  UNSTYLED = "UNSTYLED",
-}
+type T_Variants = "DEFAULT" | "UNSTYLED";
+const VARIANTS: Record<T_Variants, T_Variants> = {
+  DEFAULT: "DEFAULT",
+  UNSTYLED: "UNSTYLED",
+};
 
 type T_BlockquoteProps = T_HTML_Attributes["blockquote"] & {
-  variant?: E_Variants;
+  variant?: T_Variants;
 };
 
 function Blockquote({
   children,
   className = "",
-  variant = E_Variants.DEFAULT,
+  variant = VARIANTS.DEFAULT,
   ...rest
 }: T_BlockquoteProps): T_ReactElement {
   return (
     <blockquote
       className={classNames(
         "dfr-border-color-primary tw-border-l-4 tw-pl-4",
-        variant === E_Variants.DEFAULT &&
-          "dfr-text-color-secondary dark:tw-text-gray-400 tw-italic",
+        variant === VARIANTS.DEFAULT && "dfr-text-color-secondary dark:tw-text-gray-400 tw-italic",
         className,
       )}
       {...rest}
@@ -33,6 +33,6 @@ function Blockquote({
   );
 }
 
-Blockquote.variant = E_Variants;
+Blockquote.variant = VARIANTS;
 
 export default Blockquote;

@@ -9,7 +9,7 @@
         "Code": "https://github.com/diegofrayo/monorepo/blob/master/packages/website/src/components/pages/_shared/Code.tsx",
         "posts": "https://github.com/diegofrayo/monorepo/blob/master/packages/website/src/data/blog/posts.json",
         "[slug]": "https://github.com/diegofrayo/monorepo/blob/master/packages/website/src/pages/blog/[slug].tsx",
-        "mdx": "https://github.com/diegofrayo/monorepo/blob/master/packages/website/src/utils/mdx.ts",
+        "mdx": "https://github.com/diegofrayo/monorepo/blob/master/packages/website/src/utils/mdx.tsx",
         "raw-post": "https://raw.githubusercontent.com/diegofrayo/monorepo/master/packages/website/src/data/blog/posts/CURRENT_LOCALE/FILE_NAME.mdx"
       }
     }
