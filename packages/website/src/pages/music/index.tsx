@@ -9,7 +9,6 @@ import { useInternationalization, useQuery } from "~/hooks";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
 import { sortBy } from "~/utils/misc";
-import { removeEmojiFromPageTitle } from "~/utils/strings";
 
 function MusicPage(): T_ReactElement {
   const { SiteTexts } = useInternationalization({
@@ -22,7 +21,7 @@ function MusicPage(): T_ReactElement {
   return (
     <Page
       config={{
-        title: removeEmojiFromPageTitle(SiteTexts.page.current_locale.title),
+        title: SiteTexts.page.current_locale.title,
         pathname: Routes.MUSIC,
         description: SiteTexts.page.current_locale.meta_description,
       }}

@@ -54,8 +54,7 @@ function Title(props: T_TitleProps): T_ReactElement {
         {children}
 
         <style jsx>{`
-          :global(.dfr-Title--primary):hover :global(.dfr-Link),
-          :global(.dfr-Title--primary):hover span {
+          :global(.dfr-Title--primary):hover :global(.dfr-Link) {
             visibility: visible;
           }
 

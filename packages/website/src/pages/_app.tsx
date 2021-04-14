@@ -1,7 +1,5 @@
 import "react-toastify/dist/ReactToastify.min.css";
-import "~/styles/tailwind.css";
 import "~/styles/index.post.css";
-import "~/styles/tailwind-utils.css";
 
 import React from "react";
 import type { AppProps } from "next/app";
@@ -10,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ToastContainer } from "react-toastify";
 import { ErrorBoundary } from "react-error-boundary";
 
+import { ProgressBar } from "~/components/layout";
 import { useDidMount } from "~/hooks";
 import { AssetsProvider } from "~/hooks/useAssets";
 import AnalyticsService from "~/services/analytics";
@@ -47,6 +46,7 @@ function App({ Component, pageProps }: AppProps): T_ReactElement {
         >
           <AssetsProvider>
             <Component {...pageProps} />
+            <ProgressBar />
           </AssetsProvider>
           <ToastContainer autoClose={3000} hideProgressBar />
         </ThemeProvider>

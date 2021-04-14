@@ -94,7 +94,7 @@ const Header = safeRender(function Header(): T_ReactElement {
   });
 
   return (
-    <header className={classNames("tw-h-32", fixedHeader && "root--fixed")} ref={headerRef}>
+    <header className={classNames("root tw-h-32", fixedHeader && "root--fixed")} ref={headerRef}>
       {fixedHeader ? (
         <div className="tw-w-full tw-fixed tw-left-0 tw-top-0 tw-z-30">
           <div className="dfr-max-w-base tw-py-4 tw-px-6 tw-mx-auto">
@@ -108,6 +108,7 @@ const Header = safeRender(function Header(): T_ReactElement {
       <style jsx>{`
         .root--fixed > div {
           background-color: rgba(255, 255, 255, 0.95);
+          backdrop-filter: saturate(180%) blur(20px);
         }
 
         :global(.tw-dark) .root--fixed > div {

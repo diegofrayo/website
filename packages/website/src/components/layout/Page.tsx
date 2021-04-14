@@ -8,6 +8,7 @@ import { getAssetsURL } from "~/utils/assets";
 import { WebsiteMetadata, SEOMetadata } from "~/utils/constants";
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 import { Routes } from "~/utils/routing";
+import { removeEmojiFromString } from "~/utils/strings";
 
 type T_PageProps = {
   children: any;
@@ -22,7 +23,9 @@ type T_PageProps = {
 
 function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   const metadata = {
-    title: config.title ? `${config.title} - ${SEOMetadata.title}` : SEOMetadata.title,
+    title: removeEmojiFromString(
+      config.title ? `${config.title} - ${SEOMetadata.title}` : SEOMetadata.title,
+    ),
     url: config.pathname ? `${SEOMetadata.url}${config.pathname}` : SEOMetadata.url,
     description: config.description || "",
   };

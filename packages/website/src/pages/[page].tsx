@@ -14,11 +14,7 @@ import {
   getSiteTexts,
 } from "~/utils/internationalization";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
-import {
-  removeEmojiFromPageTitle,
-  generateObjectKeyInLowerCase,
-  generateObjectKeyInUpperCase,
-} from "~/utils/strings";
+import { generateObjectKeyInLowerCase, generateObjectKeyInUpperCase } from "~/utils/strings";
 
 type T_SitePageProps = {
   content: any;
@@ -32,7 +28,7 @@ function SitePage({ content, page, SiteTexts }: T_SitePageProps): T_ReactChildre
   return (
     <Page
       config={{
-        title: removeEmojiFromPageTitle(SiteTexts.page.current_locale.title),
+        title: SiteTexts.page.current_locale.title,
         pathname: Routes[generateObjectKeyInUpperCase(page)],
         description: SiteTexts.page.current_locale.meta_description,
         noRobots: SiteTexts.page.current_locale.meta_no_robots,

@@ -1,21 +1,6 @@
-/* --- Fonts --- */
-
-/*
-@font-face {
-  font-family: "Raleway";
-  src: url("/static/fonts/raleway/Raleway.ttf") format("truetype");
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Raleway";
-  src: url("/static/fonts/raleway/Raleway-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-display: swap;
-}
-*/
+@tailwind utilities;
+@tailwind base;
+@tailwind components;
 
 /* --- Global --- */
 
@@ -141,4 +126,20 @@ a[disabled] {
 .Toastify__progress-bar--default {
 }
 .Toastify__progress-bar--dark {
+}
+
+/* --- NProgress --- */
+
+#nprogress .bar {
+  @apply tw-bg-red-700;
+  height: 5px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.tw-dark #nprogress .bar {
+  @apply tw-bg-yellow-400;
 }

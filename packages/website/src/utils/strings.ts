@@ -1,3 +1,5 @@
+import emojiStrip from "emoji-strip";
+
 import { createArray } from "./misc";
 
 export function convertToCapitalLetter(str: string): string {
@@ -19,8 +21,8 @@ export function convertSnakeCaseToLowerCamelCase(str: string): string {
     .trim();
 }
 
-export function removeEmojiFromPageTitle(str: string): string {
-  return str.split(" ").slice(1).join(" ").trim();
+export function removeEmojiFromString(str: string): string {
+  return emojiStrip(str);
 }
 
 export function generateSlug(str: string): string {

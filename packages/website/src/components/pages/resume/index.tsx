@@ -35,7 +35,7 @@ function TimelineItem({
   url = "",
 }: T_ResumeTimelineItem): T_ReactElement {
   return (
-    <div className="tw-relative tw-mb-8 last:tw-mb-0">
+    <section className="tw-relative tw-mb-8 last:tw-mb-0">
       <span className="tw-absolute tw--left-10 tw-border-4 tw-border-black dark:dfr-border-color-primary tw-w-7 tw-h-7 tw-rounded-full tw-bg-white tw-top-0.5" />
 
       <Title is="h3" variant={Title.variant.SECONDARY} size={Title.size.MD}>
@@ -49,16 +49,16 @@ function TimelineItem({
       </Title>
       <span className="tw-block tw-text-sm tw-italic tw-mt-0.5 tw-mb-3">{date}</span>
       <p>{description}</p>
-    </div>
+    </section>
   );
 }
 
 export function ResumeFAQ({ children }: { children: T_ReactChildrenProp }): T_ReactElement {
   return (
-    <div data-markdown-block>
+    <section data-markdown-block>
       <Title is="h2">FAQ</Title>
       <div>{children}</div>
-    </div>
+    </section>
   );
 }
 

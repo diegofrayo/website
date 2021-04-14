@@ -10,7 +10,6 @@ import { T_BlogPost, T_BlogPostLocaleData, T_Locale, T_ReactElement } from "~/ty
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { Routes } from "~/utils/routing";
-import { removeEmojiFromPageTitle } from "~/utils/strings";
 
 function BlogPage(): T_ReactElement {
   const { isLoading, error, data } = useQuery("blogPosts", BlogService.fetchPosts);
@@ -22,7 +21,7 @@ function BlogPage(): T_ReactElement {
   return (
     <Page
       config={{
-        title: removeEmojiFromPageTitle(SiteTexts.page.current_locale.title),
+        title: SiteTexts.page.current_locale.title,
         pathname: Routes.BLOG,
         description: SiteTexts.page.current_locale.meta_description,
       }}

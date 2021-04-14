@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import fs from "fs";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
@@ -58,6 +58,8 @@ function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
         showGoToTopButton
       >
         <MDXContent content={mdxContent} />
+        <Space size={8} />
+
         <BlogPostFooter
           createdAt={post.createdAt}
           publishedAt={post.publishedAt}
@@ -127,62 +129,53 @@ function BlogPostFooter({
   }
 
   return (
-    <Fragment>
-      <Space size={8} />
-      <Blockquote
-        className="tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-my-4 tw-text-black dark:tw-text-white"
-        variant={Blockquote.variant.UNSTYLED}
-      >
-        <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
-          <BlogPostFooterItem>
-            <Icon
-              icon={Icon.icon.CALENDAR}
-              wrapperClassName="tw-mr-2 tw-relative tw-top-0.5 sm:tw-top-0"
-            />
-            <p>
-              <span className="tw-mr-2">{SiteTexts.page.current_locale.published_at}</span>
-              <strong>{formatDate(publishedAt)}</strong>
-            </p>
-          </BlogPostFooterItem>
-          <BlogPostFooterItem>
-            <Icon
-              icon={Icon.icon.EDIT}
-              wrapperClassName="tw-mr-2 tw-relative tw-top-0.5 sm:tw-top-0"
-            />
-            <p>
-              <span className="tw-mr-2">{SiteTexts.page.current_locale.updated_at}</span>
-              <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
-            </p>
-          </BlogPostFooterItem>
-        </div>
-        <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col sm:tw-items-end tw-mt-2 sm:tw-mt-0">
-          <BlogPostFooterItem
-            is={Button}
-            className="clipboard"
-            data-clipboard-text={`${WebsiteMetadata.url}${Routes.BLOG}/${slug}`}
-            onClick={copyToClipboard}
-          >
-            <Icon
-              icon={Icon.icon.LINK}
-              wrapperClassName="tw-mr-2 tw-relative tw-top-0.5 sm:tw-top-0"
-            />
-            <span>{SiteTexts.page.current_locale.copy_url_to_clipboard}</span>
-          </BlogPostFooterItem>
-          <BlogPostFooterItem
-            is={Link}
-            href={generateBlogPostRawContentLink()}
-            variant={Link.variant.UNSTYLED}
-          >
-            <Icon
-              icon={Icon.icon.CODE}
-              wrapperClassName="tw-mr-2 tw-relative tw-top-0.5 sm:tw-top-0"
-            />
-            <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
-          </BlogPostFooterItem>
-        </div>
-      </Blockquote>
-    </Fragment>
+    <Blockquote
+      className="tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-my-4 tw-text-black dark:tw-text-white"
+      variant={Blockquote.variant.UNSTYLED}
+    >
+      <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
+        <BlogPostFooterItem>
+          <BlogPostFooterItem.Icon icon={Icon.icon.CALENDAR} />
+          <p>
+            <span className="tw-mr-2">{SiteTexts.page.current_locale.published_at}</span>
+            <strong>{formatDate(publishedAt)}</strong>
+          </p>
+        </BlogPostFooterItem>
+        <BlogPostFooterItem>
+          <BlogPostFooterItem.Icon icon={Icon.icon.EDIT} />
+          <p>
+            <span className="tw-mr-2">{SiteTexts.page.current_locale.updated_at}</span>
+            <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
+          </p>
+        </BlogPostFooterItem>
+      </div>
+      <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col sm:tw-items-end tw-mt-2 sm:tw-mt-0">
+        <BlogPostFooterItem
+          is={Button}
+          data-clipboard-text={`${WebsiteMetadata.url}${Routes.BLOG}/${slug}`}
+          onClick={copyToClipboard}
+        >
+          <BlogPostFooterItem.Icon icon={Icon.icon.LINK} />
+          <span>{SiteTexts.page.current_locale.copy_url_to_clipboard}</span>
+        </BlogPostFooterItem>
+        <BlogPostFooterItem
+          is={Link}
+          href={generateBlogPostRawContentLink()}
+          variant={Link.variant.UNSTYLED}
+        >
+          <BlogPostFooterItem.Icon icon={Icon.icon.CODE} />
+          <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
+        </BlogPostFooterItem>
+      </div>
+    </Blockquote>
   );
 }
 
 const BlogPostFooterItem = twcss.div`tw-flex tw-items-start sm:tw-items-center tw-justify-start tw-mb-2 last:tw-mb-0 tw-text-sm tw-text-left`;
+
+BlogPostFooterItem.Icon = twcss(Icon)(
+  {},
+  {
+    wrapperClassName: "tw-mr-2 tw-relative tw-top-0.5 sm:tw-top-0",
+  },
+);
