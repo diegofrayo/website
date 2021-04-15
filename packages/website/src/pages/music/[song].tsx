@@ -13,18 +13,18 @@ import { useDidMount, useInternationalization } from "~/hooks";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
 import { copyToClipboard, isBrowser } from "~/utils/browser";
-import { WebsiteMetadata } from "~/utils/constants";
+import { WEBSITE_METADATA } from "~/utils/constants";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
-import { Routes } from "~/utils/routing";
+import { ROUTES } from "~/utils/routing";
 
 type T_SongPageProps = {
   song: T_Song;
-  content: any;
+  content: string;
 };
 
 function SongPage({ song, content }: T_SongPageProps): T_ReactElement {
   const { SiteTexts } = useInternationalization({
-    page: Routes.MUSIC,
+    page: ROUTES.MUSIC,
     layout: true,
   });
 
@@ -60,18 +60,18 @@ function SongPage({ song, content }: T_SongPageProps): T_ReactElement {
     <Page
       config={{
         title: song.title,
-        pathname: `${Routes.MUSIC}/${song.id}`,
+        pathname: `${ROUTES.MUSIC}/${song.id}`,
       }}
     >
       <MainLayout
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME,
+            url: ROUTES.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.music,
-            url: Routes.MUSIC,
+            url: ROUTES.MUSIC,
           },
           {
             text: song.title,
@@ -110,7 +110,7 @@ function SongPage({ song, content }: T_SongPageProps): T_ReactElement {
             </Button>
             <Button
               className="tw-inline-block tw-mr-3"
-              data-clipboard-text={`${WebsiteMetadata.url}${Routes.MUSIC}/${song.id}`}
+              data-clipboard-text={`${WEBSITE_METADATA.url}${ROUTES.MUSIC}/${song.id}`}
               onClick={copyToClipboard}
             >
               <Icon icon={Icon.icon.LINK} size={24} />

@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 
-function useOnWindowResize(callback: () => void): void {
+import { T_Function } from "~/types";
+
+function useOnWindowResize(callback: T_Function): void {
   useEffect(
     function createResizeEventListener() {
       function handleWindowResize(): void {

@@ -42,7 +42,7 @@ Modal.Context = Context;
 // --- Components ---
 
 function Backdrop({ children, closeModalHandler }): T_ReactElement {
-  const backdropRef = useRef(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
 
   function handleBackdropClick(event) {
     if (backdropRef && backdropRef.current === event.target) {

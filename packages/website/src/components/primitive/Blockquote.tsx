@@ -2,12 +2,10 @@ import React from "react";
 import classNames from "classnames";
 
 import { T_HTML_Attributes, T_ReactElement } from "~/types";
+import { mirror } from "~/utils/misc";
 
 type T_Variants = "DEFAULT" | "UNSTYLED";
-const VARIANTS: Record<T_Variants, T_Variants> = {
-  DEFAULT: "DEFAULT",
-  UNSTYLED: "UNSTYLED",
-};
+const VARIANTS = mirror(["DEFAULT", "UNSTYLED"]) as Record<T_Variants, T_Variants>;
 
 type T_BlockquoteProps = T_HTML_Attributes["blockquote"] & {
   variant?: T_Variants;

@@ -6,8 +6,9 @@ import { GetStaticProps, GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
 import { MDXContent } from "~/components/pages/_shared";
-import { DYNAMIC_MAIN_PAGES, Routes } from "~/utils/routing";
 import { T_Locale, T_SiteTexts, T_PagesRoutes, T_ReactChildrenProp } from "~/types";
+import { getSnippetsFiles } from "~/components/pages/snippets/service";
+import { DYNAMIC_MAIN_PAGES, ROUTES } from "~/utils/routing";
 import {
   generateSupportedLocales,
   getItemLocale,
@@ -17,7 +18,7 @@ import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { generateObjectKeyInLowerCase, generateObjectKeyInUpperCase } from "~/utils/strings";
 
 type T_SitePageProps = {
-  content: any;
+  content: string;
   page: T_PagesRoutes;
   SiteTexts: T_SiteTexts;
 };
@@ -29,7 +30,7 @@ function SitePage({ content, page, SiteTexts }: T_SitePageProps): T_ReactChildre
     <Page
       config={{
         title: SiteTexts.page.current_locale.title,
-        pathname: Routes[generateObjectKeyInUpperCase(page)],
+        pathname: ROUTES[generateObjectKeyInUpperCase(page)],
         description: SiteTexts.page.current_locale.meta_description,
         noRobots: SiteTexts.page.current_locale.meta_no_robots,
       }}
@@ -40,13 +41,13 @@ function SitePage({ content, page, SiteTexts }: T_SitePageProps): T_ReactChildre
             ? undefined
             : generateSupportedLocales(
                 SiteTexts.page.config.locales,
-                Routes[generateObjectKeyInUpperCase(page)],
+                ROUTES[generateObjectKeyInUpperCase(page)],
               )
         }
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME,
+            url: ROUTES.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb[generateObjectKeyInLowerCase(page)],
@@ -57,7 +58,7 @@ function SitePage({ content, page, SiteTexts }: T_SitePageProps): T_ReactChildre
       >
         <MDXContent
           variant={
-            `/${page}` === Routes.SNIPPETS ? MDXContent.variant.STYLED : MDXContent.variant.UNSTYLED
+            `/${page}` === ROUTES.SNIPPETS ? MDXContent.variant.STYLED : MDXContent.variant.UNSTYLED
           }
           content={mdxContent}
         />
@@ -66,15 +67,19 @@ function SitePage({ content, page, SiteTexts }: T_SitePageProps): T_ReactChildre
   );
 }
 
+type T_Path = { params: { page: string }; locale: T_Locale };
+
 export const getStaticPaths: GetStaticPaths<{ page: string }> = async function getStaticPaths({
-  locales,
+  locales = [],
 }) {
   return {
-    paths: DYNAMIC_MAIN_PAGES.reduce((result, page: string) => {
-      return (result as any[]).concat(
-        locales?.map((locale) => {
-          return { params: { page }, locale };
-        }),
+    paths: DYNAMIC_MAIN_PAGES.reduce((result: T_Path[], page: string) => {
+      return result.concat(
+        locales.map(
+          (locale: T_Locale): T_Path => {
+            return { params: { page }, locale };
+          },
+        ),
       );
     }, []),
     fallback: false,
@@ -85,8 +90,10 @@ export const getStaticProps: GetStaticProps<
   T_SitePageProps,
   { page: string }
 > = async function getStaticProps({ params, locale }) {
-  const SiteTexts: T_SiteTexts = getSiteTexts({
-    page: Routes[generateObjectKeyInUpperCase(params?.page as string)],
+  const page = params?.page || "";
+
+  const SiteTexts = getSiteTexts({
+    page: ROUTES[generateObjectKeyInUpperCase(page)],
     layout: true,
     locale: locale as T_Locale,
   });
@@ -96,16 +103,32 @@ export const getStaticProps: GetStaticProps<
       SiteTexts.page.config.locales,
       SiteTexts.page.config.default_locale,
       locale as T_Locale,
-    )}/${params?.page}.mdx`,
+    )}/${page}.mdx`,
     "utf8",
   );
 
   const content = await renderToString(file, {
     components: MDXComponents,
-    scope: MDXScope,
+    scope: {
+      DATA: {
+        ...MDXScope.DATA,
+        ...(`/${page}` === ROUTES.SNIPPETS && {
+          snippets: getSnippetsFiles(),
+        }),
+        ...(`/${page}` === ROUTES.RESUME && {
+          resume: SiteTexts.page.current_locale,
+        }),
+      },
+    },
   });
 
-  return { props: { content, page: params?.page as T_PagesRoutes, SiteTexts } };
+  return {
+    props: {
+      content,
+      SiteTexts,
+      page: page as T_PagesRoutes,
+    },
+  };
 };
 
 export default SitePage;

@@ -4,9 +4,11 @@ import React, { CSSProperties, EffectCallback, RefObject } from "react";
 
 export type T_Primitive = string | number | boolean | undefined | null;
 
-export type T_ObjectWithPrimitives = Record<string, T_Primitive>;
+export type T_ObjectWithPrimitives = T_Object<T_Primitive>;
 
 export type T_Object<T = any> = Record<string, T>;
+
+export type T_Function = () => void;
 
 export type T_ReactChildrenProp = React.ReactNode;
 
@@ -14,13 +16,23 @@ export type T_ReactStylesProp = CSSProperties;
 
 export type T_ReactElement = JSX.Element | null;
 
+export type T_ReactFunctionComponent<P = T_Object> = React.FunctionComponent<P>;
+
 export type T_ReactRefObject<Type> = RefObject<Type>;
+
+export type T_ReactForwardedRef = React.ForwardedRef<unknown>;
 
 export type T_ReactEffectCallback = EffectCallback;
 
 export type T_HTML_Attributes = JSX.IntrinsicElements;
 
-export type T_HTMLElement = HTMLElement;
+export type T_OnClickEvent<P = HTMLButtonElement> = React.MouseEvent<P>;
+
+export type T_OnChangeEvent<P> = React.ChangeEventHandler<P>;
+
+export type T_OnScrollEvent = React.UIEvent<HTMLElement>;
+
+export type T_FormEvent<P> = React.FormEvent<P>;
 
 // --- Internationalization ---
 
@@ -44,14 +56,14 @@ export type T_GenerateSupportedLocales = {
 
 export type T_SiteTexts = {
   layout: {
-    config: Record<string, any>;
-    common: Record<string, any>;
-    current_locale: Record<string, any>;
+    config: T_Object;
+    common: T_Object;
+    current_locale: T_Object;
   };
   page: {
-    config: Record<string, any>;
-    common: Record<string, any>;
-    current_locale: Record<string, any>;
+    config: T_Object;
+    common: T_Object;
+    current_locale: T_Object;
   };
 };
 
@@ -77,7 +89,7 @@ interface T_BlogPostBase {
     isPublished: boolean;
     metaNoRobots: boolean;
   };
-  assets?: Record<string, string>;
+  assets?: T_Object<string>;
 }
 
 export type T_BlogPostLocaleData = {
@@ -112,6 +124,12 @@ export type T_Song = {
   sources: { text: string; url: string; source: string }[];
 };
 
+export type T_Chord = {
+  name: string;
+  chords: string;
+  stringsToSkip: string;
+};
+
 // --- Components props ---
 
 export type T_BreadcumbProps = {
@@ -124,7 +142,7 @@ export type T_BreadcumbProps = {
 
 export type T_CodeProps = {
   language: "jsx" | "css" | "typescript" | "javascript" | "bash" | "yaml";
-  code: any;
+  code: string;
   fileName?: string;
   sourceURL?: string;
 };

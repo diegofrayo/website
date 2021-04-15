@@ -45,7 +45,7 @@ function Link({
       <NextLink href={href} locale={rest.locale} passHref>
         <LinkElement
           className={classNames("dfr-Link", className)}
-          tw-variant={variant}
+          twcssVariant={variant}
           is={is}
           {...rest}
         >
@@ -59,7 +59,7 @@ function Link({
     <LinkElement
       href={href}
       className={classNames("dfr-Link", className)}
-      tw-variant={variant}
+      twcssVariant={variant}
       is={is}
       onClick={onClick}
       {...getExternalAttrs(href, external)}

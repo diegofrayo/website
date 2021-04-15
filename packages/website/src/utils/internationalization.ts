@@ -1,5 +1,11 @@
 import Texts from "~/data/texts.json";
-import { T_GenerateSupportedLocales, T_GetSiteTextsParam, T_Locale, T_SiteTexts } from "~/types";
+import {
+  T_GenerateSupportedLocales,
+  T_GetSiteTextsParam,
+  T_Locale,
+  T_Object,
+  T_SiteTexts,
+} from "~/types";
 
 const LOCALES: T_Locale[] = ["es", "en"];
 export const DEFAULT_LOCALE: T_Locale = LOCALES[0];
@@ -32,7 +38,7 @@ export function getSiteTexts({
   }
 
   if (page) {
-    const pageContent: any = Texts.pages[page];
+    const pageContent: T_Object = Texts.pages[page];
 
     result.page = {
       config: pageContent.config || {},
@@ -99,8 +105,8 @@ export const pluralize = (
   return result.trim();
 };
 
-export const parseSiteText = (text: string, words: Record<string, string | number>): string => {
-  return Object.entries(words).reduce((acum, [key, value]) => {
-    return acum.replace(`<${key}>`, String(value));
+export const parseSiteText = (text: string, words: T_Object<string | number>): string => {
+  return Object.entries(words).reduce((result, [key, value]) => {
+    return result.replace(`<${key}>`, String(value));
   }, text);
 };

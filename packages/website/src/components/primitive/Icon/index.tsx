@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { E_Icons, T_HTML_Attributes, T_ReactElement } from "~/types";
+import { E_Icons, T_HTML_Attributes, T_ReactElement, T_ReactFunctionComponent } from "~/types";
 
 import Image from "../Image";
 import { ICONS, T_Icon } from "./icons";
@@ -42,7 +42,7 @@ function useController({
   withDarkModeBackground = false,
 }: IconProps): {
   wrapperProps: { className: string } | undefined;
-  IconComponent: any;
+  IconComponent: T_ReactFunctionComponent<T_HTML_Attributes["img"]> | undefined;
   iconComponentProps:
     | {
         src?: string;
@@ -82,7 +82,7 @@ function useController({
       wrapperClassName,
     ),
   };
-  const IconComponent = icon.isLibraryIcon ? icon.icon : Image;
+  const IconComponent = (icon.isLibraryIcon ? icon.icon : Image) as T_ReactFunctionComponent;
   const iconComponentProps = icon.isLibraryIcon
     ? {
         className: classNames(

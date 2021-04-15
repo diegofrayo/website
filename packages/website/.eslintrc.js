@@ -20,6 +20,7 @@ module.exports = {
       jsx: true,
     },
   },
+  ignorePatterns: ["src/components/pages/snippets/data/**/*"],
   rules: {
     "react/prop-types": "off",
     "@typescript-eslint/no-explicit-any": "off",

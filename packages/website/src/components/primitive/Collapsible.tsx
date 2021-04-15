@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import { T_ReactChildrenProp, T_ReactElement, T_ReactRefObject } from "~/types";
+import { T_Function, T_ReactChildrenProp, T_ReactElement, T_ReactRefObject } from "~/types";
 
 type T_CollapsibleProps = {
   children: T_ReactChildrenProp;
@@ -28,7 +28,7 @@ export default Collapsible;
 type T_UseController = {
   isCollapsed: boolean;
   title: string;
-  toggleIsCollapsed: () => void;
+  toggleIsCollapsed: T_Function;
   containerRef: T_ReactRefObject<HTMLDetailsElement>;
 };
 
@@ -41,7 +41,7 @@ function useController({
 
   useEffect(
     function toggleCollapse() {
-      if (!containerRef?.current) return;
+      if (!containerRef.current) return;
 
       if (isCollapsed === true) {
         containerRef.current.setAttribute("open", "");

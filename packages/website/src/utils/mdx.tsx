@@ -17,11 +17,10 @@ import {
 } from "~/components/pages/blog/components/my-favorite-music-and-mdx";
 import { SongDetails, LyricsAndChords, Solo } from "~/components/pages/music";
 import { ResumeTimeline } from "~/components/pages/resume";
-import { WebsiteMetadata, GithubData } from "~/utils/constants";
-import { Routes } from "~/utils/routing";
-
-import { getSiteTexts } from "./internationalization";
+import { TableOfContent, Snippets } from "~/components/pages/snippets";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";
+import { WEBSITE_METADATA, GITHUB_DATA } from "~/utils/constants";
+import { ROUTES } from "~/utils/routing";
 
 export const MDXComponents = {
   a: Link,
@@ -62,18 +61,19 @@ export const MDXComponents = {
   Main,
   Measure,
   ResumeTimeline,
+  Snippets,
   Solo,
   SongDetails,
   SpotifyPlaylist,
+  TableOfContent,
   TextWithEmoji,
   Texts,
 };
 
 export const MDXScope = {
   DATA: {
-    github: GithubData,
-    website: WebsiteMetadata,
-    routes: Routes,
-    resume: getSiteTexts({ page: Routes.RESUME }).page.current_locale,
+    GITHUB_DATA,
+    WEBSITE_METADATA,
+    ROUTES,
   },
 };

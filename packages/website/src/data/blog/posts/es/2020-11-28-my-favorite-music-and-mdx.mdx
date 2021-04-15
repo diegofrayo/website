@@ -8,8 +8,8 @@ A continuación, un ejemplo de un **componente de React** renderizado en este ar
 
 <Code
   language="jsx"
-  sourceURL={DATA.github.monorepo.website.files.MDXComponents}
-  code={`export function HelloWorldMDX({ text }: T_Object): any {
+  sourceURL={DATA.GITHUB_DATA.monorepo.website.files.MDXComponents}
+  code={`export function HelloWorldMDX({ text }: T_Object): T_ReactElement {
   return (
     <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">{text}</p>
   );
@@ -24,7 +24,7 @@ Este sitio web lo construí usando **Next.js**, voy a hablar acerca de como conf
 
 Entonces, primero configuré **MDX** con **Next.js**. Aquí están las [instrucciones](https://mdxjs.com/getting-started/next), realmente es muy fácil lograrlo.
 
-Después, instalé el paquete [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote). Este paquete permite renderizar archivos **MDX** que pueden estar alojados en un sitio diferente al proyecto, por ejemplo un **CMS**, un **CDN**, una **base de datos** o cualquier otro lugar. Hay otras razones más por las cuales es útil usar este paquete, en esta [sección de su repositorio de Github](https://github.com/hashicorp/next-mdx-remote#background--theory) puedes conocer más acerca de los problemas que soluciona **next-mdx-remote**.
+Después, instalé el paquete [next-mdx-remote](https://GITHUB_DATA.com/hashicorp/next-mdx-remote). Este paquete permite renderizar archivos **MDX** que pueden estar alojados en un sitio diferente al proyecto, por ejemplo un **CMS**, un **CDN**, una **base de datos** o cualquier otro lugar. Hay otras razones más por las cuales es útil usar este paquete, en esta [sección de su repositorio de Github](https://GITHUB_DATA.com/hashicorp/next-mdx-remote#background--theory) puedes conocer más acerca de los problemas que soluciona **next-mdx-remote**.
 
 Ahora, explicaré algunos de los pasos que realicé para usar **next-mdx-remote** en la página de **Next.js** de mi sitio web que se encarga de cargar el contenido **MDX** de una publicación de acuerdo a un parámetro de URL (`/blog/[slug]`).
 
@@ -32,7 +32,7 @@ Primero, importé algunas funciones de **next-mdx-remote**.
 
 <Code
   language="javascript"
-  sourceURL={DATA.github.monorepo.website.files["[slug]"]}
+  sourceURL={DATA.GITHUB_DATA.monorepo.website.files["[slug]"]}
   code={`import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";`}
 />
@@ -41,15 +41,15 @@ Después, importé los **componentes React** y las **variables** que se usarán 
 
 <Code
   language="javascript"
-  sourceURL={DATA.github.monorepo.website.files.mdx}
+  sourceURL={DATA.GITHUB_DATA.monorepo.website.files.mdx}
   code={`import { MDXComponents, MDXScope } from "~/utils/mdx";`}
 />
 
-Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arreglo con los slugs de todos mis publicaciones que voy a **pre-renderizar** como páginas. El listado de todos mis publicaciones están definidos en un archivo <Link href={DATA.github.monorepo.website.files.posts}>JSON</Link> dentro del proyecto, pero esta información se podría leer de una **base de datos**, un **CMS**, una **API**, etc.
+Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arreglo con los slugs de todos mis publicaciones que voy a **pre-renderizar** como páginas. El listado de todos mis publicaciones están definidos en un archivo <Link href={DATA.GITHUB_DATA.monorepo.website.files.posts}>JSON</Link> dentro del proyecto, pero esta información se podría leer de una **base de datos**, un **CMS**, una **API**, etc.
 
 <Code
   language="typescript"
-  sourceURL={DATA.github.monorepo.website.files["[slug]"]}
+  sourceURL={DATA.GITHUB_DATA.monorepo.website.files["[slug]"]}
   code={`export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function getStaticPaths() {
   return {
     paths: (await BlogService.fetchPosts()).reduce((result, post: T_BlogPost) => {
@@ -69,7 +69,7 @@ Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arre
 Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada publicación. Esta función se ejecuta solo en el servidor. Por el momento tengo el contenido de las publicaciones dentro de mi proyecto, en un futuro podría alojarlos en un **CMS**, por ejemplo.
 
 <Code
-  sourceURL={DATA.github.monorepo.website.files["[slug]"]}
+  sourceURL={DATA.GITHUB_DATA.monorepo.website.files["[slug]"]}
   language="typescript"
   code={`export const getStaticProps: GetStaticProps<
   T_BlogPostPageProps,
@@ -92,22 +92,22 @@ Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada publi
 };`}
 />
 
-> **Problema:** Al usar **next-mdx-remote**, no puedo importar componentes o variables dentro de los archivos **MDX** usando `import`. En este [link](https://github.com/hashicorp/next-mdx-remote#caveats) puedes leer más acerca de esto.
+> **Problema:** Al usar **next-mdx-remote**, no puedo importar componentes o variables dentro de los archivos **MDX** usando `import`. En este [link](https://GITHUB_DATA.com/hashicorp/next-mdx-remote#caveats) puedes leer más acerca de esto.
 
 > **Solución:** Tuve que pasar un objeto de configuración cuando invoqué la función `renderToString`. La propiedad `components` debe ser un objeto que contenga todos los **componentes React** que se usarán en los archivos **MDX**. La propiedad `scope` es un objeto en donde se puede guardar **variables** que se usarán en los archivos **MDX**.
 
 Por último, este es el componente que renderiza una publicación.
 
 <Code
-  sourceURL={DATA.github.monorepo.website.files["[slug]"]}
+  sourceURL={DATA.GITHUB_DATA.monorepo.website.files["[slug]"]}
   language="jsx"
   code={`type T_BlogPostPageProps = {
   post: T_BlogPost;
-  content: any;
+  content: string;
 };
 function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
   const { SiteTexts, currentLocale } = useInternationalization({
-    page: Routes.BLOG,
+    page: ROUTES.BLOG,
     layout: true,
   });
   const mdxContent = hydrate(content, { components: MDXComponents });
@@ -115,20 +115,20 @@ function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
     <Page
       config={{
         title: post[currentLocale]?.title,
-        pathname: \`\${Routes.BLOG}/\${post.slug}\`,
+        pathname: \`\${ROUTES.BLOG}/\${post.slug}\`,
         description: post[currentLocale]?.description,
       }}
     >
       <MainLayout
-        locales={generateSupportedLocales(post.locales, \`\${Routes.BLOG}/\${[post.slug]}\`)}
+        locales={generateSupportedLocales(post.locales, \`\${ROUTES.BLOG}/\${[post.slug]}\`)}
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME,
+            url: ROUTES.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.blog,
-            url: Routes.BLOG,
+            url: ROUTES.BLOG,
           },
           {
             text: BlogService.composeTitle(post, currentLocale),
@@ -155,7 +155,7 @@ function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
 Para manejar los estilos **CSS** del contenido compilado de los archivos **MDX**, usé al inicio este [plugin](https://tailwindcss.com/docs/typography-plugin) de [Tailwind CSS](https://tailwindcss.com), pero después lo dejé de usar y decidí construir un componente con mis propios estilos.
 
 <Code
-  sourceURL={DATA.github.monorepo.website.files.MDXContent}
+  sourceURL={DATA.GITHUB_DATA.monorepo.website.files.MDXContent}
   language="jsx"
   code={`import React from "react";
 import { safeRender } from "~/hocs";
@@ -232,15 +232,15 @@ export default safeRender(MDXContent);
 `}
 />
 
-> La directiva `@apply` me permite usar los estilos de **Tailwind CSS** dentro de mis declaraciones de estilos que construyo usando [styled-jsx](https://github.com/vercel/styled-jsx).
+> La directiva `@apply` me permite usar los estilos de **Tailwind CSS** dentro de mis declaraciones de estilos que construyo usando [styled-jsx](https://GITHUB_DATA.com/vercel/styled-jsx).
 
-El resaltado de síntaxis de código fuente lo hice con [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer).
+El resaltado de síntaxis de código fuente lo hice con [prism-react-renderer](https://GITHUB_DATA.com/FormidableLabs/prism-react-renderer).
 
 <Code
-  sourceURL={DATA.github.monorepo.website.files.Code}
+  sourceURL={DATA.GITHUB_DATA.monorepo.website.files.Code}
   language="jsx"
   code={`function Code({ language, fileName, code, sourceURL }: T_CodeProps): T_ReactElement {
-  const SiteTexts = getSiteTexts({ page: Routes.BLOG });
+  const SiteTexts = getSiteTexts({ page: ROUTES.BLOG });
   return (
     <div
       className="dfr-Code root tw-rounded-md tw-border dfr-border-color-primary dark:tw-bg-gray-700"
@@ -321,9 +321,9 @@ const LineContent = twcss.span\`tw-table-cell\`;`}
 Y bueno, esto fue todo, aquí comparto la URL del repositorio por si quieres ver con más detalle la implementación de este sitio web. Espero que esta publicación te sirva para iniciar a trabajar con **MDX**.
 
 <GithubRepo
-  name={DATA.github.monorepo.website.name}
-  url={DATA.github.monorepo.website.url}
-  description={DATA.github.monorepo.website.description}
+  name={DATA.GITHUB_DATA.monorepo.website.name}
+  url={DATA.GITHUB_DATA.monorepo.website.url}
+  description={DATA.GITHUB_DATA.monorepo.website.description}
 />
 
 ---

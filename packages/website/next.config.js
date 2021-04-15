@@ -2,7 +2,8 @@ const withMDX = require("@next/mdx")();
 
 module.exports = withMDX({
   future: {
-    webpack5: false,
+    webpack5: true,
+    strictPostcssConfiguration: true,
   },
   i18n: {
     locales: ["es"],

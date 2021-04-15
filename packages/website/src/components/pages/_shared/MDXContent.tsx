@@ -1,13 +1,10 @@
 import React from "react";
 
-import { safeRender } from "~/hocs";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";
+import { mirror } from "~/utils/misc";
 
 type T_Variants = "DEFAULT" | "UNSTYLED";
-const VARIANTS: Record<T_Variants, T_Variants> = {
-  DEFAULT: "DEFAULT",
-  UNSTYLED: "UNSTYLED",
-};
+const VARIANTS = mirror(["DEFAULT", "UNSTYLED"]) as Record<T_Variants, T_Variants>;
 
 type T_MDXContentProps = {
   content: T_ReactChildrenProp;
@@ -83,4 +80,4 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
 
 MDXContent.variant = VARIANTS;
 
-export default safeRender(MDXContent);
+export default MDXContent;

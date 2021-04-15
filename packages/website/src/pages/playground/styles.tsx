@@ -7,7 +7,7 @@ import { safeRender } from "~/hocs";
 import { T_ReactElement, T_SiteTexts } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
-import { Routes } from "~/utils/routing";
+import { ROUTES } from "~/utils/routing";
 
 const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "styles";
@@ -19,11 +19,11 @@ function StylesPage(): T_ReactElement {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME,
+            url: ROUTES.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND,
+            url: ROUTES.PLAYGROUND,
           },
           {
             text: PAGE_NAME,

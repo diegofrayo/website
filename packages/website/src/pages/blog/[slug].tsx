@@ -12,20 +12,20 @@ import twcss from "~/lib/twcss";
 import BlogService from "~/services/blog";
 import { T_BlogPost, T_Locale, T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
-import { WebsiteMetadata, GithubData } from "~/utils/constants";
+import { WEBSITE_METADATA, GITHUB_DATA } from "~/utils/constants";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
-import { Routes } from "~/utils/routing";
+import { ROUTES } from "~/utils/routing";
 
 type T_BlogPostPageProps = {
   post: T_BlogPost;
-  content: any;
+  content: string;
 };
 
 function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
   const { SiteTexts, currentLocale } = useInternationalization({
-    page: Routes.BLOG,
+    page: ROUTES.BLOG,
     layout: true,
   });
 
@@ -35,20 +35,20 @@ function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
     <Page
       config={{
         title: post[currentLocale]?.title,
-        pathname: `${Routes.BLOG}/${post.slug}`,
+        pathname: `${ROUTES.BLOG}/${post.slug}`,
         description: post[currentLocale]?.description,
       }}
     >
       <MainLayout
-        locales={generateSupportedLocales(post.locales, `${Routes.BLOG}/${[post.slug]}`)}
+        locales={generateSupportedLocales(post.locales, `${ROUTES.BLOG}/${[post.slug]}`)}
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME,
+            url: ROUTES.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.blog,
-            url: Routes.BLOG,
+            url: ROUTES.BLOG,
           },
           {
             text: BlogService.composeTitle(post, currentLocale),
@@ -118,12 +118,12 @@ function BlogPostFooter({
   updatedAt,
 }: T_BlogPostFooterProps): T_ReactElement {
   const { SiteTexts, currentLocale } = useInternationalization({
-    page: Routes.BLOG,
+    page: ROUTES.BLOG,
     layout: true,
   });
 
   function generateBlogPostRawContentLink() {
-    return GithubData.monorepo.website.files["raw-post"]
+    return GITHUB_DATA.monorepo.website.files["raw-post"]
       .replace("CURRENT_LOCALE", currentLocale)
       .replace("FILE_NAME", `${createdAt}-${slug}`);
   }
@@ -152,7 +152,7 @@ function BlogPostFooter({
       <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col sm:tw-items-end tw-mt-2 sm:tw-mt-0">
         <BlogPostFooterItem
           is={Button}
-          data-clipboard-text={`${WebsiteMetadata.url}${Routes.BLOG}/${slug}`}
+          data-clipboard-text={`${WEBSITE_METADATA.url}${ROUTES.BLOG}/${slug}`}
           onClick={copyToClipboard}
         >
           <BlogPostFooterItem.Icon icon={Icon.icon.LINK} />
@@ -173,9 +173,6 @@ function BlogPostFooter({
 
 const BlogPostFooterItem = twcss.div`tw-flex tw-items-start sm:tw-items-center tw-justify-start tw-mb-2 last:tw-mb-0 tw-text-sm tw-text-left`;
 
-BlogPostFooterItem.Icon = twcss(Icon)(
-  {},
-  {
-    wrapperClassName: "tw-mr-2 tw-relative tw-top-0.5 sm:tw-top-0",
-  },
-);
+BlogPostFooterItem.Icon = twcss(Icon)("", {
+  wrapperClassName: "tw-mr-2 tw-relative tw-top-0.5 sm:tw-top-0",
+});

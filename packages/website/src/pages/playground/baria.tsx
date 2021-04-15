@@ -17,8 +17,8 @@ function BariaPage(): T_ReactElement {
           src="/static/pages/playground/baria/imagen.jpg"
           className="tw-max-h-full tw-w-full tw-flex-shrink-0 tw-rounded-tl-lg tw-rounded-br-lg tw-max-w-sm tw-mx-auto md:tw-mr-4"
           onClick={() => {
-            const audio: any = document.getElementById("myAudio");
-            audio.play();
+            const audio = document.getElementById("myAudio") as HTMLAudioElement;
+            audio?.play();
           }}
         />
         <div className="tw-relative tw-py-4 md:tw-flex-1 md:tw-h-full md:tw-flex md:tw-flex-col md:tw-justify-center">

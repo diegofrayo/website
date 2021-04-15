@@ -7,15 +7,21 @@ import { Emoji } from "~/components/pages/_shared";
 import { useDidMount, useOnWindowScroll } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
-import { E_Icons, T_BreadcumbProps, T_GenerateSupportedLocales, T_ReactElement } from "~/types";
+import {
+  E_Icons,
+  T_BreadcumbProps,
+  T_GenerateSupportedLocales,
+  T_ReactChildrenProp,
+  T_ReactElement,
+} from "~/types";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
-import { WebsiteMetadata } from "~/utils/constants";
+import { WEBSITE_METADATA } from "~/utils/constants";
+import { ROUTES } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
-import { Routes } from "~/utils/routing";
 
 type T_MainLayoutProps = {
   title?: string;
-  children: any;
+  children: T_ReactChildrenProp;
   locales?: T_GenerateSupportedLocales;
   breadcumb?: T_BreadcumbProps["items"];
   showGoToTopButton?: boolean;
@@ -75,18 +81,20 @@ type T_HeaderProps = {
 const Header = safeRender(function Header(): T_ReactElement {
   /*
   const { SiteTexts, currentLocale } = useInternationalization({
-    page: Routes.BLOG,
+    page: ROUTES.BLOG,
     layout: true,
   });
   */
 
   const [fixedHeader, setFixedHeader] = useState(false);
-  const headerRef: { current: undefined | any } = useRef(undefined);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   useOnWindowScroll(() => {
+    if (!headerRef.current) return;
+
     const scrollPosition = getScrollPosition();
 
-    if (headerRef.current && scrollPosition > headerRef.current.offsetHeight) {
+    if (scrollPosition > headerRef.current.offsetHeight) {
       setFixedHeader(true);
     } else if (scrollPosition <= 0) {
       setFixedHeader(false);
@@ -108,7 +116,6 @@ const Header = safeRender(function Header(): T_ReactElement {
       <style jsx>{`
         .root--fixed > div {
           background-color: rgba(255, 255, 255, 0.95);
-          backdrop-filter: saturate(180%) blur(20px);
         }
 
         :global(.tw-dark) .root--fixed > div {
@@ -203,7 +210,7 @@ function Breadcumb({ items }: T_BreadcumbProps): T_ReactElement {
 
   return (
     <ul className="root tw-block tw-text-left tw-pb-1">
-      {items.map(({ text, url = Routes.HOME, isNextLink = true }, index) => {
+      {items.map(({ text, url = ROUTES.HOME, isNextLink = true }, index) => {
         if (index === items.length - 1 && hasMoreThanOneItem) {
           return (
             <li key={`Breadcumb-li-${generateSlug(text)}`} className="tw-inline-block">
@@ -252,23 +259,23 @@ function SocialIcons(): T_ReactElement {
     {
       name: "email",
       icon: Icon.icon.GMAIL,
-      url: `mailto:${WebsiteMetadata.email}`,
+      url: `mailto:${WEBSITE_METADATA.email}`,
     },
     {
       name: "github",
       icon: Icon.icon.GITHUB,
-      url: WebsiteMetadata.social.github,
+      url: WEBSITE_METADATA.social.github,
       withDarkModeBackground: true,
     },
     {
       name: "spotify",
       icon: Icon.icon.SPOTIFY,
-      url: WebsiteMetadata.social.spotify,
+      url: WEBSITE_METADATA.social.spotify,
     },
     {
       name: "500px",
       icon: Icon.icon["500_PX"],
-      url: WebsiteMetadata.social["500px"],
+      url: WEBSITE_METADATA.social["500px"],
       withDarkModeBackground: true,
     },
   ];

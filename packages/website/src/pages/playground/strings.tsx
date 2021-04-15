@@ -3,10 +3,10 @@ import React, { useState, useRef, RefObject } from "react";
 import { Page, MainLayout } from "~/components/layout";
 import { Space, Button } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import { T_ReactElement, T_SiteTexts } from "~/types";
+import { T_FormEvent, T_OnChangeEvent, T_OnClickEvent, T_ReactElement, T_SiteTexts } from "~/types";
 import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
-import { Routes } from "~/utils/routing";
+import { ROUTES } from "~/utils/routing";
 import { convertToCapitalLetter, generateSlug } from "~/utils/strings";
 
 const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
@@ -21,11 +21,11 @@ function StringsPage(): T_ReactElement {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME,
+            url: ROUTES.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND,
+            url: ROUTES.PLAYGROUND,
           },
           {
             text: PAGE_NAME,
@@ -150,8 +150,6 @@ export default StringsPage;
 
 // --- Hooks ---
 
-type T_OnClickEvent = React.MouseEvent<HTMLButtonElement>;
-
 type T_UsePageHook = {
   texts: {
     input: string;
@@ -161,7 +159,7 @@ type T_UsePageHook = {
     convertToCapitalLetterOnlyFirst: string;
     slug: string;
   };
-  handleTextAreaChange: React.ChangeEventHandler<HTMLTextAreaElement>;
+  handleTextAreaChange: T_OnChangeEvent<HTMLTextAreaElement>;
   handleCopyText: (e: T_OnClickEvent) => void;
   textareaRef: RefObject<HTMLTextAreaElement>;
 };
@@ -178,12 +176,12 @@ function usePageHook(): T_UsePageHook {
   });
 
   useDidMount(() => {
-    if (!textareaRef?.current || isSmallScreen()) return;
+    if (isSmallScreen() || !textareaRef.current) return;
     focusElement(textareaRef.current);
   });
 
-  function handleTextAreaChange(event: React.FormEvent<HTMLTextAreaElement>) {
-    const text: string = event.currentTarget.value || "";
+  function handleTextAreaChange(event: T_FormEvent<HTMLTextAreaElement>) {
+    const text = event.currentTarget.value || "";
 
     setTexts({
       input: text,

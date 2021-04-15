@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 
-function useOnWindowScroll(callback: (event: any) => void, when = true): void {
+import { T_OnScrollEvent } from "~/types";
+
+function useOnWindowScroll(callback: (event: T_OnScrollEvent) => void, when = true): void {
   const savedHandler = useRef(callback);
 
   useEffect(function updateCallbackRef() {

@@ -4,7 +4,7 @@ import { Page, MainLayout } from "~/components/layout";
 import { List, Link } from "~/components/primitive";
 import { Render } from "~/components/pages/_shared";
 import { SongDetails } from "~/components/pages/music";
-import { Routes } from "~/utils/routing";
+import { ROUTES } from "~/utils/routing";
 import { useInternationalization, useQuery } from "~/hooks";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
@@ -12,7 +12,7 @@ import { sortBy } from "~/utils/misc";
 
 function MusicPage(): T_ReactElement {
   const { SiteTexts } = useInternationalization({
-    page: Routes.MUSIC,
+    page: ROUTES.MUSIC,
     layout: true,
   });
 
@@ -22,7 +22,7 @@ function MusicPage(): T_ReactElement {
     <Page
       config={{
         title: SiteTexts.page.current_locale.title,
-        pathname: Routes.MUSIC,
+        pathname: ROUTES.MUSIC,
         description: SiteTexts.page.current_locale.meta_description,
       }}
     >
@@ -30,7 +30,7 @@ function MusicPage(): T_ReactElement {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME,
+            url: ROUTES.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.music,
@@ -44,7 +44,7 @@ function MusicPage(): T_ReactElement {
           {(data) => {
             return (
               <List>
-                {data
+                {(data as T_Song[])
                   .sort(
                     sortBy([
                       { param: "progress", order: "desc" },
@@ -57,7 +57,7 @@ function MusicPage(): T_ReactElement {
                     return (
                       <List.Item key={song.id}>
                         <Link
-                          href={`${Routes.MUSIC}/${song.id}`}
+                          href={`${ROUTES.MUSIC}/${song.id}`}
                           variant={Link.variant.SECONDARY}
                           className="tw-font-bold"
                           isNextLink

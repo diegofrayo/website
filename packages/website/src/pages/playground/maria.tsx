@@ -1,3 +1,9 @@
+declare global {
+  interface Window {
+    $: T_Object;
+  }
+}
+
 import React, { useState, Fragment } from "react";
 
 import { Page } from "~/components/layout";
@@ -5,7 +11,7 @@ import { Icon, Link } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
-import { T_ReactElement } from "~/types";
+import { T_Object, T_ReactElement } from "~/types";
 import { setScrollPosition } from "~/utils/browser";
 
 function MariaPage(): T_ReactElement {
@@ -57,7 +63,7 @@ function MariaPage(): T_ReactElement {
                     );
                   }}
                 >
-                  <Icon icon={Icon.icon.WHATSAPP} wrapperClassName="tw-mx-auto tw-mb-2" />
+                  <Icon icon={Icon.icon.WHATSAPP} wrapperClassName="tw-mx-auto tw-mb-2" size={48} />
                   <p className="tw-font-bold tw-text-lg tw-text-center tw-mt-2">
                     Enviar mensaje a un amigo
                   </p>
@@ -68,7 +74,7 @@ function MariaPage(): T_ReactElement {
                     setScrollPosition(0);
                   }}
                 >
-                  <Icon icon={Icon.icon.YOUTUBE} wrapperClassName="tw-mx-auto tw-mb-2" />
+                  <Icon icon={Icon.icon.YOUTUBE} wrapperClassName="tw-mx-auto tw-mb-2" size={48} />
                   <p className="tw-font-bold tw-text-lg tw-text-center tw-mt-2">
                     Escuchar música favorita en YouTube
                   </p>
@@ -149,7 +155,7 @@ function Bible() {
   const [content, setContent] = useState("Cargando...");
 
   useDidMount(() => {
-    (window as any).$.ajax({
+    window.$.ajax({
       url:
         "https://dailyverses.net/get/verse?language=nvi&isdirect=1&url=" + "diegofrayo.vercel.app",
       dataT_: "JSONP",

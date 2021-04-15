@@ -9,12 +9,12 @@ import BlogService from "~/services/blog";
 import { T_BlogPost, T_BlogPostLocaleData, T_Locale, T_ReactElement } from "~/types";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
-import { Routes } from "~/utils/routing";
+import { ROUTES } from "~/utils/routing";
 
 function BlogPage(): T_ReactElement {
   const { isLoading, error, data } = useQuery("blogPosts", BlogService.fetchPosts);
   const { SiteTexts, currentLocale } = useInternationalization({
-    page: Routes.BLOG,
+    page: ROUTES.BLOG,
     layout: true,
   });
 
@@ -22,16 +22,16 @@ function BlogPage(): T_ReactElement {
     <Page
       config={{
         title: SiteTexts.page.current_locale.title,
-        pathname: Routes.BLOG,
+        pathname: ROUTES.BLOG,
         description: SiteTexts.page.current_locale.meta_description,
       }}
     >
       <MainLayout
-        locales={generateSupportedLocales(SiteTexts.page.config.locales, Routes.BLOG)}
+        locales={generateSupportedLocales(SiteTexts.page.config.locales, ROUTES.BLOG)}
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME,
+            url: ROUTES.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.blog,
@@ -87,7 +87,7 @@ function BlogEntry({
   updatedAt,
 }: T_BlogEntryProps): T_ReactElement {
   const { SiteTexts } = useInternationalization({
-    page: Routes.BLOG,
+    page: ROUTES.BLOG,
     layout: true,
   });
 
@@ -99,7 +99,7 @@ function BlogEntry({
   return (
     <List.Item>
       <Link
-        href={`${Routes.BLOG}/${slug}`}
+        href={`${ROUTES.BLOG}/${slug}`}
         locale={locale}
         variant={Link.variant.SECONDARY}
         className="tw-font-bold"

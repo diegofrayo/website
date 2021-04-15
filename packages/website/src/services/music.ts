@@ -1,5 +1,5 @@
 import Data from "~/data/music/songs.json";
-import { T_Primitive, T_Song } from "~/types";
+import { T_Chord, T_Primitive, T_Song } from "~/types";
 import { escapeRegExp, sortBy } from "~/utils/misc";
 
 class MusicService {
@@ -48,7 +48,7 @@ class MusicService {
     return result;
   }
 
-  findChord(chord: string) {
+  findChord(chord: string): T_Chord | undefined {
     const chordData = Data.chords[chord];
 
     if (!chordData) return undefined;

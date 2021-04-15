@@ -5,7 +5,7 @@ import { Link, List } from "~/components/primitive";
 import { withTranslations } from "~/hocs";
 import { T_ReactElement, T_SiteTexts } from "~/types";
 import { isUserLoggedIn } from "~/utils/misc";
-import { Routes } from "~/utils/routing";
+import { ROUTES } from "~/utils/routing";
 
 type T_PlaygroundPageProps = {
   SiteTexts: T_SiteTexts;
@@ -18,7 +18,7 @@ function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME,
+            url: ROUTES.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
@@ -28,13 +28,13 @@ function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
       >
         <List>
           {["chords", "strings", "virtual-reality", "styles", "wp"]
-            .concat(isUserLoggedIn() ? ["stupid"] : [])
             .sort()
-            .map((name: string) => {
+            .concat(isUserLoggedIn() ? ["stupid", "maria", "baria"] : [])
+            .map((name) => {
               return (
                 <List.Item key={`PlaygroundPage-name-${name}`}>
                   <Link
-                    href={`${Routes.PLAYGROUND}/${name}`}
+                    href={`${ROUTES.PLAYGROUND}/${name}`}
                     variant={Link.variant.UNSTYLED}
                     isNextLink
                   >
@@ -50,6 +50,6 @@ function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
 }
 
 export default withTranslations(PlaygroundPage, {
-  page: Routes.PLAYGROUND,
+  page: ROUTES.PLAYGROUND,
   layout: true,
 });

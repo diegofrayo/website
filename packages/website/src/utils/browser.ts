@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
 
-import { T_SiteTexts, T_HTMLElement } from "~/types";
+import { T_SiteTexts, T_Function, T_OnClickEvent } from "~/types";
 
 import { getSiteTexts } from "./internationalization";
 
-export function getScrollPosition(element?: T_HTMLElement | null): number {
+export function getScrollPosition(element?: HTMLElement | null): number {
   return element?.scrollTop || document.body.scrollTop || document.documentElement.scrollTop || 0;
 }
 
@@ -13,8 +13,8 @@ export function setScrollPosition(val: number): void {
 }
 
 type T_OnScrollStoppedListenerParams = {
-  onScroll: () => void;
-  onScrollStopped: () => void;
+  onScroll: T_Function;
+  onScrollStopped: T_Function;
   timeout: number;
 };
 
@@ -41,7 +41,7 @@ export function onScrollStoppedListener({
 }
 
 export async function copyToClipboard(
-  event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>,
+  event: T_OnClickEvent<HTMLDivElement | HTMLButtonElement>,
 ): Promise<void> {
   try {
     if (!navigator.clipboard) throw new Error("Clipboard not supported");
@@ -95,7 +95,7 @@ export function detectEmojisSupport(): void {
   }
 }
 
-export function focusElement(element: T_HTMLElement): void {
+export function focusElement(element: HTMLElement): void {
   element.focus();
   element.click();
 }

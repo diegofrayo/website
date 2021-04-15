@@ -1,6 +1,6 @@
 import { createArray } from "~/utils/misc";
 
-import { T_ReactRefObject } from "~/types";
+import { T_Object, T_ReactRefObject } from "~/types";
 
 class ChordsService {
   async downloadChordAsImage(
@@ -23,7 +23,7 @@ class ChordsService {
     chordsToString: string;
     firstFret: number;
     lastFret: number;
-    chordsGroupedByFret: any;
+    chordsGroupedByFret: T_Object;
     error: Error | undefined;
   } {
     try {

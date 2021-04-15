@@ -3,15 +3,15 @@ import Head from "next/head";
 
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import AnalyticsService from "~/services/analytics";
-import { T_GetAssetsParam, T_ReactElement } from "~/types";
+import { T_GetAssetsParam, T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { getAssetsURL } from "~/utils/assets";
-import { WebsiteMetadata, SEOMetadata } from "~/utils/constants";
+import { WEBSITE_METADATA, SEO_METADATA } from "~/utils/constants";
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
-import { Routes } from "~/utils/routing";
+import { ROUTES } from "~/utils/routing";
 import { removeEmojiFromString } from "~/utils/strings";
 
 type T_PageProps = {
-  children: any;
+  children: T_ReactChildrenProp;
   config: {
     title?: string;
     pathname?: string;
@@ -24,9 +24,9 @@ type T_PageProps = {
 function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   const metadata = {
     title: removeEmojiFromString(
-      config.title ? `${config.title} - ${SEOMetadata.title}` : SEOMetadata.title,
+      config.title ? `${config.title} - ${SEO_METADATA.title}` : SEO_METADATA.title,
     ),
-    url: config.pathname ? `${SEOMetadata.url}${config.pathname}` : SEOMetadata.url,
+    url: config.pathname ? `${SEO_METADATA.url}${config.pathname}` : SEO_METADATA.url,
     description: config.description || "",
   };
 
@@ -55,7 +55,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
         <meta property="og:title" content={metadata.title} />
         <meta property="og:description" content={metadata.description} />
         <meta property="og:url" content={metadata.url} />
-        <meta property="og:site_name" content={SEOMetadata.title} />
+        <meta property="og:site_name" content={SEO_METADATA.title} />
 
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="canonical" href={metadata.url} />
@@ -79,19 +79,19 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
         <link
           rel="icon"
           href={`/static/images/favicon/favicon${
-            isDevelopmentEnvironment(WebsiteMetadata.url) ? "-dev" : ""
+            isDevelopmentEnvironment(WEBSITE_METADATA.url) ? "-dev" : ""
           }.ico?v=1`}
         />
         <link
           rel="alternate"
           type="application/rss+xml"
-          title={`RSS Feed for ${WebsiteMetadata.url.replace("https://", "")}`}
+          title={`RSS Feed for ${WEBSITE_METADATA.url.replace("https://", "")}`}
           href="/rss.xml"
         />
         <link
           rel="alternate"
           type="application/rss+atom"
-          title={`Atom Feed for ${WebsiteMetadata.url.replace("https://", "")}`}
+          title={`Atom Feed for ${WEBSITE_METADATA.url.replace("https://", "")}`}
           href="/atom.xml"
         />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -100,9 +100,9 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           rel="stylesheet"
         />
 
-        {(config.pathname === Routes.HOME ||
-          config.pathname === Routes.RESUME ||
-          config.pathname === Routes.ABOUT_ME) && (
+        {(config.pathname === ROUTES.HOME ||
+          config.pathname === ROUTES.RESUME ||
+          config.pathname === ROUTES.ABOUT_ME) && (
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -114,13 +114,13 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
                   addressLocality: "Armenia",
                   addressRegion: "Quindío",
                 },
-                email: `mailto:${WebsiteMetadata.email}`,
-                jobTitle: WebsiteMetadata.jobTitle,
-                name: WebsiteMetadata.fullName,
-                url: WebsiteMetadata.url,
+                email: `mailto:${WEBSITE_METADATA.email}`,
+                jobTitle: WEBSITE_METADATA.jobTitle,
+                name: WEBSITE_METADATA.fullName,
+                url: WEBSITE_METADATA.url,
                 sameAs: [
-                  WebsiteMetadata.social.github,
-                  // WebsiteMetadata.social.linkedin
+                  WEBSITE_METADATA.social.github,
+                  // WEBSITE_METADATA.social.linkedin
                 ],
               }),
             }}

@@ -2,7 +2,15 @@
   "movies": [
     {
       "title": "Lupin",
+      "id": "80994082",
       "type": "Serie",
+      "category": "",
+      "calification": 5
+    },
+    {
+      "title": "Seven years in Tibet",
+      "id": "1179053",
+      "type": "Movie",
       "category": "",
       "calification": 5
     },
@@ -15,180 +23,180 @@
     },
     {
       "title": "La casa de papel",
-      "type": "",
+      "type": "Serie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Bolivar",
       "id": "80220422",
-      "type": "",
+      "type": "Serie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Distrito Salvaje",
-      "type": "",
+      "type": "Serie",
       "category": "",
       "calification": 5
     },
     {
       "title": "El robo del siglo",
-      "type": "",
+      "type": "Serie",
       "category": "",
       "calification": 5
     },
     {
       "title": "The queen's gambit",
       "id": "80234304",
-      "type": "",
+      "type": "Serie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Nobody sleeps in the woods tonight",
       "id": "81149049",
-      "type": "",
+      "type": "Movie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Unorthodox",
       "id": "81019069",
-      "type": "",
+      "type": "Serie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Scarface",
       "id": "60029681",
-      "type": "",
+      "type": "Movie",
       "category": "",
       "calification": 5
     },
     {
       "title": "A road to well being",
       "id": "81332418",
-      "type": "",
+      "type": "Movie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Rose island",
       "id": "81116948",
-      "type": "",
+      "type": "Movie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Barbarians",
       "id": "81024039",
-      "type": "",
+      "type": "Serie",
       "category": "",
       "calification": 5
     },
     {
-      "title": "Milagro en la celd 7",
+      "title": "Milagro en la celda 7",
       "id": "81239779",
-      "type": "",
+      "type": "Serie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Magical andes",
       "id": "81154549",
-      "type": "",
+      "type": "Documentary",
       "category": "",
       "calification": 5
     },
     {
       "title": "The pianist",
       "id": "60025061",
-      "type": "",
+      "type": "Movie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Expedition hapiness",
       "id": "80224476",
-      "type": "",
+      "type": "Documentary",
       "category": "",
       "calification": 5
     },
     {
       "title": "El che guevara",
       "id": "80224476",
-      "type": "",
+      "type": "Movie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Dark tourist",
       "id": "80189791",
-      "type": "",
+      "type": "Documentary",
       "category": "",
       "calification": 5
     },
     {
       "title": "Alma de heroe",
       "id": "81144193",
-      "type": "",
+      "type": "Movie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Street food LA",
       "id": "81249660",
-      "type": "",
+      "type": "Documentary",
       "category": "",
       "calification": 5
     },
     {
       "title": "Monos",
       "id": "81047842",
-      "type": "",
+      "type": "Movie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Quien mato a Sara",
       "id": "81047842",
-      "type": "",
+      "type": "Serie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Apache",
       "id": "81106517",
-      "type": "",
+      "type": "Serie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Ciudadano ilustre",
       "id": "80141891",
-      "type": "",
+      "type": "Movie",
       "category": "",
       "calification": 5
     },
     {
       "title": "La teoria del todo",
       "id": "80000644",
-      "type": "",
+      "type": "Movie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Slumgdog millionaire",
       "id": "70095140",
-      "type": "",
+      "type": "Movie",
       "category": "",
       "calification": 5
     },
     {
       "title": "Lo imposible",
       "id": "70251895",
-      "type": "",
+      "type": "Movie",
       "category": "",
       "calification": 5
     }

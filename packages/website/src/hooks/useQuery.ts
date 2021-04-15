@@ -5,7 +5,7 @@ import { delay } from "~/utils/misc";
 function useQuery(
   key: string,
   handler: () => unknown,
-): { isLoading: boolean; error: unknown; data: any } {
+): { isLoading: boolean; error: unknown; data: unknown } {
   const { isLoading, error, data } = useReactQuery(key, async () => {
     await delay(1000);
     return handler();

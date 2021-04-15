@@ -5,7 +5,7 @@ import { Space, Title } from "~/components/primitive";
 import { Chords } from "~/lib/chords";
 import { T_ReactElement, T_SiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
-import { Routes } from "~/utils/routing";
+import { ROUTES } from "~/utils/routing";
 
 const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "chords";
@@ -19,11 +19,11 @@ function ChordsPage(): T_ReactElement {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME,
+            url: ROUTES.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND,
+            url: ROUTES.PLAYGROUND,
           },
           {
             text: PAGE_NAME,

@@ -9,11 +9,11 @@ import {
 } from "@heroicons/react/outline";
 import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 
-import { E_Icons } from "~/types";
+import { E_Icons, T_ReactFunctionComponent } from "~/types";
 
 export type T_Icon = {
   isLibraryIcon: boolean;
-  icon: string | any;
+  icon: string | T_ReactFunctionComponent;
   props: {
     className?: string;
     alt?: string;

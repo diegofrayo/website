@@ -6,7 +6,7 @@ import { useDidMount } from "~/hooks";
 import { T_ReactElement, T_SiteTexts } from "~/types";
 import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
-import { Routes } from "~/utils/routing";
+import { ROUTES } from "~/utils/routing";
 
 const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";
@@ -14,10 +14,10 @@ const PAGE_NAME = "stupid";
 
 function StupidPage(): T_ReactElement {
   const [output, setOutput] = useState("");
-  const inputRef: { current: undefined | any } = useRef(undefined);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useDidMount(() => {
-    if (isSmallScreen()) return;
+    if (isSmallScreen() || !inputRef.current) return;
     focusElement(inputRef.current);
   });
 
@@ -25,7 +25,7 @@ function StupidPage(): T_ReactElement {
     const CryptoJS = await import("crypto-js");
 
     const encryptedText = CryptoJS.AES.encrypt(
-      inputRef.current.value,
+      inputRef.current?.value,
       MY_STUPID_SECRET_KEY,
     ).toString();
 
@@ -36,7 +36,7 @@ function StupidPage(): T_ReactElement {
     const CryptoJS = await import("crypto-js");
 
     const decryptedText = CryptoJS.AES.decrypt(
-      inputRef.current.value,
+      inputRef.current?.value,
       MY_STUPID_SECRET_KEY,
     ).toString(CryptoJS.enc.Utf8);
 
@@ -49,11 +49,11 @@ function StupidPage(): T_ReactElement {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME,
+            url: ROUTES.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND,
+            url: ROUTES.PLAYGROUND,
           },
           {
             text: PAGE_NAME,

@@ -4,10 +4,10 @@ import { Blockquote, Button, Icon, Modal, Space } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { Chords } from "~/lib/chords";
 import MusicService from "~/services/music";
-import { T_ReactElement } from "~/types";
+import { T_Chord, T_Function, T_ReactElement } from "~/types";
 
 type T_LyricsAndChords = {
-  children: any;
+  children: string;
   chords: string[];
 };
 
@@ -41,9 +41,9 @@ function LyricsAndChords(props: T_LyricsAndChords): T_ReactElement {
         <div className="tw-bg-white dark:tw-bg-black tw-p-4 tw-rounded-md">
           {selectedChord && (
             <Chords
-              name={(selectedChord as any)?.name || ""}
-              chords={(selectedChord as any)?.chords || ""}
-              stringsToSkip={(selectedChord as any)?.stringsToSkip || ""}
+              name={selectedChord.name}
+              chords={selectedChord.chords}
+              stringsToSkip={selectedChord.stringsToSkip}
               showOptions={false}
             />
           )}
@@ -61,20 +61,29 @@ export default LyricsAndChords;
 
 // --- Controller ---
 
-function useController({ children, chords }: T_LyricsAndChords) {
+function useController({
+  children,
+  chords,
+}: T_LyricsAndChords): {
+  isModalVisible: boolean;
+  selectedChord: T_Chord | undefined;
+  parsedChords: string;
+  parsedLyrics: string;
+  handleModalClose: T_Function;
+} {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedChord, setSelectedChord] = useState(undefined);
+  const [selectedChord, setSelectedChord] = useState<T_Chord | undefined>(undefined);
 
   useDidMount(() => {
     document.querySelectorAll(".chord")?.forEach((button) => {
-      button.addEventListener("click", function (event: any) {
-        setSelectedChord(MusicService.findChord(event.target.innerText) as any);
+      button.addEventListener("click", function (event) {
+        setSelectedChord(MusicService.findChord((event.target as HTMLElement)?.innerText));
         setIsModalVisible(true);
       });
     });
   });
 
-  function handleModalClose() {
+  function handleModalClose(): void {
     setIsModalVisible(false);
     setSelectedChord(undefined);
   }

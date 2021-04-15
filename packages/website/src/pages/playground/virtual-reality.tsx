@@ -5,7 +5,7 @@ import { List, Link } from "~/components/primitive";
 import { useAssets } from "~/hooks";
 import { T_ReactElement, T_SiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
-import { Routes } from "~/utils/routing";
+import { ROUTES } from "~/utils/routing";
 
 const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "virtual-reality";
@@ -19,11 +19,11 @@ function VRPage(): T_ReactElement {
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: Routes.HOME,
+            url: ROUTES.HOME,
           },
           {
             text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: Routes.PLAYGROUND,
+            url: ROUTES.PLAYGROUND,
           },
           {
             text: PAGE_NAME,

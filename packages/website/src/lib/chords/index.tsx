@@ -3,12 +3,12 @@ import classNames from "classnames";
 
 import { Space, Button, Title } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
+import { T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { createArray } from "~/utils/misc";
 
 import twcss from "./../twcss";
 import Service from "./service";
-import { T_ReactElement } from "~/types";
 
 interface T_ChordBase {
   fret: number;
@@ -40,7 +40,7 @@ export function Chords({
   stringsToSkip,
   showOptions = true,
 }: T_ChordsProps): T_ReactElement {
-  const chordRef: { current: HTMLDivElement | null } = useRef(null);
+  const chordRef = useRef<HTMLDivElement>(null);
   const [showInput, setShowInput] = useState<boolean>(false);
 
   const {

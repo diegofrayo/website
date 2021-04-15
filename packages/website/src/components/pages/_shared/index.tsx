@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 
 import { Link, Icon, Title as TitlePrimitive } from "~/components/primitive";
-import { T_Object, T_ReactChildrenProp, T_ReactElement } from "~/types";
+import { T_Object, T_ReactChildrenProp, T_ReactElement, T_ReactFunctionComponent } from "~/types";
 
 export { default as Code } from "./Code";
 export { default as Playground } from "./Playground";
@@ -19,7 +19,7 @@ export function Emoji({ children, className }: T_EmojiProps): T_ReactElement {
 
 type T_TextWithEmojiProps = {
   emoji: string;
-  children: any;
+  children: T_ReactChildrenProp;
 };
 
 export function TextWithEmoji({ emoji, children }: T_TextWithEmojiProps): T_ReactElement {
@@ -40,9 +40,9 @@ export function Render({
   children,
 }: {
   isLoading: boolean;
-  error: any;
-  data: any;
-  children: any;
+  error: unknown;
+  data: unknown;
+  children: (data: unknown) => T_ReactElement;
 }): T_ReactElement {
   if (isLoading) {
     return (
@@ -55,7 +55,7 @@ export function Render({
   if (error) {
     return (
       <p className="tw-p-2 tw-text-center tw-text-red-700 tw-text-sm tw-font-mono">
-        😵 {error.message}
+        😵 {(error as T_Object)?.message}
       </p>
     );
   }
@@ -146,7 +146,10 @@ export function GithubRepo({ name, url, description }: T_GithubRepoProps): T_Rea
   );
 }
 
-export function Title(Tag: "h1" | "h2" | "h3" | "h4", props: T_Object): any {
+export function Title(
+  Tag: "h1" | "h2" | "h3" | "h4",
+  props: T_Object,
+): T_ReactFunctionComponent<{ children: T_ReactChildrenProp }> {
   return function TitleComponent({ children }: { children: T_ReactChildrenProp }): T_ReactElement {
     return (
       <TitlePrimitive is={Tag} {...props}>

@@ -5,11 +5,11 @@ class AnalyticsService {
     if (isUserLoggedIn() === true) return;
 
     try {
-      const splitbee: any = (await import("@splitbee/web")).default;
+      const splitbee = (await import("@splitbee/web")).default;
       splitbee.init();
     } catch (error) {
       console.error("Error loading and initializing the analytics");
-      console.log(error);
+      console.error(error);
     }
   }
 

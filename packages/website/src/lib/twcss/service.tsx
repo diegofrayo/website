@@ -1,32 +1,37 @@
 import React from "react";
-import { T_ReactElement } from "~/types";
 
-import HTML_TAGS from "./tags";
+import {
+  T_Object,
+  T_ReactChildrenProp,
+  T_ReactElement,
+  T_ReactForwardedRef,
+  T_ReactFunctionComponent,
+} from "~/types";
 
 type T_StylesParam = { __base: string; initial: string } | string[] | string;
 type T_TWCSS_ComponentProps = {
-  children?: any;
+  children?: T_ReactChildrenProp;
   className?: string;
-  is: string | any;
-  "tw-variant": string | Record<string, boolean> | undefined;
-};
-type T_StaticPropsParam = {
-  "tw-variant"?: T_TWCSS_ComponentProps["tw-variant"];
+  is: string | T_ReactFunctionComponent;
+  twcssVariant: string | T_Object<boolean> | undefined;
 };
 
 function twcssCreator(
-  Tag: string | JSX.Element,
-): (styles: T_StylesParam, staticProps: T_StaticPropsParam) => React.FC {
-  return function (styles: T_StylesParam, staticProps: T_StaticPropsParam = {}): React.FC {
+  Tag: string | T_ReactFunctionComponent,
+): (styles: T_StylesParam, staticProps: T_Object) => T_ReactFunctionComponent {
+  return function (styles: T_StylesParam, staticProps: T_Object = {}): T_ReactFunctionComponent {
     return React.forwardRef(function TWCSS_Component(
-      { children, className = "", is, ["tw-variant"]: twVariant, ...rest }: T_TWCSS_ComponentProps,
+      { children, className = "", is, twcssVariant, ...rest }: T_TWCSS_ComponentProps,
       ref,
     ): T_ReactElement {
-      const Element: string | any = is || Tag;
+      const Element = (is || Tag) as T_ReactFunctionComponent<{
+        className: string;
+        ref: T_ReactForwardedRef;
+      }>;
       const finalClassName: string = generateClassName(
         styles,
         className,
-        twVariant || staticProps["tw-variant"],
+        twcssVariant || staticProps.twcssVariant,
       );
 
       return (
@@ -38,18 +43,14 @@ function twcssCreator(
   };
 }
 
-const twcss: any = Object.assign(
-  twcssCreator,
-  HTML_TAGS.reduce((result, tagName: string) => {
-    result[tagName] = twcssCreator(tagName);
-    return result;
-  }, {}),
-);
+export default twcssCreator;
+
+// --- Utils ---
 
 function generateClassName(
   styles: T_StylesParam,
   className: string,
-  twVariant: T_TWCSS_ComponentProps["tw-variant"],
+  twVariant: T_TWCSS_ComponentProps["twcssVariant"],
 ): string {
   if (Array.isArray(styles) || typeof styles === "string") {
     return `${styles} ${className}`.trim();
@@ -58,12 +59,12 @@ function generateClassName(
   if (typeof styles === "object") {
     if (typeof twVariant === "object") {
       const twVariantStyles: string = Object.keys(twVariant)
-        .reduce((acum: string, curr: string) => {
+        .reduce((result: string, curr: string) => {
           if (twVariant[curr] === true && styles[curr]) {
-            return acum + styles[curr] + " ";
+            return result + styles[curr] + " ";
           }
 
-          return acum;
+          return result;
         }, "")
         .trim();
 
@@ -79,5 +80,3 @@ function generateClassName(
 
   return className.trim();
 }
-
-export default twcss;

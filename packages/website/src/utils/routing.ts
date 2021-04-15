@@ -1,6 +1,6 @@
-import { T_PagesRoutes } from "~/types";
+import { T_Object, T_PagesRoutes } from "~/types";
 
-export const Routes: Record<string, T_PagesRoutes> = {
+export const ROUTES: T_Object<T_PagesRoutes> = {
   HOME: "/",
   ABOUT_ME: "/about-me",
   RESUME: "/resume",
@@ -13,7 +13,3 @@ export const Routes: Record<string, T_PagesRoutes> = {
 };
 
 export const DYNAMIC_MAIN_PAGES = ["about-me", "resume", "snippets"];
-
-export function goTo(): void {
-  console.warn("Implement this someday...");
-}

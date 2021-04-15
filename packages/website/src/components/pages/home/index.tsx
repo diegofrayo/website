@@ -4,60 +4,60 @@ import { Page, MainLayout } from "~/components/layout";
 import { Link, List } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { withTranslations } from "~/hocs";
-import { T_PagesRoutes, T_ReactChildrenProp, T_SiteTexts } from "~/types";
+import { T_PagesRoutes, T_ReactElement, T_SiteTexts } from "~/types";
 import { generateSupportedLocales } from "~/utils/internationalization";
-import { Routes } from "~/utils/routing";
+import { ROUTES } from "~/utils/routing";
 
-function HomePage({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactChildrenProp {
+function HomePage({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
   return (
     <Page
       config={{
         description: SiteTexts.page.current_locale.meta_description,
-        pathname: Routes.HOME,
+        pathname: ROUTES.HOME,
       }}
     >
-      <MainLayout locales={generateSupportedLocales(SiteTexts.page.config.locales, Routes.HOME)}>
+      <MainLayout locales={generateSupportedLocales(SiteTexts.page.config.locales, ROUTES.HOME)}>
         <Content SiteTexts={SiteTexts} />
       </MainLayout>
     </Page>
   );
 }
 
-export default withTranslations(HomePage, { page: Routes.HOME });
+export default withTranslations(HomePage, { page: ROUTES.HOME });
 
 // --- Components ---
 
-function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }) {
+function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
   const ITEMS: { emoji: string; label: string; url: T_PagesRoutes }[] = [
     {
       emoji: "✍️",
       label: SiteTexts.page.common.menu_item_blog,
-      url: Routes.BLOG,
+      url: ROUTES.BLOG,
     },
     {
       emoji: "🙋‍♂️",
       label: SiteTexts.page.current_locale.menu_item_about_me,
-      url: Routes.ABOUT_ME,
+      url: ROUTES.ABOUT_ME,
     },
     {
       emoji: "📄",
       label: SiteTexts.page.current_locale.menu_item_resume,
-      url: Routes.RESUME,
+      url: ROUTES.RESUME,
     },
     {
       emoji: "🛠️",
       label: SiteTexts.page.common.menu_item_snippets,
-      url: Routes.SNIPPETS,
+      url: ROUTES.SNIPPETS,
     },
     {
       emoji: "🎸",
       label: SiteTexts.page.current_locale.menu_item_music,
-      url: Routes.MUSIC,
+      url: ROUTES.MUSIC,
     },
     {
       emoji: "🔮",
       label: SiteTexts.page.current_locale.menu_item_playground,
-      url: Routes.PLAYGROUND,
+      url: ROUTES.PLAYGROUND,
     },
   ];
 

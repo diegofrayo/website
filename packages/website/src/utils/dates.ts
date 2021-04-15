@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-import { Routes } from "~/utils/routing";
+import { ROUTES } from "~/utils/routing";
 import { T_SiteTexts } from "~/types";
 
 import { getSiteTexts, parseSiteText, pluralize } from "./internationalization";
@@ -9,7 +9,7 @@ import { getSiteTexts, parseSiteText, pluralize } from "./internationalization";
 dayjs.extend(customParseFormat);
 
 export function getDifferenceBetweenDates(startDate: string, endDate: Date): string {
-  const SiteTexts: T_SiteTexts = getSiteTexts({ page: Routes.BLOG });
+  const SiteTexts: T_SiteTexts = getSiteTexts({ page: ROUTES.BLOG });
   const difference: number = dayjs(endDate).diff(dayjs(startDate, "YYYY/MM/DD"), "day");
 
   if (difference === 0) {
