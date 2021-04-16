@@ -26,11 +26,11 @@ function Code({ language, fileName, code, sourceURL }: T_CodeProps): T_ReactElem
     >
       <div className="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono">
         {codeTitle && (
-          <code className="tw-w-full sm:tw-w-auto tw-font-bold tw-mb-2 sm:tw-mb-0">
+          <code className="tw-w-full sm:tw-w-auto tw-font-bold tw-mb-2 sm:tw-mb-0 sm:tw-mr-4">
             {codeTitle}
           </code>
         )}
-        <span className="tw-rounded-md tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-auto sm:tw-ml-4">
+        <span className="tw-rounded-md tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-auto">
           {language}
         </span>
       </div>

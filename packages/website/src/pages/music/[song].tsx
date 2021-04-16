@@ -148,7 +148,15 @@ export const getStaticProps: GetStaticProps<
   const file = fs.readFileSync(`${process.cwd()}/src/data/music/songs/${song.id}.mdx`, "utf8");
   const content = await renderToString(file, {
     components: MDXComponents,
-    scope: { DATA: { ...MDXScope.DATA, song } },
+    scope: {
+      DATA: {
+        ...MDXScope.DATA,
+        song: {
+          ...song,
+          content: fs.readFileSync(`${process.cwd()}/src/data/music/songs/${song.id}.txt`, "utf8"),
+        },
+      },
+    },
   });
 
   return { props: { song, content } };

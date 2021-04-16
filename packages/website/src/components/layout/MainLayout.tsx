@@ -128,7 +128,7 @@ const Header = safeRender(function Header(): T_ReactElement {
 
 function HeaderContent(): T_ReactElement {
   return (
-    <div className="root tw-flex tw-items-center tw-w-full tw-h-full">
+    <div className="tw-flex tw-items-center tw-w-full tw-h-full">
       <div className="tw-flex-1 tw-min-h-0 tw-mr-4">
         <Title
           is="h1"
@@ -348,7 +348,7 @@ function GoToTopButton(): T_ReactElement {
 
   return (
     <Button
-      className="root tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-transition-opacity hover:tw-opacity-75"
+      className="tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-transition-opacity hover:tw-opacity-75"
       style={{ backgroundColor: "rgba(0, 0, 0, 0.75)" }}
       onClick={() => {
         setScrollPosition(0);

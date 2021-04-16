@@ -4,7 +4,11 @@ import { T_ReactElement } from "~/types";
 
 export function Main(): T_ReactElement {
   return (
-    <main role="main" className="root tw-bg-white dark:tw-bg-gray-400 tw-border">
+    <main
+      role="main"
+      className="tw-bg-white dark:tw-bg-gray-400 tw-border"
+      style={{ minWidth: 500 }}
+    >
       <header className="tw-bg-gray-200 dark:tw-bg-gray-600 tw-text-center tw-p-2">
         <h1>header</h1>
         <nav>
@@ -62,14 +66,6 @@ export function Main(): T_ReactElement {
         </section>
       </div>
       <footer className="tw-bg-black tw-p-2 tw-text-white tw-text-center tw-mt-6">footer</footer>
-
-      <style jsx>
-        {`
-          .root {
-            min-width: 500px;
-          }
-        `}
-      </style>
     </main>
   );
 }

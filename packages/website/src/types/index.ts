@@ -141,6 +141,17 @@ export type T_Movie = {
   calification: number;
 };
 
+// --- Books ---
+
+export type T_Book = {
+  title: string;
+  author: string;
+  year: number;
+  category: string;
+  calification: number;
+  url: string;
+};
+
 // --- Components props ---
 
 export type T_BreadcumbProps = {

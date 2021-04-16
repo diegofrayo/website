@@ -2,108 +2,123 @@
   "books": [
     {
       "title": "Diarios de una motocicleta",
-      "author": "",
-      "year": "",
+      "author": "Ernesto Che Guevara",
+      "year": 2003,
       "category": "",
-      "calification": 5
+      "calification": 5,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "Las venas abiertas",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 5,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "Van Gogh el suicidado",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 3,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "El futbol a sol y sombra",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 3,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "El principito",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 5,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "Las 8 montanas",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 3,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "El libro negro del programador",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 3,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "Por un scrum popular",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 3,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "Scrum, el arte de hacer el doble de trabajo en la mitad del tiempo",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 3,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "Historias de developers",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 3,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "Historia del conflicto armado en Colombia",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 3,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "Spinetta",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 4,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "100 años de soledad",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 2,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "Sappiens",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 5,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
     {
       "title": "El libro de arena",
       "author": "",
-      "year": "",
+      "year": 1990,
       "category": "",
-      "calification": 5
+      "calification": 3,
+      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     }
   ]
 }

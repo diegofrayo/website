@@ -27,10 +27,11 @@ function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
         title={SiteTexts.page.current_locale.title}
       >
         <PagesList pages={["chords", "strings", "virtual-reality", "styles", "wp"]} />
+
         {isUserLoggedIn() && (
           <Fragment>
             <Space className="tw-mt-6 tw-mb-4" variant={Space.variant.DASHED} />
-            <PagesList pages={["stupid", "maria", "baria", "movies"]} />
+            <PagesList pages={["stupid", "maria", "baria", "movies", "books"]} />
           </Fragment>
         )}
       </MainLayout>

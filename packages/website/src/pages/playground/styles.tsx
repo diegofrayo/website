@@ -2,38 +2,16 @@ import React from "react";
 import classNames from "classnames";
 import { useTheme } from "next-themes";
 
-import { Page, MainLayout } from "~/components/layout";
+import PlaygroundPageTemplate from "~/components/pages/playground/PlaygroundPageTemplate";
 import { safeRender } from "~/hocs";
-import { T_ReactElement, T_SiteTexts } from "~/types";
+import { T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
-import { getSiteTexts } from "~/utils/internationalization";
-import { ROUTES } from "~/utils/routing";
-
-const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
-const PAGE_NAME = "styles";
 
 function StylesPage(): T_ReactElement {
   return (
-    <Page config={{ title: PAGE_NAME, noRobots: true }}>
-      <MainLayout
-        breadcumb={[
-          {
-            text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: ROUTES.HOME,
-          },
-          {
-            text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: ROUTES.PLAYGROUND,
-          },
-          {
-            text: PAGE_NAME,
-          },
-        ]}
-        title={PAGE_NAME}
-      >
-        <Content />
-      </MainLayout>
-    </Page>
+    <PlaygroundPageTemplate pageName="styles">
+      <Content />
+    </PlaygroundPageTemplate>
   );
 }
 

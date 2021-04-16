@@ -1,20 +1,27 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, Fragment } from "react";
 
-import { Page, MainLayout } from "~/components/layout";
 import { Space, Button } from "~/components/primitive";
+import PlaygroundPageTemplate from "~/components/pages/playground/PlaygroundPageTemplate";
 import { useDidMount } from "~/hooks";
-import { T_ReactElement, T_SiteTexts } from "~/types";
+import { T_ReactElement } from "~/types";
 import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
-import { getSiteTexts } from "~/utils/internationalization";
-import { ROUTES } from "~/utils/routing";
-
-const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
-const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";
-const PAGE_NAME = "stupid";
 
 function StupidPage(): T_ReactElement {
+  return (
+    <PlaygroundPageTemplate pageName="stupid">
+      <Content />
+    </PlaygroundPageTemplate>
+  );
+}
+
+export default StupidPage;
+
+// --- Components ---
+
+function Content(): T_ReactElement {
   const [output, setOutput] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";
 
   useDidMount(() => {
     if (isSmallScreen() || !inputRef.current) return;
@@ -44,83 +51,57 @@ function StupidPage(): T_ReactElement {
   }
 
   return (
-    <Page config={{ title: PAGE_NAME, noRobots: true }}>
-      <MainLayout
-        breadcumb={[
-          {
-            text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: ROUTES.HOME,
-          },
-          {
-            text: SiteTexts.layout.current_locale.breadcumb.playground,
-            url: ROUTES.PLAYGROUND,
-          },
-          {
-            text: PAGE_NAME,
-          },
-        ]}
-        title={PAGE_NAME}
-      >
-        <div className="tw-mb-8">
-          <label htmlFor="input">
-            <p className="tw-font-bold tw-cursor-pointer">type your text</p>
-            <input
-              id="input"
-              className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
-              ref={inputRef}
-              onClick={(e) => {
-                try {
-                  e.currentTarget.focus();
-                  e.currentTarget.select();
-                } catch (error) {
-                  console.error("Error focussing a textarea");
-                  console.error(error);
-                }
-              }}
-            />
-          </label>
-          <div className="tw-flex tw-flex-wrap tw-justify-between">
-            <Button
-              className="tw-inline-block tw-text-sm tw-mx-1 tw-font-bold"
-              onClick={handleEncrypt}
-            >
-              encrypt
-            </Button>
-            <Button
-              className="tw-inline-block tw-text-sm tw-mx-1 tw-font-bold"
-              onClick={handleDecrypt}
-            >
-              decrypt
-            </Button>
-          </div>
-        </div>
-
-        <Space size={10} className="tw-border-t dfr-border-color-primary" />
-
-        <div>
-          <p className="tw-font-bold">output</p>
-          <output className="output tw-my-1 tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full">
-            {output}
-          </output>
+    <Fragment>
+      <div className="tw-mb-8">
+        <label htmlFor="input">
+          <p className="tw-font-bold tw-cursor-pointer">type your text</p>
+          <input
+            id="input"
+            className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
+            ref={inputRef}
+            onClick={(e) => {
+              try {
+                e.currentTarget.focus();
+                e.currentTarget.select();
+              } catch (error) {
+                console.error("Error focussing a textarea");
+                console.error(error);
+              }
+            }}
+          />
+        </label>
+        <div className="tw-flex tw-flex-wrap tw-justify-between">
           <Button
-            className="tw-block tw-ml-auto tw-text-sm"
-            data-clipboard-text={output}
-            onClick={copyToClipboard}
+            className="tw-inline-block tw-text-sm tw-mx-1 tw-font-bold"
+            onClick={handleEncrypt}
           >
-            copy
+            encrypt
+          </Button>
+          <Button
+            className="tw-inline-block tw-text-sm tw-mx-1 tw-font-bold"
+            onClick={handleDecrypt}
+          >
+            decrypt
           </Button>
         </div>
-
-        <style jsx>
-          {`
-            .output {
-              min-height: 40px;
-            }
-          `}
-        </style>
-      </MainLayout>
-    </Page>
+      </div>
+      <Space size={10} className="tw-border-t dfr-border-color-primary" />
+      <div>
+        <p className="tw-font-bold">output</p>
+        <output
+          className="tw-my-1 tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full"
+          style={{ minHeight: 40 }}
+        >
+          {output}
+        </output>
+        <Button
+          className="tw-block tw-ml-auto tw-text-sm"
+          data-clipboard-text={output}
+          onClick={copyToClipboard}
+        >
+          copy
+        </Button>
+      </div>
+    </Fragment>
   );
 }
-
-export default StupidPage;

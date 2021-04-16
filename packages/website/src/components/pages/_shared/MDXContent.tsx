@@ -68,11 +68,6 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
           margin-left: auto;
           margin-right: auto;
         }
-
-        /* For music pages (Custom line breaks | Temporary solution) */
-        :global(.dfr-MDXContent) :global(br[data-separator]) {
-          display: none;
-        }
       `}</style>
     </article>
   );

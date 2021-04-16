@@ -2,18 +2,19 @@ import React from "react";
 import classNames from "classnames";
 
 import { Link, Icon, Title as TitlePrimitive } from "~/components/primitive";
-import { T_Object, T_ReactChildrenProp, T_ReactElement, T_ReactFunctionComponent } from "~/types";
+import {
+  T_HTML_Attributes,
+  T_Object,
+  T_ReactChildrenProp,
+  T_ReactElement,
+  T_ReactFunctionComponent,
+} from "~/types";
 
 export { default as Code } from "./Code";
 export { default as Playground } from "./Playground";
 export { default as MDXContent } from "./MDXContent";
 
-type T_EmojiProps = {
-  className?: string;
-  children: string;
-};
-
-export function Emoji({ children, className }: T_EmojiProps): T_ReactElement {
+export function Emoji({ children, className }: T_HTML_Attributes["span"]): T_ReactElement {
   return <span className={classNames("emoji", className)}>{children}</span>;
 }
 
@@ -66,8 +67,9 @@ export function Render({
 function Loader() {
   return (
     <div className="root">
-      <span />
-      <span />
+      <div />
+      <div />
+
       <style jsx>{`
         .root {
           display: inline-block;
@@ -76,7 +78,7 @@ function Loader() {
           height: 80px;
         }
 
-        .root span {
+        .root div {
           @apply dfr-border-color-primary;
           position: absolute;
           border: 4px solid;
@@ -85,7 +87,7 @@ function Loader() {
           animation: root 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
         }
 
-        .root span:nth-child(2) {
+        .root div:nth-child(2) {
           animation-delay: -0.5s;
         }
 
@@ -118,13 +120,14 @@ type T_GithubRepoProps = {
 
 export function GithubRepo({ name, url, description }: T_GithubRepoProps): T_ReactElement {
   return (
-    <div className="root tw-text-right" data-markdown-block>
+    <div className="tw-text-right" data-markdown-block>
       <Link
         className="tw-flex sm:tw-inline-flex tw-p-4 dfr-bg-secondary dark:dfr-bg-secondary tw-rounded-md tw-items-center tw-relative tw-pr-8 tw-border dfr-border-color-primary dark:dfr-border-color-primary"
         href={url}
         variant={Link.variant.UNSTYLED}
       >
         <Icon icon={Icon.icon.GITHUB} wrapperClassName="tw-mr-3" size={32} />
+
         <div className="tw-flex-1 tw-text-left">
           <TitlePrimitive
             is="h3"

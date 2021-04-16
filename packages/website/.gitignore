@@ -39,3 +39,4 @@ yarn-error.log*
 .docs
 package-lock.json
 report*.json
+scripts/movies-and-books/**/*.jpg
