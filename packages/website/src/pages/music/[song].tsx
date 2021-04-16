@@ -128,11 +128,13 @@ function SongPage({ song, content }: T_SongPageProps): T_ReactElement {
   );
 }
 
+type T_Path = { params: { song: string } };
+
 export const getStaticPaths: GetStaticPaths<{ song: string }> = async function getStaticPaths() {
   return {
-    paths: (await MusicService.fetchSongsList()).reduce((result, song: T_Song) => {
+    paths: (await MusicService.fetchSongsList()).reduce((result: T_Path[], song: T_Song) => {
       return result.concat([{ params: { song: song.id } }]);
-    }, [] as Array<any>),
+    }, []),
     fallback: false,
   };
 };

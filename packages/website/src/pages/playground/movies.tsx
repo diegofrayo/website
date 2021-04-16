@@ -32,6 +32,7 @@ function MoviesPage(): T_ReactElement {
           },
         ]}
         title={PAGE_NAME}
+        showGoToTopButton
       >
         <Render isLoading={isLoading} error={error} data={data}>
           {(movies: T_Movie[]) => {
@@ -43,11 +44,11 @@ function MoviesPage(): T_ReactElement {
                       key={id}
                       href={
                         source === "Netflix"
-                          ? `https://www.netflix.com/co/title/${id}`
+                          ? `https://www.netflix.com/title/${id}`
                           : `https://www.youtube.com/watch?v=${id}`
                       }
                       variant={Link.variant.UNSTYLED}
-                      className="movie tw-relative tw-w-48 tw-h-64 tw-mb-4 tw-borderd dfr-border-color-primary dark:dfr-border-color-primary tw-mx-2 sm:tw-mx-0 tw-rounded-bl-md tw-rounded-tr-md tw-overflow-hidden"
+                      className="movie tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-borderd dfr-border-color-primary dark:dfr-border-color-primary tw-mx-2 sm:tw-mx-0 tw-rounded-bl-md tw-rounded-tr-md tw-overflow-hidden tw-shadow-lg"
                     >
                       <article
                         className="tw-flex tw-h-full tw-w-full"

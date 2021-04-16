@@ -21,12 +21,12 @@ function Code({ language, fileName, code, sourceURL }: T_CodeProps): T_ReactElem
 
   return (
     <div
-      className="root tw-rounded-md tw-border dfr-border-color-primary dark:tw-bg-gray-700"
+      className="root tw-rounded-md tw-border-t tw-border-gray-100 dark:tw-border-0 dark:tw-bg-gray-700 tw-shadow-lg"
       data-markdown-block
     >
       <div className="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono">
         {codeTitle && (
-          <code className="tw-w-full sm:tw-w-auto tw-font-bold tw-mt-2 sm:tw-mt-0">
+          <code className="tw-w-full sm:tw-w-auto tw-font-bold tw-mb-2 sm:tw-mb-0">
             {codeTitle}
           </code>
         )}

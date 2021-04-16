@@ -22,7 +22,7 @@ export function createQueryFromObject(object: T_Object<string | number | boolean
   return result;
 }
 
-export function delay(time: number): Promise<any> {
+export function delay(time: number): Promise<void> {
   return new Promise((resolve) => {
     setTimeout(resolve, time);
   });

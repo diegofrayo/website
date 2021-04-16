@@ -22,6 +22,7 @@ module.exports = {
   },
   globals: {
     console: true,
+    process: true,
   },
   ignorePatterns: ["src/components/pages/snippets/data/**/*"],
   rules: {

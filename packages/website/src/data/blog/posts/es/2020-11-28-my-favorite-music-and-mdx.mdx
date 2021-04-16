@@ -50,15 +50,19 @@ Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arre
 <Code
   language="typescript"
   sourceURL={DATA.GITHUB_DATA.monorepo.website.files["[slug]"]}
-  code={`export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function getStaticPaths() {
+  code={`type T_Path = { params: { slug: string }; locale: T_Locale };
+[BR]
+export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function getStaticPaths() {
   return {
-    paths: (await BlogService.fetchPosts()).reduce((result, post: T_BlogPost) => {
+    paths: (await BlogService.fetchPosts()).reduce((result: T_Path[], post: T_BlogPost) => {
       return result.concat(
-        post.locales.map((locale: T_Locale) => {
-          return { params: { slug: post.slug }, locale };
-        }),
+        post.locales.map(
+          (locale: T_Locale): T_Path => {
+            return { params: { slug: post.slug }, locale };
+          },
+        ),
       );
-    }, [] as Array<any>),
+    }, []),
     fallback: false,
   };
 };`}

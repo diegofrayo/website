@@ -71,15 +71,19 @@ function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
   );
 }
 
+type T_Path = { params: { slug: string }; locale: T_Locale };
+
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function getStaticPaths() {
   return {
-    paths: (await BlogService.fetchPosts()).reduce((result, post: T_BlogPost) => {
+    paths: (await BlogService.fetchPosts()).reduce((result: T_Path[], post: T_BlogPost) => {
       return result.concat(
-        post.locales.map((locale: T_Locale) => {
-          return { params: { slug: post.slug }, locale };
-        }),
+        post.locales.map(
+          (locale: T_Locale): T_Path => {
+            return { params: { slug: post.slug }, locale };
+          },
+        ),
       );
-    }, [] as Array<any>),
+    }, []),
     fallback: false,
   };
 };
