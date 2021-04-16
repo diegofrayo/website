@@ -24,14 +24,14 @@ export function removeEmojiFromString(str: string): string {
 }
 
 export function generateSlug(str: string): string {
-  let result: string = str.replace(/^\s+|\s+$/g, "").toLowerCase();
+  let result = str.replace(/^\s+|\s+$/g, "").toLowerCase();
 
   // remove accents, swap ñ for n, etc
   const FROM = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
   const TO = "aaaaeeeeiiiioooouuuunc------";
 
   createArray(FROM.length).forEach((i) => {
-    result = result.replace(new RegExp(FROM.charAt(i), "g"), TO.charAt(i));
+    result = replaceAll(result, FROM.charAt(i), TO.charAt(i));
   });
 
   result = result

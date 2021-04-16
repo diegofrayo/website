@@ -10,6 +10,8 @@ import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 import { removeEmojiFromString } from "~/utils/strings";
 
+import WindowSize from "./WindowSize";
+
 type T_PageProps = {
   children: T_ReactChildrenProp;
   config: {
@@ -131,6 +133,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
       {isUserLoggedIn() && (
         <span className="tw-fixed tw-top-1 tw-left-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white" />
       )}
+      {isDevelopmentEnvironment() && <WindowSize />}
       <script
         type="application/json"
         id="assets"

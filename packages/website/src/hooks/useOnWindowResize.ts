@@ -1,24 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { T_Function } from "~/types";
 
 function useOnWindowResize(callback: T_Function): void {
-  useEffect(
-    function createResizeEventListener() {
-      function handleWindowResize(): void {
-        callback();
-      }
+  const savedHandler = useRef(callback);
 
-      handleWindowResize();
+  useEffect(function updateCallbackRef() {
+    savedHandler.current = callback;
+  });
 
-      window.addEventListener("resize", handleWindowResize);
+  useEffect(function createResizeEventListener() {
+    function handleWindowResize(): void {
+      savedHandler.current();
+    }
 
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    },
-    [callback],
-  );
+    handleWindowResize();
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 }
 
 export default useOnWindowResize;
