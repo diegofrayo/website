@@ -8,7 +8,7 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 - React
 - Next.js
 - Tailwind CSS
-- MDX ([xdm](https://www.npmjs.com/package/xdm))
+- MDX ([next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) and [xdm](https://www.npmjs.com/package/xdm))
 
 ## Setup
 

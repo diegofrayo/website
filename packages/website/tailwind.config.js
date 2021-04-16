@@ -1,6 +1,7 @@
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
+  mode: "jit",
   prefix: "tw-",
   darkMode: "class",
   important: false,

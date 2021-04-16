@@ -206,7 +206,7 @@ function LocalesSelector({ locales, currentLocale }: T_LocalesSelectorProps): T_
 */
 
 function Breadcumb({ items }: T_BreadcumbProps): T_ReactElement {
-  const hasMoreThanOneItem: boolean = items.length > 1;
+  const hasMoreThanOneItem = items.length > 1;
 
   return (
     <ul className="root tw-block tw-text-left tw-pb-1">

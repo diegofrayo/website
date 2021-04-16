@@ -20,6 +20,9 @@ module.exports = {
       jsx: true,
     },
   },
+  globals: {
+    console: true,
+  },
   ignorePatterns: ["src/components/pages/snippets/data/**/*"],
   rules: {
     "react/prop-types": "off",

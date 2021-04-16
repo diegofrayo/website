@@ -26,14 +26,14 @@ export function removeEmojiFromString(str: string): string {
 }
 
 export function generateSlug(str: string): string {
-  let result: string = str.replace(/^\s+|\s+$/g, "").toLowerCase();
+  let result = str.replace(/^\s+|\s+$/g, "").toLowerCase();
 
   // remove accents, swap ñ for n, etc
   const FROM = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
   const TO = "aaaaeeeeiiiioooouuuunc------";
 
   createArray(FROM.length).forEach((i) => {
-    result = result.replace(new RegExp(FROM.charAt(i), "g"), TO.charAt(i));
+    result = replaceAll(result, FROM.charAt(i), TO.charAt(i));
   });
 
   result = result
@@ -50,4 +50,14 @@ export function generateObjectKeyInUpperCase(url: string): string {
 
 export function generateObjectKeyInLowerCase(url: string): string {
   return url.toLowerCase().replace(/-+/g, "_");
+}
+
+export function replaceAll(str: string, toReplace: string, replacement: string): string {
+  return str.replace(new RegExp(escapeRegExp(toReplace), "g"), replacement);
+}
+
+// --- Private functions ---
+
+function escapeRegExp(text: string): string {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }

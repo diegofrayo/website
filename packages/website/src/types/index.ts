@@ -130,6 +130,17 @@ export type T_Chord = {
   stringsToSkip: string;
 };
 
+// --- Movies ---
+
+export type T_Movie = {
+  title: string;
+  id: string;
+  type: "Series" | "Movie" | "Documentary" | "Documentary Series";
+  category: string;
+  source: "Netflix" | "YouTube";
+  calification: number;
+};
+
 // --- Components props ---
 
 export type T_BreadcumbProps = {
@@ -151,15 +162,19 @@ export enum E_Icons {
   "500_PX" = "500_PX",
   "GITHUB" = "GITHUB",
   "GMAIL" = "GMAIL",
+  "NETFLIX" = "NETFLIX",
   "SPOTIFY" = "SPOTIFY",
   "WHATSAPP" = "WHATSAPP",
   "YOUTUBE" = "YOUTUBE",
 
   "CALENDAR" = "CALENDAR",
+  "CHECK" = "CHECK",
   "CODE" = "CODE",
   "EDIT" = "EDIT",
+  "HEART" = "HEART",
   "LINK" = "LINK",
   "MOON" = "MOON",
+  "STAR" = "STAR",
   "SUN" = "SUN",
   "X" = "X",
   "ZOOM_IN" = "ZOOM_IN",

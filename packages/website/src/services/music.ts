@@ -1,6 +1,7 @@
 import Data from "~/data/music/songs.json";
 import { T_Chord, T_Primitive, T_Song } from "~/types";
-import { escapeRegExp, sortBy } from "~/utils/misc";
+import { sortBy } from "~/utils/misc";
+import { replaceAll } from "~/utils/strings";
 
 class MusicService {
   async fetchSongsList(): Promise<T_Song[]> {
@@ -30,14 +31,13 @@ class MusicService {
           .sort(sortBy(undefined, "desc"))
           .forEach((chord, _, array) => {
             if (array.length === 1) {
-              transformedLine = transformedLine.replace(
-                new RegExp(escapeRegExp(chord), "g"),
-                this.insertChord(chord),
-              );
+              transformedLine = replaceAll(transformedLine, chord, this.insertChord(chord));
             } else {
-              transformedLine = transformedLine
-                .replace(new RegExp(escapeRegExp(`${chord} `), "g"), `${this.insertChord(chord)} `)
-                .replace(new RegExp(escapeRegExp(` ${chord}`), "g"), ` ${this.insertChord(chord)}`);
+              transformedLine = replaceAll(
+                replaceAll(transformedLine, `${chord} `, `${this.insertChord(chord)} `),
+                ` ${chord}`,
+                ` ${this.insertChord(chord)}`,
+              );
             }
           });
 

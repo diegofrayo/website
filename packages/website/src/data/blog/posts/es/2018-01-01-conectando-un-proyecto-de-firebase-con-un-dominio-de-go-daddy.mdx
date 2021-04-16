@@ -13,19 +13,20 @@ En este tutorial quiero explicar como conectar un dominio que tengamos en **Go D
 1. Ahora aparecerá un modal, en donde como primer paso debemos escribir el nombre del dominio que queremos conectar, por ejemplo `diegofrayo.com`. Despues hacemos clic en **Continuar.**
 
 1. En el segundo paso, debemos verificar que somos propietarios del dominio que queremos conectar, así que tenemos que crear un **Registro TXT** en la configuración de nuestro dominio de **Go Daddy.** Para hacer esto, vamos a iniciar sesión en **Go Daddy** y entrar al siguiente enlace `https://dcc.godaddy.com/manage/[YOUR-DOMAIN.COM]/dns`. Ahora debemos agregar un **Registro TXT** con los datos que **Firebase** nos proporciona y esperar unos minutos hasta que **Firebase** compruebe que el dominio es nuestro. _Yo tuve que esperar alrededor de una hora_.
-> **IMPORTANTE:** Para crear un **Registro TXT**, es necesario ingresar un _Host_. **Firebase** propone usar como _Host_ el nombre de nuestro dominio, por ejemplo `diegofrayo.com`. Yo **NO** usé el nombre de mi dominio como _Host_ para crear el **Registro TXT**, en vez de esto, usé el simbolo `@`.
 
-4. Despues de que **Firebase** compruebe que el dominio es nuestro, podemos ir al tercer paso, el cual consiste en crear los **Registros A** con los datos que **Firebase** nos proporciona. Para hacer esto, debemos ir a la configuración de nuestro dominio en **Go Daddy** y crear los **Registros A** de la misma forma que creamos el **Registro TXT** en el paso anterior. Antes de crear estos registros, es importante eliminar los **Registros A** que ya tengamos creados.
-> **IMPORTANTE:** Para crear un **Registro A**, es necesario ingresar un _Host_ y la _dirección IP_ a donde apuntará nuestro dominio. **Firebase** propone usar como _Host_ el nombre de nuestro dominio, por ejemplo `diegofrayo.com`. Yo **NO** usé el nombre de mi dominio como _Host_ de los **Registros A**, en vez de esto, usé el simbolo `@`.
+   > **IMPORTANTE:** Para crear un **Registro TXT**, es necesario ingresar un _Host_. **Firebase** propone usar como _Host_ el nombre de nuestro dominio, por ejemplo `diegofrayo.com`. Yo **NO** usé el nombre de mi dominio como _Host_ para crear el **Registro TXT**, en vez de esto, usé el simbolo `@`.
 
-  <Image src={DATA.blog_post.assets.image_1} alt="Creando un Registro A" />
+1. Despues de que **Firebase** compruebe que el dominio es nuestro, podemos ir al tercer paso, el cual consiste en crear los **Registros A** con los datos que **Firebase** nos proporciona. Para hacer esto, debemos ir a la configuración de nuestro dominio en **Go Daddy** y crear los **Registros A** de la misma forma que creamos el **Registro TXT** en el paso anterior. Antes de crear estos registros, es importante eliminar los **Registros A** que ya tengamos creados.
 
-  La configuración de nuestro dominio en **Go Daddy** debería quedar de la siguiente manera:
+   > **IMPORTANTE:** Para crear un **Registro A**, es necesario ingresar un _Host_ y la _dirección IP_ a donde apuntará nuestro dominio. **Firebase** propone usar como _Host_ el nombre de nuestro dominio, por ejemplo `diegofrayo.com`. Yo **NO** usé el nombre de mi dominio como _Host_ de los **Registros A**, en vez de esto, usé el simbolo `@`.
 
-  <Image src={DATA.blog_post.assets.image_2} alt="Configuración de nuestro dominio" />
+   <Image src={DATA.blog_post.assets.image1} alt="Creando un Registro A" />
 
-5. Ahora debemos esperar un par de horas hasta que los cambios surtan efecto. _Yo esperé alrededor de 4 horas_.
-Después de ejecutar estos pasos, ya tendremos nuestro dominio de **Go Daddy** conectado con nuestro proyecto de **Firebase.**
+   La configuración de nuestro dominio en **Go Daddy** debería quedar de la siguiente manera:
+
+   <Image src={DATA.blog_post.assets.image2} alt="Configuración de nuestro dominio" />
+
+1. Ahora debemos esperar un par de horas hasta que los cambios surtan efecto. _Yo esperé alrededor de 4 horas_. Después de ejecutar estos pasos, ya tendremos nuestro dominio de **Go Daddy** conectado con nuestro proyecto de **Firebase.**
 
 ## Desplegando nuestro proyecto en Firebase Hosting
 
@@ -35,34 +36,34 @@ Para desplegar nuestro sitio o aplicación en **Firebase Hosting**, debemos segu
 
 2. Crear un directorio para nuestro proyecto e iniciarlo.
 
-  ```
-  mkdir project-name
-  cd project-name
-  firebase init
-  ```
+   ```
+   mkdir project-name
+   cd project-name
+   firebase init
+   ```
 
-  Cuando ejecutemos el tercer comando, tendremos que iniciar sesión con nuestra cuenta de **Google**.
+   Cuando ejecutemos el tercer comando, tendremos que iniciar sesión con nuestra cuenta de **Google**.
 
 3. Después de iniciar el proyecto, deberíamos tener la siguiente estructura de archivos.
 
-  <Image src={DATA.blog_post.assets.image_3} alt="Estructura de nuestro proyecto" />
+   <Image src={DATA.blog_post.assets.image3} alt="Estructura de nuestro proyecto" />
 
-  En la carpeta `public` debemos almacenar todos los assets de nuestra aplicación o sitio.  El archivo `firebase.json` queda de la siguiente manera:
+   En la carpeta `public` debemos almacenar todos los assets de nuestra aplicación o sitio. El archivo `firebase.json` queda de la siguiente manera:
 
-  ```
-  {
-    "hosting": {
-      "public": "public",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-    }
-  }
-  ```
+   ```
+   {
+     "hosting": {
+       "public": "public",
+       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+     }
+   }
+   ```
 
-  Podemos configurar mejor este archivo, por ejemplo, definiendo redirecciones, rewrites y otras cosas interesantes. En este [enlace](https://firebase.google.com/docs/hosting/full-config?authuser=0) pueden conocer un poco más sobre la configuración de este archivo.
+   Podemos configurar mejor este archivo, por ejemplo, definiendo redirecciones, rewrites y otras cosas interesantes. En este [enlace](https://firebase.google.com/docs/hosting/full-config?authuser=0) pueden conocer un poco más sobre la configuración de este archivo.
 
-5. Para probar nuestro sitio o aplicación de manera local, debemos usar el comando `firebase serve`, el cual crea un servidor HTTP al que podemos acceder desde [http://localhost:5000](http://localhost:5000).
+4. Para probar nuestro sitio o aplicación de manera local, debemos usar el comando `firebase serve`, el cual crea un servidor HTTP al que podemos acceder desde [http://localhost:5000](http://localhost:5000).
 
-6. Para desplegar nuestro sitio o aplicación en **Firebase Hosting**, simplemente debemos ejecutar el comando `firebase deploy`.
+5. Para desplegar nuestro sitio o aplicación en **Firebase Hosting**, simplemente debemos ejecutar el comando `firebase deploy`.
 
 ## Para finalizar
 

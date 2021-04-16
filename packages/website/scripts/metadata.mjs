@@ -1,5 +1,7 @@
-require("dotenv").config({ path: ".env" });
-const fs = require("fs");
+import dotenv from "dotenv";
+import fs from "fs";
+
+dotenv.config({ path: ".env" });
 
 const JOB_TITLE = "Software Developer";
 const SHORT_NAME = "Diego Rayo";

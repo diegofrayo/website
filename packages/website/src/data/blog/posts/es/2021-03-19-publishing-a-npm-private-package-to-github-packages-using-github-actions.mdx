@@ -4,160 +4,161 @@ En este tutorial quiero explicar como subir un paquete privado de npm a Github P
 
 1. Configurar el `package.json` del paquete que quieres subir. Ejemplo:
 
-  ```
-  {
-    "name": "@my-organization/my-pkg",
-    "private": false,
-    "description": "Your package description",
-    "version": "1.0.0",
-    "author": "@my-organization",
-    "source": "src/index.js",
-    "main": "dist/index.cjs.js",
-    "keywords": [],
-    "repository": "git://github.com/my-organization/my-pkg.git",
-    "publishConfig": {
-      "registry": "https://npm.pkg.github.com"
-    },
-    "files": [
-      "dist/*.js",
-      "dist/*.css",
-      "package.json",
-      "README.md"
-    ],
-    "scripts": {
-      "build": "rollup -c",
-      "build-watch": "rollup -c -w",
-      "format": "prettier --write \"src/**/*.{js,jsx,json}\"",
-      "lint": "eslint --fix \"src/**/*.{js,jsx}\" --ignore-pattern \"src/forms/*\""
-    },
-    "dependencies": {
-      "axios": "^0.21.1",
-      "classnames": "^2.2.6",
-      "date-fns": "^2.17.0",
-      "formik": "^2.2.6",
-      "google-map-react": "^2.1.9",
-      "hoist-non-react-statics": "^3.3.2",
-      "lodash": "^4.17.20",
-      "postcss": "^8.2.1",
-      "react-error-boundary": "^3.1.0",
-      "react-google-recaptcha": "^2.1.0",
-      "react-helmet": "^6.1.0",
-      "react-query": "^3.9.8",
-      "react-slideshow-image": "^3.4.3",
-      "react-toastify": "^7.0.3"
-    },
-    "peerDependencies": {
-      "gatsby": "^2.26.1",
-      "react": "^16.12.0",
-      "react-dom": "^16.12.0",
-      "styled-components": "^5.2.1"
-    },
-    "devDependencies": {
-      "@babel/cli": "^7.13.10",
-      "@babel/core": "^7.13.10",
-      "@babel/preset-env": "^7.13.10",
-      "@babel/preset-react": "^7.12.13",
-      "@rollup/plugin-babel": "^5.3.0",
-      "@rollup/plugin-commonjs": "^17.1.0",
-      "@rollup/plugin-json": "^4.1.0",
-      "@rollup/plugin-node-resolve": "^11.2.0",
-      "babel-eslint": "^10.1.0",
-      "dotenv": "^8.2.0",
-      "eslint": "^7.18.0",
-      "eslint-config-airbnb": "^18.2.1",
-      "eslint-config-prettier": "^7.2.0",
-      "eslint-plugin-import": "^2.22.1",
-      "eslint-plugin-jsx-a11y": "^6.4.1",
-      "eslint-plugin-prettier": "^3.3.1",
-      "eslint-plugin-react": "^7.22.0",
-      "eslint-plugin-react-hooks": "^4.2.0",
-      "husky": "^4.3.8",
-      "lint-staged": "^10.5.3",
-      "npm-run-all": "^4.1.5",
-      "prettier": "^2.2.1",
-      "rollup": "^2.41.1",
-      "rollup-plugin-alias": "^2.2.0",
-      "rollup-plugin-css-only": "^3.1.0",
-      "rollup-plugin-delete": "^2.0.0",
-      "rollup-plugin-hot-css": "^0.4.0",
-      "rollup-plugin-includepaths": "^0.2.4",
-      "rollup-plugin-peer-deps-external": "^2.2.4",
-      "sass": "^1.32.7"
-    },
-  }
-  ```
+   ```
+   {
+     "name": "@my-organization/my-pkg",
+     "private": false,
+     "description": "Your package description",
+     "version": "1.0.0",
+     "author": "@my-organization",
+     "source": "src/index.js",
+     "main": "dist/index.cjs.js",
+     "keywords": [],
+     "repository": "git://github.com/my-organization/my-pkg.git",
+     "publishConfig": {
+       "registry": "https://npm.pkg.github.com"
+     },
+     "files": [
+       "dist/*.js",
+       "dist/*.css",
+       "package.json",
+       "README.md"
+     ],
+     "scripts": {
+       "build": "rollup -c",
+       "build-watch": "rollup -c -w",
+       "format": "prettier --write \"src/**/*.{js,jsx,json}\"",
+       "lint": "eslint --fix \"src/**/*.{js,jsx}\" --ignore-pattern \"src/forms/*\""
+     },
+     "dependencies": {
+       "axios": "^0.21.1",
+       "classnames": "^2.2.6",
+       "date-fns": "^2.17.0",
+       "formik": "^2.2.6",
+       "google-map-react": "^2.1.9",
+       "hoist-non-react-statics": "^3.3.2",
+       "lodash": "^4.17.20",
+       "postcss": "^8.2.1",
+       "react-error-boundary": "^3.1.0",
+       "react-google-recaptcha": "^2.1.0",
+       "react-helmet": "^6.1.0",
+       "react-query": "^3.9.8",
+       "react-slideshow-image": "^3.4.3",
+       "react-toastify": "^7.0.3"
+     },
+     "peerDependencies": {
+       "gatsby": "^2.26.1",
+       "react": "^16.12.0",
+       "react-dom": "^16.12.0",
+       "styled-components": "^5.2.1"
+     },
+     "devDependencies": {
+       "@babel/cli": "^7.13.10",
+       "@babel/core": "^7.13.10",
+       "@babel/preset-env": "^7.13.10",
+       "@babel/preset-react": "^7.12.13",
+       "@rollup/plugin-babel": "^5.3.0",
+       "@rollup/plugin-commonjs": "^17.1.0",
+       "@rollup/plugin-json": "^4.1.0",
+       "@rollup/plugin-node-resolve": "^11.2.0",
+       "babel-eslint": "^10.1.0",
+       "dotenv": "^8.2.0",
+       "eslint": "^7.18.0",
+       "eslint-config-airbnb": "^18.2.1",
+       "eslint-config-prettier": "^7.2.0",
+       "eslint-plugin-import": "^2.22.1",
+       "eslint-plugin-jsx-a11y": "^6.4.1",
+       "eslint-plugin-prettier": "^3.3.1",
+       "eslint-plugin-react": "^7.22.0",
+       "eslint-plugin-react-hooks": "^4.2.0",
+       "husky": "^4.3.8",
+       "lint-staged": "^10.5.3",
+       "npm-run-all": "^4.1.5",
+       "prettier": "^2.2.1",
+       "rollup": "^2.41.1",
+       "rollup-plugin-alias": "^2.2.0",
+       "rollup-plugin-css-only": "^3.1.0",
+       "rollup-plugin-delete": "^2.0.0",
+       "rollup-plugin-hot-css": "^0.4.0",
+       "rollup-plugin-includepaths": "^0.2.4",
+       "rollup-plugin-peer-deps-external": "^2.2.4",
+       "sass": "^1.32.7"
+     },
+   }
+   ```
 
-  > **Importante:**
-  > - `"name": "@my-organization/my-pkg"` | El nombre del paquete debe tener la estructura **@organization/package-name**
-  > - `"repository": "git://github.com/my-organization/my-pkg.git"` | Aquí debes configurar la URL de tu repositorio
-  > - `"publishConfig": {"registry": "https://npm.pkg.github.com"}` | Este atributo sirve para indicarle a Github que vas a subir el paquete a su registro de paquetes
-  > - `"private": false` | Aunque el paquete será privado, el valor de este atributo debe ser **false**
+   > **Importante:**
+   >
+   > - `"name": "@my-organization/my-pkg"` | El nombre del paquete debe tener la estructura **@organization/package-name**
+   > - `"repository": "git://github.com/my-organization/my-pkg.git"` | Aquí debes configurar la URL de tu repositorio
+   > - `"publishConfig": {"registry": "https://npm.pkg.github.com"}` | Este atributo sirve para indicarle a Github que vas a subir el paquete a su registro de paquetes
+   > - `"private": false` | Aunque el paquete será privado, el valor de este atributo debe ser **false**
 
 1. Crear el archivo `.yml` del workflow en la carpeta `.github/workflows`.
 
-  ```
-  name: Publishing my-pkg
+   ```
+   name: Publishing my-pkg
 
-  on:
-    push:
-      branches:
-        - master
+   on:
+     push:
+       branches:
+         - master
 
-  jobs:
-    publish-gpr:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
+   jobs:
+     publish-gpr:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v2
 
-        - uses: actions/setup-node@v2
-          with:
-            node-version: 12
-            registry-url: "https://registry.npmjs.org"
+         - uses: actions/setup-node@v2
+           with:
+             node-version: 12
+             registry-url: "https://registry.npmjs.org"
 
-        - name: Install dependencies
-          run: npm install
+         - name: Install dependencies
+           run: npm install
 
-        - name: Build package
-          run: npm run build
+         - name: Build package
+           run: npm run build
 
-        - uses: actions/setup-node@v2
-          with:
-            node-version: 12
-            registry-url: "https://npm.pkg.github.com"
-            scope: "@my-organization"
+         - uses: actions/setup-node@v2
+           with:
+             node-version: 12
+             registry-url: "https://npm.pkg.github.com"
+             scope: "@my-organization"
 
-        - name: Publish package
-          run: npm publish
-          env:
-            NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-  ```
+         - name: Publish package
+           run: npm publish
+           env:
+             NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+   ```
 
-  > **Importante:**
-  > - Este workflow se ejecuta cuando se hace un push a la rama `master`. Se encarga de instalar y construir el paquete usando npm a través de los steps `name: Install dependencies` y `name: Build package`.
-  > - Antes de ejecutar los dos steps anteriores es importante configurar `registry-url: "https://registry.npmjs.org"` para indicarle a Github que vas a usar el registro de npm para construir el paquete.
-  > - Antes de publicar el paquete, es necesario configurar `registry-url: "https://npm.pkg.github.com"` para indicarle a Github que vas a subir el paquete al registro de Github.
-  > - Para subir el paquete es necesario usar `NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}`, el cual es un [secreto](https://docs.github.com/en/actions/reference/authentication-in-a-workflow) creado por Github automáticamente en el repositorio del proyecto. También se puede usar otra forma de autenticación, **personal access tokens**. En este [link](https://docs.github.com/en/packages/guides/configuring-npm-for-use-with-github-packages#authenticating-to-github-packages) puedes leer más acerca de esto.
-
+   > **Importante:**
+   >
+   > - Este workflow se ejecuta cuando se hace un push a la rama `master`. Se encarga de instalar y construir el paquete usando npm a través de los steps `name: Install dependencies` y `name: Build package`.
+   > - Antes de ejecutar los dos steps anteriores es importante configurar `registry-url: "https://registry.npmjs.org"` para indicarle a Github que vas a usar el registro de npm para construir el paquete.
+   > - Antes de publicar el paquete, es necesario configurar `registry-url: "https://npm.pkg.github.com"` para indicarle a Github que vas a subir el paquete al registro de Github.
+   > - Para subir el paquete es necesario usar `NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}`, el cual es un [secreto](https://docs.github.com/en/actions/reference/authentication-in-a-workflow) creado por Github automáticamente en el repositorio del proyecto. También se puede usar otra forma de autenticación, **personal access tokens**. En este [link](https://docs.github.com/en/packages/guides/configuring-npm-for-use-with-github-packages#authenticating-to-github-packages) puedes leer más acerca de esto.
 
 ## Instalando el paquete publicado en otro proyecto
 
 1. Crear un archivo `.npmrc` en la carpeta raíz del proyecto que va a usar el paquete que publicaste.
 
-  ```
-  @my-organization:registry=https://npm.pkg.github.com
-  //npm.pkg.github.com/:_authToken=YOUR_PERSONAL_ACCESS_TOKEN
-  ```
+   ```
+   @my-organization:registry=https://npm.pkg.github.com
+   //npm.pkg.github.com/:_authToken=YOUR_PERSONAL_ACCESS_TOKEN
+   ```
 
-  > En este [link](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) puedes ver como crear un **personal access token**
+   > En este [link](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) puedes ver como crear un **personal access token**
 
 1. Añadir el paquete a las dependencias del `package.json`.
 
-  ```
-  "dependencies": {
-    "@my-organization/my-pkg": "1.0.0",
-    ...
-  },
-  ```
+   ```
+   "dependencies": {
+     "@my-organization/my-pkg": "1.0.0",
+     ...
+   },
+   ```
 
 1. Instalar dependencias ejecutando `npm install`.
 

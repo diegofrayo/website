@@ -13,7 +13,7 @@ const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
 const PAGE_NAME = "strings";
 
 function StringsPage(): T_ReactElement {
-  const { texts, textareaRef, handleTextAreaChange, handleCopyText } = usePageHook();
+  const { texts, textareaRef, handleTextAreaChange, handleCopyText } = useController();
 
   return (
     <Page config={{ title: PAGE_NAME, noRobots: true }}>
@@ -148,9 +148,9 @@ function StringsPage(): T_ReactElement {
 
 export default StringsPage;
 
-// --- Hooks ---
+// --- Controller ---
 
-type T_UsePageHook = {
+type T_UseController = {
   texts: {
     input: string;
     upper: string;
@@ -164,9 +164,9 @@ type T_UsePageHook = {
   textareaRef: RefObject<HTMLTextAreaElement>;
 };
 
-function usePageHook(): T_UsePageHook {
+function useController(): T_UseController {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const [texts, setTexts] = useState<T_UsePageHook["texts"]>({
+  const [texts, setTexts] = useState<T_UseController["texts"]>({
     input: "",
     upper: "",
     lower: "",
@@ -193,7 +193,7 @@ function usePageHook(): T_UsePageHook {
     });
   }
 
-  function handleCopyText(e: T_OnClickEvent): void {
+  function handleCopyText(e: T_OnClickEvent) {
     copyToClipboard(e);
   }
 

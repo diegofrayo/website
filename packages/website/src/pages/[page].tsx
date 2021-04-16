@@ -58,7 +58,9 @@ function SitePage({ content, page, SiteTexts }: T_SitePageProps): T_ReactChildre
       >
         <MDXContent
           variant={
-            `/${page}` === ROUTES.SNIPPETS ? MDXContent.variant.STYLED : MDXContent.variant.UNSTYLED
+            `/${page}` === ROUTES.SNIPPETS
+              ? MDXContent.variant.DEFAULT
+              : MDXContent.variant.UNSTYLED
           }
           content={mdxContent}
         />

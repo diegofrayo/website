@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Link, List } from "~/components/primitive";
+import { Link, List, Space } from "~/components/primitive";
 import { withTranslations } from "~/hocs";
 import { T_ReactElement, T_SiteTexts } from "~/types";
 import { isUserLoggedIn } from "~/utils/misc";
@@ -26,24 +26,13 @@ function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
         ]}
         title={SiteTexts.page.current_locale.title}
       >
-        <List>
-          {["chords", "strings", "virtual-reality", "styles", "wp"]
-            .sort()
-            .concat(isUserLoggedIn() ? ["stupid", "maria", "baria"] : [])
-            .map((name) => {
-              return (
-                <List.Item key={`PlaygroundPage-name-${name}`}>
-                  <Link
-                    href={`${ROUTES.PLAYGROUND}/${name}`}
-                    variant={Link.variant.UNSTYLED}
-                    isNextLink
-                  >
-                    {name}
-                  </Link>
-                </List.Item>
-              );
-            })}
-        </List>
+        <PagesList pages={["chords", "strings", "virtual-reality", "styles", "wp"]} />
+        {isUserLoggedIn() && (
+          <Fragment>
+            <Space className="tw-mt-6 tw-mb-4" variant={Space.variant.DASHED} />
+            <PagesList pages={["stupid", "maria", "baria", "movies"]} />
+          </Fragment>
+        )}
       </MainLayout>
     </Page>
   );
@@ -53,3 +42,21 @@ export default withTranslations(PlaygroundPage, {
   page: ROUTES.PLAYGROUND,
   layout: true,
 });
+
+// --- Components ---
+
+function PagesList({ pages }) {
+  return (
+    <List>
+      {pages.sort().map((name) => {
+        return (
+          <List.Item key={`PlaygroundPage-name-${name}`}>
+            <Link href={`${ROUTES.PLAYGROUND}/${name}`} variant={Link.variant.UNSTYLED} isNextLink>
+              {name}
+            </Link>
+          </List.Item>
+        );
+      })}
+    </List>
+  );
+}

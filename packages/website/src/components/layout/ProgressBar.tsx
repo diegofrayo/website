@@ -10,11 +10,11 @@ function ProgressBar(): T_ReactElement {
   useDidMount(() => {
     let timeout: NodeJS.Timeout;
 
-    function showProgressBar(): void {
+    function showProgressBar() {
       timeout = setTimeout(NProgress.start, 100);
     }
 
-    function hideProgressBar(): void {
+    function hideProgressBar() {
       clearTimeout(timeout);
       NProgress.done();
     }

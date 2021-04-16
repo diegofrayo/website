@@ -1,10 +1,18 @@
-require("dotenv").config({ path: ".env" });
-const SitemapGenerator = require("sitemap-generator");
-const fs = require("fs");
+import dotenv from "dotenv";
+import fs from "fs";
+import SitemapGenerator from "sitemap-generator";
 
-const { posts } = require("../src/data/blog/posts.json");
-const { website: WebsiteMetadata } = require("../src/data/metadata.json");
-const { pages } = require("../src/data/texts.json");
+import BLOG_POSTS from "../src/data/blog/posts.json";
+import METADATA from "../src/data/metadata.json";
+import PAGES_TEXTS from "../src/data/texts.json";
+
+dotenv.config({ path: ".env" });
+
+const { pages } = PAGES_TEXTS;
+const { website: WEBSITE_METADATA } = METADATA;
+const { posts } = BLOG_POSTS;
+
+dotenv.config({ path: ".env" });
 
 const pagesToIgnore = Object.entries(pages)
   .map(([slug, page]) => {
@@ -12,7 +20,7 @@ const pagesToIgnore = Object.entries(pages)
   })
   .filter(Boolean);
 
-const generator = SitemapGenerator(WebsiteMetadata.url, {
+const generator = SitemapGenerator(WEBSITE_METADATA.url, {
   stripQuerystring: false,
   filepath: "./public/sitemap.xml",
   ignore: (url) => {
@@ -27,7 +35,7 @@ Object.values(posts).forEach((post) => {
     return;
   }
 
-  const url = `${WebsiteMetadata.url}/blog/${post.slug}`;
+  const url = `${WEBSITE_METADATA.url}/blog/${post.slug}`;
   generator.queueURL(url);
 });
 
@@ -37,7 +45,7 @@ generator.on("done", () => {
       "./public/sitemap.xml",
       fs
         .readFileSync("./public/sitemap.xml", "utf8")
-        .replace(new RegExp(WebsiteMetadata.url, "g"), WebsiteMetadata.urlProd),
+        .replace(new RegExp(WEBSITE_METADATA.url, "g"), WEBSITE_METADATA.urlProd),
     );
 
     console.log("Sitemap created");

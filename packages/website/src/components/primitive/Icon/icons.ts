@@ -7,7 +7,7 @@ import {
   ZoomInIcon,
   ZoomOutIcon,
 } from "@heroicons/react/outline";
-import { MoonIcon, SunIcon } from "@heroicons/react/solid";
+import { MoonIcon, SunIcon, HeartIcon, StarIcon, CheckIcon } from "@heroicons/react/solid";
 
 import { E_Icons, T_ReactFunctionComponent } from "~/types";
 
@@ -46,6 +46,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
       alt: "Email",
     },
   },
+  NETFLIX: {
+    isLibraryIcon: false,
+    icon: "/static/images/icons/netflix.svg",
+    props: {
+      className: "tw-rounded-full",
+      alt: "Netflix",
+    },
+  },
   SPOTIFY: {
     isLibraryIcon: false,
     icon: "/static/images/icons/spotify.svg",
@@ -78,11 +86,27 @@ export const ICONS: Record<E_Icons, T_Icon> = {
       className: "",
     },
   },
+  CHECK: {
+    isLibraryIcon: true,
+    icon: CheckIcon,
+    props: {
+      className: "",
+      color: "tw-text-green-700",
+    },
+  },
   EDIT: {
     isLibraryIcon: true,
     icon: PencilAltIcon,
     props: {
       className: "",
+    },
+  },
+  HEART: {
+    isLibraryIcon: true,
+    icon: HeartIcon,
+    props: {
+      className: "",
+      color: "tw-text-red-700",
     },
   },
   LINK: {
@@ -97,6 +121,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     icon: CodeIcon,
     props: {
       className: "",
+    },
+  },
+  STAR: {
+    isLibraryIcon: true,
+    icon: StarIcon,
+    props: {
+      className: "",
+      color: "tw-text-yellow-400",
     },
   },
   SUN: {

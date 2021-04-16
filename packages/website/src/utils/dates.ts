@@ -5,6 +5,7 @@ import { ROUTES } from "~/utils/routing";
 import { T_SiteTexts } from "~/types";
 
 import { getSiteTexts, parseSiteText, pluralize } from "./internationalization";
+import { replaceAll } from "./strings";
 
 dayjs.extend(customParseFormat);
 
@@ -66,5 +67,5 @@ export function getDifferenceBetweenDates(startDate: string, endDate: Date): str
 }
 
 export function formatDate(date: string): string {
-  return date.replace(/-+/g, "/");
+  return replaceAll(date, "-", "/");
 }

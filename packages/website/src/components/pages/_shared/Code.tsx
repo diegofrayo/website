@@ -8,10 +8,16 @@ import { T_CodeProps, T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 import { ROUTES } from "~/utils/routing";
-import { generateSlug } from "~/utils/strings";
+import { generateSlug, replaceAll } from "~/utils/strings";
 
 function Code({ language, fileName, code, sourceURL }: T_CodeProps): T_ReactElement {
   const SiteTexts = getSiteTexts({ page: ROUTES.BLOG });
+
+  const codeTitle = fileName
+    ? `// ${generateSlug(fileName)}`
+    : sourceURL
+    ? `// ${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}`
+    : "";
 
   return (
     <div
@@ -19,19 +25,22 @@ function Code({ language, fileName, code, sourceURL }: T_CodeProps): T_ReactElem
       data-markdown-block
     >
       <div className="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono">
-        <code className="tw-w-full sm:tw-w-auto tw-font-bold">
-          {fileName
-            ? `// ${generateSlug(fileName)}`
-            : sourceURL
-            ? `// ${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}`
-            : ""}
-        </code>
-        <span className="tw-rounded-md tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-auto sm:tw-ml-4 tw-mt-2 sm:tw-mt-0">
+        {codeTitle && (
+          <code className="tw-w-full sm:tw-w-auto tw-font-bold tw-mt-2 sm:tw-mt-0">
+            {codeTitle}
+          </code>
+        )}
+        <span className="tw-rounded-md tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-auto sm:tw-ml-4">
           {language}
         </span>
       </div>
 
-      <Highlight {...defaultProps} code={code} language={language} theme={dracula}>
+      <Highlight
+        {...defaultProps}
+        code={replaceAll(code, "[BR]", "")}
+        language={language}
+        theme={dracula}
+      >
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           return (
             <CodePrimitive className={className} style={style}>

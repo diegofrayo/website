@@ -14,8 +14,11 @@ function Playground({ Component, code, language }: T_PlaygroundProps): T_ReactEl
   const { isSourceCodeTab, isOutputTab, setSourceCodeTab, setOutputTab } = useController();
 
   return (
-    <div className="root tw-flex tw-flex-col" data-markdown-block>
-      <div className="tw-flex-1 tw-p-2 tw-overflow-auto tw-border-t tw-border-l tw-border-r dfr-border-color-primary dark:dfr-border-color-primary">
+    <div className="root tw-flex tw-flex-col" style={{ minHeight: 200 }} data-markdown-block>
+      <div
+        className="tw-flex-1 tw-p-2 tw-overflow-auto tw-border-t tw-border-l tw-border-r dfr-border-color-primary dark:dfr-border-color-primary"
+        style={{ maxHeight: 300 }}
+      >
         {isSourceCodeTab ? <Code language={language} code={code} /> : <Component />}
       </div>
       <div className="tw-flex tw-flex-no-wrap tw-text-sm">
@@ -40,14 +43,6 @@ function Playground({ Component, code, language }: T_PlaygroundProps): T_ReactEl
       </div>
 
       <style jsx>{`
-        .root {
-          min-height: 200px;
-        }
-
-        .root > div {
-          max-height: 300px;
-        }
-
         .root :global(.dfr-Code) {
           border: 0;
         }

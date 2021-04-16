@@ -28,7 +28,7 @@ function twcssCreator(
         className: string;
         ref: T_ReactForwardedRef;
       }>;
-      const finalClassName: string = generateClassName(
+      const finalClassName = generateClassName(
         styles,
         className,
         twcssVariant || staticProps.twcssVariant,
@@ -58,7 +58,7 @@ function generateClassName(
 
   if (typeof styles === "object") {
     if (typeof twVariant === "object") {
-      const twVariantStyles: string = Object.keys(twVariant)
+      const twVariantStyles = Object.keys(twVariant)
         .reduce((result: string, curr: string) => {
           if (twVariant[curr] === true && styles[curr]) {
             return result + styles[curr] + " ";

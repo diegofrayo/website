@@ -83,7 +83,7 @@ function useController({
     });
   });
 
-  function handleModalClose(): void {
+  function handleModalClose() {
     setIsModalVisible(false);
     setSelectedChord(undefined);
   }

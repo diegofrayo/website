@@ -14,11 +14,11 @@
     <loc>https://diegofrayo.vercel.app/about-me</loc>
   </url>
   <url>
-    <loc
-    >https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</loc>
+    <loc>https://diegofrayo.vercel.app/resume</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/resume</loc>
+    <loc
+    >https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</loc>

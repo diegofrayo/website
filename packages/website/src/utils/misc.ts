@@ -36,13 +36,13 @@ export function isDevelopmentEnvironment(url?: string): boolean {
 }
 
 export function isUserLoggedIn(): boolean {
-  let isLoggedIn: boolean = isDevelopmentEnvironment();
+  let isLoggedIn = false;
 
   if (isBrowser()) {
     isLoggedIn =
       window.location.href.includes("login=true") ||
       window.localStorage.getItem("login") === "true" ||
-      isLoggedIn;
+      isDevelopmentEnvironment();
 
     if (isLoggedIn) {
       window.localStorage.setItem("login", "true");
@@ -98,10 +98,6 @@ export function safeCastNumber(string: string, defaultNumber = 0): number {
   }
 
   return number;
-}
-
-export function escapeRegExp(text: string): string {
-  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
 
 export function isPrimitiveValue(value: T_Primitive | T_Object): boolean {
