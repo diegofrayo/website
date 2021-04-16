@@ -124,7 +124,7 @@ export function GithubRepo({ name, url, description }: T_GithubRepoProps): T_Rea
       <Link
         className="tw-flex sm:tw-inline-flex tw-p-4 dfr-bg-secondary dark:dfr-bg-secondary tw-rounded-md tw-items-center tw-relative tw-pr-8 tw-border dfr-border-color-primary dark:dfr-border-color-primary"
         href={url}
-        variant={Link.variant.UNSTYLED}
+        variant={Link.variant.SIMPLE}
       >
         <Icon icon={Icon.icon.GITHUB} wrapperClassName="tw-mr-3" size={32} />
 

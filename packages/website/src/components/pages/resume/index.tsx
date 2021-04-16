@@ -40,7 +40,7 @@ function TimelineItem({
 
       <Title is="h3" variant={Title.variant.SECONDARY} size={Title.size.MD}>
         {url ? (
-          <Link className="tw-underline" href={url} variant={Link.variant.UNSTYLED}>
+          <Link className="tw-underline" href={url} variant={Link.variant.SIMPLE}>
             {company}
           </Link>
         ) : (

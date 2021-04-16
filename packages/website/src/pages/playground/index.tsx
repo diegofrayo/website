@@ -26,12 +26,12 @@ function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
         ]}
         title={SiteTexts.page.current_locale.title}
       >
-        <PagesList pages={["chords", "strings", "virtual-reality", "styles", "wp"]} />
+        <PagesList pages={["chords", "strings", "virtual-reality", "styles", "wp"].sort()} />
 
         {isUserLoggedIn() && (
           <Fragment>
             <Space className="tw-mt-6 tw-mb-4" variant={Space.variant.DASHED} />
-            <PagesList pages={["stupid", "maria", "baria", "movies", "books"]} />
+            <PagesList pages={["maria", "baria", "books", "movies", "stupid"]} />
           </Fragment>
         )}
       </MainLayout>
@@ -49,10 +49,10 @@ export default withTranslations(PlaygroundPage, {
 function PagesList({ pages }) {
   return (
     <List>
-      {pages.sort().map((name) => {
+      {pages.map((name) => {
         return (
           <List.Item key={`PlaygroundPage-name-${name}`}>
-            <Link href={`${ROUTES.PLAYGROUND}/${name}`} variant={Link.variant.UNSTYLED} isNextLink>
+            <Link href={`${ROUTES.PLAYGROUND}/${name}`} variant={Link.variant.SIMPLE} isNextLink>
               {name}
             </Link>
           </List.Item>

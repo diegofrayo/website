@@ -14,4 +14,4 @@ fs.readdirSync(path.resolve(process.cwd(), "scripts/movies-and-books/books")).fo
     .toFile(path.resolve(process.cwd(), "public/static/pages/playground/books", file));
 });
 
-console.log("Movies images resized");
+console.log("Movies and books images resized");

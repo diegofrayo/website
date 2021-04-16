@@ -66,7 +66,7 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
       {ITEMS.map((item, index) => {
         return (
           <List.Item key={`Content-item-${index}`}>
-            <Link href={item.url} variant={Link.variant.UNSTYLED} isNextLink>
+            <Link href={item.url} variant={Link.variant.SIMPLE} isNextLink>
               <Emoji className="tw-mr-2">{item.emoji}</Emoji>
               <span>{item.label}</span>
             </Link>

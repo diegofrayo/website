@@ -139,7 +139,7 @@ function YouTube() {
       <div className="tw-flex tw-flex-wrap tw-justify-evenly">
         {PLAYLISTS.map((playlist, index) => {
           return (
-            <Link key={`Playlist-${index}`} href={playlist.url} variant={Link.variant.UNSTYLED}>
+            <Link key={`Playlist-${index}`} href={playlist.url} variant={Link.variant.SIMPLE}>
               <MenuItem>
                 <Emoji className="tw-text-5xl">{playlist.name}</Emoji>
               </MenuItem>

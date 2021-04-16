@@ -9,7 +9,7 @@ import { T_Movie, T_ReactElement } from "~/types";
 
 function MoviesPage(): T_ReactElement {
   return (
-    <PlaygroundPageTemplate pageName="movies">
+    <PlaygroundPageTemplate pageName="🎬 movies">
       <Content />
     </PlaygroundPageTemplate>
   );
@@ -37,39 +37,44 @@ function Content(): T_ReactElement {
                       : `https://www.youtube.com/watch?v=${id}`
                   }
                   variant={Link.variant.UNSTYLED}
-                  className="movie tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-borderd dfr-border-color-primary dark:dfr-border-color-primary tw-mx-2 sm:tw-mx-0 tw-rounded-bl-md tw-rounded-tr-md tw-overflow-hidden tw-shadow-lg"
+                  className="movie tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 sm:tw-mx-0 tw-shadow-lg tw-transform tw-duration-300 hover:tw--translate-y-0.5 hover:tw-translate-x-0.5"
                 >
                   <article
                     className="tw-flex tw-h-full tw-w-full"
                     style={{
-                      backgroundImage: `url(/static/pages/playground/movies/${id}.jpg)`,
-                      backgroundSize: "100%",
+                      backgroundImage: `url("/static/pages/playground/movies/${id}.jpg")`,
+                      backgroundSize: "100% 100%",
+                      backgroundRepeat: "no-repeat",
                     }}
                   >
-                    <span className="tw-absolute tw-top-1 tw-right-1">
-                      {calification === 5 ? (
-                        <Icon icon={Icon.icon.STAR} size={32} />
-                      ) : calification === 4 ? (
-                        <Icon icon={Icon.icon.HEART} size={24} />
-                      ) : (
-                        <Icon icon={Icon.icon.CHECK} size={16} />
-                      )}
+                    <span className="tw-absolute tw--top-2 tw--right-2 tw-bg-black dark:tw-bg-white tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8">
+                      <Icon
+                        icon={
+                          calification === 5
+                            ? Icon.icon.STAR
+                            : calification === 4
+                            ? Icon.icon.HEART
+                            : Icon.icon.CHECK
+                        }
+                        size={24}
+                      />
                     </span>
 
                     <div className="movie__details tw-flex tw-self-end tw-flex-nowrap tw-justify-between tw-w-full tw-items-end tw-p-2">
                       <Icon
                         icon={source === "Netflix" ? Icon.icon.NETFLIX : Icon.icon.YOUTUBE}
                         size={24}
+                        wrapperClassName="tw-flex-shrink-0"
                       />
                       <div className="tw-flex-1 tw-text-right tw-ml-4">
                         <Title
                           is="h1"
                           variant={Title.variant.UNSTYLED}
-                          className="tw-leading-tight tw-mb-2 tw-text-black"
+                          className="tw-leading-tight tw-mb-2 tw-text-black tw-uppercase tw-break-normal"
                         >
                           {title}
                         </Title>
-                        <p className="tw-text-sm tw-font-bold tw-leading-none tw-text-gray-700">
+                        <p className="tw-text-sm tw-font-bold tw-leading-none tw-text-gray-700 tw-lowercase">
                           {type}
                         </p>
                       </div>

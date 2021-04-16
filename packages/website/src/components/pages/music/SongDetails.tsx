@@ -42,10 +42,10 @@ function SongDetails({
         })}
       </div>
       <div className="tw-flex tw-items-center tw-mt-1">
-        <Link href={song.spotifyUrl} variant={Link.variant.UNSTYLED} className="tw-mr-2">
+        <Link href={song.spotifyUrl} variant={Link.variant.SIMPLE} className="tw-mr-2">
           <Icon icon={Icon.icon.SPOTIFY} size={24} />
         </Link>
-        <Link href={song.youtubeUrl} variant={Link.variant.UNSTYLED}>
+        <Link href={song.youtubeUrl} variant={Link.variant.SIMPLE}>
           <Icon icon={Icon.icon.YOUTUBE} size={24} />
         </Link>
       </div>

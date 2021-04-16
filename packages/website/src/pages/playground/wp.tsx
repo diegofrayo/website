@@ -45,7 +45,7 @@ function Content(): T_ReactElement {
         role="button"
         className="tw-self-end tw-flex"
         href={`https://api.whatsapp.com/send?phone=57${phone}`}
-        variant={Link.variant.UNSTYLED}
+        variant={Link.variant.SIMPLE}
         disabled={!inputRef?.current?.validity?.valid || !phone}
       >
         <Icon icon={Icon.icon.WHATSAPP} size={48} />

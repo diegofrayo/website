@@ -77,7 +77,7 @@ function SongPage({ song, content }: T_SongPageProps): T_ReactElement {
             text: song.title,
           },
         ]}
-        title={song.title}
+        title={`🎼 ${song.title}`}
         showGoToTopButton
       >
         <SongDetails song={song} SiteTexts={SiteTexts} className="tw-mb-8" />

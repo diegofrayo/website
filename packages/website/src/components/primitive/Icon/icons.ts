@@ -91,7 +91,7 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     icon: CheckIcon,
     props: {
       className: "",
-      color: "tw-text-green-700",
+      color: "tw-text-green-500",
     },
   },
   EDIT: {
@@ -106,7 +106,7 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     icon: HeartIcon,
     props: {
       className: "",
-      color: "tw-text-red-700",
+      color: "tw-text-red-500",
     },
   },
   LINK: {
@@ -128,7 +128,7 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     icon: StarIcon,
     props: {
       className: "",
-      color: "tw-text-yellow-400",
+      color: "tw-text-yellow-500",
     },
   },
   SUN: {

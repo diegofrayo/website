@@ -65,7 +65,7 @@ function Code({ language, fileName, code, sourceURL }: T_CodeProps): T_ReactElem
           <Link
             className="tw-block sm:tw-inline-block tw-ml-auto tw-font-bold sm:tw-mr-6 tw-mb-1 sm:tw-mb-0"
             href={sourceURL}
-            variant={Link.variant.UNSTYLED}
+            variant={Link.variant.SIMPLE}
           >
             <Icon
               icon={Icon.icon.GITHUB}

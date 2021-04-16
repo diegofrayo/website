@@ -17,7 +17,7 @@ import {
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
 import { WEBSITE_METADATA } from "~/utils/constants";
 import { ROUTES } from "~/utils/routing";
-import { generateSlug } from "~/utils/strings";
+import { generateSlug, removeEmojiFromString } from "~/utils/strings";
 
 type T_MainLayoutProps = {
   title?: string;
@@ -136,7 +136,7 @@ function HeaderContent(): T_ReactElement {
           size={Title.size.XL}
           className="tw-truncate tw-text-yellow-500 dark:tw-text-white"
         >
-          <Link href="/" variant={Link.variant.UNSTYLED} isNextLink>
+          <Link href="/" variant={Link.variant.SIMPLE} isNextLink>
             Diego <Emoji className="tw-text-2xl">⚡</Emoji>
           </Link>
         </Title>
@@ -214,7 +214,7 @@ function Breadcumb({ items }: T_BreadcumbProps): T_ReactElement {
         if (index === items.length - 1 && hasMoreThanOneItem) {
           return (
             <li key={`Breadcumb-li-${generateSlug(text)}`} className="tw-inline-block">
-              <span className="tw-text-base tw-italic">{text}</span>
+              <span className="tw-text-base tw-italic">{removeEmojiFromString(text)}</span>
             </li>
           );
         }
@@ -298,7 +298,7 @@ type T_SocialIconProps = {
 
 function SocialIcon({ icon, url, withDarkModeBackground }: T_SocialIconProps): T_ReactElement {
   return (
-    <Link href={url} className="tw-inline-block tw-ml-4" variant={Link.variant.UNSTYLED}>
+    <Link href={url} className="tw-inline-block tw-ml-4" variant={Link.variant.SIMPLE}>
       <Icon icon={icon} size={24} withDarkModeBackground={withDarkModeBackground} />
     </Link>
   );

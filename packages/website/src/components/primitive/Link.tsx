@@ -9,6 +9,7 @@ import { getScrollPosition, isSmallScreen, setScrollPosition } from "~/utils/bro
 enum E_Variants {
   DEFAULT = "DEFAULT",
   SECONDARY = "SECONDARY",
+  SIMPLE = "SIMPLE",
   UNSTYLED = "UNSTYLED",
 }
 
@@ -99,8 +100,10 @@ function useController(href) {
 // --- Components ---
 
 const LinkElement = twcss.a({
-  __base: "tw-transition-opacity hover:tw-opacity-75",
-  DEFAULT: "tw-font-bold tw-underline dfr-text-color-links dark:dfr-text-color-links",
-  SECONDARY: "tw-text-black dark:tw-text-white",
+  __base: "",
+  DEFAULT:
+    "tw-transition-opacity hover:tw-opacity-75 tw-font-bold tw-underline dfr-text-color-links dark:dfr-text-color-links",
+  SECONDARY: "tw-transition-opacity hover:tw-opacity-75 tw-text-black dark:tw-text-white",
+  SIMPLE: "tw-transition-opacity hover:tw-opacity-75",
   UNSTYLED: "",
 });

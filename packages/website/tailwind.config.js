@@ -47,6 +47,7 @@ module.exports = {
     padding: ["responsive", "last", "hover", "dark"],
     width: ["responsive", "last", "hover", "dark"],
     height: ["responsive", "last", "hover", "dark"],
+    translate: ["hover"],
   },
 };
 

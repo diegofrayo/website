@@ -10,43 +10,43 @@
     },
     {
       "title": "Las venas abiertas",
-      "author": "",
-      "year": 1990,
+      "author": "Eduardo Galeano",
+      "year": 1971,
       "category": "",
       "calification": 5,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "url": "https://www.amazon.com/-/es/Eduardo-Galeano/dp/6070306880"
     },
     {
       "title": "Van Gogh el suicidado",
       "author": "",
       "year": 1990,
       "category": "",
-      "calification": 3,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "calification": 4,
+      "url": "#"
     },
     {
-      "title": "El futbol a sol y sombra",
-      "author": "",
+      "title": "El fútbol a sol y sombra",
+      "author": "Eduardo Galeano",
       "year": 1990,
       "category": "",
-      "calification": 3,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "calification": 4,
+      "url": "#"
     },
     {
       "title": "El principito",
-      "author": "",
-      "year": 1990,
+      "author": "Antoine de Saint-Exupèry",
+      "year": 1943,
       "category": "",
       "calification": 5,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "url": "https://www.amazon.com/Principito-Esencial-Spanish-Antoine-Saint-Exup%C3%A9ry-ebook/dp/B0786BHXT9"
     },
     {
-      "title": "Las 8 montanas",
+      "title": "Las 8 montañas",
       "author": "",
       "year": 1990,
       "category": "",
       "calification": 3,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "url": "#"
     },
     {
       "title": "El libro negro del programador",
@@ -54,7 +54,7 @@
       "year": 1990,
       "category": "",
       "calification": 3,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "url": "#"
     },
     {
       "title": "Por un scrum popular",
@@ -62,7 +62,7 @@
       "year": 1990,
       "category": "",
       "calification": 3,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "url": "#"
     },
     {
       "title": "Scrum, el arte de hacer el doble de trabajo en la mitad del tiempo",
@@ -70,7 +70,7 @@
       "year": 1990,
       "category": "",
       "calification": 3,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "url": "#"
     },
     {
       "title": "Historias de developers",
@@ -78,7 +78,7 @@
       "year": 1990,
       "category": "",
       "calification": 3,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "url": "#"
     },
     {
       "title": "Historia del conflicto armado en Colombia",
@@ -86,15 +86,15 @@
       "year": 1990,
       "category": "",
       "calification": 3,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "url": "#"
     },
     {
-      "title": "Spinetta",
+      "title": "Martropía",
       "author": "",
       "year": 1990,
       "category": "",
       "calification": 4,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "url": "#"
     },
     {
       "title": "100 años de soledad",
@@ -102,7 +102,7 @@
       "year": 1990,
       "category": "",
       "calification": 2,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "url": "#"
     },
     {
       "title": "Sappiens",
@@ -110,7 +110,7 @@
       "year": 1990,
       "category": "",
       "calification": 5,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "url": "#"
     },
     {
       "title": "El libro de arena",
@@ -118,7 +118,7 @@
       "year": 1990,
       "category": "",
       "calification": 3,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+      "url": "#"
     }
   ]
 }

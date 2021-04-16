@@ -28,7 +28,7 @@ function SongSources(props: T_SongSources): T_ReactElement {
               <Link
                 href={source.url}
                 className="tw-flex tw-items-center tw-py-1"
-                variant={Link.variant.UNSTYLED}
+                variant={Link.variant.SIMPLE}
               >
                 <ImageComponent />
                 <div className="tw-flex-1 tw-min-w-0">

@@ -165,7 +165,7 @@ function BlogPostFooter({
         <BlogPostFooterItem
           is={Link}
           href={generateBlogPostRawContentLink()}
-          variant={Link.variant.UNSTYLED}
+          variant={Link.variant.SIMPLE}
         >
           <BlogPostFooterItem.Icon icon={Icon.icon.CODE} />
           <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
