@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Link, List, Space } from "~/components/primitive";
@@ -29,10 +29,10 @@ function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
         <PagesList pages={["chords", "strings", "virtual-reality", "styles", "wp"].sort()} />
 
         {isUserLoggedIn() && (
-          <Fragment>
+          <div className="tw-font-bold">
             <Space className="tw-mt-6 tw-mb-4" variant={Space.variant.DASHED} />
             <PagesList pages={["maria", "baria", "books", "movies", "stupid"]} />
-          </Fragment>
+          </div>
         )}
       </MainLayout>
     </Page>

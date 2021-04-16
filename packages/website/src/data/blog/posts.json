@@ -52,50 +52,6 @@
         "categories": [{ "id": 1, "value": "tech" }]
       }
     },
-    "im-tired-to-reinvent-the-wheel": {
-      "slug": "im-tired-to-reinvent-the-wheel",
-      "is_legacy": false,
-      "default_locale": "es",
-      "locales": ["es"],
-      "created_at": "2020-12-14",
-      "published_at": "",
-      "updated_at": "",
-      "config": {
-        "is_published": false,
-        "meta_no_robots": true
-      },
-      "es": {
-        "title": "Me cansé de reinventar la rueda",
-        "description": "",
-        "categories": [{ "id": 1, "value": "tech" }]
-      },
-      "en": {
-        "title": "I'm tired to reinvent the wheel",
-        "description": ""
-      }
-    },
-    "how-i-use-tailwind-css": {
-      "slug": "how-i-use-tailwind-css",
-      "is_legacy": false,
-      "default_locale": "es",
-      "locales": ["es"],
-      "created_at": "2020-12-07",
-      "published_at": "",
-      "updated_at": "",
-      "config": {
-        "is_published": false,
-        "meta_no_robots": false
-      },
-      "es": {
-        "title": "Como uso Tailwind CSS",
-        "description": "",
-        "categories": [{ "id": 1, "value": "tech" }]
-      },
-      "en": {
-        "title": "How I use Tailwind CSS",
-        "description": ""
-      }
-    },
     "thoughts-about-my-profession": {
       "slug": "thoughts-about-my-profession",
       "is_legacy": false,
@@ -132,7 +88,7 @@
       },
       "es": {
         "title": "Mi música favorita y MDX",
-        "description": "MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify.",
+        "description": "MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS",
         "categories": [{ "id": 1, "value": "tech" }]
       },
       "en": {

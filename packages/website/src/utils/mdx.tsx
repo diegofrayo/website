@@ -9,7 +9,7 @@ import {
   List,
   Space,
 } from "~/components/primitive";
-import { Code, Title, TextWithEmoji, GithubRepo } from "~/components/pages/_shared";
+import { Code, Title, TextWithEmoji, GithubRepo, Playground } from "~/components/pages/_shared";
 import { Main, Texts, Measure } from "~/components/pages/blog/components/html-semantic-tags";
 import {
   HelloWorldMDX,
@@ -60,6 +60,7 @@ export const MDXComponents = {
   LyricsAndChords,
   Main,
   Measure,
+  Playground,
   ResumeTimeline,
   Snippets,
   Solo,

@@ -1,6 +1,11 @@
 import Data from "~/data/blog/posts.json";
 import { T_Locale, T_BlogPost, T_Primitive } from "~/types";
-import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
+import { isBrowser } from "~/utils/browser";
+import {
+  isUserLoggedIn,
+  sortBy,
+  transformObjectKeysFromSnakeCaseToLowerCamelCase,
+} from "~/utils/misc";
 
 class BlogService {
   composeTitle(post: T_BlogPost, locale: T_Locale): string {
@@ -12,7 +17,7 @@ class BlogService {
       transformObjectKeysFromSnakeCaseToLowerCamelCase,
     ) as T_BlogPost[])
       .filter((post: T_BlogPost) => {
-        return post.config.isPublished === true;
+        return isBrowser() ? isUserLoggedIn() || post.config.isPublished : true;
       })
       .sort(sortBy([{ param: "publishedAt", order: "desc" }]));
 

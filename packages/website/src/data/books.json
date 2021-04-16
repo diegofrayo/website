@@ -4,7 +4,6 @@
       "title": "Diarios de una motocicleta",
       "author": "Ernesto Che Guevara",
       "year": 2003,
-      "category": "",
       "calification": 5,
       "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
     },
@@ -12,7 +11,6 @@
       "title": "Las venas abiertas",
       "author": "Eduardo Galeano",
       "year": 1971,
-      "category": "",
       "calification": 5,
       "url": "https://www.amazon.com/-/es/Eduardo-Galeano/dp/6070306880"
     },
@@ -20,23 +18,20 @@
       "title": "Van Gogh el suicidado",
       "author": "",
       "year": 1990,
-      "category": "",
       "calification": 4,
       "url": "#"
     },
     {
       "title": "El fútbol a sol y sombra",
       "author": "Eduardo Galeano",
-      "year": 1990,
-      "category": "",
+      "year": 1995,
       "calification": 4,
-      "url": "#"
+      "url": "https://www.amazon.com/El-futbol-sol-sombra-Spanish-ebook/dp/B00KWDN3MC"
     },
     {
       "title": "El principito",
       "author": "Antoine de Saint-Exupèry",
       "year": 1943,
-      "category": "",
       "calification": 5,
       "url": "https://www.amazon.com/Principito-Esencial-Spanish-Antoine-Saint-Exup%C3%A9ry-ebook/dp/B0786BHXT9"
     },
@@ -44,7 +39,6 @@
       "title": "Las 8 montañas",
       "author": "",
       "year": 1990,
-      "category": "",
       "calification": 3,
       "url": "#"
     },
@@ -52,7 +46,6 @@
       "title": "El libro negro del programador",
       "author": "",
       "year": 1990,
-      "category": "",
       "calification": 3,
       "url": "#"
     },
@@ -60,7 +53,6 @@
       "title": "Por un scrum popular",
       "author": "",
       "year": 1990,
-      "category": "",
       "calification": 3,
       "url": "#"
     },
@@ -68,7 +60,6 @@
       "title": "Scrum, el arte de hacer el doble de trabajo en la mitad del tiempo",
       "author": "",
       "year": 1990,
-      "category": "",
       "calification": 3,
       "url": "#"
     },
@@ -76,7 +67,6 @@
       "title": "Historias de developers",
       "author": "",
       "year": 1990,
-      "category": "",
       "calification": 3,
       "url": "#"
     },
@@ -84,23 +74,20 @@
       "title": "Historia del conflicto armado en Colombia",
       "author": "",
       "year": 1990,
-      "category": "",
       "calification": 3,
       "url": "#"
     },
     {
       "title": "Martropía",
-      "author": "",
-      "year": 1990,
-      "category": "",
-      "calification": 4,
-      "url": "#"
+      "author": "Juan Carlos Diez",
+      "year": 2016,
+      "calification": 5,
+      "url": "https://www.amazon.com/-/es/Juan-Carlos-Diez-ebook/dp/B07KRQBCY4"
     },
     {
       "title": "100 años de soledad",
       "author": "",
       "year": 1990,
-      "category": "",
       "calification": 2,
       "url": "#"
     },
@@ -108,7 +95,6 @@
       "title": "Sapiens",
       "author": "Yuval Noah Harari",
       "year": 2011,
-      "category": "",
       "calification": 5,
       "url": "#"
     },
@@ -116,7 +102,6 @@
       "title": "El libro de arena",
       "author": "",
       "year": 1990,
-      "category": "",
       "calification": 3,
       "url": "#"
     }

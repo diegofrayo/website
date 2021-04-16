@@ -7,6 +7,7 @@ import { useQuery } from "~/hooks";
 import BooksService from "~/services/books";
 import { T_Book, T_ReactElement } from "~/types";
 import { generateSlug } from "~/utils/strings";
+import classNames from "classnames";
 
 function BooksPage(): T_ReactElement {
   return (
@@ -34,7 +35,10 @@ function Content(): T_ReactElement {
                   key={`BooksPage-${index}`}
                   href={url}
                   variant={Link.variant.UNSTYLED}
-                  className="book tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-border-l-8 tw-border-black dark:dfr-border-color-primary tw-mx-2 sm:tw-mx-0 tw-rounded-br-md tw-rounded-tr-md tw-overflow-hidden tw-shadow-lg tw-transform tw-duration-300 hover:tw--translate-y-0.5 hover:tw-translate-x-0.5"
+                  className={classNames(
+                    "book tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 sm:tw-mx-0 tw-shadow-lg hover:tw-shadow-2xl tw-transform tw-duration-300 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 tw-border-black dark:dfr-border-color-primary",
+                    index % 2 === 0 ? "sm:tw-rotate-2" : "sm:tw--rotate-2",
+                  )}
                 >
                   <article
                     className="tw-flex tw-h-full tw-w-full"

@@ -67,7 +67,12 @@ function useController({ sources }: T_SongSources) {
       };
     }
 
-    const icon = source.includes("youtube") ? Icon.icon.YOUTUBE : Icon.icon.LINK;
+    const icon =
+      source === "youtube"
+        ? Icon.icon.YOUTUBE
+        : source === "spotify"
+        ? Icon.icon.SPOTIFY
+        : Icon.icon.LINK;
 
     return function ImageComponent() {
       return <Icon icon={icon} size="tw-w-8 tw-h-8" wrapperClassName="tw-mr-2" />;
@@ -75,7 +80,12 @@ function useController({ sources }: T_SongSources) {
   }
 
   return {
-    sources: sources.sort(sortBy([{ param: "source" }, { param: "text" }])),
+    sources: sources.sort(
+      sortBy([
+        { param: "source", order: "asc" },
+        { param: "title", order: "asc" },
+      ]),
+    ),
     getImageComponent,
   };
 }

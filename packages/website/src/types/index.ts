@@ -136,7 +136,6 @@ export type T_Movie = {
   title: string;
   id: string;
   type: "Series" | "Movie" | "Documentary" | "Documentary Series";
-  category: string;
   source: "Netflix" | "YouTube";
   calification: number;
 };
@@ -147,7 +146,6 @@ export type T_Book = {
   title: string;
   author: string;
   year: number;
-  category: string;
   calification: number;
   url: string;
 };
