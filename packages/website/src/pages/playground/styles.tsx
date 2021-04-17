@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import { useTheme } from "next-themes";
 
-import PlaygroundPageTemplate from "~/components/pages/playground/PlaygroundPageTemplate";
+import { PlaygroundPageTemplate } from "~/components/pages/playground";
 import { safeRender } from "~/hocs";
 import { T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";

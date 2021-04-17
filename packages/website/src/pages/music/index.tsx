@@ -8,7 +8,6 @@ import { ROUTES } from "~/utils/routing";
 import { useInternationalization, useQuery } from "~/hooks";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
-import { sortBy } from "~/utils/misc";
 
 function MusicPage(): T_ReactElement {
   const { SiteTexts } = useInternationalization({
@@ -44,30 +43,23 @@ function MusicPage(): T_ReactElement {
           {(data) => {
             return (
               <List>
-                {(data as T_Song[])
-                  .sort(
-                    sortBy([
-                      { param: "progress", order: "desc" },
-                      { param: "title", order: "asc" },
-                    ]),
-                  )
-                  .map((song: T_Song) => {
-                    if (!song.published) return null;
+                {(data as T_Song[]).map((song: T_Song) => {
+                  if (!song.isPublished) return null;
 
-                    return (
-                      <List.Item key={song.id}>
-                        <Link
-                          href={`${ROUTES.MUSIC}/${song.id}`}
-                          variant={Link.variant.SECONDARY}
-                          className="tw-font-bold"
-                          isNextLink
-                        >
-                          {song.title}
-                        </Link>
-                        <SongDetails song={song} SiteTexts={SiteTexts} />
-                      </List.Item>
-                    );
-                  })}
+                  return (
+                    <List.Item key={song.id}>
+                      <Link
+                        href={`${ROUTES.MUSIC}/${song.id}`}
+                        variant={Link.variant.SECONDARY}
+                        className="tw-font-bold"
+                        isNextLink
+                      >
+                        {song.title}
+                      </Link>
+                      <SongDetails song={song} SiteTexts={SiteTexts} />
+                    </List.Item>
+                  );
+                })}
               </List>
             );
           }}

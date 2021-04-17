@@ -67,10 +67,13 @@ type T_ResumeFAQItemProps = {
   children: T_ReactChildrenProp;
 };
 
-export function ResumeFAQItem({ question, children }: T_ResumeFAQItemProps): T_ReactElement {
+ResumeFAQ.Item = function ResumeFAQItem({
+  question,
+  children,
+}: T_ResumeFAQItemProps): T_ReactElement {
   return (
     <Collapsible title={question}>
       <blockquote>{children}</blockquote>
     </Collapsible>
   );
-}
+};

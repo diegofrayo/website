@@ -1,11 +1,20 @@
 import Data from "~/data/music/songs.json";
 import { T_Chord, T_Primitive, T_Song } from "~/types";
-import { sortBy } from "~/utils/misc";
+import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 import { replaceAll } from "~/utils/strings";
 
 class MusicService {
   async fetchSongsList(): Promise<T_Song[]> {
-    return Data.songs;
+    return Data.songs
+      .map((song) => {
+        return transformObjectKeysFromSnakeCaseToLowerCamelCase(song) as T_Song;
+      })
+      .sort(
+        sortBy([
+          { param: "progress", order: "desc" },
+          { param: "title", order: "asc" },
+        ]),
+      );
   }
 
   async getSong(config: Record<"id", T_Primitive>): Promise<T_Song> {

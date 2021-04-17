@@ -7,7 +7,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { Page, MainLayout } from "~/components/layout";
 import { MDXContent } from "~/components/pages/_shared";
 import { T_Locale, T_SiteTexts, T_PagesRoutes, T_ReactChildrenProp } from "~/types";
-import { getSnippetsFiles } from "~/components/pages/snippets/service";
+import { getSnippetsFiles } from "~/components/pages/snippets/utils";
 import { DYNAMIC_MAIN_PAGES, ROUTES } from "~/utils/routing";
 import {
   generateSupportedLocales,

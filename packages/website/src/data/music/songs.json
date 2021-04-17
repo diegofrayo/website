@@ -1,98 +1,74 @@
 {
   "songs": [
     {
-      "id": "bajan",
-      "title": "Bajan",
+      "id": "ando-ganas",
+      "title": "Ando ganas",
+      "artist": "Los Piojos",
+      "album": "Ay ay ay",
+      "year": 1994,
+      "progress": 5,
+      "created_at": "27/03/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/4vsmIkU6VJa9dXXqasvzx0?si=VIwbzG8QThOlLS35dhYEMQ",
+      "youtube_url": "https://youtu.be/qfLfimOh1nU",
+      "sources": [
+        {
+          "text": "Ando ganas",
+          "url": "https://acordes.lacuerda.net/piojos/ando_ganas-5.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Ando Ganas - Los Piojos - Cover",
+          "url": "https://youtu.be/ygy53pb51Nk",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["Dm7", "C", "F", "C#", "Dm"]
+    },
+    {
+      "id": "que-ves-el-cielo",
+      "title": "Que ves el cielo",
+      "artist": "Invisible",
+      "album": "El jardín de los presentes",
+      "year": 1976,
+      "progress": 5,
+      "created_at": "23/03/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/2G6XFgIRMn0ZdIBao0ggoM?si=ubF1yNbXSpyV2jv1lIZLbg",
+      "youtube_url": "https://youtu.be/OU_HZZF_bl8",
+      "sources": [
+        {
+          "text": "Que ves el cielo",
+          "url": "https://acordes.lacuerda.net/invisible/que_ves_el_cielo.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Cómo tocar Spinetta (Invisible) Que ves el cielo con Acordes Tutorial Letra Cover Pedro Aznar",
+          "url": "https://youtu.be/IX4BZ3PkbZ4",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["A", "E", "D", "Bm", "C", "Asus", "Esus", "Dsus"]
+    },
+    {
+      "id": "todas-las-hojas-son-del-viento",
+      "title": "Todas las hojas son del viento",
       "artist": "Pescado Rabioso",
       "album": "Artaud",
       "year": 1973,
-      "progress": 4,
-      "created_at": "10/01/2021",
-      "published": true,
-      "spotifyUrl": "https://open.spotify.com/track/6hmYi0E6EBEmDeztQHaH0C?si=XZhRiHNWSvO7RNDEbVYnDw",
-      "youtubeUrl": "https://youtu.be/bZcMPnY9_dg",
+      "progress": 5,
+      "created_at": "04/04/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/689lBKIELtWGHfsPWpR6rv?si=34945449901e4181",
+      "youtube_url": "https://youtu.be/b-u-bchAnW4",
       "sources": [
         {
-          "text": "Bajan",
-          "url": "https://acordes.lacuerda.net/luis_a_spinetta/bajan-2.shtml",
-          "source": "lacuerda"
-        },
-        {
-          "text": "Bajan - Luis Alberto Spinetta",
-          "url": "https://youtu.be/ru5kV95Q8WE",
-          "source": "youtube"
-        },
-        {
-          "text": "Bajan (A Capella Version) - Originally Performed By Pescado Rabioso",
-          "url": "https://open.spotify.com/track/4qcuXE1niE1zwiEPRHUskW?si=f63e06a3ab4041dd",
-          "source": "spotify"
-        }
-      ],
-      "chords": ["E", "F#m", "C#m", "?1", "B", "G#m", "C", "Am7", "G#"]
-    },
-    {
-      "id": "vasos-vacios",
-      "title": "Vasos vacíos",
-      "artist": "Los Fabulosos Cadillacs",
-      "album": "El ritmo mundial",
-      "year": 1998,
-      "progress": 4,
-      "created_at": "10/01/2021",
-      "published": true,
-      "spotifyUrl": "https://open.spotify.com/track/6G9painkkIlE8HauZrG4Vw?si=2pnzv_-6Q6K8tFe0CclMMA",
-      "youtubeUrl": "https://youtu.be/8Zdhan166z0",
-      "sources": [
-        {
-          "text": "Vasos vacíos",
-          "url": "https://acordes.lacuerda.net/fabulosos/vasos_vacios-5.shtml",
-          "source": "lacuerda"
-        },
-        {
-          "text": "Vicentico - Vasos Vacíos “Version Acústica” (Campaña Codo a Codo 2020)",
-          "url": "https://youtu.be/S2HxHyv8I1s",
-          "source": "youtube"
-        },
-        {
-          "text": "Cómo tocar en guitarra VASOS VACIOS de LOS FABULOSOS CADILLACS tutorial COMPLETO acordes fácil",
-          "url": "https://youtu.be/ZDmAf6KyYPU",
-          "source": "youtube"
-        }
-      ],
-      "chords": ["G", "Em", "C", "D"]
-    },
-    {
-      "id": "cancion-para-los-dias-de-la-vida",
-      "title": "Canción para los días de la vida",
-      "artist": "Invisible",
-      "album": "A 18' del sol",
-      "year": 1977,
-      "progress": 1,
-      "created_at": "12/01/2021",
-      "published": true,
-      "spotifyUrl": "https://open.spotify.com/track/3T5SksrlFxunlotQ0lmSwv?si=6c94d32477c64784",
-      "youtubeUrl": "https://youtu.be/q1Sr16pdF64",
-      "sources": [],
-      "chords": []
-    },
-    {
-      "id": "antes-y-despues",
-      "title": "Antes y después",
-      "artist": "Ciro y los Persas",
-      "album": "Espejos",
-      "year": 2010,
-      "progress": 4,
-      "created_at": "25/02/2021",
-      "published": true,
-      "spotifyUrl": "https://open.spotify.com/track/7dVj5UjkSMybmGDCdyVPUt?si=1DEm17xGSImA7g3M_T2XjA",
-      "youtubeUrl": "https://youtu.be/e5egGC28OcY",
-      "sources": [
-        {
-          "text": "Antes y después",
-          "url": "https://acordes.lacuerda.net/ciro_y_los_persas/antes_y_despues.shtml",
+          "text": "Todas las hojas son del viento",
+          "url": "https://acordes.lacuerda.net/luis_a_spinetta/todas_las_hojas_son_del_viento-4.shtml",
           "source": "lacuerda"
         }
       ],
-      "chords": ["E", "D", "A", "Bm", "Em", "G", "F#m", "B7", "F"]
+      "chords": ["?2", "?3", "C", "D", "G", "Em", "F7"]
     },
     {
       "id": "verano-del-92",
@@ -102,9 +78,9 @@
       "year": 1996,
       "progress": 5,
       "created_at": "23/03/2021",
-      "published": true,
-      "spotifyUrl": "https://open.spotify.com/track/1NXvuBAq48QrxRFQZVmORQ?si=k2nEIqKcRMSd6L1owJaLTw",
-      "youtubeUrl": "https://youtu.be/DaVRJca0z5c",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/1NXvuBAq48QrxRFQZVmORQ?si=k2nEIqKcRMSd6L1owJaLTw",
+      "youtube_url": "https://youtu.be/DaVRJca0z5c",
       "sources": [
         {
           "text": "Verano del 92",
@@ -130,68 +106,114 @@
       "chords": ["G", "D", "A"]
     },
     {
-      "id": "que-ves-el-cielo",
-      "title": "Que ves el cielo",
-      "artist": "Invisible",
-      "album": "El jardín de los presentes",
-      "year": 1976,
-      "progress": 5,
-      "created_at": "23/03/2021",
-      "published": true,
-      "spotifyUrl": "https://open.spotify.com/track/2G6XFgIRMn0ZdIBao0ggoM?si=ubF1yNbXSpyV2jv1lIZLbg",
-      "youtubeUrl": "https://youtu.be/OU_HZZF_bl8",
+      "id": "antes-y-despues",
+      "title": "Antes y después",
+      "artist": "Ciro y los Persas",
+      "album": "Espejos",
+      "year": 2010,
+      "progress": 4,
+      "created_at": "25/02/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/7dVj5UjkSMybmGDCdyVPUt?si=1DEm17xGSImA7g3M_T2XjA",
+      "youtube_url": "https://youtu.be/e5egGC28OcY",
       "sources": [
         {
-          "text": "Que ves el cielo",
-          "url": "https://acordes.lacuerda.net/invisible/que_ves_el_cielo.shtml",
+          "text": "Antes y después",
+          "url": "https://acordes.lacuerda.net/ciro_y_los_persas/antes_y_despues.shtml",
+          "source": "lacuerda"
+        }
+      ],
+      "chords": ["E", "D", "A", "Bm", "Em", "G", "F#m", "B7", "F"]
+    },
+    {
+      "id": "bajan",
+      "title": "Bajan",
+      "artist": "Pescado Rabioso",
+      "album": "Artaud",
+      "year": 1973,
+      "progress": 4,
+      "created_at": "10/01/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/6hmYi0E6EBEmDeztQHaH0C?si=XZhRiHNWSvO7RNDEbVYnDw",
+      "youtube_url": "https://youtu.be/bZcMPnY9_dg",
+      "sources": [
+        {
+          "text": "Bajan",
+          "url": "https://acordes.lacuerda.net/luis_a_spinetta/bajan-2.shtml",
           "source": "lacuerda"
         },
         {
-          "text": "Cómo tocar Spinetta (Invisible) Que ves el cielo con Acordes Tutorial Letra Cover Pedro Aznar",
-          "url": "https://youtu.be/IX4BZ3PkbZ4",
+          "text": "Bajan - Luis Alberto Spinetta",
+          "url": "https://youtu.be/ru5kV95Q8WE",
           "source": "youtube"
+        },
+        {
+          "text": "Bajan (A Capella Version) - Originally Performed By Pescado Rabioso",
+          "url": "https://open.spotify.com/track/4qcuXE1niE1zwiEPRHUskW?si=f63e06a3ab4041dd",
+          "source": "spotify"
         }
       ],
-      "chords": ["A", "E", "D", "Bm", "C", "Asus", "Esus", "Dsus"]
+      "chords": ["E", "F#m", "C#m", "?1", "B", "G#m", "C", "Am7", "G#"]
     },
     {
-      "id": "ando-ganas",
-      "title": "Ando ganas",
-      "artist": "Los Piojos",
-      "album": "Ay ay ay",
-      "year": 1994,
-      "progress": 5,
-      "created_at": "27/03/2021",
-      "published": true,
-      "spotifyUrl": "https://open.spotify.com/track/4vsmIkU6VJa9dXXqasvzx0?si=VIwbzG8QThOlLS35dhYEMQ",
-      "youtubeUrl": "https://youtu.be/qfLfimOh1nU",
+      "id": "un-poco-de-amor-frances",
+      "title": "Un poco de amor francés",
+      "artist": "Patricio Rey y sus Redonditos de Ricota",
+      "album": "La mosca y la sopa",
+      "year": 1991,
+      "progress": 4,
+      "created_at": "05/04/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/1MRhIdcloOD0uiiG3ybXGX?si=koAJWM5lTI6FUxKeMGXBwg",
+      "youtube_url": "https://youtu.be/LDdH3HYlGA4",
       "sources": [
         {
-          "text": "Ando ganas",
-          "url": "https://acordes.lacuerda.net/piojos/ando_ganas-5.shtml",
+          "text": "Un poco de amor francés",
+          "url": "https://acordes.lacuerda.net/patricio_rey/un_poco_de_amor_frances-5.shtml",
           "source": "lacuerda"
         },
         {
-          "text": "Ando Ganas - Los Piojos - Cover",
-          "url": "https://youtu.be/ygy53pb51Nk",
+          "text": "Cómo tocar Un poco de amor francés Redonditos de Ricota con guitarra criolla Acordes Tutorial Letra",
+          "url": "https://youtu.be/nCFafzchI7E",
+          "source": "youtube"
+        },
+        {
+          "text": "Cómo tocar UN POCO DE AMOR FRANCÉS de LOS REDONDOS en ukelele tutorial",
+          "url": "https://youtu.be/HCXF4D2hXP0",
           "source": "youtube"
         }
       ],
-      "chords": ["Dm7", "C", "F", "C#", "Dm"]
+      "chords": ["C", "Am", "Dm", "G", "F"]
     },
     {
-      "id": "par-mil",
-      "title": "Par mil",
-      "artist": "Divididos",
-      "album": "Narigón del siglo",
-      "year": 2000,
-      "progress": 0,
-      "created_at": "28/03/2021",
-      "published": true,
-      "spotifyUrl": "https://open.spotify.com/track/2Jm3VE0qGqKSxqPbbVt6oC?si=67f9f66f33294f5c",
-      "youtubeUrl": "https://youtu.be/Z_tHBX0mj1s",
-      "sources": [],
-      "chords": []
+      "id": "vasos-vacios",
+      "title": "Vasos vacíos",
+      "artist": "Los Fabulosos Cadillacs",
+      "album": "El ritmo mundial",
+      "year": 1998,
+      "progress": 4,
+      "created_at": "10/01/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/6G9painkkIlE8HauZrG4Vw?si=2pnzv_-6Q6K8tFe0CclMMA",
+      "youtube_url": "https://youtu.be/8Zdhan166z0",
+      "sources": [
+        {
+          "text": "Vasos vacíos",
+          "url": "https://acordes.lacuerda.net/fabulosos/vasos_vacios-5.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Vicentico - Vasos Vacíos “Version Acústica” (Campaña Codo a Codo 2020)",
+          "url": "https://youtu.be/S2HxHyv8I1s",
+          "source": "youtube"
+        },
+        {
+          "text": "Cómo tocar en guitarra VASOS VACIOS de LOS FABULOSOS CADILLACS tutorial COMPLETO acordes fácil",
+          "url": "https://youtu.be/ZDmAf6KyYPU",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["G", "Em", "C", "D"]
     },
     {
       "id": "veo-chiquito",
@@ -201,9 +223,9 @@
       "year": 2017,
       "progress": 4,
       "created_at": "01/04/2021",
-      "published": true,
-      "spotifyUrl": "https://open.spotify.com/track/44q38EV7P1sjbLI8RB6k9M?si=j5rL7NNRRxu5uSdeKZKs_Q",
-      "youtubeUrl": "https://youtu.be/YLG3T74iy1o",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/44q38EV7P1sjbLI8RB6k9M?si=j5rL7NNRRxu5uSdeKZKs_Q",
+      "youtube_url": "https://youtu.be/YLG3T74iy1o",
       "sources": [
         {
           "text": "Roots session - Cover Perota Chingo -Veo chiquito",
@@ -224,54 +246,32 @@
       "chords": ["C#m", "G#m", "E", "F#m"]
     },
     {
-      "id": "todas-las-hojas-son-del-viento",
-      "title": "Todas las hojas son del viento",
-      "artist": "Pescado Rabioso",
-      "album": "Artaud",
-      "year": 1973,
-      "progress": 4,
-      "created_at": "04/04/2021",
-      "published": true,
-      "spotifyUrl": "https://open.spotify.com/track/689lBKIELtWGHfsPWpR6rv?si=34945449901e4181",
-      "youtubeUrl": "https://youtu.be/b-u-bchAnW4",
-      "sources": [
-        {
-          "text": "Todas las hojas son del viento",
-          "url": "https://acordes.lacuerda.net/luis_a_spinetta/todas_las_hojas_son_del_viento-4.shtml",
-          "source": "lacuerda"
-        }
-      ],
-      "chords": ["?2", "?3", "C", "D", "G", "Em", "F7"]
+      "id": "cancion-para-los-dias-de-la-vida",
+      "title": "Canción para los días de la vida",
+      "artist": "Invisible",
+      "album": "A 18' del sol",
+      "year": 1977,
+      "progress": 1,
+      "created_at": "12/01/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/3T5SksrlFxunlotQ0lmSwv?si=6c94d32477c64784",
+      "youtube_url": "https://youtu.be/q1Sr16pdF64",
+      "sources": [],
+      "chords": []
     },
     {
-      "id": "un-poco-de-amor-frances",
-      "title": "Un poco de amor francés",
-      "artist": "Patricio Rey y sus Redonditos de Ricota",
-      "album": "La mosca y la sopa",
-      "year": 1991,
-      "progress": 4,
-      "created_at": "05/04/2021",
-      "published": true,
-      "spotifyUrl": "https://open.spotify.com/track/1MRhIdcloOD0uiiG3ybXGX?si=koAJWM5lTI6FUxKeMGXBwg",
-      "youtubeUrl": "https://youtu.be/LDdH3HYlGA4",
-      "sources": [
-        {
-          "text": "Un poco de amor francés",
-          "url": "https://acordes.lacuerda.net/patricio_rey/un_poco_de_amor_frances-5.shtml",
-          "source": "lacuerda"
-        },
-        {
-          "text": "Cómo tocar Un poco de amor francés Redonditos de Ricota con guitarra criolla Acordes Tutorial Letra",
-          "url": "https://youtu.be/nCFafzchI7E",
-          "source": "youtube"
-        },
-        {
-          "text": "Cómo tocar UN POCO DE AMOR FRANCÉS de LOS REDONDOS en ukelele tutorial",
-          "url": "https://youtu.be/HCXF4D2hXP0",
-          "source": "youtube"
-        }
-      ],
-      "chords": ["C", "Am", "Dm", "G", "F"]
+      "id": "par-mil",
+      "title": "Par mil",
+      "artist": "Divididos",
+      "album": "Narigón del siglo",
+      "year": 2000,
+      "progress": 0,
+      "created_at": "28/03/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/2Jm3VE0qGqKSxqPbbVt6oC?si=67f9f66f33294f5c",
+      "youtube_url": "https://youtu.be/Z_tHBX0mj1s",
+      "sources": [],
+      "chords": []
     }
   ],
   "chords": {

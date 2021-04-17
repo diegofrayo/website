@@ -117,8 +117,8 @@ export type T_Song = {
   progress: number;
   spotifyUrl: string;
   youtubeUrl: string;
-  created_at: string;
-  published: boolean;
+  createdAt: string;
+  isPublished: boolean;
   sources: { text: string; url: string; source: string }[];
 };
 

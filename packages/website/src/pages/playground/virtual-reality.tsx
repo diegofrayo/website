@@ -1,7 +1,7 @@
 import React from "react";
 
 import { List, Link } from "~/components/primitive";
-import PlaygroundPageTemplate from "~/components/pages/playground/PlaygroundPageTemplate";
+import { PlaygroundPageTemplate } from "~/components/pages/playground";
 import { useAssets } from "~/hooks";
 import { T_ReactElement } from "~/types";
 

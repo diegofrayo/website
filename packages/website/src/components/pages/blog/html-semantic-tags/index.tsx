@@ -4,11 +4,7 @@ import { T_ReactElement } from "~/types";
 
 export function Main(): T_ReactElement {
   return (
-    <main
-      role="main"
-      className="tw-bg-white dark:tw-bg-gray-400 tw-border"
-      style={{ minWidth: 500 }}
-    >
+    <main role="main" className="tw-bg-white dark:tw-bg-gray-400" style={{ minWidth: 500 }}>
       <header className="tw-bg-gray-200 dark:tw-bg-gray-600 tw-text-center tw-p-2">
         <h1>header</h1>
         <nav>

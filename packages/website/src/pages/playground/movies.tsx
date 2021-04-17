@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Icon, Link, Title } from "~/components/primitive";
 import { Render } from "~/components/pages/_shared";
-import PlaygroundPageTemplate from "~/components/pages/playground/PlaygroundPageTemplate";
+import { PlaygroundPageTemplate } from "~/components/pages/playground";
 import { useQuery } from "~/hooks";
 import MoviesService from "~/services/movies";
 import { T_Movie, T_ReactElement } from "~/types";
@@ -39,7 +39,7 @@ function Content(): T_ReactElement {
                   }
                   variant={Link.variant.UNSTYLED}
                   className={classNames(
-                    "movie tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 sm:tw-mx-0 tw-shadow-lg hover:tw-shadow-2xl tw-transform tw-duration-300 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0",
+                    "movie tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 sm:tw-mx-0 tw-shadow-lg hover:tw-shadow-2xl tw-transform tw-duration-300 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 hover:tw-opacity-75",
                     index % 2 === 0 ? "sm:tw-rotate-2" : "sm:tw--rotate-2",
                   )}
                 >

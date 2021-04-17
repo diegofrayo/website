@@ -31,6 +31,7 @@ function PlaygroundPageTemplate({
           },
         ]}
         title={pageName}
+        showGoToTopButton
       >
         {children}
       </MainLayout>

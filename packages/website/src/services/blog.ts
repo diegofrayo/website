@@ -8,10 +8,6 @@ import {
 } from "~/utils/misc";
 
 class BlogService {
-  composeTitle(post: T_BlogPost, locale: T_Locale): string {
-    return `${post.isLegacy ? "[LEGACY] " : ""}${post[locale]?.title}`;
-  }
-
   async fetchPosts(): Promise<T_BlogPost[]> {
     const result = (Object.values(Data.posts).map(
       transformObjectKeysFromSnakeCaseToLowerCamelCase,
@@ -33,6 +29,10 @@ class BlogService {
     }
 
     return transformObjectKeysFromSnakeCaseToLowerCamelCase(post) as T_BlogPost;
+  }
+
+  composeTitle(post: T_BlogPost, locale: T_Locale): string {
+    return `${post.isLegacy ? "[LEGACY] " : ""}${post[locale]?.title}`;
   }
 }
 

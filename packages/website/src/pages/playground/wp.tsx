@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 
 import { Icon, Link } from "~/components/primitive";
-import PlaygroundPageTemplate from "~/components/pages/playground/PlaygroundPageTemplate";
+import { PlaygroundPageTemplate } from "~/components/pages/playground";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
 import { focusElement, isSmallScreen } from "~/utils/browser";

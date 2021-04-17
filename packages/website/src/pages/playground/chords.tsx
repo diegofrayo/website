@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 
 import { Space, Title } from "~/components/primitive";
-import PlaygroundPageTemplate from "~/components/pages/playground/PlaygroundPageTemplate";
+import { PlaygroundPageTemplate } from "~/components/pages/playground";
 import { Chords } from "~/lib/chords";
 import { T_ReactElement } from "~/types";
 

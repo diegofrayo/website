@@ -10,14 +10,11 @@ import {
   Space,
 } from "~/components/primitive";
 import { Code, Title, TextWithEmoji, GithubRepo, Playground } from "~/components/pages/_shared";
-import { Main, Texts, Measure } from "~/components/pages/blog/components/html-semantic-tags";
-import {
-  HelloWorldMDX,
-  SpotifyPlaylist,
-} from "~/components/pages/blog/components/my-favorite-music-and-mdx";
-import { SongDetails, LyricsAndChords, Solo } from "~/components/pages/music";
-import { ResumeTimeline } from "~/components/pages/resume";
-import { TableOfContent, Snippets } from "~/components/pages/snippets";
+import * as HTMLSemanticTagsBlogPostComponents from "~/components/pages/blog//html-semantic-tags";
+import * as MyFavoriteMusicAndMDXBlogPostComponents from "~/components/pages/blog//my-favorite-music-and-mdx";
+import * as MusicComponents from "~/components/pages/music";
+import * as ResumeComponents from "~/components/pages/resume";
+import * as SnippetsComponents from "~/components/pages/snippets";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { WEBSITE_METADATA, GITHUB_DATA } from "~/utils/constants";
 import { ROUTES } from "~/utils/routing";
@@ -48,6 +45,7 @@ export const MDXComponents = {
     return <Space variant={Space.variant.DASHED} />;
   },
 
+  // Primitive components
   Code,
   Collapsible,
   Image,
@@ -55,20 +53,17 @@ export const MDXComponents = {
   List,
   Space,
 
+  // Shared components
   GithubRepo,
-  HelloWorldMDX,
-  LyricsAndChords,
-  Main,
-  Measure,
   Playground,
-  ResumeTimeline,
-  Snippets,
-  Solo,
-  SongDetails,
-  SpotifyPlaylist,
-  TableOfContent,
   TextWithEmoji,
-  Texts,
+
+  // Pages components
+  ...HTMLSemanticTagsBlogPostComponents,
+  ...MyFavoriteMusicAndMDXBlogPostComponents,
+  ...MusicComponents,
+  ...ResumeComponents,
+  ...SnippetsComponents,
 };
 
 export const MDXScope = {
