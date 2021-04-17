@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Link, Icon, Title as TitlePrimitive } from "~/components/primitive";
 import {
-  T_HTML_Attributes,
+  T_HTMLAttributes,
   T_Object,
   T_ReactChildrenProp,
   T_ReactElement,
@@ -14,7 +14,7 @@ export { default as Code } from "./Code";
 export { default as Playground } from "./Playground";
 export { default as MDXContent } from "./MDXContent";
 
-export function Emoji({ children, className }: T_HTML_Attributes["span"]): T_ReactElement {
+export function Emoji({ children, className }: T_HTMLAttributes["span"]): T_ReactElement {
   return <span className={classNames("emoji", className)}>{children}</span>;
 }
 

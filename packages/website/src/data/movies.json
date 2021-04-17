@@ -1,221 +1,219 @@
-{
-  "movies": [
-    {
-      "title": "Lupin",
-      "id": "80994082",
-      "type": "Series",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "Seven years in Tibet",
-      "id": "1179053",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "Vikings",
-      "id": "70301870",
-      "type": "Series",
-      "source": "Netflix",
-      "calification": 5
-    },
-    {
-      "title": "Money heist",
-      "id": "80192098",
-      "type": "Series",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "Bolivar",
-      "id": "80220422",
-      "type": "Series",
-      "source": "Netflix",
-      "calification": 4
-    },
-    {
-      "title": "Wild district",
-      "id": "80230435",
-      "type": "Series",
-      "source": "Netflix",
-      "calification": 5
-    },
-    {
-      "title": "The great heist",
-      "id": "81137088",
-      "type": "Series",
-      "source": "Netflix",
-      "calification": 4
-    },
-    {
-      "title": "The queen's gambit",
-      "id": "80234304",
-      "type": "Series",
-      "source": "Netflix",
-      "calification": 4
-    },
-    {
-      "title": "Nobody sleeps in the woods tonight",
-      "id": "81149049",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "Unorthodox",
-      "id": "81019069",
-      "type": "Series",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "Scarface",
-      "id": "60029681",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "A road to well being",
-      "id": "81332418",
-      "type": "Documentary",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "Rose island",
-      "id": "81116948",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "Barbarians",
-      "id": "81024039",
-      "type": "Series",
-      "source": "Netflix",
-      "calification": 4
-    },
-    {
-      "title": "Miracle in cell NO.7",
-      "id": "81239779",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "Magical andes",
-      "id": "81154549",
-      "type": "Documentary Series",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "The pianist",
-      "id": "60025061",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 4
-    },
-    {
-      "title": "Expedition hapiness",
-      "id": "80224476",
-      "type": "Documentary",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "Diarios de motocicleta",
-      "id": "JzDdKYyz5zY",
-      "type": "Movie",
-      "source": "YouTube",
-      "calification": 5
-    },
-    {
-      "title": "Dark tourist",
-      "id": "80189791",
-      "type": "Documentary Series",
-      "source": "Netflix",
-      "calification": 4
-    },
-    {
-      "title": "Alma de heroe",
-      "id": "81144193",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "Street food Latin America",
-      "id": "81249660",
-      "type": "Documentary Series",
-      "source": "Netflix",
-      "calification": 4
-    },
-    {
-      "title": "Monos",
-      "id": "81047842",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "Who killed Sara?",
-      "id": "81166747",
-      "type": "Series",
-      "source": "Netflix",
-      "calification": 4
-    },
-    {
-      "title": "Apache",
-      "id": "81106517",
-      "type": "Series",
-      "source": "Netflix",
-      "calification": 4
-    },
-    {
-      "title": "The distinguished citizen",
-      "id": "80141891",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 4
-    },
-    {
-      "title": "The theory of Everything",
-      "id": "80000644",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 4
-    },
-    {
-      "title": "Slumgdog millionaire",
-      "id": "70095140",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "The impossible",
-      "id": "70251895",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "Porno para principiantes",
-      "id": "81211991",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 3
-    },
-    {
-      "title": "World war Z",
-      "id": "70262639",
-      "type": "Movie",
-      "source": "Netflix",
-      "calification": 4
-    }
-  ]
-}
+[
+  {
+    "id": "JzDdKYyz5zY",
+    "title": "Diarios de motocicleta",
+    "type": "Movie",
+    "source": "YouTube",
+    "calification": 5
+  },
+  {
+    "id": "70301870",
+    "title": "Vikings",
+    "type": "Series",
+    "source": "Netflix",
+    "calification": 5
+  },
+  {
+    "id": "80230435",
+    "title": "Wild district",
+    "type": "Series",
+    "source": "Netflix",
+    "calification": 5
+  },
+  {
+    "id": "81106517",
+    "title": "Apache",
+    "type": "Series",
+    "source": "Netflix",
+    "calification": 4
+  },
+  {
+    "id": "81024039",
+    "title": "Barbarians",
+    "type": "Series",
+    "source": "Netflix",
+    "calification": 4
+  },
+  {
+    "id": "80220422",
+    "title": "Bolivar",
+    "type": "Series",
+    "source": "Netflix",
+    "calification": 4
+  },
+  {
+    "id": "80189791",
+    "title": "Dark tourist",
+    "type": "Documentary Series",
+    "source": "Netflix",
+    "calification": 4
+  },
+  {
+    "id": "81249660",
+    "title": "Street food Latin America",
+    "type": "Documentary Series",
+    "source": "Netflix",
+    "calification": 4
+  },
+  {
+    "id": "80141891",
+    "title": "The distinguished citizen",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 4
+  },
+  {
+    "id": "81137088",
+    "title": "The great heist",
+    "type": "Series",
+    "source": "Netflix",
+    "calification": 4
+  },
+  {
+    "id": "60025061",
+    "title": "The pianist",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 4
+  },
+  {
+    "id": "80234304",
+    "title": "The queen's gambit",
+    "type": "Series",
+    "source": "Netflix",
+    "calification": 4
+  },
+  {
+    "id": "80000644",
+    "title": "The theory of Everything",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 4
+  },
+  {
+    "id": "81166747",
+    "title": "Who killed Sara?",
+    "type": "Series",
+    "source": "Netflix",
+    "calification": 4
+  },
+  {
+    "id": "70262639",
+    "title": "World war Z",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 4
+  },
+  {
+    "id": "81332418",
+    "title": "A road to well being",
+    "type": "Documentary",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "81144193",
+    "title": "Alma de heroe",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "80224476",
+    "title": "Expedition hapiness",
+    "type": "Documentary",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "80994082",
+    "title": "Lupin",
+    "type": "Series",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "81154549",
+    "title": "Magical andes",
+    "type": "Documentary Series",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "81239779",
+    "title": "Miracle in cell NO.7",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "80192098",
+    "title": "Money heist",
+    "type": "Series",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "81047842",
+    "title": "Monos",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "81149049",
+    "title": "Nobody sleeps in the woods tonight",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "81211991",
+    "title": "Porno para principiantes",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "81116948",
+    "title": "Rose island",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "60029681",
+    "title": "Scarface",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "1179053",
+    "title": "Seven years in Tibet",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "70095140",
+    "title": "Slumgdog millionaire",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "70251895",
+    "title": "The impossible",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 3
+  },
+  {
+    "id": "81019069",
+    "title": "Unorthodox",
+    "type": "Series",
+    "source": "Netflix",
+    "calification": 3
+  }
+]

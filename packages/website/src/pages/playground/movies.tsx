@@ -78,7 +78,7 @@ function Content(): T_ReactElement {
                         >
                           {title}
                         </Title>
-                        <p className="tw-text-sm tw-font-bold tw-leading-none tw-text-gray-700 tw-lowercase">
+                        <p className="tw-text-sm tw-font-bold tw-leading-none tw-text-gray-700 tw-lowercase tw-italic">
                           {type}
                         </p>
                       </div>

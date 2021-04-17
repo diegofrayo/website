@@ -6,8 +6,6 @@ import PlaygroundPageTemplate from "~/components/pages/playground/PlaygroundPage
 import { useQuery } from "~/hooks";
 import BooksService from "~/services/books";
 import { T_Book, T_ReactElement } from "~/types";
-import { generateSlug } from "~/utils/strings";
-import classNames from "classnames";
 
 function BooksPage(): T_ReactElement {
   return (
@@ -29,23 +27,18 @@ function Content(): T_ReactElement {
       {(books: T_Book[]) => {
         return (
           <div className="tw-flex tw-justify-center sm:tw-justify-between tw-flex-wrap">
-            {books.map(({ title, calification, author, year, url }, index) => {
+            {books.map(({ id, title, calification, author, year, url }, index) => {
               return (
                 <Link
                   key={`BooksPage-${index}`}
                   href={url}
                   variant={Link.variant.UNSTYLED}
-                  className={classNames(
-                    "book tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 sm:tw-mx-0 tw-shadow-lg hover:tw-shadow-2xl tw-transform tw-duration-300 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 tw-border-black dark:dfr-border-color-primary",
-                    index % 2 === 0 ? "sm:tw-rotate-2" : "sm:tw--rotate-2",
-                  )}
+                  className="book tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 sm:tw-mx-0 tw-shadow-lg hover:tw-shadow-2xl tw-transform tw-duration-300 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 tw-border-black dark:dfr-border-color-primary sm:tw--rotate-1"
                 >
                   <article
                     className="tw-flex tw-h-full tw-w-full"
                     style={{
-                      backgroundImage: `url(/static/pages/playground/books/${generateSlug(
-                        title,
-                      )}.jpg)`,
+                      backgroundImage: `url(/static/pages/playground/books/${id}.jpg)`,
                       backgroundSize: "100% 100%",
                       backgroundRepeat: "no-repeat",
                     }}
@@ -64,7 +57,7 @@ function Content(): T_ReactElement {
                       />
                     </span>
 
-                    <div className="book__details tw-flex tw-self-end tw-flex-col tw-w-full tw-items-stretch tw-p-2">
+                    <div className="book__details tw-flex tw-self-end tw-flex-col tw-w-full tw-items-stretch tw-p-2 tw-rounded-tr-lg">
                       <Title
                         is="h1"
                         variant={Title.variant.UNSTYLED}
@@ -72,10 +65,10 @@ function Content(): T_ReactElement {
                       >
                         {title}
                       </Title>
-                      <p className="tw-text-sm tw-font-bold tw-leading-none tw-text-gray-700 tw-capitalize tw-mb-2">
+                      <p className="tw-text-sm tw-italic tw-leading-none tw-text-gray-700 tw-capitalize tw-mb-2 tw-font-bold">
                         {author || "Author"}
                       </p>
-                      <p className="tw-text-sm tw-font-bold tw-leading-none tw-text-right tw-text-black">
+                      <p className="tw-text-xs tw-font-bold tw-leading-none tw-text-right tw-text-black">
                         <Emoji className="tw-mr-1">🗓</Emoji>
                         <span>{year}</span>
                       </p>
@@ -87,7 +80,7 @@ function Content(): T_ReactElement {
 
             <style jsx>{`
               .book__details {
-                background-color: rgba(255, 255, 255, 0.7);
+                background-color: rgba(255, 255, 255, 0.8);
               }
             `}</style>
           </div>

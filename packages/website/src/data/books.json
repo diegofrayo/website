@@ -1,109 +1,122 @@
-{
-  "books": [
-    {
-      "title": "Diarios de una motocicleta",
-      "author": "Ernesto Che Guevara",
-      "year": 2003,
-      "calification": 5,
-      "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
-    },
-    {
-      "title": "Las venas abiertas",
-      "author": "Eduardo Galeano",
-      "year": 1971,
-      "calification": 5,
-      "url": "https://www.amazon.com/-/es/Eduardo-Galeano/dp/6070306880"
-    },
-    {
-      "title": "Van Gogh el suicidado",
-      "author": "",
-      "year": 1990,
-      "calification": 4,
-      "url": "#"
-    },
-    {
-      "title": "El fútbol a sol y sombra",
-      "author": "Eduardo Galeano",
-      "year": 1995,
-      "calification": 4,
-      "url": "https://www.amazon.com/El-futbol-sol-sombra-Spanish-ebook/dp/B00KWDN3MC"
-    },
-    {
-      "title": "El principito",
-      "author": "Antoine de Saint-Exupèry",
-      "year": 1943,
-      "calification": 5,
-      "url": "https://www.amazon.com/Principito-Esencial-Spanish-Antoine-Saint-Exup%C3%A9ry-ebook/dp/B0786BHXT9"
-    },
-    {
-      "title": "Las 8 montañas",
-      "author": "",
-      "year": 1990,
-      "calification": 3,
-      "url": "#"
-    },
-    {
-      "title": "El libro negro del programador",
-      "author": "",
-      "year": 1990,
-      "calification": 3,
-      "url": "#"
-    },
-    {
-      "title": "Por un scrum popular",
-      "author": "",
-      "year": 1990,
-      "calification": 3,
-      "url": "#"
-    },
-    {
-      "title": "Scrum, el arte de hacer el doble de trabajo en la mitad del tiempo",
-      "author": "",
-      "year": 1990,
-      "calification": 3,
-      "url": "#"
-    },
-    {
-      "title": "Historias de developers",
-      "author": "",
-      "year": 1990,
-      "calification": 3,
-      "url": "#"
-    },
-    {
-      "title": "Historia del conflicto armado en Colombia",
-      "author": "",
-      "year": 1990,
-      "calification": 3,
-      "url": "#"
-    },
-    {
-      "title": "Martropía",
-      "author": "Juan Carlos Diez",
-      "year": 2016,
-      "calification": 5,
-      "url": "https://www.amazon.com/-/es/Juan-Carlos-Diez-ebook/dp/B07KRQBCY4"
-    },
-    {
-      "title": "100 años de soledad",
-      "author": "",
-      "year": 1990,
-      "calification": 2,
-      "url": "#"
-    },
-    {
-      "title": "Sapiens",
-      "author": "Yuval Noah Harari",
-      "year": 2011,
-      "calification": 5,
-      "url": "#"
-    },
-    {
-      "title": "El libro de arena",
-      "author": "",
-      "year": 1990,
-      "calification": 3,
-      "url": "#"
-    }
-  ]
-}
+[
+  {
+    "id": "diarios-de-una-motocicleta",
+    "title": "Diarios de una motocicleta",
+    "author": "Ernesto Che Guevara",
+    "year": 2003,
+    "calification": 5,
+    "url": "https://www.amazon.com/Motorcycle-Diaries-Notes-American-Journey/dp/1876175702"
+  },
+  {
+    "id": "el-principito",
+    "title": "El principito",
+    "author": "Antoine de Saint-Exupèry",
+    "year": 1943,
+    "calification": 5,
+    "url": "https://www.amazon.com/Principito-Esencial-Spanish-Antoine-Saint-Exup%C3%A9ry-ebook/dp/B0786BHXT9"
+  },
+  {
+    "id": "las-venas-abiertas",
+    "title": "Las venas abiertas",
+    "author": "Eduardo Galeano",
+    "year": 1971,
+    "calification": 5,
+    "url": "https://www.amazon.com/-/es/Eduardo-Galeano/dp/6070306880"
+  },
+  {
+    "id": "martropia",
+    "title": "Martropía",
+    "author": "Juan Carlos Diez",
+    "year": 2016,
+    "calification": 5,
+    "url": "https://www.amazon.com/-/es/Juan-Carlos-Diez-ebook/dp/B07KRQBCY4"
+  },
+  {
+    "id": "sapiens",
+    "title": "Sapiens",
+    "author": "Yuval Noah Harari",
+    "year": 2011,
+    "calification": 5,
+    "url": "https://www.amazon.com/-/es/Yuval-Noah-Harari-ebook/dp/B00ICN066A"
+  },
+  {
+    "id": "el-futbol-a-sol-y-sombra",
+    "title": "El fútbol a sol y sombra",
+    "author": "Eduardo Galeano",
+    "year": 1995,
+    "calification": 4,
+    "url": "https://www.amazon.com/El-futbol-sol-sombra-Spanish-ebook/dp/B00KWDN3MC"
+  },
+  {
+    "id": "van-gogh-el-suicidado-por-la-sociedad",
+    "title": "Van Gogh el suicidado por la sociedad",
+    "author": "Antonin Artaud",
+    "year": 1947,
+    "calification": 4,
+    "url": "https://www.amazon.es/suicidado-sociedad-acabar-juicio-Cr%C3%ADtica/dp/8424502302"
+  },
+  {
+    "id": "el-libro-de-arena",
+    "title": "El libro de arena",
+    "author": "Jorge Luis Borges",
+    "year": 1975,
+    "calification": 3,
+    "url": "https://www.amazon.com/-/es/Jorge-Luis-Borges/dp/9875666718"
+  },
+  {
+    "id": "el-libro-negro-del-programador",
+    "title": "El libro negro del programador",
+    "author": "Rafael Gómez Blanes",
+    "year": 2014,
+    "calification": 3,
+    "url": "https://www.amazon.com/-/es/Rafael-Gómez-Blanes-ebook/dp/B00J5RHHNW"
+  },
+  {
+    "id": "50-anos-de-conflicto-armado-en-colombia",
+    "title": "50 años de conflicto armado en Colombia",
+    "author": "Alfredo Molano",
+    "year": 2016,
+    "calification": 3,
+    "url": "https://www.elespectador.com/noticias/actualidad/50-anos-de-conflicto-armado-en-colombia-por-alfredo-molano"
+  },
+  {
+    "id": "historias-de-developers",
+    "title": "Historias de developers",
+    "author": "Alberto de Vega Luna",
+    "year": 2013,
+    "calification": 3,
+    "url": "https://www.amazon.com/-/es/Alberto-Vega-Luna-ebook/dp/B00EG015NQ"
+  },
+  {
+    "id": "las-8-montanas",
+    "title": "Las 8 montañas",
+    "author": "Paolo Cognetti",
+    "year": 2016,
+    "calification": 3,
+    "url": "https://www.amazon.com/-/es/Paolo-Cognetti/dp/8439734123"
+  },
+  {
+    "id": "por-un-scrum-popular",
+    "title": "Por un scrum popular",
+    "author": "Tobias Mayer",
+    "year": 2014,
+    "calification": 3,
+    "url": "https://www.amazon.com/-/es/Tobias-Mayer-ebook/dp/B00N56XM8I"
+  },
+  {
+    "id": "scrum-el-arte-de-hacer-el-doble-de-trabajo-en-la-mitad-de-tiempo",
+    "title": "Scrum: El arte de hacer el doble de trabajo en la mitad de tiempo",
+    "author": "J.J. Sutherland",
+    "year": 2016,
+    "calification": 3,
+    "url": "https://www.amazon.com/-/es/Jeff-Sutherland/dp/6077355593"
+  },
+  {
+    "id": "100-anos-de-soledad",
+    "title": "100 años de soledad",
+    "author": "Gabriel García Márquez",
+    "year": 1967,
+    "calification": 3,
+    "url": "https://www.casadellibro.com/libro-cien-anos-de-soledad/9788497592208/873717"
+  }
+]

@@ -3,7 +3,7 @@ import classNames from "classnames";
 import NextLink from "next/link";
 
 import twcss from "~/lib/twcss";
-import { T_Locale, T_ReactChildrenProp, T_ReactElement, T_HTML_Attributes } from "~/types";
+import { T_Locale, T_ReactChildrenProp, T_ReactElement, T_HTMLAttributes } from "~/types";
 import { getScrollPosition, isSmallScreen, setScrollPosition } from "~/utils/browser";
 
 enum E_Variants {
@@ -13,7 +13,7 @@ enum E_Variants {
   UNSTYLED = "UNSTYLED",
 }
 
-type T_LinkProps = T_HTML_Attributes["a"] & {
+type T_LinkProps = T_HTMLAttributes["a"] & {
   children: T_ReactChildrenProp;
   disabled?: boolean;
   external?: boolean;

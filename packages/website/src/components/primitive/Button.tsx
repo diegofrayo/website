@@ -1,9 +1,9 @@
 import React from "react";
 import classNames from "classnames";
 
-import { T_HTML_Attributes, T_ReactElement } from "~/types";
+import { T_HTMLAttributes, T_ReactElement } from "~/types";
 
-type T_ButtonProps = T_HTML_Attributes["button"];
+type T_ButtonProps = T_HTMLAttributes["button"];
 
 function Button({
   children,

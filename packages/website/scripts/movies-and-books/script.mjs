@@ -2,16 +2,24 @@ import sharp from "sharp";
 import fs from "fs";
 import path from "path";
 
-fs.readdirSync(path.resolve(process.cwd(), "scripts/movies-and-books/movies")).forEach((file) => {
-  sharp(path.resolve(process.cwd(), "scripts/movies-and-books/movies", file))
-    .resize(192, 256)
-    .toFile(path.resolve(process.cwd(), "public/static/pages/playground/movies", file));
+resizeImages({
+  sourceDir: "scripts/movies-and-books/movies",
+  outputDir: "public/static/pages/playground/movies",
 });
 
-fs.readdirSync(path.resolve(process.cwd(), "scripts/movies-and-books/books")).forEach((file) => {
-  sharp(path.resolve(process.cwd(), "scripts/movies-and-books/books", file))
-    .resize(192, 256)
-    .toFile(path.resolve(process.cwd(), "public/static/pages/playground/books", file));
+resizeImages({
+  sourceDir: "scripts/movies-and-books/books",
+  outputDir: "public/static/pages/playground/books",
 });
 
 console.log("Movies and books images resized");
+
+// --- Utils ---
+
+function resizeImages({ sourceDir, outputDir }) {
+  fs.readdirSync(path.resolve(process.cwd(), sourceDir)).forEach((file) => {
+    sharp(path.resolve(process.cwd(), sourceDir, file))
+      .resize({ width: 184, height: 256, fit: sharp.fit.fill })
+      .toFile(path.resolve(process.cwd(), outputDir, file));
+  });
+}

@@ -4,7 +4,7 @@ import { sortBy } from "~/utils/misc";
 
 class BooksService {
   async fetchBooks(): Promise<T_Book[]> {
-    return Data.books.sort(
+    return Data.sort(
       sortBy([
         { param: "calification", order: "desc" },
         { param: "title", order: "asc" },

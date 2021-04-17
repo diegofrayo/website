@@ -30,14 +30,12 @@ class MusicService {
           .filter(Boolean)
           .sort(sortBy(undefined, "desc"))
           .forEach((chord, _, array) => {
-            if (array.length === 1) {
-              transformedLine = replaceAll(transformedLine, chord, this.insertChord(chord));
+            if (chord.includes("|")) {
+              chord.split("|").forEach((chordItem) => {
+                transformedLine = this.transformLine({ transformedLine, chord: chordItem, array });
+              });
             } else {
-              transformedLine = replaceAll(
-                replaceAll(transformedLine, `${chord} `, `${this.insertChord(chord)} `),
-                ` ${chord}`,
-                ` ${this.insertChord(chord)}`,
-              );
+              transformedLine = this.transformLine({ transformedLine, chord, array });
             }
           });
 
@@ -58,6 +56,24 @@ class MusicService {
       chords: chordData.chords,
       stringsToSkip: chordData.strings_to_skip,
     };
+  }
+
+  private transformLine({ transformedLine, chord, array }) {
+    if (array.length === 1) {
+      return replaceAll(transformedLine, chord, this.insertChord(chord));
+    } else {
+      const chordHTML = this.insertChord(chord);
+
+      return replaceAll(
+        replaceAll(
+          replaceAll(transformedLine, `${chord} `, `${chordHTML} `),
+          ` ${chord}`,
+          ` ${chordHTML}`,
+        ),
+        `${chord}|`,
+        `${chordHTML}|`,
+      );
+    }
   }
 
   private insertChord(chord: string): string {

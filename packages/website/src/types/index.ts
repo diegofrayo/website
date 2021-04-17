@@ -1,12 +1,10 @@
 import React, { CSSProperties, EffectCallback, RefObject } from "react";
 
-// --- Primitives ---
+// --- Own ---
 
 export type T_Primitive = string | number | boolean | undefined | null;
 
-export type T_ObjectWithPrimitives = T_Object<T_Primitive>;
-
-export type T_Object<T = any> = Record<string, T>;
+export type T_Object<Value = any> = Record<string, Value>;
 
 export type T_Function = () => void;
 
@@ -16,23 +14,23 @@ export type T_ReactStylesProp = CSSProperties;
 
 export type T_ReactElement = JSX.Element | null;
 
-export type T_ReactFunctionComponent<P = T_Object> = React.FunctionComponent<P>;
+export type T_ReactFunctionComponent<Props = T_Object> = React.FunctionComponent<Props>;
 
-export type T_ReactRefObject<Type> = RefObject<Type>;
+export type T_ReactRefObject<RefType> = RefObject<RefType>;
 
 export type T_ReactForwardedRef = React.ForwardedRef<unknown>;
 
 export type T_ReactEffectCallback = EffectCallback;
 
-export type T_HTML_Attributes = JSX.IntrinsicElements;
+export type T_HTMLAttributes = JSX.IntrinsicElements;
 
-export type T_OnClickEvent<P = HTMLButtonElement> = React.MouseEvent<P>;
+export type T_OnClickEvent<HTMLElement = HTMLButtonElement> = React.MouseEvent<HTMLElement>;
 
-export type T_OnChangeEvent<P> = React.ChangeEventHandler<P>;
+export type T_OnChangeEvent<HTMLElement> = React.ChangeEventHandler<HTMLElement>;
 
 export type T_OnScrollEvent = React.UIEvent<HTMLElement>;
 
-export type T_FormEvent<P> = React.FormEvent<P>;
+export type T_FormEvent<HTMLElement> = React.FormEvent<HTMLElement>;
 
 // --- Internationalization ---
 
@@ -133,8 +131,8 @@ export type T_Chord = {
 // --- Movies ---
 
 export type T_Movie = {
-  title: string;
   id: string;
+  title: string;
   type: "Series" | "Movie" | "Documentary" | "Documentary Series";
   source: "Netflix" | "YouTube";
   calification: number;
@@ -143,6 +141,7 @@ export type T_Movie = {
 // --- Books ---
 
 export type T_Book = {
+  id: string;
   title: string;
   author: string;
   year: number;

@@ -1,9 +1,9 @@
 import React from "react";
 import classNames from "classnames";
 
-import { T_HTML_Attributes, T_ReactElement } from "~/types";
+import { T_HTMLAttributes, T_ReactElement } from "~/types";
 
-function List({ children, className = "" }: T_HTML_Attributes["ul"]): T_ReactElement {
+function List({ children, className = "" }: T_HTMLAttributes["ul"]): T_ReactElement {
   return (
     <ul className={classNames("root tw-list-inside tw-list-none", className)}>
       {children}
@@ -46,7 +46,7 @@ List.Item = function ListItem({
   children,
   className = "",
   ...rest
-}: T_HTML_Attributes["li"]): T_ReactElement {
+}: T_HTMLAttributes["li"]): T_ReactElement {
   return (
     <li className={className} {...rest}>
       {children}

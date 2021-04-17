@@ -4,7 +4,7 @@ import { sortBy } from "~/utils/misc";
 
 class MoviesService {
   async fetchMovies(): Promise<T_Movie[]> {
-    return Data.movies.sort(
+    return Data.sort(
       sortBy([
         { param: "calification", order: "desc" },
         { param: "title", order: "asc" },

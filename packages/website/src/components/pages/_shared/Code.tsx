@@ -21,7 +21,7 @@ function Code({ language, fileName, code, sourceURL }: T_CodeProps): T_ReactElem
 
   return (
     <div
-      className="root tw-rounded-md tw-border-t tw-border-gray-100 dark:tw-border-0 dark:tw-bg-gray-700 tw-shadow-lg"
+      className="root dfr-Code tw-rounded-md tw-border-t tw-border-gray-100 dark:tw-border-0 dark:tw-bg-gray-700 tw-shadow-lg"
       data-markdown-block
     >
       <div className="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono">
@@ -87,7 +87,7 @@ function Code({ language, fileName, code, sourceURL }: T_CodeProps): T_ReactElem
       </div>
 
       <style jsx>{`
-        .root :global(.dfr-Code) {
+        .root :global(.dfr-CodePrimitive) {
           border-radius: 0;
         }
       `}</style>

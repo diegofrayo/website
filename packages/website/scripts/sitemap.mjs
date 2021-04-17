@@ -12,11 +12,9 @@ const { pages } = PAGES_TEXTS;
 const { website: WEBSITE_METADATA } = METADATA;
 const { posts } = BLOG_POSTS;
 
-dotenv.config({ path: ".env" });
-
 const pagesToIgnore = Object.entries(pages)
   .map(([slug, page]) => {
-    return page.config && page.config.meta_no_robots ? slug : "";
+    return page.config.meta_no_robots === true ? slug : "";
   })
   .filter(Boolean);
 
@@ -24,12 +22,11 @@ const generator = SitemapGenerator(WEBSITE_METADATA.url, {
   stripQuerystring: false,
   filepath: "./public/sitemap.xml",
   ignore: (url) => {
-    return pagesToIgnore.filter((page) => url.includes(page)).length > 0;
+    return pagesToIgnore.find((ignoredPage) => url.includes(ignoredPage)) !== undefined;
   },
 });
 
-generator.start();
-
+// Add a URL to crawler's queue. Useful to help crawler fetch pages it can't find itself.
 Object.values(posts).forEach((post) => {
   if (post.config.is_published === false || post.config.meta_no_robots === true) {
     return;
@@ -38,6 +35,8 @@ Object.values(posts).forEach((post) => {
   const url = `${WEBSITE_METADATA.url}/blog/${post.slug}`;
   generator.queueURL(url);
 });
+
+generator.start();
 
 generator.on("done", () => {
   try {

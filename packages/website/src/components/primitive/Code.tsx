@@ -1,14 +1,14 @@
 import React from "react";
 import classNames from "classnames";
 
-import { T_HTML_Attributes, T_ReactElement } from "~/types";
+import { T_HTMLAttributes, T_ReactElement } from "~/types";
 
 enum E_Variants {
   MULTILINE = "MULTILINE",
   INLINE = "INLINE",
 }
 
-type T_CodeProps = T_HTML_Attributes["pre"] & {
+type T_CodeProps = T_HTMLAttributes["pre"] & {
   variant?: E_Variants;
 };
 
@@ -20,7 +20,7 @@ function Code({
 }: T_CodeProps): T_ReactElement {
   if (variant === E_Variants.INLINE) {
     return (
-      <code className="dfr-Code tw-text-base tw-italic tw-text-red-700 dark:tw-text-red-400">
+      <code className="dfr-CodePrimitive tw-text-base tw-italic tw-text-red-700 dark:tw-text-red-400">
         {children}
 
         <style jsx>{`
@@ -36,7 +36,7 @@ function Code({
   return (
     <pre
       className={classNames(
-        "dfr-Code tw-bg-gray-800 dark:tw-bg-gray-700 tw-block tw-p-4 tw-text-base tw-text-gray-300 tw-rounded-md tw-max-w-full tw-overflow-x-auto",
+        "dfr-CodePrimitive tw-bg-gray-800 dark:tw-bg-gray-700 tw-block tw-p-4 tw-text-base tw-text-gray-300 tw-rounded-md tw-max-w-full tw-overflow-x-auto",
         className,
       )}
       {...rest}

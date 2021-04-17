@@ -14,17 +14,18 @@ function Playground({ Component, code, language }: T_PlaygroundProps): T_ReactEl
   const { isSourceCodeTab, isOutputTab, setSourceCodeTab, setOutputTab } = useController();
 
   return (
-    <div className="root tw-flex tw-flex-col" style={{ minHeight: 200 }} data-markdown-block>
-      <div
-        className="tw-flex-1 tw-p-2 tw-overflow-auto tw-border-t tw-border-l tw-border-r dfr-border-color-primary dark:dfr-border-color-primary"
-        style={{ maxHeight: 300 }}
-      >
+    <div
+      className="root tw-flex tw-flex-col tw-p-0.5 tw-border-4 tw-border-black dark:tw-border-white"
+      style={{ minHeight: 200 }}
+      data-markdown-block
+    >
+      <div className="tw-flex-1 tw-overflow-auto" style={{ maxHeight: 300 }}>
         {isSourceCodeTab ? <Code language={language} code={code} /> : <Component />}
       </div>
       <div className="tw-flex tw-flex-no-wrap tw-text-sm">
         <Button
           className={classNames(
-            "tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-flex-1 tw-text-center tw-cursor-pointer tw-p-1",
+            "tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2",
             isSourceCodeTab && "tw-font-bold dfr-bg-secondary dark:dfr-bg-secondary",
           )}
           onClick={setSourceCodeTab}
@@ -33,7 +34,7 @@ function Playground({ Component, code, language }: T_PlaygroundProps): T_ReactEl
         </Button>
         <Button
           className={classNames(
-            "tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-flex-1 tw-text-center tw-cursor-pointer tw-p-1",
+            "tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2",
             isOutputTab && "tw-font-bold dfr-bg-secondary dark:dfr-bg-secondary",
           )}
           onClick={setOutputTab}
@@ -44,7 +45,9 @@ function Playground({ Component, code, language }: T_PlaygroundProps): T_ReactEl
 
       <style jsx>{`
         .root :global(.dfr-Code) {
-          border: 0;
+          box-shadow: none;
+          height: 100%;
+          margin: 0;
         }
       `}</style>
     </div>
