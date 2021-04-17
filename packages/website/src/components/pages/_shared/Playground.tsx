@@ -20,7 +20,11 @@ function Playground({ Component, code, language }: T_PlaygroundProps): T_ReactEl
       data-markdown-block
     >
       <div className="tw-flex-1 tw-overflow-auto" style={{ maxHeight: 300 }}>
-        {isSourceCodeTab ? <Code language={language} code={code} /> : <Component />}
+        {isSourceCodeTab ? (
+          <Code language={language} code={code} showOnlySourceCode />
+        ) : (
+          <Component />
+        )}
       </div>
       <div className="tw-flex tw-flex-no-wrap tw-text-sm">
         <Button

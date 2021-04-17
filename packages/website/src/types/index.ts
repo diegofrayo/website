@@ -164,6 +164,7 @@ export type T_CodeProps = {
   code: string;
   fileName?: string;
   sourceURL?: string;
+  showOnlySourceCode?: boolean;
 };
 
 export enum E_Icons {

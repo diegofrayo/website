@@ -20,6 +20,6 @@ function resizeImages({ sourceDir, outputDir }) {
   fs.readdirSync(path.resolve(process.cwd(), sourceDir)).forEach((file) => {
     sharp(path.resolve(process.cwd(), sourceDir, file))
       .resize({ width: 184, height: 256, fit: sharp.fit.fill })
-      .toFile(path.resolve(process.cwd(), outputDir, file));
+      .toFile(path.resolve(process.cwd(), outputDir, file.toLowerCase()));
   });
 }
