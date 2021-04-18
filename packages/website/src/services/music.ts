@@ -5,7 +5,7 @@ import { replaceAll } from "~/utils/strings";
 
 class MusicService {
   async fetchSongsList(): Promise<T_Song[]> {
-    return Data.songs
+    const songs = Data.songs
       .map((song) => {
         return transformObjectKeysFromSnakeCaseToLowerCamelCase(song) as T_Song;
       })
@@ -15,6 +15,12 @@ class MusicService {
           { param: "title", order: "asc" },
         ]),
       );
+
+    const listOfChords = songs.find((song) => song.artist === "Diego Rayo");
+
+    return (listOfChords ? [listOfChords] : []).concat(
+      songs.filter((song) => song.artist !== "Diego Rayo"),
+    );
   }
 
   async getSong(config: Record<"id", T_Primitive>): Promise<T_Song> {

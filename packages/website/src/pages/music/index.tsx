@@ -1,13 +1,13 @@
 import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { List, Link } from "~/components/primitive";
+import { List, Link, Icon } from "~/components/primitive";
 import { Render } from "~/components/pages/_shared";
 import { SongDetails } from "~/components/pages/music";
-import { ROUTES } from "~/utils/routing";
 import { useInternationalization, useQuery } from "~/hooks";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
+import { ROUTES } from "~/utils/routing";
 
 function MusicPage(): T_ReactElement {
   const { SiteTexts } = useInternationalization({
@@ -55,6 +55,13 @@ function MusicPage(): T_ReactElement {
                         isNextLink
                       >
                         {song.title}
+                        {song.isCompleted && (
+                          <Icon
+                            icon={Icon.icon.CHECK}
+                            wrapperClassName="tw-ml-2 tw-relative tw-top-1"
+                            size={20}
+                          />
+                        )}
                       </Link>
                       <SongDetails song={song} SiteTexts={SiteTexts} />
                     </List.Item>

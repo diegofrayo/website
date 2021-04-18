@@ -23,7 +23,7 @@ function LyricsAndChords(props: T_LyricsAndChords): T_ReactElement {
   return (
     <div>
       {parsedChords && (
-        <Blockquote className="tw-p-4 tw-mb-8 tw-border" variant={Blockquote.variant.UNSTYLED}>
+        <Blockquote className="tw-p-4 tw-border" variant={Blockquote.variant.UNSTYLED}>
           <strong className="tw-block tw-mb-2">Acordes</strong>
           <pre
             className="tw-break-all tw-max-w-full tw-whitespace-normal"
@@ -32,10 +32,14 @@ function LyricsAndChords(props: T_LyricsAndChords): T_ReactElement {
         </Blockquote>
       )}
 
-      <pre
-        className="tw-p-1 tw-break-normal tw-leading-none"
-        dangerouslySetInnerHTML={{ __html: parsedLyrics }}
-      />
+      {parsedChords && parsedLyrics && <Space size={5} />}
+
+      {parsedLyrics && (
+        <pre
+          className="tw-p-1 tw-break-normal tw-leading-none"
+          dangerouslySetInnerHTML={{ __html: parsedLyrics }}
+        />
+      )}
 
       <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
         <div className="tw-bg-white dark:tw-bg-black tw-p-4 tw-rounded-md">
@@ -91,7 +95,7 @@ function useController({
   return {
     isModalVisible,
     selectedChord,
-    parsedChords: chords ? MusicService.parseLyricsAndChords(chords.join(" | ")) : "",
+    parsedChords: chords ? MusicService.parseLyricsAndChords(chords.sort().join(" | ")) : "",
     parsedLyrics: MusicService.parseLyricsAndChords(children),
     handleModalClose,
   };

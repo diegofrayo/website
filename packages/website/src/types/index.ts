@@ -119,6 +119,7 @@ export type T_Song = {
   youtubeUrl: string;
   createdAt: string;
   isPublished: boolean;
+  isCompleted: boolean;
   sources: { text: string; url: string; source: string }[];
 };
 

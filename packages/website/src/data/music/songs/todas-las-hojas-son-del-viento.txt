@@ -1,10 +1,10 @@
-?2
+?2|G6
 Cuida bien al niño
-?3
+?3|F7
 cuida bien su mente
-?2
+?2|G6
 dale un sol de enero
-?3
+?3|F7
 dale un vientre blanco
 G    G (punteo)        Em
 dale tibia leche de tu cuerpo
@@ -17,19 +17,19 @@ C                D                 G
 C            D             G
    todas las hojas son del viento
 
-F7|C                    G
+C|F7                    G
        menos la luz del sol
-F7|C                    G
+C|F7                    G
        menos la luz del sol
 
 
-?2
+?2|G6
 hoy que un hijo hiciste
-?3
+?3|F7
 cambia ya tu mente
-?2
+?2|G6
 cuídalo de drogas
-?3
+?3|F7
 nunca lo reprimas
 G    G (punteo)           Em
 dale el áurea misma de tu sexo
@@ -42,11 +42,11 @@ C                D                 G
 C            D             G
    todas las hojas son del viento
 
-F7|C                    G
+C|F7                    G
        menos la luz del sol
-F7|C                    G
+C|F7                    G
        menos la luz del sol
-F7|C                    G
+C|F7                    G
        menos la luz del sol
-F7|C                    G
+C|F7                    G
        menos la luz del sol

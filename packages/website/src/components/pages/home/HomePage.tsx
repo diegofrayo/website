@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Icon, Link, List } from "~/components/primitive";
@@ -72,13 +73,20 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
       isNextLink: true,
     },
     {
-      emoji: <Icon icon={Icon.icon.GITHUB} size={18} wrapperClassName="tw-relative tw-top-0.5" />,
+      emoji: (
+        <Icon
+          icon={Icon.icon.GITHUB}
+          size={18}
+          wrapperClassName="tw-relative tw-top-1"
+          withDarkModeBackground
+        />
+      ),
       label: SiteTexts.page.current_locale.menu_item_github,
       url: WEBSITE_METADATA.social.github,
       isNextLink: false,
     },
     {
-      emoji: <Icon icon={Icon.icon.GMAIL} size={18} wrapperClassName="tw-relative tw-top-0.5" />,
+      emoji: <Icon icon={Icon.icon.GMAIL} size={18} wrapperClassName="tw-relative tw-top-1" />,
       label: SiteTexts.page.current_locale.menu_item_gmail,
       url: `mailto:${WEBSITE_METADATA.email}`,
       isNextLink: false,
@@ -92,7 +100,14 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
           <List.Item key={`Content-item-${index}`}>
             <Link href={item.url} variant={Link.variant.SIMPLE} isNextLink={item.isNextLink}>
               <Emoji className="tw-w-6 tw-inline-block tw-mr-1">{item.emoji}</Emoji>
-              <span>{item.label}</span>
+              <span
+                className={classNames(
+                  !item.isNextLink &&
+                    "tw-border-b tw-border-dashed tw-font-bold tw-border-black dark:tw-border-white",
+                )}
+              >
+                {item.label}
+              </span>
             </Link>
           </List.Item>
         );
