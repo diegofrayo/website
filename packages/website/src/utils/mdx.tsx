@@ -4,12 +4,13 @@ import {
   Blockquote,
   Code as CodePrimitive,
   Collapsible,
+  Icon,
   Image,
   Link,
   List,
   Space,
 } from "~/components/primitive";
-import { Code, Title, TextWithEmoji, GithubRepo, Playground } from "~/components/pages/_shared";
+import { Code, Title, TextWithEmoji, GitHubRepo, Playground } from "~/components/pages/_shared";
 import * as HTMLSemanticTagsBlogPostComponents from "~/components/pages/blog//html-semantic-tags";
 import * as MyFavoriteMusicAndMDXBlogPostComponents from "~/components/pages/blog//my-favorite-music-and-mdx";
 import * as MusicComponents from "~/components/pages/music";
@@ -48,13 +49,14 @@ export const MDXComponents = {
   // Primitive components
   Code,
   Collapsible,
+  Icon,
   Image,
   Link,
   List,
   Space,
 
   // Shared components
-  GithubRepo,
+  GitHubRepo,
   Playground,
   TextWithEmoji,
 

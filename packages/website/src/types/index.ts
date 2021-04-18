@@ -168,7 +168,7 @@ export type T_CodeProps = {
 };
 
 export enum E_Icons {
-  "500_PX" = "500_PX",
+  "500PX" = "500PX",
   "GITHUB" = "GITHUB",
   "GMAIL" = "GMAIL",
   "NETFLIX" = "NETFLIX",

@@ -8,14 +8,12 @@ import { useDidMount, useOnWindowScroll } from "~/hooks";
 import { safeRender } from "~/hocs";
 import twcss from "~/lib/twcss";
 import {
-  E_Icons,
   T_BreadcumbProps,
   T_GenerateSupportedLocales,
   T_ReactChildrenProp,
   T_ReactElement,
 } from "~/types";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
-import { WEBSITE_METADATA } from "~/utils/constants";
 import { ROUTES } from "~/utils/routing";
 import { generateSlug, removeEmojiFromString } from "~/utils/strings";
 
@@ -248,59 +246,8 @@ function Breadcumb({ items }: T_BreadcumbProps): T_ReactElement {
 function Footer({ showGoToTopButton }): T_ReactElement {
   return (
     <footer className="tw-flex tw-justify-end tw-items-end tw-h-32">
-      <SocialIcons />
       {showGoToTopButton && <GoToTopButton />}
     </footer>
-  );
-}
-
-function SocialIcons(): T_ReactElement {
-  const SOCIAL_NETWORKS = [
-    {
-      name: "email",
-      icon: Icon.icon.GMAIL,
-      url: `mailto:${WEBSITE_METADATA.email}`,
-    },
-    {
-      name: "github",
-      icon: Icon.icon.GITHUB,
-      url: WEBSITE_METADATA.social.github,
-      withDarkModeBackground: true,
-    },
-    {
-      name: "spotify",
-      icon: Icon.icon.SPOTIFY,
-      url: WEBSITE_METADATA.social.spotify,
-    },
-    {
-      name: "500px",
-      icon: Icon.icon["500_PX"],
-      url: WEBSITE_METADATA.social["500px"],
-      withDarkModeBackground: true,
-    },
-  ];
-
-  return (
-    <div>
-      {SOCIAL_NETWORKS.map((item) => {
-        return <SocialIcon key={item.name} {...item} />;
-      })}
-    </div>
-  );
-}
-
-type T_SocialIconProps = {
-  icon: E_Icons;
-  url: string;
-  name: string;
-  withDarkModeBackground?: boolean;
-};
-
-function SocialIcon({ icon, url, withDarkModeBackground }: T_SocialIconProps): T_ReactElement {
-  return (
-    <Link href={url} className="tw-inline-block tw-ml-4" variant={Link.variant.SIMPLE}>
-      <Icon icon={icon} size={24} withDarkModeBackground={withDarkModeBackground} />
-    </Link>
   );
 }
 

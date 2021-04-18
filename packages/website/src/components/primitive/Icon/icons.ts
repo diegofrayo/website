@@ -22,7 +22,7 @@ export type T_Icon = {
 };
 
 export const ICONS: Record<E_Icons, T_Icon> = {
-  "500_PX": {
+  "500PX": {
     isLibraryIcon: false,
     icon: "/static/images/icons/500px.svg",
     props: {
@@ -35,7 +35,7 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     icon: "/static/images/icons/github.svg",
     props: {
       className: "",
-      alt: "Github",
+      alt: "GitHub",
     },
   },
   GMAIL: {

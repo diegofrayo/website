@@ -7,7 +7,7 @@ import { T_ReactElement } from "~/types";
 
 function ChordsPage(): T_ReactElement {
   return (
-    <PlaygroundPageTemplate pageName="chords">
+    <PlaygroundPageTemplate pageName="🎼 chords">
       <Content />
     </PlaygroundPageTemplate>
   );

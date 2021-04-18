@@ -7,7 +7,7 @@ import { T_ReactElement } from "~/types";
 
 function VRPage(): T_ReactElement {
   return (
-    <PlaygroundPageTemplate pageName="virtual-reality">
+    <PlaygroundPageTemplate pageName="👓 virtual-reality">
       <Content />
     </PlaygroundPageTemplate>
   );

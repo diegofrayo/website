@@ -9,7 +9,7 @@ import { copyToClipboard } from "~/utils/browser";
 
 function StylesPage(): T_ReactElement {
   return (
-    <PlaygroundPageTemplate pageName="styles">
+    <PlaygroundPageTemplate pageName="💅 styles">
       <Content />
     </PlaygroundPageTemplate>
   );

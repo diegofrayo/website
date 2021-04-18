@@ -45,9 +45,9 @@ function Playground({ Component, code, language }: T_PlaygroundProps): T_ReactEl
       <div className="tw-flex tw-flex-no-wrap tw-text-sm tw-border-t-4 tw-border-black dark:tw-border-white">
         <Button
           className={classNames(
-            "tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2",
+            "tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2 tw-font-thin",
             isSourceCodeTabSelected &&
-              "tw-font-bold tw-underline dfr-bg-secondary dark:dfr-bg-secondary",
+              "tw-font-bold tw-bg-black dark:tw-bg-white tw-text-white dark:tw-text-black hover:tw-opacity-100 tw-uppercase",
           )}
           onClick={setSourceCodeTab}
         >
@@ -55,9 +55,9 @@ function Playground({ Component, code, language }: T_PlaygroundProps): T_ReactEl
         </Button>
         <Button
           className={classNames(
-            "tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2",
+            "tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2 tw-font-thin",
             isOutputTabSelected &&
-              "tw-font-bold tw-underline dfr-bg-secondary dark:dfr-bg-secondary",
+              "tw-font-bold tw-bg-black dark:tw-bg-white tw-text-white dark:tw-text-black hover:tw-opacity-100 tw-uppercase",
           )}
           onClick={setOutputTab}
         >
@@ -68,7 +68,6 @@ function Playground({ Component, code, language }: T_PlaygroundProps): T_ReactEl
       <style jsx>{`
         .root :global(.dfr-Code) {
           box-shadow: none;
-          height: 100%;
           margin: 0;
         }
       `}</style>

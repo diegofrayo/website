@@ -8,7 +8,7 @@ import { focusElement, isSmallScreen } from "~/utils/browser";
 
 function WPPage(): T_ReactElement {
   return (
-    <PlaygroundPageTemplate pageName="wp">
+    <PlaygroundPageTemplate pageName="💬 wp">
       <Content />
     </PlaygroundPageTemplate>
   );

@@ -22,7 +22,7 @@ export function convertSnakeCaseToLowerCamelCase(str: string): string {
 }
 
 export function removeEmojiFromString(str: string): string {
-  return emojiStrip(str);
+  return emojiStrip(str).trim();
 }
 
 export function generateSlug(str: string): string {

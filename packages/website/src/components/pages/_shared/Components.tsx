@@ -108,13 +108,13 @@ function Loader() {
   );
 }
 
-type T_GithubRepoProps = {
+type T_GitHubRepoProps = {
   name: string;
   url: string;
   description: string;
 };
 
-export function GithubRepo({ name, url, description }: T_GithubRepoProps): T_ReactElement {
+export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_ReactElement {
   return (
     <div className="tw-text-right" data-markdown-block>
       <Link

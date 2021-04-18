@@ -9,7 +9,7 @@ import { convertToCapitalLetter, generateSlug } from "~/utils/strings";
 
 function StringsPage(): T_ReactElement {
   return (
-    <PlaygroundPageTemplate pageName="strings">
+    <PlaygroundPageTemplate pageName="📝 strings">
       <Content />
     </PlaygroundPageTemplate>
   );

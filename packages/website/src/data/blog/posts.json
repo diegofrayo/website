@@ -13,7 +13,7 @@
         "meta_no_robots": false
       },
       "es": {
-        "title": "Publicando un paquete privado de npm a Github Packages usando Github Actions",
+        "title": "Publicando un paquete privado de npm a GitHub Packages usando GitHub Actions",
         "categories": [{ "id": 1, "value": "tech" }]
       }
     },

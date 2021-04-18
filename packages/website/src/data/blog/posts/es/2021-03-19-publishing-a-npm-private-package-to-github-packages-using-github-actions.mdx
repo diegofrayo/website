@@ -1,4 +1,4 @@
-En este tutorial quiero explicar como subir un paquete privado de npm a Github Packages usando Github Actions. Además el paquete estará asociado a un repositorio privado perteneciente a una organización. Para este tutorial, voy a usar `my-pkg` como nombre del paquete y `@my-organization` como nombre de la organización.
+En este tutorial quiero explicar como subir un paquete privado de npm a GitHub Packages usando GitHub Actions. Además el paquete estará asociado a un repositorio privado perteneciente a una organización. Para este tutorial, voy a usar `my-pkg` como nombre del paquete y `@my-organization` como nombre de la organización.
 
 ## Publicando el paquete
 
@@ -91,7 +91,7 @@ En este tutorial quiero explicar como subir un paquete privado de npm a Github P
    >
    > - `"name": "@my-organization/my-pkg"` | El nombre del paquete debe tener la estructura **@organization/package-name**
    > - `"repository": "git://github.com/my-organization/my-pkg.git"` | Aquí debes configurar la URL de tu repositorio
-   > - `"publishConfig": {"registry": "https://npm.pkg.github.com"}` | Este atributo sirve para indicarle a Github que vas a subir el paquete a su registro de paquetes
+   > - `"publishConfig": {"registry": "https://npm.pkg.github.com"}` | Este atributo sirve para indicarle a GitHub que vas a subir el paquete a su registro de paquetes
    > - `"private": false` | Aunque el paquete será privado, el valor de este atributo debe ser **false**
 
 1. Crear el archivo `.yml` del workflow en la carpeta `.github/workflows`.
@@ -136,9 +136,9 @@ En este tutorial quiero explicar como subir un paquete privado de npm a Github P
    > **Importante:**
    >
    > - Este workflow se ejecuta cuando se hace un push a la rama `master`. Se encarga de instalar y construir el paquete usando npm a través de los steps `name: Install dependencies` y `name: Build package`.
-   > - Antes de ejecutar los dos steps anteriores es importante configurar `registry-url: "https://registry.npmjs.org"` para indicarle a Github que vas a usar el registro de npm para construir el paquete.
-   > - Antes de publicar el paquete, es necesario configurar `registry-url: "https://npm.pkg.github.com"` para indicarle a Github que vas a subir el paquete al registro de Github.
-   > - Para subir el paquete es necesario usar `NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}`, el cual es un [secreto](https://docs.github.com/en/actions/reference/authentication-in-a-workflow) creado por Github automáticamente en el repositorio del proyecto. También se puede usar otra forma de autenticación, **personal access tokens**. En este [link](https://docs.github.com/en/packages/guides/configuring-npm-for-use-with-github-packages#authenticating-to-github-packages) puedes leer más acerca de esto.
+   > - Antes de ejecutar los dos steps anteriores es importante configurar `registry-url: "https://registry.npmjs.org"` para indicarle a GitHub que vas a usar el registro de npm para construir el paquete.
+   > - Antes de publicar el paquete, es necesario configurar `registry-url: "https://npm.pkg.github.com"` para indicarle a GitHub que vas a subir el paquete al registro de GitHub.
+   > - Para subir el paquete es necesario usar `NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}`, el cual es un [secreto](https://docs.github.com/en/actions/reference/authentication-in-a-workflow) creado por GitHub automáticamente en el repositorio del proyecto. También se puede usar otra forma de autenticación, **personal access tokens**. En este [link](https://docs.github.com/en/packages/guides/configuring-npm-for-use-with-github-packages#authenticating-to-github-packages) puedes leer más acerca de esto.
 
 ## Instalando el paquete publicado en otro proyecto
 
@@ -164,7 +164,7 @@ En este tutorial quiero explicar como subir un paquete privado de npm a Github P
 
 ## Conclusión
 
-Realizar esta tarea me costó un poco, aunque la documentación de Github es bastante detallada en muchos casos, creo que hace falta un ejemplo claro de como realizar lo que yo estoy explicando en este tutorial. Les recomiendo que entiendan muy bien como funcionan los métodos de autenticación de Github. Si tienes alguna duda, no dudes en consultarme.
+Realizar esta tarea me costó un poco, aunque la documentación de GitHub es bastante detallada en muchos casos, creo que hace falta un ejemplo claro de como realizar lo que yo estoy explicando en este tutorial. Les recomiendo que entiendan muy bien como funcionan los métodos de autenticación de GitHub. Si tienes alguna duda, no dudes en consultarme.
 
 ## Fuentes
 
