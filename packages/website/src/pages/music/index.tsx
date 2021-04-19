@@ -55,7 +55,7 @@ function MusicPage(): T_ReactElement {
                         isNextLink
                       >
                         {song.title}
-                        {song.isCompleted && (
+                        {song.progress === 5 && (
                           <Icon
                             icon={Icon.icon.CHECK}
                             wrapperClassName="tw-ml-2 tw-relative tw-top-1"

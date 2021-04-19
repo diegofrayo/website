@@ -4,7 +4,7 @@ const input = fs.readFileSync("./scripts/mdx/input.txt", "utf8").toString();
 
 fs.writeFileSync(
   "./scripts/mdx/output.txt",
-  replaceAll(replaceAll(replaceAll(input, "`", "\\`"), "\n\n", "\n[BR]\n"), "${", "\\${"),
+  replaceAll(replaceAll(input, "`", "\\`"), "${", "\\${"),
 );
 
 // --- Utils ---

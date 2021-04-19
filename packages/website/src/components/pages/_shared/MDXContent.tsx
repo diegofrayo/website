@@ -43,7 +43,7 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
         :global(.dfr-MDXContent--default) > :global(h2),
         :global(.dfr-MDXContent--default) > :global(h3),
         :global(.dfr-MDXContent--default) > :global(h4) {
-          @apply tw-mt-6;
+          @apply tw-mt-8;
           @apply tw-mb-3;
         }
 

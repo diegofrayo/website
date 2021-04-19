@@ -4,19 +4,13 @@
 
 A continuación, un ejemplo de un **componente de React** renderizado en este archivo **MDX**.
 
-<HelloWorldMDX text="Hola, soy un componente React que usa Tailwind CSS para sus estilos" />
-
-<Code
-  language="jsx"
-  sourceURL={DATA.GITHUB_DATA.monorepo.website.files.MDXComponents}
-  code={`export function HelloWorldMDX({ text }: T_Object): T_ReactElement {
-  return (
-    <p className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700 tw-rounded-md">{text}</p>
-  );
-}`}
+<Playground
+  Component={() => (
+    <HelloWorldMDX text="Hola, soy un componente React que usa Tailwind CSS para sus estilos" />
+  )}
+  code={DATA.blogPost.codeSnippets.ONE}
+  language="tsx"
 />
-
-<br />
 
 ## Configurando Next.js y MDX
 
@@ -31,18 +25,17 @@ Ahora, explicaré algunos de los pasos que realicé para usar **next-mdx-remote*
 Primero, importé algunas funciones de **next-mdx-remote**.
 
 <Code
-  language="javascript"
+  language="typescript"
   sourceURL={DATA.GITHUB_DATA.monorepo.website.files["[slug]"]}
-  code={`import hydrate from "next-mdx-remote/hydrate";
-import renderToString from "next-mdx-remote/render-to-string";`}
+  code={DATA.blogPost.codeSnippets.TWO}
 />
 
 Después, importé los **componentes React** y las **variables** que se usarán dentro de los archivos **MDX**.
 
 <Code
-  language="javascript"
-  sourceURL={DATA.GITHUB_DATA.monorepo.website.files.mdx}
-  code={`import { MDXComponents, MDXScope } from "~/utils/mdx";`}
+  language="typescript"
+  sourceURL={DATA.GITHUB_DATA.monorepo.website.files["[slug]"]}
+  code={DATA.blogPost.codeSnippets.THREE}
 />
 
 Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arreglo con los slugs de todos mis publicaciones que voy a **pre-renderizar** como páginas. El listado de todos mis publicaciones están definidos en un archivo <Link href={DATA.GITHUB_DATA.monorepo.website.files.posts}>JSON</Link> dentro del proyecto, pero esta información se podría leer de una **base de datos**, un **CMS**, una **API**, etc.
@@ -50,22 +43,7 @@ Configuré la función `getStaticPaths` en donde la propiedad `paths` es un arre
 <Code
   language="typescript"
   sourceURL={DATA.GITHUB_DATA.monorepo.website.files["[slug]"]}
-  code={`type T_Path = { params: { slug: string }; locale: T_Locale };
-[BR]
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function getStaticPaths() {
-  return {
-    paths: (await BlogService.fetchPosts()).reduce((result: T_Path[], post: T_BlogPost) => {
-      return result.concat(
-        post.locales.map(
-          (locale: T_Locale): T_Path => {
-            return { params: { slug: post.slug }, locale };
-          },
-        ),
-      );
-    }, []),
-    fallback: false,
-  };
-};`}
+  code={DATA.blogPost.codeSnippets.FOUR}
 />
 
 > La razon de configurar `fallback: false` es porque estoy usando **Static Generation**, por lo tanto todas las páginas de este sitio web son **pre-renderizadas** en **tiempo de compilación**, esto trae beneficios de rendimiento y velocidad de carga. Elegí **Static Generation** porque tengo muy pocas páginas y publicaciones en este momento, en un futuro cuando este sitio web crezca, usaré otra estrategia más eficiente y que mejor se adapte a mi situación. Les recomiendo leer la [documentación de Next.js](https://nextjs.org/docs/basic-features/data-fetching) acerca de este tema, es muy clara su explicación.
@@ -75,26 +53,7 @@ Ahora, en la función `getStaticProps` se lee el contenido **MDX** de cada publi
 <Code
   sourceURL={DATA.GITHUB_DATA.monorepo.website.files["[slug]"]}
   language="typescript"
-  code={`export const getStaticProps: GetStaticProps<
-  T_BlogPostPageProps,
-  { slug: string }
-> = async function getStaticProps({ params, locale }) {
-  const post: T_BlogPost = await BlogService.getPost({ slug: params?.slug });
-  const file = fs.readFileSync(
-    \`\${process.cwd()}/src/data/blog/posts/\${getItemLocale(
-      post.locales,
-      post.defaultLocale,
-      locale as T_Locale,
-    )}/\${post.createdAt}-\${post.slug}.mdx\`,
-    "utf8",
-  );
-  const content = await renderToString(file, {
-    components: MDXComponents,
-    scope: { DATA: { ...MDXScope.DATA, blog_post: post } },
-  });
-[BR]
-  return { props: { post, content } };
-};`}
+  code={DATA.blogPost.codeSnippets.FIVE}
 />
 
 > **Problema:** Al usar **next-mdx-remote**, no puedo importar componentes o variables dentro de los archivos **MDX** usando `import`. En este [link](https://GITHUB_DATA.com/hashicorp/next-mdx-remote#caveats) puedes leer más acerca de esto.
@@ -105,59 +64,8 @@ Por último, este es el componente que renderiza una publicación.
 
 <Code
   sourceURL={DATA.GITHUB_DATA.monorepo.website.files["[slug]"]}
-  language="jsx"
-  code={`type T_BlogPostPageProps = {
-  post: T_BlogPost;
-  content: string;
-};
-[BR]
-function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
-  const { SiteTexts, currentLocale } = useInternationalization({
-    page: ROUTES.BLOG,
-    layout: true,
-  });
-[BR]
-  const mdxContent = hydrate(content, { components: MDXComponents });
-[BR]
-  return (
-    <Page
-      config={{
-        title: post[currentLocale]?.title,
-        pathname: \`\${ROUTES.BLOG}/\${post.slug}\`,
-        description: post[currentLocale]?.description,
-      }}
-    >
-      <MainLayout
-        locales={generateSupportedLocales(post.locales, \`\${ROUTES.BLOG}/\${[post.slug]}\`)}
-        breadcumb={[
-          {
-            text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: ROUTES.HOME,
-          },
-          {
-            text: SiteTexts.layout.current_locale.breadcumb.blog,
-            url: ROUTES.BLOG,
-          },
-          {
-            text: BlogService.composeTitle(post, currentLocale),
-          },
-        ]}
-        title={BlogService.composeTitle(post, currentLocale)}
-        showGoToTopButton
-      >
-        <MDXContent content={mdxContent} />
-        <Space size={8} />
-[BR]
-        <BlogPostFooter
-          createdAt={post.createdAt}
-          publishedAt={post.publishedAt}
-          slug={post.slug}
-          updatedAt={post.updatedAt}
-        />
-      </MainLayout>
-    </Page>
-  );
-}`}
+  language="tsx"
+  code={DATA.blogPost.codeSnippets.SIX}
 />
 
 > **Importante:** Es necesario que el valor de la propiedad `components` sea igual en `hydrate(content, { components: MDXComponents });` como en `await renderToString(content, { components: MDXComponents });`.
@@ -166,85 +74,8 @@ Para manejar los estilos **CSS** del contenido compilado de los archivos **MDX**
 
 <Code
   sourceURL={DATA.GITHUB_DATA.monorepo.website.files.MDXContent}
-  language="jsx"
-  code={`import React from "react";
-[BR]
-import { T_ReactChildrenProp, T_ReactElement } from "~/types";
-import { mirror } from "~/utils/misc";
-[BR]
-type T_Variants = "DEFAULT" | "UNSTYLED";
-const VARIANTS = mirror(["DEFAULT", "UNSTYLED"]) as Record<T_Variants, T_Variants>;
-[BR]
-type T_MDXContentProps = {
-  content: T_ReactChildrenProp;
-  variant?: T_Variants;
-};
-[BR]
-function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps): T_ReactElement {
-  return (
-    <article className={\`dfr-MDXContent dfr-MDXContent--\${variant.toLowerCase()}\`}>
-      {content}
-[BR]
-      <style jsx>{\`
-        /* Spacing: parent components */
-        :global(.dfr-MDXContent--default) > :global(blockquote),
-        :global(.dfr-MDXContent--default) > :global(hr),
-        :global(.dfr-MDXContent--default) > :global(img),
-        :global(.dfr-MDXContent--default) > :global(ol),
-        :global(.dfr-MDXContent--default) > :global(p),
-        :global(.dfr-MDXContent--default) > :global(pre),
-        :global(.dfr-MDXContent--default) > :global(ul),
-        :global(.dfr-MDXContent--default) :global(*[data-markdown-block]) {
-          @apply tw-mb-6;
-        }
-[BR]
-        /* Spacing: nested components */
-        :global(.dfr-MDXContent--default) :global(li) > :global(p),
-        :global(.dfr-MDXContent--default) :global(li) > :global(pre),
-        :global(.dfr-MDXContent--default) :global(li) > :global(blockquote),
-        :global(.dfr-MDXContent--default) :global(li) > :global(img),
-        :global(.dfr-MDXContent--default) :global(blockquote) > :global(p) {
-          @apply tw-mb-3;
-        }
-[BR]
-        /* Spacing: titles */
-        :global(.dfr-MDXContent--default) > :global(h1),
-        :global(.dfr-MDXContent--default) > :global(h2),
-        :global(.dfr-MDXContent--default) > :global(h3),
-        :global(.dfr-MDXContent--default) > :global(h4) {
-          @apply tw-mt-6;
-          @apply tw-mb-3;
-        }
-[BR]
-        /* Spacing: nested UL lists */
-        :global(.dfr-MDXContent--default) :global(li) > :global(ul) {
-          @apply tw-mt-3;
-        }
-[BR]
-        /* Ordered lists */
-        :global(.dfr-MDXContent--default) :global(ol) {
-          @apply tw-pl-9;
-          list-style-type: decimal;
-        }
-[BR]
-        :global(.dfr-MDXContent--default) :global(ol) > :global(li) {
-          @apply tw-mb-6;
-        }
-[BR]
-        /* Images */
-        :global(.dfr-MDXContent--default) > :global(img),
-        :global(.dfr-MDXContent--default) :global(li) > :global(img) {
-          margin-left: auto;
-          margin-right: auto;
-        }
-      \`}</style>
-    </article>
-  );
-}
-[BR]
-MDXContent.variant = VARIANTS;
-[BR]
-export default MDXContent;`}
+  language="tsx"
+  code={DATA.blogPost.codeSnippets.SEVEN}
 />
 
 > La directiva `@apply` me permite usar los estilos de **Tailwind CSS** dentro de mis declaraciones de estilos que construyo usando [styled-jsx](https://GITHUB_DATA.com/vercel/styled-jsx).
@@ -253,101 +84,8 @@ El resaltado de síntaxis de código fuente lo hice con [prism-react-renderer](h
 
 <Code
   sourceURL={DATA.GITHUB_DATA.monorepo.website.files.Code}
-  language="jsx"
-  code={`import React from "react";
-import Highlight, { defaultProps } from "prism-react-renderer";
-import dracula from "prism-react-renderer/themes/dracula";
-[BR]
-import { Link, Icon, Code as CodePrimitive, Button } from "~/components/primitive";
-import twcss from "~/lib/twcss";
-import { T_CodeProps, T_ReactElement } from "~/types";
-import { copyToClipboard } from "~/utils/browser";
-import { getSiteTexts } from "~/utils/internationalization";
-import { ROUTES } from "~/utils/routing";
-import { generateSlug, replaceAll } from "~/utils/strings";
-[BR]
-function Code({ language, fileName, code, sourceURL }: T_CodeProps): T_ReactElement {
-  const SiteTexts = getSiteTexts({ page: ROUTES.BLOG });
-[BR]
-  return (
-    <div
-      className="root tw-rounded-md tw-border dfr-border-color-primary dark:tw-bg-gray-700"
-      data-markdown-block
-    >
-      <div className="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono">
-        <code className="tw-w-full sm:tw-w-auto tw-font-bold">
-          {fileName
-            ? \`// \${generateSlug(fileName)}\`
-            : sourceURL
-            ? \`// \${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}\`
-            : ""}
-        </code>
-        <span className="tw-rounded-md tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-auto sm:tw-ml-4 tw-mt-2 sm:tw-mt-0">
-          {language}
-        </span>
-      </div>
-[BR]
-      <Highlight
-        {...defaultProps}
-        code={replaceAll(code, "[BR]", "")}
-        language={language}
-        theme={dracula}
-      >
-        {({ className, style, tokens, getLineProps, getTokenProps }) => {
-          return (
-            <CodePrimitive className={className} style={style}>
-              {tokens.map((line, i) => {
-                return (
-                  <Line key={i} {...getLineProps({ line, key: i })}>
-                    <LineNo>{i + 1}</LineNo>
-                    <LineContent>
-                      {line.map((token, key) => {
-                        return <span key={key} {...getTokenProps({ token, key })} />;
-                      })}
-                    </LineContent>
-                  </Line>
-                );
-              })}
-            </CodePrimitive>
-          );
-        }}
-      </Highlight>
-      <div className="tw-p-2 tw-pt-1.5 tw-text-sm tw-text-right">
-        {sourceURL && (
-          <Link
-            className="tw-block sm:tw-inline-block tw-ml-auto tw-font-bold sm:tw-mr-6 tw-mb-1 sm:tw-mb-0"
-            href={sourceURL}
-            variant={Link.variant.SIMPLE}
-          >
-            <Icon
-              icon={Icon.icon.GITHUB}
-              wrapperClassName="tw-align-middle tw-mr-1.5"
-              withDarkModeBackground
-            />
-            <span className="tw-align-middle tw-inline-block">
-              {SiteTexts.page.current_locale.see_source_code}
-            </span>
-          </Link>
-        )}
-        <Button
-          className="tw-block sm:tw-inline-block tw-ml-auto tw-font-bold tw-align-middle"
-          data-clipboard-text={code}
-          onClick={copyToClipboard}
-        >
-          {SiteTexts.page.current_locale.copy_to_clipboard}
-        </Button>
-      </div>
-    </div>
-  );
-}
-[BR]
-export default Code;
-[BR]
-// --- Components ---
-[BR]
-const Line = twcss.div\`tw-table-row\`;
-const LineNo = twcss.span\`tw-table-cell tw-text-right tw-pr-4 tw-opacity-50 tw-select-none\`;
-const LineContent = twcss.span\`tw-table-cell\`;`}
+  language="tsx"
+  code={DATA.blogPost.codeSnippets.EIGHT}
 />
 
 ## Conclusión

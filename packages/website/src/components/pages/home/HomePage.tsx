@@ -76,7 +76,7 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
       emoji: (
         <Icon
           icon={Icon.icon.GITHUB}
-          size={18}
+          size={20}
           wrapperClassName="tw-relative tw-top-1"
           withDarkModeBackground
         />
@@ -86,7 +86,7 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
       isNextLink: false,
     },
     {
-      emoji: <Icon icon={Icon.icon.GMAIL} size={18} wrapperClassName="tw-relative tw-top-1" />,
+      emoji: <Icon icon={Icon.icon.GMAIL} size={20} wrapperClassName="tw-relative tw-top-1" />,
       label: SiteTexts.page.current_locale.menu_item_gmail,
       url: `mailto:${WEBSITE_METADATA.email}`,
       isNextLink: false,

@@ -5,6 +5,7 @@
   "scripts": {
     "start": "next start",
     "postinstall": "node --experimental-json-modules scripts/metadata.mjs",
+    "pre-commit": "yarn format && yarn lint",
     "no-opt-install": "yarn install --ignore-optional",
     "build": "next build",
     "dev": "next dev",

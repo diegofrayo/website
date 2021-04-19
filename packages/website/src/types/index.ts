@@ -119,7 +119,6 @@ export type T_Song = {
   youtubeUrl: string;
   createdAt: string;
   isPublished: boolean;
-  isCompleted: boolean;
   sources: { text: string; url: string; source: string }[];
 };
 
@@ -135,7 +134,7 @@ export type T_Movie = {
   id: string;
   title: string;
   type: "Series" | "Movie" | "Documentary" | "Documentary Series";
-  source: "Netflix" | "YouTube";
+  source: "Netflix" | "YouTube" | "imdb";
   calification: number;
 };
 
@@ -161,7 +160,7 @@ export type T_BreadcumbProps = {
 };
 
 export type T_CodeProps = {
-  language: "jsx" | "css" | "typescript" | "javascript" | "bash" | "yaml";
+  language: "jsx" | "tsx" | "css" | "typescript" | "javascript" | "bash" | "yaml";
   code: string;
   fileName?: string;
   sourceURL?: string;

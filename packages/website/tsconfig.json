@@ -20,5 +20,10 @@
     }
   },
   "exclude": ["node_modules", "src/components/pages/snippets/data/**/*"],
-  "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "next-env.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/components/pages/blog/**/*/code-snippets.ts"
+  ]
 }

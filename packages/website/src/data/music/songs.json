@@ -6,7 +6,7 @@
       "artist": "Los Piojos",
       "album": "Ay ay ay",
       "year": 1994,
-      "progress": 5,
+      "progress": 4,
       "created_at": "27/03/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/4vsmIkU6VJa9dXXqasvzx0?si=VIwbzG8QThOlLS35dhYEMQ",
@@ -23,8 +23,7 @@
           "source": "youtube"
         }
       ],
-      "chords": ["Dm7", "C", "F", "C#", "Dm"],
-      "is_completed": false
+      "chords": ["Dm7", "C", "F", "C#", "Dm"]
     },
     {
       "id": "que-ves-el-cielo",
@@ -49,8 +48,7 @@
           "source": "youtube"
         }
       ],
-      "chords": ["A", "E", "D", "Bm", "C", "Asus", "Esus", "Dsus"],
-      "is_completed": false
+      "chords": ["A", "E", "D", "Bm", "C", "Asus", "Esus", "Dsus"]
     },
     {
       "id": "todas-las-hojas-son-del-viento",
@@ -61,7 +59,6 @@
       "progress": 5,
       "created_at": "04/04/2021",
       "is_published": true,
-      "is_completed": true,
       "spotify_url": "https://open.spotify.com/track/689lBKIELtWGHfsPWpR6rv?si=34945449901e4181",
       "youtube_url": "https://youtu.be/b-u-bchAnW4",
       "sources": [
@@ -79,10 +76,9 @@
       "artist": "Los Piojos",
       "album": "3er arco",
       "year": 1996,
-      "progress": 5,
+      "progress": 4,
       "created_at": "23/03/2021",
       "is_published": true,
-      "is_completed": true,
       "spotify_url": "https://open.spotify.com/track/1NXvuBAq48QrxRFQZVmORQ?si=k2nEIqKcRMSd6L1owJaLTw",
       "youtube_url": "https://youtu.be/DaVRJca0z5c",
       "sources": [
@@ -127,8 +123,7 @@
           "source": "lacuerda"
         }
       ],
-      "chords": ["E", "D", "A", "Bm", "Em", "G", "F#m", "B7", "F"],
-      "is_completed": false
+      "chords": ["E", "D", "A", "Bm", "Em", "G", "F#m", "B7", "F"]
     },
     {
       "id": "bajan",
@@ -139,7 +134,6 @@
       "progress": 4,
       "created_at": "10/01/2021",
       "is_published": true,
-      "is_completed": true,
       "spotify_url": "https://open.spotify.com/track/6hmYi0E6EBEmDeztQHaH0C?si=XZhRiHNWSvO7RNDEbVYnDw",
       "youtube_url": "https://youtu.be/bZcMPnY9_dg",
       "sources": [
@@ -189,8 +183,7 @@
           "source": "youtube"
         }
       ],
-      "chords": ["C", "Am", "Dm", "G", "F"],
-      "is_completed": false
+      "chords": ["C", "Am", "Dm", "G", "F"]
     },
     {
       "id": "vasos-vacios",
@@ -201,7 +194,6 @@
       "progress": 4,
       "created_at": "10/01/2021",
       "is_published": true,
-      "is_completed": true,
       "spotify_url": "https://open.spotify.com/track/6G9painkkIlE8HauZrG4Vw?si=2pnzv_-6Q6K8tFe0CclMMA",
       "youtube_url": "https://youtu.be/8Zdhan166z0",
       "sources": [
@@ -251,8 +243,7 @@
           "source": "lacuerda"
         }
       ],
-      "chords": ["C#m", "G#m", "E", "F#m"],
-      "is_completed": false
+      "chords": ["C#m", "G#m", "E", "F#m"]
     },
     {
       "id": "cancion-para-los-dias-de-la-vida",
@@ -260,14 +251,19 @@
       "artist": "Invisible",
       "album": "A 18' del sol",
       "year": 1977,
-      "progress": 1,
+      "progress": 3,
       "created_at": "12/01/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/3T5SksrlFxunlotQ0lmSwv?si=6c94d32477c64784",
       "youtube_url": "https://youtu.be/q1Sr16pdF64",
-      "sources": [],
-      "chords": [],
-      "is_completed": false
+      "sources": [
+        {
+          "text": "Canción para los días de la vida",
+          "source": "lacuerda",
+          "url": "https://acordes.lacuerda.net/luis_a_spinetta/cancion_para_los_dias_de_la_vida-2.shtml"
+        }
+      ],
+      "chords": ["A", "G#m", "F#m", "Bm", "B", "C#m", "D", "E"]
     },
     {
       "id": "par-mil",
@@ -281,8 +277,7 @@
       "spotify_url": "https://open.spotify.com/track/2Jm3VE0qGqKSxqPbbVt6oC?si=67f9f66f33294f5c",
       "youtube_url": "https://youtu.be/Z_tHBX0mj1s",
       "sources": [],
-      "chords": [],
-      "is_completed": false
+      "chords": []
     },
     {
       "id": "listado-de-acordes",
@@ -293,7 +288,6 @@
       "progress": -1,
       "created_at": "18/04/2021",
       "is_published": true,
-      "is_completed": false,
       "spotify_url": "",
       "youtube_url": "",
       "sources": [],
@@ -334,6 +328,9 @@
 
     "?1": { "chords": "4,4,1|2,4,2|3,5,3|1,5,4", "strings_to_skip": "" },
     "?2": { "chords": "2,1,1|3,2,2|4,3,3", "strings_to_skip": "" },
-    "?3": { "chords": "2,3,1|3,4,2|4,5,3", "strings_to_skip": "" }
+    "?3": { "chords": "2,3,1|3,4,2|4,5,3", "strings_to_skip": "" },
+    "?4": { "chords": "", "strings_to_skip": "" },
+    "?5": { "chords": "", "strings_to_skip": "" },
+    "?6": { "chords": "", "strings_to_skip": "" }
   }
 }

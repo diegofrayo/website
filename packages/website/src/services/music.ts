@@ -64,7 +64,7 @@ class MusicService {
   findChord(chord: string): T_Chord | undefined {
     const chordData = Data.chords[chord];
 
-    if (!chordData) return undefined;
+    if (!chordData || !chordData.chords) return undefined;
 
     return {
       name: chord,

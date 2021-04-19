@@ -41,6 +41,7 @@ function createFilesTree(directory): T_Object<T_Object<T_Snippet[]>> {
           jsx: "jsx",
           sh: "bash",
           css: "css",
+          js: "javascript",
         }[fileExtension.replace(".", "")],
       });
     }

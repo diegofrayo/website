@@ -95,7 +95,7 @@
     "title": "Who killed Sara?",
     "type": "Series",
     "source": "Netflix",
-    "calification": 4
+    "calification": 3
   },
   {
     "id": "70262639",
@@ -222,5 +222,19 @@
     "type": "Series",
     "source": "Netflix",
     "calification": 3
+  },
+  {
+    "id": "tt0119217",
+    "title": "Good will hunting",
+    "type": "Movies",
+    "source": "imdb",
+    "calification": 4
+  },
+  {
+    "id": "18171082",
+    "title": "Patch Adams",
+    "type": "Movies",
+    "source": "Netflix",
+    "calification": 4
   }
 ]

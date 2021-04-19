@@ -59,7 +59,7 @@ function useController({ sources }: T_SongSources) {
       return function ImageComponent() {
         return (
           <Image
-            src="/static/images/misc/la-cuerda.png"
+            src="/static/images/misc/lacuerda.png"
             alt="La cuerda icon"
             className="tw-w-8 tw-h-8 tw-mr-2 tw-rounded-full"
           />

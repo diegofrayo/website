@@ -8,7 +8,7 @@ import { T_CodeProps, T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getSiteTexts } from "~/utils/internationalization";
 import { ROUTES } from "~/utils/routing";
-import { generateSlug, replaceAll } from "~/utils/strings";
+import { generateSlug } from "~/utils/strings";
 
 function Code({
   language,
@@ -43,12 +43,7 @@ function Code({
         </div>
       )}
 
-      <Highlight
-        {...defaultProps}
-        code={replaceAll(code, "[BR]", "")}
-        language={language}
-        theme={dracula}
-      >
+      <Highlight {...defaultProps} code={code} language={language} theme={dracula}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           return (
             <CodePrimitive className={className} style={style}>

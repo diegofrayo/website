@@ -101,9 +101,25 @@ export const getStaticProps: GetStaticProps<
     )}/${post.createdAt}-${post.slug}.mdx`,
     "utf8",
   );
+
+  const postSlug = post.slug;
+  const codeSnippets = fs.existsSync(
+    `${process.cwd()}/src/components/pages/blog/${postSlug}/code-snippets.ts`,
+  )
+    ? require(`src/components/pages/blog/${postSlug}/code-snippets.ts`).default // eslint-disable-line @typescript-eslint/no-var-requires
+    : {};
+
   const content = await renderToString(file, {
     components: MDXComponents,
-    scope: { DATA: { ...MDXScope.DATA, blog_post: post } },
+    scope: {
+      DATA: {
+        ...MDXScope.DATA,
+        blogPost: {
+          ...post,
+          codeSnippets,
+        },
+      },
+    },
   });
 
   return { props: { post, content } };

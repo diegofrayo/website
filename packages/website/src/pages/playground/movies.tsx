@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { Icon, Link, Title } from "~/components/primitive";
+import { Icon, Image, Link, Title } from "~/components/primitive";
 import { Render } from "~/components/pages/_shared";
 import { PlaygroundPageTemplate } from "~/components/pages/playground";
 import { useQuery } from "~/hooks";
@@ -35,7 +35,9 @@ function Content(): T_ReactElement {
                   href={
                     source === "Netflix"
                       ? `https://www.netflix.com/title/${id}`
-                      : `https://www.youtube.com/watch?v=${id}`
+                      : source === "YouTube"
+                      ? `https://www.youtube.com/watch?v=${id}`
+                      : `https://www.imdb.com/title/${id}`
                   }
                   variant={Link.variant.UNSTYLED}
                   className={classNames(
@@ -65,11 +67,20 @@ function Content(): T_ReactElement {
                     </span>
 
                     <div className="movie__details tw-flex tw-self-end tw-flex-nowrap tw-justify-between tw-w-full tw-items-end tw-p-2">
-                      <Icon
-                        icon={source === "Netflix" ? Icon.icon.NETFLIX : Icon.icon.YOUTUBE}
-                        size={24}
-                        wrapperClassName="tw-flex-shrink-0"
-                      />
+                      {source === "imdb" ? (
+                        <Image
+                          src="/static/images/misc/imdb.png"
+                          className="tw-w-6 tw-h-6 tw-rounded-full"
+                          alt="imdb icon"
+                        />
+                      ) : (
+                        <Icon
+                          icon={source === "Netflix" ? Icon.icon.NETFLIX : Icon.icon.YOUTUBE}
+                          size={24}
+                          wrapperClassName="tw-flex-shrink-0"
+                        />
+                      )}
+
                       <div className="tw-flex-1 tw-text-right tw-ml-4">
                         <Title
                           is="h1"
