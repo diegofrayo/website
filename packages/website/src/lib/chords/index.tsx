@@ -5,7 +5,7 @@ import { Space, Button, Title } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
-import { createArray } from "~/utils/misc";
+import { createArray, safeCastNumber } from "~/utils/misc";
 
 import twcss from "./../twcss";
 import Service from "./service";
@@ -150,14 +150,55 @@ export function Chords({
   );
 }
 
-export function Solo({ positions, notes }: { positions: string; notes: string }): T_ReactElement {
+type T_String = 1 | 2 | 3 | 4 | 5 | 6;
+type T_Fret = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14;
+
+export function Solo({
+  positions,
+  notes,
+}: {
+  positions: string | { string?: T_String; fret?: T_Fret; space?: number }[];
+  notes: string;
+}): T_ReactElement {
+  function getPositions(): { string?: T_String; fret?: T_Fret; space?: number }[] {
+    if (typeof positions === "string") {
+      return ["|", ...positions.split("|"), "|"].map((position) => {
+        const [string, fret] = position.split(",");
+
+        return {
+          string: safeCastNumber(string) as T_String,
+          fret: safeCastNumber(fret) as T_Fret,
+          space: 0,
+        };
+      });
+    }
+
+    return [{ space: 1 }, ...positions, { space: 1 }];
+  }
+
   return (
     <div className="tw-text-sm tw-pr-2 tw-font-serif">
       <div className="tw-flex tw-items-end">
         <Fret variant="FRET_STRINGS_NAMES" />
 
-        {["|", ...positions.split("|"), "|"].map((item, index) => {
-          const [string, fret] = item.split(",");
+        {getPositions().map((position, index) => {
+          if (position.space) {
+            return createArray(position.space).map(() => {
+              return (
+                <div key={`Solo-position-${index}`} className="tw-ml-1">
+                  {createArray(6)
+                    .reverse()
+                    .map((i) => {
+                      return (
+                        <div key={`Solo-position-${index}-${i}`} className="tw-h-6">
+                          -
+                        </div>
+                      );
+                    })}
+                </div>
+              );
+            });
+          }
 
           return (
             <div key={`Solo-position-${index}`} className="tw-ml-1">
@@ -165,10 +206,10 @@ export function Solo({ positions, notes }: { positions: string; notes: string })
                 {createArray(6)
                   .reverse()
                   .map((i) => {
-                    if (i === Number(string)) {
+                    if (i === Number(position.string)) {
                       return (
                         <div key={`Solo-position-${index}-${i}`} className="tw-h-6">
-                          {fret !== undefined ? fret : "0"}
+                          {position.fret !== undefined ? position.fret : "0"}
                         </div>
                       );
                     }

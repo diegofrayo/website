@@ -85,7 +85,9 @@ function Content(): T_ReactElement {
           </Button>
         </div>
       </div>
-      <Space size={10} className="tw-border-t dfr-border-color-primary" />
+
+      <Space size={10} variant={Space.variant.DASHED} />
+
       <div>
         <p className="tw-font-bold">output</p>
         <output

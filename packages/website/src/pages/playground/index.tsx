@@ -33,7 +33,7 @@ function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
 
         {isUserLoggedIn() && (
           <div className="tw-font-bold">
-            <Space className="tw-mt-6 tw-mb-4" variant={Space.variant.DASHED} />
+            <Space sizeTop={6} sizeBottom={4} variant={Space.variant.DASHED} />
             <PagesList pages={["🎀 maria", "❤️ baria", "📖 books", "🎬 movies", "🤨 stupid"]} />
           </div>
         )}

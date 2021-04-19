@@ -1,11 +1,19 @@
+?1
+?2
+?3
+
 A
 Am
+Am/G
 Am7
 Asus
+Asus2
+Asus4
 
 B
-Bm
 B7
+Bm
+Bm7
 
 C
 C#
@@ -28,7 +36,3 @@ G
 G#
 G#m
 G6
-
-?1
-?2
-?3

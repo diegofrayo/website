@@ -263,7 +263,21 @@
           "url": "https://acordes.lacuerda.net/luis_a_spinetta/cancion_para_los_dias_de_la_vida-2.shtml"
         }
       ],
-      "chords": ["A", "G#m", "F#m", "Bm", "B", "C#m", "D", "E"]
+      "chords": [
+        "A",
+        "Am",
+        "Am/G",
+        "Asus2",
+        "Asus4",
+        "B",
+        "Bm",
+        "Bm7",
+        "C#m",
+        "D",
+        "E",
+        "F#m",
+        "G#m"
+      ]
     },
     {
       "id": "par-mil",
@@ -299,10 +313,14 @@
     "Am": { "chords": "4,2,2|3,2,3|2,1,1", "strings_to_skip": "6" },
     "Am7": { "chords": "4,2,2|2,1,1", "strings_to_skip": "6" },
     "Asus": { "chords": "4,2,1|3,2,2|2,2,3|2,3,4", "strings_to_skip": "6" },
+    "Asus2": { "chords": "3,2,2|2,2,3|2,3,4", "strings_to_skip": "6" },
+    "Asus4": { "chords": "3,2,2|2,2,3|2,3,4|2,3,4", "strings_to_skip": "6" },
+    "Am/G": { "chords": "4,2,2|3,2,3|2,1,1|6,3,4", "strings_to_skip": "" },
 
     "B": { "chords": "6x,2|4,4,2|3,4,3|2,4,4", "strings_to_skip": "6" },
     "Bm": { "chords": "6x,2|2,3,2|4,4,3|3,4,4", "strings_to_skip": "6" },
     "B7": { "chords": "6x,2|4,4,2|2,4,3", "strings_to_skip": "6" },
+    "Bm7": { "chords": "6x,2|2,3,2|4,4,3", "strings_to_skip": "6" },
 
     "C": { "chords": "5,3,3|4,2,2|2,1,1", "strings_to_skip": "6" },
     "C#": { "chords": "5x,4|4,6,2|3,6,3|2,6,4", "strings_to_skip": "" },
@@ -328,9 +346,6 @@
 
     "?1": { "chords": "4,4,1|2,4,2|3,5,3|1,5,4", "strings_to_skip": "" },
     "?2": { "chords": "2,1,1|3,2,2|4,3,3", "strings_to_skip": "" },
-    "?3": { "chords": "2,3,1|3,4,2|4,5,3", "strings_to_skip": "" },
-    "?4": { "chords": "", "strings_to_skip": "" },
-    "?5": { "chords": "", "strings_to_skip": "" },
-    "?6": { "chords": "", "strings_to_skip": "" }
+    "?3": { "chords": "2,3,1|3,4,2|4,5,3", "strings_to_skip": "" }
   }
 }

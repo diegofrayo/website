@@ -10,6 +10,10 @@ enum E_Variants {
 
 type T_SpaceProps = {
   size?: number;
+  sizeLeft?: number;
+  sizeRight?: number;
+  sizeTop?: number;
+  sizeBottom?: number;
   className?: string;
   orientation?: "h" | "v";
   variant?: E_Variants;
@@ -28,18 +32,37 @@ export default Space;
 // --- Controller ---
 
 function useController({
-  size: sizeProp,
+  size,
+  sizeTop,
+  sizeBottom,
+  sizeLeft,
+  sizeRight,
   className,
   orientation = "h",
   variant = E_Variants.DEFAULT,
 }: T_SpaceProps) {
   const isHorizontalDir = orientation === "h";
-  const size = typeof sizeProp === "number" ? sizeProp : 2;
+
+  function getSizeClass(): string {
+    if (isHorizontalDir) {
+      if (sizeTop || sizeBottom) {
+        return `tw-mt-${sizeTop || 0} tw-mb-${sizeBottom || 0}`;
+      }
+
+      return `tw-my-${size || 2}`;
+    }
+
+    if (sizeTop || sizeBottom) {
+      return `tw-ml-${sizeLeft || 0} tw-mr-${sizeRight || 0}`;
+    }
+
+    return `tw-mx-${size || 2}`;
+  }
 
   return {
     className: classNames(
       "tw-flex-shrink-0",
-      `tw-${isHorizontalDir ? "my" : "mx"}-${size}`,
+      getSizeClass(),
       !isHorizontalDir && "tw-inline-block tw-h-1",
       variant === E_Variants.DEFAULT && "tw-border-0",
       variant === E_Variants.DASHED &&

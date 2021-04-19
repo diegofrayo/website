@@ -34,10 +34,10 @@ A           B         Bm    E
 los relojes harán que can---te
 
 
-Am  Am  ?6  ?6  Bm     Am  Am  ?6  ?6  Bm
-LA  LA  LA  LA  LA ... LA  LA  LA  LA  LA
-E        E  E   Am  ?4  ?5     Am  ?4  ?5
-LA LA LA LA LA  LA  LA  LA ... LA  LA  LA
+Am  Am  Am/G  Am/G  Bm7             Am  Am  Am/G  Am/G  Bm7
+LA  LA  LA    LA    LA      ...     LA  LA  LA    LA    LA
+E  E  E   Am  Asus2  Asus4          Am  Asus2  Asus4
+LA LA LA  LA  LA     LA     ...     LA  LA     LA
 
 
 Y la espuma gira en torno a mi piel
@@ -54,8 +54,7 @@ solo se desprende y es igual a las guirnaldas
 A          G#m        F#m
 este día es algo de sal
 A            B       Bm
-me dejo vibrando al nacer
-
+me dejó vibrando al nacer
 F#m      C#m     D               C#m  C#m
 pesa y es liviano como un hilo sin nombre
 Bm  C#m             E     D
@@ -67,12 +66,12 @@ tengo que aprender a ser luz
 A            B       Bm
 entre tanta gente detrás
 F#m      C#m     D               C#m  C#m
-me pondre las ramas de este sol que me espera
+me pondré las ramas de este sol que me espera
 Bm  C#m             E     D
 para usarme como al aire
 
 
-Y es que al fin mi duende se abrio
+Y es que al fin mi duende se abrió
 tiene un corazón de mantel y batón
 y un guiño al ver que todo es verdad
 
