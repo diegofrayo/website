@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { Link, Icon, Title as TitlePrimitive } from "~/components/primitive";
+import { Link, Icon, Title as TitlePrimitive, Image } from "~/components/primitive";
 import {
   T_HTMLAttributes,
   T_Object,
@@ -145,7 +145,7 @@ export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_Rea
   );
 }
 
-export function Title(
+export function TitleCreator(
   Tag: "h1" | "h2" | "h3" | "h4",
   props: T_Object,
 ): T_ReactFunctionComponent<{ children: T_ReactChildrenProp }> {
@@ -156,4 +156,12 @@ export function Title(
       </TitlePrimitive>
     );
   };
+}
+
+export function ImageWithLink({ src, ...rest }: { src: string }): T_ReactElement {
+  return (
+    <Link href={src} variant={Link.variant.UNSTYLED}>
+      <Image src={src} {...rest} />
+    </Link>
+  );
 }

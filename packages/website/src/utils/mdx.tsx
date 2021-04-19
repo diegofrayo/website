@@ -10,7 +10,14 @@ import {
   List,
   Space,
 } from "~/components/primitive";
-import { Code, Title, TextWithEmoji, GitHubRepo, Playground } from "~/components/pages/_shared";
+import {
+  Code,
+  TitleCreator,
+  TextWithEmoji,
+  GitHubRepo,
+  Playground,
+  ImageWithLink,
+} from "~/components/pages/_shared";
 import * as HTMLSemanticTagsBlogPostComponents from "~/components/pages/blog//html-semantic-tags";
 import * as MyFavoriteMusicAndMDXBlogPostComponents from "~/components/pages/blog//my-favorite-music-and-mdx";
 import * as MusicComponents from "~/components/pages/music";
@@ -23,10 +30,10 @@ import { ROUTES } from "~/utils/routing";
 export const MDXComponents = {
   a: Link,
   blockquote: Blockquote,
-  h1: Title("h1", { showLinkIcon: true }),
-  h2: Title("h2", { showLinkIcon: true }),
-  h3: Title("h3", { showLinkIcon: true }),
-  h4: Title("h4", { showLinkIcon: true }),
+  h1: TitleCreator("h1", { showLinkIcon: true }),
+  h2: TitleCreator("h2", { showLinkIcon: true }),
+  h3: TitleCreator("h3", { showLinkIcon: true }),
+  h4: TitleCreator("h4", { showLinkIcon: true }),
   img: Image,
   ul: List,
   pre: CodePrimitive,
@@ -47,7 +54,6 @@ export const MDXComponents = {
   },
 
   // Primitive components
-  Code,
   Collapsible,
   Icon,
   Image,
@@ -56,7 +62,9 @@ export const MDXComponents = {
   Space,
 
   // Shared components
+  Code,
   GitHubRepo,
+  ImageWithLink,
   Playground,
   TextWithEmoji,
 

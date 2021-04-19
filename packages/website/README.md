@@ -18,6 +18,8 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 
 1. `yarn install`
 
+1. `yarn husky:install` (Optional)
+
 1. Create a `.env` file
 
    ```

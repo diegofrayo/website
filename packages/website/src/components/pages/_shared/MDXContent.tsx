@@ -20,11 +20,11 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
         /* Spacing: parent components */
         :global(.dfr-MDXContent--default) > :global(blockquote),
         :global(.dfr-MDXContent--default) > :global(hr),
-        :global(.dfr-MDXContent--default) > :global(img),
         :global(.dfr-MDXContent--default) > :global(ol),
         :global(.dfr-MDXContent--default) > :global(p),
         :global(.dfr-MDXContent--default) > :global(pre),
         :global(.dfr-MDXContent--default) > :global(ul),
+        :global(.dfr-MDXContent--default) > :global(a) > :global(img),
         :global(.dfr-MDXContent--default) :global(*[data-markdown-block]) {
           @apply tw-mb-6;
         }
@@ -34,7 +34,8 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
         :global(.dfr-MDXContent--default) :global(li) > :global(pre),
         :global(.dfr-MDXContent--default) :global(li) > :global(blockquote),
         :global(.dfr-MDXContent--default) :global(li) > :global(img),
-        :global(.dfr-MDXContent--default) :global(blockquote) > :global(p) {
+        :global(.dfr-MDXContent--default) :global(blockquote) > :global(p),
+        :global(.dfr-MDXContent--default) :global(li) > :global(a) > :global(img) {
           @apply tw-mb-3;
         }
 
@@ -63,8 +64,8 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
         }
 
         /* Images */
-        :global(.dfr-MDXContent--default) > :global(img),
-        :global(.dfr-MDXContent--default) :global(li) > :global(img) {
+        :global(.dfr-MDXContent--default) > :global(a) > :global(img),
+        :global(.dfr-MDXContent--default) :global(li) > :global(a) > :global(img) {
           margin-left: auto;
           margin-right: auto;
         }
