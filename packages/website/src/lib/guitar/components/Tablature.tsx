@@ -239,6 +239,10 @@ function Position({
           top: 10px;
           width: 100%;
         }
+
+        :global(.tw-dark) .Position--cell::before {
+          background-color: white;
+        }
       `}</style>
     </div>
   );

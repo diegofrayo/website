@@ -31,13 +31,13 @@ class ChordsService {
 
                 if (!musicNote) {
                   throw new Error(
-                    "Syntax error => You have entered a empty music note, probably you entered a '|' character at the end",
+                    "You have entered a empty music note, probably you entered a '|' character at the end",
                   );
                 }
 
                 if (more.length > 0) {
                   throw new Error(
-                    "Syntax error => A music note only can have 3 elements (guitarString,guitarFret,finger?) as maximum",
+                    "A music note only can have 3 elements (guitarString,guitarFret,finger?) as maximum",
                   );
                 }
 
@@ -47,8 +47,6 @@ class ChordsService {
                 };
 
                 if (this.isBarreChord(guitarString)) {
-                  console.log(guitarString);
-
                   (parsedMusicNote as I_BarreMusicNote).barre = this.parseBarre(guitarString);
                 } else {
                   (parsedMusicNote as I_SimpleMusicNote).guitarString = this.parseGuitarString(
@@ -67,7 +65,7 @@ class ChordsService {
         .sort();
 
       if (musicNotesFrets.length === 0) {
-        throw new Error("A musicNote must have at least one music note");
+        throw new Error("A chord must have at least one music note");
       }
 
       const groupedMusicNotesByGuitarFret = parsedMusicNotes.reduce(

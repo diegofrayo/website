@@ -6,7 +6,7 @@ import { withTranslations } from "~/hocs";
 import { T_ReactElement, T_SiteTexts } from "~/types";
 import { isUserLoggedIn } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
-import { removeEmojiFromString } from "~/utils/strings";
+import { generateSlug, removeEmojiFromString } from "~/utils/strings";
 
 type T_PlaygroundPageProps = {
   SiteTexts: T_SiteTexts;
@@ -28,7 +28,7 @@ function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
         title={SiteTexts.page.current_locale.title}
       >
         <PagesList
-          pages={["🎼 chords", "📝 strings", "💅 styles", "👓 virtual-reality", "💬 wp"]}
+          pages={["🎼 chords creator", "📝 strings", "💅 styles", "👓 virtual-reality", "💬 wp"]}
         />
 
         {isUserLoggedIn() && (
@@ -56,7 +56,7 @@ function PagesList({ pages }) {
         return (
           <List.Item key={`PlaygroundPage-name-${name}`}>
             <Link
-              href={`${ROUTES.PLAYGROUND}/${removeEmojiFromString(name)}`}
+              href={`${ROUTES.PLAYGROUND}/${generateSlug(removeEmojiFromString(name))}`}
               variant={Link.variant.SIMPLE}
               isNextLink
             >

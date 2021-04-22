@@ -7,7 +7,7 @@ import { T_ReactElement } from "~/types";
 
 function ChordsPage(): T_ReactElement {
   return (
-    <PlaygroundPageTemplate pageName="🎼 musicNotes">
+    <PlaygroundPageTemplate pageName="🎼 chords creator">
       <Content />
     </PlaygroundPageTemplate>
   );
@@ -62,7 +62,7 @@ function Content(): T_ReactElement {
         </code>
         <Space size={6} />
 
-        <div className="tw-border tw-rounded-md tw-p-3">
+        <div className="tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-rounded-md tw-p-3">
           <Title is="h2" className="tw-mb-4">
             Output
           </Title>

@@ -41,7 +41,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
   if (error) {
     return (
       <strong className="tw-block tw-text-red-700 dark:tw-text-red-400 tw-mt-2">
-        Chords syntax error: {error.message}
+        Syntax error: {error.message}
       </strong>
     );
   }
@@ -174,7 +174,9 @@ function useController({
   data: T_ParsedChord;
   error: Error | undefined;
 } {
-  const { data, error } = useExecuteCallback(() => ChordsService.create(musicNotes));
+  const { data, error } = useExecuteCallback(musicNotes, (params) => {
+    return ChordsService.create(params);
+  });
 
   const chordContainerRef = useRef<HTMLDivElement>(null);
   const [showChordInput, setChordInput] = useState(false);
