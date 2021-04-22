@@ -22,22 +22,25 @@ function useExecuteCallback(
     savedHandler.current = callback;
   });
 
-  useEffect(() => {
-    const executeCallback = async (params) => {
-      try {
-        const result = await savedHandler.current(params);
-        setData(result);
-        setError(undefined);
-      } catch (error) {
-        setData(undefined);
-        setError(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  useEffect(
+    function executeCallback() {
+      const executeCallback = async (params) => {
+        try {
+          const result = await savedHandler.current(params);
+          setData(result);
+          setError(undefined);
+        } catch (error) {
+          setData(undefined);
+          setError(error);
+        } finally {
+          setIsLoading(false);
+        }
+      };
 
-    executeCallback(params);
-  }, [params]);
+      executeCallback(params);
+    },
+    [params],
+  );
 
   return { isLoading, data, error };
 }

@@ -21,9 +21,11 @@ C#
 C#m
 C#m7
 C
+Cadd9
 Cmaj7
 
 D
+D/F#
 Dm
 Dm7
 Dsus

@@ -31,7 +31,17 @@ type T_TitleProps = {
 };
 
 function Title(props: T_TitleProps): T_ReactElement {
-  const { Tag, id, className, children, variant, showLinkIcon } = useController(props);
+  const {
+    // props
+    variant,
+    showLinkIcon,
+    children,
+
+    // utils
+    id,
+    className,
+    Tag,
+  } = useController(props);
 
   if (variant === E_Variants.PRIMARY && showLinkIcon) {
     return (
@@ -117,17 +127,20 @@ function useController({
   }
 
   return {
+    // props
+    variant,
+    showLinkIcon,
+    children,
+
+    // utils
     id:
       variant === E_Variants.PRIMARY && typeof children === "string" ? generateSlug(children) : "",
-    children,
-    Tag,
     className: classNames(
       `dfr-Title dfr-Title--${variant.toLowerCase()}`,
       "tw-font-bold tw-font-sans",
       generateStyles(Tag),
       className,
     ),
-    variant,
-    showLinkIcon,
+    Tag,
   };
 }

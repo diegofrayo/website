@@ -55,6 +55,11 @@
           "text": "Todas las hojas son del viento",
           "url": "https://acordes.lacuerda.net/luis_a_spinetta/todas_las_hojas_son_del_viento-4.shtml",
           "source": "lacuerda"
+        },
+        {
+          "text": "Como Tocar \"Todas Las Hojas Son del Viento\" de Spinetta en Guitarra",
+          "url": "https://youtu.be/Yo6YOrFDvvQ",
+          "source": "youtube"
         }
       ],
       "chords": ["?2", "C", "D", "Em", "F7", "Fmaj7", "G", "G6"]
@@ -150,6 +155,16 @@
           "text": "Canción para los días de la vida",
           "source": "lacuerda",
           "url": "https://acordes.lacuerda.net/luis_a_spinetta/cancion_para_los_dias_de_la_vida-2.shtml"
+        },
+        {
+          "text": "Canción para los días de la vida - Spinetta",
+          "url": "https://youtu.be/oIfk9XBBapc",
+          "source": "youtube"
+        },
+        {
+          "text": "Canción para los días de la vida (Spinetta cover)",
+          "url": "https://youtu.be/8r2HS3qJ4G4",
+          "source": "youtube"
         }
       ],
       "chords": [
@@ -360,13 +375,29 @@
       "artist": "Divididos",
       "album": "Narigón del siglo",
       "year": 2000,
-      "progress": 0,
+      "progress": 3,
       "created_at": "28/03/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/2Jm3VE0qGqKSxqPbbVt6oC?si=67f9f66f33294f5c",
       "youtube_url": "https://youtu.be/Z_tHBX0mj1s",
-      "sources": [],
-      "chords": []
+      "sources": [
+        {
+          "text": "Par Mil",
+          "url": "https://acordes.lacuerda.net/divididos/par_mil-3.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Como Tocar Par Mil de Divididos - Tutorial Para Guitarra Acustica - Ricardo Mollo",
+          "url": "https://youtu.be/ju0ACmzXb9Q",
+          "source": "youtube"
+        },
+        {
+          "text": "GUITARRA | Par Mil - Divididos (Guitarra cover/tutorial) Martin Lopez",
+          "url": "https://youtu.be/QhjBRjEFnGM",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["A", "C", "Cadd9", "D", "Em", "G"]
     }
   ]
 }

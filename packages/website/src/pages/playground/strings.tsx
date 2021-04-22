@@ -20,7 +20,15 @@ export default StringsPage;
 // --- Components ---
 
 function Content(): T_ReactElement {
-  const { texts, textareaRef, handleTextAreaChange, handleCopyText } = useController();
+  const {
+    // states
+    texts,
+    textareaRef,
+
+    // handlers
+    handleTextAreaChange,
+    handleCopyText,
+  } = useController();
 
   return (
     <Fragment>
@@ -183,9 +191,12 @@ function useController(): T_UseController {
   }
 
   return {
+    // states
     texts,
+    textareaRef,
+
+    // handlers
     handleTextAreaChange,
     handleCopyText,
-    textareaRef,
   };
 }
