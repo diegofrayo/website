@@ -1,9 +1,9 @@
 ?1
 ?2
-?3
 
 A
 Am
+Am/F#
 Am/G
 Am7
 Asus
@@ -12,12 +12,17 @@ Asus4
 
 B
 B7
+Bbm
+Bbm/G#
 Bm
 Bm7
+Bø
 
-C
 C#
 C#m
+C#m7
+C
+Cmaj7
 
 D
 Dm
@@ -25,14 +30,17 @@ Dm7
 Dsus
 
 E
+E7/9
 Em
 Esus
 
-F
 F#m
+F#m7
+F
 F7
+Fmaj7
 
-G
 G#
 G#m
+G
 G6

@@ -2,12 +2,12 @@ import React, { Fragment, useState } from "react";
 
 import { Space, Title } from "~/components/primitive";
 import { PlaygroundPageTemplate } from "~/components/pages/playground";
-import { Chords } from "~/lib/chords";
+import { GuitarChord } from "~/lib/guitar";
 import { T_ReactElement } from "~/types";
 
 function ChordsPage(): T_ReactElement {
   return (
-    <PlaygroundPageTemplate pageName="🎼 chords">
+    <PlaygroundPageTemplate pageName="🎼 musicNotes">
       <Content />
     </PlaygroundPageTemplate>
   );
@@ -18,7 +18,7 @@ export default ChordsPage;
 // --- Components ---
 
 function Content(): T_ReactElement {
-  const [inputs, setInputs] = useState({ name: "", chords: "" });
+  const [inputs, setInputs] = useState({ name: "", musicNotes: "" });
 
   return (
     <Fragment>
@@ -42,15 +42,15 @@ function Content(): T_ReactElement {
         </label>
         <Space size={4} />
 
-        <label htmlFor="input-chords">
+        <label htmlFor="input-musicNotes">
           <strong className="tw-block tw-cursor-pointer">Chords</strong>
           <input
-            id="input-chords"
+            id="input-musicNotes"
             placeholder="4,2,1|3,2,2|2,2,3"
             className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
-            value={inputs.chords}
+            value={inputs.musicNotes}
             onChange={(e) => {
-              setInputs({ ...inputs, chords: e.currentTarget.value });
+              setInputs({ ...inputs, musicNotes: e.currentTarget.value });
             }}
           />
         </label>
@@ -66,50 +66,50 @@ function Content(): T_ReactElement {
           <Title is="h2" className="tw-mb-4">
             Output
           </Title>
-          <Chords name={inputs.name} chords={inputs.chords} />
+          <GuitarChord name={inputs.name} musicNotes={inputs.musicNotes} />
         </div>
       </div>
-      <Space size={8} variant={Space.variant.DASHED} />
+      <Space sizeTop={8} sizeBottom={5} variant={Space.variant.DASHED} />
 
       <div>
         <Title is="h2" className="tw-mb-4">
           Examples
         </Title>
 
-        <Chords
+        <GuitarChord
           name="MI Mayor (E)"
-          chords={[
-            { finger: 3, fret: 2, string: 5 },
-            { finger: 2, fret: 2, string: 4 },
-            { finger: 1, fret: 1, string: 3 },
+          musicNotes={[
+            { finger: 3, guitarFret: 2, guitarString: 5 },
+            { finger: 2, guitarFret: 2, guitarString: 4 },
+            { finger: 1, guitarFret: 1, guitarString: 3 },
           ]}
         />
         <Space size={8} />
 
-        <Chords
+        <GuitarChord
           name="DO Mayor (C)"
-          chords={[
-            { finger: 3, fret: 3, string: 5 },
-            { finger: 2, fret: 2, string: 4 },
-            { finger: 1, fret: 1, string: 2 },
+          musicNotes={[
+            { finger: 3, guitarFret: 3, guitarString: 5 },
+            { finger: 2, guitarFret: 2, guitarString: 4 },
+            { finger: 1, guitarFret: 1, guitarString: 2 },
           ]}
           stringsToSkip={[6]}
         />
         <Space size={8} />
 
-        <Chords name="LA Mayor (A)" chords="4,2,1|3,2,2|2,2,3" stringsToSkip={[6]} />
+        <GuitarChord name="LA Mayor (A)" musicNotes="4,2,1|3,2,2|2,2,3" stringsToSkip={[6]} />
         <Space size={8} />
 
-        <Chords name="RE Mayor (D)" chords="3,2,1|1,2,2|2,3,3" stringsToSkip="6,5" />
+        <GuitarChord name="RE Mayor (D)" musicNotes="3,2,1|1,2,2|2,3,3" stringsToSkip="6,5" />
         <Space size={8} />
 
-        <Chords
+        <GuitarChord
           name="SI Mayor (B)"
-          chords={[
-            { finger: 1, fret: 2, barre: { until: 5 } },
-            { finger: 4, fret: 4, string: 4 },
-            { finger: 3, fret: 4, string: 3 },
-            { finger: 2, fret: 4, string: 2 },
+          musicNotes={[
+            { finger: 1, guitarFret: 2, barre: 5 },
+            { finger: 4, guitarFret: 4, guitarString: 4 },
+            { finger: 3, guitarFret: 4, guitarString: 3 },
+            { finger: 2, guitarFret: 4, guitarString: 2 },
           ]}
         />
       </div>

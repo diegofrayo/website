@@ -32,6 +32,7 @@ module.exports = {
     "import/no-unresolved": "off",
 
     "@typescript-eslint/explicit-module-boundary-types": "warn",
+    "no-debugger": "warn",
 
     "@typescript-eslint/no-unused-vars": "error",
     "no-loops/no-loops": "error",

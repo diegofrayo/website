@@ -4,8 +4,8 @@ A            B       Bm
 voy a ver si puedo correr
 F#m      C#m     D               C#m
 con la mañana silbándome en la espalda
-Bm  C#m             E     D
-o mirarme en las burbujas
+Bm  C#m             E   INTRO   (x2)
+o mirarme en las burbu..jas
 
 
 A              G#m     F#m
@@ -14,8 +14,8 @@ A           B        Bm
 entre tanta gente de pie
 F#m           C#m       D         C#m
 cuidan de mis alas unos gnomos de lata
-Bm     C#m          E    D
-que de noche nunca ríen
+Bm     C#m          E  INTRO   (x2)
+que de noche nunca rí..en
 
 
 A            G#m         F#m
@@ -24,14 +24,14 @@ A         B         Bm
 voy a limitarme a vivir
 F#m        C#m          D          C#m
 mojaré mis alas como el árbol o el ángel
-Bm   C#m          E    D
-o quizás muera de pena
+Bm   C#m          E   INTRO   (x2)
+o quizás muera de pe..na
 
 
 A           G#m        F#m
 tengo mucho tiempo por hoy
-A           B         Bm    E
-los relojes harán que can---te
+A           B         Bm   E
+los relojes harán que can..te
 
 
 Am  Am  Am/G  Am/G  Bm7             Am  Am  Am/G  Am/G  Bm7
@@ -40,15 +40,20 @@ E  E  E   Am  Asus2  Asus4          Am  Asus2  Asus4
 LA LA LA  LA  LA     LA     ...     LA  LA     LA
 
 
-Y la espuma gira en torno a mi piel
-me han puesto manos para hablarle
-a las cosas de mi
-y al fin mi duende nació
-tiene orejas blancas
-como un soplo de pan y arroz
-y un hongo como nariz
-cuatro pelos locos y un violín que nunca calla
-solo se desprende y es igual a las guirnaldas
+        C#   G#      Bbm         Bbm/G#
+y la espuma gira en torno a mi piel
+    C#         G#            A           E
+me han puesto manos para hablarle a las cosas
+    C       G       Am       Am/G
+de mi y al fin mi duende nació
+ C             G              G#      E     A
+tiene orejas blancas como un soplo de pan y arroz
+      C#m7  F#m7        A           C#m
+y un hongo como nariz cuatro pelos locos
+         F#m7          C#m
+y un violín que nunca calla
+ D           C#m7 Bm7        C#m7         E    INTRO   (x2)
+solo se desprende    y es igual a las guirnal..das
 
 
 A          G#m        F#m
@@ -57,8 +62,8 @@ A            B       Bm
 me dejó vibrando al nacer
 F#m      C#m     D               C#m  C#m
 pesa y es liviano como un hilo sin nombre
-Bm  C#m             E     D
-suena un poco a mi guitarra
+Bm  C#m             E     INTRO   (x2)
+suena un poco a mi guita..rra
 
 
 A          G#m        F#m
@@ -67,16 +72,19 @@ A            B       Bm
 entre tanta gente detrás
 F#m      C#m     D               C#m  C#m
 me pondré las ramas de este sol que me espera
-Bm  C#m             E     D
-para usarme como al aire
+Bm  C#m             E   INTRO   (x2)
+para usarme como al ai..re
 
 
-Y es que al fin mi duende se abrió
+   C        G        Am       Am/G
+y es que al fin mi duende se abrió
+ C          G         G#       E
 tiene un corazón de mantel y batón
+A             C#m7     F#m7
 y un guiño al ver que todo es verdad
-
-Ya los gnomos cuiden
+A               C#m
+ya los gnomos cuiden
+      F#m7               C#m
 a un violín que siempre canta
-nunca se adormece y es igual a las guirnaldas
-y es que nunca calla, solo se desprende
-y es igual a las guirnaldas
+ D          C#m7 Bm7     C#m7          E    INTRO   (x2)
+nunca se adormece y es igual a las guirnal..das

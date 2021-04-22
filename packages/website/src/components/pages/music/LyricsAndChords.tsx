@@ -2,9 +2,8 @@ import React, { useState } from "react";
 
 import { Blockquote, Button, Icon, Modal, Space } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import { Chords } from "~/lib/chords";
-import MusicService from "~/services/music";
-import { T_Chord, T_Function, T_ReactElement } from "~/types";
+import { GuitarChord, GuitarService, T_Chord } from "~/lib/guitar";
+import { T_Function, T_ReactElement } from "~/types";
 
 type T_LyricsAndChords = {
   children: string;
@@ -13,9 +12,15 @@ type T_LyricsAndChords = {
 
 function LyricsAndChords(props: T_LyricsAndChords): T_ReactElement {
   const {
+    // states
     isModalVisible,
     selectedChord,
+
+    // handlers
     handleModalClose,
+
+    // utils
+    numberOfChords,
     parsedChords,
     parsedLyrics,
   } = useController(props);
@@ -24,7 +29,7 @@ function LyricsAndChords(props: T_LyricsAndChords): T_ReactElement {
     <div>
       {parsedChords && (
         <Blockquote className="tw-p-4 tw-border" variant={Blockquote.variant.UNSTYLED}>
-          <strong className="tw-block tw-mb-2">Acordes</strong>
+          <strong className="tw-block tw-mb-2">Acordes [{numberOfChords}]</strong>
           <pre
             className="tw-break-all tw-max-w-full tw-whitespace-normal"
             dangerouslySetInnerHTML={{ __html: parsedChords }}
@@ -42,16 +47,17 @@ function LyricsAndChords(props: T_LyricsAndChords): T_ReactElement {
       )}
 
       <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
-        <div className="tw-bg-white dark:tw-bg-black tw-p-4 tw-rounded-md">
+        <div className="tw-bg-white dark:tw-bg-black tw-p-4 tw-rounded-md tw-max-w-lg tw-mx-auto">
           {selectedChord && (
-            <Chords
+            <GuitarChord
               name={selectedChord.name}
-              chords={selectedChord.chords}
+              musicNotes={selectedChord.musicNotes}
               stringsToSkip={selectedChord.stringsToSkip}
               showOptions={false}
             />
           )}
           <Space sizeTop={6} sizeBottom={1} />
+
           <Button className="tw-text-center tw-block tw-w-full" onClick={handleModalClose}>
             <Icon icon={Icon.icon.X} size={20} />
           </Button>
@@ -69,6 +75,7 @@ function useController({
   children,
   chords,
 }: T_LyricsAndChords): {
+  numberOfChords: number;
   isModalVisible: boolean;
   selectedChord: T_Chord | undefined;
   parsedChords: string;
@@ -79,24 +86,32 @@ function useController({
   const [selectedChord, setSelectedChord] = useState<T_Chord | undefined>(undefined);
 
   useDidMount(() => {
-    document.querySelectorAll(".chord")?.forEach((button) => {
+    document.querySelectorAll(".dfr-Chord")?.forEach((button) => {
       button.addEventListener("click", function (event) {
-        setSelectedChord(MusicService.findChord((event.target as HTMLElement)?.innerText));
+        setSelectedChord(GuitarService.findChord((event.target as HTMLElement)?.innerText));
         setIsModalVisible(true);
       });
     });
   });
 
-  function handleModalClose() {
+  function handleModalClose(): void {
     setIsModalVisible(false);
     setSelectedChord(undefined);
   }
 
   return {
+    // states
     isModalVisible,
     selectedChord,
-    parsedChords: chords ? MusicService.parseLyricsAndChords(chords.sort().join(" | ")) : "",
-    parsedLyrics: MusicService.parseLyricsAndChords(children),
+
+    // handlers
     handleModalClose,
+
+    // utils
+    numberOfChords: chords.length,
+    parsedChords: chords
+      ? GuitarService.parseSongLyricsAndItsChords(chords.sort().join(" | "))
+      : "",
+    parsedLyrics: GuitarService.parseSongLyricsAndItsChords(children),
   };
 }

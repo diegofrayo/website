@@ -1,13 +1,15 @@
 import fs from "fs";
-import SONGS from "../src/data/music/songs.json";
+import CHORDS from "../src/lib/guitar/data/chords.json";
 
-const listOfChordsContent = Object.keys(SONGS.chords)
+const listOfChordsContent = Object.entries(CHORDS)
   .sort()
-  .reduce((result, chord, index, array) => {
+  .reduce((result, [chordName, chordInfo], index, array) => {
+    if (!chordInfo.music_notes) return result;
+
     return (
       result +
-      `${chord}${
-        array.length - 1 !== index && chord.charAt(0) !== (array[index + 1] || "").charAt(0)
+      `${chordName}${
+        array.length - 1 !== index && chordName.charAt(0) !== (array[index + 1] || [])[0]?.charAt(0)
           ? "\n\n"
           : "\n"
       }`

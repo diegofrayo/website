@@ -6,7 +6,7 @@ export type T_Primitive = string | number | boolean | undefined | null;
 
 export type T_Object<Value = any> = Record<string, Value>;
 
-export type T_Function = () => void;
+export type T_Function<Return = void> = () => Return;
 
 export type T_ReactChildrenProp = React.ReactNode;
 
@@ -120,12 +120,6 @@ export type T_Song = {
   createdAt: string;
   isPublished: boolean;
   sources: { text: string; url: string; source: string }[];
-};
-
-export type T_Chord = {
-  name: string;
-  chords: string;
-  stringsToSkip: string;
 };
 
 // --- Movies ---

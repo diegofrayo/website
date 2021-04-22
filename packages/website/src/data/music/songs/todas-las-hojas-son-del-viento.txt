@@ -1,10 +1,10 @@
-?2|G6
+Fmaj7|G6
 Cuida bien al niño
-?3|F7
+?2|F7
 cuida bien su mente
-?2|G6
+Fmaj7|G6
 dale un sol de enero
-?3|F7
+?2|F7
 dale un vientre blanco
 G    G (punteo)        Em
 dale tibia leche de tu cuerpo
@@ -23,13 +23,13 @@ C|F7                    G
        menos la luz del sol
 
 
-?2|G6
+Fmaj7|G6
 hoy que un hijo hiciste
-?3|F7
+?2|F7
 cambia ya tu mente
-?2|G6
+Fmaj7|G6
 cuídalo de drogas
-?3|F7
+?2|F7
 nunca lo reprimas
 G    G (punteo)           Em
 dale el áurea misma de tu sexo

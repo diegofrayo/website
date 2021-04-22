@@ -68,7 +68,7 @@
           "source": "lacuerda"
         }
       ],
-      "chords": ["?2", "?3", "C", "D", "G", "Em", "F7", "G6"]
+      "chords": ["Fmaj7", "?2", "C", "D", "G", "Em", "F7", "G6"]
     },
     {
       "id": "verano-del-92",
@@ -251,7 +251,7 @@
       "artist": "Invisible",
       "album": "A 18' del sol",
       "year": 1977,
-      "progress": 3,
+      "progress": 4,
       "created_at": "12/01/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/3T5SksrlFxunlotQ0lmSwv?si=6c94d32477c64784",
@@ -270,14 +270,70 @@
         "Asus2",
         "Asus4",
         "B",
+        "Bbm",
+        "Bbm/G#",
         "Bm",
         "Bm7",
+        "C#",
         "C#m",
+        "C#m7",
         "D",
         "E",
         "F#m",
+        "F#m7",
+        "G#",
         "G#m"
       ]
+    },
+    {
+      "id": "durazno-sangrando",
+      "title": "Durazno sangrando",
+      "artist": "Invisible",
+      "album": "Durazno Sangrando",
+      "year": 1975,
+      "progress": 4,
+      "created_at": "20/04/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/6pjbkrGImw09Nv5Ji3emkr?si=691d1ba9a7784bee",
+      "youtube_url": "https://youtu.be/i4_pVlJdbEY",
+      "sources": [
+        {
+          "text": "Durazno sangrando",
+          "url": "https://acordes.lacuerda.net/luis_a_spinetta/durazno_sangrando-3.shtml",
+          "source": "lacuerda"
+        }
+      ],
+      "chords": ["Am", "Am/F#", "Bø", "C", "Cmaj7", "Dm7", "E", "E7/9", "Fmaj7"]
+    },
+    {
+      "id": "talk-is-cheap",
+      "title": "Talk is cheap",
+      "artist": "Chet Faker",
+      "album": "Built on Glass",
+      "year": 2014,
+      "progress": 4,
+      "created_at": "22/04/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/655HjEK4nNzceomQVpNzgN?si=d36ddedb783b410e",
+      "youtube_url": "https://youtu.be/aP_-P_BS6KY",
+      "sources": [
+        {
+          "text": "Talk Is Cheap chords by Chet Faker",
+          "url": "https://tabs.ultimate-guitar.com/tab/chet-faker/talk-is-cheap-chords-1471017",
+          "source": "ultimate-guitar"
+        },
+        {
+          "text": "Talk is Cheap - Chet Faker (cover)",
+          "url": "https://youtu.be/wyrWEINvhe0",
+          "source": "youtube"
+        },
+        {
+          "text": "Live Session: Chet Faker - Talk is Cheap (Aguacate Cover)",
+          "url": "https://youtu.be/mffmtA9-o08",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["Am", "C", "G", "D"]
     },
     {
       "id": "par-mil",
@@ -307,45 +363,5 @@
       "sources": [],
       "chords": []
     }
-  ],
-  "chords": {
-    "A": { "chords": "4,2,1|3,2,2|2,2,3", "strings_to_skip": "6" },
-    "Am": { "chords": "4,2,2|3,2,3|2,1,1", "strings_to_skip": "6" },
-    "Am7": { "chords": "4,2,2|2,1,1", "strings_to_skip": "6" },
-    "Asus": { "chords": "4,2,1|3,2,2|2,2,3|2,3,4", "strings_to_skip": "6" },
-    "Asus2": { "chords": "3,2,2|2,2,3|2,3,4", "strings_to_skip": "6" },
-    "Asus4": { "chords": "3,2,2|2,2,3|2,3,4|2,3,4", "strings_to_skip": "6" },
-    "Am/G": { "chords": "4,2,2|3,2,3|2,1,1|6,3,4", "strings_to_skip": "" },
-
-    "B": { "chords": "6x,2|4,4,2|3,4,3|2,4,4", "strings_to_skip": "6" },
-    "Bm": { "chords": "6x,2|2,3,2|4,4,3|3,4,4", "strings_to_skip": "6" },
-    "B7": { "chords": "6x,2|4,4,2|2,4,3", "strings_to_skip": "6" },
-    "Bm7": { "chords": "6x,2|2,3,2|4,4,3", "strings_to_skip": "6" },
-
-    "C": { "chords": "5,3,3|4,2,2|2,1,1", "strings_to_skip": "6" },
-    "C#": { "chords": "5x,4|4,6,2|3,6,3|2,6,4", "strings_to_skip": "" },
-    "C#m": { "chords": "5x,4|4,6,3|3,6,4|2,5,2", "strings_to_skip": "" },
-
-    "D": { "chords": "3,2,1|1,2,2|2,3,3", "strings_to_skip": "6,5" },
-    "Dm": { "chords": "1,1,1|3,2,2|2,3,3", "strings_to_skip": "6,5" },
-    "Dm7": { "chords": "2,1,1|1,1,2|3,2,3", "strings_to_skip": "6,5" },
-    "Dsus": { "chords": "3,2,1|1,2,2|2,3,3|1,3,4", "strings_to_skip": "6,5" },
-
-    "E": { "chords": "5,2,3|4,2,2|3,1,1", "strings_to_skip": "" },
-    "Em": { "chords": "5,2,2|4,2,3", "strings_to_skip": "" },
-    "Esus": { "chords": "5,2,3|4,2,2|3,1,1|3,2,4", "strings_to_skip": "" },
-
-    "F": { "chords": "6x,1|5,3,3|4,3,4|3,2,2", "strings_to_skip": "" },
-    "F#m": { "chords": "6x,2|5,4,3|4,4,4", "strings_to_skip": "" },
-    "F7": { "chords": "6x,1|5,3,3|3,2,2", "strings_to_skip": "" },
-
-    "G": { "chords": "5,2,1|6,3,2|1,3,3", "strings_to_skip": "" },
-    "G#": { "chords": "6x,4|5,6,3|4,6,4|3,5,2", "strings_to_skip": "" },
-    "G#m": { "chords": "6x,4|5,6,3|4,6,4", "strings_to_skip": "" },
-    "G6": { "chords": "6,3,2|5,2,1", "strings_to_skip": "" },
-
-    "?1": { "chords": "4,4,1|2,4,2|3,5,3|1,5,4", "strings_to_skip": "" },
-    "?2": { "chords": "2,1,1|3,2,2|4,3,3", "strings_to_skip": "" },
-    "?3": { "chords": "2,3,1|3,4,2|4,5,3", "strings_to_skip": "" }
-  }
+  ]
 }

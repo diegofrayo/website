@@ -67,26 +67,24 @@ export async function copyToClipboard(
 
 export function detectEmojisSupport(): void {
   try {
-    const pixelRatio = window.devicePixelRatio || 1;
-    const offset = 12 * pixelRatio;
     const node = <HTMLCanvasElement>window.document.createElement("canvas");
     const ctx: CanvasRenderingContext2D | null = node.getContext("2d");
 
     if (!ctx) {
-      throw new Error();
+      throw new Error("Canvas null");
     }
 
-    ctx.fillStyle = "#f00";
+    const smileEmoji = String.fromCharCode(55357) + String.fromCharCode(56835);
     ctx.textBaseline = "top";
     ctx.font = "32px Arial";
-    ctx.fillText("\ud83d\udc28", 0, 0); // U+1F428 KOALA
+    ctx.fillText(smileEmoji, 0, 0);
 
-    if (ctx.getImageData(offset, offset, 1, 1).data[0] === 0) {
-      throw new Error();
+    if (ctx.getImageData(16, 16, 1, 1).data[0] === 0) {
+      throw new Error("Emojis not rendered");
     }
 
     if (isAndroid() && getAndroidVersion() < 5) {
-      throw new Error();
+      throw new Error("Android version is less than 5");
     }
   } catch (error) {
     console.error("Emojis not supported");
