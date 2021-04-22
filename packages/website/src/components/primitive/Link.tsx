@@ -24,17 +24,22 @@ type T_LinkProps = T_HTMLAttributes["a"] & {
   variant?: E_Variants;
 };
 
-function Link({
-  children,
-  href = "",
-  className = "",
-  is = "a",
-  external = true,
-  isNextLink = false,
-  variant = E_Variants.DEFAULT,
-  ...rest
-}: T_LinkProps): T_ReactElement {
-  const { getExternalAttrs, onClick } = useController(href);
+function Link(props: T_LinkProps): T_ReactElement {
+  const {
+    // utils
+    getExternalAttrs,
+    onClick,
+
+    // props
+    children,
+    href,
+    className,
+    is,
+    external,
+    isNextLink,
+    variant,
+    ...rest
+  } = useController(props);
 
   if (!href || !children) {
     console.warn("Link component: href or children are falsy");
@@ -77,7 +82,16 @@ export default Link;
 
 // --- Controller ---
 
-function useController(href) {
+function useController({
+  children,
+  href = "",
+  className = "",
+  is = "a",
+  external = true,
+  isNextLink = false,
+  variant = E_Variants.DEFAULT,
+  ...rest
+}: T_LinkProps) {
   function getExternalAttrs(href, external) {
     if (external === false || href.startsWith("#")) return {};
     return { target: "_blank", rel: "noreferrer" };
@@ -92,6 +106,16 @@ function useController(href) {
   }
 
   return {
+    children,
+    href,
+    className,
+    is,
+    external,
+    isNextLink,
+    variant,
+    ...rest,
+
+    // utils
     getExternalAttrs,
     onClick: href.startsWith("#") ? onClick : undefined,
   };

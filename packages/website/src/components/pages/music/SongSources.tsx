@@ -4,11 +4,11 @@ import { Icon, Image, Link, List, Title } from "~/components/primitive";
 import { T_ReactElement, T_Song } from "~/types";
 import { sortBy } from "~/utils/misc";
 
-type T_SongSources = {
+type T_SongSourcesProps = {
   sources: T_Song["sources"];
 };
 
-function SongSources(props: T_SongSources): T_ReactElement {
+function SongSources(props: T_SongSourcesProps): T_ReactElement {
   const { sources, getImageComponent } = useController(props);
 
   if (sources.length === 0) return null;
@@ -53,7 +53,7 @@ export default SongSources;
 
 // --- Controller ---
 
-function useController({ sources }: T_SongSources) {
+function useController({ sources }: T_SongSourcesProps) {
   function getImageComponent(source: string) {
     if (source.includes("lacuerda")) {
       return function ImageComponent() {

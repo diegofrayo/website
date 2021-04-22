@@ -8,8 +8,18 @@ type T_CollapsibleProps = {
   openByDefault?: boolean;
 };
 
-function Collapsible({ children, ...rest }: T_CollapsibleProps): T_ReactElement {
-  const { toggleIsCollapsed, title, containerRef } = useController(rest);
+function Collapsible(props: T_CollapsibleProps): T_ReactElement {
+  const {
+    // props
+    children,
+
+    // states
+    containerRef,
+
+    // utils
+    title,
+    toggleIsCollapsed,
+  } = useController(props);
 
   return (
     <details ref={containerRef} data-markdown-block>
@@ -26,17 +36,18 @@ export default Collapsible;
 // --- Controller ---
 
 type T_UseController = {
-  isCollapsed: boolean;
+  children: T_CollapsibleProps["children"];
   title: string;
   toggleIsCollapsed: T_Function;
   containerRef: T_ReactRefObject<HTMLDetailsElement>;
 };
 
 function useController({
+  children,
   openByDefault = false,
   title = "",
-}: Omit<T_CollapsibleProps, "children">): T_UseController {
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(openByDefault);
+}: T_CollapsibleProps): T_UseController {
+  const [isCollapsed, setIsCollapsed] = useState(openByDefault);
   const containerRef = useRef<HTMLDetailsElement>(null);
 
   useEffect(
@@ -53,9 +64,14 @@ function useController({
   );
 
   return {
-    isCollapsed,
+    // props
+    children,
+
+    // states
+    containerRef,
+
+    // utils
     title: title ? title : isCollapsed ? "Hide" : "Show",
     toggleIsCollapsed: () => setIsCollapsed((cv) => !cv),
-    containerRef,
   };
 }

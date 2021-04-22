@@ -28,7 +28,7 @@ function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
         title={SiteTexts.page.current_locale.title}
       >
         <PagesList
-          pages={["🎼 chords creator", "📝 strings", "💅 styles", "👓 virtual-reality", "💬 wp"]}
+          pages={["🎼 chords-creator", "📝 strings", "💅 styles", "👓 virtual-reality", "💬 wp"]}
         />
 
         {isUserLoggedIn() && (

@@ -14,7 +14,6 @@
   "Bbm/G#": { "music_notes": "6x,1|2,2,2|4,3,3", "strings_to_skip": "6" },
   "Bm": { "music_notes": "6x,2|2,3,2|4,4,3|3,4,4", "strings_to_skip": "6" },
   "Bm7": { "music_notes": "6x,2|2,3,2|4,4,3", "strings_to_skip": "6" },
-  "Bø": { "music_notes": "5,2,1|4,3,3|3,2,2|2,3,4", "strings_to_skip": "" },
 
   "C": { "music_notes": "5,3,3|4,2,2|2,1,1", "strings_to_skip": "6" },
   "C#": { "music_notes": "5x,4|4,6,2|3,6,3|2,6,4", "strings_to_skip": "" },

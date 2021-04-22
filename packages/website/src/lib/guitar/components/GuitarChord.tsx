@@ -3,13 +3,13 @@ import classNames from "classnames";
 
 import { Space, Button, Title } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
+import { useExecuteCallback } from "~/hooks";
 import { T_Function, T_ReactElement, T_ReactRefObject } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 
 import GuitarFret from "./GuitarFret";
 import ChordsService from "../service";
 import { T_ParsedChord, T_GuitarFret, T_GuitarStringsToSkip, T_MusicNote } from "../types";
-import { useExecuteCallback } from "~/hooks";
 
 type T_GuitarChordProps = {
   name: string;
@@ -78,7 +78,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
               .map(([fret, musicNotes]: [string, T_MusicNote[]]) => {
                 return (
                   <GuitarFret
-                    key={`Fret-${fret}`}
+                    key={`GuitarFret-${fret}`}
                     variant={GuitarFret.variant.DEFAULT}
                     number={Number(fret) as T_GuitarFret}
                     musicNotes={musicNotes}
@@ -104,13 +104,14 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
       </section>
 
       {showOptions && (
-        <Fragment>
+        <div>
           <div className="tw-pt-2">
             <Button className="tw-text-sm tw-font-bold tw-p-1" onClick={handleDownloadAsImage}>
               <Emoji className="tw-mr-1">⬇️</Emoji>
               <span>download as image</span>
             </Button>
             <Space size={1} orientation="v" />
+
             {musicNotesAsString && (
               <Fragment>
                 <Button
@@ -130,6 +131,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
                 <Space size={1} orientation="v" />
               </Fragment>
             )}
+
             <Button
               className="tw-text-sm tw-font-bold tw-p-1 tw-transition-opacity hover:tw-opacity-75"
               data-clipboard-text={musicNotesAsString}
@@ -146,7 +148,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
               </pre>
             </div>
           )}
-        </Fragment>
+        </div>
       )}
     </article>
   );

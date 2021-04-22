@@ -109,9 +109,7 @@ function useController({
 
     // utils
     numberOfChords: chords.length,
-    parsedChords: chords
-      ? GuitarService.parseSongLyricsAndItsChords(chords.sort().join(" | "))
-      : "",
-    parsedLyrics: GuitarService.parseSongLyricsAndItsChords(children),
+    parsedChords: GuitarService.parseLyricsAndChords(chords.sort().join(" | ")),
+    parsedLyrics: GuitarService.parseLyricsAndChords(children),
   };
 }

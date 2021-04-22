@@ -1,20 +1,16 @@
-import {
-  createArray,
-  sortBy,
-  transformObjectKeysFromSnakeCaseToLowerCamelCase,
-} from "~/utils/misc";
+import { createArray, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 import { replaceAll } from "~/utils/strings";
 
 import {
   I_BarreMusicNote,
   I_SimpleMusicNote,
-  T_ParsedChord,
+  T_Chord,
   T_Finger,
   T_GroupedMusicNotesByGuitarFret,
   T_GuitarFret,
   T_GuitarString,
   T_MusicNote,
-  T_Chord,
+  T_ParsedChord,
 } from "./types";
 import CHORDS from "./data/chords.json";
 
@@ -200,7 +196,7 @@ class ChordsService {
       .join("|");
   }
 
-  parseSongLyricsAndItsChords(songContent): string {
+  parseLyricsAndChords(songContent): string {
     const result = songContent
       .split("\n")
       .map((line) => {
@@ -209,7 +205,7 @@ class ChordsService {
         line
           .split(" ")
           .filter(Boolean)
-          .sort(sortBy(undefined, "desc"))
+          .sort(this.sortChords)
           .forEach((musicNote, _, array) => {
             if (musicNote.includes("|")) {
               musicNote.split("|").forEach((musicNoteItem) => {
@@ -239,12 +235,16 @@ class ChordsService {
 
       return replaceAll(
         replaceAll(
-          replaceAll(transformedLine, `${musicNote} `, `${musicNoteHTML} `),
-          ` ${musicNote}`,
-          ` ${musicNoteHTML}`,
+          replaceAll(
+            replaceAll(transformedLine, ` ${musicNote} `, ` ${musicNoteHTML} `),
+            `${musicNote}|`,
+            `${musicNoteHTML}|`,
+          ),
+          `${musicNote} `,
+          `${musicNoteHTML} `,
         ),
-        `${musicNote}|`,
-        `${musicNoteHTML}|`,
+        ` ${musicNote}`,
+        ` ${musicNoteHTML}`,
       );
     }
   }
@@ -258,6 +258,18 @@ class ChordsService {
       ...chord,
       name: chordName,
     }) as T_Chord;
+  }
+
+  sortChords(a: string, b: string): number {
+    if (a.length > b.length) {
+      return -1;
+    }
+
+    if (a.length < b.length) {
+      return 1;
+    }
+
+    return -1;
   }
 
   private insertChord(chordName: string): string {

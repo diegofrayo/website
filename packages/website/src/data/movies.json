@@ -226,14 +226,21 @@
   {
     "id": "tt0119217",
     "title": "Good will hunting",
-    "type": "Movies",
+    "type": "Movie",
     "source": "imdb",
     "calification": 4
   },
   {
     "id": "18171082",
     "title": "Patch Adams",
-    "type": "Movies",
+    "type": "Movie",
+    "source": "Netflix",
+    "calification": 4
+  },
+  {
+    "id": "81023638",
+    "title": "Mi obra maestra",
+    "type": "Movie",
     "source": "Netflix",
     "calification": 4
   }

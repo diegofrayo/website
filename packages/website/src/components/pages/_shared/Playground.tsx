@@ -16,14 +16,22 @@ type T_PlaygroundProps = Pick<T_CodeProps, "code" | "language"> & {
   Component: T_ReactFunctionComponent;
 };
 
-function Playground({ Component, code, language }: T_PlaygroundProps): T_ReactElement {
+function Playground(props: T_PlaygroundProps): T_ReactElement {
   const {
-    isSourceCodeTabSelected,
-    isOutputTabSelected,
+    // props
+    Component,
+    code,
+    language,
+
+    // states
+    contentRef,
     setSourceCodeTab,
     setOutputTab,
-    contentRef,
-  } = useController();
+
+    // utils
+    isSourceCodeTabSelected,
+    isOutputTabSelected,
+  } = useController(props);
 
   return (
     <div
@@ -79,7 +87,9 @@ export default Playground;
 
 // --- Controller ---
 
-function useController(): {
+function useController(
+  props: T_PlaygroundProps,
+): T_PlaygroundProps & {
   isSourceCodeTabSelected: boolean;
   isOutputTabSelected: boolean;
   setSourceCodeTab: T_Function;
@@ -106,10 +116,16 @@ function useController(): {
   }
 
   return {
-    isSourceCodeTabSelected: tab === 0,
-    isOutputTabSelected: tab === 1,
+    // props
+    ...props,
+
+    // states
+    contentRef,
     setSourceCodeTab,
     setOutputTab,
-    contentRef,
+
+    // utils
+    isSourceCodeTabSelected: tab === 0,
+    isOutputTabSelected: tab === 1,
   };
 }
