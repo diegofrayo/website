@@ -1,5 +1,7 @@
 import {
   CalendarIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
   CodeIcon,
   LinkIcon,
   PencilAltIcon,
@@ -92,6 +94,22 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     props: {
       className: "",
       color: "tw-text-green-500",
+    },
+  },
+  CHEVRON_LEFT: {
+    isLibraryIcon: true,
+    icon: ChevronLeftIcon,
+    props: {
+      className: "",
+      color: "",
+    },
+  },
+  CHEVRON_RIGHT: {
+    isLibraryIcon: true,
+    icon: ChevronRightIcon,
+    props: {
+      className: "",
+      color: "",
     },
   },
   EDIT: {

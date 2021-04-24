@@ -28,8 +28,10 @@ export type T_ParsedChord = {
   groupedMusicNotesByGuitarFret: T_GroupedMusicNotesByGuitarFret;
 };
 
-export type T_Chord = {
+type T_ChordBase = {
   name: string;
   musicNotes: string;
   stringsToSkip: string;
 };
+
+export type T_Chord = T_ChordBase | T_ChordBase[];

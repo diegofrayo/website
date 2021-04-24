@@ -5,17 +5,26 @@ import {
   I_BarreMusicNote,
   I_SimpleMusicNote,
   T_Chord,
-  T_Finger,
   T_GroupedMusicNotesByGuitarFret,
   T_GuitarFret,
-  T_GuitarString,
   T_MusicNote,
   T_ParsedChord,
 } from "./types";
+import {
+  parseFret,
+  checkBarreChordValidity,
+  checkFingerValidity,
+  checkGuitarStringValidity,
+  isBarreChord,
+  parseBarre,
+  parseFinger,
+  parseGuitarString,
+  checkGuitarFretValidity,
+} from "./utils";
 import CHORDS from "./data/chords.json";
 
-class ChordsService {
-  create(musicNotes: T_MusicNote[] | string): T_ParsedChord {
+class GuitarService {
+  buildChord(musicNotes: T_MusicNote[] | string): T_ParsedChord {
     try {
       const parsedMusicNotes: T_MusicNote[] =
         musicNotes === ""
@@ -39,16 +48,16 @@ class ChordsService {
 
                 // TODO: Review this typing
                 const parsedMusicNote: Partial<T_MusicNote> = {
-                  guitarFret: this.parseFret(guitarFret),
+                  guitarFret: parseFret(guitarFret),
                 };
 
-                if (this.isBarreChord(guitarString)) {
-                  (parsedMusicNote as I_BarreMusicNote).barre = this.parseBarre(guitarString);
+                if (isBarreChord(guitarString)) {
+                  (parsedMusicNote as I_BarreMusicNote).barre = parseBarre(guitarString);
                 } else {
-                  (parsedMusicNote as I_SimpleMusicNote).guitarString = this.parseGuitarString(
+                  (parsedMusicNote as I_SimpleMusicNote).guitarString = parseGuitarString(
                     guitarString,
                   );
-                  (parsedMusicNote as I_SimpleMusicNote).finger = this.parseFinger(finger);
+                  (parsedMusicNote as I_SimpleMusicNote).finger = parseFinger(finger);
                 }
 
                 return parsedMusicNote as T_MusicNote;
@@ -57,7 +66,10 @@ class ChordsService {
           : musicNotes;
 
       const musicNotesFrets: T_GuitarFret[] = parsedMusicNotes
-        .map((musicNote) => musicNote.guitarFret)
+        .map((musicNote) => {
+          checkGuitarFretValidity(musicNote.guitarFret);
+          return musicNote.guitarFret;
+        })
         .sort();
 
       if (musicNotesFrets.length === 0) {
@@ -69,13 +81,11 @@ class ChordsService {
           result: T_GroupedMusicNotesByGuitarFret,
           musicNote: T_MusicNote,
         ): T_GroupedMusicNotesByGuitarFret => {
-          this.checkGuitarFretValidity(musicNote.guitarFret);
-
           if ((musicNote as I_BarreMusicNote).barre !== undefined) {
-            this.checkBarreChordValidity((musicNote as I_BarreMusicNote).barre);
+            checkBarreChordValidity((musicNote as I_BarreMusicNote).barre);
           } else {
-            this.checkFingerValidity((musicNote as I_SimpleMusicNote).finger);
-            this.checkGuitarStringValidity((musicNote as I_SimpleMusicNote).guitarString);
+            checkFingerValidity((musicNote as I_SimpleMusicNote).finger);
+            checkGuitarStringValidity((musicNote as I_SimpleMusicNote).guitarString);
           }
 
           result[`${musicNote.guitarFret}`].push(musicNote);
@@ -118,66 +128,123 @@ class ChordsService {
     }
   }
 
-  private parseFinger(finger: string): T_Finger | undefined {
-    if (!finger) return undefined;
+  parseSongLyrics(songContent): string {
+    const result = songContent
+      .split("\n")
+      .map((line) => {
+        let parsedTextLine = line;
 
-    return Number(finger) as T_Finger;
+        line
+          .split(" ")
+          .filter(Boolean)
+          .sort(this.sortChords)
+          .forEach((chord, _, textLineItems) => {
+            if (chord.includes("|")) {
+              chord.split("|").forEach((chord) => {
+                parsedTextLine = this.parseTextLine({
+                  parsedTextLine,
+                  chord,
+                  textLineItems,
+                });
+              });
+            } else {
+              parsedTextLine = this.parseTextLine({ parsedTextLine, chord, textLineItems });
+            }
+          });
+
+        return parsedTextLine;
+      })
+      .join("\n");
+
+    return result;
   }
 
-  private parseFret(fret: string): T_GuitarFret {
-    return Number(fret) as T_GuitarFret;
+  findChord(chordName: string, chordIndex?: number): T_Chord | undefined {
+    const chord = CHORDS[chordName];
+
+    if (!chord) {
+      return undefined;
+    }
+
+    if (Array.isArray(chord)) {
+      if (chordIndex === undefined) {
+        return chord.map((chord) => {
+          return transformObjectKeysFromSnakeCaseToLowerCamelCase({
+            ...chord,
+            name: chordName,
+          });
+        }) as T_Chord;
+      }
+
+      if (!chord[chordIndex]) {
+        return undefined;
+      }
+
+      return transformObjectKeysFromSnakeCaseToLowerCamelCase({
+        ...chord[chordIndex],
+        name: chordName,
+      }) as T_Chord;
+    }
+
+    return transformObjectKeysFromSnakeCaseToLowerCamelCase({
+      ...chord,
+      name: chordName,
+    }) as T_Chord;
   }
 
-  private parseGuitarString(string: string): T_GuitarString {
-    return Number(string) as T_GuitarString;
+  private parseTextLine({ parsedTextLine, chord, textLineItems }) {
+    const chordHTML = this.chordToHTML(chord);
+
+    if (textLineItems.length === 1) {
+      return replaceAll(parsedTextLine, chord, chordHTML);
+    }
+
+    return replaceAll(
+      replaceAll(
+        replaceAll(
+          replaceAll(parsedTextLine, ` ${chord} `, ` ${chordHTML} `),
+          `${chord}|`,
+          `${chordHTML}|`,
+        ),
+        `${chord} `,
+        `${chordHTML} `,
+      ),
+      ` ${chord}`,
+      ` ${chordHTML}`,
+    );
   }
 
-  private parseBarre(string: string): T_GuitarString {
+  private chordToHTML(chordNameInput: string): string {
     // TODO: Regex
-    return string.length === 2 ? this.parseGuitarString(string.charAt(0)) : 6;
-  }
-
-  private isBarreChord(string: string): boolean {
+    const isChordWithMultipleShapes = chordNameInput.includes("[") && chordNameInput.includes("]");
+    const chordName = isChordWithMultipleShapes
+      ? chordNameInput.substring(0, chordNameInput.lastIndexOf("["))
+      : chordNameInput;
     // TODO: Regex
-    return string.includes("x");
-  }
+    const chordIndex =
+      Number(
+        isChordWithMultipleShapes
+          ? replaceAll(chordNameInput.substring(chordNameInput.lastIndexOf("[")), ["[", "]"], "")
+          : 1,
+      ) - 1;
 
-  private checkFingerValidity(value: T_Finger | undefined): boolean {
-    if (!(typeof value === "number" && value >= 1 && value <= 4) && value !== undefined) {
-      throw new Error(`Invalid finger (${value}). A finger must be between 1 and 4`);
+    if (this.findChord(chordName, chordIndex)) {
+      return `<button class="dfr-Chord dfr-text-color-links dark:dfr-text-color-links tw-mt-3 tw-mb-1" data-chord-index="${chordIndex}">${chordName}</button>`;
     }
 
-    return true;
+    return chordNameInput;
   }
 
-  checkGuitarStringValidity(value: number): boolean {
-    if (Number.isNaN(value) || !(value >= 1 || value <= 6)) {
-      throw new Error(`Invalid guitar string (${value}). A guitar string must be between 1 and 6`);
+  private sortChords(a: string, b: string): number {
+    if (a.length > b.length) {
+      return -1;
     }
 
-    return true;
-  }
-
-  checkGuitarFretValidity(value: number): boolean {
-    if (Number.isNaN(value) || !(value >= 1 || value <= 16)) {
-      throw new Error(`Invalid guitar fret (${value}). A guitar fret must be between 1 and 16`);
+    if (a.length < b.length) {
+      return 1;
     }
 
-    return true;
-  }
-
-  checkTablatureSpaceValidity(value: number): boolean {
-    if (Number.isNaN(value) || !(value >= 1 || value <= 10)) {
-      throw new Error(
-        `Invalid tablature space (${value}). A tablature space must be between 1 and 10`,
-      );
-    }
-
-    return true;
-  }
-
-  private checkBarreChordValidity(value: number): boolean {
-    return this.checkGuitarStringValidity(value);
+    return -1;
   }
 
   private musicNotesToString(musicNotes: T_MusicNote[]): string {
@@ -195,90 +262,6 @@ class ChordsService {
       })
       .join("|");
   }
-
-  parseLyricsAndChords(songContent): string {
-    const result = songContent
-      .split("\n")
-      .map((line) => {
-        let transformedLine = line;
-
-        line
-          .split(" ")
-          .filter(Boolean)
-          .sort(this.sortChords)
-          .forEach((musicNote, _, array) => {
-            if (musicNote.includes("|")) {
-              musicNote.split("|").forEach((musicNoteItem) => {
-                transformedLine = this.transformLine({
-                  transformedLine,
-                  musicNote: musicNoteItem,
-                  array,
-                });
-              });
-            } else {
-              transformedLine = this.transformLine({ transformedLine, musicNote, array });
-            }
-          });
-
-        return transformedLine;
-      })
-      .join("\n");
-
-    return result;
-  }
-
-  private transformLine({ transformedLine, musicNote, array }) {
-    if (array.length === 1) {
-      return replaceAll(transformedLine, musicNote, this.insertChord(musicNote));
-    } else {
-      const musicNoteHTML = this.insertChord(musicNote);
-
-      return replaceAll(
-        replaceAll(
-          replaceAll(
-            replaceAll(transformedLine, ` ${musicNote} `, ` ${musicNoteHTML} `),
-            `${musicNote}|`,
-            `${musicNoteHTML}|`,
-          ),
-          `${musicNote} `,
-          `${musicNoteHTML} `,
-        ),
-        ` ${musicNote}`,
-        ` ${musicNoteHTML}`,
-      );
-    }
-  }
-
-  findChord(chordName: string): T_Chord | undefined {
-    const chord = CHORDS[chordName];
-
-    if (!chord || !chord.music_notes) return undefined;
-
-    return transformObjectKeysFromSnakeCaseToLowerCamelCase({
-      ...chord,
-      name: chordName,
-    }) as T_Chord;
-  }
-
-  sortChords(a: string, b: string): number {
-    if (a.length > b.length) {
-      return -1;
-    }
-
-    if (a.length < b.length) {
-      return 1;
-    }
-
-    return -1;
-  }
-
-  private insertChord(chordName: string): string {
-    if (this.findChord(chordName)) {
-      return `<button class="dfr-Chord dfr-text-color-links dark:dfr-text-color-links tw-mt-3 tw-mb-1">${chordName}</button>`;
-    }
-
-    return chordName;
-  }
 }
 
-export default new ChordsService();
+export default new GuitarService();

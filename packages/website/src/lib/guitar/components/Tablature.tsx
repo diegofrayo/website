@@ -6,9 +6,13 @@ import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { createArray } from "~/utils/misc";
 
 import GuitarFret from "./GuitarFret";
-import { T_GuitarFret, T_GuitarString } from "../types";
 import { NUMBER_OF_STRINGS } from "../constants";
-import ChordsService from "../service";
+import { T_GuitarFret, T_GuitarString } from "../types";
+import {
+  checkGuitarFretValidity,
+  checkGuitarStringValidity,
+  checkTablatureSpaceValidity,
+} from "../utils";
 
 interface I_SpacePosition {
   space: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
@@ -168,7 +172,7 @@ function useController({
     let positionVariant = "";
 
     if (typeof (position as I_SpacePosition).space === "number") {
-      ChordsService.checkTablatureSpaceValidity((position as I_SpacePosition).space);
+      checkTablatureSpaceValidity((position as I_SpacePosition).space);
       positionVariant = "SPACE";
     } else {
       const hasGuitarStringParam =
@@ -176,14 +180,14 @@ function useController({
       const hasGuitarFretParam = typeof (position as I_BarrePosition).guitarFret === "number";
 
       if (hasGuitarStringParam && !hasGuitarFretParam) {
-        ChordsService.checkGuitarStringValidity((position as I_MusicNotePosition).guitarString);
+        checkGuitarStringValidity((position as I_MusicNotePosition).guitarString);
         positionVariant = "GUITAR_STRING";
       } else if (hasGuitarFretParam && !hasGuitarStringParam) {
-        ChordsService.checkGuitarFretValidity((position as I_MusicNotePosition).guitarFret);
+        checkGuitarFretValidity((position as I_MusicNotePosition).guitarFret);
         positionVariant = "BARRE";
       } else if (hasGuitarFretParam && hasGuitarStringParam) {
-        ChordsService.checkGuitarStringValidity((position as I_MusicNotePosition).guitarString);
-        ChordsService.checkGuitarFretValidity((position as I_MusicNotePosition).guitarFret);
+        checkGuitarStringValidity((position as I_MusicNotePosition).guitarString);
+        checkGuitarFretValidity((position as I_MusicNotePosition).guitarFret);
         positionVariant = "MUSIC_NOTE";
       } else {
         throw new Error("Invalid tablature position");

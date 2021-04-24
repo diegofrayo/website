@@ -52,7 +52,13 @@ export function generateObjectKeyInLowerCase(url: string): string {
   return url.toLowerCase().replace(/-+/g, "_");
 }
 
-export function replaceAll(str: string, toReplace: string, replacement: string): string {
+export function replaceAll(str: string, toReplace: string | string[], replacement: string): string {
+  if (Array.isArray(toReplace)) {
+    return toReplace.reduce((result, item) => {
+      return result.replace(new RegExp(escapeRegExp(item), "g"), replacement);
+    }, str);
+  }
+
   return str.replace(new RegExp(escapeRegExp(toReplace), "g"), replacement);
 }
 

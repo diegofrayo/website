@@ -8,7 +8,7 @@ import { T_Function, T_ReactElement, T_ReactRefObject } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 
 import GuitarFret from "./GuitarFret";
-import ChordsService from "../service";
+import GuitarService from "../service";
 import { T_ParsedChord, T_GuitarFret, T_GuitarStringsToSkip, T_MusicNote } from "../types";
 
 type T_GuitarChordProps = {
@@ -177,7 +177,7 @@ function useController({
   error: Error | undefined;
 } {
   const { data, error } = useExecuteCallback(musicNotes, (params) => {
-    return ChordsService.create(params);
+    return GuitarService.buildChord(params);
   });
 
   const chordContainerRef = useRef<HTMLDivElement>(null);

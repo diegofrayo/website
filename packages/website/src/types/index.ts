@@ -172,6 +172,8 @@ export enum E_Icons {
 
   "CALENDAR" = "CALENDAR",
   "CHECK" = "CHECK",
+  "CHEVRON_LEFT" = "CHEVRON_LEFT",
+  "CHEVRON_RIGHT" = "CHEVRON_RIGHT",
   "CODE" = "CODE",
   "EDIT" = "EDIT",
   "HEART" = "HEART",

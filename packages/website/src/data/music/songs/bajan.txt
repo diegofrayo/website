@@ -1,10 +1,10 @@
 E                   F#m
     Tengo tiempo                para saber
-C#m              ?1         B
+C#m              F#dim7         B
     si  lo  que  sueño  concluye  en  algo
 E                   F#m
     no te apures                ya más loco
-C#m             ?1             B
+C#m             F#dim7             B
     porque es entonces cuando las horas
 
 
@@ -26,11 +26,11 @@ INTRO   (x2)
 
  E                   F#m
     viejo roble                del camino,
-C#m           ?1          B
+C#m           F#dim7          B
     tus hojas siempre se agitan algo
 E                   F#m
     nena, nena,                que bien te ves
-C#m               ?1         B
+C#m               F#dim7         B
     cuando en tus ojos no importa si las horas
 
 

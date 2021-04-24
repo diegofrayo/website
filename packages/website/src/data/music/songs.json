@@ -3,10 +3,10 @@
     {
       "id": "listado-de-acordes",
       "title": "Listado de acordes",
-      "artist": "Diego Rayo",
+      "artist": "",
       "album": "",
-      "year": 2021,
-      "progress": -1,
+      "year": 0,
+      "progress": 0,
       "created_at": "18/04/2021",
       "is_published": true,
       "spotify_url": "",
@@ -62,7 +62,7 @@
           "source": "youtube"
         }
       ],
-      "chords": ["?2", "C", "D", "Em", "F7", "Fmaj7", "G", "G6"]
+      "chords": ["G6[1]", "C", "D", "Em", "F7", "Fmaj7", "G"]
     },
     {
       "id": "ando-ganas",
@@ -95,7 +95,7 @@
       "artist": "Ciro y los Persas",
       "album": "Espejos",
       "year": 2010,
-      "progress": 4,
+      "progress": 3,
       "created_at": "25/02/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/7dVj5UjkSMybmGDCdyVPUt?si=1DEm17xGSImA7g3M_T2XjA",
@@ -132,12 +132,17 @@
           "source": "youtube"
         },
         {
+          "text": "Como Tocar Bajan de Spinetta",
+          "url": "https://youtu.be/MlgpU7JFMCg",
+          "source": "youtube"
+        },
+        {
           "text": "Bajan (A Capella Version) - Originally Performed By Pescado Rabioso",
           "url": "https://open.spotify.com/track/4qcuXE1niE1zwiEPRHUskW?si=f63e06a3ab4041dd",
           "source": "spotify"
         }
       ],
-      "chords": ["?1", "Am7", "B", "C", "C#m", "E", "F#m", "G#", "G#m"]
+      "chords": ["F#dim7", "Am7", "B", "C", "C#m", "E", "F#m", "G#", "G#m"]
     },
     {
       "id": "cancion-para-los-dias-de-la-vida",
@@ -145,7 +150,7 @@
       "artist": "Invisible",
       "album": "A 18' del sol",
       "year": 1977,
-      "progress": 4,
+      "progress": 3,
       "created_at": "12/01/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/3T5SksrlFxunlotQ0lmSwv?si=6c94d32477c64784",
@@ -280,7 +285,7 @@
       "artist": "Los Fabulosos Cadillacs",
       "album": "El ritmo mundial",
       "year": 1998,
-      "progress": 4,
+      "progress": 5,
       "created_at": "10/01/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/6G9painkkIlE8HauZrG4Vw?si=2pnzv_-6Q6K8tFe0CclMMA",
@@ -310,7 +315,7 @@
       "artist": "Perotá Chingó",
       "album": "Aguas",
       "year": 2017,
-      "progress": 4,
+      "progress": 3,
       "created_at": "01/04/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/44q38EV7P1sjbLI8RB6k9M?si=j5rL7NNRRxu5uSdeKZKs_Q",
@@ -340,7 +345,7 @@
       "artist": "Los Piojos",
       "album": "3er arco",
       "year": 1996,
-      "progress": 4,
+      "progress": 3,
       "created_at": "23/03/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/1NXvuBAq48QrxRFQZVmORQ?si=k2nEIqKcRMSd6L1owJaLTw",
@@ -395,9 +400,64 @@
           "text": "GUITARRA | Par Mil - Divididos (Guitarra cover/tutorial) Martin Lopez",
           "url": "https://youtu.be/QhjBRjEFnGM",
           "source": "youtube"
+        },
+        {
+          "text": "Par Mil In The Style Of Divididos - A Capella Version",
+          "source": "spotify",
+          "url": "https://open.spotify.com/track/6rdabwJqWjnPdxIDzejlNi?si=924c22eb90604900"
         }
       ],
       "chords": ["A", "C", "Cadd9", "D", "Em", "G"]
+    },
+    {
+      "id": "te-para-tres",
+      "title": "Te para tres",
+      "artist": "Soda Stereo",
+      "album": "Canción animal",
+      "year": 1990,
+      "progress": 5,
+      "created_at": "23/04/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/5M4Kx9qHgdTQlKovj4hK9O?si=0e0b0073ae914d05",
+      "youtube_url": "https://youtu.be/91XRV1mKUe4",
+      "sources": [
+        {
+          "text": "Té para 3",
+          "url": "https://acordes.lacuerda.net/soda_stereo/te_para_3-2.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "cómo tocar en guitarra TÉ PARA TRES de SODA STEREO tutorial",
+          "url": "https://youtu.be/XZFQOFP5Klg",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["A7", "D/F#", "Em9", "G"]
+    },
+    {
+      "id": "ella-tambien",
+      "title": "Ella también",
+      "artist": "Luis Alberto Spinetta",
+      "album": "Kamikaze",
+      "year": 1982,
+      "progress": 3,
+      "created_at": "23/04/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/4y1ze4JPCe7XVv28VlZ4k0?si=1fabe572846049e8",
+      "youtube_url": "https://youtu.be/JpJW5yFwb40",
+      "sources": [
+        {
+          "text": "Ella También",
+          "url": "https://acordes.lacuerda.net/luis_a_spinetta/ella_tambien-2.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Ella también - Luis Alberto Spinetta (Cover) Guitarra y Voz",
+          "url": "https://youtu.be/rCZGXuJWsRY",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["Am7", "Em7", "Fmaj7", "Gm"]
     }
   ]
 }

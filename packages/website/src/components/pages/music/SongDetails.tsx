@@ -8,7 +8,7 @@ import { createArray } from "~/utils/misc";
 function SongDetails({
   song,
   SiteTexts,
-  className,
+  className = "",
 }: {
   song: T_Song;
   SiteTexts: T_SiteTexts;
@@ -16,39 +16,33 @@ function SongDetails({
 }): T_ReactElement {
   const { getProgressStyles } = useController();
 
+  if (!song.artist) return null;
+
   return (
     <div className={classNames("tw-text-sm tw-italic", className)}>
-      {song.artist && (
-        <div>
-          <strong>{SiteTexts.page.current_locale.artist}:</strong> <span>{song.artist}</span>
-        </div>
-      )}
-      {song.album && (
-        <div>
-          <strong>{SiteTexts.page.current_locale.album}:</strong> <span>{song.album}</span>
-        </div>
-      )}
-      {song.year && (
-        <div>
-          <strong>{SiteTexts.page.current_locale.year}:</strong> <span>{song.year}</span>
-        </div>
-      )}
-      {song.progress >= 0 && song.progress <= 5 && (
-        <div className="tw-flex tw-items-center">
-          <strong className="tw-mr-2">{SiteTexts.page.current_locale.progress}:</strong>
-          {createArray(5).map((index) => {
-            return (
-              <span
-                key={`Progress-item-${index}`}
-                className={classNames(
-                  "tw-inline-block tw-rounded-sm tw-h-3 tw-w-3 tw-mr-0.5",
-                  getProgressStyles(song, index),
-                )}
-              />
-            );
-          })}
-        </div>
-      )}
+      <div>
+        <strong>{SiteTexts.page.current_locale.artist}:</strong> <span>{song.artist}</span>
+      </div>
+      <div>
+        <strong>{SiteTexts.page.current_locale.album}:</strong> <span>{song.album}</span>
+      </div>
+      <div>
+        <strong>{SiteTexts.page.current_locale.year}:</strong> <span>{song.year}</span>
+      </div>
+      <div className="tw-flex tw-items-center">
+        <strong className="tw-mr-2">{SiteTexts.page.current_locale.progress}:</strong>
+        {createArray(5).map((index) => {
+          return (
+            <span
+              key={`Progress-item-${index}`}
+              className={classNames(
+                "tw-inline-block tw-rounded-sm tw-h-3 tw-w-3 tw-mr-0.5",
+                getProgressStyles(song, index),
+              )}
+            />
+          );
+        })}
+      </div>
       <div className="tw-flex tw-items-center tw-mt-1">
         <Link href={song.spotifyUrl} variant={Link.variant.SIMPLE} className="tw-mr-2">
           <Icon icon={Icon.icon.SPOTIFY} size={24} />

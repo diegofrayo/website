@@ -17,7 +17,6 @@ const DATA = {
     fullName: "Diego Fernando Rayo Zamora",
     shortName: SHORT_NAME,
     url: WEBSITE_URL,
-    urlProd: "https://diegofrayo.vercel.app",
     username: "diegofrayo",
     social: {
       github: "https://www.github.com/diegofrayo",

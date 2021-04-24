@@ -1,7 +1,6 @@
-?1
-?2
-
 A
+A#m
+A7
 Am
 Am/F#
 Am/G
@@ -17,10 +16,10 @@ Bbm/G#
 Bm
 Bm7
 
+C
 C#
 C#m
 C#m7
-C
 Cadd9
 Cmaj7
 
@@ -33,15 +32,19 @@ Dsus
 E
 E7/9
 Em
+Em7
+Em9
 Esus
 
+F
+F#dim7
 F#m
 F#m7
-F
 F7
 Fmaj7
 
+G
 G#
 G#m
-G
 G6
+Gm

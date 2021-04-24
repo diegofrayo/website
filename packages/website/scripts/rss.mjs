@@ -11,25 +11,26 @@ dotenv.config({ path: ".env" });
 const { pages } = PAGES_TEXTS;
 const { website: WEBSITE_METADATA, seo: SEO_METADATA } = METADATA;
 const { posts } = BLOG_POSTS;
+const URL_PRODUCTION = "https://diegofrayo.vercel.app";
 
 const feed = new Feed({
   title: SEO_METADATA.title,
   description: pages["/"][pages["/"].config.default_locale].meta_description,
   id: WEBSITE_METADATA.username,
-  link: WEBSITE_METADATA.urlProd,
+  link: URL_PRODUCTION,
   language: "es",
-  image: `${WEBSITE_METADATA.urlProd}/static/images/favicon/favicon.ico`,
-  favicon: `${WEBSITE_METADATA.urlProd}/static/images/favicon/android-chrome-512x512.png`,
+  image: `${URL_PRODUCTION}/static/images/favicon/favicon.ico`,
+  favicon: `${URL_PRODUCTION}/static/images/favicon/android-chrome-512x512.png`,
   copyright: `All rights reserved ${new Date().getFullYear()}, ${WEBSITE_METADATA.shortName}`,
   feedLinks: {
-    json: `${WEBSITE_METADATA.urlProd}/feed.json`,
-    atom: `${WEBSITE_METADATA.urlProd}/atom.xml`,
-    rss: `${WEBSITE_METADATA.urlProd}/rss.xml`,
+    json: `${URL_PRODUCTION}/feed.json`,
+    atom: `${URL_PRODUCTION}/atom.xml`,
+    rss: `${URL_PRODUCTION}/rss.xml`,
   },
   author: {
     name: WEBSITE_METADATA.fullName,
     email: WEBSITE_METADATA.email,
-    link: `${WEBSITE_METADATA.urlProd}/about-me`,
+    link: `${URL_PRODUCTION}/about-me`,
   },
 });
 
@@ -47,7 +48,7 @@ function generateFeed() {
   Object.values(posts).forEach((post) => {
     if (post.config.is_published === false) return null;
 
-    const url = `${WEBSITE_METADATA.urlProd}/blog/${post.slug}`;
+    const url = `${URL_PRODUCTION}/blog/${post.slug}`;
 
     feed.addItem({
       title: post[post.default_locale].title,
@@ -59,7 +60,7 @@ function generateFeed() {
         {
           name: WEBSITE_METADATA.shortName,
           email: WEBSITE_METADATA.email,
-          link: `${WEBSITE_METADATA.urlProd}/about-me`,
+          link: `${URL_PRODUCTION}/about-me`,
         },
       ],
       date: new Date(post.published_at),

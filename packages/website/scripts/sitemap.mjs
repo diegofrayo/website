@@ -39,12 +39,14 @@ Object.values(posts).forEach((post) => {
 generator.start();
 
 generator.on("done", () => {
+  const URL_PRODUCTION = "https://diegofrayo.vercel.app";
+
   try {
     fs.writeFileSync(
       "./public/sitemap.xml",
       fs
         .readFileSync("./public/sitemap.xml", "utf8")
-        .replace(new RegExp(WEBSITE_METADATA.url, "g"), WEBSITE_METADATA.urlProd),
+        .replace(new RegExp(WEBSITE_METADATA.url, "g"), URL_PRODUCTION),
     );
 
     console.log("Sitemap created");
