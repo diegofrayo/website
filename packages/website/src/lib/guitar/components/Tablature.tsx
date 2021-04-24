@@ -42,7 +42,7 @@ type T_Position = (
 };
 
 type T_TablatureProps = {
-  positions: (T_Position | T_Position[])[];
+  positions?: (T_Position | T_Position[])[];
   notes?: string;
 };
 
@@ -156,7 +156,7 @@ function useController({
 }: T_TablatureProps): Pick<T_TablatureProps, "notes"> & {
   parsedPositions: T_TablatureProps["positions"] | undefined;
 } {
-  function getPositions(positions: T_TablatureProps["positions"]): T_TablatureProps["positions"] {
+  function getPositions(positions: T_TablatureProps["positions"]): (T_Position | T_Position[])[] {
     return (positions || []).map((position) => {
       if (Array.isArray(position)) {
         return position.map((position) => {
@@ -203,7 +203,7 @@ function useController({
 
     // utils
     parsedPositions:
-      positions.length > 0
+      positions && positions.length > 0
         ? [
             { space: 1, variant: "SPACE" },
             ...getPositions(positions),

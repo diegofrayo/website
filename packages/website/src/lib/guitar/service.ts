@@ -140,13 +140,17 @@ class GuitarService {
           .sort(this.sortChords)
           .forEach((chord, _, textLineItems) => {
             if (chord.includes("|")) {
-              chord.split("|").forEach((chord) => {
-                parsedTextLine = this.parseTextLine({
-                  parsedTextLine,
-                  chord,
-                  textLineItems,
+              chord
+                .split("|")
+                .filter(Boolean)
+                .forEach((chord, index) => {
+                  parsedTextLine = this.parseTextLine({
+                    parsedTextLine,
+                    chord,
+                    textLineItems,
+                    replaceExactly: index > 0,
+                  });
                 });
-              });
             } else {
               parsedTextLine = this.parseTextLine({ parsedTextLine, chord, textLineItems });
             }
@@ -192,10 +196,10 @@ class GuitarService {
     }) as T_Chord;
   }
 
-  private parseTextLine({ parsedTextLine, chord, textLineItems }) {
+  private parseTextLine({ parsedTextLine, chord, textLineItems, replaceExactly = false }) {
     const chordHTML = this.chordToHTML(chord);
 
-    if (textLineItems.length === 1) {
+    if (textLineItems.length === 1 || replaceExactly) {
       return replaceAll(parsedTextLine, chord, chordHTML);
     }
 

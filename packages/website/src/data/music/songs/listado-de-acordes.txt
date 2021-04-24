@@ -11,10 +11,12 @@ Asus4
 
 B
 B7
+Bb
 Bbm
 Bbm/G#
 Bm
 Bm7
+Bmaj7
 
 C
 C#
@@ -31,15 +33,18 @@ Dsus
 
 E
 E7/9
+Ebm
 Em
 Em7
 Em9
 Esus
 
 F
+F#
 F#dim7
 F#m
 F#m7
+F#maj7
 F7
 Fmaj7
 
