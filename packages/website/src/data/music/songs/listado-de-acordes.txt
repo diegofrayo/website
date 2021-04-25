@@ -41,6 +41,7 @@ Esus
 
 F
 F#
+F#7
 F#dim7
 F#m
 F#m7

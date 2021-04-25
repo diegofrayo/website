@@ -1,81 +1,80 @@
-INTRO: D|F#   G|Bmaj7   (x2)
+INTRO: D G   (x2)
 
 
-D|F#                    G|Bmaj7
-      Tu vestido agua marfil
-                      D|F#
+D                     G
+   Tu vestido agua marfil
+                        D
 salió volando a todos lados
-                     G|Bmaj7
+                      G
 estalló en un mar sin fin
-                      D|F#
+                         D
 sirenas cantaban al costado
 
 
+Ohhh... Ohhh Ohhh... | D G   (x4)
 
-Ohhh... Ohhh Ohhh... | D|F#   G|Bmaj7   (x4)
 
-
-D|F#                     G|Bmaj7
+D                        G
       circulares agua marfil
-                        D|F#
+                          D
 saltaban van para todos lados
-                G|Bmaj7
+                G
 me perdí volándote
-                         Bm|Ebm
+                           Bm
 y encantado del lugar callado
 
 
-   D|F#maj7   B     Bb        Bm|Ebm
+   D   G     F#7        Bm
 tu cuerpo bailaba
-   D|F#maj7 B   Bb            Bm|Ebm
+   D G   F#7            Bm
 tu risa lo acompañaba
-     D|F#maj7 B   Bb    Bm|Ebm
+     D G   F#7    Bm
 y el agua marfil
-        D|F#maj7     B   Bb
+        D     G   F#7
 uniéndonos mas así
 
 
-D|F#               G|Bmaj7
+D               G
    nubes agua marfil
-                          D|F#
+                          D
 atormentaron lo inatormentado
-                     G|Bmaj7
+                     G
 tan grande tu lago que
-                      Bm|Ebm
+                      Bm
 mis gritos no llegaron
 
 
-   D|F#maj7    B     Bb        Bm|Ebm
-tu cuerpo bailaba
-   D|F#maj7   B  Bb            Bm|Ebm
-mi cabeza se enroscaba
-     D|F#maj7  B   Bb    Bm|Ebm
-y el agua marfil
-       D|F#maj7        B   Bb
+   D      G     F#7  Bm
+tu cuer...po baila...ba
+   D      G          F#7  Bm
+mi cabe...za se enrosca...ba
+     D   G   F#7   Bm
+y el a...gua mar...fil
+       D            G
 confundiendo mas aquí
 
 
-D|F#     D|F#/F         D|F#/E        D# Bb
-corramos juntos, no mires atrás
-D|F#     D|F#/F       D|F#/E          D# Bb
-corramos juntos, no mires atrás, hay humedad
+D              Bm   D         F#7
+   corramos juntos, no mires atrás
+D              Bm   D         F#7   F#
+   corramos juntos, no mires atrás, hay húmedad
 
 
-D|F#                 G|Bmaj7
+D                     G
    tu vestido agua marfil
-                      D|F#
+                        D
 salió volando a todos lados
-                     G|Bmaj7
+                      G
 estalló en un mar sin fin
-                      D|F#
+                         D
 sirenas cantaban al costado
 
 
-   D|F#maj7    B     Bb        Bm|Ebm
-tu cue---rpo bailaba
-   D|F#maj7  B   Bb            Bm|Ebm
-tu risa lo acompañaba
-   D|F#maj7  B   Bb    Bm|Ebm
-y el agua marfil
-       D|F#maj7        B   Bb
+   D      G     F#7  Bm
+tu cuer...po baila...ba
+   D      G          F#7  Bm
+mi cabe...za se enrosca...ba
+     D   G   F#7   Bm
+y el a...gua mar...fil
+       D            G
 confundiendo mas aquí
