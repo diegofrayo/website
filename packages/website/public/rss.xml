@@ -10,7 +10,7 @@
         <link>https://diegofrayo.vercel.app</link>
         <description
     >Hola, Soy Diego, desarrollador de Software. Tengo poco más de 6 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.</description>
-        <lastBuildDate>Thu, 15 Apr 2021 22:18:33 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 26 Apr 2021 02:55:30 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>es</language>
@@ -19,13 +19,15 @@
             <url>https://diegofrayo.vercel.app/static/images/favicon/favicon.ico</url>
             <link>https://diegofrayo.vercel.app</link>
         </image>
-        <copyright>All rights reserved 2020, Diego Rayo</copyright>
-        <category>Tech</category>
-        <category>Programming</category>
-        <category>Software Development</category>
-        <category>React</category>
-        <category>Next.js</category>
+        <copyright>All rights reserved 2021, Diego Rayo</copyright>
         <category>Blog</category>
+        <category>JAMStack</category>
+        <category>Next.js</category>
+        <category>Programming</category>
+        <category>React</category>
+        <category>Software Development</category>
+        <category>Tech</category>
+        <category>TypeScript</category>
         <atom:link
       href="https://diegofrayo.vercel.app/rss.xml"
       rel="self"
@@ -33,7 +35,7 @@
     />
         <item>
             <title
-      ><![CDATA[Publicando un paquete privado de npm a Github Packages usando Github Actions]]></title>
+      ><![CDATA[Publicando un paquete privado de npm a GitHub Packages usando GitHub Actions]]></title>
             <link
       >https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</link>
             <guid
@@ -47,9 +49,9 @@
             <guid>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</guid>
             <pubDate>Thu, 03 Dec 2020 00:00:00 GMT</pubDate>
             <description
-      ><![CDATA[MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify.]]></description>
+      ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS]]></description>
             <content:encoded
-      ><![CDATA[MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify.]]></content:encoded>
+      ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS]]></content:encoded>
             <author>diegofrayo@gmail.com (Diego Rayo)</author>
         </item>
         <item>

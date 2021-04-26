@@ -40,6 +40,8 @@ export type T_PagesRoutes =
   | "/"
   | "/blog"
   | "/about-me"
+  | "/about-me/movies"
+  | "/about-me/books"
   | "/resume"
   | "/snippets"
   | "/playground"

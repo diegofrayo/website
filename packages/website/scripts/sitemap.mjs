@@ -22,7 +22,11 @@ const generator = SitemapGenerator(WEBSITE_METADATA.url, {
   stripQuerystring: false,
   filepath: "./public/sitemap.xml",
   ignore: (url) => {
-    return pagesToIgnore.find((ignoredPage) => url.includes(ignoredPage)) !== undefined;
+    return (
+      pagesToIgnore.find((ignoredPage) => url.includes(ignoredPage)) !== undefined ||
+      url.includes("/movies") ||
+      url.includes("/books")
+    );
   },
 });
 

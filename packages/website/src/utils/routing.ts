@@ -3,6 +3,8 @@ import { T_Object, T_PagesRoutes } from "~/types";
 export const ROUTES: T_Object<T_PagesRoutes> = {
   HOME: "/",
   ABOUT_ME: "/about-me",
+  MOVIES: "/about-me/movies",
+  BOOKS: "/about-me/books",
   RESUME: "/resume",
   SNIPPETS: "/snippets",
   ERROR_404: "/404",

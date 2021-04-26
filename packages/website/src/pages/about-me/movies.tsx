@@ -1,18 +1,41 @@
 import React from "react";
 import classNames from "classnames";
 
+import { Page, MainLayout } from "~/components/layout";
 import { Icon, Image, Link, Title } from "~/components/primitive";
 import { Render } from "~/components/pages/_shared";
-import { PlaygroundPageTemplate } from "~/components/pages/playground";
 import { useQuery } from "~/hooks";
 import MoviesService from "~/services/movies";
-import { T_Movie, T_ReactElement } from "~/types";
+import { T_Movie, T_ReactElement, T_SiteTexts } from "~/types";
+import { getSiteTexts } from "~/utils/internationalization";
+import { ROUTES } from "~/utils/routing";
+
+const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
+const PAGE_NAME = "🎬 movies";
 
 function MoviesPage(): T_ReactElement {
   return (
-    <PlaygroundPageTemplate pageName="🎬 movies">
-      <Content />
-    </PlaygroundPageTemplate>
+    <Page config={{ title: PAGE_NAME, noRobots: true }}>
+      <MainLayout
+        breadcumb={[
+          {
+            text: SiteTexts.layout.current_locale.breadcumb.home,
+            url: ROUTES.HOME,
+          },
+          {
+            text: SiteTexts.layout.current_locale.breadcumb.about_me,
+            url: ROUTES.ABOUT_ME,
+          },
+          {
+            text: PAGE_NAME,
+          },
+        ]}
+        title={PAGE_NAME}
+        showGoToTopButton
+      >
+        <Content />
+      </MainLayout>
+    </Page>
   );
 }
 

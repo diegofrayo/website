@@ -2,12 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>diegofrayo</id>
     <title>Diego Rayo | Software Developer</title>
-    <updated>2021-04-15T22:18:33.867Z</updated>
+    <updated>2021-04-26T02:55:30.179Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Diego Fernando Rayo Zamora</name>
         <email>diegofrayo@gmail.com</email>
-        <uri>https://diegofrayo.vercel.app</uri>
+        <uri>https://diegofrayo.vercel.app/about-me</uri>
     </author>
     <link rel="alternate" href="https://diegofrayo.vercel.app" />
     <link rel="self" href="https://diegofrayo.vercel.app/atom.xml" />
@@ -15,17 +15,19 @@
   >Hola, Soy Diego, desarrollador de Software. Tengo poco más de 6 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.</subtitle>
     <logo>https://diegofrayo.vercel.app/static/images/favicon/favicon.ico</logo>
     <icon>https://diegofrayo.vercel.app/static/images/favicon/android-chrome-512x512.png</icon>
-    <rights>All rights reserved 2020, Diego Rayo</rights>
-    <category term="Tech" />
-    <category term="Programming" />
-    <category term="Software Development" />
-    <category term="React" />
-    <category term="Next.js" />
+    <rights>All rights reserved 2021, Diego Rayo</rights>
     <category term="Blog" />
+    <category term="JAMStack" />
+    <category term="Next.js" />
+    <category term="Programming" />
+    <category term="React" />
+    <category term="Software Development" />
+    <category term="Tech" />
+    <category term="TypeScript" />
     <entry>
         <title
       type="html"
-    ><![CDATA[Publicando un paquete privado de npm a Github Packages usando Github Actions]]></title>
+    ><![CDATA[Publicando un paquete privado de npm a GitHub Packages usando GitHub Actions]]></title>
         <id
     >https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</id>
         <link
@@ -45,10 +47,10 @@
         <updated>2020-12-03T00:00:00.000Z</updated>
         <summary
       type="html"
-    ><![CDATA[MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify.]]></summary>
+    ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS]]></summary>
         <content
       type="html"
-    ><![CDATA[MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify.]]></content>
+    ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS]]></content>
         <author>
             <name>Diego Rayo</name>
             <email>diegofrayo@gmail.com</email>

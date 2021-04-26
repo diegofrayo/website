@@ -7,13 +7,13 @@
   "icon": "https://diegofrayo.vercel.app/static/images/favicon/favicon.ico",
   "author": {
     "name": "Diego Fernando Rayo Zamora",
-    "url": "https://diegofrayo.vercel.app"
+    "url": "https://diegofrayo.vercel.app/about-me"
   },
   "items": [
     {
       "id": "https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions",
       "url": "https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions",
-      "title": "Publicando un paquete privado de npm a Github Packages usando Github Actions",
+      "title": "Publicando un paquete privado de npm a GitHub Packages usando GitHub Actions",
       "date_modified": "2021-03-19T00:00:00.000Z",
       "author": {
         "name": "Diego Rayo",
@@ -22,10 +22,10 @@
     },
     {
       "id": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
-      "content_html": "MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify.",
+      "content_html": "MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS",
       "url": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
       "title": "Mi música favorita y MDX",
-      "summary": "MDX es una mejora del lenguaje Markdown y quiero explicar como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify.",
+      "summary": "MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS",
       "date_modified": "2020-12-03T00:00:00.000Z",
       "author": {
         "name": "Diego Rayo",

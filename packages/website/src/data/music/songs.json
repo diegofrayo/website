@@ -411,7 +411,7 @@
     },
     {
       "id": "te-para-tres",
-      "title": "Te para tres",
+      "title": "Té para tres",
       "artist": "Soda Stereo",
       "album": "Canción animal",
       "year": 1990,
@@ -432,7 +432,7 @@
           "source": "youtube"
         }
       ],
-      "chords": ["A7", "D/F#", "Em9", "G"]
+      "chords": ["A", "D/F#", "Em9", "G"]
     },
     {
       "id": "ella-tambien",
