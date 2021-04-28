@@ -51,7 +51,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
     // props
     notes,
 
-    // utils
+    // vars
     parsedPositions,
   } = useController(props);
 
@@ -201,7 +201,7 @@ function useController({
     // props
     notes,
 
-    // utils
+    // vars
     parsedPositions:
       positions && positions.length > 0
         ? [

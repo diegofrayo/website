@@ -28,7 +28,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
     setSourceCodeTab,
     setOutputTab,
 
-    // utils
+    // vars
     isSourceCodeTabSelected,
     isOutputTabSelected,
   } = useController(props);
@@ -124,7 +124,7 @@ function useController(
     setSourceCodeTab,
     setOutputTab,
 
-    // utils
+    // vars
     isSourceCodeTabSelected: tab === 0,
     isOutputTabSelected: tab === 1,
   };

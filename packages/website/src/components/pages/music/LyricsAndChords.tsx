@@ -23,7 +23,7 @@ function LyricsAndChords(props: T_LyricsAndChords): T_ReactElement {
     // handlers
     handleModalClose,
 
-    // utils
+    // vars
     numberOfChords,
     parsedChords,
     parsedLyrics,
@@ -186,7 +186,7 @@ function useController({
     // handlers
     handleModalClose,
 
-    // utils
+    // vars
     numberOfChords: chords.length,
     parsedChords: GuitarService.parseSongLyrics(chords.sort().join(" | ")),
     parsedLyrics: GuitarService.parseSongLyrics(children),

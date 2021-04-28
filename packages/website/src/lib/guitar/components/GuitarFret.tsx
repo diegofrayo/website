@@ -34,7 +34,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
     number,
     stringsToSkip,
 
-    // utils
+    // vars
     STRINGS_NAMES,
     isDefaultVariant,
     isEmptyVariant,
@@ -153,7 +153,7 @@ function useController({ variant, ...rest }: T_GuitarFretProps) {
     // props
     ...rest,
 
-    // utils
+    // vars
     STRINGS_NAMES,
     isDefaultVariant,
     isEmptyVariant,

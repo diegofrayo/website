@@ -37,7 +37,7 @@ function Title(props: T_TitleProps): T_ReactElement {
     showLinkIcon,
     children,
 
-    // utils
+    // vars
     id,
     className,
     Tag,
@@ -132,7 +132,7 @@ function useController({
     showLinkIcon,
     children,
 
-    // utils
+    // vars
     id:
       variant === E_Variants.PRIMARY && typeof children === "string" ? generateSlug(children) : "",
     className: classNames(

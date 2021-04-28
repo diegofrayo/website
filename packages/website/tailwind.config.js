@@ -70,7 +70,7 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
     },
     "dfr-bg-secondary": {
       light: {
-        backgroundColor: config("theme.colors").gray["100"],
+        backgroundColor: config("theme.colors").gray["200"],
       },
       dark: {
         backgroundColor: config("theme.colors").gray["500"],

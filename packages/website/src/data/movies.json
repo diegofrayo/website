@@ -4,265 +4,303 @@
     "title": "Diarios de motocicleta",
     "type": "Movie",
     "source": "YouTube",
-    "calification": 5
+    "calification": 5,
+    "categories": ["latin america", "based on true stories"]
   },
   {
     "id": "70301870",
     "title": "Vikings",
     "type": "Series",
     "source": "Netflix",
-    "calification": 5
+    "calification": 5,
+    "categories": ["history"]
   },
   {
     "id": "80230435",
     "title": "Wild district",
     "type": "Series",
     "source": "Netflix",
-    "calification": 5
+    "calification": 5,
+    "categories": ["colombian", "action"]
   },
   {
     "id": "81106517",
     "title": "Apache",
     "type": "Series",
     "source": "Netflix",
-    "calification": 4
+    "calification": 4,
+    "categories": ["argentinian", "based on true stories"]
   },
   {
     "id": "81024039",
     "title": "Barbarians",
     "type": "Series",
     "source": "Netflix",
-    "calification": 4
+    "calification": 4,
+    "categories": ["history"]
   },
   {
     "id": "80220422",
     "title": "Bolivar",
     "type": "Series",
     "source": "Netflix",
-    "calification": 4
+    "calification": 4,
+    "categories": ["colombian", "based on true stories", "history"]
   },
   {
     "id": "80189791",
     "title": "Dark tourist",
     "type": "Documentary Series",
     "source": "Netflix",
-    "calification": 4
+    "calification": 4,
+    "categories": ["travel, social, or food docs"]
   },
   {
     "id": "81249660",
     "title": "Street food Latin America",
     "type": "Documentary Series",
     "source": "Netflix",
-    "calification": 4
+    "calification": 4,
+    "categories": ["travel, social, or food docs"]
   },
   {
     "id": "80141891",
     "title": "The distinguished citizen",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 4
+    "calification": 4,
+    "categories": ["argentinian"]
   },
   {
     "id": "81137088",
     "title": "The great heist",
     "type": "Series",
     "source": "Netflix",
-    "calification": 4
+    "calification": 4,
+    "categories": ["colombian", "based on true stories"]
   },
   {
     "id": "60025061",
     "title": "The pianist",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 4
+    "calification": 4,
+    "categories": ["based on true stories", "drama"]
   },
   {
     "id": "80234304",
     "title": "The queen's gambit",
     "type": "Series",
     "source": "Netflix",
-    "calification": 4
+    "calification": 4,
+    "categories": []
   },
   {
     "id": "80000644",
     "title": "The theory of Everything",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 4
+    "calification": 4,
+    "categories": ["based on true stories", "inspirational"]
   },
   {
     "id": "81166747",
     "title": "Who killed Sara?",
     "type": "Series",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["mexican", "thriller"]
   },
   {
     "id": "70262639",
     "title": "World war Z",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 4
+    "calification": 4,
+    "categories": ["action"]
   },
   {
     "id": "81332418",
     "title": "A road to well being",
     "type": "Documentary",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["inspirational", "argentinian"]
   },
   {
     "id": "81144193",
     "title": "Alma de heroe",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["colombian", "action", "military"]
   },
   {
     "id": "80224476",
     "title": "Expedition hapiness",
     "type": "Documentary",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["inspirational", "travel, social, or food docs"]
   },
   {
     "id": "80994082",
     "title": "Lupin",
     "type": "Series",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["thriller"]
   },
   {
     "id": "81154549",
     "title": "Magical andes",
     "type": "Documentary Series",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["travel, social, or food docs", "latin america"]
   },
   {
     "id": "81239779",
     "title": "Miracle in cell NO.7",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["drama", "inspirational"]
   },
   {
     "id": "80192098",
     "title": "Money heist",
     "type": "Series",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["thriller", "action"]
   },
   {
     "id": "81047842",
     "title": "Monos",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["colombian"]
   },
   {
     "id": "81149049",
     "title": "Nobody sleeps in the woods tonight",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["horror"]
   },
   {
     "id": "81211991",
     "title": "Porno para principiantes",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["argentinian", "comedy"]
   },
   {
     "id": "81116948",
     "title": "Rose island",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["comedy"]
   },
   {
     "id": "60029681",
     "title": "Scarface",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["action"]
   },
   {
     "id": "1179053",
     "title": "Seven years in Tibet",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["inspirational", "based on true stories"]
   },
   {
     "id": "70095140",
     "title": "Slumgdog millionaire",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["drama", "inspirational"]
   },
   {
     "id": "70251895",
     "title": "The impossible",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["drama", "inspirational"]
   },
   {
     "id": "81019069",
     "title": "Unorthodox",
     "type": "Series",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["drama"]
   },
   {
     "id": "81069463",
     "title": "Playing with fire",
     "type": "Series",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["colombian"]
   },
   {
     "id": "tt0119217",
     "title": "Good will hunting",
     "type": "Movie",
     "source": "imdb",
-    "calification": 4
+    "calification": 4,
+    "categories": ["inspirational", "drama"]
   },
   {
     "id": "18171082",
     "title": "Patch Adams",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 4
+    "calification": 4,
+    "categories": ["inspirational", "drama"]
   },
   {
     "id": "81023638",
     "title": "Mi obra maestra",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 4
+    "calification": 4,
+    "categories": ["argentinian", "comedy"]
   },
   {
     "id": "21878564",
     "title": "saving private ryan",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["military"]
   },
   {
     "id": "70056430",
     "title": "shooter",
     "type": "Movie",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["military"]
   },
   {
     "id": "81090319",
     "title": "dark desire",
     "type": "Series",
     "source": "Netflix",
-    "calification": 3
+    "calification": 3,
+    "categories": ["mexican", "thriller"]
   }
 ]

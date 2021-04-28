@@ -18,7 +18,13 @@ import { extractLocaleFromUrl, setCurrentLocale } from "~/utils/internationaliza
 
 import ErrorPage from "./_error";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App({ Component, pageProps }: AppProps): T_ReactElement {
   useDidMount(() => {

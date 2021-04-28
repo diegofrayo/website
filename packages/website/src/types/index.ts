@@ -1,4 +1,4 @@
-import React, { CSSProperties, EffectCallback, RefObject } from "react";
+import React, { CSSProperties, Dispatch, EffectCallback, RefObject, SetStateAction } from "react";
 
 // --- Own ---
 
@@ -21,6 +21,8 @@ export type T_ReactRefObject<RefType> = RefObject<RefType>;
 export type T_ReactForwardedRef = React.ForwardedRef<unknown>;
 
 export type T_ReactEffectCallback = EffectCallback;
+
+export type T_ReactSetState<T_State> = Dispatch<SetStateAction<T_State>>;
 
 export type T_HTMLAttributes = JSX.IntrinsicElements;
 
@@ -131,6 +133,7 @@ export type T_Movie = {
   title: string;
   type: "Series" | "Movie" | "Documentary" | "Documentary Series";
   source: "Netflix" | "YouTube" | "imdb";
+  categories: string[];
   calification: number;
 };
 

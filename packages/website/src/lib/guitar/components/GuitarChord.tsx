@@ -33,7 +33,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
     handleDownloadAsImage,
     handleShowChordInput,
 
-    // utils
+    // vars
     error,
     data,
   } = useController(props);
@@ -172,7 +172,7 @@ function useController({
   handleDownloadAsImage: T_Function;
   handleShowChordInput: T_Function;
 
-  // utils
+  // vars
   data: T_ParsedChord;
   error: Error | undefined;
 } {
@@ -212,7 +212,7 @@ function useController({
     handleDownloadAsImage,
     handleShowChordInput,
 
-    // utils
+    // vars
     data,
     error,
   };

@@ -16,7 +16,7 @@ function Collapsible(props: T_CollapsibleProps): T_ReactElement {
     // states
     containerRef,
 
-    // utils
+    // vars
     title,
     toggleIsCollapsed,
   } = useController(props);
@@ -66,12 +66,12 @@ function useController({
   return {
     // props
     children,
+    title: title ? title : isCollapsed ? "Hide" : "Show",
 
     // states
     containerRef,
 
-    // utils
-    title: title ? title : isCollapsed ? "Hide" : "Show",
+    // vars
     toggleIsCollapsed: () => setIsCollapsed((cv) => !cv),
   };
 }

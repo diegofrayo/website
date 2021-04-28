@@ -26,7 +26,7 @@ type T_LinkProps = T_HTMLAttributes["a"] & {
 
 function Link(props: T_LinkProps): T_ReactElement {
   const {
-    // utils
+    // vars
     getExternalAttrs,
     onClick,
 
@@ -115,7 +115,7 @@ function useController({
     variant,
     ...rest,
 
-    // utils
+    // vars
     getExternalAttrs,
     onClick: href.startsWith("#") ? onClick : undefined,
   };
