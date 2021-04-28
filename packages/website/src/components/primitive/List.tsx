@@ -23,6 +23,25 @@ function List({
           .root--default {
             padding-left: 19px;
           }
+
+          .root--default :global(li) {
+            @apply tw-mb-3;
+            @apply last:tw-mb-0;
+            position: relative;
+          }
+
+          .root--default :global(li)::before {
+            color: black;
+            content: "❯";
+            font-weight: bold;
+            left: -19px;
+            position: absolute;
+            top: 0;
+          }
+
+          :global(.tw-dark) .root--default :global(li)::before {
+            color: white;
+          }
         `}
       </style>
     </ul>
@@ -33,38 +52,6 @@ export default List;
 
 // --- Components ---
 
-List.Item = function ListItem({
-  children,
-  className = "",
-  variant = "DEFAULT",
-  ...rest
-}: T_HTMLAttributes["li"] & { variant?: "DEFAULT" | "UNSTYLED" }): T_ReactElement {
-  return (
-    <li className={classNames(`root root--${variant.toLowerCase()}`, className)} {...rest}>
-      {children}
-
-      <style jsx>
-        {`
-          .root--default {
-            @apply tw-mb-3;
-            @apply last:tw-mb-0;
-            position: relative;
-          }
-
-          .root--default::before {
-            color: black;
-            content: "❯";
-            font-weight: bold;
-            left: -19px;
-            position: absolute;
-            top: 0;
-          }
-
-          :global(.tw-dark) .root--default::before {
-            color: white;
-          }
-        `}
-      </style>
-    </li>
-  );
+List.Item = function ListItem({ children, ...rest }: T_HTMLAttributes["li"]): T_ReactElement {
+  return <li {...rest}>{children}</li>;
 };

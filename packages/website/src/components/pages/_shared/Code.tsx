@@ -26,12 +26,9 @@ function Code({
     : "";
 
   return (
-    <div
-      className="root dfr-Code tw-rounded-md tw-border-t tw-border-gray-100 dark:tw-border-0 dark:tw-bg-gray-700 tw-shadow-lg"
-      data-markdown-block
-    >
+    <div className="root dfr-Code dark:tw-shadow-lg" data-markdown-block>
       {!showOnlySourceCode && (
-        <div className="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono">
+        <div className="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono tw-rounded-t-md tw-border dfr-border-color-primary tw-border-b-0 dark:tw-border-0 dark:tw-bg-gray-700">
           {codeTitle && (
             <code className="tw-w-full sm:tw-w-auto tw-font-bold tw-mb-2 sm:tw-mb-0 sm:tw-mr-4">
               {codeTitle}
@@ -65,7 +62,7 @@ function Code({
       </Highlight>
 
       {!showOnlySourceCode && (
-        <div className="tw-p-2 tw-pt-1.5 tw-text-sm tw-text-right">
+        <div className="tw-p-2 tw-pt-1.5 tw-text-sm tw-text-right  tw-border dfr-border-color-primary tw-border-t-0 dark:tw-border-0 dark:tw-bg-gray-700 tw-rounded-b-md">
           {sourceURL && (
             <Link
               className="tw-block sm:tw-inline-block tw-ml-auto tw-font-bold sm:tw-mr-6 tw-mb-1 sm:tw-mb-0"

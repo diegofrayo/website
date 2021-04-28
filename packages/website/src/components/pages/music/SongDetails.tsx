@@ -21,7 +21,8 @@ function SongDetails({
   return (
     <div className={classNames("tw-text-sm tw-italic", className)}>
       <div>
-        <strong>{SiteTexts.page.current_locale.artist}:</strong> <span>{song.artist}</span>
+        <strong>{SiteTexts.page.current_locale.artist}:</strong>{" "}
+        <span>{Array.isArray(song.artist) ? song.artist.join(", ") : song.artist}</span>
       </div>
       <div>
         <strong>{SiteTexts.page.current_locale.album}:</strong> <span>{song.album}</span>

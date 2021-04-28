@@ -48,6 +48,7 @@ module.exports = {
     width: ["responsive", "last", "hover", "dark"],
     height: ["responsive", "last", "hover", "dark"],
     translate: ["hover"],
+    boxShadow: ["responsive", "hover", "dark"],
   },
 };
 

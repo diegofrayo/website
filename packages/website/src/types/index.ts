@@ -113,7 +113,7 @@ export type T_BlogPost = T_BlogPostBaseWithES | T_BlogPostBaseWithEN;
 export type T_Song = {
   id: string;
   title: string;
-  artist: string;
+  artist: string | string[];
   album: string;
   year: number;
   progress: number;

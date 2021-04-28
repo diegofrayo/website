@@ -17,23 +17,6 @@
         "categories": [{ "id": 1, "value": "tech" }]
       }
     },
-    "i-quit": {
-      "slug": "i-quit",
-      "is_legacy": false,
-      "default_locale": "es",
-      "locales": ["es"],
-      "created_at": "2021-03-14",
-      "published_at": "2021-03-14",
-      "updated_at": "2021-03-21",
-      "config": {
-        "is_published": false,
-        "meta_no_robots": true
-      },
-      "es": {
-        "title": "Renuncié",
-        "categories": [{ "id": 2, "value": "personal" }]
-      }
-    },
     "html-semantic-tags": {
       "slug": "html-semantic-tags",
       "is_legacy": false,
@@ -50,28 +33,6 @@
       "es": {
         "title": "HTML semantic tags 🤔",
         "categories": [{ "id": 1, "value": "tech" }]
-      }
-    },
-    "thoughts-about-my-profession": {
-      "slug": "thoughts-about-my-profession",
-      "is_legacy": false,
-      "default_locale": "es",
-      "locales": ["es"],
-      "created_at": "2020-12-01",
-      "published_at": "2020-12-05",
-      "updated_at": "2020-12-06",
-      "config": {
-        "is_published": false,
-        "meta_no_robots": true
-      },
-      "es": {
-        "title": "Pensamientos sobre mi profesión",
-        "description": "Quiero recopilar algunos pensamientos acerca de mi trabajo y la industria.",
-        "categories": [{ "id": 2, "value": "personal" }]
-      },
-      "en": {
-        "title": "Thoughts about my profession",
-        "description": "I want to recopile some thoughts about my job and this industry."
       }
     },
     "my-favorite-music-and-mdx": {

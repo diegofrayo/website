@@ -15,9 +15,9 @@ class MusicService {
         ]),
       );
 
-    const listOfChords = songs.find((song) => song.artist === "");
+    const listOfChords = songs.find((song) => !song.artist);
 
-    return (listOfChords ? [listOfChords] : []).concat(songs.filter((song) => song.artist !== ""));
+    return (listOfChords ? [listOfChords] : []).concat(songs.filter((song) => !!song.artist));
   }
 
   async getSong(config: Record<"id", T_Primitive>): Promise<T_Song> {

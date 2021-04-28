@@ -37,7 +37,7 @@ export function Render({
   children,
 }: {
   isLoading: boolean;
-  error: unknown;
+  error: Error | unknown;
   data: unknown;
   children: (data: unknown) => T_ReactElement;
 }): T_ReactElement {
@@ -52,7 +52,7 @@ export function Render({
   if (error) {
     return (
       <p className="tw-p-2 tw-text-center tw-text-red-700 tw-text-sm tw-font-mono">
-        😵 {(error as T_Object)?.message}
+        😵 {error instanceof Error ? error.message : error || "Error"}
       </p>
     );
   }

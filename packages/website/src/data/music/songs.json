@@ -478,6 +478,36 @@
         }
       ],
       "chords": ["D", "G", "Bm", "F#7"]
+    },
+    {
+      "id": "rezo-por-vos",
+      "title": "Rezo por vos",
+      "artist": ["Luis Alberto Spinetta", "Charly García"],
+      "album": "Privé",
+      "year": 1986,
+      "progress": 4,
+      "created_at": "28/04/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/46TZ5rawdrjoFwsQLGlcLr?si=d4407d0509d2460e",
+      "youtube_url": "https://youtu.be/kHPja5eLZdU",
+      "sources": [
+        {
+          "text": "Cómo tocar Rezo por vos Charly García Spinetta con guitarra criolla Acordes Tutorial Letra Cover",
+          "url": "https://youtu.be/L2ODxKj43Yco",
+          "source": "youtube"
+        },
+        {
+          "text": "cómo tocar en guitarra REZO POR VOS de CHARLY GARCÍA Y SPINETTA tutorial acordes unplugged",
+          "url": "https://youtu.be/j9WythaS_Vg",
+          "source": "youtube"
+        },
+        {
+          "text": "Rezo por vos",
+          "url": "https://acordes.lacuerda.net/charly_garcia/rezo_por_vos-2.shtml",
+          "source": "lacuerda"
+        }
+      ],
+      "chords": ["A", "Bm", "C", "D", "G"]
     }
   ]
 }
