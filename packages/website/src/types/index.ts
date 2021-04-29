@@ -131,8 +131,8 @@ export type T_Song = {
 export type T_Movie = {
   id: string;
   title: string;
-  type: "Series" | "Movie" | "Documentary" | "Documentary Series";
-  source: "Netflix" | "YouTube" | "imdb";
+  type: "Serie" | "Película" | "Documental" | "Serie documental";
+  source: "Netflix" | "YouTube" | "imdb" | "Amazon Prime Video";
   categories: string[];
   calification: number;
 };

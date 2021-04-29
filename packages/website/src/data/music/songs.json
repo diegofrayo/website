@@ -508,6 +508,26 @@
         }
       ],
       "chords": ["A", "Bm", "C", "D", "G"]
+    },
+    {
+      "id": "aguacero",
+      "title": "Aguacero",
+      "artist": "Perotá Chingó",
+      "album": "Aguas",
+      "year": 2017,
+      "progress": 3,
+      "created_at": "28/04/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/4BgpB2GGQ2njzpS3RN4C3w?si=9c8e8b97ce0a408c",
+      "youtube_url": "https://youtu.be/tNuO2-vlI9Y",
+      "sources": [
+        {
+          "text": "Aguacero",
+          "url": "https://acordes.lacuerda.net/perota_chingo/aguacero.shtml",
+          "source": "lacuerda"
+        }
+      ],
+      "chords": ["Em", "D", "Dm", "B7", "G", "A"]
     }
   ]
 }

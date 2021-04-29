@@ -2,95 +2,95 @@
   {
     "id": "JzDdKYyz5zY",
     "title": "Diarios de motocicleta",
-    "type": "Movie",
+    "type": "Película",
     "source": "YouTube",
     "calification": 5,
-    "categories": ["latin america", "based on true stories"]
+    "categories": ["latinoamérica", "basado en historias reales"]
   },
   {
     "id": "70301870",
     "title": "Vikings",
-    "type": "Series",
+    "type": "Serie",
     "source": "Netflix",
     "calification": 5,
-    "categories": ["history"]
+    "categories": ["historia"]
   },
   {
     "id": "80230435",
     "title": "Wild district",
-    "type": "Series",
+    "type": "Serie",
     "source": "Netflix",
     "calification": 5,
-    "categories": ["colombian", "action"]
+    "categories": ["colombia", "acción", "política"]
   },
   {
     "id": "81106517",
     "title": "Apache",
-    "type": "Series",
+    "type": "Serie",
     "source": "Netflix",
     "calification": 4,
-    "categories": ["argentinian", "based on true stories"]
+    "categories": ["argentina", "basado en historias reales"]
   },
   {
     "id": "81024039",
     "title": "Barbarians",
-    "type": "Series",
+    "type": "Serie",
     "source": "Netflix",
     "calification": 4,
-    "categories": ["history"]
+    "categories": ["historia"]
   },
   {
     "id": "80220422",
-    "title": "Bolivar",
-    "type": "Series",
+    "title": "Bolívar",
+    "type": "Serie",
     "source": "Netflix",
     "calification": 4,
-    "categories": ["colombian", "based on true stories", "history"]
+    "categories": ["colombia", "basado en historias reales", "historia"]
   },
   {
     "id": "80189791",
     "title": "Dark tourist",
-    "type": "Documentary Series",
+    "type": "Serie documental",
     "source": "Netflix",
     "calification": 4,
-    "categories": ["travel, social, or food docs"]
+    "categories": []
   },
   {
     "id": "81249660",
     "title": "Street food Latin America",
-    "type": "Documentary Series",
+    "type": "Serie documental",
     "source": "Netflix",
-    "calification": 4,
-    "categories": ["travel, social, or food docs"]
+    "calification": 3,
+    "categories": []
   },
   {
     "id": "80141891",
     "title": "The distinguished citizen",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
     "calification": 4,
-    "categories": ["argentinian"]
+    "categories": ["argentina"]
   },
   {
     "id": "81137088",
     "title": "The great heist",
-    "type": "Series",
+    "type": "Serie",
     "source": "Netflix",
     "calification": 4,
-    "categories": ["colombian", "based on true stories"]
+    "categories": ["colombia", "basado en historias reales"]
   },
   {
     "id": "60025061",
     "title": "The pianist",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
-    "calification": 4,
-    "categories": ["based on true stories", "drama"]
+    "calification": 3,
+    "categories": ["basado en historias reales", "drama"]
   },
   {
     "id": "80234304",
     "title": "The queen's gambit",
-    "type": "Series",
+    "type": "Serie",
     "source": "Netflix",
     "calification": 4,
     "categories": []
@@ -98,55 +98,55 @@
   {
     "id": "80000644",
     "title": "The theory of Everything",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
     "calification": 4,
-    "categories": ["based on true stories", "inspirational"]
+    "categories": ["basado en historias reales", "inspiración"]
   },
   {
     "id": "81166747",
     "title": "Who killed Sara?",
-    "type": "Series",
+    "type": "Serie",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["mexican", "thriller"]
+    "categories": ["méxico", "thriller"]
   },
   {
     "id": "70262639",
     "title": "World war Z",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
     "calification": 4,
-    "categories": ["action"]
+    "categories": ["suspenso"]
   },
   {
     "id": "81332418",
     "title": "A road to well being",
-    "type": "Documentary",
+    "type": "Documental",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["inspirational", "argentinian"]
+    "categories": ["inspiración", "argentina"]
   },
   {
     "id": "81144193",
-    "title": "Alma de heroe",
-    "type": "Movie",
+    "title": "Alma de héroe",
+    "type": "Película",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["colombian", "action", "military"]
+    "categories": ["colombia", "acción", "militar"]
   },
   {
     "id": "80224476",
     "title": "Expedition hapiness",
-    "type": "Documentary",
+    "type": "Documental",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["inspirational", "travel, social, or food docs"]
+    "categories": ["inspiración"]
   },
   {
     "id": "80994082",
     "title": "Lupin",
-    "type": "Series",
+    "type": "Serie",
     "source": "Netflix",
     "calification": 3,
     "categories": ["thriller"]
@@ -154,153 +154,225 @@
   {
     "id": "81154549",
     "title": "Magical andes",
-    "type": "Documentary Series",
+    "type": "Serie documental",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["travel, social, or food docs", "latin america"]
+    "categories": ["latinoamérica"]
   },
   {
     "id": "81239779",
     "title": "Miracle in cell NO.7",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["drama", "inspirational"]
+    "categories": ["drama", "inspiración"]
   },
   {
     "id": "80192098",
     "title": "Money heist",
-    "type": "Series",
+    "type": "Serie",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["thriller", "action"]
+    "categories": ["thriller", "acción"]
   },
   {
     "id": "81047842",
     "title": "Monos",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["colombian"]
+    "categories": ["colombia", "militar"]
   },
   {
     "id": "81149049",
     "title": "Nobody sleeps in the woods tonight",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["horror"]
+    "categories": ["terror"]
   },
   {
     "id": "81211991",
     "title": "Porno para principiantes",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["argentinian", "comedy"]
+    "categories": ["argentina", "comedia"]
   },
   {
     "id": "81116948",
     "title": "Rose island",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["comedy"]
+    "categories": ["comedia"]
   },
   {
     "id": "60029681",
     "title": "Scarface",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["action"]
+    "categories": ["acción"]
   },
   {
     "id": "1179053",
     "title": "Seven years in Tibet",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["inspirational", "based on true stories"]
+    "categories": ["inspiración", "basado en historias reales"]
   },
   {
     "id": "70095140",
     "title": "Slumgdog millionaire",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["drama", "inspirational"]
+    "categories": ["drama", "inspiración"]
   },
   {
     "id": "70251895",
     "title": "The impossible",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["drama", "inspirational"]
+    "categories": ["drama", "basado en historias reales"]
   },
   {
     "id": "81019069",
     "title": "Unorthodox",
-    "type": "Series",
+    "type": "Serie",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["drama"]
+    "categories": ["drama", "inspiración"]
   },
   {
     "id": "81069463",
     "title": "Playing with fire",
-    "type": "Series",
+    "type": "Serie",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["colombian"]
+    "categories": ["colombia"]
   },
   {
     "id": "tt0119217",
     "title": "Good will hunting",
-    "type": "Movie",
+    "type": "Película",
     "source": "imdb",
     "calification": 4,
-    "categories": ["inspirational", "drama"]
+    "categories": ["inspiración", "drama"]
   },
   {
     "id": "18171082",
     "title": "Patch Adams",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
-    "calification": 4,
-    "categories": ["inspirational", "drama"]
+    "calification": 3,
+    "categories": ["inspiración", "drama"]
   },
   {
     "id": "81023638",
     "title": "Mi obra maestra",
-    "type": "Movie",
+    "type": "Película",
     "source": "Netflix",
-    "calification": 4,
-    "categories": ["argentinian", "comedy"]
+    "calification": 3,
+    "categories": ["argentina", "comedia"]
   },
   {
     "id": "21878564",
-    "title": "saving private ryan",
-    "type": "Movie",
+    "title": "Saving private ryan",
+    "type": "Película",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["military"]
+    "categories": ["militar", "acción"]
   },
   {
     "id": "70056430",
-    "title": "shooter",
-    "type": "Movie",
+    "title": "Shooter",
+    "type": "Película",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["military"]
+    "categories": ["militar", "acción"]
   },
   {
     "id": "81090319",
-    "title": "dark desire",
-    "type": "Series",
+    "title": "Dark desire",
+    "type": "Serie",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["mexican", "thriller"]
+    "categories": ["méxico", "thriller"]
+  },
+  {
+    "id": "80192187",
+    "title": "Triple frontier",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 4,
+    "categories": ["acción"]
+  },
+  {
+    "id": "80230399",
+    "title": "Extraction",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["acción", "militar"]
+  },
+  {
+    "id": "80013871",
+    "title": "American snipper",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["acción", "militar"]
+  },
+  {
+    "id": "81027187",
+    "title": "The wolf's call",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 4,
+    "categories": ["acción", "militar"]
+  },
+  {
+    "id": "80118916",
+    "title": "Sand castle",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["acción", "militar"]
+  },
+  {
+    "id": "80235864",
+    "title": "Body guard",
+    "type": "Serie",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["acción", "política"]
+  },
+  {
+    "id": "B07PGBXYPV",
+    "title": "Chernobyl",
+    "type": "Serie",
+    "source": "Amazon Prime Video",
+    "calification": 4,
+    "categories": ["drama", "basado en historias reales"]
+  },
+  {
+    "id": "B00M4ZOQK4",
+    "title": "Silicon Valley",
+    "type": "Serie",
+    "source": "Amazon Prime Video",
+    "calification": 5,
+    "categories": ["comedia", "tecnología"]
+  },
+  {
+    "id": "70264888",
+    "title": "Black mirror",
+    "type": "Serie",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["scifi", "tecnología"]
   }
 ]

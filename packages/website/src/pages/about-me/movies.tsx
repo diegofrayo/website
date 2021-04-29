@@ -9,9 +9,10 @@ import MoviesService from "~/services/movies";
 import { T_Movie, T_ReactElement, T_ReactSetState, T_SiteTexts } from "~/types";
 import { getSiteTexts } from "~/utils/internationalization";
 import { ROUTES } from "~/utils/routing";
+import { generateSlug } from "~/utils/strings";
 
 const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
-const PAGE_NAME = "🎬 movies";
+const PAGE_NAME = "🎬 Películas y series";
 
 function MoviesPage(): T_ReactElement {
   return (
@@ -67,7 +68,7 @@ function Content(): T_ReactElement {
                 variant={Title.variant.SECONDARY}
                 className="tw-mb-4"
               >
-                categories ({categories.length})
+                Categorías ({categories.length})
               </Title>
               <div className="tw-flex tw-justify-betweden tw-flex-wrap">
                 {categories.map((category) => {
@@ -98,7 +99,8 @@ function Content(): T_ReactElement {
               variant={Title.variant.SECONDARY}
               className="tw-mb-4"
             >
-              {selectedCategory ? `"${selectedCategory}" results` : "results"} ({movies.length})
+              {selectedCategory ? `Resultados de "${selectedCategory}"` : "Resultados"} (
+              {movies.length})
             </Title>
             <div className="tw-flex tw-justify-center sm:tw-justify-between tw-flex-wrap">
               {movies.map(({ id, source, title, type, calification }, index) => {
@@ -121,7 +123,7 @@ function Content(): T_ReactElement {
                     <article
                       className="tw-flex tw-h-full tw-w-full"
                       style={{
-                        backgroundImage: `url("/static/pages/playground/movies/${id}.jpg")`,
+                        backgroundImage: `url("/static/pages/about-me/movies/${id}.jpg")`,
                         backgroundSize: "100% 100%",
                         backgroundRepeat: "no-repeat",
                       }}
@@ -143,6 +145,12 @@ function Content(): T_ReactElement {
                         {source === "imdb" ? (
                           <Image
                             src="/static/images/misc/imdb.png"
+                            className="tw-w-6 tw-h-6 tw-rounded-full"
+                            alt="imdb icon"
+                          />
+                        ) : source === "Amazon Prime Video" ? (
+                          <Image
+                            src="/static/images/misc/amazon-prime-video.png"
                             className="tw-w-6 tw-h-6 tw-rounded-full"
                             alt="imdb icon"
                           />
@@ -205,28 +213,14 @@ function useController(): {
   function filterMovies(movies: T_Movie[], filter: string): T_Movie[] {
     if (!filter) return movies;
 
-    return movies.filter(
-      (movie) => filter === movie.source.toLowerCase() || movie.categories.includes(filter),
-    );
+    return movies.filter((movie) => {
+      return (
+        filter === movie.source.toLowerCase() ||
+        filter === movie.type.toLowerCase() ||
+        movie.categories.includes(filter)
+      );
+    });
   }
-
-  const transformedData = data
-    ? {
-        movies: filterMovies(data, selectedCategory),
-        categories: Object.keys(
-          data.reduce(
-            (result, movie) => {
-              movie.categories.forEach((category) => {
-                result[category] = category;
-              });
-
-              return result;
-            },
-            { netflix: "netflix", youtube: "youtube" },
-          ),
-        ).sort(),
-      }
-    : undefined;
 
   return {
     // states
@@ -236,6 +230,29 @@ function useController(): {
     // vars
     isLoading,
     error,
-    data: transformedData,
+    data: data
+      ? {
+          movies: filterMovies(data, selectedCategory),
+          categories: Object.values({
+            peliculas: "película",
+            series: "serie",
+            documentales: "documental",
+            serie_documental: "serie documental",
+            netflix: "netflix",
+            youtube: "youtube",
+            amazon_primer_video: "amazon prime video",
+          }).concat(
+            Object.values(
+              data.reduce((result, movie) => {
+                movie.categories.forEach((category) => {
+                  result[generateSlug(category)] = category;
+                });
+
+                return result;
+              }, {}),
+            ).sort() as string[],
+          ),
+        }
+      : undefined,
   };
 }

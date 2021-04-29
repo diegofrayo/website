@@ -92,7 +92,7 @@ function useController() {
               4: "tw-bg-green-600",
               5: "tw-bg-green-700",
             })[index]
-      : "tw-opacity-75 tw-bg-gray-200";
+      : "tw-opacity-75 dfr-bg-secondary";
   }
 
   return { getProgressStyles };

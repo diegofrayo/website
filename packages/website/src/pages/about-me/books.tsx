@@ -10,7 +10,7 @@ import { getSiteTexts } from "~/utils/internationalization";
 import { ROUTES } from "~/utils/routing";
 
 const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
-const PAGE_NAME = "📚 books";
+const PAGE_NAME = "📚 Libros";
 
 function BooksPage(): T_ReactElement {
   return (
@@ -61,7 +61,7 @@ function Content(): T_ReactElement {
                   <article
                     className="tw-flex tw-h-full tw-w-full"
                     style={{
-                      backgroundImage: `url(/static/pages/playground/books/${id}.jpg)`,
+                      backgroundImage: `url(/static/pages/about-me/books/${id}.jpg)`,
                       backgroundSize: "100% 100%",
                       backgroundRepeat: "no-repeat",
                     }}

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { List, Link, Icon } from "~/components/primitive";
+import { List, Link, Icon, Title } from "~/components/primitive";
 import { Emoji, Render } from "~/components/pages/_shared";
 import { SongDetails } from "~/components/pages/music";
 import { useInternationalization, useQuery } from "~/hooks";
@@ -36,22 +36,39 @@ function MusicPage(): T_ReactElement {
           },
         ]}
         title={SiteTexts.page.current_locale.title}
+        showGoToTopButton
       >
-        <p>{SiteTexts.page.current_locale.description}</p>
+        <p>{SiteTexts.page.current_locale.description} </p>
 
         <Render isLoading={isLoading} error={error} data={data}>
           {(data: T_Song[]) => {
             return (
               <Fragment>
-                <Link
-                  href={`${ROUTES.MUSIC}/${data[0].id}`}
-                  variant={Link.variant.SECONDARY}
-                  className="tw-font-bold tw-mt-6 tw-mb-7 tw-uppercase tw-inline-block tw-px-4 tw-py-2 tw-rounded-md dfr-bg-secondary dark:dfr-bg-secondary"
-                  isNextLink
+                <Title
+                  is="h2"
+                  variant={Title.variant.SECONDARY}
+                  size={Title.size.MD}
+                  className="tw-my-6"
                 >
-                  <Emoji className="tw-mr-2">📓</Emoji>
-                  <span>{data[0].title}</span>
-                </Link>
+                  <Link
+                    href={`${ROUTES.MUSIC}/${data[0].id}`}
+                    variant={Link.variant.SECONDARY}
+                    isNextLink
+                  >
+                    <Emoji className="tw-mr-2">📓</Emoji>
+                    <span>{data[0].title}</span>
+                  </Link>
+                </Title>
+
+                <Title
+                  is="h2"
+                  variant={Title.variant.SECONDARY}
+                  size={Title.size.MD}
+                  className="tw-mb-2"
+                >
+                  <Emoji className="tw-mr-2">🎶</Emoji>
+                  <span>Canciones ({data.length - 1})</span>
+                </Title>
 
                 <List className="tw-flex tw-flex-wrap tw-justify-between">
                   {data.map((song) => {
