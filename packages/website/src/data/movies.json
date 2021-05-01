@@ -61,7 +61,7 @@
     "type": "Serie documental",
     "source": "Netflix",
     "calification": 3,
-    "categories": []
+    "categories": ["latinoamérica"]
   },
   {
     "id": "80141891",
@@ -374,5 +374,13 @@
     "source": "Netflix",
     "calification": 3,
     "categories": ["scifi", "tecnología"]
+  },
+  {
+    "id": "tt6938828",
+    "title": "At Eternity's Gate",
+    "type": "Película",
+    "source": "imdb",
+    "calification": 4,
+    "categories": ["drama", "basado en historias reales"]
   }
 ]

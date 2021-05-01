@@ -6,7 +6,9 @@ import { Button, Icon, Image, Link, Space, Title } from "~/components/primitive"
 import { Render } from "~/components/pages/_shared";
 import { useQuery } from "~/hooks";
 import MoviesService from "~/services/movies";
-import { T_Movie, T_ReactElement, T_ReactSetState, T_SiteTexts } from "~/types";
+import { T_Movie, T_ReactElement, T_SiteTexts } from "~/types";
+import { getScrollPosition, setScrollPosition, isInViewport } from "~/utils/browser";
+import { HEADER_HEIGHT } from "~/utils/constants";
 import { getSiteTexts } from "~/utils/internationalization";
 import { ROUTES } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
@@ -48,7 +50,9 @@ function Content(): T_ReactElement {
   const {
     // states
     selectedCategory,
-    setSelectedCategory,
+
+    // handlers
+    handleSelectFilter,
 
     // vars
     isLoading,
@@ -68,7 +72,7 @@ function Content(): T_ReactElement {
                 variant={Title.variant.SECONDARY}
                 className="tw-mb-4"
               >
-                Categorías ({categories.length})
+                Categorías [{categories.length}]
               </Title>
               <div className="tw-flex tw-justify-betweden tw-flex-wrap">
                 {categories.map((category) => {
@@ -81,9 +85,7 @@ function Content(): T_ReactElement {
                           ? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
                           : "dfr-bg-secondary dark:dfr-bg-secondary",
                       )}
-                      onClick={() => {
-                        setSelectedCategory(category === selectedCategory ? "" : category);
-                      }}
+                      onClick={handleSelectFilter(category)}
                     >
                       {category}
                     </Button>
@@ -98,9 +100,10 @@ function Content(): T_ReactElement {
               size={Title.size.MD}
               variant={Title.variant.SECONDARY}
               className="tw-mb-4"
+              id="results"
             >
-              {selectedCategory ? `Resultados de "${selectedCategory}"` : "Resultados"} (
-              {movies.length})
+              {selectedCategory ? `Resultados de "${selectedCategory}"` : "Resultados"} [
+              {movies.length}]
             </Title>
             <div className="tw-flex tw-justify-center sm:tw-justify-between tw-flex-wrap">
               {movies.map(({ id, source, title, type, calification }, index) => {
@@ -123,7 +126,7 @@ function Content(): T_ReactElement {
                     <article
                       className="tw-flex tw-h-full tw-w-full"
                       style={{
-                        backgroundImage: `url("/static/pages/about-me/movies/${id}.jpg")`,
+                        backgroundImage: `url("/static/pages/about-me/movies/${id.toLowerCase()}.jpg")`,
                         backgroundSize: "100% 100%",
                         backgroundRepeat: "no-repeat",
                       }}
@@ -205,7 +208,7 @@ function useController(): {
       }
     | undefined;
   selectedCategory: string;
-  setSelectedCategory: T_ReactSetState<string>;
+  handleSelectFilter: (filter: string) => () => void;
 } {
   const [selectedCategory, setSelectedCategory] = useState("");
   const { isLoading, error, data } = useQuery<T_Movie[]>("movies", MoviesService.fetchMovies);
@@ -222,10 +225,28 @@ function useController(): {
     });
   }
 
+  function handleSelectFilter(category) {
+    return () => {
+      setSelectedCategory(category === selectedCategory ? "" : category);
+
+      const resultsTitleElement = document.getElementById("results");
+      if (!resultsTitleElement) return;
+
+      if (!isInViewport(resultsTitleElement)) {
+        resultsTitleElement.scrollIntoView();
+        setTimeout(() => {
+          setScrollPosition(getScrollPosition() - HEADER_HEIGHT);
+        }, 10);
+      }
+    };
+  }
+
   return {
     // states
-    setSelectedCategory,
     selectedCategory,
+
+    // handlers
+    handleSelectFilter,
 
     // vars
     isLoading,

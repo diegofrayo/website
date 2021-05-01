@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { T_ReactChildrenProp, T_ReactElement } from "~/types";
+import { T_HTMLAttributes, T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { generateSlug } from "~/utils/strings";
 
 import Icon from "./Icon";
@@ -26,9 +26,7 @@ type T_TitleProps = {
   variant?: E_Variants;
   size?: E_Size;
   showLinkIcon?: boolean;
-
-  className?: string;
-};
+} & T_HTMLAttributes["h1"];
 
 function Title(props: T_TitleProps): T_ReactElement {
   const {
@@ -97,6 +95,7 @@ function useController({
   size = undefined,
   variant = E_Variants.PRIMARY,
   showLinkIcon = false,
+  id = "",
 }: T_TitleProps): Omit<T_TitleProps, "is"> & {
   id: string;
   Tag: T_TitleProps["is"];
@@ -134,7 +133,7 @@ function useController({
 
     // vars
     id:
-      variant === E_Variants.PRIMARY && typeof children === "string" ? generateSlug(children) : "",
+      variant === E_Variants.PRIMARY && typeof children === "string" ? generateSlug(children) : id,
     className: classNames(
       `dfr-Title dfr-Title--${variant.toLowerCase()}`,
       "tw-font-bold tw-font-sans",

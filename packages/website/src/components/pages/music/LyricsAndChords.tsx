@@ -77,18 +77,20 @@ function LyricsAndChords(props: T_LyricsAndChords): T_ReactElement {
                 >
                   <Icon icon={Icon.icon.CHEVRON_LEFT} size={20} />
                 </Button>
-                <div className="tw-flex-1 tw-text-center">
+                <div className="tw-flex-1 tw-justify-center tw-flex tw-items-center">
                   {createArray(selectedChord.length, 0).map((index) => {
                     return (
                       <span
                         key={`Chord-point-${index}`}
                         className={classNames(
-                          "tw-inline-block tw-h-2 tw-w-2 tw-rounded-full tw-mx-1",
+                          "tw-inline-flex tw-justify-center tw-items-center tw-rounded-full tw-mx-1 tw-h-4 tw-w-4 tw-text-white dark:tw-text-black tw-text-xxs tw-leading-0",
                           selectedChordIndex === index
-                            ? "tw-bg-black dark:tw-bg-white"
+                            ? "tw-bg-black dark:tw-bg-white tw-font-bold"
                             : "tw-bg-gray-400",
                         )}
-                      />
+                      >
+                        {index + 1}
+                      </span>
                     );
                   })}
                 </div>

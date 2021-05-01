@@ -36,6 +36,9 @@ module.exports = {
       lineHeight: {
         0: "0",
       },
+      fontSize: {
+        xxs: "0.5rem",
+      },
     },
   },
   variants: {

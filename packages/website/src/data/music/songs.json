@@ -528,6 +528,86 @@
         }
       ],
       "chords": ["Em", "D", "Dm", "B7", "G", "A"]
+    },
+    {
+      "id": "bailando-con-tu-sombra",
+      "title": "Bailando con tu sombra",
+      "artist": "Victor Heredia",
+      "album": "Fenix",
+      "year": 2003,
+      "progress": 4,
+      "created_at": "29/04/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/1kepq9J67v8HhEEfGdYq9m?si=cd2a7351a0d4402f",
+      "youtube_url": "https://youtu.be/puUKQ_pJ_v4",
+      "sources": [
+        {
+          "text": "Bailando con tu sombra",
+          "url": "https://acordes.lacuerda.net/abel_pintos/bailando_con_tu_sombra.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Como tocar guitarra Bailando con tu Sombra de V. Heredia",
+          "url": "https://youtu.be/vRUJRqK1rFk",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["Am", "C", "G", "F", "E"]
+    },
+    {
+      "id": "alma-de-diamante",
+      "title": "Alma de diamante",
+      "artist": "Spinetta Jade",
+      "album": "Alma de diamante",
+      "year": 1980,
+      "progress": 4,
+      "created_at": "30/04/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/6F3VxUPgfcvDDpk2UxsJ5a?si=748b54a7a88c4da3",
+      "youtube_url": "https://youtu.be/hEL2AgzRmjc",
+      "sources": [
+        {
+          "text": "Alma de diamante",
+          "url": "https://acordes.lacuerda.net/luis_a_spinetta/alma_de_diamante.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Alma de diamante-Luis A. Spinetta cover Estefy Lennon",
+          "url": "https://youtu.be/mbeu8cJUSss",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["Am", "F", "Em7", "C", "G"]
+    },
+    {
+      "id": "el-tesoro-de-los-inocentes",
+      "title": "El tesoro de los inocentes",
+      "artist": "Indio Solari y los Fundamentalistas del Aire Acondicionado",
+      "album": "Bingo Fuel",
+      "year": 2004,
+      "progress": 3,
+      "created_at": "30/04/2021",
+      "is_published": false,
+      "spotify_url": "https://open.spotify.com/track/7qGn9WweEDJw8KZwJqB1KN?si=8cda781f134e494e",
+      "youtube_url": "https://youtu.be/NH9lciAWeJw",
+      "sources": [
+        {
+          "text": "El tesoro de los inocentes",
+          "url": "https://acordes.lacuerda.net/fundamentalistas_del_aire/el_tesoro_de_los_inocentes-5.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "COVER Y COMO TOCAR CON LA GUITARRA - EL TESORO DE LOS INOCENTES. INDIO SOLARI TUTORIAL ACORDES",
+          "url": "https://youtu.be/aRKwxpQcVkk",
+          "source": "youtube"
+        },
+        {
+          "text": "El tesoro de los inocentes - Indio Solari (Cover)",
+          "url": "https://youtu.be/vhdIUCb_4h0",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
     }
   ]
 }
