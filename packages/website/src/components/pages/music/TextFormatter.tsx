@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import classNames from "classnames";
+import reactStringReplace from "react-string-replace";
 
 import { Blockquote, Button, Icon, Modal, Space } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
@@ -7,12 +8,13 @@ import { GuitarChord, GuitarService, T_Chord } from "~/lib/guitar";
 import { T_Function, T_ReactElement } from "~/types";
 import { createArray, safeCastNumber } from "~/utils/misc";
 
-type T_LyricsAndChords = {
+type T_TextFormatterProps = {
   children: string;
   chords: string[];
+  insertions: { text: string; replacement: T_ReactElement }[];
 };
 
-function LyricsAndChords(props: T_LyricsAndChords): T_ReactElement {
+function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
   const {
     // states
     isModalVisible,
@@ -43,12 +45,7 @@ function LyricsAndChords(props: T_LyricsAndChords): T_ReactElement {
 
       {parsedChords && parsedLyrics && <Space size={5} />}
 
-      {parsedLyrics && (
-        <pre
-          className="tw-p-1 tw-break-normal tw-leading-none"
-          dangerouslySetInnerHTML={{ __html: parsedLyrics }}
-        />
-      )}
+      {parsedLyrics}
 
       <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
         <div className="tw-bg-white dark:tw-bg-black tw-p-4 tw-rounded-md tw-w-96 tw-mx-auto tw-max-w-full">
@@ -63,7 +60,7 @@ function LyricsAndChords(props: T_LyricsAndChords): T_ReactElement {
                     <GuitarChord
                       name={chord.name}
                       musicNotes={chord.musicNotes}
-                      stringsToSkip={chord.stringsToSkip}
+                      playedStrings={chord.playedStrings}
                       showOptions={false}
                     />
                   </div>
@@ -107,7 +104,7 @@ function LyricsAndChords(props: T_LyricsAndChords): T_ReactElement {
             <GuitarChord
               name={selectedChord.name}
               musicNotes={selectedChord.musicNotes}
-              stringsToSkip={selectedChord.stringsToSkip}
+              playedStrings={selectedChord.playedStrings}
               showOptions={false}
             />
           ) : null}
@@ -122,14 +119,11 @@ function LyricsAndChords(props: T_LyricsAndChords): T_ReactElement {
   );
 }
 
-export default LyricsAndChords;
+export default TextFormatter;
 
 // --- Controller ---
 
-function useController({
-  children,
-  chords,
-}: T_LyricsAndChords): {
+function useController({ children, chords, insertions }: T_TextFormatterProps): {
   isModalVisible: boolean;
   selectedChord: T_Chord | undefined;
   selectedChordIndex: number;
@@ -139,7 +133,7 @@ function useController({
 
   numberOfChords: number;
   parsedChords: string;
-  parsedLyrics: string;
+  parsedLyrics: React.ReactNodeArray;
 } {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedChord, setSelectedChord] = useState<T_Chord | undefined>(undefined);
@@ -178,6 +172,35 @@ function useController({
     }
   }
 
+  function parseInsertions(
+    parsedContent: string,
+    insertions?: T_TextFormatterProps["insertions"],
+  ): React.ReactNodeArray {
+    let result;
+
+    if (insertions) {
+      insertions.forEach(({ text, replacement }, index) => {
+        result = reactStringReplace(index === 0 ? parsedContent : result, text, () => replacement);
+      });
+    } else {
+      result = [parsedContent];
+    }
+
+    return result.map((item, index) => {
+      if (typeof item === "string") {
+        return (
+          <pre
+            key={`TextFormatter-item-${index}`}
+            className="tw-p-1 tw-break-normal tw-leading-none"
+            dangerouslySetInnerHTML={{ __html: item }}
+          />
+        );
+      }
+
+      return <Fragment key={`TextFormatter-item-${index}`}>{item}</Fragment>;
+    });
+  }
+
   return {
     // states
     isModalVisible,
@@ -190,7 +213,7 @@ function useController({
 
     // vars
     numberOfChords: chords.length,
-    parsedChords: GuitarService.parseSongLyrics(chords.sort().join(" | ")),
-    parsedLyrics: GuitarService.parseSongLyrics(children),
+    parsedChords: GuitarService.formatText(chords.sort().join(" | ")),
+    parsedLyrics: parseInsertions(GuitarService.formatText(children), insertions),
   };
 }

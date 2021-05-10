@@ -9,7 +9,7 @@ import { NUMBER_OF_STRINGS } from "../constants";
 import {
   T_MusicNote,
   T_GuitarFret,
-  T_GuitarStringsToSkip,
+  T_GuitarPlayedStrings,
   I_BarreMusicNote,
   I_SimpleMusicNote,
 } from "../types";
@@ -24,7 +24,7 @@ type T_GuitarFretProps = {
   variant: T_Variants;
   number?: T_GuitarFret;
   musicNotes?: T_MusicNote[];
-  stringsToSkip?: T_GuitarStringsToSkip;
+  playedStrings?: T_GuitarPlayedStrings;
 };
 
 function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
@@ -32,7 +32,10 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
     // props
     musicNotes,
     number,
-    stringsToSkip,
+    playedStrings,
+
+    // utils
+    getSkippedStringValue,
 
     // vars
     STRINGS_NAMES,
@@ -102,12 +105,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                   </div>
                 ) : isSkippedStringsVariant ? (
                   <span className="tw-px-2">
-                    {(typeof stringsToSkip === "string"
-                      ? stringsToSkip.split(",").map(Number)
-                      : stringsToSkip
-                    )?.indexOf(Number(guitarString)) != -1
-                      ? "x"
-                      : ""}
+                    {getSkippedStringValue(playedStrings, guitarString)}
                   </span>
                 ) : isBarreMusicNote ? (
                   <Fragment>
@@ -142,16 +140,38 @@ export default GuitarFret;
 
 // --- Controller ---
 
-function useController({ variant, ...rest }: T_GuitarFretProps) {
+function useController({ variant, playedStrings, ...rest }: T_GuitarFretProps) {
   const STRINGS_NAMES = ["E-[mi]", "A-[la]", "D-[re]", "G-[sol]", "B-[si]", "E-[mi]"].reverse();
   const isDefaultVariant = variant === VARIANTS.DEFAULT;
   const isEmptyVariant = variant === VARIANTS.EMPTY;
   const isSkippedStringsVariant = variant === VARIANTS.SKIPPED_STRINGS;
   const isStringsNamesVariant = variant === VARIANTS.STRINGS_NAMES;
 
+  function getSkippedStringValue(
+    playedStrings: T_GuitarFretProps["playedStrings"],
+    guitarString: number,
+  ): string {
+    if (!playedStrings) return "";
+
+    const playedString = playedStrings[guitarString - 1];
+
+    if (playedString === "0") return "⚬";
+    if (playedString === "1") return "⚈";
+    if (playedString === "x") return "✖";
+
+    return "⚈";
+  }
+
   return {
     // props
     ...rest,
+    playedStrings: (typeof playedStrings === "string"
+      ? playedStrings.split(",")
+      : playedStrings
+    )?.reverse(),
+
+    // utils
+    getSkippedStringValue,
 
     // vars
     STRINGS_NAMES,

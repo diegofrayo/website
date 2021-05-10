@@ -1,64 +1,224 @@
 {
-  "A": { "music_notes": "4,2,1|3,2,2|2,2,3", "strings_to_skip": "6" },
-  "A#m": { "music_notes": "6x,5|5,7,3|4,7,4", "strings_to_skip": "" },
-  "A7": { "music_notes": "4,2,1|2,2,2", "strings_to_skip": "6" },
-  "Am": { "music_notes": "4,2,2|3,2,3|2,1,1", "strings_to_skip": "6" },
-  "Am/F#": { "music_notes": "4,2,3|3,2,4|2,1,1|6,2,2", "strings_to_skip": "" },
-  "Am/G": { "music_notes": "4,2,2|3,2,3|2,1,1|6,3,4", "strings_to_skip": "" },
-  "Am7": { "music_notes": "4,2,2|2,1,1", "strings_to_skip": "6" },
-  "Asus": { "music_notes": "4,2,1|3,2,2|2,2,3|2,3,4", "strings_to_skip": "6" },
-  "Asus2": { "music_notes": "3,2,2|2,2,3", "strings_to_skip": "6" },
-  "Asus4": { "music_notes": "3,2,2|2,2,3|2,3,4|2,3,4", "strings_to_skip": "6" },
+  "A": {
+    "music_notes": "4,2,1|3,2,2|2,2,3",
+    "played_strings": "x,0,1,1,1,0"
+  },
+  "A#m": {
+    "music_notes": "6x,5|5,7,3|4,7,4",
+    "played_strings": "x,1,1,0,0,0"
+  },
+  "A7": {
+    "music_notes": "4,2,1|2,2,2",
+    "played_strings": "x,0,1,0,1,0"
+  },
+  "Am": {
+    "music_notes": "4,2,2|3,2,3|2,1,1",
+    "played_strings": "x,0,1,1,1,0"
+  },
+  "Am/F#": {
+    "music_notes": "4,2,3|3,2,4|2,1,1|6,2,2",
+    "played_strings": "1,0,1,1,1,0"
+  },
+  "Am/G": {
+    "music_notes": "4,2,2|3,2,3|2,1,1|6,3,4",
+    "played_strings": "1,0,1,1,1,0"
+  },
+  "Am7": {
+    "music_notes": "4,2,2|2,1,1",
+    "played_strings": "x,0,1,0,1,0"
+  },
+  "Asus": {
+    "music_notes": "4,2,1|3,2,2|2,2,3|2,3,4",
+    "played_strings": "x,0,1,1,1,0"
+  },
+  "Asus2": {
+    "music_notes": "3,2,2|2,2,3",
+    "played_strings": "x,0,0,1,1,0"
+  },
+  "Asus4": {
+    "music_notes": "3,2,2|2,2,3|2,3,4|2,3,4",
+    "played_strings": "x,0,0,1,1,0"
+  },
 
-  "B": { "music_notes": "6x,2|4,4,2|3,4,3|2,4,4", "strings_to_skip": "6" },
-  "B7": { "music_notes": "6x,2|4,4,2|2,4,3", "strings_to_skip": "6" },
-  "Bb": { "music_notes": "6x,1|4,3,2|3,3,3|2,3,4", "strings_to_skip": "6" },
-  "Bbm": { "music_notes": "6x,1|2,2,2|4,3,3|3,3,4", "strings_to_skip": "6" },
-  "Bbm/G#": { "music_notes": "6x,1|2,2,2|4,3,3", "strings_to_skip": "6" },
-  "Bm": { "music_notes": "6x,2|2,3,2|4,4,3|3,4,4", "strings_to_skip": "6" },
-  "Bm7": { "music_notes": "6x,2|2,3,2|4,4,3", "strings_to_skip": "6" },
-  "Bmaj7": { "music_notes": "6x,2|3,3,2|4,4,3|2,4,4", "strings_to_skip": "6" },
+  "B": {
+    "music_notes": "6x,2|4,4,2|3,4,3|2,4,4",
+    "played_strings": "0,0,1,1,1,0"
+  },
+  "B7": {
+    "music_notes": "6x,2|4,4,2|2,4,3",
+    "played_strings": "0,0,1,0,1,0"
+  },
+  "Bb": {
+    "music_notes": "6x,1|4,3,2|3,3,3|2,3,4",
+    "played_strings": "0,0,1,1,1,0"
+  },
+  "Bbm": {
+    "music_notes": "6x,1|2,2,2|4,3,3|3,3,4",
+    "played_strings": "0,0,1,1,1,0"
+  },
+  "Bbm/G#": {
+    "music_notes": "6x,1|2,2,2|4,3,3",
+    "played_strings": "0,0,1,0,1,0"
+  },
+  "Bm": {
+    "music_notes": "6x,2|2,3,2|4,4,3|3,4,4",
+    "played_strings": "0,0,1,1,1,0"
+  },
+  "Bm7": {
+    "music_notes": "6x,2|2,3,2|4,4,3",
+    "played_strings": "0,0,1,0,1,0"
+  },
+  "Bmaj7": {
+    "music_notes": "6x,2|3,3,2|4,4,3|2,4,4",
+    "played_strings": "0,0,1,1,1,0"
+  },
 
-  "C": { "music_notes": "5,3,3|4,2,2|2,1,1", "strings_to_skip": "6" },
-  "C#": { "music_notes": "5x,4|4,6,2|3,6,3|2,6,4", "strings_to_skip": "" },
-  "C#m": { "music_notes": "5x,4|4,6,3|3,6,4|2,5,2", "strings_to_skip": "" },
-  "C#m7": { "music_notes": "5x,4|4,6,3|2,5,2", "strings_to_skip": "" },
-  "Cadd9": { "music_notes": "4,2,1|5,3,2|2,3,3|1,3,4", "strings_to_skip": "" },
-  "Cmaj7": { "music_notes": "4,2,1|5,3,2", "strings_to_skip": "" },
+  "C": {
+    "music_notes": "5,3,3|4,2,2|2,1,1",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "C#": {
+    "music_notes": "5x,4|4,6,2|3,6,3|2,6,4",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "C#m": {
+    "music_notes": "5x,4|4,6,3|3,6,4|2,5,2",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "C#m7": {
+    "music_notes": "5x,4|4,6,3|2,5,2",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "Cadd9": {
+    "music_notes": "4,2,1|5,3,2|2,3,3|1,3,4",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "Cmaj7": {
+    "music_notes": "4,2,1|5,3,2",
+    "played_strings": "0,0,0,0,0,0"
+  },
 
-  "D": { "music_notes": "3,2,1|1,2,2|2,3,3", "strings_to_skip": "6,5" },
-  "D/F#": { "music_notes": "6,2,1|3,2,2|1,2,3|2,3,4", "strings_to_skip": "" },
-  "Dm": { "music_notes": "1,1,1|3,2,2|2,3,3", "strings_to_skip": "6,5" },
-  "Dm7": { "music_notes": "2,1,1|1,1,2|3,2,3", "strings_to_skip": "6,5" },
-  "Dsus": { "music_notes": "3,2,1|1,2,2|2,3,3|1,3,4", "strings_to_skip": "6,5" },
+  "D": {
+    "music_notes": "3,2,1|1,2,2|2,3,3",
+    "played_strings": "x,x,0,1,1,1"
+  },
+  "D/F#": {
+    "music_notes": "6,2,1|3,2,2|1,2,3|2,3,4",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "Dm": {
+    "music_notes": "1,1,1|3,2,2|2,3,3",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "Dm7": {
+    "music_notes": "2,1,1|1,1,2|3,2,3",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "Dsus": {
+    "music_notes": "3,2,1|1,2,2|2,3,3|1,3,4",
+    "played_strings": "0,0,0,0,0,0"
+  },
 
-  "E": { "music_notes": "5,2,3|4,2,2|3,1,1", "strings_to_skip": "" },
-  "E7/9": { "music_notes": "3,1,1|5,2,2|2,3,3|1,3,4", "strings_to_skip": "" },
-  "Ebm": { "music_notes": "6x,6|2,7,2|4,8,3|3,8,4", "strings_to_skip": "" },
-  "Em": { "music_notes": "5,2,2|4,2,3", "strings_to_skip": "" },
-  "Em7": { "music_notes": "5,2,1|4,2,2|2,3,3", "strings_to_skip": "" },
-  "Em9": { "music_notes": "5,2,1|4,2,2|2,3,4|1,2,3", "strings_to_skip": "" },
-  "Esus": { "music_notes": "5,2,3|4,2,2|3,1,1|3,2,4", "strings_to_skip": "" },
+  "E": {
+    "music_notes": "5,2,2|4,2,3|3,1,1",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "E7": {
+    "music_notes": "5,2,2|3,1,1",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "E7/9": {
+    "music_notes": "3,1,1|5,2,2|2,3,3|1,3,4",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "Ebm": {
+    "music_notes": "6x,6|2,7,2|4,8,3|3,8,4",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "Em": {
+    "music_notes": "5,2,2|4,2,3",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "Em7": {
+    "music_notes": "5,2,1|4,2,2|2,3,3",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "Em9": {
+    "music_notes": "5,2,1|4,2,2|2,3,4|1,2,3",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "Esus": {
+    "music_notes": "5,2,3|4,2,2|3,1,1|3,2,4",
+    "played_strings": "0,0,0,0,0,0"
+  },
 
-  "F": { "music_notes": "6x,1|5,3,3|4,3,4|3,2,2", "strings_to_skip": "" },
-  "F#": { "music_notes": "6x,2|5,4,3|4,4,4|3,3,2", "strings_to_skip": "" },
-  "F#7": { "music_notes": "6x,2|5,4,3|3,3,2", "strings_to_skip": "" },
-  "F#dim7": { "music_notes": "4,4,1|2,4,2|3,5,3|1,5,4", "strings_to_skip": "" },
-  "F#m": { "music_notes": "6x,2|5,4,3|4,4,4", "strings_to_skip": "" },
-  "F#m7": { "music_notes": "6x,2|5,4,3", "strings_to_skip": "" },
-  "F#maj7": { "music_notes": "6x,1|2,2,2|3,3,3|4,4,4", "strings_to_skip": "" },
-  "F7": { "music_notes": "6x,1|5,3,3|3,2,2", "strings_to_skip": "" },
-  "Fmaj7": { "music_notes": "2,1,1|3,2,2|4,3,3", "strings_to_skip": "" },
+  "F": {
+    "music_notes": "6x,1|5,3,3|4,3,4|3,2,2",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "F#": {
+    "music_notes": "6x,2|5,4,3|4,4,4|3,3,2",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "F#7": {
+    "music_notes": "6x,2|5,4,3|3,3,2",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "F#dim7": {
+    "music_notes": "4,4,1|2,4,2|3,5,3|1,5,4",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "F#m": {
+    "music_notes": "6x,2|5,4,3|4,4,4",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "F#m7": {
+    "music_notes": "6x,2|5,4,3",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "F#maj7": {
+    "music_notes": "6x,1|2,2,2|3,3,3|4,4,4",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "F7": {
+    "music_notes": "6x,1|5,3,3|3,2,2",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "Fmaj7": {
+    "music_notes": "2,1,1|3,2,2|4,3,3",
+    "played_strings": "0,0,0,0,0,0"
+  },
 
   "G": [
-    { "music_notes": "5,2,1|6,3,2|1,3,3", "strings_to_skip": "" },
-    { "music_notes": "6x,3|5,5,3|4,5,4|3,4,2", "strings_to_skip": "" }
+    {
+      "music_notes": "5,2,1|6,3,2|1,3,3",
+      "played_strings": "1,1,0,0,0,1"
+    },
+    {
+      "music_notes": "6x,3|5,5,3|4,5,4|3,4,2",
+      "played_strings": "0,1,1,1,0,0"
+    }
   ],
-  "G#": { "music_notes": "6x,4|5,6,3|4,6,4|3,5,2", "strings_to_skip": "" },
-  "G#m": { "music_notes": "6x,4|5,6,3|4,6,4", "strings_to_skip": "" },
-  "Gm": { "music_notes": "6x,3|5,5,3|4,5,4", "strings_to_skip": "" },
+  "G#": {
+    "music_notes": "6x,4|5,6,3|4,6,4|3,5,2",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "G#m": {
+    "music_notes": "6x,4|5,6,3|4,6,4",
+    "played_strings": "0,0,0,0,0,0"
+  },
+  "Gm": {
+    "music_notes": "6x,3|5,5,3|4,5,4",
+    "played_strings": "0,0,0,0,0,0"
+  },
   "G6": [
-    { "music_notes": "2,3,1|3,4,2|4,5,3", "strings_to_skip": "" },
-    { "music_notes": "6,3,2|5,2,1", "strings_to_skip": "" }
+    {
+      "music_notes": "2,3,1|3,4,2|4,5,3",
+      "played_strings": "0,0,1,1,1,0"
+    },
+    {
+      "music_notes": "6,3,2|5,2,1",
+      "played_strings": "1,1,0,0,0,0"
+    }
   ]
 }

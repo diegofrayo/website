@@ -9,12 +9,12 @@ import { copyToClipboard } from "~/utils/browser";
 
 import GuitarFret from "./GuitarFret";
 import GuitarService from "../service";
-import { T_ParsedChord, T_GuitarFret, T_GuitarStringsToSkip, T_MusicNote } from "../types";
+import { T_ParsedChord, T_GuitarFret, T_GuitarPlayedStrings, T_MusicNote } from "../types";
 
 type T_GuitarChordProps = {
   name: string;
   musicNotes: T_MusicNote[] | string; // "STRING|BARRE,FRET,FINGER?"
-  stringsToSkip?: T_GuitarStringsToSkip; // "Number,Number"
+  playedStrings?: T_GuitarPlayedStrings;
   showOptions?: boolean;
 };
 
@@ -22,7 +22,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
   const {
     // props
     name,
-    stringsToSkip,
+    playedStrings,
     showOptions,
 
     // states
@@ -94,10 +94,10 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
             )}
           </div>
 
-          {stringsToSkip && (
+          {playedStrings && (
             <GuitarFret
               variant={GuitarFret.variant.SKIPPED_STRINGS}
-              stringsToSkip={stringsToSkip}
+              playedStrings={playedStrings}
             />
           )}
         </div>
@@ -161,9 +161,9 @@ export default GuitarChord;
 function useController({
   name,
   musicNotes,
-  stringsToSkip,
+  playedStrings,
   showOptions = true,
-}: T_GuitarChordProps): Pick<T_GuitarChordProps, "name" | "stringsToSkip" | "showOptions"> & {
+}: T_GuitarChordProps): Pick<T_GuitarChordProps, "name" | "playedStrings" | "showOptions"> & {
   // states
   showChordInput: boolean;
   chordContainerRef: T_ReactRefObject<HTMLDivElement>;
@@ -201,7 +201,7 @@ function useController({
   return {
     // props
     name,
-    stringsToSkip,
+    playedStrings,
     showOptions,
 
     // states

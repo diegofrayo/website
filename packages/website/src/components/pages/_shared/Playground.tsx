@@ -87,9 +87,7 @@ export default Playground;
 
 // --- Controller ---
 
-function useController(
-  props: T_PlaygroundProps,
-): T_PlaygroundProps & {
+function useController(props: T_PlaygroundProps): T_PlaygroundProps & {
   isSourceCodeTabSelected: boolean;
   isOutputTabSelected: boolean;
   setSourceCodeTab: T_Function;

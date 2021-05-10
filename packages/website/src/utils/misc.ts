@@ -29,9 +29,8 @@ export function delay(time: number): Promise<void> {
 }
 
 export function isDevelopmentEnvironment(url?: string): boolean {
-  return !(isBrowser()
-    ? window.location.href
-    : url || process.env.NEXT_PUBLIC_WEBSITE_URL || ""
+  return !(
+    isBrowser() ? window.location.href : url || process.env.NEXT_PUBLIC_WEBSITE_URL || ""
   ).includes("vercel.app");
 }
 

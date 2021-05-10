@@ -14,7 +14,7 @@
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
     "scripts:seo-files": "node --experimental-json-modules scripts/rss.mjs && node --experimental-json-modules scripts/sitemap.mjs",
-    "scripts:static-files": "node --experimental-json-modules scripts/metadata.mjs && node --experimental-json-modules scripts/movies-and-books/script.mjs && node --experimental-json-modules scripts/list-of-chords.mjs && yarn format",
+    "scripts:static-files": "node --experimental-json-modules scripts/metadata.mjs && node --experimental-json-modules scripts/movies-and-books/script.mjs && node --experimental-json-modules scripts/list-of-chords.mjs",
     "scripts:transform-mdx-content": "node --experimental-json-modules scripts/mdx/script.mjs"
   },
   "dependencies": {
@@ -35,6 +35,7 @@
     "react-dom": "17.0.1",
     "react-error-boundary": "^3.1.1",
     "react-query": "^3.5.16",
+    "react-string-replace": "^0.4.4",
     "react-toastify": "^7.0.3"
   },
   "devDependencies": {

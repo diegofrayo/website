@@ -67,7 +67,7 @@ function MusicPage(): T_ReactElement {
                   className="tw-mb-2"
                 >
                   <Emoji className="tw-mr-2">🎶</Emoji>
-                  <span>Canciones ({data.length - 1})</span>
+                  <span>Canciones [{data.length - 1}]</span>
                 </Title>
 
                 <List className="tw-flex tw-flex-wrap tw-justify-between">

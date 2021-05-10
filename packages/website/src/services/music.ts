@@ -5,6 +5,7 @@ import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/util
 class MusicService {
   async fetchSongsList(): Promise<T_Song[]> {
     const songs = Data.songs
+      .filter((song) => song.is_published)
       .map((song) => {
         return transformObjectKeysFromSnakeCaseToLowerCamelCase(song) as T_Song;
       })

@@ -1,7 +1,7 @@
 export type T_Finger = 1 | 2 | 3 | 4;
 export type T_GuitarFret = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
 export type T_GuitarString = 1 | 2 | 3 | 4 | 5 | 6;
-export type T_GuitarStringsToSkip = T_GuitarString[] | string;
+export type T_GuitarPlayedStrings = string | string[]; // D Chord: "x,x,0,1,1,1"
 
 // TODO: Review these types and their casting
 interface I_MusicNoteBase {
@@ -31,7 +31,7 @@ export type T_ParsedChord = {
 type T_ChordBase = {
   name: string;
   musicNotes: string;
-  stringsToSkip: string;
+  playedStrings: string;
 };
 
 export type T_Chord = T_ChordBase | T_ChordBase[];

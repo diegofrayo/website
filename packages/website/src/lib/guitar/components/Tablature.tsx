@@ -29,7 +29,6 @@ interface I_BarrePosition {
 interface I_MusicNotePosition {
   guitarFret: T_GuitarFret;
   guitarString: T_GuitarString;
-  text?: string;
 }
 
 type T_Position = (
@@ -96,8 +95,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
                         if (musicNotePosition) {
                           return (
                             <Position key={`Tablature-position-${positionIndex}-${guitarString}`}>
-                              {musicNotePosition.guitarFret}
-                              {musicNotePosition.text}
+                              {musicNotePosition.guitarFret || "0"}
                             </Position>
                           );
                         }
@@ -137,7 +135,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
         </div>
       )}
 
-      {parsedPositions && notes && <Space size={2} />}
+      {parsedPositions && notes && <Space size={1} />}
 
       {notes && (
         <p className="tw-ml-2 tw-whitespace-pre-line tw-break-word tw-italic">{`"${notes}"`}</p>
@@ -150,10 +148,7 @@ export default Tablature;
 
 // --- Controller ---
 
-function useController({
-  positions,
-  notes,
-}: T_TablatureProps): Pick<T_TablatureProps, "notes"> & {
+function useController({ positions, notes }: T_TablatureProps): Pick<T_TablatureProps, "notes"> & {
   parsedPositions: T_TablatureProps["positions"] | undefined;
 } {
   function getPositions(positions: T_TablatureProps["positions"]): (T_Position | T_Position[])[] {

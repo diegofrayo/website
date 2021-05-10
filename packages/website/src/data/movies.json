@@ -382,5 +382,13 @@
     "source": "imdb",
     "calification": 4,
     "categories": ["drama", "basado en historias reales"]
+  },
+  {
+    "id": "60000724",
+    "title": "Forrest Gump",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 5,
+    "categories": ["drama", "comedia", "inspiración"]
   }
 ]

@@ -1,0 +1,98 @@
+<TextFormatter
+  chords={DATA.song.chords}
+  insertions={[
+    {
+      text: "{SOLO}",
+      replacement: (
+        <div>
+          <Tablature
+            positions={[
+              [{ guitarString: 6 }, { guitarString: 1 }],
+              { space: 1 },
+              [
+                { guitarString: 6, guitarFret: 2 },
+                { guitarString: 1, guitarFret: 2 },
+              ],
+              { space: 1 },
+              [
+                { guitarString: 6, guitarFret: 2 },
+                { guitarString: 1, guitarFret: 2 },
+              ],
+              [
+                { guitarString: 6, guitarFret: 3 },
+                { guitarString: 1, guitarFret: 3 },
+              ],
+              [
+                { guitarString: 6, guitarFret: 5 },
+                { guitarString: 1, guitarFret: 5 },
+              ],
+              [
+                { guitarString: 6, guitarFret: 3 },
+                { guitarString: 1, guitarFret: 3 },
+              ],
+              [
+                { guitarString: 6, guitarFret: 5 },
+                { guitarString: 1, guitarFret: 5 },
+              ],
+              [
+                { guitarString: 6, guitarFret: 7 },
+                { guitarString: 1, guitarFret: 7 },
+              ],
+              [
+                { guitarString: 6, guitarFret: 7 },
+                { guitarString: 1, guitarFret: 7 },
+              ],
+            ]}
+            notes="Esta secuencia se repite 3 veces"
+          />
+          <Space size={4} />
+          <Tablature
+            positions={[
+              [{ guitarString: 6 }, { guitarString: 1 }],
+              { space: 1 },
+              [
+                { guitarString: 6, guitarFret: 2 },
+                { guitarString: 1, guitarFret: 2 },
+              ],
+              { space: 1 },
+              [
+                { guitarString: 6, guitarFret: 2 },
+                { guitarString: 1, guitarFret: 2 },
+              ],
+              [
+                { guitarString: 6, guitarFret: 3 },
+                { guitarString: 1, guitarFret: 3 },
+              ],
+              [
+                { guitarString: 6, guitarFret: 5 },
+                { guitarString: 1, guitarFret: 5 },
+              ],
+              [
+                { guitarString: 6, guitarFret: 3 },
+                { guitarString: 1, guitarFret: 3 },
+              ],
+              [
+                { guitarString: 6, guitarFret: 5 },
+                { guitarString: 1, guitarFret: 5 },
+              ],
+              [
+                { guitarString: 6, guitarFret: 7 },
+                { guitarString: 1, guitarFret: 7 },
+              ],
+              [
+                { guitarString: 6, guitarFret: 7 },
+                { guitarString: 1, guitarFret: 7 },
+              ],
+              [
+                { guitarString: 6, guitarFret: 12 },
+                { guitarString: 1, guitarFret: 12 },
+              ],
+            ]}
+          />
+        </div>
+      ),
+    },
+  ]}
+>
+  {DATA.song.content}
+</TextFormatter>

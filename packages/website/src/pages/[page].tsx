@@ -77,60 +77,56 @@ export const getStaticPaths: GetStaticPaths<{ page: string }> = async function g
   return {
     paths: DYNAMIC_MAIN_PAGES.reduce((result: T_Path[], page: string) => {
       return result.concat(
-        locales.map(
-          (locale: T_Locale): T_Path => {
-            return { params: { page }, locale };
-          },
-        ),
+        locales.map((locale: T_Locale): T_Path => {
+          return { params: { page }, locale };
+        }),
       );
     }, []),
     fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps<
-  T_SitePageProps,
-  { page: string }
-> = async function getStaticProps({ params, locale }) {
-  const page = params?.page || "";
+export const getStaticProps: GetStaticProps<T_SitePageProps, { page: string }> =
+  async function getStaticProps({ params, locale }) {
+    const page = params?.page || "";
 
-  const SiteTexts = getSiteTexts({
-    page: ROUTES[generateObjectKeyInUpperCase(page)],
-    layout: true,
-    locale: locale as T_Locale,
-  });
+    const SiteTexts = getSiteTexts({
+      page: ROUTES[generateObjectKeyInUpperCase(page)],
+      layout: true,
+      locale: locale as T_Locale,
+    });
 
-  const file = fs.readFileSync(
-    `${process.cwd()}/src/data/pages/${getItemLocale(
-      SiteTexts.page.config.locales,
-      SiteTexts.page.config.default_locale,
-      locale as T_Locale,
-    )}/${page}.mdx`,
-    "utf8",
-  );
+    const file = fs.readFileSync(
+      `${process.cwd()}/src/data/pages/${getItemLocale(
+        SiteTexts.page.config.locales,
+        SiteTexts.page.config.default_locale,
+        locale as T_Locale,
+      )}/${page}.mdx`,
+      "utf8",
+    );
 
-  const content = await renderToString(file, {
-    components: MDXComponents,
-    scope: {
-      DATA: {
-        ...MDXScope.DATA,
-        ...(`/${page}` === ROUTES.SNIPPETS && {
-          snippets: getSnippetsFiles(),
-        }),
-        ...(`/${page}` === ROUTES.RESUME && {
-          resume: SiteTexts.page.current_locale,
-        }),
+    const content = await renderToString(file, {
+      components: MDXComponents,
+      scope: {
+        DATA: {
+          ...MDXScope.DATA,
+          ...(`/${page}` === ROUTES.SNIPPETS && {
+            snippets: getSnippetsFiles(),
+          }),
+          ...(`/${page}` === ROUTES.RESUME && {
+            resume: SiteTexts.page.current_locale,
+          }),
+        },
       },
-    },
-  });
+    });
 
-  return {
-    props: {
-      content,
-      SiteTexts,
-      page: page as T_PagesRoutes,
-    },
+    return {
+      props: {
+        content,
+        SiteTexts,
+        page: page as T_PagesRoutes,
+      },
+    };
   };
-};
 
 export default SitePage;

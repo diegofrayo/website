@@ -30,39 +30,36 @@ class GuitarService {
         musicNotes === ""
           ? []
           : typeof musicNotes === "string"
-          ? musicNotes.split("|").map(
-              (musicNote: string): T_MusicNote => {
-                const [guitarString, guitarFret, finger, ...more] = musicNote.split(",");
+          ? musicNotes.split("|").map((musicNote: string): T_MusicNote => {
+              const [guitarString, guitarFret, finger, ...more] = musicNote.split(",");
 
-                if (!musicNote) {
-                  throw new Error(
-                    "You have entered a empty music note, probably you entered a '|' character at the end",
-                  );
-                }
+              if (!musicNote) {
+                throw new Error(
+                  "You have entered a empty music note, probably you entered a '|' character at the end",
+                );
+              }
 
-                if (more.length > 0) {
-                  throw new Error(
-                    "A music note only can have 3 elements (guitarString,guitarFret,finger?) as maximum",
-                  );
-                }
+              if (more.length > 0) {
+                throw new Error(
+                  "A music note only can have 3 elements (guitarString,guitarFret,finger?) as maximum",
+                );
+              }
 
-                // TODO: Review this typing
-                const parsedMusicNote: Partial<T_MusicNote> = {
-                  guitarFret: parseFret(guitarFret),
-                };
+              // TODO: Review this typing
+              const parsedMusicNote: Partial<T_MusicNote> = {
+                guitarFret: parseFret(guitarFret),
+              };
 
-                if (isBarreChord(guitarString)) {
-                  (parsedMusicNote as I_BarreMusicNote).barre = parseBarre(guitarString);
-                } else {
-                  (parsedMusicNote as I_SimpleMusicNote).guitarString = parseGuitarString(
-                    guitarString,
-                  );
-                  (parsedMusicNote as I_SimpleMusicNote).finger = parseFinger(finger);
-                }
+              if (isBarreChord(guitarString)) {
+                (parsedMusicNote as I_BarreMusicNote).barre = parseBarre(guitarString);
+              } else {
+                (parsedMusicNote as I_SimpleMusicNote).guitarString =
+                  parseGuitarString(guitarString);
+                (parsedMusicNote as I_SimpleMusicNote).finger = parseFinger(finger);
+              }
 
-                return parsedMusicNote as T_MusicNote;
-              },
-            )
+              return parsedMusicNote as T_MusicNote;
+            })
           : musicNotes;
 
       const musicNotesFrets: T_GuitarFret[] = parsedMusicNotes
@@ -128,8 +125,8 @@ class GuitarService {
     }
   }
 
-  parseSongLyrics(songContent): string {
-    const result = songContent
+  formatText(songContent: string): string {
+    const parsedContent = songContent
       .split("\n")
       .map((line) => {
         let parsedTextLine = line;
@@ -160,7 +157,7 @@ class GuitarService {
       })
       .join("\n");
 
-    return result;
+    return parsedContent;
   }
 
   findChord(chordName: string, chordIndex?: number): T_Chord | undefined {

@@ -77,53 +77,49 @@ export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function g
   return {
     paths: (await BlogService.fetchPosts()).reduce((result: T_Path[], post: T_BlogPost) => {
       return result.concat(
-        post.locales.map(
-          (locale: T_Locale): T_Path => {
-            return { params: { slug: post.slug }, locale };
-          },
-        ),
+        post.locales.map((locale: T_Locale): T_Path => {
+          return { params: { slug: post.slug }, locale };
+        }),
       );
     }, []),
     fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps<
-  T_BlogPostPageProps,
-  { slug: string }
-> = async function getStaticProps({ params, locale }) {
-  const post: T_BlogPost = await BlogService.getPost({ slug: params?.slug });
-  const file = fs.readFileSync(
-    `${process.cwd()}/src/data/blog/posts/${getItemLocale(
-      post.locales,
-      post.defaultLocale,
-      locale as T_Locale,
-    )}/${post.createdAt}-${post.slug}.mdx`,
-    "utf8",
-  );
+export const getStaticProps: GetStaticProps<T_BlogPostPageProps, { slug: string }> =
+  async function getStaticProps({ params, locale }) {
+    const post: T_BlogPost = await BlogService.getPost({ slug: params?.slug });
+    const file = fs.readFileSync(
+      `${process.cwd()}/src/data/blog/posts/${getItemLocale(
+        post.locales,
+        post.defaultLocale,
+        locale as T_Locale,
+      )}/${post.createdAt}-${post.slug}.mdx`,
+      "utf8",
+    );
 
-  const postSlug = post.slug;
-  const codeSnippets = fs.existsSync(
-    `${process.cwd()}/src/components/pages/blog/${postSlug}/code-snippets.ts`,
-  )
-    ? require(`src/components/pages/blog/${postSlug}/code-snippets.ts`).default // eslint-disable-line @typescript-eslint/no-var-requires
-    : {};
+    const postSlug = post.slug;
+    const codeSnippets = fs.existsSync(
+      `${process.cwd()}/src/components/pages/blog/${postSlug}/code-snippets.ts`,
+    )
+      ? require(`src/components/pages/blog/${postSlug}/code-snippets.ts`).default // eslint-disable-line @typescript-eslint/no-var-requires
+      : {};
 
-  const content = await renderToString(file, {
-    components: MDXComponents,
-    scope: {
-      DATA: {
-        ...MDXScope.DATA,
-        blogPost: {
-          ...post,
-          codeSnippets,
+    const content = await renderToString(file, {
+      components: MDXComponents,
+      scope: {
+        DATA: {
+          ...MDXScope.DATA,
+          blogPost: {
+            ...post,
+            codeSnippets,
+          },
         },
       },
-    },
-  });
+    });
 
-  return { props: { post, content } };
-};
+    return { props: { post, content } };
+  };
 
 export default BlogPostPage;
 

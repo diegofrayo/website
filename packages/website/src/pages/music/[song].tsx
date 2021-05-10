@@ -139,27 +139,28 @@ export const getStaticPaths: GetStaticPaths<{ song: string }> = async function g
   };
 };
 
-export const getStaticProps: GetStaticProps<
-  T_SongPageProps,
-  { song: string }
-> = async function getStaticProps({ params }) {
-  const song = await MusicService.getSong({ id: params?.song });
+export const getStaticProps: GetStaticProps<T_SongPageProps, { song: string }> =
+  async function getStaticProps({ params }) {
+    const song = await MusicService.getSong({ id: params?.song });
 
-  const file = fs.readFileSync(`${process.cwd()}/src/data/music/songs/${song.id}.mdx`, "utf8");
-  const content = await renderToString(file, {
-    components: MDXComponents,
-    scope: {
-      DATA: {
-        ...MDXScope.DATA,
-        song: {
-          ...song,
-          content: fs.readFileSync(`${process.cwd()}/src/data/music/songs/${song.id}.txt`, "utf8"),
+    const file = fs.readFileSync(`${process.cwd()}/src/data/music/songs/${song.id}.mdx`, "utf8");
+    const content = await renderToString(file, {
+      components: MDXComponents,
+      scope: {
+        DATA: {
+          ...MDXScope.DATA,
+          song: {
+            ...song,
+            content: fs.readFileSync(
+              `${process.cwd()}/src/data/music/songs/${song.id}.txt`,
+              "utf8",
+            ),
+          },
         },
       },
-    },
-  });
+    });
 
-  return { props: { song, content } };
-};
+    return { props: { song, content } };
+  };
 
 export default SongPage;

@@ -137,6 +137,11 @@
           "source": "youtube"
         },
         {
+          "text": "Bajan - Spinetta (Cover by Silvina Moreno)",
+          "url": "https://youtu.be/T3C-jpWNOEs",
+          "source": "youtube"
+        },
+        {
           "text": "Bajan (A Capella Version) - Originally Performed By Pescado Rabioso",
           "url": "https://open.spotify.com/track/4qcuXE1niE1zwiEPRHUskW?si=f63e06a3ab4041dd",
           "source": "spotify"
@@ -608,6 +613,56 @@
         }
       ],
       "chords": []
+    },
+    {
+      "id": "los-libros-de-la-buena-memoria",
+      "title": "Los libros de la buena memoria",
+      "artist": "Invisible",
+      "album": "El jardín de los presentes",
+      "year": 1976,
+      "progress": 5,
+      "created_at": "05/05/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/649a4t4L3MuUgNqr9BFPzT?si=c4903359895c468d",
+      "youtube_url": "https://youtu.be/npKMjBjjNKQ",
+      "sources": [
+        {
+          "text": "Los libros de la buena memoria",
+          "url": "https://acordes.lacuerda.net/invisible/los_libros_de_la_buena_memoria.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Cómo tocar Spinetta Los libros de la buena memoria Invisible Acordes Tutorial Letra Cover",
+          "url": "https://youtu.be/pZ3c1k1hSyE",
+          "source": "youtube"
+        },
+        {
+          "text": "Spinetta - Los libros de la buena memoria // Cover",
+          "url": "https://youtu.be/JiQcXSKeuak",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["Am7", "Bm7", "Cmaj7", "Em7"]
+    },
+    {
+      "id": "mariposa-tecknicolor",
+      "title": "Mariposa tecknicolor",
+      "artist": "Fito Paez",
+      "album": "Circo Beat",
+      "year": 1994,
+      "progress": 3,
+      "created_at": "10/05/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/2RognU2ViRdA6HxnpAITJl?si=61fc16da63e64997",
+      "youtube_url": "https://youtu.be/xJCMt00NQ1Q",
+      "sources": [
+        {
+          "text": "cómo tocar MARIPOSA TECKNICOLOR de FITO PÁEZ en guitarra tutorial",
+          "url": "https://youtu.be/mfomemgURwo",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["C", "Am", "Em", "G", "Dm", "Fmaj7", "E7"]
     }
   ]
 }

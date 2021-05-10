@@ -1,4 +1,11 @@
-import React, { CSSProperties, Dispatch, EffectCallback, RefObject, SetStateAction } from "react";
+import React, {
+  CSSProperties,
+  Dispatch,
+  EffectCallback,
+  ReactNode,
+  RefObject,
+  SetStateAction,
+} from "react";
 
 // --- Own ---
 

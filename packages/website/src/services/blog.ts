@@ -9,9 +9,11 @@ import {
 
 class BlogService {
   async fetchPosts(): Promise<T_BlogPost[]> {
-    const result = (Object.values(Data.posts).map(
-      transformObjectKeysFromSnakeCaseToLowerCamelCase,
-    ) as T_BlogPost[])
+    const result = (
+      Object.values(Data.posts).map(
+        transformObjectKeysFromSnakeCaseToLowerCamelCase,
+      ) as T_BlogPost[]
+    )
       .filter((post: T_BlogPost) => {
         return isBrowser() ? isUserLoggedIn() || post.config.isPublished : true;
       })
