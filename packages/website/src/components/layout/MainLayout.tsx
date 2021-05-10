@@ -233,7 +233,7 @@ function Breadcumb({ items }: T_BreadcumbProps): T_ReactElement {
 
       <style jsx>
         {`
-          .root :global(a:after) {
+          .root :global(a::after) {
             @apply tw-ml-1;
             ${hasMoreThanOneItem ? 'content: "‣";' : ""}
           }

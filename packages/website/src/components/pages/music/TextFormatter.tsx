@@ -5,7 +5,7 @@ import reactStringReplace from "react-string-replace";
 import { Blockquote, Button, Icon, Modal, Space } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { GuitarChord, GuitarService, T_Chord } from "~/lib/guitar";
-import { T_Function, T_ReactElement } from "~/types";
+import { T_Function, T_ReactElement, T_ReactChildrenProp } from "~/types";
 import { createArray, safeCastNumber } from "~/utils/misc";
 
 type T_TextFormatterProps = {
@@ -133,7 +133,7 @@ function useController({ children, chords, insertions }: T_TextFormatterProps): 
 
   numberOfChords: number;
   parsedChords: string;
-  parsedLyrics: React.ReactNodeArray;
+  parsedLyrics: T_ReactChildrenProp;
 } {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedChord, setSelectedChord] = useState<T_Chord | undefined>(undefined);
@@ -175,7 +175,7 @@ function useController({ children, chords, insertions }: T_TextFormatterProps): 
   function parseInsertions(
     parsedContent: string,
     insertions?: T_TextFormatterProps["insertions"],
-  ): React.ReactNodeArray {
+  ): T_ReactChildrenProp {
     let result;
 
     if (insertions) {

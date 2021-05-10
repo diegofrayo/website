@@ -201,8 +201,10 @@ function useController({
   return {
     // props
     name,
-    playedStrings,
     showOptions,
+    playedStrings: [
+      ...(typeof playedStrings === "string" ? playedStrings.split(",") : playedStrings || []),
+    ].reverse(),
 
     // states
     showChordInput,

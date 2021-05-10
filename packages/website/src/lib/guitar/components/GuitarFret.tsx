@@ -140,7 +140,7 @@ export default GuitarFret;
 
 // --- Controller ---
 
-function useController({ variant, playedStrings, ...rest }: T_GuitarFretProps) {
+function useController({ variant, ...rest }: T_GuitarFretProps) {
   const STRINGS_NAMES = ["E-[mi]", "A-[la]", "D-[re]", "G-[sol]", "B-[si]", "E-[mi]"].reverse();
   const isDefaultVariant = variant === VARIANTS.DEFAULT;
   const isEmptyVariant = variant === VARIANTS.EMPTY;
@@ -165,10 +165,6 @@ function useController({ variant, playedStrings, ...rest }: T_GuitarFretProps) {
   return {
     // props
     ...rest,
-    playedStrings: (typeof playedStrings === "string"
-      ? playedStrings.split(",")
-      : playedStrings
-    )?.reverse(),
 
     // utils
     getSkippedStringValue,

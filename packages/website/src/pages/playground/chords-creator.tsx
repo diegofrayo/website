@@ -93,14 +93,22 @@ function Content(): T_ReactElement {
             { finger: 2, guitarFret: 2, guitarString: 4 },
             { finger: 1, guitarFret: 1, guitarString: 2 },
           ]}
-          playedStrings={["x"]}
+          playedStrings={["x", "1", "1", "0", "1", "0"]}
         />
         <Space size={8} />
 
-        <GuitarChord name="LA Mayor (A)" musicNotes="4,2,1|3,2,2|2,2,3" playedStrings={["x"]} />
+        <GuitarChord
+          name="LA Mayor (A)"
+          musicNotes="4,2,1|3,2,2|2,2,3"
+          playedStrings={["x", "0", "1", "1", "1", "0"]}
+        />
         <Space size={8} />
 
-        <GuitarChord name="RE Mayor (D)" musicNotes="3,2,1|1,2,2|2,3,3" playedStrings="6,5" />
+        <GuitarChord
+          name="RE Mayor (D)"
+          musicNotes="3,2,1|1,2,2|2,3,3"
+          playedStrings={["x", "x", "0", "1", "1", "1"]}
+        />
         <Space size={8} />
 
         <GuitarChord
