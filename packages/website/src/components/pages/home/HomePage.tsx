@@ -8,6 +8,7 @@ import { withTranslations } from "~/hocs";
 import { T_PagesRoutes, T_ReactElement, T_SiteTexts } from "~/types";
 import { WEBSITE_METADATA } from "~/utils/constants";
 import { generateSupportedLocales } from "~/utils/internationalization";
+import { isUserLoggedIn } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 
 function HomePage({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
@@ -42,7 +43,7 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
       url: ROUTES.BLOG,
       isNextLink: true,
     },
-    {
+    isUserLoggedIn() && {
       emoji: "🙋‍♂️",
       label: SiteTexts.page.current_locale.menu_item_about_me,
       url: ROUTES.ABOUT_ME,
@@ -91,7 +92,7 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
       url: `mailto:${WEBSITE_METADATA.email}`,
       isNextLink: false,
     },
-  ];
+  ].filter(Boolean);
 
   return (
     <List>
