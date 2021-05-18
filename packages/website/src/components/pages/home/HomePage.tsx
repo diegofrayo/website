@@ -31,12 +31,7 @@ export default withTranslations(HomePage, { page: ROUTES.HOME });
 // --- Components ---
 
 function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
-  const ITEMS: {
-    emoji: string | T_ReactElement;
-    label: string;
-    url: T_PagesRoutes | string;
-    isNextLink: boolean;
-  }[] = [
+  const ITEMS = [
     {
       emoji: "✍️",
       label: SiteTexts.page.common.menu_item_blog,
@@ -92,7 +87,12 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
       url: `mailto:${WEBSITE_METADATA.email}`,
       isNextLink: false,
     },
-  ].filter(Boolean);
+  ].filter(Boolean) as {
+    emoji: string | T_ReactElement;
+    label: string;
+    url: T_PagesRoutes | string;
+    isNextLink: boolean;
+  }[];
 
   return (
     <List>
