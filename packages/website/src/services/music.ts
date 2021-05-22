@@ -1,11 +1,19 @@
 import Data from "~/data/music/songs.json";
 import { T_Primitive, T_Song } from "~/types";
-import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
+import {
+  isDevelopmentEnvironment,
+  sortBy,
+  transformObjectKeysFromSnakeCaseToLowerCamelCase,
+} from "~/utils/misc";
 
 class MusicService {
   async fetchSongsList(): Promise<T_Song[]> {
     const songs = Data.songs
-      .filter((song) => song.is_published)
+      .filter((song) => {
+        if (!song.id) return false;
+        if (isDevelopmentEnvironment()) return true;
+        return song.is_published;
+      })
       .map((song) => {
         return transformObjectKeysFromSnakeCaseToLowerCamelCase(song) as T_Song;
       })

@@ -130,7 +130,7 @@ export type T_Song = {
   youtubeUrl: string;
   createdAt: string;
   isPublished: boolean;
-  sources: { text: string; url: string; source: string }[];
+  sources: { text: string; url: string; source: "youtube" | "lacuerda" | "url" }[];
 };
 
 // --- Movies ---

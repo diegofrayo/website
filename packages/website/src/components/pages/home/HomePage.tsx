@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Icon, Link, List } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { withTranslations } from "~/hocs";
+import { useDidMount } from "~/hooks";
 import { T_PagesRoutes, T_ReactElement, T_SiteTexts } from "~/types";
 import { WEBSITE_METADATA } from "~/utils/constants";
 import { generateSupportedLocales } from "~/utils/internationalization";
@@ -31,19 +32,21 @@ export default withTranslations(HomePage, { page: ROUTES.HOME });
 // --- Components ---
 
 function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
-  const ITEMS = [
+  const [items, setItems] = useState<
+    {
+      emoji: string | T_ReactElement;
+      label: string;
+      url: T_PagesRoutes | string;
+      isNextLink: boolean;
+    }[]
+  >([
     {
       emoji: "✍️",
       label: SiteTexts.page.common.menu_item_blog,
       url: ROUTES.BLOG,
       isNextLink: true,
     },
-    isUserLoggedIn() && {
-      emoji: "🙋‍♂️",
-      label: SiteTexts.page.current_locale.menu_item_about_me,
-      url: ROUTES.ABOUT_ME,
-      isNextLink: true,
-    },
+
     {
       emoji: "📄",
       label: SiteTexts.page.current_locale.menu_item_resume,
@@ -87,16 +90,27 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
       url: `mailto:${WEBSITE_METADATA.email}`,
       isNextLink: false,
     },
-  ].filter(Boolean) as {
-    emoji: string | T_ReactElement;
-    label: string;
-    url: T_PagesRoutes | string;
-    isNextLink: boolean;
-  }[];
+  ]);
+
+  useDidMount(() => {
+    if (isUserLoggedIn()) {
+      const itemsUpdated = [...items];
+      itemsUpdated.splice(1, 0, {
+        emoji: "🙋‍♂️",
+        label: SiteTexts.page.current_locale.menu_item_about_me,
+        url: ROUTES.ABOUT_ME,
+        isNextLink: true,
+      });
+
+      console.log(itemsUpdated);
+
+      setItems(itemsUpdated);
+    }
+  });
 
   return (
     <List>
-      {ITEMS.map((item, index) => {
+      {items.map((item, index) => {
         return (
           <List.Item key={`Content-item-${index}`}>
             <Link href={item.url} variant={Link.variant.SIMPLE} isNextLink={item.isNextLink}>

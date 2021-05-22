@@ -71,9 +71,7 @@ function MusicPage(): T_ReactElement {
                 </Title>
 
                 <List className="tw-flex tw-flex-wrap tw-justify-between">
-                  {data.map((song) => {
-                    if (!song.isPublished || !song.artist) return null;
-
+                  {data.slice(1).map((song) => {
                     return (
                       <List.Item key={song.id} className="tw-w-full sm:tw-w-5/12">
                         <Link

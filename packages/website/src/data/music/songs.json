@@ -445,7 +445,7 @@
       "artist": "Luis Alberto Spinetta",
       "album": "Kamikaze",
       "year": 1982,
-      "progress": 4,
+      "progress": 5,
       "created_at": "23/04/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/4y1ze4JPCe7XVv28VlZ4k0?si=1fabe572846049e8",
@@ -510,6 +510,16 @@
           "text": "Rezo por vos",
           "url": "https://acordes.lacuerda.net/charly_garcia/rezo_por_vos-2.shtml",
           "source": "lacuerda"
+        },
+        {
+          "text": "Rezo por vos - Charly García/Luis Alberto Spinetta (Guitar Cover)",
+          "url": "https://youtu.be/96wAYDC1ZqU",
+          "source": "youtube"
+        },
+        {
+          "text": "REZO POR VOS",
+          "url": "https://estudiosatori.com.ar/luis-alberto-spinetta-charly-garcia-rezo-por-vos/",
+          "source": "url"
         }
       ],
       "chords": ["A", "Bm", "C", "D", "G"]
@@ -585,36 +595,6 @@
       "chords": ["Am", "F", "Em7", "C", "G"]
     },
     {
-      "id": "el-tesoro-de-los-inocentes",
-      "title": "El tesoro de los inocentes",
-      "artist": "Indio Solari y los Fundamentalistas del Aire Acondicionado",
-      "album": "Bingo Fuel",
-      "year": 2004,
-      "progress": 3,
-      "created_at": "30/04/2021",
-      "is_published": false,
-      "spotify_url": "https://open.spotify.com/track/7qGn9WweEDJw8KZwJqB1KN?si=8cda781f134e494e",
-      "youtube_url": "https://youtu.be/NH9lciAWeJw",
-      "sources": [
-        {
-          "text": "El tesoro de los inocentes",
-          "url": "https://acordes.lacuerda.net/fundamentalistas_del_aire/el_tesoro_de_los_inocentes-5.shtml",
-          "source": "lacuerda"
-        },
-        {
-          "text": "COVER Y COMO TOCAR CON LA GUITARRA - EL TESORO DE LOS INOCENTES. INDIO SOLARI TUTORIAL ACORDES",
-          "url": "https://youtu.be/aRKwxpQcVkk",
-          "source": "youtube"
-        },
-        {
-          "text": "El tesoro de los inocentes - Indio Solari (Cover)",
-          "url": "https://youtu.be/vhdIUCb_4h0",
-          "source": "youtube"
-        }
-      ],
-      "chords": []
-    },
-    {
       "id": "los-libros-de-la-buena-memoria",
       "title": "Los libros de la buena memoria",
       "artist": "Invisible",
@@ -663,6 +643,356 @@
         }
       ],
       "chords": ["C", "Am", "Em", "G", "Dm", "Fmaj7", "E7"]
+    },
+    {
+      "id": "el-tesoro-de-los-inocentes",
+      "title": "El tesoro de los inocentes",
+      "artist": "Indio Solari y los Fundamentalistas del Aire Acondicionado",
+      "album": "Bingo Fuel",
+      "year": 2004,
+      "progress": 3,
+      "created_at": "30/04/2021",
+      "is_published": false,
+      "spotify_url": "https://open.spotify.com/track/7qGn9WweEDJw8KZwJqB1KN?si=8cda781f134e494e",
+      "youtube_url": "https://youtu.be/NH9lciAWeJw",
+      "sources": [
+        {
+          "text": "El tesoro de los inocentes",
+          "url": "https://acordes.lacuerda.net/fundamentalistas_del_aire/el_tesoro_de_los_inocentes-5.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "COVER Y COMO TOCAR CON LA GUITARRA - EL TESORO DE LOS INOCENTES. INDIO SOLARI TUTORIAL ACORDES",
+          "url": "https://youtu.be/aRKwxpQcVkk",
+          "source": "youtube"
+        },
+        {
+          "text": "El tesoro de los inocentes - Indio Solari (Cover)",
+          "url": "https://youtu.be/vhdIUCb_4h0",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "petalo-de-sal",
+      "title": "Pétalo de sal",
+      "artist": "Fito Paez",
+      "album": "El amor después del amor",
+      "year": 1992,
+      "progress": 3,
+      "created_at": "22/05/2021",
+      "is_published": false,
+      "spotify_url": "https://open.spotify.com/track/47rrhPXwe6sfKtIDwJAsO4?si=3ca06ebb645b4457",
+      "youtube_url": "https://www.youtube.com/watch?v=QlQosYFO-kA",
+      "sources": [
+        {
+          "text": "\"PETALOS DE SAL\". TUTORIAL PARA GUITARRA",
+          "url": "https://youtu.be/ec7i0dfiX9E",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "5-minutos",
+      "title": "5 minutos",
+      "artist": "Naldo",
+      "album": "Sangre Nueva",
+      "year": 2005,
+      "progress": 3,
+      "created_at": "22/05/2021",
+      "is_published": false,
+      "spotify_url": "https://open.spotify.com/track/3KxLhKcZ3mXZeM9EERO8mu?si=31d87f31e6474417",
+      "youtube_url": "https://www.youtube.com/watch?v=0vVoVCVjBB4",
+      "sources": [
+        {
+          "text": "5 Minutos",
+          "url": "https://acordes.lacuerda.net/naldo/5_minutos.shtml",
+          "source": "lacuerda"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "ay-que-dios-boludo",
+      "title": "Ay que Dios boludo",
+      "artist": "Divididos",
+      "album": "Vengo del placard de otro",
+      "year": 2001,
+      "progress": 3,
+      "created_at": "22/05/2021",
+      "is_published": false,
+      "spotify_url": "https://open.spotify.com/track/2BtPSOvL4L9QmpMRMFf7zy?si=a6063b5612db42e5",
+      "youtube_url": "https://www.youtube.com/watch?v=KRVs8tfo4X4",
+      "sources": [
+        {
+          "text": "Ay que Dios boludo",
+          "url": "https://acordes.lacuerda.net/divididos/ay_que_dios_boludo-2.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "\"Ay, que dios boludo\" (Divididos) cover Fito Castro",
+          "url": "https://youtu.be/rgAcqqZZAck",
+          "source": "youtube"
+        },
+        {
+          "text": "Fercho Marchetti - Ay, que dios boludo (Cover Divididos)",
+          "url": "https://youtu.be/UAlm1i5W3yI",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "zamba-de-mi-esperanza",
+      "title": "Zamba de mi esperanza",
+      "artist": "Los visconti",
+      "album": "",
+      "year": 1964,
+      "progress": 3,
+      "created_at": "22/05/2021",
+      "is_published": false,
+      "spotify_url": "https://open.spotify.com/track/3Zb75jF6ClmT4qiQoCX03F?si=1323af7a7f694a05",
+      "youtube_url": "https://youtu.be/HX0NP-whJ58",
+      "sources": [
+        {
+          "text": "Zamba de mi esperanza",
+          "url": "https://acordes.lacuerda.net/chalchaleros/zamba_de_mi_esperanza.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Zamba de mi esperanza - Los Chalchaleros Tutorial/Cover Guitarra",
+          "url": "https://youtu.be/iJuDJ7pL750",
+          "source": "youtube"
+        },
+        {
+          "text": "Zamba de mi esperanza - Tutorial Guitarra",
+          "url": "https://youtu.be/YC9b4hq8Zag",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "hasta-la-raiz",
+      "title": "Hasta la raíz",
+      "artist": "Natalia Lafourcade",
+      "album": "",
+      "year": 2015,
+      "progress": 3,
+      "created_at": "22/05/2021",
+      "is_published": false,
+      "spotify_url": "https://open.spotify.com/track/692C4fgt86NVLGwKXe4KCs?si=177dc09b39ee4aee",
+      "youtube_url": "https://youtu.be/IKmPci5VXz0",
+      "sources": [
+        {
+          "text": "Hasta la raíz",
+          "url": "https://acordes.lacuerda.net/natalia_lafourcade/hasta_la_raiz-3.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Como tocar Hasta La Raiz NATALIA LAFOURCADE | Guitarra Tutorial FACIL Christianvib",
+          "url": "https://youtu.be/_hFFRDKvUVc",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "el-tiempo-esta-despues",
+      "title": "El tiempo está después",
+      "artist": "Fernando Cabrera",
+      "album": "",
+      "year": 2004,
+      "progress": 3,
+      "created_at": "22/05/2021",
+      "is_published": false,
+      "spotify_url": "",
+      "youtube_url": "",
+      "sources": [
+        {
+          "text": "El tiempo está después",
+          "url": "https://acordes.lacuerda.net/fernando_cabrera/el_tiempo_esta_despues.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "",
+          "url": "https://youtu.be/9yoeSeytTS0",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "rie-chinito",
+      "title": "Ríe chinito",
+      "artist": "Perotá Chingó",
+      "album": "",
+      "year": 2004,
+      "progress": 3,
+      "created_at": "22/05/2021",
+      "is_published": false,
+      "spotify_url": "",
+      "youtube_url": "",
+      "sources": [
+        {
+          "text": "Ríe Chinito",
+          "url": "https://acordes.lacuerda.net/dolo_y_maju/rie_chinito-2.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Kevin kaarl | Ríe Chinito | Tutorial | Acordes | como tocar COVER",
+          "url": "https://youtu.be/EkEb6XZ0hBE",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "personalmente",
+      "title": "Personalmente",
+      "artist": "Las Pelotas",
+      "album": "",
+      "year": 2004,
+      "progress": 3,
+      "created_at": "22/05/2021",
+      "is_published": false,
+      "spotify_url": "",
+      "youtube_url": "",
+      "sources": [
+        {
+          "text": "Personalmente",
+          "url": "https://acordes.lacuerda.net/pelotas/personalmente.shtml",
+          "source": "lacuerda"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "la-espera",
+      "title": "La espera",
+      "artist": "Cultura Profética",
+      "album": "",
+      "year": 2004,
+      "progress": 3,
+      "created_at": "22/05/2021",
+      "is_published": false,
+      "spotify_url": "",
+      "youtube_url": "",
+      "sources": [
+        {
+          "text": "La Espera",
+          "url": "https://acordes.lacuerda.net/cultura_profetica/la_espera-2.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "La Espera - Cultura Profética (Samuel Castro - Cover)",
+          "url": "https://youtu.be/NPj7rgwu6dQ",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "mundo-agradable",
+      "title": "Mundo agradable",
+      "artist": "Serú Girán",
+      "album": "",
+      "year": 2004,
+      "progress": 3,
+      "created_at": "22/05/2021",
+      "is_published": false,
+      "spotify_url": "",
+      "youtube_url": "",
+      "sources": [
+        {
+          "text": "Mundo agradable",
+          "url": "https://acordes.lacuerda.net/seru_giran/mundo_agradable-3.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Cómo tocar Seru Giran Mundo agradable Acordes Tutorial Guitarra criolla Cover",
+          "url": "https://youtu.be/9RIIFrAJQXI",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "puente",
+      "title": "Puente",
+      "artist": "Gustavo Cerati",
+      "album": "",
+      "year": 2004,
+      "progress": 3,
+      "created_at": "22/05/2021",
+      "is_published": false,
+      "spotify_url": "",
+      "youtube_url": "",
+      "sources": [
+        {
+          "text": "Puente",
+          "url": "https://acordes.lacuerda.net/gustavo_cerati/puente-4.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Como tocar Puente de GUSTAVO CERATI en Guitarra (HD) Tutorial COMPLETO",
+          "url": "https://youtu.be/HzwBL1VoSbA",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "quedandote-o-yendote",
+      "title": "Quedándote o Yéndote",
+      "artist": "Luis Alberto Spinetta",
+      "album": "",
+      "year": 2004,
+      "progress": 3,
+      "created_at": "22/05/2021",
+      "is_published": false,
+      "spotify_url": "",
+      "youtube_url": "",
+      "sources": [
+        {
+          "text": "Quedándote o Yéndote",
+          "url": "https://acordes.lacuerda.net/luis_a_spinetta/quedandote_o_yendote-2.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Quedándote o Yéndote- Spinetta (Cover Luna Esandi)",
+          "url": "https://youtu.be/b9yCxAjr99s",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "",
+      "title": "",
+      "artist": "",
+      "album": "",
+      "year": 2000,
+      "progress": 3,
+      "created_at": "22/05/2021",
+      "is_published": false,
+      "spotify_url": "",
+      "youtube_url": "",
+      "sources": [
+        {
+          "text": "",
+          "url": "",
+          "source": "lacuerda"
+        },
+        {
+          "text": "",
+          "url": "",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
     }
   ]
 }
