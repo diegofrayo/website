@@ -1,6 +1,6 @@
-import sharp from "sharp";
 import fs from "fs";
 import path from "path";
+import sharp from "sharp";
 
 resizeImages({
   sourceDir: "scripts/movies-and-books/movies",

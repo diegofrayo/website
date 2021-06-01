@@ -156,6 +156,10 @@
     "music_notes": "6x,1|5,3,3|4,3,4|3,2,2",
     "played_strings": "0,1,1,1,0,0"
   },
+  "Fm": {
+    "music_notes": "6x,1|5,3,3|4,3,4",
+    "played_strings": "0,1,1,0,0,0"
+  },
   "F#": {
     "music_notes": "6x,2|5,4,3|4,4,4|3,3,2",
     "played_strings": "0,1,1,1,0,0"

@@ -52,7 +52,7 @@
     "title": "Van Gogh el suicidado por la sociedad",
     "author": "Antonin Artaud",
     "year": 1947,
-    "calification": 4,
+    "calification": 3,
     "url": "https://www.amazon.es/suicidado-sociedad-acabar-juicio-Cr%C3%ADtica/dp/8424502302"
   },
   {
@@ -126,5 +126,13 @@
     "year": 1914,
     "calification": 5,
     "url": "https://www.amazon.es/Cartas-Theo-Biograf%C3%ADas-y-testimonios/dp/8492857609"
+  },
+  {
+    "id": "el-general-en-su-laberinto",
+    "title": "El general en su laberinto",
+    "author": "Gabriel García Márquez",
+    "year": 1989,
+    "calification": 5,
+    "url": "https://www.amazon.com/El-general-laberinto-Nueva-edici%C3%B3n/dp/6070703669"
   }
 ]

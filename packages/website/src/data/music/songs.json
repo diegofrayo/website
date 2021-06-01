@@ -778,11 +778,11 @@
       "id": "hasta-la-raiz",
       "title": "Hasta la raíz",
       "artist": "Natalia Lafourcade",
-      "album": "",
+      "album": "Hasta la raíz",
       "year": 2015,
-      "progress": 3,
+      "progress": 4,
       "created_at": "22/05/2021",
-      "is_published": false,
+      "is_published": true,
       "spotify_url": "https://open.spotify.com/track/692C4fgt86NVLGwKXe4KCs?si=177dc09b39ee4aee",
       "youtube_url": "https://youtu.be/IKmPci5VXz0",
       "sources": [
@@ -797,7 +797,7 @@
           "source": "youtube"
         }
       ],
-      "chords": []
+      "chords": ["Bm", "D", "Em", "F#m", "Fm", "G"]
     },
     {
       "id": "el-tiempo-esta-despues",

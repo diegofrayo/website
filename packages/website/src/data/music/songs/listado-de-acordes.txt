@@ -48,6 +48,7 @@ F#m
 F#m7
 F#maj7
 F7
+Fm
 Fmaj7
 
 G

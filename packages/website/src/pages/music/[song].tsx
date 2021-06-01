@@ -132,9 +132,11 @@ type T_Path = { params: { song: string } };
 
 export const getStaticPaths: GetStaticPaths<{ song: string }> = async function getStaticPaths() {
   return {
-    paths: (await MusicService.fetchSongsList()).reduce((result: T_Path[], song: T_Song) => {
-      return result.concat([{ params: { song: song.id } }]);
-    }, []),
+    paths: (await MusicService.fetchSongsList())
+      .filter((song) => song.isPublished)
+      .reduce((result: T_Path[], song: T_Song) => {
+        return result.concat([{ params: { song: song.id } }]);
+      }, []),
     fallback: false,
   };
 };
