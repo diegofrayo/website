@@ -970,6 +970,31 @@
       "chords": []
     },
     {
+      "id": "juguetes-perdidos",
+      "title": "Juguetes Perdidos",
+      "artist": "Patricio Rey y sus Redonditos de Ricota",
+      "album": "Luzbelito",
+      "year": 1996,
+      "progress": 3,
+      "created_at": "03/06/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/1SBGb9SOYwb8H7LhK5daAS?si=0311afc074544e55",
+      "youtube_url": "https://youtu.be/c5xFMhjslw8",
+      "sources": [
+        {
+          "text": "Juguetes Perdidos",
+          "url": "https://acordes.lacuerda.net/patricio_rey/juguetes_perdidos.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Cómo tocar Juguetes perdidos Redonditos de Ricota con guitarra criolla Acordes Tutorial Letra Cover",
+          "url": "https://youtu.be/kjIJA_I64FE",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["B", "F#", "G", "E", "A"]
+    },
+    {
       "id": "",
       "title": "",
       "artist": "",

@@ -109,7 +109,7 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
   });
 
   return (
-    <List>
+    <List variant={List.variant.UNSTYLED}>
       {items.map((item, index) => {
         return (
           <List.Item key={`Content-item-${index}`}>

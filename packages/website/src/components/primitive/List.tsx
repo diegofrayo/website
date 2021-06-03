@@ -2,6 +2,10 @@ import React from "react";
 import classNames from "classnames";
 
 import { T_HTMLAttributes, T_ReactElement } from "~/types";
+import { mirror } from "~/utils/misc";
+
+type T_Variants = "DEFAULT" | "UNSTYLED";
+const VARIANTS = mirror(["DEFAULT", "UNSTYLED"]) as Record<T_Variants, T_Variants>;
 
 function List({
   children,
@@ -24,7 +28,7 @@ function List({
             padding-left: 19px;
           }
 
-          .root--default :global(li) {
+          .root :global(li) {
             @apply tw-mb-3;
             @apply last:tw-mb-0;
             position: relative;
@@ -32,7 +36,7 @@ function List({
 
           .root--default :global(li)::before {
             color: black;
-            content: "❯";
+            content: "-";
             font-weight: bold;
             left: -19px;
             position: absolute;
@@ -47,6 +51,8 @@ function List({
     </ul>
   );
 }
+
+List.variant = VARIANTS;
 
 export default List;
 
