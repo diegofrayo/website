@@ -18,6 +18,8 @@ console.log("Movies and books images resized");
 
 function resizeImages({ sourceDir, outputDir }) {
   fs.readdirSync(path.resolve(process.cwd(), sourceDir)).forEach((file) => {
+    if (!isImage(file.substring(file.lastIndexOf(".") + 1).toLowerCase())) return;
+
     sharp(path.resolve(process.cwd(), sourceDir, file))
       .resize({ width: 184, height: 256, fit: sharp.fit.fill })
       .toFile(
@@ -26,10 +28,18 @@ function resizeImages({ sourceDir, outputDir }) {
           outputDir,
           file
             .toLowerCase()
-            .replace(".gif", ".gif")
+            .replace(".gif", ".jpg")
             .replace(".jpeg", ".jpg")
             .replace(".png", ".jpg"),
         ),
-      );
+      )
+      .catch((err) => {
+        console.log(file, err);
+        process.exit(1);
+      });
   });
+}
+
+function isImage(extension) {
+  return ["jpg", "gif", "jpeg", "png"].includes(extension);
 }
