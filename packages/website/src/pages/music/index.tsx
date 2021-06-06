@@ -56,7 +56,7 @@ function MusicPage(): T_ReactElement {
                     isNextLink
                   >
                     <Emoji className="tw-mr-2">📓</Emoji>
-                    <span>{data[0].title}</span>
+                    <span className="tw-underline">{data[0].title}</span>
                   </Link>
                 </Title>
 
@@ -70,7 +70,10 @@ function MusicPage(): T_ReactElement {
                   <span>Canciones [{data.length - 1}]</span>
                 </Title>
 
-                <List className="tw-flex tw-flex-wrap tw-justify-between">
+                <List
+                  className="tw-flex tw-flex-wrap tw-justify-between"
+                  variant={List.variant.UNSTYLED}
+                >
                   {data.slice(1).map((song) => {
                     return (
                       <List.Item key={song.id} className="tw-w-full sm:tw-w-5/12">

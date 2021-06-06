@@ -19,7 +19,7 @@ function SongSources(props: T_SongSourcesProps): T_ReactElement {
         Fuentes
       </Title>
 
-      <List>
+      <List variant={List.variant.UNSTYLED}>
         {sources.map((source, index) => {
           const ImageComponent = getImageComponent(source.source);
 

@@ -36,7 +36,7 @@ function List({
 
           .root--default :global(li)::before {
             color: black;
-            content: "-";
+            content: "❯";
             font-weight: bold;
             left: -19px;
             position: absolute;

@@ -780,7 +780,7 @@
       "artist": "Natalia Lafourcade",
       "album": "Hasta la raíz",
       "year": 2015,
-      "progress": 4,
+      "progress": 1,
       "created_at": "22/05/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/692C4fgt86NVLGwKXe4KCs?si=177dc09b39ee4aee",
@@ -923,13 +923,13 @@
       "id": "puente",
       "title": "Puente",
       "artist": "Gustavo Cerati",
-      "album": "",
-      "year": 2004,
-      "progress": 3,
-      "created_at": "22/05/2021",
-      "is_published": false,
-      "spotify_url": "",
-      "youtube_url": "",
+      "album": "Bocanada",
+      "year": 1999,
+      "progress": 1,
+      "created_at": "05/06/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/2UkcvsKD0hZH7ALfG3m7AP?si=243877bf7b1448cf",
+      "youtube_url": "https://youtu.be/eAO7CEcCD3s",
       "sources": [
         {
           "text": "Puente",
@@ -942,11 +942,11 @@
           "source": "youtube"
         }
       ],
-      "chords": []
+      "chords": ["D", "C", "A#", "Am7", "G", "Bm", "A"]
     },
     {
       "id": "quedandote-o-yendote",
-      "title": "Quedándote o Yéndote",
+      "title": "Quedándote o yéndote",
       "artist": "Luis Alberto Spinetta",
       "album": "",
       "year": 2004,
@@ -971,11 +971,11 @@
     },
     {
       "id": "juguetes-perdidos",
-      "title": "Juguetes Perdidos",
+      "title": "Juguetes perdidos",
       "artist": "Patricio Rey y sus Redonditos de Ricota",
       "album": "Luzbelito",
       "year": 1996,
-      "progress": 3,
+      "progress": 1,
       "created_at": "03/06/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/1SBGb9SOYwb8H7LhK5daAS?si=0311afc074544e55",
@@ -995,16 +995,36 @@
       "chords": ["B", "F#", "G", "E", "A"]
     },
     {
+      "id": "la-gota-fria",
+      "title": "La gota fría",
+      "artist": "Carlos Vives",
+      "album": "Clásicos de la provincia",
+      "year": 1993,
+      "progress": 1,
+      "created_at": "04/06/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/4tXR895KKljrC2VptgyEhJ?si=118698d330524f4b",
+      "youtube_url": "https://youtu.be/Nmb80HXWsFQ",
+      "sources": [
+        {
+          "text": "la Gota Fría",
+          "url": "https://acordes.lacuerda.net/carlos_vives/la_gota_fria.shtml",
+          "source": "lacuerda"
+        }
+      ],
+      "chords": ["E", "Am", "G7", "C"]
+    },
+    {
       "id": "",
       "title": "",
       "artist": "",
       "album": "",
       "year": 2000,
       "progress": 3,
-      "created_at": "22/05/2021",
+      "created_at": "22/06/2021",
       "is_published": false,
       "spotify_url": "",
-      "youtube_url": "",
+      "youtube_url": "https://youtu.be/",
       "sources": [
         {
           "text": "",

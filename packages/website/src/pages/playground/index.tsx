@@ -51,7 +51,7 @@ export default withTranslations(PlaygroundPage, {
 
 function PagesList({ pages }) {
   return (
-    <List>
+    <List variant={List.variant.UNSTYLED}>
       {pages.map((name) => {
         return (
           <List.Item key={`PlaygroundPage-name-${name}`}>
