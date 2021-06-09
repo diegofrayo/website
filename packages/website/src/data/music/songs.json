@@ -1015,6 +1015,31 @@
       "chords": ["E", "Am", "G7", "C"]
     },
     {
+      "id": "hombros-de-gigantes",
+      "title": "Hombros de gigantes",
+      "artist": "Kike Pavón",
+      "album": "Ganas de Vivir",
+      "year": 2017,
+      "progress": 1,
+      "created_at": "09/06/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/57new3IsMatFochm0YqcTS?si=76b5e25c3801411f",
+      "youtube_url": "https://youtu.be/JVlB-p-vUq4",
+      "sources": [
+        {
+          "text": "Hombros de gigantes",
+          "url": "https://acordes.lacuerda.net/kike_pavon/hombros_de_gigantes.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Hombros de gigantes (Kike Pavón ) cover de guitarra acustica",
+          "url": "https://youtu.be/4PSPOsKhDXY",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["G", "C", "D", "Em"]
+    },
+    {
       "id": "",
       "title": "",
       "artist": "",
