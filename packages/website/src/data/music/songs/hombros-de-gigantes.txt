@@ -25,15 +25,14 @@ muchas gracias
 
 
 
-Precoro:
-G                    D
+Pre coro:
+Am                   Em
   Por la gente que jamás vio el resultado
-Em                    C
+G                     C
   Del trabajo y del esfuerzo realizado
-
-G                     D
+Dm                    Am
   Por la vidas que salvaron con su ejemplo
-Em                 C
+G                  C
   Por traernos a Jesús a nuestro tiempo
 
 
@@ -56,7 +55,7 @@ De dejarlo todo por dar un mensaje
 
        G
 Que no se escribe con tinta
-         D                    Em              C       G     D Em C
+         D                    Bm              C       G     D Em C
 Que se escribió con la sangre del más grande, de Je...sús
 
 
@@ -91,13 +90,13 @@ antes
 
 
 Pre coro:
-G                 D
+Am                Em
   Y no se si vere todo el resultado
-Em                    C
+G                     C
   Del trabajo y del esfuerzo realizado
-G                    D
+Dm                   Am
   Pero quiero que mi vida sea un ejemplo
-Em                C
+G                 C
   Y llevarles a Jesús hasta su tiempo
 
 
@@ -120,5 +119,5 @@ De dejarlo todo por dar un mensaje
 
        G
 Que no se escribe con tinta
-         D                    Em              C       G     D Em C
+         D                    Am              C       G     D Em C
 Que se escribió con la sangre del más grande, de Je...sús

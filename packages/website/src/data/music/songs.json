@@ -1040,6 +1040,26 @@
       "chords": ["G", "C", "D", "Em"]
     },
     {
+      "id": "humo",
+      "title": "Humo",
+      "artist": "Jarabe de palo",
+      "album": "50 palos",
+      "year": 2017,
+      "progress": 4,
+      "created_at": "10/06/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/6U7XONjTpMsiMPnIO8eiQq?si=80728ffa6e874fcd",
+      "youtube_url": "https://youtu.be/aEW001GcS9s",
+      "sources": [
+        {
+          "text": "Humo",
+          "url": "https://acordes.lacuerda.net/jarabe_de_palo/humo.shtml",
+          "source": "lacuerda"
+        }
+      ],
+      "chords": ["G", "Am", "B7", "D", "C", "Em"]
+    },
+    {
       "id": "",
       "title": "",
       "artist": "",
