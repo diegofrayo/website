@@ -10,7 +10,7 @@
         <link>https://diegofrayo.vercel.app</link>
         <description
     >Hola, Soy Diego, desarrollador de Software. Tengo poco más de 6 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.</description>
-        <lastBuildDate>Mon, 26 Apr 2021 02:55:30 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 16 Jun 2021 02:18:29 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>es</language>
@@ -52,17 +52,6 @@
       ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS]]></description>
             <content:encoded
       ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS]]></content:encoded>
-            <author>diegofrayo@gmail.com (Diego Rayo)</author>
-        </item>
-        <item>
-            <title><![CDATA[Mi primera publicación]]></title>
-            <link>https://diegofrayo.vercel.app/blog/my-first-post</link>
-            <guid>https://diegofrayo.vercel.app/blog/my-first-post</guid>
-            <pubDate>Tue, 01 Dec 2020 00:00:00 GMT</pubDate>
-            <description
-      ><![CDATA[Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí.]]></description>
-            <content:encoded
-      ><![CDATA[Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí.]]></content:encoded>
             <author>diegofrayo@gmail.com (Diego Rayo)</author>
         </item>
         <item>

@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Icon, Link, List } from "~/components/primitive";
+import { Link, List } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { withTranslations } from "~/hocs";
 import { useDidMount } from "~/hooks";
 import { T_PagesRoutes, T_ReactElement, T_SiteTexts } from "~/types";
-import { WEBSITE_METADATA } from "~/utils/constants";
 import { generateSupportedLocales } from "~/utils/internationalization";
 import { isUserLoggedIn } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
@@ -53,48 +52,12 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
       url: ROUTES.RESUME,
       isNextLink: true,
     },
-    {
-      emoji: "🛠️",
-      label: SiteTexts.page.common.menu_item_snippets,
-      url: ROUTES.SNIPPETS,
-      isNextLink: true,
-    },
-    {
-      emoji: "🎸",
-      label: SiteTexts.page.current_locale.menu_item_music,
-      url: ROUTES.MUSIC,
-      isNextLink: true,
-    },
-    {
-      emoji: "🔮",
-      label: SiteTexts.page.current_locale.menu_item_playground,
-      url: ROUTES.PLAYGROUND,
-      isNextLink: true,
-    },
-    {
-      emoji: (
-        <Icon
-          icon={Icon.icon.GITHUB}
-          size={20}
-          wrapperClassName="tw-relative tw-top-1"
-          withDarkModeBackground
-        />
-      ),
-      label: SiteTexts.page.current_locale.menu_item_github,
-      url: WEBSITE_METADATA.social.github,
-      isNextLink: false,
-    },
-    {
-      emoji: <Icon icon={Icon.icon.GMAIL} size={20} wrapperClassName="tw-relative tw-top-1" />,
-      label: SiteTexts.page.current_locale.menu_item_gmail,
-      url: `mailto:${WEBSITE_METADATA.email}`,
-      isNextLink: false,
-    },
   ]);
 
   useDidMount(() => {
     if (isUserLoggedIn()) {
       const itemsUpdated = [...items];
+
       itemsUpdated.splice(1, 0, {
         emoji: "🙋‍♂️",
         label: SiteTexts.page.current_locale.menu_item_about_me,
@@ -102,7 +65,26 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
         isNextLink: true,
       });
 
-      console.log(itemsUpdated);
+      itemsUpdated.splice(3, 0, {
+        emoji: "🛠️",
+        label: SiteTexts.page.common.menu_item_snippets,
+        url: ROUTES.SNIPPETS,
+        isNextLink: true,
+      });
+
+      itemsUpdated.splice(4, 0, {
+        emoji: "🎸",
+        label: SiteTexts.page.current_locale.menu_item_music,
+        url: ROUTES.MUSIC,
+        isNextLink: true,
+      });
+
+      itemsUpdated.splice(5, 0, {
+        emoji: "🔮",
+        label: SiteTexts.page.current_locale.menu_item_playground,
+        url: ROUTES.PLAYGROUND,
+        isNextLink: true,
+      });
 
       setItems(itemsUpdated);
     }

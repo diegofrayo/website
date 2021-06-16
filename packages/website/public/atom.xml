@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>diegofrayo</id>
     <title>Diego Rayo | Software Developer</title>
-    <updated>2021-04-26T02:55:30.179Z</updated>
+    <updated>2021-06-16T02:18:29.559Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Diego Fernando Rayo Zamora</name>
@@ -51,23 +51,6 @@
         <content
       type="html"
     ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS]]></content>
-        <author>
-            <name>Diego Rayo</name>
-            <email>diegofrayo@gmail.com</email>
-            <uri>https://diegofrayo.vercel.app/about-me</uri>
-        </author>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Mi primera publicación]]></title>
-        <id>https://diegofrayo.vercel.app/blog/my-first-post</id>
-        <link href="https://diegofrayo.vercel.app/blog/my-first-post" />
-        <updated>2020-12-01T00:00:00.000Z</updated>
-        <summary
-      type="html"
-    ><![CDATA[Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí.]]></summary>
-        <content
-      type="html"
-    ><![CDATA[Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí.]]></content>
         <author>
             <name>Diego Rayo</name>
             <email>diegofrayo@gmail.com</email>

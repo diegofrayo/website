@@ -14,6 +14,7 @@ import {
   T_ReactElement,
 } from "~/types";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
+import { WEBSITE_METADATA } from "~/utils/constants";
 import { ROUTES } from "~/utils/routing";
 import { generateSlug, removeEmojiFromString } from "~/utils/strings";
 
@@ -245,7 +246,16 @@ function Breadcumb({ items }: T_BreadcumbProps): T_ReactElement {
 
 function Footer({ showGoToTopButton }): T_ReactElement {
   return (
-    <footer className="tw-flex tw-justify-end tw-items-end tw-h-32">
+    <footer className="tw-flex tw-justify-end tw-items-end tw-h-32 tw-border-t dfr-border-color-primary">
+      <div className="tw-text-right tw-italic tw-text-black dark:tw-text-white">
+        <Link href={WEBSITE_METADATA.social.github} isNextLink={false}>
+          <Icon icon={Icon.icon.GITHUB} size={24} withDarkModeBackground />
+        </Link>
+        <Space orientation="v" size={2} />
+        <Link href={`mailto:${WEBSITE_METADATA.email}`} isNextLink={false}>
+          <Icon icon={Icon.icon.GMAIL} size={24} />
+        </Link>
+      </div>
       {showGoToTopButton && <GoToTopButton />}
     </footer>
   );

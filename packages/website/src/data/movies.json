@@ -108,7 +108,7 @@
     "title": "Who killed Sara?",
     "type": "Serie",
     "source": "Netflix",
-    "calification": 3,
+    "calification": 2,
     "categories": ["méxico", "thriller", "latinoamérica"]
   },
   {
@@ -196,7 +196,7 @@
     "title": "Rose island",
     "type": "Película",
     "source": "Netflix",
-    "calification": 3,
+    "calification": 2,
     "categories": ["comedia"]
   },
   {
@@ -228,7 +228,7 @@
     "title": "The impossible",
     "type": "Película",
     "source": "Netflix",
-    "calification": 3,
+    "calification": 2,
     "categories": ["drama", "basado en historias reales"]
   },
   {
@@ -236,7 +236,7 @@
     "title": "Unorthodox",
     "type": "Serie",
     "source": "Netflix",
-    "calification": 3,
+    "calification": 2,
     "categories": ["drama", "inspiración"]
   },
   {
@@ -244,7 +244,7 @@
     "title": "Playing with fire",
     "type": "Serie",
     "source": "Netflix",
-    "calification": 3,
+    "calification": 2,
     "categories": ["colombia", "romántico", "latinoamérica"]
   },
   {
@@ -292,7 +292,7 @@
     "title": "Dark desire",
     "type": "Serie",
     "source": "Netflix",
-    "calification": 3,
+    "calification": 2,
     "categories": ["méxico", "thriller", "latinoamérica"]
   },
   {
@@ -328,19 +328,11 @@
     "categories": ["acción", "militar"]
   },
   {
-    "id": "80118916",
-    "title": "Sand castle",
-    "type": "Película",
-    "source": "Netflix",
-    "calification": 3,
-    "categories": ["acción", "militar"]
-  },
-  {
     "id": "80235864",
     "title": "Body guard",
     "type": "Serie",
     "source": "Netflix",
-    "calification": 3,
+    "calification": 2,
     "categories": ["acción", "política"]
   },
   {
@@ -412,7 +404,7 @@
     "title": "Elisa & Marcela",
     "type": "Película",
     "source": "Netflix",
-    "calification": 3,
+    "calification": 2,
     "categories": ["drama", "romántico"]
   },
   {
@@ -428,7 +420,7 @@
     "title": "Nobody knows I'm here",
     "type": "Película",
     "source": "Netflix",
-    "calification": 3,
+    "calification": 2,
     "categories": ["drama", "latinoamérica"]
   },
   {
@@ -446,5 +438,77 @@
     "source": "Netflix",
     "calification": 3,
     "categories": ["inspiración", "basado en historias reales"]
+  },
+  {
+    "id": "80104412",
+    "title": "Deepwater Horizon",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["basado en historias reales"]
+  },
+  {
+    "id": "70305949",
+    "title": "Unbroken",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["basado en historias reales", "drama", "militar"]
+  },
+  {
+    "id": "80991031",
+    "title": "Unbroken: Path to Redemption",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["basado en historias reales", "drama", "inspiración"]
+  },
+  {
+    "id": "80105690",
+    "title": "The Lighthouse of the Orcas",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["basado en historias reales", "drama", "argentina", "latinoamérica"]
+  },
+  {
+    "id": "60010609",
+    "title": "Lorenzo's oil",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 4,
+    "categories": ["basado en historias reales", "drama", "inspiración"]
+  },
+  {
+    "id": "81168940",
+    "title": "Radioactive",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["basado en historias reales", "drama", "inspiración"]
+  },
+  {
+    "id": "80200047",
+    "title": "The Boy Who Harnessed the Wind",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["basado en historias reales", "drama", "inspiración"]
+  },
+  {
+    "id": "70305907",
+    "title": "Fury",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 4,
+    "categories": ["basado en historias reales", "drama", "militar"]
+  },
+  {
+    "id": "70285694",
+    "title": "The German Doctor",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["basado en historias reales", "argentina", "latinoamérica"]
   }
 ]

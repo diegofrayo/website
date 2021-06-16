@@ -7,14 +7,8 @@
     <loc>https://diegofrayo.vercel.app/blog</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/about-me</loc>
-  </url>
-  <url>
     <loc
     >https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy</loc>
-  </url>
-  <url>
-    <loc>https://diegofrayo.vercel.app/resume</loc>
   </url>
   <url>
     <loc
@@ -22,5 +16,8 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/resume</loc>
   </url>
 </urlset>

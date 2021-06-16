@@ -190,6 +190,7 @@ export enum E_Icons {
   "EDIT" = "EDIT",
   "HEART" = "HEART",
   "LINK" = "LINK",
+  "MINUS" = "MINUS",
   "MOON" = "MOON",
   "STAR" = "STAR",
   "SUN" = "SUN",

@@ -138,7 +138,9 @@ function Content(): T_ReactElement {
                               ? Icon.icon.STAR
                               : calification === 4
                               ? Icon.icon.HEART
-                              : Icon.icon.CHECK
+                              : calification === 3
+                              ? Icon.icon.CHECK
+                              : Icon.icon.MINUS
                           }
                           size={24}
                         />

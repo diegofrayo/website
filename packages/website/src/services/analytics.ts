@@ -1,8 +1,8 @@
-import { isUserLoggedIn } from "~/utils/misc";
+import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 
 class AnalyticsService {
   async initAnalytics(): Promise<void> {
-    if (isUserLoggedIn() === true) return;
+    if (isUserLoggedIn() === true || isDevelopmentEnvironment() === true) return;
 
     try {
       const splitbee = (await import("@splitbee/web")).default;

@@ -15,7 +15,7 @@ class BlogService {
       ) as T_BlogPost[]
     )
       .filter((post: T_BlogPost) => {
-        return isBrowser() ? isUserLoggedIn() || post.config.isPublished : true;
+        return isBrowser() ? isUserLoggedIn() || post.config.isPublished : post.config.isPublished;
       })
       .sort(sortBy([{ param: "publishedAt", order: "desc" }]));
 

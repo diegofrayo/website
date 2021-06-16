@@ -9,7 +9,14 @@ import {
   ZoomInIcon,
   ZoomOutIcon,
 } from "@heroicons/react/outline";
-import { MoonIcon, SunIcon, HeartIcon, StarIcon, CheckIcon } from "@heroicons/react/solid";
+import {
+  MoonIcon,
+  SunIcon,
+  HeartIcon,
+  StarIcon,
+  CheckIcon,
+  MinusIcon,
+} from "@heroicons/react/solid";
 
 import { E_Icons, T_ReactFunctionComponent } from "~/types";
 
@@ -132,6 +139,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     icon: LinkIcon,
     props: {
       className: "",
+    },
+  },
+  MINUS: {
+    isLibraryIcon: true,
+    icon: MinusIcon,
+    props: {
+      className: "",
+      color: "tw-text-white",
     },
   },
   CODE: {

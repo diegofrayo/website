@@ -33,18 +33,6 @@
       }
     },
     {
-      "id": "https://diegofrayo.vercel.app/blog/my-first-post",
-      "content_html": "Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí.",
-      "url": "https://diegofrayo.vercel.app/blog/my-first-post",
-      "title": "Mi primera publicación",
-      "summary": "Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí.",
-      "date_modified": "2020-12-01T00:00:00.000Z",
-      "author": {
-        "name": "Diego Rayo",
-        "url": "https://diegofrayo.vercel.app/about-me"
-      }
-    },
-    {
       "id": "https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy",
       "content_html": "En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase.",
       "url": "https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy",
