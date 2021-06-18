@@ -67,9 +67,9 @@ export default MainLayout;
 
 // --- Components ---
 
-const Main = twcss.main`dfr-max-w-base tw-w-full tw-py-4 tw-px-8 sm:tw-px-6 tw-mx-auto tw-relative`;
+const Main = twcss.main`tw-py-4 tw-px-8 sm:tw-px-6 tw-relative tw-max-w-screen-lg tw-mx-auto`;
 
-const Body = twcss.div``;
+const Body = twcss.div`dfr-max-w-base tw-w-full tw-mx-auto`;
 
 /*
 type T_HeaderProps = {
@@ -104,7 +104,7 @@ const Header = safeRender(function Header(): T_ReactElement {
     <header className={classNames("root tw-h-32", fixedHeader && "root--fixed")} ref={headerRef}>
       {fixedHeader ? (
         <div className="tw-w-full tw-fixed tw-left-0 tw-top-0 tw-z-30">
-          <div className="dfr-max-w-base tw-py-4 tw-px-6 tw-mx-auto">
+          <div className="tw-max-w-screen-lg tw-py-4 tw-px-6 tw-mx-auto">
             <HeaderContent />
           </div>
         </div>
@@ -246,7 +246,7 @@ function Breadcumb({ items }: T_BreadcumbProps): T_ReactElement {
 
 function Footer({ showGoToTopButton }): T_ReactElement {
   return (
-    <footer className="tw-flex tw-justify-end tw-items-end tw-h-32 tw-border-t dfr-border-color-primary">
+    <footer className="tw-flex tw-justify-end tw-items-end tw-h-32">
       <div className="tw-text-right tw-italic tw-text-black dark:tw-text-white">
         <Link href={WEBSITE_METADATA.social.github} isNextLink={false}>
           <Icon icon={Icon.icon.GITHUB} size={24} withDarkModeBackground />

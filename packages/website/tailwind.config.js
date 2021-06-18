@@ -1,7 +1,6 @@
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
-  // mode: "jit",
   prefix: "tw-",
   darkMode: "class",
   important: false,
@@ -19,6 +18,9 @@ module.exports = {
 
       md: "768px",
       // => @media (min-width: 768px) { ... }
+
+      lg: "1024px",
+      // => @media (min-width: 1024px) { ... }
     },
     extend: {
       borderRadius: {

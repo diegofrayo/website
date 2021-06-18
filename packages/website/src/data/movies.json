@@ -510,5 +510,13 @@
     "source": "Netflix",
     "calification": 3,
     "categories": ["basado en historias reales", "argentina", "latinoamérica"]
+  },
+  {
+    "id": "80097349",
+    "title": "The Fundamentals of Caring",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 4,
+    "categories": ["basado en historias reales", "inspiración"]
   }
 ]

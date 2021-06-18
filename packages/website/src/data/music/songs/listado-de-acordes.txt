@@ -55,6 +55,7 @@ Fmaj7
 G
 G#
 G#m
+G/D
 G6
 G7
 Gm

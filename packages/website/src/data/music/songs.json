@@ -1060,6 +1060,31 @@
       "chords": ["G", "Am", "B7", "D", "C", "Em"]
     },
     {
+      "id": "bicho-de-ciudad",
+      "title": "Bicho de ciudad",
+      "artist": "Los Piojos",
+      "album": "Civilización",
+      "year": 2007,
+      "progress": 1,
+      "created_at": "22/06/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/1L9ybuuZdLY3biLEgfN4zB?si=a4656d72f6934a9f",
+      "youtube_url": "https://youtu.be/esI9dPBmt34",
+      "sources": [
+        {
+          "text": "Bicho de ciudad",
+          "url": "https://acordes.lacuerda.net/piojos/bicho_de_ciudad.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "text": "Cómo tocar Los Piojos Bicho de ciudad con guitarra criolla Acordes Tutorial Letra Cover",
+          "url": "https://youtu.be/FCz1p5xjlvM",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["D", "G/D", "A", "F#m", "Bm", "Em"]
+    },
+    {
       "id": "",
       "title": "",
       "artist": "",
