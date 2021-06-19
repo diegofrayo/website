@@ -1,6 +1,9 @@
 const withMDX = require("@next/mdx")();
 
 module.exports = withMDX({
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   i18n: {
     locales: ["es"],
     defaultLocale: "es",
