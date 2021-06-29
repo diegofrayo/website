@@ -518,5 +518,21 @@
     "source": "Netflix",
     "calification": 4,
     "categories": ["basado en historias reales", "inspiración"]
+  },
+  {
+    "id": "60025031",
+    "title": "Return to the Blue Lagoon",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["romántico"]
+  },
+  {
+    "id": "80200942",
+    "title": "Elite",
+    "type": "Serie",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": []
   }
 ]

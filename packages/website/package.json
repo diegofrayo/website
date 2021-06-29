@@ -13,6 +13,7 @@
     "husky:install": "cd ../../ && husky install packages/website/.husky",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
+    "scripts:contacts": "node --experimental-json-modules scripts/contacts/script.mjs",
     "scripts:seo-files": "node --experimental-json-modules scripts/rss.mjs && node --experimental-json-modules scripts/sitemap.mjs",
     "scripts:static-files": "node --experimental-json-modules scripts/metadata.mjs && node --experimental-json-modules scripts/movies-and-books/script.mjs && node --experimental-json-modules scripts/list-of-chords.mjs",
     "scripts:transform-mdx-content": "node --experimental-json-modules scripts/mdx/script.mjs"

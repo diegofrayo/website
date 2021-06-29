@@ -57,28 +57,6 @@
         "description": "MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify."
       }
     },
-    "my-first-post": {
-      "slug": "my-first-post",
-      "is_legacy": false,
-      "default_locale": "es",
-      "locales": ["es"],
-      "created_at": "2020-11-27",
-      "published_at": "2020-12-01",
-      "updated_at": "2020-12-05",
-      "config": {
-        "is_published": false,
-        "meta_no_robots": true
-      },
-      "es": {
-        "title": "Mi primera publicación",
-        "description": "Esta es mi primera publicación, en donde doy la bienvenida a mi sitio web y la explicación de porque lo construí.",
-        "categories": [{ "id": 2, "value": "personal" }]
-      },
-      "en": {
-        "title": "My first post",
-        "description": "This is my first post, here I want to welcome you to my website and explain why I built it."
-      }
-    },
     "conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy": {
       "slug": "conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy",
       "is_legacy": true,

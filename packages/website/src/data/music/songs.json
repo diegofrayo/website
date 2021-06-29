@@ -1065,7 +1065,7 @@
       "artist": "Los Piojos",
       "album": "Civilización",
       "year": 2007,
-      "progress": 2,
+      "progress": 4,
       "created_at": "22/06/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/1L9ybuuZdLY3biLEgfN4zB?si=a4656d72f6934a9f",
@@ -1080,9 +1080,59 @@
           "text": "Cómo tocar Los Piojos Bicho de ciudad con guitarra criolla Acordes Tutorial Letra Cover",
           "url": "https://youtu.be/FCz1p5xjlvM",
           "source": "youtube"
+        },
+        {
+          "text": "Como tocar Bicho de ciudad Los piojos guitarra (letra y acordes)",
+          "url": "https://youtu.be/MUKa2nM4690",
+          "source": "youtube"
         }
       ],
       "chords": ["D", "G/D", "A", "F#m", "Bm", "Em"]
+    },
+    {
+      "id": "",
+      "title": "Manana en el abasto",
+      "artist": "Sumo",
+      "album": "",
+      "year": 2000,
+      "progress": 3,
+      "created_at": "22/06/2021",
+      "is_published": false,
+      "spotify_url": "",
+      "youtube_url": "https://youtu.be/",
+      "sources": [
+        {
+          "text": "",
+          "url": "",
+          "source": "lacuerda"
+        },
+        {
+          "text": "",
+          "url": "",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
+    },
+    {
+      "id": "zona-de-promesas",
+      "title": "Zona de promesas",
+      "artist": "Soda Stereo",
+      "album": "Zona de promesa",
+      "year": 1993,
+      "progress": 1,
+      "created_at": "26/06/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/2EGq3O7pchSqjQ6gx82byi?si=65bf8df73d4249fa",
+      "youtube_url": "https://youtu.be/tPOkA5H1DfY",
+      "sources": [
+        {
+          "text": "Zona de Promesas SODA STEREO Cover | Tutorial Guitarra Demo Christianvib",
+          "url": "https://youtu.be/UiJt0bA8jmE",
+          "source": "youtube"
+        }
+      ],
+      "chords": []
     },
     {
       "id": "",
