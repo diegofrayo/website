@@ -1118,9 +1118,9 @@
       "id": "zona-de-promesas",
       "title": "Zona de promesas",
       "artist": "Soda Stereo",
-      "album": "Zona de promesa",
+      "album": "Zona de promesas",
       "year": 1993,
-      "progress": 1,
+      "progress": 2,
       "created_at": "26/06/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/2EGq3O7pchSqjQ6gx82byi?si=65bf8df73d4249fa",
@@ -1132,7 +1132,7 @@
           "source": "youtube"
         }
       ],
-      "chords": []
+      "chords": ["A", "Am", "B7", "C7", "Cadd9", "D", "D/F#", "Em", "Em7", "Fadd9", "Fmaj7/F#", "G"]
     },
     {
       "id": "",

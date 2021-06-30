@@ -1,52 +1,68 @@
-G      D      G
-  Mamá sabe bien
-   C        D   C   D   C
-perdí una batalla
-G        D     G
+G      D/F#   G
+  Mama sabe bien
+     D/F#     C   D/F#  C  D/F#
+  perdí una bata--lla
+G        D/F#  G
   quiero regresar
-C        D  C   D   C
-solo a besarla
+  D/F#     C  D/F#  C  D/F#
+  solo a besarla
 
 
-Am        F          D7
+Am        Fadd9      Fmaj7/F#
   No está mal ser mi dueño otra vez
-Am     B7             Em       D     A7
+Am     B7             Em       D/F#    A
   ni temer que el río sangre y calme
-   C7       B7     Em     D
-al contarle mis plegarias
+     C7       B7     Em     D/F#
+  al contarle mis plegarias
 
 
-G    C9   G   C9   Em7  D   C   G
+G   Cadd9   G   Cadd9   Em7   D   Fadd9
 
 
-G    C9       G
+G    Cadd9    G
   Tarda en llegar
-C9       Em7       D
+Cadd9    Em7       D
   y al final, al final
- D       C
-hay recompensa
+   Fadd9   G
+  hay recompensa
 
-G    C9   G   C9   Em7*  D   C   G
 
-G D G D C D C D (x2)
+G   D/F#   G   D/F#   C   D/F#   C   D/F#
 
-Mamá sabe bien, pequeña princesa
-cuando regresé, todo quemaba
 
-no esta mal sumergirme otra vez
-ni temer que el río sangre y calme
-se bucear en silencio
+G      D/F#   G
+  Mama sabe bien
+    D/F#     C  D/F#  C  D/F#
+  pequeña princesa
+G        D/F# G
+  cuando regresé,
+D/F#      C D/F#  C  D/F#
+  todo quemaba
 
-G    C9   G   C9   Em7*  D   C   G
+  Am      Fadd9    Fmaj7/F#
+  no esta mal sumergirme otra vez
+Am     B7             Em       D/F#    A
+  ni temer que el río sangre y calme
+     C7    B7    Em     D/F#
+  se bucear en silencio
 
-Tarda en llegar y al final ,al final
-hay recompensa
 
-G    C9   G   C9   Em7*  D   C   G
+G   Cadd9   G   Cadd9   Em7   D   Fadd9
 
-Estribillo (x3)
 
-G    C9   G   C9
+G    Cadd9    G
+  Tarda en llegar
+Cadd9    Em7       D
+  y al final, al final
+   Fadd9   G  Cadd9   G   Cadd9   Em7   D   Fadd9
+  hay recompensa   (x2)
 
-Em7*  D   C   G
- En la zona de promesas
+G    Cadd9    G
+  Tarda en llegar
+Cadd9    Em7       D
+  y al final, al final
+   Fadd9   G  Cadd9   G   Cadd9   Em7
+  hay recompensa
+
+        D    Fadd9   G
+  En la zona de promesas

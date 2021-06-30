@@ -38,56 +38,56 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
       url: T_PagesRoutes | string;
       isNextLink: boolean;
     }[]
-  >([
-    {
-      emoji: "✍️",
-      label: SiteTexts.page.common.menu_item_blog,
-      url: ROUTES.BLOG,
-      isNextLink: true,
-    },
-
-    {
-      emoji: "📄",
-      label: SiteTexts.page.current_locale.menu_item_resume,
-      url: ROUTES.RESUME,
-      isNextLink: true,
-    },
-  ]);
+  >([]);
 
   useDidMount(() => {
-    if (isUserLoggedIn()) {
-      const itemsUpdated = [...items];
-
-      itemsUpdated.splice(1, 0, {
-        emoji: "🙋‍♂️",
-        label: SiteTexts.page.current_locale.menu_item_about_me,
-        url: ROUTES.ABOUT_ME,
+    const newItems = [
+      {
+        emoji: "✍️",
+        label: SiteTexts.page.common.menu_item_blog,
+        url: ROUTES.BLOG,
         isNextLink: true,
-      });
-
-      itemsUpdated.splice(3, 0, {
-        emoji: "🛠️",
-        label: SiteTexts.page.common.menu_item_snippets,
-        url: ROUTES.SNIPPETS,
+      },
+      {
+        emoji: "📄",
+        label: SiteTexts.page.current_locale.menu_item_resume,
+        url: ROUTES.RESUME,
         isNextLink: true,
-      });
+      },
+    ];
 
-      itemsUpdated.splice(4, 0, {
-        emoji: "🎸",
-        label: SiteTexts.page.current_locale.menu_item_music,
-        url: ROUTES.MUSIC,
-        isNextLink: true,
-      });
-
-      itemsUpdated.splice(5, 0, {
-        emoji: "🔮",
-        label: SiteTexts.page.current_locale.menu_item_playground,
-        url: ROUTES.PLAYGROUND,
-        isNextLink: true,
-      });
-
-      setItems(itemsUpdated);
-    }
+    setItems(
+      newItems.concat(
+        isUserLoggedIn()
+          ? [
+              {
+                emoji: "🙋‍♂️",
+                label: SiteTexts.page.current_locale.menu_item_about_me,
+                url: ROUTES.ABOUT_ME,
+                isNextLink: true,
+              },
+              {
+                emoji: "🛠️",
+                label: SiteTexts.page.common.menu_item_snippets,
+                url: ROUTES.SNIPPETS,
+                isNextLink: true,
+              },
+              {
+                emoji: "🎸",
+                label: SiteTexts.page.current_locale.menu_item_music,
+                url: ROUTES.MUSIC,
+                isNextLink: true,
+              },
+              {
+                emoji: "🔮",
+                label: SiteTexts.page.current_locale.menu_item_playground,
+                url: ROUTES.PLAYGROUND,
+                isNextLink: true,
+              },
+            ]
+          : [],
+      ),
+    );
   });
 
   return (
