@@ -72,6 +72,8 @@ function useController({ sources }: T_SongSourcesProps) {
         ? Icon.icon.YOUTUBE
         : source === "spotify"
         ? Icon.icon.SPOTIFY
+        : source === "instagram"
+        ? Icon.icon.INSTAGRAM
         : Icon.icon.LINK;
 
     return function ImageComponent() {

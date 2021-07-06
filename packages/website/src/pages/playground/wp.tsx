@@ -27,6 +27,8 @@ function Content(): T_ReactElement {
     focusElement(inputRef.current);
   });
 
+  const isInvalidPhone = !inputRef?.current?.validity?.valid || !phone;
+
   return (
     <div className="tw-flex tw-flex-no-wrap tw-items-end">
       <label className="tw-flex-1 tw-mr-2" htmlFor="input">
@@ -39,6 +41,10 @@ function Content(): T_ReactElement {
           placeholder="+57"
           pattern="[0-9]{10}"
           onChange={(e) => setPhone(e.currentTarget.value)}
+          onKeyPress={(e) => {
+            if (e.key !== "Enter" || isInvalidPhone) return;
+            document.getElementById("btn")?.click();
+          }}
         />
       </label>
       <Link
@@ -46,7 +52,8 @@ function Content(): T_ReactElement {
         className="tw-self-end tw-flex"
         href={`https://api.whatsapp.com/send?phone=57${phone}`}
         variant={Link.variant.SIMPLE}
-        disabled={!inputRef?.current?.validity?.valid || !phone}
+        disabled={isInvalidPhone}
+        id="btn"
       >
         <Icon icon={Icon.icon.WHATSAPP} size={48} />
       </Link>

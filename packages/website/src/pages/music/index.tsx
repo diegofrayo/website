@@ -83,7 +83,7 @@ function MusicPage(): T_ReactElement {
                           className="tw-font-bold tw-flex"
                           isNextLink
                         >
-                          <span className="tw-flex-1 tw-truncate" title={song.title}>
+                          <span className="tw-flex-1 sm:tw-truncate" title={song.title}>
                             {song.title}
                           </span>
                           {song.progress === 5 && (

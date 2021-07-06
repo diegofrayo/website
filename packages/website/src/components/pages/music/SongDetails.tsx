@@ -18,14 +18,21 @@ function SongDetails({
 
   if (!song.artist) return null;
 
+  const songArtist = Array.isArray(song.artist) ? song.artist.join(", ") : song.artist;
+
   return (
     <div className={classNames("tw-text-sm tw-italic", className)}>
-      <div>
+      <div className="sm:tw-flex sm:tw-flex-nowrap">
         <strong>{SiteTexts.page.current_locale.artist}:</strong>{" "}
-        <span>{Array.isArray(song.artist) ? song.artist.join(", ") : song.artist}</span>
+        <span className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={songArtist}>
+          {songArtist}
+        </span>
       </div>
-      <div>
-        <strong>{SiteTexts.page.current_locale.album}:</strong> <span>{song.album}</span>
+      <div className="sm:tw-flex sm:tw-flex-nowrap">
+        <strong>{SiteTexts.page.current_locale.album}:</strong>{" "}
+        <span className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={song.album}>
+          {song.album}
+        </span>
       </div>
       <div>
         <strong>{SiteTexts.page.current_locale.year}:</strong> <span>{song.year}</span>

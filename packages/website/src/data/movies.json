@@ -534,5 +534,21 @@
     "source": "Netflix",
     "calification": 3,
     "categories": []
+  },
+  {
+    "id": "70243460",
+    "title": "Captain Phillips",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["acción", "basado en historias reales"]
+  },
+  {
+    "id": "81040362",
+    "title": "Awake",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["suspenso"]
   }
 ]

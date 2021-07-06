@@ -177,6 +177,7 @@ export enum E_Icons {
   "500PX" = "500PX",
   "GITHUB" = "GITHUB",
   "GMAIL" = "GMAIL",
+  "INSTAGRAM" = "INSTAGRAM",
   "NETFLIX" = "NETFLIX",
   "SPOTIFY" = "SPOTIFY",
   "WHATSAPP" = "WHATSAPP",

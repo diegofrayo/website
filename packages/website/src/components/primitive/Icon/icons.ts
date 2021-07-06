@@ -55,6 +55,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
       alt: "Email",
     },
   },
+  INSTAGRAM: {
+    isLibraryIcon: false,
+    icon: "/static/images/icons/instagram.svg",
+    props: {
+      className: "",
+      alt: "Instagram",
+    },
+  },
   NETFLIX: {
     isLibraryIcon: false,
     icon: "/static/images/icons/netflix.svg",

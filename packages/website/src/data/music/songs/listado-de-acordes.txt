@@ -1,3 +1,7 @@
+?1
+?2
+?3
+
 A
 A#
 A#m
@@ -23,6 +27,7 @@ C
 C#
 C#m
 C#m7
+C7
 Cadd9
 Cmaj7
 
@@ -49,8 +54,10 @@ F#m
 F#m7
 F#maj7
 F7
+Fadd9
 Fm
 Fmaj7
+Fmaj7/F#
 
 G
 G#

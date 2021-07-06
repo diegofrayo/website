@@ -23,6 +23,8 @@ y además    vos    querés sol
 despacio también podés hallar la luna
 
 
+{PUENTE}
+
 
 INTRO   (x2)
 
@@ -47,3 +49,6 @@ bajan, la noche se nubla sin fin
 y además    vos    sos el sol
    C#m      G#                  C#m G#m E A
 despacio también podés ser la luna
+
+
+{PUENTE}
