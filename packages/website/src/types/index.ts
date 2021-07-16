@@ -55,6 +55,7 @@ export type T_PagesRoutes =
   | "/snippets"
   | "/playground"
   | "/music"
+  | "/contact"
   | "/404"
   | "/500";
 

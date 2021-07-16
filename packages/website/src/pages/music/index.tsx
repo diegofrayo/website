@@ -8,6 +8,7 @@ import { useInternationalization, useQuery } from "~/hooks";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
 import { ROUTES } from "~/utils/routing";
+import { isUserLoggedIn } from "~/utils/misc";
 
 function MusicPage(): T_ReactElement {
   const { SiteTexts } = useInternationalization({
@@ -42,6 +43,10 @@ function MusicPage(): T_ReactElement {
 
         <Render isLoading={isLoading} error={error} data={data}>
           {(data: T_Song[]) => {
+            const songsList = isUserLoggedIn()
+              ? data.slice(1)
+              : data.filter((song) => song.progress === 5);
+
             return (
               <Fragment>
                 <Title
@@ -67,14 +72,14 @@ function MusicPage(): T_ReactElement {
                   className="tw-mb-2"
                 >
                   <Emoji className="tw-mr-2">🎶</Emoji>
-                  <span>Canciones [{data.length - 1}]</span>
+                  <span>Canciones [{songsList.length - 1}]</span>
                 </Title>
 
                 <List
                   className="tw-flex tw-flex-wrap tw-justify-between"
                   variant={List.variant.UNSTYLED}
                 >
-                  {data.slice(1).map((song) => {
+                  {songsList.map((song) => {
                     return (
                       <List.Item key={song.id} className="tw-w-full sm:tw-w-5/12">
                         <Link

@@ -8,7 +8,7 @@ import { focusElement, isSmallScreen } from "~/utils/browser";
 
 function WPPage(): T_ReactElement {
   return (
-    <PlaygroundPageTemplate pageName="💬 wp">
+    <PlaygroundPageTemplate pageName="💬 whatsapp">
       <Content />
     </PlaygroundPageTemplate>
   );
@@ -50,7 +50,7 @@ function Content(): T_ReactElement {
       <Link
         role="button"
         className="tw-self-end tw-flex"
-        href={`https://api.whatsapp.com/send?phone=57${phone}`}
+        href={`https://web.whatsapp.com/send?phone=57${phone}`}
         variant={Link.variant.SIMPLE}
         disabled={isInvalidPhone}
         id="btn"

@@ -8,7 +8,7 @@ import { useInternationalization, useQuery } from "~/hooks";
 import BlogService from "~/services/blog";
 import { T_BlogPost, T_BlogPostLocaleData, T_Locale, T_ReactElement } from "~/types";
 import { getDifferenceBetweenDates } from "~/utils/dates";
-import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
+import { getItemLocale } from "~/utils/internationalization";
 import { ROUTES } from "~/utils/routing";
 
 function BlogPage(): T_ReactElement {
@@ -27,7 +27,6 @@ function BlogPage(): T_ReactElement {
       }}
     >
       <MainLayout
-        locales={generateSupportedLocales(SiteTexts.page.config.locales, ROUTES.BLOG)}
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,

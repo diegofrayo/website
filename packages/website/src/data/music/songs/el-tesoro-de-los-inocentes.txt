@@ -1,81 +1,90 @@
-Intro
-MIm DO RE | 10 1 - 82 x 5 ⇒ x2
-12 y despues levanta el dedo - 23 y levanta el dexo x2 - 12 ⇒ x2
-RE ↑↓↑ - 23 levanta el dedo , 23 , 23 levanta el dedo | 12 , 12 levanta el dedo , 12 | MIm e inicia la cancion
-
-INTRO: (Em C D)x3 C
-     (Em C D)X3 C
-        G D
-
-Em   C      D  Em
-El tesoro que no ves
-       C        D    Em
-La inocencia que no ves
-      C         D   C
-Los milagros que van a estar de tu lado
-
-Cuando comiences a:
-Em       C
- leer de los labios
-D      Em        C       Em
-Y a ignorar los embustes y gustar
-        C       D    C
-Con tu lengua de las aguas que son dulces
-
-Aunque te sientas mal
+INTRO:
+((Em C D   (x3)) | (10,1 - 8,2   (x5)))  (x2)
+(1,2 | 2,3 | 2,3 | 0,2)   (x2)
+(D ↓↑↓ | 2,3 | 0,3 | 2,3 | 0,2 | 1,2 | 0,2)
 
 
-       G                         D
+
+Em      C        D  Em
+   El tesoro que no ves
+      C          D  Em
+la inocencia que no ves
+      C          D   C
+los milagros que van a estar de tu lado, cuando comiences a...
+
+  Em         C            D Em
+leer, de los labios y a ignorar,
+      C        D  Em
+los embustes y gustar
+       C         D   C
+con tu lengua de las aguas que son dulces, aunque te sientas mal
+
+
+      G                           D
 Si no hay amor que no haya nada entonces, alma mía
-           Em
-No vas a regatear!
+             Em
+no vas a regatear!
 
 
+      C        D     Em
 Un hermoso día el de hoy!
-Ay! Qué bello día es hoy!
-Está para desatar nuestra tormenta
-Que va a tronar por el dolor
-Juegan a "primero yo" y después a "también yo"
-Y a "las migas para mí" y cierran el juego porque ya saben que...
+        C         D  Em
+ay! Qué bello día es hoy!
+     C      D C
+está para desatar nuestra tormenta, que va a tronar por el...
 
- el tonto nunca puede oler al
-diablo (vida mía!) ni si caga en su nariz
+  Em      C           D  Em
+dolor, juegan a "primero yo"
+     C            D  Em
+y después a "también yo"
+         C       D  C
+y a "las migas para mí" y cierran el juego, porque ya saben que...
 
 
-ªªªsolo sobre base de la introªªª
+   G                         D
+El tonto nunca puede oler al diablo (vida mía!)
+                   Em
+ni si caga en su nariz
 
 
-
+       C         D   Em
 Esa mancha que está allí...
-Por allí... en el suelo! allí!
-Y en tu bella cicatriz
-Parece sangre y sin embargo sonreís
+     C               D    Em
+por allí... en el suelo! allí!
+        C       D C
+y en tu bella cicatriz... parece sangre y sin embargo
+
+     Em       C        D  Em
+sonreís, el tesoro que no ves!
+      C          D  Em
+la inocencia que no ves!
+      C          D C
+el placer es tan oscuro como el culo, de un topo negro y...
 
 
-
-El tesoro que no ves!
-La inocencia que no ves!
-El placer es tan oscuro como
-el culo de un topo negro y si no hay amor que no haya nada
-Entonces, alma mía
-
-No vas a regatear!
+      G                           D
+Si no hay amor que no haya nada entonces, alma mía
+             Em
+no vas a regatear!
 
 
-
-
+Em
 Placer que es cruel...
-(Le echás el guante
+(Le echás el guante)
+C
 sin lágrimas...
 a tu pena allí nomás)
+               Em
 .. y el mundo allí nomás
-El sol cocina lento...
+C
+el sol cocina lento...
 
-
+Em
 Placer que es cruel...
 (Vos siempre estás con una excusa a flor de labios...
-sin lágrimas..
-
+C
+sin lágrimas...
+                 Em
 Con tus dolores allí nomás, sin vida
-
+C
 Con tu sangre en el suelo...

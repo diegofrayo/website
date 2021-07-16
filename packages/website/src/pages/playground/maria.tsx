@@ -59,7 +59,7 @@ function MariaPage(): T_ReactElement {
                 <MenuItem
                   onClick={() => {
                     window.open(
-                      "https://api.whatsapp.com/send?phone=573113728898&text=Hola Diego ⚡",
+                      "https://web.whatsapp.com/send?phone=573113728898&text=Hola Diego ⚡",
                     );
                   }}
                 >

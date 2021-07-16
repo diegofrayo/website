@@ -4,12 +4,12 @@ import sharp from "sharp";
 
 resizeImages({
   sourceDir: "scripts/movies-and-books/movies",
-  outputDir: "public/static/pages/about-me/movies",
+  outputDir: "public/static/pages/playground/movies",
 });
 
 resizeImages({
   sourceDir: "scripts/movies-and-books/books",
-  outputDir: "public/static/pages/about-me/books",
+  outputDir: "public/static/pages/playground/books",
 });
 
 console.log("Movies and books images resized");

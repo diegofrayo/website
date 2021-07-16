@@ -6,7 +6,7 @@
 
 html,
 body {
-  font-family: "Roboto Mono", monospace;
+  font-family: "Quicksand", monospace;
   font-display: swap;
 }
 
@@ -80,6 +80,7 @@ a[disabled] {
 .Toastify__toast {
   @apply tw-text-sm;
   border-radius: 0;
+  text-align: center;
 }
 .Toastify__toast--rtl {
 }
@@ -90,15 +91,15 @@ a[disabled] {
 .Toastify__toast--info {
 }
 .Toastify__toast--success {
-  background-color: rgba(35, 38, 35, 0.75);
+  background-color: rgb(35, 38, 35);
 }
 .tw-dark .Toastify__toast--success {
-  background-color: rgba(182, 182, 182, 0.75);
+  background-color: rgb(182, 182, 182);
 }
 .Toastify__toast--warning {
 }
 .Toastify__toast--error {
-  background-color: rgba(244, 51, 51, 0.75);
+  background-color: rgb(244, 51, 51);
 }
 .Toastify__toast-body {
 }
@@ -131,15 +132,11 @@ a[disabled] {
 /* --- NProgress --- */
 
 #nprogress .bar {
-  @apply tw-bg-red-700;
+  @apply tw-bg-white;
   height: 5px;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-}
-
-.tw-dark #nprogress .bar {
-  @apply tw-bg-yellow-400;
 }

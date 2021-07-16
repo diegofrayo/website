@@ -12,6 +12,7 @@ export const ROUTES: T_Object<T_PagesRoutes> = {
   BLOG: "/blog",
   PLAYGROUND: "/playground",
   MUSIC: "/music",
+  CONTACT: "/contact",
 };
 
 export const DYNAMIC_MAIN_PAGES = ["about-me", "resume", "snippets"];

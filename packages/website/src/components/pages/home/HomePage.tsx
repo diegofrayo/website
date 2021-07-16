@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 
-import { Page, MainLayout } from "~/components/layout";
+import { Page, HomeLayout } from "~/components/layout";
 import { Link, List } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { withTranslations } from "~/hocs";
-import { useDidMount } from "~/hooks";
-import { T_PagesRoutes, T_ReactElement, T_SiteTexts } from "~/types";
-import { generateSupportedLocales } from "~/utils/internationalization";
-import { isUserLoggedIn } from "~/utils/misc";
+import { T_ReactElement, T_SiteTexts } from "~/types";
 import { ROUTES } from "~/utils/routing";
 
 function HomePage({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
@@ -19,9 +16,9 @@ function HomePage({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
         pathname: ROUTES.HOME,
       }}
     >
-      <MainLayout locales={generateSupportedLocales(SiteTexts.page.config.locales, ROUTES.HOME)}>
+      <HomeLayout>
         <Content SiteTexts={SiteTexts} />
-      </MainLayout>
+      </HomeLayout>
     </Page>
   );
 }
@@ -31,80 +28,57 @@ export default withTranslations(HomePage, { page: ROUTES.HOME });
 // --- Components ---
 
 function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
-  const [items, setItems] = useState<
+  const items = [
     {
-      emoji: string | T_ReactElement;
-      label: string;
-      url: T_PagesRoutes | string;
-      isNextLink: boolean;
-    }[]
-  >([]);
-
-  useDidMount(() => {
-    const newItems = [
-      {
-        emoji: "✍️",
-        label: SiteTexts.page.common.menu_item_blog,
-        url: ROUTES.BLOG,
-        isNextLink: true,
-      },
-      {
-        emoji: "📄",
-        label: SiteTexts.page.current_locale.menu_item_resume,
-        url: ROUTES.RESUME,
-        isNextLink: true,
-      },
-    ];
-
-    setItems(
-      newItems.concat(
-        isUserLoggedIn()
-          ? [
-              {
-                emoji: "🙋‍♂️",
-                label: SiteTexts.page.current_locale.menu_item_about_me,
-                url: ROUTES.ABOUT_ME,
-                isNextLink: true,
-              },
-              {
-                emoji: "🛠️",
-                label: SiteTexts.page.common.menu_item_snippets,
-                url: ROUTES.SNIPPETS,
-                isNextLink: true,
-              },
-              {
-                emoji: "🎸",
-                label: SiteTexts.page.current_locale.menu_item_music,
-                url: ROUTES.MUSIC,
-                isNextLink: true,
-              },
-              {
-                emoji: "🔮",
-                label: SiteTexts.page.current_locale.menu_item_playground,
-                url: ROUTES.PLAYGROUND,
-                isNextLink: true,
-              },
-            ]
-          : [],
-      ),
-    );
-  });
+      emoji: "🙋‍♂️",
+      label: SiteTexts.page.current_locale.menu_item_about_me,
+      url: ROUTES.ABOUT_ME,
+    },
+    {
+      emoji: "📝",
+      label: SiteTexts.page.current_locale.menu_item_resume,
+      url: ROUTES.RESUME,
+    },
+    {
+      emoji: "✍️",
+      label: SiteTexts.page.common.menu_item_blog,
+      url: ROUTES.BLOG,
+    },
+    {
+      emoji: "💬",
+      label: "Contacto",
+      url: ROUTES.CONTACT,
+    },
+    {
+      emoji: "🎸",
+      label: SiteTexts.page.current_locale.menu_item_music,
+      url: ROUTES.MUSIC,
+    },
+    {
+      emoji: "🔮",
+      label: SiteTexts.page.current_locale.menu_item_playground,
+      url: ROUTES.PLAYGROUND,
+    },
+  ];
 
   return (
     <List variant={List.variant.UNSTYLED}>
       {items.map((item, index) => {
         return (
           <List.Item key={`Content-item-${index}`}>
-            <Link href={item.url} variant={Link.variant.SIMPLE} isNextLink={item.isNextLink}>
-              <Emoji className="tw-w-6 tw-inline-block tw-mr-1">{item.emoji}</Emoji>
-              <span
-                className={classNames(
-                  !item.isNextLink &&
-                    "tw-border-b tw-border-dashed tw-font-bold tw-border-black dark:tw-border-white",
-                )}
-              >
-                {item.label}
-              </span>
+            <Link
+              href={item.url}
+              variant={Link.variant.SIMPLE}
+              className={classNames(
+                "tw-block tw-bg-blue-200 dark:tw-bg-gray-700 tw-p-3 tw-border-blue-700 dark:tw-border-gray-500 tw-border-b-4 tw-text-right",
+                index % 2 === 0
+                  ? "tw-rounded-tl-md tw-rounded-br-md"
+                  : "tw-rounded-bl-md tw-rounded-tr-md",
+              )}
+              isNextLink
+            >
+              <strong>{item.label}</strong>
+              <Emoji className="tw-w-6 tw-inline-block tw-ml-1">{item.emoji}</Emoji>
             </Link>
           </List.Item>
         );

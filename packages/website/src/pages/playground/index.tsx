@@ -28,13 +28,29 @@ function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
         title={SiteTexts.page.current_locale.title}
       >
         <PagesList
-          pages={["🎼 chords-creator", "📝 strings", "💅 styles", "👓 virtual-reality", "💬 wp"]}
+          pages={[
+            { name: "🎼 chords-creator", isNextLink: true },
+            { name: "📝 strings", isNextLink: true },
+            {
+              name: "👓 virtual-reality",
+              url: "/static/pages/playground/virtual-reality/index.html",
+              isNextLink: false,
+            },
+            { name: "💬 whatsapp", isNextLink: true },
+          ]}
         />
 
         {isUserLoggedIn() && (
           <div className="tw-font-bold">
             <Space sizeTop={6} sizeBottom={4} variant={Space.variant.DASHED} />
-            <PagesList pages={["🎀 maria", "❤️ baria", "🤨 stupid"]} />
+            <PagesList
+              pages={[
+                { name: "📚 books", isNextLink: true },
+                { name: "🎥 movies", isNextLink: true },
+                { name: "🔨 encrypt-lab", isNextLink: true },
+                { name: "💅 styles", isNextLink: true },
+              ]}
+            />
           </div>
         )}
       </MainLayout>
@@ -52,15 +68,17 @@ export default withTranslations(PlaygroundPage, {
 function PagesList({ pages }) {
   return (
     <List variant={List.variant.UNSTYLED}>
-      {pages.map((name) => {
+      {pages.map((page) => {
         return (
-          <List.Item key={`PlaygroundPage-name-${name}`}>
+          <List.Item key={`PlaygroundPage-name-${page.name}`}>
             <Link
-              href={`${ROUTES.PLAYGROUND}/${generateSlug(removeEmojiFromString(name))}`}
+              href={
+                page.url || `${ROUTES.PLAYGROUND}/${generateSlug(removeEmojiFromString(page.name))}`
+              }
               variant={Link.variant.SIMPLE}
-              isNextLink
+              isNextLink={page.isNextLink}
             >
-              {name}
+              {page.name}
             </Link>
           </List.Item>
         );

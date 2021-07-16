@@ -9,11 +9,7 @@ import { MDXContent } from "~/components/pages/_shared";
 import { T_Locale, T_SiteTexts, T_PagesRoutes, T_ReactChildrenProp } from "~/types";
 import { getSnippetsFiles } from "~/components/pages/snippets/utils";
 import { DYNAMIC_MAIN_PAGES, ROUTES } from "~/utils/routing";
-import {
-  generateSupportedLocales,
-  getItemLocale,
-  getSiteTexts,
-} from "~/utils/internationalization";
+import { getItemLocale, getSiteTexts } from "~/utils/internationalization";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { generateObjectKeyInLowerCase, generateObjectKeyInUpperCase } from "~/utils/strings";
 
@@ -36,14 +32,6 @@ function SitePage({ content, page, SiteTexts }: T_SitePageProps): T_ReactChildre
       }}
     >
       <MainLayout
-        locales={
-          SiteTexts.page.config.meta_no_robots
-            ? undefined
-            : generateSupportedLocales(
-                SiteTexts.page.config.locales,
-                ROUTES[generateObjectKeyInUpperCase(page)],
-              )
-        }
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,

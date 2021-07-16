@@ -26,8 +26,8 @@ function MoviesPage(): T_ReactElement {
             url: ROUTES.HOME,
           },
           {
-            text: SiteTexts.layout.current_locale.breadcumb.about_me,
-            url: ROUTES.ABOUT_ME,
+            text: SiteTexts.layout.current_locale.breadcumb.playground,
+            url: ROUTES.PLAYGROUND,
           },
           {
             text: PAGE_NAME,
@@ -126,7 +126,7 @@ function Content(): T_ReactElement {
                     <article
                       className="tw-flex tw-h-full tw-w-full"
                       style={{
-                        backgroundImage: `url("/static/pages/about-me/movies/${id.toLowerCase()}.jpg")`,
+                        backgroundImage: `url("/static/pages/playground/movies/${id.toLowerCase()}.jpg")`,
                         backgroundSize: "100% 100%",
                         backgroundRepeat: "no-repeat",
                       }}

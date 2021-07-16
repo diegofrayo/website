@@ -8,7 +8,7 @@ import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
 
 function StupidPage(): T_ReactElement {
   return (
-    <PlaygroundPageTemplate pageName="stupid">
+    <PlaygroundPageTemplate pageName="encrypt-lab">
       <Content />
     </PlaygroundPageTemplate>
   );
@@ -21,7 +21,7 @@ export default StupidPage;
 function Content(): T_ReactElement {
   const [output, setOutput] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const MY_STUPID_SECRET_KEY = "MY_STUPID_SECRET_KEY";
+  const MY_STUPID_SECRET_KEY = process.env.NEXT_PUBLIC_CRYPTO_KEY;
 
   useDidMount(() => {
     if (isSmallScreen() || !inputRef.current) return;
@@ -29,25 +29,41 @@ function Content(): T_ReactElement {
   });
 
   async function handleEncrypt() {
-    const CryptoJS = await import("crypto-js");
+    try {
+      const CryptoJS = await import("crypto-js");
 
-    const encryptedText = CryptoJS.AES.encrypt(
-      inputRef.current?.value,
-      MY_STUPID_SECRET_KEY,
-    ).toString();
+      const encryptedText = CryptoJS.AES.encrypt(
+        inputRef.current?.value,
+        MY_STUPID_SECRET_KEY,
+      ).toString();
 
-    setOutput(encryptedText);
+      setOutput(encryptedText);
+    } catch (error) {
+      console.error("Error encrypting data");
+      console.error(error);
+
+      setOutput("Error, the text was not encrypted :(");
+    }
   }
 
   async function handleDecrypt() {
-    const CryptoJS = await import("crypto-js");
+    try {
+      const CryptoJS = await import("crypto-js");
 
-    const decryptedText = CryptoJS.AES.decrypt(
-      inputRef.current?.value,
-      MY_STUPID_SECRET_KEY,
-    ).toString(CryptoJS.enc.Utf8);
+      const decryptedText = CryptoJS.AES.decrypt(
+        inputRef.current?.value,
+        MY_STUPID_SECRET_KEY,
+      ).toString(CryptoJS.enc.Utf8);
 
-    setOutput(decryptedText || "Error, the text was not decrypted :(");
+      if (!decryptedText) throw new Error("Text was not decrypted");
+
+      setOutput(decryptedText);
+    } catch (error) {
+      console.error("Error decrypting data");
+      console.error(error);
+
+      setOutput("Error, the text was not decrypted :(");
+    }
   }
 
   return (

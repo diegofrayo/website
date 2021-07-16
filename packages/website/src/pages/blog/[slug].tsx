@@ -14,7 +14,7 @@ import { T_BlogPost, T_Locale, T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { WEBSITE_METADATA, GITHUB_DATA } from "~/utils/constants";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
-import { generateSupportedLocales, getItemLocale } from "~/utils/internationalization";
+import { getItemLocale } from "~/utils/internationalization";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
 
@@ -40,7 +40,6 @@ function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
       }}
     >
       <MainLayout
-        locales={generateSupportedLocales(post.locales, `${ROUTES.BLOG}/${[post.slug]}`)}
         breadcumb={[
           {
             text: SiteTexts.layout.current_locale.breadcumb.home,

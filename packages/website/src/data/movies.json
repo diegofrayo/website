@@ -550,5 +550,21 @@
     "source": "Netflix",
     "calification": 3,
     "categories": ["suspenso"]
+  },
+  {
+    "id": "81471864",
+    "title": "Héctor el Father: Conocerás la verdad",
+    "type": "Película",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["basado en historias reales", "latinoamérica"]
+  },
+  {
+    "id": "81033361",
+    "title": "The Mess You Leave Behind ",
+    "type": "Serie",
+    "source": "Netflix",
+    "calification": 3,
+    "categories": ["thriller"]
   }
 ]

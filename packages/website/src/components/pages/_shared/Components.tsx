@@ -118,16 +118,16 @@ export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_Rea
   return (
     <div className="tw-text-right" data-markdown-block>
       <Link
-        className="tw-flex sm:tw-inline-flex tw-p-4 dfr-bg-secondary dark:dfr-bg-secondary tw-rounded-md tw-items-center tw-relative tw-pr-8 tw-border dfr-border-color-primary dark:dfr-border-color-primary"
+        className="tw-flex sm:tw-inline-flex tw-p-4 tw-bg-gray-100 dark:tw-bg-gray-700 tw-rounded-md tw-items-center tw-relative tw-pr-8 tw-border dfr-border-color-primary"
         href={url}
         variant={Link.variant.SIMPLE}
       >
-        <Icon icon={Icon.icon.GITHUB} wrapperClassName="tw-mr-3" size={32} />
+        <Icon icon={Icon.icon.GITHUB} wrapperClassName="tw-mr-3" size={32} withDarkModeBackground />
 
         <div className="tw-flex-1 tw-text-left">
           <TitlePrimitive
             is="h3"
-            className="tw-text-black tw-text-base sm:tw-text-lg"
+            className="tw-text-black dark:tw-text-white tw-text-base sm:tw-text-lg"
             variant={TitlePrimitive.variant.UNSTYLED}
           >
             {name}

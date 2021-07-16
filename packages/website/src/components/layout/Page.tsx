@@ -98,7 +98,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
         />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap"
           rel="stylesheet"
         />
 
@@ -131,7 +131,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
       </Head>
       {children}
       {isUserLoggedIn() && (
-        <span className="tw-fixed tw-top-1 tw-left-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white" />
+        <span className="tw-fixed tw-top-1 tw-right-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white" />
       )}
       {isDevelopmentEnvironment() && <WindowSize />}
       <script

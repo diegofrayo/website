@@ -33,19 +33,20 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 
   return (
     <div>
+      {parsedLyrics}
+      {parsedChords && parsedLyrics && <Space size={6} />}
       {parsedChords && (
-        <Blockquote className="tw-p-4 tw-border" variant={Blockquote.variant.UNSTYLED}>
-          <strong className="tw-block tw-mb-2">Acordes [{numberOfChords}]</strong>
+        <Blockquote
+          className="tw-p-4 tw-border tw-font-mono tw-text-base"
+          variant={Blockquote.variant.UNSTYLED}
+        >
+          <p className="tw-font-bold tw-mb-2">Acordes [{numberOfChords}]</p>
           <pre
             className="tw-break-all tw-max-w-full tw-whitespace-normal"
             dangerouslySetInnerHTML={{ __html: parsedChords }}
           />
         </Blockquote>
       )}
-
-      {parsedChords && parsedLyrics && <Space size={5} />}
-
-      {parsedLyrics}
 
       <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
         <div className="tw-bg-white dark:tw-bg-black tw-p-4 tw-rounded-md tw-w-96 tw-mx-auto tw-max-w-full">
