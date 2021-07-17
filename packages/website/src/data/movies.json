@@ -561,10 +561,18 @@
   },
   {
     "id": "81033361",
-    "title": "The Mess You Leave Behind ",
+    "title": "The Mess You Leave Behind",
     "type": "Serie",
     "source": "Netflix",
     "calification": 3,
     "categories": ["thriller"]
+  },
+  {
+    "id": "80117540",
+    "title": "Atypical",
+    "type": "Serie",
+    "source": "Netflix",
+    "calification": 4,
+    "categories": ["comedia"]
   }
 ]

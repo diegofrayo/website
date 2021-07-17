@@ -669,7 +669,7 @@
       "created_at": "10/05/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/2RognU2ViRdA6HxnpAITJl?si=61fc16da63e64997",
-      "youtube_url": "https://youtu.be/xJCMt00NQ1Q",
+      "youtube_url": "https://youtu.be/uzxeVzFrlq8",
       "sources": [
         {
           "text": "cómo tocar MARIPOSA TECKNICOLOR de FITO PÁEZ en guitarra tutorial",
@@ -1060,7 +1060,7 @@
       "artist": "Carlos Vives",
       "album": "Clásicos de la provincia",
       "year": 1993,
-      "progress": 1,
+      "progress": 3,
       "created_at": "04/06/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/4tXR895KKljrC2VptgyEhJ?si=118698d330524f4b",
@@ -1072,7 +1072,7 @@
           "source": "lacuerda"
         }
       ],
-      "chords": ["E", "Am", "G7", "C"]
+      "chords": ["E", "Am", "G7", "C", "E7"]
     },
     {
       "id": "hombros-de-gigantes",

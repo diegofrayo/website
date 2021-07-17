@@ -15,7 +15,14 @@ class MusicService {
     const listOfChords = songs.find((song) => !song.artist);
 
     return (listOfChords ? [listOfChords] : []).concat(
-      songs.filter((song) => !!song.artist).sort(sortBy([{ param: "title", order: "asc" }])),
+      songs
+        .filter((song) => !!song.artist)
+        .sort(
+          sortBy([
+            { param: "progress", order: "desc" },
+            { param: "title", order: "asc" },
+          ]),
+        ),
     );
   }
 
