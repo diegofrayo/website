@@ -5,6 +5,7 @@
 A
 A#
 A#m
+A6
 A7
 Am
 Am/F#
@@ -52,6 +53,7 @@ F#7
 F#dim7
 F#m
 F#m7
+F#madd11
 F#maj7
 F7
 Fadd9

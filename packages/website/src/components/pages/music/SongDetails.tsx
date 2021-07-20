@@ -51,6 +51,7 @@ function SongDetails({
           );
         })}
       </div>
+      <p className="tw-text-lg tw--mt-1">{song.country}</p>
       <div className="tw-flex tw-items-center tw-mt-1">
         <Link href={song.spotifyUrl} variant={Link.variant.SIMPLE} className="tw-mr-2">
           <Icon icon={Icon.icon.SPOTIFY} size={24} />

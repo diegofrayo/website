@@ -150,14 +150,14 @@ function Content(): T_ReactElement {
                         {source === "imdb" ? (
                           <Image
                             src="/static/images/misc/imdb.png"
-                            className="tw-w-6 tw-h-6 tw-rounded-full"
+                            className="tw-w-6 tw-h-6 tw-rounded-full tw-flex-shrink-0"
                             alt="imdb icon"
                           />
                         ) : source === "Amazon Prime Video" ? (
                           <Image
                             src="/static/images/misc/amazon-prime-video.png"
-                            className="tw-w-6 tw-h-6 tw-rounded-full"
-                            alt="imdb icon"
+                            className="tw-w-6 tw-h-6 tw-rounded-full tw-flex-shrink-0"
+                            alt="Amazon Prime Video icon"
                           />
                         ) : (
                           <Icon
@@ -167,7 +167,7 @@ function Content(): T_ReactElement {
                           />
                         )}
 
-                        <div className="tw-flex-1 tw-text-right tw-ml-4">
+                        <div className="tw-flex-1 tw-text-right">
                           <Title
                             is="h1"
                             variant={Title.variant.UNSTYLED}

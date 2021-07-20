@@ -126,12 +126,13 @@ export type T_Song = {
   artist: string | string[];
   album: string;
   year: number;
+  country: string;
   progress: number;
   spotifyUrl: string;
   youtubeUrl: string;
   createdAt: string;
   isPublished: boolean;
-  sources: { text: string; url: string; source: "youtube" | "lacuerda" | "url" }[];
+  sources: { score: number; text: string; url: string; source: "youtube" | "lacuerda" | "url" }[];
 };
 
 // --- Movies ---

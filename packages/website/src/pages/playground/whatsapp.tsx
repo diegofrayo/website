@@ -50,7 +50,7 @@ function Content(): T_ReactElement {
       <Link
         role="button"
         className="tw-self-end tw-flex"
-        href={`https://web.whatsapp.com/send?phone=57${phone}`}
+        href={`https://api.whatsapp.com/send?phone=57${phone}`}
         variant={Link.variant.SIMPLE}
         disabled={isInvalidPhone}
         id="btn"

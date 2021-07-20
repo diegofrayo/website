@@ -10,7 +10,7 @@ function ContactPage(): T_ReactElement {
   return (
     <Page
       config={{
-        description: "Contáctame a través de mi correo electrónico o sigueme en GitHub",
+        description: "Contáctame a través de mi correo electrónico o sígueme en GitHub",
         pathname: ROUTES.CONTACT,
       }}
     >
@@ -26,7 +26,19 @@ function ContactPage(): T_ReactElement {
         ]}
         title="💬 Contacto"
       >
-        <Content />
+        <div className="tw-mb-20">
+          <Item
+            href={WEBSITE_METADATA.social.github}
+            icon={<Icon icon={Icon.icon.GITHUB} size={32} withDarkModeBackground />}
+            text="/diegofrayo"
+          />
+          <Space size={2} />
+          <Item
+            href={`mailto:${WEBSITE_METADATA.email}`}
+            icon={<Icon icon={Icon.icon.GMAIL} size={32} />}
+            text="envíame un mensaje"
+          />
+        </div>
       </MainLayout>
     </Page>
   );
@@ -36,32 +48,13 @@ export default ContactPage;
 
 // --- Components ---
 
-function Content(): T_ReactElement {
+function Item({ href, icon, text }): T_ReactElement {
   return (
-    <div className="tw-mb-20">
-      <Link
-        href={WEBSITE_METADATA.social.github}
-        isNextLink={false}
-        variant={Link.variant.SIMPLE}
-        className="tw-block"
-      >
-        <div className="tw-flex tw-items-center">
-          <Icon icon={Icon.icon.GITHUB} size={32} withDarkModeBackground />
-          <span className="tw-ml-3 tw-font-bold">/diegofrayo</span>
-        </div>
-      </Link>
-      <Space size={2} />
-      <Link
-        href={`mailto:${WEBSITE_METADATA.email}`}
-        isNextLink={false}
-        variant={Link.variant.SIMPLE}
-        className="tw-block"
-      >
-        <div className="tw-flex tw-items-center">
-          <Icon icon={Icon.icon.GMAIL} size={32} />
-          <span className="tw-ml-3 tw-font-bold">envíame un mensaje</span>
-        </div>
-      </Link>
-    </div>
+    <Link href={href} variant={Link.variant.SIMPLE} className="tw-block">
+      <div className="tw-flex tw-items-center">
+        {icon}
+        <span className="tw-ml-3 tw-font-bold">{text}</span>
+      </div>
+    </Link>
   );
 }

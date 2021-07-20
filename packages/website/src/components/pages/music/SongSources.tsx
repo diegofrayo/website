@@ -84,7 +84,7 @@ function useController({ sources }: T_SongSourcesProps) {
   return {
     sources: sources.sort(
       sortBy([
-        { param: "source", order: "asc" },
+        { param: "score", order: "desc" },
         { param: "title", order: "asc" },
       ]),
     ),

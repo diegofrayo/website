@@ -84,7 +84,7 @@ function Content(): T_ReactElement {
                       <Title
                         is="h1"
                         variant={Title.variant.UNSTYLED}
-                        className="tw-leading-tight tw-text-black tw-uppercase tw-break-normal tw-mb-2"
+                        className="tw-leading-tight tw-text-black tw-uppercase tw-break-normal tw-mb-0.5"
                       >
                         {title}
                       </Title>

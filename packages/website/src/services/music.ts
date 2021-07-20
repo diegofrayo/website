@@ -9,7 +9,10 @@ class MusicService {
         return song.is_published;
       })
       .map((song) => {
-        return transformObjectKeysFromSnakeCaseToLowerCamelCase(song) as T_Song;
+        return transformObjectKeysFromSnakeCaseToLowerCamelCase({
+          ...song,
+          chords: song.chords.sort(),
+        }) as T_Song;
       });
 
     const listOfChords = songs.find((song) => !song.artist);

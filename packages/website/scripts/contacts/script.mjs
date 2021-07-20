@@ -17,7 +17,7 @@ Object.entries(CONTACTS).forEach(([group, contacts]) => {
         ? `[LLAMAR](tel:${contact.phone.split(" ")[1]})`
         : "";
       const whatsapp = contact.phone
-        ? `[WHATSAPP](https://web.whatsapp.com/send?phone=${contact.phone.replace(" ", "")})`
+        ? `[WHATSAPP](https://api.whatsapp.com/send?phone=${contact.phone.replace(" ", "")})`
         : "";
       const instagram = contact.instagram
         ? `[INSTAGRAM](https://instagram.com/${contact.instagram})`
@@ -42,7 +42,7 @@ BUSINESS.data
   .forEach((business) => {
     const phone = business.phone ? `[llamar](tel:${business.phone.split(" ")[1]})` : "";
     const whatsapp = business.phone
-      ? `[wp](https://web.whatsapp.com/send?phone=${business.phone.replace(" ", "")})`
+      ? `[wp](https://api.whatsapp.com/send?phone=${business.phone.replace(" ", "")})`
       : "";
     const instagram = business.instagram
       ? `[@${business.instagram}](https://instagram.com/${business.instagram})`
