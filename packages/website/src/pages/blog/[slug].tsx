@@ -152,19 +152,17 @@ function BlogPostFooter({
         <BlogPostFooterItem>
           <BlogPostFooterItem.Icon icon={Icon.icon.CALENDAR} />
           <p>
-            <span className="tw-mr-2">{SiteTexts.page.current_locale.published_at}</span>
+            <span className="tw-mr-1">{SiteTexts.page.current_locale.published_at}</span>
             <strong>{formatDate(publishedAt)}</strong>
           </p>
         </BlogPostFooterItem>
         <BlogPostFooterItem>
           <BlogPostFooterItem.Icon icon={Icon.icon.EDIT} />
           <p>
-            <span className="tw-mr-2">{SiteTexts.page.current_locale.updated_at}</span>
+            <span className="tw-mr-1">{SiteTexts.page.current_locale.updated_at}</span>
             <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
           </p>
         </BlogPostFooterItem>
-      </div>
-      <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col sm:tw-items-end tw-mt-2 sm:tw-mt-0">
         <BlogPostFooterItem
           is={Button}
           data-clipboard-text={`${WEBSITE_METADATA.url}${ROUTES.BLOG}/${slug}`}
@@ -173,6 +171,8 @@ function BlogPostFooter({
           <BlogPostFooterItem.Icon icon={Icon.icon.LINK} />
           <span>{SiteTexts.page.current_locale.copy_url_to_clipboard}</span>
         </BlogPostFooterItem>
+      </div>
+      <div className="tw-hidden tw-w-full sm:tw-w-1/2 tw-items-start tw-justify-center tw-flex-col sm:tw-items-end tw-mt-2 sm:tw-mt-0">
         <BlogPostFooterItem
           is={Link}
           href={generateBlogPostRawContentLink()}

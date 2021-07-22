@@ -3,6 +3,10 @@
     "music_notes": "4,2,1|3,2,2|2,2,3",
     "played_strings": "x,0,1,1,1,0"
   },
+  "A/G": {
+    "music_notes": "4,2,1|3,2,2|2,2,3|6,3,4",
+    "played_strings": "1,0,1,1,1,0"
+  },
   "A#": {
     "music_notes": "6x,1|4,3,1|3,3,2|2,3,3",
     "played_strings": "x,0,1,1,1,0"
@@ -121,6 +125,10 @@
   "Dm": {
     "music_notes": "1,1,1|3,2,2|2,3,3",
     "played_strings": "0,0,0,1,1,1"
+  },
+  "Dm6": {
+    "music_notes": "3,2,2|1,1,1",
+    "played_strings": "0,0,0,1,0,1"
   },
   "Dm7": {
     "music_notes": "2,1,1|1,1,2|3,2,3",

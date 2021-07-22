@@ -82,7 +82,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           rel="icon"
           href={`/static/images/favicon/favicon${
             isDevelopmentEnvironment(WEBSITE_METADATA.url) ? "-dev" : ""
-          }.ico?v=1`}
+          }.ico?v=2`}
         />
         <link
           rel="alternate"

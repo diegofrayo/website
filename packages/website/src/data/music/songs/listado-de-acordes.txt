@@ -5,6 +5,7 @@
 A
 A#
 A#m
+A/G
 A6
 A7
 Am
@@ -35,6 +36,7 @@ Cmaj7
 D
 D/F#
 Dm
+Dm6
 Dm7
 Dsus
 

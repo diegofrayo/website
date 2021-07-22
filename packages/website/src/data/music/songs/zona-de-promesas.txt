@@ -1,68 +1,71 @@
-G      D/F#   G
+G      D      G
   Mama sabe bien
-     D/F#     C   D/F#  C  D/F#
-  perdí una bata--lla
-G        D/F#  G
+     D        C    D     C  D
+  perdí una bata...lla
+G        D    G
   quiero regresar
-  D/F#     C  D/F#  C  D/F#
+  D        C  D     C  D
   solo a besarla
 
 
-Am        Fadd9      Fmaj7/F#
-  No está mal ser mi dueño otra vez
-Am     B7             Em       D/F#    A
+Am        Fmaj7|Fadd9   Fmaj7|Fmaj7/F#
+  No está mal ser mi    dueño otra vez
+Am     B7             Em       D       A
   ni temer que el río sangre y calme
-     C7       B7     Em     D/F#
+     C7       B7     Em     D
   al contarle mis plegarias
 
 
-G   Cadd9   G   Cadd9   Em7   D   Fadd9
+  G   Cadd9   G   Cadd9   Em7   D   Fmaj7|Fadd9
 
 
-G    Cadd9    G
+  G     Cadd9 G
   Tarda en llegar
-Cadd9    Em7       D
+  Cadd9  Em7       D
   y al final, al final
-   Fadd9   G
-  hay recompensa
+  Fmaj7|Fadd9   G
+  hay      recompensa
 
 
-G   D/F#   G   D/F#   C   D/F#   C   D/F#
+  G D   G D   C D   C D
 
 
-G      D/F#   G
+G      D      G
   Mama sabe bien
-    D/F#     C  D/F#  C  D/F#
+    D        C  D     C  D
   pequeña princesa
-G        D/F# G
+G        D    G
   cuando regresé,
-D/F#      C D/F#  C  D/F#
+D         C D     C  D
   todo quemaba
 
-  Am      Fadd9    Fmaj7/F#
-  no esta mal sumergirme otra vez
-Am     B7             Em       D/F#    A
+
+Am        Fmaj7|Fadd9   Fmaj7|Fmaj7/F#
+  no está mal      sumergirme otra vez
+Am     B7             Em       D       A
   ni temer que el río sangre y calme
-     C7    B7    Em     D/F#
+     C7     B7   Em     D
   se bucear en silencio
 
 
-G   Cadd9   G   Cadd9   Em7   D   Fadd9
+  G   Cadd9   G   Cadd9   Em7   D   Fmaj7|Fadd9
 
 
-G    Cadd9    G
+  G     Cadd9 G
   Tarda en llegar
-Cadd9    Em7       D
+  Cadd9  Em7       D
   y al final, al final
-   Fadd9   G  Cadd9   G   Cadd9   Em7   D   Fadd9
-  hay recompensa   (x2)
+  Fmaj7|Fadd9   G
+  hay      recompensa
+  Cadd9   Em7   D   Fadd9   (x2)
 
-G    Cadd9    G
+  G     Cadd9 G
   Tarda en llegar
-Cadd9    Em7       D
+  Cadd9  Em7       D
   y al final, al final
-   Fadd9   G  Cadd9   G   Cadd9   Em7
-  hay recompensa
+  Fmaj7|Fadd9   G
+  hay      recompensa
+  Cadd9   G   Cadd9   Em7
 
-        D    Fadd9   G
-  En la zona de promesas
+        D    Fmaj7|Fadd9   G
+  En la zona de       promesas

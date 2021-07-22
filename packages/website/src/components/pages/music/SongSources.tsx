@@ -2,7 +2,6 @@ import React from "react";
 
 import { Icon, Image, Link, List, Title } from "~/components/primitive";
 import { T_ReactElement, T_Song } from "~/types";
-import { sortBy } from "~/utils/misc";
 
 type T_SongSourcesProps = {
   sources: T_Song["sources"];
@@ -82,12 +81,7 @@ function useController({ sources }: T_SongSourcesProps) {
   }
 
   return {
-    sources: sources.sort(
-      sortBy([
-        { param: "score", order: "desc" },
-        { param: "title", order: "asc" },
-      ]),
-    ),
+    sources,
     getImageComponent,
   };
 }

@@ -1,9 +1,4 @@
-Solo
-43 52 43 | 63 42 74 63 | 43 63 73 74 54 53 43
-
-
-
-INTRO: G / D   (x4)
+INTRO: G D   (x4)
 
 
 G                        D      G   D
@@ -44,8 +39,7 @@ C                                G   D   G   D
    soy un hombre que espera el alba
 
 
-
-SOLO: Em   A   D   Cadd9   G
+SOLO: Em A D Cadd9 G
 
 
 G                  D
@@ -67,5 +61,4 @@ C                                G   D   G   D
    soy un hombre que espera el alma
 
 
-
-SOLO: Em   A   D   Cadd9   G
+SOLO: Em A D Cadd9 G

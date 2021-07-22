@@ -263,7 +263,7 @@
           "source": "instagram"
         }
       ],
-      "chords": ["A", "Bm", "D"]
+      "chords": ["A", "Asus2", "Bm", "D"]
     },
     {
       "id": "talk-is-cheap",
@@ -592,6 +592,28 @@
       "chords": ["A", "Bm", "D", "Em", "F#m", "G/D"]
     },
     {
+      "id": "cuando-pase-el-temblor",
+      "title": "Cuando pase el temblor",
+      "artist": "Soda Stereo",
+      "album": "Nada personal",
+      "year": 1995,
+      "country": "🇦🇷",
+      "progress": 3,
+      "created_at": "01/07/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/3uMYq07Kj5m564OQwdSCrD?si=c7ce8615c2c74e26",
+      "youtube_url": "https://youtu.be/OH4OSdTa7Pg",
+      "sources": [
+        {
+          "score": 1,
+          "text": "Cuando pase el temblor",
+          "url": "https://acordes.lacuerda.net/soda_stereo/cuando_pase_el_temblor-6.shtml",
+          "source": "lacuerda"
+        }
+      ],
+      "chords": ["A#", "Am", "B7", "C", "Dm", "Em", "F", "G", "Gm"]
+    },
+    {
       "id": "el-tesoro-de-los-inocentes",
       "title": "El tesoro de los inocentes",
       "artist": "Indio Solari y los Fundamentalistas del Aire Acondicionado",
@@ -652,6 +674,34 @@
         }
       ],
       "chords": ["A#m", "Am7", "Em7", "Fmaj7", "Gm"]
+    },
+    {
+      "id": "hasta-la-raiz",
+      "title": "Hasta la raíz",
+      "artist": "Natalia Lafourcade",
+      "album": "Hasta la raíz",
+      "year": 2015,
+      "country": "🇲🇽",
+      "progress": 3,
+      "created_at": "22/06/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/692C4fgt86NVLGwKXe4KCs?si=177dc09b39ee4aee",
+      "youtube_url": "https://youtu.be/IKmPci5VXz0",
+      "sources": [
+        {
+          "score": 2,
+          "text": "Como tocar Hasta La Raiz NATALIA LAFOURCADE | Guitarra Tutorial FACIL Christianvib",
+          "url": "https://youtu.be/_hFFRDKvUVc",
+          "source": "youtube"
+        },
+        {
+          "score": 1,
+          "text": "Hasta la raíz",
+          "url": "https://acordes.lacuerda.net/natalia_lafourcade/hasta_la_raiz-3.shtml",
+          "source": "lacuerda"
+        }
+      ],
+      "chords": ["Bm", "D", "Em", "F#m", "Fm", "G"]
     },
     {
       "id": "la-espera",
@@ -775,7 +825,7 @@
           "source": "lacuerda"
         }
       ],
-      "chords": ["Am", "Am/G", "Cadd9", "Dm7", "Em7", "F", "G", "G"]
+      "chords": ["Am", "Am/G", "Cadd9", "Dm7", "Em7", "F", "G"]
     },
     {
       "id": "par-mil",
@@ -860,6 +910,40 @@
         }
       ],
       "chords": ["A6", "A7", "B", "Bm", "Bm7", "C#", "E7", "Em", "Em7", "G", "G#m"]
+    },
+    {
+      "id": "quedandote-o-yendote",
+      "title": "Quedándote o yéndote",
+      "artist": "Luis Alberto Spinetta",
+      "album": "Elija y Gane",
+      "year": 1999,
+      "country": "🇦🇷",
+      "progress": 3,
+      "created_at": "21/07/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/5gUxsVRhWljyJz7pYakRL4?si=8ceb2da535324c1d",
+      "youtube_url": "https://youtu.be/Jqi2rk5l0-k",
+      "sources": [
+        {
+          "score": 3,
+          "text": "Quedándote o Yéndote",
+          "url": "https://acordes.lacuerda.net/luis_a_spinetta/quedandote_o_yendote-2.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "score": 2,
+          "text": "Quedandote o yendote",
+          "url": "https://youtu.be/hCP49EN9gNE",
+          "source": "youtube"
+        },
+        {
+          "score": 1,
+          "text": "Quedándote o Yéndote- Spinetta (Cover Luna Esandi)",
+          "url": "https://youtu.be/b9yCxAjr99s",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["A", "B", "C#m", "D", "Dm6", "E", "Em7", "F", "F#m", "G"]
     },
     {
       "id": "rezo-por-vos",
@@ -988,6 +1072,75 @@
       "chords": ["A", "D", "G"]
     },
     {
+      "id": "zamba-de-mi-esperanza",
+      "title": "Zamba de mi esperanza",
+      "artist": "Los visconti",
+      "album": "Éxitos de los Visconti",
+      "year": 1964,
+      "country": "🇦🇷",
+      "progress": 3,
+      "created_at": "21/07/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/3Zb75jF6ClmT4qiQoCX03F?si=1323af7a7f694a05",
+      "youtube_url": "https://youtu.be/HX0NP-whJ58",
+      "sources": [
+        {
+          "score": 3,
+          "text": "Zamba de mi esperanza",
+          "url": "https://acordes.lacuerda.net/chalchaleros/zamba_de_mi_esperanza.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "score": 2,
+          "text": "Zamba de mi esperanza - Tutorial Guitarra",
+          "url": "https://youtu.be/YC9b4hq8Zag",
+          "source": "youtube"
+        },
+        {
+          "score": 1,
+          "text": "Zamba de mi esperanza - Los Chalchaleros Tutorial/Cover Guitarra",
+          "url": "https://youtu.be/iJuDJ7pL750",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["A", "B7", "E", "E7"]
+    },
+    {
+      "id": "zona-de-promesas",
+      "title": "Zona de promesas",
+      "artist": "Soda Stereo",
+      "album": "Zona de promesas",
+      "year": 1993,
+      "country": "🇦🇷",
+      "progress": 3,
+      "created_at": "26/06/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/2EGq3O7pchSqjQ6gx82byi?si=65bf8df73d4249fa",
+      "youtube_url": "https://youtu.be/tPOkA5H1DfY",
+      "sources": [
+        {
+          "score": 1,
+          "text": "Zona de Promesas SODA STEREO Cover | Tutorial Guitarra Demo Christianvib",
+          "url": "https://youtu.be/UiJt0bA8jmE",
+          "source": "youtube"
+        }
+      ],
+      "chords": [
+        "A",
+        "Am",
+        "B7",
+        "C7",
+        "Cadd9",
+        "D",
+        "Em",
+        "Em7",
+        "Fadd9",
+        "Fmaj7",
+        "Fmaj7/F#",
+        "G"
+      ]
+    },
+    {
       "id": "5-minutos",
       "title": "5 minutos",
       "artist": "Naldo",
@@ -1062,56 +1215,6 @@
         "G#",
         "G#m"
       ]
-    },
-    {
-      "id": "cuando-pase-el-temblor",
-      "title": "Cuando pase el temblor",
-      "artist": "Soda Stereo",
-      "album": "Nada personal",
-      "year": 1995,
-      "country": "🇦🇷",
-      "progress": 1,
-      "created_at": "01/07/2021",
-      "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/3uMYq07Kj5m564OQwdSCrD?si=c7ce8615c2c74e26",
-      "youtube_url": "https://youtu.be/OH4OSdTa7Pg",
-      "sources": [
-        {
-          "score": 1,
-          "text": "Cuando pase el temblor",
-          "url": "https://acordes.lacuerda.net/soda_stereo/cuando_pase_el_temblor-6.shtml",
-          "source": "lacuerda"
-        }
-      ],
-      "chords": ["A#", "Am", "B7", "C", "Dm", "Em", "F", "G", "Gm"]
-    },
-    {
-      "id": "hasta-la-raiz",
-      "title": "Hasta la raíz",
-      "artist": "Natalia Lafourcade",
-      "album": "Hasta la raíz",
-      "year": 2015,
-      "country": "🇲🇽",
-      "progress": 1,
-      "created_at": "22/06/2021",
-      "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/692C4fgt86NVLGwKXe4KCs?si=177dc09b39ee4aee",
-      "youtube_url": "https://youtu.be/IKmPci5VXz0",
-      "sources": [
-        {
-          "score": 2,
-          "text": "Como tocar Hasta La Raiz NATALIA LAFOURCADE | Guitarra Tutorial FACIL Christianvib",
-          "url": "https://youtu.be/_hFFRDKvUVc",
-          "source": "youtube"
-        },
-        {
-          "score": 1,
-          "text": "Hasta la raíz",
-          "url": "https://acordes.lacuerda.net/natalia_lafourcade/hasta_la_raiz-3.shtml",
-          "source": "lacuerda"
-        }
-      ],
-      "chords": ["Bm", "D", "Em", "F#m", "Fm", "G"]
     },
     {
       "id": "hongos",
@@ -1220,34 +1323,6 @@
       "chords": ["A", "A#", "Am7", "Bm", "C", "D", "G"]
     },
     {
-      "id": "quedandote-o-yendote",
-      "title": "Quedándote o yéndote",
-      "artist": "Luis Alberto Spinetta",
-      "album": "Elija y Gane",
-      "year": 1999,
-      "country": "🇦🇷",
-      "progress": 1,
-      "created_at": "04/07/2021",
-      "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/5gUxsVRhWljyJz7pYakRL4?si=8ceb2da535324c1d",
-      "youtube_url": "https://youtu.be/Jqi2rk5l0-k",
-      "sources": [
-        {
-          "score": 2,
-          "text": "Quedándote o Yéndote",
-          "url": "https://acordes.lacuerda.net/luis_a_spinetta/quedandote_o_yendote-2.shtml",
-          "source": "lacuerda"
-        },
-        {
-          "score": 1,
-          "text": "Quedándote o Yéndote- Spinetta (Cover Luna Esandi)",
-          "url": "https://youtu.be/b9yCxAjr99s",
-          "source": "youtube"
-        }
-      ],
-      "chords": []
-    },
-    {
       "id": "veo-chiquito",
       "title": "Veo chiquito",
       "artist": "Perotá Chingó",
@@ -1280,90 +1355,6 @@
         }
       ],
       "chords": ["C#m", "E", "F#m", "G#m"]
-    },
-    {
-      "id": "zamba-de-mi-esperanza",
-      "title": "Zamba de mi esperanza",
-      "artist": "Los visconti",
-      "album": "Éxitos de los Visconti",
-      "year": 1964,
-      "country": "🇦🇷",
-      "progress": 1,
-      "created_at": "04/07/2021",
-      "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/3Zb75jF6ClmT4qiQoCX03F?si=1323af7a7f694a05",
-      "youtube_url": "https://youtu.be/HX0NP-whJ58",
-      "sources": [
-        {
-          "score": 3,
-          "text": "Zamba de mi esperanza - Tutorial Guitarra",
-          "url": "https://youtu.be/YC9b4hq8Zag",
-          "source": "youtube"
-        },
-        {
-          "score": 2,
-          "text": "Zamba de mi esperanza",
-          "url": "https://acordes.lacuerda.net/chalchaleros/zamba_de_mi_esperanza.shtml",
-          "source": "lacuerda"
-        },
-        {
-          "score": 1,
-          "text": "Zamba de mi esperanza - Los Chalchaleros Tutorial/Cover Guitarra",
-          "url": "https://youtu.be/iJuDJ7pL750",
-          "source": "youtube"
-        }
-      ],
-      "chords": []
-    },
-    {
-      "id": "zona-de-promesas",
-      "title": "Zona de promesas",
-      "artist": "Soda Stereo",
-      "album": "Zona de promesas",
-      "year": 1993,
-      "country": "🇦🇷",
-      "progress": 1,
-      "created_at": "26/06/2021",
-      "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/2EGq3O7pchSqjQ6gx82byi?si=65bf8df73d4249fa",
-      "youtube_url": "https://youtu.be/tPOkA5H1DfY",
-      "sources": [
-        {
-          "score": 1,
-          "text": "Zona de Promesas SODA STEREO Cover | Tutorial Guitarra Demo Christianvib",
-          "url": "https://youtu.be/UiJt0bA8jmE",
-          "source": "youtube"
-        }
-      ],
-      "chords": ["A", "Am", "B7", "C7", "Cadd9", "D", "D/F#", "Em", "Em7", "Fadd9", "Fmaj7/F#", "G"]
-    },
-    {
-      "id": "",
-      "title": "",
-      "artist": "",
-      "album": "",
-      "year": 2000,
-      "country": "🇦🇷",
-      "progress": 1,
-      "created_at": "22/07/2021",
-      "is_published": true,
-      "spotify_url": "",
-      "youtube_url": "https://youtu.be/",
-      "sources": [
-        {
-          "score": 0,
-          "text": "",
-          "url": "",
-          "source": "lacuerda"
-        },
-        {
-          "score": 0,
-          "text": "",
-          "url": "",
-          "source": "youtube"
-        }
-      ],
-      "chords": []
     }
   ]
 }

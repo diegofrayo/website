@@ -12,6 +12,12 @@ class MusicService {
         return transformObjectKeysFromSnakeCaseToLowerCamelCase({
           ...song,
           chords: song.chords.sort(),
+          sources: song.sources.sort(
+            sortBy([
+              { param: "score", order: "desc" },
+              { param: "title", order: "asc" },
+            ]),
+          ),
         }) as T_Song;
       });
 

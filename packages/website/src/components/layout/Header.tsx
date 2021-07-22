@@ -20,7 +20,7 @@ function DefaultHeader(): T_ReactElement {
 
     if (scrollPosition > headerRef.current.offsetHeight) {
       setIsFixedHeader(true);
-    } else if (scrollPosition <= 0) {
+    } else if (isHeaderFixed && scrollPosition <= headerRef.current.offsetHeight) {
       setIsFixedHeader(false);
     }
   });
@@ -28,8 +28,8 @@ function DefaultHeader(): T_ReactElement {
   return (
     <header
       className={classNames(
-        "root",
-        isHeaderFixed ? "root--fixed tw-h-32" : "tw-bg-blue-500 dark:tw-bg-black tw-text-center",
+        "root tw-h-96",
+        isHeaderFixed ? "root--fixed" : "tw-bg-blue-500 dark:tw-bg-black tw-text-center",
       )}
       ref={headerRef}
     >
