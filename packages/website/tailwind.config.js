@@ -6,9 +6,9 @@ module.exports = {
   important: false,
   plugins: [plugin(myCustomClassesPlugin)],
   purge: {
-    content: ["./src/**/*.tsx", "./src/**/*.ts"],
+    content: ["./src/**/*.{js,jsx,ts,tsx}"],
     options: {
-      safelist: [/^(sm:|md:|lg:|xl:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/, /dfr-/],
+      safelist: [/^(sm:|md:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/, /dfr-/],
     },
   },
   theme: {
@@ -18,9 +18,6 @@ module.exports = {
 
       md: "768px",
       // => @media (min-width: 768px) { ... }
-
-      lg: "1024px",
-      // => @media (min-width: 1024px) { ... }
     },
     extend: {
       borderRadius: {

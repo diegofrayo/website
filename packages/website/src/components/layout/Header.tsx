@@ -35,7 +35,7 @@ function DefaultHeader(): T_ReactElement {
     >
       {isHeaderFixed ? (
         <div className="tw-w-full tw-fixed tw-left-0 tw-top-0 tw-z-30 tw-shadow-sm dark:tw-shadow-none dark:tw-border-b dark:tw-border-gray-700">
-          <div className="tw-max-w-screen-lg tw-mx-auto tw-py-4 tw-px-6">
+          <div className="tw-max-w-screen-md tw-mx-auto tw-py-4 tw-px-6">
             <DefaultHeaderContent isHeaderFixed={isHeaderFixed} />
           </div>
         </div>
