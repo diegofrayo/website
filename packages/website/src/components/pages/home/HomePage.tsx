@@ -70,14 +70,15 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
               href={item.url}
               variant={Link.variant.SIMPLE}
               className={classNames(
-                "tw-block tw-bg-blue-200 dark:tw-bg-gray-700 tw-p-3 tw-border-blue-700 dark:tw-border-gray-500 tw-border-b-4 tw-text-right",
+                "tw-flex tw-justify-center tw-items-center tw-bg-blue-100 dark:tw-bg-gray-700 tw-p-3 tw-border-blue-700 dark:tw-border-gray-500 tw-border-b-4 tw-text-right",
                 index % 2 === 0
                   ? "tw-rounded-tl-md tw-rounded-br-md"
                   : "tw-rounded-bl-md tw-rounded-tr-md",
               )}
               isNextLink
             >
-              <strong>{item.label}</strong>
+              <Emoji className="tw-w-6 tw-inline-block tw-mr-1">{item.emoji}</Emoji>
+              <strong className="tw-flex-1 tw-text-center">{item.label}</strong>
               <Emoji className="tw-w-6 tw-inline-block tw-ml-1">{item.emoji}</Emoji>
             </Link>
           </List.Item>

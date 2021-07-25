@@ -1,19 +1,19 @@
-INTRO: A Asus A / E Esus E / D Dsus D / E Esus E   (x1)
+INTRO: A Asus A / E Esus E / D Dsus4 D / E Esus E   (x1)
 
 
-A        Asus A
-Hoy tu polle..ra
-E       Esus E
-gira al vien..to
-D         Dsus  D  E   Esus E
-quiero verte    bailar
+A        Asus  A
+Hoy tu polle...ra
+E       Esus   E
+gira al vien...to
+D         Dsus4    D  E   Esus E
+quiero verte       bailar
 
-A        Asus A
-entre la gen..te
-E        Esus E
-entre la gen..te
-D         Dsus  D  E   Esus E
-quiero verte    bailar
+A        Asus  A
+entre la gen...te
+E        Esus  E
+entre la gen...te
+D         Dsus4    D  E   Esus E
+quiero verte       bailar
 
 
      Bm       A
@@ -24,23 +24,23 @@ si me puedes contestar
 son tantos tus sueños
              C
 que ves el cielo
-D             Dsus D  E   Esus E
+D           Dsus4  D  E   Esus E
 mientras te veo    bailar
 
 
 A         Asus A
 hoy tu sonri...sa
-    E       Esus E
+  E         Esus E
 es limpia y gi...ra
-D          Dsus D  E   Esus E
-quiero verte    bailar
+D         Dsus4    D  E   Esus E
+quiero verte       bailar
 
-A        Asus A
-entre la gen..te
-E        Esus E
-entre la gen..te
-D         Dsus  D  E   Esus E
-quiero verte    bailar
+A        Asus  A
+entre la gen...te
+E        Esus  E
+entre la gen...te
+D         Dsus4    D  E   Esus E
+quiero verte       bailar
 
 
      Bm       A
@@ -51,5 +51,5 @@ si me puedes contestar
 son tantos tus sueños
              C
 que ves el cielo
-D             Dsus D  E   Esus E
+D           Dsus4  D  E   Esus E
 mientras te veo    bailar

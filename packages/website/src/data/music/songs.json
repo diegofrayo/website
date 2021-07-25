@@ -223,7 +223,7 @@
           "source": "youtube"
         }
       ],
-      "chords": ["A", "Asus", "Bm", "C", "D", "Dsus", "E", "Esus"]
+      "chords": ["A", "Asus", "Bm", "C", "D", "Dsus4", "E", "Esus"]
     },
     {
       "id": "rie-chinito",
@@ -590,6 +590,40 @@
         }
       ],
       "chords": ["A", "Bm", "D", "Em", "F#m", "G/D"]
+    },
+    {
+      "id": "cancion-para-mi-muerte",
+      "title": "Canción para mi muerte",
+      "artist": "Sui Generis",
+      "album": "Vida",
+      "year": 1972,
+      "country": "🇦🇷",
+      "progress": 3,
+      "created_at": "22/07/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/0LWO6hUTJz6KBrSA2iJOpH?autoplay=true",
+      "youtube_url": "https://youtu.be/NAtB8AOpZIY",
+      "sources": [
+        {
+          "score": 3,
+          "text": "Cancion para mi muerte",
+          "url": "https://acordes.lacuerda.net/charly_garcia/cancion_para_mi_muerte.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "score": 2,
+          "text": "Como tocar Cancion Para mi Muerte - Sui Generis",
+          "url": "https://youtu.be/LPgjbAkvCZs",
+          "source": "youtube"
+        },
+        {
+          "score": 1,
+          "text": "Como tocar Cancion para mi muerte de Sui generis en Guitarra acustica CLASE TUTORIAL",
+          "url": "https://youtu.be/tqurvSUyl28",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["Am7", "Bm", "Cadd9", "D", "D#", "D7", "Dsus4", "Em", "Fadd9", "G"]
     },
     {
       "id": "cuando-pase-el-temblor",

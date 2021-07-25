@@ -53,6 +53,10 @@ export function isUserLoggedIn(): boolean {
   return isLoggedIn;
 }
 
+export function between(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 export function sortBy(
   params?: { param: string; order?: "asc" | "desc" }[],
   order?: "asc" | "desc",

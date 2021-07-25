@@ -24,7 +24,6 @@
     { "name": "Julian Aguirre", "phone": "+57 3206348754", "group": "Amigos y conocidos" },
     { "name": "Leonador (Tecnico Gas)", "phone": "+57 3207273376", "group": "Amigos y conocidos" },
     { "name": "Luis (HB)", "phone": "+57 3012509403", "group": "Amigos y conocidos" },
-    { "name": "Margareth", "phone": "+57 3166807856", "group": "Amigos y conocidos" },
     { "name": "Maria Camila", "phone": "+57 3005184854", "group": "Amigos y conocidos" },
     { "name": "Mauricio (HB)", "phone": "+57 3205812649", "group": "Amigos y conocidos" },
     { "name": "Monín", "phone": "+57 3163913650", "group": "Amigos y conocidos" },
@@ -294,6 +293,12 @@
       "name": "Sara (Arequipa, Perú)",
       "phone": "",
       "instagram": "sarajazgar",
+      "group": "Extranjeros"
+    },
+    {
+      "name": "Steph (Perú, Cajamarca)",
+      "phone": "+51 976578273",
+      "instagram": "",
       "group": "Extranjeros"
     }
   ]

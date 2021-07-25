@@ -1,44 +1,50 @@
 INTRO: Am G F Em   (x2)
 
 
-Am  G                    F
+Am  G                     F
 Yo, caminaré entre las piedras
 Em                      C
 hasta sentir el temblor
-F         C       Gm
+F        C                Gm
   en mis piernas
            C              Gm
 a veces tengo temor (lo sé)
            D
 a veces vergüenza
 
+
 F  B7
 Oh oh
 
 
 Am     G                      F
-Estoy, sentado en un cráter desierto
+estoy, sentado en un cráter desierto
 Em                         C
 sigo aguardando el temblor
 F         C     Gm
   en mi cuerpo
         C                 Gm
 nadie me vio partir (lo sé),
-            D
+          D
 nadie me espera
 
+
 F  B7
-Oh oh.
+Oh oh
 
 
-Em            B7
-Hay una grieta en mi corazón
-Em        B7
-un planeta con desilusión
+Em              B7
+hay una grieta      en mi corazón
+Em              B7
+un planeta          con desilusión
+
+
+F  B7
+Oh oh
 
 
 Am  G                           F
-Sé, que te encontraré en esas ruinas
+sé, que te encontraré en esas ruinas
 Em                    C
 ya no tendremos que hablar
 F        C      Gm
@@ -48,14 +54,15 @@ te besaré en el temblor (lo sé)
         D
 será un buen momento
 
+
 F  B7
 Oh oh
 
 
-Em            B7
-Hay una grieta en mi corazón
-Em         B7
-un planeta con desilusión
+Em              B7
+hay una grieta      en mi corazón
+Em              B7
+un planeta          con desilusión
 
 
 Am         G        F
@@ -64,7 +71,7 @@ Em
 Oh oh oh oh oh oh oh
 
 
-         C
+          C
 el temblor
            Dm
 (Despierta-me)
@@ -74,5 +81,5 @@ C          Dm                    A#
 (Despierta-me) cuando pase el temblor
 C          Dm                    A#
 (Despierta-me) cuando pase el temblor
-C             Dm
+C          Dm
 Despierta-me

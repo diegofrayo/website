@@ -181,7 +181,7 @@
     "type": "Película",
     "source": "Netflix",
     "calification": 3,
-    "categories": ["terror"]
+    "categories": ["terror", "suspenso"]
   },
   {
     "id": "81211991",
@@ -572,7 +572,15 @@
     "title": "Atypical",
     "type": "Serie",
     "source": "Netflix",
-    "calification": 4,
+    "calification": 5,
     "categories": ["comedia"]
+  },
+  {
+    "id": "tt6644200",
+    "title": "A Quiet Place",
+    "type": "Película",
+    "source": "Amazon Prime Video",
+    "calification": 3,
+    "categories": ["terror", "suspenso"]
   }
 ]

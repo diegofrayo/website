@@ -34,11 +34,13 @@ Cadd9
 Cmaj7
 
 D
+D#
 D/F#
+D7
 Dm
 Dm6
 Dm7
-Dsus
+Dsus4
 
 E
 E7
