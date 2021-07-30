@@ -1,0 +1,93 @@
+{
+  "categories": [{ "id": "tech", "value": "tech" }],
+  "posts": {
+    "publishing-a-npm-private-package-to-github-packages-using-github-actions": {
+      "config": {
+        "slug": "publishing-a-npm-private-package-to-github-packages-using-github-actions",
+        "categories": ["tech"],
+        "locales": ["es"],
+        "created_at": "2021-03-19",
+        "published_at": "2021-03-19",
+        "updated_at": "2021-03-19",
+        "is_legacy": false,
+        "is_published": true
+      },
+      "es": {
+        "title": "Publicando un paquete privado de npm a GitHub Packages usando GitHub Actions",
+        "description": ""
+      },
+      "en": {
+        "title": "",
+        "description": ""
+      },
+      "assets": {}
+    },
+    "html-semantic-tags": {
+      "config": {
+        "slug": "html-semantic-tags",
+        "categories": ["tech"],
+        "locales": ["es"],
+        "created_at": "2021-01-12",
+        "published_at": "2021-01-19",
+        "updated_at": "2021-01-19",
+        "is_legacy": false,
+        "is_published": false
+      },
+      "es": {
+        "title": "HTML semantic tags 🤔",
+        "description": ""
+      },
+      "en": {
+        "title": "",
+        "description": ""
+      },
+      "assets": {}
+    },
+    "my-favorite-music-and-mdx": {
+      "config": {
+        "slug": "my-favorite-music-and-mdx",
+        "categories": ["tech"],
+        "locales": ["es"],
+        "created_at": "2020-11-28",
+        "published_at": "2020-12-03",
+        "updated_at": "2021-04-13",
+        "is_legacy": false,
+        "is_published": true
+      },
+      "es": {
+        "title": "Mi música favorita y MDX",
+        "description": "MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS"
+      },
+      "en": {
+        "title": "My favorite music and MDX",
+        "description": "MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify."
+      },
+      "assets": {}
+    },
+    "conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy": {
+      "config": {
+        "slug": "conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy",
+        "categories": ["tech"],
+        "locales": ["es"],
+        "created_at": "2018-01-01",
+        "published_at": "2020-12-30",
+        "updated_at": "2018-06-17",
+        "is_legacy": true,
+        "is_published": true
+      },
+      "es": {
+        "title": "Conectando un proyecto de Firebase con un dominio de Go Daddy",
+        "description": "En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase."
+      },
+      "en": {
+        "title": "",
+        "description": ""
+      },
+      "assets": {
+        "image_1": "/static/pages/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy/1.png",
+        "image_2": "/static/pages/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy/2.png",
+        "image_3": "/static/pages/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy/3.png"
+      }
+    }
+  }
+}

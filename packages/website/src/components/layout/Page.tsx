@@ -3,8 +3,7 @@ import Head from "next/head";
 
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import AnalyticsService from "~/services/analytics";
-import { T_GetAssetsParam, T_ReactChildrenProp, T_ReactElement } from "~/types";
-import { getAssetsURL } from "~/utils/assets";
+import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { WEBSITE_METADATA, SEO_METADATA } from "~/utils/constants";
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
@@ -18,8 +17,7 @@ type T_PageProps = {
     title?: string;
     pathname?: string;
     description?: string;
-    noRobots?: boolean;
-    assets?: T_GetAssetsParam;
+    disableSEO?: boolean;
   };
 };
 
@@ -51,7 +49,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           name="google-site-verification"
           content="Gf-6mROjwXEjbtUUtl2rX5NgzWuzWxgxoKYTaGsqvtw"
         />
-        {config.noRobots && <meta name="robots" content="noindex,nofollow" />}
+        {config.disableSEO && <meta name="robots" content="noindex,nofollow" />}
         <meta name="description" content={metadata.description} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={metadata.title} />
@@ -134,13 +132,6 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
         <span className="tw-fixed tw-top-1 tw-right-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white" />
       )}
       {isDevelopmentEnvironment() && <WindowSize />}
-      <script
-        type="application/json"
-        id="assets"
-        dangerouslySetInnerHTML={{
-          __html: getAssetsURL([...(config.assets || [])]),
-        }}
-      />
     </Fragment>
   );
 }

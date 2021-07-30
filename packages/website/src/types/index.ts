@@ -43,19 +43,31 @@ export type T_FormEvent<HTMLElement> = React.FormEvent<HTMLElement>;
 
 // --- Internationalization ---
 
+export type T_PageContent = {
+  seo?: T_Object<T_Primitive>;
+  page?: T_Object<any> & {
+    common?: T_Object<T_Primitive>;
+    config?: T_Object<any>;
+  };
+  layout?: {
+    header?: T_Object<T_Primitive>;
+    breadcumb?: T_Object<T_Primitive>;
+    footer?: T_Object<T_Primitive>;
+  };
+};
+
 export type T_Locale = "es" | "en";
 
-export type T_PagesRoutes =
+export type T_PageRoute =
   | "/"
-  | "/blog"
   | "/about-me"
-  | "/about-me/movies"
-  | "/about-me/books"
   | "/resume"
-  | "/snippets"
-  | "/playground"
-  | "/music"
+  | "/blog"
+  | "/blog/[id]"
   | "/contact"
+  | "/music"
+  | "/music/[id]"
+  | "/playground"
   | "/404"
   | "/500";
 
@@ -64,59 +76,23 @@ export type T_GenerateSupportedLocales = {
   route: string;
 }[];
 
-export type T_SiteTexts = {
-  layout: {
-    config: T_Object;
-    common: T_Object;
-    current_locale: T_Object;
-  };
-  page: {
-    config: T_Object;
-    common: T_Object;
-    current_locale: T_Object;
-  };
-};
-
-export type T_GetSiteTextsParam = {
-  page?: T_PagesRoutes;
-  layout?: boolean;
-  locale?: T_Locale;
-};
-
-export type T_GetAssetsParam = "vr"[];
-
 // --- Blog ---
 
-interface T_BlogPostBase {
+export type T_BlogPost = {
+  title: string;
+  description: string;
   slug: string;
-  isLegacy: boolean;
-  defaultLocale: T_Locale;
+  categories: T_BlogPostCategory[];
   locales: T_Locale[];
   createdAt: string;
   publishedAt: string;
   updatedAt: string;
-  config: {
-    isPublished: boolean;
-    metaNoRobots: boolean;
-  };
+  isLegacy: boolean;
+  isPublished: boolean;
   assets?: T_Object<string>;
-}
-
-export type T_BlogPostLocaleData = {
-  title: string;
-  description: string;
-  categories: [{ id: number; value: string }];
 };
 
-interface T_BlogPostBaseWithES extends T_BlogPostBase {
-  es: T_BlogPostLocaleData;
-}
-
-interface T_BlogPostBaseWithEN extends T_BlogPostBase {
-  en: T_BlogPostLocaleData;
-}
-
-export type T_BlogPost = T_BlogPostBaseWithES | T_BlogPostBaseWithEN;
+export type T_BlogPostCategory = { id: string; value: string };
 
 // --- Music ---
 
@@ -162,7 +138,7 @@ export type T_Book = {
 export type T_BreadcumbProps = {
   items: {
     text: string;
-    url?: T_PagesRoutes;
+    url?: T_PageRoute;
     isNextLink?: boolean;
   }[];
 };

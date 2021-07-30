@@ -2,19 +2,19 @@ import React from "react";
 import classNames from "classnames";
 
 import { Icon, Link } from "~/components/primitive";
-import { T_ReactElement, T_SiteTexts, T_Song } from "~/types";
+import { T_ReactElement, T_Song } from "~/types";
 import { createArray } from "~/utils/misc";
+import { useTranslation } from "~/hooks";
 
 function SongDetails({
   song,
-  SiteTexts,
   className = "",
 }: {
   song: T_Song;
-  SiteTexts: T_SiteTexts;
   className?: string;
 }): T_ReactElement {
   const { getProgressStyles } = useController();
+  const { t } = useTranslation({ page: true });
 
   if (!song.artist) return null;
 
@@ -23,22 +23,22 @@ function SongDetails({
   return (
     <div className={classNames("tw-text-sm tw-italic", className)}>
       <div className="sm:tw-flex sm:tw-flex-nowrap">
-        <strong>{SiteTexts.page.current_locale.artist}:</strong>{" "}
+        <strong>{t("page:artist")}:</strong>{" "}
         <span className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={songArtist}>
           {songArtist}
         </span>
       </div>
       <div className="sm:tw-flex sm:tw-flex-nowrap">
-        <strong>{SiteTexts.page.current_locale.album}:</strong>{" "}
+        <strong>{t("page:album")}:</strong>{" "}
         <span className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={song.album}>
           {song.album}
         </span>
       </div>
       <div>
-        <strong>{SiteTexts.page.current_locale.year}:</strong> <span>{song.year}</span>
+        <strong>{t("page:year")}:</strong> <span>{song.year}</span>
       </div>
       <div className="tw-flex tw-items-center">
-        <strong className="tw-mr-2">{SiteTexts.page.current_locale.progress}:</strong>
+        <strong className="tw-mr-2">{t("page:progress")}:</strong>
         {createArray(5).map((index) => {
           return (
             <span

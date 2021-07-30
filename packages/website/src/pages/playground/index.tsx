@@ -2,40 +2,40 @@ import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Link, List, Space } from "~/components/primitive";
-import { withTranslations } from "~/hocs";
-import { T_ReactElement, T_SiteTexts } from "~/types";
+import { T_ReactElement, T_PageContent } from "~/types";
 import { isUserLoggedIn } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 import { generateSlug, removeEmojiFromString } from "~/utils/strings";
+import { getPageContentStaticProps } from "~/server/i18n";
 
-type T_PlaygroundPageProps = {
-  SiteTexts: T_SiteTexts;
+type T_PageProps = {
+  pageContent: T_PageContent;
 };
 
-function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
+function PlaygroundPage({ pageContent }: T_PageProps): T_ReactElement {
   return (
-    <Page config={{ noRobots: true }}>
+    <Page
+      config={{
+        title: pageContent.page?.title,
+        disableSEO: pageContent.page?.config?.is_seo_disabled,
+      }}
+    >
       <MainLayout
         breadcumb={[
           {
-            text: SiteTexts.layout.current_locale.breadcumb.home,
+            text: pageContent.layout?.breadcumb?.home as string,
             url: ROUTES.HOME,
           },
           {
-            text: SiteTexts.layout.current_locale.breadcumb.playground,
+            text: pageContent.layout?.breadcumb?.playground as string,
           },
         ]}
-        title={SiteTexts.page.current_locale.title}
+        title={pageContent.page?.title as string}
       >
         <PagesList
           pages={[
             { name: "🎼 chords-creator", isNextLink: true },
             { name: "📝 strings", isNextLink: true },
-            {
-              name: "👓 virtual-reality",
-              url: "/static/pages/playground/virtual-reality/index.html",
-              isNextLink: false,
-            },
             { name: "💬 whatsapp", isNextLink: true },
           ]}
         />
@@ -58,9 +58,12 @@ function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
   );
 }
 
-export default withTranslations(PlaygroundPage, {
+export default PlaygroundPage;
+
+// --- Next.js functions ---
+
+export const getStaticProps = getPageContentStaticProps({
   page: ROUTES.PLAYGROUND,
-  layout: true,
 });
 
 // --- Components ---

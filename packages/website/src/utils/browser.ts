@@ -1,8 +1,7 @@
 import { toast } from "react-toastify";
 
-import { T_SiteTexts, T_Function, T_OnClickEvent } from "~/types";
-
-import { getSiteTexts } from "./internationalization";
+import I18NService from "~/services/i18n";
+import { T_Function, T_OnClickEvent } from "~/types";
 
 export function getScrollPosition(element?: HTMLElement | null): number {
   return element?.scrollTop || document.body.scrollTop || document.documentElement.scrollTop || 0;
@@ -50,8 +49,8 @@ export async function copyToClipboard(
     if (!clipboardText) throw new Error("Any text was selected to copy");
     await navigator.clipboard.writeText(clipboardText);
 
-    const SiteTexts: T_SiteTexts = getSiteTexts({ layout: true });
-    toast.success(SiteTexts.layout.current_locale.misc.copy_to_clipboard, {
+    const translator = I18NService.getInstance();
+    toast.success(translator.t("common:copy_to_clipboard"), {
       position: toast.POSITION.BOTTOM_CENTER,
       toastId: "copy-to-clipboard",
     });

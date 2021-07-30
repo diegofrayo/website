@@ -14,6 +14,6 @@ const listOfChordsContent = Object.keys(CHORDS)
     );
   }, "");
 
-fs.writeFileSync("./src/data/music/songs/listado-de-acordes.txt", listOfChordsContent);
+fs.writeFileSync("./server/content/pages/music/[song]/listado-de-acordes.txt", listOfChordsContent);
 
 console.log("List of chords page generated");

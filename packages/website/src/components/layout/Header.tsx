@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 import { Title, Icon, Button, Link } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
-import { useOnWindowScroll } from "~/hooks";
+import { useOnWindowScroll, useTranslation } from "~/hooks";
 import { T_ReactElement } from "~/types";
 import { getScrollPosition } from "~/utils/browser";
 import { safeRender } from "~/hocs";
@@ -122,10 +122,15 @@ function HeaderTitle({ className = "" }) {
 }
 
 function HeaderSubtitle({ className = "" }) {
+  const { t } = useTranslation({
+    layout: true,
+  });
+
   return (
-    <p className={classNames("tw-text-sm tw-mt-1 tw-font-mono", className)}>
-      desarrollador de <strong>software</strong>
-    </p>
+    <p
+      className={classNames("tw-text-sm tw-mt-1 tw-font-mono", className)}
+      dangerouslySetInnerHTML={{ __html: t("layout:header:role") }}
+    />
   );
 }
 

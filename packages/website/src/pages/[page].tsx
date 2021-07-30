@@ -1,61 +1,64 @@
 import React from "react";
-import fs from "fs";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
-import { GetStaticProps, GetStaticPaths } from "next";
+import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
 import { MDXContent } from "~/components/pages/_shared";
-import { T_Locale, T_SiteTexts, T_PagesRoutes, T_ReactChildrenProp } from "~/types";
-import { getSnippetsFiles } from "~/components/pages/snippets/utils";
+import { T_Locale, T_PageRoute, T_ReactElement } from "~/types";
+import { useTranslation } from "~/hooks";
 import { DYNAMIC_MAIN_PAGES, ROUTES } from "~/utils/routing";
-import { getItemLocale, getSiteTexts } from "~/utils/internationalization";
+import { getItemLocale } from "~/utils/internationalization";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { generateObjectKeyInLowerCase, generateObjectKeyInUpperCase } from "~/utils/strings";
+import { getPageContentStaticProps } from "~/server/i18n";
+import { loader } from "~/server/loader";
 
 type T_SitePageProps = {
-  content: string;
-  page: T_PagesRoutes;
-  SiteTexts: T_SiteTexts;
+  page: string;
+  pageMDXContent: string;
 };
 
-function SitePage({ content, page, SiteTexts }: T_SitePageProps): T_ReactChildrenProp {
-  const mdxContent = hydrate(content, { components: MDXComponents });
+function SitePage({ page, pageMDXContent }: T_SitePageProps): T_ReactElement {
+  const { t } = useTranslation({
+    seo: true,
+    page: true,
+    layout: true,
+  });
+
+  const mdxContent = hydrate(pageMDXContent, { components: MDXComponents });
 
   return (
     <Page
       config={{
-        title: SiteTexts.page.current_locale.title,
+        title: t("seo:title"),
+        description: t("seo:description"),
         pathname: ROUTES[generateObjectKeyInUpperCase(page)],
-        description: SiteTexts.page.current_locale.meta_description,
-        noRobots: SiteTexts.page.current_locale.meta_no_robots,
+        disableSEO: Boolean(t("page:config:is_seo_disabled")),
       }}
     >
       <MainLayout
         breadcumb={[
           {
-            text: SiteTexts.layout.current_locale.breadcumb.home,
+            text: t("layout:breadcumb:home"),
             url: ROUTES.HOME,
           },
           {
-            text: SiteTexts.layout.current_locale.breadcumb[generateObjectKeyInLowerCase(page)],
+            text: t(`layout:breadcumb:${generateObjectKeyInLowerCase(page)}`),
           },
         ]}
-        title={SiteTexts.page.current_locale.title}
+        title={t("seo:title")}
         showGoToTopButton
       >
-        <MDXContent
-          variant={
-            `/${page}` === ROUTES.SNIPPETS
-              ? MDXContent.variant.DEFAULT
-              : MDXContent.variant.UNSTYLED
-          }
-          content={mdxContent}
-        />
+        <MDXContent variant={MDXContent.variant.UNSTYLED} content={mdxContent} />
       </MainLayout>
     </Page>
   );
 }
+
+export default SitePage;
+
+// --- Next.js functions ---
 
 type T_Path = { params: { page: string }; locale: T_Locale };
 
@@ -74,35 +77,30 @@ export const getStaticPaths: GetStaticPaths<{ page: string }> = async function g
   };
 };
 
-export const getStaticProps: GetStaticProps<T_SitePageProps, { page: string }> =
-  async function getStaticProps({ params, locale }) {
-    const page = params?.page || "";
+export const getStaticProps = getPageContentStaticProps<T_SitePageProps, { page: string }>({
+  page: ({ params }) => {
+    if (!params.page) throw new Error('"page" param can\'t be undefined');
 
-    const SiteTexts = getSiteTexts({
-      page: ROUTES[generateObjectKeyInUpperCase(page)],
-      layout: true,
-      locale: locale as T_Locale,
-    });
+    return `/${params.page}` as T_PageRoute;
+  },
+  callback: async ({ params, locale, pageContent }) => {
+    if (!params.page) throw new Error('"page" param can\'t be undefined');
 
-    const file = fs.readFileSync(
-      `${process.cwd()}/src/data/pages/${getItemLocale(
-        SiteTexts.page.config.locales,
-        SiteTexts.page.config.default_locale,
+    const page = params.page;
+    const file = await loader({
+      path: `/pages/${page}/${getItemLocale(
+        pageContent.page?.config?.locales,
+        pageContent.page?.config?.default_locale,
         locale as T_Locale,
-      )}/${page}.mdx`,
-      "utf8",
-    );
-
-    const content = await renderToString(file, {
+      )}.${page}.mdx`,
+    });
+    const pageMDXContent: string = await renderToString(file, {
       components: MDXComponents,
       scope: {
         DATA: {
           ...MDXScope.DATA,
-          ...(`/${page}` === ROUTES.SNIPPETS && {
-            snippets: getSnippetsFiles(),
-          }),
           ...(`/${page}` === ROUTES.RESUME && {
-            resume: SiteTexts.page.current_locale,
+            resume: { timeline: pageContent.page?.timeline },
           }),
         },
       },
@@ -110,11 +108,9 @@ export const getStaticProps: GetStaticProps<T_SitePageProps, { page: string }> =
 
     return {
       props: {
-        content,
-        SiteTexts,
-        page: page as T_PagesRoutes,
+        page,
+        pageMDXContent,
       },
     };
-  };
-
-export default SitePage;
+  },
+});

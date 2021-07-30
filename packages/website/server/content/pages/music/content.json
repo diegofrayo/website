@@ -1,0 +1,31 @@
+{
+  "config": {
+    "locales": ["es", "en"],
+    "default_locale": "es",
+    "is_seo_disabled": true
+  },
+  "es": {
+    "seo": {},
+    "texts": {
+      "title": "🎸 Música",
+      "description": "Aquí están las letras de las canciones que me gusta tocar o que estoy aprendiendo a tocar en guitarra, con sus respectivos acordes.",
+      "artist": "Artista",
+      "album": "Album",
+      "year": "Año",
+      "progress": "Progreso",
+      "sources": "Fuentes y recursos"
+    }
+  },
+  "en": {
+    "seo": {},
+    "texts": {
+      "title": "🎸 Music",
+      "description": "",
+      "artist": "Artist",
+      "album": "Album",
+      "year": "Year",
+      "progress": "Progress",
+      "sources": "Sources and resources"
+    }
+  }
+}

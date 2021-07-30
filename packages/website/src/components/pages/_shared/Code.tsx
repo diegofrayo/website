@@ -6,10 +6,9 @@ import { Link, Icon, Code as CodePrimitive, Button } from "~/components/primitiv
 import twcss from "~/lib/twcss";
 import { T_CodeProps, T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
-import { getSiteTexts } from "~/utils/internationalization";
-import { ROUTES } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
 import classNames from "classnames";
+import { useTranslation } from "~/hooks";
 
 function Code({
   language,
@@ -18,7 +17,7 @@ function Code({
   sourceURL = "",
   showOnlySourceCode = false,
 }: T_CodeProps): T_ReactElement {
-  const SiteTexts = getSiteTexts({ page: ROUTES.BLOG });
+  const { t } = useTranslation({ page: true });
 
   const codeTitle = fileName
     ? `// ${generateSlug(fileName)}`
@@ -81,9 +80,7 @@ function Code({
                 wrapperClassName="tw-align-middle tw-mr-1.5"
                 withDarkModeBackground
               />
-              <span className="tw-align-middle tw-inline-block">
-                {SiteTexts.page.current_locale.see_source_code}
-              </span>
+              <span className="tw-align-middle tw-inline-block">{t("page:see_source_code")}</span>
             </Link>
           )}
           <Button
@@ -91,7 +88,7 @@ function Code({
             data-clipboard-text={code}
             onClick={copyToClipboard}
           >
-            {SiteTexts.page.current_locale.copy_to_clipboard}
+            {t("page:copy_to_clipboard")}
           </Button>
         </div>
       )}

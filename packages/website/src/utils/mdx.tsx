@@ -22,7 +22,6 @@ import * as HTMLSemanticTagsBlogPostComponents from "~/components/pages/blog//ht
 import * as MyFavoriteMusicAndMDXBlogPostComponents from "~/components/pages/blog//my-favorite-music-and-mdx";
 import * as MusicComponents from "~/components/pages/music";
 import * as ResumeComponents from "~/components/pages/resume";
-import * as SnippetsComponents from "~/components/pages/snippets";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { WEBSITE_METADATA, GITHUB_DATA } from "~/utils/constants";
 import { ROUTES } from "~/utils/routing";
@@ -73,7 +72,6 @@ export const MDXComponents = {
   ...MyFavoriteMusicAndMDXBlogPostComponents,
   ...MusicComponents,
   ...ResumeComponents,
-  ...SnippetsComponents,
 };
 
 export const MDXScope = {

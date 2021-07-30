@@ -31,7 +31,7 @@ export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function g
   T_BlogPostPageProps,
   { slug: string }
 > = async function getStaticProps({ params, locale }) {
-  const post: T_BlogPost = await BlogService.getPost({ slug: params?.slug });
+  const post: T_BlogPost = await BlogService.fetchPost({ slug: params?.slug });
   const file = fs.readFileSync(
     \`\${process.cwd()}/src/data/blog/posts/\${getItemLocale(
       post.locales,
@@ -70,7 +70,7 @@ export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function g
 };
 
 function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
-  const { SiteTexts, currentLocale } = useInternationalization({
+  const { SiteTexts, currentLocale } = useTranslation({
     page: ROUTES.BLOG,
     layout: true,
   });

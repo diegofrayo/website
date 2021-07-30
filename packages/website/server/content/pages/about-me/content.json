@@ -1,0 +1,19 @@
+{
+  "config": {
+    "locales": ["es", "en"],
+    "default_locale": "es",
+    "is_seo_disabled": false
+  },
+  "es": {
+    "seo": {
+      "title": "🙋‍♂️ Acerca de mí",
+      "description": "Conoce un poco más acerca de mí."
+    }
+  },
+  "en": {
+    "seo": {
+      "title": "🙋‍♂️ About me",
+      "description": "Know more about me."
+    }
+  }
+}

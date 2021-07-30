@@ -2,58 +2,62 @@ import React from "react";
 import fs from "fs";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Blockquote, Icon, Link, Space, Button } from "~/components/primitive";
 import { MDXContent } from "~/components/pages/_shared";
-import { useInternationalization } from "~/hooks";
+import { useTranslation } from "~/hooks";
 import twcss from "~/lib/twcss";
 import BlogService from "~/services/blog";
-import { T_BlogPost, T_Locale, T_ReactElement } from "~/types";
+import { T_BlogPost, T_Locale, T_ReactElement, T_PageContent } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { WEBSITE_METADATA, GITHUB_DATA } from "~/utils/constants";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
-import { getItemLocale } from "~/utils/internationalization";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
+import { getPageContentStaticProps } from "~/server/i18n";
+import { loader } from "~/server/loader";
 
-type T_BlogPostPageProps = {
+type T_PageProps = {
   post: T_BlogPost;
-  content: string;
+  postMDXContent: string;
+  content: T_PageContent;
+  locale: T_Locale;
 };
 
-function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
-  const { SiteTexts, currentLocale } = useInternationalization({
-    page: ROUTES.BLOG,
+function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
+  const { t } = useTranslation({
+    page: true,
     layout: true,
   });
 
-  const mdxContent = hydrate(content, { components: MDXComponents });
+  const mdxContent = hydrate(postMDXContent, { components: MDXComponents });
 
   return (
     <Page
       config={{
-        title: post[currentLocale]?.title,
+        title: post.title,
+        description: post.description,
         pathname: `${ROUTES.BLOG}/${post.slug}`,
-        description: post[currentLocale]?.description,
+        disableSEO: Boolean(t("page:config:is_seo_disabled")),
       }}
     >
       <MainLayout
         breadcumb={[
           {
-            text: SiteTexts.layout.current_locale.breadcumb.home,
+            text: t("layout:breadcumb:home"),
             url: ROUTES.HOME,
           },
           {
-            text: SiteTexts.layout.current_locale.breadcumb.blog,
+            text: t("layout:breadcumb:blog"),
             url: ROUTES.BLOG,
           },
           {
-            text: BlogService.composeTitle(post, currentLocale),
+            text: BlogService.composeTitle(post),
           },
         ]}
-        title={BlogService.composeTitle(post, currentLocale)}
+        title={BlogService.composeTitle(post)}
         showGoToTopButton
       >
         <MDXContent content={mdxContent} />
@@ -70,41 +74,45 @@ function BlogPostPage({ post, content }: T_BlogPostPageProps): T_ReactElement {
   );
 }
 
+export default BlogPostPage;
+
+// --- Next.js functions ---
+
 type T_Path = { params: { slug: string }; locale: T_Locale };
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function getStaticPaths() {
   return {
-    paths: (await BlogService.fetchPosts()).reduce((result: T_Path[], post: T_BlogPost) => {
-      return result.concat(
-        post.locales.map((locale: T_Locale): T_Path => {
-          return { params: { slug: post.slug }, locale };
-        }),
-      );
-    }, []),
+    paths: (await BlogService.fetchPosts({ locale: "es" })).reduce(
+      (result: T_Path[], post: T_BlogPost) => {
+        return result.concat(
+          post.locales.map((locale: T_Locale): T_Path => {
+            return { params: { slug: post.slug }, locale };
+          }),
+        );
+      },
+      [],
+    ),
     fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps<T_BlogPostPageProps, { slug: string }> =
-  async function getStaticProps({ params, locale }) {
-    const post: T_BlogPost = await BlogService.getPost({ slug: params?.slug });
-    const file = fs.readFileSync(
-      `${process.cwd()}/src/data/blog/posts/${getItemLocale(
-        post.locales,
-        post.defaultLocale,
-        locale as T_Locale,
-      )}/${post.createdAt}-${post.slug}.mdx`,
-      "utf8",
-    );
-
+export const getStaticProps = getPageContentStaticProps<
+  { post: T_BlogPost; postMDXContent: string },
+  { slug: string }
+>({
+  page: ROUTES.BLOG,
+  callback: async ({ params, locale }) => {
+    const post: T_BlogPost = await BlogService.fetchPost({ slug: params?.slug });
+    const file = await loader({
+      path: `/pages/blog/[slug]/${locale}/${post.createdAt}-${post.slug}.mdx`,
+    });
     const postSlug = post.slug;
     const codeSnippets = fs.existsSync(
       `${process.cwd()}/src/components/pages/blog/${postSlug}/code-snippets.ts`,
     )
       ? require(`src/components/pages/blog/${postSlug}/code-snippets.ts`).default // eslint-disable-line @typescript-eslint/no-var-requires
       : {};
-
-    const content = await renderToString(file, {
+    const postMDXContent = (await renderToString(file, {
       components: MDXComponents,
       scope: {
         DATA: {
@@ -115,12 +123,16 @@ export const getStaticProps: GetStaticProps<T_BlogPostPageProps, { slug: string 
           },
         },
       },
-    });
+    })) as string;
 
-    return { props: { post, content } };
-  };
-
-export default BlogPostPage;
+    return {
+      props: {
+        post,
+        postMDXContent,
+      },
+    };
+  },
+});
 
 // --- Components ---
 
@@ -132,8 +144,8 @@ function BlogPostFooter({
   slug,
   updatedAt,
 }: T_BlogPostFooterProps): T_ReactElement {
-  const { SiteTexts, currentLocale } = useInternationalization({
-    page: ROUTES.BLOG,
+  const { t, currentLocale } = useTranslation({
+    page: true,
     layout: true,
   });
 
@@ -152,14 +164,14 @@ function BlogPostFooter({
         <BlogPostFooterItem>
           <BlogPostFooterItem.Icon icon={Icon.icon.CALENDAR} />
           <p>
-            <span className="tw-mr-1">{SiteTexts.page.current_locale.published_at}</span>
+            <span className="tw-mr-1">{t("page:published_at")}</span>
             <strong>{formatDate(publishedAt)}</strong>
           </p>
         </BlogPostFooterItem>
         <BlogPostFooterItem>
           <BlogPostFooterItem.Icon icon={Icon.icon.EDIT} />
           <p>
-            <span className="tw-mr-1">{SiteTexts.page.current_locale.updated_at}</span>
+            <span className="tw-mr-1">{t("page:updated_at")}</span>
             <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
           </p>
         </BlogPostFooterItem>
@@ -169,7 +181,7 @@ function BlogPostFooter({
           onClick={copyToClipboard}
         >
           <BlogPostFooterItem.Icon icon={Icon.icon.LINK} />
-          <span>{SiteTexts.page.current_locale.copy_url_to_clipboard}</span>
+          <span>{t("page:copy_url_to_clipboard")}</span>
         </BlogPostFooterItem>
       </div>
       <div className="tw-hidden tw-w-full sm:tw-w-1/2 tw-items-start tw-justify-center tw-flex-col sm:tw-items-end tw-mt-2 sm:tw-mt-0">
@@ -179,7 +191,7 @@ function BlogPostFooter({
           variant={Link.variant.SIMPLE}
         >
           <BlogPostFooterItem.Icon icon={Icon.icon.CODE} />
-          <span>{SiteTexts.page.current_locale.see_publication_source_code}</span>
+          <span>{t("page:see_publication_source_code")}</span>
         </BlogPostFooterItem>
       </div>
     </Blockquote>

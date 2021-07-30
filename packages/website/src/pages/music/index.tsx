@@ -4,42 +4,43 @@ import { Page, MainLayout } from "~/components/layout";
 import { List, Link, Icon, Title } from "~/components/primitive";
 import { Emoji, Render } from "~/components/pages/_shared";
 import { SongDetails } from "~/components/pages/music";
-import { useInternationalization, useQuery } from "~/hooks";
+import { useTranslation, useQuery } from "~/hooks";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
 import { ROUTES } from "~/utils/routing";
 import { isUserLoggedIn } from "~/utils/misc";
+import { getPageContentStaticProps } from "~/server/i18n";
 
 function MusicPage(): T_ReactElement {
-  const { SiteTexts } = useInternationalization({
-    page: ROUTES.MUSIC,
+  const { t } = useTranslation({
+    page: true,
     layout: true,
   });
-
   const { isLoading, error, data } = useQuery("songsList", MusicService.fetchSongsList);
 
   return (
     <Page
       config={{
-        title: SiteTexts.page.current_locale.title,
+        title: t("page:title"),
         pathname: ROUTES.MUSIC,
-        description: SiteTexts.page.current_locale.meta_description,
+        description: t("page:description"),
+        disableSEO: Boolean(t("page:config:is_seo_disabled")),
       }}
     >
       <MainLayout
         breadcumb={[
           {
-            text: SiteTexts.layout.current_locale.breadcumb.home,
+            text: t("layout:breadcumb:home"),
             url: ROUTES.HOME,
           },
           {
-            text: SiteTexts.layout.current_locale.breadcumb.music,
+            text: t("layout:breadcumb:music"),
           },
         ]}
-        title={SiteTexts.page.current_locale.title}
+        title={t("page:title")}
         showGoToTopButton
       >
-        <p>{SiteTexts.page.current_locale.description} </p>
+        <p>{t("page:description")}</p>
 
         <Render isLoading={isLoading} error={error} data={data}>
           {(data: T_Song[]) => {
@@ -99,7 +100,7 @@ function MusicPage(): T_ReactElement {
                             />
                           )}
                         </Link>
-                        <SongDetails song={song} SiteTexts={SiteTexts} />
+                        <SongDetails song={song} />
                       </List.Item>
                     );
                   })}
@@ -114,3 +115,9 @@ function MusicPage(): T_ReactElement {
 }
 
 export default MusicPage;
+
+// --- Next.js functions ---
+
+export const getStaticProps = getPageContentStaticProps({
+  page: ROUTES.MUSIC,
+});

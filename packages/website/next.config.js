@@ -5,23 +5,9 @@ module.exports = withMDX({
     ignoreDuringBuilds: true,
   },
   i18n: {
-    locales: ["es"],
+    locales: ["es", "en"],
     defaultLocale: "es",
     localeDetection: false,
-  },
-  redirects() {
-    return [
-      {
-        source: "/acerca-de-mi",
-        destination: "/about-me",
-        permanent: true,
-      },
-      {
-        source: "/blog/mi-primer-post",
-        destination: "/blog/my-first-post",
-        permanent: true,
-      },
-    ];
   },
   webpack(config) {
     config.module.rules.concat([

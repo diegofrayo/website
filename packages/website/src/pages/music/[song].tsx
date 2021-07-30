@@ -1,36 +1,37 @@
 import React, { useState, useEffect } from "react";
-import fs from "fs";
 import classNames from "classnames";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Blockquote, Icon, Button } from "~/components/primitive";
 import { MDXContent } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
-import { useDidMount, useInternationalization } from "~/hooks";
+import { useDidMount, useTranslation } from "~/hooks";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
 import { copyToClipboard, isBrowser } from "~/utils/browser";
 import { WEBSITE_METADATA } from "~/utils/constants";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
+import { getPageContentStaticProps } from "~/server/i18n";
+import { loader } from "~/server/loader";
 
-type T_SongPageProps = {
+type T_PageProps = {
   song: T_Song;
-  content: string;
+  songMDXContent: string;
 };
 
-function SongPage({ song, content }: T_SongPageProps): T_ReactElement {
-  const { SiteTexts } = useInternationalization({
-    page: ROUTES.MUSIC,
+function SongPage({ song, songMDXContent }: T_PageProps): T_ReactElement {
+  const { t } = useTranslation({
+    page: true,
     layout: true,
   });
 
   const [fontSize, setFontSize] = useState(0);
 
-  const mdxContent = hydrate(content, { components: MDXComponents });
+  const mdxContent = hydrate(songMDXContent, { components: MDXComponents });
 
   useDidMount(() => {
     setFontSize(getFontSize());
@@ -60,17 +61,19 @@ function SongPage({ song, content }: T_SongPageProps): T_ReactElement {
     <Page
       config={{
         title: song.title,
+        description: t("seo:description"),
         pathname: `${ROUTES.MUSIC}/${song.id}`,
+        disableSEO: Boolean(t("page:config:is_seo_disabled")),
       }}
     >
       <MainLayout
         breadcumb={[
           {
-            text: SiteTexts.layout.current_locale.breadcumb.home,
+            text: t("layout:breadcumb:home"),
             url: ROUTES.HOME,
           },
           {
-            text: SiteTexts.layout.current_locale.breadcumb.music,
+            text: t("layout:breadcumb:music"),
             url: ROUTES.MUSIC,
           },
           {
@@ -80,7 +83,7 @@ function SongPage({ song, content }: T_SongPageProps): T_ReactElement {
         title={`🎼 ${song.title}`}
         showGoToTopButton
       >
-        <SongDetails song={song} SiteTexts={SiteTexts} className="tw-mb-8" />
+        <SongDetails song={song} className="tw-mb-8" />
 
         <Blockquote
           className="tw-mb-8"
@@ -128,6 +131,10 @@ function SongPage({ song, content }: T_SongPageProps): T_ReactElement {
   );
 }
 
+export default SongPage;
+
+// --- Next.js functions ---
+
 type T_Path = { params: { song: string } };
 
 export const getStaticPaths: GetStaticPaths<{ song: string }> = async function getStaticPaths() {
@@ -139,28 +146,29 @@ export const getStaticPaths: GetStaticPaths<{ song: string }> = async function g
   };
 };
 
-export const getStaticProps: GetStaticProps<T_SongPageProps, { song: string }> =
-  async function getStaticProps({ params }) {
+export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: string }>({
+  page: ROUTES.MUSIC,
+  callback: async ({ params }) => {
     const song = await MusicService.getSong({ id: params?.song });
-
-    const file = fs.readFileSync(`${process.cwd()}/src/data/music/songs/${song.id}.mdx`, "utf8");
-    const content = await renderToString(file, {
+    const file = await loader({ path: `/pages/music/[song]/${song.id}.mdx` });
+    const songMDXContent = await renderToString(file, {
       components: MDXComponents,
       scope: {
         DATA: {
           ...MDXScope.DATA,
           song: {
             ...song,
-            content: fs.readFileSync(
-              `${process.cwd()}/src/data/music/songs/${song.id}.txt`,
-              "utf8",
-            ),
+            content: await loader({ path: `/pages/music/[song]/${song.id}.txt` }),
           },
         },
       },
     });
 
-    return { props: { song, content } };
-  };
-
-export default SongPage;
+    return {
+      props: {
+        song,
+        songMDXContent,
+      },
+    };
+  },
+});

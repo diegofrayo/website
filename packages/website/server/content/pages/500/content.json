@@ -1,0 +1,23 @@
+{
+  "config": {
+    "locales": ["es", "en"],
+    "default_locale": "es",
+    "is_seo_disabled": true
+  },
+  "es": {
+    "seo": {},
+    "texts": {
+      "breadcumb": "Ir al inicio",
+      "title": "🙈 Error 500",
+      "body": "Trataré de arreglar el error lo más pronto posible, sin afectar la meta del actual sprint para así lograr darle el mayor valor posible al cliente"
+    }
+  },
+  "en": {
+    "seo": {},
+    "texts": {
+      "breadcumb": "Go to home",
+      "title": "🙈 500 Error",
+      "body": "I will try to fix this bug as soon as possible, avoiding to affect this current sprint goal so that the client can get the maximum value possible"
+    }
+  }
+}

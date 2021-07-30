@@ -27,6 +27,6 @@ const DATA = {
   },
 };
 
-fs.writeFileSync("./src/data/metadata.json", JSON.stringify(DATA));
+fs.writeFileSync("./server/content/metadata.json", JSON.stringify(DATA));
 
 console.log("Metadata file created");

@@ -1,10 +1,14 @@
-import Data from "~/data/books.json";
+import http from "~/utils/http";
 import { T_Book } from "~/types";
 import { sortBy } from "~/utils/misc";
 
 class BooksService {
   async fetchBooks(): Promise<T_Book[]> {
-    return Data.sort(
+    const response = await http.get(
+      `${process.env.NEXT_PUBLIC_ASSETS_SERVER}/pages/playground/books/data.json`,
+    );
+
+    return response.data.sort(
       sortBy([
         { param: "calification", order: "desc" },
         { param: "title", order: "asc" },
