@@ -16,32 +16,33 @@
       "chords": []
     },
     {
-      "id": "bailando-con-tu-sombra",
-      "title": "Bailando con tu sombra",
-      "artist": "Victor Heredia",
-      "album": "Fenix",
-      "year": 2003,
+      "id": "que-ves-el-cielo",
+      "title": "Que ves el cielo",
+      "artist": "Invisible",
+      "album": "El jardín de los presentes",
+      "year": 1976,
       "country": "🇦🇷",
       "progress": 5,
-      "created_at": "29/04/2021",
+      "order": 14,
+      "created_at": "23/03/2021",
       "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/1kepq9J67v8HhEEfGdYq9m?si=cd2a7351a0d4402f",
-      "youtube_url": "https://youtu.be/puUKQ_pJ_v4",
+      "spotify_url": "https://open.spotify.com/track/2G6XFgIRMn0ZdIBao0ggoM?si=ubF1yNbXSpyV2jv1lIZLbg",
+      "youtube_url": "https://youtu.be/OU_HZZF_bl8",
       "sources": [
         {
           "score": 2,
-          "text": "Bailando con tu sombra",
-          "url": "https://acordes.lacuerda.net/abel_pintos/bailando_con_tu_sombra.shtml",
+          "text": "Que ves el cielo",
+          "url": "https://acordes.lacuerda.net/invisible/que_ves_el_cielo.shtml",
           "source": "lacuerda"
         },
         {
           "score": 1,
-          "text": "Como tocar guitarra Bailando con tu Sombra de V. Heredia",
-          "url": "https://youtu.be/vRUJRqK1rFk",
+          "text": "Cómo tocar Spinetta (Invisible) Que ves el cielo con Acordes Tutorial Letra Cover Pedro Aznar",
+          "url": "https://youtu.be/IX4BZ3PkbZ4",
           "source": "youtube"
         }
       ],
-      "chords": ["Am", "C", "E", "F", "G"]
+      "chords": ["A", "Asus", "Bm", "C", "D", "Dsus4", "E", "Esus"]
     },
     {
       "id": "bajan",
@@ -51,6 +52,7 @@
       "year": 1973,
       "country": "🇦🇷",
       "progress": 5,
+      "order": 13,
       "created_at": "10/01/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/6hmYi0E6EBEmDeztQHaH0C?si=XZhRiHNWSvO7RNDEbVYnDw",
@@ -90,6 +92,70 @@
       "chords": ["Am7", "B", "C", "C#m", "E", "F#dim7", "F#m", "G#", "G#m"]
     },
     {
+      "id": "te-para-tres",
+      "title": "Té para tres",
+      "artist": "Soda Stereo",
+      "album": "Canción animal",
+      "year": 1990,
+      "country": "🇦🇷",
+      "progress": 5,
+      "order": 12,
+      "created_at": "23/04/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/2kMVxFh1y5gow2hBtqGO4m?si=93b23349e91a4db4",
+      "youtube_url": "https://youtu.be/91XRV1mKUe4",
+      "sources": [
+        {
+          "score": 2,
+          "text": "Té para 3",
+          "url": "https://acordes.lacuerda.net/soda_stereo/te_para_3-2.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "score": 1,
+          "text": "cómo tocar en guitarra TÉ PARA TRES de SODA STEREO tutorial",
+          "url": "https://youtu.be/XZFQOFP5Klg",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["A7", "D/F#", "Em9", "G"]
+    },
+    {
+      "id": "cancion-para-mi-muerte",
+      "title": "Canción para mi muerte",
+      "artist": "Sui Generis",
+      "album": "Vida",
+      "year": 1972,
+      "country": "🇦🇷",
+      "progress": 5,
+      "order": 11,
+      "created_at": "22/07/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/0LWO6hUTJz6KBrSA2iJOpH?autoplay=true",
+      "youtube_url": "https://youtu.be/NAtB8AOpZIY",
+      "sources": [
+        {
+          "score": 3,
+          "text": "Cancion para mi muerte",
+          "url": "https://acordes.lacuerda.net/charly_garcia/cancion_para_mi_muerte.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "score": 2,
+          "text": "Como tocar Cancion Para mi Muerte - Sui Generis",
+          "url": "https://youtu.be/LPgjbAkvCZs",
+          "source": "youtube"
+        },
+        {
+          "score": 1,
+          "text": "Como tocar Cancion para mi muerte de Sui generis en Guitarra acustica CLASE TUTORIAL",
+          "url": "https://youtu.be/tqurvSUyl28",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["Am7", "Bm", "Cadd9", "D", "D#", "D7", "Dsus4", "Em", "Fadd9", "G"]
+    },
+    {
       "id": "durazno-sangrando",
       "title": "Durazno sangrando",
       "artist": "Invisible",
@@ -97,6 +163,7 @@
       "year": 1975,
       "country": "🇦🇷",
       "progress": 5,
+      "order": 10,
       "created_at": "20/04/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/6pjbkrGImw09Nv5Ji3emkr?si=691d1ba9a7784bee",
@@ -131,6 +198,7 @@
       "year": 1989,
       "country": "🇦🇷",
       "progress": 5,
+      "order": 9,
       "created_at": "04/07/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/0tbLOU9BO0mGip1N8sTBZ9?si=818fbbac263d4147",
@@ -153,6 +221,7 @@
       "year": 1976,
       "country": "🇦🇷",
       "progress": 5,
+      "order": 8,
       "created_at": "05/05/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/649a4t4L3MuUgNqr9BFPzT?si=c4903359895c468d",
@@ -198,32 +267,33 @@
       "chords": ["Am7", "Bm7", "Cmaj7", "Em7"]
     },
     {
-      "id": "que-ves-el-cielo",
-      "title": "Que ves el cielo",
-      "artist": "Invisible",
-      "album": "El jardín de los presentes",
-      "year": 1976,
+      "id": "todas-las-hojas-son-del-viento",
+      "title": "Todas las hojas son del viento",
+      "artist": "Pescado Rabioso",
+      "album": "Artaud",
+      "year": 1973,
       "country": "🇦🇷",
       "progress": 5,
-      "created_at": "23/03/2021",
+      "order": 7,
+      "created_at": "04/04/2021",
       "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/2G6XFgIRMn0ZdIBao0ggoM?si=ubF1yNbXSpyV2jv1lIZLbg",
-      "youtube_url": "https://youtu.be/OU_HZZF_bl8",
+      "spotify_url": "https://open.spotify.com/track/689lBKIELtWGHfsPWpR6rv?si=34945449901e4181",
+      "youtube_url": "https://youtu.be/b-u-bchAnW4",
       "sources": [
         {
           "score": 2,
-          "text": "Que ves el cielo",
-          "url": "https://acordes.lacuerda.net/invisible/que_ves_el_cielo.shtml",
+          "text": "Todas las hojas son del viento",
+          "url": "https://acordes.lacuerda.net/luis_a_spinetta/todas_las_hojas_son_del_viento-4.shtml",
           "source": "lacuerda"
         },
         {
           "score": 1,
-          "text": "Cómo tocar Spinetta (Invisible) Que ves el cielo con Acordes Tutorial Letra Cover Pedro Aznar",
-          "url": "https://youtu.be/IX4BZ3PkbZ4",
+          "text": "Como Tocar \"Todas Las Hojas Son del Viento\" de Spinetta en Guitarra",
+          "url": "https://youtu.be/Yo6YOrFDvvQ",
           "source": "youtube"
         }
       ],
-      "chords": ["A", "Asus", "Bm", "C", "D", "Dsus4", "E", "Esus"]
+      "chords": ["C", "D", "Em", "F7", "Fmaj7", "G", "G6[1]"]
     },
     {
       "id": "rie-chinito",
@@ -233,6 +303,7 @@
       "year": 2014,
       "country": "🇦🇷",
       "progress": 5,
+      "order": 6,
       "created_at": "04/07/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/4UZdPR7auDwEnpPc5vHU7n?si=0690250580084424",
@@ -266,6 +337,105 @@
       "chords": ["A", "Asus2", "Bm", "D"]
     },
     {
+      "id": "un-poco-de-amor-frances",
+      "title": "Un poco de amor francés",
+      "artist": "Patricio Rey y sus Redonditos de Ricota",
+      "album": "La mosca y la sopa",
+      "year": 1991,
+      "country": "🇦🇷",
+      "progress": 5,
+      "order": 5,
+      "created_at": "05/04/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/1MRhIdcloOD0uiiG3ybXGX?si=koAJWM5lTI6FUxKeMGXBwg",
+      "youtube_url": "https://youtu.be/LDdH3HYlGA4",
+      "sources": [
+        {
+          "score": 3,
+          "text": "Cómo tocar Un poco de amor francés Redonditos de Ricota con guitarra criolla Acordes Tutorial Letra",
+          "url": "https://youtu.be/nCFafzchI7E",
+          "source": "youtube"
+        },
+        {
+          "score": 2,
+          "text": "Un poco de amor francés",
+          "url": "https://acordes.lacuerda.net/patricio_rey/un_poco_de_amor_frances-5.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "score": 1,
+          "text": "Cómo tocar UN POCO DE AMOR FRANCÉS de LOS REDONDOS en ukelele tutorial",
+          "url": "https://youtu.be/HCXF4D2hXP0",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["Am", "C", "Dm", "F", "G"]
+    },
+    {
+      "id": "mariposa-tecknicolor",
+      "title": "Mariposa tecknicolor",
+      "artist": "Fito Paez",
+      "album": "Circo Beat",
+      "year": 1994,
+      "country": "🇦🇷",
+      "progress": 5,
+      "order": 4,
+      "created_at": "10/05/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/2RognU2ViRdA6HxnpAITJl?si=61fc16da63e64997",
+      "youtube_url": "https://youtu.be/uzxeVzFrlq8",
+      "sources": [
+        {
+          "score": 2,
+          "text": "cómo tocar MARIPOSA TECKNICOLOR de FITO PÁEZ en guitarra tutorial",
+          "url": "https://youtu.be/mfomemgURwo",
+          "source": "youtube"
+        },
+        {
+          "score": 1,
+          "text": "mandrearamirez",
+          "url": "https://www.instagram.com/p/BhzwwmBlPNw",
+          "source": "instagram"
+        }
+      ],
+      "chords": ["Am", "C", "Dm", "E7", "Em", "Fmaj7", "G"]
+    },
+    {
+      "id": "bicho-de-ciudad",
+      "title": "Bicho de ciudad",
+      "artist": "Los Piojos",
+      "album": "Civilización",
+      "year": 2007,
+      "country": "🇦🇷",
+      "progress": 5,
+      "order": 3,
+      "created_at": "22/06/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/1L9ybuuZdLY3biLEgfN4zB?si=a4656d72f6934a9f",
+      "youtube_url": "https://youtu.be/esI9dPBmt34",
+      "sources": [
+        {
+          "score": 3,
+          "text": "Bicho de ciudad",
+          "url": "https://acordes.lacuerda.net/piojos/bicho_de_ciudad.shtml",
+          "source": "lacuerda"
+        },
+        {
+          "score": 2,
+          "text": "Cómo tocar Los Piojos Bicho de ciudad con guitarra criolla Acordes Tutorial Letra Cover",
+          "url": "https://youtu.be/FCz1p5xjlvM",
+          "source": "youtube"
+        },
+        {
+          "score": 1,
+          "text": "Como tocar Bicho de ciudad Los piojos guitarra (letra y acordes)",
+          "url": "https://youtu.be/MUKa2nM4690",
+          "source": "youtube"
+        }
+      ],
+      "chords": ["A", "Bm", "D", "Em", "F#m", "G/D"]
+    },
+    {
       "id": "talk-is-cheap",
       "title": "Talk is cheap",
       "artist": "Chet Faker",
@@ -273,6 +443,7 @@
       "year": 2014,
       "country": "🇦🇺",
       "progress": 5,
+      "order": 2,
       "created_at": "22/04/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/655HjEK4nNzceomQVpNzgN?si=d36ddedb783b410e",
@@ -312,94 +483,33 @@
       "chords": ["Am", "C", "D", "G"]
     },
     {
-      "id": "todas-las-hojas-son-del-viento",
-      "title": "Todas las hojas son del viento",
-      "artist": "Pescado Rabioso",
-      "album": "Artaud",
-      "year": 1973,
+      "id": "bailando-con-tu-sombra",
+      "title": "Bailando con tu sombra",
+      "artist": "Victor Heredia",
+      "album": "Fenix",
+      "year": 2003,
       "country": "🇦🇷",
       "progress": 5,
-      "created_at": "04/04/2021",
+      "order": 1,
+      "created_at": "29/04/2021",
       "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/689lBKIELtWGHfsPWpR6rv?si=34945449901e4181",
-      "youtube_url": "https://youtu.be/b-u-bchAnW4",
+      "spotify_url": "https://open.spotify.com/track/1kepq9J67v8HhEEfGdYq9m?si=cd2a7351a0d4402f",
+      "youtube_url": "https://youtu.be/puUKQ_pJ_v4",
       "sources": [
         {
           "score": 2,
-          "text": "Todas las hojas son del viento",
-          "url": "https://acordes.lacuerda.net/luis_a_spinetta/todas_las_hojas_son_del_viento-4.shtml",
+          "text": "Bailando con tu sombra",
+          "url": "https://acordes.lacuerda.net/abel_pintos/bailando_con_tu_sombra.shtml",
           "source": "lacuerda"
         },
         {
           "score": 1,
-          "text": "Como Tocar \"Todas Las Hojas Son del Viento\" de Spinetta en Guitarra",
-          "url": "https://youtu.be/Yo6YOrFDvvQ",
+          "text": "Como tocar guitarra Bailando con tu Sombra de V. Heredia",
+          "url": "https://youtu.be/vRUJRqK1rFk",
           "source": "youtube"
         }
       ],
-      "chords": ["C", "D", "Em", "F7", "Fmaj7", "G", "G6[1]"]
-    },
-    {
-      "id": "te-para-tres",
-      "title": "Té para tres",
-      "artist": "Soda Stereo",
-      "album": "Canción animal",
-      "year": 1990,
-      "country": "🇦🇷",
-      "progress": 5,
-      "created_at": "23/04/2021",
-      "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/2kMVxFh1y5gow2hBtqGO4m?si=93b23349e91a4db4",
-      "youtube_url": "https://youtu.be/91XRV1mKUe4",
-      "sources": [
-        {
-          "score": 2,
-          "text": "Té para 3",
-          "url": "https://acordes.lacuerda.net/soda_stereo/te_para_3-2.shtml",
-          "source": "lacuerda"
-        },
-        {
-          "score": 1,
-          "text": "cómo tocar en guitarra TÉ PARA TRES de SODA STEREO tutorial",
-          "url": "https://youtu.be/XZFQOFP5Klg",
-          "source": "youtube"
-        }
-      ],
-      "chords": ["A7", "D/F#", "Em9", "G"]
-    },
-    {
-      "id": "un-poco-de-amor-frances",
-      "title": "Un poco de amor francés",
-      "artist": "Patricio Rey y sus Redonditos de Ricota",
-      "album": "La mosca y la sopa",
-      "year": 1991,
-      "country": "🇦🇷",
-      "progress": 5,
-      "created_at": "05/04/2021",
-      "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/1MRhIdcloOD0uiiG3ybXGX?si=koAJWM5lTI6FUxKeMGXBwg",
-      "youtube_url": "https://youtu.be/LDdH3HYlGA4",
-      "sources": [
-        {
-          "score": 3,
-          "text": "Cómo tocar Un poco de amor francés Redonditos de Ricota con guitarra criolla Acordes Tutorial Letra",
-          "url": "https://youtu.be/nCFafzchI7E",
-          "source": "youtube"
-        },
-        {
-          "score": 2,
-          "text": "Un poco de amor francés",
-          "url": "https://acordes.lacuerda.net/patricio_rey/un_poco_de_amor_frances-5.shtml",
-          "source": "lacuerda"
-        },
-        {
-          "score": 1,
-          "text": "Cómo tocar UN POCO DE AMOR FRANCÉS de LOS REDONDOS en ukelele tutorial",
-          "url": "https://youtu.be/HCXF4D2hXP0",
-          "source": "youtube"
-        }
-      ],
-      "chords": ["Am", "C", "Dm", "F", "G"]
+      "chords": ["Am", "C", "E", "F", "G"]
     },
     {
       "id": "agua-marfil",
@@ -409,6 +519,7 @@
       "year": 2015,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "24/04/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/6mYdnKt43uGw3gmtOz4yQi?si=97e2cc212a9b4a23",
@@ -424,28 +535,6 @@
       "chords": ["Bm", "D", "F#7", "G"]
     },
     {
-      "id": "aguacero",
-      "title": "Aguacero",
-      "artist": "Perotá Chingó",
-      "album": "Aguas",
-      "year": 2017,
-      "country": "🇦🇷",
-      "progress": 1,
-      "created_at": "28/04/2021",
-      "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/4BgpB2GGQ2njzpS3RN4C3w?si=9c8e8b97ce0a408c",
-      "youtube_url": "https://youtu.be/tNuO2-vlI9Y",
-      "sources": [
-        {
-          "score": 1,
-          "text": "Aguacero",
-          "url": "https://acordes.lacuerda.net/perota_chingo/aguacero.shtml",
-          "source": "lacuerda"
-        }
-      ],
-      "chords": ["A", "B7", "D", "Dm", "Em", "G"]
-    },
-    {
       "id": "alma-de-diamante",
       "title": "Alma de diamante",
       "artist": "Spinetta Jade",
@@ -453,6 +542,7 @@
       "year": 1980,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "30/04/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/6F3VxUPgfcvDDpk2UxsJ5a?si=748b54a7a88c4da3",
@@ -481,6 +571,7 @@
       "year": 1994,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "27/03/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/4vsmIkU6VJa9dXXqasvzx0?si=VIwbzG8QThOlLS35dhYEMQ",
@@ -509,6 +600,7 @@
       "year": 2010,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "25/02/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/7dVj5UjkSMybmGDCdyVPUt?si=1DEm17xGSImA7g3M_T2XjA",
@@ -531,6 +623,7 @@
       "year": 2001,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "04/07/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/2BtPSOvL4L9QmpMRMFf7zy?si=a6063b5612db42e5",
@@ -558,74 +651,6 @@
       "chords": ["A", "Am", "C", "D", "F", "G"]
     },
     {
-      "id": "bicho-de-ciudad",
-      "title": "Bicho de ciudad",
-      "artist": "Los Piojos",
-      "album": "Civilización",
-      "year": 2007,
-      "country": "🇦🇷",
-      "progress": 3,
-      "created_at": "22/06/2021",
-      "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/1L9ybuuZdLY3biLEgfN4zB?si=a4656d72f6934a9f",
-      "youtube_url": "https://youtu.be/esI9dPBmt34",
-      "sources": [
-        {
-          "score": 3,
-          "text": "Bicho de ciudad",
-          "url": "https://acordes.lacuerda.net/piojos/bicho_de_ciudad.shtml",
-          "source": "lacuerda"
-        },
-        {
-          "score": 2,
-          "text": "Cómo tocar Los Piojos Bicho de ciudad con guitarra criolla Acordes Tutorial Letra Cover",
-          "url": "https://youtu.be/FCz1p5xjlvM",
-          "source": "youtube"
-        },
-        {
-          "score": 1,
-          "text": "Como tocar Bicho de ciudad Los piojos guitarra (letra y acordes)",
-          "url": "https://youtu.be/MUKa2nM4690",
-          "source": "youtube"
-        }
-      ],
-      "chords": ["A", "Bm", "D", "Em", "F#m", "G/D"]
-    },
-    {
-      "id": "cancion-para-mi-muerte",
-      "title": "Canción para mi muerte",
-      "artist": "Sui Generis",
-      "album": "Vida",
-      "year": 1972,
-      "country": "🇦🇷",
-      "progress": 5,
-      "created_at": "22/07/2021",
-      "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/0LWO6hUTJz6KBrSA2iJOpH?autoplay=true",
-      "youtube_url": "https://youtu.be/NAtB8AOpZIY",
-      "sources": [
-        {
-          "score": 3,
-          "text": "Cancion para mi muerte",
-          "url": "https://acordes.lacuerda.net/charly_garcia/cancion_para_mi_muerte.shtml",
-          "source": "lacuerda"
-        },
-        {
-          "score": 2,
-          "text": "Como tocar Cancion Para mi Muerte - Sui Generis",
-          "url": "https://youtu.be/LPgjbAkvCZs",
-          "source": "youtube"
-        },
-        {
-          "score": 1,
-          "text": "Como tocar Cancion para mi muerte de Sui generis en Guitarra acustica CLASE TUTORIAL",
-          "url": "https://youtu.be/tqurvSUyl28",
-          "source": "youtube"
-        }
-      ],
-      "chords": ["Am7", "Bm", "Cadd9", "D", "D#", "D7", "Dsus4", "Em", "Fadd9", "G"]
-    },
-    {
       "id": "cuando-pase-el-temblor",
       "title": "Cuando pase el temblor",
       "artist": "Soda Stereo",
@@ -633,6 +658,7 @@
       "year": 1995,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "01/07/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/3uMYq07Kj5m564OQwdSCrD?si=c7ce8615c2c74e26",
@@ -655,6 +681,7 @@
       "year": 2004,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "30/04/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/7qGn9WweEDJw8KZwJqB1KN?si=8cda781f134e494e",
@@ -689,6 +716,7 @@
       "year": 1982,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "23/04/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/4y1ze4JPCe7XVv28VlZ4k0?si=1fabe572846049e8",
@@ -717,6 +745,7 @@
       "year": 2015,
       "country": "🇲🇽",
       "progress": 3,
+      "order": 0,
       "created_at": "22/06/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/692C4fgt86NVLGwKXe4KCs?si=177dc09b39ee4aee",
@@ -745,6 +774,7 @@
       "year": 2010,
       "country": "🇵🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "04/07/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/0vl8naLAWvkm7EiE4DQdl5?si=2ee80fa90d6e4e87",
@@ -791,6 +821,7 @@
       "year": 1993,
       "country": "🇨🇴",
       "progress": 3,
+      "order": 0,
       "created_at": "04/06/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/4tXR895KKljrC2VptgyEhJ?si=118698d330524f4b",
@@ -806,34 +837,6 @@
       "chords": ["Am", "C", "E", "E7", "G7"]
     },
     {
-      "id": "mariposa-tecknicolor",
-      "title": "Mariposa tecknicolor",
-      "artist": "Fito Paez",
-      "album": "Circo Beat",
-      "year": 1994,
-      "country": "🇦🇷",
-      "progress": 5,
-      "created_at": "10/05/2021",
-      "is_published": true,
-      "spotify_url": "https://open.spotify.com/track/2RognU2ViRdA6HxnpAITJl?si=61fc16da63e64997",
-      "youtube_url": "https://youtu.be/uzxeVzFrlq8",
-      "sources": [
-        {
-          "score": 2,
-          "text": "cómo tocar MARIPOSA TECKNICOLOR de FITO PÁEZ en guitarra tutorial",
-          "url": "https://youtu.be/mfomemgURwo",
-          "source": "youtube"
-        },
-        {
-          "score": 1,
-          "text": "mandrearamirez",
-          "url": "https://www.instagram.com/p/BhzwwmBlPNw",
-          "source": "instagram"
-        }
-      ],
-      "chords": ["Am", "C", "Dm", "E7", "Em", "Fmaj7", "G"]
-    },
-    {
       "id": "mundo-agradable",
       "title": "Mundo agradable",
       "artist": "Serú Girán",
@@ -841,6 +844,7 @@
       "year": 2019,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "04/07/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/4VcZ2jEE3t9ij9XJV9n7in?si=14a7c099228d445d",
@@ -869,6 +873,7 @@
       "year": 2000,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "28/03/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/2Jm3VE0qGqKSxqPbbVt6oC?si=67f9f66f33294f5c",
@@ -909,6 +914,7 @@
       "year": 2009,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "04/07/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/7q7XFO9av9VpNJSXKJwJxD?si=6001c909a54048eb",
@@ -931,6 +937,7 @@
       "year": 1992,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "04/07/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/47rrhPXwe6sfKtIDwJAsO4?si=3ca06ebb645b4457",
@@ -953,6 +960,7 @@
       "year": 1999,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "21/07/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/5gUxsVRhWljyJz7pYakRL4?si=8ceb2da535324c1d",
@@ -987,6 +995,7 @@
       "year": 1986,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "28/04/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/46TZ5rawdrjoFwsQLGlcLr?si=d4407d0509d2460e",
@@ -1039,6 +1048,7 @@
       "year": 1998,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "10/01/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/6G9painkkIlE8HauZrG4Vw?si=2pnzv_-6Q6K8tFe0CclMMA",
@@ -1073,6 +1083,7 @@
       "year": 1996,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "23/03/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/1NXvuBAq48QrxRFQZVmORQ?si=k2nEIqKcRMSd6L1owJaLTw",
@@ -1113,21 +1124,28 @@
       "year": 1964,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "21/07/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/3Zb75jF6ClmT4qiQoCX03F?si=1323af7a7f694a05",
       "youtube_url": "https://youtu.be/HX0NP-whJ58",
       "sources": [
         {
-          "score": 3,
+          "score": 4,
           "text": "Zamba de mi esperanza",
           "url": "https://acordes.lacuerda.net/chalchaleros/zamba_de_mi_esperanza.shtml",
           "source": "lacuerda"
         },
         {
-          "score": 2,
+          "score": 3,
           "text": "Zamba de mi esperanza - Tutorial Guitarra",
           "url": "https://youtu.be/YC9b4hq8Zag",
+          "source": "youtube"
+        },
+        {
+          "score": 2,
+          "text": "Zamba de mi esperanza - Euge Barker",
+          "url": "https://youtu.be/YUr6VdHJYcs",
           "source": "youtube"
         },
         {
@@ -1147,6 +1165,7 @@
       "year": 1993,
       "country": "🇦🇷",
       "progress": 3,
+      "order": 0,
       "created_at": "26/06/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/2EGq3O7pchSqjQ6gx82byi?si=65bf8df73d4249fa",
@@ -1182,6 +1201,7 @@
       "year": 2005,
       "country": "🇵🇷",
       "progress": 1,
+      "order": 0,
       "created_at": "04/07/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/3KxLhKcZ3mXZeM9EERO8mu?si=31d87f31e6474417",
@@ -1197,6 +1217,29 @@
       "chords": ["Asus2", "D", "Dm", "E"]
     },
     {
+      "id": "aguacero",
+      "title": "Aguacero",
+      "artist": "Perotá Chingó",
+      "album": "Aguas",
+      "year": 2017,
+      "country": "🇦🇷",
+      "progress": 1,
+      "order": 0,
+      "created_at": "28/04/2021",
+      "is_published": true,
+      "spotify_url": "https://open.spotify.com/track/4BgpB2GGQ2njzpS3RN4C3w?si=9c8e8b97ce0a408c",
+      "youtube_url": "https://youtu.be/tNuO2-vlI9Y",
+      "sources": [
+        {
+          "score": 1,
+          "text": "Aguacero",
+          "url": "https://acordes.lacuerda.net/perota_chingo/aguacero.shtml",
+          "source": "lacuerda"
+        }
+      ],
+      "chords": ["A", "B7", "D", "Dm", "Em", "G"]
+    },
+    {
       "id": "cancion-para-los-dias-de-la-vida",
       "title": "Canción para los días de la vida",
       "artist": "Invisible",
@@ -1204,6 +1247,7 @@
       "year": 1977,
       "country": "🇦🇷",
       "progress": 1,
+      "order": 0,
       "created_at": "12/01/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/3T5SksrlFxunlotQ0lmSwv?si=6c94d32477c64784",
@@ -1258,6 +1302,7 @@
       "year": 2020,
       "country": "🇬🇹",
       "progress": 1,
+      "order": 0,
       "created_at": "11/07/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/5uHpmDnCSxSpjQGxhXhA13?si=aed1d8b32f614dd2",
@@ -1286,6 +1331,7 @@
       "year": 2017,
       "country": "🇪🇸",
       "progress": 1,
+      "order": 0,
       "created_at": "10/06/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/6U7XONjTpMsiMPnIO8eiQq?si=80728ffa6e874fcd",
@@ -1308,6 +1354,7 @@
       "year": 1996,
       "country": "🇦🇷",
       "progress": 1,
+      "order": 0,
       "created_at": "03/06/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/1SBGb9SOYwb8H7LhK5daAS?si=0311afc074544e55",
@@ -1336,6 +1383,7 @@
       "year": 1999,
       "country": "🇦🇷",
       "progress": 1,
+      "order": 0,
       "created_at": "05/06/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/2UkcvsKD0hZH7ALfG3m7AP?si=243877bf7b1448cf",
@@ -1364,6 +1412,7 @@
       "year": 2017,
       "country": "🇦🇷",
       "progress": 1,
+      "order": 0,
       "created_at": "01/04/2021",
       "is_published": true,
       "spotify_url": "https://open.spotify.com/track/44q38EV7P1sjbLI8RB6k9M?si=j5rL7NNRRxu5uSdeKZKs_Q",

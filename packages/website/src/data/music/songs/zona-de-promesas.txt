@@ -1,14 +1,14 @@
 G      D      G
   Mama sabe bien
-     D        C    D     C  D
-  perdí una bata...lla
+     D        C D    C  D
+  perdí una batalla
 G        D    G
   quiero regresar
-  D        C  D     C  D
+  D        C  D      C  D
   solo a besarla
 
 
-Am        Fmaj7|Fadd9   Fmaj7|Fmaj7/F#
+Am        Fadd9         Fmaj7|Fmaj7/F#
   No está mal ser mi    dueño otra vez
 Am     B7             Em       D       A
   ni temer que el río sangre y calme
@@ -16,14 +16,14 @@ Am     B7             Em       D       A
   al contarle mis plegarias
 
 
-  G   Cadd9   G   Cadd9   Em7   D   Fmaj7|Fadd9
+  G   Cadd9   G   Cadd9   Em7   D   Fadd9
 
 
   G     Cadd9 G
   Tarda en llegar
   Cadd9  Em7       D
   y al final, al final
-  Fmaj7|Fadd9   G
+  Fadd9         G
   hay      recompensa
 
 
@@ -32,15 +32,15 @@ Am     B7             Em       D       A
 
 G      D      G
   Mama sabe bien
-    D        C  D     C  D
+    D         C D   C  D
   pequeña princesa
 G        D    G
   cuando regresé,
-D         C D     C  D
+D         C D       C  D
   todo quemaba
 
 
-Am        Fmaj7|Fadd9   Fmaj7|Fmaj7/F#
+Am        Fadd9         Fmaj7|Fmaj7/F#
   no está mal      sumergirme otra vez
 Am     B7             Em       D       A
   ni temer que el río sangre y calme
@@ -48,24 +48,23 @@ Am     B7             Em       D       A
   se bucear en silencio
 
 
-  G   Cadd9   G   Cadd9   Em7   D   Fmaj7|Fadd9
+  G   Cadd9   G   Cadd9   Em7   D   Fadd9
 
 
   G     Cadd9 G
   Tarda en llegar
   Cadd9  Em7       D
   y al final, al final
-  Fmaj7|Fadd9   G
-  hay      recompensa
-  Cadd9   Em7   D   Fadd9   (x2)
+  Fadd9         G      Cadd9   Em7   D   Fadd9
+  hay      recompensa                     (x2)
 
   G     Cadd9 G
   Tarda en llegar
   Cadd9  Em7       D
   y al final, al final
-  Fmaj7|Fadd9   G
+  Fadd9         G      Cadd9   G   Cadd9   Em7
   hay      recompensa
-  Cadd9   G   Cadd9   Em7
 
-        D    Fmaj7|Fadd9   G
-  En la zona de       promesas
+
+        D    Fadd9    G
+  En la zona de    promesas

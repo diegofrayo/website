@@ -29,6 +29,7 @@ class MusicService {
         .sort(
           sortBy([
             { param: "progress", order: "desc" },
+            { param: "order", order: "desc" },
             { param: "title", order: "asc" },
           ]),
         ),

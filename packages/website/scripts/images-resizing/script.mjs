@@ -3,12 +3,12 @@ import path from "path";
 import sharp from "sharp";
 
 resizeImages({
-  sourceDir: "scripts/movies-and-books/movies",
+  sourceDir: "scripts/images-resizing/movies",
   outputDir: "public/static/pages/playground/movies",
 });
 
 resizeImages({
-  sourceDir: "scripts/movies-and-books/books",
+  sourceDir: "scripts/images-resizing/books",
   outputDir: "public/static/pages/playground/books",
 });
 
