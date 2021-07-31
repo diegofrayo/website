@@ -1,22 +1,19 @@
 {
   "name": "@diegofrayo/website",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "no-opt-install": "yarn install --ignore-optional",
-    "postinstall": "node --experimental-json-modules scripts/metadata.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
-    "format": "prettier --write \"{src,scripts,public}/**/*.{js,ts,tsx,json,css,xml,mjs.md,mdx}\"",
+    "format": "prettier --write \"{src,public,scripts}/**/*.{js,ts,tsx,json,css,xml,mjs.md,mdx}\"",
     "husky:install": "cd ../../ && husky install packages/website/.husky",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
     "scripts:seo-files": "node --experimental-json-modules scripts/rss.mjs && node --experimental-json-modules scripts/sitemap.mjs",
-    "scripts:static-files": "node --experimental-json-modules scripts/metadata.mjs && node --experimental-json-modules scripts/movies-and-books/script.mjs && node --experimental-json-modules scripts/list-of-chords.mjs",
-    "scripts:contacts": "node --experimental-json-modules scripts/contacts/script.mjs",
-    "scripts:transform-mdx-content": "node --experimental-json-modules scripts/mdx/script.mjs"
+    "scripts:static-files": "node --experimental-json-modules scripts/images-resizing/script.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.0",
@@ -28,8 +25,8 @@
     "dom-to-image": "^2.6.0",
     "emoji-strip": "^1.0.1",
     "hoist-non-react-statics": "^3.3.2",
+    "i18next": "^20.3.5",
     "next": "^11.0.0",
-    "next-i18next": "^8.5.5",
     "next-mdx-remote": "^1.0.0",
     "next-themes": "^0.0.10",
     "nprogress": "^0.2.0",

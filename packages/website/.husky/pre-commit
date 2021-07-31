@@ -6,4 +6,4 @@ yarn scripts:static-files
 yarn format
 yarn lint
 git add .
-#yarn build
+yarn build

@@ -1,16 +1,24 @@
 const METADATA = {
-  seo: { title: "Diego Rayo | Software Developer", url: "http://localhost:3000" },
+  seo: {
+    title: "Diego Rayo | Desarrollador de Software",
+  },
   website: {
     email: "diegofrayo@gmail.com",
-    jobTitle: "Software Developer",
     fullName: "Diego Fernando Rayo Zamora",
     shortName: "Diego Rayo",
-    url: "http://localhost:3000",
     username: "diegofrayo",
+    jobTitle: "Software Developer",
+    url: "https://diegofrayo.vercel.app",
+    nationality: "Colombian",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Armenia",
+      addressRegion: "Quindío",
+      addressCountry: "Colombia",
+    },
     social: {
       github: "https://www.github.com/diegofrayo",
       linkedin: "https://www.linkedin.com/in/diegofrayo",
-      spotify: "https://open.spotify.com/user/225gv7ppksrad4xzfwoyej4iq?si=iITcpGN7RjiwbgTFXy5P6Q",
       "500px": "https://500px.com/p/diegofrayo?view=photos",
     },
   },

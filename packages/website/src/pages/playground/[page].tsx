@@ -15,7 +15,7 @@ type T_PageProps = {
 const PLAYGROUND_PAGES = {
   books: {
     name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/books`)),
+    Component: dynamic(() => import(`../../components/pages/playground/Books`)),
   },
   "chords-creator": {
     name: "",
@@ -27,19 +27,19 @@ const PLAYGROUND_PAGES = {
   },
   movies: {
     name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/movies`)),
+    Component: dynamic(() => import(`../../components/pages/playground/Movies`)),
   },
   strings: {
     name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/strings`)),
+    Component: dynamic(() => import(`../../components/pages/playground/Strings`)),
   },
   styles: {
     name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/styles`)),
+    Component: dynamic(() => import(`../../components/pages/playground/Styles`)),
   },
   whatsapp: {
     name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/whatsapp`)),
+    Component: dynamic(() => import(`../../components/pages/playground/WhatsApp`)),
   },
 };
 

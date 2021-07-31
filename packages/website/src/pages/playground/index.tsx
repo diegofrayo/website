@@ -68,16 +68,14 @@ export const getStaticProps = getPageContentStaticProps({
 
 // --- Components ---
 
-function PagesList({ pages }) {
+function PagesList({ pages }: { pages: { name: string; isNextLink: boolean }[] }) {
   return (
     <List variant={List.variant.UNSTYLED}>
       {pages.map((page) => {
         return (
           <List.Item key={`PlaygroundPage-name-${page.name}`}>
             <Link
-              href={
-                page.url || `${ROUTES.PLAYGROUND}/${generateSlug(removeEmojiFromString(page.name))}`
-              }
+              href={`${ROUTES.PLAYGROUND}/${generateSlug(removeEmojiFromString(page.name))}`}
               variant={Link.variant.SIMPLE}
               isNextLink={page.isNextLink}
             >

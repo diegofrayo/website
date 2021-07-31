@@ -26,7 +26,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
     title: removeEmojiFromString(
       config.title ? `${config.title} - ${SEO_METADATA.title}` : SEO_METADATA.title,
     ),
-    url: config.pathname ? `${SEO_METADATA.url}${config.pathname}` : SEO_METADATA.url,
+    url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
     description: config.description || "",
   };
 
@@ -109,19 +109,12 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
               __html: JSON.stringify({
                 "@context": "http://schema.org",
                 "@type": "Person",
-                address: {
-                  "@type": "PostalAddress",
-                  addressLocality: "Armenia",
-                  addressRegion: "Quindío",
-                },
-                email: `mailto:${WEBSITE_METADATA.email}`,
-                jobTitle: WEBSITE_METADATA.jobTitle,
                 name: WEBSITE_METADATA.fullName,
+                email: WEBSITE_METADATA.email,
+                jobTitle: WEBSITE_METADATA.jobTitle,
                 url: WEBSITE_METADATA.url,
-                sameAs: [
-                  WEBSITE_METADATA.social.github,
-                  // WEBSITE_METADATA.social.linkedin
-                ],
+                address: WEBSITE_METADATA.address,
+                sameAs: [WEBSITE_METADATA.social.github, WEBSITE_METADATA.social.linkedin],
               }),
             }}
           />

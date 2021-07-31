@@ -39,6 +39,4 @@ yarn-error.log*
 .docs
 package-lock.json
 report*.json
-scripts/contacts/*.md
-scripts/movies-and-books/**/*
-src/data/blog/posts/en
+scripts/images-resizing/**/*
