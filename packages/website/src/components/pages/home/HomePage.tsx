@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
 
 import { Page, HomeLayout } from "~/components/layout";
@@ -7,6 +7,8 @@ import { Emoji } from "~/components/pages/_shared";
 import { withTranslations } from "~/hocs";
 import { T_ReactElement, T_SiteTexts } from "~/types";
 import { ROUTES } from "~/utils/routing";
+import { useDidMount } from "~/hooks";
+import { isUserLoggedIn } from "~/utils/misc";
 
 function HomePage({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
   return (
@@ -28,7 +30,7 @@ export default withTranslations(HomePage, { page: ROUTES.HOME });
 // --- Components ---
 
 function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
-  const items = [
+  const [items, setItems] = useState([
     {
       emoji: "🙋‍♂️",
       label: SiteTexts.page.current_locale.menu_item_about_me,
@@ -54,12 +56,20 @@ function Content({ SiteTexts }: { SiteTexts: T_SiteTexts }): T_ReactElement {
       label: SiteTexts.page.current_locale.menu_item_music,
       url: ROUTES.MUSIC,
     },
-    {
-      emoji: "🔮",
-      label: SiteTexts.page.current_locale.menu_item_playground,
-      url: ROUTES.PLAYGROUND,
-    },
-  ];
+  ]);
+
+  useDidMount(() => {
+    if (isUserLoggedIn()) {
+      setItems([
+        ...items,
+        {
+          emoji: "🔮",
+          label: SiteTexts.page.current_locale.menu_item_playground,
+          url: ROUTES.PLAYGROUND,
+        },
+      ]);
+    }
+  });
 
   return (
     <List variant={List.variant.UNSTYLED}>

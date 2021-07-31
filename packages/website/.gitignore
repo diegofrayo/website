@@ -41,4 +41,5 @@ package-lock.json
 report*.json
 scripts/contacts/*.md
 scripts/movies-and-books/**/*
+scripts/images-resizing/**/*
 src/data/blog/posts/en
