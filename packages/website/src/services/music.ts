@@ -1,5 +1,5 @@
 import { T_Object, T_Primitive, T_Song } from "~/types";
-import http from "~/utils/http";
+import http from "~/lib/http";
 import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 
 class MusicService {
@@ -33,6 +33,7 @@ class MusicService {
         .sort(
           sortBy([
             { param: "progress", order: "desc" },
+            { param: "order", order: "desc" },
             { param: "title", order: "asc" },
           ]),
         ),
@@ -52,7 +53,7 @@ class MusicService {
 
   private async fetchData(): Promise<T_Object> {
     const response = await http.get(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER}/pages/music/data.json`,
+      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/music/data.json`,
     );
     return response.data.songs;
   }

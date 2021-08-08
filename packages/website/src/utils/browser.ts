@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-import I18NService from "~/services/i18n";
+import I18NService from "~/i18n/service";
 import { T_Function, T_OnClickEvent } from "~/types";
 
 export function getScrollPosition(element?: HTMLElement | null): number {

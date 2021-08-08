@@ -4,16 +4,16 @@ import classNames from "classnames";
 import { Page, MainLayout } from "~/components/layout";
 import { List, Link } from "~/components/primitive";
 import { Render } from "~/components/pages/_shared";
-import { useQuery, useTranslation } from "~/hooks";
+import { useQuery } from "~/hooks";
+import { useTranslation, getPageContentStaticProps } from "~/i18n";
 import BlogService from "~/services/blog";
 import { T_BlogPost, T_ReactElement } from "~/types";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { ROUTES } from "~/utils/routing";
-import { getPageContentStaticProps } from "~/server/i18n";
 
 function BlogPage(): T_ReactElement {
   const { isLoading, error, data } = useQuery("blogPosts", BlogService.fetchPosts);
-  const { t } = useTranslation({ seo: true, layout: true });
+  const { t } = useTranslation();
 
   return (
     <Page
@@ -43,7 +43,7 @@ function BlogPage(): T_ReactElement {
                 {posts.map((post) => {
                   return (
                     <BlogEntry
-                      key={`BlogEntry-post-${post.slug}`}
+                      key={post.slug}
                       slug={post.slug}
                       title={BlogService.composeTitle(post)}
                       categories={post.categories}
@@ -73,7 +73,7 @@ export const getStaticProps = getPageContentStaticProps({
 type T_BlogEntryProps = Pick<T_BlogPost, "title" | "categories" | "slug" | "updatedAt">;
 
 function BlogEntry({ slug, title, categories, updatedAt }: T_BlogEntryProps): T_ReactElement {
-  const { t } = useTranslation({ page: true });
+  const { t } = useTranslation();
 
   const CATEGORIES_COLORS = {
     tech: "tw-bg-gray-200 dark:tw-bg-gray-600",

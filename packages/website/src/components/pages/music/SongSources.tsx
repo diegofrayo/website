@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Icon, Image, Link, List, Title } from "~/components/primitive";
-import { useTranslation } from "~/hooks";
+import { useTranslation } from "~/i18n";
 import { T_ReactElement, T_Song } from "~/types";
 
 type T_SongSourcesProps = {
@@ -10,7 +10,7 @@ type T_SongSourcesProps = {
 
 function SongSources(props: T_SongSourcesProps): T_ReactElement {
   const { sources, getImageComponent } = useController(props);
-  const { t } = useTranslation({ page: true });
+  const { t } = useTranslation();
 
   if (sources.length === 0) return null;
 

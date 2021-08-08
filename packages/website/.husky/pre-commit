@@ -2,7 +2,6 @@
 . "$(dirname "$0")/_/husky.sh"
 
 cd packages/website
-yarn scripts:static-files
 yarn format
 yarn lint
 git add .

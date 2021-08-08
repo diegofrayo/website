@@ -2,14 +2,15 @@ import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Icon, Link, Space } from "~/components/primitive";
-import { useTranslation } from "~/hooks";
-import { T_ReactElement } from "~/types";
+import { getPageContentStaticProps, useTranslation } from "~/i18n";
+import { useStoreSelector } from "~/state";
+import { selectWebsiteMetadata } from "~/state/modules/metadata";
+import { T_ReactElement, T_WebsiteMetadata } from "~/types";
 import { ROUTES } from "~/utils/routing";
-import { WEBSITE_METADATA } from "~/utils/constants";
-import { getPageContentStaticProps } from "~/server/i18n";
 
 function ContactPage(): T_ReactElement {
-  const { t } = useTranslation({ seo: true, layout: true, page: true });
+  const { t } = useTranslation();
+  const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
     <Page
@@ -32,7 +33,7 @@ function ContactPage(): T_ReactElement {
         ]}
         title={t("seo:title")}
       >
-        <div className="tw-mb-20">
+        <div className="tw-pb-20">
           <Item
             href={WEBSITE_METADATA.social.github}
             icon={<Icon icon={Icon.icon.GITHUB} size={32} withDarkModeBackground />}

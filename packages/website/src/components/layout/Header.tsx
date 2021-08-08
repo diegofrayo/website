@@ -1,13 +1,17 @@
-import React, { useState, useRef, Fragment } from "react";
+import React, { useState, useRef } from "react";
 import { useTheme } from "next-themes";
 import classNames from "classnames";
+import { useRouter } from "next/router";
 
-import { Title, Icon, Button, Link } from "~/components/primitive";
+import { Title as TitlePrimitive, Icon, Button, Link } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
-import { useOnWindowScroll, useTranslation } from "~/hooks";
-import { T_ReactElement } from "~/types";
-import { getScrollPosition } from "~/utils/browser";
 import { safeRender } from "~/hocs";
+import { useOnWindowScroll } from "~/hooks";
+import { useTranslation } from "~/i18n";
+import { useStoreSelector } from "~/state";
+import { selectPageConfig } from "~/state/modules/ui";
+import { T_Locale, T_ReactElement, T_UIReducer } from "~/types";
+import { getScrollPosition } from "~/utils/browser";
 
 function DefaultHeader(): T_ReactElement {
   const [isHeaderFixed, setIsFixedHeader] = useState(false);
@@ -26,40 +30,16 @@ function DefaultHeader(): T_ReactElement {
   });
 
   return (
-    <header
-      className={classNames(
-        "root tw-h-96",
-        isHeaderFixed ? "root--fixed" : "tw-bg-blue-500 dark:tw-bg-black tw-text-center",
-      )}
-      ref={headerRef}
-    >
-      {isHeaderFixed ? (
-        <div className="tw-w-full tw-fixed tw-left-0 tw-top-0 tw-z-30 tw-shadow-sm dark:tw-shadow-none dark:tw-border-b dark:tw-border-gray-700">
-          <div className="tw-max-w-screen-md tw-mx-auto tw-py-4 tw-px-6">
-            <DefaultHeaderContent isHeaderFixed={isHeaderFixed} />
-          </div>
-        </div>
-      ) : (
-        <DefaultHeaderContent />
-      )}
-
-      <style jsx>{`
-        .root--fixed > div {
-          background-color: rgba(255, 255, 255, 0.95);
-        }
-
-        :global(.tw-dark) .root--fixed > div {
-          background-color: rgba(40, 44, 52, 0.95);
-        }
-      `}</style>
+    <header ref={headerRef}>
+      {isHeaderFixed ? <FixedHeaderContent /> : <DefaultHeaderContent />}
     </header>
   );
 }
 
 function HomeHeader(): T_ReactElement {
   return (
-    <header className="tw-text-center tw-relative">
-      <HomeHeaderContent />
+    <header>
+      <DefaultHeaderContent background="tw-bg-transparent" />
     </header>
   );
 }
@@ -68,38 +48,51 @@ export { DefaultHeader, HomeHeader };
 
 // --- Components ---
 
-function HomeHeaderContent() {
+function DefaultHeaderContent({ background = "tw-bg-blue-500 dark:tw-bg-black" }): T_ReactElement {
   return (
-    <Fragment>
-      <div className="tw-pt-4 tw-mb-16">
+    <div className={classNames("tw-h-96 tw-text-center", background)}>
+      <div className="tw-pt-4 tw-pb-7">
         <DarkModeToggle />
+        <LocalesToggle />
       </div>
-      <HeaderLogo className="tw-w-32 tw-h-32 tw-mx-auto tw-mb-4 tw-border-black" />
-      <HeaderTitle className="tw-text-black dark:dfr-text-color-secondary" />
-      <HeaderSubtitle className="tw-text-white tw-pb-16" />
-    </Fragment>
-  );
-}
-
-function DefaultHeaderContent({ isHeaderFixed = false }): T_ReactElement {
-  return isHeaderFixed ? (
-    <div className="tw-flex tw-items-center tw-w-full tw-h-full tw-min-h-0">
-      <HeaderLogo
-        className="tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-black dark:tw-border-gray-700"
-        border="tw-border-0 tw-p-0"
-      />
-      <div className="tw-mx-4 tw-flex-1">
-        <HeaderTitle className="tw-text-black dark:dfr-text-color-secondary" />
-        <HeaderSubtitle className="tw-hidden sm:tw-block" />
-      </div>
-      <DarkModeToggle />
+      <Logo className="tw-w-32 tw-h-32 tw-mx-auto tw-mb-4 tw-border-black" />
+      <Title className="tw-text-black dark:dfr-text-color-secondary" />
+      <Subtitle className="tw-text-white" />
     </div>
-  ) : (
-    <HomeHeaderContent />
   );
 }
 
-function HeaderLogo({ className = "", border = "tw-border-4 tw-p-0.5" }) {
+function FixedHeaderContent(): T_ReactElement {
+  return (
+    <div className="root tw-w-full tw-fixed tw-left-0 tw-top-0 tw-z-30 tw-shadow-sm dark:tw-shadow-none dark:tw-border-b dark:tw-border-gray-700">
+      <div className="tw-max-w-screen-md tw-mx-auto tw-py-4 tw-px-6">
+        <div className="tw-flex tw-items-center tw-w-full tw-h-full tw-min-h-0">
+          <Logo
+            className="tw-w-12 sm:tw-w-16 tw-h-12 sm:tw-h-16 tw-border-black dark:tw-border-gray-700"
+            border="tw-border-0 tw-p-0"
+          />
+          <div className="tw-mx-4 tw-flex-1">
+            <Title className="tw-text-black dark:dfr-text-color-secondary" />
+            <Subtitle className="tw-hidden sm:tw-block" />
+          </div>
+          <DarkModeToggle />
+        </div>
+      </div>
+
+      <style jsx>{`
+        .root {
+          background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        :global(.tw-dark) .root {
+          background-color: rgba(40, 44, 52, 0.95);
+        }
+      `}</style>
+    </div>
+  );
+}
+
+function Logo({ className = "", border = "tw-border-4 tw-p-0.5" }): T_ReactElement {
   return (
     <Link href="/" variant={Link.variant.SIMPLE} className="tw-inline-block" isNextLink>
       <img
@@ -111,20 +104,23 @@ function HeaderLogo({ className = "", border = "tw-border-4 tw-p-0.5" }) {
   );
 }
 
-function HeaderTitle({ className = "" }) {
+function Title({ className = "" }): T_ReactElement {
   return (
     <Link href="/" variant={Link.variant.SIMPLE} className="tw-block" isNextLink>
-      <Title is="h1" className={className} size={Title.size.XL} variant={Title.variant.UNSTYLED}>
+      <TitlePrimitive
+        is="h1"
+        className={className}
+        size={TitlePrimitive.size.XL}
+        variant={TitlePrimitive.variant.UNSTYLED}
+      >
         Diego <Emoji className="tw-text-2xl">⚡</Emoji>
-      </Title>
+      </TitlePrimitive>
     </Link>
   );
 }
 
-function HeaderSubtitle({ className = "" }) {
-  const { t } = useTranslation({
-    layout: true,
-  });
+function Subtitle({ className = "" }): T_ReactElement {
+  const { t } = useTranslation();
 
   return (
     <p
@@ -161,3 +157,40 @@ const DarkModeToggle = safeRender(function DarkModeToggle(): T_ReactElement {
     </Button>
   );
 });
+
+function LocalesToggle(): T_ReactElement {
+  const { locale, asPath } = useRouter();
+  const { locales: pageLocales, reloadLocaleUpdate } =
+    useStoreSelector<T_UIReducer>(selectPageConfig);
+
+  const EMOJIS = { es: "🇪🇸", en: "🇺🇸" };
+
+  return (
+    <div className="tw-flex tw-items-center tw-justify-center tw-mt-1 tw-leading-0">
+      <Emoji className="tw-text-lg tw-relative tw-top-1px">🌐</Emoji>
+      <span className="tw-text-white tw-ml-0.5 tw-mr-2">»</span>
+      {pageLocales.map((item) => {
+        return (
+          <Link
+            key={`LocalesToggle-item-${item}`}
+            href={asPath}
+            locale={item as T_Locale}
+            variant={Link.variant.SIMPLE}
+            className={classNames(
+              "tw-text-2xl tw-mr-1",
+              item === locale ? "tw-pointer-events-none" : "tw-opacity-50",
+            )}
+            isNextLink={true}
+            {...(reloadLocaleUpdate && {
+              external: false,
+              href: `/${item}${asPath}`,
+              isNextLink: false,
+            })}
+          >
+            {EMOJIS[item]}
+          </Link>
+        );
+      })}
+    </div>
+  );
+}

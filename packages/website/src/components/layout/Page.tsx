@@ -3,8 +3,9 @@ import Head from "next/head";
 
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import AnalyticsService from "~/services/analytics";
-import { T_ReactChildrenProp, T_ReactElement } from "~/types";
-import { WEBSITE_METADATA, SEO_METADATA } from "~/utils/constants";
+import { useStoreSelector } from "~/state";
+import { selectWebsiteMetadata, selectSEOMetadata } from "~/state/modules/metadata";
+import { T_ReactChildrenProp, T_ReactElement, T_SEOMetadata, T_WebsiteMetadata } from "~/types";
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 import { removeEmojiFromString } from "~/utils/strings";
@@ -22,6 +23,9 @@ type T_PageProps = {
 };
 
 function Page({ children, config = {} }: T_PageProps): T_ReactElement {
+  const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
+  const SEO_METADATA = useStoreSelector<T_SEOMetadata>(selectSEOMetadata);
+
   const metadata = {
     title: removeEmojiFromString(
       config.title ? `${config.title} - ${SEO_METADATA.title}` : SEO_METADATA.title,
@@ -31,7 +35,6 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   };
 
   useDocumentTitle(metadata.title);
-
   useDidMount(() => {
     AnalyticsService.trackPageLoaded();
   });
@@ -122,7 +125,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
       </Head>
       {children}
       {isUserLoggedIn() && (
-        <span className="tw-fixed tw-top-1 tw-right-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white" />
+        <span className="tw-fixed tw-top-1 tw-left-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-white" />
       )}
       {isDevelopmentEnvironment() && <WindowSize />}
     </Fragment>

@@ -8,54 +8,42 @@ import { Page, MainLayout } from "~/components/layout";
 import { Blockquote, Icon, Button } from "~/components/primitive";
 import { MDXContent } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
-import { useDidMount, useTranslation } from "~/hooks";
+import { useDidMount } from "~/hooks";
+import { getPageContentStaticProps, useTranslation } from "~/i18n";
+import { dataLoader } from "~/server";
 import MusicService from "~/services/music";
-import { T_ReactElement, T_Song } from "~/types";
+import { T_Function, T_ReactElement, T_Song, T_WebsiteMetadata } from "~/types";
 import { copyToClipboard, isBrowser } from "~/utils/browser";
-import { WEBSITE_METADATA } from "~/utils/constants";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
-import { getPageContentStaticProps } from "~/server/i18n";
-import { loader } from "~/server/loader";
+import { selectWebsiteMetadata } from "~/state/modules/metadata";
+import { useStoreSelector } from "~/state";
 
 type T_PageProps = {
   song: T_Song;
   songMDXContent: string;
 };
 
-function SongPage({ song, songMDXContent }: T_PageProps): T_ReactElement {
-  const { t } = useTranslation({
-    page: true,
-    layout: true,
-  });
+function SongPage(props: T_PageProps): T_ReactElement {
+  const {
+    // props
+    song,
 
-  const [fontSize, setFontSize] = useState(0);
+    // states
+    fontSize,
 
-  const mdxContent = hydrate(songMDXContent, { components: MDXComponents });
+    // handlers
+    increaseFontSize,
+    decreaseFontSize,
 
-  useDidMount(() => {
-    setFontSize(getFontSize());
-  });
+    // vars
+    mdxContent,
+    isMaxFontSize,
+    isMinFontSize,
+  } = useController(props);
 
-  useEffect(
-    function updateFontSizeOnLocalStorage() {
-      window.localStorage.setItem("MUSIC_FONT_SIZE", `${fontSize}`);
-    },
-    [fontSize],
-  );
-
-  function getFontSize(): number {
-    const INITIAL_VALUE = 0.8;
-    const fontSize = isBrowser()
-      ? Number(window.localStorage.getItem("MUSIC_FONT_SIZE"))
-      : INITIAL_VALUE;
-
-    if (!fontSize || Number.isNaN(fontSize)) {
-      return INITIAL_VALUE;
-    }
-
-    return fontSize;
-  }
+  const { t } = useTranslation();
+  const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
     <Page
@@ -94,20 +82,20 @@ function SongPage({ song, songMDXContent }: T_PageProps): T_ReactElement {
             <Button
               className={classNames(
                 "tw-inline-block tw-mr-3",
-                fontSize === 2 && "tw-opacity-25 dark:tw-opacity-50",
+                isMaxFontSize && "tw-opacity-25 dark:tw-opacity-50",
               )}
-              disabled={fontSize === 2}
-              onClick={() => setFontSize((cv) => Number((cv + 0.2).toFixed(1)))}
+              disabled={isMaxFontSize}
+              onClick={increaseFontSize}
             >
               <Icon icon={Icon.icon.ZOOM_IN} size={24} />
             </Button>
             <Button
               className={classNames(
                 "tw-inline-block tw-mr-3",
-                fontSize === 0.6 && "tw-opacity-25 dark:tw-opacity-50",
+                isMinFontSize && "tw-opacity-25 dark:tw-opacity-50",
               )}
-              disabled={fontSize === 0.6}
-              onClick={() => setFontSize((cv) => Number((cv - 0.2).toFixed(1)))}
+              disabled={isMinFontSize}
+              onClick={decreaseFontSize}
             >
               <Icon icon={Icon.icon.ZOOM_OUT} size={24} />
             </Button>
@@ -135,11 +123,11 @@ export default SongPage;
 
 // --- Next.js functions ---
 
-type T_Path = { params: { song: string } };
+type T_StaticPath = { params: { song: string } };
 
 export const getStaticPaths: GetStaticPaths<{ song: string }> = async function getStaticPaths() {
   return {
-    paths: (await MusicService.fetchSongsList()).reduce((result: T_Path[], song: T_Song) => {
+    paths: (await MusicService.fetchSongsList()).reduce((result: T_StaticPath[], song: T_Song) => {
       return result.concat([{ params: { song: song.id } }]);
     }, []),
     fallback: false,
@@ -150,7 +138,7 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
   page: ROUTES.MUSIC,
   callback: async ({ params }) => {
     const song = await MusicService.getSong({ id: params?.song });
-    const file = await loader({ path: `/pages/music/[song]/${song.id}.mdx` });
+    const file = await dataLoader({ path: `/pages/music/[song]/${song.id}.mdx` });
     const songMDXContent = await renderToString(file, {
       components: MDXComponents,
       scope: {
@@ -158,7 +146,7 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
           ...MDXScope.DATA,
           song: {
             ...song,
-            content: await loader({ path: `/pages/music/[song]/${song.id}.txt` }),
+            content: await dataLoader({ path: `/pages/music/[song]/${song.id}.txt` }),
           },
         },
       },
@@ -172,3 +160,67 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
     };
   },
 });
+
+// --- Controller ---
+
+function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps, "song"> & {
+  fontSize: number;
+  mdxContent: string;
+  increaseFontSize: T_Function;
+  decreaseFontSize: T_Function;
+  isMaxFontSize: boolean;
+  isMinFontSize: boolean;
+} {
+  const [fontSize, setFontSize] = useState(0);
+
+  const mdxContent = hydrate(songMDXContent, { components: MDXComponents }) as string;
+
+  useDidMount(() => {
+    setFontSize(getFontSize());
+  });
+
+  useEffect(
+    function updateFontSizeOnLocalStorage() {
+      window.localStorage.setItem("MUSIC_FONT_SIZE", `${fontSize}`);
+    },
+    [fontSize],
+  );
+
+  function getFontSize(): number {
+    const INITIAL_VALUE = 0.8;
+    const fontSize = isBrowser()
+      ? Number(window.localStorage.getItem("MUSIC_FONT_SIZE"))
+      : INITIAL_VALUE;
+
+    if (!fontSize || Number.isNaN(fontSize)) {
+      return INITIAL_VALUE;
+    }
+
+    return fontSize;
+  }
+
+  function increaseFontSize(): void {
+    setFontSize((cv) => Number((cv + 0.2).toFixed(1)));
+  }
+
+  function decreaseFontSize(): void {
+    setFontSize((cv) => Number((cv - 0.2).toFixed(1)));
+  }
+
+  return {
+    // props
+    song,
+
+    // states
+    fontSize,
+
+    // handlers
+    increaseFontSize,
+    decreaseFontSize,
+
+    // vars
+    mdxContent,
+    isMaxFontSize: fontSize === 2,
+    isMinFontSize: fontSize === 0.6,
+  };
+}

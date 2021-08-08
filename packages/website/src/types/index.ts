@@ -120,6 +120,7 @@ export type T_Movie = {
   source: "Netflix" | "YouTube" | "imdb" | "Amazon Prime Video";
   categories: string[];
   calification: number;
+  cover: string;
 };
 
 // --- Books ---
@@ -131,6 +132,45 @@ export type T_Book = {
   year: number;
   calification: number;
   url: string;
+  cover: string;
+};
+
+// --- Redux ---
+
+export type T_Store = T_Object;
+
+export type T_MetadataReducer = {
+  website: T_WebsiteMetadata;
+  seo: T_SEOMetadata;
+};
+
+export type T_WebsiteMetadata = {
+  email: string;
+  fullName: string;
+  shortName: string;
+  username: string;
+  jobTitle: string;
+  url: string;
+  nationality: string;
+  address: {
+    "@type": string;
+    addressLocality: string;
+    addressRegion: string;
+    addressCountry: string;
+  };
+  social: {
+    github: string;
+    linkedin: string;
+    "500px": string;
+  };
+};
+
+export type T_SEOMetadata = {
+  title: string;
+};
+export type T_UIReducer = {
+  locales: T_Locale[];
+  reloadLocaleUpdate: boolean;
 };
 
 // --- Components props ---

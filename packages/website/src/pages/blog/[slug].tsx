@@ -1,23 +1,22 @@
 import React from "react";
-import fs from "fs";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Blockquote, Icon, Link, Space, Button } from "~/components/primitive";
+import { Blockquote, Icon, Space, Button } from "~/components/primitive";
 import { MDXContent } from "~/components/pages/_shared";
-import { useTranslation } from "~/hooks";
+import { useTranslation, getPageContentStaticProps } from "~/i18n";
 import twcss from "~/lib/twcss";
 import BlogService from "~/services/blog";
-import { T_BlogPost, T_Locale, T_ReactElement, T_PageContent } from "~/types";
+import { dataLoader } from "~/server";
+import { useStoreSelector } from "~/state";
+import { selectWebsiteMetadata } from "~/state/modules/metadata";
+import { T_BlogPost, T_Locale, T_ReactElement, T_PageContent, T_WebsiteMetadata } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
-import { WEBSITE_METADATA, GITHUB_DATA } from "~/utils/constants";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
-import { getPageContentStaticProps } from "~/server/i18n";
-import { loader } from "~/server/loader";
 
 type T_PageProps = {
   post: T_BlogPost;
@@ -27,10 +26,7 @@ type T_PageProps = {
 };
 
 function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
-  const { t } = useTranslation({
-    page: true,
-    layout: true,
-  });
+  const { t } = useTranslation();
 
   const mdxContent = hydrate(postMDXContent, { components: MDXComponents });
 
@@ -62,9 +58,7 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
       >
         <MDXContent content={mdxContent} />
         <Space size={8} />
-
         <BlogPostFooter
-          createdAt={post.createdAt}
           publishedAt={post.publishedAt}
           slug={post.slug}
           updatedAt={post.updatedAt}
@@ -78,20 +72,17 @@ export default BlogPostPage;
 
 // --- Next.js functions ---
 
-type T_Path = { params: { slug: string }; locale: T_Locale };
+type T_StaticPath = { params: { slug: string }; locale: T_Locale };
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function getStaticPaths() {
   return {
-    paths: (await BlogService.fetchPosts({ locale: "es" })).reduce(
-      (result: T_Path[], post: T_BlogPost) => {
-        return result.concat(
-          post.locales.map((locale: T_Locale): T_Path => {
-            return { params: { slug: post.slug }, locale };
-          }),
-        );
-      },
-      [],
-    ),
+    paths: (await BlogService.fetchPosts()).reduce((result: T_StaticPath[], post: T_BlogPost) => {
+      return result.concat(
+        post.locales.map((locale: T_Locale): T_StaticPath => {
+          return { params: { slug: post.slug }, locale };
+        }),
+      );
+    }, []),
     fallback: false,
   };
 };
@@ -102,16 +93,17 @@ export const getStaticProps = getPageContentStaticProps<
 >({
   page: ROUTES.BLOG,
   callback: async ({ params, locale }) => {
-    const post: T_BlogPost = await BlogService.fetchPost({ slug: params?.slug });
-    const file = await loader({
+    const post = await BlogService.fetchPost({ slug: params?.slug });
+    const file = await dataLoader({
       path: `/pages/blog/[slug]/${locale}/${post.createdAt}-${post.slug}.mdx`,
     });
     const postSlug = post.slug;
-    const codeSnippets = fs.existsSync(
-      `${process.cwd()}/src/components/pages/blog/${postSlug}/code-snippets.ts`,
-    )
-      ? require(`src/components/pages/blog/${postSlug}/code-snippets.ts`).default // eslint-disable-line @typescript-eslint/no-var-requires
-      : {};
+    // const codeSnippets = fs.existsSync(
+    //   `${process.cwd()}/src/components/pages/blog/[slug]/${postSlug}/code-snippets.ts`,
+    // )
+    //   ? require(`src/components/pages/blog/[slug]/${postSlug}/code-snippets.ts`).default // eslint-disable-line @typescript-eslint/no-var-requires
+    //   : {};
+    const codeSnippets = { postSlug };
     const postMDXContent = (await renderToString(file, {
       components: MDXComponents,
       scope: {
@@ -136,24 +128,11 @@ export const getStaticProps = getPageContentStaticProps<
 
 // --- Components ---
 
-type T_BlogPostFooterProps = Pick<T_BlogPost, "createdAt" | "publishedAt" | "slug" | "updatedAt">;
+type T_BlogPostFooterProps = Pick<T_BlogPost, "publishedAt" | "slug" | "updatedAt">;
 
-function BlogPostFooter({
-  createdAt,
-  publishedAt,
-  slug,
-  updatedAt,
-}: T_BlogPostFooterProps): T_ReactElement {
-  const { t, currentLocale } = useTranslation({
-    page: true,
-    layout: true,
-  });
-
-  function generateBlogPostRawContentLink() {
-    return GITHUB_DATA.monorepo.website.files["raw-post"]
-      .replace("CURRENT_LOCALE", currentLocale)
-      .replace("FILE_NAME", `${createdAt}-${slug}`);
-  }
+function BlogPostFooter({ publishedAt, slug, updatedAt }: T_BlogPostFooterProps): T_ReactElement {
+  const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
+  const { t } = useTranslation();
 
   return (
     <Blockquote
@@ -182,16 +161,6 @@ function BlogPostFooter({
         >
           <BlogPostFooterItem.Icon icon={Icon.icon.LINK} />
           <span>{t("page:copy_url_to_clipboard")}</span>
-        </BlogPostFooterItem>
-      </div>
-      <div className="tw-hidden tw-w-full sm:tw-w-1/2 tw-items-start tw-justify-center tw-flex-col sm:tw-items-end tw-mt-2 sm:tw-mt-0">
-        <BlogPostFooterItem
-          is={Link}
-          href={generateBlogPostRawContentLink()}
-          variant={Link.variant.SIMPLE}
-        >
-          <BlogPostFooterItem.Icon icon={Icon.icon.CODE} />
-          <span>{t("page:see_publication_source_code")}</span>
         </BlogPostFooterItem>
       </div>
     </Blockquote>

@@ -5,4 +5,3 @@ export { default as useIsMountedRef } from "./useIsMountedRef";
 export { default as useOnWindowResize } from "./useOnWindowResize";
 export { default as useOnWindowScroll } from "./useOnWindowScroll";
 export { default as useQuery } from "./useQuery";
-export { default as useTranslation } from "./useTranslation";

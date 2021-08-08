@@ -3,10 +3,9 @@ import dynamic from "next/dynamic";
 import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
-import { useTranslation } from "~/hooks";
+import { getPageContentStaticProps, useTranslation } from "~/i18n";
 import { T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
-import { getPageContentStaticProps } from "~/server/i18n";
 
 type T_PageProps = {
   page: string;
@@ -15,39 +14,36 @@ type T_PageProps = {
 const PLAYGROUND_PAGES = {
   books: {
     name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/Books`)),
+    Component: dynamic(() => import(`../../components/pages/playground/[page]/Books`)),
   },
   "chords-creator": {
     name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/ChordsCreator`)),
+    Component: dynamic(() => import(`../../components/pages/playground/[page]/ChordsCreator`)),
   },
   "encrypt-lab": {
     name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/EncryptLab`)),
+    Component: dynamic(() => import(`../../components/pages/playground/[page]/EncryptLab`)),
   },
   movies: {
     name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/Movies`)),
+    Component: dynamic(() => import(`../../components/pages/playground/[page]/Movies`)),
   },
   strings: {
     name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/Strings`)),
+    Component: dynamic(() => import(`../../components/pages/playground/[page]/Strings`)),
   },
   styles: {
     name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/Styles`)),
+    Component: dynamic(() => import(`../../components/pages/playground/[page]/Styles`)),
   },
   whatsapp: {
     name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/WhatsApp`)),
+    Component: dynamic(() => import(`../../components/pages/playground/[page]/WhatsApp`)),
   },
 };
 
 function PlaygroundPage({ page }: T_PageProps): T_ReactElement {
-  const { t } = useTranslation({
-    page: true,
-    layout: true,
-  });
+  const { t } = useTranslation();
 
   const { Component } = PLAYGROUND_PAGES[page];
 

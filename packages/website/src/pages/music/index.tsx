@@ -1,21 +1,18 @@
 import React, { Fragment } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { List, Link, Icon, Title } from "~/components/primitive";
+import { List, Link, Icon, Title, Space } from "~/components/primitive";
 import { Emoji, Render } from "~/components/pages/_shared";
 import { SongDetails } from "~/components/pages/music";
-import { useTranslation, useQuery } from "~/hooks";
+import { useQuery } from "~/hooks";
+import { getPageContentStaticProps, useTranslation } from "~/i18n";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
-import { ROUTES } from "~/utils/routing";
 import { isUserLoggedIn } from "~/utils/misc";
-import { getPageContentStaticProps } from "~/server/i18n";
+import { ROUTES } from "~/utils/routing";
 
 function MusicPage(): T_ReactElement {
-  const { t } = useTranslation({
-    page: true,
-    layout: true,
-  });
+  const { t } = useTranslation();
   const { isLoading, error, data } = useQuery("songsList", MusicService.fetchSongsList);
 
   return (
@@ -54,17 +51,19 @@ function MusicPage(): T_ReactElement {
                   is="h2"
                   variant={Title.variant.SECONDARY}
                   size={Title.size.MD}
-                  className="tw-my-6"
+                  className="tw-mt-6"
                 >
                   <Link
                     href={`${ROUTES.MUSIC}/${data[0].id}`}
                     variant={Link.variant.SECONDARY}
+                    locale="es"
                     isNextLink
                   >
                     <Emoji className="tw-mr-2">📓</Emoji>
-                    <span className="tw-underline">{data[0].title}</span>
+                    <span className="tw-underline">{t("page:chords_title")}</span>
                   </Link>
                 </Title>
+                <Space sizeTop={6} sizeBottom={4} variant={Space.variant.DASHED} />
 
                 <Title
                   is="h2"
@@ -73,7 +72,9 @@ function MusicPage(): T_ReactElement {
                   className="tw-mb-2"
                 >
                   <Emoji className="tw-mr-2">🎶</Emoji>
-                  <span>Canciones [{songsList.length - 1}]</span>
+                  <span>
+                    {t("page:songs_title")} [{songsList.length - 1}]
+                  </span>
                 </Title>
 
                 <List
@@ -87,6 +88,7 @@ function MusicPage(): T_ReactElement {
                           href={`${ROUTES.MUSIC}/${song.id}`}
                           variant={Link.variant.SECONDARY}
                           className="tw-font-bold tw-flex"
+                          locale="es"
                           isNextLink
                         >
                           <span className="tw-flex-1 sm:tw-truncate" title={song.title}>

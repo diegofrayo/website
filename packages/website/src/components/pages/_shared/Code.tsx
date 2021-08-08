@@ -1,14 +1,14 @@
 import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
+import classNames from "classnames";
 
 import { Link, Icon, Code as CodePrimitive, Button } from "~/components/primitive";
+import useTranslation from "~/i18n/hook";
 import twcss from "~/lib/twcss";
 import { T_CodeProps, T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { generateSlug } from "~/utils/strings";
-import classNames from "classnames";
-import { useTranslation } from "~/hooks";
 
 function Code({
   language,
@@ -17,7 +17,7 @@ function Code({
   sourceURL = "",
   showOnlySourceCode = false,
 }: T_CodeProps): T_ReactElement {
-  const { t } = useTranslation({ page: true });
+  const { t } = useTranslation();
 
   const codeTitle = fileName
     ? `// ${generateSlug(fileName)}`

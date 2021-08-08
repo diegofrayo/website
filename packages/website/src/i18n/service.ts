@@ -2,7 +2,6 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import { T_Locale } from "~/types";
-import { isDevelopmentEnvironment } from "~/utils/misc";
 
 class I18NService {
   LOCALES: T_Locale[] = ["es", "en"];
@@ -25,8 +24,9 @@ class I18NService {
       resources: {
         [locale]: messages,
       },
+      lng: locale,
       fallbackLng: this.DEFAULT_LOCALE,
-      debug: isDevelopmentEnvironment(),
+      debug: false,
     });
 
     return this.INSTANCE;
@@ -37,7 +37,15 @@ class I18NService {
   }
 
   getCurrentLocale() {
-    return i18n.language;
+    return i18n.language || this.DEFAULT_LOCALE;
+  }
+
+  getContentLocale(
+    locales: T_Locale[],
+    defaultLocale: T_Locale,
+    currentLocale: T_Locale,
+  ): T_Locale {
+    return locales.indexOf(currentLocale) !== -1 ? currentLocale : defaultLocale;
   }
 }
 

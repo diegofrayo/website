@@ -1,15 +1,20 @@
 import React from "react";
 
 import { MainLayout, Page } from "~/components/layout";
-import { useTranslation } from "~/hooks";
+import { useTranslation } from "~/i18n";
 import { T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
 
 function ErrorPage(): T_ReactElement {
-  const { t } = useTranslation({ page: true, layout: true });
+  const { t } = useTranslation();
 
   return (
-    <Page config={{ title: t("page:title"), disableSEO: true }}>
+    <Page
+      config={{
+        title: t("page:title"),
+        disableSEO: true,
+      }}
+    >
       <MainLayout
         breadcumb={[
           {

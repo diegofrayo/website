@@ -5,14 +5,14 @@ import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
 import { MDXContent } from "~/components/pages/_shared";
+import useTranslation from "~/i18n/hook";
+import getPageContentStaticProps from "~/i18n/server";
+import I18NService from "~/i18n/service";
+import { dataLoader } from "~/server";
 import { T_Locale, T_PageRoute, T_ReactElement } from "~/types";
-import { useTranslation } from "~/hooks";
-import { DYNAMIC_MAIN_PAGES, ROUTES } from "~/utils/routing";
-import { getItemLocale } from "~/utils/internationalization";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
+import { DYNAMIC_MAIN_PAGES, ROUTES } from "~/utils/routing";
 import { generateObjectKeyInLowerCase, generateObjectKeyInUpperCase } from "~/utils/strings";
-import { getPageContentStaticProps } from "~/server/i18n";
-import { loader } from "~/server/loader";
 
 type T_SitePageProps = {
   page: string;
@@ -20,11 +20,7 @@ type T_SitePageProps = {
 };
 
 function SitePage({ page, pageMDXContent }: T_SitePageProps): T_ReactElement {
-  const { t } = useTranslation({
-    seo: true,
-    page: true,
-    layout: true,
-  });
+  const { t } = useTranslation();
 
   const mdxContent = hydrate(pageMDXContent, { components: MDXComponents });
 
@@ -60,15 +56,15 @@ export default SitePage;
 
 // --- Next.js functions ---
 
-type T_Path = { params: { page: string }; locale: T_Locale };
+type T_StaticPath = { params: { page: string }; locale: T_Locale };
 
 export const getStaticPaths: GetStaticPaths<{ page: string }> = async function getStaticPaths({
   locales = [],
 }) {
   return {
-    paths: DYNAMIC_MAIN_PAGES.reduce((result: T_Path[], page: string) => {
+    paths: DYNAMIC_MAIN_PAGES.reduce((result: T_StaticPath[], page: string) => {
       return result.concat(
-        locales.map((locale: T_Locale): T_Path => {
+        locales.map((locale: T_Locale): T_StaticPath => {
           return { params: { page }, locale };
         }),
       );
@@ -87,8 +83,8 @@ export const getStaticProps = getPageContentStaticProps<T_SitePageProps, { page:
     if (!params.page) throw new Error('"page" param can\'t be undefined');
 
     const page = params.page;
-    const file = await loader({
-      path: `/pages/${page}/${getItemLocale(
+    const file = await dataLoader({
+      path: `/pages/${page}/${I18NService.getContentLocale(
         pageContent.page?.config?.locales,
         pageContent.page?.config?.default_locale,
         locale as T_Locale,

@@ -1,9 +1,9 @@
 import React from "react";
 
 import ErrorPage from "~/components/pages/ErrorPage";
+import { getPageContentStaticProps } from "~/i18n";
 import { T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
-import { getPageContentStaticProps } from "~/server/i18n";
 
 function Page500(): T_ReactElement {
   return <ErrorPage />;

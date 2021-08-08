@@ -1,4 +1,4 @@
-import http from "~/utils/http";
+import http from "~/lib/http";
 import { createArray, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 import { replaceAll } from "~/utils/strings";
 
@@ -204,7 +204,7 @@ class GuitarService {
 
   private async fetchChords() {
     this.chords = (
-      await http.get(`${process.env.NEXT_PUBLIC_ASSETS_SERVER}/pages/music/data.json`)
+      await http.get(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/music/data.json`)
     ).data.chords;
   }
 

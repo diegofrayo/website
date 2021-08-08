@@ -1,7 +1,5 @@
-// import fs from "fs";
-
+import http from "~/lib/http";
 import { T_Locale, T_Object, T_PageContent, T_PageRoute } from "~/types";
-import http from "~/utils/http";
 
 type T_DefaultPageProps = {
   pageContent: T_PageContent;
@@ -20,7 +18,7 @@ type T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams> = {
   ) => Promise<{ props: G_PageProps }>;
 };
 
-export function getPageContentStaticProps<G_PageProps, G_GetStaticPropsParams>({
+export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsParams>({
   page,
   callback = () => Promise.resolve({ props: {} as G_PageProps }),
 }: T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams>): any {
@@ -50,12 +48,13 @@ type T_GetContentParams = {
   locale?: T_Locale;
 };
 
+// --- Utils ---
+
 async function fetchPageContent({
   page = "",
   locale = this.DEFAULT_LOCALE,
 }: T_GetContentParams): Promise<T_PageContent> {
-  const layoutContent = await readFile("");
-  const pageContent = await readFile(page);
+  const [layoutContent, pageContent] = await Promise.all([readFile(""), readFile(page)]);
   const response = {
     seo: {},
     page: { config: {}, common: {} },
@@ -83,22 +82,11 @@ async function fetchPageContent({
 }
 
 async function readFile(page) {
-  // const file = fs.readFileSync(
-  //   `${process.cwd()}/src/data/${
-  //     page ? "pages" + (page === "/" ? "/home" : page) + "/" : ""
-  //   }content.json`,
-  //   "utf8",
-  // );
-
-  // return JSON.parse(file);
-
   const response = await http.get(
-    `http://localhost:4000/${
+    `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/${
       page ? "pages" + (page === "/" ? "/home" : page) + "/" : ""
     }content.json`,
   );
-
-  console.log(response);
 
   return response.data;
 }

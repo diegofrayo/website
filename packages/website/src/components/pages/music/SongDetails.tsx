@@ -2,9 +2,9 @@ import React from "react";
 import classNames from "classnames";
 
 import { Icon, Link } from "~/components/primitive";
+import useTranslation from "~/i18n/hook";
 import { T_ReactElement, T_Song } from "~/types";
 import { createArray } from "~/utils/misc";
-import { useTranslation } from "~/hooks";
 
 function SongDetails({
   song,
@@ -14,7 +14,7 @@ function SongDetails({
   className?: string;
 }): T_ReactElement {
   const { getProgressStyles } = useController();
-  const { t } = useTranslation({ page: true });
+  const { t } = useTranslation();
 
   if (!song.artist) return null;
 

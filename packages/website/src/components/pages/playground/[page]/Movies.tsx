@@ -7,7 +7,7 @@ import { useQuery } from "~/hooks";
 import MoviesService from "~/services/movies";
 import { T_Movie, T_ReactElement } from "~/types";
 import { getScrollPosition, setScrollPosition, isInViewport } from "~/utils/browser";
-import { HEADER_HEIGHT } from "~/utils/constants";
+import { FIXED_HEADER_HEIGHT } from "~/utils/constants";
 import { generateSlug } from "~/utils/strings";
 
 function Movies(): T_ReactElement {
@@ -70,7 +70,7 @@ function Movies(): T_ReactElement {
               {movies.length}]
             </Title>
             <div className="tw-flex tw-justify-center sm:tw-justify-between tw-flex-wrap">
-              {movies.map(({ id, source, title, type, calification }, index) => {
+              {movies.map(({ id, source, title, type, calification, cover }, index) => {
                 return (
                   <Link
                     key={id}
@@ -90,7 +90,7 @@ function Movies(): T_ReactElement {
                     <article
                       className="tw-flex tw-h-full tw-w-full"
                       style={{
-                        backgroundImage: `url("/static/pages/playground/movies/${id.toLowerCase()}.jpg")`,
+                        backgroundImage: `url(${cover})`,
                         backgroundSize: "100% 100%",
                         backgroundRepeat: "no-repeat",
                       }}
@@ -203,7 +203,7 @@ function useController(): {
       if (!isInViewport(resultsTitleElement)) {
         resultsTitleElement.scrollIntoView();
         setTimeout(() => {
-          setScrollPosition(getScrollPosition() - HEADER_HEIGHT);
+          setScrollPosition(getScrollPosition() - FIXED_HEADER_HEIGHT);
         }, 10);
       }
     };

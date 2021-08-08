@@ -18,12 +18,11 @@ import {
   Playground,
   ImageWithLink,
 } from "~/components/pages/_shared";
-import * as HTMLSemanticTagsBlogPostComponents from "~/components/pages/blog//html-semantic-tags";
-import * as MyFavoriteMusicAndMDXBlogPostComponents from "~/components/pages/blog//my-favorite-music-and-mdx";
+import * as HTMLSemanticTagsBlogPostComponents from "~/components/pages/blog/[slug]/html-semantic-tags";
+import * as MyFavoriteMusicAndMDXBlogPostComponents from "~/components/pages/blog/[slug]/my-favorite-music-and-mdx";
 import * as MusicComponents from "~/components/pages/music";
 import * as ResumeComponents from "~/components/pages/resume";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";
-import { WEBSITE_METADATA, GITHUB_DATA } from "~/utils/constants";
 import { ROUTES } from "~/utils/routing";
 
 export const MDXComponents = {
@@ -76,8 +75,6 @@ export const MDXComponents = {
 
 export const MDXScope = {
   DATA: {
-    GITHUB_DATA,
-    WEBSITE_METADATA,
     ROUTES,
   },
 };

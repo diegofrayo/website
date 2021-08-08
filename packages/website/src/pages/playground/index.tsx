@@ -2,11 +2,11 @@ import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Link, List, Space } from "~/components/primitive";
+import { getPageContentStaticProps } from "~/i18n";
 import { T_ReactElement, T_PageContent } from "~/types";
 import { isUserLoggedIn } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 import { generateSlug, removeEmojiFromString } from "~/utils/strings";
-import { getPageContentStaticProps } from "~/server/i18n";
 
 type T_PageProps = {
   pageContent: T_PageContent;
@@ -68,12 +68,12 @@ export const getStaticProps = getPageContentStaticProps({
 
 // --- Components ---
 
-function PagesList({ pages }: { pages: { name: string; isNextLink: boolean }[] }) {
+function PagesList({ pages }: { pages: { name: string; isNextLink: boolean }[] }): T_ReactElement {
   return (
     <List variant={List.variant.UNSTYLED}>
       {pages.map((page) => {
         return (
-          <List.Item key={`PlaygroundPage-name-${page.name}`}>
+          <List.Item key={`PagesList-page-${page.name}`}>
             <Link
               href={`${ROUTES.PLAYGROUND}/${generateSlug(removeEmojiFromString(page.name))}`}
               variant={Link.variant.SIMPLE}
