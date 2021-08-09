@@ -63,10 +63,10 @@ export type T_PageRoute =
   | "/about-me"
   | "/resume"
   | "/blog"
-  | "/blog/[id]"
+  | "/blog/[slug]"
   | "/contact"
   | "/music"
-  | "/music/[id]"
+  | "/music/[song]"
   | "/playground"
   | "/404"
   | "/500";

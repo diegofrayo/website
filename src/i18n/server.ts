@@ -12,7 +12,10 @@ type T_GetStaticProps<G_Params> = {
 };
 
 type T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams> = {
-  page: T_PageRoute | ((params: T_GetStaticProps<G_GetStaticPropsParams>) => T_PageRoute);
+  page:
+    | T_PageRoute
+    | T_PageRoute[]
+    | ((params: T_GetStaticProps<G_GetStaticPropsParams>) => T_PageRoute);
   callback?: (
     parameters: T_GetStaticProps<G_GetStaticPropsParams> & { pageContent: T_PageContent },
   ) => Promise<{ props: G_PageProps }>;
@@ -24,7 +27,7 @@ export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsP
 }: T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams>): any {
   async function getStaticProps(
     parameters: T_GetStaticProps<G_GetStaticPropsParams>,
-  ): Promise<{ props: T_DefaultPageProps & G_PageProps }> {
+  ): Promise<{ notFound: boolean; props: T_DefaultPageProps & G_PageProps }> {
     const locale = parameters.locale as T_Locale;
     const pageContent = await fetchPageContent({
       page: typeof page === "function" ? page(parameters) : page,
@@ -32,6 +35,7 @@ export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsP
     });
 
     return {
+      notFound: pageContent.page?.config?.locales?.indexOf(locale) === -1,
       props: {
         pageContent,
         locale,
@@ -43,18 +47,22 @@ export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsP
   return getStaticProps;
 }
 
+// --- Utils ---
+
 type T_GetContentParams = {
-  page?: string;
+  page?: string | string[];
   locale?: T_Locale;
 };
-
-// --- Utils ---
 
 async function fetchPageContent({
   page = "",
   locale = this.DEFAULT_LOCALE,
 }: T_GetContentParams): Promise<T_PageContent> {
-  const [layoutContent, pageContent] = await Promise.all([readFile(""), readFile(page)]);
+  const [layoutContent, ...pagesContent] = await Promise.all(
+    [readFile("")].concat(
+      Array.isArray(page) ? page.map((item) => readFile(item)) : [readFile(page)],
+    ),
+  );
   const response = {
     seo: {},
     page: { config: {}, common: {} },
@@ -62,9 +70,28 @@ async function fetchPageContent({
     common: {},
   };
 
+  const pageContent = pagesContent.reduce((result, current) => {
+    return {
+      config: {
+        ...result.config,
+        ...current.config,
+      },
+      [locale]: {
+        seo: {
+          ...result[locale]?.seo,
+          ...current[locale]?.seo,
+        },
+        texts: {
+          ...result[locale]?.texts,
+          ...current[locale]?.texts,
+        },
+      },
+    };
+  });
+
   if (page) {
-    response.seo = pageContent[locale].seo || {};
-    response.page = pageContent[locale].texts || {};
+    response.seo = pageContent[locale]?.seo || {};
+    response.page = pageContent[locale]?.texts || {};
     response.page.common = pageContent.common || {};
     response.page.config = pageContent.config || {};
   }

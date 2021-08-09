@@ -135,10 +135,10 @@ export const getStaticPaths: GetStaticPaths<{ song: string }> = async function g
 };
 
 export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: string }>({
-  page: ROUTES.MUSIC,
+  page: [ROUTES.MUSIC, ROUTES.MUSIC_DETAILS],
   callback: async ({ params }) => {
     const song = await MusicService.getSong({ id: params?.song });
-    const file = await dataLoader({ path: `/pages/music/[song]/${song.id}.mdx` });
+    const file = await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.mdx` });
     const songMDXContent = await renderToString(file, {
       components: MDXComponents,
       scope: {
@@ -146,7 +146,7 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
           ...MDXScope.DATA,
           song: {
             ...song,
-            content: await dataLoader({ path: `/pages/music/[song]/${song.id}.txt` }),
+            content: await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.txt` }),
           },
         },
       },
