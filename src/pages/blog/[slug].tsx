@@ -108,7 +108,10 @@ export const getStaticProps = getPageContentStaticProps<
           ...MDXScope.DATA,
           blogPost: {
             ...post,
-            codeSnippets,
+            assets: {
+              ...post.assets,
+              codeSnippets,
+            },
           },
         },
       },
