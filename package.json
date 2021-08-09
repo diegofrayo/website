@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write \"{src,public,scripts}/**/*.{ts,tsx,json,css,xml,mjs}\"",
-    "husky:install": "cd ../../ && husky install packages/website/.husky",
+    "husky:install": "husky install ./.husky",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
     "scripts:seo-files": "node --experimental-json-modules scripts/rss.mjs && node --experimental-json-modules scripts/sitemap.mjs"
