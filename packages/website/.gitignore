@@ -34,7 +34,7 @@ yarn-error.log*
 # vercel
 .vercel
 
-# personal
+# own
 *.orig
 .docs
 package-lock.json
