@@ -1,11 +1,11 @@
-import { dataLoader } from "~/server";
-import { T_MetadataReducer, T_Object } from "~/types";
+import http from "~/lib/http";
+import { T_MetadataReducer } from "~/types";
 
 class MetadataService {
   async fetchData(locale): Promise<T_MetadataReducer> {
-    const metadata = (await dataLoader({
-      path: `/metadata.json`,
-    })) as T_Object;
+    const { data: metadata } = await http.get(
+      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/metadata.json`,
+    );
 
     return { ...metadata, seo: metadata.seo[locale] } as T_MetadataReducer;
   }

@@ -154,7 +154,7 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     icon: MinusIcon,
     props: {
       className: "",
-      color: "tw-text-white",
+      color: "tw-text-white dark:tw-text-black",
     },
   },
   CODE: {

@@ -37,7 +37,7 @@ class I18NService {
   }
 
   getCurrentLocale() {
-    return i18n.language || this.DEFAULT_LOCALE;
+    return this.INSTANCE?.language || this.DEFAULT_LOCALE;
   }
 
   getContentLocale(
