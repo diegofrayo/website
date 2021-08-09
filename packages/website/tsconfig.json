@@ -19,7 +19,7 @@
       "~/*": ["src/*"]
     }
   },
-  "exclude": ["node_modules", "src/components/pages/snippets/data/**/*"],
+  "exclude": ["node_modules", ".docs/snippets/data/**/*"],
   "include": [
     "next-env.d.ts",
     "src/**/*.ts",

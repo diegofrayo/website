@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import twcss from "~/lib/twcss";
 import { T_Locale, T_ReactChildrenProp, T_ReactElement, T_HTMLAttributes } from "~/types";
 import { getScrollPosition, isSmallScreen, setScrollPosition } from "~/utils/browser";
-import { HEADER_HEIGHT } from "~/utils/constants";
+import { FIXED_HEADER_HEIGHT } from "~/utils/constants";
 
 enum E_Variants {
   DEFAULT = "DEFAULT",
@@ -102,7 +102,7 @@ function useController({
     setTimeout(() => {
       if (!isSmallScreen()) return;
 
-      setScrollPosition(getScrollPosition() - HEADER_HEIGHT);
+      setScrollPosition(getScrollPosition() - FIXED_HEADER_HEIGHT);
     }, 10);
   }
 

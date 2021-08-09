@@ -1,30 +1,31 @@
 import React from "react";
 
 import { MainLayout, Page } from "~/components/layout";
-import { useInternationalization } from "~/hooks";
+import { useTranslation } from "~/i18n";
 import { T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
 
-type T_ErrorPageProps = {
-  statusCode: 404 | 500;
-};
-
-function ErrorPage({ statusCode }: T_ErrorPageProps): T_ReactElement {
-  const { SiteTexts } = useInternationalization({ page: ROUTES[`ERROR_${statusCode}`] });
+function ErrorPage(): T_ReactElement {
+  const { t } = useTranslation();
 
   return (
-    <Page config={{ noRobots: true }}>
+    <Page
+      config={{
+        title: t("page:title"),
+        disableSEO: true,
+      }}
+    >
       <MainLayout
         breadcumb={[
           {
-            text: SiteTexts.page.current_locale.breadcumb,
+            text: t("layout:breadcumb:home"),
             url: ROUTES.HOME,
             isNextLink: false,
           },
         ]}
-        title={SiteTexts.page.current_locale.title}
+        title={t("page:title")}
       >
-        <p>{SiteTexts.page.current_locale.body}</p>
+        <p>{t("page:body")}</p>
       </MainLayout>
     </Page>
   );

@@ -1,9 +1,0 @@
-.parent {
-  align-items: stretch;
-}
-
-// or
-
-.child {
-  align-self: stretch;
-}

@@ -1,36 +1,179 @@
 import React, { useState, useEffect } from "react";
-import fs from "fs";
 import classNames from "classnames";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Blockquote, Icon, Button } from "~/components/primitive";
 import { MDXContent } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
-import { useDidMount, useInternationalization } from "~/hooks";
+import { useDidMount } from "~/hooks";
+import { getPageContentStaticProps, useTranslation } from "~/i18n";
+import { dataLoader } from "~/server";
 import MusicService from "~/services/music";
-import { T_ReactElement, T_Song } from "~/types";
+import { T_Function, T_ReactElement, T_Song, T_WebsiteMetadata } from "~/types";
 import { copyToClipboard, isBrowser } from "~/utils/browser";
-import { WEBSITE_METADATA } from "~/utils/constants";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
+import { selectWebsiteMetadata } from "~/state/modules/metadata";
+import { useStoreSelector } from "~/state";
 
-type T_SongPageProps = {
+type T_PageProps = {
   song: T_Song;
-  content: string;
+  songMDXContent: string;
 };
 
-function SongPage({ song, content }: T_SongPageProps): T_ReactElement {
-  const { SiteTexts } = useInternationalization({
-    page: ROUTES.MUSIC,
-    layout: true,
-  });
+function SongPage(props: T_PageProps): T_ReactElement {
+  const {
+    // props
+    song,
 
+    // states
+    fontSize,
+
+    // handlers
+    increaseFontSize,
+    decreaseFontSize,
+
+    // vars
+    mdxContent,
+    isMaxFontSize,
+    isMinFontSize,
+  } = useController(props);
+
+  const { t } = useTranslation();
+  const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
+
+  return (
+    <Page
+      config={{
+        title: song.title,
+        description: `Letra y acordes de ${song.title} de ${song.artist}`,
+        pathname: `${ROUTES.MUSIC}/${song.id}`,
+        disableSEO: false,
+      }}
+    >
+      <MainLayout
+        breadcumb={[
+          {
+            text: t("layout:breadcumb:home"),
+            url: ROUTES.HOME,
+          },
+          {
+            text: t("layout:breadcumb:music"),
+            url: ROUTES.MUSIC,
+          },
+          {
+            text: song.title,
+          },
+        ]}
+        title={`🎼 ${song.title}`}
+        showGoToTopButton
+      >
+        <SongDetails song={song} className="tw-mb-8" />
+
+        <Blockquote
+          className="tw-mb-8"
+          style={{ fontSize: `${fontSize}rem` }}
+          variant={Blockquote.variant.UNSTYLED}
+        >
+          <div className="tw-mb-6 tw-text-sm">
+            <Button
+              className={classNames(
+                "tw-inline-block tw-mr-3",
+                isMaxFontSize && "tw-opacity-25 dark:tw-opacity-50",
+              )}
+              disabled={isMaxFontSize}
+              onClick={increaseFontSize}
+            >
+              <Icon icon={Icon.icon.ZOOM_IN} size={24} />
+            </Button>
+            <Button
+              className={classNames(
+                "tw-inline-block tw-mr-3",
+                isMinFontSize && "tw-opacity-25 dark:tw-opacity-50",
+              )}
+              disabled={isMinFontSize}
+              onClick={decreaseFontSize}
+            >
+              <Icon icon={Icon.icon.ZOOM_OUT} size={24} />
+            </Button>
+            <Button
+              className="tw-inline-block tw-mr-3"
+              data-clipboard-text={`${WEBSITE_METADATA.url}${ROUTES.MUSIC}/${song.id}`}
+              onClick={copyToClipboard}
+            >
+              <Icon icon={Icon.icon.LINK} size={24} />
+            </Button>
+          </div>
+
+          <div className="tw-max-w-full tw-overflow-x-auto">
+            <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
+          </div>
+        </Blockquote>
+
+        <SongSources sources={song.sources} />
+      </MainLayout>
+    </Page>
+  );
+}
+
+export default SongPage;
+
+// --- Next.js functions ---
+
+type T_StaticPath = { params: { song: string } };
+
+export const getStaticPaths: GetStaticPaths<{ song: string }> = async function getStaticPaths() {
+  return {
+    paths: (await MusicService.fetchSongsList()).reduce((result: T_StaticPath[], song: T_Song) => {
+      return result.concat([{ params: { song: song.id } }]);
+    }, []),
+    fallback: false,
+  };
+};
+
+export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: string }>({
+  page: ROUTES.MUSIC,
+  callback: async ({ params }) => {
+    const song = await MusicService.getSong({ id: params?.song });
+    const file = await dataLoader({ path: `/pages/music/[song]/${song.id}.mdx` });
+    const songMDXContent = await renderToString(file, {
+      components: MDXComponents,
+      scope: {
+        DATA: {
+          ...MDXScope.DATA,
+          song: {
+            ...song,
+            content: await dataLoader({ path: `/pages/music/[song]/${song.id}.txt` }),
+          },
+        },
+      },
+    });
+
+    return {
+      props: {
+        song,
+        songMDXContent,
+      },
+    };
+  },
+});
+
+// --- Controller ---
+
+function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps, "song"> & {
+  fontSize: number;
+  mdxContent: string;
+  increaseFontSize: T_Function;
+  decreaseFontSize: T_Function;
+  isMaxFontSize: boolean;
+  isMinFontSize: boolean;
+} {
   const [fontSize, setFontSize] = useState(0);
 
-  const mdxContent = hydrate(content, { components: MDXComponents });
+  const mdxContent = hydrate(songMDXContent, { components: MDXComponents }) as string;
 
   useDidMount(() => {
     setFontSize(getFontSize());
@@ -56,111 +199,28 @@ function SongPage({ song, content }: T_SongPageProps): T_ReactElement {
     return fontSize;
   }
 
-  return (
-    <Page
-      config={{
-        title: song.title,
-        pathname: `${ROUTES.MUSIC}/${song.id}`,
-      }}
-    >
-      <MainLayout
-        breadcumb={[
-          {
-            text: SiteTexts.layout.current_locale.breadcumb.home,
-            url: ROUTES.HOME,
-          },
-          {
-            text: SiteTexts.layout.current_locale.breadcumb.music,
-            url: ROUTES.MUSIC,
-          },
-          {
-            text: song.title,
-          },
-        ]}
-        title={`🎼 ${song.title}`}
-        showGoToTopButton
-      >
-        <SongDetails song={song} SiteTexts={SiteTexts} className="tw-mb-8" />
+  function increaseFontSize(): void {
+    setFontSize((cv) => Number((cv + 0.2).toFixed(1)));
+  }
 
-        <Blockquote
-          className="tw-mb-8"
-          style={{ fontSize: `${fontSize}rem` }}
-          variant={Blockquote.variant.UNSTYLED}
-        >
-          <div className="tw-mb-6 tw-text-sm">
-            <Button
-              className={classNames(
-                "tw-inline-block tw-mr-3",
-                fontSize === 2 && "tw-opacity-25 dark:tw-opacity-50",
-              )}
-              disabled={fontSize === 2}
-              onClick={() => setFontSize((cv) => Number((cv + 0.2).toFixed(1)))}
-            >
-              <Icon icon={Icon.icon.ZOOM_IN} size={24} />
-            </Button>
-            <Button
-              className={classNames(
-                "tw-inline-block tw-mr-3",
-                fontSize === 0.6 && "tw-opacity-25 dark:tw-opacity-50",
-              )}
-              disabled={fontSize === 0.6}
-              onClick={() => setFontSize((cv) => Number((cv - 0.2).toFixed(1)))}
-            >
-              <Icon icon={Icon.icon.ZOOM_OUT} size={24} />
-            </Button>
-            <Button
-              className="tw-inline-block tw-mr-3"
-              data-clipboard-text={`${WEBSITE_METADATA.url}${ROUTES.MUSIC}/${song.id}`}
-              onClick={copyToClipboard}
-            >
-              <Icon icon={Icon.icon.LINK} size={24} />
-            </Button>
-          </div>
+  function decreaseFontSize(): void {
+    setFontSize((cv) => Number((cv - 0.2).toFixed(1)));
+  }
 
-          <div className="tw-max-w-full tw-overflow-x-auto">
-            <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
-          </div>
-        </Blockquote>
-
-        <SongSources sources={song.sources} />
-      </MainLayout>
-    </Page>
-  );
-}
-
-type T_Path = { params: { song: string } };
-
-export const getStaticPaths: GetStaticPaths<{ song: string }> = async function getStaticPaths() {
   return {
-    paths: (await MusicService.fetchSongsList()).reduce((result: T_Path[], song: T_Song) => {
-      return result.concat([{ params: { song: song.id } }]);
-    }, []),
-    fallback: false,
+    // props
+    song,
+
+    // states
+    fontSize,
+
+    // handlers
+    increaseFontSize,
+    decreaseFontSize,
+
+    // vars
+    mdxContent,
+    isMaxFontSize: fontSize === 2,
+    isMinFontSize: fontSize === 0.6,
   };
-};
-
-export const getStaticProps: GetStaticProps<T_SongPageProps, { song: string }> =
-  async function getStaticProps({ params }) {
-    const song = await MusicService.getSong({ id: params?.song });
-
-    const file = fs.readFileSync(`${process.cwd()}/src/data/music/songs/${song.id}.mdx`, "utf8");
-    const content = await renderToString(file, {
-      components: MDXComponents,
-      scope: {
-        DATA: {
-          ...MDXScope.DATA,
-          song: {
-            ...song,
-            content: fs.readFileSync(
-              `${process.cwd()}/src/data/music/songs/${song.id}.txt`,
-              "utf8",
-            ),
-          },
-        },
-      },
-    });
-
-    return { props: { song, content } };
-  };
-
-export default SongPage;
+}

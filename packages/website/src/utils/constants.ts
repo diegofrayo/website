@@ -1,8 +1,39 @@
-import GITHUB_DATA from "~/data/github.json";
-import METADATA from "~/data/metadata.json";
-
-export const { website: WEBSITE_METADATA } = METADATA;
-export const { seo: SEO_METADATA } = METADATA;
-export { GITHUB_DATA };
-
-export const HEADER_HEIGHT = 80;
+export const ASSETS_LOCAL_PATH = "/server/content";
+export const FIXED_HEADER_HEIGHT = 80;
+export const PLAYGROUND_PAGES = [
+  {
+    slug: "chords-creator",
+    title: "🎼 acordes",
+    componentName: "ChordsCreator",
+  },
+  {
+    slug: "encrypt-lab",
+    title: "🔨 dencrypt",
+    componentName: "EncryptLab",
+  },
+  {
+    slug: "styles",
+    title: "💅 estilos",
+    componentName: "Styles",
+  },
+  {
+    slug: "books",
+    title: "📚 libros",
+    componentName: "Books",
+  },
+  {
+    slug: "movies",
+    title: "🎥 películas y series",
+    componentName: "Movies",
+  },
+  {
+    slug: "strings",
+    title: "📝 strings",
+    componentName: "Strings",
+  },
+  {
+    slug: "whatsapp",
+    title: "💬 whatsapp",
+    componentName: "WhatsApp",
+  },
+];

@@ -1,84 +1,64 @@
 import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Link, List, Space } from "~/components/primitive";
-import { withTranslations } from "~/hocs";
-import { T_ReactElement, T_SiteTexts } from "~/types";
-import { isUserLoggedIn } from "~/utils/misc";
+import { Link, List } from "~/components/primitive";
+import { getPageContentStaticProps } from "~/i18n";
+import { T_ReactElement, T_PageContent } from "~/types";
+import { PLAYGROUND_PAGES } from "~/utils/constants";
 import { ROUTES } from "~/utils/routing";
-import { generateSlug, removeEmojiFromString } from "~/utils/strings";
 
-type T_PlaygroundPageProps = {
-  SiteTexts: T_SiteTexts;
+type T_PageProps = {
+  pageContent: T_PageContent;
 };
 
-function PlaygroundPage({ SiteTexts }: T_PlaygroundPageProps): T_ReactElement {
+function PlaygroundPage({ pageContent }: T_PageProps): T_ReactElement {
   return (
-    <Page config={{ noRobots: true }}>
+    <Page
+      config={{
+        title: pageContent.page?.title,
+        disableSEO: pageContent.page?.config?.is_seo_disabled,
+      }}
+    >
       <MainLayout
         breadcumb={[
           {
-            text: SiteTexts.layout.current_locale.breadcumb.home,
+            text: pageContent.layout?.breadcumb?.home as string,
             url: ROUTES.HOME,
           },
           {
-            text: SiteTexts.layout.current_locale.breadcumb.playground,
+            text: pageContent.layout?.breadcumb?.playground as string,
           },
         ]}
-        title={SiteTexts.page.current_locale.title}
+        title={pageContent.page?.title as string}
       >
-        <PagesList
-          pages={[
-            { name: "🎼 chords-creator", isNextLink: true },
-            { name: "📝 strings", isNextLink: true },
-            {
-              name: "👓 virtual-reality",
-              url: "/static/pages/playground/virtual-reality/index.html",
-              isNextLink: false,
-            },
-            { name: "💬 whatsapp", isNextLink: true },
-          ]}
-        />
-
-        {isUserLoggedIn() && (
-          <div className="tw-font-bold">
-            <Space sizeTop={6} sizeBottom={4} variant={Space.variant.DASHED} />
-            <PagesList
-              pages={[
-                { name: "📚 books", isNextLink: true },
-                { name: "🎥 movies", isNextLink: true },
-                { name: "🔨 encrypt-lab", isNextLink: true },
-                { name: "💅 styles", isNextLink: true },
-              ]}
-            />
-          </div>
-        )}
+        <PagesList pages={PLAYGROUND_PAGES} />
       </MainLayout>
     </Page>
   );
 }
 
-export default withTranslations(PlaygroundPage, {
+export default PlaygroundPage;
+
+// --- Next.js functions ---
+
+export const getStaticProps = getPageContentStaticProps({
   page: ROUTES.PLAYGROUND,
-  layout: true,
 });
 
 // --- Components ---
 
-function PagesList({ pages }) {
+function PagesList({ pages }: { pages: { slug: string; title: string }[] }): T_ReactElement {
   return (
     <List variant={List.variant.UNSTYLED}>
       {pages.map((page) => {
         return (
-          <List.Item key={`PlaygroundPage-name-${page.name}`}>
+          <List.Item key={`PagesList-page-${page.slug}`}>
             <Link
-              href={
-                page.url || `${ROUTES.PLAYGROUND}/${generateSlug(removeEmojiFromString(page.name))}`
-              }
+              href={`${ROUTES.PLAYGROUND}/${page.slug}`}
               variant={Link.variant.SIMPLE}
-              isNextLink={page.isNextLink}
+              isNextLink
             >
-              {page.name}
+              {page.title}
             </Link>
           </List.Item>
         );

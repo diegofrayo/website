@@ -34,11 +34,8 @@ yarn-error.log*
 # vercel
 .vercel
 
-# personal
+# own
 *.orig
 .docs
 package-lock.json
 report*.json
-scripts/images-resizing/books/*
-scripts/images-resizing/movies/*
-src/data/blog/posts/en

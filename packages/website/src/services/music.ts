@@ -1,10 +1,14 @@
-import Data from "~/data/music/songs.json";
-import { T_Primitive, T_Song } from "~/types";
+import { T_Object, T_Primitive, T_Song } from "~/types";
+import http from "~/lib/http";
 import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 
 class MusicService {
+  constructor() {
+    this.fetchSongsList = this.fetchSongsList.bind(this);
+  }
+
   async fetchSongsList(): Promise<T_Song[]> {
-    const songs = Data.songs
+    const songs = (await this.fetchData())
       .filter((song) => {
         return song.is_published;
       })
@@ -45,6 +49,13 @@ class MusicService {
     }
 
     return song;
+  }
+
+  private async fetchData(): Promise<T_Object> {
+    const response = await http.get(
+      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/music/data.json`,
+    );
+    return response.data.songs;
   }
 }
 

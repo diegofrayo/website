@@ -2,31 +2,38 @@ import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Icon, Link, Space } from "~/components/primitive";
-import { T_ReactElement } from "~/types";
+import { getPageContentStaticProps, useTranslation } from "~/i18n";
+import { useStoreSelector } from "~/state";
+import { selectWebsiteMetadata } from "~/state/modules/metadata";
+import { T_ReactElement, T_WebsiteMetadata } from "~/types";
 import { ROUTES } from "~/utils/routing";
-import { WEBSITE_METADATA } from "~/utils/constants";
 
 function ContactPage(): T_ReactElement {
+  const { t } = useTranslation();
+  const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
+
   return (
     <Page
       config={{
-        description: "Contáctame a través de mi correo electrónico o sígueme en GitHub",
+        title: t("seo:title"),
+        description: t("seo:description"),
         pathname: ROUTES.CONTACT,
+        disableSEO: Boolean(t("page:config:is_seo_disabled")),
       }}
     >
       <MainLayout
         breadcumb={[
           {
-            text: "Inicio",
+            text: t("layout:breadcumb:home"),
             url: ROUTES.HOME,
           },
           {
-            text: "Contacto",
+            text: t("layout:breadcumb:contact"),
           },
         ]}
-        title="💬 Contacto"
+        title={t("seo:title")}
       >
-        <div className="tw-mb-20">
+        <div className="tw-pb-20">
           <Item
             href={WEBSITE_METADATA.social.github}
             icon={<Icon icon={Icon.icon.GITHUB} size={32} withDarkModeBackground />}
@@ -36,7 +43,7 @@ function ContactPage(): T_ReactElement {
           <Item
             href={`mailto:${WEBSITE_METADATA.email}`}
             icon={<Icon icon={Icon.icon.GMAIL} size={32} />}
-            text="envíame un mensaje"
+            text={t("page:send_me_message")}
           />
         </div>
       </MainLayout>
@@ -46,9 +53,21 @@ function ContactPage(): T_ReactElement {
 
 export default ContactPage;
 
+// --- Next.js functions ---
+
+export const getStaticProps = getPageContentStaticProps({
+  page: ROUTES.CONTACT,
+});
+
 // --- Components ---
 
-function Item({ href, icon, text }): T_ReactElement {
+type T_ItemProps = {
+  href: string;
+  icon: T_ReactElement;
+  text: string;
+};
+
+function Item({ href, icon, text }: T_ItemProps): T_ReactElement {
   return (
     <Link href={href} variant={Link.variant.SIMPLE} className="tw-block">
       <div className="tw-flex tw-items-center">
