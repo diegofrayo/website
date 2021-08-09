@@ -5,55 +5,37 @@ import { GetStaticPaths } from "next";
 import { Page, MainLayout } from "~/components/layout";
 import { getPageContentStaticProps, useTranslation } from "~/i18n";
 import { T_ReactElement } from "~/types";
+import { PLAYGROUND_PAGES } from "~/utils/constants";
 import { ROUTES } from "~/utils/routing";
+
+const PLAYGROUND_PAGES_COMPONENTS = PLAYGROUND_PAGES.map((page) => {
+  return {
+    ...page,
+    Component: dynamic(
+      () => import(`../../components/pages/playground/[page]/${page.componentName}`),
+    ),
+  };
+});
 
 type T_PageProps = {
   page: string;
 };
 
-const PLAYGROUND_PAGES = {
-  books: {
-    name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/[page]/Books`)),
-  },
-  "chords-creator": {
-    name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/[page]/ChordsCreator`)),
-  },
-  "encrypt-lab": {
-    name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/[page]/EncryptLab`)),
-  },
-  movies: {
-    name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/[page]/Movies`)),
-  },
-  strings: {
-    name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/[page]/Strings`)),
-  },
-  styles: {
-    name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/[page]/Styles`)),
-  },
-  whatsapp: {
-    name: "",
-    Component: dynamic(() => import(`../../components/pages/playground/[page]/WhatsApp`)),
-  },
-};
-
-function PlaygroundPage({ page }: T_PageProps): T_ReactElement {
+function PlaygroundPage(props: T_PageProps): T_ReactElement {
+  const {
+    // vars
+    Component,
+    slug,
+    title,
+  } = useController(props);
   const { t } = useTranslation();
-
-  const { Component } = PLAYGROUND_PAGES[page];
 
   return (
     <Page
       config={{
-        title: t("seo:title") || t("page:title"),
-        description: t("seo:description") || t("page:description"),
-        pathname: `${ROUTES.PLAYGROUND}/${page}`,
-        disableSEO: Boolean(t("page:config:is_seo_disabled")),
+        title: title,
+        pathname: `${ROUTES.PLAYGROUND}/${slug}`,
+        disableSEO: true,
       }}
     >
       <MainLayout
@@ -67,10 +49,10 @@ function PlaygroundPage({ page }: T_PageProps): T_ReactElement {
             url: ROUTES.PLAYGROUND,
           },
           {
-            text: page,
+            text: title,
           },
         ]}
-        title={page}
+        title={title}
         showGoToTopButton
       >
         <Component />
@@ -83,10 +65,10 @@ export default PlaygroundPage;
 
 // --- Next.js functions ---
 
-export const getStaticPaths: GetStaticPaths<{ page: string }> = async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths<T_PageProps> = async function getStaticPaths() {
   return {
-    paths: Object.keys(PLAYGROUND_PAGES).map((page) => {
-      return { params: { page } };
+    paths: PLAYGROUND_PAGES.map((page) => {
+      return { params: { page: page.slug } };
     }),
     fallback: false,
   };
@@ -102,3 +84,21 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, T_PageProps
     };
   },
 });
+
+// --- Controller ---
+
+function useController({ page }: T_PageProps): {
+  slug: string;
+  title: string;
+  Component: any;
+} {
+  const pageConfig = PLAYGROUND_PAGES_COMPONENTS.find((item) => item.slug === page);
+  if (!pageConfig) throw new Error(`"${page}" not found`);
+
+  return {
+    // vars
+    Component: pageConfig.Component,
+    slug: page,
+    title: pageConfig.title,
+  };
+}

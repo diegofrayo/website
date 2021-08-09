@@ -1,12 +1,11 @@
 import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Link, List, Space } from "~/components/primitive";
+import { Link, List } from "~/components/primitive";
 import { getPageContentStaticProps } from "~/i18n";
 import { T_ReactElement, T_PageContent } from "~/types";
-import { isUserLoggedIn } from "~/utils/misc";
+import { PLAYGROUND_PAGES } from "~/utils/constants";
 import { ROUTES } from "~/utils/routing";
-import { generateSlug, removeEmojiFromString } from "~/utils/strings";
 
 type T_PageProps = {
   pageContent: T_PageContent;
@@ -32,27 +31,7 @@ function PlaygroundPage({ pageContent }: T_PageProps): T_ReactElement {
         ]}
         title={pageContent.page?.title as string}
       >
-        <PagesList
-          pages={[
-            { name: "🎼 chords-creator", isNextLink: true },
-            { name: "📝 strings", isNextLink: true },
-            { name: "💬 whatsapp", isNextLink: true },
-          ]}
-        />
-
-        {isUserLoggedIn() && (
-          <div className="tw-font-bold">
-            <Space sizeTop={6} sizeBottom={4} variant={Space.variant.DASHED} />
-            <PagesList
-              pages={[
-                { name: "📚 books", isNextLink: true },
-                { name: "🎥 movies", isNextLink: true },
-                { name: "🔨 encrypt-lab", isNextLink: true },
-                { name: "💅 styles", isNextLink: true },
-              ]}
-            />
-          </div>
-        )}
+        <PagesList pages={PLAYGROUND_PAGES} />
       </MainLayout>
     </Page>
   );
@@ -68,18 +47,18 @@ export const getStaticProps = getPageContentStaticProps({
 
 // --- Components ---
 
-function PagesList({ pages }: { pages: { name: string; isNextLink: boolean }[] }): T_ReactElement {
+function PagesList({ pages }: { pages: { slug: string; title: string }[] }): T_ReactElement {
   return (
     <List variant={List.variant.UNSTYLED}>
       {pages.map((page) => {
         return (
-          <List.Item key={`PagesList-page-${page.name}`}>
+          <List.Item key={`PagesList-page-${page.slug}`}>
             <Link
-              href={`${ROUTES.PLAYGROUND}/${generateSlug(removeEmojiFromString(page.name))}`}
+              href={`${ROUTES.PLAYGROUND}/${page.slug}`}
               variant={Link.variant.SIMPLE}
-              isNextLink={page.isNextLink}
+              isNextLink
             >
-              {page.name}
+              {page.title}
             </Link>
           </List.Item>
         );
