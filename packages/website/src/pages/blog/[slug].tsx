@@ -8,6 +8,7 @@ import { Blockquote, Icon, Space, Button } from "~/components/primitive";
 import { MDXContent } from "~/components/pages/_shared";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
 import twcss from "~/lib/twcss";
+import http from "~/lib/http";
 import BlogService from "~/services/blog";
 import { dataLoader } from "~/server";
 import { useStoreSelector } from "~/state";
@@ -26,7 +27,7 @@ type T_PageProps = {
 };
 
 function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
-  const { t } = useTranslation();
+  const { t, currentLocale } = useTranslation();
 
   const mdxContent = hydrate(postMDXContent, { components: MDXComponents });
 
@@ -36,7 +37,7 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
         title: post.title,
         description: post.description,
         pathname: `${ROUTES.BLOG}/${post.slug}`,
-        disableSEO: Boolean(t("page:config:is_seo_disabled")),
+        disableSEO: currentLocale === "es" ? Boolean(t("page:config:is_seo_disabled")) : true, // TODO
       }}
     >
       <MainLayout
@@ -97,13 +98,9 @@ export const getStaticProps = getPageContentStaticProps<
     const file = await dataLoader({
       path: `/pages/blog/[slug]/${locale}/${post.createdAt}-${post.slug}.mdx`,
     });
-    const postSlug = post.slug;
-    // const codeSnippets = fs.existsSync(
-    //   `${process.cwd()}/src/components/pages/blog/[slug]/${postSlug}/code-snippets.ts`,
-    // )
-    //   ? require(`src/components/pages/blog/[slug]/${postSlug}/code-snippets.ts`).default // eslint-disable-line @typescript-eslint/no-var-requires
-    //   : {};
-    const codeSnippets = { postSlug };
+    const { data: codeSnippets } = await http.post(
+      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/blog/code-snippets?slug=${post.slug}`,
+    );
     const postMDXContent = (await renderToString(file, {
       components: MDXComponents,
       scope: {

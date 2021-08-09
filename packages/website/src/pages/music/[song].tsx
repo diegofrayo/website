@@ -49,9 +49,9 @@ function SongPage(props: T_PageProps): T_ReactElement {
     <Page
       config={{
         title: song.title,
-        description: t("seo:description"),
+        description: `Letra y acordes de ${song.title} de ${song.artist}`,
         pathname: `${ROUTES.MUSIC}/${song.id}`,
-        disableSEO: Boolean(t("page:config:is_seo_disabled")),
+        disableSEO: false,
       }}
     >
       <MainLayout

@@ -5,53 +5,55 @@ import { GuitarChord } from "~/lib/guitar";
 import { T_ReactElement } from "~/types";
 
 function ChordsCreator(): T_ReactElement {
-  const [inputs, setInputs] = useState({ name: "", musicNotes: "" });
+  const {
+    // states
+    inputs,
+
+    // handlers
+    onInputChange,
+  } = useController();
 
   return (
     <Fragment>
       <div>
         <Title is="h2" className="tw-mb-4">
-          Create your chord
+          Crea un acorde
         </Title>
 
         <label htmlFor="input-name">
-          <strong className="tw-block tw-cursor-pointer">Name</strong>
+          <strong className="tw-block tw-cursor-pointer">Nombre</strong>
           <input
             id="input-name"
             placeholder="Example: A"
             className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
             value={inputs.name}
             maxLength={15}
-            onChange={(e) => {
-              setInputs({ ...inputs, name: e.currentTarget.value });
-            }}
+            onChange={onInputChange("name")}
           />
         </label>
         <Space size={4} />
 
         <label htmlFor="input-musicNotes">
-          <strong className="tw-block tw-cursor-pointer">Chords</strong>
+          <strong className="tw-block tw-cursor-pointer">Notas</strong>
           <input
             id="input-musicNotes"
             placeholder="4,2,1|3,2,2|2,2,3"
             className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
             value={inputs.musicNotes}
-            onChange={(e) => {
-              setInputs({ ...inputs, musicNotes: e.currentTarget.value });
-            }}
+            onChange={onInputChange("musicNotes")}
           />
         </label>
         <code className="tw-block tw-text-sm tw-mt-2 tw-mb-1">
-          Format: STRING,FRET,FINGER?|STRING,FRET,FINGER?
+          Formato: CUERDA,TRASTE,DEDO?|CUERDA,TRASTE,DEDO?
         </code>
         <code className="tw-block tw-text-sm">
-          Examples: (D) 3,2,1|1,2,2|2,3,3 / (B) 5x,2|4,4|3,4|2,4
+          Ejemplos: (D) 3,2,1|1,2,2|2,3,3 / (B) 5x,2|4,4|3,4|2,4
         </code>
         <Space size={6} />
 
         <div className="tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-rounded-md tw-p-3">
           <Title is="h2" className="tw-mb-4">
-            Output
+            Resultado
           </Title>
           <GuitarChord name={inputs.name} musicNotes={inputs.musicNotes} />
         </div>
@@ -60,7 +62,7 @@ function ChordsCreator(): T_ReactElement {
 
       <div>
         <Title is="h2" className="tw-mb-4">
-          Examples
+          Ejemplos
         </Title>
 
         <GuitarChord
@@ -113,3 +115,26 @@ function ChordsCreator(): T_ReactElement {
 }
 
 export default ChordsCreator;
+
+// --- Controller ---
+
+function useController(): {
+  inputs: { name: string; musicNotes: string };
+  onInputChange: any;
+} {
+  const [inputs, setInputs] = useState({ name: "", musicNotes: "" });
+
+  function onInputChange(inputName) {
+    return function onInputChange(e) {
+      setInputs({ ...inputs, [inputName]: e.currentTarget.value });
+    };
+  }
+
+  return {
+    // states
+    inputs,
+
+    // handlers
+    onInputChange,
+  };
+}

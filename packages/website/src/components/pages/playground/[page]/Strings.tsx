@@ -15,33 +15,26 @@ function Strings(): T_ReactElement {
     // handlers
     handleTextAreaChange,
     handleCopyText,
+    onInputFocus,
   } = useController();
 
   return (
     <Fragment>
       <div>
-        <p className="tw-font-bold tw-mb-1">type your text</p>
+        <p className="tw-font-bold tw-mb-1">Ingrese un texto</p>
         <textarea
           className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-3 tw-resize-none tw-w-full tw-rounded-md"
           style={{ minHeight: 50 }}
           ref={textareaRef}
           onChange={handleTextAreaChange}
-          onClick={(e) => {
-            try {
-              e.currentTarget.focus();
-              e.currentTarget.select();
-            } catch (error) {
-              console.error("Error focussing a textarea");
-              console.error(error);
-            }
-          }}
+          onClick={onInputFocus}
         />
         <Button
           className="tw-block tw-ml-auto tw-text-sm"
           data-clipboard-text={texts.input}
           onClick={handleCopyText}
         >
-          copy
+          copiar
         </Button>
       </div>
 
@@ -49,7 +42,10 @@ function Strings(): T_ReactElement {
 
       <div className="tw-mb-4">
         <p className="tw-font-bold">slug</p>
-        <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
+        <output
+          className="tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1"
+          style={{ minHeight: 40 }}
+        >
           {texts.slug}
         </output>
         <Button
@@ -57,12 +53,12 @@ function Strings(): T_ReactElement {
           data-clipboard-text={texts.slug}
           onClick={handleCopyText}
         >
-          copy
+          copiar
         </Button>
       </div>
 
       <div className="tw-my-4">
-        <p className="tw-font-bold tw-uppercase">uppercase</p>
+        <p className="tw-font-bold tw-uppercase">mayúsculas</p>
         <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
           {texts.upper}
         </output>
@@ -71,12 +67,12 @@ function Strings(): T_ReactElement {
           data-clipboard-text={texts.upper}
           onClick={handleCopyText}
         >
-          copy
+          copiar
         </Button>
       </div>
 
       <div className="tw-my-4">
-        <p className="tw-font-bold tw-lowercase">lowercase</p>
+        <p className="tw-font-bold tw-lowercase">minúsculas</p>
         <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
           {texts.lower}
         </output>
@@ -85,12 +81,12 @@ function Strings(): T_ReactElement {
           data-clipboard-text={texts.lower}
           onClick={handleCopyText}
         >
-          copy
+          copiar
         </Button>
       </div>
 
       <div className="tw-my-4">
-        <p className="tw-font-bold tw-capitalize">capital letter</p>
+        <p className="tw-font-bold tw-capitalize">letra capital</p>
         <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
           {texts.convertToCapitalLetter}
         </output>
@@ -99,12 +95,12 @@ function Strings(): T_ReactElement {
           data-clipboard-text={texts.convertToCapitalLetter}
           onClick={handleCopyText}
         >
-          copy
+          copiar
         </Button>
       </div>
 
       <div className="tw-my-4">
-        <p className="tw-font-bold">Upper case only the first word</p>
+        <p className="tw-font-bold">Mayúscula solo la primera palabra</p>
         <output className="output tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full tw-my-1">
           {texts.convertToCapitalLetterOnlyFirst}
         </output>
@@ -113,17 +109,9 @@ function Strings(): T_ReactElement {
           data-clipboard-text={texts.convertToCapitalLetterOnlyFirst}
           onClick={handleCopyText}
         >
-          copy
+          copiar
         </Button>
       </div>
-
-      <style jsx>
-        {`
-          .output {
-            min-height: 40px;
-          }
-        `}
-      </style>
     </Fragment>
   );
 }
@@ -143,6 +131,7 @@ type T_UseController = {
   };
   handleTextAreaChange: T_OnChangeEvent<HTMLTextAreaElement>;
   handleCopyText: (e: T_OnClickEvent) => void;
+  onInputFocus: any;
   textareaRef: RefObject<HTMLTextAreaElement>;
 };
 
@@ -179,6 +168,16 @@ function useController(): T_UseController {
     copyToClipboard(e);
   }
 
+  function onInputFocus(e) {
+    try {
+      e.currentTarget.focus();
+      e.currentTarget.select();
+    } catch (error) {
+      console.error("Error focussing a textarea");
+      console.error(error);
+    }
+  }
+
   return {
     // states
     texts,
@@ -187,5 +186,6 @@ function useController(): T_UseController {
     // handlers
     handleTextAreaChange,
     handleCopyText,
+    onInputFocus,
   };
 }
