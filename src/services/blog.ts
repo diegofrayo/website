@@ -12,13 +12,13 @@ class BlogService {
     this.fetchPosts = this.fetchPosts.bind(this);
   }
 
-  async fetchPosts(): Promise<T_BlogPost[]> {
+  async fetchPosts(locale?: string): Promise<T_BlogPost[]> {
     const { posts, categories } = await this.fetchData();
 
     const result = Object.values(posts)
       .map((post: T_Object) => {
         return {
-          ...post[I18nService.getCurrentLocale()],
+          ...post[locale || I18nService.getCurrentLocale()],
           ...(transformObjectKeysFromSnakeCaseToLowerCamelCase(post.config) as T_Object),
           assets: post.assets,
           categories: post.config.categories
@@ -37,8 +37,8 @@ class BlogService {
     return result;
   }
 
-  async fetchPost(config: Record<"slug", T_Primitive>): Promise<T_BlogPost> {
-    const posts = await this.fetchPosts();
+  async fetchPost(config: Record<"slug" | "locale", T_Primitive>): Promise<T_BlogPost> {
+    const posts = await this.fetchPosts(config.locale as string);
     const post = posts.find((post) => post.slug === config.slug);
 
     if (post === undefined) {

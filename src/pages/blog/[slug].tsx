@@ -94,7 +94,7 @@ export const getStaticProps = getPageContentStaticProps<
 >({
   page: ROUTES.BLOG,
   callback: async ({ params, locale }) => {
-    const post = await BlogService.fetchPost({ slug: params?.slug });
+    const post = await BlogService.fetchPost({ slug: params?.slug, locale: locale });
     const file = await dataLoader({
       path: `/pages/blog/[slug]/${locale}/${post.createdAt}-${post.slug}.mdx`,
     });

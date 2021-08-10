@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Head from "next/head";
 
 import { useDidMount, useDocumentTitle } from "~/hooks";
@@ -25,6 +25,7 @@ type T_PageProps = {
 function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
   const SEO_METADATA = useStoreSelector<T_SEOMetadata>(selectSEOMetadata);
+  const [showUserLoggedInFlag, setShowUserLoggedInFlag] = useState(false);
 
   const metadata = {
     title: removeEmojiFromString(
@@ -37,6 +38,10 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   useDocumentTitle(metadata.title);
   useDidMount(() => {
     AnalyticsService.trackPageLoaded();
+
+    if (isUserLoggedIn()) {
+      setShowUserLoggedInFlag(true);
+    }
   });
 
   return (
@@ -124,7 +129,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
         )}
       </Head>
       {children}
-      {isUserLoggedIn() && (
+      {showUserLoggedInFlag && (
         <span className="tw-fixed tw-top-1 tw-left-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-white" />
       )}
       {isDevelopmentEnvironment() && <WindowSize />}

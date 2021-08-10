@@ -30,7 +30,7 @@ function DefaultHeader(): T_ReactElement {
   });
 
   return (
-    <header ref={headerRef}>
+    <header className="tw-h-96" ref={headerRef}>
       {isHeaderFixed ? <FixedHeaderContent /> : <DefaultHeaderContent />}
     </header>
   );
@@ -38,7 +38,7 @@ function DefaultHeader(): T_ReactElement {
 
 function HomeHeader(): T_ReactElement {
   return (
-    <header>
+    <header className="tw-h-96">
       <DefaultHeaderContent background="tw-bg-transparent" />
     </header>
   );
@@ -50,7 +50,7 @@ export { DefaultHeader, HomeHeader };
 
 function DefaultHeaderContent({ background = "tw-bg-blue-500 dark:tw-bg-black" }): T_ReactElement {
   return (
-    <div className={classNames("tw-h-96 tw-text-center", background)}>
+    <div className={classNames("tw-h-full tw-text-center", background)}>
       <div className="tw-pt-4 tw-pb-7">
         <DarkModeToggle />
         <LocalesToggle />

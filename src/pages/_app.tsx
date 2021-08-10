@@ -46,7 +46,7 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
   return (
     <Provider store={store}>
       <I18nextProvider
-        i18n={I18NService.createI18NInstance({
+        i18n={I18NService.createInstance({
           messages: pageProps.pageContent,
           locale: pageProps.locale,
         })}

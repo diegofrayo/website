@@ -6,20 +6,17 @@ import { T_Locale } from "~/types";
 class I18NService {
   LOCALES: T_Locale[] = ["es", "en"];
   DEFAULT_LOCALE: T_Locale = this.LOCALES[0];
+  CURRENT_LOCALE;
   INSTANCE;
 
   constructor() {
-    this.createI18NInstance = this.createI18NInstance.bind(this);
+    this.createInstance = this.createInstance.bind(this);
     this.getInstance = this.getInstance.bind(this);
   }
 
-  createI18NInstance({ messages, locale }) {
-    if (!this.INSTANCE) {
-      this.INSTANCE = i18n;
-    } else {
-      this.INSTANCE = i18n.createInstance();
-    }
-
+  createInstance({ messages, locale }) {
+    this.CURRENT_LOCALE = locale;
+    this.INSTANCE = i18n.createInstance();
     this.INSTANCE.use(initReactI18next).init({
       resources: {
         [locale]: messages,
@@ -37,7 +34,7 @@ class I18NService {
   }
 
   getCurrentLocale() {
-    return this.INSTANCE?.language || this.DEFAULT_LOCALE;
+    return this.CURRENT_LOCALE;
   }
 
   getContentLocale(

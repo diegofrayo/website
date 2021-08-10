@@ -51,7 +51,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
         title: song.title,
         description: `Letra y acordes de ${song.title} de ${song.artist}`,
         pathname: `${ROUTES.MUSIC}/${song.id}`,
-        disableSEO: false,
+        disableSEO: song.progress !== 5,
       }}
     >
       <MainLayout
