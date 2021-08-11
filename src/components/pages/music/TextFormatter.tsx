@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import classNames from "classnames";
 import reactStringReplace from "react-string-replace";
 
-import { Blockquote, Button, Icon, Modal, Space } from "~/components/primitive";
+import { Button, Icon, Modal, Space } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { GuitarChord, GuitarService, T_Chord } from "~/lib/guitar";
 import { T_Function, T_ReactElement, T_ReactChildrenProp } from "~/types";
@@ -26,27 +26,12 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
     handleModalClose,
 
     // vars
-    numberOfChords,
-    parsedChords,
     parsedLyrics,
   } = useController(props);
 
   return (
     <div>
       {parsedLyrics}
-      {parsedChords && parsedLyrics && <Space size={6} />}
-      {parsedChords && (
-        <Blockquote
-          className="tw-p-4 tw-border tw-font-mono tw-text-base"
-          variant={Blockquote.variant.UNSTYLED}
-        >
-          <p className="tw-font-bold tw-mb-2">Acordes [{numberOfChords}]</p>
-          <pre
-            className="tw-break-all tw-max-w-full tw-whitespace-normal"
-            dangerouslySetInnerHTML={{ __html: parsedChords }}
-          />
-        </Blockquote>
-      )}
 
       <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
         <div className="tw-bg-white dark:tw-bg-black tw-p-4 tw-rounded-md tw-w-96 tw-mx-auto tw-max-w-full">
@@ -124,7 +109,7 @@ export default TextFormatter;
 
 // --- Controller ---
 
-function useController({ children, chords, insertions }: T_TextFormatterProps): {
+function useController({ children, insertions }: T_TextFormatterProps): {
   isModalVisible: boolean;
   selectedChord: T_Chord | undefined;
   selectedChordIndex: number;
@@ -132,8 +117,6 @@ function useController({ children, chords, insertions }: T_TextFormatterProps): 
   handleUpdateSelectedChordIndex: (value: number) => void;
   handleModalClose: T_Function;
 
-  numberOfChords: number;
-  parsedChords: string;
   parsedLyrics: T_ReactChildrenProp;
 } {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -213,8 +196,6 @@ function useController({ children, chords, insertions }: T_TextFormatterProps): 
     handleModalClose,
 
     // vars
-    numberOfChords: chords.length,
-    parsedChords: GuitarService.formatText(chords.sort().join(" | ")),
     parsedLyrics: parseInsertions(GuitarService.formatText(children), insertions),
   };
 }

@@ -63,7 +63,7 @@ function MusicPage(): T_ReactElement {
                     <span className="tw-underline">{t("page:chords_title")}</span>
                   </Link>
                 </Title>
-                <Space sizeTop={6} sizeBottom={4} variant={Space.variant.DASHED} />
+                <Space sizeTop={6} sizeBottom={5} variant={Space.variant.DASHED} />
 
                 <Title
                   is="h2"
@@ -97,7 +97,7 @@ function MusicPage(): T_ReactElement {
                           {song.progress === 5 && (
                             <Icon
                               icon={Icon.icon.CHECK}
-                              wrapperClassName="tw-ml-2 tw-flex-shrink-0"
+                              wrapperClassName="tw-ml-2 tw-flex-shrink-0 tw-self-start tw-relative tw-top-1"
                               size={20}
                             />
                           )}

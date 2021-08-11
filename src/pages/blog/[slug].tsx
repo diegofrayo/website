@@ -136,7 +136,7 @@ function BlogPostFooter({ publishedAt, slug, updatedAt }: T_BlogPostFooterProps)
 
   return (
     <Blockquote
-      className="tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-my-4 tw-text-black dark:tw-text-white"
+      className="tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-mt-4 tw-text-black dark:tw-text-white tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary"
       variant={Blockquote.variant.UNSTYLED}
     >
       <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">

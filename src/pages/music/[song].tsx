@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import classNames from "classnames";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Blockquote, Icon, Button } from "~/components/primitive";
+import { Blockquote, Icon, Button, Space } from "~/components/primitive";
 import { MDXContent } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
 import { useDidMount } from "~/hooks";
 import { getPageContentStaticProps, useTranslation } from "~/i18n";
+import { GuitarService } from "~/lib/guitar";
 import { dataLoader } from "~/server";
 import MusicService from "~/services/music";
 import { T_Function, T_ReactElement, T_Song, T_WebsiteMetadata } from "~/types";
@@ -111,6 +112,24 @@ function SongPage(props: T_PageProps): T_ReactElement {
           <div className="tw-max-w-full tw-overflow-x-auto">
             <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
           </div>
+
+          {song.chords.length > 0 && (
+            <Fragment>
+              <Space size={6} />
+              <Blockquote
+                className="tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-font-mono tw-text-base"
+                variant={Blockquote.variant.UNSTYLED}
+              >
+                <p className="tw-font-bold tw-mb-2">Acordes [{song.chords.length}]</p>
+                <pre
+                  className="tw-break-all tw-max-w-full tw-whitespace-normal"
+                  dangerouslySetInnerHTML={{
+                    __html: GuitarService.formatText(song.chords.join(" | ")),
+                  }}
+                />
+              </Blockquote>
+            </Fragment>
+          )}
         </Blockquote>
 
         <SongSources sources={song.sources} />

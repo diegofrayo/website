@@ -109,6 +109,7 @@ export type T_Song = {
   createdAt: string;
   isPublished: boolean;
   sources: { score: number; text: string; url: string; source: "youtube" | "lacuerda" | "url" }[];
+  chords: string[];
 };
 
 // --- Films ---
