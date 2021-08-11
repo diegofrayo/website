@@ -168,7 +168,7 @@ function GoToTopButton(): T_ReactElement {
         setScrollPosition(0);
       }}
     >
-      <span className="tw-text-white tw-font-bold">↑</span>
+      <span className="tw-text-white tw-font-bold tw-relative tw--top-0.5 md:tw-top-0">↑</span>
     </Button>
   );
 }

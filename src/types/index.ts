@@ -111,9 +111,9 @@ export type T_Song = {
   sources: { score: number; text: string; url: string; source: "youtube" | "lacuerda" | "url" }[];
 };
 
-// --- Movies ---
+// --- Films ---
 
-export type T_Movie = {
+export type T_Film = {
   id: string;
   title: string;
   type: "Serie" | "Película" | "Documental" | "Serie documental";
@@ -121,6 +121,7 @@ export type T_Movie = {
   categories: string[];
   calification: number;
   cover: string;
+  addedDate: string;
 };
 
 // --- Books ---

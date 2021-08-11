@@ -1,5 +1,5 @@
 export const ASSETS_LOCAL_PATH = "/server/content";
-export const FIXED_HEADER_HEIGHT = 80;
+export const FIXED_HEADER_HEIGHT = 96;
 export const PLAYGROUND_PAGES = [
   {
     slug: "chords-creator",
@@ -7,9 +7,9 @@ export const PLAYGROUND_PAGES = [
     componentName: "ChordsCreator",
   },
   {
-    slug: "encrypt-lab",
+    slug: "dencrypt",
     title: "🔨 dencrypt",
-    componentName: "EncryptLab",
+    componentName: "Dencrypt",
   },
   {
     slug: "styles",
@@ -22,9 +22,9 @@ export const PLAYGROUND_PAGES = [
     componentName: "Books",
   },
   {
-    slug: "movies",
+    slug: "films",
     title: "🎥 películas y series",
-    componentName: "Movies",
+    componentName: "Films",
   },
   {
     slug: "strings",

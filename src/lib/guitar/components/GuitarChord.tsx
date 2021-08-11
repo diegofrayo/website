@@ -131,19 +131,17 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
                 <Space size={1} orientation="v" />
               </Fragment>
             )}
-
-            <Button
-              className="tw-text-sm tw-font-bold tw-p-1 tw-transition-opacity hover:tw-opacity-75"
-              data-clipboard-text={musicNotesAsString}
-              onClick={copyToClipboard}
-            >
-              <Emoji>📋</Emoji> copy input to clipboard
-            </Button>
           </div>
           {showChordInput && (
-            <div className="tw-text-sm tw-mt-4">
-              <strong className="tw-block tw-mb-1">input:</strong>
-              <pre className="tw-whitespace-pre-line tw-text-sm tw-break-all">
+            <div className="tw-text-sm tw-mt-4 tw-text-center">
+              <pre className="tw-whitespace-pre-line tw-text-sm tw-break-all tw-border tw-inline-block tw-p-2 dfr-border-color-primary dark:dfr-border-color-primary">
+                <Button
+                  className="tw-text-sm tw-font-bold tw-transition-opacity hover:tw-opacity-75"
+                  data-clipboard-text={musicNotesAsString}
+                  onClick={copyToClipboard}
+                >
+                  <Emoji>📋</Emoji>
+                </Button>{" "}
                 {musicNotesAsString}
               </pre>
             </div>

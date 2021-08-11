@@ -5,7 +5,7 @@ import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
 import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
 
-function EncryptLab(): T_ReactElement {
+function Dencrypt(): T_ReactElement {
   const {
     // states
     output,
@@ -48,7 +48,7 @@ function EncryptLab(): T_ReactElement {
       <Space size={10} variant={Space.variant.DASHED} />
 
       <div>
-        <p className="tw-font-bold">resultado</p>
+        <p className="tw-font-bold">Resultado</p>
         <output
           className="tw-my-1 tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full"
           style={{ minHeight: 40 }}
@@ -67,7 +67,7 @@ function EncryptLab(): T_ReactElement {
   );
 }
 
-export default EncryptLab;
+export default Dencrypt;
 
 // --- Controller ---
 
