@@ -8,7 +8,7 @@ import {
 } from "~/utils/misc";
 
 import metadataReducer, { REDUCER_NAME as METADATA_REDUCER_NAME } from "./modules/metadata";
-import uiReducer, { REDUCER_NAME as UI_REDUCER_NAME } from "./modules/ui";
+import pageConfigReducer, { REDUCER_NAME as PAGE_CONFIG_REDUCER_NAME } from "./modules/page-config";
 let store;
 
 type T_PreloadedState = Partial<T_Store>;
@@ -44,17 +44,17 @@ export function createPreloadedState({
   metadata: T_Metadata;
   pageContent: T_PageContent;
 }): T_PreloadedState {
-  const uiData = transformObjectKeysFromSnakeCaseToLowerCamelCase(
+  const pageConfig = transformObjectKeysFromSnakeCaseToLowerCamelCase(
     pageContent?.page?.config,
   ) as T_Object;
 
-  if (!uiData.locales) {
-    uiData.locales = [I18NService.getCurrentLocale()];
+  if (!pageConfig.locales) {
+    pageConfig.locales = [I18NService.getCurrentLocale()];
   }
 
   return {
     [METADATA_REDUCER_NAME]: metadata,
-    [UI_REDUCER_NAME]: uiData,
+    [PAGE_CONFIG_REDUCER_NAME]: pageConfig,
   };
 }
 
@@ -64,7 +64,7 @@ function createStore(preloadedState: T_PreloadedState) {
   return configureStore({
     reducer: {
       [METADATA_REDUCER_NAME]: metadataReducer,
-      [UI_REDUCER_NAME]: uiReducer,
+      [PAGE_CONFIG_REDUCER_NAME]: pageConfigReducer,
     },
     devTools: isDevelopmentEnvironment(),
     preloadedState,

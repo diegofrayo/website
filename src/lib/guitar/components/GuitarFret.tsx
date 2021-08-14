@@ -13,6 +13,7 @@ import {
   I_BarreMusicNote,
   I_SimpleMusicNote,
 } from "../types";
+import { Icon } from "~/components/primitive";
 
 type T_Variants = "DEFAULT" | "STRINGS_NAMES" | "EMPTY" | "SKIPPED_STRINGS";
 const VARIANTS = mirror(["DEFAULT", "STRINGS_NAMES", "EMPTY", "SKIPPED_STRINGS"]) as Record<
@@ -104,7 +105,9 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                     <strong>{guitarString}</strong>
                   </div>
                 ) : isSkippedStringsVariant ? (
-                  getSkippedStringValue(playedStrings, guitarString)
+                  <span className="tw-mx-2">
+                    {getSkippedStringValue(playedStrings, guitarString)}
+                  </span>
                 ) : isBarreMusicNote ? (
                   <Fragment>
                     <String />
@@ -154,22 +157,14 @@ function useController({ variant, ...rest }: T_GuitarFretProps) {
     const playedString = playedStrings[guitarString - 1];
 
     if (playedString === "x") {
-      return (
-        <span className="tw-mx-2 tw-border-black dark:tw-border-white tw-text-sm sm:tw-text-xs">
-          ✕
-        </span>
-      );
+      return <Icon icon={Icon.icon.X} size={16} />;
     }
 
     if (playedString === "0") {
-      return (
-        <span className="tw-mx-2 tw-rounded-full tw-w-2 tw-h-2 tw-border tw-border-black dark:tw-border-white" />
-      );
+      return <Icon icon={Icon.icon.DOTS_CIRCLE_HORIZONTAL} size={16} />;
     }
 
-    return (
-      <span className="tw-mx-2 tw-rounded-full tw-w-2 tw-h-2 tw-bg-black dark:tw-bg-white tw-inline-block" />
-    );
+    return <Icon icon={Icon.icon.DOTS_CIRCLE_HORIZONTAL_SOLID} size={16} />;
   }
 
   return {

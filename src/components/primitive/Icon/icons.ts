@@ -9,6 +9,7 @@ import {
   XIcon,
   ZoomInIcon,
   ZoomOutIcon,
+  DotsCircleHorizontalIcon,
 } from "@heroicons/react/outline";
 import {
   MoonIcon,
@@ -17,6 +18,7 @@ import {
   StarIcon,
   CheckIcon,
   MinusIcon,
+  DotsCircleHorizontalIcon as DotsCircleHorizontalIconSolid,
 } from "@heroicons/react/solid";
 
 import { E_Icons, T_ReactFunctionComponent } from "~/types";
@@ -123,6 +125,22 @@ export const ICONS: Record<E_Icons, T_Icon> = {
   CHEVRON_RIGHT: {
     isLibraryIcon: true,
     icon: ChevronRightIcon,
+    props: {
+      className: "",
+      color: "",
+    },
+  },
+  DOTS_CIRCLE_HORIZONTAL: {
+    isLibraryIcon: true,
+    icon: DotsCircleHorizontalIcon,
+    props: {
+      className: "",
+      color: "",
+    },
+  },
+  DOTS_CIRCLE_HORIZONTAL_SOLID: {
+    isLibraryIcon: true,
+    icon: DotsCircleHorizontalIconSolid,
     props: {
       className: "",
       color: "",

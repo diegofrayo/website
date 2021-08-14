@@ -169,8 +169,10 @@ export type T_WebsiteMetadata = {
 
 export type T_SEOMetadata = {
   title: string;
+  description: string;
 };
-export type T_UI = {
+
+export type T_PageConfig = {
   locales: T_Locale[];
   reloadWhenLocaleChanges: boolean;
 };
@@ -208,6 +210,8 @@ export enum E_Icons {
   "CHEVRON_LEFT" = "CHEVRON_LEFT",
   "CHEVRON_RIGHT" = "CHEVRON_RIGHT",
   "CODE" = "CODE",
+  "DOTS_CIRCLE_HORIZONTAL" = "DOTS_CIRCLE_HORIZONTAL",
+  "DOTS_CIRCLE_HORIZONTAL_SOLID" = "DOTS_CIRCLE_HORIZONTAL_SOLID",
   "EDIT" = "EDIT",
   "HEART" = "HEART",
   "LINK" = "LINK",

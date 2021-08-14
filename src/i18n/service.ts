@@ -37,6 +37,10 @@ class I18NService {
     return this.CURRENT_LOCALE || this.DEFAULT_LOCALE;
   }
 
+  getDefaultLocale() {
+    return this.DEFAULT_LOCALE;
+  }
+
   getContentLocale(
     locales: T_Locale[],
     defaultLocale: T_Locale,

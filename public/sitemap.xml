@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://diegofrayo.vercel.app/</loc>
@@ -7,8 +7,13 @@
     <loc>https://diegofrayo.vercel.app/blog</loc>
   </url>
   <url>
-    <loc
-    >https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy</loc>
+    <loc>https://diegofrayo.vercel.app/about-me</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/resume</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/contact</loc>
   </url>
   <url>
     <loc
@@ -18,9 +23,52 @@
     <loc>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/resume</loc>
+    <loc
+    >https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/contact</loc>
+    <loc>https://diegofrayo.vercel.app/music/que-ves-el-cielo</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/bajan</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/te-para-tres</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/cancion-para-mi-muerte</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/durazno-sangrando</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/el-tiempo-esta-despues</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/los-libros-de-la-buena-memoria</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/todas-las-hojas-son-del-viento</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/rie-chinito</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/mandolin</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/mariposa-tecknicolor</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/un-poco-de-amor-frances</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/bicho-de-ciudad</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/talk-is-cheap</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/bailando-con-tu-sombra</loc>
   </url>
 </urlset>

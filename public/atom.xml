@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>diegofrayo</id>
-    <title>Diego Rayo | Software Developer</title>
-    <updated>2021-06-16T02:18:29.559Z</updated>
+    <title>Diego Rayo | Desarrollador de Software</title>
+    <updated>2021-08-14T21:41:51.390Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Diego Fernando Rayo Zamora</name>
@@ -12,7 +12,7 @@
     <link rel="alternate" href="https://diegofrayo.vercel.app" />
     <link rel="self" href="https://diegofrayo.vercel.app/atom.xml" />
     <subtitle
-  >Hola, Soy Diego, desarrollador de Software. Tengo poco más de 6 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.</subtitle>
+  >Hola, Soy Diego, desarrollador de Software. Tengo poco más de 5 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.</subtitle>
     <logo>https://diegofrayo.vercel.app/static/images/favicon/favicon.ico</logo>
     <icon>https://diegofrayo.vercel.app/static/images/favicon/android-chrome-512x512.png</icon>
     <rights>All rights reserved 2021, Diego Rayo</rights>
@@ -34,6 +34,12 @@
       href="https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions"
     />
         <updated>2021-03-19T00:00:00.000Z</updated>
+        <summary
+      type="html"
+    ><![CDATA[En este tutorial quiero explicar como subir un paquete privado de npm a GitHub Packages usando GitHub Actions.]]></summary>
+        <content
+      type="html"
+    ><![CDATA[En este tutorial quiero explicar como subir un paquete privado de npm a GitHub Packages usando GitHub Actions.]]></content>
         <author>
             <name>Diego Rayo</name>
             <email>diegofrayo@gmail.com</email>
@@ -44,13 +50,13 @@
         <title type="html"><![CDATA[Mi música favorita y MDX]]></title>
         <id>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</id>
         <link href="https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx" />
-        <updated>2020-12-03T00:00:00.000Z</updated>
+        <updated>2021-08-03T00:00:00.000Z</updated>
         <summary
       type="html"
-    ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS]]></summary>
+    ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.]]></summary>
         <content
       type="html"
-    ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS]]></content>
+    ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.]]></content>
         <author>
             <name>Diego Rayo</name>
             <email>diegofrayo@gmail.com</email>
@@ -66,7 +72,7 @@
         <link
       href="https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy"
     />
-        <updated>2020-12-30T00:00:00.000Z</updated>
+        <updated>2018-06-17T00:00:00.000Z</updated>
         <summary
       type="html"
     ><![CDATA[En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase.]]></summary>

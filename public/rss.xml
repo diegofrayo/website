@@ -6,16 +6,16 @@
   xmlns:atom="http://www.w3.org/2005/Atom"
 >
     <channel>
-        <title>Diego Rayo | Software Developer</title>
+        <title>Diego Rayo | Desarrollador de Software</title>
         <link>https://diegofrayo.vercel.app</link>
         <description
-    >Hola, Soy Diego, desarrollador de Software. Tengo poco más de 6 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.</description>
-        <lastBuildDate>Wed, 16 Jun 2021 02:18:29 GMT</lastBuildDate>
+    >Hola, Soy Diego, desarrollador de Software. Tengo poco más de 5 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.</description>
+        <lastBuildDate>Sat, 14 Aug 2021 21:41:51 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>es</language>
         <image>
-            <title>Diego Rayo | Software Developer</title>
+            <title>Diego Rayo | Desarrollador de Software</title>
             <url>https://diegofrayo.vercel.app/static/images/favicon/favicon.ico</url>
             <link>https://diegofrayo.vercel.app</link>
         </image>
@@ -41,17 +41,21 @@
             <guid
       >https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</guid>
             <pubDate>Fri, 19 Mar 2021 00:00:00 GMT</pubDate>
+            <description
+      ><![CDATA[En este tutorial quiero explicar como subir un paquete privado de npm a GitHub Packages usando GitHub Actions.]]></description>
+            <content:encoded
+      ><![CDATA[En este tutorial quiero explicar como subir un paquete privado de npm a GitHub Packages usando GitHub Actions.]]></content:encoded>
             <author>diegofrayo@gmail.com (Diego Rayo)</author>
         </item>
         <item>
             <title><![CDATA[Mi música favorita y MDX]]></title>
             <link>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</link>
             <guid>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</guid>
-            <pubDate>Thu, 03 Dec 2020 00:00:00 GMT</pubDate>
+            <pubDate>Tue, 03 Aug 2021 00:00:00 GMT</pubDate>
             <description
-      ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS]]></description>
+      ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.]]></description>
             <content:encoded
-      ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS]]></content:encoded>
+      ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.]]></content:encoded>
             <author>diegofrayo@gmail.com (Diego Rayo)</author>
         </item>
         <item>
@@ -60,7 +64,7 @@
       >https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy</link>
             <guid
       >https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy</guid>
-            <pubDate>Wed, 30 Dec 2020 00:00:00 GMT</pubDate>
+            <pubDate>Sun, 17 Jun 2018 00:00:00 GMT</pubDate>
             <description
       ><![CDATA[En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase.]]></description>
             <content:encoded

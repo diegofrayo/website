@@ -8,7 +8,9 @@ module.exports = {
   purge: {
     enabled: true,
     content: ["./src/**/*.{ts,tsx}"],
-    safelist: [/^(sm:|md:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/, /dfr-/],
+    options: {
+      safelist: [/^(sm:|md:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/, /dfr-/],
+    },
   },
   theme: {
     screens: {

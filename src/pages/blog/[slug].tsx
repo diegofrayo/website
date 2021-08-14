@@ -25,7 +25,7 @@ type T_PageProps = {
 };
 
 function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
-  const { t, currentLocale } = useTranslation();
+  const { t } = useTranslation();
 
   const mdxContent = hydrate(postMDXContent, { components: MDXComponents });
 
@@ -36,7 +36,7 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
         replaceTitle: true,
         description: post.description,
         pathname: `${ROUTES.BLOG}/${post.slug}`,
-        disableSEO: currentLocale === "es" ? Boolean(t("page:config:is_seo_disabled")) : true, // TODO
+        disableSEO: Boolean(t("page:config:is_seo_disabled")),
       }}
     >
       <MainLayout

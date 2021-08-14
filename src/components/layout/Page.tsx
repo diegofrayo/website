@@ -2,10 +2,18 @@ import React, { Fragment, useState } from "react";
 import Head from "next/head";
 
 import { useDidMount, useDocumentTitle } from "~/hooks";
+import { I18nService } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata, selectSEOMetadata } from "~/state/modules/metadata";
-import { T_ReactChildrenProp, T_ReactElement, T_SEOMetadata, T_WebsiteMetadata } from "~/types";
+import { selectPageConfig } from "~/state/modules/page-config";
+import {
+  T_ReactChildrenProp,
+  T_ReactElement,
+  T_SEOMetadata,
+  T_PageConfig,
+  T_WebsiteMetadata,
+} from "~/types";
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 import { removeEmojiFromString } from "~/utils/strings";
@@ -26,6 +34,7 @@ type T_PageProps = {
 function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
   const SEO_METADATA = useStoreSelector<T_SEOMetadata>(selectSEOMetadata);
+  const { locales } = useStoreSelector<T_PageConfig>(selectPageConfig);
   const [showUserLoggedInFlag, setShowUserLoggedInFlag] = useState(false);
 
   const metadata = {
@@ -35,7 +44,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
         : SEO_METADATA.title,
     ),
     url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
-    description: config.description || "",
+    description: config.description || SEO_METADATA.description,
   };
 
   useDocumentTitle(metadata.title);
@@ -68,6 +77,20 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
         <meta property="og:url" content={metadata.url} />
         <meta property="og:site_name" content={SEO_METADATA.title} />
 
+        {locales.map((locale) => {
+          if (locale === I18nService.getDefaultLocale()) {
+            return <link key={locale} rel="alternate" hrefLang="x-default" href={metadata.url} />;
+          }
+
+          return (
+            <link
+              key={locale}
+              rel="alternate"
+              hrefLang={locale}
+              href={`${WEBSITE_METADATA.url}/${locale}${config.pathname}`}
+            />
+          );
+        })}
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="canonical" href={metadata.url} />
         <link
@@ -132,6 +155,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
         )}
       </Head>
       {children}
+
       {showUserLoggedInFlag && (
         <span className="tw-fixed tw-top-1 tw-right-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white" />
       )}

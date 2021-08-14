@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { useRouter } from "next/router";
@@ -6,11 +6,11 @@ import { useRouter } from "next/router";
 import { Title as TitlePrimitive, Icon, Button, Link, List } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { safeRender } from "~/hocs";
-import { useDidMount, useOnWindowScroll, useToggleBodyScroll } from "~/hooks";
-import { useTranslation } from "~/i18n";
+import { useOnWindowScroll, useToggleBodyScroll } from "~/hooks";
+import { I18nService, useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
-import { selectPageConfig } from "~/state/modules/ui";
-import { T_Locale, T_PageRoute, T_ReactElement, T_UI } from "~/types";
+import { selectPageConfig } from "~/state/modules/page-config";
+import { T_Locale, T_PageRoute, T_ReactElement, T_PageConfig } from "~/types";
 import { getScrollPosition } from "~/utils/browser";
 import { isUserLoggedIn } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
@@ -165,7 +165,7 @@ const DarkModeToggle = safeRender(function DarkModeToggle(): T_ReactElement {
 function LocalesToggle(): T_ReactElement {
   const { locale, asPath } = useRouter();
   const { locales: pageLocales, reloadWhenLocaleChanges } =
-    useStoreSelector<T_UI>(selectPageConfig);
+    useStoreSelector<T_PageConfig>(selectPageConfig);
 
   const EMOJIS = { es: "🇪🇸", en: "🇺🇸" };
 
@@ -200,64 +200,86 @@ function LocalesToggle(): T_ReactElement {
 }
 
 function ToggleMenu() {
-  const { t } = useTranslation();
+  const { currentLocale } = useTranslation();
 
   const [showMenu, setShowMenu] = useState(false);
-  const [items, setItems] = useState<
+  const [ITEMS, setItems] = useState<
     {
       emoji: any;
       label: any;
       url: T_PageRoute;
       locale?: T_Locale;
     }[]
-  >([
-    {
-      emoji: t("layout:header:common:menu_item_music_emoji"),
-      label: t("layout:header:menu:music"),
-      url: ROUTES.MUSIC,
-      locale: undefined,
-    },
-    {
-      emoji: t("layout:header:common:menu_item_blog_emoji"),
-      label: t("layout:header:common:menu_item_blog"),
-      url: ROUTES.BLOG,
-      locale: undefined,
-    },
-    {
-      emoji: t("layout:header:common:menu_item_about_me_emoji"),
-      label: t("layout:header:menu:about_me"),
-      url: ROUTES.ABOUT_ME,
-      locale: undefined,
-    },
-    {
-      emoji: t("layout:header:common:menu_item_resume_emoji"),
-      label: t("layout:header:menu:resume"),
-      url: ROUTES.RESUME,
-      locale: undefined,
-    },
-    {
-      emoji: t("layout:header:common:menu_item_contact_emoji"),
-      label: t("layout:header:menu:contact"),
-      url: ROUTES.CONTACT,
-      locale: undefined,
-    },
-  ]);
+  >(createItems());
 
   useToggleBodyScroll(showMenu);
 
-  useDidMount(() => {
-    if (isUserLoggedIn()) {
-      setItems([
-        ...items,
-        {
-          emoji: t("layout:header:common:menu_item_playground_emoji"),
-          label: t("layout:header:common:menu_item_playground"),
-          url: ROUTES.PLAYGROUND,
-          locale: "es",
-        },
-      ]);
-    }
-  });
+  useEffect(
+    function addPrivateItems() {
+      if (isUserLoggedIn()) {
+        const translator = I18nService.getInstance();
+
+        setItems([
+          ...createItems(),
+          {
+            emoji: translator.t("layout:header:common:menu_item_playground_emoji"),
+            label: translator.t("layout:header:common:menu_item_playground"),
+            url: ROUTES.PLAYGROUND,
+            locale: "es",
+          },
+        ]);
+      }
+    },
+    [currentLocale],
+  );
+
+  function createItems(): {
+    emoji: any;
+    label: any;
+    url: T_PageRoute;
+    locale?: T_Locale;
+  }[] {
+    const translator = I18nService.getInstance();
+
+    return [
+      {
+        emoji: translator.t("layout:header:common:menu_item_home_emoji"),
+        label: translator.t("layout:header:menu:home"),
+        url: ROUTES.HOME,
+        locale: undefined,
+      },
+      {
+        emoji: translator.t("layout:header:common:menu_item_blog_emoji"),
+        label: translator.t("layout:header:common:menu_item_blog"),
+        url: ROUTES.BLOG,
+        locale: "es",
+      },
+      {
+        emoji: translator.t("layout:header:common:menu_item_about_me_emoji"),
+        label: translator.t("layout:header:menu:about_me"),
+        url: ROUTES.ABOUT_ME,
+        locale: undefined,
+      },
+      {
+        emoji: translator.t("layout:header:common:menu_item_resume_emoji"),
+        label: translator.t("layout:header:menu:resume"),
+        url: ROUTES.RESUME,
+        locale: undefined,
+      },
+      {
+        emoji: translator.t("layout:header:common:menu_item_contact_emoji"),
+        label: translator.t("layout:header:menu:contact"),
+        url: ROUTES.CONTACT,
+        locale: undefined,
+      },
+      {
+        emoji: translator.t("layout:header:common:menu_item_music_emoji"),
+        label: translator.t("layout:header:menu:music"),
+        url: ROUTES.MUSIC,
+        locale: undefined,
+      },
+    ];
+  }
 
   return (
     <div className="tw-absolute tw-top-1 tw-left-1">
@@ -266,16 +288,16 @@ function ToggleMenu() {
       </Button>
 
       {showMenu && (
-        <div className="tw-bg-white dark:tw-bg-black tw-fixed tw-h-screen tw-w-screen tw-z-40 tw-overflow-auto tw-block sm:tw-flex tw-justify-center tw-items-center tw-top-0 tw-left-0 tw-py-4">
-          <Button
-            className="tw-fixed tw-top-2 tw-right-2 tw-text-lg tw-text-black"
-            onClick={() => setShowMenu(false)}
-          >
+        <div
+          className="tw-bg-white dark:tw-bg-black tw-fixed tw-h-screen tw-w-screen tw-z-40 tw-overflow-auto tw-block tw-text-left tw-px-4 sm:tw-px-0 sm:tw-flex sm:tw-justify-center sm:tw-items-center tw-top-0 tw-left-0 tw-py-4"
+          onClick={() => setShowMenu(false)}
+        >
+          <Button className="tw-fixed tw-top-2 tw-right-2 tw-text-lg tw-text-black">
             <Icon icon={Icon.icon.X} color="tw-text-black dark:tw-text-white" size={48} />
           </Button>
 
-          <List variant={List.variant.UNSTYLED} className="sm:tw-mx-auto tw-w-4/5 tw-pl-4">
-            {items.map((item) => {
+          <List variant={List.variant.UNSTYLED} className="tw-inline-block">
+            {ITEMS.map((item) => {
               return (
                 <List.Item key={generateSlug(item.label)}>
                   <Link
@@ -283,7 +305,6 @@ function ToggleMenu() {
                     variant={Link.variant.SIMPLE}
                     className="tw-flex tw-justify-start sm:tw-justify-center tw-items-center tw-p-3 tw-text-black dark:tw-text-white tw-text-2xl"
                     locale={item.locale}
-                    onClick={() => setShowMenu(false)}
                     isNextLink
                   >
                     <Emoji className="tw-mr-2 tw-inline-block">{item.emoji}</Emoji>

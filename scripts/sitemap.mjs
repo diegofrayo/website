@@ -1,60 +1,67 @@
 import dotenv from "dotenv";
 import fs from "fs";
-import SitemapGenerator from "sitemap-generator";
-
-import BLOG_POSTS from "../src/data/blog/posts.json";
-import METADATA from "../src/data/metadata.json";
-import PAGES_TEXTS from "../src/data/texts.json";
+import axios from "axios";
 
 dotenv.config({ path: ".env" });
 
-const { pages } = PAGES_TEXTS;
-const { website: WEBSITE_METADATA } = METADATA;
-const { posts } = BLOG_POSTS;
+async function main() {
+  const { data: BLOG } = await axios.get(
+    `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/blog/data.json`,
+  );
+  const {
+    data: { website: WEBSITE_METADATA },
+  } = await axios.get(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/metadata.json`);
+  const { data: MUSIC } = await axios.get(
+    `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/music/data.json`,
+  );
 
-const pagesToIgnore = Object.entries(pages)
-  .map(([slug, page]) => {
-    return page.config.meta_no_robots === true ? slug : "";
-  })
-  .filter(Boolean);
-
-const generator = SitemapGenerator(WEBSITE_METADATA.url, {
-  stripQuerystring: false,
-  filepath: "./public/sitemap.xml",
-  ignore: (url) => {
-    return (
-      pagesToIgnore.find((ignoredPage) => url.includes(ignoredPage)) !== undefined ||
-      url.includes("/movies") ||
-      url.includes("/books")
-    );
-  },
-});
-
-// Add a URL to crawler's queue. Useful to help crawler fetch pages it can't find itself.
-Object.values(posts).forEach((post) => {
-  if (post.config.is_published === false || post.config.meta_no_robots === true) {
-    return;
-  }
-
-  const url = `${WEBSITE_METADATA.url}/blog/${post.slug}`;
-  generator.queueURL(url);
-});
-
-generator.start();
-
-generator.on("done", () => {
-  const URL_PRODUCTION = "https://diegofrayo.vercel.app";
-
-  try {
-    fs.writeFileSync(
-      "./public/sitemap.xml",
-      fs
-        .readFileSync("./public/sitemap.xml", "utf8")
-        .replace(new RegExp(WEBSITE_METADATA.url, "g"), URL_PRODUCTION),
+  const pages = [
+    { path: "/", isEnabledToIndex: true },
+    { path: "/blog", isEnabledToIndex: true },
+    { path: "/about-me", isEnabledToIndex: true },
+    { path: "/resume", isEnabledToIndex: true },
+    { path: "/contact", isEnabledToIndex: true },
+    { path: "/music", isEnabledToIndex: false },
+    { path: "/playground", isEnabledToIndex: false },
+  ]
+    .concat(
+      Object.values(BLOG.posts).map((post) => {
+        return {
+          path: `/blog/${post.config.slug}`,
+          isEnabledToIndex: post.config.is_published,
+        };
+      }),
+    )
+    .concat(
+      MUSIC.songs.map((song) => {
+        return {
+          path: `/music/${song.id}`,
+          isEnabledToIndex: song.progress === 5,
+        };
+      }),
     );
 
-    console.log("Sitemap created");
-  } catch (err) {
-    console.error(err);
-  }
-});
+  generateSitemapFile(pages, WEBSITE_METADATA.url);
+
+  console.log("Sitemap created");
+}
+
+main();
+
+// --- Utils ---
+
+function generateSitemapFile(pages, websiteUrl) {
+  let output = `<?xml version="1.0" encoding="utf-8" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
+  pages
+    .filter((page) => page.isEnabledToIndex)
+    .forEach((page) => {
+      output += `
+  <url>
+    <loc>${websiteUrl}${page.path}</loc>
+  </url>`;
+    });
+  output += "\n</urlset>";
+
+  fs.writeFileSync("./public/sitemap.xml", output);
+}

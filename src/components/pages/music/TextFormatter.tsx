@@ -97,7 +97,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
           <Space sizeTop={6} sizeBottom={1} />
 
           <Button className="tw-text-center tw-block tw-w-full" onClick={handleModalClose}>
-            <Icon icon={Icon.icon.X} size={20} />
+            <Icon icon={Icon.icon.X} size={24} />
           </Button>
         </div>
       </Modal>

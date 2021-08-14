@@ -1,69 +1,69 @@
 import dotenv from "dotenv";
 import fs from "fs";
+import axios from "axios";
 import { Feed } from "feed";
-
-import BLOG_POSTS from "../src/data/blog/posts.json";
-import METADATA from "../src/data/metadata.json";
-import PAGES_TEXTS from "../src/data/texts.json";
 
 dotenv.config({ path: ".env" });
 
-const { pages } = PAGES_TEXTS;
-const { website: WEBSITE_METADATA, seo: SEO_METADATA } = METADATA;
-const { posts } = BLOG_POSTS;
-const URL_PRODUCTION = "https://diegofrayo.vercel.app";
+async function main() {
+  const { data: BLOG } = await axios.get(
+    `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/blog/data.json`,
+  );
+  const {
+    data: { seo: SEO_METADATA, website: WEBSITE_METADATA },
+  } = await axios.get(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/metadata.json`);
 
-const feed = new Feed({
-  title: SEO_METADATA.title,
-  description: pages["/"][pages["/"].config.default_locale].meta_description,
-  id: WEBSITE_METADATA.username,
-  link: URL_PRODUCTION,
-  language: "es",
-  image: `${URL_PRODUCTION}/static/images/favicon/favicon.ico`,
-  favicon: `${URL_PRODUCTION}/static/images/favicon/android-chrome-512x512.png`,
-  copyright: `All rights reserved ${new Date().getFullYear()}, ${WEBSITE_METADATA.shortName}`,
-  feedLinks: {
-    json: `${URL_PRODUCTION}/feed.json`,
-    atom: `${URL_PRODUCTION}/atom.xml`,
-    rss: `${URL_PRODUCTION}/rss.xml`,
-  },
-  author: {
-    name: WEBSITE_METADATA.fullName,
-    email: WEBSITE_METADATA.email,
-    link: `${URL_PRODUCTION}/about-me`,
-  },
-});
+  const DEFAULT_LOCALE = "es";
+  await generateFeed(SEO_METADATA[DEFAULT_LOCALE], WEBSITE_METADATA, BLOG, DEFAULT_LOCALE);
 
-generateFeed();
+  console.log("RSS files created");
+}
 
-fs.writeFileSync("./public/rss.xml", feed.rss2());
-fs.writeFileSync("./public/atom.xml", feed.atom1());
-fs.writeFileSync("./public/feed.json", feed.json1());
-
-console.log("RSS files created");
+main();
 
 // --- Utils ---
 
-function generateFeed() {
-  Object.values(posts).forEach((post) => {
+async function generateFeed(SEO_METADATA, WEBSITE_METADATA, BLOG, DEFAULT_LOCALE) {
+  const feed = new Feed({
+    title: SEO_METADATA.title,
+    description: SEO_METADATA.description,
+    id: WEBSITE_METADATA.username,
+    link: WEBSITE_METADATA.url,
+    language: DEFAULT_LOCALE,
+    image: `${WEBSITE_METADATA.url}/static/images/favicon/favicon.ico`,
+    favicon: `${WEBSITE_METADATA.url}/static/images/favicon/android-chrome-512x512.png`,
+    copyright: `All rights reserved ${new Date().getFullYear()}, ${WEBSITE_METADATA.shortName}`,
+    feedLinks: {
+      json: `${WEBSITE_METADATA.url}/feed.json`,
+      atom: `${WEBSITE_METADATA.url}/atom.xml`,
+      rss: `${WEBSITE_METADATA.url}/rss.xml`,
+    },
+    author: {
+      name: WEBSITE_METADATA.fullName,
+      email: WEBSITE_METADATA.email,
+      link: `${WEBSITE_METADATA.url}/about-me`,
+    },
+  });
+
+  Object.values(BLOG.posts).forEach((post) => {
     if (post.config.is_published === false) return null;
 
-    const url = `${URL_PRODUCTION}/blog/${post.slug}`;
+    const url = `${WEBSITE_METADATA.url}/blog/${post.config.slug}`;
 
     feed.addItem({
-      title: post[post.default_locale].title,
+      title: post[DEFAULT_LOCALE].title,
       id: url,
       link: url,
-      description: post[post.default_locale].description,
-      content: post[post.default_locale].description,
+      description: post[DEFAULT_LOCALE].description,
+      content: post[DEFAULT_LOCALE].description,
       author: [
         {
           name: WEBSITE_METADATA.shortName,
           email: WEBSITE_METADATA.email,
-          link: `${URL_PRODUCTION}/about-me`,
+          link: `${WEBSITE_METADATA.url}/about-me`,
         },
       ],
-      date: new Date(post.published_at),
+      date: new Date(post.config.updated_at),
     });
   });
 
@@ -77,4 +77,8 @@ function generateFeed() {
     "Tech",
     "TypeScript",
   ].forEach(feed.addCategory);
+
+  fs.writeFileSync("./public/rss.xml", feed.rss2());
+  fs.writeFileSync("./public/atom.xml", feed.atom1());
+  fs.writeFileSync("./public/feed.json", feed.json1());
 }

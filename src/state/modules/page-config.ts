@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { T_Locale, T_Store } from "~/types";
 
-const REDUCER_NAME = "ui";
+const REDUCER_NAME = "page-config";
 
 const slice = createSlice({
   name: REDUCER_NAME,
