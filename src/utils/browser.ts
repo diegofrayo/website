@@ -41,11 +41,13 @@ export function onScrollStoppedListener({
 
 export async function copyToClipboard(
   event: T_OnClickEvent<HTMLDivElement | HTMLButtonElement>,
+  optionalText?: string,
 ): Promise<void> {
   try {
     if (!navigator.clipboard) throw new Error("Clipboard not supported");
 
-    const clipboardText = event.currentTarget.getAttribute("data-clipboard-text") || "";
+    const clipboardText =
+      event.currentTarget.getAttribute("data-clipboard-text") || optionalText || "";
     if (!clipboardText) throw new Error("Any text was selected to copy");
     await navigator.clipboard.writeText(clipboardText);
 

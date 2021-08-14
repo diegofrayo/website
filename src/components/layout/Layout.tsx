@@ -55,7 +55,7 @@ function MainLayout({
 
 function HomeLayout(): T_ReactElement {
   return (
-    <Main className="tw-bg-gradient-to-b tw-from-blue-400 tw-to-blue-600 dark:tw-from-gray-700 dark:tw-to-gray-900 tw-h-screen tw-overflow-auto tw-block sm:tw-flex tw-justify-center tw-items-center">
+    <Main className="tw-bg-gradient-to-b tw-from-blue-400 tw-to-blue-600 dark:tw-from-gray-700 dark:tw-to-gray-900 tw-h-screen tw-block sm:tw-flex tw-justify-center tw-items-center tw-overflow-auto">
       <HomeHeader />
     </Main>
   );

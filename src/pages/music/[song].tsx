@@ -14,12 +14,10 @@ import { getPageContentStaticProps, useTranslation } from "~/i18n";
 import { GuitarService } from "~/lib/guitar";
 import { dataLoader } from "~/server";
 import MusicService from "~/services/music";
-import { T_Function, T_ReactElement, T_Song, T_WebsiteMetadata } from "~/types";
+import { T_Function, T_ReactElement, T_Song } from "~/types";
 import { copyToClipboard, isBrowser } from "~/utils/browser";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
-import { selectWebsiteMetadata } from "~/state/modules/metadata";
-import { useStoreSelector } from "~/state";
 
 type T_PageProps = {
   song: T_Song;
@@ -46,7 +44,6 @@ function SongPage(props: T_PageProps): T_ReactElement {
 
   const router = useRouter();
   const { t } = useTranslation();
-  const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   if (router.isFallback) {
     return <Loader />;
@@ -109,8 +106,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
             </Button>
             <Button
               className="tw-inline-block tw-mr-3"
-              data-clipboard-text={`${WEBSITE_METADATA.url}${ROUTES.MUSIC}/${song.id}`}
-              onClick={copyToClipboard}
+              onClick={(e) => copyToClipboard(e, window.location.href)}
             >
               <Icon icon={Icon.icon.LINK} size={24} />
             </Button>

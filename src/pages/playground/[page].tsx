@@ -25,7 +25,6 @@ function PlaygroundPage(props: T_PageProps): T_ReactElement {
   const {
     // vars
     Component,
-    slug,
     title,
   } = useController(props);
   const { t } = useTranslation();
@@ -34,7 +33,6 @@ function PlaygroundPage(props: T_PageProps): T_ReactElement {
     <Page
       config={{
         title: title,
-        pathname: `${ROUTES.PLAYGROUND}/${slug}`,
         disableSEO: true,
       }}
     >
@@ -87,7 +85,6 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, T_PageProps
 // --- Controller ---
 
 function useController({ page }: T_PageProps): {
-  slug: string;
   title: string;
   Component: any;
 } {
@@ -97,7 +94,6 @@ function useController({ page }: T_PageProps): {
   return {
     // vars
     Component: pageConfig.Component,
-    slug: page,
     title: pageConfig.title,
   };
 }

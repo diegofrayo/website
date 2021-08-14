@@ -18,7 +18,7 @@ function PlaygroundPage({ pageContent }: T_PageProps): T_ReactElement {
     <Page
       config={{
         title: PAGE_TITLE,
-        disableSEO: pageContent.page?.config?.is_seo_disabled,
+        disableSEO: true,
       }}
     >
       <MainLayout

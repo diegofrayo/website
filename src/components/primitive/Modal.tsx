@@ -1,22 +1,14 @@
-import React, { useRef, createContext, useEffect } from "react";
+import React, { useRef, createContext } from "react";
 
+import { useToggleBodyScroll } from "~/hooks";
 import { T_Object, T_ReactElement } from "~/types";
 
 function Modal({ children, visible, onCloseHandler }: T_Object): T_ReactElement {
+  useToggleBodyScroll(visible);
+
   function closeModal() {
     onCloseHandler(false);
   }
-
-  useEffect(
-    function toggleBodyClasses() {
-      if (visible) {
-        document.body.classList.add("modal-opened");
-      } else {
-        document.body.classList.remove("modal-opened");
-      }
-    },
-    [visible],
-  );
 
   if (!visible) {
     return null;

@@ -104,9 +104,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                     <strong>{guitarString}</strong>
                   </div>
                 ) : isSkippedStringsVariant ? (
-                  <span className="tw-px-2">
-                    {getSkippedStringValue(playedStrings, guitarString)}
-                  </span>
+                  getSkippedStringValue(playedStrings, guitarString)
                 ) : isBarreMusicNote ? (
                   <Fragment>
                     <String />
@@ -150,18 +148,28 @@ function useController({ variant, ...rest }: T_GuitarFretProps) {
   function getSkippedStringValue(
     playedStrings: T_GuitarFretProps["playedStrings"],
     guitarString: number,
-  ): string | T_ReactElement {
-    if (!playedStrings) return "";
+  ): T_ReactElement {
+    if (!playedStrings) return null;
 
     const playedString = playedStrings[guitarString - 1];
 
-    if (playedString === "0") return "⚬";
-    if (playedString === "1") return "⚈";
     if (playedString === "x") {
-      return <span className="tw-text-xs tw-relative tw--left-1px">✕</span>;
+      return (
+        <span className="tw-mx-2 tw-border-black dark:tw-border-white tw-text-sm sm:tw-text-xs">
+          ✕
+        </span>
+      );
     }
 
-    return "⚈";
+    if (playedString === "0") {
+      return (
+        <span className="tw-mx-2 tw-rounded-full tw-w-2 tw-h-2 tw-border tw-border-black dark:tw-border-white" />
+      );
+    }
+
+    return (
+      <span className="tw-mx-2 tw-rounded-full tw-w-2 tw-h-2 tw-bg-black dark:tw-bg-white tw-inline-block" />
+    );
   }
 
   return {

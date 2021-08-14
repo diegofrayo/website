@@ -11,9 +11,7 @@ import twcss from "~/lib/twcss";
 import http from "~/lib/http";
 import BlogService from "~/services/blog";
 import { dataLoader } from "~/server";
-import { useStoreSelector } from "~/state";
-import { selectWebsiteMetadata } from "~/state/modules/metadata";
-import { T_BlogPost, T_Locale, T_ReactElement, T_PageContent, T_WebsiteMetadata } from "~/types";
+import { T_BlogPost, T_Locale, T_ReactElement, T_PageContent } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
@@ -35,6 +33,7 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
     <Page
       config={{
         title: post.title,
+        replaceTitle: true,
         description: post.description,
         pathname: `${ROUTES.BLOG}/${post.slug}`,
         disableSEO: currentLocale === "es" ? Boolean(t("page:config:is_seo_disabled")) : true, // TODO
@@ -59,11 +58,7 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
       >
         <MDXContent content={mdxContent} />
         <Space size={8} />
-        <BlogPostFooter
-          publishedAt={post.publishedAt}
-          slug={post.slug}
-          updatedAt={post.updatedAt}
-        />
+        <BlogPostFooter publishedAt={post.publishedAt} updatedAt={post.updatedAt} />
       </MainLayout>
     </Page>
   );
@@ -128,10 +123,9 @@ export const getStaticProps = getPageContentStaticProps<
 
 // --- Components ---
 
-type T_BlogPostFooterProps = Pick<T_BlogPost, "publishedAt" | "slug" | "updatedAt">;
+type T_BlogPostFooterProps = Pick<T_BlogPost, "publishedAt" | "updatedAt">;
 
-function BlogPostFooter({ publishedAt, slug, updatedAt }: T_BlogPostFooterProps): T_ReactElement {
-  const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
+function BlogPostFooter({ publishedAt, updatedAt }: T_BlogPostFooterProps): T_ReactElement {
   const { t } = useTranslation();
 
   return (
@@ -154,11 +148,7 @@ function BlogPostFooter({ publishedAt, slug, updatedAt }: T_BlogPostFooterProps)
             <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
           </p>
         </BlogPostFooterItem>
-        <BlogPostFooterItem
-          is={Button}
-          data-clipboard-text={`${WEBSITE_METADATA.url}${ROUTES.BLOG}/${slug}`}
-          onClick={copyToClipboard}
-        >
+        <BlogPostFooterItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
           <BlogPostFooterItem.Icon icon={Icon.icon.LINK} />
           <span>{t("page:copy_url_to_clipboard")}</span>
         </BlogPostFooterItem>

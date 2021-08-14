@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { Title as TitlePrimitive, Icon, Button, Link, List } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { safeRender } from "~/hocs";
-import { useDidMount, useOnWindowScroll } from "~/hooks";
+import { useDidMount, useOnWindowScroll, useToggleBodyScroll } from "~/hooks";
 import { useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
 import { selectPageConfig } from "~/state/modules/ui";
@@ -14,6 +14,7 @@ import { T_Locale, T_PageRoute, T_ReactElement, T_UI } from "~/types";
 import { getScrollPosition } from "~/utils/browser";
 import { isUserLoggedIn } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
+import { generateSlug } from "~/utils/strings";
 
 function DefaultHeader(): T_ReactElement {
   const [isHeaderFixed, setIsFixedHeader] = useState(false);
@@ -40,7 +41,7 @@ function DefaultHeader(): T_ReactElement {
 
 function HomeHeader(): T_ReactElement {
   return (
-    <header className="tw-h-96">
+    <header>
       <DefaultHeaderContent background="tw-bg-transparent" />
     </header>
   );
@@ -242,13 +243,15 @@ function ToggleMenu() {
     },
   ]);
 
+  useToggleBodyScroll(showMenu);
+
   useDidMount(() => {
     if (isUserLoggedIn()) {
       setItems([
         ...items,
         {
           emoji: t("layout:header:common:menu_item_playground_emoji"),
-          label: t("layout:header:menu:playground"),
+          label: t("layout:header:common:menu_item_playground"),
           url: ROUTES.PLAYGROUND,
           locale: "es",
         },
@@ -263,7 +266,7 @@ function ToggleMenu() {
       </Button>
 
       {showMenu && (
-        <div className="tw-bg-white dark:tw-bg-black tw-fixed tw-h-screen tw-w-screen tw-z-50 tw-overflow-auto tw-flex tw-justify-center tw-items-center tw-top-0 tw-left-0 tw-py-20">
+        <div className="tw-bg-white dark:tw-bg-black tw-fixed tw-h-screen tw-w-screen tw-z-50 tw-overflow-auto tw-block sm:tw-flex tw-justify-center tw-items-center tw-top-0 tw-left-0 tw-py-4 sm:tw-py-20">
           <Button
             className="tw-fixed tw-top-2 tw-right-2 tw-text-lg tw-text-black"
             onClick={() => setShowMenu(false)}
@@ -271,21 +274,21 @@ function ToggleMenu() {
             <Icon icon={Icon.icon.X} color="tw-text-black dark:tw-text-white" size={48} />
           </Button>
 
-          <List variant={List.variant.UNSTYLED}>
-            {items.map((item, index) => {
+          <List variant={List.variant.UNSTYLED} className="sm:tw-mx-auto tw-w-4/5 tw-pl-4">
+            {items.map((item) => {
               return (
-                <List.Item key={`List.Item-${index}`}>
+                <List.Item key={generateSlug(item.label)}>
                   <Link
                     href={item.url}
                     variant={Link.variant.SIMPLE}
-                    className="tw-flex tw-justify-center tw-items-center tw-p-3 tw-text-black dark:tw-text-white tw-text-2xl"
+                    className="tw-flex tw-justify-start sm:tw-justify-center tw-items-center tw-p-3 tw-text-black dark:tw-text-white tw-text-2xl"
                     locale={item.locale}
                     onClick={() => setShowMenu(false)}
                     isNextLink
                   >
-                    <Emoji className="tw-w-6 tw-inline-block tw-mr-2">{item.emoji}</Emoji>
+                    <Emoji className="tw-mr-2 tw-inline-block">{item.emoji}</Emoji>
                     <strong className="tw-text-center">{item.label}</strong>
-                    <Emoji className="tw-w-6 tw-inline-block tw-ml-2">{item.emoji}</Emoji>
+                    <Emoji className="tw-ml-2 tw-hidden sm:tw-inline-block">{item.emoji}</Emoji>
                   </Link>
                 </List.Item>
               );

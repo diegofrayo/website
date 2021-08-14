@@ -72,6 +72,7 @@ function ChordsCreator(): T_ReactElement {
             { finger: 2, guitarFret: 2, guitarString: 4 },
             { finger: 1, guitarFret: 1, guitarString: 3 },
           ]}
+          playedStrings={["0", "1", "1", "1", "0", "0"]}
         />
         <Space size={8} />
 
@@ -108,6 +109,7 @@ function ChordsCreator(): T_ReactElement {
             { finger: 3, guitarFret: 4, guitarString: 3 },
             { finger: 2, guitarFret: 4, guitarString: 2 },
           ]}
+          playedStrings={["x", "0", "1", "1", "1", "0"]}
         />
       </div>
     </Fragment>

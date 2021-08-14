@@ -20,7 +20,7 @@ body {
   word-break: break-word;
 }
 
-body.modal-opened {
+body.scroll-disabled {
   overflow: hidden;
 }
 
