@@ -60,7 +60,7 @@ export function Render({
   return children(data);
 }
 
-function Loader() {
+export function Loader(): T_ReactElement {
   return (
     <div className="root">
       <div />

@@ -24,7 +24,7 @@ function MainLayout({
   showGoToTopButton = false,
 }: T_MainLayoutProps): T_ReactElement {
   return (
-    <Main>
+    <Main className="tw-pb-20">
       <DefaultHeader />
       <Space size={8} />
 
@@ -53,11 +53,10 @@ function MainLayout({
   );
 }
 
-function HomeLayout({ children }: { children: T_ReactChildrenProp }): T_ReactElement {
+function HomeLayout(): T_ReactElement {
   return (
-    <Main className="tw-bg-gradient-to-b tw-from-blue-400 tw-to-blue-600 dark:tw-from-gray-700 dark:tw-to-gray-900 tw-h-screen tw-overflow-auto">
+    <Main className="tw-bg-gradient-to-b tw-from-blue-400 tw-to-blue-600 dark:tw-from-gray-700 dark:tw-to-gray-900 tw-h-screen tw-overflow-auto tw-block sm:tw-flex tw-justify-center tw-items-center">
       <HomeHeader />
-      <Body className="tw-max-w-sm">{children}</Body>
     </Main>
   );
 }
@@ -66,7 +65,7 @@ export { MainLayout, HomeLayout };
 
 // --- Components ---
 
-const Main = twcss.main`tw-relative tw-pb-20`;
+const Main = twcss.main`tw-relative`;
 
 const Body = twcss.div`tw-w-full tw-mx-auto tw-px-8 sm:tw-px-6`;
 
@@ -78,14 +77,14 @@ function Breadcumb({ items }: T_BreadcumbProps): T_ReactElement {
       {items.map(({ text, url = ROUTES.HOME, isNextLink = true }, index) => {
         if (index === items.length - 1 && hasMoreThanOneItem) {
           return (
-            <li key={`Breadcumb-li-${generateSlug(text)}`} className="tw-inline-block">
+            <li key={generateSlug(text)} className="tw-inline-block">
               <span className="tw-text-base tw-italic">{removeEmojiFromString(text)}</span>
             </li>
           );
         }
 
         return (
-          <li key={`Breadcumb-li-${generateSlug(text)}`} className="tw-inline-block tw-mr-2">
+          <li key={generateSlug(text)} className="tw-inline-block tw-mr-2">
             <Link
               href={url}
               variant={Link.variant.SECONDARY}

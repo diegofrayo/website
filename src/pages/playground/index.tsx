@@ -12,10 +12,12 @@ type T_PageProps = {
 };
 
 function PlaygroundPage({ pageContent }: T_PageProps): T_ReactElement {
+  const PAGE_TITLE = "🔮 playground";
+
   return (
     <Page
       config={{
-        title: pageContent.page?.title,
+        title: PAGE_TITLE,
         disableSEO: pageContent.page?.config?.is_seo_disabled,
       }}
     >
@@ -29,7 +31,7 @@ function PlaygroundPage({ pageContent }: T_PageProps): T_ReactElement {
             text: pageContent.layout?.breadcumb?.playground as string,
           },
         ]}
-        title={pageContent.page?.title as string}
+        title={PAGE_TITLE}
       >
         <PagesList pages={PLAYGROUND_PAGES} />
       </MainLayout>
@@ -41,9 +43,7 @@ export default PlaygroundPage;
 
 // --- Next.js functions ---
 
-export const getStaticProps = getPageContentStaticProps({
-  page: ROUTES.PLAYGROUND,
-});
+export const getStaticProps = getPageContentStaticProps();
 
 // --- Components ---
 
@@ -52,7 +52,7 @@ function PagesList({ pages }: { pages: { slug: string; title: string }[] }): T_R
     <List variant={List.variant.UNSTYLED}>
       {pages.map((page) => {
         return (
-          <List.Item key={`PagesList-page-${page.slug}`}>
+          <List.Item key={page.slug}>
             <Link
               href={`${ROUTES.PLAYGROUND}/${page.slug}`}
               variant={Link.variant.SIMPLE}

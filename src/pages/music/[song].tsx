@@ -3,10 +3,11 @@ import classNames from "classnames";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import { GetStaticPaths } from "next";
+import { useRouter } from "next/router";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Blockquote, Icon, Button, Space } from "~/components/primitive";
-import { MDXContent } from "~/components/pages/_shared";
+import { MDXContent, Loader } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
 import { useDidMount } from "~/hooks";
 import { getPageContentStaticProps, useTranslation } from "~/i18n";
@@ -43,14 +44,20 @@ function SongPage(props: T_PageProps): T_ReactElement {
     isMinFontSize,
   } = useController(props);
 
+  const router = useRouter();
   const { t } = useTranslation();
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
+
+  if (router.isFallback) {
+    return <Loader />;
+  }
 
   return (
     <Page
       config={{
-        title: song.title,
-        description: `Letra y acordes de ${song.title} de ${song.artist}`,
+        title: t("seo:title", { title: song.title, artist: song.artist }),
+        replaceTitle: true,
+        description: t("seo:description", { title: song.title, artist: song.artist }),
         pathname: `${ROUTES.MUSIC}/${song.id}`,
         disableSEO: song.progress !== 5,
       }}
@@ -147,9 +154,10 @@ type T_StaticPath = { params: { song: string } };
 export const getStaticPaths: GetStaticPaths<{ song: string }> = async function getStaticPaths() {
   return {
     paths: (await MusicService.fetchSongsList()).reduce((result: T_StaticPath[], song: T_Song) => {
+      if (song.progress !== 5) return result;
       return result.concat([{ params: { song: song.id } }]);
     }, []),
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
@@ -176,6 +184,7 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
         song,
         songMDXContent,
       },
+      revalidate: 60,
     };
   },
 });

@@ -40,7 +40,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
               {selectedChord.map((chord, index) => {
                 return (
                   <div
-                    key={`Chord-${chord.name}-${index}`}
+                    key={`${chord.name}-${index}`}
                     className={classNames(index === selectedChordIndex ? "tw-block" : "tw-hidden")}
                   >
                     <GuitarChord

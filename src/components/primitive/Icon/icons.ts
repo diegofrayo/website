@@ -4,6 +4,7 @@ import {
   ChevronRightIcon,
   CodeIcon,
   LinkIcon,
+  MenuIcon,
   PencilAltIcon,
   XIcon,
   ZoomInIcon,
@@ -145,6 +146,13 @@ export const ICONS: Record<E_Icons, T_Icon> = {
   LINK: {
     isLibraryIcon: true,
     icon: LinkIcon,
+    props: {
+      className: "",
+    },
+  },
+  MENU: {
+    isLibraryIcon: true,
+    icon: MenuIcon,
     props: {
       className: "",
     },

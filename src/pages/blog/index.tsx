@@ -97,7 +97,7 @@ function BlogEntry({ slug, title, categories, updatedAt }: T_BlogEntryProps): T_
         {categories.map((category) => {
           return (
             <span
-              key={`BlogEntry-category-${category.id}`}
+              key={category.id}
               className={classNames(
                 "tw-inline-block tw-py-1 tw-px-2 tw-rounded-sm tw-font-semibold tw-text-xs",
                 CATEGORIES_COLORS[category.id],

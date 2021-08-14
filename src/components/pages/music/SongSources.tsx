@@ -16,9 +16,9 @@ function SongSources(props: T_SongSourcesProps): T_ReactElement {
 
   return (
     <section>
-      <Title is="h2" className="tw-mb-2">
-        {t("page:sources")}
-      </Title>
+      <Title is="h2">{t("page:sources")}</Title>
+
+      <p className="tw-my-2 tw-text-sm tw-italic">{t("page:disclaimer")}</p>
 
       <List variant={List.variant.UNSTYLED}>
         {sources.map((source, index) => {
@@ -28,7 +28,7 @@ function SongSources(props: T_SongSourcesProps): T_ReactElement {
             <List.Item key={`SongSources-Link-source-${index}`}>
               <Link
                 href={source.url}
-                className="tw-flex tw-items-center tw-py-1"
+                className="tw-flex tw-items-center tw-py-0.5"
                 variant={Link.variant.SIMPLE}
               >
                 <ImageComponent />

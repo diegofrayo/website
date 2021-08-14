@@ -16,6 +16,7 @@ type T_PageProps = {
   children: T_ReactChildrenProp;
   config: {
     title?: string;
+    replaceTitle?: boolean;
     pathname?: string;
     description?: string;
     disableSEO?: boolean;
@@ -29,7 +30,9 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 
   const metadata = {
     title: removeEmojiFromString(
-      config.title ? `${config.title} - ${SEO_METADATA.title}` : SEO_METADATA.title,
+      config.title
+        ? `${config.title}${config.replaceTitle ? "" : " - " + SEO_METADATA.title}`
+        : SEO_METADATA.title,
     ),
     url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
     description: config.description || "",

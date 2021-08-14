@@ -1,5 +1,6 @@
 import http from "~/lib/http";
 import { T_Locale, T_Object, T_PageContent, T_PageRoute } from "~/types";
+import { ROUTES } from "~/utils/routing";
 
 type T_DefaultPageProps = {
   pageContent: T_PageContent;
@@ -12,7 +13,7 @@ type T_GetStaticProps<G_Params> = {
 };
 
 type T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams> = {
-  page:
+  page?:
     | T_PageRoute
     | T_PageRoute[]
     | ((params: T_GetStaticProps<G_GetStaticPropsParams>) => T_PageRoute);
@@ -21,10 +22,11 @@ type T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams> = {
   ) => Promise<{ props: G_PageProps }>;
 };
 
-export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsParams>({
-  page,
-  callback = () => Promise.resolve({ props: {} as G_PageProps }),
-}: T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams>): any {
+export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsParams>(
+  config?: T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams>,
+): any {
+  const { page, callback = () => Promise.resolve({ props: {} as G_PageProps }) } = config || {};
+
   async function getStaticProps(
     parameters: T_GetStaticProps<G_GetStaticPropsParams>,
   ): Promise<{ notFound: boolean; props: T_DefaultPageProps & G_PageProps }> {
@@ -60,7 +62,7 @@ async function fetchPageContent({
 }: T_GetContentParams): Promise<T_PageContent> {
   const [layoutContent, ...pagesContent] = await Promise.all(
     [readFile("")].concat(
-      Array.isArray(page) ? page.map((item) => readFile(item)) : [readFile(page)],
+      !page ? [] : Array.isArray(page) ? page.map((item) => readFile(item)) : [readFile(page)],
     ),
   );
   const response = {
@@ -70,26 +72,26 @@ async function fetchPageContent({
     common: {},
   };
 
-  const pageContent = pagesContent.reduce((result, current) => {
-    return {
-      config: {
-        ...result.config,
-        ...current.config,
-      },
-      [locale]: {
-        seo: {
-          ...result[locale]?.seo,
-          ...current[locale]?.seo,
-        },
-        texts: {
-          ...result[locale]?.texts,
-          ...current[locale]?.texts,
-        },
-      },
-    };
-  });
-
   if (page) {
+    const pageContent = pagesContent.reduce((result, current) => {
+      return {
+        config: {
+          ...result.config,
+          ...current.config,
+        },
+        [locale]: {
+          seo: {
+            ...result[locale]?.seo,
+            ...current[locale]?.seo,
+          },
+          texts: {
+            ...result[locale]?.texts,
+            ...current[locale]?.texts,
+          },
+        },
+      };
+    });
+
     response.seo = pageContent[locale]?.seo || {};
     response.page = pageContent[locale]?.texts || {};
     response.page.common = pageContent.common || {};
@@ -98,7 +100,13 @@ async function fetchPageContent({
 
   response.layout = Object.entries(layoutContent.layout).reduce(
     (result, [key, value]: [string, T_Object]) => {
-      return { ...result, [key]: value[locale] };
+      return {
+        ...result,
+        [key]: {
+          ...value[locale],
+          common: value.common || {},
+        },
+      };
     },
     {},
   );
@@ -111,7 +119,7 @@ async function fetchPageContent({
 async function readFile(page) {
   const response = await http.get(
     `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/${
-      page ? "pages" + (page === "/" ? "/home" : page) + "/" : ""
+      page ? "pages" + (page === ROUTES.HOME ? "/home" : page) + "/" : ""
     }content.json`,
   );
 

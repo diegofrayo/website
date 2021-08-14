@@ -54,7 +54,7 @@ function Section({ title, classes, theme }) {
 
           return (
             <div
-              key={`Section-${title}-${index}`}
+              key={`${title}-${index}`}
               className="tw-w-full sm:tw-w-auto sm:tw-ml-4 tw-mb-4"
               role="button"
               data-clipboard-text={classNameWithTheme}

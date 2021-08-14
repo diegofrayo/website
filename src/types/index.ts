@@ -141,7 +141,7 @@ export type T_Book = {
 
 export type T_Store = T_Object;
 
-export type T_MetadataReducer = {
+export type T_Metadata = {
   website: T_WebsiteMetadata;
   seo: T_SEOMetadata;
 };
@@ -170,9 +170,9 @@ export type T_WebsiteMetadata = {
 export type T_SEOMetadata = {
   title: string;
 };
-export type T_UIReducer = {
+export type T_UI = {
   locales: T_Locale[];
-  reloadLocaleUpdate: boolean;
+  reloadWhenLocaleChanges: boolean;
 };
 
 // --- Components props ---
@@ -211,6 +211,7 @@ export enum E_Icons {
   "EDIT" = "EDIT",
   "HEART" = "HEART",
   "LINK" = "LINK",
+  "MENU" = "MENU",
   "MINUS" = "MINUS",
   "MOON" = "MOON",
   "STAR" = "STAR",

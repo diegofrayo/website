@@ -70,7 +70,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
                       .map((guitarString) => {
                         return (
                           <Position
-                            key={`Tablature-position-${positionIndex}-${space}-${guitarString}`}
+                            key={`Position-${positionIndex}-${space}-${guitarString}`}
                             isCell
                           />
                         );
@@ -94,7 +94,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
 
                         if (musicNotePosition) {
                           return (
-                            <Position key={`Tablature-position-${positionIndex}-${guitarString}`}>
+                            <Position key={`Position-${positionIndex}-${guitarString}`}>
                               {musicNotePosition.guitarFret || "0"}
                             </Position>
                           );
@@ -106,7 +106,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
 
                         if (barrePosition) {
                           return (
-                            <Position key={`Tablature-position-${positionIndex}-${guitarString}`}>
+                            <Position key={`Position-${positionIndex}-${guitarString}`}>
                               {barrePosition.guitarFret}
                             </Position>
                           );
@@ -115,18 +115,13 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
 
                       if ((position as I_MusicNotePosition).guitarString === guitarString) {
                         return (
-                          <Position key={`Tablature-position-${positionIndex}-${guitarString}`}>
+                          <Position key={`Position-${positionIndex}-${guitarString}`}>
                             {(position as I_MusicNotePosition).guitarFret}
                           </Position>
                         );
                       }
 
-                      return (
-                        <Position
-                          key={`Tablature-position-${positionIndex}-${guitarString}`}
-                          isCell
-                        />
-                      );
+                      return <Position key={`Position-${positionIndex}-${guitarString}`} isCell />;
                     })}
                 </div>
               </div>

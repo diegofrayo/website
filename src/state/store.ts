@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { T_MetadataReducer, T_PageContent, T_Store } from "~/types";
+import I18NService from "~/i18n/service";
+import { T_Metadata, T_Object, T_PageContent, T_Store } from "~/types";
 import {
   isDevelopmentEnvironment,
   transformObjectKeysFromSnakeCaseToLowerCamelCase,
@@ -40,12 +41,20 @@ export function createPreloadedState({
   metadata,
   pageContent,
 }: {
-  metadata: T_MetadataReducer;
+  metadata: T_Metadata;
   pageContent: T_PageContent;
 }): T_PreloadedState {
+  const uiData = transformObjectKeysFromSnakeCaseToLowerCamelCase(
+    pageContent?.page?.config,
+  ) as T_Object;
+
+  if (!uiData.locales) {
+    uiData.locales = [I18NService.getCurrentLocale()];
+  }
+
   return {
     [METADATA_REDUCER_NAME]: metadata,
-    [UI_REDUCER_NAME]: transformObjectKeysFromSnakeCaseToLowerCamelCase(pageContent?.page?.config),
+    [UI_REDUCER_NAME]: uiData,
   };
 }
 

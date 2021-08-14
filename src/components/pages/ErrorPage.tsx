@@ -18,7 +18,7 @@ function ErrorPage(): T_ReactElement {
       <MainLayout
         breadcumb={[
           {
-            text: t("layout:breadcumb:home"),
+            text: t("page:breadcumb"),
             url: ROUTES.HOME,
             isNextLink: false,
           },

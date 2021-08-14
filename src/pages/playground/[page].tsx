@@ -75,7 +75,6 @@ export const getStaticPaths: GetStaticPaths<T_PageProps> = async function getSta
 };
 
 export const getStaticProps = getPageContentStaticProps<T_PageProps, T_PageProps>({
-  page: ROUTES.PLAYGROUND,
   callback: async ({ params }) => {
     return {
       props: {

@@ -4,10 +4,10 @@ import { initReactI18next } from "react-i18next";
 import { T_Locale } from "~/types";
 
 class I18NService {
-  LOCALES: T_Locale[] = ["es", "en"];
-  DEFAULT_LOCALE: T_Locale = this.LOCALES[0];
-  CURRENT_LOCALE;
-  INSTANCE;
+  private LOCALES: T_Locale[] = ["es", "en"];
+  private DEFAULT_LOCALE: T_Locale = this.LOCALES[0];
+  private CURRENT_LOCALE;
+  private INSTANCE;
 
   constructor() {
     this.createInstance = this.createInstance.bind(this);
@@ -34,7 +34,7 @@ class I18NService {
   }
 
   getCurrentLocale() {
-    return this.CURRENT_LOCALE;
+    return this.CURRENT_LOCALE || this.DEFAULT_LOCALE;
   }
 
   getContentLocale(

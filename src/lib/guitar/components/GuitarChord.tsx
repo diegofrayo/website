@@ -78,7 +78,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
               .map(([fret, musicNotes]: [string, T_MusicNote[]]) => {
                 return (
                   <GuitarFret
-                    key={`GuitarFret-${fret}`}
+                    key={`${fret}`}
                     variant={GuitarFret.variant.DEFAULT}
                     number={Number(fret) as T_GuitarFret}
                     musicNotes={musicNotes}
@@ -108,7 +108,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
           <div className="tw-pt-2">
             <Button className="tw-text-sm tw-font-bold tw-p-1" onClick={handleDownloadAsImage}>
               <Emoji className="tw-mr-1">⬇️</Emoji>
-              <span>download as image</span>
+              <span>descargar como imagen</span>
             </Button>
             <Space size={1} orientation="v" />
 
@@ -126,7 +126,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
                   >
                     ‣
                   </span>
-                  <span>{showChordInput ? "hide" : "show"} input</span>
+                  <span>{showChordInput ? "ocultar" : "mostrar"} notas</span>
                 </Button>
                 <Space size={1} orientation="v" />
               </Fragment>

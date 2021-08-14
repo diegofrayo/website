@@ -83,7 +83,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 
             return (
               <div
-                key={`GuitarFret-${
+                key={`${
                   isEmptyVariant
                     ? `empty-${guitarString}`
                     : isStringsNamesVariant
@@ -150,14 +150,16 @@ function useController({ variant, ...rest }: T_GuitarFretProps) {
   function getSkippedStringValue(
     playedStrings: T_GuitarFretProps["playedStrings"],
     guitarString: number,
-  ): string {
+  ): string | T_ReactElement {
     if (!playedStrings) return "";
 
     const playedString = playedStrings[guitarString - 1];
 
     if (playedString === "0") return "⚬";
     if (playedString === "1") return "⚈";
-    if (playedString === "x") return "✖";
+    if (playedString === "x") {
+      return <span className="tw-text-xs tw-relative tw--left-1px">✕</span>;
+    }
 
     return "⚈";
   }

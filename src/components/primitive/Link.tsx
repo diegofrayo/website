@@ -29,6 +29,8 @@ function Link(props: T_LinkProps): T_ReactElement {
   const {
     // vars
     getExternalAttrs,
+
+    // handlers
     onClick,
 
     // props
@@ -54,6 +56,7 @@ function Link(props: T_LinkProps): T_ReactElement {
           className={classNames("dfr-Link", className)}
           twcssVariant={variant}
           is={is}
+          onClick={onClick}
           {...rest}
         >
           {children}
@@ -91,6 +94,7 @@ function useController({
   external = true,
   isNextLink = false,
   variant = E_Variants.DEFAULT,
+  onClick = () => undefined,
   ...rest
 }: T_LinkProps) {
   function getExternalAttrs(href, external) {
@@ -98,15 +102,18 @@ function useController({
     return { target: "_blank", rel: "noreferrer" };
   }
 
-  function onClick() {
+  function onClickEnhanced(e) {
+    onClick(e);
+
     setTimeout(() => {
-      if (!isSmallScreen()) return;
+      if (!isSmallScreen() || !href.startsWith("#")) return;
 
       setScrollPosition(getScrollPosition() - FIXED_HEADER_HEIGHT);
     }, 10);
   }
 
   return {
+    // props
     children,
     href,
     className,
@@ -116,9 +123,11 @@ function useController({
     variant,
     ...rest,
 
+    // handlers
+    onClick: onClickEnhanced,
+
     // vars
     getExternalAttrs,
-    onClick: href.startsWith("#") ? onClick : undefined,
   };
 }
 
