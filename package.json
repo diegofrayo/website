@@ -12,7 +12,8 @@
     "husky:install": "husky install ./.husky",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
-    "scripts:seo-files": "node --experimental-json-modules scripts/rss.mjs && node --experimental-json-modules scripts/sitemap.mjs"
+    "scripts:seo-files": "node --experimental-json-modules scripts/rss.mjs && node --experimental-json-modules scripts/sitemap.mjs",
+    "scripts:chords": "node --experimental-json-modules scripts/chords.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.0",

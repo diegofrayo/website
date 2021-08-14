@@ -1,6 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+yarn scripts:chords
 yarn format
 yarn lint
 git add .

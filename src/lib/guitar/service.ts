@@ -1,4 +1,3 @@
-import http from "~/lib/http";
 import { createArray, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 import { replaceAll } from "~/utils/strings";
 
@@ -22,17 +21,9 @@ import {
   parseGuitarString,
   checkGuitarFretValidity,
 } from "./utils";
+import CHORDS from "./data/chords.json";
 
 class GuitarService {
-  chords = {};
-
-  constructor() {
-    this.fetchChords = this.fetchChords.bind(this);
-    this.findChord = this.findChord.bind(this);
-
-    this.fetchChords();
-  }
-
   buildChord(musicNotes: T_MusicNote[] | string): T_ParsedChord {
     try {
       const parsedMusicNotes: T_MusicNote[] =
@@ -170,7 +161,7 @@ class GuitarService {
   }
 
   findChord(chordName: string, chordIndex?: number): T_Chord | undefined {
-    const chord = this.chords[chordName];
+    const chord = CHORDS[chordName];
 
     if (!chord) {
       return undefined;
@@ -200,12 +191,6 @@ class GuitarService {
       ...chord,
       name: chordName,
     }) as T_Chord;
-  }
-
-  private async fetchChords() {
-    this.chords = (
-      await http.get(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/music/data.json`)
-    ).data.chords;
   }
 
   private parseTextLine({ parsedTextLine, chord, textLineItems, replaceExactly = false }) {

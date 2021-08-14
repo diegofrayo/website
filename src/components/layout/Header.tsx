@@ -266,7 +266,7 @@ function ToggleMenu() {
       </Button>
 
       {showMenu && (
-        <div className="tw-bg-white dark:tw-bg-black tw-fixed tw-h-screen tw-w-screen tw-z-50 tw-overflow-auto tw-block sm:tw-flex tw-justify-center tw-items-center tw-top-0 tw-left-0 tw-py-4 sm:tw-py-20">
+        <div className="tw-bg-white dark:tw-bg-black tw-fixed tw-h-screen tw-w-screen tw-z-40 tw-overflow-auto tw-block sm:tw-flex tw-justify-center tw-items-center tw-top-0 tw-left-0 tw-py-4">
           <Button
             className="tw-fixed tw-top-2 tw-right-2 tw-text-lg tw-text-black"
             onClick={() => setShowMenu(false)}

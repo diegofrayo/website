@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
@@ -112,27 +112,25 @@ function SongPage(props: T_PageProps): T_ReactElement {
             </Button>
           </div>
 
-          <div className="tw-max-w-full tw-overflow-x-auto">
+          <div className="tw-max-w-full tw-overflow-x-auto tw-pb-5">
             <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
           </div>
+          <Space size={4} />
 
-          {song.chords.length > 0 && (
-            <Fragment>
-              <Space size={6} />
-              <Blockquote
-                className="tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-font-mono tw-text-base"
-                variant={Blockquote.variant.UNSTYLED}
-              >
-                <p className="tw-font-bold tw-mb-2">Acordes [{song.chords.length}]</p>
-                <pre
-                  className="tw-break-all tw-max-w-full tw-whitespace-normal"
-                  dangerouslySetInnerHTML={{
-                    __html: GuitarService.formatText(song.chords.join(" | ")),
-                  }}
-                />
-              </Blockquote>
-            </Fragment>
-          )}
+          <Blockquote
+            className="tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-font-mono tw-text-base"
+            variant={Blockquote.variant.UNSTYLED}
+          >
+            <p className="tw-font-bold tw-mb-2">
+              {t("page:chords_title")} [{song.chords.length}]
+            </p>
+            <pre
+              className="tw-break-all tw-max-w-full tw-whitespace-normal"
+              dangerouslySetInnerHTML={{
+                __html: GuitarService.formatText(song.chords.join(" | ")),
+              }}
+            />
+          </Blockquote>
         </Blockquote>
 
         <SongSources sources={song.sources} />

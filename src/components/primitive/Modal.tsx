@@ -59,7 +59,7 @@ function Backdrop({ children, closeModalHandler }): T_ReactElement {
             position: fixed;
             right: 0;
             top: 0;
-            z-index: 1000;
+            z-index: 999;
           }
         `}
       </style>

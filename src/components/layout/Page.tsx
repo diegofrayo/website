@@ -133,7 +133,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
       </Head>
       {children}
       {showUserLoggedInFlag && (
-        <span className="tw-fixed tw-top-1 tw-left-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-white" />
+        <span className="tw-fixed tw-top-1 tw-right-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white" />
       )}
       {isDevelopmentEnvironment() && <WindowSize />}
     </Fragment>
