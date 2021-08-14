@@ -6,10 +6,9 @@ module.exports = {
   important: false,
   plugins: [plugin(myCustomClassesPlugin)],
   purge: {
-    content: ["./src/**/*.{js,jsx,ts,tsx}"],
-    options: {
-      safelist: [/^(sm:|md:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/, /dfr-/],
-    },
+    enabled: true,
+    content: ["./src/**/*.{ts,tsx}"],
+    safelist: [/^(sm:|md:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/, /dfr-/],
   },
   theme: {
     screens: {
