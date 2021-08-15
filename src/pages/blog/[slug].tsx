@@ -8,7 +8,6 @@ import { Blockquote, Icon, Space, Button } from "~/components/primitive";
 import { MDXContent } from "~/components/pages/_shared";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
 import twcss from "~/lib/twcss";
-import http from "~/lib/http";
 import BlogService from "~/services/blog";
 import { dataLoader } from "~/server";
 import { T_BlogPost, T_Locale, T_ReactElement, T_PageContent } from "~/types";
@@ -93,9 +92,6 @@ export const getStaticProps = getPageContentStaticProps<
     const file = await dataLoader({
       path: `/pages/blog/[slug]/${locale}/${post.createdAt}-${post.slug}.mdx`,
     });
-    const { data: codeSnippets } = await http.post(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/blog/code-snippets?slug=${post.slug}`,
-    );
     const postMDXContent = (await renderToString(file, {
       components: MDXComponents,
       scope: {
@@ -103,10 +99,6 @@ export const getStaticProps = getPageContentStaticProps<
           ...MDXScope.DATA,
           blogPost: {
             ...post,
-            assets: {
-              ...post.assets,
-              codeSnippets,
-            },
           },
         },
       },
