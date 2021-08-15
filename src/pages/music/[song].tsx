@@ -112,10 +112,10 @@ function SongPage(props: T_PageProps): T_ReactElement {
             </Button>
           </div>
 
-          <div className="tw-max-w-full tw-overflow-x-auto tw-pb-5">
+          <div className="tw-max-w-full tw-overflow-x-auto tw-pb-3">
             <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
           </div>
-          <Space size={4} />
+          <Space size={6} />
 
           <Blockquote
             className="tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-font-mono tw-text-base"

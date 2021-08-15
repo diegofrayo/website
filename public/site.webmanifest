@@ -1,6 +1,10 @@
 {
   "name": "Diego Rayo | Software Developer",
+  "lang": "es",
   "short_name": "diegofrayo",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "standalone",
   "icons": [
     {
       "src": "/static/images/favicon/android-chrome-192x192.png",
@@ -12,8 +16,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  ]
 }
