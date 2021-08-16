@@ -41,7 +41,7 @@ export type T_OnScrollEvent = React.UIEvent<HTMLElement>;
 
 export type T_FormEvent<HTMLElement> = React.FormEvent<HTMLElement>;
 
-// --- Internationalization ---
+// --- i18n ---
 
 export type T_PageContent = {
   seo?: T_Object<T_Primitive>;
@@ -76,13 +76,17 @@ export type T_GenerateSupportedLocales = {
   route: string;
 }[];
 
+// --- Shared ---
+
+export type T_ItemCategory = { id: string; value: string };
+
 // --- Blog ---
 
 export type T_BlogPost = {
   title: string;
   description: string;
   slug: string;
-  categories: T_BlogPostCategory[];
+  categories: T_ItemCategory[];
   locales: T_Locale[];
   createdAt: string;
   publishedAt: string;
@@ -91,8 +95,6 @@ export type T_BlogPost = {
   isPublished: boolean;
   assets?: T_Object<string>;
 };
-
-export type T_BlogPostCategory = { id: string; value: string };
 
 // --- Music ---
 
@@ -135,6 +137,17 @@ export type T_Book = {
   calification: number;
   url: string;
   cover: string;
+};
+
+// --- TimeLine ---
+
+export type T_TimeLine = {
+  id: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+  categories: T_ItemCategory[];
+  assets: string[];
 };
 
 // --- Redux ---
@@ -218,6 +231,7 @@ export enum E_Icons {
   "MENU" = "MENU",
   "MINUS" = "MINUS",
   "MOON" = "MOON",
+  "REPLY" = "REPLY",
   "STAR" = "STAR",
   "SUN" = "SUN",
   "X" = "X",

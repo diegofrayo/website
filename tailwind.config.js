@@ -6,7 +6,7 @@ module.exports = {
   important: false,
   plugins: [plugin(myCustomClassesPlugin)],
   purge: {
-    enabled: true,
+    enabled: process.env.NODE_ENV === "production",
     content: ["./src/**/*.{ts,tsx}"],
     options: {
       safelist: [/^(sm:|md:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/, /dfr-/],

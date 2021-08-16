@@ -3,22 +3,23 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   CodeIcon,
+  DotsCircleHorizontalIcon,
   LinkIcon,
   MenuIcon,
   PencilAltIcon,
+  ReplyIcon,
   XIcon,
   ZoomInIcon,
   ZoomOutIcon,
-  DotsCircleHorizontalIcon,
 } from "@heroicons/react/outline";
 import {
-  MoonIcon,
-  SunIcon,
-  HeartIcon,
-  StarIcon,
   CheckIcon,
-  MinusIcon,
   DotsCircleHorizontalIcon as DotsCircleHorizontalIconSolid,
+  HeartIcon,
+  MinusIcon,
+  MoonIcon,
+  StarIcon,
+  SunIcon,
 } from "@heroicons/react/solid";
 
 import { E_Icons, T_ReactFunctionComponent } from "~/types";
@@ -188,6 +189,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     icon: CodeIcon,
     props: {
       className: "",
+    },
+  },
+  REPLY: {
+    isLibraryIcon: true,
+    icon: ReplyIcon,
+    props: {
+      className: "",
+      color: "",
     },
   },
   STAR: {

@@ -5,7 +5,7 @@ import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/util
 class FilmsService {
   async fetchFilms(): Promise<T_Film[]> {
     const response = await http.get(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/playground/films/data.json`,
+      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/playground/[page]/films/data.json`,
     );
 
     return response.data.map(transformObjectKeysFromSnakeCaseToLowerCamelCase).sort(

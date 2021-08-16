@@ -65,6 +65,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no"
         />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta
           name="google-site-verification"
           content="Gf-6mROjwXEjbtUUtl2rX5NgzWuzWxgxoKYTaGsqvtw"

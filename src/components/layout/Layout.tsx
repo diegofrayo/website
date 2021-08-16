@@ -6,7 +6,7 @@ import twcss from "~/lib/twcss";
 import { T_BreadcumbProps, T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
 import { ROUTES } from "~/utils/routing";
-import { generateSlug, removeEmojiFromString } from "~/utils/strings";
+import { generateSlug } from "~/utils/strings";
 
 import { DefaultHeader, HomeHeader } from "./Header";
 
@@ -78,7 +78,7 @@ function Breadcumb({ items }: T_BreadcumbProps): T_ReactElement {
         if (index === items.length - 1 && hasMoreThanOneItem) {
           return (
             <li key={generateSlug(text)} className="tw-inline-block">
-              <span className="tw-text-base tw-italic">{removeEmojiFromString(text)}</span>
+              <span className="tw-text-base tw-italic">{text}</span>
             </li>
           );
         }

@@ -1,6 +1,6 @@
 import { I18nService } from "~/i18n";
 import http from "~/lib/http";
-import { T_BlogPost, T_BlogPostCategory, T_Object, T_Primitive } from "~/types";
+import { T_BlogPost, T_ItemCategory, T_Object, T_Primitive } from "~/types";
 import {
   isDevelopmentEnvironment,
   sortBy,
@@ -52,7 +52,7 @@ class BlogService {
     return `${post.isLegacy ? "[LEGACY] " : ""}${post.title}`;
   }
 
-  private async fetchData(): Promise<{ posts: T_Object[]; categories: T_BlogPostCategory[] }> {
+  private async fetchData(): Promise<{ posts: T_Object[]; categories: T_ItemCategory[] }> {
     const response = await http.get(
       `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/blog/data.json`,
     );

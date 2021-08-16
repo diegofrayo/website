@@ -10,7 +10,9 @@ import { useTranslation, getPageContentStaticProps } from "~/i18n";
 import twcss from "~/lib/twcss";
 import BlogService from "~/services/blog";
 import { dataLoader } from "~/server";
-import { T_BlogPost, T_Locale, T_ReactElement, T_PageContent } from "~/types";
+import { useStoreSelector } from "~/state";
+import { selectWebsiteMetadata } from "~/state/modules/metadata";
+import { T_BlogPost, T_Locale, T_ReactElement, T_PageContent, T_WebsiteMetadata } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { formatDate, getDifferenceBetweenDates } from "~/utils/dates";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
@@ -97,9 +99,7 @@ export const getStaticProps = getPageContentStaticProps<
       scope: {
         DATA: {
           ...MDXScope.DATA,
-          blogPost: {
-            ...post,
-          },
+          post,
         },
       },
     })) as string;
@@ -119,6 +119,7 @@ type T_BlogPostFooterProps = Pick<T_BlogPost, "publishedAt" | "updatedAt">;
 
 function BlogPostFooter({ publishedAt, updatedAt }: T_BlogPostFooterProps): T_ReactElement {
   const { t } = useTranslation();
+  const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
     <Blockquote
@@ -143,6 +144,22 @@ function BlogPostFooter({ publishedAt, updatedAt }: T_BlogPostFooterProps): T_Re
         <BlogPostFooterItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
           <BlogPostFooterItem.Icon icon={Icon.icon.LINK} />
           <span>{t("page:copy_url_to_clipboard")}</span>
+        </BlogPostFooterItem>
+        <BlogPostFooterItem
+          is={Button}
+          onClick={() => {
+            window.open(
+              `mailto:${WEBSITE_METADATA.email}?subject=${t("page:email_message_subject")}&body=${t(
+                "page:email_message_body",
+                {
+                  url: `${encodeURIComponent(window.location.href)} ${encodeURIComponent("\n\n")}`,
+                },
+              )}`,
+            );
+          }}
+        >
+          <BlogPostFooterItem.Icon icon={Icon.icon.REPLY} />
+          <span>{t("page:email_message_label")}</span>
         </BlogPostFooterItem>
       </div>
     </Blockquote>

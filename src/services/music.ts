@@ -1,5 +1,5 @@
-import { T_Object, T_Primitive, T_Song } from "~/types";
 import http from "~/lib/http";
+import { T_Object, T_Primitive, T_Song } from "~/types";
 import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 
 class MusicService {
@@ -55,6 +55,7 @@ class MusicService {
     const response = await http.get(
       `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/music/data.json`,
     );
+
     return response.data.songs;
   }
 }

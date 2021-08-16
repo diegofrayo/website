@@ -32,6 +32,11 @@ export const PLAYGROUND_PAGES = [
     componentName: "Strings",
   },
   {
+    slug: "timeline",
+    title: "🕰 timeline",
+    componentName: "TimeLine",
+  },
+  {
     slug: "whatsapp",
     title: "💬 whatsapp",
     componentName: "WhatsApp",
