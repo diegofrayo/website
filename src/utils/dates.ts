@@ -3,8 +3,6 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 
 import { I18nService } from "~/i18n";
 
-import { replaceAll } from "./strings";
-
 dayjs.extend(customParseFormat);
 
 export function getDifferenceBetweenDates(startDate: string, endDate: Date): string {
@@ -34,6 +32,23 @@ export function getDifferenceBetweenDates(startDate: string, endDate: Date): str
   return translator.t("page:years_ago", { number: Math.round(difference / 365) });
 }
 
-export function formatDate(date: string): string {
-  return replaceAll(date, "-", "/");
+export function formatDateWithoutYear(date: string): string {
+  const MONTHS = [
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre",
+  ];
+
+  const dateItems = date.split("/");
+
+  return `${Number(dateItems[2])} de ${MONTHS[Number(dateItems[1]) - 1]}`;
 }

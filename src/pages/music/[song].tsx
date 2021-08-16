@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Blockquote, Icon, Button, Space } from "~/components/primitive";
-import { MDXContent, Loader } from "~/components/pages/_shared";
+import { MDXContent, Loader, RateContent } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
 import { useDidMount } from "~/hooks";
 import { getPageContentStaticProps, useTranslation } from "~/i18n";
@@ -136,6 +136,9 @@ function SongPage(props: T_PageProps): T_ReactElement {
         </Blockquote>
 
         <SongSources sources={song.sources} />
+        <Space size={6} />
+
+        <RateContent />
       </MainLayout>
     </Page>
   );

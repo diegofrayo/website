@@ -14,7 +14,10 @@ function Button({
 }: T_ButtonProps): T_ReactElement {
   return (
     <button
-      className={classNames("tw-transition-opacity hover:tw-opacity-75", className)}
+      className={classNames(
+        disabled ? "tw-cursor-not-allowed" : "tw-transition-opacity hover:tw-opacity-75",
+        className,
+      )}
       disabled={disabled}
       onClick={onClick}
       {...rest}

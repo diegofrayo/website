@@ -37,6 +37,10 @@ export function isDevelopmentEnvironment(url?: string): boolean {
   );
 }
 
+export function isServer(): boolean {
+  return typeof window === "undefined";
+}
+
 export function isUserLoggedIn(): boolean {
   let isLoggedIn = false;
 

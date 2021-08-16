@@ -4,6 +4,7 @@ import { Icon, Link } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
 import { focusElement, isSmallScreen } from "~/utils/browser";
+import { generateSlug, replaceAll } from "~/utils/strings";
 
 function WhatsApp(): T_ReactElement {
   const {
@@ -74,7 +75,7 @@ function useController(): {
   }
 
   function onChange(e) {
-    setPhone(e.currentTarget.value);
+    setPhone(replaceAll(generateSlug(e.currentTarget.value), "-", ""));
   }
 
   return {

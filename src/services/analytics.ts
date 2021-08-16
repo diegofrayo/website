@@ -1,3 +1,5 @@
+import splitbee from "@splitbee/web";
+
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 
 class AnalyticsService {
@@ -5,7 +7,6 @@ class AnalyticsService {
     if (isUserLoggedIn() === true || isDevelopmentEnvironment() === true) return;
 
     try {
-      const splitbee = (await import("@splitbee/web")).default;
       splitbee.init();
     } catch (error) {
       console.error("Error loading and initializing the analytics");
@@ -17,6 +18,10 @@ class AnalyticsService {
     console.group("trackPageLoaded");
     console.info({ page: window.location.pathname, title: document.title });
     console.groupEnd();
+  }
+
+  trackEvent(name: string, data): void {
+    splitbee.track(name, data);
   }
 }
 
