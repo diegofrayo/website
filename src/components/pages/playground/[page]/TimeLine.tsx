@@ -1,21 +1,62 @@
+import React, { useState } from "react";
 import classNames from "classnames";
-import React from "react";
 
 import { Emoji, Render } from "~/components/pages/_shared";
-import { Title } from "~/components/primitive";
+import { Button, Space, Title } from "~/components/primitive";
 import { useQuery } from "~/hooks";
 import TimeLineService from "~/services/timeline";
 import { T_TimeLine, T_ReactElement } from "~/types";
-import { formatDateWithoutYear } from "~/utils/dates";
 
 function TimeLine(): T_ReactElement {
-  const { isLoading, error, data } = useQuery("items", TimeLineService.fetchData);
+  const {
+    // states
+    selectedCategory,
+
+    // handlers
+    handleSelectFilter,
+    formatDate,
+
+    // vars
+    isLoading,
+    error,
+    data,
+  } = useController();
 
   return (
     <Render isLoading={isLoading} error={error} data={data}>
-      {({ items }: { items: { year: number; items: T_TimeLine[] }[] }) => {
+      {({ categories, items }: T_TimeLine) => {
         return (
           <div className="tw-mt-10">
+            <section>
+              <Title
+                is="h3"
+                size={Title.size.MD}
+                variant={Title.variant.SECONDARY}
+                className="tw-mb-4"
+              >
+                Categorías [{categories.length}]
+              </Title>
+              <div className="tw-flex tw-justify-betweden tw-flex-wrap">
+                {categories.map((category) => {
+                  return (
+                    <Button
+                      key={category.id}
+                      className={classNames(
+                        "tw-mr-2 tw-my-1 tw-underlidne tw-inline-block tw-text-sm tw-font-bold tw-py-1 tw-px-3 tw-rounded-md tw-text-left tw-truncate",
+                        category.id === selectedCategory
+                          ? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
+                          : "dfr-bg-secondary dark:dfr-bg-secondary",
+                      )}
+                      onClick={handleSelectFilter(category.id)}
+                    >
+                      {category.value}
+                    </Button>
+                  );
+                })}
+              </div>
+            </section>
+            <Space size={6} />
+
             {items.map((item) => {
               return (
                 <section key={item.year}>
@@ -40,8 +81,7 @@ function TimeLine(): T_ReactElement {
                         )}
                       >
                         <p className="tw-text-sm">
-                          <Emoji>🗓</Emoji> <span>{formatDateWithoutYear(item.startDate)}</span>{" "}
-                          {item.endDate && <span>al {formatDateWithoutYear(item.endDate)}</span>}
+                          <Emoji>🗓</Emoji> <span>{formatDate(item.startDate, item.endDate)}</span>
                         </p>
                         <p className="tw-font-bold tw-text-xl tw-my-2">{item.description}</p>
                         <div>
@@ -70,3 +110,84 @@ function TimeLine(): T_ReactElement {
 }
 
 export default TimeLine;
+
+// --- Controller ---
+
+function useController(): {
+  isLoading: boolean;
+  error: unknown;
+  data?: T_TimeLine;
+  selectedCategory: string;
+  handleSelectFilter: (filter: string) => () => void;
+  formatDate: any;
+} {
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const { isLoading, error, data } = useQuery("items", TimeLineService.fetchData);
+
+  function handleSelectFilter(category) {
+    return () => {
+      setSelectedCategory(category === selectedCategory ? "" : category);
+    };
+  }
+
+  function formatDate(startDate, endDate) {
+    const MONTHS = [
+      "enero",
+      "febrero",
+      "marzo",
+      "abril",
+      "mayo",
+      "junio",
+      "julio",
+      "agosto",
+      "septiembre",
+      "octubre",
+      "noviembre",
+      "diciembre",
+    ];
+
+    const startDateItems = startDate.split("/");
+    let output = `${Number(startDateItems[2])} de ${MONTHS[Number(startDateItems[1]) - 1]}`;
+
+    if (endDate) {
+      const endDateItems = endDate.split("/");
+
+      output += ` al ${Number(endDateItems[2])} de ${MONTHS[Number(endDateItems[1]) - 1]}${
+        endDateItems[0] !== startDateItems[0] ? " del " + endDateItems[0] : ""
+      }`;
+    }
+
+    return output;
+  }
+
+  return {
+    // states
+    selectedCategory,
+
+    // handlers
+    handleSelectFilter,
+    formatDate,
+
+    // vars
+    isLoading,
+    error,
+    data: data
+      ? {
+          categories: data.categories,
+          items: data.items.map((item) => {
+            return {
+              ...item,
+              items: selectedCategory
+                ? item.items.filter((item) => {
+                    return (
+                      item.categories.find((category) => category.id === selectedCategory) !==
+                      undefined
+                    );
+                  })
+                : item.items,
+            };
+          }),
+        }
+      : undefined,
+  };
+}

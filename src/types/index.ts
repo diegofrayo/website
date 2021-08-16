@@ -142,6 +142,11 @@ export type T_Book = {
 // --- TimeLine ---
 
 export type T_TimeLine = {
+  categories: T_ItemCategory[];
+  items: { year: number; items: T_TimeLineItem[] }[];
+};
+
+export type T_TimeLineItem = {
   id: string;
   startDate: string;
   endDate: string;

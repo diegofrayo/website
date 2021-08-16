@@ -61,7 +61,7 @@ function useController({
 
   return {
     className: classNames(
-      "tw-flex-shrink-0",
+      "tw-flex-shrink-0 tw-h-px",
       getSizeClass(),
       !isHorizontalDir && "tw-inline-block tw-h-1",
       variant === E_Variants.DEFAULT && "tw-border-0",

@@ -3,25 +3,28 @@ import splitbee from "@splitbee/web";
 import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
 
 class AnalyticsService {
-  async initAnalytics(): Promise<void> {
-    if (isUserLoggedIn() === true || isDevelopmentEnvironment() === true) return;
+  initAnalytics(): void {
+    if (this.analyticsIsDisabled()) return;
 
-    try {
-      splitbee.init();
-    } catch (error) {
-      console.error("Error loading and initializing the analytics");
-      console.error(error);
-    }
+    splitbee.init();
   }
 
   trackPageLoaded(): void {
+    if (this.analyticsIsDisabled()) return;
+
     console.group("trackPageLoaded");
     console.info({ page: window.location.pathname, title: document.title });
     console.groupEnd();
   }
 
   trackEvent(name: string, data): void {
+    if (this.analyticsIsDisabled()) return;
+
     splitbee.track(name, data);
+  }
+
+  private analyticsIsDisabled() {
+    return isUserLoggedIn() === true || isDevelopmentEnvironment() === true;
   }
 }
 

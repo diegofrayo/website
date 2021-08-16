@@ -1,12 +1,9 @@
 import http from "~/lib/http";
-import { T_ItemCategory, T_TimeLine } from "~/types";
+import { T_TimeLine } from "~/types";
 import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 
 class TimeLineService {
-  async fetchData(): Promise<{
-    categories: T_ItemCategory[];
-    items: { year: number; items: T_TimeLine[] }[];
-  }> {
+  async fetchData(): Promise<T_TimeLine> {
     const { categories, items } = (
       await http.get(
         `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/playground/[page]/timeline/data.json`,

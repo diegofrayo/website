@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import { Icon, Link } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
@@ -11,13 +11,11 @@ function WhatsApp(): T_ReactElement {
     // states
     phone,
     inputRef,
+    isInvalidPhone,
 
     // handlers
     onKeyPress,
     onChange,
-
-    // vars
-    isInvalidPhone,
   } = useController();
 
   return (
@@ -62,12 +60,16 @@ function useController(): {
 } {
   const [phone, setPhone] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const isInvalidPhone = !inputRef?.current?.validity?.valid || !phone;
+  const [isInvalidPhone, setIsInvalidPhone] = useState(true);
 
   useDidMount(() => {
     if (isSmallScreen() || !inputRef.current) return;
     focusElement(inputRef.current);
   });
+
+  useEffect(() => {
+    setIsInvalidPhone(!inputRef?.current?.validity?.valid || !phone);
+  }, [phone]);
 
   function onKeyPress(e) {
     if (e.key !== "Enter" || isInvalidPhone) return;
@@ -82,12 +84,10 @@ function useController(): {
     // states
     phone,
     inputRef,
+    isInvalidPhone,
 
     // handlers
     onKeyPress,
     onChange,
-
-    // vars
-    isInvalidPhone,
   };
 }

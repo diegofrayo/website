@@ -33,7 +33,7 @@ export const PLAYGROUND_PAGES = [
   },
   {
     slug: "timeline",
-    title: "🕰 timeline",
+    title: "⏳ timeline",
     componentName: "TimeLine",
   },
   {
