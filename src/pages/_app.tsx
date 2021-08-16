@@ -13,7 +13,7 @@ import { Provider } from "react-redux";
 
 import { ProgressBar } from "~/components/layout";
 import { useDidMount } from "~/hooks";
-import I18NService from "~/i18n/service";
+import { I18nService } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import MetadataService from "~/services/metadata";
 import { createPreloadedState, useStore } from "~/state";
@@ -46,7 +46,7 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
   return (
     <Provider store={store}>
       <I18nextProvider
-        i18n={I18NService.createInstance({
+        i18n={I18nService.createInstance({
           messages: pageProps.pageContent,
           locale: pageProps.locale,
         })}

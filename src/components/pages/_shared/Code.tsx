@@ -4,7 +4,7 @@ import dracula from "prism-react-renderer/themes/dracula";
 import classNames from "classnames";
 
 import { Link, Icon, Code as CodePrimitive, Button } from "~/components/primitive";
-import useTranslation from "~/i18n/hook";
+import { useTranslation } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { T_CodeProps, T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";

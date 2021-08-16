@@ -52,8 +52,10 @@ function SongPage(props: T_PageProps): T_ReactElement {
   return (
     <Page
       config={{
-        title: t("seo:title", { title: song.title, artist: song.artist }),
-        replaceTitle: true,
+        title: MusicService.isChordsPage(song)
+          ? song.title
+          : t("seo:title", { title: song.title, artist: song.artist }),
+        replaceTitle: !MusicService.isChordsPage(song),
         description: t("seo:description", { title: song.title, artist: song.artist }),
         pathname: `${ROUTES.MUSIC}/${song.id}`,
         disableSEO: song.progress !== 5,

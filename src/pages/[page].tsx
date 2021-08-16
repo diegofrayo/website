@@ -5,9 +5,7 @@ import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
 import { MDXContent } from "~/components/pages/_shared";
-import useTranslation from "~/i18n/hook";
-import getPageContentStaticProps from "~/i18n/server";
-import I18NService from "~/i18n/service";
+import { useTranslation, getPageContentStaticProps, I18nService } from "~/i18n";
 import { dataLoader } from "~/server";
 import { T_Locale, T_PageRoute, T_ReactElement } from "~/types";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
@@ -84,7 +82,7 @@ export const getStaticProps = getPageContentStaticProps<T_SitePageProps, { page:
 
     const page = params.page;
     const file = await dataLoader({
-      path: `/pages/${page}/${I18NService.getContentLocale(
+      path: `/pages/${page}/${I18nService.getContentLocale(
         pageContent.page?.config?.locales,
         pageContent.page?.config?.default_locale,
         locale as T_Locale,

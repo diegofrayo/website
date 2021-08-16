@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-import I18NService from "~/i18n/service";
+import { I18nService } from "~/i18n";
 import { T_Function, T_OnClickEvent } from "~/types";
 
 export function getScrollPosition(element?: HTMLElement | null): number {
@@ -51,7 +51,7 @@ export async function copyToClipboard(
     if (!clipboardText) throw new Error("Any text was selected to copy");
     await navigator.clipboard.writeText(clipboardText);
 
-    const translator = I18NService.getInstance();
+    const translator = I18nService.getInstance();
     toast.success(translator.t("common:copy_to_clipboard"), {
       position: toast.POSITION.BOTTOM_CENTER,
       toastId: "copy-to-clipboard",

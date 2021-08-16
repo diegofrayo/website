@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import I18NService from "~/i18n/service";
+import { I18nService } from "~/i18n";
 import { T_Metadata, T_Object, T_PageContent, T_Store } from "~/types";
 import {
   isDevelopmentEnvironment,
@@ -49,7 +49,7 @@ export function createPreloadedState({
   ) as T_Object;
 
   if (!pageConfig.locales) {
-    pageConfig.locales = [I18NService.getCurrentLocale()];
+    pageConfig.locales = [I18nService.getCurrentLocale()];
   }
 
   return {

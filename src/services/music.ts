@@ -15,6 +15,7 @@ class MusicService {
       .map((song) => {
         return transformObjectKeysFromSnakeCaseToLowerCamelCase({
           ...song,
+          artist: Array.isArray(song.artist) ? song.artist.join(", ") : song.artist,
           chords: song.chords.sort(),
           sources: song.sources.sort(
             sortBy([
@@ -25,11 +26,11 @@ class MusicService {
         }) as T_Song;
       });
 
-    const listOfChords = songs.find((song) => !song.artist);
+    const chordsPage = songs.find((song) => this.isChordsPage(song));
 
-    return (listOfChords ? [listOfChords] : []).concat(
+    return (chordsPage ? [chordsPage] : []).concat(
       songs
-        .filter((song) => !!song.artist)
+        .filter((song) => !this.isChordsPage(song))
         .sort(
           sortBy([
             { param: "progress", order: "desc" },
@@ -49,6 +50,10 @@ class MusicService {
     }
 
     return song;
+  }
+
+  isChordsPage(song) {
+    return song.progress === 0;
   }
 
   private async fetchData(): Promise<T_Object> {

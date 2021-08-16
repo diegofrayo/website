@@ -152,7 +152,7 @@ function BlogPostFooter({ publishedAt, updatedAt }: T_BlogPostFooterProps): T_Re
               `mailto:${WEBSITE_METADATA.email}?subject=${t("page:email_message_subject")}&body=${t(
                 "page:email_message_body",
                 {
-                  url: `${encodeURIComponent(window.location.href)} ${encodeURIComponent("\n\n")}`,
+                  url: encodeURIComponent(window.location.href),
                 },
               )}`,
             );

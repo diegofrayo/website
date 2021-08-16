@@ -25,7 +25,7 @@ function TimeLine(): T_ReactElement {
                       : "sm:tw-left-2/4",
                   )}
                 >
-                  <p className="tw-text-sm tw-italic">
+                  <p className="tw-text-sm">
                     <Emoji>🗓</Emoji> <span>{item.startDate}</span>{" "}
                     {item.endDate && <span>| {item.endDate}</span>}
                   </p>
@@ -35,7 +35,7 @@ function TimeLine(): T_ReactElement {
                       return (
                         <span
                           key={category.id}
-                          className="tw-font-bold tw-text-xs tw-px-2 tw-py-1 tw-rounded-md tw-border"
+                          className="tw-font-bold tw-text-xs tw-px-2 tw-py-1 tw-rounded-md tw-border dfr-border-color-primary dark:dfr-border-color-primary"
                         >
                           {category.value}
                         </span>

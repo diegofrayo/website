@@ -101,7 +101,7 @@ export type T_BlogPost = {
 export type T_Song = {
   id: string;
   title: string;
-  artist: string | string[];
+  artist: string;
   album: string;
   year: number;
   country: string;

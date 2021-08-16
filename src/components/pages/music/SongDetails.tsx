@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
 
 import { Icon, Link } from "~/components/primitive";
-import useTranslation from "~/i18n/hook";
+import { useTranslation } from "~/i18n";
+import { useDidMount } from "~/hooks";
+import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
-import { createArray } from "~/utils/misc";
+import { createArray, isUserLoggedIn } from "~/utils/misc";
 
 function SongDetails({
   song,
@@ -13,19 +15,17 @@ function SongDetails({
   song: T_Song;
   className?: string;
 }): T_ReactElement {
-  const { getProgressStyles } = useController();
+  const { getProgressStyles, showProgress } = useController();
   const { t } = useTranslation();
 
-  if (!song.artist) return null;
-
-  const songArtist = Array.isArray(song.artist) ? song.artist.join(", ") : song.artist;
+  if (MusicService.isChordsPage(song)) return null;
 
   return (
     <div className={classNames("tw-text-sm tw-italic", className)}>
       <div className="sm:tw-flex sm:tw-flex-nowrap">
         <strong>{t("page:artist")}:</strong>{" "}
-        <span className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={songArtist}>
-          {songArtist}
+        <span className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={song.artist}>
+          {song.artist}
         </span>
       </div>
       <div className="sm:tw-flex sm:tw-flex-nowrap">
@@ -37,7 +37,7 @@ function SongDetails({
       <div>
         <strong>{t("page:year")}:</strong> <span>{song.year}</span>
       </div>
-      <div className="tw-flex tw-items-center">
+      <div className={classNames("tw-items-center", showProgress ? "tw-flex" : "tw-hidden")}>
         <strong className="tw-mr-2">{t("page:progress")}:</strong>
         {createArray(5).map((index) => {
           return (
@@ -68,7 +68,15 @@ export default SongDetails;
 
 // --- Controller ---
 
-function useController() {
+function useController(): { showProgress: boolean; getProgressStyles: any } {
+  const [showProgress, setShowProgress] = useState(false);
+
+  useDidMount(() => {
+    if (isUserLoggedIn()) {
+      setShowProgress(true);
+    }
+  });
+
   function getProgressStyles(song: T_Song, index: number) {
     return index <= song.progress
       ? (song.progress === 1
@@ -103,5 +111,5 @@ function useController() {
       : "tw-opacity-75 dfr-bg-secondary";
   }
 
-  return { getProgressStyles };
+  return { showProgress, getProgressStyles };
 }
