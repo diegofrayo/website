@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import classNames from "classnames";
 
 import { Emoji, Render } from "~/components/pages/_shared";
@@ -26,7 +26,7 @@ function TimeLine(): T_ReactElement {
     <Render isLoading={isLoading} error={error} data={data}>
       {({ categories, items }: T_TimeLine) => {
         return (
-          <div className="tw-mt-10">
+          <Fragment>
             <section>
               <Title
                 is="h3"
@@ -49,7 +49,7 @@ function TimeLine(): T_ReactElement {
                       )}
                       onClick={handleSelectFilter(category.id)}
                     >
-                      {category.value}
+                      <Emoji>{category.emoji}</Emoji> {category.value}
                     </Button>
                   );
                 })}
@@ -102,7 +102,7 @@ function TimeLine(): T_ReactElement {
                 </section>
               );
             })}
-          </div>
+          </Fragment>
         );
       }}
     </Render>

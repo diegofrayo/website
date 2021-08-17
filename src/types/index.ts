@@ -142,16 +142,18 @@ export type T_Book = {
 // --- TimeLine ---
 
 export type T_TimeLine = {
-  categories: T_ItemCategory[];
+  categories: T_TimeLineCategory[];
   items: { year: number; items: T_TimeLineItem[] }[];
 };
+
+export type T_TimeLineCategory = T_ItemCategory & { emoji: string };
 
 export type T_TimeLineItem = {
   id: string;
   startDate: string;
   endDate: string;
   description: string;
-  categories: T_ItemCategory[];
+  categories: T_TimeLineCategory[];
   assets: string[];
 };
 

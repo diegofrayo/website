@@ -60,7 +60,11 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
       >
         <MDXContent content={mdxContent} />
         <Space size={8} />
+
         <BlogPostFooter publishedAt={post.publishedAt} updatedAt={post.updatedAt} />
+        <Space size={6} />
+
+        <RateContent />
       </MainLayout>
     </Page>
   );
@@ -123,52 +127,47 @@ function BlogPostFooter({ publishedAt, updatedAt }: T_BlogPostFooterProps): T_Re
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
-    <div>
-      <RateContent />
-
-      <Space size={4} />
-
-      <Blockquote
-        className="tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-text-black dark:tw-text-white tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary"
-        variant={Blockquote.variant.UNSTYLED}
-      >
-        <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
-          <BlogPostFooterItem>
-            <BlogPostFooterItem.Icon icon={Icon.icon.CALENDAR} />
-            <p>
-              <span className="tw-mr-1">{t("page:published_at")}</span>
-              <strong>{publishedAt}</strong>
-            </p>
-          </BlogPostFooterItem>
-          <BlogPostFooterItem>
-            <BlogPostFooterItem.Icon icon={Icon.icon.EDIT} />
-            <p>
-              <span className="tw-mr-1">{t("page:updated_at")}</span>
-              <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
-            </p>
-          </BlogPostFooterItem>
-          <BlogPostFooterItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
-            <BlogPostFooterItem.Icon icon={Icon.icon.LINK} />
-            <span>{t("page:copy_url_to_clipboard")}</span>
-          </BlogPostFooterItem>
-          <BlogPostFooterItem
-            is={Button}
-            onClick={() => {
-              window.open(
-                `mailto:${WEBSITE_METADATA.email}?subject=${t(
-                  "page:email_message_subject",
-                )}&body=${t("page:email_message_body", {
+    <Blockquote
+      className="tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-text-black dark:tw-text-white tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary"
+      variant={Blockquote.variant.UNSTYLED}
+    >
+      <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
+        <BlogPostFooterItem>
+          <BlogPostFooterItem.Icon icon={Icon.icon.CALENDAR} />
+          <p>
+            <span className="tw-mr-1">{t("page:published_at")}</span>
+            <strong>{publishedAt}</strong>
+          </p>
+        </BlogPostFooterItem>
+        <BlogPostFooterItem>
+          <BlogPostFooterItem.Icon icon={Icon.icon.EDIT} />
+          <p>
+            <span className="tw-mr-1">{t("page:updated_at")}</span>
+            <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
+          </p>
+        </BlogPostFooterItem>
+        <BlogPostFooterItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
+          <BlogPostFooterItem.Icon icon={Icon.icon.LINK} />
+          <span>{t("page:copy_url_to_clipboard")}</span>
+        </BlogPostFooterItem>
+        <BlogPostFooterItem
+          is={Button}
+          onClick={() => {
+            window.open(
+              `mailto:${WEBSITE_METADATA.email}?subject=${t("page:email_message_subject")}&body=${t(
+                "page:email_message_body",
+                {
                   url: encodeURIComponent(window.location.href),
-                })}`,
-              );
-            }}
-          >
-            <BlogPostFooterItem.Icon icon={Icon.icon.REPLY} />
-            <span>{t("page:email_message_label")}</span>
-          </BlogPostFooterItem>
-        </div>
-      </Blockquote>
-    </div>
+                },
+              )}`,
+            );
+          }}
+        >
+          <BlogPostFooterItem.Icon icon={Icon.icon.REPLY} />
+          <span>{t("page:email_message_label")}</span>
+        </BlogPostFooterItem>
+      </div>
+    </Blockquote>
   );
 }
 
