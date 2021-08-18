@@ -31,10 +31,13 @@ class TimeLineService {
             if (!result[year]) result[year] = { year, items: [] };
 
             result[year].items.push(item);
+            result[year].items = result[year].items.sort(
+              sortBy([{ param: "startDate", order: "desc" }]),
+            );
 
             return result;
           }, {}),
-      ),
+      ).sort(sortBy([{ param: "year", order: "desc" }])) as T_TimeLine["items"],
     };
   }
 }

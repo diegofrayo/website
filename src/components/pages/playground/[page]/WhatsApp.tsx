@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-import { Icon, Link } from "~/components/primitive";
+import { Icon, Input, Link } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
 import { focusElement, isSmallScreen } from "~/utils/browser";
@@ -21,10 +21,9 @@ function WhatsApp(): T_ReactElement {
   return (
     <div className="tw-flex tw-flex-no-wrap tw-items-end">
       <label className="tw-flex-1 tw-mr-2" htmlFor="input">
-        <p className="tw-font-bold tw-cursor-pointer">Ingrese un número de celular</p>
-        <input
+        <p className="tw-font-bold tw-cursor-pointer tw-mb-1">Ingrese un número de celular</p>
+        <Input
           id="input"
-          className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-mt-1 tw-rounded-md"
           ref={inputRef}
           value={phone}
           placeholder="🇨🇴 +57"

@@ -1,6 +1,6 @@
 import React, { useState, useRef, Fragment } from "react";
 
-import { Space, Button } from "~/components/primitive";
+import { Space, Button, Input } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
 import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
@@ -22,12 +22,7 @@ function Dencrypt(): T_ReactElement {
       <div className="tw-mb-8">
         <label htmlFor="input">
           <p className="tw-font-bold tw-cursor-pointer">Ingrese un texto</p>
-          <input
-            id="input"
-            className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
-            ref={inputRef}
-            onClick={onInputFocus}
-          />
+          <Input id="input" className="tw-my-1" ref={inputRef} onClick={onInputFocus} />
         </label>
         <div className="tw-flex tw-flex-wrap tw-justify-between">
           <Button
@@ -108,7 +103,7 @@ function useController(): {
   async function handleDecrypt() {
     try {
       const CryptoJS = await import("crypto-js");
-
+      debugger;
       const decryptedText = CryptoJS.AES.decrypt(
         inputRef.current?.value,
         MY_STUPID_SECRET_KEY,

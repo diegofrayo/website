@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 
-import { Space, Title } from "~/components/primitive";
+import { Input, Space, Title } from "~/components/primitive";
 import { GuitarChord } from "~/lib/guitar";
 import { T_ReactElement } from "~/types";
 
@@ -22,10 +22,10 @@ function ChordsCreator(): T_ReactElement {
 
         <label htmlFor="input-name">
           <strong className="tw-block tw-cursor-pointer">Nombre</strong>
-          <input
+          <Input
             id="input-name"
             placeholder="Example: A"
-            className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
+            className="tw-my-1"
             value={inputs.name}
             maxLength={15}
             onChange={onInputChange("name")}
@@ -33,12 +33,12 @@ function ChordsCreator(): T_ReactElement {
         </label>
         <Space size={4} />
 
-        <label htmlFor="input-musicNotes">
+        <label htmlFor="input-notes">
           <strong className="tw-block tw-cursor-pointer">Notas</strong>
-          <input
-            id="input-musicNotes"
+          <Input
+            id="input-notes"
             placeholder="4,2,1|3,2,2|2,2,3"
-            className="tw-border tw-border-b-4 dfr-border-color-primary tw-block tw-p-2 tw-w-full tw-my-1 tw-rounded-md"
+            className="tw-my-1"
             value={inputs.musicNotes}
             onChange={onInputChange("musicNotes")}
           />

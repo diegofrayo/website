@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { List, Link, Icon, Title, Space } from "~/components/primitive";
+import { List, Link, Icon, Title, Space, Input } from "~/components/primitive";
 import { Emoji, Render } from "~/components/pages/_shared";
 import { SongDetails } from "~/components/pages/music";
 import { useQuery } from "~/hooks";
@@ -12,8 +12,22 @@ import { isUserLoggedIn } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 
 function MusicPage(): T_ReactElement {
+  const {
+    // states
+    inputValue,
+
+    // vars
+    isLoading,
+    error,
+    data,
+
+    // handlers
+    onInputChange,
+
+    // utils
+    parseData,
+  } = useController();
   const { t } = useTranslation();
-  const { isLoading, error, data } = useQuery("songsList", MusicService.fetchSongsList);
 
   return (
     <Page
@@ -41,9 +55,7 @@ function MusicPage(): T_ReactElement {
 
         <Render isLoading={isLoading} error={error} data={data}>
           {(data: T_Song[]) => {
-            const songsList = isUserLoggedIn()
-              ? data.slice(1)
-              : data.filter((song) => song.progress === 5);
+            const { chordsPage, songsList } = parseData(data);
 
             return (
               <Fragment>
@@ -54,7 +66,7 @@ function MusicPage(): T_ReactElement {
                   className="tw-mt-6"
                 >
                   <Link
-                    href={`${ROUTES.MUSIC}/${data[0].id}`}
+                    href={`${ROUTES.MUSIC}/${chordsPage.id}`}
                     variant={Link.variant.SECONDARY}
                     locale="es"
                     isNextLink
@@ -65,17 +77,20 @@ function MusicPage(): T_ReactElement {
                 </Title>
                 <Space sizeTop={6} sizeBottom={5} variant={Space.variant.DASHED} />
 
-                <Title
-                  is="h2"
-                  variant={Title.variant.SECONDARY}
-                  size={Title.size.MD}
-                  className="tw-mb-2"
-                >
+                <Title is="h2" variant={Title.variant.SECONDARY} size={Title.size.MD} className="">
                   <Emoji className="tw-mr-2">🎶</Emoji>
                   <span>
-                    {t("page:songs_title")} [{songsList.length - 1}]
+                    {t("page:songs_title")} [{songsList.length}]
                   </span>
                 </Title>
+
+                <Input
+                  type="text"
+                  className="tw-my-4"
+                  placeholder={t("page:search")}
+                  value={inputValue}
+                  onChange={onInputChange}
+                />
 
                 <List
                   className="tw-flex tw-flex-wrap tw-justify-between"
@@ -123,3 +138,45 @@ export default MusicPage;
 export const getStaticProps = getPageContentStaticProps({
   page: ROUTES.MUSIC,
 });
+
+// --- Controller ---
+
+function useController() {
+  const { isLoading, error, data } = useQuery("songsList", MusicService.fetchSongsList);
+  const [inputValue, setInputValue] = useState("");
+
+  function onInputChange(e) {
+    setInputValue(e.currentTarget.value.toLowerCase());
+  }
+
+  function parseData(songs: T_Song[]) {
+    return {
+      chordsPage: songs[0],
+      songsList: (isUserLoggedIn()
+        ? songs.slice(1)
+        : songs.filter((song) => song.progress === 5)
+      ).filter((song) => {
+        return (
+          song.title.toLowerCase().includes(inputValue) ||
+          song.artist.toLowerCase().includes(inputValue)
+        );
+      }),
+    };
+  }
+
+  return {
+    // states
+    inputValue,
+
+    // vars
+    isLoading,
+    error,
+    data,
+
+    // handlers
+    onInputChange,
+
+    // utils
+    parseData,
+  };
+}

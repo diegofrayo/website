@@ -1,6 +1,6 @@
+import axios from "axios";
 import dotenv from "dotenv";
 import fs from "fs";
-import axios from "axios";
 
 dotenv.config({ path: ".env" });
 
@@ -16,19 +16,19 @@ async function main() {
   );
 
   const pages = [
-    { path: "/", isEnabledToIndex: true },
-    { path: "/blog", isEnabledToIndex: true },
-    { path: "/about-me", isEnabledToIndex: true },
-    { path: "/resume", isEnabledToIndex: true },
-    { path: "/contact", isEnabledToIndex: true },
-    { path: "/music", isEnabledToIndex: false },
-    { path: "/playground", isEnabledToIndex: false },
+    { path: "/", isEnabledToBeIndexed: true },
+    { path: "/blog", isEnabledToBeIndexed: true },
+    { path: "/about-me", isEnabledToBeIndexed: true },
+    { path: "/resume", isEnabledToBeIndexed: true },
+    { path: "/contact", isEnabledToBeIndexed: true },
+    { path: "/music", isEnabledToBeIndexed: false },
+    { path: "/playground", isEnabledToBeIndexed: false },
   ]
     .concat(
       Object.values(BLOG.posts).map((post) => {
         return {
           path: `/blog/${post.config.slug}`,
-          isEnabledToIndex: post.config.is_published,
+          isEnabledToBeIndexed: post.config.is_published,
         };
       }),
     )
@@ -36,7 +36,7 @@ async function main() {
       MUSIC.songs.map((song) => {
         return {
           path: `/music/${song.id}`,
-          isEnabledToIndex: song.progress === 5,
+          isEnabledToBeIndexed: song.progress === 5,
         };
       }),
     );
@@ -54,7 +54,7 @@ function generateSitemapFile(pages, websiteUrl) {
   let output = `<?xml version="1.0" encoding="utf-8" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
   pages
-    .filter((page) => page.isEnabledToIndex)
+    .filter((page) => page.isEnabledToBeIndexed)
     .forEach((page) => {
       output += `
   <url>

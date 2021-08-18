@@ -151,9 +151,12 @@ function useController(): {
 
     if (endDate) {
       const endDateItems = endDate.split("/");
+      const haveStartAndEndDateDifferentYear = startDateItems[0] !== endDateItems[0];
 
-      output += ` al ${Number(endDateItems[2])} de ${MONTHS[Number(endDateItems[1]) - 1]}${
-        endDateItems[0] !== startDateItems[0] ? " del " + endDateItems[0] : ""
+      output += `${haveStartAndEndDateDifferentYear ? " del " + startDateItems[0] : ""} al ${Number(
+        endDateItems[2],
+      )} de ${MONTHS[Number(endDateItems[1]) - 1]}${
+        haveStartAndEndDateDifferentYear ? " del " + endDateItems[0] : ""
       }`;
     }
 
