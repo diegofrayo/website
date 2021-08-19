@@ -20,35 +20,33 @@ function ChordsCreator(): T_ReactElement {
           Crea un acorde
         </Title>
 
-        <label htmlFor="input-name">
-          <strong className="tw-block tw-cursor-pointer">Nombre</strong>
-          <Input
-            id="input-name"
-            placeholder="Example: A"
-            className="tw-my-1"
-            value={inputs.name}
-            maxLength={15}
-            onChange={onInputChange("name")}
-          />
-        </label>
+        <Input
+          id="input-name"
+          label="Nombre"
+          className="tw-my-1"
+          value={inputs.name}
+          maxLength={15}
+          onChange={onInputChange("name")}
+        />
         <Space size={4} />
 
-        <label htmlFor="input-notes">
-          <strong className="tw-block tw-cursor-pointer">Notas</strong>
-          <Input
-            id="input-notes"
-            placeholder="4,2,1|3,2,2|2,2,3"
-            className="tw-my-1"
-            value={inputs.musicNotes}
-            onChange={onInputChange("musicNotes")}
-          />
-        </label>
-        <code className="tw-block tw-text-sm tw-mt-2 tw-mb-1">
-          Formato: CUERDA,TRASTE,DEDO?|CUERDA,TRASTE,DEDO?
-        </code>
-        <code className="tw-block tw-text-sm">
-          Ejemplos: (D) 3,2,1|1,2,2|2,3,3 / (B) 5x,2|4,4|3,4|2,4
-        </code>
+        <Input
+          id="input-notes"
+          label="Notas"
+          className="tw-my-1"
+          value={inputs.musicNotes}
+          onChange={onInputChange("musicNotes")}
+        />
+        <Space size={1} />
+
+        <div>
+          <code className="tw-block tw-text-sm tw-mb-1">
+            Formato: CUERDA,TRASTE,DEDO?|CUERDA,TRASTE,DEDO?
+          </code>
+          <code className="tw-block tw-text-sm">
+            Ejemplos: (D) 3,2,1|1,2,2|2,3,3 / (B) 5x,2|4,4|3,4|2,4
+          </code>
+        </div>
         <Space size={6} />
 
         <div className="tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-rounded-md tw-p-3">

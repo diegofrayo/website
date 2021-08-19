@@ -4,9 +4,10 @@ import classNames from "classnames";
 import { Icon, Link } from "~/components/primitive";
 import { useTranslation } from "~/i18n";
 import { useDidMount } from "~/hooks";
+import AuthService from "~/services/auth";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
-import { createArray, isUserLoggedIn } from "~/utils/misc";
+import { createArray } from "~/utils/misc";
 
 function SongDetails({
   song,
@@ -72,7 +73,7 @@ function useController(): { showProgress: boolean; getProgressStyles: any } {
   const [showProgress, setShowProgress] = useState(false);
 
   useDidMount(() => {
-    if (isUserLoggedIn()) {
+    if (AuthService.isUserLoggedIn()) {
       setShowProgress(true);
     }
   });

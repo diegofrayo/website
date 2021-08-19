@@ -9,7 +9,6 @@ import {
   T_ReactElement,
   T_ReactFunctionComponent,
 } from "~/types";
-import { isServer } from "~/utils/misc";
 
 export function Emoji({ children, className }: T_HTMLAttributes["span"]): T_ReactElement {
   return <span className={classNames("emoji", className)}>{children}</span>;
@@ -42,8 +41,6 @@ export function Render({
   data: unknown;
   children: (data: unknown) => T_ReactElement;
 }): T_ReactElement {
-  if (isServer()) return null;
-
   if (isLoading) {
     return (
       <div className="tw-p-2 tw-text-center">

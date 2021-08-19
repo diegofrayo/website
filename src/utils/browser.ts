@@ -103,10 +103,6 @@ export function isSmallScreen(): boolean {
   return getScreenSize() === "XS";
 }
 
-export function isBrowser(): boolean {
-  return typeof window !== "undefined";
-}
-
 export function isInViewport(element?: HTMLElement | null): boolean {
   if (!element) {
     console.warn("isInViewport element param is invalid");

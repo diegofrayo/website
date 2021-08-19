@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import { I18nService } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
+import AuthService from "~/services/auth";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata, selectSEOMetadata } from "~/state/modules/metadata";
 import { selectPageConfig } from "~/state/modules/page-config";
@@ -14,7 +15,7 @@ import {
   T_PageConfig,
   T_WebsiteMetadata,
 } from "~/types";
-import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
+import { isDevelopmentEnvironment } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 import { removeEmojiFromString } from "~/utils/strings";
 
@@ -51,7 +52,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   useDidMount(() => {
     AnalyticsService.trackPageLoaded();
 
-    if (isUserLoggedIn()) {
+    if (AuthService.isUserLoggedIn()) {
       setShowUserLoggedInFlag(true);
     }
   });

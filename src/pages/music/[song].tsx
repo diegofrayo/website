@@ -15,7 +15,7 @@ import { GuitarService } from "~/lib/guitar";
 import { dataLoader } from "~/server";
 import MusicService from "~/services/music";
 import { T_Function, T_ReactElement, T_Song } from "~/types";
-import { copyToClipboard, isBrowser } from "~/utils/browser";
+import { copyToClipboard } from "~/utils/browser";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
 
@@ -215,9 +215,7 @@ function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps,
 
   function getFontSize(): number {
     const INITIAL_VALUE = 0.8;
-    const fontSize = isBrowser()
-      ? Number(window.localStorage.getItem("MUSIC_FONT_SIZE"))
-      : INITIAL_VALUE;
+    const fontSize = Number(window.localStorage.getItem("MUSIC_FONT_SIZE"));
 
     if (!fontSize || Number.isNaN(fontSize)) {
       return INITIAL_VALUE;

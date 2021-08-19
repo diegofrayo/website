@@ -20,18 +20,17 @@ function WhatsApp(): T_ReactElement {
 
   return (
     <div className="tw-flex tw-flex-no-wrap tw-items-end">
-      <label className="tw-flex-1 tw-mr-2" htmlFor="input">
-        <p className="tw-font-bold tw-cursor-pointer tw-mb-1">Ingrese un número de celular</p>
-        <Input
-          id="input"
-          ref={inputRef}
-          value={phone}
-          placeholder="🇨🇴 +57"
-          pattern="[0-9]{10}"
-          onChange={onChange}
-          onKeyPress={onKeyPress}
-        />
-      </label>
+      <Input
+        id="input"
+        label="Ingrese un número de celular"
+        labelProps={{ className: "tw-flex-1 tw-mr-2" }}
+        ref={inputRef}
+        value={phone}
+        placeholder="🇨🇴 +57"
+        pattern="[0-9]{10}"
+        onChange={onChange}
+        onKeyPress={onKeyPress}
+      />
       <Link
         role="button"
         id="button"

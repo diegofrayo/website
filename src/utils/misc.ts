@@ -1,6 +1,5 @@
 import { T_Object, T_Primitive } from "~/types";
 
-import { isBrowser } from "./browser";
 import { convertSnakeCaseToLowerCamelCase } from "./strings";
 
 export function createArray(length: number, start?: number): number[] {
@@ -37,27 +36,12 @@ export function isDevelopmentEnvironment(url?: string): boolean {
   );
 }
 
-export function isServer(): boolean {
-  return typeof window === "undefined";
+export function isBrowser(): boolean {
+  return typeof window !== "undefined";
 }
 
-export function isUserLoggedIn(): boolean {
-  let isLoggedIn = false;
-
-  if (isBrowser()) {
-    isLoggedIn =
-      window.location.href.includes("login=true") ||
-      window.localStorage.getItem("login") === "true" ||
-      isDevelopmentEnvironment();
-
-    if (isLoggedIn) {
-      window.localStorage.setItem("login", "true");
-    } else {
-      window.localStorage.setItem("login", "false");
-    }
-  }
-
-  return isLoggedIn;
+export function isServer(): boolean {
+  return !isBrowser();
 }
 
 export function between(min: number, max: number): number {

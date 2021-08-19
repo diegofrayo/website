@@ -4,11 +4,11 @@ import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/util
 
 class FilmsService {
   async fetchFilms(): Promise<T_Film[]> {
-    const response = await http.get(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/playground/[page]/films/data.json`,
-    );
+    const { data } = await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/assets`, {
+      file: `pages/playground/films/data.json`,
+    });
 
-    return response.data.map(transformObjectKeysFromSnakeCaseToLowerCamelCase).sort(
+    return data.map(transformObjectKeysFromSnakeCaseToLowerCamelCase).sort(
       sortBy([
         { param: "calification", order: "desc" },
         { param: "title", order: "asc" },

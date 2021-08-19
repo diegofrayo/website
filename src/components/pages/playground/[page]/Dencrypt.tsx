@@ -3,6 +3,7 @@ import React, { useState, useRef, Fragment } from "react";
 import { Space, Button, Input } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
+import { decrypt, encrypt } from "~/utils/dencrypt";
 import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
 
 function Dencrypt(): T_ReactElement {
@@ -20,10 +21,13 @@ function Dencrypt(): T_ReactElement {
   return (
     <Fragment>
       <div className="tw-mb-8">
-        <label htmlFor="input">
-          <p className="tw-font-bold tw-cursor-pointer">Ingrese un texto</p>
-          <Input id="input" className="tw-my-1" ref={inputRef} onClick={onInputFocus} />
-        </label>
+        <Input
+          id="input"
+          label="Ingrese un texto"
+          className="tw-my-1"
+          ref={inputRef}
+          onClick={onInputFocus}
+        />
         <div className="tw-flex tw-flex-wrap tw-justify-between">
           <Button
             className="tw-inline-block tw-text-sm tw-mx-1 tw-font-bold"
@@ -75,7 +79,6 @@ function useController(): {
 } {
   const [output, setOutput] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const MY_STUPID_SECRET_KEY = process.env.NEXT_PUBLIC_CRYPTO_KEY;
 
   useDidMount(() => {
     if (isSmallScreen() || !inputRef.current) return;
@@ -84,39 +87,27 @@ function useController(): {
 
   async function handleEncrypt() {
     try {
-      const CryptoJS = await import("crypto-js");
-
-      const encryptedText = CryptoJS.AES.encrypt(
-        inputRef.current?.value,
-        MY_STUPID_SECRET_KEY,
-      ).toString();
+      const encryptedText = await encrypt(inputRef.current?.value || "");
 
       setOutput(encryptedText);
     } catch (error) {
       console.error("Error encrypting data");
       console.error(error);
 
-      setOutput("Error, the text was not encrypted :(");
+      setOutput("Error, el texto no fue encriptado :(");
     }
   }
 
   async function handleDecrypt() {
     try {
-      const CryptoJS = await import("crypto-js");
-      debugger;
-      const decryptedText = CryptoJS.AES.decrypt(
-        inputRef.current?.value,
-        MY_STUPID_SECRET_KEY,
-      ).toString(CryptoJS.enc.Utf8);
-
-      if (!decryptedText) throw new Error("Text was not decrypted");
+      const decryptedText = await decrypt(inputRef.current?.value || "");
 
       setOutput(decryptedText);
     } catch (error) {
       console.error("Error decrypting data");
       console.error(error);
 
-      setOutput("Error, the text was not decrypted :(");
+      setOutput("Error, el texto no fue desencriptado :(");
     }
   }
 

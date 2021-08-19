@@ -6,9 +6,9 @@ import { Emoji, Render } from "~/components/pages/_shared";
 import { SongDetails } from "~/components/pages/music";
 import { useQuery } from "~/hooks";
 import { getPageContentStaticProps, useTranslation } from "~/i18n";
+import AuthService from "~/services/auth";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
-import { isUserLoggedIn } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 
 function MusicPage(): T_ReactElement {
@@ -85,9 +85,10 @@ function MusicPage(): T_ReactElement {
                 </Title>
 
                 <Input
+                  id="input"
                   type="text"
                   className="tw-my-4"
-                  placeholder={t("page:search")}
+                  placeholder={t("page:input_placeholder")}
                   value={inputValue}
                   onChange={onInputChange}
                 />
@@ -152,7 +153,7 @@ function useController() {
   function parseData(songs: T_Song[]) {
     return {
       chordsPage: songs[0],
-      songsList: (isUserLoggedIn()
+      songsList: (AuthService.isUserLoggedIn()
         ? songs.slice(1)
         : songs.filter((song) => song.progress === 5)
       ).filter((song) => {

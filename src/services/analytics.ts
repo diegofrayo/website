@@ -1,16 +1,18 @@
 import splitbee from "@splitbee/web";
 
-import { isDevelopmentEnvironment, isUserLoggedIn } from "~/utils/misc";
+import { isDevelopmentEnvironment } from "~/utils/misc";
+
+import AuthService from "./auth";
 
 class AnalyticsService {
-  initAnalytics(): void {
-    if (this.analyticsIsDisabled()) return;
+  init(): void {
+    if (this.isAnalyticsDisabled()) return;
 
     splitbee.init();
   }
 
   trackPageLoaded(): void {
-    if (this.analyticsIsDisabled()) return;
+    if (this.isAnalyticsDisabled()) return;
 
     console.group("trackPageLoaded");
     console.info({ page: window.location.pathname, title: document.title });
@@ -18,13 +20,13 @@ class AnalyticsService {
   }
 
   trackEvent(name: string, data): void {
-    if (this.analyticsIsDisabled()) return;
+    if (this.isAnalyticsDisabled()) return;
 
     splitbee.track(name, data);
   }
 
-  private analyticsIsDisabled() {
-    return isUserLoggedIn() === true || isDevelopmentEnvironment() === true;
+  private isAnalyticsDisabled() {
+    return AuthService.isUserLoggedIn() === true || isDevelopmentEnvironment() === true;
   }
 }
 
