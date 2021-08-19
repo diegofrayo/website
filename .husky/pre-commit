@@ -5,5 +5,5 @@ yarn scripts:chords
 yarn scripts:sitemap
 yarn format
 yarn lint
-git add .
 yarn build
+git add .
