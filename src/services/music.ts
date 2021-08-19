@@ -8,23 +8,19 @@ class MusicService {
   }
 
   async fetchSongsList(): Promise<T_Song[]> {
-    const songs = (await this.fetchData())
-      .filter((song) => {
-        return song.is_published;
-      })
-      .map((song) => {
-        return transformObjectKeysFromSnakeCaseToLowerCamelCase({
-          ...song,
-          artist: Array.isArray(song.artist) ? song.artist.join(", ") : song.artist,
-          chords: song.chords.sort(),
-          sources: song.sources.sort(
-            sortBy([
-              { param: "score", order: "desc" },
-              { param: "title", order: "asc" },
-            ]),
-          ),
-        }) as T_Song;
-      });
+    const songs = (await this.fetchData()).map((song) => {
+      return transformObjectKeysFromSnakeCaseToLowerCamelCase({
+        ...song,
+        artist: Array.isArray(song.artist) ? song.artist.join(", ") : song.artist,
+        chords: song.chords.sort(),
+        sources: song.sources.sort(
+          sortBy([
+            { param: "score", order: "desc" },
+            { param: "title", order: "asc" },
+          ]),
+        ),
+      }) as T_Song;
+    });
 
     const chordsPage = songs.find((song) => this.isChordsPage(song));
 
@@ -57,11 +53,11 @@ class MusicService {
   }
 
   private async fetchData(): Promise<T_Object> {
-    const response = await http.get(
+    const { data } = await http.get(
       `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/music/data.json`,
     );
 
-    return response.data.songs;
+    return data.songs;
   }
 }
 

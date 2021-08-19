@@ -109,8 +109,13 @@ export type T_Song = {
   spotifyUrl: string;
   youtubeUrl: string;
   createdAt: string;
-  isPublished: boolean;
-  sources: { score: number; text: string; url: string; source: "youtube" | "lacuerda" | "url" }[];
+  isPublic: boolean;
+  sources: {
+    score: number;
+    text: string;
+    url: string;
+    source: "youtube" | "lacuerda" | "url" | "instagram" | "spotify" | "ultimate-guitar";
+  }[];
   chords: string[];
 };
 

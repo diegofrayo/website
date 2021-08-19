@@ -1,0 +1,30 @@
+import React from "react";
+
+import { Page } from "~/components/layout";
+import { Loader } from "~/components/pages/_shared";
+import { useDidMount } from "~/hooks";
+import { T_ReactElement } from "~/types";
+
+function SignOutPage(): T_ReactElement {
+  useDidMount(() => {
+    setTimeout(() => {
+      window.localStorage.clear();
+      window.location.href = "/";
+    }, 2000);
+  });
+
+  return (
+    <Page
+      config={{
+        title: "Cerrando sesión...",
+        disableSEO: true,
+      }}
+    >
+      <div className="tw-text-center tw-p-4">
+        <Loader />
+      </div>
+    </Page>
+  );
+}
+
+export default SignOutPage;

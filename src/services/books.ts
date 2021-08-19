@@ -5,7 +5,7 @@ import { sortBy } from "~/utils/misc";
 class BooksService {
   async fetchBooks(): Promise<T_Book[]> {
     const { data } = await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/assets`, {
-      file: `pages/playground/books/data.json`,
+      file: `pages/playground/[page]/books/data.json`,
     });
 
     return data.sort(

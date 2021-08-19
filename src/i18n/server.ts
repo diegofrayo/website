@@ -117,11 +117,11 @@ async function fetchPageContent({
 }
 
 async function readFile(page) {
-  const response = await http.get(
+  const { data } = await http.get(
     `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/${
       page ? "pages" + (page === ROUTES.HOME ? "/home" : page) + "/" : ""
     }content.json`,
   );
 
-  return response.data;
+  return data;
 }

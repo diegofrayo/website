@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-import { Page, MainLayout } from "~/components/layout";
+import { Page } from "~/components/layout";
 import { Input } from "~/components/primitive";
 import { getPageContentStaticProps } from "~/i18n";
 import AuthService from "~/services/auth";
-import { T_ReactElement, T_PageContent } from "~/types";
-
-type T_PageProps = {
-  pageContent: T_PageContent;
-};
+import { T_ReactElement } from "~/types";
 
 function SignInPage(): T_ReactElement {
   const {
@@ -29,20 +25,18 @@ function SignInPage(): T_ReactElement {
         disableSEO: true,
       }}
     >
-      <MainLayout>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <Input
-            id="input"
-            type="password"
-            label="Contraseña"
-            value={inputValue}
-            autoComplete="new-password"
-            disabled={isInputDisabled}
-            onChange={onInputChange}
-            onKeyPress={onKeyPress}
-          />
-        </form>
-      </MainLayout>
+      <form className="tw-p-4" onSubmit={(e) => e.preventDefault()}>
+        <Input
+          id="input"
+          type="password"
+          label="Contraseña"
+          value={inputValue}
+          autoComplete="new-password"
+          disabled={isInputDisabled}
+          onChange={onInputChange}
+          onKeyPress={onKeyPress}
+        />
+      </form>
     </Page>
   );
 }

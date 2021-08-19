@@ -58,7 +58,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
         replaceTitle: !MusicService.isChordsPage(song),
         description: t("seo:description", { title: song.title, artist: song.artist }),
         pathname: `${ROUTES.MUSIC}/${song.id}`,
-        disableSEO: song.progress !== 5,
+        disableSEO: song.isPublic === false,
       }}
     >
       <MainLayout
@@ -153,7 +153,7 @@ type T_StaticPath = { params: { song: string } };
 export const getStaticPaths: GetStaticPaths<{ song: string }> = async function getStaticPaths() {
   return {
     paths: (await MusicService.fetchSongsList()).reduce((result: T_StaticPath[], song: T_Song) => {
-      if (song.progress !== 5) return result;
+      if (song.isPublic === false) return result;
       return result.concat([{ params: { song: song.id } }]);
     }, []),
     fallback: "blocking",

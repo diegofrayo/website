@@ -1,6 +1,7 @@
 const withMDX = require("@next/mdx")();
 
 module.exports = withMDX({
+  webpack5: true,
   eslint: {
     ignoreDuringBuilds: true,
   },

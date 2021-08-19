@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { List, Link, Icon, Title, Space, Input } from "~/components/primitive";
+import { List, Link, Title, Space, Input } from "~/components/primitive";
 import { Emoji, Render } from "~/components/pages/_shared";
 import { SongDetails } from "~/components/pages/music";
 import { useQuery } from "~/hooks";
@@ -110,13 +110,6 @@ function MusicPage(): T_ReactElement {
                           <span className="tw-flex-1 sm:tw-truncate" title={song.title}>
                             {song.title}
                           </span>
-                          {song.progress === 5 && (
-                            <Icon
-                              icon={Icon.icon.CHECK}
-                              wrapperClassName="tw-ml-2 tw-flex-shrink-0 tw-self-start tw-relative tw-top-1"
-                              size={20}
-                            />
-                          )}
                         </Link>
                         <SongDetails song={song} />
                       </List.Item>
@@ -155,7 +148,7 @@ function useController() {
       chordsPage: songs[0],
       songsList: (AuthService.isUserLoggedIn()
         ? songs.slice(1)
-        : songs.filter((song) => song.progress === 5)
+        : songs.slice(1).filter((song) => song.isPublic)
       ).filter((song) => {
         return (
           song.title.toLowerCase().includes(inputValue) ||

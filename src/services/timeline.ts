@@ -6,7 +6,7 @@ class TimeLineService {
   async fetchData(): Promise<T_TimeLine> {
     const { categories, items } = (
       await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/assets`, {
-        file: `pages/playground/timeline/data.json`,
+        file: `pages/playground/[page]/timeline/data.json`,
       })
     ).data;
 

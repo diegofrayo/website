@@ -53,10 +53,11 @@ class BlogService {
   }
 
   private async fetchData(): Promise<{ posts: T_Object[]; categories: T_ItemCategory[] }> {
-    const response = await http.get(
+    const { data } = await http.get(
       `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/blog/data.json`,
     );
-    return response.data;
+
+    return data;
   }
 }
 

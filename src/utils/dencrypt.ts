@@ -16,7 +16,9 @@ export async function decrypt(value: string): Promise<string> {
   }
 
   const CryptoJS = await import("crypto-js");
-  const decryptedText = CryptoJS.AES.decrypt(value, MY_STUPID_SECRET_KEY).toString();
+  const decryptedText = CryptoJS.AES.decrypt(value, MY_STUPID_SECRET_KEY).toString(
+    CryptoJS.enc.Utf8,
+  );
 
   if (!decryptedText) throw new Error("Text was not decrypted");
 
