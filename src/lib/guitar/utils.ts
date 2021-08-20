@@ -48,10 +48,13 @@ export function checkGuitarFretValidity(value: number): boolean {
   return true;
 }
 
-export function checkTablatureSpaceValidity(value: number): boolean {
-  if (Number.isNaN(value) || !(value >= 1 || value <= 10)) {
+export function checkTablatureSpaceValidity(value: number | "x"): boolean {
+  if (
+    (typeof value === "string" && value !== "x") ||
+    (typeof value === "number" && (Number.isNaN(value) || !(value >= 1 || value <= 10)))
+  ) {
     throw new Error(
-      `Invalid tablature space (${value}). A tablature space must be between 1 and 10`,
+      `Invalid tablature space (${value}). A tablature space must be between 1 and 10 or should be "x"`,
     );
   }
 

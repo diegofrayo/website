@@ -2,9 +2,9 @@ import React, { Fragment, useState } from "react";
 import Head from "next/head";
 
 import { useDidMount, useDocumentTitle } from "~/hooks";
+import { AuthService } from "~/auth";
 import { I18nService } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
-import AuthService from "~/services/auth";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata, selectSEOMetadata } from "~/state/modules/metadata";
 import { selectPageConfig } from "~/state/modules/page-config";

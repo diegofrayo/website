@@ -2,6 +2,7 @@ import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Link, List } from "~/components/primitive";
+import { withAuth } from "~/auth";
 import { getPageContentStaticProps } from "~/i18n";
 import { T_ReactElement, T_PageContent } from "~/types";
 import { PLAYGROUND_PAGES } from "~/utils/constants";
@@ -39,7 +40,7 @@ function PlaygroundPage({ pageContent }: T_PageProps): T_ReactElement {
   );
 }
 
-export default PlaygroundPage;
+export default withAuth(PlaygroundPage);
 
 // --- Next.js functions ---
 

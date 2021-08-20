@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
+import { withAuth } from "~/auth";
 import { getPageContentStaticProps, useTranslation } from "~/i18n";
 import { T_ReactElement } from "~/types";
 import { PLAYGROUND_PAGES } from "~/utils/constants";
@@ -59,7 +60,7 @@ function PlaygroundPage(props: T_PageProps): T_ReactElement {
   );
 }
 
-export default PlaygroundPage;
+export default withAuth(PlaygroundPage);
 
 // --- Next.js functions ---
 

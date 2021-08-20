@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import classNames from "classnames";
 
 import { Icon, Link } from "~/components/primitive";
+import { AuthService } from "~/auth";
 import { useTranslation } from "~/i18n";
 import { useDidMount } from "~/hooks";
-import AuthService from "~/services/auth";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
 import { createArray } from "~/utils/misc";

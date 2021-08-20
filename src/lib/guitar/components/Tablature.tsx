@@ -15,7 +15,7 @@ import {
 } from "../utils";
 
 interface I_SpacePosition {
-  space: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  space: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | "x";
 }
 
 interface I_GuitarStringPosition {
@@ -62,7 +62,11 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
 
           {parsedPositions.map((position, positionIndex) => {
             if ((position as T_Position).variant === "SPACE") {
-              return createArray((position as I_SpacePosition).space).map((space) => {
+              return createArray(
+                typeof (position as I_SpacePosition).space === "number"
+                  ? ((position as I_SpacePosition).space as number)
+                  : 1,
+              ).map((space) => {
                 return (
                   <div key={`Tablature-position-${positionIndex}-${space}`} className="tw-ml-1">
                     {createArray(NUMBER_OF_STRINGS)
@@ -71,6 +75,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
                         return (
                           <Position
                             key={`Position-${positionIndex}-${space}-${guitarString}`}
+                            isSeparator={(position as I_SpacePosition).space === "x"}
                             isCell
                           />
                         );
@@ -161,7 +166,7 @@ function useController({ positions, notes }: T_TablatureProps): Pick<T_Tablature
   function validAndParsePosition(position): T_Position {
     let positionVariant = "";
 
-    if (typeof (position as I_SpacePosition).space === "number") {
+    if (typeof (position as I_SpacePosition).space === "number" || position.space === "x") {
       checkTablatureSpaceValidity((position as I_SpacePosition).space);
       positionVariant = "SPACE";
     } else {
@@ -208,21 +213,24 @@ function useController({ positions, notes }: T_TablatureProps): Pick<T_Tablature
 function Position({
   children,
   isCell = false,
+  isSeparator = false,
 }: {
   children?: T_ReactChildrenProp;
   isCell?: boolean;
+  isSeparator?: boolean;
 }): T_ReactElement {
   return (
     <div
       className={classNames(
-        "tw-h-6 tw-w-4 tw-text-center tw-relative tw-top-0.5 tw-text-xs",
-        isCell && "Position--cell",
+        "root tw-h-6 tw-w-4 tw-text-center tw-relative tw-top-0.5 tw-text-xs",
+        isCell && "root--cell",
+        isSeparator && "root--separator",
       )}
     >
       {!isCell && <span>{children || "0"}</span>}
 
       <style jsx>{`
-        .Position--cell::before {
+        .root--cell::before {
           background-color: black;
           content: "";
           display: inline-block;
@@ -234,7 +242,15 @@ function Position({
           width: 100%;
         }
 
-        :global(.tw-dark) .Position--cell::before {
+        .root--separator::before {
+          height: 100%;
+          left: 8px;
+          max-height: 100%;
+          top: 0;
+          width: 1px;
+        }
+
+        :global(.tw-dark) .root--cell::before {
           background-color: white;
         }
       `}</style>

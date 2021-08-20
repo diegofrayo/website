@@ -1,8 +1,7 @@
 import splitbee from "@splitbee/web";
 
+import { AuthService } from "~/auth";
 import { isDevelopmentEnvironment } from "~/utils/misc";
-
-import AuthService from "./auth";
 
 class AnalyticsService {
   init(): void {

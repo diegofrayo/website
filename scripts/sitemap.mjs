@@ -5,45 +5,50 @@ import fs from "fs";
 dotenv.config({ path: ".env" });
 
 async function main() {
-  const { data: BLOG } = await axios.get(
-    `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/blog/data.json`,
-  );
-  const {
-    data: { website: WEBSITE_METADATA },
-  } = await axios.get(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/metadata.json`);
-  const { data: MUSIC } = await axios.get(
-    `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/music/data.json`,
-  );
-
-  const pages = [
-    { path: "/", isEnabledToBeIndexed: true },
-    { path: "/blog", isEnabledToBeIndexed: true },
-    { path: "/about-me", isEnabledToBeIndexed: true },
-    { path: "/resume", isEnabledToBeIndexed: true },
-    { path: "/contact", isEnabledToBeIndexed: true },
-    { path: "/music", isEnabledToBeIndexed: false },
-    { path: "/playground", isEnabledToBeIndexed: false },
-  ]
-    .concat(
-      Object.values(BLOG.posts).map((post) => {
-        return {
-          path: `/blog/${post.config.slug}`,
-          isEnabledToBeIndexed: post.config.is_published,
-        };
-      }),
-    )
-    .concat(
-      MUSIC.songs.map((song) => {
-        return {
-          path: `/music/${song.id}`,
-          isEnabledToBeIndexed: song.is_public,
-        };
-      }),
+  try {
+    const { data: BLOG } = await axios.get(
+      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/blog/data.json`,
+    );
+    const {
+      data: { website: WEBSITE_METADATA },
+    } = await axios.get(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/metadata.json`);
+    const { data: MUSIC } = await axios.get(
+      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/music/data.json`,
     );
 
-  generateSitemapFile(pages, WEBSITE_METADATA.url);
+    const pages = [
+      { path: "/", isEnabledToBeIndexed: true },
+      { path: "/blog", isEnabledToBeIndexed: true },
+      { path: "/about-me", isEnabledToBeIndexed: true },
+      { path: "/resume", isEnabledToBeIndexed: true },
+      { path: "/contact", isEnabledToBeIndexed: true },
+      { path: "/music", isEnabledToBeIndexed: false },
+      { path: "/playground", isEnabledToBeIndexed: false },
+    ]
+      .concat(
+        Object.values(BLOG.posts).map((post) => {
+          return {
+            path: `/blog/${post.config.slug}`,
+            isEnabledToBeIndexed: post.config.is_published,
+          };
+        }),
+      )
+      .concat(
+        MUSIC.songs.map((song) => {
+          return {
+            path: `/music/${song.id}`,
+            isEnabledToBeIndexed: song.is_public,
+          };
+        }),
+      );
 
-  console.log("Sitemap created");
+    generateSitemapFile(pages, WEBSITE_METADATA.url);
+
+    console.log("Sitemap created");
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
 }
 
 main();

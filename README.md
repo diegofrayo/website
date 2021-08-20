@@ -19,8 +19,8 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 1. Create a `.env` file
 
    ```
+   NEXT_PUBLIC_ASSETS_SERVER_URL=https://diegofrayo-backend.vercel.app
    NEXT_PUBLIC_WEBSITE_URL=http://localhost:3000
-   NEXT_PUBLIC_IS_OWNER=false
    ```
 
 1. `yarn install`

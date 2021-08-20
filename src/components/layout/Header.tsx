@@ -5,10 +5,10 @@ import { useRouter } from "next/router";
 
 import { Title as TitlePrimitive, Icon, Button, Link, List } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
+import { AuthService } from "~/auth";
 import { safeRender } from "~/hocs";
 import { useOnWindowScroll, useToggleBodyScroll } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
-import AuthService from "~/services/auth";
 import { useStoreSelector } from "~/state";
 import { selectPageConfig } from "~/state/modules/page-config";
 import { T_Locale, T_PageRoute, T_ReactElement, T_PageConfig } from "~/types";

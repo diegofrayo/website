@@ -1,5 +1,5 @@
 import http from "~/lib/http";
-import { isBrowser, isDevelopmentEnvironment } from "~/utils/misc";
+import { isBrowser } from "~/utils/misc";
 
 class AuthService {
   private LOCAL_STORAGE_KEY = "AUTH";
@@ -20,7 +20,7 @@ class AuthService {
   }
 
   isUserLoggedIn(): boolean {
-    return !!this.getToken() || isDevelopmentEnvironment();
+    return !!this.getToken();
   }
 
   getToken() {

@@ -2,6 +2,7 @@ import React from "react";
 
 import { Page } from "~/components/layout";
 import { Loader } from "~/components/pages/_shared";
+import { withAuth } from "~/auth";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
 
@@ -27,4 +28,4 @@ function SignOutPage(): T_ReactElement {
   );
 }
 
-export default SignOutPage;
+export default withAuth(SignOutPage);

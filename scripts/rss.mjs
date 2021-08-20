@@ -6,17 +6,22 @@ import { Feed } from "feed";
 dotenv.config({ path: ".env" });
 
 async function main() {
-  const { data: BLOG } = await axios.get(
-    `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/blog/data.json`,
-  );
-  const {
-    data: { seo: SEO_METADATA, website: WEBSITE_METADATA },
-  } = await axios.get(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/metadata.json`);
+  try {
+    const { data: BLOG } = await axios.get(
+      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/blog/data.json`,
+    );
+    const {
+      data: { seo: SEO_METADATA, website: WEBSITE_METADATA },
+    } = await axios.get(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/metadata.json`);
 
-  const DEFAULT_LOCALE = "es";
-  await generateFeed(SEO_METADATA[DEFAULT_LOCALE], WEBSITE_METADATA, BLOG, DEFAULT_LOCALE);
+    const DEFAULT_LOCALE = "es";
+    await generateFeed(SEO_METADATA[DEFAULT_LOCALE], WEBSITE_METADATA, BLOG, DEFAULT_LOCALE);
 
-  console.log("RSS files created");
+    console.log("RSS files created");
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
 }
 
 main();

@@ -12,10 +12,10 @@ import { I18nextProvider } from "react-i18next";
 import { Provider } from "react-redux";
 
 import { ProgressBar } from "~/components/layout";
+import { AuthService } from "~/auth";
 import { useDidMount } from "~/hooks";
 import { I18nService } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
-import AuthService from "~/services/auth";
 import MetadataService from "~/services/metadata";
 import { createPreloadedState, useStore } from "~/state";
 import { T_ReactElement } from "~/types";

@@ -3,8 +3,8 @@ import { toast } from "react-toastify";
 
 import { Page } from "~/components/layout";
 import { Input } from "~/components/primitive";
+import { AuthService, withAuth } from "~/auth";
 import { getPageContentStaticProps } from "~/i18n";
-import AuthService from "~/services/auth";
 import { T_ReactElement } from "~/types";
 
 function SignInPage(): T_ReactElement {
@@ -41,7 +41,7 @@ function SignInPage(): T_ReactElement {
   );
 }
 
-export default SignInPage;
+export default withAuth(SignInPage, { denyLoggedIn: true });
 
 // --- Next.js functions ---
 
