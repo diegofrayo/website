@@ -10,6 +10,7 @@ export const ROUTES: T_Object<T_PageRoute> = {
   MUSIC: "/music",
   MUSIC_DETAILS: "/music/[song]",
   PLAYGROUND: "/playground",
+  SIGN_IN: "/sign-in",
   ERROR_404: "/404",
   ERROR_500: "/500",
 };

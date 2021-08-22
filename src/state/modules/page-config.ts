@@ -6,13 +6,23 @@ const REDUCER_NAME = "page-config";
 
 const slice = createSlice({
   name: REDUCER_NAME,
-  initialState: {},
-  reducers: {},
+  initialState: {
+    locales: undefined,
+  },
+  reducers: {
+    setLocales: (state, action) => {
+      state.locales = action.payload;
+    },
+  },
 });
 
 export default slice.reducer;
 
 export { REDUCER_NAME };
+
+export const { setLocales } = slice.actions;
+
+// --- Selectors ---
 
 export function selectPageConfig(store: T_Store): T_Locale[] {
   return store[REDUCER_NAME];

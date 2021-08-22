@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { T_Store } from "~/types";
 
@@ -15,4 +15,10 @@ export function useStore(initialState: Partial<T_Store>): any {
   const store = useMemo(() => initializeStore(initialState), [initialState]);
 
   return store;
+}
+
+export function useStoreActionsDispatcher(): any {
+  const dispath = useDispatch();
+
+  return dispath;
 }

@@ -1,7 +1,7 @@
 import splitbee from "@splitbee/web";
 
 import { AuthService } from "~/auth";
-import { isDevelopmentEnvironment } from "~/utils/misc";
+import { isBrowser, isDevelopmentEnvironment } from "~/utils/misc";
 
 class AnalyticsService {
   init(): void {
@@ -25,7 +25,11 @@ class AnalyticsService {
   }
 
   private isAnalyticsDisabled() {
-    return AuthService.isUserLoggedIn() === true || isDevelopmentEnvironment() === true;
+    return (
+      AuthService.isUserLoggedIn() === true ||
+      isDevelopmentEnvironment() === true ||
+      (isBrowser() && window.location.href.includes("n=t") ? true : false)
+    );
   }
 }
 

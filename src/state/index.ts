@@ -1,2 +1,2 @@
-export { useStoreSelector, useStore } from "./hooks";
+export * from "./hooks";
 export { createPreloadedState } from "./store";

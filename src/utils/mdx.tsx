@@ -18,6 +18,7 @@ import {
   Playground,
   ImageWithLink,
 } from "~/components/pages/_shared";
+import { Sources } from "~/components/pages/blog";
 import * as HTMLSemanticTagsBlogPostComponents from "~/components/pages/blog/[slug]/html-semantic-tags";
 import * as MyFavoriteMusicAndMDXBlogPostComponents from "~/components/pages/blog/[slug]/my-favorite-music-and-mdx";
 import * as MusicComponents from "~/components/pages/music";
@@ -66,9 +67,12 @@ export const MDXComponents = {
   Playground,
   TextWithEmoji,
 
-  // Pages components
+  // Blog components
   ...HTMLSemanticTagsBlogPostComponents,
   ...MyFavoriteMusicAndMDXBlogPostComponents,
+  Sources,
+
+  // Pages components
   ...MusicComponents,
   ...ResumeComponents,
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { useDidMount } from "~/hooks";
 import { T_Object, T_ReactFunctionComponent } from "~/types";
+import { ROUTES } from "~/utils/routing";
 
 import AuthService from "./service";
 
@@ -19,7 +20,7 @@ function withAuth(Component: T_ReactFunctionComponent, options?: { denyLoggedIn:
 
     function redirect(predicate) {
       if (predicate) {
-        window.location.href = "/";
+        window.location.href = ROUTES.HOME;
         return;
       }
 

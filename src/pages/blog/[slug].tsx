@@ -6,12 +6,14 @@ import { GetStaticPaths } from "next";
 import { Page, MainLayout } from "~/components/layout";
 import { Blockquote, Icon, Space, Button } from "~/components/primitive";
 import { MDXContent, RateContent } from "~/components/pages/_shared";
+import { useDidMount } from "~/hooks";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
 import twcss from "~/lib/twcss";
 import BlogService from "~/services/blog";
 import { dataLoader } from "~/server";
-import { useStoreSelector } from "~/state";
+import { useStoreSelector, useStoreActionsDispatcher } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
+import { setLocales } from "~/state/modules/page-config";
 import { T_BlogPost, T_Locale, T_ReactElement, T_PageContent, T_WebsiteMetadata } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getDifferenceBetweenDates } from "~/utils/dates";
@@ -28,8 +30,13 @@ type T_PageProps = {
 
 function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
   const { t } = useTranslation();
+  const dispatch = useStoreActionsDispatcher();
 
   const mdxContent = hydrate(postMDXContent, { components: MDXComponents });
+
+  useDidMount(() => {
+    dispatch(setLocales(post.locales));
+  });
 
   return (
     <Page
@@ -93,7 +100,10 @@ export const getStaticProps = getPageContentStaticProps<
   { post: T_BlogPost; postMDXContent: string },
   { slug: string }
 >({
-  page: ROUTES.BLOG,
+  page: [ROUTES.BLOG, ROUTES.BLOG_DETAILS],
+  localesExtractor: (data) => {
+    return data.post.locales;
+  },
   callback: async ({ params, locale }) => {
     const post = await BlogService.fetchPost({ slug: params?.slug, locale: locale });
     const file = await dataLoader({
@@ -128,10 +138,10 @@ function BlogPostFooter({ publishedAt, updatedAt }: T_BlogPostFooterProps): T_Re
 
   return (
     <Blockquote
-      className="tw-flex tw-flex-wrap sm:tw-flex-no-wrap tw-text-black dark:tw-text-white tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary"
+      className="tw-flex tw-flex-col md:tw-flex-row tw-text-black dark:tw-text-white tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary"
       variant={Blockquote.variant.UNSTYLED}
     >
-      <div className="tw-w-full sm:tw-w-1/2 tw-flex tw-items-start tw-justify-center tw-flex-col">
+      <div className="tw-w-full md:tw-w-1/2 tw-flex tw-flex-col">
         <BlogPostFooterItem>
           <BlogPostFooterItem.Icon icon={Icon.icon.CALENDAR} />
           <p>
@@ -146,6 +156,9 @@ function BlogPostFooter({ publishedAt, updatedAt }: T_BlogPostFooterProps): T_Re
             <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
           </p>
         </BlogPostFooterItem>
+      </div>
+      <Space size={1} orientation="h" className="md:tw-hidden" />
+      <div className="tw-w-full md:tw-w-1/2 tw-flex md:tw-items-end tw-flex-col">
         <BlogPostFooterItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
           <BlogPostFooterItem.Icon icon={Icon.icon.LINK} />
           <span>{t("page:copy_url_to_clipboard")}</span>
@@ -171,8 +184,8 @@ function BlogPostFooter({ publishedAt, updatedAt }: T_BlogPostFooterProps): T_Re
   );
 }
 
-const BlogPostFooterItem = twcss.div`tw-flex tw-items-start sm:tw-items-center tw-justify-start tw-mb-2 last:tw-mb-0 tw-text-sm tw-text-left`;
+const BlogPostFooterItem = twcss.div`tw-flex tw-items-start md:tw-items-center tw-justify-start tw-mb-2 last:tw-mb-0 tw-text-sm tw-text-left`;
 
 BlogPostFooterItem.Icon = twcss(Icon)("", {
-  wrapperClassName: "tw-mr-2 tw-relative tw-top-0.5 sm:tw-top-0",
+  wrapperClassName: "tw-mr-2",
 });

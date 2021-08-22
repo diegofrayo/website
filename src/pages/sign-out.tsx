@@ -5,12 +5,13 @@ import { Loader } from "~/components/pages/_shared";
 import { withAuth } from "~/auth";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
+import { ROUTES } from "~/utils/routing";
 
 function SignOutPage(): T_ReactElement {
   useDidMount(() => {
     setTimeout(() => {
       window.localStorage.clear();
-      window.location.href = "/";
+      window.location.href = ROUTES.HOME;
     }, 2000);
   });
 

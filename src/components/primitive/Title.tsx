@@ -39,11 +39,13 @@ function Title(props: T_TitleProps): T_ReactElement {
     id,
     className,
     Tag,
+
+    ...rest
   } = useController(props);
 
   if (variant === E_Variants.PRIMARY && showLinkIcon) {
     return (
-      <Tag id={id} className={className}>
+      <Tag id={id} className={className} {...rest}>
         <Link
           href={`#${id}`}
           className={classNames(
@@ -96,6 +98,7 @@ function useController({
   variant = E_Variants.PRIMARY,
   showLinkIcon = false,
   id = "",
+  ...rest
 }: T_TitleProps): Omit<T_TitleProps, "is"> & {
   id: string;
   Tag: T_TitleProps["is"];
@@ -130,6 +133,7 @@ function useController({
     variant,
     showLinkIcon,
     children,
+    ...rest,
 
     // vars
     id:

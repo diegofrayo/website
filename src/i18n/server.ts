@@ -2,6 +2,8 @@ import http from "~/lib/http";
 import { T_Locale, T_Object, T_PageContent, T_PageRoute } from "~/types";
 import { ROUTES } from "~/utils/routing";
 
+import I18nService from "./service";
+
 type T_DefaultPageProps = {
   pageContent: T_PageContent;
   locale: T_Locale;
@@ -20,12 +22,17 @@ type T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams> = {
   callback?: (
     parameters: T_GetStaticProps<G_GetStaticPropsParams> & { pageContent: T_PageContent },
   ) => Promise<{ props: G_PageProps }>;
+  localesExtractor?: (data: G_PageProps) => T_Locale[];
 };
 
 export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsParams>(
   config?: T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams>,
 ): any {
-  const { page, callback = () => Promise.resolve({ props: {} as G_PageProps }) } = config || {};
+  const {
+    page,
+    callback = () => Promise.resolve({ props: {} as G_PageProps }),
+    localesExtractor,
+  } = config || {};
 
   async function getStaticProps(
     parameters: T_GetStaticProps<G_GetStaticPropsParams>,
@@ -35,13 +42,19 @@ export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsP
       page: typeof page === "function" ? page(parameters) : page,
       locale,
     });
+    const pageProps = (await callback({ ...parameters, pageContent })).props;
 
     return {
-      notFound: pageContent.page?.config?.locales?.indexOf(locale) === -1,
+      notFound:
+        (
+          (localesExtractor ? localesExtractor(pageProps) : pageContent.page?.config?.locales) || [
+            I18nService.getDefaultLocale(),
+          ]
+        ).indexOf(locale) === -1,
       props: {
         pageContent,
         locale,
-        ...(await callback({ ...parameters, pageContent })).props,
+        ...pageProps,
       },
     };
   }

@@ -43,7 +43,8 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
         :global(.dfr-MDXContent--default) > :global(h1),
         :global(.dfr-MDXContent--default) > :global(h2),
         :global(.dfr-MDXContent--default) > :global(h3),
-        :global(.dfr-MDXContent--default) > :global(h4) {
+        :global(.dfr-MDXContent--default) > :global(h4),
+        :global(.dfr-MDXContent--default) :global(*[data-markdown-title]) {
           @apply tw-mt-8;
           @apply tw-mb-3;
         }

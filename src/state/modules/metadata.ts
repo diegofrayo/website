@@ -14,6 +14,8 @@ export default slice.reducer;
 
 export { REDUCER_NAME };
 
+// --- Selectors ---
+
 export function selectWebsiteMetadata(store: T_Store): T_WebsiteMetadata {
   return store[REDUCER_NAME].website;
 }

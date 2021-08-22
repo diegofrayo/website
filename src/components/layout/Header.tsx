@@ -55,7 +55,7 @@ function DefaultHeaderContent({ background = "tw-bg-blue-500 dark:tw-bg-black" }
   return (
     <div className={classNames("tw-h-full tw-text-center", background)}>
       <ToggleMenu />
-      <div className="tw-pt-4 tw-pb-7">
+      <div className="tw-pt-4 tw-pb-9">
         <DarkModeToggle />
         <LocalesToggle />
       </div>
@@ -163,6 +163,7 @@ const DarkModeToggle = safeRender(function DarkModeToggle(): T_ReactElement {
 });
 
 function LocalesToggle(): T_ReactElement {
+  const { t } = useTranslation();
   const { locale, asPath } = useRouter();
   const { locales: pageLocales, reloadWhenLocaleChanges } =
     useStoreSelector<T_PageConfig>(selectPageConfig);
@@ -170,9 +171,8 @@ function LocalesToggle(): T_ReactElement {
   const EMOJIS = { es: "🇪🇸", en: "🇺🇸" };
 
   return (
-    <div className="tw-flex tw-items-center tw-justify-center tw-mt-1 tw-leading-0">
-      <Emoji className="tw-text-lg tw-relative tw-top-1px">🌐</Emoji>
-      <span className="tw-text-white tw-ml-0.5 tw-mr-2">»</span>
+    <div className="tw-flex tw-items-center tw-justify-center tw-mt-1 tw-leading-0 tw-italic">
+      <span className="tw-text-sm tw-text-white">{t("layout:header:available")}</span>
       {pageLocales.map((item) => {
         return (
           <Link
@@ -181,7 +181,7 @@ function LocalesToggle(): T_ReactElement {
             locale={item as T_Locale}
             variant={Link.variant.SIMPLE}
             className={classNames(
-              "tw-text-2xl tw-mr-1",
+              "tw-text-2xl tw-ml-1",
               item === locale ? "tw-pointer-events-none" : "tw-opacity-50",
             )}
             isNextLink={true}
@@ -225,7 +225,7 @@ function ToggleMenu() {
             emoji: translator.t("layout:header:common:menu_item_playground_emoji"),
             label: translator.t("layout:header:common:menu_item_playground"),
             url: ROUTES.PLAYGROUND,
-            locale: "es",
+            locale: I18nService.getDefaultLocale(),
           },
         ]);
       }
@@ -252,7 +252,7 @@ function ToggleMenu() {
         emoji: translator.t("layout:header:common:menu_item_blog_emoji"),
         label: translator.t("layout:header:common:menu_item_blog"),
         url: ROUTES.BLOG,
-        locale: "es",
+        locale: I18nService.getDefaultLocale(),
       },
       {
         emoji: translator.t("layout:header:common:menu_item_about_me_emoji"),

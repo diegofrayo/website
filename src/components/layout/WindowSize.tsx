@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 
 import { useOnWindowResize } from "~/hooks";
-import { T_ReactElement } from "~/types";
+import { useStoreSelector } from "~/state";
+import { selectWebsiteMetadata } from "~/state/modules/metadata";
+import { T_ReactElement, T_WebsiteMetadata } from "~/types";
 
 function WindowSize(): T_ReactElement {
+  const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
   const [size, setSize] = useState([0, 0]);
 
   useOnWindowResize(function onWindowResize() {
@@ -11,7 +14,12 @@ function WindowSize(): T_ReactElement {
   });
 
   return (
-    <div className="root">
+    <div
+      className="root tw-cursor-pointer"
+      onClick={() => {
+        window.open(`${WEBSITE_METADATA.url}${window.location.pathname}`);
+      }}
+    >
       <span>{size.join("x")} | </span>
       <span className="sm:tw-hidden tw-inline-block">mobile</span>
       <span className="sm:tw-inline-block md:tw-hidden tw-hidden">sm</span>
