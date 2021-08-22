@@ -59,10 +59,10 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
             url: ROUTES.BLOG,
           },
           {
-            text: BlogService.composeTitle(post),
+            text: post.title,
           },
         ]}
-        title={BlogService.composeTitle(post)}
+        title={post.title}
         showGoToTopButton
       >
         <MDXContent content={mdxContent} />
@@ -166,14 +166,11 @@ function BlogPostFooter({ publishedAt, updatedAt }: T_BlogPostFooterProps): T_Re
         <BlogPostFooterItem
           is={Button}
           onClick={() => {
-            window.open(
-              `mailto:${WEBSITE_METADATA.email}?subject=${t("page:email_message_subject")}&body=${t(
-                "page:email_message_body",
-                {
-                  url: encodeURIComponent(window.location.href),
-                },
-              )}`,
-            );
+            window.location.href = `mailto:${WEBSITE_METADATA.email}?subject=${t(
+              "page:email_message_subject",
+            )}&body=${t("page:email_message_body", {
+              url: encodeURIComponent(window.location.href),
+            })}`;
           }}
         >
           <BlogPostFooterItem.Icon icon={Icon.icon.REPLY} />

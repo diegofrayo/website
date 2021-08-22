@@ -92,7 +92,6 @@ export type T_BlogPost = {
   createdAt: string;
   publishedAt: string;
   updatedAt: string;
-  isLegacy: boolean;
   isPublished: boolean;
   assets?: T_Object<string>;
 };

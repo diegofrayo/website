@@ -48,10 +48,6 @@ class BlogService {
     return transformObjectKeysFromSnakeCaseToLowerCamelCase(post) as T_BlogPost;
   }
 
-  composeTitle(post: T_BlogPost): string {
-    return `${post.isLegacy ? "[LEGACY] " : ""}${post.title}`;
-  }
-
   private async fetchData(): Promise<{ posts: T_Object[]; categories: T_ItemCategory[] }> {
     const { data } = await http.get(
       `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/blog/data.json`,

@@ -45,7 +45,7 @@ function BlogPage(): T_ReactElement {
                     <BlogEntry
                       key={post.slug}
                       slug={post.slug}
-                      title={BlogService.composeTitle(post)}
+                      title={post.title}
                       categories={post.categories}
                       updatedAt={post.updatedAt}
                     />
