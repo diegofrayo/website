@@ -1,4 +1,5 @@
 import {
+  ArrowUpIcon,
   CalendarIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -97,6 +98,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     props: {
       className: "",
       alt: "YouTube",
+    },
+  },
+
+  ARROW_UP: {
+    isLibraryIcon: true,
+    icon: ArrowUpIcon,
+    props: {
+      className: "",
     },
   },
 

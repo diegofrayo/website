@@ -230,6 +230,7 @@ export enum E_Icons {
   "WHATSAPP" = "WHATSAPP",
   "YOUTUBE" = "YOUTUBE",
 
+  "ARROW_UP" = "ARROW_UP",
   "CALENDAR" = "CALENDAR",
   "CHECK" = "CHECK",
   "CHEVRON_LEFT" = "CHEVRON_LEFT",

@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 
-import { Link, Space, Title, Button } from "~/components/primitive";
+import { Link, Space, Title, Button, Icon } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
 import { T_BreadcumbProps, T_ReactChildrenProp, T_ReactElement } from "~/types";
@@ -161,13 +161,13 @@ function GoToTopButton(): T_ReactElement {
 
   return (
     <Button
-      className="tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center tw-transition-opacity hover:tw-opacity-75"
+      className="tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-rounded-lg tw-w-12 tw-h-12 tw-text-white tw-flex tw-items-center tw-justify-center"
       style={{ backgroundColor: "rgba(0, 0, 0, 0.75)" }}
       onClick={() => {
         setScrollPosition(0);
       }}
     >
-      <span className="tw-text-white tw-font-bold tw-relative tw--top-0.5 md:tw-top-0">↑</span>
+      <Icon icon={Icon.icon.ARROW_UP} color="tw-text-white" />
     </Button>
   );
 }

@@ -54,7 +54,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
       )}
     >
       {!isStringsNamesVariant && (
-        <div className="tw-flex tw-items-center tw-justify-center tw-h-6 tw-font-bold">
+        <div className="tw-flex tw-items-center tw-justify-center tw-h-6 tw-font-bold tw-text-base">
           {number}
         </div>
       )}
@@ -100,9 +100,10 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                 className="tw-flex tw-items-center tw-h-6"
               >
                 {isStringsNamesVariant ? (
-                  <div className="tw-flex tw-justify-between tw-w-full tw-px-2">
-                    <span>{STRINGS_NAMES[guitarString - 1]}</span>
-                    <strong>{guitarString}</strong>
+                  <div className="tw-flex tw-justify-end tw-w-full tw-text-base tw-px-1">
+                    <span className="tw-text-center tw-w-6">{STRINGS_NAMES[guitarString - 1]}</span>
+                    <span className="tw-px-0.5">-</span>
+                    <strong className="tw-text-center tw-w-6">{guitarString}</strong>
                   </div>
                 ) : isSkippedStringsVariant ? (
                   <span className="tw-mx-2">
@@ -112,14 +113,14 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                   <Fragment>
                     <String />
                     {(musicNote as I_BarreMusicNote)?.barre >= guitarString && (
-                      <span className="tw-h-full tw-border-4" />
+                      <span className="tw-h-full tw-border-4 tw-border-white" />
                     )}
                     <String />
                   </Fragment>
                 ) : musicNote ? (
                   <Fragment>
                     <String />
-                    <span className="tw-rounded-full tw-h-5 tw-w-5 tw-border tw-font-bold tw-bg-white tw-text-black">
+                    <span className="tw-rounded-full tw-h-5 tw-w-5 tw-border tw-font-bold tw-bg-white tw-text-black tw-leading-0 tw-flex tw-items-center tw-justify-center">
                       {(musicNote as I_SimpleMusicNote).finger}
                     </span>
                     <String />
@@ -142,7 +143,7 @@ export default GuitarFret;
 // --- Controller ---
 
 function useController({ variant, ...rest }: T_GuitarFretProps) {
-  const STRINGS_NAMES = ["E-[mi]", "A-[la]", "D-[re]", "G-[sol]", "B-[si]", "E-[mi]"].reverse();
+  const STRINGS_NAMES = ["E", "A", "D", "G", "B", "E"].reverse();
   const isDefaultVariant = variant === VARIANTS.DEFAULT;
   const isEmptyVariant = variant === VARIANTS.EMPTY;
   const isSkippedStringsVariant = variant === VARIANTS.SKIPPED_STRINGS;

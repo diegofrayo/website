@@ -78,6 +78,10 @@ function useController() {
         error.data?.code === "AUTH_WRONG_PASSWORD"
           ? "Contraseña incorrecta."
           : error.message || "Error en la petición",
+        {
+          position: toast.POSITION.BOTTOM_CENTER,
+          toastId: "sign-in",
+        },
       );
     } finally {
       setIsInputDisabled(false);

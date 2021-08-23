@@ -47,7 +47,7 @@ function Films(): T_ReactElement {
                     <Button
                       key={category}
                       className={classNames(
-                        "tw-mr-2 tw-my-1 tw-underlidne tw-inline-block tw-text-sm tw-font-bold tw-py-1 tw-px-3 tw-rounded-md tw-text-left tw-truncate",
+                        "tw-mr-2 tw-my-1 tw-underlidne tw-inline-block tw-text-sm tw-py-1 tw-px-3 tw-rounded-md tw-text-left tw-truncate",
                         category === selectedCategory
                           ? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
                           : "dfr-bg-secondary dark:dfr-bg-secondary",
@@ -74,7 +74,7 @@ function Films(): T_ReactElement {
               <div className="tw-flex tw-justify-betweden tw-flex-wrap">
                 <Button
                   className={classNames(
-                    "tw-mr-2 tw-my-1 tw-underlidne tw-inline-block tw-text-sm tw-font-bold tw-py-1 tw-px-3 tw-rounded-md tw-text-left tw-truncate",
+                    "tw-mr-2 tw-my-1 tw-underlidne tw-inline-block tw-text-sm tw-py-1 tw-px-3 tw-rounded-md tw-text-left tw-truncate",
                     isAddedDateFilterEnabled
                       ? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
                       : "dfr-bg-secondary dark:dfr-bg-secondary",

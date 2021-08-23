@@ -53,9 +53,9 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
       <div className="tw-flex tw-flex-no-wrap tw-text-sm tw-border-t-4 tw-border-black dark:tw-border-white">
         <Button
           className={classNames(
-            "tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2 tw-font-thin",
+            "tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2",
             isSourceCodeTabSelected &&
-              "tw-font-bold tw-bg-black dark:tw-bg-white tw-text-white dark:tw-text-black hover:tw-opacity-100 tw-uppercase",
+              "tw-bg-black dark:tw-bg-white tw-text-white dark:tw-text-black hover:tw-opacity-100 tw-uppercase",
           )}
           onClick={setSourceCodeTab}
         >
@@ -63,9 +63,9 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
         </Button>
         <Button
           className={classNames(
-            "tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2 tw-font-thin",
+            "tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2",
             isOutputTabSelected &&
-              "tw-font-bold tw-bg-black dark:tw-bg-white tw-text-white dark:tw-text-black hover:tw-opacity-100 tw-uppercase",
+              "tw-bg-black dark:tw-bg-white tw-text-white dark:tw-text-black hover:tw-opacity-100 tw-uppercase tw-text-base",
           )}
           onClick={setOutputTab}
         >

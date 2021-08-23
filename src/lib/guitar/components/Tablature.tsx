@@ -55,7 +55,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
   } = useController(props);
 
   return (
-    <div className="tw-text-sm tw-pr-2 tw-font-serif">
+    <div className="tw-text-base">
       {parsedPositions && (
         <div className="tw-flex tw-items-end">
           <GuitarFret variant={GuitarFret.variant.STRINGS_NAMES} />
@@ -222,7 +222,7 @@ function Position({
   return (
     <div
       className={classNames(
-        "root tw-h-6 tw-w-4 tw-text-center tw-relative tw-top-0.5 tw-text-xs",
+        "root tw-h-6 tw-w-4 tw-text-center tw-relative tw-top-0.5",
         isCell && "root--cell",
         isSeparator && "root--separator",
       )}

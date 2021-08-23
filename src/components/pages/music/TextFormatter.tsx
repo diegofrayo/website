@@ -34,7 +34,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
       {parsedLyrics}
 
       <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
-        <div className="tw-bg-white dark:tw-bg-black tw-p-4 tw-rounded-md tw-w-96 tw-mx-auto tw-max-w-full">
+        <div className="tw-bg-white dark:dfr-bg-primary tw-p-4 tw-rounded-md tw-w-96 tw-mx-auto tw-max-w-full">
           {Array.isArray(selectedChord) ? (
             <div>
               {selectedChord.map((chord, index) => {
@@ -47,7 +47,6 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                       name={chord.name}
                       musicNotes={chord.musicNotes}
                       playedStrings={chord.playedStrings}
-                      showOptions={false}
                     />
                   </div>
                 );
@@ -91,12 +90,14 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
               name={selectedChord.name}
               musicNotes={selectedChord.musicNotes}
               playedStrings={selectedChord.playedStrings}
-              showOptions={false}
             />
           ) : null}
-          <Space sizeTop={6} sizeBottom={1} />
+          <Space size={2} />
 
-          <Button className="tw-text-center tw-block tw-w-full" onClick={handleModalClose}>
+          <Button
+            className="tw-text-center tw-block tw-w-full tw-leading-0"
+            onClick={handleModalClose}
+          >
             <Icon icon={Icon.icon.X} size={24} />
           </Button>
         </div>

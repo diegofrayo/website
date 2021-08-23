@@ -51,9 +51,9 @@ function RateContent(): T_ReactElement {
     return function () {
       setQuestionAnswer(answer);
 
-      AnalyticsService.trackEvent("Rate content", {
-        page: window.location.pathname,
+      AnalyticsService.trackEvent("RATE_CONTENT", {
         answer: answer,
+        page: window.location.pathname,
       });
 
       toast.success(t("common:useful_question_thanks"), {

@@ -3,6 +3,7 @@ import classNames from "classnames";
 
 import { Space, Button, Title } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
+import AnalyticsService from "~/services/analytics";
 import { useExecuteCallback } from "~/hooks";
 import { T_Function, T_ReactElement, T_ReactRefObject } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
@@ -15,7 +16,7 @@ type T_GuitarChordProps = {
   name: string;
   musicNotes: T_MusicNote[] | string; // "STRING|BARRE,FRET,FINGER?"
   playedStrings?: T_GuitarPlayedStrings;
-  showOptions?: boolean;
+  enableShowNotesOption?: boolean;
 };
 
 function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
@@ -23,7 +24,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
     // props
     name,
     playedStrings,
-    showOptions,
+    enableShowNotesOption,
 
     // states
     showChordInput,
@@ -53,12 +54,12 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
   const { firstFret, lastFret, musicNotesAsString, groupedMusicNotesByGuitarFret } = data;
 
   return (
-    <article className="tw-max-w-full tw-text-center tw-font-serif">
-      <section ref={chordContainerRef}>
+    <article className="tw-max-w-full tw-text-center">
+      <section className="tw-pb-2 dark:dfr-bg-primary" ref={chordContainerRef}>
         <Title
           is="h1"
           variant={Title.variant.SECONDARY}
-          className="tw-truncate tw-text-center tw-mb-2"
+          className="tw-truncate tw-text-center tw-mb-4"
           size={Title.size.MD}
         >
           {name}
@@ -86,12 +87,9 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
                 );
               })}
 
-            {firstFret > 1 && (
-              <GuitarFret
-                variant={GuitarFret.variant.EMPTY}
-                number={(firstFret - 1) as T_GuitarFret}
-              />
-            )}
+            {firstFret > 1 && <GuitarFret variant={GuitarFret.variant.EMPTY} number={1} />}
+
+            <div className="tw-h-36 tw-relative tw-top-6 tw--left-0.5 tw-w-3 tw-bg-black dark:tw-bg-white tw-rounded-tr-3xl tw-rounded-br-3xl" />
           </div>
 
           {playedStrings && (
@@ -103,51 +101,48 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
         </div>
       </section>
 
-      {showOptions && (
+      <div className="tw-text-sm">
         <div>
-          <div className="tw-pt-2">
-            <Button className="tw-text-sm tw-font-bold tw-p-1" onClick={handleDownloadAsImage}>
-              <Emoji className="tw-mr-1">⬇️</Emoji>
-              <span>descargar como imagen</span>
-            </Button>
-            <Space size={1} orientation="v" />
+          <Button className="tw-font-bold" onClick={handleDownloadAsImage}>
+            <Emoji className="tw-mr-1">⬇️</Emoji>
+            <span>descargar como imagen</span>
+          </Button>
 
-            {musicNotesAsString && (
-              <Fragment>
-                <Button
-                  className="tw-text-sm tw-font-bold tw-py-1 tw-px-2"
-                  onClick={handleShowChordInput}
+          {musicNotesAsString && enableShowNotesOption ? (
+            <Fragment>
+              <Button
+                className="tw-mt-1 sm:tw-mt-0 sm:tw-ml-2 tw-font-bold"
+                onClick={handleShowChordInput}
+              >
+                <span
+                  className={classNames(
+                    "tw-inline-block tw-transition-all tw-transform tw-w-4",
+                    showChordInput && "tw-rotate-90",
+                  )}
                 >
-                  <span
-                    className={classNames(
-                      "tw-inline-block tw-transition-all tw-transform tw-mr-1",
-                      showChordInput && "tw-rotate-90",
-                    )}
-                  >
-                    ‣
-                  </span>
-                  <span>{showChordInput ? "ocultar" : "mostrar"} notas</span>
-                </Button>
-                <Space size={1} orientation="v" />
-              </Fragment>
-            )}
-          </div>
-          {showChordInput && (
-            <div className="tw-text-sm tw-mt-4 tw-text-center">
-              <pre className="tw-whitespace-pre-line tw-text-sm tw-break-all tw-border tw-inline-block tw-p-2 dfr-border-color-primary dark:dfr-border-color-primary">
-                <Button
-                  className="tw-text-sm tw-font-bold tw-transition-opacity hover:tw-opacity-75"
-                  data-clipboard-text={musicNotesAsString}
-                  onClick={copyToClipboard}
-                >
-                  <Emoji>📋</Emoji>
-                </Button>{" "}
-                {musicNotesAsString}
-              </pre>
-            </div>
-          )}
+                  ‣
+                </span>
+                <span>{showChordInput ? "ocultar" : "mostrar"} notas</span>
+              </Button>
+              <Space size={1} orientation="v" />
+            </Fragment>
+          ) : null}
         </div>
-      )}
+        {showChordInput && (
+          <div className="tw-text-sm tw-mt-3 tw-text-center">
+            <pre className="tw-whitespace-pre-line tw-break-all tw-border tw-inline-block tw-p-2 dfr-border-color-primary dark:dfr-border-color-primary">
+              <Button
+                className="tw-font-bold"
+                data-clipboard-text={musicNotesAsString}
+                onClick={copyToClipboard}
+              >
+                <Emoji>📋</Emoji>
+              </Button>{" "}
+              {musicNotesAsString}
+            </pre>
+          </div>
+        )}
+      </div>
     </article>
   );
 }
@@ -160,8 +155,11 @@ function useController({
   name,
   musicNotes,
   playedStrings,
-  showOptions = true,
-}: T_GuitarChordProps): Pick<T_GuitarChordProps, "name" | "playedStrings" | "showOptions"> & {
+  enableShowNotesOption = false,
+}: T_GuitarChordProps): Pick<
+  T_GuitarChordProps,
+  "name" | "playedStrings" | "enableShowNotesOption"
+> & {
   // states
   showChordInput: boolean;
   chordContainerRef: T_ReactRefObject<HTMLDivElement>;
@@ -189,6 +187,11 @@ function useController({
       link.download = `${name}.png`;
       link.href = dataUrl;
       link.click();
+
+      AnalyticsService.trackEvent("DOWNLOAD_CHORD_AS_IMAGE", {
+        chord: name,
+        page: window.location.pathname,
+      });
     });
   }
 
@@ -199,7 +202,7 @@ function useController({
   return {
     // props
     name,
-    showOptions,
+    enableShowNotesOption,
     playedStrings: [
       ...(typeof playedStrings === "string" ? playedStrings.split(",") : playedStrings || []),
     ].reverse(),

@@ -84,7 +84,7 @@ function Code({
             </Link>
           )}
           <Button
-            className="tw-block sm:tw-inline-block tw-ml-auto tw-font-bold tw-align-middle"
+            className="tw-block sm:tw-inline-block tw-ml-auto tw-align-middle tw-font-bold"
             data-clipboard-text={code}
             onClick={copyToClipboard}
           >

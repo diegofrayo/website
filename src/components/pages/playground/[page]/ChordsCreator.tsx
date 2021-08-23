@@ -71,6 +71,7 @@ function ChordsCreator(): T_ReactElement {
             { finger: 1, guitarFret: 1, guitarString: 3 },
           ]}
           playedStrings={["0", "1", "1", "1", "0", "0"]}
+          enableShowNotesOption
         />
         <Space size={8} />
 
@@ -82,6 +83,7 @@ function ChordsCreator(): T_ReactElement {
             { finger: 1, guitarFret: 1, guitarString: 2 },
           ]}
           playedStrings={["x", "1", "1", "0", "1", "0"]}
+          enableShowNotesOption
         />
         <Space size={8} />
 
@@ -89,6 +91,7 @@ function ChordsCreator(): T_ReactElement {
           name="LA Mayor (A)"
           musicNotes="4,2,1|3,2,2|2,2,3"
           playedStrings={["x", "0", "1", "1", "1", "0"]}
+          enableShowNotesOption
         />
         <Space size={8} />
 
@@ -96,6 +99,7 @@ function ChordsCreator(): T_ReactElement {
           name="RE Mayor (D)"
           musicNotes="3,2,1|1,2,2|2,3,3"
           playedStrings={["x", "x", "0", "1", "1", "1"]}
+          enableShowNotesOption
         />
         <Space size={8} />
 
@@ -108,6 +112,7 @@ function ChordsCreator(): T_ReactElement {
             { finger: 2, guitarFret: 4, guitarString: 2 },
           ]}
           playedStrings={["x", "0", "1", "1", "1", "0"]}
+          enableShowNotesOption
         />
       </div>
     </Fragment>

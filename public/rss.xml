@@ -1,16 +1,10 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<rss
-  version="2.0"
-  xmlns:dc="http://purl.org/dc/elements/1.1/"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/"
-  xmlns:atom="http://www.w3.org/2005/Atom"
->
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Diego Rayo | Software Developer</title>
         <link>https://diegofrayo.vercel.app</link>
-        <description
-    >Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.</description>
-        <lastBuildDate>Mon, 23 Aug 2021 17:04:09 GMT</lastBuildDate>
+        <description>Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.</description>
+        <lastBuildDate>Mon, 23 Aug 2021 22:13:23 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -22,29 +16,21 @@
         <copyright>All rights reserved 2021, Diego Rayo</copyright>
         <category>Blog</category>
         <category>JAMStack</category>
+        <category>MDX</category>
         <category>Next.js</category>
         <category>Programming</category>
         <category>React</category>
         <category>Software Development</category>
         <category>Tech</category>
         <category>TypeScript</category>
-        <atom:link
-      href="https://diegofrayo.vercel.app/rss.xml"
-      rel="self"
-      type="application/rss+xml"
-    />
+        <atom:link href="https://diegofrayo.vercel.app/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
-            <title
-      ><![CDATA[Publishing a npm private package to GitHub pakages using GitHub actions]]></title>
-            <link
-      >https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</link>
-            <guid
-      >https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</guid>
+            <title><![CDATA[Publishing a npm private package to GitHub pakages using GitHub actions]]></title>
+            <link>https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</link>
+            <guid>https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</guid>
             <pubDate>Fri, 19 Mar 2021 05:00:00 GMT</pubDate>
-            <description
-      ><![CDATA[In this tutorial I want to explain how to publish a private npm package to GitHub packages using GitHub Actions.]]></description>
-            <content:encoded
-      ><![CDATA[In this tutorial I want to explain how to publish a private npm package to GitHub packages using GitHub Actions.]]></content:encoded>
+            <description><![CDATA[In this tutorial I want to explain how to publish a private npm package to GitHub packages using GitHub Actions.]]></description>
+            <content:encoded><![CDATA[In this tutorial I want to explain how to publish a private npm package to GitHub packages using GitHub Actions.]]></content:encoded>
             <author>diegofrayo@gmail.com (Diego Rayo)</author>
         </item>
         <item>
@@ -52,23 +38,17 @@
             <link>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</link>
             <guid>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</guid>
             <pubDate>Sat, 14 Aug 2021 05:00:00 GMT</pubDate>
-            <description
-      ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.]]></description>
-            <content:encoded
-      ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.]]></content:encoded>
+            <description><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.]]></description>
+            <content:encoded><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.]]></content:encoded>
             <author>diegofrayo@gmail.com (Diego Rayo)</author>
         </item>
         <item>
             <title><![CDATA[Connecting a Firebase project with a Go Daddy domain]]></title>
-            <link
-      >https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy</link>
-            <guid
-      >https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy</guid>
+            <link>https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy</link>
+            <guid>https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy</guid>
             <pubDate>Sun, 17 Jun 2018 05:00:00 GMT</pubDate>
-            <description
-      ><![CDATA[In this tutorial I want to explain how to connect a Go Daddy domain with a Firebase project.]]></description>
-            <content:encoded
-      ><![CDATA[In this tutorial I want to explain how to connect a Go Daddy domain with a Firebase project.]]></content:encoded>
+            <description><![CDATA[In this tutorial I want to explain how to connect a Go Daddy domain with a Firebase project.]]></description>
+            <content:encoded><![CDATA[In this tutorial I want to explain how to connect a Go Daddy domain with a Firebase project.]]></content:encoded>
             <author>diegofrayo@gmail.com (Diego Rayo)</author>
         </item>
     </channel>
