@@ -6,7 +6,7 @@ import { Emoji, Render } from "~/components/pages/_shared";
 import { SongDetails } from "~/components/pages/music";
 import { AuthService } from "~/auth";
 import { useQuery } from "~/hooks";
-import { getPageContentStaticProps, useTranslation } from "~/i18n";
+import { getPageContentStaticProps, I18nService, useTranslation } from "~/i18n";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
 import { ROUTES } from "~/utils/routing";
@@ -68,7 +68,7 @@ function MusicPage(): T_ReactElement {
                   <Link
                     href={`${ROUTES.MUSIC}/${chordsPage.id}`}
                     variant={Link.variant.SECONDARY}
-                    locale="es"
+                    locale={I18nService.getDefaultLocale()}
                     isNextLink
                   >
                     <Emoji className="tw-mr-2">📓</Emoji>
@@ -104,7 +104,7 @@ function MusicPage(): T_ReactElement {
                           href={`${ROUTES.MUSIC}/${song.id}`}
                           variant={Link.variant.SECONDARY}
                           className="tw-font-bold tw-flex"
-                          locale="es"
+                          locale={I18nService.getDefaultLocale()}
                           isNextLink
                         >
                           <span className="tw-flex-1 sm:tw-truncate" title={song.title}>

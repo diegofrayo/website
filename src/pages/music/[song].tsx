@@ -46,7 +46,11 @@ function SongPage(props: T_PageProps): T_ReactElement {
   const { t } = useTranslation();
 
   if (router.isFallback) {
-    return <Loader />;
+    return (
+      <div className="tw-p-4 tw-text-center">
+        <Loader />
+      </div>
+    );
   }
 
   return (
@@ -162,6 +166,7 @@ export const getStaticPaths: GetStaticPaths<{ song: string }> = async function g
 
 export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: string }>({
   page: [ROUTES.MUSIC, ROUTES.MUSIC_DETAILS],
+  locale: "es",
   callback: async ({ params }) => {
     const song = await MusicService.getSong({ id: params?.song });
     const file = await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.mdx` });
@@ -204,6 +209,7 @@ function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps,
 
   useDidMount(() => {
     setFontSize(getFontSize());
+    document.documentElement.lang = "es";
   });
 
   useEffect(

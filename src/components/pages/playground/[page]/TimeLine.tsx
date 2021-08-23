@@ -147,7 +147,10 @@ function useController(): {
     ];
 
     const startDateItems = startDate.split("/");
-    let output = `${Number(startDateItems[2])} de ${MONTHS[Number(startDateItems[1]) - 1]}`;
+    const startDateDay = itemAsNumber(startDateItems[2]);
+    let output = `${startDateDay ? startDateDay + " de " : ""}${
+      MONTHS[Number(startDateItems[1]) - 1]
+    }`;
 
     if (endDate) {
       const endDateItems = endDate.split("/");
@@ -161,6 +164,14 @@ function useController(): {
     }
 
     return output;
+  }
+
+  function itemAsNumber(item: string): number {
+    const itemAsNumber = Number(item);
+
+    if (!Number.isInteger(itemAsNumber)) return 0;
+
+    return itemAsNumber;
   }
 
   return {

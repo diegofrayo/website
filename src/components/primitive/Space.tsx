@@ -46,24 +46,30 @@ function useController({
   function getSizeClass(): string {
     if (isHorizontalDir) {
       if (sizeTop || sizeBottom) {
-        return `tw-mt-${sizeTop || 0} tw-mb-${sizeBottom || 0}`;
+        return `${getItemClass("tw-mt", sizeTop)} ${getItemClass("tw-mb", sizeBottom)}`.trim();
       }
 
-      return `tw-my-${size || 2}`;
+      return getItemClass("tw-my", size);
     }
 
-    if (sizeTop || sizeBottom) {
-      return `tw-ml-${sizeLeft || 0} tw-mr-${sizeRight || 0}`;
+    if (sizeLeft || sizeRight) {
+      return `${getItemClass("tw-ml", sizeLeft)} ${getItemClass("tw-mr", sizeRight)}`.trim();
     }
 
-    return `tw-mx-${size || 2}`;
+    return getItemClass("tw-mx", size);
+  }
+
+  function getItemClass(className, size) {
+    if (typeof size !== "number") return "";
+
+    return `${className}-${size}`;
   }
 
   return {
     className: classNames(
       "tw-flex-shrink-0 tw-h-px",
       getSizeClass(),
-      !isHorizontalDir && "tw-inline-block tw-h-1",
+      !isHorizontalDir && "tw-inline-block",
       variant === E_Variants.DEFAULT && "tw-border-0",
       variant === E_Variants.DASHED &&
         "tw-border-dashed dfr-border-color-primary dark:dfr-border-color-primary",

@@ -44,7 +44,7 @@ export default withAuth(PlaygroundPage);
 
 // --- Next.js functions ---
 
-export const getStaticProps = getPageContentStaticProps();
+export const getStaticProps = getPageContentStaticProps({ locale: "es" });
 
 // --- Components ---
 

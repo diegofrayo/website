@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { useRouter } from "next/router";
 
 import { Page, MainLayout } from "~/components/layout";
 import { List, Link } from "~/components/primitive";
@@ -7,7 +8,7 @@ import { Render } from "~/components/pages/_shared";
 import { useQuery } from "~/hooks";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
 import BlogService from "~/services/blog";
-import { T_BlogPost, T_ReactElement } from "~/types";
+import { T_BlogPost, T_Locale, T_ReactElement } from "~/types";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { ROUTES } from "~/utils/routing";
 
@@ -48,6 +49,7 @@ function BlogPage(): T_ReactElement {
                       title={post.title}
                       categories={post.categories}
                       updatedAt={post.updatedAt}
+                      locales={post.locales}
                     />
                   );
                 })}
@@ -70,14 +72,25 @@ export const getStaticProps = getPageContentStaticProps({
 
 // --- Components ---
 
-type T_BlogEntryProps = Pick<T_BlogPost, "title" | "categories" | "slug" | "updatedAt">;
+type T_BlogEntryProps = Pick<T_BlogPost, "title" | "categories" | "slug" | "updatedAt" | "locales">;
 
-function BlogEntry({ slug, title, categories, updatedAt }: T_BlogEntryProps): T_ReactElement {
+function BlogEntry({
+  slug,
+  title,
+  categories,
+  updatedAt,
+  locales,
+}: T_BlogEntryProps): T_ReactElement {
   const { t } = useTranslation();
+  const { locale } = useRouter();
 
   const CATEGORIES_COLORS = {
     tech: "tw-bg-gray-200 dark:tw-bg-gray-600",
   };
+
+  function getLocale(): T_Locale {
+    return locales.find((l) => l === locale) || locales[0];
+  }
 
   return (
     <List.Item>
@@ -85,6 +98,7 @@ function BlogEntry({ slug, title, categories, updatedAt }: T_BlogEntryProps): T_
         href={`${ROUTES.BLOG}/${slug}`}
         variant={Link.variant.SECONDARY}
         className="tw-font-bold"
+        locale={getLocale()}
         isNextLink
       >
         {title}

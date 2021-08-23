@@ -7,7 +7,7 @@ module.exports = withMDX({
   },
   i18n: {
     locales: ["es", "en"],
-    defaultLocale: "es",
+    defaultLocale: "en",
     localeDetection: false,
   },
   webpack(config) {

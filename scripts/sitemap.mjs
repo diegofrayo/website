@@ -17,19 +17,19 @@ async function main() {
     );
 
     const pages = [
-      { path: "/", isEnabledToBeIndexed: true },
-      { path: "/blog", isEnabledToBeIndexed: true },
-      { path: "/about-me", isEnabledToBeIndexed: true },
-      { path: "/resume", isEnabledToBeIndexed: true },
-      { path: "/contact", isEnabledToBeIndexed: true },
-      { path: "/music", isEnabledToBeIndexed: false },
-      { path: "/playground", isEnabledToBeIndexed: false },
+      { path: "/", hasToBeIndexed: true },
+      { path: "/blog", hasToBeIndexed: true },
+      { path: "/about-me", hasToBeIndexed: true },
+      { path: "/resume", hasToBeIndexed: true },
+      { path: "/contact", hasToBeIndexed: true },
+      { path: "/music", hasToBeIndexed: false },
+      { path: "/playground", hasToBeIndexed: false },
     ]
       .concat(
         Object.values(BLOG.posts).map((post) => {
           return {
             path: `/blog/${post.config.slug}`,
-            isEnabledToBeIndexed: post.config.is_published,
+            hasToBeIndexed: post.config.is_published,
           };
         }),
       )
@@ -37,7 +37,7 @@ async function main() {
         MUSIC.songs.map((song) => {
           return {
             path: `/music/${song.id}`,
-            isEnabledToBeIndexed: song.is_public,
+            hasToBeIndexed: song.is_public,
           };
         }),
       );
@@ -59,7 +59,7 @@ function generateSitemapFile(pages, websiteUrl) {
   let output = `<?xml version="1.0" encoding="utf-8" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
   pages
-    .filter((page) => page.isEnabledToBeIndexed)
+    .filter((page) => page.hasToBeIndexed)
     .forEach((page) => {
       output += `
   <url>

@@ -4,7 +4,7 @@ import { initReactI18next } from "react-i18next";
 import { T_Locale } from "~/types";
 
 class I18nService {
-  private LOCALES: T_Locale[] = ["es", "en"];
+  private LOCALES: T_Locale[] = ["en", "es"];
   private DEFAULT_LOCALE: T_Locale = this.LOCALES[0];
   private CURRENT_LOCALE;
   private INSTANCE;

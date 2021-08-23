@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import { I18nService } from "~/i18n";
-import { T_Metadata, T_Object, T_PageContent, T_Store } from "~/types";
+import { T_Locale, T_Metadata, T_Object, T_PageContent, T_Store } from "~/types";
 import {
   isDevelopmentEnvironment,
   transformObjectKeysFromSnakeCaseToLowerCamelCase,
@@ -9,6 +9,7 @@ import {
 
 import metadataReducer, { REDUCER_NAME as METADATA_REDUCER_NAME } from "./modules/metadata";
 import pageConfigReducer, { REDUCER_NAME as PAGE_CONFIG_REDUCER_NAME } from "./modules/page-config";
+
 let store;
 
 type T_PreloadedState = Partial<T_Store>;
@@ -40,15 +41,17 @@ export default function initializeStore(preloadedState: T_PreloadedState): T_Sto
 export function createPreloadedState({
   metadata,
   pageContent,
+  locale,
 }: {
   metadata: T_Metadata;
   pageContent: T_PageContent;
+  locale?: T_Locale;
 }): T_PreloadedState {
   const pageConfig =
     (transformObjectKeysFromSnakeCaseToLowerCamelCase(pageContent?.page?.config) as T_Object) || {};
 
   if (!pageConfig.locales) {
-    pageConfig.locales = [I18nService.getCurrentLocale()];
+    pageConfig.locales = [locale || I18nService.getCurrentLocale()];
   }
 
   return {

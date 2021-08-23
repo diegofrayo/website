@@ -12,6 +12,7 @@
     "husky:install": "husky install ./.husky",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
+    "scripts:all": "yarn scripts:chords && yarn scripts:rss && yarn scripts:sitemap && yarn format",
     "scripts:chords": "node --experimental-json-modules scripts/chords.mjs",
     "scripts:rss": "node --experimental-json-modules scripts/rss.mjs",
     "scripts:sitemap": "node --experimental-json-modules scripts/sitemap.mjs"

@@ -37,6 +37,7 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
     createPreloadedState({
       metadata: pageProps.metadata,
       pageContent: pageProps.pageContent,
+      locale: pageProps.locale,
     }),
   );
 

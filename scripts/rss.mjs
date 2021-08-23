@@ -14,7 +14,7 @@ async function main() {
       data: { seo: SEO_METADATA, website: WEBSITE_METADATA },
     } = await axios.get(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/metadata.json`);
 
-    const DEFAULT_LOCALE = "es";
+    const DEFAULT_LOCALE = "en";
     await generateFeed(SEO_METADATA[DEFAULT_LOCALE], WEBSITE_METADATA, BLOG, DEFAULT_LOCALE);
 
     console.log("RSS files created");

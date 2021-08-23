@@ -41,7 +41,7 @@ function MainLayout({
               {title}
             </Title>
           )}
-          <Space className="tw-my-5 sm:tw-my-3" />
+          <Space size={3} />
 
           {children}
         </div>

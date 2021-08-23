@@ -168,7 +168,7 @@ function LocalesToggle(): T_ReactElement {
   const { locales: pageLocales, reloadWhenLocaleChanges } =
     useStoreSelector<T_PageConfig>(selectPageConfig);
 
-  const EMOJIS = { es: "🇪🇸", en: "🇺🇸" };
+  const EMOJIS = { en: "🇺🇸", es: "🇪🇸" };
 
   return (
     <div className="tw-flex tw-items-center tw-justify-center tw-mt-1 tw-leading-0 tw-italic">
