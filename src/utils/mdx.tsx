@@ -12,11 +12,12 @@ import {
 } from "~/components/primitive";
 import {
   Code,
-  TitleCreator,
-  TextWithEmoji,
   GitHubRepo,
-  Playground,
   ImageWithLink,
+  Playground,
+  ProtectedImage,
+  TextWithEmoji,
+  TitleCreator,
 } from "~/components/pages/_shared";
 import { Sources } from "~/components/pages/blog";
 import * as HTMLSemanticTagsBlogPostComponents from "~/components/pages/blog/[slug]/html-semantic-tags";
@@ -65,6 +66,7 @@ export const MDXComponents = {
   GitHubRepo,
   ImageWithLink,
   Playground,
+  ProtectedImage,
   TextWithEmoji,
 
   // Blog components

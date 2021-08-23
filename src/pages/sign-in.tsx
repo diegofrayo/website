@@ -28,7 +28,15 @@ function SignInPage(): T_ReactElement {
     >
       <form className="tw-p-4" onSubmit={(e) => e.preventDefault()}>
         <Input
-          id="input"
+          id="username"
+          type="username"
+          name="username"
+          value="diegofrayo"
+          autoComplete="off"
+          className="tw-hidden"
+        />
+        <Input
+          id="password"
           type="password"
           label="Contraseña"
           value={inputValue}

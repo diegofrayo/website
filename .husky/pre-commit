@@ -2,6 +2,7 @@
 . "$(dirname "$0")/_/husky.sh"
 
 yarn scripts:chords
+yarn scripts:rss
 yarn scripts:sitemap
 yarn format
 yarn lint

@@ -1,9 +1,9 @@
 {
   "version": "https://jsonfeed.org/version/1",
-  "title": "Diego Rayo | Desarrollador de Software",
+  "title": "Diego Rayo | Software Developer",
   "home_page_url": "https://diegofrayo.vercel.app",
   "feed_url": "https://diegofrayo.vercel.app/feed.json",
-  "description": "Hola, Soy Diego, desarrollador de Software. Tengo poco más de 5 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.",
+  "description": "Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.",
   "icon": "https://diegofrayo.vercel.app/static/images/favicon/favicon.ico",
   "author": {
     "name": "Diego Fernando Rayo Zamora",
@@ -12,10 +12,10 @@
   "items": [
     {
       "id": "https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions",
-      "content_html": "En este tutorial quiero explicar como subir un paquete privado de npm a GitHub Packages usando GitHub Actions.",
+      "content_html": "In this tutorial I want to explain how to publish a private npm package to GitHub packages using GitHub Actions.",
       "url": "https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions",
-      "title": "Publicando un paquete privado de npm a GitHub Packages usando GitHub Actions",
-      "summary": "En este tutorial quiero explicar como subir un paquete privado de npm a GitHub Packages usando GitHub Actions.",
+      "title": "Publishing a npm private package to GitHub pakages using GitHub actions",
+      "summary": "In this tutorial I want to explain how to publish a private npm package to GitHub packages using GitHub Actions.",
       "date_modified": "2021-03-19T05:00:00.000Z",
       "author": {
         "name": "Diego Rayo",
@@ -24,10 +24,10 @@
     },
     {
       "id": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
-      "content_html": "MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.",
+      "content_html": "MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.",
       "url": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
-      "title": "Mi música favorita y MDX",
-      "summary": "MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.",
+      "title": "My favorite music and MDX",
+      "summary": "MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.",
       "date_modified": "2021-08-14T05:00:00.000Z",
       "author": {
         "name": "Diego Rayo",
@@ -36,10 +36,10 @@
     },
     {
       "id": "https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy",
-      "content_html": "En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase.",
+      "content_html": "In this tutorial I want to explain how to connect a Go Daddy domain with a Firebase project.",
       "url": "https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy",
-      "title": "Conectando un proyecto de Firebase con un dominio de Go Daddy",
-      "summary": "En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase.",
+      "title": "Connecting a Firebase project with a Go Daddy domain",
+      "summary": "In this tutorial I want to explain how to connect a Go Daddy domain with a Firebase project.",
       "date_modified": "2018-06-17T05:00:00.000Z",
       "author": {
         "name": "Diego Rayo",

@@ -6,16 +6,16 @@
   xmlns:atom="http://www.w3.org/2005/Atom"
 >
     <channel>
-        <title>Diego Rayo | Desarrollador de Software</title>
+        <title>Diego Rayo | Software Developer</title>
         <link>https://diegofrayo.vercel.app</link>
         <description
-    >Hola, Soy Diego, desarrollador de Software. Tengo poco más de 5 años de experiencia desarrollando soluciones web. Trabajo principalmente con JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js y GraphQL.</description>
-        <lastBuildDate>Sun, 22 Aug 2021 22:11:09 GMT</lastBuildDate>
+    >Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.</description>
+        <lastBuildDate>Mon, 23 Aug 2021 04:52:41 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
-        <language>es</language>
+        <language>en</language>
         <image>
-            <title>Diego Rayo | Desarrollador de Software</title>
+            <title>Diego Rayo | Software Developer</title>
             <url>https://diegofrayo.vercel.app/static/images/favicon/favicon.ico</url>
             <link>https://diegofrayo.vercel.app</link>
         </image>
@@ -35,40 +35,40 @@
     />
         <item>
             <title
-      ><![CDATA[Publicando un paquete privado de npm a GitHub Packages usando GitHub Actions]]></title>
+      ><![CDATA[Publishing a npm private package to GitHub pakages using GitHub actions]]></title>
             <link
       >https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</link>
             <guid
       >https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</guid>
             <pubDate>Fri, 19 Mar 2021 05:00:00 GMT</pubDate>
             <description
-      ><![CDATA[En este tutorial quiero explicar como subir un paquete privado de npm a GitHub Packages usando GitHub Actions.]]></description>
+      ><![CDATA[In this tutorial I want to explain how to publish a private npm package to GitHub packages using GitHub Actions.]]></description>
             <content:encoded
-      ><![CDATA[En este tutorial quiero explicar como subir un paquete privado de npm a GitHub Packages usando GitHub Actions.]]></content:encoded>
+      ><![CDATA[In this tutorial I want to explain how to publish a private npm package to GitHub packages using GitHub Actions.]]></content:encoded>
             <author>diegofrayo@gmail.com (Diego Rayo)</author>
         </item>
         <item>
-            <title><![CDATA[Mi música favorita y MDX]]></title>
+            <title><![CDATA[My favorite music and MDX]]></title>
             <link>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</link>
             <guid>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</guid>
             <pubDate>Sat, 14 Aug 2021 05:00:00 GMT</pubDate>
             <description
-      ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.]]></description>
+      ><![CDATA[MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.]]></description>
             <content:encoded
-      ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.]]></content:encoded>
+      ><![CDATA[MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.]]></content:encoded>
             <author>diegofrayo@gmail.com (Diego Rayo)</author>
         </item>
         <item>
-            <title><![CDATA[Conectando un proyecto de Firebase con un dominio de Go Daddy]]></title>
+            <title><![CDATA[Connecting a Firebase project with a Go Daddy domain]]></title>
             <link
       >https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy</link>
             <guid
       >https://diegofrayo.vercel.app/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy</guid>
             <pubDate>Sun, 17 Jun 2018 05:00:00 GMT</pubDate>
             <description
-      ><![CDATA[En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase.]]></description>
+      ><![CDATA[In this tutorial I want to explain how to connect a Go Daddy domain with a Firebase project.]]></description>
             <content:encoded
-      ><![CDATA[En este tutorial quiero explicar como configurar un dominio de Go Daddy en un proyecto de Firebase.]]></content:encoded>
+      ><![CDATA[In this tutorial I want to explain how to connect a Go Daddy domain with a Firebase project.]]></content:encoded>
             <author>diegofrayo@gmail.com (Diego Rayo)</author>
         </item>
     </channel>
