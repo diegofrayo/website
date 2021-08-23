@@ -24,10 +24,10 @@
     },
     {
       "id": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
-      "content_html": "MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.",
+      "content_html": "MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.",
       "url": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
-      "title": "My favorite music and MDX",
-      "summary": "MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.",
+      "title": "Mi música favorita y MDX",
+      "summary": "MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.",
       "date_modified": "2021-08-14T05:00:00.000Z",
       "author": {
         "name": "Diego Rayo",

@@ -10,7 +10,7 @@
         <link>https://diegofrayo.vercel.app</link>
         <description
     >Hi, I'm Diego, a Software Developer. I have over 5 years of experience developing Web Solutions. I usually work using JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.</description>
-        <lastBuildDate>Mon, 23 Aug 2021 04:52:41 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 23 Aug 2021 17:04:09 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -48,14 +48,14 @@
             <author>diegofrayo@gmail.com (Diego Rayo)</author>
         </item>
         <item>
-            <title><![CDATA[My favorite music and MDX]]></title>
+            <title><![CDATA[Mi música favorita y MDX]]></title>
             <link>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</link>
             <guid>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</guid>
             <pubDate>Sat, 14 Aug 2021 05:00:00 GMT</pubDate>
             <description
-      ><![CDATA[MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.]]></description>
+      ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.]]></description>
             <content:encoded
-      ><![CDATA[MDX is an extension of Markdown language and I want to explain how I use it to create posts on my website's blog. Thanks to MDX I could insert an HTML widget to show the most listened songs in 2022 according to Spotify.]]></content:encoded>
+      ><![CDATA[MDX es una mejora del lenguaje Markdown y en este tutorial explico como lo uso para crear publicaciones en el blog de mi sitio web. Gracias a MDX pude insertar un widget de HTML que muestra el listado de canciones que más escuché en este 2020 según Spotify. Además explico como integrar MDX con Next.js y Tailwind CSS.]]></content:encoded>
             <author>diegofrayo@gmail.com (Diego Rayo)</author>
         </item>
         <item>

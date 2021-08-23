@@ -25,11 +25,15 @@ class AnalyticsService {
   }
 
   private isAnalyticsDisabled() {
-    return (
-      AuthService.isUserLoggedIn() === true ||
-      isDevelopmentEnvironment() === true ||
-      (isBrowser() && window.location.href.includes("n=t") ? true : false)
-    );
+    if (
+      isBrowser() &&
+      (window.location.href.includes("a=d") || window.localStorage.getItem("DA"))
+    ) {
+      window.localStorage.setItem("DA", "true");
+      return true;
+    }
+
+    return AuthService.isUserLoggedIn() === true || isDevelopmentEnvironment() === true;
   }
 }
 

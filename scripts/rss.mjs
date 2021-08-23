@@ -54,13 +54,14 @@ async function generateFeed(SEO_METADATA, WEBSITE_METADATA, BLOG, DEFAULT_LOCALE
     if (post.config.is_published === false) return null;
 
     const url = `${WEBSITE_METADATA.url}/blog/${post.config.slug}`;
+    const postData = post[DEFAULT_LOCALE] || post[post.config.locales[0]];
 
     feed.addItem({
-      title: post[DEFAULT_LOCALE].title,
+      title: postData.title,
       id: url,
       link: url,
-      description: post[DEFAULT_LOCALE].description,
-      content: post[DEFAULT_LOCALE].description,
+      description: postData.description,
+      content: postData.description,
       author: [
         {
           name: WEBSITE_METADATA.shortName,
@@ -75,6 +76,7 @@ async function generateFeed(SEO_METADATA, WEBSITE_METADATA, BLOG, DEFAULT_LOCALE
   [
     "Blog",
     "JAMStack",
+    "MDX",
     "Next.js",
     "Programming",
     "React",

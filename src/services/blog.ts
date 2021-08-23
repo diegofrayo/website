@@ -18,7 +18,13 @@ class BlogService {
     const result = Object.values(posts)
       .map((post: T_Object) => {
         return {
-          ...post[locale || I18nService.getCurrentLocale()],
+          ...post[
+            I18nService.getContentLocale(
+              post.config.locales,
+              locale || I18nService.getCurrentLocale(),
+              post.config.locales[0],
+            )
+          ],
           ...(transformObjectKeysFromSnakeCaseToLowerCamelCase(post.config) as T_Object),
           assets: post.assets,
           categories: post.config.categories

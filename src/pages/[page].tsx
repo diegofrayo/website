@@ -84,8 +84,8 @@ export const getStaticProps = getPageContentStaticProps<T_SitePageProps, { page:
     const file = await dataLoader({
       path: `/pages/${page}/${I18nService.getContentLocale(
         pageContent.page?.config?.locales,
-        pageContent.page?.config?.default_locale,
         locale as T_Locale,
+        pageContent.page?.config?.default_locale,
       )}.${page}.mdx`,
     });
     const pageMDXContent: string = await renderToString(file, {

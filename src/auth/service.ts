@@ -1,15 +1,8 @@
 import http from "~/lib/http";
 import { isBrowser } from "~/utils/misc";
-import { ROUTES } from "~/utils/routing";
 
 class AuthService {
   private LOCAL_STORAGE_KEY = "AUTH";
-
-  constructor() {
-    if (isBrowser() && window.localStorage.getItem("login")) {
-      window.location.href = `${ROUTES.SIGN_IN}?n=t`;
-    }
-  }
 
   async signIn(values) {
     return http

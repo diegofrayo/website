@@ -43,8 +43,8 @@ class I18nService {
 
   getContentLocale(
     locales: T_Locale[],
-    defaultLocale: T_Locale,
     currentLocale: T_Locale,
+    defaultLocale: T_Locale,
   ): T_Locale {
     return locales.indexOf(currentLocale) !== -1 ? currentLocale : defaultLocale;
   }
