@@ -6,12 +6,17 @@ import { ROUTES } from "~/utils/routing";
 
 import AuthService from "./service";
 
-function withAuth(Component: T_ReactFunctionComponent, options?: { denyLoggedIn: boolean }) {
+function withAuth(
+  Component: T_ReactFunctionComponent,
+  options?: { denyLoggedIn?: boolean; allowIf?: any },
+) {
   return function WithAuthComponent(props: T_Object): any {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
     useDidMount(() => {
-      if (options?.denyLoggedIn) {
+      if (options?.allowIf && options?.allowIf(props)) {
+        redirect(false);
+      } else if (options?.denyLoggedIn) {
         redirect(AuthService.isUserLoggedIn());
       } else {
         redirect(!AuthService.isUserLoggedIn());

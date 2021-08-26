@@ -60,7 +60,9 @@ function PlaygroundPage(props: T_PageProps): T_ReactElement {
   );
 }
 
-export default withAuth(PlaygroundPage);
+export default withAuth(PlaygroundPage, {
+  allowIf: (props) => props.page === "texts",
+});
 
 // --- Next.js functions ---
 

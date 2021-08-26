@@ -31,6 +31,11 @@ export const PLAYGROUND_PAGES = [
     componentName: "Strings",
   },
   {
+    slug: "texts",
+    title: "📔 texts",
+    componentName: "Texts",
+  },
+  {
     slug: "timeline",
     title: "⏳ timeline",
     componentName: "TimeLine",

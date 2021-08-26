@@ -124,7 +124,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
           <Space size={6} />
 
           <Blockquote
-            className="tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-font-mono tw-text-base"
+            className="tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-text-base"
             variant={Blockquote.variant.UNSTYLED}
           >
             <p className="tw-font-bold tw-mb-2">
