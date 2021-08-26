@@ -92,7 +92,7 @@ export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function g
         }),
       );
     }, []),
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
@@ -124,6 +124,7 @@ export const getStaticProps = getPageContentStaticProps<
         post,
         postMDXContent,
       },
+      revalidate: 60,
     };
   },
 });
