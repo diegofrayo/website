@@ -2,6 +2,7 @@ import React, { useState, Fragment, useEffect, useRef, useCallback } from "react
 import ReactDiffViewer from "react-diff-viewer";
 
 import { Button, Space, Title } from "~/components/primitive";
+import { Emoji } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
 
@@ -32,21 +33,27 @@ function Texts(): T_ReactElement {
         <Title is="h2" className="tw-mb-4">
           Corrections
         </Title>
-        <div className="tw-border-4 tw-border-black dark:tw-border-white tw-p-1">
-          <ReactDiffViewer
-            oldValue={baseText}
-            newValue={newText}
-            showDiffOnly={false}
-            splitView={false}
-            styles={{
-              variables: {
-                light: {
-                  diffViewerBackground: "white",
-                  diffViewerColor: "black",
+        <div className="tw-border-4 tw-border-black dark:tw-border-white tw-p-2">
+          {!baseText && !newText ? (
+            <p>
+              <Emoji>🤷‍♂️</Emoji> <span>Nothing to compare...</span>
+            </p>
+          ) : (
+            <ReactDiffViewer
+              oldValue={baseText}
+              newValue={newText}
+              showDiffOnly={false}
+              splitView={false}
+              styles={{
+                variables: {
+                  light: {
+                    diffViewerBackground: "white",
+                    diffViewerColor: "black",
+                  },
                 },
-              },
-            }}
-          />
+              }}
+            />
+          )}
         </div>
       </section>
     </div>
