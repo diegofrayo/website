@@ -6,7 +6,7 @@ import { Emoji } from "~/components/pages/_shared";
 import AnalyticsService from "~/services/analytics";
 import { useExecuteCallback } from "~/hooks";
 import { T_Function, T_ReactElement, T_ReactRefObject } from "~/types";
-import { copyToClipboard } from "~/utils/browser";
+import { copyToClipboard, downloadComponentAsImage } from "~/utils/browser";
 
 import GuitarFret from "./GuitarFret";
 import GuitarService from "../service";
@@ -180,18 +180,11 @@ function useController({
   const [showChordInput, setChordInput] = useState(false);
 
   async function handleDownloadAsImage(): Promise<void> {
-    const domtoimage = await import("dom-to-image");
+    await downloadComponentAsImage(chordContainerRef.current, name);
 
-    domtoimage.toPng(chordContainerRef.current, { quality: 1 }).then((dataUrl) => {
-      const link = document.createElement("a");
-      link.download = `${name}.png`;
-      link.href = dataUrl;
-      link.click();
-
-      AnalyticsService.trackEvent("DOWNLOAD_CHORD_AS_IMAGE", {
-        chord: name,
-        page: window.location.pathname,
-      });
+    AnalyticsService.trackEvent("DOWNLOAD_CHORD_AS_IMAGE", {
+      chord: name,
+      page: window.location.pathname,
     });
   }
 

@@ -5,6 +5,7 @@ import { Button, Space, Title } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
+import { downloadComponentAsImage } from "~/utils/browser";
 
 function Texts(): T_ReactElement {
   const {
@@ -13,6 +14,9 @@ function Texts(): T_ReactElement {
     setBaseText,
     newText,
     setNewText,
+
+    // refs
+    correctionsContainerRef,
   } = useController();
 
   return (
@@ -39,20 +43,32 @@ function Texts(): T_ReactElement {
               <Emoji>🤷‍♂️</Emoji> <span>Nothing to compare...</span>
             </p>
           ) : (
-            <ReactDiffViewer
-              oldValue={baseText}
-              newValue={newText}
-              showDiffOnly={false}
-              splitView={false}
-              styles={{
-                variables: {
-                  light: {
-                    diffViewerBackground: "white",
-                    diffViewerColor: "black",
-                  },
-                },
-              }}
-            />
+            <Fragment>
+              <div ref={correctionsContainerRef}>
+                <ReactDiffViewer
+                  oldValue={baseText}
+                  newValue={newText}
+                  showDiffOnly={false}
+                  splitView={false}
+                  styles={{
+                    variables: {
+                      light: {
+                        diffViewerBackground: "white",
+                        diffViewerColor: "black",
+                      },
+                    },
+                  }}
+                />
+              </div>
+              <Button
+                className="tw-font-bold tw-mt-2 tw-mx-auto tw-block"
+                onClick={() => {
+                  downloadComponentAsImage(correctionsContainerRef.current, "diff");
+                }}
+              >
+                <Emoji className="tw-mr-1">⬇️</Emoji>download as image
+              </Button>
+            </Fragment>
           )}
         </div>
       </section>
@@ -67,6 +83,7 @@ export default Texts;
 function useController() {
   const [baseText, setBaseText] = useState("");
   const [newText, setNewText] = useState("");
+  const correctionsContainerRef = useRef<HTMLDivElement | null>(null);
 
   return {
     // states
@@ -74,6 +91,9 @@ function useController() {
     setBaseText,
     newText,
     setNewText,
+
+    // refs
+    correctionsContainerRef,
   };
 }
 

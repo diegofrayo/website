@@ -119,6 +119,22 @@ export function isInViewport(element?: HTMLElement | null): boolean {
   );
 }
 
+export async function downloadComponentAsImage(
+  componentRef: HTMLElement | null,
+  fileName: string,
+): Promise<void> {
+  if (!componentRef) return;
+
+  const domtoimage = await import("dom-to-image");
+
+  domtoimage.toPng(componentRef, { quality: 1 }).then((dataUrl) => {
+    const link = document.createElement("a");
+    link.download = `${fileName}.png`;
+    link.href = dataUrl;
+    link.click();
+  });
+}
+
 // --- Private functions ---
 
 function getAndroidVersion(): number {

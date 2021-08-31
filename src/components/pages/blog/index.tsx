@@ -12,10 +12,6 @@ export function Sources({
 }): T_ReactElement {
   const { t } = useTranslation();
 
-  function extractWebsiteName(url: string): string {
-    return new URL(url).host;
-  }
-
   return (
     <section data-markdown-block>
       <Title is="h2" data-markdown-title showLinkIcon>
@@ -23,10 +19,20 @@ export function Sources({
       </Title>
       <List>
         {sources.map((source) => {
+          const { host, origin } = new URL(source.url);
+
           return (
             <List.Item key={generateSlug(source.title)}>
-              <Link href={source.url}>
-                {source.title} | {extractWebsiteName(source.url)}
+              <Link href={source.url} className="tw-block">
+                {source.title}
+              </Link>
+              <Link
+                href={origin}
+                variant={Link.variant.SECONDARY}
+                className="tw-text-sm tw-italic tw-font-bold dfr-text-color-secondary"
+                external
+              >
+                {host}
               </Link>
             </List.Item>
           );
