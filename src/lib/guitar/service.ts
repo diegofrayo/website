@@ -88,8 +88,9 @@ class GuitarService {
           result[`${musicNote.guitarFret}`].push(musicNote);
 
           if (
-            result[`${musicNote.guitarFret}`].find((musicNote) => musicNote.barre !== undefined) !==
-              undefined &&
+            result[`${musicNote.guitarFret}`].find(
+              (musicNote) => (musicNote as I_BarreMusicNote).barre !== undefined,
+            ) !== undefined &&
             result[`${musicNote.guitarFret}`].length > 1
           ) {
             throw new Error("A barre chord can't share a fret with another music note");

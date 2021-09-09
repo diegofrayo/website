@@ -90,6 +90,7 @@ function MusicPage(): T_ReactElement {
                   className="tw-my-4"
                   placeholder={t("page:input_placeholder")}
                   value={inputValue}
+                  autoComplete="off"
                   onChange={onInputChange}
                 />
 

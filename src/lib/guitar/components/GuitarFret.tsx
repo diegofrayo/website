@@ -62,7 +62,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
         className={classNames(
           !isStringsNamesVariant &&
             !isSkippedStringsVariant &&
-            "tw-border-l-2 tw-border-r-2 tw-border-yellow-400 tw-bg-yellow-700",
+            "tw-border-l-4 tw-border-yellow-400 tw-bg-yellow-700",
         )}
       >
         {createArray(NUMBER_OF_STRINGS)
