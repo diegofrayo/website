@@ -5,14 +5,20 @@ import { useDocumentTitle } from "~/hooks";
 import { T_ReactElement } from "~/types";
 
 function MariaCamila(): T_ReactElement {
-  useDocumentTitle("Feliz cumpleaños!");
+  useDocumentTitle("Feliz cumple!!");
 
   return (
     <div className="tw-max-w-lg tw-mx-auto tw-p-6">
+      <link rel="icon" href="/static/images/favicon/favicon.ico" />
+
       <Title className="tw-mb-12">
         🎉
         <br />
         Feliz cumpleaños!
+        <br />
+        Maria Camila
+        <br />
+        👩‍⚕️
       </Title>
 
       <Text emoji="🤓" left>
@@ -23,21 +29,12 @@ function MariaCamila(): T_ReactElement {
         Que no hubo <Marked>frisby</Marked> o <Marked>cartica</Marked> este año
       </Text>
 
-      <Text emoji="🙈" left>
-        Que te he dicho 1000 veces que <Marked>te quiero volver a ver</Marked> y{" "}
-        <Marked>no he cumplido</Marked>
-      </Text>
-
-      <Text emoji="🙊">
-        Pero <Marked>te quiero volver a ver!</Marked> <br /> (Van 1001)
-      </Text>
-
       <Text emoji="👧" left>
-        Ayer te dije que todavía no eras una <Marked>bichota</Marked>
+        Que ayer te dije que todavía no eras una <Marked>bichota</Marked>
       </Text>
 
       <Text emoji="👸">
-        Pero creo que ya lo <Marked>eres</Marked>
+        Pero creo que ya lo <Marked>eres!</Marked>
       </Text>
 
       <div className="tw-my-8">
@@ -56,7 +53,9 @@ function MariaCamila(): T_ReactElement {
       <hr className="tw-border tw-border-yellow-200 tw-h-px tw-border-dashed tw-mt-10 tw-shadow-md tw-opacity-50" />
 
       <div className="tw-my-8">
-        <Title className="tw-mb-4">Te deseo que la pases muy bien! 🤩</Title>
+        <Title className="tw-mb-4">
+          Te deseo que la pases muy bien y admiro mucho tu profesión 🤩
+        </Title>
         <iframe
           width="100%"
           height="315"
