@@ -45,7 +45,6 @@ class GuitarService {
                 );
               }
 
-              // TODO: Review this typing
               const parsedMusicNote: Partial<T_MusicNote> = {
                 guitarFret: parseFret(guitarFret),
               };
@@ -217,12 +216,10 @@ class GuitarService {
   }
 
   private chordToHTML(chordNameInput: string): string {
-    // TODO: Regex
     const isChordWithMultipleShapes = chordNameInput.includes("[") && chordNameInput.includes("]");
     const chordName = isChordWithMultipleShapes
       ? chordNameInput.substring(0, chordNameInput.lastIndexOf("["))
       : chordNameInput;
-    // TODO: Regex
     const chordIndex =
       Number(
         isChordWithMultipleShapes

@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 
-// TODO: Type this
 type T_Data = any;
 type T_Params = any;
 type T_Callback = (params: T_Params) => Promise<T_Data> | T_Data;

@@ -7,7 +7,7 @@ import { Title as TitlePrimitive, Icon, Button, Link, List } from "~/components/
 import { Emoji } from "~/components/pages/_shared";
 import { AuthService } from "~/auth";
 import { safeRender } from "~/hocs";
-import { useOnWindowScroll, useToggleBodyScroll } from "~/hooks";
+import { useOnWindowScroll, useOnWindowStopScroll, useToggleBodyScroll } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
 import { selectPageConfig } from "~/state/modules/page-config";
@@ -19,6 +19,13 @@ import { generateSlug } from "~/utils/strings";
 function DefaultHeader(): T_ReactElement {
   const [isHeaderFixed, setIsFixedHeader] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
+
+  useOnWindowStopScroll({
+    onScrollStoppedCallback: () => {
+      setIsFixedHeader(false);
+    },
+    timeout: 2000,
+  });
 
   useOnWindowScroll(() => {
     if (!headerRef.current) return;

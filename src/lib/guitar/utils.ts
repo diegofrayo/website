@@ -15,12 +15,10 @@ export function parseGuitarString(string: string): T_GuitarString {
 }
 
 export function parseBarre(string: string): T_GuitarString {
-  // TODO: Regex
   return string.length === 2 ? parseGuitarString(string.charAt(0)) : 6;
 }
 
 export function isBarreChord(string: string): boolean {
-  // TODO: Regex
   return string.includes("x");
 }
 

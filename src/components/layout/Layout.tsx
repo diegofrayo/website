@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react";
 
 import { Link, Space, Title, Button, Icon } from "~/components/primitive";
-import { useDidMount } from "~/hooks";
+import { useOnWindowStopScroll } from "~/hooks";
 import twcss from "~/lib/twcss";
 import { T_BreadcumbProps, T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
@@ -120,41 +120,17 @@ function Footer({ showGoToTopButton }): T_ReactElement {
 function GoToTopButton(): T_ReactElement {
   const [showGoToTopButton, setShowGoToTopButton] = useState<boolean>(false);
 
-  useDidMount(() => {
-    // TODO: Isolate this code
-
-    function onScroll() {
+  useOnWindowStopScroll({
+    onScrollStoppedCallback: () => {
+      setShowGoToTopButton(false);
+    },
+    onScrollCallback: () => {
       if (getScrollPosition() > 0) {
         setShowGoToTopButton(true);
       } else {
         setShowGoToTopButton(false);
       }
-    }
-
-    function onScrollStopped() {
-      if (!mounted) return;
-      setShowGoToTopButton(false);
-    }
-
-    let isScrolling = 0;
-    let mounted = true;
-
-    function onScrollCallback() {
-      window.clearTimeout(isScrolling);
-
-      onScroll();
-
-      isScrolling = window.setTimeout(() => {
-        onScrollStopped();
-      }, 3000);
-    }
-
-    window.addEventListener("scroll", onScrollCallback, false);
-
-    return () => {
-      mounted = false;
-      window.removeEventListener("scroll", onScrollCallback, false);
-    };
+    },
   });
 
   if (!showGoToTopButton) return null;
