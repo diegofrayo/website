@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 
 import { Icon, Link } from "~/components/primitive";
-import { AuthService } from "~/auth";
+import { protectedComponent } from "~/hocs";
 import { useTranslation } from "~/i18n";
-import { useDidMount } from "~/hooks";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
 import { createArray } from "~/utils/misc";
@@ -16,7 +15,6 @@ function SongDetails({
   song: T_Song;
   className?: string;
 }): T_ReactElement {
-  const { getProgressStyles, showProgress } = useController();
   const { t } = useTranslation();
 
   if (MusicService.isChordsPage(song)) return null;
@@ -38,20 +36,7 @@ function SongDetails({
       <div>
         <strong>{t("page:year")}:</strong> <span>{song.year}</span>
       </div>
-      <div className={classNames("tw-items-center", showProgress ? "tw-flex" : "tw-hidden")}>
-        <strong className="tw-mr-2">{t("page:progress")}:</strong>
-        {createArray(5).map((index) => {
-          return (
-            <span
-              key={`Progress-item-${index}`}
-              className={classNames(
-                "tw-inline-block tw-rounded-sm tw-h-3 tw-w-3 tw-mr-0.5",
-                getProgressStyles(song, index),
-              )}
-            />
-          );
-        })}
-      </div>
+      <Progress progress={song.progress} />
       <p className="tw-text-lg tw--mt-1">{song.country}</p>
       <div className="tw-flex tw-items-center tw-mt-1">
         <Link href={song.spotifyUrl} variant={Link.variant.SIMPLE} className="tw-mr-2">
@@ -67,35 +52,29 @@ function SongDetails({
 
 export default SongDetails;
 
-// --- Controller ---
+// --- Components ---
 
-function useController(): { showProgress: boolean; getProgressStyles: any } {
-  const [showProgress, setShowProgress] = useState(false);
+const Progress = protectedComponent(function Progress({ progress }: { progress: number }) {
+  const { t } = useTranslation();
 
-  useDidMount(() => {
-    if (AuthService.isUserLoggedIn()) {
-      setShowProgress(true);
-    }
-  });
-
-  function getProgressStyles(song: T_Song, index: number) {
-    return index <= song.progress
-      ? (song.progress === 1
+  function getProgressStyles(progress: number, index: number) {
+    return index <= progress
+      ? (progress === 1
           ? {
               1: "tw-bg-red-500",
             }
-          : song.progress === 2
+          : progress === 2
           ? {
               1: "tw-bg-yellow-400",
               2: "tw-bg-yellow-500",
             }
-          : song.progress === 3
+          : progress === 3
           ? {
               1: "tw-bg-yellow-300",
               2: "tw-bg-yellow-400",
               3: "tw-bg-yellow-500",
             }
-          : song.progress === 4
+          : progress === 4
           ? {
               1: "tw-bg-green-300",
               2: "tw-bg-green-400",
@@ -112,5 +91,20 @@ function useController(): { showProgress: boolean; getProgressStyles: any } {
       : "tw-opacity-75 dfr-bg-secondary";
   }
 
-  return { showProgress, getProgressStyles };
-}
+  return (
+    <div className={classNames("tw-flex tw-items-center")}>
+      <strong className="tw-mr-2">{t("page:progress")}:</strong>
+      {createArray(5).map((index) => {
+        return (
+          <span
+            key={`Progress-item-${index}`}
+            className={classNames(
+              "tw-inline-block tw-rounded-sm tw-h-3 tw-w-3 tw-mr-0.5",
+              getProgressStyles(progress, index),
+            )}
+          />
+        );
+      })}
+    </div>
+  );
+});

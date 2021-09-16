@@ -85,7 +85,8 @@ function BlogEntry({
   const { locale } = useRouter();
 
   const CATEGORIES_COLORS = {
-    tech: "tw-bg-gray-200 dark:tw-bg-gray-600",
+    tech: "tw-bg-red-200 dark:tw-bg-red-400 tw-text-black tw-opacity-75",
+    personal: "tw-bg-blue-200 dark:tw-bg-blue-400 tw-text-black tw-opacity-75",
   };
 
   function getLocale(): T_Locale {

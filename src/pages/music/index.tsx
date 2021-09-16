@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
 import { List, Link, Title, Space, Input } from "~/components/primitive";
@@ -108,7 +109,13 @@ function MusicPage(): T_ReactElement {
                           locale={I18nService.getDefaultLocale()}
                           isNextLink
                         >
-                          <span className="tw-flex-1 sm:tw-truncate" title={song.title}>
+                          <span
+                            className={classNames(
+                              "tw-flex-1 sm:tw-truncate",
+                              !song.isPublic && "tw-line-through",
+                            )}
+                            title={song.title}
+                          >
                             {song.title}
                           </span>
                         </Link>
