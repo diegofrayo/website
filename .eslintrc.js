@@ -25,7 +25,6 @@ module.exports = {
     process: true,
     module: true,
   },
-  ignorePatterns: ["src/components/pages/snippets/data/**/*"],
   rules: {
     "react/prop-types": "off",
     "@typescript-eslint/no-explicit-any": "off",

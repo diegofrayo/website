@@ -49,6 +49,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   };
 
   useDocumentTitle(metadata.title);
+
   useDidMount(() => {
     AnalyticsService.trackPageLoaded();
 

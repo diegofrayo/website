@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from "react";
+import classNames from "classnames";
 
 import { Link, Space, Title, Button, Icon } from "~/components/primitive";
 import { useOnWindowStopScroll } from "~/hooks";
@@ -15,6 +16,7 @@ type T_MainLayoutProps = {
   children: T_ReactChildrenProp;
   breadcumb?: T_BreadcumbProps["items"];
   showGoToTopButton?: boolean;
+  centerTitle?: boolean;
 };
 
 function MainLayout({
@@ -22,6 +24,7 @@ function MainLayout({
   breadcumb,
   title = "",
   showGoToTopButton = false,
+  centerTitle = false,
 }: T_MainLayoutProps): T_ReactElement {
   return (
     <Main className="tw-pb-20">
@@ -37,7 +40,7 @@ function MainLayout({
         )}
         <div>
           {title && (
-            <Title is="h1" className="tw-text-left">
+            <Title is="h1" className={classNames(centerTitle ? "tw-text-center" : "tw-text-left")}>
               {title}
             </Title>
           )}

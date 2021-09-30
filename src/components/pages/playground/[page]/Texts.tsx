@@ -182,14 +182,21 @@ function TextArea({ title, text, setText }) {
             </div>
           </Fragment>
         ) : (
-          <pre
-            className="tw-h-full tw-cursor-pointer tw-whitespace-pre-line tw-break-words"
-            onClick={() => {
-              setIsEditable(true);
-            }}
-          >
-            {text || "Click to start to write..."}
-          </pre>
+          <div className="tw-flex tw-flex-nowrap tw-h-52">
+            <div className="tw-w-8">
+              {text.split("\n").map((_, index) => {
+                return <p key={`p-numberline-${index}`}>{index + 1}</p>;
+              })}
+            </div>
+            <pre
+              className="tw-flex-1 tw-h-full tw-cursor-pointer tw-whitespace-pre-line tw-break-words"
+              onClick={() => {
+                setIsEditable(true);
+              }}
+            >
+              {text || "Click to start to write..."}
+            </pre>
+          </div>
         )}
       </div>
     </section>

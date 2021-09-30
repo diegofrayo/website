@@ -15,7 +15,6 @@ import {
   GitHubRepo,
   ImageWithLink,
   Playground,
-  ProtectedImage,
   TextWithEmoji,
   TitleCreator,
 } from "~/components/pages/_shared";
@@ -66,7 +65,6 @@ export const MDXComponents = {
   GitHubRepo,
   ImageWithLink,
   Playground,
-  ProtectedImage,
   TextWithEmoji,
 
   // Blog components

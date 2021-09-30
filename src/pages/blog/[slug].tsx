@@ -64,14 +64,15 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
         ]}
         title={post.title}
         showGoToTopButton
+        centerTitle
       >
+        <BlogPostDetails publishedAt={post.publishedAt} updatedAt={post.updatedAt} />
+        <Space size={8} />
         <MDXContent content={mdxContent} />
         <Space size={8} />
-
-        <BlogPostFooter publishedAt={post.publishedAt} updatedAt={post.updatedAt} />
-        <Space size={6} />
-
         <RateContent />
+        <Space size={8} />
+        <BlogPostActions />
       </MainLayout>
     </Page>
   );
@@ -131,9 +132,36 @@ export const getStaticProps = getPageContentStaticProps<
 
 // --- Components ---
 
-type T_BlogPostFooterProps = Pick<T_BlogPost, "publishedAt" | "updatedAt">;
+type T_BlogPostDetailsProps = Pick<T_BlogPost, "publishedAt" | "updatedAt">;
 
-function BlogPostFooter({ publishedAt, updatedAt }: T_BlogPostFooterProps): T_ReactElement {
+function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_ReactElement {
+  const { t } = useTranslation();
+
+  return (
+    <div className="tw-flex tw-flex-col sm:tw-flex-row tw-justify-center tw-items-center">
+      <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
+        <BlogPostDetailsItem.Icon
+          icon={Icon.icon.CALENDAR}
+          color="tw-text-black dark:tw-text-white"
+        />
+        <p>
+          <span className="tw-mr-1">{t("page:published_at")}</span>
+          <strong>{publishedAt}</strong>
+        </p>
+      </BlogPostDetailsItem>
+      <span className="tw-block tw-my-1 sm:tw-my-0 sm:tw-inline-block sm:tw-mx-4" />
+      <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
+        <BlogPostDetailsItem.Icon icon={Icon.icon.EDIT} color="tw-text-black dark:tw-text-white" />
+        <p>
+          <span className="tw-mr-1">{t("page:updated_at")}</span>
+          <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
+        </p>
+      </BlogPostDetailsItem>
+    </div>
+  );
+}
+
+function BlogPostActions(): T_ReactElement {
   const { t } = useTranslation();
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
@@ -143,28 +171,14 @@ function BlogPostFooter({ publishedAt, updatedAt }: T_BlogPostFooterProps): T_Re
       variant={Blockquote.variant.UNSTYLED}
     >
       <div className="tw-w-full md:tw-w-1/2 tw-flex tw-flex-col">
-        <BlogPostFooterItem>
-          <BlogPostFooterItem.Icon icon={Icon.icon.CALENDAR} />
-          <p>
-            <span className="tw-mr-1">{t("page:published_at")}</span>
-            <strong>{publishedAt}</strong>
-          </p>
-        </BlogPostFooterItem>
-        <BlogPostFooterItem>
-          <BlogPostFooterItem.Icon icon={Icon.icon.EDIT} />
-          <p>
-            <span className="tw-mr-1">{t("page:updated_at")}</span>
-            <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
-          </p>
-        </BlogPostFooterItem>
+        <BlogPostDetailsItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
+          <BlogPostDetailsItem.Icon icon={Icon.icon.LINK} />
+          <span>{t("page:copy_url_to_clipboard")}</span>
+        </BlogPostDetailsItem>
       </div>
       <Space size={1} orientation="h" className="md:tw-hidden" />
       <div className="tw-w-full md:tw-w-1/2 tw-flex md:tw-items-end tw-flex-col">
-        <BlogPostFooterItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
-          <BlogPostFooterItem.Icon icon={Icon.icon.LINK} />
-          <span>{t("page:copy_url_to_clipboard")}</span>
-        </BlogPostFooterItem>
-        <BlogPostFooterItem
+        <BlogPostDetailsItem
           is={Button}
           onClick={() => {
             window.location.href = `mailto:${WEBSITE_METADATA.email}?subject=${t(
@@ -174,16 +188,16 @@ function BlogPostFooter({ publishedAt, updatedAt }: T_BlogPostFooterProps): T_Re
             })}`;
           }}
         >
-          <BlogPostFooterItem.Icon icon={Icon.icon.REPLY} />
+          <BlogPostDetailsItem.Icon icon={Icon.icon.REPLY} />
           <span>{t("page:email_message_label")}</span>
-        </BlogPostFooterItem>
+        </BlogPostDetailsItem>
       </div>
     </Blockquote>
   );
 }
 
-const BlogPostFooterItem = twcss.div`tw-flex tw-items-start md:tw-items-center tw-justify-start tw-mb-2 last:tw-mb-0 tw-text-sm tw-text-left`;
+const BlogPostDetailsItem = twcss.div`tw-flex tw-items-start md:tw-items-center tw-justify-start tw-text-sm tw-text-left`;
 
-BlogPostFooterItem.Icon = twcss(Icon)("", {
-  wrapperClassName: "tw-mr-2",
+BlogPostDetailsItem.Icon = twcss(Icon)("", {
+  wrapperClassName: "tw-mr-2 tw-relative tw--top-1px",
 });

@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 
 import { Link, Icon, Title as TitlePrimitive, Image } from "~/components/primitive";
-import { AuthService } from "~/auth";
-import { useDidMount } from "~/hooks";
 import {
   T_HTMLAttributes,
   T_Object,
@@ -166,26 +164,11 @@ export function ImageWithLink({
   ...rest
 }: {
   src: string;
-  className: string;
+  className?: string;
 }): T_ReactElement {
   return (
     <Link href={src} variant={Link.variant.UNSTYLED} className={className}>
       <Image src={src} {...rest} />
     </Link>
-  );
-}
-
-export function ProtectedImage({ src = "", className }: T_HTMLAttributes["img"]): T_ReactElement {
-  const [showImage, setShowImage] = useState(false);
-
-  useDidMount(() => {
-    setShowImage(AuthService.isUserLoggedIn());
-  });
-
-  return (
-    <ImageWithLink
-      src={src}
-      className={classNames(showImage ? "tw-block" : "tw-hidden", className)}
-    />
   );
 }
