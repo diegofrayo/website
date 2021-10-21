@@ -155,8 +155,6 @@ export default SongPage;
 type T_StaticPath = { params: { song: string } };
 
 export const getStaticPaths: GetStaticPaths<{ song: string }> = async function getStaticPaths() {
-  console.log("getStaticPaths", new Date());
-
   return {
     paths: (await MusicService.fetchSongsList()).reduce((result: T_StaticPath[], song: T_Song) => {
       if (song.isPublic === false) return result;
@@ -170,8 +168,6 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
   page: [ROUTES.MUSIC, ROUTES.MUSIC_DETAILS],
   locale: "es",
   callback: async ({ params }) => {
-    console.log("getStaticProps", new Date(), "id: " + params?.song);
-
     const song = await MusicService.getSong({ id: params?.song });
     const file = await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.mdx` });
 

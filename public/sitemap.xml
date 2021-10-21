@@ -34,6 +34,12 @@
     <loc>https://diegofrayo.vercel.app/music/que-ves-el-cielo</loc>
   </url>
   <url>
+    <loc>https://diegofrayo.vercel.app/music/ando-ganas</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/el-tiempo-esta-despues</loc>
+  </url>
+  <url>
     <loc>https://diegofrayo.vercel.app/music/cancion-para-mi-muerte</loc>
   </url>
   <url>
@@ -49,9 +55,6 @@
     <loc>https://diegofrayo.vercel.app/music/los-libros-de-la-buena-memoria</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/music/el-tiempo-esta-despues</loc>
-  </url>
-  <url>
     <loc>https://diegofrayo.vercel.app/music/rie-chinito</loc>
   </url>
   <url>
@@ -59,9 +62,6 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/un-poco-de-amor-frances</loc>
-  </url>
-  <url>
-    <loc>https://diegofrayo.vercel.app/music/ando-ganas</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/bicho-de-ciudad</loc>
@@ -113,6 +113,9 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/la-espera</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/un-pacto</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/zona-de-promesas</loc>

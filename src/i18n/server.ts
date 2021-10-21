@@ -21,7 +21,7 @@ type T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams> = {
     | ((params: T_GetStaticProps<G_GetStaticPropsParams>) => T_PageRoute);
   callback?: (
     parameters: T_GetStaticProps<G_GetStaticPropsParams> & { pageContent: T_PageContent },
-  ) => Promise<{ props: G_PageProps }>;
+  ) => Promise<{ props: G_PageProps; revalidate?: number }>;
   localesExtractor?: (data: G_PageProps) => T_Locale[];
   locale?: T_Locale;
 };
@@ -31,20 +31,20 @@ export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsP
 ): any {
   const {
     page,
-    callback = () => Promise.resolve({ props: {} as G_PageProps }),
+    callback = () => Promise.resolve({ props: {} as G_PageProps, revalidate: undefined }),
     localesExtractor,
     locale,
   } = config || {};
 
   async function getStaticProps(
     parameters: T_GetStaticProps<G_GetStaticPropsParams>,
-  ): Promise<{ notFound: boolean; props: T_DefaultPageProps & G_PageProps }> {
+  ): Promise<{ notFound: boolean; revalidate?: number; props: T_DefaultPageProps & G_PageProps }> {
     const pageLocale = locale || (parameters.locale as T_Locale);
     const pageContent = await fetchPageContent({
       page: typeof page === "function" ? page(parameters) : page,
       locale: pageLocale,
     });
-    const pageProps = (await callback({ ...parameters, pageContent })).props;
+    const { props: pageProps, revalidate } = await callback({ ...parameters, pageContent });
 
     return {
       notFound:
@@ -58,6 +58,7 @@ export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsP
         locale: pageLocale,
         ...pageProps,
       },
+      revalidate,
     };
   }
 
