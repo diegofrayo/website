@@ -1,4 +1,5 @@
 const plugin = require("tailwindcss/plugin");
+const colorConvert = require("color-convert");
 
 module.exports = {
   prefix: "tw-",
@@ -44,28 +45,44 @@ module.exports = {
   variants: {
     borderRadius: ["responsive", "last", "hover", "dark"],
     borderWidth: ["responsive", "last", "hover", "dark"],
+    boxShadow: ["responsive", "hover", "dark"],
+    fontWeight: ["hover"],
+    height: ["responsive", "last", "hover", "dark"],
     inset: ["responsive", "hover"],
     margin: ["responsive", "last", "dark"],
     opacity: ["responsive", "hover", "dark"],
     padding: ["responsive", "last", "hover", "dark"],
-    width: ["responsive", "last", "hover", "dark"],
-    height: ["responsive", "last", "hover", "dark"],
     translate: ["hover"],
-    boxShadow: ["responsive", "hover", "dark"],
+    width: ["responsive", "last", "hover", "dark"],
   },
 };
 
 // --- Utilities ---
 
 function myCustomClassesPlugin({ addUtilities, config, e }) {
+  const colorfulPrimary = config("theme.colors").yellow["500"];
   const newClasses = {
     "dfr-max-w-base": {
       maxWidth: config("theme.screens")["md"],
     },
+    "dfr-transition-opacity": {
+      transition: config("theme.transitionProperty").opacity,
+      "&:hover": {
+        opacity: config("theme.opacity")[80],
+      },
+    },
+    "dfr-shadow": {
+      light: {
+        boxShadow: "0px 0px 3px 0px rgba(0, 0, 0, 0.5)",
+      },
+      dark: {
+        boxShadow: "0px 0px 3px 0px rgba(0, 0, 0, 0.2)",
+      },
+    },
 
     "dfr-bg-primary": {
       light: {
-        backgroundColor: "white",
+        backgroundColor: config("theme.colors").white,
       },
       dark: {
         backgroundColor: "#282c34",
@@ -73,13 +90,41 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
     },
     "dfr-bg-secondary": {
       light: {
-        backgroundColor: config("theme.colors").gray["200"],
+        backgroundColor: config("theme.colors").gray["100"],
       },
       dark: {
-        backgroundColor: config("theme.colors").gray["500"],
+        backgroundColor: config("theme.colors").gray["700"],
       },
     },
-    "dfr-text-color-primary": {
+    "dfr-bg-strong": {
+      light: {
+        "--fallback": "1",
+        backgroundColor: hexToRgba(
+          config("theme.colors").black,
+          "var(--tw-bg-opacity, var(--fallback))",
+        ),
+      },
+      dark: {
+        "--fallback": "1",
+        backgroundColor: hexToRgba(
+          config("theme.colors").white,
+          "var(--tw-bg-opacity, var(--fallback))",
+        ),
+      },
+    },
+    "dfr-bg-strong-inverted": {
+      light: {
+        backgroundColor: config("theme.colors").white,
+      },
+      dark: {
+        backgroundColor: config("theme.colors").black,
+      },
+    },
+    "dfr-bg-colorful-primary": {
+      backgroundColor: colorfulPrimary,
+    },
+
+    "dfr-text-primary": {
       light: {
         color: config("theme.colors").gray["700"],
       },
@@ -87,28 +132,73 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
         color: config("theme.colors").gray["200"],
       },
     },
-    "dfr-text-color-secondary": {
+    "dfr-text-secondary": {
+      light: {
+        color: config("theme.colors").gray["500"],
+      },
+      dark: {
+        color: config("theme.colors").gray["400"],
+      },
+    },
+    "dfr-text-strong": {
       light: {
         color: config("theme.colors").black,
       },
       dark: {
-        color: "#FAC863",
+        color: config("theme.colors").white,
       },
     },
-    "dfr-text-color-links": {
+    "dfr-text-strong-inverted": {
       light: {
-        color: config("theme.colors").blue["700"],
+        color: config("theme.colors").white,
       },
       dark: {
-        color: "#8CC790",
+        color: config("theme.colors").black,
       },
     },
-    "dfr-border-color-primary": {
+    "dfr-text-colorful-primary": {
+      color: colorfulPrimary,
+    },
+
+    "dfr-border-primary": {
       light: {
-        borderColor: config("theme.colors").gray["200"],
+        "--fallback": "1",
+        borderColor: hexToRgba(
+          config("theme.colors").gray["200"],
+          "var(--tw-border-opacity, var(--fallback))",
+        ),
       },
       dark: {
-        borderColor: config("theme.colors").gray["600"],
+        "--fallback": "1",
+        borderColor: hexToRgba(
+          config("theme.colors").gray["600"],
+          "var(--tw-border-opacity, var(--fallback))",
+        ),
+      },
+    },
+    "dfr-border-strong": {
+      light: {
+        "--fallback": "1",
+        borderColor: hexToRgba(
+          config("theme.colors").black,
+          "var(--tw-border-opacity, var(--fallback))",
+        ),
+      },
+      dark: {
+        "--fallback": "1",
+        borderColor: hexToRgba(
+          config("theme.colors").white,
+          "var(--tw-border-opacity, var(--fallback))",
+        ),
+      },
+    },
+
+    "dfr-text-link": {
+      light: {
+        color: colorfulPrimary,
+      },
+      dark: {
+        color: config("theme.colors").red["400"],
       },
     },
   };
@@ -125,7 +215,13 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
     return acum;
   }, {});
 
-  addUtilities(transformedNewClasses, {
-    respectPrefix: false,
-  });
+  addUtilities(transformedNewClasses, { respectPrefix: false });
+}
+
+function hexToRgba(hex, a) {
+  return mountRgbaString(...colorConvert.hex.rgb(hex).concat(a ? [a] : []));
+}
+
+function mountRgbaString(r, g, b, a) {
+  return `rgba(${r}, ${g}, ${b}, ${a})`;
 }

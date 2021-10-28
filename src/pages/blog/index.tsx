@@ -25,18 +25,7 @@ function BlogPage(): T_ReactElement {
         disableSEO: Boolean(t("page:config:is_seo_disabled")),
       }}
     >
-      <MainLayout
-        breadcumb={[
-          {
-            text: t("layout:breadcumb:home"),
-            url: ROUTES.HOME,
-          },
-          {
-            text: t("layout:breadcumb:blog"),
-          },
-        ]}
-        title={t("seo:title")}
-      >
+      <MainLayout title={t("seo:title")}>
         <Render isLoading={isLoading} error={error} data={data}>
           {(posts: T_BlogPost[]) => {
             return (
@@ -85,7 +74,7 @@ function BlogEntry({
   const { locale } = useRouter();
 
   const CATEGORIES_COLORS = {
-    tech: "tw-bg-red-200 dark:tw-bg-red-400 tw-text-black tw-opacity-75",
+    tech: "tw-bg-green-200 dark:tw-bg-green-400 tw-text-black tw-opacity-75",
     personal: "tw-bg-blue-200 dark:tw-bg-blue-400 tw-text-black tw-opacity-75",
   };
 

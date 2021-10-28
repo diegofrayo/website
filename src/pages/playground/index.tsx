@@ -4,16 +4,12 @@ import { Page, MainLayout } from "~/components/layout";
 import { Link, List } from "~/components/primitive";
 import { withAuth } from "~/auth";
 import { getPageContentStaticProps } from "~/i18n";
-import { T_ReactElement, T_PageContent } from "~/types";
+import { T_ReactElement } from "~/types";
 import { PLAYGROUND_PAGES } from "~/utils/constants";
 import { ROUTES } from "~/utils/routing";
 
-type T_PageProps = {
-  pageContent: T_PageContent;
-};
-
-function PlaygroundPage({ pageContent }: T_PageProps): T_ReactElement {
-  const PAGE_TITLE = "🔮 playground";
+function PlaygroundPage(): T_ReactElement {
+  const PAGE_TITLE = "playground";
 
   return (
     <Page
@@ -22,18 +18,7 @@ function PlaygroundPage({ pageContent }: T_PageProps): T_ReactElement {
         disableSEO: true,
       }}
     >
-      <MainLayout
-        breadcumb={[
-          {
-            text: pageContent.layout?.breadcumb?.home as string,
-            url: ROUTES.HOME,
-          },
-          {
-            text: pageContent.layout?.breadcumb?.playground as string,
-          },
-        ]}
-        title={PAGE_TITLE}
-      >
+      <MainLayout title={PAGE_TITLE}>
         <PagesList pages={PLAYGROUND_PAGES} />
       </MainLayout>
     </Page>

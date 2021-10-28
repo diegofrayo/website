@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import Head from "next/head";
 
 import { useDidMount, useDocumentTitle } from "~/hooks";
-import { AuthService } from "~/auth";
+import { protectedComponent } from "~/hocs";
 import { I18nService } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import { useStoreSelector } from "~/state";
@@ -17,7 +17,6 @@ import {
 } from "~/types";
 import { isDevelopmentEnvironment } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
-import { removeEmojiFromString } from "~/utils/strings";
 
 import WindowSize from "./WindowSize";
 
@@ -36,14 +35,11 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
   const SEO_METADATA = useStoreSelector<T_SEOMetadata>(selectSEOMetadata);
   const { locales } = useStoreSelector<T_PageConfig>(selectPageConfig);
-  const [showUserLoggedInFlag, setShowUserLoggedInFlag] = useState(false);
 
   const metadata = {
-    title: removeEmojiFromString(
-      config.title
-        ? `${config.title}${config.replaceTitle ? "" : " - " + SEO_METADATA.title}`
-        : SEO_METADATA.title,
-    ),
+    title: config.title
+      ? `${config.title}${config.replaceTitle ? "" : " - " + SEO_METADATA.title}`
+      : SEO_METADATA.title,
     url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
     description: config.description || SEO_METADATA.description,
   };
@@ -52,10 +48,6 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 
   useDidMount(() => {
     AnalyticsService.trackPageLoaded();
-
-    if (AuthService.isUserLoggedIn()) {
-      setShowUserLoggedInFlag(true);
-    }
   });
 
   return (
@@ -133,7 +125,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
         />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cousine:wght@300;400;700&display=swap"
           rel="stylesheet"
         />
 
@@ -159,12 +151,18 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
       </Head>
       {children}
 
-      {showUserLoggedInFlag && (
-        <span className="tw-fixed tw-top-1 tw-right-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white" />
-      )}
+      <UserLoggedInFlag />
       {isDevelopmentEnvironment() && <WindowSize />}
     </Fragment>
   );
 }
 
 export default Page;
+
+// --- Components ---
+
+const UserLoggedInFlag = protectedComponent(function UserLoggedInFlag() {
+  return (
+    <span className="tw-fixed tw-top-1 tw-right-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white"></span>
+  );
+});

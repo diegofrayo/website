@@ -19,8 +19,8 @@ const Content = safeRender(function Content() {
 
   const STYLES = {
     bg: ["dfr-bg-primary", "dfr-bg-secondary"],
-    text: ["dfr-text-color-primary", "dfr-text-color-secondary", "dfr-text-color-links"],
-    border: ["dfr-border-color-primary"],
+    text: ["dfr-text-primary", "dfr-text-secondary", "dfr-text-links"],
+    border: ["dfr-border-primary"],
   };
 
   return (

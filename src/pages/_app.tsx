@@ -19,7 +19,6 @@ import AnalyticsService from "~/services/analytics";
 import MetadataService from "~/services/metadata";
 import { createPreloadedState, useStore } from "~/state";
 import { T_ReactElement } from "~/types";
-import { detectEmojisSupport } from "~/utils/browser";
 
 import ErrorPage from "./500";
 
@@ -44,7 +43,6 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
   useDidMount(() => {
     AuthService.configureHttpHeaders();
     AnalyticsService.init();
-    detectEmojisSupport();
   });
 
   return (

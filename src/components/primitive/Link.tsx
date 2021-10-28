@@ -135,9 +135,8 @@ function useController({
 
 const LinkElement = twcss.a({
   __base: "",
-  DEFAULT:
-    "tw-transition-opacity hover:tw-opacity-75 tw-font-bold tw-underline dfr-text-color-links dark:dfr-text-color-links",
-  SECONDARY: "tw-transition-opacity hover:tw-opacity-75 tw-text-black dark:tw-text-white",
-  SIMPLE: "tw-transition-opacity hover:tw-opacity-75",
+  DEFAULT: "dfr-transition-opacity dfr-text-link dark:dfr-text-link tw-font-bold tw-underline",
+  SECONDARY: "dfr-transition-opacity dfr-text-strong dark:dfr-text-strong",
+  SIMPLE: "dfr-transition-opacity",
   UNSTYLED: "",
 });

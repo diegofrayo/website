@@ -3,7 +3,6 @@ import React from "react";
 import { MainLayout, Page } from "~/components/layout";
 import { useTranslation } from "~/i18n";
 import { T_ReactElement } from "~/types";
-import { ROUTES } from "~/utils/routing";
 
 function ErrorPage(): T_ReactElement {
   const { t } = useTranslation();
@@ -15,16 +14,7 @@ function ErrorPage(): T_ReactElement {
         disableSEO: true,
       }}
     >
-      <MainLayout
-        breadcumb={[
-          {
-            text: t("page:breadcumb"),
-            url: ROUTES.HOME,
-            isNextLink: false,
-          },
-        ]}
-        title={t("page:title")}
-      >
+      <MainLayout title={t("page:title")}>
         <p>{t("page:body")}</p>
       </MainLayout>
     </Page>

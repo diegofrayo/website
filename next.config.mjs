@@ -1,7 +1,6 @@
-const withMDX = require("@next/mdx")();
+import withMDX from "@next/mdx";
 
-module.exports = withMDX({
-  webpack5: process.env.NODE_ENV !== "production",
+export default withMDX()({
   eslint: {
     ignoreDuringBuilds: true,
   },

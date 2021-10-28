@@ -38,9 +38,10 @@ function List({
             color: black;
             content: "❯";
             font-weight: bold;
+            font-size: 14px;
             left: -19px;
             position: absolute;
-            top: 0;
+            top: 2px;
           }
 
           :global(.tw-dark) .root--default :global(li)::before {

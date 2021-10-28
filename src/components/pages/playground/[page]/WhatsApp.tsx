@@ -22,7 +22,7 @@ function WhatsApp(): T_ReactElement {
 
   return (
     <div>
-      <div className="tw-flex tw-flex-no-wrap tw-items-end">
+      <div className="tw-flex tw-flex-no-wrap tw-items-end tw-w-full">
         <Input
           id="input"
           label="Ingrese un número de celular"

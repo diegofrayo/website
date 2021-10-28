@@ -158,7 +158,7 @@ function TextArea({ title, text, setText }) {
           <Fragment>
             <textarea
               value={text}
-              className="tw-h-52 tw-block tw-w-full tw-p-4 tw-resize-none tw-border dfr-border-color-primary dark:dfr-border-color-primary"
+              className="tw-h-52 tw-block tw-w-full tw-p-4 tw-resize-none tw-border dfr-border-primary dark:dfr-border-primary"
               onChange={onTextareaChange}
               ref={textareaRef}
               autoFocus

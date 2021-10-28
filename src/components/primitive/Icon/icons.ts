@@ -1,6 +1,8 @@
 import {
   ArrowUpIcon,
   CalendarIcon,
+  ChevronDoubleDownIcon,
+  ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   CodeIcon,
@@ -15,6 +17,7 @@ import {
 } from "@heroicons/react/outline";
 import {
   CheckIcon,
+  CogIcon,
   DotsCircleHorizontalIcon as DotsCircleHorizontalIconSolid,
   HeartIcon,
   MinusIcon,
@@ -68,6 +71,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
       alt: "Instagram",
     },
   },
+  LINKEDIN: {
+    isLibraryIcon: false,
+    icon: "/static/images/icons/linkedin.svg",
+    props: {
+      className: "",
+      alt: "Linkedin",
+    },
+  },
   NETFLIX: {
     isLibraryIcon: false,
     icon: "/static/images/icons/netflix.svg",
@@ -82,6 +93,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     props: {
       className: "",
       alt: "Spotify",
+    },
+  },
+  TWITTER: {
+    isLibraryIcon: false,
+    icon: "/static/images/icons/twitter.svg",
+    props: {
+      className: "",
+      alt: "Twitter",
     },
   },
   WHATSAPP: {
@@ -108,7 +127,6 @@ export const ICONS: Record<E_Icons, T_Icon> = {
       className: "",
     },
   },
-
   CALENDAR: {
     isLibraryIcon: true,
     icon: CalendarIcon,
@@ -135,6 +153,30 @@ export const ICONS: Record<E_Icons, T_Icon> = {
   CHEVRON_RIGHT: {
     isLibraryIcon: true,
     icon: ChevronRightIcon,
+    props: {
+      className: "",
+      color: "",
+    },
+  },
+  CHEVRON_DOWN: {
+    isLibraryIcon: true,
+    icon: ChevronDownIcon,
+    props: {
+      className: "",
+      color: "",
+    },
+  },
+  CHEVRON_DOUBLE_DOWN: {
+    isLibraryIcon: true,
+    icon: ChevronDoubleDownIcon,
+    props: {
+      className: "",
+      color: "",
+    },
+  },
+  COG: {
+    isLibraryIcon: true,
+    icon: CogIcon,
     props: {
       className: "",
       color: "",
@@ -220,14 +262,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     isLibraryIcon: true,
     icon: SunIcon,
     props: {
-      color: "tw-text-yellow-600",
+      color: "",
     },
   },
   MOON: {
     isLibraryIcon: true,
     icon: MoonIcon,
     props: {
-      color: "tw-text-purple-600",
+      color: "",
     },
   },
   ZOOM_IN: {

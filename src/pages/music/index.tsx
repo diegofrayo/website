@@ -39,19 +39,7 @@ function MusicPage(): T_ReactElement {
         disableSEO: Boolean(t("page:config:is_seo_disabled")),
       }}
     >
-      <MainLayout
-        breadcumb={[
-          {
-            text: t("layout:breadcumb:home"),
-            url: ROUTES.HOME,
-          },
-          {
-            text: t("layout:breadcumb:music"),
-          },
-        ]}
-        title={t("page:title")}
-        showGoToTopButton
-      >
+      <MainLayout title={t("page:title")}>
         <p>{t("page:description")}</p>
 
         <Render isLoading={isLoading} error={error} data={data}>
@@ -76,7 +64,7 @@ function MusicPage(): T_ReactElement {
                     <span className="tw-underline">{t("page:chords_title")}</span>
                   </Link>
                 </Title>
-                <Space sizeTop={6} sizeBottom={5} variant={Space.variant.DASHED} />
+                <Space sizeTop={6} sizeBottom={16} variant={Space.variant.DASHED} />
 
                 <Title is="h2" variant={Title.variant.SECONDARY} size={Title.size.MD} className="">
                   <Emoji className="tw-mr-2">🎶</Emoji>
@@ -88,7 +76,7 @@ function MusicPage(): T_ReactElement {
                 <Input
                   id="input"
                   type="text"
-                  className="tw-my-4"
+                  className="tw-mt-4 tw-mb-6"
                   placeholder={t("page:input_placeholder")}
                   value={inputValue}
                   autoComplete="off"

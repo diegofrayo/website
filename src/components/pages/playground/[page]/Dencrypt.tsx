@@ -49,7 +49,7 @@ function Dencrypt(): T_ReactElement {
       <div>
         <p className="tw-font-bold">Resultado</p>
         <output
-          className="tw-my-1 tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full"
+          className="tw-my-1 tw-border dfr-border-primary tw-block tw-p-3 tw-w-full"
           style={{ minHeight: 40 }}
         >
           {output}

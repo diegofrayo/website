@@ -15,7 +15,7 @@ function Button({
   return (
     <button
       className={classNames(
-        disabled ? "tw-cursor-not-allowed" : "tw-transition-opacity hover:tw-opacity-75",
+        disabled ? "tw-cursor-not-allowed tw-opacity-50" : "dfr-transition-opacity",
         className,
       )}
       disabled={disabled}
@@ -23,6 +23,12 @@ function Button({
       {...rest}
     >
       {children}
+
+      <style jsx>{`
+        button {
+          outline: transparent;
+        }
+      `}</style>
     </button>
   );
 }

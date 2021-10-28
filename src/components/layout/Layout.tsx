@@ -1,122 +1,131 @@
-import React, { useState, Fragment } from "react";
-import classNames from "classnames";
+import React, { useState } from "react";
 
-import { Link, Space, Title, Button, Icon } from "~/components/primitive";
+import { Button, Icon, Link, Space } from "~/components/primitive";
 import { useOnWindowStopScroll } from "~/hooks";
-import twcss from "~/lib/twcss";
-import { T_BreadcumbProps, T_ReactChildrenProp, T_ReactElement } from "~/types";
+import { useTranslation } from "~/i18n";
+import { useStoreSelector } from "~/state";
+import { selectWebsiteMetadata } from "~/state/modules/metadata";
+import { E_Icons, T_ReactChildrenProp, T_ReactElement, T_WebsiteMetadata } from "~/types";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
-import { ROUTES } from "~/utils/routing";
-import { generateSlug } from "~/utils/strings";
 
-import { DefaultHeader, HomeHeader } from "./Header";
+import Header from "./Header";
 
 type T_MainLayoutProps = {
   title?: string;
   children: T_ReactChildrenProp;
-  breadcumb?: T_BreadcumbProps["items"];
   showGoToTopButton?: boolean;
-  centerTitle?: boolean;
 };
 
 function MainLayout({
   children,
-  breadcumb,
   title = "",
-  showGoToTopButton = false,
-  centerTitle = false,
+  showGoToTopButton = true,
 }: T_MainLayoutProps): T_ReactElement {
   return (
-    <Main className="tw-pb-20">
-      <DefaultHeader />
-      <Space size={8} />
+    <main>
+      <div className="dfr-max-w-base tw-mx-auto tw-px-8">
+        <Header />
 
-      <Body className="dfr-max-w-base">
-        {breadcumb && (
-          <Fragment>
-            <Breadcumb items={breadcumb} />
-            <Space size={4} />
-          </Fragment>
-        )}
-        <div>
+        <div id="body" className="tw-pt-16 tw-pb-32">
           {title && (
-            <Title is="h1" className={classNames(centerTitle ? "tw-text-center" : "tw-text-left")}>
+            <h1 className="dfr-text-strong dark:dfr-text-strong tw-text-3xl sm:tw-text-6xl tw-font-bold tw-text-center tw-mb-16 tw-uppercase">
               {title}
-            </Title>
+            </h1>
           )}
-          <Space size={3} />
-
           {children}
         </div>
-      </Body>
-      <Space size={2} />
+      </div>
 
       <Footer showGoToTopButton={showGoToTopButton} />
-    </Main>
+    </main>
   );
 }
 
-function HomeLayout(): T_ReactElement {
-  return (
-    <Main className="tw-bg-gradient-to-b tw-from-blue-400 tw-to-blue-600 dark:tw-from-gray-700 dark:tw-to-gray-900 tw-h-screen tw-block sm:tw-flex tw-justify-center tw-items-center tw-overflow-auto">
-      <HomeHeader />
-    </Main>
-  );
-}
-
-export { MainLayout, HomeLayout };
+export default MainLayout;
 
 // --- Components ---
 
-const Main = twcss.main`tw-relative`;
+function Footer({
+  showGoToTopButton,
+}: {
+  showGoToTopButton: T_MainLayoutProps["showGoToTopButton"];
+}): T_ReactElement {
+  const { t } = useTranslation();
+  const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
-const Body = twcss.div`tw-w-full tw-mx-auto tw-px-8 sm:tw-px-6`;
-
-function Breadcumb({ items }: T_BreadcumbProps): T_ReactElement {
-  const hasMoreThanOneItem = items.length > 1;
+  const SONG = {
+    title: "Un Pacto - Cóndor Sbarbati",
+    duration: "4:30",
+    thumbnail: "http://i3.ytimg.com/vi/WNebXvrqGDE/maxresdefault.jpg",
+  };
 
   return (
-    <ul className="root tw-block tw-text-left tw-pb-1">
-      {items.map(({ text, url = ROUTES.HOME, isNextLink = true }, index) => {
-        if (index === items.length - 1 && hasMoreThanOneItem) {
-          return (
-            <li key={generateSlug(text)} className="tw-inline-block">
-              <span className="tw-text-base tw-italic">{text}</span>
-            </li>
-          );
-        }
+    <footer className="dfr-bg-strong tw-relative tw-pt-12 tw-pb-4">
+      <div className="dfr-max-w-base tw-mx-auto tw-px-8">
+        <div className="tw-w-72 tw-max-w-full tw-mx-auto">
+          <p className="dfr-text-colorful-primary tw-font-bold tw-text-xs tw-text-right">
+            on repeat...
+          </p>
+          <Link
+            variant={Link.variant.SIMPLE}
+            href="https://youtu.be/WNebXvrqGDE"
+            className="dfr-border-primary tw-border-opacity-30 tw-flex tw-text-sm tw-border tw-p-1 tw-rounded-md tw-bg-gradient-to-r tw-from-gray-800 tw-to-gray-900"
+          >
+            <img src={SONG.thumbnail} className="tw-w-12 tw-h-12 tw-object-cover tw-mr-2" />
+            <div className="dfr-text-strong-inverted tw-flex-1 tw-relative tw-min-w-0">
+              <p className="tw-font-bold tw-truncate">{SONG.title}</p>
+              <p className="tw-italic tw-text-xs">{SONG.duration}</p>
+              <Icon
+                wrapperClassName="tw-absolute tw-right-0 tw-bottom-0"
+                icon={Icon.icon.YOUTUBE}
+                size={20}
+              />
+            </div>
+          </Link>
+        </div>
+        <Space size={16} />
 
-        return (
-          <li key={generateSlug(text)} className="tw-inline-block tw-mr-2">
-            <Link
-              href={url}
-              variant={Link.variant.SECONDARY}
-              isNextLink={isNextLink}
-              external={false}
-            >
-              <span className="tw-font-bold tw-text-base">{text}</span>
-            </Link>
-          </li>
-        );
-      })}
+        <div className="tw-flex tw-flex-col tw-justify-center tw-items-center sm:tw-flex-row sm:tw-justify-between sm:tw-items-end">
+          <div>
+            <FooterIcon url={`mailto:${WEBSITE_METADATA.email}`} icon={Icon.icon.GMAIL} />
+            <FooterIcon url={WEBSITE_METADATA.social.github} icon={Icon.icon.GITHUB} />
+            <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} />
+            <FooterIcon url={WEBSITE_METADATA.social.twitter} icon={Icon.icon.TWITTER} />
+            <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
+            <FooterIcon url={WEBSITE_METADATA.social["500px"]} icon={Icon.icon["500PX"]} />
+          </div>
+          <span className="dfr-text-strong-inverted tw-text-sm tw-leading-3 tw-mt-4 sm:tw-mt-0">
+            {WEBSITE_METADATA.shortName} | {new Date().getFullYear()}
+          </span>
+        </div>
+        <Space size={4} className="dfr-border-primary tw-border-b tw-border-opacity-30" />
 
-      <style jsx>
-        {`
-          .root :global(a::after) {
-            @apply tw-ml-1;
-            ${hasMoreThanOneItem ? 'content: "❯";' : ""}
-          }
-        `}
-      </style>
-    </ul>
+        <div className="tw-text-center tw-text-xs dfr-text-strong-inverted">
+          <strong>{t("layout:footer:resources_disclaimer")}:</strong>{" "}
+          <Link className="tw-break-normal" href="https://heroicons.com" external>
+            HeroIcons.com
+          </Link>
+          <span>|</span>
+          <Link className="tw-break-normal" href="https://freeicons.io" external>
+            freeicons.io
+          </Link>
+          <span>|</span>
+          <Link className="tw-break-normal" href="https://icons8.com/illustrations" external>
+            icons8.com
+          </Link>
+        </div>
+      </div>
+
+      {showGoToTopButton && <GoToTopButton />}
+    </footer>
   );
 }
 
-function Footer({ showGoToTopButton }): T_ReactElement {
+function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactElement {
   return (
-    <footer className="tw-flex tw-justify-end tw-items-end tw-relative tw-h-16">
-      {showGoToTopButton && <GoToTopButton />}
-    </footer>
+    <Link href={url} className="tw-mx-1 tw-inline-block">
+      <Icon icon={icon} wrapperClassName="dfr-bg-strong-inverted tw-rounded-full tw-p-2" />
+    </Link>
   );
 }
 
@@ -140,13 +149,12 @@ function GoToTopButton(): T_ReactElement {
 
   return (
     <Button
-      className="tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-rounded-lg tw-w-12 tw-h-12 tw-text-white tw-flex tw-items-center tw-justify-center"
-      style={{ backgroundColor: "rgba(0, 0, 0, 0.75)" }}
+      className="dfr-bg-strong tw-bg-opacity-70 tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center"
       onClick={() => {
         setScrollPosition(0);
       }}
     >
-      <Icon icon={Icon.icon.ARROW_UP} color="tw-text-white" />
+      <Icon icon={Icon.icon.ARROW_UP} color="dfr-text-strong-inverted" />
     </Button>
   );
 }

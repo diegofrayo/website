@@ -10,7 +10,7 @@ import { dataLoader } from "~/server";
 import { T_Locale, T_PageRoute, T_ReactElement } from "~/types";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { DYNAMIC_MAIN_PAGES, ROUTES } from "~/utils/routing";
-import { generateObjectKeyInLowerCase, generateObjectKeyInUpperCase } from "~/utils/strings";
+import { generateObjectKeyInUpperCase } from "~/utils/strings";
 
 type T_SitePageProps = {
   page: string;
@@ -31,19 +31,7 @@ function SitePage({ page, pageMDXContent }: T_SitePageProps): T_ReactElement {
         disableSEO: Boolean(t("page:config:is_seo_disabled")),
       }}
     >
-      <MainLayout
-        breadcumb={[
-          {
-            text: t("layout:breadcumb:home"),
-            url: ROUTES.HOME,
-          },
-          {
-            text: t(`layout:breadcumb:${generateObjectKeyInLowerCase(page)}`),
-          },
-        ]}
-        title={t("seo:title")}
-        showGoToTopButton
-      >
+      <MainLayout title={t("seo:title")}>
         <MDXContent variant={MDXContent.variant.UNSTYLED} content={mdxContent} />
       </MainLayout>
     </Page>

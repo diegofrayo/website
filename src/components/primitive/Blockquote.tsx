@@ -20,8 +20,8 @@ function Blockquote({
   return (
     <blockquote
       className={classNames(
-        "dfr-border-color-primary tw-border-l-4 tw-pl-4",
-        variant === VARIANTS.DEFAULT && "dfr-text-color-secondary dark:tw-text-gray-400 tw-italic",
+        "dfr-border-primary tw-border-l-4 tw-pl-4",
+        variant === VARIANTS.DEFAULT && "dfr-text-secondary dark:tw-text-gray-400 tw-italic",
         className,
       )}
       {...rest}

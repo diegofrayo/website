@@ -65,23 +65,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
         disableSEO: song.isPublic === false,
       }}
     >
-      <MainLayout
-        breadcumb={[
-          {
-            text: t("layout:breadcumb:home"),
-            url: ROUTES.HOME,
-          },
-          {
-            text: t("layout:breadcumb:music"),
-            url: ROUTES.MUSIC,
-          },
-          {
-            text: song.title,
-          },
-        ]}
-        title={`🎼 ${song.title}`}
-        showGoToTopButton
-      >
+      <MainLayout title={song.title}>
         <SongDetails song={song} className="tw-mb-8" />
 
         <Blockquote
@@ -124,7 +108,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
           <Space size={6} />
 
           <Blockquote
-            className="tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-text-base"
+            className="tw-p-4 tw-border dfr-border-primary dark:dfr-border-primary tw-text-base"
             variant={Blockquote.variant.UNSTYLED}
           >
             <p className="tw-font-bold tw-mb-2">
