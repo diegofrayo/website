@@ -69,7 +69,7 @@ function Footer({
           <Link
             variant={Link.variant.SIMPLE}
             href="https://youtu.be/WNebXvrqGDE"
-            className="dfr-border-primary tw-border-opacity-30 tw-flex tw-text-sm tw-border tw-p-1 tw-rounded-md tw-bg-gradient-to-r tw-from-gray-800 tw-to-gray-900"
+            className="dfr-border-primary tw-border-opacity-30 tw-flex tw-text-sm tw-border tw-p-1 tw-bg-gradient-to-r tw-from-gray-800 tw-to-gray-900"
           >
             <img src={SONG.thumbnail} className="tw-w-12 tw-h-12 tw-object-cover tw-mr-2" />
             <div className="dfr-text-strong-inverted tw-flex-1 tw-relative tw-min-w-0">
@@ -149,7 +149,7 @@ function GoToTopButton(): T_ReactElement {
 
   return (
     <Button
-      className="dfr-bg-strong tw-bg-opacity-70 tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-rounded-lg tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center"
+      className="dfr-bg-strong tw-bg-opacity-70 tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center"
       onClick={() => {
         setScrollPosition(0);
       }}

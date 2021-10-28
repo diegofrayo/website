@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Fragment } from "react";
 import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { useRouter } from "next/router";
@@ -24,6 +24,7 @@ import { ROUTES } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
 
 function Header(): T_ReactElement {
+  const { asPath } = useRouter();
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
@@ -43,15 +44,20 @@ function Header(): T_ReactElement {
       <Space size={8} />
 
       <PictureFrame />
-      <Space size={10} />
 
-      <Button
-        onClick={() => {
-          scrollToElement(document.getElementById("body"));
-        }}
-      >
-        <Icon icon={Icon.icon.CHEVRON_DOUBLE_DOWN} size={32} />
-      </Button>
+      {asPath !== ROUTES.HOME && (
+        <Fragment>
+          <Space size={10} />
+
+          <Button
+            onClick={() => {
+              scrollToElement(document.getElementById("body"));
+            }}
+          >
+            <Icon icon={Icon.icon.CHEVRON_DOUBLE_DOWN} size={32} />
+          </Button>
+        </Fragment>
+      )}
     </header>
   );
 }
@@ -135,7 +141,7 @@ function Menu(): T_ReactElement {
       </Button>
 
       {showMenu && (
-        <div className="dfr-shadow dark:dfr-shadow tw-absolute tw-top-full tw-z-40 tw-w-52 tw-overflow-hidden tw-rounded-sm tw-left-0">
+        <div className="dfr-shadow dark:dfr-shadow tw-absolute tw-top-full tw-z-40 tw-w-52 tw-overflow-hidden tw-left-0">
           <ul className="tw-block">
             {ITEMS.map((item) => {
               const isLinkActive =
@@ -210,7 +216,7 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
       </Button>
 
       {showMenu && (
-        <div className="dfr-shadow dark:dfr-shadow tw-absolute tw-top-full tw-z-40 tw-w-52 tw-overflow-hidden tw-rounded-sm tw-right-0">
+        <div className="dfr-shadow dark:dfr-shadow tw-absolute tw-top-full tw-z-40 tw-w-52 tw-overflow-hidden tw-right-0">
           {locale && (
             <MenuItem title={t("layout:header:settings:language")}>
               {pageLocales.map((item) => {
@@ -272,20 +278,22 @@ function PictureFrame(): T_ReactElement {
 
   return (
     <div className="tw-w-48 tw-mx-auto">
-      <div className="dfr-bg-strong dfr-text-strong-inverted tw-text-center tw-rounded-tl-md tw-rounded-tr-md tw-px-1 tw-text-sm tw-font-bold tw-pt-1">
+      <div className="dfr-bg-strong dfr-text-strong-inverted tw-text-center tw-px-1 tw-text-sm tw-font-bold tw-pt-1">
         {t("layout:header:frame:title")}
       </div>
-      <div className="dfr-border-strong tw-border-4 tw-relative tw-mb-1">
+      <div className="dfr-border-strong tw-border-4">
         <img src={PHOTO.src} className="dfr-transition-opacity" alt={PHOTO.place} />
-        <span className="dfr-bg-strong tw-rounded-br-md tw-rounded-bl-md tw-absolute tw--left-1 tw-top-full tw-w-8 tw-h-3" />
       </div>
-      <Link
-        variant={Link.variant.SIMPLE}
-        href={PHOTO.placeUrl}
-        className="dfr-text-secondary dark:dfr-text-secondary tw-text-xs tw-text-right tw-italic tw-pl-12 tw-block tw-underline"
-      >
-        {PHOTO.place}
-      </Link>
+      <div className="dfr-border-strong tw-border tw-flex tw-flex-nowrap tw-items-end tw-justify-between">
+        <span className="dfr-bg-strong tw-flex-1 tw-top-full tw-w-8 tw-h-5" />
+        <Link
+          variant={Link.variant.SIMPLE}
+          href={PHOTO.placeUrl}
+          className="dfr-text-secondary dark:dfr-text-secondary tw-text-xs tw-italic tw-px-1 tw-font-bold"
+        >
+          {PHOTO.place}
+        </Link>
+      </div>
 
       <style jsx>{`
         img {

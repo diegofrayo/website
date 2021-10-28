@@ -40,6 +40,10 @@ button:focus {
 
 /** Used to define container behavior: width, position: fixed etc... **/
 .Toastify__toast-container {
+  @apply tw-p-4;
+}
+
+.tw-dark .Toastify__toast-container {
 }
 
 /** Used to define the position of the ToastContainer **/
@@ -60,15 +64,15 @@ button:focus {
 /** Classes for the displayed toast **/
 .Toastify__toast {
   @apply dfr-bg-strong;
-  @apply dfr-shadow;
+  @apply tw-bg-opacity-80;
   @apply tw-text-sm;
   border-radius: 0;
+  border: 1px solid black;
   font-weight: bold;
   text-align: center;
 }
 
 .tw-dark .Toastify__toast {
-  @apply value:dark:dfr-shadow;
 }
 
 .Toastify__toast--rtl {
@@ -84,6 +88,11 @@ button:focus {
 }
 
 .Toastify__toast--success {
+  @apply tw-border-green-500;
+  @apply tw-text-green-500;
+}
+
+.Toastify__toast--success .Toastify__close-button {
   @apply tw-text-green-500;
 }
 
@@ -91,6 +100,11 @@ button:focus {
 }
 
 .Toastify__toast--error {
+  @apply tw-border-red-500;
+  @apply tw-text-red-500;
+}
+
+.Toastify__toast--error .Toastify__close-button {
   @apply tw-text-red-500;
 }
 

@@ -2,6 +2,7 @@ const plugin = require("tailwindcss/plugin");
 const colorConvert = require("color-convert");
 
 module.exports = {
+  // mode: "jit",
   prefix: "tw-",
   darkMode: "class",
   important: false,

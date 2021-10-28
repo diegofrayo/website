@@ -15,7 +15,7 @@ function ErrorPage(): T_ReactElement {
       }}
     >
       <MainLayout title={t("page:title")}>
-        <p>{t("page:body")}</p>
+        <p className="tw-text-center">{t("page:body")}</p>
       </MainLayout>
     </Page>
   );

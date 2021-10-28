@@ -64,7 +64,7 @@
     "postcss-nested": "^5.0.1",
     "postcss-preset-env": "^6.7.0",
     "styled-jsx-plugin-postcss": "^4.0.0",
-    "tailwindcss": "^2.0.1",
+    "tailwindcss": "^2.2.16",
     "typescript": "^4.4.2",
     "xdm": "latest"
   },

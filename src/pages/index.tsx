@@ -18,8 +18,6 @@ function HomePage(): T_ReactElement {
       }}
     >
       <MainLayout>
-        <h2 className="tw-font-bold tw-text-center">🏗 in progress...</h2>
-
         <div className="tw-hidden">
           <div className="tw-px-4 tw-py-10">
             <div className="tw-mb-8 tw-text-center">
@@ -48,7 +46,7 @@ function HomePage(): T_ReactElement {
 
             <div className="tw-flex tw-justify-center tw-items-center">
               <img
-                src="/static/images/new/about-me.png"
+                src="/static/images/home/about-me.png"
                 alt=""
                 className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
               />
@@ -69,7 +67,7 @@ function HomePage(): T_ReactElement {
 
             <div className="tw-flex tw-justify-center tw-items-center">
               <img
-                src="/static/images/new/about-me.png"
+                src="/static/images/home/about-me.png"
                 alt=""
                 className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
               />
@@ -90,7 +88,7 @@ function HomePage(): T_ReactElement {
 
             <div className="tw-flex tw-justify-center tw-items-center">
               <img
-                src="/static/images/new/about-me.png"
+                src="/static/images/home/about-me.png"
                 alt=""
                 className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
               />

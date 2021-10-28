@@ -163,6 +163,6 @@ export default Page;
 
 const UserLoggedInFlag = protectedComponent(function UserLoggedInFlag() {
   return (
-    <span className="tw-fixed tw-top-1 tw-right-1 tw-z-50 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white"></span>
+    <span className="tw-fixed tw-top-2 tw-left-2 tw-z-50 tw-w-1 tw-h-1 tw-bg-black dark:tw-bg-white"></span>
   );
 });
