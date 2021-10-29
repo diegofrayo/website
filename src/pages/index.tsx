@@ -17,7 +17,14 @@ function HomePage(): T_ReactElement {
         disableSEO: Boolean(t("page:config:is_seo_disabled")),
       }}
     >
-      <MainLayout>
+      <MainLayout title="👋">
+        <div
+          className="dfr-bg-secondary dfr-border-primary dfr-shadow dark:dfr-border-primary dark:dfr-shadow dark:dfr-bg-secondary tw-border-l-8 tw-border-b-8 tw-p-8 tw-text-xl"
+          dangerouslySetInnerHTML={{
+            __html: t("page:content"),
+          }}
+        ></div>
+
         <div className="tw-hidden">
           <div className="tw-px-4 tw-py-10">
             <div className="tw-mb-8 tw-text-center">

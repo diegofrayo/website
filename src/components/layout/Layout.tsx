@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
-import { Button, Icon, Link, Space } from "~/components/primitive";
+import { Button, Icon, Link, Space, Title } from "~/components/primitive";
 import { useOnWindowStopScroll } from "~/hooks";
 import { useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
@@ -11,7 +12,7 @@ import { getScrollPosition, setScrollPosition } from "~/utils/browser";
 import Header from "./Header";
 
 type T_MainLayoutProps = {
-  title?: string;
+  title: string;
   children: T_ReactChildrenProp;
   showGoToTopButton?: boolean;
 };
@@ -21,6 +22,16 @@ function MainLayout({
   title = "",
   showGoToTopButton = true,
 }: T_MainLayoutProps): T_ReactElement {
+  const { asPath } = useRouter();
+
+  function getParentLevelURL() {
+    if (asPath === "/") return "";
+
+    const urlParts = asPath.split("/");
+
+    return urlParts.slice(0, urlParts.length - 1).join("/") + "/";
+  }
+
   return (
     <main>
       <div className="dfr-max-w-base tw-mx-auto tw-px-8">
@@ -28,9 +39,23 @@ function MainLayout({
 
         <div id="body" className="tw-pt-16 tw-pb-32">
           {title && (
-            <h1 className="dfr-text-strong dark:dfr-text-strong tw-text-3xl sm:tw-text-6xl tw-font-bold tw-text-center tw-mb-16 tw-uppercase">
-              {title}
-            </h1>
+            <div className="tw-text-center">
+              <Link
+                variant={Link.variant.SECONDARY}
+                href={getParentLevelURL()}
+                className="tw-block tw-underline tw-mb-4"
+                isNextLink
+              >
+                {getParentLevelURL()}
+              </Link>
+              <Title
+                is="h1"
+                variant={Title.variant.UNSTYLED}
+                className="dfr-text-strong dark:dfr-text-strong tw-text-3xl sm:tw-text-6xl tw-font-bold tw-mb-16 tw-uppercase"
+              >
+                {title}
+              </Title>
+            </div>
           )}
           {children}
         </div>
@@ -105,11 +130,11 @@ function Footer({
           <Link className="tw-break-normal" href="https://heroicons.com" external>
             HeroIcons.com
           </Link>
-          <span>|</span>
+          <span> | </span>
           <Link className="tw-break-normal" href="https://freeicons.io" external>
             freeicons.io
           </Link>
-          <span>|</span>
+          <span> | </span>
           <Link className="tw-break-normal" href="https://icons8.com/illustrations" external>
             icons8.com
           </Link>

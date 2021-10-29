@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, Fragment } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { useRouter } from "next/router";
@@ -24,7 +24,6 @@ import { ROUTES } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
 
 function Header(): T_ReactElement {
-  const { asPath } = useRouter();
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
@@ -44,20 +43,15 @@ function Header(): T_ReactElement {
       <Space size={8} />
 
       <PictureFrame />
+      <Space size={10} />
 
-      {asPath !== ROUTES.HOME && (
-        <Fragment>
-          <Space size={10} />
-
-          <Button
-            onClick={() => {
-              scrollToElement(document.getElementById("body"));
-            }}
-          >
-            <Icon icon={Icon.icon.CHEVRON_DOUBLE_DOWN} size={32} />
-          </Button>
-        </Fragment>
-      )}
+      <Button
+        onClick={() => {
+          scrollToElement(document.getElementById("body"));
+        }}
+      >
+        <Icon icon={Icon.icon.CHEVRON_DOUBLE_DOWN} size={32} />
+      </Button>
     </header>
   );
 }
@@ -116,11 +110,13 @@ function Menu(): T_ReactElement {
         url: ROUTES.BLOG,
         locale: undefined,
       },
+      /*
       {
         label: translator.t("layout:header:menu:about_me"),
         url: ROUTES.ABOUT_ME,
         locale: undefined,
       },
+      */
       {
         label: translator.t("layout:header:menu:resume"),
         url: ROUTES.RESUME,
@@ -270,33 +266,54 @@ function MenuItem({
 function PictureFrame(): T_ReactElement {
   const { t } = useTranslation();
 
-  const PHOTO = {
-    src: "/static/images/header/1.png",
-    place: "El alto, Pijao",
-    placeUrl: "https://goo.gl/maps/SEQSFq3wovNxYya46",
-  };
+  const PHOTOS = [
+    {
+      src: "/static/images/header/1.png",
+      place: "El alto, Pijao",
+      placeUrl: "https://goo.gl/maps/SEQSFq3wovNxYya46",
+      portrait: true,
+    },
+    {
+      src: "/static/images/header/2.jpg",
+      place: "Valle de Cocora",
+      placeUrl: "https://g.page/valle-del-cocora-salento?share",
+      portrait: true,
+    },
+    {
+      src: "/static/images/header/3.jpg",
+      place: "Pijao, Quindío",
+      placeUrl: "https://goo.gl/maps/SEQSFq3wovNxYya46",
+      portrait: false,
+    },
+  ];
+
+  const PHOTO = PHOTOS[new Date().getDate() % 3 === 0 ? 0 : new Date().getDate() % 2 === 0 ? 1 : 2];
 
   return (
     <div className="tw-w-48 tw-mx-auto">
       <div className="dfr-bg-strong dfr-text-strong-inverted tw-text-center tw-px-1 tw-text-sm tw-font-bold tw-pt-1">
         {t("layout:header:frame:title")}
       </div>
-      <div className="dfr-border-strong tw-border-4">
-        <img src={PHOTO.src} className="dfr-transition-opacity" alt={PHOTO.place} />
+      <div className="image-container dfr-border-strong dfr-bg-strong tw-border-4 tw-h-64 tw-flex tw-items-center">
+        <img
+          src={PHOTO.src}
+          className={classNames("dfr-transition-opacity", PHOTO.portrait && "tw-h-full")}
+          alt={PHOTO.place}
+        />
       </div>
-      <div className="dfr-border-strong tw-border tw-flex tw-flex-nowrap tw-items-end tw-justify-between">
-        <span className="dfr-bg-strong tw-flex-1 tw-top-full tw-w-8 tw-h-5" />
+      <div className="tw-flex tw-flex-nowrap tw-items-end tw-justify-end tw-relative tw-py-1">
+        <span className="dfr-bg-strong tw-absolute tw-left-0 tw-top-0 tw-w-10 tw-h-2 tw-rounded-br-md tw-rounded-bl-md" />
         <Link
           variant={Link.variant.SIMPLE}
           href={PHOTO.placeUrl}
-          className="dfr-text-secondary dark:dfr-text-secondary tw-text-xs tw-italic tw-px-1 tw-font-bold"
+          className="dfr-text-secondary dark:dfr-text-secondary tw-text-xs tw-italic tw-pl-1 tw-font-bold"
         >
           {PHOTO.place}
         </Link>
       </div>
 
       <style jsx>{`
-        img {
+        .image-container {
           background-image: url("/static/images/textures/1.png");
         }
       `}</style>
