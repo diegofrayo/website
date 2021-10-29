@@ -1,6 +1,6 @@
 import React, { useState, useRef, RefObject, Fragment } from "react";
 
-import { Space, Button } from "~/components/primitive";
+import { Space, Button, Input } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { T_FormEvent, T_OnChangeEvent, T_OnClickEvent, T_ReactElement } from "~/types";
 import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
@@ -22,8 +22,9 @@ function Strings(): T_ReactElement {
     <Fragment>
       <div>
         <p className="tw-font-bold tw-mb-1">Ingrese un texto</p>
-        <textarea
-          className="tw-border tw-border-b-4 dfr-border-primary tw-block tw-p-3 tw-resize-none tw-w-full tw-rounded-md"
+        <Input
+          is="textarea"
+          id="textarea"
           style={{ minHeight: 50 }}
           ref={textareaRef}
           onChange={handleTextAreaChange}

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Link, List } from "~/components/primitive";
+import { Link } from "~/components/primitive";
 import { withAuth } from "~/auth";
 import { getPageContentStaticProps } from "~/i18n";
 import { T_ReactElement } from "~/types";
@@ -35,20 +35,20 @@ export const getStaticProps = getPageContentStaticProps({ locale: "es" });
 
 function PagesList({ pages }: { pages: { slug: string; title: string }[] }): T_ReactElement {
   return (
-    <List variant={List.variant.UNSTYLED}>
+    <div className="tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
       {pages.map((page) => {
         return (
-          <List.Item key={page.slug}>
-            <Link
-              href={`${ROUTES.PLAYGROUND}/${page.slug}`}
-              variant={Link.variant.SIMPLE}
-              isNextLink
-            >
-              {page.title}
-            </Link>
-          </List.Item>
+          <Link
+            key={page.slug}
+            href={`${ROUTES.PLAYGROUND}/${page.slug}`}
+            variant={Link.variant.SIMPLE}
+            className="dfr-border-primary tw-flex tw-items-center tw-justify-center tw-border tw-border-dashed tw-h-32 tw-w-32 tw-text-center tw-font-bold tw-mx-0.5 tw-my-2 tw-p-2"
+            isNextLink
+          >
+            {page.title}
+          </Link>
         );
       })}
-    </List>
+    </div>
   );
 }

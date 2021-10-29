@@ -161,14 +161,16 @@ export function TitleCreator(
 export function ImageWithLink({
   src,
   className,
+  alt,
   ...rest
 }: {
   src: string;
   className?: string;
+  alt?: string;
 }): T_ReactElement {
   return (
-    <Link href={src} variant={Link.variant.UNSTYLED} className={className}>
-      <Image src={src} {...rest} />
+    <Link href={src} variant={Link.variant.UNSTYLED}>
+      <Image src={src} alt={alt} className={className} {...rest} />
     </Link>
   );
 }

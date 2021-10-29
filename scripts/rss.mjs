@@ -66,7 +66,7 @@ async function generateFeed(SEO_METADATA, WEBSITE_METADATA, BLOG, DEFAULT_LOCALE
         {
           name: WEBSITE_METADATA.shortName,
           email: WEBSITE_METADATA.email,
-          link: `${WEBSITE_METADATA.url}/about-me`,
+          link: `${WEBSITE_METADATA.url}`,
         },
       ],
       date: new Date(post.config.updated_at),

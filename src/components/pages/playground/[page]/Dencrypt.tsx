@@ -29,16 +29,10 @@ function Dencrypt(): T_ReactElement {
           onClick={onInputFocus}
         />
         <div className="tw-flex tw-flex-wrap tw-justify-between">
-          <Button
-            className="tw-inline-block tw-text-sm tw-mx-1 tw-font-bold"
-            onClick={handleEncrypt}
-          >
+          <Button className="tw-inline-block tw-text-sm tw-font-bold" onClick={handleEncrypt}>
             encriptar
           </Button>
-          <Button
-            className="tw-inline-block tw-text-sm tw-mx-1 tw-font-bold"
-            onClick={handleDecrypt}
-          >
+          <Button className="tw-inline-block tw-text-sm tw-font-bold" onClick={handleDecrypt}>
             desencriptar
           </Button>
         </div>

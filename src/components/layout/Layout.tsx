@@ -78,34 +78,60 @@ function Footer({
   const { t } = useTranslation();
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
-  const SONG = {
-    title: "Un Pacto - Cóndor Sbarbati",
-    duration: "4:30",
-    thumbnail: "http://i3.ytimg.com/vi/WNebXvrqGDE/maxresdefault.jpg",
-  };
+  const SONGS = [
+    {
+      title: "Un Pacto",
+      artist: "Cóndor Sbarbati",
+      duration: "4:30",
+      thumbnail: "http://i3.ytimg.com/vi/WNebXvrqGDE/maxresdefault.jpg",
+      source: "youtube",
+      url: "https://youtu.be/WNebXvrqGDE",
+    },
+    {
+      title: "Rock para el Negro Atila",
+      artist: "Patricio Rey y sus Redonditos de Ricota",
+      duration: "4:00",
+      thumbnail: "https://i.scdn.co/image/ab67616d0000b273074392d2ae6b119d67289def",
+      source: "spotify",
+      url: "https://open.spotify.com/track/1JQOUueUnq9xoUcI1MiVVy?si=562c9fd52fa54957",
+    },
+  ];
+
+  const song = SONGS[1];
 
   return (
     <footer className="dfr-bg-strong tw-relative tw-pt-12 tw-pb-4">
       <div className="dfr-max-w-base tw-mx-auto tw-px-8">
-        <div className="tw-w-72 tw-max-w-full tw-mx-auto">
+        <div className="tw-w-96 tw-max-w-full tw-mx-auto">
           <p className="dfr-text-colorful-primary tw-font-bold tw-text-xs tw-text-right">
             on repeat...
           </p>
           <Link
             variant={Link.variant.SIMPLE}
-            href="https://youtu.be/WNebXvrqGDE"
-            className="dfr-border-primary tw-border-opacity-30 tw-flex tw-text-sm tw-border tw-p-1 tw-bg-gradient-to-r tw-from-gray-800 tw-to-gray-900"
+            href={song.url}
+            className="dfr-border-primary tw-border-opacity-30 tw-flex tw-items-center tw-text-sm tw-border tw-p-1 tw-bg-gradient-to-r tw-from-gray-800 tw-to-gray-900 tw-relative"
           >
-            <img src={SONG.thumbnail} className="tw-w-12 tw-h-12 tw-object-cover tw-mr-2" />
-            <div className="dfr-text-strong-inverted tw-flex-1 tw-relative tw-min-w-0">
-              <p className="tw-font-bold tw-truncate">{SONG.title}</p>
-              <p className="tw-italic tw-text-xs">{SONG.duration}</p>
-              <Icon
-                wrapperClassName="tw-absolute tw-right-0 tw-bottom-0"
-                icon={Icon.icon.YOUTUBE}
-                size={20}
-              />
+            <img src={song.thumbnail} className="tw-h-20 tw-w-20 tw-object-cover tw-mr-2" />
+            <div className="tw-flex-1 tw-min-w-0">
+              <p
+                className="dfr-text-strong-inverted tw-font-bold tw-truncate tw-text-base"
+                title={song.title}
+              >
+                {song.title}
+              </p>
+              <p
+                className="dfr-text-secondary tw-font-bold tw-truncate tw-text-sm"
+                title={song.artist}
+              >
+                {song.artist}
+              </p>
+              <p className="dfr-text-secondary tw-italic tw-text-xs">{song.duration}</p>
             </div>
+            <Icon
+              wrapperClassName="tw-absolute tw-right-1 tw-bottom-1"
+              icon={song.source === "youtube" ? Icon.icon.YOUTUBE : Icon.icon.SPOTIFY}
+              size={20}
+            />
           </Link>
         </div>
         <Space size={16} />

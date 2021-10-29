@@ -222,7 +222,7 @@ function Position({
   return (
     <div
       className={classNames(
-        "root tw-h-6 tw-w-4 tw-text-center tw-relative tw-top-0.5",
+        "root tw-h-6 tw-text-center tw-relative tw-top-0.5 tw-w-6",
         isCell && "root--cell",
         isSeparator && "root--separator",
       )}

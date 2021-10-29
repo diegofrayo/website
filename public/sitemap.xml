@@ -7,13 +7,7 @@
     <loc>https://diegofrayo.vercel.app/blog</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/about-me</loc>
-  </url>
-  <url>
     <loc>https://diegofrayo.vercel.app/resume</loc>
-  </url>
-  <url>
-    <loc>https://diegofrayo.vercel.app/contact</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</loc>

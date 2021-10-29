@@ -24,11 +24,6 @@ body.scroll-disabled {
   overflow: hidden;
 }
 
-button,
-button:focus {
-  outline: transparent;
-}
-
 /* --- Dark mode --- */
 
 .tw-dark body {

@@ -26,7 +26,6 @@ function Button({
 
       <style jsx>{`
         button {
-          outline: transparent;
         }
       `}</style>
     </button>

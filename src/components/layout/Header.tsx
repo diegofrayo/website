@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { Icon, Button, Link, Space } from "~/components/primitive";
 import { AuthService } from "~/auth";
 import { safeRender } from "~/hocs";
-import { useClickOutside } from "~/hooks";
+import { useClickOutside, useDidMount } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
 import { selectPageConfig } from "~/state/modules/page-config";
@@ -266,28 +266,57 @@ function MenuItem({
 function PictureFrame(): T_ReactElement {
   const { t } = useTranslation();
 
-  const PHOTOS = [
-    {
-      src: "/static/images/header/1.png",
-      place: "El alto, Pijao",
-      placeUrl: "https://goo.gl/maps/SEQSFq3wovNxYya46",
-      portrait: true,
-    },
-    {
-      src: "/static/images/header/2.jpg",
-      place: "Valle de Cocora",
-      placeUrl: "https://g.page/valle-del-cocora-salento?share",
-      portrait: true,
-    },
-    {
-      src: "/static/images/header/3.jpg",
-      place: "Pijao, Quindío",
-      placeUrl: "https://goo.gl/maps/SEQSFq3wovNxYya46",
-      portrait: false,
-    },
-  ];
+  const [photo, setPhoto] =
+    useState<{ src: string; place: string; placeUrl: string; portrait: boolean }>();
 
-  const PHOTO = PHOTOS[new Date().getDate() % 3 === 0 ? 0 : new Date().getDate() % 2 === 0 ? 1 : 2];
+  useDidMount(() => {
+    const PHOTOS = [
+      {
+        src: "/static/images/header/1.png",
+        place: "El alto, Pijao",
+        placeUrl: "https://goo.gl/maps/SEQSFq3wovNxYya46",
+        portrait: true,
+      },
+      {
+        src: "/static/images/header/2.jpg",
+        place: "Valle de Cocora",
+        placeUrl: "https://g.page/valle-del-cocora-salento?share",
+        portrait: true,
+      },
+      {
+        src: "/static/images/header/3.jpg",
+        place: "Pijao, Quindío",
+        placeUrl: "https://goo.gl/maps/SEQSFq3wovNxYya46",
+        portrait: false,
+      },
+      {
+        src: "/static/images/header/4.jpg",
+        place: "Parque de la Vida",
+        placeUrl: "https://goo.gl/maps/GHq3eARV7CwuzdAGA",
+        portrait: false,
+      },
+      {
+        src: "/static/images/header/5.jpg",
+        place: "Armenia, Quindío",
+        placeUrl: "https://goo.gl/maps/bBuUZVn5eruxQVSm9",
+        portrait: false,
+      },
+      {
+        src: "/static/images/header/6.jpg",
+        place: "Filandia, Quindío",
+        placeUrl: "https://g.page/tuktukrestaurante?share",
+        portrait: false,
+      },
+      {
+        src: "/static/images/header/7.jpg",
+        place: "Armenia, Quindío",
+        placeUrl: "https://goo.gl/maps/pe1ddsjDVwTur2sp7",
+        portrait: true,
+      },
+    ];
+
+    setPhoto(PHOTOS[new Date().getDay() - 1]);
+  });
 
   return (
     <div className="tw-w-48 tw-mx-auto">
@@ -295,21 +324,27 @@ function PictureFrame(): T_ReactElement {
         {t("layout:header:frame:title")}
       </div>
       <div className="image-container dfr-border-strong dfr-bg-strong tw-border-4 tw-h-64 tw-flex tw-items-center">
-        <img
-          src={PHOTO.src}
-          className={classNames("dfr-transition-opacity", PHOTO.portrait && "tw-h-full")}
-          alt={PHOTO.place}
-        />
+        {photo && (
+          <Link href={photo.src} className={classNames("tw-block", photo.portrait && "tw-h-full")}>
+            <img
+              src={photo.src}
+              alt={photo.place}
+              className={classNames("tw-block", photo.portrait && "tw-h-full")}
+            />
+          </Link>
+        )}
       </div>
       <div className="tw-flex tw-flex-nowrap tw-items-end tw-justify-end tw-relative tw-py-1">
         <span className="dfr-bg-strong tw-absolute tw-left-0 tw-top-0 tw-w-10 tw-h-2 tw-rounded-br-md tw-rounded-bl-md" />
-        <Link
-          variant={Link.variant.SIMPLE}
-          href={PHOTO.placeUrl}
-          className="dfr-text-secondary dark:dfr-text-secondary tw-text-xs tw-italic tw-pl-1 tw-font-bold"
-        >
-          {PHOTO.place}
-        </Link>
+        {photo && (
+          <Link
+            variant={Link.variant.SIMPLE}
+            href={photo.placeUrl}
+            className="dfr-text-secondary dark:dfr-text-secondary tw-text-xs tw-italic tw-pl-1 tw-font-bold"
+          >
+            {photo.place}
+          </Link>
+        )}
       </div>
 
       <style jsx>{`
