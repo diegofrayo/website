@@ -1,6 +1,6 @@
 import React from "react";
 
-import Button from "./Button";
+import Button from "~/components/primitive/Button";
 
 const Story = (props) => <Button {...props} />;
 

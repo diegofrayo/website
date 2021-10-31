@@ -71,7 +71,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
         <Blockquote
           className="tw-mb-8"
           style={{ fontSize: `${fontSize}rem` }}
-          variant={Blockquote.variant.UNSTYLED}
+          variant={Blockquote.variant.STYLED}
         >
           <div className="tw-mb-6 tw-text-sm">
             <Button
@@ -109,7 +109,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
 
           <Blockquote
             className="tw-p-4 tw-border dfr-border-primary dark:dfr-border-primary tw-text-base"
-            variant={Blockquote.variant.UNSTYLED}
+            variant={Blockquote.variant.STYLED}
           >
             <p className="tw-font-bold tw-mb-2">
               {t("page:chords_title")} [{song.chords.length}]

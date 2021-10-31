@@ -4,7 +4,7 @@ const fs = require("fs");
 const SOURCE_CODE_PATHNAME = path.resolve(__dirname, "../src");
 
 module.exports = {
-  stories: ["../src/**/*.stories.tsx"],
+  stories: ["../src/stories/**/*.stories.tsx"],
   addons: [
     "storybook-addon-themes",
     "@storybook/addon-links",
@@ -18,7 +18,7 @@ module.exports = {
       },
     },
   ],
-  webpackFinal: async baseConfig => {
+  webpackFinal: async (baseConfig) => {
     const nextConfig = require("../next.config.js");
 
     baseConfig.resolve = {

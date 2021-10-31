@@ -189,6 +189,7 @@ export type T_WebsiteMetadata = {
     twitter: string;
     "500px": string;
     spotify: string;
+    couchsurfing: string;
   };
 };
 
@@ -222,6 +223,7 @@ export type T_CodeProps = {
 
 export enum E_Icons {
   "500PX" = "500PX",
+  "COUCHSURFING" = "COUCHSURFING",
   "GITHUB" = "GITHUB",
   "GMAIL" = "GMAIL",
   "INSTAGRAM" = "INSTAGRAM",

@@ -8,6 +8,7 @@ import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
 import { E_Icons, T_ReactChildrenProp, T_ReactElement, T_WebsiteMetadata } from "~/types";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
+import { isBrowser } from "~/utils/misc";
 
 import Header from "./Header";
 
@@ -25,6 +26,10 @@ function MainLayout({
   const { asPath } = useRouter();
 
   function getParentLevelURL() {
+    if (isBrowser()) {
+      console.log({ asPath, href: window.location.href });
+    }
+
     if (asPath === "/") return "";
 
     const urlParts = asPath.split("/");
@@ -144,6 +149,7 @@ function Footer({
             <FooterIcon url={WEBSITE_METADATA.social.twitter} icon={Icon.icon.TWITTER} />
             <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
             <FooterIcon url={WEBSITE_METADATA.social["500px"]} icon={Icon.icon["500PX"]} />
+            <FooterIcon url={WEBSITE_METADATA.social.couchsurfing} icon={Icon.icon.COUCHSURFING} />
           </div>
           <span className="dfr-text-strong-inverted tw-text-sm tw-leading-3 tw-mt-4 sm:tw-mt-0">
             {WEBSITE_METADATA.shortName} | {new Date().getFullYear()}
@@ -174,7 +180,7 @@ function Footer({
 
 function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactElement {
   return (
-    <Link href={url} className="tw-mx-1 tw-inline-block">
+    <Link href={url} className="tw-mr-1 sm:tw-mr-2 last:tw-mr-0 tw-inline-block">
       <Icon icon={icon} wrapperClassName="dfr-bg-strong-inverted tw-rounded-full tw-p-2" />
     </Link>
   );

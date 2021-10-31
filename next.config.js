@@ -1,6 +1,6 @@
-import withMDX from "@next/mdx";
+const withMDX = require("@next/mdx");
 
-export default withMDX()({
+module.exports = withMDX()({
   eslint: {
     ignoreDuringBuilds: true,
   },

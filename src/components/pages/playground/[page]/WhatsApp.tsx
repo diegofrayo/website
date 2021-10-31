@@ -18,6 +18,7 @@ function WhatsApp(): T_ReactElement {
     onKeyPress,
     onChange,
     onRadioChange,
+    composeWhatsAppUrl,
   } = useController();
 
   return (
@@ -38,7 +39,7 @@ function WhatsApp(): T_ReactElement {
           role="button"
           id="button"
           className="tw-self-end tw-flex"
-          href={`https://${isWebOptionSelected ? "web" : "api"}.whatsapp.com/send?phone=57${phone}`}
+          href={composeWhatsAppUrl()}
           variant={Link.variant.SIMPLE}
           disabled={isInvalidPhone}
         >
@@ -84,6 +85,7 @@ function useController(): {
   inputRef: any;
   onKeyPress: any;
   onChange: any;
+  composeWhatsAppUrl: any;
   onRadioChange: any;
   isInvalidPhone: boolean;
   isWebOptionSelected: boolean;
@@ -108,11 +110,18 @@ function useController(): {
   }
 
   function onChange(e) {
-    setPhone(replaceAll(generateSlug(e.currentTarget.value), "-", ""));
+    const value = e.currentTarget.value;
+    setPhone((value.includes("+") ? "+" : "") + replaceAll(generateSlug(value), "-", ""));
   }
 
   function onRadioChange(e) {
     setIsWebOptionSelected(e.currentTarget.value === "web");
+  }
+
+  function composeWhatsAppUrl() {
+    return `https://${isWebOptionSelected ? "web" : "api"}.whatsapp.com/send?phone=${
+      phone.includes("+") ? "" : "+57"
+    }${phone}`;
   }
 
   return {
@@ -126,5 +135,6 @@ function useController(): {
     onKeyPress,
     onChange,
     onRadioChange,
+    composeWhatsAppUrl,
   };
 }

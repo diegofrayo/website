@@ -315,7 +315,7 @@ function PictureFrame(): T_ReactElement {
       },
     ];
 
-    setPhoto(PHOTOS[new Date().getDay() - 1]);
+    setPhoto(PHOTOS[new Date().getDay()]);
   });
 
   return (

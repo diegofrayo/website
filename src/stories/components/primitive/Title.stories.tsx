@@ -1,6 +1,6 @@
 import React from "react";
 
-import Title from "./Title";
+import Title from "~/components/primitive/Title";
 
 const Story = (props) => <Title {...props} />;
 

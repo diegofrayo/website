@@ -151,7 +151,7 @@ function BlogPostActions(): T_ReactElement {
   return (
     <Blockquote
       className="dfr-border-primary dfr-text-strong dark:dfr-text-strong dark:dfr-border-primary tw-p-4 tw-border"
-      variant={Blockquote.variant.UNSTYLED}
+      variant={Blockquote.variant.STYLED}
     >
       <BlogPostDetailsItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
         <BlogPostDetailsItem.Icon icon={Icon.icon.LINK} />

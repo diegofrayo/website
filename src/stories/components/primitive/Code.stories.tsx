@@ -1,6 +1,6 @@
 import React from "react";
 
-import Code from "./Code";
+import Code from "~/components/primitive/Code";
 
 const Story = (props) => <Code {...props} />;
 

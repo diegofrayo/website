@@ -47,6 +47,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
       alt: "500px",
     },
   },
+  COUCHSURFING: {
+    isLibraryIcon: false,
+    icon: "/static/images/icons/couchsurfing.png",
+    props: {
+      className: "",
+      alt: "Couchsurfing",
+    },
+  },
   GITHUB: {
     isLibraryIcon: false,
     icon: "/static/images/icons/github.svg",
