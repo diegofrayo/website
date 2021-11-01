@@ -26,6 +26,11 @@ export const PLAYGROUND_PAGES = [
     componentName: "Films",
   },
   {
+    slug: "songs",
+    title: "songs",
+    componentName: "Songs",
+  },
+  {
     slug: "strings",
     title: "strings",
     componentName: "Strings",

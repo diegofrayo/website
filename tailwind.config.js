@@ -68,8 +68,9 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
     },
     "dfr-transition-opacity": {
       transition: config("theme.transitionProperty").opacity,
+      transitionDuration: config("theme.transitionDuration")["500"],
       "&:hover": {
-        opacity: config("theme.opacity")[80],
+        opacity: config("theme.opacity")[70],
       },
     },
     "dfr-shadow": {

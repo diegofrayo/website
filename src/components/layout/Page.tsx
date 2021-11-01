@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Head from "next/head";
+import classNames from "classnames";
 
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import { protectedComponent } from "~/hocs";
@@ -152,6 +153,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
       {children}
 
       <UserLoggedInFlag />
+      <AnalyticsDisabledFlag />
       {isDevelopmentEnvironment() && <WindowSize />}
     </Fragment>
   );
@@ -162,7 +164,15 @@ export default Page;
 // --- Components ---
 
 const UserLoggedInFlag = protectedComponent(function UserLoggedInFlag() {
-  return (
-    <span className="dfr-bg-strong dark:dfr-bg-strong tw-fixed tw-top-1 tw-left-1 tw-z-50 tw-w-1 tw-h-1" />
-  );
+  return <Flag className="tw-z-50" color="dfr-bg-strong dark:dfr-bg-strong" />;
 });
+
+function AnalyticsDisabledFlag() {
+  return <Flag className="tw-z-40" color="dfr-bg-colorful-primary" />;
+}
+
+function Flag({ className, color }) {
+  return (
+    <span className={classNames("tw-fixed tw-top-1 tw-left-1 tw-w-1 tw-h-1", className, color)} />
+  );
+}
