@@ -23,11 +23,6 @@ function Button({
       {...rest}
     >
       {children}
-
-      <style jsx>{`
-        button {
-        }
-      `}</style>
     </button>
   );
 }

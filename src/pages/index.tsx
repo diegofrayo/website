@@ -20,95 +20,8 @@ function HomePage(): T_ReactElement {
       <MainLayout title="👋">
         <div
           className="dfr-bg-secondary dfr-border-primary dfr-shadow dark:dfr-border-primary dark:dfr-shadow dark:dfr-bg-secondary tw-border-l-8 tw-border-b-8 tw-p-8 tw-text-xl"
-          dangerouslySetInnerHTML={{
-            __html: t("page:content"),
-          }}
-        ></div>
-
-        <div className="tw-hidden">
-          <div className="tw-px-4 tw-py-10">
-            <div className="tw-mb-8 tw-text-center">
-              <Title>ABOUT ME</Title>
-            </div>
-
-            <div className="tw-flex tw-justify-center tw-items-center">
-              <img
-                src="/static/images/home/about-me.png"
-                className="dfr-transition-opacity tw-h-32 tw-w-32"
-                alt="Hobbies illustration"
-              />
-              <div className="tw-text-right tw-ml-4 tw-max-w-sm">
-                <p>Im {new Date().getFullYear() - 1993} years old</p>
-                <p>Me gusta la musica, el futbol, las hamburguesas, los paisajes y tomar fotos</p>
-
-                <button>Mas sobre mi</button>
-              </div>
-            </div>
-          </div>
-          <Border />
-          <div className="tw-bg-gay-100 tw-px-4 tw-py-10 tw-min-h-screden">
-            <div className="tw-mb-8 tw-text-center">
-              <Title>CAREER</Title>
-            </div>
-
-            <div className="tw-flex tw-justify-center tw-items-center">
-              <img
-                src="/static/images/home/about-me.png"
-                alt=""
-                className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
-              />
-              <div className="tw-text-left tw-ml-4">
-                <p>Im located at Armenia, Quindio</p>
-                <p>Im 20 years old</p>
-                <p>Me gusta la musica, el futbol y las hamburguesas</p>
-
-                <button>Mas sobre mi</button>
-              </div>
-            </div>
-          </div>
-          <Border />
-          <div className="tw-bg-gay-100 tw-px-4 tw-py-10 tw-min-h-screden">
-            <div className="tw-mb-8 tw-text-center">
-              <Title>BLOG</Title>
-            </div>
-
-            <div className="tw-flex tw-justify-center tw-items-center">
-              <img
-                src="/static/images/home/about-me.png"
-                alt=""
-                className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
-              />
-              <div className="tw-text-left tw-ml-4">
-                <p>Im located at Armenia, Quindio</p>
-                <p>Im 20 years old</p>
-                <p>Me gusta la musica, el futbol y las hamburguesas</p>
-
-                <button>Mas sobre mi</button>
-              </div>
-            </div>
-          </div>
-          <Border />
-          <div className="tw-bg-gay-100 tw-px-4 tw-py-10 tw-min-h-screden">
-            <div className="tw-mb-8 tw-text-center">
-              <Title>PERSONAL PROJECTS</Title>
-            </div>
-
-            <div className="tw-flex tw-justify-center tw-items-center">
-              <img
-                src="/static/images/home/about-me.png"
-                alt=""
-                className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
-              />
-              <div className="tw-text-left tw-ml-4">
-                <p>Im located at Armenia, Quindio</p>
-                <p>Im 20 years old</p>
-                <p>Me gusta la musica, el futbol y las hamburguesas</p>
-
-                <button>Mas sobre mi</button>
-              </div>
-            </div>
-          </div>
-        </div>
+          dangerouslySetInnerHTML={{ __html: t("page:content") }}
+        />
       </MainLayout>
     </Page>
   );
@@ -121,6 +34,94 @@ export default HomePage;
 export const getStaticProps = getPageContentStaticProps({
   page: ROUTES.HOME,
 });
+
+/*
+// TODO: Finish home page
+
+<div className="tw-hidden">
+<div className="tw-px-4 tw-py-10">
+  <div className="tw-mb-8 tw-text-center">
+    <Title>ABOUT ME</Title>
+  </div>
+
+  <div className="tw-flex tw-justify-center tw-items-center">
+    <img
+      src="/static/images/home/about-me.png"
+      className="dfr-transition-opacity tw-h-32 tw-w-32"
+      alt="Hobbies illustration"
+    />
+    <div className="tw-text-right tw-ml-4 tw-max-w-sm">
+      <p>Im {new Date().getFullYear() - 1993} years old</p>
+      <p>Me gusta la musica, el futbol, las hamburguesas, los paisajes y tomar fotos</p>
+
+      <button>Mas sobre mi</button>
+    </div>
+  </div>
+</div>
+<Border />
+<div className="tw-bg-gay-100 tw-px-4 tw-py-10 tw-min-h-screden">
+  <div className="tw-mb-8 tw-text-center">
+    <Title>CAREER</Title>
+  </div>
+
+  <div className="tw-flex tw-justify-center tw-items-center">
+    <img
+      src="/static/images/home/about-me.png"
+      alt=""
+      className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
+    />
+    <div className="tw-text-left tw-ml-4">
+      <p>Im located at Armenia, Quindio</p>
+      <p>Im 20 years old</p>
+      <p>Me gusta la musica, el futbol y las hamburguesas</p>
+
+      <button>Mas sobre mi</button>
+    </div>
+  </div>
+</div>
+<Border />
+<div className="tw-bg-gay-100 tw-px-4 tw-py-10 tw-min-h-screden">
+  <div className="tw-mb-8 tw-text-center">
+    <Title>BLOG</Title>
+  </div>
+
+  <div className="tw-flex tw-justify-center tw-items-center">
+    <img
+      src="/static/images/home/about-me.png"
+      alt=""
+      className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
+    />
+    <div className="tw-text-left tw-ml-4">
+      <p>Im located at Armenia, Quindio</p>
+      <p>Im 20 years old</p>
+      <p>Me gusta la musica, el futbol y las hamburguesas</p>
+
+      <button>Mas sobre mi</button>
+    </div>
+  </div>
+</div>
+<Border />
+<div className="tw-bg-gay-100 tw-px-4 tw-py-10 tw-min-h-screden">
+  <div className="tw-mb-8 tw-text-center">
+    <Title>PERSONAL PROJECTS</Title>
+  </div>
+
+  <div className="tw-flex tw-justify-center tw-items-center">
+    <img
+      src="/static/images/home/about-me.png"
+      alt=""
+      className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
+    />
+    <div className="tw-text-left tw-ml-4">
+      <p>Im located at Armenia, Quindio</p>
+      <p>Im 20 years old</p>
+      <p>Me gusta la musica, el futbol y las hamburguesas</p>
+
+      <button>Mas sobre mi</button>
+    </div>
+  </div>
+</div>
+</div>
 
 // --- Components ---
 
@@ -156,3 +157,4 @@ function Border() {
     </div>
   );
 }
+*/

@@ -14,5 +14,5 @@ module.exports = {
   trailingComma: "all",
 
   // jsx
-  jsxBracketSameLine: false,
+  bracketSameLine: false,
 };

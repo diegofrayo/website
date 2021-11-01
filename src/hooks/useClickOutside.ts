@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function useClickOutside(ref, callback): any {
   useEffect(() => {
     function handleClickOutside(event) {
