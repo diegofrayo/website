@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
@@ -6,7 +6,7 @@ import { List, Link, Title, Space, Input } from "~/components/primitive";
 import { Emoji, Render } from "~/components/pages/_shared";
 import { SongDetails } from "~/components/pages/music";
 import { AuthService } from "~/auth";
-import { useQuery } from "~/hooks";
+import { useDidMount, useQuery } from "~/hooks";
 import { getPageContentStaticProps, I18nService, useTranslation } from "~/i18n";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
@@ -16,6 +16,7 @@ function MusicPage(): T_ReactElement {
   const {
     // states
     inputValue,
+    inputRef,
 
     // vars
     isLoading,
@@ -39,19 +40,7 @@ function MusicPage(): T_ReactElement {
         disableSEO: Boolean(t("page:config:is_seo_disabled")),
       }}
     >
-      <MainLayout
-        breadcumb={[
-          {
-            text: t("layout:breadcumb:home"),
-            url: ROUTES.HOME,
-          },
-          {
-            text: t("layout:breadcumb:music"),
-          },
-        ]}
-        title={t("page:title")}
-        showGoToTopButton
-      >
+      <MainLayout title={t("page:title")}>
         <p>{t("page:description")}</p>
 
         <Render isLoading={isLoading} error={error} data={data}>
@@ -76,7 +65,7 @@ function MusicPage(): T_ReactElement {
                     <span className="tw-underline">{t("page:chords_title")}</span>
                   </Link>
                 </Title>
-                <Space sizeTop={6} sizeBottom={5} variant={Space.variant.DASHED} />
+                <Space sizeTop={6} sizeBottom={16} variant={Space.variant.DASHED} />
 
                 <Title is="h2" variant={Title.variant.SECONDARY} size={Title.size.MD} className="">
                   <Emoji className="tw-mr-2">🎶</Emoji>
@@ -88,10 +77,11 @@ function MusicPage(): T_ReactElement {
                 <Input
                   id="input"
                   type="text"
-                  className="tw-my-4"
+                  className="tw-mt-4 tw-mb-6"
                   placeholder={t("page:input_placeholder")}
                   value={inputValue}
                   autoComplete="off"
+                  ref={inputRef}
                   onChange={onInputChange}
                 />
 
@@ -145,7 +135,24 @@ export const getStaticProps = getPageContentStaticProps({
 
 function useController() {
   const { isLoading, error, data } = useQuery("songsList", MusicService.fetchSongsList);
+
   const [inputValue, setInputValue] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useDidMount(() => {
+    function focusInput(e) {
+      if ((e.metaKey || e.ctrlKey) && e.code === "KeyF") {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+    }
+
+    document.addEventListener("keydown", focusInput);
+
+    return () => {
+      document.removeEventListener("keydown", focusInput);
+    };
+  });
 
   function onInputChange(e) {
     setInputValue(e.currentTarget.value.toLowerCase());
@@ -169,6 +176,7 @@ function useController() {
   return {
     // states
     inputValue,
+    inputRef,
 
     // vars
     isLoading,

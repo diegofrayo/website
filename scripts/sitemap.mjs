@@ -19,9 +19,8 @@ async function main() {
     const pages = [
       { path: "/", hasToBeIndexed: true },
       { path: "/blog", hasToBeIndexed: true },
-      { path: "/about-me", hasToBeIndexed: true },
+      { path: "/about-me", hasToBeIndexed: false },
       { path: "/resume", hasToBeIndexed: true },
-      { path: "/contact", hasToBeIndexed: true },
       { path: "/music", hasToBeIndexed: false },
       { path: "/playground", hasToBeIndexed: false },
     ]

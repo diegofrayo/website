@@ -4,7 +4,6 @@ export const ROUTES: T_Object<T_PageRoute> = {
   HOME: "/",
   ABOUT_ME: "/about-me",
   RESUME: "/resume",
-  CONTACT: "/contact",
   BLOG: "/blog",
   BLOG_DETAILS: "/blog/[slug]",
   MUSIC: "/music",

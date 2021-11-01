@@ -1,6 +1,6 @@
 import React from "react";
 
-import Collapsible from "./Collapsible";
+import Collapsible from "~/components/primitive/Collapsible";
 
 const Story = (props) => <Collapsible {...props} />;
 

@@ -48,24 +48,7 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
         disableSEO: Boolean(t("page:config:is_seo_disabled")),
       }}
     >
-      <MainLayout
-        breadcumb={[
-          {
-            text: t("layout:breadcumb:home"),
-            url: ROUTES.HOME,
-          },
-          {
-            text: t("layout:breadcumb:blog"),
-            url: ROUTES.BLOG,
-          },
-          {
-            text: post.title,
-          },
-        ]}
-        title={post.title}
-        showGoToTopButton
-        centerTitle
-      >
+      <MainLayout title={post.title}>
         <BlogPostDetails publishedAt={post.publishedAt} updatedAt={post.updatedAt} />
         <Space size={8} />
         <MDXContent content={mdxContent} />
@@ -139,7 +122,7 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
 
   return (
     <div className="tw-flex tw-flex-col sm:tw-flex-row tw-justify-center tw-items-center">
-      <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
+      <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-primary dark:dfr-border-primary">
         <BlogPostDetailsItem.Icon
           icon={Icon.icon.CALENDAR}
           color="tw-text-black dark:tw-text-white"
@@ -150,7 +133,7 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
         </p>
       </BlogPostDetailsItem>
       <span className="tw-block tw-my-1 sm:tw-my-0 sm:tw-inline-block sm:tw-mx-4" />
-      <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
+      <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-primary dark:dfr-border-primary">
         <BlogPostDetailsItem.Icon icon={Icon.icon.EDIT} color="tw-text-black dark:tw-text-white" />
         <p>
           <span className="tw-mr-1">{t("page:updated_at")}</span>
@@ -167,31 +150,27 @@ function BlogPostActions(): T_ReactElement {
 
   return (
     <Blockquote
-      className="tw-flex tw-flex-col md:tw-flex-row tw-text-black dark:tw-text-white tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary"
-      variant={Blockquote.variant.UNSTYLED}
+      className="dfr-border-primary dfr-text-strong dark:dfr-text-strong dark:dfr-border-primary tw-p-4 tw-border"
+      variant={Blockquote.variant.STYLED}
     >
-      <div className="tw-w-full md:tw-w-1/2 tw-flex tw-flex-col">
-        <BlogPostDetailsItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
-          <BlogPostDetailsItem.Icon icon={Icon.icon.LINK} />
-          <span>{t("page:copy_url_to_clipboard")}</span>
-        </BlogPostDetailsItem>
-      </div>
-      <Space size={1} orientation="h" className="md:tw-hidden" />
-      <div className="tw-w-full md:tw-w-1/2 tw-flex md:tw-items-end tw-flex-col">
-        <BlogPostDetailsItem
-          is={Button}
-          onClick={() => {
-            window.location.href = `mailto:${WEBSITE_METADATA.email}?subject=${t(
-              "page:email_message_subject",
-            )}&body=${t("page:email_message_body", {
-              url: encodeURIComponent(window.location.href),
-            })}`;
-          }}
-        >
-          <BlogPostDetailsItem.Icon icon={Icon.icon.REPLY} />
-          <span>{t("page:email_message_label")}</span>
-        </BlogPostDetailsItem>
-      </div>
+      <BlogPostDetailsItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
+        <BlogPostDetailsItem.Icon icon={Icon.icon.LINK} />
+        <span>{t("page:copy_url_to_clipboard")}</span>
+      </BlogPostDetailsItem>
+      <Space size={1} />
+      <BlogPostDetailsItem
+        is={Button}
+        onClick={() => {
+          window.location.href = `mailto:${WEBSITE_METADATA.email}?subject=${t(
+            "page:email_message_subject",
+          )}&body=${t("page:email_message_body", {
+            url: encodeURIComponent(window.location.href),
+          })}`;
+        }}
+      >
+        <BlogPostDetailsItem.Icon icon={Icon.icon.REPLY} />
+        <span>{t("page:email_message_label")}</span>
+      </BlogPostDetailsItem>
     </Blockquote>
   );
 }

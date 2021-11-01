@@ -11,6 +11,12 @@ export function setScrollPosition(val: number): void {
   window.scroll({ top: val, behavior: "smooth" });
 }
 
+export function scrollToElement(element: HTMLElement | null): void {
+  element?.scrollIntoView({
+    behavior: "smooth",
+  });
+}
+
 type T_OnScrollStoppedListenerParams = {
   onScroll: T_Function;
   onScrollStopped: T_Function;
@@ -55,6 +61,7 @@ export async function copyToClipboard(
     toast.success(translator.t("common:copy_to_clipboard"), {
       position: toast.POSITION.BOTTOM_CENTER,
       toastId: "copy-to-clipboard",
+      // autoClose: 5000000, // for debugging
     });
   } catch (error) {
     console.error("Error copying text to the clipboard");
@@ -63,34 +70,6 @@ export async function copyToClipboard(
       position: toast.POSITION.BOTTOM_CENTER,
       toastId: "copy-to-clipboard",
     });
-  }
-}
-
-export function detectEmojisSupport(): void {
-  try {
-    const node = <HTMLCanvasElement>window.document.createElement("canvas");
-    const ctx: CanvasRenderingContext2D | null = node.getContext("2d");
-
-    if (!ctx) {
-      throw new Error("Canvas null");
-    }
-
-    const smileEmoji = String.fromCharCode(55357) + String.fromCharCode(56835);
-    ctx.textBaseline = "top";
-    ctx.font = "32px Arial";
-    ctx.fillText(smileEmoji, 0, 0);
-
-    if (ctx.getImageData(16, 16, 1, 1).data[0] === 0) {
-      throw new Error("Emojis not rendered");
-    }
-
-    if (isAndroid() && getAndroidVersion() < 5) {
-      throw new Error("Android version is less than 5");
-    }
-  } catch (error) {
-    console.error("Emojis not supported");
-    console.error(error);
-    document.body.classList.add("no-emojis");
   }
 }
 
@@ -137,6 +116,7 @@ export async function downloadComponentAsImage(
 
 // --- Private functions ---
 
+/*
 function getAndroidVersion(): number {
   try {
     const ua: string = navigator.userAgent.toLowerCase();
@@ -154,6 +134,7 @@ function getAndroidVersion(): number {
 function isAndroid(): boolean {
   return navigator.userAgent.toLowerCase().indexOf("android") > -1;
 }
+*/
 
 function getScreenSize() {
   const width = window.innerWidth;

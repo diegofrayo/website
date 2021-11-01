@@ -6,13 +6,13 @@
 
 html,
 body {
-  font-family: "Exo", monospace;
+  font-family: "Cousine", monospace;
   font-display: swap;
 }
 
 body {
   @apply dfr-bg-primary;
-  @apply dfr-text-color-primary;
+  @apply dfr-text-primary;
   cursor: default;
   font-size: 18px;
   overflow: auto;
@@ -24,41 +24,21 @@ body.scroll-disabled {
   overflow: hidden;
 }
 
-body.no-emojis .emoji {
-  display: none;
-}
-
-button,
-summary {
-  outline: transparent !important;
-}
-
-a[disabled] {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
 /* --- Dark mode --- */
 
 .tw-dark body {
   @apply value:dark:dfr-bg-primary;
-  @apply value:dark:dfr-text-color-primary;
-}
-
-.tw-dark .dfr-border-color-primary {
-  @apply value:dark:dfr-border-color-primary;
-}
-
-.tw-dark input,
-.tw-dark textarea {
-  @apply value:dark:dfr-bg-secondary;
-  @apply value:dark:dfr-text-color-primary;
+  @apply value:dark:dfr-text-primary;
 }
 
 /* --- Toast --- */
 
 /** Used to define container behavior: width, position: fixed etc... **/
 .Toastify__toast-container {
+  @apply tw-p-4;
+}
+
+.tw-dark .Toastify__toast-container {
 }
 
 /** Used to define the position of the ToastContainer **/
@@ -78,39 +58,64 @@ a[disabled] {
 
 /** Classes for the displayed toast **/
 .Toastify__toast {
+  @apply dfr-bg-strong;
+  @apply tw-bg-opacity-80;
   @apply tw-text-sm;
   border-radius: 0;
+  border: 1px solid black;
+  font-weight: bold;
   text-align: center;
 }
+
+.tw-dark .Toastify__toast {
+}
+
 .Toastify__toast--rtl {
 }
+
 .Toastify__toast--dark {
 }
+
 .Toastify__toast--default {
 }
+
 .Toastify__toast--info {
 }
+
 .Toastify__toast--success {
-  background-color: rgb(35, 38, 35);
+  @apply tw-border-green-500;
+  @apply tw-text-green-500;
 }
-.tw-dark .Toastify__toast--success {
-  background-color: rgb(182, 182, 182);
+
+.Toastify__toast--success .Toastify__close-button {
+  @apply tw-text-green-500;
 }
+
 .Toastify__toast--warning {
 }
+
 .Toastify__toast--error {
-  background-color: rgb(244, 51, 51);
+  @apply tw-border-red-500;
+  @apply tw-text-red-500;
 }
+
+.Toastify__toast--error .Toastify__close-button {
+  @apply tw-text-red-500;
+}
+
 .Toastify__toast-body {
 }
 
 /** Classes for the close button. Better use your own closeButton **/
 .Toastify__close-button {
 }
+
 .Toastify__close-button--default {
 }
+
 .Toastify__close-button > svg {
 }
+
 .Toastify__close-button:hover,
 .Toastify__close-button:focus {
 }
@@ -118,21 +123,26 @@ a[disabled] {
 /** Classes for the progress bar **/
 .Toastify__progress-bar {
 }
+
 .Toastify__progress-bar--animated {
 }
+
 .Toastify__progress-bar--controlled {
 }
+
 .Toastify__progress-bar--rtl {
 }
+
 .Toastify__progress-bar--default {
 }
+
 .Toastify__progress-bar--dark {
 }
 
 /* --- NProgress --- */
 
 #nprogress .bar {
-  @apply tw-bg-white;
+  @apply dfr-bg-colorful-primary;
   height: 5px;
   left: 0;
   position: fixed;

@@ -72,13 +72,13 @@ function useController({
       return icon.props.color;
     }
 
-    return "tw-text-black dark:tw-text-white";
+    return "dfr-text-strong dark:dfr-text-strong";
   }
 
   const wrapperProps = {
     className: classNames(
       "dfr-Icon",
-      withDarkModeBackground && "dark:dfr-bg-secondary dark:tw-rounded-full tw-overflow-hidden",
+      withDarkModeBackground && "dark:dfr-bg-strong dark:tw-rounded-full tw-overflow-hidden",
       wrapperClassName,
     ),
   };

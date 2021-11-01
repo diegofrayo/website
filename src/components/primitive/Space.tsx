@@ -72,7 +72,7 @@ function useController({
       !isHorizontalDir && "tw-inline-block",
       variant === E_Variants.DEFAULT && "tw-border-0",
       variant === E_Variants.DASHED &&
-        "tw-border-dashed dfr-border-color-primary dark:dfr-border-color-primary",
+        "dfr-border-primary dark:dfr-border-primary tw-border-dashed",
       className,
     ),
   };

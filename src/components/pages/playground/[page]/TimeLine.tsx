@@ -89,7 +89,7 @@ function TimeLine(): T_ReactElement {
                             return (
                               <span
                                 key={category.id}
-                                className="tw-font-bold tw-text-xs tw-px-2 tw-py-1 tw-rounded-md tw-border dfr-border-color-primary dark:dfr-border-color-primary"
+                                className="tw-font-bold tw-text-xs tw-px-2 tw-py-1 tw-rounded-md tw-border dfr-border-primary dark:dfr-border-primary"
                               >
                                 {category.value}
                               </span>

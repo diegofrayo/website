@@ -130,7 +130,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
         </div>
         {showChordInput && (
           <div className="tw-text-sm tw-mt-3 tw-text-center">
-            <pre className="tw-whitespace-pre-line tw-break-all tw-border tw-inline-block tw-p-2 dfr-border-color-primary dark:dfr-border-color-primary">
+            <pre className="tw-whitespace-pre-line tw-break-all tw-border tw-inline-block tw-p-2 dfr-border-primary dark:dfr-border-primary">
               <Button
                 className="tw-font-bold"
                 data-clipboard-text={musicNotesAsString}

@@ -29,7 +29,7 @@ export function Sources({
               <Link
                 href={origin}
                 variant={Link.variant.SECONDARY}
-                className="tw-text-sm tw-italic tw-font-bold dfr-text-color-secondary"
+                className="dfr-text-secondary tw-text-sm tw-italic tw-font-bold"
                 external
               >
                 {host}

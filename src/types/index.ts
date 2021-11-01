@@ -51,7 +51,6 @@ export type T_PageContent = {
   };
   layout?: {
     header?: T_Object<T_Primitive>;
-    breadcumb?: T_Object<T_Primitive>;
     footer?: T_Object<T_Primitive>;
   };
 };
@@ -64,7 +63,6 @@ export type T_PageRoute =
   | "/resume"
   | "/blog"
   | "/blog/[slug]"
-  | "/contact"
   | "/music"
   | "/music/[song]"
   | "/playground"
@@ -188,7 +186,10 @@ export type T_WebsiteMetadata = {
   social: {
     github: string;
     linkedin: string;
+    twitter: string;
     "500px": string;
+    spotify: string;
+    couchsurfing: string;
   };
 };
 
@@ -222,20 +223,26 @@ export type T_CodeProps = {
 
 export enum E_Icons {
   "500PX" = "500PX",
+  "COUCHSURFING" = "COUCHSURFING",
   "GITHUB" = "GITHUB",
   "GMAIL" = "GMAIL",
   "INSTAGRAM" = "INSTAGRAM",
+  "LINKEDIN" = "LINKEDIN",
   "NETFLIX" = "NETFLIX",
   "SPOTIFY" = "SPOTIFY",
+  "TWITTER" = "TWITTER",
   "WHATSAPP" = "WHATSAPP",
   "YOUTUBE" = "YOUTUBE",
 
   "ARROW_UP" = "ARROW_UP",
   "CALENDAR" = "CALENDAR",
   "CHECK" = "CHECK",
+  "CHEVRON_DOUBLE_DOWN" = "CHEVRON_DOUBLE_DOWN",
+  "CHEVRON_DOWN" = "CHEVRON_DOWN",
   "CHEVRON_LEFT" = "CHEVRON_LEFT",
   "CHEVRON_RIGHT" = "CHEVRON_RIGHT",
   "CODE" = "CODE",
+  "COG" = "COG",
   "DOTS_CIRCLE_HORIZONTAL" = "DOTS_CIRCLE_HORIZONTAL",
   "DOTS_CIRCLE_HORIZONTAL_SOLID" = "DOTS_CIRCLE_HORIZONTAL_SOLID",
   "EDIT" = "EDIT",

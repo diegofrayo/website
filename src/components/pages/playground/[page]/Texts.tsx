@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect, useRef, useCallback } from "react";
 import ReactDiffViewer from "react-diff-viewer";
 
-import { Button, Space, Title } from "~/components/primitive";
+import { Button, Input, Space, Title } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
@@ -23,11 +23,11 @@ function Texts(): T_ReactElement {
     <div>
       <div className="sm:tw-flex sm:tw-flex-nowrap">
         <div className="tw-w-full sm:tw-w-1/2">
-          <TextArea title="Diego" text={baseText} setText={setBaseText} />
+          <TextArea title="Diego" text={baseText} setText={setBaseText} id="textarea-diego" />
         </div>
         <hr className="tw-h-px tw-my-6 sm:tw-w-px sm:tw-inline-block sm:tw-mx-2 tw-border-0" />
         <div className="tw-w-full sm:tw-w-1/2">
-          <TextArea title="Evan" text={newText} setText={setNewText} />
+          <TextArea title="Evan" text={newText} setText={setNewText} id="textarea-evan" />
         </div>
       </div>
 
@@ -99,7 +99,7 @@ function useController() {
 
 // --- Components ---
 
-function TextArea({ title, text, setText }) {
+function TextArea({ title, text, setText, id }) {
   const [isEditable, setIsEditable] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const saveOnLocalStorage = useCallback(() => {
@@ -156,9 +156,11 @@ function TextArea({ title, text, setText }) {
       <div className="tw-flex-1 tw-overflow-auto">
         {isEditable ? (
           <Fragment>
-            <textarea
+            <Input
+              is="textarea"
+              id={id}
               value={text}
-              className="tw-h-52 tw-block tw-w-full tw-p-4 tw-resize-none tw-border dfr-border-color-primary dark:dfr-border-color-primary"
+              className="tw-h-52 tw-block tw-w-full tw-p-4 tw-resize-none tw-border dfr-border-primary dark:dfr-border-primary"
               onChange={onTextareaChange}
               ref={textareaRef}
               autoFocus
@@ -183,11 +185,13 @@ function TextArea({ title, text, setText }) {
           </Fragment>
         ) : (
           <div className="tw-flex tw-flex-nowrap tw-h-52">
-            <div className="tw-w-8">
-              {text.split("\n").map((_, index) => {
-                return <p key={`p-numberline-${index}`}>{index + 1}</p>;
-              })}
-            </div>
+            {text && (
+              <div className="tw-w-8 tw-pt-0.5">
+                {text.split("\n").map((_, index) => {
+                  return <p key={`p-numberline-${index}`}>{index + 1}</p>;
+                })}
+              </div>
+            )}
             <pre
               className="tw-flex-1 tw-h-full tw-cursor-pointer tw-whitespace-pre-line tw-break-words"
               onClick={() => {

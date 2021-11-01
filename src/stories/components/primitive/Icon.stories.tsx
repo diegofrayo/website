@@ -1,6 +1,6 @@
 import React from "react";
 
-import Icon from "./";
+import Icon from "~/components/primitive/Icon";
 
 const Story = (props) => <Icon {...props} />;
 

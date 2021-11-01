@@ -75,7 +75,7 @@ export function Loader(): T_ReactElement {
         }
 
         .root div {
-          @apply dfr-border-color-primary;
+          @apply dfr-border-primary;
           position: absolute;
           border: 4px solid;
           opacity: 1;
@@ -118,7 +118,7 @@ export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_Rea
   return (
     <div className="tw-text-right" data-markdown-block>
       <Link
-        className="tw-flex sm:tw-inline-flex tw-p-4 tw-bg-gray-100 dark:tw-bg-gray-700 tw-rounded-md tw-items-center tw-relative tw-pr-8 tw-border dfr-border-color-primary"
+        className="dfr-bg-secondary dfr-border-primary dark:dfr-border-primary dark:dfr-bg-secondary tw-flex sm:tw-inline-flex tw-p-4 tw-rounded-md tw-items-center tw-relative tw-pr-8 tw-border"
         href={url}
         variant={Link.variant.SIMPLE}
       >
@@ -161,14 +161,16 @@ export function TitleCreator(
 export function ImageWithLink({
   src,
   className,
+  alt,
   ...rest
 }: {
   src: string;
   className?: string;
+  alt?: string;
 }): T_ReactElement {
   return (
-    <Link href={src} variant={Link.variant.UNSTYLED} className={className}>
-      <Image src={src} {...rest} />
+    <Link href={src} variant={Link.variant.UNSTYLED}>
+      <Image src={src} alt={alt} className={className} {...rest} />
     </Link>
   );
 }
