@@ -8,7 +8,6 @@ import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
 import { E_Icons, T_ReactChildrenProp, T_ReactElement, T_WebsiteMetadata } from "~/types";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
-import { isBrowser } from "~/utils/misc";
 
 import Header from "./Header";
 
@@ -23,16 +22,12 @@ function MainLayout({
   title = "",
   showGoToTopButton = true,
 }: T_MainLayoutProps): T_ReactElement {
-  const { asPath } = useRouter();
+  const { pathname } = useRouter();
 
   function getParentLevelURL() {
-    if (isBrowser()) {
-      console.log({ asPath, href: window.location.href });
-    }
+    if (pathname === "/") return "";
 
-    if (asPath === "/") return "";
-
-    const urlParts = asPath.split("/");
+    const urlParts = pathname.split("/");
 
     return urlParts.slice(0, urlParts.length - 1).join("/") + "/";
   }

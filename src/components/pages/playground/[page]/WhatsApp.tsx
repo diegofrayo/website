@@ -27,7 +27,7 @@ function WhatsApp(): T_ReactElement {
         <Input
           id="input"
           label="Ingrese un número de celular"
-          labelProps={{ className: "tw-flex-1 tw-mr-2" }}
+          containerProps={{ className: "tw-flex-1 tw-mr-2" }}
           ref={inputRef}
           value={phone}
           placeholder="🇨🇴 +57"

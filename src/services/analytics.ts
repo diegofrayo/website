@@ -24,7 +24,7 @@ class AnalyticsService {
     splitbee.track(name, data);
   }
 
-  private isAnalyticsDisabled() {
+  isAnalyticsDisabled() {
     if (
       isBrowser() &&
       (window.location.href.includes("a=d") || window.localStorage.getItem("DA"))

@@ -160,7 +160,7 @@ function TextArea({ title, text, setText, id }) {
               is="textarea"
               id={id}
               value={text}
-              className="tw-h-52 tw-block tw-w-full tw-p-4 tw-resize-none tw-border dfr-border-primary dark:dfr-border-primary"
+              className="tw-h-52"
               onChange={onTextareaChange}
               ref={textareaRef}
               autoFocus

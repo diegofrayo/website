@@ -68,7 +68,7 @@ type T_MenuItem = {
 
 function Menu(): T_ReactElement {
   const { currentLocale } = useTranslation();
-  const { asPath } = useRouter();
+  const { pathname } = useRouter();
 
   const [ITEMS, setItems] = useState<T_MenuItem[]>(createItems());
   const [showMenu, setShowMenu] = useState(false);
@@ -141,7 +141,8 @@ function Menu(): T_ReactElement {
           <ul className="tw-block">
             {ITEMS.map((item) => {
               const isLinkActive =
-                asPath === item.url || (item.url !== ROUTES.HOME && asPath.startsWith(item.url));
+                pathname === item.url ||
+                (item.url !== ROUTES.HOME && pathname.startsWith(item.url));
 
               return (
                 <li

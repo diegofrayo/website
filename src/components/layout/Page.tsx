@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Head from "next/head";
 import classNames from "classnames";
 
@@ -168,6 +168,14 @@ const UserLoggedInFlag = protectedComponent(function UserLoggedInFlag() {
 });
 
 function AnalyticsDisabledFlag() {
+  const [isAnalyticsEnabled, setIsAnalyticsEnabled] = useState(false);
+
+  useDidMount(() => {
+    setIsAnalyticsEnabled(AnalyticsService.isAnalyticsDisabled() === false);
+  });
+
+  if (isAnalyticsEnabled) return null;
+
   return <Flag className="tw-z-40" color="dfr-bg-colorful-primary" />;
 }
 

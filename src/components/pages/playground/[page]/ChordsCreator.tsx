@@ -23,7 +23,7 @@ function ChordsCreator(): T_ReactElement {
         <Input
           id="input-name"
           label="Nombre"
-          className="tw-my-1"
+          containerProps={{ className: "tw-my-1" }}
           value={inputs.name}
           maxLength={15}
           onChange={onInputChange("name")}
@@ -33,7 +33,7 @@ function ChordsCreator(): T_ReactElement {
         <Input
           id="input-notes"
           label="Notas"
-          className="tw-my-1"
+          containerProps={{ className: "tw-my-1" }}
           value={inputs.musicNotes}
           onChange={onInputChange("musicNotes")}
         />

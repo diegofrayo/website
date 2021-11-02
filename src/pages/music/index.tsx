@@ -77,7 +77,7 @@ function MusicPage(): T_ReactElement {
                 <Input
                   id="input"
                   type="text"
-                  className="tw-mt-4 tw-mb-6"
+                  containerProps={{ className: "tw-mt-4 tw-mb-6" }}
                   placeholder={t("page:input_placeholder")}
                   value={inputValue}
                   autoComplete="off"

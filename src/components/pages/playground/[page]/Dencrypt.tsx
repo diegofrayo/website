@@ -24,7 +24,7 @@ function Dencrypt(): T_ReactElement {
         <Input
           id="input"
           label="Ingrese un texto"
-          className="tw-my-1"
+          containerProps={{ className: "tw-my-1" }}
           ref={inputRef}
           onClick={onInputFocus}
         />
