@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Icon, Link, Title, Block } from "~/components/primitive";
+import { Icon, Link, Title, Block, Text, InlineText } from "~/components/primitive";
 import { Emoji, Render } from "~/components/pages/_shared";
 import { useQuery } from "~/hooks";
 import BooksService from "~/services/books";
@@ -30,7 +30,7 @@ function Books(): T_ReactElement {
                       backgroundRepeat: "no-repeat",
                     }}
                   >
-                    <span className="tw-absolute tw--top-2 tw--right-2 tw-bg-black dark:tw-bg-white tw-rounded-full tw-shadow-md tw-p-2 tw-w-10 tw-h-10">
+                    <InlineText className="tw-absolute tw--top-2 tw--right-2 tw-bg-black dark:tw-bg-white tw-rounded-full tw-shadow-md tw-p-2 tw-w-10 tw-h-10">
                       <Icon
                         icon={
                           calification === 5
@@ -42,7 +42,7 @@ function Books(): T_ReactElement {
                         size={24}
                         wrapperClassName="tw-relative tw--left-0.5 tw-top-0.5"
                       />
-                    </span>
+                    </InlineText>
 
                     <Block className="dfr-bg-strong-inverted tw-bg-opacity-70 tw-flex tw-self-end tw-flex-col tw-w-full tw-items-stretch tw-p-2 tw-rounded-tr-lg">
                       <Title
@@ -52,13 +52,13 @@ function Books(): T_ReactElement {
                       >
                         {title}
                       </Title>
-                      <p className="tw-text-sm tw-italic tw-leading-none tw-text-gray-700 tw-capitalize tw-mb-2 tw-font-bold">
+                      <Text className="tw-text-sm tw-italic tw-leading-none tw-text-gray-700 tw-capitalize tw-mb-2 tw-font-bold">
                         {author || "Author"}
-                      </p>
-                      <p className="tw-text-xs tw-font-bold tw-leading-none tw-text-right tw-text-black">
+                      </Text>
+                      <Text className="tw-text-xs tw-font-bold tw-leading-none tw-text-right tw-text-black">
                         <Emoji className="tw-mr-1">🗓</Emoji>
-                        <span>{year}</span>
-                      </p>
+                        <InlineText>{year}</InlineText>
+                      </Text>
                     </Block>
                   </article>
                 </Link>

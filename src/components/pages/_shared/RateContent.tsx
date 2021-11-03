@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import { toast } from "react-toastify";
 
-import { Button, Block } from "~/components/primitive";
+import { Button, Block, Text } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/i18n";
@@ -67,7 +67,7 @@ function RateContent(): T_ReactElement {
 
   return (
     <Block className="tw-text-center">
-      <p className="tw-text-sm tw-font-bold">{t("common:useful_question")}</p>
+      <Text className="tw-text-sm tw-font-bold">{t("common:useful_question")}</Text>
       <Block
         className={classNames("tw-text-center tw-mt-1", isQuestionAnswered && "tw-opacity-50")}
       >

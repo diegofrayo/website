@@ -1,6 +1,6 @@
 import React, { useState, useRef, RefObject, Fragment } from "react";
 
-import { Space, Button, Input, Block } from "~/components/primitive";
+import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { T_FormEvent, T_OnChangeEvent, T_OnClickEvent, T_ReactElement } from "~/types";
 import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
@@ -21,7 +21,7 @@ function Strings(): T_ReactElement {
   return (
     <Fragment>
       <Block>
-        <p className="tw-font-bold tw-mb-1">Ingrese un texto</p>
+        <Text className="tw-font-bold tw-mb-1">Ingrese un texto</Text>
         <Input
           is="textarea"
           id="textarea"
@@ -42,7 +42,7 @@ function Strings(): T_ReactElement {
       <Space size={10} variant={Space.variant.DASHED} />
 
       <Block className="tw-mb-4">
-        <p className="tw-font-bold">slug</p>
+        <Text className="tw-font-bold">slug</Text>
         <output
           className="tw-border dfr-border-primary tw-block tw-p-3 tw-w-full tw-my-1"
           style={{ minHeight: 40 }}
@@ -59,7 +59,7 @@ function Strings(): T_ReactElement {
       </Block>
 
       <Block className="tw-my-4">
-        <p className="tw-font-bold tw-uppercase">mayúsculas</p>
+        <Text className="tw-font-bold tw-uppercase">mayúsculas</Text>
         <output className="output tw-border dfr-border-primary tw-block tw-p-3 tw-w-full tw-my-1">
           {texts.upper}
         </output>
@@ -73,7 +73,7 @@ function Strings(): T_ReactElement {
       </Block>
 
       <Block className="tw-my-4">
-        <p className="tw-font-bold tw-lowercase">minúsculas</p>
+        <Text className="tw-font-bold tw-lowercase">minúsculas</Text>
         <output className="output tw-border dfr-border-primary tw-block tw-p-3 tw-w-full tw-my-1">
           {texts.lower}
         </output>
@@ -87,7 +87,7 @@ function Strings(): T_ReactElement {
       </Block>
 
       <Block className="tw-my-4">
-        <p className="tw-font-bold tw-capitalize">letra capital</p>
+        <Text className="tw-font-bold tw-capitalize">letra capital</Text>
         <output className="output tw-border dfr-border-primary tw-block tw-p-3 tw-w-full tw-my-1">
           {texts.convertToCapitalLetter}
         </output>
@@ -101,7 +101,7 @@ function Strings(): T_ReactElement {
       </Block>
 
       <Block className="tw-my-4">
-        <p className="tw-font-bold">Mayúscula solo la primera palabra</p>
+        <Text className="tw-font-bold">Mayúscula solo la primera palabra</Text>
         <output className="output tw-border dfr-border-primary tw-block tw-p-3 tw-w-full tw-my-1">
           {texts.convertToCapitalLetterOnlyFirst}
         </output>

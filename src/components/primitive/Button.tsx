@@ -2,10 +2,17 @@ import React from "react";
 import classNames from "classnames";
 
 import { T_HTMLAttributes, T_ReactElement } from "~/types";
+import { mirror } from "~/utils/misc";
 
-type T_ButtonProps = T_HTMLAttributes["button"];
+type T_Variant = "UNSTYLED" | "SIMPLE";
+const VARIANTS = mirror(["UNSTYLED", "SIMPLE"]) as Record<T_Variant, T_Variant>;
+
+type T_ButtonProps = T_HTMLAttributes["button"] & {
+  variant?: T_Variant;
+};
 
 function Button({
+  variant = VARIANTS.SIMPLE,
   children,
   disabled = false,
   className = "",
@@ -15,7 +22,8 @@ function Button({
   return (
     <button
       className={classNames(
-        disabled ? "tw-cursor-not-allowed tw-opacity-50" : "dfr-transition-opacity",
+        variant === VARIANTS.SIMPLE && "dfr-transition-opacity",
+        disabled && "tw-cursor-not-allowed tw-opacity-50",
         className,
       )}
       disabled={disabled}
@@ -26,5 +34,7 @@ function Button({
     </button>
   );
 }
+
+Button.variant = VARIANTS;
 
 export default Button;

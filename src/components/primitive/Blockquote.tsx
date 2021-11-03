@@ -12,8 +12,8 @@ type T_BlockquoteProps = T_HTMLAttributes["blockquote"] & {
 };
 
 function Blockquote({
-  children,
   variant = VARIANTS.UNSTYLED,
+  children,
   className = "",
   ...rest
 }: T_BlockquoteProps): T_ReactElement {

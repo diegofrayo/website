@@ -4,7 +4,7 @@ import renderToString from "next-mdx-remote/render-to-string";
 import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Blockquote, Icon, Space, Button, Block } from "~/components/primitive";
+import { Blockquote, Icon, Space, Button, Block, Text, InlineText } from "~/components/primitive";
 import { MDXContent, RateContent } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
@@ -127,18 +127,18 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
           icon={Icon.icon.CALENDAR}
           color="tw-text-black dark:tw-text-white"
         />
-        <p>
-          <span className="tw-mr-1">{t("page:published_at")}</span>
+        <Text>
+          <InlineText className="tw-mr-1">{t("page:published_at")}</InlineText>
           <strong>{publishedAt}</strong>
-        </p>
+        </Text>
       </BlogPostDetailsItem>
-      <span className="tw-block tw-my-1 sm:tw-my-0 sm:tw-inline-block sm:tw-mx-4" />
+      <InlineText className="tw-block tw-my-1 sm:tw-my-0 sm:tw-inline-block sm:tw-mx-4" />
       <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-primary dark:dfr-border-primary">
         <BlogPostDetailsItem.Icon icon={Icon.icon.EDIT} color="tw-text-black dark:tw-text-white" />
-        <p>
-          <span className="tw-mr-1">{t("page:updated_at")}</span>
+        <Text>
+          <InlineText className="tw-mr-1">{t("page:updated_at")}</InlineText>
           <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
-        </p>
+        </Text>
       </BlogPostDetailsItem>
     </Block>
   );
@@ -155,7 +155,7 @@ function BlogPostActions(): T_ReactElement {
     >
       <BlogPostDetailsItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
         <BlogPostDetailsItem.Icon icon={Icon.icon.LINK} />
-        <span>{t("page:copy_url_to_clipboard")}</span>
+        <InlineText>{t("page:copy_url_to_clipboard")}</InlineText>
       </BlogPostDetailsItem>
       <Space size={1} />
       <BlogPostDetailsItem
@@ -169,7 +169,7 @@ function BlogPostActions(): T_ReactElement {
         }}
       >
         <BlogPostDetailsItem.Icon icon={Icon.icon.REPLY} />
-        <span>{t("page:email_message_label")}</span>
+        <InlineText>{t("page:email_message_label")}</InlineText>
       </BlogPostDetailsItem>
     </Blockquote>
   );

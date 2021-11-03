@@ -6,7 +6,7 @@ import { GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Blockquote, Icon, Button, Space, Block } from "~/components/primitive";
+import { Blockquote, Icon, Button, Space, Block, Text } from "~/components/primitive";
 import { MDXContent, Loader, RateContent } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
 import { useDidMount } from "~/hooks";
@@ -111,9 +111,9 @@ function SongPage(props: T_PageProps): T_ReactElement {
             className="tw-p-4 tw-border dfr-border-primary dark:dfr-border-primary tw-text-base"
             variant={Blockquote.variant.STYLED}
           >
-            <p className="tw-font-bold tw-mb-2">
+            <Text className="tw-font-bold tw-mb-2">
               {t("page:chords_title")} [{song.chords.length}]
-            </p>
+            </Text>
             <pre
               className="tw-break-all tw-max-w-full tw-whitespace-normal"
               dangerouslySetInnerHTML={{

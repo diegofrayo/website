@@ -1,7 +1,7 @@
 import React, { Fragment, useRef, useState } from "react";
 import classNames from "classnames";
 
-import { Space, Button, Title, Block } from "~/components/primitive";
+import { Space, Button, Title, Block, InlineText } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import AnalyticsService from "~/services/analytics";
 import { useExecuteCallback } from "~/hooks";
@@ -105,7 +105,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
         <Block>
           <Button className="tw-font-bold" onClick={handleDownloadAsImage}>
             <Emoji className="tw-mr-1">⬇️</Emoji>
-            <span>descargar como imagen</span>
+            <InlineText>descargar como imagen</InlineText>
           </Button>
 
           {musicNotesAsString && enableShowNotesOption ? (
@@ -114,15 +114,15 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
                 className="tw-mt-1 sm:tw-mt-0 sm:tw-ml-2 tw-font-bold"
                 onClick={handleShowChordInput}
               >
-                <span
+                <InlineText
                   className={classNames(
                     "tw-inline-block tw-transition-all tw-transform tw-w-4",
                     showChordInput && "tw-rotate-90",
                   )}
                 >
                   ‣
-                </span>
-                <span>{showChordInput ? "ocultar" : "mostrar"} notas</span>
+                </InlineText>
+                <InlineText>{showChordInput ? "ocultar" : "mostrar"} notas</InlineText>
               </Button>
               <Space size={1} orientation="v" />
             </Fragment>

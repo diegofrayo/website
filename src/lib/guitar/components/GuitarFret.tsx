@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import classNames from "classnames";
 
-import { Block, Icon } from "~/components/primitive";
+import { Block, Icon, InlineText } from "~/components/primitive";
 import twcss from "~/lib/twcss";
 import { T_ReactElement } from "~/types";
 import { createArray, mirror } from "~/utils/misc";
@@ -101,28 +101,30 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
               >
                 {isStringsNamesVariant ? (
                   <Block className="tw-flex tw-justify-end tw-w-full tw-text-base tw-px-1">
-                    <span className="tw-text-center tw-w-6">{STRINGS_NAMES[guitarString - 1]}</span>
-                    <span className="tw-px-0.5">-</span>
+                    <InlineText className="tw-text-center tw-w-6">
+                      {STRINGS_NAMES[guitarString - 1]}
+                    </InlineText>
+                    <InlineText className="tw-px-0.5">-</InlineText>
                     <strong className="tw-text-center tw-w-6">{guitarString}</strong>
                   </Block>
                 ) : isSkippedStringsVariant ? (
-                  <span className="tw-mx-2">
+                  <InlineText className="tw-mx-2">
                     {getSkippedStringValue(playedStrings, guitarString)}
-                  </span>
+                  </InlineText>
                 ) : isBarreMusicNote ? (
                   <Fragment>
                     <String />
                     {(musicNote as I_BarreMusicNote)?.barre >= guitarString && (
-                      <span className="tw-h-full tw-border-4 tw-border-white" />
+                      <InlineText className="tw-h-full tw-border-4 tw-border-white" />
                     )}
                     <String />
                   </Fragment>
                 ) : musicNote ? (
                   <Fragment>
                     <String />
-                    <span className="tw-rounded-full tw-h-5 tw-w-5 tw-border tw-font-bold tw-bg-white tw-text-black tw-leading-0 tw-flex tw-items-center tw-justify-center">
+                    <InlineText className="tw-rounded-full tw-h-5 tw-w-5 tw-border tw-font-bold tw-bg-white tw-text-black tw-leading-0 tw-flex tw-items-center tw-justify-center">
                       {(musicNote as I_SimpleMusicNote).finger}
-                    </span>
+                    </InlineText>
                     <String />
                   </Fragment>
                 ) : (

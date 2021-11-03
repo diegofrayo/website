@@ -11,15 +11,16 @@ export default {
 };
 
 // --- Stories ---
+
 export const Unstyled = Story.bind({});
 Unstyled.args = {
-  children: "I'm a [Unstyled] Blockquote",
+  children: "I'm a [unstyled] Blockquote",
   variant: Blockquote.variant.UNSTYLED,
-  className: "tw-text-red-500",
+  className: "",
 };
 
-export const Primary = Story.bind({});
-Primary.args = {
-  children: "I'm a [Primary] Blockquote",
+export const Styled = Story.bind({});
+Styled.args = {
+  children: "I'm a [styled] Blockquote",
   variant: Blockquote.variant.STYLED,
 };

@@ -3,7 +3,7 @@ import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 
-import { Icon, Button, Link, Space, Block } from "~/components/primitive";
+import { Icon, Button, Link, Space, Block, Text, InlineText } from "~/components/primitive";
 import { AuthService } from "~/auth";
 import { safeRender } from "~/hocs";
 import { useClickOutside, useDidMount } from "~/hooks";
@@ -259,7 +259,7 @@ function MenuItem({
 }): T_ReactElement {
   return (
     <Block className="dfr-bg-secondary dfr-border-primary dark:dfr-border-primary dark:dfr-bg-secondary tw-flex tw-flex-col tw-justify-center tw-items-center tw-h-16 tw-px-2 tw-border-b last:tw-border-0">
-      <p className="tw-font-bold tw-text-xs tw-text-right">{title}</p>
+      <Text className="tw-font-bold tw-text-xs tw-text-right">{title}</Text>
       <Block className="tw-text-right tw-leading-none tw-mt-2">{children}</Block>
     </Block>
   );
@@ -317,7 +317,7 @@ function PictureFrame(): T_ReactElement {
       },
     ];
 
-    setPhoto(PHOTOS[0]);
+    setPhoto(PHOTOS[new Date().getDay()]);
   });
 
   return (
@@ -337,7 +337,7 @@ function PictureFrame(): T_ReactElement {
         )}
       </Block>
       <Block className="tw-flex tw-flex-nowrap tw-items-end tw-justify-end tw-relative tw-py-1">
-        <span className="dfr-bg-strong tw-absolute tw-left-0 tw-top-0 tw-w-10 tw-h-2 tw-rounded-br-md tw-rounded-bl-md" />
+        <InlineText className="dfr-bg-strong tw-absolute tw-left-0 tw-top-0 tw-w-10 tw-h-2 tw-rounded-br-md tw-rounded-bl-md" />
         {photo && (
           <Link
             variant={Link.variant.SIMPLE}

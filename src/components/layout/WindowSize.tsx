@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Block } from "~/components/primitive";
+import { Block, InlineText } from "~/components/primitive";
 import { useOnWindowResize } from "~/hooks";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
@@ -21,11 +21,11 @@ function WindowSize(): T_ReactElement {
         window.open(`${WEBSITE_METADATA.url}${window.location.pathname}`);
       }}
     >
-      <span>{size.join("x")} | </span>
-      <span className="sm:tw-hidden tw-inline-block">mobile</span>
-      <span className="sm:tw-inline-block md:tw-hidden tw-hidden">sm</span>
-      <span className="md:tw-inline-block lg:tw-hidden tw-hidden">md</span>
-      <span className="lg:tw-inline-block tw-hidden">lg</span>
+      <InlineText>{size.join("x")} | </InlineText>
+      <InlineText className="sm:tw-hidden tw-inline-block">mobile</InlineText>
+      <InlineText className="sm:tw-inline-block md:tw-hidden tw-hidden">sm</InlineText>
+      <InlineText className="md:tw-inline-block lg:tw-hidden tw-hidden">md</InlineText>
+      <InlineText className="lg:tw-inline-block tw-hidden">lg</InlineText>
 
       <style jsx>
         {`

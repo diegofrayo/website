@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { useRouter } from "next/router";
 
 import { Page, MainLayout } from "~/components/layout";
-import { List, Link, Block } from "~/components/primitive";
+import { List, Link, Block, Text, InlineText } from "~/components/primitive";
 import { Render } from "~/components/pages/_shared";
 import { useQuery } from "~/hooks";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
@@ -93,14 +93,14 @@ function BlogEntry({
       >
         {title}
       </Link>
-      <p className="tw-text-sm tw-italic">
-        <span>{t("page:updated_at")} </span>
+      <Text className="tw-text-sm tw-italic">
+        <InlineText>{t("page:updated_at")} </InlineText>
         <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
-      </p>
+      </Text>
       <Block className="tw-pb-1">
         {categories.map((category) => {
           return (
-            <span
+            <InlineText
               key={category.id}
               className={classNames(
                 "tw-inline-block tw-py-1 tw-px-2 tw-rounded-sm tw-font-semibold tw-text-xs",
@@ -108,7 +108,7 @@ function BlogEntry({
               )}
             >
               {category.value}
-            </span>
+            </InlineText>
           );
         })}
       </Block>

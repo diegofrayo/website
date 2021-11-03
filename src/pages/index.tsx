@@ -52,8 +52,8 @@ export const getStaticProps = getPageContentStaticProps({
       alt="Hobbies illustration"
     />
     <Block className="tw-text-right tw-ml-4 tw-max-w-sm">
-      <p>Im {new Date().getFullYear() - 1993} years old</p>
-      <p>Me gusta la musica, el futbol, las hamburguesas, los paisajes y tomar fotos</p>
+      <Text>Im {new Date().getFullYear() - 1993} years old</Text>
+      <Text>Me gusta la musica, el futbol, las hamburguesas, los paisajes y tomar fotos</Text>
 
       <button>Mas sobre mi</button>
     </Block>
@@ -72,9 +72,9 @@ export const getStaticProps = getPageContentStaticProps({
       className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
     />
     <Block className="tw-text-left tw-ml-4">
-      <p>Im located at Armenia, Quindio</p>
-      <p>Im 20 years old</p>
-      <p>Me gusta la musica, el futbol y las hamburguesas</p>
+      <Text>Im located at Armenia, Quindio</Text>
+      <Text>Im 20 years old</Text>
+      <Text>Me gusta la musica, el futbol y las hamburguesas</Text>
 
       <button>Mas sobre mi</button>
     </Block>
@@ -93,9 +93,9 @@ export const getStaticProps = getPageContentStaticProps({
       className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
     />
     <Block className="tw-text-left tw-ml-4">
-      <p>Im located at Armenia, Quindio</p>
-      <p>Im 20 years old</p>
-      <p>Me gusta la musica, el futbol y las hamburguesas</p>
+      <Text>Im located at Armenia, Quindio</Text>
+      <Text>Im 20 years old</Text>
+      <Text>Me gusta la musica, el futbol y las hamburguesas</Text>
 
       <button>Mas sobre mi</button>
     </Block>
@@ -114,9 +114,9 @@ export const getStaticProps = getPageContentStaticProps({
       className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
     />
     <Block className="tw-text-left tw-ml-4">
-      <p>Im located at Armenia, Quindio</p>
-      <p>Im 20 years old</p>
-      <p>Me gusta la musica, el futbol y las hamburguesas</p>
+      <Text>Im located at Armenia, Quindio</Text>
+      <Text>Im 20 years old</Text>
+      <Text>Me gusta la musica, el futbol y las hamburguesas</Text>
 
       <button>Mas sobre mi</button>
     </Block>

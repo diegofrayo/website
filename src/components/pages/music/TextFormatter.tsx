@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import classNames from "classnames";
 import reactStringReplace from "react-string-replace";
 
-import { Button, Icon, Modal, Space, Block } from "~/components/primitive";
+import { Button, Icon, Modal, Space, Block, InlineText } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { GuitarChord, GuitarService, T_Chord } from "~/lib/guitar";
 import { T_Function, T_ReactElement, T_ReactChildrenProp } from "~/types";
@@ -62,7 +62,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                 <Block className="tw-flex-1 tw-justify-center tw-flex tw-items-center">
                   {createArray(selectedChord.length, 0).map((index) => {
                     return (
-                      <span
+                      <InlineText
                         key={`Chord-point-${index}`}
                         className={classNames(
                           "tw-inline-flex tw-justify-center tw-items-center tw-rounded-full tw-mx-1 tw-h-4 tw-w-4 tw-text-white dark:tw-text-black tw-text-xxs tw-leading-0",
@@ -72,7 +72,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                         )}
                       >
                         {index + 1}
-                      </span>
+                      </InlineText>
                     );
                   })}
                 </Block>

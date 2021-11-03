@@ -3,7 +3,14 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
 import classNames from "classnames";
 
-import { Link, Icon, Code as CodePrimitive, Button, Block } from "~/components/primitive";
+import {
+  Block,
+  Button,
+  Code as CodePrimitive,
+  Icon,
+  InlineText,
+  Link,
+} from "~/components/primitive";
 import { useTranslation } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { T_CodeProps, T_ReactElement } from "~/types";
@@ -34,9 +41,9 @@ function Code({
               {codeTitle}
             </code>
           )}
-          <span className="tw-rounded-md tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-auto">
+          <InlineText className="tw-rounded-md tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-auto">
             {language}
-          </span>
+          </InlineText>
         </Block>
       )}
 
@@ -56,7 +63,7 @@ function Code({
                     <LineNo>{i + 1}</LineNo>
                     <LineContent>
                       {line.map((token, key) => {
-                        return <span key={key} {...getTokenProps({ token, key })} />;
+                        return <InlineText key={key} {...getTokenProps({ token, key })} />;
                       })}
                     </LineContent>
                   </Line>
@@ -80,12 +87,14 @@ function Code({
                 wrapperClassName="tw-align-middle tw-mr-1.5"
                 withDarkModeBackground
               />
-              <span className="tw-align-middle tw-inline-block">{t("page:see_source_code")}</span>
+              <InlineText className="tw-align-middle tw-inline-block">
+                {t("page:see_source_code")}
+              </InlineText>
             </Link>
           )}
           <Button
-            className="tw-block sm:tw-inline-block tw-ml-auto tw-align-middle tw-font-bold"
             data-clipboard-text={code}
+            className="tw-block sm:tw-inline-block tw-ml-auto tw-align-middle tw-font-bold"
             onClick={copyToClipboard}
           >
             {t("page:copy_to_clipboard")}

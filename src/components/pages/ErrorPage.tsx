@@ -1,6 +1,7 @@
 import React from "react";
 
 import { MainLayout, Page } from "~/components/layout";
+import { Text } from "~/components/primitive";
 import { useTranslation } from "~/i18n";
 import { T_ReactElement } from "~/types";
 
@@ -15,7 +16,7 @@ function ErrorPage(): T_ReactElement {
       }}
     >
       <MainLayout title={t("page:title")}>
-        <p className="tw-text-center">{t("page:body")}</p>
+        <Text className="tw-text-center">{t("page:body")}</Text>
       </MainLayout>
     </Page>
   );

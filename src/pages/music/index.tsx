@@ -2,7 +2,7 @@ import React, { Fragment, useRef, useState } from "react";
 import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
-import { List, Link, Title, Space, Input } from "~/components/primitive";
+import { List, Link, Title, Space, Input, Text, InlineText } from "~/components/primitive";
 import { Emoji, Render } from "~/components/pages/_shared";
 import { SongDetails } from "~/components/pages/music";
 import { AuthService } from "~/auth";
@@ -41,7 +41,7 @@ function MusicPage(): T_ReactElement {
       }}
     >
       <MainLayout title={t("page:title")}>
-        <p>{t("page:description")}</p>
+        <Text>{t("page:description")}</Text>
 
         <Render isLoading={isLoading} error={error} data={data}>
           {(data: T_Song[]) => {
@@ -62,16 +62,16 @@ function MusicPage(): T_ReactElement {
                     isNextLink
                   >
                     <Emoji className="tw-mr-2">📓</Emoji>
-                    <span className="tw-underline">{t("page:chords_title")}</span>
+                    <InlineText className="tw-underline">{t("page:chords_title")}</InlineText>
                   </Link>
                 </Title>
                 <Space sizeTop={6} sizeBottom={16} variant={Space.variant.DASHED} />
 
                 <Title is="h2" variant={Title.variant.SECONDARY} size={Title.size.MD} className="">
                   <Emoji className="tw-mr-2">🎶</Emoji>
-                  <span>
+                  <InlineText>
                     {t("page:songs_title")} [{songsList.length}]
-                  </span>
+                  </InlineText>
                 </Title>
 
                 <Input
@@ -99,7 +99,7 @@ function MusicPage(): T_ReactElement {
                           locale={I18nService.getDefaultLocale()}
                           isNextLink
                         >
-                          <span
+                          <InlineText
                             className={classNames(
                               "tw-flex-1 sm:tw-truncate",
                               !song.isPublic && "tw-line-through",
@@ -107,7 +107,7 @@ function MusicPage(): T_ReactElement {
                             title={song.title}
                           >
                             {song.title}
-                          </span>
+                          </InlineText>
                         </Link>
                         <SongDetails song={song} />
                       </List.Item>

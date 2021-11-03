@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 
-import { Button, Icon, Image, Link, Space, Title, Block } from "~/components/primitive";
+import {
+  Button,
+  Icon,
+  Image,
+  Link,
+  Space,
+  Title,
+  Block,
+  Text,
+  InlineText,
+} from "~/components/primitive";
 import { useOnWindowStopScroll } from "~/hooks";
 import { useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
@@ -93,19 +103,27 @@ function Footer({
       duration: "4:00",
       thumbnail: "https://i.scdn.co/image/ab67616d0000b273074392d2ae6b119d67289def",
       source: "spotify",
-      url: "https://open.spotify.com/track/1JQOUueUnq9xoUcI1MiVVy?si=562c9fd52fa54957",
+      url: "https://open.spotify.com/track/1JQOUueUnq9xoUcI1MiVVy",
+    },
+    {
+      title: "Maelström",
+      artist: "Fito Paez",
+      duration: "3:55",
+      thumbnail: "https://i.scdn.co/image/ab67616d0000b273a4091bb6f7f03ec978187d99",
+      source: "spotify",
+      url: "https://open.spotify.com/track/5JyeXhwxBQFEne4FxPbCxN",
     },
   ];
 
-  const song = SONGS[1];
+  const song = SONGS[2];
 
   return (
     <Block is="footer" className="dfr-bg-strong tw-relative tw-pt-12 tw-pb-4">
       <Block className="dfr-max-w-base tw-mx-auto tw-px-8">
         <Block className="tw-w-96 tw-max-w-full tw-mx-auto">
-          <p className="dfr-text-colorful-primary tw-font-bold tw-text-xs tw-text-right">
+          <Text className="dfr-text-colorful-primary tw-font-bold tw-text-xs tw-text-right">
             on repeat...
-          </p>
+          </Text>
           <Link
             variant={Link.variant.SIMPLE}
             href={song.url}
@@ -113,19 +131,19 @@ function Footer({
           >
             <Image src={song.thumbnail} className="tw-h-20 tw-w-20 tw-object-cover tw-mr-2" />
             <Block className="tw-flex-1 tw-min-w-0">
-              <p
+              <Text
                 className="dfr-text-strong-inverted tw-font-bold tw-truncate tw-text-base"
                 title={song.title}
               >
                 {song.title}
-              </p>
-              <p
+              </Text>
+              <Text
                 className="dfr-text-secondary tw-font-bold tw-truncate tw-text-sm"
                 title={song.artist}
               >
                 {song.artist}
-              </p>
-              <p className="dfr-text-secondary tw-italic tw-text-xs">{song.duration}</p>
+              </Text>
+              <Text className="dfr-text-secondary tw-italic tw-text-xs">{song.duration}</Text>
             </Block>
             <Icon
               wrapperClassName="tw-absolute tw-right-1 tw-bottom-1"
@@ -141,14 +159,13 @@ function Footer({
             <FooterIcon url={`mailto:${WEBSITE_METADATA.email}`} icon={Icon.icon.GMAIL} />
             <FooterIcon url={WEBSITE_METADATA.social.github} icon={Icon.icon.GITHUB} />
             <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} />
-            <FooterIcon url={WEBSITE_METADATA.social.twitter} icon={Icon.icon.TWITTER} />
             <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
             <FooterIcon url={WEBSITE_METADATA.social["500px"]} icon={Icon.icon["500PX"]} />
             <FooterIcon url={WEBSITE_METADATA.social.couchsurfing} icon={Icon.icon.COUCHSURFING} />
           </Block>
-          <span className="dfr-text-strong-inverted tw-text-sm tw-leading-3 tw-mt-4 sm:tw-mt-0">
+          <InlineText className="dfr-text-strong-inverted tw-text-sm tw-leading-3 tw-mt-4 sm:tw-mt-0">
             {WEBSITE_METADATA.shortName} | {new Date().getFullYear()}
-          </span>
+          </InlineText>
         </Block>
         <Space size={4} className="dfr-border-primary tw-border-b tw-border-opacity-30" />
 
@@ -157,11 +174,11 @@ function Footer({
           <Link className="tw-break-normal" href="https://heroicons.com" external>
             HeroIcons.com
           </Link>
-          <span> | </span>
+          <InlineText> | </InlineText>
           <Link className="tw-break-normal" href="https://freeicons.io" external>
             freeicons.io
           </Link>
-          <span> | </span>
+          <InlineText> | </InlineText>
           <Link className="tw-break-normal" href="https://icons8.com/illustrations" external>
             icons8.com
           </Link>

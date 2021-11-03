@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link, Collapsible, Title, Block } from "~/components/primitive";
+import { Link, Collapsible, Title, Block, Text, InlineText } from "~/components/primitive";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 
 type T_ResumeTimelineItem = {
@@ -36,7 +36,7 @@ function TimelineItem({
 }: T_ResumeTimelineItem): T_ReactElement {
   return (
     <Block is="section" className="tw-relative tw-mb-8 last:tw-mb-0">
-      <span className="tw-absolute tw--left-10 tw-border-4 tw-border-black dark:dfr-border-primary tw-w-7 tw-h-7 tw-rounded-full tw-bg-white tw-top-0.5" />
+      <InlineText className="tw-absolute tw--left-10 tw-border-4 tw-border-black dark:dfr-border-primary tw-w-7 tw-h-7 tw-rounded-full tw-bg-white tw-top-0.5" />
 
       <Title is="h3" variant={Title.variant.SECONDARY} size={Title.size.MD}>
         {url ? (
@@ -47,8 +47,8 @@ function TimelineItem({
           company
         )}
       </Title>
-      <span className="tw-block tw-text-sm tw-italic tw-mt-0.5 tw-mb-3">{date}</span>
-      <p>{description}</p>
+      <InlineText className="tw-block tw-text-sm tw-italic tw-mt-0.5 tw-mb-3">{date}</InlineText>
+      <Text>{description}</Text>
     </Block>
   );
 }

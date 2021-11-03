@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-import { Button, Icon, Image, Link, Space, Title, Block } from "~/components/primitive";
+import {
+  Button,
+  Icon,
+  Image,
+  Link,
+  Space,
+  Title,
+  Block,
+  Text,
+  InlineText,
+} from "~/components/primitive";
 import { Render } from "~/components/pages/_shared";
 import { useQuery } from "~/hooks";
 import FilmsService from "~/services/films";
@@ -124,7 +134,7 @@ function Films(): T_ReactElement {
                           backgroundRepeat: "no-repeat",
                         }}
                       >
-                        <span className="tw-absolute tw--top-2 tw--right-2 tw-bg-black dark:tw-bg-white tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8">
+                        <InlineText className="tw-absolute tw--top-2 tw--right-2 tw-bg-black dark:tw-bg-white tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8">
                           <Icon
                             icon={
                               calification === 5
@@ -137,7 +147,7 @@ function Films(): T_ReactElement {
                             }
                             size={24}
                           />
-                        </span>
+                        </InlineText>
 
                         <Block className="dfr-bg-strong-inverted tw-bg-opacity-70 tw-flex tw-self-end tw-flex-nowrap tw-justify-between tw-w-full tw-items-end tw-p-2">
                           {source === "imdb" ? (
@@ -168,9 +178,9 @@ function Films(): T_ReactElement {
                             >
                               {title}
                             </Title>
-                            <p className="tw-text-sm tw-font-bold tw-leading-none tw-text-gray-700 tw-lowercase tw-italic">
+                            <Text className="tw-text-sm tw-font-bold tw-leading-none tw-text-gray-700 tw-lowercase tw-italic">
                               {type}
-                            </p>
+                            </Text>
                           </Block>
                         </Block>
                       </article>

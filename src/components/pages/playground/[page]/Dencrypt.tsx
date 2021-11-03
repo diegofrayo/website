@@ -1,6 +1,6 @@
 import React, { useState, useRef, Fragment } from "react";
 
-import { Space, Button, Input, Block } from "~/components/primitive";
+import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
 import { decrypt, encrypt } from "~/utils/dencrypt";
@@ -41,7 +41,7 @@ function Dencrypt(): T_ReactElement {
       <Space size={10} variant={Space.variant.DASHED} />
 
       <Block>
-        <p className="tw-font-bold">Resultado</p>
+        <Text className="tw-font-bold">Resultado</Text>
         <output
           className="tw-my-1 tw-border dfr-border-primary tw-block tw-p-3 tw-w-full"
           style={{ minHeight: 40 }}

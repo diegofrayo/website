@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
 import classNames from "classnames";
 
+import { Button, Space, Title, Block, Text, InlineText } from "~/components/primitive";
 import { Emoji, Render } from "~/components/pages/_shared";
-import { Button, Space, Title, Block } from "~/components/primitive";
 import { useQuery } from "~/hooks";
 import TimeLineService from "~/services/timeline";
 import { T_TimeLine, T_ReactElement } from "~/types";
@@ -80,19 +80,20 @@ function TimeLine(): T_ReactElement {
                             : "sm:tw-left-2/4",
                         )}
                       >
-                        <p className="tw-text-sm">
-                          <Emoji>🗓</Emoji> <span>{formatDate(item.startDate, item.endDate)}</span>
-                        </p>
-                        <p className="tw-font-bold tw-text-xl tw-my-2">{item.description}</p>
+                        <Text className="tw-text-sm">
+                          <Emoji>🗓</Emoji>{" "}
+                          <InlineText>{formatDate(item.startDate, item.endDate)}</InlineText>
+                        </Text>
+                        <Text className="tw-font-bold tw-text-xl tw-my-2">{item.description}</Text>
                         <Block>
                           {item.categories.map((category) => {
                             return (
-                              <span
+                              <InlineText
                                 key={category.id}
                                 className="tw-font-bold tw-text-xs tw-px-2 tw-py-1 tw-rounded-md tw-border dfr-border-primary dark:dfr-border-primary"
                               >
                                 {category.value}
-                              </span>
+                              </InlineText>
                             );
                           })}
                         </Block>

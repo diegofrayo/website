@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { E_Icons, T_HTMLAttributes, T_ReactElement, T_ReactFunctionComponent } from "~/types";
 
 import Image from "../Image";
+import InlineText from "../InlineText";
 import { ICONS, T_Icon } from "./icons";
 
 type IconProps = {
@@ -118,8 +119,10 @@ function useController({
 
 function Wrapper({ children, className = "" }: T_HTMLAttributes["span"]) {
   return (
-    <span className={classNames("tw-inline-flex tw-items-center tw-justify-center", className)}>
+    <InlineText
+      className={classNames("tw-inline-flex tw-items-center tw-justify-center", className)}
+    >
       {children}
-    </span>
+    </InlineText>
   );
 }

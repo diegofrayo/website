@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { Space, Block } from "~/components/primitive";
+import { Space, Block, Text, InlineText } from "~/components/primitive";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { createArray } from "~/utils/misc";
 
@@ -138,7 +138,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
       {parsedPositions && notes && <Space size={1} />}
 
       {notes && (
-        <p className="tw-ml-2 tw-whitespace-pre-line tw-break-word tw-italic">{`"${notes}"`}</p>
+        <Text className="tw-ml-2 tw-whitespace-pre-line tw-break-word tw-italic">{`"${notes}"`}</Text>
       )}
     </Block>
   );
@@ -227,7 +227,7 @@ function Position({
         isSeparator && "dfr-Tablature-Position--separator",
       )}
     >
-      {!isCell && <span>{children || "0"}</span>}
+      {!isCell && <InlineText>{children || "0"}</InlineText>}
 
       <style jsx>{`
         :global(.dfr-Tablature-Position--cell::before) {

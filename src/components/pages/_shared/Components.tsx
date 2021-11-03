@@ -1,7 +1,15 @@
 import React from "react";
 import classNames from "classnames";
 
-import { Link, Icon, Title as TitlePrimitive, Image, Block } from "~/components/primitive";
+import {
+  Link,
+  Icon,
+  Title as TitlePrimitive,
+  Image,
+  Block,
+  Text,
+  InlineText,
+} from "~/components/primitive";
 import {
   T_HTMLAttributes,
   T_Object,
@@ -11,7 +19,7 @@ import {
 } from "~/types";
 
 export function Emoji({ children, className }: T_HTMLAttributes["span"]): T_ReactElement {
-  return <span className={classNames("emoji", className)}>{children}</span>;
+  return <InlineText className={classNames("emoji", className)}>{children}</InlineText>;
 }
 
 type T_TextWithEmojiProps = {
@@ -25,7 +33,7 @@ export function TextWithEmoji({ emoji, children }: T_TextWithEmojiProps): T_Reac
       <Emoji className="tw-text-xl tw-mr-3 tw-w-6 tw-h-6 tw-flex-shrink-0 tw-overflow-hidden tw-relative tw--top-0.5">
         {emoji}
       </Emoji>
-      <p className="tw-flex-1">{children}</p>
+      <Text className="tw-flex-1">{children}</Text>
     </Block>
   );
 }
@@ -51,9 +59,9 @@ export function Render({
 
   if (error) {
     return (
-      <p className="tw-p-2 tw-text-center tw-text-red-700 tw-text-sm">
+      <Text className="tw-p-2 tw-text-center tw-text-red-700 tw-text-sm">
         😵 {error instanceof Error ? error.message : error || "Error"}
-      </p>
+      </Text>
     );
   }
 
@@ -74,7 +82,7 @@ export function Loader(): T_ReactElement {
           height: 80px;
         }
 
-        :global(.dfr-Loader) div {
+        :global(.dfr-Loader) :global(div) {
           @apply dfr-border-primary;
           position: absolute;
           border: 4px solid;
@@ -83,7 +91,7 @@ export function Loader(): T_ReactElement {
           animation: root 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
         }
 
-        :global(.dfr-Loader) div:nth-child(2) {
+        :global(.dfr-Loader) :global(div):nth-child(2) {
           animation-delay: -0.5s;
         }
 
@@ -132,7 +140,7 @@ export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_Rea
           >
             {name}
           </TitlePrimitive>
-          <p className="tw-text-sm">{description}</p>
+          <Text className="tw-text-sm">{description}</Text>
         </Block>
 
         <Icon

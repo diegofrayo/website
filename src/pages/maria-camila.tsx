@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { Block } from "~/components/primitive";
+import { Block, Text as TextPrimitive, InlineText } from "~/components/primitive";
 import { useDocumentTitle } from "~/hooks";
 import { T_ReactElement } from "~/types";
 
@@ -46,9 +46,9 @@ function MariaCamila(): T_ReactElement {
             alt="Foto"
           />
         </a>
-        <p className="tw-text-center tw-italic tw-text-sm tw-mt-1 tw-px-4">
+        <TextPrimitive className="tw-text-center tw-italic tw-text-sm tw-mt-1 tw-px-4">
           esta es la única foto <br /> que tengo de los dos juntos 🤷‍♂️
-        </p>
+        </TextPrimitive>
       </Block>
 
       <hr className="tw-border tw-border-yellow-200 tw-h-px tw-border-dashed tw-mt-10 tw-shadow-md tw-opacity-50" />
@@ -89,8 +89,8 @@ function Text({ children, emoji, left = false }) {
         left ? "tw-text-left tw-pr-10" : "tw-text-right tw-pl-10 tw-flex-row-reverse",
       )}
     >
-      <span className="tw-text-3xl tw-flex-shrink-0">{emoji}</span>
-      <span className="tw-mx-3">{children}</span>
+      <InlineText className="tw-text-3xl tw-flex-shrink-0">{emoji}</InlineText>
+      <InlineText className="tw-mx-3">{children}</InlineText>
     </Block>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect, useRef, useCallback } from "react";
 import ReactDiffViewer from "react-diff-viewer";
 
-import { Button, Input, Space, Title, Block } from "~/components/primitive";
+import { Button, Input, Space, Title, Block, Text, InlineText } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
@@ -39,9 +39,9 @@ function Texts(): T_ReactElement {
         </Title>
         <Block className="tw-border-4 tw-border-black dark:tw-border-white tw-p-2">
           {!baseText && !newText ? (
-            <p>
-              <Emoji>🤷‍♂️</Emoji> <span>Nothing to compare...</span>
-            </p>
+            <Text>
+              <Emoji>🤷‍♂️</Emoji> <InlineText>Nothing to compare...</InlineText>
+            </Text>
           ) : (
             <Fragment>
               <Block ref={correctionsContainerRef}>
@@ -188,7 +188,7 @@ function TextArea({ title, text, setText, id }) {
             {text && (
               <Block className="tw-w-8 tw-pt-0.5">
                 {text.split("\n").map((_, index) => {
-                  return <p key={`p-numberline-${index}`}>{index + 1}</p>;
+                  return <Text key={`p-numberline-${index}`}>{index + 1}</Text>;
                 })}
               </Block>
             )}

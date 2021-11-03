@@ -3,6 +3,8 @@ import classNames from "classnames";
 
 import { T_HTMLAttributes, T_ReactElement } from "~/types";
 
+import Text from "./Text";
+
 type T_InputProps = T_HTMLAttributes["input"] & {
   id: string;
   label?: string;
@@ -25,12 +27,12 @@ const Input = React.forwardRef(function Input(
       )}
       {...(label ? { ...containerProps, htmlFor: id } : {})}
     >
-      {label && <p className="tw-font-bold tw-cursor-pointer tw-mb-1">{label}</p>}
+      {label && <Text className="tw-font-bold tw-cursor-pointer tw-mb-1">{label}</Text>}
       <Tag
         ref={ref as any}
         id={id}
         className={classNames(
-          "dfr-Input tw-block tw-p-2 tw-w-full tw-resize-none dfr-border-primary dark:dfr-border-primary tw-border tw-rounded-none",
+          "dfr-Input dfr-border-primary dark:dfr-border-primary tw-border tw-rounded-none tw-shadow-none tw-block tw-p-2 tw-w-full tw-resize-none",
           className,
         )}
         {...rest}

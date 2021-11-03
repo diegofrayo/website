@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import Head from "next/head";
 import classNames from "classnames";
 
+import { InlineText } from "~/components/primitive";
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import { protectedComponent } from "~/hocs";
 import { I18nService } from "~/i18n";
@@ -181,6 +182,8 @@ function AnalyticsDisabledFlag() {
 
 function Flag({ className, color }) {
   return (
-    <span className={classNames("tw-fixed tw-top-1 tw-left-1 tw-w-1 tw-h-1", className, color)} />
+    <InlineText
+      className={classNames("tw-fixed tw-top-1 tw-left-1 tw-w-1 tw-h-1", className, color)}
+    />
   );
 }

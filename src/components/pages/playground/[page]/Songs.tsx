@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import classNames from "classnames";
 
-import { Block } from "~/components/primitive";
+import { Block, InlineText } from "~/components/primitive";
 import { T_ReactElement } from "~/types";
 import { betweenUntil, getRandomItem } from "~/utils/misc";
 
@@ -48,7 +48,7 @@ function SongsPage(): T_ReactElement {
     },
     {
       id: "2",
-      text: "sin ese diablo que mea en todas partes y en nigún lado hace espuma",
+      text: "sin ese diablo que mea en todas partes y en ningún lado hace espuma",
       songId: "juguetes-perdidos",
     },
     {
@@ -116,18 +116,20 @@ function SongsPage(): T_ReactElement {
 
         return (
           <Fragment key={lyric.id}>
-            <span
+            <InlineText
               className={classNames(
                 "dfr-border-strong dark:dfr-border-strong tw-border-b tw-mr-2 tw-leading-relaxed",
                 getItemStyles(),
               )}
             >
               {lyric.text}
-            </span>
+            </InlineText>
             {!isLastIndex && (
-              <span className={classNames("dfr-text-colorful-primary tw-mr-2 tw-leading-relaxed")}>
+              <InlineText
+                className={classNames("dfr-text-colorful-primary tw-mr-2 tw-leading-relaxed")}
+              >
                 {connector}
-              </span>
+              </InlineText>
             )}
           </Fragment>
         );

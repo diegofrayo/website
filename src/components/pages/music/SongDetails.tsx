@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { Icon, Link, Block } from "~/components/primitive";
+import { Icon, Link, Block, Text, InlineText } from "~/components/primitive";
 import { protectedComponent } from "~/hocs";
 import { useTranslation } from "~/i18n";
 import MusicService from "~/services/music";
@@ -23,21 +23,21 @@ function SongDetails({
     <Block className={classNames("tw-text-sm tw-italic", className)}>
       <Block className="sm:tw-flex sm:tw-flex-nowrap">
         <strong>{t("page:artist")}:</strong>{" "}
-        <span className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={song.artist}>
+        <InlineText className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={song.artist}>
           {song.artist}
-        </span>
+        </InlineText>
       </Block>
       <Block className="sm:tw-flex sm:tw-flex-nowrap">
         <strong>{t("page:album")}:</strong>{" "}
-        <span className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={song.album}>
+        <InlineText className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={song.album}>
           {song.album}
-        </span>
+        </InlineText>
       </Block>
       <Block>
-        <strong>{t("page:year")}:</strong> <span>{song.year}</span>
+        <strong>{t("page:year")}:</strong> <InlineText>{song.year}</InlineText>
       </Block>
       <Progress progress={song.progress} />
-      <p className="tw-text-lg tw--mt-1">{song.country}</p>
+      <Text className="tw-text-lg tw--mt-1">{song.country}</Text>
       <Block className="tw-flex tw-items-center tw-mt-1">
         <Link href={song.spotifyUrl} variant={Link.variant.SIMPLE} className="tw-mr-2">
           <Icon icon={Icon.icon.SPOTIFY} size={24} />
@@ -96,7 +96,7 @@ const Progress = protectedComponent(function Progress({ progress }: { progress: 
       <strong className="tw-mr-2">{t("page:progress")}:</strong>
       {createArray(5).map((index) => {
         return (
-          <span
+          <InlineText
             key={`Progress-item-${index}`}
             className={classNames(
               "tw-inline-block tw-rounded-sm tw-h-3 tw-w-3 tw-mr-0.5",
