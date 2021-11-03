@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-import { Icon, Input, Link } from "~/components/primitive";
+import { Icon, Input, Link, Block } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
 import { focusElement, isSmallScreen } from "~/utils/browser";
@@ -22,8 +22,8 @@ function WhatsApp(): T_ReactElement {
   } = useController();
 
   return (
-    <div>
-      <div className="tw-flex tw-flex-no-wrap tw-items-end tw-w-full">
+    <Block>
+      <Block className="tw-flex tw-flex-no-wrap tw-items-end tw-w-full">
         <Input
           id="input"
           label="Ingrese un número de celular"
@@ -45,9 +45,9 @@ function WhatsApp(): T_ReactElement {
         >
           <Icon icon={Icon.icon.WHATSAPP} size={48} />
         </Link>
-      </div>
-      <div className="tw-flex tw-mt-1 tw-justify-between tw-pr-14">
-        <div>
+      </Block>
+      <Block className="tw-flex tw-mt-1 tw-justify-between tw-pr-14">
+        <Block>
           <input
             type="radio"
             className="tw-mr-1"
@@ -58,8 +58,8 @@ function WhatsApp(): T_ReactElement {
             onChange={onRadioChange}
           />
           <label htmlFor="radio-web">web</label>
-        </div>
-        <div>
+        </Block>
+        <Block>
           <input
             type="radio"
             className="tw-mr-1"
@@ -70,9 +70,9 @@ function WhatsApp(): T_ReactElement {
             onChange={onRadioChange}
           />
           <label htmlFor="radio-app">app</label>
-        </div>
-      </div>
-    </div>
+        </Block>
+      </Block>
+    </Block>
   );
 }
 

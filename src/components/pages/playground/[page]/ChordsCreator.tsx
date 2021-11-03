@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 
-import { Input, Space, Title } from "~/components/primitive";
+import { Input, Space, Title, Block } from "~/components/primitive";
 import { GuitarChord } from "~/lib/guitar";
 import { T_ReactElement } from "~/types";
 
@@ -15,7 +15,7 @@ function ChordsCreator(): T_ReactElement {
 
   return (
     <Fragment>
-      <div>
+      <Block>
         <Title is="h2" className="tw-mb-4">
           Crea un acorde
         </Title>
@@ -39,26 +39,26 @@ function ChordsCreator(): T_ReactElement {
         />
         <Space size={1} />
 
-        <div>
+        <Block>
           <code className="tw-block tw-text-sm tw-mb-1">
             Formato: CUERDA,TRASTE,DEDO?|CUERDA,TRASTE,DEDO?
           </code>
           <code className="tw-block tw-text-sm">
             Ejemplos: (D) 3,2,1|1,2,2|2,3,3 / (B) 5x,2|4,4|3,4|2,4
           </code>
-        </div>
+        </Block>
         <Space size={6} />
 
-        <div className="tw-border dfr-border-primary dark:dfr-border-primary tw-rounded-md tw-p-3">
+        <Block className="tw-border dfr-border-primary dark:dfr-border-primary tw-rounded-md tw-p-3">
           <Title is="h2" className="tw-mb-4">
             Resultado
           </Title>
           <GuitarChord name={inputs.name} musicNotes={inputs.musicNotes} />
-        </div>
-      </div>
+        </Block>
+      </Block>
       <Space sizeTop={8} sizeBottom={5} variant={Space.variant.DASHED} />
 
-      <div>
+      <Block>
         <Title is="h2" className="tw-mb-4">
           Ejemplos
         </Title>
@@ -114,7 +114,7 @@ function ChordsCreator(): T_ReactElement {
           playedStrings={["x", "0", "1", "1", "1", "0"]}
           enableShowNotesOption
         />
-      </div>
+      </Block>
     </Fragment>
   );
 }

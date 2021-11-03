@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { Link, Icon, Title as TitlePrimitive, Image } from "~/components/primitive";
+import { Link, Icon, Title as TitlePrimitive, Image, Block } from "~/components/primitive";
 import {
   T_HTMLAttributes,
   T_Object,
@@ -21,12 +21,12 @@ type T_TextWithEmojiProps = {
 
 export function TextWithEmoji({ emoji, children }: T_TextWithEmojiProps): T_ReactElement {
   return (
-    <div className="tw-flex tw-flex-nowrap tw-mb-3">
+    <Block className="tw-flex tw-flex-nowrap tw-mb-3">
       <Emoji className="tw-text-xl tw-mr-3 tw-w-6 tw-h-6 tw-flex-shrink-0 tw-overflow-hidden tw-relative tw--top-0.5">
         {emoji}
       </Emoji>
       <p className="tw-flex-1">{children}</p>
-    </div>
+    </Block>
   );
 }
 
@@ -43,9 +43,9 @@ export function Render({
 }): T_ReactElement {
   if (isLoading) {
     return (
-      <div className="tw-p-2 tw-text-center">
+      <Block className="tw-p-2 tw-text-center">
         <Loader />
-      </div>
+      </Block>
     );
   }
 
@@ -62,19 +62,19 @@ export function Render({
 
 export function Loader(): T_ReactElement {
   return (
-    <div className="root">
-      <div />
-      <div />
+    <Block className="dfr-Loader">
+      <Block />
+      <Block />
 
       <style jsx>{`
-        .root {
+        :global(.dfr-Loader) {
           display: inline-block;
           position: relative;
           width: 80px;
           height: 80px;
         }
 
-        .root div {
+        :global(.dfr-Loader) div {
           @apply dfr-border-primary;
           position: absolute;
           border: 4px solid;
@@ -83,7 +83,7 @@ export function Loader(): T_ReactElement {
           animation: root 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
         }
 
-        .root div:nth-child(2) {
+        :global(.dfr-Loader) div:nth-child(2) {
           animation-delay: -0.5s;
         }
 
@@ -104,7 +104,7 @@ export function Loader(): T_ReactElement {
           }
         }
       `}</style>
-    </div>
+    </Block>
   );
 }
 
@@ -116,7 +116,7 @@ type T_GitHubRepoProps = {
 
 export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_ReactElement {
   return (
-    <div className="tw-text-right" data-markdown-block>
+    <Block className="tw-text-right" data-markdown-block>
       <Link
         className="dfr-bg-secondary dfr-border-primary dark:dfr-border-primary dark:dfr-bg-secondary tw-flex sm:tw-inline-flex tw-p-4 tw-rounded-md tw-items-center tw-relative tw-pr-8 tw-border"
         href={url}
@@ -124,7 +124,7 @@ export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_Rea
       >
         <Icon icon={Icon.icon.GITHUB} wrapperClassName="tw-mr-3" size={32} withDarkModeBackground />
 
-        <div className="tw-flex-1 tw-text-left">
+        <Block className="tw-flex-1 tw-text-left">
           <TitlePrimitive
             is="h3"
             className="tw-text-black dark:tw-text-white tw-text-base sm:tw-text-lg"
@@ -133,7 +133,7 @@ export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_Rea
             {name}
           </TitlePrimitive>
           <p className="tw-text-sm">{description}</p>
-        </div>
+        </Block>
 
         <Icon
           icon={Icon.icon.LINK}
@@ -141,7 +141,7 @@ export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_Rea
           iconClassName="tw-text-black"
         />
       </Link>
-    </div>
+    </Block>
   );
 }
 

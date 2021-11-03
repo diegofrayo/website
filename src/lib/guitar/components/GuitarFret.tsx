@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import classNames from "classnames";
 
+import { Block, Icon } from "~/components/primitive";
 import twcss from "~/lib/twcss";
 import { T_ReactElement } from "~/types";
 import { createArray, mirror } from "~/utils/misc";
@@ -13,7 +14,6 @@ import {
   I_BarreMusicNote,
   I_SimpleMusicNote,
 } from "../types";
-import { Icon } from "~/components/primitive";
 
 type T_Variants = "DEFAULT" | "STRINGS_NAMES" | "EMPTY" | "SKIPPED_STRINGS";
 const VARIANTS = mirror(["DEFAULT", "STRINGS_NAMES", "EMPTY", "SKIPPED_STRINGS"]) as Record<
@@ -47,18 +47,18 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
   } = useController(props);
 
   return (
-    <div
+    <Block
       className={classNames(
         "tw-flex-shrink-0 tw-text-xs",
         isSkippedStringsVariant ? "tw-auto" : isStringsNamesVariant ? "tw-w-16" : "tw-w-10",
       )}
     >
       {!isStringsNamesVariant && (
-        <div className="tw-flex tw-items-center tw-justify-center tw-h-6 tw-font-bold tw-text-base">
+        <Block className="tw-flex tw-items-center tw-justify-center tw-h-6 tw-font-bold tw-text-base">
           {number}
-        </div>
+        </Block>
       )}
-      <div
+      <Block
         className={classNames(
           !isStringsNamesVariant &&
             !isSkippedStringsVariant &&
@@ -83,7 +83,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                 : undefined;
 
             return (
-              <div
+              <Block
                 key={`${
                   isEmptyVariant
                     ? `empty-${guitarString}`
@@ -100,11 +100,11 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                 className="tw-flex tw-items-center tw-h-6"
               >
                 {isStringsNamesVariant ? (
-                  <div className="tw-flex tw-justify-end tw-w-full tw-text-base tw-px-1">
+                  <Block className="tw-flex tw-justify-end tw-w-full tw-text-base tw-px-1">
                     <span className="tw-text-center tw-w-6">{STRINGS_NAMES[guitarString - 1]}</span>
                     <span className="tw-px-0.5">-</span>
                     <strong className="tw-text-center tw-w-6">{guitarString}</strong>
-                  </div>
+                  </Block>
                 ) : isSkippedStringsVariant ? (
                   <span className="tw-mx-2">
                     {getSkippedStringValue(playedStrings, guitarString)}
@@ -128,11 +128,11 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                 ) : (
                   <String />
                 )}
-              </div>
+              </Block>
             );
           })}
-      </div>
-    </div>
+      </Block>
+    </Block>
   );
 }
 

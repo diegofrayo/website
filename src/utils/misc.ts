@@ -44,8 +44,22 @@ export function isServer(): boolean {
   return !isBrowser();
 }
 
+export function getRandomItem<T_ItemType>(array: T_ItemType[]): T_ItemType {
+  return array[between(0, array.length - 1)];
+}
+
 export function between(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+export function betweenUntil(min: number, max: number, exclude: number[]): number {
+  const randomNumber = between(min, max);
+
+  if (exclude.includes(randomNumber)) {
+    return betweenUntil(min, max, exclude);
+  }
+
+  return randomNumber;
 }
 
 export function sortBy(

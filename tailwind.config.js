@@ -116,10 +116,18 @@ function myCustomClassesPlugin({ addUtilities, config, e }) {
     },
     "dfr-bg-strong-inverted": {
       light: {
-        backgroundColor: config("theme.colors").white,
+        "--fallback": "1",
+        backgroundColor: hexToRgba(
+          config("theme.colors").white,
+          "var(--tw-bg-opacity, var(--fallback))",
+        ),
       },
       dark: {
-        backgroundColor: config("theme.colors").black,
+        "--fallback": "1",
+        backgroundColor: hexToRgba(
+          config("theme.colors").black,
+          "var(--tw-bg-opacity, var(--fallback))",
+        ),
       },
     },
     "dfr-bg-colorful-primary": {

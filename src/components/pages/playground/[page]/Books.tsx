@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Icon, Link, Title } from "~/components/primitive";
+import { Icon, Link, Title, Block } from "~/components/primitive";
 import { Emoji, Render } from "~/components/pages/_shared";
 import { useQuery } from "~/hooks";
 import BooksService from "~/services/books";
@@ -13,7 +13,7 @@ function Books(): T_ReactElement {
     <Render isLoading={isLoading} error={error} data={data}>
       {(books: T_Book[]) => {
         return (
-          <div className="tw-flex tw-justify-center sm:tw-justify-between tw-flex-wrap">
+          <Block className="dfr-Books tw-flex tw-justify-center sm:tw-justify-between tw-flex-wrap">
             {books.map(({ id, title, calification, author, year, url, cover }) => {
               return (
                 <Link
@@ -44,7 +44,7 @@ function Books(): T_ReactElement {
                       />
                     </span>
 
-                    <div className="book__details tw-flex tw-self-end tw-flex-col tw-w-full tw-items-stretch tw-p-2 tw-rounded-tr-lg">
+                    <Block className="dfr-bg-strong-inverted tw-bg-opacity-70 tw-flex tw-self-end tw-flex-col tw-w-full tw-items-stretch tw-p-2 tw-rounded-tr-lg">
                       <Title
                         is="h1"
                         variant={Title.variant.UNSTYLED}
@@ -59,18 +59,12 @@ function Books(): T_ReactElement {
                         <Emoji className="tw-mr-1">🗓</Emoji>
                         <span>{year}</span>
                       </p>
-                    </div>
+                    </Block>
                   </article>
                 </Link>
               );
             })}
-
-            <style jsx>{`
-              .book__details {
-                background-color: rgba(255, 255, 255, 0.8);
-              }
-            `}</style>
-          </div>
+          </Block>
         );
       }}
     </Render>

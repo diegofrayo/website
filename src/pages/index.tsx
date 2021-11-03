@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
+import { Block } from "~/components/primitive";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
 import { T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
@@ -18,7 +19,7 @@ function HomePage(): T_ReactElement {
       }}
     >
       <MainLayout title="👋">
-        <div
+        <Block
           className="dfr-bg-secondary dfr-border-primary dfr-shadow dark:dfr-border-primary dark:dfr-shadow dark:dfr-bg-secondary tw-border-l-8 tw-border-b-8 tw-p-8 tw-text-xl"
           dangerouslySetInnerHTML={{ __html: t("page:content") }}
         />
@@ -38,90 +39,90 @@ export const getStaticProps = getPageContentStaticProps({
 /*
 // TODO: Finish home page
 
-<div className="tw-hidden">
-<div className="tw-px-4 tw-py-10">
-  <div className="tw-mb-8 tw-text-center">
+<Block className="tw-hidden">
+<Block className="tw-px-4 tw-py-10">
+  <Block className="tw-mb-8 tw-text-center">
     <Title>ABOUT ME</Title>
-  </div>
+  </Block>
 
-  <div className="tw-flex tw-justify-center tw-items-center">
+  <Block className="tw-flex tw-justify-center tw-items-center">
     <img
       src="/static/images/home/about-me.png"
       className="dfr-transition-opacity tw-h-32 tw-w-32"
       alt="Hobbies illustration"
     />
-    <div className="tw-text-right tw-ml-4 tw-max-w-sm">
+    <Block className="tw-text-right tw-ml-4 tw-max-w-sm">
       <p>Im {new Date().getFullYear() - 1993} years old</p>
       <p>Me gusta la musica, el futbol, las hamburguesas, los paisajes y tomar fotos</p>
 
       <button>Mas sobre mi</button>
-    </div>
-  </div>
-</div>
+    </Block>
+  </Block>
+</Block>
 <Border />
-<div className="tw-bg-gay-100 tw-px-4 tw-py-10 tw-min-h-screden">
-  <div className="tw-mb-8 tw-text-center">
+<Block className="tw-bg-gay-100 tw-px-4 tw-py-10 tw-min-h-screden">
+  <Block className="tw-mb-8 tw-text-center">
     <Title>CAREER</Title>
-  </div>
+  </Block>
 
-  <div className="tw-flex tw-justify-center tw-items-center">
+  <Block className="tw-flex tw-justify-center tw-items-center">
     <img
       src="/static/images/home/about-me.png"
       alt=""
       className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
     />
-    <div className="tw-text-left tw-ml-4">
+    <Block className="tw-text-left tw-ml-4">
       <p>Im located at Armenia, Quindio</p>
       <p>Im 20 years old</p>
       <p>Me gusta la musica, el futbol y las hamburguesas</p>
 
       <button>Mas sobre mi</button>
-    </div>
-  </div>
-</div>
+    </Block>
+  </Block>
+</Block>
 <Border />
-<div className="tw-bg-gay-100 tw-px-4 tw-py-10 tw-min-h-screden">
-  <div className="tw-mb-8 tw-text-center">
+<Block className="tw-bg-gay-100 tw-px-4 tw-py-10 tw-min-h-screden">
+  <Block className="tw-mb-8 tw-text-center">
     <Title>BLOG</Title>
-  </div>
+  </Block>
 
-  <div className="tw-flex tw-justify-center tw-items-center">
+  <Block className="tw-flex tw-justify-center tw-items-center">
     <img
       src="/static/images/home/about-me.png"
       alt=""
       className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
     />
-    <div className="tw-text-left tw-ml-4">
+    <Block className="tw-text-left tw-ml-4">
       <p>Im located at Armenia, Quindio</p>
       <p>Im 20 years old</p>
       <p>Me gusta la musica, el futbol y las hamburguesas</p>
 
       <button>Mas sobre mi</button>
-    </div>
-  </div>
-</div>
+    </Block>
+  </Block>
+</Block>
 <Border />
-<div className="tw-bg-gay-100 tw-px-4 tw-py-10 tw-min-h-screden">
-  <div className="tw-mb-8 tw-text-center">
+<Block className="tw-bg-gay-100 tw-px-4 tw-py-10 tw-min-h-screden">
+  <Block className="tw-mb-8 tw-text-center">
     <Title>PERSONAL PROJECTS</Title>
-  </div>
+  </Block>
 
-  <div className="tw-flex tw-justify-center tw-items-center">
+  <Block className="tw-flex tw-justify-center tw-items-center">
     <img
       src="/static/images/home/about-me.png"
       alt=""
       className="tw-h-32 tw-w-32 tw-transition-opacity hover:tw-opacity-80"
     />
-    <div className="tw-text-left tw-ml-4">
+    <Block className="tw-text-left tw-ml-4">
       <p>Im located at Armenia, Quindio</p>
       <p>Im 20 years old</p>
       <p>Me gusta la musica, el futbol y las hamburguesas</p>
 
       <button>Mas sobre mi</button>
-    </div>
-  </div>
-</div>
-</div>
+    </Block>
+  </Block>
+</Block>
+</Block>
 
 // --- Components ---
 
@@ -141,7 +142,7 @@ function Title({ children }) {
 
 function Border() {
   return (
-    <div className="root tw-max-w-full tw-w-48 tw-h-8 tw-mx-auto tw-my-16">
+    <Block className="root tw-max-w-full tw-w-48 tw-h-8 tw-mx-auto tw-my-16">
       <style jsx>{`
         .root {
           background-image: url("/static/images/new/border.svg");
@@ -154,7 +155,7 @@ function Border() {
           background-image: url("/static/images/new/border-dark.svg");
         }
       `}</style>
-    </div>
+    </Block>
   );
 }
 */

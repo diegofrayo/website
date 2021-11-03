@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { Icon, Link } from "~/components/primitive";
+import { Icon, Link, Block } from "~/components/primitive";
 import { protectedComponent } from "~/hocs";
 import { useTranslation } from "~/i18n";
 import MusicService from "~/services/music";
@@ -20,33 +20,33 @@ function SongDetails({
   if (MusicService.isChordsPage(song)) return null;
 
   return (
-    <div className={classNames("tw-text-sm tw-italic", className)}>
-      <div className="sm:tw-flex sm:tw-flex-nowrap">
+    <Block className={classNames("tw-text-sm tw-italic", className)}>
+      <Block className="sm:tw-flex sm:tw-flex-nowrap">
         <strong>{t("page:artist")}:</strong>{" "}
         <span className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={song.artist}>
           {song.artist}
         </span>
-      </div>
-      <div className="sm:tw-flex sm:tw-flex-nowrap">
+      </Block>
+      <Block className="sm:tw-flex sm:tw-flex-nowrap">
         <strong>{t("page:album")}:</strong>{" "}
         <span className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={song.album}>
           {song.album}
         </span>
-      </div>
-      <div>
+      </Block>
+      <Block>
         <strong>{t("page:year")}:</strong> <span>{song.year}</span>
-      </div>
+      </Block>
       <Progress progress={song.progress} />
       <p className="tw-text-lg tw--mt-1">{song.country}</p>
-      <div className="tw-flex tw-items-center tw-mt-1">
+      <Block className="tw-flex tw-items-center tw-mt-1">
         <Link href={song.spotifyUrl} variant={Link.variant.SIMPLE} className="tw-mr-2">
           <Icon icon={Icon.icon.SPOTIFY} size={24} />
         </Link>
         <Link href={song.youtubeUrl} variant={Link.variant.SIMPLE}>
           <Icon icon={Icon.icon.YOUTUBE} size={24} />
         </Link>
-      </div>
-    </div>
+      </Block>
+    </Block>
   );
 }
 
@@ -92,7 +92,7 @@ const Progress = protectedComponent(function Progress({ progress }: { progress: 
   }
 
   return (
-    <div className={classNames("tw-flex tw-items-center")}>
+    <Block className={classNames("tw-flex tw-items-center")}>
       <strong className="tw-mr-2">{t("page:progress")}:</strong>
       {createArray(5).map((index) => {
         return (
@@ -105,6 +105,6 @@ const Progress = protectedComponent(function Progress({ progress }: { progress: 
           />
         );
       })}
-    </div>
+    </Block>
   );
 });

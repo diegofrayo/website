@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { useRouter } from "next/router";
 
 import { Page, MainLayout } from "~/components/layout";
-import { List, Link } from "~/components/primitive";
+import { List, Link, Block } from "~/components/primitive";
 import { Render } from "~/components/pages/_shared";
 import { useQuery } from "~/hooks";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
@@ -97,7 +97,7 @@ function BlogEntry({
         <span>{t("page:updated_at")} </span>
         <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
       </p>
-      <div className="tw-pb-1">
+      <Block className="tw-pb-1">
         {categories.map((category) => {
           return (
             <span
@@ -111,7 +111,7 @@ function BlogEntry({
             </span>
           );
         })}
-      </div>
+      </Block>
     </List.Item>
   );
 }

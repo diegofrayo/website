@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { Space } from "~/components/primitive";
+import { Space, Block } from "~/components/primitive";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { createArray } from "~/utils/misc";
 
@@ -55,9 +55,9 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
   } = useController(props);
 
   return (
-    <div className="tw-text-base">
+    <Block className="tw-text-base">
       {parsedPositions && (
-        <div className="tw-flex tw-items-end">
+        <Block className="tw-flex tw-items-end">
           <GuitarFret variant={GuitarFret.variant.STRINGS_NAMES} />
 
           {parsedPositions.map((position, positionIndex) => {
@@ -68,7 +68,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
                   : 1,
               ).map((space) => {
                 return (
-                  <div key={`Tablature-position-${positionIndex}-${space}`} className="tw-ml-1">
+                  <Block key={`Tablature-position-${positionIndex}-${space}`} className="tw-ml-1">
                     {createArray(NUMBER_OF_STRINGS)
                       .reverse()
                       .map((guitarString) => {
@@ -80,14 +80,14 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
                           />
                         );
                       })}
-                  </div>
+                  </Block>
                 );
               });
             }
 
             return (
-              <div key={`Tablature-position-${positionIndex}`} className="tw-ml-1">
-                <div>
+              <Block key={`Tablature-position-${positionIndex}`} className="tw-ml-1">
+                <Block>
                   {createArray(NUMBER_OF_STRINGS)
                     .reverse()
                     .map((guitarString) => {
@@ -128,11 +128,11 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
 
                       return <Position key={`Position-${positionIndex}-${guitarString}`} isCell />;
                     })}
-                </div>
-              </div>
+                </Block>
+              </Block>
             );
           })}
-        </div>
+        </Block>
       )}
 
       {parsedPositions && notes && <Space size={1} />}
@@ -140,7 +140,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
       {notes && (
         <p className="tw-ml-2 tw-whitespace-pre-line tw-break-word tw-italic">{`"${notes}"`}</p>
       )}
-    </div>
+    </Block>
   );
 }
 
@@ -220,17 +220,17 @@ function Position({
   isSeparator?: boolean;
 }): T_ReactElement {
   return (
-    <div
+    <Block
       className={classNames(
-        "root tw-h-6 tw-text-center tw-relative tw-top-0.5 tw-w-6",
-        isCell && "root--cell",
-        isSeparator && "root--separator",
+        "dfr-Tablature-Position tw-h-6 tw-text-center tw-relative tw-top-0.5 tw-w-6",
+        isCell && "dfr-Tablature-Position--cell",
+        isSeparator && "dfr-Tablature-Position--separator",
       )}
     >
       {!isCell && <span>{children || "0"}</span>}
 
       <style jsx>{`
-        .root--cell::before {
+        :global(.dfr-Tablature-Position--cell::before) {
           background-color: black;
           content: "";
           display: inline-block;
@@ -242,7 +242,7 @@ function Position({
           width: 100%;
         }
 
-        .root--separator::before {
+        :global(.dfr-Tablature-Position--separator::before) {
           height: 100%;
           left: 8px;
           max-height: 100%;
@@ -250,10 +250,10 @@ function Position({
           width: 1px;
         }
 
-        :global(.tw-dark) .root--cell::before {
+        :global(.tw-dark) :global(.dfr-Tablature-Position--cell::before) {
           background-color: white;
         }
       `}</style>
-    </div>
+    </Block>
   );
 }

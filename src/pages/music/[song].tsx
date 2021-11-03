@@ -6,7 +6,7 @@ import { GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Blockquote, Icon, Button, Space } from "~/components/primitive";
+import { Blockquote, Icon, Button, Space, Block } from "~/components/primitive";
 import { MDXContent, Loader, RateContent } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
 import { useDidMount } from "~/hooks";
@@ -47,9 +47,9 @@ function SongPage(props: T_PageProps): T_ReactElement {
 
   if (router.isFallback) {
     return (
-      <div className="tw-p-4 tw-text-center">
+      <Block className="tw-p-4 tw-text-center">
         <Loader />
-      </div>
+      </Block>
     );
   }
 
@@ -73,7 +73,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
           style={{ fontSize: `${fontSize}rem` }}
           variant={Blockquote.variant.STYLED}
         >
-          <div className="tw-mb-6 tw-text-sm">
+          <Block className="tw-mb-6 tw-text-sm">
             <Button
               className={classNames(
                 "tw-inline-block tw-mr-3",
@@ -100,11 +100,11 @@ function SongPage(props: T_PageProps): T_ReactElement {
             >
               <Icon icon={Icon.icon.LINK} size={24} />
             </Button>
-          </div>
+          </Block>
 
-          <div className="tw-max-w-full tw-overflow-x-auto tw-pb-3">
+          <Block className="tw-max-w-full tw-overflow-x-auto tw-pb-3">
             <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
-          </div>
+          </Block>
           <Space size={6} />
 
           <Blockquote

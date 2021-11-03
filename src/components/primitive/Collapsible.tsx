@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { T_Function, T_ReactChildrenProp, T_ReactElement, T_ReactRefObject } from "~/types";
 
+import Block from "./Block";
+
 type T_CollapsibleProps = {
   children: T_ReactChildrenProp;
   title?: string;
@@ -26,7 +28,7 @@ function Collapsible(props: T_CollapsibleProps): T_ReactElement {
       <summary className="tw-font-bold" role="button" onClick={toggleIsCollapsed}>
         {title}
       </summary>
-      <div className="tw-pl-5 tw-mt-2">{children}</div>
+      <Block className="tw-pl-5 tw-mt-2">{children}</Block>
     </details>
   );
 }

@@ -3,6 +3,8 @@ import React, { useRef, createContext } from "react";
 import { useToggleBodyScroll } from "~/hooks";
 import { T_Object, T_ReactElement } from "~/types";
 
+import Block from "./Block";
+
 function Modal({ children, visible, onCloseHandler }: T_Object): T_ReactElement {
   useToggleBodyScroll(visible);
 
@@ -43,12 +45,16 @@ function Backdrop({ children, closeModalHandler }): T_ReactElement {
   }
 
   return (
-    <div className="root tw-p-3 sm:tw-p-6" ref={backdropRef} onClick={handleBackdropClick}>
+    <Block
+      className="dfr-Backdrop tw-p-3 sm:tw-p-6"
+      ref={backdropRef}
+      onClick={handleBackdropClick}
+    >
       {children}
 
       <style jsx>
         {`
-          .root {
+          :global(.dfr-Backdrop) {
             align-items: center;
             background-color: rgba(0, 0, 0, 0.5);
             bottom: 0;
@@ -63,6 +69,6 @@ function Backdrop({ children, closeModalHandler }): T_ReactElement {
           }
         `}
       </style>
-    </div>
+    </Block>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useRef, RefObject, Fragment } from "react";
 
-import { Space, Button, Input } from "~/components/primitive";
+import { Space, Button, Input, Block } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { T_FormEvent, T_OnChangeEvent, T_OnClickEvent, T_ReactElement } from "~/types";
 import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
@@ -20,7 +20,7 @@ function Strings(): T_ReactElement {
 
   return (
     <Fragment>
-      <div>
+      <Block>
         <p className="tw-font-bold tw-mb-1">Ingrese un texto</p>
         <Input
           is="textarea"
@@ -37,11 +37,11 @@ function Strings(): T_ReactElement {
         >
           copiar
         </Button>
-      </div>
+      </Block>
 
       <Space size={10} variant={Space.variant.DASHED} />
 
-      <div className="tw-mb-4">
+      <Block className="tw-mb-4">
         <p className="tw-font-bold">slug</p>
         <output
           className="tw-border dfr-border-primary tw-block tw-p-3 tw-w-full tw-my-1"
@@ -56,9 +56,9 @@ function Strings(): T_ReactElement {
         >
           copiar
         </Button>
-      </div>
+      </Block>
 
-      <div className="tw-my-4">
+      <Block className="tw-my-4">
         <p className="tw-font-bold tw-uppercase">mayúsculas</p>
         <output className="output tw-border dfr-border-primary tw-block tw-p-3 tw-w-full tw-my-1">
           {texts.upper}
@@ -70,9 +70,9 @@ function Strings(): T_ReactElement {
         >
           copiar
         </Button>
-      </div>
+      </Block>
 
-      <div className="tw-my-4">
+      <Block className="tw-my-4">
         <p className="tw-font-bold tw-lowercase">minúsculas</p>
         <output className="output tw-border dfr-border-primary tw-block tw-p-3 tw-w-full tw-my-1">
           {texts.lower}
@@ -84,9 +84,9 @@ function Strings(): T_ReactElement {
         >
           copiar
         </Button>
-      </div>
+      </Block>
 
-      <div className="tw-my-4">
+      <Block className="tw-my-4">
         <p className="tw-font-bold tw-capitalize">letra capital</p>
         <output className="output tw-border dfr-border-primary tw-block tw-p-3 tw-w-full tw-my-1">
           {texts.convertToCapitalLetter}
@@ -98,9 +98,9 @@ function Strings(): T_ReactElement {
         >
           copiar
         </Button>
-      </div>
+      </Block>
 
-      <div className="tw-my-4">
+      <Block className="tw-my-4">
         <p className="tw-font-bold">Mayúscula solo la primera palabra</p>
         <output className="output tw-border dfr-border-primary tw-block tw-p-3 tw-w-full tw-my-1">
           {texts.convertToCapitalLetterOnlyFirst}
@@ -112,7 +112,7 @@ function Strings(): T_ReactElement {
         >
           copiar
         </Button>
-      </div>
+      </Block>
     </Fragment>
   );
 }

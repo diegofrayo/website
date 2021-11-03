@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { Block } from "~/components/primitive";
 import { useOnWindowResize } from "~/hooks";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
@@ -14,8 +15,8 @@ function WindowSize(): T_ReactElement {
   });
 
   return (
-    <div
-      className="root tw-cursor-pointer"
+    <Block
+      className="dfr-WindowSize tw-cursor-pointer"
       onClick={() => {
         window.open(`${WEBSITE_METADATA.url}${window.location.pathname}`);
       }}
@@ -28,7 +29,7 @@ function WindowSize(): T_ReactElement {
 
       <style jsx>
         {`
-          .root {
+          :global(.dfr-WindowSize) {
             background-color: rgba(0, 0, 0, 0.5);
             bottom: 0;
             color: white;
@@ -39,7 +40,7 @@ function WindowSize(): T_ReactElement {
           }
         `}
       </style>
-    </div>
+    </Block>
   );
 }
 

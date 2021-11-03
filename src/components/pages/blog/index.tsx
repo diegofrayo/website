@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link, List, Title } from "~/components/primitive";
+import { Link, List, Title, Block } from "~/components/primitive";
 import { useTranslation } from "~/i18n";
 import { T_ReactElement } from "~/types";
 import { generateSlug } from "~/utils/strings";
@@ -13,7 +13,7 @@ export function Sources({
   const { t } = useTranslation();
 
   return (
-    <section data-markdown-block>
+    <Block is="section" data-markdown-block>
       <Title is="h2" data-markdown-title showLinkIcon>
         {t("page:sources")}
       </Title>
@@ -38,6 +38,6 @@ export function Sources({
           );
         })}
       </List>
-    </section>
+    </Block>
   );
 }

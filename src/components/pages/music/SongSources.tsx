@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Icon, Image, Link, List, Title } from "~/components/primitive";
+import { Icon, Image, Link, List, Title, Block } from "~/components/primitive";
 import { useTranslation } from "~/i18n";
 import { T_ReactElement, T_Song } from "~/types";
 
@@ -15,7 +15,7 @@ function SongSources(props: T_SongSourcesProps): T_ReactElement {
   if (sources.length === 0) return null;
 
   return (
-    <section>
+    <Block>
       <Title is="h2">{t("page:sources")}</Title>
 
       <p className="tw-my-2 tw-text-sm tw-italic">{t("page:disclaimer")}</p>
@@ -32,7 +32,7 @@ function SongSources(props: T_SongSourcesProps): T_ReactElement {
                 variant={Link.variant.SIMPLE}
               >
                 <ImageComponent />
-                <div className="tw-flex-1 tw-min-w-0">
+                <Block className="tw-flex-1 tw-min-w-0">
                   <p
                     className="tw-font-bold tw-text-sm tw-text-black dark:tw-text-white tw-truncate"
                     title={source.text}
@@ -40,13 +40,13 @@ function SongSources(props: T_SongSourcesProps): T_ReactElement {
                     {source.text}
                   </p>
                   <p className="tw-text-xs tw-italic">{source.source}</p>
-                </div>
+                </Block>
               </Link>
             </List.Item>
           );
         })}
       </List>
-    </section>
+    </Block>
   );
 }
 

@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import classNames from "classnames";
 
 import { Emoji, Render } from "~/components/pages/_shared";
-import { Button, Space, Title } from "~/components/primitive";
+import { Button, Space, Title, Block } from "~/components/primitive";
 import { useQuery } from "~/hooks";
 import TimeLineService from "~/services/timeline";
 import { T_TimeLine, T_ReactElement } from "~/types";
@@ -27,7 +27,7 @@ function TimeLine(): T_ReactElement {
       {({ categories, items }: T_TimeLine) => {
         return (
           <Fragment>
-            <section>
+            <Block is="section">
               <Title
                 is="h3"
                 size={Title.size.MD}
@@ -36,7 +36,7 @@ function TimeLine(): T_ReactElement {
               >
                 Categorías [{categories.length}]
               </Title>
-              <div className="tw-flex tw-justify-betweden tw-flex-wrap">
+              <Block className="tw-flex tw-justify-betweden tw-flex-wrap">
                 {categories.map((category) => {
                   return (
                     <Button
@@ -53,13 +53,13 @@ function TimeLine(): T_ReactElement {
                     </Button>
                   );
                 })}
-              </div>
-            </section>
+              </Block>
+            </Block>
             <Space size={6} />
 
             {items.map((item) => {
               return (
-                <section key={item.year}>
+                <Block is="section" key={item.year}>
                   <Title
                     is="h2"
                     className="tw-text-left sm:tw-text-center tw-my-8 tw-underline"
@@ -71,7 +71,7 @@ function TimeLine(): T_ReactElement {
 
                   {item.items.map((item, index) => {
                     return (
-                      <div
+                      <Block
                         key={item.id}
                         className={classNames(
                           "tw-relative sm:tw-w-1/2 tw-border-black dark:tw-border-white tw-px-4 tw-pb-8 last:tw-pb-0 tw-border-l-4",
@@ -84,7 +84,7 @@ function TimeLine(): T_ReactElement {
                           <Emoji>🗓</Emoji> <span>{formatDate(item.startDate, item.endDate)}</span>
                         </p>
                         <p className="tw-font-bold tw-text-xl tw-my-2">{item.description}</p>
-                        <div>
+                        <Block>
                           {item.categories.map((category) => {
                             return (
                               <span
@@ -95,11 +95,11 @@ function TimeLine(): T_ReactElement {
                               </span>
                             );
                           })}
-                        </div>
-                      </div>
+                        </Block>
+                      </Block>
                     );
                   })}
-                </section>
+                </Block>
               );
             })}
           </Fragment>

@@ -1,7 +1,7 @@
 import React, { Fragment, useRef, useState } from "react";
 import classNames from "classnames";
 
-import { Space, Button, Title } from "~/components/primitive";
+import { Space, Button, Title, Block } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import AnalyticsService from "~/services/analytics";
 import { useExecuteCallback } from "~/hooks";
@@ -54,8 +54,8 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
   const { firstFret, lastFret, musicNotesAsString, groupedMusicNotesByGuitarFret } = data;
 
   return (
-    <article className="tw-max-w-full tw-text-center">
-      <section className="tw-pb-2 dark:dfr-bg-primary" ref={chordContainerRef}>
+    <Block is="article" className="tw-max-w-full tw-text-center">
+      <Block is="section" className="tw-pb-2 dark:dfr-bg-primary" ref={chordContainerRef}>
         <Title
           is="h1"
           variant={Title.variant.SECONDARY}
@@ -65,10 +65,10 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
           {name}
         </Title>
 
-        <div className="tw-inline-flex tw-flex-no-wrap tw-overflow-x-auto tw-max-w-full tw-items-end">
+        <Block className="tw-inline-flex tw-flex-no-wrap tw-overflow-x-auto tw-max-w-full tw-items-end">
           <GuitarFret variant={GuitarFret.variant.STRINGS_NAMES} />
 
-          <div className="tw-relative tw-inline-flex tw-flex-no-wrap">
+          <Block className="tw-relative tw-inline-flex tw-flex-no-wrap">
             <GuitarFret
               variant={GuitarFret.variant.EMPTY}
               number={(lastFret + 1) as T_GuitarFret}
@@ -89,8 +89,8 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
             {firstFret > 1 && <GuitarFret variant={GuitarFret.variant.EMPTY} number={1} />}
 
-            <div className="tw-h-36 tw-relative tw-top-6 tw--left-0.5 tw-w-3 tw-bg-black dark:tw-bg-white tw-rounded-tr-3xl tw-rounded-br-3xl" />
-          </div>
+            <Block className="tw-h-36 tw-relative tw-top-6 tw--left-0.5 tw-w-3 tw-bg-black dark:tw-bg-white tw-rounded-tr-3xl tw-rounded-br-3xl" />
+          </Block>
 
           {playedStrings && (
             <GuitarFret
@@ -98,11 +98,11 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
               playedStrings={playedStrings}
             />
           )}
-        </div>
-      </section>
+        </Block>
+      </Block>
 
-      <div className="tw-text-sm">
-        <div>
+      <Block className="tw-text-sm">
+        <Block>
           <Button className="tw-font-bold" onClick={handleDownloadAsImage}>
             <Emoji className="tw-mr-1">⬇️</Emoji>
             <span>descargar como imagen</span>
@@ -127,9 +127,9 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
               <Space size={1} orientation="v" />
             </Fragment>
           ) : null}
-        </div>
+        </Block>
         {showChordInput && (
-          <div className="tw-text-sm tw-mt-3 tw-text-center">
+          <Block className="tw-text-sm tw-mt-3 tw-text-center">
             <pre className="tw-whitespace-pre-line tw-break-all tw-border tw-inline-block tw-p-2 dfr-border-primary dark:dfr-border-primary">
               <Button
                 className="tw-font-bold"
@@ -140,10 +140,10 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
               </Button>{" "}
               {musicNotesAsString}
             </pre>
-          </div>
+          </Block>
         )}
-      </div>
-    </article>
+      </Block>
+    </Block>
   );
 }
 

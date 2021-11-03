@@ -3,7 +3,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
 import classNames from "classnames";
 
-import { Link, Icon, Code as CodePrimitive, Button } from "~/components/primitive";
+import { Link, Icon, Code as CodePrimitive, Button, Block } from "~/components/primitive";
 import { useTranslation } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { T_CodeProps, T_ReactElement } from "~/types";
@@ -26,9 +26,9 @@ function Code({
     : "";
 
   return (
-    <div className="root dfr-Code" data-markdown-block>
+    <Block className="dfr-Code" data-markdown-block>
       {!showOnlySourceCode && (
-        <div className="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono tw-rounded-t-md tw-border dfr-border-primary tw-border-b-0 dark:tw-border-0 dark:tw-bg-gray-700">
+        <Block className="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono tw-rounded-t-md tw-border dfr-border-primary tw-border-b-0 dark:tw-border-0 dark:tw-bg-gray-700">
           {codeTitle && (
             <code className="tw-w-full sm:tw-w-auto tw-font-bold tw-mb-2 sm:tw-mb-0 sm:tw-mr-4">
               {codeTitle}
@@ -37,7 +37,7 @@ function Code({
           <span className="tw-rounded-md tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-auto">
             {language}
           </span>
-        </div>
+        </Block>
       )}
 
       <Highlight {...defaultProps} code={code} language={language} theme={dracula}>
@@ -68,7 +68,7 @@ function Code({
       </Highlight>
 
       {!showOnlySourceCode && (
-        <div className="tw-p-2 tw-pt-1.5 tw-text-sm tw-text-right tw-border dfr-border-primary tw-border-t-0 dark:tw-border-0 dark:tw-bg-gray-700 tw-rounded-b-md">
+        <Block className="tw-p-2 tw-pt-1.5 tw-text-sm tw-text-right tw-border dfr-border-primary tw-border-t-0 dark:tw-border-0 dark:tw-bg-gray-700 tw-rounded-b-md">
           {sourceURL && (
             <Link
               className="tw-block sm:tw-inline-block tw-ml-auto tw-font-bold sm:tw-mr-6 tw-mb-1 sm:tw-mb-0"
@@ -90,15 +90,15 @@ function Code({
           >
             {t("page:copy_to_clipboard")}
           </Button>
-        </div>
+        </Block>
       )}
 
       <style jsx>{`
-        .root :global(.dfr-CodePrimitive) {
+        :global(.dfr-Code) :global(.dfr-CodePrimitive) {
           border-radius: 0;
         }
       `}</style>
-    </div>
+    </Block>
   );
 }
 

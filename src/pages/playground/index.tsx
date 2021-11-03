@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Link } from "~/components/primitive";
+import { Link, Block } from "~/components/primitive";
 import { withAuth } from "~/auth";
 import { getPageContentStaticProps } from "~/i18n";
 import { T_ReactElement } from "~/types";
@@ -35,7 +35,7 @@ export const getStaticProps = getPageContentStaticProps({ locale: "es" });
 
 function PagesList({ pages }: { pages: { slug: string; title: string }[] }): T_ReactElement {
   return (
-    <div className="tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
+    <Block className="tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
       {pages.map((page) => {
         return (
           <Link
@@ -49,6 +49,6 @@ function PagesList({ pages }: { pages: { slug: string; title: string }[] }): T_R
           </Link>
         );
       })}
-    </div>
+    </Block>
   );
 }

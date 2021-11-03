@@ -1,6 +1,6 @@
 import React, { useState, useRef, Fragment } from "react";
 
-import { Space, Button, Input } from "~/components/primitive";
+import { Space, Button, Input, Block } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
 import { decrypt, encrypt } from "~/utils/dencrypt";
@@ -20,7 +20,7 @@ function Dencrypt(): T_ReactElement {
 
   return (
     <Fragment>
-      <div className="tw-mb-8">
+      <Block className="tw-mb-8">
         <Input
           id="input"
           label="Ingrese un texto"
@@ -28,19 +28,19 @@ function Dencrypt(): T_ReactElement {
           ref={inputRef}
           onClick={onInputFocus}
         />
-        <div className="tw-flex tw-flex-wrap tw-justify-between">
+        <Block className="tw-flex tw-flex-wrap tw-justify-between">
           <Button className="tw-inline-block tw-text-sm tw-font-bold" onClick={handleEncrypt}>
             encriptar
           </Button>
           <Button className="tw-inline-block tw-text-sm tw-font-bold" onClick={handleDecrypt}>
             desencriptar
           </Button>
-        </div>
-      </div>
+        </Block>
+      </Block>
 
       <Space size={10} variant={Space.variant.DASHED} />
 
-      <div>
+      <Block>
         <p className="tw-font-bold">Resultado</p>
         <output
           className="tw-my-1 tw-border dfr-border-primary tw-block tw-p-3 tw-w-full"
@@ -55,7 +55,7 @@ function Dencrypt(): T_ReactElement {
         >
           copiar
         </Button>
-      </div>
+      </Block>
     </Fragment>
   );
 }

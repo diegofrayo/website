@@ -29,17 +29,20 @@ const Input = React.forwardRef(function Input(
       <Tag
         ref={ref as any}
         id={id}
-        className={classNames("dfr-Input tw-block tw-p-2 tw-w-full tw-resize-none", className)}
+        className={classNames(
+          "dfr-Input tw-block tw-p-2 tw-w-full tw-resize-none dfr-border-primary dark:dfr-border-primary tw-border tw-rounded-none",
+          className,
+        )}
         {...rest}
       />
 
       <style jsx>{`
-        .root .dfr-Input {
-          @apply dfr-bg-secondary;
-        }
-
         .root:focus-within {
           border-color: transparent;
+        }
+
+        .root .dfr-Input {
+          @apply dfr-bg-secondary;
         }
 
         :global(.tw-dark) .root .dfr-Input {

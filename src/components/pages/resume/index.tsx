@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link, Collapsible, Title } from "~/components/primitive";
+import { Link, Collapsible, Title, Block } from "~/components/primitive";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 
 type T_ResumeTimelineItem = {
@@ -17,14 +17,14 @@ type T_ResumeTimelineProps = {
 
 export function ResumeTimeline({ title, timeline }: T_ResumeTimelineProps): T_ReactElement {
   return (
-    <section data-markdown-block>
+    <Block is="section" data-markdown-block>
       <Title is="h2">{title}</Title>
-      <div className="tw-border-l-4 tw-border-black dark:dfr-border-primary tw-pl-6 tw-ml-3 tw-mt-3">
+      <Block className="tw-border-l-4 tw-border-black dark:dfr-border-primary tw-pl-6 tw-ml-3 tw-mt-3">
         {timeline.map((item, index) => {
           return <TimelineItem key={`TimelineItem-${index}`} {...item} />;
         })}
-      </div>
-    </section>
+      </Block>
+    </Block>
   );
 }
 
@@ -35,7 +35,7 @@ function TimelineItem({
   url = "",
 }: T_ResumeTimelineItem): T_ReactElement {
   return (
-    <section className="tw-relative tw-mb-8 last:tw-mb-0">
+    <Block is="section" className="tw-relative tw-mb-8 last:tw-mb-0">
       <span className="tw-absolute tw--left-10 tw-border-4 tw-border-black dark:dfr-border-primary tw-w-7 tw-h-7 tw-rounded-full tw-bg-white tw-top-0.5" />
 
       <Title is="h3" variant={Title.variant.SECONDARY} size={Title.size.MD}>
@@ -49,16 +49,16 @@ function TimelineItem({
       </Title>
       <span className="tw-block tw-text-sm tw-italic tw-mt-0.5 tw-mb-3">{date}</span>
       <p>{description}</p>
-    </section>
+    </Block>
   );
 }
 
 export function ResumeFAQ({ children }: { children: T_ReactChildrenProp }): T_ReactElement {
   return (
-    <section data-markdown-block>
+    <Block is="section" data-markdown-block>
       <Title is="h2">FAQ</Title>
-      <div>{children}</div>
-    </section>
+      <Block>{children}</Block>
+    </Block>
   );
 }
 

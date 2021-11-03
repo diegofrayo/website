@@ -3,7 +3,7 @@ import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 
-import { Icon, Button, Link, Space } from "~/components/primitive";
+import { Icon, Button, Link, Space, Block } from "~/components/primitive";
 import { AuthService } from "~/auth";
 import { safeRender } from "~/hocs";
 import { useClickOutside, useDidMount } from "~/hooks";
@@ -27,8 +27,8 @@ function Header(): T_ReactElement {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
-    <header className="tw-h-auto tw-py-8 tw-text-center sm:tw-h-screen">
-      <div className="tw-flex tw-justify-between tw-items-center">
+    <Block className="tw-h-auto tw-py-8 tw-text-center sm:tw-h-screen">
+      <Block className="tw-flex tw-justify-between tw-items-center">
         <Menu />
         <Link
           variant={Link.variant.SIMPLE}
@@ -39,7 +39,7 @@ function Header(): T_ReactElement {
           {WEBSITE_METADATA.username}
         </Link>
         <SettingsMenu />
-      </div>
+      </Block>
       <Space size={8} />
 
       <PictureFrame />
@@ -52,7 +52,7 @@ function Header(): T_ReactElement {
       >
         <Icon icon={Icon.icon.CHEVRON_DOUBLE_DOWN} size={32} />
       </Button>
-    </header>
+    </Block>
   );
 }
 
@@ -68,7 +68,7 @@ type T_MenuItem = {
 
 function Menu(): T_ReactElement {
   const { currentLocale } = useTranslation();
-  const { pathname } = useRouter();
+  const { pathname, asPath } = useRouter();
 
   const [ITEMS, setItems] = useState<T_MenuItem[]>(createItems());
   const [showMenu, setShowMenu] = useState(false);
@@ -131,17 +131,18 @@ function Menu(): T_ReactElement {
   }
 
   return (
-    <div className="tw-relative" ref={menuRef}>
+    <Block className="tw-relative" ref={menuRef}>
       <Button onClick={() => setShowMenu((pv) => !pv)}>
         <Icon icon={Icon.icon.CHEVRON_DOWN} size={32} />
       </Button>
 
       {showMenu && (
-        <div className="dfr-shadow dark:dfr-shadow tw-absolute tw-top-full tw-z-40 tw-w-52 tw-overflow-hidden tw-left-0">
+        <Block className="dfr-shadow dark:dfr-shadow tw-absolute tw-top-full tw-z-40 tw-w-52 tw-overflow-hidden tw-left-0">
           <ul className="tw-block">
             {ITEMS.map((item) => {
               const isLinkActive =
                 pathname === item.url ||
+                asPath === item.url ||
                 (item.url !== ROUTES.HOME && pathname.startsWith(item.url));
 
               return (
@@ -166,9 +167,9 @@ function Menu(): T_ReactElement {
               );
             })}
           </ul>
-        </div>
+        </Block>
       )}
-    </div>
+    </Block>
   );
 }
 
@@ -207,13 +208,13 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
   }
 
   return (
-    <div className="tw-relative" ref={menuRef}>
+    <Block className="tw-relative" ref={menuRef}>
       <Button onClick={() => setShowMenu((pv) => !pv)}>
         <Icon icon={Icon.icon.COG} size={32} />
       </Button>
 
       {showMenu && (
-        <div className="dfr-shadow dark:dfr-shadow tw-absolute tw-top-full tw-z-40 tw-w-52 tw-overflow-hidden tw-right-0">
+        <Block className="dfr-shadow dark:dfr-shadow tw-absolute tw-top-full tw-z-40 tw-w-52 tw-overflow-hidden tw-right-0">
           {locale && (
             <MenuItem title={t("layout:header:settings:language")}>
               {pageLocales.map((item) => {
@@ -243,9 +244,9 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
               />
             </Button>
           </MenuItem>
-        </div>
+        </Block>
       )}
-    </div>
+    </Block>
   );
 });
 
@@ -257,10 +258,10 @@ function MenuItem({
   title: string;
 }): T_ReactElement {
   return (
-    <div className="dfr-bg-secondary dfr-border-primary dark:dfr-border-primary dark:dfr-bg-secondary tw-flex tw-flex-col tw-justify-center tw-items-center tw-h-16 tw-px-2 tw-border-b last:tw-border-0">
+    <Block className="dfr-bg-secondary dfr-border-primary dark:dfr-border-primary dark:dfr-bg-secondary tw-flex tw-flex-col tw-justify-center tw-items-center tw-h-16 tw-px-2 tw-border-b last:tw-border-0">
       <p className="tw-font-bold tw-text-xs tw-text-right">{title}</p>
-      <div className="tw-text-right tw-leading-none tw-mt-2">{children}</div>
-    </div>
+      <Block className="tw-text-right tw-leading-none tw-mt-2">{children}</Block>
+    </Block>
   );
 }
 
@@ -316,15 +317,15 @@ function PictureFrame(): T_ReactElement {
       },
     ];
 
-    setPhoto(PHOTOS[new Date().getDay()]);
+    setPhoto(PHOTOS[0]);
   });
 
   return (
-    <div className="tw-w-48 tw-mx-auto">
-      <div className="dfr-bg-strong dfr-text-strong-inverted tw-text-center tw-px-1 tw-text-sm tw-font-bold tw-pt-1">
+    <Block className="dfr-PictureFrame tw-w-48 tw-mx-auto">
+      <Block className="dfr-bg-strong dfr-text-strong-inverted tw-text-center tw-px-1 tw-text-sm tw-font-bold tw-pt-1">
         {t("layout:header:frame:title")}
-      </div>
-      <div className="image-container dfr-border-strong dfr-bg-strong tw-border-4 tw-h-64 tw-flex tw-items-center">
+      </Block>
+      <Block className="image-container dfr-border-strong dfr-bg-strong tw-border-4 tw-h-64 tw-flex tw-items-center">
         {photo && (
           <Link href={photo.src} className={classNames("tw-block", photo.portrait && "tw-h-full")}>
             <img
@@ -334,8 +335,8 @@ function PictureFrame(): T_ReactElement {
             />
           </Link>
         )}
-      </div>
-      <div className="tw-flex tw-flex-nowrap tw-items-end tw-justify-end tw-relative tw-py-1">
+      </Block>
+      <Block className="tw-flex tw-flex-nowrap tw-items-end tw-justify-end tw-relative tw-py-1">
         <span className="dfr-bg-strong tw-absolute tw-left-0 tw-top-0 tw-w-10 tw-h-2 tw-rounded-br-md tw-rounded-bl-md" />
         {photo && (
           <Link
@@ -346,13 +347,13 @@ function PictureFrame(): T_ReactElement {
             {photo.place}
           </Link>
         )}
-      </div>
+      </Block>
 
       <style jsx>{`
-        .image-container {
+        :global(.dfr-PictureFrame) :global(.image-container) {
           background-image: url("/static/images/textures/1.png");
         }
       `}</style>
-    </div>
+    </Block>
   );
 }

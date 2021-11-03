@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import { toast } from "react-toastify";
 
-import { Button } from "~/components/primitive";
+import { Button, Block } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/i18n";
@@ -66,9 +66,11 @@ function RateContent(): T_ReactElement {
   }
 
   return (
-    <div className="tw-text-center">
+    <Block className="tw-text-center">
       <p className="tw-text-sm tw-font-bold">{t("common:useful_question")}</p>
-      <div className={classNames("tw-text-center tw-mt-1", isQuestionAnswered && "tw-opacity-50")}>
+      <Block
+        className={classNames("tw-text-center tw-mt-1", isQuestionAnswered && "tw-opacity-50")}
+      >
         <Button
           className={classNames("tw-mx-2 tw-text-xl", questionAnswer === "YES" && "tw-font-bold")}
           disabled={isQuestionAnswered}
@@ -83,8 +85,8 @@ function RateContent(): T_ReactElement {
         >
           {t("common:useful_question_no")} <Emoji>👎</Emoji>
         </Button>
-      </div>
-    </div>
+      </Block>
+    </Block>
   );
 }
 

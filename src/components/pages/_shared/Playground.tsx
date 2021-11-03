@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import classNames from "classnames";
 
-import { Button } from "~/components/primitive";
+import { Button, Block } from "~/components/primitive";
 import {
   T_CodeProps,
   T_Function,
@@ -34,12 +34,12 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
   } = useController(props);
 
   return (
-    <div
-      className="root tw-flex tw-flex-col tw-border-4 tw-border-black dark:tw-border-white"
+    <Block
+      className="dfr-Playground tw-flex tw-flex-col tw-border-4 tw-border-black dark:tw-border-white"
       style={{ minHeight: 200 }}
       data-markdown-block
     >
-      <div
+      <Block
         className="tw-flex-1 tw-overflow-auto tw-p-0.5"
         style={{ maxHeight: 300 }}
         ref={contentRef}
@@ -49,8 +49,8 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
         ) : (
           <Component />
         )}
-      </div>
-      <div className="tw-flex tw-flex-no-wrap tw-text-sm tw-border-t-4 tw-border-black dark:tw-border-white">
+      </Block>
+      <Block className="tw-flex tw-flex-no-wrap tw-text-sm tw-border-t-4 tw-border-black dark:tw-border-white">
         <Button
           className={classNames(
             "tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2",
@@ -71,15 +71,15 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
         >
           Output
         </Button>
-      </div>
+      </Block>
 
       <style jsx>{`
-        .root :global(.dfr-Code) {
+        :global(.dfr-Playground) :global(.dfr-Code) {
           box-shadow: none;
           margin: 0;
         }
       `}</style>
-    </div>
+    </Block>
   );
 }
 

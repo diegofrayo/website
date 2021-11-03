@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import classNames from "classnames";
 import reactStringReplace from "react-string-replace";
 
-import { Button, Icon, Modal, Space } from "~/components/primitive";
+import { Button, Icon, Modal, Space, Block } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { GuitarChord, GuitarService, T_Chord } from "~/lib/guitar";
 import { T_Function, T_ReactElement, T_ReactChildrenProp } from "~/types";
@@ -30,16 +30,16 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
   } = useController(props);
 
   return (
-    <div>
+    <Block>
       {parsedLyrics}
 
       <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
-        <div className="tw-bg-white dark:dfr-bg-primary tw-p-4 tw-rounded-md tw-w-96 tw-mx-auto tw-max-w-full">
+        <Block className="tw-bg-white dark:dfr-bg-primary tw-p-4 tw-rounded-md tw-w-96 tw-mx-auto tw-max-w-full">
           {Array.isArray(selectedChord) ? (
-            <div>
+            <Block>
               {selectedChord.map((chord, index) => {
                 return (
-                  <div
+                  <Block
                     key={`${chord.name}-${index}`}
                     className={classNames(index === selectedChordIndex ? "tw-block" : "tw-hidden")}
                   >
@@ -48,10 +48,10 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                       musicNotes={chord.musicNotes}
                       playedStrings={chord.playedStrings}
                     />
-                  </div>
+                  </Block>
                 );
               })}
-              <div className="tw-flex tw-justify-between tw-items-center tw-mt-1">
+              <Block className="tw-flex tw-justify-between tw-items-center tw-mt-1">
                 <Button
                   onClick={() => {
                     handleUpdateSelectedChordIndex(-1);
@@ -59,7 +59,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                 >
                   <Icon icon={Icon.icon.CHEVRON_LEFT} size={20} />
                 </Button>
-                <div className="tw-flex-1 tw-justify-center tw-flex tw-items-center">
+                <Block className="tw-flex-1 tw-justify-center tw-flex tw-items-center">
                   {createArray(selectedChord.length, 0).map((index) => {
                     return (
                       <span
@@ -75,7 +75,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                       </span>
                     );
                   })}
-                </div>
+                </Block>
                 <Button
                   onClick={() => {
                     handleUpdateSelectedChordIndex(1);
@@ -83,8 +83,8 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                 >
                   <Icon icon={Icon.icon.CHEVRON_RIGHT} size={20} />
                 </Button>
-              </div>
-            </div>
+              </Block>
+            </Block>
           ) : selectedChord ? (
             <GuitarChord
               name={selectedChord.name}
@@ -100,9 +100,9 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
           >
             <Icon icon={Icon.icon.X} size={24} />
           </Button>
-        </div>
+        </Block>
       </Modal>
-    </div>
+    </Block>
   );
 }
 

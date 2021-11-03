@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Block } from "~/components/primitive";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { mirror } from "~/utils/misc";
 
@@ -13,7 +14,7 @@ type T_MDXContentProps = {
 
 function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps): T_ReactElement {
   return (
-    <article className={`dfr-MDXContent dfr-MDXContent--${variant.toLowerCase()}`}>
+    <Block is="article" className={`dfr-MDXContent dfr-MDXContent--${variant.toLowerCase()}`}>
       {content}
 
       <style jsx>{`
@@ -71,7 +72,7 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
           margin-right: auto;
         }
       `}</style>
-    </article>
+    </Block>
   );
 }
 

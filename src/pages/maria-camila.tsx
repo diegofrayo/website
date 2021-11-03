@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
+import { Block } from "~/components/primitive";
 import { useDocumentTitle } from "~/hooks";
 import { T_ReactElement } from "~/types";
 
@@ -8,7 +9,7 @@ function MariaCamila(): T_ReactElement {
   useDocumentTitle("Feliz cumple!!");
 
   return (
-    <div className="tw-max-w-lg tw-mx-auto tw-p-6">
+    <Block className="tw-max-w-lg tw-mx-auto tw-p-6">
       <link rel="icon" href="/static/images/favicon/favicon.ico" />
 
       <Title className="tw-mb-12">
@@ -37,7 +38,7 @@ function MariaCamila(): T_ReactElement {
         Pero creo que ya lo <Marked>eres!</Marked>
       </Text>
 
-      <div className="tw-my-8">
+      <Block className="tw-my-8">
         <a href="/static/images/maria-camila.jpg" target="_blank" className="tw-block">
           <img
             src="/static/images/maria-camila.jpg"
@@ -48,11 +49,11 @@ function MariaCamila(): T_ReactElement {
         <p className="tw-text-center tw-italic tw-text-sm tw-mt-1 tw-px-4">
           esta es la única foto <br /> que tengo de los dos juntos 🤷‍♂️
         </p>
-      </div>
+      </Block>
 
       <hr className="tw-border tw-border-yellow-200 tw-h-px tw-border-dashed tw-mt-10 tw-shadow-md tw-opacity-50" />
 
-      <div className="tw-my-8">
+      <Block className="tw-my-8">
         <Title className="tw-mb-4">
           Te deseo que la pases muy bien y admiro mucho tu profesión 🤩
         </Title>
@@ -64,15 +65,15 @@ function MariaCamila(): T_ReactElement {
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></iframe>
-      </div>
+        />
+      </Block>
 
       <style jsx>{`
         :global(body) {
           @apply tw-bg-yellow-100;
         }
       `}</style>
-    </div>
+    </Block>
   );
 }
 
@@ -82,7 +83,7 @@ export default MariaCamila;
 
 function Text({ children, emoji, left = false }) {
   return (
-    <div
+    <Block
       className={classNames(
         "tw-text-lg tw-my-6 tw-flex tw-items-center",
         left ? "tw-text-left tw-pr-10" : "tw-text-right tw-pl-10 tw-flex-row-reverse",
@@ -90,7 +91,7 @@ function Text({ children, emoji, left = false }) {
     >
       <span className="tw-text-3xl tw-flex-shrink-0">{emoji}</span>
       <span className="tw-mx-3">{children}</span>
-    </div>
+    </Block>
   );
 }
 

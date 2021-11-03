@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-import { Button, Icon, Image, Link, Space, Title } from "~/components/primitive";
+import { Button, Icon, Image, Link, Space, Title, Block } from "~/components/primitive";
 import { Render } from "~/components/pages/_shared";
 import { useQuery } from "~/hooks";
 import FilmsService from "~/services/films";
@@ -31,8 +31,8 @@ function Films(): T_ReactElement {
     <Render isLoading={isLoading} error={error} data={data}>
       {({ films, categories }: { films: T_Film[]; categories: string[] }) => {
         return (
-          <div>
-            <section>
+          <Block>
+            <Block is="section">
               <Title
                 is="h3"
                 size={Title.size.MD}
@@ -41,7 +41,7 @@ function Films(): T_ReactElement {
               >
                 Categorías [{categories.length}]
               </Title>
-              <div className="tw-flex tw-justify-betweden tw-flex-wrap">
+              <Block className="tw-flex tw-justify-betweden tw-flex-wrap">
                 {categories.map((category) => {
                   return (
                     <Button
@@ -58,11 +58,11 @@ function Films(): T_ReactElement {
                     </Button>
                   );
                 })}
-              </div>
-            </section>
+              </Block>
+            </Block>
             <Space size={6} />
 
-            <section>
+            <Block is="section">
               <Title
                 is="h3"
                 size={Title.size.MD}
@@ -71,7 +71,7 @@ function Films(): T_ReactElement {
               >
                 Ordenar por
               </Title>
-              <div className="tw-flex tw-justify-betweden tw-flex-wrap">
+              <Block className="tw-flex tw-justify-betweden tw-flex-wrap">
                 <Button
                   className={classNames(
                     "tw-mr-2 tw-my-1 tw-underlidne tw-inline-block tw-text-sm tw-py-1 tw-px-3 tw-rounded-md tw-text-left tw-truncate",
@@ -83,11 +83,11 @@ function Films(): T_ReactElement {
                 >
                   Fecha
                 </Button>
-              </div>
-            </section>
+              </Block>
+            </Block>
             <Space size={6} />
 
-            <section>
+            <Block is="section">
               <Title
                 is="h3"
                 size={Title.size.MD}
@@ -98,7 +98,7 @@ function Films(): T_ReactElement {
                 {selectedCategory ? `Resultados de "${selectedCategory}"` : "Resultados"} [
                 {films.length}]
               </Title>
-              <div className="tw-flex tw-justify-center sm:tw-justify-between tw-flex-wrap">
+              <Block className="tw-flex tw-justify-center sm:tw-justify-between tw-flex-wrap">
                 {films.map(({ id, source, title, type, calification, cover }, index) => {
                   return (
                     <Link
@@ -139,7 +139,7 @@ function Films(): T_ReactElement {
                           />
                         </span>
 
-                        <div className="film__details tw-flex tw-self-end tw-flex-nowrap tw-justify-between tw-w-full tw-items-end tw-p-2">
+                        <Block className="dfr-bg-strong-inverted tw-bg-opacity-70 tw-flex tw-self-end tw-flex-nowrap tw-justify-between tw-w-full tw-items-end tw-p-2">
                           {source === "imdb" ? (
                             <Image
                               src="/static/images/misc/imdb.png"
@@ -160,7 +160,7 @@ function Films(): T_ReactElement {
                             />
                           )}
 
-                          <div className="tw-flex-1 tw-text-right">
+                          <Block className="tw-flex-1 tw-text-right">
                             <Title
                               is="h1"
                               variant={Title.variant.UNSTYLED}
@@ -171,21 +171,15 @@ function Films(): T_ReactElement {
                             <p className="tw-text-sm tw-font-bold tw-leading-none tw-text-gray-700 tw-lowercase tw-italic">
                               {type}
                             </p>
-                          </div>
-                        </div>
+                          </Block>
+                        </Block>
                       </article>
                     </Link>
                   );
                 })}
-              </div>
-            </section>
-
-            <style jsx>{`
-              .film__details {
-                background-color: rgba(255, 255, 255, 0.7);
-              }
-            `}</style>
-          </div>
+              </Block>
+            </Block>
+          </Block>
         );
       }}
     </Render>

@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Block } from "~/components/primitive";
 import { T_ReactElement } from "~/types";
 
 export function HelloWorldMDX({ text }: { text: string }): T_ReactElement {
@@ -8,7 +9,7 @@ export function HelloWorldMDX({ text }: { text: string }): T_ReactElement {
 
 export function SpotifyPlaylist(): T_ReactElement {
   return (
-    <div className="dfr-border-strong tw-border-4" data-markdown-block>
+    <Block className="dfr-border-strong tw-border-4" data-markdown-block>
       <iframe
         src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"
         width="100%"
@@ -16,6 +17,6 @@ export function SpotifyPlaylist(): T_ReactElement {
         frameBorder="0"
         allow="encrypted-media"
       />
-    </div>
+    </Block>
   );
 }

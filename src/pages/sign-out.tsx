@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Page } from "~/components/layout";
+import { Block } from "~/components/primitive";
 import { Loader } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import { T_ReactElement } from "~/types";
@@ -21,9 +22,9 @@ function SignOutPage(): T_ReactElement {
         disableSEO: true,
       }}
     >
-      <div className="tw-text-center tw-p-4">
+      <Block className="tw-text-center tw-p-4">
         <Loader />
-      </div>
+      </Block>
     </Page>
   );
 }

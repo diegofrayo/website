@@ -4,7 +4,7 @@ import renderToString from "next-mdx-remote/render-to-string";
 import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Blockquote, Icon, Space, Button } from "~/components/primitive";
+import { Blockquote, Icon, Space, Button, Block } from "~/components/primitive";
 import { MDXContent, RateContent } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
@@ -121,7 +121,7 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
   const { t } = useTranslation();
 
   return (
-    <div className="tw-flex tw-flex-col sm:tw-flex-row tw-justify-center tw-items-center">
+    <Block className="tw-flex tw-flex-col sm:tw-flex-row tw-justify-center tw-items-center">
       <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-primary dark:dfr-border-primary">
         <BlogPostDetailsItem.Icon
           icon={Icon.icon.CALENDAR}
@@ -140,7 +140,7 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
           <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
         </p>
       </BlogPostDetailsItem>
-    </div>
+    </Block>
   );
 }
 
