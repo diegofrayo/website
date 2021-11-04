@@ -170,7 +170,7 @@ function Footer({
         <Space size={4} className="dfr-border-primary tw-border-b tw-border-opacity-30" />
 
         <Block className="tw-text-center tw-text-xs dfr-text-strong-inverted">
-          <strong>{t("layout:footer:resources_disclaimer")}:</strong>{" "}
+          <InlineText is="strong">{t("layout:footer:resources_disclaimer")}:</InlineText>{" "}
           <Link className="tw-break-normal" href="https://heroicons.com" external>
             HeroIcons.com
           </Link>

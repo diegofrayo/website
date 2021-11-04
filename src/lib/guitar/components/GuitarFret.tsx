@@ -105,7 +105,9 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                       {STRINGS_NAMES[guitarString - 1]}
                     </InlineText>
                     <InlineText className="tw-px-0.5">-</InlineText>
-                    <strong className="tw-text-center tw-w-6">{guitarString}</strong>
+                    <InlineText is="strong" className="tw-text-center tw-w-6">
+                      {guitarString}
+                    </InlineText>
                   </Block>
                 ) : isSkippedStringsVariant ? (
                   <InlineText className="tw-mx-2">

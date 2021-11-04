@@ -129,7 +129,7 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
         />
         <Text>
           <InlineText className="tw-mr-1">{t("page:published_at")}</InlineText>
-          <strong>{publishedAt}</strong>
+          <InlineText is="strong">{publishedAt}</InlineText>
         </Text>
       </BlogPostDetailsItem>
       <InlineText className="tw-block tw-my-1 sm:tw-my-0 sm:tw-inline-block sm:tw-mx-4" />
@@ -137,7 +137,7 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
         <BlogPostDetailsItem.Icon icon={Icon.icon.EDIT} color="tw-text-black dark:tw-text-white" />
         <Text>
           <InlineText className="tw-mr-1">{t("page:updated_at")}</InlineText>
-          <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
+          <InlineText is="strong">{getDifferenceBetweenDates(updatedAt, new Date())}</InlineText>
         </Text>
       </BlogPostDetailsItem>
     </Block>

@@ -2,7 +2,7 @@ import React, { Fragment, useRef, useState } from "react";
 import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
-import { List, Link, Title, Space, Input, Text, InlineText } from "~/components/primitive";
+import { Link, Title, Space, Input, Text, InlineText, Block } from "~/components/primitive";
 import { Emoji, Render } from "~/components/pages/_shared";
 import { SongDetails } from "~/components/pages/music";
 import { AuthService } from "~/auth";
@@ -85,13 +85,10 @@ function MusicPage(): T_ReactElement {
                   onChange={onInputChange}
                 />
 
-                <List
-                  className="tw-flex tw-flex-wrap tw-justify-between"
-                  variant={List.variant.UNSTYLED}
-                >
+                <Block className="tw-flex tw-flex-wrap tw-justify-between">
                   {songsList.map((song) => {
                     return (
-                      <List.Item key={song.id} className="tw-w-full sm:tw-w-5/12">
+                      <Block key={song.id} className="tw-w-full sm:tw-w-5/12 tw-mb-3">
                         <Link
                           href={`${ROUTES.MUSIC}/${song.id}`}
                           variant={Link.variant.SECONDARY}
@@ -110,10 +107,10 @@ function MusicPage(): T_ReactElement {
                           </InlineText>
                         </Link>
                         <SongDetails song={song} />
-                      </List.Item>
+                      </Block>
                     );
                   })}
-                </List>
+                </Block>
               </Fragment>
             );
           }}

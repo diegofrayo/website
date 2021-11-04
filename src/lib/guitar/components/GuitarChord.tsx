@@ -41,9 +41,9 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
   if (error) {
     return (
-      <strong className="tw-block tw-text-red-700 dark:tw-text-red-400 tw-mt-2">
+      <InlineText is="strong" className="tw-block tw-text-red-700 dark:tw-text-red-400 tw-mt-2">
         Syntax error: {error.message}
-      </strong>
+      </InlineText>
     );
   }
 

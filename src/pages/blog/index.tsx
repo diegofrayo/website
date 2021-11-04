@@ -29,7 +29,7 @@ function BlogPage(): T_ReactElement {
         <Render isLoading={isLoading} error={error} data={data}>
           {(posts: T_BlogPost[]) => {
             return (
-              <List>
+              <List variant={List.variant.DEFAULT}>
                 {posts.map((post) => {
                   return (
                     <BlogEntry
@@ -95,7 +95,7 @@ function BlogEntry({
       </Link>
       <Text className="tw-text-sm tw-italic">
         <InlineText>{t("page:updated_at")} </InlineText>
-        <strong>{getDifferenceBetweenDates(updatedAt, new Date())}</strong>
+        <InlineText is="strong">{getDifferenceBetweenDates(updatedAt, new Date())}</InlineText>
       </Text>
       <Block className="tw-pb-1">
         {categories.map((category) => {

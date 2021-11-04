@@ -4,18 +4,22 @@ import classNames from "classnames";
 import { T_HTMLAttributes, T_ReactElement } from "~/types";
 import { mirror } from "~/utils/misc";
 
-type T_Variants = "DEFAULT" | "UNSTYLED";
-const VARIANTS = mirror(["DEFAULT", "UNSTYLED"]) as Record<T_Variants, T_Variants>;
+type T_Variants = "UNSTYLED" | "DEFAULT";
+const VARIANTS = mirror(["UNSTYLED", "DEFAULT"]) as Record<T_Variants, T_Variants>;
+
+type T_ListProps = T_HTMLAttributes["ul"] & {
+  variant?: T_Variants;
+};
 
 function List({
   children,
   className = "",
-  variant = "DEFAULT",
-}: T_HTMLAttributes["ul"] & { variant?: "DEFAULT" | "UNSTYLED" }): T_ReactElement {
+  variant = VARIANTS.UNSTYLED,
+}: T_ListProps): T_ReactElement {
   return (
     <ul
       className={classNames(
-        `root root--${variant.toLowerCase()}`,
+        `dfr-List dfr-List--${variant.toLowerCase()}`,
         "tw-list-inside tw-list-none",
         className,
       )}
@@ -24,17 +28,17 @@ function List({
 
       <style jsx>
         {`
-          .root--default {
+          .dfr-List--default {
             padding-left: 19px;
           }
 
-          .root :global(li) {
+          .dfr-List--default :global(li) {
             @apply tw-mb-3;
             @apply last:tw-mb-0;
             position: relative;
           }
 
-          .root--default :global(li)::before {
+          .dfr-List--default :global(li)::before {
             color: black;
             content: "❯";
             font-weight: bold;
@@ -44,7 +48,7 @@ function List({
             top: 2px;
           }
 
-          :global(.tw-dark) .root--default :global(li)::before {
+          :global(.tw-dark) .dfr-List--default :global(li)::before {
             color: white;
           }
         `}

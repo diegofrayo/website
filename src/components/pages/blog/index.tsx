@@ -17,7 +17,7 @@ export function Sources({
       <Title is="h2" data-markdown-title showLinkIcon>
         {t("page:sources")}
       </Title>
-      <List>
+      <List variant={List.variant.DEFAULT}>
         {sources.map((source) => {
           const { host, origin } = new URL(source.url);
 

@@ -11,10 +11,11 @@ import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata, selectSEOMetadata } from "~/state/modules/metadata";
 import { selectPageConfig } from "~/state/modules/page-config";
 import {
+  T_PageConfig,
+  T_PageRoute,
   T_ReactChildrenProp,
   T_ReactElement,
   T_SEOMetadata,
-  T_PageConfig,
   T_WebsiteMetadata,
 } from "~/types";
 import { isDevelopmentEnvironment } from "~/utils/misc";
@@ -131,9 +132,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           rel="stylesheet"
         />
 
-        {(config.pathname === ROUTES.HOME ||
-          config.pathname === ROUTES.RESUME ||
-          config.pathname === ROUTES.ABOUT_ME) && (
+        {[ROUTES.HOME, ROUTES.RESUME, ROUTES.ABOUT_ME].includes(config.pathname as T_PageRoute) && (
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{

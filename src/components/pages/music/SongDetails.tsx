@@ -22,19 +22,19 @@ function SongDetails({
   return (
     <Block className={classNames("tw-text-sm tw-italic", className)}>
       <Block className="sm:tw-flex sm:tw-flex-nowrap">
-        <strong>{t("page:artist")}:</strong>{" "}
+        <InlineText is="strong">{t("page:artist")}:</InlineText>{" "}
         <InlineText className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={song.artist}>
           {song.artist}
         </InlineText>
       </Block>
       <Block className="sm:tw-flex sm:tw-flex-nowrap">
-        <strong>{t("page:album")}:</strong>{" "}
+        <InlineText is="strong">{t("page:album")}:</InlineText>{" "}
         <InlineText className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={song.album}>
           {song.album}
         </InlineText>
       </Block>
       <Block>
-        <strong>{t("page:year")}:</strong> <InlineText>{song.year}</InlineText>
+        <InlineText is="strong">{t("page:year")}:</InlineText> <InlineText>{song.year}</InlineText>
       </Block>
       <Progress progress={song.progress} />
       <Text className="tw-text-lg tw--mt-1">{song.country}</Text>
@@ -93,7 +93,9 @@ const Progress = protectedComponent(function Progress({ progress }: { progress: 
 
   return (
     <Block className={classNames("tw-flex tw-items-center")}>
-      <strong className="tw-mr-2">{t("page:progress")}:</strong>
+      <InlineText is="strong" className="tw-mr-2">
+        {t("page:progress")}:
+      </InlineText>
       {createArray(5).map((index) => {
         return (
           <InlineText

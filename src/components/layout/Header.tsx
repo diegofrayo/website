@@ -3,9 +3,9 @@ import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 
-import { Icon, Button, Link, Space, Block, Text, InlineText } from "~/components/primitive";
+import { Icon, Button, Link, Space, Block, Text, InlineText, List } from "~/components/primitive";
 import { AuthService } from "~/auth";
-import { safeRender } from "~/hocs";
+import { protectedComponent, safeRender } from "~/hocs";
 import { useClickOutside, useDidMount } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
@@ -22,6 +22,7 @@ import {
 import { scrollToElement } from "~/utils/browser";
 import { ROUTES } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
+import { isDevelopmentEnvironment } from "~/utils/misc";
 
 function Header(): T_ReactElement {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
@@ -138,7 +139,7 @@ function Menu(): T_ReactElement {
 
       {showMenu && (
         <Block className="dfr-shadow dark:dfr-shadow tw-absolute tw-top-full tw-z-40 tw-w-52 tw-overflow-hidden tw-left-0">
-          <ul className="tw-block">
+          <List className="tw-block">
             {ITEMS.map((item) => {
               const isLinkActive =
                 pathname === item.url ||
@@ -146,7 +147,7 @@ function Menu(): T_ReactElement {
                 (item.url !== ROUTES.HOME && pathname.startsWith(item.url));
 
               return (
-                <li
+                <List.Item
                   key={generateSlug(item.label)}
                   className=" dfr-bg-secondary dark:dfr-bg-secondary dfr-border-primary dark:dfr-border-primary tw-border-b last:tw-border-0"
                   onClick={() => setShowMenu(false)}
@@ -163,10 +164,10 @@ function Menu(): T_ReactElement {
                   >
                     {item.label}
                   </Link>
-                </li>
+                </List.Item>
               );
             })}
-          </ul>
+          </List>
         </Block>
       )}
     </Block>
@@ -244,9 +245,33 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
               />
             </Button>
           </MenuItem>
+
+          <EnvironmentMenuItem />
         </Block>
       )}
     </Block>
+  );
+});
+
+const EnvironmentMenuItem = protectedComponent(function EnvironmentMenuItem() {
+  const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
+
+  const [url, setUrl] = useState("/");
+
+  useDidMount(() => {
+    setUrl(
+      isDevelopmentEnvironment()
+        ? `${WEBSITE_METADATA.url}${window.location.pathname}`
+        : `http://localhost:3000${window.location.pathname}`,
+    );
+  });
+
+  return (
+    <MenuItem title="Environment">
+      <Link href={url} external>
+        <Icon icon={Icon.icon.EXTERNAL_LINK} />
+      </Link>
+    </MenuItem>
   );
 });
 
