@@ -3,7 +3,7 @@ import React from "react";
 import { T_HTMLAttributes, T_ReactElement } from "~/types";
 
 type T_BlockProps = T_HTMLAttributes["div"] & {
-  is?: "div" | "section" | "article" | "header" | "footer";
+  is?: "div" | "main" | "section" | "article" | "header" | "footer";
 };
 
 const Block = React.forwardRef(function Block(

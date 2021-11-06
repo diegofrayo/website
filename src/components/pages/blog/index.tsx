@@ -23,13 +23,13 @@ export function Sources({
 
           return (
             <List.Item key={generateSlug(source.title)}>
-              <Link href={source.url} className="tw-block">
+              <Link variant={Link.variant.PRIMARY} href={source.url} className="tw-block" external>
                 {source.title}
               </Link>
               <Link
-                href={origin}
                 variant={Link.variant.SECONDARY}
-                className="dfr-text-secondary tw-text-sm tw-italic tw-font-bold"
+                href={origin}
+                className="tw-text-sm tw-italic"
                 external
               >
                 {host}

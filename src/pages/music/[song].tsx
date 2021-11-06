@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import classNames from "classnames";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
@@ -188,7 +188,7 @@ function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps,
   isMaxFontSize: boolean;
   isMinFontSize: boolean;
 } {
-  const [fontSize, setFontSize] = useState(0);
+  const [fontSize, setFontSize] = React.useState(0);
 
   const mdxContent = hydrate(songMDXContent, { components: MDXComponents }) as string;
 
@@ -197,16 +197,16 @@ function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps,
     document.documentElement.lang = "es";
   });
 
-  useEffect(
+  React.useEffect(
     function updateFontSizeOnLocalStorage() {
-      window.localStorage.setItem("MUSIC_FONT_SIZE", `${fontSize}`);
+      window.localStorage.setItem("DFR_MUSIC_FONT_SIZE", `${fontSize}`);
     },
     [fontSize],
   );
 
   function getFontSize(): number {
     const INITIAL_VALUE = 0.8;
-    const fontSize = Number(window.localStorage.getItem("MUSIC_FONT_SIZE"));
+    const fontSize = Number(window.localStorage.getItem("DFR_MUSIC_FONT_SIZE"));
 
     if (!fontSize || Number.isNaN(fontSize)) {
       return INITIAL_VALUE;

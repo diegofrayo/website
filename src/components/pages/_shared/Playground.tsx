@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import classNames from "classnames";
 
 import { Button, Block } from "~/components/primitive";
@@ -94,8 +94,8 @@ function useController(props: T_PlaygroundProps): T_PlaygroundProps & {
   setOutputTab: T_Function;
   contentRef: T_ReactRefObject<HTMLDivElement>;
 } {
-  const [tab, setTab] = useState(0);
-  const contentRef = useRef<HTMLDivElement>(null);
+  const [tab, setTab] = React.useState(0);
+  const contentRef = React.useRef<HTMLDivElement>(null);
 
   function setSourceCodeTab() {
     setTab(0);

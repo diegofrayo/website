@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 
 import { T_Function, T_ReactChildrenProp, T_ReactElement, T_ReactRefObject } from "~/types";
 
@@ -49,10 +49,10 @@ function useController({
   openByDefault = false,
   title = "",
 }: T_CollapsibleProps): T_UseController {
-  const [isCollapsed, setIsCollapsed] = useState(openByDefault);
-  const containerRef = useRef<HTMLDetailsElement>(null);
+  const [isCollapsed, setIsCollapsed] = React.useState(openByDefault);
+  const containerRef = React.useRef<HTMLDetailsElement>(null);
 
-  useEffect(
+  React.useEffect(
     function toggleCollapse() {
       if (!containerRef.current) return;
 

@@ -18,9 +18,9 @@ function Books(): T_ReactElement {
               return (
                 <Link
                   key={id}
-                  href={url}
                   variant={Link.variant.UNSTYLED}
-                  className="book tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 tw-shadow-lg hover:tw-shadow-2xl tw-transform tw-duration-300 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 tw-border-black dark:dfr-border-primary sm:tw--rotate-1 hover:tw-opacity-75"
+                  href={url}
+                  className="tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 tw-shadow-lg hover:tw-shadow-2xl tw-transform tw-duration-300 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 hover:tw-opacity-75 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 dfr-border-strong dark:dfr-border-primary sm:tw--rotate-1"
                 >
                   <article
                     className="tw-flex tw-h-full tw-w-full"

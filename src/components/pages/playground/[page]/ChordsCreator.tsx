@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 
 import { Input, Space, Title, Block } from "~/components/primitive";
 import { GuitarChord } from "~/lib/guitar";
@@ -14,7 +14,7 @@ function ChordsCreator(): T_ReactElement {
   } = useController();
 
   return (
-    <Fragment>
+    <React.Fragment>
       <Block>
         <Title is="h2" className="tw-mb-4">
           Crea un acorde
@@ -115,7 +115,7 @@ function ChordsCreator(): T_ReactElement {
           enableShowNotesOption
         />
       </Block>
-    </Fragment>
+    </React.Fragment>
   );
 }
 
@@ -127,7 +127,7 @@ function useController(): {
   inputs: { name: string; musicNotes: string };
   onInputChange: any;
 } {
-  const [inputs, setInputs] = useState({ name: "", musicNotes: "" });
+  const [inputs, setInputs] = React.useState({ name: "", musicNotes: "" });
 
   function onInputChange(inputName) {
     return function onInputChange(e) {

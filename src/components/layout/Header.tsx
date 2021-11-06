@@ -1,9 +1,19 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 
-import { Icon, Button, Link, Space, Block, Text, InlineText, List } from "~/components/primitive";
+import {
+  Block,
+  Button,
+  Icon,
+  Image,
+  InlineText,
+  Link,
+  List,
+  Space,
+  Text,
+} from "~/components/primitive";
 import { AuthService } from "~/auth";
 import { protectedComponent, safeRender } from "~/hocs";
 import { useClickOutside, useDidMount } from "~/hooks";
@@ -28,14 +38,13 @@ function Header(): T_ReactElement {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
-    <Block className="tw-h-auto tw-py-8 tw-text-center sm:tw-h-screen">
+    <Block is="header" className="tw-h-auto tw-py-8 sm:tw-h-screen">
       <Block className="tw-flex tw-justify-between tw-items-center">
-        <Menu />
+        <MainMenu />
         <Link
-          variant={Link.variant.SIMPLE}
+          variant={Link.variant.SECONDARY}
           href={ROUTES.HOME}
-          className="dfr-text-strong dfr-border-strong dark:dfr-text-strong dark:dfr-border-strong tw-font-bold tw-text-sm tw-border-b-2 tw-border-dotted"
-          isNextLink
+          className="dfr-border-strong tw-text-sm tw-border-b-2 tw-border-dotted dark:dfr-border-strong"
         >
           {WEBSITE_METADATA.username}
         </Link>
@@ -47,6 +56,7 @@ function Header(): T_ReactElement {
       <Space size={10} />
 
       <Button
+        className="tw-mx-auto tw-block"
         onClick={() => {
           scrollToElement(document.getElementById("body"));
         }}
@@ -61,25 +71,25 @@ export default Header;
 
 // --- Components ---
 
-type T_MenuItem = {
+type T_MainMenuItem = {
   label: string;
   url: T_PageRoute;
   locale?: T_Locale;
 };
 
-function Menu(): T_ReactElement {
+function MainMenu(): T_ReactElement {
   const { currentLocale } = useTranslation();
   const { pathname, asPath } = useRouter();
 
-  const [ITEMS, setItems] = useState<T_MenuItem[]>(createItems());
-  const [showMenu, setShowMenu] = useState(false);
-  const menuRef = useRef(null);
+  const [ITEMS, setItems] = React.useState<T_MainMenuItem[]>(createItems());
+  const [showMenu, setShowMenu] = React.useState(false);
+  const menuRef = React.useRef(null);
 
   useClickOutside(menuRef, () => {
     setShowMenu(false);
   });
 
-  useEffect(
+  React.useEffect(
     function addPrivateItems() {
       if (AuthService.isUserLoggedIn()) {
         const translator = I18nService.getInstance();
@@ -97,7 +107,7 @@ function Menu(): T_ReactElement {
     [currentLocale],
   );
 
-  function createItems(): T_MenuItem[] {
+  function createItems(): T_MainMenuItem[] {
     const translator = I18nService.getInstance();
 
     return [
@@ -153,14 +163,13 @@ function Menu(): T_ReactElement {
                   onClick={() => setShowMenu(false)}
                 >
                   <Link
-                    href={item.url}
                     variant={Link.variant.SIMPLE}
+                    href={item.url}
                     className={classNames(
                       "tw-block tw-text-left tw-text-base tw-px-2 tw-py-1 hover:tw-font-bold",
                       isLinkActive && "tw-font-bold",
                     )}
                     locale={item.locale}
-                    isNextLink
                   >
                     {item.label}
                   </Link>
@@ -181,8 +190,8 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
   const { theme, setTheme } = useTheme();
   const { t } = useTranslation();
 
-  const menuRef = useRef(null);
-  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = React.useRef(null);
+  const [showMenu, setShowMenu] = React.useState(false);
 
   const EMOJIS = { en: "🇺🇸", es: "🇪🇸" };
   const isDarkMode = theme === "dark";
@@ -256,7 +265,7 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
 const EnvironmentMenuItem = protectedComponent(function EnvironmentMenuItem() {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
-  const [url, setUrl] = useState("/");
+  const [url, setUrl] = React.useState("/");
 
   useDidMount(() => {
     setUrl(
@@ -268,7 +277,7 @@ const EnvironmentMenuItem = protectedComponent(function EnvironmentMenuItem() {
 
   return (
     <MenuItem title="Environment">
-      <Link href={url} external>
+      <Link variant={Link.variant.SIMPLE} href={url} external>
         <Icon icon={Icon.icon.EXTERNAL_LINK} />
       </Link>
     </MenuItem>
@@ -294,7 +303,7 @@ function PictureFrame(): T_ReactElement {
   const { t } = useTranslation();
 
   const [photo, setPhoto] =
-    useState<{ src: string; place: string; placeUrl: string; portrait: boolean }>();
+    React.useState<{ src: string; place: string; placeUrl: string; portrait: boolean }>();
 
   useDidMount(() => {
     const PHOTOS = [
@@ -352,8 +361,12 @@ function PictureFrame(): T_ReactElement {
       </Block>
       <Block className="image-container dfr-border-strong dfr-bg-strong tw-border-4 tw-h-64 tw-flex tw-items-center">
         {photo && (
-          <Link href={photo.src} className={classNames("tw-block", photo.portrait && "tw-h-full")}>
-            <img
+          <Link
+            variant={Link.variant.SIMPLE}
+            href={photo.src}
+            className={classNames("tw-block", photo.portrait && "tw-h-full")}
+          >
+            <Image
               src={photo.src}
               alt={photo.place}
               className={classNames("tw-block", photo.portrait && "tw-h-full")}

@@ -47,6 +47,7 @@ function Title(props: T_TitleProps): T_ReactElement {
     return (
       <Tag id={id} className={className} {...rest}>
         <Link
+          variant={Link.variant.SIMPLE}
           href={`#${id}`}
           className={classNames(
             "tw-visible sm:tw-invisible tw-float-left tw--ml-5 tw-pr-1 tw-leading-0",
@@ -69,7 +70,7 @@ function Title(props: T_TitleProps): T_ReactElement {
           }
 
           :global(.dfr-Title--primary) {
-            scroll-margin-top: 80px;
+            scroll-margin-top: 20px;
           }
         `}</style>
       </Tag>

@@ -84,13 +84,7 @@ function BlogEntry({
 
   return (
     <List.Item>
-      <Link
-        href={`${ROUTES.BLOG}/${slug}`}
-        variant={Link.variant.SECONDARY}
-        className="tw-font-bold"
-        locale={getLocale()}
-        isNextLink
-      >
+      <Link href={`${ROUTES.BLOG}/${slug}`} variant={Link.variant.SECONDARY} locale={getLocale()}>
         {title}
       </Link>
       <Text className="tw-text-sm tw-italic">

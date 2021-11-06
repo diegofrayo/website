@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 import Head from "next/head";
 import classNames from "classnames";
 
@@ -54,7 +54,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   });
 
   return (
-    <Fragment>
+    <React.Fragment>
       <Head>
         <title>{metadata.title}</title>
         <meta charSet="UTF-8" />
@@ -155,7 +155,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
       <UserLoggedInFlag />
       <AnalyticsDisabledFlag />
       {isDevelopmentEnvironment() && <WindowSize />}
-    </Fragment>
+    </React.Fragment>
   );
 }
 
@@ -168,7 +168,7 @@ const UserLoggedInFlag = protectedComponent(function UserLoggedInFlag() {
 });
 
 function AnalyticsDisabledFlag() {
-  const [isAnalyticsEnabled, setIsAnalyticsEnabled] = useState(false);
+  const [isAnalyticsEnabled, setIsAnalyticsEnabled] = React.useState(false);
 
   useDidMount(() => {
     setIsAnalyticsEnabled(AnalyticsService.isAnalyticsDisabled() === false);

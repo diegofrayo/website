@@ -205,14 +205,6 @@ export type T_PageConfig = {
 
 // --- Components props ---
 
-export type T_BreadcumbProps = {
-  items: {
-    text: string;
-    url?: T_PageRoute;
-    isNextLink?: boolean;
-  }[];
-};
-
 export type T_CodeProps = {
   language: "jsx" | "tsx" | "css" | "typescript" | "javascript" | "bash" | "yaml";
   code: string;

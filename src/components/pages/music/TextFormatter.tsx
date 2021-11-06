@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React from "react";
 import classNames from "classnames";
 import reactStringReplace from "react-string-replace";
 
@@ -120,9 +120,9 @@ function useController({ children, insertions }: T_TextFormatterProps): {
 
   parsedLyrics: T_ReactChildrenProp;
 } {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedChord, setSelectedChord] = useState<T_Chord | undefined>(undefined);
-  const [selectedChordIndex, setSelectedChordIndex] = useState(0);
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
+  const [selectedChord, setSelectedChord] = React.useState<T_Chord | undefined>(undefined);
+  const [selectedChordIndex, setSelectedChordIndex] = React.useState(0);
 
   useDidMount(() => {
     document.querySelectorAll(".dfr-Chord")?.forEach((button) => {
@@ -182,7 +182,7 @@ function useController({ children, insertions }: T_TextFormatterProps): {
         );
       }
 
-      return <Fragment key={`TextFormatter-item-${index}`}>{item}</Fragment>;
+      return <React.Fragment key={`TextFormatter-item-${index}`}>{item}</React.Fragment>;
     });
   }
 

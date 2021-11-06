@@ -1,15 +1,15 @@
-import { useEffect, useRef } from "react";
+import React from "react";
 
 import { T_OnScrollEvent } from "~/types";
 
 function useOnWindowScroll(callback: (event: T_OnScrollEvent) => void, when = true): void {
-  const savedHandler = useRef(callback);
+  const savedHandler = React.useRef(callback);
 
-  useEffect(function updateCallbackRef() {
+  React.useEffect(function updateCallbackRef() {
     savedHandler.current = callback;
   });
 
-  useEffect(
+  React.useEffect(
     function createScrollEventListener() {
       if (!when) return;
 

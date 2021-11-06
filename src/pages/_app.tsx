@@ -64,9 +64,11 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
         >
           <QueryClientProvider client={queryClient}>
             <ThemeProvider
+              storageKey="DFR_THEME"
+              defaultTheme="system"
+              enableSystem={true}
+              themes={["light", "dark"]}
               attribute="class"
-              defaultTheme="light"
-              enableSystem={false}
               value={{ light: "tw-light", dark: "tw-dark" }}
             >
               <Component {...pageProps} />

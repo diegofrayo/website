@@ -27,9 +27,9 @@ class AnalyticsService {
   isAnalyticsDisabled() {
     if (
       isBrowser() &&
-      (window.location.href.includes("a=d") || window.localStorage.getItem("DA"))
+      (window.location.href.includes("a=d") || window.localStorage.getItem("DFR_DA"))
     ) {
-      window.localStorage.setItem("DA", "true");
+      window.localStorage.setItem("DFR_DA", "true");
       return true;
     }
 

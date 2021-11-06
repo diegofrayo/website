@@ -1,4 +1,4 @@
-import React, { useRef, createContext } from "react";
+import React from "react";
 
 import { useToggleBodyScroll } from "~/hooks";
 import { T_Object, T_ReactElement } from "~/types";
@@ -27,7 +27,7 @@ export default Modal;
 
 // --- Context ---
 
-const Context = createContext({
+const Context = React.createContext({
   onCloseModalHandler: (): void => undefined,
 });
 
@@ -36,7 +36,7 @@ Modal.Context = Context;
 // --- Components ---
 
 function Backdrop({ children, closeModalHandler }): T_ReactElement {
-  const backdropRef = useRef<HTMLDivElement>(null);
+  const backdropRef = React.useRef<HTMLDivElement>(null);
 
   function handleBackdropClick(event) {
     if (backdropRef && backdropRef.current === event.target) {

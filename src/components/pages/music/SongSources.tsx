@@ -27,9 +27,10 @@ function SongSources(props: T_SongSourcesProps): T_ReactElement {
           return (
             <List.Item key={`SongSources-Link-source-${index}`} className="tw-mb-2 last:tw-mb-0">
               <Link
+                variant={Link.variant.SIMPLE}
                 href={source.url}
                 className="tw-flex tw-items-center tw-py-0.5"
-                variant={Link.variant.SIMPLE}
+                external
               >
                 <ImageComponent />
                 <Block className="tw-flex-1 tw-min-w-0">

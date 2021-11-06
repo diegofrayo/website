@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { useDidMount } from "~/hooks";
 import { T_Object, T_ReactFunctionComponent } from "~/types";
@@ -11,7 +11,7 @@ function withAuth(
   options?: { denyLoggedIn?: boolean; allowIf?: any },
 ) {
   return function WithAuthComponent(props: T_Object): any {
-    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+    const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
 
     useDidMount(() => {
       if (options?.allowIf && options?.allowIf(props)) {

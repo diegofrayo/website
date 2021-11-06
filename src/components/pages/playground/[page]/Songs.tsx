@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import classNames from "classnames";
 
 import { Block, InlineText } from "~/components/primitive";
@@ -115,7 +115,7 @@ function SongsPage(): T_ReactElement {
         const connector = getRandomItem(CONNECTORS);
 
         return (
-          <Fragment key={lyric.id}>
+          <React.Fragment key={lyric.id}>
             <InlineText
               className={classNames(
                 "dfr-border-strong dark:dfr-border-strong tw-border-b tw-mr-2 tw-leading-relaxed",
@@ -131,7 +131,7 @@ function SongsPage(): T_ReactElement {
                 {connector}
               </InlineText>
             )}
-          </Fragment>
+          </React.Fragment>
         );
       })}
     </Block>

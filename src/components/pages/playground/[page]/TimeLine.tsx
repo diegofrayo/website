@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 import classNames from "classnames";
 
 import { Button, Space, Title, Block, Text, InlineText } from "~/components/primitive";
@@ -26,7 +26,7 @@ function TimeLine(): T_ReactElement {
     <Render isLoading={isLoading} error={error} data={data}>
       {({ categories, items }: T_TimeLine) => {
         return (
-          <Fragment>
+          <React.Fragment>
             <Block is="section">
               <Title
                 is="h3"
@@ -103,7 +103,7 @@ function TimeLine(): T_ReactElement {
                 </Block>
               );
             })}
-          </Fragment>
+          </React.Fragment>
         );
       }}
     </Render>
@@ -122,7 +122,7 @@ function useController(): {
   handleSelectFilter: (filter: string) => () => void;
   formatDate: any;
 } {
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = React.useState("");
   const { isLoading, error, data } = useQuery("items", TimeLineService.fetchData);
 
   function handleSelectFilter(category) {

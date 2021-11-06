@@ -2,13 +2,13 @@ import React from "react";
 import classNames from "classnames";
 
 import {
-  Link,
-  Icon,
-  Title as TitlePrimitive,
-  Image,
   Block,
-  Text,
+  Icon,
+  Image,
   InlineText,
+  Link,
+  Text,
+  Title as TitlePrimitive,
 } from "~/components/primitive";
 import {
   T_HTMLAttributes,
@@ -126,9 +126,10 @@ export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_Rea
   return (
     <Block className="tw-text-right" data-markdown-block>
       <Link
+        variant={Link.variant.SIMPLE}
         className="dfr-bg-secondary dfr-border-primary dark:dfr-border-primary dark:dfr-bg-secondary tw-flex sm:tw-inline-flex tw-p-4 tw-rounded-md tw-items-center tw-relative tw-pr-8 tw-border"
         href={url}
-        variant={Link.variant.SIMPLE}
+        external
       >
         <Icon icon={Icon.icon.GITHUB} wrapperClassName="tw-mr-3" size={32} withDarkModeBackground />
 
@@ -177,7 +178,7 @@ export function ImageWithLink({
   alt?: string;
 }): T_ReactElement {
   return (
-    <Link href={src} variant={Link.variant.UNSTYLED}>
+    <Link variant={Link.variant.SIMPLE} href={src} external>
       <Image src={src} alt={alt} className={className} {...rest} />
     </Link>
   );

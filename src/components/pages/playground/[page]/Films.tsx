@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 
 import {
@@ -17,7 +17,6 @@ import { useQuery } from "~/hooks";
 import FilmsService from "~/services/films";
 import { T_Film, T_ReactElement } from "~/types";
 import { getScrollPosition, setScrollPosition, isInViewport } from "~/utils/browser";
-import { FIXED_HEADER_HEIGHT } from "~/utils/constants";
 import { sortBy } from "~/utils/misc";
 import { generateSlug } from "~/utils/strings";
 
@@ -113,6 +112,7 @@ function Films(): T_ReactElement {
                   return (
                     <Link
                       key={id}
+                      variant={Link.variant.UNSTYLED}
                       href={
                         source === "Netflix"
                           ? `https://www.netflix.com/title/${id}`
@@ -120,18 +120,16 @@ function Films(): T_ReactElement {
                           ? `https://www.youtube.com/watch?v=${id}`
                           : `https://www.imdb.com/title/${id}`
                       }
-                      variant={Link.variant.UNSTYLED}
                       className={classNames(
-                        "film tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 tw-shadow-lg hover:tw-shadow-2xl tw-transform tw-duration-300 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 hover:tw-opacity-75",
+                        "tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 tw-shadow-lg hover:tw-shadow-2xl tw-transform tw-duration-300 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 hover:tw-opacity-75",
                         index % 2 === 0 ? "sm:tw-rotate-2" : "sm:tw--rotate-2",
                       )}
                     >
                       <article
-                        className="tw-flex tw-h-full tw-w-full"
+                        className="tw-flex tw-h-full tw-w-full tw-bg-no-repeat"
                         style={{
                           backgroundImage: `url(${cover})`,
                           backgroundSize: "100% 100%",
-                          backgroundRepeat: "no-repeat",
                         }}
                       >
                         <InlineText className="tw-absolute tw--top-2 tw--right-2 tw-bg-black dark:tw-bg-white tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8">
@@ -214,8 +212,8 @@ function useController(): {
   handleSelectFilter: (filter: string) => () => void;
   toggleOrderByFilter: () => void;
 } {
-  const [isAddedDateFilterEnabled, setIsAddedDateFilterEnabled] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [isAddedDateFilterEnabled, setIsAddedDateFilterEnabled] = React.useState(false);
+  const [selectedCategory, setSelectedCategory] = React.useState("");
   const { isLoading, error, data } = useQuery<T_Film[]>("films", FilmsService.fetchFilms);
 
   function filterFilms(films: T_Film[], filter: string): T_Film[] {
@@ -240,7 +238,7 @@ function useController(): {
       if (!isInViewport(resultsTitleElement)) {
         resultsTitleElement.scrollIntoView();
         setTimeout(() => {
-          setScrollPosition(getScrollPosition() - FIXED_HEADER_HEIGHT);
+          setScrollPosition(getScrollPosition());
         }, 10);
       }
     };

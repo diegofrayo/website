@@ -32,6 +32,7 @@ function twcssCreator(
         styles,
         className,
         twcssVariant || staticProps.twcssVariant,
+        rest,
       );
 
       return (
@@ -51,12 +52,17 @@ function generateClassName(
   styles: T_StylesParam,
   className: string,
   twVariant: T_TWCSS_ComponentProps["twcssVariant"],
+  props: any,
 ): string {
   if (Array.isArray(styles) || typeof styles === "string") {
     return `${styles} ${className}`.trim();
   }
 
   if (typeof styles === "object") {
+    if (typeof styles[twVariant as string] === "function") {
+      return `${styles.__base || ""} ${styles[twVariant as string](props)} ${className}`.trim();
+    }
+
     if (typeof twVariant === "object") {
       const twVariantStyles = Object.keys(twVariant)
         .reduce((result: string, curr: string) => {

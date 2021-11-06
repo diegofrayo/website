@@ -3,44 +3,39 @@ import classNames from "classnames";
 import NextLink from "next/link";
 
 import twcss from "~/lib/twcss";
-import { T_Locale, T_ReactChildrenProp, T_ReactElement, T_HTMLAttributes } from "~/types";
-import { getScrollPosition, isSmallScreen, setScrollPosition } from "~/utils/browser";
-import { FIXED_HEADER_HEIGHT } from "~/utils/constants";
+import { T_Locale, T_ReactElement, T_HTMLAttributes } from "~/types";
+import { mirror } from "~/utils/misc";
 
-enum E_Variants {
-  DEFAULT = "DEFAULT",
-  SECONDARY = "SECONDARY",
-  SIMPLE = "SIMPLE",
-  UNSTYLED = "UNSTYLED",
-}
+type T_Variant = "UNSTYLED" | "SIMPLE" | "PRIMARY" | "SECONDARY";
+const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "PRIMARY", "SECONDARY"]) as Record<
+  T_Variant,
+  T_Variant
+>;
 
 type T_LinkProps = T_HTMLAttributes["a"] & {
-  children: T_ReactChildrenProp;
-  disabled?: boolean;
+  variant: T_Variant;
   external?: boolean;
-  is?: string;
-  isNextLink?: boolean;
+  is?: "a" | typeof NextLink;
   locale?: T_Locale;
-  role?: "button";
-  variant?: E_Variants;
+  fontWeight?: string;
 };
 
 function Link(props: T_LinkProps): T_ReactElement {
   const {
-    // vars
-    getExternalAttrs,
-
     // handlers
     onClick,
 
+    // utils
+    getExternalAttrs,
+
     // props
     children,
+    variant,
     href,
     className,
-    is,
+    is: Tag,
     external,
-    isNextLink,
-    variant,
+    fontWeight,
     ...rest
   } = useController(props);
 
@@ -49,19 +44,19 @@ function Link(props: T_LinkProps): T_ReactElement {
     return null;
   }
 
-  if (isNextLink === true) {
+  if (Tag === NextLink) {
     return (
-      <NextLink href={href} locale={rest.locale} passHref>
+      <Tag href={href} locale={rest.locale} passHref>
         <LinkElement
           className={classNames("dfr-Link", className)}
           twcssVariant={variant}
-          is={is}
+          fontWeight={fontWeight}
           onClick={onClick}
           {...rest}
         >
           {children}
         </LinkElement>
-      </NextLink>
+      </Tag>
     );
   }
 
@@ -70,7 +65,8 @@ function Link(props: T_LinkProps): T_ReactElement {
       href={href}
       className={classNames("dfr-Link", className)}
       twcssVariant={variant}
-      is={is}
+      is={Tag}
+      fontWeight={fontWeight}
       onClick={onClick}
       {...getExternalAttrs(href, external)}
       {...rest}
@@ -80,7 +76,7 @@ function Link(props: T_LinkProps): T_ReactElement {
   );
 }
 
-Link.variant = E_Variants;
+Link.variant = VARIANTS;
 
 export default Link;
 
@@ -90,11 +86,10 @@ function useController({
   children,
   href = "",
   className = "",
-  is = "a",
-  external = true,
-  isNextLink = false,
-  variant = E_Variants.DEFAULT,
-  onClick = () => undefined,
+  is,
+  external = false,
+  variant = VARIANTS.UNSTYLED,
+  onClick,
   ...rest
 }: T_LinkProps) {
   function getExternalAttrs(href, external) {
@@ -102,32 +97,21 @@ function useController({
     return { target: "_blank", rel: "noreferrer" };
   }
 
-  function onClickEnhanced(e) {
-    onClick(e);
-
-    setTimeout(() => {
-      if (!isSmallScreen() || !href.startsWith("#")) return;
-
-      setScrollPosition(getScrollPosition() - FIXED_HEADER_HEIGHT);
-    }, 10);
-  }
-
   return {
+    // handlers
+    onClick,
+
+    // utils
+    getExternalAttrs,
+
     // props
     children,
     href,
     className,
-    is,
+    is: external ? is : is || NextLink,
     external,
-    isNextLink,
     variant,
     ...rest,
-
-    // handlers
-    onClick: onClickEnhanced,
-
-    // vars
-    getExternalAttrs,
   };
 }
 
@@ -135,8 +119,11 @@ function useController({
 
 const LinkElement = twcss.a({
   __base: "",
-  DEFAULT: "dfr-transition-opacity dfr-text-link dark:dfr-text-link tw-font-bold tw-underline",
-  SECONDARY: "dfr-transition-opacity dfr-text-strong dark:dfr-text-strong",
-  SIMPLE: "dfr-transition-opacity",
   UNSTYLED: "",
+  SIMPLE: "dfr-transition-opacity",
+  PRIMARY: "dfr-transition-opacity dfr-text-link dark:dfr-text-link tw-font-bold tw-underline",
+  SECONDARY: (props) =>
+    `dfr-transition-opacity dfr-text-strong dark:dfr-text-strong ${
+      props.fontWeight || "tw-font-bold"
+    }`,
 });

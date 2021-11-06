@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
+import classNames from "classnames";
 
 import { Icon, Input, Link, Block } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
@@ -36,12 +37,14 @@ function WhatsApp(): T_ReactElement {
           onKeyPress={onKeyPress}
         />
         <Link
-          role="button"
-          id="button"
-          className="tw-self-end tw-flex"
-          href={composeWhatsAppUrl()}
           variant={Link.variant.SIMPLE}
-          disabled={isInvalidPhone}
+          href={composeWhatsAppUrl()}
+          className={classNames(
+            "tw-self-end tw-flex",
+            isInvalidPhone && "tw-pointer-events-none tw-opacity-50",
+          )}
+          id="button"
+          external
         >
           <Icon icon={Icon.icon.WHATSAPP} size={48} />
         </Link>
@@ -90,17 +93,17 @@ function useController(): {
   isInvalidPhone: boolean;
   isWebOptionSelected: boolean;
 } {
-  const [phone, setPhone] = useState("");
-  const [isWebOptionSelected, setIsWebOptionSelected] = useState(true);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [isInvalidPhone, setIsInvalidPhone] = useState(true);
+  const [phone, setPhone] = React.useState("");
+  const [isWebOptionSelected, setIsWebOptionSelected] = React.useState(true);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const [isInvalidPhone, setIsInvalidPhone] = React.useState(true);
 
   useDidMount(() => {
     if (isSmallScreen() || !inputRef.current) return;
     focusElement(inputRef.current);
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     setIsInvalidPhone(!inputRef?.current?.validity?.valid || !phone);
   }, [phone]);
 

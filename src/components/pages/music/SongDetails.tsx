@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { Icon, Link, Block, Text, InlineText } from "~/components/primitive";
+import { Icon, Link, Block, Text, InlineText, Space } from "~/components/primitive";
 import { protectedComponent } from "~/hocs";
 import { useTranslation } from "~/i18n";
 import MusicService from "~/services/music";
@@ -39,10 +39,11 @@ function SongDetails({
       <Progress progress={song.progress} />
       <Text className="tw-text-lg tw--mt-1">{song.country}</Text>
       <Block className="tw-flex tw-items-center tw-mt-1">
-        <Link href={song.spotifyUrl} variant={Link.variant.SIMPLE} className="tw-mr-2">
+        <Link variant={Link.variant.SIMPLE} href={song.spotifyUrl} external>
           <Icon icon={Icon.icon.SPOTIFY} size={24} />
         </Link>
-        <Link href={song.youtubeUrl} variant={Link.variant.SIMPLE}>
+        <Space size={1} orientation="v" />
+        <Link variant={Link.variant.SIMPLE} href={song.youtubeUrl} external>
           <Icon icon={Icon.icon.YOUTUBE} size={24} />
         </Link>
       </Block>

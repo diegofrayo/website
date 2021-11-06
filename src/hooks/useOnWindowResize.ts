@@ -1,15 +1,15 @@
-import { useEffect, useRef } from "react";
+import React from "react";
 
 import { T_Function } from "~/types";
 
 function useOnWindowResize(callback: T_Function): void {
-  const savedHandler = useRef(callback);
+  const savedHandler = React.useRef(callback);
 
-  useEffect(function updateCallbackRef() {
+  React.useEffect(function updateCallbackRef() {
     savedHandler.current = callback;
   });
 
-  useEffect(function createResizeEventListener() {
+  React.useEffect(function createResizeEventListener() {
     function handleWindowResize(): void {
       savedHandler.current();
     }

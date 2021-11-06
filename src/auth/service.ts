@@ -2,7 +2,7 @@ import http from "~/lib/http";
 import { isBrowser } from "~/utils/misc";
 
 class AuthService {
-  private LOCAL_STORAGE_KEY = "AUTH";
+  private LOCAL_STORAGE_KEY = "DFR_AUTH";
 
   async signIn(values) {
     return http

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React from "react";
 
 type T_Data = any;
 type T_Params = any;
@@ -12,16 +12,16 @@ function useExecuteCallback(
   data: T_Data;
   error: Error | undefined;
 } {
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState(undefined);
-  const [error, setError] = useState(undefined);
-  const savedHandler = useRef(callback);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [data, setData] = React.useState(undefined);
+  const [error, setError] = React.useState(undefined);
+  const savedHandler = React.useRef(callback);
 
-  useEffect(function updateCallbackRef() {
+  React.useEffect(function updateCallbackRef() {
     savedHandler.current = callback;
   });
 
-  useEffect(
+  React.useEffect(
     function executeCallback() {
       const executeCallback = async (params) => {
         try {

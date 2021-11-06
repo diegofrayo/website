@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from "react";
+import React from "react";
 import classNames from "classnames";
 
 import { Space, Button, Title, Block, InlineText } from "~/components/primitive";
@@ -109,7 +109,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
           </Button>
 
           {musicNotesAsString && enableShowNotesOption ? (
-            <Fragment>
+            <React.Fragment>
               <Button
                 className="tw-mt-1 sm:tw-mt-0 sm:tw-ml-2 tw-font-bold"
                 onClick={handleShowChordInput}
@@ -125,7 +125,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
                 <InlineText>{showChordInput ? "ocultar" : "mostrar"} notas</InlineText>
               </Button>
               <Space size={1} orientation="v" />
-            </Fragment>
+            </React.Fragment>
           ) : null}
         </Block>
         {showChordInput && (
@@ -176,8 +176,8 @@ function useController({
     return GuitarService.buildChord(params);
   });
 
-  const chordContainerRef = useRef<HTMLDivElement>(null);
-  const [showChordInput, setChordInput] = useState(false);
+  const chordContainerRef = React.useRef<HTMLDivElement>(null);
+  const [showChordInput, setChordInput] = React.useState(false);
 
   async function handleDownloadAsImage(): Promise<void> {
     await downloadComponentAsImage(chordContainerRef.current, name);

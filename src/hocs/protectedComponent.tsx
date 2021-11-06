@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import hoistNonReactStatics from "hoist-non-react-statics";
 
 import { AuthService } from "~/auth";
@@ -7,7 +7,7 @@ import { T_ReactElement, T_ReactFunctionComponent } from "~/types";
 
 function protectedComponent<P>(Component: T_ReactFunctionComponent<P>): any {
   const ProtectedComponentHOC = (props: P): T_ReactElement => {
-    const [renderComponent, setRenderComponent] = useState(false);
+    const [renderComponent, setRenderComponent] = React.useState(false);
 
     useDidMount(() => setRenderComponent(AuthService.isUserLoggedIn()));
 

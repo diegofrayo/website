@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import React from "react";
 
 function useToggleBodyScroll(scrollDisabled: boolean): void {
-  useEffect(
+  React.useEffect(
     function toggleBodyClasses() {
       if (scrollDisabled) {
         document.body.classList.add("scroll-disabled");

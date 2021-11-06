@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import classNames from "classnames";
 
 import { Block, Icon, InlineText } from "~/components/primitive";
@@ -114,21 +114,21 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                     {getSkippedStringValue(playedStrings, guitarString)}
                   </InlineText>
                 ) : isBarreMusicNote ? (
-                  <Fragment>
+                  <React.Fragment>
                     <String />
                     {(musicNote as I_BarreMusicNote)?.barre >= guitarString && (
                       <InlineText className="tw-h-full tw-border-4 tw-border-white" />
                     )}
                     <String />
-                  </Fragment>
+                  </React.Fragment>
                 ) : musicNote ? (
-                  <Fragment>
+                  <React.Fragment>
                     <String />
                     <InlineText className="tw-rounded-full tw-h-5 tw-w-5 tw-border tw-font-bold tw-bg-white tw-text-black tw-leading-0 tw-flex tw-items-center tw-justify-center">
                       {(musicNote as I_SimpleMusicNote).finger}
                     </InlineText>
                     <String />
-                  </Fragment>
+                  </React.Fragment>
                 ) : (
                   <String />
                 )}

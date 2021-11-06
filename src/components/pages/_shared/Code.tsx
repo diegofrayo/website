@@ -78,9 +78,10 @@ function Code({
         <Block className="tw-p-2 tw-pt-1.5 tw-text-sm tw-text-right tw-border dfr-border-primary tw-border-t-0 dark:tw-border-0 dark:tw-bg-gray-700 tw-rounded-b-md">
           {sourceURL && (
             <Link
+              variant={Link.variant.SIMPLE}
               className="tw-block sm:tw-inline-block tw-ml-auto tw-font-bold sm:tw-mr-6 tw-mb-1 sm:tw-mb-0"
               href={sourceURL}
-              variant={Link.variant.SIMPLE}
+              external
             >
               <Icon
                 icon={Icon.icon.GITHUB}

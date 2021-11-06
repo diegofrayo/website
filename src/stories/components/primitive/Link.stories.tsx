@@ -12,32 +12,45 @@ export default {
 
 // --- Stories ---
 
-export const Default = Story.bind({});
-Default.args = {
-  children: "Default link",
+export const Unstyled = Story.bind({});
+Unstyled.args = {
+  variant: Link.variant.UNSTYLED,
+  children: "Unstyled link (youtube)",
   href: "https://www.youtube.com",
+  external: true,
+};
+
+export const Simple = Story.bind({});
+Simple.args = {
+  variant: Link.variant.SIMPLE,
+  children: "Simple link (google)",
+  href: "https://www.google.com",
+  external: true,
+};
+
+export const Primary = Story.bind({});
+Primary.args = {
+  variant: Link.variant.PRIMARY,
+  children: "Primary link (facebook)",
+  href: "https://www.facebook.com",
+  external: true,
 };
 
 export const Secondary = Story.bind({});
 Secondary.args = {
-  children: "Secondary link",
-  href: "https://www.youtube.com",
-  variant: "SECONDARY",
+  variant: Link.variant.SECONDARY,
+  children: "Secondary link (twitter)",
+  href: "https://www.twitter.com",
+  external: true,
 };
 
-export const Unstyled = Story.bind({});
-Unstyled.args = {
-  children: "Unstyled link",
-  href: "https://www.youtube.com",
-  external: false,
-  variant: "UNSTYLED",
-};
-
-export const WithNextLink = Story.bind({});
-WithNextLink.args = {
-  children: "WithNextLink link",
-  href: "#",
-  isNextLink: true,
+export const SecondaryWithFontWeight = Story.bind({});
+Secondary.args = {
+  variant: Link.variant.SECONDARY,
+  children: "By default is bold, but I set font-thin",
+  href: "https://www.twitter.com",
+  external: true,
+  fontWeight: "tw-font-thin",
 };
 
 export const WithoutChildren = Story.bind({});
@@ -48,11 +61,4 @@ WithoutChildren.args = {
 export const WithoutHref = Story.bind({});
 WithoutHref.args = {
   children: "WithoutHref",
-};
-
-export const PageElementLink = Story.bind({});
-PageElementLink.args = {
-  children: "PageElementLink",
-  href: "#",
-  external: true,
 };

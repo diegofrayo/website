@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 import { toast } from "react-toastify";
 
@@ -9,10 +9,10 @@ import { useTranslation } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import { T_ReactElement } from "~/types";
 
-const LOCAL_STORAGE_KEY = "CONTENT_RATED";
+const LOCAL_STORAGE_KEY = "DFR_CONTENT_RATED";
 
 function RateContent(): T_ReactElement {
-  const [questionAnswer, setQuestionAnswer] = useState("");
+  const [questionAnswer, setQuestionAnswer] = React.useState("");
   const { t } = useTranslation();
 
   const isQuestionAnswered = questionAnswer !== "";

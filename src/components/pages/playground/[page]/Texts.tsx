@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect, useRef, useCallback } from "react";
+import React from "react";
 import ReactDiffViewer from "react-diff-viewer";
 
 import { Button, Input, Space, Title, Block, Text, InlineText } from "~/components/primitive";
@@ -43,7 +43,7 @@ function Texts(): T_ReactElement {
               <Emoji>🤷‍♂️</Emoji> <InlineText>Nothing to compare...</InlineText>
             </Text>
           ) : (
-            <Fragment>
+            <React.Fragment>
               <Block ref={correctionsContainerRef}>
                 <ReactDiffViewer
                   oldValue={baseText}
@@ -68,7 +68,7 @@ function Texts(): T_ReactElement {
               >
                 <Emoji className="tw-mr-1">⬇️</Emoji>download as image
               </Button>
-            </Fragment>
+            </React.Fragment>
           )}
         </Block>
       </Block>
@@ -81,9 +81,9 @@ export default Texts;
 // --- Controller ---
 
 function useController() {
-  const [baseText, setBaseText] = useState("");
-  const [newText, setNewText] = useState("");
-  const correctionsContainerRef = useRef<HTMLDivElement | null>(null);
+  const [baseText, setBaseText] = React.useState("");
+  const [newText, setNewText] = React.useState("");
+  const correctionsContainerRef = React.useRef<HTMLDivElement | null>(null);
 
   return {
     // states
@@ -100,22 +100,22 @@ function useController() {
 // --- Components ---
 
 function TextArea({ title, text, setText, id }) {
-  const [isEditable, setIsEditable] = useState(false);
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const saveOnLocalStorage = useCallback(() => {
-    window.localStorage.setItem(`TEXT_${title}`.toUpperCase(), text);
+  const [isEditable, setIsEditable] = React.useState(false);
+  const textareaRef = React.useRef<HTMLTextAreaElement | null>(null);
+  const saveOnLocalStorage = React.useCallback(() => {
+    window.localStorage.setItem(`DFR_TEXT_${title}`.toUpperCase(), text);
   }, [text, title]);
-  const interval = useRef<NodeJS.Timeout | null>(null);
+  const interval = React.useRef<NodeJS.Timeout | null>(null);
 
   useDidMount(() => {
-    setText(window.localStorage.getItem(`TEXT_${title}`.toUpperCase()) || text);
+    setText(window.localStorage.getItem(`DFR_TEXT_${title}`.toUpperCase()) || text);
 
     return () => {
       window.onbeforeunload = null;
     };
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!isEditable || !textareaRef.current) {
       if (interval.current) {
         clearInterval(interval.current);
@@ -130,7 +130,7 @@ function TextArea({ title, text, setText, id }) {
     window.onbeforeunload = () => "";
   }, [isEditable, interval]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!isEditable || interval.current) return;
 
     interval.current = setInterval(() => {
@@ -155,7 +155,7 @@ function TextArea({ title, text, setText, id }) {
 
       <Block className="tw-flex-1 tw-overflow-auto">
         {isEditable ? (
-          <Fragment>
+          <React.Fragment>
             <Input
               is="textarea"
               id={id}
@@ -182,7 +182,7 @@ function TextArea({ title, text, setText, id }) {
                 save
               </Button>
             </Block>
-          </Fragment>
+          </React.Fragment>
         ) : (
           <Block className="tw-flex tw-flex-nowrap tw-h-52">
             {text && (

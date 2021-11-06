@@ -1,4 +1,3 @@
-export const FIXED_HEADER_HEIGHT = 96;
 export const PLAYGROUND_PAGES = [
   {
     slug: "chords-creator",

@@ -1,4 +1,4 @@
-import React, { useState, useRef, RefObject, Fragment } from "react";
+import React from "react";
 
 import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
@@ -19,7 +19,7 @@ function Strings(): T_ReactElement {
   } = useController();
 
   return (
-    <Fragment>
+    <React.Fragment>
       <Block>
         <Text className="tw-font-bold tw-mb-1">Ingrese un texto</Text>
         <Input
@@ -113,7 +113,7 @@ function Strings(): T_ReactElement {
           copiar
         </Button>
       </Block>
-    </Fragment>
+    </React.Fragment>
   );
 }
 
@@ -133,12 +133,12 @@ type T_UseController = {
   handleTextAreaChange: T_OnChangeEvent<HTMLTextAreaElement>;
   handleCopyText: (e: T_OnClickEvent) => void;
   onInputFocus: any;
-  textareaRef: RefObject<HTMLTextAreaElement>;
+  textareaRef: React.RefObject<HTMLTextAreaElement>;
 };
 
 function useController(): T_UseController {
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const [texts, setTexts] = useState<T_UseController["texts"]>({
+  const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+  const [texts, setTexts] = React.useState<T_UseController["texts"]>({
     input: "",
     upper: "",
     lower: "",

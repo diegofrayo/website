@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from "react";
+import React from "react";
 import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
@@ -42,29 +42,22 @@ function MusicPage(): T_ReactElement {
     >
       <MainLayout title={t("page:title")}>
         <Text>{t("page:description")}</Text>
+        <Space size={2} />
 
         <Render isLoading={isLoading} error={error} data={data}>
           {(data: T_Song[]) => {
             const { chordsPage, songsList } = parseData(data);
 
             return (
-              <Fragment>
-                <Title
-                  is="h2"
-                  variant={Title.variant.SECONDARY}
-                  size={Title.size.MD}
-                  className="tw-mt-6"
+              <Block>
+                <Link
+                  variant={Link.variant.SECONDARY}
+                  href={`${ROUTES.MUSIC}/${chordsPage.id}`}
+                  locale={I18nService.getDefaultLocale()}
                 >
-                  <Link
-                    href={`${ROUTES.MUSIC}/${chordsPage.id}`}
-                    variant={Link.variant.SECONDARY}
-                    locale={I18nService.getDefaultLocale()}
-                    isNextLink
-                  >
-                    <Emoji className="tw-mr-2">📓</Emoji>
-                    <InlineText className="tw-underline">{t("page:chords_title")}</InlineText>
-                  </Link>
-                </Title>
+                  <Emoji className="tw-mr-2">📓</Emoji>
+                  <InlineText className="tw-underline">{t("page:chords_title")}</InlineText>
+                </Link>
                 <Space sizeTop={6} sizeBottom={16} variant={Space.variant.DASHED} />
 
                 <Title is="h2" variant={Title.variant.SECONDARY} size={Title.size.MD} className="">
@@ -90,11 +83,10 @@ function MusicPage(): T_ReactElement {
                     return (
                       <Block key={song.id} className="tw-w-full sm:tw-w-5/12 tw-mb-3">
                         <Link
-                          href={`${ROUTES.MUSIC}/${song.id}`}
                           variant={Link.variant.SECONDARY}
-                          className="tw-font-bold tw-flex"
+                          href={`${ROUTES.MUSIC}/${song.id}`}
+                          className="tw-flex"
                           locale={I18nService.getDefaultLocale()}
-                          isNextLink
                         >
                           <InlineText
                             className={classNames(
@@ -111,7 +103,7 @@ function MusicPage(): T_ReactElement {
                     );
                   })}
                 </Block>
-              </Fragment>
+              </Block>
             );
           }}
         </Render>
@@ -133,8 +125,8 @@ export const getStaticProps = getPageContentStaticProps({
 function useController() {
   const { isLoading, error, data } = useQuery("songsList", MusicService.fetchSongsList);
 
-  const [inputValue, setInputValue] = useState("");
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [inputValue, setInputValue] = React.useState("");
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   useDidMount(() => {
     function focusInput(e) {

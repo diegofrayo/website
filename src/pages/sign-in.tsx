@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { toast } from "react-toastify";
 
 import { Page } from "~/components/layout";
@@ -59,8 +59,8 @@ export const getStaticProps = getPageContentStaticProps();
 // --- Controller ---
 
 function useController() {
-  const [inputValue, setInputValue] = useState("");
-  const [isInputDisabled, setIsInputDisabled] = useState(false);
+  const [inputValue, setInputValue] = React.useState("");
+  const [isInputDisabled, setIsInputDisabled] = React.useState(false);
 
   async function onKeyPress(e) {
     if (e.key !== "Enter" || !inputValue) return;

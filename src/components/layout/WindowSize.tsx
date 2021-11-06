@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Block, InlineText } from "~/components/primitive";
 import { useOnWindowResize } from "~/hooks";
@@ -8,7 +8,7 @@ import { T_ReactElement, T_WebsiteMetadata } from "~/types";
 
 function WindowSize(): T_ReactElement {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
-  const [size, setSize] = useState([0, 0]);
+  const [size, setSize] = React.useState([0, 0]);
 
   useOnWindowResize(function onWindowResize() {
     setSize([window.innerWidth, window.innerHeight]);

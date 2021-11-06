@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 
 import {
+  Block,
   Button,
   Icon,
   Image,
+  InlineText,
   Link,
   Space,
-  Title,
-  Block,
   Text,
-  InlineText,
+  Title,
 } from "~/components/primitive";
 import { useOnWindowStopScroll } from "~/hooks";
 import { useTranslation } from "~/i18n";
@@ -43,7 +43,7 @@ function MainLayout({
   }
 
   return (
-    <main>
+    <Block is="main">
       <Block className="dfr-max-w-base tw-mx-auto tw-px-8">
         <Header />
 
@@ -54,7 +54,7 @@ function MainLayout({
                 variant={Link.variant.SECONDARY}
                 href={getParentLevelURL()}
                 className="tw-block tw-underline tw-mb-4"
-                isNextLink
+                fontWeight="tw-font-normal"
               >
                 {getParentLevelURL()}
               </Link>
@@ -72,7 +72,7 @@ function MainLayout({
       </Block>
 
       <Footer showGoToTopButton={showGoToTopButton} />
-    </main>
+    </Block>
   );
 }
 
@@ -171,15 +171,30 @@ function Footer({
 
         <Block className="tw-text-center tw-text-xs dfr-text-strong-inverted">
           <InlineText is="strong">{t("layout:footer:resources_disclaimer")}:</InlineText>{" "}
-          <Link className="tw-break-normal" href="https://heroicons.com" external>
+          <Link
+            variant={Link.variant.PRIMARY}
+            className="tw-break-normal"
+            href="https://heroicons.com"
+            external
+          >
             HeroIcons.com
           </Link>
           <InlineText> | </InlineText>
-          <Link className="tw-break-normal" href="https://freeicons.io" external>
+          <Link
+            variant={Link.variant.PRIMARY}
+            className="tw-break-normal"
+            href="https://freeicons.io"
+            external
+          >
             freeicons.io
           </Link>
           <InlineText> | </InlineText>
-          <Link className="tw-break-normal" href="https://icons8.com/illustrations" external>
+          <Link
+            variant={Link.variant.PRIMARY}
+            className="tw-break-normal"
+            href="https://icons8.com/illustrations"
+            external
+          >
             icons8.com
           </Link>
         </Block>
@@ -192,14 +207,19 @@ function Footer({
 
 function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactElement {
   return (
-    <Link href={url} className="tw-mr-1 sm:tw-mr-2 last:tw-mr-0 tw-inline-block">
+    <Link
+      variant={Link.variant.SIMPLE}
+      href={url}
+      className="tw-mr-1 sm:tw-mr-2 last:tw-mr-0 tw-inline-block"
+      external
+    >
       <Icon icon={icon} wrapperClassName="dfr-bg-strong-inverted tw-rounded-full tw-p-2" />
     </Link>
   );
 }
 
 function GoToTopButton(): T_ReactElement {
-  const [showGoToTopButton, setShowGoToTopButton] = useState<boolean>(false);
+  const [showGoToTopButton, setShowGoToTopButton] = React.useState<boolean>(false);
 
   useOnWindowStopScroll({
     onScrollStoppedCallback: () => {

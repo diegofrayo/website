@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import React from "react";
 
 function useDocumentTitle(title?: string): void {
-  useEffect(
+  React.useEffect(
     function changeDocumentTitle() {
       if (!title) return;
 

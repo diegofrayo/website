@@ -1,4 +1,4 @@
-import React, { useState, useRef, Fragment } from "react";
+import React from "react";
 
 import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
@@ -19,7 +19,7 @@ function Dencrypt(): T_ReactElement {
   } = useController();
 
   return (
-    <Fragment>
+    <React.Fragment>
       <Block className="tw-mb-8">
         <Input
           id="input"
@@ -56,7 +56,7 @@ function Dencrypt(): T_ReactElement {
           copiar
         </Button>
       </Block>
-    </Fragment>
+    </React.Fragment>
   );
 }
 
@@ -71,8 +71,8 @@ function useController(): {
   handleDecrypt: any;
   onInputFocus: any;
 } {
-  const [output, setOutput] = useState("");
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [output, setOutput] = React.useState("");
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   useDidMount(() => {
     if (isSmallScreen() || !inputRef.current) return;
