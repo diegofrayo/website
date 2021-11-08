@@ -61,6 +61,7 @@ function Texts(): T_ReactElement {
                 />
               </Block>
               <Button
+                variant={Button.variant.SIMPLE}
                 className="tw-font-bold tw-mt-2 tw-mx-auto tw-block"
                 onClick={() => {
                   downloadComponentAsImage(correctionsContainerRef.current, "diff");
@@ -167,6 +168,7 @@ function TextArea({ title, text, setText, id }) {
             />
             <Block className="tw-text-right tw-mt-1">
               <Button
+                variant={Button.variant.SIMPLE}
                 className="tw-mr-2"
                 onClick={() => {
                   const closeEditableMode = confirm("Are you sure?");
@@ -178,7 +180,11 @@ function TextArea({ title, text, setText, id }) {
               >
                 cancel
               </Button>
-              <Button className="tw-font-bold" onClick={onSaveHandler}>
+              <Button
+                variant={Button.variant.SIMPLE}
+                className="tw-font-bold"
+                onClick={onSaveHandler}
+              >
                 save
               </Button>
             </Block>

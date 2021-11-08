@@ -1,6 +1,7 @@
 import {
   ArrowUpIcon,
   CalendarIcon,
+  CameraIcon,
   ChevronDoubleDownIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -251,11 +252,12 @@ export const ICONS: Record<E_Icons, T_Icon> = {
       color: "tw-text-white dark:tw-text-black",
     },
   },
-  CODE: {
+  CAMERA: {
     isLibraryIcon: true,
-    icon: CodeIcon,
+    icon: CameraIcon,
     props: {
       className: "",
+      color: "",
     },
   },
   REPLY: {
@@ -279,6 +281,13 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     icon: SunIcon,
     props: {
       color: "",
+    },
+  },
+  CODE: {
+    isLibraryIcon: true,
+    icon: CodeIcon,
+    props: {
+      className: "",
     },
   },
   MOON: {

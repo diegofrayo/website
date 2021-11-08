@@ -38,7 +38,7 @@ function SongDetails({
       </Block>
       <Progress progress={song.progress} />
       <Text className="tw-text-lg tw--mt-1">{song.country}</Text>
-      <Block className="tw-flex tw-items-center tw-mt-1">
+      <Block className="tw-flex tw-items-center tw--mt-0.5">
         <Link variant={Link.variant.SIMPLE} href={song.spotifyUrl} external>
           <Icon icon={Icon.icon.SPOTIFY} size={24} />
         </Link>

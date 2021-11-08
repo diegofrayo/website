@@ -41,6 +41,7 @@ function TimeLine(): T_ReactElement {
                   return (
                     <Button
                       key={category.id}
+                      variant={Button.variant.SIMPLE}
                       className={classNames(
                         "tw-mr-2 tw-my-1 tw-underlidne tw-inline-block tw-text-sm tw-py-1 tw-px-3 tw-rounded-md tw-text-left tw-truncate tw-font-bold",
                         category.id === selectedCategory

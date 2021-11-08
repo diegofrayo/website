@@ -8,6 +8,7 @@ import { SongDetails } from "~/components/pages/music";
 import { AuthService } from "~/auth";
 import { useDidMount, useQuery } from "~/hooks";
 import { getPageContentStaticProps, I18nService, useTranslation } from "~/i18n";
+import AnalyticsService from "~/services/analytics";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
 import { ROUTES } from "~/utils/routing";
@@ -150,7 +151,7 @@ function useController() {
   function parseData(songs: T_Song[]) {
     return {
       chordsPage: songs[0],
-      songsList: (AuthService.isUserLoggedIn()
+      songsList: (AuthService.isUserLoggedIn() || AnalyticsService.isAnalyticsDisabled()
         ? songs.slice(1)
         : songs.slice(1).filter((song) => song.isPublic)
       ).filter((song) => {

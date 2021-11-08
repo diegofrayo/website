@@ -94,8 +94,9 @@ function Code({
             </Link>
           )}
           <Button
-            data-clipboard-text={code}
+            variant={Button.variant.SIMPLE}
             className="tw-block sm:tw-inline-block tw-ml-auto tw-align-middle tw-font-bold"
+            data-clipboard-text={code}
             onClick={copyToClipboard}
           >
             {t("page:copy_to_clipboard")}

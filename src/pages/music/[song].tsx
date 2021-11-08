@@ -75,6 +75,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
         >
           <Block className="tw-mb-6 tw-text-sm">
             <Button
+              variant={Button.variant.SIMPLE}
               className={classNames(
                 "tw-inline-block tw-mr-3",
                 isMaxFontSize && "tw-opacity-25 dark:tw-opacity-50",
@@ -85,6 +86,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
               <Icon icon={Icon.icon.ZOOM_IN} size={24} />
             </Button>
             <Button
+              variant={Button.variant.SIMPLE}
               className={classNames(
                 "tw-inline-block tw-mr-3",
                 isMinFontSize && "tw-opacity-25 dark:tw-opacity-50",
@@ -95,6 +97,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
               <Icon icon={Icon.icon.ZOOM_OUT} size={24} />
             </Button>
             <Button
+              variant={Button.variant.SIMPLE}
               className="tw-inline-block tw-mr-3"
               onClick={(e) => copyToClipboard(e, window.location.href)}
             >

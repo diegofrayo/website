@@ -12,7 +12,7 @@ type T_ButtonProps = T_HTMLAttributes["button"] & {
 };
 
 function Button({
-  variant = VARIANTS.SIMPLE,
+  variant = VARIANTS.UNSTYLED,
   children,
   disabled = false,
   className = "",

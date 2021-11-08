@@ -56,6 +56,7 @@ function Header(): T_ReactElement {
       <Space size={10} />
 
       <Button
+        variant={Button.variant.SIMPLE}
         className="tw-mx-auto tw-block"
         onClick={() => {
           scrollToElement(document.getElementById("body"));
@@ -143,7 +144,7 @@ function MainMenu(): T_ReactElement {
 
   return (
     <Block className="tw-relative" ref={menuRef}>
-      <Button onClick={() => setShowMenu((pv) => !pv)}>
+      <Button variant={Button.variant.SIMPLE} onClick={() => setShowMenu((pv) => !pv)}>
         <Icon icon={Icon.icon.CHEVRON_DOWN} size={32} />
       </Button>
 
@@ -219,7 +220,7 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
 
   return (
     <Block className="tw-relative" ref={menuRef}>
-      <Button onClick={() => setShowMenu((pv) => !pv)}>
+      <Button variant={Button.variant.SIMPLE} onClick={() => setShowMenu((pv) => !pv)}>
         <Icon icon={Icon.icon.COG} size={32} />
       </Button>
 
@@ -231,6 +232,7 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
                 return (
                   <Button
                     key={item}
+                    variant={Button.variant.SIMPLE}
                     className="tw-mx-1"
                     disabled={locale === item || pageLocales.length === 1}
                     onClick={setLocale(item)}
@@ -243,10 +245,20 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
           )}
 
           <MenuItem title={t("layout:header:settings:theme")}>
-            <Button className="tw-mx-1" disabled={!isDarkMode} onClick={toggleTheme}>
+            <Button
+              variant={Button.variant.SIMPLE}
+              className="tw-mx-1"
+              disabled={!isDarkMode}
+              onClick={toggleTheme}
+            >
               <Icon icon={Icon.icon.SUN} color="tw-text-yellow-400" size={18} />
             </Button>
-            <Button className="tw-mx-1" disabled={isDarkMode} onClick={toggleTheme}>
+            <Button
+              variant={Button.variant.SIMPLE}
+              className="tw-mx-1"
+              disabled={isDarkMode}
+              onClick={toggleTheme}
+            >
               <Icon
                 icon={Icon.icon.MOON}
                 color="tw-text-indigo-700 dark:tw-text-indigo-300"
@@ -300,8 +312,6 @@ function MenuItem({
 }
 
 function PictureFrame(): T_ReactElement {
-  const { t } = useTranslation();
-
   const [photo, setPhoto] =
     React.useState<{ src: string; place: string; placeUrl: string; portrait: boolean }>();
 
@@ -309,55 +319,59 @@ function PictureFrame(): T_ReactElement {
     const PHOTOS = [
       {
         src: "/static/images/header/1.png",
-        place: "El alto, Pijao",
+        place: "Palmas de cera",
         placeUrl: "https://goo.gl/maps/SEQSFq3wovNxYya46",
         portrait: true,
       },
       {
         src: "/static/images/header/2.jpg",
-        place: "Valle de Cocora",
-        placeUrl: "https://g.page/valle-del-cocora-salento?share",
+        place: "Bosque",
+        placeUrl: "https://g.page/valle-del-cocora-salento",
         portrait: true,
       },
       {
         src: "/static/images/header/3.jpg",
-        place: "Pijao, Quindío",
+        place: "Jeep",
         placeUrl: "https://goo.gl/maps/SEQSFq3wovNxYya46",
         portrait: false,
       },
       {
         src: "/static/images/header/4.jpg",
-        place: "Parque de la Vida",
-        placeUrl: "https://goo.gl/maps/GHq3eARV7CwuzdAGA",
+        place: "Finca cafetera",
+        placeUrl: "https://g.page/finca-buenos-aires-coffee-tour",
         portrait: false,
       },
       {
         src: "/static/images/header/5.jpg",
-        place: "Armenia, Quindío",
-        placeUrl: "https://goo.gl/maps/bBuUZVn5eruxQVSm9",
+        place: "Rústico",
+        placeUrl: "https://goo.gl/maps/SEQSFq3wovNxYya46",
         portrait: false,
       },
       {
         src: "/static/images/header/6.jpg",
         place: "Filandia, Quindío",
-        placeUrl: "https://g.page/tuktukrestaurante?share",
+        placeUrl: "https://g.page/tuktukrestaurante",
         portrait: false,
       },
       {
         src: "/static/images/header/7.jpg",
-        place: "Armenia, Quindío",
-        placeUrl: "https://goo.gl/maps/pe1ddsjDVwTur2sp7",
+        place: "Hongos",
+        placeUrl: "https://goo.gl/maps/P19v4BqqgEgdy3tf7",
         portrait: true,
       },
     ];
-
     setPhoto(PHOTOS[new Date().getDay()]);
   });
 
   return (
     <Block className="dfr-PictureFrame tw-w-48 tw-mx-auto">
-      <Block className="dfr-bg-strong dfr-text-strong-inverted tw-text-center tw-px-1 tw-text-sm tw-font-bold tw-pt-1">
-        {t("layout:header:frame:title")}
+      <Block className="dfr-bg-strong dfr-text-strong-inverted tw-text-center">
+        <Icon
+          icon={Icon.icon.CAMERA}
+          size={20}
+          color="dfr-text-strong-inverted"
+          wrapperClassName="tw-relative tw-top-1.5"
+        />
       </Block>
       <Block className="image-container dfr-border-strong dfr-bg-strong tw-border-4 tw-h-64 tw-flex tw-items-center">
         {photo && (
@@ -365,6 +379,7 @@ function PictureFrame(): T_ReactElement {
             variant={Link.variant.SIMPLE}
             href={photo.src}
             className={classNames("tw-block", photo.portrait && "tw-h-full")}
+            external
           >
             <Image
               src={photo.src}

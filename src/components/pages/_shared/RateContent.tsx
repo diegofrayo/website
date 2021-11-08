@@ -72,6 +72,7 @@ function RateContent(): T_ReactElement {
         className={classNames("tw-text-center tw-mt-1", isQuestionAnswered && "tw-opacity-50")}
       >
         <Button
+          variant={Button.variant.SIMPLE}
           className={classNames("tw-mx-2 tw-text-xl", questionAnswer === "YES" && "tw-font-bold")}
           disabled={isQuestionAnswered}
           onClick={trackEvent("YES")}
@@ -79,6 +80,7 @@ function RateContent(): T_ReactElement {
           {t("common:useful_question_yes")} <Emoji>👍</Emoji>
         </Button>
         <Button
+          variant={Button.variant.SIMPLE}
           className={classNames("tw-mx-2 tw-text-xl", questionAnswer === "NO" && "tw-font-bold")}
           disabled={isQuestionAnswered}
           onClick={trackEvent("NO")}

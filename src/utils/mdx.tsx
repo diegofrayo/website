@@ -34,7 +34,13 @@ export const MDXComponents = {
   h3: TitleCreator("h3", { showLinkIcon: true }),
   h4: TitleCreator("h4", { showLinkIcon: true }),
   img: Image,
-  ul: List,
+  ul: function UL({ children, ...rest }: { children: T_ReactChildrenProp }): T_ReactElement {
+    return (
+      <List variant={List.variant.DEFAULT} {...rest}>
+        {children}
+      </List>
+    );
+  },
   pre: CodePrimitive,
   inlineCode: function InlineCode({
     children,

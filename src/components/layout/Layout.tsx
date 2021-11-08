@@ -51,10 +51,9 @@ function MainLayout({
           {title && (
             <Block className="tw-text-center">
               <Link
-                variant={Link.variant.SECONDARY}
+                variant={Link.variant.SIMPLE}
                 href={getParentLevelURL()}
-                className="tw-block tw-underline tw-mb-4"
-                fontWeight="tw-font-normal"
+                className="dfr-text-strong dark:dfr-text-strong tw-block tw-underline tw-mb-4"
               >
                 {getParentLevelURL()}
               </Link>
@@ -128,6 +127,7 @@ function Footer({
             variant={Link.variant.SIMPLE}
             href={song.url}
             className="dfr-border-primary tw-border-opacity-30 tw-flex tw-items-center tw-text-sm tw-border tw-p-1 tw-bg-gradient-to-r tw-from-gray-800 tw-to-gray-900 tw-relative"
+            external
           >
             <Image src={song.thumbnail} className="tw-h-20 tw-w-20 tw-object-cover tw-mr-2" />
             <Block className="tw-flex-1 tw-min-w-0">
@@ -238,6 +238,7 @@ function GoToTopButton(): T_ReactElement {
 
   return (
     <Button
+      variant={Button.variant.SIMPLE}
       className="dfr-bg-strong tw-bg-opacity-70 tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center"
       onClick={() => {
         setScrollPosition(0);

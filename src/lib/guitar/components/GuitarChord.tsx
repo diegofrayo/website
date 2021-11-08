@@ -103,7 +103,11 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
       <Block className="tw-text-sm">
         <Block>
-          <Button className="tw-font-bold" onClick={handleDownloadAsImage}>
+          <Button
+            variant={Button.variant.SIMPLE}
+            className="tw-font-bold"
+            onClick={handleDownloadAsImage}
+          >
             <Emoji className="tw-mr-1">⬇️</Emoji>
             <InlineText>descargar como imagen</InlineText>
           </Button>
@@ -111,6 +115,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
           {musicNotesAsString && enableShowNotesOption ? (
             <React.Fragment>
               <Button
+                variant={Button.variant.SIMPLE}
                 className="tw-mt-1 sm:tw-mt-0 sm:tw-ml-2 tw-font-bold"
                 onClick={handleShowChordInput}
               >
@@ -132,6 +137,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
           <Block className="tw-text-sm tw-mt-3 tw-text-center">
             <pre className="tw-whitespace-pre-line tw-break-all tw-border tw-inline-block tw-p-2 dfr-border-primary dark:dfr-border-primary">
               <Button
+                variant={Button.variant.SIMPLE}
                 className="tw-font-bold"
                 data-clipboard-text={musicNotesAsString}
                 onClick={copyToClipboard}

@@ -52,6 +52,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
       </Block>
       <Block className="tw-flex tw-flex-no-wrap tw-text-sm tw-border-t-4 tw-border-black dark:tw-border-white">
         <Button
+          variant={Button.variant.SIMPLE}
           className={classNames(
             "tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2",
             isSourceCodeTabSelected &&
@@ -62,6 +63,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
           Source Code
         </Button>
         <Button
+          variant={Button.variant.SIMPLE}
           className={classNames(
             "tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2",
             isOutputTabSelected &&

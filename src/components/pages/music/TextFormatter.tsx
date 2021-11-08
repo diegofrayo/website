@@ -53,6 +53,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
               })}
               <Block className="tw-flex tw-justify-between tw-items-center tw-mt-1">
                 <Button
+                  variant={Button.variant.SIMPLE}
                   onClick={() => {
                     handleUpdateSelectedChordIndex(-1);
                   }}
@@ -77,6 +78,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                   })}
                 </Block>
                 <Button
+                  variant={Button.variant.SIMPLE}
                   onClick={() => {
                     handleUpdateSelectedChordIndex(1);
                   }}
@@ -95,6 +97,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
           <Space size={2} />
 
           <Button
+            variant={Button.variant.SIMPLE}
             className="tw-text-center tw-block tw-w-full tw-leading-0"
             onClick={handleModalClose}
           >
