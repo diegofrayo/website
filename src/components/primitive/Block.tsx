@@ -22,7 +22,7 @@ const Block = React.forwardRef<HTMLDivElement, T_BlockProps>(function Block(
       variant === "FEATURED" &&
         "dfr-border-primary dark:dfr-border-primary tw-p-4 tw-border tw-border-l-4",
       variant === "QUOTE" &&
-        "dfr-border-primary dfr-text-secondary dark:dfr-text-secondary tw-px-4 tw-border-l-4 tw-italic dark:dfr-border-primary",
+        "dfr-border-primary dfr-text-secondary tw-px-4 tw-border-l-4 tw-italic dark:dfr-border-primary dark:dfr-text-secondary",
     );
   }
 

@@ -112,9 +112,17 @@ function Footer({
       source: "spotify",
       url: "https://open.spotify.com/track/5JyeXhwxBQFEne4FxPbCxN",
     },
+    {
+      title: "El Tesoro de los Inocentes - En Vivo",
+      artist: "Los Fundamentalistas del Aire Acondicionado",
+      duration: "4:27",
+      thumbnail: "https://i.scdn.co/image/ab67616d0000b273307b05f5ed296e41556409d0",
+      source: "spotify",
+      url: "https://open.spotify.com/track/0sdNMSjuAUuMQF4T2xhQ2Q",
+    },
   ];
 
-  const song = SONGS[2];
+  const song = SONGS[3];
 
   return (
     <Block is="footer" className="dfr-bg-strong tw-relative tw-pt-12 tw-pb-4">
@@ -126,11 +134,11 @@ function Footer({
           <Link
             variant={Link.variant.SIMPLE}
             href={song.url}
-            className="dfr-border-primary tw-border-opacity-30 tw-flex tw-items-center tw-text-sm tw-border tw-p-1 tw-bg-gradient-to-r tw-from-gray-800 tw-to-gray-900 tw-relative"
+            className="dfr-border-primary tw-border-opacity-30 tw-flex tw-items-centers tw-text-sm tw-border tw-p-1 tw-bg-gradient-to-r tw-from-gray-800 tw-to-gray-900 tw-relative"
             external
           >
-            <Image src={song.thumbnail} className="tw-h-20 tw-w-20 tw-object-cover tw-mr-2" />
-            <Block className="tw-flex-1 tw-min-w-0">
+            <Image src={song.thumbnail} className="tw-h-20 tw-w-20 tw-object-cover" />
+            <Block className="tw-flex-1 tw-min-w-0 tw-px-2">
               <Text
                 className="dfr-text-strong-inverted tw-font-bold tw-truncate tw-text-base"
                 title={song.title}

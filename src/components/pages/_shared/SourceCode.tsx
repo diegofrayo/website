@@ -44,6 +44,7 @@ function SourceCode({
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           return (
             <Code
+              variant={Code.variant.MULTILINE}
               className={classNames(
                 className,
                 "dark:tw-border-l dark:tw-border-r dark:tw-border-gray-700",

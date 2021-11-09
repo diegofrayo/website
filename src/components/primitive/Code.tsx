@@ -9,7 +9,7 @@ type T_Variant = "INLINE" | "MULTILINE";
 const VARIANTS = mirror(["INLINE", "MULTILINE"]) as Record<T_Variant, T_Variant>;
 
 type T_CodeProps = T_HTMLElementAttributes["pre"] & {
-  variant?: T_Variant;
+  variant: T_Variant;
 };
 
 function Code({

@@ -37,7 +37,13 @@ export const MDXComponents = {
       </List>
     );
   },
-  pre: Code,
+  pre: function Pre({ children, ...rest }: { children: T_ReactChildrenProp }): T_ReactElement {
+    return (
+      <Code variant={Code.variant.MULTILINE} {...rest}>
+        {children}
+      </Code>
+    );
+  },
   inlineCode: function InlineCode({
     children,
     ...rest

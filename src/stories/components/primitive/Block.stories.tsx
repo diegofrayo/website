@@ -36,7 +36,13 @@ Article.args = {
 export const Featured = Story.bind({});
 Featured.args = {
   is: "div",
-  children: "I'm a [div] and my variant is 'featured'",
-  className: "tw-h-48 tw-w-48",
-  variant: "featured",
+  children: "I'm a [div] and my variant is 'FEATURED'",
+  variant: "FEATURED",
+};
+
+export const Quote = Story.bind({});
+Quote.args = {
+  is: "div",
+  children: "I'm a [div] and my variant is 'QUOTE'",
+  variant: "QUOTE",
 };

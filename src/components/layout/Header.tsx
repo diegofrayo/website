@@ -233,7 +233,7 @@ const SettingsMenu = withSafeRenderingComponent(function SettingsMenu(): T_React
                   <Button
                     key={item}
                     variant={Button.variant.SIMPLE}
-                    className="tw-mx-1.5"
+                    className="tw-mx-1"
                     disabled={locale === item || pageLocales.length === 1}
                     onClick={setLocale(item)}
                   >
@@ -354,12 +354,13 @@ function PictureFrame(): T_ReactElement {
         portrait: true,
       },
     ];
+
     setPhoto(PHOTOS[new Date().getDay()]);
   });
 
   return (
     <Block className="dfr-PictureFrame tw-w-48 tw-mx-auto">
-      <Block className="dfr-bg-strong dfr-text-strong-inverted tw-text-center">
+      <Block className="dfr-bg-strong tw-text-center tw-rounded-tl-md tw-rounded-tr-md">
         <Icon
           icon={Icon.icon.CAMERA}
           size={20}
@@ -367,32 +368,31 @@ function PictureFrame(): T_ReactElement {
           wrapperClassName="tw-relative tw-top-0.5"
         />
       </Block>
-      <Block
-        className="image-container dfr-border-strong dfr-bg-strong tw-border-4 tw-h-64"
-        align="center"
-      >
-        {photo && (
-          <Link
-            variant={Link.variant.SIMPLE}
-            href={photo.src}
-            className={classNames("tw-block", photo.portrait && "tw-h-full")}
-            external
-          >
-            <Image
-              src={photo.src}
-              alt={photo.place}
-              className={classNames("tw-block", photo.portrait && "tw-h-full")}
-            />
-          </Link>
-        )}
-      </Block>
-      <Block className="tw-flex tw-flex-nowrap tw-items-end tw-justify-end tw-relative tw-py-1">
+
+      {photo && (
+        <Link
+          variant={Link.variant.UNSTYLED}
+          href={photo.src}
+          className={classNames(
+            "image-container dfr-border-strong dfr-bg-strong tw-block tw-border-4",
+            photo?.portrait === true ? "tw-h-64" : "tw-h-36",
+          )}
+          external
+        >
+          <Image
+            src={photo.src}
+            alt={photo.place}
+            className="dfr-transition-opacity tw-h-full tw-w-full"
+          />
+        </Link>
+      )}
+      <Block className="tw-flex tw-items-end tw-justify-end tw-relative tw-py-1">
         <InlineText className="dfr-bg-strong tw-absolute tw-left-0 tw-top-0 tw-w-10 tw-h-2 tw-rounded-br-md tw-rounded-bl-md" />
         {photo && (
           <Link
             variant={Link.variant.SIMPLE}
             href={photo.placeUrl}
-            className="dfr-text-secondary dark:dfr-text-secondary tw-text-xs tw-italic tw-pl-1 tw-font-bold"
+            className="dfr-text-secondary tw-text-xs tw-italic tw-pl-1 tw-font-bold dark:dfr-text-secondary"
           >
             {photo.place}
           </Link>

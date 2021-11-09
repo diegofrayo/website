@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { T_HTMLElementAttributes, T_ReactElement } from "~/types";
+import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 import { mirror } from "~/utils/misc";
 
 type T_Variant = "UNSTYLED" | "SIMPLE" | "DEFAULT";
