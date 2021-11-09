@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 
-import { T_HTMLAttributes, T_ReactElement } from "~/types";
+import { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
-type T_InlineTextProps = T_HTMLAttributes["span"] & {
+type T_InlineTextProps = T_HTMLElementAttributes["span"] & {
   is?: "span" | "strong";
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { MainLayout, Page } from "~/components/layout";
 import { Text } from "~/components/primitive";

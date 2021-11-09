@@ -1,20 +1,11 @@
-import React from "react";
+import * as React from "react";
 
+import { Code, Collapsible, Icon, Image, Link, List, Space, Block } from "~/components/primitive";
 import {
-  Blockquote,
-  Code as CodePrimitive,
-  Collapsible,
-  Icon,
-  Image,
-  Link,
-  List,
-  Space,
-} from "~/components/primitive";
-import {
-  Code,
   GitHubRepo,
   ImageWithLink,
   Playground,
+  SourceCode,
   TextWithEmoji,
   TitleCreator,
 } from "~/components/pages/_shared";
@@ -27,8 +18,13 @@ import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
 
 export const MDXComponents = {
-  a: Link,
-  blockquote: Blockquote,
+  a: function A({ children, ...rest }: { children: T_ReactChildrenProp }): T_ReactElement {
+    return (
+      <Link variant={Link.variant.PRIMARY} {...rest}>
+        {children}
+      </Link>
+    );
+  },
   h1: TitleCreator("h1", { showLinkIcon: true }),
   h2: TitleCreator("h2", { showLinkIcon: true }),
   h3: TitleCreator("h3", { showLinkIcon: true }),
@@ -41,7 +37,7 @@ export const MDXComponents = {
       </List>
     );
   },
-  pre: CodePrimitive,
+  pre: Code,
   inlineCode: function InlineCode({
     children,
     ...rest
@@ -49,9 +45,9 @@ export const MDXComponents = {
     children: T_ReactChildrenProp;
   }): T_ReactElement {
     return (
-      <CodePrimitive variant={CodePrimitive.variant.INLINE} {...rest}>
+      <Code variant={Code.variant.INLINE} {...rest}>
         {children}
-      </CodePrimitive>
+      </Code>
     );
   },
   hr: function HR(): T_ReactElement {
@@ -59,6 +55,7 @@ export const MDXComponents = {
   },
 
   // Primitive components
+  Block,
   Collapsible,
   Icon,
   Image,
@@ -67,10 +64,10 @@ export const MDXComponents = {
   Space,
 
   // Shared components
-  Code,
   GitHubRepo,
   ImageWithLink,
   Playground,
+  SourceCode,
   TextWithEmoji,
 
   // Blog components

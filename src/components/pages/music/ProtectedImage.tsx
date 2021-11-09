@@ -1,11 +1,15 @@
-import React from "react";
+import * as React from "react";
 
 import { ImageWithLink } from "~/components/pages/_shared";
-import { protectedComponent } from "~/hocs";
-import { T_HTMLAttributes, T_ReactElement } from "~/types";
+import { withRequiredAuthComponent } from "~/hocs";
+import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
-function ProtectedImage({ src = "", className, alt }: T_HTMLAttributes["img"]): T_ReactElement {
+function ProtectedImage({
+  src = "",
+  className,
+  alt,
+}: T_HTMLElementAttributes["img"]): T_ReactElement {
   return <ImageWithLink src={src} alt={alt} className={className} />;
 }
 
-export default protectedComponent(ProtectedImage);
+export default withRequiredAuthComponent(ProtectedImage);

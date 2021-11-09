@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { useRouter } from "next/router";
@@ -15,8 +15,8 @@ import {
   Text,
 } from "~/components/primitive";
 import { AuthService } from "~/auth";
-import { protectedComponent, safeRender } from "~/hocs";
-import { useClickOutside, useDidMount } from "~/hooks";
+import { withRequiredAuthComponent, withSafeRenderingComponent } from "~/hocs";
+import { useClickOutside, useDidMount, useEnhacedState } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
 import { selectPageConfig } from "~/state/modules/page-config";
@@ -184,7 +184,7 @@ function MainMenu(): T_ReactElement {
   );
 }
 
-const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
+const SettingsMenu = withSafeRenderingComponent(function SettingsMenu(): T_ReactElement {
   const { locale, asPath, push } = useRouter();
   const { locales: pageLocales, reloadWhenLocaleChanges } =
     useStoreSelector<T_PageConfig>(selectPageConfig);
@@ -192,7 +192,7 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
   const { t } = useTranslation();
 
   const menuRef = React.useRef(null);
-  const [showMenu, setShowMenu] = React.useState(false);
+  const { showMenu, setShowMenu, toggleShowMenu } = useEnhacedState({ showMenu: false });
 
   const EMOJIS = { en: "🇺🇸", es: "🇪🇸" };
   const isDarkMode = theme === "dark";
@@ -220,7 +220,7 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
 
   return (
     <Block className="tw-relative" ref={menuRef}>
-      <Button variant={Button.variant.SIMPLE} onClick={() => setShowMenu((pv) => !pv)}>
+      <Button variant={Button.variant.SIMPLE} onClick={() => toggleShowMenu()}>
         <Icon icon={Icon.icon.COG} size={32} />
       </Button>
 
@@ -233,7 +233,7 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
                   <Button
                     key={item}
                     variant={Button.variant.SIMPLE}
-                    className="tw-mx-1"
+                    className="tw-mx-1.5"
                     disabled={locale === item || pageLocales.length === 1}
                     onClick={setLocale(item)}
                   >
@@ -245,20 +245,11 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
           )}
 
           <MenuItem title={t("layout:header:settings:theme")}>
-            <Button
-              variant={Button.variant.SIMPLE}
-              className="tw-mx-1"
-              disabled={!isDarkMode}
-              onClick={toggleTheme}
-            >
+            <Button variant={Button.variant.SIMPLE} disabled={!isDarkMode} onClick={toggleTheme}>
               <Icon icon={Icon.icon.SUN} color="tw-text-yellow-400" size={18} />
             </Button>
-            <Button
-              variant={Button.variant.SIMPLE}
-              className="tw-mx-1"
-              disabled={isDarkMode}
-              onClick={toggleTheme}
-            >
+            <Space orientation="v" size={1} />
+            <Button variant={Button.variant.SIMPLE} disabled={isDarkMode} onClick={toggleTheme}>
               <Icon
                 icon={Icon.icon.MOON}
                 color="tw-text-indigo-700 dark:tw-text-indigo-300"
@@ -274,7 +265,7 @@ const SettingsMenu = safeRender(function SettingsMenu(): T_ReactElement {
   );
 });
 
-const EnvironmentMenuItem = protectedComponent(function EnvironmentMenuItem() {
+const EnvironmentMenuItem = withRequiredAuthComponent(function EnvironmentMenuItem() {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   const [url, setUrl] = React.useState("/");
@@ -304,7 +295,10 @@ function MenuItem({
   title: string;
 }): T_ReactElement {
   return (
-    <Block className="dfr-bg-secondary dfr-border-primary dark:dfr-border-primary dark:dfr-bg-secondary tw-flex tw-flex-col tw-justify-center tw-items-center tw-h-16 tw-px-2 tw-border-b last:tw-border-0">
+    <Block
+      className="dfr-bg-secondary dfr-border-primary dark:dfr-border-primary dark:dfr-bg-secondary tw-flex tw-flex-col tw-h-16 tw-px-2 tw-border-b last:tw-border-0"
+      align="center"
+    >
       <Text className="tw-font-bold tw-text-xs tw-text-right">{title}</Text>
       <Block className="tw-text-right tw-leading-none tw-mt-2">{children}</Block>
     </Block>
@@ -370,10 +364,13 @@ function PictureFrame(): T_ReactElement {
           icon={Icon.icon.CAMERA}
           size={20}
           color="dfr-text-strong-inverted"
-          wrapperClassName="tw-relative tw-top-1.5"
+          wrapperClassName="tw-relative tw-top-0.5"
         />
       </Block>
-      <Block className="image-container dfr-border-strong dfr-bg-strong tw-border-4 tw-h-64 tw-flex tw-items-center">
+      <Block
+        className="image-container dfr-border-strong dfr-bg-strong tw-border-4 tw-h-64"
+        align="center"
+      >
         {photo && (
           <Link
             variant={Link.variant.SIMPLE}

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { Link, Collapsible, Title, Block, Text, InlineText } from "~/components/primitive";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";

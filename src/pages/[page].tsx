@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import { GetStaticPaths } from "next";

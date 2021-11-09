@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
@@ -29,18 +29,10 @@ function Dencrypt(): T_ReactElement {
           onClick={onInputFocus}
         />
         <Block className="tw-flex tw-flex-wrap tw-justify-between">
-          <Button
-            variant={Button.variant.SIMPLE}
-            className="tw-inline-block tw-text-sm tw-font-bold"
-            onClick={handleEncrypt}
-          >
+          <Button variant={Button.variant.DEFAULT} onClick={handleEncrypt}>
             encriptar
           </Button>
-          <Button
-            variant={Button.variant.SIMPLE}
-            className="tw-inline-block tw-text-sm tw-font-bold"
-            onClick={handleDecrypt}
-          >
+          <Button variant={Button.variant.DEFAULT} onClick={handleDecrypt}>
             desencriptar
           </Button>
         </Block>
@@ -57,8 +49,8 @@ function Dencrypt(): T_ReactElement {
           {output}
         </output>
         <Button
-          variant={Button.variant.SIMPLE}
-          className="tw-block tw-ml-auto tw-text-sm"
+          variant={Button.variant.DEFAULT}
+          className="tw-block tw-ml-auto"
           data-clipboard-text={output}
           onClick={copyToClipboard}
         >

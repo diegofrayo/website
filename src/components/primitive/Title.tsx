@@ -1,7 +1,7 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 
-import { T_HTMLAttributes, T_ReactChildrenProp, T_ReactElement } from "~/types";
+import { T_HTMLElementAttributes, T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { generateSlug } from "~/utils/strings";
 
 import Icon from "./Icon";
@@ -26,7 +26,7 @@ type T_TitleProps = {
   variant?: E_Variants;
   size?: E_Size;
   showLinkIcon?: boolean;
-} & T_HTMLAttributes["h1"];
+} & T_HTMLElementAttributes["h1"];
 
 function Title(props: T_TitleProps): T_ReactElement {
   const {

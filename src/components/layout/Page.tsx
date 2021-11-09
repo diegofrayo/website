@@ -1,10 +1,10 @@
-import React from "react";
+import * as React from "react";
 import Head from "next/head";
 import classNames from "classnames";
 
 import { InlineText } from "~/components/primitive";
 import { useDidMount, useDocumentTitle } from "~/hooks";
-import { protectedComponent } from "~/hocs";
+import { withRequiredAuthComponent } from "~/hocs";
 import { I18nService } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import { useStoreSelector } from "~/state";
@@ -163,7 +163,7 @@ export default Page;
 
 // --- Components ---
 
-const UserLoggedInFlag = protectedComponent(function UserLoggedInFlag() {
+const UserLoggedInFlag = withRequiredAuthComponent(function UserLoggedInFlag() {
   return <Flag className="tw-z-50" color="dfr-bg-strong dark:dfr-bg-strong" />;
 });
 

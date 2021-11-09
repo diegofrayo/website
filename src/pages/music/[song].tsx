@@ -1,12 +1,11 @@
-import React from "react";
-import classNames from "classnames";
+import * as React from "react";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import { GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Blockquote, Icon, Button, Space, Block, Text } from "~/components/primitive";
+import { Icon, Button, Space, Block, Text } from "~/components/primitive";
 import { MDXContent, Loader, RateContent } from "~/components/pages/_shared";
 import { SongDetails, SongSources } from "~/components/pages/music";
 import { useDidMount } from "~/hooks";
@@ -68,37 +67,26 @@ function SongPage(props: T_PageProps): T_ReactElement {
       <MainLayout title={song.title}>
         <SongDetails song={song} className="tw-mb-8" />
 
-        <Blockquote
-          className="tw-mb-8"
-          style={{ fontSize: `${fontSize}rem` }}
-          variant={Blockquote.variant.STYLED}
-        >
+        <Block variant="FEATURED" className="tw-mb-8 " style={{ fontSize: `${fontSize}rem` }}>
           <Block className="tw-mb-6 tw-text-sm">
             <Button
               variant={Button.variant.SIMPLE}
-              className={classNames(
-                "tw-inline-block tw-mr-3",
-                isMaxFontSize && "tw-opacity-25 dark:tw-opacity-50",
-              )}
               disabled={isMaxFontSize}
               onClick={increaseFontSize}
             >
               <Icon icon={Icon.icon.ZOOM_IN} size={24} />
             </Button>
+            <Space size={1} orientation="v" />
             <Button
               variant={Button.variant.SIMPLE}
-              className={classNames(
-                "tw-inline-block tw-mr-3",
-                isMinFontSize && "tw-opacity-25 dark:tw-opacity-50",
-              )}
               disabled={isMinFontSize}
               onClick={decreaseFontSize}
             >
               <Icon icon={Icon.icon.ZOOM_OUT} size={24} />
             </Button>
+            <Space size={1} orientation="v" />
             <Button
               variant={Button.variant.SIMPLE}
-              className="tw-inline-block tw-mr-3"
               onClick={(e) => copyToClipboard(e, window.location.href)}
             >
               <Icon icon={Icon.icon.LINK} size={24} />
@@ -110,9 +98,9 @@ function SongPage(props: T_PageProps): T_ReactElement {
           </Block>
           <Space size={6} />
 
-          <Blockquote
+          <Block
+            variant="FEATURED"
             className="tw-p-4 tw-border dfr-border-primary dark:dfr-border-primary tw-text-base"
-            variant={Blockquote.variant.STYLED}
           >
             <Text className="tw-font-bold tw-mb-2">
               {t("page:chords_title")} [{song.chords.length}]
@@ -123,8 +111,8 @@ function SongPage(props: T_PageProps): T_ReactElement {
                 __html: GuitarService.formatText(song.chords.join(" | ")),
               }}
             />
-          </Blockquote>
-        </Blockquote>
+          </Block>
+        </Block>
 
         <SongSources sources={song.sources} />
         <Space size={6} />

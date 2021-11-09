@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { useRouter } from "next/router";
 
 import {
@@ -210,7 +210,7 @@ function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactEleme
     <Link
       variant={Link.variant.SIMPLE}
       href={url}
-      className="tw-mr-1 sm:tw-mr-2 last:tw-mr-0 tw-inline-block"
+      className="tw-inline-block tw-mr-2 last:tw-mr-0"
       external
     >
       <Icon icon={icon} wrapperClassName="dfr-bg-strong-inverted tw-rounded-full tw-p-2" />
@@ -239,7 +239,7 @@ function GoToTopButton(): T_ReactElement {
   return (
     <Button
       variant={Button.variant.SIMPLE}
-      className="dfr-bg-strong tw-bg-opacity-70 tw-fixed tw-text-2xl tw-bottom-3 sm:tw-bottom-4 tw-right-3 sm:tw-right-4 tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center"
+      className="dfr-bg-strong tw-bg-opacity-70 tw-fixed tw-text-2xl tw-bottom-3 tw-right-3 tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center sm:tw-right-4 sm:tw-bottom-4"
       onClick={() => {
         setScrollPosition(0);
       }}

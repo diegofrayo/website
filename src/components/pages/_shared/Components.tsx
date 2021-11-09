@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 
 import {
@@ -11,14 +11,14 @@ import {
   Title as TitlePrimitive,
 } from "~/components/primitive";
 import {
-  T_HTMLAttributes,
+  T_HTMLElementAttributes,
   T_Object,
   T_ReactChildrenProp,
   T_ReactElement,
   T_ReactFunctionComponent,
 } from "~/types";
 
-export function Emoji({ children, className }: T_HTMLAttributes["span"]): T_ReactElement {
+export function Emoji({ children, className }: T_HTMLElementAttributes["span"]): T_ReactElement {
   return <InlineText className={classNames("emoji", className)}>{children}</InlineText>;
 }
 

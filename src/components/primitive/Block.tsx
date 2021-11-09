@@ -1,17 +1,33 @@
-import React from "react";
+import * as React from "react";
+import classNames from "classnames";
 
-import { T_HTMLAttributes, T_ReactElement } from "~/types";
+import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
-type T_BlockProps = T_HTMLAttributes["div"] & {
+type T_BlockProps = T_HTMLElementAttributes["div"] & {
   is?: "div" | "main" | "section" | "article" | "header" | "footer";
+  variant?: "FEATURED" | "QUOTE";
+  align?: "center";
+  display?: string;
 };
 
-const Block = React.forwardRef(function Block(
-  { is: Tag = "div", children, ...rest }: T_BlockProps,
+const Block = React.forwardRef<HTMLDivElement, T_BlockProps>(function Block(
+  { is: Tag = "div", children, variant, className = "", align = "", display = "", ...rest },
   ref,
 ): T_ReactElement {
+  function composeClassName(): string {
+    return classNames(
+      className,
+      display,
+      align === "center" && "tw-justify-center tw-items-center tw-text-center",
+      variant === "FEATURED" &&
+        "dfr-border-primary dark:dfr-border-primary tw-p-4 tw-border tw-border-l-4",
+      variant === "QUOTE" &&
+        "dfr-border-primary dfr-text-secondary dark:dfr-text-secondary tw-px-4 tw-border-l-4 tw-italic dark:dfr-border-primary",
+    );
+  }
+
   return (
-    <Tag ref={ref as any} {...rest}>
+    <Tag className={composeClassName()} ref={ref} {...rest}>
       {children}
     </Tag>
   );

@@ -31,7 +31,7 @@ export type T_ReactEffectCallback = EffectCallback;
 
 export type T_ReactSetState<T_State> = Dispatch<SetStateAction<T_State>>;
 
-export type T_HTMLAttributes = JSX.IntrinsicElements;
+export type T_HTMLElementAttributes = JSX.IntrinsicElements;
 
 export type T_OnClickEvent<HTMLElement = HTMLButtonElement> = React.MouseEvent<HTMLElement>;
 
@@ -59,7 +59,7 @@ export type T_Locale = "es" | "en";
 
 export type T_PageRoute =
   | "/"
-  | "/about-me"
+  // | "/about-me"
   | "/resume"
   | "/blog"
   | "/blog/[slug]"

@@ -1,10 +1,10 @@
-import React from "react";
+import * as React from "react";
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Blockquote, Icon, Space, Button, Block, Text, InlineText } from "~/components/primitive";
+import { Icon, Space, Button, Block, Text, InlineText } from "~/components/primitive";
 import { MDXContent, RateContent } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
@@ -121,7 +121,7 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
   const { t } = useTranslation();
 
   return (
-    <Block className="tw-flex tw-flex-col sm:tw-flex-row tw-justify-center tw-items-center">
+    <Block className="tw-flex-col sm:tw-flex-row" display="tw-flex" align="center">
       <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-primary dark:dfr-border-primary">
         <BlogPostDetailsItem.Icon
           icon={Icon.icon.CALENDAR}
@@ -149,9 +149,9 @@ function BlogPostActions(): T_ReactElement {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
-    <Blockquote
+    <Block
+      variant="FEATURED"
       className="dfr-border-primary dfr-text-strong dark:dfr-text-strong dark:dfr-border-primary tw-p-4 tw-border"
-      variant={Blockquote.variant.STYLED}
     >
       <BlogPostDetailsItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
         <BlogPostDetailsItem.Icon icon={Icon.icon.LINK} />
@@ -171,7 +171,7 @@ function BlogPostActions(): T_ReactElement {
         <BlogPostDetailsItem.Icon icon={Icon.icon.REPLY} />
         <InlineText>{t("page:email_message_label")}</InlineText>
       </BlogPostDetailsItem>
-    </Blockquote>
+    </Block>
   );
 }
 

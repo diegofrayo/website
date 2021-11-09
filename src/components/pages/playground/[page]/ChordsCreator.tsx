@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { Input, Space, Title, Block } from "~/components/primitive";
 import { GuitarChord } from "~/lib/guitar";

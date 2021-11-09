@@ -49,7 +49,7 @@ class MusicService {
   }
 
   isChordsPage(song) {
-    return song.progress === 0;
+    return song.id === "chords";
   }
 
   private async fetchData(): Promise<T_Object> {

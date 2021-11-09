@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { Block, Text } from "~/components/primitive";
 import { T_ReactElement } from "~/types";

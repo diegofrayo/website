@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 
 import { Button, Block } from "~/components/primitive";
@@ -10,7 +10,7 @@ import {
   T_ReactRefObject,
 } from "~/types";
 
-import Code from "./Code";
+import SourceCode from "./SourceCode";
 
 type T_PlaygroundProps = Pick<T_CodeProps, "code" | "language"> & {
   Component: T_ReactFunctionComponent;
@@ -45,7 +45,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
         ref={contentRef}
       >
         {isSourceCodeTabSelected ? (
-          <Code language={language} code={code} showOnlySourceCode />
+          <SourceCode language={language} code={code} showOnlySourceCode />
         ) : (
           <Component />
         )}

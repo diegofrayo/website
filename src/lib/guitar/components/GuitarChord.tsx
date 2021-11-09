@@ -1,10 +1,10 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 
-import { Space, Button, Title, Block, InlineText } from "~/components/primitive";
+import { Button, Title, Block, InlineText } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
-import AnalyticsService from "~/services/analytics";
 import { useExecuteCallback } from "~/hooks";
+import AnalyticsService from "~/services/analytics";
 import { T_Function, T_ReactElement, T_ReactRefObject } from "~/types";
 import { copyToClipboard, downloadComponentAsImage } from "~/utils/browser";
 
@@ -103,42 +103,34 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
       <Block className="tw-text-sm">
         <Block>
-          <Button
-            variant={Button.variant.SIMPLE}
-            className="tw-font-bold"
-            onClick={handleDownloadAsImage}
-          >
-            <Emoji className="tw-mr-1">⬇️</Emoji>
-            <InlineText>descargar como imagen</InlineText>
+          <Button variant={Button.variant.DEFAULT} onClick={handleDownloadAsImage}>
+            <Emoji>⬇️</Emoji> <InlineText>descargar como imagen</InlineText>
           </Button>
 
           {musicNotesAsString && enableShowNotesOption ? (
-            <React.Fragment>
-              <Button
-                variant={Button.variant.SIMPLE}
-                className="tw-mt-1 sm:tw-mt-0 sm:tw-ml-2 tw-font-bold"
-                onClick={handleShowChordInput}
+            <Button
+              variant={Button.variant.DEFAULT}
+              className="tw-mt-1 tw-ml-0 sm:tw-ml-3 sm:tw-mt-0"
+              onClick={handleShowChordInput}
+            >
+              <InlineText
+                className={classNames(
+                  "tw-inline-block tw-transition-all tw-transform tw-w-4",
+                  showChordInput && "tw-rotate-90",
+                )}
               >
-                <InlineText
-                  className={classNames(
-                    "tw-inline-block tw-transition-all tw-transform tw-w-4",
-                    showChordInput && "tw-rotate-90",
-                  )}
-                >
-                  ‣
-                </InlineText>
-                <InlineText>{showChordInput ? "ocultar" : "mostrar"} notas</InlineText>
-              </Button>
-              <Space size={1} orientation="v" />
-            </React.Fragment>
+                ‣
+              </InlineText>
+              <InlineText>{showChordInput ? "ocultar" : "mostrar"} notas</InlineText>
+            </Button>
           ) : null}
         </Block>
+
         {showChordInput && (
           <Block className="tw-text-sm tw-mt-3 tw-text-center">
-            <pre className="tw-whitespace-pre-line tw-break-all tw-border tw-inline-block tw-p-2 dfr-border-primary dark:dfr-border-primary">
+            <pre className="dfr-border-primary tw-whitespace-pre-line tw-break-all tw-border tw-inline-block tw-p-2 dark:dfr-border-primary">
               <Button
                 variant={Button.variant.SIMPLE}
-                className="tw-font-bold"
                 data-clipboard-text={musicNotesAsString}
                 onClick={copyToClipboard}
               >

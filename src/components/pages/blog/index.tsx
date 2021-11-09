@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { Link, List, Title, Block } from "~/components/primitive";
 import { useTranslation } from "~/i18n";

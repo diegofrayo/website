@@ -1,2 +1,2 @@
-export { default as protectedComponent } from "./protectedComponent";
-export { default as safeRender } from "./safeRender";
+export { default as withRequiredAuthComponent } from "./withRequiredAuthComponent";
+export { default as withSafeRenderingComponent } from "./withSafeRenderingComponent";

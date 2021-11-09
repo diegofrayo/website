@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 
 import { Icon, Link, Block, Text, InlineText, Space } from "~/components/primitive";
-import { protectedComponent } from "~/hocs";
+import { withRequiredAuthComponent } from "~/hocs";
 import { useTranslation } from "~/i18n";
 import MusicService from "~/services/music";
 import { T_ReactElement, T_Song } from "~/types";
@@ -55,7 +55,7 @@ export default SongDetails;
 
 // --- Components ---
 
-const Progress = protectedComponent(function Progress({ progress }: { progress: number }) {
+const Progress = withRequiredAuthComponent(function Progress({ progress }: { progress: number }) {
   const { t } = useTranslation();
 
   function getProgressStyles(progress: number, index: number) {

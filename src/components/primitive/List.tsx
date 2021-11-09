@@ -1,13 +1,13 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 
-import { T_HTMLAttributes, T_ReactElement } from "~/types";
+import { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 import { mirror } from "~/utils/misc";
 
 type T_Variants = "UNSTYLED" | "DEFAULT";
 const VARIANTS = mirror(["UNSTYLED", "DEFAULT"]) as Record<T_Variants, T_Variants>;
 
-type T_ListProps = T_HTMLAttributes["ul"] & {
+type T_ListProps = T_HTMLElementAttributes["ul"] & {
   variant?: T_Variants;
 };
 
@@ -63,6 +63,9 @@ export default List;
 
 // --- Components ---
 
-List.Item = function ListItem({ children, ...rest }: T_HTMLAttributes["li"]): T_ReactElement {
+List.Item = function ListItem({
+  children,
+  ...rest
+}: T_HTMLElementAttributes["li"]): T_ReactElement {
   return <li {...rest}>{children}</li>;
 };

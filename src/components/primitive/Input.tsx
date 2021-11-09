@@ -1,15 +1,15 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 
-import { T_HTMLAttributes, T_ReactElement } from "~/types";
+import { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
 import Text from "./Text";
 
-type T_InputProps = T_HTMLAttributes["input"] & {
+type T_InputProps = T_HTMLElementAttributes["input"] & {
   id: string;
   label?: string;
-  containerProps?: T_HTMLAttributes["label"];
-  inputProps?: T_HTMLAttributes["input"];
+  containerProps?: T_HTMLElementAttributes["label"];
+  inputProps?: T_HTMLElementAttributes["input"];
   is?: any;
   onChange?: any;
 };

@@ -2,7 +2,6 @@ import { createArray } from "./misc";
 
 export function convertToCapitalLetter(str: string): string {
   return str
-    .toLowerCase()
     .split(" ")
     .map((item: string) => (item ? item[0].toUpperCase() + item.substring(1) : ""))
     .join(" ")

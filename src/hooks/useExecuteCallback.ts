@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 type T_Data = any;
 type T_Params = any;

@@ -1,7 +1,7 @@
 import "react-toastify/dist/ReactToastify.min.css";
 import "~/styles/index.post.css";
 
-import React from "react";
+import * as React from "react";
 import App from "next/app";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";

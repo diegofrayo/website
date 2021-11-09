@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { toast } from "react-toastify";
 
 import { Page } from "~/components/layout";

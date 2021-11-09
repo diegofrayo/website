@@ -46,7 +46,7 @@ async function generateFeed(SEO_METADATA, WEBSITE_METADATA, BLOG, DEFAULT_LOCALE
     author: {
       name: WEBSITE_METADATA.fullName,
       email: WEBSITE_METADATA.email,
-      link: `${WEBSITE_METADATA.url}/about-me`,
+      link: WEBSITE_METADATA.url,
     },
   });
 

@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 
-import { T_HTMLAttributes, T_ReactElement } from "~/types";
+import { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
-type T_ImageProps = T_HTMLAttributes["img"];
+type T_ImageProps = T_HTMLElementAttributes["img"];
 
 function Image({ src, ...rest }: T_ImageProps): T_ReactElement {
   if (!src) {

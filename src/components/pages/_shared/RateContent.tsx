@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 import { toast } from "react-toastify";
 
-import { Button, Block, Text } from "~/components/primitive";
+import { Button, Block, Text, Space } from "~/components/primitive";
 import { Emoji } from "~/components/pages/_shared";
 import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/i18n";
@@ -69,23 +69,29 @@ function RateContent(): T_ReactElement {
     <Block className="tw-text-center">
       <Text className="tw-text-sm tw-font-bold">{t("common:useful_question")}</Text>
       <Block
-        className={classNames("tw-text-center tw-mt-1", isQuestionAnswered && "tw-opacity-50")}
+        className={classNames(
+          "tw-text-center tw-text-xl tw-mt-4",
+          isQuestionAnswered && "tw-opacity-50",
+        )}
       >
         <Button
           variant={Button.variant.SIMPLE}
-          className={classNames("tw-mx-2 tw-text-xl", questionAnswer === "YES" && "tw-font-bold")}
+          className={classNames(questionAnswer === "YES" && "tw-font-bold")}
           disabled={isQuestionAnswered}
           onClick={trackEvent("YES")}
         >
-          {t("common:useful_question_yes")} <Emoji>👍</Emoji>
+          <Emoji>👍</Emoji>
+          <Text>{t("common:useful_question_yes")}</Text>
         </Button>
+        <Space size={2} orientation="v" />
         <Button
           variant={Button.variant.SIMPLE}
-          className={classNames("tw-mx-2 tw-text-xl", questionAnswer === "NO" && "tw-font-bold")}
+          className={classNames(questionAnswer === "NO" && "tw-font-bold")}
           disabled={isQuestionAnswered}
           onClick={trackEvent("NO")}
         >
-          {t("common:useful_question_no")} <Emoji>👎</Emoji>
+          <Emoji>👎</Emoji>
+          <Text>{t("common:useful_question_no")}</Text>
         </Button>
       </Block>
     </Block>

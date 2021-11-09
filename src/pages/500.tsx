@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import ErrorPage from "~/components/pages/ErrorPage";
 import { getPageContentStaticProps } from "~/i18n";

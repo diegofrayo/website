@@ -19,7 +19,7 @@ async function main() {
     const pages = [
       { path: "/", hasToBeIndexed: true },
       { path: "/blog", hasToBeIndexed: true },
-      { path: "/about-me", hasToBeIndexed: false },
+      // { path: "/about-me", hasToBeIndexed: true },
       { path: "/resume", hasToBeIndexed: true },
       { path: "/music", hasToBeIndexed: false },
       { path: "/playground", hasToBeIndexed: false },
@@ -36,7 +36,7 @@ async function main() {
         MUSIC.songs.map((song) => {
           return {
             path: `/music/${song.id}`,
-            hasToBeIndexed: song.is_public,
+            hasToBeIndexed: song.progress === 5,
           };
         }),
       );

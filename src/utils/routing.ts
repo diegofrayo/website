@@ -2,7 +2,7 @@ import { T_Object, T_PageRoute } from "~/types";
 
 export const ROUTES: T_Object<T_PageRoute> = {
   HOME: "/",
-  ABOUT_ME: "/about-me",
+  // ABOUT_ME: "/about-me",
   RESUME: "/resume",
   BLOG: "/blog",
   BLOG_DETAILS: "/blog/[slug]",
@@ -14,4 +14,7 @@ export const ROUTES: T_Object<T_PageRoute> = {
   ERROR_500: "/500",
 };
 
-export const DYNAMIC_MAIN_PAGES = ["about-me", "resume"];
+export const DYNAMIC_MAIN_PAGES = [
+  // "about-me",
+  "resume",
+];

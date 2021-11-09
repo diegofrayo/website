@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 import reactStringReplace from "react-string-replace";
 
@@ -51,7 +51,8 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                   </Block>
                 );
               })}
-              <Block className="tw-flex tw-justify-between tw-items-center tw-mt-1">
+              <Space size={1} />
+              <Block display="tw-flex" align="center">
                 <Button
                   variant={Button.variant.SIMPLE}
                   onClick={() => {
@@ -60,7 +61,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                 >
                   <Icon icon={Icon.icon.CHEVRON_LEFT} size={20} />
                 </Button>
-                <Block className="tw-flex-1 tw-justify-center tw-flex tw-items-center">
+                <Block className="tw-flex-1" display="tw-flex" align="center">
                   {createArray(selectedChord.length, 0).map((index) => {
                     return (
                       <InlineText

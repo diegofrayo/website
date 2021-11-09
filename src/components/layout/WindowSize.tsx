@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { Block, InlineText } from "~/components/primitive";
 import { useOnWindowResize } from "~/hooks";

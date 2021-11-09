@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 
 import { Block, Icon, InlineText } from "~/components/primitive";
@@ -54,7 +54,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
       )}
     >
       {!isStringsNamesVariant && (
-        <Block className="tw-flex tw-items-center tw-justify-center tw-h-6 tw-font-bold tw-text-base">
+        <Block className="tw-flex tw-h-6 tw-font-bold tw-text-base" align="center">
           {number}
         </Block>
       )}
@@ -124,9 +124,12 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                 ) : musicNote ? (
                   <React.Fragment>
                     <String />
-                    <InlineText className="tw-rounded-full tw-h-5 tw-w-5 tw-border tw-font-bold tw-bg-white tw-text-black tw-leading-0 tw-flex tw-items-center tw-justify-center">
+                    <Block
+                      className="tw-rounded-full tw-h-5 tw-w-5 tw-border tw-font-bold tw-bg-white tw-text-black tw-leading-0 tw-inline-flex"
+                      align="center"
+                    >
                       {(musicNote as I_SimpleMusicNote).finger}
-                    </InlineText>
+                    </Block>
                     <String />
                   </React.Fragment>
                 ) : (

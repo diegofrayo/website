@@ -1,22 +1,23 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 
-import { T_ReactElement } from "~/types";
+import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
+import { mirror } from "~/utils/misc";
 
-enum E_Variants {
-  DEFAULT = "DEFAULT",
-  DASHED = "DASHED",
-}
+type T_Variant = "DEFAULT" | "DASHED";
+// TODO: TS: Use "generics" instead of "as" to type this var
+const VARIANTS = mirror(["DEFAULT", "DASHED"]) as Record<T_Variant, T_Variant>;
 
-type T_SpaceProps = {
+type T_SpaceProps = T_HTMLElementAttributes["hr"] & {
+  className?: string;
+  variant?: T_Variant;
+  orientation?: "h" | "v";
+  responsive?: string;
   size?: number;
   sizeLeft?: number;
   sizeRight?: number;
   sizeTop?: number;
   sizeBottom?: number;
-  className?: string;
-  orientation?: "h" | "v";
-  variant?: E_Variants;
 };
 
 function Space(props: T_SpaceProps): T_ReactElement {
@@ -25,55 +26,64 @@ function Space(props: T_SpaceProps): T_ReactElement {
   return <hr className={className} />;
 }
 
-Space.variant = E_Variants;
+Space.variant = VARIANTS;
 
 export default Space;
 
 // --- Controller ---
 
 function useController({
+  className = "",
+  variant = VARIANTS.DEFAULT,
+  orientation = "h",
+  responsive = "",
   size,
   sizeTop,
   sizeBottom,
   sizeLeft,
   sizeRight,
-  className,
-  orientation = "h",
-  variant = E_Variants.DEFAULT,
-}: T_SpaceProps) {
-  const isHorizontalDir = orientation === "h";
+}: T_SpaceProps): { className: string } {
+  const isVerticalOrientation = orientation === "v";
 
-  function getSizeClass(): string {
-    if (isHorizontalDir) {
-      if (sizeTop || sizeBottom) {
-        return `${getItemClass("tw-mt", sizeTop)} ${getItemClass("tw-mb", sizeBottom)}`.trim();
-      }
-
-      return getItemClass("tw-my", size);
-    }
-
-    if (sizeLeft || sizeRight) {
-      return `${getItemClass("tw-ml", sizeLeft)} ${getItemClass("tw-mr", sizeRight)}`.trim();
-    }
-
-    return getItemClass("tw-mx", size);
+  function composeClassName(): string {
+    return classNames(
+      "tw-flex-shrink-0 tw-h-px",
+      responsive || classNames(composeSizeClassNames(), isVerticalOrientation && "tw-inline-block"),
+      variant === VARIANTS.DEFAULT && "tw-border-0",
+      variant === VARIANTS.DASHED && "dfr-border-primary dark:dfr-border-primary tw-border-dashed",
+      className,
+    );
   }
 
-  function getItemClass(className, size) {
+  function composeSizeClassNames(): string {
+    if (isVerticalOrientation) {
+      if (sizeLeft || sizeRight) {
+        return `${composeSingleSideClassName("ml", sizeLeft)} ${composeSingleSideClassName(
+          "mr",
+          sizeRight,
+        )}`.trim();
+      }
+
+      return composeSingleSideClassName("mx", size);
+    }
+
+    if (sizeTop || sizeBottom) {
+      return `${composeSingleSideClassName("mt", sizeTop)} ${composeSingleSideClassName(
+        "mb",
+        sizeBottom,
+      )}`.trim();
+    }
+
+    return composeSingleSideClassName("my", size);
+  }
+
+  function composeSingleSideClassName(singleSide: string, size?: number) {
     if (typeof size !== "number") return "";
 
-    return `${className}-${size}`;
+    return `tw-${singleSide}-${size}`;
   }
 
   return {
-    className: classNames(
-      "tw-flex-shrink-0 tw-h-px",
-      getSizeClass(),
-      !isHorizontalDir && "tw-inline-block",
-      variant === E_Variants.DEFAULT && "tw-border-0",
-      variant === E_Variants.DASHED &&
-        "dfr-border-primary dark:dfr-border-primary tw-border-dashed",
-      className,
-    ),
+    className: composeClassName(),
   };
 }

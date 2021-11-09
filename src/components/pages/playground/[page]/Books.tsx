@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { Icon, Link, Title, Block, Text, InlineText } from "~/components/primitive";
 import { Emoji, Render } from "~/components/pages/_shared";

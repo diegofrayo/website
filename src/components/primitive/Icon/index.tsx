@@ -1,10 +1,15 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 
-import { E_Icons, T_HTMLAttributes, T_ReactElement, T_ReactFunctionComponent } from "~/types";
+import {
+  E_Icons,
+  T_HTMLElementAttributes,
+  T_ReactElement,
+  T_ReactFunctionComponent,
+} from "~/types";
 
 import Image from "../Image";
-import InlineText from "../InlineText";
+import Block from "../Block";
 import { ICONS, T_Icon } from "./icons";
 
 type IconProps = {
@@ -43,7 +48,7 @@ function useController({
   withDarkModeBackground = false,
 }: IconProps): {
   wrapperProps: { className: string } | undefined;
-  IconComponent: T_ReactFunctionComponent<T_HTMLAttributes["img"]> | undefined;
+  IconComponent: T_ReactFunctionComponent<T_HTMLElementAttributes["img"]> | undefined;
   iconComponentProps:
     | {
         src?: string;
@@ -117,12 +122,10 @@ function useController({
 
 // --- Components ---
 
-function Wrapper({ children, className = "" }: T_HTMLAttributes["span"]) {
+function Wrapper({ children, className = "" }: T_HTMLElementAttributes["span"]) {
   return (
-    <InlineText
-      className={classNames("tw-inline-flex tw-items-center tw-justify-center", className)}
-    >
+    <Block className={classNames("tw-inline-flex tw-align-middle", className)} align="center">
       {children}
-    </InlineText>
+    </Block>
   );
 }

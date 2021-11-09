@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { T_Function, T_ReactChildrenProp, T_ReactElement, T_ReactRefObject } from "~/types";
 

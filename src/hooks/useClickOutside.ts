@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function useClickOutside(ref, callback): any {

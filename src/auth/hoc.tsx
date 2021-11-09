@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { useDidMount } from "~/hooks";
 import { T_Object, T_ReactFunctionComponent } from "~/types";

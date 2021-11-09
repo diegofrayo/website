@@ -1,9 +1,9 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 import NextLink from "next/link";
 
 import twcss from "~/lib/twcss";
-import { T_Locale, T_ReactElement, T_HTMLAttributes } from "~/types";
+import { T_Locale, T_ReactElement, T_HTMLElementAttributes } from "~/types";
 import { mirror } from "~/utils/misc";
 
 type T_Variant = "UNSTYLED" | "SIMPLE" | "PRIMARY" | "SECONDARY";
@@ -12,7 +12,7 @@ const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "PRIMARY", "SECONDARY"]) as Recor
   T_Variant
 >;
 
-type T_LinkProps = T_HTMLAttributes["a"] & {
+type T_LinkProps = T_HTMLElementAttributes["a"] & {
   variant: T_Variant;
   external?: boolean;
   is?: "a" | typeof NextLink;

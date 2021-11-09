@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
@@ -31,8 +31,8 @@ function Strings(): T_ReactElement {
           onClick={onInputFocus}
         />
         <Button
-          variant={Button.variant.SIMPLE}
-          className="tw-block tw-ml-auto tw-text-sm"
+          variant={Button.variant.DEFAULT}
+          className="tw-block tw-ml-auto"
           data-clipboard-text={texts.input}
           onClick={handleCopyText}
         >
@@ -51,8 +51,8 @@ function Strings(): T_ReactElement {
           {texts.slug}
         </output>
         <Button
-          variant={Button.variant.SIMPLE}
-          className="tw-block tw-ml-auto tw-text-sm"
+          variant={Button.variant.DEFAULT}
+          className="tw-block tw-ml-auto"
           data-clipboard-text={texts.slug}
           onClick={handleCopyText}
         >
@@ -66,8 +66,8 @@ function Strings(): T_ReactElement {
           {texts.upper}
         </output>
         <Button
-          variant={Button.variant.SIMPLE}
-          className="tw-block tw-ml-auto tw-text-sm"
+          variant={Button.variant.DEFAULT}
+          className="tw-block tw-ml-auto"
           data-clipboard-text={texts.upper}
           onClick={handleCopyText}
         >
@@ -81,8 +81,8 @@ function Strings(): T_ReactElement {
           {texts.lower}
         </output>
         <Button
-          variant={Button.variant.SIMPLE}
-          className="tw-block tw-ml-auto tw-text-sm"
+          variant={Button.variant.DEFAULT}
+          className="tw-block tw-ml-auto"
           data-clipboard-text={texts.lower}
           onClick={handleCopyText}
         >
@@ -96,8 +96,8 @@ function Strings(): T_ReactElement {
           {texts.convertToCapitalLetter}
         </output>
         <Button
-          variant={Button.variant.SIMPLE}
-          className="tw-block tw-ml-auto tw-text-sm"
+          variant={Button.variant.DEFAULT}
+          className="tw-block tw-ml-auto"
           data-clipboard-text={texts.convertToCapitalLetter}
           onClick={handleCopyText}
         >
@@ -111,8 +111,8 @@ function Strings(): T_ReactElement {
           {texts.convertToCapitalLetterOnlyFirst}
         </output>
         <Button
-          variant={Button.variant.SIMPLE}
-          className="tw-block tw-ml-auto tw-text-sm"
+          variant={Button.variant.DEFAULT}
+          className="tw-block tw-ml-auto"
           data-clipboard-text={texts.convertToCapitalLetterOnlyFirst}
           onClick={handleCopyText}
         >

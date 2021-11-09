@@ -1,23 +1,16 @@
-import React from "react";
+import * as React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
 import classNames from "classnames";
 
-import {
-  Block,
-  Button,
-  Code as CodePrimitive,
-  Icon,
-  InlineText,
-  Link,
-} from "~/components/primitive";
+import { Block, Button, Code, Icon, InlineText, Link, Space } from "~/components/primitive";
 import { useTranslation } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { T_CodeProps, T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { generateSlug } from "~/utils/strings";
 
-function Code({
+function SourceCode({
   language,
   fileName,
   code = "",
@@ -33,7 +26,7 @@ function Code({
     : "";
 
   return (
-    <Block className="dfr-Code" data-markdown-block>
+    <Block className="dfr-SourceCode" data-markdown-block>
       {!showOnlySourceCode && (
         <Block className="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono tw-rounded-t-md tw-border dfr-border-primary tw-border-b-0 dark:tw-border-0 dark:tw-bg-gray-700">
           {codeTitle && (
@@ -50,7 +43,7 @@ function Code({
       <Highlight {...defaultProps} code={code} language={language} theme={dracula}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => {
           return (
-            <CodePrimitive
+            <Code
               className={classNames(
                 className,
                 "dark:tw-border-l dark:tw-border-r dark:tw-border-gray-700",
@@ -69,33 +62,32 @@ function Code({
                   </Line>
                 );
               })}
-            </CodePrimitive>
+            </Code>
           );
         }}
       </Highlight>
 
       {!showOnlySourceCode && (
-        <Block className="tw-p-2 tw-pt-1.5 tw-text-sm tw-text-right tw-border dfr-border-primary tw-border-t-0 dark:tw-border-0 dark:tw-bg-gray-700 tw-rounded-b-md">
+        <Block className="dfr-border-primary tw-flex tw-flex-col tw-p-2 tw-text-sm tw-border tw-border-t-0 tw-rounded-b-md sm:tw-flex-row sm:tw-justify-end dark:tw-border-0 dark:tw-bg-gray-700">
           {sourceURL && (
-            <Link
-              variant={Link.variant.SIMPLE}
-              className="tw-block sm:tw-inline-block tw-ml-auto tw-font-bold sm:tw-mr-6 tw-mb-1 sm:tw-mb-0"
-              href={sourceURL}
-              external
-            >
-              <Icon
-                icon={Icon.icon.GITHUB}
-                wrapperClassName="tw-align-middle tw-mr-1.5"
-                withDarkModeBackground
-              />
-              <InlineText className="tw-align-middle tw-inline-block">
-                {t("page:see_source_code")}
-              </InlineText>
-            </Link>
+            <React.Fragment>
+              <Link
+                variant={Link.variant.SECONDARY}
+                href={sourceURL}
+                className="tw-text-right"
+                external
+              >
+                <Icon icon={Icon.icon.GITHUB} withDarkModeBackground />
+                <InlineText className="tw-lowercase tw-ml-1.5">
+                  {t("page:see_source_code")}
+                </InlineText>
+              </Link>
+              <Space responsive="tw-block tw-mb-1 tw-mr-0 sm:tw-inline-block sm:tw-mb-0 sm:tw-mr-6" />
+            </React.Fragment>
           )}
           <Button
-            variant={Button.variant.SIMPLE}
-            className="tw-block sm:tw-inline-block tw-ml-auto tw-align-middle tw-font-bold"
+            variant={Button.variant.DEFAULT}
+            className="tw-text-right"
             data-clipboard-text={code}
             onClick={copyToClipboard}
           >
@@ -105,7 +97,7 @@ function Code({
       )}
 
       <style jsx>{`
-        :global(.dfr-Code) :global(.dfr-CodePrimitive) {
+        :global(.dfr-SourceCode) :global(.dfr-Code) {
           border-radius: 0;
         }
       `}</style>
@@ -113,7 +105,7 @@ function Code({
   );
 }
 
-export default Code;
+export default SourceCode;
 
 // --- Components ---
 

@@ -1,26 +1,26 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 
-import { T_HTMLAttributes, T_ReactElement } from "~/types";
+import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
+import { mirror } from "~/utils/misc";
 
-enum E_Variants {
-  MULTILINE = "MULTILINE",
-  INLINE = "INLINE",
-}
+type T_Variant = "INLINE" | "MULTILINE";
+// TODO: TS: Use "generics" instead of "as" to type this var
+const VARIANTS = mirror(["INLINE", "MULTILINE"]) as Record<T_Variant, T_Variant>;
 
-type T_CodeProps = T_HTMLAttributes["pre"] & {
-  variant?: E_Variants;
+type T_CodeProps = T_HTMLElementAttributes["pre"] & {
+  variant?: T_Variant;
 };
 
 function Code({
   children,
-  variant = E_Variants.MULTILINE,
+  variant = VARIANTS.MULTILINE,
   className,
   ...rest
 }: T_CodeProps): T_ReactElement {
-  if (variant === E_Variants.INLINE) {
+  if (variant === VARIANTS.INLINE) {
     return (
-      <code className="dfr-CodePrimitive tw-text-base tw-italic tw-text-red-700 dark:tw-text-red-400">
+      <code className="dfr-Code tw-text-base tw-italic tw-text-red-700 dark:tw-text-yellow-400">
         {children}
 
         <style jsx>{`
@@ -36,7 +36,7 @@ function Code({
   return (
     <pre
       className={classNames(
-        "dfr-CodePrimitive tw-bg-gray-800 dark:tw-bg-gray-700 tw-block tw-p-4 tw-text-base tw-text-gray-300 tw-rounded-md tw-max-w-full tw-overflow-x-auto",
+        "dfr-Code tw-bg-gray-800 dark:tw-bg-gray-700 tw-block tw-p-4 tw-text-base tw-text-gray-300 tw-rounded-md tw-max-w-full tw-overflow-x-auto",
         className,
       )}
       {...rest}
@@ -52,6 +52,6 @@ function Code({
   );
 }
 
-Code.variant = E_Variants;
+Code.variant = VARIANTS;
 
 export default Code;

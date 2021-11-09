@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import ReactDiffViewer from "react-diff-viewer";
 
 import { Button, Input, Space, Title, Block, Text, InlineText } from "~/components/primitive";
@@ -61,13 +61,13 @@ function Texts(): T_ReactElement {
                 />
               </Block>
               <Button
-                variant={Button.variant.SIMPLE}
-                className="tw-font-bold tw-mt-2 tw-mx-auto tw-block"
+                variant={Button.variant.DEFAULT}
+                className="tw-mt-2 tw-mx-auto tw-block"
                 onClick={() => {
                   downloadComponentAsImage(correctionsContainerRef.current, "diff");
                 }}
               >
-                <Emoji className="tw-mr-1">⬇️</Emoji>download as image
+                <Emoji className="tw-mr-1">⬇️</Emoji> <InlineText>download as image</InlineText>
               </Button>
             </React.Fragment>
           )}
@@ -154,7 +154,7 @@ function TextArea({ title, text, setText, id }) {
         {title}
       </Title>
 
-      <Block className="tw-flex-1 tw-overflow-auto">
+      <Block className="tw-flex-1 tw-overflow-auto tw-pr-4">
         {isEditable ? (
           <React.Fragment>
             <Input
@@ -168,8 +168,8 @@ function TextArea({ title, text, setText, id }) {
             />
             <Block className="tw-text-right tw-mt-1">
               <Button
-                variant={Button.variant.SIMPLE}
-                className="tw-mr-2"
+                variant={Button.variant.DEFAULT}
+                fontWeight="tw-font-normal"
                 onClick={() => {
                   const closeEditableMode = confirm("Are you sure?");
 
@@ -180,11 +180,8 @@ function TextArea({ title, text, setText, id }) {
               >
                 cancel
               </Button>
-              <Button
-                variant={Button.variant.SIMPLE}
-                className="tw-font-bold"
-                onClick={onSaveHandler}
-              >
+              <Space size={1} orientation="v" />
+              <Button variant={Button.variant.DEFAULT} onClick={onSaveHandler}>
                 save
               </Button>
             </Block>

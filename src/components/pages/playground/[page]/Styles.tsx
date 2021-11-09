@@ -1,9 +1,9 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 import { useTheme } from "next-themes";
 
 import { Block } from "~/components/primitive";
-import { safeRender } from "~/hocs";
+import { withSafeRenderingComponent } from "~/hocs";
 import { T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 
@@ -15,7 +15,7 @@ export default Styles;
 
 // --- Components ---
 
-const Content = safeRender(function Content() {
+const Content = withSafeRenderingComponent(function Content() {
   const { theme } = useTheme();
 
   const STYLES = {
