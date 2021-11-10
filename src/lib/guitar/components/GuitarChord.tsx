@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Button, Title, Block, InlineText } from "~/components/primitive";
-import { Emoji } from "~/components/pages/_shared";
+import { Emoji } from "~/components/shared";
 import { useExecuteCallback } from "~/hooks";
 import AnalyticsService from "~/services/analytics";
 import { T_Function, T_ReactElement, T_ReactRefObject } from "~/types";
@@ -55,7 +55,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
   return (
     <Block is="article" className="tw-max-w-full tw-text-center">
-      <Block is="section" className="tw-pb-2 dark:dfr-bg-primary" ref={chordContainerRef}>
+      <Block is="section" className="tw-pb-2 dark:dfr-bg-color-layout" ref={chordContainerRef}>
         <Title
           is="h1"
           variant={Title.variant.SECONDARY}
@@ -128,7 +128,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
         {showChordInput && (
           <Block className="tw-text-sm tw-mt-3 tw-text-center">
-            <pre className="dfr-border-primary tw-whitespace-pre-line tw-break-all tw-border tw-inline-block tw-p-2 dark:dfr-border-primary">
+            <pre className="dfr-border-color-primary tw-whitespace-pre-line tw-break-all tw-border tw-inline-block tw-p-2 dark:dfr-border-color-primary">
               <Button
                 variant={Button.variant.SIMPLE}
                 data-clipboard-text={musicNotesAsString}

@@ -20,9 +20,9 @@ const Block = React.forwardRef<HTMLDivElement, T_BlockProps>(function Block(
       display,
       align === "center" && "tw-justify-center tw-items-center tw-text-center",
       variant === "FEATURED" &&
-        "dfr-border-primary dark:dfr-border-primary tw-p-4 tw-border tw-border-l-4",
+        "dfr-border-color-primary dark:dfr-border-color-primary tw-p-4 tw-border tw-border-l-4",
       variant === "QUOTE" &&
-        "dfr-border-primary dfr-text-secondary tw-px-4 tw-border-l-4 tw-italic dark:dfr-border-primary dark:dfr-text-secondary",
+        "dfr-border-color-primary dfr-text-color-secondary tw-px-4 tw-border-l-4 tw-italic dark:dfr-border-color-primary dark:dfr-text-color-secondary",
     );
   }
 

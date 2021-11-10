@@ -8,11 +8,9 @@ import {
   SourceCode,
   TextWithEmoji,
   TitleCreator,
-} from "~/components/pages/_shared";
-import { Sources } from "~/components/pages/blog";
-import * as HTMLSemanticTagsBlogPostComponents from "~/components/pages/blog/[slug]/html-semantic-tags";
-import * as MyFavoriteMusicAndMDXBlogPostComponents from "~/components/pages/blog/[slug]/my-favorite-music-and-mdx";
-import * as MusicComponents from "~/components/pages/music";
+} from "~/components/shared";
+import * as BlogComponents from "~/components/pages/blog/components";
+import * as MusicComponents from "~/components/pages/music/components";
 import * as ResumeComponents from "~/components/pages/resume";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
@@ -76,12 +74,8 @@ export const MDXComponents = {
   SourceCode,
   TextWithEmoji,
 
-  // Blog components
-  ...HTMLSemanticTagsBlogPostComponents,
-  ...MyFavoriteMusicAndMDXBlogPostComponents,
-  Sources,
-
   // Pages components
+  ...BlogComponents,
   ...MusicComponents,
   ...ResumeComponents,
 };

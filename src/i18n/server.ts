@@ -74,7 +74,7 @@ type T_GetContentParams = {
 
 async function fetchPageContent({
   page = "",
-  locale = this.DEFAULT_LOCALE,
+  locale = I18nService.getDefaultLocale(),
 }: T_GetContentParams): Promise<T_PageContent> {
   const [layoutContent, ...pagesContent] = await Promise.all(
     [readFile("")].concat(

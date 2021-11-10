@@ -21,7 +21,8 @@
     "scripts:all": "yarn scripts:chords && yarn scripts:rss && yarn scripts:sitemap && yarn format",
     "scripts:chords": "node --experimental-json-modules scripts/chords.mjs",
     "scripts:rss": "node --experimental-json-modules scripts/rss.mjs",
-    "scripts:sitemap": "node --experimental-json-modules scripts/sitemap.mjs"
+    "scripts:sitemap": "node --experimental-json-modules scripts/sitemap.mjs",
+    "scripts:styles": "node scripts/styles/css-vars.js"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.0",

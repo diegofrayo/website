@@ -3,17 +3,7 @@ import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 
-import {
-  Block,
-  Button,
-  Icon,
-  Image,
-  InlineText,
-  Link,
-  List,
-  Space,
-  Text,
-} from "~/components/primitive";
+import { Block, Button, Icon, Image, Link, List, Space, Text } from "~/components/primitive";
 import { AuthService } from "~/auth";
 import { withRequiredAuthComponent, withSafeRenderingComponent } from "~/hocs";
 import { useClickOutside, useDidMount, useEnhacedState } from "~/hooks";
@@ -30,9 +20,9 @@ import {
   T_WebsiteMetadata,
 } from "~/types";
 import { scrollToElement } from "~/utils/browser";
+import { isDevelopmentEnvironment } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
-import { isDevelopmentEnvironment } from "~/utils/misc";
 
 function Header(): T_ReactElement {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
@@ -44,7 +34,7 @@ function Header(): T_ReactElement {
         <Link
           variant={Link.variant.SECONDARY}
           href={ROUTES.HOME}
-          className="dfr-border-strong tw-text-sm tw-border-b-2 tw-border-dotted dark:dfr-border-strong"
+          className="dfr-border-color-strong tw-text-sm tw-border-b-2 tw-border-dotted dark:dfr-border-color-strong"
         >
           {WEBSITE_METADATA.username}
         </Link>
@@ -160,7 +150,7 @@ function MainMenu(): T_ReactElement {
               return (
                 <List.Item
                   key={generateSlug(item.label)}
-                  className=" dfr-bg-secondary dark:dfr-bg-secondary dfr-border-primary dark:dfr-border-primary tw-border-b last:tw-border-0"
+                  className=" dfr-bg-color-primary dark:dfr-bg-color-primary dfr-border-color-primary dark:dfr-border-color-primary tw-border-b last:tw-border-0"
                   onClick={() => setShowMenu(false)}
                 >
                   <Link
@@ -296,7 +286,7 @@ function MenuItem({
 }): T_ReactElement {
   return (
     <Block
-      className="dfr-bg-secondary dfr-border-primary dark:dfr-border-primary dark:dfr-bg-secondary tw-flex tw-flex-col tw-h-16 tw-px-2 tw-border-b last:tw-border-0"
+      className="dfr-bg-color-primary dfr-border-color-primary dark:dfr-border-color-primary dark:dfr-bg-color-primary tw-flex tw-flex-col tw-h-16 tw-px-2 tw-border-b last:tw-border-0"
       align="center"
     >
       <Text className="tw-font-bold tw-text-xs tw-text-right">{title}</Text>
@@ -306,51 +296,36 @@ function MenuItem({
 }
 
 function PictureFrame(): T_ReactElement {
-  const [photo, setPhoto] =
-    React.useState<{ src: string; place: string; placeUrl: string; portrait: boolean }>();
+  const [photo, setPhoto] = React.useState<{ src: string; portrait: boolean }>();
 
   useDidMount(() => {
     const PHOTOS = [
       {
         src: "/static/images/header/1.png",
-        place: "Palmas de cera",
-        placeUrl: "https://goo.gl/maps/SEQSFq3wovNxYya46",
         portrait: true,
       },
       {
         src: "/static/images/header/2.jpg",
-        place: "Bosque",
-        placeUrl: "https://g.page/valle-del-cocora-salento",
         portrait: true,
       },
       {
         src: "/static/images/header/3.jpg",
-        place: "Jeep",
-        placeUrl: "https://goo.gl/maps/SEQSFq3wovNxYya46",
         portrait: false,
       },
       {
         src: "/static/images/header/4.jpg",
-        place: "Finca cafetera",
-        placeUrl: "https://g.page/finca-buenos-aires-coffee-tour",
         portrait: false,
       },
       {
         src: "/static/images/header/5.jpg",
-        place: "Rústico",
-        placeUrl: "https://goo.gl/maps/SEQSFq3wovNxYya46",
         portrait: false,
       },
       {
         src: "/static/images/header/6.jpg",
-        place: "Filandia, Quindío",
-        placeUrl: "https://g.page/tuktukrestaurante",
         portrait: false,
       },
       {
         src: "/static/images/header/7.jpg",
-        place: "Hongos",
-        placeUrl: "https://goo.gl/maps/P19v4BqqgEgdy3tf7",
         portrait: true,
       },
     ];
@@ -360,44 +335,37 @@ function PictureFrame(): T_ReactElement {
 
   return (
     <Block className="dfr-PictureFrame tw-w-48 tw-mx-auto">
-      <Block className="dfr-bg-strong tw-text-center tw-rounded-tl-md tw-rounded-tr-md">
+      <Block className="dfr-bg-color-strong tw-text-center tw-h-5">
         <Icon
           icon={Icon.icon.CAMERA}
-          size={20}
-          color="dfr-text-strong-inverted"
-          wrapperClassName="tw-relative tw-top-0.5"
+          color="dfr-text-color-strong-inverted"
+          wrapperClassName="tw-relative tw--top-1px"
         />
       </Block>
 
       {photo && (
-        <Link
-          variant={Link.variant.UNSTYLED}
-          href={photo.src}
-          className={classNames(
-            "image-container dfr-border-strong dfr-bg-strong tw-block tw-border-4",
-            photo?.portrait === true ? "tw-h-64" : "tw-h-36",
-          )}
-          external
-        >
-          <Image
-            src={photo.src}
-            alt={photo.place}
-            className="dfr-transition-opacity tw-h-full tw-w-full"
-          />
-        </Link>
-      )}
-      <Block className="tw-flex tw-items-end tw-justify-end tw-relative tw-py-1">
-        <InlineText className="dfr-bg-strong tw-absolute tw-left-0 tw-top-0 tw-w-10 tw-h-2 tw-rounded-br-md tw-rounded-bl-md" />
-        {photo && (
+        <React.Fragment>
           <Link
-            variant={Link.variant.SIMPLE}
-            href={photo.placeUrl}
-            className="dfr-text-secondary tw-text-xs tw-italic tw-pl-1 tw-font-bold dark:dfr-text-secondary"
+            variant={Link.variant.UNSTYLED}
+            href={photo.src}
+            className={classNames(
+              "image-container dfr-border-color-strong dfr-bg-color-strong tw-block tw-border-4",
+              photo?.portrait === true ? "tw-h-64" : "tw-h-36",
+            )}
+            external
           >
-            {photo.place}
+            <Image
+              src={photo.src}
+              alt="Photography taken by Diego Rayo"
+              className="dfr-transition-opacity tw-h-full tw-w-full"
+            />
           </Link>
-        )}
-      </Block>
+
+          <Block className="tw-text-center tw-leading-0">
+            <Block display="tw-inline-block" className="dfr-bg-color-strong tw-w-10 tw-h-2" />
+          </Block>
+        </React.Fragment>
+      )}
 
       <style jsx>{`
         :global(.dfr-PictureFrame) :global(.image-container) {

@@ -44,7 +44,7 @@ function MainLayout({
 
   return (
     <Block is="main">
-      <Block className="dfr-max-w-base tw-mx-auto tw-px-8">
+      <Block className="dfr-max-w-layout tw-mx-auto tw-px-8">
         <Header />
 
         <Block id="body" className="tw-pt-16 tw-pb-32">
@@ -53,14 +53,14 @@ function MainLayout({
               <Link
                 variant={Link.variant.SIMPLE}
                 href={getParentLevelURL()}
-                className="dfr-text-strong dark:dfr-text-strong tw-block tw-underline tw-mb-4"
+                className="dfr-text-color-strong dark:dfr-text-color-strong tw-block tw-underline tw-mb-4"
               >
                 {getParentLevelURL()}
               </Link>
               <Title
                 is="h1"
                 variant={Title.variant.UNSTYLED}
-                className="dfr-text-strong dark:dfr-text-strong tw-text-3xl sm:tw-text-6xl tw-font-bold tw-mb-16 tw-uppercase"
+                className="dfr-text-color-strong dark:dfr-text-color-strong tw-text-3xl sm:tw-text-6xl tw-font-bold tw-mb-16 tw-uppercase"
               >
                 {title}
               </Title>
@@ -125,8 +125,8 @@ function Footer({
   const song = SONGS[3];
 
   return (
-    <Block is="footer" className="dfr-bg-strong tw-relative tw-pt-12 tw-pb-4">
-      <Block className="dfr-max-w-base tw-mx-auto tw-px-8">
+    <Block is="footer" className="dfr-bg-color-strong tw-relative tw-pt-12 tw-pb-4">
+      <Block className="dfr-max-w-layout tw-mx-auto tw-px-8">
         <Block className="tw-w-96 tw-max-w-full tw-mx-auto">
           <Text className="dfr-text-colorful-primary tw-font-bold tw-text-xs tw-text-right">
             on repeat...
@@ -134,24 +134,24 @@ function Footer({
           <Link
             variant={Link.variant.SIMPLE}
             href={song.url}
-            className="dfr-border-primary tw-border-opacity-30 tw-flex tw-items-centers tw-text-sm tw-border tw-p-1 tw-bg-gradient-to-r tw-from-gray-800 tw-to-gray-900 tw-relative"
+            className="dfr-border-color-primary tw-border-opacity-30 tw-flex tw-items-centers tw-text-sm tw-border tw-p-1 tw-bg-gradient-to-r tw-from-gray-800 tw-to-gray-900 tw-relative"
             external
           >
             <Image src={song.thumbnail} className="tw-h-20 tw-w-20 tw-object-cover" />
             <Block className="tw-flex-1 tw-min-w-0 tw-px-2">
               <Text
-                className="dfr-text-strong-inverted tw-font-bold tw-truncate tw-text-base"
+                className="dfr-text-color-strong-inverted tw-font-bold tw-truncate tw-text-base"
                 title={song.title}
               >
                 {song.title}
               </Text>
               <Text
-                className="dfr-text-secondary tw-font-bold tw-truncate tw-text-sm"
+                className="dfr-text-color-secondary tw-font-bold tw-truncate tw-text-sm"
                 title={song.artist}
               >
                 {song.artist}
               </Text>
-              <Text className="dfr-text-secondary tw-italic tw-text-xs">{song.duration}</Text>
+              <Text className="dfr-text-color-secondary tw-italic tw-text-xs">{song.duration}</Text>
             </Block>
             <Icon
               wrapperClassName="tw-absolute tw-right-1 tw-bottom-1"
@@ -171,13 +171,13 @@ function Footer({
             <FooterIcon url={WEBSITE_METADATA.social["500px"]} icon={Icon.icon["500PX"]} />
             <FooterIcon url={WEBSITE_METADATA.social.couchsurfing} icon={Icon.icon.COUCHSURFING} />
           </Block>
-          <InlineText className="dfr-text-strong-inverted tw-text-sm tw-leading-3 tw-mt-4 sm:tw-mt-0">
+          <InlineText className="dfr-text-color-strong-inverted tw-text-sm tw-leading-3 tw-mt-4 sm:tw-mt-0">
             {WEBSITE_METADATA.shortName} | {new Date().getFullYear()}
           </InlineText>
         </Block>
-        <Space size={4} className="dfr-border-primary tw-border-b tw-border-opacity-30" />
+        <Space size={4} className="dfr-border-color-primary tw-border-b tw-border-opacity-30" />
 
-        <Block className="tw-text-center tw-text-xs dfr-text-strong-inverted">
+        <Block className="tw-text-center tw-text-xs dfr-text-color-strong-inverted">
           <InlineText is="strong">{t("layout:footer:resources_disclaimer")}:</InlineText>{" "}
           <Link
             variant={Link.variant.PRIMARY}
@@ -221,7 +221,7 @@ function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactEleme
       className="tw-inline-block tw-mr-2 last:tw-mr-0"
       external
     >
-      <Icon icon={icon} wrapperClassName="dfr-bg-strong-inverted tw-rounded-full tw-p-2" />
+      <Icon icon={icon} wrapperClassName="dfr-bg-color-strong-inverted tw-rounded-full tw-p-2" />
     </Link>
   );
 }
@@ -247,12 +247,12 @@ function GoToTopButton(): T_ReactElement {
   return (
     <Button
       variant={Button.variant.SIMPLE}
-      className="dfr-bg-strong tw-bg-opacity-70 tw-fixed tw-text-2xl tw-bottom-3 tw-right-3 tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center sm:tw-right-4 sm:tw-bottom-4"
+      className="dfr-bg-color-strong tw-bg-opacity-70 tw-fixed tw-text-2xl tw-bottom-3 tw-right-3 tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center sm:tw-right-4 sm:tw-bottom-4"
       onClick={() => {
         setScrollPosition(0);
       }}
     >
-      <Icon icon={Icon.icon.ARROW_UP} color="dfr-text-strong-inverted" />
+      <Icon icon={Icon.icon.ARROW_UP} color="dfr-text-color-strong-inverted" />
     </Button>
   );
 }

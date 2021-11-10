@@ -164,7 +164,7 @@ export default Page;
 // --- Components ---
 
 const UserLoggedInFlag = withRequiredAuthComponent(function UserLoggedInFlag() {
-  return <Flag className="tw-z-50" color="dfr-bg-strong dark:dfr-bg-strong" />;
+  return <Flag className="tw-z-50" color="dfr-bg-color-strong dark:dfr-bg-color-strong" />;
 });
 
 function AnalyticsDisabledFlag() {

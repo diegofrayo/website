@@ -19,7 +19,7 @@ export function ResumeTimeline({ title, timeline }: T_ResumeTimelineProps): T_Re
   return (
     <Block is="section" data-markdown-block>
       <Title is="h2">{title}</Title>
-      <Block className="tw-border-l-4 tw-border-black dark:dfr-border-primary tw-pl-6 tw-ml-3 tw-mt-3">
+      <Block className="tw-border-l-4 tw-border-black dark:dfr-border-color-primary tw-pl-6 tw-ml-3 tw-mt-3">
         {timeline.map((item, index) => {
           return <TimelineItem key={`TimelineItem-${index}`} {...item} />;
         })}
@@ -36,7 +36,7 @@ function TimelineItem({
 }: T_ResumeTimelineItem): T_ReactElement {
   return (
     <Block is="section" className="tw-relative tw-mb-8 last:tw-mb-0">
-      <InlineText className="tw-absolute tw--left-10 tw-border-4 tw-border-black dark:dfr-border-primary tw-w-7 tw-h-7 tw-rounded-full tw-bg-white tw-top-0.5" />
+      <InlineText className="tw-absolute tw--left-10 tw-border-4 tw-border-black dark:dfr-border-color-primary tw-w-7 tw-h-7 tw-rounded-full tw-bg-white tw-top-0.5" />
 
       <Title is="h3" variant={Title.variant.SECONDARY} size={Title.size.MD}>
         {url ? (

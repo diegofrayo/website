@@ -50,7 +50,8 @@ function useController({
       "tw-flex-shrink-0 tw-h-px",
       responsive || classNames(composeSizeClassNames(), isVerticalOrientation && "tw-inline-block"),
       variant === VARIANTS.DEFAULT && "tw-border-0",
-      variant === VARIANTS.DASHED && "dfr-border-primary dark:dfr-border-primary tw-border-dashed",
+      variant === VARIANTS.DASHED &&
+        "dfr-border-color-primary dark:dfr-border-color-primary tw-border-dashed",
       className,
     );
   }

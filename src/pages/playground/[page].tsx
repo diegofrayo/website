@@ -5,14 +5,14 @@ import { GetStaticPaths } from "next";
 import { Page, MainLayout } from "~/components/layout";
 import { withAuth } from "~/auth";
 import { getPageContentStaticProps } from "~/i18n";
-import { T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 import { PLAYGROUND_PAGES } from "~/utils/constants";
 
 const PLAYGROUND_PAGES_COMPONENTS = PLAYGROUND_PAGES.map((page) => {
   return {
     ...page,
     Component: dynamic(
-      () => import(`../../components/pages/playground/[page]/${page.componentName}`),
+      () => import(`../../components/pages/playground/components/${page.componentName}`),
     ),
   };
 });

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import ErrorPage from "~/components/pages/ErrorPage";
+import { ErrorPage } from "~/components/shared";
 import { getPageContentStaticProps } from "~/i18n";
 import { T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";

@@ -4,7 +4,7 @@ import renderToString from "next-mdx-remote/render-to-string";
 import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
-import { MDXContent } from "~/components/pages/_shared";
+import { MDXContent } from "~/components/shared";
 import { useTranslation, getPageContentStaticProps, I18nService } from "~/i18n";
 import { dataLoader } from "~/server";
 import { T_Locale, T_PageRoute, T_ReactElement } from "~/types";

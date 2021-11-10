@@ -6,8 +6,8 @@ import { useRouter } from "next/router";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Icon, Button, Space, Block, Text } from "~/components/primitive";
-import { MDXContent, Loader, RateContent } from "~/components/pages/_shared";
-import { SongDetails, SongSources } from "~/components/pages/music";
+import { MDXContent, Loader, RateContent } from "~/components/shared";
+import { SongDetails, SongSources } from "~/components/pages/music/components";
 import { useDidMount } from "~/hooks";
 import { getPageContentStaticProps, useTranslation } from "~/i18n";
 import { GuitarService } from "~/lib/guitar";
@@ -100,7 +100,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
 
           <Block
             variant="FEATURED"
-            className="tw-p-4 tw-border dfr-border-primary dark:dfr-border-primary tw-text-base"
+            className="tw-p-4 tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-text-base"
           >
             <Text className="tw-font-bold tw-mb-2">
               {t("page:chords_title")} [{song.chords.length}]

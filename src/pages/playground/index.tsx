@@ -42,7 +42,7 @@ function PagesList({ pages }: { pages: { slug: string; title: string }[] }): T_R
             key={page.slug}
             variant={Link.variant.SECONDARY}
             href={`${ROUTES.PLAYGROUND}/${page.slug}`}
-            className="dfr-border-primary tw-flex tw-items-center tw-justify-center tw-text-center tw-border tw-border-dashed tw-w-48 tw-h-48 tw-mx-0.5 tw-my-2 tw-p-2"
+            className="dfr-border-color-primary tw-flex tw-items-center tw-justify-center tw-text-center tw-border tw-border-dashed tw-w-48 tw-h-48 tw-mx-0.5 tw-my-2 tw-p-2"
           >
             {page.title}
           </Link>

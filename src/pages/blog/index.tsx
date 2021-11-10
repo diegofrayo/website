@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 import { Page, MainLayout } from "~/components/layout";
 import { List, Link, Block, Text, InlineText } from "~/components/primitive";
-import { Render } from "~/components/pages/_shared";
+import { Render } from "~/components/shared";
 import { useQuery } from "~/hooks";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
 import BlogService from "~/services/blog";

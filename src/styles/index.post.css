@@ -1,3 +1,5 @@
+@import "./variables.post.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,8 +13,8 @@ body {
 }
 
 body {
-  @apply dfr-bg-primary;
-  @apply dfr-text-primary;
+  @apply dfr-bg-color-layout;
+  @apply dfr-text-color-primary;
   cursor: default;
   font-size: 18px;
   overflow: auto;
@@ -27,8 +29,8 @@ body.scroll-disabled {
 /* --- Dark mode --- */
 
 .tw-dark body {
-  @apply value:dark:dfr-bg-primary;
-  @apply value:dark:dfr-text-primary;
+  @apply value:dark:dfr-bg-color-layout;
+  @apply value:dark:dfr-text-color-primary;
 }
 
 /* --- Toast --- */
@@ -58,11 +60,11 @@ body.scroll-disabled {
 
 /** Classes for the displayed toast **/
 .Toastify__toast {
-  @apply dfr-bg-strong;
+  @apply dfr-bg-color-strong;
   @apply tw-bg-opacity-80;
   @apply tw-text-sm;
   border-radius: 0;
-  border: 1px solid black;
+  border: 1px solid;
   font-weight: bold;
   text-align: center;
 }

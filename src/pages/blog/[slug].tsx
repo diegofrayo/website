@@ -5,7 +5,7 @@ import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Icon, Space, Button, Block, Text, InlineText } from "~/components/primitive";
-import { MDXContent, RateContent } from "~/components/pages/_shared";
+import { MDXContent, RateContent } from "~/components/shared";
 import { useDidMount } from "~/hooks";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
 import twcss from "~/lib/twcss";
@@ -122,7 +122,7 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
 
   return (
     <Block className="tw-flex-col sm:tw-flex-row" display="tw-flex" align="center">
-      <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-primary dark:dfr-border-primary">
+      <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
         <BlogPostDetailsItem.Icon
           icon={Icon.icon.CALENDAR}
           color="tw-text-black dark:tw-text-white"
@@ -133,7 +133,7 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
         </Text>
       </BlogPostDetailsItem>
       <InlineText className="tw-block tw-my-1 sm:tw-my-0 sm:tw-inline-block sm:tw-mx-4" />
-      <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-primary dark:dfr-border-primary">
+      <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
         <BlogPostDetailsItem.Icon icon={Icon.icon.EDIT} color="tw-text-black dark:tw-text-white" />
         <Text>
           <InlineText className="tw-mr-1">{t("page:updated_at")}</InlineText>
@@ -151,7 +151,7 @@ function BlogPostActions(): T_ReactElement {
   return (
     <Block
       variant="FEATURED"
-      className="dfr-border-primary dfr-text-strong dark:dfr-text-strong dark:dfr-border-primary tw-p-4 tw-border"
+      className="dfr-border-color-primary dfr-text-color-strong dark:dfr-text-color-strong dark:dfr-border-color-primary tw-p-4 tw-border"
     >
       <BlogPostDetailsItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
         <BlogPostDetailsItem.Icon icon={Icon.icon.LINK} />

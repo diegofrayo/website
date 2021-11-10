@@ -3,8 +3,8 @@ import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Link, Title, Space, Input, Text, InlineText, Block } from "~/components/primitive";
-import { Emoji, Render } from "~/components/pages/_shared";
-import { SongDetails } from "~/components/pages/music";
+import { Emoji, Render } from "~/components/shared";
+import { SongDetails } from "~/components/pages/music/components";
 import { AuthService } from "~/auth";
 import { useDidMount, useQuery } from "~/hooks";
 import { getPageContentStaticProps, I18nService, useTranslation } from "~/i18n";

@@ -22,7 +22,7 @@ const Input = React.forwardRef(function Input(
     <label
       className={classNames(
         "root",
-        "dfr-border-primary dark:dfr-border-primary tw-border-b-4 tw-block",
+        "dfr-border-color-primary dark:dfr-border-color-primary tw-border-b-4 tw-block",
         containerProps?.className,
       )}
       {...(label ? { ...containerProps, htmlFor: id } : {})}
@@ -32,7 +32,7 @@ const Input = React.forwardRef(function Input(
         ref={ref as any}
         id={id}
         className={classNames(
-          "dfr-Input dfr-border-primary dark:dfr-border-primary tw-border tw-rounded-none tw-shadow-none tw-block tw-p-2 tw-w-full tw-resize-none",
+          "dfr-Input dfr-border-color-primary dark:dfr-border-color-primary tw-border tw-rounded-none tw-shadow-none tw-block tw-p-2 tw-w-full tw-resize-none",
           className,
         )}
         {...rest}
@@ -44,11 +44,11 @@ const Input = React.forwardRef(function Input(
         }
 
         .root .dfr-Input {
-          @apply dfr-bg-secondary;
+          @apply dfr-bg-color-primary;
         }
 
         :global(.tw-dark) .root .dfr-Input {
-          @apply value:dark:dfr-bg-secondary;
+          @apply value:dark:dfr-bg-color-primary;
         }
       `}</style>
     </label>

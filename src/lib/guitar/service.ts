@@ -228,7 +228,7 @@ class GuitarService {
       ) - 1;
 
     if (this.findChord(chordName, chordIndex)) {
-      return `<button class="dfr-Chord dfr-text-link dark:dfr-text-link tw-mt-3 tw-mb-1" data-chord-index="${chordIndex}">${chordName}</button>`;
+      return `<button class="dfr-Chord dfr-link-color-primary dark:dfr-link-color-primary tw-mt-3 tw-mb-1" data-chord-index="${chordIndex}">${chordName}</button>`;
     }
 
     return chordNameInput;
