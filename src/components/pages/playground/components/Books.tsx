@@ -45,7 +45,7 @@ function Books(): T_ReactElement {
                       />
                     </InlineText>
 
-                    <Block className="dfr-bg-color-strong-inverted tw-bg-opacity-70 tw-flex tw-self-end tw-flex-col tw-w-full tw-items-stretch tw-p-2 tw-rounded-tr-lg">
+                    <Block className="light:vd:dfr-bg-color-strong tw-bg-opacity-70 tw-flex tw-self-end tw-flex-col tw-w-full tw-items-stretch tw-p-2 tw-rounded-tr-lg">
                       <Title
                         is="h1"
                         variant={Title.variant.UNSTYLED}

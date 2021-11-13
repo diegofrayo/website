@@ -4,7 +4,6 @@ import classNames from "classnames";
 import { Button, Block } from "~/components/primitive";
 import type {
   T_CodeProps,
-  T_Function,
   T_ReactElement,
   T_ReactFunctionComponent,
   T_ReactRefObject,
@@ -92,8 +91,8 @@ export default Playground;
 function useController(props: T_PlaygroundProps): T_PlaygroundProps & {
   isSourceCodeTabSelected: boolean;
   isOutputTabSelected: boolean;
-  setSourceCodeTab: T_Function;
-  setOutputTab: T_Function;
+  setSourceCodeTab: () => void;
+  setOutputTab: () => void;
   contentRef: T_ReactRefObject<HTMLDivElement>;
 } {
   const [tab, setTab] = React.useState(0);

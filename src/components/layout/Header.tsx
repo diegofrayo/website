@@ -287,7 +287,7 @@ function MenuItem({
   return (
     <Block
       className="dfr-bg-color-primary dfr-border-color-primary dark:dfr-border-color-primary dark:dfr-bg-color-primary tw-flex tw-flex-col tw-h-16 tw-px-2 tw-border-b last:tw-border-0"
-      align="center"
+      align="CENTER"
     >
       <Text className="tw-font-bold tw-text-xs tw-text-right">{title}</Text>
       <Block className="tw-text-right tw-leading-none tw-mt-2">{children}</Block>
@@ -338,7 +338,7 @@ function PictureFrame(): T_ReactElement {
       <Block className="dfr-bg-color-strong tw-text-center tw-h-5">
         <Icon
           icon={Icon.icon.CAMERA}
-          color="dfr-text-color-strong-inverted"
+          color="light:vd:dfr-text-color-strong"
           wrapperClassName="tw-relative tw--top-1px"
         />
       </Block>

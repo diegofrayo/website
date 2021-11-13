@@ -1,5 +1,3 @@
-import { T_Function } from "~/types";
-
 import useDidMount from "./useDidMount";
 
 function useOnWindowStopScroll({
@@ -7,8 +5,8 @@ function useOnWindowStopScroll({
   onScrollCallback = (): void => undefined,
   timeout = 3000,
 }: {
-  onScrollStoppedCallback: T_Function;
-  onScrollCallback?: T_Function;
+  onScrollStoppedCallback: () => void;
+  onScrollCallback?: () => void;
   timeout?: number;
 }): any {
   let isScrolling = 0;

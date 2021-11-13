@@ -5,7 +5,7 @@ import { Button, Title, Block, InlineText } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { useExecuteCallback } from "~/hooks";
 import AnalyticsService from "~/services/analytics";
-import { T_Function, T_ReactElement, T_ReactRefObject } from "~/types";
+import { T_ReactElement, T_ReactRefObject } from "~/types";
 import { copyToClipboard, downloadComponentAsImage } from "~/utils/browser";
 
 import GuitarFret from "./GuitarFret";
@@ -89,7 +89,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
             {firstFret > 1 && <GuitarFret variant={GuitarFret.variant.EMPTY} number={1} />}
 
-            <Block className="tw-h-36 tw-relative tw-top-6 tw--left-0.5 tw-w-3 tw-bg-black dark:tw-bg-white tw-rounded-tr-3xl tw-rounded-br-3xl" />
+            <Block className="tw-h-36 tw-relative tw-top-6 tw--left-0.5 tw-w-3 tw-bg-black dark:tw-bg-white tw-rounded-tr-md tw-rounded-br-md" />
           </Block>
 
           {playedStrings && (
@@ -163,8 +163,8 @@ function useController({
   chordContainerRef: T_ReactRefObject<HTMLDivElement>;
 
   // handlers
-  handleDownloadAsImage: T_Function;
-  handleShowChordInput: T_Function;
+  handleDownloadAsImage: () => void;
+  handleShowChordInput: () => void;
 
   // vars
   data: T_ParsedChord;

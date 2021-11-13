@@ -32,6 +32,7 @@ module.exports = {
       },
       fontSize: {
         xxs: "0.5rem",
+        // test: "0rem", // useful to release a tailwind build process
       },
     },
   },

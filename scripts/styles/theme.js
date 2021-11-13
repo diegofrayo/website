@@ -2,21 +2,21 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 const COMMON_COLORS = {
   ["colorful-primary"]: {
-    value: defaultTheme.colors.yellow["500"],
+    value: {
+      light: defaultTheme.colors.yellow["500"],
+      dark: defaultTheme.colors.yellow["700"],
+    },
   },
   ["colorful-secondary"]: {
-    value: defaultTheme.colors.red["400"],
+    value: {
+      light: defaultTheme.colors.red["700"],
+      dark: defaultTheme.colors.red["400"],
+    },
   },
   ["color-strong"]: {
     value: {
       light: defaultTheme.colors.black,
       dark: defaultTheme.colors.white,
-    },
-  },
-  ["color-strong-inverted"]: {
-    value: {
-      light: defaultTheme.colors.white,
-      dark: defaultTheme.colors.black,
     },
   },
 };
@@ -82,14 +82,12 @@ const MY_THEME = {
     },
   },
 
-  get ["link-color-primary"]() {
-    return {
-      property: "color",
-      value: {
-        light: COMMON_COLORS["colorful-primary"].value,
-        dark: COMMON_COLORS["colorful-secondary"].value,
-      },
-    };
+  ["link-color-primary"]: {
+    property: "color",
+    value: {
+      light: COMMON_COLORS["colorful-primary"].value.light,
+      dark: COMMON_COLORS["colorful-secondary"].value.dark,
+    },
   },
 
   ...enhanceTheme(COMMON_COLORS, ["bg", "text", "border"]),

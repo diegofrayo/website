@@ -1,8 +1,6 @@
 import * as React from "react";
 
-import { T_Function } from "~/types";
-
-function useOnWindowResize(callback: T_Function): void {
+function useOnWindowResize(callback: () => void): void {
   const savedHandler = React.useRef(callback);
 
   React.useEffect(function updateCallbackRef() {

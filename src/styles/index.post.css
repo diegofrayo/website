@@ -29,8 +29,8 @@ body.scroll-disabled {
 /* --- Dark mode --- */
 
 .tw-dark body {
-  @apply value:dark:dfr-bg-color-layout;
-  @apply value:dark:dfr-text-color-primary;
+  @apply dark:v:dfr-bg-color-layout;
+  @apply dark:v:dfr-text-color-primary;
 }
 
 /* --- Toast --- */

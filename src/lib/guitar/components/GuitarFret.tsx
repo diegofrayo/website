@@ -54,7 +54,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
       )}
     >
       {!isStringsNamesVariant && (
-        <Block className="tw-flex tw-h-6 tw-font-bold tw-text-base" align="center">
+        <Block className="tw-flex tw-h-6 tw-font-bold tw-text-base" align="CENTER">
           {number}
         </Block>
       )}
@@ -126,7 +126,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                     <String />
                     <Block
                       className="tw-rounded-full tw-h-5 tw-w-5 tw-border tw-font-bold tw-bg-white tw-text-black tw-leading-0 tw-inline-flex"
-                      align="center"
+                      align="CENTER"
                     >
                       {(musicNote as I_SimpleMusicNote).finger}
                     </Block>

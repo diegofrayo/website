@@ -34,7 +34,7 @@ function SourceCode({
               {codeTitle}
             </code>
           )}
-          <InlineText className="tw-rounded-md tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-auto">
+          <InlineText className="tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-auto">
             {language}
           </InlineText>
         </Block>

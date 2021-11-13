@@ -121,7 +121,7 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
   const { t } = useTranslation();
 
   return (
-    <Block className="tw-flex-col sm:tw-flex-row" display="tw-flex" align="center">
+    <Block className="tw-flex-col sm:tw-flex-row" display="tw-flex" align="CENTER">
       <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
         <BlogPostDetailsItem.Icon
           icon={Icon.icon.CALENDAR}

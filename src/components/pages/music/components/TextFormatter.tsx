@@ -5,7 +5,7 @@ import reactStringReplace from "react-string-replace";
 import { Button, Icon, Modal, Space, Block, InlineText } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { GuitarChord, GuitarService, T_Chord } from "~/lib/guitar";
-import { T_Function, T_ReactElement, T_ReactChildrenProp } from "~/types";
+import { T_ReactElement, T_ReactChildrenProp } from "~/types";
 import { createArray, safeCastNumber } from "~/utils/misc";
 
 type T_TextFormatterProps = {
@@ -34,7 +34,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
       {parsedLyrics}
 
       <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
-        <Block className="tw-bg-white dark:dfr-bg-color-layout tw-p-4 tw-rounded-md tw-w-96 tw-mx-auto tw-max-w-full">
+        <Block className="light:vd:dfr-bg-color-strong dfr-border-color-strong tw-border-4 tw-p-4 tw-w-96 tw-mx-auto tw-max-w-full dark:dfr-bg-color-layout dark:dfr-border-color-strong">
           {Array.isArray(selectedChord) ? (
             <Block>
               {selectedChord.map((chord, index) => {
@@ -52,7 +52,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                 );
               })}
               <Space size={1} />
-              <Block display="tw-flex" align="center">
+              <Block display="tw-flex" align="CENTER">
                 <Button
                   variant={Button.variant.SIMPLE}
                   onClick={() => {
@@ -61,7 +61,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                 >
                   <Icon icon={Icon.icon.CHEVRON_LEFT} size={20} />
                 </Button>
-                <Block className="tw-flex-1" display="tw-flex" align="center">
+                <Block className="tw-flex-1" display="tw-flex" align="CENTER">
                   {createArray(selectedChord.length, 0).map((index) => {
                     return (
                       <InlineText
@@ -120,7 +120,7 @@ function useController({ children, insertions }: T_TextFormatterProps): {
   selectedChordIndex: number;
 
   handleUpdateSelectedChordIndex: (value: number) => void;
-  handleModalClose: T_Function;
+  handleModalClose: () => void;
 
   parsedLyrics: T_ReactChildrenProp;
 } {

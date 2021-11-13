@@ -24,11 +24,13 @@ export const PLAYGROUND_PAGES = [
     title: "películas y series",
     componentName: "Films",
   },
+  /*
   {
     slug: "songs",
     title: "songs",
     componentName: "Songs",
   },
+  */
   {
     slug: "strings",
     title: "strings",

@@ -13,7 +13,7 @@ import { getPageContentStaticProps, useTranslation } from "~/i18n";
 import { GuitarService } from "~/lib/guitar";
 import { dataLoader } from "~/server";
 import MusicService from "~/services/music";
-import { T_Function, T_ReactElement, T_Song } from "~/types";
+import { T_ReactElement, T_Song } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { MDXComponents, MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
@@ -174,8 +174,8 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
 function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps, "song"> & {
   fontSize: number;
   mdxContent: string;
-  increaseFontSize: T_Function;
-  decreaseFontSize: T_Function;
+  increaseFontSize: () => void;
+  decreaseFontSize: () => void;
   isMaxFontSize: boolean;
   isMinFontSize: boolean;
 } {

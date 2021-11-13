@@ -140,7 +140,7 @@ function Footer({
             <Image src={song.thumbnail} className="tw-h-20 tw-w-20 tw-object-cover" />
             <Block className="tw-flex-1 tw-min-w-0 tw-px-2">
               <Text
-                className="dfr-text-color-strong-inverted tw-font-bold tw-truncate tw-text-base"
+                className="light:vd:dfr-text-color-strong tw-font-bold tw-truncate tw-text-base"
                 title={song.title}
               >
                 {song.title}
@@ -171,13 +171,13 @@ function Footer({
             <FooterIcon url={WEBSITE_METADATA.social["500px"]} icon={Icon.icon["500PX"]} />
             <FooterIcon url={WEBSITE_METADATA.social.couchsurfing} icon={Icon.icon.COUCHSURFING} />
           </Block>
-          <InlineText className="dfr-text-color-strong-inverted tw-text-sm tw-leading-3 tw-mt-4 sm:tw-mt-0">
+          <InlineText className="light:vd:dfr-text-color-strong tw-text-sm tw-leading-3 tw-mt-4 sm:tw-mt-0">
             {WEBSITE_METADATA.shortName} | {new Date().getFullYear()}
           </InlineText>
         </Block>
         <Space size={4} className="dfr-border-color-primary tw-border-b tw-border-opacity-30" />
 
-        <Block className="tw-text-center tw-text-xs dfr-text-color-strong-inverted">
+        <Block className="tw-text-center tw-text-xs light:vd:dfr-text-color-strong">
           <InlineText is="strong">{t("layout:footer:resources_disclaimer")}:</InlineText>{" "}
           <Link
             variant={Link.variant.PRIMARY}
@@ -221,7 +221,7 @@ function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactEleme
       className="tw-inline-block tw-mr-2 last:tw-mr-0"
       external
     >
-      <Icon icon={icon} wrapperClassName="dfr-bg-color-strong-inverted tw-rounded-full tw-p-2" />
+      <Icon icon={icon} wrapperClassName="light:vd:dfr-bg-color-strong tw-rounded-full tw-p-2" />
     </Link>
   );
 }
@@ -252,7 +252,7 @@ function GoToTopButton(): T_ReactElement {
         setScrollPosition(0);
       }}
     >
-      <Icon icon={Icon.icon.ARROW_UP} color="dfr-text-color-strong-inverted" />
+      <Icon icon={Icon.icon.ARROW_UP} color="light:vd:dfr-text-color-strong" />
     </Button>
   );
 }

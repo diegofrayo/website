@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { T_HTMLElementAttributes, T_ReactElement } from "~/types";
+import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
 import Text from "./Text";
 
@@ -32,7 +32,7 @@ const Input = React.forwardRef(function Input(
         ref={ref as any}
         id={id}
         className={classNames(
-          "dfr-Input dfr-border-color-primary dark:dfr-border-color-primary tw-border tw-rounded-none tw-shadow-none tw-block tw-p-2 tw-w-full tw-resize-none",
+          "dfr-Input dfr-bg-color-primary dfr-border-color-primary tw-border tw-rounded-none tw-shadow-none tw-block tw-p-2 tw-w-full tw-resize-none dark:dfr-bg-color-primary dark:dfr-border-color-primary",
           className,
         )}
         {...rest}
@@ -41,14 +41,6 @@ const Input = React.forwardRef(function Input(
       <style jsx>{`
         .root:focus-within {
           border-color: transparent;
-        }
-
-        .root .dfr-Input {
-          @apply dfr-bg-color-primary;
-        }
-
-        :global(.tw-dark) .root .dfr-Input {
-          @apply value:dark:dfr-bg-color-primary;
         }
       `}</style>
     </label>

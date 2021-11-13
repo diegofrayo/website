@@ -47,9 +47,17 @@ function generateTailwindConfig(e) {
             },
           };
 
+      // classes to use with @apply directive
+      result[`.${e(`light:v:dfr-${key}`)}`] = enhancedValue.light;
+      result[`.${e(`dark:v:dfr-${key}`)}`] = enhancedValue.dark;
+
+      // classes to use inside className prop (light/dark standard)
       result[`.dfr-${key}`] = enhancedValue.light;
-      result[`.${e(`value:dark:dfr-${key}`)}`] = enhancedValue.dark;
       result[`.tw-dark .${e(`dark:dfr-${key}`)}`] = enhancedValue.dark;
+
+      // classes to use inside className prop (light/dark inverted)
+      result[`.${e(`light:vd:dfr-${key}`)}`] = enhancedValue.dark;
+      result[`.tw-dark .${e(`dark:vl:dfr-${key}`)}`] = enhancedValue.light;
     } else {
       result[`.dfr-${key}`] = config.property
         ? {

@@ -20,6 +20,11 @@ Inline.args = {
 
 export const Multiline = Story.bind({});
 Multiline.args = {
-  children: "I'm a [Multiline] Code",
+  children: `{
+  "hosting": {
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}ß`,
   variant: Code.variant.MULTILINE,
 };

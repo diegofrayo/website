@@ -49,7 +49,7 @@ function ChordsCreator(): T_ReactElement {
         </Block>
         <Space size={6} />
 
-        <Block className="tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-rounded-md tw-p-3">
+        <Block className="tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-p-3">
           <Title is="h2" className="tw-mb-4">
             Resultado
           </Title>

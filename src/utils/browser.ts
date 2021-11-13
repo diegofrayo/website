@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
 import { I18nService } from "~/i18n";
-import { T_Function, T_OnClickEvent } from "~/types";
+import { T_OnClickEvent } from "~/types";
 
 export function getScrollPosition(element?: HTMLElement | null): number {
   return element?.scrollTop || document.body.scrollTop || document.documentElement.scrollTop || 0;
@@ -18,8 +18,8 @@ export function scrollToElement(element: HTMLElement | null): void {
 }
 
 type T_OnScrollStoppedListenerParams = {
-  onScroll: T_Function;
-  onScrollStopped: T_Function;
+  onScroll: () => void;
+  onScrollStopped: () => void;
   timeout: number;
 };
 

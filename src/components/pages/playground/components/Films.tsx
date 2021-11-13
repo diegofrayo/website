@@ -150,7 +150,7 @@ function Films(): T_ReactElement {
                           />
                         </InlineText>
 
-                        <Block className="dfr-bg-color-strong-inverted tw-bg-opacity-70 tw-flex tw-self-end tw-flex-nowrap tw-justify-between tw-w-full tw-items-end tw-p-2">
+                        <Block className="light:vd:dfr-bg-color-strong tw-bg-opacity-70 tw-flex tw-self-end tw-flex-nowrap tw-justify-between tw-w-full tw-items-end tw-p-2">
                           {source === "imdb" ? (
                             <Image
                               src="/static/images/misc/imdb.png"

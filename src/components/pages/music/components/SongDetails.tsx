@@ -102,7 +102,7 @@ const Progress = withRequiredAuthComponent(function Progress({ progress }: { pro
           <InlineText
             key={`Progress-item-${index}`}
             className={classNames(
-              "tw-inline-block tw-rounded-sm tw-h-3 tw-w-3 tw-mr-0.5",
+              "tw-inline-block tw-h-3 tw-w-3 tw-mr-0.5",
               getProgressStyles(progress, index),
             )}
           />

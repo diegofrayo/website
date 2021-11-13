@@ -29,7 +29,7 @@ Article.args = {
   is: "article",
   children: "I'm a [article] and my content is centered",
   className: "tw-h-48 tw-w-48 tw-border",
-  align: "center",
+  align: "CENTER",
   display: "tw-flex",
 };
 

@@ -1,4 +1,13 @@
 import "../src/styles/index.post.css";
+import { StyleRegistry } from "styled-jsx";
+
+export const decorators = [
+  (Story) => (
+    <StyleRegistry>
+      <Story />
+    </StyleRegistry>
+  ),
+];
 
 export const parameters = {
   themes: {
