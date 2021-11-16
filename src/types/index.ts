@@ -52,6 +52,7 @@ export type T_PageRoute =
   | "/"
   // | "/about-me"
   | "/resume"
+  | "/bookmarks"
   | "/blog"
   | "/blog/[slug]"
   | "/music"

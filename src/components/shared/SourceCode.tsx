@@ -72,7 +72,7 @@ function SourceCode({
                 variant={Link.variant.SECONDARY}
                 href={sourceURL}
                 className="tw-text-right"
-                external
+                isExternalUrl
               >
                 <Icon icon={Icon.icon.GITHUB} withDarkModeBackground />
                 <InlineText className="tw-lowercase tw-ml-2 sm:tw-ml-1.5">

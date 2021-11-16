@@ -3,7 +3,7 @@ import classNames from "classnames";
 import NextLink from "next/link";
 
 import twcss from "~/lib/twcss";
-import { T_Locale, T_ReactElement, T_HTMLElementAttributes } from "~/types";
+import type { T_Locale, T_ReactElement, T_HTMLElementAttributes } from "~/types";
 import { mirror } from "~/utils/misc";
 
 type T_Variant = "UNSTYLED" | "SIMPLE" | "PRIMARY" | "SECONDARY";
@@ -14,19 +14,14 @@ const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "PRIMARY", "SECONDARY"]) as Recor
 
 type T_LinkProps = T_HTMLElementAttributes["a"] & {
   variant: T_Variant;
-  external?: boolean;
-  is?: "a" | typeof NextLink;
+  isExternalUrl?: boolean;
   locale?: T_Locale;
-  fontWeight?: string;
 };
 
 function Link(props: T_LinkProps): T_ReactElement {
   const {
-    // handlers
-    onClick,
-
     // utils
-    getExternalAttrs,
+    composeLinkAttributes,
 
     // props
     children,
@@ -34,8 +29,7 @@ function Link(props: T_LinkProps): T_ReactElement {
     href,
     className,
     is: Tag,
-    external,
-    fontWeight,
+    isExternalUrl,
     ...rest
   } = useController(props);
 
@@ -44,35 +38,27 @@ function Link(props: T_LinkProps): T_ReactElement {
     return null;
   }
 
-  if (Tag === NextLink) {
+  if (isExternalUrl) {
     return (
-      <Tag href={href} locale={rest.locale} passHref>
-        <LinkElement
-          className={classNames("dfr-Link", className)}
-          twcssVariant={variant}
-          fontWeight={fontWeight}
-          onClick={onClick}
-          {...rest}
-        >
-          {children}
-        </LinkElement>
-      </Tag>
+      <LinkElement
+        href={href}
+        className={classNames("dfr-Link", className)}
+        twcssVariant={variant}
+        is={Tag}
+        {...composeLinkAttributes()}
+        {...rest}
+      >
+        {children}
+      </LinkElement>
     );
   }
 
   return (
-    <LinkElement
-      href={href}
-      className={classNames("dfr-Link", className)}
-      twcssVariant={variant}
-      is={Tag}
-      fontWeight={fontWeight}
-      onClick={onClick}
-      {...getExternalAttrs(href, external)}
-      {...rest}
-    >
-      {children}
-    </LinkElement>
+    <Tag href={href} locale={rest.locale} passHref>
+      <LinkElement className={classNames("dfr-Link", className)} twcssVariant={variant} {...rest}>
+        {children}
+      </LinkElement>
+    </Tag>
   );
 }
 
@@ -86,30 +72,25 @@ function useController({
   children,
   href = "",
   className = "",
-  is,
-  external = false,
+  isExternalUrl = false,
   variant = VARIANTS.UNSTYLED,
-  onClick,
   ...rest
 }: T_LinkProps) {
-  function getExternalAttrs(href, external) {
-    if (external === false || href.startsWith("#")) return {};
+  function composeLinkAttributes() {
+    if (isExternalUrl === false || href.startsWith("#")) return {};
     return { target: "_blank", rel: "noreferrer" };
   }
 
   return {
-    // handlers
-    onClick,
-
     // utils
-    getExternalAttrs,
+    composeLinkAttributes,
 
     // props
     children,
     href,
     className,
-    is: external ? is : is || NextLink,
-    external,
+    is: isExternalUrl ? "a" : NextLink,
+    isExternalUrl,
     variant,
     ...rest,
   };

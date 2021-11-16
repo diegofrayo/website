@@ -8,7 +8,7 @@ import { PLAYGROUND_PAGES } from "~/utils/constants";
 import { ROUTES } from "~/utils/routing";
 
 function PlaygroundPage(): T_ReactElement {
-  const PAGE_TITLE = "playground";
+  const PAGE_TITLE = "Playground";
 
   return (
     <Page

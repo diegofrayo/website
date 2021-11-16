@@ -17,7 +17,7 @@ Unstyled.args = {
   variant: Link.variant.UNSTYLED,
   children: "Unstyled link (youtube)",
   href: "https://www.youtube.com",
-  external: true,
+  isExternalUrl: true,
 };
 
 export const Simple = Story.bind({});
@@ -25,7 +25,7 @@ Simple.args = {
   variant: Link.variant.SIMPLE,
   children: "Simple link (google)",
   href: "https://www.google.com",
-  external: true,
+  isExternalUrl: true,
 };
 
 export const Primary = Story.bind({});
@@ -33,7 +33,7 @@ Primary.args = {
   variant: Link.variant.PRIMARY,
   children: "Primary link (facebook)",
   href: "https://www.facebook.com",
-  external: true,
+  isExternalUrl: true,
 };
 
 export const Secondary = Story.bind({});
@@ -41,7 +41,7 @@ Secondary.args = {
   variant: Link.variant.SECONDARY,
   children: "Secondary link (twitter)",
   href: "https://www.twitter.com",
-  external: true,
+  isExternalUrl: true,
 };
 
 export const SecondaryWithFontWeight = Story.bind({});
@@ -49,7 +49,7 @@ Secondary.args = {
   variant: Link.variant.SECONDARY,
   children: "By default is bold, but I set font-thin",
   href: "https://www.twitter.com",
-  external: true,
+  isExternalUrl: true,
   fontWeight: "tw-font-thin",
 };
 

@@ -16,7 +16,7 @@ function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_ReactEleme
         variant={Link.variant.SIMPLE}
         className="dfr-bg-color-primary dfr-border-color-primary dark:dfr-border-color-primary dark:dfr-bg-color-primary tw-flex sm:tw-inline-flex tw-p-4 tw-rounded-md tw-items-center tw-relative tw-pr-8 tw-border"
         href={url}
-        external
+        isExternalUrl
       >
         <Icon icon={Icon.icon.GITHUB} wrapperClassName="tw-mr-3" size={32} withDarkModeBackground />
 

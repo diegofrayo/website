@@ -44,7 +44,7 @@ function WhatsApp(): T_ReactElement {
             isInvalidPhone && "tw-pointer-events-none tw-opacity-50",
           )}
           id="button"
-          external
+          isExternalUrl
         >
           <Icon icon={Icon.icon.WHATSAPP} size={48} />
         </Link>

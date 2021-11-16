@@ -111,7 +111,7 @@ function useController(): {
       e.currentTarget.focus();
       e.currentTarget.select();
     } catch (error) {
-      console.error("Error focussing a textarea");
+      console.error("Error focussing a input");
       console.error(error);
     }
   }

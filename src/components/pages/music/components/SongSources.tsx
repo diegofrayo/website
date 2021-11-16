@@ -30,7 +30,7 @@ function SongSources(props: T_SongSourcesProps): T_ReactElement {
                 variant={Link.variant.SIMPLE}
                 href={source.url}
                 className="tw-flex tw-items-center tw-py-0.5"
-                external
+                isExternalUrl
               >
                 <ImageComponent />
                 <Block className="tw-flex-1 tw-min-w-0">

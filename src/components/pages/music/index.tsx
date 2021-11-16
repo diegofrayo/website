@@ -56,13 +56,12 @@ function MusicPage(): T_ReactElement {
                   href={`${ROUTES.MUSIC}/${chordsPage.id}`}
                   locale={I18nService.getDefaultLocale()}
                 >
-                  <Emoji className="tw-mr-2">📓</Emoji>
+                  <Emoji className="tw-mr-2">⭐</Emoji>
                   <InlineText className="tw-underline">{t("page:chords_title")}</InlineText>
                 </Link>
                 <Space sizeTop={6} sizeBottom={16} variant={Space.variant.DASHED} />
 
                 <Title is="h2" variant={Title.variant.SECONDARY} size={Title.size.MD} className="">
-                  <Emoji className="tw-mr-2">🎶</Emoji>
                   <InlineText>
                     {t("page:songs_title")} [{songsList.length}]
                   </InlineText>

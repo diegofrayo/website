@@ -39,11 +39,11 @@ function SongDetails({
       <Progress progress={song.progress} />
       <Text className="tw-text-lg tw--mt-1">{song.country}</Text>
       <Block className="tw-flex tw-items-center tw--mt-0.5">
-        <Link variant={Link.variant.SIMPLE} href={song.spotifyUrl} external>
+        <Link variant={Link.variant.SIMPLE} href={song.spotifyUrl} isExternalUrl>
           <Icon icon={Icon.icon.SPOTIFY} size={24} />
         </Link>
         <Space size={1} orientation="v" />
-        <Link variant={Link.variant.SIMPLE} href={song.youtubeUrl} external>
+        <Link variant={Link.variant.SIMPLE} href={song.youtubeUrl} isExternalUrl>
           <Icon icon={Icon.icon.YOUTUBE} size={24} />
         </Link>
       </Block>

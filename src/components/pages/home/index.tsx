@@ -24,7 +24,7 @@ function Home({ mdxContent }: { mdxContent: string }): T_ReactElement {
       }}
     >
       <MainLayout title="👋">
-        <Block className="dfr-bg-color-primary dfr-border-color-primary dfr-shadow tw-border-8 tw-p-8 tw-text-center dark:dfr-border-color-primary dark:dfr-shadow dark:dfr-bg-color-primary">
+        <Block className="dfr-bg-color-primary dfr-border-color-primary dfr-shadow tw-border-8 tw-px-4 tw-py-8 tw-text-center sm:tw-px-8 sm:tw-py-16 dark:dfr-border-color-primary dark:dfr-shadow dark:dfr-bg-color-primary">
           <MDXContent content={mdxContentParsed} />
         </Block>
       </MainLayout>

@@ -14,7 +14,7 @@ function ImageWithLink({
   alt?: string;
 }): T_ReactElement {
   return (
-    <Link variant={Link.variant.SIMPLE} href={src} external>
+    <Link variant={Link.variant.SIMPLE} href={src} isExternalUrl>
       <Image src={src} alt={alt} className={className} {...rest} />
     </Link>
   );

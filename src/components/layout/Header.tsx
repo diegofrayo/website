@@ -111,6 +111,10 @@ function MainMenu(): T_ReactElement {
         setItems([
           ...createItems(),
           {
+            label: translator.t("layout:header:common:menu_item_bookmarks"),
+            url: ROUTES.BOOKMARKS,
+          },
+          {
             label: translator.t("layout:header:common:menu_item_playground"),
             url: ROUTES.PLAYGROUND,
             locale: I18nService.getDefaultLocale(),
@@ -293,7 +297,7 @@ const EnvironmentMenuItem = withRequiredAuthComponent(function EnvironmentMenuIt
 
   return (
     <MenuItem title={`Open in "${isDevelopmentEnvironment() ? "prod" : "dev"}"`}>
-      <Link variant={Link.variant.SIMPLE} href={url} external>
+      <Link variant={Link.variant.SIMPLE} href={url} isExternalUrl>
         <Icon icon={Icon.icon.EXTERNAL_LINK} />
       </Link>
     </MenuItem>
@@ -354,7 +358,6 @@ function PictureFrame(): T_ReactElement {
     ];
 
     setPhoto(PHOTOS[new Date().getDay()]);
-    setPhoto(PHOTOS[0]);
   });
 
   return (
@@ -377,7 +380,7 @@ function PictureFrame(): T_ReactElement {
               "image-container dfr-border-color-strong dfr-bg-color-strong dfr-shadow tw-block tw-border-4",
               photo?.portrait === true ? "tw-h-64" : "tw-h-36",
             )}
-            external
+            isExternalUrl
           >
             <Image
               src={photo.src}

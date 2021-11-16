@@ -19,14 +19,19 @@ function Sources({ sources }: { sources: { title: string; url: string }[] }): T_
 
           return (
             <List.Item key={generateSlug(source.title)}>
-              <Link variant={Link.variant.PRIMARY} href={source.url} className="tw-block" external>
+              <Link
+                variant={Link.variant.PRIMARY}
+                href={source.url}
+                className="tw-block"
+                isExternalUrl
+              >
                 {source.title}
               </Link>
               <Link
                 variant={Link.variant.SECONDARY}
                 href={origin}
                 className="tw-text-sm tw-italic"
-                external
+                isExternalUrl
               >
                 {host}
               </Link>

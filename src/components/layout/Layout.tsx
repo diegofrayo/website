@@ -104,14 +104,12 @@ function Footer({
     <Block is="footer" className="dfr-bg-color-strong tw-relative tw-pt-12 tw-pb-4">
       <Block className="dfr-max-w-layout tw-mx-auto tw-px-8">
         <Block className="tw-w-96 tw-max-w-full tw-mx-auto">
-          <Text className="dfr-text-colorful-primary tw-font-bold tw-text-xs tw-text-right">
-            on repeat...
-          </Text>
+          <Text className="dfr-text-colorful-primary tw-font-bold tw-text-xs">on repeat...</Text>
           <Link
             variant={Link.variant.SIMPLE}
             href={SONG.url}
             className="dfr-border-color-primary tw-border-opacity-30 tw-flex tw-items-centers tw-text-sm tw-border tw-p-1 tw-bg-gradient-to-r tw-from-gray-800 tw-to-gray-900 tw-relative"
-            external
+            isExternalUrl
           >
             <Image src={SONG.thumbnail} className="tw-h-20 tw-w-20 tw-object-cover" />
             <Block className="tw-flex-1 tw-min-w-0 tw-px-2">
@@ -159,7 +157,7 @@ function Footer({
             variant={Link.variant.PRIMARY}
             className="tw-break-normal"
             href="https://heroicons.com"
-            external
+            isExternalUrl
           >
             HeroIcons.com
           </Link>
@@ -168,7 +166,7 @@ function Footer({
             variant={Link.variant.PRIMARY}
             className="tw-break-normal"
             href="https://freeicons.io"
-            external
+            isExternalUrl
           >
             freeicons.io
           </Link>
@@ -177,7 +175,7 @@ function Footer({
             variant={Link.variant.PRIMARY}
             className="tw-break-normal"
             href="https://icons8.com/illustrations"
-            external
+            isExternalUrl
           >
             icons8.com
           </Link>
@@ -195,7 +193,7 @@ function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactEleme
       variant={Link.variant.SIMPLE}
       href={url}
       className="tw-inline-block tw-mr-2 last:tw-mr-0"
-      external
+      isExternalUrl
     >
       <Icon icon={icon} wrapperClassName="light:vd:dfr-bg-color-strong tw-rounded-full tw-p-2" />
     </Link>
