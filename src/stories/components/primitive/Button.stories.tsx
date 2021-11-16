@@ -5,7 +5,7 @@ import Button from "~/components/primitive/Button";
 const Story = (props) => <Button {...props} />;
 
 export default {
-  title: "Button",
+  title: "primitive/Button",
   component: Button,
   argTypes: {},
 };

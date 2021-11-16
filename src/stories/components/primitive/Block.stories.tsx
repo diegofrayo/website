@@ -5,7 +5,7 @@ import Block from "~/components/primitive/Block";
 const Story = (props) => <Block {...props} />;
 
 export default {
-  title: "Block",
+  title: "primitive/Block",
   component: Block,
   argTypes: {},
 };

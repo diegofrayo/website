@@ -5,7 +5,7 @@ import Collapsible from "~/components/primitive/Collapsible";
 const Story = (props) => <Collapsible {...props} />;
 
 export default {
-  title: "Collapsible",
+  title: "primitive/Collapsible",
   component: Collapsible,
   argTypes: {},
 };

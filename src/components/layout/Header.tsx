@@ -53,7 +53,7 @@ function Header(): T_ReactElement {
       </Block>
       <Block className="tw-text-center">
         <InlineText className="dfr-text-color-secondary tw-text-xxs dark:dfr-text-color-secondary">
-          {asPath.split("/").slice(0, 2).join("/")}
+          {asPath.split("?")[0].split("/").slice(0, 2).join("/")}
         </InlineText>
       </Block>
       <Space size={8} />
@@ -71,6 +71,12 @@ function Header(): T_ReactElement {
       >
         <Icon icon={Icon.icon.CHEVRON_DOUBLE_DOWN} size={32} />
       </Button>
+
+      <style jsx>{`
+        :global(#go-to-body-icon) {
+          scroll-margin-top: 20px;
+        }
+      `}</style>
     </Block>
   );
 }
@@ -348,17 +354,18 @@ function PictureFrame(): T_ReactElement {
     ];
 
     setPhoto(PHOTOS[new Date().getDay()]);
+    setPhoto(PHOTOS[0]);
   });
 
   return (
     <Block className="dfr-PictureFrame tw-w-48 tw-mx-auto">
-      <Block className="tw-flex tw-justify-center">
+      <Block className="tw-flex tw-justify-between">
+        <Icon icon={Icon.icon.FLOWER_1} size={16} wrapperClassName="tw-relative tw-top-1" />
         <Icon icon={Icon.icon.FLOWER_2} size={24} />
-        <Icon icon={Icon.icon.FLOWER_1} size={28} />
         <Icon icon={Icon.icon.FLOWER_3} size={32} />
         <Icon icon={Icon.icon.FLOWER_3} size={32} />
-        <Icon icon={Icon.icon.FLOWER_1} size={28} />
         <Icon icon={Icon.icon.FLOWER_2} size={24} />
+        <Icon icon={Icon.icon.FLOWER_1} size={16} wrapperClassName="tw-relative tw-top-1" />
       </Block>
 
       {photo && (
@@ -384,12 +391,6 @@ function PictureFrame(): T_ReactElement {
           </Block>
         </React.Fragment>
       )}
-
-      <style jsx>{`
-        :global(.dfr-PictureFrame) :global(.image-container) {
-          background-image: url("/static/images/textures/1.png");
-        }
-      `}</style>
     </Block>
   );
 }

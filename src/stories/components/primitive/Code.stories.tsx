@@ -5,7 +5,7 @@ import Code from "~/components/primitive/Code";
 const Story = (props) => <Code {...props} />;
 
 export default {
-  title: "Code",
+  title: "primitive/Code",
   component: Code,
   argTypes: {},
 };

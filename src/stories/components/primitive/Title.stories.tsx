@@ -5,7 +5,7 @@ import Title from "~/components/primitive/Title";
 const Story = (props) => <Title {...props} />;
 
 export default {
-  title: "Title",
+  title: "primitive/Title",
   component: Title,
   argTypes: {},
 };

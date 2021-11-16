@@ -5,7 +5,7 @@ import Link from "~/components/primitive/Link";
 const Story = (props) => <Link {...props} />;
 
 export default {
-  title: "Link",
+  title: "primitive/Link",
   component: Link,
   argTypes: {},
 };

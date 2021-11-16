@@ -5,7 +5,7 @@ import Icon from "~/components/primitive/Icon";
 const Story = (props) => <Icon {...props} />;
 
 export default {
-  title: "Icon",
+  title: "primitive/Icon",
   component: Icon,
   argTypes: {},
 };
