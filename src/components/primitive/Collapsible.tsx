@@ -40,8 +40,8 @@ export default Collapsible;
 type T_UseController = {
   children: T_CollapsibleProps["children"];
   title: string;
-  handleToggleClick: () => void;
   containerRef: T_ReactRefObject<HTMLDetailsElement>;
+  handleToggleClick: () => void;
 };
 
 function useController({
@@ -53,10 +53,10 @@ function useController({
   const containerRef = React.useRef<HTMLDetailsElement>(null);
 
   React.useEffect(
-    function toggleCollapse() {
+    function toggleCollapse(): void {
       if (!containerRef.current) return;
 
-      if (isCollapsed === true) {
+      if (isCollapsed) {
         containerRef.current.setAttribute("open", "");
       } else {
         containerRef.current.removeAttribute("open");
@@ -68,12 +68,12 @@ function useController({
   return {
     // props
     children,
-    title: title || isCollapsed ? "Hide" : "Show",
+    title: title ? title : isCollapsed ? "Hide" : "Show",
 
     // refs
     containerRef,
 
     // handlers
-    handleToggleClick: () => setIsCollapsed((cv) => !cv),
+    handleToggleClick: () => setIsCollapsed((currentValue) => !currentValue),
   };
 }

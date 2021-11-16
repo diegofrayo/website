@@ -33,7 +33,7 @@ class AnalyticsService {
       return true;
     }
 
-    return AuthService.isUserLoggedIn() === true || isDevelopmentEnvironment() === true;
+    return AuthService.isUserLoggedIn() || isDevelopmentEnvironment();
   }
 }
 

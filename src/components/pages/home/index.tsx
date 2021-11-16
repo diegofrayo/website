@@ -1,13 +1,18 @@
 import * as React from "react";
+import hydrate from "next-mdx-remote/hydrate";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Block } from "~/components/primitive";
+import { MDXContent } from "~/components/shared";
 import { useTranslation } from "~/i18n";
 import type { T_ReactElement } from "~/types";
+import { MDXComponents } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
 
-function Home(): T_ReactElement {
+function Home({ mdxContent }: { mdxContent: string }): T_ReactElement {
   const { t } = useTranslation();
+
+  const mdxContentParsed = hydrate(mdxContent, { components: MDXComponents });
 
   return (
     <Page
@@ -19,10 +24,9 @@ function Home(): T_ReactElement {
       }}
     >
       <MainLayout title="👋">
-        <Block
-          className="dfr-bg-color-primary dfr-border-color-primary dfr-shadow dark:dfr-border-color-primary dark:dfr-shadow dark:dfr-bg-color-primary tw-border-l-8 tw-border-b-8 tw-p-8 tw-text-xl"
-          dangerouslySetInnerHTML={{ __html: t("page:content") }}
-        />
+        <Block className="dfr-bg-color-primary dfr-border-color-primary dfr-shadow dark:dfr-border-color-primary dark:dfr-shadow dark:dfr-bg-color-primary tw-border-l-8 tw-border-b-8 tw-p-8 tw-text-xl">
+          <MDXContent content={mdxContentParsed} />
+        </Block>
       </MainLayout>
     </Page>
   );

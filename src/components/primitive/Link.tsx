@@ -40,7 +40,7 @@ function Link(props: T_LinkProps): T_ReactElement {
   } = useController(props);
 
   if (!href || !children) {
-    console.warn("Link component: href or children are falsy");
+    console.warn("Link component: href or children are falsy", { href, children });
     return null;
   }
 

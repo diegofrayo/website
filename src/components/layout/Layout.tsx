@@ -17,7 +17,7 @@ import { useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
 import { E_Icons, T_ReactChildrenProp, T_ReactElement, T_WebsiteMetadata } from "~/types";
-import { getScrollPosition, setScrollPosition } from "~/utils/browser";
+import { getScrollPosition, scrollToElement } from "~/utils/browser";
 
 import Header from "./Header";
 
@@ -34,13 +34,15 @@ function MainLayout({
 }: T_MainLayoutProps): T_ReactElement {
   const { pathname } = useRouter();
 
-  function getParentLevelURL() {
+  function getParentURL() {
     if (pathname === "/") return "";
 
     const urlParts = pathname.split("/");
 
     return urlParts.slice(0, urlParts.length - 1).join("/") + "/";
   }
+
+  const parentUrl = getParentURL();
 
   return (
     <Block is="main">
@@ -50,13 +52,15 @@ function MainLayout({
         <Block id="body" className="tw-pt-16 tw-pb-32">
           {title && (
             <Block className="tw-text-center">
-              <Link
-                variant={Link.variant.SIMPLE}
-                href={getParentLevelURL()}
-                className="dfr-text-color-strong dark:dfr-text-color-strong tw-block tw-underline tw-mb-4"
-              >
-                {getParentLevelURL()}
-              </Link>
+              {parentUrl && (
+                <Link
+                  variant={Link.variant.SIMPLE}
+                  href={parentUrl}
+                  className="dfr-text-color-strong dark:dfr-text-color-strong tw-block tw-underline tw-mb-4"
+                >
+                  {parentUrl}
+                </Link>
+              )}
               <Title
                 is="h1"
                 variant={Title.variant.UNSTYLED}
@@ -87,42 +91,14 @@ function Footer({
   const { t } = useTranslation();
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
-  const SONGS = [
-    {
-      title: "Un Pacto",
-      artist: "Cóndor Sbarbati",
-      duration: "4:30",
-      thumbnail: "http://i3.ytimg.com/vi/WNebXvrqGDE/maxresdefault.jpg",
-      source: "youtube",
-      url: "https://youtu.be/WNebXvrqGDE",
-    },
-    {
-      title: "Rock para el Negro Atila",
-      artist: "Patricio Rey y sus Redonditos de Ricota",
-      duration: "4:00",
-      thumbnail: "https://i.scdn.co/image/ab67616d0000b273074392d2ae6b119d67289def",
-      source: "spotify",
-      url: "https://open.spotify.com/track/1JQOUueUnq9xoUcI1MiVVy",
-    },
-    {
-      title: "Maelström",
-      artist: "Fito Paez",
-      duration: "3:55",
-      thumbnail: "https://i.scdn.co/image/ab67616d0000b273a4091bb6f7f03ec978187d99",
-      source: "spotify",
-      url: "https://open.spotify.com/track/5JyeXhwxBQFEne4FxPbCxN",
-    },
-    {
-      title: "El Tesoro de los Inocentes - En Vivo",
-      artist: "Los Fundamentalistas del Aire Acondicionado",
-      duration: "4:27",
-      thumbnail: "https://i.scdn.co/image/ab67616d0000b273307b05f5ed296e41556409d0",
-      source: "spotify",
-      url: "https://open.spotify.com/track/0sdNMSjuAUuMQF4T2xhQ2Q",
-    },
-  ];
-
-  const song = SONGS[3];
+  const SONG = {
+    title: "Desarma y Sangra",
+    artist: "Pedro Aznar",
+    duration: "3:49",
+    thumbnail: "http://i3.ytimg.com/vi/tO9p1ycgkgQ/hqdefault.jpg",
+    source: "youtube",
+    url: "https://youtu.be/tO9p1ycgkgQ",
+  };
 
   return (
     <Block is="footer" className="dfr-bg-color-strong tw-relative tw-pt-12 tw-pb-4">
@@ -133,29 +109,29 @@ function Footer({
           </Text>
           <Link
             variant={Link.variant.SIMPLE}
-            href={song.url}
+            href={SONG.url}
             className="dfr-border-color-primary tw-border-opacity-30 tw-flex tw-items-centers tw-text-sm tw-border tw-p-1 tw-bg-gradient-to-r tw-from-gray-800 tw-to-gray-900 tw-relative"
             external
           >
-            <Image src={song.thumbnail} className="tw-h-20 tw-w-20 tw-object-cover" />
+            <Image src={SONG.thumbnail} className="tw-h-20 tw-w-20 tw-object-cover" />
             <Block className="tw-flex-1 tw-min-w-0 tw-px-2">
               <Text
                 className="light:vd:dfr-text-color-strong tw-font-bold tw-truncate tw-text-base"
-                title={song.title}
+                title={SONG.title}
               >
-                {song.title}
+                {SONG.title}
               </Text>
               <Text
                 className="dfr-text-color-secondary tw-font-bold tw-truncate tw-text-sm"
-                title={song.artist}
+                title={SONG.artist}
               >
-                {song.artist}
+                {SONG.artist}
               </Text>
-              <Text className="dfr-text-color-secondary tw-italic tw-text-xs">{song.duration}</Text>
+              <Text className="dfr-text-color-secondary tw-italic tw-text-xs">{SONG.duration}</Text>
             </Block>
             <Icon
               wrapperClassName="tw-absolute tw-right-1 tw-bottom-1"
-              icon={song.source === "youtube" ? Icon.icon.YOUTUBE : Icon.icon.SPOTIFY}
+              icon={SONG.source === "youtube" ? Icon.icon.YOUTUBE : Icon.icon.SPOTIFY}
               size={20}
             />
           </Link>
@@ -249,7 +225,7 @@ function GoToTopButton(): T_ReactElement {
       variant={Button.variant.SIMPLE}
       className="dfr-bg-color-strong tw-bg-opacity-70 tw-fixed tw-text-2xl tw-bottom-3 tw-right-3 tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center sm:tw-right-4 sm:tw-bottom-4"
       onClick={() => {
-        setScrollPosition(0);
+        scrollToElement(document.getElementById("go-to-body-icon"));
       }}
     >
       <Icon icon={Icon.icon.ARROW_UP} color="light:vd:dfr-text-color-strong" />

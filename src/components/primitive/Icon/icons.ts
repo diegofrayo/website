@@ -73,6 +73,30 @@ export const ICONS: Record<E_Icons, T_Icon> = {
       alt: "Email",
     },
   },
+  FLOWER_1: {
+    isLibraryIcon: false,
+    icon: "/static/images/icons/flower-1.svg",
+    props: {
+      className: "",
+      alt: "Flower 1",
+    },
+  },
+  FLOWER_2: {
+    isLibraryIcon: false,
+    icon: "/static/images/icons/flower-2.svg",
+    props: {
+      className: "",
+      alt: "Flower 1",
+    },
+  },
+  FLOWER_3: {
+    isLibraryIcon: false,
+    icon: "/static/images/icons/flower-3.svg",
+    props: {
+      className: "",
+      alt: "Flower 1",
+    },
+  },
   INSTAGRAM: {
     isLibraryIcon: false,
     icon: "/static/images/icons/instagram.svg",

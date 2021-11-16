@@ -3,7 +3,17 @@ import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 
-import { Block, Button, Icon, Image, Link, List, Space, Text } from "~/components/primitive";
+import {
+  Block,
+  Button,
+  Icon,
+  Image,
+  InlineText,
+  Link,
+  List,
+  Space,
+  Text,
+} from "~/components/primitive";
 import { AuthService } from "~/auth";
 import { withRequiredAuthComponent, withSafeRenderingComponent } from "~/hocs";
 import { useClickOutside, useDidMount, useEnhacedState } from "~/hooks";
@@ -25,6 +35,7 @@ import { ROUTES } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
 
 function Header(): T_ReactElement {
+  const { asPath } = useRouter();
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
@@ -40,6 +51,11 @@ function Header(): T_ReactElement {
         </Link>
         <SettingsMenu />
       </Block>
+      <Block className="tw-text-center">
+        <InlineText className="dfr-text-color-secondary tw-text-xxs dark:dfr-text-color-secondary">
+          {asPath.split("/").slice(0, 2).join("/")}
+        </InlineText>
+      </Block>
       <Space size={8} />
 
       <PictureFrame />
@@ -48,6 +64,7 @@ function Header(): T_ReactElement {
       <Button
         variant={Button.variant.SIMPLE}
         className="tw-mx-auto tw-block"
+        id="go-to-body-icon"
         onClick={() => {
           scrollToElement(document.getElementById("body"));
         }}
@@ -269,7 +286,7 @@ const EnvironmentMenuItem = withRequiredAuthComponent(function EnvironmentMenuIt
   });
 
   return (
-    <MenuItem title="Environment">
+    <MenuItem title={`Open in "${isDevelopmentEnvironment() ? "prod" : "dev"}"`}>
       <Link variant={Link.variant.SIMPLE} href={url} external>
         <Icon icon={Icon.icon.EXTERNAL_LINK} />
       </Link>
@@ -335,12 +352,13 @@ function PictureFrame(): T_ReactElement {
 
   return (
     <Block className="dfr-PictureFrame tw-w-48 tw-mx-auto">
-      <Block className="dfr-bg-color-strong tw-text-center tw-h-5">
-        <Icon
-          icon={Icon.icon.CAMERA}
-          color="light:vd:dfr-text-color-strong"
-          wrapperClassName="tw-relative tw--top-1px"
-        />
+      <Block className="tw-flex tw-justify-center">
+        <Icon icon={Icon.icon.FLOWER_2} size={24} />
+        <Icon icon={Icon.icon.FLOWER_1} size={28} />
+        <Icon icon={Icon.icon.FLOWER_3} size={32} />
+        <Icon icon={Icon.icon.FLOWER_3} size={32} />
+        <Icon icon={Icon.icon.FLOWER_1} size={28} />
+        <Icon icon={Icon.icon.FLOWER_2} size={24} />
       </Block>
 
       {photo && (
@@ -349,7 +367,7 @@ function PictureFrame(): T_ReactElement {
             variant={Link.variant.UNSTYLED}
             href={photo.src}
             className={classNames(
-              "image-container dfr-border-color-strong dfr-bg-color-strong tw-block tw-border-4",
+              "image-container dfr-border-color-strong dfr-bg-color-strong dfr-shadow tw-block tw-border-4",
               photo?.portrait === true ? "tw-h-64" : "tw-h-36",
             )}
             external

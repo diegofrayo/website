@@ -1,8 +1,9 @@
 export const PLAYGROUND_PAGES = [
+  // tools
   {
-    slug: "chords-creator",
-    title: "acordes",
-    componentName: "ChordsCreator",
+    slug: "whatsapp",
+    title: "whatsapp",
+    componentName: "WhatsApp",
   },
   {
     slug: "dencrypt",
@@ -15,31 +16,21 @@ export const PLAYGROUND_PAGES = [
     componentName: "Styles",
   },
   {
-    slug: "books",
-    title: "libros",
-    componentName: "Books",
+    slug: "chords-creator",
+    title: "acordes",
+    componentName: "ChordsCreator",
   },
+
+  // personal
   {
     slug: "films",
     title: "películas y series",
     componentName: "Films",
   },
-  /*
   {
     slug: "songs",
     title: "songs",
     componentName: "Songs",
-  },
-  */
-  {
-    slug: "strings",
-    title: "strings",
-    componentName: "Strings",
-  },
-  {
-    slug: "texts",
-    title: "texts",
-    componentName: "Texts",
   },
   {
     slug: "timeline",
@@ -47,8 +38,8 @@ export const PLAYGROUND_PAGES = [
     componentName: "TimeLine",
   },
   {
-    slug: "whatsapp",
-    title: "whatsapp",
-    componentName: "WhatsApp",
+    slug: "books",
+    title: "libros",
+    componentName: "Books",
   },
 ];

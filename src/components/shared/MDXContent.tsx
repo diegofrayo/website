@@ -30,6 +30,10 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
           @apply tw-mb-6;
         }
 
+        :global(.dfr-MDXContent--default) > :global(*):last-child {
+          @apply tw-mb-0;
+        }
+
         /* Spacing: nested components */
         :global(.dfr-MDXContent--default) :global(li) > :global(p),
         :global(.dfr-MDXContent--default) :global(li) > :global(pre),
@@ -70,6 +74,7 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
         :global(.dfr-MDXContent--default) :global(li) > :global(a) > :global(img) {
           margin-left: auto;
           margin-right: auto;
+          @apply tw-rounded-md;
         }
       `}</style>
     </Block>

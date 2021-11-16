@@ -29,11 +29,7 @@ function SourceCode({
     <Block className="dfr-SourceCode" data-markdown-block>
       {!showOnlySourceCode && (
         <Block className="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono tw-rounded-t-md tw-border dfr-border-color-primary tw-border-b-0 dark:tw-border-0 dark:tw-bg-gray-700">
-          {codeTitle && (
-            <code className="tw-w-full sm:tw-w-auto tw-font-bold tw-mb-2 sm:tw-mb-0 sm:tw-mr-4">
-              {codeTitle}
-            </code>
-          )}
+          {codeTitle && <code className="tw-font-bold tw-mr-4 tw-flex-1">{codeTitle}</code>}
           <InlineText className="tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-auto">
             {language}
           </InlineText>
@@ -79,7 +75,7 @@ function SourceCode({
                 external
               >
                 <Icon icon={Icon.icon.GITHUB} withDarkModeBackground />
-                <InlineText className="tw-lowercase tw-ml-1.5">
+                <InlineText className="tw-lowercase tw-ml-2 sm:tw-ml-1.5">
                   {t("page:see_source_code")}
                 </InlineText>
               </Link>
@@ -100,6 +96,7 @@ function SourceCode({
       <style jsx>{`
         :global(.dfr-SourceCode) :global(.dfr-Code) {
           border-radius: 0;
+          box-shadow: none;
         }
       `}</style>
     </Block>

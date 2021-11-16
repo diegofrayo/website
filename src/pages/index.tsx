@@ -1,13 +1,9 @@
-import * as React from "react";
+import renderToString from "next-mdx-remote/render-to-string";
 
-import Home from "~/components/pages/home";
+import HomePage from "~/components/pages/home";
 import { getPageContentStaticProps } from "~/i18n";
-import type { T_ReactElement } from "~/types";
+import { MDXComponents } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
-
-function HomePage(): T_ReactElement {
-  return <Home />;
-}
 
 export default HomePage;
 
@@ -15,4 +11,13 @@ export default HomePage;
 
 export const getStaticProps = getPageContentStaticProps({
   page: ROUTES.HOME,
+  callback: async ({ pageContent }) => {
+    return {
+      props: {
+        mdxContent: (await renderToString(pageContent?.page?.content, {
+          components: MDXComponents,
+        })) as string,
+      },
+    };
+  },
 });

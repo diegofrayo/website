@@ -1,15 +1,8 @@
-import * as React from "react";
-
 import { ErrorPage } from "~/components/shared";
 import { getPageContentStaticProps } from "~/i18n";
-import { T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
 
-function Page404(): T_ReactElement {
-  return <ErrorPage />;
-}
-
-export default Page404;
+export default ErrorPage;
 
 // --- Next.js functions ---
 

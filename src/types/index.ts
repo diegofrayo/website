@@ -207,6 +207,9 @@ export type T_CodeProps = {
 export enum E_Icons {
   "500PX" = "500PX",
   "COUCHSURFING" = "COUCHSURFING",
+  "FLOWER_1" = "FLOWER_1",
+  "FLOWER_2" = "FLOWER_2",
+  "FLOWER_3" = "FLOWER_3",
   "GITHUB" = "GITHUB",
   "GMAIL" = "GMAIL",
   "INSTAGRAM" = "INSTAGRAM",

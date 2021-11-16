@@ -171,7 +171,7 @@ function AnalyticsDisabledFlag() {
   const [isAnalyticsEnabled, setIsAnalyticsEnabled] = React.useState(false);
 
   useDidMount(() => {
-    setIsAnalyticsEnabled(AnalyticsService.isAnalyticsDisabled() === false);
+    setIsAnalyticsEnabled(!AnalyticsService.isAnalyticsDisabled());
   });
 
   if (isAnalyticsEnabled) return null;
