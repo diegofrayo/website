@@ -37,9 +37,7 @@ export default Collapsible;
 
 // --- Controller ---
 
-type T_UseController = {
-  children: T_CollapsibleProps["children"];
-  title: string;
+type T_UseController = Pick<T_CollapsibleProps, "children" | "title"> & {
   containerRef: T_ReactRefObject<HTMLDetailsElement>;
   handleToggleClick: () => void;
 };

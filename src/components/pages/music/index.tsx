@@ -81,7 +81,7 @@ function MusicPage(): T_ReactElement {
                 <Block className="tw-flex tw-flex-wrap tw-justify-between">
                   {songsList.map((song) => {
                     return (
-                      <Block key={song.id} className="tw-w-full sm:tw-w-5/12 tw-mb-3">
+                      <Block key={song.id} className="tw-w-full tw-mb-4 sm:tw-w-5/12">
                         <Link
                           variant={Link.variant.SECONDARY}
                           href={`${ROUTES.MUSIC}/${song.id}`}

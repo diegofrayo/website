@@ -7,6 +7,7 @@ import type { T_Locale, T_ReactElement, T_HTMLElementAttributes } from "~/types"
 import { mirror } from "~/utils/misc";
 
 type T_Variant = "UNSTYLED" | "SIMPLE" | "PRIMARY" | "SECONDARY";
+// TODO: TS: Use "generics" instead of "as" to type this var
 const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "PRIMARY", "SECONDARY"]) as Record<
   T_Variant,
   T_Variant
@@ -28,7 +29,6 @@ function Link(props: T_LinkProps): T_ReactElement {
     variant,
     href,
     className,
-    is: Tag,
     isExternalUrl,
     ...rest
   } = useController(props);
@@ -44,7 +44,6 @@ function Link(props: T_LinkProps): T_ReactElement {
         href={href}
         className={classNames("dfr-Link", className)}
         twcssVariant={variant}
-        is={Tag}
         {...composeLinkAttributes()}
         {...rest}
       >
@@ -54,11 +53,11 @@ function Link(props: T_LinkProps): T_ReactElement {
   }
 
   return (
-    <Tag href={href} locale={rest.locale} passHref>
+    <NextLink href={href} locale={rest.locale} passHref>
       <LinkElement className={classNames("dfr-Link", className)} twcssVariant={variant} {...rest}>
         {children}
       </LinkElement>
-    </Tag>
+    </NextLink>
   );
 }
 
@@ -68,14 +67,15 @@ export default Link;
 
 // --- Controller ---
 
+type T_UseController = T_LinkProps & {
+  composeLinkAttributes: () => void; // TODO: TS: Type this function
+};
+
 function useController({
-  children,
   href = "",
-  className = "",
   isExternalUrl = false,
-  variant = VARIANTS.UNSTYLED,
   ...rest
-}: T_LinkProps) {
+}: T_LinkProps): T_UseController {
   function composeLinkAttributes() {
     if (isExternalUrl === false || href.startsWith("#")) return {};
     return { target: "_blank", rel: "noreferrer" };
@@ -86,12 +86,8 @@ function useController({
     composeLinkAttributes,
 
     // props
-    children,
     href,
-    className,
-    is: isExternalUrl ? "a" : NextLink,
     isExternalUrl,
-    variant,
     ...rest,
   };
 }
@@ -104,8 +100,6 @@ const LinkElement = twcss.a({
   SIMPLE: "dfr-transition-opacity",
   PRIMARY:
     "dfr-transition-opacity dfr-link-color-primary dark:dfr-link-color-primary tw-font-bold tw-underline",
-  SECONDARY: (props) =>
-    `dfr-transition-opacity dfr-text-color-strong dark:dfr-text-color-strong ${
-      props.fontWeight || "tw-font-bold"
-    }`,
+  SECONDARY: () =>
+    "dfr-transition-opacity dfr-text-color-strong tw-font-bold dark:dfr-text-color-strong",
 });
