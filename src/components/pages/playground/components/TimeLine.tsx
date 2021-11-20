@@ -154,7 +154,7 @@ function useController(): {
       MONTHS[Number(startDateItems[1]) - 1]
     }`;
 
-    if (endDate) {
+    if (endDate && startDate !== endDate) {
       const endDateItems = endDate.split("/");
       const haveStartAndEndDateDifferentYear = startDateItems[0] !== endDateItems[0];
 

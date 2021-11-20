@@ -214,6 +214,7 @@ export enum E_Icons {
   "FLOWER_3" = "FLOWER_3",
   "GITHUB" = "GITHUB",
   "GMAIL" = "GMAIL",
+  "GUITAR" = "GUITAR",
   "INSTAGRAM" = "INSTAGRAM",
   "LINKEDIN" = "LINKEDIN",
   "NETFLIX" = "NETFLIX",

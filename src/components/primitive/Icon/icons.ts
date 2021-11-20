@@ -73,6 +73,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
       alt: "Email",
     },
   },
+  GUITAR: {
+    isLibraryIcon: false,
+    icon: "/static/images/icons/guitar.svg",
+    props: {
+      className: "",
+      alt: "Guitar",
+    },
+  },
   FLOWER_1: {
     isLibraryIcon: false,
     icon: "/static/images/icons/flower-1.svg",

@@ -1,27 +1,15 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 
-import {
-  Block,
-  Button,
-  Icon,
-  Image,
-  InlineText,
-  Link,
-  Space,
-  Text,
-  Title,
-} from "~/components/primitive";
-import { useDidMount, useOnWindowStopScroll } from "~/hooks";
+import { Block, Button, Icon, InlineText, Link, Space, Title } from "~/components/primitive";
+import { useOnWindowStopScroll } from "~/hooks";
 import { useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
 import { E_Icons, T_ReactChildrenProp, T_ReactElement, T_WebsiteMetadata } from "~/types";
 import { getScrollPosition, scrollToElement } from "~/utils/browser";
-import { createArray } from "~/utils/misc";
 
 import Header from "./Header";
-import classNames from "classnames";
 
 type T_MainLayoutProps = {
   title: string;
@@ -94,11 +82,8 @@ function Footer({
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
-    <Block is="footer" className="dfr-bg-color-strong tw-relative tw-pt-12 tw-pb-4">
+    <Block is="footer" className="dfr-bg-color-strong tw-relative tw-pt-36 tw-pb-4">
       <Block className="dfr-max-w-layout tw-mx-auto tw-px-8">
-        <TV />
-        <Space size={16} />
-
         <Block className="tw-flex tw-flex-col tw-justify-center tw-items-center sm:tw-flex-row sm:tw-justify-between sm:tw-items-end">
           <Block>
             <FooterIcon url={`mailto:${WEBSITE_METADATA.email}`} icon={Icon.icon.GMAIL} />
@@ -146,117 +131,6 @@ function Footer({
       </Block>
 
       {showGoToTopButton && <GoToTopButton />}
-    </Block>
-  );
-}
-
-function TV() {
-  const [showInfo, setShowInfo] = React.useState(false);
-  const LS_KEY = "DFR_TV";
-
-  useDidMount(() => {
-    setShowInfo(window.localStorage.getItem(LS_KEY) === "true");
-  });
-
-  React.useEffect(
-    function updateConfigOnLocalStorage() {
-      window.localStorage.setItem(LS_KEY, String(showInfo));
-    },
-    [showInfo],
-  );
-
-  const SONG = {
-    title: "Desarma y Sangra",
-    artist: "Pedro Aznar",
-    duration: "3:49",
-    thumbnail: "http://i3.ytimg.com/vi/tO9p1ycgkgQ/hqdefault.jpg",
-    source: "youtube",
-    url: "https://youtu.be/tO9p1ycgkgQ",
-  };
-
-  return (
-    <Block className="dfr-TV tw-flex tw-items-stretch tw-p-2 tw-bg-gradient-to-r tw-from-gray-800 tw-to-gray-900 tw-w-48 tw-max-w-full tw-mx-auto tw-relative">
-      {showInfo ? (
-        <Block className="tw-relative">
-          <Image
-            src={SONG.thumbnail}
-            className="tw-h-36 tw-w-36 tw-block tw-object-cover tw-rounded-md"
-          />
-          <Text
-            className="dfr-bg-color-strong tw-font-bold tw-truncate tw-absolute tw-w-full tw-px-1 tw-left-0 tw-text-center tw-pt-0.5 tw-h-4 tw-transition-opacity tw-duration-500 tw-opacity-0d light:vd:dfr-text-color-strong tw-text-xs tw-top-0"
-            title={SONG.title}
-          >
-            {SONG.title}
-          </Text>
-          <Text
-            className="dfr-bg-color-strong tw-font-bold tw-truncate tw-absolute tw-w-full tw-px-1 tw-left-0 tw-text-center tw-pt-0.5 tw-h-4 tw-transition-opacity tw-duration-500 tw-opacity-0d dfr-text-color-secondary tw-text-xxs tw-bottom-0"
-            title={SONG.artist}
-          >
-            {SONG.artist}
-          </Text>
-        </Block>
-      ) : (
-        <Block className="dfr-bg-color-strong tw-h-36 tw-w-36 tw-block tw-rounded-md" />
-      )}
-      <Space size={1} orientation="v" />
-
-      <Block className="tw-flex tw-flex-col tw-justify-between tw-items-center tw-flex-1 tw-relative tw-pt-2">
-        <Block className="tw-w-full tw-text-center">
-          {createArray(8).map((i) => {
-            return <Block key={`Volume-${i}`} className="tw-border tw-border-gray-700 tw-my-1" />;
-          })}
-          <Space size={0.5} />
-          <Button
-            className="tw-rounded-full tw-h-5 tw-w-5 tw-border-2 tw-border-gray-600 tw-bg-gray-700 tw-mx-auto tw-overflow-hidden"
-            onClick={() => setShowInfo((currentValue) => !currentValue)}
-          >
-            <Block
-              className={classNames(
-                "tw-w-0.5 tw-h-2 tw-mx-auto tw-transform tw-transition-transform tw-bg-gray-600 tw-relative",
-                showInfo ? "tw-rotate-90 tw--right-1" : "tw--top-1",
-              )}
-            />
-          </Button>
-        </Block>
-
-        <Link
-          variant={Link.variant.SIMPLE}
-          href={SONG.url}
-          className={classNames(
-            "tw-block tw-justify-self-end",
-            showInfo ? "tw-visible" : "tw-invisible",
-          )}
-          isExternalUrl
-        >
-          <Icon
-            icon={SONG.source === "youtube" ? Icon.icon.YOUTUBE : Icon.icon.SPOTIFY}
-            size={16}
-          />
-        </Link>
-      </Block>
-
-      <style jsx>{`
-        :global(.dfr-TV)::before,
-        :global(.dfr-TV)::after {
-          @apply tw-bg-gradient-to-b;
-          @apply tw-from-gray-800;
-          @apply tw-to-gray-900;
-          content: " ";
-          display: block;
-          height: 16px;
-          position: absolute;
-          top: 100%;
-          width: 16px;
-        }
-
-        :global(.dfr-TV)::before {
-          left: 25%;
-        }
-
-        :global(.dfr-TV)::after {
-          right: 25%;
-        }
-      `}</style>
     </Block>
   );
 }
