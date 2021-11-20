@@ -23,6 +23,11 @@ module.exports = {
       // => @media (min-width: 768px) { ... }
     },
     extend: {
+      extend: {
+        zIndex: {
+          "-1": "-1",
+        },
+      },
       lineHeight: {
         0: "0",
       },

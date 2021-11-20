@@ -329,9 +329,12 @@ function MenuItem({
 
 function Room(): T_ReactElement {
   return (
-    <Block className="dfr-Room dfr-border-color-strong tw-mx-auto tw-w-40 tw-max-w-full tw-border-b tw-px-1 dark:dfr-border-color-strong">
+    <Block className="dfr-Room dfr-border-color-strong tw-mx-auto tw-w-44 tw-max-w-full tw-border-b tw-px-1 dark:dfr-border-color-primary">
       <PictureFrame />
-      <TV />
+      <Block className="tw-flex tw-justify-between tw-items-end">
+        <TV />
+        <Flowers />
+      </Block>
       <Table />
     </Block>
   );
@@ -356,30 +359,30 @@ function PictureFrame() {
   return (
     <Block
       className={classNames(
-        "dfr-PictureFrame tw-mb-8 tw-mx-auto tw-relative",
+        "dfr-PictureFrame tw-mb-8 tw-mx-auto tw-relative tw-transition-transform tw-duration-500 tw-transform tw-rotate-2 hover:tw-rotate-0",
         photo.portrait === true ? "tw-w-20" : "tw-w-32",
       )}
     >
-      <Block className="tw-p-0.5" style={{ backgroundColor: "#AC6B3C" }}>
-        <Block className="tw-p-1" style={{ backgroundColor: "#70361A" }}>
-          <Link
-            variant={Link.variant.UNSTYLED}
-            href={photo.src}
-            className={classNames(
-              "tw-block tw-border-2 tw-rounded-md tw-overflow-hidden",
-              photo.portrait === true ? "tw-h-24" : "tw-h-20",
-            )}
-            style={{ borderColor: "#AC6B3C" }}
-            isExternalUrl
-          >
-            <Image
-              src={photo.src}
-              className="tw-h-full tw-w-full"
-              alt="Photography taken by Diego Rayo"
-            />
-          </Link>
-        </Block>
+      <Block className="tw-p-1 tw-bg-yellow-900 tw-border-2 tw-border-yellow-700">
+        <Link
+          variant={Link.variant.UNSTYLED}
+          href={photo.src}
+          className={classNames(
+            "tw-block tw-border-2 tw-rounded-md tw-overflow-hidden tw-border-yellow-700",
+            photo.portrait === true ? "tw-h-24" : "tw-h-20",
+          )}
+          isExternalUrl
+        >
+          <Image
+            src={photo.src}
+            className="dfr-transition-opacity tw-h-full tw-w-full"
+            alt="Photography taken by Diego Rayo"
+          />
+        </Link>
       </Block>
+      <Text className="dfr-text-color-strong tw-text-xxs tw-italic tw-font-bold tw-text-center tw-border-yellow-700 tw-border-2 tw-border-t-0 tw-w-16 tw-mx-auto tw-rounded-bl-md tw-rounded-br-md dark:dfr-text-color-strong">
+        welcome
+      </Text>
 
       <style jsx>{`
         :global(.dfr-PictureFrame)::before,
@@ -430,77 +433,67 @@ function TV() {
   );
 
   const SONG = {
-    title: "Un Pacto",
-    artist: "Cóndor Sbarbati",
-    duration: "4:30",
-    thumbnail: "http://i3.ytimg.com/vi/WNebXvrqGDE/maxresdefault.jpg",
+    title: "Toco y Me Voy (En Estado Acústico)",
+    artist: "Nahuel Pennisi",
+    duration: "4:27",
+    thumbnail: "http://i3.ytimg.com/vi/WETqSfvkZB8/hqdefault.jpg",
     source: "youtube",
-    url: "https://youtu.be/WNebXvrqGDE",
+    url: "https://youtu.be/WETqSfvkZB8",
   };
 
   return (
-    <Block className="dfr-TV tw-flex tw-items-stretch tw-p-2 tw-bg-gradient-to-b tw-from-gray-800 tw-to-black tw-w-28 tw-max-w-full tw-mx-auto tw-relative tw-mb-2 dark:tw-from-white dark:tw-to-gray-300">
-      {showInfo ? (
-        <Block className="tw-relative tw-rounded-md tw-overflow-hidden">
-          <Image src={SONG.thumbnail} className="tw-h-16 tw-w-16 tw-block tw-object-cover" />
-          <Text
-            className="dfr-bg-color-strong tw-font-bold tw-truncate tw-absolute tw-w-full tw-px-1 tw-left-0 tw-text-center tw-pt-0.5 tw-h-4 tw-text-xxs light:vd:dfr-text-color-strong tw-top-0"
-            title={SONG.title}
-          >
-            {SONG.title}
-          </Text>
-          <Text
-            className="dfr-bg-color-strong tw-font-bold tw-truncate tw-absolute tw-w-full tw-px-1 tw-left-0 tw-text-center tw-pt-0.5 tw-h-4 tw-text-xxs dfr-text-color-secondary tw-bottom-0"
-            title={SONG.artist}
-          >
-            {SONG.artist}
-          </Text>
-        </Block>
-      ) : (
-        <Block className="dfr-bg-color-strong tw-h-16 tw-w-16 tw-block tw-rounded-md" />
-      )}
-      <Space size={1} orientation="v" />
-
-      <Block className="tw-flex tw-flex-col tw-justify-between tw-items-center tw-flex-1 tw-pt-1">
-        <Block className="tw-w-full tw-text-center">
-          {createArray(5).map((i) => {
-            return (
-              <Block
-                key={`Volume-${i}`}
-                className="tw-border-b tw-border-gray-600 tw-my-0.5 tw-rounded-sm"
-              />
-            );
-          })}
-          <Button
-            className={classNames(
-              "tw-rounded-full tw-h-4 tw-w-4 tw-bg-gray-700 tw-overflow-hidden tw-transform tw-transition-transform dark:vl:dfr-bg-color-strong",
-              showInfo && "tw-rotate-90",
-            )}
-            onClick={() => setShowInfo((currentValue) => !currentValue)}
-          >
-            <Block
-              className={classNames(
-                "tw-w-0.5 tw-h-2 tw-mx-auto tw-relative tw--top-1",
-                showInfo ? "tw-bg-red-500" : "tw-bg-green-500",
-              )}
-            />
-          </Button>
-        </Block>
-
+    <Block className="dfr-TV tw-flex tw-items-stretch tw-p-2 tw-bg-gradient-to-b tw-from-gray-800 tw-to-black tw-w-28 tw-max-w-full tw-relative tw-mb-2 dark:tw-from-white dark:tw-to-gray-300">
+      <Block className="tw-relative tw-h-16 tw-w-16">
         <Link
           variant={Link.variant.SIMPLE}
           href={SONG.url}
-          className={classNames(
-            "tw-block tw-justify-self-end tw-leading-0",
-            showInfo ? "tw-visible" : "tw-invisible",
-          )}
+          className="tw-block tw-h-full tw-relative tw-z-10"
           isExternalUrl
         >
+          <Image
+            src={SONG.thumbnail}
+            className="tw-block tw-h-full tw-object-cover tw-rounded-md"
+            title={`${SONG.title} - ${SONG.artist}`}
+          />
           <Icon
             icon={SONG.source === "youtube" ? Icon.icon.YOUTUBE : Icon.icon.SPOTIFY}
-            size={12}
+            wrapperClassName="tw-absolute tw-top-0.5 tw-right-0.5"
           />
         </Link>
+        <Block
+          className={classNames(
+            "dfr-bg-color-strong tw-h-full tw-w-full tw-transition-opacity tw-duration-500 tw-rounded-md tw-absolute tw-top-0 tw-left-0",
+            showInfo ? "tw-opacity-0 tw--z-1" : "tw-opacity-100 tw-z-20",
+          )}
+        />
+      </Block>
+      <Space size={1} orientation="v" />
+
+      <Block className="tw-flex tw-flex-col tw-justify-between tw-items-center tw-flex-1 tw-py-1">
+        <Block className="tw-w-full tw-text-center">
+          {createArray(8).map((i) => {
+            return (
+              <Block
+                key={`Volume-${i}`}
+                className="tw-border-b tw-border-gray-600 tw-my-0.5 tw-rounded-sm dark:vl:dfr-border-color-strong"
+              />
+            );
+          })}
+        </Block>
+        <Button
+          className={classNames(
+            "tw-rounded-full tw-h-6 tw-w-6 tw-bg-gray-700 tw-overflow-hidden tw-transform dark:vl:dfr-bg-color-strong",
+            showInfo ? "tw-rotate-90" : "tw-transition-transform tw-duration-500",
+          )}
+          onClick={() => setShowInfo((currentValue) => !currentValue)}
+        >
+          <Block
+            className={classNames(
+              "tw-w-0.5 tw-h-4 tw-mx-auto tw-relative tw--top-2",
+              showInfo ? "tw-bg-red-500" : "tw-bg-green-500",
+            )}
+          />
+        </Button>
       </Block>
 
       <style jsx>{`
@@ -536,26 +529,31 @@ function TV() {
   );
 }
 
+function Flowers() {
+  return (
+    <Block className="tw-relative tw-overflow-hidden">
+      <Icon
+        icon={Icon.icon.FLOWER_2}
+        size={20}
+        wrapperClassName="tw-absolute tw-transform tw-top-7 tw-left-2 tw--rotate-12"
+      />
+      <Icon icon={Icon.icon.FLOWER_3} size={48} wrapperClassName="tw-relative tw-top-0.5" />
+      <Icon
+        icon={Icon.icon.FLOWER_1}
+        size={20}
+        wrapperClassName="tw-absolute tw-transform tw-top-7 tw-right-2 tw-rotate-12"
+      />
+    </Block>
+  );
+}
+
 function Table() {
   return (
-    <Block className="tw-flex tw-items-end tw-justify-between tw-border-4 tw-border-b-0 tw-border-yellow-800 tw-h-16 tw-rounded-tr-md tw-rounded-tl-md tw-overflow-hidden dark:tw-border-yellow-500">
-      <Block>
-        <Icon
-          icon={Icon.icon.FLOWER_1}
-          size={16}
-          wrapperClassName="tw-relative tw-transform tw-top-3 tw-left-5 tw--rotate-12"
-        />
-        <Icon icon={Icon.icon.FLOWER_3} size={40} wrapperClassName="tw-relative tw-top-0.5" />
-        <Icon
-          icon={Icon.icon.FLOWER_2}
-          size={20}
-          wrapperClassName="tw-relative tw-transform tw-top-3 tw-right-5 tw-rotate-12"
-        />
-      </Block>
-      <Icon icon={Icon.icon.SOCCER} size={20} wrapperClassName="tw-relative tw-top-0.5 tw-left-5" />
+    <Block className="tw-flex tw-items-end tw-justify-end tw-border-8 tw-border-b-0 tw-border-yellow-900 tw-h-20 tw-rounded-tr-md tw-rounded-tl-md tw-overflow-hidden dark:tw-border-yellow-70">
+      <Icon icon={Icon.icon.SOCCER} size={24} wrapperClassName="tw-relative tw-top-0.5 tw-left-7" />
       <Icon
         icon={Icon.icon.GUITAR}
-        size={36}
+        size={44}
         wrapperClassName="tw-relative tw-top tw-transform tw--rotate-45 tw-left-2"
       />
     </Block>
