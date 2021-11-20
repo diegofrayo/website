@@ -10,6 +10,7 @@ class FilmsService {
 
     return data.map(transformObjectKeysFromSnakeCaseToLowerCamelCase).sort(
       sortBy([
+        { param: "addedDate", order: "desc" },
         { param: "calification", order: "desc" },
         { param: "title", order: "asc" },
       ]),

@@ -39,27 +39,32 @@ function Header(): T_ReactElement {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
-    <Block is="header" className="tw-h-auto tw-py-8 sm:tw-h-screen">
-      <Block className="tw-flex tw-justify-between tw-items-center">
-        <MainMenu />
-        <Link
-          variant={Link.variant.SECONDARY}
-          href={ROUTES.HOME}
-          className="dfr-border-color-strong tw-text-sm tw-border-b-2 tw-border-dotted dark:dfr-border-color-strong"
-        >
-          {WEBSITE_METADATA.username}
-        </Link>
-        <SettingsMenu />
+    <Block
+      is="header"
+      className="tw-h-auto tw-py-8 sm:tw-h-screen sm:tw-flex sm:tw-flex-col sm:tw-justify-between"
+    >
+      <Block>
+        <Block className="tw-flex tw-justify-between tw-items-center">
+          <MainMenu />
+          <Link
+            variant={Link.variant.SECONDARY}
+            href={ROUTES.HOME}
+            className="dfr-border-color-strong tw-text-sm tw-border-b-2 tw-border-dotted dark:dfr-border-color-strong"
+          >
+            {WEBSITE_METADATA.username}
+          </Link>
+          <SettingsMenu />
+        </Block>
+        <Block className="tw-text-center">
+          <InlineText className="dfr-text-color-secondary tw-text-xxs dark:dfr-text-color-secondary">
+            {asPath.split("?")[0].split("/").slice(0, 2).join("/")}
+          </InlineText>
+        </Block>
       </Block>
-      <Block className="tw-text-center">
-        <InlineText className="dfr-text-color-secondary tw-text-xxs dark:dfr-text-color-secondary">
-          {asPath.split("?")[0].split("/").slice(0, 2).join("/")}
-        </InlineText>
-      </Block>
-      <Space size={8} />
+      <Space size={8} className="sw:tw-hidden" />
 
       <PictureFrame />
-      <Space size={10} />
+      <Space size={10} className="sw:tw-hidden" />
 
       <Button
         variant={Button.variant.SIMPLE}
@@ -360,40 +365,49 @@ function PictureFrame(): T_ReactElement {
     setPhoto(PHOTOS[new Date().getDay()]);
   });
 
-  return (
-    <Block className="dfr-PictureFrame tw-w-48 tw-mx-auto">
-      <Block className="tw-flex tw-justify-between">
-        <Icon icon={Icon.icon.FLOWER_1} size={16} wrapperClassName="tw-relative tw-top-1" />
-        <Icon icon={Icon.icon.FLOWER_2} size={24} />
-        <Icon icon={Icon.icon.FLOWER_3} size={32} />
-        <Icon icon={Icon.icon.FLOWER_3} size={32} />
-        <Icon icon={Icon.icon.FLOWER_2} size={24} />
-        <Icon icon={Icon.icon.FLOWER_1} size={16} wrapperClassName="tw-relative tw-top-1" />
-      </Block>
+  if (!photo) return null;
 
-      {photo && (
-        <React.Fragment>
+  return (
+    <Block className="dfr-PictureFrame tw-mx-auto tw-w-40 tw-max-w-full">
+      <Block className="tw-flex tw-items-end tw-justify-between tw-overflow-hidden">
+        <Icon icon={Icon.icon.FLOWER_3} size={32} wrapperClassName="tw-relative tw-top-1" />
+        <Icon icon={Icon.icon.FLOWER_2} size={24} wrapperClassName="tw-relative tw-top-1" />
+
+        <Block
+          className={classNames(
+            "tw-mx-1 tw-flex-shrink-0",
+            photo.portrait === true ? "tw-w-12" : "tw-w-16",
+          )}
+        >
           <Link
             variant={Link.variant.UNSTYLED}
             href={photo.src}
             className={classNames(
-              "image-container dfr-border-color-strong dfr-bg-color-strong dfr-shadow tw-block tw-border-4",
-              photo?.portrait === true ? "tw-h-64" : "tw-h-36",
+              "dfr-border-color-strong light:vd:dfr-bg-color-strong tw-block tw-border-2 tw-p-1 dark:dfr-border-color-strong dark:vl:dfr-bg-color-strong",
+              photo.portrait === true ? "tw-h-16" : "tw-h-12",
             )}
             isExternalUrl
           >
             <Image
               src={photo.src}
+              className="dfr-transition-opacity dfr-border-color-strong tw-border-opacity-70 tw-border tw-h-full tw-w-full tw-rounded-sm dark:dfr-border-color-strong"
               alt="Photography taken by Diego Rayo"
-              className="dfr-transition-opacity tw-h-full tw-w-full"
             />
           </Link>
+          <Block className="dfr-bg-color-strong tw-block tw-w-2 tw-h-0.5 tw-mx-auto dark:dfr-bg-color-strong" />
+        </Block>
 
-          <Block className="tw-text-center tw-leading-0">
-            <Block display="tw-inline-block" className="dfr-bg-color-strong tw-w-10 tw-h-2" />
-          </Block>
-        </React.Fragment>
-      )}
+        <Icon icon={Icon.icon.FLOWER_1} size={24} wrapperClassName="tw-relative tw-top-1" />
+        <Icon icon={Icon.icon.FLOWER_3} size={32} wrapperClassName="tw-relative tw-top-1" />
+      </Block>
+
+      <Block className="tw-border-4 tw-border-b-0 tw-border-yellow-800 tw-h-16 tw-rounded-tr-md tw-rounded-tl-md dark:tw-border-yellow-500 tw-relative">
+        <Icon
+          icon={Icon.icon.SOCCER}
+          size={32}
+          wrapperClassName="tw-absolute tw--bottom-0.5 tw--right-0.5"
+        />
+      </Block>
     </Block>
   );
 }

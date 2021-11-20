@@ -129,6 +129,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
       alt: "Spotify",
     },
   },
+  SOCCER: {
+    isLibraryIcon: false,
+    icon: "/static/images/icons/soccer.svg",
+    props: {
+      className: "",
+      alt: "Soccer",
+    },
+  },
   TWITTER: {
     isLibraryIcon: false,
     icon: "/static/images/icons/twitter.svg",

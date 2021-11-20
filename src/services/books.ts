@@ -1,6 +1,6 @@
 import http from "~/lib/http";
 import { T_Book } from "~/types";
-import { sortBy } from "~/utils/misc";
+import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 
 class BooksService {
   async fetchBooks(): Promise<T_Book[]> {
@@ -8,8 +8,9 @@ class BooksService {
       file: `pages/playground/[page]/books/data.json`,
     });
 
-    return data.sort(
+    return data.map(transformObjectKeysFromSnakeCaseToLowerCamelCase).sort(
       sortBy([
+        { param: "addedDate", order: "desc" },
         { param: "calification", order: "desc" },
         { param: "title", order: "asc" },
       ]),

@@ -34,6 +34,12 @@ module.exports = {
         xxs: "0.6rem",
         // test: "0rem", // useful to release a tailwind build process
       },
+      borderWidth: {
+        12: "12px",
+        16: "16px",
+        24: "24px",
+        32: "32px",
+      },
     },
   },
   variants: {

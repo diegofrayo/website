@@ -130,6 +130,7 @@ export type T_Book = {
   author: string;
   year: number;
   calification: number;
+  addedDate: string;
   url: string;
   cover: string;
 };
@@ -216,6 +217,7 @@ export enum E_Icons {
   "INSTAGRAM" = "INSTAGRAM",
   "LINKEDIN" = "LINKEDIN",
   "NETFLIX" = "NETFLIX",
+  "SOCCER" = "SOCCER",
   "SPOTIFY" = "SPOTIFY",
   "TWITTER" = "TWITTER",
   "WHATSAPP" = "WHATSAPP",

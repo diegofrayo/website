@@ -215,7 +215,7 @@ function useController(): {
   handleSelectFilter: (filter: string) => () => void;
   toggleOrderByFilter: () => void;
 } {
-  const [isAddedDateFilterEnabled, setIsAddedDateFilterEnabled] = React.useState(false);
+  const [isAddedDateFilterEnabled, setIsAddedDateFilterEnabled] = React.useState(true);
   const [selectedCategory, setSelectedCategory] = React.useState("");
   const { isLoading, error, data } = useQuery<T_Film[]>("films", FilmsService.fetchFilms);
 
