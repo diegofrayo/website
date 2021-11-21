@@ -1,17 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import {
-  Button,
-  Icon,
-  Image,
-  Link,
-  Space,
-  Title,
-  Block,
-  Text,
-  InlineText,
-} from "~/components/primitive";
+import { Button, Icon, Image, Link, Space, Title, Block, Text } from "~/components/primitive";
 import { Render } from "~/components/shared";
 import { useQuery } from "~/hooks";
 import FilmsService from "~/services/films";
@@ -135,22 +125,21 @@ function Films(): T_ReactElement {
                           backgroundSize: "100% 100%",
                         }}
                       >
-                        <InlineText className="tw-absolute tw--top-2 tw--right-2 tw-bg-black dark:tw-bg-white tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8">
-                          <Icon
-                            icon={
-                              calification === 5
-                                ? Icon.icon.STAR
-                                : calification === 4
-                                ? Icon.icon.HEART
-                                : calification === 3
-                                ? Icon.icon.CHECK
-                                : Icon.icon.MINUS
-                            }
-                            size={24}
-                          />
-                        </InlineText>
+                        <Icon
+                          wrapperClassName="tw-absolute tw--top-2 tw--right-2 tw-bg-black dark:tw-bg-white tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8"
+                          icon={
+                            calification === 5
+                              ? Icon.icon.STAR
+                              : calification === 4
+                              ? Icon.icon.HEART
+                              : calification === 3
+                              ? Icon.icon.CHECK
+                              : Icon.icon.MINUS
+                          }
+                          size={24}
+                        />
 
-                        <Block className="light:vd:dfr-bg-color-strong tw-bg-opacity-70 tw-flex tw-self-end tw-flex-nowrap tw-justify-between tw-w-full tw-items-end tw-p-2">
+                        <Block className="dfr-bg-color-light-strong tw-bg-opacity-70 tw-flex tw-self-end tw-flex-nowrap tw-justify-between tw-w-full tw-items-end tw-p-2">
                           {source === "imdb" ? (
                             <Image
                               src="/static/images/misc/imdb.png"

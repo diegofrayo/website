@@ -49,7 +49,7 @@ function Header(): T_ReactElement {
           <Link
             variant={Link.variant.SECONDARY}
             href={ROUTES.HOME}
-            className="dfr-border-color-strong tw-text-sm tw-border-b-2 tw-border-dotted dark:dfr-border-color-strong"
+            className="dfr-border-color-dark-strong tw-text-sm tw-border-b-2 tw-border-dotted dark:dfr-border-color-light-strong"
           >
             {WEBSITE_METADATA.username}
           </Link>
@@ -329,7 +329,7 @@ function MenuItem({
 
 function Room(): T_ReactElement {
   return (
-    <Block className="dfr-Room dfr-border-color-strong tw-mx-auto tw-w-44 tw-max-w-full tw-border-b tw-px-1 dark:dfr-border-color-primary">
+    <Block className="dfr-Room dfr-border-color-dark-strong tw-mx-auto tw-w-44 tw-max-w-full tw-border-b tw-px-1 dark:dfr-border-color-primary">
       <PictureFrame />
       <Block className="tw-flex tw-justify-between tw-items-end">
         <TV />
@@ -359,35 +359,28 @@ function PictureFrame() {
   return (
     <Block
       className={classNames(
-        "dfr-PictureFrame tw-mb-8 tw-mx-auto tw-relative tw-transition-transform tw-duration-500 tw-transform tw-rotate-2 hover:tw-rotate-0",
+        "dfr-PictureFrame tw-mb-8 tw-mx-auto tw-relative tw-transition-transform tw-duration-500d tw-transform tw-rotate-2 hover:tw-rotate-0",
         photo.portrait === true ? "tw-w-20" : "tw-w-32",
       )}
     >
       <Block className="tw-p-1 tw-bg-yellow-900 tw-border-2 tw-border-yellow-700">
-        <Link
-          variant={Link.variant.UNSTYLED}
-          href={photo.src}
+        <Image
+          src={photo.src}
           className={classNames(
-            "tw-block tw-border-2 tw-rounded-md tw-overflow-hidden tw-border-yellow-700",
+            "dfr-transition-opacity tw-block tw-h-full tw-w-full tw-rounded-md tw-overflow-hidden tw-border-2 tw-border-yellow-700",
             photo.portrait === true ? "tw-h-24" : "tw-h-20",
           )}
-          isExternalUrl
-        >
-          <Image
-            src={photo.src}
-            className="dfr-transition-opacity tw-h-full tw-w-full"
-            alt="Photography taken by Diego Rayo"
-          />
-        </Link>
+          alt="Photography taken by Diego Rayo"
+        />
       </Block>
-      <Text className="dfr-text-color-strong tw-text-xxs tw-italic tw-font-bold tw-text-center tw-border-yellow-700 tw-border-2 tw-border-t-0 tw-w-16 tw-mx-auto tw-rounded-bl-md tw-rounded-br-md dark:dfr-text-color-strong">
+      <Text className="dfr-text-color-dark-strong tw-text-xxs tw-italic tw-font-bold tw-text-center tw-border-yellow-700 tw-border-2 tw-border-t-0 tw-w-16 tw-mx-auto tw-rounded-bl-md tw-rounded-br-md dark:dfr-text-color-light-strong">
         welcome
       </Text>
 
       <style jsx>{`
         :global(.dfr-PictureFrame)::before,
         :global(.dfr-PictureFrame)::after {
-          @apply dfr-bg-color-strong;
+          @apply dfr-bg-color-dark-strong;
           @apply tw-transform;
           content: " ";
           display: block;
@@ -400,7 +393,7 @@ function PictureFrame() {
 
         :global(.tw-dark) :global(.dfr-PictureFrame)::before,
         :global(.tw-dark) :global(.dfr-PictureFrame)::after {
-          @apply dark:v:dfr-bg-color-strong;
+          @apply dfr-bg-color-light-strong;
         }
 
         :global(.dfr-PictureFrame)::before {
@@ -443,11 +436,11 @@ function TV() {
 
   return (
     <Block className="dfr-TV tw-flex tw-items-stretch tw-p-2 tw-bg-gradient-to-b tw-from-gray-800 tw-to-black tw-w-28 tw-max-w-full tw-relative tw-mb-2 dark:tw-from-white dark:tw-to-gray-300">
-      <Block className="tw-relative tw-h-16 tw-w-16">
+      <Block className="tw-relative tw-h-16 tw-w-16 tw-overflow-hidden tw-rounded-md">
         <Link
           variant={Link.variant.SIMPLE}
           href={SONG.url}
-          className="tw-block tw-h-full tw-relative tw-z-10"
+          className="tw-block tw-h-full tw-relative"
           isExternalUrl
         >
           <Image
@@ -462,8 +455,8 @@ function TV() {
         </Link>
         <Block
           className={classNames(
-            "dfr-bg-color-strong tw-h-full tw-w-full tw-transition-opacity tw-duration-500 tw-rounded-md tw-absolute tw-top-0 tw-left-0",
-            showInfo ? "tw-opacity-0 tw--z-1" : "tw-opacity-100 tw-z-20",
+            "dfr-bg-color-dark-strong tw-h-full tw-w-full tw-transition-transform tw-duration-500d tw-transform tw-absolute tw-top-0 tw-left-0",
+            showInfo && "tw-translate-x-full",
           )}
         />
       </Block>
@@ -475,15 +468,15 @@ function TV() {
             return (
               <Block
                 key={`Volume-${i}`}
-                className="tw-border-b tw-border-gray-600 tw-my-0.5 tw-rounded-sm dark:vl:dfr-border-color-strong"
+                className="tw-border-b tw-border-gray-600 tw-my-0.5 tw-rounded-sm dark:dfr-border-color-dark-strong"
               />
             );
           })}
         </Block>
         <Button
           className={classNames(
-            "tw-rounded-full tw-h-6 tw-w-6 tw-bg-gray-700 tw-overflow-hidden tw-transform dark:vl:dfr-bg-color-strong",
-            showInfo ? "tw-rotate-90" : "tw-transition-transform tw-duration-500",
+            "tw-rounded-full tw-h-6 tw-w-6 tw-bg-gray-700 tw-overflow-hidden tw-transform tw-transition-transform tw-duration-500d dark:dfr-bg-color-dark-strong",
+            showInfo && "tw-rotate-90",
           )}
           onClick={() => setShowInfo((currentValue) => !currentValue)}
         >
@@ -499,7 +492,7 @@ function TV() {
       <style jsx>{`
         :global(.dfr-TV)::before,
         :global(.dfr-TV)::after {
-          @apply dfr-bg-color-strong;
+          @apply dfr-bg-color-dark-strong;
           @apply tw-w-1;
           @apply tw-h-4;
           @apply tw-transform;

@@ -15,7 +15,7 @@ type T_CodeProps = T_HTMLElementAttributes["pre"] & {
 function Code({ children, variant, className = "", ...rest }: T_CodeProps): T_ReactElement {
   if (variant === VARIANTS.INLINE) {
     return (
-      <code className="dfr-Code dfr-text-colorful-secondary tw-text-base tw-italic dark:vl:dfr-text-colorful-primary">
+      <code className="dfr-Code dfr-text-colorful-secondary-100 tw-text-base tw-italic dark:dfr-text-colorful-primary-100">
         {children}
 
         <style jsx>{`
@@ -31,7 +31,7 @@ function Code({ children, variant, className = "", ...rest }: T_CodeProps): T_Re
   return (
     <pre
       className={classNames(
-        "dfr-Code dfr-bg-color-primary dfr-text-color-strong dfr-shadow tw-font-mono tw-block tw-p-4 tw-text-base tw-rounded-md tw-max-w-full tw-overflow-x-auto dark:dfr-bg-color-primary dark:dfr-text-color-strong",
+        "dfr-Code dfr-bg-color-primary dfr-text-color-dark-strong dfr-shadow tw-font-mono tw-block tw-p-4 tw-text-base tw-rounded-md tw-max-w-full tw-overflow-x-auto dark:dfr-bg-color-primary dark:dfr-text-color-light-strong",
         className,
       )}
       {...rest}

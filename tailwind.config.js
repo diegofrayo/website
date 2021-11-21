@@ -23,10 +23,11 @@ module.exports = {
       // => @media (min-width: 768px) { ... }
     },
     extend: {
-      extend: {
-        zIndex: {
-          "-1": "-1",
-        },
+      transitionDuration: {
+        DEFAULT: "500ms",
+      },
+      zIndex: {
+        "-1": "-1",
       },
       lineHeight: {
         0: "0",
@@ -65,5 +66,6 @@ module.exports = {
 // --- Plugins ---
 
 function myCustomClassesPlugin({ addUtilities, e }) {
-  addUtilities(generateTailwindConfig(e), { respectPrefix: false });
+  const config = generateTailwindConfig(e);
+  addUtilities(config, { respectPrefix: false });
 }

@@ -41,7 +41,7 @@ function SongsPage(): T_ReactElement {
                       >
                         <InlineText
                           className={classNames(
-                            "dfr-border-color-strong dark:dfr-border-color-strong tw-border-b tw-mr-2 tw-leading-relaxed",
+                            "dfr-border-color-dark-strong tw-border-b tw-mr-2 tw-leading-relaxed dark:dfr-border-color-light-strong",
                             getItemStyles(),
                           )}
                         >

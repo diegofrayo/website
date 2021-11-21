@@ -27,7 +27,7 @@ function Button({
       variant === VARIANTS.SIMPLE && "dfr-transition-opacity",
       variant === VARIANTS.DEFAULT &&
         classNames(
-          "dfr-transition-opacity dfr-text-color-strong tw-text-sm tw-lowercase dark:dfr-text-color-strong",
+          "dfr-transition-opacity dfr-text-color-dark-strong tw-text-sm tw-lowercase dark:dfr-text-color-light-strong",
           fontWeight || "tw-font-bold",
         ),
       disabled && "tw-cursor-not-allowed tw-opacity-50",

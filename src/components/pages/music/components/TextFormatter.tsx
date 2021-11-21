@@ -34,7 +34,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
       {parsedLyrics}
 
       <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
-        <Block className="light:vd:dfr-bg-color-strong dfr-border-color-strong tw-border-4 tw-p-4 tw-w-96 tw-mx-auto tw-max-w-full dark:dfr-bg-color-layout dark:dfr-border-color-strong">
+        <Block className="dfr-bg-color-light-strong dfr-border-color-dark-strong tw-border-4 tw-p-4 tw-w-96 tw-mx-auto tw-max-w-full dark:dfr-bg-color-layout dark:dfr-border-color-light-strong">
           {Array.isArray(selectedChord) ? (
             <Block>
               {selectedChord.map((chord, index) => {

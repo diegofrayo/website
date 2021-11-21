@@ -108,7 +108,7 @@ function useController({
     return classNames(
       {
         PRIMARY: classNames(
-          "dfr-text-color-strong dark:dfr-text-color-strong",
+          "dfr-text-color-dark-strong dark:dfr-text-color-light-strong",
           {
             h4: "tw-text-xl",
             h3: "tw-text-2xl",
@@ -116,7 +116,7 @@ function useController({
             h1: "tw-text-4xl",
           }[tag],
         ),
-        SECONDARY: "dfr-text-color-strong dark:dfr-text-color-strong",
+        SECONDARY: "dfr-text-color-dark-strong dark:dfr-text-color-light-strong",
         UNSTYLED: "",
       }[variant],
       size !== undefined &&

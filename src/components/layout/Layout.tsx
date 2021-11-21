@@ -46,7 +46,7 @@ function MainLayout({
                 <Link
                   variant={Link.variant.SIMPLE}
                   href={parentUrl}
-                  className="dfr-text-color-strong dark:dfr-text-color-strong tw-block tw-underline tw-mb-4"
+                  className="dfr-text-color-dark-strong tw-block tw-underline tw-mb-4 dark:dfr-text-color-light-strong"
                 >
                   {parentUrl}
                 </Link>
@@ -54,7 +54,7 @@ function MainLayout({
               <Title
                 is="h1"
                 variant={Title.variant.UNSTYLED}
-                className="dfr-text-color-strong dark:dfr-text-color-strong tw-text-3xl sm:tw-text-6xl tw-font-bold tw-mb-16 tw-uppercase"
+                className="dfr-text-color-dark-strong tw-text-3xl sm:tw-text-6xl tw-font-bold tw-mb-16 tw-uppercase dark:dfr-text-color-light-strong"
               >
                 {title}
               </Title>
@@ -82,7 +82,7 @@ function Footer({
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
-    <Block is="footer" className="dfr-bg-color-strong tw-relative tw-pt-36 tw-pb-4">
+    <Block is="footer" className="dfr-bg-color-dark-strong tw-relative tw-pt-36 tw-pb-4">
       <Block className="dfr-max-w-layout tw-mx-auto tw-px-8">
         <Block className="tw-flex tw-flex-col tw-justify-center tw-items-center sm:tw-flex-row sm:tw-justify-between sm:tw-items-end">
           <Block>
@@ -93,13 +93,13 @@ function Footer({
             <FooterIcon url={WEBSITE_METADATA.social["500px"]} icon={Icon.icon["500PX"]} />
             <FooterIcon url={WEBSITE_METADATA.social.couchsurfing} icon={Icon.icon.COUCHSURFING} />
           </Block>
-          <InlineText className="light:vd:dfr-text-color-strong tw-text-sm tw-leading-3 tw-mt-4 sm:tw-mt-0">
+          <InlineText className="dfr-text-color-light-strong tw-text-sm tw-leading-3 tw-mt-4 sm:tw-mt-0">
             {WEBSITE_METADATA.shortName} | {new Date().getFullYear()}
           </InlineText>
         </Block>
         <Space size={4} className="dfr-border-color-primary tw-border-b tw-border-opacity-30" />
 
-        <Block className="tw-text-center tw-text-xs light:vd:dfr-text-color-strong">
+        <Block className="tw-text-center tw-text-xs dfr-text-color-light-strong">
           <InlineText is="strong">{t("layout:footer:resources_disclaimer")}:</InlineText>{" "}
           <Link
             variant={Link.variant.PRIMARY}
@@ -143,7 +143,7 @@ function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactEleme
       className="tw-inline-block tw-mr-2 last:tw-mr-0"
       isExternalUrl
     >
-      <Icon icon={icon} wrapperClassName="light:vd:dfr-bg-color-strong tw-rounded-full tw-p-2" />
+      <Icon icon={icon} wrapperClassName="dfr-bg-color-light-strong tw-rounded-full tw-p-2" />
     </Link>
   );
 }
@@ -169,12 +169,12 @@ function GoToTopButton(): T_ReactElement {
   return (
     <Button
       variant={Button.variant.SIMPLE}
-      className="dfr-bg-color-strong tw-bg-opacity-70 tw-fixed tw-text-2xl tw-bottom-3 tw-right-3 tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center sm:tw-right-4 sm:tw-bottom-4"
+      className="dfr-bg-color-dark-strong tw-bg-opacity-70 tw-fixed tw-text-2xl tw-bottom-3 tw-right-3 tw-w-12 tw-h-12 tw-flex tw-items-center tw-justify-center sm:tw-right-4 sm:tw-bottom-4"
       onClick={() => {
         scrollToElement(document.getElementById("go-to-body-icon"));
       }}
     >
-      <Icon icon={Icon.icon.ARROW_UP} color="light:vd:dfr-text-color-strong" />
+      <Icon icon={Icon.icon.ARROW_UP} color="dfr-text-color-light-strong" />
     </Button>
   );
 }

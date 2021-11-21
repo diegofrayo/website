@@ -9,7 +9,7 @@ export function HelloWorldMDX({ text }: { text: string }): T_ReactElement {
 
 export function SpotifyPlaylist(): T_ReactElement {
   return (
-    <Block className="dfr-border-color-strong tw-border-4" data-markdown-block>
+    <Block className="dfr-border-color-dark-strong tw-border-4" data-markdown-block>
       <iframe
         src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"
         width="100%"

@@ -20,7 +20,7 @@ function Books(): T_ReactElement {
                   key={id}
                   variant={Link.variant.UNSTYLED}
                   href={url}
-                  className="tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 tw-shadow-lg hover:tw-shadow-2xl tw-transform tw-duration-300 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 hover:tw-opacity-75 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 dfr-border-color-strong dark:dfr-border-color-primary sm:tw--rotate-1"
+                  className="dfr-border-color-dark-strong tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 tw-shadow-lg tw-transform tw-duration-300 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 dark:dfr-border-color-primary hover:tw-shadow-2xl hover:tw-translate-x-1 hover:tw--translate-y-1 hover:tw-rotate-0 hover:tw-opacity-75 sm:tw--rotate-1"
                   isExternalUrl
                 >
                   <article
@@ -31,21 +31,20 @@ function Books(): T_ReactElement {
                       backgroundRepeat: "no-repeat",
                     }}
                   >
-                    <InlineText className="tw-absolute tw--top-2 tw--right-2 tw-bg-black dark:tw-bg-white tw-rounded-full tw-shadow-md tw-p-2 tw-w-10 tw-h-10">
-                      <Icon
-                        icon={
-                          calification === 5
-                            ? Icon.icon.STAR
-                            : calification === 4
-                            ? Icon.icon.HEART
-                            : Icon.icon.CHECK
-                        }
-                        size={24}
-                        wrapperClassName="tw-relative tw--left-0.5 tw-top-0.5"
-                      />
-                    </InlineText>
+                    <Icon
+                      wrapperClassName="tw-absolute tw--top-1 tw--right-1 tw-bg-black dark:tw-bg-white tw-rounded-md tw-shadow-md tw-p-2 tw-w-10 tw-h-10"
+                      iconClassName="tw-relative tw-top-0.5 tw--left-0.5"
+                      icon={
+                        calification === 5
+                          ? Icon.icon.STAR
+                          : calification === 4
+                          ? Icon.icon.HEART
+                          : Icon.icon.CHECK
+                      }
+                      size={24}
+                    />
 
-                    <Block className="light:vd:dfr-bg-color-strong tw-bg-opacity-70 tw-flex tw-self-end tw-flex-col tw-w-full tw-items-stretch tw-p-2 tw-rounded-tr-lg">
+                    <Block className="dfr-bg-color-light-strong tw-bg-opacity-70 tw-flex tw-self-end tw-flex-col tw-w-full tw-items-stretch tw-p-2 tw-rounded-tr-lg">
                       <Title
                         is="h1"
                         variant={Title.variant.UNSTYLED}

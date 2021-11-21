@@ -101,5 +101,5 @@ const LinkElement = twcss.a({
   PRIMARY:
     "dfr-transition-opacity dfr-link-color-primary dark:dfr-link-color-primary tw-font-bold tw-underline",
   SECONDARY: () =>
-    "dfr-transition-opacity dfr-text-color-strong tw-font-bold dark:dfr-text-color-strong",
+    "dfr-transition-opacity dfr-text-color-dark-strong tw-font-bold dark:dfr-text-color-light-strong",
 });
