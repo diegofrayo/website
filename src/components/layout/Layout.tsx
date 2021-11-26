@@ -82,24 +82,23 @@ function Footer({
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
-    <Block is="footer" className="dfr-bg-color-dark-strong tw-relative tw-pt-36 tw-pb-4">
+    <Block is="footer" className="dfr-bg-color-dark-strong tw-relative tw-text-center">
       <Block className="dfr-max-w-layout tw-mx-auto tw-px-8">
-        <Block className="tw-flex tw-flex-col tw-justify-center tw-items-center sm:tw-flex-row sm:tw-justify-between sm:tw-items-end">
+        <Block className="tw-py-16">
           <Block>
             <FooterIcon url={`mailto:${WEBSITE_METADATA.email}`} icon={Icon.icon.GMAIL} />
             <FooterIcon url={WEBSITE_METADATA.social.github} icon={Icon.icon.GITHUB} />
+            {/*
             <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} />
             <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
             <FooterIcon url={WEBSITE_METADATA.social["500px"]} icon={Icon.icon["500PX"]} />
             <FooterIcon url={WEBSITE_METADATA.social.couchsurfing} icon={Icon.icon.COUCHSURFING} />
+            */}
           </Block>
-          <InlineText className="dfr-text-color-light-strong tw-text-sm tw-leading-3 tw-mt-4 sm:tw-mt-0">
-            {WEBSITE_METADATA.shortName} | {new Date().getFullYear()}
-          </InlineText>
         </Block>
-        <Space size={4} className="dfr-border-color-primary tw-border-b tw-border-opacity-30" />
+        <Space size={0} className="dfr-border-color-primary tw-border-b tw-border-opacity-20" />
 
-        <Block className="tw-text-center tw-text-xs dfr-text-color-light-strong">
+        <Block className="dfr-text-color-light-strong tw-py-2 tw-tdext-right tw-text-xxs">
           <InlineText is="strong">{t("layout:footer:resources_disclaimer")}:</InlineText>{" "}
           <Link
             variant={Link.variant.PRIMARY}
@@ -143,7 +142,12 @@ function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactEleme
       className="tw-inline-block tw-mr-2 last:tw-mr-0"
       isExternalUrl
     >
-      <Icon icon={icon} wrapperClassName="dfr-bg-color-light-strong tw-rounded-full tw-p-2" />
+      <Icon
+        icon={icon}
+        wrapperClassName="dfr-bg-color-light-strong tw-rounded-full tw-p-2"
+        size="tw-w-3 tw-h-3 sm:tw-w-8
+        sm:tw-h-8"
+      />
     </Link>
   );
 }

@@ -36,7 +36,7 @@ async function main() {
         MUSIC.songs.map((song) => {
           return {
             path: `/music/${song.id}`,
-            hasToBeIndexed: song.progress === 5,
+            hasToBeIndexed: song.is_public,
           };
         }),
       );

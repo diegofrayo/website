@@ -98,13 +98,12 @@ function BlogPostActions(): T_ReactElement {
 
   return (
     <Block variant="FEATURED">
-      <BlogPostDetailsItem is={Button} onClick={(e) => copyToClipboard(e, window.location.href)}>
+      <BlogPostDetailsItem onClick={(e) => copyToClipboard(e, window.location.href)}>
         <BlogPostDetailsItem.Icon icon={Icon.icon.LINK} />
         <InlineText>{t("page:copy_url_to_clipboard")}</InlineText>
       </BlogPostDetailsItem>
       <Space size={1} />
       <BlogPostDetailsItem
-        is={Button}
         onClick={() => {
           window.location.href = `mailto:${WEBSITE_METADATA.email}?subject=${t(
             "page:email_message_subject",
@@ -120,7 +119,12 @@ function BlogPostActions(): T_ReactElement {
   );
 }
 
-const BlogPostDetailsItem = twcss.div`tw-flex tw-items-start md:tw-items-center tw-justify-start tw-text-sm tw-text-left`;
+const BlogPostDetailsItem = twcss(Button)(
+  "tw-flex tw-items-start md:tw-items-center tw-justify-start tw-text-sm tw-text-left",
+  {
+    variant: Button.variant.SIMPLE,
+  },
+);
 
 BlogPostDetailsItem.Icon = twcss(Icon)("", {
   wrapperClassName: "tw-mr-2 tw-relative tw--top-1px",

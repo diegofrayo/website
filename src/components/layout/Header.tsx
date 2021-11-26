@@ -373,7 +373,7 @@ function PictureFrame() {
           alt="Photography taken by Diego Rayo"
         />
       </Block>
-      <Text className="dfr-text-color-dark-strong tw-text-xxs tw-italic tw-font-bold tw-text-center tw-border-yellow-700 tw-border-2 tw-border-t-0 tw-w-16 tw-mx-auto tw-rounded-bl-md tw-rounded-br-md dark:dfr-text-color-light-strong">
+      <Text className="dfr-text-color-dark-strong tw-text-xxs tw-italic tw-font-bold tw-text-center tw-border-yellow-700 tw-border-2 tw-border-t-0 tw-w-16 tw-mx-auto tw-rounded-bl-md tw-rounded-br-md tw-h-4 dark:dfr-text-color-light-strong">
         welcome
       </Text>
 
@@ -426,12 +426,12 @@ function TV() {
   );
 
   const SONG = {
-    title: "Toco y Me Voy (En Estado Acústico)",
-    artist: "Nahuel Pennisi",
+    title: "El Tesoro de los Inocentes - En Vivo",
+    artist: "Los Fundamentalistas del Aire Acondicionado",
     duration: "4:27",
-    thumbnail: "http://i3.ytimg.com/vi/WETqSfvkZB8/hqdefault.jpg",
-    source: "youtube",
-    url: "https://youtu.be/WETqSfvkZB8",
+    thumbnail: "https://i.scdn.co/image/ab67616d0000b273307b05f5ed296e41556409d0",
+    source: "spotify",
+    url: "https://open.spotify.com/track/0sdNMSjuAUuMQF4T2xhQ2Q",
   };
 
   return (
