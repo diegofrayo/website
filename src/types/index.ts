@@ -51,7 +51,7 @@ export type T_Locale = "es" | "en";
 export type T_PageRoute =
   | "/"
   // | "/about-me"
-  | "/resume"
+  // | "/resume"
   | "/bookmarks"
   | "/blog"
   | "/blog/[slug]"
@@ -213,6 +213,7 @@ export enum E_Icons {
   "FLOWER_2" = "FLOWER_2",
   "FLOWER_3" = "FLOWER_3",
   "GITHUB" = "GITHUB",
+  "GITHUB_LIGHT" = "GITHUB_LIGHT",
   "GMAIL" = "GMAIL",
   "GUITAR" = "GUITAR",
   "INSTAGRAM" = "INSTAGRAM",
@@ -226,7 +227,6 @@ export enum E_Icons {
 
   "ARROW_UP" = "ARROW_UP",
   "CALENDAR" = "CALENDAR",
-  "CAMERA" = "CAMERA",
   "CHECK" = "CHECK",
   "CHEVRON_DOUBLE_DOWN" = "CHEVRON_DOUBLE_DOWN",
   "CHEVRON_DOWN" = "CHEVRON_DOWN",
@@ -243,6 +243,8 @@ export enum E_Icons {
   "MENU" = "MENU",
   "MINUS" = "MINUS",
   "MOON" = "MOON",
+  "PAUSE" = "PAUSE",
+  "PLAY" = "PLAY",
   "REPLY" = "REPLY",
   "STAR" = "STAR",
   "SUN" = "SUN",

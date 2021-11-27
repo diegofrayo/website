@@ -1,7 +1,6 @@
 import {
   ArrowUpIcon,
   CalendarIcon,
-  CameraIcon,
   ChevronDoubleDownIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -11,7 +10,9 @@ import {
   ExternalLinkIcon,
   LinkIcon,
   MenuIcon,
+  PauseIcon,
   PencilAltIcon,
+  PlayIcon,
   ReplyIcon,
   XIcon,
   ZoomInIcon,
@@ -63,6 +64,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     props: {
       className: "",
       alt: "GitHub",
+    },
+  },
+  GITHUB_LIGHT: {
+    isLibraryIcon: false,
+    icon: "/static/images/icons/github-light.svg",
+    props: {
+      className: "",
+      alt: "GitHub light",
     },
   },
   GMAIL: {
@@ -292,9 +301,17 @@ export const ICONS: Record<E_Icons, T_Icon> = {
       color: "tw-text-white dark:tw-text-black",
     },
   },
-  CAMERA: {
+  PLAY: {
     isLibraryIcon: true,
-    icon: CameraIcon,
+    icon: PlayIcon,
+    props: {
+      className: "",
+      color: "",
+    },
+  },
+  PAUSE: {
+    isLibraryIcon: true,
+    icon: PauseIcon,
     props: {
       className: "",
       color: "",

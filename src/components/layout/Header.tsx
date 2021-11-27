@@ -150,12 +150,12 @@ function MainMenu(): T_ReactElement {
         url: ROUTES.ABOUT_ME,
         locale: undefined,
       },
-      */
       {
         label: translator.t("layout:header:menu:resume"),
         url: ROUTES.RESUME,
         locale: undefined,
       },
+      */
       {
         label: translator.t("layout:header:menu:music"),
         url: ROUTES.MUSIC,
@@ -412,6 +412,7 @@ function PictureFrame() {
 
 function TV() {
   const [showInfo, setShowInfo] = React.useState(false);
+  const [isAudioPlaying, setIsAudioPlaying] = React.useState(false);
   const LS_KEY = "DFR_TV";
 
   useDidMount(() => {
@@ -421,41 +422,71 @@ function TV() {
   React.useEffect(
     function updateConfigOnLocalStorage() {
       window.localStorage.setItem(LS_KEY, String(showInfo));
+
+      if (showInfo === false) {
+        setIsAudioPlaying(false);
+
+        const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
+        audioElement.pause();
+      }
     },
     [showInfo],
   );
 
   const SONG = {
-    title: "El Tesoro de los Inocentes - En Vivo",
-    artist: "Los Fundamentalistas del Aire Acondicionado",
-    duration: "4:27",
-    thumbnail: "https://i.scdn.co/image/ab67616d0000b273307b05f5ed296e41556409d0",
+    title: "Rock para el Negro Atila",
+    artist: "Patricio Rey y sus Redonditos de Ricota",
+    thumbnail: "https://i.scdn.co/image/ab67616d0000b273074392d2ae6b119d67289def",
     source: "spotify",
-    url: "https://open.spotify.com/track/0sdNMSjuAUuMQF4T2xhQ2Q",
+    audio:
+      "https://p.scdn.co/mp3-preview/f055990a36a0e7cdf2352085e1387e7e31938cc2?cid=a46f5c5745a14fbf826186da8da5ecc3",
   };
 
   return (
     <Block className="dfr-TV tw-flex tw-items-stretch tw-p-2 tw-bg-gradient-to-b tw-from-gray-800 tw-to-black tw-w-28 tw-max-w-full tw-relative tw-mb-2 dark:tw-from-white dark:tw-to-gray-300">
-      <Block className="tw-relative tw-h-16 tw-w-16 tw-overflow-hidden tw-rounded-md">
-        <Link
-          variant={Link.variant.SIMPLE}
-          href={SONG.url}
-          className="tw-block tw-h-full tw-relative"
-          isExternalUrl
+      <Block className="tw-relative tw-h-16 tw-w-16 tw-overflow-hidden">
+        <Block
+          className="dfr-border-color-dark-strong tw-border tw-border-opacity-80 tw-relative tw-bg-cover tw-h-full dark:tw-border-opacity-10"
+          title={`${SONG.title} - ${SONG.artist}`}
+          display="tw-flex"
+          align="CENTER"
+          style={{ backgroundImage: `url(${SONG.thumbnail})` }}
         >
-          <Image
-            src={SONG.thumbnail}
-            className="tw-block tw-h-full tw-object-cover tw-rounded-md"
-            title={`${SONG.title} - ${SONG.artist}`}
-          />
+          <Button
+            variant={Button.variant.SIMPLE}
+            onClick={() => {
+              const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
+              setIsAudioPlaying(audioElement.paused ? true : false);
+
+              if (audioElement.paused) {
+                audioElement.play();
+                audioElement.volume = 0.5;
+              } else {
+                audioElement.pause();
+              }
+            }}
+          >
+            <Icon
+              icon={isAudioPlaying ? Icon.icon.PAUSE : Icon.icon.PLAY}
+              size={28}
+              wrapperClassName="dfr-bg-color-dark-strong tw-bg-opacity-70 tw-rounded-full"
+              iconClassName="dfr-text-color-light-strong"
+            />
+            <audio id="TV-audio" className="tw-hidden">
+              <source src={SONG.audio} type="audio/mpeg" />
+            </audio>
+          </Button>
+
           <Icon
             icon={SONG.source === "youtube" ? Icon.icon.YOUTUBE : Icon.icon.SPOTIFY}
+            size={12}
             wrapperClassName="tw-absolute tw-top-0.5 tw-right-0.5"
           />
-        </Link>
+        </Block>
+
         <Block
           className={classNames(
-            "dfr-bg-color-dark-strong tw-h-full tw-w-full tw-transition-transform tw-duration-500d tw-transform tw-absolute tw-top-0 tw-left-0",
+            "dfr-bg-color-dark-strong tw-h-full tw-w-full tw-transition-transform tw-transform tw-absolute tw-top-0 tw-left-0",
             showInfo && "tw-translate-x-full",
           )}
         />
@@ -478,7 +509,9 @@ function TV() {
             "tw-rounded-full tw-h-6 tw-w-6 tw-bg-gray-700 tw-overflow-hidden tw-transform tw-transition-transform tw-duration-500d dark:dfr-bg-color-dark-strong",
             showInfo && "tw-rotate-90",
           )}
-          onClick={() => setShowInfo((currentValue) => !currentValue)}
+          onClick={() => {
+            setShowInfo((currentValue) => !currentValue);
+          }}
         >
           <Block
             className={classNames(

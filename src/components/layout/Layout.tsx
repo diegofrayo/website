@@ -87,17 +87,17 @@ function Footer({
         <Block className="tw-py-16">
           <Block>
             <FooterIcon url={`mailto:${WEBSITE_METADATA.email}`} icon={Icon.icon.GMAIL} />
-            <FooterIcon url={WEBSITE_METADATA.social.github} icon={Icon.icon.GITHUB} />
-            {/*
-            <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} />
-            <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
+            <FooterIcon url={WEBSITE_METADATA.social.github} icon={Icon.icon.GITHUB_LIGHT} />
+            <FooterIcon url={WEBSITE_METADATA.social.twitter} icon={Icon.icon.TWITTER} />
             <FooterIcon url={WEBSITE_METADATA.social["500px"]} icon={Icon.icon["500PX"]} />
             <FooterIcon url={WEBSITE_METADATA.social.couchsurfing} icon={Icon.icon.COUCHSURFING} />
+            {/*
+            <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
+            <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} />
             */}
           </Block>
         </Block>
         <Space size={0} className="dfr-border-color-primary tw-border-b tw-border-opacity-20" />
-
         <Block className="dfr-text-color-light-strong tw-py-2 tw-tdext-right tw-text-xxs">
           <InlineText is="strong">{t("layout:footer:resources_disclaimer")}:</InlineText>{" "}
           <Link
@@ -139,13 +139,13 @@ function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactEleme
     <Link
       variant={Link.variant.SIMPLE}
       href={url}
-      className="tw-inline-block tw-mr-2 last:tw-mr-0"
+      className="tw-inline-block tw-mr-2 sm:tw-mr-4 last:tw-mr-0"
       isExternalUrl
     >
       <Icon
         icon={icon}
-        wrapperClassName="dfr-bg-color-light-strong tw-rounded-full tw-p-2"
-        size="tw-w-3 tw-h-3 sm:tw-w-8
+        wrapperClassName="dfr-bg-color-light-strong dfr-border-color-light-strong tw-border tw-bg-opacity-10 tw-border-opacity-10 tw-rounded-full tw-p-2"
+        size="tw-w-4 tw-h-4 sm:tw-w-8
         sm:tw-h-8"
       />
     </Link>

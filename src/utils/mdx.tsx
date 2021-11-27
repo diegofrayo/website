@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { Code, Collapsible, Icon, Image, Link, List, Space, Block } from "~/components/primitive";
 import {
-  GitHubRepo,
   ImageWithLink,
   Playground,
   SourceCode,
@@ -11,7 +10,7 @@ import {
 } from "~/components/shared";
 import * as BlogComponents from "~/components/pages/blog/components";
 import * as MusicComponents from "~/components/pages/music/components";
-import * as ResumeComponents from "~/components/pages/resume";
+// import * as ResumeComponents from "~/components/pages/resume";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
 
@@ -68,7 +67,6 @@ export const MDXComponents = {
   Space,
 
   // Shared components
-  GitHubRepo,
   ImageWithLink,
   Playground,
   SourceCode,
@@ -77,7 +75,7 @@ export const MDXComponents = {
   // Pages components
   ...BlogComponents,
   ...MusicComponents,
-  ...ResumeComponents,
+  // ...ResumeComponents,
 };
 
 export const MDXScope = {

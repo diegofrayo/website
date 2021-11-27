@@ -21,7 +21,7 @@ function Bookmarks({ bookmarks }: T_BookmarksProps): T_ReactElement {
       <MainLayout title={PAGE_TITLE}>
         {Object.entries(bookmarks).map(([groupName, groupBookmarks], index) => {
           return (
-            <Block key={groupName}>
+            <Block key={groupName} className="tw-mb-8 last:tw-mb-0">
               <Title is="h2" variant={Title.variant.PRIMARY}>
                 {groupName}
               </Title>

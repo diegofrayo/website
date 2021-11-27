@@ -1,6 +1,5 @@
 export { default as Emoji } from "./Emoji";
 export { default as ErrorPage } from "./ErrorPage";
-export { default as GitHubRepo } from "./GitHubRepo";
 export { default as ImageWithLink } from "./ImageWithLink";
 export { default as Loader } from "./Loader";
 export { default as MDXContent } from "./MDXContent";

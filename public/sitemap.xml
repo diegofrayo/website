@@ -7,9 +7,6 @@
     <loc>https://diegofrayo.vercel.app/blog</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/resume</loc>
-  </url>
-  <url>
     <loc>https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</loc>
   </url>
   <url>
@@ -50,5 +47,8 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/rezo-por-vos</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/zamba-para-olvidarte</loc>
   </url>
 </urlset>
