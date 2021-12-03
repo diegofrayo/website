@@ -346,7 +346,7 @@ function PictureFrame() {
   useDidMount(() => {
     const PHOTOS = [
       {
-        src: "/static/images/header/1.jpg",
+        src: "/static/images/header/2.jpg",
         portrait: false,
       },
     ];
@@ -363,13 +363,15 @@ function PictureFrame() {
         photo.portrait === true ? "tw-w-20" : "tw-w-32",
       )}
     >
-      <Block className="tw-p-1 tw-bg-yellow-900 tw-border-2 tw-border-yellow-700">
+      <Block
+        className={classNames(
+          "tw-p-1 tw-bg-yellow-900 tw-border-2 tw-border-yellow-700",
+          photo.portrait === true ? "tw-h-24" : "tw-h-20",
+        )}
+      >
         <Image
           src={photo.src}
-          className={classNames(
-            "dfr-transition-opacity tw-block tw-h-full tw-w-full tw-rounded-md tw-overflow-hidden tw-border-2 tw-border-yellow-700",
-            photo.portrait === true ? "tw-h-24" : "tw-h-20",
-          )}
+          className="dfr-transition-opacity tw-block tw-h-full tw-w-full tw-rounded-md tw-overflow-hidden tw-border-2 tw-border-yellow-700"
           alt="Photography taken by Diego Rayo"
         />
       </Block>
@@ -434,12 +436,14 @@ function TV() {
   );
 
   const SONG = {
-    title: "Rock para el Negro Atila",
-    artist: "Patricio Rey y sus Redonditos de Ricota",
-    thumbnail: "https://i.scdn.co/image/ab67616d0000b273074392d2ae6b119d67289def",
+    title: "Y Mientras Tanto el Sol Se Muere - En Vivo",
+    artist: "Los Fundamentalistas del Aire Acondicionado",
+    duration: "4:32",
+    thumbnail: "https://i.scdn.co/image/ab67616d0000b273307b05f5ed296e41556409d0",
     source: "spotify",
+    url: "https://open.spotify.com/track/4kyqER2JEip8vrxwtutTsO",
     audio:
-      "https://p.scdn.co/mp3-preview/f055990a36a0e7cdf2352085e1387e7e31938cc2?cid=a46f5c5745a14fbf826186da8da5ecc3",
+      "https://p.scdn.co/mp3-preview/f4279d67dc7935d035d1be666d136b73c27a62d8?cid=a46f5c5745a14fbf826186da8da5ecc3",
   };
 
   return (
@@ -472,7 +476,7 @@ function TV() {
               wrapperClassName="dfr-bg-color-dark-strong tw-bg-opacity-70 tw-rounded-full"
               iconClassName="dfr-text-color-light-strong"
             />
-            <audio id="TV-audio" className="tw-hidden">
+            <audio id="TV-audio" className="tw-hidden" onEnded={() => setIsAudioPlaying(false)}>
               <source src={SONG.audio} type="audio/mpeg" />
             </audio>
           </Button>
@@ -511,6 +515,9 @@ function TV() {
           )}
           onClick={() => {
             setShowInfo((currentValue) => !currentValue);
+
+            const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
+            audioElement.currentTime = 0;
           }}
         >
           <Block

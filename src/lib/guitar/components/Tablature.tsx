@@ -2,6 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Space, Block, Text, InlineText } from "~/components/primitive";
+import { AuthService } from "~/auth";
 import { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { createArray } from "~/utils/misc";
 
@@ -13,6 +14,7 @@ import {
   checkGuitarStringValidity,
   checkTablatureSpaceValidity,
 } from "../utils";
+import { useDidMount } from "~/hooks";
 
 interface I_SpacePosition {
   space: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | "x";
@@ -43,6 +45,7 @@ type T_Position = (
 type T_TablatureProps = {
   positions?: (T_Position | T_Position[])[];
   notes?: string;
+  authRequired?: boolean;
 };
 
 function Tablature(props: T_TablatureProps): T_ReactElement {
@@ -50,9 +53,14 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
     // props
     notes,
 
+    // states
+    hasToRender,
+
     // vars
     parsedPositions,
   } = useController(props);
+
+  if (!hasToRender) return null;
 
   return (
     <Block className="tw-text-base">
@@ -148,9 +156,21 @@ export default Tablature;
 
 // --- Controller ---
 
-function useController({ positions, notes }: T_TablatureProps): Pick<T_TablatureProps, "notes"> & {
+function useController({ positions, notes, authRequired }: T_TablatureProps): Pick<
+  T_TablatureProps,
+  "notes"
+> & {
   parsedPositions: T_TablatureProps["positions"] | undefined;
+  hasToRender: boolean;
 } {
+  const [hasToRender, setHasToRender] = React.useState(false);
+
+  useDidMount(() => {
+    if (!authRequired || (authRequired && AuthService.isUserLoggedIn())) {
+      setHasToRender(true);
+    }
+  });
+
   function getPositions(positions: T_TablatureProps["positions"]): (T_Position | T_Position[])[] {
     return (positions || []).map((position) => {
       if (Array.isArray(position)) {
@@ -195,6 +215,9 @@ function useController({ positions, notes }: T_TablatureProps): Pick<T_Tablature
   return {
     // props
     notes,
+
+    // states
+    hasToRender,
 
     // vars
     parsedPositions:

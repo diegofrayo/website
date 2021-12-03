@@ -22,7 +22,9 @@
     "scripts:chords": "node --experimental-json-modules scripts/chords.mjs",
     "scripts:rss": "node --experimental-json-modules scripts/rss.mjs",
     "scripts:sitemap": "node --experimental-json-modules scripts/sitemap.mjs",
-    "scripts:styles": "node scripts/styles/css-vars.js"
+    "scripts:styles": "node scripts/styles/css-vars.js",
+    "===== AUX/DEV =====": "",
+    "scripts:commit": "sh ./.husky/minor-commit.sh"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.0",
