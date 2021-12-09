@@ -19,7 +19,7 @@
     <loc>https://diegofrayo.vercel.app/music/chords</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/music/mandolin</loc>
+    <loc>https://diegofrayo.vercel.app/music/el-tiempo-esta-despues</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/que-ves-el-cielo</loc>
@@ -28,13 +28,13 @@
     <loc>https://diegofrayo.vercel.app/music/ando-ganas</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/music/el-tiempo-esta-despues</loc>
+    <loc>https://diegofrayo.vercel.app/music/todas-las-hojas-son-del-viento</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/los-libros-de-la-buena-memoria</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/music/todas-las-hojas-son-del-viento</loc>
+    <loc>https://diegofrayo.vercel.app/music/mandolin</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/te-para-tres</loc>
@@ -53,5 +53,11 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/zamba-para-olvidarte</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/cancion-para-mi-muerte</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/rasguna-las-piedras</loc>
   </url>
 </urlset>

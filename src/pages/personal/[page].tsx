@@ -1,16 +1,16 @@
 import { GetStaticPaths } from "next";
 
-import PlaygroundPage, { T_PageProps } from "~/components/pages/playground/[page]";
+import PersonalPage, { T_PageProps } from "~/components/pages/personal/[page]";
 import { getPageContentStaticProps } from "~/i18n";
-import { PLAYGROUND_PAGES } from "~/utils/constants";
+import { PERSONAL_PAGES } from "~/utils/constants";
 
-export default PlaygroundPage;
+export default PersonalPage;
 
 // --- Next.js functions ---
 
 export const getStaticPaths: GetStaticPaths<T_PageProps> = async function getStaticPaths() {
   return {
-    paths: PLAYGROUND_PAGES.map((page) => {
+    paths: PERSONAL_PAGES.map((page) => {
       return { params: { page: page.slug } };
     }),
     fallback: false,

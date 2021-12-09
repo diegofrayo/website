@@ -116,12 +116,8 @@ function MainMenu(): T_ReactElement {
         setItems([
           ...createItems(),
           {
-            label: translator.t("layout:header:common:menu_item_bookmarks"),
-            url: ROUTES.BOOKMARKS,
-          },
-          {
-            label: translator.t("layout:header:common:menu_item_playground"),
-            url: ROUTES.PLAYGROUND,
+            label: translator.t("layout:header:common:menu_item_personal"),
+            url: ROUTES.PERSONAL,
             locale: I18nService.getDefaultLocale(),
           },
         ]);
@@ -157,8 +153,18 @@ function MainMenu(): T_ReactElement {
       },
       */
       {
+        label: translator.t("layout:header:common:menu_item_bookmarks"),
+        url: ROUTES.BOOKMARKS,
+        locale: undefined,
+      },
+      {
         label: translator.t("layout:header:menu:music"),
         url: ROUTES.MUSIC,
+        locale: undefined,
+      },
+      {
+        label: translator.t("layout:header:menu:projects"),
+        url: ROUTES.PROJECTS,
         locale: undefined,
       },
     ];
@@ -346,8 +352,8 @@ function PictureFrame() {
   useDidMount(() => {
     const PHOTOS = [
       {
-        src: "/static/images/header/2.jpg",
-        portrait: false,
+        src: "/static/images/header/5.jpg",
+        portrait: true,
       },
     ];
 
@@ -360,7 +366,8 @@ function PictureFrame() {
     <Block
       className={classNames(
         "dfr-PictureFrame tw-mb-8 tw-mx-auto tw-relative tw-transition-transform tw-duration-500d tw-transform tw-rotate-2 hover:tw-rotate-0",
-        photo.portrait === true ? "tw-w-20" : "tw-w-32",
+
+        photo.portrait === true ? "dfr-PictureFrame--portrait tw-w-20" : "tw-w-32",
       )}
     >
       <Block
@@ -407,6 +414,20 @@ function PictureFrame() {
           @apply tw--rotate-45;
           right: 46px;
         }
+
+        :global(.dfr-PictureFrame--portrait)::before,
+        :global(.dfr-PictureFrame--portrait)::after {
+          height: 34px;
+          top: -18px;
+        }
+
+        :global(.dfr-PictureFrame--portrait)::before {
+          transform: rotate(-25deg);
+        }
+
+        :global(.dfr-PictureFrame--portrait)::after {
+          transform: rotate(25deg);
+        }
       `}</style>
     </Block>
   );
@@ -436,14 +457,14 @@ function TV() {
   );
 
   const SONG = {
-    title: "Y Mientras Tanto el Sol Se Muere - En Vivo",
-    artist: "Los Fundamentalistas del Aire Acondicionado",
-    duration: "4:32",
-    thumbnail: "https://i.scdn.co/image/ab67616d0000b273307b05f5ed296e41556409d0",
+    title: "Juguetes Perdidos (En Vivo)",
+    artist: "Indio Solari y los Fundamentalistas del Aire Acondicionado",
+    duration: "7:02",
+    thumbnail: "https://i.scdn.co/image/ab67616d0000b273b951223171ecfabe6ac97335",
     source: "spotify",
-    url: "https://open.spotify.com/track/4kyqER2JEip8vrxwtutTsO",
+    url: "https://open.spotify.com/track/1SBGb9SOYwb8H7LhK5daAS",
     audio:
-      "https://p.scdn.co/mp3-preview/f4279d67dc7935d035d1be666d136b73c27a62d8?cid=a46f5c5745a14fbf826186da8da5ecc3",
+      "https://p.scdn.co/mp3-preview/af49bab92a964225ea8b17829049a5d19b23e77b?cid=a46f5c5745a14fbf826186da8da5ecc3",
   };
 
   return (

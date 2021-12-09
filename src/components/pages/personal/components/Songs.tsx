@@ -67,7 +67,7 @@ export default SongsPage;
 function useController(): T_UseController {
   const { isLoading, error, data } = useQuery<T_Data>("songs", async () => {
     const { data } = await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/assets`, {
-      file: `pages/playground/[page]/songs/data.json`,
+      file: `pages/personal/[page]/songs/data.json`,
     });
 
     return data;

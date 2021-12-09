@@ -4,16 +4,16 @@ import dynamic from "next/dynamic";
 import { Page, MainLayout } from "~/components/layout";
 import { withAuth } from "~/auth";
 import type { T_ReactElement } from "~/types";
-import { PLAYGROUND_PAGES } from "~/utils/constants";
+import { PERSONAL_PAGES } from "~/utils/constants";
 
-const PLAYGROUND_PAGES_COMPONENTS = PLAYGROUND_PAGES.map((page) => {
+const PERSONAL_PAGES_COMPONENTS = PERSONAL_PAGES.map((page) => {
   return {
     ...page,
     Component: dynamic(() => import(`./components/${page.componentName}`)),
   };
 });
 
-function PlaygroundPage(props: T_PageProps): T_ReactElement {
+function PersonalPage(props: T_PageProps): T_ReactElement {
   const {
     // vars
     Component,
@@ -34,7 +34,7 @@ function PlaygroundPage(props: T_PageProps): T_ReactElement {
   );
 }
 
-export default withAuth(PlaygroundPage, {
+export default withAuth(PersonalPage, {
   allowIf: (props) => ["films", "whatsapp"].includes(props.page),
 });
 
@@ -44,7 +44,7 @@ function useController({ page }: T_PageProps): {
   title: string;
   Component: any;
 } {
-  const pageConfig = PLAYGROUND_PAGES_COMPONENTS.find((item) => item.slug === page);
+  const pageConfig = PERSONAL_PAGES_COMPONENTS.find((item) => item.slug === page);
   if (!pageConfig) throw new Error(`"${page}" not found`);
 
   return {

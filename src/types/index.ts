@@ -57,7 +57,8 @@ export type T_PageRoute =
   | "/blog/[slug]"
   | "/music"
   | "/music/[song]"
-  | "/playground"
+  | "/personal"
+  | "/projects"
   | "/sign-in"
   | "/404"
   | "/500";
@@ -120,6 +121,7 @@ export type T_Film = {
   calification: number;
   cover: string;
   addedDate: string;
+  isPublic: boolean;
 };
 
 // --- Books ---
@@ -133,6 +135,7 @@ export type T_Book = {
   addedDate: string;
   url: string;
   cover: string;
+  isPublic: boolean;
 };
 
 // --- TimeLine ---
@@ -226,6 +229,7 @@ export enum E_Icons {
   "YOUTUBE" = "YOUTUBE",
 
   "ARROW_UP" = "ARROW_UP",
+  "BOOK_OPEN" = "BOOK_OPEN",
   "CALENDAR" = "CALENDAR",
   "CHECK" = "CHECK",
   "CHEVRON_DOUBLE_DOWN" = "CHEVRON_DOUBLE_DOWN",
@@ -238,13 +242,16 @@ export enum E_Icons {
   "DOTS_CIRCLE_HORIZONTAL_SOLID" = "DOTS_CIRCLE_HORIZONTAL_SOLID",
   "EDIT" = "EDIT",
   "EXTERNAL_LINK" = "EXTERNAL_LINK",
+  "FILM" = "FILM",
   "HEART" = "HEART",
   "LINK" = "LINK",
   "MENU" = "MENU",
   "MINUS" = "MINUS",
   "MOON" = "MOON",
+  "MUSIC_NOTE" = "MUSIC_NOTE",
   "PAUSE" = "PAUSE",
   "PLAY" = "PLAY",
+  "PRESENTATION_CHART_LINE" = "PRESENTATION_CHART_LINE",
   "REPLY" = "REPLY",
   "STAR" = "STAR",
   "SUN" = "SUN",

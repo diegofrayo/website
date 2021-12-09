@@ -22,7 +22,8 @@ async function main() {
       // { path: "/about-me", hasToBeIndexed: true },
       // { path: "/resume", hasToBeIndexed: true },
       { path: "/music", hasToBeIndexed: false },
-      { path: "/playground", hasToBeIndexed: false },
+      { path: "/personal", hasToBeIndexed: false },
+      { path: "/projects", hasToBeIndexed: false },
     ]
       .concat(
         Object.values(BLOG.posts).map((post) => {

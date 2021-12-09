@@ -1,7 +1,7 @@
-import PlaygroundPage from "~/components/pages/playground";
+import PersonalPage from "~/components/pages/personal";
 import { getPageContentStaticProps } from "~/i18n";
 
-export default PlaygroundPage;
+export default PersonalPage;
 
 // --- Next.js functions ---
 

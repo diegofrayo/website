@@ -1,5 +1,6 @@
 import {
   ArrowUpIcon,
+  BookOpenIcon,
   CalendarIcon,
   ChevronDoubleDownIcon,
   ChevronDownIcon,
@@ -8,11 +9,14 @@ import {
   CodeIcon,
   DotsCircleHorizontalIcon,
   ExternalLinkIcon,
+  FilmIcon,
   LinkIcon,
   MenuIcon,
+  MusicNoteIcon,
   PauseIcon,
   PencilAltIcon,
   PlayIcon,
+  PresentationChartLineIcon,
   ReplyIcon,
   XIcon,
   ZoomInIcon,
@@ -179,6 +183,34 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     },
   },
 
+  PRESENTATION_CHART_LINE: {
+    isLibraryIcon: true,
+    icon: PresentationChartLineIcon,
+    props: {
+      className: "",
+    },
+  },
+  FILM: {
+    isLibraryIcon: true,
+    icon: FilmIcon,
+    props: {
+      className: "",
+    },
+  },
+  MUSIC_NOTE: {
+    isLibraryIcon: true,
+    icon: MusicNoteIcon,
+    props: {
+      className: "",
+    },
+  },
+  BOOK_OPEN: {
+    isLibraryIcon: true,
+    icon: BookOpenIcon,
+    props: {
+      className: "",
+    },
+  },
   ARROW_UP: {
     isLibraryIcon: true,
     icon: ArrowUpIcon,
