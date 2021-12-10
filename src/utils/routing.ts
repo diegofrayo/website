@@ -1,6 +1,6 @@
-import { T_Object, T_PageRoute } from "~/types";
+import { T_PageRoute } from "~/types";
 
-export const ROUTES: T_Object<T_PageRoute> = {
+export const ROUTES: Record<T_RoutesKeys, T_PageRoute> = {
   HOME: "/",
   // ABOUT_ME: "/about-me",
   // RESUME: "/resume",
@@ -21,3 +21,19 @@ export const DYNAMIC_MAIN_PAGES = [
   // "about-me",
   // "resume",
 ];
+
+// --- Types ---
+
+type T_RoutesKeys =
+  | "HOME"
+  | "BOOKMARKS"
+  | "BLOG"
+  | "BLOG_DETAILS"
+  | "MUSIC"
+  | "MUSIC_DETAILS"
+  | "PERSONAL"
+  | "PROJECTS"
+  | "TIMER"
+  | "SIGN_IN"
+  | "ERROR_404"
+  | "ERROR_500";

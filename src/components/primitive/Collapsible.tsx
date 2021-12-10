@@ -29,6 +29,12 @@ function Collapsible(props: T_CollapsibleProps): T_ReactElement {
         {title}
       </summary>
       <Block className="tw-pl-5 tw-mt-2">{children}</Block>
+
+      <style jsx>{`
+        summary {
+          outline: 0;
+        }
+      `}</style>
     </details>
   );
 }

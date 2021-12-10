@@ -14,6 +14,7 @@ import {
   Text,
   Title,
 } from "~/components/primitive";
+import { withAuth } from "~/auth";
 import { useDidMount } from "~/hooks";
 import type { T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
@@ -41,17 +42,7 @@ function TimerPage(): T_ReactElement {
             <InlineText className="tw-align-middle"> Volver al inicio</InlineText>
           </Link>
         </Block>
-        <Block
-          is="section"
-          className="tw-h-56 tw-flex-col tw-bg-red-600 tw-text-white"
-          display="tw-flex"
-          align="CENTER"
-        >
-          <Text className="tw-text-8xl tw-mb-4">12:00</Text>
-          <Title is="h2" variant={Title.variant.UNSTYLED} size={Title.size.LG}>
-            Calentamiento
-          </Title>
-        </Block>
+        <Time />
 
         <Block className="tw-p-2">
           <Stats data={getStats(ROUTINE)} />
@@ -65,7 +56,7 @@ function TimerPage(): T_ReactElement {
   );
 }
 
-export default TimerPage;
+export default withAuth(TimerPage);
 
 // --- Controller ---
 
@@ -283,6 +274,62 @@ function useController() {
 }
 
 // --- Components ---
+
+function Time() {
+  const [isRunning, setIsRunning] = React.useState(false);
+  const [time, setTime] = React.useState(10);
+  const [interval, setIntervals] = React.useState<NodeJS.Timeout | null>();
+
+  const handleStartClick = () => {
+    if (interval) {
+      clearInterval(interval);
+      setIntervals(null);
+      console.log("Interval stopped");
+    } else {
+      const nn = setInterval(() => {
+        console.log("Interval running");
+        setTime((currentValue) => currentValue - 1);
+      }, 1000);
+
+      setIntervals(nn);
+    }
+
+    setIsRunning((currentValue) => !currentValue);
+  };
+
+  React.useEffect(
+    function stopTimer() {
+      if (time === 0 && interval) {
+        setIsRunning(false);
+        clearInterval(interval);
+        setIntervals(null);
+        console.log("Interval stopped");
+      }
+    },
+    [time, interval],
+  );
+
+  function fillNumber(number) {
+    return `${number < 10 ? "0" : ""}${number}`;
+  }
+
+  return (
+    <Block
+      is="section"
+      className="tw-h-56 tw-flex-col tw-bg-red-600 tw-text-white"
+      display="tw-flex"
+      align="CENTER"
+    >
+      <Text className="tw-text-8xl tw-mb-4">00:{fillNumber(time)}</Text>
+      <Title is="h2" variant={Title.variant.UNSTYLED} size={Title.size.LG}>
+        Calentamiento
+      </Title>
+      <Button onClick={handleStartClick}>
+        <Icon icon={isRunning ? Icon.icon.PAUSE : Icon.icon.PLAY} />
+      </Button>
+    </Block>
+  );
+}
 
 function Stats({
   data,

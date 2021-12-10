@@ -4,7 +4,7 @@ const colors = require("tailwindcss/colors");
 const COMMON_COLORS = {
   ["colorful-primary"]: {
     value: {
-      100: colors.yellow["500"],
+      100: colors.yellow["600"],
       200: colors.yellow["700"],
     },
   },

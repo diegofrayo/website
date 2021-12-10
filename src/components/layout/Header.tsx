@@ -115,6 +115,7 @@ function MainMenu(): T_ReactElement {
 
         setItems([
           ...createItems(),
+          /*
           {
             label: translator.t("layout:header:common:menu_item_bookmarks"),
             url: ROUTES.BOOKMARKS,
@@ -123,6 +124,12 @@ function MainMenu(): T_ReactElement {
           {
             label: "Timer",
             url: ROUTES.TIMER,
+            locale: undefined,
+          },
+          */
+          {
+            label: translator.t("layout:header:menu:projects"),
+            url: ROUTES.PROJECTS,
             locale: undefined,
           },
           {
@@ -165,11 +172,6 @@ function MainMenu(): T_ReactElement {
       {
         label: translator.t("layout:header:menu:music"),
         url: ROUTES.MUSIC,
-        locale: undefined,
-      },
-      {
-        label: translator.t("layout:header:menu:projects"),
-        url: ROUTES.PROJECTS,
         locale: undefined,
       },
     ];
@@ -295,7 +297,7 @@ const SettingsMenu = withSafeRenderingComponent(function SettingsMenu(): T_React
                 size={18}
               />
             </Button>
-            */}
+             */}
           </MenuItem>
 
           <EnvironmentMenuItem />

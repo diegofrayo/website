@@ -22,6 +22,18 @@ function PersonalPage(): T_ReactElement {
           <PagesList pages={PERSONAL_PAGES.slice(0, 4)} />
           <Space size={4} variant={Space.variant.DASHED} />
           <PagesList pages={PERSONAL_PAGES.slice(4)} />
+          <Space size={4} variant={Space.variant.DASHED} />
+          <Link
+            variant={Link.variant.SECONDARY}
+            href={ROUTES.BOOKMARKS}
+            className="dfr-border-color-primary tw-flex tw-items-center tw-justify-between tw-border tw-border-dotted tw-h-20 tw-my-2 tw-p-2"
+          >
+            <Icon icon={Icon.icon.COG} size={32} />
+            <InlineText className="tw-mx-2 tw-flex-1 tw-text-center tw-truncate">
+              bookmarks
+            </InlineText>
+            <Icon icon={Icon.icon.COG} size={32} />
+          </Link>
         </Block>
       </MainLayout>
     </Page>

@@ -81,9 +81,9 @@ export const getStaticProps = getPageContentStaticProps<T_SitePageProps, { page:
       scope: {
         DATA: {
           ...MDXScope.DATA,
-          ...(`/${page}` === ROUTES.RESUME && {
-            resume: { timeline: pageContent.page?.timeline },
-          }),
+          // ...(`/${page}` === ROUTES.RESUME && {
+          //   resume: { timeline: pageContent.page?.timeline },
+          // }),
         },
       },
     });

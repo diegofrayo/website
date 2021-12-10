@@ -132,7 +132,11 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           rel="stylesheet"
         />
 
-        {[ROUTES.HOME, ROUTES.RESUME, ROUTES.ABOUT_ME].includes(config.pathname as T_PageRoute) && (
+        {[
+          ROUTES.HOME,
+          // ROUTES.RESUME,
+          // ROUTES.ABOUT_ME
+        ].includes(config.pathname as T_PageRoute) && (
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
