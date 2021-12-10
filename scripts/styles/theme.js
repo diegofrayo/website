@@ -1,23 +1,24 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
 
 const COMMON_COLORS = {
   ["colorful-primary"]: {
     value: {
-      100: defaultTheme.colors.yellow["500"],
-      200: defaultTheme.colors.yellow["700"],
+      100: colors.yellow["500"],
+      200: colors.yellow["700"],
     },
   },
   ["colorful-secondary"]: {
     value: {
-      100: defaultTheme.colors.red["700"],
-      200: defaultTheme.colors.red["400"],
+      100: colors.red["700"],
+      200: colors.red["400"],
     },
   },
   ["color-dark-strong"]: {
-    value: defaultTheme.colors.black,
+    value: colors.black,
   },
   ["color-light-strong"]: {
-    value: defaultTheme.colors.white,
+    value: colors.white,
   },
 };
 
@@ -47,38 +48,38 @@ const MY_THEME = {
   ["bg-color-layout"]: {
     property: "backgroundColor",
     value: {
-      light: defaultTheme.colors.white,
+      light: colors.white,
       dark: "#282c34",
     },
   },
   ["bg-color-primary"]: {
     property: "backgroundColor",
     value: {
-      light: defaultTheme.colors.gray["100"],
-      dark: defaultTheme.colors.gray["700"],
+      light: colors.gray["100"],
+      dark: colors.gray["700"],
     },
   },
 
   ["border-color-primary"]: {
     property: "borderColor",
     value: {
-      light: defaultTheme.colors.gray["200"],
-      dark: defaultTheme.colors.gray["600"],
+      light: colors.gray["200"],
+      dark: colors.gray["600"],
     },
   },
 
   ["text-color-primary"]: {
     property: "color",
     value: {
-      light: defaultTheme.colors.gray["700"],
-      dark: defaultTheme.colors.gray["100"],
+      light: colors.gray["700"],
+      dark: colors.gray["100"],
     },
   },
   ["text-color-secondary"]: {
     property: "color",
     value: {
-      light: defaultTheme.colors.gray["500"],
-      dark: defaultTheme.colors.gray["400"],
+      light: colors.gray["500"],
+      dark: colors.gray["400"],
     },
   },
 

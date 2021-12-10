@@ -1,19 +1,19 @@
-const plugin = require("tailwindcss/plugin");
-const { generateTailwindConfig } = require("./scripts/styles/tailwind");
+const myCustomClassesPlugin = require("./scripts/styles/tailwind");
 
 module.exports = {
-  // mode: "jit",
   prefix: "tw-",
   darkMode: "class",
   important: false,
-  plugins: [plugin(myCustomClassesPlugin)],
-  purge: {
-    enabled: process.env.NODE_ENV === "production",
-    content: ["./src/**/*.{ts,tsx}"],
-    options: {
-      safelist: [/^(sm:|md:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/, /dfr-/],
+  plugins: [myCustomClassesPlugin],
+  content: ["./src/**/*.{ts,tsx}"],
+  safelist: [
+    {
+      pattern: /^(sm:|md:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/,
     },
-  },
+    {
+      pattern: /dfr-/,
+    },
+  ],
   theme: {
     screens: {
       sm: "640px",
@@ -38,7 +38,7 @@ module.exports = {
       },
       fontSize: {
         xxs: "0.6rem",
-        // test: "0rem", // useful to release a tailwind build process
+        // test: "0rem",
       },
       borderWidth: {
         12: "12px",
@@ -48,24 +48,4 @@ module.exports = {
       },
     },
   },
-  variants: {
-    borderRadius: ["responsive", "last", "hover", "dark"],
-    borderWidth: ["responsive", "last", "hover", "dark"],
-    boxShadow: ["responsive", "hover", "dark"],
-    fontWeight: ["hover"],
-    height: ["responsive", "last", "hover", "dark"],
-    inset: ["responsive", "hover"],
-    margin: ["responsive", "last", "dark"],
-    opacity: ["responsive", "hover", "dark"],
-    padding: ["responsive", "last", "hover", "dark"],
-    translate: ["hover"],
-    width: ["responsive", "last", "hover", "dark"],
-  },
 };
-
-// --- Plugins ---
-
-function myCustomClassesPlugin({ addUtilities, e }) {
-  const config = generateTailwindConfig(e);
-  addUtilities(config, { respectPrefix: false });
-}

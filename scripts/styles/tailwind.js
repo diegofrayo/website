@@ -1,3 +1,4 @@
+const plugin = require("tailwindcss/plugin");
 const colorConvert = require("color-convert");
 const MY_THEME = require("./theme");
 
@@ -17,7 +18,7 @@ function generateTailwindConfig(e) {
         result[`.tw-dark .${e(`dark:dfr-${key}`)}`] = enhancedValue.dark;
 
         // classes to use with @apply directive
-        result[`.${e(`dark:v:dfr-${key}`)}`] = enhancedValue.dark;
+        result[`.${e(`dark-v-dfr-${key}`)}`] = enhancedValue.dark;
       } else {
         Object.keys(config.value).forEach((valueKey) => {
           const enhancedValue = createTailwindStyleValue(config.property, config.value[valueKey]);
@@ -39,7 +40,12 @@ function generateTailwindConfig(e) {
   }, {});
 }
 
-module.exports = { generateTailwindConfig };
+function myCustomClassesPlugin({ addUtilities, e }) {
+  const config = generateTailwindConfig(e);
+  addUtilities(config, { respectPrefix: false });
+}
+
+module.exports = plugin(myCustomClassesPlugin);
 
 // --- Utils ---
 

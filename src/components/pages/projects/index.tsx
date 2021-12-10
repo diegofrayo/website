@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Text } from "~/components/primitive";
-import { withAuth } from "~/auth";
 import type { T_ReactElement } from "~/types";
 
 function ProjectsPage(): T_ReactElement {
@@ -22,4 +21,4 @@ function ProjectsPage(): T_ReactElement {
   );
 }
 
-export default withAuth(ProjectsPage);
+export default ProjectsPage;

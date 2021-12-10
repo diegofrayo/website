@@ -67,9 +67,11 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
               storageKey="DFR_THEME"
               defaultTheme="system"
               enableSystem={true}
-              themes={["light", "dark"]}
               attribute="class"
-              value={{ light: "tw-light", dark: "tw-dark" }}
+              themes={["light"]}
+              value={{ light: "tw-light" }}
+              // themes={["light", "dark"]}
+              // value={{ light: "tw-light", dark: "tw-dark" }}
             >
               <Component {...pageProps} />
               <ProgressBar />

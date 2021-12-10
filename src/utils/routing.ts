@@ -11,6 +11,7 @@ export const ROUTES: T_Object<T_PageRoute> = {
   MUSIC_DETAILS: "/music/[song]",
   PERSONAL: "/personal",
   PROJECTS: "/projects",
+  TIMER: "/timer",
   SIGN_IN: "/sign-in",
   ERROR_404: "/404",
   ERROR_500: "/500",

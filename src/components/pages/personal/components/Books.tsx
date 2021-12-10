@@ -20,7 +20,7 @@ function Books(): T_ReactElement {
                   key={id}
                   variant={Link.variant.UNSTYLED}
                   href={url}
-                  className="dfr-border-color-dark-strong tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 tw-shadow-lg tw-transform tw-duration-300 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 dark:dfr-border-color-primary hover:tw-shadow-2xl hover:tw-translate-x-1 hover:tw--translate-y-1 hover:tw-rotate-0 hover:tw-opacity-75 sm:tw--rotate-1"
+                  className="dfr-border-color-dark-strong tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 tw-shadow-lg tw-duration-500 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 dark:dfr-border-color-primary hover:tw-shadow-2xl hover:tw-translate-x-1 hover:tw--translate-y-1 hover:tw-rotate-0 hover:tw-opacity-75 sm:tw--rotate-1"
                   isExternalUrl
                 >
                   <article

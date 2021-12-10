@@ -59,6 +59,7 @@ export type T_PageRoute =
   | "/music/[song]"
   | "/personal"
   | "/projects"
+  | "/timer"
   | "/sign-in"
   | "/404"
   | "/500";

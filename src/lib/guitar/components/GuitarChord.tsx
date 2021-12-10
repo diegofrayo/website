@@ -115,7 +115,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
             >
               <InlineText
                 className={classNames(
-                  "tw-inline-block tw-transition-all tw-transform tw-w-4",
+                  "tw-inline-block tw-transition-all tw-w-4",
                   showChordInput && "tw-rotate-90",
                 )}
               >

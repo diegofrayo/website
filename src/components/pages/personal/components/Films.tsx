@@ -113,7 +113,7 @@ function Films(): T_ReactElement {
                           : `https://www.imdb.com/title/${id}`
                       }
                       className={classNames(
-                        "tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 tw-shadow-lg hover:tw-shadow-2xl tw-transform tw-duration-300 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 hover:tw-opacity-75",
+                        "tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 tw-shadow-lg tw-duration-500 hover:tw-shadow-2xl hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 hover:tw-opacity-75",
                         index % 2 === 0 ? "sm:tw-rotate-2" : "sm:tw--rotate-2",
                       )}
                       isExternalUrl

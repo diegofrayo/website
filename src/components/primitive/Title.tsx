@@ -8,6 +8,7 @@ import Icon from "./Icon";
 import Link from "./Link";
 
 enum E_Size {
+  XS = "XS",
   SM = "SM",
   MD = "MD",
   LG = "LG",
@@ -110,10 +111,10 @@ function useController({
         PRIMARY: classNames(
           "dfr-text-color-dark-strong dark:dfr-text-color-light-strong",
           {
-            h4: "tw-text-xl",
-            h3: "tw-text-2xl",
-            h2: "tw-text-3xl",
             h1: "tw-text-4xl",
+            h2: "tw-text-3xl",
+            h3: "tw-text-2xl",
+            h4: "tw-text-xl",
           }[tag],
         ),
         SECONDARY: "dfr-text-color-dark-strong dark:dfr-text-color-light-strong",
@@ -121,6 +122,7 @@ function useController({
       }[variant],
       size !== undefined &&
         {
+          XS: "tw-text-md",
           SM: "tw-text-xl",
           MD: "tw-text-2xl",
           LG: "tw-text-3xl",

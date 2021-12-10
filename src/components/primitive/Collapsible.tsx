@@ -1,11 +1,10 @@
 import * as React from "react";
 
-import type { T_ReactChildrenProp, T_ReactElement, T_ReactRefObject } from "~/types";
+import type { T_HTMLElementAttributes, T_ReactElement, T_ReactRefObject } from "~/types";
 
 import Block from "./Block";
 
-type T_CollapsibleProps = {
-  children: T_ReactChildrenProp;
+type T_CollapsibleProps = T_HTMLElementAttributes["details"] & {
   title?: string;
   openByDefault?: boolean;
 };
@@ -15,6 +14,7 @@ function Collapsible(props: T_CollapsibleProps): T_ReactElement {
     // props
     children,
     title,
+    className,
 
     // refs
     containerRef,
@@ -24,7 +24,7 @@ function Collapsible(props: T_CollapsibleProps): T_ReactElement {
   } = useController(props);
 
   return (
-    <details ref={containerRef}>
+    <details className={className} ref={containerRef}>
       <summary className="tw-font-bold" role="button" onClick={handleToggleClick}>
         {title}
       </summary>
@@ -37,7 +37,7 @@ export default Collapsible;
 
 // --- Controller ---
 
-type T_UseController = Pick<T_CollapsibleProps, "children" | "title"> & {
+type T_UseController = Pick<T_CollapsibleProps, "children" | "title" | "className"> & {
   containerRef: T_ReactRefObject<HTMLDetailsElement>;
   handleToggleClick: () => void;
 };
@@ -46,6 +46,7 @@ function useController({
   children,
   title = "",
   openByDefault = false,
+  className = "",
 }: T_CollapsibleProps): T_UseController {
   const [isCollapsed, setIsCollapsed] = React.useState(openByDefault);
   const containerRef = React.useRef<HTMLDetailsElement>(null);
@@ -67,6 +68,7 @@ function useController({
     // props
     children,
     title: title ? title : isCollapsed ? "Hide" : "Show",
+    className,
 
     // refs
     containerRef,

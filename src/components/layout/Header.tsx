@@ -116,6 +116,16 @@ function MainMenu(): T_ReactElement {
         setItems([
           ...createItems(),
           {
+            label: translator.t("layout:header:common:menu_item_bookmarks"),
+            url: ROUTES.BOOKMARKS,
+            locale: undefined,
+          },
+          {
+            label: "Timer",
+            url: ROUTES.TIMER,
+            locale: undefined,
+          },
+          {
             label: translator.t("layout:header:common:menu_item_personal"),
             url: ROUTES.PERSONAL,
             locale: I18nService.getDefaultLocale(),
@@ -152,11 +162,6 @@ function MainMenu(): T_ReactElement {
         locale: undefined,
       },
       */
-      {
-        label: translator.t("layout:header:common:menu_item_bookmarks"),
-        url: ROUTES.BOOKMARKS,
-        locale: undefined,
-      },
       {
         label: translator.t("layout:header:menu:music"),
         url: ROUTES.MUSIC,
@@ -225,6 +230,11 @@ const SettingsMenu = withSafeRenderingComponent(function SettingsMenu(): T_React
   const EMOJIS = { en: "🇺🇸", es: "🇪🇸" };
   const isDarkMode = theme === "dark";
 
+  useDidMount(() => {
+    if (!isDarkMode) return;
+    setTheme("light");
+  });
+
   useClickOutside(menuRef, () => {
     setShowMenu(false);
   });
@@ -276,6 +286,7 @@ const SettingsMenu = withSafeRenderingComponent(function SettingsMenu(): T_React
             <Button variant={Button.variant.SIMPLE} disabled={!isDarkMode} onClick={toggleTheme}>
               <Icon icon={Icon.icon.SUN} color="tw-text-yellow-400" size={18} />
             </Button>
+            {/*
             <Space orientation="v" size={1} />
             <Button variant={Button.variant.SIMPLE} disabled={isDarkMode} onClick={toggleTheme}>
               <Icon
@@ -284,6 +295,7 @@ const SettingsMenu = withSafeRenderingComponent(function SettingsMenu(): T_React
                 size={18}
               />
             </Button>
+            */}
           </MenuItem>
 
           <EnvironmentMenuItem />
@@ -352,7 +364,7 @@ function PictureFrame() {
   useDidMount(() => {
     const PHOTOS = [
       {
-        src: "/static/images/header/5.jpg",
+        src: "/static/images/header/3.jpg",
         portrait: true,
       },
     ];
@@ -365,7 +377,7 @@ function PictureFrame() {
   return (
     <Block
       className={classNames(
-        "dfr-PictureFrame tw-mb-8 tw-mx-auto tw-relative tw-transition-transform tw-duration-500d tw-transform tw-rotate-2 hover:tw-rotate-0",
+        "dfr-PictureFrame tw-mb-8 tw-mx-auto tw-relative tw-transition-transform tw-rotate-2 hover:tw-rotate-0",
 
         photo.portrait === true ? "dfr-PictureFrame--portrait tw-w-20" : "tw-w-32",
       )}
@@ -390,7 +402,6 @@ function PictureFrame() {
         :global(.dfr-PictureFrame)::before,
         :global(.dfr-PictureFrame)::after {
           @apply dfr-bg-color-dark-strong;
-          @apply tw-transform;
           content: " ";
           display: block;
           height: 50px;
@@ -406,27 +417,27 @@ function PictureFrame() {
         }
 
         :global(.dfr-PictureFrame)::before {
-          @apply tw-rotate-45;
+          transform: rotate(45deg);
           left: 46px;
         }
 
         :global(.dfr-PictureFrame)::after {
-          @apply tw--rotate-45;
+          transform: rotate(-45deg);
           right: 46px;
         }
 
         :global(.dfr-PictureFrame--portrait)::before,
         :global(.dfr-PictureFrame--portrait)::after {
-          height: 34px;
-          top: -18px;
+          height: 24px;
+          top: -17px;
         }
 
         :global(.dfr-PictureFrame--portrait)::before {
-          transform: rotate(-25deg);
+          transform: rotate(-40deg);
         }
 
         :global(.dfr-PictureFrame--portrait)::after {
-          transform: rotate(25deg);
+          transform: rotate(40deg);
         }
       `}</style>
     </Block>
@@ -511,7 +522,7 @@ function TV() {
 
         <Block
           className={classNames(
-            "dfr-bg-color-dark-strong tw-h-full tw-w-full tw-transition-transform tw-transform tw-absolute tw-top-0 tw-left-0",
+            "dfr-bg-color-dark-strong tw-h-full tw-w-full tw-transition-transform tw-absolute tw-top-0 tw-left-0",
             showInfo && "tw-translate-x-full",
           )}
         />
@@ -531,7 +542,7 @@ function TV() {
         </Block>
         <Button
           className={classNames(
-            "tw-rounded-full tw-h-6 tw-w-6 tw-bg-gray-700 tw-overflow-hidden tw-transform tw-transition-transform tw-duration-500d dark:dfr-bg-color-dark-strong",
+            "tw-rounded-full tw-h-6 tw-w-6 tw-bg-gray-700 tw-overflow-hidden tw-transition-transform dark:dfr-bg-color-dark-strong",
             showInfo && "tw-rotate-90",
           )}
           onClick={() => {
@@ -554,13 +565,12 @@ function TV() {
         :global(.dfr-TV)::before,
         :global(.dfr-TV)::after {
           @apply dfr-bg-color-dark-strong;
-          @apply tw-w-1;
-          @apply tw-h-4;
-          @apply tw-transform;
+          @apply tw-w-2;
+          @apply tw-h-6;
           content: " ";
           display: block;
           position: absolute;
-          top: 95%;
+          top: 90%;
           z-index: -1;
         }
 
@@ -570,12 +580,12 @@ function TV() {
         }
 
         :global(.dfr-TV)::before {
-          @apply tw-rotate-45;
+          transform: rotate(45deg);
           left: 15%;
         }
 
         :global(.dfr-TV)::after {
-          @apply tw--rotate-45;
+          transform: rotate(-45deg);
           right: 15%;
         }
       `}</style>
@@ -589,13 +599,13 @@ function Flowers() {
       <Icon
         icon={Icon.icon.FLOWER_2}
         size={20}
-        wrapperClassName="tw-absolute tw-transform tw-top-7 tw-left-2 tw--rotate-12"
+        wrapperClassName="tw-absolute tw-top-7 tw-left-2 tw--rotate-12"
       />
       <Icon icon={Icon.icon.FLOWER_3} size={48} wrapperClassName="tw-relative tw-top-0.5" />
       <Icon
         icon={Icon.icon.FLOWER_1}
         size={20}
-        wrapperClassName="tw-absolute tw-transform tw-top-7 tw-right-2 tw-rotate-12"
+        wrapperClassName="tw-absolute tw-top-7 tw-right-2 tw-rotate-12"
       />
     </Block>
   );
@@ -608,7 +618,7 @@ function Table() {
       <Icon
         icon={Icon.icon.GUITAR}
         size={44}
-        wrapperClassName="tw-relative tw-top tw-transform tw--rotate-45 tw-left-2"
+        wrapperClassName="tw-relative tw--rotate-45 tw-left-2"
       />
     </Block>
   );
