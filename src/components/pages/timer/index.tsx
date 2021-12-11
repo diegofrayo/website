@@ -26,6 +26,8 @@ function TimerPage(): T_ReactElement {
     // states
     routine,
     currentRoutineItem,
+    timerState,
+    setTimerState,
 
     // vars
     stats,
@@ -52,6 +54,8 @@ function TimerPage(): T_ReactElement {
           timeToSeconds,
           secondsToTime,
           fillNumber,
+          setTimerState,
+          timerState,
         }}
       >
         <Block className="dfr-shadow tw-max-w-sm tw-mx-auto">
@@ -88,6 +92,10 @@ const PageContext = React.createContext({
   setRoutineItemAsStarted: (number): void => {
     console.log(number);
   },
+  setTimerState: (state): void => {
+    console.log(state);
+  },
+  timerState: "NOT_STARTED",
 });
 
 const ROUTINE_ITEMS_STATUS = {
@@ -212,37 +220,43 @@ function useController() {
       },
     ],
   });
-  const [currentRoutineItem, setCurrentItem] = React.useState<T_RoutineItem | null>(null);
+  const [currentRoutineItem, setCurrentRoutineItem] = React.useState<T_RoutineItem | null>(null);
   const [currentRoutineItemIndex, setCurrentRoutineItemIndex] = React.useState<number>(0);
+  const [timerState, setTimerState] = React.useState<
+    "STOPPED" | "PAUSED" | "NOT_STARTED" | "IN_PROGRESS"
+  >("NOT_STARTED");
 
   // utils
-  function updateRoutineItemStatus(itemId, status) {
-    setRoutine({
-      ...routine,
-      items: routine.items.map((item) => {
-        if (item.id === itemId) {
+  const updateRoutineItemStatus = React.useCallback(
+    function updateRoutineItemStatus(itemId, status) {
+      setRoutine({
+        ...routine,
+        items: routine.items.map((item) => {
+          if (item.id === itemId) {
+            return {
+              ...item,
+              status,
+            };
+          }
+
           return {
             ...item,
-            status,
+            status:
+              item.status === ROUTINE_ITEMS_STATUS.IN_PROGRESS
+                ? ROUTINE_ITEMS_STATUS.NO_STARTED
+                : item.status,
           };
-        }
-
-        return {
-          ...item,
-          status:
-            item.status === ROUTINE_ITEMS_STATUS.IN_PROGRESS
-              ? ROUTINE_ITEMS_STATUS.NO_STARTED
-              : item.status,
-        };
-      }),
-    });
-  }
+        }),
+      });
+    },
+    [routine],
+  );
 
   function setRoutineItemAsStarted(itemId) {
     const selectedItemIndex = routine.items.findIndex((item) => item.id === itemId);
 
     if (selectedItemIndex !== -1) {
-      setCurrentItem(routine.items[selectedItemIndex]);
+      setCurrentRoutineItem(routine.items[selectedItemIndex]);
       setCurrentRoutineItemIndex(selectedItemIndex);
       setScrollPosition(0);
       updateRoutineItemStatus(itemId, ROUTINE_ITEMS_STATUS.IN_PROGRESS);
@@ -371,25 +385,37 @@ function useController() {
       );
 
       if (itemInProgress) {
-        setCurrentItem(itemInProgress);
+        setCurrentRoutineItem(itemInProgress);
       } else if (currentRoutineItem?.status !== ROUTINE_ITEMS_STATUS.NO_STARTED) {
         const itemNoStarted = routine.items
           .slice(currentRoutineItemIndex)
           .find((item) => item.status === ROUTINE_ITEMS_STATUS.NO_STARTED);
 
         if (itemNoStarted) {
-          setCurrentItem(itemNoStarted);
-          // updateRoutineItemStatus(itemNoStarted.id, ROUTINE_ITEMS_STATUS.IN_PROGRESS);
+          setCurrentRoutineItem(itemNoStarted);
+
+          if (timerState !== "NOT_STARTED") {
+            updateRoutineItemStatus(itemNoStarted.id, ROUTINE_ITEMS_STATUS.IN_PROGRESS);
+          }
         }
       }
     },
-    [routine, saveRoutineInLocalStorage, currentRoutineItemIndex, currentRoutineItem],
+    [
+      routine,
+      saveRoutineInLocalStorage,
+      currentRoutineItemIndex,
+      currentRoutineItem,
+      timerState,
+      updateRoutineItemStatus,
+    ],
   );
 
   return {
     // states
     routine,
     currentRoutineItem,
+    timerState,
+    setTimerState,
 
     // vars
     stats: getStats(routine),
@@ -418,7 +444,8 @@ function GoToHomeLink() {
 
 function Timer({ item }: { item: T_RoutineItem }) {
   // context
-  const { timeToSeconds, secondsToTime, updateRoutineItemStatus } = React.useContext(PageContext);
+  const { timeToSeconds, secondsToTime, updateRoutineItemStatus, timerState } =
+    React.useContext(PageContext);
 
   // states
   const [timerInterval, setTimerInterval] = React.useState<NodeJS.Timeout | null>(null);
@@ -427,21 +454,9 @@ function Timer({ item }: { item: T_RoutineItem }) {
   const [currentSet, setCurrentSet] = React.useState({ index: 0, isRest: false });
 
   // utils
-  const stopTimer = React.useCallback(function stopTimer(
-    timerInterval,
-    mode: "paused" | "completed",
-  ) {
-    clearInterval(timerInterval);
-    setTimerInterval(null);
-    if (mode === "completed") playSound();
-
-    console.log("Timer stopped");
-  },
-  []);
-
   const startTimer = React.useCallback(
     function startTimer() {
-      if (timerInterval) return;
+      if (timerInterval || !timerState) return;
 
       setTimerInterval(
         setInterval(() => {
@@ -451,8 +466,20 @@ function Timer({ item }: { item: T_RoutineItem }) {
         }, 1000),
       );
     },
-    [timerInterval],
+    [timerInterval, timerState],
   );
+
+  const stopTimer = React.useCallback(function stopTimer(
+    timerInterval,
+    mode: "PAUSED" | "COMPLETED",
+  ) {
+    clearInterval(timerInterval);
+    setTimerInterval(null);
+    if (mode === "COMPLETED") playSound();
+
+    console.log("Timer stopped");
+  },
+  []);
 
   function playSound() {
     try {
@@ -474,13 +501,22 @@ function Timer({ item }: { item: T_RoutineItem }) {
         startTimer();
       }
     },
-    [item, timeToSeconds],
+    [item, timeToSeconds, startTimer],
+  );
+
+  React.useEffect(
+    function updateTimerState() {
+      if (timerState === "STOPPED") {
+        stopTimer(timerInterval, "COMPLETED");
+      }
+    },
+    [timerState, timerInterval, stopTimer],
   );
 
   React.useEffect(
     function updateTimer() {
       if (time === 0 && timerInterval) {
-        stopTimer(timerInterval, "completed");
+        stopTimer(timerInterval, "COMPLETED");
 
         const nextSet = {
           index: currentSet.index + 1,
@@ -514,7 +550,7 @@ function Timer({ item }: { item: T_RoutineItem }) {
   // handlers
   function handleStartRoutineItem() {
     if (timerInterval) {
-      stopTimer(timerInterval, "paused");
+      stopTimer(timerInterval, "PAUSED");
     } else {
       startTimer();
 
@@ -672,10 +708,16 @@ function RoutineItem({
 }: {
   item: T_RoutineItem;
 }) {
-  const { setRoutineItemAsStarted, updateRoutineItemStatus } = React.useContext(PageContext);
+  const { setRoutineItemAsStarted, updateRoutineItemStatus, setTimerState } =
+    React.useContext(PageContext);
 
   // handlers
   function handleMarkAsCompletedClick() {
+    if (status === ROUTINE_ITEMS_STATUS.IN_PROGRESS) {
+      setTimerState("STOPPED");
+      setScrollPosition(0);
+    }
+
     updateRoutineItemStatus(
       id,
       status === ROUTINE_ITEMS_STATUS.COMPLETED
@@ -683,7 +725,9 @@ function RoutineItem({
         : ROUTINE_ITEMS_STATUS.COMPLETED,
     );
   }
+
   function handleStartClick() {
+    setTimerState("IN_PROGRESS");
     setRoutineItemAsStarted(id);
   }
 
