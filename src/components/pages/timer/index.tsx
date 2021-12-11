@@ -82,10 +82,10 @@ const PageContext = React.createContext({
   timeToSeconds: (number) => number,
   secondsToTime: (number) => number,
   fillNumber: (number) => number,
-  updateRoutineItemStatus: (number, status) => (): void => {
+  updateRoutineItemStatus: (number, status): void => {
     console.log(number, status);
   },
-  setRoutineItemAsStarted: (number) => (): void => {
+  setRoutineItemAsStarted: (number): void => {
     console.log(number);
   },
 });
@@ -93,7 +93,7 @@ const PageContext = React.createContext({
 const ROUTINE_ITEMS_STATUS = {
   IN_PROGRESS: "en progreso",
   NO_STARTED: "sin iniciar",
-  FINISHED: "completado",
+  COMPLETED: "completado",
 };
 
 // --- Controller ---
@@ -213,43 +213,42 @@ function useController() {
     ],
   });
   const [currentRoutineItem, setCurrentItem] = React.useState<T_RoutineItem | null>(null);
+  const [currentRoutineItemIndex, setCurrentRoutineItemIndex] = React.useState<number>(0);
 
   // utils
   function updateRoutineItemStatus(itemId, status) {
-    return () => {
-      setRoutine({
-        ...routine,
-        items: routine.items.map((item) => {
-          if (item.id === itemId) {
-            return {
-              ...item,
-              status,
-            };
-          }
-
+    setRoutine({
+      ...routine,
+      items: routine.items.map((item) => {
+        if (item.id === itemId) {
           return {
             ...item,
-            status:
-              item.status === ROUTINE_ITEMS_STATUS.IN_PROGRESS
-                ? ROUTINE_ITEMS_STATUS.NO_STARTED
-                : item.status,
+            status,
           };
-        }),
-      });
-    };
+        }
+
+        return {
+          ...item,
+          status:
+            item.status === ROUTINE_ITEMS_STATUS.IN_PROGRESS
+              ? ROUTINE_ITEMS_STATUS.NO_STARTED
+              : item.status,
+        };
+      }),
+    });
   }
 
   function setRoutineItemAsStarted(itemId) {
-    return () => {
-      const selectedItem = routine.items.find((item) => item.id === itemId);
+    const selectedItemIndex = routine.items.findIndex((item) => item.id === itemId);
 
-      if (selectedItem) {
-        setCurrentItem(selectedItem);
-        setScrollPosition(0);
-      } else {
-        alert("Error");
-      }
-    };
+    if (selectedItemIndex !== -1) {
+      setCurrentItem(routine.items[selectedItemIndex]);
+      setCurrentRoutineItemIndex(selectedItemIndex);
+      setScrollPosition(0);
+      updateRoutineItemStatus(itemId, ROUTINE_ITEMS_STATUS.IN_PROGRESS);
+    } else {
+      alert("Error");
+    }
   }
 
   function timeToSeconds(time) {
@@ -323,22 +322,24 @@ function useController() {
   function getStats(routine: T_Routine) {
     const totalExercises = Object.keys(routine.items).length;
     const completedExercises = routine.items.filter((item) => {
-      return item.status === ROUTINE_ITEMS_STATUS.FINISHED;
+      return item.status === ROUTINE_ITEMS_STATUS.COMPLETED;
     });
 
     return {
       totalExercises,
       completedPercent: `${Math.round((completedExercises.length / totalExercises) * 100)}%`,
       completedTime: secondsToTime(
-        completedExercises
-          .map((item) => {
-            return (
-              timeToSeconds(item.highTime) * item.sets +
-              timeToSeconds(item.restTime) * (item.sets - 1)
-            );
-          })
-          .reduce((result, curr) => result + curr, 0) +
-          timeToSeconds(routine.restTimeBetweenItems) * (completedExercises.length - 1),
+        completedExercises.length > 0
+          ? completedExercises
+              .map((item) => {
+                return (
+                  timeToSeconds(item.highTime) * item.sets +
+                  timeToSeconds(item.restTime) * (item.sets - 1)
+                );
+              })
+              .reduce((result, curr) => result + curr, 0) +
+              timeToSeconds(routine.restTimeBetweenItems) * (completedExercises.length - 1)
+          : 0,
       ),
       totalTime: secondsToTime(
         routine.items
@@ -371,15 +372,18 @@ function useController() {
 
       if (itemInProgress) {
         setCurrentItem(itemInProgress);
-      } else {
-        const itemNoStarted = routine.items.find(
-          (item) => item.status === ROUTINE_ITEMS_STATUS.NO_STARTED,
-        );
+      } else if (currentRoutineItem?.status !== ROUTINE_ITEMS_STATUS.NO_STARTED) {
+        const itemNoStarted = routine.items
+          .slice(currentRoutineItemIndex)
+          .find((item) => item.status === ROUTINE_ITEMS_STATUS.NO_STARTED);
 
-        if (itemNoStarted) setCurrentItem(itemNoStarted);
+        if (itemNoStarted) {
+          setCurrentItem(itemNoStarted);
+          // updateRoutineItemStatus(itemNoStarted.id, ROUTINE_ITEMS_STATUS.IN_PROGRESS);
+        }
       }
     },
-    [routine, saveRoutineInLocalStorage],
+    [routine, saveRoutineInLocalStorage, currentRoutineItemIndex, currentRoutineItem],
   );
 
   return {
@@ -419,108 +423,191 @@ function Timer({ item }: { item: T_RoutineItem }) {
   // states
   const [timerInterval, setTimerInterval] = React.useState<NodeJS.Timeout | null>(null);
   const [time, setTime] = React.useState(0);
-  const [sets, setSets] = React.useState<number[]>([]);
+  const [sets, setSets] = React.useState<string[]>([]);
   const [currentSet, setCurrentSet] = React.useState({ index: 0, isRest: false });
+
+  // utils
+  const stopTimer = React.useCallback(function stopTimer(
+    timerInterval,
+    mode: "paused" | "completed",
+  ) {
+    clearInterval(timerInterval);
+    setTimerInterval(null);
+    if (mode === "completed") playSound();
+
+    console.log("Timer stopped");
+  },
+  []);
+
+  const startTimer = React.useCallback(
+    function startTimer() {
+      if (timerInterval) return;
+
+      setTimerInterval(
+        setInterval(() => {
+          setTime((currentValue) => currentValue - 1);
+
+          console.log("Timer running");
+        }, 1000),
+      );
+    },
+    [timerInterval],
+  );
+
+  function playSound() {
+    try {
+      (document.getElementById("audio") as HTMLAudioElement)?.play();
+      window.navigator.vibrate(200);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   // effects
   React.useEffect(
-    function createSets() {
-      setSets(createArray(item.sets * 2 - 1).map((index) => (index % 2 == 1 ? 1 : 0)));
+    function getTimerReady() {
+      setSets(createArray(item.sets * 2 - 1).map((index) => (index % 2 == 0 ? "rest" : "high")));
       setTime(timeToSeconds(item.highTime));
       setCurrentSet({ index: 0, isRest: false });
+
+      if (item.status === ROUTINE_ITEMS_STATUS.IN_PROGRESS) {
+        startTimer();
+      }
     },
     [item, timeToSeconds],
   );
 
   React.useEffect(
-    function stopTimer() {
+    function updateTimer() {
       if (time === 0 && timerInterval) {
-        clearInterval(timerInterval);
-        setTimerInterval(null);
-        console.log("Interval stopped");
-        playRing();
+        stopTimer(timerInterval, "completed");
 
-        const nextSet = { index: currentSet.index + 1, isRest: sets[currentSet.index + 1] === 0 };
+        const nextSet = {
+          index: currentSet.index + 1,
+          isRest: sets[currentSet.index + 1] === "rest",
+        };
 
-        if (nextSet.index < sets.length) {
-          setCurrentSet(nextSet);
+        const isLastSet = nextSet.index === sets.length;
 
-          if (nextSet.isRest) {
-            setTime(timeToSeconds(item.restTime));
-          } else {
-            setTime(timeToSeconds(item.highTime));
-          }
-
-          setTimerInterval(
-            setInterval(() => {
-              console.log("Interval running");
-              setTime((currentValue) => currentValue - 1);
-            }, 1000),
-          );
+        if (isLastSet) {
+          updateRoutineItemStatus(item.id, ROUTINE_ITEMS_STATUS.COMPLETED);
         } else {
-          updateRoutineItemStatus(item.id, ROUTINE_ITEMS_STATUS.FINISHED)();
+          setCurrentSet(nextSet);
+          setTime(nextSet.isRest ? timeToSeconds(item.restTime) : timeToSeconds(item.highTime));
+          startTimer();
         }
       }
     },
-    [time, timerInterval, currentSet, sets, item, updateRoutineItemStatus],
+    [
+      currentSet,
+      item,
+      sets,
+      startTimer,
+      stopTimer,
+      time,
+      timeToSeconds,
+      timerInterval,
+      updateRoutineItemStatus,
+    ],
   );
 
-  // utils
-  const handleStartClick = () => {
+  // handlers
+  function handleStartRoutineItem() {
     if (timerInterval) {
-      clearInterval(timerInterval);
-      setTimerInterval(null);
-      console.log("Interval stopped");
+      stopTimer(timerInterval, "paused");
     } else {
-      setTimerInterval(
-        setInterval(() => {
-          console.log("Interval running");
-          setTime((currentValue) => currentValue - 1);
-        }, 1000),
-      );
+      startTimer();
 
-      if (item.status !== ROUTINE_ITEMS_STATUS.IN_PROGRESS) {
-        updateRoutineItemStatus(item.id, ROUTINE_ITEMS_STATUS.IN_PROGRESS)();
+      const isRoutineItemInProgress = item.status === ROUTINE_ITEMS_STATUS.IN_PROGRESS;
+      if (!isRoutineItemInProgress) {
+        updateRoutineItemStatus(item.id, ROUTINE_ITEMS_STATUS.IN_PROGRESS);
       }
     }
-  };
-
-  function playRing() {
-    new Audio("/static/sounds/timer.mp3").play();
-    window.navigator.vibrate(200);
   }
 
+  function handlePrevSetClick() {
+    if (currentSet.index === 0) return;
+
+    const prevSet = {
+      index: currentSet.index - 1,
+      isRest: sets[currentSet.index - 1] === "rest",
+    };
+
+    setCurrentSet(prevSet);
+    setTime(prevSet.isRest ? timeToSeconds(item.restTime) : timeToSeconds(item.highTime));
+    startTimer();
+  }
+
+  function handleNextSetClick() {
+    if (currentSet.index === sets.length - 1) return;
+
+    const nextSet = {
+      index: currentSet.index + 1,
+      isRest: sets[currentSet.index + 1] === "rest",
+    };
+
+    setCurrentSet(nextSet);
+    setTime(nextSet.isRest ? timeToSeconds(item.restTime) : timeToSeconds(item.highTime));
+    startTimer();
+  }
+
+  // vars
   const isTimerRunning = timerInterval !== null;
-  const isItemCompleted =
-    currentSet.index === sets.length - 1 && !isTimerRunning && item.status === "completed";
+  const isRoutineItemCompleted =
+    currentSet.index === sets.length - 1 &&
+    !isTimerRunning &&
+    item.status === ROUTINE_ITEMS_STATUS.COMPLETED;
 
   return (
     <Block
       className={classNames(
         "tw-text-white tw-text-center tw-py-6 tw-px-4",
-        isItemCompleted
+        isRoutineItemCompleted
           ? "tw-bg-green-600"
           : currentSet.isRest
           ? "tw-bg-blue-600"
           : "tw-bg-red-600",
       )}
     >
-      <Text className="tw-text-8xl">{secondsToTime(time)}</Text>
+      <audio src="/static/sounds/timer.mp3" id="audio" className="tw-hidden" />
+
+      <Text className="tw-text-8xl">
+        {secondsToTime(time)
+          .split("")
+          .map((char, index) => {
+            return (
+              <InlineText
+                key={`char-${index}`}
+                className={classNames("tw-inline-block", char !== ":" && "tw-w-14")}
+              >
+                {char}
+              </InlineText>
+            );
+          })}
+      </Text>
       <Space size={2} />
 
-      {!isItemCompleted && (
+      {!isRoutineItemCompleted && (
         <Button
           variant={Button.variant.SIMPLE}
-          onClick={handleStartClick}
+          onClick={handleStartRoutineItem}
           className="dfr-border-color-primary tw-rounded-full tw-h-32 tw-w-32 tw-border-2"
         >
-          {isTimerRunning ? "Pausar" : "Reanudar"}
+          {item.status === ROUTINE_ITEMS_STATUS.NO_STARTED
+            ? "Iniciar"
+            : isTimerRunning
+            ? "Pausar"
+            : "Reanudar"}
         </Button>
       )}
       <Space size={2} />
 
       <Block className="tw-flex tw-justify-between tw-items-center tw-w-full">
-        <Button variant={Button.variant.SIMPLE}>
+        <Button
+          variant={Button.variant.SIMPLE}
+          className={classNames("tw-mr-auto", currentSet.index > 0 ? "tw-visible" : "tw-invisible")}
+          onClick={handlePrevSetClick}
+        >
           <Icon icon={Icon.icon.CHEVRON_LEFT} color="tw-text-white" size={24} />
         </Button>
         <Block className="tw-flex-1 tw-text-sm">
@@ -529,7 +616,14 @@ function Timer({ item }: { item: T_RoutineItem }) {
             {item.title} - {currentSet.index + 1}/{sets.length}
           </Text>
         </Block>
-        <Button variant={Button.variant.SIMPLE}>
+        <Button
+          variant={Button.variant.SIMPLE}
+          className={classNames(
+            "tw-ml-auto",
+            currentSet.index < sets.length - 1 ? "tw-visible" : "tw-invisible",
+          )}
+          onClick={handleNextSetClick}
+        >
           <Icon icon={Icon.icon.CHEVRON_RIGHT} color="tw-text-white" size={24} />
         </Button>
       </Block>
@@ -580,13 +674,26 @@ function RoutineItem({
 }) {
   const { setRoutineItemAsStarted, updateRoutineItemStatus } = React.useContext(PageContext);
 
+  // handlers
+  function handleMarkAsCompletedClick() {
+    updateRoutineItemStatus(
+      id,
+      status === ROUTINE_ITEMS_STATUS.COMPLETED
+        ? ROUTINE_ITEMS_STATUS.NO_STARTED
+        : ROUTINE_ITEMS_STATUS.COMPLETED,
+    );
+  }
+  function handleStartClick() {
+    setRoutineItemAsStarted(id);
+  }
+
   return (
     <Block
       is="article"
       className={classNames("dfr-RoutineItem dfr-shadow tw-mb-3 tw-border last:tw-mb-0", {
         "tw-bg-gray-100 tw-border-gray-200": status === ROUTINE_ITEMS_STATUS.NO_STARTED,
         "tw-bg-yellow-100 tw-border-yellow-200": status === ROUTINE_ITEMS_STATUS.IN_PROGRESS,
-        "tw-bg-green-100 tw-border-green-200": status === ROUTINE_ITEMS_STATUS.FINISHED,
+        "tw-bg-green-100 tw-border-green-200": status === ROUTINE_ITEMS_STATUS.COMPLETED,
       })}
     >
       <Block
@@ -596,7 +703,7 @@ function RoutineItem({
           {
             "tw-border-gray-200": status === ROUTINE_ITEMS_STATUS.NO_STARTED,
             "tw-border-yellow-200": status === ROUTINE_ITEMS_STATUS.IN_PROGRESS,
-            "tw-border-green-200": status === ROUTINE_ITEMS_STATUS.FINISHED,
+            "tw-border-green-200": status === ROUTINE_ITEMS_STATUS.COMPLETED,
           },
         )}
       >
@@ -628,7 +735,7 @@ function RoutineItem({
         <Space size={1} />
         <Block className="tw-flex tw-items-center tw-justify-between">
           {status === ROUTINE_ITEMS_STATUS.NO_STARTED && (
-            <Button variant={Button.variant.SIMPLE} onClick={setRoutineItemAsStarted(id)}>
+            <Button variant={Button.variant.SIMPLE} onClick={handleStartClick}>
               <Icon icon={Icon.icon.PLAY} size={12} />
               <InlineText className="tw-ml-1 tw-text-xxs tw-align-middle">iniciar</InlineText>
             </Button>
@@ -637,19 +744,14 @@ function RoutineItem({
           <Button
             variant={Button.variant.SIMPLE}
             className="tw-ml-auto"
-            onClick={updateRoutineItemStatus(
-              id,
-              status === ROUTINE_ITEMS_STATUS.FINISHED
-                ? ROUTINE_ITEMS_STATUS.NO_STARTED
-                : ROUTINE_ITEMS_STATUS.FINISHED,
-            )}
+            onClick={handleMarkAsCompletedClick}
           >
             <Icon icon={Icon.icon.CHECK} size={12} />
             <InlineText className="tw-ml-1 tw-text-xxs tw-align-middle">
               marcar como{" "}
-              {status === ROUTINE_ITEMS_STATUS.FINISHED
+              {status === ROUTINE_ITEMS_STATUS.COMPLETED
                 ? ROUTINE_ITEMS_STATUS.NO_STARTED
-                : ROUTINE_ITEMS_STATUS.FINISHED}
+                : ROUTINE_ITEMS_STATUS.COMPLETED}
             </InlineText>
           </Button>
         </Block>
