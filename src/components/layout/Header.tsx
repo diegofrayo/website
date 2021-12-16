@@ -117,11 +117,6 @@ function MainMenu(): T_ReactElement {
           ...createItems(),
           /*
           {
-            label: translator.t("layout:header:common:menu_item_bookmarks"),
-            url: ROUTES.BOOKMARKS,
-            locale: undefined,
-          },
-          {
             label: "Timer",
             url: ROUTES.TIMER,
             locale: undefined,
@@ -172,6 +167,11 @@ function MainMenu(): T_ReactElement {
       {
         label: translator.t("layout:header:menu:music"),
         url: ROUTES.MUSIC,
+        locale: undefined,
+      },
+      {
+        label: translator.t("layout:header:common:menu_item_bookmarks"),
+        url: ROUTES.BOOKMARKS,
         locale: undefined,
       },
     ];
@@ -286,7 +286,7 @@ const SettingsMenu = withSafeRenderingComponent(function SettingsMenu(): T_React
 
           <MenuItem title={t("layout:header:settings:theme")}>
             <Button variant={Button.variant.SIMPLE} disabled={!isDarkMode} onClick={toggleTheme}>
-              <Icon icon={Icon.icon.SUN} color="tw-text-yellow-400" size={18} />
+              <Icon icon={Icon.icon.SUN} color="tw-text-yellow-600" size={18} />
             </Button>
             {/*
             <Space orientation="v" size={1} />
@@ -366,8 +366,8 @@ function PictureFrame() {
   useDidMount(() => {
     const PHOTOS = [
       {
-        src: "/static/images/header/3.jpg",
-        portrait: true,
+        src: "/static/images/header/1.jpg",
+        portrait: false,
       },
     ];
 
@@ -470,14 +470,15 @@ function TV() {
   );
 
   const SONG = {
-    title: "Juguetes Perdidos (En Vivo)",
-    artist: "Indio Solari y los Fundamentalistas del Aire Acondicionado",
-    duration: "7:02",
-    thumbnail: "https://i.scdn.co/image/ab67616d0000b273b951223171ecfabe6ac97335",
+    id: "https://open.spotify.com/track/5JyeXhwxBQFEne4FxPbCxN?si=eb1e923aaddb4696",
+    title: "Maelström",
+    artist: "Fito Paez",
+    duration: "3:55",
+    thumbnail: "https://i.scdn.co/image/ab67616d0000b273a4091bb6f7f03ec978187d99",
     source: "spotify",
-    url: "https://open.spotify.com/track/1SBGb9SOYwb8H7LhK5daAS",
+    url: "https://open.spotify.com/track/5JyeXhwxBQFEne4FxPbCxN",
     audio:
-      "https://p.scdn.co/mp3-preview/af49bab92a964225ea8b17829049a5d19b23e77b?cid=a46f5c5745a14fbf826186da8da5ecc3",
+      "https://p.scdn.co/mp3-preview/1880eccf1d6cfbe60fab494d61a607930a0b5c98?cid=a46f5c5745a14fbf826186da8da5ecc3",
   };
 
   return (

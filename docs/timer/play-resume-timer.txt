@@ -1,0 +1,13 @@
+~~~
+layout:
+  name: dagre
+~~~
+
+Pause/Resume timer
+  If timer is running
+    Yes: Pause
+      Set timer status as PAUSED
+        ClearInterval and not play a sound
+    No: Resume
+      Set timer status as RUNNING
+        Create interval again

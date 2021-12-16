@@ -1,0 +1,7 @@
+~~~
+layout:
+  name: dagre
+~~~
+
+"Timer" screen%0A[INITIAL STATE]
+  - Timer does not have to start automatically (STATUS=NOT_STARTED)%0A- The main button has to say "Start"%0A- Load a routine item (First task in progress or First task not started)%0A- Set the routine item found as IN_PROGRESS
