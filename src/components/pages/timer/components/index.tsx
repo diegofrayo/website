@@ -7,7 +7,6 @@ import {
   Collapsible,
   Icon,
   InlineText,
-  Link,
   Space,
   Text,
   Title,
@@ -26,25 +25,36 @@ export { default as Timer } from "./timer";
 export function GoToHomeLink(): T_ReactElement {
   return (
     <Block className="tw-bg-black tw-text-white tw-p-1 tw-text-csenter tw-text-sm tw-font-bold tw-absolute tw-top-0 tw-w-full tw-h-8">
-      <Link variant={Link.variant.SIMPLE} href={ROUTES.HOME}>
+      <Button
+        variant={Button.variant.SIMPLE}
+        onClick={() => {
+          if (window.confirm("¿Está seguro de que quiere ir al inicio?")) {
+            window.location.href = ROUTES.HOME;
+          }
+        }}
+      >
         <Icon icon={Icon.icon.CHEVRON_LEFT} color="tw-text-white" />
         <InlineText className="tw-align-middle"> Volver al inicio</InlineText>
-      </Link>
+      </Button>
     </Block>
   );
 }
 
 export function Stats({
+  title = "Estadísticas",
   data,
   startTime,
   endTime,
+  uploadRoutineHandler,
 }: {
+  title?: string;
   data: T_RoutineStats;
   startTime: T_Routine["startTime"];
   endTime?: T_Routine["endTime"];
+  uploadRoutineHandler?: any;
 }): T_ReactElement {
   return (
-    <Collapsible title="Estadísticas" className="tw-border tw-rounded-md tw-px-3 tw-pt-2 tw-pb-3">
+    <Collapsible title={title} className="tw-border tw-rounded-md tw-px-3 tw-pt-2 tw-pb-3">
       <Block className="tw-text-sm">
         <Stats.Item label="total ejercicios" value={data.totalExercises} />
         <Stats.Item label="total tiempo" value={data.totalTime} />
@@ -58,6 +68,16 @@ export function Stats({
         />
         <Stats.Item label="duración final" value={data.finalRoutineDuration} />
       </Block>
+
+      {uploadRoutineHandler && (
+        <Button
+          variant={Button.variant.SIMPLE}
+          className="tw-block tw-mx-auto tw-text-center tw-underline tw-font-bold tw-mt-2"
+          onClick={uploadRoutineHandler}
+        >
+          Guardar en la nube
+        </Button>
+      )}
     </Collapsible>
   );
 }

@@ -56,15 +56,19 @@ function Timer({
   ) {
     clearInterval(timerInterval);
     setTimerInterval(null);
-    if (mode === "SET_COMPLETED") playSound();
+    if (mode === "SET_COMPLETED") playSound("COMPLETED");
 
     console.log("Timer stopped");
   },
   []);
 
-  function playSound() {
+  function playSound(mode: "RUNNING" | "COMPLETED") {
     try {
-      (document.getElementById("audio") as HTMLAudioElement)?.play();
+      (
+        document.getElementById(
+          mode === "RUNNING" ? "audio-running" : "audio-completed",
+        ) as HTMLAudioElement
+      )?.play();
       window.navigator.vibrate(200);
     } catch (error) {
       console.error(error);
@@ -197,7 +201,12 @@ function Timer({
           : "tw-bg-red-600",
       )}
     >
-      <audio src="/static/sounds/timer.mp3" id="audio" className="tw-hidden" />
+      <audio
+        src="/static/sounds/timer/set-completed.mp3"
+        id="audio-completed"
+        className="tw-hidden"
+      />
+      <audio src="/static/sounds/timer/single-tick.mp3" id="audio-running" className="tw-hidden" />
 
       <Text className="tw-text-8xl">
         {secondsToTime(time)

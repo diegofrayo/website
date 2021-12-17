@@ -1,8 +1,7 @@
-import renderToString from "next-mdx-remote/render-to-string";
+import { serialize } from "next-mdx-remote/serialize";
 
 import HomePage from "~/components/pages/home";
 import { getPageContentStaticProps } from "~/i18n";
-import { MDXComponents } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
 
 export default HomePage;
@@ -14,9 +13,7 @@ export const getStaticProps = getPageContentStaticProps({
   callback: async ({ pageContent }) => {
     return {
       props: {
-        mdxContent: (await renderToString(pageContent?.page?.content, {
-          components: MDXComponents,
-        })) as string,
+        mdxContent: await serialize(pageContent?.page?.content),
       },
     };
   },

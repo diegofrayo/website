@@ -1,21 +1,22 @@
 import * as React from "react";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { Block } from "~/components/primitive";
-import type { T_ReactChildrenProp, T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 import { mirror } from "~/utils/misc";
 
 type T_Variants = "DEFAULT" | "UNSTYLED";
 const VARIANTS = mirror(["DEFAULT", "UNSTYLED"]) as Record<T_Variants, T_Variants>;
 
 type T_MDXContentProps = {
-  content: T_ReactChildrenProp;
+  content: MDXRemoteSerializeResult;
   variant?: T_Variants;
 };
 
 function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps): T_ReactElement {
   return (
     <Block is="article" className={`dfr-MDXContent dfr-MDXContent--${variant.toLowerCase()}`}>
-      {content}
+      <MDXRemote {...content} />
 
       <style jsx>{`
         /* Spacing: parent components */

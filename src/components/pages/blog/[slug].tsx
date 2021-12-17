@@ -1,5 +1,5 @@
 import * as React from "react";
-import hydrate from "next-mdx-remote/hydrate";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Icon, Space, Button, Block, Text, InlineText } from "~/components/primitive";
@@ -13,12 +13,11 @@ import { setLocales } from "~/state/modules/page-config";
 import { T_BlogPost, T_Locale, T_ReactElement, T_PageContent, T_WebsiteMetadata } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getDifferenceBetweenDates } from "~/utils/dates";
-import { MDXComponents } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
 
 type T_PageProps = {
   post: T_BlogPost;
-  postMDXContent: string;
+  postMDXContent: MDXRemoteSerializeResult;
   content: T_PageContent;
   locale: T_Locale;
 };
@@ -26,8 +25,6 @@ type T_PageProps = {
 function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
   const { t } = useTranslation();
   const dispatch = useStoreActionsDispatcher();
-
-  const mdxContent = hydrate(postMDXContent, { components: MDXComponents });
 
   useDidMount(() => {
     dispatch(setLocales(post.locales));
@@ -47,7 +44,7 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
         <BlogPostDetails publishedAt={post.publishedAt} updatedAt={post.updatedAt} />
         <Space size={8} />
 
-        <MDXContent content={mdxContent} />
+        <MDXContent content={postMDXContent} />
         <Space size={8} />
 
         <RateContent />

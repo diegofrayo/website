@@ -1,17 +1,18 @@
-import renderToString from "next-mdx-remote/render-to-string";
 import { GetStaticPaths } from "next";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import SongPage from "~/components/pages/music/[song]";
 import { getPageContentStaticProps } from "~/i18n";
 import { dataLoader } from "~/server";
 import MusicService from "~/services/music";
 import { T_Song } from "~/types";
-import { MDXComponents, MDXScope } from "~/utils/mdx";
+import { MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
 
 type T_PageProps = {
   song: T_Song;
-  songMDXContent: string;
+  songMDXContent: MDXRemoteSerializeResult;
 };
 
 export default SongPage;
@@ -35,10 +36,11 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
   locale: "es",
   callback: async ({ params }) => {
     const song = await MusicService.getSong({ id: params?.song });
-    const file = await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.mdx` });
+    const file = (await dataLoader({
+      path: `/pages/music/[song]/assets/${song.id}.mdx`,
+    })) as string;
 
-    const songMDXContent = await renderToString(file, {
-      components: MDXComponents,
+    const songMDXContent = await serialize(file, {
       scope: {
         DATA: {
           ...MDXScope.DATA,

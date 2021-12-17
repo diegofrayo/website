@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import { ErrorBoundary } from "react-error-boundary";
 import { I18nextProvider } from "react-i18next";
 import { Provider } from "react-redux";
+import { MDXProvider } from "@mdx-js/react";
 
 import { ProgressBar } from "~/components/layout";
 import { AuthService } from "~/auth";
@@ -19,6 +20,7 @@ import AnalyticsService from "~/services/analytics";
 import MetadataService from "~/services/metadata";
 import { createPreloadedState, useStore } from "~/state";
 import { T_ReactElement } from "~/types";
+import { MDXComponents } from "~/utils/mdx";
 
 import ErrorPage from "./500";
 
@@ -73,7 +75,9 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
               // themes={["light", "dark"]}
               // value={{ light: "tw-light", dark: "tw-dark" }}
             >
-              <Component {...pageProps} />
+              <MDXProvider components={MDXComponents}>
+                <Component {...pageProps} />
+              </MDXProvider>
               <ProgressBar />
               <ToastContainer autoClose={3000} hideProgressBar />
             </ThemeProvider>

@@ -25,6 +25,6 @@ Multiline.args = {
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   }
-}ß`,
+}`,
   variant: Code.variant.MULTILINE,
 };

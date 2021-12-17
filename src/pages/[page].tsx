@@ -1,6 +1,6 @@
 import * as React from "react";
-import hydrate from "next-mdx-remote/hydrate";
-import renderToString from "next-mdx-remote/render-to-string";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { GetStaticPaths } from "next";
 
 import { Page, MainLayout } from "~/components/layout";
@@ -8,19 +8,17 @@ import { MDXContent } from "~/components/shared";
 import { useTranslation, getPageContentStaticProps, I18nService } from "~/i18n";
 import { dataLoader } from "~/server";
 import { T_Locale, T_PageRoute, T_ReactElement } from "~/types";
-import { MDXComponents, MDXScope } from "~/utils/mdx";
+import { MDXScope } from "~/utils/mdx";
 import { DYNAMIC_MAIN_PAGES, ROUTES } from "~/utils/routing";
 import { generateObjectKeyInUpperCase } from "~/utils/strings";
 
 type T_SitePageProps = {
   page: string;
-  pageMDXContent: string;
+  pageMDXContent: MDXRemoteSerializeResult;
 };
 
 function SitePage({ page, pageMDXContent }: T_SitePageProps): T_ReactElement {
   const { t } = useTranslation();
-
-  const mdxContent = hydrate(pageMDXContent, { components: MDXComponents });
 
   return (
     <Page
@@ -32,7 +30,7 @@ function SitePage({ page, pageMDXContent }: T_SitePageProps): T_ReactElement {
       }}
     >
       <MainLayout title={t("seo:title")}>
-        <MDXContent variant={MDXContent.variant.UNSTYLED} content={mdxContent} />
+        <MDXContent variant={MDXContent.variant.UNSTYLED} content={pageMDXContent} />
       </MainLayout>
     </Page>
   );
@@ -69,15 +67,14 @@ export const getStaticProps = getPageContentStaticProps<T_SitePageProps, { page:
     if (!params.page) throw new Error('"page" param can\'t be undefined');
 
     const page = params.page;
-    const file = await dataLoader({
+    const file = (await dataLoader({
       path: `/pages/${page}/${I18nService.getContentLocale(
         pageContent.page?.config?.locales,
         locale as T_Locale,
         pageContent.page?.config?.default_locale,
       )}.${page}.mdx`,
-    });
-    const pageMDXContent: string = await renderToString(file, {
-      components: MDXComponents,
+    })) as string;
+    const pageMDXContent = await serialize(file, {
       scope: {
         DATA: {
           ...MDXScope.DATA,

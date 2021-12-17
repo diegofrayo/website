@@ -17,7 +17,7 @@ import { ROUTES } from "~/utils/routing";
 export const MDXComponents = {
   a: function A({ children, ...rest }: { children: T_ReactChildrenProp }): T_ReactElement {
     return (
-      <Link variant={Link.variant.PRIMARY} {...rest}>
+      <Link variant={Link.variant.PRIMARY} {...rest} isExternalUrl>
         {children}
       </Link>
     );

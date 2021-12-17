@@ -5,8 +5,9 @@ import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/util
 class TimeLineService {
   async fetchData(): Promise<T_TimeLine> {
     const { categories, items } = (
-      await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/assets`, {
-        file: `pages/personal/[page]/timeline/data.json`,
+      await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
+        path: "/assets",
+        payload: `pages/personal/[page]/timeline/data.json`,
       })
     ).data;
 

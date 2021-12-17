@@ -1,6 +1,6 @@
 import * as React from "react";
-import hydrate from "next-mdx-remote/hydrate";
 import { useRouter } from "next/router";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Icon, Button, Space, Block, Text } from "~/components/primitive";
@@ -12,18 +12,18 @@ import { GuitarService } from "~/lib/guitar";
 import MusicService from "~/services/music";
 import type { T_ReactElement, T_Song } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
-import { MDXComponents } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
 
 type T_PageProps = {
   song: T_Song;
-  songMDXContent: string;
+  songMDXContent: MDXRemoteSerializeResult;
 };
 
 function SongPage(props: T_PageProps): T_ReactElement {
   const {
     // props
     song,
+    songMDXContent,
 
     // states
     fontSize,
@@ -33,7 +33,6 @@ function SongPage(props: T_PageProps): T_ReactElement {
     decreaseFontSize,
 
     // vars
-    mdxContent,
     isMaxFontSize,
     isMinFontSize,
   } = useController(props);
@@ -91,7 +90,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
           </Block>
 
           <Block className="tw-max-w-full tw-overflow-x-auto tw-pb-3">
-            <MDXContent content={mdxContent} variant={MDXContent.variant.UNSTYLED} />
+            <MDXContent content={songMDXContent} variant={MDXContent.variant.UNSTYLED} />
           </Block>
           <Space size={6} />
 
@@ -123,15 +122,13 @@ export default SongPage;
 
 function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps, "song"> & {
   fontSize: number;
-  mdxContent: string;
+  songMDXContent: MDXRemoteSerializeResult;
   increaseFontSize: () => void;
   decreaseFontSize: () => void;
   isMaxFontSize: boolean;
   isMinFontSize: boolean;
 } {
   const [fontSize, setFontSize] = React.useState(0);
-
-  const mdxContent = hydrate(songMDXContent, { components: MDXComponents }) as string;
 
   useDidMount(() => {
     setFontSize(getFontSize());
@@ -167,6 +164,7 @@ function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps,
   return {
     // props
     song,
+    songMDXContent,
 
     // states
     fontSize,
@@ -176,7 +174,6 @@ function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps,
     decreaseFontSize,
 
     // vars
-    mdxContent,
     isMaxFontSize: fontSize === 2,
     isMinFontSize: fontSize === 0.6,
   };

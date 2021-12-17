@@ -6,7 +6,10 @@ class AuthService {
 
   async signIn(values) {
     return http
-      .post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/auth`, values)
+      .post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
+        path: "/auth",
+        payload: values,
+      })
       .then(({ data }) => {
         window.localStorage.setItem(this.LOCAL_STORAGE_KEY, data.token);
       })
