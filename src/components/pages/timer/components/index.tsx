@@ -15,16 +15,17 @@ import {
 import type { T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
 import { setScrollPosition } from "~/utils/browser";
+import { pluralize } from "~/utils/misc";
 
 import { ROUTINE_ITEMS_STATUS } from "../constants";
-// import { TimerPageContext } from "../context";
+import { TimerPageContext } from "../context";
 import type { T_RoutineStats, T_Routine, T_RoutineItem } from "../types";
 
 export { default as Timer } from "./timer";
 
 export function GoToHomeLink(): T_ReactElement {
   return (
-    <Block className="tw-bg-black tw-text-white tw-p-1 tw-text-csenter tw-text-sm tw-font-bold">
+    <Block className="tw-bg-black tw-text-white tw-p-1 tw-text-csenter tw-text-sm tw-font-bold tw-absolute tw-top-0 tw-w-full tw-h-8">
       <Link variant={Link.variant.SIMPLE} href={ROUTES.HOME}>
         <Icon icon={Icon.icon.CHEVRON_LEFT} color="tw-text-white" />
         <InlineText className="tw-align-middle"> Volver al inicio</InlineText>
@@ -36,64 +37,86 @@ export function GoToHomeLink(): T_ReactElement {
 export function Stats({
   data,
   startTime,
+  endTime,
 }: {
   data: T_RoutineStats;
   startTime: T_Routine["startTime"];
+  endTime?: T_Routine["endTime"];
 }): T_ReactElement {
   return (
     <Collapsible title="Estadísticas" className="tw-border tw-rounded-md tw-px-3 tw-pt-2 tw-pb-3">
       <Block className="tw-text-sm">
-        <Block className="tw-flex tw-justify-between">
-          <InlineText is="strong">total ejercicios:</InlineText>
-          <InlineText>{data.totalExercises}</InlineText>
-        </Block>
-        <Block className="tw-flex tw-justify-between">
-          <InlineText is="strong">% completado:</InlineText>
-          <InlineText>{data.completedPercent}</InlineText>
-        </Block>
-        <Block className="tw-flex tw-justify-between">
-          <InlineText is="strong">tiempo completado:</InlineText>
-          <InlineText>{data.completedTime}</InlineText>
-        </Block>
-        <Block className="tw-flex tw-justify-between">
-          <InlineText is="strong">tiempo total:</InlineText>
-          <InlineText>{data.totalTime}</InlineText>
-        </Block>
-        <Block className="tw-flex tw-justify-between">
-          <InlineText is="strong">hora de inicio:</InlineText>
-          <InlineText>{startTime}</InlineText>
-        </Block>
+        <Stats.Item label="total ejercicios" value={data.totalExercises} />
+        <Stats.Item label="total tiempo" value={data.totalTime} />
+        <Stats.Item label="% completado" value={data.completedPercent} />
+        <Stats.Item label="total ejercicios completados" value={data.totalCompletedExercises} />
+        <Stats.Item label="tiempo completado" value={data.completedTime} />
+        <Stats.Item label="hora de inicio" value={`${new Date(startTime).toLocaleTimeString()}`} />
+        <Stats.Item
+          label="hora de finalización"
+          value={endTime ? `${new Date(endTime).toLocaleTimeString()}` : ""}
+        />
+        <Stats.Item label="duración final" value={data.finalRoutineDuration} />
       </Block>
     </Collapsible>
   );
 }
 
+Stats.Item = function StatsItem({ label, value }) {
+  if (!value) return null;
+
+  return (
+    <Block className="tw-flex tw-justify-between">
+      <InlineText is="strong" className="dfr-border-color-primary tw-border tw-w-2/4 tw-p-1">
+        {label}:
+      </InlineText>
+      <InlineText className="dfr-border-color-primary tw-border tw-w-2/4 tw-p-1 tw-flex tw-items-center tw-justify-end">
+        {value}
+      </InlineText>
+    </Block>
+  );
+};
+
 export function RoutineItem({
-  // id,
+  id,
   status,
   title,
   sets = 1,
   highTime,
   restTime,
 }: T_RoutineItem): T_ReactElement {
-  // const { setRoutineItemAsStarted, updateRoutineItemStatus } = React.useContext(TimerPageContext);
+  const {
+    // states
+    routine,
+
+    // states setters
+    setRoutine,
+
+    // utils
+    searchForNextNotStartedRoutineItem,
+    setRoutineItemAsStarted,
+    updateRoutineItemStatus,
+  } = React.useContext(TimerPageContext);
 
   // handlers
   function handleMarkAsCompletedClick() {
+    const routineUpdated = updateRoutineItemStatus(
+      routine,
+      id,
+      status === ROUTINE_ITEMS_STATUS.COMPLETED
+        ? ROUTINE_ITEMS_STATUS.NOT_STARTED
+        : ROUTINE_ITEMS_STATUS.COMPLETED,
+    );
+    setRoutine(routineUpdated);
+
     if (status === ROUTINE_ITEMS_STATUS.IN_PROGRESS) {
       setScrollPosition(0);
+      searchForNextNotStartedRoutineItem(routineUpdated);
     }
-
-    // updateRoutineItemStatus(
-    //   id,
-    //   status === ROUTINE_ITEMS_STATUS.COMPLETED
-    //     ? ROUTINE_ITEMS_STATUS.NOT_STARTED
-    //     : ROUTINE_ITEMS_STATUS.COMPLETED,
-    // );
   }
 
-  function handleStartClick() {
-    // setRoutineItemAsStarted(id);
+  function handleStartRoutineItemClick() {
+    setRoutineItemAsStarted(routine, id);
   }
 
   return (
@@ -116,12 +139,17 @@ export function RoutineItem({
           },
         )}
       >
-        <Title is="h1" variant={Title.variant.SECONDARY} size={Title.size.MD}>
+        <Title
+          is="h1"
+          variant={Title.variant.SECONDARY}
+          size={Title.size.SM}
+          className="tw-truncate tw-flex-1 tw-min-w-0"
+        >
           {title}
         </Title>
-        <Text className="tw-text-xs tw-font-bold tw-italic">{`${sets} ${
-          sets === 1 ? "repetición" : "repeticiones"
-        }`}</Text>
+        <Text className="tw-ml-3 tw-text-xs tw-font-bold tw-italic">
+          {pluralize(sets, "repetición", "repeticiones")}
+        </Text>
       </Block>
       <Block className="tw-px-3 tw-py-3">
         <Block className="tw-flex tw-justify-between tw-items-center">
@@ -144,7 +172,7 @@ export function RoutineItem({
         <Space size={1} />
         <Block className="tw-flex tw-items-center tw-justify-between">
           {status === ROUTINE_ITEMS_STATUS.NOT_STARTED && (
-            <Button variant={Button.variant.SIMPLE} onClick={handleStartClick}>
+            <Button variant={Button.variant.SIMPLE} onClick={handleStartRoutineItemClick}>
               <Icon icon={Icon.icon.PLAY} size={12} />
               <InlineText className="tw-ml-1 tw-text-xxs tw-align-middle">iniciar</InlineText>
             </Button>

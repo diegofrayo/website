@@ -52,6 +52,10 @@ export function between(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+export function pluralize(value: number, singular: string, plural: string): string {
+  return value === 1 ? `${value} ${singular}` : `${value} ${plural}`;
+}
+
 export function betweenUntil(min: number, max: number, exclude: number[]): number {
   const randomNumber = between(min, max);
 

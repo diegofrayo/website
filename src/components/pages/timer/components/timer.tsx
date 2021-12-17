@@ -9,18 +9,28 @@ import { ROUTINE_ITEMS_STATUS, TIMER_STATUS } from "../constants";
 import { TimerPageContext } from "../context";
 import type { T_RoutineItem } from "../types";
 
-function Timer({ routineItem }: { routineItem: T_RoutineItem }): T_ReactElement {
+function Timer({
+  routineItem,
+  routineItemIndex,
+}: {
+  routineItem: T_RoutineItem;
+  routineItemIndex: number;
+}): T_ReactElement {
   // context
   const {
     // states
+    routine,
     timerStatus,
 
     // states setters
+    setRoutine,
     setTimerStatus,
+    setCurrentRoutineItem,
 
     // utils
-    timeToSeconds,
     secondsToTime,
+    timeToSeconds,
+    updateRoutineItemStatus,
   } = React.useContext(TimerPageContext);
 
   // states
@@ -64,61 +74,67 @@ function Timer({ routineItem }: { routineItem: T_RoutineItem }): T_ReactElement 
   // effects
   React.useEffect(
     function getTimerReady() {
+      setTime(timeToSeconds(routineItem.highTime));
       setSets(
         createArray(routineItem.sets * 2 - 1).map((index) => (index % 2 == 0 ? "REST" : "HIGH")),
       );
-      setTime(timeToSeconds(routineItem.highTime));
-      setCurrentSet({ index: 0, isRest: false });
+      setCurrentSet({
+        index: routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED ? routineItem.sets * 2 - 2 : 0,
+        isRest: false,
+      });
     },
     [routineItem, timeToSeconds],
   );
 
-  // React.useEffect(
-  //   function updateTimerState() {
-  //     if (timerStatus === "STOPPED") {
-  //       stopTimer(timerInterval, "COMPLETED");
-  //     }
-  //   },
-  //   [timerStatus, timerInterval, stopTimer],
-  // );
+  React.useEffect(
+    function onTimeChange() {
+      if (time === 0 && timerInterval) {
+        stopTimer(timerInterval, "SET_COMPLETED");
 
-  // React.useEffect(
-  //   function onTimeChange() {
-  //     if (time === 0 && timerInterval) {
-  //       stopTimer(timerInterval, "COMPLETED");
+        const nextSet = {
+          index: currentSet.index + 1,
+          isRest: sets[currentSet.index + 1] === "REST",
+        };
+        const isLastSet = nextSet.index === sets.length;
 
-  //       const nextSet = {
-  //         index: currentSet.index + 1,
-  //         isRest: sets[currentSet.index + 1] === "rest",
-  //       };
+        if (isLastSet) {
+          const routineUpdated = updateRoutineItemStatus(
+            routine,
+            routineItem.id,
+            ROUTINE_ITEMS_STATUS.COMPLETED,
+          );
 
-  //       const isLastSet = nextSet.index === sets.length;
+          setRoutine(routineUpdated);
+          setCurrentRoutineItem(routineUpdated.items[routineItemIndex]);
+        } else {
+          startTimer();
+          setTime(
+            nextSet.isRest
+              ? timeToSeconds(routineItem.restTime)
+              : timeToSeconds(routineItem.highTime),
+          );
+          setCurrentSet(nextSet);
+        }
+      }
+    },
+    [
+      routineItem,
+      routineItemIndex,
+      time,
+      sets,
+      currentSet,
+      startTimer,
+      stopTimer,
 
-  //       if (isLastSet) {
-  //         updateRoutineItemStatus(routineItem.id, ROUTINE_ITEMS_STATUS.COMPLETED);
-  //       } else {
-  //         setCurrentSet(nextSet);
-  //         setTime(
-  //           nextSet.isRest
-  //             ? timeToSeconds(routineItem.restTime)
-  //             : timeToSeconds(routineItem.highTime),
-  //         );
-  //         startTimer();
-  //       }
-  //     }
-  //   },
-  //   [
-  //     currentSet,
-  //     routineItem,
-  //     sets,
-  //     startTimer,
-  //     stopTimer,
-  //     time,
-  //     timeToSeconds,
-  //     timerInterval,
-  //     updateRoutineItemStatus,
-  //   ],
-  // );
+      routine,
+      setRoutine,
+      setCurrentRoutineItem,
+
+      timeToSeconds,
+      timerInterval,
+      updateRoutineItemStatus,
+    ],
+  );
 
   // handlers
   function handleStartRoutineItemClick() {
@@ -132,8 +148,6 @@ function Timer({ routineItem }: { routineItem: T_RoutineItem }): T_ReactElement 
   }
 
   function handlePrevSetClick() {
-    if (currentSet.index === 0) return;
-
     const prevSet = {
       index: currentSet.index - 1,
       isRest: sets[currentSet.index - 1] === "REST",
@@ -143,41 +157,34 @@ function Timer({ routineItem }: { routineItem: T_RoutineItem }): T_ReactElement 
     setTime(
       prevSet.isRest ? timeToSeconds(routineItem.restTime) : timeToSeconds(routineItem.highTime),
     );
-    startTimer();
   }
 
   function handleNextSetClick() {
-    const isNotLastSet = currentSet.index < sets.length - 1;
+    const nextSet = {
+      index: currentSet.index + 1,
+      isRest: sets[currentSet.index + 1] === "REST",
+    };
 
-    if (isNotLastSet) {
-      const nextSet = {
-        index: currentSet.index + 1,
-        isRest: sets[currentSet.index + 1] === "REST",
-      };
-
-      setCurrentSet(nextSet);
-      setTime(
-        nextSet.isRest ? timeToSeconds(routineItem.restTime) : timeToSeconds(routineItem.highTime),
-      );
-
-      return;
-    }
-
-    // findNextRoutineItemToStart();
+    setCurrentSet(nextSet);
+    setTime(
+      nextSet.isRest ? timeToSeconds(routineItem.restTime) : timeToSeconds(routineItem.highTime),
+    );
   }
 
   // utils
   function checkHasToShowNextButton() {
-    return true;
+    return currentSet.index < sets.length - 1;
+  }
+
+  function checkHasToShowPrevButton() {
+    return currentSet.index > 0;
   }
 
   // vars
   const isTimerRunning = timerInterval !== null;
-  const isRoutineItemCompleted =
-    currentSet.index === sets.length - 1 &&
-    !isTimerRunning &&
-    routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED;
-  const showNextSetButton = checkHasToShowNextButton();
+  const isRoutineItemCompleted = routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED;
+  const showNextSetButton = !isRoutineItemCompleted && checkHasToShowNextButton();
+  const showPrevSetButton = !isRoutineItemCompleted && checkHasToShowPrevButton();
 
   return (
     <Block
@@ -208,29 +215,35 @@ function Timer({ routineItem }: { routineItem: T_RoutineItem }): T_ReactElement 
       </Text>
       <Space size={2} />
 
-      <Button
-        variant={Button.variant.SIMPLE}
-        onClick={handleStartRoutineItemClick}
-        className="dfr-border-color-primary tw-rounded-full tw-h-32 tw-w-32 tw-border-2"
-      >
-        {timerStatus === TIMER_STATUS.NOT_STARTED
-          ? "Iniciar"
-          : isTimerRunning
-          ? "Pausar"
-          : "Reanudar"}
-      </Button>
-      <Space size={2} />
+      {!isRoutineItemCompleted && (
+        <React.Fragment>
+          <Button
+            variant={Button.variant.SIMPLE}
+            onClick={handleStartRoutineItemClick}
+            className="dfr-border-color-primary tw-rounded-full tw-h-32 tw-w-32 tw-border-2"
+          >
+            {timerStatus === TIMER_STATUS.NOT_STARTED
+              ? "Iniciar"
+              : isTimerRunning
+              ? "Pausar"
+              : "Reanudar"}
+          </Button>
+          <Space size={2} />
+        </React.Fragment>
+      )}
 
       <Block className="tw-flex tw-justify-between tw-items-center tw-w-full">
         <Button
           variant={Button.variant.SIMPLE}
-          className={classNames("tw-mr-auto", currentSet.index > 0 ? "tw-visible" : "tw-invisible")}
+          className={classNames("tw-mr-auto", showPrevSetButton ? "tw-visible" : "tw-invisible")}
           onClick={handlePrevSetClick}
         >
           <Icon icon={Icon.icon.CHEVRON_LEFT} color="tw-text-white" size={24} />
         </Button>
         <Block className="tw-flex-1 tw-text-sm">
-          <Text className="tw-font-bold">{currentSet.isRest ? "Descanso" : "Ejercicio"}</Text>
+          <Text className="tw-font-bold">
+            {isRoutineItemCompleted ? "Completado" : currentSet.isRest ? "Descanso" : "Ejercicio"}
+          </Text>
           <Text>
             {routineItem.title} - {currentSet.index + 1}/{sets.length}
           </Text>

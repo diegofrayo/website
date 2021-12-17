@@ -3,5 +3,6 @@ layout:
   name: dagre
 ~~~
 
-Start timer
-  - Set timer status as RUNNING%0A- Create an interval
+Start timer [EVENT]
+  Set timer start as RUNNING
+    Create an intervals

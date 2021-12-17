@@ -2,10 +2,12 @@ import * as React from "react";
 import { useTheme } from "next-themes";
 
 import { Page } from "~/components/layout";
-import { Block, Button, Icon, InlineText, Space } from "~/components/primitive";
+import { Block, Button, Icon, InlineText, Space, Title } from "~/components/primitive";
 import { withAuth } from "~/auth";
 import { useDidMount } from "~/hooks";
 import type { T_ReactElement } from "~/types";
+import { setScrollPosition } from "~/utils/browser";
+import { pluralize } from "~/utils/misc";
 
 import { ROUTINE_ITEMS_STATUS, ROUTINE_STATUS, TIMER_STATUS } from "./constants";
 import { Timer, GoToHomeLink, Stats, RoutineItem } from "./components";
@@ -17,23 +19,27 @@ function TimerPage(): T_ReactElement {
     // states
     routine,
     currentRoutineItem,
+    currentRoutineItemIndex,
     timerStatus,
 
     // states setters
+    setRoutine,
     setTimerStatus,
+    setCurrentRoutineItem,
 
     // handlers
     handleInitRoutineClick,
     handleCompleteRoutineClick,
 
-    // vars
-    isRoutineInProgress,
-    stats,
-
     // utils
     timeToSeconds,
     secondsToTime,
     fillNumber,
+    getStats,
+    searchForNextNotStartedRoutineItem,
+    setRoutineItemAsStarted,
+    updateRoutineItemStatus,
+    getAllRoutines,
   } = useController();
 
   return (
@@ -47,23 +53,35 @@ function TimerPage(): T_ReactElement {
         <TimerPageContext.Provider
           value={{
             // states
+            routine,
+            currentRoutineItem,
             timerStatus,
 
             // states setters
+            setRoutine,
             setTimerStatus,
+            setCurrentRoutineItem,
 
             // utils
             timeToSeconds,
             secondsToTime,
             fillNumber,
+            searchForNextNotStartedRoutineItem,
+            setRoutineItemAsStarted,
+            updateRoutineItemStatus,
           }}
         >
-          <Block className="dfr-shadow tw-max-w-sm tw-mx-auto">
+          <Block className="dfr-shadow tw-max-w-sm tw-mx-auto tw-relative tw-pt-8">
             <GoToHomeLink />
 
-            {isRoutineInProgress ? (
+            {routine.status === ROUTINE_STATUS.IN_PROGRESS ? (
               <React.Fragment>
-                {currentRoutineItem && <Timer routineItem={currentRoutineItem} />}
+                {currentRoutineItem && (
+                  <Timer
+                    routineItem={currentRoutineItem}
+                    routineItemIndex={currentRoutineItemIndex}
+                  />
+                )}
 
                 <Block className="tw-p-2">
                   <Block className="tw-text-right">
@@ -73,12 +91,12 @@ function TimerPage(): T_ReactElement {
                       onClick={handleCompleteRoutineClick}
                     >
                       <Icon icon={Icon.icon.CHECK} />
-                      <InlineText className="tw-ml-1">Completar rutina</InlineText>
+                      <InlineText className="tw-ml-1 tw-align-middle">Completar rutina</InlineText>
                     </Button>
                   </Block>
                   <Space size={1} />
 
-                  <Stats data={stats} startTime={routine.startTime} />
+                  <Stats data={getStats(routine)} startTime={routine.startTime} />
                   <Space size={1} />
 
                   <Block>
@@ -89,14 +107,44 @@ function TimerPage(): T_ReactElement {
                 </Block>
               </React.Fragment>
             ) : (
-              <Block className="tw-p-8 tw-text-center">
+              <Block className="tw-p-8">
                 <Button
                   variant={Button.variant.SIMPLE}
-                  className="tw-underline tw-font-bold"
+                  className="tw-block tw-mx-auto tw-text-center tw-underline tw-font-bold"
                   onClick={handleInitRoutineClick}
                 >
                   Iniciar rutina
                 </Button>
+                <Button
+                  variant={Button.variant.SIMPLE}
+                  className="tw-block tw-mx-auto tw-text-center tw-underline tw-font-bold tw-mt-3"
+                  onClick={() => {
+                    window.localStorage.removeItem("DFR_TIMER");
+                    window.location.reload();
+                  }}
+                >
+                  Limpiar caché
+                </Button>
+                <Space size={10} variant={Space.variant.DASHED} />
+
+                <Block is="section">
+                  <Title is="h2" size={Title.size.MD} className="tw-text-center">
+                    Historial de rutinas
+                  </Title>
+                  <Space size={2} />
+                  {Object.entries(getAllRoutines()).map(([date, routine]) => {
+                    return (
+                      <React.Fragment key={date}>
+                        <Stats
+                          data={getStats(routine)}
+                          startTime={routine.startTime}
+                          endTime={routine.endTime}
+                        />
+                        <Space size={1} />
+                      </React.Fragment>
+                    );
+                  })}
+                </Block>
               </Block>
             )}
           </Block>
@@ -116,69 +164,11 @@ function useController() {
 
   // states
   const [routine, setRoutine] = React.useState<T_Routine>();
-  const [currentRoutineItem, setCurrentRoutineItem] = React.useState<T_RoutineItem | null>(null);
+  const [currentRoutineItem, setCurrentRoutineItem] = React.useState<T_RoutineItem>();
   const [currentRoutineItemIndex, setCurrentRoutineItemIndex] = React.useState<number>(0);
   const [timerStatus, setTimerStatus] = React.useState<T_TimerStatus>(TIMER_STATUS.NOT_STARTED);
 
   // utils
-  const updateRoutineItemStatus = React.useCallback(function updateRoutineItemStatus(
-    routine: T_Routine,
-    routineItemId: T_RoutineItem["id"],
-    routineItemStatus: T_RoutineItem["status"],
-  ): T_Routine {
-    const routineUpdated = {
-      ...routine,
-      items: routine.items.map((item) => {
-        if (item.id === routineItemId) {
-          return {
-            ...item,
-            status: routineItemStatus,
-          };
-        }
-
-        return {
-          ...item,
-          status:
-            item.status === ROUTINE_ITEMS_STATUS.IN_PROGRESS
-              ? ROUTINE_ITEMS_STATUS.NOT_STARTED
-              : item.status,
-        };
-      }),
-    };
-
-    setRoutine(routineUpdated);
-
-    return routineUpdated;
-  },
-  []);
-
-  // function setRoutineItemAsStarted(routine, routineItemId) {
-  //   const selectedItemIndex = routine.items.findIndex((item) => item.id === routineItemId);
-
-  //   if (selectedItemIndex !== -1) {
-  //     setCurrentRoutineItem(routine.items[selectedItemIndex]);
-  //     setCurrentRoutineItemIndex(selectedItemIndex);
-  //     setScrollPosition(0);
-  //     updateRoutineItemStatus(routine, routineItemId, ROUTINE_ITEMS_STATUS.IN_PROGRESS);
-  //   } else {
-  //     alert("Error");
-  //   }
-  // }
-
-  // function findNextRoutineItemToStart(routine) {
-  //   updateRoutineItemStatus(routine, currentRoutineItem?.id, ROUTINE_ITEMS_STATUS.COMPLETED);
-
-  //   const routineItemToStart = routine.items
-  //     .slice(currentRoutineItemIndex)
-  //     .find((item) => item.status === ROUTINE_ITEMS_STATUS.NOT_STARTED);
-
-  //   if (routineItemToStart) {
-  //     setRoutineItemAsStarted(routine, routineItemToStart.id);
-  //   } else if (areAllRoutineItemsCompleted()) {
-  //     alert("Routine finished");
-  //   }
-  // }
-
   const timeToSeconds = React.useCallback(function timeToSeconds(time?: string): number {
     if (!time || time.split(":").length === 0) return 0;
 
@@ -195,7 +185,7 @@ function useController() {
     return hours * 60 * 60 + minutes * 60 + seconds + seconds;
   }, []);
 
-  function secondsToTime(seconds: number): string {
+  const secondsToTime = React.useCallback(function secondsToTime(seconds: number): string {
     if (seconds < 60) {
       return `00:${fillNumber(seconds)}`;
     }
@@ -210,45 +200,88 @@ function useController() {
     const lastSeconds = Math.round((minutes - Math.floor(minutes)) * 60);
 
     return `${fillNumber(hours)}:${fillNumber(Math.floor(minutes))}:${fillNumber(lastSeconds)}`;
-  }
+  }, []);
 
   function fillNumber(number: number): string {
     return `${number < 10 ? "0" : ""}${number}`;
   }
 
-  // handlers
-  function handleInitRoutineClick() {
-    const loadedRoutineFromLocalStorage =
-      readRoutineFromLocalStorage()[new Date().toLocaleDateString()];
+  const updateRoutineItemStatus = React.useCallback(function updateRoutineItemStatus(
+    routine: T_Routine,
+    routineItemId: T_RoutineItem["id"],
+    routineItemStatus: T_RoutineItem["status"],
+  ): T_Routine {
+    const routineUpdated = {
+      ...routine,
+      items: routine.items.map((item) => {
+        if (item.id === routineItemId) {
+          return {
+            ...item,
+            status: routineItemStatus,
+          };
+        }
 
-    const thisRoutineWasCompletedPreviously =
-      loadedRoutineFromLocalStorage?.status === ROUTINE_STATUS.COMPLETED;
+        return item;
+      }),
+    };
 
-    if (thisRoutineWasCompletedPreviously) {
-      const userCanceledRoutineRestarting = !window.confirm(
-        "Una rutina ya fue completada el día de hoy. ¿Está seguro que quiere iniciar una nueva rutina y sobre-escribir los datos de la rutina existente?",
+    return routineUpdated;
+  },
+  []);
+
+  function searchForNextNotStartedRoutineItem(routine: T_Routine) {
+    const routineItemFound =
+      routine.items
+        .slice(currentRoutineItemIndex)
+        .find((item) => item.status === ROUTINE_ITEMS_STATUS.NOT_STARTED) ||
+      routine.items
+        .slice(0, currentRoutineItemIndex)
+        .find((item) => item.status === ROUTINE_ITEMS_STATUS.NOT_STARTED);
+
+    if (routineItemFound) {
+      const routineUpdated = updateRoutineItemStatus(
+        routine,
+        routineItemFound.id,
+        ROUTINE_ITEMS_STATUS.IN_PROGRESS,
+      );
+      const routineItemFoundIndex = routineUpdated.items.findIndex(
+        (item) => item.id === routineItemFound.id,
       );
 
-      if (userCanceledRoutineRestarting) return;
+      setRoutine(routineUpdated);
+      setCurrentRoutineItem(routineUpdated.items[routineItemFoundIndex]);
+      setCurrentRoutineItemIndex(routineItemFoundIndex);
+    } else {
+      markRoutineAsCompleted();
     }
-
-    setRoutine({
-      ...routine,
-      startTime: `${new Date().toLocaleDateString()} || ${new Date().toLocaleTimeString()}`,
-      status: ROUTINE_STATUS.IN_PROGRESS,
-    } as T_Routine);
   }
 
-  function handleCompleteRoutineClick() {
-    if (window.confirm("¿Está seguro que quiere completar la rutina? Hay items sin terminar")) {
-      setRoutine({
-        ...routine,
-        endTime: `${new Date().toLocaleDateString()} || ${new Date().toLocaleTimeString()}`,
-        status: ROUTINE_STATUS.COMPLETED,
-      } as T_Routine);
+  function setRoutineItemAsStarted(routine: T_Routine, routineItemId: T_RoutineItem["id"]) {
+    setScrollPosition(0);
 
-      alert("La rutina ha sido completada!");
-    }
+    let routineUpdated = updateRoutineItemStatus(
+      routine,
+      routineItemId,
+      ROUTINE_ITEMS_STATUS.IN_PROGRESS,
+    );
+
+    routineUpdated = updateRoutineItemStatus(
+      routineUpdated,
+      currentRoutineItem?.id || "",
+      ROUTINE_ITEMS_STATUS.NOT_STARTED,
+    );
+
+    const routineItemFoundIndex = routineUpdated.items.findIndex(
+      (item) => item.id === routineItemId,
+    );
+
+    setRoutine(routineUpdated);
+    setCurrentRoutineItem(routineUpdated.items[routineItemFoundIndex]);
+    setCurrentRoutineItemIndex(routineItemFoundIndex);
+  }
+
+  function getAllRoutines(): Record<string, T_Routine> {
+    return readRoutineFromLocalStorage();
   }
 
   // private
@@ -268,10 +301,17 @@ function useController() {
   []);
 
   function loadRoutine(): T_Routine {
-    const DEFAULT_ROUTINE = {
-      restTimeBetweenItems: "01:00",
-      startTime: "",
-      endTime: "",
+    const loadedRoutine =
+      readRoutineFromLocalStorage()[new Date().toLocaleDateString()] || createDefaultRoutine();
+
+    return loadedRoutine;
+  }
+
+  function createDefaultRoutine(): T_Routine {
+    return {
+      restTimeBetweenItems: "02:00",
+      startTime: new Date().getTime(),
+      endTime: undefined,
       status: ROUTINE_STATUS.NOT_STARTED,
       items: [
         {
@@ -281,14 +321,16 @@ function useController() {
           sets: 1,
           status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
         },
+        /*
         {
           id: "tests",
           title: "tests",
-          highTime: "00:03",
+          highTime: "00:05",
           sets: 3,
-          restTime: "00:02",
+          restTime: "00:03",
           status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
         },
+        */
         {
           id: "pelota",
           title: "Pelota",
@@ -300,9 +342,9 @@ function useController() {
         {
           id: "abdominales",
           title: "Abdominales",
-          highTime: "00:50",
+          highTime: "01:00",
           sets: 5,
-          restTime: "00:30",
+          restTime: "00:45",
           status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
         },
         {
@@ -350,7 +392,7 @@ function useController() {
           title: "Fondos",
           highTime: "01:00",
           sets: 3,
-          restTime: "00:30",
+          restTime: "00:45",
           status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
         },
         {
@@ -372,16 +414,13 @@ function useController() {
         {
           id: "5",
           title: "Yoga",
-          highTime: "15:00",
-          sets: 1,
+          highTime: "01:10",
+          sets: 9,
+          restTime: "00:30",
           status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
         },
       ],
     };
-    const loadedRoutine =
-      readRoutineFromLocalStorage()[new Date().toLocaleDateString()] || DEFAULT_ROUTINE;
-
-    return loadedRoutine;
   }
 
   function readRoutineFromLocalStorage() {
@@ -393,69 +432,65 @@ function useController() {
     }
   }
 
-  // function areAllRoutineItemsCompleted(routine) {
-  //   return (
-  //     routine.items.filter((item) => {
-  //       return item.status === ROUTINE_ITEMS_STATUS.COMPLETED;
-  //     }).length === routine.items.length
-  //   );
-  // }
+  const getStats = React.useCallback(
+    function getStats(routine?: T_Routine): T_RoutineStats {
+      if (!routine) {
+        return {
+          totalExercises: 0,
+          totalCompletedExercises: 0,
+          completedPercent: "",
+          completedTime: "",
+          totalTime: "",
+          finalRoutineDuration: "",
+        };
+      }
 
-  function getStats(routine?: T_Routine): T_RoutineStats {
-    if (!routine) {
-      return { totalExercises: 0, completedPercent: "", completedTime: "", totalTime: "" };
-    }
+      const totalExercises = Object.keys(routine.items).length;
+      const completedExercises = routine.items.filter((item) => {
+        return item.status === ROUTINE_ITEMS_STATUS.COMPLETED;
+      });
 
-    const totalExercises = Object.keys(routine.items).length;
-    const completedExercises = routine.items.filter((item) => {
-      return item.status === ROUTINE_ITEMS_STATUS.COMPLETED;
-    });
+      return {
+        totalExercises,
+        totalCompletedExercises: completedExercises.length,
+        completedPercent: `${Math.round((completedExercises.length / totalExercises) * 100)}%`,
+        completedTime: secondsToTime(
+          completedExercises.length > 0
+            ? completedExercises
+                .map((item) => {
+                  return (
+                    timeToSeconds(item.highTime) * item.sets +
+                    timeToSeconds(item.restTime) * (item.sets - 1)
+                  );
+                })
+                .reduce((result, curr) => result + curr, 0) +
+                timeToSeconds(routine.restTimeBetweenItems) * (completedExercises.length - 1)
+            : 0,
+        ),
+        totalTime: secondsToTime(
+          routine.items
+            .map((item) => {
+              return (
+                timeToSeconds(item.highTime) * item.sets +
+                timeToSeconds(item.restTime) * (item.sets - 1)
+              );
+            })
+            .reduce((result, curr) => result + curr, 0) +
+            timeToSeconds(routine.restTimeBetweenItems) * (totalExercises - 1),
+        ),
+        finalRoutineDuration: routine.endTime
+          ? pluralize(
+              Math.ceil(Math.abs((routine.endTime - routine.startTime) / 1000) / 60),
+              "minuto",
+              "minutos",
+            )
+          : "",
+      };
+    },
+    [timeToSeconds, secondsToTime],
+  );
 
-    return {
-      totalExercises,
-      completedPercent: `${Math.round((completedExercises.length / totalExercises) * 100)}%`,
-      completedTime: secondsToTime(
-        completedExercises.length > 0
-          ? completedExercises
-              .map((item) => {
-                return (
-                  timeToSeconds(item.highTime) * item.sets +
-                  timeToSeconds(item.restTime) * (item.sets - 1)
-                );
-              })
-              .reduce((result, curr) => result + curr, 0) +
-              timeToSeconds(routine.restTimeBetweenItems) * (completedExercises.length - 1)
-          : 0,
-      ),
-      totalTime: secondsToTime(
-        routine.items
-          .map((item) => {
-            return (
-              timeToSeconds(item.highTime) * item.sets +
-              timeToSeconds(item.restTime) * (item.sets - 1)
-            );
-          })
-          .reduce((result, curr) => result + curr, 0) +
-          timeToSeconds(routine.restTimeBetweenItems) * (totalExercises - 1),
-      ),
-    };
-  }
-
-  // function findRoutineItemToStart(routine) {
-  //   const routineItemToStart =
-  //     routine.items.find((item) => item.status === ROUTINE_ITEMS_STATUS.IN_PROGRESS) ||
-  //     routine.items.find((item) => item.status === ROUTINE_ITEMS_STATUS.NOT_STARTED);
-
-  //   setCurrentRoutineItem(routineItemToStart);
-  //   updateRoutineItemStatus(routine, routineItemToStart.id, ROUTINE_ITEMS_STATUS.IN_PROGRESS);
-  // }
-
-  function checkIfRoutineIsInProgress(routine?: T_Routine): boolean {
-    if (!routine) return false;
-    return routine.status === ROUTINE_STATUS.IN_PROGRESS;
-  }
-
-  function findAndLoadARoutineItem(routine: T_Routine) {
+  function findAndLoadRoutineItem(routine: T_Routine) {
     const routineItemIndexInProgress = routine.items.findIndex(
       (item) => item.status === ROUTINE_ITEMS_STATUS.IN_PROGRESS,
     );
@@ -475,12 +510,90 @@ function useController() {
 
     setCurrentRoutineItem(routine.items[routineItemToLoadIndex]);
     setCurrentRoutineItemIndex(routineItemToLoadIndex);
-    updateRoutineItemStatus(
-      routine,
-      routine.items[routineItemToLoadIndex].id,
-      ROUTINE_ITEMS_STATUS.IN_PROGRESS,
+    setRoutine(
+      updateRoutineItemStatus(
+        routine,
+        routine.items[routineItemToLoadIndex].id,
+        ROUTINE_ITEMS_STATUS.IN_PROGRESS,
+      ),
     );
   }
+
+  function isRoutineCompleted(routine: T_Routine): boolean {
+    return (
+      routine.items.filter((item) => {
+        return item.status === ROUTINE_ITEMS_STATUS.COMPLETED;
+      }).length === routine.items.length
+    );
+  }
+
+  const markRoutineAsCompleted = React.useCallback(
+    function markRoutineAsCompleted() {
+      const routineUpdated = {
+        ...routine,
+        endTime: new Date().getTime(),
+        status: ROUTINE_STATUS.COMPLETED,
+      } as T_Routine;
+
+      setRoutine({ ...routineUpdated, stats: getStats(routineUpdated) });
+      alert("La rutina ha sido completada!");
+      window.location.reload();
+    },
+    [routine, getStats],
+  );
+
+  const checkRoutineItemsStatus = React.useCallback(
+    function checkRoutineItemsStatus(routine: T_Routine) {
+      const allRoutineItemsStatusIsNotStarted =
+        routine.items.filter((item) => item.status === ROUTINE_ITEMS_STATUS.NOT_STARTED).length ===
+        routine.items.length;
+
+      if (allRoutineItemsStatusIsNotStarted) {
+        setCurrentRoutineItem(routine.items[0]);
+        setCurrentRoutineItemIndex(0);
+        setRoutine(
+          updateRoutineItemStatus(routine, routine.items[0].id, ROUTINE_ITEMS_STATUS.IN_PROGRESS),
+        );
+      }
+    },
+    [updateRoutineItemStatus],
+  );
+
+  // handlers
+  function handleInitRoutineClick() {
+    const loadedRoutineFromLocalStorage =
+      readRoutineFromLocalStorage()[new Date().toLocaleDateString()];
+
+    const thisRoutineWasCompletedPreviously =
+      loadedRoutineFromLocalStorage?.status === ROUTINE_STATUS.COMPLETED;
+
+    if (thisRoutineWasCompletedPreviously) {
+      const userCanceledRoutineRestarting = !window.confirm(
+        "Una rutina ya fue completada el día de hoy. ¿Está seguro que quiere iniciar una nueva rutina y sobre-escribir los datos de la rutina existente?",
+      );
+
+      if (userCanceledRoutineRestarting) return;
+
+      const newRoutine = { ...createDefaultRoutine(), status: ROUTINE_STATUS.IN_PROGRESS };
+      setRoutine(newRoutine);
+      findAndLoadRoutineItem(newRoutine);
+    } else {
+      setRoutine({
+        ...routine,
+        startTime: new Date().getTime(),
+        status: ROUTINE_STATUS.IN_PROGRESS,
+      } as T_Routine);
+    }
+  }
+
+  const handleCompleteRoutineClick = React.useCallback(
+    function handleCompleteRoutineClick() {
+      if (window.confirm("¿Está seguro que quiere completar la rutina? Hay items sin terminar")) {
+        markRoutineAsCompleted();
+      }
+    },
+    [markRoutineAsCompleted],
+  );
 
   // effects
   useDidMount(() => {
@@ -488,7 +601,10 @@ function useController() {
 
     const loadedRoutine = loadRoutine();
     setRoutine(loadedRoutine);
-    findAndLoadARoutineItem(loadedRoutine);
+
+    if (loadedRoutine.status !== ROUTINE_STATUS.COMPLETED) {
+      findAndLoadRoutineItem(loadedRoutine);
+    }
   });
 
   React.useEffect(
@@ -496,14 +612,24 @@ function useController() {
       if (!routine) return;
 
       saveRoutineInLocalStorage(routine);
+
+      if (isRoutineCompleted(routine) && routine.status !== ROUTINE_STATUS.COMPLETED) {
+        markRoutineAsCompleted();
+        return;
+      }
+
+      checkRoutineItemsStatus(routine);
     },
     [
       routine,
-      saveRoutineInLocalStorage,
-      currentRoutineItemIndex,
       currentRoutineItem,
+      currentRoutineItemIndex,
       timerStatus,
+
+      markRoutineAsCompleted,
+      saveRoutineInLocalStorage,
       updateRoutineItemStatus,
+      checkRoutineItemsStatus,
     ],
   );
 
@@ -512,21 +638,25 @@ function useController() {
     routine,
     currentRoutineItem,
     timerStatus,
+    currentRoutineItemIndex,
 
     // states setters
+    setRoutine,
     setTimerStatus,
+    setCurrentRoutineItem,
 
     // handlers
     handleInitRoutineClick,
     handleCompleteRoutineClick,
 
-    // vars
-    isRoutineInProgress: checkIfRoutineIsInProgress(routine),
-    stats: getStats(routine),
-
     // utils
     timeToSeconds,
     secondsToTime,
     fillNumber,
+    getStats,
+    searchForNextNotStartedRoutineItem,
+    setRoutineItemAsStarted,
+    updateRoutineItemStatus,
+    getAllRoutines,
   };
 }
