@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { T_Store } from "~/types";
+import type { T_Store } from "~/types";
 
 import initializeStore from "./store";
 

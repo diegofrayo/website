@@ -6,6 +6,7 @@ import {
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  ClockIcon,
   CodeIcon,
   DotsCircleHorizontalIcon,
   ExternalLinkIcon,
@@ -33,7 +34,7 @@ import {
   SunIcon,
 } from "@heroicons/react/solid";
 
-import { E_Icons, T_ReactFunctionComponent } from "~/types";
+import type { E_Icons, T_ReactFunctionComponent } from "~/types";
 
 export type T_Icon = {
   isLibraryIcon: boolean;
@@ -260,6 +261,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
   CHEVRON_DOUBLE_DOWN: {
     isLibraryIcon: true,
     icon: ChevronDoubleDownIcon,
+    props: {
+      className: "",
+      color: "",
+    },
+  },
+  CLOCK: {
+    isLibraryIcon: true,
+    icon: ClockIcon,
     props: {
       className: "",
       color: "",

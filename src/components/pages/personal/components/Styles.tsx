@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 
 import { Block } from "~/components/primitive";
 import { withSafeRenderingComponent } from "~/hocs";
-import { T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 
 function Styles(): T_ReactElement {

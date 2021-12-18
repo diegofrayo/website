@@ -11,7 +11,7 @@ import {
 import * as BlogComponents from "~/components/pages/blog/components";
 import * as MusicComponents from "~/components/pages/music/components";
 // import * as ResumeComponents from "~/components/pages/resume";
-import { T_ReactChildrenProp, T_ReactElement } from "~/types";
+import type { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
 
 export const MDXComponents = {

@@ -5,7 +5,7 @@ import { Button, Icon, Image, Link, Space, Title, Block, Text } from "~/componen
 import { Render } from "~/components/shared";
 import { useQuery } from "~/hooks";
 import FilmsService from "~/services/films";
-import { T_Film, T_ReactElement } from "~/types";
+import type { T_Film, T_ReactElement } from "~/types";
 import { getScrollPosition, setScrollPosition, isInViewport } from "~/utils/browser";
 import { sortBy } from "~/utils/misc";
 import { generateSlug } from "~/utils/strings";

@@ -21,7 +21,7 @@ import { I18nService, useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
 import { selectPageConfig } from "~/state/modules/page-config";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
-import {
+import type {
   T_Locale,
   T_PageConfig,
   T_PageRoute,
@@ -511,7 +511,7 @@ function TV() {
               wrapperClassName="dfr-bg-color-dark-strong tw-bg-opacity-70 tw-rounded-full"
               iconClassName="dfr-text-color-light-strong"
             />
-            <audio id="TV-audio" className="tw-hidden" onEnded={() => setIsAudioPlaying(false)}>
+            <audio id="TV-audio" className="tw-hidden" onEnded={() => setShowInfo(false)}>
               <source src={SONG.audio} type="audio/mpeg" />
             </audio>
           </Button>

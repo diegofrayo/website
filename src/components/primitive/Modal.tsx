@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { useToggleBodyScroll } from "~/hooks";
-import { T_Object, T_ReactElement } from "~/types";
+import type { T_Object, T_ReactElement } from "~/types";
 
 import Block from "./Block";
 

@@ -1,5 +1,5 @@
 import http from "~/lib/http";
-import { T_Metadata } from "~/types";
+import type { T_Metadata } from "~/types";
 
 class MetadataService {
   async fetchData(locale): Promise<T_Metadata> {

@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
 import { I18nService } from "~/i18n";
-import { T_OnClickEvent } from "~/types";
+import type { T_OnClickEvent } from "~/types";
 
 export function getScrollPosition(element?: HTMLElement | null): number {
   return element?.scrollTop || document.body.scrollTop || document.documentElement.scrollTop || 0;

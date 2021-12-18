@@ -4,7 +4,7 @@ import { Block, InlineText } from "~/components/primitive";
 import { useOnWindowResize } from "~/hooks";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
-import { T_ReactElement, T_WebsiteMetadata } from "~/types";
+import type { T_ReactElement, T_WebsiteMetadata } from "~/types";
 
 function WindowSize(): T_ReactElement {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);

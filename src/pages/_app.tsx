@@ -19,7 +19,7 @@ import { I18nService } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import MetadataService from "~/services/metadata";
 import { createPreloadedState, useStore } from "~/state";
-import { T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 import { MDXComponents } from "~/utils/mdx";
 
 import ErrorPage from "./500";

@@ -5,7 +5,7 @@ import reactStringReplace from "react-string-replace";
 import { Button, Icon, Modal, Space, Block, InlineText } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { GuitarChord, GuitarService, T_Chord } from "~/lib/guitar";
-import { T_ReactElement, T_ReactChildrenProp } from "~/types";
+import type { T_ReactElement, T_ReactChildrenProp } from "~/types";
 import { createArray, safeCastNumber } from "~/utils/misc";
 
 type T_TextFormatterProps = {

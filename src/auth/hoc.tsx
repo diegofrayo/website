@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { useDidMount } from "~/hooks";
-import { T_Object, T_ReactFunctionComponent } from "~/types";
+import type { T_Object, T_ReactFunctionComponent } from "~/types";
 import { ROUTES } from "~/utils/routing";
 
 import AuthService from "./service";

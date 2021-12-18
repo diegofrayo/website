@@ -6,7 +6,7 @@ import BlogPostPage from "~/components/pages/blog/[slug]";
 import { getPageContentStaticProps } from "~/i18n";
 import BlogService from "~/services/blog";
 import { dataLoader } from "~/server";
-import { T_BlogPost, T_Locale } from "~/types";
+import type { T_BlogPost, T_Locale } from "~/types";
 import { MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
 import { replaceAll } from "~/utils/strings";

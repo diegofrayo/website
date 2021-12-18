@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Input, Space, Title, Block } from "~/components/primitive";
 import { GuitarChord } from "~/lib/guitar";
-import { T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 
 function ChordsCreator(): T_ReactElement {
   const {

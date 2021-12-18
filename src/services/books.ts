@@ -1,6 +1,6 @@
 import { AuthService } from "~/auth";
 import http from "~/lib/http";
-import { T_Book } from "~/types";
+import type { T_Book } from "~/types";
 import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 
 class BooksService {

@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Space, Block, Text, InlineText } from "~/components/primitive";
 import { AuthService } from "~/auth";
-import { T_ReactChildrenProp, T_ReactElement } from "~/types";
+import type { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { createArray } from "~/utils/misc";
 
 import GuitarFret from "./GuitarFret";

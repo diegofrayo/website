@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { T_HTMLElementAttributes, T_ReactChildrenProp, T_ReactElement } from "~/types";
+import type { T_HTMLElementAttributes, T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { generateSlug } from "~/utils/strings";
 
 import Icon from "./Icon";

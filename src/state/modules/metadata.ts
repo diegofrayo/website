@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { T_SEOMetadata, T_Store, T_WebsiteMetadata } from "~/types";
+import type { T_SEOMetadata, T_Store, T_WebsiteMetadata } from "~/types";
 
 const REDUCER_NAME = "metadata";
 

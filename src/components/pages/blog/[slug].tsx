@@ -10,7 +10,13 @@ import twcss from "~/lib/twcss";
 import { useStoreSelector, useStoreActionsDispatcher } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
 import { setLocales } from "~/state/modules/page-config";
-import { T_BlogPost, T_Locale, T_ReactElement, T_PageContent, T_WebsiteMetadata } from "~/types";
+import type {
+  T_BlogPost,
+  T_Locale,
+  T_ReactElement,
+  T_PageContent,
+  T_WebsiteMetadata,
+} from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { ROUTES } from "~/utils/routing";

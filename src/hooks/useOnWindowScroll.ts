@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { T_OnScrollEvent } from "~/types";
+import type { T_OnScrollEvent } from "~/types";
 
 function useOnWindowScroll(callback: (event: T_OnScrollEvent) => void, when = true): void {
   const savedHandler = React.useRef(callback);

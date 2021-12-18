@@ -1,6 +1,6 @@
 import { useTranslation as useTranslationLibrary } from "react-i18next";
 
-import { T_Locale } from "~/types";
+import type { T_Locale } from "~/types";
 
 function useTranslation(): {
   t: any;

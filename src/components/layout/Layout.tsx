@@ -6,7 +6,7 @@ import { useOnWindowStopScroll } from "~/hooks";
 import { useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
-import { E_Icons, T_ReactChildrenProp, T_ReactElement, T_WebsiteMetadata } from "~/types";
+import type { E_Icons, T_ReactChildrenProp, T_ReactElement, T_WebsiteMetadata } from "~/types";
 import { getScrollPosition, scrollToElement } from "~/utils/browser";
 
 import Header from "./Header";
@@ -116,15 +116,6 @@ function Footer({
             isExternalUrl
           >
             freeicons.io
-          </Link>
-          <InlineText> | </InlineText>
-          <Link
-            variant={Link.variant.PRIMARY}
-            className="tw-break-normal"
-            href="https://icons8.com/illustrations"
-            isExternalUrl
-          >
-            icons8.com
           </Link>
         </Block>
       </Block>

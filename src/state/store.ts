@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import { I18nService } from "~/i18n";
-import { T_Locale, T_Metadata, T_Object, T_PageContent, T_Store } from "~/types";
+import type { T_Locale, T_Metadata, T_Object, T_PageContent, T_Store } from "~/types";
 import {
   isDevelopmentEnvironment,
   transformObjectKeysFromSnakeCaseToLowerCamelCase,

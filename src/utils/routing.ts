@@ -1,4 +1,4 @@
-import { T_PageRoute } from "~/types";
+import type { T_PageRoute } from "~/types";
 
 export const ROUTES: Record<T_RoutesKeys, T_PageRoute> = {
   HOME: "/",

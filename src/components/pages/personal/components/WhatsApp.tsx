@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Icon, Input, Link, Block } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import { T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 import { focusElement, isSmallScreen } from "~/utils/browser";
 import { generateSlug, replaceAll } from "~/utils/strings";
 

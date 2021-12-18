@@ -7,7 +7,7 @@ import { Page, MainLayout } from "~/components/layout";
 import { MDXContent } from "~/components/shared";
 import { useTranslation, getPageContentStaticProps, I18nService } from "~/i18n";
 import { dataLoader } from "~/server";
-import { T_Locale, T_PageRoute, T_ReactElement } from "~/types";
+import type { T_Locale, T_PageRoute, T_ReactElement } from "~/types";
 import { MDXScope } from "~/utils/mdx";
 import { DYNAMIC_MAIN_PAGES, ROUTES } from "~/utils/routing";
 import { generateObjectKeyInUpperCase } from "~/utils/strings";

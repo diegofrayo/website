@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { T_HTMLElementAttributes, T_ReactElement } from "~/types";
+import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
 type T_TextProps = T_HTMLElementAttributes["p"];
 

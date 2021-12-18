@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import NProgress from "nprogress";
 
 import { useDidMount } from "~/hooks";
-import { T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 
 function ProgressBar(): T_ReactElement {
   const router = useRouter();

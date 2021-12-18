@@ -23,6 +23,7 @@ function TimerPage(): T_ReactElement {
     currentRoutineItem,
     currentRoutineItemIndex,
     timerStatus,
+    routinesHistory,
 
     // states setters
     setRoutine,
@@ -34,6 +35,7 @@ function TimerPage(): T_ReactElement {
     handleCompleteRoutineClick,
     handleCancelRoutineClick,
     handleUploadRoutineHistoryClick,
+    handleDeleteRoutineHistoryClick,
 
     // vars
     routineTemplate,
@@ -48,7 +50,6 @@ function TimerPage(): T_ReactElement {
     searchForNextNotStartedRoutineItem,
     setRoutineItemAsStarted,
     updateRoutineItemStatus,
-    fetchAllRoutines,
   } = useController();
 
   return (
@@ -82,7 +83,7 @@ function TimerPage(): T_ReactElement {
                 updateRoutineItemStatus,
               }}
             >
-              <Block className="dfr-shadow tw-max-w-sm tw-mx-auto tw-relative tw-pt-8">
+              <Block className="dfr-shadow tw-max-w-sm tw-mx-auto tw-relative tw-pt-8 tw-min-h-screen">
                 <GoToHomeLink />
 
                 {routine.status === ROUTINE_STATUS.IN_PROGRESS ? (
@@ -120,7 +121,7 @@ function TimerPage(): T_ReactElement {
                       <Space size={1} />
 
                       <Stats data={getStats(routine)} startTime={routine.startTime} />
-                      <Space size={1} />
+                      <Space size={4} variant={Space.variant.DASHED} />
 
                       <Block>
                         {routine.items.map((routineItem) => {
@@ -151,28 +152,37 @@ function TimerPage(): T_ReactElement {
                     >
                       Limpiar caché
                     </Button>
-                    <Space size={10} variant={Space.variant.DASHED} />
 
-                    <Block is="section">
-                      <Title is="h2" size={Title.size.MD} className="tw-text-center">
-                        Historial de rutinas
-                      </Title>
-                      <Space size={2} />
-                      {fetchAllRoutines().map(({ date, routine }) => {
-                        return (
-                          <React.Fragment key={date}>
-                            <Stats
-                              title={date}
-                              data={getStats(routine)}
-                              startTime={routine.startTime}
-                              endTime={routine.endTime}
-                              uploadRoutineHandler={handleUploadRoutineHistoryClick(date, routine)}
-                            />
-                            <Space size={1} />
-                          </React.Fragment>
-                        );
-                      })}
-                    </Block>
+                    {routinesHistory.length > 0 ? (
+                      <React.Fragment>
+                        <Space size={10} variant={Space.variant.DASHED} />
+
+                        <Block is="section">
+                          <Title is="h2" size={Title.size.MD} className="tw-text-center">
+                            Historial de rutinas
+                          </Title>
+                          <Space size={2} />
+                          {routinesHistory.map(({ date, routine }) => {
+                            return (
+                              <React.Fragment key={date}>
+                                <Stats
+                                  title={date}
+                                  data={getStats(routine)}
+                                  startTime={routine.startTime}
+                                  endTime={routine.endTime}
+                                  uploadRoutineHandler={handleUploadRoutineHistoryClick(
+                                    date,
+                                    routine,
+                                  )}
+                                  deleteRoutineHandler={handleDeleteRoutineHistoryClick(date)}
+                                />
+                                <Space size={1} />
+                              </React.Fragment>
+                            );
+                          })}
+                        </Block>
+                      </React.Fragment>
+                    ) : null}
                   </Block>
                 )}
               </Block>
@@ -203,7 +213,7 @@ function useController() {
         `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
         {
           path: "/timer",
-          action: "GET",
+          method: "GET",
         },
       );
 
@@ -211,15 +221,9 @@ function useController() {
     },
     {
       onSuccess: (routineTemplate: T_Routine) => {
-        const loadedRoutine = loadRoutine({
-          ...routineTemplate,
-          status: ROUTINE_STATUS.NOT_STARTED,
-          startTime: new Date().getTime(),
-          items: routineTemplate.items.map((item) => {
-            return { ...item, status: ROUTINE_ITEMS_STATUS.NOT_STARTED };
-          }),
-        });
+        const loadedRoutine = loadRoutine(createNewRoutine(routineTemplate));
         setRoutine(loadedRoutine);
+        setRoutinesHistory(fetchRoutinesHistory());
 
         if (loadedRoutine.status !== ROUTINE_STATUS.COMPLETED) {
           findAndLoadRoutineItem(loadedRoutine);
@@ -233,6 +237,9 @@ function useController() {
   const [currentRoutineItem, setCurrentRoutineItem] = React.useState<T_RoutineItem>();
   const [currentRoutineItemIndex, setCurrentRoutineItemIndex] = React.useState<number>(0);
   const [timerStatus, setTimerStatus] = React.useState<T_TimerStatus>(TIMER_STATUS.NOT_STARTED);
+  const [routinesHistory, setRoutinesHistory] = React.useState<
+    { date: string; routine: T_Routine }[]
+  >([]);
 
   // utils
   const timeToSeconds = React.useCallback(function timeToSeconds(time?: string): number {
@@ -346,27 +353,21 @@ function useController() {
     setCurrentRoutineItemIndex(routineItemFoundIndex);
   }
 
-  function fetchAllRoutines() {
-    return Object.entries(readRoutineFromLocalStorage())
-      .reduce((result, [date, routine]: [string, T_Routine]) => {
-        if (routine.status !== ROUTINE_STATUS.COMPLETED) return result;
-
-        return [...result, { date, routine }];
-      }, [])
-      .sort(sortBy([{ param: "date", order: "desc" }]));
-  }
-
   // private
-  const saveRoutineInLocalStorage = React.useCallback(function saveRoutineInLocalStorage(
-    routine?: T_Routine,
-  ) {
+  const saveRoutineInLocalStorage = React.useCallback(function saveRoutineInLocalStorage({
+    routine,
+    date = new Date().toLocaleDateString(),
+  }: {
+    routine?: T_Routine;
+    date?: string;
+  }) {
     const loadedRoutine = readRoutineFromLocalStorage();
 
     window.localStorage.setItem(
       "DFR_TIMER",
       JSON.stringify({
         ...loadedRoutine,
-        [new Date().toLocaleDateString()]: routine,
+        [date]: routine,
       }),
     );
   },
@@ -491,15 +492,15 @@ function useController() {
         status: ROUTINE_STATUS.COMPLETED,
       } as T_Routine;
 
+      setTimerStatus(TIMER_STATUS.NOT_STARTED);
       setRoutine({ ...routineUpdated, stats: getStats(routineUpdated) });
       alert("La rutina ha sido completada!");
-      window.location.reload();
     },
     [routine, getStats],
   );
 
-  const checkRoutineItemsStatus = React.useCallback(
-    function checkRoutineItemsStatus(routine: T_Routine) {
+  const setAtLeastOneRoutineItemAsInProgress = React.useCallback(
+    function setAtLeastOneRoutineItemAsInProgress(routine: T_Routine) {
       const allRoutineItemsStatusIsNotStarted =
         routine.items.filter((item) => item.status === ROUTINE_ITEMS_STATUS.NOT_STARTED).length ===
         routine.items.length;
@@ -514,6 +515,27 @@ function useController() {
     },
     [updateRoutineItemStatus],
   );
+
+  const fetchRoutinesHistory = React.useCallback(function fetchRoutinesHistory() {
+    return Object.entries(readRoutineFromLocalStorage())
+      .reduce((result, [date, routine]: [string, T_Routine]) => {
+        if (routine.status !== ROUTINE_STATUS.COMPLETED) return result;
+
+        return [...result, { date, routine }];
+      }, [])
+      .sort(sortBy([{ param: "date", order: "desc" }]));
+  }, []);
+
+  function createNewRoutine(routine: T_Routine): T_Routine {
+    return {
+      ...routine,
+      status: ROUTINE_STATUS.NOT_STARTED,
+      startTime: new Date().getTime(),
+      items: routine.items.map((item) => {
+        return { ...item, status: ROUTINE_ITEMS_STATUS.NOT_STARTED };
+      }),
+    };
+  }
 
   // handlers
   function handleInitRoutineClick() {
@@ -530,15 +552,17 @@ function useController() {
 
       if (userCanceledRoutineRestarting) return;
 
-      const newRoutine = { ...routineTemplate, status: ROUTINE_STATUS.IN_PROGRESS };
+      const newRoutine = {
+        ...createNewRoutine(routineTemplate),
+        status: ROUTINE_STATUS.IN_PROGRESS,
+      };
       setRoutine(newRoutine);
       findAndLoadRoutineItem(newRoutine);
     } else {
       setRoutine({
-        ...routine,
-        startTime: new Date().getTime(),
+        ...createNewRoutine(routineTemplate),
         status: ROUTINE_STATUS.IN_PROGRESS,
-      } as T_Routine);
+      });
     }
   }
 
@@ -554,9 +578,9 @@ function useController() {
   const handleCancelRoutineClick = React.useCallback(
     function handleCancelRoutineClick() {
       if (window.confirm("¿Está seguro que quiere cancelar la rutina?")) {
-        saveRoutineInLocalStorage(undefined);
+        saveRoutineInLocalStorage({ routine: undefined });
         setRoutine(routineTemplate);
-        window.location.reload();
+        setTimerStatus(TIMER_STATUS.NOT_STARTED);
       }
     },
     [setRoutine, saveRoutineInLocalStorage, routineTemplate],
@@ -565,22 +589,45 @@ function useController() {
   const handleUploadRoutineHistoryClick = React.useCallback(
     function handleUploadRoutineHistoryClick(date, routine) {
       return async () => {
-        const { data } = await http.post(
-          `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
-          {
+        try {
+          await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
             path: "/timer",
-            action: "POST",
+            method: "POST",
             payload: {
               date,
               routine,
             },
-          },
-        );
-
-        return data;
+          });
+        } catch (error) {
+          console.error(error);
+          alert(error.message);
+        }
       };
     },
     [],
+  );
+
+  const handleDeleteRoutineHistoryClick = React.useCallback(
+    function handleDeleteRoutineHistoryClick(date) {
+      return async () => {
+        try {
+          if (window.confirm("¿Está seguro?")) {
+            await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
+              path: "/timer",
+              method: "DELETE",
+              payload: date,
+            });
+
+            saveRoutineInLocalStorage({ routine: undefined, date });
+            setRoutinesHistory(fetchRoutinesHistory());
+          }
+        } catch (error) {
+          console.error(error);
+          alert(error.message);
+        }
+      };
+    },
+    [saveRoutineInLocalStorage, fetchRoutinesHistory],
   );
 
   // effects
@@ -592,14 +639,14 @@ function useController() {
     function onRoutineChange() {
       if (!routine) return;
 
-      saveRoutineInLocalStorage(routine);
+      saveRoutineInLocalStorage({ routine });
+      setRoutinesHistory(fetchRoutinesHistory());
 
       if (isRoutineCompleted(routine) && routine.status !== ROUTINE_STATUS.COMPLETED) {
         markRoutineAsCompleted();
-        return;
+      } else {
+        setAtLeastOneRoutineItemAsInProgress(routine);
       }
-
-      checkRoutineItemsStatus(routine);
     },
     [
       routine,
@@ -610,7 +657,8 @@ function useController() {
       markRoutineAsCompleted,
       saveRoutineInLocalStorage,
       updateRoutineItemStatus,
-      checkRoutineItemsStatus,
+      setAtLeastOneRoutineItemAsInProgress,
+      fetchRoutinesHistory,
     ],
   );
 
@@ -620,6 +668,7 @@ function useController() {
     currentRoutineItem,
     timerStatus,
     currentRoutineItemIndex,
+    routinesHistory,
 
     // states setters
     setRoutine,
@@ -631,6 +680,7 @@ function useController() {
     handleCompleteRoutineClick,
     handleCancelRoutineClick,
     handleUploadRoutineHistoryClick,
+    handleDeleteRoutineHistoryClick,
 
     // vars
     routineTemplate,
@@ -645,6 +695,5 @@ function useController() {
     searchForNextNotStartedRoutineItem,
     setRoutineItemAsStarted,
     updateRoutineItemStatus,
-    fetchAllRoutines,
   };
 }

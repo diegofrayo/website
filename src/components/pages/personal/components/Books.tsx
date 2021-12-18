@@ -4,7 +4,7 @@ import { Icon, Link, Title, Block, Text, InlineText } from "~/components/primiti
 import { Emoji, Render } from "~/components/shared";
 import { useQuery } from "~/hooks";
 import BooksService from "~/services/books";
-import { T_Book, T_ReactElement } from "~/types";
+import type { T_Book, T_ReactElement } from "~/types";
 
 function Books(): T_ReactElement {
   const { isLoading, error, data } = useQuery("books", BooksService.fetchBooks);

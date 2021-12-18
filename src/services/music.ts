@@ -1,5 +1,5 @@
 import http from "~/lib/http";
-import { T_Object, T_Primitive, T_Song } from "~/types";
+import type { T_Object, T_Primitive, T_Song } from "~/types";
 import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 
 class MusicService {

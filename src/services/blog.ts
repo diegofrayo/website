@@ -1,6 +1,6 @@
 import { I18nService } from "~/i18n";
 import http from "~/lib/http";
-import { T_BlogPost, T_ItemCategory, T_Object, T_Primitive } from "~/types";
+import type { T_BlogPost, T_ItemCategory, T_Object, T_Primitive } from "~/types";
 import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 
 class BlogService {

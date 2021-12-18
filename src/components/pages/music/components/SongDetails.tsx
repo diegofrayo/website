@@ -5,7 +5,7 @@ import { Icon, Link, Block, Text, InlineText, Space } from "~/components/primiti
 import { withRequiredAuthComponent } from "~/hocs";
 import { useTranslation } from "~/i18n";
 import MusicService from "~/services/music";
-import { T_ReactElement, T_Song } from "~/types";
+import type { T_ReactElement, T_Song } from "~/types";
 import { createArray } from "~/utils/misc";
 
 function SongDetails({

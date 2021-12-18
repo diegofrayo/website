@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Block, Text as TextPrimitive, InlineText } from "~/components/primitive";
 import { useDocumentTitle } from "~/hooks";
-import { T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 
 function MariaCamila(): T_ReactElement {
   useDocumentTitle("Feliz cumple!!");

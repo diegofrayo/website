@@ -1,5 +1,5 @@
 import http from "~/lib/http";
-import { T_Locale, T_Object, T_PageContent, T_PageRoute } from "~/types";
+import type { T_Locale, T_Object, T_PageContent, T_PageRoute } from "~/types";
 import { ROUTES } from "~/utils/routing";
 
 import I18nService from "./service";

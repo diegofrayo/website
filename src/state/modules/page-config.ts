@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { T_Locale, T_Store } from "~/types";
+import type { T_Locale, T_Store } from "~/types";
 
 const REDUCER_NAME = "page-config";
 

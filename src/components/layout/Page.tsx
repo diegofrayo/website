@@ -10,7 +10,7 @@ import AnalyticsService from "~/services/analytics";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata, selectSEOMetadata } from "~/state/modules/metadata";
 import { selectPageConfig } from "~/state/modules/page-config";
-import {
+import type {
   T_PageConfig,
   T_PageRoute,
   T_ReactChildrenProp,

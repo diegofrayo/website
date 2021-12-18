@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { Block, Icon, Link, Text, Title as TitlePrimitive } from "~/components/primitive";
-import { T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 import { isDevelopmentEnvironment } from "~/utils/misc";
 
 export function HelloWorldMDX({ text }: { text: string }): T_ReactElement {

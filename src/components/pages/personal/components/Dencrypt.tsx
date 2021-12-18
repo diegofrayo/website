@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import { T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 import { decrypt, encrypt } from "~/utils/dencrypt";
 import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
 

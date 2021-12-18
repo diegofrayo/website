@@ -5,7 +5,7 @@ import { Button, Title, Block, InlineText } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { useExecuteCallback } from "~/hooks";
 import AnalyticsService from "~/services/analytics";
-import { T_ReactElement, T_ReactRefObject } from "~/types";
+import type { T_ReactElement, T_ReactRefObject } from "~/types";
 import { copyToClipboard, downloadComponentAsImage } from "~/utils/browser";
 
 import GuitarFret from "./GuitarFret";

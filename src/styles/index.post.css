@@ -17,7 +17,9 @@ body {
   @apply dfr-text-color-primary;
   cursor: default;
   font-size: 18px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
   scroll-behavior: smooth;
   word-break: break-word;
 }

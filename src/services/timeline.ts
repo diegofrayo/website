@@ -1,5 +1,5 @@
 import http from "~/lib/http";
-import { T_TimeLine } from "~/types";
+import type { T_TimeLine } from "~/types";
 import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 
 class TimeLineService {

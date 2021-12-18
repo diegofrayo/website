@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Icon, Image, Link, List, Title, Block, Text } from "~/components/primitive";
 import { useTranslation } from "~/i18n";
-import { T_ReactElement, T_Song } from "~/types";
+import type { T_ReactElement, T_Song } from "~/types";
 
 type T_SongSourcesProps = {
   sources: T_Song["sources"];

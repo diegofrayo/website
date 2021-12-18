@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 
 export function Main(): T_ReactElement {
   return (

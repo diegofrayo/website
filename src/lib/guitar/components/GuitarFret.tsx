@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Block, Icon, InlineText } from "~/components/primitive";
 import twcss from "~/lib/twcss";
-import { T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 import { createArray, mirror } from "~/utils/misc";
 
 import { NUMBER_OF_STRINGS } from "../constants";

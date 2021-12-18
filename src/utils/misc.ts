@@ -1,4 +1,4 @@
-import { T_Object, T_Primitive } from "~/types";
+import type { T_Object, T_Primitive } from "~/types";
 
 import { convertSnakeCaseToLowerCamelCase } from "./strings";
 

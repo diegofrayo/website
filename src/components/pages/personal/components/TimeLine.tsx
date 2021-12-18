@@ -5,7 +5,7 @@ import { Button, Space, Title, Block, Text, InlineText } from "~/components/prim
 import { Emoji, Render } from "~/components/shared";
 import { useQuery } from "~/hooks";
 import TimeLineService from "~/services/timeline";
-import { T_TimeLine, T_ReactElement } from "~/types";
+import type { T_TimeLine, T_ReactElement } from "~/types";
 
 function TimeLine(): T_ReactElement {
   const {
