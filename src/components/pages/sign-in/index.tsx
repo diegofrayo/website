@@ -33,7 +33,7 @@ function SignInPage(): T_ReactElement {
           name="username"
           value="diegofrayo"
           autoComplete="off"
-          onChange={() => console.log()}
+          onChange={() => undefined}
           containerProps={{ className: "tw-hidden" }}
         />
         <Input

@@ -558,7 +558,7 @@ function useController() {
         formatted: new Date().toLocaleTimeString(),
       },
 
-      items: (!isDevelopmentEnvironment()
+      items: (isDevelopmentEnvironment()
         ? (
             [
               {
