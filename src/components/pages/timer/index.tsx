@@ -8,10 +8,11 @@ import { useDidMount, useQuery } from "~/hooks";
 import http from "~/lib/http";
 import type { T_ReactElement } from "~/types";
 import { setScrollPosition } from "~/utils/browser";
-import { delay, pluralize, sortBy } from "~/utils/misc";
+import { delay, isDevelopmentEnvironment, sortBy } from "~/utils/misc";
+import { ROUTES } from "~/utils/routing";
 
 import { ROUTINE_ITEMS_STATUS, ROUTINE_STATUS, TIMER_STATUS } from "./constants";
-import { Timer, GoToHomeLink, Stats, RoutineItem } from "./components";
+import { Timer, Stats, RoutineItem } from "./components";
 import { TimerPageContext } from "./context";
 import type { T_RoutineStats, T_Routine, T_RoutineItem, T_TimerStatus } from "./types";
 import { Render } from "~/components/shared";
@@ -47,6 +48,7 @@ function TimerPage(): T_ReactElement {
     secondsToTime,
     fillNumber,
     getStats,
+    calculateRoutineItemTotalTime,
     searchForNextNotStartedRoutineItem,
     setRoutineItemAsStarted,
     updateRoutineItemStatus,
@@ -78,12 +80,13 @@ function TimerPage(): T_ReactElement {
                 timeToSeconds,
                 secondsToTime,
                 fillNumber,
+                calculateRoutineItemTotalTime,
                 searchForNextNotStartedRoutineItem,
                 setRoutineItemAsStarted,
                 updateRoutineItemStatus,
               }}
             >
-              <Block className="dfr-shadow tw-max-w-sm tw-mx-auto tw-relative tw-pt-8 tw-min-h-screen">
+              <Block className="tw-shadow-md tw-shadow-gray-600 dfr-bg-color-light-strong tw-max-w-sm tw-mx-auto tw-relative tw-pt-8 tw-min-h-screen">
                 <GoToHomeLink />
 
                 {routine.status === ROUTINE_STATUS.IN_PROGRESS ? (
@@ -190,6 +193,12 @@ function TimerPage(): T_ReactElement {
           ) : null;
         }}
       </Render>
+
+      <style jsx>{`
+        :global(body) {
+          background-color: black;
+        }
+      `}</style>
     </Page>
   );
 }
@@ -258,7 +267,9 @@ function useController() {
     return hours * 60 * 60 + minutes * 60 + seconds + seconds;
   }, []);
 
-  const secondsToTime = React.useCallback(function secondsToTime(seconds: number): string {
+  const secondsToTime = React.useCallback(function secondsToTime(secondsParam: number): string {
+    const seconds = Math.round(secondsParam);
+
     if (seconds < 60) {
       return `00:${fillNumber(seconds)}`;
     }
@@ -278,6 +289,17 @@ function useController() {
   function fillNumber(number: number): string {
     return `${number < 10 ? "0" : ""}${number}`;
   }
+
+  const calculateRoutineItemTotalTime = React.useCallback(
+    function calculateRoutineItemTotalTime(
+      sets: T_RoutineItem["sets"],
+      highTime: T_RoutineItem["highTime"],
+      restTime: T_RoutineItem["restTime"],
+    ): number {
+      return timeToSeconds(highTime) * sets + timeToSeconds(restTime) * (sets - 1);
+    },
+    [timeToSeconds],
+  );
 
   const updateRoutineItemStatus = React.useCallback(function updateRoutineItemStatus(
     routine: T_Routine,
@@ -325,7 +347,7 @@ function useController() {
       setCurrentRoutineItem(routineUpdated.items[routineItemFoundIndex]);
       setCurrentRoutineItemIndex(routineItemFoundIndex);
     } else {
-      markRoutineAsCompleted();
+      markRoutineAsCompleted(routine);
     }
   }
 
@@ -338,11 +360,13 @@ function useController() {
       ROUTINE_ITEMS_STATUS.IN_PROGRESS,
     );
 
-    routineUpdated = updateRoutineItemStatus(
-      routineUpdated,
-      currentRoutineItem?.id || "",
-      ROUTINE_ITEMS_STATUS.NOT_STARTED,
-    );
+    if (currentRoutineItem?.status === ROUTINE_ITEMS_STATUS.IN_PROGRESS) {
+      routineUpdated = updateRoutineItemStatus(
+        routineUpdated,
+        currentRoutineItem?.id || "",
+        ROUTINE_ITEMS_STATUS.NOT_STARTED,
+      );
+    }
 
     const routineItemFoundIndex = routineUpdated.items.findIndex(
       (item) => item.id === routineItemId,
@@ -406,6 +430,7 @@ function useController() {
       const completedExercises = routine.items.filter((item) => {
         return item.status === ROUTINE_ITEMS_STATUS.COMPLETED;
       });
+      const isRoutineCompleted = completedExercises.length === totalExercises;
 
       return {
         totalExercises,
@@ -415,36 +440,27 @@ function useController() {
           completedExercises.length > 0
             ? completedExercises
                 .map((item) => {
-                  return (
-                    timeToSeconds(item.highTime) * item.sets +
-                    timeToSeconds(item.restTime) * (item.sets - 1)
-                  );
+                  return calculateRoutineItemTotalTime(item.sets, item.highTime, item.restTime);
                 })
                 .reduce((result, curr) => result + curr, 0) +
-                timeToSeconds(routine.restTimeBetweenItems) * (completedExercises.length - 1)
+                timeToSeconds(routine.restTimeBetweenItems) *
+                  (completedExercises.length - (isRoutineCompleted ? 1 : 0))
             : 0,
         ),
         totalTime: secondsToTime(
           routine.items
             .map((item) => {
-              return (
-                timeToSeconds(item.highTime) * item.sets +
-                timeToSeconds(item.restTime) * (item.sets - 1)
-              );
+              return calculateRoutineItemTotalTime(item.sets, item.highTime, item.restTime);
             })
             .reduce((result, curr) => result + curr, 0) +
             timeToSeconds(routine.restTimeBetweenItems) * (totalExercises - 1),
         ),
         finalRoutineDuration: routine.endTime
-          ? pluralize(
-              Math.ceil(Math.abs((routine.endTime - routine.startTime) / 1000) / 60),
-              "minuto",
-              "minutos",
-            )
+          ? secondsToTime(Math.ceil(Math.abs((routine.endTime.ms - routine.startTime.ms) / 1000)))
           : "",
       };
     },
-    [timeToSeconds, secondsToTime],
+    [timeToSeconds, secondsToTime, calculateRoutineItemTotalTime],
   );
 
   function findAndLoadRoutineItem(routine: T_Routine) {
@@ -485,10 +501,13 @@ function useController() {
   }
 
   const markRoutineAsCompleted = React.useCallback(
-    function markRoutineAsCompleted() {
+    function markRoutineAsCompleted(routine?: T_Routine) {
       const routineUpdated = {
         ...routine,
-        endTime: new Date().getTime(),
+        endTime: {
+          ms: new Date().getTime(),
+          formatted: new Date().toLocaleTimeString(),
+        },
         status: ROUTINE_STATUS.COMPLETED,
       } as T_Routine;
 
@@ -496,7 +515,7 @@ function useController() {
       setRoutine({ ...routineUpdated, stats: getStats(routineUpdated) });
       alert("La rutina ha sido completada!");
     },
-    [routine, getStats],
+    [getStats],
   );
 
   const setAtLeastOneRoutineItemAsInProgress = React.useCallback(
@@ -506,11 +525,15 @@ function useController() {
         routine.items.length;
 
       if (allRoutineItemsStatusIsNotStarted) {
-        setCurrentRoutineItem(routine.items[0]);
-        setCurrentRoutineItemIndex(0);
-        setRoutine(
-          updateRoutineItemStatus(routine, routine.items[0].id, ROUTINE_ITEMS_STATUS.IN_PROGRESS),
+        const routineUpdated = updateRoutineItemStatus(
+          routine,
+          routine.items[0].id,
+          ROUTINE_ITEMS_STATUS.IN_PROGRESS,
         );
+
+        setCurrentRoutineItem(routineUpdated.items[0]);
+        setCurrentRoutineItemIndex(0);
+        setRoutine(routineUpdated);
       }
     },
     [updateRoutineItemStatus],
@@ -530,8 +553,26 @@ function useController() {
     return {
       ...routine,
       status: ROUTINE_STATUS.NOT_STARTED,
-      startTime: new Date().getTime(),
-      items: routine.items.map((item) => {
+      startTime: {
+        ms: new Date().getTime(),
+        formatted: new Date().toLocaleTimeString(),
+      },
+
+      items: (!isDevelopmentEnvironment()
+        ? (
+            [
+              {
+                id: "tests",
+                title: "tests",
+                highTime: "00:03",
+                sets: 2,
+                restTime: "00:02",
+                status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
+              },
+            ] as T_RoutineItem[]
+          ).concat(routine.items.slice(0, 3))
+        : routine.items
+      ).map((item) => {
         return { ...item, status: ROUTINE_ITEMS_STATUS.NOT_STARTED };
       }),
     };
@@ -569,17 +610,17 @@ function useController() {
   const handleCompleteRoutineClick = React.useCallback(
     function handleCompleteRoutineClick() {
       if (window.confirm("¿Está seguro que quiere completar la rutina? Hay items sin terminar")) {
-        markRoutineAsCompleted();
+        markRoutineAsCompleted(routine as T_Routine);
       }
     },
-    [markRoutineAsCompleted],
+    [markRoutineAsCompleted, routine],
   );
 
   const handleCancelRoutineClick = React.useCallback(
     function handleCancelRoutineClick() {
       if (window.confirm("¿Está seguro que quiere cancelar la rutina?")) {
         saveRoutineInLocalStorage({ routine: undefined });
-        setRoutine(routineTemplate);
+        setRoutine(createNewRoutine(routineTemplate));
         setTimerStatus(TIMER_STATUS.NOT_STARTED);
       }
     },
@@ -643,7 +684,7 @@ function useController() {
       setRoutinesHistory(fetchRoutinesHistory());
 
       if (isRoutineCompleted(routine) && routine.status !== ROUTINE_STATUS.COMPLETED) {
-        markRoutineAsCompleted();
+        markRoutineAsCompleted(routine);
       } else {
         setAtLeastOneRoutineItemAsInProgress(routine);
       }
@@ -692,8 +733,29 @@ function useController() {
     secondsToTime,
     fillNumber,
     getStats,
+    calculateRoutineItemTotalTime,
     searchForNextNotStartedRoutineItem,
     setRoutineItemAsStarted,
     updateRoutineItemStatus,
   };
+}
+
+// --- Components ---
+
+function GoToHomeLink(): T_ReactElement {
+  return (
+    <Block className="tw-bg-black tw-text-white tw-p-1 tw-text-csenter tw-text-sm tw-font-bold tw-absolute tw-top-0 tw-w-full tw-h-8">
+      <Button
+        variant={Button.variant.SIMPLE}
+        onClick={() => {
+          if (window.confirm("¿Está seguro de que quiere ir al inicio?")) {
+            window.location.href = ROUTES.HOME;
+          }
+        }}
+      >
+        <Icon icon={Icon.icon.CHEVRON_LEFT} color="tw-text-white" />
+        <InlineText className="tw-align-middle tw-font-bold"> Volver al inicio</InlineText>
+      </Button>
+    </Block>
+  );
 }

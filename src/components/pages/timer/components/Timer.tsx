@@ -40,27 +40,31 @@ function Timer({
   const [currentSet, setCurrentSet] = React.useState({ index: 0, isRest: false });
 
   // utils
-  const startTimer = React.useCallback(function startTimer() {
-    setTimerInterval(
-      setInterval(() => {
-        setTime((currentValue) => currentValue - 1);
+  const startTimer = React.useCallback(
+    function startTimer() {
+      setTimerInterval(
+        setInterval(() => {
+          setTime((currentValue) => currentValue - 1);
+          setTimerStatus(TIMER_STATUS.RUNNING);
 
-        console.log("Timer running");
-      }, 1000),
-    );
-  }, []);
+          console.log("Timer running");
+        }, 1000),
+      );
+    },
+    [setTimerStatus],
+  );
 
-  const stopTimer = React.useCallback(function stopTimer(
-    timerInterval,
-    mode: "SET_PAUSED" | "SET_COMPLETED",
-  ) {
-    clearInterval(timerInterval);
-    setTimerInterval(null);
-    if (mode === "SET_COMPLETED") playSound("COMPLETED");
+  const stopTimer = React.useCallback(
+    function stopTimer(timerInterval, mode: "SET_PAUSED" | "SET_COMPLETED") {
+      clearInterval(timerInterval);
+      setTimerInterval(null);
+      setTimerStatus(TIMER_STATUS.PAUSED);
+      if (mode === "SET_COMPLETED") playSound("COMPLETED");
 
-    console.log("Timer stopped");
-  },
-  []);
+      console.log("Timer stopped");
+    },
+    [setTimerStatus],
+  );
 
   function playSound(mode: "RUNNING" | "COMPLETED") {
     try {
@@ -69,7 +73,7 @@ function Timer({
           mode === "RUNNING" ? "audio-running" : "audio-completed",
         ) as HTMLAudioElement
       )?.play();
-      window.navigator.vibrate(200);
+      window.navigator?.vibrate(200);
     } catch (error) {
       console.error(error);
     }
@@ -86,8 +90,9 @@ function Timer({
         index: routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED ? routineItem.sets * 2 - 2 : 0,
         isRest: false,
       });
+      setTimerStatus(TIMER_STATUS.NOT_STARTED);
     },
-    [routineItem, timeToSeconds],
+    [routineItem, timeToSeconds, setTimerStatus],
   );
 
   React.useEffect(
@@ -133,6 +138,7 @@ function Timer({
       routine,
       setRoutine,
       setCurrentRoutineItem,
+      setTimerStatus,
 
       timeToSeconds,
       timerInterval,
@@ -144,10 +150,8 @@ function Timer({
   function handleStartRoutineItemClick() {
     if (timerInterval) {
       stopTimer(timerInterval, "SET_PAUSED");
-      setTimerStatus(TIMER_STATUS.PAUSED);
     } else {
       startTimer();
-      setTimerStatus(TIMER_STATUS.RUNNING);
     }
   }
 
@@ -175,20 +179,17 @@ function Timer({
     );
   }
 
-  // utils
-  function checkHasToShowNextButton() {
-    return currentSet.index < sets.length - 1;
-  }
-
-  function checkHasToShowPrevButton() {
-    return currentSet.index > 0;
+  function handleResetCurrentSetClick() {
+    setTime(
+      currentSet.isRest ? timeToSeconds(routineItem.restTime) : timeToSeconds(routineItem.highTime),
+    );
   }
 
   // vars
   const isTimerRunning = timerInterval !== null;
   const isRoutineItemCompleted = routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED;
-  const showNextSetButton = !isRoutineItemCompleted && checkHasToShowNextButton();
-  const showPrevSetButton = !isRoutineItemCompleted && checkHasToShowPrevButton();
+  const showNextSetButton = !isRoutineItemCompleted && currentSet.index < sets.length - 1;
+  const showPrevSetButton = !isRoutineItemCompleted && currentSet.index > 0;
 
   return (
     <Block
@@ -226,44 +227,57 @@ function Timer({
 
       {!isRoutineItemCompleted && (
         <React.Fragment>
-          <Button
-            variant={Button.variant.SIMPLE}
-            onClick={handleStartRoutineItemClick}
-            className="dfr-border-color-primary tw-rounded-full tw-h-32 tw-w-32 tw-border-2"
-          >
-            {timerStatus === TIMER_STATUS.NOT_STARTED
-              ? "Iniciar"
-              : isTimerRunning
-              ? "Pausar"
-              : "Reanudar"}
-          </Button>
+          <Block className="tw-relative tw-text-center">
+            <Button
+              variant={Button.variant.SIMPLE}
+              onClick={handleStartRoutineItemClick}
+              className="dfr-border-color-primary tw-rounded-full tw-h-32 tw-w-32 tw-border-4 tw-uppercase tw-font-bold"
+            >
+              {timerStatus === TIMER_STATUS.NOT_STARTED
+                ? "Iniciar"
+                : isTimerRunning
+                ? "Pausar"
+                : "Reanudar"}
+            </Button>
+            <Button
+              variant={Button.variant.SIMPLE}
+              onClick={handleResetCurrentSetClick}
+              className="dfr-border-color-primary tw-rounded-full tw-h-12 tw-w-12 tw-border-2 tw-right-2 tw-absolute tw-top-10"
+            >
+              <Icon icon={Icon.icon.REPLY} color="tw-text-white" />
+            </Button>
+          </Block>
           <Space size={2} />
         </React.Fragment>
       )}
 
-      <Block className="tw-flex tw-justify-between tw-items-center tw-w-full">
-        <Button
-          variant={Button.variant.SIMPLE}
-          className={classNames("tw-mr-auto", showPrevSetButton ? "tw-visible" : "tw-invisible")}
-          onClick={handlePrevSetClick}
-        >
-          <Icon icon={Icon.icon.CHEVRON_LEFT} color="tw-text-white" size={24} />
-        </Button>
-        <Block className="tw-flex-1 tw-text-sm">
-          <Text className="tw-font-bold">
-            {isRoutineItemCompleted ? "Completado" : currentSet.isRest ? "Descanso" : "Ejercicio"}
-          </Text>
-          <Text>
-            {routineItem.title} - {currentSet.index + 1}/{sets.length}
-          </Text>
+      <Block className="tw-text-sm">
+        <Block className="tw-flex tw-justify-between tw-items-center">
+          <Button
+            variant={Button.variant.SIMPLE}
+            className={classNames("tw-mr-auto", showPrevSetButton ? "tw-visible" : "tw-invisible")}
+            onClick={handlePrevSetClick}
+          >
+            <Icon icon={Icon.icon.CHEVRON_LEFT} color="tw-text-white" size={24} />
+          </Button>
+          <Block className="tw-flex-1">
+            <Text className="tw-font-bold">
+              {isRoutineItemCompleted ? "Completado" : currentSet.isRest ? "Descanso" : "Acción"}
+            </Text>
+            <Text>{routineItem.title}</Text>
+          </Block>
+          <Button
+            variant={Button.variant.SIMPLE}
+            className={classNames("tw-ml-auto", showNextSetButton ? "tw-visible" : "tw-invisible")}
+            onClick={handleNextSetClick}
+          >
+            <Icon icon={Icon.icon.CHEVRON_RIGHT} color="tw-text-white" size={24} />
+          </Button>
         </Block>
-        <Button
-          variant={Button.variant.SIMPLE}
-          className={classNames("tw-ml-auto", showNextSetButton ? "tw-visible" : "tw-invisible")}
-          onClick={handleNextSetClick}
-        >
-          <Icon icon={Icon.icon.CHEVRON_RIGHT} color="tw-text-white" size={24} />
-        </Button>
+        <Text className="tw-text-center tw-mt-3">
+          {Math[currentSet.isRest ? "ceil" : "round"]((currentSet.index + 1) / 2)}/
+          {routineItem.sets}
+        </Text>
       </Block>
       <Space size={2} />
     </Block>

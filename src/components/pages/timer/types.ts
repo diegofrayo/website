@@ -1,6 +1,6 @@
 export type T_Routine = {
-  startTime: number;
-  endTime?: number;
+  startTime: { ms: number; formatted: string };
+  endTime?: { ms: number; formatted: string };
   restTimeBetweenItems: string;
   status: "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED";
   stats?: T_RoutineStats;

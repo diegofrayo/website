@@ -19,6 +19,11 @@ type T_TimerPageContext = {
   timeToSeconds: (time?: string) => number;
   secondsToTime: (seconds: number) => string;
   fillNumber: (number: number) => string;
+  calculateRoutineItemTotalTime: (
+    sets: T_RoutineItem["sets"],
+    highTime: T_RoutineItem["highTime"],
+    restTime: T_RoutineItem["restTime"],
+  ) => number;
   updateRoutineItemStatus: (
     routine: T_Routine,
     routineItemId: T_RoutineItem["id"],

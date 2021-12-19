@@ -29,6 +29,8 @@ export default function RoutineItem({
     searchForNextNotStartedRoutineItem,
     setRoutineItemAsStarted,
     updateRoutineItemStatus,
+    calculateRoutineItemTotalTime,
+    secondsToTime,
   } = React.useContext(TimerPageContext);
 
   // handlers
@@ -80,14 +82,14 @@ export default function RoutineItem({
         >
           {title}
         </Title>
-        <Text className="tw-ml-3 tw-text-xs tw-font-bold tw-italic">
+        <Text className="tw-font-bold tw-italic tw-ml-3 tw-text-xs tw-text-right">
           {pluralize(sets, "repetición", "repeticiones")}
         </Text>
       </Block>
       <Block className="tw-px-3 tw-py-3">
         <Block className="tw-flex tw-justify-between tw-items-center">
           <InlineText className="tw-text-sm">Tiempo de ejecución</InlineText>
-          <InlineText className="tw-bg-red-600 tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-14 tw-text-center">
+          <InlineText className="tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-14 tw-text-center tw-bg-red-600 ">
             {highTime}
           </InlineText>
         </Block>
@@ -96,8 +98,15 @@ export default function RoutineItem({
             <Space size={0.5} />
             <Block className="tw-flex tw-justify-between tw-items-center">
               <InlineText className="tw-text-sm">Tiempo de descanso</InlineText>
-              <InlineText className="tw-bg-green-600 tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-14 tw-text-center">
+              <InlineText className="tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-14 tw-text-center tw-bg-blue-600">
                 {restTime}
+              </InlineText>
+            </Block>
+            <Space size={0.5} />
+            <Block className="tw-flex tw-justify-between tw-items-center">
+              <InlineText className="tw-text-sm">Tiempo total</InlineText>
+              <InlineText className="tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-14 tw-text-center tw-bg-green-600">
+                {secondsToTime(calculateRoutineItemTotalTime(sets, highTime, restTime))}
               </InlineText>
             </Block>
           </React.Fragment>

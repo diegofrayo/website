@@ -7,6 +7,8 @@ import Block from "./Block";
 type T_CollapsibleProps = T_HTMLElementAttributes["details"] & {
   title?: string;
   openByDefault?: boolean;
+  onShowContentHandler?: any;
+  onHideContentHandler?: any;
 };
 
 function Collapsible(props: T_CollapsibleProps): T_ReactElement {
@@ -53,6 +55,8 @@ function useController({
   title = "",
   openByDefault = false,
   className = "",
+  onShowContentHandler = () => undefined,
+  onHideContentHandler = () => undefined,
 }: T_CollapsibleProps): T_UseController {
   const [isCollapsed, setIsCollapsed] = React.useState(openByDefault);
   const containerRef = React.useRef<HTMLDetailsElement>(null);
@@ -63,11 +67,13 @@ function useController({
 
       if (isCollapsed) {
         containerRef.current.setAttribute("open", "");
+        onShowContentHandler();
       } else {
         containerRef.current.removeAttribute("open");
+        onHideContentHandler();
       }
     },
-    [containerRef, isCollapsed],
+    [containerRef, isCollapsed, onHideContentHandler, onShowContentHandler],
   );
 
   return {
