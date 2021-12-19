@@ -218,18 +218,26 @@ function useController() {
     "timer",
     async () => {
       await delay(1000);
-      const { data } = await http.post(
-        `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
-        {
-          path: "/timer",
-          method: "GET",
-        },
-      );
 
-      return data;
+      try {
+        const { data } = await http.post(
+          `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
+          {
+            path: "/timer",
+            method: "GET",
+          },
+        );
+
+        return data;
+      } catch (error) {
+        const routineTemplate = loadRoutine({} as T_Routine, "TEMPLATE");
+        return routineTemplate;
+      }
     },
     {
       onSuccess: (routineTemplate: T_Routine) => {
+        saveRoutineInLocalStorage({ routine: routineTemplate, date: "TEMPLATE" });
+
         const loadedRoutine = loadRoutine(createNewRoutine(routineTemplate));
         setRoutine(loadedRoutine);
         setRoutinesHistory(fetchRoutinesHistory());
@@ -397,9 +405,9 @@ function useController() {
   },
   []);
 
-  function loadRoutine(defaultRoutine: T_Routine): T_Routine {
+  function loadRoutine(defaultRoutine: T_Routine, key?: string): T_Routine {
     const loadedRoutine =
-      readRoutineFromLocalStorage()[new Date().toLocaleDateString()] || defaultRoutine;
+      readRoutineFromLocalStorage()[key || new Date().toLocaleDateString()] || defaultRoutine;
 
     return loadedRoutine;
   }

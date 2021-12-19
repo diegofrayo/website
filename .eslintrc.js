@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
   plugins: ["prettier", "no-loops", "react-hooks", "@typescript-eslint"],
+  ignorePatterns: ["public/**/*"],
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
