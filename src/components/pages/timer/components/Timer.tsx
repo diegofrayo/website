@@ -19,11 +19,11 @@ function Timer({
   // context
   const {
     // states
-    routine,
+    currentRoutine,
     timerStatus,
 
     // states setters
-    setRoutine,
+    setCurrentRoutine,
     setTimerStatus,
     setCurrentRoutineItem,
 
@@ -108,12 +108,12 @@ function Timer({
 
         if (isLastSet) {
           const routineUpdated = updateRoutineItemStatus(
-            routine,
+            currentRoutine,
             routineItem.id,
             ROUTINE_ITEMS_STATUS.COMPLETED,
           );
 
-          setRoutine(routineUpdated);
+          setCurrentRoutine(routineUpdated);
           setCurrentRoutineItem(routineUpdated.items[routineItemIndex]);
         } else {
           startTimer();
@@ -135,8 +135,8 @@ function Timer({
       startTimer,
       stopTimer,
 
-      routine,
-      setRoutine,
+      currentRoutine,
+      setCurrentRoutine,
       setCurrentRoutineItem,
       setTimerStatus,
 
@@ -194,7 +194,7 @@ function Timer({
   return (
     <Block
       className={classNames(
-        "tw-text-white tw-text-center tw-py-6 tw-px-4",
+        "tw-text-white tw-text-center tw-py-8 tw-px-4",
         isRoutineItemCompleted
           ? "tw-bg-green-600"
           : currentSet.isRest
@@ -209,14 +209,14 @@ function Timer({
       />
       <audio src="/static/sounds/timer/single-tick.mp3" id="audio-running" className="tw-hidden" />
 
-      <Text className="tw-text-8xl">
+      <Text className="tw-text-7xl">
         {secondsToTime(time)
           .split("")
           .map((char, index) => {
             return (
               <InlineText
                 key={`char-${index}`}
-                className={classNames("tw-inline-block", char !== ":" && "tw-w-14")}
+                className={classNames("tw-inline-block", char !== ":" && "tw-w-12")}
               >
                 {char}
               </InlineText>
@@ -227,7 +227,8 @@ function Timer({
 
       {!isRoutineItemCompleted && (
         <React.Fragment>
-          <Block className="tw-relative tw-text-center">
+          <Block className="tw-flex tw-justify-between tw-items-center">
+            <Block className="tw-w-12 tw-h-12" />
             <Button
               variant={Button.variant.SIMPLE}
               onClick={handleStartRoutineItemClick}
@@ -242,7 +243,7 @@ function Timer({
             <Button
               variant={Button.variant.SIMPLE}
               onClick={handleResetCurrentSetClick}
-              className="dfr-border-color-primary tw-rounded-full tw-h-12 tw-w-12 tw-border-2 tw-right-2 tw-absolute tw-top-10"
+              className="dfr-border-color-primary tw-rounded-full tw-h-12 tw-w-12 tw-border-2 tw-flex tw-items-center tw-justify-center"
             >
               <Icon icon={Icon.icon.REPLY} color="tw-text-white" />
             </Button>
@@ -274,12 +275,12 @@ function Timer({
             <Icon icon={Icon.icon.CHEVRON_RIGHT} color="tw-text-white" size={24} />
           </Button>
         </Block>
+        <Space size={2} />
         <Text className="tw-text-center tw-mt-3">
           {Math[currentSet.isRest ? "ceil" : "round"]((currentSet.index + 1) / 2)}/
           {routineItem.sets}
         </Text>
       </Block>
-      <Space size={2} />
     </Block>
   );
 }

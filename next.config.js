@@ -6,6 +6,7 @@ module.exports = withMDX()(
     pwa: {
       dest: "public",
       scope: "/timer",
+      disable: true,
     },
     eslint: {
       ignoreDuringBuilds: true,

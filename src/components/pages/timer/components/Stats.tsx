@@ -9,6 +9,7 @@ import { TimerPageContext } from "../context";
 function Stats({
   title = "Estadísticas",
   data,
+  name,
   startTime,
   endTime,
   uploadRoutineHandler,
@@ -16,16 +17,17 @@ function Stats({
 }: {
   title?: string;
   data: T_RoutineStats;
+  name: T_Routine["name"];
   startTime: T_Routine["startTime"];
   endTime?: T_Routine["endTime"];
   uploadRoutineHandler?: any;
   deleteRoutineHandler?: any;
 }): T_ReactElement {
-  // states
-  const [elapsedTime, setElapsedTime] = React.useState("");
-
   // context
   const { secondsToTime } = React.useContext(TimerPageContext);
+
+  // states
+  const [elapsedTime, setElapsedTime] = React.useState("");
 
   // vars
   const isRenderedFromTimerScreen =
@@ -44,6 +46,7 @@ function Stats({
     >
       <Block className="tw-text-sm">
         <Block className="dfr-border-color-primary tw-border tw-border-b-0">
+          <Stats.Item label="rutina" value={name} />
           <Stats.Item label="# ejercicios" value={data.totalExercises} />
           <Stats.Item label="tiempo rutina total" value={data.totalTime} />
         </Block>

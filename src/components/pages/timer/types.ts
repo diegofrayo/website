@@ -1,4 +1,5 @@
 export type T_Routine = {
+  name: string;
   startTime: { ms: number; formatted: string };
   endTime?: { ms: number; formatted: string };
   restTimeBetweenItems: string;

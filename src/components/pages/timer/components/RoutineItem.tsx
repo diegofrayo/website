@@ -20,10 +20,10 @@ export default function RoutineItem({
 }: T_RoutineItem): T_ReactElement {
   const {
     // states
-    routine,
+    currentRoutine,
 
     // states setters
-    setRoutine,
+    setCurrentRoutine,
 
     // utils
     searchForNextNotStartedRoutineItem,
@@ -36,13 +36,13 @@ export default function RoutineItem({
   // handlers
   function handleMarkAsCompletedClick() {
     const routineUpdated = updateRoutineItemStatus(
-      routine,
+      currentRoutine,
       id,
       status === ROUTINE_ITEMS_STATUS.COMPLETED
         ? ROUTINE_ITEMS_STATUS.NOT_STARTED
         : ROUTINE_ITEMS_STATUS.COMPLETED,
     );
-    setRoutine(routineUpdated);
+    setCurrentRoutine(routineUpdated);
 
     if (status === ROUTINE_ITEMS_STATUS.IN_PROGRESS) {
       setScrollPosition(0);
@@ -51,7 +51,7 @@ export default function RoutineItem({
   }
 
   function handleStartRoutineItemClick() {
-    setRoutineItemAsStarted(routine, id);
+    setRoutineItemAsStarted(currentRoutine, id);
   }
 
   return (
@@ -89,7 +89,7 @@ export default function RoutineItem({
       <Block className="tw-px-3 tw-py-3">
         <Block className="tw-flex tw-justify-between tw-items-center">
           <InlineText className="tw-text-sm">Tiempo de ejecución</InlineText>
-          <InlineText className="tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-14 tw-text-center tw-bg-red-600 ">
+          <InlineText className="tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-20 tw-text-center tw-bg-red-600">
             {highTime}
           </InlineText>
         </Block>
@@ -98,14 +98,14 @@ export default function RoutineItem({
             <Space size={0.5} />
             <Block className="tw-flex tw-justify-between tw-items-center">
               <InlineText className="tw-text-sm">Tiempo de descanso</InlineText>
-              <InlineText className="tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-14 tw-text-center tw-bg-blue-600">
+              <InlineText className="tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-20 tw-text-center tw-bg-blue-600">
                 {restTime}
               </InlineText>
             </Block>
             <Space size={0.5} />
             <Block className="tw-flex tw-justify-between tw-items-center">
               <InlineText className="tw-text-sm">Tiempo total</InlineText>
-              <InlineText className="tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-14 tw-text-center tw-bg-green-600">
+              <InlineText className="tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-20 tw-text-center tw-bg-green-600">
                 {secondsToTime(calculateRoutineItemTotalTime(sets, highTime, restTime))}
               </InlineText>
             </Block>

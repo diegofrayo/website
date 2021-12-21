@@ -6,12 +6,12 @@ export const TimerPageContext = React.createContext({} as T_TimerPageContext);
 
 type T_TimerPageContext = {
   // states
-  routine: T_Routine;
+  currentRoutine: T_Routine;
   timerStatus: T_TimerStatus;
   currentRoutineItem?: T_RoutineItem;
 
   // states setters
-  setRoutine: React.Dispatch<React.SetStateAction<T_Routine>>;
+  setCurrentRoutine: React.Dispatch<React.SetStateAction<T_Routine>>;
   setTimerStatus: React.Dispatch<React.SetStateAction<T_TimerStatus>>;
   setCurrentRoutineItem: React.Dispatch<React.SetStateAction<T_RoutineItem>>;
 

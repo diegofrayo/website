@@ -2,7 +2,7 @@ import * as React from "react";
 import { useTheme } from "next-themes";
 
 import { Page } from "~/components/layout";
-import { Block, Button, Icon, InlineText, Space, Title } from "~/components/primitive";
+import { Block, Button, Icon, InlineText, Space, Text, Title } from "~/components/primitive";
 import { withAuth } from "~/auth";
 import { useDidMount, useQuery } from "~/hooks";
 import http from "~/lib/http";
@@ -20,14 +20,14 @@ import { Render } from "~/components/shared";
 function TimerPage(): T_ReactElement {
   const {
     // states
-    routine,
+    currentRoutine,
     currentRoutineItem,
     currentRoutineItemIndex,
     timerStatus,
     routinesHistory,
 
     // states setters
-    setRoutine,
+    setCurrentRoutine,
     setTimerStatus,
     setCurrentRoutineItem,
 
@@ -39,7 +39,7 @@ function TimerPage(): T_ReactElement {
     handleDeleteRoutineHistoryClick,
 
     // vars
-    routineTemplate,
+    routinesTemplates,
     isLoading,
     error,
 
@@ -61,18 +61,18 @@ function TimerPage(): T_ReactElement {
         disableSEO: true,
       }}
     >
-      <Render isLoading={isLoading} error={error} data={routineTemplate}>
+      <Render isLoading={isLoading} error={error} data={routinesTemplates}>
         {() => {
-          return routine ? (
+          return currentRoutine ? (
             <TimerPageContext.Provider
               value={{
                 // states
-                routine,
+                currentRoutine,
                 currentRoutineItem,
                 timerStatus,
 
                 // states setters
-                setRoutine,
+                setCurrentRoutine,
                 setTimerStatus,
                 setCurrentRoutineItem,
 
@@ -89,7 +89,7 @@ function TimerPage(): T_ReactElement {
               <Block className="tw-shadow-md tw-shadow-gray-600 dfr-bg-color-light-strong tw-max-w-sm tw-mx-auto tw-relative tw-pt-8 tw-min-h-screen">
                 <GoToHomeLink />
 
-                {routine.status === ROUTINE_STATUS.IN_PROGRESS ? (
+                {currentRoutine.status === ROUTINE_STATUS.IN_PROGRESS ? (
                   <React.Fragment>
                     {currentRoutineItem && (
                       <Timer
@@ -123,43 +123,49 @@ function TimerPage(): T_ReactElement {
                       </Block>
                       <Space size={1} />
 
-                      <Stats data={getStats(routine)} startTime={routine.startTime} />
+                      <Stats
+                        data={getStats(currentRoutine)}
+                        name={currentRoutine.name}
+                        startTime={currentRoutine.startTime}
+                      />
                       <Space size={4} variant={Space.variant.DASHED} />
 
                       <Block>
-                        {routine.items.map((routineItem) => {
+                        {currentRoutine.items.map((routineItem) => {
                           return <RoutineItem key={routineItem.id} {...routineItem} />;
                         })}
                       </Block>
                     </Block>
                   </React.Fragment>
                 ) : (
-                  <Block className="tw-p-8">
-                    <Button
-                      variant={Button.variant.SIMPLE}
-                      className="tw-block tw-mx-auto tw-text-center tw-underline tw-font-bold"
-                      onClick={handleInitRoutineClick}
-                    >
-                      Iniciar rutina
-                    </Button>
-                    <Space size={2} />
-                    <Button
-                      variant={Button.variant.SIMPLE}
-                      className="tw-block tw-mx-auto tw-text-center tw-underline tw-font-bold"
-                      onClick={() => {
-                        if (window.confirm("¿Está seguro?")) {
-                          window.localStorage.removeItem("DFR_TIMER");
-                          window.location.reload();
-                        }
-                      }}
-                    >
-                      Limpiar caché
-                    </Button>
+                  <Block is="section" className="tw-p-8">
+                    <Block>
+                      <Title is="h2" size={Title.size.MD} className="tw-text-center">
+                        Elige una rutina
+                      </Title>
+                      <Space size={2} />
+                      {routinesTemplates.map((routineTemplate) => {
+                        return (
+                          <Block
+                            key={routineTemplate.id}
+                            className="tw-flex tw-justify-between tw-items-center tw-my-1"
+                          >
+                            <Text>- {routineTemplate.name}</Text>
+                            <Button
+                              variant={Button.variant.SIMPLE}
+                              className="tw-underline tw-font-bold"
+                              onClick={handleInitRoutineClick(routineTemplate)}
+                            >
+                              Iniciar rutina
+                            </Button>
+                          </Block>
+                        );
+                      })}
+                    </Block>
+                    <Space size={10} variant={Space.variant.DASHED} />
 
                     {routinesHistory.length > 0 ? (
                       <React.Fragment>
-                        <Space size={10} variant={Space.variant.DASHED} />
-
                         <Block is="section">
                           <Title is="h2" size={Title.size.MD} className="tw-text-center">
                             Historial de rutinas
@@ -171,6 +177,7 @@ function TimerPage(): T_ReactElement {
                                 <Stats
                                   title={date}
                                   data={getStats(routine)}
+                                  name={routine.name}
                                   startTime={routine.startTime}
                                   endTime={routine.endTime}
                                   uploadRoutineHandler={handleUploadRoutineHistoryClick(
@@ -184,8 +191,26 @@ function TimerPage(): T_ReactElement {
                             );
                           })}
                         </Block>
+                        <Space size={10} variant={Space.variant.DASHED} />
                       </React.Fragment>
                     ) : null}
+
+                    <Title is="h2" size={Title.size.MD} className="tw-text-center">
+                      Ajustes
+                    </Title>
+                    <Space size={2} />
+                    <Button
+                      variant={Button.variant.SIMPLE}
+                      className="tw-block tw-mx-auto tw-text-center tw-underline tw-font-bold"
+                      onClick={() => {
+                        if (window.confirm("¿Está seguro?")) {
+                          window.localStorage.removeItem("DFR_TIMER");
+                          window.location.reload();
+                        }
+                      }}
+                    >
+                      Limpiar caché
+                    </Button>
                   </Block>
                 )}
               </Block>
@@ -211,7 +236,7 @@ function useController() {
   // hooks
   const { theme, setTheme } = useTheme();
   const {
-    data: routineTemplate,
+    data: routinesTemplates,
     isLoading,
     error,
   } = useQuery(
@@ -230,16 +255,23 @@ function useController() {
 
         return data;
       } catch (error) {
-        const routineTemplate = loadRoutine({} as T_Routine, "TEMPLATE");
-        return routineTemplate;
+        const routinesTemplates = readRoutineFromLocalStorage()["TEMPLATES"];
+
+        if (!routinesTemplates) {
+          throw new Error("Routines templates not found in localStorage neither Firebase");
+        } else {
+          alert("Routines templates loaded from localStorage");
+        }
+
+        return routinesTemplates;
       }
     },
     {
-      onSuccess: (routineTemplate: T_Routine) => {
-        saveRoutineInLocalStorage({ routine: routineTemplate, date: "TEMPLATE" });
+      onSuccess: (routinesTemplates: T_Routine) => {
+        saveRoutineInLocalStorage({ routine: routinesTemplates, date: "TEMPLATES" });
 
-        const loadedRoutine = loadRoutine(createNewRoutine(routineTemplate));
-        setRoutine(loadedRoutine);
+        const loadedRoutine = loadRoutine(createNewRoutine(routinesTemplates[0]));
+        setCurrentRoutine(loadedRoutine);
         setRoutinesHistory(fetchRoutinesHistory());
 
         if (loadedRoutine.status !== ROUTINE_STATUS.COMPLETED) {
@@ -250,7 +282,7 @@ function useController() {
   );
 
   // states
-  const [routine, setRoutine] = React.useState<T_Routine>();
+  const [currentRoutine, setCurrentRoutine] = React.useState<T_Routine>();
   const [currentRoutineItem, setCurrentRoutineItem] = React.useState<T_RoutineItem>();
   const [currentRoutineItemIndex, setCurrentRoutineItemIndex] = React.useState<number>(0);
   const [timerStatus, setTimerStatus] = React.useState<T_TimerStatus>(TIMER_STATUS.NOT_STARTED);
@@ -351,7 +383,7 @@ function useController() {
         (item) => item.id === routineItemFound.id,
       );
 
-      setRoutine(routineUpdated);
+      setCurrentRoutine(routineUpdated);
       setCurrentRoutineItem(routineUpdated.items[routineItemFoundIndex]);
       setCurrentRoutineItemIndex(routineItemFoundIndex);
     } else {
@@ -380,7 +412,7 @@ function useController() {
       (item) => item.id === routineItemId,
     );
 
-    setRoutine(routineUpdated);
+    setCurrentRoutine(routineUpdated);
     setCurrentRoutineItem(routineUpdated.items[routineItemFoundIndex]);
     setCurrentRoutineItemIndex(routineItemFoundIndex);
   }
@@ -388,7 +420,7 @@ function useController() {
   // private
   const saveRoutineInLocalStorage = React.useCallback(function saveRoutineInLocalStorage({
     routine,
-    date = new Date().toLocaleDateString(),
+    date = createFormattedDate(),
   }: {
     routine?: T_Routine;
     date?: string;
@@ -407,7 +439,7 @@ function useController() {
 
   function loadRoutine(defaultRoutine: T_Routine, key?: string): T_Routine {
     const loadedRoutine =
-      readRoutineFromLocalStorage()[key || new Date().toLocaleDateString()] || defaultRoutine;
+      readRoutineFromLocalStorage()[key || createFormattedDate()] || defaultRoutine;
 
     return loadedRoutine;
   }
@@ -491,7 +523,7 @@ function useController() {
 
     setCurrentRoutineItem(routine.items[routineItemToLoadIndex]);
     setCurrentRoutineItemIndex(routineItemToLoadIndex);
-    setRoutine(
+    setCurrentRoutine(
       updateRoutineItemStatus(
         routine,
         routine.items[routineItemToLoadIndex].id,
@@ -520,7 +552,7 @@ function useController() {
       } as T_Routine;
 
       setTimerStatus(TIMER_STATUS.NOT_STARTED);
-      setRoutine({ ...routineUpdated, stats: getStats(routineUpdated) });
+      setCurrentRoutine({ ...routineUpdated, stats: getStats(routineUpdated) });
       alert("La rutina ha sido completada!");
     },
     [getStats],
@@ -541,7 +573,7 @@ function useController() {
 
         setCurrentRoutineItem(routineUpdated.items[0]);
         setCurrentRoutineItemIndex(0);
-        setRoutine(routineUpdated);
+        setCurrentRoutine(routineUpdated);
       }
     },
     [updateRoutineItemStatus],
@@ -586,53 +618,59 @@ function useController() {
     };
   }
 
+  function createFormattedDate() {
+    const date = new Date();
+    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+  }
+
   // handlers
-  function handleInitRoutineClick() {
-    const loadedRoutineFromLocalStorage =
-      readRoutineFromLocalStorage()[new Date().toLocaleDateString()];
+  function handleInitRoutineClick(routineTemplate: T_Routine) {
+    return () => {
+      const loadedRoutineFromLocalStorage = readRoutineFromLocalStorage()[createFormattedDate()];
 
-    const thisRoutineWasCompletedPreviously =
-      loadedRoutineFromLocalStorage?.status === ROUTINE_STATUS.COMPLETED;
+      const thisRoutineWasCompletedPreviously =
+        loadedRoutineFromLocalStorage?.status === ROUTINE_STATUS.COMPLETED;
 
-    if (thisRoutineWasCompletedPreviously) {
-      const userCanceledRoutineRestarting = !window.confirm(
-        "Una rutina ya fue completada el día de hoy. ¿Está seguro que quiere iniciar una nueva rutina y sobre-escribir los datos de la rutina existente?",
-      );
+      if (thisRoutineWasCompletedPreviously) {
+        const userCanceledRoutineRestarting = !window.confirm(
+          "Una rutina ya fue completada el día de hoy. ¿Está seguro que quiere iniciar una nueva rutina y sobre-escribir los datos de la rutina existente?",
+        );
 
-      if (userCanceledRoutineRestarting) return;
+        if (userCanceledRoutineRestarting) return;
 
-      const newRoutine = {
-        ...createNewRoutine(routineTemplate),
-        status: ROUTINE_STATUS.IN_PROGRESS,
-      };
-      setRoutine(newRoutine);
-      findAndLoadRoutineItem(newRoutine);
-    } else {
-      setRoutine({
-        ...createNewRoutine(routineTemplate),
-        status: ROUTINE_STATUS.IN_PROGRESS,
-      });
-    }
+        const newRoutine = {
+          ...createNewRoutine(routineTemplate),
+          status: ROUTINE_STATUS.IN_PROGRESS,
+        };
+        setCurrentRoutine(newRoutine);
+        findAndLoadRoutineItem(newRoutine);
+      } else {
+        setCurrentRoutine({
+          ...createNewRoutine(routineTemplate),
+          status: ROUTINE_STATUS.IN_PROGRESS,
+        });
+      }
+    };
   }
 
   const handleCompleteRoutineClick = React.useCallback(
     function handleCompleteRoutineClick() {
       if (window.confirm("¿Está seguro que quiere completar la rutina? Hay items sin terminar")) {
-        markRoutineAsCompleted(routine as T_Routine);
+        markRoutineAsCompleted(currentRoutine as T_Routine);
       }
     },
-    [markRoutineAsCompleted, routine],
+    [markRoutineAsCompleted, currentRoutine],
   );
 
   const handleCancelRoutineClick = React.useCallback(
     function handleCancelRoutineClick() {
       if (window.confirm("¿Está seguro que quiere cancelar la rutina?")) {
         saveRoutineInLocalStorage({ routine: undefined });
-        setRoutine(createNewRoutine(routineTemplate));
+        setCurrentRoutine(createNewRoutine(routinesTemplates[0]));
         setTimerStatus(TIMER_STATUS.NOT_STARTED);
       }
     },
-    [setRoutine, saveRoutineInLocalStorage, routineTemplate],
+    [setCurrentRoutine, saveRoutineInLocalStorage, routinesTemplates],
   );
 
   const handleUploadRoutineHistoryClick = React.useCallback(
@@ -686,19 +724,22 @@ function useController() {
 
   React.useEffect(
     function onRoutineChange() {
-      if (!routine) return;
+      if (!currentRoutine) return;
 
-      saveRoutineInLocalStorage({ routine });
+      saveRoutineInLocalStorage({ routine: currentRoutine });
       setRoutinesHistory(fetchRoutinesHistory());
 
-      if (isRoutineCompleted(routine) && routine.status !== ROUTINE_STATUS.COMPLETED) {
-        markRoutineAsCompleted(routine);
+      if (
+        isRoutineCompleted(currentRoutine) &&
+        currentRoutine.status !== ROUTINE_STATUS.COMPLETED
+      ) {
+        markRoutineAsCompleted(currentRoutine);
       } else {
-        setAtLeastOneRoutineItemAsInProgress(routine);
+        setAtLeastOneRoutineItemAsInProgress(currentRoutine);
       }
     },
     [
-      routine,
+      currentRoutine,
       currentRoutineItem,
       currentRoutineItemIndex,
       timerStatus,
@@ -713,14 +754,14 @@ function useController() {
 
   return {
     // states
-    routine,
+    currentRoutine,
     currentRoutineItem,
     timerStatus,
     currentRoutineItemIndex,
     routinesHistory,
 
     // states setters
-    setRoutine,
+    setCurrentRoutine,
     setTimerStatus,
     setCurrentRoutineItem,
 
@@ -732,7 +773,7 @@ function useController() {
     handleDeleteRoutineHistoryClick,
 
     // vars
-    routineTemplate,
+    routinesTemplates,
     isLoading,
     error,
 
