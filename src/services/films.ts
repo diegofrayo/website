@@ -5,10 +5,13 @@ import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/util
 
 class FilmsService {
   async fetchFilms(): Promise<T_Film[]> {
-    const { data } = await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api`, {
-      path: "/assets",
-      payload: `pages/personal/[page]/films/data.json`,
-    });
+    const { data } = await http.post(
+      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
+      {
+        path: "/assets",
+        payload: `pages/personal/[page]/films/data.json`,
+      },
+    );
 
     return data
       .map(transformObjectKeysFromSnakeCaseToLowerCamelCase)
