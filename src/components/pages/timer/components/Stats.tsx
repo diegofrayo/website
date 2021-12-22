@@ -61,18 +61,12 @@ function Stats({
 
         <Block className="dfr-border-color-primary tw-border tw-border-b-0">
           <Stats.Item label="hora inicio rutina" value={startTime.formatted} />
+          {isRenderedFromTimerScreen && (
+            <Stats.Item label="tiempo transcurrido" value={elapsedTime} />
+          )}
           <Stats.Item label="hora fin rutina" value={endTime?.formatted || ""} />
           <Stats.Item label="duración final rutina" value={data.finalRoutineDuration} />
         </Block>
-
-        {isRenderedFromTimerScreen && (
-          <React.Fragment>
-            <Space size={1} />
-            <Block className="dfr-border-color-primary tw-border tw-border-b-0">
-              <Stats.Item label="tiempo transcurrido" value={elapsedTime} />
-            </Block>
-          </React.Fragment>
-        )}
       </Block>
 
       {!isRenderedFromTimerScreen ? (

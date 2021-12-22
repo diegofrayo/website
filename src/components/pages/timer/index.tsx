@@ -148,12 +148,12 @@ function TimerPage(): T_ReactElement {
                         return (
                           <Block
                             key={routineTemplate.id}
-                            className="tw-flex tw-justify-between tw-items-center tw-my-1"
+                            className="tw-flex tw-justify-between tw-items-start tw-my-1"
                           >
                             <Text>- {routineTemplate.name}</Text>
                             <Button
                               variant={Button.variant.SIMPLE}
-                              className="tw-underline tw-font-bold"
+                              className="tw-underline tw-font-bold tw-flex-shrink-0 tw-ml-2"
                               onClick={handleInitRoutineClick(routineTemplate)}
                             >
                               Iniciar rutina
