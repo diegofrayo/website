@@ -2,6 +2,7 @@ import * as React from "react";
 import { useTheme } from "next-themes";
 
 import { Page } from "~/components/layout";
+import { Render } from "~/components/shared";
 import { Block, Button, Icon, InlineText, Space, Text, Title } from "~/components/primitive";
 import { withAuth } from "~/auth";
 import { useDidMount, useQuery } from "~/hooks";
@@ -15,7 +16,6 @@ import { ROUTINE_ITEMS_STATUS, ROUTINE_STATUS, TIMER_STATUS } from "./constants"
 import { Timer, Stats, RoutineItem } from "./components";
 import { TimerPageContext } from "./context";
 import type { T_RoutineStats, T_Routine, T_RoutineItem, T_TimerStatus } from "./types";
-import { Render } from "~/components/shared";
 
 function TimerPage(): T_ReactElement {
   const {
@@ -55,6 +55,15 @@ function TimerPage(): T_ReactElement {
       config={{
         title: "Timer",
         disableSEO: true,
+        scripts: [
+          {
+            element: "link",
+            props: {
+              rel: "prefetch",
+              href: "/static/sounds/timer/set-completed.mp3",
+            },
+          },
+        ],
       }}
     >
       <Render isLoading={isLoading} error={error} data={routinesTemplates}>
@@ -332,6 +341,54 @@ function useController() {
     [timeToSeconds],
   );
 
+  function setRoutineItemAsStarted(routine: T_Routine, routineItemId: T_RoutineItem["id"]) {
+    setScrollPosition(0);
+
+    let routineUpdated = updateRoutineItemStatus(
+      routine,
+      routineItemId,
+      ROUTINE_ITEMS_STATUS.IN_PROGRESS,
+    );
+
+    if (currentRoutineItem?.status === ROUTINE_ITEMS_STATUS.IN_PROGRESS) {
+      routineUpdated = updateRoutineItemStatus(
+        routineUpdated,
+        currentRoutineItem?.id || "",
+        ROUTINE_ITEMS_STATUS.NOT_STARTED,
+      );
+    }
+
+    const routineItemFoundIndex = routineUpdated.items.findIndex(
+      (item) => item.id === routineItemId,
+    );
+
+    setCurrentRoutine(routineUpdated);
+    setCurrentRoutineItem(routineUpdated.items[routineItemFoundIndex]);
+    setCurrentRoutineItemIndex(routineItemFoundIndex);
+  }
+
+  function markRoutineItemAsCompleted(currentRoutine, routineItemId, routineItemStatus, option) {
+    const routineUpdated = updateRoutineItemStatus(
+      currentRoutine,
+      routineItemId,
+      routineItemStatus === ROUTINE_ITEMS_STATUS.COMPLETED
+        ? ROUTINE_ITEMS_STATUS.NOT_STARTED
+        : ROUTINE_ITEMS_STATUS.COMPLETED,
+    );
+    setCurrentRoutine(routineUpdated);
+
+    if (
+      routineItemStatus === ROUTINE_ITEMS_STATUS.IN_PROGRESS &&
+      option === "SEARCH_FOR_NEXT_ROUTINE_ITEM"
+    ) {
+      setScrollPosition(0);
+      searchForNextNotStartedRoutineItem(routineUpdated);
+    } else {
+      setCurrentRoutineItem(routineUpdated.items[currentRoutineItemIndex]);
+    }
+  }
+
+  // private
   const updateRoutineItemStatus = React.useCallback(function updateRoutineItemStatus(
     routine: T_Routine,
     routineItemId: T_RoutineItem["id"],
@@ -382,54 +439,6 @@ function useController() {
     }
   }
 
-  function setRoutineItemAsStarted(routine: T_Routine, routineItemId: T_RoutineItem["id"]) {
-    setScrollPosition(0);
-
-    let routineUpdated = updateRoutineItemStatus(
-      routine,
-      routineItemId,
-      ROUTINE_ITEMS_STATUS.IN_PROGRESS,
-    );
-
-    if (currentRoutineItem?.status === ROUTINE_ITEMS_STATUS.IN_PROGRESS) {
-      routineUpdated = updateRoutineItemStatus(
-        routineUpdated,
-        currentRoutineItem?.id || "",
-        ROUTINE_ITEMS_STATUS.NOT_STARTED,
-      );
-    }
-
-    const routineItemFoundIndex = routineUpdated.items.findIndex(
-      (item) => item.id === routineItemId,
-    );
-
-    setCurrentRoutine(routineUpdated);
-    setCurrentRoutineItem(routineUpdated.items[routineItemFoundIndex]);
-    setCurrentRoutineItemIndex(routineItemFoundIndex);
-  }
-
-  function markRoutineItemAsCompleted(currentRoutine, routineItemId, routineItemStatus, option) {
-    const routineUpdated = updateRoutineItemStatus(
-      currentRoutine,
-      routineItemId,
-      routineItemStatus === ROUTINE_ITEMS_STATUS.COMPLETED
-        ? ROUTINE_ITEMS_STATUS.NOT_STARTED
-        : ROUTINE_ITEMS_STATUS.COMPLETED,
-    );
-    setCurrentRoutine(routineUpdated);
-
-    if (
-      routineItemStatus === ROUTINE_ITEMS_STATUS.IN_PROGRESS &&
-      option === "SEARCH_FOR_NEXT_ROUTINE_ITEM"
-    ) {
-      setScrollPosition(0);
-      searchForNextNotStartedRoutineItem(routineUpdated);
-    } else {
-      setCurrentRoutineItem(routineUpdated.items[currentRoutineItemIndex]);
-    }
-  }
-
-  // private
   const saveRoutineInLocalStorage = React.useCallback(function saveRoutineInLocalStorage({
     routine,
     date = createFormattedDate(),

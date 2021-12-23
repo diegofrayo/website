@@ -31,6 +31,7 @@ type T_PageProps = {
     pathname?: string;
     description?: string;
     disableSEO?: boolean;
+    scripts?: { element: "link"; props: any }[];
   };
 };
 
@@ -75,6 +76,10 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
         <meta property="og:url" content={metadata.url} />
         <meta property="og:site_name" content={SEO_METADATA.title} />
 
+        {config.scripts?.map((script, index) => {
+          const Tag = script.element;
+          return <Tag key={`Page-script-${index}`} {...script.props} />;
+        })}
         {locales.map((locale) => {
           if (locale === I18nService.getDefaultLocale()) {
             return <link key={locale} rel="alternate" hrefLang="x-default" href={metadata.url} />;
