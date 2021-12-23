@@ -3,7 +3,6 @@ import classNames from "classnames";
 
 import { Block, Button, Icon, InlineText, Space, Text, Title } from "~/components/primitive";
 import type { T_ReactElement } from "~/types";
-import { setScrollPosition } from "~/utils/browser";
 import { pluralize } from "~/utils/misc";
 
 import { ROUTINE_ITEMS_STATUS } from "../constants";
@@ -22,32 +21,16 @@ export default function RoutineItem({
     // states
     currentRoutine,
 
-    // states setters
-    setCurrentRoutine,
-
     // utils
-    searchForNextNotStartedRoutineItem,
     setRoutineItemAsStarted,
-    updateRoutineItemStatus,
     calculateRoutineItemTotalTime,
     secondsToTime,
+    markRoutineItemAsCompleted,
   } = React.useContext(TimerPageContext);
 
   // handlers
   function handleMarkAsCompletedClick() {
-    const routineUpdated = updateRoutineItemStatus(
-      currentRoutine,
-      id,
-      status === ROUTINE_ITEMS_STATUS.COMPLETED
-        ? ROUTINE_ITEMS_STATUS.NOT_STARTED
-        : ROUTINE_ITEMS_STATUS.COMPLETED,
-    );
-    setCurrentRoutine(routineUpdated);
-
-    if (status === ROUTINE_ITEMS_STATUS.IN_PROGRESS) {
-      setScrollPosition(0);
-      searchForNextNotStartedRoutineItem(routineUpdated);
-    }
+    markRoutineItemAsCompleted(currentRoutine, id, status, "SEARCH_FOR_NEXT_ROUTINE_ITEM");
   }
 
   function handleStartRoutineItemClick() {

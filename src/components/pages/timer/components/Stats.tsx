@@ -24,7 +24,7 @@ function Stats({
   deleteRoutineHandler?: any;
 }): T_ReactElement {
   // context
-  const { secondsToTime } = React.useContext(TimerPageContext);
+  const { secondsToTime, timeToSeconds } = React.useContext(TimerPageContext);
 
   // states
   const [elapsedTime, setElapsedTime] = React.useState("");
@@ -62,7 +62,17 @@ function Stats({
         <Block className="dfr-border-color-primary tw-border tw-border-b-0">
           <Stats.Item label="hora inicio rutina" value={startTime.formatted} />
           {isRenderedFromTimerScreen && (
-            <Stats.Item label="tiempo transcurrido" value={elapsedTime} />
+            <React.Fragment>
+              <Stats.Item
+                label="hora estimada finalización"
+                value={new Date(
+                  startTime.ms + timeToSeconds(data.totalTime) * 1000,
+                ).toLocaleTimeString()}
+              />{" "}
+              <Stats.Item label="hora actual" value={new Date().toLocaleTimeString()} />
+              <Stats.Item label="tiempo transcurrido" value={elapsedTime} />
+              <Stats.Item label="tiempo faltante" value={data.remainingTime} />
+            </React.Fragment>
           )}
           <Stats.Item label="hora fin rutina" value={endTime?.formatted || ""} />
           <Stats.Item label="duración final rutina" value={data.finalRoutineDuration} />

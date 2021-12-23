@@ -82,7 +82,7 @@ function TimeLine(): T_ReactElement {
                         )}
                       >
                         <Text className="tw-text-sm">
-                          <Emoji>🗓</Emoji>{" "}
+                          <Emoji className="tw-mr-2">🗓</Emoji>
                           <InlineText>{formatDate(item.startDate, item.endDate)}</InlineText>
                         </Text>
                         <Text className="tw-font-bold tw-text-xl tw-my-2">{item.description}</Text>

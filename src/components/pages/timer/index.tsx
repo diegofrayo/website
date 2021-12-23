@@ -27,9 +27,7 @@ function TimerPage(): T_ReactElement {
     routinesHistory,
 
     // states setters
-    setCurrentRoutine,
     setTimerStatus,
-    setCurrentRoutineItem,
 
     // handlers
     handleInitRoutineClick,
@@ -46,12 +44,10 @@ function TimerPage(): T_ReactElement {
     // utils
     timeToSeconds,
     secondsToTime,
-    fillNumber,
     getStats,
+    markRoutineItemAsCompleted,
     calculateRoutineItemTotalTime,
-    searchForNextNotStartedRoutineItem,
     setRoutineItemAsStarted,
-    updateRoutineItemStatus,
   } = useController();
 
   return (
@@ -68,22 +64,17 @@ function TimerPage(): T_ReactElement {
               value={{
                 // states
                 currentRoutine,
-                currentRoutineItem,
                 timerStatus,
 
                 // states setters
-                setCurrentRoutine,
                 setTimerStatus,
-                setCurrentRoutineItem,
 
                 // utils
                 timeToSeconds,
                 secondsToTime,
-                fillNumber,
                 calculateRoutineItemTotalTime,
-                searchForNextNotStartedRoutineItem,
                 setRoutineItemAsStarted,
-                updateRoutineItemStatus,
+                markRoutineItemAsCompleted,
               }}
             >
               <Block className="tw-shadow-md tw-shadow-gray-600 dfr-bg-color-light-strong tw-max-w-sm tw-mx-auto tw-relative tw-pt-8 tw-min-h-screen">
@@ -417,6 +408,27 @@ function useController() {
     setCurrentRoutineItemIndex(routineItemFoundIndex);
   }
 
+  function markRoutineItemAsCompleted(currentRoutine, routineItemId, routineItemStatus, option) {
+    const routineUpdated = updateRoutineItemStatus(
+      currentRoutine,
+      routineItemId,
+      routineItemStatus === ROUTINE_ITEMS_STATUS.COMPLETED
+        ? ROUTINE_ITEMS_STATUS.NOT_STARTED
+        : ROUTINE_ITEMS_STATUS.COMPLETED,
+    );
+    setCurrentRoutine(routineUpdated);
+
+    if (
+      routineItemStatus === ROUTINE_ITEMS_STATUS.IN_PROGRESS &&
+      option === "SEARCH_FOR_NEXT_ROUTINE_ITEM"
+    ) {
+      setScrollPosition(0);
+      searchForNextNotStartedRoutineItem(routineUpdated);
+    } else {
+      setCurrentRoutineItem(routineUpdated.items[currentRoutineItemIndex]);
+    }
+  }
+
   // private
   const saveRoutineInLocalStorage = React.useCallback(function saveRoutineInLocalStorage({
     routine,
@@ -463,6 +475,7 @@ function useController() {
           completedTime: "",
           totalTime: "",
           finalRoutineDuration: "",
+          remainingTime: "",
         };
       }
 
@@ -470,6 +483,11 @@ function useController() {
       const completedExercises = routine.items.filter((item) => {
         return item.status === ROUTINE_ITEMS_STATUS.COMPLETED;
       });
+      const remainingItems = routine.items
+        .filter((item) => item.status !== ROUTINE_ITEMS_STATUS.COMPLETED)
+        .map((item) => {
+          return calculateRoutineItemTotalTime(item.sets, item.highTime, item.restTime);
+        });
       const isRoutineCompleted = completedExercises.length === totalExercises;
 
       return {
@@ -498,6 +516,10 @@ function useController() {
         finalRoutineDuration: routine.endTime
           ? secondsToTime(Math.ceil(Math.abs((routine.endTime.ms - routine.startTime.ms) / 1000)))
           : "",
+        remainingTime: secondsToTime(
+          remainingItems.reduce((result, curr) => result + curr, 0) +
+            timeToSeconds(routine.restTimeBetweenItems) * (remainingItems.length - 1),
+        ),
       };
     },
     [timeToSeconds, secondsToTime, calculateRoutineItemTotalTime],
@@ -699,12 +721,6 @@ function useController() {
       return async () => {
         try {
           if (window.confirm("¿Está seguro?")) {
-            await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
-              path: "/timer",
-              method: "DELETE",
-              payload: date,
-            });
-
             saveRoutineInLocalStorage({ routine: undefined, date });
             setRoutinesHistory(fetchRoutinesHistory());
           }
@@ -756,14 +772,12 @@ function useController() {
     // states
     currentRoutine,
     currentRoutineItem,
-    timerStatus,
     currentRoutineItemIndex,
+    timerStatus,
     routinesHistory,
 
     // states setters
-    setCurrentRoutine,
     setTimerStatus,
-    setCurrentRoutineItem,
 
     // handlers
     handleInitRoutineClick,
@@ -780,12 +794,10 @@ function useController() {
     // utils
     timeToSeconds,
     secondsToTime,
-    fillNumber,
     getStats,
+    markRoutineItemAsCompleted,
     calculateRoutineItemTotalTime,
-    searchForNextNotStartedRoutineItem,
     setRoutineItemAsStarted,
-    updateRoutineItemStatus,
   };
 }
 

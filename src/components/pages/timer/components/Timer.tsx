@@ -23,14 +23,12 @@ function Timer({
     timerStatus,
 
     // states setters
-    setCurrentRoutine,
     setTimerStatus,
-    setCurrentRoutineItem,
 
     // utils
     secondsToTime,
     timeToSeconds,
-    updateRoutineItemStatus,
+    markRoutineItemAsCompleted,
   } = React.useContext(TimerPageContext);
 
   // states
@@ -107,14 +105,7 @@ function Timer({
         const isLastSet = nextSet.index === sets.length;
 
         if (isLastSet) {
-          const routineUpdated = updateRoutineItemStatus(
-            currentRoutine,
-            routineItem.id,
-            ROUTINE_ITEMS_STATUS.COMPLETED,
-          );
-
-          setCurrentRoutine(routineUpdated);
-          setCurrentRoutineItem(routineUpdated.items[routineItemIndex]);
+          markRoutineItemAsCompleted(currentRoutine, routineItem.id, routineItem.status);
         } else {
           startTimer();
           setTime(
@@ -129,20 +120,19 @@ function Timer({
     [
       routineItem,
       routineItemIndex,
+
       time,
       sets,
       currentSet,
+      timerInterval,
       startTimer,
       stopTimer,
 
       currentRoutine,
-      setCurrentRoutine,
-      setCurrentRoutineItem,
       setTimerStatus,
 
       timeToSeconds,
-      timerInterval,
-      updateRoutineItemStatus,
+      markRoutineItemAsCompleted,
     ],
   );
 
@@ -172,11 +162,16 @@ function Timer({
       index: currentSet.index + 1,
       isRest: sets[currentSet.index + 1] === "REST",
     };
+    const isLastSet = nextSet.index === sets.length;
 
-    setCurrentSet(nextSet);
-    setTime(
-      nextSet.isRest ? timeToSeconds(routineItem.restTime) : timeToSeconds(routineItem.highTime),
-    );
+    if (isLastSet) {
+      markRoutineItemAsCompleted(currentRoutine, routineItem.id, routineItem.status);
+    } else {
+      setCurrentSet(nextSet);
+      setTime(
+        nextSet.isRest ? timeToSeconds(routineItem.restTime) : timeToSeconds(routineItem.highTime),
+      );
+    }
   }
 
   function handleResetCurrentSetClick() {
@@ -188,7 +183,7 @@ function Timer({
   // vars
   const isTimerRunning = timerInterval !== null;
   const isRoutineItemCompleted = routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED;
-  const showNextSetButton = !isRoutineItemCompleted && currentSet.index < sets.length - 1;
+  const showNextSetButton = !isRoutineItemCompleted;
   const showPrevSetButton = !isRoutineItemCompleted && currentSet.index > 0;
 
   return (

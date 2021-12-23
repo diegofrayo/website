@@ -24,6 +24,7 @@ export type T_RoutineStats = {
   completedTime: string;
   totalTime: string;
   finalRoutineDuration: string;
+  remainingTime: string;
 };
 
 export type T_TimerStatus = "NOT_STARTED" | "RUNNING" | "PAUSED";
