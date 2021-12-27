@@ -6,7 +6,7 @@ module.exports = withMDX()(
     pwa: {
       dest: "public",
       scope: "/",
-      disable: false,
+      disable: process.env.NODE_ENV !== "production",
     },
     eslint: {
       ignoreDuringBuilds: true,

@@ -174,6 +174,11 @@ function MainMenu(): T_ReactElement {
         url: ROUTES.BOOKMARKS,
         locale: undefined,
       },
+      {
+        label: translator.t("layout:header:menu:sign_in"),
+        url: ROUTES.SIGN_IN,
+        locale: undefined,
+      },
     ];
   }
 
@@ -350,6 +355,7 @@ function MenuItem({
 function Room(): T_ReactElement {
   return (
     <Block className="dfr-Room dfr-border-color-dark-strong tw-mx-auto tw-w-44 tw-max-w-full tw-border-b tw-px-1 dark:dfr-border-color-primary">
+      <Christmas />
       <PictureFrame />
       <Block className="tw-flex tw-justify-between tw-items-end">
         <TV />
@@ -360,13 +366,33 @@ function Room(): T_ReactElement {
   );
 }
 
+function Christmas() {
+  const isChristmas = new Date().getMonth() === 11;
+
+  return isChristmas ? (
+    <Block className="tw-flex tw-mb-10" align="CENTER">
+      {createArray(5).map((item) => {
+        const iDontKnow = item % 2 === 0;
+        return (
+          <Image
+            key={`idk-${item}`}
+            src={`/static/images/temp/${iDontKnow ? "snow" : "star"}.svg`}
+            className={classNames("tw-mx-1", iDontKnow ? "tw-h-6 tw-w-6" : "tw-h-8 tw-w-8")}
+            alt="Christmas icon"
+          />
+        );
+      })}
+    </Block>
+  ) : null;
+}
+
 function PictureFrame() {
   const [photo, setPhoto] = React.useState<{ src: string; portrait: boolean }>();
 
   useDidMount(() => {
     const PHOTOS = [
       {
-        src: "/static/images/header/1.jpg",
+        src: "/static/images/header/2.jpg",
         portrait: false,
       },
     ];
@@ -470,15 +496,14 @@ function TV() {
   );
 
   const SONG = {
-    id: "https://open.spotify.com/track/5JyeXhwxBQFEne4FxPbCxN?si=eb1e923aaddb4696",
-    title: "Maelström",
-    artist: "Fito Paez",
-    duration: "3:55",
-    thumbnail: "https://i.scdn.co/image/ab67616d0000b273a4091bb6f7f03ec978187d99",
-    source: "spotify",
-    url: "https://open.spotify.com/track/5JyeXhwxBQFEne4FxPbCxN",
+    title: "Salvapantallas",
+    artist: "Jorge Drexler",
+    duration: "4:32",
+    thumbnail: "https://i.scdn.co/image/ab67616d0000b273c943c87f0730e247a6fb027b",
     audio:
-      "https://p.scdn.co/mp3-preview/1880eccf1d6cfbe60fab494d61a607930a0b5c98?cid=a46f5c5745a14fbf826186da8da5ecc3",
+      "https://p.scdn.co/mp3-preview/72d71e792f540e339a07125d771bf197a1a699d8?cid=a46f5c5745a14fbf826186da8da5ecc3",
+    url: "https://open.spotify.com/track/6oxGdDLyfL4ek2jCsEOlTN",
+    source: "spotify",
   };
 
   return (
@@ -597,19 +622,31 @@ function TV() {
 }
 
 function Flowers() {
+  const isChristmas = new Date().getMonth() === 11;
+
   return (
     <Block className="tw-relative tw-overflow-hidden">
-      <Icon
-        icon={Icon.icon.FLOWER_2}
-        size={20}
-        wrapperClassName="tw-absolute tw-top-7 tw-left-2 tw--rotate-12"
-      />
-      <Icon icon={Icon.icon.FLOWER_3} size={48} wrapperClassName="tw-relative tw-top-0.5" />
-      <Icon
-        icon={Icon.icon.FLOWER_1}
-        size={20}
-        wrapperClassName="tw-absolute tw-top-7 tw-right-2 tw-rotate-12"
-      />
+      {isChristmas ? (
+        <Image
+          src="/static/images/temp/christmas.svg"
+          className="tw-h-16 tw-w-16 tw-relative tw-top-2"
+          alt="Christmas icon"
+        />
+      ) : (
+        <React.Fragment>
+          <Icon
+            icon={Icon.icon.FLOWER_2}
+            size={20}
+            wrapperClassName="tw-absolute tw-top-7 tw-left-2 tw--rotate-12"
+          />
+          <Icon icon={Icon.icon.FLOWER_3} size={48} wrapperClassName="tw-relative tw-top-0.5" />
+          <Icon
+            icon={Icon.icon.FLOWER_1}
+            size={20}
+            wrapperClassName="tw-absolute tw-top-7 tw-right-2 tw-rotate-12"
+          />
+        </React.Fragment>
+      )}
     </Block>
   );
 }
