@@ -716,6 +716,8 @@ function useController() {
               routine,
             },
           });
+
+          alert("La rutina fue guardada correctamente");
         } catch (error) {
           console.error(error);
           alert(error.message);

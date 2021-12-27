@@ -71,7 +71,7 @@ function Stats({
               />{" "}
               <Stats.Item label="hora actual" value={new Date().toLocaleTimeString()} />
               <Stats.Item label="tiempo transcurrido" value={elapsedTime} />
-              <Stats.Item label="tiempo faltante" value={data.remainingTime} />
+              <Stats.Item label="tiempo restante" value={data.remainingTime} />
             </React.Fragment>
           )}
           <Stats.Item label="hora fin rutina" value={endTime?.formatted || ""} />

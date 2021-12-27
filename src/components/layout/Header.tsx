@@ -110,30 +110,36 @@ function MainMenu(): T_ReactElement {
 
   React.useEffect(
     function addPrivateItems() {
-      if (AuthService.isUserLoggedIn()) {
-        const translator = I18nService.getInstance();
+      const translator = I18nService.getInstance();
 
-        setItems([
-          ...createItems(),
-          /*
-          {
-            label: "Timer",
-            url: ROUTES.TIMER,
-            locale: undefined,
-          },
-          */
-          {
-            label: translator.t("layout:header:menu:projects"),
-            url: ROUTES.PROJECTS,
-            locale: undefined,
-          },
-          {
-            label: translator.t("layout:header:common:menu_item_personal"),
-            url: ROUTES.PERSONAL,
-            locale: I18nService.getDefaultLocale(),
-          },
-        ]);
-      }
+      setItems([
+        ...createItems(),
+        ...(AuthService.isUserLoggedIn()
+          ? [
+              {
+                label: translator.t("layout:header:menu:projects"),
+                url: ROUTES.PROJECTS,
+                locale: undefined,
+              },
+              {
+                label: translator.t("layout:header:common:menu_item_personal"),
+                url: ROUTES.PERSONAL,
+                locale: I18nService.getDefaultLocale(),
+              },
+              {
+                label: "Timer",
+                url: ROUTES.TIMER,
+                locale: I18nService.getDefaultLocale(),
+              },
+            ]
+          : [
+              {
+                label: translator.t("layout:header:menu:sign_in"),
+                url: ROUTES.SIGN_IN,
+                locale: I18nService.getDefaultLocale(),
+              },
+            ]),
+      ]);
     },
     [currentLocale],
   );
@@ -172,11 +178,6 @@ function MainMenu(): T_ReactElement {
       {
         label: translator.t("layout:header:common:menu_item_bookmarks"),
         url: ROUTES.BOOKMARKS,
-        locale: undefined,
-      },
-      {
-        label: translator.t("layout:header:menu:sign_in"),
-        url: ROUTES.SIGN_IN,
         locale: undefined,
       },
     ];
