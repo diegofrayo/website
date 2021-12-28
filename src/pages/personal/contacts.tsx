@@ -22,6 +22,7 @@ export const getStaticProps = getPageContentStaticProps({
       props: {
         mdxOutput: await serialize(data),
       },
+      revalidate: 60,
     };
   },
 });
