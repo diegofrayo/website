@@ -19,9 +19,9 @@ function PersonalPage(): T_ReactElement {
     >
       <MainLayout title={PAGE_TITLE}>
         <Block className="tw-w-full sm:tw-max-w-md sm:tw-mx-auto">
-          <PagesList pages={PERSONAL_PAGES.slice(0, 4)} />
+          <PagesList pages={PERSONAL_PAGES.slice(0, 5)} />
           <Space size={4} variant={Space.variant.DASHED} />
-          <PagesList pages={PERSONAL_PAGES.slice(4)} />
+          <PagesList pages={PERSONAL_PAGES.slice(5)} />
         </Block>
       </MainLayout>
     </Page>

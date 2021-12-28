@@ -48,6 +48,7 @@ function TimerPage(): T_ReactElement {
     markRoutineItemAsCompleted,
     calculateRoutineItemTotalTime,
     setRoutineItemAsStarted,
+    updateRoutineItem,
   } = useController();
 
   return (
@@ -84,6 +85,7 @@ function TimerPage(): T_ReactElement {
                 calculateRoutineItemTotalTime,
                 setRoutineItemAsStarted,
                 markRoutineItemAsCompleted,
+                updateRoutineItem,
               }}
             >
               <Block className="tw-shadow-md tw-shadow-gray-600 dfr-bg-color-light-strong tw-max-w-sm tw-mx-auto tw-relative tw-pt-8 tw-min-h-screen">
@@ -344,18 +346,14 @@ function useController() {
   function setRoutineItemAsStarted(routine: T_Routine, routineItemId: T_RoutineItem["id"]) {
     setScrollPosition(0);
 
-    let routineUpdated = updateRoutineItemStatus(
-      routine,
-      routineItemId,
-      ROUTINE_ITEMS_STATUS.IN_PROGRESS,
-    );
+    let routineUpdated = updateRoutine(routine, routineItemId, {
+      status: ROUTINE_ITEMS_STATUS.IN_PROGRESS,
+    });
 
     if (currentRoutineItem?.status === ROUTINE_ITEMS_STATUS.IN_PROGRESS) {
-      routineUpdated = updateRoutineItemStatus(
-        routineUpdated,
-        currentRoutineItem?.id || "",
-        ROUTINE_ITEMS_STATUS.NOT_STARTED,
-      );
+      routineUpdated = updateRoutine(routineUpdated, currentRoutineItem?.id || "", {
+        status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
+      });
     }
 
     const routineItemFoundIndex = routineUpdated.items.findIndex(
@@ -368,13 +366,12 @@ function useController() {
   }
 
   function markRoutineItemAsCompleted(currentRoutine, routineItemId, routineItemStatus, option) {
-    const routineUpdated = updateRoutineItemStatus(
-      currentRoutine,
-      routineItemId,
-      routineItemStatus === ROUTINE_ITEMS_STATUS.COMPLETED
-        ? ROUTINE_ITEMS_STATUS.NOT_STARTED
-        : ROUTINE_ITEMS_STATUS.COMPLETED,
-    );
+    const routineUpdated = updateRoutine(currentRoutine, routineItemId, {
+      status:
+        routineItemStatus === ROUTINE_ITEMS_STATUS.COMPLETED
+          ? ROUTINE_ITEMS_STATUS.NOT_STARTED
+          : ROUTINE_ITEMS_STATUS.COMPLETED,
+    });
     setCurrentRoutine(routineUpdated);
 
     if (
@@ -388,11 +385,26 @@ function useController() {
     }
   }
 
-  // private
-  const updateRoutineItemStatus = React.useCallback(function updateRoutineItemStatus(
+  function updateRoutineItem(
     routine: T_Routine,
     routineItemId: T_RoutineItem["id"],
-    routineItemStatus: T_RoutineItem["status"],
+    payload: Partial<T_RoutineItem>,
+  ) {
+    const routineUpdated = updateRoutine(routine, routineItemId, payload);
+    const routineItemUpdatedIndex = routineUpdated.items.findIndex(
+      (item) => item.id === routineItemId,
+    );
+
+    setCurrentRoutine(routineUpdated);
+    setCurrentRoutineItem(routineUpdated.items[routineItemUpdatedIndex]);
+    setCurrentRoutineItemIndex(routineItemUpdatedIndex);
+  }
+
+  // private
+  const updateRoutine = React.useCallback(function updateRoutine(
+    routine: T_Routine,
+    routineItemId: T_RoutineItem["id"],
+    payload: Partial<T_RoutineItem>,
   ): T_Routine {
     const routineUpdated = {
       ...routine,
@@ -400,7 +412,7 @@ function useController() {
         if (item.id === routineItemId) {
           return {
             ...item,
-            status: routineItemStatus,
+            ...payload,
           };
         }
 
@@ -422,11 +434,9 @@ function useController() {
         .find((item) => item.status === ROUTINE_ITEMS_STATUS.NOT_STARTED);
 
     if (routineItemFound) {
-      const routineUpdated = updateRoutineItemStatus(
-        routine,
-        routineItemFound.id,
-        ROUTINE_ITEMS_STATUS.IN_PROGRESS,
-      );
+      const routineUpdated = updateRoutine(routine, routineItemFound.id, {
+        status: ROUTINE_ITEMS_STATUS.IN_PROGRESS,
+      });
       const routineItemFoundIndex = routineUpdated.items.findIndex(
         (item) => item.id === routineItemFound.id,
       );
@@ -555,11 +565,9 @@ function useController() {
     setCurrentRoutineItem(routine.items[routineItemToLoadIndex]);
     setCurrentRoutineItemIndex(routineItemToLoadIndex);
     setCurrentRoutine(
-      updateRoutineItemStatus(
-        routine,
-        routine.items[routineItemToLoadIndex].id,
-        ROUTINE_ITEMS_STATUS.IN_PROGRESS,
-      ),
+      updateRoutine(routine, routine.items[routineItemToLoadIndex].id, {
+        status: ROUTINE_ITEMS_STATUS.IN_PROGRESS,
+      }),
     );
   }
 
@@ -596,18 +604,16 @@ function useController() {
         routine.items.length;
 
       if (allRoutineItemsStatusIsNotStarted) {
-        const routineUpdated = updateRoutineItemStatus(
-          routine,
-          routine.items[0].id,
-          ROUTINE_ITEMS_STATUS.IN_PROGRESS,
-        );
+        const routineUpdated = updateRoutine(routine, routine.items[0].id, {
+          status: ROUTINE_ITEMS_STATUS.IN_PROGRESS,
+        });
 
         setCurrentRoutineItem(routineUpdated.items[0]);
         setCurrentRoutineItemIndex(0);
         setCurrentRoutine(routineUpdated);
       }
     },
-    [updateRoutineItemStatus],
+    [updateRoutine],
   );
 
   const fetchRoutinesHistory = React.useCallback(function fetchRoutinesHistory() {
@@ -773,7 +779,7 @@ function useController() {
 
       markRoutineAsCompleted,
       saveRoutineInLocalStorage,
-      updateRoutineItemStatus,
+      updateRoutine,
       setAtLeastOneRoutineItemAsInProgress,
       fetchRoutinesHistory,
     ],
@@ -809,6 +815,7 @@ function useController() {
     markRoutineItemAsCompleted,
     calculateRoutineItemTotalTime,
     setRoutineItemAsStarted,
+    updateRoutineItem,
   };
 }
 

@@ -3,6 +3,7 @@ import * as React from "react";
 import { Page, MainLayout } from "~/components/layout";
 import { Block, Link, List, Space, Title } from "~/components/primitive";
 import type { T_Object, T_ReactElement } from "~/types";
+import { generateSlug } from "~/utils/strings";
 
 type T_BookmarksProps = {
   bookmarks: T_Object<{ url: string; title: string }[]>;
@@ -19,7 +20,7 @@ function Bookmarks({ bookmarks }: T_BookmarksProps): T_ReactElement {
       }}
     >
       <MainLayout title={PAGE_TITLE}>
-        {Object.entries(bookmarks).map(([groupName, groupBookmarks], index) => {
+        {Object.entries(bookmarks).map(([groupName, groupBookmarks]) => {
           return (
             <Block key={groupName} className="tw-mb-8 last:tw-mb-0">
               <Title is="h2" variant={Title.variant.PRIMARY}>
@@ -27,9 +28,9 @@ function Bookmarks({ bookmarks }: T_BookmarksProps): T_ReactElement {
               </Title>
               <Space size={1} />
               <List variant={List.variant.DEFAULT}>
-                {groupBookmarks.map((bookmark) => {
+                {groupBookmarks.map((bookmark, index) => {
                   return (
-                    <List.Item key={`bookmark-${index}`}>
+                    <List.Item key={`bookmark-${generateSlug(groupName)}-${index}`}>
                       <Link variant={Link.variant.PRIMARY} href={bookmark.url} isExternalUrl>
                         {bookmark.title}
                       </Link>

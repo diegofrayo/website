@@ -1,6 +1,12 @@
 export const PERSONAL_PAGES = [
   // personal
   {
+    slug: "contacts",
+    title: "contactos",
+    componentName: "",
+    icon: "USER_CIRCLE",
+  },
+  {
     slug: "films",
     title: "películas y series",
     componentName: "Films",

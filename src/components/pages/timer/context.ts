@@ -27,4 +27,9 @@ type T_TimerPageContext = {
     routineItemStatus: T_RoutineItem["status"],
     option?: "SEARCH_FOR_NEXT_ROUTINE_ITEM",
   ) => void;
+  updateRoutineItem: (
+    routine: T_Routine,
+    routineItemId: T_RoutineItem["id"],
+    payload: Partial<T_RoutineItem>,
+  ) => void;
 };

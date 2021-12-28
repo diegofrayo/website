@@ -258,6 +258,7 @@ export enum E_Icons {
   "REPLY" = "REPLY",
   "STAR" = "STAR",
   "SUN" = "SUN",
+  "USER_CIRCLE" = "USER_CIRCLE",
   "X" = "X",
   "ZOOM_IN" = "ZOOM_IN",
   "ZOOM_OUT" = "ZOOM_OUT",

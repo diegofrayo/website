@@ -20,6 +20,7 @@ import {
   PlayIcon,
   PresentationChartLineIcon,
   ReplyIcon,
+  UserCircleIcon,
   XIcon,
   ZoomInIcon,
   ZoomOutIcon,
@@ -188,6 +189,13 @@ export const ICONS: Record<E_Icons, T_Icon> = {
   PRESENTATION_CHART_LINE: {
     isLibraryIcon: true,
     icon: PresentationChartLineIcon,
+    props: {
+      className: "",
+    },
+  },
+  USER_CIRCLE: {
+    isLibraryIcon: true,
+    icon: UserCircleIcon,
     props: {
       className: "",
     },

@@ -29,6 +29,7 @@ function Timer({
     secondsToTime,
     timeToSeconds,
     markRoutineItemAsCompleted,
+    updateRoutineItem,
   } = React.useContext(TimerPageContext);
 
   // states
@@ -146,15 +147,28 @@ function Timer({
   }
 
   function handlePrevSetClick() {
-    const prevSet = {
-      index: currentSet.index - 1,
-      isRest: sets[currentSet.index - 1] === "REST",
-    };
+    if (routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED) {
+      const prevSet = {
+        index: sets.length - 1,
+        isRest: false,
+      };
 
-    setCurrentSet(prevSet);
-    setTime(
-      prevSet.isRest ? timeToSeconds(routineItem.restTime) : timeToSeconds(routineItem.highTime),
-    );
+      updateRoutineItem(currentRoutine, routineItem.id, {
+        status: ROUTINE_ITEMS_STATUS.IN_PROGRESS,
+      });
+      setCurrentSet(prevSet);
+      setTime(timeToSeconds(routineItem.highTime));
+    } else {
+      const prevSet = {
+        index: currentSet.index - 1,
+        isRest: sets[currentSet.index - 1] === "REST",
+      };
+
+      setCurrentSet(prevSet);
+      setTime(
+        prevSet.isRest ? timeToSeconds(routineItem.restTime) : timeToSeconds(routineItem.highTime),
+      );
+    }
   }
 
   function handleNextSetClick() {
@@ -184,7 +198,7 @@ function Timer({
   const isTimerRunning = timerInterval !== null;
   const isRoutineItemCompleted = routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED;
   const showNextSetButton = !isRoutineItemCompleted;
-  const showPrevSetButton = !isRoutineItemCompleted && currentSet.index > 0;
+  const showPrevSetButton = currentSet.index > 0 || isRoutineItemCompleted;
 
   return (
     <Block
