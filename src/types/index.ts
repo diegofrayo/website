@@ -237,6 +237,7 @@ export enum E_Icons {
   "CHEVRON_DOWN" = "CHEVRON_DOWN",
   "CHEVRON_LEFT" = "CHEVRON_LEFT",
   "CHEVRON_RIGHT" = "CHEVRON_RIGHT",
+  "CLIPBOARD" = "CLIPBOARD",
   "CLOCK" = "CLOCK",
   "CODE" = "CODE",
   "COG" = "COG",

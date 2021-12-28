@@ -2,8 +2,8 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Link, Title, Space, Input, Text, InlineText, Block } from "~/components/primitive";
-import { Emoji, Render } from "~/components/shared";
+import { Link, Space, Input, Text, InlineText, Block } from "~/components/primitive";
+import { Render, Emoji } from "~/components/shared";
 import { SongDetails } from "~/components/pages/music/components";
 import { AuthService } from "~/auth";
 import { useDidMount, useQuery } from "~/hooks";
@@ -42,66 +42,72 @@ function MusicPage(): T_ReactElement {
       }}
     >
       <MainLayout title={t("page:title")}>
-        <Text>{t("page:description")}</Text>
-        <Space size={2} />
-
         <Render isLoading={isLoading} error={error} data={data}>
           {(data: T_Song[]) => {
             const { chordsPage, songsList } = parseData(data);
 
             return (
               <Block>
-                <Link
-                  variant={Link.variant.SECONDARY}
-                  href={`${ROUTES.MUSIC}/${chordsPage.id}`}
-                  locale={I18nService.getDefaultLocale()}
-                >
-                  <Emoji className="tw-mr-2">⭐</Emoji>
-                  <InlineText className="tw-underline">{t("page:chords_title")}</InlineText>
-                </Link>
-                <Space sizeTop={6} sizeBottom={16} variant={Space.variant.DASHED} />
+                <Block variant="FEATURED">
+                  <Link
+                    variant={Link.variant.SECONDARY}
+                    href={`${ROUTES.MUSIC}/${chordsPage.id}`}
+                    locale={I18nService.getDefaultLocale()}
+                  >
+                    <Emoji className="tw-mr-2">⭐</Emoji>
+                    <InlineText className="tw-underline">{t("page:chords_title")}</InlineText>
+                  </Link>
+                  <Space size={1} />
+                  <Text>{t("page:description_1")}</Text>
+                </Block>
+                <Space size={6} variant={Space.variant.DASHED} />
 
-                <Title is="h2" variant={Title.variant.SECONDARY} size={Title.size.MD} className="">
-                  <InlineText>
-                    {t("page:songs_title")} [{songsList.length}]
-                  </InlineText>
-                </Title>
+                <Block variant="FEATURED">
+                  <Text>{t("page:description_2")}</Text>
+                  <Space size={6} variant={Space.variant.DASHED} />
 
-                <Input
-                  id="input"
-                  type="text"
-                  containerProps={{ className: "tw-mt-4 tw-mb-6" }}
-                  placeholder={t("page:input_placeholder")}
-                  value={inputValue}
-                  autoComplete="off"
-                  ref={inputRef}
-                  onChange={onInputChange}
-                />
+                  <Block>
+                    <Input
+                      id="input"
+                      type="text"
+                      placeholder={t("page:input_placeholder")}
+                      label={t("page:input_label")}
+                      value={inputValue}
+                      autoComplete="off"
+                      ref={inputRef}
+                      onChange={onInputChange}
+                    />
+                    <Text className="tw-text-right tw-text-xs tw-font-bold tw-mt-1">
+                      {t("page:results_title")} [{songsList.length}]
+                    </Text>
+                  </Block>
+                  <Space size={2} />
 
-                <Block className="tw-flex tw-flex-wrap tw-justify-between">
-                  {songsList.map((song) => {
-                    return (
-                      <Block key={song.id} className="tw-w-full tw-mb-4 sm:tw-w-5/12">
-                        <Link
-                          variant={Link.variant.SECONDARY}
-                          href={`${ROUTES.MUSIC}/${song.id}`}
-                          className="tw-flex"
-                          locale={I18nService.getDefaultLocale()}
-                        >
-                          <InlineText
-                            className={classNames(
-                              "tw-flex-1 sm:tw-truncate",
-                              !song.isPublic && "tw-line-through",
-                            )}
-                            title={song.title}
+                  <Block className="tw-flex tw-flex-wrap tw-justify-between">
+                    {songsList.map((song) => {
+                      return (
+                        <Block key={song.id} className="tw-w-full tw-mb-4 sm:tw-w-5/12">
+                          <Link
+                            variant={Link.variant.SECONDARY}
+                            href={`${ROUTES.MUSIC}/${song.id}`}
+                            className="tw-flex"
+                            locale={I18nService.getDefaultLocale()}
                           >
-                            {song.title}
-                          </InlineText>
-                        </Link>
-                        <SongDetails song={song} />
-                      </Block>
-                    );
-                  })}
+                            <InlineText
+                              className={classNames(
+                                "tw-flex-1 sm:tw-truncate",
+                                !song.isPublic && "tw-line-through",
+                              )}
+                              title={song.title}
+                            >
+                              {song.title}
+                            </InlineText>
+                          </Link>
+                          <SongDetails song={song} />
+                        </Block>
+                      );
+                    })}
+                  </Block>
                 </Block>
               </Block>
             );

@@ -373,12 +373,13 @@ function Christmas() {
   return isChristmas ? (
     <Block className="tw-flex tw-mb-10" align="CENTER">
       {createArray(5).map((item) => {
-        const iDontKnow = item % 2 === 0;
+        const isOdd = item % 2 === 1;
+
         return (
           <Image
             key={`idk-${item}`}
-            src={`/static/images/temp/${iDontKnow ? "snow" : "star"}.svg`}
-            className={classNames("tw-mx-1", iDontKnow ? "tw-h-6 tw-w-6" : "tw-h-8 tw-w-8")}
+            src={`/static/images/temp/icon-${isOdd ? "1" : "2"}.svg`}
+            className={classNames("tw-mx-1", isOdd ? "tw-h-6 tw-w-6" : "tw-h-8 tw-w-8")}
             alt="Christmas icon"
           />
         );
@@ -388,6 +389,7 @@ function Christmas() {
 }
 
 function PictureFrame() {
+  const { t } = useTranslation();
   const [photo, setPhoto] = React.useState<{ src: string; portrait: boolean }>();
 
   useDidMount(() => {
@@ -424,7 +426,7 @@ function PictureFrame() {
         />
       </Block>
       <Text className="dfr-text-color-dark-strong tw-text-xxs tw-italic tw-font-bold tw-text-center tw-border-yellow-700 tw-border-2 tw-border-t-0 tw-w-16 tw-mx-auto tw-rounded-bl-md tw-rounded-br-md tw-h-4 dark:dfr-text-color-light-strong">
-        welcome
+        {t("layout:header:room:welcome")}
       </Text>
 
       <style jsx>{`
@@ -629,7 +631,7 @@ function Flowers() {
     <Block className="tw-relative tw-overflow-hidden">
       {isChristmas ? (
         <Image
-          src="/static/images/temp/christmas.svg"
+          src="/static/images/temp/icon-3.svg"
           className="tw-h-16 tw-w-16 tw-relative tw-top-2"
           alt="Christmas icon"
         />

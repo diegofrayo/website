@@ -26,9 +26,9 @@ function SourceCode({
     : "";
 
   return (
-    <Block className="dfr-SourceCode" data-markdown-block>
+    <Block className="dfr-SourceCode dfr-bg-color-light-strong " data-markdown-block>
       {!showOnlySourceCode && (
-        <Block className="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono tw-rounded-t-md tw-border dfr-border-color-primary tw-border-b-0 dark:tw-border-0 dark:tw-bg-gray-700">
+        <Block className="dfr-border-color-primary tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono tw-rounded-t-md tw-border tw-border-b-0 dark:tw-border-0 dark:tw-bg-gray-700">
           {codeTitle && <code className="tw-font-bold tw-mr-4 tw-flex-1">{codeTitle}</code>}
           <InlineText className="tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-auto">
             {language}
@@ -88,7 +88,10 @@ function SourceCode({
             data-clipboard-text={code}
             onClick={copyToClipboard}
           >
-            {t("page:copy_to_clipboard")}
+            <Icon icon={Icon.icon.CLIPBOARD} withDarkModeBackground />
+            <InlineText className="tw-lowercase tw-ml-2 sm:tw-ml-1.5">
+              {t("page:copy_to_clipboard")}
+            </InlineText>
           </Button>
         </Block>
       )}

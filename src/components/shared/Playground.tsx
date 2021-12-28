@@ -34,7 +34,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
 
   return (
     <Block
-      className="dfr-Playground tw-flex tw-flex-col tw-border-4 tw-border-black dark:tw-border-white"
+      className="dfr-Playground dfr-bg-color-light-strong tw-flex tw-flex-col tw-border-4 tw-border-black dark:tw-border-white"
       style={{ minHeight: 200 }}
       data-markdown-block
     >

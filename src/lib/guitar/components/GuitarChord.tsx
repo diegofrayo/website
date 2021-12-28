@@ -104,7 +104,8 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
       <Block className="tw-text-sm">
         <Block>
           <Button variant={Button.variant.DEFAULT} onClick={handleDownloadAsImage}>
-            <Emoji>⬇️</Emoji> <InlineText>descargar como imagen</InlineText>
+            <Emoji className="tw-mr-2">⬇️</Emoji>
+            <InlineText>descargar como imagen</InlineText>
           </Button>
 
           {musicNotesAsString && enableShowNotesOption ? (

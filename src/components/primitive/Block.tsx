@@ -28,7 +28,7 @@ const Block = React.forwardRef<HTMLDivElement, T_BlockProps>(function Block(
       display,
       align === "CENTER" && "tw-justify-center tw-items-center tw-text-center",
       variant === "FEATURED" &&
-        "dfr-border-color-primary tw-border tw-border-l-4 tw-p-4 dark:dfr-border-color-primary",
+        "dfr-bg-color-light-strong dfr-border-color-primary tw-border tw-border-l-4 tw-p-4 dark:dfr-border-color-primary",
       variant === "QUOTE" &&
         "dfr-border-color-primary dfr-text-color-secondary tw-px-4 tw-border-l-4 tw-italic dark:dfr-border-color-primary dark:dfr-text-color-secondary",
     );

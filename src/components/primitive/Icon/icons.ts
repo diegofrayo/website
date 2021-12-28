@@ -6,6 +6,7 @@ import {
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  ClipboardIcon,
   ClockIcon,
   CodeIcon,
   DotsCircleHorizontalIcon,
@@ -189,6 +190,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     icon: PresentationChartLineIcon,
     props: {
       className: "",
+    },
+  },
+  CLIPBOARD: {
+    isLibraryIcon: true,
+    icon: ClipboardIcon,
+    props: {
+      className: "",
+      color: "tw-text-yellow-700",
     },
   },
   FILM: {
