@@ -307,6 +307,7 @@ const SettingsMenu = withSafeRenderingComponent(function SettingsMenu(): T_React
           </MenuItem>
 
           <EnvironmentMenuItem />
+          <ReloadPWAMenuItem />
         </Block>
       )}
     </Block>
@@ -331,6 +332,21 @@ const EnvironmentMenuItem = withRequiredAuthComponent(function EnvironmentMenuIt
       <Link variant={Link.variant.SIMPLE} href={url} isExternalUrl>
         <Icon icon={Icon.icon.EXTERNAL_LINK} />
       </Link>
+    </MenuItem>
+  );
+});
+
+const ReloadPWAMenuItem = withRequiredAuthComponent(function ReloadPWAMenuItem() {
+  return (
+    <MenuItem title="Reload PWA">
+      <Button
+        variant={Button.variant.SIMPLE}
+        onClick={() => {
+          window.location.reload();
+        }}
+      >
+        <Icon icon={Icon.icon.REFRESH} />
+      </Button>
     </MenuItem>
   );
 });

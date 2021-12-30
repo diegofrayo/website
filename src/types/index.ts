@@ -256,6 +256,7 @@ export enum E_Icons {
   "PLAY" = "PLAY",
   "PRESENTATION_CHART_LINE" = "PRESENTATION_CHART_LINE",
   "REPLY" = "REPLY",
+  "REFRESH" = "REFRESH",
   "STAR" = "STAR",
   "SUN" = "SUN",
   "USER_CIRCLE" = "USER_CIRCLE",

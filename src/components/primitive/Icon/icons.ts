@@ -19,6 +19,7 @@ import {
   PencilAltIcon,
   PlayIcon,
   PresentationChartLineIcon,
+  RefreshIcon,
   ReplyIcon,
   UserCircleIcon,
   XIcon,
@@ -239,6 +240,13 @@ export const ICONS: Record<E_Icons, T_Icon> = {
   CALENDAR: {
     isLibraryIcon: true,
     icon: CalendarIcon,
+    props: {
+      className: "",
+    },
+  },
+  REFRESH: {
+    isLibraryIcon: true,
+    icon: RefreshIcon,
     props: {
       className: "",
     },
