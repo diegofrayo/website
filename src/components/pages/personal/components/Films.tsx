@@ -132,9 +132,7 @@ function Films(): T_ReactElement {
                               ? Icon.icon.STAR
                               : calification === 4
                               ? Icon.icon.HEART
-                              : calification === 3
-                              ? Icon.icon.CHECK
-                              : Icon.icon.MINUS
+                              : Icon.icon.CHECK
                           }
                           size={24}
                         />

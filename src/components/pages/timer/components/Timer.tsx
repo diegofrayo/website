@@ -37,8 +37,27 @@ function Timer({
   const [time, setTime] = React.useState(0);
   const [sets, setSets] = React.useState<("REST" | "HIGH")[]>([]);
   const [currentSet, setCurrentSet] = React.useState({ index: 0, isRest: false });
+  const [isSoundsMuted, setIsSoundsMuted] = React.useState(false);
 
   // utils
+  const playSound = React.useCallback(
+    function playSound(mode: "RUNNING" | "COMPLETED") {
+      try {
+        if (isSoundsMuted) return;
+
+        (
+          document.getElementById(
+            mode === "RUNNING" ? "audio-running" : "audio-completed",
+          ) as HTMLAudioElement
+        )?.play();
+        window.navigator?.vibrate(200);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    [isSoundsMuted],
+  );
+
   const startTimer = React.useCallback(
     function startTimer() {
       setTimerInterval(
@@ -62,21 +81,8 @@ function Timer({
 
       console.log("Timer stopped");
     },
-    [setTimerStatus],
+    [setTimerStatus, playSound],
   );
-
-  function playSound(mode: "RUNNING" | "COMPLETED") {
-    try {
-      (
-        document.getElementById(
-          mode === "RUNNING" ? "audio-running" : "audio-completed",
-        ) as HTMLAudioElement
-      )?.play();
-      window.navigator?.vibrate(200);
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
   // effects
   React.useEffect(
@@ -237,11 +243,21 @@ function Timer({
       {!isRoutineItemCompleted && (
         <React.Fragment>
           <Block className="tw-flex tw-justify-between tw-items-center">
-            <Block className="tw-w-12 tw-h-12" />
             <Button
               variant={Button.variant.SIMPLE}
-              onClick={handleStartRoutineItemClick}
+              className="tw-h-12 tw-w-12 tw-flex tw-items-center tw-justify-center"
+              onClick={() => setIsSoundsMuted((currentValue) => !currentValue)}
+            >
+              <Icon
+                icon={isSoundsMuted ? Icon.icon.VOLUME_OFF : Icon.icon.VOLUME_UP}
+                size={24}
+                color="tw-text-white"
+              />
+            </Button>
+            <Button
+              variant={Button.variant.SIMPLE}
               className="dfr-border-color-primary tw-rounded-full tw-h-32 tw-w-32 tw-border-4 tw-uppercase tw-font-bold"
+              onClick={handleStartRoutineItemClick}
             >
               {timerStatus === TIMER_STATUS.NOT_STARTED
                 ? "Iniciar"
@@ -251,8 +267,8 @@ function Timer({
             </Button>
             <Button
               variant={Button.variant.SIMPLE}
-              onClick={handleResetCurrentSetClick}
               className="dfr-border-color-primary tw-rounded-full tw-h-12 tw-w-12 tw-border-2 tw-flex tw-items-center tw-justify-center"
+              onClick={handleResetCurrentSetClick}
             >
               <Icon icon={Icon.icon.REPLY} color="tw-text-white" />
             </Button>

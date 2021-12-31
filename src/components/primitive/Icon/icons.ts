@@ -22,6 +22,8 @@ import {
   RefreshIcon,
   ReplyIcon,
   UserCircleIcon,
+  VolumeOffIcon,
+  VolumeUpIcon,
   XIcon,
   ZoomInIcon,
   ZoomOutIcon,
@@ -437,6 +439,20 @@ export const ICONS: Record<E_Icons, T_Icon> = {
   X: {
     isLibraryIcon: true,
     icon: XIcon,
+    props: {
+      className: "",
+    },
+  },
+  VOLUME_OFF: {
+    isLibraryIcon: true,
+    icon: VolumeOffIcon,
+    props: {
+      className: "",
+    },
+  },
+  VOLUME_UP: {
+    isLibraryIcon: true,
+    icon: VolumeUpIcon,
     props: {
       className: "",
     },
