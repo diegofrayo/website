@@ -372,7 +372,6 @@ function MenuItem({
 function Room(): T_ReactElement {
   return (
     <Block className="dfr-Room dfr-border-color-dark-strong tw-mx-auto tw-w-44 tw-max-w-full tw-border-b tw-px-1 dark:dfr-border-color-primary">
-      <Christmas />
       <PictureFrame />
       <Block className="tw-flex tw-justify-between tw-items-end">
         <TV />
@@ -383,27 +382,6 @@ function Room(): T_ReactElement {
   );
 }
 
-function Christmas() {
-  const isChristmas = new Date().getMonth() === 11;
-
-  return isChristmas ? (
-    <Block className="tw-flex tw-mb-10" align="CENTER">
-      {createArray(5).map((item) => {
-        const isOdd = item % 2 === 1;
-
-        return (
-          <Image
-            key={`idk-${item}`}
-            src={`/static/images/temp/icon-${isOdd ? "1" : "2"}.svg`}
-            className={classNames("tw-mx-1", isOdd ? "tw-h-6 tw-w-6" : "tw-h-8 tw-w-8")}
-            alt="Christmas icon"
-          />
-        );
-      })}
-    </Block>
-  ) : null;
-}
-
 function PictureFrame() {
   const { t } = useTranslation();
   const [photo, setPhoto] = React.useState<{ src: string; portrait: boolean }>();
@@ -411,7 +389,7 @@ function PictureFrame() {
   useDidMount(() => {
     const PHOTOS = [
       {
-        src: "/static/images/header/2.jpg",
+        src: "/static/images/header/4.jpg",
         portrait: false,
       },
     ];
@@ -641,31 +619,19 @@ function TV() {
 }
 
 function Flowers() {
-  const isChristmas = new Date().getMonth() === 11;
-
   return (
     <Block className="tw-relative tw-overflow-hidden">
-      {isChristmas ? (
-        <Image
-          src="/static/images/temp/icon-3.svg"
-          className="tw-h-16 tw-w-16 tw-relative tw-top-2"
-          alt="Christmas icon"
-        />
-      ) : (
-        <React.Fragment>
-          <Icon
-            icon={Icon.icon.FLOWER_2}
-            size={20}
-            wrapperClassName="tw-absolute tw-top-7 tw-left-2 tw--rotate-12"
-          />
-          <Icon icon={Icon.icon.FLOWER_3} size={48} wrapperClassName="tw-relative tw-top-0.5" />
-          <Icon
-            icon={Icon.icon.FLOWER_1}
-            size={20}
-            wrapperClassName="tw-absolute tw-top-7 tw-right-2 tw-rotate-12"
-          />
-        </React.Fragment>
-      )}
+      <Icon
+        icon={Icon.icon.FLOWER_2}
+        size={20}
+        wrapperClassName="tw-absolute tw-top-7 tw-left-2 tw--rotate-12"
+      />
+      <Icon icon={Icon.icon.FLOWER_3} size={48} wrapperClassName="tw-relative tw-top-0.5" />
+      <Icon
+        icon={Icon.icon.FLOWER_1}
+        size={20}
+        wrapperClassName="tw-absolute tw-top-7 tw-right-2 tw-rotate-12"
+      />
     </Block>
   );
 }

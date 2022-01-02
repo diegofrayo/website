@@ -11,6 +11,8 @@ import { ErrorBoundary } from "react-error-boundary";
 import { I18nextProvider } from "react-i18next";
 import { Provider } from "react-redux";
 import { MDXProvider } from "@mdx-js/react";
+import { persistQueryClient } from "react-query/persistQueryClient-experimental";
+import { createWebStoragePersistor } from "react-query/createWebStoragePersistor-experimental";
 
 import { ProgressBar } from "~/components/layout";
 import { AuthService } from "~/auth";
@@ -27,6 +29,7 @@ import ErrorPage from "./500";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      cacheTime: 1000 * 60 * 60 * 24 * 30, // 30 days
       refetchOnWindowFocus: false,
       retry: 1,
     },
@@ -45,6 +48,11 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
   useDidMount(() => {
     AuthService.configureHttpHeaders();
     AnalyticsService.init();
+
+    persistQueryClient({
+      persistor: createWebStoragePersistor({ storage: window.localStorage }),
+      queryClient,
+    });
   });
 
   return (

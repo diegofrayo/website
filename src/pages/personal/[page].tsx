@@ -18,7 +18,6 @@ export const getStaticPaths: GetStaticPaths<T_PageProps> = async function getSta
 };
 
 export const getStaticProps = getPageContentStaticProps<T_PageProps, T_PageProps>({
-  locale: "es",
   callback: async ({ params }) => {
     return {
       props: {

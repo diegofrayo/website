@@ -5,4 +5,4 @@ export default PersonalPage;
 
 // --- Next.js functions ---
 
-export const getStaticProps = getPageContentStaticProps({ locale: "es" });
+export const getStaticProps = getPageContentStaticProps();

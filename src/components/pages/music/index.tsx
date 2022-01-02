@@ -90,18 +90,14 @@ function MusicPage(): T_ReactElement {
                           <Link
                             variant={Link.variant.SECONDARY}
                             href={`${ROUTES.MUSIC}/${song.id}`}
-                            className="tw-flex"
+                            className={classNames(
+                              "sm:tw-truncate",
+                              !song.isPublic && "tw-line-through",
+                            )}
+                            title={song.title}
                             locale={I18nService.getDefaultLocale()}
                           >
-                            <InlineText
-                              className={classNames(
-                                "tw-flex-1 sm:tw-truncate",
-                                !song.isPublic && "tw-line-through",
-                              )}
-                              title={song.title}
-                            >
-                              {song.title}
-                            </InlineText>
+                            {song.title}
                           </Link>
                           <SongDetails song={song} />
                         </Block>

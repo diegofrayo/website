@@ -15,7 +15,7 @@ body {
 body {
   @apply dfr-bg-color-layout;
   @apply dfr-text-color-primary;
-  background-image: url("/static/images/temp/cream-pixels.png");
+  background-image: url("/static/images/misc/cream-pixels.png");
   cursor: default;
   font-size: 18px;
   overflow-y: auto;
