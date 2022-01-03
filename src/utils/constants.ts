@@ -33,27 +33,33 @@ export const PERSONAL_PAGES = [
 
   // tools
   {
+    slug: "timer",
+    title: "timer",
+    componentName: "",
+    icon: "CLOCK",
+  },
+  {
     slug: "whatsapp",
     title: "whatsapp",
     componentName: "WhatsApp",
-    icon: "COG",
+    icon: "CHAT",
   },
   {
     slug: "dencrypt",
     title: "dencrypt",
     componentName: "Dencrypt",
-    icon: "COG",
+    icon: "KEY",
   },
   {
     slug: "chords-creator",
     title: "acordes",
     componentName: "ChordsCreator",
-    icon: "COG",
+    icon: "MUSIC_NOTE",
   },
   {
     slug: "styles",
     title: "estilos",
     componentName: "Styles",
-    icon: "COG",
+    icon: "COLOR_SWATCH",
   },
 ];

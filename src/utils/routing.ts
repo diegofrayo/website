@@ -10,9 +10,10 @@ export const ROUTES: Record<T_RoutesKeys, T_PageRoute> = {
   MUSIC: "/music",
   MUSIC_DETAILS: "/music/[song]",
   PERSONAL: "/personal",
-  PROJECTS: "/projects",
+  // PROJECTS: "/projects",
   TIMER: "/timer",
   SIGN_IN: "/sign-in",
+  SIGN_OUT: "/sign-out",
   ERROR_404: "/404",
   ERROR_500: "/500",
 };
@@ -32,8 +33,9 @@ type T_RoutesKeys =
   | "MUSIC"
   | "MUSIC_DETAILS"
   | "PERSONAL"
-  | "PROJECTS"
+  // | "PROJECTS"
   | "TIMER"
   | "SIGN_IN"
+  | "SIGN_OUT"
   | "ERROR_404"
   | "ERROR_500";

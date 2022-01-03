@@ -1,3 +1,14 @@
+/*
+import ProjectsPage from "~/components/pages/projects";
+import { getPageContentStaticProps } from "~/i18n";
+
+export default ProjectsPage;
+
+// --- Next.js functions ---
+
+export const getStaticProps = getPageContentStaticProps();
+*/
+
 import * as React from "react";
 
 import { Page, MainLayout } from "~/components/layout";

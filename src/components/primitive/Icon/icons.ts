@@ -2,6 +2,7 @@ import {
   ArrowUpIcon,
   BookOpenIcon,
   CalendarIcon,
+  ChatIcon,
   ChevronDoubleDownIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -9,9 +10,11 @@ import {
   ClipboardIcon,
   ClockIcon,
   CodeIcon,
+  ColorSwatchIcon,
   DotsCircleHorizontalIcon,
   ExternalLinkIcon,
   FilmIcon,
+  KeyIcon,
   LinkIcon,
   MenuIcon,
   MusicNoteIcon,
@@ -189,6 +192,27 @@ export const ICONS: Record<E_Icons, T_Icon> = {
     },
   },
 
+  CHAT: {
+    isLibraryIcon: true,
+    icon: ChatIcon,
+    props: {
+      className: "",
+    },
+  },
+  KEY: {
+    isLibraryIcon: true,
+    icon: KeyIcon,
+    props: {
+      className: "",
+    },
+  },
+  COLOR_SWATCH: {
+    isLibraryIcon: true,
+    icon: ColorSwatchIcon,
+    props: {
+      className: "",
+    },
+  },
   PRESENTATION_CHART_LINE: {
     isLibraryIcon: true,
     icon: PresentationChartLineIcon,

@@ -111,34 +111,39 @@ function MainMenu(): T_ReactElement {
   React.useEffect(
     function addPrivateItems() {
       const translator = I18nService.getInstance();
+      const isPwa = window.navigator["standalone"] === true;
 
       setItems([
         ...createItems(),
         ...(AuthService.isUserLoggedIn()
           ? [
+              /*
               {
                 label: translator.t("layout:header:menu:projects"),
                 url: ROUTES.PROJECTS,
                 locale: undefined,
               },
+              */
               {
                 label: translator.t("layout:header:common:menu_item_personal"),
                 url: ROUTES.PERSONAL,
                 locale: I18nService.getDefaultLocale(),
               },
               {
-                label: "Timer",
-                url: ROUTES.TIMER,
+                label: "Sign out",
+                url: ROUTES.SIGN_OUT,
                 locale: I18nService.getDefaultLocale(),
               },
             ]
-          : [
+          : isPwa
+          ? [
               {
                 label: translator.t("layout:header:menu:sign_in"),
                 url: ROUTES.SIGN_IN,
                 locale: I18nService.getDefaultLocale(),
               },
-            ]),
+            ]
+          : []),
       ]);
     },
     [currentLocale],

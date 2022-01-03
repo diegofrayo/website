@@ -58,9 +58,10 @@ export type T_PageRoute =
   | "/music"
   | "/music/[song]"
   | "/personal"
-  | "/projects"
+  // | "/projects"
   | "/timer"
   | "/sign-in"
+  | "/sign-out"
   | "/404"
   | "/500";
 
@@ -232,6 +233,7 @@ export enum E_Icons {
   "ARROW_UP" = "ARROW_UP",
   "BOOK_OPEN" = "BOOK_OPEN",
   "CALENDAR" = "CALENDAR",
+  "CHAT" = "CHAT",
   "CHECK" = "CHECK",
   "CHEVRON_DOUBLE_DOWN" = "CHEVRON_DOUBLE_DOWN",
   "CHEVRON_DOWN" = "CHEVRON_DOWN",
@@ -241,12 +243,14 @@ export enum E_Icons {
   "CLOCK" = "CLOCK",
   "CODE" = "CODE",
   "COG" = "COG",
+  "COLOR_SWATCH" = "COLOR_SWATCH",
   "DOTS_CIRCLE_HORIZONTAL" = "DOTS_CIRCLE_HORIZONTAL",
   "DOTS_CIRCLE_HORIZONTAL_SOLID" = "DOTS_CIRCLE_HORIZONTAL_SOLID",
   "EDIT" = "EDIT",
   "EXTERNAL_LINK" = "EXTERNAL_LINK",
   "FILM" = "FILM",
   "HEART" = "HEART",
+  "KEY" = "KEY",
   "LINK" = "LINK",
   "MENU" = "MENU",
   "MINUS" = "MINUS",
