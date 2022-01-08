@@ -657,7 +657,7 @@ function useController() {
 
   function createFormattedDate() {
     const date = new Date();
-    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+    return `${date.getFullYear()}/${fillNumber(date.getMonth() + 1)}/${fillNumber(date.getDate())}`;
   }
 
   // handlers

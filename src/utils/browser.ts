@@ -114,6 +114,20 @@ export async function downloadComponentAsImage(
   });
 }
 
+export function isMobileiOS(): boolean {
+  return (
+    ["iPad Simulator", "iPhone Simulator", "iPod Simulator", "iPad", "iPhone", "iPod"].includes(
+      navigator.platform,
+    ) ||
+    // iPad on iOS 13 detection
+    (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+  );
+}
+
+export function isPWA(): boolean {
+  return window.navigator["standalone"] === true;
+}
+
 // --- Private functions ---
 
 /*
@@ -135,16 +149,6 @@ function isAndroid(): boolean {
   return navigator.userAgent.toLowerCase().indexOf("android") > -1;
 }
 */
-
-export function isMobileiOS(): boolean {
-  return (
-    ["iPad Simulator", "iPhone Simulator", "iPod Simulator", "iPad", "iPhone", "iPod"].includes(
-      navigator.platform,
-    ) ||
-    // iPad on iOS 13 detection
-    (navigator.userAgent.includes("Mac") && "ontouchend" in document)
-  );
-}
 
 function getScreenSize() {
   const width = window.innerWidth;

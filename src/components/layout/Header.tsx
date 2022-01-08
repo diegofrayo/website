@@ -29,7 +29,7 @@ import type {
   T_ReactElement,
   T_WebsiteMetadata,
 } from "~/types";
-import { scrollToElement } from "~/utils/browser";
+import { scrollToElement, isPWA } from "~/utils/browser";
 import { createArray, isDevelopmentEnvironment } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
@@ -111,31 +111,23 @@ function MainMenu(): T_ReactElement {
   React.useEffect(
     function addPrivateItems() {
       const translator = I18nService.getInstance();
-      const isPwa = window.navigator["standalone"] === true;
 
       setItems([
         ...createItems(),
         ...(AuthService.isUserLoggedIn()
           ? [
-              /*
-              {
-                label: translator.t("layout:header:menu:projects"),
-                url: ROUTES.PROJECTS,
-                locale: undefined,
-              },
-              */
               {
                 label: translator.t("layout:header:common:menu_item_personal"),
                 url: ROUTES.PERSONAL,
                 locale: I18nService.getDefaultLocale(),
               },
               {
-                label: "Sign out",
+                label: translator.t("layout:header:menu:sign_out"),
                 url: ROUTES.SIGN_OUT,
                 locale: I18nService.getDefaultLocale(),
               },
             ]
-          : isPwa
+          : isPWA()
           ? [
               {
                 label: translator.t("layout:header:menu:sign_in"),
@@ -342,8 +334,16 @@ const EnvironmentMenuItem = withRequiredAuthComponent(function EnvironmentMenuIt
 });
 
 const ReloadPWAMenuItem = withRequiredAuthComponent(function ReloadPWAMenuItem() {
+  const [render, setRender] = React.useState(false);
+
+  useDidMount(() => {
+    setRender(isPWA());
+  });
+
+  if (!render) return null;
+
   return (
-    <MenuItem title="Reload PWA">
+    <MenuItem title="PWA">
       <Button
         variant={Button.variant.SIMPLE}
         onClick={() => {
