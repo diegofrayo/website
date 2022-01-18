@@ -201,18 +201,30 @@ function TimerPage(): T_ReactElement {
                       Ajustes
                     </Title>
                     <Space size={2} />
-                    <Button
-                      variant={Button.variant.SIMPLE}
-                      className="tw-block tw-mx-auto tw-text-center tw-underline tw-font-bold"
-                      onClick={() => {
-                        if (window.confirm("¿Está seguro?")) {
-                          window.localStorage.removeItem("DFR_TIMER");
+                    <Block>
+                      <Button
+                        variant={Button.variant.SIMPLE}
+                        className="tw-block tw-mx-auto tw-text-center tw-underline tw-font-bold"
+                        onClick={() => {
+                          if (window.confirm("¿Está seguro?")) {
+                            window.localStorage.removeItem("DFR_TIMER");
+                            window.location.reload();
+                          }
+                        }}
+                      >
+                        Limpiar caché
+                      </Button>
+                      <Space size={1} />
+                      <Button
+                        variant={Button.variant.SIMPLE}
+                        className="tw-block tw-mx-auto tw-text-center tw-underline tw-font-bold"
+                        onClick={() => {
                           window.location.reload();
-                        }
-                      }}
-                    >
-                      Limpiar caché
-                    </Button>
+                        }}
+                      >
+                        Recargar app
+                      </Button>
+                    </Block>
                   </Block>
                 )}
               </Block>
@@ -401,6 +413,11 @@ function useController() {
   }
 
   // private
+  const createFormattedDate = React.useCallback(function createFormattedDate() {
+    const date = new Date();
+    return `${date.getFullYear()}/${fillNumber(date.getMonth() + 1)}/${fillNumber(date.getDate())}`;
+  }, []);
+
   const updateRoutine = React.useCallback(function updateRoutine(
     routine: T_Routine,
     routineItemId: T_RoutineItem["id"],
@@ -449,24 +466,26 @@ function useController() {
     }
   }
 
-  const saveRoutineInLocalStorage = React.useCallback(function saveRoutineInLocalStorage({
-    routine,
-    date = createFormattedDate(),
-  }: {
-    routine?: T_Routine;
-    date?: string;
-  }) {
-    const loadedRoutine = readRoutineFromLocalStorage();
+  const saveRoutineInLocalStorage = React.useCallback(
+    function saveRoutineInLocalStorage({
+      routine,
+      date = createFormattedDate(),
+    }: {
+      routine?: T_Routine;
+      date?: string;
+    }) {
+      const loadedRoutine = readRoutineFromLocalStorage();
 
-    window.localStorage.setItem(
-      "DFR_TIMER",
-      JSON.stringify({
-        ...loadedRoutine,
-        [date]: routine,
-      }),
-    );
-  },
-  []);
+      window.localStorage.setItem(
+        "DFR_TIMER",
+        JSON.stringify({
+          ...loadedRoutine,
+          [date]: routine,
+        }),
+      );
+    },
+    [createFormattedDate],
+  );
 
   function loadRoutine(defaultRoutine: T_Routine, key?: string): T_Routine {
     const loadedRoutine =
@@ -653,11 +672,6 @@ function useController() {
         return { ...item, status: ROUTINE_ITEMS_STATUS.NOT_STARTED };
       }),
     };
-  }
-
-  function createFormattedDate() {
-    const date = new Date();
-    return `${date.getFullYear()}/${fillNumber(date.getMonth() + 1)}/${fillNumber(date.getDate())}`;
   }
 
   // handlers

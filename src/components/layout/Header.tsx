@@ -394,7 +394,7 @@ function PictureFrame() {
   useDidMount(() => {
     const PHOTOS = [
       {
-        src: "/static/images/header/4.jpg",
+        src: "/static/images/header/2.jpg",
         portrait: false,
       },
     ];
@@ -498,14 +498,14 @@ function TV() {
   );
 
   const SONG = {
-    title: "Salvapantallas",
-    artist: "Jorge Drexler",
-    duration: "4:32",
-    thumbnail: "https://i.scdn.co/image/ab67616d0000b273c943c87f0730e247a6fb027b",
-    audio:
-      "https://p.scdn.co/mp3-preview/72d71e792f540e339a07125d771bf197a1a699d8?cid=a46f5c5745a14fbf826186da8da5ecc3",
-    url: "https://open.spotify.com/track/6oxGdDLyfL4ek2jCsEOlTN",
+    title: "Maelström",
+    artist: "Fito Paez",
+    duration: "3:55",
+    thumbnail: "https://i.scdn.co/image/ab67616d0000b273a4091bb6f7f03ec978187d99",
     source: "spotify",
+    url: "https://open.spotify.com/track/5JyeXhwxBQFEne4FxPbCxN",
+    audio:
+      "https://p.scdn.co/mp3-preview/1880eccf1d6cfbe60fab494d61a607930a0b5c98?cid=a46f5c5745a14fbf826186da8da5ecc3",
   };
 
   return (

@@ -1,8 +1,9 @@
 import * as React from "react";
 
-import { Block, Text } from "~/components/primitive";
+import { Block, Text, InlineText } from "~/components/primitive";
 import type { T_ReactElement } from "~/types";
 
+import Emoji from "./Emoji";
 import Loader from "./Loader";
 
 function Render({
@@ -27,7 +28,10 @@ function Render({
   if (error) {
     return (
       <Text className="tw-p-2 tw-text-center tw-text-red-700 tw-text-sm">
-        😵 {error instanceof Error ? error.message : error || "Error"}
+        <Emoji className="tw-mr-2">😵</Emoji>
+        <InlineText>
+          {error instanceof Error ? error.message : (error as string) || "Error"}
+        </InlineText>
       </Text>
     );
   }

@@ -78,10 +78,10 @@
     "xdm": "latest"
   },
   "optionalDependencies": {
-    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-essentials": "latest",
     "@storybook/addon-links": "^6.2.7",
     "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/react": "^6.4.9",
+    "@storybook/react": "latest",
     "@typescript-eslint/eslint-plugin": "^3.4.0",
     "@typescript-eslint/parser": "^3.4.0",
     "eslint": "^7.3.1",
