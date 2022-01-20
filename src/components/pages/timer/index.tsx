@@ -64,6 +64,13 @@ function TimerPage(): T_ReactElement {
               href: "/static/sounds/timer/set-completed.mp3",
             },
           },
+          {
+            element: "link",
+            props: {
+              rel: "prefetch",
+              href: "/static/sounds/timer/routine-item-completed.mp3",
+            },
+          },
         ],
       }}
     >

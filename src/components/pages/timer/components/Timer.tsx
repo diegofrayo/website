@@ -41,13 +41,15 @@ function Timer({
 
   // utils
   const playSound = React.useCallback(
-    function playSound(mode: "RUNNING" | "COMPLETED") {
+    function playSound(mode: "ROUTINE_ITEM_COMPLETED" | "SET_COMPLETED") {
       try {
         if (isSoundsMuted) return;
 
         (
           document.getElementById(
-            mode === "RUNNING" ? "audio-running" : "audio-completed",
+            mode === "ROUTINE_ITEM_COMPLETED"
+              ? "audio-routine-item-completed"
+              : "audio-set-completed",
           ) as HTMLAudioElement
         )?.play();
         window.navigator?.vibrate(200);
@@ -73,15 +75,14 @@ function Timer({
   );
 
   const stopTimer = React.useCallback(
-    function stopTimer(timerInterval, mode: "SET_PAUSED" | "SET_COMPLETED") {
+    function stopTimer(timerInterval) {
       clearInterval(timerInterval);
       setTimerInterval(null);
       setTimerStatus(TIMER_STATUS.PAUSED);
-      if (mode === "SET_COMPLETED") playSound("COMPLETED");
 
       console.log("Timer stopped");
     },
-    [setTimerStatus, playSound],
+    [setTimerStatus],
   );
 
   // effects
@@ -103,7 +104,7 @@ function Timer({
   React.useEffect(
     function onTimeChange() {
       if (time === 0 && timerInterval) {
-        stopTimer(timerInterval, "SET_COMPLETED");
+        stopTimer(timerInterval);
 
         const nextSet = {
           index: currentSet.index + 1,
@@ -112,8 +113,10 @@ function Timer({
         const isLastSet = nextSet.index === sets.length;
 
         if (isLastSet) {
+          playSound("ROUTINE_ITEM_COMPLETED");
           markRoutineItemAsCompleted(currentRoutine, routineItem.id, routineItem.status);
         } else {
+          playSound("SET_COMPLETED");
           startTimer();
           setTime(
             nextSet.isRest
@@ -125,19 +128,19 @@ function Timer({
       }
     },
     [
-      routineItem,
-      routineItemIndex,
-
       time,
       sets,
       currentSet,
       timerInterval,
       startTimer,
       stopTimer,
+      playSound,
+
+      routineItem,
+      routineItemIndex,
 
       currentRoutine,
       setTimerStatus,
-
       timeToSeconds,
       markRoutineItemAsCompleted,
     ],
@@ -146,7 +149,7 @@ function Timer({
   // handlers
   function handleStartRoutineItemClick() {
     if (timerInterval) {
-      stopTimer(timerInterval, "SET_PAUSED");
+      stopTimer(timerInterval);
     } else {
       startTimer();
     }
@@ -219,10 +222,14 @@ function Timer({
     >
       <audio
         src="/static/sounds/timer/set-completed.mp3"
-        id="audio-completed"
+        id="audio-set-completed"
         className="tw-hidden"
       />
-      <audio src="/static/sounds/timer/single-tick.mp3" id="audio-running" className="tw-hidden" />
+      <audio
+        src="/static/sounds/timer/routine-item-completed.mp3"
+        id="audio-routine-item-completed"
+        className="tw-hidden"
+      />
 
       <Text className="tw-text-7xl">
         {secondsToTime(time)

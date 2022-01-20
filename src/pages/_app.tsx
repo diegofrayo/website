@@ -3,6 +3,7 @@ import "~/styles/index.post.css";
 
 import * as React from "react";
 import App from "next/app";
+import { useRouter } from "next/router";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -22,6 +23,7 @@ import AnalyticsService from "~/services/analytics";
 import MetadataService from "~/services/metadata";
 import { createPreloadedState, useStore } from "~/state";
 import type { T_ReactElement } from "~/types";
+import { isPWA } from "~/utils/browser";
 import { MDXComponents } from "~/utils/mdx";
 
 import ErrorPage from "./500";
@@ -37,6 +39,7 @@ const queryClient = new QueryClient({
 });
 
 function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
+  const router = useRouter();
   const store = useStore(
     createPreloadedState({
       metadata: pageProps.metadata,
@@ -53,6 +56,26 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
       persistor: createWebStoragePersistor({ storage: window.localStorage }),
       queryClient,
     });
+
+    if (isPWA()) {
+      const LOCAL_STORAGE_KEY = "DFR_LAST_PAGE";
+      const lastPageVisited = window.localStorage.getItem(LOCAL_STORAGE_KEY) || "";
+      const handleRouteChangeComplete = () => {
+        window.localStorage.setItem(LOCAL_STORAGE_KEY, window.location.pathname);
+      };
+
+      if (lastPageVisited && lastPageVisited !== window.location.pathname) {
+        window.localStorage.removeItem(LOCAL_STORAGE_KEY);
+        window.location.href = lastPageVisited;
+        return;
+      }
+
+      router.events.on("routeChangeComplete", handleRouteChangeComplete);
+
+      return () => {
+        router.events.off("routeChangeComplete", handleRouteChangeComplete);
+      };
+    }
   });
 
   return (
