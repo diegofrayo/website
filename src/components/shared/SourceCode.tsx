@@ -75,7 +75,7 @@ function SourceCode({
                 isExternalUrl
               >
                 <Icon icon={Icon.icon.GITHUB} withDarkModeBackground />
-                <InlineText className="tw-lowercase tw-ml-2 sm:tw-ml-1.5">
+                <InlineText className="tw-lowercase tw-ml-1">
                   {t("page:see_source_code")}
                 </InlineText>
               </Link>
@@ -89,9 +89,7 @@ function SourceCode({
             onClick={copyToClipboard}
           >
             <Icon icon={Icon.icon.CLIPBOARD} withDarkModeBackground />
-            <InlineText className="tw-lowercase tw-ml-2 sm:tw-ml-1.5">
-              {t("page:copy_to_clipboard")}
-            </InlineText>
+            <InlineText className="tw-lowercase tw-ml-1">{t("page:copy_to_clipboard")}</InlineText>
           </Button>
         </Block>
       )}

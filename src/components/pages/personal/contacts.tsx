@@ -6,7 +6,6 @@ import { MDXContent } from "~/components/shared";
 import type { T_ReactElement } from "~/types";
 import { isMobileiOS } from "~/utils/browser";
 import { isBrowser } from "~/utils/misc";
-import { replaceAll } from "~/utils/strings";
 
 function Contacts({ mdxOutput }: { mdxOutput: MDXRemoteSerializeResult }): T_ReactElement {
   const PAGE_TITLE = "Contacts";
@@ -26,7 +25,7 @@ function Contacts({ mdxOutput }: { mdxOutput: MDXRemoteSerializeResult }): T_Rea
             !isMobileiOS()
               ? {
                   ...mdxOutput,
-                  compiledSource: replaceAll(mdxOutput.compiledSource, "api.", "web."),
+                  compiledSource: mdxOutput.compiledSource,
                 }
               : mdxOutput
           }

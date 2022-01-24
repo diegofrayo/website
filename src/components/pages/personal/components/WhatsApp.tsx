@@ -54,18 +54,6 @@ function WhatsApp(): T_ReactElement {
           <input
             type="radio"
             className="tw-mr-1"
-            id="radio-web"
-            name="option"
-            value="web"
-            checked={isWebOptionSelected}
-            onChange={onRadioChange}
-          />
-          <label htmlFor="radio-web">web</label>
-        </Block>
-        <Block>
-          <input
-            type="radio"
-            className="tw-mr-1"
             id="radio-app"
             name="option"
             value="app"
@@ -73,6 +61,18 @@ function WhatsApp(): T_ReactElement {
             onChange={onRadioChange}
           />
           <label htmlFor="radio-app">app</label>
+        </Block>
+        <Block>
+          <input
+            type="radio"
+            className="tw-mr-1"
+            id="radio-web"
+            name="option"
+            value="web"
+            checked={isWebOptionSelected}
+            onChange={onRadioChange}
+          />
+          <label htmlFor="radio-web">web</label>
         </Block>
       </Block>
     </Block>
@@ -94,7 +94,7 @@ function useController(): {
   isWebOptionSelected: boolean;
 } {
   const [phone, setPhone] = React.useState("");
-  const [isWebOptionSelected, setIsWebOptionSelected] = React.useState(true);
+  const [isWebOptionSelected, setIsWebOptionSelected] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isInvalidPhone, setIsInvalidPhone] = React.useState(true);
 
