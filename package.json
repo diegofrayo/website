@@ -37,7 +37,7 @@
     "dom-to-image": "^2.6.0",
     "hoist-non-react-statics": "^3.3.2",
     "i18next": "^20.3.5",
-    "next": "^12.0.7",
+    "next": "latest",
     "next-mdx-remote": "latest",
     "next-pwa": "^5.4.4",
     "next-themes": "^0.0.10",
@@ -73,7 +73,7 @@
     "postcss-nested": "^5.0.1",
     "postcss-preset-env": "^6.7.0",
     "styled-jsx-plugin-postcss": "^4.0.0",
-    "tailwindcss": "latest",
+    "tailwindcss": "^3.0.18",
     "typescript": "^4.4.2",
     "xdm": "latest"
   },

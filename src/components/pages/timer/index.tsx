@@ -60,15 +60,17 @@ function TimerPage(): T_ReactElement {
           {
             element: "link",
             props: {
-              rel: "prefetch",
+              rel: "preload",
               href: "/static/sounds/timer/set-completed.mp3",
+              as: "audio",
             },
           },
           {
             element: "link",
             props: {
-              rel: "prefetch",
+              rel: "preload",
               href: "/static/sounds/timer/routine-item-completed.mp3",
+              as: "audio",
             },
           },
         ],
