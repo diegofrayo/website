@@ -62,7 +62,6 @@ function TimerPage(): T_ReactElement {
             props: {
               rel: "preload",
               href: "/static/sounds/timer/set-completed.mp3",
-              as: "audio",
             },
           },
           {
@@ -70,7 +69,6 @@ function TimerPage(): T_ReactElement {
             props: {
               rel: "preload",
               href: "/static/sounds/timer/routine-item-completed.mp3",
-              as: "audio",
             },
           },
         ],

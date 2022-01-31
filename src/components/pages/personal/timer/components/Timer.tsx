@@ -35,8 +35,8 @@ function Timer({
   // states
   const [timerInterval, setTimerInterval] = React.useState<NodeJS.Timeout | null>(null);
   const [time, setTime] = React.useState(0);
-  const [sets, setSets] = React.useState<("REST" | "HIGH")[]>([]);
-  const [currentSet, setCurrentSet] = React.useState({ index: 0, isRest: false });
+  const [sets, setSets] = React.useState<("START" | "REST" | "HIGH")[]>([]);
+  const [currentSet, setCurrentSet] = React.useState({ index: 0, isRest: false, isStart: true });
   const [isSoundsMuted, setIsSoundsMuted] = React.useState(false);
 
   // utils
@@ -85,20 +85,41 @@ function Timer({
     [setTimerStatus],
   );
 
+  const updateTime = React.useCallback(
+    function updateTime(set, routineItem) {
+      setTime(
+        routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED
+          ? 0
+          : set.isStart
+          ? 10
+          : set.isRest
+          ? timeToSeconds(routineItem.restTime)
+          : timeToSeconds(routineItem.highTime),
+      );
+    },
+    [setTime, timeToSeconds],
+  );
+
   // effects
   React.useEffect(
     function getTimerReady() {
-      setTime(timeToSeconds(routineItem.highTime));
-      setSets(
-        createArray(routineItem.sets * 2 - 1).map((index) => (index % 2 == 0 ? "REST" : "HIGH")),
-      );
-      setCurrentSet({
+      const set = {
         index: routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED ? routineItem.sets * 2 - 2 : 0,
+        isStart: routineItem.status !== ROUTINE_ITEMS_STATUS.COMPLETED,
         isRest: false,
-      });
+      };
+
+      updateTime(set, routineItem);
+      setSets(
+        createArray(routineItem.sets * 2, 0).map((index) => {
+          if (index === 0) return "START";
+          return index % 2 === 0 ? "REST" : "HIGH";
+        }),
+      );
+      setCurrentSet(set);
       setTimerStatus(TIMER_STATUS.NOT_STARTED);
     },
-    [routineItem, timeToSeconds, setTimerStatus],
+    [routineItem, timeToSeconds, setTimerStatus, updateTime],
   );
 
   React.useEffect(
@@ -108,6 +129,7 @@ function Timer({
 
         const nextSet = {
           index: currentSet.index + 1,
+          isStart: false,
           isRest: sets[currentSet.index + 1] === "REST",
         };
         const isLastSet = nextSet.index === sets.length;
@@ -118,11 +140,7 @@ function Timer({
         } else {
           playSound("SET_COMPLETED");
           startTimer();
-          setTime(
-            nextSet.isRest
-              ? timeToSeconds(routineItem.restTime)
-              : timeToSeconds(routineItem.highTime),
-          );
+          updateTime(nextSet, routineItem);
           setCurrentSet(nextSet);
         }
       }
@@ -135,6 +153,7 @@ function Timer({
       startTimer,
       stopTimer,
       playSound,
+      updateTime,
 
       routineItem,
       routineItemIndex,
@@ -159,6 +178,7 @@ function Timer({
     if (routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED) {
       const prevSet = {
         index: sets.length - 1,
+        isStart: false,
         isRest: false,
       };
 
@@ -170,37 +190,34 @@ function Timer({
     } else {
       const prevSet = {
         index: currentSet.index - 1,
+        isStart: currentSet.index - 1 === 0,
         isRest: sets[currentSet.index - 1] === "REST",
       };
 
       setCurrentSet(prevSet);
-      setTime(
-        prevSet.isRest ? timeToSeconds(routineItem.restTime) : timeToSeconds(routineItem.highTime),
-      );
+      updateTime(prevSet, routineItem);
     }
   }
 
   function handleNextSetClick() {
     const nextSet = {
       index: currentSet.index + 1,
+      isStart: false,
       isRest: sets[currentSet.index + 1] === "REST",
     };
     const isLastSet = nextSet.index === sets.length;
 
     if (isLastSet) {
       markRoutineItemAsCompleted(currentRoutine, routineItem.id, routineItem.status);
+      stopTimer(timerInterval);
     } else {
       setCurrentSet(nextSet);
-      setTime(
-        nextSet.isRest ? timeToSeconds(routineItem.restTime) : timeToSeconds(routineItem.highTime),
-      );
+      updateTime(nextSet, routineItem);
     }
   }
 
   function handleResetCurrentSetClick() {
-    setTime(
-      currentSet.isRest ? timeToSeconds(routineItem.restTime) : timeToSeconds(routineItem.highTime),
-    );
+    updateTime(currentSet, routineItem);
   }
 
   // vars
@@ -215,6 +232,8 @@ function Timer({
         "tw-text-white tw-text-center tw-py-8 tw-px-4",
         isRoutineItemCompleted
           ? "tw-bg-green-600"
+          : currentSet.isStart
+          ? "tw-bg-yellow-600"
           : currentSet.isRest
           ? "tw-bg-blue-600"
           : "tw-bg-red-600",
@@ -295,7 +314,13 @@ function Timer({
           </Button>
           <Block className="tw-flex-1">
             <Text className="tw-font-bold">
-              {isRoutineItemCompleted ? "Completado" : currentSet.isRest ? "Descanso" : "Acción"}
+              {isRoutineItemCompleted
+                ? "Completado"
+                : currentSet.isStart
+                ? "Iniciando..."
+                : currentSet.isRest
+                ? "Descanso"
+                : "Acción"}
             </Text>
             <Text>{routineItem.title}</Text>
           </Block>
@@ -309,8 +334,12 @@ function Timer({
         </Block>
         <Space size={2} />
         <Text className="tw-text-center tw-mt-3">
-          {Math[currentSet.isRest ? "ceil" : "round"]((currentSet.index + 1) / 2)}/
-          {routineItem.sets}
+          {currentSet.isStart
+            ? 0
+            : routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED
+            ? routineItem.sets
+            : Math[currentSet.isRest ? "ceil" : "round"](currentSet.index / 2)}
+          /{routineItem.sets}
         </Text>
       </Block>
     </Block>

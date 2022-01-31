@@ -10,7 +10,7 @@ const PERSONAL_PAGES_COMPONENTS = PERSONAL_PAGES.filter((page) => page.component
   (page) => {
     return {
       ...page,
-      Component: dynamic(() => import(`./components/${page.componentName}`)),
+      Component: dynamic(() => import(`./${page.componentName}`)),
     };
   },
 );
@@ -37,7 +37,7 @@ function PersonalPage(props: T_PageProps): T_ReactElement {
 }
 
 export default withAuth(PersonalPage, {
-  allowIf: (props) => ["films", "whatsapp"].includes(props.page),
+  allowIf: (props) => ["films"].includes(props.page),
 });
 
 // --- Controller ---

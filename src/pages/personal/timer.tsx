@@ -1,4 +1,4 @@
-import TimerPage from "~/components/pages/timer";
+import TimerPage from "~/components/pages/personal/timer";
 import { getPageContentStaticProps } from "~/i18n";
 
 export default TimerPage;
