@@ -33,13 +33,6 @@ module.exports = withMDX()(
       ];
     },
     webpack(config) {
-      config.module.rules.concat([
-        {
-          test: /\.mdx/,
-          use: [{ loader: "xdm/webpack.cjs", options: {} }],
-        },
-      ]);
-
       return config;
     },
   }),

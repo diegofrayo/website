@@ -17,6 +17,10 @@ export default function RoutineItem({
   highTime,
   restTime,
 }: T_RoutineItem): T_ReactElement {
+  // states
+  const [isTitleTruncated, setIsTitleTruncated] = React.useState(true);
+
+  // context
   const {
     // states
     currentRoutine,
@@ -61,7 +65,10 @@ export default function RoutineItem({
           is="h1"
           variant={Title.variant.SECONDARY}
           size={Title.size.SM}
-          className="tw-truncate tw-flex-1 tw-min-w-0"
+          className={classNames("tw-flex-1 tw-min-w-0", isTitleTruncated && "tw-truncate")}
+          onClick={() => {
+            setIsTitleTruncated((currentValue) => !currentValue);
+          }}
         >
           {title}
         </Title>

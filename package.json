@@ -74,8 +74,7 @@
     "postcss-preset-env": "^6.7.0",
     "styled-jsx-plugin-postcss": "^4.0.0",
     "tailwindcss": "^3.0.18",
-    "typescript": "^4.4.2",
-    "xdm": "latest"
+    "typescript": "^4.4.2"
   },
   "optionalDependencies": {
     "@storybook/addon-essentials": "latest",

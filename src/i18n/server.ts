@@ -21,7 +21,11 @@ type T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams> = {
     | ((params: T_GetStaticProps<G_GetStaticPropsParams>) => T_PageRoute);
   callback?: (
     parameters: T_GetStaticProps<G_GetStaticPropsParams> & { pageContent: T_PageContent },
-  ) => Promise<{ props: G_PageProps; revalidate?: number }>;
+  ) => Promise<{
+    props: G_PageProps;
+    revalidate?: number;
+    redirect?: { destination: string; permanent: boolean };
+  }>;
   localesExtractor?: (data: G_PageProps) => T_Locale[];
   locale?: T_Locale;
 };
@@ -36,30 +40,42 @@ export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsP
     locale,
   } = config || {};
 
-  async function getStaticProps(
-    parameters: T_GetStaticProps<G_GetStaticPropsParams>,
-  ): Promise<{ notFound: boolean; revalidate?: number; props: T_DefaultPageProps & G_PageProps }> {
-    const pageLocale = locale || (parameters.locale as T_Locale);
-    const pageContent = await fetchPageContent({
-      page: typeof page === "function" ? page(parameters) : page,
-      locale: pageLocale,
-    });
-    const { props: pageProps, revalidate } = await callback({ ...parameters, pageContent });
-
-    return {
-      notFound:
-        (
-          (localesExtractor ? localesExtractor(pageProps) : pageContent.page?.config?.locales) || [
-            pageLocale || I18nService.getDefaultLocale(),
-          ]
-        ).indexOf(pageLocale) === -1,
-      props: {
-        pageContent,
+  async function getStaticProps(parameters: T_GetStaticProps<G_GetStaticPropsParams>): Promise<{
+    notFound?: boolean;
+    revalidate?: number;
+    props?: T_DefaultPageProps & G_PageProps;
+    redirect?: { destination: string; permanent: boolean };
+  }> {
+    try {
+      const pageLocale = locale || (parameters.locale as T_Locale);
+      const pageContent = await fetchPageContent({
+        page: typeof page === "function" ? page(parameters) : page,
         locale: pageLocale,
-        ...pageProps,
-      },
-      revalidate,
-    };
+      });
+      const { props: pageProps, revalidate } = await callback({ ...parameters, pageContent });
+
+      return {
+        notFound:
+          (
+            (localesExtractor
+              ? localesExtractor(pageProps)
+              : pageContent.page?.config?.locales) || [pageLocale || I18nService.getDefaultLocale()]
+          ).indexOf(pageLocale) === -1,
+        props: {
+          pageContent,
+          locale: pageLocale,
+          ...pageProps,
+        },
+        revalidate,
+      };
+    } catch (error) {
+      return {
+        redirect: {
+          destination: "/500",
+          permanent: false,
+        },
+      };
+    }
   }
 
   return getStaticProps;

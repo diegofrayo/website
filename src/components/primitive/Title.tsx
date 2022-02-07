@@ -79,7 +79,7 @@ function Title(props: T_TitleProps): T_ReactElement {
   }
 
   return (
-    <Tag id={id} className={classNames(className)}>
+    <Tag id={id} className={classNames(className)} {...rest}>
       {children}
     </Tag>
   );
