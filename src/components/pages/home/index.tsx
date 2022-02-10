@@ -21,7 +21,7 @@ function Home({ mdxContent }: { mdxContent: MDXRemoteSerializeResult }): T_React
       }}
     >
       <MainLayout title="👋">
-        <Block className="dfr-bg-color-primary dfr-border-color-primary dfr-shadow tw-border-8 tw-px-4 tw-py-8 tw-text-center sm:tw-px-8 sm:tw-py-16 dark:dfr-border-color-primary dark:dfr-shadow dark:dfr-bg-color-primary">
+        <Block className="tw-border-8 tw-px-4 tw-py-8 tw-text-center dfr-shadow dfr-bg-color-primary dfr-border-color-primary dark:dfr-shadow dark:dfr-bg-color-primary dark:dfr-border-color-primary sm:tw-px-8 sm:tw-py-16">
           <MDXContent content={mdxContent} />
         </Block>
       </MainLayout>

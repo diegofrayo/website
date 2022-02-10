@@ -41,22 +41,22 @@ function Header(): T_ReactElement {
   return (
     <Block
       is="header"
-      className="tw-h-auto tw-py-8 sm:tw-h-screen sm:tw-flex sm:tw-flex-col sm:tw-justify-between"
+      className="tw-h-auto tw-py-8 sm:tw-flex sm:tw-h-screen sm:tw-flex-col sm:tw-justify-between"
     >
       <Block>
-        <Block className="tw-flex tw-justify-between tw-items-center">
+        <Block className="tw-flex tw-items-center tw-justify-between">
           <MainMenu />
           <Link
             variant={Link.variant.SECONDARY}
             href={ROUTES.HOME}
-            className="dfr-border-color-dark-strong tw-text-sm tw-border-b-2 tw-border-dotted dark:dfr-border-color-light-strong"
+            className="tw-border-b-2 tw-border-dotted tw-text-sm dfr-border-color-dark-strong dark:dfr-border-color-light-strong"
           >
             {WEBSITE_METADATA.username}
           </Link>
           <SettingsMenu />
         </Block>
         <Block className="tw-text-center">
-          <InlineText className="dfr-text-color-secondary tw-text-xxs dark:dfr-text-color-secondary">
+          <InlineText className="tw-text-xxs dfr-text-color-secondary dark:dfr-text-color-secondary">
             {asPath.split("?")[0].split("/").slice(0, 2).join("/")}
           </InlineText>
         </Block>
@@ -187,7 +187,7 @@ function MainMenu(): T_ReactElement {
       </Button>
 
       {showMenu && (
-        <Block className="dfr-shadow dark:dfr-shadow tw-absolute tw-top-full tw-z-40 tw-w-52 tw-overflow-hidden tw-left-0">
+        <Block className="tw-absolute tw-top-full tw-left-0 tw-z-40 tw-w-52 tw-overflow-hidden dfr-shadow dark:dfr-shadow">
           <List className="tw-block">
             {ITEMS.map((item) => {
               const isLinkActive =
@@ -198,14 +198,14 @@ function MainMenu(): T_ReactElement {
               return (
                 <List.Item
                   key={generateSlug(item.label)}
-                  className=" dfr-bg-color-primary dark:dfr-bg-color-primary dfr-border-color-primary dark:dfr-border-color-primary tw-border-b last:tw-border-0"
+                  className=" tw-border-b dfr-bg-color-primary dfr-border-color-primary last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary"
                   onClick={() => setShowMenu(false)}
                 >
                   <Link
                     variant={Link.variant.SIMPLE}
                     href={item.url}
                     className={classNames(
-                      "tw-block tw-text-left tw-text-base tw-px-2 tw-py-1 hover:tw-font-bold",
+                      "tw-block tw-px-2 tw-py-1 tw-text-left tw-text-base hover:tw-font-bold",
                       isLinkActive && "tw-font-bold",
                     )}
                     locale={item.locale}
@@ -268,7 +268,7 @@ const SettingsMenu = withSafeRenderingComponent(function SettingsMenu(): T_React
       </Button>
 
       {showMenu && (
-        <Block className="dfr-shadow dark:dfr-shadow tw-absolute tw-top-full tw-z-40 tw-w-52 tw-overflow-hidden tw-right-0">
+        <Block className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-w-52 tw-overflow-hidden dfr-shadow dark:dfr-shadow">
           {locale && (
             <MenuItem title={t("layout:header:settings:language")}>
               {pageLocales.map((item) => {
@@ -365,20 +365,20 @@ function MenuItem({
 }): T_ReactElement {
   return (
     <Block
-      className="dfr-bg-color-primary dfr-border-color-primary dark:dfr-border-color-primary dark:dfr-bg-color-primary tw-flex tw-flex-col tw-h-16 tw-px-2 tw-border-b last:tw-border-0"
+      className="tw-flex tw-h-16 tw-flex-col tw-border-b tw-px-2 dfr-bg-color-primary dfr-border-color-primary last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary"
       align="CENTER"
     >
-      <Text className="tw-font-bold tw-text-xs tw-text-right">{title}</Text>
-      <Block className="tw-text-right tw-leading-none tw-mt-2">{children}</Block>
+      <Text className="tw-text-right tw-text-xs tw-font-bold">{title}</Text>
+      <Block className="tw-mt-2 tw-text-right tw-leading-none">{children}</Block>
     </Block>
   );
 }
 
 function Room(): T_ReactElement {
   return (
-    <Block className="dfr-Room dfr-border-color-dark-strong tw-mx-auto tw-w-44 tw-max-w-full tw-border-b tw-px-1 dark:dfr-border-color-primary">
+    <Block className="dfr-Room tw-mx-auto tw-w-44 tw-max-w-full tw-border-b tw-px-1 dfr-border-color-dark-strong dark:dfr-border-color-primary">
       <PictureFrame />
-      <Block className="tw-flex tw-justify-between tw-items-end">
+      <Block className="tw-flex tw-items-end tw-justify-between">
         <TV />
         <Flowers />
       </Block>
@@ -407,24 +407,24 @@ function PictureFrame() {
   return (
     <Block
       className={classNames(
-        "dfr-PictureFrame tw-mb-8 tw-mx-auto tw-relative tw-transition-transform tw-rotate-2 hover:tw-rotate-0",
+        "dfr-PictureFrame tw-relative tw-mx-auto tw-mb-8 tw-rotate-2 tw-transition-transform hover:tw-rotate-0",
 
         photo.portrait === true ? "dfr-PictureFrame--portrait tw-w-20" : "tw-w-32",
       )}
     >
       <Block
         className={classNames(
-          "tw-p-1 tw-bg-yellow-900 tw-border-2 tw-border-yellow-700",
+          "tw-border-2 tw-border-yellow-700 tw-bg-yellow-900 tw-p-1",
           photo.portrait === true ? "tw-h-24" : "tw-h-20",
         )}
       >
         <Image
           src={photo.src}
-          className="dfr-transition-opacity tw-block tw-h-full tw-w-full tw-rounded-md tw-overflow-hidden tw-border-2 tw-border-yellow-700"
+          className="tw-block tw-h-full tw-w-full tw-overflow-hidden tw-rounded-md tw-border-2 tw-border-yellow-700 dfr-transition-opacity"
           alt="Photography taken by Diego Rayo"
         />
       </Block>
-      <Text className="dfr-text-color-dark-strong tw-text-xxs tw-italic tw-font-bold tw-text-center tw-border-yellow-700 tw-border-2 tw-border-t-0 tw-w-16 tw-mx-auto tw-rounded-bl-md tw-rounded-br-md tw-h-4 dark:dfr-text-color-light-strong">
+      <Text className="tw-mx-auto tw-h-4 tw-w-16 tw-rounded-bl-md tw-rounded-br-md tw-border-2 tw-border-t-0 tw-border-yellow-700 tw-text-center tw-text-xxs tw-font-bold tw-italic dfr-text-color-dark-strong dark:dfr-text-color-light-strong">
         {t("layout:header:room:welcome")}
       </Text>
 
@@ -498,21 +498,21 @@ function TV() {
   );
 
   const SONG = {
-    title: "Quimera",
-    artist: "Jorge Drexler",
-    duration: "3:38",
-    thumbnail: "https://i.scdn.co/image/ab67616d0000b2734062d0b07c3a74ab73632475",
-    url: "https://open.spotify.com/track/5787WaGd5DQvL14A6SJ8cG",
+    title: "La Edad Del Cielo - Cover",
+    artist: "arthur victor",
+    duration: "3:27",
+    thumbnail: "https://i.scdn.co/image/ab67616d0000b27385cdb6b0ede4824b449dc73f",
     audio:
-      "https://p.scdn.co/mp3-preview/6420f032b23f21029cf42ad79d405bb3ff78abdb?cid=a46f5c5745a14fbf826186da8da5ecc3",
+      "https://p.scdn.co/mp3-preview/b6fb5cddcf7285f80bfe113a38f414ee3eef28bc?cid=a46f5c5745a14fbf826186da8da5ecc3",
+    url: "https://open.spotify.com/track/4jFFRZOej9hhZ6K6SKrFuU",
     source: "spotify",
   };
 
   return (
-    <Block className="dfr-TV tw-flex tw-items-stretch tw-p-2 tw-bg-gradient-to-b tw-from-gray-800 tw-to-black tw-w-28 tw-max-w-full tw-relative tw-mb-2 dark:tw-from-white dark:tw-to-gray-300">
+    <Block className="dfr-TV tw-relative tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-bg-gradient-to-b tw-from-gray-800 tw-to-black tw-p-2 dark:tw-from-white dark:tw-to-gray-300">
       <Block className="tw-relative tw-h-16 tw-w-16 tw-overflow-hidden">
         <Block
-          className="dfr-border-color-dark-strong tw-border tw-border-opacity-80 tw-relative tw-bg-cover tw-h-full dark:tw-border-opacity-10"
+          className="tw-relative tw-h-full tw-border tw-border-opacity-80 tw-bg-cover dfr-border-color-dark-strong dark:tw-border-opacity-10"
           title={`${SONG.title} - ${SONG.artist}`}
           display="tw-flex"
           align="CENTER"
@@ -552,27 +552,27 @@ function TV() {
 
         <Block
           className={classNames(
-            "dfr-bg-color-dark-strong tw-h-full tw-w-full tw-transition-transform tw-absolute tw-top-0 tw-left-0",
+            "tw-absolute tw-top-0 tw-left-0 tw-h-full tw-w-full tw-transition-transform dfr-bg-color-dark-strong",
             showInfo && "tw-translate-x-full",
           )}
         />
       </Block>
       <Space size={1} orientation="v" />
 
-      <Block className="tw-flex tw-flex-col tw-justify-between tw-items-center tw-flex-1 tw-py-1">
+      <Block className="tw-flex tw-flex-1 tw-flex-col tw-items-center tw-justify-between tw-py-1">
         <Block className="tw-w-full tw-text-center">
           {createArray(8).map((i) => {
             return (
               <Block
                 key={`Volume-${i}`}
-                className="tw-border-b tw-border-gray-600 tw-my-0.5 tw-rounded-sm dark:dfr-border-color-dark-strong"
+                className="tw-my-0.5 tw-rounded-sm tw-border-b tw-border-gray-600 dark:dfr-border-color-dark-strong"
               />
             );
           })}
         </Block>
         <Button
           className={classNames(
-            "tw-rounded-full tw-h-6 tw-w-6 tw-bg-gray-700 tw-overflow-hidden tw-transition-transform dark:dfr-bg-color-dark-strong",
+            "tw-h-6 tw-w-6 tw-overflow-hidden tw-rounded-full tw-bg-gray-700 tw-transition-transform dark:dfr-bg-color-dark-strong",
             showInfo && "tw-rotate-90",
           )}
           onClick={() => {
@@ -584,7 +584,7 @@ function TV() {
         >
           <Block
             className={classNames(
-              "tw-w-0.5 tw-h-4 tw-mx-auto tw-relative tw--top-2",
+              "tw-relative tw--top-2 tw-mx-auto tw-h-4 tw-w-0.5",
               showInfo ? "tw-bg-red-500" : "tw-bg-green-500",
             )}
           />
@@ -643,7 +643,7 @@ function Flowers() {
 
 function Table() {
   return (
-    <Block className="tw-flex tw-items-end tw-justify-end tw-border-8 tw-border-b-0 tw-border-yellow-900 tw-h-20 tw-rounded-tr-md tw-rounded-tl-md tw-overflow-hidden dark:tw-border-yellow-70">
+    <Block className="dark:tw-border-yellow-70 tw-flex tw-h-20 tw-items-end tw-justify-end tw-overflow-hidden tw-rounded-tr-md tw-rounded-tl-md tw-border-8 tw-border-b-0 tw-border-yellow-900">
       <Icon icon={Icon.icon.SOCCER} size={24} wrapperClassName="tw-relative tw-top-0.5 tw-left-7" />
       <Icon
         icon={Icon.icon.GUITAR}

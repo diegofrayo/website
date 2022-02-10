@@ -54,7 +54,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
       )}
     >
       {!isStringsNamesVariant && (
-        <Block className="tw-flex tw-h-6 tw-font-bold tw-text-base" align="CENTER">
+        <Block className="tw-flex tw-h-6 tw-text-base tw-font-bold" align="CENTER">
           {number}
         </Block>
       )}
@@ -97,15 +97,15 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                       }`
                     : `${guitarString}-${Date.now()}`
                 }`}
-                className="tw-flex tw-items-center tw-h-6"
+                className="tw-flex tw-h-6 tw-items-center"
               >
                 {isStringsNamesVariant ? (
-                  <Block className="tw-flex tw-justify-end tw-w-full tw-text-base tw-px-1">
-                    <InlineText className="tw-text-center tw-w-6">
+                  <Block className="tw-flex tw-w-full tw-justify-end tw-px-1 tw-text-base">
+                    <InlineText className="tw-w-6 tw-text-center">
                       {STRINGS_NAMES[guitarString - 1]}
                     </InlineText>
                     <InlineText className="tw-px-0.5">-</InlineText>
-                    <InlineText is="strong" className="tw-text-center tw-w-6">
+                    <InlineText is="strong" className="tw-w-6 tw-text-center">
                       {guitarString}
                     </InlineText>
                   </Block>
@@ -125,7 +125,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                   <React.Fragment>
                     <String />
                     <Block
-                      className="tw-rounded-full tw-h-5 tw-w-5 tw-border tw-font-bold tw-bg-white tw-text-black tw-leading-0 tw-inline-flex"
+                      className="tw-inline-flex tw-h-5 tw-w-5 tw-rounded-full tw-border tw-bg-white tw-font-bold tw-leading-0 tw-text-black"
                       align="CENTER"
                     >
                       {(musicNote as I_SimpleMusicNote).finger}

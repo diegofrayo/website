@@ -23,13 +23,13 @@ function SongDetails({
     <Block className={classNames("tw-text-sm tw-italic", className)}>
       <Block className="sm:tw-flex sm:tw-flex-nowrap">
         <InlineText is="strong">{t("page:artist")}:</InlineText>{" "}
-        <InlineText className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={song.artist}>
+        <InlineText className="sm:tw-ml-1 sm:tw-flex-1 sm:tw-truncate" title={song.artist}>
           {song.artist}
         </InlineText>
       </Block>
       <Block className="sm:tw-flex sm:tw-flex-nowrap">
         <InlineText is="strong">{t("page:album")}:</InlineText>{" "}
-        <InlineText className="sm:tw-ml-1 sm:tw-truncate sm:tw-flex-1" title={song.album}>
+        <InlineText className="sm:tw-ml-1 sm:tw-flex-1 sm:tw-truncate" title={song.album}>
           {song.album}
         </InlineText>
       </Block>
@@ -37,8 +37,8 @@ function SongDetails({
         <InlineText is="strong">{t("page:year")}:</InlineText> <InlineText>{song.year}</InlineText>
       </Block>
       <Progress progress={song.progress} />
-      <Text className="tw-text-lg tw--mt-1">{song.country}</Text>
-      <Block className="tw-flex tw-items-center tw--mt-0.5">
+      <Text className="tw--mt-1 tw-text-lg">{song.country}</Text>
+      <Block className="tw--mt-0.5 tw-flex tw-items-center">
         <Link variant={Link.variant.SIMPLE} href={song.spotifyUrl} isExternalUrl>
           <Icon icon={Icon.icon.SPOTIFY} size={24} />
         </Link>
@@ -102,7 +102,7 @@ const Progress = withRequiredAuthComponent(function Progress({ progress }: { pro
           <InlineText
             key={`Progress-item-${index}`}
             className={classNames(
-              "tw-inline-block tw-h-3 tw-w-3 tw-mr-0.5",
+              "tw-mr-0.5 tw-inline-block tw-h-3 tw-w-3",
               getProgressStyles(progress, index),
             )}
           />

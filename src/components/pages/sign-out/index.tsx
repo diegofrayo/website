@@ -22,7 +22,7 @@ function SignOutPage(): T_ReactElement {
         disableSEO: true,
       }}
     >
-      <Block className="tw-text-center tw-p-4">
+      <Block className="tw-p-4 tw-text-center">
         <Loader />
       </Block>
     </Page>

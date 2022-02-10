@@ -41,7 +41,7 @@ function Timer({
 
   // utils
   const playSound = React.useCallback(
-    function playSound(mode: "ROUTINE_ITEM_COMPLETED" | "SET_COMPLETED") {
+    function playSound(mode: "ROUTINE_ITEM_COMPLETED" | "SET_COMPLETED" | "COUNTDOWN") {
       try {
         if (isSoundsMuted) return;
 
@@ -49,7 +49,9 @@ function Timer({
           document.getElementById(
             mode === "ROUTINE_ITEM_COMPLETED"
               ? "audio-routine-item-completed"
-              : "audio-set-completed",
+              : mode === "SET_COMPLETED"
+              ? "audio-set-completed"
+              : "audio-clock-tick",
           ) as HTMLAudioElement
         )?.play();
         window.navigator?.vibrate(200);
@@ -124,7 +126,9 @@ function Timer({
 
   React.useEffect(
     function onTimeChange() {
-      if (time === 0 && timerInterval) {
+      if (!timerInterval) return;
+
+      if (time === 0) {
         stopTimer(timerInterval);
 
         const nextSet = {
@@ -143,6 +147,8 @@ function Timer({
           updateTime(nextSet, routineItem);
           setCurrentSet(nextSet);
         }
+      } else if (currentSet.isRest && timeToSeconds(routineItem.restTime) >= 10 && time === 4) {
+        playSound("COUNTDOWN");
       }
     },
     [
@@ -229,7 +235,7 @@ function Timer({
   return (
     <Block
       className={classNames(
-        "tw-text-white tw-text-center tw-py-8 tw-px-4",
+        "tw-py-8 tw-px-4 tw-text-center tw-text-white",
         isRoutineItemCompleted
           ? "tw-bg-green-600"
           : currentSet.isStart
@@ -242,11 +248,19 @@ function Timer({
       <audio
         src="/static/sounds/timer/set-completed.mp3"
         id="audio-set-completed"
+        preload="auto"
         className="tw-hidden"
       />
       <audio
         src="/static/sounds/timer/routine-item-completed.mp3"
         id="audio-routine-item-completed"
+        preload="auto"
+        className="tw-hidden"
+      />
+      <audio
+        src="/static/sounds/timer/clock-tick.mp3"
+        id="audio-clock-tick"
+        preload="auto"
         className="tw-hidden"
       />
 
@@ -268,10 +282,10 @@ function Timer({
 
       {!isRoutineItemCompleted && (
         <React.Fragment>
-          <Block className="tw-flex tw-justify-between tw-items-center">
+          <Block className="tw-flex tw-items-center tw-justify-between">
             <Button
               variant={Button.variant.SIMPLE}
-              className="tw-h-12 tw-w-12 tw-flex tw-items-center tw-justify-center"
+              className="tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center"
               onClick={() => setIsSoundsMuted((currentValue) => !currentValue)}
             >
               <Icon
@@ -282,7 +296,7 @@ function Timer({
             </Button>
             <Button
               variant={Button.variant.SIMPLE}
-              className="dfr-border-color-primary tw-rounded-full tw-h-32 tw-w-32 tw-border-4 tw-uppercase tw-font-bold"
+              className="tw-h-32 tw-w-32 tw-rounded-full tw-border-4 tw-font-bold tw-uppercase dfr-border-color-primary"
               onClick={handleStartRoutineItemClick}
             >
               {timerStatus === TIMER_STATUS.NOT_STARTED
@@ -293,7 +307,7 @@ function Timer({
             </Button>
             <Button
               variant={Button.variant.SIMPLE}
-              className="dfr-border-color-primary tw-rounded-full tw-h-12 tw-w-12 tw-border-2 tw-flex tw-items-center tw-justify-center"
+              className="tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-full tw-border-2 dfr-border-color-primary"
               onClick={handleResetCurrentSetClick}
             >
               <Icon icon={Icon.icon.REPLY} color="tw-text-white" />
@@ -304,7 +318,7 @@ function Timer({
       )}
 
       <Block className="tw-text-sm">
-        <Block className="tw-flex tw-justify-between tw-items-center">
+        <Block className="tw-flex tw-items-center tw-justify-between">
           <Button
             variant={Button.variant.SIMPLE}
             className={classNames("tw-mr-auto", showPrevSetButton ? "tw-visible" : "tw-invisible")}
@@ -333,7 +347,7 @@ function Timer({
           </Button>
         </Block>
         <Space size={2} />
-        <Text className="tw-text-center tw-mt-3">
+        <Text className="tw-mt-3 tw-text-center">
           {currentSet.isStart
             ? 0
             : routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED

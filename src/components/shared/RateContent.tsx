@@ -70,7 +70,7 @@ function RateContent(): T_ReactElement {
       <Text className="tw-text-sm tw-font-bold">{t("common:useful_question")}</Text>
       <Block
         className={classNames(
-          "tw-text-center tw-text-xl tw-mt-4",
+          "tw-mt-4 tw-text-center tw-text-xl",
           isQuestionAnswered && "tw-opacity-50",
         )}
       >

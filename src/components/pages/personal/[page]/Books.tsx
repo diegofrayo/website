@@ -13,14 +13,14 @@ function Books(): T_ReactElement {
     <Render isLoading={isLoading} error={error} data={data}>
       {(books: T_Book[]) => {
         return (
-          <Block className="dfr-Books tw-flex tw-justify-center sm:tw-justify-between tw-flex-wrap">
+          <Block className="dfr-Books tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
             {books.map(({ id, title, calification, author, year, url, cover }) => {
               return (
                 <Link
                   key={id}
                   variant={Link.variant.UNSTYLED}
                   href={url}
-                  className="dfr-border-color-dark-strong tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 tw-shadow-lg tw-duration-500 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 dark:dfr-border-color-primary hover:tw-shadow-2xl hover:tw-translate-x-1 hover:tw--translate-y-1 hover:tw-rotate-0 hover:tw-opacity-75 sm:tw--rotate-1"
+                  className="tw-relative tw-mx-2 tw-mb-6 tw-h-64 tw-w-48 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 tw-shadow-lg tw-duration-500 dfr-border-color-dark-strong hover:tw-translate-x-1 hover:tw--translate-y-1 hover:tw-rotate-0 hover:tw-opacity-75 hover:tw-shadow-2xl dark:dfr-border-color-primary sm:tw--rotate-1"
                   isExternalUrl
                 >
                   <article
@@ -44,18 +44,18 @@ function Books(): T_ReactElement {
                       size={24}
                     />
 
-                    <Block className="dfr-bg-color-light-strong tw-bg-opacity-70 tw-flex tw-self-end tw-flex-col tw-w-full tw-items-stretch tw-p-2 tw-rounded-tr-lg">
+                    <Block className="tw-flex tw-w-full tw-flex-col tw-items-stretch tw-self-end tw-rounded-tr-lg tw-bg-opacity-70 tw-p-2 dfr-bg-color-light-strong">
                       <Title
                         is="h1"
                         variant={Title.variant.UNSTYLED}
-                        className="tw-leading-tight tw-text-black tw-uppercase tw-break-normal tw-mb-0.5"
+                        className="tw-mb-0.5 tw-break-normal tw-uppercase tw-leading-tight tw-text-black"
                       >
                         {title}
                       </Title>
-                      <Text className="tw-text-sm tw-italic tw-leading-none tw-text-gray-700 tw-capitalize tw-mb-2 tw-font-bold">
+                      <Text className="tw-mb-2 tw-text-sm tw-font-bold tw-capitalize tw-italic tw-leading-none tw-text-gray-700">
                         {author || "Author"}
                       </Text>
-                      <Text className="tw-text-xs tw-font-bold tw-leading-none tw-text-right tw-text-black">
+                      <Text className="tw-text-right tw-text-xs tw-font-bold tw-leading-none tw-text-black">
                         <Emoji className="tw-mr-1">🗓</Emoji>
                         <InlineText>{year}</InlineText>
                       </Text>

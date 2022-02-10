@@ -83,7 +83,7 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
           <InlineText is="strong">{publishedAt}</InlineText>
         </Text>
       </BlogPostDetailsItem>
-      <InlineText className="tw-block tw-my-1 sm:tw-my-0 sm:tw-inline-block sm:tw-mx-4" />
+      <InlineText className="tw-my-1 tw-block sm:tw-my-0 sm:tw-mx-4 sm:tw-inline-block" />
       <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
         <BlogPostDetailsItem.Icon icon={Icon.icon.EDIT} color="tw-text-black dark:tw-text-white" />
         <Text>

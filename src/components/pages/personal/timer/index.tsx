@@ -61,6 +61,7 @@ function TimerPage(): T_ReactElement {
             element: "link",
             props: {
               rel: "preload",
+              as: "audio",
               href: "/static/sounds/timer/set-completed.mp3",
             },
           },
@@ -68,7 +69,16 @@ function TimerPage(): T_ReactElement {
             element: "link",
             props: {
               rel: "preload",
+              as: "audio",
               href: "/static/sounds/timer/routine-item-completed.mp3",
+            },
+          },
+          {
+            element: "link",
+            props: {
+              rel: "preload",
+              as: "audio",
+              href: "/static/sounds/timer/clock-tick.mp3",
             },
           },
         ],
@@ -95,7 +105,7 @@ function TimerPage(): T_ReactElement {
                 updateRoutineItem,
               }}
             >
-              <Block className="tw-shadow-md tw-shadow-gray-600 dfr-bg-color-light-strong tw-max-w-sm tw-mx-auto tw-relative tw-pt-8 tw-min-h-screen">
+              <Block className="tw-relative tw-mx-auto tw-min-h-screen tw-max-w-sm tw-pt-8 tw-shadow-md tw-shadow-gray-600 dfr-bg-color-light-strong">
                 <GoToHomeLink />
 
                 {currentRoutine.status === ROUTINE_STATUS.IN_PROGRESS ? (
@@ -157,12 +167,12 @@ function TimerPage(): T_ReactElement {
                         return (
                           <Block
                             key={routineTemplate.id}
-                            className="tw-flex tw-justify-between tw-items-start tw-my-1"
+                            className="tw-my-1 tw-flex tw-items-start tw-justify-between"
                           >
                             <Text>- {routineTemplate.name}</Text>
                             <Button
                               variant={Button.variant.SIMPLE}
-                              className="tw-underline tw-font-bold tw-flex-shrink-0 tw-ml-2"
+                              className="tw-ml-2 tw-flex-shrink-0 tw-font-bold tw-underline"
                               onClick={handleInitRoutineClick(routineTemplate)}
                             >
                               Iniciar rutina
@@ -211,7 +221,7 @@ function TimerPage(): T_ReactElement {
                     <Block>
                       <Button
                         variant={Button.variant.SIMPLE}
-                        className="tw-block tw-mx-auto tw-text-center tw-underline tw-font-bold"
+                        className="tw-mx-auto tw-block tw-text-center tw-font-bold tw-underline"
                         onClick={() => {
                           if (window.confirm("¿Está seguro?")) {
                             window.localStorage.removeItem("DFR_TIMER");
@@ -224,7 +234,7 @@ function TimerPage(): T_ReactElement {
                       <Space size={1} />
                       <Button
                         variant={Button.variant.SIMPLE}
-                        className="tw-block tw-mx-auto tw-text-center tw-underline tw-font-bold"
+                        className="tw-mx-auto tw-block tw-text-center tw-font-bold tw-underline"
                         onClick={() => {
                           window.location.reload();
                         }}
@@ -844,7 +854,7 @@ function useController() {
 
 function GoToHomeLink(): T_ReactElement {
   return (
-    <Block className="tw-bg-black tw-text-white tw-p-1 tw-text-csenter tw-text-sm tw-font-bold tw-absolute tw-top-0 tw-w-full tw-h-8">
+    <Block className="tw-text-csenter tw-absolute tw-top-0 tw-h-8 tw-w-full tw-bg-black tw-p-1 tw-text-sm tw-font-bold tw-text-white">
       <Button
         variant={Button.variant.SIMPLE}
         onClick={() => {

@@ -40,14 +40,14 @@ function Films(): T_ReactElement {
               >
                 Categorías [{categories.length}]
               </Title>
-              <Block className="tw-flex tw-justify-betweden tw-flex-wrap">
+              <Block className="tw-justify-betweden tw-flex tw-flex-wrap">
                 {categories.map((category) => {
                   return (
                     <Button
                       key={category}
                       variant={Button.variant.SIMPLE}
                       className={classNames(
-                        "tw-mr-2 tw-my-1 tw-underlidne tw-inline-block tw-text-sm tw-py-1 tw-px-3 tw-rounded-md tw-text-left tw-truncate",
+                        "tw-underlidne tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm",
                         category === selectedCategory
                           ? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
                           : "dfr-bg-color-primary dark:dfr-bg-color-primary",
@@ -71,11 +71,11 @@ function Films(): T_ReactElement {
               >
                 Ordenar por
               </Title>
-              <Block className="tw-flex tw-justify-betweden tw-flex-wrap">
+              <Block className="tw-justify-betweden tw-flex tw-flex-wrap">
                 <Button
                   variant={Button.variant.SIMPLE}
                   className={classNames(
-                    "tw-mr-2 tw-my-1 tw-underlidne tw-inline-block tw-text-sm tw-py-1 tw-px-3 tw-rounded-md tw-text-left tw-truncate",
+                    "tw-underlidne tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm",
                     isAddedDateFilterEnabled
                       ? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
                       : "dfr-bg-color-primary dark:dfr-bg-color-primary",
@@ -99,7 +99,7 @@ function Films(): T_ReactElement {
                 {selectedCategory ? `Resultados de "${selectedCategory}"` : "Resultados"} [
                 {films.length}]
               </Title>
-              <Block className="tw-flex tw-justify-center sm:tw-justify-between tw-flex-wrap">
+              <Block className="tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
                 {films.map(({ id, source, title, type, calification, cover }, index) => {
                   return (
                     <Link
@@ -113,7 +113,7 @@ function Films(): T_ReactElement {
                           : `https://www.imdb.com/title/${id}`
                       }
                       className={classNames(
-                        "tw-relative tw-w-48 tw-h-64 tw-mb-6 tw-mx-2 tw-shadow-lg tw-duration-500 hover:tw-shadow-2xl hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 hover:tw-opacity-75",
+                        "tw-relative tw-mx-2 tw-mb-6 tw-h-64 tw-w-48 tw-shadow-lg tw-duration-500 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 hover:tw-opacity-75 hover:tw-shadow-2xl",
                         index % 2 === 0 ? "sm:tw-rotate-2" : "sm:tw--rotate-2",
                       )}
                       isExternalUrl
@@ -137,17 +137,17 @@ function Films(): T_ReactElement {
                           size={24}
                         />
 
-                        <Block className="dfr-bg-color-light-strong tw-bg-opacity-70 tw-flex tw-self-end tw-flex-nowrap tw-justify-between tw-w-full tw-items-end tw-p-2">
+                        <Block className="tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-70 tw-p-2 dfr-bg-color-light-strong">
                           {source === "imdb" ? (
                             <Image
                               src="/static/images/misc/imdb.png"
-                              className="tw-w-6 tw-h-6 tw-rounded-full tw-flex-shrink-0"
+                              className="tw-h-6 tw-w-6 tw-flex-shrink-0 tw-rounded-full"
                               alt="imdb icon"
                             />
                           ) : source === "Amazon Prime Video" ? (
                             <Image
                               src="/static/images/misc/amazon-prime-video.png"
-                              className="tw-w-6 tw-h-6 tw-rounded-full tw-flex-shrink-0"
+                              className="tw-h-6 tw-w-6 tw-flex-shrink-0 tw-rounded-full"
                               alt="Amazon Prime Video icon"
                             />
                           ) : (
@@ -162,11 +162,11 @@ function Films(): T_ReactElement {
                             <Title
                               is="h1"
                               variant={Title.variant.UNSTYLED}
-                              className="tw-leading-tight tw-mb-2 tw-text-black tw-uppercase tw-break-normal"
+                              className="tw-mb-2 tw-break-normal tw-uppercase tw-leading-tight tw-text-black"
                             >
                               {title}
                             </Title>
-                            <Text className="tw-text-sm tw-font-bold tw-leading-none tw-text-gray-700 tw-lowercase tw-italic">
+                            <Text className="tw-text-sm tw-font-bold tw-lowercase tw-italic tw-leading-none tw-text-gray-700">
                               {type}
                             </Text>
                           </Block>

@@ -45,21 +45,21 @@ function Stats({
       }}
     >
       <Block className="tw-text-sm">
-        <Block className="dfr-border-color-primary tw-border tw-border-b-0">
+        <Block className="tw-border tw-border-b-0 dfr-border-color-primary">
           <Stats.Item label="rutina" value={name} />
           <Stats.Item label="# ejercicios" value={data.totalExercises} />
           <Stats.Item label="tiempo rutina total" value={data.totalTime} />
         </Block>
         <Space size={1} />
 
-        <Block className="dfr-border-color-primary tw-border tw-border-b-0">
+        <Block className="tw-border tw-border-b-0 dfr-border-color-primary">
           <Stats.Item label="# ejercicios completados" value={data.totalCompletedExercises} />
           <Stats.Item label="tiempo rutina completado" value={data.completedTime} />
           <Stats.Item label="% rutina completada" value={data.completedPercent} />
         </Block>
         <Space size={1} />
 
-        <Block className="dfr-border-color-primary tw-border tw-border-b-0">
+        <Block className="tw-border tw-border-b-0 dfr-border-color-primary">
           <Stats.Item label="hora inicio rutina" value={startTime.formatted} />
           {isRenderedFromTimerScreen && (
             <React.Fragment>
@@ -80,14 +80,14 @@ function Stats({
       </Block>
 
       {!isRenderedFromTimerScreen ? (
-        <Block className="tw-flex tw-items-center tw-justify-between tw-mt-2">
+        <Block className="tw-mt-2 tw-flex tw-items-center tw-justify-between">
           <Button variant={Button.variant.DEFAULT} onClick={uploadRoutineHandler}>
             Guardar en la nube
           </Button>
 
           <Button
             variant={Button.variant.SIMPLE}
-            className="tw-underline tw-font-bold"
+            className="tw-font-bold tw-underline"
             onClick={deleteRoutineHandler}
           >
             <Icon icon={Icon.icon.X} color="dfr-text-colorful-secondary-100" />
@@ -104,12 +104,12 @@ Stats.Item = function StatsItem({ label, value }: { label: string; value: string
   return (
     <Block className="tw-flex tw-justify-between">
       <InlineText
-        className="dfr-border-color-primary tw-border-b tw-w-2/4 tw-py-1 tw-px-2"
+        className="tw-w-2/4 tw-border-b tw-py-1 tw-px-2 dfr-border-color-primary"
         is="strong"
       >
         {label}
       </InlineText>
-      <InlineText className="dfr-border-color-primary tw-border-b tw-w-2/4 tw-py-1 tw-px-2 tw-border-l tw-flex tw-items-center tw-justify-end">
+      <InlineText className="tw-flex tw-w-2/4 tw-items-center tw-justify-end tw-border-b tw-border-l tw-py-1 tw-px-2 dfr-border-color-primary">
         {value}
       </InlineText>
     </Block>

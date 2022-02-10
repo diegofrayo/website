@@ -41,7 +41,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
   if (error) {
     return (
-      <InlineText is="strong" className="tw-block tw-text-red-700 dark:tw-text-red-400 tw-mt-2">
+      <InlineText is="strong" className="tw-mt-2 tw-block tw-text-red-700 dark:tw-text-red-400">
         Syntax error: {error.message}
       </InlineText>
     );
@@ -59,16 +59,16 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
         <Title
           is="h1"
           variant={Title.variant.SECONDARY}
-          className="tw-truncate tw-text-center tw-mb-4"
+          className="tw-mb-4 tw-truncate tw-text-center"
           size={Title.size.MD}
         >
           {name}
         </Title>
 
-        <Block className="tw-inline-flex tw-flex-no-wrap tw-overflow-x-auto tw-max-w-full tw-items-end">
+        <Block className="tw-flex-no-wrap tw-inline-flex tw-max-w-full tw-items-end tw-overflow-x-auto">
           <GuitarFret variant={GuitarFret.variant.STRINGS_NAMES} />
 
-          <Block className="tw-relative tw-inline-flex tw-flex-no-wrap">
+          <Block className="tw-flex-no-wrap tw-relative tw-inline-flex">
             <GuitarFret
               variant={GuitarFret.variant.EMPTY}
               number={(lastFret + 1) as T_GuitarFret}
@@ -89,7 +89,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
             {firstFret > 1 && <GuitarFret variant={GuitarFret.variant.EMPTY} number={1} />}
 
-            <Block className="tw-h-36 tw-relative tw-top-6 tw--left-0.5 tw-w-3 tw-bg-black dark:tw-bg-white tw-rounded-tr-md tw-rounded-br-md" />
+            <Block className="tw-relative tw-top-6 tw--left-0.5 tw-h-36 tw-w-3 tw-rounded-tr-md tw-rounded-br-md tw-bg-black dark:tw-bg-white" />
           </Block>
 
           {playedStrings && (
@@ -116,7 +116,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
             >
               <InlineText
                 className={classNames(
-                  "tw-inline-block tw-transition-all tw-w-4",
+                  "tw-inline-block tw-w-4 tw-transition-all",
                   showChordInput && "tw-rotate-90",
                 )}
               >
@@ -128,8 +128,8 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
         </Block>
 
         {showChordInput && (
-          <Block className="tw-text-sm tw-mt-3 tw-text-center">
-            <pre className="dfr-border-color-primary tw-whitespace-pre-line tw-break-all tw-border tw-inline-block tw-p-2 dark:dfr-border-color-primary">
+          <Block className="tw-mt-3 tw-text-center tw-text-sm">
+            <pre className="tw-inline-block tw-whitespace-pre-line tw-break-all tw-border tw-p-2 dfr-border-color-primary dark:dfr-border-color-primary">
               <Button
                 variant={Button.variant.SIMPLE}
                 data-clipboard-text={musicNotesAsString}

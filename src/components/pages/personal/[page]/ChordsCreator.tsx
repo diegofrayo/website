@@ -40,7 +40,7 @@ function ChordsCreator(): T_ReactElement {
         <Space size={1} />
 
         <Block>
-          <code className="tw-block tw-text-sm tw-mb-1">
+          <code className="tw-mb-1 tw-block tw-text-sm">
             Formato: CUERDA,TRASTE,DEDO?|CUERDA,TRASTE,DEDO?
           </code>
           <code className="tw-block tw-text-sm">
@@ -49,7 +49,7 @@ function ChordsCreator(): T_ReactElement {
         </Block>
         <Space size={6} />
 
-        <Block className="tw-border dfr-border-color-primary dark:dfr-border-color-primary tw-p-3">
+        <Block className="tw-border tw-p-3 dfr-border-color-primary dark:dfr-border-color-primary">
           <Title is="h2" className="tw-mb-4">
             Resultado
           </Title>

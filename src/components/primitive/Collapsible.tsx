@@ -30,7 +30,7 @@ function Collapsible(props: T_CollapsibleProps): T_ReactElement {
       <summary className="tw-font-bold" role="button" onClick={handleToggleClick}>
         {title}
       </summary>
-      <Block className="tw-pl-5 tw-mt-2">{children}</Block>
+      <Block className="tw-mt-2 tw-pl-5">{children}</Block>
 
       <style jsx>{`
         summary {

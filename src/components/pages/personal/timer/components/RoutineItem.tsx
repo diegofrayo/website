@@ -44,16 +44,16 @@ export default function RoutineItem({
   return (
     <Block
       is="article"
-      className={classNames("dfr-RoutineItem dfr-shadow tw-mb-3 tw-border last:tw-mb-0", {
-        "tw-bg-gray-100 tw-border-gray-200": status === ROUTINE_ITEMS_STATUS.NOT_STARTED,
-        "tw-bg-yellow-100 tw-border-yellow-200": status === ROUTINE_ITEMS_STATUS.IN_PROGRESS,
-        "tw-bg-green-100 tw-border-green-200": status === ROUTINE_ITEMS_STATUS.COMPLETED,
+      className={classNames("dfr-RoutineItem tw-mb-3 tw-border dfr-shadow last:tw-mb-0", {
+        "tw-border-gray-200 tw-bg-gray-100": status === ROUTINE_ITEMS_STATUS.NOT_STARTED,
+        "tw-border-yellow-200 tw-bg-yellow-100": status === ROUTINE_ITEMS_STATUS.IN_PROGRESS,
+        "tw-border-green-200 tw-bg-green-100": status === ROUTINE_ITEMS_STATUS.COMPLETED,
       })}
     >
       <Block
         is="header"
         className={classNames(
-          "tw-flex tw-justify-between tw-items-center tw-px-3 tw-py-2 tw-border-b tw-border-dasshed",
+          "tw-border-dasshed tw-flex tw-items-center tw-justify-between tw-border-b tw-px-3 tw-py-2",
           {
             "tw-border-gray-200": status === ROUTINE_ITEMS_STATUS.NOT_STARTED,
             "tw-border-yellow-200": status === ROUTINE_ITEMS_STATUS.IN_PROGRESS,
@@ -65,37 +65,37 @@ export default function RoutineItem({
           is="h1"
           variant={Title.variant.SECONDARY}
           size={Title.size.SM}
-          className={classNames("tw-flex-1 tw-min-w-0", isTitleTruncated && "tw-truncate")}
+          className={classNames("tw-min-w-0 tw-flex-1", isTitleTruncated && "tw-truncate")}
           onClick={() => {
             setIsTitleTruncated((currentValue) => !currentValue);
           }}
         >
           {title}
         </Title>
-        <Text className="tw-font-bold tw-italic tw-ml-3 tw-text-xs tw-text-right">
+        <Text className="tw-ml-3 tw-text-right tw-text-xs tw-font-bold tw-italic">
           {pluralize(sets, "repetición", "repeticiones")}
         </Text>
       </Block>
       <Block className="tw-px-3 tw-py-3">
-        <Block className="tw-flex tw-justify-between tw-items-center">
+        <Block className="tw-flex tw-items-center tw-justify-between">
           <InlineText className="tw-text-sm">Tiempo de ejecución</InlineText>
-          <InlineText className="tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-20 tw-text-center tw-bg-red-600">
+          <InlineText className="tw-w-20 tw-rounded-lg tw-bg-red-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold tw-text-white">
             {highTime}
           </InlineText>
         </Block>
         {restTime && (
           <React.Fragment>
             <Space size={0.5} />
-            <Block className="tw-flex tw-justify-between tw-items-center">
+            <Block className="tw-flex tw-items-center tw-justify-between">
               <InlineText className="tw-text-sm">Tiempo de descanso</InlineText>
-              <InlineText className="tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-20 tw-text-center tw-bg-blue-600">
+              <InlineText className="tw-w-20 tw-rounded-lg tw-bg-blue-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold tw-text-white">
                 {restTime}
               </InlineText>
             </Block>
             <Space size={0.5} />
-            <Block className="tw-flex tw-justify-between tw-items-center">
+            <Block className="tw-flex tw-items-center tw-justify-between">
               <InlineText className="tw-text-sm">Tiempo total</InlineText>
-              <InlineText className="tw-text-white tw-py-1 tw-px-2 tw-rounded-lg tw-text-xs tw-font-bold tw-w-20 tw-text-center tw-bg-green-600">
+              <InlineText className="tw-w-20 tw-rounded-lg tw-bg-green-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold tw-text-white">
                 {secondsToTime(calculateRoutineItemTotalTime(sets, highTime, restTime))}
               </InlineText>
             </Block>
@@ -106,7 +106,7 @@ export default function RoutineItem({
           {status === ROUTINE_ITEMS_STATUS.NOT_STARTED && (
             <Button variant={Button.variant.SIMPLE} onClick={handleStartRoutineItemClick}>
               <Icon icon={Icon.icon.PLAY} size={12} />
-              <InlineText className="tw-ml-1 tw-text-xxs tw-align-middle">iniciar</InlineText>
+              <InlineText className="tw-ml-1 tw-align-middle tw-text-xxs">iniciar</InlineText>
             </Button>
           )}
 
@@ -116,7 +116,7 @@ export default function RoutineItem({
             onClick={handleMarkAsCompletedClick}
           >
             <Icon icon={Icon.icon.CHECK} size={12} />
-            <InlineText className="tw-ml-1 tw-text-xxs tw-align-middle">
+            <InlineText className="tw-ml-1 tw-align-middle tw-text-xxs">
               marcar como{" "}
               {status === ROUTINE_ITEMS_STATUS.COMPLETED
                 ? ROUTINE_ITEMS_STATUS.NOT_STARTED

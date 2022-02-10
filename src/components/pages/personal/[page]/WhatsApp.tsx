@@ -24,7 +24,7 @@ function WhatsApp(): T_ReactElement {
 
   return (
     <Block>
-      <Block className="tw-flex tw-flex-no-wrap tw-items-end tw-w-full">
+      <Block className="tw-flex-no-wrap tw-flex tw-w-full tw-items-end">
         <Input
           id="input"
           label="Ingrese un número de celular"
@@ -40,7 +40,7 @@ function WhatsApp(): T_ReactElement {
           variant={Link.variant.SIMPLE}
           href={composeWhatsAppUrl()}
           className={classNames(
-            "tw-self-end tw-flex",
+            "tw-flex tw-self-end",
             isInvalidPhone && "tw-pointer-events-none tw-opacity-50",
           )}
           id="button"
@@ -49,7 +49,7 @@ function WhatsApp(): T_ReactElement {
           <Icon icon={Icon.icon.WHATSAPP} size={48} />
         </Link>
       </Block>
-      <Block className="tw-flex tw-mt-1 tw-justify-between tw-pr-14">
+      <Block className="tw-mt-1 tw-flex tw-justify-between tw-pr-14">
         <Block>
           <input
             type="radio"

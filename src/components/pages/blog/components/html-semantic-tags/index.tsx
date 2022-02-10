@@ -5,17 +5,17 @@ import type { T_ReactElement } from "~/types";
 export function Main(): T_ReactElement {
   return (
     <main role="main" className="tw-bg-white dark:tw-bg-gray-400" style={{ minWidth: 500 }}>
-      <header className="dfr-bg-color-primary dark:tw-bg-gray-600 tw-text-center tw-p-2">
+      <header className="tw-p-2 tw-text-center dfr-bg-color-primary dark:tw-bg-gray-600">
         <h1>header</h1>
         <nav>
           <ul>
-            <li className="tw-inline-block tw-mr-1">
+            <li className="tw-mr-1 tw-inline-block">
               <a href="/page-1">Page 1</a>
             </li>
-            <li className="tw-inline-block tw-mr-1">
+            <li className="tw-mr-1 tw-inline-block">
               <a href="/page-2">Page 2</a>
             </li>
-            <li className="tw-inline-block tw-mr-1">
+            <li className="tw-mr-1 tw-inline-block">
               <a href="/page-3">Page 3</a>
             </li>
           </ul>
@@ -43,7 +43,7 @@ export function Main(): T_ReactElement {
             <div>
               <p>article content</p>
             </div>
-            <footer className="tw-mt-4 tw-text-sm tw-bg-black tw-p-1 tw-text-center tw-text-white">
+            <footer className="tw-mt-4 tw-bg-black tw-p-1 tw-text-center tw-text-sm tw-text-white">
               article footer
             </footer>
           </article>
@@ -55,13 +55,13 @@ export function Main(): T_ReactElement {
             <div>
               <p>article content</p>
             </div>
-            <footer className="tw-mt-4 tw-text-sm tw-bg-black tw-p-1 tw-text-center tw-text-white">
+            <footer className="tw-mt-4 tw-bg-black tw-p-1 tw-text-center tw-text-sm tw-text-white">
               article footer
             </footer>
           </article>
         </section>
       </div>
-      <footer className="tw-bg-black tw-p-2 tw-text-white tw-text-center tw-mt-6">footer</footer>
+      <footer className="tw-mt-6 tw-bg-black tw-p-2 tw-text-center tw-text-white">footer</footer>
     </main>
   );
 }

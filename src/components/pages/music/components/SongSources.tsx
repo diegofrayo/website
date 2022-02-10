@@ -33,9 +33,9 @@ function SongSources(props: T_SongSourcesProps): T_ReactElement {
                 isExternalUrl
               >
                 <ImageComponent />
-                <Block className="tw-flex-1 tw-min-w-0">
+                <Block className="tw-min-w-0 tw-flex-1">
                   <Text
-                    className="tw-font-bold tw-text-sm tw-text-black dark:tw-text-white tw-truncate"
+                    className="tw-truncate tw-text-sm tw-font-bold tw-text-black dark:tw-text-white"
                     title={source.text}
                   >
                     {source.text}
@@ -63,7 +63,7 @@ function useController({ sources }: T_SongSourcesProps) {
           <Image
             src="/static/images/misc/lacuerda.png"
             alt="La cuerda icon"
-            className="tw-w-8 tw-h-8 tw-mr-2 tw-rounded-full"
+            className="tw-mr-2 tw-h-8 tw-w-8 tw-rounded-full"
           />
         );
       };

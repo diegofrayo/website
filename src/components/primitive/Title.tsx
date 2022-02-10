@@ -51,7 +51,7 @@ function Title(props: T_TitleProps): T_ReactElement {
           variant={Link.variant.SIMPLE}
           href={`#${id}`}
           className={classNames(
-            "tw-visible sm:tw-invisible tw-float-left tw--ml-5 tw-pr-1 tw-leading-0",
+            "tw-visible tw-float-left tw--ml-5 tw-pr-1 tw-leading-0 sm:tw-invisible",
             {
               h1: "tw-pt-3",
               h2: "tw-pt-2.5",

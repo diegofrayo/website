@@ -77,7 +77,7 @@ function MusicPage(): T_ReactElement {
                       ref={inputRef}
                       onChange={onInputChange}
                     />
-                    <Text className="tw-text-right tw-text-xs tw-font-bold tw-mt-1">
+                    <Text className="tw-mt-1 tw-text-right tw-text-xs tw-font-bold">
                       {t("page:results_title")} [{songsList.length}]
                     </Text>
                   </Block>
@@ -86,7 +86,7 @@ function MusicPage(): T_ReactElement {
                   <Block className="tw-flex tw-flex-wrap tw-justify-between">
                     {songsList.map((song) => {
                       return (
-                        <Block key={song.id} className="tw-w-full tw-mb-4 sm:tw-w-5/12">
+                        <Block key={song.id} className="tw-mb-4 tw-w-full sm:tw-w-5/12">
                           <Link
                             variant={Link.variant.SECONDARY}
                             href={`${ROUTES.MUSIC}/${song.id}`}

@@ -22,9 +22,9 @@ function WindowSize(): T_ReactElement {
       }}
     >
       <InlineText>{size.join("x")} | </InlineText>
-      <InlineText className="sm:tw-hidden tw-inline-block">mobile</InlineText>
-      <InlineText className="sm:tw-inline-block md:tw-hidden tw-hidden">sm</InlineText>
-      <InlineText className="md:tw-inline-block lg:tw-hidden tw-hidden">md</InlineText>
+      <InlineText className="tw-inline-block sm:tw-hidden">mobile</InlineText>
+      <InlineText className="tw-hidden sm:tw-inline-block md:tw-hidden">sm</InlineText>
+      <InlineText className="lg:tw-hidden tw-hidden md:tw-inline-block">md</InlineText>
       <InlineText className="lg:tw-inline-block tw-hidden">lg</InlineText>
 
       <style jsx>

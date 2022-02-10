@@ -9,7 +9,7 @@ function MariaCamila(): T_ReactElement {
   useDocumentTitle("Feliz cumple!!");
 
   return (
-    <Block className="tw-max-w-lg tw-mx-auto tw-p-6">
+    <Block className="tw-mx-auto tw-max-w-lg tw-p-6">
       <Title className="tw-mb-12">
         🎉
         <br />
@@ -38,12 +38,12 @@ function MariaCamila(): T_ReactElement {
 
       <Block className="tw-my-8">
         <Image />
-        <TextPrimitive className="tw-text-center tw-italic tw-text-sm tw-mt-1 tw-px-4">
+        <TextPrimitive className="tw-mt-1 tw-px-4 tw-text-center tw-text-sm tw-italic">
           esta es la única foto <br /> que tengo de los dos juntos 🤷‍♂️
         </TextPrimitive>
       </Block>
 
-      <hr className="tw-border tw-border-yellow-200 tw-h-px tw-border-dashed tw-mt-10 tw-shadow-md tw-opacity-50" />
+      <hr className="tw-mt-10 tw-h-px tw-border tw-border-dashed tw-border-yellow-200 tw-opacity-50 tw-shadow-md" />
 
       <Block className="tw-my-8">
         <Title className="tw-mb-4">
@@ -77,11 +77,11 @@ function Text({ children, emoji, left = false }) {
   return (
     <Block
       className={classNames(
-        "tw-text-lg tw-my-6 tw-flex tw-items-center",
-        left ? "tw-text-left tw-pr-10" : "tw-text-right tw-pl-10 tw-flex-row-reverse",
+        "tw-my-6 tw-flex tw-items-center tw-text-lg",
+        left ? "tw-pr-10 tw-text-left" : "tw-flex-row-reverse tw-pl-10 tw-text-right",
       )}
     >
-      <InlineText className="tw-text-3xl tw-flex-shrink-0">{emoji}</InlineText>
+      <InlineText className="tw-flex-shrink-0 tw-text-3xl">{emoji}</InlineText>
       <InlineText className="tw-mx-3">{children}</InlineText>
     </Block>
   );
@@ -97,7 +97,7 @@ function Marked({ children }) {
 
 function Title({ children, className }) {
   return (
-    <h1 className={classNames("tw-font-bold tw-text-3xl tw-text-center", className)}>{children}</h1>
+    <h1 className={classNames("tw-text-center tw-text-3xl tw-font-bold", className)}>{children}</h1>
   );
 }
 

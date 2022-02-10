@@ -193,7 +193,7 @@ function AnalyticsDisabledFlag() {
 function Flag({ className, color }) {
   return (
     <InlineText
-      className={classNames("tw-fixed tw-top-1 tw-left-1 tw-w-1 tw-h-1", className, color)}
+      className={classNames("tw-fixed tw-top-1 tw-left-1 tw-h-1 tw-w-1", className, color)}
     />
   );
 }

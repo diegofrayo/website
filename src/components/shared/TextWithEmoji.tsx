@@ -12,8 +12,8 @@ type T_TextWithEmojiProps = {
 
 function TextWithEmoji({ emoji, children }: T_TextWithEmojiProps): T_ReactElement {
   return (
-    <Block className="tw-flex tw-flex-nowrap tw-mb-3">
-      <Emoji className="tw-text-xl tw-mr-3 tw-w-6 tw-h-6 tw-flex-shrink-0 tw-overflow-hidden tw-relative tw--top-0.5">
+    <Block className="tw-mb-3 tw-flex tw-flex-nowrap">
+      <Emoji className="tw-relative tw--top-0.5 tw-mr-3 tw-h-6 tw-w-6 tw-flex-shrink-0 tw-overflow-hidden tw-text-xl">
         {emoji}
       </Emoji>
       <Text className="tw-flex-1">{children}</Text>

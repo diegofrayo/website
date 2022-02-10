@@ -34,7 +34,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
 
   return (
     <Block
-      className="dfr-Playground dfr-bg-color-light-strong tw-flex tw-flex-col tw-border-4 tw-border-black dark:tw-border-white"
+      className="dfr-Playground tw-flex tw-flex-col tw-border-4 tw-border-black dfr-bg-color-light-strong dark:tw-border-white"
       style={{ minHeight: 200 }}
       data-markdown-block
     >
@@ -49,13 +49,13 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
           <Component />
         )}
       </Block>
-      <Block className="tw-flex tw-flex-no-wrap tw-text-sm tw-border-t-4 tw-border-black dark:tw-border-white">
+      <Block className="tw-flex-no-wrap tw-flex tw-border-t-4 tw-border-black tw-text-sm dark:tw-border-white">
         <Button
           variant={Button.variant.SIMPLE}
           className={classNames(
-            "tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2",
+            "tw-flex-1 tw-cursor-pointer tw-p-2 tw-text-center",
             isSourceCodeTabSelected &&
-              "tw-bg-black dark:tw-bg-white tw-text-white dark:tw-text-black hover:tw-opacity-100 tw-uppercase",
+              "tw-bg-black tw-uppercase tw-text-white hover:tw-opacity-100 dark:tw-bg-white dark:tw-text-black",
           )}
           onClick={setSourceCodeTab}
         >
@@ -64,9 +64,9 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
         <Button
           variant={Button.variant.SIMPLE}
           className={classNames(
-            "tw-flex-1 tw-text-center tw-cursor-pointer tw-p-2",
+            "tw-flex-1 tw-cursor-pointer tw-p-2 tw-text-center",
             isOutputTabSelected &&
-              "tw-bg-black dark:tw-bg-white tw-text-white dark:tw-text-black hover:tw-opacity-100 tw-uppercase tw-text-base",
+              "tw-bg-black tw-text-base tw-uppercase tw-text-white hover:tw-opacity-100 dark:tw-bg-white dark:tw-text-black",
           )}
           onClick={setOutputTab}
         >

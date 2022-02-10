@@ -91,7 +91,7 @@ function BlogEntry({
             <InlineText
               key={category.id}
               className={classNames(
-                "tw-inline-block tw-py-1 tw-px-2 tw-rounded-md tw-font-semibold tw-text-xs",
+                "tw-inline-block tw-rounded-md tw-py-1 tw-px-2 tw-text-xs tw-font-semibold",
                 CATEGORIES_COLORS[category.id],
               )}
             >

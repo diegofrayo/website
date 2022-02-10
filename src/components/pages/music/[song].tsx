@@ -95,11 +95,11 @@ function SongPage(props: T_PageProps): T_ReactElement {
           <Space size={6} />
 
           <Block variant="FEATURED">
-            <Text className="tw-font-bold tw-mb-2">
+            <Text className="tw-mb-2 tw-font-bold">
               {t("page:chords_title")} [{song.chords.length}]
             </Text>
             <pre
-              className="tw-break-all tw-max-w-full tw-whitespace-normal"
+              className="tw-max-w-full tw-whitespace-normal tw-break-all"
               dangerouslySetInnerHTML={{
                 __html: GuitarService.formatText(song.chords.join(" | ")),
               }}

@@ -43,14 +43,14 @@ function Dencrypt(): T_ReactElement {
       <Block>
         <Text className="tw-font-bold">Resultado</Text>
         <output
-          className="tw-my-1 tw-border dfr-border-color-primary tw-block tw-p-3 tw-w-full"
+          className="tw-my-1 tw-block tw-w-full tw-border tw-p-3 dfr-border-color-primary"
           style={{ minHeight: 40 }}
         >
           {output}
         </output>
         <Button
           variant={Button.variant.DEFAULT}
-          className="tw-block tw-ml-auto"
+          className="tw-ml-auto tw-block"
           data-clipboard-text={output}
           onClick={copyToClipboard}
         >

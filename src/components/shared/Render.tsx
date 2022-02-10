@@ -27,7 +27,7 @@ function Render({
 
   if (error) {
     return (
-      <Text className="tw-p-2 tw-text-center tw-text-red-700 tw-text-sm">
+      <Text className="tw-p-2 tw-text-center tw-text-sm tw-text-red-700">
         <Emoji className="tw-mr-2">😵</Emoji>
         <InlineText>
           {error instanceof Error ? error.message : (error as string) || "Error"}

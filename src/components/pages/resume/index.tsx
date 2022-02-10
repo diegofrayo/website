@@ -19,7 +19,7 @@ export function ResumeTimeline({ title, timeline }: T_ResumeTimelineProps): T_Re
   return (
     <Block is="section" data-markdown-block>
       <Title is="h2">{title}</Title>
-      <Block className="tw-border-l-4 tw-border-black dark:dfr-border-color-primary tw-pl-6 tw-ml-3 tw-mt-3">
+      <Block className="tw-ml-3 tw-mt-3 tw-border-l-4 tw-border-black tw-pl-6 dark:dfr-border-color-primary">
         {timeline.map((item, index) => {
           return <TimelineItem key={`TimelineItem-${index}`} {...item} />;
         })}
@@ -36,7 +36,7 @@ function TimelineItem({
 }: T_ResumeTimelineItem): T_ReactElement {
   return (
     <Block is="section" className="tw-relative tw-mb-8 last:tw-mb-0">
-      <InlineText className="tw-absolute tw--left-10 tw-border-4 tw-border-black dark:dfr-border-color-primary tw-w-7 tw-h-7 tw-rounded-full tw-bg-white tw-top-0.5" />
+      <InlineText className="tw-absolute tw--left-10 tw-top-0.5 tw-h-7 tw-w-7 tw-rounded-full tw-border-4 tw-border-black tw-bg-white dark:dfr-border-color-primary" />
 
       <Title is="h3" variant={Title.variant.SECONDARY} size={Title.size.MD}>
         {url ? (
@@ -47,7 +47,7 @@ function TimelineItem({
           company
         )}
       </Title>
-      <InlineText className="tw-block tw-text-sm tw-italic tw-mt-0.5 tw-mb-3">{date}</InlineText>
+      <InlineText className="tw-mt-0.5 tw-mb-3 tw-block tw-text-sm tw-italic">{date}</InlineText>
       <Text>{description}</Text>
     </Block>
   );

@@ -146,7 +146,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
       {parsedPositions && notes && <Space size={1} />}
 
       {notes && (
-        <Text className="tw-ml-2 tw-whitespace-pre-line tw-break-word tw-italic">{`"${notes}"`}</Text>
+        <Text className="tw-break-word tw-ml-2 tw-whitespace-pre-line tw-italic">{`"${notes}"`}</Text>
       )}
     </Block>
   );
@@ -245,7 +245,7 @@ function Position({
   return (
     <Block
       className={classNames(
-        "dfr-Tablature-Position tw-h-6 tw-text-center tw-relative tw-top-0.5 tw-w-6",
+        "dfr-Tablature-Position tw-relative tw-top-0.5 tw-h-6 tw-w-6 tw-text-center",
         isCell && "dfr-Tablature-Position--cell",
         isSeparator && "dfr-Tablature-Position--separator",
       )}

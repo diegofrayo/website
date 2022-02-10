@@ -34,7 +34,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
       {parsedLyrics}
 
       <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
-        <Block className="dfr-bg-color-light-strong dfr-border-color-dark-strong tw-border-4 tw-p-4 tw-w-96 tw-mx-auto tw-max-w-full dark:dfr-bg-color-layout dark:dfr-border-color-light-strong">
+        <Block className="tw-mx-auto tw-w-96 tw-max-w-full tw-border-4 tw-p-4 dfr-border-color-dark-strong dfr-bg-color-light-strong dark:dfr-bg-color-layout dark:dfr-border-color-light-strong">
           {Array.isArray(selectedChord) ? (
             <Block>
               {selectedChord.map((chord, index) => {
@@ -67,9 +67,9 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                       <InlineText
                         key={`Chord-point-${index}`}
                         className={classNames(
-                          "tw-inline-flex tw-justify-center tw-items-center tw-rounded-full tw-mx-1 tw-h-4 tw-w-4 tw-text-white dark:tw-text-black tw-text-xxs tw-leading-0",
+                          "tw-mx-1 tw-inline-flex tw-h-4 tw-w-4 tw-items-center tw-justify-center tw-rounded-full tw-text-xxs tw-leading-0 tw-text-white dark:tw-text-black",
                           selectedChordIndex === index
-                            ? "tw-bg-black dark:tw-bg-white tw-font-bold"
+                            ? "tw-bg-black tw-font-bold dark:tw-bg-white"
                             : "tw-bg-gray-400",
                         )}
                       >
@@ -99,7 +99,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 
           <Button
             variant={Button.variant.SIMPLE}
-            className="tw-text-center tw-block tw-w-full tw-leading-0"
+            className="tw-block tw-w-full tw-text-center tw-leading-0"
             onClick={handleModalClose}
           >
             <Icon icon={Icon.icon.X} size={24} />
@@ -180,7 +180,7 @@ function useController({ children, insertions }: T_TextFormatterProps): {
         return (
           <pre
             key={`TextFormatter-item-${index}`}
-            className="tw-p-1 tw-break-normal tw-leading-none"
+            className="tw-break-normal tw-p-1 tw-leading-none"
             dangerouslySetInnerHTML={{ __html: item }}
           />
         );

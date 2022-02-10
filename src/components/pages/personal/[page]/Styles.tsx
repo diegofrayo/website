@@ -47,8 +47,8 @@ const Content = withSafeRenderingComponent(function Content() {
 
 function Section({ title, classes, theme }) {
   return (
-    <Block is="section" className="tw-mb-8 tw-text-sm tw-text-right">
-      <h2 className="tw-text-xl tw-mb-3">{title}</h2>
+    <Block is="section" className="tw-mb-8 tw-text-right tw-text-sm">
+      <h2 className="tw-mb-3 tw-text-xl">{title}</h2>
       <Block className="tw-flex tw-flex-wrap tw-justify-end">
         {classes.map((className, index) => {
           const classNameWithTheme = `${theme === "dark" ? "dark:" : ""}${className}`;
@@ -56,7 +56,7 @@ function Section({ title, classes, theme }) {
           return (
             <Block
               key={`${title}-${index}`}
-              className="tw-w-full sm:tw-w-auto sm:tw-ml-4 tw-mb-4"
+              className="tw-mb-4 tw-w-full sm:tw-ml-4 sm:tw-w-auto"
               role="button"
               data-clipboard-text={classNameWithTheme}
               onClick={copyToClipboard}

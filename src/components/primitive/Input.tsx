@@ -19,17 +19,17 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
     <label
       className={classNames(
         "root",
-        "dfr-border-color-primary tw-border-b-4 tw-block dark:dfr-border-color-primary",
+        "tw-block tw-border-b-4 dfr-border-color-primary dark:dfr-border-color-primary",
         containerProps.className,
       )}
       {...(label ? { ...containerProps, htmlFor: id } : {})}
     >
-      {label && <Text className="tw-font-bold tw-cursor-pointer tw-mb-1">{label}</Text>}
+      {label && <Text className="tw-mb-1 tw-cursor-pointer tw-font-bold">{label}</Text>}
       <input
         ref={ref}
         id={id}
         className={classNames(
-          "dfr-Input dfr-bg-color-primary dfr-border-color-primary tw-border tw-rounded-none tw-shadow-none tw-block tw-p-2 tw-w-full tw-resize-none dark:dfr-bg-color-primary dark:dfr-border-color-primary",
+          "dfr-Input tw-block tw-w-full tw-resize-none tw-rounded-none tw-border tw-p-2 tw-shadow-none dfr-bg-color-primary dfr-border-color-primary dark:dfr-bg-color-primary dark:dfr-border-color-primary",
           className,
         )}
         {...rest}

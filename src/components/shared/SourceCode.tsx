@@ -28,9 +28,9 @@ function SourceCode({
   return (
     <Block className="dfr-SourceCode dfr-bg-color-light-strong " data-markdown-block>
       {!showOnlySourceCode && (
-        <Block className="dfr-border-color-primary tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-px-2 tw-py-2 tw-text-sm tw-font-mono tw-rounded-t-md tw-border tw-border-b-0 dark:tw-border-0 dark:tw-bg-gray-700">
-          {codeTitle && <code className="tw-font-bold tw-mr-4 tw-flex-1">{codeTitle}</code>}
-          <InlineText className="tw-bg-yellow-300 tw-text-yellow-700 tw-text-xs tw-px-3 tw-py-1 tw-inline-block tw-font-bold tw-flex-shrink-0 tw-ml-auto">
+        <Block className="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-rounded-t-md tw-border tw-border-b-0 tw-px-2 tw-py-2 tw-font-mono tw-text-sm dfr-border-color-primary dark:tw-border-0 dark:tw-bg-gray-700">
+          {codeTitle && <code className="tw-mr-4 tw-flex-1 tw-font-bold">{codeTitle}</code>}
+          <InlineText className="tw-ml-auto tw-inline-block tw-flex-shrink-0 tw-bg-yellow-300 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-yellow-700">
             {language}
           </InlineText>
         </Block>
@@ -65,7 +65,7 @@ function SourceCode({
       </Highlight>
 
       {!showOnlySourceCode && (
-        <Block className="dfr-border-color-primary tw-flex tw-flex-col tw-p-2 tw-text-sm tw-border tw-border-t-0 tw-rounded-b-md sm:tw-flex-row sm:tw-justify-end dark:tw-border-0 dark:tw-bg-gray-700">
+        <Block className="tw-flex tw-flex-col tw-rounded-b-md tw-border tw-border-t-0 tw-p-2 tw-text-sm dfr-border-color-primary dark:tw-border-0 dark:tw-bg-gray-700 sm:tw-flex-row sm:tw-justify-end">
           {sourceURL && (
             <React.Fragment>
               <Link
@@ -75,7 +75,7 @@ function SourceCode({
                 isExternalUrl
               >
                 <Icon icon={Icon.icon.GITHUB} withDarkModeBackground />
-                <InlineText className="tw-lowercase tw-ml-1">
+                <InlineText className="tw-ml-1 tw-lowercase">
                   {t("page:see_source_code")}
                 </InlineText>
               </Link>
@@ -89,7 +89,7 @@ function SourceCode({
             onClick={copyToClipboard}
           >
             <Icon icon={Icon.icon.CLIPBOARD} withDarkModeBackground />
-            <InlineText className="tw-lowercase tw-ml-1">{t("page:copy_to_clipboard")}</InlineText>
+            <InlineText className="tw-ml-1 tw-lowercase">{t("page:copy_to_clipboard")}</InlineText>
           </Button>
         </Block>
       )}

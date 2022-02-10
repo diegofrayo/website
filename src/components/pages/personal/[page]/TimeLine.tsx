@@ -36,14 +36,14 @@ function TimeLine(): T_ReactElement {
               >
                 Categorías [{categories.length}]
               </Title>
-              <Block className="tw-flex tw-justify-betweden tw-flex-wrap">
+              <Block className="tw-justify-betweden tw-flex tw-flex-wrap">
                 {categories.map((category) => {
                   return (
                     <Button
                       key={category.id}
                       variant={Button.variant.SIMPLE}
                       className={classNames(
-                        "tw-mr-2 tw-my-1 tw-underlidne tw-inline-block tw-text-sm tw-py-1 tw-px-3 tw-rounded-md tw-text-left tw-truncate tw-font-bold",
+                        "tw-underlidne tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm tw-font-bold",
                         category.id === selectedCategory
                           ? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
                           : "dfr-bg-color-primary dark:dfr-bg-color-primary",
@@ -63,7 +63,7 @@ function TimeLine(): T_ReactElement {
                 <Block is="section" key={item.year}>
                   <Title
                     is="h2"
-                    className="tw-text-left sm:tw-text-center tw-my-8 tw-underline"
+                    className="tw-my-8 tw-text-left tw-underline sm:tw-text-center"
                     variant={Title.variant.SECONDARY}
                     size={Title.size.LG}
                   >
@@ -75,9 +75,9 @@ function TimeLine(): T_ReactElement {
                       <Block
                         key={item.id}
                         className={classNames(
-                          "tw-relative sm:tw-w-1/2 tw-border-black dark:tw-border-white tw-px-4 tw-pb-8 last:tw-pb-0 tw-border-l-4",
+                          "tw-relative tw-border-l-4 tw-border-black tw-px-4 tw-pb-8 last:tw-pb-0 dark:tw-border-white sm:tw-w-1/2",
                           index % 2 === 0
-                            ? "sm:tw-border-l-0 sm:tw-border-r-4 sm:tw-text-right sm:tw-ml-1"
+                            ? "sm:tw-ml-1 sm:tw-border-l-0 sm:tw-border-r-4 sm:tw-text-right"
                             : "sm:tw-left-2/4",
                         )}
                       >
@@ -85,13 +85,13 @@ function TimeLine(): T_ReactElement {
                           <Emoji className="tw-mr-2">🗓</Emoji>
                           <InlineText>{formatDate(item.startDate, item.endDate)}</InlineText>
                         </Text>
-                        <Text className="tw-font-bold tw-text-xl tw-my-2">{item.description}</Text>
+                        <Text className="tw-my-2 tw-text-xl tw-font-bold">{item.description}</Text>
                         <Block>
                           {item.categories.map((category) => {
                             return (
                               <InlineText
                                 key={category.id}
-                                className="tw-font-bold tw-text-xs tw-px-2 tw-py-1 tw-rounded-md tw-border dfr-border-color-primary dark:dfr-border-color-primary"
+                                className="tw-rounded-md tw-border tw-px-2 tw-py-1 tw-text-xs tw-font-bold dfr-border-color-primary dark:dfr-border-color-primary"
                               >
                                 {category.value}
                               </InlineText>

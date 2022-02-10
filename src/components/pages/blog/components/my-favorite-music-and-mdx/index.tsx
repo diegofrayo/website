@@ -5,14 +5,14 @@ import type { T_ReactElement } from "~/types";
 import { isDevelopmentEnvironment } from "~/utils/misc";
 
 export function HelloWorldMDX({ text }: { text: string }): T_ReactElement {
-  return <Text className="tw-bg-red-200 tw-block tw-p-2 tw-text-red-700">{text}</Text>;
+  return <Text className="tw-block tw-bg-red-200 tw-p-2 tw-text-red-700">{text}</Text>;
 }
 
 export function SpotifyPlaylist(): T_ReactElement {
   if (isDevelopmentEnvironment()) return null;
 
   return (
-    <Block className="dfr-border-color-dark-strong tw-border-4" data-markdown-block>
+    <Block className="tw-border-4 dfr-border-color-dark-strong" data-markdown-block>
       <iframe
         src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"
         width="100%"
@@ -35,7 +35,7 @@ export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_Rea
     <Block className="tw-text-right" data-markdown-block>
       <Link
         variant={Link.variant.SIMPLE}
-        className="dfr-bg-color-primary dfr-border-color-primary dark:dfr-border-color-primary dark:dfr-bg-color-primary tw-flex sm:tw-inline-flex tw-p-4 tw-rounded-md tw-items-center tw-relative tw-pr-8 tw-border"
+        className="tw-relative tw-flex tw-items-center tw-rounded-md tw-border tw-p-4 tw-pr-8 dfr-bg-color-primary dfr-border-color-primary dark:dfr-bg-color-primary dark:dfr-border-color-primary sm:tw-inline-flex"
         href={url}
         isExternalUrl
       >
@@ -43,7 +43,7 @@ export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_Rea
         <Block className="tw-flex-1 tw-text-left">
           <TitlePrimitive
             is="h3"
-            className="tw-text-black dark:tw-text-white tw-text-base sm:tw-text-lg"
+            className="tw-text-base tw-text-black dark:tw-text-white sm:tw-text-lg"
             variant={TitlePrimitive.variant.UNSTYLED}
           >
             {name}
