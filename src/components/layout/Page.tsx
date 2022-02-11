@@ -139,8 +139,8 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 
         {[
           ROUTES.HOME,
+          ROUTES.ABOUT_ME,
           // ROUTES.RESUME,
-          // ROUTES.ABOUT_ME
         ].includes(config.pathname as T_PageRoute) && (
           <script
             type="application/ld+json"

@@ -3,6 +3,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { Block } from "~/components/primitive";
 import type { T_ReactElement } from "~/types";
+import { MDXComponents } from "~/utils/mdx";
 import { mirror } from "~/utils/misc";
 
 type T_Variants = "DEFAULT" | "UNSTYLED";
@@ -16,7 +17,7 @@ type T_MDXContentProps = {
 function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps): T_ReactElement {
   return (
     <Block is="article" className={`dfr-MDXContent dfr-MDXContent--${variant.toLowerCase()}`}>
-      <MDXRemote {...content} />
+      <MDXRemote {...content} components={MDXComponents as any} />
 
       <style jsx>{`
         /* Spacing: parent components */

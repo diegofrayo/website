@@ -41,7 +41,7 @@ export const MDXComponents = {
       </Code>
     );
   },
-  inlineCode: function InlineCode({
+  code: function InlineCode({
     children,
     ...rest
   }: {

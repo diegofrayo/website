@@ -2,7 +2,7 @@ import type { T_PageRoute } from "~/types";
 
 export const ROUTES: Record<T_RoutesKeys, T_PageRoute> = {
   HOME: "/",
-  // ABOUT_ME: "/about-me",
+  ABOUT_ME: "/about-me",
   // RESUME: "/resume",
   BOOKMARKS: "/bookmarks",
   BLOG: "/blog",
@@ -19,7 +19,7 @@ export const ROUTES: Record<T_RoutesKeys, T_PageRoute> = {
 };
 
 export const DYNAMIC_MAIN_PAGES = [
-  // "about-me",
+  "about-me",
   // "resume",
 ];
 
@@ -28,12 +28,12 @@ export const DYNAMIC_MAIN_PAGES = [
 type T_RoutesKeys =
   | "HOME"
   | "BOOKMARKS"
+  | "ABOUT_ME"
   | "BLOG"
   | "BLOG_DETAILS"
   | "MUSIC"
   | "MUSIC_DETAILS"
   | "PERSONAL"
-  // | "PROJECTS"
   | "TIMER"
   | "SIGN_IN"
   | "SIGN_OUT"

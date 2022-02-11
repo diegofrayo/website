@@ -47,7 +47,8 @@ export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsP
     redirect?: { destination: string; permanent: boolean };
   }> {
     try {
-      const pageLocale = locale || (parameters.locale as T_Locale);
+      const pageLocale =
+        locale || (parameters.locale as T_Locale) || I18nService.getDefaultLocale();
       const pageContent = await fetchPageContent({
         page: typeof page === "function" ? page(parameters) : page,
         locale: pageLocale,
@@ -59,7 +60,7 @@ export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsP
           (
             (localesExtractor
               ? localesExtractor(pageProps)
-              : pageContent.page?.config?.locales) || [pageLocale || I18nService.getDefaultLocale()]
+              : pageContent.page?.config?.locales) || [pageLocale]
           ).indexOf(pageLocale) === -1,
         props: {
           pageContent,

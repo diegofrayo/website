@@ -36,11 +36,21 @@ function Code({ children, variant, className = "", ...rest }: T_CodeProps): T_Re
       )}
       {...rest}
     >
-      <code>{children}</code>
+      {children}
 
       <style jsx>{`
         pre {
           word-break: keep-all;
+        }
+
+        pre :global(.dfr-Code) {
+          @apply dfr-text-color-dark-strong;
+          font-style: normal;
+        }
+
+        pre :global(.dfr-Code::before),
+        pre :global(.dfr-Code::after) {
+          content: "";
         }
       `}</style>
     </pre>

@@ -117,6 +117,16 @@ function MainMenu(): T_ReactElement {
         ...(AuthService.isUserLoggedIn()
           ? [
               {
+                label: translator.t("layout:header:menu:about_me"),
+                url: ROUTES.ABOUT_ME,
+                locale: undefined,
+              },
+              {
+                label: translator.t("layout:header:common:menu_item_bookmarks"),
+                url: ROUTES.BOOKMARKS,
+                locale: undefined,
+              },
+              {
                 label: translator.t("layout:header:common:menu_item_personal"),
                 url: ROUTES.PERSONAL,
                 locale: I18nService.getDefaultLocale(),
@@ -155,28 +165,18 @@ function MainMenu(): T_ReactElement {
         url: ROUTES.BLOG,
         locale: undefined,
       },
-      /*
       {
-        label: translator.t("layout:header:menu:about_me"),
-        url: ROUTES.ABOUT_ME,
+        label: translator.t("layout:header:menu:music"),
+        url: ROUTES.MUSIC,
         locale: undefined,
       },
+      /*
       {
         label: translator.t("layout:header:menu:resume"),
         url: ROUTES.RESUME,
         locale: undefined,
       },
       */
-      {
-        label: translator.t("layout:header:menu:music"),
-        url: ROUTES.MUSIC,
-        locale: undefined,
-      },
-      {
-        label: translator.t("layout:header:common:menu_item_bookmarks"),
-        url: ROUTES.BOOKMARKS,
-        locale: undefined,
-      },
     ];
   }
 

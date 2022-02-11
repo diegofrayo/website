@@ -50,7 +50,7 @@ export type T_Locale = "es" | "en";
 
 export type T_PageRoute =
   | "/"
-  // | "/about-me"
+  | "/about-me"
   // | "/resume"
   | "/bookmarks"
   | "/blog"
