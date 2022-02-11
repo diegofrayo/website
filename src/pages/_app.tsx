@@ -106,7 +106,7 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
               // themes={["light", "dark"]}
               // value={{ light: "tw-light", dark: "tw-dark" }}
             >
-              <MDXProvider components={MDXComponents}>
+              <MDXProvider components={MDXComponents as any}>
                 <Component {...pageProps} />
               </MDXProvider>
               <ProgressBar />
