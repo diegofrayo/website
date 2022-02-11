@@ -11,8 +11,8 @@ export type T_Routine = {
 export type T_RoutineItem = {
   id: string;
   title: string;
-  highTime: string;
-  sets: number;
+  highTime?: string;
+  sets: number | string[];
   restTime?: string;
   status: string;
 };

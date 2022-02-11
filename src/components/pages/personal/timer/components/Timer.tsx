@@ -96,7 +96,11 @@ function Timer({
           ? 10
           : set.isRest
           ? timeToSeconds(routineItem.restTime)
-          : timeToSeconds(routineItem.highTime),
+          : timeToSeconds(
+              Array.isArray(routineItem.sets)
+                ? routineItem.sets[Math.floor(set.index / 2)]
+                : routineItem.highTime,
+            ),
       );
     },
     [setTime, timeToSeconds],
@@ -105,15 +109,19 @@ function Timer({
   // effects
   React.useEffect(
     function getTimerReady() {
+      const numberOfSets = Array.isArray(routineItem.sets)
+        ? routineItem.sets.length
+        : routineItem.sets;
+
       const set = {
-        index: routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED ? routineItem.sets * 2 - 2 : 0,
+        index: routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED ? numberOfSets * 2 - 2 : 0,
         isStart: routineItem.status !== ROUTINE_ITEMS_STATUS.COMPLETED,
         isRest: false,
       };
 
       updateTime(set, routineItem);
       setSets(
-        createArray(routineItem.sets * 2, 0).map((index) => {
+        createArray(numberOfSets * 2, 0).map((index) => {
           if (index === 0) return "START";
           return index % 2 === 0 ? "REST" : "HIGH";
         }),
@@ -192,7 +200,13 @@ function Timer({
         status: ROUTINE_ITEMS_STATUS.IN_PROGRESS,
       });
       setCurrentSet(prevSet);
-      setTime(timeToSeconds(routineItem.highTime));
+      setTime(
+        timeToSeconds(
+          Array.isArray(routineItem.sets)
+            ? routineItem.sets[Math.floor(prevSet.index / 2)]
+            : routineItem.highTime,
+        ),
+      );
     } else {
       const prevSet = {
         index: currentSet.index - 1,
@@ -231,6 +245,7 @@ function Timer({
   const isRoutineItemCompleted = routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED;
   const showNextSetButton = !isRoutineItemCompleted;
   const showPrevSetButton = currentSet.index > 0 || isRoutineItemCompleted;
+  const numberOfSets = Array.isArray(routineItem.sets) ? routineItem.sets.length : routineItem.sets;
 
   return (
     <Block
@@ -351,9 +366,9 @@ function Timer({
           {currentSet.isStart
             ? 0
             : routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED
-            ? routineItem.sets
+            ? numberOfSets
             : Math[currentSet.isRest ? "ceil" : "round"](currentSet.index / 2)}
-          /{routineItem.sets}
+          /{numberOfSets}
         </Text>
       </Block>
     </Block>

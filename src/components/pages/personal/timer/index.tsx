@@ -367,6 +367,15 @@ function useController() {
       highTime: T_RoutineItem["highTime"],
       restTime: T_RoutineItem["restTime"],
     ): number {
+      if (Array.isArray(sets)) {
+        return (
+          sets.reduce((result, curr) => {
+            return result + timeToSeconds(curr);
+          }, 0) +
+          timeToSeconds(restTime) * (sets.length - 1)
+        );
+      }
+
       return timeToSeconds(highTime) * sets + timeToSeconds(restTime) * (sets - 1);
     },
     [timeToSeconds],
@@ -683,7 +692,7 @@ function useController() {
                 status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
               },
             ] as T_RoutineItem[]
-          ).concat(routine.items.slice(0, 3))
+          ).concat(routine.items.slice(0, 5))
         : routine.items
       ).map((item) => {
         return { ...item, status: ROUTINE_ITEMS_STATUS.NOT_STARTED };

@@ -73,16 +73,18 @@ export default function RoutineItem({
           {title}
         </Title>
         <Text className="tw-ml-3 tw-text-right tw-text-xs tw-font-bold tw-italic">
-          {pluralize(sets, "repetición", "repeticiones")}
+          {pluralize(Array.isArray(sets) ? sets.length : sets, "repetición", "repeticiones")}
         </Text>
       </Block>
       <Block className="tw-px-3 tw-py-3">
-        <Block className="tw-flex tw-items-center tw-justify-between">
-          <InlineText className="tw-text-sm">Tiempo de ejecución</InlineText>
-          <InlineText className="tw-w-20 tw-rounded-lg tw-bg-red-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold tw-text-white">
-            {highTime}
-          </InlineText>
-        </Block>
+        {highTime && (
+          <Block className="tw-flex tw-items-center tw-justify-between">
+            <InlineText className="tw-text-sm">Tiempo de acción</InlineText>
+            <InlineText className="tw-w-20 tw-rounded-lg tw-bg-red-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold tw-text-white">
+              {highTime}
+            </InlineText>
+          </Block>
+        )}
         {restTime && (
           <React.Fragment>
             <Space size={0.5} />
