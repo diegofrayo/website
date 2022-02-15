@@ -109,7 +109,7 @@ Stats.Item = function StatsItem({ label, value }: { label: string; value: string
       >
         {label}
       </InlineText>
-      <InlineText className="tw-flex tw-w-2/4 tw-items-center tw-justify-end tw-border-b tw-border-l tw-py-1 tw-px-2 dfr-border-color-primary">
+      <InlineText className="tw-flex tw-w-2/4 tw-items-center tw-justify-end tw-border-b tw-border-l tw-py-1 tw-px-2 tw-text-right dfr-border-color-primary">
         {value}
       </InlineText>
     </Block>

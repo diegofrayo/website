@@ -10,6 +10,7 @@ import {
 } from "~/components/shared";
 import * as BlogComponents from "~/components/pages/blog/components";
 import * as MusicComponents from "~/components/pages/music/components";
+import * as AboutMeComponents from "~/components/pages/about-me/components";
 // import * as ResumeComponents from "~/components/pages/resume";
 import type { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
@@ -75,6 +76,7 @@ export const MDXComponents = {
   // Pages components
   ...BlogComponents,
   ...MusicComponents,
+  ...AboutMeComponents,
   // ...ResumeComponents,
 };
 

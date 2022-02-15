@@ -13,6 +13,9 @@ module.exports = {
     {
       pattern: /dfr-/,
     },
+    {
+      pattern: /tw-max-w/,
+    },
   ],
   theme: {
     screens: {
