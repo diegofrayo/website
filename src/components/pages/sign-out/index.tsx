@@ -5,13 +5,13 @@ import { Block } from "~/components/primitive";
 import { Loader } from "~/components/shared";
 import { useDidMount } from "~/hooks";
 import type { T_ReactElement } from "~/types";
-import { ROUTES } from "~/utils/routing";
+import { redirect, ROUTES } from "~/utils/routing";
 
 function SignOutPage(): T_ReactElement {
   useDidMount(() => {
     setTimeout(() => {
       window.localStorage.clear();
-      window.location.href = `${ROUTES.HOME}?a=d`;
+      redirect(`${ROUTES.HOME}?a=d`);
     }, 2000);
   });
 

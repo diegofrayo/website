@@ -27,6 +27,7 @@ import { isPWA } from "~/utils/browser";
 import { MDXComponents } from "~/utils/mdx";
 
 import ErrorPage from "./500";
+import { initPWARoutingConfig } from "~/utils/routing";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -58,23 +59,7 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
     });
 
     if (isPWA()) {
-      const LOCAL_STORAGE_KEY = "DFR_LAST_PAGE";
-      const lastPageVisited = window.localStorage.getItem(LOCAL_STORAGE_KEY) || "";
-      const handleRouteChangeComplete = () => {
-        window.localStorage.setItem(LOCAL_STORAGE_KEY, window.location.pathname);
-      };
-
-      if (lastPageVisited && lastPageVisited !== window.location.pathname) {
-        window.localStorage.removeItem(LOCAL_STORAGE_KEY);
-        window.location.href = lastPageVisited;
-        return;
-      }
-
-      router.events.on("routeChangeComplete", handleRouteChangeComplete);
-
-      return () => {
-        router.events.off("routeChangeComplete", handleRouteChangeComplete);
-      };
+      return initPWARoutingConfig(router);
     }
   });
 

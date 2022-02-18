@@ -31,7 +31,7 @@ import type {
 } from "~/types";
 import { scrollToElement, isPWA } from "~/utils/browser";
 import { createArray, isDevelopmentEnvironment } from "~/utils/misc";
-import { ROUTES } from "~/utils/routing";
+import { redirect, ROUTES } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
 
 function Header(): T_ReactElement {
@@ -253,7 +253,7 @@ const SettingsMenu = withSafeRenderingComponent(function SettingsMenu(): T_React
       setShowMenu(false);
 
       if (reloadWhenLocaleChanges) {
-        window.location.href = `/${locale}${asPath}`;
+        redirect(`/${locale}${asPath}`);
         return;
       }
 

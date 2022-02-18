@@ -10,7 +10,7 @@ import http from "~/lib/http";
 import type { T_ReactElement } from "~/types";
 import { setScrollPosition } from "~/utils/browser";
 import { delay, isDevelopmentEnvironment, sortBy } from "~/utils/misc";
-import { ROUTES } from "~/utils/routing";
+import { redirect, ROUTES } from "~/utils/routing";
 
 import { ROUTINE_ITEMS_STATUS, ROUTINE_STATUS, TIMER_STATUS } from "./constants";
 import { Timer, Stats, RoutineItem } from "./components";
@@ -868,7 +868,7 @@ function GoToHomeLink(): T_ReactElement {
         variant={Button.variant.SIMPLE}
         onClick={() => {
           if (window.confirm("¿Está seguro de que quiere ir al inicio?")) {
-            window.location.href = ROUTES.HOME;
+            redirect(ROUTES.HOME);
           }
         }}
       >

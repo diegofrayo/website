@@ -6,7 +6,7 @@ import { Input } from "~/components/primitive";
 import { AuthService, withAuth } from "~/auth";
 import { getPageContentStaticProps } from "~/i18n";
 import { T_ReactElement } from "~/types";
-import { ROUTES } from "~/utils/routing";
+import { redirect, ROUTES } from "~/utils/routing";
 
 function SignInPage(): T_ReactElement {
   const {
@@ -68,10 +68,8 @@ function useController() {
 
     try {
       setIsInputDisabled(true);
-
       await AuthService.signIn({ password: inputValue });
-
-      window.location.href = ROUTES.HOME;
+      redirect(ROUTES.HOME);
     } catch (error) {
       console.error(error);
 

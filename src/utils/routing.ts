@@ -1,4 +1,7 @@
 import type { T_PageRoute } from "~/types";
+import { isPWA } from "./browser";
+
+// --- Constants ---
 
 export const ROUTES: Record<T_RoutesKeys, T_PageRoute> = {
   HOME: "/",
@@ -22,6 +25,37 @@ export const DYNAMIC_MAIN_PAGES = [
   "about-me",
   // "resume",
 ];
+
+// --- Utils ---
+
+const LOCAL_STORAGE_KEY = "DFR_LAST_PAGE";
+
+export function redirect(path: string): void {
+  if (isPWA()) {
+    window.localStorage.setItem(LOCAL_STORAGE_KEY, path);
+  }
+
+  window.location.href = path;
+}
+
+export function initPWARoutingConfig(router: any): any {
+  const lastPageVisited = window.localStorage.getItem(LOCAL_STORAGE_KEY) || "";
+  const handleRouteChangeComplete = () => {
+    window.localStorage.setItem(LOCAL_STORAGE_KEY, window.location.pathname);
+  };
+
+  if (lastPageVisited && lastPageVisited !== window.location.pathname) {
+    window.localStorage.removeItem(LOCAL_STORAGE_KEY);
+    window.location.href = lastPageVisited;
+    return;
+  }
+
+  router.events.on("routeChangeComplete", handleRouteChangeComplete);
+
+  return () => {
+    router.events.off("routeChangeComplete", handleRouteChangeComplete);
+  };
+}
 
 // --- Types ---
 
