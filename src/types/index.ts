@@ -46,7 +46,7 @@ export type T_PageContent = {
   };
 };
 
-export type T_Locale = "es" | "en";
+export type T_Locale = "en";
 
 export type T_PageRoute =
   | "/"
@@ -82,6 +82,7 @@ export type T_BlogPost = {
   slug: string;
   categories: T_ItemCategory[];
   locales: T_Locale[];
+  thumbnail: string;
   createdAt: string;
   publishedAt: string;
   updatedAt: string;
@@ -185,7 +186,7 @@ export type T_WebsiteMetadata = {
     github: string;
     linkedin: string;
     twitter: string;
-    "500px": string;
+    instagram: string;
     spotify: string;
     couchsurfing: string;
   };
@@ -257,6 +258,7 @@ export enum E_Icons {
   "MOON" = "MOON",
   "MUSIC_NOTE" = "MUSIC_NOTE",
   "PAUSE" = "PAUSE",
+  "PHOTOGRAPH" = "PHOTOGRAPH",
   "PLAY" = "PLAY",
   "PRESENTATION_CHART_LINE" = "PRESENTATION_CHART_LINE",
   "REFRESH" = "REFRESH",

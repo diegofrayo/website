@@ -30,6 +30,7 @@ type T_PageProps = {
     replaceTitle?: boolean;
     pathname?: string;
     description?: string;
+    image?: string;
     disableSEO?: boolean;
     scripts?: { element: "link"; props: any }[];
   };
@@ -46,6 +47,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
       : SEO_METADATA.title,
     url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
     description: config.description || SEO_METADATA.description,
+    image: config.image || "",
   };
 
   useDocumentTitle(metadata.title);
@@ -74,6 +76,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
         <meta property="og:title" content={metadata.title} />
         <meta property="og:description" content={metadata.description} />
         <meta property="og:url" content={metadata.url} />
+        {metadata.image && <meta property="og:image" content={metadata.image} />}
         <meta property="og:site_name" content={SEO_METADATA.title} />
 
         {config.scripts?.map((script, index) => {

@@ -83,5 +83,6 @@ export const MDXComponents = {
 export const MDXScope = {
   DATA: {
     ROUTES,
+    SERVER_URL: process.env.NEXT_PUBLIC_ASSETS_SERVER_URL,
   },
 };

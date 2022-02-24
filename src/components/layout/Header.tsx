@@ -3,19 +3,9 @@ import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 
-import {
-  Block,
-  Button,
-  Icon,
-  Image,
-  InlineText,
-  Link,
-  List,
-  Space,
-  Text,
-} from "~/components/primitive";
+import { Block, Button, Icon, Image, Link, List, Space, Text } from "~/components/primitive";
 import { AuthService } from "~/auth";
-import { withRequiredAuthComponent, withSafeRenderingComponent } from "~/hocs";
+import { withRequiredAuthComponent, renderIf } from "~/hocs";
 import { useClickOutside, useDidMount, useEnhacedState } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
@@ -29,23 +19,22 @@ import type {
   T_ReactElement,
   T_WebsiteMetadata,
 } from "~/types";
-import { scrollToElement, isPWA } from "~/utils/browser";
+import { isPWA } from "~/utils/browser";
 import { createArray, isDevelopmentEnvironment } from "~/utils/misc";
 import { redirect, ROUTES } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
 
 function Header(): T_ReactElement {
-  const { asPath } = useRouter();
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
-    <Block
-      is="header"
-      className="tw-h-auto tw-py-8 sm:tw-flex sm:tw-h-screen sm:tw-flex-col sm:tw-justify-between"
-    >
+    <Block is="header" className="tw-py-8 sm:tw-flex sm:tw-flex-col sm:tw-justify-between">
       <Block>
         <Block className="tw-flex tw-items-center tw-justify-between">
-          <MainMenu />
+          <Block className="tw-w-16 tw-text-left">
+            <MainMenu />
+          </Block>
+
           <Link
             variant={Link.variant.SECONDARY}
             href={ROUTES.HOME}
@@ -53,19 +42,22 @@ function Header(): T_ReactElement {
           >
             {WEBSITE_METADATA.username}
           </Link>
-          <SettingsMenu />
+          <Block className="tw-w-16 tw-text-right">
+            <SettingsMenu />
+          </Block>
         </Block>
+        {/*
         <Block className="tw-text-center">
           <InlineText className="tw-text-xxs dfr-text-color-secondary dark:dfr-text-color-secondary">
             {asPath.split("?")[0].split("/").slice(0, 2).join("/")}
           </InlineText>
         </Block>
+        */}
       </Block>
-      <Space size={8} className="sw:tw-hidden" />
 
       <Room />
-      <Space size={10} className="sw:tw-hidden" />
 
+      {/*
       <Button
         variant={Button.variant.SIMPLE}
         className="tw-mx-auto tw-block"
@@ -82,6 +74,7 @@ function Header(): T_ReactElement {
           scroll-margin-top: 20px;
         }
       `}</style>
+      */}
     </Block>
   );
 }
@@ -222,7 +215,7 @@ function MainMenu(): T_ReactElement {
   );
 }
 
-const SettingsMenu = withSafeRenderingComponent(function SettingsMenu(): T_ReactElement {
+const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactElement {
   const { locale, asPath, push } = useRouter();
   const { locales: pageLocales, reloadWhenLocaleChanges } =
     useStoreSelector<T_PageConfig>(selectPageConfig);
@@ -232,7 +225,7 @@ const SettingsMenu = withSafeRenderingComponent(function SettingsMenu(): T_React
   const menuRef = React.useRef(null);
   const { showMenu, setShowMenu, toggleShowMenu } = useEnhacedState({ showMenu: false });
 
-  const EMOJIS = { en: "🇺🇸", es: "🇪🇸" };
+  const EMOJIS = { en: "🇺🇸" };
   const isDarkMode = theme === "dark";
 
   useDidMount(() => {
@@ -374,9 +367,9 @@ function MenuItem({
   );
 }
 
-function Room(): T_ReactElement {
+const Room = renderIf(function Room(): T_ReactElement {
   return (
-    <Block className="dfr-Room tw-mx-auto tw-w-44 tw-max-w-full tw-border-b tw-px-1 dfr-border-color-dark-strong dark:dfr-border-color-primary">
+    <Block className="dfr-Room tw-mx-auto tw-mt-32 tw-w-44 tw-max-w-full tw-border-b tw-px-1 dfr-border-color-dark-strong dark:dfr-border-color-primary">
       <PictureFrame />
       <Block className="tw-flex tw-items-end tw-justify-between">
         <TV />
@@ -385,21 +378,17 @@ function Room(): T_ReactElement {
       <Table />
     </Block>
   );
-}
+})(() => window.location.pathname === ROUTES.HOME);
 
 function PictureFrame() {
   const { t } = useTranslation();
   const [photo, setPhoto] = React.useState<{ src: string; portrait: boolean }>();
 
   useDidMount(() => {
-    const PHOTOS = [
-      {
-        src: "/static/images/header/2.jpg",
-        portrait: false,
-      },
-    ];
-
-    setPhoto(PHOTOS[0]);
+    setPhoto({
+      src: "/static/images/header/3.jpg",
+      portrait: true,
+    });
   });
 
   if (!photo) return null;
@@ -408,7 +397,6 @@ function PictureFrame() {
     <Block
       className={classNames(
         "dfr-PictureFrame tw-relative tw-mx-auto tw-mb-8 tw-rotate-2 tw-transition-transform hover:tw-rotate-0",
-
         photo.portrait === true ? "dfr-PictureFrame--portrait tw-w-20" : "tw-w-32",
       )}
     >
@@ -498,13 +486,13 @@ function TV() {
   );
 
   const SONG = {
-    title: "La Edad Del Cielo - Cover",
-    artist: "arthur victor",
-    duration: "3:27",
-    thumbnail: "https://i.scdn.co/image/ab67616d0000b27385cdb6b0ede4824b449dc73f",
+    title: "El Charro Chino",
+    artist: "Indio Solari y los Fundamentalistas del Aire Acondicionado",
+    duration: "4:26",
+    thumbnail: "https://i.scdn.co/image/ab67616d0000b273109ce4d556bd574e0e781da6",
     audio:
-      "https://p.scdn.co/mp3-preview/b6fb5cddcf7285f80bfe113a38f414ee3eef28bc?cid=a46f5c5745a14fbf826186da8da5ecc3",
-    url: "https://open.spotify.com/track/4jFFRZOej9hhZ6K6SKrFuU",
+      "https://p.scdn.co/mp3-preview/b843041c1ccaec2384899e4d128e22d84cdc33b5?cid=a46f5c5745a14fbf826186da8da5ecc3",
+    url: "https://open.spotify.com/track/6EHebf59vOGwm4NrbbENRs",
     source: "spotify",
   };
 

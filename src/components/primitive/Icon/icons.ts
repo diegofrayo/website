@@ -20,6 +20,7 @@ import {
   MusicNoteIcon,
   PauseIcon,
   PencilAltIcon,
+  PhotographIcon,
   PlayIcon,
   PresentationChartLineIcon,
   RefreshIcon,
@@ -252,6 +253,13 @@ export const ICONS: Record<E_Icons, T_Icon> = {
   BOOK_OPEN: {
     isLibraryIcon: true,
     icon: BookOpenIcon,
+    props: {
+      className: "",
+    },
+  },
+  PHOTOGRAPH: {
+    isLibraryIcon: true,
+    icon: PhotographIcon,
     props: {
       className: "",
     },

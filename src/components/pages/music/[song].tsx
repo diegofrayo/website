@@ -132,7 +132,6 @@ function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps,
 
   useDidMount(() => {
     setFontSize(getFontSize());
-    document.documentElement.lang = "es";
   });
 
   React.useEffect(

@@ -12,7 +12,7 @@ module.exports = withMDX()(
       ignoreDuringBuilds: true,
     },
     i18n: {
-      locales: ["es", "en"],
+      locales: ["en"],
       defaultLocale: "en",
       localeDetection: false,
     },
@@ -27,6 +27,12 @@ module.exports = withMDX()(
         {
           source: "/es/blog/conectando-un-proyecto-de-firebase-con-un-dominio-de-go-daddy",
           destination: "/es/blog/connecting-a-firebase-project-with-a-go-daddy-domain",
+          permanent: true,
+          locale: false,
+        },
+        {
+          source: "/es/blog/mi-musica-favorita-y-mdx",
+          destination: "/blog/my-favorite-music-and-mdx",
           permanent: true,
           locale: false,
         },

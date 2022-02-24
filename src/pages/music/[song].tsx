@@ -33,7 +33,6 @@ export const getStaticPaths: GetStaticPaths<{ song: string }> = async function g
 
 export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: string }>({
   page: [ROUTES.MUSIC, ROUTES.MUSIC_DETAILS],
-  locale: "es",
   callback: async ({ params }) => {
     const song = await MusicService.getSong({ id: params?.song });
     const file = (await dataLoader({

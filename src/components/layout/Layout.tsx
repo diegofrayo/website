@@ -39,7 +39,7 @@ function MainLayout({
       <Block className="tw-mx-auto tw-px-8 dfr-max-w-layout">
         <Header />
 
-        <Block id="body" className="tw-pt-16 tw-pb-32">
+        <Block id="body" className="tw-py-32">
           {title && (
             <Block className="tw-text-center">
               {parentUrl && (
@@ -87,14 +87,12 @@ function Footer({
         <Block className="tw-py-16">
           <Block>
             <FooterIcon url={`mailto:${WEBSITE_METADATA.email}`} icon={Icon.icon.GMAIL} />
+            {/* <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} /> */}
             <FooterIcon url={WEBSITE_METADATA.social.github} icon={Icon.icon.GITHUB_LIGHT} />
-            <FooterIcon url={WEBSITE_METADATA.social.twitter} icon={Icon.icon.TWITTER} />
-            <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
-            <FooterIcon url={WEBSITE_METADATA.social["500px"]} icon={Icon.icon["500PX"]} />
             <FooterIcon url={WEBSITE_METADATA.social.couchsurfing} icon={Icon.icon.COUCHSURFING} />
-            {/*
-            <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} />
-            */}
+            <FooterIcon url={WEBSITE_METADATA.social.twitter} icon={Icon.icon.TWITTER} />
+            <FooterIcon url={WEBSITE_METADATA.social.instagram} icon={Icon.icon.INSTAGRAM} />
+            <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
           </Block>
         </Block>
         <Space size={0} className="tw-border-b tw-border-opacity-20 dfr-border-color-primary" />

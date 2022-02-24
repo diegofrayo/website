@@ -2,7 +2,7 @@ import * as React from "react";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Icon, Space, Button, Block, Text, InlineText } from "~/components/primitive";
+import { Icon, Space, Button, Block, Text, InlineText, Image } from "~/components/primitive";
 import { MDXContent, RateContent } from "~/components/shared";
 import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/i18n";
@@ -43,11 +43,19 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
         replaceTitle: true,
         description: post.description,
         pathname: `${ROUTES.BLOG}/${post.slug}`,
+        image: post.thumbnail,
         disableSEO: Boolean(t("page:config:is_seo_disabled")),
       }}
     >
       <MainLayout title={post.title}>
         <BlogPostDetails publishedAt={post.publishedAt} updatedAt={post.updatedAt} />
+        <Space size={8} />
+
+        <Image
+          src={post.thumbnail}
+          alt="Blog post thumbnail"
+          className="tw-mx-auto tw-rounded-md"
+        />
         <Space size={8} />
 
         <MDXContent content={postMDXContent} />

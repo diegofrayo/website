@@ -55,7 +55,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
           className={classNames(
             "tw-flex-1 tw-cursor-pointer tw-p-2 tw-text-center",
             isSourceCodeTabSelected &&
-              "tw-bg-black tw-uppercase tw-text-white hover:tw-opacity-100 dark:tw-bg-white dark:tw-text-black",
+              "tw-bg-black tw-font-bold tw-text-white hover:tw-opacity-100 dark:tw-bg-white dark:tw-text-black",
           )}
           onClick={setSourceCodeTab}
         >
@@ -66,7 +66,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
           className={classNames(
             "tw-flex-1 tw-cursor-pointer tw-p-2 tw-text-center",
             isOutputTabSelected &&
-              "tw-bg-black tw-text-base tw-uppercase tw-text-white hover:tw-opacity-100 dark:tw-bg-white dark:tw-text-black",
+              "tw-bg-black tw-font-bold tw-text-white hover:tw-opacity-100 dark:tw-bg-white dark:tw-text-black",
           )}
           onClick={setOutputTab}
         >

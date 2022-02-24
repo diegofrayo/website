@@ -2,13 +2,13 @@ export const PERSONAL_PAGES = [
   // personal
   {
     slug: "contacts",
-    title: "contactos",
+    title: "contacts",
     componentName: "",
     icon: "USER_CIRCLE",
   },
   {
     slug: "films",
-    title: "películas y series",
+    title: "films",
     componentName: "Films",
     icon: "FILM",
   },
@@ -26,7 +26,7 @@ export const PERSONAL_PAGES = [
   },
   {
     slug: "books",
-    title: "libros",
+    title: "books",
     componentName: "Books",
     icon: "BOOK_OPEN",
   },
@@ -52,13 +52,19 @@ export const PERSONAL_PAGES = [
   },
   {
     slug: "chords-creator",
-    title: "acordes",
+    title: "chords",
     componentName: "ChordsCreator",
     icon: "MUSIC_NOTE",
   },
   {
+    slug: "thumbnails",
+    title: "thumbnails",
+    componentName: "Thumbnails",
+    icon: "PHOTOGRAPH",
+  },
+  {
     slug: "styles",
-    title: "estilos",
+    title: "styles",
     componentName: "Styles",
     icon: "COLOR_SWATCH",
   },
