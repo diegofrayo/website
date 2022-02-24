@@ -369,7 +369,7 @@ function MenuItem({
 
 const Room = renderIf(function Room(): T_ReactElement {
   return (
-    <Block className="dfr-Room tw-mx-auto tw-mt-32 tw-max-w-full tw-rounded-t-md tw-border-b-2 tw-p-16 tw-pb-0 dfr-shadow dfr-border-color-dark-strong dfr-bg-color-light-strong">
+    <Block className="dfr-Room tw-mx-auto tw-mt-32 tw-w-72 tw-max-w-full tw-rounded-t-md tw-border-b-2 tw-px-8 tw-pt-16 dfr-shadow dfr-border-color-dark-strong dfr-bg-color-light-strong sm:tw-px-16">
       <PictureFrame />
       <Block className="tw-flex tw-items-end tw-justify-between tw-overflow-hidden">
         <TV />
@@ -619,7 +619,7 @@ function TV() {
 
 function Flowers() {
   return (
-    <Block className="tw-relative tw-overflow-hidden">
+    <Block className="tw-relative tw-flex-shrink-0 tw-overflow-hidden">
       <Icon
         icon={Icon.icon.FLOWER_2}
         size={20}

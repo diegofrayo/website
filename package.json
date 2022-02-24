@@ -24,7 +24,8 @@
     "scripts:sitemap": "node --experimental-json-modules scripts/sitemap.mjs",
     "scripts:styles": "node scripts/styles/css-vars.js",
     "===== AUX/DEV =====": "",
-    "scripts:commit": "sh ./.husky/minor-commit.sh"
+    "scripts:commit": "sh ./.husky/minor-commit.sh",
+    "scripts:upgrade-deps": "yarn upgrade @storybook/addon-essentials @storybook/react @mdx-js/react next @mdx-js/loader @next/mdx"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.0",
