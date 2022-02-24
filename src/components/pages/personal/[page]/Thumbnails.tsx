@@ -64,7 +64,7 @@ function useController() {
   const thumbnailRef = React.useRef<HTMLDivElement>(null);
   const [title, setTitle] = React.useState(CURRENT_BLOG_POST.title);
   const [src, setSrc] = React.useState(
-    `/static/images/personal/thumbnails/${CURRENT_BLOG_POST.slug}.png`,
+    `/static/images/pages/personal/thumbnails/${CURRENT_BLOG_POST.slug}.png`,
   );
 
   function onChange(input) {

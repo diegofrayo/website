@@ -369,13 +369,19 @@ function MenuItem({
 
 const Room = renderIf(function Room(): T_ReactElement {
   return (
-    <Block className="dfr-Room tw-mx-auto tw-mt-32 tw-w-44 tw-max-w-full tw-border-b tw-px-1 dfr-border-color-dark-strong dark:dfr-border-color-primary">
+    <Block className="dfr-Room tw-mx-auto tw-mt-32 tw-max-w-full tw-rounded-t-md tw-border-b-2 tw-p-16 tw-pb-0 dfr-shadow dfr-border-color-dark-strong dfr-bg-color-light-strong">
       <PictureFrame />
-      <Block className="tw-flex tw-items-end tw-justify-between">
+      <Block className="tw-flex tw-items-end tw-justify-between tw-overflow-hidden">
         <TV />
         <Flowers />
       </Block>
       <Table />
+
+      <style jsx>{`
+        :global(.dfr-Room) {
+          background-image: url("/static/images/textures/arabesque.png");
+        }
+      `}</style>
     </Block>
   );
 })(() => window.location.pathname === ROUTES.HOME);
@@ -386,8 +392,8 @@ function PictureFrame() {
 
   useDidMount(() => {
     setPhoto({
-      src: "/static/images/header/3.jpg",
-      portrait: true,
+      src: "/static/images/header/1.jpg",
+      portrait: false,
     });
   });
 
@@ -412,7 +418,7 @@ function PictureFrame() {
           alt="Photography taken by Diego Rayo"
         />
       </Block>
-      <Text className="tw-mx-auto tw-h-4 tw-w-16 tw-rounded-bl-md tw-rounded-br-md tw-border-2 tw-border-t-0 tw-border-yellow-700 tw-text-center tw-text-xxs tw-font-bold tw-italic dfr-text-color-dark-strong dark:dfr-text-color-light-strong">
+      <Text className="tw-mx-auto tw-h-4 tw-w-16 tw-rounded-bl-md tw-rounded-br-md tw-border-2 tw-border-t-0 tw-border-yellow-700 tw-text-center tw-text-xxs tw-font-bold tw-italic dfr-text-color-dark-strong dfr-bg-color-light-strong dark:dfr-text-color-light-strong">
         {t("layout:header:room:welcome")}
       </Text>
 
@@ -589,7 +595,7 @@ function TV() {
           display: block;
           position: absolute;
           top: 90%;
-          z-index: -1;
+          z-index: 0;
         }
 
         :global(.tw-dark) :global(.dfr-TV)::before,

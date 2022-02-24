@@ -7,7 +7,7 @@ import { useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
 import type { E_Icons, T_ReactChildrenProp, T_ReactElement, T_WebsiteMetadata } from "~/types";
-import { getScrollPosition, scrollToElement } from "~/utils/browser";
+import { getScrollPosition, setScrollPosition } from "~/utils/browser";
 
 import Header from "./Header";
 
@@ -164,7 +164,7 @@ function GoToTopButton(): T_ReactElement {
       variant={Button.variant.SIMPLE}
       className="tw-fixed tw-bottom-3 tw-right-3 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-bg-opacity-70 tw-text-2xl dfr-bg-color-dark-strong sm:tw-right-4 sm:tw-bottom-4"
       onClick={() => {
-        scrollToElement(document.getElementById("go-to-body-icon"));
+        setScrollPosition(0);
       }}
     >
       <Icon icon={Icon.icon.ARROW_UP} color="dfr-text-color-light-strong" />
