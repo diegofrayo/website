@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 
-import { Block, Button, Icon, InlineText, Link, Space, Title } from "~/components/primitive";
+import { Block, Button, Icon, InlineText, Link, Space, Title, Text } from "~/components/primitive";
 import { useOnWindowStopScroll } from "~/hooks";
 import { useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
@@ -84,8 +84,14 @@ function Footer({
   return (
     <Block is="footer" className="tw-relative tw-text-center dfr-bg-color-dark-strong">
       <Block className="tw-mx-auto tw-px-8 dfr-max-w-layout">
-        <Block className="tw-py-16">
-          <Block>
+        <Block className="tw-py-16 tw-text-center">
+          <Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase dfr-text-color-secondary">
+            contact me on
+          </Text>
+          <Block
+            display="tw-inline-block"
+            className="tw-mt-2 tw-border-t tw-border-opacity-20 tw-pt-2 dfr-border-color-light-strong"
+          >
             <FooterIcon url={`mailto:${WEBSITE_METADATA.email}`} icon={Icon.icon.GMAIL} />
             {/* <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} /> */}
             <FooterIcon url={WEBSITE_METADATA.social.github} icon={Icon.icon.GITHUB_LIGHT} />
@@ -96,7 +102,7 @@ function Footer({
           </Block>
         </Block>
         <Space size={0} className="tw-border-b tw-border-opacity-20 dfr-border-color-primary" />
-        <Block className="tw-tdext-right tw-py-2 tw-text-xxs dfr-text-color-light-strong">
+        <Block className="tw-py-2 tw-text-xxs dfr-text-color-light-strong">
           <InlineText is="strong">{t("layout:footer:resources_disclaimer")}:</InlineText>{" "}
           <Link
             variant={Link.variant.PRIMARY}
@@ -133,7 +139,7 @@ function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactEleme
     >
       <Icon
         icon={icon}
-        wrapperClassName="dfr-bg-color-light-strong dfr-border-color-light-strong tw-border tw-bg-opacity-10 tw-border-opacity-10 tw-rounded-full tw-p-2"
+        wrapperClassName="dfr-bg-color-light-strong tw-border tw-bg-opacity-10 tw-border-opacity-20 tw-rounded-full tw-p-2 dfr-border-color-light-strong"
         size="tw-w-4 tw-h-4 sm:tw-w-8
         sm:tw-h-8"
       />

@@ -6,14 +6,13 @@ import { isPWA } from "./browser";
 export const ROUTES: Record<T_RoutesKeys, T_PageRoute> = {
   HOME: "/",
   ABOUT_ME: "/about-me",
-  // RESUME: "/resume",
+  RESUME: "/resume",
   BOOKMARKS: "/bookmarks",
   BLOG: "/blog",
   BLOG_DETAILS: "/blog/[slug]",
   MUSIC: "/music",
   MUSIC_DETAILS: "/music/[song]",
   PERSONAL: "/personal",
-  // PROJECTS: "/projects",
   TIMER: "/timer",
   SIGN_IN: "/sign-in",
   SIGN_OUT: "/sign-out",
@@ -21,10 +20,7 @@ export const ROUTES: Record<T_RoutesKeys, T_PageRoute> = {
   ERROR_500: "/500",
 };
 
-export const DYNAMIC_MAIN_PAGES = [
-  "about-me",
-  // "resume",
-];
+export const DYNAMIC_MAIN_PAGES = ["about-me", "resume"];
 
 // --- Utils ---
 
@@ -63,6 +59,7 @@ type T_RoutesKeys =
   | "HOME"
   | "BOOKMARKS"
   | "ABOUT_ME"
+  | "RESUME"
   | "BLOG"
   | "BLOG_DETAILS"
   | "MUSIC"

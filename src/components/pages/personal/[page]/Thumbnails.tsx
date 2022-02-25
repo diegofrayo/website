@@ -102,18 +102,18 @@ function useController() {
 function Thumbnail({ title, src, containerRef }) {
   return (
     <div
-      className="root tw-relative tw-mx-auto tw-flex tw-flex-col tw-items-center tw-justify-center tw-overflow-auto tw-border-8 tw-px-4 tw-py-16 dfr-border-color-dark-strong dfr-bg-color-light-strong"
+      className="root tw-to-sdky-100 tw-viax-slate-200 tw-relative tw-mx-auto tw-flex tw-flex-col tw-items-center tw-justify-center tw-overflow-auto tw-border-8 tw-border-black tw-bg-gradient-to-b tw-from-slate-100 tw-px-4 tw-py-16"
       ref={containerRef}
     >
       <Image src={src} alt="Blog post thumbnail" />
       <Title
         is="h1"
         variant={Title.variant.UNSTYLED}
-        className="tw-max-w-xs tw-text-center tw-font-sans tw-font-thin tw-uppercase dfr-text-color-dark-strong"
+        className="tw-mt-2 tw-max-w-xs tw-text-center tw-font-sans tw-font-thin tw-uppercase dfr-text-color-dark-strong"
       >
         {title}
       </Title>
-      <InlineText className="tw-absolute tw-bottom-1 tw-right-1 tw-text-right tw-font-mono tw-text-sm tw-font-bold dfr-text-color-dark-strong">
+      <InlineText className="tw-absolute tw-bottom-1 tw-right-2 tw-text-right tw-font-mono tw-text-xs tw-font-bold tw-italic tw-text-slate-800">
         {"diegofrayo.vercel.app"}
       </InlineText>
     </div>

@@ -1,6 +1,6 @@
 import { serialize } from "next-mdx-remote/serialize";
 
-import ContactsPage from "~/components/pages/personal/contacts";
+import ContactsPage from "~/components/pages/personal/[page]/Contacts";
 import { getPageContentStaticProps } from "~/i18n";
 import http from "~/lib/http";
 

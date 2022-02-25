@@ -15,7 +15,6 @@ body {
 body {
   @apply dfr-bg-color-layout;
   @apply dfr-text-color-primary;
-  background-image: url("/static/images/textures/diamond-eyes.png");
   cursor: default;
   font-size: 18px;
   overflow-y: auto;

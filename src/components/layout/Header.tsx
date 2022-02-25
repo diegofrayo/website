@@ -110,24 +110,20 @@ function MainMenu(): T_ReactElement {
         ...(AuthService.isUserLoggedIn()
           ? [
               {
-                label: translator.t("layout:header:menu:about_me"),
-                url: ROUTES.ABOUT_ME,
-                locale: undefined,
+                label: translator.t("layout:header:common:menu_item_personal"),
+                url: ROUTES.PERSONAL,
+              },
+              {
+                label: translator.t("layout:header:menu:music"),
+                url: ROUTES.MUSIC,
               },
               {
                 label: translator.t("layout:header:common:menu_item_bookmarks"),
                 url: ROUTES.BOOKMARKS,
-                locale: undefined,
-              },
-              {
-                label: translator.t("layout:header:common:menu_item_personal"),
-                url: ROUTES.PERSONAL,
-                locale: I18nService.getDefaultLocale(),
               },
               {
                 label: translator.t("layout:header:menu:sign_out"),
                 url: ROUTES.SIGN_OUT,
-                locale: I18nService.getDefaultLocale(),
               },
             ]
           : isPWA()
@@ -135,7 +131,6 @@ function MainMenu(): T_ReactElement {
               {
                 label: translator.t("layout:header:menu:sign_in"),
                 url: ROUTES.SIGN_IN,
-                locale: I18nService.getDefaultLocale(),
               },
             ]
           : []),
@@ -151,25 +146,19 @@ function MainMenu(): T_ReactElement {
       {
         label: translator.t("layout:header:menu:home"),
         url: ROUTES.HOME,
-        locale: undefined,
+      },
+      {
+        label: translator.t("layout:header:menu:about_me"),
+        url: ROUTES.ABOUT_ME,
+      },
+      {
+        label: translator.t("layout:header:menu:resume"),
+        url: ROUTES.RESUME,
       },
       {
         label: translator.t("layout:header:common:menu_item_blog"),
         url: ROUTES.BLOG,
-        locale: undefined,
       },
-      {
-        label: translator.t("layout:header:menu:music"),
-        url: ROUTES.MUSIC,
-        locale: undefined,
-      },
-      /*
-      {
-        label: translator.t("layout:header:menu:resume"),
-        url: ROUTES.RESUME,
-        locale: undefined,
-      },
-      */
     ];
   }
 
@@ -369,7 +358,7 @@ function MenuItem({
 
 const Room = renderIf(function Room(): T_ReactElement {
   return (
-    <Block className="dfr-Room tw-mx-auto tw-mt-32 tw-w-72 tw-max-w-full tw-rounded-t-md tw-border-b-2 tw-px-8 tw-pt-16 dfr-shadow dfr-border-color-dark-strong dfr-bg-color-light-strong sm:tw-px-16">
+    <Block className="dfr-Room tw-mx-auto tw-mt-32 tw-w-72 tw-max-w-full tw-rounded-t-md tw-border-b-8 tw-px-8 tw-pt-16 dfr-shadow dfr-border-color-dark-strong dfr-bg-color-light-strong sm:tw-px-16">
       <PictureFrame />
       <Block className="tw-flex tw-items-end tw-justify-between tw-overflow-hidden">
         <TV />
