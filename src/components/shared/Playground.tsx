@@ -59,7 +59,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
           )}
           onClick={setSourceCodeTab}
         >
-          Source Code
+          Source code
         </Button>
         <Button
           variant={Button.variant.SIMPLE}

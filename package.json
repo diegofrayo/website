@@ -18,7 +18,7 @@
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
     "===== SCRIPTS =====": "",
-    "scripts:all": "yarn scripts:chords && yarn scripts:rss && yarn scripts:sitemap && yarn scripts:styles && yarn format",
+    "scripts:all": "yarn scripts:chords && yarn scripts:rss && yarn scripts:sitemap && yarn scripts:styles && yarn lint && yarn format",
     "scripts:chords": "node --experimental-json-modules scripts/chords.mjs",
     "scripts:rss": "node --experimental-json-modules scripts/rss.mjs",
     "scripts:sitemap": "node --experimental-json-modules scripts/sitemap.mjs",

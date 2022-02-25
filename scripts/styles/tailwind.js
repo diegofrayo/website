@@ -58,12 +58,14 @@ function mountRgbaString(r, g, b, a) {
 }
 
 function createTailwindStyleValue(property, value) {
-  if (["borderColor", "backgroundColor"].includes(property)) {
+  if (["borderColor", "backgroundColor", "color"].includes(property)) {
     return {
       "--fallback": "1",
       [property]: hexToRgba(
         value,
-        `var(--tw-${property === "borderColor" ? "border" : "bg"}-opacity, var(--fallback))`,
+        `var(--tw-${
+          property === "borderColor" ? "border" : property === "backgroundColor" ? "bg" : "text"
+        }-opacity, var(--fallback))`,
       ),
     };
   }

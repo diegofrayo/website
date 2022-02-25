@@ -103,11 +103,31 @@ function enhanceTheme(COMMON_COLORS, properties) {
     const generatedProperties = properties.reduce((result, property) => {
       return {
         ...result,
-        [`${property}-${key}`]: {
-          property:
-            property === "border" ? "borderColor" : property === "bg" ? "backgroundColor" : "color",
-          value: config.value,
-        },
+        ...(property === "border"
+          ? ["t", "r", "b", "l", "all"].reduce((result, curr) => {
+              return {
+                ...result,
+                [`${property}${curr === "all" ? "" : `-${curr}`}-${key}`]: {
+                  property:
+                    curr === "t"
+                      ? "borderTopColor"
+                      : curr === "r"
+                      ? "borderRightColor"
+                      : curr === "b"
+                      ? "borderBottomColor"
+                      : curr === "l"
+                      ? "borderLeftColor"
+                      : "borderColor",
+                  value: config.value,
+                },
+              };
+            }, {})
+          : {
+              [`${property}-${key}`]: {
+                property: property === "bg" ? "backgroundColor" : "color",
+                value: config.value,
+              },
+            }),
       };
     }, {});
 

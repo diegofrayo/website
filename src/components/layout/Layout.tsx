@@ -85,7 +85,7 @@ function Footer({
     <Block is="footer" className="tw-relative tw-text-center dfr-bg-color-dark-strong">
       <Block className="tw-mx-auto tw-px-8 dfr-max-w-layout">
         <Block className="tw-py-16 tw-text-center">
-          <Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase dfr-text-color-secondary">
+          <Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase tw-text-opacity-80 dfr-text-color-secondary">
             contact me on
           </Text>
           <Block

@@ -74,9 +74,10 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
         /* Images */
         :global(.dfr-MDXContent--default) > :global(a) > :global(img),
         :global(.dfr-MDXContent--default) :global(li) > :global(a) > :global(img) {
+          @apply dfr-shadow;
+          @apply tw-rounded-md;
           margin-left: auto;
           margin-right: auto;
-          @apply tw-rounded-md;
         }
       `}</style>
     </Block>
