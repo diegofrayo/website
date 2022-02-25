@@ -22,16 +22,14 @@ function Home(): T_ReactElement {
       }}
     >
       <MainLayout title="">
-        <Block className="tw-mx-auto tw-w-72 tw-max-w-full tw-overflow-hidden tw-rounded-md tw-border-x dfr-shadow dfr-border-color-dark-strong">
-          <Text className="tw-border-y-8 tw-border-x tw-py-0.5 tw-text-center tw-text-sm tw-font-bold dfr-border-color-dark-strong">
-            Diego Rayo
+        <Block className="tw-mx-auto tw-w-72 tw-max-w-full tw-overflow-hidden tw-rounded-t-md tw-border-x dfr-shadow dfr-border-color-dark-strong">
+          <Text className="tw-border-y-8 tw-border-x tw-py-0.5 tw-text-center tw-text-sm tw-font-bold dfr-bg-color-dark-strong dfr-border-color-dark-strong dfr-text-color-light-strong">
+            👋 Hello, I&lsquo;m Diego Rayo
           </Text>
           <Room />
-          <Block className="tw-flex tw-justify-between tw-border-y-8 tw-border-x dfr-border-color-dark-strong">
-            <LinkItem label="about-me" url={ROUTES.ABOUT_ME} />
-            <Space size={2} />
-            <LinkItem label="blog" url={ROUTES.BLOG} />
-            <Space size={2} />
+          <Block className="tw-flex tw-items-center tw-justify-between tw-border-y-8 tw-border-x dfr-border-color-dark-strong">
+            <LinkItem label="about me" url={ROUTES.ABOUT_ME} />
+            <LinkItem label="blog" url={ROUTES.BLOG} className="tw-hidden sm:tw-block" />
             <LinkItem label="resume" url={ROUTES.RESUME} />
           </Block>
         </Block>
@@ -325,9 +323,14 @@ function Table() {
   );
 }
 
-function LinkItem({ label, url }) {
+function LinkItem({ label, url, className = "" }) {
   return (
-    <Block className="tw-mx-2 tw-inline-flex tw-py-0.5 tw-text-sm dfr-text-color-dark-strong">
+    <Block
+      className={classNames(
+        "tw-mx-2 tw-inline-flex tw-py-0.5 tw-text-sm dfr-text-color-dark-strong",
+        className,
+      )}
+    >
       <InlineText>❴</InlineText>
       <Link variant={Link.variant.SECONDARY} className="tw-mx-0.5 tw-underline" href={url}>
         {label}

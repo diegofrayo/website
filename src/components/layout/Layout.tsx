@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 
-import { Block, Button, Icon, Link, Title, Text } from "~/components/primitive";
+import { Block, Button, Icon, Link, Title, Text, Space } from "~/components/primitive";
 import { useOnWindowStopScroll } from "~/hooks";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
@@ -80,27 +80,30 @@ function Footer({
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
-    <Block is="footer" className="tw-relative tw-text-center dfr-bg-color-dark-strong">
-      <Block className="tw-mx-auto tw-px-8 dfr-max-w-layout">
-        <Block className="tw-py-16 tw-text-center">
-          <Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase tw-text-gray-400">
-            contact me
-          </Text>
-          <Block
-            display="tw-inline-block"
-            className="tw-mt-2 tw-border-t tw-border-gray-800 tw-pt-1"
-          >
-            <FooterIcon url={`mailto:${WEBSITE_METADATA.email}`} icon={Icon.icon.GMAIL} />
-            {/* <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} /> */}
-            <FooterIcon url={WEBSITE_METADATA.social.github} icon={Icon.icon.GITHUB_LIGHT} />
-            <FooterIcon url={WEBSITE_METADATA.social.couchsurfing} icon={Icon.icon.COUCHSURFING} />
-            <FooterIcon url={WEBSITE_METADATA.social.twitter} icon={Icon.icon.TWITTER} />
-            <FooterIcon url={WEBSITE_METADATA.social.instagram} icon={Icon.icon.INSTAGRAM} />
-            <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
+    <Block is="footer" className="tw-relative dfr-bg-color-dark-strong">
+      <Block className="tw-mx-auto tw-text-center tw-text-gray-400 dfr-max-w-layout">
+        <Block className="tw-py-16 tw-px-8">
+          <Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase">contact me</Text>
+          <Block className="tw-mt-2 tw-inline-block tw-border-t tw-border-gray-800 tw-pt-2">
+            <Block className="tw-my-0.5 tw-block sm:tw-mx-1 sm:tw-inline-block">
+              <FooterIcon url={`mailto:${WEBSITE_METADATA.email}`} icon={Icon.icon.GMAIL} />
+              {/* <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} /> */}
+              <FooterIcon url={WEBSITE_METADATA.social.github} icon={Icon.icon.GITHUB_LIGHT} />
+              <FooterIcon
+                url={WEBSITE_METADATA.social.couchsurfing}
+                icon={Icon.icon.COUCHSURFING}
+              />
+            </Block>
+            <Space className="tw-my-0.5 tw-block sm:tw-mx-1 sm:tw-inline-block" />
+            <Block className="tw-block sm:tw-inline-block">
+              <FooterIcon url={WEBSITE_METADATA.social.twitter} icon={Icon.icon.TWITTER} />
+              <FooterIcon url={WEBSITE_METADATA.social.instagram} icon={Icon.icon.INSTAGRAM} />
+              <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
+            </Block>
           </Block>
         </Block>
-        <Block className="tw-py-2 tw-text-xs tw-text-gray-400">
-          | Diego Rayo | @diegofrayo | Software Developer | 2022 |
+        <Block className="tw-p-2 tw-text-xs">
+          Diego Rayo | @diegofrayo | Software Developer | 2022
         </Block>
       </Block>
 
@@ -114,7 +117,7 @@ function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactEleme
     <Link
       variant={Link.variant.SIMPLE}
       href={url}
-      className="tw-my-1 tw-mr-2 tw-inline-block last:tw-mr-0 sm:tw-mr-4"
+      className="tw-mr-2 tw-inline-block last:tw-mr-0 sm:tw-mr-4"
       isExternalUrl
     >
       <Icon
