@@ -1,9 +1,8 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 
-import { Block, Button, Icon, InlineText, Link, Space, Title, Text } from "~/components/primitive";
+import { Block, Button, Icon, Link, Title, Text } from "~/components/primitive";
 import { useOnWindowStopScroll } from "~/hooks";
-import { useTranslation } from "~/i18n";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
 import type { E_Icons, T_ReactChildrenProp, T_ReactElement, T_WebsiteMetadata } from "~/types";
@@ -78,19 +77,18 @@ function Footer({
 }: {
   showGoToTopButton: T_MainLayoutProps["showGoToTopButton"];
 }): T_ReactElement {
-  const { t } = useTranslation();
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
     <Block is="footer" className="tw-relative tw-text-center dfr-bg-color-dark-strong">
       <Block className="tw-mx-auto tw-px-8 dfr-max-w-layout">
         <Block className="tw-py-16 tw-text-center">
-          <Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase tw-text-opacity-80 dfr-text-color-secondary">
-            contact me on
+          <Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase tw-text-gray-400">
+            contact me
           </Text>
           <Block
             display="tw-inline-block"
-            className="tw-mt-2 tw-border-t tw-border-opacity-20 tw-pt-2 dfr-border-color-light-strong"
+            className="tw-mt-2 tw-border-t tw-border-gray-800 tw-pt-1"
           >
             <FooterIcon url={`mailto:${WEBSITE_METADATA.email}`} icon={Icon.icon.GMAIL} />
             {/* <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} /> */}
@@ -101,26 +99,8 @@ function Footer({
             <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
           </Block>
         </Block>
-        <Space size={0} className="tw-border-b tw-border-opacity-20 dfr-border-color-primary" />
-        <Block className="tw-py-2 tw-text-xxs dfr-text-color-light-strong">
-          <InlineText is="strong">{t("layout:footer:resources_disclaimer")}:</InlineText>{" "}
-          <Link
-            variant={Link.variant.PRIMARY}
-            className="tw-break-normal"
-            href="https://heroicons.com"
-            isExternalUrl
-          >
-            HeroIcons.com
-          </Link>
-          <InlineText> | </InlineText>
-          <Link
-            variant={Link.variant.PRIMARY}
-            className="tw-break-normal"
-            href="https://freeicons.io"
-            isExternalUrl
-          >
-            freeicons.io
-          </Link>
+        <Block className="tw-py-2 tw-text-xs tw-text-gray-400">
+          | Diego Rayo | @diegofrayo | Software Developer | 2022 |
         </Block>
       </Block>
 
@@ -134,12 +114,12 @@ function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactEleme
     <Link
       variant={Link.variant.SIMPLE}
       href={url}
-      className="tw-mr-2 tw-inline-block last:tw-mr-0 sm:tw-mr-4"
+      className="tw-my-1 tw-mr-2 tw-inline-block last:tw-mr-0 sm:tw-mr-4"
       isExternalUrl
     >
       <Icon
         icon={icon}
-        wrapperClassName="dfr-bg-color-light-strong tw-border tw-bg-opacity-10 tw-border-opacity-20 tw-rounded-full tw-p-2 dfr-border-color-light-strong"
+        wrapperClassName="dfr-bg-color-light-strong tw-border tw-bg-opacity-10 tw-rounded-full tw-p-2 tw-border-gray-800"
         size="tw-w-4 tw-h-4 sm:tw-w-8
         sm:tw-h-8"
       />
