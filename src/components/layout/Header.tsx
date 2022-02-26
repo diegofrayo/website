@@ -205,7 +205,7 @@ const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactE
 
       {showMenu && (
         <Block className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-44 tw-overflow-hidden dfr-shadow dark:dfr-shadow">
-          <MenuItem title={t("layout:header:settings:theme")}>
+          <MenuItem title={t("layout:header:settings:theme")} className="tw-hidden">
             <Button variant={Button.variant.SIMPLE} disabled={!isDarkMode} onClick={toggleTheme}>
               <Icon icon={Icon.icon.SUN} color="tw-text-yellow-600" size={18} />
             </Button>
@@ -275,13 +275,18 @@ const ReloadPWAMenuItem = withRequiredAuthComponent(function ReloadPWAMenuItem()
 function MenuItem({
   children,
   title,
+  className = "",
 }: {
   children: T_ReactChildrenProp;
   title: string;
+  className?: string;
 }): T_ReactElement {
   return (
     <Block
-      className="tw-flex tw-h-16 tw-flex-col tw-border-b tw-px-2 dfr-bg-color-primary dfr-border-color-primary last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary"
+      className={classNames(
+        "tw-flex tw-h-16 tw-flex-col tw-border-b tw-px-2 dfr-bg-color-primary dfr-border-color-primary last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary",
+        className,
+      )}
       align="CENTER"
     >
       <Text className="tw-text-right tw-text-xs tw-font-bold">{title}</Text>

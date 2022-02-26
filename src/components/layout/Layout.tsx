@@ -81,28 +81,27 @@ function Footer({
 
   return (
     <Block is="footer" className="tw-relative dfr-bg-color-dark-strong">
-      <Block className="tw-mx-auto tw-text-center tw-text-gray-400 dfr-max-w-layout">
-        <Block className="tw-py-16 tw-px-8">
+      <Block className="tw-mx-auto tw-px-8 tw-text-center tw-text-gray-400 dfr-max-w-layout">
+        <Block className="tw-py-16">
           <Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase">contact me</Text>
           <Block className="tw-mt-2 tw-inline-block tw-border-t tw-border-gray-800 tw-pt-2">
             <Block className="tw-my-0.5 tw-block sm:tw-mx-1 sm:tw-inline-block">
-              <FooterIcon url={`mailto:${WEBSITE_METADATA.email}`} icon={Icon.icon.GMAIL} />
               {/* <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} /> */}
               <FooterIcon url={WEBSITE_METADATA.social.github} icon={Icon.icon.GITHUB_LIGHT} />
+              <FooterIcon url={WEBSITE_METADATA.social.twitter} icon={Icon.icon.TWITTER} />
+              <FooterIcon url={WEBSITE_METADATA.social.instagram} icon={Icon.icon.INSTAGRAM} />
+            </Block>
+            <Space className="tw-my-0.5 tw-block sm:tw-mx-1 sm:tw-inline-block" />
+            <Block className="tw-block sm:tw-inline-block">
               <FooterIcon
                 url={WEBSITE_METADATA.social.couchsurfing}
                 icon={Icon.icon.COUCHSURFING}
               />
-            </Block>
-            <Space className="tw-my-0.5 tw-block sm:tw-mx-1 sm:tw-inline-block" />
-            <Block className="tw-block sm:tw-inline-block">
-              <FooterIcon url={WEBSITE_METADATA.social.twitter} icon={Icon.icon.TWITTER} />
-              <FooterIcon url={WEBSITE_METADATA.social.instagram} icon={Icon.icon.INSTAGRAM} />
               <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
             </Block>
           </Block>
         </Block>
-        <Block className="tw-p-2 tw-text-xs">
+        <Block className="tw-py-4 tw-text-xs">
           Diego Rayo | @diegofrayo | Software Developer | 2022
         </Block>
       </Block>
@@ -123,8 +122,7 @@ function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactEleme
       <Icon
         icon={icon}
         wrapperClassName="dfr-bg-color-light-strong tw-border tw-bg-opacity-10 tw-rounded-full tw-p-2 tw-border-gray-800"
-        size="tw-w-4 tw-h-4 sm:tw-w-8
-        sm:tw-h-8"
+        size="tw-w-8 tw-h-8"
       />
     </Link>
   );

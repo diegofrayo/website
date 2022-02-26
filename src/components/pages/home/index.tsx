@@ -23,11 +23,11 @@ function Home(): T_ReactElement {
     >
       <MainLayout title="">
         <Block className="tw-mx-auto tw-w-72 tw-max-w-full tw-overflow-hidden tw-rounded-t-md tw-border-x dfr-shadow dfr-border-color-dark-strong">
-          <Text className="tw-border-y-8 tw-border-x tw-py-0.5 tw-text-center tw-text-sm tw-font-bold dfr-bg-color-dark-strong dfr-border-color-dark-strong dfr-text-color-light-strong">
-            👋 Hello, I&lsquo;m Diego Rayo
+          <Text className="tw-p-2 tw-text-center tw-text-sm tw-font-bold dfr-bg-color-dark-strong dfr-text-color-light-strong">
+            Hello, I&#39;m Diego Rayo
           </Text>
           <Room />
-          <Block className="tw-flex tw-items-center tw-justify-between tw-border-y-8 tw-border-x dfr-border-color-dark-strong">
+          <Block className="tw-flex tw-items-center tw-justify-between tw-border-y-8 dfr-border-color-dark-strong">
             <LinkItem label="about me" url={ROUTES.ABOUT_ME} />
             <LinkItem label="blog" url={ROUTES.BLOG} className="tw-hidden sm:tw-block" />
             <LinkItem label="resume" url={ROUTES.RESUME} />

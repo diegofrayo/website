@@ -21,8 +21,6 @@ import type {
 import { isDevelopmentEnvironment } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 
-import WindowSize from "./WindowSize";
-
 type T_PageProps = {
   children: T_ReactChildrenProp;
   config: {
@@ -162,7 +160,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 
       <UserLoggedInFlag />
       <AnalyticsDisabledFlag />
-      {isDevelopmentEnvironment() && <WindowSize />}
+      {/* {isDevelopmentEnvironment() && <WindowSize />} */}
     </React.Fragment>
   );
 }
