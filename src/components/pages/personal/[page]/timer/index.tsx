@@ -307,7 +307,9 @@ function useController() {
       onSuccess: (routinesTemplates: T_RoutinesTemplatesResponse) => {
         saveDataInLocalStorage({ data: routinesTemplates, key: "TEMPLATES" });
 
-        const loadedRoutine = loadRoutine(createNewRoutine(routinesTemplates.routines[0]));
+        const loadedRoutine = loadRoutine(
+          createNewRoutine(routinesTemplates.routines[0], routinesTemplates),
+        );
 
         setCurrentRoutine(loadedRoutine);
         setRoutinesHistory(fetchRoutinesHistory());
@@ -678,46 +680,47 @@ function useController() {
       .sort(sortBy([{ param: "date", order: "desc" }]));
   }, []);
 
-  const createNewRoutine = React.useCallback(
-    function createNewRoutine(routine: T_Routine): T_Routine {
-      return {
-        ...routine,
-        status: ROUTINE_STATUS.NOT_STARTED,
-        startTime: {
-          ms: new Date().getTime(),
-          formatted: new Date().toLocaleTimeString(),
-        },
-        items: (isDevelopmentEnvironment()
-          ? (
-              [
-                {
-                  id: "tests",
-                  title: "tests",
-                  highTime: "00:03",
-                  sets: 2,
-                  restTime: "00:02",
-                  status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
-                },
-              ] as T_RoutineItem[]
-            ).concat(routine.items.slice(0, 5))
-          : routine.items
-        ).map((item) => {
-          if (typeof item === "string") {
-            return {
-              ...routinesTemplates.exercises[item],
-              status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
-            };
-          }
-
+  const createNewRoutine = React.useCallback(function createNewRoutine(
+    routine: T_Routine,
+    routinesTemplates: T_RoutinesTemplatesResponse,
+  ): T_Routine {
+    return {
+      ...routine,
+      status: ROUTINE_STATUS.NOT_STARTED,
+      startTime: {
+        ms: new Date().getTime(),
+        formatted: new Date().toLocaleTimeString(),
+      },
+      items: (isDevelopmentEnvironment()
+        ? (
+            [
+              {
+                id: "tests",
+                title: "tests",
+                highTime: "00:03",
+                sets: 2,
+                restTime: "00:02",
+                status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
+              },
+            ] as T_RoutineItem[]
+          ).concat(routine.items.slice(0, 5))
+        : routine.items
+      ).map((item) => {
+        if (typeof item === "string") {
           return {
-            ...item,
+            ...routinesTemplates.exercises[item],
             status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
           };
-        }),
-      };
-    },
-    [routinesTemplates],
-  );
+        }
+
+        return {
+          ...item,
+          status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
+        };
+      }),
+    };
+  },
+  []);
 
   // handlers
   function handleInitRoutineClick(routineTemplate: T_Routine) {
@@ -735,14 +738,14 @@ function useController() {
         if (userCanceledRoutineRestarting) return;
 
         const newRoutine = {
-          ...createNewRoutine(routineTemplate),
+          ...createNewRoutine(routineTemplate, routinesTemplates),
           status: ROUTINE_STATUS.IN_PROGRESS,
         };
         setCurrentRoutine(newRoutine);
         findAndLoadRoutineItem(newRoutine);
       } else {
         setCurrentRoutine({
-          ...createNewRoutine(routineTemplate),
+          ...createNewRoutine(routineTemplate, routinesTemplates),
           status: ROUTINE_STATUS.IN_PROGRESS,
         });
       }
@@ -762,7 +765,7 @@ function useController() {
     function handleCancelRoutineClick() {
       if (window.confirm("¿Está seguro que quiere cancelar la rutina?")) {
         saveDataInLocalStorage({ data: undefined });
-        setCurrentRoutine(createNewRoutine(routinesTemplates.routines[0]));
+        setCurrentRoutine(createNewRoutine(routinesTemplates.routines[0], routinesTemplates));
         setTimerStatus(TIMER_STATUS.NOT_STARTED);
       }
     },
