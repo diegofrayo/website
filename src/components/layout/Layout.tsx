@@ -102,7 +102,7 @@ function Footer({
           </Block>
         </Block>
         <Block className="tw-py-4 tw-text-xs">
-          Diego Rayo | @diegofrayo | Software Developer | 2022
+          Diego Rayo | @diegofrayo | Software Developer | {new Date().getFullYear()}
         </Block>
       </Block>
 

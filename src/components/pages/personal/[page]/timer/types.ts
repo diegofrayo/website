@@ -1,19 +1,28 @@
-export type T_Routine = {
-  name: string;
-  startTime: { ms: number; formatted: string };
-  endTime?: { ms: number; formatted: string };
-  restTimeBetweenItems: string;
-  status: "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED";
-  stats?: T_RoutineStats;
-  items: T_RoutineItem[];
+export type T_RoutinesTemplatesResponse = {
+  metadata: { version: string };
+  exercises: Record<string, T_RoutineItem>;
+  routines: T_Routine[];
 };
 
-export type T_RoutineItem = {
+export interface T_Routine {
   id: string;
+  items: T_RoutineItem[];
+  name: string;
+  restTimeBetweenItems: string;
+
+  endTime?: { ms: number; formatted: string };
+  startTime: { ms: number; formatted: string };
+  stats?: T_RoutineStats;
+  status: "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED";
+}
+
+export type T_RoutineItem = {
+  highTime: string;
+  restTime: string;
+  sets: number;
   title: string;
-  highTime?: string;
-  sets: number | string[];
-  restTime?: string;
+  id: string;
+
   status: string;
 };
 

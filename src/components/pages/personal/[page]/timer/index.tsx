@@ -15,7 +15,13 @@ import { redirect, ROUTES } from "~/utils/routing";
 import { ROUTINE_ITEMS_STATUS, ROUTINE_STATUS, TIMER_STATUS } from "./constants";
 import { Timer, Stats, RoutineItem } from "./components";
 import { TimerPageContext } from "./context";
-import type { T_RoutineStats, T_Routine, T_RoutineItem, T_TimerStatus } from "./types";
+import type {
+  T_RoutineStats,
+  T_Routine,
+  T_RoutineItem,
+  T_TimerStatus,
+  T_RoutinesTemplatesResponse,
+} from "./types";
 
 function TimerPage(): T_ReactElement {
   const {
@@ -163,7 +169,7 @@ function TimerPage(): T_ReactElement {
                         Elige una rutina
                       </Title>
                       <Space size={2} />
-                      {routinesTemplates.map((routineTemplate) => {
+                      {routinesTemplates.routines.map((routineTemplate) => {
                         return (
                           <Block
                             key={routineTemplate.id}
@@ -288,20 +294,21 @@ function useController() {
       } catch (error) {
         const routinesTemplates = readRoutineFromLocalStorage()["TEMPLATES"];
 
-        if (!routinesTemplates) {
-          throw new Error("Routines templates not found in localStorage neither Firebase");
-        } else {
+        if (routinesTemplates) {
           alert("Routines templates loaded from localStorage");
+        } else {
+          throw new Error("Routines templates not found in localStorage neither Firebase");
         }
 
         return routinesTemplates;
       }
     },
     {
-      onSuccess: (routinesTemplates: T_Routine) => {
-        saveRoutineInLocalStorage({ routine: routinesTemplates, date: "TEMPLATES" });
+      onSuccess: (routinesTemplates: T_RoutinesTemplatesResponse) => {
+        saveDataInLocalStorage({ data: routinesTemplates, key: "TEMPLATES" });
 
-        const loadedRoutine = loadRoutine(createNewRoutine(routinesTemplates[0]));
+        const loadedRoutine = loadRoutine(createNewRoutine(routinesTemplates.routines[0]));
+
         setCurrentRoutine(loadedRoutine);
         setRoutinesHistory(fetchRoutinesHistory());
 
@@ -492,13 +499,13 @@ function useController() {
     }
   }
 
-  const saveRoutineInLocalStorage = React.useCallback(
-    function saveRoutineInLocalStorage({
-      routine,
-      date = createFormattedDate(),
+  const saveDataInLocalStorage = React.useCallback(
+    function saveDataInLocalStorage({
+      key = createFormattedDate(),
+      data,
     }: {
-      routine?: T_Routine;
-      date?: string;
+      data?: T_RoutinesTemplatesResponse | T_Routine;
+      key?: string;
     }) {
       const loadedRoutine = readRoutineFromLocalStorage();
 
@@ -506,7 +513,7 @@ function useController() {
         "DFR_TIMER",
         JSON.stringify({
           ...loadedRoutine,
-          [date]: routine,
+          [key]: data,
         }),
       );
     },
@@ -671,34 +678,46 @@ function useController() {
       .sort(sortBy([{ param: "date", order: "desc" }]));
   }, []);
 
-  function createNewRoutine(routine: T_Routine): T_Routine {
-    return {
-      ...routine,
-      status: ROUTINE_STATUS.NOT_STARTED,
-      startTime: {
-        ms: new Date().getTime(),
-        formatted: new Date().toLocaleTimeString(),
-      },
+  const createNewRoutine = React.useCallback(
+    function createNewRoutine(routine: T_Routine): T_Routine {
+      return {
+        ...routine,
+        status: ROUTINE_STATUS.NOT_STARTED,
+        startTime: {
+          ms: new Date().getTime(),
+          formatted: new Date().toLocaleTimeString(),
+        },
+        items: (isDevelopmentEnvironment()
+          ? (
+              [
+                {
+                  id: "tests",
+                  title: "tests",
+                  highTime: "00:03",
+                  sets: 2,
+                  restTime: "00:02",
+                  status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
+                },
+              ] as T_RoutineItem[]
+            ).concat(routine.items.slice(0, 5))
+          : routine.items
+        ).map((item) => {
+          if (typeof item === "string") {
+            return {
+              ...routinesTemplates.exercises[item],
+              status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
+            };
+          }
 
-      items: (isDevelopmentEnvironment()
-        ? (
-            [
-              {
-                id: "tests",
-                title: "tests",
-                highTime: "00:03",
-                sets: 2,
-                restTime: "00:02",
-                status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
-              },
-            ] as T_RoutineItem[]
-          ).concat(routine.items.slice(0, 5))
-        : routine.items
-      ).map((item) => {
-        return { ...item, status: ROUTINE_ITEMS_STATUS.NOT_STARTED };
-      }),
-    };
-  }
+          return {
+            ...item,
+            status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
+          };
+        }),
+      };
+    },
+    [routinesTemplates],
+  );
 
   // handlers
   function handleInitRoutineClick(routineTemplate: T_Routine) {
@@ -742,12 +761,12 @@ function useController() {
   const handleCancelRoutineClick = React.useCallback(
     function handleCancelRoutineClick() {
       if (window.confirm("¿Está seguro que quiere cancelar la rutina?")) {
-        saveRoutineInLocalStorage({ routine: undefined });
-        setCurrentRoutine(createNewRoutine(routinesTemplates[0]));
+        saveDataInLocalStorage({ data: undefined });
+        setCurrentRoutine(createNewRoutine(routinesTemplates.routines[0]));
         setTimerStatus(TIMER_STATUS.NOT_STARTED);
       }
     },
-    [setCurrentRoutine, saveRoutineInLocalStorage, routinesTemplates],
+    [setCurrentRoutine, saveDataInLocalStorage, routinesTemplates, createNewRoutine],
   );
 
   const handleUploadRoutineHistoryClick = React.useCallback(
@@ -778,7 +797,7 @@ function useController() {
       return async () => {
         try {
           if (window.confirm("¿Está seguro?")) {
-            saveRoutineInLocalStorage({ routine: undefined, date });
+            saveDataInLocalStorage({ data: undefined, key: date });
             setRoutinesHistory(fetchRoutinesHistory());
           }
         } catch (error) {
@@ -787,7 +806,7 @@ function useController() {
         }
       };
     },
-    [saveRoutineInLocalStorage, fetchRoutinesHistory],
+    [saveDataInLocalStorage, fetchRoutinesHistory],
   );
 
   // effects
@@ -799,7 +818,7 @@ function useController() {
     function onRoutineChange() {
       if (!currentRoutine) return;
 
-      saveRoutineInLocalStorage({ routine: currentRoutine });
+      saveDataInLocalStorage({ data: currentRoutine });
       setRoutinesHistory(fetchRoutinesHistory());
 
       if (
@@ -818,7 +837,7 @@ function useController() {
       timerStatus,
 
       markRoutineAsCompleted,
-      saveRoutineInLocalStorage,
+      saveDataInLocalStorage,
       updateRoutine,
       setAtLeastOneRoutineItemAsInProgress,
       fetchRoutinesHistory,
