@@ -1,5 +1,3 @@
-import { serialize } from "next-mdx-remote/serialize";
-
 import ContactsPage from "~/components/pages/personal/[page]/Contacts";
 import { getPageContentStaticProps } from "~/i18n";
 import http from "~/lib/http";
@@ -10,19 +8,19 @@ export default ContactsPage;
 
 export const getStaticProps = getPageContentStaticProps({
   callback: async () => {
-    const { data } = await http.post(
+    const { data: contacts } = await http.post(
       `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
       {
         path: "/assets",
-        payload: `pages/personal/contacts/output.md`,
+        payload: "contacts",
+        source: "firebase",
       },
     );
 
     return {
       props: {
-        mdxOutput: await serialize(data),
+        contacts,
       },
-      revalidate: 60,
     };
   },
 });

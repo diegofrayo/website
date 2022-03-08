@@ -155,7 +155,11 @@ function Timer({
           updateTime(nextSet, routineItem);
           setCurrentSet(nextSet);
         }
-      } else if (currentSet.isRest && timeToSeconds(routineItem.restTime) >= 10 && time === 4) {
+      } else if (
+        !currentSet.isStart &&
+        timeToSeconds(currentSet.isRest ? routineItem.restTime : routineItem.highTime) >= 10 &&
+        time === 4
+      ) {
         playSound("COUNTDOWN");
       }
     },
