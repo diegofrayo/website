@@ -12,30 +12,18 @@ async function main() {
     const {
       data: { website: WEBSITE_METADATA },
     } = await axios.get(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/metadata.json`);
-    const { data: MUSIC } = await axios.get(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/music/data.json`,
-    );
 
     const pages = [
       { path: "/", hasToBeIndexed: true },
       { path: "/blog", hasToBeIndexed: true },
-    ]
-      .concat(
-        Object.values(BLOG.posts).map((post) => {
-          return {
-            path: `/blog/${post.config.slug}`,
-            hasToBeIndexed: post.config.is_published,
-          };
-        }),
-      )
-      .concat(
-        MUSIC.songs.map((song) => {
-          return {
-            path: `/music/${song.id}`,
-            hasToBeIndexed: song.is_public,
-          };
-        }),
-      );
+    ].concat(
+      Object.values(BLOG.posts).map((post) => {
+        return {
+          path: `/blog/${post.config.slug}`,
+          hasToBeIndexed: post.config.is_published,
+        };
+      }),
+    );
 
     generateSitemapFile(pages, WEBSITE_METADATA.url);
 

@@ -13,9 +13,9 @@ class MusicService {
         ...song,
         artist: Array.isArray(song.artist) ? song.artist.join(", ") : song.artist,
         chords: song.chords.sort(),
-        sources: song.sources.sort(
+        sources: (song.sources || []).sort(
           sortBy([
-            { param: "score", order: "desc" },
+            { param: "order", order: "asc" },
             { param: "title", order: "asc" },
           ]),
         ),
@@ -53,8 +53,13 @@ class MusicService {
   }
 
   private async fetchData(): Promise<T_Object> {
-    const { data } = await http.get(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/music/data.json`,
+    const { data } = await http.post(
+      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
+      {
+        path: "/assets",
+        payload: "music",
+        source: "firebase",
+      },
     );
 
     return data.songs;

@@ -104,7 +104,7 @@ export type T_Song = {
   createdAt: string;
   isPublic: boolean;
   sources: {
-    score: number;
+    order: number;
     text: string;
     url: string;
     source: "youtube" | "lacuerda" | "url" | "instagram" | "spotify" | "ultimate-guitar";

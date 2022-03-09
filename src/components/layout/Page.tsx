@@ -1,6 +1,7 @@
 import * as React from "react";
 import Head from "next/head";
 import classNames from "classnames";
+import Script from "next/script";
 
 import { InlineText } from "~/components/primitive";
 import { useDidMount, useDocumentTitle } from "~/hooks";
@@ -132,14 +133,9 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           title={`Atom Feed for ${WEBSITE_METADATA.url.replace("https://", "")}`}
           href="/atom.xml"
         />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Lora:wght@300;400;700&display=swap"
-          rel="stylesheet"
-        />
 
         {[ROUTES.HOME, ROUTES.ABOUT_ME, ROUTES.RESUME].includes(config.pathname as T_PageRoute) && (
-          <script
+          <Script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({
