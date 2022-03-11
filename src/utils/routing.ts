@@ -1,3 +1,4 @@
+import { NextRouter } from "next/router";
 import type { T_PageRoute } from "~/types";
 import { isPWA } from "./browser";
 
@@ -34,7 +35,9 @@ export function redirect(path: string): void {
   window.location.href = path;
 }
 
-export function initPWARoutingConfig(router: any): any {
+export function initPWARoutingConfig(router: NextRouter): any {
+  if (!window.navigator.onLine) return;
+
   const lastPageVisited = window.localStorage.getItem(LOCAL_STORAGE_KEY) || "";
   const handleRouteChangeComplete = () => {
     window.localStorage.setItem(LOCAL_STORAGE_KEY, window.location.pathname);
