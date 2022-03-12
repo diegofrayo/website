@@ -6,12 +6,9 @@ import twcss from "~/lib/twcss";
 import type { T_Locale, T_ReactElement, T_HTMLElementAttributes } from "~/types";
 import { mirror } from "~/utils/misc";
 
-type T_Variant = "UNSTYLED" | "SIMPLE" | "PRIMARY" | "SECONDARY";
-// TODO: TS: Use "generics" instead of "as" to type this var
-const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "PRIMARY", "SECONDARY"]) as Record<
-  T_Variant,
-  T_Variant
->;
+const VARIANTS_OPTIONS = ["UNSTYLED", "SIMPLE", "PRIMARY", "SECONDARY"] as const;
+type T_Variant = typeof VARIANTS_OPTIONS[number];
+const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
 
 type T_LinkProps = T_HTMLElementAttributes["a"] & {
   variant: T_Variant;
@@ -53,7 +50,7 @@ function Link(props: T_LinkProps): T_ReactElement {
   }
 
   return (
-    <NextLink href={href} locale={rest.locale} passHref>
+    <NextLink href={href} locale={rest.locale || false} passHref>
       <LinkElement className={classNames("dfr-Link", className)} twcssVariant={variant} {...rest}>
         {children}
       </LinkElement>

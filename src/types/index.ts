@@ -98,7 +98,13 @@ export type T_Song = {
   album: string;
   year: number;
   country: string;
-  progress: number;
+  category:
+    | "0|IN_PROGRESS"
+    | "1|DONE"
+    | "2|TO_PRACTICE"
+    | "3|SOME_DAY"
+    | "4|NO_SING"
+    | "5|ABANDONED";
   spotifyUrl: string;
   youtubeUrl: string;
   createdAt: string;

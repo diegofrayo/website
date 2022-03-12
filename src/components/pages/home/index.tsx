@@ -67,7 +67,7 @@ function PictureFrame() {
 
   useDidMount(() => {
     setPhoto({
-      src: "/static/images/header/1.jpg",
+      src: "/static/images/header/2.jpg",
       portrait: false,
     });
   });
@@ -167,13 +167,13 @@ function TV() {
   );
 
   const SONG = {
-    title: "El Charro Chino",
-    artist: "Indio Solari y los Fundamentalistas del Aire Acondicionado",
-    duration: "4:26",
-    thumbnail: "https://i.scdn.co/image/ab67616d0000b273109ce4d556bd574e0e781da6",
+    title: "Maelström",
+    artist: "Fito Paez",
+    duration: "3:55",
+    thumbnail: "https://i.scdn.co/image/ab67616d0000b273a4091bb6f7f03ec978187d99",
+    url: "https://open.spotify.com/track/5JyeXhwxBQFEne4FxPbCxN",
     audio:
-      "https://p.scdn.co/mp3-preview/b843041c1ccaec2384899e4d128e22d84cdc33b5?cid=a46f5c5745a14fbf826186da8da5ecc3",
-    url: "https://open.spotify.com/track/6EHebf59vOGwm4NrbbENRs",
+      "https://p.scdn.co/mp3-preview/1880eccf1d6cfbe60fab494d61a607930a0b5c98?cid=a46f5c5745a14fbf826186da8da5ecc3",
     source: "spotify",
   };
 

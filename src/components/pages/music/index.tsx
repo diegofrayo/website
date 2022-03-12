@@ -86,14 +86,17 @@ function MusicPage(): T_ReactElement {
                   <Block className="tw-flex tw-flex-wrap tw-justify-between">
                     {songsList.map((song) => {
                       return (
-                        <Block key={song.id} className="tw-mb-4 tw-w-full sm:tw-w-5/12">
+                        <Block
+                          key={song.id}
+                          className={classNames(
+                            "tw-mb-4 tw-w-full sm:tw-w-5/12",
+                            !song.isPublic && "tw-opacity-75",
+                          )}
+                        >
                           <Link
                             variant={Link.variant.SECONDARY}
                             href={`${ROUTES.MUSIC}/${song.id}`}
-                            className={classNames(
-                              "sm:tw-truncate",
-                              !song.isPublic && "tw-line-through",
-                            )}
+                            className="sm:tw-truncate"
                             title={song.title}
                             locale={I18nService.getDefaultLocale()}
                           >

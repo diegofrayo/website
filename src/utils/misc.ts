@@ -142,9 +142,10 @@ export function transformObjectKeysFromSnakeCaseToLowerCamelCase(
   }, {});
 }
 
-// TODO: TS: Type this function using generics
-export function mirror(elements: string[]): T_Object<string> {
+export function mirror<T_Variant extends string>(
+  elements: readonly T_Variant[],
+): Record<T_Variant, T_Variant> {
   return elements.reduce((result, element) => {
     return { ...result, [element]: element };
-  }, {});
+  }, {} as Record<T_Variant, T_Variant>);
 }

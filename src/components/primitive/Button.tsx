@@ -4,9 +4,9 @@ import classNames from "classnames";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 import { mirror } from "~/utils/misc";
 
-type T_Variant = "UNSTYLED" | "SIMPLE" | "DEFAULT";
-// TODO: TS: Use "generics" instead of "as" to type this var
-const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "DEFAULT"]) as Record<T_Variant, T_Variant>;
+const VARIANTS_OPTIONS = ["UNSTYLED", "SIMPLE", "DEFAULT"] as const;
+type T_Variant = typeof VARIANTS_OPTIONS[number];
+const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
 
 type T_ButtonProps = T_HTMLElementAttributes["button"] & {
   variant?: T_Variant;

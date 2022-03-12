@@ -29,7 +29,7 @@ class MusicService {
         .filter((song) => !this.isChordsPage(song))
         .sort(
           sortBy([
-            { param: "progress", order: "desc" },
+            { param: "category", order: "asc" },
             { param: "order", order: "desc" },
             { param: "title", order: "asc" },
           ]),
