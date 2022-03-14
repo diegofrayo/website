@@ -119,10 +119,12 @@ function MainMenu(): T_ReactElement {
         label: translator.t("layout:header:menu:about_me"),
         url: ROUTES.ABOUT_ME,
       },
+      /*
       {
         label: translator.t("layout:header:menu:resume"),
         url: ROUTES.RESUME,
       },
+      */
       {
         label: translator.t("layout:header:common:menu_item_blog"),
         url: ROUTES.BLOG,

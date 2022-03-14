@@ -90,7 +90,7 @@ function MusicPage(): T_ReactElement {
                           key={song.id}
                           className={classNames(
                             "tw-mb-4 tw-w-full sm:tw-w-5/12",
-                            !song.isPublic && "tw-opacity-75",
+                            !song.isPublic && "tw-opacity-50",
                           )}
                         >
                           <Link

@@ -29,8 +29,8 @@ function Home(): T_ReactElement {
           <Room />
           <Block className="tw-flex tw-items-center tw-justify-between tw-border-y-8 dfr-border-color-dark-strong">
             <LinkItem label="about me" url={ROUTES.ABOUT_ME} />
-            <LinkItem label="blog" url={ROUTES.BLOG} className="tw-hidden sm:tw-block" />
-            <LinkItem label="resume" url={ROUTES.RESUME} />
+            <LinkItem label="blog" url={ROUTES.BLOG} />
+            {/* <LinkItem label="resume" url={ROUTES.RESUME} className="tw-hidden sm:tw-block"  /> */}
           </Block>
         </Block>
       </MainLayout>

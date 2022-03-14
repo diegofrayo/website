@@ -86,10 +86,9 @@ function Footer({
           <Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase">contact me</Text>
           <Block className="tw-mt-2 tw-inline-block tw-border-t tw-border-gray-800 tw-pt-2">
             <Block className="tw-my-0.5 tw-block sm:tw-mx-1 sm:tw-inline-block">
-              {/* <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} /> */}
+              <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} />
               <FooterIcon url={WEBSITE_METADATA.social.github} icon={Icon.icon.GITHUB_LIGHT} />
               <FooterIcon url={WEBSITE_METADATA.social.twitter} icon={Icon.icon.TWITTER} />
-              <FooterIcon url={WEBSITE_METADATA.social.instagram} icon={Icon.icon.INSTAGRAM} />
             </Block>
             <Space className="tw-my-0.5 tw-block sm:tw-mx-1 sm:tw-inline-block" />
             <Block className="tw-block sm:tw-inline-block">
@@ -97,6 +96,7 @@ function Footer({
                 url={WEBSITE_METADATA.social.couchsurfing}
                 icon={Icon.icon.COUCHSURFING}
               />
+              <FooterIcon url={WEBSITE_METADATA.social.instagram} icon={Icon.icon.INSTAGRAM} />
               <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
             </Block>
           </Block>

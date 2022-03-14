@@ -66,7 +66,7 @@ const Category = withRequiredAuthComponent(function Category({ category }: { cat
         {t("page:category")}:
       </InlineText>
       <Emoji>{EMOJIS[category.split("|")[0]]}</Emoji>
-      <InlineText className="tw-ml-2 tw-capitalize">
+      <InlineText className="tw-ml-1.5 tw-capitalize">
         {category.split("|")[1].replace("_", " ").toLowerCase()}
       </InlineText>
     </Block>
