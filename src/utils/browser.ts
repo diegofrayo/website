@@ -125,7 +125,7 @@ export function isMobileiOS(): boolean {
 }
 
 export function isPWA(): boolean {
-  return window.navigator["standalone"] === true;
+  return window.navigator["standalone"] || window.matchMedia("(display-mode: standalone)").matches;
 }
 
 // --- Private functions ---

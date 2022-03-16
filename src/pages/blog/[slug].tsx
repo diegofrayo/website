@@ -57,7 +57,6 @@ export const getStaticProps = getPageContentStaticProps<
         post,
         postMDXContent,
       },
-      revalidate: 60,
     };
   },
 });

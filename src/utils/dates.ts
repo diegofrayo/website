@@ -25,7 +25,7 @@ export function getDifferenceBetweenDates(startDate: string, endDate: Date): str
     return translator.t("page:weeks_ago", { number: Math.round(difference / 7) });
   }
 
-  if (difference < 365) {
+  if (difference < 360) {
     return translator.t("page:months_ago", { number: Math.round(difference / 30) });
   }
 

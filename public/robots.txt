@@ -1,4 +1,9 @@
-Sitemap: https://diegofrayo.vercel.app/sitemap.xml
+User-agent: *
 
-user-agent: *
+disallow: /bookmarks
+disallow: /music/
+disallow: /personal/
+disallow: /resume
 disallow: /static/
+
+Sitemap: https://diegofrayo.vercel.app/sitemap.xml

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Input, Block, Button } from "~/components/primitive";
+import { Input, Block, Button, Link, Icon } from "~/components/primitive";
 import http from "~/lib/http";
 import type { T_ReactElement } from "~/types";
 
@@ -17,7 +17,10 @@ function ISR(): T_ReactElement {
   return (
     <Block>
       <Input id="input-path" label="Path" value={path} onChange={onChange} />
-      <Block className="tw-text-right">
+      <Block className="tw-flex tw-justify-between">
+        <Link variant={Link.variant.UNSTYLED} href={path} isExternalUrl>
+          <Icon icon={Icon.icon.EXTERNAL_LINK} />
+        </Link>
         <Button variant={Button.variant.DEFAULT} onClick={handleUpdateClick}>
           update
         </Button>

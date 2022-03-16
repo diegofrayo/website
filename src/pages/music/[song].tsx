@@ -56,7 +56,6 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
         song,
         songMDXContent,
       },
-      revalidate: 60,
     };
   },
 });
