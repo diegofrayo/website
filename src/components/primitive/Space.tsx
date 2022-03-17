@@ -47,7 +47,8 @@ function useController({
 
   function composeClassName(): string {
     return classNames(
-      "tw-flex-shrink-0 tw-h-px",
+      "tw-flex-shrink-0",
+      isVerticalOrientation ? "tw-h-full" : "tw-h-px",
       responsive || classNames(composeSizeClassNames(), isVerticalOrientation && "tw-inline-block"),
       variant === VARIANTS.DEFAULT && "tw-border-0",
       variant === VARIANTS.DASHED &&

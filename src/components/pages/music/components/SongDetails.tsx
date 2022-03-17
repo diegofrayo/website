@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { Icon, Link, Block, Text, InlineText, Space } from "~/components/primitive";
+import { Icon, Link, Block, InlineText, Space } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { withRequiredAuthComponent } from "~/hocs";
 import { useTranslation } from "~/i18n";
@@ -37,15 +37,20 @@ function SongDetails({
         <InlineText is="strong">{t("page:year")}:</InlineText> <InlineText>{song.year}</InlineText>
       </Block>
       <Category category={song.category} />
-      <Text className="tw--mt-1 tw-text-lg">{song.country}</Text>
-      <Block className="tw--mt-0.5 tw-flex tw-items-center">
-        <Link variant={Link.variant.SIMPLE} href={song.spotifyUrl} isExternalUrl>
-          <Icon icon={Icon.icon.SPOTIFY} size={24} />
-        </Link>
-        <Space size={1} orientation="v" />
-        <Link variant={Link.variant.SIMPLE} href={song.youtubeUrl} isExternalUrl>
-          <Icon icon={Icon.icon.YOUTUBE} size={24} />
-        </Link>
+
+      <Block className="tw-mt-2 tw-flex tw-items-center">
+        <InlineText className="tw-flex tw-h-6 tw-w-6 tw-items-center tw-justify-center tw-rounded-md tw-border-2 tw-pr-0.5 tw-text-center tw-text-sm dfr-shadow dfr-border-color-primary">
+          {song.country}
+        </InlineText>
+        <Block className="tw-ml-2 tw-inline-block tw-border-l tw-pl-2 dfr-border-color-primary">
+          <Link variant={Link.variant.SIMPLE} href={song.spotifyUrl} isExternalUrl>
+            <Icon icon={Icon.icon.SPOTIFY} size={24} />
+          </Link>
+          <Space size={1} orientation="v" />
+          <Link variant={Link.variant.SIMPLE} href={song.youtubeUrl} isExternalUrl>
+            <Icon icon={Icon.icon.YOUTUBE} size={24} />
+          </Link>
+        </Block>
       </Block>
     </Block>
   );
@@ -61,7 +66,7 @@ const Category = withRequiredAuthComponent(function Category({ category }: { cat
   const EMOJIS = ["🟦", "🟩", "🟨", "⬛", "⬜", "🟥"];
 
   return (
-    <Block className={classNames("tw-flex tw-items-center")}>
+    <Block>
       <InlineText is="strong" className="tw-mr-2">
         {t("page:category")}:
       </InlineText>

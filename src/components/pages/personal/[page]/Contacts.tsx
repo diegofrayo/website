@@ -1,8 +1,7 @@
 import * as React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Block, Link, List, Space, Text, Title } from "~/components/primitive";
-import { useDidMount } from "~/hooks";
+import { Collapsible, Link, List, Text } from "~/components/primitive";
 import type { T_Object, T_ReactElement } from "~/types";
 import { isMobileiOS } from "~/utils/browser";
 import { isBrowser } from "~/utils/misc";
@@ -10,18 +9,6 @@ import { generateSlug } from "~/utils/strings";
 
 function Contacts({ contacts }: T_ContactsProps): T_ReactElement {
   const PAGE_TITLE = "Contacts";
-
-  // effects
-  useDidMount(() => {
-    console.log(countContacts(contacts.data));
-  });
-
-  // utils
-  function countContacts(contacts: T_Contacts) {
-    return Object.values(contacts).reduce((result, contacts) => {
-      return result + contacts.length;
-    }, 0);
-  }
 
   return (
     <Page
@@ -38,33 +25,33 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElement {
               ...result,
             };
           }, {}),
-        ).map(([groupName, contacts]: [string, T_Contact[]]) => {
+        ).map(([groupName, groupData]: [string, T_Contacts]) => {
+          if (Array.isArray(groupData)) {
+            return (
+              <ContactsGroup
+                key={generateSlug(groupName)}
+                groupName={groupName}
+                contacts={groupData}
+              />
+            );
+          }
+
           return (
-            <Block key={groupName} className="tw-mb-8 last:tw-mb-0">
-              <Title is="h2">{`❏ ${groupName} [${contacts.length}]`}</Title>
-              <Space size={1} />
-
-              <List variant={List.variant.DEFAULT}>
-                {contacts.map((contact) => {
-                  if (contact.title) {
-                    return (
-                      <Title
-                        key={generateSlug(contact.title)}
-                        is="h3"
-                        className="tw-mt-8 tw-mb-2 tw--ml-5 first:tw-mt-4"
-                      >{`⁆ ${contact.title}`}</Title>
-                    );
-                  }
-
-                  return (
-                    <List.Item key={generateSlug(contact.name)} className="tw-font-bold">
-                      <Text>{contact.name}</Text>
-                      <ContactLinks contact={contact} />
-                    </List.Item>
-                  );
-                })}
-              </List>
-            </Block>
+            <Collapsible
+              key={generateSlug(groupName)}
+              title={`❏ ${groupName} [${countContacts(groupData)}]`}
+              className="tw-mb-8 last:tw-mb-0"
+            >
+              {Object.entries(groupData).map(([groupName, contacts]: [string, T_Contact[]]) => {
+                return (
+                  <ContactsGroup
+                    key={generateSlug(groupName)}
+                    groupName={groupName}
+                    contacts={contacts}
+                  />
+                );
+              })}
+            </Collapsible>
           );
         })}
       </MainLayout>
@@ -75,6 +62,26 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElement {
 export default Contacts;
 
 // --- Components ---
+
+function ContactsGroup({ groupName, contacts }): T_ReactElement {
+  return (
+    <Collapsible
+      title={`❏ ${groupName} [${countContacts(contacts)}]`}
+      className="tw-mb-8 last:tw-mb-0"
+    >
+      <List variant={List.variant.DEFAULT}>
+        {contacts.map((contact) => {
+          return (
+            <List.Item key={generateSlug(contact.name)} className="tw-font-bold">
+              <Text>{contact.name}</Text>
+              <ContactLinks contact={contact} />
+            </List.Item>
+          );
+        })}
+      </List>
+    </Collapsible>
+  );
+}
 
 function ContactLinks({ contact }: { contact: T_Contact }) {
   function generatePhoneLink(phone: string) {
@@ -171,6 +178,16 @@ function ContactLinksItem({ href = "", children }) {
   );
 }
 
+// --- Utils ---
+
+function countContacts(contacts: T_Contacts) {
+  if (Array.isArray(contacts)) return contacts.length;
+
+  return Object.values(contacts).reduce((result, contacts) => {
+    return result + (contacts.length as number);
+  }, 0);
+}
+
 // --- Types ---
 
 type T_ContactsProps = {
@@ -180,7 +197,7 @@ type T_ContactsProps = {
   };
 };
 
-type T_Contacts = T_Object<T_Contact[]>;
+type T_Contacts = T_Object<T_Contact[] | T_Object<T_Contact[]>>;
 
 type T_Contact = {
   name: string;
