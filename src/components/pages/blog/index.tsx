@@ -26,7 +26,11 @@ function Blog(): T_ReactElement {
       }}
     >
       <MainLayout title={t("seo:title")}>
-        <Render isLoading={isLoading} error={error} data={data}>
+        <Render
+          isLoading={isLoading}
+          error={error}
+          data={data}
+        >
           {(posts: T_BlogPost[]) => {
             return (
               <List variant={List.variant.DEFAULT}>
@@ -78,7 +82,11 @@ function BlogEntry({
 
   return (
     <List.Item>
-      <Link href={`${ROUTES.BLOG}/${slug}`} variant={Link.variant.SECONDARY} locale={getLocale()}>
+      <Link
+        href={`${ROUTES.BLOG}/${slug}`}
+        variant={Link.variant.SECONDARY}
+        locale={getLocale()}
+      >
         {title}
       </Link>
       <Text className="tw-text-sm tw-italic">

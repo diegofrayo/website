@@ -12,7 +12,10 @@ export function SpotifyPlaylist(): T_ReactElement {
   if (isDevelopmentEnvironment()) return null;
 
   return (
-    <Block className="tw-border-4 dfr-border-color-dark-strong" data-markdown-block>
+    <Block
+      className="tw-border-4 dfr-border-color-dark-strong"
+      data-markdown-block
+    >
       <iframe
         src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"
         width="100%"
@@ -32,14 +35,22 @@ type T_GitHubRepoProps = {
 
 export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_ReactElement {
   return (
-    <Block className="tw-text-right" data-markdown-block>
+    <Block
+      className="tw-text-right"
+      data-markdown-block
+    >
       <Link
         variant={Link.variant.SIMPLE}
         className="tw-relative tw-flex tw-items-center tw-rounded-md tw-border tw-p-4 tw-pr-8 dfr-bg-color-primary dfr-border-color-primary dark:dfr-bg-color-primary dark:dfr-border-color-primary sm:tw-inline-flex"
         href={url}
         isExternalUrl
       >
-        <Icon icon={Icon.icon.GITHUB} wrapperClassName="tw-mr-3" size={32} withDarkModeBackground />
+        <Icon
+          icon={Icon.icon.GITHUB}
+          wrapperClassName="tw-mr-3"
+          size={32}
+          withDarkModeBackground
+        />
         <Block className="tw-flex-1 tw-text-left">
           <TitlePrimitive
             is="h3"

@@ -28,8 +28,14 @@ function Home(): T_ReactElement {
           </Text>
           <Room />
           <Block className="tw-flex tw-items-center tw-justify-between tw-border-y-8 dfr-border-color-dark-strong">
-            <LinkItem label="about me" url={ROUTES.ABOUT_ME} />
-            <LinkItem label="blog" url={ROUTES.BLOG} />
+            <LinkItem
+              label="about me"
+              url={ROUTES.ABOUT_ME}
+            />
+            <LinkItem
+              label="blog"
+              url={ROUTES.BLOG}
+            />
             {/* <LinkItem label="resume" url={ROUTES.RESUME} className="tw-hidden sm:tw-block"  /> */}
           </Block>
         </Block>
@@ -207,8 +213,15 @@ function TV() {
               wrapperClassName="dfr-bg-color-dark-strong tw-bg-opacity-70 tw-rounded-full"
               iconClassName="dfr-text-color-light-strong"
             />
-            <audio id="TV-audio" className="tw-hidden" onEnded={() => setShowInfo(false)}>
-              <source src={SONG.audio} type="audio/mpeg" />
+            <audio
+              id="TV-audio"
+              className="tw-hidden"
+              onEnded={() => setShowInfo(false)}
+            >
+              <source
+                src={SONG.audio}
+                type="audio/mpeg"
+              />
             </audio>
           </Button>
 
@@ -226,7 +239,10 @@ function TV() {
           )}
         />
       </Block>
-      <Space size={1} orientation="v" />
+      <Space
+        size={1}
+        orientation="v"
+      />
 
       <Block className="tw-flex tw-flex-1 tw-flex-col tw-items-center tw-justify-between tw-py-1">
         <Block className="tw-w-full tw-text-center">
@@ -300,7 +316,11 @@ function Flowers() {
         size={20}
         wrapperClassName="tw-absolute tw-top-7 tw-left-2 tw--rotate-12"
       />
-      <Icon icon={Icon.icon.FLOWER_3} size={48} wrapperClassName="tw-relative tw-top-0.5" />
+      <Icon
+        icon={Icon.icon.FLOWER_3}
+        size={48}
+        wrapperClassName="tw-relative tw-top-0.5"
+      />
       <Icon
         icon={Icon.icon.FLOWER_1}
         size={20}
@@ -313,7 +333,11 @@ function Flowers() {
 function Table() {
   return (
     <Block className="dark:tw-border-yellow-70 tw-flex tw-h-20 tw-items-end tw-justify-end tw-overflow-hidden tw-rounded-tr-md tw-rounded-tl-md tw-border-8 tw-border-b-0 tw-border-yellow-900">
-      <Icon icon={Icon.icon.SOCCER} size={24} wrapperClassName="tw-relative tw-top-0.5 tw-left-7" />
+      <Icon
+        icon={Icon.icon.SOCCER}
+        size={24}
+        wrapperClassName="tw-relative tw-top-0.5 tw-left-7"
+      />
       <Icon
         icon={Icon.icon.GUITAR}
         size={44}
@@ -332,7 +356,11 @@ function LinkItem({ label, url, className = "" }) {
       )}
     >
       <InlineText>❴</InlineText>
-      <Link variant={Link.variant.SECONDARY} className="tw-mx-0.5 tw-underline" href={url}>
+      <Link
+        variant={Link.variant.SECONDARY}
+        className="tw-mx-0.5 tw-underline"
+        href={url}
+      >
         {label}
       </Link>
       <InlineText>❵</InlineText>

@@ -7,7 +7,10 @@ type T_TextProps = T_HTMLElementAttributes["p"];
 
 function Text({ children, className = "", ...rest }: T_TextProps): T_ReactElement {
   return (
-    <p className={classNames("dfr-Text", className)} {...rest}>
+    <p
+      className={classNames("dfr-Text", className)}
+      {...rest}
+    >
       {children}
     </p>
   );

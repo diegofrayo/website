@@ -9,8 +9,15 @@ function Sources({ sources }: { sources: { title: string; url: string }[] }): T_
   const { t } = useTranslation();
 
   return (
-    <Block is="section" data-markdown-block>
-      <Title is="h2" data-markdown-title showLinkIcon>
+    <Block
+      is="section"
+      data-markdown-block
+    >
+      <Title
+        is="h2"
+        data-markdown-title
+        showLinkIcon
+      >
         {t("page:sources")}
       </Title>
       <List variant={List.variant.DEFAULT}>

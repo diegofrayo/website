@@ -106,8 +106,14 @@ export default function RoutineItem({
         <Space size={1} />
         <Block className="tw-flex tw-items-center tw-justify-between">
           {status === ROUTINE_ITEMS_STATUS.NOT_STARTED && (
-            <Button variant={Button.variant.SIMPLE} onClick={handleStartRoutineItemClick}>
-              <Icon icon={Icon.icon.PLAY} size={12} />
+            <Button
+              variant={Button.variant.SIMPLE}
+              onClick={handleStartRoutineItemClick}
+            >
+              <Icon
+                icon={Icon.icon.PLAY}
+                size={12}
+              />
               <InlineText className="tw-ml-1 tw-align-middle tw-text-xxs">iniciar</InlineText>
             </Button>
           )}
@@ -117,7 +123,10 @@ export default function RoutineItem({
             className="tw-ml-auto"
             onClick={handleMarkAsCompletedClick}
           >
-            <Icon icon={Icon.icon.CHECK} size={12} />
+            <Icon
+              icon={Icon.icon.CHECK}
+              size={12}
+            />
             <InlineText className="tw-ml-1 tw-align-middle tw-text-xxs">
               marcar como{" "}
               {status === ROUTINE_ITEMS_STATUS.COMPLETED

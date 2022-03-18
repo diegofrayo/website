@@ -41,7 +41,10 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
   if (error) {
     return (
-      <InlineText is="strong" className="tw-mt-2 tw-block tw-text-red-700 dark:tw-text-red-400">
+      <InlineText
+        is="strong"
+        className="tw-mt-2 tw-block tw-text-red-700 dark:tw-text-red-400"
+      >
         Syntax error: {error.message}
       </InlineText>
     );
@@ -54,8 +57,15 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
   const { firstFret, lastFret, musicNotesAsString, groupedMusicNotesByGuitarFret } = data;
 
   return (
-    <Block is="article" className="tw-max-w-full tw-text-center">
-      <Block is="section" className="tw-pb-2 dark:dfr-bg-color-layout" ref={chordContainerRef}>
+    <Block
+      is="article"
+      className="tw-max-w-full tw-text-center"
+    >
+      <Block
+        is="section"
+        className="tw-pb-2 dark:dfr-bg-color-layout"
+        ref={chordContainerRef}
+      >
         <Title
           is="h1"
           variant={Title.variant.SECONDARY}
@@ -87,7 +97,12 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
                 );
               })}
 
-            {firstFret > 1 && <GuitarFret variant={GuitarFret.variant.EMPTY} number={1} />}
+            {firstFret > 1 && (
+              <GuitarFret
+                variant={GuitarFret.variant.EMPTY}
+                number={1}
+              />
+            )}
 
             <Block className="tw-relative tw-top-6 tw--left-0.5 tw-h-36 tw-w-3 tw-rounded-tr-md tw-rounded-br-md tw-bg-black dark:tw-bg-white" />
           </Block>
@@ -103,7 +118,10 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
       <Block className="tw-text-sm">
         <Block>
-          <Button variant={Button.variant.DEFAULT} onClick={handleDownloadAsImage}>
+          <Button
+            variant={Button.variant.DEFAULT}
+            onClick={handleDownloadAsImage}
+          >
             <Emoji className="tw-mr-2">⬇️</Emoji>
             <InlineText>descargar como imagen</InlineText>
           </Button>

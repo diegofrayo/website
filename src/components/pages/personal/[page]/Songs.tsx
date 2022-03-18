@@ -26,13 +26,20 @@ function SongsPage(): T_ReactElement {
   }
 
   return (
-    <Render data={data} isLoading={isLoading} error={error}>
+    <Render
+      data={data}
+      isLoading={isLoading}
+      error={error}
+    >
       {(data: T_Data) => {
         return (
           <Block>
             {Object.entries(data).map(([songKey, songData]) => {
               return (
-                <Block key={songKey} className="tw-mb-16">
+                <Block
+                  key={songKey}
+                  className="tw-mb-16"
+                >
                   {songData.lyrics.map((lyric, index) => {
                     return (
                       <Block

@@ -46,7 +46,10 @@ function WhatsApp(): T_ReactElement {
           id="button"
           isExternalUrl
         >
-          <Icon icon={Icon.icon.WHATSAPP} size={48} />
+          <Icon
+            icon={Icon.icon.WHATSAPP}
+            size={48}
+          />
         </Link>
       </Block>
       <Block className="tw-mt-1 tw-flex tw-justify-between tw-pr-14">

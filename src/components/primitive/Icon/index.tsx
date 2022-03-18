@@ -125,7 +125,10 @@ function useController({
 
 function Wrapper({ children, className = "" }: T_HTMLElementAttributes["span"]) {
   return (
-    <Block className={classNames("tw-inline-flex tw-align-middle", className)} align="CENTER">
+    <Block
+      className={classNames("tw-inline-flex tw-align-middle", className)}
+      align="CENTER"
+    >
       {children}
     </Block>
   );

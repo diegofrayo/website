@@ -95,7 +95,10 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
                 <Component {...pageProps} />
               </MDXProvider>
               <ProgressBar />
-              <ToastContainer autoClose={3000} hideProgressBar />
+              <ToastContainer
+                autoClose={3000}
+                hideProgressBar
+              />
             </ThemeProvider>
           </QueryClientProvider>
         </ErrorBoundary>

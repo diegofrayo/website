@@ -10,7 +10,11 @@ function Books(): T_ReactElement {
   const { isLoading, error, data } = useQuery("books", BooksService.fetchBooks);
 
   return (
-    <Render isLoading={isLoading} error={error} data={data}>
+    <Render
+      isLoading={isLoading}
+      error={error}
+      data={data}
+    >
       {(books: T_Book[]) => {
         return (
           <Block className="dfr-Books tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">

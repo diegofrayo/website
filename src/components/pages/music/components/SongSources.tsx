@@ -25,7 +25,10 @@ function SongSources(props: T_SongSourcesProps): T_ReactElement {
           const ImageComponent = getImageComponent(source.source);
 
           return (
-            <List.Item key={`SongSources-Link-source-${index}`} className="tw-mb-2 last:tw-mb-0">
+            <List.Item
+              key={`SongSources-Link-source-${index}`}
+              className="tw-mb-2 last:tw-mb-0"
+            >
               <Link
                 variant={Link.variant.SIMPLE}
                 href={source.url}
@@ -79,7 +82,13 @@ function useController({ sources }: T_SongSourcesProps) {
         : Icon.icon.LINK;
 
     return function ImageComponent() {
-      return <Icon icon={icon} size="tw-w-8 tw-h-8" wrapperClassName="tw-mr-2" />;
+      return (
+        <Icon
+          icon={icon}
+          size="tw-w-8 tw-h-8"
+          wrapperClassName="tw-mr-2"
+        />
+      );
     };
   }
 

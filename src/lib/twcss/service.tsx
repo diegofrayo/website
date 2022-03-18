@@ -36,7 +36,12 @@ function twcssCreator(
       );
 
       return (
-        <Element className={finalClassName} ref={ref} {...staticProps} {...rest}>
+        <Element
+          className={finalClassName}
+          ref={ref}
+          {...staticProps}
+          {...rest}
+        >
           {children}
         </Element>
       );

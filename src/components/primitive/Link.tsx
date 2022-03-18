@@ -50,8 +50,16 @@ function Link(props: T_LinkProps): T_ReactElement {
   }
 
   return (
-    <NextLink href={href} locale={rest.locale || false} passHref>
-      <LinkElement className={classNames("dfr-Link", className)} twcssVariant={variant} {...rest}>
+    <NextLink
+      href={href}
+      locale={rest.locale || false}
+      passHref
+    >
+      <LinkElement
+        className={classNames("dfr-Link", className)}
+        twcssVariant={variant}
+        {...rest}
+      >
         {children}
       </LinkElement>
     </NextLink>

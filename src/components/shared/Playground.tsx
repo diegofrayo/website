@@ -44,7 +44,11 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
         ref={contentRef}
       >
         {isSourceCodeTabSelected ? (
-          <SourceCode language={language} code={code} showOnlySourceCode />
+          <SourceCode
+            language={language}
+            code={code}
+            showOnlySourceCode
+          />
         ) : (
           <Component />
         )}

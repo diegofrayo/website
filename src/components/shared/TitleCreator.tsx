@@ -14,7 +14,10 @@ function TitleCreator(
 ): T_ReactFunctionComponent<{ children: T_ReactChildrenProp }> {
   return function TitleComponent({ children }: { children: T_ReactChildrenProp }): T_ReactElement {
     return (
-      <TitlePrimitive is={Tag} {...props}>
+      <TitlePrimitive
+        is={Tag}
+        {...props}
+      >
         {children}
       </TitlePrimitive>
     );

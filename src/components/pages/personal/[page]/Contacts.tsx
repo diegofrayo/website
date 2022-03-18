@@ -72,7 +72,10 @@ function ContactsGroup({ groupName, contacts }): T_ReactElement {
       <List variant={List.variant.DEFAULT}>
         {contacts.map((contact) => {
           return (
-            <List.Item key={generateSlug(contact.name)} className="tw-font-bold">
+            <List.Item
+              key={generateSlug(contact.name)}
+              className="tw-font-bold"
+            >
               <Text>{contact.name}</Text>
               <ContactLinks contact={contact} />
             </List.Item>
@@ -128,7 +131,10 @@ function ContactLinks({ contact }: { contact: T_Contact }) {
           if (!isPhoneNumberFromColombia(item.value)) return null;
 
           return (
-            <ContactLinksItem key={generateSlug(item.label)} href={generatePhoneLink(item.value)}>
+            <ContactLinksItem
+              key={generateSlug(item.label)}
+              href={generatePhoneLink(item.value)}
+            >
               {`LLAMAR (${item.label})`}
             </ContactLinksItem>
           );
@@ -159,7 +165,11 @@ function ContactLinksItem({ href = "", children }) {
 
   return (
     <div className="root tw-inline-block">
-      <Link variant={Link.variant.PRIMARY} href={href} isExternalUrl>
+      <Link
+        variant={Link.variant.PRIMARY}
+        href={href}
+        isExternalUrl
+      >
         {children}
       </Link>
 

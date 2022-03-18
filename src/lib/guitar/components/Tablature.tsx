@@ -76,7 +76,10 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
                   : 1,
               ).map((space) => {
                 return (
-                  <Block key={`Tablature-position-${positionIndex}-${space}`} className="tw-ml-1">
+                  <Block
+                    key={`Tablature-position-${positionIndex}-${space}`}
+                    className="tw-ml-1"
+                  >
                     {createArray(NUMBER_OF_STRINGS)
                       .reverse()
                       .map((guitarString) => {
@@ -94,7 +97,10 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
             }
 
             return (
-              <Block key={`Tablature-position-${positionIndex}`} className="tw-ml-1">
+              <Block
+                key={`Tablature-position-${positionIndex}`}
+                className="tw-ml-1"
+              >
                 <Block>
                   {createArray(NUMBER_OF_STRINGS)
                     .reverse()
@@ -134,7 +140,12 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
                         );
                       }
 
-                      return <Position key={`Position-${positionIndex}-${guitarString}`} isCell />;
+                      return (
+                        <Position
+                          key={`Position-${positionIndex}-${guitarString}`}
+                          isCell
+                        />
+                      );
                     })}
                 </Block>
               </Block>

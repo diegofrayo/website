@@ -90,7 +90,11 @@ function TimerPage(): T_ReactElement {
         ],
       }}
     >
-      <Render isLoading={isLoading} error={error} data={routinesTemplates}>
+      <Render
+        isLoading={isLoading}
+        error={error}
+        data={routinesTemplates}
+      >
         {() => {
           return currentRoutine ? (
             <TimerPageContext.Provider
@@ -130,7 +134,10 @@ function TimerPage(): T_ReactElement {
                           className="tw-text-sm"
                           onClick={handleCancelRoutineClick}
                         >
-                          <Icon icon={Icon.icon.X} color="dfr-text-colorful-secondary-100" />
+                          <Icon
+                            icon={Icon.icon.X}
+                            color="dfr-text-colorful-secondary-100"
+                          />
                           <InlineText className="tw-ml-1 tw-align-middle">
                             Cancelar rutina
                           </InlineText>
@@ -153,19 +160,34 @@ function TimerPage(): T_ReactElement {
                         name={currentRoutine.name}
                         startTime={currentRoutine.startTime}
                       />
-                      <Space size={4} variant={Space.variant.DASHED} />
+                      <Space
+                        size={4}
+                        variant={Space.variant.DASHED}
+                      />
 
                       <Block>
                         {currentRoutine.items.map((routineItem) => {
-                          return <RoutineItem key={routineItem.id} {...routineItem} />;
+                          return (
+                            <RoutineItem
+                              key={routineItem.id}
+                              {...routineItem}
+                            />
+                          );
                         })}
                       </Block>
                     </Block>
                   </React.Fragment>
                 ) : (
-                  <Block is="section" className="tw-p-8">
+                  <Block
+                    is="section"
+                    className="tw-p-8"
+                  >
                     <Block>
-                      <Title is="h2" size={Title.size.MD} className="tw-text-center">
+                      <Title
+                        is="h2"
+                        size={Title.size.MD}
+                        className="tw-text-center"
+                      >
                         Elige una rutina
                       </Title>
                       <Space size={2} />
@@ -187,12 +209,19 @@ function TimerPage(): T_ReactElement {
                         );
                       })}
                     </Block>
-                    <Space size={10} variant={Space.variant.DASHED} />
+                    <Space
+                      size={10}
+                      variant={Space.variant.DASHED}
+                    />
 
                     {routinesHistory.length > 0 ? (
                       <React.Fragment>
                         <Block is="section">
-                          <Title is="h2" size={Title.size.MD} className="tw-text-center">
+                          <Title
+                            is="h2"
+                            size={Title.size.MD}
+                            className="tw-text-center"
+                          >
                             Historial de rutinas
                           </Title>
                           <Space size={2} />
@@ -216,11 +245,18 @@ function TimerPage(): T_ReactElement {
                             );
                           })}
                         </Block>
-                        <Space size={10} variant={Space.variant.DASHED} />
+                        <Space
+                          size={10}
+                          variant={Space.variant.DASHED}
+                        />
                       </React.Fragment>
                     ) : null}
 
-                    <Title is="h2" size={Title.size.MD} className="tw-text-center">
+                    <Title
+                      is="h2"
+                      size={Title.size.MD}
+                      className="tw-text-center"
+                    >
                       Ajustes
                     </Title>
                     <Space size={2} />
@@ -894,7 +930,10 @@ function GoToHomeLink(): T_ReactElement {
           }
         }}
       >
-        <Icon icon={Icon.icon.CHEVRON_LEFT} color="tw-text-white" />
+        <Icon
+          icon={Icon.icon.CHEVRON_LEFT}
+          color="tw-text-white"
+        />
         <InlineText className="tw-align-middle tw-font-bold"> Volver al inicio</InlineText>
       </Button>
     </Block>

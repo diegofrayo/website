@@ -329,7 +329,10 @@ function Timer({
               className="tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-full tw-border-2 dfr-border-color-primary"
               onClick={handleResetCurrentSetClick}
             >
-              <Icon icon={Icon.icon.REPLY} color="tw-text-white" />
+              <Icon
+                icon={Icon.icon.REPLY}
+                color="tw-text-white"
+              />
             </Button>
           </Block>
           <Space size={2} />
@@ -343,7 +346,11 @@ function Timer({
             className={classNames("tw-mr-auto", showPrevSetButton ? "tw-visible" : "tw-invisible")}
             onClick={handlePrevSetClick}
           >
-            <Icon icon={Icon.icon.CHEVRON_LEFT} color="tw-text-white" size={24} />
+            <Icon
+              icon={Icon.icon.CHEVRON_LEFT}
+              color="tw-text-white"
+              size={24}
+            />
           </Button>
           <Block className="tw-flex-1">
             <Text className="tw-font-bold">
@@ -362,7 +369,11 @@ function Timer({
             className={classNames("tw-ml-auto", showNextSetButton ? "tw-visible" : "tw-invisible")}
             onClick={handleNextSetClick}
           >
-            <Icon icon={Icon.icon.CHEVRON_RIGHT} color="tw-text-white" size={24} />
+            <Icon
+              icon={Icon.icon.CHEVRON_RIGHT}
+              color="tw-text-white"
+              size={24}
+            />
           </Button>
         </Block>
         <Space size={2} />

@@ -17,11 +17,19 @@ type T_ResumeTimelineProps = {
 
 export function ResumeTimeline({ title, timeline }: T_ResumeTimelineProps): T_ReactElement {
   return (
-    <Block is="section" data-markdown-block>
+    <Block
+      is="section"
+      data-markdown-block
+    >
       <Title is="h2">{title}</Title>
       <Block className="tw-ml-3 tw-mt-3 tw-border-l-4 tw-border-black tw-pl-6 dark:dfr-border-color-primary">
         {timeline.map((item, index) => {
-          return <TimelineItem key={`TimelineItem-${index}`} {...item} />;
+          return (
+            <TimelineItem
+              key={`TimelineItem-${index}`}
+              {...item}
+            />
+          );
         })}
       </Block>
     </Block>
@@ -35,12 +43,24 @@ function TimelineItem({
   url = "",
 }: T_ResumeTimelineItem): T_ReactElement {
   return (
-    <Block is="section" className="tw-relative tw-mb-8 last:tw-mb-0">
+    <Block
+      is="section"
+      className="tw-relative tw-mb-8 last:tw-mb-0"
+    >
       <InlineText className="tw-absolute tw--left-10 tw-top-0.5 tw-h-7 tw-w-7 tw-rounded-full tw-border-4 tw-border-black tw-bg-white dark:dfr-border-color-primary" />
 
-      <Title is="h3" variant={Title.variant.SECONDARY} size={Title.size.MD}>
+      <Title
+        is="h3"
+        variant={Title.variant.SECONDARY}
+        size={Title.size.MD}
+      >
         {url ? (
-          <Link className="tw-underline" href={url} variant={Link.variant.SIMPLE} isExternalUrl>
+          <Link
+            className="tw-underline"
+            href={url}
+            variant={Link.variant.SIMPLE}
+            isExternalUrl
+          >
             {company}
           </Link>
         ) : (
@@ -55,7 +75,10 @@ function TimelineItem({
 
 export function ResumeFAQ({ children }: { children: T_ReactChildrenProp }): T_ReactElement {
   return (
-    <Block is="section" data-markdown-block>
+    <Block
+      is="section"
+      data-markdown-block
+    >
       <Title is="h2">FAQ</Title>
       <Block>{children}</Block>
     </Block>

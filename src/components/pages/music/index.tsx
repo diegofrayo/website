@@ -42,7 +42,11 @@ function MusicPage(): T_ReactElement {
       }}
     >
       <MainLayout title={t("page:title")}>
-        <Render isLoading={isLoading} error={error} data={data}>
+        <Render
+          isLoading={isLoading}
+          error={error}
+          data={data}
+        >
           {(data: T_Song[]) => {
             const { chordsPage, songsList } = parseData(data);
 
@@ -60,11 +64,17 @@ function MusicPage(): T_ReactElement {
                   <Space size={1} />
                   <Text>{t("page:description_1")}</Text>
                 </Block>
-                <Space size={6} variant={Space.variant.DASHED} />
+                <Space
+                  size={6}
+                  variant={Space.variant.DASHED}
+                />
 
                 <Block variant="FEATURED">
                   <Text>{t("page:description_2")}</Text>
-                  <Space size={6} variant={Space.variant.DASHED} />
+                  <Space
+                    size={6}
+                    variant={Space.variant.DASHED}
+                  />
 
                   <Block>
                     <Input

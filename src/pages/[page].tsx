@@ -30,7 +30,10 @@ function SitePage({ page, pageMDXContent }: T_SitePageProps): T_ReactElement {
       }}
     >
       <MainLayout title={t("seo:title")}>
-        <MDXContent variant={MDXContent.variant.UNSTYLED} content={pageMDXContent} />
+        <MDXContent
+          variant={MDXContent.variant.UNSTYLED}
+          content={pageMDXContent}
+        />
       </MainLayout>
     </Page>
   );

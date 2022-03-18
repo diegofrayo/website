@@ -33,7 +33,10 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
     <Block>
       {parsedLyrics}
 
-      <Modal visible={isModalVisible} onCloseHandler={handleModalClose}>
+      <Modal
+        visible={isModalVisible}
+        onCloseHandler={handleModalClose}
+      >
         <Block className="tw-mx-auto tw-w-96 tw-max-w-full tw-border-4 tw-p-4 dfr-border-color-dark-strong dfr-bg-color-light-strong dark:dfr-bg-color-layout dark:dfr-border-color-light-strong">
           {Array.isArray(selectedChord) ? (
             <Block>
@@ -52,16 +55,26 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                 );
               })}
               <Space size={1} />
-              <Block display="tw-flex" align="CENTER">
+              <Block
+                display="tw-flex"
+                align="CENTER"
+              >
                 <Button
                   variant={Button.variant.SIMPLE}
                   onClick={() => {
                     handleUpdateSelectedChordIndex(-1);
                   }}
                 >
-                  <Icon icon={Icon.icon.CHEVRON_LEFT} size={20} />
+                  <Icon
+                    icon={Icon.icon.CHEVRON_LEFT}
+                    size={20}
+                  />
                 </Button>
-                <Block className="tw-flex-1" display="tw-flex" align="CENTER">
+                <Block
+                  className="tw-flex-1"
+                  display="tw-flex"
+                  align="CENTER"
+                >
                   {createArray(selectedChord.length, 0).map((index) => {
                     return (
                       <InlineText
@@ -84,7 +97,10 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                     handleUpdateSelectedChordIndex(1);
                   }}
                 >
-                  <Icon icon={Icon.icon.CHEVRON_RIGHT} size={20} />
+                  <Icon
+                    icon={Icon.icon.CHEVRON_RIGHT}
+                    size={20}
+                  />
                 </Button>
               </Block>
             </Block>
@@ -102,7 +118,10 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
             className="tw-block tw-w-full tw-text-center tw-leading-0"
             onClick={handleModalClose}
           >
-            <Icon icon={Icon.icon.X} size={24} />
+            <Icon
+              icon={Icon.icon.X}
+              size={24}
+            />
           </Button>
         </Block>
       </Modal>

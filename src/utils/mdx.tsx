@@ -18,7 +18,11 @@ import { ROUTES } from "~/utils/routing";
 export const MDXComponents = {
   a: function A({ children, ...rest }: { children: T_ReactChildrenProp }): T_ReactElement {
     return (
-      <Link variant={Link.variant.PRIMARY} {...rest} isExternalUrl>
+      <Link
+        variant={Link.variant.PRIMARY}
+        {...rest}
+        isExternalUrl
+      >
         {children}
       </Link>
     );
@@ -30,14 +34,20 @@ export const MDXComponents = {
   img: Image,
   ul: function UL({ children, ...rest }: { children: T_ReactChildrenProp }): T_ReactElement {
     return (
-      <List variant={List.variant.DEFAULT} {...rest}>
+      <List
+        variant={List.variant.DEFAULT}
+        {...rest}
+      >
         {children}
       </List>
     );
   },
   pre: function Pre({ children, ...rest }: { children: T_ReactChildrenProp }): T_ReactElement {
     return (
-      <Code variant={Code.variant.MULTILINE} {...rest}>
+      <Code
+        variant={Code.variant.MULTILINE}
+        {...rest}
+      >
         {children}
       </Code>
     );
@@ -49,7 +59,10 @@ export const MDXComponents = {
     children: T_ReactChildrenProp;
   }): T_ReactElement {
     return (
-      <Code variant={Code.variant.INLINE} {...rest}>
+      <Code
+        variant={Code.variant.INLINE}
+        {...rest}
+      >
         {children}
       </Code>
     );

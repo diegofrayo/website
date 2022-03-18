@@ -61,36 +61,61 @@ function SongPage(props: T_PageProps): T_ReactElement {
       }}
     >
       <MainLayout title={song.title}>
-        <SongDetails song={song} className="tw-mb-8" />
+        <SongDetails
+          song={song}
+          className="tw-mb-8"
+        />
 
-        <Block variant="FEATURED" className="tw-mb-8" style={{ fontSize: `${fontSize}rem` }}>
+        <Block
+          variant="FEATURED"
+          className="tw-mb-8"
+          style={{ fontSize: `${fontSize}rem` }}
+        >
           <Block className="tw-mb-6 tw-text-sm">
             <Button
               variant={Button.variant.SIMPLE}
               disabled={isMaxFontSize}
               onClick={increaseFontSize}
             >
-              <Icon icon={Icon.icon.ZOOM_IN} size={24} />
+              <Icon
+                icon={Icon.icon.ZOOM_IN}
+                size={24}
+              />
             </Button>
-            <Space size={1} orientation="v" />
+            <Space
+              size={1}
+              orientation="v"
+            />
             <Button
               variant={Button.variant.SIMPLE}
               disabled={isMinFontSize}
               onClick={decreaseFontSize}
             >
-              <Icon icon={Icon.icon.ZOOM_OUT} size={24} />
+              <Icon
+                icon={Icon.icon.ZOOM_OUT}
+                size={24}
+              />
             </Button>
-            <Space size={1} orientation="v" />
+            <Space
+              size={1}
+              orientation="v"
+            />
             <Button
               variant={Button.variant.SIMPLE}
               onClick={(e) => copyToClipboard(e, window.location.href)}
             >
-              <Icon icon={Icon.icon.LINK} size={24} />
+              <Icon
+                icon={Icon.icon.LINK}
+                size={24}
+              />
             </Button>
           </Block>
 
           <Block className="tw-max-w-full tw-overflow-x-auto tw-pb-3">
-            <MDXContent content={songMDXContent} variant={MDXContent.variant.UNSTYLED} />
+            <MDXContent
+              content={songMDXContent}
+              variant={MDXContent.variant.UNSTYLED}
+            />
           </Block>
           <Space size={6} />
 

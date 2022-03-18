@@ -83,7 +83,10 @@ function RateContent(): T_ReactElement {
           <Emoji>👍</Emoji>
           <Text>{t("common:useful_question_yes")}</Text>
         </Button>
-        <Space size={3} orientation="v" />
+        <Space
+          size={3}
+          orientation="v"
+        />
         <Button
           variant={Button.variant.SIMPLE}
           className={classNames(questionAnswer === "NO" && "tw-font-bold")}

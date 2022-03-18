@@ -46,21 +46,42 @@ function Stats({
     >
       <Block className="tw-text-sm">
         <Block className="tw-border tw-border-b-0 dfr-border-color-primary">
-          <Stats.Item label="rutina" value={name} />
-          <Stats.Item label="# ejercicios" value={data.totalExercises} />
-          <Stats.Item label="tiempo rutina total" value={data.totalTime} />
+          <Stats.Item
+            label="rutina"
+            value={name}
+          />
+          <Stats.Item
+            label="# ejercicios"
+            value={data.totalExercises}
+          />
+          <Stats.Item
+            label="tiempo rutina total"
+            value={data.totalTime}
+          />
         </Block>
         <Space size={1} />
 
         <Block className="tw-border tw-border-b-0 dfr-border-color-primary">
-          <Stats.Item label="# ejercicios completados" value={data.totalCompletedExercises} />
-          <Stats.Item label="tiempo rutina completado" value={data.completedTime} />
-          <Stats.Item label="% rutina completada" value={data.completedPercent} />
+          <Stats.Item
+            label="# ejercicios completados"
+            value={data.totalCompletedExercises}
+          />
+          <Stats.Item
+            label="tiempo rutina completado"
+            value={data.completedTime}
+          />
+          <Stats.Item
+            label="% rutina completada"
+            value={data.completedPercent}
+          />
         </Block>
         <Space size={1} />
 
         <Block className="tw-border tw-border-b-0 dfr-border-color-primary">
-          <Stats.Item label="hora inicio rutina" value={startTime.formatted} />
+          <Stats.Item
+            label="hora inicio rutina"
+            value={startTime.formatted}
+          />
           {isRenderedFromTimerScreen && (
             <React.Fragment>
               <Stats.Item
@@ -69,19 +90,37 @@ function Stats({
                   startTime.ms + timeToSeconds(data.totalTime) * 1000,
                 ).toLocaleTimeString()}
               />{" "}
-              <Stats.Item label="hora actual" value={new Date().toLocaleTimeString()} />
-              <Stats.Item label="tiempo transcurrido" value={elapsedTime} />
-              <Stats.Item label="tiempo restante" value={data.remainingTime} />
+              <Stats.Item
+                label="hora actual"
+                value={new Date().toLocaleTimeString()}
+              />
+              <Stats.Item
+                label="tiempo transcurrido"
+                value={elapsedTime}
+              />
+              <Stats.Item
+                label="tiempo restante"
+                value={data.remainingTime}
+              />
             </React.Fragment>
           )}
-          <Stats.Item label="hora fin rutina" value={endTime?.formatted || ""} />
-          <Stats.Item label="duración final rutina" value={data.finalRoutineDuration} />
+          <Stats.Item
+            label="hora fin rutina"
+            value={endTime?.formatted || ""}
+          />
+          <Stats.Item
+            label="duración final rutina"
+            value={data.finalRoutineDuration}
+          />
         </Block>
       </Block>
 
       {!isRenderedFromTimerScreen ? (
         <Block className="tw-mt-2 tw-flex tw-items-center tw-justify-between">
-          <Button variant={Button.variant.DEFAULT} onClick={uploadRoutineHandler}>
+          <Button
+            variant={Button.variant.DEFAULT}
+            onClick={uploadRoutineHandler}
+          >
             Guardar en la nube
           </Button>
 
@@ -90,7 +129,10 @@ function Stats({
             className="tw-font-bold tw-underline"
             onClick={deleteRoutineHandler}
           >
-            <Icon icon={Icon.icon.X} color="dfr-text-colorful-secondary-100" />
+            <Icon
+              icon={Icon.icon.X}
+              color="dfr-text-colorful-secondary-100"
+            />
           </Button>
         </Block>
       ) : null}

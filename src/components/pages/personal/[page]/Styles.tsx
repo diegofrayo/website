@@ -28,15 +28,36 @@ const Content = withSafeRenderingComponent(function Content() {
     <Block>
       {Object.entries(STYLES).map(([property, classes]) => {
         if (property === "bg") {
-          return <Section key="Section-bg" title="bg" classes={classes} theme={theme} />;
+          return (
+            <Section
+              key="Section-bg"
+              title="bg"
+              classes={classes}
+              theme={theme}
+            />
+          );
         }
 
         if (property === "text") {
-          return <Section key="Section-text" title="text" classes={classes} theme={theme} />;
+          return (
+            <Section
+              key="Section-text"
+              title="text"
+              classes={classes}
+              theme={theme}
+            />
+          );
         }
 
         if (property === "border") {
-          return <Section key="Section-border" title="border" classes={classes} theme={theme} />;
+          return (
+            <Section
+              key="Section-border"
+              title="border"
+              classes={classes}
+              theme={theme}
+            />
+          );
         }
 
         return null;
@@ -47,7 +68,10 @@ const Content = withSafeRenderingComponent(function Content() {
 
 function Section({ title, classes, theme }) {
   return (
-    <Block is="section" className="tw-mb-8 tw-text-right tw-text-sm">
+    <Block
+      is="section"
+      className="tw-mb-8 tw-text-right tw-text-sm"
+    >
       <h2 className="tw-mb-3 tw-text-xl">{title}</h2>
       <Block className="tw-flex tw-flex-wrap tw-justify-end">
         {classes.map((className, index) => {

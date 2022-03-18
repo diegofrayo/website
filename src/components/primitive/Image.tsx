@@ -10,7 +10,12 @@ function Image({ src, ...rest }: T_ImageProps): T_ReactElement {
     return null;
   }
 
-  return <img src={src} {...rest} />;
+  return (
+    <img
+      src={src}
+      {...rest}
+    />
+  );
 }
 
 export default Image;

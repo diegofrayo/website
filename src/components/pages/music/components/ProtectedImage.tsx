@@ -9,7 +9,13 @@ function ProtectedImage({
   className,
   alt,
 }: T_HTMLElementAttributes["img"]): T_ReactElement {
-  return <ImageWithLink src={src} alt={alt} className={className} />;
+  return (
+    <ImageWithLink
+      src={src}
+      alt={alt}
+      className={className}
+    />
+  );
 }
 
 export default withRequiredAuthComponent(ProtectedImage);

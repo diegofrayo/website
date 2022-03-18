@@ -22,16 +22,33 @@ function Thumbnails(): T_ReactElement {
   return (
     <Block>
       <Block>
-        <Input id="input-title" label="Title" value={title} onChange={onChange("title")} />
+        <Input
+          id="input-title"
+          label="Title"
+          value={title}
+          onChange={onChange("title")}
+        />
         <Space size={2} />
-        <Input id="input-thumbnail" label="Thumbnail url" value={src} onChange={onChange("src")} />
+        <Input
+          id="input-thumbnail"
+          label="Thumbnail url"
+          value={src}
+          onChange={onChange("src")}
+        />
       </Block>
       <Space size={8} />
 
       <Block className="tw-mx-auto tw-max-w-xl tw-text-center">
-        <Thumbnail src={src} title={title} containerRef={thumbnailRef} />
+        <Thumbnail
+          src={src}
+          title={title}
+          containerRef={thumbnailRef}
+        />
         <Space size={1} />
-        <Button variant={Button.variant.DEFAULT} onClick={handleDownloadAsImage}>
+        <Button
+          variant={Button.variant.DEFAULT}
+          onClick={handleDownloadAsImage}
+        >
           <Emoji className="tw-mr-2">⬇️</Emoji>
           <InlineText>descargar como imagen</InlineText>
         </Button>
@@ -105,7 +122,10 @@ function Thumbnail({ title, src, containerRef }) {
       className="root tw-to-sdky-100 tw-viax-slate-200 tw-relative tw-mx-auto tw-flex tw-flex-col tw-items-center tw-justify-center tw-overflow-auto tw-border-8 tw-border-black tw-bg-gradient-to-b tw-from-slate-100 tw-px-4 tw-py-16"
       ref={containerRef}
     >
-      <Image src={src} alt="Blog post thumbnail" />
+      <Image
+        src={src}
+        alt="Blog post thumbnail"
+      />
       <Title
         is="h1"
         variant={Title.variant.UNSTYLED}

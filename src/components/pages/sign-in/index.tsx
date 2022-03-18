@@ -26,7 +26,10 @@ function SignInPage(): T_ReactElement {
         disableSEO: true,
       }}
     >
-      <form className="tw-p-4" onSubmit={(e) => e.preventDefault()}>
+      <form
+        className="tw-p-4"
+        onSubmit={(e) => e.preventDefault()}
+      >
         <Input
           id="username"
           type="username"

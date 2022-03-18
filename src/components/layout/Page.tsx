@@ -64,27 +64,70 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no"
         />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black"
+        />
         <meta
           name="google-site-verification"
           content="Gf-6mROjwXEjbtUUtl2rX5NgzWuzWxgxoKYTaGsqvtw"
         />
-        {config.disableSEO && <meta name="robots" content="noindex,nofollow" />}
-        <meta name="description" content={metadata.description} />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={metadata.title} />
-        <meta property="og:description" content={metadata.description} />
-        <meta property="og:url" content={metadata.url} />
-        {metadata.image && <meta property="og:image" content={metadata.image} />}
-        <meta property="og:site_name" content={SEO_METADATA.title} />
+        {config.disableSEO && (
+          <meta
+            name="robots"
+            content="noindex,nofollow"
+          />
+        )}
+        <meta
+          name="description"
+          content={metadata.description}
+        />
+        <meta
+          property="og:type"
+          content="article"
+        />
+        <meta
+          property="og:title"
+          content={metadata.title}
+        />
+        <meta
+          property="og:description"
+          content={metadata.description}
+        />
+        <meta
+          property="og:url"
+          content={metadata.url}
+        />
+        {metadata.image && (
+          <meta
+            property="og:image"
+            content={metadata.image}
+          />
+        )}
+        <meta
+          property="og:site_name"
+          content={SEO_METADATA.title}
+        />
 
         {config.scripts?.map((script, index) => {
           const Tag = script.element;
-          return <Tag key={`Page-script-${index}`} {...script.props} />;
+          return (
+            <Tag
+              key={`Page-script-${index}`}
+              {...script.props}
+            />
+          );
         })}
         {locales.map((locale) => {
           if (locale === I18nService.getDefaultLocale()) {
-            return <link key={locale} rel="alternate" hrefLang="x-default" href={metadata.url} />;
+            return (
+              <link
+                key={locale}
+                rel="alternate"
+                hrefLang="x-default"
+                href={metadata.url}
+              />
+            );
           }
 
           return (
@@ -96,8 +139,14 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
             />
           );
         })}
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="canonical" href={metadata.url} />
+        <link
+          rel="manifest"
+          href="/site.webmanifest"
+        />
+        <link
+          rel="canonical"
+          href={metadata.url}
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -167,7 +216,10 @@ export default Page;
 
 const UserLoggedInFlag = withRequiredAuthComponent(function UserLoggedInFlag() {
   return (
-    <Flag className="tw-z-50" color="dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong" />
+    <Flag
+      className="tw-z-50"
+      color="dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong"
+    />
   );
 });
 
@@ -180,7 +232,12 @@ function AnalyticsDisabledFlag() {
 
   if (isAnalyticsEnabled) return null;
 
-  return <Flag className="tw-z-40" color="dfr-bg-colorful-primary-100" />;
+  return (
+    <Flag
+      className="tw-z-40"
+      color="dfr-bg-colorful-primary-100"
+    />
+  );
 }
 
 function Flag({ className, color }) {

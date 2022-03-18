@@ -54,7 +54,10 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
       )}
     >
       {!isStringsNamesVariant && (
-        <Block className="tw-flex tw-h-6 tw-text-base tw-font-bold" align="CENTER">
+        <Block
+          className="tw-flex tw-h-6 tw-text-base tw-font-bold"
+          align="CENTER"
+        >
           {number}
         </Block>
       )}
@@ -105,7 +108,10 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                       {STRINGS_NAMES[guitarString - 1]}
                     </InlineText>
                     <InlineText className="tw-px-0.5">-</InlineText>
-                    <InlineText is="strong" className="tw-w-6 tw-text-center">
+                    <InlineText
+                      is="strong"
+                      className="tw-w-6 tw-text-center"
+                    >
                       {guitarString}
                     </InlineText>
                   </Block>
@@ -165,14 +171,29 @@ function useController({ variant, ...rest }: T_GuitarFretProps) {
     const playedString = playedStrings[guitarString - 1];
 
     if (playedString === "x") {
-      return <Icon icon={Icon.icon.X} size={16} />;
+      return (
+        <Icon
+          icon={Icon.icon.X}
+          size={16}
+        />
+      );
     }
 
     if (playedString === "0") {
-      return <Icon icon={Icon.icon.DOTS_CIRCLE_HORIZONTAL} size={16} />;
+      return (
+        <Icon
+          icon={Icon.icon.DOTS_CIRCLE_HORIZONTAL}
+          size={16}
+        />
+      );
     }
 
-    return <Icon icon={Icon.icon.DOTS_CIRCLE_HORIZONTAL_SOLID} size={16} />;
+    return (
+      <Icon
+        icon={Icon.icon.DOTS_CIRCLE_HORIZONTAL_SOLID}
+        size={16}
+      />
+    );
   }
 
   return {

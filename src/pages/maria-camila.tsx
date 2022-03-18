@@ -20,7 +20,10 @@ function MariaCamila(): T_ReactElement {
         👩‍⚕️
       </Title>
 
-      <Text emoji="🤓" left>
+      <Text
+        emoji="🤓"
+        left
+      >
         Se que esto es muy <Marked>nerd</Marked>
       </Text>
 
@@ -28,7 +31,10 @@ function MariaCamila(): T_ReactElement {
         Que no hubo <Marked>frisby</Marked> o <Marked>cartica</Marked> este año
       </Text>
 
-      <Text emoji="👧" left>
+      <Text
+        emoji="👧"
+        left
+      >
         Que ayer te dije que todavía no eras una <Marked>bichota</Marked>
       </Text>
 

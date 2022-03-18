@@ -36,7 +36,12 @@ function Button({
   }
 
   return (
-    <button className={composeClassName()} disabled={disabled} onClick={onClick} {...rest}>
+    <button
+      className={composeClassName()}
+      disabled={disabled}
+      onClick={onClick}
+      {...rest}
+    >
       {children}
     </button>
   );

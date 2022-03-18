@@ -23,7 +23,11 @@ function TimeLine(): T_ReactElement {
   } = useController();
 
   return (
-    <Render isLoading={isLoading} error={error} data={data}>
+    <Render
+      isLoading={isLoading}
+      error={error}
+      data={data}
+    >
       {({ categories, items }: T_TimeLine) => {
         return (
           <React.Fragment>
@@ -60,7 +64,10 @@ function TimeLine(): T_ReactElement {
 
             {items.map((item) => {
               return (
-                <Block is="section" key={item.year}>
+                <Block
+                  is="section"
+                  key={item.year}
+                >
                   <Title
                     is="h2"
                     className="tw-my-8 tw-text-left tw-underline sm:tw-text-center"

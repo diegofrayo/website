@@ -4,7 +4,11 @@ import type { T_ReactElement } from "~/types";
 
 export function Main(): T_ReactElement {
   return (
-    <main role="main" className="tw-bg-white dark:tw-bg-gray-400" style={{ minWidth: 500 }}>
+    <main
+      role="main"
+      className="tw-bg-white dark:tw-bg-gray-400"
+      style={{ minWidth: 500 }}
+    >
       <header className="tw-p-2 tw-text-center dfr-bg-color-primary dark:tw-bg-gray-600">
         <h1>header</h1>
         <nav>
@@ -107,29 +111,52 @@ export function Measure(): T_ReactElement {
   return (
     <div>
       <p>Donuts eaten:</p>
-      <progress value="60" max="100" />
+      <progress
+        value="60"
+        max="100"
+      />
 
       <p>
         Karma points:{" "}
-        <meter optimum={30} high={80} max="100" value="85">
+        <meter
+          optimum={30}
+          high={80}
+          max="100"
+          value="85"
+        >
           85%
         </meter>
       </p>
       <p>
         Gas in Tanker:{" "}
-        <meter low={20} max="100" value="11">
+        <meter
+          low={20}
+          max="100"
+          value="11"
+        >
           11%
         </meter>
       </p>
       <p>
         Animals Petted:{" "}
-        <meter low={10} high={60} min="0" max="50" value="43" title="Animals">
+        <meter
+          low={10}
+          high={60}
+          min="0"
+          max="50"
+          value="43"
+          title="Animals"
+        >
           Petting
         </meter>
       </p>
       <p>
         Satisfaction:{" "}
-        <meter max="100" optimum={100} value="100">
+        <meter
+          max="100"
+          optimum={100}
+          value="100"
+        >
           100%
         </meter>
       </p>

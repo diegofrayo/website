@@ -38,7 +38,10 @@ function MainLayout({
       <Block className="tw-mx-auto tw-px-8 dfr-max-w-layout">
         <Header />
 
-        <Block id="body" className="tw-py-32">
+        <Block
+          id="body"
+          className="tw-py-32"
+        >
           {title && (
             <Block className="tw-text-center">
               {parentUrl && (
@@ -80,15 +83,27 @@ function Footer({
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
-    <Block is="footer" className="tw-relative dfr-bg-color-dark-strong">
+    <Block
+      is="footer"
+      className="tw-relative dfr-bg-color-dark-strong"
+    >
       <Block className="tw-mx-auto tw-px-8 tw-text-center tw-text-gray-400 dfr-max-w-layout">
         <Block className="tw-py-16">
           <Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase">contact me</Text>
           <Block className="tw-mt-2 tw-inline-block tw-border-t tw-border-gray-800 tw-pt-2">
             <Block className="tw-my-0.5 tw-block sm:tw-mx-1 sm:tw-inline-block">
-              <FooterIcon url={WEBSITE_METADATA.social.linkedin} icon={Icon.icon.LINKEDIN} />
-              <FooterIcon url={WEBSITE_METADATA.social.github} icon={Icon.icon.GITHUB_LIGHT} />
-              <FooterIcon url={WEBSITE_METADATA.social.twitter} icon={Icon.icon.TWITTER} />
+              <FooterIcon
+                url={WEBSITE_METADATA.social.linkedin}
+                icon={Icon.icon.LINKEDIN}
+              />
+              <FooterIcon
+                url={WEBSITE_METADATA.social.github}
+                icon={Icon.icon.GITHUB_LIGHT}
+              />
+              <FooterIcon
+                url={WEBSITE_METADATA.social.twitter}
+                icon={Icon.icon.TWITTER}
+              />
             </Block>
             <Space className="tw-my-0.5 tw-block sm:tw-mx-1 sm:tw-inline-block" />
             <Block className="tw-block sm:tw-inline-block">
@@ -96,8 +111,14 @@ function Footer({
                 url={WEBSITE_METADATA.social.couchsurfing}
                 icon={Icon.icon.COUCHSURFING}
               />
-              <FooterIcon url={WEBSITE_METADATA.social.instagram} icon={Icon.icon.INSTAGRAM} />
-              <FooterIcon url={WEBSITE_METADATA.social.spotify} icon={Icon.icon.SPOTIFY} />
+              <FooterIcon
+                url={WEBSITE_METADATA.social.instagram}
+                icon={Icon.icon.INSTAGRAM}
+              />
+              <FooterIcon
+                url={WEBSITE_METADATA.social.spotify}
+                icon={Icon.icon.SPOTIFY}
+              />
             </Block>
           </Block>
         </Block>
@@ -154,7 +175,10 @@ function GoToTopButton(): T_ReactElement {
         setScrollPosition(0);
       }}
     >
-      <Icon icon={Icon.icon.ARROW_UP} color="dfr-text-color-light-strong" />
+      <Icon
+        icon={Icon.icon.ARROW_UP}
+        color="dfr-text-color-light-strong"
+      />
     </Button>
   );
 }

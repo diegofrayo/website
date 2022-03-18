@@ -46,7 +46,11 @@ function Title(props: T_TitleProps): T_ReactElement {
 
   if (variant === E_Variants.PRIMARY && showLinkIcon) {
     return (
-      <Tag id={id} className={className} {...rest}>
+      <Tag
+        id={id}
+        className={className}
+        {...rest}
+      >
         <Link
           variant={Link.variant.SIMPLE}
           href={`#${id}`}
@@ -60,7 +64,10 @@ function Title(props: T_TitleProps): T_ReactElement {
             }[Tag],
           )}
         >
-          <Icon icon={Icon.icon.LINK} size={16} />
+          <Icon
+            icon={Icon.icon.LINK}
+            size={16}
+          />
         </Link>
 
         {children}
@@ -79,7 +86,11 @@ function Title(props: T_TitleProps): T_ReactElement {
   }
 
   return (
-    <Tag id={id} className={classNames(className)} {...rest}>
+    <Tag
+      id={id}
+      className={classNames(className)}
+      {...rest}
+    >
       {children}
     </Tag>
   );

@@ -15,4 +15,5 @@ module.exports = {
 
   // jsx
   bracketSameLine: false,
+  singleAttributePerLine: true,
 };

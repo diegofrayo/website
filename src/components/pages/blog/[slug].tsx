@@ -48,7 +48,10 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
       }}
     >
       <MainLayout title={post.title}>
-        <BlogPostDetails publishedAt={post.publishedAt} updatedAt={post.updatedAt} />
+        <BlogPostDetails
+          publishedAt={post.publishedAt}
+          updatedAt={post.updatedAt}
+        />
         <Space size={8} />
 
         <Image
@@ -80,7 +83,11 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
   const { t } = useTranslation();
 
   return (
-    <Block className="tw-flex-col sm:tw-flex-row" display="tw-flex" align="CENTER">
+    <Block
+      className="tw-flex-col sm:tw-flex-row"
+      display="tw-flex"
+      align="CENTER"
+    >
       <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
         <BlogPostDetailsItem.Icon
           icon={Icon.icon.CALENDAR}
@@ -93,7 +100,10 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
       </BlogPostDetailsItem>
       <InlineText className="tw-my-1 tw-block sm:tw-my-0 sm:tw-mx-4 sm:tw-inline-block" />
       <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
-        <BlogPostDetailsItem.Icon icon={Icon.icon.EDIT} color="tw-text-black dark:tw-text-white" />
+        <BlogPostDetailsItem.Icon
+          icon={Icon.icon.EDIT}
+          color="tw-text-black dark:tw-text-white"
+        />
         <Text>
           <InlineText className="tw-mr-1">{t("page:updated_at")}</InlineText>
           <InlineText is="strong">{getDifferenceBetweenDates(updatedAt, new Date())}</InlineText>

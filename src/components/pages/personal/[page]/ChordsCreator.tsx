@@ -16,7 +16,10 @@ function ChordsCreator(): T_ReactElement {
   return (
     <React.Fragment>
       <Block>
-        <Title is="h2" className="tw-mb-4">
+        <Title
+          is="h2"
+          className="tw-mb-4"
+        >
           Crea un acorde
         </Title>
 
@@ -50,16 +53,29 @@ function ChordsCreator(): T_ReactElement {
         <Space size={6} />
 
         <Block className="tw-border tw-p-3 dfr-border-color-primary dark:dfr-border-color-primary">
-          <Title is="h2" className="tw-mb-4">
+          <Title
+            is="h2"
+            className="tw-mb-4"
+          >
             Resultado
           </Title>
-          <GuitarChord name={inputs.name} musicNotes={inputs.musicNotes} />
+          <GuitarChord
+            name={inputs.name}
+            musicNotes={inputs.musicNotes}
+          />
         </Block>
       </Block>
-      <Space sizeTop={8} sizeBottom={5} variant={Space.variant.DASHED} />
+      <Space
+        sizeTop={8}
+        sizeBottom={5}
+        variant={Space.variant.DASHED}
+      />
 
       <Block>
-        <Title is="h2" className="tw-mb-4">
+        <Title
+          is="h2"
+          className="tw-mb-4"
+        >
           Ejemplos
         </Title>
 

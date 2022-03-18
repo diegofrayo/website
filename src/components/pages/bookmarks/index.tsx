@@ -22,8 +22,14 @@ function Bookmarks({ bookmarks }: T_BookmarksProps): T_ReactElement {
       <MainLayout title={PAGE_TITLE}>
         {Object.entries(bookmarks).map(([groupName, groupBookmarks]) => {
           return (
-            <Block key={groupName} className="tw-mb-8 last:tw-mb-0">
-              <Title is="h2" variant={Title.variant.PRIMARY}>
+            <Block
+              key={groupName}
+              className="tw-mb-8 last:tw-mb-0"
+            >
+              <Title
+                is="h2"
+                variant={Title.variant.PRIMARY}
+              >
                 {groupName}
               </Title>
               <Space size={1} />
@@ -31,7 +37,11 @@ function Bookmarks({ bookmarks }: T_BookmarksProps): T_ReactElement {
                 {groupBookmarks.map((bookmark, index) => {
                   return (
                     <List.Item key={`bookmark-${generateSlug(groupName)}-${index}`}>
-                      <Link variant={Link.variant.PRIMARY} href={bookmark.url} isExternalUrl>
+                      <Link
+                        variant={Link.variant.PRIMARY}
+                        href={bookmark.url}
+                        isExternalUrl
+                      >
                         {bookmark.title}
                       </Link>
                     </List.Item>

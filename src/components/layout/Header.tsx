@@ -26,7 +26,10 @@ function Header(): T_ReactElement {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
-    <Block is="header" className="tw-relative tw-py-8">
+    <Block
+      is="header"
+      className="tw-relative tw-py-8"
+    >
       <Block className="tw-text-center">
         <Link
           variant={Link.variant.SECONDARY}
@@ -133,9 +136,18 @@ function MainMenu(): T_ReactElement {
   }
 
   return (
-    <Block className="tw-relative tw-inline-block" ref={menuRef}>
-      <Button variant={Button.variant.SIMPLE} onClick={() => setShowMenu((pv) => !pv)}>
-        <Icon icon={Icon.icon.CHEVRON_DOWN} size={32} />
+    <Block
+      className="tw-relative tw-inline-block"
+      ref={menuRef}
+    >
+      <Button
+        variant={Button.variant.SIMPLE}
+        onClick={() => setShowMenu((pv) => !pv)}
+      >
+        <Icon
+          icon={Icon.icon.CHEVRON_DOWN}
+          size={32}
+        />
       </Button>
 
       {showMenu && (
@@ -200,19 +212,46 @@ const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactE
   }
 
   return (
-    <Block className="tw-relative" ref={menuRef}>
-      <Button variant={Button.variant.SIMPLE} onClick={() => toggleShowMenu()}>
-        <Icon icon={Icon.icon.COG} size={32} />
+    <Block
+      className="tw-relative"
+      ref={menuRef}
+    >
+      <Button
+        variant={Button.variant.SIMPLE}
+        onClick={() => toggleShowMenu()}
+      >
+        <Icon
+          icon={Icon.icon.COG}
+          size={32}
+        />
       </Button>
 
       {showMenu && (
         <Block className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-44 tw-overflow-hidden dfr-shadow dark:dfr-shadow">
-          <MenuItem title={t("layout:header:settings:theme")} className="tw-hidden">
-            <Button variant={Button.variant.SIMPLE} disabled={!isDarkMode} onClick={toggleTheme}>
-              <Icon icon={Icon.icon.SUN} color="tw-text-yellow-600" size={18} />
+          <MenuItem
+            title={t("layout:header:settings:theme")}
+            className="tw-hidden"
+          >
+            <Button
+              variant={Button.variant.SIMPLE}
+              disabled={!isDarkMode}
+              onClick={toggleTheme}
+            >
+              <Icon
+                icon={Icon.icon.SUN}
+                color="tw-text-yellow-600"
+                size={18}
+              />
             </Button>
-            <Space orientation="v" size={1} />
-            <Button variant={Button.variant.SIMPLE} disabled={isDarkMode} onClick={toggleTheme}>
+            <Space
+              orientation="v"
+              size={1}
+            />
+            <Button
+              variant={Button.variant.SIMPLE}
+              disabled={isDarkMode}
+              onClick={toggleTheme}
+            >
               <Icon
                 icon={Icon.icon.MOON}
                 color="tw-text-indigo-700 dark:tw-text-indigo-300"
@@ -244,7 +283,11 @@ const EnvironmentMenuItem = withRequiredAuthComponent(function EnvironmentMenuIt
 
   return (
     <MenuItem title={`Open in "${isDevelopmentEnvironment() ? "prod" : "dev"}"`}>
-      <Link variant={Link.variant.SIMPLE} href={url} isExternalUrl>
+      <Link
+        variant={Link.variant.SIMPLE}
+        href={url}
+        isExternalUrl
+      >
         <Icon icon={Icon.icon.EXTERNAL_LINK} />
       </Link>
     </MenuItem>

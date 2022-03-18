@@ -23,13 +23,19 @@ function SongDetails({
     <Block className={classNames("tw-text-sm tw-italic", className)}>
       <Block className="sm:tw-flex sm:tw-flex-nowrap">
         <InlineText is="strong">{t("page:artist")}:</InlineText>{" "}
-        <InlineText className="sm:tw-ml-1 sm:tw-flex-1 sm:tw-truncate" title={song.artist}>
+        <InlineText
+          className="sm:tw-ml-1 sm:tw-flex-1 sm:tw-truncate"
+          title={song.artist}
+        >
           {song.artist}
         </InlineText>
       </Block>
       <Block className="sm:tw-flex sm:tw-flex-nowrap">
         <InlineText is="strong">{t("page:album")}:</InlineText>{" "}
-        <InlineText className="sm:tw-ml-1 sm:tw-flex-1 sm:tw-truncate" title={song.album}>
+        <InlineText
+          className="sm:tw-ml-1 sm:tw-flex-1 sm:tw-truncate"
+          title={song.album}
+        >
           {song.album}
         </InlineText>
       </Block>
@@ -39,16 +45,33 @@ function SongDetails({
       <Category category={song.category} />
 
       <Block className="tw-mt-2 tw-flex tw-items-center">
-        <InlineText className="tw-flex tw-h-6 tw-w-6 tw-items-center tw-justify-center tw-rounded-md tw-border-2 tw-pr-0.5 tw-text-center tw-text-sm dfr-shadow dfr-border-color-primary">
+        <InlineText className="tw-font tw-flex tw-h-7 tw-w-7 tw-items-center tw-justify-center tw-rounded-md tw-border-2 tw-text-center tw-text-sm tw-not-italic dfr-shadow dfr-border-color-primary">
           {song.country}
         </InlineText>
         <Block className="tw-ml-2 tw-inline-block tw-border-l tw-pl-2 dfr-border-color-primary">
-          <Link variant={Link.variant.SIMPLE} href={song.spotifyUrl} isExternalUrl>
-            <Icon icon={Icon.icon.SPOTIFY} size={24} />
+          <Link
+            variant={Link.variant.SIMPLE}
+            href={song.spotifyUrl}
+            isExternalUrl
+          >
+            <Icon
+              icon={Icon.icon.SPOTIFY}
+              size={24}
+            />
           </Link>
-          <Space size={1} orientation="v" />
-          <Link variant={Link.variant.SIMPLE} href={song.youtubeUrl} isExternalUrl>
-            <Icon icon={Icon.icon.YOUTUBE} size={24} />
+          <Space
+            size={1}
+            orientation="v"
+          />
+          <Link
+            variant={Link.variant.SIMPLE}
+            href={song.youtubeUrl}
+            isExternalUrl
+          >
+            <Icon
+              icon={Icon.icon.YOUTUBE}
+              size={24}
+            />
           </Link>
         </Block>
       </Block>
@@ -67,7 +90,10 @@ const Category = withRequiredAuthComponent(function Category({ category }: { cat
 
   return (
     <Block>
-      <InlineText is="strong" className="tw-mr-2">
+      <InlineText
+        is="strong"
+        className="tw-mr-2"
+      >
         {t("page:category")}:
       </InlineText>
       <Emoji>{EMOJIS[category.split("|")[0]]}</Emoji>

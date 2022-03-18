@@ -27,7 +27,11 @@ function Films(): T_ReactElement {
   } = useController();
 
   return (
-    <Render isLoading={isLoading} error={error} data={data}>
+    <Render
+      isLoading={isLoading}
+      error={error}
+      data={data}
+    >
       {({ films, categories }: { films: T_Film[]; categories: string[] }) => {
         return (
           <Block>
