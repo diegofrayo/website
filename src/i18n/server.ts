@@ -70,6 +70,9 @@ export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsP
         revalidate,
       };
     } catch (error) {
+      console.log("getPageContentStaticProps => Error");
+      console.log(error);
+
       return {
         redirect: {
           destination: "/500",

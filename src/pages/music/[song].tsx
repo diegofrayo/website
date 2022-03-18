@@ -41,6 +41,8 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
       path: `/pages/music/[song]/assets/${song.id}.mdx`,
     })) as string;
 
+    console.log(isDevelopmentEnvironment());
+
     const songMDXContent = await serialize(file, {
       scope: {
         DATA: {
