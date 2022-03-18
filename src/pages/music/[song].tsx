@@ -41,8 +41,6 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
       path: `/pages/music/[song]/assets/${song.id}.mdx`,
     })) as string;
 
-    console.log(isDevelopmentEnvironment());
-
     const songMDXContent = await serialize(file, {
       scope: {
         DATA: {
@@ -51,9 +49,9 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
             ...song,
             content: isDevelopmentEnvironment()
               ? await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.txt` })
-              : song.assets.serverUrl
+              : song.assets?.serverUrl
               ? (
-                  await http.get(song.assets.serverUrl)
+                  await http.get(song.assets?.serverUrl)
                 ).data
               : await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.txt` }),
           },
