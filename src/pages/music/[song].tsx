@@ -4,10 +4,12 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import SongPage from "~/components/pages/music/[song]";
 import { getPageContentStaticProps } from "~/i18n";
+import http from "~/lib/http";
 import { dataLoader } from "~/server";
 import MusicService from "~/services/music";
 import type { T_Song } from "~/types";
 import { MDXScope } from "~/utils/mdx";
+import { isDevelopmentEnvironment } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 
 type T_PageProps = {
@@ -45,7 +47,13 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
           ...MDXScope.DATA,
           song: {
             ...song,
-            content: await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.txt` }),
+            content: isDevelopmentEnvironment()
+              ? await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.txt` })
+              : song.assets.serverUrl
+              ? (
+                  await http.get(song.assets.serverUrl)
+                ).data
+              : await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.txt` }),
           },
         },
       },

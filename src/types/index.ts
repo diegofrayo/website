@@ -116,6 +116,7 @@ export type T_Song = {
     source: "youtube" | "lacuerda" | "url" | "instagram" | "spotify" | "ultimate-guitar";
   }[];
   chords: string[];
+  assets: T_Object<string>;
 };
 
 // --- Films ---
