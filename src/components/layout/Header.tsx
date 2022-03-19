@@ -8,6 +8,7 @@ import { AuthService } from "~/auth";
 import { withRequiredAuthComponent } from "~/hocs";
 import { useClickOutside, useDidMount, useEnhacedState } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
+import http from "~/lib/http";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
 import type {
@@ -85,10 +86,6 @@ function MainMenu(): T_ReactElement {
                 url: ROUTES.PERSONAL,
               },
               {
-                label: translator.t("layout:header:menu:music"),
-                url: ROUTES.MUSIC,
-              },
-              {
                 label: translator.t("layout:header:common:menu_item_bookmarks"),
                 url: ROUTES.BOOKMARKS,
               },
@@ -131,6 +128,10 @@ function MainMenu(): T_ReactElement {
       {
         label: translator.t("layout:header:common:menu_item_blog"),
         url: ROUTES.BLOG,
+      },
+      {
+        label: translator.t("layout:header:menu:music"),
+        url: ROUTES.MUSIC,
       },
     ];
   }
@@ -227,7 +228,7 @@ const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactE
       </Button>
 
       {showMenu && (
-        <Block className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-44 tw-overflow-hidden dfr-shadow dark:dfr-shadow">
+        <Block className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-3 tw-w-44 tw-overflow-hidden dfr-shadow dark:dfr-shadow">
           <MenuItem
             title={t("layout:header:settings:theme")}
             className="tw-hidden"
@@ -260,6 +261,7 @@ const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactE
             </Button>
           </MenuItem>
 
+          <ISRMenuItem />
           <EnvironmentMenuItem />
           <ReloadPWAMenuItem />
         </Block>
@@ -290,6 +292,30 @@ const EnvironmentMenuItem = withRequiredAuthComponent(function EnvironmentMenuIt
       >
         <Icon icon={Icon.icon.EXTERNAL_LINK} />
       </Link>
+    </MenuItem>
+  );
+});
+
+const ISRMenuItem = withRequiredAuthComponent(function ISRMenuItem() {
+  return (
+    <MenuItem title="ISR on-demand">
+      <Button
+        variant={Button.variant.SIMPLE}
+        onClick={async () => {
+          try {
+            await http.post("/api/diegofrayo", {
+              path: window.location.pathname,
+              secret: process.env.NEXT_PUBLIC_ISR_TOKEN,
+            });
+            alert("Success");
+          } catch (error) {
+            console.error(error);
+            alert("Error");
+          }
+        }}
+      >
+        <Icon icon={Icon.icon.SERVER} />
+      </Button>
     </MenuItem>
   );
 });

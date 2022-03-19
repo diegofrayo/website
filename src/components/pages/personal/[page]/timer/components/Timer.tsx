@@ -12,9 +12,11 @@ import type { T_RoutineItem } from "../types";
 function Timer({
   routineItem,
   routineItemIndex,
+  routineItemsStartTime,
 }: {
   routineItem: T_RoutineItem;
   routineItemIndex: number;
+  routineItemsStartTime: number;
 }): T_ReactElement {
   // context
   const {
@@ -93,7 +95,7 @@ function Timer({
         routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED
           ? 0
           : set.isStart
-          ? 10
+          ? routineItemsStartTime
           : set.isRest
           ? timeToSeconds(routineItem.restTime)
           : timeToSeconds(
@@ -103,7 +105,7 @@ function Timer({
             ),
       );
     },
-    [setTime, timeToSeconds],
+    [setTime, timeToSeconds, routineItemsStartTime],
   );
 
   // effects

@@ -25,6 +25,7 @@ import {
   PresentationChartLineIcon,
   RefreshIcon,
   ReplyIcon,
+  ServerIcon,
   UserCircleIcon,
   VolumeOffIcon,
   VolumeUpIcon,
@@ -320,6 +321,14 @@ export const ICONS: Record<E_Icons, T_Icon> = {
   CHEVRON_DOUBLE_DOWN: {
     isLibraryIcon: true,
     icon: ChevronDoubleDownIcon,
+    props: {
+      className: "",
+      color: "",
+    },
+  },
+  SERVER: {
+    isLibraryIcon: true,
+    icon: ServerIcon,
     props: {
       className: "",
       color: "",

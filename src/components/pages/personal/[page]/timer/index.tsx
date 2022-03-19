@@ -43,6 +43,7 @@ function TimerPage(): T_ReactElement {
     handleDeleteRoutineHistoryClick,
 
     // vars
+    routineItemsStartTime,
     routinesTemplates,
     isLoading,
     error,
@@ -124,6 +125,7 @@ function TimerPage(): T_ReactElement {
                       <Timer
                         routineItem={currentRoutineItem}
                         routineItemIndex={currentRoutineItemIndex}
+                        routineItemsStartTime={routineItemsStartTime}
                       />
                     )}
 
@@ -905,6 +907,7 @@ function useController() {
     routinesTemplates,
     isLoading,
     error,
+    routineItemsStartTime: routinesTemplates?.metadata.routineItemsStartTime || 0,
 
     // utils
     timeToSeconds,

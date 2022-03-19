@@ -269,6 +269,7 @@ export enum E_Icons {
   "PRESENTATION_CHART_LINE" = "PRESENTATION_CHART_LINE",
   "REFRESH" = "REFRESH",
   "REPLY" = "REPLY",
+  "SERVER" = "SERVER",
   "STAR" = "STAR",
   "SUN" = "SUN",
   "USER_CIRCLE" = "USER_CIRCLE",
