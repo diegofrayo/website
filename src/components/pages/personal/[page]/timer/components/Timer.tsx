@@ -56,7 +56,10 @@ function Timer({
               : "audio-clock-tick",
           ) as HTMLAudioElement
         )?.play();
-        window.navigator?.vibrate(200);
+
+        if (mode !== "COUNTDOWN") {
+          window.navigator?.vibrate(200);
+        }
       } catch (error) {
         console.error(error);
       }

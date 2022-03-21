@@ -3,7 +3,7 @@ import * as React from "react";
 import { Page, MainLayout } from "~/components/layout";
 import { Collapsible, Link, List, Text } from "~/components/primitive";
 import type { T_Object, T_ReactElement } from "~/types";
-import { isMobileiOS } from "~/utils/browser";
+import { isMobile } from "~/utils/browser";
 import { isBrowser } from "~/utils/misc";
 import { generateSlug } from "~/utils/strings";
 
@@ -18,19 +18,14 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElement {
       }}
     >
       <MainLayout title={`${PAGE_TITLE}`}>
-        {Object.entries(
-          contacts.order.reduce((result, curr) => {
-            return {
-              [curr]: contacts.data[curr],
-              ...result,
-            };
-          }, {}),
-        ).map(([groupName, groupData]: [string, T_Contacts]) => {
+        {Object.entries(contacts).map(([groupName, groupData]: [string, T_Contacts]) => {
+          const parsedGroupName = groupName.split("-").slice(1).join("-");
+
           if (Array.isArray(groupData)) {
             return (
               <ContactsGroup
                 key={generateSlug(groupName)}
-                groupName={groupName}
+                groupName={parsedGroupName}
                 contacts={groupData}
               />
             );
@@ -39,14 +34,16 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElement {
           return (
             <Collapsible
               key={generateSlug(groupName)}
-              title={`❏ ${groupName} [${countContacts(groupData)}]`}
+              title={`❏ ${parsedGroupName} [${countContacts(groupData)}]`}
               className="tw-mb-8 last:tw-mb-0"
             >
               {Object.entries(groupData).map(([groupName, contacts]: [string, T_Contact[]]) => {
+                const parsedGroupName = groupName.split("-").slice(1).join("-");
+
                 return (
                   <ContactsGroup
                     key={generateSlug(groupName)}
-                    groupName={groupName}
+                    groupName={parsedGroupName}
                     contacts={contacts}
                   />
                 );
@@ -95,7 +92,7 @@ function ContactLinks({ contact }: { contact: T_Contact }) {
     if (phone.split(" ")[1]?.startsWith("60")) return "";
 
     return `https://${
-      isBrowser() && isMobileiOS() ? "api" : "web"
+      isBrowser() && isMobile() ? "api" : "web"
     }.whatsapp.com/send?phone=${phone.replace(" ", "")}`.trim();
   }
 
@@ -202,8 +199,7 @@ function countContacts(contacts: T_Contacts) {
 
 type T_ContactsProps = {
   contacts: {
-    order: string[];
-    data: T_Contacts;
+    contacts: T_Contacts;
   };
 };
 
@@ -214,6 +210,4 @@ type T_Contact = {
   phone: string | { label: string; value: string }[];
   instagram: string;
   group: string;
-
-  title?: string;
 };

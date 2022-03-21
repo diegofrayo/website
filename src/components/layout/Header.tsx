@@ -228,7 +228,7 @@ const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactE
       </Button>
 
       {showMenu && (
-        <Block className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-3 tw-w-44 tw-overflow-hidden dfr-shadow dark:dfr-shadow">
+        <Block className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-44 tw-overflow-hidden dfr-shadow dark:dfr-shadow">
           <MenuItem
             title={t("layout:header:settings:theme")}
             className="tw-hidden"
@@ -307,10 +307,10 @@ const ISRMenuItem = withRequiredAuthComponent(function ISRMenuItem() {
               path: window.location.pathname,
               secret: process.env.NEXT_PUBLIC_ISR_TOKEN,
             });
-            alert("Success");
+            window.location.reload();
           } catch (error) {
             console.error(error);
-            alert("Error");
+            alert("Error:" + error.message);
           }
         }}
       >
