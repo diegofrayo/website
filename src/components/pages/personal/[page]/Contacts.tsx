@@ -1,10 +1,10 @@
 import * as React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Collapsible, Link, List, Text } from "~/components/primitive";
+import { Button, Collapsible, Icon, InlineText, Link, List, Text } from "~/components/primitive";
 import type { T_Object, T_ReactElement } from "~/types";
-import { isMobile } from "~/utils/browser";
-import { isBrowser } from "~/utils/misc";
+import { copyToClipboard, isMobile } from "~/utils/browser";
+import { formatPhoneNumber } from "~/utils/misc";
 import { generateSlug } from "~/utils/strings";
 
 function Contacts({ contacts }: T_ContactsProps): T_ReactElement {
@@ -68,12 +68,25 @@ function ContactsGroup({ groupName, contacts }): T_ReactElement {
     >
       <List variant={List.variant.DEFAULT}>
         {contacts.map((contact) => {
+          const phoneWithoutCode =
+            typeof contact.phone === "string" ? contact.phone.split(" ")[1] : "";
+          const isPhoneFromColombia = contact.country === "CO";
+
           return (
             <List.Item
               key={generateSlug(contact.name)}
-              className="tw-font-bold"
+              className="tw-pb-4 tw-font-bold"
             >
-              <Text>{contact.name}</Text>
+              <Text className="tw-leading-tight">{contact.name}</Text>
+              {phoneWithoutCode ? (
+                <Button
+                  className="tw-mb-1 tw-text-sm tw-italic dfr-text-color-secondary"
+                  data-clipboard-text={isPhoneFromColombia ? phoneWithoutCode : contact.phone}
+                  onClick={copyToClipboard}
+                >
+                  {isPhoneFromColombia ? formatPhoneNumber(phoneWithoutCode) : contact.phone}
+                </Button>
+              ) : null}
               <ContactLinks contact={contact} />
             </List.Item>
           );
@@ -84,104 +97,136 @@ function ContactsGroup({ groupName, contacts }): T_ReactElement {
 }
 
 function ContactLinks({ contact }: { contact: T_Contact }) {
-  function generatePhoneLink(phone: string) {
-    return `tel:${phone.split(" ").slice(1).join("").trim()}`;
-  }
-
-  function generateWhatsAppLink(phone: string) {
-    if (phone.split(" ")[1]?.startsWith("60")) return "";
-
-    return `https://${
-      isBrowser() && isMobile() ? "api" : "web"
-    }.whatsapp.com/send?phone=${phone.replace(" ", "")}`.trim();
-  }
-
-  function isPhoneNumberFromColombia(phone: string) {
-    return phone.includes("+57");
-  }
-
   return (
     <div className="root">
       {Array.isArray(contact.phone) ? (
         contact.phone.map((item) => {
           return (
-            <ContactLinksItem
+            <WhastAppButton
               key={generateSlug(item.label)}
-              href={generateWhatsAppLink(item.value)}
+              phone={item.value}
             >
-              {`WHATSAPP (${item.label})`}
-            </ContactLinksItem>
+              <Icon
+                icon={Icon.icon.WHATSAPP}
+                size={24}
+              />
+              <InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-green-500">
+                {item.label}
+              </InlineText>
+            </WhastAppButton>
           );
         })
       ) : contact.phone ? (
-        <ContactLinksItem href={generateWhatsAppLink(contact.phone)}>WHATSAPP</ContactLinksItem>
+        <WhastAppButton phone={contact.phone}>
+          <Icon
+            icon={Icon.icon.WHATSAPP}
+            size={24}
+          />
+        </WhastAppButton>
       ) : null}
 
       {contact.instagram ? (
-        <ContactLinksItem href={`https://instagram.com/${contact.instagram}`}>
-          INSTAGRAM
-        </ContactLinksItem>
+        <Link
+          variant={Link.variant.SIMPLE}
+          href={`https://instagram.com/${contact.instagram}`}
+          isExternalUrl
+        >
+          <Icon
+            icon={Icon.icon.INSTAGRAM}
+            size={24}
+          />
+        </Link>
       ) : null}
 
       {Array.isArray(contact.phone) ? (
         contact.phone.map((item) => {
-          if (!isPhoneNumberFromColombia(item.value)) return null;
-
           return (
-            <ContactLinksItem
+            <PhoneButton
               key={generateSlug(item.label)}
-              href={generatePhoneLink(item.value)}
+              phone={item.value}
+              country={contact.country}
             >
-              {`LLAMAR (${item.label})`}
-            </ContactLinksItem>
+              <Icon
+                icon={Icon.icon.PHONE}
+                size={22}
+                color="tw-text-blue-700"
+              />
+              <InlineText className="tw-mx-1 tw-text-sm tw-italic tw-text-blue-700">
+                {item.label}
+              </InlineText>
+            </PhoneButton>
           );
         })
-      ) : isPhoneNumberFromColombia(contact.phone) ? (
-        <ContactLinksItem href={generatePhoneLink(contact.phone)}>LLAMAR</ContactLinksItem>
-      ) : null}
+      ) : (
+        <PhoneButton
+          phone={contact.phone}
+          country={contact.country}
+        >
+          <Icon
+            icon={Icon.icon.PHONE}
+            size={22}
+            color="tw-text-blue-700"
+          />
+        </PhoneButton>
+      )}
 
       <style jsx>{`
-        .root::before {
-          content: "[";
+        .root > :global(*) {
+          @apply tw-mr-2;
           display: inline-block;
-          margin-right: 3px;
         }
 
-        .root::after {
-          content: "]";
-          display: inline-block;
-          margin-left: 3px;
+        .root > :global(*):last-child {
+          @apply tw-mr-0;
         }
       `}</style>
     </div>
   );
 }
 
-function ContactLinksItem({ href = "", children }) {
-  if (!href) return null;
+function WhastAppButton({ children, phone }) {
+  function handleWhatsAppClick(phone: string) {
+    return () => {
+      const url = `https://${isMobile() ? "api" : "web"}.whatsapp.com/send?phone=${phone.replace(
+        " ",
+        "",
+      )}`.trim();
+
+      window.open(url);
+    };
+  }
+
+  const isColombianHomePhoneNumber = phone.split(" ")[1]?.startsWith("60");
+  if (isColombianHomePhoneNumber) {
+    return null;
+  }
 
   return (
-    <div className="root tw-inline-block">
-      <Link
-        variant={Link.variant.PRIMARY}
-        href={href}
-        isExternalUrl
-      >
-        {children}
-      </Link>
+    <Button
+      variant={Button.variant.SIMPLE}
+      onClick={handleWhatsAppClick(phone)}
+    >
+      {children}
+    </Button>
+  );
+}
 
-      <style jsx>{`
-        .root::after {
-          content: "|";
-          display: inline-block;
-          margin: 0 5px;
-        }
+function PhoneButton({ children, phone, country }) {
+  function generatePhoneLink(phone: string) {
+    return `tel:${phone.split(" ").slice(1).join("").trim()}`;
+  }
 
-        .root:last-child::after {
-          display: none;
-        }
-      `}</style>
-    </div>
+  const isPhoneNumberFromColombia = country === "CO";
+  if (!isPhoneNumberFromColombia) return null;
+
+  return (
+    <Link
+      variant={Link.variant.SIMPLE}
+      href={generatePhoneLink(phone)}
+      isExternalUrl
+    >
+      {children}
+    </Link>
   );
 }
 
@@ -210,4 +255,5 @@ type T_Contact = {
   phone: string | { label: string; value: string }[];
   instagram: string;
   group: string;
+  country: "CO" | "USA" | "AR" | "PE" | "UY" | "PY" | "CA" | "ISR" | "MX" | "FR" | "SP" | "BR";
 };

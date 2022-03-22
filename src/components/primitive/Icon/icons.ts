@@ -20,6 +20,7 @@ import {
   MusicNoteIcon,
   PauseIcon,
   PencilAltIcon,
+  PhoneIcon,
   PhotographIcon,
   PlayIcon,
   PresentationChartLineIcon,
@@ -275,6 +276,13 @@ export const ICONS: Record<E_Icons, T_Icon> = {
   CALENDAR: {
     isLibraryIcon: true,
     icon: CalendarIcon,
+    props: {
+      className: "",
+    },
+  },
+  PHONE: {
+    isLibraryIcon: true,
+    icon: PhoneIcon,
     props: {
       className: "",
     },
