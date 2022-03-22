@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Button, Collapsible, Icon, InlineText, Link, List, Text } from "~/components/primitive";
+import { Emoji } from "~/components/shared";
 import type { T_Object, T_ReactElement } from "~/types";
 import { copyToClipboard, isMobile } from "~/utils/browser";
 import { formatPhoneNumber } from "~/utils/misc";
@@ -61,6 +62,22 @@ export default Contacts;
 // --- Components ---
 
 function ContactsGroup({ groupName, contacts }): T_ReactElement {
+  const COUNTRIES_EMOJIS = {
+    AR: "🇦🇷",
+    BR: "🇧🇷",
+    CA: "🇨🇦",
+    CO: "🇨🇴",
+    FR: "🇫🇷",
+    GB: "🇬🇧",
+    ISR: "🇮🇱",
+    MX: "🇲🇽",
+    PE: "🇵🇪",
+    PY: "🇵🇾",
+    SP: "🇪🇸",
+    USA: "🇺🇲",
+    UY: "🇺🇾",
+  };
+
   return (
     <Collapsible
       title={`❏ ${groupName} [${countContacts(contacts)}]`}
@@ -84,7 +101,12 @@ function ContactsGroup({ groupName, contacts }): T_ReactElement {
                   data-clipboard-text={isPhoneFromColombia ? phoneWithoutCode : contact.phone}
                   onClick={copyToClipboard}
                 >
-                  {isPhoneFromColombia ? formatPhoneNumber(phoneWithoutCode) : contact.phone}
+                  <Emoji className="tw-mr-2 tw-not-italic">
+                    {COUNTRIES_EMOJIS[contact.country]}
+                  </Emoji>
+                  <InlineText>
+                    {isPhoneFromColombia ? formatPhoneNumber(phoneWithoutCode) : contact.phone}
+                  </InlineText>
                 </Button>
               ) : null}
               <ContactLinks contact={contact} />
@@ -197,9 +219,8 @@ function WhastAppButton({ children, phone }) {
   }
 
   const isColombianHomePhoneNumber = phone.split(" ")[1]?.startsWith("60");
-  if (isColombianHomePhoneNumber) {
-    return null;
-  }
+  const isAssistanceServiceNumber = phone.split(" ")[1]?.length === 3;
+  if (isColombianHomePhoneNumber || isAssistanceServiceNumber) return null;
 
   return (
     <Button
@@ -255,5 +276,18 @@ type T_Contact = {
   phone: string | { label: string; value: string }[];
   instagram: string;
   group: string;
-  country: "CO" | "USA" | "AR" | "PE" | "UY" | "PY" | "CA" | "ISR" | "MX" | "FR" | "SP" | "BR";
+  country:
+    | "AR"
+    | "BR"
+    | "CA"
+    | "CO"
+    | "FR"
+    | "GB"
+    | "ISR"
+    | "MX"
+    | "PE"
+    | "PY"
+    | "SP"
+    | "USA"
+    | "UY";
 };

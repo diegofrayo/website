@@ -158,5 +158,5 @@ export function formatPhoneNumber(phone: string): string {
     return "(" + match[1] + ") " + match[2] + "-" + match[3];
   }
 
-  return "";
+  return phone;
 }
