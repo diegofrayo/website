@@ -27,6 +27,10 @@ const MY_THEME = {
     property: "maxWidth",
     value: defaultTheme.screens.md,
   },
+  ["font-family"]: {
+    property: "fontFamily",
+    value: "'Lora', monospace",
+  },
   ["shadow"]: {
     property: "boxShadow",
     value: {

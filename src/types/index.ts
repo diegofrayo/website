@@ -256,6 +256,7 @@ export enum E_Icons {
   "EDIT" = "EDIT",
   "EXTERNAL_LINK" = "EXTERNAL_LINK",
   "FILM" = "FILM",
+  "GLOBE_ALT" = "GLOBE_ALT",
   "HEART" = "HEART",
   "KEY" = "KEY",
   "LINK" = "LINK",

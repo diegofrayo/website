@@ -16,6 +16,7 @@ async function main() {
     const pages = [
       { path: "/", hasToBeIndexed: true },
       { path: "/about-me", hasToBeIndexed: true },
+      { path: "/resume", hasToBeIndexed: true },
       { path: "/blog", hasToBeIndexed: true },
     ].concat(
       Object.values(BLOG.posts).map((post) => {

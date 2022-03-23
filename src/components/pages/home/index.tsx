@@ -35,8 +35,12 @@ function Home(): T_ReactElement {
             <LinkItem
               label="blog"
               url={ROUTES.BLOG}
+              className="tw-hidden sm:tw-block"
             />
-            {/* <LinkItem label="resume" url={ROUTES.RESUME} className="tw-hidden sm:tw-block"  /> */}
+            <LinkItem
+              label="resume"
+              url={ROUTES.RESUME}
+            />
           </Block>
         </Block>
       </MainLayout>

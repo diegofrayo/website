@@ -14,6 +14,7 @@ import {
   DotsCircleHorizontalIcon,
   ExternalLinkIcon,
   FilmIcon,
+  GlobeAltIcon,
   KeyIcon,
   LinkIcon,
   MenuIcon,
@@ -262,6 +263,13 @@ export const ICONS: Record<E_Icons, T_Icon> = {
   PHOTOGRAPH: {
     isLibraryIcon: true,
     icon: PhotographIcon,
+    props: {
+      className: "",
+    },
+  },
+  GLOBE_ALT: {
+    isLibraryIcon: true,
+    icon: GlobeAltIcon,
     props: {
       className: "",
     },

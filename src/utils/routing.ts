@@ -21,8 +21,6 @@ export const ROUTES: Record<T_RoutesKeys, T_PageRoute> = {
   ERROR_500: "/500",
 };
 
-export const DYNAMIC_MAIN_PAGES = ["about-me", "resume"];
-
 // --- Utils ---
 
 const LOCAL_STORAGE_KEY = "DFR_LAST_PAGE";

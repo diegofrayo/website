@@ -3,7 +3,6 @@ User-agent: *
 disallow: /bookmarks
 disallow: /music
 disallow: /personal
-disallow: /resume
 disallow: /static
 
 Sitemap: https://diegofrayo.vercel.app/sitemap.xml

@@ -2,15 +2,14 @@ import * as React from "react";
 import { useTheme } from "next-themes";
 
 import { Page } from "~/components/layout";
-import { Render } from "~/components/shared";
 import { Block, Button, Icon, InlineText, Space, Text, Title } from "~/components/primitive";
+import { GoBack, Render } from "~/components/shared";
 import { withAuth } from "~/auth";
 import { useDidMount, useQuery } from "~/hooks";
 import http from "~/lib/http";
 import type { T_ReactElement } from "~/types";
 import { setScrollPosition } from "~/utils/browser";
 import { delay, isDevelopmentEnvironment, sortBy } from "~/utils/misc";
-import { redirect, ROUTES } from "~/utils/routing";
 
 import { ROUTINE_ITEMS_STATUS, ROUTINE_STATUS, TIMER_STATUS } from "./constants";
 import { Timer, Stats, RoutineItem } from "./components";
@@ -117,7 +116,7 @@ function TimerPage(): T_ReactElement {
               }}
             >
               <Block className="tw-relative tw-mx-auto tw-min-h-screen tw-max-w-sm tw-pt-8 tw-shadow-md tw-shadow-gray-600 dfr-bg-color-light-strong">
-                <GoToHomeLink />
+                <GoBack className="tw-absolute tw-top-0" />
 
                 {currentRoutine.status === ROUTINE_STATUS.IN_PROGRESS ? (
                   <React.Fragment>
@@ -918,27 +917,4 @@ function useController() {
     setRoutineItemAsStarted,
     updateRoutineItem,
   };
-}
-
-// --- Components ---
-
-function GoToHomeLink(): T_ReactElement {
-  return (
-    <Block className="tw-text-csenter tw-absolute tw-top-0 tw-h-8 tw-w-full tw-bg-black tw-p-1 tw-text-sm tw-font-bold tw-text-white">
-      <Button
-        variant={Button.variant.SIMPLE}
-        onClick={() => {
-          if (window.confirm("¿Está seguro de que quiere ir al inicio?")) {
-            redirect(ROUTES.HOME);
-          }
-        }}
-      >
-        <Icon
-          icon={Icon.icon.CHEVRON_LEFT}
-          color="tw-text-white"
-        />
-        <InlineText className="tw-align-middle tw-font-bold"> Volver al inicio</InlineText>
-      </Button>
-    </Block>
-  );
 }

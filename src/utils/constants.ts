@@ -51,6 +51,12 @@ export const PERSONAL_PAGES = [
     icon: "KEY",
   },
   {
+    slug: "isr",
+    title: "isr",
+    componentName: "ISR",
+    icon: "REFRESH",
+  },
+  {
     slug: "chords-creator",
     title: "chords",
     componentName: "ChordsCreator",
