@@ -3,6 +3,7 @@ import * as React from "react";
 
 import { Block, Button, Icon, InlineText } from "~/components/primitive";
 import type { T_ReactElement } from "~/types";
+import { safeGoBack } from "~/utils/routing";
 
 function GoBack({ className }: { className: string }): T_ReactElement {
   return (
@@ -16,7 +17,7 @@ function GoBack({ className }: { className: string }): T_ReactElement {
         variant={Button.variant.SIMPLE}
         onClick={() => {
           if (window.confirm("¿Are you sure?")) {
-            window.history.back();
+            safeGoBack();
           }
         }}
       >

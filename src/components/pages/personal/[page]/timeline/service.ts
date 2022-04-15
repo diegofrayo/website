@@ -1,9 +1,9 @@
 import http from "~/lib/http";
-import type { T_TimeLine } from "~/types";
+import type { T_Timeline } from "./types";
 import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 
-class TimeLineService {
-  async fetchData(): Promise<T_TimeLine> {
+class TimelineService {
+  async fetchData(): Promise<T_Timeline> {
     const { categories, items } = (
       await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
         path: "/assets",
@@ -24,7 +24,7 @@ class TimeLineService {
                 })
                 .filter(Boolean)
                 .sort(sortBy([{ param: "value", order: "asc" }])),
-            }) as T_TimeLine;
+            }) as T_Timeline;
           })
           .reduce((result, item) => {
             const year = item.startDate.split("/")[0];
@@ -38,9 +38,9 @@ class TimeLineService {
 
             return result;
           }, {}),
-      ).sort(sortBy([{ param: "year", order: "desc" }])) as T_TimeLine["items"],
+      ).sort(sortBy([{ param: "year", order: "desc" }])) as T_Timeline["items"],
     };
   }
 }
 
-export default new TimeLineService();
+export default new TimelineService();

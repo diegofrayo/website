@@ -9,5 +9,6 @@ export { default as RateContent } from "./RateContent";
 export { default as Render } from "./Render";
 export { default as SourceCode } from "./SourceCode";
 export { default as TextWithEmoji } from "./TextWithEmoji";
+export { default as Timeline } from "./Timeline";
 export { default as TitleCreator } from "./TitleCreator";
 export { default as Translation } from "./Translation";

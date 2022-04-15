@@ -1,7 +1,12 @@
+import { AuthService } from "~/auth";
 import { I18nService } from "~/i18n";
 import http from "~/lib/http";
 import type { T_BlogPost, T_ItemCategory, T_Object, T_Primitive } from "~/types";
-import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
+import {
+  isDevelopmentEnvironment,
+  sortBy,
+  transformObjectKeysFromSnakeCaseToLowerCamelCase,
+} from "~/utils/misc";
 
 class BlogService {
   constructor() {
@@ -32,7 +37,7 @@ class BlogService {
         } as T_BlogPost;
       })
       .filter((post: T_BlogPost) => {
-        return post.isPublished;
+        return isDevelopmentEnvironment() || AuthService.isUserLoggedIn() ? true : post.isPublished;
       })
       .sort(sortBy([{ param: "publishedAt", order: "desc" }]));
 

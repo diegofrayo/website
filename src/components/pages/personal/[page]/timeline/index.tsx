@@ -2,19 +2,20 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Button, Space, Title, Block, Text, InlineText } from "~/components/primitive";
-import { Emoji, Render } from "~/components/shared";
+import { Emoji, Render, Timeline } from "~/components/shared";
 import { useQuery } from "~/hooks";
-import TimeLineService from "~/services/timeline";
-import type { T_TimeLine, T_ReactElement } from "~/types";
+import TimelineService from "./service";
+import type { T_ReactElement } from "~/types";
 
-function TimeLine(): T_ReactElement {
+import type { T_Timeline } from "./types";
+
+function TimelinePage(): T_ReactElement {
   const {
     // states
     selectedCategory,
 
     // handlers
     handleSelectFilter,
-    formatDate,
 
     // vars
     isLoading,
@@ -28,7 +29,7 @@ function TimeLine(): T_ReactElement {
       error={error}
       data={data}
     >
-      {({ categories, items }: T_TimeLine) => {
+      {({ categories, items }: T_Timeline) => {
         return (
           <React.Fragment>
             <Block is="section">
@@ -47,7 +48,7 @@ function TimeLine(): T_ReactElement {
                       key={category.id}
                       variant={Button.variant.SIMPLE}
                       className={classNames(
-                        "tw-underlidne tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm tw-font-bold",
+                        "tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm tw-font-bold",
                         category.id === selectedCategory
                           ? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
                           : "dfr-bg-color-primary dark:dfr-bg-color-primary",
@@ -62,55 +63,10 @@ function TimeLine(): T_ReactElement {
             </Block>
             <Space size={6} />
 
-            {items.map((item) => {
-              return (
-                <Block
-                  is="section"
-                  key={item.year}
-                >
-                  <Title
-                    is="h2"
-                    className="tw-my-8 tw-text-left tw-underline sm:tw-text-center"
-                    variant={Title.variant.SECONDARY}
-                    size={Title.size.LG}
-                  >
-                    {item.year}
-                  </Title>
-
-                  {item.items.map((item, index) => {
-                    return (
-                      <Block
-                        key={item.id}
-                        className={classNames(
-                          "tw-relative tw-border-l-4 tw-border-black tw-px-4 tw-pb-8 last:tw-pb-0 dark:tw-border-white sm:tw-w-1/2",
-                          index % 2 === 0
-                            ? "sm:tw-ml-1 sm:tw-border-l-0 sm:tw-border-r-4 sm:tw-text-right"
-                            : "sm:tw-left-2/4",
-                        )}
-                      >
-                        <Text className="tw-text-sm">
-                          <Emoji className="tw-mr-2">🗓</Emoji>
-                          <InlineText>{formatDate(item.startDate, item.endDate)}</InlineText>
-                        </Text>
-                        <Text className="tw-my-2 tw-text-xl tw-font-bold">{item.description}</Text>
-                        <Block>
-                          {item.categories.map((category) => {
-                            return (
-                              <InlineText
-                                key={category.id}
-                                className="tw-rounded-md tw-border tw-px-2 tw-py-1 tw-text-xs tw-font-bold dfr-border-color-primary dark:dfr-border-color-primary"
-                              >
-                                {category.value}
-                              </InlineText>
-                            );
-                          })}
-                        </Block>
-                      </Block>
-                    );
-                  })}
-                </Block>
-              );
-            })}
+            <Timeline
+              timeline={items}
+              TimelineItem={TimelineItem}
+            />
           </React.Fragment>
         );
       }}
@@ -118,20 +74,20 @@ function TimeLine(): T_ReactElement {
   );
 }
 
-export default TimeLine;
+export default TimelinePage;
 
 // --- Controller ---
 
 function useController(): {
   isLoading: boolean;
   error: unknown;
-  data?: T_TimeLine;
+  data?: T_Timeline;
   selectedCategory: string;
   handleSelectFilter: (filter: string) => () => void;
   formatDate: any;
 } {
   const [selectedCategory, setSelectedCategory] = React.useState("");
-  const { isLoading, error, data } = useQuery("items", TimeLineService.fetchData);
+  const { isLoading, error, data } = useQuery("items", TimelineService.fetchData);
 
   function handleSelectFilter(category) {
     return () => {
@@ -200,6 +156,7 @@ function useController(): {
           items: data.items.map((item) => {
             return {
               ...item,
+              title: item.year.toString(),
               items: selectedCategory
                 ? item.items.filter((item) => {
                     return (
@@ -213,4 +170,35 @@ function useController(): {
         }
       : undefined,
   };
+}
+
+// --- Components ---
+
+function TimelineItem({ data }) {
+  const {
+    // handlers
+    formatDate,
+  } = useController();
+
+  return (
+    <Block>
+      <Text className="tw-text-sm">
+        <Emoji className="tw-mr-2">🗓</Emoji>
+        <InlineText>{formatDate(data.startDate, data.endDate)}</InlineText>
+      </Text>
+      <Text className="tw-my-2 tw-text-xl tw-font-bold">{data.description}</Text>
+      <Block>
+        {data.categories.map((category) => {
+          return (
+            <InlineText
+              key={category.id}
+              className="tw-rounded-md tw-border tw-px-2 tw-py-1 tw-text-xs tw-font-bold dfr-border-color-primary dark:dfr-border-color-primary"
+            >
+              {category.value}
+            </InlineText>
+          );
+        })}
+      </Block>
+    </Block>
+  );
 }

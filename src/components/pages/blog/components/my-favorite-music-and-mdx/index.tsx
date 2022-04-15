@@ -4,27 +4,8 @@ import { Block, Icon, Link, Text, Title as TitlePrimitive } from "~/components/p
 import type { T_ReactElement } from "~/types";
 import { isDevelopmentEnvironment } from "~/utils/misc";
 
-export function HelloWorldMDX({ text }: { text: string }): T_ReactElement {
+export function MFMAM_HelloWorldMDX({ text }: { text: string }): T_ReactElement {
   return <Text className="tw-block tw-bg-red-200 tw-p-2 tw-text-red-700">{text}</Text>;
-}
-
-export function SpotifyPlaylist(): T_ReactElement {
-  if (isDevelopmentEnvironment()) return null;
-
-  return (
-    <Block
-      className="tw-border-4 dfr-border-color-dark-strong"
-      data-markdown-block
-    >
-      <iframe
-        src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"
-        width="100%"
-        height="380"
-        frameBorder="0"
-        allow="encrypted-media"
-      />
-    </Block>
-  );
 }
 
 type T_GitHubRepoProps = {
@@ -33,7 +14,7 @@ type T_GitHubRepoProps = {
   description: string;
 };
 
-export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_ReactElement {
+export function MFMAM_GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_ReactElement {
   return (
     <Block
       className="tw-text-right"
@@ -68,6 +49,25 @@ export function GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_Rea
           iconClassName="tw-text-black"
         />
       </Link>
+    </Block>
+  );
+}
+
+export function MFMAM_SpotifyPlaylist(): T_ReactElement {
+  if (isDevelopmentEnvironment()) return null;
+
+  return (
+    <Block
+      className="tw-border-4 dfr-border-color-dark-strong"
+      data-markdown-block
+    >
+      <iframe
+        src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"
+        width="100%"
+        height="380"
+        frameBorder="0"
+        allow="encrypted-media"
+      />
     </Block>
   );
 }

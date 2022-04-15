@@ -2,7 +2,7 @@ import * as React from "react";
 
 import type { T_ReactElement } from "~/types";
 
-export function Main(): T_ReactElement {
+export function HST_Main(): T_ReactElement {
   return (
     <main
       role="main"
@@ -70,7 +70,7 @@ export function Main(): T_ReactElement {
   );
 }
 
-export function Texts(): T_ReactElement {
+export function HST_Texts(): T_ReactElement {
   return (
     <section>
       <h2>text elements</h2>
@@ -107,7 +107,7 @@ export function Texts(): T_ReactElement {
   );
 }
 
-export function Measure(): T_ReactElement {
+export function HST_Measure(): T_ReactElement {
   return (
     <div>
       <p>Donuts eaten:</p>

@@ -21,7 +21,7 @@ export const PERSONAL_PAGES = [
   {
     slug: "timeline",
     title: "timeline",
-    componentName: "TimeLine",
+    componentName: "timeline",
     icon: "PRESENTATION_CHART_LINE",
   },
   {

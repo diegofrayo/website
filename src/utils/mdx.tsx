@@ -6,6 +6,7 @@ import {
   Playground,
   SourceCode,
   TextWithEmoji,
+  Timeline,
   TitleCreator,
 } from "~/components/shared";
 import * as BlogComponents from "~/components/pages/blog/components";
@@ -85,6 +86,7 @@ export const MDXComponents = {
   Playground,
   SourceCode,
   TextWithEmoji,
+  Timeline,
 
   // Pages components
   ...BlogComponents,
