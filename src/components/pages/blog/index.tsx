@@ -5,11 +5,13 @@ import { useRouter } from "next/router";
 import { Page, MainLayout } from "~/components/layout";
 import { List, Link, Block, Text, InlineText } from "~/components/primitive";
 import { Render } from "~/components/shared";
+import { AuthService } from "~/auth";
 import { useQuery } from "~/hooks";
 import { useTranslation } from "~/i18n";
 import BlogService from "~/services/blog";
 import type { T_BlogPost, T_Locale, T_ReactElement } from "~/types";
 import { getDifferenceBetweenDates } from "~/utils/dates";
+import { isDevelopmentEnvironment } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
 
 function Blog(): T_ReactElement {
@@ -34,18 +36,24 @@ function Blog(): T_ReactElement {
           {(posts: T_BlogPost[]) => {
             return (
               <List variant={List.variant.DEFAULT}>
-                {posts.map((post) => {
-                  return (
-                    <BlogEntry
-                      key={post.slug}
-                      slug={post.slug}
-                      title={post.title}
-                      categories={post.categories}
-                      updatedAt={post.updatedAt}
-                      locales={post.locales}
-                    />
-                  );
-                })}
+                {posts
+                  .filter((post: T_BlogPost) => {
+                    return isDevelopmentEnvironment() || AuthService.isUserLoggedIn()
+                      ? true
+                      : post.isPublished;
+                  })
+                  .map((post) => {
+                    return (
+                      <BlogEntry
+                        key={post.slug}
+                        slug={post.slug}
+                        title={post.title}
+                        categories={post.categories}
+                        updatedAt={post.updatedAt}
+                        locales={post.locales}
+                      />
+                    );
+                  })}
               </List>
             );
           }}

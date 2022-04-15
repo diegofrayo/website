@@ -17,6 +17,7 @@ export function VEC_TimelineItem({
 }): T_ReactElement {
   return (
     <Block>
+      <Text className="tw-mb-4">{data.text}</Text>
       <Gallery data={data} />
     </Block>
   );
@@ -31,7 +32,6 @@ function Gallery({ data }) {
 
   return (
     <div className="root">
-      <Text className="tw-mb-4">{data.text}</Text>
       <Swiper
         pagination={pagination}
         modules={[Pagination]}
@@ -66,18 +66,19 @@ function Gallery({ data }) {
 function Photo({ src, caption }) {
   return (
     <div className="root tw-rounded-md tw-bg-gray-100 tw-px-4 tw-pt-4 tw-pb-12">
-      <Block className="tw-bg-black dfr-shadow">
+      <Block className="container-img tw-flex tw-items-center tw-bg-black dfr-shadow">
         <Image
           src={src}
-          className="tw-mx-auto"
+          className="tw-mx-auto tw-max-h-full"
+          alt={caption}
         />
       </Block>
 
       <Text className="tw-mt-2 tw-text-left tw-text-sm tw-italic">{caption}</Text>
 
       <style jsx>{`
-        .root :global(img) {
-          max-height: 215px;
+        .root :global(.container-img) {
+          height: 213px;
         }
       `}</style>
     </div>
