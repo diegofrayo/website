@@ -31,7 +31,7 @@ function Gallery({ data }) {
   };
 
   return (
-    <div className="root">
+    <div className="root tw-rounded-md dfr-bg-color-primary">
       <Swiper
         pagination={pagination}
         modules={[Pagination]}
@@ -39,10 +39,7 @@ function Gallery({ data }) {
         {data.assets.map((asset) => {
           return (
             <SwiperSlide key={asset.id}>
-              <Photo
-                src={asset.src}
-                caption={asset.caption}
-              />
+              <Photo {...asset} />
             </SwiperSlide>
           );
         })}
@@ -65,8 +62,8 @@ function Gallery({ data }) {
 
 function Photo({ src, caption }) {
   return (
-    <div className="root tw-rounded-md tw-bg-gray-100 tw-px-4 tw-pt-4 tw-pb-12">
-      <Block className="container-img tw-flex tw-items-center tw-bg-black dfr-shadow">
+    <div className="root tw-px-4 tw-pt-4 tw-pb-12">
+      <Block className="container-img tw-flex tw-items-center dfr-shadow dfr-bg-color-dark-strong">
         <Image
           src={src}
           className="tw-mx-auto tw-max-h-full"
@@ -74,7 +71,7 @@ function Photo({ src, caption }) {
         />
       </Block>
 
-      <Text className="tw-mt-2 tw-text-left tw-text-sm tw-italic">{caption}</Text>
+      <Text className="tw-mt-2 tw-text-center tw-text-sm tw-italic dfr-text-color-dark-strong">{`"${caption}"`}</Text>
 
       <style jsx>{`
         .root :global(.container-img) {
