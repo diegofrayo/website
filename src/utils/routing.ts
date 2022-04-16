@@ -57,7 +57,7 @@ export function initPWARoutingConfig(router: NextRouter): any {
 export function safeGoBack(): void {
   // https://stackoverflow.com/questions/3588315/how-to-check-if-the-user-can-go-back-in-browser-history-or-not
 
-  if (window.document.referrer == "" || window.history.length <= 0) {
+  if (window.document.referrer === "" || window.history.length <= 0) {
     window.location.href = ROUTES.HOME;
   } else {
     window.history.back();

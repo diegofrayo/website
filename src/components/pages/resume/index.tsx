@@ -128,7 +128,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
                       <Image
                         src={item.schoolLogo}
                         alt={`${item.school} logo`}
-                        className="tw-mr-2 tw-w-16 tw-flex-shrink-0"
+                        className="tw-mr-2 tw-h-20 tw-w-16 tw-flex-shrink-0"
                       />
                       <Block>
                         <Title

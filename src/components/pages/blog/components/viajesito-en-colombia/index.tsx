@@ -1,13 +1,11 @@
 // https://swiperjs.com/react
 
 import "swiper/css";
-import "swiper/css/pagination";
 
 import * as React from "react";
-import { Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
-import { Block, Image, Text } from "~/components/primitive";
+import { Block, Button, Icon, Image, Text } from "~/components/primitive";
 import type { T_ReactElement } from "~/types";
 
 export function VEC_TimelineItem({
@@ -26,15 +24,14 @@ export function VEC_TimelineItem({
 // --- Components ---
 
 function Gallery({ data }) {
-  const pagination = {
-    clickable: true,
-  };
+  const [activeIndex, setActiveIndex] = React.useState(1);
 
   return (
-    <div className="root tw-rounded-md dfr-bg-color-primary">
+    <Block className="tw-rounded-md dfr-bg-color-primary">
       <Swiper
-        pagination={pagination}
-        modules={[Pagination]}
+        onSlideChange={function onSlideChange() {
+          setActiveIndex(this.activeIndex + 1);
+        }}
       >
         {data.assets.map((asset) => {
           return (
@@ -43,27 +40,56 @@ function Gallery({ data }) {
             </SwiperSlide>
           );
         })}
+
+        <Navigation
+          activeIndex={activeIndex}
+          totalElements={data.assets.length}
+        />
       </Swiper>
+    </Block>
+  );
+}
 
-      <style jsx>{`
-        .root :global(.swiper-pagination-bullets) {
-          bottom: 5px;
-        }
+function Navigation({
+  activeIndex,
+  totalElements,
+}: {
+  activeIndex: number;
+  totalElements: number;
+}) {
+  const swiper = useSwiper();
 
-        .root :global(.swiper-pagination-bullet) {
-          height: 12px;
-          margin-inline: 6px;
-          width: 12px;
-        }
-      `}</style>
-    </div>
+  return (
+    <Block className="tw-flex tw-items-center tw-justify-between tw-bg-opacity-10 tw-px-4 tw-pb-2 tw-pt-2 dfr-bg-color-dark-strong">
+      <Button
+        variant={Button.variant.SIMPLE}
+        disabled={swiper.isBeginning}
+        onClick={() => {
+          swiper.slidePrev();
+        }}
+      >
+        <Icon icon={Icon.icon.CHEVRON_LEFT} />
+      </Button>
+      <Text className="tw-font-boxld tw-flex-1 tw-px-2 tw-text-center tw-text-xs dfr-text-color-dark-strong">
+        {activeIndex}/{totalElements}
+      </Text>
+      <Button
+        variant={Button.variant.SIMPLE}
+        disabled={swiper.isEnd}
+        onClick={() => {
+          swiper.slideNext();
+        }}
+      >
+        <Icon icon={Icon.icon.CHEVRON_RIGHT} />
+      </Button>
+    </Block>
   );
 }
 
 function Photo({ src, caption }) {
   return (
-    <div className="root tw-px-4 tw-pt-4 tw-pb-12">
-      <Block className="container-img tw-flex tw-items-center dfr-shadow dfr-bg-color-dark-strong">
+    <div className="root tw-px-4 tw-py-4">
+      <Block className="img-container tw-flex tw-items-center dfr-shadow dfr-bg-color-dark-strong">
         <Image
           src={src}
           className="tw-mx-auto tw-max-h-full"
@@ -71,10 +97,10 @@ function Photo({ src, caption }) {
         />
       </Block>
 
-      <Text className="tw-mt-2 tw-text-center tw-text-sm tw-italic dfr-text-color-dark-strong">{`"${caption}"`}</Text>
+      <Text className="tw-mt-2 tw-px-4 tw-text-center tw-text-sm tw-italic dfr-text-color-dark-strong">{`"${caption}"`}</Text>
 
       <style jsx>{`
-        .root :global(.container-img) {
+        .root :global(.img-container) {
           height: 213px;
         }
       `}</style>

@@ -77,7 +77,7 @@ function PictureFrame() {
 
   useDidMount(() => {
     setPhoto({
-      src: "/static/images/header/2.jpg",
+      src: "/static/images/header/5.jpg",
       portrait: false,
     });
   });
@@ -177,13 +177,13 @@ function TV() {
   );
 
   const SONG = {
-    title: "Maelström",
-    artist: "Fito Paez",
-    duration: "3:55",
-    thumbnail: "https://i.scdn.co/image/ab67616d0000b273a4091bb6f7f03ec978187d99",
-    url: "https://open.spotify.com/track/5JyeXhwxBQFEne4FxPbCxN",
+    title: "Quimera",
+    artist: "Jorge Drexler",
+    duration: "3:38",
+    thumbnail: "https://i.scdn.co/image/ab67616d0000b2734062d0b07c3a74ab73632475",
+    url: "https://open.spotify.com/track/5787WaGd5DQvL14A6SJ8cG",
     audio:
-      "https://p.scdn.co/mp3-preview/1880eccf1d6cfbe60fab494d61a607930a0b5c98?cid=a46f5c5745a14fbf826186da8da5ecc3",
+      "https://p.scdn.co/mp3-preview/6420f032b23f21029cf42ad79d405bb3ff78abdb?cid=a46f5c5745a14fbf826186da8da5ecc3",
     source: "spotify",
   };
 

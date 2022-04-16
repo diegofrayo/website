@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "===== DEV =====": "",
-    "dev": "next dev",
+    "dev": "yarn scripts:env-vars && next dev",
     "husky:install": "husky install ./.husky",
     "===== PROD =====": "",
     "no-opt-install": "yarn install --ignore-optional",
@@ -25,6 +25,7 @@
     "scripts:styles": "node scripts/styles/css-vars.js",
     "===== AUX/DEV =====": "",
     "scripts:commit": "sh ./.husky/minor-commit.sh",
+    "scripts:env-vars": "node --experimental-json-modules scripts/env-vars.mjs",
     "scripts:upgrade-deps": "yarn upgrade @storybook/addon-essentials @storybook/react @mdx-js/react next @mdx-js/loader @next/mdx prism-react-renderer"
   },
   "dependencies": {
@@ -87,6 +88,7 @@
     "@storybook/react": "latest",
     "@typescript-eslint/eslint-plugin": "^3.4.0",
     "@typescript-eslint/parser": "^3.4.0",
+    "envfile": "^6.17.0",
     "eslint": "^7.3.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
