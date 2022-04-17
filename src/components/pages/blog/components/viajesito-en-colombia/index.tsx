@@ -3,6 +3,7 @@
 import "swiper/css";
 
 import * as React from "react";
+import classNames from "classnames";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 import { Block, Button, Icon, Image, Text } from "~/components/primitive";
@@ -63,7 +64,7 @@ function Navigation({
     <Block className="tw-flex tw-items-center tw-justify-between tw-bg-opacity-10 tw-px-4 tw-pb-2 tw-pt-2 dfr-bg-color-dark-strong">
       <Button
         variant={Button.variant.SIMPLE}
-        disabled={swiper.isBeginning}
+        className={classNames(swiper.isBeginning && "tw-invisible")}
         onClick={() => {
           swiper.slidePrev();
         }}
@@ -75,7 +76,7 @@ function Navigation({
       </Text>
       <Button
         variant={Button.variant.SIMPLE}
-        disabled={swiper.isEnd}
+        className={classNames((swiper.isEnd || totalElements === 1) && "tw-invisible")}
         onClick={() => {
           swiper.slideNext();
         }}
@@ -96,7 +97,6 @@ function Photo({ src, caption }) {
           alt={caption}
         />
       </Block>
-
       <Text className="tw-mt-2 tw-px-4 tw-text-center tw-text-sm tw-italic dfr-text-color-dark-strong">{`"${caption}"`}</Text>
 
       <style jsx>{`

@@ -25,9 +25,9 @@ import { createPreloadedState, useStore } from "~/state";
 import type { T_ReactElement } from "~/types";
 import { isPWA } from "~/utils/browser";
 import { MDXComponents } from "~/utils/mdx";
+import { initPWARoutingConfig } from "~/utils/routing";
 
 import ErrorPage from "./500";
-import { initPWARoutingConfig } from "~/utils/routing";
 
 const queryClient = new QueryClient({
   defaultOptions: {

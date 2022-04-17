@@ -54,14 +54,10 @@ export function initPWARoutingConfig(router: NextRouter): any {
   };
 }
 
-export function safeGoBack(): void {
-  // https://stackoverflow.com/questions/3588315/how-to-check-if-the-user-can-go-back-in-browser-history-or-not
+export function goBack(): void {
+  const urlItems = window.location.pathname.split("/");
 
-  if (window.document.referrer === "" || window.history.length <= 0) {
-    window.location.href = ROUTES.HOME;
-  } else {
-    window.history.back();
-  }
+  window.location.href = urlItems.slice(0, urlItems.length - 1).join("/") + "/";
 }
 
 // --- Types ---
