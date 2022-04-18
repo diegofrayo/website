@@ -57,7 +57,7 @@ export function initPWARoutingConfig(router: NextRouter): any {
 export function goBack(): void {
   const urlItems = window.location.pathname.split("/");
 
-  window.location.href = urlItems.slice(0, urlItems.length - 1).join("/") + "/";
+  redirect(urlItems.slice(0, urlItems.length - 1).join("/") + "/");
 }
 
 // --- Types ---

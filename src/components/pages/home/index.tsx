@@ -156,16 +156,10 @@ function PictureFrame() {
 function TV() {
   const [showInfo, setShowInfo] = React.useState(false);
   const [isAudioPlaying, setIsAudioPlaying] = React.useState(false);
-  const LS_KEY = "DFR_TV";
-
-  useDidMount(() => {
-    setShowInfo(window.localStorage.getItem(LS_KEY) === "true");
-  });
+  const [hasNotStartedTV, setHasNotStartedTV] = React.useState(true);
 
   React.useEffect(
     function updateConfigOnLocalStorage() {
-      window.localStorage.setItem(LS_KEY, String(showInfo));
-
       if (showInfo === false) {
         setIsAudioPlaying(false);
 
@@ -259,25 +253,39 @@ function TV() {
             );
           })}
         </Block>
-        <Button
-          className={classNames(
-            "tw-h-6 tw-w-6 tw-overflow-hidden tw-rounded-full tw-bg-gray-700 tw-transition-transform dark:dfr-bg-color-dark-strong",
-            showInfo && "tw-rotate-90",
-          )}
-          onClick={() => {
-            setShowInfo((currentValue) => !currentValue);
+        <Block className="tw-h-6 tw-w-6 tw-overflow-hidden tw-rounded-full tw-bg-gray-700 tw-transition-transform dark:dfr-bg-color-dark-strong">
+          {hasNotStartedTV ? (
+            <Button
+              className="tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center"
+              onClick={() => {
+                setHasNotStartedTV(false);
+                setShowInfo(true);
+              }}
+            >
+              <Block className="tw-relative tw-h-2 tw-w-2 tw-animate-ping tw-rounded-full tw-bg-green-500" />
+            </Button>
+          ) : (
+            <Button
+              className={classNames(
+                "tw-h-full tw-w-full tw-transition-transform",
+                showInfo && "tw-rotate-90",
+              )}
+              onClick={() => {
+                setShowInfo((currentValue) => !currentValue);
 
-            const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
-            audioElement.currentTime = 0;
-          }}
-        >
-          <Block
-            className={classNames(
-              "tw-relative tw--top-2 tw-mx-auto tw-h-4 tw-w-0.5",
-              showInfo ? "tw-bg-red-500" : "tw-bg-green-500",
-            )}
-          />
-        </Button>
+                const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
+                audioElement.currentTime = 0;
+              }}
+            >
+              <Block
+                className={classNames(
+                  "tw-relative tw--top-2 tw-mx-auto tw-h-4 tw-w-0.5",
+                  showInfo ? "tw-bg-green-500" : "tw-bg-red-500",
+                )}
+              />
+            </Button>
+          )}
+        </Block>
       </Block>
 
       <style jsx>{`
