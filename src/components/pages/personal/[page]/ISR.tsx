@@ -46,7 +46,7 @@ export default ISR;
 // --- Controller ---
 
 function useController() {
-  const [path, setPath] = React.useState("/personal/contacts");
+  const [path, setPath] = React.useState("/resume");
 
   function onChange(e) {
     setPath(e.target.value);

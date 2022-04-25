@@ -11,6 +11,7 @@ async function main() {
   // envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"] = `https://diegofrayo-backend.vercel.app`;
 
   fs.writeFileSync("./.env", stringify(envVars));
+  console.log("Local IP address", envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"]);
 }
 
 main();

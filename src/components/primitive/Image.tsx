@@ -13,6 +13,7 @@ function Image({ src, ...rest }: T_ImageProps): T_ReactElement {
   return (
     <img
       src={src}
+      loading="lazy"
       {...rest}
     />
   );

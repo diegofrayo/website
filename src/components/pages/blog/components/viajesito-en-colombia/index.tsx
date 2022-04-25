@@ -12,7 +12,10 @@ import type { T_ReactElement } from "~/types";
 export function VEC_TimelineItem({
   data,
 }: {
-  data: { text: string; assets: { id: string; src: string; caption: string }[] };
+  data: {
+    text: string;
+    assets: { id: string; src: string; caption: string; type: "image" | "youtube" }[];
+  };
 }): T_ReactElement {
   return (
     <Block>
@@ -37,7 +40,7 @@ function Gallery({ data }) {
         {data.assets.map((asset) => {
           return (
             <SwiperSlide key={asset.id}>
-              <Photo {...asset} />
+              <SlideContent {...asset} />
             </SwiperSlide>
           );
         })}
@@ -87,20 +90,31 @@ function Navigation({
   );
 }
 
-function Photo({ src, caption }) {
+function SlideContent({ src, caption, type }) {
   return (
     <div className="root tw-px-4 tw-py-4">
-      <Block className="img-container tw-flex tw-items-center dfr-shadow dfr-bg-color-dark-strong">
-        <Image
-          src={src}
-          className="tw-mx-auto tw-max-h-full"
-          alt={caption}
-        />
+      <Block className="media-container tw-flex tw-items-center dfr-shadow dfr-bg-color-dark-strong">
+        {type === "youtube" ? (
+          <iframe
+            src={`https://www.youtube.com/embed/${src}`}
+            className="tw-mx-auto tw-max-h-full tw-max-w-full"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            title="Embedded youtube"
+            allowFullScreen
+          />
+        ) : (
+          <Image
+            src={src}
+            className="tw-mx-auto tw-max-h-full"
+            alt={caption}
+          />
+        )}
       </Block>
       <Text className="tw-mt-2 tw-px-4 tw-text-center tw-text-sm tw-italic dfr-text-color-dark-strong">{`"${caption}"`}</Text>
 
       <style jsx>{`
-        .root :global(.img-container) {
+        .root :global(.media-container) {
           height: 213px;
         }
       `}</style>
