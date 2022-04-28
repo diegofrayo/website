@@ -6,16 +6,7 @@ import type { T_ReactElement } from "~/types";
 import { generateSlug } from "~/utils/strings";
 
 function Timeline({ timeline, TimelineItem }: T_TimelineProps): T_ReactElement {
-  function getOrientation({ startFromLeft, itemIndex }) {
-    const CLASSNAME_1 = "sm:tw-ml-1 sm:tw-border-r-4 sm:tw-text-right";
-    const CLASSNAME_2 = "sm:tw-left-2/4 sm:tw-border-l-4 sm:tw-text-left";
-
-    if (startFromLeft) {
-      return itemIndex % 2 === 0 ? CLASSNAME_1 : CLASSNAME_2;
-    }
-
-    return itemIndex % 2 === 0 ? CLASSNAME_2 : CLASSNAME_1;
-  }
+  let itemsCounter = 0;
 
   return (
     <Block>
@@ -37,15 +28,16 @@ function Timeline({ timeline, TimelineItem }: T_TimelineProps): T_ReactElement {
             </Title>
 
             {group.items.map((item, itemIndex) => {
+              itemsCounter += 1;
+
               return (
                 <Block
                   key={`${generateSlug(groupTitle)}-${itemIndex}`}
                   className={classNames(
                     "tw-relative tw-px-0 tw-pb-6 tw-text-center last:tw-pb-0 dark:tw-border-white sm:tw-w-1/2 sm:tw-px-4 sm:tw-pb-16 sm:dfr-border-color-dark-strong",
-                    getOrientation({
-                      startFromLeft: groupIndex % 2 === 0,
-                      itemIndex,
-                    }),
+                    itemsCounter % 2 === 0
+                      ? "sm:tw-left-2/4 sm:tw-border-l-4 sm:tw-text-left"
+                      : "sm:tw-ml-1 sm:tw-border-r-4 sm:tw-text-right",
                   )}
                 >
                   {itemIndex === 0 && (

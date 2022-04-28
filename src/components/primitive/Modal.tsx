@@ -1,11 +1,19 @@
 import * as React from "react";
 
 import { useToggleBodyScroll } from "~/hooks";
-import type { T_Object, T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 
 import Block from "./Block";
 
-function Modal({ children, visible, onCloseHandler }: T_Object): T_ReactElement {
+function Modal({
+  children,
+  visible,
+  onCloseHandler,
+}: {
+  children: T_ReactElement;
+  visible: boolean;
+  onCloseHandler: (closeModal: boolean) => void;
+}): T_ReactElement {
   useToggleBodyScroll(visible);
 
   function closeModal() {

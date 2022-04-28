@@ -123,12 +123,12 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
                   return (
                     <Block
                       key={`Education-${index}`}
-                      className="tw-flex"
+                      className="tw-mb-4 tw-flex tw-items-start last:tw-mb-0"
                     >
                       <Image
                         src={item.schoolLogo}
                         alt={`${item.school} logo`}
-                        className="tw-mr-2 tw-h-20 tw-w-16 tw-flex-shrink-0"
+                        className="tw-relative tw-top-1 tw-mr-2 tw-h-12 tw-w-12 tw-flex-shrink-0"
                       />
                       <Block>
                         <Title

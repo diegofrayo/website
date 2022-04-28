@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { Icon, Input, Link, Block } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import type { T_ReactElement } from "~/types";
-import { focusElement, isSmallScreen } from "~/utils/browser";
+import { focusElement, isMobile, isSmallScreen } from "~/utils/browser";
 import { generateSlug, replaceAll } from "~/utils/strings";
 
 function WhatsApp(): T_ReactElement {
@@ -52,7 +52,7 @@ function WhatsApp(): T_ReactElement {
           />
         </Link>
       </Block>
-      <Block className="tw-mt-1 tw-flex tw-justify-between tw-pr-14">
+      <Block className="tw-mt-1 tw-flex tw-flex-row-reverse tw-justify-between tw-pr-14">
         <Block>
           <input
             type="radio"
@@ -97,13 +97,14 @@ function useController(): {
   isWebOptionSelected: boolean;
 } {
   const [phone, setPhone] = React.useState("");
-  const [isWebOptionSelected, setIsWebOptionSelected] = React.useState(false);
+  const [isWebOptionSelected, setIsWebOptionSelected] = React.useState(true);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [isInvalidPhone, setIsInvalidPhone] = React.useState(true);
 
   useDidMount(() => {
     if (isSmallScreen() || !inputRef.current) return;
     focusElement(inputRef.current);
+    setIsWebOptionSelected(!isMobile());
   });
 
   React.useEffect(() => {
