@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 import { Block, Button, Icon, Image, Modal, Text } from "~/components/primitive";
-import { useEnhacedState } from "~/hooks";
+import { useDidMount, useEnhacedState } from "~/hooks";
 import type { T_ReactElement } from "~/types";
 
 const Context = React.createContext({} as T_Context);
@@ -42,10 +42,10 @@ export function VEC_TimelineItem({
         visible={isModalVisible}
         onCloseHandler={setIsModalVisible}
       >
-        <Block className="tw-m-4 tw-mx-auto tw-w-full tw-overflow-auto dfr-max-w-layout dfr-bg-color-dark-strong">
+        <Block className="tw-relative tw-m-4 tw-mx-auto tw-h-full tw-w-full tw-overflow-auto dfr-max-w-layout dfr-bg-color-dark-strong">
           <Button
             variant={Button.variant.SIMPLE}
-            className="tw-mt-2 tw-mr-2 tw-mb-6 tw-ml-auto tw-block"
+            className="tw-absolute tw-top-2 tw-right-2 tw-z-10"
             onClick={() => toggleIsModalVisible()}
           >
             <Icon
@@ -85,7 +85,7 @@ function Gallery({ variant, data, toggleIsModalVisible, setSharedIndex, initialS
     >
       <div
         className={classNames(
-          "root",
+          "root tw-relative tw-h-full",
           isFullscreenVariant ? "dfr-bg-color-dark-strong" : "tw-rounded-md dfr-bg-color-primary",
         )}
       >
@@ -112,9 +112,18 @@ function Gallery({ variant, data, toggleIsModalVisible, setSharedIndex, initialS
         </Swiper>
 
         <style jsx>{`
-          .root :global(.swiper-wrapper) {
+          .root :global(.swiper) {
             display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;
+          }
+
+          .root :global(.swiper-wrapper) {
             align-items: center;
+            display: flex;
+            height: auto;
+            margin: auto;
           }
         `}</style>
       </div>
@@ -135,9 +144,9 @@ function Navigation({
   return (
     <Block
       className={classNames(
-        "tw-flex tw-items-center tw-justify-between tw-bg-opacity-10 tw-px-4 tw-py-2",
+        "tw-flex tw-w-full tw-items-center tw-justify-between tw-bg-opacity-10 tw-px-4 tw-py-2",
         isFullscreenVariant
-          ? "dfr-bg-color-light-strong dfr-text-color-light-strong"
+          ? "tw-absolute tw-bottom-0 tw-z-10 dfr-bg-color-light-strong dfr-text-color-light-strong"
           : "dfr-bg-color-dark-strong dfr-text-color-dark-strong",
       )}
     >
@@ -174,23 +183,36 @@ function Navigation({
 
 function SlideContent({ src, caption, type, isLandscape, index }) {
   const { isFullscreenVariant, toggleIsModalVisible, setSharedIndex } = React.useContext(Context);
+  const [photosHeight, setPhotosHeight] = React.useState(0);
+
+  useDidMount(() => {
+    const REST_OF_ELEMENTS_HEIGHT = 40 + 80 + 24 * 2 + 16 * 2 + (32 + 24 + 8);
+    setPhotosHeight(window.innerHeight - REST_OF_ELEMENTS_HEIGHT);
+  });
+
+  if (photosHeight === 0) return null;
 
   return (
-    <div className={classNames("root", isFullscreenVariant ? "tw-pb-4" : "tw-p-4")}>
+    <div
+      className={classNames(
+        "root",
+        isFullscreenVariant ? "tw-flex tw-h-full tw-flex-col tw-justify-center" : "tw-p-4",
+      )}
+    >
       <Block
         className={classNames(
           "media-container dfr-shadow dfr-bg-color-dark-strong",
           isFullscreenVariant
             ? isLandscape
-              ? "media-container--large"
-              : "media-container--large media-container--large--portrait"
+              ? "media-container--fullscreen"
+              : "media-container--fullscreen media-container--fullscreen--portrait"
             : "tw-flex tw-items-center",
         )}
       >
         {type === "youtube" ? (
           <iframe
             src={`https://www.youtube.com/embed/${src}`}
-            className="tw-mx-auto tw-max-h-full tw-max-w-full"
+            className="tw-mx-auto tw-h-full tw-w-full"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             title="Embedded youtube"
@@ -200,7 +222,7 @@ function SlideContent({ src, caption, type, isLandscape, index }) {
           <Image
             src={src}
             className={classNames(
-              "tw-mx-auto tw-max-h-full",
+              "tw-mx-auto tw-max-h-full tw-max-w-full",
               !isFullscreenVariant && "tw-cursor-pointer",
             )}
             alt={caption}
@@ -229,19 +251,18 @@ function SlideContent({ src, caption, type, isLandscape, index }) {
           height: 213px;
         }
 
-        .root :global(.media-container--large) {
+        .root :global(.media-container--fullscreen) {
           height: auto;
         }
+      `}</style>
 
-        .root :global(.media-container--large--portrait) > :global(*) {
-          height: 426px;
+      <style jsx>{`
+        .root :global(.media-container--fullscreen) > :global(img) {
+          max-height: ${photosHeight}px;
         }
 
-        @media screen(sm) {
-          .root :global(.media-container--large) > :global(*) {
-            height: auto;
-            max-height: 426px;
-          }
+        .root :global(.media-container--fullscreen) > :global(iframe) {
+          height: ${photosHeight}px;
         }
       `}</style>
     </div>

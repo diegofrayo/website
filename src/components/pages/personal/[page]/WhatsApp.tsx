@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { Icon, Input, Link, Block } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import type { T_ReactElement } from "~/types";
-import { focusElement, isMobile, isSmallScreen } from "~/utils/browser";
+import { focusElement, isMobile } from "~/utils/browser";
 import { generateSlug, replaceAll } from "~/utils/strings";
 
 function WhatsApp(): T_ReactElement {
@@ -102,7 +102,8 @@ function useController(): {
   const [isInvalidPhone, setIsInvalidPhone] = React.useState(true);
 
   useDidMount(() => {
-    if (isSmallScreen() || !inputRef.current) return;
+    if (!inputRef.current) return;
+
     focusElement(inputRef.current);
     setIsWebOptionSelected(!isMobile());
   });
