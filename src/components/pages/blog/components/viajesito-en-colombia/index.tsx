@@ -120,10 +120,15 @@ function Gallery({ variant, data, toggleIsModalVisible, setSharedIndex, initialS
           }
 
           .root :global(.swiper-wrapper) {
-            align-items: center;
             display: flex;
             height: auto;
             margin: auto;
+          }
+        `}</style>
+
+        <style jsx>{`
+          .root :global(.swiper-wrapper) {
+            align-items: ${isFullscreenVariant ? "center" : "flex-start"};
           }
         `}</style>
       </div>
@@ -212,9 +217,10 @@ function SlideContent({ src, caption, type, isLandscape, index }) {
         {type === "youtube" ? (
           <iframe
             src={`https://www.youtube.com/embed/${src}`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             className="tw-mx-auto tw-h-full tw-w-full"
             frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            loading="lazy"
             title="Embedded youtube"
             allowFullScreen
           />

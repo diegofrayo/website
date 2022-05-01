@@ -50,7 +50,7 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
       <MainLayout title={post.title}>
         <BlogPostDetails
           publishedAt={post.publishedAt}
-          updatedAt={post.updatedAt}
+          createdAt={post.createdAt}
         />
         <Space size={8} />
 
@@ -77,9 +77,9 @@ export default BlogPostPage;
 
 // --- Components ---
 
-type T_BlogPostDetailsProps = Pick<T_BlogPost, "publishedAt" | "updatedAt">;
+type T_BlogPostDetailsProps = Pick<T_BlogPost, "publishedAt" | "createdAt">;
 
-function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_ReactElement {
+function BlogPostDetails({ publishedAt, createdAt }: T_BlogPostDetailsProps): T_ReactElement {
   const { t } = useTranslation();
 
   return (
@@ -105,8 +105,8 @@ function BlogPostDetails({ publishedAt, updatedAt }: T_BlogPostDetailsProps): T_
           color="tw-text-black dark:tw-text-white"
         />
         <Text>
-          <InlineText className="tw-mr-1">{t("page:updated_at")}</InlineText>
-          <InlineText is="strong">{getDifferenceBetweenDates(updatedAt, new Date())}</InlineText>
+          <InlineText className="tw-mr-1">{t("page:created_at")}</InlineText>
+          <InlineText is="strong">{getDifferenceBetweenDates(createdAt, new Date())}</InlineText>
         </Text>
       </BlogPostDetailsItem>
     </Block>
@@ -118,12 +118,15 @@ function BlogPostActions(): T_ReactElement {
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
   return (
-    <Block variant="FEATURED">
+    <Block
+      variant="FEATURED"
+      className="tw-flex tw-flex-wrap tw-justify-between"
+    >
       <BlogPostDetailsItem onClick={(e) => copyToClipboard(e, window.location.href)}>
         <BlogPostDetailsItem.Icon icon={Icon.icon.LINK} />
         <InlineText>{t("page:copy_url_to_clipboard")}</InlineText>
       </BlogPostDetailsItem>
-      <Space size={1} />
+      <Space responsive="tw-w-full tw-my-1 sm:tw-hidden" />
       <BlogPostDetailsItem
         onClick={() => {
           window.location.href = `mailto:${WEBSITE_METADATA.email}?subject=${t(
@@ -141,7 +144,7 @@ function BlogPostActions(): T_ReactElement {
 }
 
 const BlogPostDetailsItem = twcss(Button)(
-  "tw-flex tw-items-start md:tw-items-center tw-justify-start tw-text-sm tw-text-left",
+  "tw-flex tw-items-center tw-justify-start tw-text-sm tw-text-left",
   {
     variant: Button.variant.SIMPLE,
   },

@@ -13,6 +13,9 @@
     <loc>https://diegofrayo.vercel.app/blog</loc>
   </url>
   <url>
+    <loc>https://diegofrayo.vercel.app/blog/viajesito-en-colombia</loc>
+  </url>
+  <url>
     <loc>https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</loc>
   </url>
   <url>

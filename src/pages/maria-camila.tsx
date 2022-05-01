@@ -56,12 +56,13 @@ function MariaCamila(): T_ReactElement {
           Te deseo que la pases muy bien y admiro mucho tu profesión 🤩
         </Title>
         <iframe
-          width="100%"
-          height="315"
           src="https://www.youtube.com/embed/MIur6bNcwHA"
-          title="YouTube video player"
-          frameBorder="0"
+          height="315"
+          width="100%"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          frameBorder="0"
+          loading="lazy"
+          title="YouTube video player"
           allowFullScreen
         />
       </Block>

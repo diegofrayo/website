@@ -63,10 +63,11 @@ export function MFMAM_SpotifyPlaylist(): T_ReactElement {
     >
       <iframe
         src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"
-        width="100%"
         height="380"
-        frameBorder="0"
+        width="100%"
         allow="encrypted-media"
+        frameBorder="0"
+        loading="lazy"
       />
     </Block>
   );

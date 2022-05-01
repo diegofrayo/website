@@ -2,7 +2,18 @@ import classNames from "classnames";
 import * as React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Link, Block, InlineText, Space, Icon, Image, Text, Button } from "~/components/primitive";
+import {
+  Link,
+  Block,
+  InlineText,
+  Space,
+  Icon,
+  Image,
+  Text,
+  Button,
+  Title,
+} from "~/components/primitive";
+import { Emoji } from "~/components/shared";
 import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/i18n";
 import type { T_ReactElement } from "~/types";
@@ -22,25 +33,63 @@ function Home(): T_ReactElement {
       }}
     >
       <MainLayout title="">
-        <Block className="tw-mx-auto tw-w-72 tw-max-w-full tw-overflow-hidden tw-rounded-t-md tw-border-x dfr-shadow dfr-border-color-dark-strong">
-          <Text className="tw-p-2 tw-text-center tw-text-sm tw-font-bold dfr-bg-color-dark-strong dfr-text-color-light-strong">
-            Hello, I&#39;m Diego Rayo
-          </Text>
-          <Room />
-          <Block className="tw-flex tw-items-center tw-justify-between tw-border-y-8 dfr-border-color-dark-strong">
-            <LinkItem
-              label="about me"
-              url={ROUTES.ABOUT_ME}
-            />
-            <LinkItem
-              label="blog"
-              url={ROUTES.BLOG}
-              className="tw-hidden sm:tw-block"
-            />
-            <LinkItem
-              label="resume"
-              url={ROUTES.RESUME}
-            />
+        <Block className="tw-mx-auto tw-w-72 tw-max-w-full">
+          <Block
+            is="section"
+            className="tw-relative tw-rounded-t-md tw-border-8 tw-border-yellow-700 tw-bg-green-700 tw-p-4 dfr-shadow"
+          >
+            <Emoji className="tw-absolute tw--top-4 tw--left-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-shadow dfr-bg-color-light-strong">
+              📌
+            </Emoji>
+            <Title
+              is="h1"
+              variant={Title.variant.UNSTYLED}
+              className="tw-text-center dfr-text-color-light-strong"
+              size={Title.size.MD}
+            >
+              FEATURED
+            </Title>
+            <Space size={2} />
+            <Link
+              variant={Link.variant.SIMPLE}
+              href={`${ROUTES.BLOG}/viajesito-en-colombia`}
+              className="tw-block tw-text-sm tw-text-yellow-300"
+            >
+              <Emoji>🖇️</Emoji>
+              <InlineText className="tw-mx-1 tw-underline">Viajesito en Colombia</InlineText>
+              <InlineText>[blog-post]</InlineText>
+            </Link>
+            <Space size={1} />
+            <Link
+              variant={Link.variant.SIMPLE}
+              href={ROUTES.MUSIC}
+              className="tw-block tw-text-sm tw-text-yellow-300"
+            >
+              <Emoji>🖇️</Emoji>
+              <InlineText className="tw-mx-1 tw-underline">/music</InlineText>
+            </Link>
+          </Block>
+          <Space size={4} />
+          <Block className="tw-overflow-hidden tw-rounded-t-md tw-border-x dfr-shadow dfr-border-color-dark-strong">
+            <Text className="tw-p-2 tw-text-center tw-text-sm tw-font-bold dfr-bg-color-dark-strong dfr-text-color-light-strong">
+              Hello, I&#39;m Diego Rayo
+            </Text>
+            <Room />
+            <Block className="tw-flex tw-items-center tw-justify-between tw-border-y-8 dfr-border-color-dark-strong">
+              <LinkItem
+                label="about me"
+                url={ROUTES.ABOUT_ME}
+              />
+              <LinkItem
+                label="blog"
+                url={ROUTES.BLOG}
+                className="tw-hidden sm:tw-block"
+              />
+              <LinkItem
+                label="resume"
+                url={ROUTES.RESUME}
+              />
+            </Block>
           </Block>
         </Block>
       </MainLayout>

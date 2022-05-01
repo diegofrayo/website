@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { useRouter } from "next/router";
 
 import { Page, MainLayout } from "~/components/layout";
-import { List, Link, Block, Text, InlineText } from "~/components/primitive";
+import { Link, Block, Text, InlineText } from "~/components/primitive";
 import { Render } from "~/components/shared";
 import { AuthService } from "~/auth";
 import { useQuery } from "~/hooks";
@@ -35,9 +35,10 @@ function Blog(): T_ReactElement {
         >
           {(posts: T_BlogPost[]) => {
             return (
-              <List variant={List.variant.DEFAULT}>
+              <Block className="tw-flex tw-flex-wrap tw-justify-between">
                 {posts
                   .filter((post: T_BlogPost) => {
+                    return post.isPublished;
                     return isDevelopmentEnvironment() || AuthService.isUserLoggedIn()
                       ? true
                       : post.isPublished;
@@ -49,12 +50,13 @@ function Blog(): T_ReactElement {
                         slug={post.slug}
                         title={post.title}
                         categories={post.categories}
-                        updatedAt={post.updatedAt}
+                        createdAt={post.createdAt}
                         locales={post.locales}
+                        thumbnail={post.thumbnail}
                       />
                     );
                   })}
-              </List>
+              </Block>
             );
           }}
         </Render>
@@ -67,14 +69,18 @@ export default Blog;
 
 // --- Components ---
 
-type T_BlogEntryProps = Pick<T_BlogPost, "title" | "categories" | "slug" | "updatedAt" | "locales">;
+type T_BlogEntryProps = Pick<
+  T_BlogPost,
+  "title" | "categories" | "slug" | "createdAt" | "locales" | "thumbnail"
+>;
 
 function BlogEntry({
   slug,
   title,
   categories,
-  updatedAt,
+  createdAt,
   locales,
+  thumbnail,
 }: T_BlogEntryProps): T_ReactElement {
   const { t } = useTranslation();
   const { locale } = useRouter();
@@ -89,33 +95,60 @@ function BlogEntry({
   }
 
   return (
-    <List.Item>
+    <article className="root tw-my-8 tw-w-full dfr-shadow sm:tw-w-5/12">
       <Link
         href={`${ROUTES.BLOG}/${slug}`}
         variant={Link.variant.SECONDARY}
         locale={getLocale()}
+        className="tw-flex tw-h-full tw-w-full tw-flex-col"
       >
-        {title}
+        <Block
+          is="header"
+          style={{ backgroundImage: `url('${thumbnail}')` }}
+        />
+        <Block
+          is="footer"
+          className="tw-relative tw-flex-1 tw-pt-2 tw-pb-8"
+        >
+          <Text className="tw-mb-4 tw-px-2">{title}</Text>
+          <Block className="tw-absolute tw-bottom-0 tw-flex tw-w-full tw-items-end tw-justify-between tw-px-2 tw-py-2">
+            <Text className="tw-text-xs tw-font-normal tw-italic dfr-text-color-secondary">
+              <InlineText>{t("page:created_at")} </InlineText>
+              <InlineText is="strong">
+                {getDifferenceBetweenDates(createdAt, new Date())}
+              </InlineText>
+            </Text>
+            <Block>
+              {categories.map((category) => {
+                return (
+                  <InlineText
+                    key={category.id}
+                    className={classNames(
+                      "tw-inline-block tw-py-1 tw-px-2 tw-text-xs tw-font-semibold",
+                      CATEGORIES_COLORS[category.id],
+                    )}
+                  >
+                    {category.value}
+                  </InlineText>
+                );
+              })}
+            </Block>
+          </Block>
+        </Block>
       </Link>
-      <Text className="tw-text-sm tw-italic">
-        <InlineText>{t("page:updated_at")} </InlineText>
-        <InlineText is="strong">{getDifferenceBetweenDates(updatedAt, new Date())}</InlineText>
-      </Text>
-      <Block className="tw-pb-1">
-        {categories.map((category) => {
-          return (
-            <InlineText
-              key={category.id}
-              className={classNames(
-                "tw-inline-block tw-rounded-md tw-py-1 tw-px-2 tw-text-xs tw-font-semibold",
-                CATEGORIES_COLORS[category.id],
-              )}
-            >
-              {category.value}
-            </InlineText>
-          );
-        })}
-      </Block>
-    </List.Item>
+
+      <style jsx>{`
+        .root :global(header) {
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 280px;
+
+          @screen sm {
+            height: 140px;
+          }
+        }
+      `}</style>
+    </article>
   );
 }

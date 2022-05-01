@@ -64,25 +64,23 @@ export default Thumbnails;
 function useController() {
   const BLOG_POSTS = [
     {
-      slug: "publishing-a-npm-private-package-to-github-packages-using-github-actions",
-      title: "Publishing a npm private package to GitHub pakages using GitHub actions",
+      slug: "connecting-a-firebase-project-with-a-go-daddy-domain",
+      title: "Connecting a Firebase project with a Go Daddy domain",
     },
     {
       slug: "my-favorite-music-and-mdx",
       title: "My favorite music and MDX",
     },
     {
-      slug: "connecting-a-firebase-project-with-a-go-daddy-domain",
-      title: "Connecting a Firebase project with a Go Daddy domain",
+      slug: "publishing-a-npm-private-package-to-github-packages-using-github-actions",
+      title: "Publishing a npm private package to GitHub pakages using GitHub actions",
     },
   ];
-  const CURRENT_BLOG_POST = BLOG_POSTS[0];
+  const CURRENT_BLOG_POST = BLOG_POSTS[1];
 
   const thumbnailRef = React.useRef<HTMLDivElement>(null);
   const [title, setTitle] = React.useState(CURRENT_BLOG_POST.title);
-  const [src, setSrc] = React.useState(
-    `/static/images/pages/personal/thumbnails/${CURRENT_BLOG_POST.slug}.png`,
-  );
+  const [src, setSrc] = React.useState("/static/images/pages/personal/thumbnails/code-1.png");
 
   function onChange(input) {
     return (e) => {
@@ -119,21 +117,22 @@ function useController() {
 function Thumbnail({ title, src, containerRef }) {
   return (
     <div
-      className="root tw-to-sdky-100 tw-viax-slate-200 tw-relative tw-mx-auto tw-flex tw-flex-col tw-items-center tw-justify-center tw-overflow-auto tw-border-8 tw-border-black tw-bg-gradient-to-b tw-from-slate-100 tw-px-4 tw-py-16"
+      className="root tw-relative tw-mx-auto tw-flex tw-h-80 tw-flex-col tw-items-center tw-justify-center tw-overflow-auto tw-bg-gradient-to-b tw-from-black tw-to-gray-800 tw-px-4 tw-py-16"
       ref={containerRef}
     >
       <Image
         src={src}
         alt="Blog post thumbnail"
+        className="tw-w-24"
       />
       <Title
         is="h1"
         variant={Title.variant.UNSTYLED}
-        className="tw-mt-2 tw-max-w-xs tw-text-center tw-font-sans tw-font-thin tw-uppercase dfr-text-color-dark-strong"
+        className="tw-mt-2 tw-max-w-xs tw-text-center tw-font-sans tw-font-thin tw-uppercase tw-text-gray-200"
       >
         {title}
       </Title>
-      <InlineText className="tw-absolute tw-bottom-1 tw-right-2 tw-text-right tw-font-mono tw-text-xs tw-font-bold tw-italic tw-text-slate-800">
+      <InlineText className="tw-absolute tw-bottom-1 tw-right-2 tw-text-right tw-font-mono tw-text-xs tw-font-bold tw-italic tw-text-gray-400">
         {"diegofrayo.vercel.app"}
       </InlineText>
     </div>

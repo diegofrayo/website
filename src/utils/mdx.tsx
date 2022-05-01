@@ -1,6 +1,16 @@
 import * as React from "react";
 
-import { Code, Collapsible, Icon, Image, Link, List, Space, Block } from "~/components/primitive";
+import {
+  Block,
+  Code,
+  Collapsible,
+  Icon,
+  Image,
+  Link,
+  List,
+  Space,
+  Text,
+} from "~/components/primitive";
 import {
   ImageWithLink,
   Playground,
@@ -80,6 +90,7 @@ export const MDXComponents = {
   Link,
   List,
   Space,
+  Text,
 
   // Shared components
   ImageWithLink,
