@@ -44,9 +44,9 @@ function Timeline({ timeline, TimelineItem }: T_TimelineProps): T_ReactElement {
                     <Block className="tw-mx-auto tw-mb-6 tw-block tw-h-24 tw-w-1 dfr-bg-color-dark-strong sm:tw-hidden" />
                   )}
                   <TimelineItem data={item} />
-                  {groupIndex !== timeline.length - 1 && (
+                  {groupIndex !== timeline.length - 1 || itemIndex !== group.items.length - 1 ? (
                     <Block className="tw-mx-auto tw-mt-8 tw-block tw-h-24 tw-w-1 dfr-bg-color-dark-strong sm:tw-hidden" />
-                  )}
+                  ) : null}
                 </Block>
               );
             })}

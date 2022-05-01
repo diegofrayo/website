@@ -112,10 +112,6 @@ function Footer({
                 icon={Icon.icon.COUCHSURFING}
               />
               <FooterIcon
-                url={WEBSITE_METADATA.social.instagram}
-                icon={Icon.icon.INSTAGRAM}
-              />
-              <FooterIcon
                 url={WEBSITE_METADATA.social.spotify}
                 icon={Icon.icon.SPOTIFY}
               />

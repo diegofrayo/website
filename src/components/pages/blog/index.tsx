@@ -38,7 +38,6 @@ function Blog(): T_ReactElement {
               <Block className="tw-flex tw-flex-wrap tw-justify-between">
                 {posts
                   .filter((post: T_BlogPost) => {
-                    return post.isPublished;
                     return isDevelopmentEnvironment() || AuthService.isUserLoggedIn()
                       ? true
                       : post.isPublished;
@@ -50,7 +49,8 @@ function Blog(): T_ReactElement {
                         slug={post.slug}
                         title={post.title}
                         categories={post.categories}
-                        createdAt={post.createdAt}
+                        publishedAt={post.publishedAt}
+                        isPublished={post.isPublished}
                         locales={post.locales}
                         thumbnail={post.thumbnail}
                       />
@@ -71,16 +71,17 @@ export default Blog;
 
 type T_BlogEntryProps = Pick<
   T_BlogPost,
-  "title" | "categories" | "slug" | "createdAt" | "locales" | "thumbnail"
+  "title" | "categories" | "slug" | "publishedAt" | "locales" | "thumbnail" | "isPublished"
 >;
 
 function BlogEntry({
   slug,
   title,
   categories,
-  createdAt,
+  publishedAt,
   locales,
   thumbnail,
+  isPublished,
 }: T_BlogEntryProps): T_ReactElement {
   const { t } = useTranslation();
   const { locale } = useRouter();
@@ -113,10 +114,16 @@ function BlogEntry({
           <Text className="tw-mb-4 tw-px-2">{title}</Text>
           <Block className="tw-absolute tw-bottom-0 tw-flex tw-w-full tw-items-end tw-justify-between tw-px-2 tw-py-2">
             <Text className="tw-text-xs tw-font-normal tw-italic dfr-text-color-secondary">
-              <InlineText>{t("page:created_at")} </InlineText>
-              <InlineText is="strong">
-                {getDifferenceBetweenDates(createdAt, new Date())}
-              </InlineText>
+              {isPublished ? (
+                <React.Fragment>
+                  <InlineText>{t("page:published_at")} </InlineText>
+                  <InlineText is="strong">
+                    {getDifferenceBetweenDates(publishedAt, new Date())}
+                  </InlineText>
+                </React.Fragment>
+              ) : (
+                "Draft 📝"
+              )}
             </Text>
             <Block>
               {categories.map((category) => {

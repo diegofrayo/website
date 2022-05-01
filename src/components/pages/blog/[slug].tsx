@@ -50,7 +50,8 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
       <MainLayout title={post.title}>
         <BlogPostDetails
           publishedAt={post.publishedAt}
-          createdAt={post.createdAt}
+          updatedAt={post.updatedAt}
+          isPublished={post.isPublished}
         />
         <Space size={8} />
 
@@ -77,9 +78,13 @@ export default BlogPostPage;
 
 // --- Components ---
 
-type T_BlogPostDetailsProps = Pick<T_BlogPost, "publishedAt" | "createdAt">;
+type T_BlogPostDetailsProps = Pick<T_BlogPost, "publishedAt" | "updatedAt" | "isPublished">;
 
-function BlogPostDetails({ publishedAt, createdAt }: T_BlogPostDetailsProps): T_ReactElement {
+function BlogPostDetails({
+  publishedAt,
+  updatedAt,
+  isPublished,
+}: T_BlogPostDetailsProps): T_ReactElement {
   const { t } = useTranslation();
 
   return (
@@ -88,25 +93,29 @@ function BlogPostDetails({ publishedAt, createdAt }: T_BlogPostDetailsProps): T_
       display="tw-flex"
       align="CENTER"
     >
-      <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
-        <BlogPostDetailsItem.Icon
-          icon={Icon.icon.CALENDAR}
-          color="tw-text-black dark:tw-text-white"
-        />
-        <Text>
-          <InlineText className="tw-mr-1">{t("page:published_at")}</InlineText>
-          <InlineText is="strong">{publishedAt}</InlineText>
-        </Text>
-      </BlogPostDetailsItem>
-      <InlineText className="tw-my-1 tw-block sm:tw-my-0 sm:tw-mx-4 sm:tw-inline-block" />
+      {isPublished ? (
+        <React.Fragment>
+          <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
+            <BlogPostDetailsItem.Icon
+              icon={Icon.icon.CALENDAR}
+              color="tw-text-black dark:tw-text-white"
+            />
+            <Text>
+              <InlineText className="tw-mr-1">{t("page:published_at")}</InlineText>
+              <InlineText is="strong">{publishedAt}</InlineText>
+            </Text>
+          </BlogPostDetailsItem>
+          <Space responsive="tw-my-1 tw-block sm:tw-my-0 sm:tw-mx-4 sm:tw-inline-block" />
+        </React.Fragment>
+      ) : null}
       <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
         <BlogPostDetailsItem.Icon
           icon={Icon.icon.EDIT}
           color="tw-text-black dark:tw-text-white"
         />
         <Text>
-          <InlineText className="tw-mr-1">{t("page:created_at")}</InlineText>
-          <InlineText is="strong">{getDifferenceBetweenDates(createdAt, new Date())}</InlineText>
+          <InlineText className="tw-mr-1">{t("page:updated_at")}</InlineText>
+          <InlineText is="strong">{getDifferenceBetweenDates(updatedAt, new Date())}</InlineText>
         </Text>
       </BlogPostDetailsItem>
     </Block>
