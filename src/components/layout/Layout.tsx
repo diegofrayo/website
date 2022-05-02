@@ -166,7 +166,7 @@ function GoToTopButton(): T_ReactElement {
   return (
     <Button
       variant={Button.variant.SIMPLE}
-      className="tw-fixed tw-bottom-3 tw-right-3 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-bg-opacity-70 tw-text-2xl dfr-bg-color-dark-strong sm:tw-right-4 sm:tw-bottom-4"
+      className="tw-fixed tw-bottom-3 tw-right-3 tw-z-50 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-bg-opacity-70 tw-text-2xl dfr-bg-color-dark-strong sm:tw-right-4 sm:tw-bottom-4"
       onClick={() => {
         setScrollPosition(0);
       }}

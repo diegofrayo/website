@@ -126,7 +126,7 @@ function PictureFrame() {
 
   useDidMount(() => {
     setPhoto({
-      src: "/static/images/header/5.jpg",
+      src: "/static/images/header/6.jpg",
       portrait: false,
     });
   });
@@ -220,13 +220,13 @@ function TV() {
   );
 
   const SONG = {
-    title: "Quimera",
-    artist: "Jorge Drexler",
-    duration: "3:38",
-    thumbnail: "https://i.scdn.co/image/ab67616d0000b2734062d0b07c3a74ab73632475",
-    url: "https://open.spotify.com/track/5787WaGd5DQvL14A6SJ8cG",
+    title: "La Edad Del Cielo - Cover",
+    artist: "arthur victor",
+    duration: "3:27",
+    thumbnail: "https://i.scdn.co/image/ab67616d0000b27385cdb6b0ede4824b449dc73f",
     audio:
-      "https://p.scdn.co/mp3-preview/6420f032b23f21029cf42ad79d405bb3ff78abdb?cid=a46f5c5745a14fbf826186da8da5ecc3",
+      "https://p.scdn.co/mp3-preview/b6fb5cddcf7285f80bfe113a38f414ee3eef28bc?cid=a46f5c5745a14fbf826186da8da5ecc3",
+    url: "https://open.spotify.com/track/4jFFRZOej9hhZ6K6SKrFuU",
     source: "spotify",
   };
 
