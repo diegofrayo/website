@@ -32,7 +32,7 @@ function WhatsApp(): T_ReactElement {
           ref={inputRef}
           value={phone}
           placeholder="🇨🇴 +57"
-          pattern="[0-9]{10}"
+          pattern="\+?[0-9]{10,15}"
           onChange={onChange}
           onKeyPress={onKeyPress}
         />
