@@ -66,7 +66,7 @@ class GuitarService {
           checkGuitarFretValidity(musicNote.guitarFret);
           return musicNote.guitarFret;
         })
-        .sort();
+        .sort((a, b) => a - b);
 
       if (musicNotesFrets.length === 0) {
         throw new Error("A chord must have at least one music note");
@@ -114,7 +114,7 @@ class GuitarService {
 
       return {
         firstFret: musicNotesFrets[0],
-        lastFret: musicNotesFrets[musicNotesFrets.length - 1],
+        lastFret: musicNotesFrets.at(-1) as T_GuitarFret,
         musicNotesAsString: this.musicNotesToString(parsedMusicNotes),
         groupedMusicNotesByGuitarFret,
       };

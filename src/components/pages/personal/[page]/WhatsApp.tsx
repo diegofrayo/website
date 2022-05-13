@@ -127,9 +127,11 @@ function useController(): {
   }
 
   function composeWhatsAppUrl() {
-    return `https://${isWebOptionSelected ? "web" : "api"}.whatsapp.com/send?phone=${
-      phone.includes("+") ? "" : "+57"
-    }${phone}`;
+    const url = new URLSearchParams();
+    url.append("phone", `${phone.includes("+") ? "" : "+57"}${phone}`);
+    url.append("text", "Hey!");
+
+    return `https://${isWebOptionSelected ? "web" : "api"}.whatsapp.com/send?${url.toString()}`;
   }
 
   return {

@@ -209,12 +209,11 @@ function ContactLinks({ contact }: { contact: T_Contact }) {
 function WhastAppButton({ children, phone }) {
   function handleWhatsAppClick(phone: string) {
     return () => {
-      const url = `https://${isMobile() ? "api" : "web"}.whatsapp.com/send?phone=${phone.replace(
-        " ",
-        "",
-      )}`.trim();
+      const url = new URLSearchParams();
+      url.append("phone", phone.replace(" ", "").trim());
+      url.append("text", "Hey!");
 
-      window.open(url);
+      window.open(`https://${isMobile() ? "api" : "web"}.whatsapp.com/send?${url.toString()}`);
     };
   }
 

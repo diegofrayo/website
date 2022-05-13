@@ -62,7 +62,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                 <Button
                   variant={Button.variant.SIMPLE}
                   onClick={() => {
-                    handleUpdateSelectedChordIndex(-1);
+                    handleUpdateSelectedChordIndex("-");
                   }}
                 >
                   <Icon
@@ -80,11 +80,12 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                       <InlineText
                         key={`Chord-point-${index}`}
                         className={classNames(
-                          "tw-mx-1 tw-inline-flex tw-h-4 tw-w-4 tw-items-center tw-justify-center tw-rounded-full tw-text-xxs tw-leading-0 tw-text-white dark:tw-text-black",
+                          "tw-mx-1 tw-inline-flex tw-h-4 tw-w-4 tw-cursor-pointer tw-items-center tw-justify-center tw-rounded-full tw-text-xxs tw-leading-0 tw-text-white dark:tw-text-black",
                           selectedChordIndex === index
                             ? "tw-bg-black tw-font-bold dark:tw-bg-white"
                             : "tw-bg-gray-400",
                         )}
+                        onClick={() => handleUpdateSelectedChordIndex(index)}
                       >
                         {index + 1}
                       </InlineText>
@@ -94,7 +95,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                 <Button
                   variant={Button.variant.SIMPLE}
                   onClick={() => {
-                    handleUpdateSelectedChordIndex(1);
+                    handleUpdateSelectedChordIndex("+");
                   }}
                 >
                   <Icon
@@ -138,7 +139,7 @@ function useController({ children, insertions }: T_TextFormatterProps): {
   selectedChord: T_Chord | undefined;
   selectedChordIndex: number;
 
-  handleUpdateSelectedChordIndex: (value: number) => void;
+  handleUpdateSelectedChordIndex: (value: number | string) => void;
   handleModalClose: () => void;
 
   parsedLyrics: T_ReactChildrenProp;
@@ -170,13 +171,20 @@ function useController({ children, insertions }: T_TextFormatterProps): {
     setSelectedChord(undefined);
   }
 
-  function handleUpdateSelectedChordIndex(value: number): void {
-    if (selectedChordIndex + value < 0) {
+  function handleUpdateSelectedChordIndex(value: number | string): void {
+    if (typeof value === "number") {
+      setSelectedChordIndex(value);
+      return;
+    }
+
+    const operator = 1 * (value === "+" ? 1 : -1);
+
+    if (selectedChordIndex + operator < 0) {
       setSelectedChordIndex((selectedChord as T_Chord[]).length - 1);
-    } else if (selectedChordIndex + value > (selectedChord as T_Chord[]).length - 1) {
+    } else if (selectedChordIndex + operator > (selectedChord as T_Chord[]).length - 1) {
       setSelectedChordIndex(0);
     } else {
-      setSelectedChordIndex(selectedChordIndex + value);
+      setSelectedChordIndex(selectedChordIndex + operator);
     }
   }
 
