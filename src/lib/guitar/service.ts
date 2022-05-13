@@ -114,7 +114,7 @@ class GuitarService {
 
       return {
         firstFret: musicNotesFrets[0],
-        lastFret: musicNotesFrets.at(-1) as T_GuitarFret,
+        lastFret: musicNotesFrets[musicNotesFrets.length - 1],
         musicNotesAsString: this.musicNotesToString(parsedMusicNotes),
         groupedMusicNotesByGuitarFret,
       };
