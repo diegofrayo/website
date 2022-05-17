@@ -39,7 +39,7 @@ function SongDetails({
           {song.album}
         </InlineText>
       </Block>
-      <Block>
+      <Block className="sm:tw-flex sm:tw-flex-nowrap">
         <InlineText is="strong">{t("page:year")}:</InlineText> <InlineText>{song.year}</InlineText>
       </Block>
       <Category category={song.category} />
@@ -92,7 +92,7 @@ const Category = withRequiredAuthComponent(function Category({ category }: { cat
   const EMOJIS = ["🟦", "🟩", "🟨", "⬛", "⬜", "🟥"];
 
   return (
-    <Block>
+    <Block className="sm:tw-flex sm:tw-flex-nowrap">
       <InlineText
         is="strong"
         className="tw-mr-2"

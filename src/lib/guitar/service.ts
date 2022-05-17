@@ -1,4 +1,8 @@
-import { createArray, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
+import {
+  createArray,
+  isDevelopmentEnvironment,
+  transformObjectKeysFromSnakeCaseToLowerCamelCase,
+} from "~/utils/misc";
 import { replaceAll } from "~/utils/strings";
 
 import {
@@ -126,6 +130,7 @@ class GuitarService {
   }
 
   formatText(songContent: string): string {
+    const chords = {};
     const parsedContent = songContent
       .split("\n")
       .map((line) => {
@@ -146,16 +151,27 @@ class GuitarService {
                     chord,
                     textLineItems,
                     replaceExactly: index > 0,
+                    chords,
                   });
                 });
             } else {
-              parsedTextLine = this.parseTextLine({ parsedTextLine, chord, textLineItems });
+              parsedTextLine = this.parseTextLine({ parsedTextLine, chord, textLineItems, chords });
             }
           });
 
         return parsedTextLine;
       })
       .join("\n");
+
+    if (isDevelopmentEnvironment()) {
+      console.log(
+        "Chords of this song:",
+        Object.keys(chords)
+          .sort()
+          .map((chord) => `"${chord}"`)
+          .join(","),
+      );
+    }
 
     return parsedContent;
   }
@@ -193,8 +209,12 @@ class GuitarService {
     }) as T_Chord;
   }
 
-  private parseTextLine({ parsedTextLine, chord, textLineItems, replaceExactly = false }) {
+  private parseTextLine({ parsedTextLine, chord, textLineItems, replaceExactly = false, chords }) {
     const chordHTML = this.chordToHTML(chord);
+
+    if (chordHTML.includes("<button")) {
+      chords[chord] = chord;
+    }
 
     if (textLineItems.length === 1 || replaceExactly) {
       return replaceAll(parsedTextLine, chord, chordHTML);

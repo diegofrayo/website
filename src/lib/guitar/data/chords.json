@@ -31,6 +31,7 @@
     { "music_notes": "6x,8|5,10,3|4,10,4|3,9,2", "played_strings": "0,1,1,1,0,0" }
   ],
   "C#": { "music_notes": "5x,4|4,6,2|3,6,3|2,6,4", "played_strings": "0,0,1,1,1,0" },
+  "C#7": { "music_notes": "5x,4|4,6,2|2,6,4", "played_strings": "0,0,1,0,1,0" },
   "C#m": { "music_notes": "5x,4|4,6,3|3,6,4|2,5,2", "played_strings": "0,0,1,1,1,0" },
   "C#m7": { "music_notes": "5x,4|4,6,3|2,5,2", "played_strings": "0,0,1,0,1,0" },
   "C/G": { "music_notes": "6,3,3|5,3,4|4,2,2|2,1,1", "played_strings": "1,1,1,0,1,0" },
