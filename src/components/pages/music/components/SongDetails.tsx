@@ -22,25 +22,46 @@ function SongDetails({
   return (
     <Block className={classNames("tw-text-sm tw-italic", className)}>
       <Block className="sm:tw-flex sm:tw-flex-nowrap">
-        <InlineText is="strong">{t("page:artist")}:</InlineText>{" "}
         <InlineText
-          className="sm:tw-ml-1 sm:tw-flex-1 sm:tw-truncate"
+          is="strong"
+          className="tw-mr-1"
+        >
+          {t("page:artist")}:
+        </InlineText>
+        <InlineText
+          className="sm:tw-flex-1 sm:tw-truncate"
           title={song.artist}
         >
           {song.artist}
         </InlineText>
       </Block>
       <Block className="sm:tw-flex sm:tw-flex-nowrap">
-        <InlineText is="strong">{t("page:album")}:</InlineText>{" "}
         <InlineText
-          className="sm:tw-ml-1 sm:tw-flex-1 sm:tw-truncate"
+          is="strong"
+          className="tw-mr-1"
+        >
+          {t("page:album")}:
+        </InlineText>
+        <InlineText
+          className="sm:tw-flex-1 sm:tw-truncate"
           title={song.album}
         >
           {song.album}
         </InlineText>
       </Block>
       <Block className="sm:tw-flex sm:tw-flex-nowrap">
-        <InlineText is="strong">{t("page:year")}:</InlineText> <InlineText>{song.year}</InlineText>
+        <InlineText
+          is="strong"
+          className="tw-mr-1"
+        >
+          {t("page:year")}:
+        </InlineText>
+        <InlineText
+          className="sm:tw-flex-1 sm:tw-truncate"
+          title={`${song.year}`}
+        >
+          {song.year}
+        </InlineText>
       </Block>
       <Category category={song.category} />
 
@@ -95,12 +116,12 @@ const Category = withRequiredAuthComponent(function Category({ category }: { cat
     <Block className="sm:tw-flex sm:tw-flex-nowrap">
       <InlineText
         is="strong"
-        className="tw-mr-2"
+        className="tw-mr-1"
       >
         {t("page:category")}:
       </InlineText>
       <Emoji>{EMOJIS[category.split("|")[0]]}</Emoji>
-      <InlineText className="tw-ml-1.5 tw-capitalize">
+      <InlineText className="tw-ml-1 tw-capitalize">
         {category.split("|")[1].replace("_", " ").toLowerCase()}
       </InlineText>
     </Block>
