@@ -1,10 +1,10 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { Icon, Input, Link, Block } from "~/components/primitive";
+import { Icon, Input, Link, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import type { T_ReactElement } from "~/types";
-import { focusElement, isMobile } from "~/utils/browser";
+import { copyToClipboard, focusElement, isMobile } from "~/utils/browser";
 import { generateSlug, replaceAll } from "~/utils/strings";
 
 function WhatsApp(): T_ReactElement {
@@ -22,6 +22,8 @@ function WhatsApp(): T_ReactElement {
     composeWhatsAppUrl,
   } = useController();
 
+  const whatsAppUrl = composeWhatsAppUrl();
+
   return (
     <Block>
       <Block className="tw-flex-no-wrap tw-flex tw-w-full tw-items-end">
@@ -38,7 +40,7 @@ function WhatsApp(): T_ReactElement {
         />
         <Link
           variant={Link.variant.SIMPLE}
-          href={composeWhatsAppUrl()}
+          href={whatsAppUrl}
           className={classNames(
             "tw-flex tw-self-end",
             isInvalidPhone && "tw-pointer-events-none tw-opacity-50",
@@ -77,6 +79,15 @@ function WhatsApp(): T_ReactElement {
           />
           <label htmlFor="radio-web">web</label>
         </Block>
+      </Block>
+      <Block className="tw-mt-3 tw-text-left sm:tw-text-center">
+        <Text
+          className="tw-inline-block tw-cursor-pointer tw-border tw-border-dashed tw-px-1 tw-text-xs tw-italic dfr-border-color-primary"
+          data-clipboard-text={whatsAppUrl}
+          onClick={copyToClipboard}
+        >
+          {whatsAppUrl}
+        </Text>
       </Block>
     </Block>
   );
