@@ -1,6 +1,6 @@
 import { I18nService } from "~/i18n";
 import http from "~/lib/http";
-import type { T_BlogPost, T_ItemCategory, T_Object, T_Primitive } from "~/types";
+import type { T_BlogPost, T_ItemCategory, T_Primitive } from "~/types";
 import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 
 class BlogService {
@@ -12,25 +12,24 @@ class BlogService {
     const { posts, categories } = await this.fetchData();
 
     const result = Object.values(posts)
-      .map((post: T_Object) => {
-        return {
-          ...post[
-            I18nService.getContentLocale(
-              post.config.locales,
-              locale || I18nService.getCurrentLocale(),
-              post.config.locales[0],
-            )
-          ],
-          ...(transformObjectKeysFromSnakeCaseToLowerCamelCase(post.config) as T_Object),
-          assets: post.assets,
-          categories: post.config.categories
-            .map((category) => {
-              return categories.find((item) => item.id === category);
-            })
-            .filter(Boolean)
-            .sort(sortBy([{ param: "value", order: "asc" }])),
-        } as T_BlogPost;
-      })
+      .map(
+        (post: T_UnknownObject) =>
+          ({
+            ...post[
+              I18nService.getContentLocale(
+                post.config.locales,
+                locale || I18nService.getCurrentLocale(),
+                post.config.locales[0],
+              )
+            ],
+            ...(transformObjectKeysFromSnakeCaseToLowerCamelCase(post.config) as T_UnknownObject),
+            assets: post.assets,
+            categories: post.config.categories
+              .map((category) => categories.find((item) => item.id === category))
+              .filter(Boolean)
+              .sort(sortBy([{ param: "value", order: "asc" }])),
+          } as T_BlogPost),
+      )
       .sort(sortBy([{ param: "publishedAt", order: "desc" }]));
 
     return result;
@@ -47,9 +46,9 @@ class BlogService {
     return transformObjectKeysFromSnakeCaseToLowerCamelCase(post) as T_BlogPost;
   }
 
-  private async fetchData(): Promise<{ posts: T_Object[]; categories: T_ItemCategory[] }> {
+  private async fetchData(): Promise<{ posts: T_UnknownObject[]; categories: T_ItemCategory[] }> {
     const { data } = await http.get(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/blog/data.json`,
+      `${process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"]}/pages/blog/data.json`,
     );
 
     return data;

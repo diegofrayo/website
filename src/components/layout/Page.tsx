@@ -11,19 +11,21 @@ import AnalyticsService from "~/services/analytics";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata, selectSEOMetadata } from "~/state/modules/metadata";
 import { selectPageConfig } from "~/state/modules/page-config";
+import { isDevelopmentEnvironment } from "~/utils/app";
+import { ROUTES } from "~/utils/routing";
 import type {
   T_PageConfig,
-  T_PageRoute,
-  T_ReactChildrenProp,
+  T_ReactChildren,
   T_ReactElement,
+  T_ReactElementNullable,
+  T_RoutesValues,
   T_SEOMetadata,
+  T_UnknownObject,
   T_WebsiteMetadata,
 } from "~/types";
-import { isDevelopmentEnvironment } from "~/utils/misc";
-import { ROUTES } from "~/utils/routing";
 
 type T_PageProps = {
-  children: T_ReactChildrenProp;
+  children: T_ReactChildren;
   config: {
     title?: string;
     replaceTitle?: boolean;
@@ -31,7 +33,7 @@ type T_PageProps = {
     description?: string;
     image?: string;
     disableSEO?: boolean;
-    scripts?: { element: "link"; props: any }[];
+    scripts?: { element: "link"; props: T_UnknownObject }[];
   };
 };
 
@@ -42,7 +44,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 
   const metadata = {
     title: config.title
-      ? `${config.title}${config.replaceTitle ? "" : " - " + SEO_METADATA.title}`
+      ? `${config.title}${config.replaceTitle ? "" : ` - ${SEO_METADATA.title}`}`
       : SEO_METADATA.title,
     url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
     description: config.description || SEO_METADATA.description,
@@ -56,7 +58,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   });
 
   return (
-    <React.Fragment>
+    <>
       <Head>
         <title>{metadata.title}</title>
         <meta charSet="UTF-8" />
@@ -166,9 +168,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
         />
         <link
           rel="icon"
-          href={`/static/images/favicon/favicon${
-            isDevelopmentEnvironment(WEBSITE_METADATA.url) ? "-dev" : ""
-          }.ico?v=3`}
+          href={`/static/images/favicon/favicon${isDevelopmentEnvironment() ? "-dev" : ""}.ico?v=3`}
         />
         <link
           rel="alternate"
@@ -183,7 +183,9 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           href="/atom.xml"
         />
 
-        {[ROUTES.HOME, ROUTES.ABOUT_ME, ROUTES.RESUME].includes(config.pathname as T_PageRoute) && (
+        {[ROUTES.HOME, ROUTES.ABOUT_ME, ROUTES.RESUME].includes(
+          config.pathname as T_RoutesValues,
+        ) ? (
           <Script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -199,14 +201,14 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
               }),
             }}
           />
-        )}
+        ) : null}
       </Head>
       {children}
 
       <UserLoggedInFlag />
       <AnalyticsDisabledFlag />
       {/* {isDevelopmentEnvironment() && <WindowSize />} */}
-    </React.Fragment>
+    </>
   );
 }
 
@@ -214,23 +216,28 @@ export default Page;
 
 // --- Components ---
 
-const UserLoggedInFlag = withRequiredAuthComponent(function UserLoggedInFlag() {
-  return (
+const UserLoggedInFlag = withRequiredAuthComponent(
+  (): T_ReactElement => (
     <Flag
       className="tw-z-50"
       color="dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong"
     />
-  );
-});
+  ),
+);
 
-function AnalyticsDisabledFlag() {
+function AnalyticsDisabledFlag(): T_ReactElementNullable {
+  // hooks
   const [isAnalyticsEnabled, setIsAnalyticsEnabled] = React.useState(false);
 
+  // effects
   useDidMount(() => {
     setIsAnalyticsEnabled(!AnalyticsService.isAnalyticsDisabled());
   });
 
-  if (isAnalyticsEnabled) return null;
+  // render
+  if (isAnalyticsEnabled) {
+    return null;
+  }
 
   return (
     <Flag
@@ -240,7 +247,12 @@ function AnalyticsDisabledFlag() {
   );
 }
 
-function Flag({ className, color }) {
+type T_FlagProps = {
+  className: string;
+  color: string;
+};
+
+function Flag({ className, color }: T_FlagProps) {
   return (
     <InlineText
       className={classNames("tw-fixed tw-top-1 tw-left-1 tw-h-1 tw-w-1", className, color)}

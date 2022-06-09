@@ -5,34 +5,45 @@ import { Block, Button, Icon, Link, Title, Text, Space } from "~/components/prim
 import { useOnWindowStopScroll } from "~/hooks";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
-import type { E_Icons, T_ReactChildrenProp, T_ReactElement, T_WebsiteMetadata } from "~/types";
+import type {
+  E_Icons,
+  T_ReactChildren,
+  T_ReactElement,
+  T_ReactElementNullable,
+  T_WebsiteMetadata,
+} from "~/types";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
+import { isNotEmptyString } from "~/utils/misc";
 
 import Header from "./Header";
 
 type T_MainLayoutProps = {
   title: string;
-  children: T_ReactChildrenProp;
-  showGoToTopButton?: boolean;
+  children: T_ReactChildren;
+  shasToShowGoToTheTopButton?: boolean;
 };
 
 function MainLayout({
   children,
   title = "",
-  showGoToTopButton = true,
+  shasToShowGoToTheTopButton = true,
 }: T_MainLayoutProps): T_ReactElement {
+  // hooks
   const { pathname } = useRouter();
 
-  function getParentURL() {
+  // states & refs
+  const parentUrl = getParentURL();
+
+  // utils
+  function getParentURL(): string {
     if (pathname === "/") return "";
 
     const urlParts = pathname.split("/");
 
-    return urlParts.slice(0, urlParts.length - 1).join("/") + "/";
+    return `${urlParts.slice(0, urlParts.length - 1).join("/")}/`;
   }
 
-  const parentUrl = getParentURL();
-
+  // render
   return (
     <Block is="main">
       <Block className="tw-mx-auto tw-px-8 dfr-max-w-layout">
@@ -42,9 +53,9 @@ function MainLayout({
           id="body"
           className="tw-py-32"
         >
-          {title && (
+          {isNotEmptyString(title) ? (
             <Block className="tw-text-center">
-              {parentUrl && (
+              {isNotEmptyString(parentUrl) ? (
                 <Link
                   variant={Link.variant.SIMPLE}
                   href={parentUrl}
@@ -52,7 +63,8 @@ function MainLayout({
                 >
                   {parentUrl}
                 </Link>
-              )}
+              ) : null}
+
               <Title
                 is="h1"
                 variant={Title.variant.UNSTYLED}
@@ -61,12 +73,12 @@ function MainLayout({
                 {title}
               </Title>
             </Block>
-          )}
+          ) : null}
           {children}
         </Block>
       </Block>
 
-      <Footer showGoToTopButton={showGoToTopButton} />
+      <Footer shasToShowGoToTheTopButton={shasToShowGoToTheTopButton} />
     </Block>
   );
 }
@@ -75,13 +87,13 @@ export default MainLayout;
 
 // --- Components ---
 
-function Footer({
-  showGoToTopButton,
-}: {
-  showGoToTopButton: T_MainLayoutProps["showGoToTopButton"];
-}): T_ReactElement {
+type T_FooterProps = Pick<T_MainLayoutProps, "shasToShowGoToTheTopButton">;
+
+function Footer({ shasToShowGoToTheTopButton }: T_FooterProps): T_ReactElement {
+  // hooks
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
+  // render
   return (
     <Block
       is="footer"
@@ -123,12 +135,14 @@ function Footer({
         </Block>
       </Block>
 
-      {showGoToTopButton && <GoToTopButton />}
+      {shasToShowGoToTheTopButton && <GoToTopButton />}
     </Block>
   );
 }
 
-function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactElement {
+type T_FooterIconProps = { icon: E_Icons; url: string };
+
+function FooterIcon({ icon, url }: T_FooterIconProps): T_ReactElement {
   return (
     <Link
       variant={Link.variant.SIMPLE}
@@ -145,31 +159,39 @@ function FooterIcon({ icon, url }: { icon: E_Icons; url: string }): T_ReactEleme
   );
 }
 
-function GoToTopButton(): T_ReactElement {
-  const [showGoToTopButton, setShowGoToTopButton] = React.useState<boolean>(false);
+function GoToTopButton(): T_ReactElementNullable {
+  // states & refs
+  const [hasToDisplayTheButton, setHasToDisplayTheBottom] = React.useState(false);
 
+  // effects
   useOnWindowStopScroll({
     onScrollStoppedCallback: () => {
-      setShowGoToTopButton(false);
+      setHasToDisplayTheBottom(false);
     },
     onScrollCallback: () => {
       if (getScrollPosition() > 0) {
-        setShowGoToTopButton(true);
+        setHasToDisplayTheBottom(true);
       } else {
-        setShowGoToTopButton(false);
+        setHasToDisplayTheBottom(false);
       }
     },
   });
 
-  if (!showGoToTopButton) return null;
+  // handlers
+  function handleGoToTheTopClick(): void {
+    setScrollPosition(0);
+  }
+
+  // render
+  if (!hasToDisplayTheButton) {
+    return null;
+  }
 
   return (
     <Button
       variant={Button.variant.SIMPLE}
       className="tw-fixed tw-bottom-3 tw-right-3 tw-z-50 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-bg-opacity-70 tw-text-2xl dfr-bg-color-dark-strong sm:tw-right-4 sm:tw-bottom-4"
-      onClick={() => {
-        setScrollPosition(0);
-      }}
+      onClick={handleGoToTheTopClick}
     >
       <Icon
         icon={Icon.icon.ARROW_UP}

@@ -114,11 +114,13 @@ function Room(): T_ReactElement {
       </Block>
       <Table />
 
-      <style jsx>{`
-        :global(.dfr-Room) {
-          background-image: url("/static/images/textures/arabesque.png");
-        }
-      `}</style>
+      <style jsx>
+        {`
+          :global(.dfr-Room) {
+            background-image: url("/static/images/textures/arabesque.png");
+          }
+        `}
+      </style>
     </Block>
   );
 }
@@ -159,48 +161,50 @@ function PictureFrame() {
         {t("layout:header:room:welcome")}
       </Text>
 
-      <style jsx>{`
-        :global(.dfr-PictureFrame)::before,
-        :global(.dfr-PictureFrame)::after {
-          @apply dfr-bg-color-dark-strong;
-          content: " ";
-          display: block;
-          height: 50px;
-          position: absolute;
-          top: -40px;
-          width: 2.5px;
-          z-index: -1;
-        }
+      <style jsx>
+        {`
+          :global(.dfr-PictureFrame)::before,
+          :global(.dfr-PictureFrame)::after {
+            @apply dfr-bg-color-dark-strong;
+            content: " ";
+            display: block;
+            height: 50px;
+            position: absolute;
+            top: -40px;
+            width: 2.5px;
+            z-index: -1;
+          }
 
-        :global(.tw-dark) :global(.dfr-PictureFrame)::before,
-        :global(.tw-dark) :global(.dfr-PictureFrame)::after {
-          @apply dfr-bg-color-light-strong;
-        }
+          :global(.tw-dark) :global(.dfr-PictureFrame)::before,
+          :global(.tw-dark) :global(.dfr-PictureFrame)::after {
+            @apply dfr-bg-color-light-strong;
+          }
 
-        :global(.dfr-PictureFrame)::before {
-          transform: rotate(45deg);
-          left: 46px;
-        }
+          :global(.dfr-PictureFrame)::before {
+            transform: rotate(45deg);
+            left: 46px;
+          }
 
-        :global(.dfr-PictureFrame)::after {
-          transform: rotate(-45deg);
-          right: 46px;
-        }
+          :global(.dfr-PictureFrame)::after {
+            transform: rotate(-45deg);
+            right: 46px;
+          }
 
-        :global(.dfr-PictureFrame--portrait)::before,
-        :global(.dfr-PictureFrame--portrait)::after {
-          height: 24px;
-          top: -17px;
-        }
+          :global(.dfr-PictureFrame--portrait)::before,
+          :global(.dfr-PictureFrame--portrait)::after {
+            height: 24px;
+            top: -17px;
+          }
 
-        :global(.dfr-PictureFrame--portrait)::before {
-          transform: rotate(-40deg);
-        }
+          :global(.dfr-PictureFrame--portrait)::before {
+            transform: rotate(-40deg);
+          }
 
-        :global(.dfr-PictureFrame--portrait)::after {
-          transform: rotate(40deg);
-        }
-      `}</style>
+          :global(.dfr-PictureFrame--portrait)::after {
+            transform: rotate(40deg);
+          }
+        `}
+      </style>
     </Block>
   );
 }
@@ -210,17 +214,14 @@ function TV() {
   const [isAudioPlaying, setIsAudioPlaying] = React.useState(false);
   const [hasNotStartedTV, setHasNotStartedTV] = React.useState(true);
 
-  React.useEffect(
-    function updateConfigOnLocalStorage() {
-      if (showInfo === false) {
-        setIsAudioPlaying(false);
+  React.useEffect(() => {
+    if (showInfo === false) {
+      setIsAudioPlaying(false);
 
-        const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
-        audioElement.pause();
-      }
-    },
-    [showInfo],
-  );
+      const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
+      audioElement.pause();
+    }
+  }, [showInfo]);
 
   const SONG = {
     title: "La Edad Del Cielo - Cover",
@@ -237,17 +238,15 @@ function TV() {
     <Block className="dfr-TV tw-relative tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-bg-gradient-to-b tw-from-gray-800 tw-to-black tw-p-2 dark:tw-from-white dark:tw-to-gray-300">
       <Block className="tw-relative tw-h-16 tw-w-16 tw-overflow-hidden">
         <Block
-          className="tw-relative tw-h-full tw-border tw-border-opacity-80 tw-bg-cover dfr-border-color-dark-strong dark:tw-border-opacity-10"
+          className="tw-relative tw-flex tw-h-full tw-items-center tw-justify-center tw-border tw-border-opacity-80 tw-bg-cover dfr-border-color-dark-strong dark:tw-border-opacity-10"
           title={`${SONG.title} - ${SONG.artist}`}
-          display="tw-flex"
-          align="CENTER"
           style={{ backgroundImage: `url(${SONG.thumbnail})` }}
         >
           <Button
             variant={Button.variant.SIMPLE}
             onClick={() => {
               const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
-              setIsAudioPlaying(audioElement.paused ? true : false);
+              setIsAudioPlaying(!!audioElement.paused);
 
               if (audioElement.paused) {
                 audioElement.play();
@@ -296,14 +295,12 @@ function TV() {
 
       <Block className="tw-flex tw-flex-1 tw-flex-col tw-items-center tw-justify-between tw-py-1">
         <Block className="tw-w-full tw-text-center">
-          {createArray(8).map((i) => {
-            return (
-              <Block
-                key={`Volume-${i}`}
-                className="tw-my-0.5 tw-rounded-sm tw-border-b tw-border-gray-600 dark:dfr-border-color-dark-strong"
-              />
-            );
-          })}
+          {createArray(8).map((i) => (
+            <Block
+              key={`Volume-${i}`}
+              className="tw-my-0.5 tw-rounded-sm tw-border-b tw-border-gray-600 dark:dfr-border-color-dark-strong"
+            />
+          ))}
         </Block>
         <Block className="tw-h-6 tw-w-6 tw-overflow-hidden tw-rounded-full tw-bg-gray-700 tw-transition-transform dark:dfr-bg-color-dark-strong">
           {hasNotStartedTV ? (
@@ -340,34 +337,36 @@ function TV() {
         </Block>
       </Block>
 
-      <style jsx>{`
-        :global(.dfr-TV)::before,
-        :global(.dfr-TV)::after {
-          @apply dfr-bg-color-dark-strong;
-          @apply tw-w-2;
-          @apply tw-h-6;
-          content: " ";
-          display: block;
-          position: absolute;
-          top: 90%;
-          z-index: 0;
-        }
+      <style jsx>
+        {`
+          :global(.dfr-TV)::before,
+          :global(.dfr-TV)::after {
+            @apply dfr-bg-color-dark-strong;
+            @apply tw-w-2;
+            @apply tw-h-6;
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 90%;
+            z-index: 0;
+          }
 
-        :global(.tw-dark) :global(.dfr-TV)::before,
-        :global(.tw-dark) :global(.dfr-TV)::after {
-          @apply tw-bg-gray-300;
-        }
+          :global(.tw-dark) :global(.dfr-TV)::before,
+          :global(.tw-dark) :global(.dfr-TV)::after {
+            @apply tw-bg-gray-300;
+          }
 
-        :global(.dfr-TV)::before {
-          transform: rotate(45deg);
-          left: 15%;
-        }
+          :global(.dfr-TV)::before {
+            transform: rotate(45deg);
+            left: 15%;
+          }
 
-        :global(.dfr-TV)::after {
-          transform: rotate(-45deg);
-          right: 15%;
-        }
-      `}</style>
+          :global(.dfr-TV)::after {
+            transform: rotate(-45deg);
+            right: 15%;
+          }
+        `}
+      </style>
     </Block>
   );
 }

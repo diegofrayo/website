@@ -6,7 +6,7 @@ import type { T_ReactElement } from "~/types";
 
 function ISR(): T_ReactElement {
   const {
-    // states
+    // states & refs
     path,
 
     // handlers
@@ -54,7 +54,7 @@ function useController() {
 
   async function handleUpdateClick() {
     try {
-      await http.post("/api/diegofrayo", { path, secret: process.env.NEXT_PUBLIC_ISR_TOKEN });
+      await http.post("/api/diegofrayo", { path, secret: process.env["NEXT_PUBLIC_ISR_TOKEN"] });
       alert("Completed");
     } catch (error) {
       console.error(error);
@@ -63,7 +63,7 @@ function useController() {
   }
 
   return {
-    // states
+    // states & refs
     path,
 
     // handlers

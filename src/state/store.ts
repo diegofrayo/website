@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import { I18nService } from "~/i18n";
-import type { T_Locale, T_Metadata, T_Object, T_PageContent, T_Store } from "~/types";
+import type { T_Locale, T_Metadata, T_PageContent, T_Store } from "~/types";
 import {
   isDevelopmentEnvironment,
   transformObjectKeysFromSnakeCaseToLowerCamelCase,
@@ -48,7 +48,9 @@ export function createPreloadedState({
   locale?: T_Locale;
 }): T_PreloadedState {
   const pageConfig =
-    (transformObjectKeysFromSnakeCaseToLowerCamelCase(pageContent?.page?.config) as T_Object) || {};
+    (transformObjectKeysFromSnakeCaseToLowerCamelCase(
+      pageContent?.page?.config,
+    ) as T_UnknownObject) || {};
 
   if (!pageConfig.locales) {
     pageConfig.locales = [locale || I18nService.getCurrentLocale()];

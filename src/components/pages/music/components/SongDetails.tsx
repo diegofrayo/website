@@ -107,7 +107,7 @@ export default SongDetails;
 
 // --- Components ---
 
-const Category = withRequiredAuthComponent(function Category({ category }: { category: string }) {
+const Category = withRequiredAuthComponent(({ category }: { category: string }) => {
   const { t } = useTranslation();
 
   const EMOJIS = ["🟦", "🟩", "🟨", "⬛", "⬜", "🟥"];

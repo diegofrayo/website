@@ -6,7 +6,7 @@ import type { T_ReactElement } from "~/types";
 
 function ChordsCreator(): T_ReactElement {
   const {
-    // states
+    // states & refs
     inputs,
 
     // handlers
@@ -14,7 +14,7 @@ function ChordsCreator(): T_ReactElement {
   } = useController();
 
   return (
-    <React.Fragment>
+    <>
       <Block>
         <Title
           is="h2"
@@ -131,7 +131,7 @@ function ChordsCreator(): T_ReactElement {
           enableShowNotesOption
         />
       </Block>
-    </React.Fragment>
+    </>
   );
 }
 
@@ -141,18 +141,18 @@ export default ChordsCreator;
 
 function useController(): {
   inputs: { name: string; musicNotes: string };
-  onInputChange: any;
+  onInputChange: "name" | "musicNotes";
 } {
   const [inputs, setInputs] = React.useState({ name: "", musicNotes: "" });
 
-  function onInputChange(inputName) {
-    return function onInputChange(e) {
+  function onInputChange(inputName: "name" | "musicNotes") {
+    return function onInputChange(e: React.ChangeEvent) {
       setInputs({ ...inputs, [inputName]: e.currentTarget.value });
     };
   }
 
   return {
-    // states
+    // states & refs
     inputs,
 
     // handlers

@@ -1,31 +1,25 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import type { T_HTMLElementAttributes, T_ReactChildrenProp, T_ReactElement } from "~/types";
+import { mirror } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
+import type { T_HTMLElementAttributes, T_ReactChildren, T_ReactElement } from "~/types";
 
 import Icon from "./Icon";
 import Link from "./Link";
 
-enum E_Size {
-  XS = "XS",
-  SM = "SM",
-  MD = "MD",
-  LG = "LG",
-  XL = "XL",
-}
+const VARIANTS_OPTIONS = ["UNSTYLED", "PRIMARY", "SECONDARY"] as const;
+const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
+type T_Variant = typeof VARIANTS_OPTIONS[number];
+const SIZES_OPTIONS = ["XS", "SM", "MD", "LG", "XL"] as const;
+const SIZES = mirror<T_Size>(SIZES_OPTIONS);
+type T_Size = typeof SIZES_OPTIONS[number];
 
-enum E_Variants {
-  "PRIMARY" = "PRIMARY", // For Markdown
-  "SECONDARY" = "SECONDARY", // Black/White
-  "UNSTYLED" = "UNSTYLED",
-}
-
-type T_TitleProps = {
-  children: T_ReactChildrenProp;
+export type T_TitleProps = {
+  children: T_ReactChildren;
   is: "h1" | "h2" | "h3" | "h4";
-  variant?: E_Variants;
-  size?: E_Size;
+  variant?: T_Variant;
+  size?: T_Size;
   showLinkIcon?: boolean;
 } & T_HTMLElementAttributes["h1"];
 
@@ -72,15 +66,17 @@ function Title(props: T_TitleProps): T_ReactElement {
 
         {children}
 
-        <style jsx>{`
-          :global(.dfr-Title--primary):hover :global(.dfr-Link) {
-            visibility: visible;
-          }
+        <style jsx>
+          {`
+            :global(.dfr-Title--primary):hover :global(.dfr-Link) {
+              visibility: visible;
+            }
 
-          :global(.dfr-Title--primary) {
-            scroll-margin-top: 20px;
-          }
-        `}</style>
+            :global(.dfr-Title--primary) {
+              scroll-margin-top: 20px;
+            }
+          `}
+        </style>
       </Tag>
     );
   }
@@ -96,8 +92,8 @@ function Title(props: T_TitleProps): T_ReactElement {
   );
 }
 
-Title.variant = E_Variants;
-Title.size = E_Size;
+Title.variant = VARIANTS;
+Title.size = SIZES;
 
 export default Title;
 
@@ -108,7 +104,7 @@ function useController({
   is: Tag,
   className = "",
   size = undefined,
-  variant = E_Variants.PRIMARY,
+  variant = VARIANTS.PRIMARY,
   showLinkIcon = false,
   id = "",
   ...rest
@@ -150,8 +146,7 @@ function useController({
     ...rest,
 
     // vars
-    id:
-      variant === E_Variants.PRIMARY && typeof children === "string" ? generateSlug(children) : id,
+    id: variant === VARIANTS.PRIMARY && typeof children === "string" ? generateSlug(children) : id,
     className: classNames(
       `dfr-Title dfr-Title--${variant.toLowerCase()}`,
       "tw-font-bold tw-font-sans",

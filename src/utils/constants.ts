@@ -1,3 +1,10 @@
+export const ENV_VARS = {
+  NEXT_PUBLIC_ASSETS_SERVER_URL: process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"] || "",
+  NEXT_PUBLIC_CRYPTO_KEY: process.env["NEXT_PUBLIC_CRYPTO_KEY"] || "",
+  NEXT_PUBLIC_WEBSITE_URL: process.env["NEXT_PUBLIC_WEBSITE_URL"] || "",
+  NEXT_PUBLIC_ISR_TOKEN: process.env["NEXT_PUBLIC_ISR_TOKEN"] || "",
+} as const;
+
 export const PERSONAL_PAGES = [
   // personal
   {
@@ -74,4 +81,4 @@ export const PERSONAL_PAGES = [
     componentName: "Styles",
     icon: "COLOR_SWATCH",
   },
-];
+] as const;

@@ -19,13 +19,15 @@ type T_StaticPath = { params: { slug: string }; locale: T_Locale };
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async function getStaticPaths() {
   return {
-    paths: (await BlogService.fetchPosts()).reduce((result: T_StaticPath[], post: T_BlogPost) => {
-      return result.concat(
-        post.locales.map((locale: T_Locale): T_StaticPath => {
-          return { params: { slug: post.slug }, locale };
-        }),
-      );
-    }, []),
+    paths: (await BlogService.fetchPosts()).reduce(
+      (result: T_StaticPath[], post: T_BlogPost) =>
+        result.concat(
+          post.locales.map(
+            (locale: T_Locale): T_StaticPath => ({ params: { slug: post.slug }, locale }),
+          ),
+        ),
+      [],
+    ),
     fallback: "blocking",
   };
 };
@@ -35,11 +37,9 @@ export const getStaticProps = getPageContentStaticProps<
   { slug: string }
 >({
   page: [ROUTES.BLOG, ROUTES.BLOG_DETAILS],
-  localesExtractor: (data) => {
-    return data.post.locales;
-  },
+  localesExtractor: (data) => data.post.locales,
   callback: async ({ params, locale }) => {
-    const post = await BlogService.fetchPost({ slug: params?.slug, locale: locale });
+    const post = await BlogService.fetchPost({ slug: params?.slug, locale });
     const file = (await dataLoader({
       path: `/pages/blog/[slug]/${locale}/${replaceAll(post.createdAt, "/", "-")}-${post.slug}.mdx`,
     })) as string;

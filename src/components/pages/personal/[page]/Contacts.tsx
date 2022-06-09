@@ -3,7 +3,7 @@ import * as React from "react";
 import { Page, MainLayout } from "~/components/layout";
 import { Button, Collapsible, Icon, InlineText, Link, List, Text } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
-import type { T_Object, T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 import { copyToClipboard, isMobile } from "~/utils/browser";
 import { formatPhoneNumber } from "~/utils/misc";
 import { generateSlug } from "~/utils/strings";
@@ -122,22 +122,20 @@ function ContactLinks({ contact }: { contact: T_Contact }) {
   return (
     <div className="root">
       {Array.isArray(contact.phone) ? (
-        contact.phone.map((item) => {
-          return (
-            <WhastAppButton
-              key={generateSlug(item.label)}
-              phone={item.value}
-            >
-              <Icon
-                icon={Icon.icon.WHATSAPP}
-                size={24}
-              />
-              <InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-green-500">
-                {item.label}
-              </InlineText>
-            </WhastAppButton>
-          );
-        })
+        contact.phone.map((item) => (
+          <WhastAppButton
+            key={generateSlug(item.label)}
+            phone={item.value}
+          >
+            <Icon
+              icon={Icon.icon.WHATSAPP}
+              size={24}
+            />
+            <InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-green-500">
+              {item.label}
+            </InlineText>
+          </WhastAppButton>
+        ))
       ) : contact.phone ? (
         <WhastAppButton phone={contact.phone}>
           <Icon
@@ -161,24 +159,22 @@ function ContactLinks({ contact }: { contact: T_Contact }) {
       ) : null}
 
       {Array.isArray(contact.phone) ? (
-        contact.phone.map((item) => {
-          return (
-            <PhoneButton
-              key={generateSlug(item.label)}
-              phone={item.value}
-              country={contact.country}
-            >
-              <Icon
-                icon={Icon.icon.PHONE}
-                size={22}
-                color="tw-text-blue-700"
-              />
-              <InlineText className="tw-mx-1 tw-text-sm tw-italic tw-text-blue-700">
-                {item.label}
-              </InlineText>
-            </PhoneButton>
-          );
-        })
+        contact.phone.map((item) => (
+          <PhoneButton
+            key={generateSlug(item.label)}
+            phone={item.value}
+            country={contact.country}
+          >
+            <Icon
+              icon={Icon.icon.PHONE}
+              size={22}
+              color="tw-text-blue-700"
+            />
+            <InlineText className="tw-mx-1 tw-text-sm tw-italic tw-text-blue-700">
+              {item.label}
+            </InlineText>
+          </PhoneButton>
+        ))
       ) : (
         <PhoneButton
           phone={contact.phone}
@@ -192,16 +188,18 @@ function ContactLinks({ contact }: { contact: T_Contact }) {
         </PhoneButton>
       )}
 
-      <style jsx>{`
-        .root > :global(*) {
-          @apply tw-mr-2;
-          display: inline-block;
-        }
+      <style jsx>
+        {`
+          .root > :global(*) {
+            @apply tw-mr-2;
+            display: inline-block;
+          }
 
-        .root > :global(*):last-child {
-          @apply tw-mr-0;
-        }
-      `}</style>
+          .root > :global(*):last-child {
+            @apply tw-mr-0;
+          }
+        `}
+      </style>
     </div>
   );
 }
@@ -255,9 +253,10 @@ function PhoneButton({ children, phone, country }) {
 function countContacts(contacts: T_Contacts) {
   if (Array.isArray(contacts)) return contacts.length;
 
-  return Object.values(contacts).reduce((result, contacts) => {
-    return result + (contacts.length as number);
-  }, 0);
+  return Object.values(contacts).reduce(
+    (result, contacts) => result + (contacts.length as number),
+    0,
+  );
 }
 
 // --- Types ---
@@ -268,7 +267,7 @@ type T_ContactsProps = {
   };
 };
 
-type T_Contacts = T_Object<T_Contact[] | T_Object<T_Contact[]>>;
+type T_Contacts = T_UnknownObject<T_Contact[] | T_UnknownObject<T_Contact[]>>;
 
 type T_Contact = {
   name: string;

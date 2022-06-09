@@ -11,7 +11,7 @@ export const getStaticProps = getPageContentStaticProps({
   page: ROUTES.RESUME,
   callback: async () => {
     const { data: resume } = await http.post(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
+      `${process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"]}/api/diegofrayo`,
       {
         path: "/assets",
         payload: "resume",

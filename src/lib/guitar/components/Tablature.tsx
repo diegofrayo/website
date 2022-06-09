@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Space, Block, Text, InlineText } from "~/components/primitive";
 import { AuthService } from "~/auth";
-import type { T_ReactChildrenProp, T_ReactElement } from "~/types";
+import type { T_ReactChildren, T_ReactElement } from "~/types";
 import { createArray } from "~/utils/misc";
 
 import GuitarFret from "./GuitarFret";
@@ -53,7 +53,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
     // props
     notes,
 
-    // states
+    // states & refs
     hasToRender,
 
     // vars
@@ -74,26 +74,22 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
                 typeof (position as I_SpacePosition).space === "number"
                   ? ((position as I_SpacePosition).space as number)
                   : 1,
-              ).map((space) => {
-                return (
-                  <Block
-                    key={`Tablature-position-${positionIndex}-${space}`}
-                    className="tw-ml-1"
-                  >
-                    {createArray(NUMBER_OF_STRINGS)
-                      .reverse()
-                      .map((guitarString) => {
-                        return (
-                          <Position
-                            key={`Position-${positionIndex}-${space}-${guitarString}`}
-                            isSeparator={(position as I_SpacePosition).space === "x"}
-                            isCell
-                          />
-                        );
-                      })}
-                  </Block>
-                );
-              });
+              ).map((space) => (
+                <Block
+                  key={`Tablature-position-${positionIndex}-${space}`}
+                  className="tw-ml-1"
+                >
+                  {createArray(NUMBER_OF_STRINGS)
+                    .reverse()
+                    .map((guitarString) => (
+                      <Position
+                        key={`Position-${positionIndex}-${space}-${guitarString}`}
+                        isSeparator={(position as I_SpacePosition).space === "x"}
+                        isCell
+                      />
+                    ))}
+                </Block>
+              ));
             }
 
             return (
@@ -185,9 +181,7 @@ function useController({ positions, notes, authRequired }: T_TablatureProps): Pi
   function getPositions(positions: T_TablatureProps["positions"]): (T_Position | T_Position[])[] {
     return (positions || []).map((position) => {
       if (Array.isArray(position)) {
-        return position.map((position) => {
-          return validAndParsePosition(position);
-        });
+        return position.map((position) => validAndParsePosition(position));
       }
 
       return validAndParsePosition(position);
@@ -227,7 +221,7 @@ function useController({ positions, notes, authRequired }: T_TablatureProps): Pi
     // props
     notes,
 
-    // states
+    // states & refs
     hasToRender,
 
     // vars
@@ -249,7 +243,7 @@ function Position({
   isCell = false,
   isSeparator = false,
 }: {
-  children?: T_ReactChildrenProp;
+  children?: T_ReactChildren;
   isCell?: boolean;
   isSeparator?: boolean;
 }): T_ReactElement {
@@ -263,31 +257,33 @@ function Position({
     >
       {!isCell && <InlineText>{children || "0"}</InlineText>}
 
-      <style jsx>{`
-        :global(.dfr-Tablature-Position--cell::before) {
-          background-color: black;
-          content: "";
-          display: inline-block;
-          height: 1px;
-          left: 0;
-          max-width: 100%;
-          position: absolute;
-          top: 10px;
-          width: 100%;
-        }
+      <style jsx>
+        {`
+          :global(.dfr-Tablature-Position--cell::before) {
+            background-color: black;
+            content: "";
+            display: inline-block;
+            height: 1px;
+            left: 0;
+            max-width: 100%;
+            position: absolute;
+            top: 10px;
+            width: 100%;
+          }
 
-        :global(.dfr-Tablature-Position--separator::before) {
-          height: 100%;
-          left: 8px;
-          max-height: 100%;
-          top: 0;
-          width: 1px;
-        }
+          :global(.dfr-Tablature-Position--separator::before) {
+            height: 100%;
+            left: 8px;
+            max-height: 100%;
+            top: 0;
+            width: 1px;
+          }
 
-        :global(.tw-dark) :global(.dfr-Tablature-Position--cell::before) {
-          background-color: white;
-        }
-      `}</style>
+          :global(.tw-dark) :global(.dfr-Tablature-Position--cell::before) {
+            background-color: white;
+          }
+        `}
+      </style>
     </Block>
   );
 }

@@ -15,7 +15,7 @@ export default Styles;
 
 // --- Components ---
 
-const Content = withSafeRenderingComponent(function Content() {
+const Content = withSafeRenderingComponent(() => {
   const { theme } = useTheme();
 
   const STYLES = {

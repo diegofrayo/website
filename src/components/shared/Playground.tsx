@@ -22,32 +22,30 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
     code,
     language,
 
-    // states
+    // states & refs
     contentRef,
-    setSourceCodeTab,
-    setOutputTab,
 
     // vars
     isSourceCodeTabSelected,
     isOutputTabSelected,
+
+    // handlers
+    handleTabClick,
   } = useController(props);
 
   return (
-    <Block
-      className="dfr-Playground tw-flex tw-flex-col tw-border-4 tw-border-black dfr-bg-color-light-strong dark:tw-border-white"
-      style={{ minHeight: 200 }}
+    <div
+      className="dfr-Playground root tw-flex tw-flex-col tw-border-4 tw-border-black dfr-bg-color-light-strong dark:tw-border-white"
       data-markdown-block
     >
       <Block
-        className="tw-flex-1 tw-overflow-auto tw-p-0.5"
-        style={{ maxHeight: 300 }}
+        className="tab-content-container tw-flex-1 tw-overflow-auto tw-p-0.5"
         ref={contentRef}
       >
         {isSourceCodeTabSelected ? (
           <SourceCode
             language={language}
             code={code}
-            showOnlySourceCode
           />
         ) : (
           <Component />
@@ -61,7 +59,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
             isSourceCodeTabSelected &&
               "tw-bg-black tw-font-bold tw-text-white hover:tw-opacity-100 dark:tw-bg-white dark:tw-text-black",
           )}
-          onClick={setSourceCodeTab}
+          onClick={handleTabClick(0)}
         >
           Source code
         </Button>
@@ -72,19 +70,29 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
             isOutputTabSelected &&
               "tw-bg-black tw-font-bold tw-text-white hover:tw-opacity-100 dark:tw-bg-white dark:tw-text-black",
           )}
-          onClick={setOutputTab}
+          onClick={handleTabClick(1)}
         >
           Output
         </Button>
       </Block>
 
-      <style jsx>{`
-        :global(.dfr-Playground) :global(.dfr-Code) {
-          box-shadow: none;
-          margin: 0;
-        }
-      `}</style>
-    </Block>
+      <style jsx>
+        {`
+          .root {
+            min-height: 200px;
+          }
+
+          .root :global(.tab-content-container) {
+            max-height: 300px;
+          }
+
+          .root :global(.dfr-Code) {
+            box-shadow: none;
+            margin: 0;
+          }
+        `}
+      </style>
+    </div>
   );
 }
 
@@ -92,43 +100,41 @@ export default Playground;
 
 // --- Controller ---
 
-function useController(props: T_PlaygroundProps): T_PlaygroundProps & {
+type T_UseControllerReturn = T_PlaygroundProps & {
   isSourceCodeTabSelected: boolean;
   isOutputTabSelected: boolean;
-  setSourceCodeTab: () => void;
-  setOutputTab: () => void;
+  handleTabClick: (index: 0 | 1) => () => void;
   contentRef: T_ReactRefObject<HTMLDivElement>;
-} {
+};
+
+function useController(props: T_PlaygroundProps): T_UseControllerReturn {
+  // states & refs
   const [tab, setTab] = React.useState(0);
   const contentRef = React.useRef<HTMLDivElement>(null);
 
-  function setSourceCodeTab() {
-    setTab(0);
+  // handlers
+  const handleTabClick: T_UseControllerReturn["handleTabClick"] = function handleTabClick(index) {
+    return () => {
+      setTab(index);
 
-    if (contentRef.current) {
-      contentRef.current.scrollTop = 0;
-    }
-  }
-
-  function setOutputTab() {
-    setTab(1);
-
-    if (contentRef.current) {
-      contentRef.current.scrollTop = 0;
-    }
-  }
+      if (contentRef.current) {
+        contentRef.current.scrollTop = 0;
+      }
+    };
+  };
 
   return {
     // props
     ...props,
 
-    // states
+    // states & refs
     contentRef,
-    setSourceCodeTab,
-    setOutputTab,
 
     // vars
     isSourceCodeTabSelected: tab === 0,
     isOutputTabSelected: tab === 1,
+
+    // handlers
+    handleTabClick,
   };
 }

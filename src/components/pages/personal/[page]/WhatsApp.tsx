@@ -9,7 +9,7 @@ import { generateSlug, replaceAll } from "~/utils/strings";
 
 function WhatsApp(): T_ReactElement {
   const {
-    // states
+    // states & refs
     phone,
     inputRef,
     isInvalidPhone,
@@ -129,7 +129,7 @@ function useController(): {
   }
 
   function onChange(e) {
-    const value = e.currentTarget.value;
+    const { value } = e.currentTarget;
     setPhone((value.includes("+") ? "+" : "") + replaceAll(generateSlug(value), "-", ""));
   }
 
@@ -146,7 +146,7 @@ function useController(): {
   }
 
   return {
-    // states
+    // states & refs
     phone,
     inputRef,
     isInvalidPhone,

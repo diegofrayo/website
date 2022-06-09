@@ -9,7 +9,7 @@ export default ContactsPage;
 export const getStaticProps = getPageContentStaticProps({
   callback: async () => {
     const { data: contacts } = await http.post(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
+      `${process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"]}/api/diegofrayo`,
       {
         path: "/assets",
         payload: "contacts",

@@ -17,12 +17,12 @@ export default function RoutineItem({
   highTime,
   restTime,
 }: T_RoutineItem): T_ReactElement {
-  // states
+  // states & refs
   const [isTitleTruncated, setIsTitleTruncated] = React.useState(true);
 
   // context
   const {
-    // states
+    // states & refs
     currentRoutine,
 
     // utils
@@ -86,7 +86,7 @@ export default function RoutineItem({
           </Block>
         )}
         {restTime && (
-          <React.Fragment>
+          <>
             <Space size={0.5} />
             <Block className="tw-flex tw-items-center tw-justify-between">
               <InlineText className="tw-text-sm">Tiempo de descanso</InlineText>
@@ -101,7 +101,7 @@ export default function RoutineItem({
                 {secondsToTime(calculateRoutineItemTotalTime(sets, highTime, restTime))}
               </InlineText>
             </Block>
-          </React.Fragment>
+          </>
         )}
         <Space size={1} />
         <Block className="tw-flex tw-items-center tw-justify-between">

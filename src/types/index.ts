@@ -1,26 +1,34 @@
-import React, { CSSProperties, Dispatch, EffectCallback, RefObject, SetStateAction } from "react";
+import * as React from "react";
 
-// --- Own ---
+// --- Data types ---
 
-export type T_Primitive = string | number | boolean | undefined | null;
+export type T_UnknownObject = Record<string | number | symbol, unknown>;
 
-export type T_Object<Value = any> = Record<string, Value>;
+export type T_StringsObject = Record<string | number | symbol, string>;
 
-export type T_ReactChildrenProp = React.ReactNode;
+export type T_Object<Type = unknown> = Record<string | number | symbol, Type>;
 
-export type T_ReactStylesProp = CSSProperties;
+// --- React types ---
 
-export type T_ReactElement = JSX.Element | null;
+export type T_ReactChildren = React.ReactNode;
 
-export type T_ReactFunctionComponent<Props = T_Object> = React.FunctionComponent<Props>;
+export type T_ReactStylesProp = React.CSSProperties;
 
-export type T_ReactRefObject<RefType> = RefObject<RefType>;
+export type T_ReactNode = React.ReactNode;
+
+export type T_ReactElement = JSX.Element;
+
+export type T_ReactElementNullable = JSX.Element | null;
+
+export type T_ReactFunctionComponent<Props = T_UnknownObject> = React.FunctionComponent<Props>;
+
+export type T_ReactRefObject<RefType> = React.RefObject<RefType>;
 
 export type T_ReactForwardedRef = React.ForwardedRef<unknown>;
 
-export type T_ReactEffectCallback = EffectCallback;
+export type T_ReactEffectCallback = React.EffectCallback;
 
-export type T_ReactSetState<T_State> = Dispatch<SetStateAction<T_State>>;
+export type T_ReactSetState<T_State> = React.Dispatch<React.SetStateAction<T_State>>;
 
 export type T_HTMLElementAttributes = JSX.IntrinsicElements;
 
@@ -32,23 +40,29 @@ export type T_OnScrollEvent = React.UIEvent<HTMLElement>;
 
 export type T_FormEvent<HTMLElement> = React.FormEvent<HTMLElement>;
 
+// --- JS ---
+
+export type T_SetTimeout = NodeJS.Timeout;
+
 // --- i18n ---
 
+export type T_TranslationFunction = (key: string) => string;
+
 export type T_PageContent = {
-  seo?: T_Object<T_Primitive>;
-  page?: T_Object<any> & {
-    common?: T_Object<T_Primitive>;
-    config?: T_Object<any>;
+  seo?: T_UnknownObject;
+  page?: T_UnknownObject & {
+    common?: T_UnknownObject;
+    config?: T_UnknownObject;
   };
   layout?: {
-    header?: T_Object<T_Primitive>;
-    footer?: T_Object<T_Primitive>;
+    header?: T_UnknownObject;
+    footer?: T_UnknownObject;
   };
 };
 
 export type T_Locale = "en";
 
-export type T_PageRoute =
+export type T_RoutesValues =
   | "/"
   | "/about-me"
   | "/resume"
@@ -86,7 +100,7 @@ export type T_BlogPost = {
   publishedAt: string;
   updatedAt: string;
   isPublished: boolean;
-  assets?: T_Object<string>;
+  assets?: T_UnknownObject;
 };
 
 // --- Music ---
@@ -149,7 +163,7 @@ export type T_Book = {
 
 // --- Redux ---
 
-export type T_Store = T_Object;
+export type T_Store = T_UnknownObject;
 
 export type T_Metadata = {
   website: T_WebsiteMetadata;
@@ -197,7 +211,7 @@ export type T_CodeProps = {
   code: string;
   fileName?: string;
   sourceURL?: string;
-  showOnlySourceCode?: boolean;
+  displaySourceCodeDetails?: boolean;
 };
 
 export enum E_Icons {

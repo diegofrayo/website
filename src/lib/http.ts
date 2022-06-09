@@ -5,13 +5,13 @@ export default axios;
 /*
 import axios from "axios";
 
-import { T_Object } from "~/types";
+import { T_UnknownObject } from "~/types";
 
 export default {
   ...axios,
   post: function post(
     url: string,
-    body: T_Object,
+    body: T_UnknownObject,
     config = { timeout: 5000 },
   ): Promise<{ data: any }> {
     let controller: AbortController | null = new AbortController();

@@ -25,7 +25,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
     song,
     songMDXContent,
 
-    // states
+    // states & refs
     fontSize,
 
     // handlers
@@ -159,12 +159,9 @@ function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps,
     setFontSize(getFontSize());
   });
 
-  React.useEffect(
-    function updateFontSizeOnLocalStorage() {
-      window.localStorage.setItem("DFR_MUSIC_FONT_SIZE", `${fontSize}`);
-    },
-    [fontSize],
-  );
+  React.useEffect(() => {
+    window.localStorage.setItem("DFR_MUSIC_FONT_SIZE", `${fontSize}`);
+  }, [fontSize]);
 
   function getFontSize(): number {
     const INITIAL_VALUE = 0.8;
@@ -190,7 +187,7 @@ function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps,
     song,
     songMDXContent,
 
-    // states
+    // states & refs
     fontSize,
 
     // handlers

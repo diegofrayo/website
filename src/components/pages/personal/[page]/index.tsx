@@ -7,12 +7,10 @@ import type { T_ReactElement } from "~/types";
 import { PERSONAL_PAGES } from "~/utils/constants";
 
 const PERSONAL_PAGES_COMPONENTS = PERSONAL_PAGES.filter((page) => page.componentName !== "").map(
-  (page) => {
-    return {
-      ...page,
-      Component: dynamic(() => import(`./${page.componentName}`)),
-    };
-  },
+  (page) => ({
+    ...page,
+    Component: dynamic(() => import(`./${page.componentName}`)),
+  }),
 );
 
 function PersonalPage(props: T_PageProps): T_ReactElement {
@@ -25,7 +23,7 @@ function PersonalPage(props: T_PageProps): T_ReactElement {
   return (
     <Page
       config={{
-        title: title,
+        title,
         disableSEO: true,
       }}
     >

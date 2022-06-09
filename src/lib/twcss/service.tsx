@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import type {
-  T_Object,
-  T_ReactChildrenProp,
+  T_UnknownObject,
+  T_ReactChildren,
   T_ReactElement,
   T_ReactForwardedRef,
   T_ReactFunctionComponent,
@@ -10,42 +10,47 @@ import type {
 
 type T_StylesParam = { __base: string; initial: string } | string[] | string;
 type T_TWCSS_ComponentProps = {
-  children?: T_ReactChildrenProp;
+  children?: T_ReactChildren;
   className?: string;
   is: string | T_ReactFunctionComponent;
-  twcssVariant: string | T_Object<boolean> | undefined;
+  twcssVariant: string | T_UnknownObject<boolean> | undefined;
 };
 
 function twcssCreator(
   Tag: string | T_ReactFunctionComponent,
-): (styles: T_StylesParam, staticProps: T_Object) => T_ReactFunctionComponent {
-  return function (styles: T_StylesParam, staticProps: T_Object = {}): T_ReactFunctionComponent {
-    return React.forwardRef(function TWCSS_Component(
-      { children, className = "", is, twcssVariant, ...rest }: T_TWCSS_ComponentProps,
-      ref,
-    ): T_ReactElement {
-      const Element = (is || Tag) as T_ReactFunctionComponent<{
-        className: string;
-        ref: T_ReactForwardedRef;
-      }>;
-      const finalClassName = generateClassName(
-        styles,
-        className,
-        twcssVariant || staticProps.twcssVariant,
-        rest,
-      );
+): (styles: T_StylesParam, staticProps: T_UnknownObject) => T_ReactFunctionComponent {
+  return function (
+    styles: T_StylesParam,
+    staticProps: T_UnknownObject = {},
+  ): T_ReactFunctionComponent {
+    return React.forwardRef(
+      (
+        { children, className = "", is, twcssVariant, ...rest }: T_TWCSS_ComponentProps,
+        ref,
+      ): T_ReactElement => {
+        const Element = (is || Tag) as T_ReactFunctionComponent<{
+          className: string;
+          ref: T_ReactForwardedRef;
+        }>;
+        const finalClassName = generateClassName(
+          styles,
+          className,
+          twcssVariant || staticProps.twcssVariant,
+          rest,
+        );
 
-      return (
-        <Element
-          className={finalClassName}
-          ref={ref}
-          {...staticProps}
-          {...rest}
-        >
-          {children}
-        </Element>
-      );
-    });
+        return (
+          <Element
+            className={finalClassName}
+            ref={ref}
+            {...staticProps}
+            {...rest}
+          >
+            {children}
+          </Element>
+        );
+      },
+    );
   };
 }
 
@@ -72,7 +77,7 @@ function generateClassName(
       const twVariantStyles = Object.keys(twVariant)
         .reduce((result: string, curr: string) => {
           if (twVariant[curr] === true && styles[curr]) {
-            return result + styles[curr] + " ";
+            return `${result + styles[curr]} `;
           }
 
           return result;

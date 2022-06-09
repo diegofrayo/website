@@ -5,9 +5,9 @@ import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/util
 class TimelineService {
   async fetchData(): Promise<T_Timeline> {
     const { categories, items } = (
-      await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
+      await http.post(`${process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"]}/api/diegofrayo`, {
         path: "/assets",
-        payload: `pages/personal/[page]/timeline/data.json`,
+        payload: "pages/personal/[page]/timeline/data.json",
       })
     ).data;
 
@@ -15,17 +15,16 @@ class TimelineService {
       categories,
       items: Object.values(
         items
-          .map((item) => {
-            return transformObjectKeysFromSnakeCaseToLowerCamelCase({
-              ...item,
-              categories: item.categories
-                .map((category) => {
-                  return categories.find((item) => item.id === category);
-                })
-                .filter(Boolean)
-                .sort(sortBy([{ param: "value", order: "asc" }])),
-            }) as T_Timeline;
-          })
+          .map(
+            (item) =>
+              transformObjectKeysFromSnakeCaseToLowerCamelCase({
+                ...item,
+                categories: item.categories
+                  .map((category) => categories.find((item) => item.id === category))
+                  .filter(Boolean)
+                  .sort(sortBy([{ param: "value", order: "asc" }])),
+              }) as T_Timeline,
+          )
           .reduce((result, item) => {
             const year = item.startDate.split("/")[0];
 

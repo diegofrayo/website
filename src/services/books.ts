@@ -6,10 +6,10 @@ import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/util
 class BooksService {
   async fetchBooks(): Promise<T_Book[]> {
     const { data } = await http.post(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
+      `${process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"]}/api/diegofrayo`,
       {
         path: "/assets",
-        payload: `pages/personal/[page]/books/data.json`,
+        payload: "pages/personal/[page]/books/data.json",
       },
     );
 
@@ -22,9 +22,9 @@ class BooksService {
           { param: "title", order: "asc" },
         ]),
       )
-      .filter((book) => {
-        return book.isPublic || (!book.isPublic && AuthService.isUserLoggedIn());
-      }) as T_Book[];
+      .filter(
+        (book) => book.isPublic || (!book.isPublic && AuthService.isUserLoggedIn()),
+      ) as T_Book[];
   }
 }
 

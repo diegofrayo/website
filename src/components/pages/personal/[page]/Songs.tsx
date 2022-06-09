@@ -31,38 +31,32 @@ function SongsPage(): T_ReactElement {
       isLoading={isLoading}
       error={error}
     >
-      {(data: T_Data) => {
-        return (
-          <Block>
-            {Object.entries(data).map(([songKey, songData]) => {
-              return (
+      {(data: T_Data) => (
+        <Block>
+          {Object.entries(data).map(([songKey, songData]) => (
+            <Block
+              key={songKey}
+              className="tw-mb-16"
+            >
+              {songData.lyrics.map((lyric, index) => (
                 <Block
-                  key={songKey}
-                  className="tw-mb-16"
+                  key={`${songKey}-${index}`}
+                  className={classNames("tw-mb-2", getAlignStyles())}
                 >
-                  {songData.lyrics.map((lyric, index) => {
-                    return (
-                      <Block
-                        key={`${songKey}-${index}`}
-                        className={classNames("tw-mb-2", getAlignStyles())}
-                      >
-                        <InlineText
-                          className={classNames(
-                            "tw-mr-2 tw-border-b tw-leading-relaxed dfr-border-color-dark-strong dark:dfr-border-color-light-strong",
-                            getItemStyles(),
-                          )}
-                        >
-                          {lyric.text}
-                        </InlineText>
-                      </Block>
-                    );
-                  })}
+                  <InlineText
+                    className={classNames(
+                      "tw-mr-2 tw-border-b tw-leading-relaxed dfr-border-color-dark-strong dark:dfr-border-color-light-strong",
+                      getItemStyles(),
+                    )}
+                  >
+                    {lyric.text}
+                  </InlineText>
                 </Block>
-              );
-            })}
-          </Block>
-        );
-      }}
+              ))}
+            </Block>
+          ))}
+        </Block>
+      )}
     </Render>
   );
 }
@@ -74,10 +68,10 @@ export default SongsPage;
 function useController(): T_UseController {
   const { isLoading, error, data } = useQuery<T_Data>("songs", async () => {
     const { data } = await http.post(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
+      `${process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"]}/api/diegofrayo`,
       {
         path: "/assets",
-        payload: `pages/personal/[page]/songs/data.json`,
+        payload: "pages/personal/[page]/songs/data.json",
       },
     );
 

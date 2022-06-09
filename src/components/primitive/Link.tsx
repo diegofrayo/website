@@ -3,7 +3,7 @@ import classNames from "classnames";
 import NextLink from "next/link";
 
 import twcss from "~/lib/twcss";
-import type { T_Locale, T_ReactElement, T_HTMLElementAttributes } from "~/types";
+import type { T_Locale, T_HTMLElementAttributes, T_ReactElementNullable } from "~/types";
 import { mirror } from "~/utils/misc";
 
 const VARIANTS_OPTIONS = ["UNSTYLED", "SIMPLE", "PRIMARY", "SECONDARY"] as const;
@@ -16,7 +16,7 @@ type T_LinkProps = T_HTMLElementAttributes["a"] & {
   locale?: T_Locale;
 };
 
-function Link(props: T_LinkProps): T_ReactElement {
+function Link(props: T_LinkProps): T_ReactElementNullable {
   const {
     // utils
     composeLinkAttributes,

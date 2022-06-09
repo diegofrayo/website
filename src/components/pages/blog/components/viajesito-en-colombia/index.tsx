@@ -95,42 +95,44 @@ function Gallery({ variant, data, toggleIsModalVisible, setSharedIndex, initialS
             setActiveIndex(this.activeIndex + 1);
           }}
         >
-          {data.assets.map((asset, index) => {
-            return (
-              <SwiperSlide key={asset.id}>
-                <SlideContent
-                  {...asset}
-                  index={index}
-                />
-              </SwiperSlide>
-            );
-          })}
+          {data.assets.map((asset, index) => (
+            <SwiperSlide key={asset.id}>
+              <SlideContent
+                {...asset}
+                index={index}
+              />
+            </SwiperSlide>
+          ))}
           <Navigation
             activeIndex={activeIndex}
             totalElements={data.assets.length}
           />
         </Swiper>
 
-        <style jsx>{`
-          .root :global(.swiper) {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            justify-content: space-between;
-          }
+        <style jsx>
+          {`
+            .root :global(.swiper) {
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              justify-content: space-between;
+            }
 
-          .root :global(.swiper-wrapper) {
-            display: flex;
-            height: auto;
-            margin: auto;
-          }
-        `}</style>
+            .root :global(.swiper-wrapper) {
+              display: flex;
+              height: auto;
+              margin: auto;
+            }
+          `}
+        </style>
 
-        <style jsx>{`
-          .root :global(.swiper-wrapper) {
-            align-items: ${isFullscreenVariant ? "center" : "flex-start"};
-          }
-        `}</style>
+        <style jsx>
+          {`
+            .root :global(.swiper-wrapper) {
+              align-items: ${isFullscreenVariant ? "center" : "flex-start"};
+            }
+          `}
+        </style>
       </div>
     </Context.Provider>
   );
@@ -252,25 +254,29 @@ function SlideContent({ src, caption, type, isLandscape, index }) {
         {caption}
       </Text>
 
-      <style jsx>{`
-        .root :global(.media-container) {
-          height: 213px;
-        }
+      <style jsx>
+        {`
+          .root :global(.media-container) {
+            height: 213px;
+          }
 
-        .root :global(.media-container--fullscreen) {
-          height: auto;
-        }
-      `}</style>
+          .root :global(.media-container--fullscreen) {
+            height: auto;
+          }
+        `}
+      </style>
 
-      <style jsx>{`
-        .root :global(.media-container--fullscreen) > :global(img) {
-          max-height: ${photosHeight}px;
-        }
+      <style jsx>
+        {`
+          .root :global(.media-container--fullscreen) > :global(img) {
+            max-height: ${photosHeight}px;
+          }
 
-        .root :global(.media-container--fullscreen) > :global(iframe) {
-          height: ${photosHeight}px;
-        }
-      `}</style>
+          .root :global(.media-container--fullscreen) > :global(iframe) {
+            height: ${photosHeight}px;
+          }
+        `}
+      </style>
     </div>
   );
 }

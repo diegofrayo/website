@@ -2,7 +2,9 @@ import * as React from "react";
 
 import Link from "~/components/primitive/Link";
 
-const Story = (props) => <Link {...props} />;
+function Story(props) {
+  return <Link {...props} />;
+}
 
 export default {
   title: "primitive/Link",

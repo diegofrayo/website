@@ -1,14 +1,11 @@
 import * as React from "react";
 
 function useDocumentTitle(title?: string): void {
-  React.useEffect(
-    function changeDocumentTitle() {
-      if (!title) return;
+  React.useEffect(() => {
+    if (!title) return;
 
-      document.title = title;
-    },
-    [title],
-  );
+    document.title = title;
+  }, [title]);
 }
 
 export default useDocumentTitle;

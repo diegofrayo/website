@@ -6,10 +6,10 @@ import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/util
 class FilmsService {
   async fetchFilms(): Promise<T_Film[]> {
     const { data } = await http.post(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
+      `${process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"]}/api/diegofrayo`,
       {
         path: "/assets",
-        payload: `pages/personal/[page]/films/data.json`,
+        payload: "pages/personal/[page]/films/data.json",
       },
     );
 
@@ -22,9 +22,9 @@ class FilmsService {
           { param: "title", order: "asc" },
         ]),
       )
-      .filter((film) => {
-        return film.isPublic || (!film.isPublic && AuthService.isUserLoggedIn());
-      }) as T_Film[];
+      .filter(
+        (film) => film.isPublic || (!film.isPublic && AuthService.isUserLoggedIn()),
+      ) as T_Film[];
   }
 }
 

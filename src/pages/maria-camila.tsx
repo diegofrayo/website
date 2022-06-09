@@ -67,11 +67,13 @@ function MariaCamila(): T_ReactElement {
         />
       </Block>
 
-      <style jsx>{`
-        :global(body) {
-          @apply tw-bg-yellow-100;
-        }
-      `}</style>
+      <style jsx>
+        {`
+          :global(body) {
+            @apply tw-bg-yellow-100;
+          }
+        `}
+      </style>
     </Block>
   );
 }

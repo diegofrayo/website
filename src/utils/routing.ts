@@ -1,10 +1,28 @@
 import { NextRouter } from "next/router";
-import type { T_PageRoute } from "~/types";
+
+import type { T_RoutesValues } from "~/types";
+
 import { isPWA } from "./browser";
 
 // --- Constants ---
 
-export const ROUTES: Record<T_RoutesKeys, T_PageRoute> = {
+type T_RoutesKeys =
+  | "HOME"
+  | "BOOKMARKS"
+  | "ABOUT_ME"
+  | "RESUME"
+  | "BLOG"
+  | "BLOG_DETAILS"
+  | "MUSIC"
+  | "MUSIC_DETAILS"
+  | "PERSONAL"
+  | "TIMER"
+  | "SIGN_IN"
+  | "SIGN_OUT"
+  | "ERROR_404"
+  | "ERROR_500";
+
+export const ROUTES: Readonly<Record<T_RoutesKeys, T_RoutesValues>> = {
   HOME: "/",
   ABOUT_ME: "/about-me",
   RESUME: "/resume",
@@ -33,19 +51,19 @@ export function redirect(path: string): void {
   window.location.href = path;
 }
 
-export function initPWARoutingConfig(router: NextRouter): any {
-  if (!window.navigator.onLine) return;
+export function initPWARoutingConfig(router: NextRouter): () => void {
+  if (!window.navigator.onLine) return () => undefined;
 
   const lastPageVisited = window.localStorage.getItem(LOCAL_STORAGE_KEY) || "";
-  const handleRouteChangeComplete = () => {
-    window.localStorage.setItem(LOCAL_STORAGE_KEY, window.location.pathname);
-  };
-
   if (lastPageVisited && lastPageVisited !== window.location.pathname) {
     window.localStorage.removeItem(LOCAL_STORAGE_KEY);
     window.location.href = lastPageVisited;
-    return;
+    return () => undefined;
   }
+
+  const handleRouteChangeComplete = function handleRouteChangeComplete(): void {
+    window.localStorage.setItem(LOCAL_STORAGE_KEY, window.location.pathname);
+  };
 
   router.events.on("routeChangeComplete", handleRouteChangeComplete);
 
@@ -57,23 +75,5 @@ export function initPWARoutingConfig(router: NextRouter): any {
 export function goBack(): void {
   const urlItems = window.location.pathname.split("/");
 
-  redirect(urlItems.slice(0, urlItems.length - 1).join("/") + "/");
+  redirect(`${urlItems.slice(0, urlItems.length - 1).join("/")}/`);
 }
-
-// --- Types ---
-
-type T_RoutesKeys =
-  | "HOME"
-  | "BOOKMARKS"
-  | "ABOUT_ME"
-  | "RESUME"
-  | "BLOG"
-  | "BLOG_DETAILS"
-  | "MUSIC"
-  | "MUSIC_DETAILS"
-  | "PERSONAL"
-  | "TIMER"
-  | "SIGN_IN"
-  | "SIGN_OUT"
-  | "ERROR_404"
-  | "ERROR_500";

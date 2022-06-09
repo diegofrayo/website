@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Block, Icon, InlineText } from "~/components/primitive";
 import twcss from "~/lib/twcss";
-import type { T_ReactElement } from "~/types";
+import type { T_ReactElement, T_ReactElementNullable } from "~/types";
 import { createArray, mirror } from "~/utils/misc";
 
 import { NUMBER_OF_STRINGS } from "../constants";
@@ -54,10 +54,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
       )}
     >
       {!isStringsNamesVariant && (
-        <Block
-          className="tw-flex tw-h-6 tw-text-base tw-font-bold"
-          align="CENTER"
-        >
+        <Block className="tw-flex tw-h-6 tw-items-center tw-justify-center tw-text-base tw-font-bold">
           {number}
         </Block>
       )}
@@ -120,24 +117,21 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                     {getSkippedStringValue(playedStrings, guitarString)}
                   </InlineText>
                 ) : isBarreMusicNote ? (
-                  <React.Fragment>
+                  <>
                     <String />
                     {(musicNote as I_BarreMusicNote)?.barre >= guitarString && (
                       <InlineText className="tw-h-full tw-border-4 tw-border-white" />
                     )}
                     <String />
-                  </React.Fragment>
+                  </>
                 ) : musicNote ? (
-                  <React.Fragment>
+                  <>
                     <String />
-                    <Block
-                      className="tw-inline-flex tw-h-5 tw-w-5 tw-rounded-full tw-border tw-bg-white tw-font-bold tw-leading-0 tw-text-black"
-                      align="CENTER"
-                    >
+                    <Block className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-bg-white tw-font-bold tw-leading-0 tw-text-black">
                       {(musicNote as I_SimpleMusicNote).finger}
                     </Block>
                     <String />
-                  </React.Fragment>
+                  </>
                 ) : (
                   <String />
                 )}
@@ -165,8 +159,10 @@ function useController({ variant, ...rest }: T_GuitarFretProps) {
   function getSkippedStringValue(
     playedStrings: T_GuitarFretProps["playedStrings"],
     guitarString: number,
-  ): T_ReactElement {
-    if (!playedStrings) return null;
+  ): T_ReactElementNullable {
+    if (!playedStrings) {
+      return null;
+    }
 
     const playedString = playedStrings[guitarString - 1];
 

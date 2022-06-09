@@ -16,6 +16,7 @@ import type {
   T_ReactElement,
   T_PageContent,
   T_WebsiteMetadata,
+  T_OnClickEvent,
 } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 import { getDifferenceBetweenDates } from "~/utils/dates";
@@ -88,13 +89,9 @@ function BlogPostDetails({
   const { t } = useTranslation();
 
   return (
-    <Block
-      className="tw-flex-col sm:tw-flex-row"
-      display="tw-flex"
-      align="CENTER"
-    >
+    <Block className="tw-flex tw-flex-col tw-items-center tw-justify-center sm:tw-flex-row">
       {isPublished ? (
-        <React.Fragment>
+        <>
           <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
             <BlogPostDetailsItem.Icon
               icon={Icon.icon.CALENDAR}
@@ -106,7 +103,7 @@ function BlogPostDetails({
             </Text>
           </BlogPostDetailsItem>
           <Space responsive="tw-my-1 tw-block sm:tw-my-0 sm:tw-mx-4 sm:tw-inline-block" />
-        </React.Fragment>
+        </>
       ) : null}
       <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
         <BlogPostDetailsItem.Icon
@@ -131,7 +128,9 @@ function BlogPostActions(): T_ReactElement {
       variant="FEATURED"
       className="tw-flex tw-flex-wrap tw-justify-between"
     >
-      <BlogPostDetailsItem onClick={(e) => copyToClipboard(e, window.location.href)}>
+      <BlogPostDetailsItem
+        onClick={(e: T_OnClickEvent) => copyToClipboard(e, window.location.href)}
+      >
         <BlogPostDetailsItem.Icon icon={Icon.icon.LINK} />
         <InlineText>{t("page:copy_url_to_clipboard")}</InlineText>
       </BlogPostDetailsItem>

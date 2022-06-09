@@ -42,29 +42,27 @@ function PagesList({
 }): T_ReactElement {
   return (
     <List variant={List.variant.UNSTYLED}>
-      {pages.map((page) => {
-        return (
-          <List.Item key={page.slug}>
-            <Link
-              variant={Link.variant.SECONDARY}
-              href={`${ROUTES.PERSONAL}/${page.slug}`}
-              className="tw-my-2 tw-flex tw-h-20 tw-items-center tw-justify-between tw-border tw-border-dotted tw-p-2 dfr-border-color-primary"
-            >
-              <Icon
-                icon={Icon.icon[page.icon]}
-                size={32}
-              />
-              <InlineText className="tw-mx-2 tw-flex-1 tw-truncate tw-text-center">
-                {page.title}
-              </InlineText>
-              <Icon
-                icon={Icon.icon[page.icon]}
-                size={32}
-              />
-            </Link>
-          </List.Item>
-        );
-      })}
+      {pages.map((page) => (
+        <List.Item key={page.slug}>
+          <Link
+            variant={Link.variant.SECONDARY}
+            href={`${ROUTES.PERSONAL}/${page.slug}`}
+            className="tw-my-2 tw-flex tw-h-20 tw-items-center tw-justify-between tw-border tw-border-dotted tw-p-2 dfr-border-color-primary"
+          >
+            <Icon
+              icon={Icon.icon[page.icon]}
+              size={32}
+            />
+            <InlineText className="tw-mx-2 tw-flex-1 tw-truncate tw-text-center">
+              {page.title}
+            </InlineText>
+            <Icon
+              icon={Icon.icon[page.icon]}
+              size={32}
+            />
+          </Link>
+        </List.Item>
+      ))}
     </List>
   );
 }

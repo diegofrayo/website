@@ -2,7 +2,9 @@ import * as React from "react";
 
 import Button from "~/components/primitive/Button";
 
-const Story = (props) => <Button {...props} />;
+function Story(props) {
+  return <Button {...props} />;
+}
 
 export default {
   title: "primitive/Button",
@@ -32,15 +34,6 @@ Default.args = {
   variant: Button.variant.DEFAULT,
   children: "I'm a [Default] Button",
   className: "",
-  onClick: () => alert("Button clicked!"),
-};
-
-export const DefaultWithStyles = Story.bind({});
-DefaultWithStyles.args = {
-  variant: Button.variant.DEFAULT,
-  children: "I'm a [Default] Button and I set 'fontWeight' prop",
-  className: "",
-  fontWeight: "tw-font-normal",
   onClick: () => alert("Button clicked!"),
 };
 

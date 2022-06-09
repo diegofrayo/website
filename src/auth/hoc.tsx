@@ -1,42 +1,46 @@
 import * as React from "react";
 
 import { useDidMount } from "~/hooks";
-import type { T_Object, T_ReactFunctionComponent } from "~/types";
-import { redirect, ROUTES } from "~/utils/routing";
+import type { T_ReactElementNullable, T_ReactFunctionComponent, T_UnknownObject } from "~/types";
+import { redirect as globalRedirect, ROUTES } from "~/utils/routing";
 
 import AuthService from "./service";
 
 function withAuth(
   Component: T_ReactFunctionComponent,
-  options?: { denyLoggedIn?: boolean; allowIf?: any },
-) {
-  return function WithAuthComponent(props: T_Object): any {
+  options?: { denyLoggedIn?: boolean; allowIf?: (props: T_UnknownObject) => boolean },
+): T_ReactFunctionComponent {
+  return function WithAuthComponent(props: T_UnknownObject): T_ReactElementNullable {
+    // states & refs
     const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
 
-    function redirect_(predicate) {
+    // effects
+    useDidMount(() => {
+      if (options?.allowIf && options?.allowIf(props)) {
+        redirect(false);
+      } else if (options?.denyLoggedIn) {
+        redirect(AuthService.isUserLoggedIn());
+      } else {
+        redirect(AuthService.isUserLoggedIn() === false);
+      }
+    });
+
+    // utils
+    function redirect(predicate: boolean): void {
       if (predicate) {
-        redirect(ROUTES.HOME);
+        globalRedirect(ROUTES.HOME);
         return;
       }
 
       setIsUserLoggedIn(true);
     }
 
-    useDidMount(() => {
-      if (options?.allowIf && options?.allowIf(props)) {
-        redirect_(false);
-      } else if (options?.denyLoggedIn) {
-        redirect_(AuthService.isUserLoggedIn());
-      } else {
-        redirect_(!AuthService.isUserLoggedIn());
-      }
-    });
-
-    if (isUserLoggedIn) {
-      return <Component {...props} />;
+    // render
+    if (!isUserLoggedIn) {
+      return null;
     }
 
-    return null;
+    return <Component {...props} />;
   };
 }
 

@@ -43,7 +43,7 @@ export default AboutMePage;
 export const getStaticProps = getPageContentStaticProps<T_AboutMePageProps, { page: string }>({
   page: ROUTES.ABOUT_ME,
   callback: async () => {
-    const file = (await dataLoader({ path: `/pages/about-me/en.about-me.mdx` })) as string;
+    const file = (await dataLoader({ path: "/pages/about-me/en.about-me.mdx" })) as string;
     const pageMDXContent = await serialize(file, {
       scope: {
         DATA: {

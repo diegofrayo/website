@@ -1,5 +1,5 @@
 import http from "~/lib/http";
-import type { T_Object, T_Primitive, T_Song } from "~/types";
+import type { T_Primitive, T_Song } from "~/types";
 import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
 
 class MusicService {
@@ -8,19 +8,20 @@ class MusicService {
   }
 
   async fetchSongsList(): Promise<T_Song[]> {
-    const songs = (await this.fetchData()).map((song) => {
-      return transformObjectKeysFromSnakeCaseToLowerCamelCase({
-        ...song,
-        artist: Array.isArray(song.artist) ? song.artist.join(", ") : song.artist,
-        chords: song.chords.sort(),
-        sources: (song.sources || []).sort(
-          sortBy([
-            { param: "order", order: "asc" },
-            { param: "title", order: "asc" },
-          ]),
-        ),
-      }) as T_Song;
-    });
+    const songs = (await this.fetchData()).map(
+      (song) =>
+        transformObjectKeysFromSnakeCaseToLowerCamelCase({
+          ...song,
+          artist: Array.isArray(song.artist) ? song.artist.join(", ") : song.artist,
+          chords: song.chords.sort(),
+          sources: (song.sources || []).sort(
+            sortBy([
+              { param: "order", order: "asc" },
+              { param: "title", order: "asc" },
+            ]),
+          ),
+        }) as T_Song,
+    );
 
     const chordsPage = songs.find((song) => this.isChordsPage(song));
 
@@ -52,9 +53,9 @@ class MusicService {
     return song.id === "chords";
   }
 
-  private async fetchData(): Promise<T_Object> {
+  private async fetchData(): Promise<T_UnknownObject> {
     const { data } = await http.post(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
+      `${process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"]}/api/diegofrayo`,
       {
         path: "/assets",
         payload: "music",

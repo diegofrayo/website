@@ -2,7 +2,9 @@ import * as React from "react";
 
 import Icon from "~/components/primitive/Icon";
 
-const Story = (props) => <Icon {...props} />;
+function Story(props) {
+  return <Icon {...props} />;
+}
 
 export default {
   title: "primitive/Icon",

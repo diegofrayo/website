@@ -10,7 +10,7 @@ import { redirect, ROUTES } from "~/utils/routing";
 
 function SignInPage(): T_ReactElement {
   const {
-    // states
+    // states & refs
     inputValue,
     isInputDisabled,
 
@@ -95,7 +95,7 @@ function useController() {
   }
 
   return {
-    // states
+    // states & refs
     inputValue,
     isInputDisabled,
 

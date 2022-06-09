@@ -1,22 +1,20 @@
 import * as React from "react";
 
 import { Block, Text, InlineText } from "~/components/primitive";
-import type { T_ReactElement } from "~/types";
+import type { T_ReactElementNullable } from "~/types";
+import { getErrorMessage } from "~/utils/misc";
 
 import Emoji from "./Emoji";
 import Loader from "./Loader";
 
-function Render({
-  isLoading,
-  error,
-  data,
-  children,
-}: {
+type T_RenderProps = {
   isLoading: boolean;
-  error: Error | unknown;
+  error: unknown;
   data: unknown;
-  children: (data: unknown) => T_ReactElement;
-}): T_ReactElement {
+  children: (data: unknown) => T_ReactElementNullable;
+};
+
+function Render({ isLoading, error, data, children }: T_RenderProps): T_ReactElementNullable {
   if (isLoading) {
     return (
       <Block className="tw-p-2 tw-text-center">
@@ -27,11 +25,9 @@ function Render({
 
   if (error) {
     return (
-      <Text className="tw-p-2 tw-text-center tw-text-sm tw-text-red-700">
+      <Text className="tw-p-2 tw-text-center tw-text-sm dfr-text-colorful-secondary-100">
         <Emoji className="tw-mr-2">😵</Emoji>
-        <InlineText>
-          {error instanceof Error ? error.message : (error as string) || "Error"}
-        </InlineText>
+        <InlineText>{getErrorMessage(Error)}</InlineText>
       </Text>
     );
   }

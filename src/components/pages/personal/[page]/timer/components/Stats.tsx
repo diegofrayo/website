@@ -26,7 +26,7 @@ function Stats({
   // context
   const { secondsToTime, timeToSeconds } = React.useContext(TimerPageContext);
 
-  // states
+  // states & refs
   const [elapsedTime, setElapsedTime] = React.useState("");
 
   // vars
@@ -83,7 +83,7 @@ function Stats({
             value={startTime.formatted}
           />
           {isRenderedFromTimerScreen && (
-            <React.Fragment>
+            <>
               <Stats.Item
                 label="hora estimada finalización"
                 value={new Date(
@@ -102,7 +102,7 @@ function Stats({
                 label="tiempo restante"
                 value={data.remainingTime}
               />
-            </React.Fragment>
+            </>
           )}
           <Stats.Item
             label="hora fin rutina"

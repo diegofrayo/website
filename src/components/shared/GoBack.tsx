@@ -2,10 +2,20 @@ import classNames from "classnames";
 import * as React from "react";
 
 import { Block, Button, Icon, InlineText } from "~/components/primitive";
-import type { T_ReactElement } from "~/types";
 import { goBack } from "~/utils/routing";
+import type { T_ReactElement } from "~/types";
 
-function GoBack({ className }: { className: string }): T_ReactElement {
+type T_GoBackProps = { className: string };
+
+function GoBack({ className }: T_GoBackProps): T_ReactElement {
+  // handlers
+  function handleGoBackClick(): void {
+    if (window.confirm("¿Are you sure?")) {
+      goBack();
+    }
+  }
+
+  // render
   return (
     <Block
       className={classNames(
@@ -15,11 +25,7 @@ function GoBack({ className }: { className: string }): T_ReactElement {
     >
       <Button
         variant={Button.variant.SIMPLE}
-        onClick={() => {
-          if (window.confirm("¿Are you sure?")) {
-            goBack();
-          }
-        }}
+        onClick={handleGoBackClick}
       >
         <Icon
           icon={Icon.icon.CHEVRON_LEFT}

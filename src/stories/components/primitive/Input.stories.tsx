@@ -11,7 +11,7 @@ export default {
 
 // --- Stories ---
 
-export const WithLabel = (): T_ReactElement => {
+export function WithLabel(): T_ReactElement {
   const [inputValue, setInputValue] = React.useState("I have a label");
 
   return (
@@ -22,9 +22,9 @@ export const WithLabel = (): T_ReactElement => {
       onChange={(e) => setInputValue(e.currentTarget.value)}
     />
   );
-};
+}
 
-export const WithoutLabel = (): T_ReactElement => {
+export function WithoutLabel(): T_ReactElement {
   const [inputValue, setInputValue] = React.useState("");
 
   return (
@@ -36,4 +36,4 @@ export const WithoutLabel = (): T_ReactElement => {
       onChange={(e) => setInputValue(e.currentTarget.value)}
     />
   );
-};
+}

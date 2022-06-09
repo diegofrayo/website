@@ -4,19 +4,22 @@ module.exports = {
   plugins: ["prettier", "no-loops", "react-hooks", "@typescript-eslint"],
   ignorePatterns: ["public/**/*"],
   extends: [
+    "airbnb",
+    "airbnb-typescript",
     "eslint:recommended",
-    "plugin:react/recommended",
-    "prettier/@typescript-eslint",
+    "plugin:import/errors",
+    "plugin:import/typescript",
+    "plugin:import/warnings",
     "plugin:prettier/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
+    "plugin:react/recommended",
+    "prettier/@typescript-eslint",
     "plugin:@typescript-eslint/recommended",
   ],
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: "module",
+    project: "./tsconfig.json",
     ecmaFeatures: {
       jsx: true,
     },
@@ -25,15 +28,24 @@ module.exports = {
     console: true,
     process: true,
     module: true,
+    window: true,
   },
   rules: {
     "react/prop-types": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "import/no-unresolved": "off",
+    "import/no-unresolved": "off", // TODO
+    "import/extensions": "off", // TODO
+    "@typescript-eslint/naming-convention": "off", // TODO
+    "@typescript-eslint/no-use-before-define": "off", // TODO
+    "react/require-default-props": "off", // TODO
+    "import/prefer-default-export": "off", // TODO
+    "react/jsx-props-no-spreading": "off", // TODO
+    "no-nested-ternary": "off",
 
-    "@typescript-eslint/explicit-module-boundary-types": "warn",
     "no-debugger": "warn",
+    "react/no-array-index-key": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn",
 
+    "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-unused-vars": "error",
     "no-loops/no-loops": "error",
   },

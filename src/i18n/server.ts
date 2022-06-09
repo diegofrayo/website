@@ -1,5 +1,5 @@
 import http from "~/lib/http";
-import type { T_Locale, T_Object, T_PageContent, T_PageRoute } from "~/types";
+import type { T_Locale, T_PageContent, T_RoutesValues } from "~/types";
 import { ROUTES } from "~/utils/routing";
 
 import I18nService from "./service";
@@ -16,9 +16,9 @@ type T_GetStaticProps<G_Params> = {
 
 type T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams> = {
   page?:
-    | T_PageRoute
-    | T_PageRoute[]
-    | ((params: T_GetStaticProps<G_GetStaticPropsParams>) => T_PageRoute);
+    | T_RoutesValues
+    | T_RoutesValues[]
+    | ((params: T_GetStaticProps<G_GetStaticPropsParams>) => T_RoutesValues);
   callback?: (
     parameters: T_GetStaticProps<G_GetStaticPropsParams> & { pageContent: T_PageContent },
   ) => Promise<{
@@ -109,24 +109,22 @@ async function fetchPageContent({
   };
 
   if (page) {
-    const pageContent = pagesContent.reduce((result, current) => {
-      return {
-        config: {
-          ...result.config,
-          ...current.config,
+    const pageContent = pagesContent.reduce((result, current) => ({
+      config: {
+        ...result.config,
+        ...current.config,
+      },
+      [locale]: {
+        seo: {
+          ...result[locale]?.seo,
+          ...current[locale]?.seo,
         },
-        [locale]: {
-          seo: {
-            ...result[locale]?.seo,
-            ...current[locale]?.seo,
-          },
-          texts: {
-            ...result[locale]?.texts,
-            ...current[locale]?.texts,
-          },
+        texts: {
+          ...result[locale]?.texts,
+          ...current[locale]?.texts,
         },
-      };
-    });
+      },
+    }));
 
     response.seo = pageContent[locale]?.seo || {};
     response.page = pageContent[locale]?.texts || {};
@@ -135,15 +133,13 @@ async function fetchPageContent({
   }
 
   response.layout = Object.entries(layoutContent.layout).reduce(
-    (result, [key, value]: [string, T_Object]) => {
-      return {
-        ...result,
-        [key]: {
-          ...value[locale],
-          common: value.common || {},
-        },
-      };
-    },
+    (result, [key, value]: [string, T_UnknownObject]) => ({
+      ...result,
+      [key]: {
+        ...value[locale],
+        common: value.common || {},
+      },
+    }),
     {},
   );
 
@@ -154,8 +150,8 @@ async function fetchPageContent({
 
 async function readFile(page) {
   const { data } = await http.get(
-    `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/${
-      page ? "pages" + (page === ROUTES.HOME ? "/home" : page) + "/" : ""
+    `${process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"]}/${
+      page ? `pages${page === ROUTES.HOME ? "/home" : page}/` : ""
     }content.json`,
   );
 

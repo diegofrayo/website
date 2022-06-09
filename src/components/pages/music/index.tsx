@@ -15,7 +15,7 @@ import { ROUTES } from "~/utils/routing";
 
 function MusicPage(): T_ReactElement {
   const {
-    // states
+    // states & refs
     inputValue,
     inputRef,
 
@@ -94,28 +94,26 @@ function MusicPage(): T_ReactElement {
                   <Space size={2} />
 
                   <Block className="tw-flex tw-flex-wrap tw-justify-between">
-                    {songsList.map((song) => {
-                      return (
-                        <Block
-                          key={song.id}
-                          className={classNames(
-                            "tw-mb-6 tw-w-full sm:tw-w-5/12",
-                            !song.isPublic && "tw-opacity-50",
-                          )}
+                    {songsList.map((song) => (
+                      <Block
+                        key={song.id}
+                        className={classNames(
+                          "tw-mb-6 tw-w-full sm:tw-w-5/12",
+                          !song.isPublic && "tw-opacity-50",
+                        )}
+                      >
+                        <Link
+                          variant={Link.variant.SECONDARY}
+                          href={`${ROUTES.MUSIC}/${song.id}`}
+                          className="sm:tw-truncate"
+                          title={song.title}
+                          locale={I18nService.getDefaultLocale()}
                         >
-                          <Link
-                            variant={Link.variant.SECONDARY}
-                            href={`${ROUTES.MUSIC}/${song.id}`}
-                            className="sm:tw-truncate"
-                            title={song.title}
-                            locale={I18nService.getDefaultLocale()}
-                          >
-                            {song.title}
-                          </Link>
-                          <SongDetails song={song} />
-                        </Block>
-                      );
-                    })}
+                          {song.title}
+                        </Link>
+                        <SongDetails song={song} />
+                      </Block>
+                    ))}
                   </Block>
                 </Block>
               </Block>
@@ -162,17 +160,16 @@ function useController() {
       songsList: (AuthService.isUserLoggedIn() || AnalyticsService.isAnalyticsDisabled()
         ? songs.slice(1)
         : songs.slice(1).filter((song) => song.isPublic)
-      ).filter((song) => {
-        return (
+      ).filter(
+        (song) =>
           song.title.toLowerCase().includes(inputValue) ||
-          song.artist.toLowerCase().includes(inputValue)
-        );
-      }),
+          song.artist.toLowerCase().includes(inputValue),
+      ),
     };
   }
 
   return {
-    // states
+    // states & refs
     inputValue,
     inputRef,
 

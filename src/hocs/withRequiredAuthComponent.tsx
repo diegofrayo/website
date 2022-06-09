@@ -3,7 +3,9 @@ import type { T_ReactFunctionComponent } from "~/types";
 
 import renderIf from "./renderIf";
 
-function withRequiredAuthComponent<P>(WrappedComponent: T_ReactFunctionComponent<P>): any {
+function withRequiredAuthComponent<Props>(
+  WrappedComponent: T_ReactFunctionComponent<Props>,
+): T_ReactFunctionComponent<Props> {
   return renderIf(WrappedComponent)(() => AuthService.isUserLoggedIn());
 }
 

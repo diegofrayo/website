@@ -8,7 +8,7 @@ import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
 
 function Dencrypt(): T_ReactElement {
   const {
-    // states
+    // states & refs
     output,
     inputRef,
 
@@ -19,7 +19,7 @@ function Dencrypt(): T_ReactElement {
   } = useController();
 
   return (
-    <React.Fragment>
+    <>
       <Block className="tw-mb-8">
         <Input
           id="input"
@@ -66,7 +66,7 @@ function Dencrypt(): T_ReactElement {
           copiar
         </Button>
       </Block>
-    </React.Fragment>
+    </>
   );
 }
 
@@ -126,7 +126,7 @@ function useController(): {
   }
 
   return {
-    // states
+    // states & refs
     output,
     inputRef,
 

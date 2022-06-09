@@ -11,11 +11,11 @@ type T_InputProps = T_HTMLElementAttributes["input"] & {
   id: string;
 };
 
-const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
-  { containerProps = {}, label = "", className = "", id, ...rest }: T_InputProps,
-  ref,
-): T_ReactElement {
-  return (
+const Input = React.forwardRef<HTMLInputElement, T_InputProps>(
+  (
+    { containerProps = {}, label = "", className = "", id, ...rest }: T_InputProps,
+    ref,
+  ): T_ReactElement => (
     <label
       className={classNames(
         "root",
@@ -35,13 +35,15 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
         {...rest}
       />
 
-      <style jsx>{`
-        .root:focus-within {
-          border-color: transparent;
-        }
-      `}</style>
+      <style jsx>
+        {`
+          .root:focus-within {
+            border-color: transparent;
+          }
+        `}
+      </style>
     </label>
-  );
-});
+  ),
+);
 
 export default Input;

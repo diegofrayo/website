@@ -10,19 +10,17 @@ export default PersonalPage;
 
 export const getStaticPaths: GetStaticPaths<T_PageProps> = async function getStaticPaths() {
   return {
-    paths: PERSONAL_PAGES.filter((page) => page.componentName !== "").map((page) => {
-      return { params: { page: page.slug } };
-    }),
+    paths: PERSONAL_PAGES.filter((page) => page.componentName !== "").map((page) => ({
+      params: { page: page.slug },
+    })),
     fallback: false,
   };
 };
 
 export const getStaticProps = getPageContentStaticProps<T_PageProps, T_PageProps>({
-  callback: async ({ params }) => {
-    return {
-      props: {
-        page: params.page,
-      },
-    };
-  },
+  callback: async ({ params }) => ({
+    props: {
+      page: params.page,
+    },
+  }),
 });

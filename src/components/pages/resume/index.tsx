@@ -119,41 +119,39 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
             </ResumeBlock>
             <ResumeBlock title="Education">
               <Block>
-                {resume.education.map((item, index) => {
-                  return (
-                    <Block
-                      key={`Education-${index}`}
-                      className="tw-mb-4 tw-flex tw-items-start last:tw-mb-0"
-                    >
-                      <Image
-                        src={item.schoolLogo}
-                        alt={`${item.school} logo`}
-                        className="tw-relative tw-top-1 tw-mr-2 tw-h-12 tw-w-12 tw-flex-shrink-0"
-                      />
-                      <Block>
-                        <Title
-                          is="h3"
-                          variant={Title.variant.SECONDARY}
-                          size={Title.size.MD}
-                        >
-                          {item.degree}
-                        </Title>
-                        <Link
-                          variant={Link.variant.SIMPLE}
-                          href={item.schoolWebsite}
-                          className="tw-underline"
-                          isExternalUrl
-                        >
-                          {item.school}
-                        </Link>
-                        <Text className="tw-text-xs tw-italic dfr-text-color-secondary">
-                          <InlineText>{item.startDate}</InlineText> /{" "}
-                          <InlineText>{item.endDate}</InlineText>
-                        </Text>
-                      </Block>
+                {resume.education.map((item, index) => (
+                  <Block
+                    key={`Education-${index}`}
+                    className="tw-mb-4 tw-flex tw-items-start last:tw-mb-0"
+                  >
+                    <Image
+                      src={item.schoolLogo}
+                      alt={`${item.school} logo`}
+                      className="tw-relative tw-top-1 tw-mr-2 tw-h-12 tw-w-12 tw-flex-shrink-0"
+                    />
+                    <Block>
+                      <Title
+                        is="h3"
+                        variant={Title.variant.SECONDARY}
+                        size={Title.size.MD}
+                      >
+                        {item.degree}
+                      </Title>
+                      <Link
+                        variant={Link.variant.SIMPLE}
+                        href={item.schoolWebsite}
+                        className="tw-underline"
+                        isExternalUrl
+                      >
+                        {item.school}
+                      </Link>
+                      <Text className="tw-text-xs tw-italic dfr-text-color-secondary">
+                        <InlineText>{item.startDate}</InlineText> /{" "}
+                        <InlineText>{item.endDate}</InlineText>
+                      </Text>
                     </Block>
-                  );
-                })}
+                  </Block>
+                ))}
               </Block>
             </ResumeBlock>
           </PrintBlock>
@@ -166,9 +164,9 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 
           <ResumeBlock title="Skills">
             <List variant={List.variant.DEFAULT}>
-              {resume.skills.map((item, index) => {
-                return <List.Item key={`Skill-${index}`}>{item}</List.Item>;
-              })}
+              {resume.skills.map((item, index) => (
+                <List.Item key={`Skill-${index}`}>{item}</List.Item>
+              ))}
             </List>
           </ResumeBlock>
         </Block>
@@ -203,14 +201,12 @@ function ResumeBlock({ title, children }) {
 export function ExperienceTimeline({ experience }: { experience: T_Experience[] }): T_ReactElement {
   return (
     <Block className="tw-ml-3 tw-border-l-4 tw-border-black dark:dfr-border-color-primary">
-      {experience.map((item, index) => {
-        return (
-          <ExperienceTimelineItem
-            key={`TimelineItem-${index}`}
-            {...item}
-          />
-        );
-      })}
+      {experience.map((item, index) => (
+        <ExperienceTimelineItem
+          key={`TimelineItem-${index}`}
+          {...item}
+        />
+      ))}
     </Block>
   );
 }
@@ -264,7 +260,7 @@ function ExperienceTimelineItem({
         )}
 
         <Text className="tw-text-xs tw-italic dfr-text-color-secondary">
-          <InlineText>{startDate}</InlineText> / <InlineText>{endDate}</InlineText>
+          <InlineText>{startDate}</InlineText> /<InlineText>{endDate}</InlineText>
         </Text>
         <Space size={2} />
 
@@ -327,7 +323,7 @@ type T_Experience = {
 
 // --- Legacy ---
 
-// export function ResumeFAQ({ children }: { children: T_ReactChildrenProp }): T_ReactElement {
+// export function ResumeFAQ({ children }: { children: T_ReactChildren }): T_ReactElement {
 //   return (
 //     <Block
 //       is="section"
@@ -341,7 +337,7 @@ type T_Experience = {
 
 // type T_ResumeFAQItemProps = {
 //   question: string;
-//   children: T_ReactChildrenProp;
+//   children: T_ReactChildren;
 // };
 
 // ResumeFAQ.Item = function ResumeFAQItem({

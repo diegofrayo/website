@@ -7,7 +7,7 @@ import { downloadComponentAsImage } from "~/utils/browser";
 
 function Thumbnails(): T_ReactElement {
   const {
-    // states
+    // states & refs
     title,
     src,
 
@@ -84,7 +84,7 @@ function useController() {
 
   function onChange(input) {
     return (e) => {
-      const value = e.currentTarget.value;
+      const { value } = e.currentTarget;
 
       if (input === "title") {
         setTitle(value);
@@ -99,7 +99,7 @@ function useController() {
   }
 
   return {
-    // states
+    // states & refs
     title,
     src,
 
@@ -133,7 +133,7 @@ function Thumbnail({ title, src, containerRef }) {
         {title}
       </Title>
       <InlineText className="tw-absolute tw-bottom-1 tw-right-2 tw-text-right tw-font-mono tw-text-xs tw-font-bold tw-italic tw-text-gray-400">
-        {"diegofrayo.vercel.app"}
+        diegofrayo.vercel.app
       </InlineText>
     </div>
   );

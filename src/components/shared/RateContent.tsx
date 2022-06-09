@@ -6,65 +6,27 @@ import { Button, Block, Text, Space } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
-import type { T_ReactElement } from "~/types";
+import { isNotEmptyString } from "~/utils/misc";
+import type { T_ReactElement, T_TranslationFunction } from "~/types";
 
 import Emoji from "./Emoji";
 
 function RateContent(): T_ReactElement {
-  const { t } = useTranslation();
-  const [questionAnswer, setQuestionAnswer] = React.useState("");
+  const {
+    // hooks
+    t,
 
-  const LOCAL_STORAGE_KEY = "DFR_CONTENT_RATED";
-  const isQuestionAnswered = questionAnswer !== "";
+    // vars
+    isQuestionAnswered,
 
-  useDidMount(() => {
-    initLocalStorageData();
-    setQuestionAnswer(readLocalStorageData()[window.location.pathname] || "");
-  });
+    // states & refs
+    questionAnswer,
 
-  function initLocalStorageData() {
-    const storedData = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+    // handlers
+    handleAnswerClick,
+  } = useController();
 
-    if (!storedData) {
-      window.localStorage.setItem(
-        LOCAL_STORAGE_KEY,
-        JSON.stringify({ [window.location.pathname]: "" }),
-      );
-    }
-  }
-
-  function writeDataOnLocalStorage(data) {
-    window.localStorage.setItem(
-      LOCAL_STORAGE_KEY,
-      JSON.stringify({
-        ...readLocalStorageData(),
-        ...data,
-      }),
-    );
-  }
-
-  function readLocalStorageData() {
-    return JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) as string);
-  }
-
-  function trackEvent(answer) {
-    return function () {
-      setQuestionAnswer(answer);
-
-      AnalyticsService.trackEvent("RATE_CONTENT", {
-        answer: answer,
-        page: window.location.pathname,
-      });
-
-      toast.success(t("common:useful_question_thanks"), {
-        position: toast.POSITION.BOTTOM_CENTER,
-        toastId: "useful-question",
-      });
-
-      writeDataOnLocalStorage({ [window.location.pathname]: answer });
-    };
-  }
-
+  // render
   return (
     <Block className="tw-text-center">
       <Text className="tw-text-sm tw-font-bold">{t("common:useful_question")}</Text>
@@ -78,7 +40,7 @@ function RateContent(): T_ReactElement {
           variant={Button.variant.SIMPLE}
           className={classNames(questionAnswer === "YES" && "tw-font-bold")}
           disabled={isQuestionAnswered}
-          onClick={trackEvent("YES")}
+          onClick={handleAnswerClick("YES")}
         >
           <Emoji>👍</Emoji>
           <Text>{t("common:useful_question_yes")}</Text>
@@ -91,7 +53,7 @@ function RateContent(): T_ReactElement {
           variant={Button.variant.SIMPLE}
           className={classNames(questionAnswer === "NO" && "tw-font-bold")}
           disabled={isQuestionAnswered}
-          onClick={trackEvent("NO")}
+          onClick={handleAnswerClick("NO")}
         >
           <Emoji>👎</Emoji>
           <Text>{t("common:useful_question_no")}</Text>
@@ -102,3 +64,96 @@ function RateContent(): T_ReactElement {
 }
 
 export default RateContent;
+
+// --- Controller ---
+
+type T_UseController = {
+  t: T_TranslationFunction;
+  isQuestionAnswered: boolean;
+  questionAnswer: string;
+  handleAnswerClick: (answer: "YES" | "NO") => () => void;
+};
+
+function useController(): T_UseController {
+  // hooks
+  const { t } = useTranslation();
+
+  // states & refs
+  const [questionAnswer, setQuestionAnswer] = React.useState("");
+
+  // vars
+  const LOCAL_STORAGE_KEY = "DFR_CONTENT_RATED";
+  const isQuestionAnswered = isNotEmptyString(questionAnswer);
+
+  // effects
+  useDidMount(() => {
+    initLocalStorageData();
+    setQuestionAnswer(readLocalStorageData()[window.location.pathname] || "");
+  });
+
+  // handlers
+  const handleAnswerClick: T_UseController["handleAnswerClick"] = function handleAnswerClick(
+    answer,
+  ) {
+    return () => {
+      setQuestionAnswer(answer);
+
+      AnalyticsService.trackEvent("RATE_CONTENT", {
+        answer,
+        page: window.location.pathname,
+      });
+
+      toast.success(t("common:useful_question_thanks"), {
+        position: toast.POSITION.BOTTOM_CENTER,
+        toastId: "useful-question",
+      });
+
+      writeDataOnLocalStorage({ [window.location.pathname]: answer });
+    };
+  };
+
+  // utils
+  function initLocalStorageData(): void {
+    const storedData = window.localStorage.getItem(LOCAL_STORAGE_KEY) || "";
+
+    if (isNotEmptyString(storedData)) {
+      window.localStorage.setItem(
+        LOCAL_STORAGE_KEY,
+        JSON.stringify({ [window.location.pathname]: "" }),
+      );
+    }
+  }
+
+  function writeDataOnLocalStorage(data: T_UnknownObject<string>): void {
+    window.localStorage.setItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify({
+        ...readLocalStorageData(),
+        ...data,
+      }),
+    );
+  }
+
+  function readLocalStorageData(): T_UnknownObject<string> {
+    try {
+      return JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) as string);
+    } catch (error) {
+      console.error(error);
+      return {};
+    }
+  }
+
+  return {
+    // hooks
+    t,
+
+    // vars
+    isQuestionAnswered,
+
+    // states & refs
+    questionAnswer,
+
+    // handlers
+    handleAnswerClick,
+  };
+}

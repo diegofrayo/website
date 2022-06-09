@@ -4,7 +4,7 @@ import classNames from "classnames";
 import {
   E_Icons,
   T_HTMLElementAttributes,
-  T_ReactElement,
+  T_ReactElementNullable,
   T_ReactFunctionComponent,
 } from "~/types";
 
@@ -21,7 +21,7 @@ type IconProps = {
   withDarkModeBackground?: boolean;
 };
 
-function Icon(props: IconProps): T_ReactElement {
+function Icon(props: IconProps): T_ReactElementNullable {
   const { wrapperProps, IconComponent, iconComponentProps } = useController(props);
 
   if (!IconComponent) return null;
@@ -126,8 +126,10 @@ function useController({
 function Wrapper({ children, className = "" }: T_HTMLElementAttributes["span"]) {
   return (
     <Block
-      className={classNames("tw-inline-flex tw-align-middle", className)}
-      align="CENTER"
+      className={classNames(
+        "tw-inline-flex tw-items-center tw-justify-center tw-align-middle",
+        className,
+      )}
     >
       {children}
     </Block>

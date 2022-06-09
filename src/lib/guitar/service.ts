@@ -155,7 +155,12 @@ class GuitarService {
                   });
                 });
             } else {
-              parsedTextLine = this.parseTextLine({ parsedTextLine, chord, textLineItems, chords });
+              parsedTextLine = this.parseTextLine({
+                parsedTextLine,
+                chord,
+                textLineItems,
+                chords,
+              });
             }
           });
 
@@ -185,12 +190,12 @@ class GuitarService {
 
     if (Array.isArray(chord)) {
       if (chordIndex === undefined) {
-        return chord.map((chord) => {
-          return transformObjectKeysFromSnakeCaseToLowerCamelCase({
+        return chord.map((chord) =>
+          transformObjectKeysFromSnakeCaseToLowerCamelCase({
             ...chord,
             name: chordName,
-          });
-        }) as T_Chord;
+          }),
+        ) as T_Chord;
       }
 
       if (!chord[chordIndex]) {
@@ -268,17 +273,18 @@ class GuitarService {
 
   private musicNotesToString(musicNotes: T_MusicNote[]): string {
     return musicNotes
-      .map((musicNote) => {
-        return `${
-          (musicNote as I_SimpleMusicNote).guitarString
-            ? (musicNote as I_SimpleMusicNote).guitarString
-            : `${(musicNote as I_BarreMusicNote).barre}x`
-        },${musicNote.guitarFret}${
-          (musicNote as I_SimpleMusicNote).finger
-            ? `,${(musicNote as I_SimpleMusicNote).finger}`
-            : ""
-        }`;
-      })
+      .map(
+        (musicNote) =>
+          `${
+            (musicNote as I_SimpleMusicNote).guitarString
+              ? (musicNote as I_SimpleMusicNote).guitarString
+              : `${(musicNote as I_BarreMusicNote).barre}x`
+          },${musicNote.guitarFret}${
+            (musicNote as I_SimpleMusicNote).finger
+              ? `,${(musicNote as I_SimpleMusicNote).finger}`
+              : ""
+          }`,
+      )
       .join("|");
   }
 }

@@ -2,7 +2,9 @@ import * as React from "react";
 
 import Title from "~/components/primitive/Title";
 
-const Story = (props) => <Title {...props} />;
+function Story(props) {
+  return <Title {...props} />;
+}
 
 export default {
   title: "primitive/Title",

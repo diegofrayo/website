@@ -61,6 +61,8 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
     if (isPWA()) {
       return initPWARoutingConfig(router);
     }
+
+    return () => undefined;
   });
 
   return (
@@ -84,14 +86,14 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
             <ThemeProvider
               storageKey="DFR_THEME"
               defaultTheme="system"
-              enableSystem={true}
+              enableSystem
               attribute="class"
               themes={["light"]}
               value={{ light: "tw-light" }}
               // themes={["light", "dark"]}
               // value={{ light: "tw-light", dark: "tw-dark" }}
             >
-              <MDXProvider components={MDXComponents as any}>
+              <MDXProvider components={MDXComponents}>
                 <Component {...pageProps} />
               </MDXProvider>
               <ProgressBar />

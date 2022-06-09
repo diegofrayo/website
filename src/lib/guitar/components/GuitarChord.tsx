@@ -26,7 +26,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
     playedStrings,
     enableShowNotesOption,
 
-    // states
+    // states & refs
     showChordInput,
     chordContainerRef,
 
@@ -86,16 +86,14 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
             {Object.entries(groupedMusicNotesByGuitarFret)
               .reverse()
-              .map(([fret, musicNotes]: [string, T_MusicNote[]]) => {
-                return (
-                  <GuitarFret
-                    key={`${fret}`}
-                    variant={GuitarFret.variant.DEFAULT}
-                    number={Number(fret) as T_GuitarFret}
-                    musicNotes={musicNotes}
-                  />
-                );
-              })}
+              .map(([fret, musicNotes]: [string, T_MusicNote[]]) => (
+                <GuitarFret
+                  key={`${fret}`}
+                  variant={GuitarFret.variant.DEFAULT}
+                  number={Number(fret) as T_GuitarFret}
+                  musicNotes={musicNotes}
+                />
+              ))}
 
             {firstFret > 1 && (
               <GuitarFret
@@ -177,7 +175,7 @@ function useController({
   T_GuitarChordProps,
   "name" | "playedStrings" | "enableShowNotesOption"
 > & {
-  // states
+  // states & refs
   showChordInput: boolean;
   chordContainerRef: T_ReactRefObject<HTMLDivElement>;
 
@@ -189,9 +187,9 @@ function useController({
   data: T_ParsedChord;
   error: Error | undefined;
 } {
-  const { data, error } = useExecuteCallback(musicNotes, (params) => {
-    return GuitarService.buildChord(params);
-  });
+  const { data, error } = useExecuteCallback(musicNotes, (params) =>
+    GuitarService.buildChord(params),
+  );
 
   const chordContainerRef = React.useRef<HTMLDivElement>(null);
   const [showChordInput, setChordInput] = React.useState(false);
@@ -217,7 +215,7 @@ function useController({
       ...(typeof playedStrings === "string" ? playedStrings.split(",") : playedStrings || []),
     ].reverse(),
 
-    // states
+    // states & refs
     showChordInput,
     chordContainerRef,
 
