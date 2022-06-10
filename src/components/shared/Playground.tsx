@@ -2,16 +2,12 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Button, Block } from "~/components/primitive";
-import type {
-  T_CodeProps,
-  T_ReactElement,
-  T_ReactFunctionComponent,
-  T_ReactRefObject,
-} from "~/types";
+import type { T_ReactElement, T_ReactFunctionComponent, T_ReactRefObject } from "~/types";
 
-import SourceCode from "./SourceCode";
+import SourceCode, { T_SourceCodeProps } from "./SourceCode";
 
-type T_PlaygroundProps = Pick<T_CodeProps, "code" | "language"> & {
+/* eslint-disable react/no-unused-prop-types */ /* TODO */
+type T_PlaygroundProps = Pick<T_SourceCodeProps, "code" | "language"> & {
   Component: T_ReactFunctionComponent;
 };
 

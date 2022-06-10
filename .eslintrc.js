@@ -7,6 +7,7 @@ module.exports = {
     "airbnb",
     "airbnb-typescript",
     "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:import/errors",
     "plugin:import/typescript",
     "plugin:import/warnings",
@@ -14,7 +15,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:react/recommended",
     "prettier/@typescript-eslint",
-    "plugin:@typescript-eslint/recommended",
+    "prettier/react",
   ],
   parserOptions: {
     ecmaVersion: 2018,
@@ -31,20 +32,22 @@ module.exports = {
     window: true,
   },
   rules: {
-    "react/prop-types": "off",
-    "import/no-unresolved": "off", // TODO
-    "import/extensions": "off", // TODO
     "@typescript-eslint/naming-convention": "off", // TODO
     "@typescript-eslint/no-use-before-define": "off", // TODO
-    "react/require-default-props": "off", // TODO
+    "import/extensions": "off", // TODO
+    "import/no-unresolved": "off", // TODO
     "import/prefer-default-export": "off", // TODO
     "react/jsx-props-no-spreading": "off", // TODO
+    "react/require-default-props": "off", // TODO
     "no-nested-ternary": "off",
+    "react/prop-types": "off",
 
+    "class-methods-use-this": "warn", // TODO
+    "@typescript-eslint/ban-ts-comment": "warn",
     "no-debugger": "warn",
     "react/no-array-index-key": "warn",
-    "@typescript-eslint/ban-ts-comment": "warn",
 
+    "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-unused-vars": "error",
     "no-loops/no-loops": "error",

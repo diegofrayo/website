@@ -14,14 +14,10 @@ import { selectPageConfig } from "~/state/modules/page-config";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { ROUTES } from "~/utils/routing";
 import type {
-  T_PageConfig,
   T_ReactChildren,
   T_ReactElement,
   T_ReactElementNullable,
-  T_RoutesValues,
-  T_SEOMetadata,
   T_UnknownObject,
-  T_WebsiteMetadata,
 } from "~/types";
 
 type T_PageProps = {
@@ -227,24 +223,24 @@ const UserLoggedInFlag = withRequiredAuthComponent(
 
 function AnalyticsDisabledFlag(): T_ReactElementNullable {
   // hooks
-  const [isAnalyticsEnabled, setIsAnalyticsEnabled] = React.useState(false);
+  const [isAnalyticsDisabled, setIsAnalyticsDisabled] = React.useState(false);
 
   // effects
   useDidMount(() => {
-    setIsAnalyticsEnabled(!AnalyticsService.isAnalyticsDisabled());
+    setIsAnalyticsDisabled(AnalyticsService.isAnalyticsDisabled());
   });
 
   // render
-  if (isAnalyticsEnabled) {
-    return null;
+  if (isAnalyticsDisabled) {
+    return (
+      <Flag
+        className="tw-z-40"
+        color="dfr-bg-colorful-primary-100"
+      />
+    );
   }
 
-  return (
-    <Flag
-      className="tw-z-40"
-      color="dfr-bg-colorful-primary-100"
-    />
-  );
+  return null;
 }
 
 type T_FlagProps = {
@@ -252,7 +248,7 @@ type T_FlagProps = {
   color: string;
 };
 
-function Flag({ className, color }: T_FlagProps) {
+function Flag({ className, color }: T_FlagProps): T_ReactElement {
   return (
     <InlineText
       className={classNames("tw-fixed tw-top-1 tw-left-1 tw-h-1 tw-w-1", className, color)}

@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { mirror } from "~/utils/misc";
+import { mirror } from "~/utils/objects-and-arrays";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
 const VARIANTS_OPTIONS = ["INLINE", "MULTILINE"] as const;

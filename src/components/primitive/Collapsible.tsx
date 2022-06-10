@@ -5,7 +5,7 @@ import { isNotDefined, isNotEmptyString } from "~/utils/validations";
 
 import Block from "./Block";
 
-/* eslint-disable react/no-unused-prop-types */ /* WARN */
+/* eslint-disable react/no-unused-prop-types */ /* TODO */
 type T_CollapsibleProps = T_HTMLElementAttributes["details"] & {
   title?: string;
   openedByDefault?: boolean;

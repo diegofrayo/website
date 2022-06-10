@@ -17,7 +17,7 @@ function SongDetails({
 }): T_ReactElement {
   const { t } = useTranslation();
 
-  if (MusicService.isChordsPage(song)) return null;
+  if (MusicService.isChordsSong(song)) return null;
 
   return (
     <Block className={classNames("tw-text-sm tw-italic", className)}>

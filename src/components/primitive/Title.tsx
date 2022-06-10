@@ -15,7 +15,7 @@ const SIZES_OPTIONS = ["XS", "SM", "MD", "LG", "XL"] as const;
 const SIZES = mirror<T_Size>(SIZES_OPTIONS);
 type T_Size = typeof SIZES_OPTIONS[number];
 
-export type T_TitleProps = {
+type T_TitleProps = {
   children: T_ReactChildren;
   is: "h1" | "h2" | "h3" | "h4";
   variant?: T_Variant;
@@ -38,7 +38,7 @@ function Title(props: T_TitleProps): T_ReactElement {
     ...rest
   } = useController(props);
 
-  if (variant === E_Variants.PRIMARY && showLinkIcon) {
+  if (variant === VARIANTS.PRIMARY && showLinkIcon) {
     return (
       <Tag
         id={id}
@@ -96,6 +96,7 @@ Title.variant = VARIANTS;
 Title.size = SIZES;
 
 export default Title;
+export type { T_TitleProps };
 
 // --- Controller ---
 

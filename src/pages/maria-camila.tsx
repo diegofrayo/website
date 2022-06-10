@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Block, Text as TextPrimitive, InlineText } from "~/components/primitive";
 import { useDocumentTitle } from "~/hooks";
-import type { T_ReactElement } from "~/types";
+import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 function MariaCamila(): T_ReactElement {
   useDocumentTitle("Feliz cumple!!");
@@ -82,7 +82,15 @@ export default MariaCamila;
 
 // --- Components ---
 
-function Text({ children, emoji, left = false }) {
+function Text({
+  children,
+  emoji,
+  left = false,
+}: {
+  children: T_ReactChildren;
+  emoji: string;
+  left?: boolean;
+}): T_ReactElement {
   return (
     <Block
       className={classNames(
@@ -96,7 +104,7 @@ function Text({ children, emoji, left = false }) {
   );
 }
 
-function Marked({ children }) {
+function Marked({ children }: { children: T_ReactChildren }): T_ReactElement {
   return (
     <u>
       <b>{children}</b>
@@ -104,13 +112,19 @@ function Marked({ children }) {
   );
 }
 
-function Title({ children, className }) {
+function Title({
+  children,
+  className,
+}: {
+  children: T_ReactChildren;
+  className: string;
+}): T_ReactElement {
   return (
     <h1 className={classNames("tw-text-center tw-text-3xl tw-font-bold", className)}>{children}</h1>
   );
 }
 
-function Image() {
+function Image(): T_ReactElement {
   return (
     <img
       className="tw-rounded-tr-md tw-rounded-bl-md tw-border-8 tw-border-black tw-shadow-md"

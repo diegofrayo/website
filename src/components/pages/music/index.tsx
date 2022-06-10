@@ -10,8 +10,8 @@ import { useDidMount, useQuery } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import MusicService from "~/services/music";
-import type { T_ReactElement, T_Song } from "~/types";
 import { ROUTES } from "~/utils/routing";
+import type { T_ReactElement } from "~/types";
 
 function MusicPage(): T_ReactElement {
   const {

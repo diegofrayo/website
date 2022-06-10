@@ -17,6 +17,14 @@ export function isUndefined(input: unknown): input is undefined {
   return input === undefined;
 }
 
+export function notFound(input: unknown): input is undefined {
+  return isUndefined(input);
+}
+
+export function exists<G_InputType = unknown>(input: unknown): input is G_InputType {
+  return !isNotDefined(input);
+}
+
 export function isNull(input: unknown): input is null {
   return input === null;
 }
@@ -37,6 +45,15 @@ export function isDate(input: unknown): input is Date {
   return input instanceof Date;
 }
 
+export function validate<T_Types>(
+  input: unknown,
+  validators: ((input: unknown) => boolean)[],
+): input is T_Types {
+  return validators.reduce((result: boolean, fn) => {
+    return result && fn(input);
+  }, true);
+}
+
 // TODO: Review predicates with return different to booleans
 // type T_Args = ((input: unknown) => boolean)[];
 // type T_ValidateReturn = (...args: T_Args) => boolean;
@@ -50,12 +67,3 @@ export function isDate(input: unknown): input is Date {
 
 //   return validateReturn;
 // }
-
-export function validate<T_Types>(
-  input: unknown,
-  validators: ((input: unknown) => boolean)[],
-): input is T_Types {
-  return validators.reduce((result: boolean, fn) => {
-    return result && fn(input);
-  }, true);
-}

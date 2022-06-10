@@ -7,9 +7,17 @@ import { Block, Button, Code, Icon, InlineText, Link, Space } from "~/components
 import { useTranslation } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { copyToClipboard } from "~/utils/browser";
-import { isNotEmptyString } from "~/utils/misc";
 import { generateSlug } from "~/utils/strings";
-import type { T_CodeProps, T_ReactElement } from "~/types";
+import { isNotEmptyString } from "~/utils/validations";
+import type { T_ReactElement } from "~/types";
+
+type T_SourceCodeProps = {
+  language: "jsx" | "tsx" | "css" | "typescript" | "javascript" | "bash" | "yaml";
+  code: string;
+  fileName?: string;
+  sourceURL?: string;
+  displaySourceCodeDetails?: boolean;
+};
 
 function SourceCode({
   language,
@@ -17,7 +25,7 @@ function SourceCode({
   code = "",
   sourceURL = "",
   displaySourceCodeDetails = false,
-}: T_CodeProps): T_ReactElement {
+}: T_SourceCodeProps): T_ReactElement {
   // hooks
   const { t } = useTranslation();
 
@@ -127,6 +135,7 @@ function SourceCode({
 }
 
 export default SourceCode;
+export type { T_SourceCodeProps };
 
 // --- Components ---
 

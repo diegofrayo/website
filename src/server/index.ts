@@ -1,7 +1,10 @@
 import http from "~/lib/http";
+import { ENV_VARS } from "~/utils/constants";
 
-export async function dataLoader({ path }: { path: string }): Promise<unknown> {
-  const { data } = await http.get(`${process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"]}${path}`);
+type T_DataLoaderParams = { path: string };
+
+export async function dataLoader({ path }: T_DataLoaderParams): Promise<unknown> {
+  const { data } = await http.get(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}${path}`);
 
   return data;
 }

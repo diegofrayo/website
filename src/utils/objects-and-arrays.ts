@@ -4,38 +4,9 @@ import { between } from "./numbers";
 import { isDate, isNumber, isObject, isString, validate } from "./validations";
 
 export function transformObjectKeysFromSnakeCaseToLowerCamelCase(
-  object: T_UnknownObject | T_Primitive,
-): T_UnknownObject | T_Primitive {
-  if (isPrimitiveValue(object)) {
-    return object;
-  }
-
-  return Object.entries(object).reduce((result, [key, value]) => {
-    const transformedKey = convertSnakeCaseToLowerCamelCase(key);
-
-    if (isPrimitiveValue(value)) {
-      return {
-        ...result,
-        [transformedKey]: value,
-      };
-    }
-
-    if (Array.isArray(value)) {
-      return {
-        ...result,
-        [transformedKey]: value.map(transformObjectKeysFromSnakeCaseToLowerCamelCase),
-      };
-    }
-
-    if (isObject(value)) {
-      return {
-        ...result,
-        [transformedKey]: transformObjectKeysFromSnakeCaseToLowerCamelCase(value),
-      };
-    }
-
-    return result;
-  }, {} as T_UnknownObject);
+  object: T_UnknownObject,
+): T_UnknownObject {
+  return private_transformObjectKeysFromSnakeCaseToLowerCamelCase(object) as T_UnknownObject;
 }
 
 export function mirror<T_Variant extends string>(
@@ -52,21 +23,21 @@ export function createArray(length: number, start?: number): number[] {
 }
 
 type T_Order = "asc" | "desc";
-type T_Criteria = { param: string; order?: T_Order };
-type T_SorterFunction = (a: unknown, b: unknown) => number;
+type T_Criteria = { param: string; order: T_Order };
+type T_SorterFunction = (a: T_UnknownObject, b: T_UnknownObject) => number;
 
 // TODO: Review this function params
-export function sortBy(criteria?: T_Criteria[], order?: T_Order): T_SorterFunction {
+export function sortBy(criteria: T_Criteria[]): T_SorterFunction {
   const sortByReturn: T_SorterFunction = function sortByReturn(a, b) {
-    return (criteria || [{ param: "", order: order || "asc" }]).reduce(
-      (result, { param, order: order2 }: T_Criteria) => {
+    return criteria.reduce(
+      (result, { param, order }: T_Criteria) => {
         if (result.finish) return result;
 
-        const greater = order2 === "desc" ? -1 : 1;
-        const smaller = order2 === "desc" ? 1 : -1;
+        const greater = order === "desc" ? -1 : 1;
+        const smaller = order === "desc" ? 1 : -1;
 
-        const aParam = param ? (a as T_UnknownObject)[param] : a;
-        const bParam = param ? (b as T_UnknownObject)[param] : b;
+        const aParam = a[param];
+        const bParam = b[param];
 
         if (
           validate<string | number | Date>(aParam, [isString, isNumber, isDate]) &&
@@ -79,9 +50,12 @@ export function sortBy(criteria?: T_Criteria[], order?: T_Order): T_SorterFuncti
           if (aParam < bParam) {
             return { result: smaller, finish: true };
           }
-        } else {
-          throw new Error("Review this please");
+
+          return { result: 0, finish: true };
         }
+
+        // TODO
+        console.warn("Invalid elements types", a, b);
 
         return result;
       },
@@ -116,6 +90,41 @@ function isPrimitiveValue(value: unknown): value is T_Primitive {
     typeof value === "boolean" ||
     typeof value === "number"
   );
+}
+
+function private_transformObjectKeysFromSnakeCaseToLowerCamelCase(
+  object: T_UnknownObject | T_Primitive,
+): T_UnknownObject | T_Primitive {
+  if (isPrimitiveValue(object)) {
+    return object;
+  }
+
+  return Object.entries(object).reduce((result, [key, value]) => {
+    const transformedKey = convertSnakeCaseToLowerCamelCase(key);
+
+    if (isPrimitiveValue(value)) {
+      return {
+        ...result,
+        [transformedKey]: value,
+      };
+    }
+
+    if (Array.isArray(value)) {
+      return {
+        ...result,
+        [transformedKey]: value.map(transformObjectKeysFromSnakeCaseToLowerCamelCase),
+      };
+    }
+
+    if (isObject(value)) {
+      return {
+        ...result,
+        [transformedKey]: transformObjectKeysFromSnakeCaseToLowerCamelCase(value),
+      };
+    }
+
+    return result;
+  }, {} as T_UnknownObject);
 }
 
 // --- Types ---

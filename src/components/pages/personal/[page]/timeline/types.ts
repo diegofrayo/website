@@ -1,11 +1,11 @@
-import type { T_ItemCategory } from "~/types";
+import type { T_GenericType1 } from "~/types";
 
 export type T_Timeline = {
   categories: T_TimelineCategory[];
   items: { year: number; title: string; items: T_TimelineItem[] }[];
 };
 
-type T_TimelineCategory = T_ItemCategory & { emoji: string };
+type T_TimelineCategory = T_GenericType1 & { emoji: string };
 
 type T_TimelineItem = {
   id: string;

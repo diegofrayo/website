@@ -1,12 +1,10 @@
 import { NextRouter } from "next/router";
 
-import type { T_RoutesValues } from "~/types";
-
 import { isPWA } from "./browser";
 
 // --- Constants ---
 
-type T_RoutesKeys =
+export type T_RoutesKeys =
   | "HOME"
   | "BOOKMARKS"
   | "ABOUT_ME"
@@ -21,6 +19,22 @@ type T_RoutesKeys =
   | "SIGN_OUT"
   | "ERROR_404"
   | "ERROR_500";
+
+export type T_RoutesValues =
+  | "/"
+  | "/about-me"
+  | "/resume"
+  | "/bookmarks"
+  | "/blog"
+  | "/blog/[slug]"
+  | "/music"
+  | "/music/[song]"
+  | "/personal"
+  | "/timer"
+  | "/sign-in"
+  | "/sign-out"
+  | "/404"
+  | "/500";
 
 export const ROUTES: Readonly<Record<T_RoutesKeys, T_RoutesValues>> = {
   HOME: "/",
