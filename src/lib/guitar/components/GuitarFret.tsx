@@ -117,21 +117,21 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
                     {getSkippedStringValue(playedStrings, guitarString)}
                   </InlineText>
                 ) : isBarreMusicNote ? (
-                  <>
+                  <React.Fragment>
                     <String />
                     {(musicNote as I_BarreMusicNote)?.barre >= guitarString && (
                       <InlineText className="tw-h-full tw-border-4 tw-border-white" />
                     )}
                     <String />
-                  </>
+                  </React.Fragment>
                 ) : musicNote ? (
-                  <>
+                  <React.Fragment>
                     <String />
                     <Block className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-bg-white tw-font-bold tw-leading-0 tw-text-black">
                       {(musicNote as I_SimpleMusicNote).finger}
                     </Block>
                     <String />
-                  </>
+                  </React.Fragment>
                 ) : (
                   <String />
                 )}

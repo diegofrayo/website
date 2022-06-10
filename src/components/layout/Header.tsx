@@ -6,23 +6,16 @@ import { useRouter } from "next/router";
 import { Block, Button, Icon, Link, List, Text, Space } from "~/components/primitive";
 import { AuthService } from "~/auth";
 import { withRequiredAuthComponent } from "~/hocs";
-import { useClickOutside, useDidMount, useEnhacedState } from "~/hooks";
+import { useClickOutside, useDidMount, useEnhancedState } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
 import http from "~/lib/http";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
-import type {
-  T_Locale,
-  T_RoutesValues,
-  T_ReactChildren,
-  T_ReactElement,
-  T_ReactElementNullable,
-  T_WebsiteMetadata,
-} from "~/types";
-import { isPWA } from "~/utils/browser";
-import { getErrorMessage, isDevelopmentEnvironment } from "~/utils/misc";
-import { ROUTES } from "~/utils/routing";
+import { isPWA, showAlert } from "~/utils/browser";
+import { ROUTES, T_RoutesValues } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
+import { getErrorMessage, isDevelopmentEnvironment } from "~/utils/app";
+import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 function Header(): T_ReactElement {
   // hooks
@@ -61,7 +54,6 @@ export default Header;
 type T_MainMenuItem = {
   label: string;
   url: T_RoutesValues;
-  locale?: T_Locale;
 };
 
 function MainMenu(): T_ReactElement {
@@ -205,15 +197,16 @@ function MainMenu(): T_ReactElement {
     </div>
   );
 }
-
-const SettingsMenu = withRequiredAuthComponent((): T_ReactElement => {
+const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactElement {
   // hooks
   const { theme, setTheme } = useTheme();
   const { t } = useTranslation();
 
   // states & refs
-  const menuRef = React.useRef(null);
-  const { showMenu, setShowMenu, toggleShowMenu } = useEnhacedState({ showMenu: false });
+  const menuRef = React.useRef<HTMLDivElement>(null);
+  const [showMenu, setShowMenu, toggleShowMenu] = useEnhancedState(false);
+
+  // vars
   const isDarkMode = theme === "dark";
 
   // effects
@@ -299,7 +292,7 @@ const SettingsMenu = withRequiredAuthComponent((): T_ReactElement => {
   );
 });
 
-const EnvironmentMenuItem = withRequiredAuthComponent((): T_ReactElement => {
+const EnvironmentMenuItem = withRequiredAuthComponent(function EnvironmentMenuItem() {
   // states & refs
   const [url, setUrl] = React.useState("/");
 
@@ -322,9 +315,9 @@ const EnvironmentMenuItem = withRequiredAuthComponent((): T_ReactElement => {
   );
 });
 
-const ISRMenuItem = withRequiredAuthComponent((): T_ReactElement => {
+const ISRMenuItem = withRequiredAuthComponent(function ISRMenuItem() {
   // handlers
-  async function handleISROnDemandClick() {
+  async function handleISROnDemandClick(): Promise<void> {
     try {
       await http.post("/api/diegofrayo", {
         path: window.location.pathname,
@@ -333,8 +326,8 @@ const ISRMenuItem = withRequiredAuthComponent((): T_ReactElement => {
 
       window.location.reload();
     } catch (error) {
-      console.error(error);
-      alert(`ERROR: ${getErrorMessage(error)}`);
+      reportError(error);
+      showAlert(`ERROR: ${getErrorMessage(error)}`);
     }
   }
 
@@ -351,7 +344,7 @@ const ISRMenuItem = withRequiredAuthComponent((): T_ReactElement => {
   );
 });
 
-const ReloadPWAMenuItem = withRequiredAuthComponent((): T_ReactElementNullable => {
+const ReloadPWAMenuItem = withRequiredAuthComponent(function ReloadPWAMenuItem() {
   // states & refs
   const [hasToRender, setHasToRender] = React.useState(false);
 
@@ -366,20 +359,20 @@ const ReloadPWAMenuItem = withRequiredAuthComponent((): T_ReactElementNullable =
   }
 
   // render
-  if (!hasToRender) {
-    return null;
+  if (hasToRender) {
+    return (
+      <MenuItem title="PWA">
+        <Button
+          variant={Button.variant.SIMPLE}
+          onClick={handleRefreshClick}
+        >
+          <Icon icon={Icon.icon.REFRESH} />
+        </Button>
+      </MenuItem>
+    );
   }
 
-  return (
-    <MenuItem title="PWA">
-      <Button
-        variant={Button.variant.SIMPLE}
-        onClick={handleRefreshClick}
-      >
-        <Icon icon={Icon.icon.REFRESH} />
-      </Button>
-    </MenuItem>
-  );
+  return null;
 });
 
 type T_MenuItemProps = {

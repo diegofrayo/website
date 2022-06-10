@@ -8,6 +8,8 @@ import AuthService from "./service";
 
 function withAuth(
   Component: T_ReactFunctionComponent,
+  // TODO
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   options?: { denyLoggedIn?: boolean; allowIf?: (props: T_UnknownObject) => boolean },
 ): T_ReactFunctionComponent {
   return function WithAuthComponent(props: T_UnknownObject): T_ReactElementNullable {
@@ -36,11 +38,11 @@ function withAuth(
     }
 
     // render
-    if (!isUserLoggedIn) {
-      return null;
+    if (isUserLoggedIn) {
+      return <Component {...props} />;
     }
 
-    return <Component {...props} />;
+    return null;
   };
 }
 

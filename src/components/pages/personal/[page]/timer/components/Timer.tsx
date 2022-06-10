@@ -294,7 +294,7 @@ function Timer({
       <Space size={2} />
 
       {!isRoutineItemCompleted && (
-        <>
+        <React.Fragment>
           <Block className="tw-flex tw-items-center tw-justify-between">
             <Button
               variant={Button.variant.SIMPLE}
@@ -330,7 +330,7 @@ function Timer({
             </Button>
           </Block>
           <Space size={2} />
-        </>
+        </React.Fragment>
       )}
 
       <Block className="tw-text-sm">

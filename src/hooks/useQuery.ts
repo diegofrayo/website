@@ -1,11 +1,12 @@
 import { useQuery as useReactQuery } from "react-query";
 
 import { delay } from "~/utils/misc";
+import type { T_UnknownObject } from "~/types";
 
 function useQuery<T_Data>(
   key: string,
   handler: () => Promise<T_Data> | T_Data,
-  options?: Record<string, unknown>,
+  options?: T_UnknownObject,
 ): { isLoading: boolean; error: unknown; data: T_Data | undefined } {
   const { isLoading, error, data } = useReactQuery<T_Data>(
     key,

@@ -119,7 +119,7 @@ function TimerPage(): T_ReactElement {
                 <GoBack className="tw-absolute tw-top-0" />
 
                 {currentRoutine.status === ROUTINE_STATUS.IN_PROGRESS ? (
-                  <>
+                  <React.Fragment>
                     {currentRoutineItem && (
                       <Timer
                         routineItem={currentRoutineItem}
@@ -175,7 +175,7 @@ function TimerPage(): T_ReactElement {
                         ))}
                       </Block>
                     </Block>
-                  </>
+                  </React.Fragment>
                 ) : (
                   <Block
                     is="section"
@@ -212,7 +212,7 @@ function TimerPage(): T_ReactElement {
                     />
 
                     {routinesHistory.length > 0 ? (
-                      <>
+                      <React.Fragment>
                         <Block is="section">
                           <Title
                             is="h2"
@@ -244,7 +244,7 @@ function TimerPage(): T_ReactElement {
                           size={10}
                           variant={Space.variant.DASHED}
                         />
-                      </>
+                      </React.Fragment>
                     ) : null}
 
                     <Title

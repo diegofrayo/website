@@ -17,7 +17,11 @@ export function isServer(): boolean {
 }
 
 export function reportError(error: unknown): void {
-  console.error(error);
+  logger("ERROR", error);
+}
+
+export function logger(type: "LOG" | "WARN" | "ERROR", ...args: unknown[]): void {
+  console[type === "LOG" ? "log" : type === "WARN" ? "warn" : "error"](args);
 }
 
 export function getErrorMessage(error: unknown): string {

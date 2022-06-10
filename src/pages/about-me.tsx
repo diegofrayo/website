@@ -6,17 +6,19 @@ import { Page, MainLayout } from "~/components/layout";
 import { MDXContent } from "~/components/shared";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
 import { dataLoader } from "~/server";
-import type { T_ReactElement } from "~/types";
 import { MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
+import type { T_ReactElement } from "~/types";
 
 type T_AboutMePageProps = {
   pageMDXContent: MDXRemoteSerializeResult;
 };
 
 function AboutMePage({ pageMDXContent }: T_AboutMePageProps): T_ReactElement {
+  // hooks
   const { t } = useTranslation();
 
+  // render
   return (
     <Page
       config={{
@@ -46,9 +48,7 @@ export const getStaticProps = getPageContentStaticProps<T_AboutMePageProps, { pa
     const file = (await dataLoader({ path: "/pages/about-me/en.about-me.mdx" })) as string;
     const pageMDXContent = await serialize(file, {
       scope: {
-        DATA: {
-          ...MDXScope.DATA,
-        },
+        DATA: MDXScope.DATA,
       },
     });
 

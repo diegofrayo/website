@@ -1,9 +1,7 @@
 import * as React from "react";
 
-function useDocumentTitle(title?: string): void {
+function useDocumentTitle(title: string): void {
   React.useEffect(() => {
-    if (!title) return;
-
     document.title = title;
   }, [title]);
 }

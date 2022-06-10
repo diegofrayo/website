@@ -14,7 +14,7 @@ function ChordsCreator(): T_ReactElement {
   } = useController();
 
   return (
-    <>
+    <React.Fragment>
       <Block>
         <Title
           is="h2"
@@ -131,7 +131,7 @@ function ChordsCreator(): T_ReactElement {
           enableShowNotesOption
         />
       </Block>
-    </>
+    </React.Fragment>
   );
 }
 

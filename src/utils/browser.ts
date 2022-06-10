@@ -1,10 +1,18 @@
 import { toast } from "react-toastify";
 
 import { I18nService } from "~/i18n";
-import type { T_OnClickEvent, T_SetTimeout } from "~/types";
+import type { T_OnClickEventObject, T_ReactEventTarget, T_SetTimeout } from "~/types";
 
 import { reportError } from "./app";
 import { isEmptyString, isNotDefined, isString } from "./validations";
+
+export function showAlert(message: string): void {
+  alert(message);
+}
+
+export function isDOMNode(element: T_ReactEventTarget | null): element is Node {
+  return "nodeType" in (element || {});
+}
 
 export function getScrollPosition(): number {
   return document.body.scrollTop || document.documentElement.scrollTop || 0;
@@ -126,7 +134,7 @@ export function isPWA(): boolean {
 }
 
 export async function copyToClipboard(
-  parameter: T_OnClickEvent<HTMLDivElement | HTMLButtonElement> | string,
+  parameter: T_OnClickEventObject<HTMLButtonElement> | string,
 ): Promise<void> {
   try {
     const clipboardText = isString(parameter)

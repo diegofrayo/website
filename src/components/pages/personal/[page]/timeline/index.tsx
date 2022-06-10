@@ -30,7 +30,7 @@ function TimelinePage(): T_ReactElement {
       data={data}
     >
       {({ categories, items }: T_Timeline) => (
-        <>
+        <React.Fragment>
           <Block is="section">
             <Title
               is="h3"
@@ -64,7 +64,7 @@ function TimelinePage(): T_ReactElement {
             timeline={items}
             TimelineItem={TimelineItem}
           />
-        </>
+        </React.Fragment>
       )}
     </Render>
   );

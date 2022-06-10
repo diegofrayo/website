@@ -1,5 +1,7 @@
 import useDidMount from "./useDidMount";
 
+import type { T_SetTimeout } from "~/types";
+
 function useOnWindowStopScroll({
   onScrollStoppedCallback,
   onScrollCallback = (): void => undefined,
@@ -8,32 +10,35 @@ function useOnWindowStopScroll({
   onScrollStoppedCallback: () => void;
   onScrollCallback?: () => void;
   timeout?: number;
-}): any {
-  let isScrolling = 0;
-  let mounted = false;
+}): () => void {
+  let isScrolling: T_SetTimeout;
+  let isMounted = false;
 
+  // effects
   useDidMount(() => {
-    mounted = true;
+    isMounted = true;
     window.addEventListener("scroll", onScroll, false);
   });
 
-  function onScrollStopped() {
-    if (!mounted) return;
+  // utils
+  function onScrollStopped(): void {
+    if (!isMounted) return;
+
     onScrollStoppedCallback();
   }
 
-  function onScroll() {
+  function onScroll(): void {
     window.clearTimeout(isScrolling);
 
     onScrollCallback();
 
-    isScrolling = window.setTimeout(() => {
+    isScrolling = setTimeout(() => {
       onScrollStopped();
     }, timeout);
   }
 
   return () => {
-    mounted = false;
+    isMounted = false;
     window.removeEventListener("scroll", onScroll, false);
   };
 }

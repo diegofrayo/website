@@ -1,11 +1,15 @@
 import { T_UnknownObject } from "~/types";
 
-export function isNotEmptyString(input: unknown): input is string {
-  return typeof input === "string" && input.length > 0;
-}
-
 export function isEmptyString(input: unknown): input is string {
   return typeof input === "string" && input.length === 0;
+}
+
+export function isNotEmptyString(input: unknown): input is string {
+  return !isEmptyString(input);
+}
+
+export function isEmptyStringOrNotDefined(input: unknown): input is string {
+  return isEmptyString(input) || isNotDefined(input);
 }
 
 // TODO: Think about a better name for this function
@@ -15,6 +19,10 @@ export function isNotDefined(input: unknown): input is undefined | null {
 
 export function isUndefined(input: unknown): input is undefined {
   return input === undefined;
+}
+
+export function isNotTrue(input: boolean): input is boolean {
+  return input === false;
 }
 
 export function notFound(input: unknown): input is undefined {
@@ -39,6 +47,10 @@ export function isString(input: unknown): input is string {
 
 export function isNumber(input: unknown): input is number {
   return typeof input === "number";
+}
+
+export function isBoolean(input: unknown): input is boolean {
+  return typeof input === "boolean";
 }
 
 export function isDate(input: unknown): input is Date {

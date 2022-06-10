@@ -1,11 +1,11 @@
 import http from "~/lib/http";
-import type { T_Object, T_UnknownObject } from "~/types";
 import { ENV_VARS } from "~/utils/constants";
 import {
   sortBy,
   transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
 import { notFound } from "~/utils/validations";
+import type { T_UnknownObject } from "~/types";
 
 class MusicService {
   constructor() {
@@ -102,5 +102,7 @@ export type T_Song = {
     source: "youtube" | "lacuerda" | "url" | "instagram" | "spotify" | "ultimate-guitar";
   }[];
   chords: string[];
-  readonly assets: T_Object<string>;
+  readonly assets: {
+    serverUrl?: string;
+  };
 };

@@ -40,7 +40,9 @@ module.exports = {
     "react/jsx-props-no-spreading": "off", // TODO
     "react/require-default-props": "off", // TODO
     "no-nested-ternary": "off",
+    "react/jsx-no-bind": "off",
     "react/prop-types": "off",
+    "react/jsx-fragments": "off",
 
     "class-methods-use-this": "warn", // TODO
     "@typescript-eslint/ban-ts-comment": "warn",
@@ -49,8 +51,10 @@ module.exports = {
 
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-shadow": ["error", { allow: ["params"] }],
     "@typescript-eslint/no-unused-vars": "error",
     "no-loops/no-loops": "error",
+    "no-restricted-exports": ["error", { restrictedNamedExports: [] }],
   },
   settings: {
     react: {

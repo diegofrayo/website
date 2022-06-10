@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 import { Block, Button, Icon, Image, Modal, Text } from "~/components/primitive";
-import { useDidMount, useEnhacedState } from "~/hooks";
+import { useDidMount, useEnhancedState } from "~/hooks";
 import type { T_ReactElement } from "~/types";
 
 const Context = React.createContext({} as T_Context);
@@ -25,9 +25,7 @@ export function VEC_TimelineItem({
   };
 }): T_ReactElement {
   const [sharedIndex, setSharedIndex] = React.useState(0);
-  const { isModalVisible, setIsModalVisible, toggleIsModalVisible } = useEnhacedState({
-    isModalVisible: false,
-  });
+  const [isModalVisible, setIsModalVisible, toggleIsModalVisible] = useEnhancedState(false);
 
   return (
     <Block>

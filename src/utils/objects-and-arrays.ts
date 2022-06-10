@@ -1,4 +1,5 @@
 import type { T_UnknownObject } from "~/types";
+import { logger } from "./app";
 
 import { between } from "./numbers";
 import { isDate, isNumber, isObject, isString, validate } from "./validations";
@@ -55,7 +56,7 @@ export function sortBy(criteria: T_Criteria[]): T_SorterFunction {
         }
 
         // TODO
-        console.warn("Invalid elements types", a, b);
+        logger("WARN", "Invalid elements types", a, b);
 
         return result;
       },

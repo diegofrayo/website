@@ -20,18 +20,18 @@ import Header from "./Header";
 type T_MainLayoutProps = {
   title: string;
   children: T_ReactChildren;
-  shasToShowGoToTheTopButton?: boolean;
+  hasToDisplayGoToTheTopButton?: boolean;
 };
 
 function MainLayout({
   children,
   title = "",
-  shasToShowGoToTheTopButton = true,
+  hasToDisplayGoToTheTopButton = true,
 }: T_MainLayoutProps): T_ReactElement {
   // hooks
   const { pathname } = useRouter();
 
-  // states & refs
+  // vars
   const parentUrl = getParentURL();
 
   // utils
@@ -78,7 +78,7 @@ function MainLayout({
         </Block>
       </Block>
 
-      <Footer shasToShowGoToTheTopButton={shasToShowGoToTheTopButton} />
+      <Footer hasToDisplayGoToTheTopButton={hasToDisplayGoToTheTopButton} />
     </Block>
   );
 }
@@ -87,9 +87,9 @@ export default MainLayout;
 
 // --- Components ---
 
-type T_FooterProps = Pick<T_MainLayoutProps, "shasToShowGoToTheTopButton">;
+type T_FooterProps = Pick<T_MainLayoutProps, "hasToDisplayGoToTheTopButton">;
 
-function Footer({ shasToShowGoToTheTopButton }: T_FooterProps): T_ReactElement {
+function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement {
   // hooks
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
@@ -135,7 +135,7 @@ function Footer({ shasToShowGoToTheTopButton }: T_FooterProps): T_ReactElement {
         </Block>
       </Block>
 
-      {shasToShowGoToTheTopButton && <GoToTopButton />}
+      {hasToDisplayGoToTheTopButton && <GoToTopButton />}
     </Block>
   );
 }
@@ -183,20 +183,20 @@ function GoToTopButton(): T_ReactElementNullable {
   }
 
   // render
-  if (!hasToDisplayTheButton) {
-    return null;
+  if (hasToDisplayTheButton) {
+    return (
+      <Button
+        variant={Button.variant.SIMPLE}
+        className="tw-fixed tw-bottom-3 tw-right-3 tw-z-50 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-bg-opacity-70 tw-text-2xl dfr-bg-color-dark-strong sm:tw-right-4 sm:tw-bottom-4"
+        onClick={handleGoToTheTopClick}
+      >
+        <Icon
+          icon={Icon.icon.ARROW_UP}
+          color="dfr-text-color-light-strong"
+        />
+      </Button>
+    );
   }
 
-  return (
-    <Button
-      variant={Button.variant.SIMPLE}
-      className="tw-fixed tw-bottom-3 tw-right-3 tw-z-50 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-bg-opacity-70 tw-text-2xl dfr-bg-color-dark-strong sm:tw-right-4 sm:tw-bottom-4"
-      onClick={handleGoToTheTopClick}
-    >
-      <Icon
-        icon={Icon.icon.ARROW_UP}
-        color="dfr-text-color-light-strong"
-      />
-    </Button>
-  );
+  return null;
 }

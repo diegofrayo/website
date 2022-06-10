@@ -5,8 +5,8 @@ import { Icon, Link, Block, InlineText, Space } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { withRequiredAuthComponent } from "~/hocs";
 import { useTranslation } from "~/i18n";
-import MusicService from "~/services/music";
-import type { T_ReactElement, T_Song } from "~/types";
+import MusicService, { T_Song } from "~/services/music";
+import type { T_ReactElementNullable } from "~/types";
 
 function SongDetails({
   song,
@@ -14,10 +14,14 @@ function SongDetails({
 }: {
   song: T_Song;
   className?: string;
-}): T_ReactElement {
+}): T_ReactElementNullable {
+  // hooks
   const { t } = useTranslation();
 
-  if (MusicService.isChordsSong(song)) return null;
+  // render
+  if (MusicService.isChordsSong(song)) {
+    return null;
+  }
 
   return (
     <Block className={classNames("tw-text-sm tw-italic", className)}>
@@ -107,11 +111,14 @@ export default SongDetails;
 
 // --- Components ---
 
-const Category = withRequiredAuthComponent(({ category }: { category: string }) => {
+const Category = withRequiredAuthComponent(function Category({ category }: { category: string }) {
+  // hooks
   const { t } = useTranslation();
 
+  // vars
   const EMOJIS = ["🟦", "🟩", "🟨", "⬛", "⬜", "🟥"];
 
+  // render
   return (
     <Block className="sm:tw-flex sm:tw-flex-nowrap">
       <InlineText
@@ -120,7 +127,7 @@ const Category = withRequiredAuthComponent(({ category }: { category: string }) 
       >
         {t("page:category")}:
       </InlineText>
-      <Emoji>{EMOJIS[category.split("|")[0]]}</Emoji>
+      <Emoji>{EMOJIS[Number(category.split("|")[0])]}</Emoji>
       <InlineText className="tw-ml-1 tw-capitalize">
         {category.split("|")[1].replace("_", " ").toLowerCase()}
       </InlineText>

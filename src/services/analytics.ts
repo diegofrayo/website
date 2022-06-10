@@ -1,7 +1,7 @@
 import splitbee from "@splitbee/web";
 
 import { AuthService } from "~/auth";
-import { isBrowser, isDevelopmentEnvironment } from "~/utils/app";
+import { isBrowser, isDevelopmentEnvironment, logger } from "~/utils/app";
 import { exists } from "~/utils/validations";
 import type { T_ObjectWithPrimitives } from "~/types";
 
@@ -17,7 +17,7 @@ class AnalyticsService {
     if (this.isAnalyticsDisabled()) return;
 
     console.group("trackPageLoaded");
-    console.info({ page: window.location.pathname, title: document.title });
+    logger("LOG", { page: window.location.pathname, title: document.title });
     console.groupEnd();
   }
 

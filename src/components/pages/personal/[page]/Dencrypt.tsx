@@ -19,7 +19,7 @@ function Dencrypt(): T_ReactElement {
   } = useController();
 
   return (
-    <>
+    <React.Fragment>
       <Block className="tw-mb-8">
         <Input
           id="input"
@@ -66,7 +66,7 @@ function Dencrypt(): T_ReactElement {
           copiar
         </Button>
       </Block>
-    </>
+    </React.Fragment>
   );
 }
 

@@ -89,7 +89,7 @@ function SourceCode({
       {displaySourceCodeDetails ? (
         <Block className="tw-flex tw-flex-col tw-rounded-b-md tw-border tw-border-t-0 tw-p-2 tw-text-sm dfr-border-color-primary dark:tw-border-0 dark:tw-bg-gray-700 sm:tw-flex-row sm:tw-justify-end">
           {isNotEmptyString(sourceURL) ? (
-            <>
+            <React.Fragment>
               <Link
                 variant={Link.variant.SECONDARY}
                 href={sourceURL}
@@ -105,7 +105,7 @@ function SourceCode({
                 </InlineText>
               </Link>
               <Space responsive="tw-block tw-mb-1 tw-mr-0 sm:tw-inline-block sm:tw-mb-0 sm:tw-mr-6" />
-            </>
+            </React.Fragment>
           ) : null}
           <Button
             variant={Button.variant.DEFAULT}

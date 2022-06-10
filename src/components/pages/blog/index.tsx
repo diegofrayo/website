@@ -8,13 +8,14 @@ import { Render } from "~/components/shared";
 import { AuthService } from "~/auth";
 import { useQuery } from "~/hooks";
 import { useTranslation } from "~/i18n";
-import BlogService from "~/services/blog";
-import type { T_BlogPost, T_Locale, T_ReactElement } from "~/types";
+import BlogService, { T_BlogPost } from "~/services/blog";
+import type { T_ReactElement } from "~/types";
 import { getDifferenceBetweenDates } from "~/utils/dates";
-import { isDevelopmentEnvironment } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
+import { isDevelopmentEnvironment } from "~/utils/app";
 
 function Blog(): T_ReactElement {
+  // hooks
   const { isLoading, error, data } = useQuery("blog", BlogService.fetchPosts);
   const { t } = useTranslation();
 
@@ -33,28 +34,32 @@ function Blog(): T_ReactElement {
           error={error}
           data={data}
         >
-          {(posts: T_BlogPost[]) => (
-            <Block className="tw-flex tw-flex-wrap tw-justify-between">
-              {posts
-                .filter((post: T_BlogPost) =>
-                  isDevelopmentEnvironment() || AuthService.isUserLoggedIn()
-                    ? true
-                    : post.isPublished,
-                )
-                .map((post) => (
-                  <BlogEntry
-                    key={post.slug}
-                    slug={post.slug}
-                    title={post.title}
-                    categories={post.categories}
-                    publishedAt={post.publishedAt}
-                    isPublished={post.isPublished}
-                    locales={post.locales}
-                    thumbnail={post.thumbnail}
-                  />
-                ))}
-            </Block>
-          )}
+          {(response): T_ReactElement => {
+            const posts = response as T_BlogPost[];
+
+            return (
+              <Block className="tw-flex tw-flex-wrap tw-justify-between">
+                {posts
+                  .filter((post: T_BlogPost) =>
+                    isDevelopmentEnvironment() || AuthService.isUserLoggedIn()
+                      ? true
+                      : post.isPublished,
+                  )
+                  .map((post) => (
+                    <BlogEntry
+                      key={post.slug}
+                      slug={post.slug}
+                      title={post.title}
+                      categories={post.categories}
+                      publishedAt={post.publishedAt}
+                      isPublished={post.isPublished}
+                      locales={post.locales}
+                      thumbnail={post.thumbnail}
+                    />
+                  ))}
+              </Block>
+            );
+          }}
         </Render>
       </MainLayout>
     </Page>
@@ -111,12 +116,12 @@ function BlogEntry({
           <Block className="tw-absolute tw-bottom-0 tw-flex tw-w-full tw-items-end tw-justify-between tw-px-2 tw-py-2">
             <Text className="tw-text-xs tw-font-normal tw-italic dfr-text-color-secondary">
               {isPublished ? (
-                <>
+                <React.Fragment>
                   <InlineText>{t("page:published_at")} </InlineText>
                   <InlineText is="strong">
                     {getDifferenceBetweenDates(publishedAt, new Date())}
                   </InlineText>
-                </>
+                </React.Fragment>
               ) : (
                 "Draft 📝"
               )}

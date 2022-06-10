@@ -6,11 +6,11 @@ import SongPage from "~/components/pages/music/[song]";
 import { getPageContentStaticProps } from "~/i18n";
 import http from "~/lib/http";
 import { dataLoader } from "~/server";
-import MusicService from "~/services/music";
-import type { T_Song } from "~/types";
+import MusicService, { T_Song } from "~/services/music";
+import { isDevelopmentEnvironment } from "~/utils/app";
 import { MDXScope } from "~/utils/mdx";
-import { isDevelopmentEnvironment } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
+import { isEmptyStringOrNotDefined } from "~/utils/validations";
 
 type T_PageProps = {
   song: T_Song;
@@ -21,25 +21,38 @@ export default SongPage;
 
 // --- Next.js functions ---
 
-type T_StaticPath = { params: { song: string } };
+type T_StaticPath = { song: string };
 
-export const getStaticPaths: GetStaticPaths<{ song: string }> = async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths<T_StaticPath> = async function getStaticPaths() {
   return {
-    paths: (await MusicService.fetchSongsList()).reduce((result: T_StaticPath[], song: T_Song) => {
-      if (!song.isPublic) return result;
-      return result.concat([{ params: { song: song.id } }]);
-    }, []),
+    paths: (await MusicService.fetchSongsList()).reduce(
+      (result: { params: T_StaticPath }[], song: T_Song) => {
+        if (song.isPublic) {
+          return result.concat([{ params: { song: song.id } }]);
+        }
+
+        return result;
+      },
+      [],
+    ),
     fallback: "blocking",
   };
 };
 
-export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: string }>({
+export const getStaticProps = getPageContentStaticProps<T_PageProps, T_StaticPath>({
   page: [ROUTES.MUSIC, ROUTES.MUSIC_DETAILS],
   callback: async ({ params }) => {
-    const song = await MusicService.getSong({ id: params?.song });
+    const song = await MusicService.getSong({ id: params.song });
     const file = (await dataLoader({
       path: `/pages/music/[song]/assets/${song.id}.mdx`,
     })) as string;
+
+    let content;
+    if (isDevelopmentEnvironment() || isEmptyStringOrNotDefined(song.assets?.serverUrl)) {
+      content = await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.txt` });
+    } else {
+      content = (await http.get(song.assets?.serverUrl || "")).data;
+    }
 
     const songMDXContent = await serialize(file, {
       scope: {
@@ -47,13 +60,7 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, { song: str
           ...MDXScope.DATA,
           song: {
             ...song,
-            content: isDevelopmentEnvironment()
-              ? await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.txt` })
-              : song.assets?.serverUrl
-              ? (
-                  await http.get(song.assets?.serverUrl)
-                ).data
-              : await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.txt` }),
+            content,
           },
         },
       },

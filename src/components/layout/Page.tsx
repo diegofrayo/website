@@ -12,7 +12,7 @@ import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata, selectSEOMetadata } from "~/state/modules/metadata";
 import { selectPageConfig } from "~/state/modules/page-config";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { ROUTES } from "~/utils/routing";
+import { ROUTES, T_RoutesValues } from "~/utils/routing";
 import type {
   T_ReactChildren,
   T_ReactElement,
@@ -54,7 +54,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   });
 
   return (
-    <>
+    <React.Fragment>
       <Head>
         <title>{metadata.title}</title>
         <meta charSet="UTF-8" />
@@ -204,7 +204,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
       <UserLoggedInFlag />
       <AnalyticsDisabledFlag />
       {/* {isDevelopmentEnvironment() && <WindowSize />} */}
-    </>
+    </React.Fragment>
   );
 }
 
@@ -212,14 +212,14 @@ export default Page;
 
 // --- Components ---
 
-const UserLoggedInFlag = withRequiredAuthComponent(
-  (): T_ReactElement => (
+const UserLoggedInFlag = withRequiredAuthComponent(function UserLoggedInFlag(): T_ReactElement {
+  return (
     <Flag
       className="tw-z-50"
       color="dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong"
     />
-  ),
-);
+  );
+});
 
 function AnalyticsDisabledFlag(): T_ReactElementNullable {
   // hooks

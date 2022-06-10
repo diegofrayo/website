@@ -32,15 +32,17 @@ export type T_ReactEffectCallback = React.EffectCallback;
 
 export type T_ReactSetState<T_State> = React.Dispatch<React.SetStateAction<T_State>>;
 
-// --- Event Handlers ---
+// --- React Event Handlers ---
 
-export type T_OnClickEvent<HTMLElement = HTMLButtonElement> = React.MouseEvent<HTMLElement>;
+export type T_OnClickEventObject<G_HTMLElement> = React.MouseEvent<G_HTMLElement>;
 
-export type T_OnChangeEvent<HTMLElement> = React.ChangeEventHandler<HTMLElement>;
+export type T_ReactEventTarget = EventTarget;
 
-export type T_OnScrollEvent = React.UIEvent<HTMLElement>;
+// export type T_OnChangeEvent<HTMLElement> = React.ChangeEventHandler<HTMLElement>;
 
-export type T_FormEvent<HTMLElement> = React.FormEvent<HTMLElement>;
+// export type T_OnScrollEvent = React.UIEvent<HTMLElement>;
+
+// export type T_FormEvent<HTMLElement> = React.FormEvent<HTMLElement>;
 
 // --- HTML ---
 
