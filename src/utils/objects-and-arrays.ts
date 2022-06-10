@@ -10,12 +10,12 @@ export function transformObjectKeysFromSnakeCaseToLowerCamelCase(
   return private_transformObjectKeysFromSnakeCaseToLowerCamelCase(object) as T_UnknownObject;
 }
 
-export function mirror<T_Variant extends string>(
-  elements: readonly T_Variant[],
-): Record<T_Variant, T_Variant> {
+export function mirror<G_Variant extends string>(
+  elements: readonly G_Variant[],
+): Record<G_Variant, G_Variant> {
   return elements.reduce(
     (result, element) => ({ ...result, [element]: element }),
-    {} as Record<T_Variant, T_Variant>,
+    {} as Record<G_Variant, G_Variant>,
   );
 }
 
@@ -67,7 +67,7 @@ export function sortBy(criteria: T_Criteria[]): T_SorterFunction {
   return sortByReturn;
 }
 
-export function getRandomItem<T_ItemType>(array: T_ItemType[]): T_ItemType {
+export function getRandomItem<G_ItemType>(array: G_ItemType[]): G_ItemType {
   return array[between(0, array.length - 1)];
 }
 

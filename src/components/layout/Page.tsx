@@ -5,7 +5,7 @@ import Script from "next/script";
 
 import { InlineText } from "~/components/primitive";
 import { useDidMount, useDocumentTitle } from "~/hooks";
-import { withRequiredAuthComponent } from "~/hocs";
+import { withAuthenticationRequired } from "~/hocs";
 import { I18nService } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import { useStoreSelector } from "~/state";
@@ -212,7 +212,7 @@ export default Page;
 
 // --- Components ---
 
-const UserLoggedInFlag = withRequiredAuthComponent(function UserLoggedInFlag(): T_ReactElement {
+const UserLoggedInFlag = withAuthenticationRequired(function UserLoggedInFlag(): T_ReactElement {
   return (
     <Flag
       className="tw-z-50"

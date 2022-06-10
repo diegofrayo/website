@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { ImageWithLink } from "~/components/shared";
-import { withRequiredAuthComponent } from "~/hocs";
+import { withAuthenticationRequired } from "~/hocs";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
 function ProtectedImage({
@@ -18,4 +18,4 @@ function ProtectedImage({
   );
 }
 
-export default withRequiredAuthComponent(ProtectedImage);
+export default withAuthenticationRequired(ProtectedImage);

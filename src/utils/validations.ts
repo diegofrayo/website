@@ -57,10 +57,10 @@ export function isDate(input: unknown): input is Date {
   return input instanceof Date;
 }
 
-export function validate<T_Types>(
+export function validate<G_Types>(
   input: unknown,
   validators: ((input: unknown) => boolean)[],
-): input is T_Types {
+): input is G_Types {
   return validators.reduce((result: boolean, fn) => {
     return result && fn(input);
   }, true);
@@ -70,7 +70,7 @@ export function validate<T_Types>(
 // type T_Args = ((input: unknown) => boolean)[];
 // type T_ValidateReturn = (...args: T_Args) => boolean;
 
-// export function validate<T_Types>(input: unknown): input is T_Types {
+// export function validate<G_Types>(input: unknown): input is G_Types {
 //   const validateReturn = function validateReturn(...args: T_Args) {
 //     return args.reduce((result: boolean, fn) => {
 //       return result && fn(input);

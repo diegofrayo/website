@@ -4,16 +4,26 @@ import hoistNonReactStatics from "hoist-non-react-statics";
 import { useDidMount } from "~/hooks";
 import type { T_ReactElementNullable, T_ReactFunctionComponent } from "~/types";
 
-function renderIf<Props>(WrappedComponent: T_ReactFunctionComponent<Props>): any {
-  return (renderIfFn: () => boolean) => {
-    function RenderIfComponent(props: Props): T_ReactElementNullable {
-      const [renderComponent, setRenderComponent] = React.useState(false);
+type T_RenderIfReturn<G_ComponentProps> = (
+  callback: () => boolean,
+) => T_ReactFunctionComponent<G_ComponentProps>;
 
-      useDidMount(() => setRenderComponent(renderIfFn()));
+function renderIf<G_ComponentProps>(
+  WrappedComponent: T_ReactFunctionComponent<G_ComponentProps>,
+): T_RenderIfReturn<G_ComponentProps> {
+  const renderIfReturn: T_RenderIfReturn<G_ComponentProps> = function renderIfReturn(callback) {
+    function RenderIfComponent(props: G_ComponentProps): T_ReactElementNullable {
+      const [hasToRender, setHasToRender] = React.useState(false);
 
-      if (!renderComponent) return null;
+      useDidMount(() => {
+        setHasToRender(callback());
+      });
 
-      return <WrappedComponent {...props} />;
+      if (hasToRender) {
+        return <WrappedComponent {...props} />;
+      }
+
+      return null;
     }
 
     RenderIfComponent.displayName = `renderIf(${
@@ -22,6 +32,8 @@ function renderIf<Props>(WrappedComponent: T_ReactFunctionComponent<Props>): any
 
     return hoistNonReactStatics(RenderIfComponent, WrappedComponent);
   };
+
+  return renderIfReturn;
 }
 
 export default renderIf;

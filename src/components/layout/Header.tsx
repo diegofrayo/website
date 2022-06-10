@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 import { Block, Button, Icon, Link, List, Text, Space } from "~/components/primitive";
 import { AuthService } from "~/auth";
-import { withRequiredAuthComponent } from "~/hocs";
+import { withAuthenticationRequired } from "~/hocs";
 import { useClickOutside, useDidMount, useEnhancedState } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
 import http from "~/lib/http";
@@ -197,7 +197,7 @@ function MainMenu(): T_ReactElement {
     </div>
   );
 }
-const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactElement {
+const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_ReactElement {
   // hooks
   const { theme, setTheme } = useTheme();
   const { t } = useTranslation();
@@ -292,7 +292,7 @@ const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactE
   );
 });
 
-const EnvironmentMenuItem = withRequiredAuthComponent(function EnvironmentMenuItem() {
+const EnvironmentMenuItem = withAuthenticationRequired(function EnvironmentMenuItem() {
   // states & refs
   const [url, setUrl] = React.useState("/");
 
@@ -315,7 +315,7 @@ const EnvironmentMenuItem = withRequiredAuthComponent(function EnvironmentMenuIt
   );
 });
 
-const ISRMenuItem = withRequiredAuthComponent(function ISRMenuItem() {
+const ISRMenuItem = withAuthenticationRequired(function ISRMenuItem() {
   // handlers
   async function handleISROnDemandClick(): Promise<void> {
     try {
@@ -344,7 +344,7 @@ const ISRMenuItem = withRequiredAuthComponent(function ISRMenuItem() {
   );
 });
 
-const ReloadPWAMenuItem = withRequiredAuthComponent(function ReloadPWAMenuItem() {
+const ReloadPWAMenuItem = withAuthenticationRequired(function ReloadPWAMenuItem() {
   // states & refs
   const [hasToRender, setHasToRender] = React.useState(false);
 

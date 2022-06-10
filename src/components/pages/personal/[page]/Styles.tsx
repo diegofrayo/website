@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { useTheme } from "next-themes";
 
 import { Block } from "~/components/primitive";
-import { withSafeRenderingComponent } from "~/hocs";
+import { withSafeRendering } from "~/hocs";
 import type { T_ReactElement } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
 
@@ -15,7 +15,7 @@ export default Styles;
 
 // --- Components ---
 
-const Content = withSafeRenderingComponent(() => {
+const Content = withSafeRendering(() => {
   const { theme } = useTheme();
 
   const STYLES = {

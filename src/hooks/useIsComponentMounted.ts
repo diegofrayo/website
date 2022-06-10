@@ -2,7 +2,7 @@ import * as React from "react";
 
 import useDidMount from "./useDidMount";
 
-function useIsMountedRef(): { isComponentMounted: boolean } {
+function useIsComponentMounted(): boolean {
   // states & refs
   const isMountedRef = React.useRef(true);
 
@@ -15,7 +15,7 @@ function useIsMountedRef(): { isComponentMounted: boolean } {
     };
   });
 
-  return { isComponentMounted: isMountedRef.current };
+  return isMountedRef.current;
 }
 
-export default useIsMountedRef;
+export default useIsComponentMounted;

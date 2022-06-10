@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Icon, Link, Block, InlineText, Space } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
-import { withRequiredAuthComponent } from "~/hocs";
+import { withAuthenticationRequired } from "~/hocs";
 import { useTranslation } from "~/i18n";
 import MusicService, { T_Song } from "~/services/music";
 import type { T_ReactElementNullable } from "~/types";
@@ -111,7 +111,7 @@ export default SongDetails;
 
 // --- Components ---
 
-const Category = withRequiredAuthComponent(function Category({ category }: { category: string }) {
+const Category = withAuthenticationRequired(function Category({ category }: { category: string }) {
   // hooks
   const { t } = useTranslation();
 
