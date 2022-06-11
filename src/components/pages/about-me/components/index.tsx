@@ -2,24 +2,26 @@ import classNames from "classnames";
 import * as React from "react";
 
 import { Block, Image, InlineText, Text } from "~/components/primitive";
-
 import type { T_ReactElement } from "~/types";
+import { isNotEmptyString } from "~/utils/validations";
+
+type T_AboutMeBlockProps = {
+  image?: string;
+  text: string;
+  isPortrait: boolean;
+  layout?: "R" | "L";
+};
 
 export function AboutMeBlock({
   image,
   text,
   isPortrait,
   layout,
-}: {
-  image?: string;
-  text: string;
-  isPortrait: boolean;
-  layout?: "R" | "L";
-}): T_ReactElement {
+}: T_AboutMeBlockProps): T_ReactElement {
   return (
     <Block className="tw-mb-8 tw-overflow-auto tw-text-justify">
       <Text>
-        {image && (
+        {isNotEmptyString(image) ? (
           <Image
             src={image}
             className={classNames(
@@ -28,7 +30,7 @@ export function AboutMeBlock({
               layout === "R" ? "tw-float-right tw-ml-4" : "tw-float-left tw-mr-4",
             )}
           />
-        )}
+        ) : null}
         <InlineText>{text}</InlineText>
       </Text>
     </Block>

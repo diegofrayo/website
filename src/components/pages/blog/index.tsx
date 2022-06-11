@@ -7,12 +7,12 @@ import { Link, Block, Text, InlineText } from "~/components/primitive";
 import { Render } from "~/components/shared";
 import { AuthService } from "~/auth";
 import { useQuery } from "~/hooks";
-import { useTranslation } from "~/i18n";
+import { T_Locale, useTranslation } from "~/i18n";
 import BlogService, { T_BlogPost } from "~/services/blog";
-import type { T_ReactElement } from "~/types";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { ROUTES } from "~/utils/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
+import type { T_ReactElement } from "~/types";
 
 function Blog(): T_ReactElement {
   // hooks
@@ -40,23 +40,25 @@ function Blog(): T_ReactElement {
             return (
               <Block className="tw-flex tw-flex-wrap tw-justify-between">
                 {posts
-                  .filter((post: T_BlogPost) =>
-                    isDevelopmentEnvironment() || AuthService.isUserLoggedIn()
-                      ? true
-                      : post.isPublished,
-                  )
-                  .map((post) => (
-                    <BlogEntry
-                      key={post.slug}
-                      slug={post.slug}
-                      title={post.title}
-                      categories={post.categories}
-                      publishedAt={post.publishedAt}
-                      isPublished={post.isPublished}
-                      locales={post.locales}
-                      thumbnail={post.thumbnail}
-                    />
-                  ))}
+                  .filter((post: T_BlogPost) => {
+                    return (
+                      isDevelopmentEnvironment() || AuthService.isUserLoggedIn() || post.isPublished
+                    );
+                  })
+                  .map((post) => {
+                    return (
+                      <BlogEntry
+                        key={post.slug}
+                        slug={post.slug}
+                        title={post.title}
+                        categories={post.categories}
+                        publishedAt={post.publishedAt}
+                        isPublished={post.isPublished}
+                        locales={post.locales}
+                        thumbnail={post.thumbnail}
+                      />
+                    );
+                  })}
               </Block>
             );
           }}
@@ -84,18 +86,22 @@ function BlogEntry({
   thumbnail,
   isPublished,
 }: T_BlogEntryProps): T_ReactElement {
+  // hooks
   const { t } = useTranslation();
   const { locale } = useRouter();
 
+  // vars
   const CATEGORIES_COLORS = {
     tech: "tw-bg-green-200 dark:tw-bg-green-400 tw-text-black tw-opacity-75",
     personal: "tw-bg-blue-200 dark:tw-bg-blue-400 tw-text-black tw-opacity-75",
   };
 
+  // utils
   function getLocale(): T_Locale {
     return locales.find((l) => l === locale) || locales[0];
   }
 
+  // render
   return (
     <article className="root tw-my-8 tw-w-full dfr-shadow sm:tw-w-5/12">
       <Link

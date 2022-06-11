@@ -5,8 +5,14 @@ import { Page } from "~/components/layout";
 import { Input } from "~/components/primitive";
 import { AuthService, withAuth } from "~/auth";
 import { getPageContentStaticProps } from "~/i18n";
-import { T_ReactElement } from "~/types";
 import { redirect, ROUTES } from "~/utils/routing";
+import { getErrorMessage } from "~/utils/app";
+import { isEmptyString } from "~/utils/validations";
+import type {
+  T_ReactElement,
+  T_ReactOnChangeEventHandler,
+  T_ReactOnKeyPressEventHandler,
+} from "~/types";
 
 function SignInPage(): T_ReactElement {
   const {
@@ -28,7 +34,7 @@ function SignInPage(): T_ReactElement {
     >
       <form
         className="tw-p-4"
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={(e): void => e.preventDefault()}
       >
         <Input
           id="username"
@@ -36,7 +42,7 @@ function SignInPage(): T_ReactElement {
           name="username"
           value="diegofrayo"
           autoComplete="off"
-          onChange={() => undefined}
+          onChange={(): void => undefined}
           containerProps={{ className: "tw-hidden" }}
         />
         <Input
@@ -62,24 +68,37 @@ export const getStaticProps = getPageContentStaticProps();
 
 // --- Controller ---
 
-function useController() {
+type T_UseControllerReturn = {
+  inputValue: string;
+  isInputDisabled: boolean;
+  onInputChange: T_ReactOnChangeEventHandler<HTMLInputElement>;
+  onKeyPress: T_ReactOnKeyPressEventHandler<HTMLInputElement>;
+};
+
+function useController(): T_UseControllerReturn {
+  // states & refs
   const [inputValue, setInputValue] = React.useState("");
   const [isInputDisabled, setIsInputDisabled] = React.useState(false);
 
-  async function onKeyPress(e) {
-    if (e.key !== "Enter" || !inputValue) return;
+  // handlers
+  const onKeyPress: T_UseControllerReturn["onKeyPress"] = async function onKeyPress(
+    event,
+  ): Promise<void> {
+    if (event.key !== "Enter" || isEmptyString(inputValue)) {
+      return;
+    }
 
     try {
       setIsInputDisabled(true);
       await AuthService.signIn({ password: inputValue });
       redirect(ROUTES.HOME);
     } catch (error) {
-      console.error(error);
+      reportError(error);
 
       toast.error(
-        error.data?.code === "AUTH_WRONG_PASSWORD"
+        AuthService.isSignInError(error) && error.data.code === "AUTH_WRONG_PASSWORD"
           ? "Contraseña incorrecta."
-          : error.message || "Error en la petición",
+          : getErrorMessage(error),
         {
           position: toast.POSITION.BOTTOM_CENTER,
           toastId: "sign-in",
@@ -88,11 +107,11 @@ function useController() {
     } finally {
       setIsInputDisabled(false);
     }
-  }
+  };
 
-  function onInputChange(e) {
-    setInputValue(e.currentTarget.value);
-  }
+  const onInputChange: T_UseControllerReturn["onInputChange"] = function onInputChange(event) {
+    setInputValue(event.currentTarget.value);
+  };
 
   return {
     // states & refs

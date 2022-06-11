@@ -16,13 +16,16 @@ import {
 import { Emoji } from "~/components/shared";
 import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/i18n";
-import type { T_ReactElement } from "~/types";
-import { createArray } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
+import { createArray } from "~/utils/objects-and-arrays";
+import { isNotDefined } from "~/utils/validations";
+import type { T_ReactElement, T_ReactElementNullable } from "~/types";
 
 function Home(): T_ReactElement {
+  // hooks
   const { t } = useTranslation();
 
+  // render
   return (
     <Page
       config={{
@@ -64,7 +67,7 @@ export default Home;
 
 // --- Components ---
 
-function Featured() {
+function Featured(): T_ReactElement {
   return (
     <Block
       is="section"
@@ -125,10 +128,14 @@ function Room(): T_ReactElement {
   );
 }
 
-function PictureFrame() {
+function PictureFrame(): T_ReactElementNullable {
+  // hooks
   const { t } = useTranslation();
+
+  // states
   const [photo, setPhoto] = React.useState<{ src: string; portrait: boolean }>();
 
+  // effects
   useDidMount(() => {
     setPhoto({
       src: "/static/images/header/3.jpg",
@@ -136,7 +143,10 @@ function PictureFrame() {
     });
   });
 
-  if (!photo) return null;
+  // render
+  if (isNotDefined(photo)) {
+    return null;
+  }
 
   return (
     <Block
@@ -209,20 +219,13 @@ function PictureFrame() {
   );
 }
 
-function TV() {
+function TV(): T_ReactElement {
+  // states
   const [showInfo, setShowInfo] = React.useState(false);
   const [isAudioPlaying, setIsAudioPlaying] = React.useState(false);
   const [hasNotStartedTV, setHasNotStartedTV] = React.useState(true);
 
-  React.useEffect(() => {
-    if (showInfo === false) {
-      setIsAudioPlaying(false);
-
-      const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
-      audioElement.pause();
-    }
-  }, [showInfo]);
-
+  // vars
   const SONG = {
     title: "La Edad Del Cielo - Cover",
     artist: "arthur victor",
@@ -234,6 +237,47 @@ function TV() {
     source: "spotify",
   };
 
+  // effects
+  React.useEffect(() => {
+    if (showInfo === false) {
+      setIsAudioPlaying(false);
+      getAudioElement().pause();
+    }
+  }, [showInfo]);
+
+  // handlers
+  function handlePlayAndPauseClick(): void {
+    const audioElement = getAudioElement();
+    setIsAudioPlaying((currentValue) => !currentValue);
+
+    if (audioElement.paused) {
+      audioElement.play();
+      audioElement.volume = 0.5;
+    } else {
+      audioElement.pause();
+    }
+  }
+
+  function onSongEndedHandler(): void {
+    setShowInfo(false);
+  }
+
+  function handleStartTVClick(): void {
+    setHasNotStartedTV(false);
+    setShowInfo(true);
+  }
+
+  function handleToggleTurnOnTVClick(): void {
+    setShowInfo((currentValue) => !currentValue);
+    getAudioElement().currentTime = 0;
+  }
+
+  // utils
+  function getAudioElement(): HTMLAudioElement {
+    return document.getElementById("TV-audio") as HTMLAudioElement;
+  }
+
+  // render
   return (
     <Block className="dfr-TV tw-relative tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-bg-gradient-to-b tw-from-gray-800 tw-to-black tw-p-2 dark:tw-from-white dark:tw-to-gray-300">
       <Block className="tw-relative tw-h-16 tw-w-16 tw-overflow-hidden">
@@ -244,17 +288,7 @@ function TV() {
         >
           <Button
             variant={Button.variant.SIMPLE}
-            onClick={() => {
-              const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
-              setIsAudioPlaying(!!audioElement.paused);
-
-              if (audioElement.paused) {
-                audioElement.play();
-                audioElement.volume = 0.5;
-              } else {
-                audioElement.pause();
-              }
-            }}
+            onClick={handlePlayAndPauseClick}
           >
             <Icon
               icon={isAudioPlaying ? Icon.icon.PAUSE : Icon.icon.PLAY}
@@ -265,11 +299,11 @@ function TV() {
             <audio
               id="TV-audio"
               className="tw-hidden"
-              onEnded={() => setShowInfo(false)}
+              onEnded={onSongEndedHandler}
             >
-              <source
+              <track
+                kind="captions"
                 src={SONG.audio}
-                type="audio/mpeg"
               />
             </audio>
           </Button>
@@ -295,21 +329,20 @@ function TV() {
 
       <Block className="tw-flex tw-flex-1 tw-flex-col tw-items-center tw-justify-between tw-py-1">
         <Block className="tw-w-full tw-text-center">
-          {createArray(8).map((i) => (
-            <Block
-              key={`Volume-${i}`}
-              className="tw-my-0.5 tw-rounded-sm tw-border-b tw-border-gray-600 dark:dfr-border-color-dark-strong"
-            />
-          ))}
+          {createArray(8).map((i) => {
+            return (
+              <Block
+                key={`Volume-${i}`}
+                className="tw-my-0.5 tw-rounded-sm tw-border-b tw-border-gray-600 dark:dfr-border-color-dark-strong"
+              />
+            );
+          })}
         </Block>
         <Block className="tw-h-6 tw-w-6 tw-overflow-hidden tw-rounded-full tw-bg-gray-700 tw-transition-transform dark:dfr-bg-color-dark-strong">
           {hasNotStartedTV ? (
             <Button
               className="tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center"
-              onClick={() => {
-                setHasNotStartedTV(false);
-                setShowInfo(true);
-              }}
+              onClick={handleStartTVClick}
             >
               <Block className="tw-relative tw-h-2 tw-w-2 tw-animate-ping tw-rounded-full tw-bg-green-500" />
             </Button>
@@ -319,12 +352,7 @@ function TV() {
                 "tw-h-full tw-w-full tw-transition-transform",
                 showInfo && "tw-rotate-90",
               )}
-              onClick={() => {
-                setShowInfo((currentValue) => !currentValue);
-
-                const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
-                audioElement.currentTime = 0;
-              }}
+              onClick={handleToggleTurnOnTVClick}
             >
               <Block
                 className={classNames(
@@ -371,7 +399,7 @@ function TV() {
   );
 }
 
-function Flowers() {
+function Flowers(): T_ReactElement {
   return (
     <Block className="tw-relative tw-flex-shrink-0 tw-overflow-hidden">
       <Icon
@@ -393,7 +421,7 @@ function Flowers() {
   );
 }
 
-function Table() {
+function Table(): T_ReactElement {
   return (
     <Block className="dark:tw-border-yellow-70 tw-flex tw-h-20 tw-items-end tw-justify-end tw-overflow-hidden tw-rounded-tr-md tw-rounded-tl-md tw-border-8 tw-border-b-0 tw-border-yellow-900">
       <Icon
@@ -410,7 +438,13 @@ function Table() {
   );
 }
 
-function LinkItem({ label, url, className = "" }) {
+type T_LinkItemProps = {
+  label: string;
+  url: string;
+  className?: string;
+};
+
+function LinkItem({ label, url, className = "" }: T_LinkItemProps): T_ReactElement {
   return (
     <Block
       className={classNames(

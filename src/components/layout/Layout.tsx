@@ -5,15 +5,9 @@ import { Block, Button, Icon, Link, Title, Text, Space } from "~/components/prim
 import { useOnWindowStopScroll } from "~/hooks";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
-import type {
-  E_Icons,
-  T_ReactChildren,
-  T_ReactElement,
-  T_ReactElementNullable,
-  T_WebsiteMetadata,
-} from "~/types";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
-import { isNotEmptyString } from "~/utils/misc";
+import { isNotEmptyString } from "~/utils/validations";
+import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import Header from "./Header";
 

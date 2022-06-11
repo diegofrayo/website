@@ -20,12 +20,6 @@ export const PERSONAL_PAGES = [
     icon: "FILM",
   },
   {
-    slug: "songs",
-    title: "songs",
-    componentName: "Songs",
-    icon: "MUSIC_NOTE",
-  },
-  {
     slug: "timeline",
     title: "timeline",
     componentName: "timeline",
@@ -74,11 +68,5 @@ export const PERSONAL_PAGES = [
     title: "thumbnails",
     componentName: "Thumbnails",
     icon: "PHOTOGRAPH",
-  },
-  {
-    slug: "styles",
-    title: "styles",
-    componentName: "Styles",
-    icon: "COLOR_SWATCH",
   },
 ] as const;

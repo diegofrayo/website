@@ -6,7 +6,7 @@ import Script from "next/script";
 import { InlineText } from "~/components/primitive";
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import { withAuthenticationRequired } from "~/hocs";
-import { I18nService } from "~/i18n";
+import { I18nService, T_Locale } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata, selectSEOMetadata } from "~/state/modules/metadata";
@@ -116,7 +116,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
             />
           );
         })}
-        {locales.map((locale) => {
+        {locales.map((locale: T_Locale) => {
           if (locale === I18nService.getDefaultLocale()) {
             return (
               <link

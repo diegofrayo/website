@@ -5,7 +5,7 @@ import {
   sortBy,
   transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
-import { exists, notFound } from "~/utils/validations";
+import { isNotUndefined, notFound } from "~/utils/validations";
 import type { T_Object, T_UnknownObject } from "~/types";
 
 class BlogService {
@@ -77,7 +77,7 @@ function BlogPostVO(
       .map((category): T_BlogPostCategory | undefined => {
         return categories.find((item) => item.id === category);
       })
-      .filter((category) => exists(category)) as T_BlogPostCategory[]
+      .filter((category) => isNotUndefined(category)) as T_BlogPostCategory[]
   ).sort(sortBy([{ param: "value", order: "asc" }]));
 
   return blogPost;
@@ -99,7 +99,7 @@ export type T_BlogPost = {
   assets?: T_UnknownObject;
 };
 
-type T_BlogPostCategory = { id: string; value: string };
+type T_BlogPostCategory = { id: "tech" | "personal"; value: string };
 
 type T_BlogPostFetchDTO = {
   config: {

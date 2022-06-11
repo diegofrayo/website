@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
 import { I18nService } from "~/i18n";
-import type { T_OnClickEventObject, T_ReactEventTarget, T_SetTimeout } from "~/types";
+import type { T_ReactOnClickEventObject, T_ReactEventTarget, T_SetTimeout } from "~/types";
 
 import { reportError } from "./app";
 import { isEmptyString, isNotDefined, isString } from "./validations";
@@ -81,7 +81,7 @@ export async function downloadComponentAsImage(
   const domtoimage = await import("dom-to-image");
 
   // @ts-ignore: TODO: Property 'toPng' does not exist on type 'typeof'
-  domtoimage.toPng(componentRef, { quality: 1 }).then((dataUrl: string) => {
+  return domtoimage.toPng(componentRef, { quality: 1 }).then((dataUrl: string) => {
     const link = document.createElement("a");
     link.download = `${fileName}.png`;
     link.href = dataUrl;
@@ -134,7 +134,7 @@ export function isPWA(): boolean {
 }
 
 export async function copyToClipboard(
-  parameter: T_OnClickEventObject<HTMLButtonElement> | string,
+  parameter: T_ReactOnClickEventObject<HTMLButtonElement> | string,
 ): Promise<void> {
   try {
     const clipboardText = isString(parameter)

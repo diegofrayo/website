@@ -2,16 +2,18 @@ import * as React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Block, Link, List, Space, Title } from "~/components/primitive";
-import type { T_ReactElement } from "~/types";
 import { generateSlug } from "~/utils/strings";
+import type { T_Object, T_ReactElement } from "~/types";
 
 type T_BookmarksProps = {
-  bookmarks: T_UnknownObject<{ url: string; title: string }[]>;
+  bookmarks: T_Object<{ url: string; title: string }[]>;
 };
 
 function Bookmarks({ bookmarks }: T_BookmarksProps): T_ReactElement {
+  // vars
   const PAGE_TITLE = "Bookmarks";
 
+  // render
   return (
     <Page
       config={{

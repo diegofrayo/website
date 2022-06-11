@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import NProgress from "nprogress";
 
 import { useDidMount } from "~/hooks";
+import type { T_SetTimeout } from "~/types";
 
 function ProgressBar(): null {
   // hooks
@@ -9,7 +10,7 @@ function ProgressBar(): null {
 
   // effects
   useDidMount(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: T_SetTimeout;
 
     function showProgressBar(): void {
       timeout = setTimeout(NProgress.start, 100);

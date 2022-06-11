@@ -2,12 +2,14 @@ import * as React from "react";
 
 import { Link, List, Title, Block } from "~/components/primitive";
 import { useTranslation } from "~/i18n";
-import type { T_ReactElement } from "~/types";
 import { generateSlug } from "~/utils/strings";
+import type { T_ReactElement } from "~/types";
 
 function Sources({ sources }: { sources: { title: string; url: string }[] }): T_ReactElement {
+  // hooks
   const { t } = useTranslation();
 
+  // render
   return (
     <Block
       is="section"

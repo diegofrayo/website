@@ -2,7 +2,7 @@ import http from "~/lib/http";
 import { isBrowser } from "~/utils/app";
 import { ENV_VARS } from "~/utils/constants";
 import type { T_UnknownObject } from "~/types";
-import { isNotEmptyString } from "~/utils/validations";
+import { isNotEmptyString, isObject } from "~/utils/validations";
 
 class AuthService {
   private LOCAL_STORAGE_KEY = "DFR_AUTH";
@@ -29,6 +29,14 @@ class AuthService {
     return isBrowser() ? window.localStorage.getItem(this.LOCAL_STORAGE_KEY) || "" : "";
   }
 
+  isSignInError(error: unknown): error is T_SignInError {
+    if (isObject(error)) {
+      return isNotEmptyString((error as T_SignInError).data?.code);
+    }
+
+    return false;
+  }
+
   configureHttpHeaders(): void {
     http.interceptors.request.use((config) => ({
       ...config,
@@ -45,3 +53,11 @@ class AuthService {
 }
 
 export default new AuthService();
+
+// --- Types ---
+
+export type T_SignInError = {
+  data: {
+    code: "AUTH_WRONG_PASSWORD";
+  };
+};
