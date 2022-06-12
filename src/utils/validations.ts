@@ -55,6 +55,10 @@ export function isNotUndefined(input: unknown): input is typeof input {
   return !isUndefined(input);
 }
 
+export function isDefined(input: unknown): input is typeof input {
+  return !isUndefined(input);
+}
+
 // --- Utilities ---
 
 // easy to use
@@ -70,6 +74,11 @@ export function notFound(input: unknown): input is undefined {
 // check if a property exists inside an object
 export function exists<G_InputType = unknown>(input: unknown): input is G_InputType {
   return !isNotDefined(input);
+}
+
+// check if a property not exists inside an object
+export function notExists(input: unknown): input is undefined {
+  return isUndefined(input);
 }
 
 // validate a value using multiple functions

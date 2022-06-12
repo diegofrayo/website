@@ -13,7 +13,7 @@
     "postinstall": "yarn scripts:rss",
     "===== FORMATTING =====": "",
     "lint": "eslint \"src/{auth,hocs,hooks,pages,server,services,types,utils}/*.{ts,tsx}\"",
-    "lint:current": "eslint \"src/hocs/**/*.{ts,tsx}\"",
+    "lint:current": "eslint \"src/components/primitive/**/*.{ts,tsx}\"",
     "format": "prettier --write \"{src,public,scripts}/**/*.{ts,tsx,json,css,mjs}\"",
     "===== STORYBOOK =====": "",
     "storybook": "start-storybook -p 6006",

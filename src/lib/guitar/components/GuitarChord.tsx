@@ -149,7 +149,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
               <Button
                 variant={Button.variant.SIMPLE}
                 data-clipboard-text={musicNotesAsString}
-                onClick={copyToClipboard}
+                onClick={handleCopyToClipboardClick}
               >
                 <Emoji>📋</Emoji>
               </Button>{" "}

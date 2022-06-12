@@ -95,7 +95,7 @@ function WhatsApp(): T_ReactElement {
           variant={Button.variant.UNSTYLED}
           className="tw-inline-block tw-border tw-border-dashed tw-px-1 tw-text-xs tw-italic dfr-border-color-primary"
           data-clipboard-text={whatsAppUrl}
-          onClick={copyToClipboard}
+          onClick={handleCopyToClipboardClick}
         >
           {whatsAppUrl}
         </Button>

@@ -1,6 +1,6 @@
 export const ENV_VARS = {
   NEXT_PUBLIC_ASSETS_SERVER_URL: process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"] || "",
-  NEXT_PUBLIC_CRYPTO_KEY: process.env["NEXT_PUBLIC_CRYPTO_KEY"] || "",
+  NEXT_PUBLIC_CRYPTO_KEY: process.env["NEXT_PUBLIC_CRYPTO_KEY"] || "MY_STUPID_SECRET_KEY",
   NEXT_PUBLIC_WEBSITE_URL: process.env["NEXT_PUBLIC_WEBSITE_URL"] || "",
   NEXT_PUBLIC_ISR_TOKEN: process.env["NEXT_PUBLIC_ISR_TOKEN"] || "",
 } as const;
@@ -56,12 +56,6 @@ export const PERSONAL_PAGES = [
     title: "isr",
     componentName: "ISR",
     icon: "REFRESH",
-  },
-  {
-    slug: "chords-creator",
-    title: "chords",
-    componentName: "ChordsCreator",
-    icon: "MUSIC_NOTE",
   },
   {
     slug: "thumbnails",

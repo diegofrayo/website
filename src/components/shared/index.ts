@@ -6,6 +6,7 @@ export { default as Loader } from "./Loader";
 export { default as MDXContent } from "./MDXContent";
 export { default as Playground } from "./Playground";
 export { default as RateContent } from "./RateContent";
+export { default as Redirect } from "./Redirect";
 export { default as Render } from "./Render";
 export { default as SourceCode } from "./SourceCode";
 export { default as Timeline } from "./Timeline";

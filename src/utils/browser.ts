@@ -59,6 +59,17 @@ export function focusElement(element: HTMLElement): void {
   element.click();
 }
 
+export function focusInput(element: HTMLInputElement): void {
+  element.focus();
+  element.select();
+}
+
+export function handleCopyToClipboardClick(
+  event: T_ReactOnClickEventObject<HTMLButtonElement>,
+): void {
+  copyToClipboard(event);
+}
+
 export function isSmallScreen(): boolean {
   return getScreenSize() === "XS";
 }

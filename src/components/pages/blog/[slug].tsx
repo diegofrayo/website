@@ -8,7 +8,6 @@ import { withSafeRendering } from "~/hocs";
 import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/i18n";
 import twcss from "~/lib/twcss";
-import { T_BlogPost } from "~/services/blog";
 import { useStoreSelector, useStoreActionsDispatcher } from "~/state";
 import { selectWebsiteMetadata } from "~/state/modules/metadata";
 import { setLocales } from "~/state/modules/page-config";
@@ -16,6 +15,8 @@ import { copyToClipboard } from "~/utils/browser";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { ROUTES } from "~/utils/routing";
 import type { T_ReactElement } from "~/types";
+
+import { T_BlogPost } from "./service";
 
 type T_PageProps = {
   post: T_BlogPost;

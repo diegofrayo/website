@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import { Block, Text, InlineText } from "~/components/primitive";
+import { getErrorMessage } from "~/utils/app";
 import type { T_ReactElementNullable } from "~/types";
-import { getErrorMessage } from "~/utils/misc";
 
 import Emoji from "./Emoji";
 import Loader from "./Loader";

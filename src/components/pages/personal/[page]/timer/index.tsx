@@ -316,7 +316,7 @@ function useController() {
 
       try {
         const { data } = await http.post(
-          `${process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"]}/api/diegofrayo`,
+          `${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
           {
             path: "/timer",
             method: "GET",
@@ -796,7 +796,7 @@ function useController() {
   const handleUploadRoutineHistoryClick = React.useCallback(
     (date, routine) => async () => {
       try {
-        await http.post(`${process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"]}/api/diegofrayo`, {
+        await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
           path: "/timer",
           method: "POST",
           payload: {

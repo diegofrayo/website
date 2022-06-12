@@ -111,7 +111,7 @@ function SourceCode({
             variant={Button.variant.DEFAULT}
             className="tw-text-right"
             data-clipboard-text={code}
-            onClick={copyToClipboard}
+            onClick={handleCopyToClipboardClick}
           >
             <Icon
               icon={Icon.icon.CLIPBOARD}

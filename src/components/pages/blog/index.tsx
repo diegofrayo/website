@@ -8,11 +8,12 @@ import { Render } from "~/components/shared";
 import { AuthService } from "~/auth";
 import { useQuery } from "~/hooks";
 import { T_Locale, useTranslation } from "~/i18n";
-import BlogService, { T_BlogPost } from "~/services/blog";
 import { getDifferenceBetweenDates } from "~/utils/dates";
 import { ROUTES } from "~/utils/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import type { T_ReactElement } from "~/types";
+
+import BlogService, { T_BlogPost } from "./service";
 
 function Blog(): T_ReactElement {
   // hooks
@@ -34,7 +35,7 @@ function Blog(): T_ReactElement {
           error={error}
           data={data}
         >
-          {(response): T_ReactElement => {
+          {(response: unknown): T_ReactElement => {
             const posts = response as T_BlogPost[];
 
             return (

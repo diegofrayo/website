@@ -1,6 +1,8 @@
+import { ENV_VARS } from "./constants";
+
 import { isEmptyString } from "./validations";
 
-const MY_STUPID_SECRET_KEY = process.env["NEXT_PUBLIC_CRYPTO_KEY"] || "MY_STUPID_SECRET_KEY";
+const MY_STUPID_SECRET_KEY = ENV_VARS.NEXT_PUBLIC_CRYPTO_KEY;
 
 export async function encrypt(value: string): Promise<string> {
   if (isEmptyString(value)) {

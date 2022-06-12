@@ -19,6 +19,8 @@ import * as ResumeComponents from "~/components/pages/resume";
 import { ROUTES } from "~/utils/routing";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
+import { ENV_VARS } from "./constants";
+
 export const MDXComponents = {
   a: function A({ children, ...rest }: { children: T_ReactChildren }): T_ReactElement {
     return (
@@ -96,6 +98,6 @@ export const MDXComponents = {
 export const MDXScope = {
   DATA: {
     ROUTES,
-    SERVER_URL: process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"],
+    SERVER_URL: ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL,
   },
 } as const;

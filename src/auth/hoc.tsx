@@ -6,13 +6,13 @@ import { redirect as globalRedirect, ROUTES } from "~/utils/routing";
 
 import AuthService from "./service";
 
-function withAuth(
-  Component: T_ReactFunctionComponent,
+function withAuth<G_ComponentProps = T_UnknownObject>(
+  Component: T_ReactFunctionComponent<G_ComponentProps>,
   // TODO
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  options?: { denyLoggedIn?: boolean; allowIf?: (props: T_UnknownObject) => boolean },
-): T_ReactFunctionComponent {
-  return function WithAuthComponent(props: T_UnknownObject): T_ReactElementNullable {
+  options?: { denyLoggedIn?: boolean; allowIf?: (props: G_ComponentProps) => boolean },
+): T_ReactFunctionComponent<G_ComponentProps> {
+  return function WithAuthComponent(props: G_ComponentProps): T_ReactElementNullable {
     // states & refs
     const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
 

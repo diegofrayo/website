@@ -150,7 +150,7 @@ async function fetchPageContent({
 
 async function readFile(page) {
   const { data } = await http.get(
-    `${process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"]}/${
+    `${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/${
       page ? `pages${page === ROUTES.HOME ? "/home" : page}/` : ""
     }content.json`,
   );

@@ -15,6 +15,7 @@ import { isPWA, showAlert } from "~/utils/browser";
 import { ROUTES, T_RoutesValues } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
 import { getErrorMessage, isDevelopmentEnvironment } from "~/utils/app";
+import { ENV_VARS } from "~/utils/constants";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 function Header(): T_ReactElement {
@@ -298,7 +299,7 @@ const EnvironmentMenuItem = withAuthenticationRequired(function EnvironmentMenuI
 
   // effects
   useDidMount(() => {
-    setUrl(`${process.env["NEXT_PUBLIC_WEBSITE_URL"]}${window.location.pathname}`);
+    setUrl(`${ENV_VARS.NEXT_PUBLIC_WEBSITE_URL}${window.location.pathname}`);
   });
 
   // render
@@ -321,7 +322,7 @@ const ISRMenuItem = withAuthenticationRequired(function ISRMenuItem() {
     try {
       await http.post("/api/diegofrayo", {
         path: window.location.pathname,
-        secret: process.env["NEXT_PUBLIC_ISR_TOKEN"],
+        secret: ENV_VARS.NEXT_PUBLIC_ISR_TOKEN,
       });
 
       window.location.reload();

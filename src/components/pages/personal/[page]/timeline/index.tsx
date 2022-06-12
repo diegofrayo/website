@@ -4,23 +4,30 @@ import classNames from "classnames";
 import { Button, Space, Title, Block, Text, InlineText } from "~/components/primitive";
 import { Emoji, Render, Timeline } from "~/components/shared";
 import { useQuery } from "~/hooks";
-import TimelineService from "./service";
+import { safeCastNumber } from "~/utils/numbers";
+import { exists, isEmptyString, isUndefined } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
-import type { T_Timeline } from "./types";
+import TimelineService from "./service";
+import {
+  T_Timeline,
+  T_TimelineCategory,
+  T_TimelineFetchResponse,
+  T_TimelineGroupItem,
+} from "./types";
 
 function TimelinePage(): T_ReactElement {
   const {
     // states & refs
     selectedCategory,
 
-    // handlers
-    handleSelectFilter,
-
     // vars
     isLoading,
     error,
     data,
+
+    // handlers
+    handleSelectFilterClick,
   } = useController();
 
   return (
@@ -29,43 +36,49 @@ function TimelinePage(): T_ReactElement {
       error={error}
       data={data}
     >
-      {({ categories, items }: T_Timeline) => (
-        <React.Fragment>
-          <Block is="section">
-            <Title
-              is="h3"
-              size={Title.size.MD}
-              variant={Title.variant.SECONDARY}
-              className="tw-mb-4"
-            >
-              Categorías [{categories.length}]
-            </Title>
-            <Block className="tw-justify-betweden tw-flex tw-flex-wrap">
-              {categories.map((category) => (
-                <Button
-                  key={category.id}
-                  variant={Button.variant.SIMPLE}
-                  className={classNames(
-                    "tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm tw-font-bold",
-                    category.id === selectedCategory
-                      ? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
-                      : "dfr-bg-color-primary dark:dfr-bg-color-primary",
-                  )}
-                  onClick={handleSelectFilter(category.id)}
-                >
-                  <Emoji>{category.emoji}</Emoji> {category.value}
-                </Button>
-              ))}
-            </Block>
-          </Block>
-          <Space size={6} />
+      {(data: unknown): T_ReactElement => {
+        const { categories, timeline } = data as {
+          categories: T_TimelineCategory[];
+          timeline: T_Timeline;
+        };
 
-          <Timeline
-            timeline={items}
-            TimelineItem={TimelineItem}
-          />
-        </React.Fragment>
-      )}
+        return (
+          <React.Fragment>
+            <Block is="section">
+              <Title
+                is="h3"
+                size={Title.size.MD}
+                variant={Title.variant.SECONDARY}
+                className="tw-mb-4"
+              >
+                Categorías [{categories.length}]
+              </Title>
+              <Block className="tw-justify-betweden tw-flex tw-flex-wrap">
+                {categories.map((category) => (
+                  <Button
+                    key={category.id}
+                    variant={Button.variant.SIMPLE}
+                    className={classNames(
+                      "tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm tw-font-bold",
+                      category.id === selectedCategory
+                        ? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
+                        : "dfr-bg-color-primary dark:dfr-bg-color-primary",
+                    )}
+                    onClick={handleSelectFilterClick(category.id)}
+                  >
+                    <Emoji>{category.emoji}</Emoji> {category.value}
+                  </Button>
+                ))}
+              </Block>
+            </Block>
+            <Space size={6} />
+            <Timeline
+              timeline={timeline}
+              TimelineItem={TimelineItem}
+            />
+          </React.Fragment>
+        );
+      }}
     </Render>
   );
 }
@@ -74,24 +87,34 @@ export default TimelinePage;
 
 // --- Controller ---
 
-function useController(): {
+type T_UseControllerReturn = {
   isLoading: boolean;
   error: unknown;
-  data?: T_Timeline;
+  data: T_TimelineFetchResponse | undefined;
   selectedCategory: string;
-  handleSelectFilter: (filter: string) => () => void;
-  formatDate: any;
-} {
-  const [selectedCategory, setSelectedCategory] = React.useState("");
-  const { isLoading, error, data } = useQuery("items", TimelineService.fetchData);
+  handleSelectFilterClick: (filter: string) => () => void;
+  formatDate: (startDate: string, endDate: string) => string;
+};
 
-  function handleSelectFilter(category) {
+function useController(): T_UseControllerReturn {
+  // hook
+  const { isLoading, error, data } = useQuery<T_TimelineFetchResponse>(
+    "timeline",
+    TimelineService.fetchData,
+  );
+
+  // states & refs
+  const [selectedCategory, setSelectedCategory] = React.useState("");
+
+  // handlers
+  function handleSelectFilterClick(category: string): () => void {
     return () => {
       setSelectedCategory(category === selectedCategory ? "" : category);
     };
   }
 
-  function formatDate(startDate, endDate) {
+  // utils
+  const formatDate: T_UseControllerReturn["formatDate"] = function formatDate(startDate, endDate) {
     const MONTHS = [
       "enero",
       "febrero",
@@ -108,7 +131,7 @@ function useController(): {
     ];
 
     const startDateItems = startDate.split("/");
-    const startDateDay = itemAsNumber(startDateItems[2]);
+    const startDateDay = safeCastNumber(startDateItems[2]);
     let output = `${startDateDay ? `${startDateDay} de ` : ""}${
       MONTHS[Number(startDateItems[1]) - 1]
     }`;
@@ -125,49 +148,47 @@ function useController(): {
     }
 
     return output;
-  }
-
-  function itemAsNumber(item: string): number {
-    const itemAsNumber = Number(item);
-
-    if (!Number.isInteger(itemAsNumber)) return 0;
-
-    return itemAsNumber;
-  }
+  };
 
   return {
     // states & refs
     selectedCategory,
 
     // handlers
-    handleSelectFilter,
+    handleSelectFilterClick,
+
+    // utils
     formatDate,
 
     // vars
     isLoading,
     error,
-    data: data
-      ? {
-          categories: data.categories,
-          items: data.items.map((item) => ({
-            ...item,
-            title: item.year.toString(),
-            items: selectedCategory
-              ? item.items.filter(
-                  (item) =>
-                    item.categories.find((category) => category.id === selectedCategory) !==
-                    undefined,
-                )
-              : item.items,
-          })),
-        }
-      : undefined,
+    data: isUndefined(data)
+      ? data
+      : {
+          ...data,
+          timeline: data.timeline.map((timelineGroup) => {
+            return {
+              ...timelineGroup,
+              items: isEmptyString(selectedCategory)
+                ? timelineGroup.items
+                : timelineGroup.items.filter((item) => {
+                    return exists(
+                      item.categories.find((category) => category.id === selectedCategory),
+                    );
+                  }),
+            };
+          }),
+        },
   };
 }
 
 // --- Components ---
 
-function TimelineItem({ data }) {
+function TimelineItem({ data }: { data: unknown }): T_ReactElement {
+  // vars
+  const timelineGroupItem = data as T_TimelineGroupItem;
+
   const {
     // handlers
     formatDate,
@@ -177,18 +198,22 @@ function TimelineItem({ data }) {
     <Block>
       <Text className="tw-text-sm">
         <Emoji className="tw-mr-2">🗓</Emoji>
-        <InlineText>{formatDate(data.startDate, data.endDate)}</InlineText>
+        <InlineText>
+          {formatDate(timelineGroupItem.startDate, timelineGroupItem.endDate)}
+        </InlineText>
       </Text>
-      <Text className="tw-my-2 tw-text-xl tw-font-bold">{data.description}</Text>
+      <Text className="tw-my-2 tw-text-xl tw-font-bold">{timelineGroupItem.description}</Text>
       <Block>
-        {data.categories.map((category) => (
-          <InlineText
-            key={category.id}
-            className="tw-rounded-md tw-border tw-px-2 tw-py-1 tw-text-xs tw-font-bold dfr-border-color-primary dark:dfr-border-color-primary"
-          >
-            {category.value}
-          </InlineText>
-        ))}
+        {timelineGroupItem.categories.map((category: T_TimelineCategory) => {
+          return (
+            <InlineText
+              key={category.id}
+              className="tw-rounded-md tw-border tw-px-2 tw-py-1 tw-text-xs tw-font-bold dfr-border-color-primary dark:dfr-border-color-primary"
+            >
+              {category.value}
+            </InlineText>
+          );
+        })}
       </Block>
     </Block>
   );

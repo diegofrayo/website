@@ -51,7 +51,7 @@ module.exports = {
 
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/no-shadow": ["error", { allow: ["params"] }],
+    "@typescript-eslint/no-shadow": ["error", { allow: ["params", "data", "result"] }],
     "@typescript-eslint/no-unused-vars": "error",
     "no-loops/no-loops": "error",
     "no-restricted-exports": ["error", { restrictedNamedExports: [] }],

@@ -1,13 +1,26 @@
-import type { T_GenericType1 } from "~/types";
-
-export type T_Timeline = {
-  categories: T_TimelineCategory[];
-  items: { year: number; title: string; items: T_TimelineItem[] }[];
+export type T_TimelineFetchRawResponse = {
+  categories: Array<{
+    id: string;
+    value: string;
+    emoji: string;
+  }>;
+  data: Array<{
+    id: string;
+    start_date: string;
+    end_date: string;
+    description: string;
+    categories: Array<string>;
+    assets: Array<unknown>;
+  }>;
 };
 
-type T_TimelineCategory = T_GenericType1 & { emoji: string };
+export type T_TimelineFetchResponse = { timeline: T_Timeline; categories: T_TimelineCategory[] };
 
-type T_TimelineItem = {
+export type T_Timeline = T_TimelineGroup[];
+
+export type T_TimelineGroup = { year: number; title: string; items: T_TimelineGroupItem[] };
+
+export type T_TimelineGroupItem = {
   id: string;
   startDate: string;
   endDate: string;
@@ -15,3 +28,5 @@ type T_TimelineItem = {
   categories: T_TimelineCategory[];
   assets: string[];
 };
+
+export type T_TimelineCategory = { id: string; value: string; emoji: string };

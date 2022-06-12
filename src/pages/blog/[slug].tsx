@@ -3,8 +3,8 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 
 import BlogPostPage from "~/components/pages/blog/[slug]";
+import BlogService, { T_BlogPost } from "~/components/pages/blog/service";
 import { getPageContentStaticProps, T_Locale } from "~/i18n";
-import BlogService, { T_BlogPost } from "~/services/blog";
 import { dataLoader } from "~/server";
 import { MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
