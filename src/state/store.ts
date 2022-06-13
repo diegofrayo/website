@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { configureStore } from "@reduxjs/toolkit";
 
 import { I18nService, T_Locale, T_PageContent } from "~/i18n";

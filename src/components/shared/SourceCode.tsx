@@ -67,22 +67,26 @@ function SourceCode({
               )}
               style={style}
             >
-              {tokens.map((line, i) => (
-                <Line
-                  key={i}
-                  {...getLineProps({ line, key: i })}
-                >
-                  <LineNo>{i + 1}</LineNo>
-                  <LineContent>
-                    {line.map((token, key) => (
-                      <InlineText
-                        key={key}
-                        {...getTokenProps({ token, key })}
-                      />
-                    ))}
-                  </LineContent>
-                </Line>
-              ))}
+              {tokens.map((line, i) => {
+                return (
+                  <Line
+                    key={i}
+                    {...getLineProps({ line, key: i })}
+                  >
+                    <LineNo>{i + 1}</LineNo>
+                    <LineContent>
+                      {line.map((token, key) => {
+                        return (
+                          <InlineText
+                            key={key}
+                            {...getTokenProps({ token, key })}
+                          />
+                        );
+                      })}
+                    </LineContent>
+                  </Line>
+                );
+              })}
             </Code>
           );
         }}

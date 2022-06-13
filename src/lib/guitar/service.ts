@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { isDevelopmentEnvironment } from "~/utils/app";
 import {
   createArray,

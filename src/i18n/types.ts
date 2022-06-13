@@ -1,4 +1,4 @@
-import type { TFunction } from "react-i18next";
+// @ts-nocheck
 
 import type { T_ObjectWithPrimitives, T_UnknownObject } from "~/types";
 

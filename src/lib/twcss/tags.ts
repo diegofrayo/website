@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 const HTML_TAGS = [
   "a",
   "abbr",

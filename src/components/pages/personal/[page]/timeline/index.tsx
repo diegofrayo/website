@@ -53,22 +53,24 @@ function TimelinePage(): T_ReactElement {
               >
                 Categorías [{categories.length}]
               </Title>
-              <Block className="tw-justify-betweden tw-flex tw-flex-wrap">
-                {categories.map((category) => (
-                  <Button
-                    key={category.id}
-                    variant={Button.variant.SIMPLE}
-                    className={classNames(
-                      "tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm tw-font-bold",
-                      category.id === selectedCategory
-                        ? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
-                        : "dfr-bg-color-primary dark:dfr-bg-color-primary",
-                    )}
-                    onClick={handleSelectFilterClick(category.id)}
-                  >
-                    <Emoji>{category.emoji}</Emoji> {category.value}
-                  </Button>
-                ))}
+              <Block className="tw-flex tw-flex-wrap">
+                {categories.map((category) => {
+                  return (
+                    <Button
+                      key={category.id}
+                      variant={Button.variant.SIMPLE}
+                      className={classNames(
+                        "tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm tw-font-bold",
+                        category.id === selectedCategory
+                          ? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
+                          : "dfr-bg-color-primary dark:dfr-bg-color-primary",
+                      )}
+                      onClick={handleSelectFilterClick(category.id)}
+                    >
+                      <Emoji>{category.emoji}</Emoji> {category.value}
+                    </Button>
+                  );
+                })}
               </Block>
             </Block>
             <Space size={6} />

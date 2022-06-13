@@ -1,5 +1,6 @@
 import { T_Locale } from "~/i18n";
 import http from "~/lib/http";
+import { T_Metadata } from "~/state/modules/metadata";
 import { ENV_VARS } from "~/utils/constants";
 
 class MetadataService {

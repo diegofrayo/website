@@ -22,33 +22,35 @@ function Bookmarks({ bookmarks }: T_BookmarksProps): T_ReactElement {
       }}
     >
       <MainLayout title={PAGE_TITLE}>
-        {Object.entries(bookmarks).map(([groupName, groupBookmarks]) => (
-          <Block
-            key={groupName}
-            className="tw-mb-8 last:tw-mb-0"
-          >
-            <Title
-              is="h2"
-              variant={Title.variant.PRIMARY}
+        {Object.entries(bookmarks).map(([groupName, groupBookmarks]) => {
+          return (
+            <Block
+              key={groupName}
+              className="tw-mb-8 last:tw-mb-0"
             >
-              {groupName}
-            </Title>
-            <Space size={1} />
-            <List variant={List.variant.DEFAULT}>
-              {groupBookmarks.map((bookmark, index) => (
-                <List.Item key={`bookmark-${generateSlug(groupName)}-${index}`}>
-                  <Link
-                    variant={Link.variant.PRIMARY}
-                    href={bookmark.url}
-                    isExternalLink
-                  >
-                    {bookmark.title}
-                  </Link>
-                </List.Item>
-              ))}
-            </List>
-          </Block>
-        ))}
+              <Title
+                is="h2"
+                variant={Title.variant.PRIMARY}
+              >
+                {groupName}
+              </Title>
+              <Space size={1} />
+              <List variant={List.variant.DEFAULT}>
+                {groupBookmarks.map((bookmark, index) => (
+                  <List.Item key={`bookmark-${generateSlug(groupName)}-${index}`}>
+                    <Link
+                      variant={Link.variant.PRIMARY}
+                      href={bookmark.url}
+                      isExternalLink
+                    >
+                      {bookmark.title}
+                    </Link>
+                  </List.Item>
+                ))}
+              </List>
+            </Block>
+          );
+        })}
       </MainLayout>
     </Page>
   );

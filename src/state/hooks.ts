@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 

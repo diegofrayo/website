@@ -12,7 +12,7 @@
     "start": "next start",
     "postinstall": "yarn scripts:rss",
     "===== FORMATTING =====": "",
-    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write \"{src,public,scripts}/**/*.{ts,tsx,json,css,mjs}\"",
     "===== STORYBOOK =====": "",
     "storybook": "start-storybook -p 6006",
@@ -24,7 +24,7 @@
     "scripts:sitemap": "node --experimental-json-modules scripts/sitemap.mjs",
     "scripts:styles": "node scripts/styles/css-vars.js",
     "===== AUX/DEV =====": "",
-    "scripts:commit": "sh ./.husky/minor-commit.sh",
+    "scripts:commit": "sh ./.husky/generic-commit.sh",
     "scripts:env-vars": "node --experimental-json-modules scripts/env-vars.mjs",
     "scripts:code-stats": "tokei ./src"
   },

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as React from "react";
 
 import { T_Routine, T_RoutineItem, T_TimerStatus } from "./types";

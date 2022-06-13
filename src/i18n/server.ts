@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import http from "~/lib/http";
 import type { T_Object } from "~/types";
 import { ROUTES, T_RoutesValues } from "~/utils/routing";

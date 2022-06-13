@@ -122,39 +122,41 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
             </ResumeBlock>
             <ResumeBlock title="Education">
               <Block>
-                {resume.education.map((item, index) => (
-                  <Block
-                    key={`education-${index}`}
-                    className="tw-mb-4 tw-flex tw-items-start last:tw-mb-0"
-                  >
-                    <Image
-                      src={item.schoolLogo}
-                      alt={`${item.school} logo`}
-                      className="tw-relative tw-top-1 tw-mr-2 tw-h-12 tw-w-12 tw-flex-shrink-0"
-                    />
-                    <Block>
-                      <Title
-                        is="h3"
-                        variant={Title.variant.SECONDARY}
-                        size={Title.size.MD}
-                      >
-                        {item.degree}
-                      </Title>
-                      <Link
-                        variant={Link.variant.SIMPLE}
-                        href={item.schoolWebsite}
-                        className="tw-underline"
-                        isExternalLink
-                      >
-                        {item.school}
-                      </Link>
-                      <Text className="tw-text-xs tw-italic dfr-text-color-secondary">
-                        <InlineText>{item.startDate}</InlineText> /{" "}
-                        <InlineText>{item.endDate}</InlineText>
-                      </Text>
+                {resume.education.map((item, index) => {
+                  return (
+                    <Block
+                      key={`education-${index}`}
+                      className="tw-mb-4 tw-flex tw-items-start last:tw-mb-0"
+                    >
+                      <Image
+                        src={item.schoolLogo}
+                        alt={`${item.school} logo`}
+                        className="tw-relative tw-top-1 tw-mr-2 tw-h-12 tw-w-12 tw-flex-shrink-0"
+                      />
+                      <Block>
+                        <Title
+                          is="h3"
+                          variant={Title.variant.SECONDARY}
+                          size={Title.size.MD}
+                        >
+                          {item.degree}
+                        </Title>
+                        <Link
+                          variant={Link.variant.SIMPLE}
+                          href={item.schoolWebsite}
+                          className="tw-underline"
+                          isExternalLink
+                        >
+                          {item.school}
+                        </Link>
+                        <Text className="tw-text-xs tw-italic dfr-text-color-secondary">
+                          <InlineText>{item.startDate}</InlineText> /{" "}
+                          <InlineText>{item.endDate}</InlineText>
+                        </Text>
+                      </Block>
                     </Block>
-                  </Block>
-                ))}
+                  );
+                })}
               </Block>
             </ResumeBlock>
           </PrintBlock>

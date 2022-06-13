@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as React from "react";
 
 import { Block, Button, Collapsible, Icon, InlineText, Space } from "~/components/primitive";

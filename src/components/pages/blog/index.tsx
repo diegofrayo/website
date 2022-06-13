@@ -134,17 +134,19 @@ function BlogEntry({
               )}
             </Text>
             <Block>
-              {categories.map((category) => (
-                <InlineText
-                  key={category.id}
-                  className={classNames(
-                    "tw-inline-block tw-py-1 tw-px-2 tw-text-xs tw-font-semibold",
-                    CATEGORIES_COLORS[category.id],
-                  )}
-                >
-                  {category.value}
-                </InlineText>
-              ))}
+              {categories.map((category) => {
+                return (
+                  <InlineText
+                    key={category.id}
+                    className={classNames(
+                      "tw-inline-block tw-py-1 tw-px-2 tw-text-xs tw-font-semibold",
+                      CATEGORIES_COLORS[category.id],
+                    )}
+                  >
+                    {category.value}
+                  </InlineText>
+                );
+              })}
             </Block>
           </Block>
         </Block>

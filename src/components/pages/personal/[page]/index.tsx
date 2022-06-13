@@ -11,10 +11,12 @@ import type { T_ReactElement } from "~/types";
 
 const PERSONAL_PAGES_COMPONENTS = PERSONAL_PAGES.filter((page) =>
   isNotEmptyString(page.componentName !== ""),
-).map((page) => ({
-  ...page,
-  Component: dynamic(() => import(`./${page.componentName}`)),
-}));
+).map((page) => {
+  return {
+    ...page,
+    Component: dynamic(() => import(`./${page.componentName}`)),
+  };
+});
 
 type T_PersonalPageProps = {
   page: string;

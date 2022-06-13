@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as React from "react";
 import classNames from "classnames";
 import reactStringReplace from "react-string-replace";

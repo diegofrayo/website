@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { createSlice } from "@reduxjs/toolkit";
 
 import { T_Locale } from "~/i18n";
