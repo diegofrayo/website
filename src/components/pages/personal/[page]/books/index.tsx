@@ -3,19 +3,24 @@ import * as React from "react";
 import { Icon, Link, Title, Block, Text, InlineText } from "~/components/primitive";
 import { Emoji, Render } from "~/components/shared";
 import { useQuery } from "~/hooks";
-import BooksService from "~/services/books";
-import type { T_Book, T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
+
+import BooksService, { T_Book } from "./service";
 
 function Books(): T_ReactElement {
-  const { isLoading, error, data } = useQuery("books", BooksService.fetchBooks);
+  // hooks
+  const { isLoading, error, data } = useQuery<T_Book[]>("books", BooksService.fetchBooks);
 
+  // render
   return (
     <Render
       isLoading={isLoading}
       error={error}
       data={data}
     >
-      {(books: T_Book[]) => {
+      {(data: unknown): T_ReactElement => {
+        const books = data as T_Book[];
+
         return (
           <Block className="dfr-Books tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
             {books.map(({ id, title, calification, author, year, url, cover }) => {
@@ -25,14 +30,14 @@ function Books(): T_ReactElement {
                   variant={Link.variant.UNSTYLED}
                   href={url}
                   className="tw-relative tw-mx-2 tw-mb-6 tw-h-64 tw-w-48 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 tw-shadow-lg tw-duration-500 dfr-border-color-dark-strong hover:tw-translate-x-1 hover:tw--translate-y-1 hover:tw-rotate-0 hover:tw-opacity-75 hover:tw-shadow-2xl dark:dfr-border-color-primary sm:tw--rotate-1"
-                  isExternalUrl
+                  isExternalLink
                 >
-                  <article
-                    className="tw-flex tw-h-full tw-w-full"
+                  <Block
+                    is="article"
+                    className="tw-flex tw-h-full tw-w-full tw-bg-no-repeat"
                     style={{
                       backgroundImage: `url(${cover})`,
                       backgroundSize: "100% 100%",
-                      backgroundRepeat: "no-repeat",
                     }}
                   >
                     <Icon
@@ -57,14 +62,14 @@ function Books(): T_ReactElement {
                         {title}
                       </Title>
                       <Text className="tw-mb-2 tw-text-sm tw-font-bold tw-capitalize tw-italic tw-leading-none tw-text-gray-700">
-                        {author || "Author"}
+                        {author}
                       </Text>
                       <Text className="tw-text-right tw-text-xs tw-font-bold tw-leading-none tw-text-black">
                         <Emoji className="tw-mr-1">🗓</Emoji>
                         <InlineText>{year}</InlineText>
                       </Text>
                     </Block>
-                  </article>
+                  </Block>
                 </Link>
               );
             })}

@@ -6,8 +6,10 @@ import { useTranslation } from "~/i18n";
 import type { T_ReactElement } from "~/types";
 
 function ErrorPage(): T_ReactElement {
+  // hooks
   const { t } = useTranslation();
 
+  // render
   return (
     <Page
       config={{

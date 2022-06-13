@@ -1,12 +1,16 @@
 import * as React from "react";
 
-import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
+import { logger } from "~/utils/app";
+import { isEmptyOrNotDefinedString } from "~/utils/validations";
+import type { T_HTMLElementAttributes, T_ReactElementNullable } from "~/types";
 
-type T_ImageProps = T_HTMLElementAttributes["img"];
+export type T_ImagePrimitiveComponent = (
+  props: T_HTMLElementAttributes["img"],
+) => T_ReactElementNullable;
 
-function Image({ src, ...rest }: T_ImageProps): T_ReactElement {
-  if (!src) {
-    console.warn("Image component: src is empty");
+const Image: T_ImagePrimitiveComponent = function Image({ src, ...rest }) {
+  if (isEmptyOrNotDefinedString(src)) {
+    logger("WARN", `Invalid src("${src}") prop`);
     return null;
   }
 
@@ -14,9 +18,10 @@ function Image({ src, ...rest }: T_ImageProps): T_ReactElement {
     <img
       src={src}
       loading="lazy"
+      alt="Generic alt text"
       {...rest}
     />
   );
-}
+};
 
 export default Image;

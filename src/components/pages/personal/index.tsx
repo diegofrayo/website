@@ -1,15 +1,18 @@
 import * as React from "react";
 
+import { T_IconName } from "~/components/primitive/Icon";
 import { Page, MainLayout } from "~/components/layout";
 import { Link, Block, Icon, InlineText, Space, List } from "~/components/primitive";
 import { withAuth } from "~/auth";
-import type { T_ReactElement } from "~/types";
 import { PERSONAL_PAGES } from "~/utils/constants";
 import { ROUTES } from "~/utils/routing";
+import type { T_ReactElement } from "~/types";
 
 function PersonalPage(): T_ReactElement {
+  // vars
   const PAGE_TITLE = "Personal";
 
+  // render
   return (
     <Page
       config={{
@@ -19,12 +22,12 @@ function PersonalPage(): T_ReactElement {
     >
       <MainLayout title={PAGE_TITLE}>
         <Block className="tw-w-full sm:tw-mx-auto sm:tw-max-w-md">
-          <PagesList pages={PERSONAL_PAGES.slice(0, 5)} />
+          <PagesList pages={PERSONAL_PAGES.slice(0, 4)} />
           <Space
             size={4}
             variant={Space.variant.DASHED}
           />
-          <PagesList pages={PERSONAL_PAGES.slice(5)} />
+          <PagesList pages={PERSONAL_PAGES.slice(4)} />
         </Block>
       </MainLayout>
     </Page>
@@ -35,11 +38,11 @@ export default withAuth(PersonalPage);
 
 // --- Components ---
 
-function PagesList({
-  pages,
-}: {
-  pages: { slug: string; title: string; icon: string }[];
-}): T_ReactElement {
+type T_PagesListProps = {
+  pages: { slug: string; title: string; icon: T_IconName }[];
+};
+
+function PagesList({ pages }: T_PagesListProps): T_ReactElement {
   return (
     <List variant={List.variant.UNSTYLED}>
       {pages.map((page) => {

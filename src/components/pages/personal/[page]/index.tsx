@@ -2,30 +2,41 @@ import * as React from "react";
 import dynamic from "next/dynamic";
 
 import { Page, MainLayout } from "~/components/layout";
+import { Redirect } from "~/components/shared";
 import { withAuth } from "~/auth";
-import type { T_ReactElement } from "~/types";
 import { PERSONAL_PAGES } from "~/utils/constants";
+import { ROUTES } from "~/utils/routing";
+import { isNotEmptyString, notFound } from "~/utils/validations";
+import type { T_ReactElement } from "~/types";
 
-const PERSONAL_PAGES_COMPONENTS = PERSONAL_PAGES.filter((page) => page.componentName !== "").map(
-  (page) => {
-    return {
-      ...page,
-      Component: dynamic(() => import(`./${page.componentName}`)),
-    };
-  },
-);
+const PERSONAL_PAGES_COMPONENTS = PERSONAL_PAGES.filter((page) =>
+  isNotEmptyString(page.componentName !== ""),
+).map((page) => {
+  return {
+    ...page,
+    Component: dynamic(() => import(`./${page.componentName}`)),
+  };
+});
 
-function PersonalPage(props: T_PageProps): T_ReactElement {
-  const {
-    // vars
-    Component,
-    title,
-  } = useController(props);
+type T_PersonalPageProps = {
+  page: string;
+};
+
+function PersonalPage({ page }: T_PersonalPageProps): T_ReactElement {
+  // vars
+  const pageConfig = PERSONAL_PAGES_COMPONENTS.find((item) => item.slug === page);
+
+  // render
+  if (notFound(pageConfig)) {
+    return <Redirect href={ROUTES.ERROR_404} />;
+  }
+
+  const { title, Component } = pageConfig;
 
   return (
     <Page
       config={{
-        title: title,
+        title,
         disableSEO: true,
       }}
     >
@@ -36,28 +47,6 @@ function PersonalPage(props: T_PageProps): T_ReactElement {
   );
 }
 
-export default withAuth(PersonalPage, {
+export default withAuth<T_PersonalPageProps>(PersonalPage, {
   allowIf: (props) => ["films"].includes(props.page),
 });
-
-// --- Controller ---
-
-function useController({ page }: T_PageProps): {
-  title: string;
-  Component: any;
-} {
-  const pageConfig = PERSONAL_PAGES_COMPONENTS.find((item) => item.slug === page);
-  if (!pageConfig) throw new Error(`"${page}" not found`);
-
-  return {
-    // vars
-    Component: pageConfig.Component,
-    title: pageConfig.title,
-  };
-}
-
-// --- Types ---
-
-export type T_PageProps = {
-  page: string;
-};

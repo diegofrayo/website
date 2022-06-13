@@ -1,3 +1,3 @@
 export { default as renderIf } from "./renderIf";
-export { default as withRequiredAuthComponent } from "./withRequiredAuthComponent";
-export { default as withSafeRenderingComponent } from "./withSafeRenderingComponent";
+export { default as withAuthenticationRequired } from "./withAuthenticationRequired";
+export { default as withSafeRendering } from "./withSafeRendering";

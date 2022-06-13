@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as React from "react";
 import classNames from "classnames";
 
@@ -6,7 +8,7 @@ import { Emoji } from "~/components/shared";
 import { useExecuteCallback } from "~/hooks";
 import AnalyticsService from "~/services/analytics";
 import type { T_ReactElement, T_ReactRefObject } from "~/types";
-import { copyToClipboard, downloadComponentAsImage } from "~/utils/browser";
+import { downloadComponentAsImage, handleCopyToClipboardClick } from "~/utils/browser";
 
 import GuitarFret from "./GuitarFret";
 import GuitarService from "../service";
@@ -151,7 +153,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
               <Button
                 variant={Button.variant.SIMPLE}
                 data-clipboard-text={musicNotesAsString}
-                onClick={copyToClipboard}
+                onClick={handleCopyToClipboardClick}
               >
                 <Emoji>📋</Emoji>
               </Button>{" "}

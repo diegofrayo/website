@@ -3,10 +3,12 @@ import classNames from "classnames";
 
 import { Icon, Link, Block, InlineText, Space } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
-import { withRequiredAuthComponent } from "~/hocs";
+import { withAuthenticationRequired } from "~/hocs";
 import { useTranslation } from "~/i18n";
-import MusicService from "~/services/music";
-import type { T_ReactElement, T_Song } from "~/types";
+import { safeCastNumber } from "~/utils/numbers";
+import type { T_ReactElementNullable } from "~/types";
+
+import MusicService, { T_Song } from "../service";
 
 function SongDetails({
   song,
@@ -14,10 +16,14 @@ function SongDetails({
 }: {
   song: T_Song;
   className?: string;
-}): T_ReactElement {
+}): T_ReactElementNullable {
+  // hooks
   const { t } = useTranslation();
 
-  if (MusicService.isChordsPage(song)) return null;
+  // render
+  if (MusicService.isChordsSong(song)) {
+    return null;
+  }
 
   return (
     <Block className={classNames("tw-text-sm tw-italic", className)}>
@@ -76,7 +82,7 @@ function SongDetails({
           <Link
             variant={Link.variant.SIMPLE}
             href={song.spotifyUrl}
-            isExternalUrl
+            isExternalLink
           >
             <Icon
               icon={Icon.icon.SPOTIFY}
@@ -90,7 +96,7 @@ function SongDetails({
           <Link
             variant={Link.variant.SIMPLE}
             href={song.youtubeUrl}
-            isExternalUrl
+            isExternalLink
           >
             <Icon
               icon={Icon.icon.YOUTUBE}
@@ -107,11 +113,14 @@ export default SongDetails;
 
 // --- Components ---
 
-const Category = withRequiredAuthComponent(function Category({ category }: { category: string }) {
+const Category = withAuthenticationRequired(function Category({ category }: { category: string }) {
+  // hooks
   const { t } = useTranslation();
 
+  // vars
   const EMOJIS = ["🟦", "🟩", "🟨", "⬛", "⬜", "🟥"];
 
+  // render
   return (
     <Block className="sm:tw-flex sm:tw-flex-nowrap">
       <InlineText
@@ -120,7 +129,7 @@ const Category = withRequiredAuthComponent(function Category({ category }: { cat
       >
         {t("page:category")}:
       </InlineText>
-      <Emoji>{EMOJIS[category.split("|")[0]]}</Emoji>
+      <Emoji>{EMOJIS[safeCastNumber(category.split("|")[0])]}</Emoji>
       <InlineText className="tw-ml-1 tw-capitalize">
         {category.split("|")[1].replace("_", " ").toLowerCase()}
       </InlineText>

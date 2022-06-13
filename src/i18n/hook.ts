@@ -1,9 +1,11 @@
+// @ts-nocheck
+
 import { useTranslation as useTranslationLibrary } from "react-i18next";
 
-import type { T_Locale } from "~/types";
+import { T_Locale, T_TranslationFunction } from "./types";
 
 function useTranslation(): {
-  t: any;
+  t: T_TranslationFunction;
   currentLocale: T_Locale;
 } {
   const { t, i18n } = useTranslationLibrary();

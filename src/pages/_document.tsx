@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Html, Head, Main, NextScript } from "next/document";
 
-import { T_ReactElement } from "~/types";
+import type { T_ReactElement } from "~/types";
 
 function Document(): T_ReactElement {
   return (

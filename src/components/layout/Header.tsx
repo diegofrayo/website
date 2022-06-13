@@ -5,27 +5,24 @@ import { useRouter } from "next/router";
 
 import { Block, Button, Icon, Link, List, Text, Space } from "~/components/primitive";
 import { AuthService } from "~/auth";
-import { withRequiredAuthComponent } from "~/hocs";
-import { useClickOutside, useDidMount, useEnhacedState } from "~/hooks";
+import { withAuthenticationRequired } from "~/hocs";
+import { useClickOutside, useDidMount, useEnhancedState } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
 import http from "~/lib/http";
 import { useStoreSelector } from "~/state";
-import { selectWebsiteMetadata } from "~/state/modules/metadata";
-import type {
-  T_Locale,
-  T_PageRoute,
-  T_ReactChildrenProp,
-  T_ReactElement,
-  T_WebsiteMetadata,
-} from "~/types";
-import { isPWA } from "~/utils/browser";
-import { isDevelopmentEnvironment } from "~/utils/misc";
-import { ROUTES } from "~/utils/routing";
+import { selectWebsiteMetadata, T_WebsiteMetadata } from "~/state/modules/metadata";
+import { isPWA, showAlert } from "~/utils/browser";
+import { ROUTES, T_RoutesValues } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
+import { getErrorMessage, isDevelopmentEnvironment, reportError } from "~/utils/app";
+import { ENV_VARS } from "~/utils/constants";
+import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 function Header(): T_ReactElement {
+  // hooks
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
+  // render
   return (
     <Block
       is="header"
@@ -57,56 +54,65 @@ export default Header;
 
 type T_MainMenuItem = {
   label: string;
-  url: T_PageRoute;
-  locale?: T_Locale;
+  url: T_RoutesValues;
 };
 
 function MainMenu(): T_ReactElement {
+  // hooks
   const { currentLocale } = useTranslation();
   const { pathname, asPath } = useRouter();
 
-  const [ITEMS, setItems] = React.useState<T_MainMenuItem[]>(createItems());
+  // states & refs
+  const [items, setItems] = React.useState<T_MainMenuItem[]>(createItems());
   const [showMenu, setShowMenu] = React.useState(false);
-  const menuRef = React.useRef(null);
+  const menuRef = React.useRef<HTMLDivElement>(null);
 
+  // effects
   useClickOutside(menuRef, () => {
     setShowMenu(false);
   });
 
-  React.useEffect(
-    function addPrivateItems() {
-      const translator = I18nService.getInstance();
+  React.useEffect(() => {
+    const translator = I18nService.getInstance();
 
-      setItems([
-        ...createItems(),
-        ...(AuthService.isUserLoggedIn()
-          ? [
-              {
-                label: translator.t("layout:header:common:menu_item_personal"),
-                url: ROUTES.PERSONAL,
-              },
-              {
-                label: translator.t("layout:header:common:menu_item_bookmarks"),
-                url: ROUTES.BOOKMARKS,
-              },
-              {
-                label: translator.t("layout:header:menu:sign_out"),
-                url: ROUTES.SIGN_OUT,
-              },
-            ]
-          : isPWA()
-          ? [
-              {
-                label: translator.t("layout:header:menu:sign_in"),
-                url: ROUTES.SIGN_IN,
-              },
-            ]
-          : []),
-      ]);
-    },
-    [currentLocale],
-  );
+    setItems([
+      ...createItems(),
+      ...(AuthService.isUserLoggedIn()
+        ? [
+            {
+              label: translator.t("layout:header:common:menu_item_personal"),
+              url: ROUTES.PERSONAL,
+            },
+            {
+              label: translator.t("layout:header:common:menu_item_bookmarks"),
+              url: ROUTES.BOOKMARKS,
+            },
+            {
+              label: translator.t("layout:header:menu:sign_out"),
+              url: ROUTES.SIGN_OUT,
+            },
+          ]
+        : isPWA()
+        ? [
+            {
+              label: translator.t("layout:header:menu:sign_in"),
+              url: ROUTES.SIGN_IN,
+            },
+          ]
+        : []),
+    ]);
+  }, [currentLocale]);
 
+  // handlers
+  function handleToggleMenuClick(): void {
+    setShowMenu((currentValue) => !currentValue);
+  }
+
+  function handleHideMenuClick(): void {
+    setShowMenu((currentValue) => !currentValue);
+  }
+
+  // utils
   function createItems(): T_MainMenuItem[] {
     const translator = I18nService.getInstance();
 
@@ -134,14 +140,15 @@ function MainMenu(): T_ReactElement {
     ];
   }
 
+  // render
   return (
-    <Block
-      className="tw-relative tw-inline-block"
+    <div
+      className="root tw-relative tw-inline-block"
       ref={menuRef}
     >
       <Button
         variant={Button.variant.SIMPLE}
-        onClick={() => setShowMenu((pv) => !pv)}
+        onClick={handleToggleMenuClick}
       >
         <Icon
           icon={Icon.icon.CHEVRON_DOWN}
@@ -150,12 +157,9 @@ function MainMenu(): T_ReactElement {
       </Button>
 
       {showMenu && (
-        <Block
-          className="tw-absolute tw-top-full tw-z-40 tw-w-40 tw-overflow-hidden dfr-shadow dark:dfr-shadow"
-          style={{ left: -65 }}
-        >
+        <Block className="floating-menu-container tw-absolute tw-top-full tw-z-40 tw-w-40 tw-overflow-hidden dfr-shadow dark:dfr-shadow">
           <List className="tw-block">
-            {ITEMS.map((item) => {
+            {items.map((item) => {
               const isLinkActive =
                 pathname === item.url ||
                 asPath === item.url ||
@@ -164,8 +168,8 @@ function MainMenu(): T_ReactElement {
               return (
                 <List.Item
                   key={generateSlug(item.label)}
-                  className=" tw-border-b tw-border-gray-800 dfr-bg-color-dark-strong last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary"
-                  onClick={() => setShowMenu(false)}
+                  className="tw-border-b tw-border-gray-800 dfr-bg-color-dark-strong last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary"
+                  onClick={handleHideMenuClick}
                 >
                   <Link
                     variant={Link.variant.SIMPLE}
@@ -174,7 +178,6 @@ function MainMenu(): T_ReactElement {
                       "tw-block tw-px-2 tw-py-1 tw-text-center tw-text-base tw-text-gray-400 hover:tw-font-bold",
                       isLinkActive && "tw-font-bold",
                     )}
-                    locale={item.locale}
                   >
                     {item.label}
                   </Link>
@@ -184,19 +187,30 @@ function MainMenu(): T_ReactElement {
           </List>
         </Block>
       )}
-    </Block>
+
+      <style jsx>
+        {`
+          .root :global(.floating-menu-container) {
+            left: -65px;
+          }
+        `}
+      </style>
+    </div>
   );
 }
-
-const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactElement {
+const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_ReactElement {
+  // hooks
   const { theme, setTheme } = useTheme();
   const { t } = useTranslation();
 
-  const menuRef = React.useRef(null);
-  const { showMenu, setShowMenu, toggleShowMenu } = useEnhacedState({ showMenu: false });
+  // states & refs
+  const menuRef = React.useRef<HTMLDivElement>(null);
+  const [showMenu, setShowMenu, toggleShowMenu] = useEnhancedState(false);
 
+  // vars
   const isDarkMode = theme === "dark";
 
+  // effects
   useDidMount(() => {
     if (!isDarkMode) return;
     setTheme("light");
@@ -206,10 +220,21 @@ const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactE
     setShowMenu(false);
   });
 
-  function toggleTheme() {
+  // handlers
+  function handleToggleThemeClick(): void {
+    toggleTheme();
+  }
+
+  function handleToggleShowMenu(): void {
+    toggleShowMenu();
+  }
+
+  // utils
+  function toggleTheme(): void {
     setTheme(isDarkMode ? "light" : "dark");
   }
 
+  // render
   return (
     <Block
       className="tw-relative"
@@ -217,7 +242,7 @@ const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactE
     >
       <Button
         variant={Button.variant.SIMPLE}
-        onClick={() => toggleShowMenu()}
+        onClick={handleToggleShowMenu}
       >
         <Icon
           icon={Icon.icon.COG}
@@ -234,7 +259,7 @@ const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactE
             <Button
               variant={Button.variant.SIMPLE}
               disabled={!isDarkMode}
-              onClick={toggleTheme}
+              onClick={handleToggleThemeClick}
             >
               <Icon
                 icon={Icon.icon.SUN}
@@ -249,7 +274,7 @@ const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactE
             <Button
               variant={Button.variant.SIMPLE}
               disabled={isDarkMode}
-              onClick={toggleTheme}
+              onClick={handleToggleThemeClick}
             >
               <Icon
                 icon={Icon.icon.MOON}
@@ -268,11 +293,14 @@ const SettingsMenu = withRequiredAuthComponent(function SettingsMenu(): T_ReactE
   );
 });
 
-const EnvironmentMenuItem = withRequiredAuthComponent(function EnvironmentMenuItem() {
+const EnvironmentMenuItem = withAuthenticationRequired(function EnvironmentMenuItem() {
+  // hooks
   const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
+  // states & refs
   const [url, setUrl] = React.useState("/");
 
+  // effects
   useDidMount(() => {
     setUrl(
       isDevelopmentEnvironment()
@@ -281,12 +309,13 @@ const EnvironmentMenuItem = withRequiredAuthComponent(function EnvironmentMenuIt
     );
   });
 
+  // render
   return (
     <MenuItem title={`Open in "${isDevelopmentEnvironment() ? "prod" : "dev"}"`}>
       <Link
         variant={Link.variant.SIMPLE}
         href={url}
-        isExternalUrl
+        isExternalLink
       >
         <Icon icon={Icon.icon.EXTERNAL_LINK} />
       </Link>
@@ -294,23 +323,28 @@ const EnvironmentMenuItem = withRequiredAuthComponent(function EnvironmentMenuIt
   );
 });
 
-const ISRMenuItem = withRequiredAuthComponent(function ISRMenuItem() {
+const ISRMenuItem = withAuthenticationRequired(function ISRMenuItem() {
+  // handlers
+  async function handleISROnDemandClick(): Promise<void> {
+    try {
+      await http.post("/api/diegofrayo", {
+        path: window.location.pathname,
+        secret: ENV_VARS.NEXT_PUBLIC_ISR_TOKEN,
+      });
+
+      window.location.reload();
+    } catch (error) {
+      reportError(error);
+      showAlert(`ERROR: ${getErrorMessage(error)}`);
+    }
+  }
+
+  // render
   return (
     <MenuItem title="ISR on-demand">
       <Button
         variant={Button.variant.SIMPLE}
-        onClick={async () => {
-          try {
-            await http.post("/api/diegofrayo", {
-              path: window.location.pathname,
-              secret: process.env.NEXT_PUBLIC_ISR_TOKEN,
-            });
-            window.location.reload();
-          } catch (error) {
-            console.error(error);
-            alert("Error:" + error.message);
-          }
-        }}
+        onClick={handleISROnDemandClick}
       >
         <Icon icon={Icon.icon.SERVER} />
       </Button>
@@ -318,45 +352,50 @@ const ISRMenuItem = withRequiredAuthComponent(function ISRMenuItem() {
   );
 });
 
-const ReloadPWAMenuItem = withRequiredAuthComponent(function ReloadPWAMenuItem() {
-  const [render, setRender] = React.useState(false);
+const ReloadPWAMenuItem = withAuthenticationRequired(function ReloadPWAMenuItem() {
+  // states & refs
+  const [hasToRender, setHasToRender] = React.useState(false);
 
+  // effect
   useDidMount(() => {
-    setRender(isPWA());
+    setHasToRender(isPWA());
   });
 
-  if (!render) return null;
+  // handlers
+  function handleRefreshClick(): void {
+    window.location.reload();
+  }
 
-  return (
-    <MenuItem title="PWA">
-      <Button
-        variant={Button.variant.SIMPLE}
-        onClick={() => {
-          window.location.reload();
-        }}
-      >
-        <Icon icon={Icon.icon.REFRESH} />
-      </Button>
-    </MenuItem>
-  );
+  // render
+  if (hasToRender) {
+    return (
+      <MenuItem title="PWA">
+        <Button
+          variant={Button.variant.SIMPLE}
+          onClick={handleRefreshClick}
+        >
+          <Icon icon={Icon.icon.REFRESH} />
+        </Button>
+      </MenuItem>
+    );
+  }
+
+  return null;
 });
 
-function MenuItem({
-  children,
-  title,
-  className = "",
-}: {
-  children: T_ReactChildrenProp;
+type T_MenuItemProps = {
+  children: T_ReactChildren;
   title: string;
   className?: string;
-}): T_ReactElement {
+};
+
+function MenuItem({ children, title, className = "" }: T_MenuItemProps): T_ReactElement {
   return (
     <Block
       className={classNames(
-        "tw-flex tw-h-16 tw-flex-col tw-border-b tw-px-2 dfr-bg-color-primary dfr-border-color-primary last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary",
+        "tw-flex tw-h-16 tw-flex-col tw-items-center tw-justify-center tw-border-b tw-px-2 dfr-bg-color-primary dfr-border-color-primary last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary",
         className,
       )}
-      align="CENTER"
     >
       <Text className="tw-text-right tw-text-xs tw-font-bold">{title}</Text>
       <Block className="tw-mt-2 tw-text-right tw-leading-none">{children}</Block>

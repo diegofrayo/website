@@ -1,30 +1,32 @@
 import * as React from "react";
 
-import type { T_OnScrollEvent } from "~/types";
+type T_Callback = (event: Event) => void;
 
-function useOnWindowScroll(callback: (event: T_OnScrollEvent) => void, when = true): void {
-  const savedHandler = React.useRef(callback);
+function useOnWindowScroll(callback: T_Callback, when = true): void {
+  // states & refs
+  const savedHandler = React.useRef<T_Callback>(callback);
 
-  React.useEffect(function updateCallbackRef() {
+  // effects
+  React.useEffect(() => {
     savedHandler.current = callback;
   });
 
-  React.useEffect(
-    function createScrollEventListener() {
-      if (!when) return;
+  React.useEffect(() => {
+    if (!when) {
+      return () => undefined;
+    }
 
-      function passedCb(event) {
-        savedHandler.current(event);
-      }
+    // TODO: https://stackoverflow.com/questions/65530852/react-typescript-scroll-event-type-not-assignable-to-window-addeventlistener
+    const passedCb: EventListener = (event: Event) => {
+      savedHandler.current(event);
+    };
 
-      window.addEventListener("scroll", passedCb);
+    window.addEventListener("scroll", passedCb);
 
-      return () => {
-        window.removeEventListener("scroll", passedCb);
-      };
-    },
-    [when],
-  );
+    return () => {
+      window.removeEventListener("scroll", passedCb);
+    };
+  }, [when]);
 }
 
 export default useOnWindowScroll;

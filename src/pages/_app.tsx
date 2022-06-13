@@ -22,12 +22,13 @@ import { I18nService } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import MetadataService from "~/services/metadata";
 import { createPreloadedState, useStore } from "~/state";
-import type { T_ReactElement } from "~/types";
 import { isPWA } from "~/utils/browser";
 import { MDXComponents } from "~/utils/mdx";
 import { initPWARoutingConfig } from "~/utils/routing";
+import type { T_ReactElement, T_UnknownObject } from "~/types";
 
 import ErrorPage from "./500";
+import { logger } from "~/utils/app";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,6 +41,7 @@ const queryClient = new QueryClient({
 });
 
 function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
+  // hooks
   const router = useRouter();
   const store = useStore(
     createPreloadedState({
@@ -49,6 +51,11 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
     }),
   );
 
+  // @ts-ignore: TODO: Unexpected any. Specify a different type
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MDXComponentsCasted = MDXComponents as any;
+
+  // effects
   useDidMount(() => {
     AuthService.configureHttpHeaders();
     AnalyticsService.init();
@@ -61,7 +68,17 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
     if (isPWA()) {
       return initPWARoutingConfig(router);
     }
+
+    return () => undefined;
   });
+
+  // utils
+  function onError(error: Error, info: { componentStack: string }): void {
+    console.group("componentDidCatch (ErrorBoundary)");
+    logger("ERROR", error);
+    logger("ERROR", info);
+    console.groupEnd();
+  }
 
   return (
     <Provider store={store}>
@@ -73,25 +90,20 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
       >
         <ErrorBoundary
           FallbackComponent={ErrorPage}
-          onError={function onError(error: Error, info: { componentStack: string }) {
-            console.group("componentDidCatch (ErrorBoundary)");
-            console.error(error);
-            console.error(info);
-            console.groupEnd();
-          }}
+          onError={onError}
         >
           <QueryClientProvider client={queryClient}>
             <ThemeProvider
               storageKey="DFR_THEME"
               defaultTheme="system"
-              enableSystem={true}
+              enableSystem
               attribute="class"
               themes={["light"]}
               value={{ light: "tw-light" }}
               // themes={["light", "dark"]}
               // value={{ light: "tw-light", dark: "tw-dark" }}
             >
-              <MDXProvider components={MDXComponents as any}>
+              <MDXProvider components={MDXComponentsCasted}>
                 <Component {...pageProps} />
               </MDXProvider>
               <ProgressBar />
@@ -111,7 +123,10 @@ export default CustomApp;
 
 // --- Next.js functions ---
 
-CustomApp.getInitialProps = async (appContext) => {
+// https://nextjs.org/docs/api-reference/data-fetching/get-initial-props
+// https://linguinecode.com/post/next-js-typescript-getinitialprops
+// @ts-ignore: TODO: Unexpected any. Specify a different
+CustomApp.getInitialProps = async (appContext): Promise<T_UnknownObject> => {
   const metadata = await MetadataService.fetchData(appContext.router.locale);
   const appProps = await App.getInitialProps(appContext);
 

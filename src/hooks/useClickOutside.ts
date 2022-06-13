@@ -1,13 +1,21 @@
 import * as React from "react";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-function useClickOutside(ref, callback): any {
+import type { T_ReactRefObject } from "~/types";
+import { isDOMNode } from "~/utils/browser";
+import { exists, isNotTrue } from "~/utils/validations";
+
+function useClickOutside(ref: T_ReactRefObject<HTMLElement>, callback: () => void): void {
+  // effects
   React.useEffect(() => {
-    function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
+    const handleClickOutside: EventListener = function handleClickOutside(event): void {
+      if (
+        isDOMNode(event.target) &&
+        exists<HTMLElement>(ref.current) &&
+        isNotTrue(ref.current.contains(event.target))
+      ) {
         callback();
       }
-    }
+    };
 
     document.addEventListener("mousedown", handleClickOutside);
 

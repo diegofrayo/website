@@ -6,38 +6,50 @@ import classNames from "classnames";
 import { Block, Button, Code, Icon, InlineText, Link, Space } from "~/components/primitive";
 import { useTranslation } from "~/i18n";
 import twcss from "~/lib/twcss";
-import type { T_CodeProps, T_ReactElement } from "~/types";
-import { copyToClipboard } from "~/utils/browser";
+import { handleCopyToClipboardClick } from "~/utils/browser";
 import { generateSlug } from "~/utils/strings";
+import { isNotEmptyString } from "~/utils/validations";
+import type { T_ReactElement } from "~/types";
+
+type T_SourceCodeProps = {
+  language: "jsx" | "tsx" | "css" | "typescript" | "javascript" | "bash" | "yaml";
+  code: string;
+  fileName?: string;
+  sourceURL?: string;
+  displaySourceCodeDetails?: boolean;
+};
 
 function SourceCode({
   language,
-  fileName,
+  fileName = "",
   code = "",
   sourceURL = "",
-  showOnlySourceCode = false,
-}: T_CodeProps): T_ReactElement {
+  displaySourceCodeDetails = false,
+}: T_SourceCodeProps): T_ReactElement {
+  // hooks
   const { t } = useTranslation();
 
-  const codeTitle = fileName
+  // vars
+  const codeTitle = isNotEmptyString(fileName)
     ? `// ${generateSlug(fileName)}`
-    : sourceURL
+    : isNotEmptyString(sourceURL)
     ? `// ${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}`
     : "";
 
+  // render
   return (
-    <Block
-      className="dfr-SourceCode dfr-bg-color-light-strong "
+    <div
+      className="dfr-SourceCode dfr-bg-color-light-strong"
       data-markdown-block
     >
-      {!showOnlySourceCode && (
+      {displaySourceCodeDetails ? (
         <Block className="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-rounded-t-md tw-border tw-border-b-0 tw-px-2 tw-py-2 tw-font-mono tw-text-sm dfr-border-color-primary dark:tw-border-0 dark:tw-bg-gray-700">
           {codeTitle && <code className="tw-mr-4 tw-flex-1 tw-font-bold">{codeTitle}</code>}
           <InlineText className="tw-ml-auto tw-inline-block tw-flex-shrink-0 tw-bg-yellow-300 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-yellow-700">
             {language}
           </InlineText>
         </Block>
-      )}
+      ) : null}
 
       <Highlight
         {...defaultProps}
@@ -45,7 +57,7 @@ function SourceCode({
         language={language}
         theme={dracula}
       >
-        {({ className, style, tokens, getLineProps, getTokenProps }) => {
+        {({ className, style, tokens, getLineProps, getTokenProps }): T_ReactElement => {
           return (
             <Code
               variant={Code.variant.MULTILINE}
@@ -80,19 +92,19 @@ function SourceCode({
         }}
       </Highlight>
 
-      {!showOnlySourceCode && (
+      {displaySourceCodeDetails ? (
         <Block className="tw-flex tw-flex-col tw-rounded-b-md tw-border tw-border-t-0 tw-p-2 tw-text-sm dfr-border-color-primary dark:tw-border-0 dark:tw-bg-gray-700 sm:tw-flex-row sm:tw-justify-end">
-          {sourceURL && (
+          {isNotEmptyString(sourceURL) ? (
             <React.Fragment>
               <Link
                 variant={Link.variant.SECONDARY}
                 href={sourceURL}
                 className="tw-text-right"
-                isExternalUrl
+                isExternalLink
               >
                 <Icon
                   icon={Icon.icon.GITHUB}
-                  withDarkModeBackground
+                  withBackgroundWhenDarkMode
                 />
                 <InlineText className="tw-ml-1 tw-lowercase">
                   {t("page:see_source_code")}
@@ -100,33 +112,36 @@ function SourceCode({
               </Link>
               <Space responsive="tw-block tw-mb-1 tw-mr-0 sm:tw-inline-block sm:tw-mb-0 sm:tw-mr-6" />
             </React.Fragment>
-          )}
+          ) : null}
           <Button
             variant={Button.variant.DEFAULT}
             className="tw-text-right"
             data-clipboard-text={code}
-            onClick={copyToClipboard}
+            onClick={handleCopyToClipboardClick}
           >
             <Icon
               icon={Icon.icon.CLIPBOARD}
-              withDarkModeBackground
+              withBackgroundWhenDarkMode
             />
             <InlineText className="tw-ml-1 tw-lowercase">{t("page:copy_to_clipboard")}</InlineText>
           </Button>
         </Block>
-      )}
+      ) : null}
 
-      <style jsx>{`
-        :global(.dfr-SourceCode) :global(.dfr-Code) {
-          border-radius: 0;
-          box-shadow: none;
-        }
-      `}</style>
-    </Block>
+      <style jsx>
+        {`
+          .root :global(.dfr-Code) {
+            border-radius: 0;
+            box-shadow: none;
+          }
+        `}
+      </style>
+    </div>
   );
 }
 
 export default SourceCode;
+export type { T_SourceCodeProps };
 
 // --- Components ---
 

@@ -2,19 +2,21 @@ import { useRouter } from "next/router";
 import NProgress from "nprogress";
 
 import { useDidMount } from "~/hooks";
-import type { T_ReactElement } from "~/types";
+import type { T_SetTimeout } from "~/types";
 
-function ProgressBar(): T_ReactElement {
+function ProgressBar(): null {
+  // hooks
   const router = useRouter();
 
+  // effects
   useDidMount(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: T_SetTimeout;
 
-    function showProgressBar() {
+    function showProgressBar(): void {
       timeout = setTimeout(NProgress.start, 100);
     }
 
-    function hideProgressBar() {
+    function hideProgressBar(): void {
       clearTimeout(timeout);
       NProgress.done();
     }

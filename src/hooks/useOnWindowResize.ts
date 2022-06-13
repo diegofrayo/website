@@ -1,13 +1,17 @@
 import * as React from "react";
 
-function useOnWindowResize(callback: () => void): void {
-  const savedHandler = React.useRef(callback);
+type T_Callback = () => void;
 
-  React.useEffect(function updateCallbackRef() {
+function useOnWindowResize(callback: T_Callback): void {
+  // states & refs
+  const savedHandler = React.useRef<T_Callback>(callback);
+
+  // effects
+  React.useEffect(() => {
     savedHandler.current = callback;
   });
 
-  React.useEffect(function createResizeEventListener() {
+  React.useEffect(() => {
     function handleWindowResize(): void {
       savedHandler.current();
     }

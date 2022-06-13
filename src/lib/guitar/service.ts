@@ -1,10 +1,13 @@
+// @ts-nocheck
+
+import { isDevelopmentEnvironment } from "~/utils/app";
 import {
   createArray,
-  isDevelopmentEnvironment,
   transformObjectKeysFromSnakeCaseToLowerCamelCase,
-} from "~/utils/misc";
+} from "~/utils/objects-and-arrays";
 import { replaceAll } from "~/utils/strings";
 
+import CHORDS from "./data/chords.json";
 import {
   I_BarreMusicNote,
   I_SimpleMusicNote,
@@ -25,7 +28,6 @@ import {
   parseGuitarString,
   checkGuitarFretValidity,
 } from "./utils";
-import CHORDS from "./data/chords.json";
 
 class GuitarService {
   buildChord(musicNotes: T_MusicNote[] | string): T_ParsedChord {

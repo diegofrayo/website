@@ -2,42 +2,49 @@ import * as React from "react";
 
 import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import type { T_ReactElement } from "~/types";
 import { decrypt, encrypt } from "~/utils/dencrypt";
-import { copyToClipboard, focusElement, isSmallScreen } from "~/utils/browser";
+import {
+  focusElement,
+  focusInput,
+  handleCopyToClipboardClick,
+  isSmallScreen,
+} from "~/utils/browser";
+import type { T_ReactElement, T_ReactOnClickEventHandler, T_ReactRefObject } from "~/types";
+import { isNotDefined } from "~/utils/validations";
+import { reportError } from "~/utils/app";
 
 function Dencrypt(): T_ReactElement {
   const {
-    // states
+    // states & refs
     output,
     inputRef,
 
     // handlers
-    handleEncrypt,
-    handleDecrypt,
-    onInputFocus,
+    handleEncryptClick,
+    handleDecryptClick,
+    onInputFocusHandler,
   } = useController();
 
   return (
-    <React.Fragment>
+    <div className="root">
       <Block className="tw-mb-8">
         <Input
           id="input"
           label="Ingrese un texto"
           containerProps={{ className: "tw-my-1" }}
           ref={inputRef}
-          onClick={onInputFocus}
+          onClick={onInputFocusHandler}
         />
         <Block className="tw-flex tw-flex-wrap tw-justify-between">
           <Button
             variant={Button.variant.DEFAULT}
-            onClick={handleEncrypt}
+            onClick={handleEncryptClick}
           >
             encriptar
           </Button>
           <Button
             variant={Button.variant.DEFAULT}
-            onClick={handleDecrypt}
+            onClick={handleDecryptClick}
           >
             desencriptar
           </Button>
@@ -51,22 +58,25 @@ function Dencrypt(): T_ReactElement {
 
       <Block>
         <Text className="tw-font-bold">Resultado</Text>
-        <output
-          className="tw-my-1 tw-block tw-w-full tw-border tw-p-3 dfr-border-color-primary"
-          style={{ minHeight: 40 }}
-        >
+        <output className="tw-my-1 tw-block tw-w-full tw-border tw-p-3 dfr-border-color-primary">
           {output}
         </output>
         <Button
           variant={Button.variant.DEFAULT}
           className="tw-ml-auto tw-block"
           data-clipboard-text={output}
-          onClick={copyToClipboard}
+          onClick={handleCopyToClipboardClick}
         >
           copiar
         </Button>
       </Block>
-    </React.Fragment>
+
+      <style jsx>{`
+        .root :global(output) {
+          min-height: 40px;
+        }
+      `}</style>
+    </div>
   );
 }
 
@@ -74,65 +84,63 @@ export default Dencrypt;
 
 // --- Controller ---
 
-function useController(): {
+type T_UseControllerReturn = {
   output: string;
-  inputRef: any;
-  handleEncrypt: any;
-  handleDecrypt: any;
-  onInputFocus: any;
-} {
+  inputRef: T_ReactRefObject<HTMLInputElement>;
+  handleEncryptClick: T_ReactOnClickEventHandler;
+  handleDecryptClick: T_ReactOnClickEventHandler;
+  onInputFocusHandler: T_ReactOnClickEventHandler<HTMLInputElement>;
+};
+
+function useController(): T_UseControllerReturn {
+  // states & refs
   const [output, setOutput] = React.useState("");
   const inputRef = React.useRef<HTMLInputElement>(null);
 
+  // effects
   useDidMount(() => {
-    if (isSmallScreen() || !inputRef.current) return;
+    if (isSmallScreen() || isNotDefined(inputRef.current)) {
+      return;
+    }
+
     focusElement(inputRef.current);
   });
 
-  async function handleEncrypt() {
+  // handlers
+  async function handleEncryptClick(): Promise<void> {
     try {
       const encryptedText = await encrypt(inputRef.current?.value || "");
-
       setOutput(encryptedText);
     } catch (error) {
-      console.error("Error encrypting data");
-      console.error(error);
-
-      setOutput("Error, el texto no fue encriptado :(");
+      reportError(error);
+      setOutput("Error, el texto no pudo ser encriptado");
     }
   }
 
-  async function handleDecrypt() {
+  async function handleDecryptClick(): Promise<void> {
     try {
       const decryptedText = await decrypt(inputRef.current?.value || "");
 
       setOutput(decryptedText);
     } catch (error) {
-      console.error("Error decrypting data");
-      console.error(error);
-
-      setOutput("Error, el texto no fue desencriptado :(");
+      reportError(error);
+      setOutput("Error, el texto no pudo ser desencriptado");
     }
   }
 
-  function onInputFocus(e) {
-    try {
-      e.currentTarget.focus();
-      e.currentTarget.select();
-    } catch (error) {
-      console.error("Error focussing a input");
-      console.error(error);
-    }
-  }
+  const onInputFocusHandler: T_UseControllerReturn["onInputFocusHandler"] =
+    function onInputFocusHandler(event) {
+      focusInput(event.currentTarget);
+    };
 
   return {
-    // states
+    // states & refs
     output,
     inputRef,
 
     // handlers
-    handleEncrypt,
-    handleDecrypt,
-    onInputFocus,
+    handleEncryptClick,
+    handleDecryptClick,
+    onInputFocusHandler,
   };
 }

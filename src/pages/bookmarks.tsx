@@ -7,13 +7,11 @@ export default BookmarksPage;
 // --- Next.js functions ---
 
 export const getStaticProps = getPageContentStaticProps({
-  callback: async () => {
-    return {
-      props: {
-        bookmarks: await dataLoader({
-          path: "/pages/bookmarks/data.json",
-        }),
-      },
-    };
-  },
+  callback: async () => ({
+    props: {
+      bookmarks: await dataLoader({
+        path: "/pages/bookmarks/data.json",
+      }),
+    },
+  }),
 });

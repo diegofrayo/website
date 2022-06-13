@@ -1,14 +1,17 @@
+// @ts-nocheck
+
 import { configureStore } from "@reduxjs/toolkit";
 
-import { I18nService } from "~/i18n";
-import type { T_Locale, T_Metadata, T_Object, T_PageContent, T_Store } from "~/types";
-import {
-  isDevelopmentEnvironment,
-  transformObjectKeysFromSnakeCaseToLowerCamelCase,
-} from "~/utils/misc";
+import { I18nService, T_Locale, T_PageContent } from "~/i18n";
+import { isDevelopmentEnvironment } from "~/utils/app";
+import { transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/objects-and-arrays";
 
-import metadataReducer, { REDUCER_NAME as METADATA_REDUCER_NAME } from "./modules/metadata";
+import metadataReducer, {
+  REDUCER_NAME as METADATA_REDUCER_NAME,
+  T_Metadata,
+} from "./modules/metadata";
 import pageConfigReducer, { REDUCER_NAME as PAGE_CONFIG_REDUCER_NAME } from "./modules/page-config";
+import { T_Store } from "./types";
 
 let store;
 

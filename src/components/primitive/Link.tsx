@@ -3,8 +3,10 @@ import classNames from "classnames";
 import NextLink from "next/link";
 
 import twcss from "~/lib/twcss";
-import type { T_Locale, T_ReactElement, T_HTMLElementAttributes } from "~/types";
-import { mirror } from "~/utils/misc";
+import { T_Locale } from "~/i18n";
+import { logger } from "~/utils/app";
+import { mirror } from "~/utils/objects-and-arrays";
+import type { T_HTMLElementAttributes, T_ReactElementNullable } from "~/types";
 
 const VARIANTS_OPTIONS = ["UNSTYLED", "SIMPLE", "PRIMARY", "SECONDARY"] as const;
 type T_Variant = typeof VARIANTS_OPTIONS[number];
@@ -12,11 +14,11 @@ const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
 
 type T_LinkProps = T_HTMLElementAttributes["a"] & {
   variant: T_Variant;
-  isExternalUrl?: boolean;
+  isExternalLink?: boolean;
   locale?: T_Locale;
 };
 
-function Link(props: T_LinkProps): T_ReactElement {
+function Link(props: T_LinkProps): T_ReactElementNullable {
   const {
     // utils
     composeLinkAttributes,
@@ -26,16 +28,16 @@ function Link(props: T_LinkProps): T_ReactElement {
     variant,
     href,
     className,
-    isExternalUrl,
+    isExternalLink,
     ...rest
   } = useController(props);
 
   if (!href || !children) {
-    console.warn("Link component: href or children are falsy", { href, children });
+    logger("WARN", "Link component: href or children are falsy", { href, children });
     return null;
   }
 
-  if (isExternalUrl) {
+  if (isExternalLink) {
     return (
       <LinkElement
         href={href}
@@ -72,19 +74,23 @@ export default Link;
 
 // --- Controller ---
 
-type T_UseController = T_LinkProps & {
-  composeLinkAttributes: () => void; // TODO: TS: Type this function
+type T_UseControllerReturn = T_LinkProps & {
+  composeLinkAttributes: () => { target?: "_blank"; rel?: "noreferrer" };
 };
 
 function useController({
   href = "",
-  isExternalUrl = false,
+  isExternalLink = false,
   ...rest
-}: T_LinkProps): T_UseController {
-  function composeLinkAttributes() {
-    if (isExternalUrl === false || href.startsWith("#")) return {};
-    return { target: "_blank", rel: "noreferrer" };
-  }
+}: T_LinkProps): T_UseControllerReturn {
+  const composeLinkAttributes: T_UseControllerReturn["composeLinkAttributes"] =
+    function composeLinkAttributes() {
+      if (isExternalLink === false || href.startsWith("#")) {
+        return {};
+      }
+
+      return { target: "_blank", rel: "noreferrer" };
+    };
 
   return {
     // utils
@@ -92,7 +98,7 @@ function useController({
 
     // props
     href,
-    isExternalUrl,
+    isExternalLink,
     ...rest,
   };
 }

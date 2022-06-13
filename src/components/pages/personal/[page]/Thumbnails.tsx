@@ -2,21 +2,25 @@ import * as React from "react";
 
 import { Input, Block, Title, Image, InlineText, Space, Button } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
-import type { T_ReactElement } from "~/types";
+import type {
+  T_ReactElement,
+  T_ReactOnChangeEventHandler,
+  T_ReactOnClickEventHandler,
+  T_ReactRefObject,
+} from "~/types";
 import { downloadComponentAsImage } from "~/utils/browser";
+import { isNotDefined } from "~/utils/validations";
 
 function Thumbnails(): T_ReactElement {
   const {
-    // states
+    // states & refs
     title,
     src,
-
-    // refs
     thumbnailRef,
 
     // handlers
-    onChange,
-    handleDownloadAsImage,
+    onChangeHandler,
+    handleDownloadAsImageClick,
   } = useController();
 
   return (
@@ -26,14 +30,14 @@ function Thumbnails(): T_ReactElement {
           id="input-title"
           label="Title"
           value={title}
-          onChange={onChange("title")}
+          onChange={onChangeHandler("title")}
         />
         <Space size={2} />
         <Input
           id="input-thumbnail"
           label="Thumbnail url"
           value={src}
-          onChange={onChange("src")}
+          onChange={onChangeHandler("src")}
         />
       </Block>
       <Space size={8} />
@@ -42,12 +46,12 @@ function Thumbnails(): T_ReactElement {
         <Thumbnail
           src={src}
           title={title}
-          containerRef={thumbnailRef}
+          thumbnailRef={thumbnailRef}
         />
         <Space size={1} />
         <Button
           variant={Button.variant.DEFAULT}
-          onClick={handleDownloadAsImage}
+          onClick={handleDownloadAsImageClick}
         >
           <Emoji className="tw-mr-2">⬇️</Emoji>
           <InlineText>descargar como imagen</InlineText>
@@ -61,7 +65,16 @@ export default Thumbnails;
 
 // --- Controller ---
 
-function useController() {
+type T_UseControllerReturn = {
+  title: string;
+  src: string;
+  thumbnailRef: T_ReactRefObject<HTMLDivElement>;
+  onChangeHandler: (inputName: "src" | "title") => T_ReactOnChangeEventHandler<HTMLInputElement>;
+  handleDownloadAsImageClick: T_ReactOnClickEventHandler<HTMLButtonElement>;
+};
+
+function useController(): T_UseControllerReturn {
+  // vars
   const BLOG_POSTS = [
     {
       slug: "connecting-a-firebase-project-with-a-go-daddy-domain",
@@ -78,47 +91,54 @@ function useController() {
   ];
   const CURRENT_BLOG_POST = BLOG_POSTS[1];
 
-  const thumbnailRef = React.useRef<HTMLDivElement>(null);
+  // states & refs
   const [title, setTitle] = React.useState(CURRENT_BLOG_POST.title);
   const [src, setSrc] = React.useState("/static/images/pages/personal/thumbnails/code-1.png");
+  const thumbnailRef = React.useRef<HTMLDivElement>(null);
 
-  function onChange(input) {
-    return (e) => {
-      const value = e.currentTarget.value;
+  // handlers
+  const onChangeHandler: T_UseControllerReturn["onChangeHandler"] = function onChangeHandler(
+    inputName,
+  ) {
+    return (event) => {
+      const { value } = event.currentTarget;
 
-      if (input === "title") {
+      if (inputName === "title") {
         setTitle(value);
       } else {
         setSrc(value);
       }
     };
-  }
+  };
 
-  async function handleDownloadAsImage(): Promise<void> {
-    await downloadComponentAsImage(thumbnailRef.current, CURRENT_BLOG_POST.slug);
-  }
+  const handleDownloadAsImageClick: T_UseControllerReturn["handleDownloadAsImageClick"] =
+    async function handleDownloadAsImageClick(): Promise<void> {
+      if (isNotDefined(thumbnailRef.current)) return;
+
+      await downloadComponentAsImage(thumbnailRef.current, CURRENT_BLOG_POST.slug);
+    };
 
   return {
-    // states
+    // states & refs
     title,
     src,
-
-    // refs
     thumbnailRef,
 
     // handlers
-    onChange,
-    handleDownloadAsImage,
+    onChangeHandler,
+    handleDownloadAsImageClick,
   };
 }
 
 // --- Components ---
 
-function Thumbnail({ title, src, containerRef }) {
+type T_ThumbnailProps = Pick<T_UseControllerReturn, "title" | "src" | "thumbnailRef">;
+
+function Thumbnail({ title, src, thumbnailRef }: T_ThumbnailProps): T_ReactElement {
   return (
-    <div
-      className="root tw-relative tw-mx-auto tw-flex tw-h-80 tw-flex-col tw-items-center tw-justify-center tw-overflow-auto tw-bg-gradient-to-b tw-from-black tw-to-gray-800 tw-px-4 tw-py-16"
-      ref={containerRef}
+    <Block
+      className="tw-relative tw-mx-auto tw-flex tw-h-80 tw-flex-col tw-items-center tw-justify-center tw-overflow-auto tw-bg-gradient-to-b tw-from-black tw-to-gray-800 tw-px-4 tw-py-16"
+      ref={thumbnailRef}
     >
       <Image
         src={src}
@@ -133,8 +153,8 @@ function Thumbnail({ title, src, containerRef }) {
         {title}
       </Title>
       <InlineText className="tw-absolute tw-bottom-1 tw-right-2 tw-text-right tw-font-mono tw-text-xs tw-font-bold tw-italic tw-text-gray-400">
-        {"diegofrayo.vercel.app"}
+        diegofrayo.vercel.app
       </InlineText>
-    </div>
+    </Block>
   );
 }

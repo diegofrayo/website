@@ -1,7 +1,9 @@
+// @ts-nocheck
+
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-import type { T_Locale } from "~/types";
+import { T_Locale } from "./types";
 
 class I18nService {
   private LOCALES: T_Locale[] = ["en"];
@@ -41,11 +43,15 @@ class I18nService {
     return this.DEFAULT_LOCALE;
   }
 
-  getContentLocale(
-    locales: T_Locale[],
-    currentLocale: T_Locale,
-    defaultLocale: T_Locale,
-  ): T_Locale {
+  getContentLocale({
+    locales,
+    currentLocale,
+    defaultLocale,
+  }: {
+    locales: T_Locale[];
+    currentLocale: T_Locale;
+    defaultLocale: T_Locale;
+  }): T_Locale {
     return locales.indexOf(currentLocale) !== -1 ? currentLocale : defaultLocale;
   }
 }

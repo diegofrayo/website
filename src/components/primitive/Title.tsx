@@ -1,31 +1,26 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import type { T_HTMLElementAttributes, T_ReactChildrenProp, T_ReactElement } from "~/types";
+import { mirror } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
+import type { T_HTMLElementAttributes, T_ReactChildren, T_ReactElement } from "~/types";
 
 import Icon from "./Icon";
 import Link from "./Link";
+import { isString } from "~/utils/validations";
 
-enum E_Size {
-  XS = "XS",
-  SM = "SM",
-  MD = "MD",
-  LG = "LG",
-  XL = "XL",
-}
-
-enum E_Variants {
-  "PRIMARY" = "PRIMARY", // For Markdown
-  "SECONDARY" = "SECONDARY", // Black/White
-  "UNSTYLED" = "UNSTYLED",
-}
+const VARIANTS_OPTIONS = ["UNSTYLED", "PRIMARY", "SECONDARY"] as const;
+const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
+type T_Variant = typeof VARIANTS_OPTIONS[number];
+const SIZES_OPTIONS = ["XS", "SM", "MD", "LG", "XL"] as const;
+const SIZES = mirror<T_Size>(SIZES_OPTIONS);
+type T_Size = typeof SIZES_OPTIONS[number];
 
 type T_TitleProps = {
-  children: T_ReactChildrenProp;
+  children: T_ReactChildren;
   is: "h1" | "h2" | "h3" | "h4";
-  variant?: E_Variants;
-  size?: E_Size;
+  variant?: T_Variant;
+  size?: T_Size;
   showLinkIcon?: boolean;
 } & T_HTMLElementAttributes["h1"];
 
@@ -35,16 +30,16 @@ function Title(props: T_TitleProps): T_ReactElement {
     variant,
     showLinkIcon,
     children,
+    is: Tag,
 
     // vars
     id,
     className,
-    Tag,
 
     ...rest
   } = useController(props);
 
-  if (variant === E_Variants.PRIMARY && showLinkIcon) {
+  if (variant === VARIANTS.PRIMARY && showLinkIcon) {
     return (
       <Tag
         id={id}
@@ -69,18 +64,19 @@ function Title(props: T_TitleProps): T_ReactElement {
             size={16}
           />
         </Link>
-
         {children}
 
-        <style jsx>{`
-          :global(.dfr-Title--primary):hover :global(.dfr-Link) {
-            visibility: visible;
-          }
+        <style jsx>
+          {`
+            :global(.dfr-Title--primary):hover :global(.dfr-Link) {
+              visibility: visible;
+            }
 
-          :global(.dfr-Title--primary) {
-            scroll-margin-top: 20px;
-          }
-        `}</style>
+            :global(.dfr-Title--primary) {
+              scroll-margin-top: 20px;
+            }
+          `}
+        </style>
       </Tag>
     );
   }
@@ -96,26 +92,27 @@ function Title(props: T_TitleProps): T_ReactElement {
   );
 }
 
-Title.variant = E_Variants;
-Title.size = E_Size;
+Title.variant = VARIANTS;
+Title.size = SIZES;
 
 export default Title;
+export type { T_TitleProps };
 
 // --- Controller ---
 
+type T_UseControllerReturn = T_TitleProps;
+
 function useController({
   children,
-  is: Tag,
+  is,
   className = "",
   size = undefined,
-  variant = E_Variants.PRIMARY,
+  variant = VARIANTS.PRIMARY,
   showLinkIcon = false,
   id = "",
   ...rest
-}: T_TitleProps): Omit<T_TitleProps, "is"> & {
-  id: string;
-  Tag: T_TitleProps["is"];
-} {
+}: T_TitleProps): T_UseControllerReturn {
+  // utils
   function generateStyles(tag: T_TitleProps["is"]): string {
     return classNames(
       {
@@ -131,7 +128,7 @@ function useController({
         SECONDARY: "dfr-text-color-dark-strong dark:dfr-text-color-light-strong",
         UNSTYLED: "",
       }[variant],
-      size !== undefined &&
+      isString(size) &&
         {
           XS: "tw-text-md",
           SM: "tw-text-xl",
@@ -147,17 +144,16 @@ function useController({
     variant,
     showLinkIcon,
     children,
+    is,
     ...rest,
 
     // vars
-    id:
-      variant === E_Variants.PRIMARY && typeof children === "string" ? generateSlug(children) : id,
+    id: variant === VARIANTS.PRIMARY && isString(children) ? generateSlug(children) : id,
     className: classNames(
       `dfr-Title dfr-Title--${variant.toLowerCase()}`,
       "tw-font-bold tw-font-sans",
-      generateStyles(Tag),
+      generateStyles(is),
       className,
     ),
-    Tag,
   };
 }

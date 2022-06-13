@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as React from "react";
 import { useTheme } from "next-themes";
 
@@ -7,9 +9,12 @@ import { GoBack, Render } from "~/components/shared";
 import { withAuth } from "~/auth";
 import { useDidMount, useQuery } from "~/hooks";
 import http from "~/lib/http";
-import type { T_ReactElement } from "~/types";
+import { isDevelopmentEnvironment } from "~/utils/app";
 import { setScrollPosition } from "~/utils/browser";
-import { delay, isDevelopmentEnvironment, sortBy } from "~/utils/misc";
+import { ENV_VARS } from "~/utils/constants";
+import { delay } from "~/utils/misc";
+import { sortBy } from "~/utils/objects-and-arrays";
+import type { T_ReactElement } from "~/types";
 
 import { ROUTINE_ITEMS_STATUS, ROUTINE_STATUS, TIMER_STATUS } from "./constants";
 import { Timer, Stats, RoutineItem } from "./components";
@@ -320,7 +325,7 @@ function useController() {
 
       try {
         const { data } = await http.post(
-          `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
+          `${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
           {
             path: "/timer",
             method: "GET",
@@ -813,7 +818,7 @@ function useController() {
     function handleUploadRoutineHistoryClick(date, routine) {
       return async () => {
         try {
-          await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
+          await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
             path: "/timer",
             method: "POST",
             payload: {

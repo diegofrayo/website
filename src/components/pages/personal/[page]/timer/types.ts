@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 export type T_RoutinesTemplatesResponse = {
   metadata: { version: string; routineItemsStartTime: number };
   exercises: Record<string, T_RoutineItem>;

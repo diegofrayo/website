@@ -1,28 +1,33 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { Icon, Input, Link, Block, Text } from "~/components/primitive";
+import { Icon, Input, Link, Block, Button, InlineText } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import type { T_ReactElement } from "~/types";
-import { copyToClipboard, focusElement, isMobile } from "~/utils/browser";
+import { focusElement, handleCopyToClipboardClick, isMobile } from "~/utils/browser";
 import { generateSlug, replaceAll } from "~/utils/strings";
+import type {
+  T_ReactElement,
+  T_ReactOnChangeEventHandler,
+  T_ReactOnKeyPressEventHandler,
+  T_ReactRefObject,
+} from "~/types";
 
 function WhatsApp(): T_ReactElement {
   const {
-    // states
+    // states & refs
     phone,
     inputRef,
     isInvalidPhone,
     isWebOptionSelected,
 
-    // handlers
-    onKeyPress,
-    onChange,
-    onRadioChange,
-    composeWhatsAppUrl,
-  } = useController();
+    // vars
+    whatsAppUrl,
 
-  const whatsAppUrl = composeWhatsAppUrl();
+    // handlers
+    onKeyPressHandler,
+    onChangeHandler,
+    onRadioChangeHandler,
+  } = useController();
 
   return (
     <Block>
@@ -35,8 +40,8 @@ function WhatsApp(): T_ReactElement {
           value={phone}
           placeholder="🇨🇴 +57"
           pattern="\+?[0-9]{10,15}"
-          onChange={onChange}
-          onKeyPress={onKeyPress}
+          onChange={onChangeHandler}
+          onKeyPress={onKeyPressHandler}
         />
         <Link
           variant={Link.variant.SIMPLE}
@@ -45,8 +50,8 @@ function WhatsApp(): T_ReactElement {
             "tw-flex tw-self-end",
             isInvalidPhone && "tw-pointer-events-none tw-opacity-50",
           )}
-          id="button"
-          isExternalUrl
+          id="link-to-wp"
+          isExternalLink
         >
           <Icon
             icon={Icon.icon.WHATSAPP}
@@ -56,38 +61,43 @@ function WhatsApp(): T_ReactElement {
       </Block>
       <Block className="tw-mt-1 tw-flex tw-flex-row-reverse tw-justify-between tw-pr-14">
         <Block>
-          <input
-            type="radio"
-            className="tw-mr-1"
-            id="radio-app"
-            name="option"
-            value="app"
-            checked={!isWebOptionSelected}
-            onChange={onRadioChange}
-          />
-          <label htmlFor="radio-app">app</label>
+          <label htmlFor="radio-app">
+            <input
+              type="radio"
+              className="tw-mr-1"
+              id="radio-app"
+              name="option"
+              value="app"
+              checked={!isWebOptionSelected}
+              onChange={onRadioChangeHandler}
+            />
+            <InlineText>app</InlineText>
+          </label>
         </Block>
         <Block>
-          <input
-            type="radio"
-            className="tw-mr-1"
-            id="radio-web"
-            name="option"
-            value="web"
-            checked={isWebOptionSelected}
-            onChange={onRadioChange}
-          />
-          <label htmlFor="radio-web">web</label>
+          <label htmlFor="radio-web">
+            <input
+              type="radio"
+              className="tw-mr-1"
+              id="radio-web"
+              name="option"
+              value="web"
+              checked={isWebOptionSelected}
+              onChange={onRadioChangeHandler}
+            />
+            <InlineText>web</InlineText>
+          </label>
         </Block>
       </Block>
       <Block className="tw-mt-3 tw-text-left sm:tw-text-center">
-        <Text
-          className="tw-inline-block tw-cursor-pointer tw-border tw-border-dashed tw-px-1 tw-text-xs tw-italic dfr-border-color-primary"
+        <Button
+          variant={Button.variant.UNSTYLED}
+          className="tw-inline-block tw-border tw-border-dashed tw-px-1 tw-text-xs tw-italic dfr-border-color-primary"
           data-clipboard-text={whatsAppUrl}
-          onClick={copyToClipboard}
+          onClick={handleCopyToClipboardClick}
         >
           {whatsAppUrl}
-        </Text>
+        </Button>
       </Block>
     </Block>
   );
@@ -97,21 +107,25 @@ export default WhatsApp;
 
 // --- Controller ---
 
-function useController(): {
+type T_UseControllerReturn = {
   phone: string;
-  inputRef: any;
-  onKeyPress: any;
-  onChange: any;
-  composeWhatsAppUrl: any;
-  onRadioChange: any;
+  inputRef: T_ReactRefObject<HTMLInputElement>;
   isInvalidPhone: boolean;
   isWebOptionSelected: boolean;
-} {
+  whatsAppUrl: string;
+  onKeyPressHandler: T_ReactOnKeyPressEventHandler<HTMLInputElement>;
+  onChangeHandler: T_ReactOnChangeEventHandler<HTMLInputElement>;
+  onRadioChangeHandler: T_ReactOnChangeEventHandler<HTMLInputElement>;
+};
+
+function useController(): T_UseControllerReturn {
+  // states & refs
   const [phone, setPhone] = React.useState("");
+  const [isInvalidPhone, setIsInvalidPhone] = React.useState(true);
   const [isWebOptionSelected, setIsWebOptionSelected] = React.useState(true);
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const [isInvalidPhone, setIsInvalidPhone] = React.useState(true);
 
+  // effects
   useDidMount(() => {
     if (!inputRef.current) return;
 
@@ -123,21 +137,28 @@ function useController(): {
     setIsInvalidPhone(!inputRef?.current?.validity?.valid || !phone);
   }, [phone]);
 
-  function onKeyPress(e) {
-    if (e.key !== "Enter" || isInvalidPhone) return;
-    document.getElementById("button")?.click();
-  }
+  // handlers
+  const onKeyPressHandler: T_UseControllerReturn["onKeyPressHandler"] = function onKeyPressHandler(
+    event,
+  ) {
+    if (event.key !== "Enter" || isInvalidPhone) return;
+    document.getElementById("link-to-wp")?.click();
+  };
 
-  function onChange(e) {
-    const value = e.currentTarget.value;
+  const onChangeHandler: T_UseControllerReturn["onChangeHandler"] = function onChangeHandler(
+    event,
+  ) {
+    const { value } = event.currentTarget;
     setPhone((value.includes("+") ? "+" : "") + replaceAll(generateSlug(value), "-", ""));
-  }
+  };
 
-  function onRadioChange(e) {
-    setIsWebOptionSelected(e.currentTarget.value === "web");
-  }
+  const onRadioChangeHandler: T_UseControllerReturn["onRadioChangeHandler"] =
+    function onRadioChangeHandler(event) {
+      setIsWebOptionSelected(event.currentTarget.value === "web");
+    };
 
-  function composeWhatsAppUrl() {
+  // utils
+  function composeWhatsAppUrl(): string {
     const url = new URLSearchParams();
     url.append("phone", `${phone.includes("+") ? "" : "+57"}${phone}`);
     url.append("text", "Hey!");
@@ -146,16 +167,18 @@ function useController(): {
   }
 
   return {
-    // states
+    // states & refs
     phone,
     inputRef,
     isInvalidPhone,
     isWebOptionSelected,
 
+    // vars
+    whatsAppUrl: composeWhatsAppUrl(),
+
     // handlers
-    onKeyPress,
-    onChange,
-    onRadioChange,
-    composeWhatsAppUrl,
+    onKeyPressHandler,
+    onChangeHandler,
+    onRadioChangeHandler,
   };
 }

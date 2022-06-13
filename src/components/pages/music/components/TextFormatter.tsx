@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as React from "react";
 import classNames from "classnames";
 import reactStringReplace from "react-string-replace";
@@ -5,8 +7,9 @@ import reactStringReplace from "react-string-replace";
 import { Button, Icon, Modal, Space, Block, InlineText } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { GuitarChord, GuitarService, T_Chord } from "~/lib/guitar";
-import type { T_ReactElement, T_ReactChildrenProp } from "~/types";
-import { createArray, safeCastNumber } from "~/utils/misc";
+import { safeCastNumber } from "~/utils/numbers";
+import { createArray } from "~/utils/objects-and-arrays";
+import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 type T_TextFormatterProps = {
   children: string;
@@ -55,10 +58,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                 );
               })}
               <Space size={1} />
-              <Block
-                display="tw-flex"
-                align="CENTER"
-              >
+              <Block className="tw-flex tw-items-center tw-justify-center">
                 <Button
                   variant={Button.variant.SIMPLE}
                   onClick={() => {
@@ -70,11 +70,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                     size={20}
                   />
                 </Button>
-                <Block
-                  className="tw-flex-1"
-                  display="tw-flex"
-                  align="CENTER"
-                >
+                <Block className="tw-flex tw-flex-1 tw-items-center tw-justify-center">
                   {createArray(selectedChord.length, 0).map((index) => {
                     return (
                       <InlineText
@@ -142,7 +138,7 @@ function useController({ children, insertions }: T_TextFormatterProps): {
   handleUpdateSelectedChordIndex: (value: number | string) => void;
   handleModalClose: () => void;
 
-  parsedLyrics: T_ReactChildrenProp;
+  parsedLyrics: T_ReactChildren;
 } {
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [selectedChord, setSelectedChord] = React.useState<T_Chord | undefined>(undefined);
@@ -191,7 +187,7 @@ function useController({ children, insertions }: T_TextFormatterProps): {
   function parseInsertions(
     parsedContent: string,
     insertions?: T_TextFormatterProps["insertions"],
-  ): T_ReactChildrenProp {
+  ): T_ReactChildren {
     let result;
 
     if (insertions) {

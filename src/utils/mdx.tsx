@@ -11,28 +11,23 @@ import {
   Space,
   Text,
 } from "~/components/primitive";
-import {
-  ImageWithLink,
-  Playground,
-  SourceCode,
-  TextWithEmoji,
-  Timeline,
-  TitleCreator,
-} from "~/components/shared";
+import { ImageWithLink, Playground, SourceCode, Timeline, TitleCreator } from "~/components/shared";
 import * as BlogComponents from "~/components/pages/blog/components";
 import * as MusicComponents from "~/components/pages/music/components";
 import * as AboutMeComponents from "~/components/pages/about-me/components";
 import * as ResumeComponents from "~/components/pages/resume";
-import type { T_ReactChildrenProp, T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
+import type { T_ReactChildren, T_ReactElement } from "~/types";
+
+import { ENV_VARS } from "./constants";
 
 export const MDXComponents = {
-  a: function A({ children, ...rest }: { children: T_ReactChildrenProp }): T_ReactElement {
+  a: function A({ children, ...rest }: { children: T_ReactChildren }): T_ReactElement {
     return (
       <Link
         variant={Link.variant.PRIMARY}
         {...rest}
-        isExternalUrl
+        isExternalLink
       >
         {children}
       </Link>
@@ -43,7 +38,7 @@ export const MDXComponents = {
   h3: TitleCreator("h3", { showLinkIcon: true }),
   h4: TitleCreator("h4", { showLinkIcon: true }),
   img: Image,
-  ul: function UL({ children, ...rest }: { children: T_ReactChildrenProp }): T_ReactElement {
+  ul: function UL({ children, ...rest }: { children: T_ReactChildren }): T_ReactElement {
     return (
       <List
         variant={List.variant.DEFAULT}
@@ -53,7 +48,7 @@ export const MDXComponents = {
       </List>
     );
   },
-  pre: function Pre({ children, ...rest }: { children: T_ReactChildrenProp }): T_ReactElement {
+  pre: function Pre({ children, ...rest }: { children: T_ReactChildren }): T_ReactElement {
     return (
       <Code
         variant={Code.variant.MULTILINE}
@@ -63,12 +58,7 @@ export const MDXComponents = {
       </Code>
     );
   },
-  code: function InlineCode({
-    children,
-    ...rest
-  }: {
-    children: T_ReactChildrenProp;
-  }): T_ReactElement {
+  code: function InlineCode({ children, ...rest }: { children: T_ReactChildren }): T_ReactElement {
     return (
       <Code
         variant={Code.variant.INLINE}
@@ -96,7 +86,6 @@ export const MDXComponents = {
   ImageWithLink,
   Playground,
   SourceCode,
-  TextWithEmoji,
   Timeline,
 
   // Pages components
@@ -104,11 +93,11 @@ export const MDXComponents = {
   ...MusicComponents,
   ...AboutMeComponents,
   ...ResumeComponents,
-};
+} as const;
 
 export const MDXScope = {
   DATA: {
     ROUTES,
-    SERVER_URL: process.env.NEXT_PUBLIC_ASSETS_SERVER_URL,
+    SERVER_URL: ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL,
   },
-};
+} as const;

@@ -4,23 +4,30 @@ import classNames from "classnames";
 import { Button, Space, Title, Block, Text, InlineText } from "~/components/primitive";
 import { Emoji, Render, Timeline } from "~/components/shared";
 import { useQuery } from "~/hooks";
-import TimelineService from "./service";
+import { safeCastNumber } from "~/utils/numbers";
+import { exists, isEmptyString, isUndefined } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
-import type { T_Timeline } from "./types";
+import TimelineService from "./service";
+import {
+  T_Timeline,
+  T_TimelineCategory,
+  T_TimelineFetchResponse,
+  T_TimelineGroupItem,
+} from "./types";
 
 function TimelinePage(): T_ReactElement {
   const {
-    // states
+    // states & refs
     selectedCategory,
-
-    // handlers
-    handleSelectFilter,
 
     // vars
     isLoading,
     error,
     data,
+
+    // handlers
+    handleSelectFilterClick,
   } = useController();
 
   return (
@@ -29,7 +36,12 @@ function TimelinePage(): T_ReactElement {
       error={error}
       data={data}
     >
-      {({ categories, items }: T_Timeline) => {
+      {(data: unknown): T_ReactElement => {
+        const { categories, timeline } = data as {
+          categories: T_TimelineCategory[];
+          timeline: T_Timeline;
+        };
+
         return (
           <React.Fragment>
             <Block is="section">
@@ -41,7 +53,7 @@ function TimelinePage(): T_ReactElement {
               >
                 Categorías [{categories.length}]
               </Title>
-              <Block className="tw-justify-betweden tw-flex tw-flex-wrap">
+              <Block className="tw-flex tw-flex-wrap">
                 {categories.map((category) => {
                   return (
                     <Button
@@ -53,7 +65,7 @@ function TimelinePage(): T_ReactElement {
                           ? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
                           : "dfr-bg-color-primary dark:dfr-bg-color-primary",
                       )}
-                      onClick={handleSelectFilter(category.id)}
+                      onClick={handleSelectFilterClick(category.id)}
                     >
                       <Emoji>{category.emoji}</Emoji> {category.value}
                     </Button>
@@ -62,9 +74,8 @@ function TimelinePage(): T_ReactElement {
               </Block>
             </Block>
             <Space size={6} />
-
             <Timeline
-              timeline={items}
+              timeline={timeline}
               TimelineItem={TimelineItem}
             />
           </React.Fragment>
@@ -78,24 +89,34 @@ export default TimelinePage;
 
 // --- Controller ---
 
-function useController(): {
+type T_UseControllerReturn = {
   isLoading: boolean;
   error: unknown;
-  data?: T_Timeline;
+  data: T_TimelineFetchResponse | undefined;
   selectedCategory: string;
-  handleSelectFilter: (filter: string) => () => void;
-  formatDate: any;
-} {
-  const [selectedCategory, setSelectedCategory] = React.useState("");
-  const { isLoading, error, data } = useQuery("items", TimelineService.fetchData);
+  handleSelectFilterClick: (filter: string) => () => void;
+  formatDate: (startDate: string, endDate: string) => string;
+};
 
-  function handleSelectFilter(category) {
+function useController(): T_UseControllerReturn {
+  // hook
+  const { isLoading, error, data } = useQuery<T_TimelineFetchResponse>(
+    "timeline",
+    TimelineService.fetchData,
+  );
+
+  // states & refs
+  const [selectedCategory, setSelectedCategory] = React.useState("");
+
+  // handlers
+  function handleSelectFilterClick(category: string): () => void {
     return () => {
       setSelectedCategory(category === selectedCategory ? "" : category);
     };
   }
 
-  function formatDate(startDate, endDate) {
+  // utils
+  const formatDate: T_UseControllerReturn["formatDate"] = function formatDate(startDate, endDate) {
     const MONTHS = [
       "enero",
       "febrero",
@@ -112,8 +133,8 @@ function useController(): {
     ];
 
     const startDateItems = startDate.split("/");
-    const startDateDay = itemAsNumber(startDateItems[2]);
-    let output = `${startDateDay ? startDateDay + " de " : ""}${
+    const startDateDay = safeCastNumber(startDateItems[2]);
+    let output = `${startDateDay ? `${startDateDay} de ` : ""}${
       MONTHS[Number(startDateItems[1]) - 1]
     }`;
 
@@ -121,60 +142,55 @@ function useController(): {
       const endDateItems = endDate.split("/");
       const haveStartAndEndDateDifferentYear = startDateItems[0] !== endDateItems[0];
 
-      output += `${haveStartAndEndDateDifferentYear ? " del " + startDateItems[0] : ""} al ${Number(
+      output += `${haveStartAndEndDateDifferentYear ? ` del ${startDateItems[0]}` : ""} al ${Number(
         endDateItems[2],
       )} de ${MONTHS[Number(endDateItems[1]) - 1]}${
-        haveStartAndEndDateDifferentYear ? " del " + endDateItems[0] : ""
+        haveStartAndEndDateDifferentYear ? ` del ${endDateItems[0]}` : ""
       }`;
     }
 
     return output;
-  }
-
-  function itemAsNumber(item: string): number {
-    const itemAsNumber = Number(item);
-
-    if (!Number.isInteger(itemAsNumber)) return 0;
-
-    return itemAsNumber;
-  }
+  };
 
   return {
-    // states
+    // states & refs
     selectedCategory,
 
     // handlers
-    handleSelectFilter,
+    handleSelectFilterClick,
+
+    // utils
     formatDate,
 
     // vars
     isLoading,
     error,
-    data: data
-      ? {
-          categories: data.categories,
-          items: data.items.map((item) => {
+    data: isUndefined(data)
+      ? data
+      : {
+          ...data,
+          timeline: data.timeline.map((timelineGroup) => {
             return {
-              ...item,
-              title: item.year.toString(),
-              items: selectedCategory
-                ? item.items.filter((item) => {
-                    return (
-                      item.categories.find((category) => category.id === selectedCategory) !==
-                      undefined
+              ...timelineGroup,
+              items: isEmptyString(selectedCategory)
+                ? timelineGroup.items
+                : timelineGroup.items.filter((item) => {
+                    return exists(
+                      item.categories.find((category) => category.id === selectedCategory),
                     );
-                  })
-                : item.items,
+                  }),
             };
           }),
-        }
-      : undefined,
+        },
   };
 }
 
 // --- Components ---
 
-function TimelineItem({ data }) {
+function TimelineItem({ data }: { data: unknown }): T_ReactElement {
+  // vars
+  const timelineGroupItem = data as T_TimelineGroupItem;
+
   const {
     // handlers
     formatDate,
@@ -184,11 +200,13 @@ function TimelineItem({ data }) {
     <Block>
       <Text className="tw-text-sm">
         <Emoji className="tw-mr-2">🗓</Emoji>
-        <InlineText>{formatDate(data.startDate, data.endDate)}</InlineText>
+        <InlineText>
+          {formatDate(timelineGroupItem.startDate, timelineGroupItem.endDate)}
+        </InlineText>
       </Text>
-      <Text className="tw-my-2 tw-text-xl tw-font-bold">{data.description}</Text>
+      <Text className="tw-my-2 tw-text-xl tw-font-bold">{timelineGroupItem.description}</Text>
       <Block>
-        {data.categories.map((category) => {
+        {timelineGroupItem.categories.map((category: T_TimelineCategory) => {
           return (
             <InlineText
               key={category.id}

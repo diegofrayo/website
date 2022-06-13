@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { T_Routine, T_TimerStatus } from "./types";
 
 export const ROUTINE_STATUS: Record<T_Routine["status"], T_Routine["status"]> = {

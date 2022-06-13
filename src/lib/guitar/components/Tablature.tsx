@@ -1,10 +1,13 @@
+// @ts-nocheck
+
 import * as React from "react";
 import classNames from "classnames";
 
 import { Space, Block, Text, InlineText } from "~/components/primitive";
 import { AuthService } from "~/auth";
-import type { T_ReactChildrenProp, T_ReactElement } from "~/types";
-import { createArray } from "~/utils/misc";
+import { useDidMount } from "~/hooks";
+import { createArray } from "~/utils/objects-and-arrays";
+import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import GuitarFret from "./GuitarFret";
 import { NUMBER_OF_STRINGS } from "../constants";
@@ -14,7 +17,6 @@ import {
   checkGuitarStringValidity,
   checkTablatureSpaceValidity,
 } from "../utils";
-import { useDidMount } from "~/hooks";
 
 interface I_SpacePosition {
   space: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | "x";
@@ -48,7 +50,7 @@ type T_TablatureProps = {
   authRequired?: boolean;
 };
 
-function Tablature(props: T_TablatureProps): T_ReactElement {
+function Tablature(props: T_TablatureProps): T_ReactElementNullable {
   const {
     // props
     notes,
@@ -60,7 +62,9 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
     parsedPositions,
   } = useController(props);
 
-  if (!hasToRender) return null;
+  if (!hasToRender) {
+    return null;
+  }
 
   return (
     <Block className="tw-text-base">
@@ -249,7 +253,7 @@ function Position({
   isCell = false,
   isSeparator = false,
 }: {
-  children?: T_ReactChildrenProp;
+  children?: T_ReactChildren;
   isCell?: boolean;
   isSeparator?: boolean;
 }): T_ReactElement {

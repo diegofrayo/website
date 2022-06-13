@@ -1,20 +1,10 @@
-import { createArray } from "./misc";
+import { createArray } from "./objects-and-arrays";
 
 export function convertToCapitalLetter(str: string): string {
   return str
     .split(" ")
-    .map((item: string) => (item ? item[0].toUpperCase() + item.substring(1) : ""))
+    .map((item) => (item ? item[0].toUpperCase() + item.substring(1) : ""))
     .join(" ")
-    .trim();
-}
-
-export function convertSnakeCaseToLowerCamelCase(str: string): string {
-  return str
-    .split("_")
-    .map((item: string, index: number) => {
-      return index === 0 ? item : item[0].toUpperCase() + item.substring(1);
-    })
-    .join("")
     .trim();
 }
 
@@ -37,22 +27,19 @@ export function generateSlug(str: string): string {
   return result;
 }
 
-export function generateObjectKeyInUpperCase(url: string): string {
-  return url.toUpperCase().replace(/-+/g, "_");
-}
-
-export function generateObjectKeyInLowerCase(url: string): string {
-  return url.toLowerCase().replace(/-+/g, "_");
-}
-
 export function replaceAll(str: string, toReplace: string | string[], replacement: string): string {
   if (Array.isArray(toReplace)) {
-    return toReplace.reduce((result, item) => {
-      return result.replace(new RegExp(escapeRegExp(item), "g"), replacement);
-    }, str);
+    return toReplace.reduce(
+      (result, item) => result.replace(new RegExp(escapeRegExp(item), "g"), replacement),
+      str,
+    );
   }
 
   return str.replace(new RegExp(escapeRegExp(toReplace), "g"), replacement);
+}
+
+export function pluralize(value: number, singular: string, plural: string): string {
+  return value === 1 ? `${value} ${singular}` : `${value} ${plural}`;
 }
 
 // --- Private functions ---
@@ -60,3 +47,13 @@ export function replaceAll(str: string, toReplace: string | string[], replacemen
 function escapeRegExp(text: string): string {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
+
+/*
+function generateObjectKeyInUpperCase(url: string): string {
+  return url.toUpperCase().replace(/-+/g, "_");
+}
+
+function generateObjectKeyInLowerCase(url: string): string {
+  return url.toLowerCase().replace(/-+/g, "_");
+}
+*/

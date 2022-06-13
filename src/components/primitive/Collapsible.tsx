@@ -1,25 +1,29 @@
 import * as React from "react";
 
 import type { T_HTMLElementAttributes, T_ReactElement, T_ReactRefObject } from "~/types";
+import { isNotDefined, isNotEmptyString } from "~/utils/validations";
 
 import Block from "./Block";
 
+/* eslint-disable react/no-unused-prop-types */ /* TODO */
 type T_CollapsibleProps = T_HTMLElementAttributes["details"] & {
   title?: string;
-  openByDefault?: boolean;
-  onShowContentHandler?: any;
-  onHideContentHandler?: any;
+  openedByDefault?: boolean;
+  onShowContentHandler?: () => void;
+  onHideContentHandler?: () => void;
 };
 
 function Collapsible(props: T_CollapsibleProps): T_ReactElement {
   const {
     // props
     children,
-    title,
     className,
 
-    // refs
+    // states & refs
     containerRef,
+
+    // vars
+    computedTitle,
 
     // handlers
     handleToggleClick,
@@ -31,19 +35,21 @@ function Collapsible(props: T_CollapsibleProps): T_ReactElement {
       ref={containerRef}
     >
       <summary
-        className="tw-font-bold"
         role="button"
+        className="tw-font-bold"
         onClick={handleToggleClick}
       >
-        {title}
+        {computedTitle}
       </summary>
       <Block className="tw-mt-2 tw-pl-5">{children}</Block>
 
-      <style jsx>{`
-        summary {
-          outline: 0;
-        }
-      `}</style>
+      <style jsx>
+        {`
+          summary {
+            outline: 0;
+          }
+        `}
+      </style>
     </details>
   );
 }
@@ -52,7 +58,8 @@ export default Collapsible;
 
 // --- Controller ---
 
-type T_UseController = Pick<T_CollapsibleProps, "children" | "title" | "className"> & {
+type T_UseControllerReturn = Pick<T_CollapsibleProps, "children" | "className"> & {
+  computedTitle: string;
   containerRef: T_ReactRefObject<HTMLDetailsElement>;
   handleToggleClick: () => void;
 };
@@ -60,39 +67,40 @@ type T_UseController = Pick<T_CollapsibleProps, "children" | "title" | "classNam
 function useController({
   children,
   title = "",
-  openByDefault = false,
+  openedByDefault = false,
   className = "",
-  onShowContentHandler = () => undefined,
-  onHideContentHandler = () => undefined,
-}: T_CollapsibleProps): T_UseController {
-  const [isCollapsed, setIsCollapsed] = React.useState(openByDefault);
+  onShowContentHandler = (): void => undefined,
+  onHideContentHandler = (): void => undefined,
+}: T_CollapsibleProps): T_UseControllerReturn {
+  // states & refs
+  const [isOpened, setIsOpened] = React.useState(openedByDefault);
   const containerRef = React.useRef<HTMLDetailsElement>(null);
 
-  React.useEffect(
-    function toggleCollapse(): void {
-      if (!containerRef.current) return;
+  // effects
+  React.useEffect(() => {
+    if (isNotDefined(containerRef.current)) return;
 
-      if (isCollapsed) {
-        containerRef.current.setAttribute("open", "");
-        onShowContentHandler();
-      } else {
-        containerRef.current.removeAttribute("open");
-        onHideContentHandler();
-      }
-    },
-    [containerRef, isCollapsed, onHideContentHandler, onShowContentHandler],
-  );
+    if (isOpened) {
+      containerRef.current.setAttribute("open", "");
+      onShowContentHandler();
+    } else {
+      containerRef.current.removeAttribute("open");
+      onHideContentHandler();
+    }
+  }, [containerRef, isOpened, onHideContentHandler, onShowContentHandler]);
 
   return {
     // props
     children,
-    title: title ? title : isCollapsed ? "Hide" : "Show",
     className,
 
-    // refs
+    // states & refs
     containerRef,
 
+    // vars
+    computedTitle: isNotEmptyString(title) ? title : isOpened ? "Hide" : "Show",
+
     // handlers
-    handleToggleClick: () => setIsCollapsed((currentValue) => !currentValue),
+    handleToggleClick: () => setIsOpened((currentValue) => !currentValue),
   };
 }

@@ -1,34 +1,37 @@
+import { Icon } from "~/components/primitive";
+
+export const ENV_VARS = {
+  NEXT_PUBLIC_ASSETS_SERVER_URL: process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"] || "",
+  NEXT_PUBLIC_CRYPTO_KEY: process.env["NEXT_PUBLIC_CRYPTO_KEY"] || "MY_STUPID_SECRET_KEY",
+  NEXT_PUBLIC_WEBSITE_URL: process.env["NEXT_PUBLIC_WEBSITE_URL"] || "",
+  NEXT_PUBLIC_ISR_TOKEN: process.env["NEXT_PUBLIC_ISR_TOKEN"] || "",
+} as const;
+
 export const PERSONAL_PAGES = [
   // personal
   {
     slug: "contacts",
     title: "contacts",
     componentName: "",
-    icon: "USER_CIRCLE",
+    icon: Icon.icon.USER_CIRCLE,
   },
   {
     slug: "films",
     title: "films",
-    componentName: "Films",
-    icon: "FILM",
-  },
-  {
-    slug: "songs",
-    title: "songs",
-    componentName: "Songs",
-    icon: "MUSIC_NOTE",
+    componentName: "films/index",
+    icon: Icon.icon.FILM,
   },
   {
     slug: "timeline",
     title: "timeline",
-    componentName: "timeline",
-    icon: "PRESENTATION_CHART_LINE",
+    componentName: "timeline/index",
+    icon: Icon.icon.PRESENTATION_CHART_LINE,
   },
   {
     slug: "books",
     title: "books",
-    componentName: "Books",
-    icon: "BOOK_OPEN",
+    componentName: "books/index",
+    icon: Icon.icon.BOOK_OPEN,
   },
 
   // tools
@@ -36,42 +39,30 @@ export const PERSONAL_PAGES = [
     slug: "timer",
     title: "timer",
     componentName: "",
-    icon: "CLOCK",
+    icon: Icon.icon.CLOCK,
   },
   {
     slug: "whatsapp",
     title: "whatsapp",
     componentName: "WhatsApp",
-    icon: "CHAT",
+    icon: Icon.icon.CHAT,
   },
   {
     slug: "dencrypt",
     title: "dencrypt",
     componentName: "Dencrypt",
-    icon: "KEY",
+    icon: Icon.icon.KEY,
   },
   {
     slug: "isr",
     title: "isr",
     componentName: "ISR",
-    icon: "REFRESH",
-  },
-  {
-    slug: "chords-creator",
-    title: "chords",
-    componentName: "ChordsCreator",
-    icon: "MUSIC_NOTE",
+    icon: Icon.icon.REFRESH,
   },
   {
     slug: "thumbnails",
     title: "thumbnails",
     componentName: "Thumbnails",
-    icon: "PHOTOGRAPH",
+    icon: Icon.icon.PHOTOGRAPH,
   },
-  {
-    slug: "styles",
-    title: "styles",
-    componentName: "Styles",
-    icon: "COLOR_SWATCH",
-  },
-];
+] as const;

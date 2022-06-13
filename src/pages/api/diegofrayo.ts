@@ -1,9 +1,16 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+import { logger } from "~/utils/app";
+import { ENV_VARS } from "~/utils/constants";
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
-  // Check for secret to confirm this is a valid request
-  if (req.body.secret !== process.env.NEXT_PUBLIC_ISR_TOKEN) {
-    console.log("Invalid token", req.query.secret, process.env.NEXT_PUBLIC_ISR_TOKEN);
+  if (req.body.secret !== ENV_VARS.NEXT_PUBLIC_ISR_TOKEN) {
+    logger("WARN", {
+      message: "Invalid token",
+      secret: req.body.secret,
+      envVar: ENV_VARS.NEXT_PUBLIC_ISR_TOKEN,
+    });
+
     res.status(401).json({ message: "Invalid token" });
 
     return;
@@ -13,8 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     await res.unstable_revalidate(req.body.path);
     res.json({ revalidated: true, date: new Date() });
   } catch (err) {
-    // If there was an error, Next.js will continue
-    // to show the last successfully generated page
+    // If there was an error, Next.js will continue to show the last successfully generated page
     res.status(500).send("Error revalidating");
   }
 }

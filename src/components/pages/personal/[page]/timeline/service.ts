@@ -1,44 +1,66 @@
 import http from "~/lib/http";
-import type { T_Timeline } from "./types";
-import { sortBy, transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/misc";
+import { ENV_VARS } from "~/utils/constants";
+import {
+  sortBy,
+  transformObjectKeysFromSnakeCaseToLowerCamelCase,
+} from "~/utils/objects-and-arrays";
+import { isNotUndefined, notExists } from "~/utils/validations";
+import type { T_Object } from "~/types";
+
+import type {
+  T_TimelineCategory,
+  T_TimelineFetchDTO,
+  T_TimelineFetchResponse,
+  T_TimelineGroup,
+  T_TimelineGroupItem,
+} from "./types";
 
 class TimelineService {
-  async fetchData(): Promise<T_Timeline> {
-    const { categories, items } = (
-      await http.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
-        path: "/assets",
-        payload: `pages/personal/[page]/timeline/data.json`,
-      })
-    ).data;
+  constructor() {
+    this.fetchData = this.fetchData.bind(this);
+  }
 
+  async fetchData(): Promise<T_TimelineFetchResponse> {
+    const { data } = await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
+      path: "/assets",
+      payload: "pages/personal/[page]/timeline/data.json",
+    });
+
+    return this.parseResponse(data);
+  }
+
+  parseResponse({ data, categories }: T_TimelineFetchDTO): T_TimelineFetchResponse {
     return {
       categories,
-      items: Object.values(
-        items
-          .map((item) => {
-            return transformObjectKeysFromSnakeCaseToLowerCamelCase({
-              ...item,
-              categories: item.categories
-                .map((category) => {
-                  return categories.find((item) => item.id === category);
-                })
-                .filter(Boolean)
-                .sort(sortBy([{ param: "value", order: "asc" }])),
-            }) as T_Timeline;
-          })
-          .reduce((result, item) => {
-            const year = item.startDate.split("/")[0];
+      timeline: Object.values(
+        data.reduce((result: T_Object<T_TimelineGroup>, item) => {
+          const timelineGroupItemParsed =
+            transformObjectKeysFromSnakeCaseToLowerCamelCase<T_TimelineGroupItem>(item);
+          const year = timelineGroupItemParsed.startDate.split("/")[0];
+          const mutatedResult = { ...result };
 
-            if (!result[year]) result[year] = { year, items: [] };
+          if (notExists(result[year])) {
+            mutatedResult[year] = {
+              year: Number(year),
+              title: year,
+              items: [],
+            };
+          }
 
-            result[year].items.push(item);
-            result[year].items = result[year].items.sort(
-              sortBy([{ param: "startDate", order: "desc" }]),
-            );
+          mutatedResult[year].items.push({
+            ...timelineGroupItemParsed,
+            categories: item.categories
+              .map((category): T_TimelineCategory | undefined => {
+                return categories.find((c) => c.id === category);
+              })
+              .filter((c): c is T_TimelineCategory => isNotUndefined(c))
+              .sort(sortBy([{ param: "value", order: "asc" }])),
+          });
+          mutatedResult[year].items.sort(sortBy([{ param: "startDate", order: "desc" }]));
 
-            return result;
-          }, {}),
-      ).sort(sortBy([{ param: "year", order: "desc" }])) as T_Timeline["items"],
+          return mutatedResult;
+        }, {}),
+      ).sort(sortBy([{ param: "year", order: "desc" }])),
     };
   }
 }

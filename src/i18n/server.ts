@@ -1,8 +1,11 @@
+// @ts-nocheck
+
 import http from "~/lib/http";
-import type { T_Locale, T_Object, T_PageContent, T_PageRoute } from "~/types";
-import { ROUTES } from "~/utils/routing";
+import type { T_Object } from "~/types";
+import { ROUTES, T_RoutesValues } from "~/utils/routing";
 
 import I18nService from "./service";
+import { T_Locale, T_PageContent } from "./types";
 
 type T_DefaultPageProps = {
   pageContent: T_PageContent;
@@ -16,9 +19,9 @@ type T_GetStaticProps<G_Params> = {
 
 type T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams> = {
   page?:
-    | T_PageRoute
-    | T_PageRoute[]
-    | ((params: T_GetStaticProps<G_GetStaticPropsParams>) => T_PageRoute);
+    | T_RoutesValues
+    | T_RoutesValues[]
+    | ((params: T_GetStaticProps<G_GetStaticPropsParams>) => T_RoutesValues);
   callback?: (
     parameters: T_GetStaticProps<G_GetStaticPropsParams> & { pageContent: T_PageContent },
   ) => Promise<{

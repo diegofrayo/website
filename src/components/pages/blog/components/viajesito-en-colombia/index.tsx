@@ -5,48 +5,46 @@ import classNames from "classnames";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 import { Block, Button, Icon, Image, Modal, Text } from "~/components/primitive";
-import { useDidMount, useEnhacedState } from "~/hooks";
-import type { T_ReactElement } from "~/types";
+import { useDidMount, useEnhancedState } from "~/hooks";
+import type { T_ReactElement, T_ReactElementNullable, T_ReactSetState } from "~/types";
 
 const Context = React.createContext({} as T_Context);
 
-export function VEC_TimelineItem({
-  data,
-}: {
+type T_VEC_TimelineItemProps = {
   data: {
     text: string;
-    assets: {
-      id: string;
-      src: string;
-      caption: string;
-      isLandscape: boolean;
-      type: "image" | "youtube";
-    }[];
+    assets: T_ImageItem[];
   };
-}): T_ReactElement {
+};
+
+export function VEC_TimelineItem({ data }: T_VEC_TimelineItemProps): T_ReactElement {
+  // states & refs
+  const [isModalVisible, setIsModalVisible, toggleIsModalVisible] = useEnhancedState(false);
   const [sharedIndex, setSharedIndex] = React.useState(0);
-  const { isModalVisible, setIsModalVisible, toggleIsModalVisible } = useEnhacedState({
-    isModalVisible: false,
-  });
+
+  // handlers
+  function handleCloseModalClick(): void {
+    setIsModalVisible(false);
+  }
 
   return (
     <Block>
       <Text className="tw-mb-4 tw-text-base">{data.text}</Text>
       <Gallery
-        variant="default"
+        variant="DEFAULT"
         data={data}
         toggleIsModalVisible={toggleIsModalVisible}
         setSharedIndex={setSharedIndex}
       />
       <Modal
         visible={isModalVisible}
-        onCloseHandler={setIsModalVisible}
+        onCloseHandler={handleCloseModalClick}
       >
         <Block className="tw-relative tw-m-4 tw-mx-auto tw-h-full tw-w-full tw-overflow-auto dfr-max-w-layout dfr-bg-color-dark-strong">
           <Button
             variant={Button.variant.SIMPLE}
             className="tw-absolute tw-top-2 tw-right-2 tw-z-10"
-            onClick={() => toggleIsModalVisible()}
+            onClick={handleCloseModalClick}
           >
             <Icon
               icon={Icon.icon.X}
@@ -56,7 +54,7 @@ export function VEC_TimelineItem({
           </Button>
           <Gallery
             data={data}
-            variant="fullscreen"
+            variant="FULLSCREEN"
             toggleIsModalVisible={toggleIsModalVisible}
             setSharedIndex={setSharedIndex}
             initialSlide={sharedIndex}
@@ -69,20 +67,44 @@ export function VEC_TimelineItem({
 
 // --- Components ---
 
-function Gallery({ variant, data, toggleIsModalVisible, setSharedIndex, initialSlide = 0 }) {
-  const [activeIndex, setActiveIndex] = React.useState(1);
-  const isFullscreenVariant = variant === "fullscreen";
+type T_GalleryProps = {
+  variant: "DEFAULT" | "FULLSCREEN";
+  data: T_VEC_TimelineItemProps["data"];
+  toggleIsModalVisible: () => void;
+  setSharedIndex: T_ReactSetState<number>;
+  initialSlide?: number;
+};
 
+function Gallery({
+  variant,
+  data,
+  toggleIsModalVisible,
+  setSharedIndex,
+  initialSlide = 0,
+}: T_GalleryProps): T_ReactElement {
+  // states & refs
+  const [activeIndex, setActiveIndex] = React.useState(1);
+
+  // vars
+  const isFullscreenVariant = variant === "FULLSCREEN";
+  const contextValueMemoized = React.useMemo(() => {
+    return {
+      activeIndex,
+      setActiveIndex,
+      isFullscreenVariant,
+      setSharedIndex,
+      toggleIsModalVisible,
+    };
+  }, [activeIndex, setActiveIndex, isFullscreenVariant, setSharedIndex, toggleIsModalVisible]);
+
+  // handlers
+  function onSlideChangeHandler(): void {
+    setActiveIndex(activeIndex + 1);
+  }
+
+  // render
   return (
-    <Context.Provider
-      value={{
-        activeIndex,
-        setActiveIndex,
-        isFullscreenVariant,
-        setSharedIndex,
-        toggleIsModalVisible,
-      }}
-    >
+    <Context.Provider value={contextValueMemoized}>
       <div
         className={classNames(
           "root tw-relative tw-h-full",
@@ -91,9 +113,7 @@ function Gallery({ variant, data, toggleIsModalVisible, setSharedIndex, initialS
       >
         <Swiper
           initialSlide={initialSlide}
-          onSlideChange={function onSlideChange() {
-            setActiveIndex(this.activeIndex + 1);
-          }}
+          onSlideChange={onSlideChangeHandler}
         >
           {data.assets.map((asset, index) => {
             return (
@@ -136,15 +156,26 @@ function Gallery({ variant, data, toggleIsModalVisible, setSharedIndex, initialS
   );
 }
 
-function Navigation({
-  activeIndex,
-  totalElements,
-}: {
+type T_NavigationProps = {
   activeIndex: number;
   totalElements: number;
-}) {
+};
+
+function Navigation({ activeIndex, totalElements }: T_NavigationProps): T_ReactElement {
+  // hooks
   const swiper = useSwiper();
+
+  // context
   const { isFullscreenVariant } = React.useContext(Context);
+
+  // handlers
+  function handlePrevItemClick(): void {
+    swiper.slidePrev();
+  }
+
+  function handleNextItemClick(): void {
+    swiper.slideNext();
+  }
 
   return (
     <Block
@@ -158,9 +189,7 @@ function Navigation({
       <Button
         variant={Button.variant.SIMPLE}
         className={classNames(swiper.isBeginning && "tw-invisible")}
-        onClick={() => {
-          swiper.slidePrev();
-        }}
+        onClick={handlePrevItemClick}
       >
         <Icon
           icon={Icon.icon.CHEVRON_LEFT}
@@ -173,9 +202,7 @@ function Navigation({
       <Button
         variant={Button.variant.SIMPLE}
         className={classNames((swiper.isEnd || totalElements === 1) && "tw-invisible")}
-        onClick={() => {
-          swiper.slideNext();
-        }}
+        onClick={handleNextItemClick}
       >
         <Icon
           icon={Icon.icon.CHEVRON_RIGHT}
@@ -186,16 +213,39 @@ function Navigation({
   );
 }
 
-function SlideContent({ src, caption, type, isLandscape, index }) {
-  const { isFullscreenVariant, toggleIsModalVisible, setSharedIndex } = React.useContext(Context);
+type T_SlideContentProps = Omit<T_ImageItem, "id"> & { index: number };
+
+function SlideContent({
+  src,
+  caption,
+  type,
+  isLandscape,
+  index,
+}: T_SlideContentProps): T_ReactElementNullable {
+  // states & refs
   const [photosHeight, setPhotosHeight] = React.useState(0);
 
+  // context
+  const { isFullscreenVariant, toggleIsModalVisible, setSharedIndex } = React.useContext(Context);
+
+  // effects
   useDidMount(() => {
     const REST_OF_ELEMENTS_HEIGHT = 40 + 80 + 24 * 2 + 16 * 2 + (32 + 24 + 8);
     setPhotosHeight(window.innerHeight - REST_OF_ELEMENTS_HEIGHT);
   });
 
-  if (photosHeight === 0) return null;
+  // handlers
+  function handleImageClick(): void {
+    if (isFullscreenVariant) return;
+
+    toggleIsModalVisible();
+    setSharedIndex(index);
+  }
+
+  // render
+  if (photosHeight === 0) {
+    return null;
+  }
 
   return (
     <div
@@ -232,14 +282,7 @@ function SlideContent({ src, caption, type, isLandscape, index }) {
               !isFullscreenVariant && "tw-cursor-pointer",
             )}
             alt={caption}
-            onClick={
-              !isFullscreenVariant
-                ? () => {
-                    toggleIsModalVisible();
-                    setSharedIndex(index);
-                  }
-                : undefined
-            }
+            onClick={handleImageClick}
           />
         )}
       </Block>
@@ -279,8 +322,16 @@ function SlideContent({ src, caption, type, isLandscape, index }) {
 
 type T_Context = {
   activeIndex: number;
-  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
+  setActiveIndex: T_ReactSetState<number>;
   isFullscreenVariant: boolean;
   toggleIsModalVisible: () => void;
-  setSharedIndex: React.Dispatch<React.SetStateAction<number>>;
+  setSharedIndex: T_ReactSetState<number>;
+};
+
+type T_ImageItem = {
+  id: string;
+  src: string;
+  caption: string;
+  isLandscape: boolean;
+  type: "image" | "youtube";
 };

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import HTML_TAGS from "./tags";
 import twcssCreator from "./service";
 

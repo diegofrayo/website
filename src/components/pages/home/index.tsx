@@ -16,13 +16,16 @@ import {
 import { Emoji } from "~/components/shared";
 import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/i18n";
-import type { T_ReactElement } from "~/types";
-import { createArray } from "~/utils/misc";
 import { ROUTES } from "~/utils/routing";
+import { createArray } from "~/utils/objects-and-arrays";
+import { isNotDefined } from "~/utils/validations";
+import type { T_ReactElement, T_ReactElementNullable } from "~/types";
 
 function Home(): T_ReactElement {
+  // hooks
   const { t } = useTranslation();
 
+  // render
   return (
     <Page
       config={{
@@ -64,7 +67,7 @@ export default Home;
 
 // --- Components ---
 
-function Featured() {
+function Featured(): T_ReactElement {
   return (
     <Block
       is="section"
@@ -116,19 +119,25 @@ function Room(): T_ReactElement {
       </Block>
       <Table />
 
-      <style jsx>{`
-        :global(.dfr-Room) {
-          background-image: url("/static/images/textures/arabesque.png");
-        }
-      `}</style>
+      <style jsx>
+        {`
+          :global(.dfr-Room) {
+            background-image: url("/static/images/textures/arabesque.png");
+          }
+        `}
+      </style>
     </Block>
   );
 }
 
-function PictureFrame() {
+function PictureFrame(): T_ReactElementNullable {
+  // hooks
   const { t } = useTranslation();
+
+  // states
   const [photo, setPhoto] = React.useState<{ src: string; portrait: boolean }>();
 
+  // effects
   useDidMount(() => {
     setPhoto({
       src: "/static/images/header/3.jpg",
@@ -136,7 +145,10 @@ function PictureFrame() {
     });
   });
 
-  if (!photo) return null;
+  // render
+  if (isNotDefined(photo)) {
+    return null;
+  }
 
   return (
     <Block
@@ -161,69 +173,61 @@ function PictureFrame() {
         {t("layout:header:room:welcome")}
       </Text>
 
-      <style jsx>{`
-        :global(.dfr-PictureFrame)::before,
-        :global(.dfr-PictureFrame)::after {
-          @apply dfr-bg-color-dark-strong;
-          content: " ";
-          display: block;
-          height: 50px;
-          position: absolute;
-          top: -40px;
-          width: 2.5px;
-          z-index: -1;
-        }
+      <style jsx>
+        {`
+          :global(.dfr-PictureFrame)::before,
+          :global(.dfr-PictureFrame)::after {
+            @apply dfr-bg-color-dark-strong;
+            content: " ";
+            display: block;
+            height: 50px;
+            position: absolute;
+            top: -40px;
+            width: 2.5px;
+            z-index: -1;
+          }
 
-        :global(.tw-dark) :global(.dfr-PictureFrame)::before,
-        :global(.tw-dark) :global(.dfr-PictureFrame)::after {
-          @apply dfr-bg-color-light-strong;
-        }
+          :global(.tw-dark) :global(.dfr-PictureFrame)::before,
+          :global(.tw-dark) :global(.dfr-PictureFrame)::after {
+            @apply dfr-bg-color-light-strong;
+          }
 
-        :global(.dfr-PictureFrame)::before {
-          transform: rotate(45deg);
-          left: 46px;
-        }
+          :global(.dfr-PictureFrame)::before {
+            transform: rotate(45deg);
+            left: 46px;
+          }
 
-        :global(.dfr-PictureFrame)::after {
-          transform: rotate(-45deg);
-          right: 46px;
-        }
+          :global(.dfr-PictureFrame)::after {
+            transform: rotate(-45deg);
+            right: 46px;
+          }
 
-        :global(.dfr-PictureFrame--portrait)::before,
-        :global(.dfr-PictureFrame--portrait)::after {
-          height: 24px;
-          top: -17px;
-        }
+          :global(.dfr-PictureFrame--portrait)::before,
+          :global(.dfr-PictureFrame--portrait)::after {
+            height: 24px;
+            top: -17px;
+          }
 
-        :global(.dfr-PictureFrame--portrait)::before {
-          transform: rotate(-40deg);
-        }
+          :global(.dfr-PictureFrame--portrait)::before {
+            transform: rotate(-40deg);
+          }
 
-        :global(.dfr-PictureFrame--portrait)::after {
-          transform: rotate(40deg);
-        }
-      `}</style>
+          :global(.dfr-PictureFrame--portrait)::after {
+            transform: rotate(40deg);
+          }
+        `}
+      </style>
     </Block>
   );
 }
 
-function TV() {
+function TV(): T_ReactElement {
+  // states
   const [showInfo, setShowInfo] = React.useState(false);
   const [isAudioPlaying, setIsAudioPlaying] = React.useState(false);
   const [hasNotStartedTV, setHasNotStartedTV] = React.useState(true);
 
-  React.useEffect(
-    function updateConfigOnLocalStorage() {
-      if (showInfo === false) {
-        setIsAudioPlaying(false);
-
-        const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
-        audioElement.pause();
-      }
-    },
-    [showInfo],
-  );
-
+  // vars
   const SONG = {
     title: "Canción de Cuna",
     artist: "Los Piojos",
@@ -234,29 +238,58 @@ function TV() {
     source: "spotify",
   };
 
+  // effects
+  React.useEffect(() => {
+    if (showInfo === false) {
+      setIsAudioPlaying(false);
+      getAudioElement().pause();
+    }
+  }, [showInfo]);
+
+  // handlers
+  function handlePlayAndPauseClick(): void {
+    const audioElement = getAudioElement();
+    setIsAudioPlaying((currentValue) => !currentValue);
+
+    if (audioElement.paused) {
+      audioElement.play();
+      audioElement.volume = 0.5;
+    } else {
+      audioElement.pause();
+    }
+  }
+
+  function onSongEndedHandler(): void {
+    setShowInfo(false);
+  }
+
+  function handleStartTVClick(): void {
+    setHasNotStartedTV(false);
+    setShowInfo(true);
+  }
+
+  function handleToggleTurnOnTVClick(): void {
+    setShowInfo((currentValue) => !currentValue);
+    getAudioElement().currentTime = 0;
+  }
+
+  // utils
+  function getAudioElement(): HTMLAudioElement {
+    return document.getElementById("tv-audio") as HTMLAudioElement;
+  }
+
+  // render
   return (
     <Block className="dfr-TV tw-relative tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-bg-gradient-to-b tw-from-gray-800 tw-to-black tw-p-2 dark:tw-from-white dark:tw-to-gray-300">
       <Block className="tw-relative tw-h-16 tw-w-16 tw-overflow-hidden">
         <Block
-          className="tw-relative tw-h-full tw-border tw-border-opacity-80 tw-bg-cover dfr-border-color-dark-strong dark:tw-border-opacity-10"
+          className="tw-relative tw-flex tw-h-full tw-items-center tw-justify-center tw-border tw-border-opacity-80 tw-bg-cover dfr-border-color-dark-strong dark:tw-border-opacity-10"
           title={`${SONG.title} - ${SONG.artist}`}
-          display="tw-flex"
-          align="CENTER"
           style={{ backgroundImage: `url(${SONG.thumbnail})` }}
         >
           <Button
             variant={Button.variant.SIMPLE}
-            onClick={() => {
-              const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
-              setIsAudioPlaying(audioElement.paused ? true : false);
-
-              if (audioElement.paused) {
-                audioElement.play();
-                audioElement.volume = 0.5;
-              } else {
-                audioElement.pause();
-              }
-            }}
+            onClick={handlePlayAndPauseClick}
           >
             <Icon
               icon={isAudioPlaying ? Icon.icon.PAUSE : Icon.icon.PLAY}
@@ -265,13 +298,13 @@ function TV() {
               iconClassName="dfr-text-color-light-strong"
             />
             <audio
-              id="TV-audio"
+              id="tv-audio"
               className="tw-hidden"
-              onEnded={() => setShowInfo(false)}
+              onEnded={onSongEndedHandler}
             >
               <source
-                src={SONG.audio}
                 type="audio/mpeg"
+                src={SONG.audio}
               />
             </audio>
           </Button>
@@ -310,10 +343,7 @@ function TV() {
           {hasNotStartedTV ? (
             <Button
               className="tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center"
-              onClick={() => {
-                setHasNotStartedTV(false);
-                setShowInfo(true);
-              }}
+              onClick={handleStartTVClick}
             >
               <Block className="tw-relative tw-h-2 tw-w-2 tw-animate-ping tw-rounded-full tw-bg-green-500" />
             </Button>
@@ -323,12 +353,7 @@ function TV() {
                 "tw-h-full tw-w-full tw-transition-transform",
                 showInfo && "tw-rotate-90",
               )}
-              onClick={() => {
-                setShowInfo((currentValue) => !currentValue);
-
-                const audioElement = document.getElementById("TV-audio") as HTMLAudioElement;
-                audioElement.currentTime = 0;
-              }}
+              onClick={handleToggleTurnOnTVClick}
             >
               <Block
                 className={classNames(
@@ -341,39 +366,41 @@ function TV() {
         </Block>
       </Block>
 
-      <style jsx>{`
-        :global(.dfr-TV)::before,
-        :global(.dfr-TV)::after {
-          @apply dfr-bg-color-dark-strong;
-          @apply tw-w-2;
-          @apply tw-h-6;
-          content: " ";
-          display: block;
-          position: absolute;
-          top: 90%;
-          z-index: 0;
-        }
+      <style jsx>
+        {`
+          :global(.dfr-TV)::before,
+          :global(.dfr-TV)::after {
+            @apply dfr-bg-color-dark-strong;
+            @apply tw-w-2;
+            @apply tw-h-6;
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 90%;
+            z-index: 0;
+          }
 
-        :global(.tw-dark) :global(.dfr-TV)::before,
-        :global(.tw-dark) :global(.dfr-TV)::after {
-          @apply tw-bg-gray-300;
-        }
+          :global(.tw-dark) :global(.dfr-TV)::before,
+          :global(.tw-dark) :global(.dfr-TV)::after {
+            @apply tw-bg-gray-300;
+          }
 
-        :global(.dfr-TV)::before {
-          transform: rotate(45deg);
-          left: 15%;
-        }
+          :global(.dfr-TV)::before {
+            transform: rotate(45deg);
+            left: 15%;
+          }
 
-        :global(.dfr-TV)::after {
-          transform: rotate(-45deg);
-          right: 15%;
-        }
-      `}</style>
+          :global(.dfr-TV)::after {
+            transform: rotate(-45deg);
+            right: 15%;
+          }
+        `}
+      </style>
     </Block>
   );
 }
 
-function Flowers() {
+function Flowers(): T_ReactElement {
   return (
     <Block className="tw-relative tw-flex-shrink-0 tw-overflow-hidden">
       <Icon
@@ -395,7 +422,7 @@ function Flowers() {
   );
 }
 
-function Table() {
+function Table(): T_ReactElement {
   return (
     <Block className="dark:tw-border-yellow-70 tw-flex tw-h-20 tw-items-end tw-justify-end tw-overflow-hidden tw-rounded-tr-md tw-rounded-tl-md tw-border-8 tw-border-b-0 tw-border-yellow-900">
       <Icon
@@ -412,7 +439,13 @@ function Table() {
   );
 }
 
-function LinkItem({ label, url, className = "" }) {
+type T_LinkItemProps = {
+  label: string;
+  url: string;
+  className?: string;
+};
+
+function LinkItem({ label, url, className = "" }: T_LinkItemProps): T_ReactElement {
   return (
     <Block
       className={classNames(

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as React from "react";
 
 import Link from "~/components/primitive/Link";
@@ -17,7 +19,7 @@ Unstyled.args = {
   variant: Link.variant.UNSTYLED,
   children: "Unstyled link (youtube)",
   href: "https://www.youtube.com",
-  isExternalUrl: true,
+  isExternalLink: true,
 };
 
 export const Simple = Story.bind({});
@@ -25,7 +27,7 @@ Simple.args = {
   variant: Link.variant.SIMPLE,
   children: "Simple link (google)",
   href: "https://www.google.com",
-  isExternalUrl: true,
+  isExternalLink: true,
 };
 
 export const Primary = Story.bind({});
@@ -33,7 +35,7 @@ Primary.args = {
   variant: Link.variant.PRIMARY,
   children: "Primary link (facebook)",
   href: "https://www.facebook.com",
-  isExternalUrl: true,
+  isExternalLink: true,
 };
 
 export const Secondary = Story.bind({});
@@ -41,7 +43,7 @@ Secondary.args = {
   variant: Link.variant.SECONDARY,
   children: "Secondary link (twitter)",
   href: "https://www.twitter.com",
-  isExternalUrl: true,
+  isExternalLink: true,
 };
 
 export const SecondaryWithFontWeight = Story.bind({});
@@ -49,7 +51,7 @@ Secondary.args = {
   variant: Link.variant.SECONDARY,
   children: "By default is bold, but I set font-thin",
   href: "https://www.twitter.com",
-  isExternalUrl: true,
+  isExternalLink: true,
   fontWeight: "tw-font-thin",
 };
 

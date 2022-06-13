@@ -9,9 +9,11 @@ import { AuthService } from "~/auth";
 import { useDidMount, useQuery } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
-import MusicService from "~/services/music";
-import type { T_ReactElement, T_Song } from "~/types";
 import { ROUTES } from "~/utils/routing";
+import { exists } from "~/utils/validations";
+import type { T_ReactElement, T_ReactOnChangeEventHandler, T_ReactRefObject } from "~/types";
+
+import MusicService, { T_Song } from "./service";
 
 function MusicPage(): T_ReactElement {
   const {
@@ -25,7 +27,7 @@ function MusicPage(): T_ReactElement {
     data,
 
     // handlers
-    onInputChange,
+    onInputChangeHandler,
 
     // utils
     parseData,
@@ -47,8 +49,8 @@ function MusicPage(): T_ReactElement {
           error={error}
           data={data}
         >
-          {(data: T_Song[]) => {
-            const { chordsPage, songsList } = parseData(data);
+          {(data: unknown): T_ReactElement => {
+            const { chordsPage, songsList } = parseData(data as T_Song[]);
 
             return (
               <Block>
@@ -85,7 +87,7 @@ function MusicPage(): T_ReactElement {
                       value={inputValue}
                       autoComplete="off"
                       ref={inputRef}
-                      onChange={onInputChange}
+                      onChange={onInputChangeHandler}
                     />
                     <Text className="tw-mt-1 tw-text-right tw-text-xs tw-font-bold">
                       {t("page:results_title")} [{songsList.length}]
@@ -108,7 +110,6 @@ function MusicPage(): T_ReactElement {
                             href={`${ROUTES.MUSIC}/${song.id}`}
                             className="sm:tw-truncate"
                             title={song.title}
-                            locale={I18nService.getDefaultLocale()}
                           >
                             {song.title}
                           </Link>
@@ -131,19 +132,39 @@ export default MusicPage;
 
 // --- Controller ---
 
-function useController() {
+type T_UseController = {
+  inputValue: string;
+  inputRef: T_ReactRefObject<HTMLInputElement>;
+  isLoading: boolean;
+  error: unknown;
+  data: T_Song[] | undefined;
+  onInputChangeHandler: T_ReactOnChangeEventHandler<HTMLInputElement>;
+  parseData: (songs: T_Song[]) => {
+    chordsPage: T_Song;
+    songsList: T_Song[];
+  };
+};
+
+function useController(): T_UseController {
+  // hooks
   const { isLoading, error, data } = useQuery("music", MusicService.fetchSongsList);
 
+  // states & refs
   const [inputValue, setInputValue] = React.useState("");
   const inputRef = React.useRef<HTMLInputElement>(null);
 
+  // effects
   useDidMount(() => {
-    function focusInput(e) {
-      if ((e.metaKey || e.ctrlKey) && e.code === "KeyF") {
-        e.preventDefault();
-        inputRef.current?.focus();
+    const focusInput = function focusInput(event: KeyboardEvent): void {
+      if (
+        exists<HTMLInputElement>(inputRef.current) &&
+        (event.metaKey || event.ctrlKey) &&
+        event.code === "KeyF"
+      ) {
+        event.preventDefault();
+        inputRef.current.focus();
       }
-    }
+    };
 
     document.addEventListener("keydown", focusInput);
 
@@ -152,11 +173,14 @@ function useController() {
     };
   });
 
-  function onInputChange(e) {
-    setInputValue(e.currentTarget.value.toLowerCase());
-  }
+  // handlers
+  const onInputChangeHandler: T_UseController["onInputChangeHandler"] =
+    function onInputChangeHandler(event) {
+      setInputValue(event.currentTarget.value.toLowerCase());
+    };
 
-  function parseData(songs: T_Song[]) {
+  // utils
+  const parseData: T_UseController["parseData"] = function parseData(songs) {
     return {
       chordsPage: songs[0],
       songsList: (AuthService.isUserLoggedIn() || AnalyticsService.isAnalyticsDisabled()
@@ -169,7 +193,7 @@ function useController() {
         );
       }),
     };
-  }
+  };
 
   return {
     // states
@@ -182,7 +206,7 @@ function useController() {
     data,
 
     // handlers
-    onInputChange,
+    onInputChangeHandler,
 
     // utils
     parseData,

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { T_Finger, T_GuitarFret, T_GuitarString } from "./types";
 
 export function parseFinger(finger: string): T_Finger | undefined {

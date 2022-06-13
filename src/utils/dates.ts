@@ -5,9 +5,12 @@ import { I18nService } from "~/i18n";
 
 dayjs.extend(customParseFormat);
 
-export function getDifferenceBetweenDates(startDate: string, endDate: Date): string {
+export function getDifferenceBetweenDates(
+  startDate: string | Date,
+  endDate: string | Date,
+): string {
   const translator = I18nService.getInstance();
-  const difference: number = dayjs(endDate).diff(dayjs(startDate, "YYYY/MM/DD"), "day");
+  const difference = dayjs(endDate).diff(dayjs(startDate, "YYYY/MM/DD"), "day");
 
   if (difference === 0) {
     return translator.t("page:today");

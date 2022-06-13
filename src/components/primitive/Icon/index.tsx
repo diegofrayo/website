@@ -1,30 +1,39 @@
 import * as React from "react";
 import classNames from "classnames";
 
+import { logger } from "~/utils/app";
+import { mirror } from "~/utils/objects-and-arrays";
 import {
-  E_Icons,
-  T_HTMLElementAttributes,
-  T_ReactElement,
-  T_ReactFunctionComponent,
-} from "~/types";
+  isFilledString,
+  isNotDefined,
+  isNotEmptyString,
+  isNumber,
+  isString,
+  notExists,
+} from "~/utils/validations";
+import type { T_HTMLElementAttributes, T_ReactElement, T_ReactElementNullable } from "~/types";
 
-import Image from "../Image";
+import { ICONS } from "./constants";
+import { ICONS_KEYS, T_IconName, T_LibraryIconComponent } from "./types";
+import { isIconElementFromLibrary } from "./utils";
+import Image, { T_ImagePrimitiveComponent } from "../Image";
 import Block from "../Block";
-import { ICONS, T_Icon } from "./icons";
 
-type IconProps = {
-  icon: E_Icons;
+type T_IconProps = {
+  icon: T_IconName;
   size?: number | string; // number: width | string: className
   color?: string;
   iconClassName?: string;
   wrapperClassName?: string;
-  withDarkModeBackground?: boolean;
+  withBackgroundWhenDarkMode?: boolean;
 };
 
-function Icon(props: IconProps): T_ReactElement {
-  const { wrapperProps, IconComponent, iconComponentProps } = useController(props);
+function Icon(props: T_IconProps): T_ReactElementNullable {
+  const { wrapperProps, iconComponentProps, IconComponent } = useController(props);
 
-  if (!IconComponent) return null;
+  if (notExists(IconComponent)) {
+    return null;
+  }
 
   return (
     <Wrapper {...wrapperProps}>
@@ -33,22 +42,16 @@ function Icon(props: IconProps): T_ReactElement {
   );
 }
 
-Icon.icon = E_Icons;
+Icon.icon = mirror<T_IconName>(ICONS_KEYS);
 
 export default Icon;
 
+export type { T_IconName };
+
 // --- Controller ---
 
-function useController({
-  icon: iconName,
-  size = undefined,
-  color = undefined,
-  iconClassName = "",
-  wrapperClassName = "",
-  withDarkModeBackground = false,
-}: IconProps): {
+type T_UseControllerReturn = {
   wrapperProps: { className: string } | undefined;
-  IconComponent: T_ReactFunctionComponent<T_HTMLElementAttributes["img"]> | undefined;
   iconComponentProps:
     | {
         src?: string;
@@ -57,77 +60,82 @@ function useController({
         style?: { width: number; height: number };
       }
     | undefined;
-} {
-  const icon = ICONS[iconName];
+  IconComponent: T_LibraryIconComponent | T_ImagePrimitiveComponent | undefined;
+};
 
-  if (!icon) {
-    console.warn(`Icon "${iconName}" not found.`);
+function useController({
+  icon: iconName,
+  size = undefined,
+  color = undefined,
+  iconClassName = "",
+  wrapperClassName = "",
+  withBackgroundWhenDarkMode = false,
+}: T_IconProps): T_UseControllerReturn {
+  if (notExists(ICONS[iconName])) {
+    logger("WARN", "Icon does not exist", iconName);
+
     return {
       wrapperProps: undefined,
-      IconComponent: undefined,
       iconComponentProps: undefined,
+      IconComponent: undefined,
     };
   }
 
-  function getColorStyles(icon: T_Icon, color?: string): string {
-    if (color) {
+  // vars
+  const icon = ICONS[iconName];
+  const baseIconClassNames = classNames(
+    "tw-inline-block",
+    isNotDefined(size) && "tw-w-4 tw-h-4",
+    isString(size) && size,
+    icon.defaultProps.className,
+    iconClassName,
+  );
+  const wrapperProps = {
+    className: classNames(
+      "dfr-Icon",
+      withBackgroundWhenDarkMode &&
+        "dark:dfr-bg-color-light-strong dark:tw-rounded-full tw-overflow-hidden",
+      wrapperClassName,
+    ),
+  };
+  const iconComponentProps = isIconElementFromLibrary(icon.icon)
+    ? {
+        className: classNames(baseIconClassNames, getColorStyles()),
+        ...(isNumber(size) ? { style: { width: size, height: size } } : {}),
+      }
+    : {
+        src: icon.icon,
+        alt: `${icon.defaultProps.alt} icon`,
+        className: classNames(baseIconClassNames, withBackgroundWhenDarkMode && "dark:tw-p-0.5"),
+        ...(isNumber(size) ? { style: { width: size, height: size } } : {}),
+      };
+  const IconComponent = isIconElementFromLibrary(icon.icon) ? icon.icon : Image;
+
+  // utils
+  function getColorStyles(): string {
+    if (isFilledString(color)) {
       return color;
     }
 
-    if (icon.props.color) {
-      return icon.props.color;
+    if (isNotEmptyString(icon.defaultProps.color)) {
+      return icon.defaultProps.color;
     }
 
     return "dfr-text-color-dark-strong dark:dfr-text-color-light-strong";
   }
 
-  const wrapperProps = {
-    className: classNames(
-      "dfr-Icon",
-      withDarkModeBackground &&
-        "dark:dfr-bg-color-light-strong dark:tw-rounded-full tw-overflow-hidden",
-      wrapperClassName,
-    ),
-  };
-  const IconComponent = (icon.isLibraryIcon ? icon.icon : Image) as T_ReactFunctionComponent;
-  const iconComponentProps = icon.isLibraryIcon
-    ? {
-        className: classNames(
-          "tw-inline-block",
-          size === undefined && "tw-w-4 tw-h-4",
-          typeof size === "string" && size,
-          icon.props.className,
-          iconClassName,
-
-          getColorStyles(icon, color),
-        ),
-        ...(typeof size === "number" && { style: { width: size, height: size } }),
-      }
-    : {
-        src: icon.icon as string,
-        alt: `${icon.props.alt} icon`,
-        className: classNames(
-          "tw-inline-block",
-          size === undefined && "tw-w-4 tw-h-4",
-          typeof size === "string" && size,
-          icon.props.className,
-          iconClassName,
-
-          withDarkModeBackground && "dark:tw-p-0.5",
-        ),
-        ...(typeof size === "number" && { style: { width: size, height: size } }),
-      };
-
-  return { wrapperProps, IconComponent, iconComponentProps };
+  return { wrapperProps, iconComponentProps, IconComponent };
 }
 
 // --- Components ---
 
-function Wrapper({ children, className = "" }: T_HTMLElementAttributes["span"]) {
+function Wrapper({ children, className = "" }: T_HTMLElementAttributes["span"]): T_ReactElement {
   return (
     <Block
-      className={classNames("tw-inline-flex tw-align-middle", className)}
-      align="CENTER"
+      className={classNames(
+        "tw-inline-flex tw-items-center tw-justify-center tw-align-middle",
+        className,
+      )}
     >
       {children}
     </Block>

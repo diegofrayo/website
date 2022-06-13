@@ -2,16 +2,23 @@ import * as React from "react";
 
 import { Input, Block, Button, Icon, Link } from "~/components/primitive";
 import http from "~/lib/http";
-import type { T_ReactElement } from "~/types";
+import { getErrorMessage, reportError } from "~/utils/app";
+import { showAlert } from "~/utils/browser";
+import { ENV_VARS } from "~/utils/constants";
+import type {
+  T_ReactElement,
+  T_ReactOnChangeEventHandler,
+  T_ReactOnClickEventHandler,
+} from "~/types";
 
 function ISR(): T_ReactElement {
   const {
-    // states
+    // states & refs
     path,
 
     // handlers
     handleUpdateClick,
-    onChange,
+    onChangeHandler,
   } = useController();
 
   return (
@@ -20,13 +27,13 @@ function ISR(): T_ReactElement {
         id="input-path"
         label="Path"
         value={path}
-        onChange={onChange}
+        onChange={onChangeHandler}
       />
       <Block className="tw-flex tw-justify-between">
         <Link
           variant={Link.variant.UNSTYLED}
           href={path}
-          isExternalUrl
+          isExternalLink
         >
           <Icon icon={Icon.icon.EXTERNAL_LINK} />
         </Link>
@@ -45,29 +52,40 @@ export default ISR;
 
 // --- Controller ---
 
-function useController() {
+type T_UseControllerReturn = {
+  path: string;
+  onChangeHandler: T_ReactOnChangeEventHandler<HTMLInputElement>;
+  handleUpdateClick: T_ReactOnClickEventHandler<HTMLButtonElement>;
+};
+
+function useController(): T_UseControllerReturn {
+  // states & refs
   const [path, setPath] = React.useState("/resume");
 
-  function onChange(e) {
-    setPath(e.target.value);
-  }
+  // handlers
+  const onChangeHandler: T_UseControllerReturn["onChangeHandler"] = function onChangeHandler(
+    event,
+  ) {
+    setPath(event.target.value);
+  };
 
-  async function handleUpdateClick() {
-    try {
-      await http.post("/api/diegofrayo", { path, secret: process.env.NEXT_PUBLIC_ISR_TOKEN });
-      alert("Completed");
-    } catch (error) {
-      console.error(error);
-      alert("Error");
-    }
-  }
+  const handleUpdateClick: T_UseControllerReturn["handleUpdateClick"] =
+    async function handleUpdateClick() {
+      try {
+        await http.post("/api/diegofrayo", { path, secret: ENV_VARS.NEXT_PUBLIC_ISR_TOKEN });
+        showAlert("Success");
+      } catch (error) {
+        reportError(error);
+        showAlert(getErrorMessage(error));
+      }
+    };
 
   return {
-    // states
+    // states & refs
     path,
 
     // handlers
-    onChange,
+    onChangeHandler,
     handleUpdateClick,
   };
 }

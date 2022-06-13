@@ -5,25 +5,29 @@ import Script from "next/script";
 
 import { InlineText } from "~/components/primitive";
 import { useDidMount, useDocumentTitle } from "~/hooks";
-import { withRequiredAuthComponent } from "~/hocs";
-import { I18nService } from "~/i18n";
+import { withAuthenticationRequired } from "~/hocs";
+import { I18nService, T_Locale } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import { useStoreSelector } from "~/state";
-import { selectWebsiteMetadata, selectSEOMetadata } from "~/state/modules/metadata";
-import { selectPageConfig } from "~/state/modules/page-config";
-import type {
-  T_PageConfig,
-  T_PageRoute,
-  T_ReactChildrenProp,
-  T_ReactElement,
+import {
+  selectWebsiteMetadata,
+  selectSEOMetadata,
   T_SEOMetadata,
   T_WebsiteMetadata,
+} from "~/state/modules/metadata";
+import { selectPageConfig, T_PageConfig } from "~/state/modules/page-config";
+import { isDevelopmentEnvironment } from "~/utils/app";
+import { ROUTES, T_RoutesValues } from "~/utils/routing";
+import type {
+  T_ReactChildren,
+  T_ReactElement,
+  T_ReactElementNullable,
+  T_UnknownObject,
 } from "~/types";
-import { isDevelopmentEnvironment } from "~/utils/misc";
-import { ROUTES } from "~/utils/routing";
+import { isNotEmptyString } from "~/utils/validations";
 
 type T_PageProps = {
-  children: T_ReactChildrenProp;
+  children: T_ReactChildren;
   config: {
     title?: string;
     replaceTitle?: boolean;
@@ -31,7 +35,7 @@ type T_PageProps = {
     description?: string;
     image?: string;
     disableSEO?: boolean;
-    scripts?: { element: "link"; props: any }[];
+    scripts?: { element: "link"; props: T_UnknownObject }[];
   };
 };
 
@@ -41,8 +45,8 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   const { locales } = useStoreSelector<T_PageConfig>(selectPageConfig);
 
   const metadata = {
-    title: config.title
-      ? `${config.title}${config.replaceTitle ? "" : " - " + SEO_METADATA.title}`
+    title: isNotEmptyString(config.title)
+      ? `${config.title}${config.replaceTitle ? "" : ` - ${SEO_METADATA.title}`}`
       : SEO_METADATA.title,
     url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
     description: config.description || SEO_METADATA.description,
@@ -118,7 +122,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
             />
           );
         })}
-        {locales.map((locale) => {
+        {locales.map((locale: T_Locale) => {
           if (locale === I18nService.getDefaultLocale()) {
             return (
               <link
@@ -166,9 +170,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
         />
         <link
           rel="icon"
-          href={`/static/images/favicon/favicon${
-            isDevelopmentEnvironment(WEBSITE_METADATA.url) ? "-dev" : ""
-          }.ico?v=3`}
+          href={`/static/images/favicon/favicon${isDevelopmentEnvironment() ? "-dev" : ""}.ico?v=3`}
         />
         <link
           rel="alternate"
@@ -183,7 +185,9 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           href="/atom.xml"
         />
 
-        {[ROUTES.HOME, ROUTES.ABOUT_ME, ROUTES.RESUME].includes(config.pathname as T_PageRoute) && (
+        {[ROUTES.HOME, ROUTES.ABOUT_ME, ROUTES.RESUME].includes(
+          config.pathname as T_RoutesValues,
+        ) ? (
           <Script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -199,13 +203,12 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
               }),
             }}
           />
-        )}
+        ) : null}
       </Head>
       {children}
 
       <UserLoggedInFlag />
       <AnalyticsDisabledFlag />
-      {/* {isDevelopmentEnvironment() && <WindowSize />} */}
     </React.Fragment>
   );
 }
@@ -214,7 +217,7 @@ export default Page;
 
 // --- Components ---
 
-const UserLoggedInFlag = withRequiredAuthComponent(function UserLoggedInFlag() {
+const UserLoggedInFlag = withAuthenticationRequired(function UserLoggedInFlag(): T_ReactElement {
   return (
     <Flag
       className="tw-z-50"
@@ -223,24 +226,34 @@ const UserLoggedInFlag = withRequiredAuthComponent(function UserLoggedInFlag() {
   );
 });
 
-function AnalyticsDisabledFlag() {
-  const [isAnalyticsEnabled, setIsAnalyticsEnabled] = React.useState(false);
+function AnalyticsDisabledFlag(): T_ReactElementNullable {
+  // hooks
+  const [isAnalyticsDisabled, setIsAnalyticsDisabled] = React.useState(false);
 
+  // effects
   useDidMount(() => {
-    setIsAnalyticsEnabled(!AnalyticsService.isAnalyticsDisabled());
+    setIsAnalyticsDisabled(AnalyticsService.isAnalyticsDisabled());
   });
 
-  if (isAnalyticsEnabled) return null;
+  // render
+  if (isAnalyticsDisabled) {
+    return (
+      <Flag
+        className="tw-z-40"
+        color="dfr-bg-colorful-primary-100"
+      />
+    );
+  }
 
-  return (
-    <Flag
-      className="tw-z-40"
-      color="dfr-bg-colorful-primary-100"
-    />
-  );
+  return null;
 }
 
-function Flag({ className, color }) {
+type T_FlagProps = {
+  className: string;
+  color: string;
+};
+
+function Flag({ className, color }: T_FlagProps): T_ReactElement {
   return (
     <InlineText
       className={classNames("tw-fixed tw-top-1 tw-left-1 tw-h-1 tw-w-1", className, color)}

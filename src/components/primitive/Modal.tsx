@@ -1,60 +1,47 @@
 import * as React from "react";
 
 import { useToggleBodyScroll } from "~/hooks";
-import type { T_ReactElement } from "~/types";
+import { exists } from "~/utils/validations";
+import type { T_ReactElement, T_ReactElementNullable, T_ReactOnClickEventObject } from "~/types";
 
-import Block from "./Block";
-
-function Modal({
-  children,
-  visible,
-  onCloseHandler,
-}: {
+type T_ModalProps = {
   children: T_ReactElement;
   visible: boolean;
-  onCloseHandler: (closeModal: boolean) => void;
-}): T_ReactElement {
+  onCloseHandler: () => void;
+};
+
+function Modal({ children, visible, onCloseHandler }: T_ModalProps): T_ReactElementNullable {
   useToggleBodyScroll(visible);
 
-  function closeModal() {
-    onCloseHandler(false);
+  // render
+  if (visible) {
+    return <Backdrop onCloseHandler={onCloseHandler}>{children}</Backdrop>;
   }
 
-  if (!visible) {
-    return null;
-  }
-
-  return (
-    <Context.Provider value={{ onCloseModalHandler: closeModal }}>
-      <Backdrop closeModalHandler={closeModal}>{children}</Backdrop>
-    </Context.Provider>
-  );
+  return null;
 }
 
 export default Modal;
 
-// --- Context ---
-
-const Context = React.createContext({
-  onCloseModalHandler: (): void => undefined,
-});
-
-Modal.Context = Context;
-
 // --- Components ---
 
-function Backdrop({ children, closeModalHandler }): T_ReactElement {
-  const backdropRef = React.useRef<HTMLDivElement>(null);
+type T_BackdropProps = { children: T_ReactElement; onCloseHandler: T_ModalProps["onCloseHandler"] };
 
-  function handleBackdropClick(event) {
-    if (backdropRef && backdropRef.current === event.target) {
-      closeModalHandler();
+function Backdrop({ children, onCloseHandler }: T_BackdropProps): T_ReactElement {
+  // states & refs
+  const backdropRef = React.useRef<HTMLButtonElement>(null);
+
+  // handlers
+  function handleBackdropClick(event: T_ReactOnClickEventObject<HTMLButtonElement>): void {
+    if (exists(backdropRef.current) && backdropRef.current === event.target) {
+      onCloseHandler();
     }
   }
 
   return (
-    <Block
-      className="dfr-Backdrop tw-p-3 sm:tw-p-6"
+    <button
+      type="button"
+      className="root tw-block tw-h-full tw-w-full tw-cursor-default tw-p-3 sm:tw-p-6"
       ref={backdropRef}
       onClick={handleBackdropClick}
     >
@@ -62,7 +49,7 @@ function Backdrop({ children, closeModalHandler }): T_ReactElement {
 
       <style jsx>
         {`
-          :global(.dfr-Backdrop) {
+          .root {
             align-items: center;
             background-color: rgba(0, 0, 0, 0.5);
             bottom: 0;
@@ -77,6 +64,6 @@ function Backdrop({ children, closeModalHandler }): T_ReactElement {
           }
         `}
       </style>
-    </Block>
+    </button>
   );
 }

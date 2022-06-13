@@ -14,12 +14,15 @@ import {
 } from "~/components/primitive";
 import { GoBack } from "~/components/shared";
 import { useTranslation } from "~/i18n";
-import { T_ReactElement } from "~/types";
 import { ROUTES } from "~/utils/routing";
+import type { T_ReactChildren, T_ReactElement } from "~/types";
+import { isNotEmptyString } from "~/utils/validations";
 
 export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactElement {
+  // hooks
   const { t } = useTranslation();
 
+  // render
   return (
     <Page
       config={{
@@ -63,7 +66,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
                 variant={Link.variant.SIMPLE}
                 href={`mailto:${resume.contactInfo.email}`}
                 className="tw-mx-2 tw-inline-block"
-                isExternalUrl
+                isExternalLink
               >
                 <Icon
                   icon={Icon.icon.GMAIL}
@@ -74,7 +77,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
                 variant={Link.variant.SIMPLE}
                 href={resume.contactInfo.linkedin}
                 className="tw-mx-2 tw-inline-block"
-                isExternalUrl
+                isExternalLink
               >
                 <Icon
                   icon={Icon.icon.LINKEDIN}
@@ -86,11 +89,11 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 
                 return (
                   <Link
-                    key={`Website-${index}`}
+                    key={`website-${index}`}
                     variant={Link.variant.SIMPLE}
                     href={website.value}
                     className="tw-mx-2 tw-inline-block"
-                    isExternalUrl
+                    isExternalLink
                   >
                     {isPersonalWebsite ? (
                       <Icon
@@ -122,7 +125,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
                 {resume.education.map((item, index) => {
                   return (
                     <Block
-                      key={`Education-${index}`}
+                      key={`education-${index}`}
                       className="tw-mb-4 tw-flex tw-items-start last:tw-mb-0"
                     >
                       <Image
@@ -142,7 +145,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
                           variant={Link.variant.SIMPLE}
                           href={item.schoolWebsite}
                           className="tw-underline"
-                          isExternalUrl
+                          isExternalLink
                         >
                           {item.school}
                         </Link>
@@ -179,11 +182,16 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 
 // --- Components ---
 
-function PrintBlock({ children }) {
+function PrintBlock({ children }: { children: T_ReactChildren }): T_ReactElement {
   return <Block className="print:tw-h-screen">{children}</Block>;
 }
 
-function ResumeBlock({ title, children }) {
+type T_ResumeBlockProps = {
+  title: string;
+  children: T_ReactChildren;
+};
+
+function ResumeBlock({ title, children }: T_ResumeBlockProps): T_ReactElement {
   return (
     <Block
       is="section"
@@ -200,13 +208,15 @@ function ResumeBlock({ title, children }) {
   );
 }
 
-export function ExperienceTimeline({ experience }: { experience: T_Experience[] }): T_ReactElement {
+type T_ExperienceTimelineProps = { experience: T_Experience[] };
+
+export function ExperienceTimeline({ experience }: T_ExperienceTimelineProps): T_ReactElement {
   return (
     <Block className="tw-ml-3 tw-border-l-4 tw-border-black dark:dfr-border-color-primary">
       {experience.map((item, index) => {
         return (
           <ExperienceTimelineItem
-            key={`TimelineItem-${index}`}
+            key={`ExperienceTimelineItem-${index}`}
             {...item}
           />
         );
@@ -230,7 +240,7 @@ function ExperienceTimelineItem({
       className="tw-relative tw-mb-8 tw-pl-9 last:tw-mb-0"
     >
       <Block className="tw-absolute tw--left-4 tw-top-0 tw-h-10 tw-w-10 tw-overflow-hidden tw-border-4 tw-border-black">
-        {companyLogo ? (
+        {isNotEmptyString(companyLogo) ? (
           <Image
             src={companyLogo}
             alt="Company logo"
@@ -250,12 +260,12 @@ function ExperienceTimelineItem({
           {role}
         </Title>
 
-        {companyWebsite ? (
+        {isNotEmptyString(companyWebsite) ? (
           <Link
             className="tw-underline"
             href={companyWebsite}
             variant={Link.variant.SIMPLE}
-            isExternalUrl
+            isExternalLink
           >
             {company}
           </Link>
@@ -264,7 +274,7 @@ function ExperienceTimelineItem({
         )}
 
         <Text className="tw-text-xs tw-italic dfr-text-color-secondary">
-          <InlineText>{startDate}</InlineText> / <InlineText>{endDate}</InlineText>
+          <InlineText>{startDate}</InlineText> /<InlineText>{endDate}</InlineText>
         </Text>
         <Space size={2} />
 
@@ -324,33 +334,3 @@ type T_Experience = {
   endDate: string;
   description: string;
 };
-
-// --- Legacy ---
-
-// export function ResumeFAQ({ children }: { children: T_ReactChildrenProp }): T_ReactElement {
-//   return (
-//     <Block
-//       is="section"
-//       data-markdown-block
-//     >
-//       <Title is="h2">FAQ</Title>
-//       <Block>{children}</Block>
-//     </Block>
-//   );
-// }
-
-// type T_ResumeFAQItemProps = {
-//   question: string;
-//   children: T_ReactChildrenProp;
-// };
-
-// ResumeFAQ.Item = function ResumeFAQItem({
-//   question,
-//   children,
-// }: T_ResumeFAQItemProps): T_ReactElement {
-//   return (
-//     <Collapsible title={question}>
-//       <blockquote>{children}</blockquote>
-//     </Collapsible>
-//   );
-// };
