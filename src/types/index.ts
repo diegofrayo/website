@@ -1,12 +1,16 @@
 import * as React from "react";
 
+// --- Data ---
+
+export type T_Primitive = string | number | boolean | null;
+
 // --- Objects ---
 
 type T_GenericObject<Type> = Record<string | number | symbol, Type>;
 
 export type T_UnknownObject = T_GenericObject<unknown>;
 
-export type T_ObjectWithPrimitives = T_GenericObject<string | number | boolean>;
+export type T_ObjectWithPrimitives = T_GenericObject<T_Primitive>;
 
 export type T_Object<Type = unknown> = T_GenericObject<Type>;
 
@@ -22,11 +26,12 @@ export type T_ReactElement = JSX.Element;
 
 export type T_ReactElementNullable = JSX.Element | null;
 
-export type T_ReactFunctionComponent<Props = T_UnknownObject> = React.FunctionComponent<Props>;
+export type T_ReactFunctionComponent<G_ComponentProps = T_UnknownObject> =
+  React.FunctionComponent<G_ComponentProps>;
 
 export type T_ReactRefObject<RefType> = React.RefObject<RefType>;
 
-export type T_ReactForwardedRef = React.ForwardedRef<unknown>;
+// export type T_ReactForwardedRef = React.ForwardedRef<unknown>;
 
 export type T_ReactEffectCallback = React.EffectCallback;
 

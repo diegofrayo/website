@@ -21,8 +21,6 @@ import { T_BlogPost } from "./service";
 type T_PageProps = {
   post: T_BlogPost;
   postMDXContent: MDXRemoteSerializeResult;
-  // content: T_PageContent;
-  // locale: T_Locale;
 };
 
 function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {

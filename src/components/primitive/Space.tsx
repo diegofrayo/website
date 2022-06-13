@@ -1,13 +1,15 @@
 import * as React from "react";
 import classNames from "classnames";
 
+import { mirror } from "~/utils/objects-and-arrays";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
-import { mirror } from "~/utils/misc";
+import { isNumber, isString } from "~/utils/validations";
 
-type T_Variant = "DEFAULT" | "DASHED";
-// TODO: TS: Use "generics" instead of "as" to type this var
-const VARIANTS = mirror(["DEFAULT", "DASHED"]) as Record<T_Variant, T_Variant>;
+const VARIANTS_OPTIONS = ["DEFAULT", "DASHED"] as const;
+const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
+type T_Variant = typeof VARIANTS_OPTIONS[number];
 
+/* eslint-disable react/no-unused-prop-types */ /* TODO */
 type T_SpaceProps = T_HTMLElementAttributes["hr"] & {
   className?: string;
   variant?: T_Variant;
@@ -32,6 +34,8 @@ export default Space;
 
 // --- Controller ---
 
+type T_UseControllerReturn = { className: string };
+
 function useController({
   className = "",
   variant = VARIANTS.DEFAULT,
@@ -42,14 +46,17 @@ function useController({
   sizeBottom,
   sizeLeft,
   sizeRight,
-}: T_SpaceProps): { className: string } {
+}: T_SpaceProps): T_UseControllerReturn {
+  // vars
   const isVerticalOrientation = orientation === "v";
 
+  // utils
   function composeClassName(): string {
     return classNames(
       "tw-flex-shrink-0",
       isVerticalOrientation ? "tw-h-full" : "tw-h-px",
-      responsive || classNames(composeSizeClassNames(), isVerticalOrientation && "tw-inline-block"),
+      isString(responsive) ||
+        classNames(composeSizeClassNames(), isVerticalOrientation && "tw-inline-block"),
       variant === VARIANTS.DEFAULT && "tw-border-0",
       variant === VARIANTS.DASHED &&
         "dfr-border-color-primary dark:dfr-border-color-primary tw-border-dashed",
@@ -79,10 +86,12 @@ function useController({
     return composeSingleSideClassName("my", size);
   }
 
-  function composeSingleSideClassName(singleSide: string, size?: number) {
-    if (typeof size !== "number") return "";
+  function composeSingleSideClassName(singleSide: string, singleSideSize?: number): string {
+    if (isNumber(singleSideSize)) {
+      return `tw-${singleSide}-${singleSideSize}`;
+    }
 
-    return `tw-${singleSide}-${size}`;
+    return "";
   }
 
   return {

@@ -166,7 +166,7 @@ function ContactLinks({ contact }: { contact: T_Contact }): T_ReactElement {
         <Link
           variant={Link.variant.SIMPLE}
           href={`https://instagram.com/${contact.instagram}`}
-          isExternalUrl
+          isExternalLink
         >
           <Icon
             icon={Icon.icon.INSTAGRAM}
@@ -278,7 +278,7 @@ function PhoneButton({ children, phone, country }: T_PhoneButtonProps): T_ReactE
       <Link
         variant={Link.variant.SIMPLE}
         href={generatePhoneLink()}
-        isExternalUrl
+        isExternalLink
       >
         {children}
       </Link>

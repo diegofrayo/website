@@ -10,7 +10,7 @@ import MusicService, { T_Song } from "~/services/music";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
-import { isEmptyStringOrNotDefined } from "~/utils/validations";
+import { isEmptyOrNotDefinedString } from "~/utils/validations";
 
 type T_PageProps = {
   song: T_Song;
@@ -48,7 +48,7 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, T_StaticPat
     })) as string;
 
     let content;
-    if (isDevelopmentEnvironment() || isEmptyStringOrNotDefined(song.assets?.serverUrl)) {
+    if (isDevelopmentEnvironment() || isEmptyOrNotDefinedString(song.assets?.serverUrl)) {
       content = await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.txt` });
     } else {
       content = (await http.get(song.assets?.serverUrl || "")).data;

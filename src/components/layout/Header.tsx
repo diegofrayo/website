@@ -10,7 +10,7 @@ import { useClickOutside, useDidMount, useEnhancedState } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
 import http from "~/lib/http";
 import { useStoreSelector } from "~/state";
-import { selectWebsiteMetadata } from "~/state/modules/metadata";
+import { selectWebsiteMetadata, T_WebsiteMetadata } from "~/state/modules/metadata";
 import { isPWA, showAlert } from "~/utils/browser";
 import { ROUTES, T_RoutesValues } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
@@ -308,7 +308,7 @@ const EnvironmentMenuItem = withAuthenticationRequired(function EnvironmentMenuI
       <Link
         variant={Link.variant.SIMPLE}
         href={url}
-        isExternalUrl
+        isExternalLink
       >
         <Icon icon={Icon.icon.EXTERNAL_LINK} />
       </Link>

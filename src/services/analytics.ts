@@ -3,7 +3,7 @@ import splitbee from "@splitbee/web";
 import { AuthService } from "~/auth";
 import { isBrowser, isDevelopmentEnvironment, logger } from "~/utils/app";
 import { exists } from "~/utils/validations";
-import type { T_ObjectWithPrimitives } from "~/types";
+import type { T_Object } from "~/types";
 
 // TODO: Command pattern to avoid repeating this line (if (this.isAnalyticsDisabled()) return;)
 class AnalyticsService {
@@ -21,7 +21,7 @@ class AnalyticsService {
     console.groupEnd();
   }
 
-  trackEvent(name: string, data: T_ObjectWithPrimitives): void {
+  trackEvent(name: string, data: T_Object<string | number | boolean>): void {
     if (this.isAnalyticsDisabled()) return;
 
     splitbee.track(name, data);

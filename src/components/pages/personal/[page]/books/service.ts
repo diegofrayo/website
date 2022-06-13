@@ -31,7 +31,7 @@ export default new BooksService();
 
 // TODO: Validate scheme using a library and infer its types
 function BookVO(data: T_UnknownObject): T_Book {
-  const book = transformObjectKeysFromSnakeCaseToLowerCamelCase(data) as T_Book;
+  const book = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Book>(data);
 
   return book;
 }

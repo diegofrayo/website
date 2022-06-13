@@ -3,7 +3,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { Block } from "~/components/primitive";
 import { MDXComponents } from "~/utils/mdx";
-import { mirror } from "~/utils/misc";
+import { mirror } from "~/utils/objects-and-arrays";
 import type { T_ReactElement } from "~/types";
 
 type T_Variants = "DEFAULT" | "UNSTYLED";
@@ -15,6 +15,10 @@ type T_MDXContentProps = {
 };
 
 function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps): T_ReactElement {
+  // @ts-ignore: TODO: Unexpected any. Specify a different type
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MDXComponentsCasted = MDXComponents as any;
+
   return (
     <Block
       is="article"
@@ -22,7 +26,7 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
     >
       <MDXRemote
         {...content}
-        components={MDXComponents as any}
+        components={MDXComponentsCasted}
       />
 
       <style jsx>

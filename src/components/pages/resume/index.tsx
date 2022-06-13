@@ -66,7 +66,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
                 variant={Link.variant.SIMPLE}
                 href={`mailto:${resume.contactInfo.email}`}
                 className="tw-mx-2 tw-inline-block"
-                isExternalUrl
+                isExternalLink
               >
                 <Icon
                   icon={Icon.icon.GMAIL}
@@ -77,7 +77,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
                 variant={Link.variant.SIMPLE}
                 href={resume.contactInfo.linkedin}
                 className="tw-mx-2 tw-inline-block"
-                isExternalUrl
+                isExternalLink
               >
                 <Icon
                   icon={Icon.icon.LINKEDIN}
@@ -93,7 +93,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
                     variant={Link.variant.SIMPLE}
                     href={website.value}
                     className="tw-mx-2 tw-inline-block"
-                    isExternalUrl
+                    isExternalLink
                   >
                     {isPersonalWebsite ? (
                       <Icon
@@ -144,7 +144,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
                         variant={Link.variant.SIMPLE}
                         href={item.schoolWebsite}
                         className="tw-underline"
-                        isExternalUrl
+                        isExternalLink
                       >
                         {item.school}
                       </Link>
@@ -263,7 +263,7 @@ function ExperienceTimelineItem({
             className="tw-underline"
             href={companyWebsite}
             variant={Link.variant.SIMPLE}
-            isExternalUrl
+            isExternalLink
           >
             {company}
           </Link>

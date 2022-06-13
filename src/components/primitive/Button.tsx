@@ -9,6 +9,7 @@ const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
 type T_Variant = typeof VARIANTS_OPTIONS[number];
 type T_ButtonProps = T_HTMLElementAttributes["button"] & {
   variant?: T_Variant;
+  type?: "submit" | "button" | "reset";
 };
 
 function Button({
@@ -16,6 +17,7 @@ function Button({
   variant = VARIANTS.UNSTYLED,
   className = "",
   disabled = false,
+  type = "button",
   onClick,
   ...rest
 }: T_ButtonProps): T_ReactElement {
@@ -33,6 +35,7 @@ function Button({
   // render
   return (
     <button
+      type={type === "button" ? "button" : "submit"}
       className={composeClassName()}
       disabled={disabled}
       onClick={onClick}

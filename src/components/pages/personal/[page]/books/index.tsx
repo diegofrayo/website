@@ -30,7 +30,7 @@ function Books(): T_ReactElement {
                   variant={Link.variant.UNSTYLED}
                   href={url}
                   className="tw-relative tw-mx-2 tw-mb-6 tw-h-64 tw-w-48 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 tw-shadow-lg tw-duration-500 dfr-border-color-dark-strong hover:tw-translate-x-1 hover:tw--translate-y-1 hover:tw-rotate-0 hover:tw-opacity-75 hover:tw-shadow-2xl dark:dfr-border-color-primary sm:tw--rotate-1"
-                  isExternalUrl
+                  isExternalLink
                 >
                   <Block
                     is="article"

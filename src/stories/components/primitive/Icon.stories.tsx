@@ -2,9 +2,7 @@ import * as React from "react";
 
 import Icon from "~/components/primitive/Icon";
 
-function Story(props) {
-  return <Icon {...props} />;
-}
+const Story = (props) => <Icon {...props} />;
 
 export default {
   title: "primitive/Icon",
@@ -25,6 +23,6 @@ WithColor.args = {
   icon: Icon.icon.ZOOM_IN,
   size: "tw-w-10 tw-h-10 dark:tw-w-16 dark:tw-h-16",
   color: "tw-text-red-400 dark:tw-text-blue-400",
-  withDarkModeBackground: true,
+  withBackgroundWhenDarkMode: true,
   wrapperClassName: "tw-m-1 dark:tw-border",
 };

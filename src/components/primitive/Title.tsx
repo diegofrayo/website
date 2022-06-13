@@ -7,6 +7,7 @@ import type { T_HTMLElementAttributes, T_ReactChildren, T_ReactElement } from "~
 
 import Icon from "./Icon";
 import Link from "./Link";
+import { isString } from "~/utils/validations";
 
 const VARIANTS_OPTIONS = ["UNSTYLED", "PRIMARY", "SECONDARY"] as const;
 const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
@@ -29,11 +30,11 @@ function Title(props: T_TitleProps): T_ReactElement {
     variant,
     showLinkIcon,
     children,
+    is: Tag,
 
     // vars
     id,
     className,
-    Tag,
 
     ...rest
   } = useController(props);
@@ -63,7 +64,6 @@ function Title(props: T_TitleProps): T_ReactElement {
             size={16}
           />
         </Link>
-
         {children}
 
         <style jsx>
@@ -100,19 +100,19 @@ export type { T_TitleProps };
 
 // --- Controller ---
 
+type T_UseControllerReturn = T_TitleProps;
+
 function useController({
   children,
-  is: Tag,
+  is,
   className = "",
   size = undefined,
   variant = VARIANTS.PRIMARY,
   showLinkIcon = false,
   id = "",
   ...rest
-}: T_TitleProps): Omit<T_TitleProps, "is"> & {
-  id: string;
-  Tag: T_TitleProps["is"];
-} {
+}: T_TitleProps): T_UseControllerReturn {
+  // utils
   function generateStyles(tag: T_TitleProps["is"]): string {
     return classNames(
       {
@@ -128,7 +128,7 @@ function useController({
         SECONDARY: "dfr-text-color-dark-strong dark:dfr-text-color-light-strong",
         UNSTYLED: "",
       }[variant],
-      size !== undefined &&
+      isString(size) &&
         {
           XS: "tw-text-md",
           SM: "tw-text-xl",
@@ -144,16 +144,16 @@ function useController({
     variant,
     showLinkIcon,
     children,
+    is,
     ...rest,
 
     // vars
-    id: variant === VARIANTS.PRIMARY && typeof children === "string" ? generateSlug(children) : id,
+    id: variant === VARIANTS.PRIMARY && isString(children) ? generateSlug(children) : id,
     className: classNames(
       `dfr-Title dfr-Title--${variant.toLowerCase()}`,
       "tw-font-bold tw-font-sans",
-      generateStyles(Tag),
+      generateStyles(is),
       className,
     ),
-    Tag,
   };
 }

@@ -33,7 +33,7 @@ function ISR(): T_ReactElement {
         <Link
           variant={Link.variant.UNSTYLED}
           href={path}
-          isExternalUrl
+          isExternalLink
         >
           <Icon icon={Icon.icon.EXTERNAL_LINK} />
         </Link>

@@ -80,7 +80,7 @@ function SongDetails({
           <Link
             variant={Link.variant.SIMPLE}
             href={song.spotifyUrl}
-            isExternalUrl
+            isExternalLink
           >
             <Icon
               icon={Icon.icon.SPOTIFY}
@@ -94,7 +94,7 @@ function SongDetails({
           <Link
             variant={Link.variant.SIMPLE}
             href={song.youtubeUrl}
-            isExternalUrl
+            isExternalLink
           >
             <Icon
               icon={Icon.icon.YOUTUBE}

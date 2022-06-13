@@ -9,8 +9,13 @@ import { withAuthenticationRequired } from "~/hocs";
 import { I18nService, T_Locale } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import { useStoreSelector } from "~/state";
-import { selectWebsiteMetadata, selectSEOMetadata } from "~/state/modules/metadata";
-import { selectPageConfig } from "~/state/modules/page-config";
+import {
+  selectWebsiteMetadata,
+  selectSEOMetadata,
+  T_SEOMetadata,
+  T_WebsiteMetadata,
+} from "~/state/modules/metadata";
+import { selectPageConfig, T_PageConfig } from "~/state/modules/page-config";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { ROUTES, T_RoutesValues } from "~/utils/routing";
 import type {
@@ -19,6 +24,7 @@ import type {
   T_ReactElementNullable,
   T_UnknownObject,
 } from "~/types";
+import { isString } from "~/utils/validations";
 
 type T_PageProps = {
   children: T_ReactChildren;
@@ -39,7 +45,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   const { locales } = useStoreSelector<T_PageConfig>(selectPageConfig);
 
   const metadata = {
-    title: config.title
+    title: isString(config.title)
       ? `${config.title}${config.replaceTitle ? "" : ` - ${SEO_METADATA.title}`}`
       : SEO_METADATA.title,
     url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,

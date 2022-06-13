@@ -123,7 +123,7 @@ function Films(): T_ReactElement {
                       "tw-relative tw-mx-2 tw-mb-6 tw-h-64 tw-w-48 tw-shadow-lg tw-duration-500 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 hover:tw-opacity-75 hover:tw-shadow-2xl",
                       index % 2 === 0 ? "sm:tw-rotate-2" : "sm:tw--rotate-2",
                     )}
-                    isExternalUrl
+                    isExternalLink
                   >
                     <article
                       className="tw-flex tw-h-full tw-w-full tw-bg-no-repeat"

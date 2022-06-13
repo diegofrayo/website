@@ -9,7 +9,7 @@ import type { T_Object } from "~/types";
 
 import type {
   T_TimelineCategory,
-  T_TimelineFetchRawResponse,
+  T_TimelineFetchDTO,
   T_TimelineFetchResponse,
   T_TimelineGroup,
   T_TimelineGroupItem,
@@ -25,14 +25,13 @@ class TimelineService {
     return this.parseResponse(data);
   }
 
-  parseResponse({ data, categories }: T_TimelineFetchRawResponse): T_TimelineFetchResponse {
+  parseResponse({ data, categories }: T_TimelineFetchDTO): T_TimelineFetchResponse {
     return {
       categories,
       timeline: Object.values(
         data.reduce((result: T_Object<T_TimelineGroup>, item) => {
-          const timelineGroupItemParsed = transformObjectKeysFromSnakeCaseToLowerCamelCase(
-            item,
-          ) as T_TimelineGroupItem;
+          const timelineGroupItemParsed =
+            transformObjectKeysFromSnakeCaseToLowerCamelCase<T_TimelineGroupItem>(item);
           const year = timelineGroupItemParsed.startDate.split("/")[0];
           const mutatedResult = { ...result };
 

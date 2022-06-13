@@ -3,12 +3,11 @@ import classNames from "classnames";
 
 import { Icon, Input, Link, Block, Button } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import { copyToClipboard, focusElement, isMobile } from "~/utils/browser";
+import { focusElement, handleCopyToClipboardClick, isMobile } from "~/utils/browser";
 import { generateSlug, replaceAll } from "~/utils/strings";
 import type {
   T_ReactElement,
   T_ReactOnChangeEventHandler,
-  T_ReactOnClickEventHandler,
   T_ReactOnKeyPressEventHandler,
   T_ReactRefObject,
 } from "~/types";
@@ -52,7 +51,7 @@ function WhatsApp(): T_ReactElement {
             isInvalidPhone && "tw-pointer-events-none tw-opacity-50",
           )}
           id="link-to-wp"
-          isExternalUrl
+          isExternalLink
         >
           <Icon
             icon={Icon.icon.WHATSAPP}
@@ -117,7 +116,6 @@ type T_UseControllerReturn = {
   onKeyPressHandler: T_ReactOnKeyPressEventHandler<HTMLInputElement>;
   onChangeHandler: T_ReactOnChangeEventHandler<HTMLInputElement>;
   onRadioChangeHandler: T_ReactOnChangeEventHandler<HTMLInputElement>;
-  handleCopyURLClick: T_ReactOnClickEventHandler<HTMLButtonElement>;
 };
 
 function useController(): T_UseControllerReturn {
@@ -159,11 +157,6 @@ function useController(): T_UseControllerReturn {
       setIsWebOptionSelected(event.currentTarget.value === "web");
     };
 
-  const handleCopyURLClick: T_UseControllerReturn["handleCopyURLClick"] =
-    function handleCopyURLClick(event) {
-      copyToClipboard(event);
-    };
-
   // utils
   function composeWhatsAppUrl(): string {
     const url = new URLSearchParams();
@@ -187,6 +180,5 @@ function useController(): T_UseControllerReturn {
     onKeyPressHandler,
     onChangeHandler,
     onRadioChangeHandler,
-    handleCopyURLClick,
   };
 }

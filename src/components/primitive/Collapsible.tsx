@@ -69,15 +69,15 @@ function useController({
   title = "",
   openedByDefault = false,
   className = "",
-  onShowContentHandler = () => undefined,
-  onHideContentHandler = () => undefined,
+  onShowContentHandler = (): void => undefined,
+  onHideContentHandler = (): void => undefined,
 }: T_CollapsibleProps): T_UseControllerReturn {
   // states & refs
   const [isOpened, setIsOpened] = React.useState(openedByDefault);
   const containerRef = React.useRef<HTMLDetailsElement>(null);
 
   // effects
-  React.useEffect((): void => {
+  React.useEffect(() => {
     if (isNotDefined(containerRef.current)) return;
 
     if (isOpened) {

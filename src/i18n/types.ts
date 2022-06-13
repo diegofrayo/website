@@ -1,17 +1,15 @@
-import type { T_UnknownObject } from "~/types";
+import type { T_ObjectWithPrimitives, T_UnknownObject } from "~/types";
 
-export type T_TranslationFunction = (key: string) => string;
+export type T_Locale = "en";
 
 export type T_PageContent = {
-  seo?: T_UnknownObject;
+  seo?: T_ObjectWithPrimitives;
   page?: T_UnknownObject & {
-    common?: T_UnknownObject;
+    common?: T_ObjectWithPrimitives;
     config?: T_UnknownObject;
   };
   layout?: {
-    header?: T_UnknownObject;
-    footer?: T_UnknownObject;
+    header?: T_ObjectWithPrimitives;
+    footer?: T_ObjectWithPrimitives;
   };
 };
-
-export type T_Locale = "en";

@@ -2,9 +2,7 @@ import * as React from "react";
 
 import Block from "~/components/primitive/Block";
 
-function Story(props) {
-  return <Block {...props} />;
-}
+const Story = (props) => <Block {...props} />;
 
 export default {
   title: "primitive/Block",

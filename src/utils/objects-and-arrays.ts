@@ -1,13 +1,22 @@
-import type { T_UnknownObject } from "~/types";
+import type { T_UnknownObject, T_Primitive } from "~/types";
+
 import { logger } from "./app";
-
+import { and, or } from "./fp";
 import { between } from "./numbers";
-import { isDate, isNumber, isObject, isString, validate } from "./validations";
+import {
+  isBoolean,
+  isDate,
+  isNull,
+  isNumber,
+  isObject,
+  isString,
+  isUndefined,
+} from "./validations";
 
-export function transformObjectKeysFromSnakeCaseToLowerCamelCase(
+export function transformObjectKeysFromSnakeCaseToLowerCamelCase<G_Result = T_UnknownObject>(
   object: T_UnknownObject,
-): T_UnknownObject {
-  return private_transformObjectKeysFromSnakeCaseToLowerCamelCase(object) as T_UnknownObject;
+): G_Result {
+  return transformObjectKeysFromSnakeCaseToLowerCamelCasePrivate(object) as G_Result;
 }
 
 export function mirror<G_Variant extends string>(
@@ -41,8 +50,8 @@ export function sortBy(criteria: T_Criteria[]): T_SorterFunction {
         const bParam = b[param];
 
         if (
-          validate<string | number | Date>(aParam, [isString, isNumber, isDate]) &&
-          validate<string | number | Date>(bParam, [isString, isNumber, isDate])
+          and<string | number | Date>(aParam, [isString, isNumber, isDate]) &&
+          and<string | number | Date>(bParam, [isString, isNumber, isDate])
         ) {
           if (aParam > bParam) {
             return { result: greater, finish: true };
@@ -84,16 +93,10 @@ function convertSnakeCaseToLowerCamelCase(str: string): string {
 }
 
 function isPrimitiveValue(value: unknown): value is T_Primitive {
-  return (
-    value === undefined ||
-    value === null ||
-    typeof value === "string" ||
-    typeof value === "boolean" ||
-    typeof value === "number"
-  );
+  return or(value, [isUndefined, isNumber, isNull, isString, isBoolean]);
 }
 
-function private_transformObjectKeysFromSnakeCaseToLowerCamelCase(
+function transformObjectKeysFromSnakeCaseToLowerCamelCasePrivate(
   object: T_UnknownObject | T_Primitive,
 ): T_UnknownObject | T_Primitive {
   if (isPrimitiveValue(object)) {
@@ -127,7 +130,3 @@ function private_transformObjectKeysFromSnakeCaseToLowerCamelCase(
     return result;
   }, {} as T_UnknownObject);
 }
-
-// --- Types ---
-
-type T_Primitive = string | number | boolean | undefined | null;

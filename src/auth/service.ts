@@ -1,8 +1,8 @@
 import http from "~/lib/http";
 import { isBrowser } from "~/utils/app";
 import { ENV_VARS } from "~/utils/constants";
-import type { T_UnknownObject } from "~/types";
 import { isNotEmptyString, isObject } from "~/utils/validations";
+import type { T_UnknownObject } from "~/types";
 
 class AuthService {
   private LOCAL_STORAGE_KEY = "DFR_AUTH";
@@ -56,7 +56,7 @@ export default new AuthService();
 
 // --- Types ---
 
-export type T_SignInError = {
+type T_SignInError = {
   data: {
     code: "AUTH_WRONG_PASSWORD";
   };

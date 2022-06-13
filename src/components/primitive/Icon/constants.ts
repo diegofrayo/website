@@ -46,471 +46,396 @@ import {
   SunIcon,
 } from "@heroicons/react/solid";
 
-import type { E_Icons, T_ReactFunctionComponent } from "~/types";
+import type { T_Icon, T_IconName } from "./types";
 
-export type T_Icon = {
-  isLibraryIcon: boolean;
-  icon: string | T_ReactFunctionComponent;
-  props: {
-    className?: string;
-    alt?: string;
-    color?: string;
-  };
-};
-
-export const ICONS: Record<E_Icons, T_Icon> = {
-  "500PX": {
-    isLibraryIcon: false,
-    icon: "/static/images/icons/500px.svg",
-    props: {
-      className: "",
-      alt: "500px",
-    },
-  },
+export const ICONS: Record<T_IconName, T_Icon> = {
   COUCHSURFING: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/couchsurfing.png",
-    props: {
+    defaultProps: {
       className: "",
       alt: "Couchsurfing",
     },
   },
   GITHUB: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/github.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "GitHub",
     },
   },
   GITHUB_LIGHT: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/github-light.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "GitHub light",
     },
   },
   GMAIL: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/gmail.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "Email",
     },
   },
   GUITAR: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/guitar.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "Guitar",
     },
   },
   FLOWER_1: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/flower-1.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "Flower 1",
     },
   },
   FLOWER_2: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/flower-2.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "Flower 1",
     },
   },
   FLOWER_3: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/flower-3.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "Flower 1",
     },
   },
   INSTAGRAM: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/instagram.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "Instagram",
     },
   },
   LINKEDIN: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/linkedin.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "Linkedin",
     },
   },
   NETFLIX: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/netflix.svg",
-    props: {
+    defaultProps: {
       className: "tw-rounded-full",
       alt: "Netflix",
     },
   },
   SPOTIFY: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/spotify.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "Spotify",
     },
   },
   SOCCER: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/soccer.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "Soccer",
     },
   },
   TWITTER: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/twitter.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "Twitter",
     },
   },
   WHATSAPP: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/whatsapp.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "WhatsApp",
     },
   },
   YOUTUBE: {
-    isLibraryIcon: false,
     icon: "/static/images/icons/youtube.svg",
-    props: {
+    defaultProps: {
       className: "",
       alt: "YouTube",
     },
   },
 
-  CHAT: {
-    isLibraryIcon: true,
-    icon: ChatIcon,
-    props: {
-      className: "",
-    },
-  },
-  KEY: {
-    isLibraryIcon: true,
-    icon: KeyIcon,
-    props: {
-      className: "",
-    },
-  },
-  COLOR_SWATCH: {
-    isLibraryIcon: true,
-    icon: ColorSwatchIcon,
-    props: {
-      className: "",
-    },
-  },
-  PRESENTATION_CHART_LINE: {
-    isLibraryIcon: true,
-    icon: PresentationChartLineIcon,
-    props: {
-      className: "",
-    },
-  },
-  USER_CIRCLE: {
-    isLibraryIcon: true,
-    icon: UserCircleIcon,
-    props: {
-      className: "",
-    },
-  },
-  CLIPBOARD: {
-    isLibraryIcon: true,
-    icon: ClipboardIcon,
-    props: {
-      className: "",
-      color: "tw-text-yellow-700",
-    },
-  },
-  FILM: {
-    isLibraryIcon: true,
-    icon: FilmIcon,
-    props: {
-      className: "",
-    },
-  },
-  MUSIC_NOTE: {
-    isLibraryIcon: true,
-    icon: MusicNoteIcon,
-    props: {
+  ARROW_UP: {
+    icon: ArrowUpIcon,
+    defaultProps: {
       className: "",
     },
   },
   BOOK_OPEN: {
-    isLibraryIcon: true,
     icon: BookOpenIcon,
-    props: {
-      className: "",
-    },
-  },
-  PHOTOGRAPH: {
-    isLibraryIcon: true,
-    icon: PhotographIcon,
-    props: {
-      className: "",
-    },
-  },
-  GLOBE_ALT: {
-    isLibraryIcon: true,
-    icon: GlobeAltIcon,
-    props: {
-      className: "",
-    },
-  },
-  ARROW_UP: {
-    isLibraryIcon: true,
-    icon: ArrowUpIcon,
-    props: {
+    defaultProps: {
       className: "",
     },
   },
   CALENDAR: {
-    isLibraryIcon: true,
     icon: CalendarIcon,
-    props: {
+    defaultProps: {
       className: "",
     },
   },
-  PHONE: {
-    isLibraryIcon: true,
-    icon: PhoneIcon,
-    props: {
-      className: "",
-    },
-  },
-  REFRESH: {
-    isLibraryIcon: true,
-    icon: RefreshIcon,
-    props: {
+  CHAT: {
+    icon: ChatIcon,
+    defaultProps: {
       className: "",
     },
   },
   CHECK: {
-    isLibraryIcon: true,
     icon: CheckIcon,
-    props: {
+    defaultProps: {
       className: "",
       color: "tw-text-green-500",
     },
   },
-  CHEVRON_LEFT: {
-    isLibraryIcon: true,
-    icon: ChevronLeftIcon,
-    props: {
-      className: "",
-      color: "",
-    },
-  },
-  CHEVRON_RIGHT: {
-    isLibraryIcon: true,
-    icon: ChevronRightIcon,
-    props: {
-      className: "",
-      color: "",
-    },
-  },
   CHEVRON_DOWN: {
-    isLibraryIcon: true,
     icon: ChevronDownIcon,
-    props: {
+    defaultProps: {
       className: "",
       color: "",
     },
   },
   CHEVRON_DOUBLE_DOWN: {
-    isLibraryIcon: true,
     icon: ChevronDoubleDownIcon,
-    props: {
+    defaultProps: {
       className: "",
       color: "",
     },
   },
-  SERVER: {
-    isLibraryIcon: true,
-    icon: ServerIcon,
-    props: {
+  CHEVRON_LEFT: {
+    icon: ChevronLeftIcon,
+    defaultProps: {
       className: "",
       color: "",
+    },
+  },
+  CHEVRON_RIGHT: {
+    icon: ChevronRightIcon,
+    defaultProps: {
+      className: "",
+      color: "",
+    },
+  },
+  CLIPBOARD: {
+    icon: ClipboardIcon,
+    defaultProps: {
+      className: "",
+      color: "tw-text-yellow-700",
     },
   },
   CLOCK: {
-    isLibraryIcon: true,
     icon: ClockIcon,
-    props: {
+    defaultProps: {
       className: "",
       color: "",
     },
   },
   COG: {
-    isLibraryIcon: true,
     icon: CogIcon,
-    props: {
+    defaultProps: {
       className: "",
       color: "",
     },
   },
+  COLOR_SWATCH: {
+    icon: ColorSwatchIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  FILM: {
+    icon: FilmIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  GLOBE_ALT: {
+    icon: GlobeAltIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  KEY: {
+    icon: KeyIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  MUSIC_NOTE: {
+    icon: MusicNoteIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  PHONE: {
+    icon: PhoneIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  PHOTOGRAPH: {
+    icon: PhotographIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  PRESENTATION_CHART_LINE: {
+    icon: PresentationChartLineIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  REFRESH: {
+    icon: RefreshIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  SERVER: {
+    icon: ServerIcon,
+    defaultProps: {
+      className: "",
+      color: "",
+    },
+  },
+  USER_CIRCLE: {
+    icon: UserCircleIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+
   DOTS_CIRCLE_HORIZONTAL: {
-    isLibraryIcon: true,
     icon: DotsCircleHorizontalIcon,
-    props: {
+    defaultProps: {
       className: "",
       color: "",
     },
   },
   DOTS_CIRCLE_HORIZONTAL_SOLID: {
-    isLibraryIcon: true,
     icon: DotsCircleHorizontalIconSolid,
-    props: {
+    defaultProps: {
       className: "",
       color: "",
     },
   },
   EDIT: {
-    isLibraryIcon: true,
     icon: PencilAltIcon,
-    props: {
+    defaultProps: {
       className: "",
     },
   },
   EXTERNAL_LINK: {
-    isLibraryIcon: true,
     icon: ExternalLinkIcon,
-    props: {
+    defaultProps: {
       className: "",
     },
   },
   HEART: {
-    isLibraryIcon: true,
     icon: HeartIcon,
-    props: {
+    defaultProps: {
       className: "",
       color: "tw-text-red-500",
     },
   },
   LINK: {
-    isLibraryIcon: true,
     icon: LinkIcon,
-    props: {
+    defaultProps: {
       className: "",
     },
   },
   MENU: {
-    isLibraryIcon: true,
     icon: MenuIcon,
-    props: {
+    defaultProps: {
       className: "",
     },
   },
   MINUS: {
-    isLibraryIcon: true,
     icon: MinusIcon,
-    props: {
+    defaultProps: {
       className: "",
       color: "tw-text-white dark:tw-text-black",
     },
   },
   PLAY: {
-    isLibraryIcon: true,
     icon: PlayIcon,
-    props: {
+    defaultProps: {
       className: "",
       color: "",
     },
   },
   PAUSE: {
-    isLibraryIcon: true,
     icon: PauseIcon,
-    props: {
+    defaultProps: {
       className: "",
       color: "",
     },
   },
   REPLY: {
-    isLibraryIcon: true,
     icon: ReplyIcon,
-    props: {
+    defaultProps: {
       className: "",
       color: "",
     },
   },
   STAR: {
-    isLibraryIcon: true,
     icon: StarIcon,
-    props: {
+    defaultProps: {
       className: "",
       color: "tw-text-yellow-500",
     },
   },
   SUN: {
-    isLibraryIcon: true,
     icon: SunIcon,
-    props: {
+    defaultProps: {
       color: "",
     },
   },
   CODE: {
-    isLibraryIcon: true,
     icon: CodeIcon,
-    props: {
+    defaultProps: {
       className: "",
     },
   },
+
   MOON: {
-    isLibraryIcon: true,
     icon: MoonIcon,
-    props: {
+    defaultProps: {
       color: "",
     },
   },
-  ZOOM_IN: {
-    isLibraryIcon: true,
-    icon: ZoomInIcon,
-    props: {
-      className: "",
-    },
-  },
-  ZOOM_OUT: {
-    isLibraryIcon: true,
-    icon: ZoomOutIcon,
-    props: {
-      className: "",
-    },
-  },
-  X: {
-    isLibraryIcon: true,
-    icon: XIcon,
-    props: {
-      className: "",
-    },
-  },
   VOLUME_OFF: {
-    isLibraryIcon: true,
     icon: VolumeOffIcon,
-    props: {
+    defaultProps: {
       className: "",
     },
   },
   VOLUME_UP: {
-    isLibraryIcon: true,
     icon: VolumeUpIcon,
-    props: {
+    defaultProps: {
+      className: "",
+    },
+  },
+  X: {
+    icon: XIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  ZOOM_IN: {
+    icon: ZoomInIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  ZOOM_OUT: {
+    icon: ZoomOutIcon,
+    defaultProps: {
       className: "",
     },
   },

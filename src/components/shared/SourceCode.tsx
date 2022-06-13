@@ -6,7 +6,7 @@ import classNames from "classnames";
 import { Block, Button, Code, Icon, InlineText, Link, Space } from "~/components/primitive";
 import { useTranslation } from "~/i18n";
 import twcss from "~/lib/twcss";
-import { copyToClipboard } from "~/utils/browser";
+import { handleCopyToClipboardClick } from "~/utils/browser";
 import { generateSlug } from "~/utils/strings";
 import { isNotEmptyString } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
@@ -57,33 +57,35 @@ function SourceCode({
         language={language}
         theme={dracula}
       >
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <Code
-            variant={Code.variant.MULTILINE}
-            className={classNames(
-              className,
-              "dark:tw-border-l dark:tw-border-r dark:tw-border-gray-700",
-            )}
-            style={style}
-          >
-            {tokens.map((line, i) => (
-              <Line
-                key={i}
-                {...getLineProps({ line, key: i })}
-              >
-                <LineNo>{i + 1}</LineNo>
-                <LineContent>
-                  {line.map((token, key) => (
-                    <InlineText
-                      key={key}
-                      {...getTokenProps({ token, key })}
-                    />
-                  ))}
-                </LineContent>
-              </Line>
-            ))}
-          </Code>
-        )}
+        {({ className, style, tokens, getLineProps, getTokenProps }): T_ReactElement => {
+          return (
+            <Code
+              variant={Code.variant.MULTILINE}
+              className={classNames(
+                className,
+                "dark:tw-border-l dark:tw-border-r dark:tw-border-gray-700",
+              )}
+              style={style}
+            >
+              {tokens.map((line, i) => (
+                <Line
+                  key={i}
+                  {...getLineProps({ line, key: i })}
+                >
+                  <LineNo>{i + 1}</LineNo>
+                  <LineContent>
+                    {line.map((token, key) => (
+                      <InlineText
+                        key={key}
+                        {...getTokenProps({ token, key })}
+                      />
+                    ))}
+                  </LineContent>
+                </Line>
+              ))}
+            </Code>
+          );
+        }}
       </Highlight>
 
       {displaySourceCodeDetails ? (
@@ -94,11 +96,11 @@ function SourceCode({
                 variant={Link.variant.SECONDARY}
                 href={sourceURL}
                 className="tw-text-right"
-                isExternalUrl
+                isExternalLink
               >
                 <Icon
                   icon={Icon.icon.GITHUB}
-                  withDarkModeBackground
+                  withBackgroundWhenDarkMode
                 />
                 <InlineText className="tw-ml-1 tw-lowercase">
                   {t("page:see_source_code")}
@@ -115,7 +117,7 @@ function SourceCode({
           >
             <Icon
               icon={Icon.icon.CLIPBOARD}
-              withDarkModeBackground
+              withBackgroundWhenDarkMode
             />
             <InlineText className="tw-ml-1 tw-lowercase">{t("page:copy_to_clipboard")}</InlineText>
           </Button>

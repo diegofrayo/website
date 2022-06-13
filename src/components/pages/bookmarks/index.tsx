@@ -40,7 +40,7 @@ function Bookmarks({ bookmarks }: T_BookmarksProps): T_ReactElement {
                   <Link
                     variant={Link.variant.PRIMARY}
                     href={bookmark.url}
-                    isExternalUrl
+                    isExternalLink
                   >
                     {bookmark.title}
                   </Link>

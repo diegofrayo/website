@@ -1,4 +1,4 @@
-export type T_TimelineFetchRawResponse = {
+export type T_TimelineFetchDTO = {
   categories: Array<{
     id: string;
     value: string;

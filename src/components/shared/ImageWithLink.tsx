@@ -11,7 +11,7 @@ function ImageWithLink({ src, className, alt, ...rest }: T_ImageWithLink): T_Rea
       variant={Link.variant.SIMPLE}
       href={src}
       className="tw-block"
-      isExternalUrl
+      isExternalLink
     >
       <Image
         src={src}

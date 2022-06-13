@@ -2,8 +2,8 @@ import classNames from "classnames";
 import * as React from "react";
 
 import { Block, Image, InlineText, Text } from "~/components/primitive";
-import type { T_ReactElement } from "~/types";
 import { isNotEmptyString } from "~/utils/validations";
+import type { T_ReactElement } from "~/types";
 
 type T_AboutMeBlockProps = {
   image?: string;

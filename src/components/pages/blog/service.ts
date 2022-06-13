@@ -56,7 +56,7 @@ function BlogPostVO(
   categories: T_BlogPostCategory[],
   locale?: T_Locale,
 ): T_BlogPost {
-  let blogPost = transformObjectKeysFromSnakeCaseToLowerCamelCase(blogPostData) as T_BlogPost;
+  let blogPost = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_BlogPost>(blogPostData);
 
   blogPost = {
     ...blogPost,

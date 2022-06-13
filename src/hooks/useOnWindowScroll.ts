@@ -11,7 +11,7 @@ function useOnWindowScroll(callback: T_Callback, when = true): void {
     savedHandler.current = callback;
   });
 
-  React.useEffect((): (() => void) => {
+  React.useEffect(() => {
     if (!when) {
       return () => undefined;
     }

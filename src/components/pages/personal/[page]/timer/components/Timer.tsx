@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Block, Button, Icon, InlineText, Space, Text } from "~/components/primitive";
-import type { T_ReactElement } from "~/types";
+import type { T_ReactElement, T_SetTimeout } from "~/types";
 import { createArray } from "~/utils/misc";
 
 import { ROUTINE_ITEMS_STATUS, TIMER_STATUS } from "../constants";
@@ -35,7 +35,7 @@ function Timer({
   } = React.useContext(TimerPageContext);
 
   // states & refs
-  const [timerInterval, setTimerInterval] = React.useState<NodeJS.Timeout | null>(null);
+  const [timerInterval, setTimerInterval] = React.useState<T_SetTimeout | null>(null);
   const [time, setTime] = React.useState(0);
   const [sets, setSets] = React.useState<("START" | "REST" | "HIGH")[]>([]);
   const [currentSet, setCurrentSet] = React.useState({ index: 0, isRest: false, isStart: true });

@@ -27,7 +27,7 @@ export const MDXComponents = {
       <Link
         variant={Link.variant.PRIMARY}
         {...rest}
-        isExternalUrl
+        isExternalLink
       >
         {children}
       </Link>

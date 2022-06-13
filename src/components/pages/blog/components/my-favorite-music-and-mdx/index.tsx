@@ -24,13 +24,13 @@ export function MFMAM_GitHubRepo({ name, url, description }: T_GitHubRepoProps):
         variant={Link.variant.SIMPLE}
         className="tw-relative tw-flex tw-items-center tw-rounded-md tw-border tw-p-4 tw-pr-8 dfr-bg-color-primary dfr-border-color-primary dark:dfr-bg-color-primary dark:dfr-border-color-primary sm:tw-inline-flex"
         href={url}
-        isExternalUrl
+        isExternalLink
       >
         <Icon
           icon={Icon.icon.GITHUB}
           wrapperClassName="tw-mr-3"
           size={32}
-          withDarkModeBackground
+          withBackgroundWhenDarkMode
         />
         <Block className="tw-flex-1 tw-text-left">
           <TitlePrimitive

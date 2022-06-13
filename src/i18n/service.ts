@@ -1,15 +1,12 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-import { T_Locale } from "./types";
+import type { T_Locale } from "~/types";
 
 class I18nService {
   private LOCALES: T_Locale[] = ["en"];
-
   private DEFAULT_LOCALE: T_Locale = this.LOCALES[0];
-
   private CURRENT_LOCALE;
-
   private INSTANCE;
 
   constructor() {
@@ -44,15 +41,11 @@ class I18nService {
     return this.DEFAULT_LOCALE;
   }
 
-  getContentLocale({
-    locales,
-    currentLocale,
-    defaultLocale,
-  }: {
-    locales: T_Locale[];
-    currentLocale: T_Locale;
-    defaultLocale: T_Locale;
-  }): T_Locale {
+  getContentLocale(
+    locales: T_Locale[],
+    currentLocale: T_Locale,
+    defaultLocale: T_Locale,
+  ): T_Locale {
     return locales.indexOf(currentLocale) !== -1 ? currentLocale : defaultLocale;
   }
 }

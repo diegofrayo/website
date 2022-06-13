@@ -31,7 +31,7 @@ export default new FilmsService();
 
 // TODO: Validate scheme using a library and infer its types
 function FilmVO(data: T_UnknownObject): T_Film {
-  const film = transformObjectKeysFromSnakeCaseToLowerCamelCase(data) as T_Film;
+  const film = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Film>(data);
 
   return film;
 }

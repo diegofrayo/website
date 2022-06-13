@@ -102,7 +102,9 @@ function SongPage(props: T_PageProps): T_ReactElement {
             />
             <Button
               variant={Button.variant.SIMPLE}
-              onClick={(e) => copyToClipboard(e, window.location.href)}
+              onClick={(): void => {
+                copyToClipboard(window.location.href);
+              }}
             >
               <Icon
                 icon={Icon.icon.LINK}

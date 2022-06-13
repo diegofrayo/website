@@ -4,11 +4,12 @@ import classNames from "classnames";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
 import Text from "./Text";
+import { isNotEmptyString } from "~/utils/validations";
 
 type T_InputProps = T_HTMLElementAttributes["input"] & {
-  containerProps?: T_HTMLElementAttributes["label"];
-  label?: string;
   id: string;
+  label?: string;
+  containerProps?: T_HTMLElementAttributes["label"];
 };
 
 const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
@@ -22,9 +23,12 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
         "tw-block tw-border-b-4 dfr-border-color-primary dark:dfr-border-color-primary",
         containerProps.className,
       )}
-      {...(label ? { ...containerProps, htmlFor: id } : {})}
+      htmlFor={id}
+      {...containerProps}
     >
-      {label && <Text className="tw-mb-1 tw-cursor-pointer tw-font-bold">{label}</Text>}
+      {isNotEmptyString(label) ? (
+        <Text className="tw-mb-1 tw-cursor-pointer tw-font-bold">{label}</Text>
+      ) : null}
       <input
         ref={ref}
         id={id}

@@ -32,7 +32,7 @@ function Sources({ sources }: { sources: { title: string; url: string }[] }): T_
                 variant={Link.variant.PRIMARY}
                 href={source.url}
                 className="tw-block"
-                isExternalUrl
+                isExternalLink
               >
                 {source.title}
               </Link>
@@ -40,7 +40,7 @@ function Sources({ sources }: { sources: { title: string; url: string }[] }): T_
                 variant={Link.variant.SECONDARY}
                 href={origin}
                 className="tw-text-sm tw-italic"
-                isExternalUrl
+                isExternalLink
               >
                 {host}
               </Link>

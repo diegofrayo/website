@@ -4,12 +4,13 @@ import { useRouter } from "next/router";
 import { Block, Button, Icon, Link, Title, Text, Space } from "~/components/primitive";
 import { useOnWindowStopScroll } from "~/hooks";
 import { useStoreSelector } from "~/state";
-import { selectWebsiteMetadata } from "~/state/modules/metadata";
+import { selectWebsiteMetadata, T_WebsiteMetadata } from "~/state/modules/metadata";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
 import { isNotEmptyString } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import Header from "./Header";
+import { T_IconName } from "../primitive/Icon";
 
 type T_MainLayoutProps = {
   title: string;
@@ -134,7 +135,7 @@ function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement
   );
 }
 
-type T_FooterIconProps = { icon: E_Icons; url: string };
+type T_FooterIconProps = { icon: T_IconName; url: string };
 
 function FooterIcon({ icon, url }: T_FooterIconProps): T_ReactElement {
   return (
@@ -142,7 +143,7 @@ function FooterIcon({ icon, url }: T_FooterIconProps): T_ReactElement {
       variant={Link.variant.SIMPLE}
       href={url}
       className="tw-mr-2 tw-inline-block last:tw-mr-0 sm:tw-mr-4"
-      isExternalUrl
+      isExternalLink
     >
       <Icon
         icon={icon}

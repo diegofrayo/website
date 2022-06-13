@@ -1,14 +1,15 @@
 import * as React from "react";
 import classNames from "classnames";
 
+import { mirror } from "~/utils/objects-and-arrays";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
-import { mirror } from "~/utils/misc";
 
-type T_Variants = "UNSTYLED" | "DEFAULT";
-const VARIANTS = mirror(["UNSTYLED", "DEFAULT"]) as Record<T_Variants, T_Variants>;
+const VARIANTS_OPTIONS = ["UNSTYLED", "DEFAULT"] as const;
+const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
+type T_Variant = typeof VARIANTS_OPTIONS[number];
 
 type T_ListProps = T_HTMLElementAttributes["ul"] & {
-  variant?: T_Variants;
+  variant?: T_Variant;
 };
 
 function List({
@@ -39,7 +40,7 @@ function List({
           }
 
           .dfr-List--default :global(li)::before {
-            color: black;
+            @apply dfr-text-color-dark-strong;
             content: "❯";
             font-weight: bold;
             font-size: 14px;
@@ -49,7 +50,7 @@ function List({
           }
 
           :global(.tw-dark) .dfr-List--default :global(li)::before {
-            color: white;
+            @apply dfr-text-color-light-strong;
           }
         `}
       </style>

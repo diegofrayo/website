@@ -36,7 +36,7 @@ export function isNotEmptyString(input: unknown): input is string {
   return !isEmptyString(input);
 }
 
-export function isEmptyStringOrNotDefined(input: unknown): input is string {
+export function isEmptyOrNotDefinedString(input: unknown): input is string {
   return isEmptyString(input) || isNotDefined(input);
 }
 
@@ -80,27 +80,3 @@ export function exists<G_InputType = unknown>(input: unknown): input is G_InputT
 export function notExists(input: unknown): input is undefined {
   return isUndefined(input);
 }
-
-// validate a value using multiple functions
-export function validate<G_Types>(
-  input: unknown,
-  validators: ((input: unknown) => boolean)[],
-): input is G_Types {
-  return validators.reduce((result: boolean, fn) => {
-    return result && fn(input);
-  }, true);
-}
-
-// TODO: Review predicates with return different to booleans
-// type T_Args = ((input: unknown) => boolean)[];
-// type T_ValidateReturn = (...args: T_Args) => boolean;
-
-// export function validate<G_Types>(input: unknown): input is G_Types {
-//   const validateReturn = function validateReturn(...args: T_Args) {
-//     return args.reduce((result: boolean, fn) => {
-//       return result && fn(input);
-//     }, true);
-//   };
-
-//   return validateReturn;
-// }
