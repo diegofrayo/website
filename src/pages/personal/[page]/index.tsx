@@ -1,6 +1,6 @@
 import { GetStaticPaths } from "next";
 
-import PersonalPage, { T_PageProps } from "~/components/pages/personal/[page]";
+import PersonalPage from "~/components/pages/personal/[page]";
 import { getPageContentStaticProps } from "~/i18n";
 import { PERSONAL_PAGES } from "~/utils/constants";
 import { isNotEmptyString } from "~/utils/validations";
@@ -8,6 +8,8 @@ import { isNotEmptyString } from "~/utils/validations";
 export default PersonalPage;
 
 // --- Next.js functions ---
+
+type T_PageProps = { page: string };
 
 export const getStaticPaths: GetStaticPaths<T_PageProps> = async function getStaticPaths() {
   return {

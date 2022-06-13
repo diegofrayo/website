@@ -7,7 +7,7 @@ import { exists, isNotTrue } from "~/utils/validations";
 function useClickOutside(ref: T_ReactRefObject<HTMLElement>, callback: () => void): void {
   // effects
   React.useEffect(() => {
-    const handleClickOutside: EventListener = function handleClickOutside(event: Event): void {
+    const handleClickOutside: EventListener = function handleClickOutside(event): void {
       if (
         isDOMNode(event.target) &&
         exists<HTMLElement>(ref.current) &&

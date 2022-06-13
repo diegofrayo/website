@@ -26,7 +26,7 @@ function Stats({
   // context
   const { secondsToTime, timeToSeconds } = React.useContext(TimerPageContext);
 
-  // states & refs
+  // states
   const [elapsedTime, setElapsedTime] = React.useState("");
 
   // vars

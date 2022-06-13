@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { mirror } from "~/utils/objects-and-arrays";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
-import { isNumber, isString } from "~/utils/validations";
+import { isNotEmptyString, isNumber } from "~/utils/validations";
 
 const VARIANTS_OPTIONS = ["DEFAULT", "DASHED"] as const;
 const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
@@ -55,8 +55,9 @@ function useController({
     return classNames(
       "tw-flex-shrink-0",
       isVerticalOrientation ? "tw-h-full" : "tw-h-px",
-      isString(responsive) ||
-        classNames(composeSizeClassNames(), isVerticalOrientation && "tw-inline-block"),
+      isNotEmptyString(responsive)
+        ? responsive
+        : classNames(composeSizeClassNames(), isVerticalOrientation && "tw-inline-block"),
       variant === VARIANTS.DEFAULT && "tw-border-0",
       variant === VARIANTS.DASHED &&
         "dfr-border-color-primary dark:dfr-border-color-primary tw-border-dashed",

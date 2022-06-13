@@ -3,7 +3,14 @@ import classNames from "classnames";
 
 import { logger } from "~/utils/app";
 import { mirror } from "~/utils/objects-and-arrays";
-import { isNotDefined, isNotEmptyString, isNumber, isString, notExists } from "~/utils/validations";
+import {
+  isFilledString,
+  isNotDefined,
+  isNotEmptyString,
+  isNumber,
+  isString,
+  notExists,
+} from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import { ICONS } from "./constants";
@@ -106,7 +113,7 @@ function useController({
 
   // utils
   function getColorStyles(): string {
-    if (isNotEmptyString(color)) {
+    if (isFilledString(color)) {
       return color;
     }
 

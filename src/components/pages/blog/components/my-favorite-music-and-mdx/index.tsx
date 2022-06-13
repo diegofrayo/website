@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import { Block, Icon, Link, Text, Title as TitlePrimitive } from "~/components/primitive";
-import type { T_ReactElement } from "~/types";
-import { isDevelopmentEnvironment } from "~/utils/misc";
+import type { T_ReactElement, T_ReactElementNullable } from "~/types";
+import { isDevelopmentEnvironment } from "~/utils/app";
 
 export function MFMAM_HelloWorldMDX({ text }: { text: string }): T_ReactElement {
   return <Text className="tw-block tw-bg-red-200 tw-p-2 tw-text-red-700">{text}</Text>;
@@ -53,8 +53,10 @@ export function MFMAM_GitHubRepo({ name, url, description }: T_GitHubRepoProps):
   );
 }
 
-export function MFMAM_SpotifyPlaylist(): T_ReactElement {
-  if (isDevelopmentEnvironment()) return null;
+export function MFMAM_SpotifyPlaylist(): T_ReactElementNullable {
+  if (isDevelopmentEnvironment()) {
+    return null;
+  }
 
   return (
     <Block
@@ -68,6 +70,7 @@ export function MFMAM_SpotifyPlaylist(): T_ReactElement {
         allow="encrypted-media"
         frameBorder="0"
         loading="lazy"
+        title="Spotify playlist"
       />
     </Block>
   );

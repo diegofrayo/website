@@ -1,7 +1,7 @@
 import type { T_UnknownObject, T_Primitive } from "~/types";
 
 import { logger } from "./app";
-import { and, or } from "./fp";
+import { or } from "./fp";
 import { between } from "./numbers";
 import {
   isBoolean,
@@ -50,8 +50,8 @@ export function sortBy(criteria: T_Criteria[]): T_SorterFunction {
         const bParam = b[param];
 
         if (
-          and<string | number | Date>(aParam, [isString, isNumber, isDate]) &&
-          and<string | number | Date>(bParam, [isString, isNumber, isDate])
+          or<string | number | Date>(aParam, [isString, isNumber, isDate]) &&
+          or<string | number | Date>(bParam, [isString, isNumber, isDate])
         ) {
           if (aParam > bParam) {
             return { result: greater, finish: true };

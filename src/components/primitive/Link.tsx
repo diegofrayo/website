@@ -6,7 +6,6 @@ import twcss from "~/lib/twcss";
 import { T_Locale } from "~/i18n";
 import { logger } from "~/utils/app";
 import { mirror } from "~/utils/objects-and-arrays";
-import { isEmptyOrNotDefinedString } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElementNullable } from "~/types";
 
 const VARIANTS_OPTIONS = ["UNSTYLED", "SIMPLE", "PRIMARY", "SECONDARY"] as const;
@@ -33,7 +32,7 @@ function Link(props: T_LinkProps): T_ReactElementNullable {
     ...rest
   } = useController(props);
 
-  if (!isEmptyOrNotDefinedString(href) || !children) {
+  if (!href || !children) {
     logger("WARN", "Link component: href or children are falsy", { href, children });
     return null;
   }

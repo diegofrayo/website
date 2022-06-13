@@ -6,7 +6,7 @@ import { Input } from "~/components/primitive";
 import { AuthService, withAuth } from "~/auth";
 import { getPageContentStaticProps } from "~/i18n";
 import { redirect, ROUTES } from "~/utils/routing";
-import { getErrorMessage } from "~/utils/app";
+import { getErrorMessage, reportError } from "~/utils/app";
 import { isEmptyString } from "~/utils/validations";
 import type {
   T_ReactElement,

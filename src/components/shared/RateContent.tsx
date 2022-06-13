@@ -4,10 +4,11 @@ import { toast } from "react-toastify";
 
 import { Button, Block, Text, Space } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import { useTranslation } from "~/i18n";
+import { T_TranslationFunction, useTranslation } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
-import { isNotEmptyString } from "~/utils/misc";
-import type { T_ReactElement, T_TranslationFunction } from "~/types";
+import { reportError } from "~/utils/app";
+import { exists, isNotEmptyString } from "~/utils/validations";
+import type { T_Object, T_ReactElement } from "~/types";
 
 import Emoji from "./Emoji";
 
@@ -124,7 +125,7 @@ function useController(): T_UseController {
     }
   }
 
-  function writeDataOnLocalStorage(data: T_UnknownObject<string>): void {
+  function writeDataOnLocalStorage(data: T_Object<string>): void {
     window.localStorage.setItem(
       LOCAL_STORAGE_KEY,
       JSON.stringify({
@@ -134,11 +135,19 @@ function useController(): T_UseController {
     );
   }
 
-  function readLocalStorageData(): T_UnknownObject<string> {
+  function readLocalStorageData(): T_Object<string> {
     try {
-      return JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) as string);
+      const savedData = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+
+      if (exists<string>(savedData)) {
+        const result = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) || "");
+
+        return result;
+      }
+
+      return {};
     } catch (error) {
-      console.error(error);
+      reportError(error);
       return {};
     }
   }

@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { Icon, Input, Link, Block, Button } from "~/components/primitive";
+import { Icon, Input, Link, Block, Button, InlineText } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { focusElement, handleCopyToClipboardClick, isMobile } from "~/utils/browser";
 import { generateSlug, replaceAll } from "~/utils/strings";
@@ -62,7 +62,6 @@ function WhatsApp(): T_ReactElement {
       <Block className="tw-mt-1 tw-flex tw-flex-row-reverse tw-justify-between tw-pr-14">
         <Block>
           <label htmlFor="radio-app">
-            app
             <input
               type="radio"
               className="tw-mr-1"
@@ -72,11 +71,11 @@ function WhatsApp(): T_ReactElement {
               checked={!isWebOptionSelected}
               onChange={onRadioChangeHandler}
             />
+            <InlineText>app</InlineText>
           </label>
         </Block>
         <Block>
           <label htmlFor="radio-web">
-            web
             <input
               type="radio"
               className="tw-mr-1"
@@ -86,6 +85,7 @@ function WhatsApp(): T_ReactElement {
               checked={isWebOptionSelected}
               onChange={onRadioChangeHandler}
             />
+            <InlineText>web</InlineText>
           </label>
         </Block>
       </Block>

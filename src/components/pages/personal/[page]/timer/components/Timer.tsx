@@ -2,12 +2,12 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Block, Button, Icon, InlineText, Space, Text } from "~/components/primitive";
-import type { T_ReactElement, T_SetTimeout } from "~/types";
-import { createArray } from "~/utils/misc";
+import type { T_ReactElement } from "~/types";
 
 import { ROUTINE_ITEMS_STATUS, TIMER_STATUS } from "../constants";
 import { TimerPageContext } from "../context";
 import type { T_RoutineItem } from "../types";
+import { createArray } from "~/utils/objects-and-arrays";
 
 function Timer({
   routineItem,
@@ -20,11 +20,11 @@ function Timer({
 }): T_ReactElement {
   // context
   const {
-    // states & refs
+    // states
     currentRoutine,
     timerStatus,
 
-    // states & refs setters
+    // states setters
     setTimerStatus,
 
     // utils
@@ -34,8 +34,8 @@ function Timer({
     updateRoutineItem,
   } = React.useContext(TimerPageContext);
 
-  // states & refs
-  const [timerInterval, setTimerInterval] = React.useState<T_SetTimeout | null>(null);
+  // states
+  const [timerInterval, setTimerInterval] = React.useState<NodeJS.Timeout | null>(null);
   const [time, setTime] = React.useState(0);
   const [sets, setSets] = React.useState<("START" | "REST" | "HIGH")[]>([]);
   const [currentSet, setCurrentSet] = React.useState({ index: 0, isRest: false, isStart: true });
@@ -43,7 +43,7 @@ function Timer({
 
   // utils
   const playSound = React.useCallback(
-    (mode: "ROUTINE_ITEM_COMPLETED" | "SET_COMPLETED" | "COUNTDOWN") => {
+    function playSound(mode: "ROUTINE_ITEM_COMPLETED" | "SET_COMPLETED" | "COUNTDOWN") {
       try {
         if (isSoundsMuted) return;
 
@@ -67,19 +67,22 @@ function Timer({
     [isSoundsMuted],
   );
 
-  const startTimer = React.useCallback(() => {
-    setTimerInterval(
-      setInterval(() => {
-        setTime((currentValue) => currentValue - 1);
-        setTimerStatus(TIMER_STATUS.RUNNING);
+  const startTimer = React.useCallback(
+    function startTimer() {
+      setTimerInterval(
+        setInterval(() => {
+          setTime((currentValue) => currentValue - 1);
+          setTimerStatus(TIMER_STATUS.RUNNING);
 
-        console.log("Timer running");
-      }, 1000),
-    );
-  }, [setTimerStatus]);
+          console.log("Timer running");
+        }, 1000),
+      );
+    },
+    [setTimerStatus],
+  );
 
   const stopTimer = React.useCallback(
-    (timerInterval) => {
+    function stopTimer(timerInterval) {
       clearInterval(timerInterval);
       setTimerInterval(null);
       setTimerStatus(TIMER_STATUS.PAUSED);
@@ -90,7 +93,7 @@ function Timer({
   );
 
   const updateTime = React.useCallback(
-    (set, routineItem) => {
+    function updateTime(set, routineItem) {
       setTime(
         routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED
           ? 0
@@ -109,75 +112,81 @@ function Timer({
   );
 
   // effects
-  React.useEffect(() => {
-    const numberOfSets = Array.isArray(routineItem.sets)
-      ? routineItem.sets.length
-      : routineItem.sets;
+  React.useEffect(
+    function getTimerReady() {
+      const numberOfSets = Array.isArray(routineItem.sets)
+        ? routineItem.sets.length
+        : routineItem.sets;
 
-    const set = {
-      index: routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED ? numberOfSets * 2 - 2 : 0,
-      isStart: routineItem.status !== ROUTINE_ITEMS_STATUS.COMPLETED,
-      isRest: false,
-    };
-
-    updateTime(set, routineItem);
-    setSets(
-      createArray(numberOfSets * 2, 0).map((index) => {
-        if (index === 0) return "START";
-        return index % 2 === 0 ? "REST" : "HIGH";
-      }),
-    );
-    setCurrentSet(set);
-    setTimerStatus(TIMER_STATUS.NOT_STARTED);
-  }, [routineItem, timeToSeconds, setTimerStatus, updateTime]);
-
-  React.useEffect(() => {
-    if (!timerInterval) return;
-
-    if (time === 0) {
-      stopTimer(timerInterval);
-
-      const nextSet = {
-        index: currentSet.index + 1,
-        isStart: false,
-        isRest: sets[currentSet.index + 1] === "REST",
+      const set = {
+        index: routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED ? numberOfSets * 2 - 2 : 0,
+        isStart: routineItem.status !== ROUTINE_ITEMS_STATUS.COMPLETED,
+        isRest: false,
       };
-      const isLastSet = nextSet.index === sets.length;
 
-      if (isLastSet) {
-        playSound("ROUTINE_ITEM_COMPLETED");
-        markRoutineItemAsCompleted(currentRoutine, routineItem.id, routineItem.status);
-      } else {
-        playSound("SET_COMPLETED");
-        startTimer();
-        updateTime(nextSet, routineItem);
-        setCurrentSet(nextSet);
+      updateTime(set, routineItem);
+      setSets(
+        createArray(numberOfSets * 2, 0).map((index) => {
+          if (index === 0) return "START";
+          return index % 2 === 0 ? "REST" : "HIGH";
+        }),
+      );
+      setCurrentSet(set);
+      setTimerStatus(TIMER_STATUS.NOT_STARTED);
+    },
+    [routineItem, timeToSeconds, setTimerStatus, updateTime],
+  );
+
+  React.useEffect(
+    function onTimeChange() {
+      if (!timerInterval) return;
+
+      if (time === 0) {
+        stopTimer(timerInterval);
+
+        const nextSet = {
+          index: currentSet.index + 1,
+          isStart: false,
+          isRest: sets[currentSet.index + 1] === "REST",
+        };
+        const isLastSet = nextSet.index === sets.length;
+
+        if (isLastSet) {
+          playSound("ROUTINE_ITEM_COMPLETED");
+          markRoutineItemAsCompleted(currentRoutine, routineItem.id, routineItem.status);
+        } else {
+          playSound("SET_COMPLETED");
+          startTimer();
+          updateTime(nextSet, routineItem);
+          setCurrentSet(nextSet);
+        }
+      } else if (
+        !currentSet.isStart &&
+        timeToSeconds(currentSet.isRest ? routineItem.restTime : routineItem.highTime) >= 10 &&
+        time === 4
+      ) {
+        playSound("COUNTDOWN");
       }
-    } else if (
-      !currentSet.isStart &&
-      timeToSeconds(currentSet.isRest ? routineItem.restTime : routineItem.highTime) >= 10 &&
-      time === 4
-    ) {
-      playSound("COUNTDOWN");
-    }
-  }, [
-    time,
-    sets,
-    currentSet,
-    timerInterval,
-    startTimer,
-    stopTimer,
-    playSound,
-    updateTime,
+    },
+    [
+      time,
+      sets,
+      currentSet,
+      timerInterval,
+      startTimer,
+      stopTimer,
+      playSound,
+      updateTime,
 
-    routineItem,
-    routineItemIndex,
+      routineItem,
+      routineItemIndex,
 
-    currentRoutine,
-    setTimerStatus,
-    timeToSeconds,
-    markRoutineItemAsCompleted,
-  ]);
+      currentRoutine,
+      setTimerStatus,
+      timeToSeconds,
+      markRoutineItemAsCompleted,
+    ],
+  );
 
   // handlers
   function handleStartRoutineItemClick() {
@@ -282,14 +291,16 @@ function Timer({
       <Text className="tw-text-7xl">
         {secondsToTime(time)
           .split("")
-          .map((char, index) => (
-            <InlineText
-              key={`char-${index}`}
-              className={classNames("tw-inline-block", char !== ":" && "tw-w-12")}
-            >
-              {char}
-            </InlineText>
-          ))}
+          .map((char, index) => {
+            return (
+              <InlineText
+                key={`char-${index}`}
+                className={classNames("tw-inline-block", char !== ":" && "tw-w-12")}
+              >
+                {char}
+              </InlineText>
+            );
+          })}
       </Text>
       <Space size={2} />
 

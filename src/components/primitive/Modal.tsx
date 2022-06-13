@@ -1,10 +1,8 @@
 import * as React from "react";
 
 import { useToggleBodyScroll } from "~/hooks";
-import type { T_ReactElement, T_ReactElementNullable, T_ReactOnClickEventObject } from "~/types";
 import { exists } from "~/utils/validations";
-
-import Button from "./Button";
+import type { T_ReactElement, T_ReactElementNullable, T_ReactOnClickEventObject } from "~/types";
 
 type T_ModalProps = {
   children: T_ReactElement;
@@ -41,8 +39,9 @@ function Backdrop({ children, onCloseHandler }: T_BackdropProps): T_ReactElement
   }
 
   return (
-    <Button
-      className="root tw-p-3 sm:tw-p-6"
+    <button
+      type="button"
+      className="root tw-block tw-h-full tw-w-full tw-cursor-default tw-p-3 sm:tw-p-6"
       ref={backdropRef}
       onClick={handleBackdropClick}
     >
@@ -65,6 +64,6 @@ function Backdrop({ children, onCloseHandler }: T_BackdropProps): T_ReactElement
           }
         `}
       </style>
-    </Button>
+    </button>
   );
 }

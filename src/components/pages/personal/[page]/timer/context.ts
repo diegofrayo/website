@@ -5,11 +5,11 @@ import { T_Routine, T_RoutineItem, T_TimerStatus } from "./types";
 export const TimerPageContext = React.createContext({} as T_TimerPageContext);
 
 type T_TimerPageContext = {
-  // states & refs
+  // states
   currentRoutine: T_Routine;
   timerStatus: T_TimerStatus;
 
-  // states & refs setters
+  // states setters
   setTimerStatus: React.Dispatch<React.SetStateAction<T_TimerStatus>>;
 
   // utils

@@ -9,7 +9,7 @@ import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { useStoreSelector, useStoreActionsDispatcher } from "~/state";
-import { selectWebsiteMetadata } from "~/state/modules/metadata";
+import { selectWebsiteMetadata, T_WebsiteMetadata } from "~/state/modules/metadata";
 import { setLocales } from "~/state/modules/page-config";
 import { copyToClipboard } from "~/utils/browser";
 import { getDifferenceBetweenDates } from "~/utils/dates";

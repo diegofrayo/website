@@ -2,7 +2,15 @@ module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
   plugins: ["prettier", "no-loops", "react-hooks", "@typescript-eslint"],
-  ignorePatterns: ["public/**/*"],
+  ignorePatterns: [
+    "public/**/*",
+    "src/components/pages/personal/*/timer/**/*",
+    "src/components/pages/music/components/TextFormatter.tsx",
+    "src/i18n",
+    "src/lib/**/*",
+    "src/state/**/*",
+    "src/stories",
+  ],
   extends: [
     "airbnb",
     "airbnb-typescript",
@@ -40,12 +48,13 @@ module.exports = {
     "react/jsx-props-no-spreading": "off", // TODO
     "react/require-default-props": "off", // TODO
     "no-nested-ternary": "off",
+    "react/jsx-fragments": "off",
     "react/jsx-no-bind": "off",
     "react/prop-types": "off",
-    "react/jsx-fragments": "off",
 
     "class-methods-use-this": "warn", // TODO
     "@typescript-eslint/ban-ts-comment": "warn",
+    "jsx-a11y/media-has-caption": "warn",
     "no-debugger": "warn",
     "react/no-array-index-key": "warn",
 

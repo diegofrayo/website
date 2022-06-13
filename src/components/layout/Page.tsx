@@ -24,7 +24,7 @@ import type {
   T_ReactElementNullable,
   T_UnknownObject,
 } from "~/types";
-import { isString } from "~/utils/validations";
+import { isNotEmptyString } from "~/utils/validations";
 
 type T_PageProps = {
   children: T_ReactChildren;
@@ -45,7 +45,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
   const { locales } = useStoreSelector<T_PageConfig>(selectPageConfig);
 
   const metadata = {
-    title: isString(config.title)
+    title: isNotEmptyString(config.title)
       ? `${config.title}${config.replaceTitle ? "" : ` - ${SEO_METADATA.title}`}`
       : SEO_METADATA.title,
     url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
@@ -209,7 +209,6 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 
       <UserLoggedInFlag />
       <AnalyticsDisabledFlag />
-      {/* {isDevelopmentEnvironment() && <WindowSize />} */}
     </React.Fragment>
   );
 }

@@ -16,6 +16,10 @@ import type {
 } from "./types";
 
 class TimelineService {
+  constructor() {
+    this.fetchData = this.fetchData.bind(this);
+  }
+
   async fetchData(): Promise<T_TimelineFetchResponse> {
     const { data } = await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
       path: "/assets",

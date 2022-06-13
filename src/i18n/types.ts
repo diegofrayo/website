@@ -1,3 +1,5 @@
+import type { TFunction } from "react-i18next";
+
 import type { T_ObjectWithPrimitives, T_UnknownObject } from "~/types";
 
 export type T_Locale = "en";
@@ -13,3 +15,5 @@ export type T_PageContent = {
     footer?: T_ObjectWithPrimitives;
   };
 };
+
+export type T_TranslationFunction = (key: string, params?: T_UnknownObject) => string;

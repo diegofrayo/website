@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Input, Block, Button, Icon, Link } from "~/components/primitive";
 import http from "~/lib/http";
-import { getErrorMessage } from "~/utils/app";
+import { getErrorMessage, reportError } from "~/utils/app";
 import { showAlert } from "~/utils/browser";
 import { ENV_VARS } from "~/utils/constants";
 import type {

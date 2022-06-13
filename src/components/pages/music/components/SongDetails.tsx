@@ -5,8 +5,10 @@ import { Icon, Link, Block, InlineText, Space } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { withAuthenticationRequired } from "~/hocs";
 import { useTranslation } from "~/i18n";
-import MusicService, { T_Song } from "~/services/music";
+import { safeCastNumber } from "~/utils/numbers";
 import type { T_ReactElementNullable } from "~/types";
+
+import MusicService, { T_Song } from "../service";
 
 function SongDetails({
   song,
@@ -127,7 +129,7 @@ const Category = withAuthenticationRequired(function Category({ category }: { ca
       >
         {t("page:category")}:
       </InlineText>
-      <Emoji>{EMOJIS[Number(category.split("|")[0])]}</Emoji>
+      <Emoji>{EMOJIS[safeCastNumber(category.split("|")[0])]}</Emoji>
       <InlineText className="tw-ml-1 tw-capitalize">
         {category.split("|")[1].replace("_", " ").toLowerCase()}
       </InlineText>

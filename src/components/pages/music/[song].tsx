@@ -2,24 +2,30 @@ import * as React from "react";
 import { useRouter } from "next/router";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
-import { Page, MainLayout } from "~/components/layout";
 import { Icon, Button, Space, Block, Text } from "~/components/primitive";
+import { Page, MainLayout } from "~/components/layout";
 import { MDXContent, Loader, RateContent } from "~/components/shared";
 import { SongDetails, SongSources } from "~/components/pages/music/components";
 import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/i18n";
 import { GuitarService } from "~/lib/guitar";
-import MusicService from "~/services/music";
-import type { T_ReactElement, T_Song } from "~/types";
 import { copyToClipboard } from "~/utils/browser";
+import { safeCastNumber } from "~/utils/numbers";
 import { ROUTES } from "~/utils/routing";
+import type { T_ReactElement } from "~/types";
 
+import MusicService, { T_Song } from "./service";
+
+/* eslint-disable react/no-unused-prop-types */ /* TODO */
 type T_PageProps = {
   song: T_Song;
   songMDXContent: MDXRemoteSerializeResult;
 };
 
 function SongPage(props: T_PageProps): T_ReactElement {
+  // hooks
+  const router = useRouter();
+  const { t } = useTranslation();
   const {
     // props
     song,
@@ -29,16 +35,14 @@ function SongPage(props: T_PageProps): T_ReactElement {
     fontSize,
 
     // handlers
-    increaseFontSize,
-    decreaseFontSize,
+    handleIncreaseFontSizeClick,
+    handleDecreaseFontSizeClick,
+    handleCopyUrlClick,
 
     // vars
     isMaxFontSize,
     isMinFontSize,
   } = useController(props);
-
-  const router = useRouter();
-  const { t } = useTranslation();
 
   if (router.isFallback) {
     return (
@@ -57,7 +61,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
         replaceTitle: !MusicService.isChordsSong(song),
         description: t("seo:description", { title: song.title, artist: song.artist }),
         pathname: `${ROUTES.MUSIC}/${song.id}`,
-        disableSEO: !song.isPublic,
+        disableSEO: true,
       }}
     >
       <MainLayout title={song.title}>
@@ -75,7 +79,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
             <Button
               variant={Button.variant.SIMPLE}
               disabled={isMaxFontSize}
-              onClick={increaseFontSize}
+              onClick={handleIncreaseFontSizeClick}
             >
               <Icon
                 icon={Icon.icon.ZOOM_IN}
@@ -89,7 +93,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
             <Button
               variant={Button.variant.SIMPLE}
               disabled={isMinFontSize}
-              onClick={decreaseFontSize}
+              onClick={handleDecreaseFontSizeClick}
             >
               <Icon
                 icon={Icon.icon.ZOOM_OUT}
@@ -102,9 +106,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
             />
             <Button
               variant={Button.variant.SIMPLE}
-              onClick={(): void => {
-                copyToClipboard(window.location.href);
-              }}
+              onClick={handleCopyUrlClick}
             >
               <Icon
                 icon={Icon.icon.LINK}
@@ -147,41 +149,62 @@ export default SongPage;
 
 // --- Controller ---
 
-function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps, "song"> & {
+type T_UseControllerReturn = {
+  song: T_PageProps["song"];
   fontSize: number;
   songMDXContent: MDXRemoteSerializeResult;
-  increaseFontSize: () => void;
-  decreaseFontSize: () => void;
   isMaxFontSize: boolean;
   isMinFontSize: boolean;
-} {
+  handleIncreaseFontSizeClick: () => void;
+  handleDecreaseFontSizeClick: () => void;
+  handleCopyUrlClick: () => void;
+};
+
+function useController({ songMDXContent, song }: T_PageProps): T_UseControllerReturn {
+  // states & refs
   const [fontSize, setFontSize] = React.useState(0);
 
+  // vars
+  const LOCAL_STORAGE_KEY = "DFR_MUSIC_FONT_SIZE";
+
+  // effects
   useDidMount(() => {
     setFontSize(getFontSize());
   });
 
-  React.useEffect(() => {
-    window.localStorage.setItem("DFR_MUSIC_FONT_SIZE", `${fontSize}`);
-  }, [fontSize]);
+  React.useEffect(
+    function updateFontSizeOnLocalStorage() {
+      window.localStorage.setItem(LOCAL_STORAGE_KEY, `${fontSize}`);
+    },
+    [fontSize],
+  );
 
-  function getFontSize(): number {
-    const INITIAL_VALUE = 0.8;
-    const fontSize = Number(window.localStorage.getItem("DFR_MUSIC_FONT_SIZE"));
-
-    if (!fontSize || Number.isNaN(fontSize)) {
-      return INITIAL_VALUE;
-    }
-
-    return fontSize;
-  }
-
-  function increaseFontSize(): void {
+  // handlers
+  function handleIncreaseFontSizeClick(): void {
     setFontSize((currentValue) => Number((currentValue + 0.2).toFixed(1)));
   }
 
-  function decreaseFontSize(): void {
+  function handleDecreaseFontSizeClick(): void {
     setFontSize((currentValue) => Number((currentValue - 0.2).toFixed(1)));
+  }
+
+  function handleCopyUrlClick(): void {
+    copyToClipboard(window.location.href);
+  }
+
+  // utils
+  function getFontSize(): number {
+    const INITIAL_VALUE = 0.8;
+    const readedFontSize = safeCastNumber(
+      window.localStorage.getItem(LOCAL_STORAGE_KEY) || "0",
+      NaN,
+    );
+
+    if (Number.isNaN(readedFontSize) || readedFontSize === 0) {
+      return INITIAL_VALUE;
+    }
+
+    return readedFontSize;
   }
 
   return {
@@ -193,8 +216,9 @@ function useController({ songMDXContent, song }: T_PageProps): Pick<T_PageProps,
     fontSize,
 
     // handlers
-    increaseFontSize,
-    decreaseFontSize,
+    handleIncreaseFontSizeClick,
+    handleDecreaseFontSizeClick,
+    handleCopyUrlClick,
 
     // vars
     isMaxFontSize: fontSize === 2,

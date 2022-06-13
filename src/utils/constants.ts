@@ -1,3 +1,5 @@
+import { Icon } from "~/components/primitive";
+
 export const ENV_VARS = {
   NEXT_PUBLIC_ASSETS_SERVER_URL: process.env["NEXT_PUBLIC_ASSETS_SERVER_URL"] || "",
   NEXT_PUBLIC_CRYPTO_KEY: process.env["NEXT_PUBLIC_CRYPTO_KEY"] || "MY_STUPID_SECRET_KEY",
@@ -11,25 +13,25 @@ export const PERSONAL_PAGES = [
     slug: "contacts",
     title: "contacts",
     componentName: "",
-    icon: "USER_CIRCLE",
+    icon: Icon.icon.USER_CIRCLE,
   },
   {
     slug: "films",
     title: "films",
-    componentName: "Films",
-    icon: "FILM",
+    componentName: "films/index",
+    icon: Icon.icon.FILM,
   },
   {
     slug: "timeline",
     title: "timeline",
-    componentName: "timeline",
-    icon: "PRESENTATION_CHART_LINE",
+    componentName: "timeline/index",
+    icon: Icon.icon.PRESENTATION_CHART_LINE,
   },
   {
     slug: "books",
     title: "books",
-    componentName: "Books",
-    icon: "BOOK_OPEN",
+    componentName: "books/index",
+    icon: Icon.icon.BOOK_OPEN,
   },
 
   // tools
@@ -37,30 +39,30 @@ export const PERSONAL_PAGES = [
     slug: "timer",
     title: "timer",
     componentName: "",
-    icon: "CLOCK",
+    icon: Icon.icon.CLOCK,
   },
   {
     slug: "whatsapp",
     title: "whatsapp",
     componentName: "WhatsApp",
-    icon: "CHAT",
+    icon: Icon.icon.CHAT,
   },
   {
     slug: "dencrypt",
     title: "dencrypt",
     componentName: "Dencrypt",
-    icon: "KEY",
+    icon: Icon.icon.KEY,
   },
   {
     slug: "isr",
     title: "isr",
     componentName: "ISR",
-    icon: "REFRESH",
+    icon: Icon.icon.REFRESH,
   },
   {
     slug: "thumbnails",
     title: "thumbnails",
     componentName: "Thumbnails",
-    icon: "PHOTOGRAPH",
+    icon: Icon.icon.PHOTOGRAPH,
   },
 ] as const;

@@ -14,7 +14,7 @@ import { selectWebsiteMetadata, T_WebsiteMetadata } from "~/state/modules/metada
 import { isPWA, showAlert } from "~/utils/browser";
 import { ROUTES, T_RoutesValues } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
-import { getErrorMessage, isDevelopmentEnvironment } from "~/utils/app";
+import { getErrorMessage, isDevelopmentEnvironment, reportError } from "~/utils/app";
 import { ENV_VARS } from "~/utils/constants";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
@@ -294,12 +294,19 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
 });
 
 const EnvironmentMenuItem = withAuthenticationRequired(function EnvironmentMenuItem() {
+  // hooks
+  const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
+
   // states & refs
   const [url, setUrl] = React.useState("/");
 
   // effects
   useDidMount(() => {
-    setUrl(`${ENV_VARS.NEXT_PUBLIC_WEBSITE_URL}${window.location.pathname}`);
+    setUrl(
+      isDevelopmentEnvironment()
+        ? `${WEBSITE_METADATA.url}${window.location.pathname}`
+        : `http://localhost:3000${window.location.pathname}`,
+    );
   });
 
   // render

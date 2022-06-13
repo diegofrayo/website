@@ -3,10 +3,10 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import SongPage from "~/components/pages/music/[song]";
+import MusicService, { T_Song } from "~/components/pages/music/service";
 import { getPageContentStaticProps } from "~/i18n";
 import http from "~/lib/http";
 import { dataLoader } from "~/server";
-import MusicService, { T_Song } from "~/services/music";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";

@@ -1,6 +1,6 @@
 {
   "name": "@diegofrayo/website",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "===== DEV =====": "",
@@ -12,8 +12,7 @@
     "start": "next start",
     "postinstall": "yarn scripts:rss",
     "===== FORMATTING =====": "",
-    "lint": "eslint \"src/{auth,components/layout,components/primitive,components/shared,hocs,hooks,pages,server,services,types,utils}/*.{ts,tsx}\"",
-    "lint:current": "eslint \"src/components/pages/**/*.{ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "format": "prettier --write \"{src,public,scripts}/**/*.{ts,tsx,json,css,mjs}\"",
     "===== STORYBOOK =====": "",
     "storybook": "start-storybook -p 6006",

@@ -36,6 +36,10 @@ export function isNotEmptyString(input: unknown): input is string {
   return !isEmptyString(input);
 }
 
+export function isFilledString(input: unknown): input is string {
+  return typeof input === "string" && input.length > 0;
+}
+
 export function isEmptyOrNotDefinedString(input: unknown): input is string {
   return isEmptyString(input) || isNotDefined(input);
 }

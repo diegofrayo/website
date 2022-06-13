@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { T_Locale } from "~/i18n";
 
+import { T_Store } from "../types";
+
 const REDUCER_NAME = "page-config";
 
 const slice = createSlice({

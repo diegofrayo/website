@@ -97,11 +97,13 @@ function Featured(): T_ReactElement {
       <Space size={1} />
       <Link
         variant={Link.variant.SIMPLE}
-        href={ROUTES.MUSIC}
+        href={`${ROUTES.MUSIC}/luz`}
         className="tw-block tw--rotate-1 tw-text-sm tw-text-yellow-300"
       >
         <Emoji>🖇️</Emoji>
-        <InlineText className="tw-mx-1 tw-underline">/music</InlineText>
+        <InlineText className="tw-mx-1 tw-underline">
+          Luz, Ciro y los Persas: Chords and lyrics
+        </InlineText>
       </Link>
     </Block>
   );
@@ -227,13 +229,12 @@ function TV(): T_ReactElement {
 
   // vars
   const SONG = {
-    title: "La Edad Del Cielo - Cover",
-    artist: "arthur victor",
-    duration: "3:27",
-    thumbnail: "https://i.scdn.co/image/ab67616d0000b27385cdb6b0ede4824b449dc73f",
+    title: "Canción de Cuna",
+    artist: "Los Piojos",
+    thumbnail: "https://i.scdn.co/image/ab67616d0000b273e9da663a75710a26934084ec",
     audio:
-      "https://p.scdn.co/mp3-preview/b6fb5cddcf7285f80bfe113a38f414ee3eef28bc?cid=a46f5c5745a14fbf826186da8da5ecc3",
-    url: "https://open.spotify.com/track/4jFFRZOej9hhZ6K6SKrFuU",
+      "https://p.scdn.co/mp3-preview/f7beee75f3ddd0231bb2d9ae00b04eaa6e88b836?cid=a46f5c5745a14fbf826186da8da5ecc3",
+    url: "https://open.spotify.com/track/6dkGg8FxGzFVRdcMsuVhkb",
     source: "spotify",
   };
 
@@ -274,7 +275,7 @@ function TV(): T_ReactElement {
 
   // utils
   function getAudioElement(): HTMLAudioElement {
-    return document.getElementById("TV-audio") as HTMLAudioElement;
+    return document.getElementById("tv-audio") as HTMLAudioElement;
   }
 
   // render
@@ -297,12 +298,12 @@ function TV(): T_ReactElement {
               iconClassName="dfr-text-color-light-strong"
             />
             <audio
-              id="TV-audio"
+              id="tv-audio"
               className="tw-hidden"
               onEnded={onSongEndedHandler}
             >
-              <track
-                kind="captions"
+              <source
+                type="audio/mpeg"
                 src={SONG.audio}
               />
             </audio>

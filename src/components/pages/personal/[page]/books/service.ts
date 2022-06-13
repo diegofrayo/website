@@ -1,10 +1,10 @@
 import http from "~/lib/http";
+import { ENV_VARS } from "~/utils/constants";
 import {
   sortBy,
   transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
 import type { T_UnknownObject } from "~/types";
-import { ENV_VARS } from "~/utils/constants";
 
 class BooksService {
   async fetchBooks(): Promise<T_Book[]> {

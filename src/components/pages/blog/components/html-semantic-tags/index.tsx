@@ -79,10 +79,8 @@ export function HST_Texts(): T_ReactElement {
         <p>
           Simple text and <b>Bold text</b> and <strong>Important text</strong> and{" "}
           <i>Italic text</i> <em>Emphasized text</em> and <mark>Marked text</mark> and{" "}
-          <small>Smaller text</small> and
-          <del>Deleted text</del> and
-          <ins>Inserted text</ins> and<sub>Subscript text</sub> and
-          <sup>Superscript text</sup>.
+          <small>Smaller text</small> and <del>Deleted text</del> and <ins>Inserted text</ins> and{" "}
+          <sub>Subscript text</sub> and <sup>Superscript text</sup>.
         </p>
 
         <br />

@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { T_Store } from "../types";
+
 const REDUCER_NAME = "metadata";
 
 const slice = createSlice({

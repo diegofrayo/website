@@ -2,8 +2,8 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Block, Button, Icon, InlineText, Space, Text, Title } from "~/components/primitive";
+import { pluralize } from "~/utils/strings";
 import type { T_ReactElement } from "~/types";
-import { pluralize } from "~/utils/misc";
 
 import { ROUTINE_ITEMS_STATUS } from "../constants";
 import { TimerPageContext } from "../context";
@@ -17,12 +17,12 @@ export default function RoutineItem({
   highTime,
   restTime,
 }: T_RoutineItem): T_ReactElement {
-  // states & refs
+  // states
   const [isTitleTruncated, setIsTitleTruncated] = React.useState(true);
 
   // context
   const {
-    // states & refs
+    // states
     currentRoutine,
 
     // utils

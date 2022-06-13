@@ -11,6 +11,7 @@ import {
 } from "~/utils/browser";
 import type { T_ReactElement, T_ReactOnClickEventHandler, T_ReactRefObject } from "~/types";
 import { isNotDefined } from "~/utils/validations";
+import { reportError } from "~/utils/app";
 
 function Dencrypt(): T_ReactElement {
   const {
@@ -98,7 +99,10 @@ function useController(): T_UseControllerReturn {
 
   // effects
   useDidMount(() => {
-    if (isSmallScreen() || isNotDefined(inputRef.current)) return;
+    if (isSmallScreen() || isNotDefined(inputRef.current)) {
+      return;
+    }
+
     focusElement(inputRef.current);
   });
 

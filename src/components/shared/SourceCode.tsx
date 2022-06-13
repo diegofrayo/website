@@ -21,7 +21,7 @@ type T_SourceCodeProps = {
 
 function SourceCode({
   language,
-  fileName,
+  fileName = "",
   code = "",
   sourceURL = "",
   displaySourceCodeDetails = false,

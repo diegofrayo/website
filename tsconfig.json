@@ -46,6 +46,16 @@
     "isolatedModules": true,
     "incremental": true
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"]
+  "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"],
+  "exclude": [
+    "node_modules",
+    "src/components/pages/music/components/TextFormatter.tsx",
+    "src/components/pages/personal/*/timer/**/*.ts",
+    "src/components/pages/personal/*/timer/**/*.tsx",
+    "src/components/pages/personal/*/timer/*.ts",
+    "src/components/pages/personal/*/timer/*.tsx",
+    "src/lib/**/*.ts",
+    "src/lib/**/*.tsx",
+    "src/state/**/*.ts"
+  ]
 }

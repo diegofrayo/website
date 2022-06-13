@@ -5,8 +5,9 @@ import reactStringReplace from "react-string-replace";
 import { Button, Icon, Modal, Space, Block, InlineText } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { GuitarChord, GuitarService, T_Chord } from "~/lib/guitar";
-import type { T_ReactElement, T_ReactChildren } from "~/types";
-import { createArray, safeCastNumber } from "~/utils/misc";
+import { safeCastNumber } from "~/utils/numbers";
+import { createArray } from "~/utils/objects-and-arrays";
+import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 type T_TextFormatterProps = {
   children: string;
@@ -16,7 +17,7 @@ type T_TextFormatterProps = {
 
 function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
   const {
-    // states & refs
+    // states
     isModalVisible,
     selectedChord,
     selectedChordIndex,
@@ -40,18 +41,20 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
         <Block className="tw-mx-auto tw-w-96 tw-max-w-full tw-border-4 tw-p-4 dfr-border-color-dark-strong dfr-bg-color-light-strong dark:dfr-bg-color-layout dark:dfr-border-color-light-strong">
           {Array.isArray(selectedChord) ? (
             <Block>
-              {selectedChord.map((chord, index) => (
-                <Block
-                  key={`${chord.name}-${index}`}
-                  className={classNames(index === selectedChordIndex ? "tw-block" : "tw-hidden")}
-                >
-                  <GuitarChord
-                    name={chord.name}
-                    musicNotes={chord.musicNotes}
-                    playedStrings={chord.playedStrings}
-                  />
-                </Block>
-              ))}
+              {selectedChord.map((chord, index) => {
+                return (
+                  <Block
+                    key={`${chord.name}-${index}`}
+                    className={classNames(index === selectedChordIndex ? "tw-block" : "tw-hidden")}
+                  >
+                    <GuitarChord
+                      name={chord.name}
+                      musicNotes={chord.musicNotes}
+                      playedStrings={chord.playedStrings}
+                    />
+                  </Block>
+                );
+              })}
               <Space size={1} />
               <Block className="tw-flex tw-items-center tw-justify-center">
                 <Button
@@ -66,20 +69,22 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
                   />
                 </Button>
                 <Block className="tw-flex tw-flex-1 tw-items-center tw-justify-center">
-                  {createArray(selectedChord.length, 0).map((index) => (
-                    <InlineText
-                      key={`Chord-point-${index}`}
-                      className={classNames(
-                        "tw-mx-1 tw-inline-flex tw-h-4 tw-w-4 tw-cursor-pointer tw-items-center tw-justify-center tw-rounded-full tw-text-xxs tw-leading-0 tw-text-white dark:tw-text-black",
-                        selectedChordIndex === index
-                          ? "tw-bg-black tw-font-bold dark:tw-bg-white"
-                          : "tw-bg-gray-400",
-                      )}
-                      onClick={() => handleUpdateSelectedChordIndex(index)}
-                    >
-                      {index + 1}
-                    </InlineText>
-                  ))}
+                  {createArray(selectedChord.length, 0).map((index) => {
+                    return (
+                      <InlineText
+                        key={`Chord-point-${index}`}
+                        className={classNames(
+                          "tw-mx-1 tw-inline-flex tw-h-4 tw-w-4 tw-cursor-pointer tw-items-center tw-justify-center tw-rounded-full tw-text-xxs tw-leading-0 tw-text-white dark:tw-text-black",
+                          selectedChordIndex === index
+                            ? "tw-bg-black tw-font-bold dark:tw-bg-white"
+                            : "tw-bg-gray-400",
+                        )}
+                        onClick={() => handleUpdateSelectedChordIndex(index)}
+                      >
+                        {index + 1}
+                      </InlineText>
+                    );
+                  })}
                 </Block>
                 <Button
                   variant={Button.variant.SIMPLE}
@@ -207,7 +212,7 @@ function useController({ children, insertions }: T_TextFormatterProps): {
   }
 
   return {
-    // states & refs
+    // states
     isModalVisible,
     selectedChord,
     selectedChordIndex,
