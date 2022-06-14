@@ -3,6 +3,7 @@ import * as React from "react";
 import { Page, MainLayout } from "~/components/layout";
 import { Button, Collapsible, Icon, InlineText, Link, List, Text } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
+import { withAuth } from "~/auth";
 import { handleCopyToClipboardClick, isMobile } from "~/utils/browser";
 import { formatPhoneNumber } from "~/utils/formatting";
 import { generateSlug } from "~/utils/strings";
@@ -66,7 +67,7 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElement {
   );
 }
 
-export default Contacts;
+export default withAuth<T_ContactsProps>(Contacts);
 
 // --- Components ---
 

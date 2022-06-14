@@ -9,8 +9,8 @@ import type { T_UnknownObject } from "~/types";
 class FilmsService {
   async fetchFilms(): Promise<T_Film[]> {
     const { data } = await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
-      path: "/assets",
-      payload: "pages/personal/[page]/films/data.json",
+      path: "/data",
+      model: "films",
     });
 
     return data
@@ -32,6 +32,8 @@ export default new FilmsService();
 // TODO: Validate scheme using a library and infer its types
 function FilmVO(data: T_UnknownObject): T_Film {
   const film = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Film>(data);
+
+  film.categories = film.categories || [];
 
   return film;
 }

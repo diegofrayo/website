@@ -14,14 +14,31 @@ import {
   Title,
 } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
-import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/i18n";
-import { ROUTES } from "~/utils/routing";
 import { createArray } from "~/utils/objects-and-arrays";
-import { isNotDefined } from "~/utils/validations";
+import { ROUTES } from "~/utils/routing";
+import { generateSlug } from "~/utils/strings";
 import type { T_ReactElement, T_ReactElementNullable } from "~/types";
 
-function Home(): T_ReactElement {
+type T_HomeProps = {
+  data: {
+    song: {
+      title: string;
+      artist: string;
+      thumbnail: string;
+      audio: string;
+      url: string;
+      source: string;
+    };
+    photo: {
+      src: string;
+      portrait: boolean;
+    };
+    featured: { text: string; url: string }[];
+  };
+};
+
+function Home({ data }: T_HomeProps): T_ReactElement {
   // hooks
   const { t } = useTranslation();
 
@@ -37,10 +54,13 @@ function Home(): T_ReactElement {
     >
       <MainLayout title="">
         <Block className="tw-mx-auto tw-w-72 tw-max-w-full">
-          <Featured />
+          <Featured content={data.featured} />
           <Space size={4} />
           <Block className="tw-overflow-hidden tw-rounded-t-md dfr-shadow">
-            <Room />
+            <Room
+              tvSong={data.song}
+              frameImage={data.photo}
+            />
             <Block className="tw-flex tw-items-center tw-justify-between tw-border-y-8 dfr-border-color-dark-strong">
               <LinkItem
                 label="about me"
@@ -67,7 +87,11 @@ export default Home;
 
 // --- Components ---
 
-function Featured(): T_ReactElement {
+type T_Featured = {
+  content: T_HomeProps["data"]["featured"];
+};
+
+function Featured({ content }: T_Featured): T_ReactElement {
   return (
     <Block
       is="section"
@@ -85,36 +109,39 @@ function Featured(): T_ReactElement {
         FEATURED
       </Title>
       <Space size={2} />
-      <Link
-        variant={Link.variant.SIMPLE}
-        href={`${ROUTES.BLOG}/viajesito-en-colombia`}
-        className="tw-block tw-rotate-1 tw-text-sm tw-text-yellow-300"
-      >
-        <Emoji>🖇️</Emoji>
-        <InlineText className="tw-mx-1 tw-underline">Viajesito en Colombia</InlineText>
-        <InlineText>[blog-post]</InlineText>
-      </Link>
-      <Space size={1} />
-      <Link
-        variant={Link.variant.SIMPLE}
-        href={`${ROUTES.MUSIC}/luz`}
-        className="tw-block tw--rotate-1 tw-text-sm tw-text-yellow-300"
-      >
-        <Emoji>🖇️</Emoji>
-        <InlineText className="tw-mx-1 tw-underline">
-          Luz, Ciro y los Persas: Chords and lyrics
-        </InlineText>
-      </Link>
+      <Block>
+        {content.map((item, index) => {
+          return (
+            <Link
+              key={generateSlug(item.text)}
+              variant={Link.variant.SIMPLE}
+              href={item.url}
+              className={classNames(
+                "tw-mb-2 tw-block tw-text-sm tw-text-yellow-300 last:tw-mb-0",
+                index % 2 === 0 ? "tw-rotate-1" : "tw--rotate-1",
+              )}
+            >
+              <Emoji>🖇️</Emoji>
+              <InlineText className="tw-mx-1 tw-underline">{item.text}</InlineText>
+            </Link>
+          );
+        })}
+      </Block>
     </Block>
   );
 }
 
-function Room(): T_ReactElement {
+type T_RoomProps = {
+  tvSong: T_HomeProps["data"]["song"];
+  frameImage: T_HomeProps["data"]["photo"];
+};
+
+function Room({ tvSong, frameImage }: T_RoomProps): T_ReactElement {
   return (
     <Block className="dfr-Room tw-px-8 tw-pt-16 dfr-bg-color-light-strong sm:tw-px-16">
-      <PictureFrame />
+      <PictureFrame photo={frameImage} />
       <Block className="tw-flex tw-items-end tw-justify-between tw-overflow-hidden">
-        <TV />
+        <TV song={tvSong} />
         <Flowers />
       </Block>
       <Table />
@@ -130,25 +157,13 @@ function Room(): T_ReactElement {
   );
 }
 
-function PictureFrame(): T_ReactElementNullable {
+type T_PictureFrameProps = {
+  photo: T_RoomProps["frameImage"];
+};
+
+function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElementNullable {
   // hooks
   const { t } = useTranslation();
-
-  // states
-  const [photo, setPhoto] = React.useState<{ src: string; portrait: boolean }>();
-
-  // effects
-  useDidMount(() => {
-    setPhoto({
-      src: "/static/images/header/3.jpg",
-      portrait: false,
-    });
-  });
-
-  // render
-  if (isNotDefined(photo)) {
-    return null;
-  }
 
   return (
     <Block
@@ -221,22 +236,15 @@ function PictureFrame(): T_ReactElementNullable {
   );
 }
 
-function TV(): T_ReactElement {
+type T_TVProps = {
+  song: T_RoomProps["tvSong"];
+};
+
+function TV({ song }: T_TVProps): T_ReactElement {
   // states
   const [showInfo, setShowInfo] = React.useState(false);
   const [isAudioPlaying, setIsAudioPlaying] = React.useState(false);
   const [hasNotStartedTV, setHasNotStartedTV] = React.useState(true);
-
-  // vars
-  const SONG = {
-    title: "Canción de Cuna",
-    artist: "Los Piojos",
-    thumbnail: "https://i.scdn.co/image/ab67616d0000b273e9da663a75710a26934084ec",
-    audio:
-      "https://p.scdn.co/mp3-preview/f7beee75f3ddd0231bb2d9ae00b04eaa6e88b836?cid=a46f5c5745a14fbf826186da8da5ecc3",
-    url: "https://open.spotify.com/track/6dkGg8FxGzFVRdcMsuVhkb",
-    source: "spotify",
-  };
 
   // effects
   React.useEffect(() => {
@@ -284,8 +292,8 @@ function TV(): T_ReactElement {
       <Block className="tw-relative tw-h-16 tw-w-16 tw-overflow-hidden">
         <Block
           className="tw-relative tw-flex tw-h-full tw-items-center tw-justify-center tw-border tw-border-opacity-80 tw-bg-cover dfr-border-color-dark-strong dark:tw-border-opacity-10"
-          title={`${SONG.title} - ${SONG.artist}`}
-          style={{ backgroundImage: `url(${SONG.thumbnail})` }}
+          title={`${song.title} - ${song.artist}`}
+          style={{ backgroundImage: `url(${song.thumbnail})` }}
         >
           <Button
             variant={Button.variant.SIMPLE}
@@ -304,13 +312,13 @@ function TV(): T_ReactElement {
             >
               <source
                 type="audio/mpeg"
-                src={SONG.audio}
+                src={song.audio}
               />
             </audio>
           </Button>
 
           <Icon
-            icon={SONG.source === "youtube" ? Icon.icon.YOUTUBE : Icon.icon.SPOTIFY}
+            icon={song.source === "youtube" ? Icon.icon.YOUTUBE : Icon.icon.SPOTIFY}
             size={12}
             wrapperClassName="tw-absolute tw-top-0.5 tw-right-0.5"
           />

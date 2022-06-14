@@ -9,12 +9,11 @@ async function main() {
     const {
       data: { chords },
     } = await axios.post(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
-      path: "/assets",
-      payload: "music",
-      source: "firebase",
+      path: "/data",
+      model: "music",
     });
 
-    fs.writeFileSync("./src/lib/guitar/data/chords.json", chords);
+    fs.writeFileSync("./src/lib/guitar/data/chords.json", JSON.stringify(chords));
 
     console.log("Chords file created");
   } catch (error) {

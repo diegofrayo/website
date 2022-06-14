@@ -42,6 +42,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
           <SourceCode
             language={language}
             code={code}
+            displaySourceCodeDetails={false}
           />
         ) : (
           <Component />

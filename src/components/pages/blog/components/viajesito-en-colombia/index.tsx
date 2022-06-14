@@ -99,7 +99,10 @@ function Gallery({
 
   // handlers
   function onSlideChangeHandler(): void {
-    setActiveIndex(activeIndex + 1);
+    // TODO
+    // @ts-ignore
+    // eslint-disable-next-line react/no-this-in-sfc
+    setActiveIndex(this.activeIndex + 1);
   }
 
   // render

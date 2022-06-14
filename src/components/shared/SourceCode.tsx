@@ -24,7 +24,7 @@ function SourceCode({
   fileName = "",
   code = "",
   sourceURL = "",
-  displaySourceCodeDetails = false,
+  displaySourceCodeDetails = true,
 }: T_SourceCodeProps): T_ReactElement {
   // hooks
   const { t } = useTranslation();
@@ -39,7 +39,7 @@ function SourceCode({
   // render
   return (
     <div
-      className="dfr-SourceCode dfr-bg-color-light-strong"
+      className="dfr-SourceCode root dfr-bg-color-light-strong"
       data-markdown-block
     >
       {displaySourceCodeDetails ? (
