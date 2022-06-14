@@ -33,6 +33,8 @@ export default new FilmsService();
 function FilmVO(data: T_UnknownObject): T_Film {
   const film = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Film>(data);
 
+  film.categories = film.categories || [];
+
   return film;
 }
 
