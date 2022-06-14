@@ -1,8 +1,0 @@
-~~~
-layout:
-  name: dagre
-~~~
-
-Start timer [EVENT]
-  Set timer start as RUNNING
-    Create an intervals

@@ -4,13 +4,24 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 
 ## Tech stack
 
-- TypeScript
-- React
-- Next.js
-- Tailwind CSS
-- Redux
-- React Query
-- MDX ([next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) and [xdm](https://www.npmjs.com/package/xdm))
+- **Main**
+  - TypeScript
+  - react
+  - next.js
+  - tailwind-css
+  - mdx using [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) and [xdm](https://www.npmjs.com/package/xdm)
+
+- **Experiments**
+  - redux
+  - react-query
+  - axios
+  - storybook
+  - next-pwa
+
+- **Linting and formatting**
+  - prettier
+  - eslint
+  - husky
 
 ## Setup
 
@@ -28,6 +39,21 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 1. `yarn husky:install` (Required to commit changes)
 
 1. `yarn dev`
+
+## Stats
+
+```
+===============================================================================
+ Language            Files        Lines         Code     Comments       Blanks
+===============================================================================
+ CSS                     2          216          172            9           35
+ JSON                    1           99           99            0            0
+ TSX                   101        11162         9402          446         1314
+ TypeScript             70         3579         2886          150          543
+===============================================================================
+ Total                 174        15056        12559          605         1892
+===============================================================================
+```
 
 ---
 
