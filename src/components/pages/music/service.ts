@@ -46,9 +46,8 @@ class MusicService {
 
   private async fetchData(): Promise<T_UnknownObject[]> {
     const { data } = await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
-      path: "/assets",
-      payload: "music",
-      source: "firebase",
+      path: "/data",
+      model: "music",
     });
 
     return data.songs;

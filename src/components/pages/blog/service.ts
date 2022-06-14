@@ -38,9 +38,10 @@ class BlogService {
     posts: T_BlogPostFetchDTO[];
     categories: T_BlogPostCategory[];
   }> {
-    const { data } = await http.get(
-      `${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/blog/data.json`,
-    );
+    const { data } = await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
+      path: "/data",
+      model: "blog",
+    });
 
     return data;
   }

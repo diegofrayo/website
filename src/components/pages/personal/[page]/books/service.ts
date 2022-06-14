@@ -9,8 +9,8 @@ import type { T_UnknownObject } from "~/types";
 class BooksService {
   async fetchBooks(): Promise<T_Book[]> {
     const { data } = await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
-      path: "/assets",
-      payload: "pages/personal/[page]/books/data.json",
+      path: "/data",
+      model: "books",
     });
 
     return data

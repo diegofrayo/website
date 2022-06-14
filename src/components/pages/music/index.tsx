@@ -5,10 +5,8 @@ import { Page, MainLayout } from "~/components/layout";
 import { Link, Space, Input, Text, InlineText, Block } from "~/components/primitive";
 import { Render, Emoji } from "~/components/shared";
 import { SongDetails } from "~/components/pages/music/components";
-import { AuthService } from "~/auth";
 import { useDidMount, useQuery } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
-import AnalyticsService from "~/services/analytics";
 import { ROUTES } from "~/utils/routing";
 import { exists } from "~/utils/validations";
 import type { T_ReactElement, T_ReactOnChangeEventHandler, T_ReactRefObject } from "~/types";
@@ -108,7 +106,7 @@ function MusicPage(): T_ReactElement {
                           <Link
                             variant={Link.variant.SECONDARY}
                             href={`${ROUTES.MUSIC}/${song.id}`}
-                            className="sm:tw-truncate"
+                            className="tw-block sm:tw-truncate"
                             title={song.title}
                           >
                             {song.title}
@@ -183,10 +181,7 @@ function useController(): T_UseController {
   const parseData: T_UseController["parseData"] = function parseData(songs) {
     return {
       chordsPage: songs[0],
-      songsList: (AuthService.isUserLoggedIn() || AnalyticsService.isAnalyticsDisabled()
-        ? songs.slice(1)
-        : songs.slice(1).filter((song) => song.isPublic)
-      ).filter((song) => {
+      songsList: songs.slice(1).filter((song) => {
         return (
           song.title.toLowerCase().includes(inputValue) ||
           song.artist.toLowerCase().includes(inputValue)

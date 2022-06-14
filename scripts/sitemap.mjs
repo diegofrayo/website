@@ -6,8 +6,12 @@ dotenv.config({ path: ".env" });
 
 async function main() {
   try {
-    const { data: BLOG } = await axios.get(
-      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/pages/blog/data.json`,
+    const { data: BLOG } = await axios.post(
+      `${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
+      {
+        path: "/data",
+        model: "blog",
+      },
     );
     const {
       data: { website: WEBSITE_METADATA },

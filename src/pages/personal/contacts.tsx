@@ -12,9 +12,8 @@ export const getStaticProps = getPageContentStaticProps({
     const { data: contacts } = await http.post(
       `${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
       {
-        path: "/assets",
-        payload: "contacts",
-        source: "firebase",
+        path: "/data",
+        model: "contacts",
       },
     );
 
