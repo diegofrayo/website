@@ -22,12 +22,12 @@ function PersonalPage(): T_ReactElement {
     >
       <MainLayout title={PAGE_TITLE}>
         <Block className="tw-w-full sm:tw-mx-auto sm:tw-max-w-md">
-          <PagesList pages={PERSONAL_PAGES.slice(0, 4)} />
+          <PagesList pages={PERSONAL_PAGES.filter((page) => page.type === "DATA")} />
           <Space
             size={4}
             variant={Space.variant.DASHED}
           />
-          <PagesList pages={PERSONAL_PAGES.slice(4)} />
+          <PagesList pages={PERSONAL_PAGES.filter((page) => page.type === "TOOL")} />
         </Block>
       </MainLayout>
     </Page>

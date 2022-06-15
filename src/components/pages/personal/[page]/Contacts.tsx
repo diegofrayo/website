@@ -1,24 +1,52 @@
 import * as React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Button, Collapsible, Icon, InlineText, Link, List, Text } from "~/components/primitive";
+import {
+  Block,
+  Button,
+  Collapsible,
+  Icon,
+  InlineText,
+  Link,
+  Space,
+  Text,
+} from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { withAuth } from "~/auth";
+import { useEnhancedState } from "~/hooks";
+import { isBrowser } from "~/utils/app";
 import { handleCopyToClipboardClick, isMobile } from "~/utils/browser";
 import { formatPhoneNumber } from "~/utils/formatting";
 import { generateSlug } from "~/utils/strings";
-import { isNotEmptyString, isString } from "~/utils/validations";
+import { isEmptyString, isFilledString } from "~/utils/validations";
 import type { T_Object, T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 type T_ContactsProps = {
   contacts: T_Object<T_GroupOfContacts>;
 };
 
-function Contacts({ contacts }: T_ContactsProps): T_ReactElement {
+function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
+  // hooks
+  const [isAllCollapsibleOpened, , toggleIsAllCollapsibleOpened] = useEnhancedState(false);
+
+  // states & refs
+  const { current: totalOfContacts } = React.useRef<number>(countAllContacts(contacts));
+
   // vars
   const PAGE_TITLE = "Contacts";
 
+  // handlers
+  function handleToggleAllCollapsibleOpenedClick(): void {
+    toggleIsAllCollapsibleOpened();
+  }
+
+  function handlePrintClick(): void {
+    window.print();
+  }
+
   // render
+  if (!isBrowser()) return null;
+
   return (
     <Page
       config={{
@@ -27,41 +55,88 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElement {
       }}
     >
       <MainLayout title={`${PAGE_TITLE}`}>
-        {Object.entries(contacts).map(([groupName, groupData]: [string, T_GroupOfContacts]) => {
-          const parsedGroupName = groupName.split("-").slice(1).join("-");
-
-          if (Array.isArray(groupData)) {
-            return (
-              <ContactsGroup
-                key={generateSlug(parsedGroupName)}
-                groupName={parsedGroupName}
-                contacts={groupData}
+        <Block className="tw-hidden print:tw-hidden sm:tw-block">
+          <Block className="tw-flex tw-items-center tw-justify-between">
+            <Block>
+              <InlineText
+                is="strong"
+                className="tw-mr-1"
+              >
+                Número total de contactos:
+              </InlineText>
+              <InlineText>{totalOfContacts}</InlineText>
+            </Block>
+            <Block>
+              <Button
+                variant={Button.variant.SIMPLE}
+                onClick={handleToggleAllCollapsibleOpenedClick}
+              >
+                <Icon
+                  icon={
+                    isAllCollapsibleOpened
+                      ? Icon.icon.CHEVRON_DOUBLE_UP
+                      : Icon.icon.CHEVRON_DOUBLE_DOWN
+                  }
+                />
+              </Button>
+              <Space
+                size={1}
+                orientation="v"
               />
+              <Button
+                variant={Button.variant.SIMPLE}
+                onClick={handlePrintClick}
+              >
+                <Icon icon={Icon.icon.PRINTER} />
+              </Button>
+            </Block>
+          </Block>
+          <Space
+            size={4}
+            variant={Space.variant.DASHED}
+          />
+        </Block>
+
+        <Block>
+          {Object.entries(contacts).map(([groupName, groupData]: [string, T_GroupOfContacts]) => {
+            const parsedGroupName = groupName.split("-").slice(1).join("-");
+
+            if (Array.isArray(groupData)) {
+              return (
+                <ContactsGroup
+                  key={generateSlug(parsedGroupName)}
+                  groupName={parsedGroupName}
+                  contacts={groupData}
+                  collapsibleOpened={isAllCollapsibleOpened}
+                />
+              );
+            }
+
+            return (
+              <Collapsible
+                key={generateSlug(groupName)}
+                title={`❏ ${parsedGroupName} [${countGroupOfContacts(groupData)}]`}
+                className="tw-mb-8 last:tw-mb-0"
+                opened={isAllCollapsibleOpened}
+              >
+                {Object.entries(groupData).map(
+                  ([subGroupName, subGroupContacts]: [string, T_Contact[]]) => {
+                    const parsedSubGroupName = subGroupName.split("-").slice(1).join("-");
+
+                    return (
+                      <ContactsGroup
+                        key={generateSlug(parsedSubGroupName)}
+                        groupName={parsedSubGroupName}
+                        contacts={subGroupContacts}
+                        collapsibleOpened={isAllCollapsibleOpened}
+                      />
+                    );
+                  },
+                )}
+              </Collapsible>
             );
-          }
-
-          return (
-            <Collapsible
-              key={generateSlug(groupName)}
-              title={`❏ ${parsedGroupName} [${countContacts(groupData)}]`}
-              className="tw-mb-8 last:tw-mb-0"
-            >
-              {Object.entries(groupData).map(
-                ([subGroupName, subGroupContacts]: [string, T_Contact[]]) => {
-                  const parsedSubGroupName = subGroupName.split("-").slice(1).join("-");
-
-                  return (
-                    <ContactsGroup
-                      key={generateSlug(parsedSubGroupName)}
-                      groupName={parsedSubGroupName}
-                      contacts={subGroupContacts}
-                    />
-                  );
-                },
-              )}
-            </Collapsible>
-          );
-        })}
+          })}
+        </Block>
       </MainLayout>
     </Page>
   );
@@ -74,9 +149,57 @@ export default withAuth<T_ContactsProps>(Contacts);
 type T_ContactsGroupProps = {
   groupName: string;
   contacts: T_Contact[];
+  collapsibleOpened: boolean;
 };
 
-function ContactsGroup({ groupName, contacts }: T_ContactsGroupProps): T_ReactElement {
+function ContactsGroup({
+  groupName,
+  contacts,
+  collapsibleOpened,
+}: T_ContactsGroupProps): T_ReactElement {
+  // render
+  return (
+    <Collapsible
+      title={`❏ ${groupName} [${countGroupOfContacts(contacts)}]`}
+      className="tw-mb-8 last:tw-mb-0"
+      opened={collapsibleOpened}
+    >
+      <Block className="tw-flex tw-flex-wrap">
+        {contacts.map((contact) => {
+          const contactPhone = Array.isArray(contact.phone)
+            ? contact.phone.map((i) => i.value)
+            : [contact.phone];
+
+          return (
+            <Block
+              key={generateSlug(contact.name)}
+              className="tw-mb-8 tw-w-full tw-pr-4 sm:tw-w-1/2"
+            >
+              <Text className="tw-font-bold tw-leading-tight">{contact.name}</Text>
+              {contactPhone.map((phone) => {
+                return (
+                  <ContactPhone
+                    key={generateSlug(phone)}
+                    phone={phone}
+                    country={contact.country}
+                  />
+                );
+              })}
+              <ContactLinks contact={contact} />
+            </Block>
+          );
+        })}
+      </Block>
+    </Collapsible>
+  );
+}
+
+type T_ContactPhoneProps = {
+  phone: string;
+  country: T_Contact["country"];
+};
+
+function ContactPhone({ phone, country }: T_ContactPhoneProps): T_ReactElementNullable {
   // vars
   const COUNTRIES_EMOJIS = {
     AR: "🇦🇷",
@@ -93,44 +216,23 @@ function ContactsGroup({ groupName, contacts }: T_ContactsGroupProps): T_ReactEl
     USA: "🇺🇲",
     UY: "🇺🇾",
   };
+  const phoneWithoutCode = isFilledString(phone) ? phone.split(" ")[1] : "";
+  const isPhoneFromColombia = country === "CO";
 
   // render
-  return (
-    <Collapsible
-      title={`❏ ${groupName} [${countContacts(contacts)}]`}
-      className="tw-mb-8 last:tw-mb-0"
-    >
-      <List variant={List.variant.DEFAULT}>
-        {contacts.map((contact) => {
-          const phoneWithoutCode = isString(contact.phone) ? contact.phone.split(" ")[1] : "";
-          const isPhoneFromColombia = contact.country === "CO";
+  if (isEmptyString(phoneWithoutCode)) {
+    return null;
+  }
 
-          return (
-            <List.Item
-              key={generateSlug(contact.name)}
-              className="tw-pb-4 tw-font-bold"
-            >
-              <Text className="tw-leading-tight">{contact.name}</Text>
-              {isNotEmptyString(phoneWithoutCode) ? (
-                <Button
-                  className="tw-mb-1 tw-text-sm tw-italic dfr-text-color-secondary"
-                  data-clipboard-text={isPhoneFromColombia ? phoneWithoutCode : contact.phone}
-                  onClick={handleCopyToClipboardClick}
-                >
-                  <Emoji className="tw-mr-2 tw-not-italic">
-                    {COUNTRIES_EMOJIS[contact.country]}
-                  </Emoji>
-                  <InlineText>
-                    {isPhoneFromColombia ? formatPhoneNumber(phoneWithoutCode) : contact.phone}
-                  </InlineText>
-                </Button>
-              ) : null}
-              <ContactLinks contact={contact} />
-            </List.Item>
-          );
-        })}
-      </List>
-    </Collapsible>
+  return (
+    <Button
+      className="tw-mb-1 tw-block tw-text-sm tw-italic dfr-text-color-secondary"
+      data-clipboard-text={isPhoneFromColombia ? phoneWithoutCode : phone}
+      onClick={handleCopyToClipboardClick}
+    >
+      <Emoji className="tw-mr-2 tw-not-italic">{COUNTRIES_EMOJIS[country]}</Emoji>
+      <InlineText>{isPhoneFromColombia ? formatPhoneNumber(phoneWithoutCode) : phone}</InlineText>
+    </Button>
   );
 }
 
@@ -154,7 +256,7 @@ function ContactLinks({ contact }: { contact: T_Contact }): T_ReactElement {
             </WhastAppButton>
           );
         })
-      ) : isNotEmptyString(contact.phone) ? (
+      ) : isFilledString(contact.phone) ? (
         <WhastAppButton phone={contact.phone}>
           <Icon
             icon={Icon.icon.WHATSAPP}
@@ -163,7 +265,7 @@ function ContactLinks({ contact }: { contact: T_Contact }): T_ReactElement {
         </WhastAppButton>
       ) : null}
 
-      {isNotEmptyString(contact.instagram) ? (
+      {isFilledString(contact.instagram) ? (
         <Link
           variant={Link.variant.SIMPLE}
           href={`https://instagram.com/${contact.instagram}`}
@@ -195,7 +297,7 @@ function ContactLinks({ contact }: { contact: T_Contact }): T_ReactElement {
             </PhoneButton>
           );
         })
-      ) : (
+      ) : isFilledString(contact.phone) ? (
         <PhoneButton
           phone={contact.phone}
           country={contact.country}
@@ -206,7 +308,7 @@ function ContactLinks({ contact }: { contact: T_Contact }): T_ReactElement {
             color="tw-text-blue-700"
           />
         </PhoneButton>
-      )}
+      ) : null}
 
       <style jsx>
         {`
@@ -235,12 +337,12 @@ function WhastAppButton({ children, phone }: T_WhastAppButtonProps): T_ReactElem
   const isAssistanceServiceNumber = phone.split(" ")[1]?.length === 3;
 
   // handlers
-  function handleWhatsAppClick(): void {
+  function composeWhatsAppUrl(): string {
     const url = new URLSearchParams();
     url.append("phone", phone.replace(" ", "").trim());
     url.append("text", "Hey!");
 
-    window.open(`https://${isMobile() ? "api" : "web"}.whatsapp.com/send?${url.toString()}`);
+    return `https://${isMobile() ? "api" : "web"}.whatsapp.com/send?${url.toString()}`;
   }
 
   // render
@@ -249,12 +351,13 @@ function WhastAppButton({ children, phone }: T_WhastAppButtonProps): T_ReactElem
   }
 
   return (
-    <Button
-      variant={Button.variant.SIMPLE}
-      onClick={handleWhatsAppClick}
+    <Link
+      variant={Link.variant.SIMPLE}
+      href={composeWhatsAppUrl()}
+      isExternalLink
     >
       {children}
-    </Button>
+    </Link>
   );
 }
 
@@ -291,7 +394,15 @@ function PhoneButton({ children, phone, country }: T_PhoneButtonProps): T_ReactE
 
 // --- Utils ---
 
-function countContacts(contacts: T_GroupOfContacts): number {
+function countAllContacts(contacts: T_ContactsProps["contacts"]): number {
+  const result = Object.values(contacts).reduce((result, groupOfContacts) => {
+    return result + countGroupOfContacts(groupOfContacts);
+  }, 0);
+
+  return result;
+}
+
+function countGroupOfContacts(contacts: T_GroupOfContacts): number {
   if (Array.isArray(contacts)) {
     return contacts.length;
   }

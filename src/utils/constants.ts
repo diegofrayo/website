@@ -14,24 +14,28 @@ export const PERSONAL_PAGES = [
     title: "contacts",
     componentName: "",
     icon: Icon.icon.USER_CIRCLE,
+    type: "DATA",
   },
   {
     slug: "films",
     title: "films",
     componentName: "films/index",
     icon: Icon.icon.FILM,
+    type: "DATA",
   },
   {
     slug: "timeline",
     title: "timeline",
     componentName: "timeline/index",
     icon: Icon.icon.PRESENTATION_CHART_LINE,
+    type: "DATA",
   },
   {
     slug: "books",
     title: "books",
     componentName: "books/index",
     icon: Icon.icon.BOOK_OPEN,
+    type: "DATA",
   },
 
   // tools
@@ -40,29 +44,34 @@ export const PERSONAL_PAGES = [
     title: "timer",
     componentName: "",
     icon: Icon.icon.CLOCK,
+    type: "TOOL",
   },
   {
     slug: "whatsapp",
     title: "whatsapp",
     componentName: "WhatsApp",
     icon: Icon.icon.CHAT,
+    type: "TOOL",
   },
   {
     slug: "dencrypt",
     title: "dencrypt",
     componentName: "Dencrypt",
     icon: Icon.icon.KEY,
+    type: "TOOL",
   },
   {
     slug: "isr",
     title: "isr",
     componentName: "ISR",
     icon: Icon.icon.REFRESH,
+    type: "TOOL",
   },
   {
     slug: "thumbnails",
     title: "thumbnails",
     componentName: "Thumbnails",
     icon: Icon.icon.PHOTOGRAPH,
+    type: "TOOL",
   },
 ] as const;

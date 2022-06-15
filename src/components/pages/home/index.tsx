@@ -61,21 +61,6 @@ function Home({ data }: T_HomeProps): T_ReactElement {
               tvSong={data.song}
               frameImage={data.photo}
             />
-            <Block className="tw-flex tw-items-center tw-justify-between tw-border-y-8 dfr-border-color-dark-strong">
-              <LinkItem
-                label="about me"
-                url={ROUTES.ABOUT_ME}
-              />
-              <LinkItem
-                label="blog"
-                url={ROUTES.BLOG}
-                className="tw-hidden sm:tw-block"
-              />
-              <LinkItem
-                label="resume"
-                url={ROUTES.RESUME}
-              />
-            </Block>
           </Block>
         </Block>
       </MainLayout>
@@ -138,11 +123,13 @@ type T_RoomProps = {
 
 function Room({ tvSong, frameImage }: T_RoomProps): T_ReactElement {
   return (
-    <Block className="dfr-Room tw-px-8 tw-pt-16 dfr-bg-color-light-strong sm:tw-px-16">
+    <Block className="dfr-Room tw-border-b-4 tw-px-8 tw-pt-16 dfr-border-color-dark-strong dfr-bg-color-light-strong sm:tw-px-10">
       <PictureFrame photo={frameImage} />
-      <Block className="tw-flex tw-items-end tw-justify-between tw-overflow-hidden">
+      <Block className="tw-relative tw-flex tw-items-end tw-justify-center tw-overflow-hidden">
         <TV song={tvSong} />
-        <Flowers />
+        <Block className="tw-absolute tw-left-0">
+          <Flowers />
+        </Block>
       </Block>
       <Table />
 
@@ -432,17 +419,35 @@ function Flowers(): T_ReactElement {
 
 function Table(): T_ReactElement {
   return (
-    <Block className="dark:tw-border-yellow-70 tw-flex tw-h-20 tw-items-end tw-justify-end tw-overflow-hidden tw-rounded-tr-md tw-rounded-tl-md tw-border-8 tw-border-b-0 tw-border-yellow-900">
-      <Icon
-        icon={Icon.icon.SOCCER}
-        size={24}
-        wrapperClassName="tw-relative tw-top-0.5 tw-left-7"
-      />
-      <Icon
-        icon={Icon.icon.GUITAR}
-        size={44}
-        wrapperClassName="tw-relative tw--rotate-45 tw-left-2"
-      />
+    <Block className="tw-flex tw-h-20 tw-items-end tw-justify-between tw-overflow-hidden tw-border-4 tw-border-b-0 tw-border-yellow-900">
+      <Block className="tw-flex tw-h-full tw-flex-col tw-justify-between tw-border-r-4 tw-border-b-4 tw-border-yellow-900 tw-bg-yellow-900">
+        <LinkItem
+          label="about me"
+          url={ROUTES.ABOUT_ME}
+        />
+        <Space size={0.5} />
+        <LinkItem
+          label="resume"
+          url={ROUTES.RESUME}
+        />
+        <Space size={0.5} />
+        <LinkItem
+          label="blog"
+          url={ROUTES.BLOG}
+        />
+      </Block>
+      <Block>
+        <Icon
+          icon={Icon.icon.SOCCER}
+          size={24}
+          wrapperClassName="tw-relative tw-top-3.5 tw-left-7"
+        />
+        <Icon
+          icon={Icon.icon.GUITAR}
+          size={44}
+          wrapperClassName="tw-relative tw--rotate-45 tw-left-2 tw-top-0.5"
+        />
+      </Block>
     </Block>
   );
 }
@@ -455,21 +460,16 @@ type T_LinkItemProps = {
 
 function LinkItem({ label, url, className = "" }: T_LinkItemProps): T_ReactElement {
   return (
-    <Block
+    <Link
+      variant={Link.variant.SECONDARY}
       className={classNames(
-        "tw-mx-2 tw-inline-flex tw-py-0.5 tw-text-sm dfr-text-color-dark-strong",
+        "tw-flex tw-flex-1 tw-items-center tw-bg-yellow-700 tw-px-2 tw-text-xs dfr-text-color-light-strong",
         className,
       )}
+      href={url}
     >
-      <InlineText>❴</InlineText>
-      <Link
-        variant={Link.variant.SECONDARY}
-        className="tw-mx-0.5 tw-underline"
-        href={url}
-      >
-        {label}
-      </Link>
-      <InlineText>❵</InlineText>
-    </Block>
+      <InlineText className="tw-mr-1 tw-inline-block tw-h-1 tw-w-1 tw-rounded-full tw-bg-yellow-400" />
+      <InlineText>{label}</InlineText>
+    </Link>
   );
 }

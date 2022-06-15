@@ -4,6 +4,7 @@ import {
   CalendarIcon,
   ChatIcon,
   ChevronDoubleDownIcon,
+  ChevronDoubleUpIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -25,6 +26,7 @@ import {
   PhotographIcon,
   PlayIcon,
   PresentationChartLineIcon,
+  PrinterIcon,
   RefreshIcon,
   ReplyIcon,
   ServerIcon,
@@ -49,6 +51,7 @@ import {
 import type { T_Icon, T_IconName } from "./types";
 
 export const ICONS: Record<T_IconName, T_Icon> = {
+  // own
   COUCHSURFING: {
     icon: "/static/images/icons/couchsurfing.png",
     defaultProps: {
@@ -162,6 +165,7 @@ export const ICONS: Record<T_IconName, T_Icon> = {
     },
   },
 
+  // library icons
   ARROW_UP: {
     icon: ArrowUpIcon,
     defaultProps: {
@@ -207,6 +211,13 @@ export const ICONS: Record<T_IconName, T_Icon> = {
       color: "",
     },
   },
+  CHEVRON_DOUBLE_UP: {
+    icon: ChevronDoubleUpIcon,
+    defaultProps: {
+      className: "",
+      color: "",
+    },
+  },
   CHEVRON_LEFT: {
     icon: ChevronLeftIcon,
     defaultProps: {
@@ -235,6 +246,12 @@ export const ICONS: Record<T_IconName, T_Icon> = {
       color: "",
     },
   },
+  CODE: {
+    icon: CodeIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
   COG: {
     icon: CogIcon,
     defaultProps: {
@@ -248,68 +265,6 @@ export const ICONS: Record<T_IconName, T_Icon> = {
       className: "",
     },
   },
-  FILM: {
-    icon: FilmIcon,
-    defaultProps: {
-      className: "",
-    },
-  },
-  GLOBE_ALT: {
-    icon: GlobeAltIcon,
-    defaultProps: {
-      className: "",
-    },
-  },
-  KEY: {
-    icon: KeyIcon,
-    defaultProps: {
-      className: "",
-    },
-  },
-  MUSIC_NOTE: {
-    icon: MusicNoteIcon,
-    defaultProps: {
-      className: "",
-    },
-  },
-  PHONE: {
-    icon: PhoneIcon,
-    defaultProps: {
-      className: "",
-    },
-  },
-  PHOTOGRAPH: {
-    icon: PhotographIcon,
-    defaultProps: {
-      className: "",
-    },
-  },
-  PRESENTATION_CHART_LINE: {
-    icon: PresentationChartLineIcon,
-    defaultProps: {
-      className: "",
-    },
-  },
-  REFRESH: {
-    icon: RefreshIcon,
-    defaultProps: {
-      className: "",
-    },
-  },
-  SERVER: {
-    icon: ServerIcon,
-    defaultProps: {
-      className: "",
-      color: "",
-    },
-  },
-  USER_CIRCLE: {
-    icon: UserCircleIcon,
-    defaultProps: {
-      className: "",
-    },
-  },
-
   DOTS_CIRCLE_HORIZONTAL: {
     icon: DotsCircleHorizontalIcon,
     defaultProps: {
@@ -336,11 +291,29 @@ export const ICONS: Record<T_IconName, T_Icon> = {
       className: "",
     },
   },
+  FILM: {
+    icon: FilmIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  GLOBE_ALT: {
+    icon: GlobeAltIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
   HEART: {
     icon: HeartIcon,
     defaultProps: {
       className: "",
       color: "tw-text-red-500",
+    },
+  },
+  KEY: {
+    icon: KeyIcon,
+    defaultProps: {
+      className: "",
     },
   },
   LINK: {
@@ -362,11 +335,16 @@ export const ICONS: Record<T_IconName, T_Icon> = {
       color: "tw-text-white dark:tw-text-black",
     },
   },
-  PLAY: {
-    icon: PlayIcon,
+  MOON: {
+    icon: MoonIcon,
+    defaultProps: {
+      color: "",
+    },
+  },
+  MUSIC_NOTE: {
+    icon: MusicNoteIcon,
     defaultProps: {
       className: "",
-      color: "",
     },
   },
   PAUSE: {
@@ -376,8 +354,52 @@ export const ICONS: Record<T_IconName, T_Icon> = {
       color: "",
     },
   },
+  PLAY: {
+    icon: PlayIcon,
+    defaultProps: {
+      className: "",
+      color: "",
+    },
+  },
+  PHONE: {
+    icon: PhoneIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  PHOTOGRAPH: {
+    icon: PhotographIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  PRESENTATION_CHART_LINE: {
+    icon: PresentationChartLineIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  PRINTER: {
+    icon: PrinterIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
+  REFRESH: {
+    icon: RefreshIcon,
+    defaultProps: {
+      className: "",
+    },
+  },
   REPLY: {
     icon: ReplyIcon,
+    defaultProps: {
+      className: "",
+      color: "",
+    },
+  },
+  SERVER: {
+    icon: ServerIcon,
     defaultProps: {
       className: "",
       color: "",
@@ -396,17 +418,10 @@ export const ICONS: Record<T_IconName, T_Icon> = {
       color: "",
     },
   },
-  CODE: {
-    icon: CodeIcon,
+  USER_CIRCLE: {
+    icon: UserCircleIcon,
     defaultProps: {
       className: "",
-    },
-  },
-
-  MOON: {
-    icon: MoonIcon,
-    defaultProps: {
-      color: "",
     },
   },
   VOLUME_OFF: {

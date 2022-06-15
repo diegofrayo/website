@@ -1,7 +1,7 @@
 import * as React from "react";
 
+import { isBoolean, isNotDefined, isNotEmptyString } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElement, T_ReactRefObject } from "~/types";
-import { isNotDefined, isNotEmptyString } from "~/utils/validations";
 
 import Block from "./Block";
 
@@ -9,6 +9,8 @@ import Block from "./Block";
 type T_CollapsibleProps = T_HTMLElementAttributes["details"] & {
   title?: string;
   openedByDefault?: boolean;
+  opened?: boolean;
+
   onShowContentHandler?: () => void;
   onHideContentHandler?: () => void;
 };
@@ -68,6 +70,7 @@ function useController({
   children,
   title = "",
   openedByDefault = false,
+  opened,
   className = "",
   onShowContentHandler = (): void => undefined,
   onHideContentHandler = (): void => undefined,
@@ -88,6 +91,12 @@ function useController({
       onHideContentHandler();
     }
   }, [containerRef, isOpened, onHideContentHandler, onShowContentHandler]);
+
+  React.useEffect(() => {
+    if (isBoolean(opened)) {
+      setIsOpened(opened);
+    }
+  }, [opened]);
 
   return {
     // props
