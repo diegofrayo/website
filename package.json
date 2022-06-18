@@ -96,16 +96,16 @@
     "envfile": "^6.17.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-prettier": "@latest",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-no-loops": "^0.3.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-prettier": "@latest",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "eslint-plugin-unicorn": "^23.0.0",
     "husky": "^6.0.0",
-    "prettier": "^2.6.2",
-    "prettier-plugin-tailwindcss": "^0.1.6",
+    "prettier": "@latest",
+    "prettier-plugin-tailwindcss": "@latest",
     "storybook-addon-themes": "^6.1.0"
   }
 }

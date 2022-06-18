@@ -14,7 +14,7 @@ import {
 import type { T_HTMLElementAttributes, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import { ICONS } from "./constants";
-import { ICONS_KEYS, T_IconName, T_LibraryIconComponent } from "./types";
+import type { T_IconName, T_LibraryIconComponent, T_Icon } from "./types";
 import { isIconElementFromLibrary } from "./utils";
 import Image, { T_ImagePrimitiveComponent } from "../Image";
 import Block from "../Block";
@@ -42,10 +42,9 @@ function Icon(props: T_IconProps): T_ReactElementNullable {
   );
 }
 
-Icon.icon = mirror<T_IconName>(ICONS_KEYS);
+Icon.icon = mirror<keyof typeof ICONS>(Object.keys(ICONS) as T_IconName[]);
 
 export default Icon;
-
 export type { T_IconName };
 
 // --- Controller ---
@@ -82,7 +81,7 @@ function useController({
   }
 
   // vars
-  const icon = ICONS[iconName];
+  const icon = ICONS[iconName] as T_Icon; // TODO: This assertion is dangerous
   const baseIconClassNames = classNames(
     "tw-inline-block",
     isNotDefined(size) && "tw-w-4 tw-h-4",

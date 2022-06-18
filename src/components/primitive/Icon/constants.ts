@@ -47,10 +47,9 @@ import {
   StarIcon,
   SunIcon,
 } from "@heroicons/react/solid";
+import { T_ReactElement } from "~/types";
 
-import type { T_Icon, T_IconName } from "./types";
-
-export const ICONS: Record<T_IconName, T_Icon> = {
+export const ICONS = {
   // own
   COUCHSURFING: {
     icon: "/static/images/icons/couchsurfing.png",
@@ -454,4 +453,19 @@ export const ICONS: Record<T_IconName, T_Icon> = {
       className: "",
     },
   },
+} as const;
+
+// --- Types ---
+
+export type T_Icon = {
+  icon: string | T_LibraryIconComponent;
+  defaultProps: {
+    className?: string;
+    alt?: string;
+    color?: string;
+  };
 };
+
+export type T_LibraryIconComponent = (props: React.ComponentProps<"svg">) => T_ReactElement;
+
+export type T_IconName = keyof typeof ICONS;

@@ -419,33 +419,36 @@ function Flowers(): T_ReactElement {
 
 function Table(): T_ReactElement {
   return (
-    <Block className="tw-flex tw-h-20 tw-items-end tw-justify-between tw-overflow-hidden tw-border-4 tw-border-b-0 tw-border-yellow-900">
-      <Block className="tw-flex tw-h-full tw-flex-col tw-justify-between tw-border-r-4 tw-border-b-4 tw-border-yellow-900 tw-bg-yellow-900">
-        <LinkItem
-          label="about me"
-          url={ROUTES.ABOUT_ME}
-        />
-        <Space size={0.5} />
-        <LinkItem
-          label="resume"
-          url={ROUTES.RESUME}
-        />
-        <Space size={0.5} />
-        <LinkItem
-          label="blog"
-          url={ROUTES.BLOG}
-        />
+    <Block className="tw-relative tw-overflow-hidden tw-border-4 tw-border-b-0 tw-border-yellow-900">
+      <Block className="tw-w-5/12 tw-border-r-4 tw-border-yellow-900 tw-pb-1">
+        <Block className="tw-bg-yellow-900">
+          <LinkItem
+            label="about me"
+            url={ROUTES.ABOUT_ME}
+          />
+          <Space size={0.5} />
+          <LinkItem
+            label="resume"
+            url={ROUTES.RESUME}
+          />
+          <Space size={0.5} />
+          <LinkItem
+            label="blog"
+            url={ROUTES.BLOG}
+          />
+          <Space size={1} />
+        </Block>
       </Block>
-      <Block>
+      <Block className="tw-absolute tw-bottom-0 tw-right-0">
         <Icon
           icon={Icon.icon.SOCCER}
-          size={24}
-          wrapperClassName="tw-relative tw-top-3.5 tw-left-7"
+          size={32}
+          wrapperClassName="tw-relative tw-top-4 tw-left-12"
         />
         <Icon
           icon={Icon.icon.GUITAR}
-          size={44}
-          wrapperClassName="tw-relative tw--rotate-45 tw-left-2 tw-top-0.5"
+          size={56}
+          wrapperClassName="tw-relative tw--rotate-45 tw-left-5 tw-top-0"
         />
       </Block>
     </Block>
@@ -463,7 +466,7 @@ function LinkItem({ label, url, className = "" }: T_LinkItemProps): T_ReactEleme
     <Link
       variant={Link.variant.SECONDARY}
       className={classNames(
-        "tw-flex tw-flex-1 tw-items-center tw-bg-yellow-700 tw-px-2 tw-text-xs dfr-text-color-light-strong",
+        "tw-flex tw-flex-1 tw-items-center tw-bg-yellow-700 tw-px-2 tw-py-0.5 tw-text-xs dfr-text-color-light-strong",
         className,
       )}
       href={url}

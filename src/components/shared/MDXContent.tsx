@@ -15,10 +15,6 @@ type T_MDXContentProps = {
 };
 
 function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps): T_ReactElement {
-  // @ts-ignore: TODO: Unexpected any. Specify a different type
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const MDXComponentsCasted = MDXComponents as any;
-
   return (
     <Block
       is="article"
@@ -26,7 +22,7 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
     >
       <MDXRemote
         {...content}
-        components={MDXComponentsCasted}
+        components={MDXComponents}
       />
 
       <style jsx>

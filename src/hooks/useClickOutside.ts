@@ -7,20 +7,24 @@ import { exists, isNotTrue } from "~/utils/validations";
 function useClickOutside(ref: T_ReactRefObject<HTMLElement>, callback: () => void): void {
   // effects
   React.useEffect(() => {
-    const handleClickOutside: EventListener = function handleClickOutside(event): void {
-      if (
-        isDOMNode(event.target) &&
-        exists<HTMLElement>(ref.current) &&
-        isNotTrue(ref.current.contains(event.target))
-      ) {
-        callback();
-      }
-    };
+    const controller = new AbortController();
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener(
+      "mousedown",
+      function handleClickOutside(event: MouseEvent): void {
+        if (
+          isDOMNode(event.target) &&
+          exists<HTMLElement>(ref.current) &&
+          isNotTrue(ref.current.contains(event.target))
+        ) {
+          callback();
+        }
+      },
+      { signal: controller.signal },
+    );
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      controller.abort();
     };
   }, [ref, callback]);
 }

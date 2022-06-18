@@ -51,10 +51,6 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
     }),
   );
 
-  // @ts-ignore: TODO: Unexpected any. Specify a different type
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const MDXComponentsCasted = MDXComponents as any;
-
   // effects
   useDidMount(() => {
     AuthService.configureHttpHeaders();
@@ -103,7 +99,7 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
               // themes={["light", "dark"]}
               // value={{ light: "tw-light", dark: "tw-dark" }}
             >
-              <MDXProvider components={MDXComponentsCasted}>
+              <MDXProvider components={MDXComponents}>
                 <Component {...pageProps} />
               </MDXProvider>
               <ProgressBar />

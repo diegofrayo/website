@@ -16,7 +16,7 @@ class AuthService {
       .then(({ data }: { data: { token: string } }) => {
         window.localStorage.setItem(this.LOCAL_STORAGE_KEY, data.token);
       })
-      .catch((error) => {
+      .catch((error): never => {
         throw error.response || error;
       });
   }

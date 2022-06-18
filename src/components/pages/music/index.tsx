@@ -153,21 +153,25 @@ function useController(): T_UseController {
 
   // effects
   useDidMount(() => {
-    const focusInput = function focusInput(event: KeyboardEvent): void {
-      if (
-        exists<HTMLInputElement>(inputRef.current) &&
-        (event.metaKey || event.ctrlKey) &&
-        event.code === "KeyF"
-      ) {
-        event.preventDefault();
-        inputRef.current.focus();
-      }
-    };
+    const controller = new AbortController();
 
-    document.addEventListener("keydown", focusInput);
+    document.addEventListener(
+      "keydown",
+      function focusInput(event: KeyboardEvent): void {
+        if (
+          exists<HTMLInputElement>(inputRef.current) &&
+          (event.metaKey || event.ctrlKey) &&
+          event.code === "KeyF"
+        ) {
+          event.preventDefault();
+          inputRef.current.focus();
+        }
+      },
+      { signal: controller.signal },
+    );
 
     return () => {
-      document.removeEventListener("keydown", focusInput);
+      controller.abort();
     };
   });
 
