@@ -130,7 +130,7 @@ function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement
         </Block>
       </Block>
 
-      {hasToDisplayGoToTheTopButton && <GoToTopButton />}
+      {hasToDisplayGoToTheTopButton ? <GoToTopButton /> : null}
     </Block>
   );
 }

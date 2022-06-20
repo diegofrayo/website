@@ -2,7 +2,7 @@ import splitbee from "@splitbee/web";
 
 import { AuthService } from "~/auth";
 import { isBrowser, isDevelopmentEnvironment, logger } from "~/utils/app";
-import { exists } from "~/utils/validations";
+import { isNotEmptyString } from "~/utils/validations";
 import type { T_Object } from "~/types";
 
 // TODO: Command pattern to avoid repeating this line (if (this.isAnalyticsDisabled()) return;)
@@ -31,7 +31,8 @@ class AnalyticsService {
   isAnalyticsDisabled(): boolean {
     if (
       isBrowser() &&
-      (window.location.href.includes("a=d") || exists(window.localStorage.getItem("DFR_DA")))
+      (window.location.href.includes("a=d") ||
+        isNotEmptyString(window.localStorage.getItem("DFR_DA")))
     ) {
       window.localStorage.setItem("DFR_DA", "true");
       return true;

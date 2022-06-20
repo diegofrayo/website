@@ -6,12 +6,12 @@ import { Redirect } from "~/components/shared";
 import { withAuth } from "~/auth";
 import { PERSONAL_PAGES } from "~/utils/constants";
 import { ROUTES } from "~/utils/routing";
-import { isNotEmptyString, notFound } from "~/utils/validations";
+import { isUndefined, isNotEmptyString } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
-const PERSONAL_PAGES_COMPONENTS = PERSONAL_PAGES.filter((page) =>
-  isNotEmptyString(page.componentName !== ""),
-).map((page) => {
+const PERSONAL_PAGES_COMPONENTS = PERSONAL_PAGES.filter((page) => {
+  return isNotEmptyString(page.componentName);
+}).map((page) => {
   return {
     ...page,
     Component: dynamic(() => import(`./${page.componentName}`)),
@@ -27,7 +27,7 @@ function PersonalPage({ page }: T_PersonalPageProps): T_ReactElement {
   const pageConfig = PERSONAL_PAGES_COMPONENTS.find((item) => item.slug === page);
 
   // render
-  if (notFound(pageConfig)) {
+  if (isUndefined(pageConfig)) {
     return <Redirect href={ROUTES.ERROR_404} />;
   }
 

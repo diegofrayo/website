@@ -16,6 +16,7 @@ import { ROUTES, T_RoutesValues } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
 import { getErrorMessage, isDevelopmentEnvironment, reportError } from "~/utils/app";
 import { ENV_VARS } from "~/utils/constants";
+import { isNotEquals } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 function Header(): T_ReactElement {
@@ -156,14 +157,14 @@ function MainMenu(): T_ReactElement {
         />
       </Button>
 
-      {showMenu && (
+      {showMenu ? (
         <Block className="floating-menu-container tw-absolute tw-top-full tw-z-40 tw-w-40 tw-overflow-hidden dfr-shadow dark:dfr-shadow">
           <List className="tw-block">
             {items.map((item) => {
               const isLinkActive =
                 pathname === item.url ||
                 asPath === item.url ||
-                (item.url !== ROUTES.HOME && pathname.startsWith(item.url));
+                (isNotEquals(item.url, ROUTES.HOME) && pathname.startsWith(item.url));
 
               return (
                 <List.Item
@@ -186,7 +187,7 @@ function MainMenu(): T_ReactElement {
             })}
           </List>
         </Block>
-      )}
+      ) : null}
 
       <style jsx>
         {`
@@ -250,7 +251,7 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
         />
       </Button>
 
-      {showMenu && (
+      {showMenu ? (
         <Block className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-44 tw-overflow-hidden dfr-shadow dark:dfr-shadow">
           <MenuItem
             title={t("layout:header:settings:theme")}
@@ -288,7 +289,7 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
           <EnvironmentMenuItem />
           <ReloadPWAMenuItem />
         </Block>
-      )}
+      ) : null}
     </Block>
   );
 });

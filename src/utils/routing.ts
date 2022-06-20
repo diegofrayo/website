@@ -1,6 +1,7 @@
 import { NextRouter } from "next/router";
 
 import { isPWA } from "./browser";
+import { isNotEmptyString, isNotEquals, isNotTrue } from "./validations";
 
 // --- Constants ---
 
@@ -66,10 +67,12 @@ export function redirect(path: string): void {
 }
 
 export function initPWARoutingConfig(router: NextRouter): () => void {
-  if (!window.navigator.onLine) return () => undefined;
+  if (isNotTrue(window.navigator.onLine)) {
+    return () => undefined;
+  }
 
-  const lastPageVisited = window.localStorage.getItem(LOCAL_STORAGE_KEY) || "";
-  if (lastPageVisited && lastPageVisited !== window.location.pathname) {
+  const lastPageVisited = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+  if (isNotEmptyString(lastPageVisited) && isNotEquals(lastPageVisited, window.location.pathname)) {
     window.localStorage.removeItem(LOCAL_STORAGE_KEY);
     window.location.href = lastPageVisited;
     return () => undefined;

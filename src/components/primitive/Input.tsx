@@ -1,10 +1,10 @@
 import * as React from "react";
 import classNames from "classnames";
 
+import { isNotEmptyString } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
 import Text from "./Text";
-import { isNotEmptyString } from "~/utils/validations";
 
 type T_InputProps = T_HTMLElementAttributes["input"] & {
   id: string;

@@ -5,6 +5,7 @@ import { Icon, Input, Link, Block, Button, InlineText } from "~/components/primi
 import { useDidMount } from "~/hooks";
 import { focusElement, handleCopyToClipboardClick, isMobile } from "~/utils/browser";
 import { generateSlug, replaceAll } from "~/utils/strings";
+import { isNull } from "~/utils/validations";
 import type {
   T_ReactElement,
   T_ReactOnChangeEventHandler,
@@ -127,7 +128,7 @@ function useController(): T_UseControllerReturn {
 
   // effects
   useDidMount(() => {
-    if (!inputRef.current) return;
+    if (isNull(inputRef.current)) return;
 
     focusElement(inputRef.current);
     setIsWebOptionSelected(!isMobile());

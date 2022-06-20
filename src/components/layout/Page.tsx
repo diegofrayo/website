@@ -76,12 +76,12 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           name="google-site-verification"
           content="Gf-6mROjwXEjbtUUtl2rX5NgzWuzWxgxoKYTaGsqvtw"
         />
-        {config.disableSEO && (
+        {config.disableSEO ? (
           <meta
             name="robots"
             content="noindex,nofollow"
           />
-        )}
+        ) : null}
         <meta
           name="description"
           content={metadata.description}
@@ -102,12 +102,12 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           property="og:url"
           content={metadata.url}
         />
-        {metadata.image && (
+        {metadata.image ? (
           <meta
             property="og:image"
             content={metadata.image}
           />
-        )}
+        ) : null}
         <meta
           property="og:site_name"
           content={SEO_METADATA.title}

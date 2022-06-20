@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { useToggleBodyScroll } from "~/hooks";
-import { exists } from "~/utils/validations";
+import { isEquals, isNull } from "~/utils/validations";
 import type { T_ReactElement, T_ReactElementNullable, T_ReactOnClickEventObject } from "~/types";
 
 type T_ModalProps = {
@@ -33,7 +33,7 @@ function Backdrop({ children, onCloseHandler }: T_BackdropProps): T_ReactElement
 
   // handlers
   function handleBackdropClick(event: T_ReactOnClickEventObject<HTMLButtonElement>): void {
-    if (exists(backdropRef.current) && backdropRef.current === event.target) {
+    if (!isNull(backdropRef.current) && isEquals(backdropRef.current, event.target)) {
       onCloseHandler();
     }
   }

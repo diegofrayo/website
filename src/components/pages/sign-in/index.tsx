@@ -81,9 +81,7 @@ function useController(): T_UseControllerReturn {
   const [isInputDisabled, setIsInputDisabled] = React.useState(false);
 
   // handlers
-  const onKeyPress: T_UseControllerReturn["onKeyPress"] = async function onKeyPress(
-    event,
-  ): Promise<void> {
+  const onKeyPress: T_UseControllerReturn["onKeyPress"] = async function onKeyPress(event) {
     if (event.key !== "Enter" || isEmptyString(inputValue)) {
       return;
     }

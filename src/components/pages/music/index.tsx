@@ -7,8 +7,9 @@ import { Render, Emoji } from "~/components/shared";
 import { SongDetails } from "~/components/pages/music/components";
 import { useDidMount, useQuery } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
+import { focusElement } from "~/utils/browser";
 import { ROUTES } from "~/utils/routing";
-import { exists } from "~/utils/validations";
+import { isFalsy, isNotEquals, isNull } from "~/utils/validations";
 import type { T_ReactElement, T_ReactOnChangeEventHandler, T_ReactRefObject } from "~/types";
 
 import MusicService, { T_Song } from "./service";
@@ -157,15 +158,17 @@ function useController(): T_UseController {
 
     document.addEventListener(
       "keydown",
-      function focusInput(event: KeyboardEvent): void {
+      function focusInputAndSelectText(event: KeyboardEvent): void {
         if (
-          exists<HTMLInputElement>(inputRef.current) &&
-          (event.metaKey || event.ctrlKey) &&
-          event.code === "KeyF"
+          isNull(inputRef.current) ||
+          isNotEquals(event.code, "KeyF") ||
+          isFalsy(event.metaKey || event.ctrlKey)
         ) {
-          event.preventDefault();
-          inputRef.current.focus();
+          return;
         }
+
+        event.preventDefault();
+        focusElement(inputRef.current);
       },
       { signal: controller.signal },
     );

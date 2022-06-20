@@ -7,7 +7,7 @@ import { useDidMount } from "~/hooks";
 import { T_TranslationFunction, useTranslation } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import { reportError } from "~/utils/app";
-import { exists, isNotEmptyString } from "~/utils/validations";
+import { isEmptyString, isNotEmptyString } from "~/utils/validations";
 import type { T_Object, T_ReactElement } from "~/types";
 
 import Emoji from "./Emoji";
@@ -137,15 +137,13 @@ function useController(): T_UseController {
 
   function readLocalStorageData(): T_Object<string> {
     try {
-      const savedData = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+      const savedData = window.localStorage.getItem(LOCAL_STORAGE_KEY) || "";
 
-      if (exists<string>(savedData)) {
-        const result = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) || "");
-
-        return result;
+      if (isEmptyString(savedData)) {
+        return {};
       }
 
-      return {};
+      return JSON.parse(savedData);
     } catch (error) {
       reportError(error);
       return {};

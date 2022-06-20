@@ -4,7 +4,7 @@ import {
   sortBy,
   transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
-import { isNotUndefined, notExists } from "~/utils/validations";
+import { isNotUndefined, isUndefined } from "~/utils/validations";
 import type { T_Object } from "~/types";
 
 import type {
@@ -39,7 +39,7 @@ class TimelineService {
           const year = timelineGroupItemParsed.startDate.split("/")[0];
           const mutatedResult = { ...result };
 
-          if (notExists(result[year])) {
+          if (isUndefined(result[year])) {
             mutatedResult[year] = {
               year: Number(year),
               title: year,
@@ -53,7 +53,9 @@ class TimelineService {
               .map((category): T_TimelineCategory | undefined => {
                 return categories.find((c) => c.id === category);
               })
-              .filter((c): c is T_TimelineCategory => isNotUndefined(c))
+              .filter((category): category is T_TimelineCategory => {
+                return isNotUndefined(category);
+              })
               .sort(sortBy([{ param: "value", order: "asc" }])),
           });
           mutatedResult[year].items.sort(sortBy([{ param: "startDate", order: "desc" }]));

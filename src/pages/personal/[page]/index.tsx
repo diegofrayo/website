@@ -13,7 +13,9 @@ type T_PageProps = { page: string };
 
 export const getStaticPaths: GetStaticPaths<T_PageProps> = async function getStaticPaths() {
   return {
-    paths: PERSONAL_PAGES.filter((page) => isNotEmptyString(page.componentName)).map((page) => {
+    paths: PERSONAL_PAGES.filter((page) => {
+      return isNotEmptyString(page.componentName);
+    }).map((page) => {
       return {
         params: { page: page.slug },
       };

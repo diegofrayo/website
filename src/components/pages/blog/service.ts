@@ -5,7 +5,7 @@ import {
   sortBy,
   transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
-import { isNotUndefined, notFound } from "~/utils/validations";
+import { isNotUndefined, isUndefined } from "~/utils/validations";
 import type { T_Object, T_UnknownObject } from "~/types";
 
 class BlogService {
@@ -27,7 +27,7 @@ class BlogService {
     const posts = await this.fetchPosts(criteria.locale);
     const post = posts.find((item) => item.slug === criteria.slug);
 
-    if (notFound(post)) {
+    if (isUndefined(post)) {
       throw new Error(`Post not found. { criteria: "${JSON.stringify(criteria)}" }`);
     }
 
@@ -73,13 +73,14 @@ function BlogPostVO(
     ),
   };
 
-  blogPost.categories = (
-    blogPostData.config.categories
-      .map((category): T_BlogPostCategory | undefined => {
-        return categories.find((item) => item.id === category);
-      })
-      .filter((category) => isNotUndefined(category)) as T_BlogPostCategory[]
-  ).sort(sortBy([{ param: "value", order: "asc" }]));
+  blogPost.categories = blogPostData.config.categories
+    .map((category): T_BlogPostCategory | undefined => {
+      return categories.find((item) => item.id === category);
+    })
+    .filter((category): category is T_BlogPostCategory => {
+      return isNotUndefined(category);
+    })
+    .sort(sortBy([{ param: "value", order: "asc" }]));
 
   return blogPost;
 }

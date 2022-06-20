@@ -3,14 +3,7 @@ import classNames from "classnames";
 
 import { logger } from "~/utils/app";
 import { mirror } from "~/utils/objects-and-arrays";
-import {
-  isFilledString,
-  isNotDefined,
-  isNotEmptyString,
-  isNumber,
-  isString,
-  notExists,
-} from "~/utils/validations";
+import { isNotEmptyString, isNumber, isString, isUndefined } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import { ICONS } from "./constants";
@@ -31,7 +24,7 @@ type T_IconProps = {
 function Icon(props: T_IconProps): T_ReactElementNullable {
   const { wrapperProps, iconComponentProps, IconComponent } = useController(props);
 
-  if (notExists(IconComponent)) {
+  if (isUndefined(IconComponent)) {
     return null;
   }
 
@@ -70,7 +63,7 @@ function useController({
   wrapperClassName = "",
   withBackgroundWhenDarkMode = false,
 }: T_IconProps): T_UseControllerReturn {
-  if (notExists(ICONS[iconName])) {
+  if (isUndefined(ICONS[iconName])) {
     logger("WARN", "Icon does not exist", iconName);
 
     return {
@@ -84,7 +77,7 @@ function useController({
   const icon = ICONS[iconName] as T_Icon; // TODO: This assertion is dangerous
   const baseIconClassNames = classNames(
     "tw-inline-block",
-    isNotDefined(size) && "tw-w-4 tw-h-4",
+    isUndefined(size) && "tw-w-4 tw-h-4",
     isString(size) && size,
     icon.defaultProps.className,
     iconClassName,
@@ -112,7 +105,7 @@ function useController({
 
   // utils
   function getColorStyles(): string {
-    if (isFilledString(color)) {
+    if (isNotEmptyString(color)) {
       return color;
     }
 

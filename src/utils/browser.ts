@@ -1,17 +1,13 @@
 import { toast } from "react-toastify";
 
 import { I18nService } from "~/i18n";
-import type { T_ReactOnClickEventObject, T_ReactEventTarget, T_SetTimeout } from "~/types";
+import type { T_ReactOnClickEventObject, T_SetTimeout } from "~/types";
 
 import { reportError } from "./app";
-import { isEmptyString, isNotDefined, isString } from "./validations";
+import { isEmptyString, isString, isUndefined } from "./validations";
 
 export function showAlert(message: string): void {
   alert(message);
-}
-
-export function isDOMNode(element: T_ReactEventTarget | null): element is Node {
-  return "nodeType" in (element || {});
 }
 
 export function getScrollPosition(): number {
@@ -59,7 +55,7 @@ export function focusElement(element: HTMLElement): void {
   element.click();
 }
 
-export function focusInput(element: HTMLInputElement): void {
+export function focusInputAndSelectText(element: HTMLInputElement): void {
   element.focus();
   element.select();
 }
@@ -152,7 +148,7 @@ export async function copyToClipboard(
       ? parameter
       : parameter.currentTarget.getAttribute("data-clipboard-text") || "";
 
-    if (isNotDefined(navigator.clipboard)) {
+    if (isUndefined(navigator.clipboard)) {
       throw new Error("Clipboard not supported");
     }
 

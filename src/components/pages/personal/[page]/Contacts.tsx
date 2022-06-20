@@ -18,7 +18,7 @@ import { isBrowser } from "~/utils/app";
 import { handleCopyToClipboardClick, isMobile } from "~/utils/browser";
 import { formatPhoneNumber } from "~/utils/formatting";
 import { generateSlug } from "~/utils/strings";
-import { isEmptyString, isFilledString } from "~/utils/validations";
+import { isEmptyString, isNotEmptyString } from "~/utils/validations";
 import type { T_Object, T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 type T_ContactsProps = {
@@ -216,7 +216,7 @@ function ContactPhone({ phone, country }: T_ContactPhoneProps): T_ReactElementNu
     USA: "🇺🇲",
     UY: "🇺🇾",
   };
-  const phoneWithoutCode = isFilledString(phone) ? phone.split(" ")[1] : "";
+  const phoneWithoutCode = isNotEmptyString(phone) ? phone.split(" ")[1] : "";
   const isPhoneFromColombia = country === "CO";
 
   // render
@@ -256,7 +256,7 @@ function ContactLinks({ contact }: { contact: T_Contact }): T_ReactElement {
             </WhastAppButton>
           );
         })
-      ) : isFilledString(contact.phone) ? (
+      ) : isNotEmptyString(contact.phone) ? (
         <WhastAppButton phone={contact.phone}>
           <Icon
             icon={Icon.icon.WHATSAPP}
@@ -265,7 +265,7 @@ function ContactLinks({ contact }: { contact: T_Contact }): T_ReactElement {
         </WhastAppButton>
       ) : null}
 
-      {isFilledString(contact.instagram) ? (
+      {isNotEmptyString(contact.instagram) ? (
         <Link
           variant={Link.variant.SIMPLE}
           href={`https://instagram.com/${contact.instagram}`}
@@ -297,7 +297,7 @@ function ContactLinks({ contact }: { contact: T_Contact }): T_ReactElement {
             </PhoneButton>
           );
         })
-      ) : isFilledString(contact.phone) ? (
+      ) : isNotEmptyString(contact.phone) ? (
         <PhoneButton
           phone={contact.phone}
           country={contact.country}

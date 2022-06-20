@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { isBoolean, isNotDefined, isNotEmptyString } from "~/utils/validations";
+import { isBoolean, isNull, isNotEmptyString } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElement, T_ReactRefObject } from "~/types";
 
 import Block from "./Block";
@@ -81,7 +81,9 @@ function useController({
 
   // effects
   React.useEffect(() => {
-    if (isNotDefined(containerRef.current)) return;
+    if (isNull(containerRef.current)) {
+      return;
+    }
 
     if (isOpened) {
       containerRef.current.setAttribute("open", "");

@@ -2,16 +2,16 @@ import * as React from "react";
 
 import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
+import { reportError } from "~/utils/app";
 import { decrypt, encrypt } from "~/utils/dencrypt";
+import { isNull } from "~/utils/validations";
 import {
   focusElement,
-  focusInput,
+  focusInputAndSelectText,
   handleCopyToClipboardClick,
   isSmallScreen,
 } from "~/utils/browser";
 import type { T_ReactElement, T_ReactOnClickEventHandler, T_ReactRefObject } from "~/types";
-import { isNotDefined } from "~/utils/validations";
-import { reportError } from "~/utils/app";
 
 function Dencrypt(): T_ReactElement {
   const {
@@ -99,7 +99,7 @@ function useController(): T_UseControllerReturn {
 
   // effects
   useDidMount(() => {
-    if (isSmallScreen() || isNotDefined(inputRef.current)) {
+    if (isSmallScreen() || isNull(inputRef.current)) {
       return;
     }
 
@@ -130,7 +130,7 @@ function useController(): T_UseControllerReturn {
 
   const onInputFocusHandler: T_UseControllerReturn["onInputFocusHandler"] =
     function onInputFocusHandler(event) {
-      focusInput(event.currentTarget);
+      focusInputAndSelectText(event.currentTarget);
     };
 
   return {

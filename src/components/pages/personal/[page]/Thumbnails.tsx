@@ -2,14 +2,14 @@ import * as React from "react";
 
 import { Input, Block, Title, Image, InlineText, Space, Button } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
+import { downloadComponentAsImage } from "~/utils/browser";
+import { isNull } from "~/utils/validations";
 import type {
   T_ReactElement,
   T_ReactOnChangeEventHandler,
   T_ReactOnClickEventHandler,
   T_ReactRefObject,
 } from "~/types";
-import { downloadComponentAsImage } from "~/utils/browser";
-import { isNotDefined } from "~/utils/validations";
 
 function Thumbnails(): T_ReactElement {
   const {
@@ -112,8 +112,10 @@ function useController(): T_UseControllerReturn {
   };
 
   const handleDownloadAsImageClick: T_UseControllerReturn["handleDownloadAsImageClick"] =
-    async function handleDownloadAsImageClick(): Promise<void> {
-      if (isNotDefined(thumbnailRef.current)) return;
+    async function handleDownloadAsImageClick() {
+      if (isNull(thumbnailRef.current)) {
+        return;
+      }
 
       await downloadComponentAsImage(thumbnailRef.current, CURRENT_BLOG_POST.slug);
     };

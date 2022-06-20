@@ -79,15 +79,15 @@ export default function RoutineItem({
         </Text>
       </Block>
       <Block className="tw-px-3 tw-py-3">
-        {highTime && (
+        {highTime ? (
           <Block className="tw-flex tw-items-center tw-justify-between">
             <InlineText className="tw-text-sm">Tiempo de acción</InlineText>
             <InlineText className="tw-w-20 tw-rounded-lg tw-bg-red-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold tw-text-white">
               {highTime}
             </InlineText>
           </Block>
-        )}
-        {restTime && (
+        ) : null}
+        {restTime ? (
           <React.Fragment>
             <Space size={0.5} />
             <Block className="tw-flex tw-items-center tw-justify-between">
@@ -104,7 +104,7 @@ export default function RoutineItem({
               </InlineText>
             </Block>
           </React.Fragment>
-        )}
+        ) : null}
         <Space size={1} />
         <Block className="tw-flex tw-items-center tw-justify-between">
           {status === ROUTINE_ITEMS_STATUS.NOT_STARTED && (

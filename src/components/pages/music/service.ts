@@ -4,7 +4,7 @@ import {
   sortBy,
   transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
-import { notFound } from "~/utils/validations";
+import { isUndefined } from "~/utils/validations";
 import type { T_UnknownObject } from "~/types";
 
 class MusicService {
@@ -16,7 +16,7 @@ class MusicService {
     const songs = (await this.fetchData()).map((song: T_UnknownObject) => SongVO(song));
     const chordsPage = songs.find((song) => this.isChordsSong(song));
 
-    return (notFound(chordsPage) ? [] : [chordsPage]).concat(
+    return (isUndefined(chordsPage) ? [] : [chordsPage]).concat(
       songs
         .filter((song) => !this.isChordsSong(song))
         .sort(
@@ -33,7 +33,7 @@ class MusicService {
     const songs = await this.fetchSongsList();
     const song = songs.find((item) => item.id === criteria.id);
 
-    if (notFound(song)) {
+    if (isUndefined(song)) {
       throw new Error(`Song not found. { criteria: "${JSON.stringify(criteria)}" }`);
     }
 

@@ -14,6 +14,7 @@ import { setScrollPosition } from "~/utils/browser";
 import { ENV_VARS } from "~/utils/constants";
 import { delay } from "~/utils/misc";
 import { sortBy } from "~/utils/objects-and-arrays";
+import { isNotEquals } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
 import { ROUTINE_ITEMS_STATUS, ROUTINE_STATUS, TIMER_STATUS } from "./constants";
@@ -868,7 +869,7 @@ function useController() {
 
       if (
         isRoutineCompleted(currentRoutine) &&
-        currentRoutine.status !== ROUTINE_STATUS.COMPLETED
+        isNotEquals(currentRoutine.status, ROUTINE_STATUS.COMPLETED)
       ) {
         markRoutineAsCompleted(currentRoutine);
       } else {
