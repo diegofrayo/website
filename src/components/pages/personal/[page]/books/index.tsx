@@ -18,9 +18,7 @@ function Books(): T_ReactElement {
       error={error}
       data={data}
     >
-      {(data: unknown): T_ReactElement => {
-        const books = data as T_Book[];
-
+      {(books): T_ReactElement => {
         return (
           <Block className="dfr-Books tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
             {books.map(({ id, title, calification, author, year, url, cover }) => {

@@ -41,11 +41,12 @@ export function sortBy(criteria: T_Criteria[]): T_SorterFunction {
   const sortByReturn: T_SorterFunction = function sortByReturn(a, b) {
     return criteria.reduce(
       (result, { param, order }: T_Criteria) => {
-        if (result.finish) return result;
+        if (result.finish) {
+          return result;
+        }
 
         const greater = order === "desc" ? -1 : 1;
         const smaller = order === "desc" ? 1 : -1;
-
         const aParam = a[param];
         const bParam = b[param];
 
@@ -61,7 +62,7 @@ export function sortBy(criteria: T_Criteria[]): T_SorterFunction {
             return { result: smaller, finish: true };
           }
 
-          return { result: 0, finish: true };
+          return result;
         }
 
         // TODO

@@ -48,8 +48,8 @@ function MusicPage(): T_ReactElement {
           error={error}
           data={data}
         >
-          {(data: unknown): T_ReactElement => {
-            const { chordsPage, songsList } = parseData(data as T_Song[]);
+          {(data): T_ReactElement => {
+            const { chordsPage, songsList } = parseData(data);
 
             return (
               <Block>

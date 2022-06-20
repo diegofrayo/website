@@ -2,19 +2,25 @@ import * as React from "react";
 
 import { Block, Text, InlineText } from "~/components/primitive";
 import { getErrorMessage } from "~/utils/app";
+import { isUndefined } from "~/utils/validations";
 import type { T_ReactElementNullable } from "~/types";
 
 import Emoji from "./Emoji";
 import Loader from "./Loader";
 
-type T_RenderProps = {
+type T_RenderProps<G_Data> = {
   isLoading: boolean;
   error: unknown;
-  data: unknown;
-  children: (data: unknown) => T_ReactElementNullable;
+  data: G_Data | undefined;
+  children: (data: G_Data) => T_ReactElementNullable;
 };
 
-function Render({ isLoading, error, data, children }: T_RenderProps): T_ReactElementNullable {
+function Render<G_Data>({
+  isLoading,
+  error,
+  data,
+  children,
+}: T_RenderProps<G_Data>): T_ReactElementNullable {
   if (isLoading) {
     return (
       <Block className="tw-p-2 tw-text-center">
@@ -32,7 +38,11 @@ function Render({ isLoading, error, data, children }: T_RenderProps): T_ReactEle
     );
   }
 
-  return children(data);
+  if (!isUndefined(data)) {
+    return children(data);
+  }
+
+  throw new Error("Invalid state");
 }
 
 export default Render;

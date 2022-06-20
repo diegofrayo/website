@@ -394,22 +394,24 @@ function useController() {
     const seconds = Math.round(secondsParam);
 
     if (seconds < 60) {
-      return `00:${fillNumber(seconds)}`;
+      return `00:${addLeftPadding(seconds)}`;
     }
 
     if (seconds < 3600) {
       const minutes = Math.floor(seconds / 60);
-      return `${fillNumber(minutes)}:${fillNumber(seconds % 60)}`;
+      return `${addLeftPadding(minutes)}:${addLeftPadding(seconds % 60)}`;
     }
 
     const hours = Math.floor(seconds / (60 * 60));
     const minutes = seconds / 60 - 60 * hours;
     const lastSeconds = Math.round((minutes - Math.floor(minutes)) * 60);
 
-    return `${fillNumber(hours)}:${fillNumber(Math.floor(minutes))}:${fillNumber(lastSeconds)}`;
+    return `${addLeftPadding(
+      hours,
+    )}:${addLeftPadding(Math.floor(minutes))}:${addLeftPadding(lastSeconds)}`;
   }, []);
 
-  function fillNumber(number: number): string {
+  function addLeftPadding(number: number): string {
     return `${number < 10 ? "0" : ""}${number}`;
   }
 
@@ -493,7 +495,7 @@ function useController() {
   // private
   const createFormattedDate = React.useCallback(function createFormattedDate() {
     const date = new Date();
-    return `${date.getFullYear()}/${fillNumber(date.getMonth() + 1)}/${fillNumber(date.getDate())}`;
+    return `${date.getFullYear()}/${addLeftPadding(date.getMonth() + 1)}/${addLeftPadding(date.getDate())}`;
   }, []);
 
   const updateRoutine = React.useCallback(function updateRoutine(

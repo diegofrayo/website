@@ -17,7 +17,7 @@ import BlogService, { T_BlogPost } from "./service";
 
 function Blog(): T_ReactElement {
   // hooks
-  const { isLoading, error, data } = useQuery("blog", BlogService.fetchPosts);
+  const { isLoading, error, data } = useQuery<T_BlogPost[]>("blog", BlogService.fetchPosts);
   const { t } = useTranslation();
 
   return (
@@ -35,9 +35,7 @@ function Blog(): T_ReactElement {
           error={error}
           data={data}
         >
-          {(response: unknown): T_ReactElement => {
-            const posts = response as T_BlogPost[];
-
+          {(posts): T_ReactElement => {
             return (
               <Block className="tw-flex tw-flex-wrap tw-justify-between">
                 {posts

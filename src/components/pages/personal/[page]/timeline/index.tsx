@@ -9,12 +9,7 @@ import { isNotUndefined, isUndefined, isNotEmptyString } from "~/utils/validatio
 import type { T_ReactElement } from "~/types";
 
 import TimelineService from "./service";
-import {
-  T_Timeline,
-  T_TimelineCategory,
-  T_TimelineFetchResponse,
-  T_TimelineGroupItem,
-} from "./types";
+import { T_TimelineCategory, T_TimelineFetchResponse, T_TimelineGroupItem } from "./types";
 
 function TimelinePage(): T_ReactElement {
   const {
@@ -36,11 +31,8 @@ function TimelinePage(): T_ReactElement {
       error={error}
       data={data}
     >
-      {(data: unknown): T_ReactElement => {
-        const { categories, timeline } = data as {
-          categories: T_TimelineCategory[];
-          timeline: T_Timeline;
-        };
+      {(data): T_ReactElement => {
+        const { categories, timeline } = data;
 
         return (
           <React.Fragment>

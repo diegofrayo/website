@@ -85,10 +85,6 @@ function MainMenu(): T_ReactElement {
               url: ROUTES.PERSONAL,
             },
             {
-              label: translator.t("layout:header:common:menu_item_bookmarks"),
-              url: ROUTES.BOOKMARKS,
-            },
-            {
               label: translator.t("layout:header:menu:sign_out"),
               url: ROUTES.SIGN_OUT,
             },
@@ -137,6 +133,10 @@ function MainMenu(): T_ReactElement {
       {
         label: translator.t("layout:header:menu:music"),
         url: ROUTES.MUSIC,
+      },
+      {
+        label: translator.t("layout:header:common:menu_item_readings"),
+        url: ROUTES.READINGS,
       },
     ];
   }

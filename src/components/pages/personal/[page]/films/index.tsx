@@ -34,8 +34,8 @@ function Films(): T_ReactElement {
       error={error}
       data={data}
     >
-      {(data: unknown): T_ReactElement => {
-        const { categories, films } = data as T_Data;
+      {(data): T_ReactElement => {
+        const { categories, films } = data;
 
         return (
           <Block>
