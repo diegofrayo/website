@@ -6,7 +6,8 @@ import type { T_ReactElement, T_ReactFunctionComponent, T_ReactRefObject } from 
 
 import SourceCode, { T_SourceCodeProps } from "./SourceCode";
 
-/* eslint-disable react/no-unused-prop-types */ /* TODO */
+// WARN: False positive
+/* eslint-disable react/no-unused-prop-types */
 type T_PlaygroundProps = Pick<T_SourceCodeProps, "code" | "language"> & {
   Component: T_ReactFunctionComponent;
 };

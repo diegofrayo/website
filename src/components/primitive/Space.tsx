@@ -9,7 +9,8 @@ const VARIANTS_OPTIONS = ["DEFAULT", "DASHED"] as const;
 const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
 type T_Variant = typeof VARIANTS_OPTIONS[number];
 
-/* eslint-disable react/no-unused-prop-types */ /* TODO */
+// WARN: False positive
+/* eslint-disable react/no-unused-prop-types */
 type T_SpaceProps = T_HTMLElementAttributes["hr"] & {
   className?: string;
   variant?: T_Variant;

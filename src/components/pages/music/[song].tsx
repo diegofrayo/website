@@ -16,7 +16,8 @@ import type { T_ReactElement } from "~/types";
 
 import MusicService, { T_Song } from "./service";
 
-/* eslint-disable react/no-unused-prop-types */ /* TODO */
+// WARN: False positive
+/* eslint-disable react/no-unused-prop-types */
 type T_PageProps = {
   song: T_Song;
   songMDXContent: MDXRemoteSerializeResult;

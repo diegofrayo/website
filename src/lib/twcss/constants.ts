@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 const HTML_TAGS = [
   "a",
   "abbr",
@@ -134,6 +132,7 @@ const HTML_TAGS = [
   "svg",
   "text",
   "tspan",
-];
+] as const;
 
-export default HTML_TAGS;
+export type T_HTML_TAG = typeof HTML_TAGS[number];
+export { HTML_TAGS };

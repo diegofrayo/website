@@ -6,6 +6,7 @@ import twcss from "~/lib/twcss";
 import { T_Locale } from "~/i18n";
 import { logger } from "~/utils/app";
 import { mirror } from "~/utils/objects-and-arrays";
+import { isFalsy } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElementNullable } from "~/types";
 
 const VARIANTS_OPTIONS = ["UNSTYLED", "SIMPLE", "PRIMARY", "SECONDARY"] as const;
@@ -32,7 +33,7 @@ function Link(props: T_LinkProps): T_ReactElementNullable {
     ...rest
   } = useController(props);
 
-  if (!href || !children) {
+  if (!href || isFalsy(children)) {
     logger("WARN", "Link component: href or children are falsy", { href, children });
     return null;
   }
@@ -40,11 +41,12 @@ function Link(props: T_LinkProps): T_ReactElementNullable {
   if (isExternalLink) {
     return (
       <LinkElement
-        href={href}
-        className={classNames("dfr-Link", className)}
-        twcssVariant={variant}
         {...composeLinkAttributes()}
         {...rest}
+        href={href}
+        className={classNames("dfr-Link", className)}
+        TWCSSVariant={variant}
+        is="a"
       >
         {children}
       </LinkElement>
@@ -58,9 +60,10 @@ function Link(props: T_LinkProps): T_ReactElementNullable {
       passHref
     >
       <LinkElement
-        className={classNames("dfr-Link", className)}
-        twcssVariant={variant}
         {...rest}
+        className={classNames("dfr-Link", className)}
+        TWCSSVariant={variant}
+        is="a"
       >
         {children}
       </LinkElement>
@@ -106,7 +109,7 @@ function useController({
 // --- Components ---
 
 const LinkElement = twcss.a({
-  __base: "",
+  $TWCSS_BASE_STYLES: "",
   UNSTYLED: "",
   SIMPLE: "dfr-transition-opacity",
   PRIMARY:

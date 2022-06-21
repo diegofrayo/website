@@ -87,7 +87,8 @@ export async function downloadComponentAsImage(
 ): Promise<void> {
   const domtoimage = await import("dom-to-image");
 
-  // @ts-ignore: TODO: Property 'toPng' does not exist on type 'typeof'
+  // WARN: This library's(dom-to-image) type file has issues
+  // @ts-ignore
   return domtoimage.toPng(componentRef, { quality: 1 }).then((dataUrl: string) => {
     const link = document.createElement("a");
     link.download = `${fileName}.png`;
@@ -97,7 +98,12 @@ export async function downloadComponentAsImage(
 }
 
 export function isMobile(): boolean {
-  // @ts-ignore: TODO: Property 'opera' does not exist on type 'window'
+  /* WARN:
+   * I ignore this because I'm accessing to a untyped attribute
+   * (window.opera) on window object.
+   * This code is irrelevant, i'm not going to try to fix this
+   */
+  // @ts-ignore
   const navigatorDetails = navigator.userAgent || navigator.vendor || window.opera;
   const isMobileResult = (function isMobileDevice(input: string): boolean {
     if (
@@ -118,7 +124,12 @@ export function isMobile(): boolean {
 }
 
 export function isMobileiOS(): boolean {
-  // @ts-ignore: TODO: Property 'userAgentData' does not exist on type 'Navigator'
+  /* WARN:
+   * I ignore this because I'm accessing to a untyped attribute
+   * (navigator.userAgentData) on navigator object.
+   * This code is irrelevant, i'm not going to try to fix this
+   */
+  // @ts-ignore
   const browserPlatform = window.navigator.userAgentData?.platform || window.navigator.platform;
   const isIpadWithIOS13 = navigator.userAgent.includes("Mac") && "ontouchend" in document;
   const APPLE_DEVICES_NAMES = [
@@ -134,7 +145,12 @@ export function isMobileiOS(): boolean {
 }
 
 export function isPWA(): boolean {
-  // @ts-ignore: TODO: Property 'standalone' does not exist on type 'Navigator'
+  /* WARN:
+   * I ignore this because I'm accessing to a untyped attribute
+   * (navigator.standalone) on navigator object.
+   * This code is irrelevant, i'm not going to try to fix this
+   */
+  // @ts-ignore
   const isStandaloneModeActive = window.navigator.standalone;
 
   return isStandaloneModeActive || window.matchMedia("(display-mode: standalone)").matches;

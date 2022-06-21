@@ -1,14 +1,152 @@
-// @ts-nocheck
+import { HTML_TAGS, T_HTML_TAG } from "./constants";
+import twcssCreator, { T_TWCSSCreator, T_TWCSSComponentDefinition } from "./service";
 
-import HTML_TAGS from "./tags";
-import twcssCreator from "./service";
-
-const twcss: any = Object.assign(
+const twcss: T_TWCSS = Object.assign(
   twcssCreator,
-  HTML_TAGS.reduce((result, tagName: string) => {
-    result[tagName] = twcssCreator(tagName);
-    return result;
-  }, {}),
+  HTML_TAGS.reduce((result, tagName) => {
+    return {
+      ...result,
+      [tagName]: twcssCreator(tagName),
+    };
+  }, {} as Record<T_HTML_TAG, T_TWCSSComponentDefinition>),
 );
 
 export default twcss;
+
+// --- Types ---
+
+interface T_TWCSS extends T_TWCSSCreator {
+  a: T_TWCSSComponentDefinition;
+  abbr: T_TWCSSComponentDefinition;
+  address: T_TWCSSComponentDefinition;
+  area: T_TWCSSComponentDefinition;
+  article: T_TWCSSComponentDefinition;
+  aside: T_TWCSSComponentDefinition;
+  audio: T_TWCSSComponentDefinition;
+  base: T_TWCSSComponentDefinition;
+  bdi: T_TWCSSComponentDefinition;
+  bdo: T_TWCSSComponentDefinition;
+  big: T_TWCSSComponentDefinition;
+  blockquote: T_TWCSSComponentDefinition;
+  body: T_TWCSSComponentDefinition;
+  br: T_TWCSSComponentDefinition;
+  button: T_TWCSSComponentDefinition;
+  canvas: T_TWCSSComponentDefinition;
+  caption: T_TWCSSComponentDefinition;
+  cite: T_TWCSSComponentDefinition;
+  code: T_TWCSSComponentDefinition;
+  col: T_TWCSSComponentDefinition;
+  colgroup: T_TWCSSComponentDefinition;
+  data: T_TWCSSComponentDefinition;
+  datalist: T_TWCSSComponentDefinition;
+  dd: T_TWCSSComponentDefinition;
+  del: T_TWCSSComponentDefinition;
+  details: T_TWCSSComponentDefinition;
+  dfn: T_TWCSSComponentDefinition;
+  dialog: T_TWCSSComponentDefinition;
+  div: T_TWCSSComponentDefinition;
+  dl: T_TWCSSComponentDefinition;
+  dt: T_TWCSSComponentDefinition;
+  em: T_TWCSSComponentDefinition;
+  embed: T_TWCSSComponentDefinition;
+  fieldset: T_TWCSSComponentDefinition;
+  figcaption: T_TWCSSComponentDefinition;
+  figure: T_TWCSSComponentDefinition;
+  footer: T_TWCSSComponentDefinition;
+  form: T_TWCSSComponentDefinition;
+  h1: T_TWCSSComponentDefinition;
+  h2: T_TWCSSComponentDefinition;
+  h3: T_TWCSSComponentDefinition;
+  h4: T_TWCSSComponentDefinition;
+  h5: T_TWCSSComponentDefinition;
+  h6: T_TWCSSComponentDefinition;
+  head: T_TWCSSComponentDefinition;
+  header: T_TWCSSComponentDefinition;
+  hgroup: T_TWCSSComponentDefinition;
+  hr: T_TWCSSComponentDefinition;
+  html: T_TWCSSComponentDefinition;
+  i: T_TWCSSComponentDefinition;
+  iframe: T_TWCSSComponentDefinition;
+  img: T_TWCSSComponentDefinition;
+  input: T_TWCSSComponentDefinition;
+  ins: T_TWCSSComponentDefinition;
+  kbd: T_TWCSSComponentDefinition;
+  keygen: T_TWCSSComponentDefinition;
+  label: T_TWCSSComponentDefinition;
+  legend: T_TWCSSComponentDefinition;
+  li: T_TWCSSComponentDefinition;
+  link: T_TWCSSComponentDefinition;
+  main: T_TWCSSComponentDefinition;
+  map: T_TWCSSComponentDefinition;
+  mark: T_TWCSSComponentDefinition;
+  marquee: T_TWCSSComponentDefinition;
+  menu: T_TWCSSComponentDefinition;
+  menuitem: T_TWCSSComponentDefinition;
+  meta: T_TWCSSComponentDefinition;
+  meter: T_TWCSSComponentDefinition;
+  nav: T_TWCSSComponentDefinition;
+  noscript: T_TWCSSComponentDefinition;
+  object: T_TWCSSComponentDefinition;
+  ol: T_TWCSSComponentDefinition;
+  optgroup: T_TWCSSComponentDefinition;
+  option: T_TWCSSComponentDefinition;
+  output: T_TWCSSComponentDefinition;
+  p: T_TWCSSComponentDefinition;
+  param: T_TWCSSComponentDefinition;
+  picture: T_TWCSSComponentDefinition;
+  pre: T_TWCSSComponentDefinition;
+  progress: T_TWCSSComponentDefinition;
+  q: T_TWCSSComponentDefinition;
+  rp: T_TWCSSComponentDefinition;
+  rt: T_TWCSSComponentDefinition;
+  ruby: T_TWCSSComponentDefinition;
+  s: T_TWCSSComponentDefinition;
+  samp: T_TWCSSComponentDefinition;
+  script: T_TWCSSComponentDefinition;
+  section: T_TWCSSComponentDefinition;
+  select: T_TWCSSComponentDefinition;
+  small: T_TWCSSComponentDefinition;
+  source: T_TWCSSComponentDefinition;
+  span: T_TWCSSComponentDefinition;
+  strong: T_TWCSSComponentDefinition;
+  style: T_TWCSSComponentDefinition;
+  sub: T_TWCSSComponentDefinition;
+  summary: T_TWCSSComponentDefinition;
+  sup: T_TWCSSComponentDefinition;
+  table: T_TWCSSComponentDefinition;
+  tbody: T_TWCSSComponentDefinition;
+  td: T_TWCSSComponentDefinition;
+  textarea: T_TWCSSComponentDefinition;
+  tfoot: T_TWCSSComponentDefinition;
+  th: T_TWCSSComponentDefinition;
+  thead: T_TWCSSComponentDefinition;
+  time: T_TWCSSComponentDefinition;
+  title: T_TWCSSComponentDefinition;
+  tr: T_TWCSSComponentDefinition;
+  track: T_TWCSSComponentDefinition;
+  u: T_TWCSSComponentDefinition;
+  ul: T_TWCSSComponentDefinition;
+  var: T_TWCSSComponentDefinition;
+  video: T_TWCSSComponentDefinition;
+  wbr: T_TWCSSComponentDefinition;
+  circle: T_TWCSSComponentDefinition;
+  clipPath: T_TWCSSComponentDefinition;
+  defs: T_TWCSSComponentDefinition;
+  ellipse: T_TWCSSComponentDefinition;
+  foreignObject: T_TWCSSComponentDefinition;
+  g: T_TWCSSComponentDefinition;
+  image: T_TWCSSComponentDefinition;
+  line: T_TWCSSComponentDefinition;
+  linearGradient: T_TWCSSComponentDefinition;
+  mask: T_TWCSSComponentDefinition;
+  path: T_TWCSSComponentDefinition;
+  pattern: T_TWCSSComponentDefinition;
+  polygon: T_TWCSSComponentDefinition;
+  polyline: T_TWCSSComponentDefinition;
+  radialGradient: T_TWCSSComponentDefinition;
+  rect: T_TWCSSComponentDefinition;
+  stop: T_TWCSSComponentDefinition;
+  svg: T_TWCSSComponentDefinition;
+  text: T_TWCSSComponentDefinition;
+  tspan: T_TWCSSComponentDefinition;
+}

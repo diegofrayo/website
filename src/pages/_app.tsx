@@ -121,7 +121,7 @@ export default CustomApp;
 
 // https://nextjs.org/docs/api-reference/data-fetching/get-initial-props
 // https://linguinecode.com/post/next-js-typescript-getinitialprops
-// @ts-ignore: TODO: Unexpected any. Specify a different
+// @ts-ignore
 CustomApp.getInitialProps = async (appContext): Promise<T_UnknownObject> => {
   const metadata = await MetadataService.fetchData(appContext.router.locale);
   const appProps = await App.getInitialProps(appContext);

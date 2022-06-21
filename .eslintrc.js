@@ -4,11 +4,11 @@ module.exports = {
   plugins: ["prettier", "no-loops", "react-hooks", "@typescript-eslint"],
   ignorePatterns: [
     "public/**/*",
-    "src/components/pages/personal/*/timer/**/*",
     "src/components/pages/music/components/TextFormatter.tsx",
+    "src/components/pages/personal/*/timer/**/*",
     "src/i18n",
-    "src/lib/**/*",
-    "src/state/**/*",
+    "src/lib/guitar",
+    "src/state",
     "src/stories",
   ],
   extends: [
@@ -34,8 +34,8 @@ module.exports = {
   },
   globals: {
     console: true,
-    process: true,
     module: true,
+    process: true,
     window: true,
   },
   rules: {

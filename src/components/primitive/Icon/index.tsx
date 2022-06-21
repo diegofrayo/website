@@ -74,7 +74,12 @@ function useController({
   }
 
   // vars
-  const icon = ICONS[iconName] as T_Icon; // TODO: This assertion is dangerous
+  /*
+   * This assertion is undesirable but necessary because I'm typing
+   * the icons keys object in a different way in comparison to the
+   * other components
+   */
+  const icon = ICONS[iconName] as T_Icon;
   const baseIconClassNames = classNames(
     "tw-inline-block",
     isUndefined(size) && "tw-w-4 tw-h-4",

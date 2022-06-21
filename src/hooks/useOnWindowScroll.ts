@@ -16,7 +16,6 @@ function useOnWindowScroll(callback: T_Callback, when = true): void {
       return () => undefined;
     }
 
-    // TODO: https://stackoverflow.com/questions/65530852/react-typescript-scroll-event-type-not-assignable-to-window-addeventlistener
     const passedCb: EventListener = (event: Event) => {
       savedHandler.current(event);
     };

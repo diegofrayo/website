@@ -31,8 +31,6 @@ export type T_ReactFunctionComponent<G_ComponentProps = T_UnknownObject> =
 
 export type T_ReactRefObject<RefType> = React.RefObject<RefType>;
 
-// export type T_ReactForwardedRef = React.ForwardedRef<unknown>;
-
 export type T_ReactEffectCallback = React.EffectCallback;
 
 export type T_ReactSetState<T_State> = React.Dispatch<React.SetStateAction<T_State>>;

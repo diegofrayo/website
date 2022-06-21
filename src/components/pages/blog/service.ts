@@ -51,7 +51,6 @@ export default new BlogService();
 
 // --- Value objects ---
 
-// TODO: Validate scheme using a library and infer its types
 function BlogPostVO(
   blogPostData: T_BlogPostFetchDTO,
   categories: T_BlogPostCategory[],

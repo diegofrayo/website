@@ -8,9 +8,8 @@ import AuthService from "./service";
 
 function withAuth<G_ComponentProps = T_UnknownObject>(
   Component: T_ReactFunctionComponent<G_ComponentProps>,
-  // TODO
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  options?: { denyLoggedIn?: boolean; allowIf?: (props: G_ComponentProps) => boolean },
+  options?: { denyLoggedIn?: boolean; allowIf?: (props: G_ComponentProps) => boolean }, // WARN: False positive
 ): T_ReactFunctionComponent<G_ComponentProps> {
   return function WithAuthComponent(props: G_ComponentProps): T_ReactElementNullable {
     // states & refs

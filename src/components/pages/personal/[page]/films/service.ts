@@ -29,7 +29,6 @@ export default new FilmsService();
 
 // --- Value objects ---
 
-// TODO: Validate scheme using a library and infer its types
 function FilmVO(data: T_UnknownObject): T_Film {
   const film = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Film>(data);
 

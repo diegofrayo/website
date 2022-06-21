@@ -21,7 +21,11 @@ import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 import { ENV_VARS } from "./constants";
 
-// @ts-ignore: TODO: Unexpected any. Specify a different type
+/* WARN:
+ * I don't know how to type this object, so, I used any for this
+ * It is not important to solve this
+ */
+// @ts-ignore
 export const MDXComponents = {
   a: function A({ children, ...rest }: { children: T_ReactChildren }): T_ReactElement {
     return (

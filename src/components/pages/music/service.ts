@@ -58,7 +58,6 @@ export default new MusicService();
 
 // --- Value objects ---
 
-// TODO: Validate scheme using a library and infer its types
 function SongVO(data: T_UnknownObject): T_Song {
   const song = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Song>(data);
 

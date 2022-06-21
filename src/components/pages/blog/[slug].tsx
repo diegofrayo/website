@@ -91,7 +91,7 @@ function BlogPostDetails({
       {isPublished ? (
         <React.Fragment>
           <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
-            <BlogPostDetailsItem.Icon
+            <BlogPostDetailsItemIcon
               icon={Icon.icon.CALENDAR}
               color="tw-text-black dark:tw-text-white"
             />
@@ -104,7 +104,7 @@ function BlogPostDetails({
         </React.Fragment>
       ) : null}
       <BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
-        <BlogPostDetailsItem.Icon
+        <BlogPostDetailsItemIcon
           icon={Icon.icon.EDIT}
           color="tw-text-black dark:tw-text-white"
         />
@@ -132,7 +132,7 @@ function BlogPostActions(): T_ReactElement {
       className="tw-flex tw-flex-wrap tw-justify-between"
     >
       <BlogPostDetailsItem onClick={handleCopyUrlClick}>
-        <BlogPostDetailsItem.Icon icon={Icon.icon.LINK} />
+        <BlogPostDetailsItemIcon icon={Icon.icon.LINK} />
         <InlineText>{t("page:copy_url_to_clipboard")}</InlineText>
       </BlogPostDetailsItem>
       <Space responsive="tw-w-full tw-my-1 sm:tw-hidden" />
@@ -169,14 +169,15 @@ const BlogPostDetailsItemLink = withSafeRendering(
       <BlogPostDetailsItem
         is={Link}
         href={composeMailToURL()}
+        isExternalLink
       >
-        <BlogPostDetailsItem.Icon icon={Icon.icon.REPLY} />
+        <BlogPostDetailsItemIcon icon={Icon.icon.REPLY} />
         <InlineText>{t("page:email_message_label")}</InlineText>
       </BlogPostDetailsItem>
     );
   },
 );
 
-BlogPostDetailsItem.Icon = twcss(Icon)("", {
+const BlogPostDetailsItemIcon = twcss(Icon)("", {
   wrapperClassName: "tw-mr-2 tw-relative tw--top-1px",
 });

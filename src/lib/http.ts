@@ -9,7 +9,7 @@ axios.interceptors.request.use((config) => {
     ...config,
     headers: {
       ...config.headers,
-      ["dfr-ua-browser"]: isBrowser(),
+      "dfr-ua-browser": isBrowser(),
     },
   };
 });

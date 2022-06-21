@@ -99,7 +99,11 @@ function Gallery({
 
   // handlers
   function onSlideChangeHandler(): void {
-    // TODO
+    /*
+     * I use `this` here because of the library docs is not enough clear
+     * about how to get the activeIndex and I don't want to spend time with this,
+     * it is not too important
+     */
     // @ts-ignore
     // eslint-disable-next-line react/no-this-in-sfc
     setActiveIndex(this.activeIndex + 1);
