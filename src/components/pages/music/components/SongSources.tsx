@@ -3,6 +3,7 @@ import * as React from "react";
 import { Icon, Image, Link, List, Title, Block, Text } from "~/components/primitive";
 import { useTranslation } from "~/i18n";
 import type { T_ReactElementNullable } from "~/types";
+import { generateSlug } from "~/utils/strings";
 
 import { T_Song } from "../service";
 
@@ -28,10 +29,10 @@ function SongSources({ sources }: T_SongSourcesProps): T_ReactElementNullable {
       <Text className="tw-my-2 tw-text-sm tw-italic">{t("page:disclaimer")}</Text>
 
       <List variant={List.variant.UNSTYLED}>
-        {sources.map((item, index) => {
+        {sources.map((item) => {
           return (
             <List.Item
-              key={`SongSources-Link-source-${index}`}
+              key={generateSlug(item.url)}
               className="tw-mb-2 last:tw-mb-0"
             >
               <Link

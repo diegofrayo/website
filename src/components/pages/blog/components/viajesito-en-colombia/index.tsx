@@ -10,14 +10,15 @@ import type { T_ReactElement, T_ReactElementNullable, T_ReactSetState } from "~/
 
 const Context = React.createContext({} as T_Context);
 
-type T_VEC_TimelineItemProps = {
+type T_VECTimelineItemProps = {
   data: {
+    id: string;
     text: string;
     assets: T_ImageItem[];
   };
 };
 
-export function VEC_TimelineItem({ data }: T_VEC_TimelineItemProps): T_ReactElement {
+export default function VECTimelineItem({ data }: T_VECTimelineItemProps): T_ReactElement {
   // states & refs
   const [isModalVisible, setIsModalVisible, toggleIsModalVisible] = useEnhancedState(false);
   const [sharedIndex, setSharedIndex] = React.useState(0);
@@ -69,7 +70,7 @@ export function VEC_TimelineItem({ data }: T_VEC_TimelineItemProps): T_ReactElem
 
 type T_GalleryProps = {
   variant: "DEFAULT" | "FULLSCREEN";
-  data: T_VEC_TimelineItemProps["data"];
+  data: T_VECTimelineItemProps["data"];
   toggleIsModalVisible: () => void;
   setSharedIndex: T_ReactSetState<number>;
   initialSlide?: number;

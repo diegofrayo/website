@@ -14,6 +14,7 @@ import { setScrollPosition } from "~/utils/browser";
 import { ENV_VARS } from "~/utils/constants";
 import { delay } from "~/utils/misc";
 import { sortBy } from "~/utils/objects-and-arrays";
+import { generateSlug } from "~/utils/strings";
 import { isNotEquals } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
@@ -234,7 +235,7 @@ function TimerPage(): T_ReactElement {
                           <Space size={2} />
                           {routinesHistory.map(({ date, routine }) => {
                             return (
-                              <React.Fragment key={date}>
+                              <React.Fragment key={generateSlug(date)}>
                                 <Stats
                                   title={date}
                                   data={getStats(routine)}

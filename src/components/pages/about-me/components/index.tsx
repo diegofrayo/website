@@ -12,7 +12,7 @@ type T_AboutMeBlockProps = {
   layout?: "R" | "L";
 };
 
-export function AboutMeBlock({
+export default function AboutMeBlock({
   image,
   text,
   isPortrait,

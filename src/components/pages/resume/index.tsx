@@ -15,8 +15,9 @@ import {
 import { GoBack } from "~/components/shared";
 import { useTranslation } from "~/i18n";
 import { ROUTES } from "~/utils/routing";
-import type { T_ReactChildren, T_ReactElement } from "~/types";
+import { generateSlug } from "~/utils/strings";
 import { isNotEmptyString } from "~/utils/validations";
+import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactElement {
   // hooks
@@ -84,12 +85,12 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
                   size={32}
                 />
               </Link>
-              {resume.contactInfo.websites.map((website, index) => {
+              {resume.contactInfo.websites.map((website) => {
                 const isPersonalWebsite = website.name.toLowerCase().includes("website");
 
                 return (
                   <Link
-                    key={`website-${index}`}
+                    key={generateSlug(website.name)}
                     variant={Link.variant.SIMPLE}
                     href={website.value}
                     className="tw-mx-2 tw-inline-block"
@@ -122,10 +123,10 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
             </ResumeBlock>
             <ResumeBlock title="Education">
               <Block>
-                {resume.education.map((item, index) => {
+                {resume.education.map((item) => {
                   return (
                     <Block
-                      key={`education-${index}`}
+                      key={generateSlug(item.degree)}
                       className="tw-mb-4 tw-flex tw-items-start last:tw-mb-0"
                     >
                       <Image
@@ -169,8 +170,8 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 
           <ResumeBlock title="Skills">
             <List variant={List.variant.DEFAULT}>
-              {resume.skills.map((item, index) => {
-                return <List.Item key={`Skill-${index}`}>{item}</List.Item>;
+              {resume.skills.map((item) => {
+                return <List.Item key={generateSlug(item)}>{item}</List.Item>;
               })}
             </List>
           </ResumeBlock>
@@ -208,15 +209,17 @@ function ResumeBlock({ title, children }: T_ResumeBlockProps): T_ReactElement {
   );
 }
 
-type T_ExperienceTimelineProps = { experience: T_Experience[] };
+type T_ExperienceTimelineProps = {
+  experience: T_Experience[];
+};
 
 export function ExperienceTimeline({ experience }: T_ExperienceTimelineProps): T_ReactElement {
   return (
     <Block className="tw-ml-3 tw-border-l-4 tw-border-black dark:dfr-border-color-primary">
-      {experience.map((item, index) => {
+      {experience.map((item) => {
         return (
           <ExperienceTimelineItem
-            key={`ExperienceTimelineItem-${index}`}
+            key={item.id}
             {...item}
           />
         );
@@ -326,6 +329,9 @@ type T_Education = {
 };
 
 type T_Experience = {
+  // WARN: False positive
+  // eslint-disable-next-line react/no-unused-prop-types
+  id: string;
   role: string;
   company: string;
   companyLogo: string;

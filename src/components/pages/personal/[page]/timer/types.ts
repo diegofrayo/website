@@ -6,7 +6,7 @@ export type T_RoutinesTemplatesResponse = {
   routines: T_Routine[];
 };
 
-export interface T_Routine {
+export type T_Routine = {
   id: string;
   items: T_RoutineItem[];
   name: string;
@@ -16,7 +16,7 @@ export interface T_Routine {
   startTime: { ms: number; formatted: string };
   stats?: T_RoutineStats;
   status: "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED";
-}
+};
 
 export type T_RoutineItem = {
   highTime: string;

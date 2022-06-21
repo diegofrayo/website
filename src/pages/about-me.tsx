@@ -5,7 +5,7 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { Page, MainLayout } from "~/components/layout";
 import { MDXContent } from "~/components/shared";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
-import { dataLoader } from "~/server";
+import dataLoader from "~/server";
 import { MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
 import type { T_ReactElement } from "~/types";

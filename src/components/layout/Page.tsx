@@ -18,12 +18,8 @@ import {
 import { selectPageConfig, T_PageConfig } from "~/state/modules/page-config";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { ROUTES, T_RoutesValues } from "~/utils/routing";
-import type {
-  T_ReactChildren,
-  T_ReactElement,
-  T_ReactElementNullable,
-  T_UnknownObject,
-} from "~/types";
+import { generateSlug } from "~/utils/strings";
+import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 import { isNotEmptyString } from "~/utils/validations";
 
 type T_PageProps = {
@@ -35,7 +31,14 @@ type T_PageProps = {
     description?: string;
     image?: string;
     disableSEO?: boolean;
-    scripts?: { element: "link"; props: T_UnknownObject }[];
+    scripts?: {
+      element: "link";
+      props: {
+        href: string;
+        rel: string;
+        as: string;
+      };
+    }[];
   };
 };
 
@@ -113,11 +116,12 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           content={SEO_METADATA.title}
         />
 
-        {config.scripts?.map((script, index) => {
+        {(config.scripts || []).map((script) => {
           const Tag = script.element;
+
           return (
             <Tag
-              key={`Page-script-${index}`}
+              key={generateSlug(script.props.href)}
               {...script.props}
             />
           );

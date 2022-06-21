@@ -39,23 +39,40 @@ module.exports = {
     window: true,
   },
   rules: {
-    "@typescript-eslint/naming-convention": "off", // TODO
-    "@typescript-eslint/no-use-before-define": "off", // TODO
-    "import/extensions": "off", // TODO
-    "import/no-unresolved": "off", // TODO
-    "import/prefer-default-export": "off", // TODO
+    // rules left to read about them and remove
     "react/jsx-props-no-spreading": "off", // TODO
-    "react/require-default-props": "off", // TODO
+    "react/jsx-no-bind": "off", // TODO
+    "class-methods-use-this": "warn", // TODO
+
+    // TODO: rules about accesibility
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/media-has-caption": "off",
+
+    // rules configured by myself
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        selector: "interface",
+        format: ["PascalCase"],
+        prefix: ["I_"],
+      },
+      {
+        selector: "typeAlias",
+        format: ["PascalCase"],
+        prefix: ["T_"],
+      },
+    ],
+    "@typescript-eslint/no-use-before-define": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
     "no-nested-ternary": "off",
     "react/jsx-fragments": "off",
-    "react/jsx-no-bind": "off",
     "react/prop-types": "off",
+    "react/require-default-props": "off",
 
-    "class-methods-use-this": "warn", // TODO
     "@typescript-eslint/ban-ts-comment": "warn",
-    "jsx-a11y/media-has-caption": "warn",
+    "import/prefer-default-export": "warn",
     "no-debugger": "warn",
-    "react/no-array-index-key": "warn",
 
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/no-explicit-any": "error",
@@ -63,6 +80,7 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "error",
     "no-loops/no-loops": "error",
     "no-restricted-exports": ["error", { restrictedNamedExports: [] }],
+    "react/no-array-index-key": "error",
   },
   settings: {
     react: {

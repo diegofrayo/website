@@ -70,6 +70,8 @@ function SourceCode({
               {tokens.map((line, i) => {
                 return (
                   <Line
+                    // WARN: I use the index here because this is a external library and this code was taken from the examples page
+                    // eslint-disable-next-line react/no-array-index-key
                     key={i}
                     {...getLineProps({ line, key: i })}
                   >
@@ -78,6 +80,8 @@ function SourceCode({
                       {line.map((token, key) => {
                         return (
                           <InlineText
+                            // WARN: I use the index here because this is a external library and this code was taken from the examples page
+                            // eslint-disable-next-line react/no-array-index-key
                             key={key}
                             {...getTokenProps({ token, key })}
                           />

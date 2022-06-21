@@ -29,18 +29,19 @@ type T_BackdropProps = { children: T_ReactElement; onCloseHandler: T_ModalProps[
 
 function Backdrop({ children, onCloseHandler }: T_BackdropProps): T_ReactElement {
   // states & refs
-  const backdropRef = React.useRef<HTMLButtonElement>(null);
+  const backdropRef = React.useRef<HTMLDivElement>(null);
 
   // handlers
-  function handleBackdropClick(event: T_ReactOnClickEventObject<HTMLButtonElement>): void {
+  function handleBackdropClick(event: T_ReactOnClickEventObject<HTMLDivElement>): void {
     if (!isNull(backdropRef.current) && isEquals(backdropRef.current, event.target)) {
       onCloseHandler();
     }
   }
 
   return (
-    <button
-      type="button"
+    <div
+      role="button"
+      tabIndex={0}
       className="root tw-block tw-h-full tw-w-full tw-cursor-default tw-p-3 sm:tw-p-6"
       ref={backdropRef}
       onClick={handleBackdropClick}
@@ -64,6 +65,6 @@ function Backdrop({ children, onCloseHandler }: T_BackdropProps): T_ReactElement
           }
         `}
       </style>
-    </button>
+    </div>
   );
 }

@@ -76,7 +76,7 @@ function Readings({ readings }: T_ReadingsProps): T_ReactElement {
         <List variant={List.variant.DEFAULT}>
           {parsedReadings.map((reading) => {
             return (
-              <List.Item key={`reading-${generateSlug(reading.title)}`}>
+              <List.Item key={generateSlug(reading.title)}>
                 <Link
                   variant={Link.variant.PRIMARY}
                   href={reading.url}

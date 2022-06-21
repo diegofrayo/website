@@ -14,7 +14,7 @@ import {
 import { ImageWithLink, Playground, SourceCode, Timeline, TitleCreator } from "~/components/shared";
 import * as BlogComponents from "~/components/pages/blog/components";
 import * as MusicComponents from "~/components/pages/music/components";
-import * as AboutMeComponents from "~/components/pages/about-me/components";
+import AboutMeBlock from "~/components/pages/about-me/components";
 import * as ResumeComponents from "~/components/pages/resume";
 import { ROUTES } from "~/utils/routing";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
@@ -96,8 +96,8 @@ export const MDXComponents = {
   // Pages components
   ...BlogComponents,
   ...MusicComponents,
-  ...AboutMeComponents,
   ...ResumeComponents,
+  AboutMeBlock,
 } as any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 export const MDXScope = {

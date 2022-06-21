@@ -6,7 +6,7 @@ import SongPage from "~/components/pages/music/[song]";
 import MusicService, { T_Song } from "~/components/pages/music/service";
 import { getPageContentStaticProps } from "~/i18n";
 import http from "~/lib/http";
-import { dataLoader } from "~/server";
+import dataLoader from "~/server";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";

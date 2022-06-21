@@ -328,7 +328,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
           {createArray(8).map((i) => {
             return (
               <Block
-                key={`Volume-${i}`}
+                key={`volume-${i}`}
                 className="tw-my-0.5 tw-rounded-sm tw-border-b tw-border-gray-600 dark:dfr-border-color-dark-strong"
               />
             );

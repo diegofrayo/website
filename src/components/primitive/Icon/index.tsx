@@ -8,7 +8,7 @@ import type { T_HTMLElementAttributes, T_ReactElement, T_ReactElementNullable } 
 
 import { ICONS } from "./constants";
 import type { T_IconName, T_LibraryIconComponent, T_Icon } from "./types";
-import { isIconElementFromLibrary } from "./utils";
+import isIconElementFromLibrary from "./utils";
 import Image, { T_ImagePrimitiveComponent } from "../Image";
 import Block from "../Block";
 

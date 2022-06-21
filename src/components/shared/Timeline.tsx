@@ -8,7 +8,7 @@ import type { T_ReactElement, T_ReactFunctionComponent } from "~/types";
 type T_TimelineProps = {
   timeline: {
     title: string;
-    items: unknown[];
+    items: { id: string; [key: string]: unknown }[];
   }[];
   TimelineItem: T_ReactFunctionComponent<{ data: unknown }>;
 };
@@ -23,7 +23,7 @@ function Timeline({ timeline, TimelineItem }: T_TimelineProps): T_ReactElement {
 
         return (
           <Block
-            key={groupTitle}
+            key={generateSlug(groupTitle)}
             is="section"
           >
             <Title
@@ -44,7 +44,7 @@ function Timeline({ timeline, TimelineItem }: T_TimelineProps): T_ReactElement {
 
               return (
                 <Block
-                  key={`${generateSlug(groupTitle)}-${itemIndex}`}
+                  key={`${generateSlug(groupTitle)}-${item.id}`}
                   className={classNames(
                     "tw-relative tw-px-0 tw-pb-6 tw-text-center last:tw-pb-0 dark:tw-border-white sm:tw-w-1/2 sm:tw-px-4 sm:tw-pb-16 sm:dfr-border-color-dark-strong",
                     itemsCounter % 2 === 0

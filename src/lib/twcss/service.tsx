@@ -4,10 +4,10 @@ import * as React from "react";
 import { isObject, isString } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactFunctionComponent, T_UnknownObject } from "~/types";
 
-import type { T_HTML_TAG } from "./constants";
+import type { T_HTMLTag } from "./constants";
 
-const TWCSSCreator: T_TWCSSCreator = function TWCSSCreator(Tag) {
-  const TWCSSComponentDefinition: T_TWCSSComponentDefinition = function TWCSSComponentDefinition(
+const TWCSSCreator: I_TWCSSCreator = function TWCSSCreator(Tag) {
+  const TWCSSComponentDefinition: I_TWCSSComponentDefinition = function TWCSSComponentDefinition(
     styles,
     staticProps = {},
   ) {
@@ -88,11 +88,11 @@ function generateClassName({
 
 // --- Types ---
 
-export interface T_TWCSSCreator {
-  (Tag: T_ElementToRender): T_TWCSSComponentDefinition;
+export interface I_TWCSSCreator {
+  (Tag: T_ElementToRender): I_TWCSSComponentDefinition;
 }
 
-export interface T_TWCSSComponentDefinition {
+export interface I_TWCSSComponentDefinition {
   (styles: T_StylesParam, staticProps?: T_UnknownObject): T_TWCSSReactComponent;
 }
 
@@ -121,6 +121,6 @@ type T_StylesParamFunction = string | ((props: T_UnknownObject) => string);
  */
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type T_ElementToRender = T_HTML_TAG | T_ReactFunctionComponent<any>;
+type T_ElementToRender = T_HTMLTag | T_ReactFunctionComponent<any>;
 
 type T_ReactForwardedRef = React.ForwardedRef<unknown>;
