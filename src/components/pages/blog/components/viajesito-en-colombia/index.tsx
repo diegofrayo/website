@@ -127,7 +127,7 @@ function Gallery({
             return (
               <SwiperSlide key={asset.id}>
                 <SlideContent
-                  {...asset}
+                  asset={asset}
                   index={index}
                 />
               </SwiperSlide>
@@ -221,13 +221,13 @@ function Navigation({ activeIndex, totalElements }: T_NavigationProps): T_ReactE
   );
 }
 
-type T_SlideContentProps = Omit<T_ImageItem, "id"> & { index: number };
+type T_SlideContentProps = {
+  asset: Omit<T_ImageItem, "id">;
+  index: number;
+};
 
 function SlideContent({
-  src,
-  caption,
-  type,
-  isLandscape,
+  asset: { src, caption, type, isLandscape },
   index,
 }: T_SlideContentProps): T_ReactElementNullable {
   // states & refs

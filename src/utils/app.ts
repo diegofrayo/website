@@ -21,7 +21,7 @@ export function reportError(error: unknown): void {
 }
 
 export function logger(type: "LOG" | "WARN" | "ERROR", ...args: unknown[]): void {
-  console[type === "LOG" ? "log" : type === "WARN" ? "warn" : "error"](args);
+  console[type === "LOG" ? "log" : type === "WARN" ? "warn" : "error"](...args);
 }
 
 export function getErrorMessage(error: unknown): string {

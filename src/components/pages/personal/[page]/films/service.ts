@@ -7,7 +7,7 @@ import {
 import type { T_UnknownObject } from "~/types";
 
 class FilmsService {
-  async fetchFilms(): Promise<T_Film[]> {
+  static async fetchFilms(): Promise<T_Film[]> {
     const { data } = await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
       path: "/data",
       model: "films",
@@ -25,7 +25,7 @@ class FilmsService {
   }
 }
 
-export default new FilmsService();
+export default FilmsService;
 
 // --- Value objects ---
 

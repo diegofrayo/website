@@ -4,7 +4,7 @@ import { T_Metadata } from "~/state/modules/metadata";
 import { ENV_VARS } from "~/utils/constants";
 
 class MetadataService {
-  async fetchData(locale: T_Locale): Promise<T_Metadata> {
+  static async fetchData(locale: T_Locale): Promise<T_Metadata> {
     const { data: metadata } = await http.get(
       `${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/metadata.json`,
     );
@@ -13,4 +13,4 @@ class MetadataService {
   }
 }
 
-export default new MetadataService();
+export default MetadataService;

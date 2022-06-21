@@ -12,6 +12,7 @@ import type {
   T_ReactElement,
   T_ReactOnChangeEventHandler,
   T_ReactOnKeyPressEventHandler,
+  T_ReactOnSubmitEventHandler,
 } from "~/types";
 
 function SignInPage(): T_ReactElement {
@@ -21,8 +22,9 @@ function SignInPage(): T_ReactElement {
     isInputDisabled,
 
     // handlers
-    onInputChange,
-    onKeyPress,
+    onInputChangeHandler,
+    onKeyPressHandler,
+    onSubmitHandler,
   } = useController();
 
   return (
@@ -34,7 +36,7 @@ function SignInPage(): T_ReactElement {
     >
       <form
         className="tw-p-4"
-        onSubmit={(e): void => e.preventDefault()}
+        onSubmit={onSubmitHandler}
       >
         <Input
           id="username"
@@ -42,7 +44,7 @@ function SignInPage(): T_ReactElement {
           name="username"
           value="diegofrayo"
           autoComplete="off"
-          onChange={(): void => undefined}
+          onChange={onInputChangeHandler}
           containerProps={{ className: "tw-hidden" }}
         />
         <Input
@@ -52,8 +54,8 @@ function SignInPage(): T_ReactElement {
           value={inputValue}
           autoComplete="new-password"
           disabled={isInputDisabled}
-          onChange={onInputChange}
-          onKeyPress={onKeyPress}
+          onChange={onInputChangeHandler}
+          onKeyPress={onKeyPressHandler}
         />
       </form>
     </Page>
@@ -71,8 +73,9 @@ export const getStaticProps = getPageContentStaticProps();
 type T_UseControllerReturn = {
   inputValue: string;
   isInputDisabled: boolean;
-  onInputChange: T_ReactOnChangeEventHandler<HTMLInputElement>;
-  onKeyPress: T_ReactOnKeyPressEventHandler<HTMLInputElement>;
+  onInputChangeHandler: T_ReactOnChangeEventHandler<HTMLInputElement>;
+  onKeyPressHandler: T_ReactOnKeyPressEventHandler<HTMLInputElement>;
+  onSubmitHandler: T_ReactOnSubmitEventHandler<HTMLFormElement>;
 };
 
 function useController(): T_UseControllerReturn {
@@ -81,7 +84,9 @@ function useController(): T_UseControllerReturn {
   const [isInputDisabled, setIsInputDisabled] = React.useState(false);
 
   // handlers
-  const onKeyPress: T_UseControllerReturn["onKeyPress"] = async function onKeyPress(event) {
+  const onKeyPressHandler: T_UseControllerReturn["onKeyPressHandler"] = async function onKeyPress(
+    event,
+  ) {
     if (event.key !== "Enter" || isEmptyString(inputValue)) {
       return;
     }
@@ -107,8 +112,15 @@ function useController(): T_UseControllerReturn {
     }
   };
 
-  const onInputChange: T_UseControllerReturn["onInputChange"] = function onInputChange(event) {
-    setInputValue(event.currentTarget.value);
+  const onInputChangeHandler: T_UseControllerReturn["onInputChangeHandler"] =
+    function onInputChange(event) {
+      setInputValue(event.currentTarget.value);
+    };
+
+  const onSubmitHandler: T_UseControllerReturn["onSubmitHandler"] = function onSubmitHandler(
+    event,
+  ) {
+    event.preventDefault();
   };
 
   return {
@@ -117,7 +129,8 @@ function useController(): T_UseControllerReturn {
     isInputDisabled,
 
     // handlers
-    onInputChange,
-    onKeyPress,
+    onInputChangeHandler,
+    onKeyPressHandler,
+    onSubmitHandler,
   };
 }

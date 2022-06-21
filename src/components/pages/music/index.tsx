@@ -146,7 +146,7 @@ type T_UseController = {
 
 function useController(): T_UseController {
   // hooks
-  const { isLoading, error, data } = useQuery("music", MusicService.fetchSongsList);
+  const { isLoading, error, data } = useQuery("music", MusicService.fetchSongs);
 
   // states & refs
   const [inputValue, setInputValue] = React.useState("");

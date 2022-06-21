@@ -3,11 +3,11 @@ import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Block, InlineText, Link, List, Text } from "~/components/primitive";
+import { Emoji } from "~/components/shared";
+import { withAuthenticationRequired } from "~/hocs";
 import { sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
 import type { T_Object, T_ReactElement } from "~/types";
-import { Emoji } from "~/components/shared";
-import { withAuthenticationRequired } from "~/hocs";
 
 type T_ReadingsProps = {
   readings: T_Object<T_Reading[]>;
@@ -24,13 +24,14 @@ function Readings({ readings }: T_ReadingsProps): T_ReactElement {
     categoriesColors: T_Object<string>;
   } {
     const COLORS = [
-      "tw-bg-blue-400",
-      "tw-bg-orange-400",
-      "tw-bg-pink-400",
-      "tw-bg-red-400",
-      "tw-bg-teal-400",
-      "tw-bg-violet-400",
-      "tw-bg-yellow-400",
+      "tw-bg-blue-500",
+      "tw-bg-orange-500",
+      "tw-bg-pink-500",
+      "tw-bg-red-500",
+      "tw-bg-teal-500",
+      "tw-bg-violet-500",
+      "tw-bg-yellow-500",
+      "tw-bg-rose-500",
     ];
 
     if (COLORS.length < Object.keys(readings).length) {
@@ -51,6 +52,7 @@ function Readings({ readings }: T_ReadingsProps): T_ReactElement {
         }, [])
         .sort(
           sortBy([
+            { param: "starred", order: "desc" },
             { param: "date", order: "desc" },
             { param: "title", order: "asc" },
           ]),
@@ -76,7 +78,10 @@ function Readings({ readings }: T_ReadingsProps): T_ReactElement {
         <List variant={List.variant.DEFAULT}>
           {parsedReadings.map((reading) => {
             return (
-              <List.Item key={generateSlug(reading.title)}>
+              <List.Item
+                key={generateSlug(reading.title)}
+                className={classNames("tw-p-1 tw-pt-0", reading.starred && "tw-bg-yellow-100")}
+              >
                 <Link
                   variant={Link.variant.PRIMARY}
                   href={reading.url}
@@ -98,7 +103,7 @@ function Readings({ readings }: T_ReadingsProps): T_ReactElement {
                     {generateSlug(reading.category)}
                   </InlineText>
                   <InlineText className="tw-mx-1">|</InlineText>
-                  <InlineText className="tw-inline-block tw-rounded-md tw-bg-gray-400 tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-light-strong">
+                  <InlineText className="tw-inline-block tw-rounded-md tw-bg-gray-500 tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-light-strong">
                     {reading.date}
                   </InlineText>
                 </Block>
@@ -133,6 +138,7 @@ type T_Reading = {
   title: string;
   date: string;
   done: boolean;
+  starred: boolean;
 };
 
 type T_ReadingWithCategory = T_Reading & { category: string };

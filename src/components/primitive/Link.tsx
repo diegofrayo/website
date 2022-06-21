@@ -6,14 +6,13 @@ import twcss from "~/lib/twcss";
 import { T_Locale } from "~/i18n";
 import { logger } from "~/utils/app";
 import { mirror } from "~/utils/objects-and-arrays";
-import { isFalsy } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElementNullable } from "~/types";
 
 const VARIANTS_OPTIONS = ["UNSTYLED", "SIMPLE", "PRIMARY", "SECONDARY"] as const;
 type T_Variant = typeof VARIANTS_OPTIONS[number];
 const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
 
-type T_LinkProps = T_HTMLElementAttributes["a"] & {
+export type T_LinkProps = T_HTMLElementAttributes["a"] & {
   variant: T_Variant;
   isExternalLink?: boolean;
   locale?: T_Locale;
@@ -33,7 +32,7 @@ function Link(props: T_LinkProps): T_ReactElementNullable {
     ...rest
   } = useController(props);
 
-  if (!href || isFalsy(children)) {
+  if (!href || !children) {
     logger("WARN", "Link component: href or children are falsy", { href, children });
     return null;
   }

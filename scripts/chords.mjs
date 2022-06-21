@@ -15,7 +15,7 @@ async function main() {
 
     fs.writeFileSync("./src/lib/guitar/data/chords.json", JSON.stringify(chords));
 
-    console.log("Chords file created");
+    console.log("Chords script executed successfully");
   } catch (error) {
     console.log(error);
     process.exit(1);

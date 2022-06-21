@@ -50,8 +50,8 @@ export function sortBy(criteria: T_Criteria[]): T_SorterFunction {
         const bParam = b[param];
 
         if (
-          or<string | number | Date>(aParam, [isString, isNumber, isDate]) &&
-          or<string | number | Date>(bParam, [isString, isNumber, isDate])
+          or<string | number | boolean | Date>(aParam, [isString, isNumber, isDate, isBoolean]) &&
+          or<string | number | boolean | Date>(bParam, [isString, isNumber, isDate, isBoolean])
         ) {
           if (aParam > bParam) {
             return { result: greater, finish: true };

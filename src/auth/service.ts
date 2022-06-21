@@ -25,10 +25,6 @@ class AuthService {
     return isNotEmptyString(this.getToken());
   }
 
-  getToken(): string {
-    return isBrowser() ? window.localStorage.getItem(this.LOCAL_STORAGE_KEY) || "" : "";
-  }
-
   isSignInError(error: unknown): error is T_SignInError {
     if (isObject(error)) {
       return isNotEmptyString((error as T_SignInError).data?.code);
@@ -37,18 +33,22 @@ class AuthService {
     return false;
   }
 
-  configureHttpHeaders(): void {
+  configureHTTPHeaders(): void {
     http.interceptors.request.use((config) => ({
       ...config,
       headers: {
         ...config.headers,
-        ...(config.method === "post" && this.isUserLoggedIn()
+        ...(this.isUserLoggedIn()
           ? {
               Authorization: `Bearer ${this.getToken()}`,
             }
           : {}),
       },
     }));
+  }
+
+  private getToken(): string {
+    return isBrowser() ? window.localStorage.getItem(this.LOCAL_STORAGE_KEY) || "" : "";
   }
 }
 

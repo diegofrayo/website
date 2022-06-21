@@ -54,6 +54,8 @@ export type T_ReactOnFocusEventHandler<G_HTMLElement = HTMLInputElement> =
 export type T_ReactOnKeyPressEventHandler<G_HTMLElement> =
   React.KeyboardEventHandler<G_HTMLElement>;
 
+export type T_ReactOnSubmitEventHandler<G_HTMLElement> = React.FormEventHandler<G_HTMLElement>;
+
 // --- HTML ---
 
 export type T_HTMLElementAttributes = JSX.IntrinsicElements;

@@ -1,3 +1,5 @@
+import autoBind from "auto-bind";
+
 import http from "~/lib/http";
 import { I18nService, T_Locale } from "~/i18n";
 import { ENV_VARS } from "~/utils/constants";
@@ -10,7 +12,7 @@ import type { T_Object, T_UnknownObject } from "~/types";
 
 class BlogService {
   constructor() {
-    this.fetchPosts = this.fetchPosts.bind(this);
+    autoBind(this);
   }
 
   async fetchPosts(locale?: T_Locale): Promise<T_BlogPost[]> {
@@ -34,6 +36,8 @@ class BlogService {
     return post;
   }
 
+  // WARN: I don't like this rule, maybe I should turn off it
+  // eslint-disable-next-line class-methods-use-this
   private async fetchData(): Promise<{
     posts: T_BlogPostFetchDTO[];
     categories: T_BlogPostCategory[];

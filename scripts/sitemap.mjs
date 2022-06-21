@@ -32,8 +32,7 @@ async function main() {
     );
 
     generateSitemapFile(pages, WEBSITE_METADATA.url);
-
-    console.log("Sitemap created");
+    console.log("Sitemap script executed successfully");
   } catch (error) {
     console.log(error);
     process.exit(1);

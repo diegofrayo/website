@@ -220,7 +220,7 @@ export function ExperienceTimeline({ experience }: T_ExperienceTimelineProps): T
         return (
           <ExperienceTimelineItem
             key={item.id}
-            {...item}
+            item={item}
           />
         );
       })}
@@ -229,14 +229,10 @@ export function ExperienceTimeline({ experience }: T_ExperienceTimelineProps): T
 }
 
 function ExperienceTimelineItem({
-  role,
-  company,
-  companyLogo,
-  companyWebsite,
-  startDate,
-  endDate,
-  description,
-}: T_Experience): T_ReactElement {
+  item: { role, company, companyLogo, companyWebsite, startDate, endDate, description },
+}: {
+  item: T_Experience;
+}): T_ReactElement {
   return (
     <Block
       is="section"

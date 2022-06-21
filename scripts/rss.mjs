@@ -21,7 +21,7 @@ async function main() {
     const DEFAULT_LOCALE = "en";
     await generateFeed(SEO_METADATA[DEFAULT_LOCALE], WEBSITE_METADATA, BLOG, DEFAULT_LOCALE);
 
-    console.log("RSS files created");
+    console.log("RSS script executed successfully");
   } catch (error) {
     console.log(error);
     process.exit(1);

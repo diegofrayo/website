@@ -27,11 +27,11 @@ import { ENV_VARS } from "./constants";
  */
 // @ts-ignore
 export const MDXComponents = {
-  a: function A({ children, ...rest }: { children: T_ReactChildren }): T_ReactElement {
+  a: function A({ children, href }: { children: T_ReactChildren; href: string }): T_ReactElement {
     return (
       <Link
+        href={href}
         variant={Link.variant.PRIMARY}
-        {...rest}
         isExternalLink
       >
         {children}
@@ -43,35 +43,14 @@ export const MDXComponents = {
   h3: TitleCreator("h3", { showLinkIcon: true }),
   h4: TitleCreator("h4", { showLinkIcon: true }),
   img: Image,
-  ul: function UL({ children, ...rest }: { children: T_ReactChildren }): T_ReactElement {
-    return (
-      <List
-        variant={List.variant.DEFAULT}
-        {...rest}
-      >
-        {children}
-      </List>
-    );
+  ul: function UL({ children }: { children: T_ReactChildren }): T_ReactElement {
+    return <List variant={List.variant.DEFAULT}>{children}</List>;
   },
-  pre: function Pre({ children, ...rest }: { children: T_ReactChildren }): T_ReactElement {
-    return (
-      <Code
-        variant={Code.variant.MULTILINE}
-        {...rest}
-      >
-        {children}
-      </Code>
-    );
+  pre: function Pre({ children }: { children: T_ReactChildren }): T_ReactElement {
+    return <Code variant={Code.variant.MULTILINE}>{children}</Code>;
   },
-  code: function InlineCode({ children, ...rest }: { children: T_ReactChildren }): T_ReactElement {
-    return (
-      <Code
-        variant={Code.variant.INLINE}
-        {...rest}
-      >
-        {children}
-      </Code>
-    );
+  code: function InlineCode({ children }: { children: T_ReactChildren }): T_ReactElement {
+    return <Code variant={Code.variant.INLINE}>{children}</Code>;
   },
   hr: function HR(): T_ReactElement {
     return <Space variant={Space.variant.DASHED} />;

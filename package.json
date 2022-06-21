@@ -1,6 +1,6 @@
 {
   "name": "@diegofrayo/website",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "private": true,
   "scripts": {
     "===== DEV =====": "",
@@ -13,6 +13,7 @@
     "postinstall": "yarn scripts:rss",
     "===== FORMATTING =====": "",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "lint:no-warn": "NO_LINT_WARNINGS=true eslint \"src/**/*.{ts,tsx}\"",
     "format": "prettier --write \"{src,public,scripts}/**/*.{ts,tsx,json,css,mjs}\"",
     "===== STORYBOOK =====": "",
     "storybook": "start-storybook -p 6006",
@@ -33,6 +34,7 @@
     "@mdx-js/react": "^2.0.0",
     "@reduxjs/toolkit": "^1.6.1",
     "@splitbee/web": "^0.2.4",
+    "auto-bind": "^5.0.1",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "crypto-js": "^4.0.0",

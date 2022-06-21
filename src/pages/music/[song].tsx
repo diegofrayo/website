@@ -25,7 +25,7 @@ type T_StaticPath = { song: string };
 
 export const getStaticPaths: GetStaticPaths<T_StaticPath> = async function getStaticPaths() {
   return {
-    paths: (await MusicService.fetchSongsList()).reduce(
+    paths: (await MusicService.fetchSongs()).reduce(
       (result: { params: T_StaticPath }[], song: T_Song) => {
         if (song.isPublic) {
           return result.concat([{ params: { song: song.id } }]);

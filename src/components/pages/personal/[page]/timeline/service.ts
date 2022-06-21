@@ -16,10 +16,6 @@ import type {
 } from "./types";
 
 class TimelineService {
-  constructor() {
-    this.fetchData = this.fetchData.bind(this);
-  }
-
   async fetchData(): Promise<T_TimelineFetchResponse> {
     const { data } = await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
       path: "/data",
@@ -29,7 +25,9 @@ class TimelineService {
     return this.parseResponse(data);
   }
 
-  parseResponse({ data, categories }: T_TimelineFetchDTO): T_TimelineFetchResponse {
+  // WARN: I don't like this rule, maybe I should turn off it
+  // eslint-disable-next-line class-methods-use-this
+  private parseResponse({ data, categories }: T_TimelineFetchDTO): T_TimelineFetchResponse {
     return {
       categories,
       timeline: Object.values(

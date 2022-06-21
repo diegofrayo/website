@@ -7,7 +7,7 @@ import {
 import type { T_UnknownObject } from "~/types";
 
 class BooksService {
-  async fetchBooks(): Promise<T_Book[]> {
+  static async fetchBooks(): Promise<T_Book[]> {
     const { data } = await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
       path: "/data",
       model: "books",
@@ -25,7 +25,7 @@ class BooksService {
   }
 }
 
-export default new BooksService();
+export default BooksService;
 
 // --- Value objects ---
 

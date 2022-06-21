@@ -9,16 +9,17 @@ import type { T_UnknownObject } from "~/types";
 
 class MusicService {
   constructor() {
-    this.fetchSongsList = this.fetchSongsList.bind(this);
+    this.fetchSongs = this.fetchSongs.bind(this);
+    this.getSong = this.getSong.bind(this);
   }
 
-  async fetchSongsList(): Promise<T_Song[]> {
+  async fetchSongs(): Promise<T_Song[]> {
     const songs = (await this.fetchData()).map((song: T_UnknownObject) => SongVO(song));
     const chordsPage = songs.find((song) => this.isChordsSong(song));
 
     return (isUndefined(chordsPage) ? [] : [chordsPage]).concat(
       songs
-        .filter((song) => !this.isChordsSong(song))
+        .filter((song) => this.isChordsSong(song) === false)
         .sort(
           sortBy([
             { param: "category", order: "asc" },
@@ -30,7 +31,7 @@ class MusicService {
   }
 
   async getSong(criteria: Pick<T_Song, "id">): Promise<T_Song> {
-    const songs = await this.fetchSongsList();
+    const songs = await this.fetchSongs();
     const song = songs.find((item) => item.id === criteria.id);
 
     if (isUndefined(song)) {

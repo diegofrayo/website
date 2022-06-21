@@ -102,7 +102,7 @@ function Featured({ content }: T_Featured): T_ReactElement {
               variant={Link.variant.SIMPLE}
               href={item.url}
               className={classNames(
-                "tw-mb-2 tw-block tw-text-sm tw-text-yellow-300 last:tw-mb-0",
+                "tw-mb-3 tw-block tw-text-sm tw-text-yellow-300 last:tw-mb-0",
                 index % 2 === 0 ? "tw-rotate-1" : "tw--rotate-1",
               )}
             >
@@ -328,7 +328,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
           {createArray(8).map((i) => {
             return (
               <Block
-                key={`volume-${i}`}
+                key={generateSlug(`TV-Block-${i}`)}
                 className="tw-my-0.5 tw-rounded-sm tw-border-b tw-border-gray-600 dark:dfr-border-color-dark-strong"
               />
             );

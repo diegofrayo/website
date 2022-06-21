@@ -12,6 +12,8 @@ async function main() {
 
   fs.writeFileSync("./.env", stringify(envVars));
   console.log("Local IP address", envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"]);
+
+  console.log("Env-vars script executed successfully");
 }
 
 main();

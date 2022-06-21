@@ -1,3 +1,5 @@
+const warnRulesValue = process.env.NO_LINT_WARNINGS ? "off" : "warn";
+
 module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
@@ -39,16 +41,11 @@ module.exports = {
     window: true,
   },
   rules: {
-    // rules left to read about them and remove
-    "react/jsx-props-no-spreading": "off", // TODO
-    "react/jsx-no-bind": "off", // TODO
-    "class-methods-use-this": "warn", // TODO
-
-    // TODO: rules about accesibility
+    // --- WARN: Rules about accesibility ---
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/media-has-caption": "off",
 
-    // rules configured by myself
+    // --- Rules configured by myself --
     "@typescript-eslint/naming-convention": [
       "error",
       {
@@ -63,6 +60,7 @@ module.exports = {
       },
     ],
     "@typescript-eslint/no-use-before-define": "off",
+    "class-methods-use-this": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
     "no-nested-ternary": "off",
@@ -70,9 +68,18 @@ module.exports = {
     "react/prop-types": "off",
     "react/require-default-props": "off",
 
-    "@typescript-eslint/ban-ts-comment": "warn",
-    "import/prefer-default-export": "warn",
-    "no-debugger": "warn",
+    "@typescript-eslint/ban-ts-comment": warnRulesValue,
+    "import/prefer-default-export": warnRulesValue,
+    "no-alert": warnRulesValue,
+    "no-console": warnRulesValue,
+    "no-debugger": warnRulesValue,
+    "react/jsx-props-no-spreading": [
+      warnRulesValue,
+      {
+        html: "ignore",
+      },
+    ],
+    "react/no-danger": warnRulesValue,
 
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/no-explicit-any": "error",
@@ -80,6 +87,12 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "error",
     "no-loops/no-loops": "error",
     "no-restricted-exports": ["error", { restrictedNamedExports: [] }],
+    "react/jsx-no-bind": [
+      "error",
+      {
+        allowFunctions: true,
+      },
+    ],
     "react/no-array-index-key": "error",
   },
   settings: {

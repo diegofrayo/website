@@ -8,9 +8,13 @@ Library with `styled-components` flavored syntax for creating components easily 
 
 - Basic
   ```
+  // definition
   const LineContent = twcss.span("tw-table-cell your-own-class");
   const LineContent = twcss.span`tw-table-cell your-own-class`;
   const LineContent = twcss.span``;
+
+  // usage
+  <LineContent id="id" className="add-more-classes">hello</LineContent>
   ```
 
 - With a map of styles variants

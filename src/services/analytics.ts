@@ -6,14 +6,24 @@ import { isNotEmptyString } from "~/utils/validations";
 import type { T_Object } from "~/types";
 
 class AnalyticsService {
+  private isLibraryNotInitialized = true;
+
   init(): void {
     if (this.isAnalyticsDisabled()) return;
 
     splitbee.init();
+    this.isLibraryNotInitialized = false;
   }
 
   trackPageLoaded(): void {
-    if (this.isAnalyticsDisabled()) return;
+    if (this.isAnalyticsDisabled() || this.isLibraryNotInitialized) {
+      logger("LOG", `Page "${window.location.pathname}" visit was not tracked`, {
+        isLibraryNotInitialized: this.isLibraryNotInitialized,
+        isAnalyticsDisabled: this.isAnalyticsDisabled(),
+      });
+
+      return;
+    }
 
     console.group("trackPageLoaded");
     logger("LOG", { page: window.location.pathname, title: document.title });
@@ -21,7 +31,14 @@ class AnalyticsService {
   }
 
   trackEvent(name: string, data: T_Object<string | number | boolean>): void {
-    if (this.isAnalyticsDisabled()) return;
+    if (this.isAnalyticsDisabled() || this.isLibraryNotInitialized) {
+      logger("LOG", `Event "${name}" was not tracked`, data, {
+        isLibraryNotInitialized: this.isLibraryNotInitialized,
+        isAnalyticsDisabled: this.isAnalyticsDisabled(),
+      });
+
+      return;
+    }
 
     splitbee.track(name, data);
   }

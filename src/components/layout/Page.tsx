@@ -122,7 +122,9 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
           return (
             <Tag
               key={generateSlug(script.props.href)}
-              {...script.props}
+              href={script.props.href}
+              rel={script.props.rel}
+              as={script.props.as}
             />
           );
         })}
