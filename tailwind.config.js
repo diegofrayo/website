@@ -16,6 +16,9 @@ module.exports = {
     {
       pattern: /tw-max-w/,
     },
+    {
+      pattern: /tw-bg/,
+    },
   ],
   theme: {
     screens: {

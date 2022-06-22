@@ -25,7 +25,7 @@
     "scripts:sitemap": "node --experimental-json-modules scripts/sitemap.mjs",
     "scripts:styles": "node scripts/styles/css-vars.js",
     "===== AUX/DEV =====": "",
-    "scripts:commit": "sh ./.husky/generic-commit.sh",
+    "scripts:commit": "sh ./.husky/generic-commit",
     "scripts:env-vars": "node --experimental-json-modules scripts/env-vars.mjs",
     "scripts:code-stats": "tokei ./src"
   },
