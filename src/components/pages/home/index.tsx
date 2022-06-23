@@ -15,6 +15,7 @@ import {
 } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { useTranslation } from "~/i18n";
+import AnalyticsService from "~/services/analytics";
 import { createArray } from "~/utils/objects-and-arrays";
 import { ROUTES } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
@@ -77,6 +78,14 @@ type T_Featured = {
 };
 
 function Featured({ content }: T_Featured): T_ReactElement {
+  // handlers
+  function handleItemClick(itemText: string): () => void {
+    return function onItemClickHandler() {
+      AnalyticsService.trackEvent("HOME|FEATURED", { page: itemText });
+    };
+  }
+
+  // render
   return (
     <Block
       is="section"
@@ -105,6 +114,7 @@ function Featured({ content }: T_Featured): T_ReactElement {
                 "tw-mb-3 tw-block tw-text-sm tw-text-yellow-300 last:tw-mb-0",
                 index % 2 === 0 ? "tw-rotate-1" : "tw--rotate-1",
               )}
+              onClick={handleItemClick(item.text)}
             >
               <Emoji>🖇️</Emoji>
               <InlineText className="tw-mx-1 tw-underline">{item.text}</InlineText>
@@ -152,6 +162,12 @@ function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElementNullable {
   // hooks
   const { t } = useTranslation();
 
+  // handlers
+  function handleImageClick(): void {
+    AnalyticsService.trackEvent("HOME|PICTURE_FRAME", { action: "CLICK" });
+  }
+
+  // render
   return (
     <Block
       className={classNames(
@@ -169,6 +185,7 @@ function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElementNullable {
           src={photo.src}
           className="tw-block tw-h-full tw-w-full tw-overflow-hidden tw-rounded-md tw-border-2 tw-border-yellow-700 dfr-transition-opacity"
           alt="Photography taken by Diego Rayo"
+          onClick={handleImageClick}
         />
       </Block>
       <Text className="tw-mx-auto tw-h-4 tw-w-16 tw-rounded-bl-md tw-rounded-br-md tw-border-2 tw-border-t-0 tw-border-yellow-700 tw-text-center tw-text-xxs tw-font-bold tw-italic dfr-text-color-dark-strong dfr-bg-color-light-strong dark:dfr-text-color-light-strong">
@@ -245,6 +262,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
   function handlePlayAndPauseClick(): void {
     const audioElement = getAudioElement();
     setIsAudioPlaying((currentValue) => !currentValue);
+    AnalyticsService.trackEvent("HOME|TV", { action: audioElement.paused ? "PLAY" : "PAUSE" });
 
     if (audioElement.paused) {
       audioElement.play();
@@ -254,18 +272,22 @@ function TV({ song }: T_TVProps): T_ReactElement {
     }
   }
 
-  function onSongEndedHandler(): void {
-    setShowInfo(false);
-  }
-
   function handleStartTVClick(): void {
+    AnalyticsService.trackEvent("HOME|TV", { action: "START" });
     setHasNotStartedTV(false);
     setShowInfo(true);
   }
 
   function handleToggleTurnOnTVClick(): void {
-    setShowInfo((currentValue) => !currentValue);
     getAudioElement().currentTime = 0;
+    setShowInfo((currentValue) => {
+      AnalyticsService.trackEvent("HOME|TV", { action: currentValue ? "TURN_OFF" : "TURN_ON" });
+      return !currentValue;
+    });
+  }
+
+  function onSongEndedHandler(): void {
+    setShowInfo(false);
   }
 
   // utils
@@ -462,6 +484,12 @@ type T_LinkItemProps = {
 };
 
 function LinkItem({ label, url, className = "" }: T_LinkItemProps): T_ReactElement {
+  // handlers
+  function handleItemClick(): void {
+    AnalyticsService.trackEvent("HOME|DESKTOP", { page: label });
+  }
+
+  // render
   return (
     <Link
       variant={Link.variant.SECONDARY}
@@ -470,6 +498,7 @@ function LinkItem({ label, url, className = "" }: T_LinkItemProps): T_ReactEleme
         className,
       )}
       href={url}
+      onClick={handleItemClick}
     >
       <InlineText className="tw-mr-1 tw-inline-block tw-h-1 tw-w-1 tw-rounded-full tw-bg-yellow-400" />
       <InlineText>{label}</InlineText>

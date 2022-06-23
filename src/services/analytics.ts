@@ -17,11 +17,7 @@ class AnalyticsService {
 
   trackPageLoaded(): void {
     if (this.isAnalyticsDisabled() || this.isLibraryNotInitialized) {
-      logger("LOG", `Page "${window.location.pathname}" visit was not tracked`, {
-        isLibraryNotInitialized: this.isLibraryNotInitialized,
-        isAnalyticsDisabled: this.isAnalyticsDisabled(),
-      });
-
+      logger("LOG", `Page "${window.location.pathname}" visit was not tracked`, this.getConfig());
       return;
     }
 
@@ -32,11 +28,7 @@ class AnalyticsService {
 
   trackEvent(name: string, data: T_Object<string | number | boolean>): void {
     if (this.isAnalyticsDisabled() || this.isLibraryNotInitialized) {
-      logger("LOG", `Event "${name}" was not tracked`, data, {
-        isLibraryNotInitialized: this.isLibraryNotInitialized,
-        isAnalyticsDisabled: this.isAnalyticsDisabled(),
-      });
-
+      logger("LOG", `Event "${name}" was not tracked`, data, this.getConfig());
       return;
     }
 
@@ -53,6 +45,15 @@ class AnalyticsService {
     }
 
     return AuthService.isUserLoggedIn() || isDevelopmentEnvironment();
+  }
+
+  private getConfig(): { config: T_Object<boolean> } {
+    return {
+      config: {
+        isLibraryNotInitialized: this.isLibraryNotInitialized,
+        isAnalyticsDisabled: this.isAnalyticsDisabled(),
+      },
+    };
   }
 }
 
