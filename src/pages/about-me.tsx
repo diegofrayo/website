@@ -4,10 +4,11 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { Page, MainLayout } from "~/components/layout";
 import { MDXContent } from "~/components/shared";
+import http from "~/lib/http";
 import { useTranslation, getPageContentStaticProps } from "~/i18n";
-import dataLoader from "~/server";
-import { MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
+import { MDXScope } from "~/utils/mdx";
+import { ENV_VARS } from "~/utils/constants";
 import type { T_ReactElement } from "~/types";
 
 type T_AboutMePageProps = {
@@ -45,7 +46,13 @@ export default AboutMePage;
 export const getStaticProps = getPageContentStaticProps<T_AboutMePageProps, { page: string }>({
   page: ROUTES.ABOUT_ME,
   callback: async () => {
-    const file = (await dataLoader({ path: "/pages/about-me/en.about-me.mdx" })) as string;
+    const fileURL = (
+      await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
+        path: "/about-me",
+      })
+    ).data;
+    const file = (await http.get(fileURL)).data;
+
     const pageMDXContent = await serialize(file, {
       scope: {
         DATA: MDXScope.DATA,

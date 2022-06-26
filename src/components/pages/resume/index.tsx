@@ -1,4 +1,5 @@
 import * as React from "react";
+import classNames from "classnames";
 
 import { Page } from "~/components/layout";
 import {
@@ -162,7 +163,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
             </ResumeBlock>
           </PrintBlock>
 
-          <PrintBlock>
+          <PrintBlock fullPage={false}>
             <ResumeBlock title="Experience">
               <ExperienceTimeline experience={resume.experience} />
             </ResumeBlock>
@@ -183,8 +184,14 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 
 // --- Components ---
 
-function PrintBlock({ children }: { children: T_ReactChildren }): T_ReactElement {
-  return <Block className="print:tw-h-screen">{children}</Block>;
+function PrintBlock({
+  children,
+  fullPage = true,
+}: {
+  children: T_ReactChildren;
+  fullPage?: boolean;
+}): T_ReactElement {
+  return <Block className={classNames(fullPage && "print:tw-h-screen")}>{children}</Block>;
 }
 
 type T_ResumeBlockProps = {
@@ -236,7 +243,7 @@ function ExperienceTimelineItem({
   return (
     <Block
       is="section"
-      className="tw-relative tw-mb-8 tw-pl-9 last:tw-mb-0"
+      className="tw-relative tw-mb-8 tw-pl-9 last:tw-mb-0 print:tw-mb-20"
     >
       <Block className="tw-absolute tw--left-4 tw-top-0 tw-h-10 tw-w-10 tw-overflow-hidden tw-border-4 tw-border-black">
         {isNotEmptyString(companyLogo) ? (
