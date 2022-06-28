@@ -17,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	}
 
 	try {
-		await res.unstable_revalidate(req.body.path);
+		await res.revalidate(req.body.path);
 		res.json({ revalidated: true, date: new Date() });
 	} catch (err) {
 		// If there was an error, Next.js will continue to show the last successfully generated page
