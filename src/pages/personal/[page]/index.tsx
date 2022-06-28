@@ -12,24 +12,24 @@ export default PersonalPage;
 type T_PageProps = { page: string };
 
 export const getStaticPaths: GetStaticPaths<T_PageProps> = async function getStaticPaths() {
-  return {
-    paths: PERSONAL_PAGES.filter((page) => {
-      return isNotEmptyString(page.componentName);
-    }).map((page) => {
-      return {
-        params: { page: page.slug },
-      };
-    }),
-    fallback: false,
-  };
+	return {
+		paths: PERSONAL_PAGES.filter((page) => {
+			return isNotEmptyString(page.componentName);
+		}).map((page) => {
+			return {
+				params: { page: page.slug },
+			};
+		}),
+		fallback: false,
+	};
 };
 
 export const getStaticProps = getPageContentStaticProps<T_PageProps, T_PageProps>({
-  callback: async ({ params }) => {
-    return {
-      props: {
-        page: params.page,
-      },
-    };
-  },
+	callback: async ({ params }) => {
+		return {
+			props: {
+				page: params.page,
+			},
+		};
+	},
 });

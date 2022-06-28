@@ -7,15 +7,15 @@ import Title from "~/components/primitive/Title";
 const Story = (props) => <Title {...props} />;
 
 export default {
-  title: "primitive/Title",
-  component: Title,
-  argTypes: {},
+	title: "primitive/Title",
+	component: Title,
+	argTypes: {},
 };
 
 // --- Stories ---
 
 export const MarkdownTitle = Story.bind({});
 MarkdownTitle.args = {
-  children: "I'm a [MarkdownTitle] Title",
-  is: "h1",
+	children: "I'm a [MarkdownTitle] Title",
+	is: "h1",
 };

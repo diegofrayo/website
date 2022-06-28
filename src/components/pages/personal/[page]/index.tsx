@@ -10,43 +10,43 @@ import { isUndefined, isNotEmptyString } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
 const PERSONAL_PAGES_COMPONENTS = PERSONAL_PAGES.filter((page) => {
-  return isNotEmptyString(page.componentName);
+	return isNotEmptyString(page.componentName);
 }).map((page) => {
-  return {
-    ...page,
-    Component: dynamic(() => import(`./${page.componentName}`)),
-  };
+	return {
+		...page,
+		Component: dynamic(() => import(`./${page.componentName}`)),
+	};
 });
 
 type T_PersonalPageProps = {
-  page: string;
+	page: string;
 };
 
 function PersonalPage({ page }: T_PersonalPageProps): T_ReactElement {
-  // vars
-  const pageConfig = PERSONAL_PAGES_COMPONENTS.find((item) => item.slug === page);
+	// vars
+	const pageConfig = PERSONAL_PAGES_COMPONENTS.find((item) => item.slug === page);
 
-  // render
-  if (isUndefined(pageConfig)) {
-    return <Redirect href={ROUTES.ERROR_404} />;
-  }
+	// render
+	if (isUndefined(pageConfig)) {
+		return <Redirect href={ROUTES.ERROR_404} />;
+	}
 
-  const { title, Component } = pageConfig;
+	const { title, Component } = pageConfig;
 
-  return (
-    <Page
-      config={{
-        title,
-        disableSEO: true,
-      }}
-    >
-      <MainLayout title={title}>
-        <Component />
-      </MainLayout>
-    </Page>
-  );
+	return (
+		<Page
+			config={{
+				title,
+				disableSEO: true,
+			}}
+		>
+			<MainLayout title={title}>
+				<Component />
+			</MainLayout>
+		</Page>
+	);
 }
 
 export default withAuth<T_PersonalPageProps>(PersonalPage, {
-  allowIf: (props) => ["films"].includes(props.page),
+	allowIf: (props) => ["films"].includes(props.page),
 });

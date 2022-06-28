@@ -5,13 +5,13 @@ import axios from "axios";
 import { isBrowser } from "~/utils/app";
 
 axios.interceptors.request.use((config) => {
-  return {
-    ...config,
-    headers: {
-      ...config.headers,
-      "dfr-ua-browser": isBrowser(),
-    },
-  };
+	return {
+		...config,
+		headers: {
+			...config.headers,
+			"dfr-ua-browser": isBrowser(),
+		},
+	};
 });
 
 export default axios;

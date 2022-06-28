@@ -9,40 +9,40 @@ import Emoji from "./Emoji";
 import Loader from "./Loader";
 
 type T_RenderProps<G_Data> = {
-  isLoading: boolean;
-  error: unknown;
-  data: G_Data | undefined;
-  children: (data: G_Data) => T_ReactElementNullable;
+	isLoading: boolean;
+	error: unknown;
+	data: G_Data | undefined;
+	children: (data: G_Data) => T_ReactElementNullable;
 };
 
 function Render<G_Data>({
-  isLoading,
-  error,
-  data,
-  children,
+	isLoading,
+	error,
+	data,
+	children,
 }: T_RenderProps<G_Data>): T_ReactElementNullable {
-  if (isLoading) {
-    return (
-      <Block className="tw-p-2 tw-text-center">
-        <Loader />
-      </Block>
-    );
-  }
+	if (isLoading) {
+		return (
+			<Block className="tw-p-2 tw-text-center">
+				<Loader />
+			</Block>
+		);
+	}
 
-  if (error) {
-    return (
-      <Text className="tw-p-2 tw-text-center tw-text-sm dfr-text-colorful-secondary-100">
-        <Emoji className="tw-mr-2">😵</Emoji>
-        <InlineText>{getErrorMessage(Error)}</InlineText>
-      </Text>
-    );
-  }
+	if (error) {
+		return (
+			<Text className="tw-p-2 tw-text-center tw-text-sm dfr-text-colorful-secondary-100">
+				<Emoji className="tw-mr-2">😵</Emoji>
+				<InlineText>{getErrorMessage(Error)}</InlineText>
+			</Text>
+		);
+	}
 
-  if (!isUndefined(data)) {
-    return children(data);
-  }
+	if (!isUndefined(data)) {
+		return children(data);
+	}
 
-  throw new Error("Invalid state");
+	throw new Error("Invalid state");
 }
 
 export default Render;

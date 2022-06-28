@@ -2,7 +2,7 @@ module.exports = {
   // global
   printWidth: 100,
   tabWidth: 2,
-  useTabs: false,
+  useTabs: true,
 
   // common
   bracketSpacing: true,

@@ -12,21 +12,21 @@ type T_Variant = typeof VARIANTS_OPTIONS[number];
 // WARN: False positive
 /* eslint-disable react/no-unused-prop-types */
 type T_SpaceProps = T_HTMLElementAttributes["hr"] & {
-  className?: string;
-  variant?: T_Variant;
-  orientation?: "h" | "v";
-  responsive?: string;
-  size?: number;
-  sizeLeft?: number;
-  sizeRight?: number;
-  sizeTop?: number;
-  sizeBottom?: number;
+	className?: string;
+	variant?: T_Variant;
+	orientation?: "h" | "v";
+	responsive?: string;
+	size?: number;
+	sizeLeft?: number;
+	sizeRight?: number;
+	sizeTop?: number;
+	sizeBottom?: number;
 };
 
 function Space(props: T_SpaceProps): T_ReactElement {
-  const { className } = useController(props);
+	const { className } = useController(props);
 
-  return <hr className={className} />;
+	return <hr className={className} />;
 }
 
 Space.variant = VARIANTS;
@@ -38,65 +38,65 @@ export default Space;
 type T_UseControllerReturn = { className: string };
 
 function useController({
-  className = "",
-  variant = VARIANTS.DEFAULT,
-  orientation = "h",
-  responsive = "",
-  size,
-  sizeTop,
-  sizeBottom,
-  sizeLeft,
-  sizeRight,
+	className = "",
+	variant = VARIANTS.DEFAULT,
+	orientation = "h",
+	responsive = "",
+	size,
+	sizeTop,
+	sizeBottom,
+	sizeLeft,
+	sizeRight,
 }: T_SpaceProps): T_UseControllerReturn {
-  // vars
-  const isVerticalOrientation = orientation === "v";
+	// vars
+	const isVerticalOrientation = orientation === "v";
 
-  // utils
-  function composeClassName(): string {
-    return classNames(
-      "tw-flex-shrink-0",
-      isVerticalOrientation ? "tw-h-full" : "tw-h-px",
-      isNotEmptyString(responsive)
-        ? responsive
-        : classNames(composeSizeClassNames(), isVerticalOrientation && "tw-inline-block"),
-      variant === VARIANTS.DEFAULT && "tw-border-0",
-      variant === VARIANTS.DASHED &&
-        "dfr-border-color-primary dark:dfr-border-color-primary tw-border-dashed",
-      className,
-    );
-  }
+	// utils
+	function composeClassName(): string {
+		return classNames(
+			"tw-flex-shrink-0",
+			isVerticalOrientation ? "tw-h-full" : "tw-h-px",
+			isNotEmptyString(responsive)
+				? responsive
+				: classNames(composeSizeClassNames(), isVerticalOrientation && "tw-inline-block"),
+			variant === VARIANTS.DEFAULT && "tw-border-0",
+			variant === VARIANTS.DASHED &&
+				"dfr-border-color-primary dark:dfr-border-color-primary tw-border-dashed",
+			className,
+		);
+	}
 
-  function composeSizeClassNames(): string {
-    if (isVerticalOrientation) {
-      if (sizeLeft || sizeRight) {
-        return `${composeSingleSideClassName("ml", sizeLeft)} ${composeSingleSideClassName(
-          "mr",
-          sizeRight,
-        )}`.trim();
-      }
+	function composeSizeClassNames(): string {
+		if (isVerticalOrientation) {
+			if (sizeLeft || sizeRight) {
+				return `${composeSingleSideClassName("ml", sizeLeft)} ${composeSingleSideClassName(
+					"mr",
+					sizeRight,
+				)}`.trim();
+			}
 
-      return composeSingleSideClassName("mx", size);
-    }
+			return composeSingleSideClassName("mx", size);
+		}
 
-    if (sizeTop || sizeBottom) {
-      return `${composeSingleSideClassName("mt", sizeTop)} ${composeSingleSideClassName(
-        "mb",
-        sizeBottom,
-      )}`.trim();
-    }
+		if (sizeTop || sizeBottom) {
+			return `${composeSingleSideClassName("mt", sizeTop)} ${composeSingleSideClassName(
+				"mb",
+				sizeBottom,
+			)}`.trim();
+		}
 
-    return composeSingleSideClassName("my", size);
-  }
+		return composeSingleSideClassName("my", size);
+	}
 
-  function composeSingleSideClassName(singleSide: string, singleSideSize?: number): string {
-    if (isNumber(singleSideSize)) {
-      return `tw-${singleSide}-${singleSideSize}`;
-    }
+	function composeSingleSideClassName(singleSide: string, singleSideSize?: number): string {
+		if (isNumber(singleSideSize)) {
+			return `tw-${singleSide}-${singleSideSize}`;
+		}
 
-    return "";
-  }
+		return "";
+	}
 
-  return {
-    className: composeClassName(),
-  };
+	return {
+		className: composeClassName(),
+	};
 }

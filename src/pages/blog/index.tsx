@@ -7,5 +7,5 @@ export default BlogPage;
 // --- Next.js functions ---
 
 export const getStaticProps = getPageContentStaticProps({
-  page: ROUTES.BLOG,
+	page: ROUTES.BLOG,
 });

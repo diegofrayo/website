@@ -31,88 +31,88 @@ import ErrorPage from "./500";
 import { logger } from "~/utils/app";
 
 const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      cacheTime: 1000 * 60 * 60 * 24 * 30, // 30 days
-      refetchOnWindowFocus: false,
-      retry: 1,
-    },
-  },
+	defaultOptions: {
+		queries: {
+			cacheTime: 1000 * 60 * 60 * 24 * 30, // 30 days
+			refetchOnWindowFocus: false,
+			retry: 1,
+		},
+	},
 });
 
 function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
-  // hooks
-  const router = useRouter();
-  const store = useStore(
-    createPreloadedState({
-      metadata: pageProps.metadata,
-      pageContent: pageProps.pageContent,
-      locale: pageProps.locale,
-    }),
-  );
+	// hooks
+	const router = useRouter();
+	const store = useStore(
+		createPreloadedState({
+			metadata: pageProps.metadata,
+			pageContent: pageProps.pageContent,
+			locale: pageProps.locale,
+		}),
+	);
 
-  // effects
-  useDidMount(() => {
-    AuthService.configureHTTPHeaders();
-    AnalyticsService.init();
+	// effects
+	useDidMount(() => {
+		AuthService.configureHTTPHeaders();
+		AnalyticsService.init();
 
-    persistQueryClient({
-      persistor: createWebStoragePersistor({ storage: window.localStorage }),
-      queryClient,
-    });
+		persistQueryClient({
+			persistor: createWebStoragePersistor({ storage: window.localStorage }),
+			queryClient,
+		});
 
-    if (isPWA()) {
-      return initPWARoutingConfig(router);
-    }
+		if (isPWA()) {
+			return initPWARoutingConfig(router);
+		}
 
-    return () => undefined;
-  });
+		return () => undefined;
+	});
 
-  // utils
-  function onError(error: Error, info: { componentStack: string }): void {
-    console.group("componentDidCatch (ErrorBoundary)");
-    logger("ERROR", error);
-    logger("ERROR", info);
-    console.groupEnd();
-  }
+	// utils
+	function onError(error: Error, info: { componentStack: string }): void {
+		console.group("componentDidCatch (ErrorBoundary)");
+		logger("ERROR", error);
+		logger("ERROR", info);
+		console.groupEnd();
+	}
 
-  return (
-    <Provider store={store}>
-      <I18nextProvider
-        i18n={I18nService.createInstance({
-          messages: pageProps.pageContent,
-          locale: pageProps.locale,
-        })}
-      >
-        <ErrorBoundary
-          FallbackComponent={ErrorPage}
-          onError={onError}
-        >
-          <QueryClientProvider client={queryClient}>
-            <ThemeProvider
-              storageKey="DFR_THEME"
-              defaultTheme="system"
-              enableSystem
-              attribute="class"
-              themes={["light"]}
-              value={{ light: "tw-light" }}
-              // themes={["light", "dark"]}
-              // value={{ light: "tw-light", dark: "tw-dark" }}
-            >
-              <MDXProvider components={MDXComponents}>
-                <Component {...pageProps} />
-              </MDXProvider>
-              <ProgressBar />
-              <ToastContainer
-                autoClose={3000}
-                hideProgressBar
-              />
-            </ThemeProvider>
-          </QueryClientProvider>
-        </ErrorBoundary>
-      </I18nextProvider>
-    </Provider>
-  );
+	return (
+		<Provider store={store}>
+			<I18nextProvider
+				i18n={I18nService.createInstance({
+					messages: pageProps.pageContent,
+					locale: pageProps.locale,
+				})}
+			>
+				<ErrorBoundary
+					FallbackComponent={ErrorPage}
+					onError={onError}
+				>
+					<QueryClientProvider client={queryClient}>
+						<ThemeProvider
+							storageKey="DFR_THEME"
+							defaultTheme="system"
+							enableSystem
+							attribute="class"
+							themes={["light"]}
+							value={{ light: "tw-light" }}
+							// themes={["light", "dark"]}
+							// value={{ light: "tw-light", dark: "tw-dark" }}
+						>
+							<MDXProvider components={MDXComponents}>
+								<Component {...pageProps} />
+							</MDXProvider>
+							<ProgressBar />
+							<ToastContainer
+								autoClose={3000}
+								hideProgressBar
+							/>
+						</ThemeProvider>
+					</QueryClientProvider>
+				</ErrorBoundary>
+			</I18nextProvider>
+		</Provider>
+	);
 }
 
 export default CustomApp;
@@ -123,14 +123,14 @@ export default CustomApp;
 // https://linguinecode.com/post/next-js-typescript-getinitialprops
 // @ts-ignore
 CustomApp.getInitialProps = async (appContext): Promise<T_UnknownObject> => {
-  const metadata = await MetadataService.fetchData(appContext.router.locale);
-  const appProps = await App.getInitialProps(appContext);
+	const metadata = await MetadataService.fetchData(appContext.router.locale);
+	const appProps = await App.getInitialProps(appContext);
 
-  return {
-    ...appProps,
-    pageProps: {
-      ...appProps.pageProps,
-      metadata,
-    },
-  };
+	return {
+		...appProps,
+		pageProps: {
+			...appProps.pageProps,
+			metadata,
+		},
+	};
 };

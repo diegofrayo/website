@@ -5,34 +5,34 @@ import { useDidMount } from "~/hooks";
 import type { T_SetTimeout } from "~/types";
 
 function ProgressBar(): null {
-  // hooks
-  const router = useRouter();
+	// hooks
+	const router = useRouter();
 
-  // effects
-  useDidMount(() => {
-    let timeout: T_SetTimeout;
+	// effects
+	useDidMount(() => {
+		let timeout: T_SetTimeout;
 
-    function showProgressBar(): void {
-      timeout = setTimeout(NProgress.start, 100);
-    }
+		function showProgressBar(): void {
+			timeout = setTimeout(NProgress.start, 100);
+		}
 
-    function hideProgressBar(): void {
-      clearTimeout(timeout);
-      NProgress.done();
-    }
+		function hideProgressBar(): void {
+			clearTimeout(timeout);
+			NProgress.done();
+		}
 
-    router.events.on("routeChangeStart", showProgressBar);
-    router.events.on("routeChangeComplete", hideProgressBar);
-    router.events.on("routeChangeError", hideProgressBar);
+		router.events.on("routeChangeStart", showProgressBar);
+		router.events.on("routeChangeComplete", hideProgressBar);
+		router.events.on("routeChangeError", hideProgressBar);
 
-    return () => {
-      router.events.off("routeChangeStart", showProgressBar);
-      router.events.off("routeChangeComplete", hideProgressBar);
-      router.events.off("routeChangeError", hideProgressBar);
-    };
-  });
+		return () => {
+			router.events.off("routeChangeStart", showProgressBar);
+			router.events.off("routeChangeComplete", hideProgressBar);
+			router.events.off("routeChangeError", hideProgressBar);
+		};
+	});
 
-  return null;
+	return null;
 }
 
 export default ProgressBar;

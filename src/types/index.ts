@@ -27,7 +27,7 @@ export type T_ReactElement = JSX.Element;
 export type T_ReactElementNullable = JSX.Element | null;
 
 export type T_ReactFunctionComponent<G_ComponentProps = T_UnknownObject> =
-  React.FunctionComponent<G_ComponentProps>;
+	React.FunctionComponent<G_ComponentProps>;
 
 export type T_ReactRefObject<RefType> = React.RefObject<RefType>;
 
@@ -40,7 +40,7 @@ export type T_ReactSetState<T_State> = React.Dispatch<React.SetStateAction<T_Sta
 export type T_ReactEventTarget = EventTarget;
 
 export type T_ReactOnClickEventHandler<G_HTMLElement = HTMLButtonElement> =
-  React.MouseEventHandler<G_HTMLElement>;
+	React.MouseEventHandler<G_HTMLElement>;
 
 export type T_ReactOnClickEventObject<G_HTMLElement> = React.MouseEvent<G_HTMLElement>;
 
@@ -49,10 +49,10 @@ export type T_ReactOnChangeEventHandler<G_HTMLElement> = React.ChangeEventHandle
 export type T_ReactOnChangeEventObject = React.ChangeEvent<HTMLInputElement>;
 
 export type T_ReactOnFocusEventHandler<G_HTMLElement = HTMLInputElement> =
-  React.FocusEventHandler<G_HTMLElement>;
+	React.FocusEventHandler<G_HTMLElement>;
 
 export type T_ReactOnKeyPressEventHandler<G_HTMLElement> =
-  React.KeyboardEventHandler<G_HTMLElement>;
+	React.KeyboardEventHandler<G_HTMLElement>;
 
 export type T_ReactOnSubmitEventHandler<G_HTMLElement> = React.FormEventHandler<G_HTMLElement>;
 

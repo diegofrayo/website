@@ -42,7 +42,7 @@
     "dom-to-image": "^2.6.0",
     "hoist-non-react-statics": "^3.3.2",
     "i18next": "^20.3.5",
-    "next": "^12.1.6",
+    "next": "^12.2.0",
     "next-mdx-remote": "^4.0.0-alpha.2",
     "next-pwa": "^5.5.2",
     "next-themes": "^0.0.10",

@@ -8,35 +8,35 @@ const VARIANTS_OPTIONS = ["UNSTYLED", "FEATURED", "QUOTE"] as const;
 const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
 type T_Variant = typeof VARIANTS_OPTIONS[number];
 type T_BlockProps = T_HTMLElementAttributes["div"] & {
-  is?: "main" | "div" | "section" | "article" | "header" | "aside" | "footer";
-  variant?: T_Variant;
+	is?: "main" | "div" | "section" | "article" | "header" | "aside" | "footer";
+	variant?: T_Variant;
 };
 
 const Block = React.forwardRef<HTMLDivElement, T_BlockProps>(function Block(
-  { is: Tag = "div", children, variant = VARIANTS.UNSTYLED, className = "", ...rest },
-  ref,
+	{ is: Tag = "div", children, variant = VARIANTS.UNSTYLED, className = "", ...rest },
+	ref,
 ): T_ReactElement {
-  // utils
-  function composeClassName(): string {
-    return classNames(
-      className,
-      variant === "FEATURED" &&
-        "dfr-bg-color-light-strong dfr-border-color-primary tw-border tw-border-l-4 tw-p-4 dark:dfr-border-color-primary",
-      variant === "QUOTE" &&
-        "dfr-border-color-primary dfr-text-color-secondary tw-px-4 tw-border-l-4 tw-italic dark:dfr-border-color-primary dark:dfr-text-color-secondary",
-    );
-  }
+	// utils
+	function composeClassName(): string {
+		return classNames(
+			className,
+			variant === "FEATURED" &&
+				"dfr-bg-color-light-strong dfr-border-color-primary tw-border tw-border-l-4 tw-p-4 dark:dfr-border-color-primary",
+			variant === "QUOTE" &&
+				"dfr-border-color-primary dfr-text-color-secondary tw-px-4 tw-border-l-4 tw-italic dark:dfr-border-color-primary dark:dfr-text-color-secondary",
+		);
+	}
 
-  // render
-  return (
-    <Tag
-      className={composeClassName()}
-      ref={ref}
-      {...rest}
-    >
-      {children}
-    </Tag>
-  );
+	// render
+	return (
+		<Tag
+			className={composeClassName()}
+			ref={ref}
+			{...rest}
+		>
+			{children}
+		</Tag>
+	);
 });
 
 // TODO: Typing issue, fix soon

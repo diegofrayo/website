@@ -3,17 +3,17 @@ import { parse, stringify } from "envfile";
 import fs from "fs";
 
 async function main() {
-  // ipconfig getifaddr en0
-  const localIP = getIP();
+	// ipconfig getifaddr en0
+	const localIP = getIP();
 
-  const envVars = parse(fs.readFileSync("./.env"));
-  envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"] = `http://${localIP}:4000`;
-  // envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"] = `https://diegofrayo-backend.vercel.app`;
+	const envVars = parse(fs.readFileSync("./.env"));
+	envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"] = `http://${localIP}:4000`;
+	// envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"] = `https://diegofrayo-backend.vercel.app`;
 
-  fs.writeFileSync("./.env", stringify(envVars));
-  console.log("Local IP address", envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"]);
+	fs.writeFileSync("./.env", stringify(envVars));
+	console.log("Local IP address", envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"]);
 
-  console.log("Env-vars script executed successfully");
+	console.log("Env-vars script executed successfully");
 }
 
 main();
@@ -21,24 +21,24 @@ main();
 // --- Utils ---
 
 function getIP() {
-  try {
-    const nets = networkInterfaces();
-    const results = Object.create(null);
+	try {
+		const nets = networkInterfaces();
+		const results = Object.create(null);
 
-    Object.keys(nets).forEach((name) => {
-      Object.values(nets[name]).forEach((net) => {
-        if (net.family === "IPv4" && !net.internal) {
-          if (!results[name]) {
-            results[name] = [];
-          }
-          results[name].push(net.address);
-        }
-      });
-    });
+		Object.keys(nets).forEach((name) => {
+			Object.values(nets[name]).forEach((net) => {
+				if (net.family === "IPv4" && !net.internal) {
+					if (!results[name]) {
+						results[name] = [];
+					}
+					results[name].push(net.address);
+				}
+			});
+		});
 
-    return results.en0[0];
-  } catch (error) {
-    console.log("Error getting the ip address:", error.message);
-    return "localhost";
-  }
+		return results.en0[0];
+	} catch (error) {
+		console.log("Error getting the ip address:", error.message);
+		return "localhost";
+	}
 }

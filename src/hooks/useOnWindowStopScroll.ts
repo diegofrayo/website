@@ -3,44 +3,44 @@ import useDidMount from "./useDidMount";
 import type { T_SetTimeout } from "~/types";
 
 function useOnWindowStopScroll({
-  onScrollStoppedCallback,
-  onScrollCallback = (): void => undefined,
-  timeout = 3000,
+	onScrollStoppedCallback,
+	onScrollCallback = (): void => undefined,
+	timeout = 3000,
 }: {
-  onScrollStoppedCallback: () => void;
-  onScrollCallback?: () => void;
-  timeout?: number;
+	onScrollStoppedCallback: () => void;
+	onScrollCallback?: () => void;
+	timeout?: number;
 }): () => void {
-  let isScrolling: T_SetTimeout;
-  let isMounted = false;
+	let isScrolling: T_SetTimeout;
+	let isMounted = false;
 
-  // effects
-  useDidMount(() => {
-    isMounted = true;
-    window.addEventListener("scroll", onScroll, false);
-  });
+	// effects
+	useDidMount(() => {
+		isMounted = true;
+		window.addEventListener("scroll", onScroll, false);
+	});
 
-  // utils
-  function onScrollStopped(): void {
-    if (!isMounted) return;
+	// utils
+	function onScrollStopped(): void {
+		if (!isMounted) return;
 
-    onScrollStoppedCallback();
-  }
+		onScrollStoppedCallback();
+	}
 
-  function onScroll(): void {
-    window.clearTimeout(isScrolling);
+	function onScroll(): void {
+		window.clearTimeout(isScrolling);
 
-    onScrollCallback();
+		onScrollCallback();
 
-    isScrolling = setTimeout(() => {
-      onScrollStopped();
-    }, timeout);
-  }
+		isScrolling = setTimeout(() => {
+			onScrollStopped();
+		}, timeout);
+	}
 
-  return () => {
-    isMounted = false;
-    window.removeEventListener("scroll", onScroll, false);
-  };
+	return () => {
+		isMounted = false;
+		window.removeEventListener("scroll", onScroll, false);
+	};
 }
 
 export default useOnWindowStopScroll;

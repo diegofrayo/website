@@ -7,5 +7,5 @@ export default ErrorPage;
 // --- Next.js functions ---
 
 export const getStaticProps = getPageContentStaticProps({
-  page: ROUTES.ERROR_404,
+	page: ROUTES.ERROR_404,
 });

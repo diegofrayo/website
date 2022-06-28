@@ -9,15 +9,15 @@ import { T_Store } from "../types";
 const REDUCER_NAME = "page-config";
 
 const slice = createSlice({
-  name: REDUCER_NAME,
-  initialState: {
-    locales: undefined,
-  },
-  reducers: {
-    setLocales: (state, action) => {
-      state.locales = action.payload;
-    },
-  },
+	name: REDUCER_NAME,
+	initialState: {
+		locales: undefined,
+	},
+	reducers: {
+		setLocales: (state, action) => {
+			state.locales = action.payload;
+		},
+	},
 });
 
 export default slice.reducer;
@@ -29,12 +29,12 @@ export const { setLocales } = slice.actions;
 // --- Selectors ---
 
 export function selectPageConfig(store: T_Store): T_Locale[] {
-  return store[REDUCER_NAME];
+	return store[REDUCER_NAME];
 }
 
 // --- Types ---
 
 export type T_PageConfig = {
-  locales: T_Locale[];
-  reloadWhenLocaleChanges: boolean;
+	locales: T_Locale[];
+	reloadWhenLocaleChanges: boolean;
 };

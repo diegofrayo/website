@@ -9,17 +9,17 @@ export default HomePage;
 // --- Next.js functions ---
 
 export const getStaticProps = getPageContentStaticProps({
-  page: ROUTES.HOME,
-  callback: async () => {
-    return {
-      props: {
-        data: (
-          await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
-            path: "/data",
-            model: "home",
-          })
-        ).data,
-      },
-    };
-  },
+	page: ROUTES.HOME,
+	callback: async () => {
+		return {
+			props: {
+				data: (
+					await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
+						path: "/data",
+						model: "home",
+					})
+				).data,
+			},
+		};
+	},
 });

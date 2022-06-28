@@ -13,8 +13,8 @@ import { ROUTES } from "~/utils/routing";
 import { isFalsy } from "~/utils/validations";
 
 type T_PageProps = {
-  song: T_Song;
-  songMDXContent: MDXRemoteSerializeResult;
+	song: T_Song;
+	songMDXContent: MDXRemoteSerializeResult;
 };
 
 export default SongPage;
@@ -24,53 +24,53 @@ export default SongPage;
 type T_StaticPath = { song: string };
 
 export const getStaticPaths: GetStaticPaths<T_StaticPath> = async function getStaticPaths() {
-  return {
-    paths: (await MusicService.fetchSongs()).reduce(
-      (result: { params: T_StaticPath }[], song: T_Song) => {
-        if (song.isPublic) {
-          return result.concat([{ params: { song: song.id } }]);
-        }
+	return {
+		paths: (await MusicService.fetchSongs()).reduce(
+			(result: { params: T_StaticPath }[], song: T_Song) => {
+				if (song.isPublic) {
+					return result.concat([{ params: { song: song.id } }]);
+				}
 
-        return result;
-      },
-      [],
-    ),
-    fallback: "blocking",
-  };
+				return result;
+			},
+			[],
+		),
+		fallback: "blocking",
+	};
 };
 
 export const getStaticProps = getPageContentStaticProps<T_PageProps, T_StaticPath>({
-  page: [ROUTES.MUSIC, ROUTES.MUSIC_DETAILS],
-  callback: async ({ params }) => {
-    const song = await MusicService.getSong({ id: params.song });
-    const file = (await dataLoader({
-      path: `/pages/music/[song]/assets/${song.id}.mdx`,
-    })) as string;
+	page: [ROUTES.MUSIC, ROUTES.MUSIC_DETAILS],
+	callback: async ({ params }) => {
+		const song = await MusicService.getSong({ id: params.song });
+		const file = (await dataLoader({
+			path: `/pages/music/[song]/assets/${song.id}.mdx`,
+		})) as string;
 
-    let content;
-    if (isDevelopmentEnvironment() || isFalsy(song.assets?.serverUrl)) {
-      content = await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.txt` });
-    } else {
-      content = (await http.get(song.assets?.serverUrl || "")).data;
-    }
+		let content;
+		if (isDevelopmentEnvironment() || isFalsy(song.assets?.serverUrl)) {
+			content = await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.txt` });
+		} else {
+			content = (await http.get(song.assets?.serverUrl || "")).data;
+		}
 
-    const songMDXContent = await serialize(file, {
-      scope: {
-        DATA: {
-          ...MDXScope.DATA,
-          song: {
-            ...song,
-            content,
-          },
-        },
-      },
-    });
+		const songMDXContent = await serialize(file, {
+			scope: {
+				DATA: {
+					...MDXScope.DATA,
+					song: {
+						...song,
+						content,
+					},
+				},
+			},
+		});
 
-    return {
-      props: {
-        song,
-        songMDXContent,
-      },
-    };
-  },
+		return {
+			props: {
+				song,
+				songMDXContent,
+			},
+		};
+	},
 });

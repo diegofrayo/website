@@ -9,53 +9,53 @@ const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
 type T_Variant = typeof VARIANTS_OPTIONS[number];
 
 type T_ListProps = T_HTMLElementAttributes["ul"] & {
-  variant?: T_Variant;
+	variant?: T_Variant;
 };
 
 function List({
-  children,
-  className = "",
-  variant = VARIANTS.UNSTYLED,
+	children,
+	className = "",
+	variant = VARIANTS.UNSTYLED,
 }: T_ListProps): T_ReactElement {
-  return (
-    <ul
-      className={classNames(
-        `dfr-List dfr-List--${variant.toLowerCase()}`,
-        "tw-list-inside tw-list-none",
-        className,
-      )}
-    >
-      {children}
+	return (
+		<ul
+			className={classNames(
+				`dfr-List dfr-List--${variant.toLowerCase()}`,
+				"tw-list-inside tw-list-none",
+				className,
+			)}
+		>
+			{children}
 
-      <style jsx>
-        {`
-          .dfr-List--default {
-            padding-left: 19px;
-          }
+			<style jsx>
+				{`
+					.dfr-List--default {
+						padding-left: 19px;
+					}
 
-          .dfr-List--default :global(li) {
-            @apply tw-mb-3;
-            @apply last:tw-mb-0;
-            position: relative;
-          }
+					.dfr-List--default :global(li) {
+						@apply tw-mb-3;
+						@apply last:tw-mb-0;
+						position: relative;
+					}
 
-          .dfr-List--default :global(li)::before {
-            @apply dfr-text-color-dark-strong;
-            content: "❯";
-            font-weight: bold;
-            font-size: 14px;
-            left: -19px;
-            position: absolute;
-            top: 2px;
-          }
+					.dfr-List--default :global(li)::before {
+						@apply dfr-text-color-dark-strong;
+						content: "❯";
+						font-weight: bold;
+						font-size: 14px;
+						left: -19px;
+						position: absolute;
+						top: 2px;
+					}
 
-          :global(.tw-dark) .dfr-List--default :global(li)::before {
-            @apply dfr-text-color-light-strong;
-          }
-        `}
-      </style>
-    </ul>
-  );
+					:global(.tw-dark) .dfr-List--default :global(li)::before {
+						@apply dfr-text-color-light-strong;
+					}
+				`}
+			</style>
+		</ul>
+	);
 }
 
 List.variant = VARIANTS;
@@ -65,8 +65,8 @@ export default List;
 // --- Components ---
 
 List.Item = function ListItem({
-  children,
-  ...rest
+	children,
+	...rest
 }: T_HTMLElementAttributes["li"]): T_ReactElement {
-  return <li {...rest}>{children}</li>;
+	return <li {...rest}>{children}</li>;
 };

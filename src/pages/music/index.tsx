@@ -7,5 +7,5 @@ export default MusicPage;
 // --- Next.js functions ---
 
 export const getStaticProps = getPageContentStaticProps({
-  page: ROUTES.MUSIC,
+	page: ROUTES.MUSIC,
 });

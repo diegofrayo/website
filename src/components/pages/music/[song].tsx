@@ -19,131 +19,131 @@ import MusicService, { T_Song } from "./service";
 // WARN: False positive
 /* eslint-disable react/no-unused-prop-types */
 type T_PageProps = {
-  song: T_Song;
-  songMDXContent: MDXRemoteSerializeResult;
+	song: T_Song;
+	songMDXContent: MDXRemoteSerializeResult;
 };
 
 function SongPage(props: T_PageProps): T_ReactElement {
-  // hooks
-  const router = useRouter();
-  const { t } = useTranslation();
-  const {
-    // props
-    song,
-    songMDXContent,
+	// hooks
+	const router = useRouter();
+	const { t } = useTranslation();
+	const {
+		// props
+		song,
+		songMDXContent,
 
-    // states & refs
-    fontSize,
+		// states & refs
+		fontSize,
 
-    // handlers
-    handleIncreaseFontSizeClick,
-    handleDecreaseFontSizeClick,
-    handleCopyUrlClick,
+		// handlers
+		handleIncreaseFontSizeClick,
+		handleDecreaseFontSizeClick,
+		handleCopyUrlClick,
 
-    // vars
-    isMaxFontSize,
-    isMinFontSize,
-  } = useController(props);
+		// vars
+		isMaxFontSize,
+		isMinFontSize,
+	} = useController(props);
 
-  if (router.isFallback) {
-    return (
-      <Block className="tw-p-4 tw-text-center">
-        <Loader />
-      </Block>
-    );
-  }
+	if (router.isFallback) {
+		return (
+			<Block className="tw-p-4 tw-text-center">
+				<Loader />
+			</Block>
+		);
+	}
 
-  return (
-    <Page
-      config={{
-        title: MusicService.isChordsSong(song)
-          ? song.title
-          : t("seo:title", { title: song.title, artist: song.artist }),
-        replaceTitle: !MusicService.isChordsSong(song),
-        description: t("seo:description", { title: song.title, artist: song.artist }),
-        pathname: `${ROUTES.MUSIC}/${song.id}`,
-        disableSEO: true,
-      }}
-    >
-      <MainLayout title={song.title}>
-        <SongDetails
-          song={song}
-          className="tw-mb-8"
-        />
+	return (
+		<Page
+			config={{
+				title: MusicService.isChordsSong(song)
+					? song.title
+					: t("seo:title", { title: song.title, artist: song.artist }),
+				replaceTitle: !MusicService.isChordsSong(song),
+				description: t("seo:description", { title: song.title, artist: song.artist }),
+				pathname: `${ROUTES.MUSIC}/${song.id}`,
+				disableSEO: true,
+			}}
+		>
+			<MainLayout title={song.title}>
+				<SongDetails
+					song={song}
+					className="tw-mb-8"
+				/>
 
-        <Block
-          variant="FEATURED"
-          className="tw-mb-8"
-          style={{ fontSize: `${fontSize}rem` }}
-        >
-          <Block className="tw-mb-6 tw-text-sm">
-            <Button
-              variant={Button.variant.SIMPLE}
-              disabled={isMaxFontSize}
-              onClick={handleIncreaseFontSizeClick}
-            >
-              <Icon
-                icon={Icon.icon.ZOOM_IN}
-                size={24}
-              />
-            </Button>
-            <Space
-              size={1}
-              orientation="v"
-            />
-            <Button
-              variant={Button.variant.SIMPLE}
-              disabled={isMinFontSize}
-              onClick={handleDecreaseFontSizeClick}
-            >
-              <Icon
-                icon={Icon.icon.ZOOM_OUT}
-                size={24}
-              />
-            </Button>
-            <Space
-              size={1}
-              orientation="v"
-            />
-            <Button
-              variant={Button.variant.SIMPLE}
-              onClick={handleCopyUrlClick}
-            >
-              <Icon
-                icon={Icon.icon.LINK}
-                size={24}
-              />
-            </Button>
-          </Block>
+				<Block
+					variant="FEATURED"
+					className="tw-mb-8"
+					style={{ fontSize: `${fontSize}rem` }}
+				>
+					<Block className="tw-mb-6 tw-text-sm">
+						<Button
+							variant={Button.variant.SIMPLE}
+							disabled={isMaxFontSize}
+							onClick={handleIncreaseFontSizeClick}
+						>
+							<Icon
+								icon={Icon.icon.ZOOM_IN}
+								size={24}
+							/>
+						</Button>
+						<Space
+							size={1}
+							orientation="v"
+						/>
+						<Button
+							variant={Button.variant.SIMPLE}
+							disabled={isMinFontSize}
+							onClick={handleDecreaseFontSizeClick}
+						>
+							<Icon
+								icon={Icon.icon.ZOOM_OUT}
+								size={24}
+							/>
+						</Button>
+						<Space
+							size={1}
+							orientation="v"
+						/>
+						<Button
+							variant={Button.variant.SIMPLE}
+							onClick={handleCopyUrlClick}
+						>
+							<Icon
+								icon={Icon.icon.LINK}
+								size={24}
+							/>
+						</Button>
+					</Block>
 
-          <Block className="tw-max-w-full tw-overflow-x-auto tw-pb-3">
-            <MDXContent
-              content={songMDXContent}
-              variant={MDXContent.variant.UNSTYLED}
-            />
-          </Block>
-          <Space size={6} />
+					<Block className="tw-max-w-full tw-overflow-x-auto tw-pb-3">
+						<MDXContent
+							content={songMDXContent}
+							variant={MDXContent.variant.UNSTYLED}
+						/>
+					</Block>
+					<Space size={6} />
 
-          <Block variant="FEATURED">
-            <Text className="tw-mb-2 tw-font-bold">
-              {t("page:chords_title")} [{song.chords.length}]
-            </Text>
-            <pre
-              className="tw-max-w-full tw-whitespace-normal tw-break-all"
-              dangerouslySetInnerHTML={{
-                __html: GuitarService.formatText(song.chords.join(" | ")),
-              }}
-            />
-          </Block>
-        </Block>
+					<Block variant="FEATURED">
+						<Text className="tw-mb-2 tw-font-bold">
+							{t("page:chords_title")} [{song.chords.length}]
+						</Text>
+						<pre
+							className="tw-max-w-full tw-whitespace-normal tw-break-all"
+							dangerouslySetInnerHTML={{
+								__html: GuitarService.formatText(song.chords.join(" | ")),
+							}}
+						/>
+					</Block>
+				</Block>
 
-        <SongSources sources={song.sources} />
-        <Space size={6} />
+				<SongSources sources={song.sources} />
+				<Space size={6} />
 
-        <RateContent />
-      </MainLayout>
-    </Page>
-  );
+				<RateContent />
+			</MainLayout>
+		</Page>
+	);
 }
 
 export default SongPage;
@@ -151,78 +151,78 @@ export default SongPage;
 // --- Controller ---
 
 type T_UseControllerReturn = {
-  song: T_PageProps["song"];
-  fontSize: number;
-  songMDXContent: MDXRemoteSerializeResult;
-  isMaxFontSize: boolean;
-  isMinFontSize: boolean;
-  handleIncreaseFontSizeClick: () => void;
-  handleDecreaseFontSizeClick: () => void;
-  handleCopyUrlClick: () => void;
+	song: T_PageProps["song"];
+	fontSize: number;
+	songMDXContent: MDXRemoteSerializeResult;
+	isMaxFontSize: boolean;
+	isMinFontSize: boolean;
+	handleIncreaseFontSizeClick: () => void;
+	handleDecreaseFontSizeClick: () => void;
+	handleCopyUrlClick: () => void;
 };
 
 function useController({ songMDXContent, song }: T_PageProps): T_UseControllerReturn {
-  // states & refs
-  const [fontSize, setFontSize] = React.useState(0);
+	// states & refs
+	const [fontSize, setFontSize] = React.useState(0);
 
-  // vars
-  const LOCAL_STORAGE_KEY = "DFR_MUSIC_FONT_SIZE";
+	// vars
+	const LOCAL_STORAGE_KEY = "DFR_MUSIC_FONT_SIZE";
 
-  // effects
-  useDidMount(() => {
-    setFontSize(getFontSize());
-  });
+	// effects
+	useDidMount(() => {
+		setFontSize(getFontSize());
+	});
 
-  React.useEffect(
-    function updateFontSizeOnLocalStorage() {
-      window.localStorage.setItem(LOCAL_STORAGE_KEY, `${fontSize}`);
-    },
-    [fontSize],
-  );
+	React.useEffect(
+		function updateFontSizeOnLocalStorage() {
+			window.localStorage.setItem(LOCAL_STORAGE_KEY, `${fontSize}`);
+		},
+		[fontSize],
+	);
 
-  // handlers
-  function handleIncreaseFontSizeClick(): void {
-    setFontSize((currentValue) => Number((currentValue + 0.2).toFixed(1)));
-  }
+	// handlers
+	function handleIncreaseFontSizeClick(): void {
+		setFontSize((currentValue) => Number((currentValue + 0.2).toFixed(1)));
+	}
 
-  function handleDecreaseFontSizeClick(): void {
-    setFontSize((currentValue) => Number((currentValue - 0.2).toFixed(1)));
-  }
+	function handleDecreaseFontSizeClick(): void {
+		setFontSize((currentValue) => Number((currentValue - 0.2).toFixed(1)));
+	}
 
-  function handleCopyUrlClick(): void {
-    copyToClipboard(window.location.href);
-  }
+	function handleCopyUrlClick(): void {
+		copyToClipboard(window.location.href);
+	}
 
-  // utils
-  function getFontSize(): number {
-    const INITIAL_VALUE = 0.8;
-    const readedFontSize = safeCastNumber(
-      window.localStorage.getItem(LOCAL_STORAGE_KEY) || "0",
-      NaN,
-    );
+	// utils
+	function getFontSize(): number {
+		const INITIAL_VALUE = 0.8;
+		const readedFontSize = safeCastNumber(
+			window.localStorage.getItem(LOCAL_STORAGE_KEY) || "0",
+			NaN,
+		);
 
-    if (Number.isNaN(readedFontSize) || readedFontSize === 0) {
-      return INITIAL_VALUE;
-    }
+		if (Number.isNaN(readedFontSize) || readedFontSize === 0) {
+			return INITIAL_VALUE;
+		}
 
-    return readedFontSize;
-  }
+		return readedFontSize;
+	}
 
-  return {
-    // props
-    song,
-    songMDXContent,
+	return {
+		// props
+		song,
+		songMDXContent,
 
-    // states & refs
-    fontSize,
+		// states & refs
+		fontSize,
 
-    // handlers
-    handleIncreaseFontSizeClick,
-    handleDecreaseFontSizeClick,
-    handleCopyUrlClick,
+		// handlers
+		handleIncreaseFontSizeClick,
+		handleDecreaseFontSizeClick,
+		handleCopyUrlClick,
 
-    // vars
-    isMaxFontSize: fontSize === 2,
-    isMinFontSize: fontSize === 0.6,
-  };
+		// vars
+		isMaxFontSize: fontSize === 2,
+		isMinFontSize: fontSize === 0.6,
+	};
 }

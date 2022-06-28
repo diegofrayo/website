@@ -9,89 +9,89 @@ import SourceCode, { T_SourceCodeProps } from "./SourceCode";
 // WARN: False positive
 /* eslint-disable react/no-unused-prop-types */
 type T_PlaygroundProps = Pick<T_SourceCodeProps, "code" | "language"> & {
-  Component: T_ReactFunctionComponent;
+	Component: T_ReactFunctionComponent;
 };
 
 function Playground(props: T_PlaygroundProps): T_ReactElement {
-  const {
-    // props
-    Component,
-    code,
-    language,
+	const {
+		// props
+		Component,
+		code,
+		language,
 
-    // states & refs
-    contentRef,
+		// states & refs
+		contentRef,
 
-    // vars
-    isSourceCodeTabSelected,
-    isOutputTabSelected,
+		// vars
+		isSourceCodeTabSelected,
+		isOutputTabSelected,
 
-    // handlers
-    handleTabClick,
-  } = useController(props);
+		// handlers
+		handleTabClick,
+	} = useController(props);
 
-  return (
-    <div
-      className="dfr-Playground root tw-flex tw-flex-col tw-border-4 tw-border-black dfr-bg-color-light-strong dark:tw-border-white"
-      data-markdown-block
-    >
-      <Block
-        className="tab-content-container tw-flex-1 tw-overflow-auto tw-p-0.5"
-        ref={contentRef}
-      >
-        {isSourceCodeTabSelected ? (
-          <SourceCode
-            language={language}
-            code={code}
-            displaySourceCodeDetails={false}
-          />
-        ) : (
-          <Component />
-        )}
-      </Block>
-      <Block className="tw-flex-no-wrap tw-flex tw-border-t-4 tw-border-black tw-text-sm dark:tw-border-white">
-        <Button
-          variant={Button.variant.SIMPLE}
-          className={classNames(
-            "tw-flex-1 tw-cursor-pointer tw-p-2 tw-text-center",
-            isSourceCodeTabSelected &&
-              "tw-bg-black tw-font-bold tw-text-white hover:tw-opacity-100 dark:tw-bg-white dark:tw-text-black",
-          )}
-          onClick={handleTabClick(0)}
-        >
-          Source code
-        </Button>
-        <Button
-          variant={Button.variant.SIMPLE}
-          className={classNames(
-            "tw-flex-1 tw-cursor-pointer tw-p-2 tw-text-center",
-            isOutputTabSelected &&
-              "tw-bg-black tw-font-bold tw-text-white hover:tw-opacity-100 dark:tw-bg-white dark:tw-text-black",
-          )}
-          onClick={handleTabClick(1)}
-        >
-          Output
-        </Button>
-      </Block>
+	return (
+		<div
+			className="dfr-Playground root tw-flex tw-flex-col tw-border-4 tw-border-black dfr-bg-color-light-strong dark:tw-border-white"
+			data-markdown-block
+		>
+			<Block
+				className="tab-content-container tw-flex-1 tw-overflow-auto tw-p-0.5"
+				ref={contentRef}
+			>
+				{isSourceCodeTabSelected ? (
+					<SourceCode
+						language={language}
+						code={code}
+						displaySourceCodeDetails={false}
+					/>
+				) : (
+					<Component />
+				)}
+			</Block>
+			<Block className="tw-flex-no-wrap tw-flex tw-border-t-4 tw-border-black tw-text-sm dark:tw-border-white">
+				<Button
+					variant={Button.variant.SIMPLE}
+					className={classNames(
+						"tw-flex-1 tw-cursor-pointer tw-p-2 tw-text-center",
+						isSourceCodeTabSelected &&
+							"tw-bg-black tw-font-bold tw-text-white hover:tw-opacity-100 dark:tw-bg-white dark:tw-text-black",
+					)}
+					onClick={handleTabClick(0)}
+				>
+					Source code
+				</Button>
+				<Button
+					variant={Button.variant.SIMPLE}
+					className={classNames(
+						"tw-flex-1 tw-cursor-pointer tw-p-2 tw-text-center",
+						isOutputTabSelected &&
+							"tw-bg-black tw-font-bold tw-text-white hover:tw-opacity-100 dark:tw-bg-white dark:tw-text-black",
+					)}
+					onClick={handleTabClick(1)}
+				>
+					Output
+				</Button>
+			</Block>
 
-      <style jsx>
-        {`
-          .root {
-            min-height: 200px;
-          }
+			<style jsx>
+				{`
+					.root {
+						min-height: 200px;
+					}
 
-          .root :global(.tab-content-container) {
-            max-height: 300px;
-          }
+					.root :global(.tab-content-container) {
+						max-height: 300px;
+					}
 
-          .root :global(.dfr-Code) {
-            box-shadow: none;
-            margin: 0;
-          }
-        `}
-      </style>
-    </div>
-  );
+					.root :global(.dfr-Code) {
+						box-shadow: none;
+						margin: 0;
+					}
+				`}
+			</style>
+		</div>
+	);
 }
 
 export default Playground;
@@ -99,40 +99,40 @@ export default Playground;
 // --- Controller ---
 
 type T_UseControllerReturn = T_PlaygroundProps & {
-  isSourceCodeTabSelected: boolean;
-  isOutputTabSelected: boolean;
-  handleTabClick: (index: 0 | 1) => () => void;
-  contentRef: T_ReactRefObject<HTMLDivElement>;
+	isSourceCodeTabSelected: boolean;
+	isOutputTabSelected: boolean;
+	handleTabClick: (index: 0 | 1) => () => void;
+	contentRef: T_ReactRefObject<HTMLDivElement>;
 };
 
 function useController(props: T_PlaygroundProps): T_UseControllerReturn {
-  // states & refs
-  const [tab, setTab] = React.useState(0);
-  const contentRef = React.useRef<HTMLDivElement>(null);
+	// states & refs
+	const [tab, setTab] = React.useState(0);
+	const contentRef = React.useRef<HTMLDivElement>(null);
 
-  // handlers
-  const handleTabClick: T_UseControllerReturn["handleTabClick"] = function handleTabClick(index) {
-    return () => {
-      setTab(index);
+	// handlers
+	const handleTabClick: T_UseControllerReturn["handleTabClick"] = function handleTabClick(index) {
+		return () => {
+			setTab(index);
 
-      if (contentRef.current) {
-        contentRef.current.scrollTop = 0;
-      }
-    };
-  };
+			if (contentRef.current) {
+				contentRef.current.scrollTop = 0;
+			}
+		};
+	};
 
-  return {
-    // props
-    ...props,
+	return {
+		// props
+		...props,
 
-    // states & refs
-    contentRef,
+		// states & refs
+		contentRef,
 
-    // vars
-    isSourceCodeTabSelected: tab === 0,
-    isOutputTabSelected: tab === 1,
+		// vars
+		isSourceCodeTabSelected: tab === 0,
+		isOutputTabSelected: tab === 1,
 
-    // handlers
-    handleTabClick,
-  };
+		// handlers
+		handleTabClick,
+	};
 }
