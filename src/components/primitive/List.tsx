@@ -9,16 +9,18 @@ const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
 type T_Variant = typeof VARIANTS_OPTIONS[number];
 
 type T_ListProps = T_HTMLElementAttributes["ul"] & {
+	is?: "ul" | "menu";
 	variant?: T_Variant;
 };
 
 function List({
+	is: Element = "ul",
 	children,
 	className = "",
 	variant = VARIANTS.UNSTYLED,
 }: T_ListProps): T_ReactElement {
 	return (
-		<ul
+		<Element
 			className={classNames(
 				`dfr-List dfr-List--${variant.toLowerCase()}`,
 				"tw-list-inside tw-list-none",
@@ -54,7 +56,7 @@ function List({
 					}
 				`}
 			</style>
-		</ul>
+		</Element>
 	);
 }
 

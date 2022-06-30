@@ -1,6 +1,7 @@
 const myCustomClassesPlugin = require("./scripts/styles/tailwind");
 
 module.exports = {
+	jit: true,
 	prefix: "tw-",
 	darkMode: "class",
 	important: false,

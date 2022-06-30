@@ -6,6 +6,7 @@
 		"===== DEV =====": "",
 		"dev": "yarn scripts:env-vars && next dev",
 		"husky:install": "husky install ./.husky",
+		"build:ts": "tsc --build",
 		"===== PROD =====": "",
 		"no-opt-install": "yarn install --ignore-optional",
 		"build": "next build",
@@ -13,7 +14,7 @@
 		"postinstall": "yarn scripts:rss",
 		"===== FORMATTING =====": "",
 		"lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
-		"lint:no-warn": "NO_LINT_WARNINGS=true eslint \"src/**/*.{ts,tsx}\"",
+		"lint:no-warnings": "NO_LINT_WARNINGS=true eslint \"src/**/*.{ts,tsx}\"",
 		"format": "prettier --write \"./**/*.{ts,tsx,json,css,mjs,js}\"",
 		"===== STORYBOOK =====": "",
 		"storybook": "start-storybook -p 6006",
@@ -27,7 +28,8 @@
 		"===== AUX/DEV =====": "",
 		"scripts:commit": "sh ./.husky/generic-commit",
 		"scripts:env-vars": "node --experimental-json-modules scripts/env-vars.mjs",
-		"scripts:code-stats": "tokei ./src"
+		"scripts:code-stats": "tokei ./src",
+		"scripts:code-complexity": "npx code-complexity . --filter \"./src/**/*.tsx\" --limit 10 --sort complexity"
 	},
 	"dependencies": {
 		"@heroicons/react": "^1.0.0",

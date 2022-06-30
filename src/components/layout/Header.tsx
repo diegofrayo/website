@@ -158,44 +158,37 @@ function MainMenu(): T_ReactElement {
 			</Button>
 
 			{showMenu ? (
-				<Block className="floating-menu-container tw-absolute tw-top-full tw-z-40 tw-w-40 tw-overflow-hidden dfr-shadow dark:dfr-shadow">
-					<List className="tw-block">
-						{items.map((item) => {
-							const isLinkActive =
-								pathname === item.url ||
-								asPath === item.url ||
-								(isNotEquals(item.url, ROUTES.HOME) && pathname.startsWith(item.url));
+				<List
+					is="menu"
+					className="tw-absolute tw-top-full tw-left-[-65px] tw-z-40 tw-block tw-w-40 tw-overflow-hidden dfr-shadow dark:dfr-shadow"
+				>
+					{items.map((item) => {
+						const isLinkActive =
+							pathname === item.url ||
+							asPath === item.url ||
+							(isNotEquals(item.url, ROUTES.HOME) && pathname.startsWith(item.url));
 
-							return (
-								<List.Item
-									key={generateSlug(item.label)}
-									className="tw-border-b tw-border-gray-800 dfr-bg-color-dark-strong last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary"
-									onClick={handleHideMenuClick}
+						return (
+							<List.Item
+								key={generateSlug(item.label)}
+								className="tw-border-b tw-border-gray-800 dfr-bg-color-dark-strong last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary"
+								onClick={handleHideMenuClick}
+							>
+								<Link
+									variant={Link.variant.SIMPLE}
+									href={item.url}
+									className={classNames(
+										"tw-block tw-px-2 tw-py-1 tw-text-center tw-text-base tw-text-gray-400 hover:tw-font-bold",
+										isLinkActive && "tw-font-bold",
+									)}
 								>
-									<Link
-										variant={Link.variant.SIMPLE}
-										href={item.url}
-										className={classNames(
-											"tw-block tw-px-2 tw-py-1 tw-text-center tw-text-base tw-text-gray-400 hover:tw-font-bold",
-											isLinkActive && "tw-font-bold",
-										)}
-									>
-										{item.label}
-									</Link>
-								</List.Item>
-							);
-						})}
-					</List>
-				</Block>
+									{item.label}
+								</Link>
+							</List.Item>
+						);
+					})}
+				</List>
 			) : null}
-
-			<style jsx>
-				{`
-					.root :global(.floating-menu-container) {
-						left: -65px;
-					}
-				`}
-			</style>
 		</div>
 	);
 }
@@ -252,7 +245,10 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
 			</Button>
 
 			{showMenu ? (
-				<Block className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-44 tw-overflow-hidden dfr-shadow dark:dfr-shadow">
+				<List
+					is="menu"
+					className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-44 tw-overflow-hidden dfr-shadow dark:dfr-shadow"
+				>
 					<MenuItem
 						title={t("layout:header:settings:theme")}
 						className="tw-hidden"
@@ -284,11 +280,10 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
 							/>
 						</Button>
 					</MenuItem>
-
 					<ISRMenuItem />
 					<EnvironmentMenuItem />
 					<ReloadPWAMenuItem />
-				</Block>
+				</List>
 			) : null}
 		</Block>
 	);
@@ -392,7 +387,7 @@ type T_MenuItemProps = {
 
 function MenuItem({ children, title, className = "" }: T_MenuItemProps): T_ReactElement {
 	return (
-		<Block
+		<List.Item
 			className={classNames(
 				"tw-flex tw-h-16 tw-flex-col tw-items-center tw-justify-center tw-border-b tw-px-2 dfr-bg-color-primary dfr-border-color-primary last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary",
 				className,
@@ -400,6 +395,6 @@ function MenuItem({ children, title, className = "" }: T_MenuItemProps): T_React
 		>
 			<Text className="tw-text-right tw-text-xs tw-font-bold">{title}</Text>
 			<Block className="tw-mt-2 tw-text-right tw-leading-none">{children}</Block>
-		</Block>
+		</List.Item>
 	);
 }

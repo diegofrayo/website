@@ -29,6 +29,7 @@ function Dencrypt(): T_ReactElement {
 		<div className="root">
 			<Block className="tw-mb-8">
 				<Input
+					type="text"
 					id="input"
 					label="Ingrese un texto"
 					containerProps={{ className: "tw-my-1" }}
@@ -58,7 +59,7 @@ function Dencrypt(): T_ReactElement {
 
 			<Block>
 				<Text className="tw-font-bold">Resultado</Text>
-				<output className="tw-my-1 tw-block tw-w-full tw-border tw-p-3 dfr-border-color-primary">
+				<output className="tw-my-1 tw-block tw-min-h-[40px] tw-w-full tw-border tw-p-3 dfr-border-color-primary">
 					{output}
 				</output>
 				<Button
@@ -70,12 +71,6 @@ function Dencrypt(): T_ReactElement {
 					copiar
 				</Button>
 			</Block>
-
-			<style jsx>{`
-				.root :global(output) {
-					min-height: 40px;
-				}
-			`}</style>
 		</div>
 	);
 }

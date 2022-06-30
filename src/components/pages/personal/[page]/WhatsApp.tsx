@@ -37,6 +37,7 @@ function WhatsApp(): T_ReactElement {
 					id="input"
 					label="Ingrese un número de celular"
 					containerProps={{ className: "tw-flex-1 tw-mr-2" }}
+					type="tel"
 					ref={inputRef}
 					value={phone}
 					placeholder="🇨🇴 +57"
@@ -49,7 +50,7 @@ function WhatsApp(): T_ReactElement {
 					href={whatsAppUrl}
 					className={classNames(
 						"tw-flex tw-self-end",
-						isInvalidPhone && "tw-pointer-events-none tw-opacity-50",
+						isInvalidPhone && "tw-pointer-events-none tw-opacity-30",
 					)}
 					id="link-to-wp"
 					isExternalLink

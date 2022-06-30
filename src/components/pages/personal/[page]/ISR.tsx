@@ -25,6 +25,7 @@ function ISR(): T_ReactElement {
 		<Block>
 			<Input
 				id="input-path"
+				type="text"
 				label="Path"
 				value={path}
 				onChange={onChangeHandler}

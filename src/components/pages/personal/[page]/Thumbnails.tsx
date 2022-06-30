@@ -29,6 +29,7 @@ function Thumbnails(): T_ReactElement {
 				<Input
 					id="input-title"
 					label="Title"
+					type="text"
 					value={title}
 					onChange={onChangeHandler("title")}
 				/>
@@ -36,6 +37,7 @@ function Thumbnails(): T_ReactElement {
 				<Input
 					id="input-thumbnail"
 					label="Thumbnail url"
+					type="text"
 					value={src}
 					onChange={onChangeHandler("src")}
 				/>

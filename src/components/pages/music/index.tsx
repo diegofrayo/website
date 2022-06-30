@@ -80,7 +80,7 @@ function MusicPage(): T_ReactElement {
 									<Block>
 										<Input
 											id="input"
-											type="text"
+											type="search"
 											placeholder={t("page:input_placeholder")}
 											label={t("page:input_label")}
 											value={inputValue}

@@ -7,6 +7,7 @@ import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 import Text from "./Text";
 
 type T_InputProps = T_HTMLElementAttributes["input"] & {
+	type: T_HTMLElementAttributes["input"]["type"];
 	id: string;
 	label?: string;
 	containerProps?: T_HTMLElementAttributes["label"];

@@ -1,3 +1,4 @@
+yarn build:ts
 yarn scripts:all
 yarn format
 yarn lint

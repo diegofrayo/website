@@ -14,8 +14,8 @@ export function getScrollPosition(): number {
 	return document.body.scrollTop || document.documentElement.scrollTop || 0;
 }
 
-export function setScrollPosition(val: number): void {
-	window.scroll({ top: val, behavior: "smooth" });
+export function setScrollPosition(val: number, behavior?: "auto"): void {
+	window.scroll({ top: val, behavior: behavior || "smooth" });
 }
 
 export function scrollToElement(element: HTMLElement): void {

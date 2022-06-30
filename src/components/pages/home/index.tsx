@@ -133,7 +133,10 @@ type T_RoomProps = {
 
 function Room({ tvSong, frameImage }: T_RoomProps): T_ReactElement {
 	return (
-		<Block className="dfr-Room tw-border-b-4 tw-px-8 tw-pt-16 dfr-border-color-dark-strong dfr-bg-color-light-strong sm:tw-px-10">
+		<Block
+			className="tw-border-b-4 tw-px-8 tw-pt-16 dfr-border-color-dark-strong dfr-bg-color-light-strong sm:tw-px-10"
+			style={{ backgroundImage: "url('/static/images/textures/arabesque.png')" }}
+		>
 			<PictureFrame photo={frameImage} />
 			<Block className="tw-relative tw-flex tw-items-end tw-justify-center tw-overflow-hidden">
 				<TV song={tvSong} />
@@ -142,14 +145,6 @@ function Room({ tvSong, frameImage }: T_RoomProps): T_ReactElement {
 				</Block>
 			</Block>
 			<Table />
-
-			<style jsx>
-				{`
-					:global(.dfr-Room) {
-						background-image: url("/static/images/textures/arabesque.png");
-					}
-				`}
-			</style>
 		</Block>
 	);
 }
