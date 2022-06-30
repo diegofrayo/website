@@ -5,14 +5,15 @@ import fs from "fs";
 async function main() {
 	// ipconfig getifaddr en0
 	const localIP = getIP();
-
 	const envVars = parse(fs.readFileSync("./.env"));
+
 	envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"] = `http://${localIP}:4000`;
+	envVars["NEXT_PUBLIC_WEBSITE_URL"] = `http://${localIP}:3000`;
 	// envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"] = `https://diegofrayo-backend.vercel.app`;
 
 	fs.writeFileSync("./.env", stringify(envVars));
-	console.log("Local IP address", envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"]);
 
+	console.log("Local IP address", envVars["NEXT_PUBLIC_WEBSITE_URL"]);
 	console.log("Env-vars script executed successfully");
 }
 

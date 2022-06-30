@@ -38,28 +38,30 @@ export default function VECTimelineItem({ data }: T_VECTimelineItemProps): T_Rea
 				setSharedIndex={setSharedIndex}
 			/>
 			<Modal
+				className="tw-h-full tw-w-full"
 				visible={isModalVisible}
-				className="tw-relative tw-m-4 tw-mx-auto tw-h-full tw-w-full tw-overflow-auto dfr-max-w-layout dfr-bg-color-dark-strong"
 				onCloseHandler={handleCloseModalClick}
 			>
-				<Button
-					variant={Button.variant.SIMPLE}
-					className="tw-absolute tw-top-2 tw-right-2 tw-z-10"
-					onClick={handleCloseModalClick}
-				>
-					<Icon
-						icon={Icon.icon.X}
-						color="dfr-text-color-light-strong"
-						size={32}
+				<Block className="tw-relative tw-mx-auto tw-h-full tw-w-full tw-overflow-auto dfr-max-w-layout dfr-bg-color-dark-strong">
+					<Button
+						variant={Button.variant.SIMPLE}
+						className="tw-absolute tw-top-2 tw-right-2 tw-z-10"
+						onClick={handleCloseModalClick}
+					>
+						<Icon
+							icon={Icon.icon.X}
+							color="dfr-text-color-light-strong"
+							size={32}
+						/>
+					</Button>
+					<Gallery
+						data={data}
+						variant="FULLSCREEN"
+						toggleIsModalVisible={toggleIsModalVisible}
+						setSharedIndex={setSharedIndex}
+						initialSlide={sharedIndex}
 					/>
-				</Button>
-				<Gallery
-					data={data}
-					variant="FULLSCREEN"
-					toggleIsModalVisible={toggleIsModalVisible}
-					setSharedIndex={setSharedIndex}
-					initialSlide={sharedIndex}
-				/>
+				</Block>
 			</Modal>
 		</Block>
 	);

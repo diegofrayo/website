@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { useDidMount, useToggleBodyScroll } from "~/hooks";
-import { isNull } from "~/utils/validations";
+import { isNull, isTrue } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
 
@@ -18,6 +18,7 @@ function Modal({
 	visible,
 	onCloseHandler,
 }: T_ModalProps): T_ReactElementNullable {
+	// hooks
 	useToggleBodyScroll(visible);
 
 	// render
@@ -50,7 +51,9 @@ function Backdrop({ children, className, onCloseHandler }: T_BackdropProps): T_R
 
 	// effects
 	useDidMount(() => {
-		if (isNull(dialogRef.current)) return;
+		if (isNull(dialogRef.current) || isTrue(dialogRef.current.open)) {
+			return;
+		}
 
 		scrollPosition.current = getScrollPosition();
 		dialogRef.current.showModal();
@@ -71,12 +74,14 @@ function Backdrop({ children, className, onCloseHandler }: T_BackdropProps): T_R
 			<style jsx>
 				{`
 					dialog {
-						padding: 0;
+						@apply tw-p-3;
+						@apply sm:tw-p-6;
+						background-color: transparent;
+						max-height: 100%;
+						max-width: 100%;
 					}
 
 					dialog::backdrop {
-						@apply tw-p-3;
-						@apply sm:tw-p-6;
 						align-items: center;
 						background-color: rgba(0, 0, 0, 0.5);
 						bottom: 0;
@@ -85,6 +90,8 @@ function Backdrop({ children, className, onCloseHandler }: T_BackdropProps): T_R
 						justify-content: center;
 						left: 0;
 						overflow: hidden;
+						margin: 0;
+						padding: 0;
 						position: fixed;
 						right: 0;
 						top: 0;

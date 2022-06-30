@@ -38,88 +38,88 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 
 			<Modal
 				visible={isModalVisible}
-				className="tw-mx-auto tw-w-96 tw-max-w-full tw-border-4 tw-p-4 dfr-border-color-dark-strong dfr-bg-color-light-strong dark:dfr-bg-color-layout dark:dfr-border-color-light-strong"
 				onCloseHandler={handleModalClose}
 			>
-				{Array.isArray(selectedChord) ? (
-					<Block>
-						{selectedChord.map((chord, index) => {
-							return (
-								<Block
-									key={`${chord.name}-${index}`}
-									className={classNames(index === selectedChordIndex ? "tw-block" : "tw-hidden")}
+				<Block className="tw-w-96 tw-max-w-full tw-border-4 tw-p-4 dfr-border-color-dark-strong dfr-bg-color-light-strong dark:dfr-bg-color-layout dark:dfr-border-color-light-strong">
+					{Array.isArray(selectedChord) ? (
+						<Block>
+							{selectedChord.map((chord, index) => {
+								return (
+									<Block
+										key={`${chord.name}-${index}`}
+										className={classNames(index === selectedChordIndex ? "tw-block" : "tw-hidden")}
+									>
+										<GuitarChord
+											name={chord.name}
+											musicNotes={chord.musicNotes}
+											playedStrings={chord.playedStrings}
+										/>
+									</Block>
+								);
+							})}
+							<Space size={1} />
+							<Block className="tw-flex tw-items-center tw-justify-center">
+								<Button
+									variant={Button.variant.SIMPLE}
+									onClick={() => {
+										handleUpdateSelectedChordIndex("-");
+									}}
 								>
-									<GuitarChord
-										name={chord.name}
-										musicNotes={chord.musicNotes}
-										playedStrings={chord.playedStrings}
+									<Icon
+										icon={Icon.icon.CHEVRON_LEFT}
+										size={20}
 									/>
+								</Button>
+								<Block className="tw-flex tw-flex-1 tw-items-center tw-justify-center">
+									{createArray(selectedChord.length, 0).map((index) => {
+										return (
+											<InlineText
+												key={`Chord-point-${index}`}
+												className={classNames(
+													"tw-mx-1 tw-inline-flex tw-h-4 tw-w-4 tw-cursor-pointer tw-items-center tw-justify-center tw-rounded-full tw-text-xxs tw-leading-0 tw-text-white dark:tw-text-black",
+													selectedChordIndex === index
+														? "tw-bg-black tw-font-bold dark:tw-bg-white"
+														: "tw-bg-gray-400",
+												)}
+												onClick={() => handleUpdateSelectedChordIndex(index)}
+											>
+												{index + 1}
+											</InlineText>
+										);
+									})}
 								</Block>
-							);
-						})}
-						<Space size={1} />
-						<Block className="tw-flex tw-items-center tw-justify-center">
-							<Button
-								variant={Button.variant.SIMPLE}
-								onClick={() => {
-									handleUpdateSelectedChordIndex("-");
-								}}
-							>
-								<Icon
-									icon={Icon.icon.CHEVRON_LEFT}
-									size={20}
-								/>
-							</Button>
-							<Block className="tw-flex tw-flex-1 tw-items-center tw-justify-center">
-								{createArray(selectedChord.length, 0).map((index) => {
-									return (
-										<InlineText
-											key={`Chord-point-${index}`}
-											className={classNames(
-												"tw-mx-1 tw-inline-flex tw-h-4 tw-w-4 tw-cursor-pointer tw-items-center tw-justify-center tw-rounded-full tw-text-xxs tw-leading-0 tw-text-white dark:tw-text-black",
-												selectedChordIndex === index
-													? "tw-bg-black tw-font-bold dark:tw-bg-white"
-													: "tw-bg-gray-400",
-											)}
-											onClick={() => handleUpdateSelectedChordIndex(index)}
-										>
-											{index + 1}
-										</InlineText>
-									);
-								})}
+								<Button
+									variant={Button.variant.SIMPLE}
+									onClick={() => {
+										handleUpdateSelectedChordIndex("+");
+									}}
+								>
+									<Icon
+										icon={Icon.icon.CHEVRON_RIGHT}
+										size={20}
+									/>
+								</Button>
 							</Block>
-							<Button
-								variant={Button.variant.SIMPLE}
-								onClick={() => {
-									handleUpdateSelectedChordIndex("+");
-								}}
-							>
-								<Icon
-									icon={Icon.icon.CHEVRON_RIGHT}
-									size={20}
-								/>
-							</Button>
 						</Block>
-					</Block>
-				) : selectedChord ? (
-					<GuitarChord
-						name={selectedChord.name}
-						musicNotes={selectedChord.musicNotes}
-						playedStrings={selectedChord.playedStrings}
-					/>
-				) : null}
-				<Space size={2} />
-
-				<Button
-					variant={Button.variant.SIMPLE}
-					className="tw-block tw-w-full tw-text-center tw-leading-0"
-					onClick={handleModalClose}
-				>
-					<Icon
-						icon={Icon.icon.X}
-						size={24}
-					/>
-				</Button>
+					) : selectedChord ? (
+						<GuitarChord
+							name={selectedChord.name}
+							musicNotes={selectedChord.musicNotes}
+							playedStrings={selectedChord.playedStrings}
+						/>
+					) : null}
+					<Space size={2} />
+					<Button
+						variant={Button.variant.SIMPLE}
+						className="tw-block tw-w-full tw-text-center tw-leading-0"
+						onClick={handleModalClose}
+					>
+						<Icon
+							icon={Icon.icon.X}
+							size={24}
+						/>
+					</Button>
+				</Block>
 			</Modal>
 		</Block>
 	);
