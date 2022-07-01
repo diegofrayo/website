@@ -2,36 +2,42 @@ import splitbee from "@splitbee/web";
 
 import { AuthService } from "~/auth";
 import { isDevelopmentEnvironment, logger } from "~/utils/app";
-import { isNotEmptyString } from "~/utils/validations";
+import { isNotEmptyString, isTrue } from "~/utils/validations";
 import type { T_Object } from "~/types";
 
 class AnalyticsService {
-	private isLibraryNotInitialized = true;
+	private isLibraryInitialized = false;
 
 	init(): void {
-		if (this.isAnalyticsDisabled()) return;
+		if (this.isAnalyticsDisabled() || isTrue(this.isLibraryInitialized)) {
+			return;
+		}
 
 		splitbee.init();
-		this.isLibraryNotInitialized = false;
+		this.isLibraryInitialized = true;
 	}
 
 	trackPageLoaded(): void {
-		if (this.isAnalyticsDisabled() || this.isLibraryNotInitialized) {
+		if (this.isAnalyticsDisabled()) {
 			logger("LOG", `Page "${window.location.pathname}" visit was not tracked`, this.getConfig());
 			return;
 		}
 
-		console.group("trackPageLoaded");
+		/*
+		 * NOTE: Splitbee tracks a page loaded automatically,
+		 * it is not necessary invoking any function
+		 */
+		this.init();
 		logger("LOG", { page: window.location.pathname, title: document.title });
-		console.groupEnd();
 	}
 
 	trackEvent(name: string, data: T_Object<string | number | boolean>): void {
-		if (this.isAnalyticsDisabled() || this.isLibraryNotInitialized) {
+		if (this.isAnalyticsDisabled()) {
 			logger("LOG", `Event "${name}" was not tracked`, data, this.getConfig());
 			return;
 		}
 
+		this.init();
 		splitbee.track(name, data);
 	}
 
@@ -50,7 +56,6 @@ class AnalyticsService {
 	private getConfig(): { config: T_Object<boolean> } {
 		return {
 			config: {
-				isLibraryNotInitialized: this.isLibraryNotInitialized,
 				isAnalyticsDisabled: this.isAnalyticsDisabled(),
 			},
 		};

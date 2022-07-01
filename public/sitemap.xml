@@ -13,6 +13,12 @@
     <loc>https://diegofrayo.vercel.app/blog</loc>
   </url>
   <url>
+    <loc>https://diegofrayo.vercel.app/readings</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music</loc>
+  </url>
+  <url>
     <loc>https://diegofrayo.vercel.app/blog/viajesito-en-colombia</loc>
   </url>
   <url>
@@ -23,5 +29,56 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/blog/connecting-a-firebase-project-with-a-go-daddy-domain</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/cancion-de-cuna</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/no-quiere-decir</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/luz</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/que-ves-el-cielo</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/ando-ganas</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/todas-las-hojas-son-del-viento</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/los-libros-de-la-buena-memoria</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/te-para-tres</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/un-poco-de-amor-frances</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/rezo-por-vos</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/durazno-sangrando</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/esa-estrella-era-mi-lujo</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/petalo-de-sal</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/bicho-de-ciudad</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/rie-chinito</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/vasos-vacios</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/par-mil</loc>
   </url>
 </urlset>

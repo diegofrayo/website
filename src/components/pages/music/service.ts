@@ -30,13 +30,9 @@ class MusicService {
 		);
 	}
 
-	async getSong(criteria: Pick<T_Song, "id">): Promise<T_Song> {
+	async getSong(criteria: Pick<T_Song, "id">): Promise<T_Song | undefined> {
 		const songs = await this.fetchSongs();
 		const song = songs.find((item) => item.id === criteria.id);
-
-		if (isUndefined(song)) {
-			throw new Error(`Song not found. { criteria: "${JSON.stringify(criteria)}" }`);
-		}
 
 		return song;
 	}

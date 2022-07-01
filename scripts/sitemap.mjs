@@ -13,6 +13,13 @@ async function main() {
 				model: "blog",
 			},
 		);
+		const { data: MUSIC } = await axios.post(
+			`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
+			{
+				path: "/data",
+				model: "music",
+			},
+		);
 		const {
 			data: { website: WEBSITE_METADATA },
 		} = await axios.get(`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/metadata.json`);
@@ -22,14 +29,25 @@ async function main() {
 			{ path: "/about-me", hasToBeIndexed: true },
 			{ path: "/resume", hasToBeIndexed: true },
 			{ path: "/blog", hasToBeIndexed: true },
-		].concat(
-			Object.values(BLOG.posts).map((post) => {
-				return {
-					path: `/blog/${post.config.slug}`,
-					hasToBeIndexed: post.config.is_published,
-				};
-			}),
-		);
+			{ path: "/readings", hasToBeIndexed: true },
+			{ path: "/music", hasToBeIndexed: true },
+		]
+			.concat(
+				Object.values(BLOG.posts).map((post) => {
+					return {
+						path: `/blog/${post.config.slug}`,
+						hasToBeIndexed: post.config.is_published,
+					};
+				}),
+			)
+			.concat(
+				MUSIC.songs.map((song) => {
+					return {
+						path: `/music/${song.id}`,
+						hasToBeIndexed: song.is_public,
+					};
+				}),
+			);
 
 		generateSitemapFile(pages, WEBSITE_METADATA.url);
 		console.log("Sitemap script executed successfully");

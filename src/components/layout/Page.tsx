@@ -53,7 +53,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 			: SEO_METADATA.title,
 		url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
 		description: config.description || SEO_METADATA.description,
-		image: config.image || "",
+		image: config.image || "/static/images/meta-og-image.png",
 	};
 
 	useDocumentTitle(metadata.title);
@@ -105,12 +105,10 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 					property="og:url"
 					content={metadata.url}
 				/>
-				{metadata.image ? (
-					<meta
-						property="og:image"
-						content={metadata.image}
-					/>
-				) : null}
+				<meta
+					property="og:image"
+					content={metadata.image}
+				/>
 				<meta
 					property="og:site_name"
 					content={SEO_METADATA.title}

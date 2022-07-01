@@ -9,6 +9,7 @@ import dataLoader from "~/server";
 import { MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
 import { replaceAll } from "~/utils/strings";
+import { isUndefined } from "~/utils/validations";
 
 export default BlogPostPage;
 
@@ -40,6 +41,13 @@ export const getStaticProps = getPageContentStaticProps<
 	localesExtractor: (data) => data.post.locales,
 	callback: async ({ params, locale }) => {
 		const post = await BlogService.fetchPost({ slug: params.slug, locale });
+
+		if (isUndefined(post)) {
+			return {
+				notFound: true,
+			};
+		}
+
 		const file = (await dataLoader({
 			path: `/pages/blog/[slug]/${locale}/${replaceAll(post.createdAt, "/", "-")}-${post.slug}.mdx`,
 		})) as string;

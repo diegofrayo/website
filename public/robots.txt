@@ -1,7 +1,5 @@
 User-agent: *
 
-disallow: /bookmarks
-disallow: /music
 disallow: /personal
 disallow: /static
 

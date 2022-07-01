@@ -25,7 +25,7 @@ type T_GetPageContentStaticProps<G_PageProps, G_GetStaticPropsParams> = {
 	callback?: (
 		parameters: T_GetStaticProps<G_GetStaticPropsParams> & { pageContent: T_PageContent },
 	) => Promise<{
-		props: G_PageProps;
+		props?: G_PageProps;
 		revalidate?: number;
 		redirect?: { destination: string; permanent: boolean };
 	}>;
@@ -56,10 +56,15 @@ export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsP
 				page: typeof page === "function" ? page(parameters) : page,
 				locale: pageLocale,
 			});
-			const { props: pageProps, revalidate } = await callback({ ...parameters, pageContent });
+			const {
+				props: pageProps,
+				revalidate,
+				notFound,
+			} = await callback({ ...parameters, pageContent });
 
 			return {
 				notFound:
+					notFound ||
 					(
 						(localesExtractor
 							? localesExtractor(pageProps)

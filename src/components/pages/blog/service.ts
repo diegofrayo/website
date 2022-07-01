@@ -7,7 +7,7 @@ import {
 	sortBy,
 	transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
-import { isNotUndefined, isUndefined } from "~/utils/validations";
+import { isNotUndefined } from "~/utils/validations";
 import type { T_Object, T_UnknownObject } from "~/types";
 
 class BlogService {
@@ -25,19 +25,16 @@ class BlogService {
 		return result;
 	}
 
-	async fetchPost(criteria: { locale: T_Locale; slug: T_BlogPost["slug"] }): Promise<T_BlogPost> {
+	async fetchPost(criteria: {
+		locale: T_Locale;
+		slug: T_BlogPost["slug"];
+	}): Promise<T_BlogPost | undefined> {
 		const posts = await this.fetchPosts(criteria.locale);
 		const post = posts.find((item) => item.slug === criteria.slug);
-
-		if (isUndefined(post)) {
-			throw new Error(`Post not found. { criteria: "${JSON.stringify(criteria)}" }`);
-		}
 
 		return post;
 	}
 
-	// WARN: I don't like this rule, maybe I should turn off it
-	// eslint-disable-next-line class-methods-use-this
 	private async fetchData(): Promise<{
 		posts: T_BlogPostFetchDTO[];
 		categories: T_BlogPostCategory[];

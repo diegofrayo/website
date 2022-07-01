@@ -10,7 +10,7 @@ import dataLoader from "~/server";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
-import { isFalsy } from "~/utils/validations";
+import { isFalsy, isUndefined } from "~/utils/validations";
 
 type T_PageProps = {
 	song: T_Song;
@@ -43,6 +43,13 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, T_StaticPat
 	page: [ROUTES.MUSIC, ROUTES.MUSIC_DETAILS],
 	callback: async ({ params }) => {
 		const song = await MusicService.getSong({ id: params.song });
+
+		if (isUndefined(song)) {
+			return {
+				notFound: true,
+			};
+		}
+
 		const file = (await dataLoader({
 			path: `/pages/music/[song]/assets/${song.id}.mdx`,
 		})) as string;
