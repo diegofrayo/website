@@ -24,6 +24,7 @@ export type T_RoutineItem = {
 	sets: number;
 	title: string;
 	id: string;
+	notes: string;
 
 	status: string;
 };

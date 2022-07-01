@@ -9,7 +9,7 @@ module.exports = {
 	content: ["./src/**/*.{ts,tsx}"],
 	safelist: [
 		{
-			pattern: /^(sm:|md:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)\d{1,2}$/,
+			pattern: /^(sm:|md:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)/,
 		},
 		{
 			pattern: /dfr-/,

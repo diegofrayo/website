@@ -10,6 +10,7 @@ import type { T_ReactElement } from "~/types";
 import { ROUTINE_ITEMS_STATUS } from "../constants";
 import { TimerPageContext } from "../context";
 import type { T_RoutineItem } from "../types";
+import { isNotEmptyString } from "~/utils/validations";
 
 export default function RoutineItem({
 	id,
@@ -18,10 +19,8 @@ export default function RoutineItem({
 	sets = 1,
 	highTime,
 	restTime,
+	notes,
 }: T_RoutineItem): T_ReactElement {
-	// states
-	const [isTitleTruncated, setIsTitleTruncated] = React.useState(true);
-
 	// context
 	const {
 		// states
@@ -33,6 +32,16 @@ export default function RoutineItem({
 		secondsToTime,
 		markRoutineItemAsCompleted,
 	} = React.useContext(TimerPageContext);
+
+	// states
+	const [isTitleTruncated, setIsTitleTruncated] = React.useState(true);
+
+	// vars
+	const borderStyles = {
+		"tw-border-gray-200 tw-bg-gray-100": status === ROUTINE_ITEMS_STATUS.NOT_STARTED,
+		"tw-border-yellow-200 tw-bg-yellow-100": status === ROUTINE_ITEMS_STATUS.IN_PROGRESS,
+		"tw-border-green-200 tw-bg-green-100": status === ROUTINE_ITEMS_STATUS.COMPLETED,
+	};
 
 	// handlers
 	function handleMarkAsCompletedClick() {
@@ -46,16 +55,15 @@ export default function RoutineItem({
 	return (
 		<Block
 			is="article"
-			className={classNames("dfr-RoutineItem tw-mb-3 tw-border dfr-shadow last:tw-mb-0", {
-				"tw-border-gray-200 tw-bg-gray-100": status === ROUTINE_ITEMS_STATUS.NOT_STARTED,
-				"tw-border-yellow-200 tw-bg-yellow-100": status === ROUTINE_ITEMS_STATUS.IN_PROGRESS,
-				"tw-border-green-200 tw-bg-green-100": status === ROUTINE_ITEMS_STATUS.COMPLETED,
-			})}
+			className={classNames(
+				"dfr-RoutineItem tw-mb-3 tw-border dfr-shadow last:tw-mb-0",
+				borderStyles,
+			)}
 		>
 			<Block
 				is="header"
 				className={classNames(
-					"tw-border-dasshed tw-flex tw-items-center tw-justify-between tw-border-b tw-px-3 tw-py-2",
+					"tw-flex tw-items-center tw-justify-between tw-border-b tw-px-3 tw-py-2",
 					{
 						"tw-border-gray-200": status === ROUTINE_ITEMS_STATUS.NOT_STARTED,
 						"tw-border-yellow-200": status === ROUTINE_ITEMS_STATUS.IN_PROGRESS,
@@ -103,10 +111,33 @@ export default function RoutineItem({
 								{secondsToTime(calculateRoutineItemTotalTime(sets, highTime, restTime))}
 							</InlineText>
 						</Block>
+						{isNotEmptyString(notes) ? (
+							<React.Fragment>
+								<Space size={1.5} />
+								<Block
+									className={classNames(
+										"tw-rounded-md tw-border-0 tw-bg-opacity-50 tw-px-2 tw-pt-1 tw-pb-2",
+										{
+											"tw-bg-gray-300": status === ROUTINE_ITEMS_STATUS.NOT_STARTED,
+											"tw-bg-yellow-300": status === ROUTINE_ITEMS_STATUS.IN_PROGRESS,
+											"tw-bg-green-300": status === ROUTINE_ITEMS_STATUS.COMPLETED,
+										},
+									)}
+								>
+									<Text className="tw-mb-2 tw-text-sm tw-font-bold">Notas</Text>
+									<Text className="tw-text-xs tw-italic dfr-text-color-dark-strong">"{notes}"</Text>
+								</Block>
+							</React.Fragment>
+						) : null}
 					</React.Fragment>
 				) : null}
-				<Space size={1} />
-				<Block className="tw-flex tw-items-center tw-justify-between">
+				<Space size={2} />
+				<Block
+					className={classNames(
+						"tw-flex tw-items-center tw-justify-between tw-border-t tw-pt-1",
+						borderStyles,
+					)}
+				>
 					{status === ROUTINE_ITEMS_STATUS.NOT_STARTED && (
 						<Button
 							variant={Button.variant.SIMPLE}

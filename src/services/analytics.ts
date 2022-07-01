@@ -28,7 +28,7 @@ class AnalyticsService {
 		 * it is not necessary invoking any function
 		 */
 		this.init();
-		logger("LOG", { page: window.location.pathname, title: document.title });
+		logger("LOG", `Page "${window.location.pathname}" visit was tracked`, this.getConfig());
 	}
 
 	trackEvent(name: string, data: T_Object<string | number | boolean>): void {
