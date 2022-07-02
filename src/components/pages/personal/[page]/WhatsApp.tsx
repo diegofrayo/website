@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Icon, Input, Link, Block, Button, InlineText } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import { focusElement, handleCopyToClipboardClick, isMobile } from "~/utils/browser";
+import { focusElement, handleCopyToClipboardClick, isMobileDevice } from "~/utils/browser";
 import { generateSlug, replaceAll } from "~/utils/strings";
 import { isNull } from "~/utils/validations";
 import type {
@@ -132,7 +132,7 @@ function useController(): T_UseControllerReturn {
 		if (isNull(inputRef.current)) return;
 
 		focusElement(inputRef.current);
-		setIsWebOptionSelected(!isMobile());
+		setIsWebOptionSelected(!isMobileDevice());
 	});
 
 	React.useEffect(() => {

@@ -13,9 +13,9 @@ import {
 } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { withAuth } from "~/auth";
-import { useEnhancedState } from "~/hooks";
-import { isBrowser } from "~/utils/app";
-import { handleCopyToClipboardClick, isMobile } from "~/utils/browser";
+import { useDidMount, useEnhancedState } from "~/hooks";
+import { isServer } from "~/utils/app";
+import { handleCopyToClipboardClick, isMobileDevice } from "~/utils/browser";
 import { formatPhoneNumber } from "~/utils/formatting";
 import { generateSlug } from "~/utils/strings";
 import { isEmptyString, isNotEmptyString } from "~/utils/validations";
@@ -31,9 +31,15 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 
 	// states & refs
 	const { current: totalOfContacts } = React.useRef<number>(countAllContacts(contacts));
+	const [whatsAppOption, setWhatsAppOption] = React.useState<T_WhatsAppOption>("api");
 
 	// vars
 	const PAGE_TITLE = "Contacts";
+
+	// effects
+	useDidMount(() => {
+		setWhatsAppOption(isMobileDevice() ? "api" : "web");
+	});
 
 	// handlers
 	function handleToggleAllCollapsibleOpenedClick(): void {
@@ -44,8 +50,14 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 		window.print();
 	}
 
+	function handleToggleWhatsAppOptionClick(): void {
+		setWhatsAppOption(whatsAppOption === "api" ? "web" : "api");
+	}
+
 	// render
-	if (!isBrowser()) return null;
+	if (isServer()) {
+		return null;
+	}
 
 	return (
 		<Page
@@ -67,6 +79,19 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 							<InlineText>{totalOfContacts}</InlineText>
 						</Block>
 						<Block>
+							<Button
+								variant={Button.variant.SIMPLE}
+								onClick={handleToggleWhatsAppOptionClick}
+							>
+								<InlineText className="tw-mr-1 tw-inline-block tw-text-right tw-text-xs tw-font-bold">
+									{whatsAppOption}
+								</InlineText>
+								<Icon icon={Icon.icon.WHATSAPP} />
+							</Button>
+							<Space
+								size={1}
+								orientation="v"
+							/>
 							<Button
 								variant={Button.variant.SIMPLE}
 								onClick={handleToggleAllCollapsibleOpenedClick}
@@ -108,6 +133,7 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 									groupName={parsedGroupName}
 									contacts={groupData}
 									collapsibleOpened={isAllCollapsibleOpened}
+									whatsAppOption={whatsAppOption}
 								/>
 							);
 						}
@@ -129,6 +155,7 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 												groupName={parsedSubGroupName}
 												contacts={subGroupContacts}
 												collapsibleOpened={isAllCollapsibleOpened}
+												whatsAppOption={whatsAppOption}
 											/>
 										);
 									},
@@ -150,12 +177,14 @@ type T_ContactsGroupProps = {
 	groupName: string;
 	contacts: T_Contact[];
 	collapsibleOpened: boolean;
+	whatsAppOption: T_WhatsAppOption;
 };
 
 function ContactsGroup({
 	groupName,
 	contacts,
 	collapsibleOpened,
+	whatsAppOption,
 }: T_ContactsGroupProps): T_ReactElement {
 	// render
 	return (
@@ -185,7 +214,10 @@ function ContactsGroup({
 									/>
 								);
 							})}
-							<ContactLinks contact={contact} />
+							<ContactLinks
+								contact={contact}
+								whatsAppOption={whatsAppOption}
+							/>
 						</Block>
 					);
 				})}
@@ -236,7 +268,13 @@ function ContactPhone({ phone, country }: T_ContactPhoneProps): T_ReactElementNu
 	);
 }
 
-function ContactLinks({ contact }: { contact: T_Contact }): T_ReactElement {
+function ContactLinks({
+	contact,
+	whatsAppOption,
+}: {
+	contact: T_Contact;
+	whatsAppOption: T_WhatsAppOption;
+}): T_ReactElement {
 	return (
 		<div className="root">
 			{Array.isArray(contact.phone) ? (
@@ -245,6 +283,7 @@ function ContactLinks({ contact }: { contact: T_Contact }): T_ReactElement {
 						<WhastAppButton
 							key={generateSlug(item.label)}
 							phone={item.value}
+							whatsAppOption={whatsAppOption}
 						>
 							<Icon
 								icon={Icon.icon.WHATSAPP}
@@ -257,7 +296,10 @@ function ContactLinks({ contact }: { contact: T_Contact }): T_ReactElement {
 					);
 				})
 			) : isNotEmptyString(contact.phone) ? (
-				<WhastAppButton phone={contact.phone}>
+				<WhastAppButton
+					phone={contact.phone}
+					whatsAppOption={whatsAppOption}
+				>
 					<Icon
 						icon={Icon.icon.WHATSAPP}
 						size={24}
@@ -329,9 +371,14 @@ function ContactLinks({ contact }: { contact: T_Contact }): T_ReactElement {
 type T_WhastAppButtonProps = {
 	children: T_ReactChildren;
 	phone: string;
+	whatsAppOption: T_WhatsAppOption;
 };
 
-function WhastAppButton({ children, phone }: T_WhastAppButtonProps): T_ReactElementNullable {
+function WhastAppButton({
+	children,
+	phone,
+	whatsAppOption,
+}: T_WhastAppButtonProps): T_ReactElementNullable {
 	// vars
 	const isColombianHomePhoneNumber = phone.split(" ")[1]?.startsWith("60");
 	const isAssistanceServiceNumber = phone.split(" ")[1]?.length === 3;
@@ -342,7 +389,7 @@ function WhastAppButton({ children, phone }: T_WhastAppButtonProps): T_ReactElem
 		url.append("phone", phone.replace(" ", "").trim());
 		url.append("text", "Hey!");
 
-		return `https://${isMobile() ? "api" : "web"}.whatsapp.com/send?${url.toString()}`;
+		return `https://${whatsAppOption}.whatsapp.com/send?${url.toString()}`;
 	}
 
 	// render
@@ -436,3 +483,5 @@ type T_Contact = {
 		| "USA"
 		| "UY";
 };
+
+type T_WhatsAppOption = "api" | "web";

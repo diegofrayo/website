@@ -97,7 +97,7 @@ export async function downloadComponentAsImage(
 	});
 }
 
-export function isMobile(): boolean {
+export function isMobileDevice(): boolean {
 	/* WARN:
 	 * I ignore this because I'm accessing to a untyped attribute
 	 * (window.opera) on window object.
@@ -105,7 +105,7 @@ export function isMobile(): boolean {
 	 */
 	// @ts-ignore
 	const navigatorDetails = navigator.userAgent || navigator.vendor || window.opera;
-	const isMobileResult = (function isMobileDevice(input: string): boolean {
+	const isMobileResult = (function checker(input: string): boolean {
 		if (
 			/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(
 				input,
@@ -123,7 +123,7 @@ export function isMobile(): boolean {
 	return isMobileResult;
 }
 
-export function isMobileiOS(): boolean {
+export function is_iOS_AndMobileDevice(): boolean {
 	/* WARN:
 	 * I ignore this because I'm accessing to a untyped attribute
 	 * (navigator.userAgentData) on navigator object.
