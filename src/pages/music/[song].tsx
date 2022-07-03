@@ -10,7 +10,7 @@ import dataLoader from "~/server";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
-import { isFalsy, isUndefined } from "~/utils/validations";
+import { isFalse, isUndefined } from "~/utils/validations";
 
 type T_PageProps = {
 	song: T_Song;
@@ -44,30 +44,26 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, T_StaticPat
 	callback: async ({ params }) => {
 		const song = await MusicService.getSong({ id: params.song });
 
-		if (isUndefined(song)) {
+		if (isUndefined(song) || isFalse(song.isPublic)) {
 			return {
 				notFound: true,
 			};
 		}
 
-		const file = (await dataLoader({
-			path: `/pages/music/[song]/assets/${song.id}.mdx`,
-		})) as string;
-
-		let content;
-		if (isDevelopmentEnvironment() || isFalsy(song.assets?.serverUrl)) {
-			content = await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.txt` });
+		let songContent;
+		if (isDevelopmentEnvironment()) {
+			songContent = await dataLoader({ path: `/pages/music/[song]/assets/${song.id}.json` });
 		} else {
-			content = (await http.get(song.assets?.serverUrl || "")).data;
+			songContent = (await http.get(song.assets.serverUrl)).data;
 		}
 
-		const songMDXContent = await serialize(file, {
+		const songMDXContent = await serialize(songContent.mdx, {
 			scope: {
 				DATA: {
 					...MDXScope.DATA,
 					song: {
 						...song,
-						content,
+						content: songContent.txt,
 					},
 				},
 			},

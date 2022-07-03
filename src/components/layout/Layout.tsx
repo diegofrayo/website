@@ -92,7 +92,7 @@ function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement
 	return (
 		<Block
 			is="footer"
-			className="tw-relative dfr-bg-color-dark-strong"
+			className="tw-relative dfr-bg-color-dark-strong print:tw-hidden"
 		>
 			<Block className="tw-mx-auto tw-px-8 tw-text-center tw-text-gray-400 dfr-max-w-layout">
 				<Block className="tw-py-16">

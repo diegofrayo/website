@@ -25,7 +25,7 @@ class TimelineService {
 	async fetchData(): Promise<T_TimelineFetchResponse> {
 		const { data } = await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
 			path: "/data",
-			model: "timeline.json",
+			model: "timeline",
 		});
 
 		return this.parseResponse(data);

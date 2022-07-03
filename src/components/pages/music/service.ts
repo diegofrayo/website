@@ -19,15 +19,7 @@ class MusicService {
 		const chordsPage = songs.find((song) => this.isChordsSong(song));
 
 		return (isUndefined(chordsPage) ? [] : [chordsPage]).concat(
-			songs
-				.filter((song) => this.isChordsSong(song) === false)
-				.sort(
-					sortBy([
-						{ param: "category", order: "asc" },
-						{ param: "order", order: "desc" },
-						{ param: "title", order: "asc" },
-					]),
-				),
+			songs.filter((song) => this.isChordsSong(song) === false),
 		);
 	}
 
@@ -99,6 +91,6 @@ export type T_Song = {
 	}[];
 	chords: string[];
 	readonly assets: {
-		serverUrl?: string;
+		serverUrl: string;
 	};
 };
