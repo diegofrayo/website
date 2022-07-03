@@ -1,3 +1,5 @@
+import autoBind from "auto-bind";
+
 import http from "~/lib/http";
 import { isBrowser } from "~/utils/app";
 import { ENV_VARS } from "~/utils/constants";
@@ -6,6 +8,10 @@ import type { T_UnknownObject } from "~/types";
 
 class AuthService {
 	private LOCAL_STORAGE_KEY = "DFR_AUTH";
+
+	constructor() {
+		autoBind(this);
+	}
 
 	async signIn(values: T_UnknownObject): Promise<void> {
 		return http

@@ -1,3 +1,5 @@
+import autoBind from "auto-bind";
+
 import http from "~/lib/http";
 import { ENV_VARS } from "~/utils/constants";
 import {
@@ -9,8 +11,7 @@ import type { T_UnknownObject } from "~/types";
 
 class MusicService {
 	constructor() {
-		this.fetchSongs = this.fetchSongs.bind(this);
-		this.getSong = this.getSong.bind(this);
+		autoBind(this);
 	}
 
 	async fetchSongs(): Promise<T_Song[]> {

@@ -1,3 +1,4 @@
+import autoBind from "auto-bind";
 import splitbee from "@splitbee/web";
 
 import { AuthService } from "~/auth";
@@ -6,6 +7,10 @@ import { isNotEmptyString, isTrue } from "~/utils/validations";
 import type { T_Object } from "~/types";
 
 class AnalyticsService {
+	constructor() {
+		autoBind(this);
+	}
+
 	private isLibraryInitialized = false;
 
 	init(): void {
@@ -19,7 +24,7 @@ class AnalyticsService {
 
 	trackPageLoaded(): void {
 		if (this.isAnalyticsDisabled()) {
-			logger("LOG", `Page "${window.location.pathname}" visit was not tracked`, this.getConfig());
+			logger("LOG", `Page "${window.location.pathname}" visit was not tracked`);
 			return;
 		}
 
@@ -28,12 +33,12 @@ class AnalyticsService {
 		 * it is not necessary invoking any function
 		 */
 		this.init();
-		logger("LOG", `Page "${window.location.pathname}" visit was tracked`, this.getConfig());
+		logger("LOG", `Page "${window.location.pathname}" visit was tracked`);
 	}
 
 	trackEvent(name: string, data: T_Object<string | number | boolean>): void {
 		if (this.isAnalyticsDisabled()) {
-			logger("LOG", `Event "${name}" was not tracked`, data, this.getConfig());
+			logger("LOG", `Event "${name}" was not tracked`, data);
 			return;
 		}
 
@@ -51,14 +56,6 @@ class AnalyticsService {
 		}
 
 		return AuthService.isUserLoggedIn() || isDevelopmentEnvironment();
-	}
-
-	private getConfig(): { config: T_Object<boolean> } {
-		return {
-			config: {
-				isAnalyticsDisabled: this.isAnalyticsDisabled(),
-			},
-		};
 	}
 }
 
