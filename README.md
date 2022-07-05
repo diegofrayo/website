@@ -5,7 +5,7 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 ## Tech stack
 
 - **Main**
-  - TypeScript
+  - typescript
   - react
   - next.js
   - tailwind-css

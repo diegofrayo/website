@@ -11,11 +11,11 @@ import { I18nService, useTranslation } from "~/i18n";
 import http from "~/lib/http";
 import { useStoreSelector } from "~/state";
 import { selectWebsiteMetadata, T_WebsiteMetadata } from "~/state/modules/metadata";
-import { isPWA, showAlert } from "~/utils/browser";
+import { getErrorMessage, isDevelopmentEnvironment, reportError } from "~/utils/app";
+import { deletePWACache, isPWA, showAlert } from "~/utils/browser";
+import { ENV_VARS } from "~/utils/constants";
 import { ROUTES, T_RoutesValues } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
-import { getErrorMessage, isDevelopmentEnvironment, reportError } from "~/utils/app";
-import { ENV_VARS } from "~/utils/constants";
 import { isNotEquals } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
@@ -328,6 +328,7 @@ const ISRMenuItem = withAuthenticationRequired(function ISRMenuItem() {
 				secret: ENV_VARS.NEXT_PUBLIC_ISR_TOKEN,
 			});
 
+			await deletePWACache();
 			window.location.reload();
 		} catch (error) {
 			reportError(error);
@@ -358,7 +359,8 @@ const ReloadPWAMenuItem = withAuthenticationRequired(function ReloadPWAMenuItem(
 	});
 
 	// handlers
-	function handleRefreshClick(): void {
+	async function handleRefreshClick(): Promise<void> {
+		await deletePWACache();
 		window.location.reload();
 	}
 

@@ -12,6 +12,7 @@ import { GuitarService } from "~/lib/guitar";
 import { copyToClipboard } from "~/utils/browser";
 import { safeCastNumber } from "~/utils/numbers";
 import { ROUTES } from "~/utils/routing";
+import { isFalse } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
 import MusicService, { T_Song } from "./service";
@@ -62,7 +63,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
 				replaceTitle: !MusicService.isChordsSong(song),
 				description: t("seo:description", { title: song.title, artist: song.artist }),
 				pathname: `${ROUTES.MUSIC}/${song.id}`,
-				disableSEO: true,
+				disableSEO: isFalse(song.isPublic),
 			}}
 		>
 			<MainLayout title={song.title}>

@@ -3,8 +3,22 @@ import { toast } from "react-toastify";
 import { I18nService } from "~/i18n";
 import type { T_ReactOnClickEventObject, T_SetTimeout } from "~/types";
 
-import { reportError } from "./app";
+import { getErrorMessage, logger, reportError } from "./app";
 import { isEmptyString, isString, isUndefined } from "./validations";
+
+export async function deletePWACache(): Promise<void> {
+	try {
+		const cacheKeys = await window.caches.keys();
+		await Promise.all(
+			cacheKeys.map((key) => {
+				return window.caches.delete(key);
+			}),
+		);
+	} catch (error) {
+		showAlert(getErrorMessage(error));
+		logger("ERROR", getErrorMessage(error));
+	}
+}
 
 export function showAlert(message: string): void {
 	alert(message);
