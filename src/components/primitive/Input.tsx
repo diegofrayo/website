@@ -45,6 +45,10 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
 					.root:focus-within {
 						border-color: transparent;
 					}
+
+					.root :global(input) {
+						-webkit-appearance: none;
+					}
 				`}
 			</style>
 		</label>

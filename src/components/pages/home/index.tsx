@@ -134,7 +134,7 @@ type T_RoomProps = {
 function Room({ tvSong, frameImage }: T_RoomProps): T_ReactElement {
 	return (
 		<Block
-			className="tw-border-b-4 tw-px-8 tw-pt-16 dfr-border-color-dark-strong dfr-bg-color-light-strong sm:tw-px-10"
+			className="tw-border-b-4 tw-px-6 tw-pt-16 dfr-border-color-dark-strong dfr-bg-color-light-strong sm:tw-px-10"
 			style={{ backgroundImage: "url('/static/images/textures/arabesque.png')" }}
 		>
 			<PictureFrame photo={frameImage} />
