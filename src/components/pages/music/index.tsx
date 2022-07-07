@@ -9,6 +9,7 @@ import { useDidMount, useQuery } from "~/hooks";
 import { I18nService, useTranslation } from "~/i18n";
 import { focusElement } from "~/utils/browser";
 import { ROUTES } from "~/utils/routing";
+import { removeAccents } from "~/utils/strings";
 import { isFalsy, isNotEquals, isNull } from "~/utils/validations";
 import type { T_ReactElement, T_ReactOnChangeEventHandler, T_ReactRefObject } from "~/types";
 
@@ -190,8 +191,8 @@ function useController(): T_UseController {
 			chordsPage: songs[0],
 			songsList: songs.slice(1).filter((song) => {
 				return (
-					song.title.toLowerCase().includes(inputValue) ||
-					song.artist.toLowerCase().includes(inputValue)
+					removeAccents(song.title).toLowerCase().includes(inputValue) ||
+					removeAccents(song.artist).toLowerCase().includes(inputValue)
 				);
 			}),
 		};

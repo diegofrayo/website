@@ -11,18 +11,22 @@ export function convertToCapitalLetter(str: string): string {
 export function generateSlug(str: string): string {
 	let result = str.replace(/^\s+|\s+$/g, "").toLowerCase();
 
-	// remove accents, swap ñ for n, etc
+	result = removeAccents(result)
+		.replace(/[^a-z0-9 -]/g, "") // remove invalid chars
+		.replace(/\s+/g, "-") // collapse whitespace and replace by -
+		.replace(/-+/g, "-"); // collapse dashes
+
+	return result;
+}
+
+export function removeAccents(input: string): string {
 	const FROM = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
 	const TO = "aaaaeeeeiiiioooouuuunc------";
+	let result = input;
 
 	createArray(FROM.length).forEach((i) => {
 		result = replaceAll(result, FROM.charAt(i), TO.charAt(i));
 	});
-
-	result = result
-		.replace(/[^a-z0-9 -]/g, "") // remove invalid chars
-		.replace(/\s+/g, "-") // collapse whitespace and replace by -
-		.replace(/-+/g, "-"); // collapse dashes
 
 	return result;
 }

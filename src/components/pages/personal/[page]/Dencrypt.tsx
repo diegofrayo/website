@@ -29,11 +29,12 @@ function Dencrypt(): T_ReactElement {
 		<div className="root">
 			<Block className="tw-mb-8">
 				<Input
+					ref={inputRef}
 					type="text"
 					id="input"
 					label="Ingrese un texto"
 					containerProps={{ className: "tw-my-1" }}
-					ref={inputRef}
+					autoComplete="on"
 					onClick={onInputFocusHandler}
 				/>
 				<Block className="tw-flex tw-flex-wrap tw-justify-between">
