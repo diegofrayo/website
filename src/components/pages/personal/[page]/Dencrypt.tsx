@@ -4,14 +4,19 @@ import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { reportError } from "~/utils/app";
 import { decrypt, encrypt } from "~/utils/dencrypt";
-import { isNull } from "~/utils/validations";
+import { isEmptyString, isNull } from "~/utils/validations";
 import {
 	focusElement,
 	focusInputAndSelectText,
 	handleCopyToClipboardClick,
 	isSmallScreen,
 } from "~/utils/browser";
-import type { T_ReactElement, T_ReactOnClickEventHandler, T_ReactRefObject } from "~/types";
+import type {
+	T_ReactElement,
+	T_ReactOnClickEventHandler,
+	T_ReactOnSubmitEventHandler,
+	T_ReactRefObject,
+} from "~/types";
 
 function Dencrypt(): T_ReactElement {
 	const {
@@ -20,14 +25,16 @@ function Dencrypt(): T_ReactElement {
 		inputRef,
 
 		// handlers
-		handleEncryptClick,
-		handleDecryptClick,
+		onSubmitHandler,
 		onInputFocusHandler,
 	} = useController();
 
 	return (
 		<div className="root">
-			<Block className="tw-mb-8">
+			<form
+				className="tw-mb-8"
+				onSubmit={onSubmitHandler}
+			>
 				<Input
 					ref={inputRef}
 					type="text"
@@ -40,18 +47,20 @@ function Dencrypt(): T_ReactElement {
 				<Block className="tw-flex tw-flex-wrap tw-justify-between">
 					<Button
 						variant={Button.variant.DEFAULT}
-						onClick={handleEncryptClick}
+						type="submit"
+						value="encrypt"
 					>
 						encriptar
 					</Button>
 					<Button
 						variant={Button.variant.DEFAULT}
-						onClick={handleDecryptClick}
+						type="submit"
+						value="decrypt"
 					>
 						desencriptar
 					</Button>
 				</Block>
-			</Block>
+			</form>
 
 			<Space
 				size={10}
@@ -83,8 +92,7 @@ export default Dencrypt;
 type T_UseControllerReturn = {
 	output: string;
 	inputRef: T_ReactRefObject<HTMLInputElement>;
-	handleEncryptClick: T_ReactOnClickEventHandler;
-	handleDecryptClick: T_ReactOnClickEventHandler;
+	onSubmitHandler: T_ReactOnSubmitEventHandler<HTMLFormElement>;
 	onInputFocusHandler: T_ReactOnClickEventHandler<HTMLInputElement>;
 };
 
@@ -103,9 +111,34 @@ function useController(): T_UseControllerReturn {
 	});
 
 	// handlers
-	async function handleEncryptClick(): Promise<void> {
+	const onSubmitHandler: T_UseControllerReturn["onSubmitHandler"] = function onSubmitHandler(
+		event,
+	): void {
+		event.preventDefault();
+		const text = (inputRef.current?.value || "").trim();
+
+		if (isEmptyString(text)) {
+			return;
+		}
+
+		// WARN: Find a better way to accomplish this
+		// @ts-ignore
+		if (event.nativeEvent?.submitter.value === "decrypt") {
+			decryptText(text);
+		} else {
+			encryptText(text);
+		}
+	};
+
+	const onInputFocusHandler: T_UseControllerReturn["onInputFocusHandler"] =
+		function onInputFocusHandler(event) {
+			focusInputAndSelectText(event.currentTarget);
+		};
+
+	// utils
+	async function encryptText(text: string): Promise<void> {
 		try {
-			const encryptedText = await encrypt(inputRef.current?.value || "");
+			const encryptedText = await encrypt(text);
 			setOutput(encryptedText);
 		} catch (error) {
 			reportError(error);
@@ -113,10 +146,9 @@ function useController(): T_UseControllerReturn {
 		}
 	}
 
-	async function handleDecryptClick(): Promise<void> {
+	async function decryptText(text: string): Promise<void> {
 		try {
-			const decryptedText = await decrypt(inputRef.current?.value || "");
-
+			const decryptedText = await decrypt(text);
 			setOutput(decryptedText);
 		} catch (error) {
 			reportError(error);
@@ -124,19 +156,13 @@ function useController(): T_UseControllerReturn {
 		}
 	}
 
-	const onInputFocusHandler: T_UseControllerReturn["onInputFocusHandler"] =
-		function onInputFocusHandler(event) {
-			focusInputAndSelectText(event.currentTarget);
-		};
-
 	return {
 		// states & refs
 		output,
 		inputRef,
 
 		// handlers
-		handleEncryptClick,
-		handleDecryptClick,
+		onSubmitHandler,
 		onInputFocusHandler,
 	};
 }
