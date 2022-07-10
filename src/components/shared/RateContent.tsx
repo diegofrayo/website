@@ -29,7 +29,7 @@ function RateContent(): T_ReactElement {
 
 	// render
 	return (
-		<Block className="tw-text-center">
+		<Block className="tw-text-center print:tw-hidden">
 			<Text className="tw-text-sm tw-font-bold">{t("common:useful_question")}</Text>
 			<Block
 				className={classNames(

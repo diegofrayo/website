@@ -78,7 +78,7 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 							</InlineText>
 							<InlineText>{totalOfContacts}</InlineText>
 						</Block>
-						<Block>
+						<Block className="print:tw-hidden">
 							<Button
 								variant={Button.variant.SIMPLE}
 								onClick={handleToggleWhatsAppOptionClick}
@@ -188,41 +188,54 @@ function ContactsGroup({
 }: T_ContactsGroupProps): T_ReactElement {
 	// render
 	return (
-		<Collapsible
-			title={`❏ ${groupName} [${countGroupOfContacts(contacts)}]`}
-			className="tw-mb-8 last:tw-mb-0"
-			opened={collapsibleOpened}
-		>
-			<Block className="tw-flex tw-flex-wrap">
-				{contacts.map((contact) => {
-					const contactPhone = Array.isArray(contact.phone)
-						? contact.phone.map((i) => i.value)
-						: [contact.phone];
+		<div className="root tw-mb-8 last:tw-mb-0">
+			<Collapsible
+				title={`❏ ${groupName} [${countGroupOfContacts(contacts)}]`}
+				opened={collapsibleOpened}
+			>
+				<Block className="tw-flex tw-flex-wrap">
+					{contacts.map((contact) => {
+						const contactPhone = Array.isArray(contact.phone)
+							? contact.phone.map((i) => i.value)
+							: [contact.phone];
 
-					return (
-						<Block
-							key={generateSlug(contact.name)}
-							className="tw-mb-8 tw-w-full tw-pr-4 sm:tw-w-1/2"
-						>
-							<Text className="tw-font-bold tw-leading-tight">{contact.name}</Text>
-							{contactPhone.map((phone) => {
-								return (
-									<ContactPhone
-										key={generateSlug(phone)}
-										phone={phone}
-										country={contact.country}
-									/>
-								);
-							})}
-							<ContactLinks
-								contact={contact}
-								whatsAppOption={whatsAppOption}
-							/>
-						</Block>
-					);
-				})}
-			</Block>
-		</Collapsible>
+						return (
+							<Block
+								key={generateSlug(contact.name)}
+								className="contact-container tw-mb-8 tw-w-full tw-pr-4 sm:tw-w-1/2"
+							>
+								<Text className="tw-font-bold tw-leading-tight">{contact.name}</Text>
+								{contactPhone.map((phone) => {
+									return (
+										<ContactPhone
+											key={generateSlug(phone)}
+											phone={phone}
+											country={contact.country}
+										/>
+									);
+								})}
+								<ContactLinks
+									contact={contact}
+									whatsAppOption={whatsAppOption}
+								/>
+							</Block>
+						);
+					})}
+				</Block>
+			</Collapsible>
+
+			<style jsx>{`
+				.root {
+					break-before: left;
+					page-break-before: left;
+				}
+
+				.root :global(.contact-container) {
+					break-inside: avoid;
+					page-break-inside: avoid;
+				}
+			`}</style>
+		</div>
 	);
 }
 

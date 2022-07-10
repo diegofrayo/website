@@ -291,6 +291,16 @@ function Position({
 				:global(.tw-dark) :global(.dfr-Tablature-Position--cell::before) {
 					background-color: white;
 				}
+
+				@media print {
+					:global(.dfr-Tablature-Position--cell::before) {
+						border-bottom: 1px solid black;
+					}
+
+					:global(.tw-dark) :global(.dfr-Tablature-Position--cell::before) {
+						border-bottom: 1px solid white;
+					}
+				}
 			`}</style>
 		</Block>
 	);

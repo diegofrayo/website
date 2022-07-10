@@ -144,7 +144,7 @@ function MainMenu(): T_ReactElement {
 	// render
 	return (
 		<div
-			className="root tw-relative tw-inline-block"
+			className="root tw-relative tw-inline-block  print:tw-hidden"
 			ref={menuRef}
 		>
 			<Button
@@ -219,8 +219,12 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
 		toggleTheme();
 	}
 
-	function handleToggleShowMenu(): void {
+	function handleToggleShowMenuClick(): void {
 		toggleShowMenu();
+	}
+
+	function handlePrintClick(): void {
+		window.print();
 	}
 
 	// utils
@@ -231,12 +235,12 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
 	// render
 	return (
 		<Block
-			className="tw-relative"
+			className="tw-relative print:tw-hidden"
 			ref={menuRef}
 		>
 			<Button
 				variant={Button.variant.SIMPLE}
-				onClick={handleToggleShowMenu}
+				onClick={handleToggleShowMenuClick}
 			>
 				<Icon
 					icon={Icon.icon.COG}
@@ -283,6 +287,14 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
 					<ISRMenuItem />
 					<EnvironmentMenuItem />
 					<ReloadPWAMenuItem />
+					<MenuItem title="Print">
+						<Button
+							variant={Button.variant.SIMPLE}
+							onClick={handlePrintClick}
+						>
+							<Icon icon={Icon.icon.PRINTER} />
+						</Button>
+					</MenuItem>
 				</List>
 			) : null}
 		</Block>
