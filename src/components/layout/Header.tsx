@@ -251,7 +251,7 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
 			{showMenu ? (
 				<List
 					is="menu"
-					className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-44 tw-overflow-hidden dfr-shadow dark:dfr-shadow"
+					className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden dfr-shadow dark:dfr-shadow"
 				>
 					<MenuItem
 						title={t("layout:header:settings:theme")}
@@ -284,9 +284,10 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
 							/>
 						</Button>
 					</MenuItem>
+
+					<RefreshAPPMenuItem />
 					<ISRMenuItem />
 					<EnvironmentMenuItem />
-					<ReloadPWAMenuItem />
 					<MenuItem title="Print">
 						<Button
 							variant={Button.variant.SIMPLE}
@@ -361,7 +362,7 @@ const ISRMenuItem = withAuthenticationRequired(function ISRMenuItem() {
 	);
 });
 
-const ReloadPWAMenuItem = withAuthenticationRequired(function ReloadPWAMenuItem() {
+const RefreshAPPMenuItem = withAuthenticationRequired(function RefreshAPPMenuItem() {
 	// states & refs
 	const [hasToRender, setHasToRender] = React.useState(false);
 
@@ -379,7 +380,7 @@ const ReloadPWAMenuItem = withAuthenticationRequired(function ReloadPWAMenuItem(
 	// render
 	if (hasToRender) {
 		return (
-			<MenuItem title="PWA">
+			<MenuItem title="Refresh APP and Cache">
 				<Button
 					variant={Button.variant.SIMPLE}
 					onClick={handleRefreshClick}
@@ -403,12 +404,12 @@ function MenuItem({ children, title, className = "" }: T_MenuItemProps): T_React
 	return (
 		<List.Item
 			className={classNames(
-				"tw-flex tw-h-16 tw-flex-col tw-items-center tw-justify-center tw-border-b tw-px-2 dfr-bg-color-primary dfr-border-color-primary last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary",
+				"tw-flex tw-h-8 tw-items-center tw-justify-between tw-border-b tw-px-2 dfr-bg-color-primary dfr-border-color-primary last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary",
 				className,
 			)}
 		>
 			<Text className="tw-text-right tw-text-xs tw-font-bold">{title}</Text>
-			<Block className="tw-mt-2 tw-text-right tw-leading-none">{children}</Block>
+			<Block className="tw-text-right tw-leading-none">{children}</Block>
 		</List.Item>
 	);
 }

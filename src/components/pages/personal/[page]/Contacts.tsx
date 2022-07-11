@@ -27,7 +27,8 @@ type T_ContactsProps = {
 
 function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 	// hooks
-	const [isAllCollapsibleOpened, , toggleIsAllCollapsibleOpened] = useEnhancedState(false);
+	const [isAllCollapsibleOpened, setAllCollapsibleOpened, toggleIsAllCollapsibleOpened] =
+		useEnhancedState(false);
 
 	// states & refs
 	const { current: totalOfContacts } = React.useRef<number>(countAllContacts(contacts));
@@ -47,7 +48,10 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 	}
 
 	function handlePrintClick(): void {
-		window.print();
+		setAllCollapsibleOpened(true);
+		setTimeout(() => {
+			window.print();
+		}, 1000);
 	}
 
 	function handleToggleWhatsAppOptionClick(): void {
@@ -67,9 +71,9 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 			}}
 		>
 			<MainLayout title={`${PAGE_TITLE}`}>
-				<Block className="tw-hidden print:tw-hidden sm:tw-block">
-					<Block className="tw-flex tw-items-center tw-justify-between">
-						<Block>
+				<Block>
+					<Block className="tw-flex tw-flex-col tw-items-center tw-justify-center sm:tw-flex-row sm:tw-justify-between">
+						<Block className="tw-text-center sm:tw-text-left">
 							<InlineText
 								is="strong"
 								className="tw-mr-1"
