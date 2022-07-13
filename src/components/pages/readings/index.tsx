@@ -57,12 +57,7 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 
 	// render
 	return (
-		<Page
-			config={{
-				title: PAGE_TITLE,
-				disableSEO: true,
-			}}
-		>
+		<Page config={{ title: PAGE_TITLE }}>
 			<MainLayout title={PAGE_TITLE}>
 				<List variant={List.variant.DEFAULT}>
 					{parsedReadings.map((reading) => {

@@ -51,7 +51,7 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 		setAllCollapsibleOpened(true);
 		setTimeout(() => {
 			window.print();
-		}, 1000);
+		}, 500);
 	}
 
 	function handleToggleWhatsAppOptionClick(): void {
@@ -82,7 +82,7 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 							</InlineText>
 							<InlineText>{totalOfContacts}</InlineText>
 						</Block>
-						<Block className="print:tw-hidden">
+						<Block className="tw-hidden print:tw-hidden sm:tw-block">
 							<Button
 								variant={Button.variant.SIMPLE}
 								onClick={handleToggleWhatsAppOptionClick}

@@ -28,10 +28,9 @@ async function main() {
 			{ path: "/", hasToBeIndexed: true },
 			{ path: "/about-me", hasToBeIndexed: true },
 			{ path: "/resume", hasToBeIndexed: true },
-			{ path: "/blog", hasToBeIndexed: true },
 			{ path: "/readings", hasToBeIndexed: true },
-			{ path: "/music", hasToBeIndexed: true },
 		]
+			.concat([{ path: "/blog", hasToBeIndexed: true }])
 			.concat(
 				Object.values(BLOG.posts).map((post) => {
 					return {
@@ -40,6 +39,7 @@ async function main() {
 					};
 				}),
 			)
+			.concat([{ path: "/music", hasToBeIndexed: true }])
 			.concat(
 				MUSIC.songs.map((song) => {
 					return {

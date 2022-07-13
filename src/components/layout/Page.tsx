@@ -19,8 +19,8 @@ import { selectPageConfig, T_PageConfig } from "~/state/modules/page-config";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { ROUTES, T_RoutesValues } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
+import { isNotEmptyString, isTrue } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
-import { isNotEmptyString } from "~/utils/validations";
 
 type T_PageProps = {
 	children: T_ReactChildren;
@@ -79,7 +79,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 					name="google-site-verification"
 					content="Gf-6mROjwXEjbtUUtl2rX5NgzWuzWxgxoKYTaGsqvtw"
 				/>
-				{config.disableSEO ? (
+				{isTrue(config.disableSEO) ? (
 					<meta
 						name="robots"
 						content="noindex,nofollow"

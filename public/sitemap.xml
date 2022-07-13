@@ -10,13 +10,10 @@
     <loc>https://diegofrayo.vercel.app/resume</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/blog</loc>
-  </url>
-  <url>
     <loc>https://diegofrayo.vercel.app/readings</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/music</loc>
+    <loc>https://diegofrayo.vercel.app/blog</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/blog/viajesito-en-colombia</loc>
@@ -29,6 +26,9 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/blog/connecting-a-firebase-project-with-a-go-daddy-domain</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/chords</loc>
