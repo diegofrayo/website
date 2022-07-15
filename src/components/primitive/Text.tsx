@@ -1,7 +1,6 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { isObject } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactChildren, T_ReactElement } from "~/types";
 
 type T_TextProps = T_HTMLElementAttributes["p"];
@@ -22,12 +21,8 @@ export default Text;
 // --- Utils ---
 
 function parseChildren(children: T_ReactChildren): T_ReactChildren {
-	if (isObject(children)) {
-		const childrenAsReactElement = children as React.ReactElement;
-
-		if (childrenAsReactElement.type === "p") {
-			return childrenAsReactElement.props.children;
-		}
+	if (React.isValidElement(children) && children.type === "p") {
+		return children.props.children;
 	}
 
 	return children;

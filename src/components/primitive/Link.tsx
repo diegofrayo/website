@@ -16,6 +16,7 @@ export type T_LinkProps = T_HTMLElementAttributes["a"] & {
 	variant: T_Variant;
 	isExternalLink?: boolean;
 	locale?: T_Locale;
+	href: string;
 };
 
 function Link(props: T_LinkProps): T_ReactElementNullable {
@@ -32,8 +33,8 @@ function Link(props: T_LinkProps): T_ReactElementNullable {
 		...rest
 	} = useController(props);
 
-	if (!href || !children) {
-		logger("WARN", "Link component: href or children are falsy", { href, children });
+	if (!children) {
+		logger("WARN", '"children" prop is not valid', { href, children });
 		return null;
 	}
 
