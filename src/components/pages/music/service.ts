@@ -75,10 +75,9 @@ export type T_Song = {
 	readonly category:
 		| "0|IN_PROGRESS"
 		| "1|DONE"
-		| "2|TO_PRACTICE"
-		| "3|SOME_DAY"
-		| "4|NO_SING"
-		| "5|ABANDONED";
+		| "2|PLAY_WITH_MUSIC"
+		| "3|TO_PRACTICE"
+		| "4|SOME_DAY";
 	readonly spotifyUrl: string;
 	readonly youtubeUrl: string;
 	readonly createdAt: string;

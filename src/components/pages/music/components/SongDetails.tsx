@@ -6,6 +6,7 @@ import { Emoji } from "~/components/shared";
 import { withAuthenticationRequired } from "~/hocs";
 import { useTranslation } from "~/i18n";
 import { safeCastNumber } from "~/utils/numbers";
+import { replaceAll } from "~/utils/strings";
 import type { T_ReactElementNullable } from "~/types";
 
 import MusicService, { T_Song } from "../service";
@@ -118,7 +119,7 @@ const Category = withAuthenticationRequired(function Category({ category }: { ca
 	const { t } = useTranslation();
 
 	// vars
-	const EMOJIS = ["🟦", "🟩", "🟨", "⬛", "⬜", "🟥"];
+	const EMOJIS = ["🟦", "🟩", "🟧", "🟨", "🟥"];
 
 	// render
 	return (
@@ -131,7 +132,7 @@ const Category = withAuthenticationRequired(function Category({ category }: { ca
 			</InlineText>
 			<Emoji>{EMOJIS[safeCastNumber(category.split("|")[0])]}</Emoji>
 			<InlineText className="tw-ml-1 tw-capitalize">
-				{category.split("|")[1].replace("_", " ").toLowerCase()}
+				{replaceAll(category.split("|")[1], "_", " ").toLowerCase()}
 			</InlineText>
 		</Block>
 	);
