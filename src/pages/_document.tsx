@@ -10,6 +10,7 @@ function Document(): T_ReactElement {
 				<link
 					rel="preconnect"
 					href="https://fonts.googleapis.com"
+					crossOrigin="anonymous"
 				/>
 				<link
 					rel="preconnect"
@@ -19,6 +20,7 @@ function Document(): T_ReactElement {
 				<link
 					href="https://fonts.googleapis.com/css2?family=Lora:wght@300;400;700&display=swap"
 					rel="stylesheet"
+					crossOrigin="anonymous"
 				/>
 			</Head>
 			<body>
