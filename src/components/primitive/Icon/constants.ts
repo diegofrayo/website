@@ -12,6 +12,7 @@ import {
 	ClockIcon,
 	CodeIcon,
 	ColorSwatchIcon,
+	DocumentTextIcon,
 	DotsCircleHorizontalIcon,
 	ExternalLinkIcon,
 	FilmIcon,
@@ -262,6 +263,13 @@ export const ICONS = {
 		icon: ColorSwatchIcon,
 		defaultProps: {
 			className: "",
+		},
+	},
+	DOCUMENT_TEXT: {
+		icon: DocumentTextIcon,
+		defaultProps: {
+			className: "",
+			color: "",
 		},
 	},
 	DOTS_CIRCLE_HORIZONTAL: {

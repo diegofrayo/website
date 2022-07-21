@@ -1,5 +1,6 @@
 const plugin = require("tailwindcss/plugin");
 const colorConvert = require("color-convert");
+
 const MY_THEME = require("./theme");
 
 function generateTailwindConfig(e) {
@@ -10,7 +11,7 @@ function generateTailwindConfig(e) {
 			if (config.value.light && config.value.dark) {
 				const enhancedValue = {
 					light: createTailwindStyleValue(config.property, config.value.light),
-					dark: createTailwindStyleValue(config.property, config.value.dark),
+					dark: createTailwindStyleValue(config.property, config.value.dark, true),
 				};
 
 				// classes to use inside className prop (light/dark standard)
@@ -21,31 +22,47 @@ function generateTailwindConfig(e) {
 				result[`.${e(`dark-v-dfr-${key}`)}`] = enhancedValue.dark;
 			} else {
 				Object.keys(config.value).forEach((valueKey) => {
-					const enhancedValue = createTailwindStyleValue(config.property, config.value[valueKey]);
-
 					// classes to use inside className prop (light/dark standard)
-					result[`.dfr-${key}-${valueKey}`] = enhancedValue;
-					result[`.tw-dark .${e(`dark:dfr-${key}-${valueKey}`)}`] = enhancedValue;
+					result[`.dfr-${key}-${valueKey}`] = createTailwindStyleValue(
+						config.property,
+						config.value[valueKey],
+					);
+					result[`.tw-dark .${e(`dark:dfr-${key}-${valueKey}`)}`] = createTailwindStyleValue(
+						config.property,
+						config.value[valueKey],
+						true,
+					);
 				});
 			}
 		} else if (typeof config.value === "string") {
-			const enhancedValue = createTailwindStyleValue(config.property, config.value);
-
 			// classes to use inside className prop (light/dark standard)
-			result[`.dfr-${key}`] = enhancedValue;
-			result[`.tw-dark .${e(`dark:dfr-${key}`)}`] = enhancedValue;
+			result[`.dfr-${key}`] = createTailwindStyleValue(config.property, config.value);
+			result[`.tw-dark .${e(`dark:dfr-${key}`)}`] = createTailwindStyleValue(
+				config.property,
+				config.value,
+				true,
+			);
 		}
 
 		return result;
 	}, {});
 }
 
-function myCustomClassesPlugin({ addUtilities, e }) {
+function utilitiesClassesTWPlugin({ addUtilities, e }) {
 	const config = generateTailwindConfig(e);
-	addUtilities(config, { respectPrefix: false });
+
+	addUtilities(config, {
+		respectPrefix: false,
+		variants: [],
+	});
+
+	return config;
 }
 
-module.exports = plugin(myCustomClassesPlugin);
+module.exports = {
+	utilitiesClassesTWPlugin: plugin(utilitiesClassesTWPlugin),
+	utilitiesClassesGenerator: utilitiesClassesTWPlugin,
+};
 
 // --- Utils ---
 
@@ -57,16 +74,16 @@ function mountRgbaString(r, g, b, a) {
 	return `rgba(${r}, ${g}, ${b}, ${a})`;
 }
 
-function createTailwindStyleValue(property, value) {
+function createTailwindStyleValue(property, value, addImportant) {
 	if (["borderColor", "backgroundColor", "color"].includes(property)) {
 		return {
 			"--fallback": "1",
-			[property]: hexToRgba(
+			[property]: `${hexToRgba(
 				value,
 				`var(--tw-${
 					property === "borderColor" ? "border" : property === "backgroundColor" ? "bg" : "text"
 				}-opacity, var(--fallback))`,
-			),
+			)}  ${addImportant ? "!important" : ""}`.trim(),
 		};
 	}
 

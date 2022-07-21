@@ -24,7 +24,7 @@
 		"scripts:chords": "node --experimental-json-modules scripts/chords.mjs",
 		"scripts:rss": "node --experimental-json-modules scripts/rss.mjs",
 		"scripts:sitemap": "node --experimental-json-modules scripts/sitemap.mjs",
-		"scripts:styles": "node scripts/styles/css-vars.js",
+		"scripts:styles": "node scripts/styles/main.js",
 		"===== AUX/DEV =====": "",
 		"scripts:commit": "sh ./.husky/generic-commit",
 		"scripts:env-vars": "node --experimental-json-modules scripts/env-vars.mjs",

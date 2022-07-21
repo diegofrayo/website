@@ -133,7 +133,7 @@ type T_RoomProps = {
 function Room({ tvSong, frameImage }: T_RoomProps): T_ReactElement {
 	return (
 		<Block
-			className="tw-border-b-4 tw-px-6 tw-pt-16 dfr-border-color-dark-strong dfr-bg-color-light-strong sm:tw-px-10"
+			className="tw-border-b-4 tw-px-6 tw-pt-16 dfr-border-color-dark-strong dfr-bg-color-light-strong dark:dfr-bg-color-primary dark:dfr-border-color-primary sm:tw-px-10"
 			style={{ backgroundImage: "url('/static/images/textures/arabesque.png')" }}
 		>
 			<PictureFrame photo={frameImage} />
@@ -182,7 +182,7 @@ function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElementNullable {
 					onClick={handleImageClick}
 				/>
 			</Block>
-			<Text className="tw-mx-auto tw-h-4 tw-w-16 tw-rounded-bl-md tw-rounded-br-md tw-border-2 tw-border-t-0 tw-border-yellow-700 tw-text-center tw-text-xxs tw-font-bold tw-italic dfr-text-color-dark-strong dfr-bg-color-light-strong dark:dfr-text-color-light-strong">
+			<Text className="tw-mx-auto tw-h-4 tw-w-16 tw-rounded-bl-md tw-rounded-br-md tw-border-2 tw-border-t-0 tw-border-yellow-700 tw-text-center tw-text-xxs tw-font-bold tw-italic dfr-text-color-dark-strong dfr-bg-color-light-strong dark:dfr-bg-color-dark-strong dark:dfr-text-color-light-strong">
 				{t("layout:header:room:welcome")}
 			</Text>
 
@@ -291,7 +291,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
 
 	// render
 	return (
-		<Block className="dfr-TV tw-relative tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-bg-gradient-to-b tw-from-gray-800 tw-to-black tw-p-2 dark:tw-from-white dark:tw-to-gray-300">
+		<Block className="dfr-TV tw-relative tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-bg-gradient-to-b tw-from-gray-800 tw-to-black tw-p-2 dark:tw-from-gray-200 dark:tw-to-gray-400">
 			<Block className="tw-relative tw-h-16 tw-w-16 tw-overflow-hidden">
 				<Block
 					className="tw-relative tw-flex tw-h-full tw-items-center tw-justify-center tw-border tw-border-opacity-80 tw-bg-cover dfr-border-color-dark-strong dark:tw-border-opacity-10"
@@ -329,7 +329,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
 
 				<Block
 					className={classNames(
-						"tw-absolute tw-top-0 tw-left-0 tw-h-full tw-w-full tw-transition-transform dfr-bg-color-dark-strong",
+						"tw-absolute tw-top-0 tw-left-0 tw-h-full tw-w-full tw-transition-transform dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong",
 						showInfo && "tw-translate-x-full",
 					)}
 				/>
@@ -393,7 +393,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
 
 					:global(.tw-dark) :global(.dfr-TV)::before,
 					:global(.tw-dark) :global(.dfr-TV)::after {
-						@apply tw-bg-gray-300;
+						@apply tw-bg-gray-400;
 					}
 
 					:global(.dfr-TV)::before {

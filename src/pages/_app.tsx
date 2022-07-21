@@ -94,10 +94,8 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
 							defaultTheme="system"
 							enableSystem
 							attribute="class"
-							themes={["light"]}
-							value={{ light: "tw-light" }}
-							// themes={["light", "dark"]}
-							// value={{ light: "tw-light", dark: "tw-dark" }}
+							themes={["light", "dark"]}
+							value={{ light: "tw-light", dark: "tw-dark" }}
 						>
 							<MDXProvider components={MDXComponents}>
 								<Component {...pageProps} />

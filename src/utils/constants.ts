@@ -61,6 +61,13 @@ export const PERSONAL_PAGES = [
 		type: "TOOL",
 	},
 	{
+		slug: "text",
+		title: "text",
+		componentName: "Text",
+		icon: Icon.icon.DOCUMENT_TEXT,
+		type: "TOOL",
+	},
+	{
 		slug: "isr",
 		title: "isr",
 		componentName: "ISR",

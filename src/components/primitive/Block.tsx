@@ -39,7 +39,7 @@ const Block = React.forwardRef<HTMLDivElement, T_BlockProps>(function Block(
 	);
 });
 
-// TODO: Typing issue, fix soon
+// TODO: Typing issue
 // @ts-ignore
 Block.variant = VARIANTS;
 

@@ -16,7 +16,7 @@ import { deletePWACache, isPWA, showAlert } from "~/utils/browser";
 import { ENV_VARS } from "~/utils/constants";
 import { ROUTES, T_RoutesValues } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
-import { isNotEquals } from "~/utils/validations";
+import { isFalse, isNotEquals } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 function Header(): T_ReactElement {
@@ -192,6 +192,7 @@ function MainMenu(): T_ReactElement {
 		</div>
 	);
 }
+
 const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_ReactElement {
 	// hooks
 	const { theme, setTheme } = useTheme();
@@ -206,8 +207,9 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
 
 	// effects
 	useDidMount(() => {
-		if (!isDarkMode) return;
-		setTheme("light");
+		if (isFalse(AuthService.isUserLoggedIn())) {
+			setTheme("light");
+		}
 	});
 
 	useClickOutside(menuRef, () => {
@@ -253,13 +255,14 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
 					is="menu"
 					className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden dfr-shadow dark:dfr-shadow"
 				>
-					<MenuItem
-						title={t("layout:header:settings:theme")}
-						className="tw-hidden"
-					>
+					<MenuItem title={t("layout:header:settings:theme")}>
 						<Button
 							variant={Button.variant.SIMPLE}
-							disabled={!isDarkMode}
+							disabled={isFalse(isDarkMode)}
+							className={classNames(
+								"tw-border-dashed tw-border-yellow-600 tw-py-0.5",
+								isFalse(isDarkMode) && "tw-border-b",
+							)}
 							onClick={handleToggleThemeClick}
 						>
 							<Icon
@@ -275,6 +278,10 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
 						<Button
 							variant={Button.variant.SIMPLE}
 							disabled={isDarkMode}
+							className={classNames(
+								"tw-border-dashed tw-border-indigo-700 tw-py-0.5 dark:tw-border-indigo-300",
+								isDarkMode && "tw-border-b",
+							)}
 							onClick={handleToggleThemeClick}
 						>
 							<Icon
@@ -284,7 +291,6 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
 							/>
 						</Button>
 					</MenuItem>
-
 					<RefreshAPPMenuItem />
 					<ISRMenuItem />
 					<EnvironmentMenuItem />
@@ -342,7 +348,7 @@ const ISRMenuItem = withAuthenticationRequired(function ISRMenuItem() {
 			});
 
 			await deletePWACache();
-			window.location.reload();
+			showAlert("Done, please reload this page");
 		} catch (error) {
 			reportError(error);
 			showAlert(`ERROR: ${getErrorMessage(error)}`);

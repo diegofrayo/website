@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { isNotEmptyString } from "~/utils/validations";
-import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
+import type { T_HTMLElementAttributes, T_ReactElement, T_ReactFunctionComponent } from "~/types";
 
 import Text from "./Text";
 
@@ -11,12 +11,20 @@ type T_InputProps = T_HTMLElementAttributes["input"] & {
 	id: string;
 	label?: string;
 	containerProps?: T_HTMLElementAttributes["label"];
+	is?: "textarea" | "input";
 };
 
 const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
-	{ containerProps = {}, label = "", className = "", id, ...rest }: T_InputProps,
+	{ containerProps = {}, label = "", className = "", id, is = "input", ...rest }: T_InputProps,
 	ref,
 ): T_ReactElement {
+	/*
+	 * TODO: Typing issue
+	 * A possible solution: https://www.benmvp.com/blog/forwarding-refs-polymorphic-react-component-typescript
+	 */
+	// @ts-ignore
+	const Element = is as T_ReactFunctionComponent;
+
 	return (
 		<label
 			className={classNames(
@@ -30,7 +38,8 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
 			{isNotEmptyString(label) ? (
 				<Text className="tw-mb-1 tw-cursor-pointer tw-font-bold">{label}</Text>
 			) : null}
-			<input
+			<Element
+				// @ts-ignore
 				ref={ref}
 				id={id}
 				className={classNames(

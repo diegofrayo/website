@@ -1,11 +1,11 @@
-const myCustomClassesPlugin = require("./scripts/styles/tailwind");
+const { utilitiesClassesTWPlugin } = require("./scripts/styles/tailwind");
 
 module.exports = {
 	jit: true,
 	prefix: "tw-",
 	darkMode: "class",
 	important: false,
-	plugins: [myCustomClassesPlugin],
+	plugins: [utilitiesClassesTWPlugin],
 	content: ["./src/**/*.{ts,tsx}"],
 	safelist: [
 		{
