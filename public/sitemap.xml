@@ -37,9 +37,6 @@
     <loc>https://diegofrayo.vercel.app/music/no-quiere-decir</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/music/mariposa-tecknicolor</loc>
-  </url>
-  <url>
     <loc>https://diegofrayo.vercel.app/music/personalmente</loc>
   </url>
   <url>
@@ -70,13 +67,34 @@
     <loc>https://diegofrayo.vercel.app/music/cancion-de-cuna</loc>
   </url>
   <url>
+    <loc>https://diegofrayo.vercel.app/music/mariposa-tecknicolor</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/alma-de-diamante</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/bailando-con-tu-sombra</loc>
+  </url>
+  <url>
     <loc>https://diegofrayo.vercel.app/music/bajan</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/bicho-de-ciudad</loc>
   </url>
   <url>
+    <loc>https://diegofrayo.vercel.app/music/cancion-para-mi-muerte</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/cuando-pase-el-temblor</loc>
+  </url>
+  <url>
     <loc>https://diegofrayo.vercel.app/music/durazno-sangrando</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/el-tiempo-esta-despues</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/ella-tambien</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/esa-estrella-era-mi-lujo</loc>
@@ -88,7 +106,13 @@
     <loc>https://diegofrayo.vercel.app/music/mandolin</loc>
   </url>
   <url>
+    <loc>https://diegofrayo.vercel.app/music/puente</loc>
+  </url>
+  <url>
     <loc>https://diegofrayo.vercel.app/music/petalo-de-sal</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/rasguna-las-piedras</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/rezo-por-vos</loc>
@@ -101,5 +125,11 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/vasos-vacios</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/verano-del-92</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/y-mientras-tanto-el-sol-se-muere</loc>
   </url>
 </urlset>

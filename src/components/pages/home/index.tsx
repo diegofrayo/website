@@ -291,7 +291,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
 
 	// render
 	return (
-		<Block className="dfr-TV tw-relative tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-bg-gradient-to-b tw-from-gray-800 tw-to-black tw-p-2 dark:tw-from-gray-200 dark:tw-to-gray-400">
+		<Block className="dfr-TV tw-relative tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-bg-gradient-to-b tw-from-gray-700 tw-to-gray-900 tw-p-2 dark:tw-from-gray-200 dark:tw-to-gray-400">
 			<Block className="tw-relative tw-h-16 tw-w-16 tw-overflow-hidden">
 				<Block
 					className="tw-relative tw-flex tw-h-full tw-items-center tw-justify-center tw-border tw-border-opacity-80 tw-bg-cover dfr-border-color-dark-strong dark:tw-border-opacity-10"
@@ -329,7 +329,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
 
 				<Block
 					className={classNames(
-						"tw-absolute tw-top-0 tw-left-0 tw-h-full tw-w-full tw-transition-transform dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong",
+						"tw-absolute tw-top-0 tw-left-0 tw-h-full tw-w-full tw-transition-transform dfr-bg-color-dark-strong",
 						showInfo && "tw-translate-x-full",
 					)}
 				/>

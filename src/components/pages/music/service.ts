@@ -76,6 +76,7 @@ export type T_Song = {
 		| "0|IN_PROGRESS"
 		| "1|DONE"
 		| "2|PLAY_WITH_MUSIC"
+		| "2|PLAY_WITH_SOMEONE"
 		| "3|TO_PRACTICE"
 		| "4|SOME_DAY";
 	readonly spotifyUrl: string;
