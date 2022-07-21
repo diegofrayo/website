@@ -51,7 +51,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 	return (
 		<Block
 			className={classNames(
-				"tw-flex-shrink-0 tw-text-xs",
+				"tw-flex-shrink-0 tw-text-xs dark:dfr-text-color-light-strong",
 				isSkippedStringsVariant ? "tw-auto" : isStringsNamesVariant ? "tw-w-16" : "tw-w-10",
 			)}
 		>
@@ -129,7 +129,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 								) : musicNote ? (
 									<React.Fragment>
 										<String />
-										<Block className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-bg-white tw-font-bold tw-leading-0 tw-text-black">
+										<Block className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-font-bold tw-leading-0 tw-text-black dfr-bg-color-light-strong">
 											{(musicNote as I_SimpleMusicNote).finger}
 										</Block>
 										<String />
@@ -212,4 +212,4 @@ function useController({ variant, ...rest }: T_GuitarFretProps) {
 
 // --- Components ---
 
-const String = twcss.span`tw-border tw-border-black tw-bg-black tw-block tw-h-1 tw-flex-1`;
+const String = twcss.span`tw-border tw-border-black dfr-bg-color-dark-strong tw-block tw-h-1 tw-flex-1`;

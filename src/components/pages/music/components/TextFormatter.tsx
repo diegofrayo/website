@@ -78,7 +78,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 												className={classNames(
 													"tw-mx-1 tw-inline-flex tw-h-4 tw-w-4 tw-cursor-pointer tw-items-center tw-justify-center tw-rounded-full tw-text-xxs tw-leading-0 tw-text-white dark:tw-text-black",
 													selectedChordIndex === index
-														? "tw-bg-black tw-font-bold dark:tw-bg-white"
+														? "tw-font-bold dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong"
 														: "tw-bg-gray-400",
 												)}
 												onClick={() => handleUpdateSelectedChordIndex(index)}

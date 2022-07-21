@@ -60,7 +60,7 @@ export function MFMAM_SpotifyPlaylist(): T_ReactElementNullable {
 
 	return (
 		<Block
-			className="tw-border-4 dfr-border-color-dark-strong"
+			className="tw-border-4 dfr-border-color-dark-strong dark:dfr-border-color-primary"
 			data-markdown-block
 		>
 			<iframe

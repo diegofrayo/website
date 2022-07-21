@@ -39,7 +39,7 @@ function Books(): T_ReactElement {
 										}}
 									>
 										<Icon
-											wrapperClassName="tw-absolute tw--top-1 tw--right-1 tw-bg-black dark:tw-bg-white tw-rounded-md tw-shadow-md tw-p-2 tw-w-10 tw-h-10"
+											wrapperClassName="tw-absolute tw--top-1 tw--right-1 dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong tw-rounded-md tw-shadow-md tw-p-2 tw-w-10 tw-h-10"
 											iconClassName="tw-relative tw-top-0.5 tw--left-0.5"
 											icon={
 												calification === 5

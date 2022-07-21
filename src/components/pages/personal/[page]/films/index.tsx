@@ -134,7 +134,7 @@ function Films(): T_ReactElement {
 												}}
 											>
 												<Icon
-													wrapperClassName="tw-absolute tw--top-2 tw--right-2 tw-bg-black dark:tw-bg-white tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8"
+													wrapperClassName="tw-absolute tw--top-2 tw--right-2 dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8"
 													icon={
 														calification === 5
 															? Icon.icon.STAR

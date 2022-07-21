@@ -64,7 +64,11 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 						return (
 							<List.Item
 								key={generateSlug(reading.title)}
-								className={classNames("tw-p-1 tw-pt-0", reading.starred && "tw-bg-amber-100")}
+								className={classNames(
+									"tw-p-1 tw-pt-0",
+									reading.starred &&
+										"tw-bg-amber-100 dark:tw-border dark:tw-border-dotted dark:tw-border-amber-100 dark:tw-bg-transparent",
+								)}
 							>
 								<Link
 									variant={Link.variant.PRIMARY}

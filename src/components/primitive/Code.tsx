@@ -54,6 +54,10 @@ function Code({ children, className, variant, ...rest }: T_CodeProps): T_ReactEl
 					pre :global(.dfr-Code::after) {
 						content: "";
 					}
+
+					:global(.tw-dark) pre :global(.dfr-Code) {
+						@apply dfr-text-color-light-strong !important;
+					}
 				`}
 			</style>
 		</pre>

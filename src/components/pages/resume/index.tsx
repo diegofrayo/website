@@ -57,7 +57,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 						<Text>{resume.headline}</Text>
 						<Space size={1} />
 
-						<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
+						<Text className="tw-text-xs tw-italic dfr-text-color-secondary dark:dfr-text-color-secondary">
 							<InlineText>{resume.location.city}</InlineText> <InlineText> / </InlineText>
 							<InlineText>{resume.location.country}</InlineText>
 						</Text>
@@ -106,6 +106,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 											<Icon
 												icon={Icon.icon.GITHUB}
 												size={31}
+												withBackgroundWhenDarkMode
 											/>
 										)}
 									</Link>
@@ -151,7 +152,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 												>
 													{item.school}
 												</Link>
-												<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
+												<Text className="tw-text-xs tw-italic dfr-text-color-secondary dark:dfr-text-color-secondary">
 													<InlineText>{item.startDate}</InlineText> /{" "}
 													<InlineText>{item.endDate}</InlineText>
 												</Text>
@@ -203,11 +204,11 @@ function ResumeBlock({ title, children }: T_ResumeBlockProps): T_ReactElement {
 	return (
 		<Block
 			is="section"
-			className="tw-mt-16 tw-border-t tw-border-dashed tw-pt-16 dfr-border-color-primary print:tw-mt-0 print:tw-mb-16 print:tw-border-0 print:tw-pt-0"
+			className="tw-mt-16 tw-border-t tw-border-dashed tw-pt-16 dfr-border-color-primary dark:dfr-border-color-primary print:tw-mt-0 print:tw-mb-16 print:tw-border-0 print:tw-pt-0"
 		>
 			<Title
 				is="h2"
-				className="tw-mx-auto tw-mb-8 tw-w-full tw-border-4 tw-py-1 tw-px-2 tw-text-center tw-uppercase dfr-border-color-dark-strong print:tw-w-72 md:tw-w-72"
+				className="tw-mx-auto tw-mb-8 tw-w-full tw-border-4 tw-py-1 tw-px-2 tw-text-center tw-uppercase dfr-border-color-dark-strong dark:dfr-border-color-light-strong print:tw-w-72 md:tw-w-72"
 			>
 				{title}
 			</Title>
@@ -245,7 +246,7 @@ function ExperienceTimelineItem({
 			is="section"
 			className="tw-relative tw-mb-8 tw-pl-9 last:tw-mb-0 print:tw-mb-20"
 		>
-			<Block className="tw-absolute tw--left-4 tw-top-0 tw-h-10 tw-w-10 tw-overflow-hidden tw-border-4 tw-border-black">
+			<Block className="tw-absolute tw--left-4 tw-top-0 tw-h-10 tw-w-10 tw-overflow-hidden tw-border-4 dfr-border-color-dark-strong dark:dfr-border-color-primary">
 				{isNotEmptyString(companyLogo) ? (
 					<Image
 						src={companyLogo}
@@ -253,7 +254,7 @@ function ExperienceTimelineItem({
 						className="tw-h-full tw-w-full"
 					/>
 				) : (
-					<Block className="tw-h-full tw-w-full dfr-bg-color-dark-strong" />
+					<Block className="tw-h-full tw-w-full dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong" />
 				)}
 			</Block>
 
@@ -279,7 +280,7 @@ function ExperienceTimelineItem({
 					<Text>{company}</Text>
 				)}
 
-				<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
+				<Text className="tw-text-xs tw-italic dfr-text-color-secondary dark:dfr-text-color-secondary">
 					<InlineText>{startDate}</InlineText> /<InlineText>{endDate}</InlineText>
 				</Text>
 				<Space size={2} />

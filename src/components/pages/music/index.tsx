@@ -55,14 +55,17 @@ function MusicPage(): T_ReactElement {
 						return (
 							<Block>
 								<Block variant="FEATURED">
-									<Link
-										variant={Link.variant.SECONDARY}
-										href={`${ROUTES.MUSIC}/${chordsPage.id}`}
-										locale={I18nService.getDefaultLocale()}
-									>
+									<Block>
 										<Emoji className="tw-mr-2">⭐</Emoji>
-										<InlineText className="tw-underline">{t("page:chords_title")}</InlineText>
-									</Link>
+										<Link
+											variant={Link.variant.PRIMARY}
+											href={`${ROUTES.MUSIC}/${chordsPage.id}`}
+											locale={I18nService.getDefaultLocale()}
+										>
+											<InlineText className="tw-underline">{t("page:chords_title")}</InlineText>
+										</Link>
+									</Block>
+
 									<Space size={1} />
 									<Text>{t("page:description_1")}</Text>
 								</Block>
@@ -106,7 +109,7 @@ function MusicPage(): T_ReactElement {
 													)}
 												>
 													<Link
-														variant={Link.variant.SECONDARY}
+														variant={Link.variant.PRIMARY}
 														href={`${ROUTES.MUSIC}/${song.id}`}
 														className="tw-block sm:tw-truncate"
 														title={song.title}

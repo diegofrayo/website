@@ -106,7 +106,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 							/>
 						)}
 
-						<Block className="tw-relative tw-top-6 tw--left-0.5 tw-h-36 tw-w-3 tw-rounded-tr-md tw-rounded-br-md tw-bg-black dark:tw-bg-white" />
+						<Block className="tw-relative tw-top-6 tw--left-0.5 tw-h-36 tw-w-3 tw-rounded-tr-md tw-rounded-br-md dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong" />
 					</Block>
 
 					{playedStrings && (
