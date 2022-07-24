@@ -54,7 +54,7 @@ function MainLayout({
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={parentUrl}
-									className="tw-mb-4 tw-block tw-underline dfr-text-color-dark-strong dark:dfr-text-color-light-strong"
+									className="tw-mb-4 tw-block tw-underline dfr-text-color-bw-inv"
 								>
 									{parentUrl}
 								</Link>
@@ -63,7 +63,7 @@ function MainLayout({
 							<Title
 								is="h1"
 								variant={Title.variant.UNSTYLED}
-								className="tw-mb-16 tw-text-3xl tw-font-bold tw-uppercase dfr-text-color-dark-strong dark:dfr-text-color-light-strong sm:tw-text-6xl"
+								className="tw-mb-16 tw-text-3xl tw-font-bold tw-uppercase dfr-text-color-bw-inv sm:tw-text-6xl"
 							>
 								{title}
 							</Title>
@@ -92,12 +92,12 @@ function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement
 	return (
 		<Block
 			is="footer"
-			className="tw-relative dfr-bg-color-dark-strong print:tw-hidden"
+			className="tw-relative dfr-bg-color-black-pin print:tw-hidden"
 		>
-			<Block className="tw-mx-auto tw-px-8 tw-text-center tw-text-gray-400 dfr-max-w-layout">
+			<Block className="tw-mx-auto tw-px-8 tw-text-center dfr-max-w-layout dfr-text-color-dark-secondary-pin">
 				<Block className="tw-py-16">
 					<Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase">contact me</Text>
-					<Block className="tw-mt-2 tw-inline-block tw-border-t tw-border-gray-800 tw-pt-2">
+					<Block className="tw-mt-2 tw-inline-block tw-border-t tw-pt-2 dfr-border-color-dark-secondary-pin">
 						<Block className="tw-my-0.5 tw-block sm:tw-mx-1 sm:tw-inline-block">
 							<FooterIcon
 								url={WEBSITE_METADATA.social.linkedin}
@@ -142,12 +142,12 @@ function FooterIcon({ icon, url }: T_FooterIconProps): T_ReactElement {
 		<Link
 			variant={Link.variant.SIMPLE}
 			href={url}
-			className="tw-mr-2 tw-inline-block last:tw-mr-0 sm:tw-mr-4"
+			className="tw-mr-4 tw-inline-block last:tw-mr-0 sm:tw-mr-6"
 			isExternalLink
 		>
 			<Icon
 				icon={icon}
-				wrapperClassName="dfr-bg-color-light-strong tw-border tw-bg-opacity-10 tw-rounded-full tw-p-2 tw-border-gray-800"
+				wrapperClassName="dfr-border-color-pin-dark-secondary"
 				size="tw-w-8 tw-h-8"
 			/>
 		</Link>
@@ -182,12 +182,12 @@ function GoToTopButton(): T_ReactElementNullable {
 		return (
 			<Button
 				variant={Button.variant.SIMPLE}
-				className="tw-fixed tw-bottom-3 tw-right-3 tw-z-50 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-bg-opacity-70 tw-text-2xl dfr-bg-color-dark-strong sm:tw-right-4 sm:tw-bottom-4"
+				className="tw-fixed tw-bottom-3 tw-right-3 tw-z-50 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-border tw-bg-opacity-70 tw-text-2xl dfr-border-color-dark-secondary-pin dfr-bg-color-black-pin sm:tw-right-4 sm:tw-bottom-4"
 				onClick={handleGoToTheTopClick}
 			>
 				<Icon
 					icon={Icon.icon.ARROW_UP}
-					color="dfr-text-color-light-strong"
+					color="dfr-text-color-white-pin"
 				/>
 			</Button>
 		);

@@ -58,7 +58,7 @@ function Films(): T_ReactElement {
 												"tw-underlidne tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm",
 												category === selectedCategory
 													? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
-													: "dfr-bg-color-primary dark:dfr-bg-color-primary",
+													: "dfr-bg-color-primary",
 											)}
 											onClick={handleSelectFilterClick(category)}
 										>
@@ -86,7 +86,7 @@ function Films(): T_ReactElement {
 										"tw-underlidne tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm",
 										isAddedDateFilterEnabled
 											? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
-											: "dfr-bg-color-primary dark:dfr-bg-color-primary",
+											: "dfr-bg-color-primary",
 									)}
 									onClick={handleToggleOrderByFilterClick}
 								>
@@ -134,7 +134,7 @@ function Films(): T_ReactElement {
 												}}
 											>
 												<Icon
-													wrapperClassName="tw-absolute tw--top-2 tw--right-2 dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8"
+													wrapperClassName="tw-absolute tw--top-2 tw--right-2 dfr-bg-color-bw-inv dark:dfr-bg-color-wb-inv tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8"
 													icon={
 														calification === 5
 															? Icon.icon.STAR
@@ -145,7 +145,7 @@ function Films(): T_ReactElement {
 													size={24}
 												/>
 
-												<Block className="tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-70 tw-p-2 dfr-bg-color-light-strong">
+												<Block className="tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-70 tw-p-2 dfr-bg-color-wb-inv">
 													{source === "imdb" ? (
 														<Image
 															src="/static/images/misc/imdb.png"
@@ -170,7 +170,7 @@ function Films(): T_ReactElement {
 														<Title
 															is="h1"
 															variant={Title.variant.UNSTYLED}
-															className="tw-mb-2 tw-break-normal tw-uppercase tw-leading-tight tw-text-black"
+															className="tw-mb-2 tw-break-normal tw-uppercase tw-leading-tight dfr-text-color-black-pin"
 														>
 															{title}
 														</Title>

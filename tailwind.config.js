@@ -1,11 +1,11 @@
-const { utilitiesClassesTWPlugin } = require("./scripts/styles/tailwind");
+const dfrUtilitiesPlugin = require("./scripts/styles/tailwind");
 
 module.exports = {
 	jit: true,
 	prefix: "tw-",
 	darkMode: "class",
 	important: false,
-	plugins: [utilitiesClassesTWPlugin],
+	plugins: [dfrUtilitiesPlugin],
 	content: ["./src/**/*.{ts,tsx}"],
 	safelist: [
 		{
@@ -45,7 +45,6 @@ module.exports = {
 			},
 			fontSize: {
 				xxs: "0.6rem",
-				// test: "0rem",
 			},
 			borderWidth: {
 				12: "12px",

@@ -261,7 +261,7 @@ function Timer({
 	return (
 		<Block
 			className={classNames(
-				"tw-py-8 tw-px-4 tw-text-center tw-text-white",
+				"tw-py-8 tw-px-4 tw-text-center dfr-text-color-white-pin",
 				isRoutineItemCompleted
 					? "tw-bg-green-600"
 					: currentSet.isStart
@@ -317,12 +317,12 @@ function Timer({
 							<Icon
 								icon={isSoundsMuted ? Icon.icon.VOLUME_OFF : Icon.icon.VOLUME_UP}
 								size={24}
-								color="tw-text-white"
+								color="dfr-text-color-white-pin"
 							/>
 						</Button>
 						<Button
 							variant={Button.variant.SIMPLE}
-							className="tw-h-32 tw-w-32 tw-rounded-full tw-border-4 tw-font-bold tw-uppercase dfr-border-color-primary"
+							className="tw-h-32 tw-w-32 tw-rounded-full tw-border-4 tw-font-bold tw-uppercase dfr-border-color-secondary-inv"
 							onClick={handleStartRoutineItemClick}
 						>
 							{timerStatus === TIMER_STATUS.NOT_STARTED
@@ -333,12 +333,12 @@ function Timer({
 						</Button>
 						<Button
 							variant={Button.variant.SIMPLE}
-							className="tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-full tw-border-2 dfr-border-color-primary"
+							className="tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-full tw-border-2 dfr-border-color-secondary-inv"
 							onClick={handleResetCurrentSetClick}
 						>
 							<Icon
 								icon={Icon.icon.REPLY}
-								color="tw-text-white"
+								color="dfr-text-color-white-pin"
 							/>
 						</Button>
 					</Block>
@@ -355,7 +355,7 @@ function Timer({
 					>
 						<Icon
 							icon={Icon.icon.CHEVRON_LEFT}
-							color="tw-text-white"
+							color="dfr-text-color-white-pin"
 							size={24}
 						/>
 					</Button>
@@ -378,7 +378,7 @@ function Timer({
 					>
 						<Icon
 							icon={Icon.icon.CHEVRON_RIGHT}
-							color="tw-text-white"
+							color="dfr-text-color-white-pin"
 							size={24}
 						/>
 					</Button>

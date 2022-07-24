@@ -1,11 +1,20 @@
 import * as React from "react";
 import classNames from "classnames";
+import { useTheme } from "next-themes";
 
 import { Block, Text as TextPrimitive, InlineText } from "~/components/primitive";
-import { useDocumentTitle } from "~/hooks";
+import { useDidMount, useDocumentTitle } from "~/hooks";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 function MariaCamila(): T_ReactElement {
+	// hooks
+	const { theme, setTheme } = useTheme();
+
+	// effects
+	useDidMount(() => {
+		if (theme === "dark") setTheme("light");
+	});
+
 	useDocumentTitle("Feliz cumple!!");
 
 	return (

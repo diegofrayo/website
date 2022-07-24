@@ -42,7 +42,7 @@ export default function VECTimelineItem({ data }: T_VECTimelineItemProps): T_Rea
 				visible={isModalVisible}
 				onCloseHandler={handleCloseModalClick}
 			>
-				<Block className="tw-relative tw-mx-auto tw-h-full tw-w-full tw-overflow-auto dfr-max-w-layout dfr-bg-color-dark-strong">
+				<Block className="tw-relative tw-mx-auto tw-h-full tw-w-full tw-overflow-auto dfr-max-w-layout dfr-bg-color-bw-inv">
 					<Button
 						variant={Button.variant.SIMPLE}
 						className="tw-absolute tw-top-2 tw-right-2 tw-z-10"
@@ -50,7 +50,7 @@ export default function VECTimelineItem({ data }: T_VECTimelineItemProps): T_Rea
 					>
 						<Icon
 							icon={Icon.icon.X}
-							color="dfr-text-color-light-strong"
+							color="dfr-text-color-white-pin"
 							size={32}
 						/>
 					</Button>
@@ -117,7 +117,7 @@ function Gallery({
 			<div
 				className={classNames(
 					"root tw-relative tw-h-full",
-					isFullscreenVariant ? "dfr-bg-color-dark-strong" : "tw-rounded-md dfr-bg-color-primary",
+					isFullscreenVariant ? "dfr-bg-color-bw-inv" : "dfr-bg-color-primary tw-rounded-md",
 				)}
 			>
 				<Swiper
@@ -191,8 +191,8 @@ function Navigation({ activeIndex, totalElements }: T_NavigationProps): T_ReactE
 			className={classNames(
 				"tw-flex tw-w-full tw-items-center tw-justify-between tw-bg-opacity-10 tw-px-4 tw-py-2",
 				isFullscreenVariant
-					? "tw-absolute tw-bottom-0 tw-z-10 dfr-bg-color-light-strong dfr-text-color-light-strong"
-					: "dfr-bg-color-dark-strong dfr-text-color-dark-strong",
+					? "tw-absolute tw-bottom-0 tw-z-10 dfr-text-color-white-pin dfr-bg-color-wb-inv"
+					: "dfr-text-color-black-pin dfr-bg-color-bw-inv",
 			)}
 		>
 			<Button
@@ -202,7 +202,7 @@ function Navigation({ activeIndex, totalElements }: T_NavigationProps): T_ReactE
 			>
 				<Icon
 					icon={Icon.icon.CHEVRON_LEFT}
-					color={isFullscreenVariant ? "dfr-text-color-light-strong" : "dfr-text-color-dark-strong"}
+					color={isFullscreenVariant ? "dfr-text-color-white-pin" : "dfr-text-color-black-pin"}
 				/>
 			</Button>
 			<Text className="tw-flex-1 tw-px-2 tw-text-center tw-text-xs">
@@ -215,7 +215,7 @@ function Navigation({ activeIndex, totalElements }: T_NavigationProps): T_ReactE
 			>
 				<Icon
 					icon={Icon.icon.CHEVRON_RIGHT}
-					color={isFullscreenVariant ? "dfr-text-color-light-strong" : "dfr-text-color-dark-strong"}
+					color={isFullscreenVariant ? "dfr-text-color-white-pin" : "dfr-text-color-black-pin"}
 				/>
 			</Button>
 		</Block>
@@ -265,7 +265,7 @@ function SlideContent({
 		>
 			<Block
 				className={classNames(
-					"media-container dfr-shadow dfr-bg-color-dark-strong",
+					"media-container dfr-shadow dfr-bg-color-bw-inv",
 					isFullscreenVariant
 						? isLandscape
 							? "media-container--fullscreen"
@@ -298,7 +298,7 @@ function SlideContent({
 			<Text
 				className={classNames(
 					"tw-mt-2 tw-px-4 tw-text-center tw-text-sm tw-italic",
-					isFullscreenVariant ? "dfr-text-color-light-strong" : "dfr-text-color-dark-strong",
+					isFullscreenVariant ? "dfr-text-color-white-pin" : "dfr-text-color-black-pin",
 				)}
 			>
 				{caption}

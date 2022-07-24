@@ -2,23 +2,40 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 
 const COMMON_COLORS = {
-	["colorful-primary"]: {
+	// pinned
+	["color-black-pin"]: {
 		value: {
-			100: colors.yellow["600"],
-			200: colors.yellow["700"],
+			light: colors.black,
+			dark: colors.black,
 		},
 	},
-	["colorful-secondary"]: {
+	["color-white-pin"]: {
 		value: {
-			100: colors.red["700"],
-			200: colors.red["400"],
+			light: colors.white,
+			dark: colors.white,
 		},
 	},
-	["color-dark-strong"]: {
-		value: colors.black,
+
+	// invert
+	["color-bw-inv"]: {
+		value: {
+			light: colors.black,
+			dark: colors.white,
+		},
 	},
-	["color-light-strong"]: {
-		value: colors.white,
+	["color-wb-inv"]: {
+		value: {
+			light: colors.white,
+			dark: colors.black,
+		},
+	},
+
+	// review this later
+	["colorful-primary-inv"]: {
+		value: {
+			light: colors.amber["600"],
+			dark: colors.red["400"],
+		},
 	},
 };
 
@@ -35,7 +52,7 @@ const MY_THEME = {
 		property: "boxShadow",
 		value: {
 			light: "0px 0px 3px 0px rgba(0, 0, 0, 0.5)",
-			dark: "0px 0px 3px 0px rgba(0, 0, 0, 0.2)",
+			dark: "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(31, 41, 55) 0px 1px 2px 0px",
 		},
 	},
 	["transition-opacity"]: {
@@ -49,49 +66,65 @@ const MY_THEME = {
 		},
 	},
 
-	["bg-color-layout"]: {
+	// layout
+	["bg-color-primary-inv"]: {
 		property: "backgroundColor",
 		value: {
 			light: colors.white,
-			dark: "#282c34",
+			dark: "#191919",
 		},
 	},
-	["bg-color-primary"]: {
+	["text-color-primary-inv"]: {
+		property: "color",
+		value: {
+			light: colors.gray["600"],
+			dark: colors.gray["400"],
+		},
+	},
+	["bg-color-secondary-inv"]: {
 		property: "backgroundColor",
 		value: {
-			light: colors.gray["100"],
+			light: colors.slate["50"],
+			dark: colors.black,
+		},
+	},
+	["text-color-secondary-inv"]: {
+		property: "color",
+		value: {
+			light: colors.gray["500"],
+			dark: colors.gray["500"],
+		},
+	},
+	["border-color-secondary-inv"]: {
+		property: "borderColor",
+		value: {
+			light: colors.gray["300"],
 			dark: colors.gray["700"],
 		},
 	},
 
-	["border-color-primary"]: {
+	// for black backgrounds
+	["border-color-dark-secondary-pin"]: {
 		property: "borderColor",
 		value: {
-			light: colors.gray["200"],
-			dark: colors.gray["600"],
-		},
-	},
-
-	["text-color-primary"]: {
-		property: "color",
-		value: {
 			light: colors.gray["700"],
-			dark: colors.gray["100"],
+			dark: colors.gray["700"],
 		},
 	},
-	["text-color-secondary"]: {
+	["text-color-dark-secondary-pin"]: {
 		property: "color",
 		value: {
-			light: colors.gray["500"],
+			light: colors.gray["400"],
 			dark: colors.gray["400"],
 		},
 	},
 
-	["link-color-primary"]: {
+	// links
+	["links-inv"]: {
 		property: "color",
 		value: {
-			light: COMMON_COLORS["colorful-primary"].value[100],
-			dark: COMMON_COLORS["colorful-secondary"].value[200],
+			light: colors.amber["600"],
+			dark: colors.red["400"],
 		},
 	},
 

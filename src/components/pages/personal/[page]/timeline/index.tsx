@@ -55,7 +55,7 @@ function TimelinePage(): T_ReactElement {
 												"tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm tw-font-bold",
 												category.id === selectedCategory
 													? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
-													: "dfr-bg-color-primary dark:dfr-bg-color-primary",
+													: "dfr-bg-color-primary",
 											)}
 											onClick={handleSelectFilterClick(category.id)}
 										>
@@ -202,7 +202,7 @@ function TimelineItem({ data }: { data: unknown }): T_ReactElement {
 					return (
 						<InlineText
 							key={category.id}
-							className="tw-rounded-md tw-border tw-px-2 tw-py-1 tw-text-xs tw-font-bold dfr-border-color-primary dark:dfr-border-color-primary"
+							className="tw-rounded-md tw-border tw-px-2 tw-py-1 tw-text-xs tw-font-bold dfr-border-color-secondary-inv"
 						>
 							{category.value}
 						</InlineText>

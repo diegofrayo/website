@@ -22,7 +22,7 @@ export function MFMAM_GitHubRepo({ name, url, description }: T_GitHubRepoProps):
 		>
 			<Link
 				variant={Link.variant.SIMPLE}
-				className="tw-relative tw-flex tw-items-center tw-rounded-md tw-border tw-p-4 tw-pr-8 dfr-bg-color-primary dfr-border-color-primary dark:dfr-bg-color-primary dark:dfr-border-color-primary sm:tw-inline-flex"
+				className="dfr-bg-color-primary tw-relative tw-flex tw-items-center tw-rounded-md tw-border tw-p-4 tw-pr-8 dfr-border-color-secondary-inv sm:tw-inline-flex"
 				href={url}
 				isExternalLink
 			>
@@ -35,7 +35,7 @@ export function MFMAM_GitHubRepo({ name, url, description }: T_GitHubRepoProps):
 				<Block className="tw-flex-1 tw-text-left">
 					<TitlePrimitive
 						is="h3"
-						className="tw-text-base tw-text-black dark:tw-text-white sm:tw-text-lg"
+						className="tw-text-base dfr-text-color-black-pin dark:dfr-text-color-white-pin sm:tw-text-lg"
 						variant={TitlePrimitive.variant.UNSTYLED}
 					>
 						{name}
@@ -46,7 +46,7 @@ export function MFMAM_GitHubRepo({ name, url, description }: T_GitHubRepoProps):
 				<Icon
 					icon={Icon.icon.LINK}
 					wrapperClassName="tw-absolute tw-top-2 tw-right-2"
-					iconClassName="tw-text-black"
+					iconClassName="dfr-text-color-black-pin"
 				/>
 			</Link>
 		</Block>
@@ -60,7 +60,7 @@ export function MFMAM_SpotifyPlaylist(): T_ReactElementNullable {
 
 	return (
 		<Block
-			className="tw-border-4 dfr-border-color-dark-strong dark:dfr-border-color-primary"
+			className="tw-border-4 dfr-border-color-secondary-inv"
 			data-markdown-block
 		>
 			<iframe

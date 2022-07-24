@@ -90,10 +90,10 @@ function BlogPostDetails({
 		<Block className="tw-flex tw-flex-col tw-items-center tw-justify-center sm:tw-flex-row">
 			{isPublished ? (
 				<React.Fragment>
-					<BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
+					<BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-secondary-inv">
 						<BlogPostDetailsItemIcon
 							icon={Icon.icon.CALENDAR}
-							color="tw-text-black dark:tw-text-white"
+							color="dfr-text-color-bn-inv"
 						/>
 						<Text>
 							<InlineText className="tw-mr-1">{t("page:published_at")}</InlineText>
@@ -103,10 +103,10 @@ function BlogPostDetails({
 					<Space responsive="tw-my-1 tw-block sm:tw-my-0 sm:tw-mx-4 sm:tw-inline-block" />
 				</React.Fragment>
 			) : null}
-			<BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary dark:dfr-border-color-primary">
+			<BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-secondary-inv">
 				<BlogPostDetailsItemIcon
 					icon={Icon.icon.EDIT}
-					color="tw-text-black dark:tw-text-white"
+					color="dfr-text-color-bw-inv"
 				/>
 				<Text>
 					<InlineText className="tw-mr-1">{t("page:updated_at")}</InlineText>

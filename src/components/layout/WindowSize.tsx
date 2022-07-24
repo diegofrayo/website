@@ -15,7 +15,7 @@ function WindowSize(): T_ReactElement {
 
 	// render
 	return (
-		<div className="root tw-fixed tw-bottom-0 tw-left-0 tw-cursor-pointer tw-bg-opacity-50 tw-p-3 tw-font-bold dfr-bg-color-dark-strong dfr-text-color-light-strong">
+		<div className="root tw-fixed tw-bottom-0 tw-left-0 tw-cursor-pointer tw-bg-opacity-50 tw-p-3 tw-font-bold dfr-text-color-white-pin dfr-bg-color-bw-inv">
 			<InlineText>{size.join("x")} | </InlineText>
 			<InlineText className="tw-inline-block sm:tw-hidden">mobile</InlineText>
 			<InlineText className="tw-hidden sm:tw-inline-block md:tw-hidden">sm</InlineText>

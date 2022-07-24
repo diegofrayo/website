@@ -40,7 +40,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 				visible={isModalVisible}
 				onCloseHandler={handleModalClose}
 			>
-				<Block className="tw-w-96 tw-max-w-full tw-border-4 tw-p-4 dfr-border-color-dark-strong dfr-bg-color-light-strong dark:dfr-bg-color-layout dark:dfr-border-color-light-strong">
+				<Block className="dfr-border-color-dark-strong dark:dfr-border-color-light-strong tw-w-96 tw-max-w-full tw-border-4 tw-p-4 dfr-bg-color-wb-inv dark:dfr-bg-color-primary-inv">
 					{Array.isArray(selectedChord) ? (
 						<Block>
 							{selectedChord.map((chord, index) => {
@@ -76,9 +76,9 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 											<InlineText
 												key={`Chord-point-${index}`}
 												className={classNames(
-													"tw-mx-1 tw-inline-flex tw-h-4 tw-w-4 tw-cursor-pointer tw-items-center tw-justify-center tw-rounded-full tw-text-xxs tw-leading-0 tw-text-white dark:tw-text-black",
+													"tw-mx-1 tw-inline-flex tw-h-4 tw-w-4 tw-cursor-pointer tw-items-center tw-justify-center tw-rounded-full tw-text-xxs tw-leading-0 dfr-text-color-white-pin dark:dfr-text-color-black-pin",
 													selectedChordIndex === index
-														? "tw-font-bold dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong"
+														? "tw-font-bold dfr-bg-color-bw-inv dark:dfr-bg-color-wb-inv"
 														: "tw-bg-gray-400",
 												)}
 												onClick={() => handleUpdateSelectedChordIndex(index)}

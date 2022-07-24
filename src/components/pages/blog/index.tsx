@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { useRouter } from "next/router";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Link, Block, Text, InlineText } from "~/components/primitive";
+import { Link, Block, Text, InlineText, Title } from "~/components/primitive";
 import { Render } from "~/components/shared";
 import { AuthService } from "~/auth";
 import { useQuery } from "~/hooks";
@@ -91,8 +91,8 @@ function BlogEntry({
 
 	// vars
 	const CATEGORIES_COLORS = {
-		tech: "tw-bg-green-200 dark:tw-bg-green-400 tw-text-black tw-opacity-75",
-		personal: "tw-bg-blue-200 dark:tw-bg-blue-400 tw-text-black tw-opacity-75",
+		tech: "tw-bg-green-200 dark:tw-bg-green-400 dfr-text-color-black-pin tw-opacity-75",
+		personal: "tw-bg-blue-200 dark:tw-bg-blue-400 dfr-text-color-black-pin tw-opacity-75",
 	};
 
 	// utils
@@ -105,7 +105,7 @@ function BlogEntry({
 		<article className="root tw-my-8 tw-w-full dfr-shadow sm:tw-w-5/12">
 			<Link
 				href={`${ROUTES.BLOG}/${slug}`}
-				variant={Link.variant.SECONDARY}
+				variant={Link.variant.SIMPLE}
 				locale={getLocale()}
 				className="tw-flex tw-h-full tw-w-full tw-flex-col"
 			>
@@ -115,11 +115,17 @@ function BlogEntry({
 				/>
 				<Block
 					is="footer"
-					className="tw-relative tw-flex-1 tw-pt-2 tw-pb-8"
+					className="tw-relative tw-flex-1 tw-pt-2 tw-pb-8 dfr-bg-color-secondary-inv"
 				>
-					<Text className="tw-mb-4 tw-px-2">{title}</Text>
+					<Title
+						is="h1"
+						variant={Title.variant.SECONDARY}
+						className="tw-mb-4 tw-px-2"
+					>
+						{title}
+					</Title>
 					<Block className="tw-absolute tw-bottom-0 tw-flex tw-w-full tw-items-end tw-justify-between tw-px-2 tw-py-2">
-						<Text className="tw-text-xs tw-font-normal tw-italic dfr-text-color-secondary">
+						<Text className="tw-text-xs tw-italic dfr-text-color-secondary-inv">
 							{isPublished ? (
 								<React.Fragment>
 									<InlineText>{t("page:published_at")} </InlineText>

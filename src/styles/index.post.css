@@ -25,8 +25,8 @@ body {
 }
 
 body {
-	@apply dfr-bg-color-layout;
-	@apply dfr-text-color-primary;
+	@apply dfr-bg-color-primary-inv;
+	@apply dfr-text-color-primary-inv;
 	cursor: default;
 	font-size: 18px;
 	overflow-y: auto;
@@ -38,13 +38,6 @@ body {
 
 body.scroll-disabled {
 	overflow: hidden;
-}
-
-/* --- Dark mode --- */
-
-.tw-dark body {
-	@apply dark-v-dfr-bg-color-layout;
-	@apply dark-v-dfr-text-color-primary;
 }
 
 /* --- Toast --- */
@@ -74,7 +67,7 @@ body.scroll-disabled {
 
 /** Classes for the displayed toast **/
 .Toastify__toast {
-	@apply dfr-bg-color-dark-strong;
+	@apply dfr-bg-color-bw-inv;
 	@apply tw-bg-opacity-80;
 	@apply tw-text-sm;
 	border-radius: 0;
@@ -158,7 +151,7 @@ body.scroll-disabled {
 /* --- NProgress --- */
 
 #nprogress .bar {
-	@apply dfr-bg-colorful-primary-100;
+	@apply dfr-bg-colorful-primary-inv;
 	height: 5px;
 	left: 0;
 	position: fixed;

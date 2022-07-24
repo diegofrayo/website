@@ -42,17 +42,13 @@ function List({
 					}
 
 					.dfr-List--default :global(li)::before {
-						@apply dfr-text-color-dark-strong;
+						@apply dfr-text-color-bw-inv;
 						content: "❯";
 						font-weight: bold;
 						font-size: 14px;
 						left: -19px;
 						position: absolute;
 						top: 2px;
-					}
-
-					:global(.tw-dark) .dfr-List--default :global(li)::before {
-						@apply dfr-text-color-light-strong;
 					}
 				`}
 			</style>

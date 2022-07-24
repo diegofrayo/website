@@ -33,7 +33,7 @@ function Header(): T_ReactElement {
 				<Link
 					variant={Link.variant.SECONDARY}
 					href={ROUTES.HOME}
-					className="tw-border-b-2 tw-border-dotted dfr-border-color-dark-strong dark:dfr-border-color-light-strong"
+					className="tw-border-b-2 tw-border-dotted dfr-border-color-bw-inv"
 				>
 					{WEBSITE_METADATA.username}
 				</Link>
@@ -144,7 +144,7 @@ function MainMenu(): T_ReactElement {
 	// render
 	return (
 		<div
-			className="root tw-relative tw-inline-block  print:tw-hidden"
+			className="root tw-relative tw-inline-block print:tw-hidden"
 			ref={menuRef}
 		>
 			<Button
@@ -160,7 +160,7 @@ function MainMenu(): T_ReactElement {
 			{showMenu ? (
 				<List
 					is="menu"
-					className="tw-absolute tw-top-full tw-left-[-65px] tw-z-40 tw-block tw-w-40 tw-overflow-hidden dfr-shadow dark:dfr-shadow"
+					className="tw-absolute tw-top-full tw-left-[-65px] tw-z-40 tw-block tw-w-40 tw-overflow-hidden dfr-shadow"
 				>
 					{items.map((item) => {
 						const isLinkActive =
@@ -171,14 +171,14 @@ function MainMenu(): T_ReactElement {
 						return (
 							<List.Item
 								key={generateSlug(item.label)}
-								className="tw-border-b tw-border-gray-800 dfr-bg-color-dark-strong last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary"
+								className="tw-border-b dfr-border-color-secondary-inv dfr-bg-color-wb-inv last:tw-border-0"
 								onClick={handleHideMenuClick}
 							>
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={item.url}
 									className={classNames(
-										"tw-block tw-px-2 tw-py-1 tw-text-center tw-text-base tw-text-gray-400 hover:tw-font-bold",
+										"tw-block tw-px-2 tw-py-1 tw-text-center tw-text-sm hover:tw-font-bold",
 										isLinkActive && "tw-font-bold",
 									)}
 								>
@@ -193,45 +193,19 @@ function MainMenu(): T_ReactElement {
 	);
 }
 
-const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_ReactElement {
-	// hooks
-	const { theme, setTheme } = useTheme();
-	const { t } = useTranslation();
-
+function SettingsMenu(): T_ReactElement {
 	// states & refs
 	const menuRef = React.useRef<HTMLDivElement>(null);
 	const [showMenu, setShowMenu, toggleShowMenu] = useEnhancedState(false);
 
-	// vars
-	const isDarkMode = theme === "dark";
-
 	// effects
-	useDidMount(() => {
-		if (isFalse(AuthService.isUserLoggedIn())) {
-			setTheme("light");
-		}
-	});
-
 	useClickOutside(menuRef, () => {
 		setShowMenu(false);
 	});
 
 	// handlers
-	function handleToggleThemeClick(): void {
-		toggleTheme();
-	}
-
 	function handleToggleShowMenuClick(): void {
 		toggleShowMenu();
-	}
-
-	function handlePrintClick(): void {
-		window.print();
-	}
-
-	// utils
-	function toggleTheme(): void {
-		setTheme(isDarkMode ? "light" : "dark");
 	}
 
 	// render
@@ -253,89 +227,102 @@ const SettingsMenu = withAuthenticationRequired(function SettingsMenu(): T_React
 			{showMenu ? (
 				<List
 					is="menu"
-					className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden dfr-shadow dark:dfr-shadow"
+					className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden dfr-shadow"
 				>
-					<MenuItem title={t("layout:header:settings:theme")}>
-						<Button
-							variant={Button.variant.SIMPLE}
-							disabled={isFalse(isDarkMode)}
-							className={classNames(
-								"tw-border-dashed tw-border-yellow-600 tw-py-0.5",
-								isFalse(isDarkMode) && "tw-border-b",
-							)}
-							onClick={handleToggleThemeClick}
-						>
-							<Icon
-								icon={Icon.icon.SUN}
-								color="tw-text-yellow-600"
-								size={18}
-							/>
-						</Button>
-						<Space
-							orientation="v"
-							size={1}
-						/>
-						<Button
-							variant={Button.variant.SIMPLE}
-							disabled={isDarkMode}
-							className={classNames(
-								"tw-border-dashed tw-border-indigo-700 tw-py-0.5 dark:tw-border-indigo-300",
-								isDarkMode && "tw-border-b",
-							)}
-							onClick={handleToggleThemeClick}
-						>
-							<Icon
-								icon={Icon.icon.MOON}
-								color="tw-text-indigo-700 dark:tw-text-indigo-300"
-								size={18}
-							/>
-						</Button>
-					</MenuItem>
+					<ToggleThemeMenuItem />
 					<RefreshAPPMenuItem />
 					<ISRMenuItem />
 					<EnvironmentMenuItem />
-					<MenuItem title="Print">
-						<Button
-							variant={Button.variant.SIMPLE}
-							onClick={handlePrintClick}
-						>
-							<Icon icon={Icon.icon.PRINTER} />
-						</Button>
-					</MenuItem>
+					<PrintMenuItem />
 				</List>
 			) : null}
 		</Block>
 	);
-});
+}
 
-const EnvironmentMenuItem = withAuthenticationRequired(function EnvironmentMenuItem() {
+function ToggleThemeMenuItem(): T_ReactElement {
 	// hooks
-	const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
+	const { t } = useTranslation();
+	const { theme, setTheme } = useTheme();
 
+	// vars
+	const isDarkMode = theme === "dark";
+
+	// handlers
+	function handleToggleThemeClick(): void {
+		setTheme(isDarkMode ? "light" : "dark");
+	}
+
+	return (
+		<SettingsMenuItem title={t("layout:header:settings:theme")}>
+			<Button
+				variant={Button.variant.SIMPLE}
+				disabled={isFalse(isDarkMode)}
+				className={classNames(
+					"tw-border-dashed tw-border-yellow-600 tw-py-0.5",
+					isFalse(isDarkMode) && "tw-border-b",
+				)}
+				onClick={handleToggleThemeClick}
+			>
+				<Icon
+					icon={Icon.icon.SUN}
+					color="tw-text-yellow-600"
+					size={18}
+				/>
+			</Button>
+			<Space
+				orientation="v"
+				size={1}
+			/>
+			<Button
+				variant={Button.variant.SIMPLE}
+				disabled={isDarkMode}
+				className={classNames(
+					"tw-border-dashed tw-border-indigo-700 tw-py-0.5 dark:tw-border-indigo-300",
+					isDarkMode && "tw-border-b",
+				)}
+				onClick={handleToggleThemeClick}
+			>
+				<Icon
+					icon={Icon.icon.MOON}
+					color="tw-text-indigo-700 dark:tw-text-indigo-300"
+					size={18}
+				/>
+			</Button>
+		</SettingsMenuItem>
+	);
+}
+
+const RefreshAPPMenuItem = withAuthenticationRequired(function RefreshAPPMenuItem() {
 	// states & refs
-	const [url, setUrl] = React.useState("/");
+	const [hasToRender, setHasToRender] = React.useState(false);
 
-	// effects
+	// effect
 	useDidMount(() => {
-		setUrl(
-			isDevelopmentEnvironment()
-				? `${WEBSITE_METADATA.url}${window.location.pathname}`
-				: `http://localhost:3000${window.location.pathname}`,
-		);
+		setHasToRender(isPWA());
 	});
 
+	// handlers
+	async function handleRefreshClick(): Promise<void> {
+		await deletePWACache();
+		window.location.reload();
+	}
+
 	// render
-	return (
-		<MenuItem title={`Open in "${isDevelopmentEnvironment() ? "prod" : "dev"}"`}>
-			<Link
-				variant={Link.variant.SIMPLE}
-				href={url}
-				isExternalLink
-			>
-				<Icon icon={Icon.icon.EXTERNAL_LINK} />
-			</Link>
-		</MenuItem>
-	);
+	if (hasToRender) {
+		return (
+			<SettingsMenuItem title="Refresh APP and Cache">
+				<Button
+					variant={Button.variant.SIMPLE}
+					onClick={handleRefreshClick}
+				>
+					<Icon icon={Icon.icon.REFRESH} />
+				</Button>
+			</SettingsMenuItem>
+		);
+	}
+
+	return null;
 });
 
 const ISRMenuItem = withAuthenticationRequired(function ISRMenuItem() {
@@ -357,47 +344,63 @@ const ISRMenuItem = withAuthenticationRequired(function ISRMenuItem() {
 
 	// render
 	return (
-		<MenuItem title="ISR on-demand">
+		<SettingsMenuItem title="ISR on-demand">
 			<Button
 				variant={Button.variant.SIMPLE}
 				onClick={handleISROnDemandClick}
 			>
 				<Icon icon={Icon.icon.SERVER} />
 			</Button>
-		</MenuItem>
+		</SettingsMenuItem>
 	);
 });
 
-const RefreshAPPMenuItem = withAuthenticationRequired(function RefreshAPPMenuItem() {
-	// states & refs
-	const [hasToRender, setHasToRender] = React.useState(false);
+const EnvironmentMenuItem = withAuthenticationRequired(function EnvironmentMenuItem() {
+	// hooks
+	const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
-	// effect
+	// states & refs
+	const [url, setUrl] = React.useState("/");
+
+	// effects
 	useDidMount(() => {
-		setHasToRender(isPWA());
+		setUrl(
+			isDevelopmentEnvironment()
+				? `${WEBSITE_METADATA.url}${window.location.pathname}`
+				: `http://localhost:3000${window.location.pathname}`,
+		);
 	});
 
-	// handlers
-	async function handleRefreshClick(): Promise<void> {
-		await deletePWACache();
-		window.location.reload();
-	}
-
 	// render
-	if (hasToRender) {
-		return (
-			<MenuItem title="Refresh APP and Cache">
-				<Button
-					variant={Button.variant.SIMPLE}
-					onClick={handleRefreshClick}
-				>
-					<Icon icon={Icon.icon.REFRESH} />
-				</Button>
-			</MenuItem>
-		);
+	return (
+		<SettingsMenuItem title={`Open in "${isDevelopmentEnvironment() ? "prod" : "dev"}"`}>
+			<Link
+				variant={Link.variant.SIMPLE}
+				href={url}
+				isExternalLink
+			>
+				<Icon icon={Icon.icon.EXTERNAL_LINK} />
+			</Link>
+		</SettingsMenuItem>
+	);
+});
+
+const PrintMenuItem = withAuthenticationRequired(function PrintMenuItem() {
+	// handlers
+	function handlePrintClick(): void {
+		window.print();
 	}
 
-	return null;
+	return (
+		<SettingsMenuItem title="Print">
+			<Button
+				variant={Button.variant.SIMPLE}
+				onClick={handlePrintClick}
+			>
+				<Icon icon={Icon.icon.PRINTER} />
+			</Button>
+		</SettingsMenuItem>
+	);
 });
 
 type T_MenuItemProps = {
@@ -406,15 +409,15 @@ type T_MenuItemProps = {
 	className?: string;
 };
 
-function MenuItem({ children, title, className = "" }: T_MenuItemProps): T_ReactElement {
+function SettingsMenuItem({ children, title, className = "" }: T_MenuItemProps): T_ReactElement {
 	return (
 		<List.Item
 			className={classNames(
-				"tw-flex tw-h-8 tw-items-center tw-justify-between tw-border-b tw-px-2 dfr-bg-color-primary dfr-border-color-primary last:tw-border-0 dark:dfr-bg-color-primary dark:dfr-border-color-primary",
+				"tw-flex tw-h-8 tw-items-center tw-justify-between tw-border-b tw-px-2 dfr-border-color-secondary-inv dfr-bg-color-wb-inv last:tw-border-0",
 				className,
 			)}
 		>
-			<Text className="tw-text-right tw-text-xs tw-font-bold">{title}</Text>
+			<Text className="tw--bold tw-text-right tw-text-xs">{title}</Text>
 			<Block className="tw-text-right tw-leading-none">{children}</Block>
 		</List.Item>
 	);

@@ -122,7 +122,7 @@ function TimerPage(): T_ReactElement {
 								updateRoutineItem,
 							}}
 						>
-							<Block className="tw-relative tw-mx-auto tw-min-h-screen tw-max-w-sm tw-pt-8 tw-shadow-md tw-shadow-gray-600 dfr-bg-color-light-strong">
+							<Block className="tw-relative tw-mx-auto tw-min-h-screen tw-max-w-sm tw-pt-8 tw-shadow-md tw-shadow-gray-600 dfr-bg-color-wb-inv">
 								<GoBack
 									className="tw-absolute tw-top-0"
 									withConfirmation

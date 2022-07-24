@@ -24,8 +24,8 @@ Library with `styled-components` flavored syntax for creating components easily 
     $TWCSS_BASE_STYLES: "tw-text-lg",
     UNSTYLED: "",
     PRIMARY:
-      "tw-text-black",
-    SECONDARY: (props) => `tw-text-white ${props.active ? "tw-font-bold" : ""}`,
+      "dfr-text-color-black-pin",
+    SECONDARY: (props) => `dfr-text-color-white-pin ${props.active ? "tw-font-bold" : ""}`,
   });
 
   // usage

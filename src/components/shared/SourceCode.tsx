@@ -39,11 +39,11 @@ function SourceCode({
 	// render
 	return (
 		<div
-			className="dfr-SourceCode root dfr-bg-color-light-strong dark:tw-bg-transparent"
+			className="dfr-SourceCode root dfr-bg-color-wb-inv dark:tw-bg-transparent"
 			data-markdown-block
 		>
 			{displaySourceCodeDetails ? (
-				<Block className="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-rounded-t-md tw-border tw-border-b-0 tw-px-2 tw-py-2 tw-font-mono tw-text-sm dfr-border-color-primary dark:tw-border-0 dark:dfr-bg-color-dark-strong">
+				<Block className="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-rounded-t-md tw-border tw-border-b-0 tw-px-2 tw-py-2 tw-font-mono tw-text-sm dfr-border-color-secondary-inv dark:tw-border-0 dark:dfr-bg-color-bw-inv">
 					{codeTitle && <code className="tw-mr-4 tw-flex-1 tw-font-bold">{codeTitle}</code>}
 					<InlineText className="tw-ml-auto tw-inline-block tw-flex-shrink-0 tw-bg-yellow-300 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-yellow-700">
 						{language}
@@ -97,7 +97,7 @@ function SourceCode({
 			</Highlight>
 
 			{displaySourceCodeDetails ? (
-				<Block className="tw-flex tw-flex-col tw-rounded-b-md tw-border tw-border-t-0 tw-p-2 tw-text-sm dfr-border-color-primary dark:tw-border-0 dark:dfr-bg-color-dark-strong sm:tw-flex-row sm:tw-justify-end">
+				<Block className="tw-flex tw-flex-col tw-rounded-b-md tw-border tw-border-t-0 tw-p-2 tw-text-sm dfr-border-color-secondary-inv dark:tw-border-0 dark:dfr-bg-color-bw-inv sm:tw-flex-row sm:tw-justify-end">
 					{isNotEmptyString(sourceURL) ? (
 						<React.Fragment>
 							<Link

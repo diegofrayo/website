@@ -67,7 +67,7 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 								className={classNames(
 									"tw-p-1 tw-pt-0",
 									reading.starred &&
-										"tw-bg-amber-100 dark:tw-border dark:tw-border-dotted dark:tw-border-amber-100 dark:tw-bg-transparent",
+										"tw-border tw-border-dotted tw-border-amber-300 tw-bg-amber-100 dark:tw-border-amber-700 dark:tw-bg-amber-900",
 								)}
 							>
 								<Link
@@ -77,7 +77,7 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 								>
 									{reading.title}
 								</Link>
-								<Text className="tw-text-xs tw-font-bold tw-italic">
+								<Text className="tw-text-xs tw-font-bold tw-italic dfr-text-color-secondary-inv">
 									{new URL(reading.url).host}
 									{isNotEmptyString(reading.author) ? ` | ${reading.author}` : ""}
 								</Text>
@@ -85,14 +85,14 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 									<DoneMark done={reading.done} />
 									<InlineText
 										className={classNames(
-											"tw-inline-block tw-rounded-md tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-light-strong",
+											"tw-inline-block tw-rounded-md tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-white-pin",
 											categoryColors[reading.category],
 										)}
 									>
 										{generateSlug(reading.category)}
 									</InlineText>
 									<InlineText className="tw-mx-1">|</InlineText>
-									<InlineText className="tw-inline-block tw-rounded-md tw-bg-gray-500 tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-light-strong">
+									<InlineText className="tw-inline-block tw-rounded-md tw-bg-gray-500 tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-white-pin">
 										{reading.date}
 									</InlineText>
 								</Block>

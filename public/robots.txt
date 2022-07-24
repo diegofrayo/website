@@ -1,5 +1,6 @@
 User-agent: *
 
+disallow: /lgy
 disallow: /personal
 disallow: /static
 

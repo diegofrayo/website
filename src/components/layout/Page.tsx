@@ -43,10 +43,12 @@ type T_PageProps = {
 };
 
 function Page({ children, config = {} }: T_PageProps): T_ReactElement {
+	// hooks
 	const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 	const SEO_METADATA = useStoreSelector<T_SEOMetadata>(selectSEOMetadata);
 	const { locales } = useStoreSelector<T_PageConfig>(selectPageConfig);
 
+	// vars
 	const metadata = {
 		title: isNotEmptyString(config.title)
 			? `${config.title}${config.replaceTitle ? "" : ` - ${SEO_METADATA.title}`}`
@@ -56,11 +58,12 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 		image: config.image || "/static/images/meta-og-image.png",
 	};
 
-	useDocumentTitle(metadata.title);
-
+	// effects
 	useDidMount(() => {
 		AnalyticsService.trackPageLoaded();
 	});
+
+	useDocumentTitle(metadata.title);
 
 	return (
 		<React.Fragment>
@@ -225,7 +228,7 @@ const UserLoggedInFlag = withAuthenticationRequired(function UserLoggedInFlag():
 	return (
 		<Flag
 			className="tw-z-50"
-			color="dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong"
+			color="dfr-bg-color-bw-inv"
 		/>
 	);
 });
@@ -244,7 +247,7 @@ function AnalyticsDisabledFlag(): T_ReactElementNullable {
 		return (
 			<Flag
 				className="tw-z-40"
-				color="dfr-bg-colorful-primary-100"
+				color="dfr-bg-colorful-primary-inv"
 			/>
 		);
 	}

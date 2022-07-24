@@ -339,7 +339,7 @@ export const ICONS = {
 		icon: MinusIcon,
 		defaultProps: {
 			className: "",
-			color: "tw-text-white dark:tw-text-black",
+			color: "dfr-text-color-white-pin dark:dfr-text-color-black-pin",
 		},
 	},
 	MOON: {
