@@ -52,7 +52,7 @@ function TextPage(): T_ReactElement {
 
 			<Block>
 				<Text className="tw-font-bold">Resultado</Text>
-				<output className="tw-my-1 tw-block tw-min-h-[40px] tw-w-full tw-border tw-p-3 dfr-border-color-primary">
+				<output className="tw-my-1 tw-block tw-min-h-[40px] tw-w-full tw-border tw-p-3 dfr-border-color-secondary">
 					{output}
 				</output>
 				<Button

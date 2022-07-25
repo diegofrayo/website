@@ -46,20 +46,20 @@ function Timeline({ timeline, TimelineItem }: T_TimelineProps): T_ReactElement {
 								<Block
 									key={`${generateSlug(groupTitle)}-${item.id}`}
 									className={classNames(
-										"tw-relative tw-px-0 tw-pb-6 tw-text-center last:tw-pb-0 dark:tw-border-white sm:tw-w-1/2 sm:tw-px-4 sm:tw-pb-16 sm:dfr-border-color-dark-strong",
+										"tw-relative tw-px-0 tw-pb-6 tw-text-center last:tw-pb-0 sm:tw-w-1/2 sm:tw-px-4 sm:tw-pb-16 sm:dfr-border-color-gs-black sm:dark:dfr-border-color-secondary",
 										itemsCounter % 2 === 0
 											? "sm:tw-left-2/4 sm:tw-border-l-4 sm:tw-text-left"
 											: "sm:tw-ml-1 sm:tw-border-r-4 sm:tw-text-right",
 									)}
 								>
 									{isFirstElement ? (
-										<Block className="tw-mx-auto tw-mb-6 tw-block tw-h-24 tw-w-1 dfr-bg-color-dark-strong sm:tw-hidden" />
+										<Block className="tw-mx-auto tw-mb-6 tw-block tw-h-24 tw-w-1 dfr-bg-color-bw sm:tw-hidden" />
 									) : null}
 
 									<TimelineItem data={item} />
 
 									{hasToRenderLastSeparator ? (
-										<Block className="tw-mx-auto tw-mt-8 tw-block tw-h-24 tw-w-1 dfr-bg-color-dark-strong sm:tw-hidden" />
+										<Block className="tw-mx-auto tw-mt-8 tw-block tw-h-24 tw-w-1 dfr-bg-color-bw sm:tw-hidden" />
 									) : null}
 								</Block>
 							);

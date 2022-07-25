@@ -64,7 +64,7 @@ function SongSources({ sources }: T_SongSourcesProps): T_ReactElementNullable {
 								)}
 								<Block className="tw-min-w-0 tw-flex-1">
 									<Text
-										className="tw-truncate tw-text-sm tw-font-bold tw-text-black dark:tw-text-white"
+										className="tw-truncate tw-text-sm tw-font-bold dfr-text-color-gs-black dark:dfr-text-color-gs-white"
 										title={item.text}
 									>
 										{item.text}

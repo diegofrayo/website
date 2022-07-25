@@ -27,7 +27,7 @@ function Books(): T_ReactElement {
 									key={id}
 									variant={Link.variant.UNSTYLED}
 									href={url}
-									className="tw-relative tw-mx-2 tw-mb-6 tw-h-64 tw-w-48 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 tw-shadow-lg tw-duration-500 dfr-border-color-dark-strong hover:tw-translate-x-1 hover:tw--translate-y-1 hover:tw-rotate-0 hover:tw-opacity-75 hover:tw-shadow-2xl dark:dfr-border-color-primary sm:tw--rotate-1"
+									className="dfr-border-color-dark-strong tw-relative tw-mx-2 tw-mb-6 tw-h-64 tw-w-48 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 tw-shadow-lg tw-duration-500 hover:tw-translate-x-1 hover:tw--translate-y-1 hover:tw-rotate-0 hover:tw-opacity-75 hover:tw-shadow-2xl dark:dfr-border-color-secondary sm:tw--rotate-1"
 									isExternalLink
 								>
 									<Block
@@ -39,7 +39,7 @@ function Books(): T_ReactElement {
 										}}
 									>
 										<Icon
-											wrapperClassName="tw-absolute tw--top-1 tw--right-1 dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong tw-rounded-md tw-shadow-md tw-p-2 tw-w-10 tw-h-10"
+											wrapperClassName="tw-absolute tw--top-1 tw--right-1 dfr-bg-color-bw dark:dfr-bg-color-wb tw-rounded-md tw-shadow-md tw-p-2 tw-w-10 tw-h-10"
 											iconClassName="tw-relative tw-top-0.5 tw--left-0.5"
 											icon={
 												calification === 5
@@ -51,18 +51,18 @@ function Books(): T_ReactElement {
 											size={24}
 										/>
 
-										<Block className="tw-flex tw-w-full tw-flex-col tw-items-stretch tw-self-end tw-rounded-tr-lg tw-bg-opacity-70 tw-p-2 dfr-bg-color-light-strong">
+										<Block className="tw-flex tw-w-full tw-flex-col tw-items-stretch tw-self-end tw-rounded-tr-lg tw-bg-opacity-70 tw-p-2 dfr-bg-color-wb">
 											<Title
 												is="h1"
 												variant={Title.variant.UNSTYLED}
-												className="tw-mb-0.5 tw-break-normal tw-uppercase tw-leading-tight tw-text-black"
+												className="tw-mb-0.5 tw-break-normal tw-uppercase tw-leading-tight dfr-text-color-gs-black"
 											>
 												{title}
 											</Title>
-											<Text className="tw-mb-2 tw-text-sm tw-font-bold tw-capitalize tw-italic tw-leading-none tw-text-gray-700">
+											<Text className="tw-mb-2 tw-text-sm tw-font-bold tw-capitalize tw-italic tw-leading-none dfr-text-color-gs-700">
 												{author}
 											</Text>
-											<Text className="tw-text-right tw-text-xs tw-font-bold tw-leading-none tw-text-black">
+											<Text className="tw-text-right tw-text-xs tw-font-bold tw-leading-none dfr-text-color-gs-black">
 												<Emoji className="tw-mr-1">🗓</Emoji>
 												<InlineText>{year}</InlineText>
 											</Text>

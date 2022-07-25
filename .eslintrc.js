@@ -10,6 +10,7 @@ module.exports = {
 		"src/components/pages/personal/*/timer/**/*",
 		"src/i18n",
 		"src/lib/guitar",
+		"src/pages/lgy",
 		"src/state",
 		"src/stories",
 	],

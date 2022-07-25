@@ -65,7 +65,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 		>
 			<Block
 				is="section"
-				className="tw-pb-2 dark:dfr-bg-color-layout"
+				className="tw-pb-2 dark:dfr-bg-color-primary"
 				ref={chordContainerRef}
 			>
 				<Title
@@ -106,7 +106,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 							/>
 						)}
 
-						<Block className="tw-relative tw-top-6 tw--left-0.5 tw-h-36 tw-w-3 tw-rounded-tr-md tw-rounded-br-md dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong" />
+						<Block className="tw-relative tw-top-6 tw--left-0.5 tw-h-36 tw-w-3 tw-rounded-tr-md tw-rounded-br-md dfr-bg-color-bw dark:dfr-bg-color-wb" />
 					</Block>
 
 					{playedStrings && (
@@ -149,7 +149,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
 				{showChordInput && (
 					<Block className="tw-mt-3 tw-text-center tw-text-sm">
-						<pre className="tw-inline-block tw-whitespace-pre-line tw-break-all tw-border tw-p-2 dfr-border-color-primary dark:dfr-border-color-primary">
+						<pre className="tw-inline-block tw-whitespace-pre-line tw-break-all tw-border tw-p-2 dfr-border-color-secondary">
 							<Button
 								variant={Button.variant.SIMPLE}
 								data-clipboard-text={musicNotesAsString}

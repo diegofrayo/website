@@ -55,7 +55,7 @@ export const ICONS = {
 	COUCHSURFING: {
 		icon: "/static/images/icons/couchsurfing.png",
 		defaultProps: {
-			className: "",
+			className: "tw-rounded-full",
 			alt: "Couchsurfing",
 		},
 	},
@@ -339,7 +339,7 @@ export const ICONS = {
 		icon: MinusIcon,
 		defaultProps: {
 			className: "",
-			color: "tw-text-white dark:tw-text-black",
+			color: "dfr-text-color-gs-white dark:dfr-text-color-gs-black",
 		},
 	},
 	MOON: {

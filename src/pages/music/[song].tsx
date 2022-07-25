@@ -10,7 +10,7 @@ import dataLoader from "~/server";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { MDXScope } from "~/utils/mdx";
 import { ROUTES } from "~/utils/routing";
-import { isFalse, isUndefined } from "~/utils/validations";
+import { isUndefined } from "~/utils/validations";
 
 type T_PageProps = {
 	song: T_Song;
@@ -44,7 +44,7 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, T_StaticPat
 	callback: async ({ params }) => {
 		const song = await MusicService.getSong({ id: params.song });
 
-		if (isUndefined(song) || isFalse(song.isPublic)) {
+		if (isUndefined(song)) {
 			return {
 				notFound: true,
 			};

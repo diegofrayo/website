@@ -6,7 +6,7 @@ export function HST_Main(): T_ReactElement {
 	return (
 		<main
 			role="main"
-			className="dfr-bg-color-light-strong dark:tw-bg-gray-400"
+			className="dfr-bg-color-wb dark:tw-bg-gray-400"
 			style={{ minWidth: 500 }}
 		>
 			<header className="tw-p-2 tw-text-center dfr-bg-color-primary dark:tw-bg-gray-600">
@@ -47,7 +47,7 @@ export function HST_Main(): T_ReactElement {
 						<div>
 							<p>article content</p>
 						</div>
-						<footer className="tw-mt-4 tw-p-1 tw-text-center tw-text-sm tw-text-white dfr-bg-color-dark-strong">
+						<footer className="tw-mt-4 tw-p-1 tw-text-center tw-text-sm dfr-text-color-gs-white dfr-bg-color-bw">
 							article footer
 						</footer>
 					</article>
@@ -59,13 +59,13 @@ export function HST_Main(): T_ReactElement {
 						<div>
 							<p>article content</p>
 						</div>
-						<footer className="tw-mt-4 tw-p-1 tw-text-center tw-text-sm tw-text-white dfr-bg-color-dark-strong">
+						<footer className="tw-mt-4 tw-p-1 tw-text-center tw-text-sm dfr-text-color-gs-white dfr-bg-color-bw">
 							article footer
 						</footer>
 					</article>
 				</section>
 			</div>
-			<footer className="tw-mt-6 tw-p-2 tw-text-center tw-text-white dfr-bg-color-dark-strong">
+			<footer className="tw-mt-6 tw-p-2 tw-text-center dfr-text-color-gs-white dfr-bg-color-bw">
 				footer
 			</footer>
 		</main>

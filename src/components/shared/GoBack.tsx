@@ -4,7 +4,7 @@ import * as React from "react";
 import { Block, Button, Icon, InlineText } from "~/components/primitive";
 import { goBack } from "~/utils/routing";
 import type { T_ReactElement } from "~/types";
-import { isFalse, isTrue } from "~/utils/validations";
+import { isNotTrue, isTrue } from "~/utils/validations";
 
 type T_GoBackProps = {
 	className: string;
@@ -15,7 +15,7 @@ function GoBack({ className, withConfirmation = false }: T_GoBackProps): T_React
 	// handlers
 	function handleGoBackClick(): void {
 		if (
-			isFalse(withConfirmation) ||
+			isNotTrue(withConfirmation) ||
 			(isTrue(withConfirmation) && window.confirm("¿Are you sure?"))
 		) {
 			goBack();
@@ -26,7 +26,7 @@ function GoBack({ className, withConfirmation = false }: T_GoBackProps): T_React
 	return (
 		<Block
 			className={classNames(
-				"tw-left-0 tw-right-0 tw-h-8 tw-p-1 tw-text-sm tw-font-bold dfr-bg-color-dark-strong dfr-text-color-light-strong",
+				"tw-left-0 tw-right-0 tw-h-8 tw-p-1 tw-text-sm tw-font-bold dfr-text-color-gs-white dfr-bg-color-gs-black",
 				className,
 			)}
 		>
@@ -36,7 +36,7 @@ function GoBack({ className, withConfirmation = false }: T_GoBackProps): T_React
 			>
 				<Icon
 					icon={Icon.icon.CHEVRON_LEFT}
-					color="tw-text-white"
+					color="dfr-text-color-gs-white"
 				/>
 				<InlineText className="tw-align-middle tw-font-bold"> Go back</InlineText>
 			</Button>

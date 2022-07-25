@@ -117,7 +117,7 @@ function useController({
 		return classNames(
 			{
 				PRIMARY: classNames(
-					"dfr-text-color-dark-strong dark:dfr-text-color-light-strong",
+					"dfr-text-color-bw",
 					{
 						h1: "tw-text-4xl",
 						h2: "tw-text-3xl",
@@ -125,7 +125,7 @@ function useController({
 						h4: "tw-text-xl",
 					}[tag],
 				),
-				SECONDARY: "dfr-text-color-dark-strong dark:dfr-text-color-light-strong",
+				SECONDARY: "dfr-text-color-bw",
 				UNSTYLED: "",
 			}[variant],
 			isString(size) &&
@@ -151,7 +151,7 @@ function useController({
 		id: variant === VARIANTS.PRIMARY && isString(children) ? generateSlug(children) : id,
 		className: classNames(
 			`dfr-Title dfr-Title--${variant.toLowerCase()}`,
-			"tw-font-bold tw-font-sans",
+			"tw-font-bold tw-font-serif",
 			generateStyles(is),
 			className,
 		),

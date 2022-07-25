@@ -12,7 +12,7 @@ import { GuitarService } from "~/lib/guitar";
 import { copyToClipboard } from "~/utils/browser";
 import { safeCastNumber } from "~/utils/numbers";
 import { ROUTES } from "~/utils/routing";
-import { isFalse } from "~/utils/validations";
+import { isNotTrue } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
 import MusicService, { T_Song } from "./service";
@@ -63,7 +63,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
 				replaceTitle: !MusicService.isChordsSong(song),
 				description: t("seo:description", { title: song.title, artist: song.artist }),
 				pathname: `${ROUTES.MUSIC}/${song.id}`,
-				disableSEO: isFalse(song.isPublic),
+				disableSEO: isNotTrue(song.isPublic),
 			}}
 		>
 			<MainLayout title={song.title}>
@@ -72,12 +72,8 @@ function SongPage(props: T_PageProps): T_ReactElement {
 					className="tw-mb-8"
 				/>
 
-				<Block
-					variant="FEATURED"
-					className="tw-mb-8"
-					style={{ fontSize: `${fontSize}rem` }}
-				>
-					<Block className="tw-mb-6 tw-text-sm">
+				<Block className="tw-mb-8 tw-border-4 dfr-border-color-secondary">
+					<Block className="tw-p-4 tw-leading-0 dfr-bg-color-tertiary">
 						<Button
 							variant={Button.variant.SIMPLE}
 							disabled={isMaxFontSize}
@@ -117,16 +113,20 @@ function SongPage(props: T_PageProps): T_ReactElement {
 						</Button>
 					</Block>
 
-					<Block className="tw-max-w-full tw-overflow-x-auto tw-pb-3">
-						<MDXContent
-							content={songMDXContent}
-							variant={MDXContent.variant.UNSTYLED}
-						/>
+					<Block className="tw-max-w-full tw-p-4">
+						<Block
+							className="tw-overflow-x-scroll tw-pb-1"
+							style={{ fontSize: `${fontSize}rem` }}
+						>
+							<MDXContent
+								content={songMDXContent}
+								variant={MDXContent.variant.UNSTYLED}
+							/>
+						</Block>
 					</Block>
-					<Space size={6} />
 
-					<Block variant="FEATURED">
-						<Text className="tw-mb-2 tw-font-bold">
+					<Block className="tw-border-t-4 tw-p-4 dfr-border-color-secondary">
+						<Text className="tw-font-bold">
 							{t("page:chords_title")} [{song.chords.length}]
 						</Text>
 						<pre

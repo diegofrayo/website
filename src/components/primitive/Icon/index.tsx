@@ -91,7 +91,7 @@ function useController({
 		className: classNames(
 			"dfr-Icon",
 			withBackgroundWhenDarkMode &&
-				"dark:dfr-bg-color-light-strong dark:tw-rounded-full tw-overflow-hidden",
+				"dark:dfr-bg-color-gs-white dark:tw-rounded-full tw-overflow-hidden",
 			wrapperClassName,
 		),
 	};
@@ -118,7 +118,7 @@ function useController({
 			return icon.defaultProps.color;
 		}
 
-		return "dfr-text-color-dark-strong dark:dfr-text-color-light-strong";
+		return "dfr-text-color-bw";
 	}
 
 	return { wrapperProps, iconComponentProps, IconComponent };

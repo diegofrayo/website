@@ -47,6 +47,7 @@ function Link(props: T_LinkProps): T_ReactElementNullable {
 				className={classNames("dfr-Link", className)}
 				TWCSSVariant={variant}
 				is="a"
+				data-variant={variant}
 			>
 				{children}
 			</LinkElement>
@@ -64,6 +65,7 @@ function Link(props: T_LinkProps): T_ReactElementNullable {
 				className={classNames("dfr-Link", className)}
 				TWCSSVariant={variant}
 				is="a"
+				data-variant={variant}
 			>
 				{children}
 			</LinkElement>
@@ -112,8 +114,6 @@ const LinkElement = twcss.a({
 	$TWCSS_BASE_STYLES: "",
 	UNSTYLED: "",
 	SIMPLE: "dfr-transition-opacity",
-	PRIMARY:
-		"dfr-transition-opacity dfr-link-color-primary dark:dfr-link-color-primary tw-font-bold tw-underline",
-	SECONDARY: () =>
-		"dfr-transition-opacity dfr-text-color-dark-strong tw-font-bold dark:dfr-text-color-light-strong",
+	PRIMARY: "dfr-transition-opacity dfr-text-color-links tw-font-bold tw-underline",
+	SECONDARY: () => "dfr-transition-opacity dfr-text-color-bw tw-font-bold",
 });

@@ -1,7 +1,7 @@
 import { NextRouter } from "next/router";
 
 import { isPWA } from "./browser";
-import { isFalse, isNotEmptyString, isNotEquals } from "./validations";
+import { isNotTrue, isNotEmptyString, isNotEquals } from "./validations";
 
 // --- Constants ---
 
@@ -64,7 +64,7 @@ export function redirect(path: string): void {
 }
 
 export function initPWARoutingConfig(router: NextRouter): () => void {
-	if (isFalse(window.navigator.onLine)) {
+	if (isNotTrue(window.navigator.onLine)) {
 		return () => undefined;
 	}
 

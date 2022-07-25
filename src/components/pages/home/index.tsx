@@ -90,13 +90,13 @@ function Featured({ content }: T_Featured): T_ReactElement {
 			is="section"
 			className="tw-relative tw-hidden tw-rounded-t-md tw-border-8 tw-border-yellow-700 tw-bg-green-700 tw-p-4 dfr-shadow"
 		>
-			<Emoji className="tw-absolute tw--top-4 tw--left-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-shadow dfr-bg-color-light-strong">
+			<Emoji className="tw-absolute tw--top-4 tw--left-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-shadow dfr-bg-color-wb">
 				📌
 			</Emoji>
 			<Title
 				is="h1"
 				variant={Title.variant.UNSTYLED}
-				className="tw-text-center dfr-text-color-light-strong"
+				className="tw-text-center"
 				size={Title.size.MD}
 			>
 				FEATURED
@@ -133,7 +133,7 @@ type T_RoomProps = {
 function Room({ tvSong, frameImage }: T_RoomProps): T_ReactElement {
 	return (
 		<Block
-			className="tw-border-b-4 tw-px-6 tw-pt-16 dfr-border-color-dark-strong dfr-bg-color-light-strong dark:dfr-bg-color-primary dark:dfr-border-color-primary sm:tw-px-10"
+			className="tw-border-b-4 tw-border-gray-500 tw-bg-gray-100 tw-px-6 tw-pt-16 dark:tw-border-0 dark:tw-bg-gray-700 sm:tw-px-10"
 			style={{ backgroundImage: "url('/static/images/textures/arabesque.png')" }}
 		>
 			<PictureFrame photo={frameImage} />
@@ -182,7 +182,7 @@ function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElementNullable {
 					onClick={handleImageClick}
 				/>
 			</Block>
-			<Text className="tw-mx-auto tw-h-4 tw-w-16 tw-rounded-bl-md tw-rounded-br-md tw-border-2 tw-border-t-0 tw-border-yellow-700 tw-text-center tw-text-xxs tw-font-bold tw-italic dfr-text-color-dark-strong dfr-bg-color-light-strong dark:dfr-bg-color-dark-strong dark:dfr-text-color-light-strong">
+			<Text className="tw-mx-auto tw-h-4 tw-w-16 tw-rounded-bl-md tw-rounded-br-md tw-border-2 tw-border-t-0 tw-border-yellow-700 tw-text-center tw-text-xxs tw-font-bold tw-italic dfr-bg-color-gs-white dfr-text-color-gs-black">
 				{t("layout:header:room:welcome")}
 			</Text>
 
@@ -190,7 +190,7 @@ function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElementNullable {
 				{`
 					:global(.dfr-PictureFrame)::before,
 					:global(.dfr-PictureFrame)::after {
-						@apply dfr-bg-color-dark-strong;
+						@apply dfr-bg-color-bw;
 						content: " ";
 						display: block;
 						height: 50px;
@@ -198,11 +198,6 @@ function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElementNullable {
 						top: -40px;
 						width: 2.5px;
 						z-index: -1;
-					}
-
-					:global(.tw-dark) :global(.dfr-PictureFrame)::before,
-					:global(.tw-dark) :global(.dfr-PictureFrame)::after {
-						@apply dfr-bg-color-light-strong;
 					}
 
 					:global(.dfr-PictureFrame)::before {
@@ -291,10 +286,10 @@ function TV({ song }: T_TVProps): T_ReactElement {
 
 	// render
 	return (
-		<Block className="dfr-TV tw-relative tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-bg-gradient-to-b tw-from-gray-700 tw-to-gray-900 tw-p-2 dark:tw-from-gray-200 dark:tw-to-gray-400">
+		<Block className="dfr-TV tw-relative tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-bg-gradient-to-b tw-from-gray-500 tw-to-gray-700 tw-p-2 dark:tw-from-gray-200 dark:tw-to-gray-400">
 			<Block className="tw-relative tw-h-16 tw-w-16 tw-overflow-hidden">
 				<Block
-					className="tw-relative tw-flex tw-h-full tw-items-center tw-justify-center tw-border tw-border-opacity-80 tw-bg-cover dfr-border-color-dark-strong dark:tw-border-opacity-10"
+					className="tw-relative tw-flex tw-h-full tw-items-center tw-justify-center tw-bg-cover"
 					title={`${song.title} - ${song.artist}`}
 					style={{ backgroundImage: `url(${song.thumbnail})` }}
 				>
@@ -305,8 +300,8 @@ function TV({ song }: T_TVProps): T_ReactElement {
 						<Icon
 							icon={isAudioPlaying ? Icon.icon.PAUSE : Icon.icon.PLAY}
 							size={28}
-							wrapperClassName="dfr-bg-color-dark-strong tw-bg-opacity-70 tw-rounded-full"
-							iconClassName="dfr-text-color-light-strong"
+							wrapperClassName="dfr-bg-color-gs-black tw-bg-opacity-70 tw-rounded-full"
+							color="dfr-text-color-gs-white"
 						/>
 						<audio
 							id="tv-audio"
@@ -329,7 +324,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
 
 				<Block
 					className={classNames(
-						"tw-absolute tw-top-0 tw-left-0 tw-h-full tw-w-full tw-transition-transform dfr-bg-color-dark-strong",
+						"tw-absolute tw-top-0 tw-left-0 tw-h-full tw-w-full tw-transition-transform dfr-bg-color-gs-black",
 						showInfo && "tw-translate-x-full",
 					)}
 				/>
@@ -345,12 +340,12 @@ function TV({ song }: T_TVProps): T_ReactElement {
 						return (
 							<Block
 								key={generateSlug(`TV-Block-${i}`)}
-								className="tw-my-0.5 tw-rounded-sm tw-border-b tw-border-gray-600 dark:dfr-border-color-dark-strong"
+								className="tw-my-0.5 tw-rounded-sm tw-border-b tw-border-gray-400 tw-bg-transparent dark:tw-border-gray-500"
 							/>
 						);
 					})}
 				</Block>
-				<Block className="tw-h-6 tw-w-6 tw-overflow-hidden tw-rounded-full tw-bg-gray-700 tw-transition-transform dark:dfr-bg-color-dark-strong">
+				<Block className="tw-h-6 tw-w-6 tw-overflow-hidden tw-rounded-full tw-transition-transform dfr-bg-color-gs-black">
 					{hasNotStartedTV ? (
 						<Button
 							className="tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center"
@@ -381,7 +376,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
 				{`
 					:global(.dfr-TV)::before,
 					:global(.dfr-TV)::after {
-						@apply dfr-bg-color-dark-strong;
+						@apply tw-bg-gray-700;
 						@apply tw-w-2;
 						@apply tw-h-6;
 						content: " ";
@@ -486,9 +481,9 @@ function LinkItem({ label, url, className = "" }: T_LinkItemProps): T_ReactEleme
 	// render
 	return (
 		<Link
-			variant={Link.variant.SECONDARY}
+			variant={Link.variant.SIMPLE}
 			className={classNames(
-				"tw-flex tw-flex-1 tw-items-center tw-bg-yellow-700 tw-px-2 tw-py-0.5 tw-text-xs dfr-text-color-light-strong",
+				"tw-flex tw-flex-1 tw-items-center tw-bg-yellow-700 tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-gs-white",
 				className,
 			)}
 			href={url}

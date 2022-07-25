@@ -31,12 +31,12 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
 	} = useController(props);
 
 	return (
-		<div
-			className="dfr-Playground root tw-flex tw-flex-col tw-border-4 tw-border-black dfr-bg-color-light-strong dark:dfr-bg-color-primary dark:dfr-border-color-primary"
+		<Block
+			className="dfr-Playground tw-flex tw-min-h-[200px] tw-flex-col tw-border-4 dfr-border-color-gs-black dfr-bg-color-wb dark:dfr-border-color-secondary"
 			data-markdown-block
 		>
 			<Block
-				className="tab-content-container tw-flex-1 tw-overflow-auto tw-p-0.5"
+				className="tw-max-h-[300px] tw-flex-1 tw-overflow-auto tw-p-0.5"
 				ref={contentRef}
 			>
 				{isSourceCodeTabSelected ? (
@@ -49,13 +49,13 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
 					<Component />
 				)}
 			</Block>
-			<Block className="tw-flex-no-wrap tw-flex tw-border-t-4 tw-text-sm dfr-border-color-dark-strong dark:dfr-border-color-primary">
+			<Block className="tw-flex-no-wrap tw-flex tw-border-t-4 tw-text-sm dfr-border-color-gs-black dark:dfr-border-color-secondary">
 				<Button
 					variant={Button.variant.SIMPLE}
 					className={classNames(
 						"tw-flex-1 tw-cursor-pointer tw-p-2 tw-text-center",
 						isSourceCodeTabSelected &&
-							"tw-font-bold tw-text-white dfr-bg-color-dark-strong hover:tw-opacity-100 dark:tw-bg-gray-500 dark:tw-text-white",
+							"tw-font-bold dfr-text-color-gs-white dfr-bg-color-bw hover:tw-opacity-100 dark:dfr-bg-color-tertiary",
 					)}
 					onClick={handleTabClick(0)}
 				>
@@ -66,31 +66,14 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
 					className={classNames(
 						"tw-flex-1 tw-cursor-pointer tw-p-2 tw-text-center",
 						isOutputTabSelected &&
-							"tw-font-bold tw-text-white dfr-bg-color-dark-strong hover:tw-opacity-100 dark:tw-bg-gray-500 dark:tw-text-white",
+							"tw-font-bold dfr-text-color-gs-white dfr-bg-color-bw hover:tw-opacity-100 dark:dfr-bg-color-tertiary",
 					)}
 					onClick={handleTabClick(1)}
 				>
 					Output
 				</Button>
 			</Block>
-
-			<style jsx>
-				{`
-					.root {
-						min-height: 200px;
-					}
-
-					.root :global(.tab-content-container) {
-						max-height: 300px;
-					}
-
-					.root :global(.dfr-Code) {
-						box-shadow: none;
-						margin: 0;
-					}
-				`}
-			</style>
-		</div>
+		</Block>
 	);
 }
 

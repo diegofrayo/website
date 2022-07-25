@@ -14,7 +14,7 @@ type T_CodeProps = T_HTMLElementAttributes["pre"] & {
 function Code({ children, className, variant, ...rest }: T_CodeProps): T_ReactElement {
 	if (variant === VARIANTS.INLINE) {
 		return (
-			<code className="dfr-Code tw-text-base tw-italic dfr-text-colorful-secondary-100 dark:dfr-text-colorful-primary-100">
+			<code className="dfr-Code--inline tw-text-base tw-italic dfr-text-color-inline-code">
 				{children}
 
 				<style jsx>
@@ -30,37 +30,38 @@ function Code({ children, className, variant, ...rest }: T_CodeProps): T_ReactEl
 	}
 
 	return (
-		<pre
+		<div
 			className={classNames(
-				"dfr-Code tw-block tw-max-w-full tw-overflow-x-auto tw-rounded-md tw-p-4 tw-font-mono tw-text-base dfr-shadow dfr-bg-color-primary dfr-text-color-dark-strong dark:dfr-bg-color-primary dark:dfr-text-color-light-strong",
+				"dfr-Code--multiline root tw-rounded-md tw-p-4 tw-font-mono tw-text-base dfr-shadow dfr-bg-color-secondary dark:dfr-bg-color-tertiary",
 				className,
 			)}
-			{...rest}
 		>
-			{children}
+			<pre {...rest}>
+				{children}
 
-			<style jsx>
-				{`
-					pre {
-						word-break: keep-all;
-					}
+				<style jsx>
+					{`
+						pre {
+							word-break: keep-all;
+						}
 
-					pre :global(.dfr-Code) {
-						@apply dfr-text-color-dark-strong;
-						font-style: normal;
-					}
+						pre :global(.dfr-Code--inline::before),
+						pre :global(.dfr-Code--inline::after) {
+							content: "";
+						}
 
-					pre :global(.dfr-Code::before),
-					pre :global(.dfr-Code::after) {
-						content: "";
-					}
+						pre :global(.dfr-Code--inline) {
+							@apply dfr-text-color-gs-black;
+							font-style: normal;
+						}
 
-					:global(.tw-dark) pre :global(.dfr-Code) {
-						@apply dfr-text-color-light-strong !important;
-					}
-				`}
-			</style>
-		</pre>
+						:global(.tw-dark) :global(.dfr-Code--multiline) pre :global(.dfr-Code--inline) {
+							@apply dfr-text-color-primary;
+						}
+					`}
+				</style>
+			</pre>
+		</div>
 	);
 }
 

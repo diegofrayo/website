@@ -36,7 +36,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 		>
 			<Block
 				is="main"
-				className="tw-relative tw-mx-auto tw-px-8 tw-py-16 dfr-max-w-layout dfr-shadow print:tw-w-full print:tw-shadow-none"
+				className="tw-relative tw-mx-auto tw-border-x tw-px-8 tw-py-16 dfr-max-w-layout dfr-border-color-secondary print:tw-w-full print:tw-border-0"
 			>
 				<GoBack className="tw-absolute tw-top-0 print:tw-hidden" />
 				<PrintBlock>
@@ -57,7 +57,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 						<Text>{resume.headline}</Text>
 						<Space size={1} />
 
-						<Text className="tw-text-xs tw-italic dfr-text-color-secondary dark:dfr-text-color-secondary">
+						<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
 							<InlineText>{resume.location.city}</InlineText> <InlineText> / </InlineText>
 							<InlineText>{resume.location.country}</InlineText>
 						</Text>
@@ -119,7 +119,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 				<Block>
 					<PrintBlock>
 						<ResumeBlock title="Summary">
-							<pre className="tw-whitespace-pre-line tw-break-words  dfr-font-family md:tw-text-justify">
+							<pre className="tw-whitespace-pre-line tw-break-words dfr-font-family md:tw-text-justify">
 								{resume.summary}
 							</pre>
 						</ResumeBlock>
@@ -145,14 +145,14 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 													{item.degree}
 												</Title>
 												<Link
-													variant={Link.variant.SIMPLE}
+													variant={Link.variant.PRIMARY}
 													href={item.schoolWebsite}
 													className="tw-underline"
 													isExternalLink
 												>
 													{item.school}
 												</Link>
-												<Text className="tw-text-xs tw-italic dfr-text-color-secondary dark:dfr-text-color-secondary">
+												<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
 													<InlineText>{item.startDate}</InlineText> /{" "}
 													<InlineText>{item.endDate}</InlineText>
 												</Text>
@@ -204,11 +204,11 @@ function ResumeBlock({ title, children }: T_ResumeBlockProps): T_ReactElement {
 	return (
 		<Block
 			is="section"
-			className="tw-mt-16 tw-border-t tw-border-dashed tw-pt-16 dfr-border-color-primary dark:dfr-border-color-primary print:tw-mt-0 print:tw-mb-16 print:tw-border-0 print:tw-pt-0"
+			className="tw-mt-16 tw-pt-16 print:tw-mt-0 print:tw-mb-16 print:tw-pt-0"
 		>
 			<Title
 				is="h2"
-				className="tw-mx-auto tw-mb-8 tw-w-full tw-border-4 tw-py-1 tw-px-2 tw-text-center tw-uppercase dfr-border-color-dark-strong dark:dfr-border-color-light-strong print:tw-w-72 md:tw-w-72"
+				className="tw-mx-auto tw-mb-8 tw-w-full tw-border-4 tw-py-1 tw-px-2 tw-text-center tw-uppercase dfr-border-color-bw print:tw-w-72 md:tw-w-72"
 			>
 				{title}
 			</Title>
@@ -223,7 +223,7 @@ type T_ExperienceTimelineProps = {
 
 export function ExperienceTimeline({ experience }: T_ExperienceTimelineProps): T_ReactElement {
 	return (
-		<Block className="tw-ml-3 tw-border-l-4 tw-border-black dark:dfr-border-color-primary">
+		<Block className="tw-ml-3 tw-border-l-4 dfr-border-color-bw">
 			{experience.map((item) => {
 				return (
 					<ExperienceTimelineItem
@@ -246,7 +246,7 @@ function ExperienceTimelineItem({
 			is="section"
 			className="tw-relative tw-mb-8 tw-pl-9 last:tw-mb-0 print:tw-mb-20"
 		>
-			<Block className="tw-absolute tw--left-4 tw-top-0 tw-h-10 tw-w-10 tw-overflow-hidden tw-border-4 dfr-border-color-dark-strong dark:dfr-border-color-primary">
+			<Block className="tw-absolute tw--left-4 tw-top-0 tw-h-10 tw-w-10 tw-overflow-hidden tw-border-4 dfr-border-color-bw">
 				{isNotEmptyString(companyLogo) ? (
 					<Image
 						src={companyLogo}
@@ -254,7 +254,7 @@ function ExperienceTimelineItem({
 						className="tw-h-full tw-w-full"
 					/>
 				) : (
-					<Block className="tw-h-full tw-w-full dfr-bg-color-dark-strong dark:dfr-bg-color-light-strong" />
+					<Block className="tw-h-full tw-w-full dfr-bg-color-wb" />
 				)}
 			</Block>
 
@@ -271,16 +271,16 @@ function ExperienceTimelineItem({
 					<Link
 						className="tw-underline"
 						href={companyWebsite}
-						variant={Link.variant.SIMPLE}
+						variant={Link.variant.PRIMARY}
 						isExternalLink
 					>
 						{company}
 					</Link>
 				) : (
-					<Text>{company}</Text>
+					<Text className="dfr-text-color-bw">{company}</Text>
 				)}
 
-				<Text className="tw-text-xs tw-italic dfr-text-color-secondary dark:dfr-text-color-secondary">
+				<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
 					<InlineText>{startDate}</InlineText> /<InlineText>{endDate}</InlineText>
 				</Text>
 				<Space size={2} />

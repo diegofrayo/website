@@ -94,7 +94,7 @@ function WhatsApp(): T_ReactElement {
 			<Block className="tw-mt-3 tw-text-left sm:tw-text-center">
 				<Button
 					variant={Button.variant.UNSTYLED}
-					className="tw-inline-block tw-border tw-border-dashed tw-px-1 tw-text-xs tw-italic dfr-border-color-primary"
+					className="tw-inline-block tw-border tw-border-dashed tw-px-1 tw-text-xs tw-italic dfr-border-color-secondary"
 					data-clipboard-text={whatsAppUrl}
 					onClick={handleCopyToClipboardClick}
 				>

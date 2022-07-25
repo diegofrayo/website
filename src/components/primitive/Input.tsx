@@ -27,13 +27,13 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
 
 	return (
 		<label
+			{...containerProps}
 			className={classNames(
 				"root",
-				"tw-block tw-border-b-4 dfr-border-color-primary dark:dfr-border-color-primary",
+				"tw-block tw-border-b-4 dfr-border-color-secondary",
 				containerProps.className,
 			)}
 			htmlFor={id}
-			{...containerProps}
 		>
 			{isNotEmptyString(label) ? (
 				<Text className="tw-mb-1 tw-cursor-pointer tw-font-bold">{label}</Text>
@@ -43,7 +43,7 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
 				ref={ref}
 				id={id}
 				className={classNames(
-					"dfr-Input tw-block tw-w-full tw-resize-none tw-rounded-none tw-border tw-p-2 tw-shadow-none dfr-bg-color-primary dfr-border-color-primary dark:dfr-bg-color-primary dark:dfr-border-color-primary",
+					"dfr-Input tw-block tw-w-full tw-resize-none tw-rounded-none tw-border tw-p-2 tw-shadow-none dfr-bg-color-secondary dfr-border-color-secondary",
 					className,
 				)}
 				{...rest}
@@ -51,7 +51,11 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
 
 			<style jsx>
 				{`
-					.root:focus-within {
+					.root :focus-within {
+						border-color: transparent;
+					}
+
+					.root :global(.dfr-Input:focus-within) {
 						border-color: transparent;
 					}
 
