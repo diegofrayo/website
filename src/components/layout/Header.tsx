@@ -171,7 +171,7 @@ function MainMenu(): T_ReactElement {
 						return (
 							<List.Item
 								key={generateSlug(item.label)}
-								className="tw-border-b dfr-border-color-secondary dfr-bg-color-wb last:tw-border-0"
+								className="tw-border-b dfr-border-color-primary dfr-bg-color-wb last:tw-border-0"
 								onClick={handleHideMenuClick}
 							>
 								<Link
@@ -417,7 +417,7 @@ function SettingsMenuItem({
 	return (
 		<List.Item
 			className={classNames(
-				"tw-flex tw-h-8 tw-items-center tw-justify-between tw-border-b tw-px-2 dfr-border-color-secondary dfr-bg-color-wb last:tw-border-0",
+				"tw-flex tw-h-8 tw-items-center tw-justify-between tw-border-b tw-px-2 dfr-border-color-primary dfr-bg-color-wb last:tw-border-0",
 				className,
 			)}
 		>

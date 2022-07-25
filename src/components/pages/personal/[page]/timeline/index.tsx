@@ -202,7 +202,7 @@ function TimelineItem({ data }: { data: unknown }): T_ReactElement {
 					return (
 						<InlineText
 							key={category.id}
-							className="tw-rounded-md tw-border tw-px-2 tw-py-1 tw-text-xs tw-font-bold dfr-border-color-secondary"
+							className="tw-rounded-md tw-border tw-px-2 tw-py-1 tw-text-xs tw-font-bold dfr-border-color-primary"
 						>
 							{category.value}
 						</InlineText>

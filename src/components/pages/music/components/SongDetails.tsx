@@ -73,13 +73,13 @@ function SongDetails({
 			<Category category={song.category} />
 
 			<Block className="tw-mt-2 tw-flex tw-items-center">
-				<Block className="tw-inline-flex tw-items-center tw-justify-center tw-rounded-md tw-border-2 tw-py-0.5 tw-pl-0.5 tw-pr-0.5 dfr-shadow dfr-border-color-secondary md:tw-pl-0 md:tw-pr-0">
+				<Block className="tw-inline-flex tw-items-center tw-justify-center tw-rounded-md tw-border-2 tw-py-0.5 tw-pl-0.5 tw-pr-0.5 dfr-shadow dfr-border-color-primary md:tw-pl-0 md:tw-pr-0">
 					<InlineText className="tw-w-5 tw-text-center tw-text-sm tw-not-italic md:tw-text-xs">
 						{song.country}
 					</InlineText>
 				</Block>
 
-				<Block className="tw-ml-2 tw-inline-block tw-border-l tw-pl-2 dfr-border-color-secondary">
+				<Block className="tw-ml-2 tw-inline-block tw-border-l tw-pl-2 dfr-border-color-primary">
 					<Link
 						variant={Link.variant.SIMPLE}
 						href={song.spotifyUrl}

@@ -322,7 +322,7 @@ function Timer({
 						</Button>
 						<Button
 							variant={Button.variant.SIMPLE}
-							className="tw-h-32 tw-w-32 tw-rounded-full tw-border-4 tw-font-bold tw-uppercase dfr-border-color-secondary"
+							className="tw-h-32 tw-w-32 tw-rounded-full tw-border-4 tw-font-bold tw-uppercase dfr-border-color-primary"
 							onClick={handleStartRoutineItemClick}
 						>
 							{timerStatus === TIMER_STATUS.NOT_STARTED
@@ -333,7 +333,7 @@ function Timer({
 						</Button>
 						<Button
 							variant={Button.variant.SIMPLE}
-							className="tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-full tw-border-2 dfr-border-color-secondary"
+							className="tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-full tw-border-2 dfr-border-color-primary"
 							onClick={handleResetCurrentSetClick}
 						>
 							<Icon

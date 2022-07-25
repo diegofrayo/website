@@ -46,7 +46,7 @@ function Timeline({ timeline, TimelineItem }: T_TimelineProps): T_ReactElement {
 								<Block
 									key={`${generateSlug(groupTitle)}-${item.id}`}
 									className={classNames(
-										"tw-relative tw-px-0 tw-pb-6 tw-text-center last:tw-pb-0 sm:tw-w-1/2 sm:tw-px-4 sm:tw-pb-16 sm:dfr-border-color-gs-black sm:dark:dfr-border-color-secondary",
+										"tw-relative tw-px-0 tw-pb-6 tw-text-center last:tw-pb-0 sm:tw-w-1/2 sm:tw-px-4 sm:tw-pb-16 sm:dfr-border-color-gs-black sm:dark:dfr-border-color-primary",
 										itemsCounter % 2 === 0
 											? "sm:tw-left-2/4 sm:tw-border-l-4 sm:tw-text-left"
 											: "sm:tw-ml-1 sm:tw-border-r-4 sm:tw-text-right",

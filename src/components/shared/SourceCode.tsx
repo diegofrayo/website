@@ -43,7 +43,7 @@ function SourceCode({
 			data-markdown-block
 		>
 			{displaySourceCodeDetails ? (
-				<Block className="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-rounded-t-md tw-border tw-border-b-0 tw-px-2 tw-py-2 tw-font-mono tw-text-sm dfr-border-color-secondary dfr-text-color-bw dark:tw-border-0 dark:dfr-bg-color-tertiary">
+				<Block className="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-rounded-t-md tw-border tw-border-b-0 tw-px-2 tw-py-2 tw-font-mono tw-text-sm dfr-border-color-primary dfr-text-color-bw dark:tw-border-0 dark:dfr-bg-color-tertiary">
 					{isNotEmptyString(codeTitle) ? (
 						<code className="tw-mr-4 tw-flex-1 tw-font-bold">{codeTitle}</code>
 					) : null}
@@ -98,7 +98,7 @@ function SourceCode({
 			</Highlight>
 
 			{displaySourceCodeDetails ? (
-				<Block className="tw-flex tw-flex-col tw-rounded-b-md tw-border tw-border-t-0 tw-p-2 tw-text-sm dfr-border-color-secondary dark:tw-border-0  dark:dfr-bg-color-tertiary sm:tw-flex-row sm:tw-justify-end">
+				<Block className="tw-flex tw-flex-col tw-rounded-b-md tw-border tw-border-t-0 tw-p-2 tw-text-sm dfr-border-color-primary dark:tw-border-0  dark:dfr-bg-color-tertiary sm:tw-flex-row sm:tw-justify-end">
 					{isNotEmptyString(sourceURL) ? (
 						<React.Fragment>
 							<Link

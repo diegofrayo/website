@@ -47,7 +47,7 @@ function Stats({
 			}}
 		>
 			<Block className="tw-text-sm">
-				<Block className="tw-border tw-border-b-0 dfr-border-color-secondary">
+				<Block className="tw-border tw-border-b-0 dfr-border-color-primary">
 					<Stats.Item
 						label="rutina"
 						value={name}
@@ -63,7 +63,7 @@ function Stats({
 				</Block>
 				<Space size={1} />
 
-				<Block className="tw-border tw-border-b-0 dfr-border-color-secondary">
+				<Block className="tw-border tw-border-b-0 dfr-border-color-primary">
 					<Stats.Item
 						label="# ejercicios completados"
 						value={data.totalCompletedExercises}
@@ -79,7 +79,7 @@ function Stats({
 				</Block>
 				<Space size={1} />
 
-				<Block className="tw-border tw-border-b-0 dfr-border-color-secondary">
+				<Block className="tw-border tw-border-b-0 dfr-border-color-primary">
 					<Stats.Item
 						label="hora inicio rutina"
 						value={startTime.formatted}
@@ -148,12 +148,12 @@ Stats.Item = function StatsItem({ label, value }: { label: string; value: string
 	return (
 		<Block className="tw-flex tw-justify-between">
 			<InlineText
-				className="tw-w-2/4 tw-border-b tw-py-1 tw-px-2 dfr-border-color-secondary"
+				className="tw-w-2/4 tw-border-b tw-py-1 tw-px-2 dfr-border-color-primary"
 				is="strong"
 			>
 				{label}
 			</InlineText>
-			<InlineText className="tw-flex tw-w-2/4 tw-items-center tw-justify-end tw-border-b tw-border-l tw-py-1 tw-px-2 tw-text-right dfr-border-color-secondary">
+			<InlineText className="tw-flex tw-w-2/4 tw-items-center tw-justify-end tw-border-b tw-border-l tw-py-1 tw-px-2 tw-text-right dfr-border-color-primary">
 				{value}
 			</InlineText>
 		</Block>

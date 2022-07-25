@@ -60,7 +60,7 @@ function useController({
 				? responsive
 				: classNames(composeSizeClassNames(), isVerticalOrientation && "tw-inline-block"),
 			variant === VARIANTS.DEFAULT && "tw-border-0",
-			variant === VARIANTS.DASHED && "dfr-border-color-secondary tw-border-dashed",
+			variant === VARIANTS.DASHED && "dfr-border-color-primary tw-border-dashed",
 			className,
 		);
 	}

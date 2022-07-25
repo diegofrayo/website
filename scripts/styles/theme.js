@@ -84,14 +84,21 @@ const MY_THEME = {
 	["bg-color-secondary"]: {
 		property: "backgroundColor",
 		value: {
-			light: colors.slate["50"],
+			light: colors.gray["50"],
 			dark: "#1F2328",
 		},
 	},
 	["bg-color-tertiary"]: {
 		property: "backgroundColor",
 		value: {
-			light: colors.gray["300"],
+			light: colors.gray["100"],
+			dark: colors.gray["700"],
+		},
+	},
+	["border-color-primary"]: {
+		property: "borderColor",
+		value: {
+			light: colors.gray["200"],
 			dark: colors.gray["700"],
 		},
 	},
@@ -105,15 +112,8 @@ const MY_THEME = {
 	["text-color-secondary"]: {
 		property: "color",
 		value: {
-			light: colors.gray["500"],
+			light: colors.gray["400"],
 			dark: colors.gray["500"],
-		},
-	},
-	["border-color-secondary"]: {
-		property: "borderColor",
-		value: {
-			light: colors.gray["300"],
-			dark: colors.gray["700"],
 		},
 	},
 
@@ -121,7 +121,7 @@ const MY_THEME = {
 	["text-color-links"]: {
 		property: "color",
 		value: {
-			light: colors.amber["500"],
+			light: colors.amber["600"],
 			dark: colors.red["400"],
 		},
 	},

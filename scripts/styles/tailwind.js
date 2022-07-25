@@ -1,4 +1,4 @@
-require("./css-vars");
+// require("./css-vars");
 const plugin = require("tailwindcss/plugin");
 const MY_THEME = require("./theme");
 

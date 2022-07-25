@@ -32,7 +32,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
 
 	return (
 		<Block
-			className="dfr-Playground tw-flex tw-min-h-[200px] tw-flex-col tw-border-4 dfr-border-color-gs-black dfr-bg-color-wb dark:dfr-border-color-secondary"
+			className="dfr-Playground tw-flex tw-min-h-[200px] tw-flex-col tw-border-4 dfr-border-color-gs-black dfr-bg-color-wb dark:dfr-border-color-primary"
 			data-markdown-block
 		>
 			<Block
@@ -49,7 +49,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
 					<Component />
 				)}
 			</Block>
-			<Block className="tw-flex-no-wrap tw-flex tw-border-t-4 tw-text-sm dfr-border-color-gs-black dark:dfr-border-color-secondary">
+			<Block className="tw-flex-no-wrap tw-flex tw-border-t-4 tw-text-sm dfr-border-color-gs-black dark:dfr-border-color-primary">
 				<Button
 					variant={Button.variant.SIMPLE}
 					className={classNames(

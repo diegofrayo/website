@@ -22,7 +22,7 @@ export function MFMAM_GitHubRepo({ name, url, description }: T_GitHubRepoProps):
 		>
 			<Link
 				variant={Link.variant.SIMPLE}
-				className="tw-relative tw-flex tw-items-center tw-rounded-md tw-border tw-p-4 tw-pr-8 dfr-border-color-secondary dark:dfr-bg-color-secondary sm:tw-inline-flex"
+				className="tw-relative tw-flex tw-items-center tw-rounded-md tw-border tw-p-4 tw-pr-8 dfr-border-color-primary dark:dfr-bg-color-secondary sm:tw-inline-flex"
 				href={url}
 				isExternalLink
 			>

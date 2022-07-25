@@ -72,7 +72,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
 					className="tw-mb-8"
 				/>
 
-				<Block className="tw-mb-8 tw-border-4 dfr-border-color-secondary">
+				<Block className="tw-mb-8 tw-border-4 dfr-border-color-primary">
 					<Block className="tw-p-4 tw-leading-0 dfr-bg-color-tertiary">
 						<Button
 							variant={Button.variant.SIMPLE}
@@ -113,7 +113,10 @@ function SongPage(props: T_PageProps): T_ReactElement {
 						</Button>
 					</Block>
 
-					<Block className="tw-max-w-full tw-p-4">
+					<Block
+						className="tw-max-w-full tw-border-y-4 tw-p-4
+ dfr-border-color-primary"
+					>
 						<Block
 							className="tw-overflow-x-scroll tw-pb-1"
 							style={{ fontSize: `${fontSize}rem` }}
@@ -125,7 +128,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
 						</Block>
 					</Block>
 
-					<Block className="tw-border-t-4 tw-p-4 dfr-border-color-secondary">
+					<Block className="tw-p-4 dfr-bg-color-tertiary">
 						<Text className="tw-font-bold">
 							{t("page:chords_title")} [{song.chords.length}]
 						</Text>

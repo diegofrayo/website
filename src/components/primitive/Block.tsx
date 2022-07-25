@@ -21,9 +21,9 @@ const Block = React.forwardRef<HTMLDivElement, T_BlockProps>(function Block(
 		return classNames(
 			className,
 			variant === "FEATURED" &&
-				"dfr-bg-color-secondary dfr-border-color-secondary tw-border tw-border-l-4 tw-p-4",
+				"dfr-bg-color-secondary dfr-border-color-primary tw-border tw-border-l-4 tw-p-4",
 			variant === "QUOTE" &&
-				"dfr-border-color-secondary dfr-text-color-secondary tw-px-4 tw-border-l-4 tw-italic",
+				"dfr-border-color-primary dfr-text-color-secondary tw-px-4 tw-border-l-4 tw-italic",
 		);
 	}
 

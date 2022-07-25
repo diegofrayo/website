@@ -36,7 +36,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 		>
 			<Block
 				is="main"
-				className="tw-relative tw-mx-auto tw-border-x tw-px-8 tw-py-16 dfr-max-w-layout dfr-border-color-secondary print:tw-w-full print:tw-border-0"
+				className="tw-relative tw-mx-auto tw-border-x tw-px-8 tw-py-16 dfr-max-w-layout dfr-border-color-primary print:tw-w-full print:tw-border-0"
 			>
 				<GoBack className="tw-absolute tw-top-0 print:tw-hidden" />
 				<PrintBlock>
@@ -47,7 +47,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 						<Image
 							src={resume.profilePhoto}
 							alt="Profile photo"
-							className="tw-mx-auto tw-h-32 tw-w-32 tw-rounded-full dfr-shadow"
+							className="tw-mx-auto tw-hidden tw-h-32 tw-w-32 tw-rounded-full dfr-shadow"
 						/>
 						<Space size={2} />
 
