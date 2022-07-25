@@ -100,9 +100,8 @@ function BlogEntry({
 		return locales.find((l) => l === locale) || locales[0];
 	}
 
-	// render
 	return (
-		<article className="root tw-my-8 tw-w-full dfr-shadow sm:tw-w-5/12">
+		<article className="root dfr-shadow tw-my-8 tw-w-full sm:tw-w-5/12">
 			<Link
 				href={`${ROUTES.BLOG}/${slug}`}
 				variant={Link.variant.SIMPLE}
@@ -115,7 +114,7 @@ function BlogEntry({
 				/>
 				<Block
 					is="footer"
-					className="tw-relative tw-flex-1 tw-pt-2 tw-pb-8 dfr-bg-color-secondary"
+					className="tw-relative tw-flex-1 tw-pt-2 tw-pb-8 dark:dfr-bg-color-secondary"
 				>
 					<Title
 						is="h1"

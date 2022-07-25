@@ -56,7 +56,7 @@ export default function RoutineItem({
 		<Block
 			is="article"
 			className={classNames(
-				"dfr-RoutineItem tw-mb-3 tw-border dfr-shadow last:tw-mb-0",
+				"dfr-RoutineItem dfr-shadow tw-mb-3 tw-border last:tw-mb-0",
 				borderStyles,
 			)}
 		>
@@ -73,9 +73,12 @@ export default function RoutineItem({
 			>
 				<Title
 					is="h1"
-					variant={Title.variant.SECONDARY}
+					variant={Title.variant.UNSTYLED}
 					size={Title.size.SM}
-					className={classNames("tw-min-w-0 tw-flex-1", isTitleTruncated && "tw-truncate")}
+					className={classNames(
+						"tw-min-w-0 tw-flex-1 dfr-text-color-gs-black",
+						isTitleTruncated && "tw-truncate",
+					)}
 					onClick={() => {
 						setIsTitleTruncated((currentValue) => !currentValue);
 					}}

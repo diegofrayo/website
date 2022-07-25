@@ -46,7 +46,6 @@ export function MFMAM_GitHubRepo({ name, url, description }: T_GitHubRepoProps):
 				<Icon
 					icon={Icon.icon.LINK}
 					wrapperClassName="tw-absolute tw-top-2 tw-right-2"
-					color="dfr-text-color-gs-black"
 				/>
 			</Link>
 		</Block>

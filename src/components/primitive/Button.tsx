@@ -32,7 +32,6 @@ function Button({
 		);
 	}
 
-	// render
 	return (
 		<button
 			type={type === "button" ? "button" : "submit"}

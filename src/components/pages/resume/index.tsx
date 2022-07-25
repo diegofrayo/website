@@ -24,7 +24,6 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 	// hooks
 	const { t } = useTranslation();
 
-	// render
 	return (
 		<Page
 			config={{
@@ -36,7 +35,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 		>
 			<Block
 				is="main"
-				className="tw-relative tw-mx-auto tw-border-x tw-px-8 tw-py-16 dfr-max-w-layout dfr-border-color-primary print:tw-w-full print:tw-border-0"
+				className="my-shadow tw-relative tw-mx-auto tw-px-8 tw-py-16 dfr-max-w-layout print:tw-w-full print:tw-border-0"
 			>
 				<GoBack className="tw-absolute tw-top-0 print:tw-hidden" />
 				<PrintBlock>
@@ -47,9 +46,8 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 						<Image
 							src={resume.profilePhoto}
 							alt="Profile photo"
-							className="tw-mx-auto tw-hidden tw-h-32 tw-w-32 tw-rounded-full dfr-shadow"
+							className="dfr-shadow tw-mx-auto tw-mb-4 tw-hidden tw-h-32 tw-w-32 tw-rounded-full"
 						/>
-						<Space size={2} />
 
 						<Title is="h1">{resume.fullName}</Title>
 						<Space size={2} />
@@ -119,9 +117,12 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 				<Block>
 					<PrintBlock>
 						<ResumeBlock title="Summary">
-							<pre className="tw-whitespace-pre-line tw-break-words dfr-font-family md:tw-text-justify">
+							<Text
+								is="pre"
+								className="tw-whitespace-pre-line tw-break-words dfr-font-family md:tw-text-justify"
+							>
 								{resume.summary}
-							</pre>
+							</Text>
 						</ResumeBlock>
 						<ResumeBlock title="Education">
 							<Block>
@@ -285,9 +286,12 @@ function ExperienceTimelineItem({
 				</Text>
 				<Space size={2} />
 
-				<pre className="tw-whitespace-pre-line tw-break-words dfr-font-family print:tw-text-sm md:tw-text-justify">
+				<Text
+					is="pre"
+					className="tw-whitespace-pre-line tw-break-words dfr-font-family print:tw-text-sm md:tw-text-justify"
+				>
 					{description}
-				</pre>
+				</Text>
 			</Block>
 		</Block>
 	);

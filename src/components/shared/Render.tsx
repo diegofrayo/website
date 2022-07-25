@@ -31,7 +31,7 @@ function Render<G_Data>({
 
 	if (error) {
 		return (
-			<Text className="dfr-text-colorful-secondary-100 tw-p-2 tw-text-center tw-text-sm">
+			<Text className="tw-p-2 tw-text-center tw-text-sm tw-text-red-600">
 				<Emoji className="tw-mr-2">😵</Emoji>
 				<InlineText>{getErrorMessage(Error)}</InlineText>
 			</Text>

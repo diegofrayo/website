@@ -147,7 +147,7 @@ function TimerPage(): T_ReactElement {
 												>
 													<Icon
 														icon={Icon.icon.X}
-														color="dfr-text-colorful-secondary-100"
+														color="tw-text-red-600"
 													/>
 													<InlineText className="tw-ml-1 tw-align-middle">
 														Cancelar rutina

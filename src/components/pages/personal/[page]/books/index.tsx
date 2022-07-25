@@ -11,7 +11,6 @@ function Books(): T_ReactElement {
 	// hooks
 	const { isLoading, error, data } = useQuery<T_Book[]>("books", BooksService.fetchBooks);
 
-	// render
 	return (
 		<Render
 			isLoading={isLoading}
@@ -27,7 +26,7 @@ function Books(): T_ReactElement {
 									key={id}
 									variant={Link.variant.UNSTYLED}
 									href={url}
-									className="dfr-border-color-dark-strong tw-relative tw-mx-2 tw-mb-6 tw-h-64 tw-w-48 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 tw-shadow-lg tw-duration-500 hover:tw-translate-x-1 hover:tw--translate-y-1 hover:tw-rotate-0 hover:tw-opacity-75 hover:tw-shadow-2xl dark:dfr-border-color-primary sm:tw--rotate-1"
+									className="tw-relative tw-mx-2 tw-mb-6 tw-h-64 tw-w-48 tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 tw-shadow-lg tw-duration-500 dfr-border-color-bw hover:tw-translate-x-1 hover:tw--translate-y-1 hover:tw-rotate-0 hover:tw-opacity-75 hover:tw-shadow-2xl sm:tw--rotate-1"
 									isExternalLink
 								>
 									<Block
@@ -51,18 +50,18 @@ function Books(): T_ReactElement {
 											size={24}
 										/>
 
-										<Block className="tw-flex tw-w-full tw-flex-col tw-items-stretch tw-self-end tw-rounded-tr-lg tw-bg-opacity-70 tw-p-2 dfr-bg-color-wb">
+										<Block className="tw-flex tw-w-full tw-flex-col tw-items-stretch tw-self-end tw-rounded-tr-lg tw-bg-opacity-70 tw-p-2 dfr-bg-color-bw">
 											<Title
 												is="h1"
 												variant={Title.variant.UNSTYLED}
-												className="tw-mb-0.5 tw-break-normal tw-uppercase tw-leading-tight dfr-text-color-gs-black"
+												className="tw-mb-0.5 tw-break-words tw-uppercase tw-leading-tight dfr-text-color-wb"
 											>
 												{title}
 											</Title>
-											<Text className="tw-mb-2 tw-text-sm tw-font-bold tw-capitalize tw-italic tw-leading-none dfr-text-color-gs-700">
+											<Text className="tw-mb-4 tw-text-sm tw-font-bold tw-capitalize tw-italic tw-leading-none dfr-text-color-secondary">
 												{author}
 											</Text>
-											<Text className="tw-text-right tw-text-xs tw-font-bold tw-leading-none dfr-text-color-gs-black">
+											<Text className="tw-text-right tw-text-xs tw-font-bold tw-leading-none dfr-text-color-wb">
 												<Emoji className="tw-mr-1">🗓</Emoji>
 												<InlineText>{year}</InlineText>
 											</Text>

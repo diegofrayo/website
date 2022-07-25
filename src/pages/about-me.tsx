@@ -19,7 +19,6 @@ function AboutMePage({ pageMDXContent }: T_AboutMePageProps): T_ReactElement {
 	// hooks
 	const { t } = useTranslation();
 
-	// render
 	return (
 		<Page
 			config={{

@@ -58,7 +58,6 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 		setWhatsAppOption(whatsAppOption === "api" ? "web" : "api");
 	}
 
-	// render
 	if (isServer()) {
 		return null;
 	}
@@ -190,7 +189,6 @@ function ContactsGroup({
 	collapsibleOpened,
 	whatsAppOption,
 }: T_ContactsGroupProps): T_ReactElement {
-	// render
 	return (
 		<div className="root tw-mb-8 last:tw-mb-0">
 			<Collapsible
@@ -268,7 +266,6 @@ function ContactPhone({ phone, country }: T_ContactPhoneProps): T_ReactElementNu
 	const phoneWithoutCode = isNotEmptyString(phone) ? phone.split(" ")[1] : "";
 	const isPhoneFromColombia = country === "CO";
 
-	// render
 	if (isEmptyString(phoneWithoutCode)) {
 		return null;
 	}
@@ -306,7 +303,7 @@ function ContactLinks({
 								icon={Icon.icon.WHATSAPP}
 								size={24}
 							/>
-							<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-green-500">
+							<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-green-500 dark:tw-text-green-400">
 								{item.label}
 							</InlineText>
 						</WhastAppButton>
@@ -347,10 +344,10 @@ function ContactLinks({
 						>
 							<Icon
 								icon={Icon.icon.PHONE}
-								size={22}
-								color="tw-text-blue-700"
+								size={24}
+								color="tw-text-blue-700 dark:tw-text-blue-500"
 							/>
-							<InlineText className="tw-mx-1 tw-text-sm tw-italic tw-text-blue-700">
+							<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-blue-700 dark:tw-text-blue-500">
 								{item.label}
 							</InlineText>
 						</PhoneButton>
@@ -363,8 +360,8 @@ function ContactLinks({
 				>
 					<Icon
 						icon={Icon.icon.PHONE}
-						size={22}
-						color="tw-text-blue-700"
+						size={24}
+						color="tw-text-blue-700 dark:tw-text-blue-500"
 					/>
 				</PhoneButton>
 			) : null}
@@ -409,7 +406,6 @@ function WhastAppButton({
 		return `https://${whatsAppOption}.whatsapp.com/send?${url.toString()}`;
 	}
 
-	// render
 	if (isColombianHomePhoneNumber || isAssistanceServiceNumber) {
 		return null;
 	}
@@ -440,7 +436,6 @@ function PhoneButton({ children, phone, country }: T_PhoneButtonProps): T_ReactE
 		return `tel:${phone.split(" ").slice(1).join("").trim()}`;
 	}
 
-	// render
 	if (isPhoneNumberFromColombia) {
 		return (
 			<Link

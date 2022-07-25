@@ -38,7 +38,6 @@ function MainLayout({
 		return `${urlParts.slice(0, urlParts.length - 1).join("/")}/`;
 	}
 
-	// render
 	return (
 		<Block is="main">
 			<Block className="tw-mx-auto tw-px-8 dfr-max-w-layout">
@@ -88,7 +87,6 @@ function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement
 	// hooks
 	const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
-	// render
 	return (
 		<Block
 			is="footer"
@@ -97,7 +95,7 @@ function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement
 			<Block className="tw-mx-auto tw-px-8 tw-text-center dfr-max-w-layout dfr-text-color-gs-400">
 				<Block className="tw-pt-16 tw-pb-8">
 					<Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase">contact me</Text>
-					<Block className="tw-mt-2 tw-inline-block tw-border-t tw-pt-2 dfr-border-color-gs-700">
+					<Block className="tw-mt-2 tw-inline-block tw-pt-2">
 						<Block className="tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
 							<FooterIcon
 								url={WEBSITE_METADATA.social.linkedin}
@@ -173,7 +171,6 @@ function GoToTopButton(): T_ReactElementNullable {
 		setScrollPosition(0);
 	}
 
-	// render
 	if (hasToDisplayTheButton) {
 		return (
 			<Button

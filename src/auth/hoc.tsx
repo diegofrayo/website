@@ -36,7 +36,6 @@ function withAuth<G_ComponentProps = T_UnknownObject>(
 			setIsUserLoggedIn(true);
 		}
 
-		// render
 		if (isUserLoggedIn) {
 			return <Component {...props} />;
 		}

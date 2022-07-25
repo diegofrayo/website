@@ -9,7 +9,6 @@ function ErrorPage(): T_ReactElement {
 	// hooks
 	const { t } = useTranslation();
 
-	// render
 	return (
 		<Page
 			config={{

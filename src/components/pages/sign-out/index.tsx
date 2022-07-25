@@ -16,7 +16,6 @@ function SignOutPage(): T_ReactElement {
 		}, 2000);
 	});
 
-	// render
 	return (
 		<Page
 			config={{

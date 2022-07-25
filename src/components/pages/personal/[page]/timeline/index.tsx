@@ -52,10 +52,10 @@ function TimelinePage(): T_ReactElement {
 											key={category.id}
 											variant={Button.variant.SIMPLE}
 											className={classNames(
-												"tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm tw-font-bold",
+												"tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm",
 												category.id === selectedCategory
-													? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
-													: "dfr-bg-color-primary",
+													? "tw-bg-yellow-400 tw-font-bold dark:tw-bg-yellow-600 dark:dfr-text-color-gs-white"
+													: "dfr-bg-color-tertiary",
 											)}
 											onClick={handleSelectFilterClick(category.id)}
 										>

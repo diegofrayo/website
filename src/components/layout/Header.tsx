@@ -23,7 +23,6 @@ function Header(): T_ReactElement {
 	// hooks
 	const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
-	// render
 	return (
 		<Block
 			is="header"
@@ -141,7 +140,6 @@ function MainMenu(): T_ReactElement {
 		];
 	}
 
-	// render
 	return (
 		<div
 			className="root tw-relative tw-inline-block print:tw-hidden"
@@ -160,7 +158,7 @@ function MainMenu(): T_ReactElement {
 			{showMenu ? (
 				<List
 					is="menu"
-					className="tw-absolute tw-top-full tw-left-[-65px] tw-z-40 tw-block tw-w-40 tw-overflow-hidden dfr-shadow"
+					className="dfr-shadow tw-absolute tw-top-full tw-left-[-65px] tw-z-40 tw-block tw-w-40 tw-overflow-hidden"
 				>
 					{items.map((item) => {
 						const isLinkActive =
@@ -208,7 +206,6 @@ function SettingsMenu(): T_ReactElement {
 		toggleShowMenu();
 	}
 
-	// render
 	return (
 		<Block
 			className="tw-relative print:tw-hidden"
@@ -227,7 +224,7 @@ function SettingsMenu(): T_ReactElement {
 			{showMenu ? (
 				<List
 					is="menu"
-					className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden dfr-shadow"
+					className="dfr-shadow tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden"
 				>
 					<ToggleThemeMenuItem />
 					<RefreshAPPMenuItem />
@@ -308,7 +305,6 @@ const RefreshAPPMenuItem = withAuthenticationRequired(function RefreshAPPMenuIte
 		window.location.reload();
 	}
 
-	// render
 	if (hasToRender) {
 		return (
 			<SettingsMenuItem title="Refresh APP and Cache">
@@ -342,7 +338,6 @@ const ISRMenuItem = withAuthenticationRequired(function ISRMenuItem() {
 		}
 	}
 
-	// render
 	return (
 		<SettingsMenuItem title="ISR on-demand">
 			<Button
@@ -371,7 +366,6 @@ const EnvironmentMenuItem = withAuthenticationRequired(function EnvironmentMenuI
 		);
 	});
 
-	// render
 	return (
 		<SettingsMenuItem title={`Open in "${isDevelopmentEnvironment() ? "prod" : "dev"}"`}>
 			<Link

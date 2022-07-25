@@ -26,7 +26,6 @@ function PersonalPage({ page }: T_PersonalPageProps): T_ReactElement {
 	// vars
 	const pageConfig = PERSONAL_PAGES_COMPONENTS.find((item) => item.slug === page);
 
-	// render
 	if (isUndefined(pageConfig)) {
 		return <Redirect href={ROUTES.ERROR_404} />;
 	}

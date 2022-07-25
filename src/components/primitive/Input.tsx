@@ -43,7 +43,7 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
 				ref={ref}
 				id={id}
 				className={classNames(
-					"dfr-Input tw-block tw-w-full tw-resize-none tw-rounded-none tw-border tw-p-2 tw-shadow-none dfr-bg-color-secondary dfr-border-color-primary",
+					"dfr-Input tw-block tw-w-full tw-resize-none tw-rounded-none tw-border tw-p-2 tw-shadow-none dfr-bg-color-tertiary dfr-border-color-primary",
 					className,
 				)}
 				{...rest}

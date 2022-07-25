@@ -27,7 +27,6 @@ function RateContent(): T_ReactElement {
 		handleAnswerClick,
 	} = useController();
 
-	// render
 	return (
 		<Block className="tw-text-center print:tw-hidden">
 			<Text className="tw-text-sm tw-font-bold">{t("common:useful_question")}</Text>

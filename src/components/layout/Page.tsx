@@ -242,7 +242,6 @@ function AnalyticsDisabledFlag(): T_ReactElementNullable {
 		setIsAnalyticsDisabled(AnalyticsService.isAnalyticsDisabled());
 	});
 
-	// render
 	if (isAnalyticsDisabled) {
 		return (
 			<Flag

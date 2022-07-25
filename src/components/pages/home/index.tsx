@@ -43,7 +43,6 @@ function Home({ data }: T_HomeProps): T_ReactElement {
 	// hooks
 	const { t } = useTranslation();
 
-	// render
 	return (
 		<Page
 			config={{
@@ -56,7 +55,7 @@ function Home({ data }: T_HomeProps): T_ReactElement {
 			<MainLayout title="">
 				<Block className="tw-mx-auto tw-w-72 tw-max-w-full">
 					<Featured content={data.featured} />
-					<Block className="tw-overflow-hidden tw-rounded-t-md dfr-shadow">
+					<Block className="dfr-shadow tw-overflow-hidden tw-rounded-t-md">
 						<Room
 							tvSong={data.song}
 							frameImage={data.photo}
@@ -84,13 +83,12 @@ function Featured({ content }: T_Featured): T_ReactElement {
 		};
 	}
 
-	// render
 	return (
 		<Block
 			is="section"
-			className="tw-relative tw-hidden tw-rounded-t-md tw-border-8 tw-border-yellow-700 tw-bg-green-700 tw-p-4 dfr-shadow"
+			className="dfr-shadow tw-relative tw-hidden tw-rounded-t-md tw-border-8 tw-border-yellow-700 tw-bg-green-700 tw-p-4"
 		>
-			<Emoji className="tw-absolute tw--top-4 tw--left-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-shadow dfr-bg-color-wb">
+			<Emoji className="dfr-shadow tw-absolute tw--top-4 tw--left-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-bg-color-wb">
 				📌
 			</Emoji>
 			<Title
@@ -133,7 +131,7 @@ type T_RoomProps = {
 function Room({ tvSong, frameImage }: T_RoomProps): T_ReactElement {
 	return (
 		<Block
-			className="tw-border-b-4 tw-border-gray-500 tw-bg-gray-100 tw-px-6 tw-pt-16 dark:tw-border-0 dark:tw-bg-gray-700 sm:tw-px-10"
+			className="tw-border-b-4 tw-border-yellow-900 tw-bg-gray-100 tw-px-6 tw-pt-16 dark:tw-border-0 dark:tw-bg-gray-700 sm:tw-px-10"
 			style={{ backgroundImage: "url('/static/images/textures/arabesque.png')" }}
 		>
 			<PictureFrame photo={frameImage} />
@@ -161,7 +159,6 @@ function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElementNullable {
 		AnalyticsService.trackEvent("HOME|PICTURE_FRAME", { action: "CLICK" });
 	}
 
-	// render
 	return (
 		<Block
 			className={classNames(
@@ -284,7 +281,6 @@ function TV({ song }: T_TVProps): T_ReactElement {
 		return document.getElementById("tv-audio") as HTMLAudioElement;
 	}
 
-	// render
 	return (
 		<Block className="dfr-TV tw-relative tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-bg-gradient-to-b tw-from-gray-500 tw-to-gray-700 tw-p-2 dark:tw-from-gray-200 dark:tw-to-gray-400">
 			<Block className="tw-relative tw-h-16 tw-w-16 tw-overflow-hidden">
@@ -478,7 +474,6 @@ function LinkItem({ label, url, className = "" }: T_LinkItemProps): T_ReactEleme
 		AnalyticsService.trackEvent("HOME|DESKTOP", { page: label });
 	}
 
-	// render
 	return (
 		<Link
 			variant={Link.variant.SIMPLE}

@@ -73,7 +73,12 @@ function WhatsApp(): T_ReactElement {
 							checked={!isWebOptionSelected}
 							onChange={onRadioChangeHandler}
 						/>
-						<InlineText>app</InlineText>
+						<InlineText
+							is={!isWebOptionSelected ? "strong" : "span"}
+							className="tw-cursor-pointer"
+						>
+							app
+						</InlineText>
 					</label>
 				</Block>
 				<Block>
@@ -87,14 +92,19 @@ function WhatsApp(): T_ReactElement {
 							checked={isWebOptionSelected}
 							onChange={onRadioChangeHandler}
 						/>
-						<InlineText>web</InlineText>
+						<InlineText
+							is={isWebOptionSelected ? "strong" : "span"}
+							className="tw-cursor-pointer"
+						>
+							web
+						</InlineText>
 					</label>
 				</Block>
 			</Block>
 			<Block className="tw-mt-3 tw-text-left sm:tw-text-center">
 				<Button
 					variant={Button.variant.UNSTYLED}
-					className="tw-inline-block tw-border tw-border-dashed tw-px-1 tw-text-xs tw-italic dfr-border-color-primary"
+					className="tw-inline-block tw-border tw-border-dashed tw-py-1 tw-px-2 tw-text-xs tw-italic dfr-border-color-primary"
 					data-clipboard-text={whatsAppUrl}
 					onClick={handleCopyToClipboardClick}
 				>

@@ -55,10 +55,10 @@ function Films(): T_ReactElement {
 											key={category}
 											variant={Button.variant.SIMPLE}
 											className={classNames(
-												"tw-underlidne tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm",
+												"tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm",
 												category === selectedCategory
-													? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
-													: "dfr-bg-color-primary",
+													? "tw-bg-yellow-400 tw-font-bold dark:tw-bg-yellow-600 dark:dfr-text-color-gs-white"
+													: "dfr-bg-color-tertiary",
 											)}
 											onClick={handleSelectFilterClick(category)}
 										>
@@ -85,8 +85,8 @@ function Films(): T_ReactElement {
 									className={classNames(
 										"tw-underlidne tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm",
 										isAddedDateFilterEnabled
-											? "tw-bg-yellow-400 dark:tw-bg-yellow-600"
-											: "dfr-bg-color-primary",
+											? "tw-bg-yellow-400 tw-font-bold dark:tw-bg-yellow-600 dark:dfr-text-color-gs-white"
+											: "dfr-bg-color-tertiary",
 									)}
 									onClick={handleToggleOrderByFilterClick}
 								>
@@ -145,7 +145,7 @@ function Films(): T_ReactElement {
 													size={24}
 												/>
 
-												<Block className="tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-70 tw-p-2 dfr-bg-color-wb">
+												<Block className="tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-70 tw-p-2 dfr-bg-color-bw">
 													{source === "imdb" ? (
 														<Image
 															src="/static/images/misc/imdb.png"
@@ -170,11 +170,11 @@ function Films(): T_ReactElement {
 														<Title
 															is="h1"
 															variant={Title.variant.UNSTYLED}
-															className="tw-mb-2 tw-break-normal tw-uppercase tw-leading-tight dfr-text-color-gs-black"
+															className="tw-mb-2 tw-break-words tw-uppercase tw-leading-tight dfr-text-color-wb"
 														>
 															{title}
 														</Title>
-														<Text className="tw-text-sm tw-font-bold tw-lowercase tw-italic tw-leading-none dfr-text-color-gs-700">
+														<Text className="tw-text-sm tw-font-bold tw-lowercase tw-italic tw-leading-none dfr-text-color-secondary">
 															{type}
 														</Text>
 													</Block>

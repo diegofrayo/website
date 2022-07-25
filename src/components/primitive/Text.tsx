@@ -3,16 +3,34 @@ import classNames from "classnames";
 
 import type { T_HTMLElementAttributes, T_ReactChildren, T_ReactElement } from "~/types";
 
-type T_TextProps = T_HTMLElementAttributes["p"];
+type T_TextProps = T_HTMLElementAttributes["p"] & { is?: "p" | "pre" };
 
-function Text({ children, className = "", ...rest }: T_TextProps): T_ReactElement {
+function Text({ children, className = "", is = "p", ...rest }: T_TextProps): T_ReactElement {
+	/*
+	 * TODO: Typing issue
+	 * A possible solution: https://www.benmvp.com/blog/forwarding-refs-polymorphic-react-component-typescript
+	 */
+	// @ts-ignore
+	const Element = is as T_ReactFunctionComponent;
+
+	if (is === "p") {
+		return (
+			<Element
+				className={classNames("dfr-Text--plain", className)}
+				{...rest}
+			>
+				{parseChildren(children)}
+			</Element>
+		);
+	}
+
 	return (
-		<p
-			className={classNames("dfr-Text", className)}
+		<Element
+			className={classNames("dfr-Text--preformatted tw-max-w-full", className)}
 			{...rest}
 		>
-			{parseChildren(children)}
-		</p>
+			{children}
+		</Element>
 	);
 }
 

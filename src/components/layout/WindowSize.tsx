@@ -13,7 +13,6 @@ function WindowSize(): T_ReactElement {
 		setSize([window.innerWidth, window.innerHeight]);
 	});
 
-	// render
 	return (
 		<div className="root tw-fixed tw-bottom-0 tw-left-0 tw-cursor-pointer tw-bg-opacity-50 tw-p-3 tw-font-bold dfr-text-color-gs-white dfr-bg-color-bw">
 			<InlineText>{size.join("x")} | </InlineText>

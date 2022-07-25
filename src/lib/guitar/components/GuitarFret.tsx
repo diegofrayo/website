@@ -122,7 +122,9 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 									<React.Fragment>
 										<String />
 										{(musicNote as I_BarreMusicNote)?.barre >= guitarString && (
-											<InlineText className="tw-h-full tw-border-4 dfr-border-color-gs-white" />
+											<Block className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-font-bold tw-leading-0 dfr-bg-color-gs-white dfr-text-color-gs-black">
+												1
+											</Block>
 										)}
 										<String />
 									</React.Fragment>

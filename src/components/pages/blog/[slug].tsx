@@ -85,7 +85,6 @@ function BlogPostDetails({
 	// hooks
 	const { t } = useTranslation();
 
-	// render
 	return (
 		<Block className="tw-flex tw-flex-col tw-items-center tw-justify-center sm:tw-flex-row">
 			{isPublished ? (
@@ -158,7 +157,6 @@ const BlogPostDetailsItemLink = withSafeRendering(
 			)}`;
 		}
 
-		// render
 		return (
 			<BlogPostDetailsItem
 				is={Link}

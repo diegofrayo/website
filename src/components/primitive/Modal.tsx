@@ -21,7 +21,6 @@ function Modal({
 	// hooks
 	useToggleBodyScroll(visible);
 
-	// render
 	if (visible) {
 		return (
 			<Backdrop
@@ -63,7 +62,6 @@ function Backdrop({ children, className, onCloseHandler }: T_BackdropProps): T_R
 		});
 	});
 
-	// render
 	return (
 		<dialog
 			className={className}

@@ -1,13 +1,12 @@
 body {
 	--dfr-max-w-layout: 768px;
 	--dfr-font-family: "Mulish", monospace;
-	--dfr-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
 	--dfr-bg-color-primary: #fff;
 	--dfr-bg-color-secondary: #f9fafb;
 	--dfr-bg-color-tertiary: #f3f4f6;
 	--dfr-border-color-primary: #e5e7eb;
 	--dfr-text-color-primary: rgba(75, 85, 99, 1);
-	--dfr-text-color-secondary: rgba(156, 163, 175, 1);
+	--dfr-text-color-secondary: rgba(161, 161, 170, 1);
 	--dfr-text-color-links: rgba(217, 119, 6, 1);
 	--dfr-text-color-inline-code: rgba(220, 38, 38, 1);
 	--dfr-bg-color-gs-white: #fff;
@@ -55,8 +54,6 @@ body {
 }
 
 .tw-dark body {
-	--dfr-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-		rgb(31, 41, 55) 0px 1px 2px 0px;
 	--dfr-bg-color-primary: #1a1e23;
 	--dfr-bg-color-secondary: #1f2328;
 	--dfr-bg-color-tertiary: #374151;

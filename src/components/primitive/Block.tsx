@@ -27,7 +27,6 @@ const Block = React.forwardRef<HTMLDivElement, T_BlockProps>(function Block(
 		);
 	}
 
-	// render
 	return (
 		<Tag
 			className={composeClassName()}

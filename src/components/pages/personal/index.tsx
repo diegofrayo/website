@@ -12,7 +12,6 @@ function PersonalPage(): T_ReactElement {
 	// vars
 	const PAGE_TITLE = "Personal";
 
-	// render
 	return (
 		<Page
 			config={{

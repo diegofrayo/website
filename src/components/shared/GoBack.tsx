@@ -22,7 +22,6 @@ function GoBack({ className, withConfirmation = false }: T_GoBackProps): T_React
 		}
 	}
 
-	// render
 	return (
 		<Block
 			className={classNames(

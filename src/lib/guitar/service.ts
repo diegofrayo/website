@@ -137,7 +137,8 @@ class GuitarService {
 		const chords = {};
 		const parsedContent = songContent
 			.split("\n")
-			.map((line) => {
+			.map((line, index, array) => {
+				const isLastLine = array.length - 1 === index;
 				let parsedTextLine = line;
 
 				if (line === "") {
@@ -162,6 +163,7 @@ class GuitarService {
 										replaceExactly: index > 0,
 										chords,
 										lastLineParsedIsBlank,
+										isLastLine,
 									});
 								});
 						} else {
@@ -171,12 +173,13 @@ class GuitarService {
 								textLineItems,
 								chords,
 								lastLineParsedIsBlank,
+								isLastLine,
 							});
 						}
 					});
 
 				lastLineParsedIsBlank = false;
-				return this.lineToHTML(parsedTextLine);
+				return this.lineToHTML(replaceAll(parsedTextLine, "%", ""));
 			})
 			.join("\n");
 
@@ -233,8 +236,9 @@ class GuitarService {
 		replaceExactly = false,
 		chords,
 		lastLineParsedIsBlank,
+		isLastLine,
 	}) {
-		const chordHTML = this.chordToHTML(chord, lastLineParsedIsBlank);
+		const chordHTML = this.chordToHTML(chord, lastLineParsedIsBlank, isLastLine);
 
 		if (this.lineContainsAChord(chordHTML)) {
 			chords[chord] = chord;
@@ -263,7 +267,11 @@ class GuitarService {
 		return `<span>${content}</span>`;
 	}
 
-	private chordToHTML(chordNameInput: string, lastLineParsedIsBlank: boolean): string {
+	private chordToHTML(
+		chordNameInput: string,
+		lastLineParsedIsBlank: boolean,
+		isLastLine: boolean,
+	): string {
 		const isChordWithMultipleShapes = chordNameInput.includes("[") && chordNameInput.includes("]");
 		const chordName = isChordWithMultipleShapes
 			? chordNameInput.substring(0, chordNameInput.lastIndexOf("["))
@@ -276,7 +284,7 @@ class GuitarService {
 			) - 1;
 
 		if (this.findChord(chordName, chordIndex)) {
-			return `<button class="dfr-Chord dfr-text-color-links tw-mb-1 ${
+			return `<button class="dfr-Chord dfr-text-color-links ${isLastLine ? "" : "tw-mb-1"} ${
 				lastLineParsedIsBlank ? "" : "tw-mt-3"
 			}" data-chord-index="${chordIndex}">${chordName}</button>`;
 		}

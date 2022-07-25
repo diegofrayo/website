@@ -9,7 +9,6 @@ function Sources({ sources }: { sources: { title: string; url: string }[] }): T_
 	// hooks
 	const { t } = useTranslation();
 
-	// render
 	return (
 		<Block
 			is="section"

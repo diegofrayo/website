@@ -3,6 +3,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer components {
+	.dfr-shadow {
+		box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+	}
+
+	.tw-dark .dfr-shadow {
+		border: 0.5px solid;
+		@apply tw-border-gray-900;
+	}
+}
 
 /*
 --- For debugging ---
@@ -40,12 +50,6 @@ body.scroll-disabled {
 	overflow: hidden;
 }
 
-pre {
-	max-width: 100%;
-	overflow-x: auto;
-	word-break: keep-all;
-}
-
 /* --- Scrollbar --- */
 
 ::-webkit-scrollbar {
@@ -59,13 +63,16 @@ pre {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	@apply dfr-bg-color-tertiary;
+	@apply dfr-bg-color-gs-400;
 	@apply tw-rounded-sm;
-	transition: all 0.5s ease-out;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
+}
+
+body.mobile ::-webkit-scrollbar-thumb {
+	display: none;
 }
 
 /* --- Toast --- */

@@ -43,7 +43,7 @@ export default function VECTimelineItem({ data }: T_VECTimelineItemProps): T_Rea
 				visible={isModalVisible}
 				onCloseHandler={handleCloseModalClick}
 			>
-				<Block className="tw-relative tw-mx-auto tw-h-full tw-w-full tw-overflow-auto dfr-max-w-layout dfr-bg-color-bw">
+				<Block className="tw-relative tw-mx-auto tw-h-full tw-w-full tw-overflow-auto tw-border dfr-max-w-layout dfr-bg-color-secondary dfr-border-color-primary">
 					<Button
 						variant={Button.variant.SIMPLE}
 						className="tw-absolute tw-top-2 tw-right-2 tw-z-10"
@@ -112,13 +112,12 @@ function Gallery({
 		setActiveIndex(this.activeIndex + 1);
 	}
 
-	// render
 	return (
 		<Context.Provider value={contextValueMemoized}>
 			<div
 				className={classNames(
 					"root tw-relative tw-h-full dfr-bg-color-secondary",
-					isNotTrue(isFullscreenVariant) && "tw-rounded-md",
+					isNotTrue(isFullscreenVariant) && "tw-rounded-md tw-border dfr-border-color-primary",
 				)}
 			>
 				<Swiper
@@ -193,8 +192,8 @@ function Navigation({ activeIndex, totalElements }: T_NavigationProps): T_ReactE
 	return (
 		<Block
 			className={classNames(
-				"tw-flex tw-w-full tw-items-center tw-justify-between tw-bg-opacity-10 tw-px-4 tw-py-2 dfr-bg-color-tertiary dfr-text-color-bw",
-				isFullscreenVariant && "tw-absolute tw-bottom-0 tw-z-10",
+				"tw-flex tw-w-full tw-items-center tw-justify-between tw-border-t tw-bg-opacity-10 tw-px-4 tw-py-2 dfr-bg-color-tertiary dfr-border-color-primary dfr-text-color-bw",
+				isFullscreenVariant ? "tw-absolute tw-bottom-0 tw-z-10" : "",
 			)}
 		>
 			<Button
@@ -253,7 +252,6 @@ function SlideContent({
 		setSharedIndex(index);
 	}
 
-	// render
 	if (photosHeight === 0) {
 		return null;
 	}
@@ -267,7 +265,7 @@ function SlideContent({
 		>
 			<Block
 				className={classNames(
-					"media-container dfr-shadow dfr-bg-color-gs-black dark:tw-shadow-none",
+					"media-container dfr-bg-color-gs-black dark:tw-shadow-none",
 					isFullscreenVariant
 						? isLandscape
 							? "media-container--fullscreen"
@@ -303,7 +301,7 @@ function SlideContent({
 
 			<style jsx>{`
 				.root :global(.media-container) {
-					height: 213px;
+					height: 212px;
 				}
 
 				.root :global(.media-container--fullscreen) {

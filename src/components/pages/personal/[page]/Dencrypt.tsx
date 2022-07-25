@@ -1,10 +1,11 @@
 import * as React from "react";
+import classNames from "classnames";
 
 import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { reportError } from "~/utils/app";
 import { decrypt, encrypt } from "~/utils/dencrypt";
-import { isEmptyString, isNull } from "~/utils/validations";
+import { isEmptyString, isNotEmptyString, isNull } from "~/utils/validations";
 import {
 	focusElement,
 	focusInputAndSelectText,
@@ -74,7 +75,7 @@ function Dencrypt(): T_ReactElement {
 				</output>
 				<Button
 					variant={Button.variant.DEFAULT}
-					className="tw-ml-auto tw-block"
+					className={classNames("tw-ml-auto", isNotEmptyString(output) ? "tw-block" : "tw-hidden")}
 					data-clipboard-text={output}
 					onClick={handleCopyToClipboardClick}
 				>

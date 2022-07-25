@@ -10,14 +10,12 @@ const COMMON_COLORS = {
 		},
 	},
 	["color-gs-400"]: {
-		property: "color",
 		value: {
 			light: colors.gray["400"],
 			dark: colors.gray["400"],
 		},
 	},
 	["color-gs-700"]: {
-		property: "borderColor",
 		value: {
 			light: colors.gray["700"],
 			dark: colors.gray["700"],
@@ -54,13 +52,6 @@ const MY_THEME = {
 	["font-family"]: {
 		property: "fontFamily",
 		value: "'Mulish', monospace",
-	},
-	["shadow"]: {
-		property: "boxShadow",
-		value: {
-			light: "0px 0px 3px 0px rgba(0, 0, 0, 0.5)",
-			dark: "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(31, 41, 55) 0px 1px 2px 0px",
-		},
 	},
 	["transition-opacity"]: {
 		property: "",
@@ -112,7 +103,7 @@ const MY_THEME = {
 	["text-color-secondary"]: {
 		property: "color",
 		value: {
-			light: colors.gray["400"],
+			light: colors.zinc["400"],
 			dark: colors.gray["500"],
 		},
 	},

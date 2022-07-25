@@ -17,7 +17,6 @@ function SongSources({ sources }: T_SongSourcesProps): T_ReactElementNullable {
 	// hooks
 	const { t } = useTranslation();
 
-	// render
 	if (sources.length === 0) {
 		return null;
 	}

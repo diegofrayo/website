@@ -133,7 +133,7 @@ function Stats({
 					>
 						<Icon
 							icon={Icon.icon.X}
-							color="dfr-text-colorful-secondary-100"
+							color="tw-text-red-600"
 						/>
 					</Button>
 				</Block>

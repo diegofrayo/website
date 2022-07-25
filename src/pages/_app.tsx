@@ -22,7 +22,7 @@ import { I18nService } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import MetadataService from "~/services/metadata";
 import { createPreloadedState, useStore } from "~/state";
-import { isPWA } from "~/utils/browser";
+import { isMobileDevice, isPWA } from "~/utils/browser";
 import { MDXComponents } from "~/utils/mdx";
 import { initPWARoutingConfig } from "~/utils/routing";
 import type { T_ReactElement, T_UnknownObject } from "~/types";
@@ -63,6 +63,10 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
 
 		if (isPWA()) {
 			return initPWARoutingConfig(router);
+		}
+
+		if (isMobileDevice()) {
+			document.body.classList.add("mobile");
 		}
 
 		return () => undefined;

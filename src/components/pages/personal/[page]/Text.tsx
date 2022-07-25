@@ -1,4 +1,5 @@
 import * as React from "react";
+import classNames from "classnames";
 
 import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
@@ -9,7 +10,7 @@ import {
 	isSmallScreen,
 } from "~/utils/browser";
 import { replaceAll } from "~/utils/strings";
-import { isNull } from "~/utils/validations";
+import { isNotEmptyString, isNull } from "~/utils/validations";
 import type { T_ReactElement, T_ReactOnClickEventHandler, T_ReactRefObject } from "~/types";
 
 function TextPage(): T_ReactElement {
@@ -57,7 +58,7 @@ function TextPage(): T_ReactElement {
 				</output>
 				<Button
 					variant={Button.variant.DEFAULT}
-					className="tw-ml-auto tw-block"
+					className={classNames("tw-ml-auto", isNotEmptyString(output) ? "tw-block" : "tw-hidden")}
 					data-clipboard-text={output}
 					onClick={handleCopyToClipboardClick}
 				>

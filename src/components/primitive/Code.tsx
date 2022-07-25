@@ -32,7 +32,7 @@ function Code({ children, className, variant, ...rest }: T_CodeProps): T_ReactEl
 	return (
 		<div
 			className={classNames(
-				"dfr-Code--multiline root tw-rounded-md tw-p-4 tw-font-mono tw-text-base dfr-shadow dfr-bg-color-secondary dark:dfr-bg-color-tertiary",
+				"dfr-Code--multiline root tw-rounded-md tw-border tw-p-4 tw-font-mono tw-text-base dfr-bg-color-secondary dfr-border-color-primary dark:dfr-bg-color-tertiary",
 				className,
 			)}
 		>
@@ -43,6 +43,7 @@ function Code({ children, className, variant, ...rest }: T_CodeProps): T_ReactEl
 					{`
 						pre {
 							word-break: keep-all;
+							overflow-x: auto;
 						}
 
 						pre :global(.dfr-Code--inline::before),
@@ -51,7 +52,7 @@ function Code({ children, className, variant, ...rest }: T_CodeProps): T_ReactEl
 						}
 
 						pre :global(.dfr-Code--inline) {
-							@apply dfr-text-color-gs-black;
+							@apply dfr-text-color-gs-700;
 							font-style: normal;
 						}
 

@@ -4,7 +4,7 @@ import * as React from "react";
 import classNames from "classnames";
 import reactStringReplace from "react-string-replace";
 
-import { Button, Icon, Modal, Space, Block, InlineText } from "~/components/primitive";
+import { Button, Icon, Modal, Space, Block, InlineText, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { GuitarChord, GuitarService, T_Chord } from "~/lib/guitar";
 import { safeCastNumber } from "~/utils/numbers";
@@ -200,9 +200,10 @@ function useController({ children, insertions }: T_TextFormatterProps): {
 		return result.map((item, index) => {
 			if (typeof item === "string") {
 				return (
-					<pre
+					<Text
+						is="pre"
 						key={`TextFormatter-item-${index}`}
-						className="tw-overflow-y-hidden tw-break-normal tw-leading-none"
+						className="tw-overflow-visible tw-break-normal tw-leading-none"
 						dangerouslySetInnerHTML={{ __html: item }}
 					/>
 				);
