@@ -90,11 +90,8 @@ function BlogPostDetails({
 		<Block className="tw-flex tw-flex-col tw-items-center tw-justify-center sm:tw-flex-row">
 			{isPublished ? (
 				<React.Fragment>
-					<BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-secondary-inv">
-						<BlogPostDetailsItemIcon
-							icon={Icon.icon.CALENDAR}
-							color="dfr-text-color-bn-inv"
-						/>
+					<BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-secondary">
+						<BlogPostDetailsItemIcon icon={Icon.icon.CALENDAR} />
 						<Text>
 							<InlineText className="tw-mr-1">{t("page:published_at")}</InlineText>
 							<InlineText is="strong">{publishedAt}</InlineText>
@@ -103,11 +100,8 @@ function BlogPostDetails({
 					<Space responsive="tw-my-1 tw-block sm:tw-my-0 sm:tw-mx-4 sm:tw-inline-block" />
 				</React.Fragment>
 			) : null}
-			<BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-secondary-inv">
-				<BlogPostDetailsItemIcon
-					icon={Icon.icon.EDIT}
-					color="dfr-text-color-bw-inv"
-				/>
+			<BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-secondary">
+				<BlogPostDetailsItemIcon icon={Icon.icon.EDIT} />
 				<Text>
 					<InlineText className="tw-mr-1">{t("page:updated_at")}</InlineText>
 					<InlineText is="strong">{getDifferenceBetweenDates(updatedAt, new Date())}</InlineText>

@@ -17,7 +17,7 @@ function Loader(): T_ReactElement {
 					}
 
 					.root :global(div) {
-						@apply dfr-border-color-secondary-inv;
+						@apply dfr-border-color-secondary;
 						animation: root 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 						border-radius: 50%;
 						border: 4px solid;

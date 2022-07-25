@@ -46,7 +46,7 @@ export function isTrue(input: unknown): input is boolean {
 	return input === true;
 }
 
-export function isFalse(input: unknown): input is boolean {
+export function isNotTrue(input: unknown): input is boolean {
 	return input === false;
 }
 

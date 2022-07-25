@@ -42,7 +42,7 @@ function List({
 					}
 
 					.dfr-List--default :global(li)::before {
-						@apply dfr-text-color-bw-inv;
+						@apply dfr-text-color-bw;
 						content: "❯";
 						font-weight: bold;
 						font-size: 14px;

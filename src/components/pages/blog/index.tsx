@@ -91,8 +91,8 @@ function BlogEntry({
 
 	// vars
 	const CATEGORIES_COLORS = {
-		tech: "tw-bg-green-200 dark:tw-bg-green-400 dfr-text-color-black-pin tw-opacity-75",
-		personal: "tw-bg-blue-200 dark:tw-bg-blue-400 dfr-text-color-black-pin tw-opacity-75",
+		tech: "tw-bg-green-200 dark:tw-bg-green-400 dfr-text-color-gs-black tw-opacity-75",
+		personal: "tw-bg-blue-200 dark:tw-bg-blue-400 dfr-text-color-gs-black tw-opacity-75",
 	};
 
 	// utils
@@ -115,7 +115,7 @@ function BlogEntry({
 				/>
 				<Block
 					is="footer"
-					className="tw-relative tw-flex-1 tw-pt-2 tw-pb-8 dfr-bg-color-secondary-inv"
+					className="tw-relative tw-flex-1 tw-pt-2 tw-pb-8 dfr-bg-color-secondary"
 				>
 					<Title
 						is="h1"
@@ -125,7 +125,7 @@ function BlogEntry({
 						{title}
 					</Title>
 					<Block className="tw-absolute tw-bottom-0 tw-flex tw-w-full tw-items-end tw-justify-between tw-px-2 tw-py-2">
-						<Text className="tw-text-xs tw-italic dfr-text-color-secondary-inv">
+						<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
 							{isPublished ? (
 								<React.Fragment>
 									<InlineText>{t("page:published_at")} </InlineText>

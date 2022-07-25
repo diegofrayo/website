@@ -2,51 +2,58 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 
 const COMMON_COLORS = {
-	// pinned
-	["color-black-pin"]: {
-		value: {
-			light: colors.black,
-			dark: colors.black,
-		},
-	},
-	["color-white-pin"]: {
+	// Global tokens
+	["color-gs-white"]: {
 		value: {
 			light: colors.white,
 			dark: colors.white,
 		},
 	},
+	["color-gs-400"]: {
+		property: "color",
+		value: {
+			light: colors.gray["400"],
+			dark: colors.gray["400"],
+		},
+	},
+	["color-gs-700"]: {
+		property: "borderColor",
+		value: {
+			light: colors.gray["700"],
+			dark: colors.gray["700"],
+		},
+	},
+	["color-gs-black"]: {
+		value: {
+			light: colors.black,
+			dark: colors.black,
+		},
+	},
 
-	// invert
-	["color-bw-inv"]: {
+	// Alias tokens
+	["color-bw"]: {
 		value: {
 			light: colors.black,
 			dark: colors.white,
 		},
 	},
-	["color-wb-inv"]: {
+	["color-wb"]: {
 		value: {
 			light: colors.white,
 			dark: colors.black,
-		},
-	},
-
-	// review this later
-	["colorful-primary-inv"]: {
-		value: {
-			light: colors.amber["600"],
-			dark: colors.red["400"],
 		},
 	},
 };
 
 const MY_THEME = {
+	// Global tokens
 	["max-w-layout"]: {
 		property: "maxWidth",
 		value: defaultTheme.screens.md,
 	},
 	["font-family"]: {
 		property: "fontFamily",
-		value: "'Lora', monospace",
+		value: "'Mulish', monospace",
 	},
 	["shadow"]: {
 		property: "boxShadow",
@@ -66,36 +73,43 @@ const MY_THEME = {
 		},
 	},
 
-	// layout
-	["bg-color-primary-inv"]: {
+	// Alias tokens
+	["bg-color-primary"]: {
 		property: "backgroundColor",
 		value: {
 			light: colors.white,
-			dark: "#191919",
+			dark: "#1A1E23",
 		},
 	},
-	["text-color-primary-inv"]: {
+	["bg-color-secondary"]: {
+		property: "backgroundColor",
+		value: {
+			light: colors.slate["50"],
+			dark: "#1F2328",
+		},
+	},
+	["bg-color-tertiary"]: {
+		property: "backgroundColor",
+		value: {
+			light: colors.gray["300"],
+			dark: colors.gray["700"],
+		},
+	},
+	["text-color-primary"]: {
 		property: "color",
 		value: {
 			light: colors.gray["600"],
 			dark: colors.gray["400"],
 		},
 	},
-	["bg-color-secondary-inv"]: {
-		property: "backgroundColor",
-		value: {
-			light: colors.slate["50"],
-			dark: colors.black,
-		},
-	},
-	["text-color-secondary-inv"]: {
+	["text-color-secondary"]: {
 		property: "color",
 		value: {
 			light: colors.gray["500"],
 			dark: colors.gray["500"],
 		},
 	},
-	["border-color-secondary-inv"]: {
+	["border-color-secondary"]: {
 		property: "borderColor",
 		value: {
 			light: colors.gray["300"],
@@ -103,28 +117,19 @@ const MY_THEME = {
 		},
 	},
 
-	// for black backgrounds
-	["border-color-dark-secondary-pin"]: {
-		property: "borderColor",
-		value: {
-			light: colors.gray["700"],
-			dark: colors.gray["700"],
-		},
-	},
-	["text-color-dark-secondary-pin"]: {
+	// Colors for some elements
+	["text-color-links"]: {
 		property: "color",
 		value: {
-			light: colors.gray["400"],
-			dark: colors.gray["400"],
-		},
-	},
-
-	// links
-	["links-inv"]: {
-		property: "color",
-		value: {
-			light: colors.amber["600"],
+			light: colors.amber["500"],
 			dark: colors.red["400"],
+		},
+	},
+	["text-color-inline-code"]: {
+		property: "color",
+		value: {
+			light: colors.red["600"],
+			dark: colors.amber["400"],
 		},
 	},
 

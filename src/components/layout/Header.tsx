@@ -16,7 +16,7 @@ import { deletePWACache, isPWA, showAlert } from "~/utils/browser";
 import { ENV_VARS } from "~/utils/constants";
 import { ROUTES, T_RoutesValues } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
-import { isFalse, isNotEquals } from "~/utils/validations";
+import { isNotTrue, isNotEquals } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 function Header(): T_ReactElement {
@@ -33,7 +33,7 @@ function Header(): T_ReactElement {
 				<Link
 					variant={Link.variant.SECONDARY}
 					href={ROUTES.HOME}
-					className="tw-border-b-2 tw-border-dotted dfr-border-color-bw-inv"
+					className="tw-border-b-2 tw-border-dotted dfr-border-color-bw"
 				>
 					{WEBSITE_METADATA.username}
 				</Link>
@@ -171,7 +171,7 @@ function MainMenu(): T_ReactElement {
 						return (
 							<List.Item
 								key={generateSlug(item.label)}
-								className="tw-border-b dfr-border-color-secondary-inv dfr-bg-color-wb-inv last:tw-border-0"
+								className="tw-border-b dfr-border-color-secondary dfr-bg-color-wb last:tw-border-0"
 								onClick={handleHideMenuClick}
 							>
 								<Link
@@ -257,10 +257,10 @@ function ToggleThemeMenuItem(): T_ReactElement {
 		<SettingsMenuItem title={t("layout:header:settings:theme")}>
 			<Button
 				variant={Button.variant.SIMPLE}
-				disabled={isFalse(isDarkMode)}
+				disabled={isNotTrue(isDarkMode)}
 				className={classNames(
 					"tw-border-dashed tw-border-yellow-600 tw-py-0.5",
-					isFalse(isDarkMode) && "tw-border-b",
+					isNotTrue(isDarkMode) && "tw-border-b",
 				)}
 				onClick={handleToggleThemeClick}
 			>
@@ -385,7 +385,7 @@ const EnvironmentMenuItem = withAuthenticationRequired(function EnvironmentMenuI
 	);
 });
 
-const PrintMenuItem = withAuthenticationRequired(function PrintMenuItem() {
+function PrintMenuItem(): T_ReactElement {
 	// handlers
 	function handlePrintClick(): void {
 		window.print();
@@ -401,23 +401,27 @@ const PrintMenuItem = withAuthenticationRequired(function PrintMenuItem() {
 			</Button>
 		</SettingsMenuItem>
 	);
-});
+}
 
-type T_MenuItemProps = {
+type T_SettingsMenuItemProps = {
 	children: T_ReactChildren;
 	title: string;
 	className?: string;
 };
 
-function SettingsMenuItem({ children, title, className = "" }: T_MenuItemProps): T_ReactElement {
+function SettingsMenuItem({
+	children,
+	title,
+	className = "",
+}: T_SettingsMenuItemProps): T_ReactElement {
 	return (
 		<List.Item
 			className={classNames(
-				"tw-flex tw-h-8 tw-items-center tw-justify-between tw-border-b tw-px-2 dfr-border-color-secondary-inv dfr-bg-color-wb-inv last:tw-border-0",
+				"tw-flex tw-h-8 tw-items-center tw-justify-between tw-border-b tw-px-2 dfr-border-color-secondary dfr-bg-color-wb last:tw-border-0",
 				className,
 			)}
 		>
-			<Text className="tw--bold tw-text-right tw-text-xs">{title}</Text>
+			<Text className="tw-text-right tw-text-xs">{title}</Text>
 			<Block className="tw-text-right tw-leading-none">{children}</Block>
 		</List.Item>
 	);

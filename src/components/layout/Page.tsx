@@ -228,7 +228,7 @@ const UserLoggedInFlag = withAuthenticationRequired(function UserLoggedInFlag():
 	return (
 		<Flag
 			className="tw-z-50"
-			color="dfr-bg-color-bw-inv"
+			color="dfr-bg-color-bw"
 		/>
 	);
 });
@@ -247,7 +247,7 @@ function AnalyticsDisabledFlag(): T_ReactElementNullable {
 		return (
 			<Flag
 				className="tw-z-40"
-				color="dfr-bg-colorful-primary-inv"
+				color="tw-bg-amber-600 dark:tw-bg-red-400"
 			/>
 		);
 	}

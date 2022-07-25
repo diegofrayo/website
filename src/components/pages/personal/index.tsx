@@ -51,7 +51,7 @@ function PagesList({ pages }: T_PagesListProps): T_ReactElement {
 						<Link
 							variant={Link.variant.SECONDARY}
 							href={`${ROUTES.PERSONAL}/${page.slug}`}
-							className="tw-my-2 tw-flex tw-h-20 tw-items-center tw-justify-between tw-border tw-border-dotted tw-p-2 dfr-border-color-secondary-inv"
+							className="tw-my-2 tw-flex tw-h-20 tw-items-center tw-justify-between tw-border tw-border-dotted tw-p-2 dfr-border-color-secondary"
 						>
 							<Icon
 								icon={Icon.icon[page.icon]}

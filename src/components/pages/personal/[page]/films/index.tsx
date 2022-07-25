@@ -134,7 +134,7 @@ function Films(): T_ReactElement {
 												}}
 											>
 												<Icon
-													wrapperClassName="tw-absolute tw--top-2 tw--right-2 dfr-bg-color-bw-inv dark:dfr-bg-color-wb-inv tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8"
+													wrapperClassName="tw-absolute tw--top-2 tw--right-2 dfr-bg-color-bw dark:dfr-bg-color-wb tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8"
 													icon={
 														calification === 5
 															? Icon.icon.STAR
@@ -145,7 +145,7 @@ function Films(): T_ReactElement {
 													size={24}
 												/>
 
-												<Block className="tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-70 tw-p-2 dfr-bg-color-wb-inv">
+												<Block className="tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-70 tw-p-2 dfr-bg-color-wb">
 													{source === "imdb" ? (
 														<Image
 															src="/static/images/misc/imdb.png"
@@ -170,11 +170,11 @@ function Films(): T_ReactElement {
 														<Title
 															is="h1"
 															variant={Title.variant.UNSTYLED}
-															className="tw-mb-2 tw-break-normal tw-uppercase tw-leading-tight dfr-text-color-black-pin"
+															className="tw-mb-2 tw-break-normal tw-uppercase tw-leading-tight dfr-text-color-gs-black"
 														>
 															{title}
 														</Title>
-														<Text className="tw-text-sm tw-font-bold tw-lowercase tw-italic tw-leading-none tw-text-gray-700">
+														<Text className="tw-text-sm tw-font-bold tw-lowercase tw-italic tw-leading-none dfr-text-color-gs-700">
 															{type}
 														</Text>
 													</Block>

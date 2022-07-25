@@ -77,7 +77,7 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 								>
 									{reading.title}
 								</Link>
-								<Text className="tw-text-xs tw-font-bold tw-italic dfr-text-color-secondary-inv">
+								<Text className="tw-text-xs tw-font-bold tw-italic dfr-text-color-secondary">
 									{new URL(reading.url).host}
 									{isNotEmptyString(reading.author) ? ` | ${reading.author}` : ""}
 								</Text>
@@ -85,14 +85,14 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 									<DoneMark done={reading.done} />
 									<InlineText
 										className={classNames(
-											"tw-inline-block tw-rounded-md tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-white-pin",
+											"tw-inline-block tw-rounded-md tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-gs-white",
 											categoryColors[reading.category],
 										)}
 									>
 										{generateSlug(reading.category)}
 									</InlineText>
 									<InlineText className="tw-mx-1">|</InlineText>
-									<InlineText className="tw-inline-block tw-rounded-md tw-bg-gray-500 tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-white-pin">
+									<InlineText className="tw-inline-block tw-rounded-md tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-gs-white dfr-bg-color-gs-black dark:dfr-bg-color-tertiary">
 										{reading.date}
 									</InlineText>
 								</Block>

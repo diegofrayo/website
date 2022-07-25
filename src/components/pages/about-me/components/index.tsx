@@ -19,7 +19,7 @@ export default function AboutMeBlock({
 	layout,
 }: T_AboutMeBlockProps): T_ReactElement {
 	return (
-		<Block className="tw-mb-8 tw-overflow-auto tw-text-justify">
+		<Block className="tw-mb-8 tw-text-justify">
 			<Text>
 				{isNotEmptyString(image) ? (
 					<Image

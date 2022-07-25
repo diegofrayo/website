@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { isDOMNode, isFalse, isNull } from "~/utils/validations";
+import { isDOMNode, isNotTrue, isNull } from "~/utils/validations";
 import type { T_ReactRefObject } from "~/types";
 
 function useClickOutside(ref: T_ReactRefObject<HTMLElement>, callback: () => void): void {
@@ -14,7 +14,7 @@ function useClickOutside(ref: T_ReactRefObject<HTMLElement>, callback: () => voi
 				if (
 					isDOMNode(event.target) &&
 					!isNull(ref.current) &&
-					isFalse(ref.current.contains(event.target))
+					isNotTrue(ref.current.contains(event.target))
 				) {
 					callback();
 				}

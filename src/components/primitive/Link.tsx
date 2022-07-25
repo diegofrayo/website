@@ -114,6 +114,6 @@ const LinkElement = twcss.a({
 	$TWCSS_BASE_STYLES: "",
 	UNSTYLED: "",
 	SIMPLE: "dfr-transition-opacity",
-	PRIMARY: "dfr-transition-opacity dfr-links-inv tw-font-bold tw-underline",
-	SECONDARY: () => "dfr-transition-opacity dfr-text-color-bw-inv tw-font-bold",
+	PRIMARY: "dfr-transition-opacity dfr-text-color-links tw-font-bold tw-underline",
+	SECONDARY: () => "dfr-transition-opacity dfr-text-color-bw tw-font-bold",
 });

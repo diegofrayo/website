@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 import { Block, Button, Icon, Image, Modal, Text } from "~/components/primitive";
 import { useDidMount, useEnhancedState } from "~/hooks";
+import { isNotTrue } from "~/utils/validations";
 import type { T_ReactElement, T_ReactElementNullable, T_ReactSetState } from "~/types";
 
 const Context = React.createContext({} as T_Context);
@@ -42,7 +43,7 @@ export default function VECTimelineItem({ data }: T_VECTimelineItemProps): T_Rea
 				visible={isModalVisible}
 				onCloseHandler={handleCloseModalClick}
 			>
-				<Block className="tw-relative tw-mx-auto tw-h-full tw-w-full tw-overflow-auto dfr-max-w-layout dfr-bg-color-bw-inv">
+				<Block className="tw-relative tw-mx-auto tw-h-full tw-w-full tw-overflow-auto dfr-max-w-layout dfr-bg-color-bw">
 					<Button
 						variant={Button.variant.SIMPLE}
 						className="tw-absolute tw-top-2 tw-right-2 tw-z-10"
@@ -50,7 +51,7 @@ export default function VECTimelineItem({ data }: T_VECTimelineItemProps): T_Rea
 					>
 						<Icon
 							icon={Icon.icon.X}
-							color="dfr-text-color-white-pin"
+							color="dfr-text-color-bw"
 							size={32}
 						/>
 					</Button>
@@ -116,8 +117,8 @@ function Gallery({
 		<Context.Provider value={contextValueMemoized}>
 			<div
 				className={classNames(
-					"root tw-relative tw-h-full",
-					isFullscreenVariant ? "dfr-bg-color-bw-inv" : "dfr-bg-color-primary tw-rounded-md",
+					"root tw-relative tw-h-full dfr-bg-color-secondary",
+					isNotTrue(isFullscreenVariant) && "tw-rounded-md",
 				)}
 			>
 				<Swiper
@@ -126,7 +127,10 @@ function Gallery({
 				>
 					{data.assets.map((asset, index) => {
 						return (
-							<SwiperSlide key={asset.id}>
+							<SwiperSlide
+								className={classNames(isFullscreenVariant && "tw-px-4 sm:tw-px-10")}
+								key={asset.id}
+							>
 								<SlideContent
 									asset={asset}
 									index={index}
@@ -189,10 +193,8 @@ function Navigation({ activeIndex, totalElements }: T_NavigationProps): T_ReactE
 	return (
 		<Block
 			className={classNames(
-				"tw-flex tw-w-full tw-items-center tw-justify-between tw-bg-opacity-10 tw-px-4 tw-py-2",
-				isFullscreenVariant
-					? "tw-absolute tw-bottom-0 tw-z-10 dfr-text-color-white-pin dfr-bg-color-wb-inv"
-					: "dfr-text-color-black-pin dfr-bg-color-bw-inv",
+				"tw-flex tw-w-full tw-items-center tw-justify-between tw-bg-opacity-10 tw-px-4 tw-py-2 dfr-bg-color-tertiary dfr-text-color-bw",
+				isFullscreenVariant && "tw-absolute tw-bottom-0 tw-z-10",
 			)}
 		>
 			<Button
@@ -202,7 +204,7 @@ function Navigation({ activeIndex, totalElements }: T_NavigationProps): T_ReactE
 			>
 				<Icon
 					icon={Icon.icon.CHEVRON_LEFT}
-					color={isFullscreenVariant ? "dfr-text-color-white-pin" : "dfr-text-color-black-pin"}
+					color="dfr-text-color-bw"
 				/>
 			</Button>
 			<Text className="tw-flex-1 tw-px-2 tw-text-center tw-text-xs">
@@ -215,7 +217,7 @@ function Navigation({ activeIndex, totalElements }: T_NavigationProps): T_ReactE
 			>
 				<Icon
 					icon={Icon.icon.CHEVRON_RIGHT}
-					color={isFullscreenVariant ? "dfr-text-color-white-pin" : "dfr-text-color-black-pin"}
+					color="dfr-text-color-bw"
 				/>
 			</Button>
 		</Block>
@@ -265,7 +267,7 @@ function SlideContent({
 		>
 			<Block
 				className={classNames(
-					"media-container dfr-shadow dfr-bg-color-bw-inv",
+					"media-container dfr-shadow dfr-bg-color-gs-black dark:tw-shadow-none",
 					isFullscreenVariant
 						? isLandscape
 							? "media-container--fullscreen"
@@ -288,19 +290,14 @@ function SlideContent({
 						src={src}
 						className={classNames(
 							"tw-mx-auto tw-max-h-full tw-max-w-full",
-							!isFullscreenVariant && "tw-cursor-pointer",
+							isNotTrue(isFullscreenVariant) && "tw-cursor-pointer",
 						)}
 						alt={caption}
 						onClick={handleImageClick}
 					/>
 				)}
 			</Block>
-			<Text
-				className={classNames(
-					"tw-mt-2 tw-px-4 tw-text-center tw-text-sm tw-italic",
-					isFullscreenVariant ? "dfr-text-color-white-pin" : "dfr-text-color-black-pin",
-				)}
-			>
+			<Text className="tw-mt-2 tw-px-4 tw-text-center tw-text-sm tw-italic dfr-text-color-primary">
 				{caption}
 			</Text>
 

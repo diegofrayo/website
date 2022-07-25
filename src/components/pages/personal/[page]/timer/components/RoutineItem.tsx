@@ -90,7 +90,7 @@ export default function RoutineItem({
 				{highTime ? (
 					<Block className="tw-flex tw-items-center tw-justify-between">
 						<InlineText className="tw-text-sm">Tiempo de acción</InlineText>
-						<InlineText className="tw-w-20 tw-rounded-lg tw-bg-red-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold dfr-text-color-white-pin">
+						<InlineText className="tw-w-20 tw-rounded-lg tw-bg-red-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold dfr-text-color-gs-white">
 							{highTime}
 						</InlineText>
 					</Block>
@@ -100,14 +100,14 @@ export default function RoutineItem({
 						<Space size={0.5} />
 						<Block className="tw-flex tw-items-center tw-justify-between">
 							<InlineText className="tw-text-sm">Tiempo de descanso</InlineText>
-							<InlineText className="tw-w-20 tw-rounded-lg tw-bg-blue-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold dfr-text-color-white-pin">
+							<InlineText className="tw-w-20 tw-rounded-lg tw-bg-blue-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold dfr-text-color-gs-white">
 								{restTime}
 							</InlineText>
 						</Block>
 						<Space size={0.5} />
 						<Block className="tw-flex tw-items-center tw-justify-between">
 							<InlineText className="tw-text-sm">Tiempo total</InlineText>
-							<InlineText className="tw-w-20 tw-rounded-lg tw-bg-green-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold dfr-text-color-white-pin">
+							<InlineText className="tw-w-20 tw-rounded-lg tw-bg-green-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold dfr-text-color-gs-white">
 								{secondsToTime(calculateRoutineItemTotalTime(sets, highTime, restTime))}
 							</InlineText>
 						</Block>
@@ -125,7 +125,7 @@ export default function RoutineItem({
 									)}
 								>
 									<Text className="tw-mb-2 tw-text-sm tw-font-bold">Notas</Text>
-									<Text className="tw-text-xs tw-italic dfr-text-color-black-pin">"{notes}"</Text>
+									<Text className="tw-text-xs tw-italic dfr-text-color-gs-black">"{notes}"</Text>
 								</Block>
 							</React.Fragment>
 						) : null}

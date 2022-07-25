@@ -275,7 +275,7 @@ function ContactPhone({ phone, country }: T_ContactPhoneProps): T_ReactElementNu
 
 	return (
 		<Button
-			className="tw-mb-1 tw-block tw-text-sm tw-italic dfr-text-color-secondary-inv"
+			className="tw-mb-1 tw-block tw-text-sm tw-italic dfr-text-color-secondary"
 			data-clipboard-text={isPhoneFromColombia ? phoneWithoutCode : phone}
 			onClick={handleCopyToClipboardClick}
 		>

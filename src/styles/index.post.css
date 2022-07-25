@@ -25,8 +25,8 @@ body {
 }
 
 body {
-	@apply dfr-bg-color-primary-inv;
-	@apply dfr-text-color-primary-inv;
+	@apply dfr-bg-color-primary;
+	@apply dfr-text-color-primary;
 	cursor: default;
 	font-size: 18px;
 	overflow-y: auto;
@@ -38,6 +38,34 @@ body {
 
 body.scroll-disabled {
 	overflow: hidden;
+}
+
+pre {
+	max-width: 100%;
+	overflow-x: auto;
+	word-break: keep-all;
+}
+
+/* --- Scrollbar --- */
+
+::-webkit-scrollbar {
+	height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	@apply dfr-bg-color-tertiary;
+	@apply tw-rounded-sm;
+	transition: all 0.5s ease-out;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
 }
 
 /* --- Toast --- */
@@ -67,11 +95,11 @@ body.scroll-disabled {
 
 /** Classes for the displayed toast **/
 .Toastify__toast {
-	@apply dfr-bg-color-bw-inv;
+	@apply dfr-bg-color-gs-black;
 	@apply tw-bg-opacity-80;
 	@apply tw-text-sm;
+	border: 1px dashed;
 	border-radius: 0;
-	border: 1px solid;
 	font-weight: bold;
 	text-align: center;
 }
@@ -92,24 +120,24 @@ body.scroll-disabled {
 }
 
 .Toastify__toast--success {
-	@apply tw-border-green-500;
-	@apply tw-text-green-500;
+	@apply tw-text-green-400;
+	@apply tw-border-green-400;
 }
 
 .Toastify__toast--success .Toastify__close-button {
-	@apply tw-text-green-500;
+	@apply tw-text-green-400;
 }
 
 .Toastify__toast--warning {
 }
 
 .Toastify__toast--error {
-	@apply tw-border-red-500;
-	@apply tw-text-red-500;
+	@apply tw-text-red-400;
+	@apply tw-border-red-400;
 }
 
 .Toastify__toast--error .Toastify__close-button {
-	@apply tw-text-red-500;
+	@apply tw-text-red-400;
 }
 
 .Toastify__toast-body {
@@ -151,7 +179,7 @@ body.scroll-disabled {
 /* --- NProgress --- */
 
 #nprogress .bar {
-	@apply dfr-bg-colorful-primary-inv;
+	@apply tw-bg-yellow-500;
 	height: 5px;
 	left: 0;
 	position: fixed;

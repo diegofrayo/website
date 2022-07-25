@@ -10,7 +10,7 @@ import { I18nService, useTranslation } from "~/i18n";
 import { focusElement } from "~/utils/browser";
 import { ROUTES } from "~/utils/routing";
 import { removeAccents } from "~/utils/strings";
-import { isFalsy, isNotEquals, isNull } from "~/utils/validations";
+import { isNotTrue, isFalsy, isNotEquals, isNull } from "~/utils/validations";
 import type { T_ReactElement, T_ReactOnChangeEventHandler, T_ReactRefObject } from "~/types";
 
 import MusicService, { T_Song } from "./service";
@@ -103,15 +103,15 @@ function MusicPage(): T_ReactElement {
 											return (
 												<Block
 													key={song.id}
-													className={classNames(
-														"tw-mb-6 tw-w-full sm:tw-w-5/12",
-														!song.isPublic && "tw-opacity-50",
-													)}
+													className="tw-mb-6 tw-w-full sm:tw-w-5/12"
 												>
 													<Link
 														variant={Link.variant.PRIMARY}
 														href={`${ROUTES.MUSIC}/${song.id}`}
-														className="tw-block sm:tw-truncate"
+														className={classNames(
+															"tw-block sm:tw-truncate",
+															isNotTrue(song.isPublic) && "tw-line-through",
+														)}
 														title={song.title}
 													>
 														{song.title}

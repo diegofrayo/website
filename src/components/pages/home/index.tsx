@@ -90,7 +90,7 @@ function Featured({ content }: T_Featured): T_ReactElement {
 			is="section"
 			className="tw-relative tw-hidden tw-rounded-t-md tw-border-8 tw-border-yellow-700 tw-bg-green-700 tw-p-4 dfr-shadow"
 		>
-			<Emoji className="tw-absolute tw--top-4 tw--left-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-shadow dfr-bg-color-wb-inv">
+			<Emoji className="tw-absolute tw--top-4 tw--left-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-shadow dfr-bg-color-wb">
 				📌
 			</Emoji>
 			<Title
@@ -182,7 +182,7 @@ function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElementNullable {
 					onClick={handleImageClick}
 				/>
 			</Block>
-			<Text className="tw-mx-auto tw-h-4 tw-w-16 tw-rounded-bl-md tw-rounded-br-md tw-border-2 tw-border-t-0 tw-border-yellow-700 tw-text-center tw-text-xxs tw-font-bold tw-italic dfr-text-color-black-pin dfr-bg-color-white-pin">
+			<Text className="tw-mx-auto tw-h-4 tw-w-16 tw-rounded-bl-md tw-rounded-br-md tw-border-2 tw-border-t-0 tw-border-yellow-700 tw-text-center tw-text-xxs tw-font-bold tw-italic dfr-bg-color-gs-white dfr-text-color-gs-black">
 				{t("layout:header:room:welcome")}
 			</Text>
 
@@ -190,7 +190,7 @@ function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElementNullable {
 				{`
 					:global(.dfr-PictureFrame)::before,
 					:global(.dfr-PictureFrame)::after {
-						@apply dfr-bg-color-bw-inv;
+						@apply dfr-bg-color-bw;
 						content: " ";
 						display: block;
 						height: 50px;
@@ -300,8 +300,8 @@ function TV({ song }: T_TVProps): T_ReactElement {
 						<Icon
 							icon={isAudioPlaying ? Icon.icon.PAUSE : Icon.icon.PLAY}
 							size={28}
-							wrapperClassName="dfr-bg-color-black-pin tw-bg-opacity-70 tw-rounded-full"
-							color="dfr-text-color-white-pin"
+							wrapperClassName="dfr-bg-color-gs-black tw-bg-opacity-70 tw-rounded-full"
+							color="dfr-text-color-gs-white"
 						/>
 						<audio
 							id="tv-audio"
@@ -324,7 +324,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
 
 				<Block
 					className={classNames(
-						"tw-absolute tw-top-0 tw-left-0 tw-h-full tw-w-full tw-transition-transform dfr-bg-color-black-pin",
+						"tw-absolute tw-top-0 tw-left-0 tw-h-full tw-w-full tw-transition-transform dfr-bg-color-gs-black",
 						showInfo && "tw-translate-x-full",
 					)}
 				/>
@@ -340,12 +340,12 @@ function TV({ song }: T_TVProps): T_ReactElement {
 						return (
 							<Block
 								key={generateSlug(`TV-Block-${i}`)}
-								className="tw-my-0.5 tw-rounded-sm tw-border-b tw-border-black"
+								className="tw-my-0.5 tw-rounded-sm tw-border-b tw-border-gray-400 tw-bg-transparent dark:tw-border-gray-500"
 							/>
 						);
 					})}
 				</Block>
-				<Block className="tw-h-6 tw-w-6 tw-overflow-hidden tw-rounded-full tw-transition-transform dfr-bg-color-black-pin">
+				<Block className="tw-h-6 tw-w-6 tw-overflow-hidden tw-rounded-full tw-transition-transform dfr-bg-color-gs-black">
 					{hasNotStartedTV ? (
 						<Button
 							className="tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center"
@@ -483,7 +483,7 @@ function LinkItem({ label, url, className = "" }: T_LinkItemProps): T_ReactEleme
 		<Link
 			variant={Link.variant.SIMPLE}
 			className={classNames(
-				"tw-flex tw-flex-1 tw-items-center tw-bg-yellow-700 tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-white-pin",
+				"tw-flex tw-flex-1 tw-items-center tw-bg-yellow-700 tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-gs-white",
 				className,
 			)}
 			href={url}

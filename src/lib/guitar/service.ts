@@ -132,11 +132,18 @@ class GuitarService {
 	}
 
 	formatText(songContent: string): string {
+		let lastLineParsedIsBlank = false;
+
 		const chords = {};
 		const parsedContent = songContent
 			.split("\n")
 			.map((line) => {
 				let parsedTextLine = line;
+
+				if (line === "") {
+					lastLineParsedIsBlank = true;
+					return `<br class="first:tw-hidden" />`;
+				}
 
 				line
 					.split(" ")
@@ -154,14 +161,22 @@ class GuitarService {
 										textLineItems,
 										replaceExactly: index > 0,
 										chords,
+										lastLineParsedIsBlank,
 									});
 								});
 						} else {
-							parsedTextLine = this.parseTextLine({ parsedTextLine, chord, textLineItems, chords });
+							parsedTextLine = this.parseTextLine({
+								parsedTextLine,
+								chord,
+								textLineItems,
+								chords,
+								lastLineParsedIsBlank,
+							});
 						}
 					});
 
-				return parsedTextLine;
+				lastLineParsedIsBlank = false;
+				return this.lineToHTML(parsedTextLine);
 			})
 			.join("\n");
 
@@ -211,10 +226,17 @@ class GuitarService {
 		}) as T_Chord;
 	}
 
-	private parseTextLine({ parsedTextLine, chord, textLineItems, replaceExactly = false, chords }) {
-		const chordHTML = this.chordToHTML(chord);
+	private parseTextLine({
+		parsedTextLine,
+		chord,
+		textLineItems,
+		replaceExactly = false,
+		chords,
+		lastLineParsedIsBlank,
+	}) {
+		const chordHTML = this.chordToHTML(chord, lastLineParsedIsBlank);
 
-		if (chordHTML.includes("<button")) {
+		if (this.lineContainsAChord(chordHTML)) {
 			chords[chord] = chord;
 		}
 
@@ -237,7 +259,11 @@ class GuitarService {
 		);
 	}
 
-	private chordToHTML(chordNameInput: string): string {
+	private lineToHTML(content: string) {
+		return `<span>${content}</span>`;
+	}
+
+	private chordToHTML(chordNameInput: string, lastLineParsedIsBlank: boolean): string {
 		const isChordWithMultipleShapes = chordNameInput.includes("[") && chordNameInput.includes("]");
 		const chordName = isChordWithMultipleShapes
 			? chordNameInput.substring(0, chordNameInput.lastIndexOf("["))
@@ -250,10 +276,16 @@ class GuitarService {
 			) - 1;
 
 		if (this.findChord(chordName, chordIndex)) {
-			return `<button class="dfr-Chord dfr-link-color-primary dark:dfr-link-color-primary tw-mt-3 tw-mb-1" data-chord-index="${chordIndex}">${chordName}</button>`;
+			return `<button class="dfr-Chord dfr-text-color-links tw-mb-1 ${
+				lastLineParsedIsBlank ? "" : "tw-mt-3"
+			}" data-chord-index="${chordIndex}">${chordName}</button>`;
 		}
 
 		return chordNameInput;
+	}
+
+	private lineContainsAChord(line: string) {
+		return line.includes("<button");
 	}
 
 	private sortChords(a: string, b: string): number {

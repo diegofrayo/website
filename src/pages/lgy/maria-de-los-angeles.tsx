@@ -208,7 +208,7 @@ function Bible() {
 
 			<style jsx>{`
 				.root :global(a) {
-					@apply dfr-links-inv;
+					@apply dfr-text-color-links;
 					@apply tw-mt-2;
 					font-weight: bold;
 				}

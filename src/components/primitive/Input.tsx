@@ -30,7 +30,7 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
 			{...containerProps}
 			className={classNames(
 				"root",
-				"tw-block tw-border-b-4 dfr-border-color-secondary-inv",
+				"tw-block tw-border-b-4 dfr-border-color-secondary",
 				containerProps.className,
 			)}
 			htmlFor={id}
@@ -43,7 +43,7 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
 				ref={ref}
 				id={id}
 				className={classNames(
-					"dfr-Input tw-block tw-w-full tw-resize-none tw-rounded-none tw-border tw-p-2 tw-shadow-none dfr-bg-color-secondary-inv dfr-border-color-secondary-inv",
+					"dfr-Input tw-block tw-w-full tw-resize-none tw-rounded-none tw-border tw-p-2 tw-shadow-none dfr-bg-color-secondary dfr-border-color-secondary",
 					className,
 				)}
 				{...rest}
