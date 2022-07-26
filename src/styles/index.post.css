@@ -3,16 +3,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer components {
-	.dfr-shadow {
-		box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
-	}
-
-	.tw-dark .dfr-shadow {
-		border: 0.5px solid;
-		@apply tw-border-gray-900;
-	}
-}
 
 /*
 --- For debugging ---
@@ -28,21 +18,16 @@ html * {
 	box-sizing: border-box;
 }
 
-html,
-body {
-	@apply dfr-font-family;
-	font-display: swap;
-}
-
 body {
 	@apply dfr-bg-color-primary;
+	@apply dfr-font-family;
 	@apply dfr-text-color-primary;
 	cursor: default;
 	font-size: 18px;
-	overflow-y: auto;
 	overflow-x: hidden;
-	scrollbar-gutter: stable;
+	overflow-y: auto;
 	scroll-behavior: smooth;
+	scrollbar-gutter: stable;
 	word-break: break-word;
 }
 

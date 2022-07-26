@@ -149,9 +149,9 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 
 				{showChordInput && (
 					<Block className="tw-mt-3 tw-text-center tw-text-sm">
-						<Text
-							is="pre"
-							className="tw-inline-block tw-whitespace-pre-line tw-break-all tw-border tw-p-2 dfr-border-color-primary"
+						<Pre
+							variant={Pre.variant.VARIANTS.BREAK_WORDS}
+							className="tw-inline-block tw-border tw-p-2 dfr-border-color-primary"
 						>
 							<Button
 								variant={Button.variant.SIMPLE}
@@ -161,7 +161,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 								<Emoji>📋</Emoji>
 							</Button>{" "}
 							{musicNotesAsString}
-						</Text>
+						</Pre>
 					</Block>
 				)}
 			</Block>

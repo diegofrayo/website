@@ -1,12 +1,19 @@
 const withMDX = require("@next/mdx");
 const withPWA = require("next-pwa");
 
+// TODO: Remove this
+console.log(
+	"PROCESS.ENV.DISABLE_PWA ===>",
+	process.env.DISABLE_PWA,
+	typeof process.env.DISABLE_PWA,
+);
+
 module.exports = withMDX()(
 	withPWA({
 		pwa: {
 			dest: "public",
 			scope: "/",
-			disable: process.env.NODE_ENV !== "production",
+			disable: process.env.DISABLE_PWA === "true",
 		},
 		eslint: {
 			ignoreDuringBuilds: true,
@@ -37,9 +44,6 @@ module.exports = withMDX()(
 					locale: false,
 				},
 			];
-		},
-		webpack(config) {
-			return config;
 		},
 	}),
 );

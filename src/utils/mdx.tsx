@@ -8,6 +8,7 @@ import {
 	Image,
 	Link,
 	List,
+	Pre,
 	Space,
 	Text,
 } from "~/components/primitive";
@@ -46,11 +47,11 @@ export const MDXComponents = {
 	ul: function UL({ children }: { children: T_ReactChildren }): T_ReactElement {
 		return <List variant={List.variant.DEFAULT}>{children}</List>;
 	},
-	pre: function Pre({ children }: { children: T_ReactChildren }): T_ReactElement {
-		return <Code variant={Code.variant.MULTILINE}>{children}</Code>;
+	pre: function CustomPre({ children }: { children: T_ReactChildren }): T_ReactElement {
+		return <Pre variant={Pre.variant.STYLED}>{children}</Pre>;
 	},
 	code: function InlineCode({ children }: { children: T_ReactChildren }): T_ReactElement {
-		return <Code variant={Code.variant.INLINE}>{children}</Code>;
+		return <Code>{children}</Code>;
 	},
 	hr: function HR(): T_ReactElement {
 		return <Space variant={Space.variant.DASHED} />;

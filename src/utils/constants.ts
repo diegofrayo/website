@@ -75,6 +75,13 @@ export const PERSONAL_PAGES = [
 		type: "TOOL",
 	},
 	{
+		slug: "debugging",
+		title: "debugging",
+		componentName: "Debugging",
+		icon: Icon.icon.CODE,
+		type: "TOOL",
+	},
+	{
 		slug: "thumbnails",
 		title: "thumbnails",
 		componentName: "Thumbnails",

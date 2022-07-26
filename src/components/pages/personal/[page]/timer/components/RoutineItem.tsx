@@ -56,7 +56,7 @@ export default function RoutineItem({
 		<Block
 			is="article"
 			className={classNames(
-				"dfr-RoutineItem dfr-shadow tw-mb-3 tw-border last:tw-mb-0",
+				"dfr-RoutineItem tw-mb-3 tw-border dfr-shadow last:tw-mb-0",
 				borderStyles,
 			)}
 		>

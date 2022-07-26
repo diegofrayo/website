@@ -55,7 +55,7 @@ function Home({ data }: T_HomeProps): T_ReactElement {
 			<MainLayout title="">
 				<Block className="tw-mx-auto tw-w-72 tw-max-w-full">
 					<Featured content={data.featured} />
-					<Block className="dfr-shadow tw-overflow-hidden tw-rounded-t-md">
+					<Block className="tw-overflow-hidden tw-rounded-t-md dfr-shadow">
 						<Room
 							tvSong={data.song}
 							frameImage={data.photo}
@@ -86,9 +86,9 @@ function Featured({ content }: T_Featured): T_ReactElement {
 	return (
 		<Block
 			is="section"
-			className="dfr-shadow tw-relative tw-hidden tw-rounded-t-md tw-border-8 tw-border-yellow-700 tw-bg-green-700 tw-p-4"
+			className="tw-relative tw-hidden tw-rounded-t-md tw-border-8 tw-border-yellow-700 tw-bg-green-700 tw-p-4 dfr-shadow"
 		>
-			<Emoji className="dfr-shadow tw-absolute tw--top-4 tw--left-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-bg-color-wb">
+			<Emoji className="tw-absolute tw--top-4 tw--left-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-bg-color-wb dfr-shadow">
 				📌
 			</Emoji>
 			<Title

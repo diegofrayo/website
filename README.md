@@ -32,6 +32,7 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
    ```
    NEXT_PUBLIC_ASSETS_SERVER_URL=https://diegofrayo-backend.vercel.app
    NEXT_PUBLIC_WEBSITE_URL=http://localhost:3000
+	 DISABLE_PWA=true
    ```
 
 1. `yarn install`
@@ -46,13 +47,13 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 ===============================================================================
  Language            Files        Lines         Code     Comments       Blanks
 ===============================================================================
- CSS                     2          216          172            9           35
+ CSS                     2          303          241           19           43
  JSON                    1           99           99            0            0
  Markdown                1           59            0           46           13
- TSX                   101        11569         9742          488         1339
- TypeScript             70         3540         2848          159          533
+ TSX                   103        12153        10275          485         1393
+ TypeScript             70         3622         2922          158          542
 ===============================================================================
- Total                 175        15483        12861          702         1920
+ Total                 177        16236        13537          708         1991
 ===============================================================================
 ```
 

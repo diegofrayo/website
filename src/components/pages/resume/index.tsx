@@ -9,6 +9,7 @@ import {
 	InlineText,
 	Link,
 	List,
+	Pre,
 	Space,
 	Text,
 	Title,
@@ -46,7 +47,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 						<Image
 							src={resume.profilePhoto}
 							alt="Profile photo"
-							className="dfr-shadow tw-mx-auto tw-mb-4 tw-hidden tw-h-32 tw-w-32 tw-rounded-full"
+							className="tw-mx-auto tw-mb-4 tw-hidden tw-h-32 tw-w-32 tw-rounded-full dfr-shadow"
 						/>
 
 						<Title is="h1">{resume.fullName}</Title>
@@ -117,12 +118,12 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 				<Block>
 					<PrintBlock>
 						<ResumeBlock title="Summary">
-							<Text
-								is="pre"
-								className="tw-whitespace-pre-line tw-break-words dfr-font-family md:tw-text-justify"
+							<Pre
+								variant={Pre.variant.BREAK_WITH_BLANK_LINES}
+								className="dfr-font-family md:tw-text-justify"
 							>
 								{resume.summary}
-							</Text>
+							</Pre>
 						</ResumeBlock>
 						<ResumeBlock title="Education">
 							<Block>
@@ -286,12 +287,12 @@ function ExperienceTimelineItem({
 				</Text>
 				<Space size={2} />
 
-				<Text
-					is="pre"
-					className="tw-whitespace-pre-line tw-break-words dfr-font-family print:tw-text-sm md:tw-text-justify"
+				<Pre
+					variant={Pre.variant.BREAK_WITH_BLANK_LINES}
+					className="dfr-font-family print:tw-text-sm md:tw-text-justify"
 				>
 					{description}
-				</Text>
+				</Pre>
 			</Block>
 		</Block>
 	);

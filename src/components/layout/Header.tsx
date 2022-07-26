@@ -141,8 +141,8 @@ function MainMenu(): T_ReactElement {
 	}
 
 	return (
-		<div
-			className="root tw-relative tw-inline-block print:tw-hidden"
+		<Block
+			className="tw-relative tw-inline-block print:tw-hidden"
 			ref={menuRef}
 		>
 			<Button
@@ -158,7 +158,7 @@ function MainMenu(): T_ReactElement {
 			{showMenu ? (
 				<List
 					is="menu"
-					className="dfr-shadow tw-absolute tw-top-full tw-left-[-65px] tw-z-40 tw-block tw-w-40 tw-overflow-hidden"
+					className="tw-absolute tw-top-full tw-left-[-65px] tw-z-40 tw-block tw-w-40 tw-overflow-hidden dfr-shadow"
 				>
 					{items.map((item) => {
 						const isLinkActive =
@@ -187,7 +187,7 @@ function MainMenu(): T_ReactElement {
 					})}
 				</List>
 			) : null}
-		</div>
+		</Block>
 	);
 }
 
@@ -224,7 +224,7 @@ function SettingsMenu(): T_ReactElement {
 			{showMenu ? (
 				<List
 					is="menu"
-					className="dfr-shadow tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden"
+					className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden dfr-shadow"
 				>
 					<ToggleThemeMenuItem />
 					<RefreshAPPMenuItem />

@@ -25,7 +25,7 @@ export default function AboutMeBlock({
 					<Image
 						src={image}
 						className={classNames(
-							"dfr-shadow tw-my-1 tw-inline-block tw-rounded-md dfr-transition-opacity",
+							"tw-my-1 tw-inline-block tw-rounded-md dfr-transition-opacity dfr-shadow",
 							isPortrait ? "tw-w-24" : "tw-h-32 tw-w-40",
 							layout === "R" ? "tw-float-right tw-ml-4" : "tw-float-left tw-mr-4",
 						)}

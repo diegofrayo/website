@@ -51,7 +51,7 @@ const MY_THEME = {
 	},
 	["font-family"]: {
 		property: "fontFamily",
-		value: "'Mulish', monospace",
+		value: "'Mulish', sans-serif",
 	},
 	["transition-opacity"]: {
 		property: "",

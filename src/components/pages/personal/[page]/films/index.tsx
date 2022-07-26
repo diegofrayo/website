@@ -126,7 +126,8 @@ function Films(): T_ReactElement {
 											)}
 											isExternalLink
 										>
-											<article
+											<Block
+												is="article"
 												className="tw-flex tw-h-full tw-w-full tw-bg-no-repeat"
 												style={{
 													backgroundImage: `url(${cover})`,
@@ -179,7 +180,7 @@ function Films(): T_ReactElement {
 														</Text>
 													</Block>
 												</Block>
-											</article>
+											</Block>
 										</Link>
 									);
 								})}

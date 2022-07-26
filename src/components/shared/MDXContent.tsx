@@ -81,10 +81,19 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
 					/* Images */
 					:global(.dfr-MDXContent--default) > :global(a) > :global(img),
 					:global(.dfr-MDXContent--default) :global(li) > :global(a) > :global(img) {
-						@apply dfr-shadow;
 						@apply tw-rounded-md;
+						@apply dfr-shadow;
 						margin-left: auto;
 						margin-right: auto;
+					}
+
+					:global(.tw-dark) :global(.dfr-MDXContent--default) > :global(a) > :global(img),
+					:global(.tw-dark)
+						:global(.dfr-MDXContent--default)
+						:global(li)
+						> :global(a)
+						> :global(img) {
+						@apply dark-v-dfr-shadow;
 					}
 				`}
 			</style>

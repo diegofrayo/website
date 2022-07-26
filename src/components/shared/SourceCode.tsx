@@ -3,7 +3,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import dracula from "prism-react-renderer/themes/dracula";
 import classNames from "classnames";
 
-import { Block, Button, Icon, InlineText, Link, Space, Text } from "~/components/primitive";
+import { Block, Button, Icon, InlineText, Link, Pre, Space } from "~/components/primitive";
 import { useTranslation } from "~/i18n";
 import twcss from "~/lib/twcss";
 import { handleCopyToClipboardClick } from "~/utils/browser";
@@ -60,8 +60,8 @@ function SourceCode({
 			>
 				{({ className, style, tokens, getLineProps, getTokenProps }): T_ReactElement => {
 					return (
-						<Text
-							is="pre"
+						<Pre
+							variant={Pre.variant.UNSTYLED}
 							className={classNames(
 								className,
 								"tw-overflow-x-auto tw-p-4 tw-text-base dark:tw-border dark:dfr-border-color-gs-700",
@@ -92,7 +92,7 @@ function SourceCode({
 									</Line>
 								);
 							})}
-						</Text>
+						</Pre>
 					);
 				}}
 			</Highlight>

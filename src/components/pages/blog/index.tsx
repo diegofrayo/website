@@ -101,7 +101,10 @@ function BlogEntry({
 	}
 
 	return (
-		<article className="root dfr-shadow tw-my-8 tw-w-full sm:tw-w-5/12">
+		<Block
+			is="article"
+			className="tw-my-8 tw-w-full dfr-shadow sm:tw-w-5/12"
+		>
 			<Link
 				href={`${ROUTES.BLOG}/${slug}`}
 				variant={Link.variant.SIMPLE}
@@ -110,6 +113,7 @@ function BlogEntry({
 			>
 				<Block
 					is="header"
+					className="tw-h-[280px] tw-bg-cover tw-bg-center tw-bg-no-repeat sm:tw-h-[140px]"
 					style={{ backgroundImage: `url('${thumbnail}')` }}
 				/>
 				<Block
@@ -154,21 +158,6 @@ function BlogEntry({
 					</Block>
 				</Block>
 			</Link>
-
-			<style jsx>
-				{`
-					.root :global(header) {
-						background-position: center;
-						background-repeat: no-repeat;
-						background-size: cover;
-						height: 280px;
-
-						@screen sm {
-							height: 140px;
-						}
-					}
-				`}
-			</style>
-		</article>
+		</Block>
 	);
 }

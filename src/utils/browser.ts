@@ -80,10 +80,6 @@ export function handleCopyToClipboardClick(
 	copyToClipboard(event);
 }
 
-export function isSmallScreen(): boolean {
-	return getScreenSize() === "XS";
-}
-
 export function isInViewport(element: HTMLElement): boolean {
 	const bounding = element.getBoundingClientRect();
 
@@ -109,6 +105,10 @@ export async function downloadComponentAsImage(
 		link.href = dataUrl;
 		link.click();
 	});
+}
+
+export function isSmallScreen(): boolean {
+	return getScreenSize() === "XS";
 }
 
 export function isMobileDevice(): boolean {
@@ -204,9 +204,7 @@ export async function copyToClipboard(
 	}
 }
 
-// --- Private functions ---
-
-function getScreenSize(): "XS" | "SM" | "MD" | "LG" | "XL" {
+export function getScreenSize(): "XS" | "SM" | "MD" | "LG" | "XL" {
 	const width = window.innerWidth;
 
 	if (width < 640) {
@@ -228,22 +226,19 @@ function getScreenSize(): "XS" | "SM" | "MD" | "LG" | "XL" {
 	return "XL";
 }
 
-/*
-function getAndroidVersion(): number {
-  try {
-    const ua: string = navigator.userAgent.toLowerCase();
-    const match: RegExpMatchArray | null = ua.match(/android\s([0-9.]*)/);
+export function getAndroidVersion(): number {
+	try {
+		const ua: string = navigator.userAgent.toLowerCase();
+		const match: RegExpMatchArray | null = ua.match(/android\s([0-9.]*)/);
 
-    if (!match) throw new Error();
+		if (!match) throw new Error();
 
-    return parseFloat(match[1]);
-  } catch (error) {
-    reportError(error)
-    return -1;
-  }
+		return parseFloat(match[1]);
+	} catch (error) {
+		return -1;
+	}
 }
 
-function isAndroid(): boolean {
-  return navigator.userAgent.toLowerCase().indexOf("android") > -1;
+export function isAndroid(): boolean {
+	return navigator.userAgent.toLowerCase().indexOf("android") > -1;
 }
-*/

@@ -4,7 +4,7 @@ import * as React from "react";
 import classNames from "classnames";
 import reactStringReplace from "react-string-replace";
 
-import { Button, Icon, Modal, Space, Block, InlineText, Text } from "~/components/primitive";
+import { Button, Icon, Modal, Space, Block, InlineText, Pre } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { GuitarChord, GuitarService, T_Chord } from "~/lib/guitar";
 import { safeCastNumber } from "~/utils/numbers";
@@ -76,10 +76,10 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 											<InlineText
 												key={`Chord-point-${index}`}
 												className={classNames(
-													"tw-mx-1 tw-inline-flex tw-h-4 tw-w-4 tw-cursor-pointer tw-items-center tw-justify-center tw-rounded-full tw-text-xxs tw-leading-0 dfr-text-color-gs-white dark:dfr-text-color-gs-black",
+													"tw-mx-1 tw-inline-flex tw-h-4 tw-w-4 tw-cursor-pointer tw-items-center tw-justify-center tw-rounded-full tw-text-xxs tw-leading-0",
 													selectedChordIndex === index
-														? "tw-font-bold dfr-bg-color-gs-white"
-														: "dfr-bg-color-gs-400",
+														? "tw-font-bold dfr-bg-color-bw dfr-text-color-wb"
+														: "tw-border dfr-text-color-gs-black dfr-border-color-gs-black dark:tw-border-0 dark:dfr-bg-color-gs-400",
 												)}
 												onClick={() => handleUpdateSelectedChordIndex(index)}
 											>
@@ -200,10 +200,10 @@ function useController({ children, insertions }: T_TextFormatterProps): {
 		return result.map((item, index) => {
 			if (typeof item === "string") {
 				return (
-					<Text
-						is="pre"
+					<Pre
 						key={`TextFormatter-item-${index}`}
-						className="tw-overflow-visible tw-break-normal tw-leading-none"
+						variant={Pre.variant.UNSTYLED}
+						className="tw-overflow-visible tw-leading-none"
 						dangerouslySetInnerHTML={{ __html: item }}
 					/>
 				);

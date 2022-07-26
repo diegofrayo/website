@@ -31,7 +31,7 @@ function Dencrypt(): T_ReactElement {
 	} = useController();
 
 	return (
-		<div className="root">
+		<Block>
 			<form
 				className="tw-mb-8"
 				onSubmit={onSubmitHandler}
@@ -82,7 +82,7 @@ function Dencrypt(): T_ReactElement {
 					copiar
 				</Button>
 			</Block>
-		</div>
+		</Block>
 	);
 }
 

@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRouter } from "next/router";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
-import { Icon, Button, Space, Block, Text } from "~/components/primitive";
+import { Icon, Button, Space, Block, Text, Pre } from "~/components/primitive";
 import { Page, MainLayout } from "~/components/layout";
 import { MDXContent, Loader, RateContent } from "~/components/shared";
 import { SongDetails, SongSources } from "~/components/pages/music/components";
@@ -129,9 +129,8 @@ function SongPage(props: T_PageProps): T_ReactElement {
 						<Text className="tw-font-bold">
 							{t("page:chords_title")} [{song.chords.length}]
 						</Text>
-						<Text
-							is="pre"
-							className="tw-whitespace-normal tw-break-all"
+						<Pre
+							variant={Pre.variant.BREAK_WORDS}
 							dangerouslySetInnerHTML={{
 								__html: GuitarService.formatText(song.chords.join(" | ")),
 							}}

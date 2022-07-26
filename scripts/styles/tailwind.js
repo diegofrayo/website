@@ -20,10 +20,30 @@ function generateTailwindConfig(e) {
 function dfrUtilitiesPlugin({ addUtilities, e }) {
 	const config = generateTailwindConfig(e);
 
-	addUtilities(config, {
-		respectPrefix: false,
-		variants: [],
-	});
+	console.log(config);
+
+	addUtilities(
+		{
+			...config,
+			".dfr-shadow": {
+				boxShadow: "0px 0px 3px 0px rgba(0, 0, 0, 0.5)",
+			},
+			".tw-dark .dfr-shadow": {
+				boxShadow: "none",
+				borderWidth: "0.5px",
+				borderColor: "gray",
+			},
+			".dark-v-dfr-shadow": {
+				boxShadow: "none",
+				borderWidth: "0.5px",
+				borderColor: "gray",
+			},
+		},
+		{
+			respectPrefix: false,
+			variants: [],
+		},
+	);
 }
 
 module.exports = plugin(dfrUtilitiesPlugin);
