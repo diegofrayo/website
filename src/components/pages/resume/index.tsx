@@ -36,7 +36,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 		>
 			<Block
 				is="main"
-				className="my-shadow tw-relative tw-mx-auto tw-px-8 tw-py-16 dfr-max-w-layout print:tw-w-full print:tw-border-0"
+				className="tw-relative tw-mx-auto tw-px-8 tw-py-16 dfr-max-w-layout dfr-shadow print:tw-w-full print:tw-border-0"
 			>
 				<GoBack className="tw-absolute tw-top-0 print:tw-hidden" />
 				<PrintBlock>

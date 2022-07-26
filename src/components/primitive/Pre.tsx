@@ -14,40 +14,36 @@ type T_PreProps = T_HTMLElementAttributes["pre"] & {
 function Pre({ children, className, variant, ...rest }: T_PreProps): T_ReactElement {
 	if (variant === VARIANTS.STYLED) {
 		return (
-			<div
-				className={classNames(
-					"dfr-Pre--styled root tw-rounded-md tw-border tw-p-4 tw-font-mono tw-text-base dfr-bg-color-secondary dfr-border-color-primary dark:dfr-bg-color-tertiary",
-				)}
-			>
+			<div className="dfr-Pre--styled root tw-rounded-md tw-border tw-p-4 tw-font-mono tw-text-base dfr-bg-color-secondary dfr-border-color-primary dark:dfr-bg-color-tertiary">
 				<pre
 					{...rest}
 					className={classNames("tw-overflow-x-auto", className)}
 				>
 					{children}
-
-					<style jsx>
-						{`
-							.root :global(pre) {
-								word-break: keep-all;
-								overflow-x: auto;
-							}
-
-							.root :global(pre) :global(.dfr-Code::before),
-							.root :global(pre) :global(.dfr-Code::after) {
-								content: "";
-							}
-
-							.root :global(pre) :global(.dfr-Code) {
-								@apply dfr-text-color-gs-700;
-								font-style: normal;
-							}
-
-							:global(.tw-dark) :global(.dfr-Pre--styled) pre :global(.dfr-Code) {
-								@apply dfr-text-color-primary;
-							}
-						`}
-					</style>
 				</pre>
+
+				<style jsx>
+					{`
+						.root pre {
+							word-break: keep-all;
+							overflow-x: auto;
+						}
+
+						.root :global(.dfr-Code) {
+							@apply dfr-text-color-gs-700;
+							font-style: normal;
+						}
+
+						.root :global(.dfr-Code::before),
+						.root :global(.dfr-Code::after) {
+							content: "";
+						}
+
+						:global(.tw-dark) :global(.dfr-Pre--styled) :global(.dfr-Code) {
+							@apply dfr-text-color-primary;
+						}
+					`}
+				</style>
 			</div>
 		);
 	}

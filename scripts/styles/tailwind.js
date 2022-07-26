@@ -4,8 +4,14 @@ const MY_THEME = require("./theme");
 
 function generateTailwindConfig(e) {
 	return Object.entries(MY_THEME).reduce((result, [key, config]) => {
-		if (config.property === "") {
-			result[`.dfr-${key}`] = config.value;
+		if (config.property === "multiple") {
+			if (config.value.light && config.value.dark) {
+				result[`.dfr-${key}`] = config.value.light;
+				result[`.tw-dark .dfr-${key}`] = config.value.dark;
+				result[`.dark-v-dfr-${key}`] = config.value.dark;
+			} else {
+				result[`.dfr-${key}`] = config.value;
+			}
 		} else if (
 			(typeof config.value === "object" && config.value.light && config.value.dark) ||
 			typeof config.value === "string"
@@ -20,30 +26,10 @@ function generateTailwindConfig(e) {
 function dfrUtilitiesPlugin({ addUtilities, e }) {
 	const config = generateTailwindConfig(e);
 
-	console.log(config);
-
-	addUtilities(
-		{
-			...config,
-			".dfr-shadow": {
-				boxShadow: "0px 0px 3px 0px rgba(0, 0, 0, 0.5)",
-			},
-			".tw-dark .dfr-shadow": {
-				boxShadow: "none",
-				borderWidth: "0.5px",
-				borderColor: "gray",
-			},
-			".dark-v-dfr-shadow": {
-				boxShadow: "none",
-				borderWidth: "0.5px",
-				borderColor: "gray",
-			},
-		},
-		{
-			respectPrefix: false,
-			variants: [],
-		},
-	);
+	addUtilities(config, {
+		respectPrefix: false,
+		variants: [],
+	});
 }
 
 module.exports = plugin(dfrUtilitiesPlugin);

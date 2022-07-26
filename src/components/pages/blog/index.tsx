@@ -118,7 +118,7 @@ function BlogEntry({
 				/>
 				<Block
 					is="footer"
-					className="tw-relative tw-flex-1 tw-pt-2 tw-pb-8 dark:dfr-bg-color-secondary"
+					className="tw-relative tw-flex-1 tw-pt-2 tw-pb-8"
 				>
 					<Title
 						is="h1"

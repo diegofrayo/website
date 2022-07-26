@@ -54,12 +54,25 @@ const MY_THEME = {
 		value: "'Mulish', sans-serif",
 	},
 	["transition-opacity"]: {
-		property: "",
+		property: "multiple",
 		value: {
 			transition: defaultTheme.transitionProperty.opacity,
 			transitionDuration: defaultTheme.transitionDuration["500"],
 			"&:hover": {
 				opacity: defaultTheme.opacity[70],
+			},
+		},
+	},
+	["shadow"]: {
+		property: "multiple",
+		value: {
+			light: {
+				boxShadow: "0px 0px 3px 0px rgba(0, 0, 0, 0.5)",
+			},
+			dark: {
+				boxShadow: "0px 0px 3px 0px rgba(255, 255, 255, 0.1)",
+				borderWidth: "0.5px",
+				borderColor: colors.gray["800"],
 			},
 		},
 	},

@@ -1,13 +1,6 @@
 const withMDX = require("@next/mdx");
 const withPWA = require("next-pwa");
 
-// TODO: Remove this
-console.log(
-	"PROCESS.ENV.DISABLE_PWA ===>",
-	process.env.DISABLE_PWA,
-	typeof process.env.DISABLE_PWA,
-);
-
 module.exports = withMDX()(
 	withPWA({
 		pwa: {

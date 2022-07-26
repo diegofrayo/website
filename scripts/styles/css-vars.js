@@ -12,7 +12,9 @@ main();
 
 function generateCSSVars() {
 	const lightModeOutput = Object.entries(MY_THEME).reduce((result, [item, config]) => {
-		if (config.property === "") return result;
+		if (config.property === "multiple") {
+			return result;
+		}
 
 		if (typeof config.value === "object" && config.value.light && config.value.dark) {
 			result += `--dfr-${item}: ${hexToRgba(config.property, config.value.light)};\n`;
@@ -24,7 +26,9 @@ function generateCSSVars() {
 	}, "");
 
 	const darkModeOutput = Object.entries(MY_THEME).reduce((result, [item, config]) => {
-		if (config.property === "") return result;
+		if (config.property === "multiple") {
+			return result;
+		}
 
 		if (typeof config.value === "object" && config.value.light && config.value.dark) {
 			result += `--dfr-${item}: ${hexToRgba(config.property, config.value.dark)};\n`;
