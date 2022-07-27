@@ -1,65 +1,69 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
-const colors = require("tailwindcss/colors");
+const TW_DEFAULT_THEME = require("tailwindcss/defaultTheme");
+const TW_COLORS = require("tailwindcss/colors");
+const color = require("color");
+// https://github.com/Qix-/color | https://github.com/bgrins/TinyColor | https://gka.github.io/chroma.js/
 
 const COMMON_COLORS = {
 	// Global tokens
 	["color-gs-white"]: {
 		value: {
-			light: colors.white,
-			dark: colors.white,
+			light: TW_COLORS.white,
+			dark: TW_COLORS.white,
 		},
 	},
 	["color-gs-400"]: {
 		value: {
-			light: colors.gray["400"],
-			dark: colors.gray["400"],
+			light: TW_COLORS.gray["400"],
+			dark: TW_COLORS.gray["400"],
 		},
 	},
 	["color-gs-700"]: {
 		value: {
-			light: colors.gray["700"],
-			dark: colors.gray["700"],
+			light: TW_COLORS.gray["700"],
+			dark: TW_COLORS.gray["700"],
 		},
 	},
 	["color-gs-black"]: {
 		value: {
-			light: colors.black,
-			dark: colors.black,
+			light: TW_COLORS.black,
+			dark: TW_COLORS.black,
 		},
 	},
 
 	// Alias tokens
 	["color-bw"]: {
 		value: {
-			light: colors.black,
-			dark: colors.white,
+			light: TW_COLORS.black,
+			dark: TW_COLORS.white,
 		},
 	},
 	["color-wb"]: {
 		value: {
-			light: colors.white,
-			dark: colors.black,
+			light: TW_COLORS.white,
+			dark: TW_COLORS.black,
 		},
 	},
 };
+
+const BG_DARK_MODE = "#1A1E23";
 
 const MY_THEME = {
 	// Global tokens
 	["max-w-layout"]: {
 		property: "maxWidth",
-		value: defaultTheme.screens.md,
+		value: TW_DEFAULT_THEME.screens.md,
 	},
 	["font-family"]: {
 		property: "fontFamily",
-		value: "'Mulish', sans-serif",
+		value: "'Bitter', sans-serif",
 	},
 	["transition-opacity"]: {
 		property: "multiple",
 		value: {
-			transition: defaultTheme.transitionProperty.opacity,
-			transitionDuration: defaultTheme.transitionDuration["500"],
+			transition: TW_DEFAULT_THEME.transitionProperty.opacity,
+			transitionDuration: TW_DEFAULT_THEME.transitionDuration["500"],
 			"&:hover": {
-				opacity: defaultTheme.opacity[70],
+				opacity: TW_DEFAULT_THEME.opacity[70],
 			},
 		},
 	},
@@ -72,7 +76,7 @@ const MY_THEME = {
 			dark: {
 				boxShadow: "0px 0px 3px 0px rgba(255, 255, 255, 0.1)",
 				borderWidth: "0.5px",
-				borderColor: colors.gray["800"],
+				borderColor: color(BG_DARK_MODE).lighten(0.9).hex(),
 			},
 		},
 	},
@@ -81,43 +85,43 @@ const MY_THEME = {
 	["bg-color-primary"]: {
 		property: "backgroundColor",
 		value: {
-			light: colors.white,
-			dark: "#1A1E23",
+			light: TW_COLORS.white,
+			dark: BG_DARK_MODE,
 		},
 	},
 	["bg-color-secondary"]: {
 		property: "backgroundColor",
 		value: {
-			light: colors.gray["50"],
-			dark: "#1F2328",
+			light: TW_COLORS.gray["50"],
+			dark: color(BG_DARK_MODE).lighten(0.3).hex(),
 		},
 	},
 	["bg-color-tertiary"]: {
 		property: "backgroundColor",
 		value: {
-			light: colors.gray["100"],
-			dark: colors.gray["700"],
+			light: TW_COLORS.gray["100"],
+			dark: color(BG_DARK_MODE).lighten(0.6).hex(),
 		},
 	},
 	["border-color-primary"]: {
 		property: "borderColor",
 		value: {
-			light: colors.gray["200"],
-			dark: colors.gray["700"],
+			light: TW_COLORS.gray["200"],
+			dark: color(BG_DARK_MODE).lighten(0.9).hex(),
 		},
 	},
 	["text-color-primary"]: {
 		property: "color",
 		value: {
-			light: colors.gray["600"],
-			dark: colors.gray["400"],
+			light: TW_COLORS.gray["600"],
+			dark: TW_COLORS.gray["400"],
 		},
 	},
 	["text-color-secondary"]: {
 		property: "color",
 		value: {
-			light: colors.zinc["400"],
-			dark: colors.gray["500"],
+			light: TW_COLORS.zinc["400"],
+			dark: TW_COLORS.gray["500"],
 		},
 	},
 
@@ -125,15 +129,15 @@ const MY_THEME = {
 	["text-color-links"]: {
 		property: "color",
 		value: {
-			light: colors.amber["600"],
-			dark: colors.red["400"],
+			light: TW_COLORS.amber["600"],
+			dark: TW_COLORS.red["400"],
 		},
 	},
 	["text-color-inline-code"]: {
 		property: "color",
 		value: {
-			light: colors.red["600"],
-			dark: colors.amber["400"],
+			light: TW_COLORS.red["600"],
+			dark: TW_COLORS.amber["400"],
 		},
 	},
 

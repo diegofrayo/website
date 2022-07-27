@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Html, Head, Main, NextScript } from "next/document";
 
-import { isDevelopmentEnvironment } from "~/utils/app";
 import type { T_ReactElement } from "~/types";
 
 function Document(): T_ReactElement {
@@ -9,9 +8,7 @@ function Document(): T_ReactElement {
 		<Html>
 			<Head>
 				<link
-					href={`https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;700&display=${
-						isDevelopmentEnvironment() ? "swap" : "optional"
-					}`}
+					href="https://fonts.googleapis.com/css2?family=Bitter:wght@200;400;700&display=swap"
 					rel="stylesheet"
 				/>
 			</Head>

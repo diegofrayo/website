@@ -1,6 +1,6 @@
 body {
 	--dfr-max-w-layout: 768px;
-	--dfr-font-family: "Mulish", sans-serif;
+	--dfr-font-family: "Bitter", sans-serif;
 	--dfr-bg-color-primary: #fff;
 	--dfr-bg-color-secondary: #f9fafb;
 	--dfr-bg-color-tertiary: #f3f4f6;
@@ -55,9 +55,9 @@ body {
 
 .tw-dark body {
 	--dfr-bg-color-primary: #1a1e23;
-	--dfr-bg-color-secondary: #1f2328;
-	--dfr-bg-color-tertiary: #374151;
-	--dfr-border-color-primary: #374151;
+	--dfr-bg-color-secondary: #22272d;
+	--dfr-bg-color-tertiary: #2a3038;
+	--dfr-border-color-primary: #313943;
 	--dfr-text-color-primary: rgba(156, 163, 175, 1);
 	--dfr-text-color-secondary: rgba(107, 114, 128, 1);
 	--dfr-text-color-links: rgba(248, 113, 113, 1);

@@ -175,7 +175,7 @@ function GoToTopButton(): T_ReactElementNullable {
 		return (
 			<Button
 				variant={Button.variant.SIMPLE}
-				className="tw-fixed tw-bottom-3 tw-right-3 tw-z-50 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-border tw-bg-opacity-70 tw-text-2xl dfr-border-color-gs-700 dfr-bg-color-gs-black sm:tw-right-4 sm:tw-bottom-4"
+				className="tw-fixed tw-bottom-3 tw-right-3 tw-z-50 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-bg-opacity-70 tw-text-2xl dfr-shadow dfr-bg-color-gs-black sm:tw-right-4 sm:tw-bottom-4"
 				onClick={handleGoToTheTopClick}
 			>
 				<Icon

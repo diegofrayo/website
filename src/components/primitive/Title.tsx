@@ -151,7 +151,7 @@ function useController({
 		id: variant === VARIANTS.PRIMARY && isString(children) ? generateSlug(children) : id,
 		className: classNames(
 			`dfr-Title dfr-Title--${variant.toLowerCase()}`,
-			"tw-font-bold tw-font-serif",
+			"tw-font-bold",
 			generateStyles(is),
 			className,
 		),

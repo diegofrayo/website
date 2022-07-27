@@ -32,7 +32,7 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
 					:global(.dfr-MDXContent--default) > :global(hr),
 					:global(.dfr-MDXContent--default) > :global(ol),
 					:global(.dfr-MDXContent--default) > :global(p),
-					:global(.dfr-MDXContent--default) > :global(.dfr-Code--multiline),
+					:global(.dfr-MDXContent--default) > :global(.dfr-Pre--styled),
 					:global(.dfr-MDXContent--default) > :global(ul),
 					:global(.dfr-MDXContent--default) > :global(a) > :global(img),
 					:global(.dfr-MDXContent--default) :global(*[data-markdown-block]) {
@@ -45,7 +45,7 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
 
 					/* Spacing: nested components */
 					:global(.dfr-MDXContent--default) :global(li) > :global(p),
-					:global(.dfr-MDXContent--default) :global(li) > :global(.dfr-Code--multiline),
+					:global(.dfr-MDXContent--default) :global(li) > :global(.dfr-Pre--styled),
 					:global(.dfr-MDXContent--default) :global(li) > :global(blockquote),
 					:global(.dfr-MDXContent--default) :global(li) > :global(img),
 					:global(.dfr-MDXContent--default) :global(blockquote) > :global(p),
