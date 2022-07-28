@@ -39,7 +39,7 @@ function Collapsible(props: T_CollapsibleProps): T_ReactElement {
 		>
 			<summary
 				role="button"
-				className="tw-font-bold"
+				className="tw-font-bold dfr-text-color-bw"
 				onClick={handleToggleClick}
 			>
 				{computedTitle}

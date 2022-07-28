@@ -83,7 +83,7 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 						</Block>
 						<Block className="tw-hidden print:tw-hidden sm:tw-block">
 							<Button
-								variant={Button.variant.SIMPLE}
+								variant={Button.variant.DEFAULT}
 								onClick={handleToggleWhatsAppOptionClick}
 							>
 								<InlineText className="tw-mr-1 tw-inline-block tw-text-right tw-text-xs tw-font-bold">

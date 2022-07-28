@@ -66,7 +66,7 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 								className={classNames(
 									"tw-p-1 tw-pt-0",
 									reading.starred &&
-										"tw-border tw-border-dotted tw-border-amber-500 tw-bg-amber-50 dark:tw-border-amber-700 dark:tw-bg-amber-900",
+										"tw-border tw-border-dotted tw-border-amber-500 tw-bg-amber-50 dark:tw-border-amber-800 dark:tw-bg-amber-900",
 								)}
 							>
 								<Link
@@ -76,7 +76,7 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 								>
 									{reading.title}
 								</Link>
-								<Text className="tw-text-xs tw-font-bold tw-italic">
+								<Text className="tw-text-xs tw-font-bold tw-italic dfr-text-color-bw">
 									{new URL(reading.url).host}
 									{isNotEmptyString(reading.author) ? ` | ${reading.author}` : ""}
 								</Text>

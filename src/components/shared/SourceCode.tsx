@@ -38,11 +38,11 @@ function SourceCode({
 
 	return (
 		<Block
-			className="dfr-SourceCode dfr-bg-color-wb dark:tw-bg-transparent"
+			className="dfr-SourceCode tw-overflow-hidden tw-rounded-md tw-border dfr-border-color-primary dfr-bg-color-wb dark:tw-bg-transparent"
 			data-markdown-block
 		>
 			{displaySourceCodeDetails ? (
-				<Block className="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-rounded-t-md tw-border tw-border-b-0 tw-px-4 tw-py-2 tw-pr-2 tw-font-mono tw-text-sm dfr-border-color-primary dfr-text-color-bw dark:tw-border-0 dark:dfr-bg-color-tertiary">
+				<Block className="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-px-4 tw-py-2 tw-pr-2 tw-font-mono tw-text-sm dfr-text-color-bw dark:dfr-bg-color-tertiary">
 					{isNotEmptyString(codeTitle) ? (
 						<code className="tw-mr-4 tw-flex-1 tw-font-bold">{codeTitle}</code>
 					) : null}
@@ -64,7 +64,7 @@ function SourceCode({
 							variant={Pre.variant.UNSTYLED}
 							className={classNames(
 								className,
-								"tw-overflow-x-auto tw-p-4 tw-text-base dark:tw-border dark:dfr-border-color-gs-700",
+								"tw-overflow-x-auto tw-border-y tw-p-4 tw-text-base dfr-border-color-primary",
 							)}
 							style={style}
 						>
@@ -98,7 +98,7 @@ function SourceCode({
 			</Highlight>
 
 			{displaySourceCodeDetails ? (
-				<Block className="tw-flex tw-flex-col tw-rounded-b-md tw-border tw-border-t-0 tw-py-2 tw-px-4 tw-pr-2 tw-text-sm dfr-border-color-primary dark:tw-border-0  dark:dfr-bg-color-tertiary sm:tw-flex-row sm:tw-justify-end">
+				<Block className="tw-flex tw-flex-col tw-py-2 tw-px-4 tw-pr-2 tw-text-sm  dark:dfr-bg-color-tertiary sm:tw-flex-row sm:tw-justify-end">
 					{isNotEmptyString(sourceURL) ? (
 						<React.Fragment>
 							<Link

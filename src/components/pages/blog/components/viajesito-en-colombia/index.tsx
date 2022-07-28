@@ -265,12 +265,12 @@ function SlideContent({
 		>
 			<Block
 				className={classNames(
-					"media-container dfr-bg-color-gs-black dark:tw-shadow-none",
+					"media-container",
 					isFullscreenVariant
 						? isLandscape
 							? "media-container--fullscreen"
 							: "media-container--fullscreen media-container--fullscreen--portrait"
-						: "tw-flex tw-items-center",
+						: "tw-flex tw-items-center dfr-bg-color-gs-black",
 				)}
 			>
 				{type === "youtube" ? (
@@ -305,6 +305,7 @@ function SlideContent({
 				}
 
 				.root :global(.media-container--fullscreen) {
+					@apply tw-bg-transparent;
 					height: auto;
 				}
 			`}</style>
