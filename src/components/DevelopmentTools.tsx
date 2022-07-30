@@ -32,7 +32,7 @@ function DevelopmentTools(): T_ReactElementNullable {
 
 	return (
 		<Block className="tw-fixed tw-top-2 tw-left-2 tw-z-40 tw-rounded-md">
-			{!isLocalhostEnvironment() ? (
+			{isLocalhostEnvironment() ? (
 				<Block className="tw-p-2 tw-text-sm dfr-shadow dfr-bg-color-secondary">
 					<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
 						<Button
@@ -41,10 +41,7 @@ function DevelopmentTools(): T_ReactElementNullable {
 						>
 							<Icon icon={Icon.icon.CODE} />
 						</Button>
-						<Block className="tw-flex tw-items-center tw-justify-center tw-gap-1">
-							<UserLoggedInFlag />
-							<AnalyticsDisabledFlag />
-						</Block>
+						<Flags />
 					</Block>
 
 					{isTrue(showConfig) ? (
@@ -62,10 +59,7 @@ function DevelopmentTools(): T_ReactElementNullable {
 					) : null}
 				</Block>
 			) : (
-				<Block className="tw-flex tw-items-center tw-justify-center tw-gap-1">
-					<UserLoggedInFlag />
-					<AnalyticsDisabledFlag />
-				</Block>
+				<Flags />
 			)}
 		</Block>
 	);
@@ -74,6 +68,15 @@ function DevelopmentTools(): T_ReactElementNullable {
 export default DevelopmentTools;
 
 // --- Components ---
+
+function Flags(): T_ReactElement {
+	return (
+		<Block className="tw-flex tw-items-center tw-justify-center tw-gap-1">
+			<UserLoggedInFlag />
+			<AnalyticsDisabledFlag />
+		</Block>
+	);
+}
 
 function UsersConfig(): T_ReactElement {
 	// vars

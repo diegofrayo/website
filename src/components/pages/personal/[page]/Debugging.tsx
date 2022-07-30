@@ -4,7 +4,7 @@ import { Pre } from "~/components/primitive";
 import { AuthService } from "~/auth";
 import { useDidMount } from "~/hooks";
 import AnalyticsService from "~/services/analytics";
-import { isBrowser, isDevelopmentEnvironment, isServer } from "~/utils/app";
+import { isBrowser, isDevelopmentEnvironment, isLocalhostEnvironment, isServer } from "~/utils/app";
 import {
 	getAndroidVersion,
 	getScreenSize,
@@ -46,6 +46,7 @@ function Debugging(): T_ReactElement {
 						isPWA: isPWA(),
 						isServer: isServer(),
 						isBrowser: isBrowser(),
+						isLocalhostEnvironment: isLocalhostEnvironment(),
 						isDevelopmentEnvironment: isDevelopmentEnvironment(),
 					},
 				},
