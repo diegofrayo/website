@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { isDevelopmentEnvironment } from "~/utils/app";
+import { isLocalhostEnvironment } from "~/utils/app";
 import {
 	createArray,
 	transformObjectKeysFromSnakeCaseToLowerCamelCase,
@@ -183,7 +183,7 @@ class GuitarService {
 			})
 			.join("\n");
 
-		if (isDevelopmentEnvironment()) {
+		if (isLocalhostEnvironment()) {
 			console.log(
 				"Chords of this song:",
 				Object.keys(chords)

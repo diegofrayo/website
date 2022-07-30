@@ -2,7 +2,7 @@ import autoBind from "auto-bind";
 import splitbee from "@splitbee/web";
 
 import { AuthService } from "~/auth";
-import { isDevelopmentEnvironment, logger } from "~/utils/app";
+import { isLocalhostEnvironment, logger } from "~/utils/app";
 import { isNotEmptyString, isTrue } from "~/utils/validations";
 import type { T_Object } from "~/types";
 
@@ -55,7 +55,7 @@ class AnalyticsService {
 			return true;
 		}
 
-		return AuthService.isUserLoggedIn() || isDevelopmentEnvironment();
+		return AuthService.isUserLoggedIn() || isLocalhostEnvironment();
 	}
 }
 

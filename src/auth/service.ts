@@ -1,10 +1,11 @@
 import autoBind from "auto-bind";
 
 import http from "~/lib/http";
-import { isBrowser } from "~/utils/app";
+import { isBrowser, isLocalhostEnvironment } from "~/utils/app";
 import { ENV_VARS } from "~/utils/constants";
 import { isNotEmptyString, isObject } from "~/utils/validations";
 import type { T_UnknownObject } from "~/types";
+import { readDevToolsConfig } from "~/utils/dev-tools";
 
 class AuthService {
 	private LOCAL_STORAGE_KEY = "DFR_AUTH";
@@ -28,6 +29,10 @@ class AuthService {
 	}
 
 	isUserLoggedIn(): boolean {
+		if (isLocalhostEnvironment() && isBrowser()) {
+			return readDevToolsConfig().isUserLoggedIn === true;
+		}
+
 		return isNotEmptyString(this.getToken());
 	}
 

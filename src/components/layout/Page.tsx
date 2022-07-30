@@ -1,11 +1,8 @@
 import * as React from "react";
 import Head from "next/head";
-import classNames from "classnames";
 import Script from "next/script";
 
-import { InlineText } from "~/components/primitive";
 import { useDidMount, useDocumentTitle } from "~/hooks";
-import { withAuthenticationRequired } from "~/hocs";
 import { I18nService, T_Locale } from "~/i18n";
 import AnalyticsService from "~/services/analytics";
 import { useStoreSelector } from "~/state";
@@ -20,7 +17,9 @@ import { isDevelopmentEnvironment } from "~/utils/app";
 import { ROUTES, T_RoutesValues } from "~/utils/routing";
 import { generateSlug } from "~/utils/strings";
 import { isNotEmptyString, isTrue } from "~/utils/validations";
-import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
+import type { T_ReactChildren, T_ReactElement } from "~/types";
+
+import DevelopmentTools from "../DevelopmentTools";
 
 type T_PageProps = {
 	children: T_ReactChildren;
@@ -213,56 +212,9 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 				) : null}
 			</Head>
 			{children}
-
-			<UserLoggedInFlag />
-			<AnalyticsDisabledFlag />
+			<DevelopmentTools />
 		</React.Fragment>
 	);
 }
 
 export default Page;
-
-// --- Components ---
-
-const UserLoggedInFlag = withAuthenticationRequired(function UserLoggedInFlag(): T_ReactElement {
-	return (
-		<Flag
-			className="tw-z-50"
-			color="dfr-bg-color-bw"
-		/>
-	);
-});
-
-function AnalyticsDisabledFlag(): T_ReactElementNullable {
-	// hooks
-	const [isAnalyticsDisabled, setIsAnalyticsDisabled] = React.useState(false);
-
-	// effects
-	useDidMount(() => {
-		setIsAnalyticsDisabled(AnalyticsService.isAnalyticsDisabled());
-	});
-
-	if (isAnalyticsDisabled) {
-		return (
-			<Flag
-				className="tw-z-40"
-				color="tw-bg-amber-600 dark:tw-bg-red-400"
-			/>
-		);
-	}
-
-	return null;
-}
-
-type T_FlagProps = {
-	className: string;
-	color: string;
-};
-
-function Flag({ className, color }: T_FlagProps): T_ReactElement {
-	return (
-		<InlineText
-			className={classNames("tw-fixed tw-top-1 tw-left-1 tw-h-1 tw-w-1", className, color)}
-		/>
-	);
-}
