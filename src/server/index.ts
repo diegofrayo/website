@@ -1,5 +1,5 @@
 import http from "~/lib/http";
-import { ENV_VARS } from "~/utils/constants";
+import { ENV_VARS } from "~/constants";
 
 type T_DataLoaderParams = { path: string };
 

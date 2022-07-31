@@ -6,12 +6,10 @@ module.exports = {
 	plugins: ["prettier", "no-loops", "react-hooks", "@typescript-eslint"],
 	ignorePatterns: [
 		"public/**/*",
-		"src/components/pages/music/components/TextFormatter.tsx",
-		"src/components/pages/personal/*/timer/**/*",
-		"src/i18n",
+		"src/features/i18n",
+		"src/features/pages/personal/*/timer/**/*",
 		"src/lib/guitar",
-		"src/pages/lgy",
-		"src/state",
+		"src/stores",
 		"src/stories",
 	],
 	extends: [
@@ -47,19 +45,6 @@ module.exports = {
 		"jsx-a11y/media-has-caption": "off",
 
 		// --- Rules configured by myself --
-		"@typescript-eslint/naming-convention": [
-			"error",
-			{
-				selector: "interface",
-				format: ["PascalCase"],
-				prefix: ["I_"],
-			},
-			{
-				selector: "typeAlias",
-				format: ["PascalCase"],
-				prefix: ["T_"],
-			},
-		],
 		"@typescript-eslint/no-use-before-define": "off",
 		"class-methods-use-this": "off",
 		"import/extensions": "off",
@@ -80,8 +65,22 @@ module.exports = {
 				html: "ignore",
 			},
 		],
+		"react/no-array-index-key": warnRulesValue,
 		"react/no-danger": warnRulesValue,
 
+		"@typescript-eslint/naming-convention": [
+			"error",
+			{
+				selector: "interface",
+				format: ["PascalCase"],
+				prefix: ["I_"],
+			},
+			{
+				selector: "typeAlias",
+				format: ["PascalCase"],
+				prefix: ["T_"],
+			},
+		],
 		"@typescript-eslint/explicit-function-return-type": "error",
 		"@typescript-eslint/no-explicit-any": "error",
 		"@typescript-eslint/no-shadow": ["error", { allow: ["params", "data", "result"] }],
@@ -94,7 +93,6 @@ module.exports = {
 				allowFunctions: true,
 			},
 		],
-		"react/no-array-index-key": "error",
 	},
 	settings: {
 		react: {

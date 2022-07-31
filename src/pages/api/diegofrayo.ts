@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import { logger } from "~/utils/app";
-import { ENV_VARS } from "~/utils/constants";
+import { ENV_VARS } from "~/constants";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
 	if (req.body.secret !== ENV_VARS.NEXT_PUBLIC_ISR_TOKEN) {

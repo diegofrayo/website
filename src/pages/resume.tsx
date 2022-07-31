@@ -1,8 +1,8 @@
-import ResumePage from "~/components/pages/resume";
-import { getPageContentStaticProps } from "~/i18n";
+import ResumePage from "~/features/pages/resume";
+import { getPageContentStaticProps } from "~/features/i18n";
 import http from "~/lib/http";
-import { ENV_VARS } from "~/utils/constants";
-import { ROUTES } from "~/utils/routing";
+import { ENV_VARS } from "~/constants";
+import { ROUTES } from "~/features/routing";
 
 export default ResumePage;
 

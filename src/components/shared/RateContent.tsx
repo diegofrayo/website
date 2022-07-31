@@ -4,8 +4,8 @@ import { toast } from "react-toastify";
 
 import { Button, Block, Text, Space } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import { T_TranslationFunction, useTranslation } from "~/i18n";
-import AnalyticsService from "~/services/analytics";
+import { T_TranslationFunction, useTranslation } from "~/features/i18n";
+import { AnalyticsService } from "~/features/analytics";
 import { reportError } from "~/utils/app";
 import { isEmptyString, isNotEmptyString } from "~/utils/validations";
 import type { T_Object, T_ReactElement } from "~/types";

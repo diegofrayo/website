@@ -1,4 +1,4 @@
-import { AuthService } from "~/auth";
+import { AuthService } from "~/features/auth";
 import type { T_ReactFunctionComponent } from "~/types";
 
 import renderIf from "./renderIf";

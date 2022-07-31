@@ -2,14 +2,14 @@ import { GetStaticPaths } from "next";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
-import SongPage from "~/components/pages/music/[song]";
-import MusicService, { T_Song } from "~/components/pages/music/service";
-import { getPageContentStaticProps } from "~/i18n";
+import SongPage from "~/features/pages/music/[song]";
+import MusicService, { T_Song } from "~/features/pages/music/service";
+import { getPageContentStaticProps } from "~/features/i18n";
 import http from "~/lib/http";
 import dataLoader from "~/server";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { MDXScope } from "~/utils/mdx";
-import { ROUTES } from "~/utils/routing";
+import { MDXScope } from "~/features/mdx";
+import { ROUTES } from "~/features/routing";
 import { isUndefined } from "~/utils/validations";
 
 type T_PageProps = {

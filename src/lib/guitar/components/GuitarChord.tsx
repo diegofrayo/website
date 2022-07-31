@@ -6,7 +6,7 @@ import classNames from "classnames";
 import { Button, Title, Block, InlineText } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { useExecuteCallback } from "~/hooks";
-import AnalyticsService from "~/services/analytics";
+import { AnalyticsService } from "~/features/analytics";
 import type { T_ReactElement, T_ReactRefObject } from "~/types";
 import { downloadComponentAsImage, handleCopyToClipboardClick } from "~/utils/browser";
 

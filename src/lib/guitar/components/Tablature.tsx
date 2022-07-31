@@ -4,7 +4,7 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Space, Block, Text, InlineText } from "~/components/primitive";
-import { AuthService } from "~/auth";
+import { AuthService } from "~/features/auth";
 import { useDidMount } from "~/hooks";
 import { createArray } from "~/utils/objects-and-arrays";
 import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";

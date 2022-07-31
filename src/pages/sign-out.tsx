@@ -1,1 +1,1 @@
-export { default } from "~/components/pages/sign-out";
+export { default } from "~/features/pages/sign-out";

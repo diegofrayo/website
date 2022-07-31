@@ -1,7 +1,7 @@
-import ContactsPage from "~/components/pages/personal/[page]/Contacts";
-import { getPageContentStaticProps } from "~/i18n";
+import { ENV_VARS } from "~/constants";
+import ContactsPage from "~/features/pages/personal/[page]/Contacts";
+import { getPageContentStaticProps } from "~/features/i18n";
 import http from "~/lib/http";
-import { ENV_VARS } from "~/utils/constants";
 
 export default ContactsPage;
 

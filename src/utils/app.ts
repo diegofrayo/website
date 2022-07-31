@@ -1,5 +1,5 @@
-import { ENV_VARS } from "./constants";
-import { readDevToolsConfig } from "./dev-tools";
+import { ENV_VARS } from "~/constants";
+import { readDevToolsConfig } from "~/features/development-tools";
 
 export function isDevelopmentEnvironment(): boolean {
 	if (isLocalhostEnvironment() && isBrowser()) {

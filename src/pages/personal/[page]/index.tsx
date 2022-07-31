@@ -1,8 +1,8 @@
 import { GetStaticPaths } from "next";
 
-import PersonalPage from "~/components/pages/personal/[page]";
-import { getPageContentStaticProps } from "~/i18n";
-import { PERSONAL_PAGES } from "~/utils/constants";
+import { getPageContentStaticProps } from "~/features/i18n";
+import PersonalPage from "~/features/pages/personal/[page]";
+import { PERSONAL_PAGES } from "~/features/pages/personal";
 import { isNotEmptyString } from "~/utils/validations";
 
 export default PersonalPage;

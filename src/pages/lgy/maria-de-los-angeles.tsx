@@ -1,4 +1,4 @@
-// @ts-nocheck
+/* eslint-disable */
 
 import React, { useState, Fragment } from "react";
 import { useTheme } from "next-themes";
@@ -8,8 +8,8 @@ import { Icon, Link } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { useDidMount } from "~/hooks";
 import twcss from "~/lib/twcss";
-import { T_Object, T_ReactElement } from "~/types";
 import { setScrollPosition } from "~/utils/browser";
+import type { T_Object, T_ReactElement } from "~/types";
 
 declare global {
 	interface I_Window {

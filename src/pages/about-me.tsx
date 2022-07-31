@@ -5,10 +5,10 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { Page, MainLayout } from "~/components/layout";
 import { MDXContent } from "~/components/shared";
 import http from "~/lib/http";
-import { useTranslation, getPageContentStaticProps } from "~/i18n";
-import { ROUTES } from "~/utils/routing";
-import { MDXScope } from "~/utils/mdx";
-import { ENV_VARS } from "~/utils/constants";
+import { useTranslation, getPageContentStaticProps } from "~/features/i18n";
+import { ROUTES } from "~/features/routing";
+import { MDXScope } from "~/features/mdx";
+import { ENV_VARS } from "~/constants";
 import type { T_ReactElement } from "~/types";
 
 type T_AboutMePageProps = {

@@ -2,7 +2,7 @@ import classNames from "classnames";
 import * as React from "react";
 
 import { Block, Button, Icon, InlineText } from "~/components/primitive";
-import { goBack } from "~/utils/routing";
+import { goBack } from "~/features/routing";
 import type { T_ReactElement } from "~/types";
 import { isNotTrue, isTrue } from "~/utils/validations";
 

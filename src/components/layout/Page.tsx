@@ -2,24 +2,23 @@ import * as React from "react";
 import Head from "next/head";
 import Script from "next/script";
 
+import { AnalyticsService } from "~/features/analytics";
+import { DevelopmentTools } from "~/features/development-tools";
+import { I18nService, T_Locale } from "~/features/i18n";
 import { useDidMount, useDocumentTitle } from "~/hooks";
-import { I18nService, T_Locale } from "~/i18n";
-import AnalyticsService from "~/services/analytics";
-import { useStoreSelector } from "~/state";
+import { useStoreSelector } from "~/stores";
 import {
 	selectWebsiteMetadata,
 	selectSEOMetadata,
 	T_SEOMetadata,
 	T_WebsiteMetadata,
-} from "~/state/modules/metadata";
-import { selectPageConfig, T_PageConfig } from "~/state/modules/page-config";
+} from "~/stores/modules/metadata";
+import { selectPageConfig, T_PageConfig } from "~/stores/modules/page-config";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { ROUTES, T_RoutesValues } from "~/utils/routing";
+import { ROUTES, T_RoutesValues } from "~/features/routing";
 import { generateSlug } from "~/utils/strings";
 import { isNotEmptyString, isTrue } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
-
-import DevelopmentTools from "../DevelopmentTools";
 
 type T_PageProps = {
 	children: T_ReactChildren;

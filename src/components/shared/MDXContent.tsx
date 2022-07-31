@@ -2,7 +2,7 @@ import * as React from "react";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { Block } from "~/components/primitive";
-import { MDXComponents } from "~/utils/mdx";
+import { MDXComponents } from "~/features/mdx";
 import { mirror } from "~/utils/objects-and-arrays";
 import type { T_ReactElement } from "~/types";
 

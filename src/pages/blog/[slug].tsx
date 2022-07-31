@@ -2,12 +2,12 @@ import { GetStaticPaths } from "next";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 
-import BlogPostPage from "~/components/pages/blog/[slug]";
-import BlogService, { T_BlogPost } from "~/components/pages/blog/service";
-import { getPageContentStaticProps, T_Locale } from "~/i18n";
+import BlogPostPage from "~/features/pages/blog/[slug]";
+import BlogService, { T_BlogPost } from "~/features/pages/blog/service";
+import { getPageContentStaticProps, T_Locale } from "~/features/i18n";
 import dataLoader from "~/server";
-import { MDXScope } from "~/utils/mdx";
-import { ROUTES } from "~/utils/routing";
+import { MDXScope } from "~/features/mdx";
+import { ROUTES } from "~/features/routing";
 import { replaceAll } from "~/utils/strings";
 import { isUndefined } from "~/utils/validations";
 

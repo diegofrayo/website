@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-import { I18nService } from "~/i18n";
+import { I18nService } from "~/features/i18n";
 
 dayjs.extend(customParseFormat);
 

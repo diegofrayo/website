@@ -1,8 +1,7 @@
-// @ts-nocheck
-
 import axios from "axios";
 
-import { isBrowser } from "~/utils/app";
+import { readDevToolsConfig } from "~/features/development-tools";
+import { isBrowser, isLocalhostEnvironment } from "~/utils/app";
 
 axios.interceptors.request.use((config) => {
 	return {
@@ -13,6 +12,23 @@ axios.interceptors.request.use((config) => {
 		},
 	};
 });
+
+axios.interceptors.request.use(
+	(config) => {
+		if (
+			isLocalhostEnvironment() &&
+			isBrowser() &&
+			readDevToolsConfig().httpRequestsHaveToFail === true
+		) {
+			throw new Error("httpRequestsHaveToFail is enabled");
+		}
+
+		return config;
+	},
+	(error) => {
+		return Promise.reject(error);
+	},
+);
 
 export default axios;
 

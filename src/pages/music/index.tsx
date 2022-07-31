@@ -1,6 +1,6 @@
-import MusicPage from "~/components/pages/music";
-import { getPageContentStaticProps } from "~/i18n";
-import { ROUTES } from "~/utils/routing";
+import MusicPage from "~/features/pages/music";
+import { getPageContentStaticProps } from "~/features/i18n";
+import { ROUTES } from "~/features/routing";
 
 export default MusicPage;
 

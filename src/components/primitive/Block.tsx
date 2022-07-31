@@ -1,8 +1,8 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 import { mirror } from "~/utils/objects-and-arrays";
+import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
 const VARIANTS_OPTIONS = ["UNSTYLED", "FEATURED", "QUOTE"] as const;
 const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);

@@ -1,4 +1,4 @@
-import { ENV_VARS } from "./constants";
+import { ENV_VARS } from "~/constants";
 
 import { isEmptyString } from "./validations";
 

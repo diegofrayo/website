@@ -1,6 +1,6 @@
-import BlogPage from "~/components/pages/blog";
-import { getPageContentStaticProps } from "~/i18n";
-import { ROUTES } from "~/utils/routing";
+import BlogPage from "~/features/pages/blog";
+import { getPageContentStaticProps } from "~/features/i18n";
+import { ROUTES } from "~/features/routing";
 
 export default BlogPage;
 

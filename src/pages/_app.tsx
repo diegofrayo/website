@@ -16,19 +16,19 @@ import { persistQueryClient } from "react-query/persistQueryClient-experimental"
 import { createWebStoragePersistor } from "react-query/createWebStoragePersistor-experimental";
 
 import { ProgressBar } from "~/components/layout";
-import { AuthService } from "~/auth";
+import { AnalyticsService } from "~/features/analytics";
+import { AuthService } from "~/features/auth";
+import { I18nService } from "~/features/i18n";
+import { MetadataService } from "~/features/metadata";
 import { useDidMount } from "~/hooks";
-import { I18nService } from "~/i18n";
-import AnalyticsService from "~/services/analytics";
-import MetadataService from "~/services/metadata";
-import { createPreloadedState, useStore } from "~/state";
+import { createPreloadedState, useStore } from "~/stores";
+import { logger } from "~/utils/app";
 import { isMobileDevice, isPWA } from "~/utils/browser";
-import { MDXComponents } from "~/utils/mdx";
-import { initPWARoutingConfig } from "~/utils/routing";
+import { MDXComponents } from "~/features/mdx";
+import { initPWARoutingConfig } from "~/features/routing";
 import type { T_ReactElement, T_UnknownObject } from "~/types";
 
 import ErrorPage from "./500";
-import { logger } from "~/utils/app";
 
 const queryClient = new QueryClient({
 	defaultOptions: {

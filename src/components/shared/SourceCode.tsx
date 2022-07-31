@@ -4,7 +4,7 @@ import dracula from "prism-react-renderer/themes/dracula";
 import classNames from "classnames";
 
 import { Block, Button, Icon, InlineText, Link, Pre, Space } from "~/components/primitive";
-import { useTranslation } from "~/i18n";
+import { useTranslation } from "~/features/i18n";
 import twcss from "~/lib/twcss";
 import { handleCopyToClipboardClick } from "~/utils/browser";
 import { generateSlug } from "~/utils/strings";
@@ -98,7 +98,7 @@ function SourceCode({
 			</Highlight>
 
 			{displaySourceCodeDetails ? (
-				<Block className="tw-flex tw-flex-col tw-py-2 tw-px-4 tw-pr-2 tw-text-sm  dark:dfr-bg-color-tertiary sm:tw-flex-row sm:tw-justify-end">
+				<Block className="tw-flex tw-flex-col-reverse tw-py-2 tw-px-4 tw-pr-2 tw-text-sm  dark:dfr-bg-color-tertiary sm:tw-flex-row sm:tw-justify-end">
 					{isNotEmptyString(sourceURL) ? (
 						<React.Fragment>
 							<Link

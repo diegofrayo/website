@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-import { I18nService } from "~/i18n";
+import { I18nService } from "~/features/i18n";
 import type { T_ReactOnClickEventObject, T_SetTimeout } from "~/types";
 
 import { getErrorMessage, logger, reportError } from "./app";
