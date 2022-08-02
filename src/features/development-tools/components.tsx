@@ -3,10 +3,10 @@ import classNames from "classnames";
 
 import { Block, Button, Icon, InlineText, Link, Space, Text } from "~/components/primitive";
 import { AnalyticsService } from "~/features/analytics";
-import { withAuthenticationRequired } from "~/hocs";
+import { AuthService } from "~/features/auth";
+import { renderIf, withAuthenticationRequired } from "~/hocs";
 import { useDidMount, useOnWindowResize } from "~/hooks";
 import { isLocalhostEnvironment } from "~/utils/app";
-import { isTrue } from "~/utils/validations";
 import type {
 	T_ReactChildren,
 	T_ReactElement,
@@ -19,7 +19,7 @@ import { readDevToolsConfig, updateDevToolsConfig } from "./utils";
 
 function DevelopmentTools(): T_ReactElementNullable {
 	// states & refs
-	const [showConfig, setShowConfig] = React.useState(false);
+	const [isConfigOpened, setIsConfigOpened] = React.useState(false);
 
 	// effects
 	useDidMount(() => {
@@ -28,47 +28,43 @@ function DevelopmentTools(): T_ReactElementNullable {
 
 	// handlers
 	function handleToggleShowConfigClick(): void {
-		setShowConfig((currentValue) => !currentValue);
+		setIsConfigOpened((currentValue) => !currentValue);
 	}
 
-	return (
-		<Block className="tw-fixed tw-top-2 tw-left-2 tw-z-40 tw-rounded-md">
-			{isLocalhostEnvironment() ? (
-				<Block className="tw-p-2 tw-text-sm dfr-shadow dfr-bg-color-secondary">
-					<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
-						<Button
-							variant={Button.variant.DEFAULT}
-							onClick={handleToggleShowConfigClick}
-						>
-							<Icon icon={Icon.icon.CODE} />
-						</Button>
-						<Flags />
-					</Block>
-
-					{isTrue(showConfig) ? (
-						<Block className="tw-w-48">
-							<Space
-								size={2}
-								variant={Space.variant.DASHED}
-							/>
-							<CSSDebugging />
-							<Space size={2} />
-							<UsersConfig />
-							<Space size={2} />
-							<EnvironmentConfig />
-							<Space size={2} />
-							<HTTPRequestsConfig />
-							<Space size={2} />
-							<ErrorPages />
-							<Space size={2} />
-							<WindowSizeConfig />
-						</Block>
-					) : null}
-				</Block>
-			) : (
+	return isLocalhostEnvironment() ? (
+		<Block className="tw-fixed tw-top-2 tw-left-2 tw-z-40 tw-rounded-md tw-p-2 tw-text-sm dfr-shadow dfr-bg-color-secondary">
+			<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
+				<Button
+					variant={Button.variant.DEFAULT}
+					onClick={handleToggleShowConfigClick}
+				>
+					<Icon icon={Icon.icon.CODE} />
+				</Button>
 				<Flags />
-			)}
+			</Block>
+
+			{isConfigOpened ? (
+				<Block className="tw-w-48">
+					<Space
+						size={2}
+						variant={Space.variant.DASHED}
+					/>
+					<CSSDebugging />
+					<Space size={2} />
+					<UsersConfig />
+					<Space size={2} />
+					<EnvironmentConfig />
+					<Space size={2} />
+					<HTTPRequestsConfig />
+					<Space size={2} />
+					<ErrorPages />
+					<Space size={2} />
+					<WindowSizeConfig />
+				</Block>
+			) : null}
 		</Block>
+	) : (
+		<Flags className="tw-fixed tw-top-2 tw-right-2 tw-z-40 tw-rounded-md tw-p-2 dfr-shadow dfr-bg-color-secondary" />
 	);
 }
 
@@ -76,14 +72,23 @@ export default DevelopmentTools;
 
 // --- Components ---
 
-function Flags(): T_ReactElement {
+const Flags = renderIf(function Flags({
+	className = "",
+}: {
+	className?: string;
+}): T_ReactElementNullable {
 	return (
-		<Block className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-1">
+		<Block
+			className={classNames(
+				"tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-1",
+				className,
+			)}
+		>
 			<UserLoggedInFlag />
 			<AnalyticsDisabledFlag />
 		</Block>
 	);
-}
+})(() => AuthService.isUserLoggedIn() || AnalyticsService.isAnalyticsDisabled());
 
 const UserLoggedInFlag = withAuthenticationRequired(function UserLoggedInFlag(): T_ReactElement {
 	return <Flag color="dfr-bg-color-bw" />;

@@ -13,9 +13,9 @@ import {
 } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { withAuth } from "~/features/auth";
-import { useDidMount, useEnhancedState } from "~/hooks";
+import { useEnhancedState } from "~/hooks";
 import { isServer } from "~/utils/app";
-import { handleCopyToClipboardClick, isMobileDevice } from "~/utils/browser";
+import { handleCopyToClipboardClick } from "~/utils/browser";
 import { formatPhoneNumber } from "~/utils/formatting";
 import { generateSlug } from "~/utils/strings";
 import { isEmptyString, isNotEmptyString } from "~/utils/validations";
@@ -36,11 +36,6 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 
 	// vars
 	const PAGE_TITLE = "Contacts";
-
-	// effects
-	useDidMount(() => {
-		setWhatsAppOption(isMobileDevice() ? "api" : "web");
-	});
 
 	// handlers
 	function handleToggleAllCollapsibleOpenedClick(): void {

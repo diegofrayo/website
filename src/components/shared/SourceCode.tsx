@@ -16,6 +16,7 @@ type T_SourceCodeProps = {
 	code: string;
 	fileName?: string;
 	sourceURL?: string;
+	className?: string;
 	displaySourceCodeDetails?: boolean;
 };
 
@@ -24,6 +25,7 @@ function SourceCode({
 	fileName = "",
 	code = "",
 	sourceURL = "",
+	className = "",
 	displaySourceCodeDetails = true,
 }: T_SourceCodeProps): T_ReactElement {
 	// hooks
@@ -38,7 +40,10 @@ function SourceCode({
 
 	return (
 		<Block
-			className="dfr-SourceCode tw-overflow-hidden tw-rounded-md tw-border dfr-border-color-primary dfr-bg-color-wb dark:tw-bg-transparent"
+			className={classNames(
+				"dfr-SourceCode tw-overflow-hidden tw-rounded-md tw-border dfr-border-color-primary dfr-bg-color-wb dark:tw-bg-transparent",
+				className,
+			)}
 			data-markdown-block
 		>
 			{displaySourceCodeDetails ? (
@@ -64,7 +69,8 @@ function SourceCode({
 							variant={Pre.variant.UNSTYLED}
 							className={classNames(
 								className,
-								"tw-overflow-x-auto tw-border-y tw-p-4 tw-text-base dfr-border-color-primary",
+								"tw-h-full tw-overflow-x-auto tw-p-4 tw-text-base",
+								displaySourceCodeDetails && "tw-border-y dfr-border-color-primary",
 							)}
 							style={style}
 						>

@@ -183,15 +183,12 @@ class GuitarService {
 			})
 			.join("\n");
 
-		if (isLocalhostEnvironment()) {
-			console.log(
-				"Chords of this song:",
-				Object.keys(chords)
-					.sort()
-					.map((chord) => `"${chord}"`)
-					.join(","),
-			);
-		}
+		console.log(
+			`"chords": [${Object.keys(chords)
+				.sort()
+				.map((chord) => `"${chord}"`)
+				.join(",")}]`,
+		);
 
 		return parsedContent;
 	}

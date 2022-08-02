@@ -1,7 +1,10 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { Button, Block } from "~/components/primitive";
+import { Button, Block, Icon, Text } from "~/components/primitive";
+import { ENV_VARS } from "~/constants";
+import { createArray } from "~/utils/objects-and-arrays";
+import { generateSlug } from "~/utils/strings";
 import type { T_ReactElement, T_ReactFunctionComponent, T_ReactRefObject } from "~/types";
 
 import SourceCode, { T_SourceCodeProps } from "./SourceCode";
@@ -31,12 +34,12 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
 	} = useController(props);
 
 	return (
-		<Block
-			className="dfr-Playground tw-flex tw-min-h-[200px] tw-flex-col tw-border-4 dfr-border-color-gs-black dfr-bg-color-wb dark:dfr-border-color-primary"
+		<div
+			className="dfr-Playground root tw-flex tw-h-[250px] tw-flex-col tw-border-4 dfr-border-color-gs-black dfr-bg-color-wb dark:dfr-border-color-primary"
 			data-markdown-block
 		>
 			<Block
-				className="tw-max-h-[300px] tw-flex-1 tw-overflow-auto tw-p-0.5"
+				className="tw-flex-1 tw-overflow-auto tw-p-2"
 				ref={contentRef}
 			>
 				{isSourceCodeTabSelected ? (
@@ -44,9 +47,43 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
 						language={language}
 						code={code}
 						displaySourceCodeDetails={false}
+						className="tw-h-full"
 					/>
 				) : (
-					<Component />
+					<Block className="tw-flex tw-h-full tw-flex-col tw-rounded-md tw-border-4 tw-border-gray-200">
+						<Block className="tw-flex tw-flex-nowrap tw-items-center tw-justify-between tw-bg-gray-200 tw-p-2">
+							<Block className="tw-flex tw-items-center">
+								{createArray(3).map((element) => {
+									return (
+										<Block
+											key={generateSlug(`Playground-Block-element-${element}`)}
+											className={classNames(
+												"tw-mr-1.5 tw-inline-block tw-h-3 tw-w-3 tw-rounded-full last:tw-mr-0",
+												{
+													"tw-bg-red-500": element === 1,
+													"tw-bg-yellow-500": element === 2,
+													"tw-bg-green-500": element === 3,
+												},
+											)}
+										/>
+									);
+								})}
+							</Block>
+							<Text className="tw-ml-4 tw-mr-3 tw-flex-1 tw-truncate tw-rounded-full tw-px-4 tw-py-1.5 tw-text-xs dfr-bg-color-gs-white dfr-text-color-gs-700">
+								{ENV_VARS.NEXT_PUBLIC_WEBSITE_URL}
+							</Text>
+							<Block>
+								<Icon
+									color="dfr-text-color-secondary"
+									size={28}
+									icon={Icon.icon.MENU}
+								/>
+							</Block>
+						</Block>
+						<Block className="tw-flex-1 tw-overflow-auto tw-p-2 dfr-bg-color-gs-white">
+							<Component />
+						</Block>
+					</Block>
 				)}
 			</Block>
 			<Block className="tw-flex-no-wrap tw-flex tw-border-t-4 tw-text-sm dfr-border-color-gs-black dark:dfr-border-color-primary">
@@ -70,10 +107,16 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
 					)}
 					onClick={handleTabClick(1)}
 				>
-					Output
+					Preview
 				</Button>
 			</Block>
-		</Block>
+
+			<style jsx>{`
+				.root :global(.dfr-SourceCode) {
+					margin: 0;
+				}
+			`}</style>
+		</div>
 	);
 }
 
