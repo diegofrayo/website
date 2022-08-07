@@ -63,12 +63,18 @@ function SourceCode({
 				language={language}
 				theme={dracula}
 			>
-				{({ className, style, tokens, getLineProps, getTokenProps }): T_ReactElement => {
+				{({
+					className: classNameProp,
+					style,
+					tokens,
+					getLineProps,
+					getTokenProps,
+				}): T_ReactElement => {
 					return (
 						<Pre
 							variant={Pre.variant.UNSTYLED}
 							className={classNames(
-								className,
+								classNameProp,
 								"tw-h-full tw-overflow-x-auto tw-p-4 tw-text-base",
 								displaySourceCodeDetails && "tw-border-y dfr-border-color-primary",
 							)}

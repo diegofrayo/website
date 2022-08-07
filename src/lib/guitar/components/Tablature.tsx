@@ -47,7 +47,6 @@ type T_Position = (
 type T_TablatureProps = {
 	positions?: (T_Position | T_Position[])[];
 	notes?: string;
-	authRequired?: boolean;
 };
 
 function Tablature(props: T_TablatureProps): T_ReactElementNullable {
@@ -55,16 +54,9 @@ function Tablature(props: T_TablatureProps): T_ReactElementNullable {
 		// props
 		notes,
 
-		// states
-		hasToRender,
-
 		// vars
 		parsedPositions,
 	} = useController(props);
-
-	if (!hasToRender) {
-		return null;
-	}
 
 	return (
 		<Block className="tw-text-base">
@@ -171,21 +163,9 @@ export default Tablature;
 
 // --- Controller ---
 
-function useController({ positions, notes, authRequired }: T_TablatureProps): Pick<
-	T_TablatureProps,
-	"notes"
-> & {
+function useController({ positions, notes }: T_TablatureProps): Pick<T_TablatureProps, "notes"> & {
 	parsedPositions: T_TablatureProps["positions"] | undefined;
-	hasToRender: boolean;
 } {
-	const [hasToRender, setHasToRender] = React.useState(false);
-
-	useDidMount(() => {
-		if (!authRequired || (authRequired && AuthService.isUserLoggedIn())) {
-			setHasToRender(true);
-		}
-	});
-
 	function getPositions(positions: T_TablatureProps["positions"]): (T_Position | T_Position[])[] {
 		return (positions || []).map((position) => {
 			if (Array.isArray(position)) {
@@ -230,9 +210,6 @@ function useController({ positions, notes, authRequired }: T_TablatureProps): Pi
 	return {
 		// props
 		notes,
-
-		// states
-		hasToRender,
 
 		// vars
 		parsedPositions:

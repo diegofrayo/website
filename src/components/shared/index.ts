@@ -5,6 +5,7 @@ export { default as ImageWithLink } from "./ImageWithLink";
 export { default as Loader } from "./Loader";
 export { default as MDXContent } from "./MDXContent";
 export { default as Playground } from "./Playground";
+export { default as ProtectedComponent } from "./ProtectedComponent";
 export { default as RateContent } from "./RateContent";
 export { default as Redirect } from "./Redirect";
 export { default as Render } from "./Render";

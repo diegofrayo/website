@@ -32,7 +32,7 @@ function DevelopmentTools(): T_ReactElementNullable {
 	}
 
 	return isLocalhostEnvironment() ? (
-		<Block className="tw-fixed tw-top-2 tw-left-2 tw-z-40 tw-rounded-md tw-p-2 tw-text-sm dfr-shadow dfr-bg-color-secondary">
+		<Block className="tw-fixed tw-top-2 tw-left-2 tw-z-40 tw-rounded-md tw-p-2 tw-text-sm dfr-shadow dfr-bg-color-secondary print:tw-hidden">
 			<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
 				<Button
 					variant={Button.variant.DEFAULT}
@@ -64,7 +64,7 @@ function DevelopmentTools(): T_ReactElementNullable {
 			) : null}
 		</Block>
 	) : (
-		<Flags className="tw-fixed tw-top-2 tw-right-2 tw-z-40 tw-rounded-md tw-p-2 dfr-shadow dfr-bg-color-secondary" />
+		<Flags className="tw-fixed tw-top-2 tw-right-2 tw-z-40 tw-rounded-md tw-p-1 dfr-shadow dfr-bg-color-secondary print:tw-hidden" />
 	);
 }
 
@@ -79,12 +79,10 @@ const Flags = renderIf(function Flags({
 }): T_ReactElementNullable {
 	return (
 		<Block
-			className={classNames(
-				"tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-1",
-				className,
-			)}
+			className={classNames("tw-flex tw-flex-col tw-items-center tw-justify-center", className)}
 		>
 			<UserLoggedInFlag />
+			<Space className="tw-h-0.5" />
 			<AnalyticsDisabledFlag />
 		</Block>
 	);
@@ -94,21 +92,9 @@ const UserLoggedInFlag = withAuthenticationRequired(function UserLoggedInFlag():
 	return <Flag color="dfr-bg-color-bw" />;
 });
 
-function AnalyticsDisabledFlag(): T_ReactElementNullable {
-	// hooks
-	const [isAnalyticsDisabled, setIsAnalyticsDisabled] = React.useState(false);
-
-	// effects
-	useDidMount(() => {
-		setIsAnalyticsDisabled(AnalyticsService.isAnalyticsDisabled());
-	});
-
-	if (isAnalyticsDisabled) {
-		return <Flag color="tw-bg-amber-600 dark:tw-bg-red-400" />;
-	}
-
-	return null;
-}
+const AnalyticsDisabledFlag = renderIf(function AnalyticsDisabledFlag(): T_ReactElement {
+	return <Flag color="tw-bg-amber-600 dark:tw-bg-red-400" />;
+})(() => AnalyticsService.isAnalyticsDisabled());
 
 type T_FlagProps = {
 	className?: string;

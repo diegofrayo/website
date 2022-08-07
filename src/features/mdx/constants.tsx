@@ -12,7 +12,14 @@ import {
 	Space,
 	Text,
 } from "~/components/primitive";
-import { ImageWithLink, Playground, SourceCode, Timeline, TitleCreator } from "~/components/shared";
+import {
+	ImageWithLink,
+	Playground,
+	ProtectedComponent,
+	SourceCode,
+	Timeline,
+	TitleCreator,
+} from "~/components/shared";
 import { ENV_VARS } from "~/constants";
 import * as BlogComponents from "~/features/pages/blog/components";
 import * as MusicComponents from "~/features/pages/music/components";
@@ -69,6 +76,7 @@ export const MDXComponents = {
 	// Shared components
 	ImageWithLink,
 	Playground,
+	ProtectedComponent,
 	SourceCode,
 	Timeline,
 
