@@ -37,7 +37,7 @@ function generateCSSVars() {
 		return result;
 	}, "");
 
-	return `body { ${lightModeOutput} } \n\n .tw-dark body { ${darkModeOutput} }`;
+	return `html { ${lightModeOutput} } \n\n html.tw-dark { ${darkModeOutput} }`;
 }
 
 // --- Utils ---

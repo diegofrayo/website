@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { Page, MainLayout } from "~/components/layout";
 import { Block, InlineText, Link, List, Text } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
-import { withAuthenticationRequired } from "~/hocs";
+import { withAuthComponent } from "~/features/auth";
 import { sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
 import { isNotEmptyString } from "~/utils/validations";
@@ -108,7 +108,7 @@ export default Readings;
 
 // --- Components ---
 
-const DoneMark = withAuthenticationRequired(function DoneMark({
+const DoneMark = withAuthComponent(function DoneMark({
 	done,
 }: Pick<T_Reading, "done">): T_ReactElement {
 	return (

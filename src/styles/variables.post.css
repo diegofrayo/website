@@ -1,4 +1,4 @@
-body {
+html {
 	--dfr-max-w-layout: 768px;
 	--dfr-font-family: "Bitter", sans-serif;
 	--dfr-bg-color-primary: #fff;
@@ -53,7 +53,7 @@ body {
 	--dfr-border-color-wb: #fff;
 }
 
-.tw-dark body {
+html.tw-dark {
 	--dfr-bg-color-primary: #1a1e23;
 	--dfr-bg-color-secondary: #22272d;
 	--dfr-bg-color-tertiary: #2a3038;

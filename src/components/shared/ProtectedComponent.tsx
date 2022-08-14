@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { Block } from "~/components/primitive";
-import { withAuthenticationRequired } from "~/hocs";
+import { withAuthComponent } from "~/features/auth";
 import { isTrue } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
@@ -17,4 +17,4 @@ function ProtectedComponent({
 	return isTrue(withoutBlockContainer) ? (children as T_ReactElement) : <Block>{children}</Block>;
 }
 
-export default withAuthenticationRequired(ProtectedComponent);
+export default withAuthComponent(ProtectedComponent);

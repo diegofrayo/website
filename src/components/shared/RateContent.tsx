@@ -1,12 +1,12 @@
 import * as React from "react";
 import classNames from "classnames";
-import { toast } from "react-toastify";
 
 import { Button, Block, Text, Space } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import { T_TranslationFunction, useTranslation } from "~/features/i18n";
 import { AnalyticsService } from "~/features/analytics";
+import { T_TranslationFunction, useTranslation } from "~/features/i18n";
 import { reportError } from "~/utils/app";
+import { showToast } from "~/utils/browser";
 import { isEmptyString, isNotEmptyString } from "~/utils/validations";
 import type { T_Object, T_ReactElement } from "~/types";
 
@@ -103,11 +103,7 @@ function useController(): T_UseController {
 				page: window.location.pathname,
 			});
 
-			toast.success(t("common:useful_question_thanks"), {
-				position: toast.POSITION.BOTTOM_CENTER,
-				toastId: "useful-question",
-			});
-
+			showToast({ type: "SUCCESS", message: t("common:useful_question_thanks") });
 			writeDataOnLocalStorage({ [window.location.pathname]: answer });
 		};
 	};

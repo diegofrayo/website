@@ -15,6 +15,11 @@ html.css-debugging * {
 	box-sizing: border-box;
 }
 
+html {
+	@apply dfr-bg-color-gs-black;
+	height: 100%;
+}
+
 body {
 	@apply dfr-bg-color-primary;
 	@apply dfr-font-family;
@@ -118,6 +123,12 @@ body.mobile ::-webkit-scrollbar-thumb {
 }
 
 .Toastify__toast--warning {
+	@apply tw-text-yellow-400;
+	@apply tw-border-yellow-400;
+}
+
+.Toastify__toast--warning .Toastify__close-button {
+	@apply tw-text-yellow-400;
 }
 
 .Toastify__toast--error {

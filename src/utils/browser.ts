@@ -6,6 +6,22 @@ import type { T_ReactOnClickEventObject, T_SetTimeout } from "~/types";
 import { getErrorMessage, logger, reportError } from "./app";
 import { isEmptyString, isString, isUndefined } from "./validations";
 
+export function showToast({
+	type,
+	message,
+	id = "toast-id",
+}: {
+	type: "ALERT" | "ERROR" | "SUCCESS";
+	message: string;
+	id?: string;
+}): void {
+	toast[type === "ALERT" ? "warning" : type === "ERROR" ? "error" : "success"](message, {
+		position: toast.POSITION.BOTTOM_CENTER,
+		toastId: id,
+		// autoClose: 5000000, // for debugging
+	});
+}
+
 export async function deletePWACache(): Promise<void> {
 	try {
 		const cacheKeys = await window.caches.keys();
@@ -188,19 +204,13 @@ export async function copyToClipboard(
 
 		await navigator.clipboard.writeText(clipboardText);
 
-		const translator = I18nService.getInstance();
-		toast.success(translator.t("common:copy_to_clipboard"), {
-			position: toast.POSITION.BOTTOM_CENTER,
-			toastId: "copy-to-clipboard",
-			// autoClose: 5000000, // for debugging
+		showToast({
+			type: "SUCCESS",
+			message: I18nService.getInstance().t("common:copy_to_clipboard"),
 		});
 	} catch (error) {
 		reportError(error);
-
-		toast.error("Error", {
-			position: toast.POSITION.BOTTOM_CENTER,
-			toastId: "copy-to-clipboard",
-		});
+		showToast({ type: "SUCCESS", message: "Error" });
 	}
 }
 

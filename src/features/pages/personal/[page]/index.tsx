@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Redirect } from "~/components/shared";
-import { withAuth } from "~/features/auth";
+import { withAuthPage } from "~/features/auth";
 import { ROUTES } from "~/features/routing";
 import { isUndefined, isNotEmptyString } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
@@ -47,6 +47,6 @@ function PersonalPage({ page }: T_PersonalPageProps): T_ReactElement {
 	);
 }
 
-export default withAuth<T_PersonalPageProps>(PersonalPage, {
+export default withAuthPage<T_PersonalPageProps>(PersonalPage, {
 	allowIf: (props) => ["films"].includes(props.page),
 });

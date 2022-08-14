@@ -5,8 +5,9 @@ import type { T_ReactElementNullable, T_ReactFunctionComponent, T_UnknownObject 
 import { redirect as globalRedirect, ROUTES } from "~/features/routing";
 
 import AuthService from "./service";
+import { renderIf } from "~/hocs";
 
-function withAuth<G_ComponentProps = T_UnknownObject>(
+export function withAuthPage<G_ComponentProps = T_UnknownObject>(
 	Component: T_ReactFunctionComponent<G_ComponentProps>,
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	options?: { denyLoggedIn?: boolean; allowIf?: (props: G_ComponentProps) => boolean }, // WARN: False positive
@@ -44,4 +45,8 @@ function withAuth<G_ComponentProps = T_UnknownObject>(
 	};
 }
 
-export default withAuth;
+export function withAuthComponent<G_ComponentProps>(
+	WrappedComponent: T_ReactFunctionComponent<G_ComponentProps>,
+): T_ReactFunctionComponent<G_ComponentProps> {
+	return renderIf(WrappedComponent)(() => AuthService.isUserLoggedIn());
+}

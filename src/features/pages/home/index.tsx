@@ -14,8 +14,9 @@ import {
 	Title,
 } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
-import { useTranslation } from "~/features/i18n";
 import { AnalyticsService } from "~/features/analytics";
+import { withAuthComponent } from "~/features/auth";
+import { useTranslation } from "~/features/i18n";
 import { createArray } from "~/utils/objects-and-arrays";
 import { ROUTES } from "~/features/routing";
 import { generateSlug } from "~/utils/strings";
@@ -55,6 +56,7 @@ function Home({ data }: T_HomeProps): T_ReactElement {
 			<MainLayout title="">
 				<Block className="tw-mx-auto tw-w-72 tw-max-w-full">
 					<Featured content={data.featured} />
+					<Space size={4} />
 					<Block className="tw-overflow-hidden tw-rounded-t-md dfr-shadow">
 						<Room
 							tvSong={data.song}
@@ -75,7 +77,7 @@ type T_Featured = {
 	content: T_HomeProps["data"]["featured"];
 };
 
-function Featured({ content }: T_Featured): T_ReactElement {
+const Featured = withAuthComponent(function Featured({ content }: T_Featured): T_ReactElement {
 	// handlers
 	function handleItemClick(itemText: string): () => void {
 		return function onItemClickHandler() {
@@ -86,7 +88,7 @@ function Featured({ content }: T_Featured): T_ReactElement {
 	return (
 		<Block
 			is="section"
-			className="tw-relative tw-hidden tw-rounded-t-md tw-border-8 tw-border-yellow-700 tw-bg-green-700 tw-p-4 dfr-shadow"
+			className="tw-relative tw-rounded-t-md tw-border-8 tw-border-yellow-700 tw-bg-green-700 tw-p-4 dfr-shadow"
 		>
 			<Emoji className="tw-absolute tw--top-4 tw--left-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-shadow dfr-bg-color-wb">
 				📌
@@ -94,13 +96,13 @@ function Featured({ content }: T_Featured): T_ReactElement {
 			<Title
 				is="h1"
 				variant={Title.variant.UNSTYLED}
-				className="tw-text-center"
+				className="tw-text-center dfr-text-color-gs-white"
 				size={Title.size.MD}
 			>
 				FEATURED
 			</Title>
 			<Space size={2} />
-			<Block>
+			<Block className="tw-flex tw-flex-wrap tw-items-center tw-justify-between">
 				{content.map((item, index) => {
 					return (
 						<Link
@@ -108,7 +110,7 @@ function Featured({ content }: T_Featured): T_ReactElement {
 							variant={Link.variant.SIMPLE}
 							href={item.url}
 							className={classNames(
-								"tw-mb-3 tw-block tw-text-sm tw-text-yellow-300 last:tw-mb-0",
+								"tw-my-1 tw-inline-block tw-text-sm tw-text-yellow-300",
 								index % 2 === 0 ? "tw-rotate-1" : "tw--rotate-1",
 							)}
 							onClick={handleItemClick(item.text)}
@@ -121,7 +123,7 @@ function Featured({ content }: T_Featured): T_ReactElement {
 			</Block>
 		</Block>
 	);
-}
+});
 
 type T_RoomProps = {
 	tvSong: T_HomeProps["data"]["song"];

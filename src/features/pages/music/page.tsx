@@ -6,7 +6,7 @@ import { Link, Space, Input, Text, InlineText, Block } from "~/components/primit
 import { Render, Emoji } from "~/components/shared";
 import { useDidMount, useQuery } from "~/hooks";
 import { I18nService, useTranslation } from "~/features/i18n";
-import { focusElement } from "~/utils/browser";
+import { focusElement, showToast } from "~/utils/browser";
 import { ROUTES } from "~/features/routing";
 import { removeAccents } from "~/utils/strings";
 import { isNotTrue, isFalsy, isNotEquals, isNull } from "~/utils/validations";
@@ -150,7 +150,26 @@ type T_UseController = {
 
 function useController(): T_UseController {
 	// hooks
-	const { isLoading, error, data } = useQuery("music", MusicService.fetchSongs);
+	const { isLoading, error, data } = useQuery("music", async () => {
+		const LOCAL_STORAGE_KEY = "DFR_MUSIC_DATA";
+
+		try {
+			const data = await MusicService.fetchSongs();
+
+			window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+
+			return data;
+		} catch (e) {
+			const data = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+
+			if (data) {
+				showToast({ type: "ALERT", message: "Data loaded from localStorage" });
+				return JSON.parse(data);
+			}
+
+			throw e;
+		}
+	});
 
 	// states & refs
 	const [inputValue, setInputValue] = React.useState("");

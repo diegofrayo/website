@@ -1,12 +1,12 @@
 import * as React from "react";
-import { toast } from "react-toastify";
 
 import { Page } from "~/components/layout";
 import { Input } from "~/components/primitive";
-import { AuthService, withAuth } from "~/features/auth";
+import { AuthService, withAuthPage } from "~/features/auth";
 import { getPageContentStaticProps } from "~/features/i18n";
 import { redirect, ROUTES } from "~/features/routing";
 import { getErrorMessage, reportError } from "~/utils/app";
+import { showToast } from "~/utils/browser";
 import { isEmptyString } from "~/utils/validations";
 import type {
 	T_ReactElement,
@@ -62,7 +62,7 @@ function SignInPage(): T_ReactElement {
 	);
 }
 
-export default withAuth(SignInPage, { denyLoggedIn: true });
+export default withAuthPage(SignInPage, { denyLoggedIn: true });
 
 // --- Next.js functions ---
 
@@ -97,16 +97,14 @@ function useController(): T_UseControllerReturn {
 			redirect(ROUTES.HOME);
 		} catch (error) {
 			reportError(error);
-
-			toast.error(
-				AuthService.isSignInError(error) && error.data.code === "AUTH_WRONG_PASSWORD"
-					? "Contraseña incorrecta."
-					: getErrorMessage(error),
-				{
-					position: toast.POSITION.BOTTOM_CENTER,
-					toastId: "sign-in",
-				},
-			);
+			showToast({
+				type: "ERROR",
+				message:
+					AuthService.isSignInError(error) && error.data.code === "AUTH_WRONG_PASSWORD"
+						? "Contraseña incorrecta."
+						: getErrorMessage(error),
+				id: "sign-in",
+			});
 		} finally {
 			setIsInputDisabled(false);
 		}

@@ -3,7 +3,7 @@ import * as React from "react";
 import { T_IconName } from "~/components/primitive/Icon";
 import { Page, MainLayout } from "~/components/layout";
 import { Link, Block, Icon, InlineText, Space, List } from "~/components/primitive";
-import { withAuth } from "~/features/auth";
+import { withAuthPage } from "~/features/auth";
 import { ROUTES } from "~/features/routing";
 import type { T_ReactElement } from "~/types";
 
@@ -34,7 +34,7 @@ function PersonalPage(): T_ReactElement {
 	);
 }
 
-export default withAuth(PersonalPage);
+export default withAuthPage(PersonalPage);
 
 // --- Components ---
 

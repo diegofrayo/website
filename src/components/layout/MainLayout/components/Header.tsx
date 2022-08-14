@@ -4,9 +4,8 @@ import classNames from "classnames";
 import { useRouter } from "next/router";
 
 import { Block, Button, Icon, Link, List, Text, Space } from "~/components/primitive";
-import { AuthService } from "~/features/auth";
+import { AuthService, withAuthComponent } from "~/features/auth";
 import { I18nService, useTranslation } from "~/features/i18n";
-import { withAuthenticationRequired } from "~/hocs";
 import { useClickOutside, useDidMount, useEnhancedState } from "~/hooks";
 import http from "~/lib/http";
 import { useStoreSelector } from "~/stores";
@@ -18,6 +17,7 @@ import { ROUTES, T_RoutesValues } from "~/features/routing";
 import { generateSlug } from "~/utils/strings";
 import { isNotTrue, isNotEquals } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
+import { renderIf } from "~/hocs";
 
 function Header(): T_ReactElement {
 	// hooks
@@ -290,38 +290,26 @@ function ToggleThemeMenuItem(): T_ReactElement {
 	);
 }
 
-const RefreshAPPMenuItem = withAuthenticationRequired(function RefreshAPPMenuItem() {
-	// states & refs
-	const [hasToRender, setHasToRender] = React.useState(false);
-
-	// effect
-	useDidMount(() => {
-		setHasToRender(isPWA());
-	});
-
+const RefreshAPPMenuItem = renderIf(function RefreshAPPMenuItem() {
 	// handlers
 	async function handleRefreshClick(): Promise<void> {
 		await deletePWACache();
 		window.location.reload();
 	}
 
-	if (hasToRender) {
-		return (
-			<SettingsMenuItem title="Refresh APP and Cache">
-				<Button
-					variant={Button.variant.SIMPLE}
-					onClick={handleRefreshClick}
-				>
-					<Icon icon={Icon.icon.REFRESH} />
-				</Button>
-			</SettingsMenuItem>
-		);
-	}
+	return (
+		<SettingsMenuItem title="Refresh APP and Cache">
+			<Button
+				variant={Button.variant.SIMPLE}
+				onClick={handleRefreshClick}
+			>
+				<Icon icon={Icon.icon.REFRESH} />
+			</Button>
+		</SettingsMenuItem>
+	);
+})(() => AuthService.isUserLoggedIn() && isPWA());
 
-	return null;
-});
-
-const ISRMenuItem = withAuthenticationRequired(function ISRMenuItem() {
+const ISRMenuItem = withAuthComponent(function ISRMenuItem() {
 	// handlers
 	async function handleISROnDemandClick(): Promise<void> {
 		try {
@@ -350,7 +338,7 @@ const ISRMenuItem = withAuthenticationRequired(function ISRMenuItem() {
 	);
 });
 
-const EnvironmentMenuItem = withAuthenticationRequired(function EnvironmentMenuItem() {
+const EnvironmentMenuItem = withAuthComponent(function EnvironmentMenuItem() {
 	// hooks
 	const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 

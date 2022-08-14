@@ -3,8 +3,8 @@ import classNames from "classnames";
 
 import { Block, Button, Icon, InlineText, Link, Space, Text } from "~/components/primitive";
 import { AnalyticsService } from "~/features/analytics";
-import { AuthService } from "~/features/auth";
-import { renderIf, withAuthenticationRequired } from "~/hocs";
+import { AuthService, withAuthComponent } from "~/features/auth";
+import { renderIf } from "~/hocs";
 import { useDidMount, useOnWindowResize } from "~/hooks";
 import { isLocalhostEnvironment } from "~/utils/app";
 import type {
@@ -88,7 +88,7 @@ const Flags = renderIf(function Flags({
 	);
 })(() => AuthService.isUserLoggedIn() || AnalyticsService.isAnalyticsDisabled());
 
-const UserLoggedInFlag = withAuthenticationRequired(function UserLoggedInFlag(): T_ReactElement {
+const UserLoggedInFlag = withAuthComponent(function UserLoggedInFlag(): T_ReactElement {
 	return <Flag color="dfr-bg-color-bw" />;
 });
 

@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import { Page } from "~/components/layout";
 import { Block, Button, Icon, InlineText, Space, Text, Title } from "~/components/primitive";
 import { GoBack, Render } from "~/components/shared";
-import { withAuth } from "~/features/auth";
+import { withAuthPage } from "~/features/auth";
 import { useDidMount, useQuery } from "~/hooks";
 import http from "~/lib/http";
 import { isDevelopmentEnvironment } from "~/utils/app";
@@ -312,7 +312,7 @@ function TimerPage(): T_ReactElement {
 	);
 }
 
-export default withAuth(TimerPage);
+export default withAuthPage(TimerPage);
 
 // --- Controller ---
 

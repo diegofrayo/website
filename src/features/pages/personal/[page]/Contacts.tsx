@@ -12,7 +12,7 @@ import {
 	Text,
 } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
-import { withAuth } from "~/features/auth";
+import { withAuthPage } from "~/features/auth";
 import { useEnhancedState } from "~/hooks";
 import { isServer } from "~/utils/app";
 import { handleCopyToClipboardClick } from "~/utils/browser";
@@ -167,7 +167,7 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 	);
 }
 
-export default withAuth<T_ContactsProps>(Contacts);
+export default withAuthPage<T_ContactsProps>(Contacts);
 
 // --- Components ---
 
