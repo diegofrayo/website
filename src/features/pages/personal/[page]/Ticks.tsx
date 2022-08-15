@@ -14,14 +14,14 @@ import type {
 
 function Ticks(): T_ReactElement {
 	// states & refs
-	const [audio, setAudio] = React.useState<"01" | "02" | "03" | "04">("01");
-	const [ticks, setTicks] = useEnhancedState(0);
-	const [cycles, setCycles, incrementCycles] = useEnhancedState(0);
+	const [audio, setAudio] = React.useState<"1" | "2">("1");
+	const [ticks, setTicks, , , resetTicks] = useEnhancedState(0);
+	const [cycles, , incrementCycles, , resetCycles] = useEnhancedState(0);
 	const [timerStatus, setTimerStatus] = React.useState<"NOT_STARTED" | "IN_PROGRESS" | "PAUSED">(
 		"NOT_STARTED",
 	);
 	const [ticksInputValue, setTicksInputValue] = React.useState(4);
-	const [intensityInputValue, setIntensityInputValue] = React.useState(1000);
+	const [intensityInputValue, setIntensityInputValue] = React.useState(1250);
 	const [timerInterval, setTimerInterval] = React.useState<NodeJS.Timeout | null>(null);
 
 	// vars
@@ -41,27 +41,38 @@ function Ticks(): T_ReactElement {
 			return;
 		}
 
-		setTimerStatus("IN_PROGRESS");
-		setTimerInterval(
-			setInterval(() => {
-				setTicks((currentTicks) => {
-					if (currentTicks === ticksInputValue) {
-						incrementCycles();
-						return 0;
-					}
+		const intervalHandler = function intervalHandler(): void {
+			setTicks((currentTicks) => {
+				if (currentTicks === ticksInputValue) {
+					playSound();
+					return 1;
+				}
 
+				if (currentTicks === ticksInputValue - 1) {
+					playSound("audio-cycle-completed");
+					incrementCycles();
+					return currentTicks + 1;
+				}
+
+				if (currentTicks < ticksInputValue) {
 					playSound();
 					return currentTicks + 1;
-				});
-			}, intensityInputValue),
-		);
+				}
+
+				return currentTicks;
+			});
+		};
+
+		intervalHandler();
+		setTimerStatus("IN_PROGRESS");
+		setTimerInterval(setInterval(intervalHandler, intensityInputValue));
 	}
 
 	function handleStopClick(): void {
-		setTicks(0);
-		setCycles(0);
-		setTimerStatus("NOT_STARTED");
+		resetTicks();
+		resetCycles();
 		stopInterval();
+		setTimerStatus("NOT_STARTED");
 	}
 
 	function handlePauseClick(): void {
@@ -87,8 +98,8 @@ function Ticks(): T_ReactElement {
 		};
 
 	// utils
-	function playSound(): void {
-		(document.getElementById("audio-tick") as HTMLAudioElement)?.play();
+	function playSound(elementId?: "audio-cycle-completed" | "audio-tick"): void {
+		(document.getElementById(elementId || "audio-tick") as HTMLAudioElement)?.play();
 	}
 
 	function stopInterval(): void {
@@ -101,13 +112,13 @@ function Ticks(): T_ReactElement {
 			config={{
 				title: PAGE_TITLE,
 				disableSEO: true,
-				scripts: createArray(4).map((item) => {
+				scripts: createArray(3).map((item) => {
 					return {
 						element: "link",
 						props: {
 							rel: "preload",
 							as: "audio",
-							href: `/static/sounds/ticks/0${item}.mp3`,
+							href: `/static/sounds/ticks/${item}.mp3`,
 						},
 					};
 				}),
@@ -152,15 +163,12 @@ function Ticks(): T_ReactElement {
 								height="tw-h-[48px]"
 								onChange={onSelectChangeHandler}
 							>
-								<Select.Option value="01">1</Select.Option>
-								<Select.Option value="02">2</Select.Option>
-								<Select.Option value="03">3</Select.Option>
-								<Select.Option value="04">4</Select.Option>
+								<Select.Option value="1">1</Select.Option>
+								<Select.Option value="2">2</Select.Option>
 							</Select>
 						</Block>
 					</form>
 					<Space size={2} />
-
 					<Block className="tw-flex tw-justify-center tw-gap-3">
 						{isTimerStarted ? (
 							<Button
@@ -193,17 +201,27 @@ function Ticks(): T_ReactElement {
 					<Space size={2} />
 
 					{isTimerStarted ? (
-						<Text className="tw-text-center">
-							<InlineText is="strong">Cycles finished:</InlineText>{" "}
-							<InlineText className="tw-inline-block tw-w-8 tw-text-center">{cycles}</InlineText>{" "}
-							<InlineText>|</InlineText>{" "}
-							<InlineText className="tw-inline-block tw-w-6 tw-text-center">{ticks}</InlineText>
-						</Text>
+						<Block className="tw-text-center">
+							<Text>
+								<InlineText is="strong">Current tick:</InlineText>{" "}
+								<InlineText className="tw-inline-block tw-w-8 tw-text-center">{ticks}</InlineText>
+							</Text>
+							<Text>
+								<InlineText is="strong">Cycles finished:</InlineText>{" "}
+								<InlineText className="tw-inline-block tw-w-8 tw-text-center">{cycles}</InlineText>
+							</Text>
+						</Block>
 					) : null}
 
 					<audio
 						src={`/static/sounds/ticks/${audio}.mp3`}
 						id="audio-tick"
+						preload="auto"
+						className="tw-hidden"
+					/>
+					<audio
+						src="/static/sounds/ticks/3.mp3"
+						id="audio-cycle-completed"
 						preload="auto"
 						className="tw-hidden"
 					/>
