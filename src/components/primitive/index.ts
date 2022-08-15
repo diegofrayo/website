@@ -10,6 +10,7 @@ export { default as Link } from "./Link";
 export { default as List } from "./List";
 export { default as Modal } from "./Modal";
 export { default as Pre } from "./Pre";
+export { default as Select } from "./Select";
 export { default as Space } from "./Space";
 export { default as Text } from "./Text";
 export { default as Title } from "./Title";

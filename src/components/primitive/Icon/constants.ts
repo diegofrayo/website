@@ -17,6 +17,7 @@ import {
 	ExternalLinkIcon,
 	FilmIcon,
 	GlobeAltIcon,
+	HeartIcon,
 	KeyIcon,
 	LinkIcon,
 	MenuIcon,
@@ -42,7 +43,7 @@ import {
 	CheckIcon,
 	CogIcon,
 	DotsCircleHorizontalIcon as DotsCircleHorizontalIconSolid,
-	HeartIcon,
+	HeartIcon as HeartIconSolid,
 	MinusIcon,
 	MoonIcon,
 	StarIcon,
@@ -312,6 +313,13 @@ export const ICONS = {
 	},
 	HEART: {
 		icon: HeartIcon,
+		defaultProps: {
+			className: "",
+			color: "tw-text-red-500",
+		},
+	},
+	HEART_SOLID: {
+		icon: HeartIconSolid,
 		defaultProps: {
 			className: "",
 			color: "tw-text-red-500",

@@ -1,18 +1,33 @@
+const LOCAL_STORAGE_KEY = "DFR_DEV_TOOLS";
+const DEFAULT_VALUES = {
+	isUserLoggedIn: true,
+	isDevelopmentEnvironment: true,
+	isCSSDebuggingEnabled: false,
+	httpRequestsHaveToFail: false,
+	authPagesEnabled: true,
+};
+
+export function initDevToolsConfig(): void {
+	if (window.localStorage.getItem(LOCAL_STORAGE_KEY)) return;
+
+	updateDevToolsConfig(DEFAULT_VALUES);
+}
+
 export function readDevToolsConfig(): T_DevToolsConfig {
 	try {
 		const config = JSON.parse(
-			window.localStorage.getItem("DFR_DEV_TOOLS") || "---",
+			window.localStorage.getItem(LOCAL_STORAGE_KEY) || "---",
 		) as T_DevToolsConfig;
 
 		return config;
 	} catch (error) {
-		return {} as T_DevToolsConfig;
+		return DEFAULT_VALUES;
 	}
 }
 
 export function updateDevToolsConfig(updatedConfig: Partial<T_DevToolsConfig>): void {
 	window.localStorage.setItem(
-		"DFR_DEV_TOOLS",
+		LOCAL_STORAGE_KEY,
 		JSON.stringify({
 			...readDevToolsConfig(),
 			...updatedConfig,
@@ -27,4 +42,5 @@ type T_DevToolsConfig = {
 	isDevelopmentEnvironment: boolean;
 	isCSSDebuggingEnabled: boolean;
 	httpRequestsHaveToFail: boolean;
+	authPagesEnabled: boolean;
 };

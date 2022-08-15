@@ -53,8 +53,8 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
 
 	// effects
 	useDidMount(() => {
-		AuthService.configureHTTPHeaders();
 		AnalyticsService.init();
+		AuthService.configureHTTPHeaders();
 
 		persistQueryClient({
 			persistor: createWebStoragePersistor({ storage: window.localStorage }),

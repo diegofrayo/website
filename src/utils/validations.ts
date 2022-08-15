@@ -54,10 +54,6 @@ export function isFalsy(input: unknown): boolean {
 	return !input;
 }
 
-export function isTruthy(input: unknown): boolean {
-	return !isFalsy(input);
-}
-
 export function isNotEquals(input1: unknown, input2: unknown): boolean {
 	return input1 !== input2;
 }
@@ -74,6 +70,12 @@ export function isEmptyString(input: unknown): input is string {
 
 export function isNotEmptyString(input: unknown): input is string {
 	return typeof input === "string" && input.length > 0;
+}
+
+// --- Numbers ---
+
+export function isBetween(input: number, range: [number, number]): boolean {
+	return input >= range[0] && input <= range[1];
 }
 
 // --- DOM ---

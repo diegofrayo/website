@@ -1,11 +1,14 @@
 import * as React from "react";
 
+import { renderIf } from "~/hocs";
 import { useDidMount } from "~/hooks";
-import type { T_ReactElementNullable, T_ReactFunctionComponent, T_UnknownObject } from "~/types";
+import { readDevToolsConfig } from "~/features/development-tools";
 import { redirect as globalRedirect, ROUTES } from "~/features/routing";
+import { isLocalhostEnvironment } from "~/utils/app";
+import { isNotTrue } from "~/utils/validations";
+import type { T_ReactElementNullable, T_ReactFunctionComponent, T_UnknownObject } from "~/types";
 
 import AuthService from "./service";
-import { renderIf } from "~/hocs";
 
 export function withAuthPage<G_ComponentProps = T_UnknownObject>(
 	Component: T_ReactFunctionComponent<G_ComponentProps>,
@@ -18,6 +21,11 @@ export function withAuthPage<G_ComponentProps = T_UnknownObject>(
 
 		// effects
 		useDidMount(() => {
+			if (isLocalhostEnvironment() && isNotTrue(readDevToolsConfig().authPagesEnabled)) {
+				redirect(false);
+				return;
+			}
+
 			if (options?.allowIf && options?.allowIf(props)) {
 				redirect(false);
 			} else if (options?.denyLoggedIn) {

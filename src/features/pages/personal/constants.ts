@@ -40,6 +40,13 @@ export const PERSONAL_PAGES = [
 		type: "TOOL",
 	},
 	{
+		slug: "ticks",
+		title: "ticks",
+		componentName: "",
+		icon: Icon.icon.HEART,
+		type: "TOOL",
+	},
+	{
 		slug: "whatsapp",
 		title: "whatsapp",
 		componentName: "WhatsApp",

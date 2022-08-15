@@ -18,8 +18,10 @@ import { ENV_VARS } from "~/constants";
 import type { T_ReactElement } from "~/types";
 
 function Debugging(): T_ReactElement {
+	// states & refs
 	const [content, setContent] = React.useState("");
 
+	// effects
 	useDidMount(() => {
 		setContent(
 			JSON.stringify(

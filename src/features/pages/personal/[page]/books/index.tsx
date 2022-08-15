@@ -44,7 +44,7 @@ function Books(): T_ReactElement {
 												calification === 5
 													? Icon.icon.STAR
 													: calification === 4
-													? Icon.icon.HEART
+													? Icon.icon.HEART_SOLID
 													: Icon.icon.CHECK
 											}
 											size={24}

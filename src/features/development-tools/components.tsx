@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { Block, Button, Icon, InlineText, Link, Space, Text } from "~/components/primitive";
+import { Block, Button, Icon, InlineText, Link, Select, Space, Text } from "~/components/primitive";
 import { AnalyticsService } from "~/features/analytics";
 import { AuthService, withAuthComponent } from "~/features/auth";
 import { renderIf } from "~/hocs";
@@ -11,11 +11,10 @@ import type {
 	T_ReactChildren,
 	T_ReactElement,
 	T_ReactElementNullable,
-	T_ReactOnChangeEventHandler,
 	T_ReactOnChangeEventObject,
 } from "~/types";
 
-import { readDevToolsConfig, updateDevToolsConfig } from "./utils";
+import { initDevToolsConfig, readDevToolsConfig, updateDevToolsConfig } from "./utils";
 
 function DevelopmentTools(): T_ReactElementNullable {
 	// states & refs
@@ -23,7 +22,7 @@ function DevelopmentTools(): T_ReactElementNullable {
 
 	// effects
 	useDidMount(() => {
-		updateDevToolsConfig({});
+		initDevToolsConfig();
 	});
 
 	// handlers
@@ -56,6 +55,8 @@ function DevelopmentTools(): T_ReactElementNullable {
 					<EnvironmentConfig />
 					<Space size={2} />
 					<HTTPRequestsConfig />
+					<Space size={2} />
+					<AuthPagesConfig />
 					<Space size={2} />
 					<ErrorPages />
 					<Space size={2} />
@@ -126,10 +127,10 @@ function CSSDebugging(): T_ReactElement {
 		<ConfigBlock title="CSS Debugging">
 			<Select
 				defaultValue={isCSSDebuggingEnabled ? "true" : "false"}
-				onChangeHandler={onChangeHandler}
+				onChange={onChangeHandler}
 			>
-				<option value="true">Enabled</option>
-				<option value="false">Disabled</option>
+				<Select.Option value="true">Enabled</Select.Option>
+				<Select.Option value="false">Disabled</Select.Option>
 			</Select>
 		</ConfigBlock>
 	);
@@ -149,10 +150,10 @@ function UsersConfig(): T_ReactElement {
 		<ConfigBlock title="User session">
 			<Select
 				defaultValue={isUserLoggedIn ? "true" : "false"}
-				onChangeHandler={onChangeHandler}
+				onChange={onChangeHandler}
 			>
-				<option value="true">Logged in</option>
-				<option value="false">Guest</option>
+				<Select.Option value="true">Logged in</Select.Option>
+				<Select.Option value="false">Guest</Select.Option>
 			</Select>
 		</ConfigBlock>
 	);
@@ -172,10 +173,10 @@ function EnvironmentConfig(): T_ReactElement {
 		<ConfigBlock title="Environment">
 			<Select
 				defaultValue={isDevelopmentEnvironmentConfig ? "true" : "false"}
-				onChangeHandler={onChangeHandler}
+				onChange={onChangeHandler}
 			>
-				<option value="true">Development</option>
-				<option value="false">Production</option>
+				<Select.Option value="true">Development</Select.Option>
+				<Select.Option value="false">Production</Select.Option>
 			</Select>
 		</ConfigBlock>
 	);
@@ -195,10 +196,33 @@ function HTTPRequestsConfig(): T_ReactElement {
 		<ConfigBlock title="HTTP Requests">
 			<Select
 				defaultValue={httpRequestsHaveToFail ? "true" : "false"}
-				onChangeHandler={onChangeHandler}
+				onChange={onChangeHandler}
 			>
-				<option value="true">Fail</option>
-				<option value="false">No-intercept</option>
+				<Select.Option value="true">Fail</Select.Option>
+				<Select.Option value="false">No-intercept</Select.Option>
+			</Select>
+		</ConfigBlock>
+	);
+}
+
+function AuthPagesConfig(): T_ReactElement {
+	// vars
+	const { authPagesEnabled } = readDevToolsConfig();
+
+	// handlers
+	function onChangeHandler(event: T_ReactOnChangeEventObject<HTMLSelectElement>): void {
+		updateDevToolsConfig({ authPagesEnabled: event.currentTarget.value === "true" });
+		window.location.reload();
+	}
+
+	return (
+		<ConfigBlock title="Auth pages">
+			<Select
+				defaultValue={authPagesEnabled ? "true" : "false"}
+				onChange={onChangeHandler}
+			>
+				<Select.Option value="true">Enabled</Select.Option>
+				<Select.Option value="false">Disabled</Select.Option>
 			</Select>
 		</ConfigBlock>
 	);
@@ -262,31 +286,5 @@ function ConfigBlock({ title, children }: T_ConfigBlockProps): T_ReactElement {
 			<Text className="tw-font-bold">{title}:</Text>
 			{children}
 		</Block>
-	);
-}
-
-type T_SelectProps = {
-	defaultValue: string;
-	onChangeHandler: T_ReactOnChangeEventHandler<HTMLSelectElement>;
-	children: T_ReactChildren;
-};
-
-function Select({ defaultValue, onChangeHandler, children }: T_SelectProps): T_ReactElement {
-	return (
-		<select
-			defaultValue={defaultValue}
-			onChange={onChangeHandler}
-		>
-			{children}
-
-			<style jsx>{`
-				select {
-					@apply dfr-bg-color-tertiary;
-					@apply dfr-border-color-gs-400;
-					border-width: 1px;
-					width: 100%;
-				}
-			`}</style>
-		</select>
 	);
 }

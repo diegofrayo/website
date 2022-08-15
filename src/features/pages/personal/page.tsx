@@ -55,6 +55,7 @@ function PagesList({ pages }: T_PagesListProps): T_ReactElement {
 						>
 							<Icon
 								icon={Icon.icon[page.icon]}
+								color="dfr-text-color-bw"
 								size={32}
 							/>
 							<InlineText className="tw-mx-2 tw-flex-1 tw-truncate tw-text-center">
@@ -62,6 +63,7 @@ function PagesList({ pages }: T_PagesListProps): T_ReactElement {
 							</InlineText>
 							<Icon
 								icon={Icon.icon[page.icon]}
+								color="dfr-text-color-bw"
 								size={32}
 							/>
 						</Link>
