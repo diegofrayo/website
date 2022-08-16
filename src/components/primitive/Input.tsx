@@ -7,15 +7,25 @@ import type { T_HTMLElementAttributes, T_ReactElement, T_ReactFunctionComponent 
 import Text from "./Text";
 
 type T_InputProps = T_HTMLElementAttributes["input"] & {
-	type: T_HTMLElementAttributes["input"]["type"];
 	id: string;
-	label?: string;
+	type: T_HTMLElementAttributes["input"]["type"];
+	componentProps?: {
+		is?: "textarea" | "input";
+		label?: string;
+	};
 	containerProps?: T_HTMLElementAttributes["label"];
-	is?: "textarea" | "input";
+	labelProps?: T_HTMLElementAttributes["p"];
 };
 
-const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
-	{ containerProps = {}, label = "", className = "", id, is = "input", ...rest }: T_InputProps,
+const Input = React.forwardRef(function Input(
+	{
+		id,
+		className,
+		componentProps: { is = "input", label = "" } = {},
+		containerProps = {},
+		labelProps = {},
+		...rest
+	}: T_InputProps,
 	ref,
 ): T_ReactElement {
 	/*
@@ -28,22 +38,15 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
 	return (
 		<label
 			{...containerProps}
-			className={classNames(
-				"root",
-				"tw-block tw-border-b-4 dfr-border-color-primary",
-				containerProps.className,
-			)}
+			className={classNames("root", "tw-block", containerProps.className)}
 			htmlFor={id}
 		>
-			{isNotEmptyString(label) ? (
-				<Text className="tw-mb-1 tw-cursor-pointer tw-font-bold">{label}</Text>
-			) : null}
+			{isNotEmptyString(label) ? <Label {...labelProps}>{label}</Label> : null}
 			<Element
-				// @ts-ignore
 				ref={ref}
 				id={id}
 				className={classNames(
-					"dfr-Input tw-block tw-w-full tw-resize-none tw-rounded-none tw-border tw-p-2 tw-shadow-none dfr-bg-color-tertiary dfr-border-color-primary",
+					"dfr-Input tw-block tw-w-full tw-resize-none tw-rounded-none tw-border tw-py-1 tw-px-2 tw-shadow-none dfr-bg-color-tertiary dfr-border-color-primary",
 					className,
 				)}
 				{...rest}
@@ -51,12 +54,12 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
 
 			<style jsx>
 				{`
-					.root :focus-within {
-						border-color: transparent;
-					}
-
-					.root :global(.dfr-Input:focus-within) {
-						border-color: transparent;
+					.root :global(.dfr-Input:focus-within),
+					.root :global(.dfr-Input:focus) {
+						border-radius: 0;
+						outline-color: var(--dfr-text-color-gs-400);
+						outline-style: solid;
+						outline-width: 1px;
 					}
 
 					.root :global(input) {
@@ -68,4 +71,21 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
 	);
 });
 
+// TODO: Typing issue
+// @ts-ignore
+Input.Label = Label;
+
 export default Input;
+
+// --- Components ---
+
+export function Label({ children, ...rest }: T_HTMLElementAttributes["p"]): T_ReactElement {
+	return (
+		<Text
+			className="tw-mb-1 tw-cursor-pointer tw-font-bold"
+			{...rest}
+		>
+			{children}
+		</Text>
+	);
+}

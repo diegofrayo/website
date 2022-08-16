@@ -126,6 +126,7 @@ function CSSDebugging(): T_ReactElement {
 	return (
 		<ConfigBlock title="CSS Debugging">
 			<Select
+				id="select-css-debugging"
 				defaultValue={isCSSDebuggingEnabled ? "true" : "false"}
 				onChange={onChangeHandler}
 			>
@@ -149,6 +150,7 @@ function UsersConfig(): T_ReactElement {
 	return (
 		<ConfigBlock title="User session">
 			<Select
+				id="select-user-session"
 				defaultValue={isUserLoggedIn ? "true" : "false"}
 				onChange={onChangeHandler}
 			>
@@ -172,6 +174,7 @@ function EnvironmentConfig(): T_ReactElement {
 	return (
 		<ConfigBlock title="Environment">
 			<Select
+				id="select-environment"
 				defaultValue={isDevelopmentEnvironmentConfig ? "true" : "false"}
 				onChange={onChangeHandler}
 			>
@@ -195,6 +198,7 @@ function HTTPRequestsConfig(): T_ReactElement {
 	return (
 		<ConfigBlock title="HTTP Requests">
 			<Select
+				id="select-http-requests"
 				defaultValue={httpRequestsHaveToFail ? "true" : "false"}
 				onChange={onChangeHandler}
 			>
@@ -218,6 +222,7 @@ function AuthPagesConfig(): T_ReactElement {
 	return (
 		<ConfigBlock title="Auth pages">
 			<Select
+				id="select-auth-pages"
 				defaultValue={authPagesEnabled ? "true" : "false"}
 				onChange={onChangeHandler}
 			>

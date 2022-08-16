@@ -24,9 +24,9 @@ function ISR(): T_ReactElement {
 	return (
 		<Block>
 			<Input
+				componentProps={{ label: "Path" }}
 				id="input-path"
 				type="text"
-				label="Path"
 				value={path}
 				onChange={onChangeHandler}
 			/>

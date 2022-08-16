@@ -1,40 +1,63 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import type { T_ReactChildren, T_ReactElement, T_ReactOnChangeEventHandler } from "~/types";
+import { isNotEmptyString } from "~/utils/validations";
+import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
-type T_SelectProps = {
-	children: T_ReactChildren;
-	defaultValue: string;
-	className?: string;
-	height?: string;
-	onChange: T_ReactOnChangeEventHandler<HTMLSelectElement>;
+import { Label } from "./Input";
+
+type T_SelectProps = T_HTMLElementAttributes["select"] & {
+	id: string;
+	componentProps?: {
+		label?: string;
+		height?: string;
+	};
+	containerProps?: T_HTMLElementAttributes["label"];
+	labelProps?: T_HTMLElementAttributes["p"];
 };
 
 function Select({
 	children,
-	defaultValue,
+	id,
 	className,
-	height = "tw-h-[30px]",
-	onChange,
+	componentProps: { label = "" } = {},
+	containerProps = {},
+	labelProps = {},
+	...rest
 }: T_SelectProps): T_ReactElement {
 	return (
-		<select
-			className={classNames(height, className)}
-			defaultValue={defaultValue}
-			onChange={onChange}
+		<label
+			{...containerProps}
+			className={classNames("root", "tw-block", containerProps.className)}
+			htmlFor={id}
 		>
-			{children}
+			{isNotEmptyString(label) ? <Label {...labelProps}>{label}</Label> : null}
+			<select
+				className={classNames("dfr-Select", className)}
+				{...rest}
+			>
+				{children}
+			</select>
 
 			<style jsx>{`
 				select {
 					@apply dfr-bg-color-tertiary;
 					@apply dfr-border-color-primary;
+					@apply tw-py-1 tw-px-2;
+					-webkit-appearance: none;
 					border-width: 1px;
 					width: 100%;
 				}
+
+				select:focus-within,
+				select:focus {
+					border-radius: 0;
+					outline-color: var(--dfr-text-color-gs-400);
+					outline-style: solid;
+					outline-width: 1px;
+				}
 			`}</style>
-		</select>
+		</label>
 	);
 }
 

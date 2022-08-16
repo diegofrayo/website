@@ -34,8 +34,8 @@ function WhatsApp(): T_ReactElement {
 		<Block>
 			<Block className="tw-flex-no-wrap tw-flex tw-w-full tw-items-end">
 				<Input
+					componentProps={{ label: "Ingrese un número de celular" }}
 					id="input"
-					label="Ingrese un número de celular"
 					containerProps={{ className: "tw-flex-1 tw-mr-2" }}
 					type="tel"
 					ref={inputRef}

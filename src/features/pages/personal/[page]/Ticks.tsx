@@ -131,10 +131,10 @@ function Ticks(): T_ReactElement {
 						className="tw-mx-auto tw-flex tw-w-96 tw-max-w-full tw-justify-between tw-gap-1"
 					>
 						<Input
-							type="number"
-							id="ticks"
-							label="Ticks"
+							componentProps={{ label: "Ticks" }}
 							containerProps={{ className: "tw-text-left tw-flex-1" }}
+							id="ticks"
+							type="number"
 							className="tw-text-left"
 							value={String(ticksInputValue)}
 							disabled={isTimerStarted}
@@ -143,10 +143,10 @@ function Ticks(): T_ReactElement {
 							onChange={onTicksInputChangeHandler}
 						/>
 						<Input
-							type="number"
-							id="intensity"
-							label="Intensity"
+							componentProps={{ label: "Intensity" }}
 							containerProps={{ className: "tw-text-center tw-flex-1" }}
+							id="intensity"
+							type="number"
 							className="tw-text-center"
 							value={String(intensityInputValue)}
 							disabled={isTimerStarted}
@@ -155,18 +155,17 @@ function Ticks(): T_ReactElement {
 							step="250"
 							onChange={onIntensityInputChangeHandler}
 						/>
-						<Block className="tw-flex-1 tw-text-right">
-							<Text className="tw-mb-1 tw-font-bold">Sound</Text>
-							<Select
-								defaultValue="01"
-								className="tw-text-right"
-								height="tw-h-[48px]"
-								onChange={onSelectChangeHandler}
-							>
-								<Select.Option value="1">1</Select.Option>
-								<Select.Option value="2">2</Select.Option>
-							</Select>
-						</Block>
+						<Select
+							componentProps={{ label: "Sound" }}
+							containerProps={{ className: "tw-flex-1 tw-text-right" }}
+							id="select-sounds"
+							defaultValue="1"
+							className="tw-text-right"
+							onChange={onSelectChangeHandler}
+						>
+							<Select.Option value="1">1</Select.Option>
+							<Select.Option value="2">2</Select.Option>
+						</Select>
 					</form>
 					<Space size={2} />
 					<Block className="tw-flex tw-justify-center tw-gap-3">

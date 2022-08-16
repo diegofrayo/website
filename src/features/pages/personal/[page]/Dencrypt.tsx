@@ -37,12 +37,12 @@ function Dencrypt(): T_ReactElement {
 				onSubmit={onSubmitHandler}
 			>
 				<Input
-					ref={inputRef}
-					type="text"
-					id="input"
-					label="Ingrese un texto"
+					componentProps={{ label: "Ingrese un texto" }}
 					containerProps={{ className: "tw-my-1" }}
+					id="input"
+					type="text"
 					autoComplete="on"
+					ref={inputRef}
 					onClick={onInputFocusHandler}
 				/>
 				<Block className="tw-flex tw-flex-wrap tw-justify-between">

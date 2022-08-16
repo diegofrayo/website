@@ -27,14 +27,13 @@ function TextPage(): T_ReactElement {
 	return (
 		<div className="root">
 			<Input
-				ref={inputRef}
-				type="text"
-				id="input"
-				label="Ingrese un texto"
+				componentProps={{ label: "Ingrese un texto", is: "textarea" }}
 				containerProps={{ className: "tw-my-1" }}
+				id="input"
+				type="text"
 				autoComplete="on"
-				is="textarea"
 				className="tw-h-40"
+				ref={inputRef}
 				onClick={onInputFocusHandler}
 			/>
 			<Block className="tw-flex tw-flex-wrap tw-justify-end">

@@ -83,10 +83,10 @@ function MusicPage(): T_ReactElement {
 
 									<Block>
 										<Input
+											componentProps={{ label: t("page:input_label") }}
 											id="input"
 											type="search"
 											placeholder={t("page:input_placeholder")}
-											label={t("page:input_label")}
 											value={inputValue}
 											autoComplete="off"
 											ref={inputRef}

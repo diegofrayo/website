@@ -39,18 +39,18 @@ function SignInPage(): T_ReactElement {
 				onSubmit={onSubmitHandler}
 			>
 				<Input
+					containerProps={{ className: "tw-hidden" }}
 					id="username"
 					type="username"
 					name="username"
 					value="diegofrayo"
 					autoComplete="off"
 					onChange={onInputChangeHandler}
-					containerProps={{ className: "tw-hidden" }}
 				/>
 				<Input
+					componentProps={{ label: "Contraseña" }}
 					id="password"
 					type="password"
-					label="Contraseña"
 					value={inputValue}
 					autoComplete="new-password"
 					disabled={isInputDisabled}

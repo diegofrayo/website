@@ -27,16 +27,16 @@ function Thumbnails(): T_ReactElement {
 		<Block>
 			<Block>
 				<Input
+					componentProps={{ label: "Title" }}
 					id="input-title"
-					label="Title"
 					type="text"
 					value={title}
 					onChange={onChangeHandler("title")}
 				/>
 				<Space size={2} />
 				<Input
+					componentProps={{ label: "Thumbnail url" }}
 					id="input-thumbnail"
-					label="Thumbnail url"
 					type="text"
 					value={src}
 					onChange={onChangeHandler("src")}
