@@ -8,7 +8,7 @@ import { getPageContentStaticProps } from "~/features/i18n";
 import http from "~/lib/http";
 import dataLoader from "~/server";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { MDXScope } from "~/features/mdx";
+import { getMDXScope } from "~/features/mdx";
 import { ROUTES } from "~/features/routing";
 import { isUndefined } from "~/utils/validations";
 
@@ -60,7 +60,7 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, T_StaticPat
 		const songMDXContent = await serialize(songContent.mdx, {
 			scope: {
 				DATA: {
-					...MDXScope.DATA,
+					...getMDXScope().DATA,
 					song: {
 						...song,
 						content: songContent.txt,

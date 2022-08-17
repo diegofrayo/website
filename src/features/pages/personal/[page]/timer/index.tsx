@@ -10,7 +10,7 @@ import { withAuthPage } from "~/features/auth";
 import { useDidMount, useQuery } from "~/hooks";
 import http from "~/lib/http";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { setScrollPosition } from "~/utils/browser";
+import { setScrollPosition, isConfirmAlertAccepted } from "~/utils/browser";
 import { ENV_VARS } from "~/constants";
 import { delay } from "~/utils/misc";
 import { sortBy } from "~/utils/objects-and-arrays";
@@ -276,7 +276,7 @@ function TimerPage(): T_ReactElement {
 												variant={Button.variant.SIMPLE}
 												className="tw-mx-auto tw-block tw-text-center tw-font-bold tw-underline"
 												onClick={() => {
-													if (window.confirm("¿Está seguro?")) {
+													if (isConfirmAlertAccepted("¿Está seguro?")) {
 														window.localStorage.removeItem("DFR_TIMER");
 														window.location.reload();
 													}
@@ -780,7 +780,7 @@ function useController() {
 				loadedRoutineFromLocalStorage?.status === ROUTINE_STATUS.COMPLETED;
 
 			if (thisRoutineWasCompletedPreviously) {
-				const userCanceledRoutineRestarting = !window.confirm(
+				const userCanceledRoutineRestarting = !isConfirmAlertAccepted(
 					"Una rutina ya fue completada el día de hoy. ¿Está seguro que quiere iniciar una nueva rutina y sobre-escribir los datos de la rutina existente?",
 				);
 
@@ -803,7 +803,11 @@ function useController() {
 
 	const handleCompleteRoutineClick = React.useCallback(
 		function handleCompleteRoutineClick() {
-			if (window.confirm("¿Está seguro que quiere completar la rutina? Hay items sin terminar")) {
+			if (
+				isConfirmAlertAccepted(
+					"¿Está seguro que quiere completar la rutina? Hay items sin terminar",
+				)
+			) {
 				markRoutineAsCompleted(currentRoutine as T_Routine);
 			}
 		},
@@ -812,7 +816,7 @@ function useController() {
 
 	const handleCancelRoutineClick = React.useCallback(
 		function handleCancelRoutineClick() {
-			if (window.confirm("¿Está seguro que quiere cancelar la rutina?")) {
+			if (isConfirmAlertAccepted("¿Está seguro que quiere cancelar la rutina?")) {
 				saveDataInLocalStorage({ data: undefined });
 				setCurrentRoutine(createNewRoutine(routinesTemplates.routines[0], routinesTemplates));
 				setTimerStatus(TIMER_STATUS.NOT_STARTED);
@@ -848,7 +852,7 @@ function useController() {
 		function handleDeleteRoutineHistoryClick(date) {
 			return async () => {
 				try {
-					if (window.confirm("¿Está seguro?")) {
+					if (isConfirmAlertAccepted("¿Está seguro?")) {
 						saveDataInLocalStorage({ data: undefined, key: date });
 						setRoutinesHistory(fetchRoutinesHistory());
 					}

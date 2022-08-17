@@ -5,7 +5,13 @@ import { I18nService } from "~/features/i18n";
 
 dayjs.extend(customParseFormat);
 
-export function getDifferenceBetweenDates(
+export function generateDate(): string {
+	const date = new Date();
+
+	return `${date.getFullYear()}/${addPadding(date.getMonth() + 1)}/${addPadding(date.getDate())}`;
+}
+
+export function getFormattedDatesDifference(
 	startDate: string | Date,
 	endDate: string | Date,
 ): string {
@@ -33,4 +39,14 @@ export function getDifferenceBetweenDates(
 	}
 
 	return translator.t("page:years_ago", { number: Math.round(difference / 365) });
+}
+
+export function getDatesDiff(startDate: Date, endDate: Date, format: "minute" | "year"): number {
+	return dayjs(endDate).diff(dayjs(startDate), format);
+}
+
+// --- Private ---
+
+function addPadding(number: number): string {
+	return number >= 10 ? `${number}` : `0${number}`;
 }

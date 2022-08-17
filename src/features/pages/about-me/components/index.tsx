@@ -9,7 +9,7 @@ type T_AboutMeBlockProps = {
 	image?: string;
 	text: string;
 	isPortrait: boolean;
-	layout?: "R" | "L";
+	layout: "L" | "R" | "C";
 };
 
 export default function AboutMeBlock({
@@ -20,14 +20,18 @@ export default function AboutMeBlock({
 }: T_AboutMeBlockProps): T_ReactElement {
 	return (
 		<Block className="tw-mb-8 tw-text-justify">
-			<Text>
+			<Text className={classNames(layout === "C" && " tw-text-center")}>
 				{isNotEmptyString(image) ? (
 					<Image
 						src={image}
 						className={classNames(
 							"tw-my-1 tw-inline-block tw-rounded-md dfr-transition-opacity dfr-shadow",
-							isPortrait ? "tw-w-24" : "tw-h-32 tw-w-40",
-							layout === "R" ? "tw-float-right tw-ml-4" : "tw-float-left tw-mr-4",
+							isPortrait ? "tw-w-24" : "tw-h-28 tw-w-36",
+							layout === "R"
+								? "tw-float-right tw-ml-4"
+								: layout === "L"
+								? "tw-float-left tw-mr-4"
+								: "",
 						)}
 					/>
 				) : null}

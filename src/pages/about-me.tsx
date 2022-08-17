@@ -4,11 +4,11 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { Page, MainLayout } from "~/components/layout";
 import { MDXContent } from "~/components/shared";
-import http from "~/lib/http";
-import { useTranslation, getPageContentStaticProps } from "~/features/i18n";
-import { ROUTES } from "~/features/routing";
-import { MDXScope } from "~/features/mdx";
 import { ENV_VARS } from "~/constants";
+import { useTranslation, getPageContentStaticProps } from "~/features/i18n";
+import { getMDXScope } from "~/features/mdx";
+import { ROUTES } from "~/features/routing";
+import http from "~/lib/http";
 import type { T_ReactElement } from "~/types";
 
 type T_AboutMePageProps = {
@@ -53,9 +53,7 @@ export const getStaticProps = getPageContentStaticProps<T_AboutMePageProps, { pa
 		const file = (await http.get(fileURL)).data;
 
 		const pageMDXContent = await serialize(file, {
-			scope: {
-				DATA: MDXScope.DATA,
-			},
+			scope: getMDXScope(),
 		});
 
 		return {

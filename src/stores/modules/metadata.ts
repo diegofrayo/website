@@ -39,6 +39,8 @@ export type T_WebsiteMetadata = {
 	shortName: string;
 	username: string;
 	jobTitle: string;
+	birthDate: string;
+	age: number;
 	url: string;
 	nationality: string;
 	address: {

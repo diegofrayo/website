@@ -8,7 +8,7 @@ import { Render } from "~/components/shared";
 import { AuthService } from "~/features/auth";
 import { useQuery } from "~/hooks";
 import { T_Locale, useTranslation } from "~/features/i18n";
-import { getDifferenceBetweenDates } from "~/utils/dates";
+import { getFormattedDatesDifference } from "~/utils/dates";
 import { ROUTES } from "~/features/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import type { T_ReactElement } from "~/types";
@@ -133,7 +133,7 @@ function BlogEntry({
 								<React.Fragment>
 									<InlineText>{t("page:published_at")} </InlineText>
 									<InlineText is="strong">
-										{getDifferenceBetweenDates(publishedAt, new Date())}
+										{getFormattedDatesDifference(publishedAt, new Date())}
 									</InlineText>
 								</React.Fragment>
 							) : (

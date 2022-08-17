@@ -43,8 +43,7 @@ function Select({
 				select {
 					@apply dfr-bg-color-tertiary;
 					@apply dfr-border-color-primary;
-					@apply tw-py-1 tw-px-2;
-					-webkit-appearance: none;
+					@apply tw-px-1 tw-py-1.5;
 					border-width: 1px;
 					width: 100%;
 				}

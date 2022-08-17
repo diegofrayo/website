@@ -12,7 +12,7 @@ import { useStoreSelector, useStoreActionsDispatcher } from "~/stores";
 import { selectWebsiteMetadata, T_WebsiteMetadata } from "~/stores/modules/metadata";
 import { setLocales } from "~/stores/modules/page-config";
 import { copyToClipboard } from "~/utils/browser";
-import { getDifferenceBetweenDates } from "~/utils/dates";
+import { getFormattedDatesDifference } from "~/utils/dates";
 import { ROUTES } from "~/features/routing";
 import type { T_ReactElement } from "~/types";
 
@@ -103,7 +103,7 @@ function BlogPostDetails({
 				<BlogPostDetailsItemIcon icon={Icon.icon.EDIT} />
 				<Text>
 					<InlineText className="tw-mr-1">{t("page:updated_at")}</InlineText>
-					<InlineText is="strong">{getDifferenceBetweenDates(updatedAt, new Date())}</InlineText>
+					<InlineText is="strong">{getFormattedDatesDifference(updatedAt, new Date())}</InlineText>
 				</Text>
 			</BlogPostDetailsItem>
 		</Block>

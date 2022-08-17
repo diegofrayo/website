@@ -24,7 +24,7 @@ import { useDidMount } from "~/hooks";
 import { createPreloadedState, useStore } from "~/stores";
 import { logger } from "~/utils/app";
 import { isMobileDevice, isPWA } from "~/utils/browser";
-import { MDXComponents } from "~/features/mdx";
+import { MDXComponents, updateMDXScope } from "~/features/mdx";
 import { initPWARoutingConfig } from "~/features/routing";
 import type { T_ReactElement, T_UnknownObject } from "~/types";
 
@@ -126,6 +126,8 @@ export default CustomApp;
 CustomApp.getInitialProps = async (appContext): Promise<T_UnknownObject> => {
 	const metadata = await MetadataService.fetchData(appContext.router.locale);
 	const appProps = await App.getInitialProps(appContext);
+
+	updateMDXScope(metadata.website);
 
 	return {
 		...appProps,

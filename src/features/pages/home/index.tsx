@@ -13,9 +13,8 @@ import {
 	Text,
 	Title,
 } from "~/components/primitive";
-import { Emoji } from "~/components/shared";
+import { Emoji, ProtectedComponent } from "~/components/shared";
 import { AnalyticsService } from "~/features/analytics";
-import { withAuthComponent } from "~/features/auth";
 import { useTranslation } from "~/features/i18n";
 import { createArray } from "~/utils/objects-and-arrays";
 import { ROUTES } from "~/features/routing";
@@ -77,7 +76,7 @@ type T_Featured = {
 	content: T_HomeProps["data"]["featured"];
 };
 
-const Featured = withAuthComponent(function Featured({ content }: T_Featured): T_ReactElement {
+function Featured({ content }: T_Featured): T_ReactElement {
 	// handlers
 	function handleItemClick(itemText: string): () => void {
 		return function onItemClickHandler() {
@@ -86,44 +85,46 @@ const Featured = withAuthComponent(function Featured({ content }: T_Featured): T
 	}
 
 	return (
-		<Block
-			is="section"
-			className="tw-relative tw-rounded-t-md tw-border-8 tw-border-yellow-700 tw-bg-green-700 tw-p-4"
-		>
-			<Emoji className="tw-absolute tw--top-4 tw--left-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-shadow dfr-bg-color-gs-white">
-				📌
-			</Emoji>
-			<Title
-				is="h1"
-				variant={Title.variant.UNSTYLED}
-				className="tw-text-center dfr-text-color-gs-white"
-				size={Title.size.MD}
+		<ProtectedComponent>
+			<Block
+				is="section"
+				className="tw-relative tw-rounded-t-md tw-border-8 tw-border-yellow-700 tw-bg-green-700 tw-p-4"
 			>
-				FEATURED
-			</Title>
-			<Space size={2} />
-			<Block className="tw-flex tw-flex-wrap tw-items-center tw-justify-between">
-				{content.map((item, index) => {
-					return (
-						<Link
-							key={generateSlug(item.text)}
-							variant={Link.variant.SIMPLE}
-							href={item.url}
-							className={classNames(
-								"tw-my-1 tw-inline-block tw-text-sm tw-text-yellow-300",
-								index % 2 === 0 ? "tw-rotate-1" : "tw--rotate-1",
-							)}
-							onClick={handleItemClick(item.text)}
-						>
-							<Emoji>🖇️</Emoji>
-							<InlineText className="tw-mx-1 tw-underline">{item.text}</InlineText>
-						</Link>
-					);
-				})}
+				<Emoji className="tw-absolute tw--top-4 tw--left-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-shadow dfr-bg-color-gs-white">
+					📌
+				</Emoji>
+				<Title
+					is="h1"
+					variant={Title.variant.UNSTYLED}
+					className="tw-text-center dfr-text-color-gs-white"
+					size={Title.size.MD}
+				>
+					FEATURED
+				</Title>
+				<Space size={2} />
+				<Block className="tw-flex tw-flex-wrap tw-items-center tw-justify-between">
+					{content.map((item, index) => {
+						return (
+							<Link
+								key={generateSlug(item.text)}
+								variant={Link.variant.SIMPLE}
+								href={item.url}
+								className={classNames(
+									"tw-mt-3 tw-inline-block tw-text-sm tw-text-yellow-300",
+									index % 2 === 0 ? "tw-rotate-1" : "tw--rotate-1",
+								)}
+								onClick={handleItemClick(item.text)}
+							>
+								<Emoji>🖇️</Emoji>
+								<InlineText className="tw-mx-1 tw-underline">{item.text}</InlineText>
+							</Link>
+						);
+					})}
+				</Block>
 			</Block>
-		</Block>
+		</ProtectedComponent>
 	);
-});
+}
 
 type T_RoomProps = {
 	tvSong: T_HomeProps["data"]["song"];

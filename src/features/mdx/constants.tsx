@@ -21,12 +21,40 @@ import {
 	TitleCreator,
 } from "~/components/shared";
 import { ENV_VARS } from "~/constants";
+import AboutMeBlock from "~/features/pages/about-me/components";
 import * as BlogComponents from "~/features/pages/blog/components";
 import * as MusicComponents from "~/features/pages/music/components";
-import AboutMeBlock from "~/features/pages/about-me/components";
 import * as ResumeComponents from "~/features/pages/resume";
 import { ROUTES } from "~/features/routing";
+import { T_Metadata } from "~/stores/modules/metadata";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
+
+let MDXScope: {
+	DATA: {
+		ROUTES: typeof ROUTES;
+		SERVER_URL: string;
+		PERSONAL_INFO: T_Metadata["website"] | undefined;
+	};
+} = {
+	DATA: {
+		ROUTES,
+		SERVER_URL: ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL,
+		PERSONAL_INFO: undefined,
+	},
+};
+
+export function getMDXScope(): typeof MDXScope {
+	return MDXScope;
+}
+
+export function updateMDXScope(PERSONAL_INFO: T_Metadata["website"]): void {
+	MDXScope = {
+		DATA: {
+			...MDXScope.DATA,
+			PERSONAL_INFO,
+		},
+	};
+}
 
 /* WARN:
  * I don't know how to type this object, so, I used any for this
@@ -86,10 +114,3 @@ export const MDXComponents = {
 	...ResumeComponents,
 	AboutMeBlock,
 } as any; // eslint-disable-line @typescript-eslint/no-explicit-any
-
-export const MDXScope = {
-	DATA: {
-		ROUTES,
-		SERVER_URL: ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL,
-	},
-} as const;

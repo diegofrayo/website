@@ -5,9 +5,9 @@ import { serialize } from "next-mdx-remote/serialize";
 import BlogPostPage from "~/features/pages/blog/[slug]";
 import BlogService, { T_BlogPost } from "~/features/pages/blog/service";
 import { getPageContentStaticProps, T_Locale } from "~/features/i18n";
-import dataLoader from "~/server";
-import { MDXScope } from "~/features/mdx";
+import { getMDXScope } from "~/features/mdx";
 import { ROUTES } from "~/features/routing";
+import dataLoader from "~/server";
 import { replaceAll } from "~/utils/strings";
 import { isUndefined } from "~/utils/validations";
 
@@ -54,7 +54,7 @@ export const getStaticProps = getPageContentStaticProps<
 		const postMDXContent = await serialize(file, {
 			scope: {
 				DATA: {
-					...MDXScope.DATA,
+					...getMDXScope().DATA,
 					post,
 				},
 			},

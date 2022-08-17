@@ -1,10 +1,21 @@
 import * as React from "react";
 
 import { MainLayout, Page } from "~/components/layout";
-import { Block, Button, InlineText, Input, Select, Space, Text } from "~/components/primitive";
-import { useEnhancedState } from "~/hooks";
-import { showAlert } from "~/utils/browser";
+import {
+	Block,
+	Button,
+	Icon,
+	InlineText,
+	Input,
+	Select,
+	Space,
+	Text,
+} from "~/components/primitive";
+import { useDidMount, useEnhancedState } from "~/hooks";
+import { isConfirmAlertAccepted, showAlert } from "~/utils/browser";
+import { generateDate, getDatesDiff } from "~/utils/dates";
 import { createArray } from "~/utils/objects-and-arrays";
+import { generateSlug } from "~/utils/strings";
 import { isNotTrue } from "~/utils/validations";
 import type {
 	T_ReactElement,
@@ -23,12 +34,26 @@ function Ticks(): T_ReactElement {
 	const [ticksInputValue, setTicksInputValue] = React.useState(4);
 	const [intensityInputValue, setIntensityInputValue] = React.useState(1250);
 	const [timerInterval, setTimerInterval] = React.useState<NodeJS.Timeout | null>(null);
+	const startDate = React.useRef(new Date());
+	const [history, setHistory] = React.useState<
+		{
+			date: string;
+			cycles: number;
+			time: string;
+		}[]
+	>([]);
 
 	// vars
 	const PAGE_TITLE = "ticks";
+	const LOCAL_STORAGE_KEY = "DFR_TICKS";
 	const isTimerStarted = timerStatus !== "NOT_STARTED";
 	const isTimerNotStarted = timerStatus === "NOT_STARTED";
 	const isTimerPaused = timerStatus === "PAUSED";
+
+	// effects
+	useDidMount(() => {
+		setHistory(readHistoryFromLocalStorage());
+	});
 
 	// handlers
 	function handleStartClick(): void {
@@ -63,12 +88,17 @@ function Ticks(): T_ReactElement {
 			});
 		};
 
+		startDate.current = new Date();
 		intervalHandler();
 		setTimerStatus("IN_PROGRESS");
 		setTimerInterval(setInterval(intervalHandler, intensityInputValue));
 	}
 
-	function handleStopClick(): void {
+	function handleResetClick(): void {
+		if (isConfirmAlertAccepted("Are you sure?") === false) {
+			return;
+		}
+
 		resetTicks();
 		resetCycles();
 		stopInterval();
@@ -82,6 +112,28 @@ function Ticks(): T_ReactElement {
 			stopInterval();
 			setTimerStatus("PAUSED");
 		}
+	}
+
+	function handleSaveClick(): void {
+		const data = readHistoryFromLocalStorage();
+
+		data.push({
+			date: generateDate(),
+			cycles,
+			time: `${getDatesDiff(startDate.current, new Date(), "minute")} minutes`,
+		});
+
+		window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+		setHistory(data);
+	}
+
+	function handleDeleteHistoryItemClick(itemIndex: number) {
+		return (): void => {
+			const data = readHistoryFromLocalStorage().filter((_, index) => index !== itemIndex);
+
+			window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+			setHistory(data);
+		};
 	}
 
 	function onTicksInputChangeHandler(event: T_ReactOnChangeEventObject): void {
@@ -105,6 +157,10 @@ function Ticks(): T_ReactElement {
 	function stopInterval(): void {
 		if (timerInterval) clearInterval(timerInterval);
 		setTimerInterval(null);
+	}
+
+	function readHistoryFromLocalStorage(): typeof history {
+		return JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) || "[]");
 	}
 
 	return (
@@ -187,13 +243,22 @@ function Ticks(): T_ReactElement {
 								Start
 							</Button>
 						) : null}
+						{isTimerPaused ? (
+							<Button
+								variant={Button.variant.SIMPLE}
+								className="tw-flex tw-h-24 tw-w-24 tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-blue-200 tw-bg-blue-100 tw-font-bold tw-text-blue-600"
+								onClick={handleSaveClick}
+							>
+								Save
+							</Button>
+						) : null}
 						{isTimerStarted ? (
 							<Button
 								variant={Button.variant.SIMPLE}
 								className="tw-flex tw-h-24 tw-w-24 tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-red-200 tw-bg-red-100 tw-font-bold tw-text-red-600"
-								onClick={handleStopClick}
+								onClick={handleResetClick}
 							>
-								Stop
+								Reset
 							</Button>
 						) : null}
 					</Block>
@@ -210,7 +275,28 @@ function Ticks(): T_ReactElement {
 								<InlineText className="tw-inline-block tw-w-8 tw-text-center">{cycles}</InlineText>
 							</Text>
 						</Block>
-					) : null}
+					) : (
+						<Block className="tw-mt-6 tw-text-center tw-text-sm">
+							{history.map((item, index) => {
+								return (
+									<Text key={generateSlug(`Ticks-Text-index-${index}`)}>
+										<InlineText>{item.date}</InlineText> |{" "}
+										<InlineText>{item.cycles} cycles</InlineText> |{" "}
+										<InlineText>{item.time}</InlineText> |
+										<Button
+											variant={Button.variant.SIMPLE}
+											onClick={handleDeleteHistoryItemClick(index)}
+										>
+											<Icon
+												icon={Icon.icon.X}
+												color="tw-text-red-400"
+											/>
+										</Button>
+									</Text>
+								);
+							})}
+						</Block>
+					)}
 
 					<audio
 						src={`/static/sounds/ticks/${audio}.mp3`}
