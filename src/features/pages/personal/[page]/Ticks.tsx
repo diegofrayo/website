@@ -15,9 +15,9 @@ import {
 import { useDidMount, useEnhancedState } from "~/hooks";
 import { isConfirmAlertAccepted, showAlert } from "~/utils/browser";
 import { generateDate, getDatesDiff } from "~/utils/dates";
-import { createArray } from "~/utils/objects-and-arrays";
-import { createRandomString, generateSlug } from "~/utils/strings";
-import { isNotTrue } from "~/utils/validations";
+import { createArray, sortBy } from "~/utils/objects-and-arrays";
+import { generateSlug } from "~/utils/strings";
+import { isNotTrue, isNumber } from "~/utils/validations";
 import type {
 	T_HTMLElementAttributes,
 	T_ReactElement,
@@ -27,7 +27,8 @@ import type {
 
 function Ticks(): T_ReactElement {
 	// states & refs
-	const [audio, setAudio] = React.useState<"1" | "2">("1");
+	const [ticksAudio, setTicksAudio] = React.useState<"1" | "2" | "3">("1");
+	const [cyclesAudio, setCyclesAudio] = React.useState<"1" | "2" | "3">("3");
 	const [ticks, setTicks, , , resetTicks] = useEnhancedState(0);
 	const [cycles, , incrementCycles, , resetCycles] = useEnhancedState(0);
 	const [timerStatus, setTimerStatus] = React.useState<"NOT_STARTED" | "IN_PROGRESS" | "PAUSED">(
@@ -36,10 +37,13 @@ function Ticks(): T_ReactElement {
 	const [ticksInputValue, setTicksInputValue] = React.useState(4);
 	const [intensityInputValue, setIntensityInputValue] = React.useState(1250);
 	const [timerInterval, setTimerInterval] = React.useState<NodeJS.Timeout | null>(null);
-	const currentSessionDetails = React.useRef({ startDate: new Date(), id: createRandomString(16) });
+	const currentSessionDetails = React.useRef({
+		id: new Date().getTime(),
+		startDate: new Date(),
+	});
 	const [history, setHistory] = React.useState<
 		{
-			id: string;
+			id: number;
 			date: string;
 			cycles: number;
 			ticksPerCycle: number;
@@ -94,7 +98,7 @@ function Ticks(): T_ReactElement {
 		};
 
 		currentSessionDetails.current = {
-			id: createRandomString(16),
+			id: new Date().getTime(),
 			startDate: new Date(),
 		};
 
@@ -133,16 +137,15 @@ function Ticks(): T_ReactElement {
 		});
 
 		window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
-		setHistory(data);
+		setHistory(readHistoryFromLocalStorage());
 		resetUI(false);
 	}
 
 	function handleDeleteHistoryItemClick(itemIndex: number) {
 		return (): void => {
 			const data = readHistoryFromLocalStorage().filter((_, index) => index !== itemIndex);
-
 			window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
-			setHistory(data);
+			setHistory(readHistoryFromLocalStorage());
 		};
 	}
 
@@ -154,9 +157,14 @@ function Ticks(): T_ReactElement {
 		setIntensityInputValue(Number(event.currentTarget.value));
 	}
 
-	const onSelectChangeHandler: T_ReactOnChangeEventHandler<HTMLSelectElement> =
-		function onSelectChangeHandler(event) {
-			setAudio(event.currentTarget.value as typeof audio);
+	const onTicksSoundSelectChangeHandler: T_ReactOnChangeEventHandler<HTMLSelectElement> =
+		function onTicksSoundSelectChangeHandler(event) {
+			setTicksAudio(event.currentTarget.value as typeof ticksAudio);
+		};
+
+	const onCyclesSoundSelectChangeHandler: T_ReactOnChangeEventHandler<HTMLSelectElement> =
+		function onCyclesSoundSelectChangeHandler(event) {
+			setCyclesAudio(event.currentTarget.value as typeof cyclesAudio);
 		};
 
 	// utils
@@ -170,7 +178,23 @@ function Ticks(): T_ReactElement {
 	}
 
 	function readHistoryFromLocalStorage(): typeof history {
-		return JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) || "[]");
+		return (JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) || "[]") as typeof history)
+			.map((item) => {
+				return {
+					...item,
+					id: isNumber(item.id) ? item.id : 0,
+					cycles: item.cycles || 0,
+					ticksPerCycle: item.ticksPerCycle || 4,
+					intensity: item.intensity || 1250,
+					time: item.time || "11 minutes",
+				};
+			})
+			.sort(
+				sortBy([
+					{ param: "date", order: "desc" },
+					{ param: "id", order: "desc" },
+				]),
+			);
 	}
 
 	function resetUI(confirmBeforeReset: boolean): void {
@@ -202,49 +226,64 @@ function Ticks(): T_ReactElement {
 			}}
 		>
 			<MainLayout title={`${PAGE_TITLE}`}>
-				<Block>
-					<form
-						id="form"
-						className="tw-mx-auto tw-flex tw-w-96 tw-max-w-full tw-justify-between tw-gap-1"
-					>
-						<Input
-							componentProps={{ label: "Ticks" }}
-							containerProps={{ className: "tw-text-left tw-flex-1" }}
-							id="ticks"
-							type="number"
-							className="tw-text-left"
-							value={String(ticksInputValue)}
-							disabled={isTimerStarted}
-							min="3"
-							max="10"
-							onChange={onTicksInputChangeHandler}
-						/>
-						<Input
-							componentProps={{ label: "Intensity" }}
-							containerProps={{ className: "tw-text-center tw-flex-1" }}
-							id="intensity"
-							type="number"
-							className="tw-text-center"
-							value={String(intensityInputValue)}
-							disabled={isTimerStarted}
-							min="1000"
-							max="5000"
-							step="250"
-							onChange={onIntensityInputChangeHandler}
-						/>
-						<Select
-							componentProps={{ label: "Sound" }}
-							containerProps={{ className: "tw-flex-1 tw-text-right" }}
-							id="select-sounds"
-							defaultValue="1"
-							className="tw-text-right"
-							onChange={onSelectChangeHandler}
-						>
-							<Select.Option value="1">1</Select.Option>
-							<Select.Option value="2">2</Select.Option>
-						</Select>
+				<Block className="tw-mx-auto tw-w-96 tw-max-w-full">
+					<form id="form">
+						<Block className="tw-flex tw-justify-between tw-gap-1">
+							<Input
+								componentProps={{ label: "Ticks" }}
+								containerProps={{ className: "tw-text-left tw-flex-1" }}
+								id="ticks"
+								type="number"
+								className="tw-text-left"
+								value={String(ticksInputValue)}
+								disabled={isTimerStarted}
+								min="3"
+								max="10"
+								onChange={onTicksInputChangeHandler}
+							/>
+							<Input
+								componentProps={{ label: "Intensity" }}
+								containerProps={{ className: "tw-text-right tw-flex-1" }}
+								id="intensity"
+								type="number"
+								className="tw-text-right"
+								value={String(intensityInputValue)}
+								disabled={isTimerStarted}
+								min="1000"
+								max="5000"
+								step="250"
+								onChange={onIntensityInputChangeHandler}
+							/>
+						</Block>
+						<Space size={2} />
+						<Block className="tw-flex tw-justify-between tw-gap-1">
+							<Select
+								componentProps={{ label: "Ticks sound" }}
+								containerProps={{ className: "tw-flex-1 tw-text-left" }}
+								id="select-ticks-sound"
+								defaultValue="1"
+								className="tw-text-left"
+								onChange={onTicksSoundSelectChangeHandler}
+							>
+								<Select.Option value="1">1</Select.Option>
+								<Select.Option value="2">2</Select.Option>
+								<Select.Option value="3">3</Select.Option>
+							</Select>
+							<Select
+								componentProps={{ label: "Cycles sound" }}
+								containerProps={{ className: "tw-flex-1 tw-text-right" }}
+								id="select-cycles-sound"
+								defaultValue="3"
+								className="tw-text-right"
+								onChange={onCyclesSoundSelectChangeHandler}
+							>
+								<Select.Option value="1">1</Select.Option>
+								<Select.Option value="2">2</Select.Option>
+								<Select.Option value="3">3</Select.Option>
+							</Select>
+						</Block>
 					</form>
-					<Space size={2} />
+					<Space size={3} />
 					<Block className="tw-flex tw-justify-center tw-gap-3">
 						{isTimerStarted ? (
 							<ActionButton
@@ -293,12 +332,16 @@ function Ticks(): T_ReactElement {
 							</Text>
 						</Block>
 					) : (
-						<Block className="tw-mt-6 tw-text-left tw-text-sm">
+						<Block className="tw-text-left tw-text-sm">
+							<Space
+								size={10}
+								variant={Space.variant.DASHED}
+							/>
 							{history.map((item, index) => {
 								return (
 									<Block
 										key={generateSlug(`Ticks-Text-index-${index}`)}
-										className="tw-mb-2 last:tw-mb-0"
+										className="tw-mb-4 last:tw-mb-0"
 									>
 										<Text className="tw-font-bold">
 											<InlineText className="tw-inline-block tw-w-20">{item.date}</InlineText> |{" "}
@@ -332,13 +375,13 @@ function Ticks(): T_ReactElement {
 					)}
 
 					<audio
-						src={`/static/sounds/ticks/${audio}.mp3`}
+						src={`/static/sounds/ticks/${ticksAudio}.mp3`}
 						id="audio-tick"
 						preload="auto"
 						className="tw-hidden"
 					/>
 					<audio
-						src="/static/sounds/ticks/3.mp3"
+						src={`/static/sounds/ticks/${cyclesAudio}.mp3`}
 						id="audio-cycle-completed"
 						preload="auto"
 						className="tw-hidden"
