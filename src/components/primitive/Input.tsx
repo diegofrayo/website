@@ -54,16 +54,17 @@ const Input = React.forwardRef(function Input(
 
 			<style jsx>
 				{`
+					.root :global(.dfr-Input) {
+						-webkit-appearance: none;
+						height: 37px;
+					}
+
 					.root :global(.dfr-Input:focus-within),
 					.root :global(.dfr-Input:focus) {
 						border-radius: 0;
 						outline-color: var(--dfr-text-color-gs-400);
 						outline-style: solid;
 						outline-width: 1px;
-					}
-
-					.root :global(input) {
-						-webkit-appearance: none;
 					}
 				`}
 			</style>

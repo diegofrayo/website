@@ -1,5 +1,6 @@
 import axios from "axios";
 
+import { ENV_VARS } from "~/constants";
 import { readDevToolsConfig } from "~/features/development-tools";
 import { isBrowser, isLocalhostEnvironment } from "~/utils/app";
 
@@ -7,8 +8,9 @@ axios.interceptors.request.use((config) => {
 	return {
 		...config,
 		headers: {
-			...config.headers,
+			Authorization: `Bearer ${ENV_VARS.TOKEN_FOR_PROTECTED_RESOURCES_BE}`,
 			"dfr-ua-browser": isBrowser(),
+			...config.headers,
 		},
 	};
 });

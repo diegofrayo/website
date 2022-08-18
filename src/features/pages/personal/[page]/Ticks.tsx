@@ -1,4 +1,5 @@
 import * as React from "react";
+import classNames from "classnames";
 
 import { MainLayout, Page } from "~/components/layout";
 import {
@@ -15,9 +16,10 @@ import { useDidMount, useEnhancedState } from "~/hooks";
 import { isConfirmAlertAccepted, showAlert } from "~/utils/browser";
 import { generateDate, getDatesDiff } from "~/utils/dates";
 import { createArray } from "~/utils/objects-and-arrays";
-import { generateSlug } from "~/utils/strings";
+import { createRandomString, generateSlug } from "~/utils/strings";
 import { isNotTrue } from "~/utils/validations";
 import type {
+	T_HTMLElementAttributes,
 	T_ReactElement,
 	T_ReactOnChangeEventHandler,
 	T_ReactOnChangeEventObject,
@@ -34,11 +36,14 @@ function Ticks(): T_ReactElement {
 	const [ticksInputValue, setTicksInputValue] = React.useState(4);
 	const [intensityInputValue, setIntensityInputValue] = React.useState(1250);
 	const [timerInterval, setTimerInterval] = React.useState<NodeJS.Timeout | null>(null);
-	const startDate = React.useRef(new Date());
+	const currentSessionDetails = React.useRef({ startDate: new Date(), id: createRandomString(16) });
 	const [history, setHistory] = React.useState<
 		{
+			id: string;
 			date: string;
 			cycles: number;
+			ticksPerCycle: number;
+			intensity: number;
 			time: string;
 		}[]
 	>([]);
@@ -88,21 +93,18 @@ function Ticks(): T_ReactElement {
 			});
 		};
 
-		startDate.current = new Date();
+		currentSessionDetails.current = {
+			id: createRandomString(16),
+			startDate: new Date(),
+		};
+
 		intervalHandler();
 		setTimerStatus("IN_PROGRESS");
 		setTimerInterval(setInterval(intervalHandler, intensityInputValue));
 	}
 
 	function handleResetClick(): void {
-		if (isConfirmAlertAccepted("Are you sure?") === false) {
-			return;
-		}
-
-		resetTicks();
-		resetCycles();
-		stopInterval();
-		setTimerStatus("NOT_STARTED");
+		resetUI(true);
 	}
 
 	function handlePauseClick(): void {
@@ -118,13 +120,21 @@ function Ticks(): T_ReactElement {
 		const data = readHistoryFromLocalStorage();
 
 		data.push({
+			id: currentSessionDetails.current.id,
 			date: generateDate(),
 			cycles,
-			time: `${getDatesDiff(startDate.current, new Date(), "minute")} minutes`,
+			ticksPerCycle: ticksInputValue,
+			intensity: intensityInputValue,
+			time: `${getDatesDiff(
+				currentSessionDetails.current.startDate,
+				new Date(),
+				"minute",
+			)} minutes`,
 		});
 
 		window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
 		setHistory(data);
+		resetUI(false);
 	}
 
 	function handleDeleteHistoryItemClick(itemIndex: number) {
@@ -161,6 +171,17 @@ function Ticks(): T_ReactElement {
 
 	function readHistoryFromLocalStorage(): typeof history {
 		return JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) || "[]");
+	}
+
+	function resetUI(confirmBeforeReset: boolean): void {
+		if (confirmBeforeReset && isConfirmAlertAccepted("Are you sure?") === false) {
+			return;
+		}
+
+		resetTicks();
+		resetCycles();
+		stopInterval();
+		setTimerStatus("NOT_STARTED");
 	}
 
 	return (
@@ -226,40 +247,36 @@ function Ticks(): T_ReactElement {
 					<Space size={2} />
 					<Block className="tw-flex tw-justify-center tw-gap-3">
 						{isTimerStarted ? (
-							<Button
-								variant={Button.variant.SIMPLE}
-								className="tw-flex tw-h-24 tw-w-24 tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-yellow-300 tw-bg-yellow-200 tw-font-bold tw-text-yellow-700"
+							<ActionButton
+								className="tw-border-yellow-300 tw-bg-yellow-200 tw-text-yellow-700"
 								onClick={handlePauseClick}
 							>
 								{isTimerPaused ? "Resume" : "Pause"}
-							</Button>
+							</ActionButton>
 						) : null}
 						{isTimerNotStarted ? (
-							<Button
-								variant={Button.variant.SIMPLE}
-								className="tw-flex tw-h-24 tw-w-24 tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-green-200 tw-bg-green-100 tw-font-bold tw-text-green-600"
+							<ActionButton
+								className="tw-border-green-200 tw-bg-green-100 tw-text-green-600"
 								onClick={handleStartClick}
 							>
 								Start
-							</Button>
+							</ActionButton>
 						) : null}
 						{isTimerPaused ? (
-							<Button
-								variant={Button.variant.SIMPLE}
-								className="tw-flex tw-h-24 tw-w-24 tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-blue-200 tw-bg-blue-100 tw-font-bold tw-text-blue-600"
+							<ActionButton
+								className="tw-border-blue-200 tw-bg-blue-100 tw-text-blue-600"
 								onClick={handleSaveClick}
 							>
 								Save
-							</Button>
+							</ActionButton>
 						) : null}
 						{isTimerStarted ? (
-							<Button
-								variant={Button.variant.SIMPLE}
-								className="tw-flex tw-h-24 tw-w-24 tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-red-200 tw-bg-red-100 tw-font-bold tw-text-red-600"
+							<ActionButton
+								className="tw-border-red-200 tw-bg-red-100 tw-text-red-600"
 								onClick={handleResetClick}
 							>
 								Reset
-							</Button>
+							</ActionButton>
 						) : null}
 					</Block>
 					<Space size={2} />
@@ -276,23 +293,39 @@ function Ticks(): T_ReactElement {
 							</Text>
 						</Block>
 					) : (
-						<Block className="tw-mt-6 tw-text-center tw-text-sm">
+						<Block className="tw-mt-6 tw-text-left tw-text-sm">
 							{history.map((item, index) => {
 								return (
-									<Text key={generateSlug(`Ticks-Text-index-${index}`)}>
-										<InlineText>{item.date}</InlineText> |{" "}
-										<InlineText>{item.cycles} cycles</InlineText> |{" "}
-										<InlineText>{item.time}</InlineText> |
-										<Button
-											variant={Button.variant.SIMPLE}
-											onClick={handleDeleteHistoryItemClick(index)}
-										>
-											<Icon
-												icon={Icon.icon.X}
-												color="tw-text-red-400"
-											/>
-										</Button>
-									</Text>
+									<Block
+										key={generateSlug(`Ticks-Text-index-${index}`)}
+										className="tw-mb-2 last:tw-mb-0"
+									>
+										<Text className="tw-font-bold">
+											<InlineText className="tw-inline-block tw-w-20">{item.date}</InlineText> |{" "}
+											<InlineText className="tw-inline-block tw-w-20">
+												{" "}
+												{item.cycles} cycles
+											</InlineText>
+										</Text>
+										<Block className="tw-flex tw-justify-between">
+											<InlineText className="tw-inline-block tw-w-20">
+												{item.ticksPerCycle} ticks
+											</InlineText>
+											<InlineText className="tw-inline-block tw-w-20">
+												{item.intensity}ms
+											</InlineText>
+											<InlineText className="tw-inline-block tw-w-20">{item.time}</InlineText>
+											<Button
+												variant={Button.variant.SIMPLE}
+												onClick={handleDeleteHistoryItemClick(index)}
+											>
+												<Icon
+													icon={Icon.icon.X}
+													color="tw-text-red-400"
+												/>
+											</Button>
+										</Block>
+									</Block>
 								);
 							})}
 						</Block>
@@ -317,3 +350,22 @@ function Ticks(): T_ReactElement {
 }
 
 export default Ticks;
+
+// --- Components ---
+
+type T_ActionButtonProps = T_HTMLElementAttributes["button"];
+
+function ActionButton({ children, onClick, className }: T_ActionButtonProps): T_ReactElement {
+	return (
+		<Button
+			variant={Button.variant.SIMPLE}
+			className={classNames(
+				"tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-sm tw-font-bold sm:tw-h-24 sm:tw-w-24 sm:tw-text-base",
+				className,
+			)}
+			onClick={onClick}
+		>
+			{children}
+		</Button>
+	);
+}

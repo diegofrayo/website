@@ -46,6 +46,18 @@ export function pluralize(value: number, singular: string, plural: string): stri
 	return value === 1 ? `${value} ${singular}` : `${value} ${plural}`;
 }
 
+export function createRandomString(length: number): string {
+	const CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	const charactersLength = CHARACTERS.length;
+	let result = "";
+
+	createArray(length).forEach(() => {
+		result += CHARACTERS.charAt(Math.floor(Math.random() * charactersLength));
+	});
+
+	return result.toUpperCase();
+}
+
 // --- Private functions ---
 
 function escapeRegExp(text: string): string {

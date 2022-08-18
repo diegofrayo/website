@@ -44,7 +44,9 @@ function Select({
 					@apply dfr-bg-color-tertiary;
 					@apply dfr-border-color-primary;
 					@apply tw-px-1 tw-py-1.5;
+					border-radius: 0;
 					border-width: 1px;
+					height: 37px;
 					width: 100%;
 				}
 

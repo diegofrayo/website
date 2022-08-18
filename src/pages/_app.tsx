@@ -12,8 +12,6 @@ import { ErrorBoundary } from "react-error-boundary";
 import { I18nextProvider } from "react-i18next";
 import { Provider } from "react-redux";
 import { MDXProvider } from "@mdx-js/react";
-import { persistQueryClient } from "react-query/persistQueryClient-experimental";
-import { createWebStoragePersistor } from "react-query/createWebStoragePersistor-experimental";
 
 import { ProgressBar } from "~/components/layout";
 import { AnalyticsService } from "~/features/analytics";
@@ -55,11 +53,6 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
 	useDidMount(() => {
 		AnalyticsService.init();
 		AuthService.configureHTTPHeaders();
-
-		persistQueryClient({
-			persistor: createWebStoragePersistor({ storage: window.localStorage }),
-			queryClient,
-		});
 
 		if (isPWA()) {
 			return initPWARoutingConfig(router);

@@ -1,6 +1,6 @@
 const LOCAL_STORAGE_KEY = "DFR_DEV_TOOLS";
 const DEFAULT_VALUES = {
-	isUserLoggedIn: true,
+	isUserLoggedIn: false,
 	isDevelopmentEnvironment: true,
 	isCSSDebuggingEnabled: false,
 	httpRequestsHaveToFail: false,
