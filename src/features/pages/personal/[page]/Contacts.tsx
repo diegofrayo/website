@@ -207,7 +207,7 @@ function ContactsGroup({
 								key={generateSlug(contact.name)}
 								className="contact-container tw-mb-8 tw-w-full tw-pr-4 sm:tw-w-1/2"
 							>
-								<Text className="tw-font-bold tw-leading-tight">{contact.name}</Text>
+								<Text className="tw-mb-1 tw-font-bold tw-leading-tight">{contact.name}</Text>
 								{contactPhone.map((phone) => {
 									return (
 										<ContactPhone
@@ -293,23 +293,25 @@ function ContactLinks({
 	return (
 		<div className="root">
 			{Array.isArray(contact.phone) ? (
-				contact.phone.map((item) => {
-					return (
-						<WhastAppButton
-							key={generateSlug(item.label)}
-							phone={item.value}
-							whatsAppOption={whatsAppOption}
-						>
-							<Icon
-								icon={Icon.icon.WHATSAPP}
-								size={24}
-							/>
-							<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-green-500 dark:tw-text-green-400">
-								{item.label}
-							</InlineText>
-						</WhastAppButton>
-					);
-				})
+				<Block>
+					{contact.phone.map((item) => {
+						return (
+							<WhastAppButton
+								key={generateSlug(item.label)}
+								phone={item.value}
+								whatsAppOption={whatsAppOption}
+							>
+								<Icon
+									icon={Icon.icon.WHATSAPP}
+									size={24}
+								/>
+								<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-green-500 dark:tw-text-green-400">
+									{item.label}
+								</InlineText>
+							</WhastAppButton>
+						);
+					})}
+				</Block>
 			) : isNotEmptyString(contact.phone) ? (
 				<WhastAppButton
 					phone={contact.phone}
@@ -336,24 +338,26 @@ function ContactLinks({
 			) : null}
 
 			{Array.isArray(contact.phone) ? (
-				contact.phone.map((item) => {
-					return (
-						<PhoneButton
-							key={generateSlug(item.label)}
-							phone={item.value}
-							country={contact.country}
-						>
-							<Icon
-								icon={Icon.icon.PHONE}
-								size={24}
-								color="tw-text-blue-700 dark:tw-text-blue-500"
-							/>
-							<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-blue-700 dark:tw-text-blue-500">
-								{item.label}
-							</InlineText>
-						</PhoneButton>
-					);
-				})
+				<Block>
+					{contact.phone.map((item) => {
+						return (
+							<PhoneButton
+								key={generateSlug(item.label)}
+								phone={item.value}
+								country={contact.country}
+							>
+								<Icon
+									icon={Icon.icon.PHONE}
+									size={24}
+									color="tw-text-blue-700 dark:tw-text-blue-500"
+								/>
+								<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-blue-700 dark:tw-text-blue-500">
+									{item.label}
+								</InlineText>
+							</PhoneButton>
+						);
+					})}
+				</Block>
 			) : isNotEmptyString(contact.phone) ? (
 				<PhoneButton
 					phone={contact.phone}
@@ -369,12 +373,16 @@ function ContactLinks({
 
 			<style jsx>
 				{`
-					.root > :global(*) {
+					.root > :global(div) {
+						@apply tw-my-1;
+					}
+
+					.root :global(a) {
 						@apply tw-mr-2;
 						display: inline-block;
 					}
 
-					.root > :global(*):last-child {
+					.root :global(a):last-child {
 						@apply tw-mr-0;
 					}
 				`}

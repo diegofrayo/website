@@ -23,6 +23,7 @@ import type {
 	T_ReactElement,
 	T_ReactOnChangeEventHandler,
 	T_ReactOnChangeEventObject,
+	T_ReactSetState,
 } from "~/types";
 
 function Ticks(): T_ReactElement {
@@ -36,6 +37,7 @@ function Ticks(): T_ReactElement {
 	);
 	const [ticksInputValue, setTicksInputValue] = React.useState(4);
 	const [intensityInputValue, setIntensityInputValue] = React.useState(1250);
+	const [cyclesInputValue, setCyclesInputValue] = React.useState(3);
 	const [timerInterval, setTimerInterval] = React.useState<NodeJS.Timeout | null>(null);
 	const currentSessionDetails = React.useRef({
 		id: new Date().getTime(),
@@ -59,10 +61,75 @@ function Ticks(): T_ReactElement {
 	const isTimerNotStarted = timerStatus === "NOT_STARTED";
 	const isTimerPaused = timerStatus === "PAUSED";
 
-	// effects
-	useDidMount(() => {
-		setHistory(readHistoryFromLocalStorage());
-	});
+	// utils
+	function playSound(
+		elementId: "audio-cycle-completed" | "audio-tick" | "audio-session-completed",
+	): void {
+		(document.getElementById(elementId) as HTMLAudioElement)?.play();
+	}
+
+	const stopInterval = React.useCallback(
+		function stopInterval(): void {
+			if (timerInterval) clearInterval(timerInterval);
+			setTimerInterval(null);
+		},
+		[timerInterval],
+	);
+
+	const readHistoryFromLocalStorage = React.useCallback(
+		function readHistoryFromLocalStorage(): typeof history {
+			return (JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) || "[]") as typeof history)
+				.map((item) => {
+					return {
+						...item,
+						id: isNumber(item.id) ? item.id : 0,
+						cycles: item.cycles || 0,
+						ticksPerCycle: item.ticksPerCycle || 4,
+						intensity: item.intensity || 1250,
+						time: item.time || "11 minutes",
+					};
+				})
+				.sort(
+					sortBy([
+						{ param: "date", order: "desc" },
+						{ param: "id", order: "desc" },
+					]),
+				);
+		},
+		[],
+	);
+
+	const resetUI = React.useCallback(
+		function resetUI(confirmBeforeReset: boolean): void {
+			if (confirmBeforeReset && isConfirmAlertAccepted("Are you sure?") === false) {
+				return;
+			}
+
+			resetTicks();
+			resetCycles();
+			stopInterval();
+			setTimerStatus("NOT_STARTED");
+		},
+		[resetTicks, resetCycles, stopInterval, setTimerStatus],
+	);
+
+	function calculateEstimatedTime(): string {
+		if (cyclesInputValue === 0) {
+			return "Free session";
+		}
+
+		const resultInSeconds = Number(
+			(cyclesInputValue * ticksInputValue * intensityInputValue) / 1000 / 60,
+		);
+
+		if (resultInSeconds < 1) {
+			return `Estimated time: ${String(Math.round(resultInSeconds * 60))} seconds`;
+		}
+
+		const result = resultInSeconds.toFixed(1).toString();
+
+		return `Estimated time: ${result.endsWith(".0") ? result.split(".0")[0] : result} minutes`;
+	}
 
 	// handlers
 	function handleStartClick(): void {
@@ -78,7 +145,7 @@ function Ticks(): T_ReactElement {
 		const intervalHandler = function intervalHandler(): void {
 			setTicks((currentTicks) => {
 				if (currentTicks === ticksInputValue) {
-					playSound();
+					playSound("audio-tick");
 					return 1;
 				}
 
@@ -89,7 +156,7 @@ function Ticks(): T_ReactElement {
 				}
 
 				if (currentTicks < ticksInputValue) {
-					playSound();
+					playSound("audio-tick");
 					return currentTicks + 1;
 				}
 
@@ -120,26 +187,37 @@ function Ticks(): T_ReactElement {
 		}
 	}
 
-	function handleSaveClick(): void {
-		const data = readHistoryFromLocalStorage();
+	const handleSaveClick = React.useCallback(
+		function handleSaveClick(): void {
+			const data = readHistoryFromLocalStorage();
 
-		data.push({
-			id: currentSessionDetails.current.id,
-			date: generateDate(),
+			data.push({
+				id: currentSessionDetails.current.id,
+				date: generateDate(),
+				cycles,
+				ticksPerCycle: ticksInputValue,
+				intensity: intensityInputValue,
+				time: `${getDatesDiff(
+					currentSessionDetails.current.startDate,
+					new Date(),
+					"minute",
+				)} minutes`,
+			});
+
+			window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+			setHistory(readHistoryFromLocalStorage());
+			resetUI(false);
+		},
+		[
+			setHistory,
+			resetUI,
+			currentSessionDetails,
+			ticksInputValue,
+			intensityInputValue,
+			readHistoryFromLocalStorage,
 			cycles,
-			ticksPerCycle: ticksInputValue,
-			intensity: intensityInputValue,
-			time: `${getDatesDiff(
-				currentSessionDetails.current.startDate,
-				new Date(),
-				"minute",
-			)} minutes`,
-		});
-
-		window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
-		setHistory(readHistoryFromLocalStorage());
-		resetUI(false);
-	}
+		],
+	);
 
 	function handleDeleteHistoryItemClick(itemIndex: number) {
 		return (): void => {
@@ -149,12 +227,12 @@ function Ticks(): T_ReactElement {
 		};
 	}
 
-	function onTicksInputChangeHandler(event: T_ReactOnChangeEventObject): void {
-		setTicksInputValue(Number(event.currentTarget.value));
-	}
-
-	function onIntensityInputChangeHandler(event: T_ReactOnChangeEventObject): void {
-		setIntensityInputValue(Number(event.currentTarget.value));
+	function onInputChangeHandler(
+		setter: T_ReactSetState<number>,
+	): (event: T_ReactOnChangeEventObject) => void {
+		return (event: T_ReactOnChangeEventObject): void => {
+			setter(Number(event.currentTarget.value));
+		};
 	}
 
 	const onTicksSoundSelectChangeHandler: T_ReactOnChangeEventHandler<HTMLSelectElement> =
@@ -167,46 +245,22 @@ function Ticks(): T_ReactElement {
 			setCyclesAudio(event.currentTarget.value as typeof cyclesAudio);
 		};
 
-	// utils
-	function playSound(elementId?: "audio-cycle-completed" | "audio-tick"): void {
-		(document.getElementById(elementId || "audio-tick") as HTMLAudioElement)?.play();
-	}
+	// effects
+	useDidMount(() => {
+		setHistory(readHistoryFromLocalStorage());
+	});
 
-	function stopInterval(): void {
-		if (timerInterval) clearInterval(timerInterval);
-		setTimerInterval(null);
-	}
+	React.useEffect(
+		function checkCyclesProgress(): void {
+			if (cyclesInputValue === 0) return;
 
-	function readHistoryFromLocalStorage(): typeof history {
-		return (JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) || "[]") as typeof history)
-			.map((item) => {
-				return {
-					...item,
-					id: isNumber(item.id) ? item.id : 0,
-					cycles: item.cycles || 0,
-					ticksPerCycle: item.ticksPerCycle || 4,
-					intensity: item.intensity || 1250,
-					time: item.time || "11 minutes",
-				};
-			})
-			.sort(
-				sortBy([
-					{ param: "date", order: "desc" },
-					{ param: "id", order: "desc" },
-				]),
-			);
-	}
-
-	function resetUI(confirmBeforeReset: boolean): void {
-		if (confirmBeforeReset && isConfirmAlertAccepted("Are you sure?") === false) {
-			return;
-		}
-
-		resetTicks();
-		resetCycles();
-		stopInterval();
-		setTimerStatus("NOT_STARTED");
-	}
+			if (cycles === cyclesInputValue) {
+				handleSaveClick();
+				playSound("audio-session-completed");
+			}
+		},
+		[cyclesInputValue, cycles, handleSaveClick],
+	);
 
 	return (
 		<Page
@@ -230,16 +284,30 @@ function Ticks(): T_ReactElement {
 					<form id="form">
 						<Block className="tw-flex tw-justify-between tw-gap-1">
 							<Input
-								componentProps={{ label: "Ticks" }}
+								componentProps={{ label: "Cycles" }}
 								containerProps={{ className: "tw-text-left tw-flex-1" }}
-								id="ticks"
+								id="cycles"
 								type="number"
 								className="tw-text-left"
+								value={String(cyclesInputValue)}
+								disabled={isTimerStarted}
+								min="0"
+								max="500"
+								step="1"
+								onChange={onInputChangeHandler(setCyclesInputValue)}
+							/>
+							<Input
+								componentProps={{ label: "Ticks" }}
+								containerProps={{ className: "tw-text-center tw-flex-1" }}
+								id="ticks"
+								type="number"
+								className="tw-text-center"
 								value={String(ticksInputValue)}
 								disabled={isTimerStarted}
 								min="3"
 								max="10"
-								onChange={onTicksInputChangeHandler}
+								required
+								onChange={onInputChangeHandler(setTicksInputValue)}
 							/>
 							<Input
 								componentProps={{ label: "Intensity" }}
@@ -252,7 +320,8 @@ function Ticks(): T_ReactElement {
 								min="1000"
 								max="5000"
 								step="250"
-								onChange={onIntensityInputChangeHandler}
+								required
+								onChange={onInputChangeHandler(setIntensityInputValue)}
 							/>
 						</Block>
 						<Space size={2} />
@@ -261,7 +330,7 @@ function Ticks(): T_ReactElement {
 								componentProps={{ label: "Ticks sound" }}
 								containerProps={{ className: "tw-flex-1 tw-text-left" }}
 								id="select-ticks-sound"
-								defaultValue="1"
+								defaultValue="3"
 								className="tw-text-left"
 								onChange={onTicksSoundSelectChangeHandler}
 							>
@@ -273,7 +342,7 @@ function Ticks(): T_ReactElement {
 								componentProps={{ label: "Cycles sound" }}
 								containerProps={{ className: "tw-flex-1 tw-text-right" }}
 								id="select-cycles-sound"
-								defaultValue="3"
+								defaultValue="1"
 								className="tw-text-right"
 								onChange={onCyclesSoundSelectChangeHandler}
 							>
@@ -282,6 +351,8 @@ function Ticks(): T_ReactElement {
 								<Select.Option value="3">3</Select.Option>
 							</Select>
 						</Block>
+						<Space size={2} />
+						<Text className="tw-text-center tw-font-bold">{calculateEstimatedTime()}</Text>
 					</form>
 					<Space size={3} />
 					<Block className="tw-flex tw-justify-center tw-gap-3">
@@ -383,6 +454,12 @@ function Ticks(): T_ReactElement {
 					<audio
 						src={`/static/sounds/ticks/${cyclesAudio}.mp3`}
 						id="audio-cycle-completed"
+						preload="auto"
+						className="tw-hidden"
+					/>
+					<audio
+						src="/static/sounds/ticks/session-completed.mp3"
+						id="audio-session-completed"
 						preload="auto"
 						className="tw-hidden"
 					/>

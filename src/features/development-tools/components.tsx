@@ -5,7 +5,7 @@ import { Block, Button, Icon, InlineText, Link, Select, Space, Text } from "~/co
 import { AnalyticsService } from "~/features/analytics";
 import { AuthService, withAuthComponent } from "~/features/auth";
 import { renderIf } from "~/hocs";
-import { useDidMount, useOnWindowResize } from "~/hooks";
+import { useClickOutside, useDidMount, useOnWindowResize } from "~/hooks";
 import { isLocalhostEnvironment } from "~/utils/app";
 import type {
 	T_ReactChildren,
@@ -19,10 +19,15 @@ import { initDevToolsConfig, readDevToolsConfig, updateDevToolsConfig } from "./
 function DevelopmentTools(): T_ReactElementNullable {
 	// states & refs
 	const [isConfigOpened, setIsConfigOpened] = React.useState(false);
+	const containerRef = React.useRef<HTMLDivElement>(null);
 
 	// effects
 	useDidMount(() => {
 		initDevToolsConfig();
+	});
+
+	useClickOutside(containerRef, () => {
+		setIsConfigOpened(false);
 	});
 
 	// handlers
@@ -31,7 +36,10 @@ function DevelopmentTools(): T_ReactElementNullable {
 	}
 
 	return isLocalhostEnvironment() ? (
-		<Block className="tw-fixed tw-top-2 tw-left-2 tw-z-40 tw-rounded-md tw-p-2 tw-text-sm dfr-shadow dfr-bg-color-secondary print:tw-hidden">
+		<Block
+			className="tw-fixed tw-top-2 tw-left-2 tw-z-40 tw-rounded-md tw-p-2 tw-text-sm dfr-shadow dfr-bg-color-secondary print:tw-hidden"
+			ref={containerRef}
+		>
 			<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
 				<Button
 					variant={Button.variant.DEFAULT}

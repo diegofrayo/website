@@ -55,19 +55,14 @@ function MusicPage(): T_ReactElement {
 						return (
 							<Block>
 								<Block variant="FEATURED">
-									<Block>
-										<Emoji className="tw-mr-2">⭐</Emoji>
-										<Link
-											variant={Link.variant.PRIMARY}
-											href={`${ROUTES.MUSIC}/${chordsPage.id}`}
-											locale={I18nService.getDefaultLocale()}
-										>
-											<InlineText className="tw-underline">{t("page:chords_title")}</InlineText>
-										</Link>
-									</Block>
-
-									<Space size={1} />
-									<Text>{t("page:description_1")}</Text>
+									<Emoji className="tw-mr-2">⭐</Emoji>
+									<Link
+										variant={Link.variant.PRIMARY}
+										href={`${ROUTES.MUSIC}/${chordsPage.id}`}
+										locale={I18nService.getDefaultLocale()}
+									>
+										<InlineText className="tw-underline">{t("page:chords_title")}</InlineText>
+									</Link>
 								</Block>
 								<Space
 									size={6}
@@ -75,12 +70,6 @@ function MusicPage(): T_ReactElement {
 								/>
 
 								<Block variant="FEATURED">
-									<Text>{t("page:description_2")}</Text>
-									<Space
-										size={6}
-										variant={Space.variant.DASHED}
-									/>
-
 									<Block>
 										<Input
 											componentProps={{ label: t("page:input_label") }}
