@@ -78,6 +78,12 @@ export function isBetween(input: number, range: [number, number]): boolean {
 	return input >= range[0] && input <= range[1];
 }
 
+// --- Arrays ---
+
+export function isNotEmptyArray(input: unknown[]): input is unknown[] {
+	return input.length > 0;
+}
+
 // --- DOM ---
 
 export function isDOMNode(element: T_ReactEventTarget | null): element is Node {

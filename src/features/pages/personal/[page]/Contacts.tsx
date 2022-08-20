@@ -305,7 +305,7 @@ function ContactLinks({
 									icon={Icon.icon.WHATSAPP}
 									size={24}
 								/>
-								<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-green-500 dark:tw-text-green-400">
+								<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-green-600 dark:tw-text-green-500">
 									{item.label}
 								</InlineText>
 							</WhastAppButton>
@@ -347,11 +347,11 @@ function ContactLinks({
 								country={contact.country}
 							>
 								<Icon
-									icon={Icon.icon.PHONE}
+									icon={Icon.icon.PHONE_SOLID}
 									size={24}
 									color="tw-text-blue-700 dark:tw-text-blue-500"
 								/>
-								<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-blue-700 dark:tw-text-blue-500">
+								<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-blue-600 dark:tw-text-blue-500">
 									{item.label}
 								</InlineText>
 							</PhoneButton>
@@ -364,11 +364,45 @@ function ContactLinks({
 					country={contact.country}
 				>
 					<Icon
-						icon={Icon.icon.PHONE}
+						icon={Icon.icon.PHONE_SOLID}
 						size={24}
-						color="tw-text-blue-700 dark:tw-text-blue-500"
+						color="tw-text-blue-600 dark:tw-text-blue-500"
 					/>
 				</PhoneButton>
+			) : null}
+
+			{Array.isArray(contact.phone) ? (
+				<Block>
+					{contact.phone.map((item) => {
+						return (
+							<SMSButton
+								key={generateSlug(item.label)}
+								phone={item.value}
+								country={contact.country}
+							>
+								<Icon
+									icon={Icon.icon.CHAT_SOLID}
+									size={24}
+									color="tw-text-red-600 dark:tw-text-red-500"
+								/>
+								<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-red-600 dark:tw-text-red-500">
+									{item.label}
+								</InlineText>
+							</SMSButton>
+						);
+					})}
+				</Block>
+			) : isNotEmptyString(contact.phone) ? (
+				<SMSButton
+					phone={contact.phone}
+					country={contact.country}
+				>
+					<Icon
+						icon={Icon.icon.CHAT_SOLID}
+						size={24}
+						color="tw-text-red-600 dark:tw-text-red-500"
+					/>
+				</SMSButton>
 			) : null}
 
 			<style jsx>
@@ -403,7 +437,7 @@ function WhastAppButton({
 	whatsAppOption,
 }: T_WhastAppButtonProps): T_ReactElementNullable {
 	// vars
-	const isColombianHomePhoneNumber = phone.split(" ")[1]?.startsWith("60");
+	const isColombianHomePhoneNumber = phone.split(" ")[1]?.startsWith("606");
 	const isAssistanceServiceNumber = phone.split(" ")[1]?.length === 3;
 
 	// handlers
@@ -450,6 +484,33 @@ function PhoneButton({ children, phone, country }: T_PhoneButtonProps): T_ReactE
 			<Link
 				variant={Link.variant.SIMPLE}
 				href={generatePhoneLink()}
+				isExternalLink
+			>
+				{children}
+			</Link>
+		);
+	}
+
+	return null;
+}
+
+function SMSButton({ children, phone, country }: T_PhoneButtonProps): T_ReactElementNullable {
+	// vars
+	const phoneWithoutCountryCode = phone.split(" ").slice(1).join("").trim();
+	const isCellphoneNumber =
+		phoneWithoutCountryCode.length === 10 && phoneWithoutCountryCode.startsWith("3");
+	const isPhoneNumberFromColombia = country === "CO";
+
+	// utils
+	function generateSMSLink(): string {
+		return `sms:${phoneWithoutCountryCode}&body=Hello`;
+	}
+
+	if (isPhoneNumberFromColombia && isCellphoneNumber) {
+		return (
+			<Link
+				variant={Link.variant.SIMPLE}
+				href={generateSMSLink()}
 				isExternalLink
 			>
 				{children}

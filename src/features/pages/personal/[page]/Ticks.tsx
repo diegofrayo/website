@@ -17,7 +17,7 @@ import { isConfirmAlertAccepted, showAlert } from "~/utils/browser";
 import { generateDate, getDatesDiff } from "~/utils/dates";
 import { createArray, sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
-import { isNotTrue, isNumber } from "~/utils/validations";
+import { isNotEmptyArray, isNotTrue, isNumber } from "~/utils/validations";
 import type {
 	T_HTMLElementAttributes,
 	T_ReactElement,
@@ -37,7 +37,7 @@ function Ticks(): T_ReactElement {
 	);
 	const [ticksInputValue, setTicksInputValue] = React.useState(4);
 	const [intensityInputValue, setIntensityInputValue] = React.useState(1250);
-	const [cyclesInputValue, setCyclesInputValue] = React.useState(3);
+	const [cyclesInputValue, setCyclesInputValue] = React.useState(135);
 	const [timerInterval, setTimerInterval] = React.useState<NodeJS.Timeout | null>(null);
 	const currentSessionDetails = React.useRef({
 		id: new Date().getTime(),
@@ -118,17 +118,19 @@ function Ticks(): T_ReactElement {
 			return "Free session";
 		}
 
-		const resultInSeconds = Number(
+		const resultInMinutes = Number(
 			(cyclesInputValue * ticksInputValue * intensityInputValue) / 1000 / 60,
 		);
 
-		if (resultInSeconds < 1) {
-			return `Estimated time: ${String(Math.round(resultInSeconds * 60))} seconds`;
+		if (resultInMinutes < 1) {
+			return `${String(Math.round(resultInMinutes * 60))} seconds`;
 		}
 
-		const result = resultInSeconds.toFixed(1).toString();
+		const resultInMinutesAsString = resultInMinutes.toFixed(1).toString();
+		const minutes = Number(resultInMinutesAsString.split(".")[0]);
+		const seconds = Number(resultInMinutesAsString.split(".")[1]) * 6;
 
-		return `Estimated time: ${result.endsWith(".0") ? result.split(".0")[0] : result} minutes`;
+		return `${seconds === 0 ? `${minutes} minutes` : `${minutes} minutes and ${seconds} seconds`}`;
 	}
 
 	// handlers
@@ -352,7 +354,10 @@ function Ticks(): T_ReactElement {
 							</Select>
 						</Block>
 						<Space size={2} />
-						<Text className="tw-text-center tw-font-bold">{calculateEstimatedTime()}</Text>
+						<Text className="tw-text-center">
+							<InlineText is="strong">Estimated time: </InlineText>
+							<InlineText>{calculateEstimatedTime()}</InlineText>
+						</Text>
 					</form>
 					<Space size={3} />
 					<Block className="tw-flex tw-justify-center tw-gap-3">
@@ -402,7 +407,7 @@ function Ticks(): T_ReactElement {
 								<InlineText className="tw-inline-block tw-w-8 tw-text-center">{cycles}</InlineText>
 							</Text>
 						</Block>
-					) : (
+					) : isNotEmptyArray(history) ? (
 						<Block className="tw-text-left tw-text-sm">
 							<Space
 								size={10}
@@ -443,7 +448,7 @@ function Ticks(): T_ReactElement {
 								);
 							})}
 						</Block>
-					)}
+					) : null}
 
 					<audio
 						src={`/static/sounds/ticks/${ticksAudio}.mp3`}
@@ -480,7 +485,7 @@ function ActionButton({ children, onClick, className }: T_ActionButtonProps): T_
 		<Button
 			variant={Button.variant.SIMPLE}
 			className={classNames(
-				"tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-sm tw-font-bold sm:tw-h-24 sm:tw-w-24 sm:tw-text-base",
+				"tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-sm tw-font-bold dark:tw-border-0 sm:tw-h-24 sm:tw-w-24 sm:tw-text-base",
 				className,
 			)}
 			onClick={onClick}

@@ -40,12 +40,14 @@ import {
 	ZoomOutIcon,
 } from "@heroicons/react/outline";
 import {
+	ChatIcon as ChatIconSolid,
 	CheckIcon,
 	CogIcon,
 	DotsCircleHorizontalIcon as DotsCircleHorizontalIconSolid,
 	HeartIcon as HeartIconSolid,
 	MinusIcon,
 	MoonIcon,
+	PhoneIcon as PhoneIconSolid,
 	StarIcon,
 	SunIcon,
 } from "@heroicons/react/solid";
@@ -187,6 +189,12 @@ export const ICONS = {
 	},
 	CHAT: {
 		icon: ChatIcon,
+		defaultProps: {
+			className: "",
+		},
+	},
+	CHAT_SOLID: {
+		icon: ChatIconSolid,
 		defaultProps: {
 			className: "",
 		},
@@ -378,6 +386,12 @@ export const ICONS = {
 	},
 	PHONE: {
 		icon: PhoneIcon,
+		defaultProps: {
+			className: "",
+		},
+	},
+	PHONE_SOLID: {
+		icon: PhoneIconSolid,
 		defaultProps: {
 			className: "",
 		},
