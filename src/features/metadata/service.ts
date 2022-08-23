@@ -2,7 +2,6 @@ import { ENV_VARS } from "~/constants";
 import { T_Locale } from "~/features/i18n";
 import http from "~/lib/http";
 import { T_Metadata } from "~/stores/modules/metadata";
-import { getDatesDiff } from "~/utils/dates";
 
 class MetadataService {
 	static async fetchData(locale: T_Locale): Promise<T_Metadata> {
@@ -10,13 +9,7 @@ class MetadataService {
 			`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/metadata.json`,
 		);
 
-		return {
-			website: {
-				...metadata.website,
-				age: getDatesDiff(new Date(metadata.website.birthDate), new Date(), "year"),
-			},
-			seo: metadata.seo[locale],
-		} as T_Metadata;
+		return { ...metadata, seo: metadata.seo[locale] } as T_Metadata;
 	}
 }
 

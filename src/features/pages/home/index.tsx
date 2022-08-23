@@ -314,11 +314,18 @@ function TV({ song }: T_TVProps): T_ReactElement {
 						</audio>
 					</Button>
 
-					<Icon
-						icon={song.source === "youtube" ? Icon.icon.YOUTUBE : Icon.icon.SPOTIFY}
-						size={12}
-						wrapperClassName="tw-absolute tw-top-0.5 tw-right-0.5"
-					/>
+					<Link
+						variant={Link.variant.SIMPLE}
+						href={song.url}
+						className="tw-inline-block"
+						isExternalLink
+					>
+						<Icon
+							icon={song.source === "youtube" ? Icon.icon.YOUTUBE : Icon.icon.SPOTIFY}
+							size={12}
+							wrapperClassName="tw-absolute tw-top-0.5 tw-right-0.5"
+						/>
+					</Link>
 				</Block>
 
 				<Block
