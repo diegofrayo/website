@@ -8,7 +8,7 @@ function Document(): T_ReactElement {
 		<Html>
 			<Head>
 				<link
-					href="https://fonts.googleapis.com/css2?family=Bitter:wght@200;400;700&display=swap"
+					href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;700&display=swap"
 					rel="stylesheet"
 				/>
 			</Head>

@@ -7,7 +7,6 @@ import { Block, Button, Icon, InlineText, Link, Pre, Space } from "~/components/
 import { useTranslation } from "~/features/i18n";
 import twcss from "~/lib/twcss";
 import { handleCopyToClipboardClick } from "~/utils/browser";
-import { generateSlug } from "~/utils/strings";
 import { isNotEmptyString } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
@@ -33,7 +32,7 @@ function SourceCode({
 
 	// vars
 	const codeTitle = isNotEmptyString(fileName)
-		? `// ${generateSlug(fileName)}`
+		? `// ${fileName}`
 		: isNotEmptyString(sourceURL)
 		? `// ${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}`
 		: "";

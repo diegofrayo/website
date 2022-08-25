@@ -90,6 +90,16 @@ export const MDXComponents = {
 	hr: function HR(): T_ReactElement {
 		return <Space variant={Space.variant.DASHED} />;
 	},
+	blockquote: function Blockquote({ children }: { children: T_ReactChildren }): T_ReactElement {
+		return (
+			<Block
+				is="blockquote"
+				variant="QUOTE"
+			>
+				{children}
+			</Block>
+		);
+	},
 
 	// Primitive components
 	Block,

@@ -55,7 +55,7 @@ const MY_THEME = {
 	},
 	["font-family"]: {
 		property: "fontFamily",
-		value: "'Bitter', sans-serif",
+		value: "'Mulish', sans-serif",
 	},
 	["transition-opacity"]: {
 		property: "multiple",

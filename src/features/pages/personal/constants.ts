@@ -85,7 +85,7 @@ export const PERSONAL_PAGES = [
 		slug: "thumbnails",
 		title: "thumbnails",
 		componentName: "Thumbnails",
-		icon: Icon.icon.PHOTOGRAPH,
+		icon: Icon.icon.PHOTO,
 		type: "TOOL",
 	},
 ] as const;

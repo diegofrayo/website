@@ -8,7 +8,7 @@ const VARIANTS_OPTIONS = ["UNSTYLED", "FEATURED", "QUOTE"] as const;
 const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
 type T_Variant = typeof VARIANTS_OPTIONS[number];
 type T_BlockProps = T_HTMLElementAttributes["div"] & {
-	is?: "main" | "div" | "section" | "article" | "header" | "aside" | "footer";
+	is?: "main" | "div" | "section" | "article" | "header" | "aside" | "footer" | "blockquote";
 	variant?: T_Variant;
 };
 
@@ -20,9 +20,9 @@ const Block = React.forwardRef<HTMLDivElement, T_BlockProps>(function Block(
 	function composeClassName(): string {
 		return classNames(
 			className,
-			variant === "FEATURED" &&
+			variant === VARIANTS.FEATURED &&
 				"dfr-bg-color-secondary dfr-border-color-primary tw-border tw-border-l-4 tw-p-4",
-			variant === "QUOTE" &&
+			variant === VARIANTS.QUOTE &&
 				"dfr-border-color-primary dfr-text-color-secondary tw-px-4 tw-border-l-4 tw-italic",
 		);
 	}

@@ -1,8 +1,12 @@
 import {
+	ArrowPathIcon,
+	ArrowTopRightOnSquareIcon,
 	ArrowUpIcon,
+	ArrowUturnRightIcon,
+	Bars4Icon,
 	BookOpenIcon,
 	CalendarIcon,
-	ChatIcon,
+	ChatBubbleLeftEllipsisIcon,
 	ChevronDoubleDownIcon,
 	ChevronDoubleUpIcon,
 	ChevronDownIcon,
@@ -10,47 +14,42 @@ import {
 	ChevronRightIcon,
 	ClipboardIcon,
 	ClockIcon,
-	CodeIcon,
-	ColorSwatchIcon,
+	CodeBracketIcon,
 	DocumentTextIcon,
-	DotsCircleHorizontalIcon,
-	ExternalLinkIcon,
+	EllipsisHorizontalCircleIcon,
 	FilmIcon,
 	GlobeAltIcon,
 	HeartIcon,
 	KeyIcon,
 	LinkIcon,
-	MenuIcon,
-	MusicNoteIcon,
+	MagnifyingGlassMinusIcon,
+	MagnifyingGlassPlusIcon,
+	MusicalNoteIcon,
 	PauseIcon,
-	PencilAltIcon,
+	PencilSquareIcon,
 	PhoneIcon,
-	PhotographIcon,
+	PhotoIcon,
 	PlayIcon,
 	PresentationChartLineIcon,
 	PrinterIcon,
-	RefreshIcon,
-	ReplyIcon,
 	ServerIcon,
+	SpeakerWaveIcon,
+	SpeakerXMarkIcon,
 	UserCircleIcon,
-	VolumeOffIcon,
-	VolumeUpIcon,
-	XIcon,
-	ZoomInIcon,
-	ZoomOutIcon,
-} from "@heroicons/react/outline";
+	XMarkIcon,
+} from "@heroicons/react/24/outline";
 import {
-	ChatIcon as ChatIconSolid,
+	ChatBubbleLeftEllipsisIcon as ChatBubbleLeftEllipsisIconSolid,
 	CheckIcon,
 	CogIcon,
-	DotsCircleHorizontalIcon as DotsCircleHorizontalIconSolid,
+	EllipsisHorizontalCircleIcon as EllipsisHorizontalCircleIconSolid,
 	HeartIcon as HeartIconSolid,
 	MinusIcon,
 	MoonIcon,
 	PhoneIcon as PhoneIconSolid,
 	StarIcon,
 	SunIcon,
-} from "@heroicons/react/solid";
+} from "@heroicons/react/24/solid";
 import { T_ReactElement } from "~/types";
 
 export const ICONS = {
@@ -188,13 +187,13 @@ export const ICONS = {
 		},
 	},
 	CHAT: {
-		icon: ChatIcon,
+		icon: ChatBubbleLeftEllipsisIcon,
 		defaultProps: {
 			className: "",
 		},
 	},
 	CHAT_SOLID: {
-		icon: ChatIconSolid,
+		icon: ChatBubbleLeftEllipsisIconSolid,
 		defaultProps: {
 			className: "",
 		},
@@ -256,7 +255,7 @@ export const ICONS = {
 		},
 	},
 	CODE: {
-		icon: CodeIcon,
+		icon: CodeBracketIcon,
 		defaultProps: {
 			className: "",
 		},
@@ -268,12 +267,6 @@ export const ICONS = {
 			color: "",
 		},
 	},
-	COLOR_SWATCH: {
-		icon: ColorSwatchIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
 	DOCUMENT_TEXT: {
 		icon: DocumentTextIcon,
 		defaultProps: {
@@ -282,27 +275,27 @@ export const ICONS = {
 		},
 	},
 	DOTS_CIRCLE_HORIZONTAL: {
-		icon: DotsCircleHorizontalIcon,
+		icon: EllipsisHorizontalCircleIcon,
 		defaultProps: {
 			className: "",
 			color: "",
 		},
 	},
 	DOTS_CIRCLE_HORIZONTAL_SOLID: {
-		icon: DotsCircleHorizontalIconSolid,
+		icon: EllipsisHorizontalCircleIconSolid,
 		defaultProps: {
 			className: "",
 			color: "",
 		},
 	},
 	EDIT: {
-		icon: PencilAltIcon,
+		icon: PencilSquareIcon,
 		defaultProps: {
 			className: "",
 		},
 	},
 	EXTERNAL_LINK: {
-		icon: ExternalLinkIcon,
+		icon: ArrowTopRightOnSquareIcon,
 		defaultProps: {
 			className: "",
 		},
@@ -346,7 +339,7 @@ export const ICONS = {
 		},
 	},
 	MENU: {
-		icon: MenuIcon,
+		icon: Bars4Icon,
 		defaultProps: {
 			className: "",
 		},
@@ -365,7 +358,7 @@ export const ICONS = {
 		},
 	},
 	MUSIC_NOTE: {
-		icon: MusicNoteIcon,
+		icon: MusicalNoteIcon,
 		defaultProps: {
 			className: "",
 		},
@@ -396,8 +389,8 @@ export const ICONS = {
 			className: "",
 		},
 	},
-	PHOTOGRAPH: {
-		icon: PhotographIcon,
+	PHOTO: {
+		icon: PhotoIcon,
 		defaultProps: {
 			className: "",
 		},
@@ -415,13 +408,13 @@ export const ICONS = {
 		},
 	},
 	REFRESH: {
-		icon: RefreshIcon,
+		icon: ArrowPathIcon,
 		defaultProps: {
 			className: "",
 		},
 	},
 	REPLY: {
-		icon: ReplyIcon,
+		icon: ArrowUturnRightIcon,
 		defaultProps: {
 			className: "",
 			color: "",
@@ -454,31 +447,31 @@ export const ICONS = {
 		},
 	},
 	VOLUME_OFF: {
-		icon: VolumeOffIcon,
+		icon: SpeakerXMarkIcon,
 		defaultProps: {
 			className: "",
 		},
 	},
 	VOLUME_UP: {
-		icon: VolumeUpIcon,
+		icon: SpeakerWaveIcon,
 		defaultProps: {
 			className: "",
 		},
 	},
 	X: {
-		icon: XIcon,
+		icon: XMarkIcon,
 		defaultProps: {
 			className: "",
 		},
 	},
 	ZOOM_IN: {
-		icon: ZoomInIcon,
+		icon: MagnifyingGlassPlusIcon,
 		defaultProps: {
 			className: "",
 		},
 	},
 	ZOOM_OUT: {
-		icon: ZoomOutIcon,
+		icon: MagnifyingGlassMinusIcon,
 		defaultProps: {
 			className: "",
 		},

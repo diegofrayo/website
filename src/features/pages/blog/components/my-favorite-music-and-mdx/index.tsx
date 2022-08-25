@@ -4,7 +4,7 @@ import { Block, Icon, Link, Text, Title as TitlePrimitive } from "~/components/p
 import type { T_ReactElement, T_ReactElementNullable } from "~/types";
 import { isDevelopmentEnvironment } from "~/utils/app";
 
-export function MFMAM_HelloWorldMDX({ text }: { text: string }): T_ReactElement {
+export function MFMAMHelloWorldMDX({ text }: { text: string }): T_ReactElement {
 	return <Text className="tw-block tw-bg-red-200 tw-p-2 tw-text-red-700">{text}</Text>;
 }
 
@@ -14,7 +14,7 @@ type T_GitHubRepoProps = {
 	description: string;
 };
 
-export function MFMAM_GitHubRepo({ name, url, description }: T_GitHubRepoProps): T_ReactElement {
+export function MFMAMGitHubRepo({ name, url, description }: T_GitHubRepoProps): T_ReactElement {
 	return (
 		<Block
 			className="tw-text-right"
@@ -52,7 +52,7 @@ export function MFMAM_GitHubRepo({ name, url, description }: T_GitHubRepoProps):
 	);
 }
 
-export function MFMAM_SpotifyPlaylist(): T_ReactElementNullable {
+export function MFMAMSpotifyPlaylist(): T_ReactElementNullable {
 	if (isDevelopmentEnvironment()) {
 		return null;
 	}
