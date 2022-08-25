@@ -298,8 +298,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
 					>
 						<Icon
 							icon={isAudioPlaying ? Icon.icon.PAUSE : Icon.icon.PLAY}
-							size={28}
-							wrapperClassName="dfr-bg-color-gs-black tw-bg-opacity-70 tw-rounded-full"
+							wrapperClassName="dfr-bg-color-gs-black tw-bg-opacity-70 tw-rounded-full tw-p-1"
 							color="dfr-text-color-gs-white"
 						/>
 						<audio

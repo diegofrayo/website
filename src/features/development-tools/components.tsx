@@ -43,6 +43,7 @@ function DevelopmentTools(): T_ReactElementNullable {
 			<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
 				<Button
 					variant={Button.variant.DEFAULT}
+					className="tw-leading-0"
 					onClick={handleToggleShowConfigClick}
 				>
 					<Icon icon={Icon.icon.CODE} />

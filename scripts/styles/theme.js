@@ -75,8 +75,6 @@ const MY_THEME = {
 			},
 			dark: {
 				boxShadow: "0px 0px 3px 0px rgba(255, 255, 255, 0.1)",
-				borderWidth: "0.5px",
-				borderColor: color(BG_DARK_MODE).lighten(0.9).hex(),
 			},
 		},
 	},

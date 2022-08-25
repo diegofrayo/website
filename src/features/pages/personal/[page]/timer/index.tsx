@@ -740,21 +740,7 @@ function useController() {
 				ms: new Date().getTime(),
 				formatted: new Date().toLocaleTimeString(),
 			},
-			items: (isDevelopmentEnvironment()
-				? (
-						[
-							{
-								id: "tests",
-								title: "tests",
-								highTime: "00:03",
-								sets: 2,
-								restTime: "00:02",
-								status: ROUTINE_ITEMS_STATUS.NOT_STARTED,
-							},
-						] as T_RoutineItem[]
-				  ).concat(routine.items.slice(0, 5))
-				: routine.items
-			).map((item) => {
+			items: routine.items.map((item) => {
 				if (typeof item === "string") {
 					return {
 						...routinesTemplates.exercises[item],

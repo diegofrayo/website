@@ -48,7 +48,7 @@ function SourceCode({
 			{displaySourceCodeDetails ? (
 				<Block className="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-px-4 tw-py-2 tw-pr-2 tw-font-mono tw-text-sm dfr-text-color-bw dark:dfr-bg-color-tertiary">
 					{isNotEmptyString(codeTitle) ? (
-						<code className="tw-mr-4 tw-flex-1 tw-font-bold">{codeTitle}</code>
+						<code className="tw-mr-4 tw-flex-1 tw-truncate tw-font-bold">{codeTitle}</code>
 					) : null}
 					<InlineText className="tw-ml-auto tw-inline-block tw-flex-shrink-0 tw-bg-yellow-300 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-yellow-700">
 						{language}
