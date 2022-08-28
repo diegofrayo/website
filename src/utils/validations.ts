@@ -80,8 +80,12 @@ export function isBetween(input: number, range: [number, number]): boolean {
 
 // --- Arrays ---
 
-export function isNotEmptyArray(input: unknown[]): input is unknown[] {
+export function isNotEmptyArray(input: unknown[]): boolean {
 	return input.length > 0;
+}
+
+export function isEmptyArray(input: unknown[]): boolean {
+	return input.length === 0;
 }
 
 // --- DOM ---

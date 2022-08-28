@@ -4,6 +4,7 @@ import { Icon, Image, Link, List, Title, Block, Text } from "~/components/primit
 import { useTranslation } from "~/features/i18n";
 import type { T_ReactElementNullable } from "~/types";
 import { generateSlug } from "~/utils/strings";
+import { isEmptyArray } from "~/utils/validations";
 
 import { T_Song } from "../service";
 
@@ -17,7 +18,7 @@ function SongSources({ sources }: T_SongSourcesProps): T_ReactElementNullable {
 	// hooks
 	const { t } = useTranslation();
 
-	if (sources.length === 0) {
+	if (isEmptyArray(sources)) {
 		return null;
 	}
 

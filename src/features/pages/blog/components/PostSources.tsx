@@ -1,48 +1,41 @@
 import * as React from "react";
 
-import { Link, List, Title, Block } from "~/components/primitive";
+import { Link, List, Title, Block, Text } from "~/components/primitive";
 import { useTranslation } from "~/features/i18n";
 import { generateSlug } from "~/utils/strings";
 import type { T_ReactElement } from "~/types";
 
-function Sources({ sources }: { sources: { title: string; url: string }[] }): T_ReactElement {
+function PostSources({ sources }: { sources: { title: string; url: string }[] }): T_ReactElement {
 	// hooks
 	const { t } = useTranslation();
 
 	return (
 		<Block
 			is="section"
-			data-markdown-block
+			variant="FEATURED"
+			className="tw-mt-16 tw-pl-6"
 		>
 			<Title
 				is="h2"
-				data-markdown-title
+				className="tw-mb-3"
 				showLinkIcon
 			>
 				{t("page:sources")}
 			</Title>
 			<List variant={List.variant.DEFAULT}>
 				{sources.map((source) => {
-					const { host, origin } = new URL(source.url);
+					const { host } = new URL(source.url);
 
 					return (
 						<List.Item key={generateSlug(source.title)}>
 							<Link
 								variant={Link.variant.PRIMARY}
 								href={source.url}
-								className="tw-block"
 								isExternalLink
 							>
 								{source.title}
 							</Link>
-							<Link
-								variant={Link.variant.SECONDARY}
-								href={origin}
-								className="tw-text-sm tw-italic"
-								isExternalLink
-							>
-								{host}
-							</Link>
+							<Text className="tw-text-xs tw-font-bold tw-italic dfr-text-color-bw">{host}</Text>
 						</List.Item>
 					);
 				})}
@@ -51,4 +44,4 @@ function Sources({ sources }: { sources: { title: string; url: string }[] }): T_
 	);
 }
 
-export default Sources;
+export default PostSources;
