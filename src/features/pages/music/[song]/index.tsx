@@ -67,12 +67,10 @@ function SongPage(props: T_PageProps): T_ReactElement {
 			}}
 		>
 			<MainLayout title={song.title}>
-				<SongDetails
-					song={song}
-					className="tw-mb-8"
-				/>
+				<SongDetails song={song} />
+				<Space size={6} />
 
-				<Block className="tw-mb-8 tw-border-4 dfr-border-color-primary">
+				<Block className="tw-border-4 dfr-border-color-primary">
 					<Block className="tw-p-4 tw-text-center tw-leading-0 dfr-bg-color-secondary">
 						<Button
 							variant={Button.variant.SIMPLE}
@@ -137,9 +135,10 @@ function SongPage(props: T_PageProps): T_ReactElement {
 						/>
 					</Block>
 				</Block>
+				<Space size={2} />
 
 				<SongSources sources={song.sources} />
-				<Space size={6} />
+				<Space size={8} />
 
 				<RateContent />
 			</MainLayout>

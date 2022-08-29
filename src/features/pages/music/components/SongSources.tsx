@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Icon, Image, Link, List, Title, Block, Text } from "~/components/primitive";
+import { Icon, Image, Link, List, Block, Text } from "~/components/primitive";
 import { useTranslation } from "~/features/i18n";
 import type { T_ReactElementNullable } from "~/types";
 import { generateSlug } from "~/utils/strings";
@@ -23,10 +23,8 @@ function SongSources({ sources }: T_SongSourcesProps): T_ReactElementNullable {
 	}
 
 	return (
-		<Block>
-			<Title is="h2">{t("page:sources")}</Title>
-
-			<Text className="tw-my-2 tw-text-sm tw-italic">{t("page:disclaimer")}</Text>
+		<Block className="tw-border tw-border-yellow-200 tw-bg-yellow-50 tw-p-4 dark:tw-border-gray-600 dark:tw-bg-gray-700">
+			<Text className="tw-mb-3 tw-text-sm tw-italic">{t("page:disclaimer")}</Text>
 
 			<List variant={List.variant.UNSTYLED}>
 				{sources.map((item) => {

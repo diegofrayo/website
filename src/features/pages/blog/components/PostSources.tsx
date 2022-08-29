@@ -12,15 +12,13 @@ function PostSources({ sources }: { sources: { title: string; url: string }[] })
 	return (
 		<Block
 			is="section"
-			variant="FEATURED"
-			className="tw-mt-16 tw-pl-6"
+			className="tw-mt-12 tw-border tw-border-yellow-200 tw-bg-yellow-50 tw-p-4 dark:tw-border-gray-600 dark:tw-bg-gray-700"
 		>
 			<Title
 				is="h2"
 				className="tw-mb-3"
-				showLinkIcon
 			>
-				{t("page:sources")}
+				🔗 {t("page:sources")}
 			</Title>
 			<List variant={List.variant.DEFAULT}>
 				{sources.map((source) => {

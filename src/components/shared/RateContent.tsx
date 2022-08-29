@@ -29,12 +29,9 @@ function RateContent(): T_ReactElement {
 
 	return (
 		<Block className="tw-text-center print:tw-hidden">
-			<Text className="tw-text-sm tw-font-bold">{t("common:useful_question")}</Text>
+			<Text className="tw-mb-2 tw-text-sm tw-font-bold">{t("common:useful_question")}</Text>
 			<Block
-				className={classNames(
-					"tw-mt-4 tw-text-center tw-text-xl",
-					isQuestionAnswered && "tw-opacity-50",
-				)}
+				className={classNames("tw-text-center tw-text-xl", isQuestionAnswered && "tw-opacity-50")}
 			>
 				<Button
 					variant={Button.variant.SIMPLE}
@@ -43,7 +40,7 @@ function RateContent(): T_ReactElement {
 					onClick={handleAnswerClick("YES")}
 				>
 					<Emoji>👍</Emoji>
-					<Text>{t("common:useful_question_yes")}</Text>
+					<Text className="tw-text-sm">{t("common:useful_question_yes")}</Text>
 				</Button>
 				<Space
 					size={3}
@@ -56,7 +53,7 @@ function RateContent(): T_ReactElement {
 					onClick={handleAnswerClick("NO")}
 				>
 					<Emoji>👎</Emoji>
-					<Text>{t("common:useful_question_no")}</Text>
+					<Text className="tw-text-sm">{t("common:useful_question_no")}</Text>
 				</Button>
 			</Block>
 		</Block>

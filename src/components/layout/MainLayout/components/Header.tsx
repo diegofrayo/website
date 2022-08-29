@@ -41,7 +41,7 @@ function Header(): T_ReactElement {
 				</Block>
 			</Block>
 
-			<Block className="tw-absolute tw-top-7 tw-right-0">
+			<Block className="tw-absolute tw-top-8 tw-right-0">
 				<SettingsMenu />
 			</Block>
 		</Block>
@@ -217,7 +217,7 @@ function SettingsMenu(): T_ReactElement {
 			>
 				<Icon
 					icon={Icon.icon.COG}
-					size={32}
+					size={28}
 				/>
 			</Button>
 
@@ -319,7 +319,7 @@ const ISRMenuItem = withAuthComponent(function ISRMenuItem() {
 			});
 
 			await deletePWACache();
-			showAlert("Done, please reload this page");
+			window.location.reload();
 		} catch (error) {
 			reportError(error);
 			showAlert(`ERROR: ${getErrorMessage(error)}`);

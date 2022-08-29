@@ -60,10 +60,14 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
 				<Space size={8} />
 
 				<MDXContent content={postMDXContent} />
-				<Space size={8} />
+				<Space
+					sizeTop={8}
+					sizeBottom={24}
+					variant="DASHED"
+				/>
 
 				<RateContent />
-				<Space size={8} />
+				<Space size={2} />
 
 				<BlogPostActions />
 			</MainLayout>
@@ -74,6 +78,29 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
 export default BlogPostPage;
 
 // --- Components ---
+function BlogPostActions(): T_ReactElement {
+	// hooks
+	const { t } = useTranslation();
+
+	// handlers
+	function handleCopyUrlClick(): void {
+		copyToClipboard(window.location.href);
+	}
+
+	return (
+		<Block
+			variant="FEATURED"
+			className="tw-flex tw-flex-wrap tw-justify-between"
+		>
+			<BlogPostDetailsItem onClick={handleCopyUrlClick}>
+				<BlogPostDetailsItemIcon icon={Icon.icon.LINK} />
+				<InlineText>{t("page:copy_url_to_clipboard")}</InlineText>
+			</BlogPostDetailsItem>
+			<Space responsive="tw-w-full tw-my-1 sm:tw-hidden" />
+			<BlogPostDetailsItemLink />
+		</Block>
+	);
+}
 
 type T_BlogPostDetailsProps = Pick<T_BlogPost, "publishedAt" | "updatedAt" | "isPublished">;
 
@@ -106,30 +133,6 @@ function BlogPostDetails({
 					<InlineText is="strong">{getFormattedDatesDifference(updatedAt, new Date())}</InlineText>
 				</Text>
 			</BlogPostDetailsItem>
-		</Block>
-	);
-}
-
-function BlogPostActions(): T_ReactElement {
-	// hooks
-	const { t } = useTranslation();
-
-	// handlers
-	function handleCopyUrlClick(): void {
-		copyToClipboard(window.location.href);
-	}
-
-	return (
-		<Block
-			variant="FEATURED"
-			className="tw-flex tw-flex-wrap tw-justify-between"
-		>
-			<BlogPostDetailsItem onClick={handleCopyUrlClick}>
-				<BlogPostDetailsItemIcon icon={Icon.icon.LINK} />
-				<InlineText>{t("page:copy_url_to_clipboard")}</InlineText>
-			</BlogPostDetailsItem>
-			<Space responsive="tw-w-full tw-my-1 sm:tw-hidden" />
-			<BlogPostDetailsItemLink />
 		</Block>
 	);
 }
