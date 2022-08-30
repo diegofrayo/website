@@ -22,6 +22,8 @@ import {
 	HeartIcon,
 	KeyIcon,
 	LinkIcon,
+	LockClosedIcon,
+	LockOpenIcon,
 	MagnifyingGlassMinusIcon,
 	MagnifyingGlassPlusIcon,
 	MusicalNoteIcon,
@@ -334,6 +336,18 @@ export const ICONS = {
 	},
 	LINK: {
 		icon: LinkIcon,
+		defaultProps: {
+			className: "",
+		},
+	},
+	LOCK_CLOSED: {
+		icon: LockClosedIcon,
+		defaultProps: {
+			className: "",
+		},
+	},
+	LOCK_OPEN: {
+		icon: LockOpenIcon,
 		defaultProps: {
 			className: "",
 		},

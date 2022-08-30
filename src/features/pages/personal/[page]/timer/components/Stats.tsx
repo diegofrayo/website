@@ -26,7 +26,7 @@ function Stats({
 	deleteRoutineHandler?: any;
 }): T_ReactElement {
 	// context
-	const { secondsToTime, timeToSeconds } = React.useContext(TimerPageContext);
+	const { secondsToTime, timeToSeconds, isUILocked } = React.useContext(TimerPageContext);
 
 	// states
 	const [elapsedTime, setElapsedTime] = React.useState("");

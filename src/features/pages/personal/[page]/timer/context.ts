@@ -10,9 +10,11 @@ type T_TimerPageContext = {
 	// states
 	currentRoutine: T_Routine;
 	timerStatus: T_TimerStatus;
+	isUILocked: Boolean;
 
 	// states setters
 	setTimerStatus: React.Dispatch<React.SetStateAction<T_TimerStatus>>;
+	setIsUILocked: React.Dispatch<React.SetStateAction<boolean>>;
 
 	// utils
 	timeToSeconds: (time?: string) => number;

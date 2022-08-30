@@ -36,6 +36,7 @@ type T_Order = "asc" | "desc";
 type T_Criteria = { param: string; order: T_Order };
 type T_SorterFunction = (a: T_UnknownObject, b: T_UnknownObject) => number;
 
+// NOTE: Inspiration: https://www.npmjs.com/package/sort-by
 export function sortBy(criteria: T_Criteria[]): T_SorterFunction {
 	const sortByReturn: T_SorterFunction = function sortByReturn(a, b) {
 		return criteria.reduce(

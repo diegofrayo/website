@@ -25,6 +25,7 @@ export default function RoutineItem({
 	const {
 		// states
 		currentRoutine,
+		isUILocked,
 
 		// utils
 		setRoutineItemAsStarted,
@@ -144,6 +145,7 @@ export default function RoutineItem({
 					{status === ROUTINE_ITEMS_STATUS.NOT_STARTED && (
 						<Button
 							variant={Button.variant.SIMPLE}
+							disabled={isUILocked}
 							onClick={handleStartRoutineItemClick}
 						>
 							<Icon
@@ -157,6 +159,7 @@ export default function RoutineItem({
 					<Button
 						variant={Button.variant.SIMPLE}
 						className="tw-ml-auto"
+						disabled={isUILocked}
 						onClick={handleMarkAsCompletedClick}
 					>
 						<Icon

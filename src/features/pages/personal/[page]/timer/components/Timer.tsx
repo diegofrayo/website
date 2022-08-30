@@ -25,9 +25,11 @@ function Timer({
 		// states
 		currentRoutine,
 		timerStatus,
+		isUILocked,
 
 		// states setters
 		setTimerStatus,
+		setIsUILocked,
 
 		// utils
 		secondsToTime,
@@ -251,6 +253,10 @@ function Timer({
 		updateTime(currentSet, routineItem);
 	}
 
+	function handleLockClick() {
+		setIsUILocked((currentValue) => !currentValue);
+	}
+
 	// vars
 	const isTimerRunning = timerInterval !== null;
 	const isRoutineItemCompleted = routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED;
@@ -312,6 +318,7 @@ function Timer({
 						<Button
 							variant={Button.variant.SIMPLE}
 							className="tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center"
+							disabled={isUILocked}
 							onClick={() => setIsSoundsMuted((currentValue) => !currentValue)}
 						>
 							<Icon
@@ -323,6 +330,7 @@ function Timer({
 						<Button
 							variant={Button.variant.SIMPLE}
 							className="tw-h-32 tw-w-32 tw-rounded-full tw-border-4 tw-font-bold tw-uppercase dfr-border-color-primary"
+							disabled={isUILocked}
 							onClick={handleStartRoutineItemClick}
 						>
 							{timerStatus === TIMER_STATUS.NOT_STARTED
@@ -334,6 +342,7 @@ function Timer({
 						<Button
 							variant={Button.variant.SIMPLE}
 							className="tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-full tw-border-2 dfr-border-color-primary"
+							disabled={isUILocked}
 							onClick={handleResetCurrentSetClick}
 						>
 							<Icon
@@ -351,6 +360,7 @@ function Timer({
 					<Button
 						variant={Button.variant.SIMPLE}
 						className={classNames("tw-mr-auto", showPrevSetButton ? "tw-visible" : "tw-invisible")}
+						disabled={isUILocked}
 						onClick={handlePrevSetClick}
 					>
 						<Icon
@@ -374,6 +384,7 @@ function Timer({
 					<Button
 						variant={Button.variant.SIMPLE}
 						className={classNames("tw-ml-auto", showNextSetButton ? "tw-visible" : "tw-invisible")}
+						disabled={isUILocked}
 						onClick={handleNextSetClick}
 					>
 						<Icon
@@ -392,6 +403,17 @@ function Timer({
 						: Math[currentSet.isRest ? "ceil" : "round"](currentSet.index / 2)}
 					/{numberOfSets}
 				</Text>
+				<Space size={4} />
+				<Button
+					variant={Button.variant.SIMPLE}
+					onClick={handleLockClick}
+				>
+					<Icon
+						icon={isUILocked ? Icon.icon.LOCK_OPEN : Icon.icon.LOCK_CLOSED}
+						color="tw-text-white"
+						size={24}
+					/>
+				</Button>
 			</Block>
 		</Block>
 	);

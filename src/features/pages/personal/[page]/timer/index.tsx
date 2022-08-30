@@ -37,9 +37,11 @@ function TimerPage(): T_ReactElement {
 		currentRoutineItemIndex,
 		timerStatus,
 		routinesHistory,
+		isUILocked,
 
 		// states setters
 		setTimerStatus,
+		setIsUILocked,
 
 		// handlers
 		handleInitRoutineClick,
@@ -109,9 +111,11 @@ function TimerPage(): T_ReactElement {
 								// states
 								currentRoutine,
 								timerStatus,
+								isUILocked,
 
 								// states setters
 								setTimerStatus,
+								setIsUILocked,
 
 								// utils
 								timeToSeconds,
@@ -143,6 +147,7 @@ function TimerPage(): T_ReactElement {
 												<Button
 													variant={Button.variant.SIMPLE}
 													className="tw-text-sm"
+													disabled={isUILocked}
 													onClick={handleCancelRoutineClick}
 												>
 													<Icon
@@ -156,6 +161,7 @@ function TimerPage(): T_ReactElement {
 												<Button
 													variant={Button.variant.SIMPLE}
 													className="tw-text-sm"
+													disabled={isUILocked}
 													onClick={handleCompleteRoutineClick}
 												>
 													<Icon icon={Icon.icon.CHECK} />
@@ -376,6 +382,7 @@ function useController() {
 	const [routinesHistory, setRoutinesHistory] = React.useState<
 		{ date: string; routine: T_Routine }[]
 	>([]);
+	const [isUILocked, setIsUILocked] = React.useState(false);
 
 	// utils
 	const timeToSeconds = React.useCallback(function timeToSeconds(time?: string): number {
@@ -893,9 +900,11 @@ function useController() {
 		currentRoutineItemIndex,
 		timerStatus,
 		routinesHistory,
+		isUILocked,
 
 		// states setters
 		setTimerStatus,
+		setIsUILocked,
 
 		// handlers
 		handleInitRoutineClick,
