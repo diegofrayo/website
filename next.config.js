@@ -36,6 +36,12 @@ module.exports = withMDX()(
 					permanent: true,
 					locale: false,
 				},
+				{
+					source: "/blog/viajesito-por-colombia",
+					destination: "/blog/a-trip-around-colombia",
+					permanent: true,
+					locale: false,
+				},
 			];
 		},
 	}),

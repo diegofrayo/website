@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { useTheme } from "next-themes";
+import classNames from "classnames";
 
 import { Page } from "~/components/layout";
 import { Block, Button, Icon, InlineText, Space, Text, Title } from "~/components/primitive";
@@ -15,7 +16,7 @@ import { ENV_VARS } from "~/constants";
 import { delay } from "~/utils/misc";
 import { sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
-import { isNotEquals } from "~/utils/validations";
+import { isNotEquals, isNotTrue } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
 import { ROUTINE_ITEMS_STATUS, ROUTINE_STATUS, TIMER_STATUS } from "./constants";
@@ -126,11 +127,18 @@ function TimerPage(): T_ReactElement {
 								updateRoutineItem,
 							}}
 						>
-							<Block className="tw-relative tw-mx-auto tw-min-h-screen tw-max-w-sm tw-pt-8 tw-shadow-md tw-shadow-gray-600 dfr-bg-color-wb">
-								<GoBack
-									className="tw-absolute tw-top-0"
-									withConfirmation
-								/>
+							<Block
+								className={classNames(
+									"tw-relative tw-mx-auto tw-min-h-screen tw-max-w-sm tw-shadow-md tw-shadow-gray-600 dfr-bg-color-wb",
+									isNotTrue(isUILocked) && "tw-pt-8",
+								)}
+							>
+								{isNotTrue(isUILocked) ? (
+									<GoBack
+										className="tw-absolute tw-top-0"
+										withConfirmation
+									/>
+								) : null}
 
 								{currentRoutine.status === ROUTINE_STATUS.IN_PROGRESS ? (
 									<React.Fragment>
