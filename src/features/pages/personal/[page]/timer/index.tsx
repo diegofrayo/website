@@ -484,6 +484,7 @@ function useController() {
 					: ROUTINE_ITEMS_STATUS.COMPLETED,
 		});
 		setCurrentRoutine(routineUpdated);
+		setIsUILocked(false);
 
 		if (
 			routineItemStatus === ROUTINE_ITEMS_STATUS.IN_PROGRESS &&

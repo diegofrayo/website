@@ -444,7 +444,7 @@ function WhastAppButton({
 	function composeWhatsAppUrl(): string {
 		const url = new URLSearchParams();
 		url.append("phone", phone.replace(" ", "").trim());
-		url.append("text", "Hey!");
+		url.append("text", "Hola");
 
 		return `https://${whatsAppOption}.whatsapp.com/send?${url.toString()}`;
 	}

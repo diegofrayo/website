@@ -1,3 +1,5 @@
+/** @type {import('tailwindcss').Config} */
+
 const dfrUtilitiesPlugin = require("./scripts/styles/tailwind");
 
 module.exports = {

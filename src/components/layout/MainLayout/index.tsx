@@ -53,7 +53,7 @@ function MainLayout({
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={parentUrl}
-									className="tw-mb-4 tw-block tw-underline dfr-text-color-bw"
+									className="tw-mb-4 tw-inline-block tw-underline dfr-text-color-bw"
 								>
 									{parentUrl}
 								</Link>
