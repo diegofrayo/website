@@ -36,7 +36,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 		>
 			<Block
 				is="main"
-				className="tw-relative tw-mx-auto tw-px-8 tw-py-16 dfr-max-w-layout dfr-shadow print:tw-w-full print:tw-border-0"
+				className="tw-relative tw-mx-auto tw-px-8 tw-py-16 dfr-max-w-layout dfr-shadow print:tw-w-full print:tw-border-0 print:tw-shadow-none"
 			>
 				<GoBack className="tw-absolute tw-top-0 print:tw-hidden" />
 				<PrintBlock>
@@ -206,7 +206,7 @@ function ResumeBlock({ title, children }: T_ResumeBlockProps): T_ReactElement {
 	return (
 		<Block
 			is="section"
-			className="tw-mt-16 tw-pt-16 print:tw-mt-0 print:tw-mb-16 print:tw-pt-0"
+			className="tw-mt-16 tw-pt-16 print:tw-mb-16 print:tw-mt-0 print:tw-pt-0"
 		>
 			<Title
 				is="h2"
@@ -283,7 +283,7 @@ function ExperienceTimelineItem({
 				)}
 
 				<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
-					<InlineText>{startDate}</InlineText> /<InlineText>{endDate}</InlineText>
+					<InlineText>{startDate}</InlineText> / <InlineText>{endDate}</InlineText>
 				</Text>
 				<Space size={2} />
 

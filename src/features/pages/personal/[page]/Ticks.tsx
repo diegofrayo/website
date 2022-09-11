@@ -322,8 +322,8 @@ function Ticks(): T_ReactElement {
 								min="1000"
 								max="5000"
 								step="250"
-								required
 								onChange={onInputChangeHandler(setIntensityInputValue)}
+								required
 							/>
 						</Block>
 						<Space size={2} />
