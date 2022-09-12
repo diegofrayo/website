@@ -64,14 +64,23 @@ export function redirect(path: string): void {
 }
 
 export function initPWARoutingConfig(router: NextRouter): () => void {
+	const lastPageVisited = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+
 	if (isNotTrue(window.navigator.onLine)) {
 		return () => undefined;
 	}
 
-	const lastPageVisited = window.localStorage.getItem(LOCAL_STORAGE_KEY);
 	if (isNotEmptyString(lastPageVisited) && isNotEquals(lastPageVisited, window.location.pathname)) {
 		window.localStorage.removeItem(LOCAL_STORAGE_KEY);
-		window.location.href = lastPageVisited;
+
+		const BLACKLIST = ["/lgy/"];
+		const isCurrentPageInBlacklist =
+			BLACKLIST.find((item) => window.location.pathname.includes(item)) !== undefined;
+
+		if (isNotTrue(isCurrentPageInBlacklist)) {
+			window.location.href = lastPageVisited;
+		}
+
 		return () => undefined;
 	}
 

@@ -1,10 +1,20 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 import { ENV_VARS } from "~/constants";
 import { readDevToolsConfig } from "~/features/development-tools";
 import { isBrowser, isLocalhostEnvironment } from "~/utils/app";
+import { showToast } from "~/utils/browser";
+import { isNotEmptyString } from "~/utils/validations";
 
 axios.interceptors.request.use((config) => {
+	if (
+		isLocalhostEnvironment() &&
+		isBrowser() &&
+		readDevToolsConfig().httpRequestsHaveToFail === true
+	) {
+		throw new Error("httpRequestsHaveToFail is enabled");
+	}
+
 	return {
 		...config,
 		headers: {
@@ -15,24 +25,44 @@ axios.interceptors.request.use((config) => {
 	};
 });
 
-axios.interceptors.request.use(
-	(config) => {
-		if (
-			isLocalhostEnvironment() &&
-			isBrowser() &&
-			readDevToolsConfig().httpRequestsHaveToFail === true
-		) {
-			throw new Error("httpRequestsHaveToFail is enabled");
+axios.interceptors.response.use(
+	function AxiosSuccessResponseInterceptor(response) {
+		if (isBrowser()) {
+			const cacheKey = getCacheKey(response);
+
+			if (isNotEmptyString(cacheKey)) {
+				window.localStorage.setItem(cacheKey, JSON.stringify(response.data));
+			}
 		}
 
-		return config;
+		return response;
 	},
-	(error) => {
+	function AxiosFailureResponseInterceptor(error) {
+		if (isBrowser()) {
+			const cacheKey = getCacheKey(error.response);
+			const cachedData = window.localStorage.getItem(cacheKey);
+
+			if (isNotEmptyString(cachedData)) {
+				showToast({
+					type: "ALERT",
+					message: "Data loaded from cache",
+				});
+
+				return Promise.resolve({ data: JSON.parse(cachedData) });
+			}
+		}
+
 		return Promise.reject(error);
 	},
 );
 
 export default axios;
+
+// --- Utils ---
+
+function getCacheKey(response: AxiosResponse): string {
+	return response?.config?.headers["dfr-local-cache"] || "";
+}
 
 /*
 import axios from "axios";
