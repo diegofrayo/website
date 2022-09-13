@@ -26,17 +26,6 @@ export function isServer(): boolean {
 	return !isBrowser();
 }
 
-export function reportError(error: unknown): void {
-	logger("ERROR", error);
-}
-
 export function logger(type: "LOG" | "WARN" | "ERROR", ...args: unknown[]): void {
 	console[type === "LOG" ? "log" : type === "WARN" ? "warn" : "error"](...args);
-}
-
-export function getErrorMessage(error: unknown): string {
-	if (error instanceof Error) return error.message;
-	if (typeof error === "string") return error;
-
-	return "Unknown error";
 }

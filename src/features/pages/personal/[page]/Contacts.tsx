@@ -145,7 +145,7 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 						return (
 							<Collapsible
 								key={generateSlug(groupName)}
-								title={`❏ ${parsedGroupName} [${countGroupOfContacts(groupData)}]`}
+								title={`${parsedGroupName} [${countGroupOfContacts(groupData)}]`}
 								className="tw-mb-8 last:tw-mb-0"
 								opened={isAllCollapsibleOpened}
 							>
@@ -193,7 +193,7 @@ function ContactsGroup({
 	return (
 		<div className="root tw-mb-8 last:tw-mb-0">
 			<Collapsible
-				title={`❏ ${groupName} [${countGroupOfContacts(contacts)}]`}
+				title={`${groupName} [${countGroupOfContacts(contacts)}]`}
 				opened={collapsibleOpened}
 			>
 				<Block className="tw-flex tw-flex-wrap">

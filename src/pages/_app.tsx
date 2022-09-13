@@ -16,10 +16,12 @@ import { MDXProvider } from "@mdx-js/react";
 import { ProgressBar } from "~/components/layout";
 import { AnalyticsService } from "~/features/analytics";
 import { AuthService } from "~/features/auth";
-import { I18nService } from "~/features/i18n";
+import { addErrorsGlobalListener } from "~/features/errors-logging";
+import { I18nService, T_Locale, T_PageContent } from "~/features/i18n";
 import { MetadataService } from "~/features/metadata";
 import { useDidMount } from "~/hooks";
 import { createPreloadedState, useStore } from "~/stores";
+import { T_Metadata } from "~/stores/modules/metadata";
 import { logger } from "~/utils/app";
 import { isMobileDevice, isPWA } from "~/utils/browser";
 import { MDXComponents, updateMDXScope } from "~/features/mdx";
@@ -38,7 +40,14 @@ const queryClient = new QueryClient({
 	},
 });
 
-function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
+function CustomApp({
+	Component,
+	pageProps,
+}: AppProps<{
+	metadata: T_Metadata;
+	pageContent: T_PageContent;
+	locale: T_Locale;
+}>): T_ReactElement {
 	// hooks
 	const router = useRouter();
 	const store = useStore(
@@ -53,6 +62,7 @@ function CustomApp({ Component, pageProps }: AppProps): T_ReactElement {
 	useDidMount(() => {
 		AnalyticsService.init();
 		AuthService.configureHTTPHeaders();
+		addErrorsGlobalListener();
 
 		if (isPWA()) {
 			return initPWARoutingConfig(router);

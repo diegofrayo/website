@@ -1,9 +1,11 @@
 import * as React from "react";
 
-import { Pre } from "~/components/primitive";
-import { AuthService } from "~/features/auth";
-import { useDidMount } from "~/hooks";
+import { Block, Pre, Space } from "~/components/primitive";
+import { ENV_VARS } from "~/constants";
 import { AnalyticsService } from "~/features/analytics";
+import { AuthService } from "~/features/auth";
+import { getErrorsLogsHistory } from "~/features/errors-logging";
+import { useDidMount } from "~/hooks";
 import { isBrowser, isDevelopmentEnvironment, isLocalhostEnvironment, isServer } from "~/utils/app";
 import {
 	getAndroidVersion,
@@ -14,17 +16,19 @@ import {
 	isSmallScreen,
 	is_iOS_AndMobileDevice,
 } from "~/utils/browser";
-import { ENV_VARS } from "~/constants";
 import type { T_ReactElement } from "~/types";
 
 function Debugging(): T_ReactElement {
 	// states & refs
-	const [content, setContent] = React.useState("");
+	const [content, setContent] = React.useState<{ vars: string; errors: string[] }>({
+		vars: "",
+		errors: [],
+	});
 
 	// effects
 	useDidMount(() => {
-		setContent(
-			JSON.stringify(
+		setContent({
+			vars: JSON.stringify(
 				{
 					browser: {
 						isAndroid: isAndroid(),
@@ -55,10 +59,17 @@ function Debugging(): T_ReactElement {
 				undefined,
 				2,
 			),
-		);
+			errors: getErrorsLogsHistory(),
+		});
 	});
 
-	return <Pre variant={Pre.variant.STYLED}>{content}</Pre>;
+	return (
+		<Block>
+			<Pre variant={Pre.variant.STYLED}>{content.vars}</Pre>
+			<Space size={3} />
+			<Pre variant={Pre.variant.STYLED}>{content.errors.join("\n\n--- /// ---\n\n")}</Pre>
+		</Block>
+	);
 }
 
 export default Debugging;

@@ -3,9 +3,9 @@ import * as React from "react";
 import { Page } from "~/components/layout";
 import { Input } from "~/components/primitive";
 import { AuthService, withAuthPage } from "~/features/auth";
+import { getErrorMessage, logAndReportError } from "~/features/errors-logging";
 import { getPageContentStaticProps } from "~/features/i18n";
 import { redirect, ROUTES } from "~/features/routing";
-import { getErrorMessage, reportError } from "~/utils/app";
 import { showToast } from "~/utils/browser";
 import { isEmptyString } from "~/utils/validations";
 import type {
@@ -96,7 +96,7 @@ function useController(): T_UseControllerReturn {
 			await AuthService.signIn({ password: inputValue });
 			redirect(ROUTES.HOME);
 		} catch (error) {
-			reportError(error);
+			logAndReportError(error);
 			showToast({
 				type: "ERROR",
 				message:

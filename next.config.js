@@ -1,13 +1,14 @@
+/** @type {import('next').NextConfig} */
+
 const withMDX = require("@next/mdx");
-const withPWA = require("next-pwa");
+const withPWA = require("next-pwa")({
+	dest: "public",
+	scope: "/",
+	disable: process.env.DISABLE_PWA === "true",
+});
 
 module.exports = withMDX()(
 	withPWA({
-		pwa: {
-			dest: "public",
-			scope: "/",
-			disable: process.env.DISABLE_PWA === "true",
-		},
 		eslint: {
 			ignoreDuringBuilds: true,
 		},

@@ -1,10 +1,10 @@
 import * as React from "react";
 
 import { Input, Block, Button, Icon, Link } from "~/components/primitive";
-import http from "~/lib/http";
-import { getErrorMessage, reportError } from "~/utils/app";
-import { showAlert } from "~/utils/browser";
 import { ENV_VARS } from "~/constants";
+import { getErrorMessage, logAndReportError } from "~/features/errors-logging";
+import http from "~/lib/http";
+import { showAlert } from "~/utils/browser";
 import type {
 	T_ReactElement,
 	T_ReactOnChangeEventHandler,
@@ -76,7 +76,7 @@ function useController(): T_UseControllerReturn {
 				await http.post("/api/diegofrayo", { path, secret: ENV_VARS.NEXT_PUBLIC_ISR_TOKEN });
 				showAlert("Success");
 			} catch (error) {
-				reportError(error);
+				logAndReportError(error);
 				showAlert(getErrorMessage(error));
 			}
 		};

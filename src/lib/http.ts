@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 
 import { ENV_VARS } from "~/constants";
 import { readDevToolsConfig } from "~/features/development-tools";
+import { logAndReportError } from "~/features/errors-logging";
 import { isBrowser, isLocalhostEnvironment } from "~/utils/app";
 import { showToast } from "~/utils/browser";
 import { isNotEmptyString } from "~/utils/validations";
@@ -38,6 +39,8 @@ axios.interceptors.response.use(
 		return response;
 	},
 	function AxiosFailureResponseInterceptor(error) {
+		logAndReportError(error, "AxiosFailureResponseInterceptor");
+
 		if (isBrowser()) {
 			const cacheKey = getCacheKey(error.response);
 			const cachedData = window.localStorage.getItem(cacheKey);

@@ -1,9 +1,10 @@
 import { toast } from "react-toastify";
 
+import { getErrorMessage, logAndReportError } from "~/features/errors-logging";
 import { I18nService } from "~/features/i18n";
 import type { T_ReactOnClickEventObject, T_SetTimeout } from "~/types";
 
-import { getErrorMessage, logger, reportError } from "./app";
+import { logger } from "./app";
 import { isEmptyString, isString, isUndefined } from "./validations";
 
 export function showToast({
@@ -213,7 +214,7 @@ export async function copyToClipboard(
 			message: I18nService.getInstance().t("common:copy_to_clipboard"),
 		});
 	} catch (error) {
-		reportError(error);
+		logAndReportError(error);
 		showToast({ type: "SUCCESS", message: "Error" });
 	}
 }

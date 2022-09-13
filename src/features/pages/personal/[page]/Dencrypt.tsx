@@ -2,16 +2,16 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Space, Button, Input, Block, Text } from "~/components/primitive";
+import { logAndReportError } from "~/features/errors-logging";
 import { useDidMount } from "~/hooks";
-import { reportError } from "~/utils/app";
-import { decrypt, encrypt } from "~/utils/dencrypt";
-import { isEmptyString, isNotEmptyString, isNull } from "~/utils/validations";
 import {
 	focusElement,
 	focusInputAndSelectText,
 	handleCopyToClipboardClick,
 	isSmallScreen,
 } from "~/utils/browser";
+import { decrypt, encrypt } from "~/utils/dencrypt";
+import { isEmptyString, isNotEmptyString, isNull } from "~/utils/validations";
 import type {
 	T_ReactElement,
 	T_ReactOnClickEventHandler,
@@ -142,7 +142,7 @@ function useController(): T_UseControllerReturn {
 			const encryptedText = await encrypt(text);
 			setOutput(encryptedText);
 		} catch (error) {
-			reportError(error);
+			logAndReportError(error);
 			setOutput("Error, el texto no pudo ser encriptado");
 		}
 	}
@@ -152,7 +152,7 @@ function useController(): T_UseControllerReturn {
 			const decryptedText = await decrypt(text);
 			setOutput(decryptedText);
 		} catch (error) {
-			reportError(error);
+			logAndReportError(error);
 			setOutput("Error, el texto no pudo ser desencriptado");
 		}
 	}
