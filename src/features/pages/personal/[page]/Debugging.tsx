@@ -1,12 +1,13 @@
 import * as React from "react";
 
-import { Block, Pre, Space } from "~/components/primitive";
+import { Block, Button, Pre, Space } from "~/components/primitive";
 import { ENV_VARS } from "~/constants";
 import { AnalyticsService } from "~/features/analytics";
 import { AuthService } from "~/features/auth";
-import { getErrorsLogsHistory } from "~/features/errors-logging";
+import { clearLogsHistory, getLogsHistory } from "~/features/logging";
 import { useDidMount } from "~/hooks";
 import { isBrowser, isDevelopmentEnvironment, isLocalhostEnvironment, isServer } from "~/utils/app";
+import { isNotEmptyArray } from "~/utils/validations";
 import {
 	getAndroidVersion,
 	getScreenSize,
@@ -20,9 +21,9 @@ import type { T_ReactElement } from "~/types";
 
 function Debugging(): T_ReactElement {
 	// states & refs
-	const [content, setContent] = React.useState<{ vars: string; errors: string[] }>({
+	const [content, setContent] = React.useState<{ vars: string; logs: string[] }>({
 		vars: "",
-		errors: [],
+		logs: [],
 	});
 
 	// effects
@@ -59,15 +60,33 @@ function Debugging(): T_ReactElement {
 				undefined,
 				2,
 			),
-			errors: getErrorsLogsHistory(),
+			logs: getLogsHistory(),
 		});
 	});
+
+	// handlers
+	function handleClearLogsClick(): void {
+		clearLogsHistory();
+		window.location.reload();
+	}
 
 	return (
 		<Block>
 			<Pre variant={Pre.variant.STYLED}>{content.vars}</Pre>
-			<Space size={3} />
-			<Pre variant={Pre.variant.STYLED}>{content.errors.join("\n\n--- /// ---\n\n")}</Pre>
+			{isNotEmptyArray(content.logs) ? (
+				<React.Fragment>
+					<Space size={3} />
+					<Pre variant={Pre.variant.STYLED}>{content.logs.join("\n\n--- /// ---\n\n")}</Pre>
+					<Space size={0.5} />
+					<Button
+						variant={Button.variant.DEFAULT}
+						className="tw-ml-auto tw-block"
+						onClick={handleClearLogsClick}
+					>
+						clear logs
+					</Button>
+				</React.Fragment>
+			) : null}
 		</Block>
 	);
 }

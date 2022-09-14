@@ -2,9 +2,10 @@ import * as React from "react";
 
 import { Input, Block, Button, Icon, Link } from "~/components/primitive";
 import { ENV_VARS } from "~/constants";
-import { getErrorMessage, logAndReportError } from "~/features/errors-logging";
+import { logAndReportError } from "~/features/logging";
 import http from "~/lib/http";
 import { showAlert } from "~/utils/browser";
+import { getErrorMessage } from "~/utils/misc";
 import type {
 	T_ReactElement,
 	T_ReactOnChangeEventHandler,

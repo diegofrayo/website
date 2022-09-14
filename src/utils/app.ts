@@ -25,7 +25,3 @@ export function isBrowser(): boolean {
 export function isServer(): boolean {
 	return !isBrowser();
 }
-
-export function logger(type: "LOG" | "WARN" | "ERROR", ...args: unknown[]): void {
-	console[type === "LOG" ? "log" : type === "WARN" ? "warn" : "error"](...args);
-}

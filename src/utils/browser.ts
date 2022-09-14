@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
 
-import { getErrorMessage, logAndReportError } from "~/features/errors-logging";
+import { logAndReportError, logger } from "~/features/logging";
 import { I18nService } from "~/features/i18n";
 import type { T_ReactOnClickEventObject, T_SetTimeout } from "~/types";
 
-import { logger } from "./app";
+import { getErrorMessage } from "./misc";
 import { isEmptyString, isString, isUndefined } from "./validations";
 
 export function showToast({

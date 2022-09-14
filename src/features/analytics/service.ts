@@ -2,7 +2,8 @@ import autoBind from "auto-bind";
 import splitbee from "@splitbee/web";
 
 import { AuthService } from "~/features/auth";
-import { isLocalhostEnvironment, logger } from "~/utils/app";
+import { logger } from "~/features/logging";
+import { isLocalhostEnvironment } from "~/utils/app";
 import { isNotEmptyString, isTrue } from "~/utils/validations";
 import type { T_Object } from "~/types";
 

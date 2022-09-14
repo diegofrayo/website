@@ -3,10 +3,11 @@ import * as React from "react";
 import { Page } from "~/components/layout";
 import { Input } from "~/components/primitive";
 import { AuthService, withAuthPage } from "~/features/auth";
-import { getErrorMessage, logAndReportError } from "~/features/errors-logging";
+import { logAndReportError } from "~/features/logging";
 import { getPageContentStaticProps } from "~/features/i18n";
 import { redirect, ROUTES } from "~/features/routing";
 import { showToast } from "~/utils/browser";
+import { getErrorMessage } from "~/utils/misc";
 import { isEmptyString } from "~/utils/validations";
 import type {
 	T_ReactElement,

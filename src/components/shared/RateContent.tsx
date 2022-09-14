@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { Button, Block, Text, Space } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { AnalyticsService } from "~/features/analytics";
-import { logAndReportError } from "~/features/errors-logging";
+import { logAndReportError } from "~/features/logging";
 import { T_TranslationFunction, useTranslation } from "~/features/i18n";
 import { showToast } from "~/utils/browser";
 import { isEmptyString, isNotEmptyString } from "~/utils/validations";

@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { Block, Text, InlineText } from "~/components/primitive";
-import { getErrorMessage } from "~/features/errors-logging";
+import { getErrorMessage } from "~/utils/misc";
 import { isUndefined } from "~/utils/validations";
 import type { T_ReactElementNullable } from "~/types";
 
@@ -28,7 +28,7 @@ function Render<G_Data>({
 				<Emoji className="tw-mr-2">😵</Emoji>
 				<InlineText>{getErrorMessage(error)}</InlineText>
 				<ProtectedComponent>
-					<Block className="tw-my-1">{isLoading}</Block>
+					<Block className="tw-my-1">{isLoading === true ? "true" : "false"}</Block>
 					<Block className="tw-my-1">{typeof error}</Block>
 					<Block className="tw-my-1">{error ? JSON.stringify(error) : "no error"}</Block>
 					<Block className="tw-my-1">{typeof data}</Block>
@@ -43,7 +43,7 @@ function Render<G_Data>({
 			<Block className="tw-p-2 tw-text-center">
 				<Loader />
 				<ProtectedComponent>
-					<Block className="tw-my-1">{isLoading}</Block>
+					<Block className="tw-my-1">{isLoading === true ? "true" : "false"}</Block>
 					<Block className="tw-my-1">{typeof error}</Block>
 					<Block className="tw-my-1">{error ? JSON.stringify(error) : "no error"}</Block>
 					<Block className="tw-my-1">{typeof data}</Block>

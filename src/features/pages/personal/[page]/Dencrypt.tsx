@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Space, Button, Input, Block, Text } from "~/components/primitive";
-import { logAndReportError } from "~/features/errors-logging";
+import { logAndReportError } from "~/features/logging";
 import { useDidMount } from "~/hooks";
 import {
 	focusElement,

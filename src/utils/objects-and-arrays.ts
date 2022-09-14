@@ -1,6 +1,6 @@
+import { logger } from "~/features/logging";
 import type { T_UnknownObject, T_Primitive } from "~/types";
 
-import { logger } from "./app";
 import { or } from "./fp";
 import { between } from "./numbers";
 import {

@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { logger } from "~/utils/app";
+import { logger } from "~/features/logging";
 import { mirror } from "~/utils/objects-and-arrays";
 import { isNotEmptyString, isNumber, isString, isUndefined } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElement, T_ReactElementNullable } from "~/types";

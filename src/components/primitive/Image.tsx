@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { logger } from "~/utils/app";
+import { logger } from "~/features/logging";
 import { isFalsy } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElementNullable } from "~/types";
 

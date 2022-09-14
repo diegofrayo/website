@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 import { Block, Button, Icon, Link, List, Text, Space } from "~/components/primitive";
 import { AuthService, withAuthComponent } from "~/features/auth";
-import { getErrorMessage, logAndReportError } from "~/features/errors-logging";
+import { logAndReportError } from "~/features/logging";
 import { I18nService, useTranslation } from "~/features/i18n";
 import { renderIf } from "~/hocs";
 import { useClickOutside, useDidMount, useEnhancedState } from "~/hooks";
@@ -16,6 +16,7 @@ import { isDevelopmentEnvironment } from "~/utils/app";
 import { deletePWACache, isPWA, showAlert } from "~/utils/browser";
 import { ENV_VARS } from "~/constants";
 import { ROUTES, T_RoutesValues } from "~/features/routing";
+import { getErrorMessage } from "~/utils/misc";
 import { generateSlug } from "~/utils/strings";
 import { isNotTrue, isNotEquals } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement } from "~/types";

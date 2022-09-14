@@ -4,7 +4,7 @@ import NextLink from "next/link";
 
 import twcss from "~/lib/twcss";
 import { T_Locale } from "~/features/i18n";
-import { logger } from "~/utils/app";
+import { logger } from "~/features/logging";
 import { mirror } from "~/utils/objects-and-arrays";
 import type { T_HTMLElementAttributes, T_ReactElementNullable } from "~/types";
 
