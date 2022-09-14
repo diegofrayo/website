@@ -30,7 +30,7 @@ function Render<G_Data>({
 				<ProtectedComponent>
 					<Block className="tw-my-1">{isLoading}</Block>
 					<Block className="tw-my-1">{typeof error}</Block>
-					<Block className="tw-my-1">{error}</Block>
+					<Block className="tw-my-1">{error ? JSON.stringify(error) : "no error"}</Block>
 					<Block className="tw-my-1">{typeof data}</Block>
 					<Block className="tw-my-1">{data ? JSON.stringify(data) : "no data"}</Block>
 				</ProtectedComponent>
@@ -45,7 +45,7 @@ function Render<G_Data>({
 				<ProtectedComponent>
 					<Block className="tw-my-1">{isLoading}</Block>
 					<Block className="tw-my-1">{typeof error}</Block>
-					<Block className="tw-my-1">{error}</Block>
+					<Block className="tw-my-1">{error ? JSON.stringify(error) : "no error"}</Block>
 					<Block className="tw-my-1">{typeof data}</Block>
 					<Block className="tw-my-1">{data ? JSON.stringify(data) : "no data"}</Block>
 				</ProtectedComponent>
