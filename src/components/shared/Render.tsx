@@ -2,11 +2,12 @@ import * as React from "react";
 
 import { Block, Text, InlineText } from "~/components/primitive";
 import { getErrorMessage } from "~/features/errors-logging";
-import { isFalsy, isUndefined } from "~/utils/validations";
+import { isUndefined } from "~/utils/validations";
 import type { T_ReactElementNullable } from "~/types";
 
 import Emoji from "./Emoji";
 import Loader from "./Loader";
+import { useDidMount } from "~/hooks";
 
 type T_RenderProps<G_Data> = {
 	isLoading: boolean;
@@ -21,13 +22,12 @@ function Render<G_Data>({
 	data,
 	children,
 }: T_RenderProps<G_Data>): T_ReactElementNullable {
-	if (isLoading && isFalsy(error)) {
-		return (
-			<Block className="tw-p-2 tw-text-center">
-				<Loader />
-			</Block>
-		);
-	}
+	useDidMount(() => {
+		alert(isLoading); // @ts-ignore
+		alert(error ? error.message : "error");
+		alert(typeof data);
+		alert(typeof error);
+	});
 
 	if (error) {
 		return (
@@ -35,6 +35,14 @@ function Render<G_Data>({
 				<Emoji className="tw-mr-2">😵</Emoji>
 				<InlineText>{getErrorMessage(error)}</InlineText>
 			</Text>
+		);
+	}
+
+	if (isLoading) {
+		return (
+			<Block className="tw-p-2 tw-text-center">
+				<Loader />
+			</Block>
 		);
 	}
 
