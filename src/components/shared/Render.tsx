@@ -7,7 +7,6 @@ import type { T_ReactElementNullable } from "~/types";
 
 import Emoji from "./Emoji";
 import Loader from "./Loader";
-import ProtectedComponent from "./ProtectedComponent";
 
 type T_RenderProps<G_Data> = {
 	isLoading: boolean;
@@ -22,34 +21,20 @@ function Render<G_Data>({
 	data,
 	children,
 }: T_RenderProps<G_Data>): T_ReactElementNullable {
+	if (isLoading) {
+		return (
+			<Block className="tw-p-2 tw-text-center">
+				<Loader />
+			</Block>
+		);
+	}
+
 	if (error) {
 		return (
 			<Text className="tw-p-2 tw-text-center tw-text-sm tw-text-red-600">
 				<Emoji className="tw-mr-2">😵</Emoji>
 				<InlineText>{getErrorMessage(error)}</InlineText>
-				<ProtectedComponent>
-					<Block className="tw-my-1">{isLoading === true ? "true" : "false"}</Block>
-					<Block className="tw-my-1">{typeof error}</Block>
-					<Block className="tw-my-1">{error ? JSON.stringify(error) : "no error"}</Block>
-					<Block className="tw-my-1">{typeof data}</Block>
-					<Block className="tw-my-1">{data ? JSON.stringify(data) : "no data"}</Block>
-				</ProtectedComponent>
 			</Text>
-		);
-	}
-
-	if (isLoading) {
-		return (
-			<Block className="tw-p-2 tw-text-center">
-				<Loader />
-				<ProtectedComponent>
-					<Block className="tw-my-1">{isLoading === true ? "true" : "false"}</Block>
-					<Block className="tw-my-1">{typeof error}</Block>
-					<Block className="tw-my-1">{error ? JSON.stringify(error) : "no error"}</Block>
-					<Block className="tw-my-1">{typeof data}</Block>
-					<Block className="tw-my-1">{data ? JSON.stringify(data) : "no data"}</Block>
-				</ProtectedComponent>
-			</Block>
 		);
 	}
 

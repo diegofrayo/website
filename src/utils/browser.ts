@@ -215,7 +215,7 @@ export async function copyToClipboard(
 		});
 	} catch (error) {
 		logAndReportError(error);
-		showToast({ type: "SUCCESS", message: "Error" });
+		showToast({ type: "ERROR", message: "Error" });
 	}
 }
 

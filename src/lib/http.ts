@@ -45,7 +45,10 @@ axios.interceptors.response.use(
 			const cacheKey = getCacheKey(error.response);
 			const cachedData = window.localStorage.getItem(cacheKey);
 
+			logForDebugging(error, "AxiosFailureResponseInterceptor => error");
+			logForDebugging(error.config, "AxiosFailureResponseInterceptor => error.config");
 			logForDebugging(error.response, "AxiosFailureResponseInterceptor => error.response");
+			logForDebugging(error.request, "AxiosFailureResponseInterceptor => error.request");
 			logForDebugging(cacheKey, "AxiosFailureResponseInterceptor => cacheKey");
 			logForDebugging(cachedData, "AxiosFailureResponseInterceptor => cachedData");
 
