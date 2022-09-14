@@ -1,6 +1,5 @@
 import { useQuery as useReactQuery } from "react-query";
 
-import { logAndReportError } from "~/features/errors-logging";
 import { delay } from "~/utils/misc";
 import type { T_UnknownObject } from "~/types";
 
@@ -12,13 +11,8 @@ function useQuery<G_Data>(
 	const { isLoading, error, data } = useReactQuery<G_Data>(
 		key,
 		async () => {
-			try {
-				await delay(500);
-				return await handler();
-			} catch (e) {
-				logAndReportError(e, "useQuery");
-				throw error;
-			}
+			await delay(500);
+			return handler();
 		},
 		options,
 	);
