@@ -42,15 +42,15 @@ axios.interceptors.response.use(
 		logAndReportError(error, "AxiosFailureResponseInterceptor");
 
 		if (isBrowser()) {
-			const cacheKey = getCacheKey(error.response);
+			const cacheKey = getCacheKey(error.response || { config: error.config });
 			const cachedData = window.localStorage.getItem(cacheKey);
 
-			logForDebugging(error, "AxiosFailureResponseInterceptor => error");
-			logForDebugging(error.config, "AxiosFailureResponseInterceptor => error.config");
-			logForDebugging(error.response, "AxiosFailureResponseInterceptor => error.response");
-			logForDebugging(error.request, "AxiosFailureResponseInterceptor => error.request");
-			logForDebugging(cacheKey, "AxiosFailureResponseInterceptor => cacheKey");
-			logForDebugging(cachedData, "AxiosFailureResponseInterceptor => cachedData");
+			logForDebugging(error, "AxiosFailureResponseInterceptor (error)");
+			logForDebugging(error.config, "AxiosFailureResponseInterceptor (error.config)");
+			logForDebugging(error.response, "AxiosFailureResponseInterceptor (error.response)");
+			logForDebugging(error.request, "AxiosFailureResponseInterceptor (error.request)");
+			logForDebugging(cacheKey, "AxiosFailureResponseInterceptor (cacheKey)");
+			logForDebugging(cachedData, "AxiosFailureResponseInterceptor (cachedData)");
 
 			if (isNotEmptyString(cachedData)) {
 				showToast({
