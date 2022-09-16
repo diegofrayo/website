@@ -1,32 +1,30 @@
-// @ts-nocheck
-
-import { isLocalhostEnvironment } from "~/utils/app";
 import {
 	createArray,
 	transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
 import { replaceAll } from "~/utils/strings";
+import Chord from "./chord";
 
 import CHORDS from "./data/chords.json";
 import {
 	I_BarreMusicNote,
 	I_SimpleMusicNote,
-	T_Chord,
 	T_GroupedMusicNotesByGuitarFret,
+	T_GuitarChord,
 	T_GuitarFret,
 	T_MusicNote,
 	T_ParsedChord,
 } from "./types";
 import {
-	parseFret,
 	checkBarreChordValidity,
 	checkFingerValidity,
+	checkGuitarFretValidity,
 	checkGuitarStringValidity,
 	isBarreChord,
 	parseBarre,
 	parseFinger,
+	parseFret,
 	parseGuitarString,
-	checkGuitarFretValidity,
 } from "./utils";
 
 class GuitarService {
@@ -36,35 +34,7 @@ class GuitarService {
 				musicNotes === ""
 					? []
 					: typeof musicNotes === "string"
-					? musicNotes.split("|").map((musicNote: string): T_MusicNote => {
-							const [guitarString, guitarFret, finger, ...more] = musicNote.split(",");
-
-							if (!musicNote) {
-								throw new Error(
-									"You have entered a empty music note, probably you entered a '|' character at the end",
-								);
-							}
-
-							if (more.length > 0) {
-								throw new Error(
-									"A music note only can have 3 elements (guitarString,guitarFret,finger?) as maximum",
-								);
-							}
-
-							const parsedMusicNote: Partial<T_MusicNote> = {
-								guitarFret: parseFret(guitarFret),
-							};
-
-							if (isBarreChord(guitarString)) {
-								(parsedMusicNote as I_BarreMusicNote).barre = parseBarre(guitarString);
-							} else {
-								(parsedMusicNote as I_SimpleMusicNote).guitarString =
-									parseGuitarString(guitarString);
-								(parsedMusicNote as I_SimpleMusicNote).finger = parseFinger(finger);
-							}
-
-							return parsedMusicNote as T_MusicNote;
-					  })
+					? new Chord(musicNotes).musicNotes
 					: musicNotes;
 
 			const musicNotesFrets: T_GuitarFret[] = parsedMusicNotes
@@ -73,10 +43,6 @@ class GuitarService {
 					return musicNote.guitarFret;
 				})
 				.sort((a, b) => a - b);
-
-			if (musicNotesFrets.length === 0) {
-				throw new Error("A chord must have at least one music note");
-			}
 
 			const groupedMusicNotesByGuitarFret = parsedMusicNotes.reduce(
 				(
@@ -193,7 +159,7 @@ class GuitarService {
 		return parsedContent;
 	}
 
-	findChord(chordName: string, chordIndex?: number): T_Chord | undefined {
+	findChord(chordName: string, chordIndex?: number): T_GuitarChord | undefined {
 		const chord = CHORDS[chordName];
 
 		if (!chord) {
@@ -207,7 +173,7 @@ class GuitarService {
 						...chord,
 						name: chordName,
 					});
-				}) as T_Chord;
+				}) as T_GuitarChord;
 			}
 
 			if (!chord[chordIndex]) {
@@ -217,13 +183,13 @@ class GuitarService {
 			return transformObjectKeysFromSnakeCaseToLowerCamelCase({
 				...chord[chordIndex],
 				name: chordName,
-			}) as T_Chord;
+			}) as T_GuitarChord;
 		}
 
 		return transformObjectKeysFromSnakeCaseToLowerCamelCase({
 			...chord,
 			name: chordName,
-		}) as T_Chord;
+		}) as T_GuitarChord;
 	}
 
 	private parseTextLine({

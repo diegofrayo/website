@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 
 import { ENV_VARS } from "~/constants";
 import { readDevToolsConfig } from "~/features/development-tools";
-import { logAndReportError, logForDebugging } from "~/features/logging";
+import { logAndReportError } from "~/features/logging";
 import { isBrowser, isLocalhostEnvironment } from "~/utils/app";
 import { showToast } from "~/utils/browser";
 import { isNotEmptyString } from "~/utils/validations";
@@ -45,28 +45,16 @@ axios.interceptors.response.use(
 			const cacheKey = getCacheKey(error.response || { config: error.config });
 			const cachedData = window.localStorage.getItem(cacheKey);
 
-			logForDebugging(error, "AxiosFailureResponseInterceptor (error)");
-			logForDebugging(error.config, "AxiosFailureResponseInterceptor (error.config)");
-			logForDebugging(error.response, "AxiosFailureResponseInterceptor (error.response)");
-			logForDebugging(error.request, "AxiosFailureResponseInterceptor (error.request)");
-			logForDebugging(cacheKey, "AxiosFailureResponseInterceptor (cacheKey)");
-			logForDebugging(cachedData, "AxiosFailureResponseInterceptor (cachedData)");
-
 			if (isNotEmptyString(cachedData)) {
 				showToast({
 					type: "ALERT",
 					message: "Data loaded from cache",
 				});
 
-				logForDebugging(
-					JSON.parse(cachedData),
-					"AxiosFailureResponseInterceptor => Promise.resolve",
-				);
 				return Promise.resolve({ data: JSON.parse(cachedData) });
 			}
 		}
 
-		logForDebugging(error, "AxiosFailureResponseInterceptor => Promise.reject");
 		return Promise.reject(error);
 	},
 );

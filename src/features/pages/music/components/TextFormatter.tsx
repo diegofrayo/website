@@ -4,7 +4,7 @@ import reactStringReplace from "react-string-replace";
 
 import { Button, Icon, Modal, Space, Block, InlineText, Pre } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import { GuitarChord, GuitarService, T_Chord } from "~/lib/guitar";
+import { GuitarChord, GuitarService, T_GuitarChord } from "~/lib/guitar";
 import { showAlert } from "~/utils/browser";
 import { safeCastNumber } from "~/utils/numbers";
 import { createArray } from "~/utils/objects-and-arrays";
@@ -130,7 +130,7 @@ export default TextFormatter;
 
 type T_UseControllerReturn = {
 	isModalVisible: boolean;
-	selectedChord: T_Chord | undefined;
+	selectedChord: T_GuitarChord | undefined;
 	selectedChordIndex: number;
 
 	handleUpdateSelectedChordVariantClick: (input: number | "+" | "-") => () => void;
@@ -142,7 +142,7 @@ type T_UseControllerReturn = {
 function useController({ children, insertions }: T_TextFormatterProps): T_UseControllerReturn {
 	// states & refs
 	const [isModalVisible, setIsModalVisible] = React.useState(false);
-	const [selectedChord, setSelectedChord] = React.useState<T_Chord | undefined>(undefined);
+	const [selectedChord, setSelectedChord] = React.useState<T_GuitarChord | undefined>(undefined);
 	const [selectedChordIndex, setSelectedChordIndex] = React.useState(0);
 
 	// effects
@@ -181,8 +181,8 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 				const operator = 1 * (value === "+" ? 1 : -1);
 
 				if (selectedChordIndex + operator < 0) {
-					setSelectedChordIndex((selectedChord as T_Chord[]).length - 1);
-				} else if (selectedChordIndex + operator > (selectedChord as T_Chord[]).length - 1) {
+					setSelectedChordIndex((selectedChord as T_GuitarChord[]).length - 1);
+				} else if (selectedChordIndex + operator > (selectedChord as T_GuitarChord[]).length - 1) {
 					setSelectedChordIndex(0);
 				} else {
 					setSelectedChordIndex(selectedChordIndex + operator);

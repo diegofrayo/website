@@ -11,7 +11,7 @@ interface I_MusicNoteBase {
 
 export interface I_SimpleMusicNote extends I_MusicNoteBase {
 	guitarString: T_GuitarString;
-	finger?: T_Finger;
+	finger: T_Finger | undefined;
 }
 
 export interface I_BarreMusicNote extends I_MusicNoteBase {
@@ -29,10 +29,10 @@ export type T_ParsedChord = {
 	groupedMusicNotesByGuitarFret: T_GroupedMusicNotesByGuitarFret;
 };
 
-type T_ChordBase = {
+type T_GuitarChordBase = {
 	name: string;
 	musicNotes: string;
 	playedStrings: string;
 };
 
-export type T_Chord = T_ChordBase | T_ChordBase[];
+export type T_GuitarChord = T_GuitarChordBase | T_GuitarChordBase[];

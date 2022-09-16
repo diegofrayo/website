@@ -340,29 +340,20 @@ function useController() {
 	} = useQuery(
 		"timer",
 		async () => {
-			await delay(1000);
-
-			try {
-				const { data } = await http.post(
-					`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
-					{
-						path: "/timer",
-						method: "GET",
+			const { data } = await http.post(
+				`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
+				{
+					path: "/timer",
+					method: "GET",
+				},
+				{
+					headers: {
+						"dfr-local-cache": LOCAL_STORAGE_KEY,
 					},
-				);
+				},
+			);
 
-				return data;
-			} catch (error) {
-				const routinesTemplates = readRoutineFromLocalStorage().TEMPLATES;
-
-				if (routinesTemplates) {
-					alert("Routines templates loaded from localStorage");
-				} else {
-					throw new Error("Routines templates not found in localStorage neither Firebase");
-				}
-
-				return routinesTemplates;
-			}
+			return data;
 		},
 		{
 			onSuccess: (routinesTemplates: T_RoutinesTemplatesResponse) => {
@@ -391,6 +382,7 @@ function useController() {
 		{ date: string; routine: T_Routine }[]
 	>([]);
 	const [isUILocked, setIsUILocked] = React.useState(false);
+	const LOCAL_STORAGE_KEY = "DFR_TIMER";
 
 	// utils
 	const timeToSeconds = React.useCallback(function timeToSeconds(time?: string): number {
@@ -577,7 +569,7 @@ function useController() {
 			const loadedRoutine = readRoutineFromLocalStorage();
 
 			window.localStorage.setItem(
-				"DFR_TIMER",
+				LOCAL_STORAGE_KEY,
 				JSON.stringify({
 					...loadedRoutine,
 					[key]: data,
@@ -596,7 +588,7 @@ function useController() {
 
 	function readRoutineFromLocalStorage() {
 		try {
-			return JSON.parse((window.localStorage.getItem("DFR_TIMER") || "") as string);
+			return JSON.parse((window.localStorage.getItem(LOCAL_STORAGE_KEY) || "") as string);
 		} catch (error) {
 			console.error(error);
 			return {};
