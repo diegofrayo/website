@@ -76,6 +76,38 @@ export function sortBy(criteria: T_Criteria[]): T_SorterFunction {
 	return sortByReturn;
 }
 
+type T_SortPlainArrayReturn = (a: unknown, b: unknown) => number;
+
+export function sortPlainArray(order: T_Order): T_SortPlainArrayReturn {
+	const sortByReturn: T_SortPlainArrayReturn = function sortByReturn(a, b) {
+		const greater = order === "desc" ? -1 : 1;
+		const smaller = order === "desc" ? 1 : -1;
+		const aParam = a;
+		const bParam = b;
+
+		if (
+			or<string | number | boolean | Date>(aParam, [isString, isNumber, isDate, isBoolean]) &&
+			or<string | number | boolean | Date>(bParam, [isString, isNumber, isDate, isBoolean])
+		) {
+			if (aParam > bParam) {
+				return greater;
+			}
+
+			if (aParam < bParam) {
+				return smaller;
+			}
+
+			return 0;
+		}
+
+		logger("WARN", "Invalid elements types for comparison", a, b);
+
+		return 0;
+	};
+
+	return sortByReturn;
+}
+
 export function getRandomItem<G_ItemType>(array: G_ItemType[]): G_ItemType {
 	return array[between(0, array.length - 1)];
 }

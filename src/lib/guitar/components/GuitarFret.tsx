@@ -12,7 +12,7 @@ import { NUMBER_OF_STRINGS } from "../constants";
 import {
 	T_MusicNote,
 	T_GuitarFret,
-	T_GuitarPlayedStrings,
+	T_ChordTouchedStrings,
 	I_BarreMusicNote,
 	I_SimpleMusicNote,
 } from "../types";
@@ -27,7 +27,7 @@ type T_GuitarFretProps = {
 	variant: T_Variants;
 	number?: T_GuitarFret;
 	musicNotes?: T_MusicNote[];
-	playedStrings?: T_GuitarPlayedStrings;
+	touchedStrings?: T_ChordTouchedStrings;
 };
 
 function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
@@ -35,7 +35,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 		// props
 		musicNotes,
 		number,
-		playedStrings,
+		touchedStrings,
 
 		// utils
 		getSkippedStringValue,
@@ -116,7 +116,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 									</Block>
 								) : isSkippedStringsVariant ? (
 									<InlineText className="tw-mx-2">
-										{getSkippedStringValue(playedStrings, guitarString)}
+										{getSkippedStringValue(touchedStrings, guitarString)}
 									</InlineText>
 								) : isBarreMusicNote ? (
 									<React.Fragment>
@@ -161,14 +161,14 @@ function useController({ variant, ...rest }: T_GuitarFretProps) {
 	const isStringsNamesVariant = variant === VARIANTS.STRINGS_NAMES;
 
 	function getSkippedStringValue(
-		playedStrings: T_GuitarFretProps["playedStrings"],
+		touchedStrings: T_GuitarFretProps["touchedStrings"],
 		guitarString: number,
 	): T_ReactElementNullable {
-		if (!playedStrings) {
+		if (!touchedStrings) {
 			return null;
 		}
 
-		const playedString = playedStrings[guitarString - 1];
+		const playedString = touchedStrings[guitarString - 1];
 
 		if (playedString === "x") {
 			return (

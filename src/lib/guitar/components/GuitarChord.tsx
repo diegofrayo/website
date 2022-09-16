@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import * as React from "react";
 import classNames from "classnames";
 
@@ -12,12 +10,12 @@ import { downloadComponentAsImage, handleCopyToClipboardClick } from "~/utils/br
 
 import GuitarFret from "./GuitarFret";
 import GuitarService from "../service";
-import { T_ParsedChord, T_GuitarFret, T_GuitarPlayedStrings, T_MusicNote } from "../types";
+import { T_ParsedChord, T_GuitarFret, T_ChordTouchedStrings, T_MusicNote } from "../types";
 
 type T_GuitarChordProps = {
 	name: string;
 	musicNotes: T_MusicNote[] | string; // "STRING|BARRE,FRET,FINGER?"
-	playedStrings?: T_GuitarPlayedStrings;
+	touchedStrings?: T_ChordTouchedStrings;
 	enableShowNotesOption?: boolean;
 };
 
@@ -25,7 +23,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 	const {
 		// props
 		name,
-		playedStrings,
+		touchedStrings,
 		enableShowNotesOption,
 
 		// states
@@ -109,10 +107,10 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 						<Block className="tw-relative tw-top-6 tw--left-0.5 tw-h-36 tw-w-3 tw-rounded-tr-md tw-rounded-br-md dfr-bg-color-bw dark:dfr-bg-color-wb" />
 					</Block>
 
-					{playedStrings && (
+					{touchedStrings && (
 						<GuitarFret
 							variant={GuitarFret.variant.SKIPPED_STRINGS}
-							playedStrings={playedStrings}
+							touchedStrings={touchedStrings}
 						/>
 					)}
 				</Block>
@@ -176,11 +174,11 @@ export default GuitarChord;
 function useController({
 	name,
 	musicNotes,
-	playedStrings,
+	touchedStrings,
 	enableShowNotesOption = false,
 }: T_GuitarChordProps): Pick<
 	T_GuitarChordProps,
-	"name" | "playedStrings" | "enableShowNotesOption"
+	"name" | "touchedStrings" | "enableShowNotesOption"
 > & {
 	// states
 	showChordInput: boolean;
@@ -195,7 +193,7 @@ function useController({
 	error: Error | undefined;
 } {
 	const { data, error } = useExecuteCallback(musicNotes, (params) => {
-		return GuitarService.buildChord(params);
+		return GuitarService.parseChord(params);
 	});
 
 	const chordContainerRef = React.useRef<HTMLDivElement>(null);
@@ -218,8 +216,8 @@ function useController({
 		// props
 		name,
 		enableShowNotesOption,
-		playedStrings: [
-			...(typeof playedStrings === "string" ? playedStrings.split(",") : playedStrings || []),
+		touchedStrings: [
+			...(typeof touchedStrings === "string" ? touchedStrings.split(",") : touchedStrings || []),
 		].reverse(),
 
 		// states

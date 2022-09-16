@@ -1,9 +1,40 @@
-// @ts-nocheck
+// --- Chords ---
 
-export type T_Finger = 1 | 2 | 3 | 4;
-export type T_GuitarFret = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
-export type T_GuitarString = 1 | 2 | 3 | 4 | 5 | 6;
-export type T_GuitarPlayedStrings = string | string[]; // D Chord: "x,x,0,1,1,1"
+export type T_Chord = {
+	musicNotes: T_MusicNote[];
+	frets: T_GuitarFret[];
+	isBarreChord: boolean;
+};
+
+export type T_ParsedChord = {
+	firstFret: T_GuitarFret;
+	lastFret: T_GuitarFret;
+	musicNotesGroupedByGuitarFret: T_MusicNotesGroupedByGuitarFret;
+};
+
+export type T_ChordsDatabase = {
+	[key in string]: T_RawChord;
+};
+
+export type T_RawChord = T_RawChordDetails | T_RawChordDetails[];
+
+type T_RawChordDetails = {
+	music_notes: string;
+	played_strings: string;
+};
+
+export type T_PreparsedChord = T_PreparsedChordDetails | T_PreparsedChordDetails[];
+
+export type T_PreparsedChordDetails = {
+	name: string;
+	musicNotes: string;
+	touchedStrings: string;
+	variantIndex?: number;
+};
+
+export type T_ChordTouchedStrings = string;
+
+// --- Music note ---
 
 interface I_MusicNoteBase {
 	guitarFret: T_GuitarFret;
@@ -20,19 +51,12 @@ export interface I_BarreMusicNote extends I_MusicNoteBase {
 
 export type T_MusicNote = I_SimpleMusicNote | I_BarreMusicNote;
 
-export type T_GroupedMusicNotesByGuitarFret = Record<T_GuitarFret, T_MusicNote[]>;
+// --- Music notes elements ---
 
-export type T_ParsedChord = {
-	firstFret: T_GuitarFret;
-	lastFret: T_GuitarFret;
-	musicNotesAsString: string;
-	groupedMusicNotesByGuitarFret: T_GroupedMusicNotesByGuitarFret;
-};
+export type T_GuitarString = 1 | 2 | 3 | 4 | 5 | 6;
+export type T_GuitarFret = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
+export type T_Finger = 1 | 2 | 3 | 4;
 
-type T_GuitarChordBase = {
-	name: string;
-	musicNotes: string;
-	playedStrings: string;
-};
+// --- IDK ---
 
-export type T_GuitarChord = T_GuitarChordBase | T_GuitarChordBase[];
+export type T_MusicNotesGroupedByGuitarFret = Record<T_GuitarFret, T_MusicNote[]>;

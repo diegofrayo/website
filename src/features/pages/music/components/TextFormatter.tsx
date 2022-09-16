@@ -55,7 +55,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 										<GuitarChord
 											name={chord.name}
 											musicNotes={chord.musicNotes}
-											playedStrings={chord.playedStrings}
+											touchedStrings={chord.touchedStrings}
 										/>
 									</Block>
 								);
@@ -104,7 +104,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 						<GuitarChord
 							name={selectedChord.name}
 							musicNotes={selectedChord.musicNotes}
-							playedStrings={selectedChord.playedStrings}
+							touchedStrings={selectedChord.touchedStrings}
 						/>
 					) : null}
 					<Space size={2} />
@@ -237,6 +237,6 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 		onModalCloseHandler,
 
 		// vars
-		parsedLyrics: parseInsertions(GuitarService.formatText(children)),
+		parsedLyrics: parseInsertions(GuitarService.parseSongLyrics(children)),
 	};
 }
