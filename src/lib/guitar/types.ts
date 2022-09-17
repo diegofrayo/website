@@ -9,6 +9,7 @@ export type T_Chord = {
 export type T_ParsedChord = {
 	firstFret: T_GuitarFret;
 	lastFret: T_GuitarFret;
+	barreFret: T_GuitarFret | undefined;
 	musicNotesGroupedByGuitarFret: T_MusicNotesGroupedByGuitarFret;
 };
 
@@ -20,7 +21,7 @@ export type T_RawChord = T_RawChordDetails | T_RawChordDetails[];
 
 type T_RawChordDetails = {
 	music_notes: string;
-	played_strings: string;
+	touched_strings: string;
 };
 
 export type T_PreparsedChord = T_PreparsedChordDetails | T_PreparsedChordDetails[];

@@ -1,42 +1,36 @@
 import * as React from "react";
-import classNames from "classnames";
 
 import { Button, Title, Block, InlineText } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
-import { useExecuteCallback } from "~/hooks";
 import { AnalyticsService } from "~/features/analytics";
-import type { T_ReactElement, T_ReactRefObject } from "~/types";
-import { downloadComponentAsImage, handleCopyToClipboardClick } from "~/utils/browser";
+import { useExecuteCallback } from "~/hooks";
+import { downloadComponentAsImage } from "~/utils/browser";
+import { getErrorMessage } from "~/utils/misc";
+import { isNull, isUndefined } from "~/utils/validations";
+import type { T_ReactElementNullable, T_ReactRefObject } from "~/types";
 
 import GuitarFret from "./GuitarFret";
 import GuitarService from "../service";
-import { T_ParsedChord, T_GuitarFret, T_ChordTouchedStrings, T_MusicNote } from "../types";
+import { T_ParsedChord, T_GuitarFret, T_MusicNote, T_PreparsedChordDetails } from "../types";
 
-type T_GuitarChordProps = {
-	name: string;
-	musicNotes: T_MusicNote[] | string; // "STRING|BARRE,FRET,FINGER?"
-	touchedStrings?: T_ChordTouchedStrings;
-	enableShowNotesOption?: boolean;
-};
+// WARN: False positive
+/* eslint-disable react/no-unused-prop-types */
+type T_GuitarChordProps = { chord: T_PreparsedChordDetails };
 
-function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
+function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 	const {
 		// props
-		name,
-		touchedStrings,
-		enableShowNotesOption,
+		chord,
 
-		// states
-		showChordInput,
+		// states && refs
 		chordContainerRef,
 
 		// handlers
-		handleDownloadAsImage,
-		handleShowChordInput,
+		handleDownloadAsImageClick,
 
 		// vars
-		error,
 		data,
+		error,
 	} = useController(props);
 
 	if (error) {
@@ -45,16 +39,16 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 				is="strong"
 				className="tw-mt-2 tw-block tw-text-red-700 dark:tw-text-red-400"
 			>
-				Syntax error: {error.message}
+				Syntax error: {getErrorMessage(error)}
 			</InlineText>
 		);
 	}
 
-	if (!data) {
+	if (isUndefined(data)) {
 		return null;
 	}
 
-	const { firstFret, lastFret, musicNotesAsString, groupedMusicNotesByGuitarFret } = data;
+	const { firstFret, lastFret, musicNotesGroupedByGuitarFret } = data;
 
 	return (
 		<Block
@@ -72,11 +66,11 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 					className="tw-mb-4 tw-truncate tw-text-center"
 					size={Title.size.MD}
 				>
-					{name}
+					{chord.name}
 				</Title>
 
 				<Block className="tw-flex-no-wrap tw-inline-flex tw-max-w-full tw-items-end tw-overflow-x-auto">
-					<GuitarFret variant={GuitarFret.variant.STRINGS_NAMES} />
+					<GuitarFret variant={GuitarFret.variant.GUITAR_STRINGS_NAMES} />
 
 					<Block className="tw-flex-no-wrap tw-relative tw-inline-flex">
 						<GuitarFret
@@ -84,7 +78,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 							number={(lastFret + 1) as T_GuitarFret}
 						/>
 
-						{Object.entries(groupedMusicNotesByGuitarFret)
+						{Object.entries(musicNotesGroupedByGuitarFret)
 							.reverse()
 							.map(([fret, musicNotes]: [string, T_MusicNote[]]) => {
 								return (
@@ -93,26 +87,25 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 										variant={GuitarFret.variant.DEFAULT}
 										number={Number(fret) as T_GuitarFret}
 										musicNotes={musicNotes}
+										isBarreFret={(Number(fret) as T_GuitarFret) === data.barreFret}
 									/>
 								);
 							})}
 
-						{firstFret > 1 && (
+						{firstFret > 1 ? (
 							<GuitarFret
 								variant={GuitarFret.variant.EMPTY}
 								number={1}
 							/>
-						)}
+						) : null}
 
 						<Block className="tw-relative tw-top-6 tw--left-0.5 tw-h-36 tw-w-3 tw-rounded-tr-md tw-rounded-br-md dfr-bg-color-bw dark:dfr-bg-color-wb" />
 					</Block>
 
-					{touchedStrings && (
-						<GuitarFret
-							variant={GuitarFret.variant.SKIPPED_STRINGS}
-							touchedStrings={touchedStrings}
-						/>
-					)}
+					<GuitarFret
+						variant={GuitarFret.variant.SKIPPED_GUITAR_STRINGS}
+						touchedStrings={chord.touchedStrings}
+					/>
 				</Block>
 			</Block>
 
@@ -120,48 +113,12 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElement {
 				<Block>
 					<Button
 						variant={Button.variant.DEFAULT}
-						onClick={handleDownloadAsImage}
+						onClick={handleDownloadAsImageClick}
 					>
 						<Emoji className="tw-mr-2">⬇️</Emoji>
 						<InlineText>descargar como imagen</InlineText>
 					</Button>
-
-					{musicNotesAsString && enableShowNotesOption ? (
-						<Button
-							variant={Button.variant.DEFAULT}
-							className="tw-mt-1 tw-ml-0 sm:tw-ml-3 sm:tw-mt-0"
-							onClick={handleShowChordInput}
-						>
-							<InlineText
-								className={classNames(
-									"tw-inline-block tw-w-4 tw-transition-all",
-									showChordInput && "tw-rotate-90",
-								)}
-							>
-								‣
-							</InlineText>
-							<InlineText>{showChordInput ? "ocultar" : "mostrar"} notas</InlineText>
-						</Button>
-					) : null}
 				</Block>
-
-				{showChordInput && (
-					<Block className="tw-mt-3 tw-text-center tw-text-sm">
-						<Pre
-							variant={Pre.variant.VARIANTS.BREAK_WORDS}
-							className="tw-inline-block tw-border tw-p-2 dfr-border-color-primary"
-						>
-							<Button
-								variant={Button.variant.SIMPLE}
-								data-clipboard-text={musicNotesAsString}
-								onClick={handleCopyToClipboardClick}
-							>
-								<Emoji>📋</Emoji>
-							</Button>{" "}
-							{musicNotesAsString}
-						</Pre>
-					</Block>
-				)}
 			</Block>
 		</Block>
 	);
@@ -171,62 +128,43 @@ export default GuitarChord;
 
 // --- Controller ---
 
-function useController({
-	name,
-	musicNotes,
-	touchedStrings,
-	enableShowNotesOption = false,
-}: T_GuitarChordProps): Pick<
-	T_GuitarChordProps,
-	"name" | "touchedStrings" | "enableShowNotesOption"
-> & {
-	// states
-	showChordInput: boolean;
+type T_UseControllerReturn = T_GuitarChordProps & {
 	chordContainerRef: T_ReactRefObject<HTMLDivElement>;
+	handleDownloadAsImageClick: () => Promise<void>;
+	data: T_ParsedChord | undefined;
+	error: unknown;
+};
 
-	// handlers
-	handleDownloadAsImage: () => void;
-	handleShowChordInput: () => void;
-
-	// vars
-	data: T_ParsedChord;
-	error: Error | undefined;
-} {
-	const { data, error } = useExecuteCallback(musicNotes, (params) => {
+function useController({ chord }: T_GuitarChordProps): T_UseControllerReturn {
+	// hooks
+	const { data, error } = useExecuteCallback<string, T_ParsedChord>(chord.musicNotes, (params) => {
 		return GuitarService.parseChord(params);
 	});
 
+	// states & refs
 	const chordContainerRef = React.useRef<HTMLDivElement>(null);
-	const [showChordInput, setChordInput] = React.useState(false);
 
-	async function handleDownloadAsImage(): Promise<void> {
-		await downloadComponentAsImage(chordContainerRef.current, name);
+	// handlers
+	async function handleDownloadAsImageClick(): Promise<void> {
+		if (isNull(chordContainerRef.current)) return;
+
+		await downloadComponentAsImage(chordContainerRef.current, chord.name);
 
 		AnalyticsService.trackEvent("DOWNLOAD_CHORD_AS_IMAGE", {
-			chord: name,
+			chord: chord.name,
 			page: window.location.pathname,
 		});
 	}
 
-	function handleShowChordInput(): void {
-		setChordInput((cs) => !cs);
-	}
-
 	return {
 		// props
-		name,
-		enableShowNotesOption,
-		touchedStrings: [
-			...(typeof touchedStrings === "string" ? touchedStrings.split(",") : touchedStrings || []),
-		].reverse(),
+		chord,
 
-		// states
-		showChordInput,
+		// states && refs
 		chordContainerRef,
 
 		// handlers
-		handleDownloadAsImage,
-		handleShowChordInput,
+		handleDownloadAsImageClick,
 
 		// vars
 		data,

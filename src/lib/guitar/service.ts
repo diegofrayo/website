@@ -1,3 +1,4 @@
+import { logger } from "~/features/logging";
 import {
 	sortPlainArray,
 	transformObjectKeysFromSnakeCaseToLowerCamelCase,
@@ -48,6 +49,7 @@ class GuitarService {
 		return {
 			firstFret: chord.musicNotes[0].guitarFret,
 			lastFret: chord.musicNotes[chord.musicNotes.length - 1].guitarFret,
+			barreFret: chord.barreFret,
 			musicNotesGroupedByGuitarFret,
 		};
 	}
@@ -55,7 +57,7 @@ class GuitarService {
 	parseSongLyrics(lyrics: string): string {
 		let isBlankTheLastParsedLine = false;
 
-		const songChords = {};
+		let songChords = {};
 		const parsedLyrics = lyrics
 			.split("\n")
 			.map((currentLyricsTextLine, currentLyricsTextLineIndex, lyricsTextLinesArray) => {
@@ -79,7 +81,7 @@ class GuitarService {
 					.filter(Boolean)
 					.sort(sortPlainArray("asc"))
 					.forEach((currentLyricsTextLineItem, _, currentLyricsTextLineItemsArray) => {
-						currentLyricsTextLineParsed = this.parseLyricsTextLine({
+						const { parsedTextLine, textLineChords } = this.parseLyricsTextLine({
 							currentLyricsTextLineParsed,
 							currentLyricsTextLineItem,
 							currentLyricsTextLineItemsArray,
@@ -87,13 +89,17 @@ class GuitarService {
 							isCurrentLineTheLastOne,
 							isBlankTheLastParsedLine,
 						});
+
+						songChords = { ...songChords, ...textLineChords };
+						currentLyricsTextLineParsed = parsedTextLine;
 					});
 
 				return `<span>${this.removeSpecialCharacters(currentLyricsTextLineParsed)}</span>`;
 			})
 			.join("\n");
 
-		console.log(
+		logger(
+			"LOG",
 			`"chords": [${Object.keys(songChords)
 				.sort()
 				.map((chord) => `"${chord}"`)
@@ -113,11 +119,11 @@ class GuitarService {
 
 		if (Array.isArray(chord)) {
 			if (isUndefined(chordVariantIndex)) {
-				return chord.map((chord, index) => {
+				return chord.map((chordVariantItem, chordVariantItemIndex) => {
 					return transformObjectKeysFromSnakeCaseToLowerCamelCase({
-						...chord,
+						...chordVariantItem,
 						name: chordName,
-						variantIndex: index,
+						variantIndex: chordVariantItemIndex,
 					});
 				});
 			}
@@ -160,16 +166,13 @@ class GuitarService {
 		currentLyricsTextLineParsed,
 		currentLyricsTextLineItem,
 		// currentLyricsTextLineItemsArray,
-		songChords,
 		isCurrentLineTheLastOne,
 		isBlankTheLastParsedLine,
-	}: T_ParseLyricsTextLine): string {
+	}: T_ParseLyricsTextLine): { textLineChords: Record<string, string>; parsedTextLine: string } {
 		const chord = this.findChord(currentLyricsTextLineItem) as T_PreparsedChordDetails;
 
 		if (isUndefined(chord)) {
-			return currentLyricsTextLineItem;
-		} else {
-			songChords[chord.name] = chord.name;
+			return { parsedTextLine: currentLyricsTextLineItem, textLineChords: {} };
 		}
 
 		const chordHTML = this.chordToHTML(chord, isBlankTheLastParsedLine, isCurrentLineTheLastOne);
@@ -179,11 +182,19 @@ class GuitarService {
 		// 	return replaceAll(currentLyricsTextLineParsed, chord, chordHTML);
 		// }
 
-		return replaceAll(
-			replaceAll(currentLyricsTextLineParsed, `${chord} `, `${chordHTML} `),
-			` ${chord}`,
-			` ${chordHTML}`,
-		);
+		// TODO: Create a regex: Chords should be like this "{A}"
+		return {
+			textLineChords: { [chord.name]: chord.name },
+			parsedTextLine: replaceAll(
+				replaceAll(
+					replaceAll(currentLyricsTextLineParsed, ` ${chord.name} `, ` ${chordHTML} `),
+					`${chord} `,
+					`${chordHTML} `,
+				),
+				` ${chord}`,
+				` ${chordHTML}`,
+			),
+		};
 	}
 
 	private removeSpecialCharacters(input: string): string {

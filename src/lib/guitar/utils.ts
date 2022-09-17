@@ -1,6 +1,4 @@
-// TODO
-
-export default "DELETE_THIS_FILE";
+export default "DELETE_THIS_FILE"; // TODO
 
 // export function checkFingerValidity(value: T_Finger | undefined): boolean {
 // 	if (!(typeof value === "number" && value >= 1 && value <= 4) && value !== undefined) {

@@ -1,23 +1,21 @@
 import * as React from "react";
 
-type T_Data = unknown;
-type T_Params = unknown;
-type T_Callback = (params: T_Params) => Promise<T_Data> | T_Data;
-type T_Error = Error | unknown | undefined;
-
-function useExecuteCallback(
-	params: T_Params,
-	callback: T_Callback,
-): {
+type T_Callback<G_Params, G_Data> = (params: G_Params) => Promise<G_Data> | G_Data;
+type T_UseExecuteCallbackReturn<G_Data> = {
 	isLoading: boolean;
-	data: T_Data;
-	error: T_Error;
-} {
+	data: G_Data | undefined;
+	error: unknown;
+};
+
+function useExecuteCallback<G_Params = unknown, G_Data = unknown>(
+	params: G_Params,
+	callback: T_Callback<G_Params, G_Data>,
+): T_UseExecuteCallbackReturn<G_Data> {
 	// states & refs
 	const [isLoading, setIsLoading] = React.useState(true);
-	const [data, setData] = React.useState<T_Data>(undefined);
-	const [error, setError] = React.useState<T_Error>(undefined);
-	const savedHandler = React.useRef<T_Callback>(callback);
+	const [data, setData] = React.useState<G_Data | undefined>(undefined);
+	const [error, setError] = React.useState<unknown>(undefined);
+	const savedHandler = React.useRef<typeof callback>(callback);
 
 	// effects
 	React.useEffect(() => {
@@ -25,7 +23,7 @@ function useExecuteCallback(
 	});
 
 	React.useEffect(() => {
-		const executeCallback: T_Callback = async (params) => {
+		const executeCallback = async (params: G_Params): Promise<void> => {
 			try {
 				setIsLoading(true);
 

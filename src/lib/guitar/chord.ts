@@ -6,8 +6,11 @@ import type { T_Finger, T_GuitarFret, T_GuitarString, T_MusicNote } from "./type
 
 class Chord {
 	public isBarreChord = false;
-	// public frets: T_GuitarFret[] = [];
+
 	public musicNotes: T_MusicNote[] = [];
+
+	public barreFret?: T_GuitarFret;
+	// public frets: T_GuitarFret[] = [];
 
 	// input: "6x,1|4,3,1|3,3,2|2,3,3"
 	constructor(input: string) {
@@ -17,7 +20,7 @@ class Chord {
 
 		this.isBarreChord = numbersOfBarre === 1;
 
-		// TODO: Regex for inputs
+		// TODO: Regex for inputs "6x,1|4,3,1|3,3,2|2,3,3"
 		// throw new Error("A barre chord can't share a fret with another music note");
 
 		this.musicNotes = input.split("|").map((rawMusicNote: string): T_MusicNote => {
@@ -36,6 +39,8 @@ class Chord {
 			}
 
 			if (isBarreChord(guitarString)) {
+				this.barreFret = parseFret(guitarFret);
+
 				return {
 					guitarFret: parseFret(guitarFret),
 					barre: parseBarre(guitarString),
@@ -66,13 +71,13 @@ export default Chord;
 // --- Utils ---
 
 function parseFinger(finger: string): T_Finger | undefined {
-	const REGEX = new RegExp("^[1-4]$");
+	const REGEX = /^[1-4]$/;
 
 	return isTrue(REGEX.test(finger)) ? (Number(finger) as T_Finger) : undefined;
 }
 
 function parseFret(fret: string): T_GuitarFret {
-	const REGEX = new RegExp("^(^[1-9]{1}|^1[0-6]{1})$");
+	const REGEX = /^(^[1-9]{1}|^1[0-6]{1})$/;
 
 	if (isTrue(REGEX.test(fret))) {
 		return Number(fret) as T_GuitarString;
@@ -82,7 +87,7 @@ function parseFret(fret: string): T_GuitarFret {
 }
 
 function parseGuitarString(stringNumber: string): T_GuitarString {
-	const REGEX = new RegExp("^[1-6]$");
+	const REGEX = /^[1-6]$/;
 
 	if (isTrue(REGEX.test(stringNumber))) {
 		return Number(stringNumber) as T_GuitarString;
@@ -96,11 +101,12 @@ function parseBarre(input: string): T_GuitarString {
 		return Number(replaceAll(input, "x", "")) as T_GuitarString;
 	}
 
+	// TODO: Improve error messages
 	throw new Error("Invalid barre");
 }
 
 function isBarreChord(guitarString: string): boolean {
-	const REGEX = new RegExp("^[4-6]x$");
+	const REGEX = /^[4-6]x$/;
 
 	return isTrue(REGEX.test(guitarString));
 }

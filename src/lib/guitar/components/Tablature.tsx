@@ -1,22 +1,13 @@
-// @ts-nocheck
-
 import * as React from "react";
 import classNames from "classnames";
 
 import { Space, Block, Text, InlineText } from "~/components/primitive";
-import { AuthService } from "~/features/auth";
-import { useDidMount } from "~/hooks";
 import { createArray } from "~/utils/objects-and-arrays";
 import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import GuitarFret from "./GuitarFret";
 import { NUMBER_OF_STRINGS } from "../constants";
 import { T_GuitarFret, T_GuitarString } from "../types";
-import {
-	checkGuitarFretValidity,
-	checkGuitarStringValidity,
-	checkTablatureSpaceValidity,
-} from "../utils";
 
 interface I_SpacePosition {
 	space: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | "x";
@@ -62,7 +53,7 @@ function Tablature(props: T_TablatureProps): T_ReactElementNullable {
 		<Block className="tw-text-base">
 			{parsedPositions && (
 				<Block className="tw-flex tw-items-end">
-					<GuitarFret variant={GuitarFret.variant.STRINGS_NAMES} />
+					<GuitarFret variant={GuitarFret.variant.GUITAR_STRINGS_NAMES} />
 
 					{parsedPositions.map((position, positionIndex) => {
 						if ((position as T_Position).variant === "SPACE") {
