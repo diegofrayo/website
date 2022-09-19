@@ -11,11 +11,11 @@ import type { T_ReactElementNullable, T_ReactRefObject } from "~/types";
 
 import GuitarFret from "./GuitarFret";
 import GuitarService from "../service";
-import { T_ParsedChord, T_GuitarFret, T_MusicNote, T_PreparsedChordDetails } from "../types";
+import { T_Chord, T_GuitarFret, T_UnparsedChordDetails } from "../types";
 
 // WARN: False positive
 /* eslint-disable react/no-unused-prop-types */
-type T_GuitarChordProps = { chord: T_PreparsedChordDetails };
+type T_GuitarChordProps = { chord: T_UnparsedChordDetails };
 
 function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 	const {
@@ -48,7 +48,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 		return null;
 	}
 
-	const { firstFret, lastFret, musicNotesGroupedByGuitarFret } = data;
+	const { firstFret, lastFret, musicNotesGroupedByFret, barreFret } = data;
 
 	return (
 		<Block
@@ -78,16 +78,18 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 							number={(lastFret + 1) as T_GuitarFret}
 						/>
 
-						{Object.entries(musicNotesGroupedByGuitarFret)
+						{Object.entries(musicNotesGroupedByFret)
 							.reverse()
-							.map(([fret, musicNotes]: [string, T_MusicNote[]]) => {
+							.map(([fretKey, musicNotes]) => {
+								const fret = Number(fretKey) as T_GuitarFret;
+
 								return (
 									<GuitarFret
 										key={`${fret}`}
 										variant={GuitarFret.variant.DEFAULT}
-										number={Number(fret) as T_GuitarFret}
+										number={fret}
 										musicNotes={musicNotes}
-										isBarreFret={(Number(fret) as T_GuitarFret) === data.barreFret}
+										barreFret={barreFret?.fret === fret ? data.barreFret : undefined}
 									/>
 								);
 							})}
@@ -131,13 +133,13 @@ export default GuitarChord;
 type T_UseControllerReturn = T_GuitarChordProps & {
 	chordContainerRef: T_ReactRefObject<HTMLDivElement>;
 	handleDownloadAsImageClick: () => Promise<void>;
-	data: T_ParsedChord | undefined;
+	data: T_Chord | undefined;
 	error: unknown;
 };
 
 function useController({ chord }: T_GuitarChordProps): T_UseControllerReturn {
 	// hooks
-	const { data, error } = useExecuteCallback<string, T_ParsedChord>(chord.musicNotes, (params) => {
+	const { data, error } = useExecuteCallback<T_UnparsedChordDetails, T_Chord>(chord, (params) => {
 		return GuitarService.parseChord(params);
 	});
 

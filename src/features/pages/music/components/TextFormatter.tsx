@@ -24,9 +24,9 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 	const {
 		// states
 		isModalVisible,
-		selectedChord,
-		selectedChordIndex,
-		handleUpdateSelectedChordVariantClick,
+		selectedUnparsedChord,
+		selectedUnparsedChordIndex,
+		handleUpdateSelectedUnparsedChordVariantClick,
 
 		// handlers
 		onModalCloseHandler,
@@ -44,19 +44,17 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 				onCloseHandler={onModalCloseHandler}
 			>
 				<Block className="tw-w-96 tw-max-w-full tw-border-4 tw-p-4 dfr-border-color-bw dfr-bg-color-wb dark:dfr-bg-color-primary">
-					{Array.isArray(selectedChord) ? (
+					{Array.isArray(selectedUnparsedChord) ? (
 						<Block>
-							{selectedChord.map((chord, index) => {
+							{selectedUnparsedChord.map((chord, index) => {
 								return (
 									<Block
 										key={generateSlug(`${chord.name}-${index}`)}
-										className={classNames(index === selectedChordIndex ? "tw-block" : "tw-hidden")}
+										className={classNames(
+											index === selectedUnparsedChordIndex ? "tw-block" : "tw-hidden",
+										)}
 									>
-										<GuitarChord
-											name={chord.name}
-											musicNotes={chord.musicNotes}
-											touchedStrings={chord.touchedStrings}
-										/>
+										<GuitarChord chord={chord} />
 									</Block>
 								);
 							})}
@@ -64,7 +62,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 							<Block className="tw-flex tw-items-center tw-justify-center">
 								<Button
 									variant={Button.variant.SIMPLE}
-									onClick={handleUpdateSelectedChordVariantClick("-")}
+									onClick={handleUpdateSelectedUnparsedChordVariantClick("-")}
 								>
 									<Icon
 										icon={Icon.icon.CHEVRON_LEFT}
@@ -72,17 +70,17 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 									/>
 								</Button>
 								<Block className="tw-flex tw-flex-1 tw-items-center tw-justify-center">
-									{createArray(selectedChord.length, 0).map((index) => {
+									{createArray(selectedUnparsedChord.length, 0).map((index) => {
 										return (
 											<InlineText
 												key={generateSlug(`TextFormatter-InlineText-index-${index}`)}
 												className={classNames(
 													"tw-mx-1 tw-inline-flex tw-h-4 tw-w-4 tw-cursor-pointer tw-items-center tw-justify-center tw-rounded-full tw-text-xxs tw-leading-0",
-													selectedChordIndex === index
+													selectedUnparsedChordIndex === index
 														? "tw-font-bold dfr-bg-color-bw dfr-text-color-wb"
 														: "tw-border dfr-text-color-gs-black dfr-border-color-gs-black dark:tw-border-0 dark:dfr-bg-color-gs-400",
 												)}
-												onClick={handleUpdateSelectedChordVariantClick(index)}
+												onClick={handleUpdateSelectedUnparsedChordVariantClick(index)}
 											>
 												{index + 1}
 											</InlineText>
@@ -91,7 +89,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 								</Block>
 								<Button
 									variant={Button.variant.SIMPLE}
-									onClick={handleUpdateSelectedChordVariantClick("+")}
+									onClick={handleUpdateSelectedUnparsedChordVariantClick("+")}
 								>
 									<Icon
 										icon={Icon.icon.CHEVRON_RIGHT}
@@ -100,12 +98,8 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 								</Button>
 							</Block>
 						</Block>
-					) : selectedChord ? (
-						<GuitarChord
-							name={selectedChord.name}
-							musicNotes={selectedChord.musicNotes}
-							touchedStrings={selectedChord.touchedStrings}
-						/>
+					) : selectedUnparsedChord ? (
+						<GuitarChord chord={selectedUnparsedChord} />
 					) : null}
 					<Space size={2} />
 					<Button
@@ -130,10 +124,10 @@ export default TextFormatter;
 
 type T_UseControllerReturn = {
 	isModalVisible: boolean;
-	selectedChord: T_GuitarChord | undefined;
-	selectedChordIndex: number;
+	selectedUnparsedChord: T_GuitarChord | undefined;
+	selectedUnparsedChordIndex: number;
 
-	handleUpdateSelectedChordVariantClick: (input: number | "+" | "-") => () => void;
+	handleUpdateSelectedUnparsedChordVariantClick: (input: number | "+" | "-") => () => void;
 	onModalCloseHandler: () => void;
 
 	parsedLyrics: T_ReactChildren;
@@ -142,8 +136,10 @@ type T_UseControllerReturn = {
 function useController({ children, insertions }: T_TextFormatterProps): T_UseControllerReturn {
 	// states & refs
 	const [isModalVisible, setIsModalVisible] = React.useState(false);
-	const [selectedChord, setSelectedChord] = React.useState<T_GuitarChord | undefined>(undefined);
-	const [selectedChordIndex, setSelectedChordIndex] = React.useState(0);
+	const [selectedUnparsedChord, setSelectedUnparsedChord] = React.useState<
+		T_GuitarChord | undefined
+	>(undefined);
+	const [selectedUnparsedChordIndex, setSelectedUnparsedChordIndex] = React.useState(0);
 
 	// effects
 	useDidMount(() => {
@@ -157,8 +153,10 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 					return;
 				}
 
-				setSelectedChord(chord);
-				setSelectedChordIndex(safeCastNumber(target?.getAttribute("data-chord-index") || ""));
+				setSelectedUnparsedChord(chord);
+				setSelectedUnparsedChordIndex(
+					safeCastNumber(target?.getAttribute("data-chord-index") || ""),
+				);
 				setIsModalVisible(true);
 			});
 		});
@@ -167,25 +165,28 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 	// handlers
 	function onModalCloseHandler(): void {
 		setIsModalVisible(false);
-		setSelectedChord(undefined);
+		setSelectedUnparsedChord(undefined);
 	}
 
-	const handleUpdateSelectedChordVariantClick: T_UseControllerReturn["handleUpdateSelectedChordVariantClick"] =
-		function handleUpdateSelectedChordVariantClick(value) {
+	const handleUpdateSelectedUnparsedChordVariantClick: T_UseControllerReturn["handleUpdateSelectedUnparsedChordVariantClick"] =
+		function handleUpdateSelectedUnparsedChordVariantClick(value) {
 			return () => {
 				if (isNumber(value)) {
-					setSelectedChordIndex(value);
+					setSelectedUnparsedChordIndex(value);
 					return;
 				}
 
 				const operator = 1 * (value === "+" ? 1 : -1);
 
-				if (selectedChordIndex + operator < 0) {
-					setSelectedChordIndex((selectedChord as T_GuitarChord[]).length - 1);
-				} else if (selectedChordIndex + operator > (selectedChord as T_GuitarChord[]).length - 1) {
-					setSelectedChordIndex(0);
+				if (selectedUnparsedChordIndex + operator < 0) {
+					setSelectedUnparsedChordIndex((selectedUnparsedChord as T_GuitarChord[]).length - 1);
+				} else if (
+					selectedUnparsedChordIndex + operator >
+					(selectedUnparsedChord as T_GuitarChord[]).length - 1
+				) {
+					setSelectedUnparsedChordIndex(0);
 				} else {
-					setSelectedChordIndex(selectedChordIndex + operator);
+					setSelectedUnparsedChordIndex(selectedUnparsedChordIndex + operator);
 				}
 			};
 		};
@@ -229,11 +230,11 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 	return {
 		// states
 		isModalVisible,
-		selectedChord,
-		selectedChordIndex,
+		selectedUnparsedChord,
+		selectedUnparsedChordIndex,
 
 		// handlers
-		handleUpdateSelectedChordVariantClick,
+		handleUpdateSelectedUnparsedChordVariantClick,
 		onModalCloseHandler,
 
 		// vars

@@ -4,18 +4,17 @@ import classNames from "classnames";
 import { Block, Icon, InlineText } from "~/components/primitive";
 import twcss from "~/lib/twcss";
 import { createArray, mirror } from "~/utils/objects-and-arrays";
-import type { T_ReactElement } from "~/types";
+import type { T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import { NUMBER_OF_STRINGS } from "../constants";
 import {
 	T_MusicNote,
 	T_GuitarFret,
 	T_ChordTouchedStrings,
-	I_BarreMusicNote,
-	I_SimpleMusicNote,
 	T_GuitarString,
+	T_BarreFret,
 } from "../types";
-import { isNotEmptyString } from "~/utils/validations";
+import { isNotEmptyString, isUndefined } from "~/utils/validations";
 
 const VARIANTS_OPTIONS = [
 	"GUITAR_STRINGS_NAMES",
@@ -32,7 +31,7 @@ type T_GuitarFretProps = {
 	variant: T_Variant;
 	number?: T_GuitarFret;
 	musicNotes?: T_MusicNote[];
-	isBarreFret?: boolean;
+	barreFret?: T_BarreFret | undefined;
 	touchedStrings?: T_ChordTouchedStrings;
 };
 
@@ -42,7 +41,10 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 		number,
 		musicNotes,
 		touchedStrings,
-		isBarreFret,
+		barreFret,
+
+		// utils
+		isBarreFretChecker,
 
 		// vars
 		GUITAR_STRINGS_NAMES,
@@ -71,8 +73,8 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 
 			<Block
 				className={classNames(
-					isEmptyVariant ||
-						(isDefaultVariant && "tw-border-l-4 tw-border-yellow-400 tw-bg-yellow-700"),
+					(isEmptyVariant || isDefaultVariant) &&
+						"tw-border-l-4 tw-border-yellow-400 tw-bg-yellow-700",
 				)}
 			>
 				{(createArray(NUMBER_OF_STRINGS).reverse() as T_GuitarString[]).map((guitarString) => {
@@ -102,6 +104,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 						return (
 							<Block
 								key={`empty-${guitarString}`}
+								data-h={`empty-${guitarString}`}
 								className="tw-flex tw-h-6 tw-items-center"
 							>
 								<GuitarString />
@@ -111,53 +114,57 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 
 					if (isDefaultVariant) {
 						if (Array.isArray(musicNotes)) {
-							const musicNote = isBarreFret
-								? (musicNotes[0] as I_BarreMusicNote)
-								: (musicNotes.find(
-										(chord) => (chord as I_SimpleMusicNote).guitarString === guitarString,
-								  ) as I_SimpleMusicNote);
+							const isBarreFret = isBarreFretChecker(barreFret);
+							const musicNote = musicNotes.find((chord) => chord.guitarString === guitarString);
+
 							// TODO: Este as es una regonorrea
 							// TODO: Borrar los as de abajo
 
-							return (
-								<Block
-									key={`${
-										isBarreFret
-											? `barre-${guitarString}-${musicNote.guitarFret}`
-											: musicNote
-											? `default-${(musicNote as I_SimpleMusicNote).guitarString}-${
-													(musicNote as I_SimpleMusicNote).finger
-											  }`
-											: `${guitarString}-${Date.now()}`
-									}`}
-									className="tw-flex tw-h-6 tw-items-center"
-								>
-									{isBarreFret ? (
-										<React.Fragment>
-											<GuitarString />
-											{(musicNote as I_BarreMusicNote).barre >= guitarString && (
-												<Block className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-font-bold tw-leading-0 dfr-bg-color-gs-white dfr-text-color-gs-black">
-													1
-												</Block>
-											)}
-											<GuitarString />
-										</React.Fragment>
-									) : musicNote ? (
-										<React.Fragment>
-											<GuitarString />
-											<Block className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-font-bold tw-leading-0 dfr-bg-color-gs-white dfr-text-color-gs-black">
-												{(musicNote as I_SimpleMusicNote).finger}
-											</Block>
-											<GuitarString />
-										</React.Fragment>
-									) : (
+							if (isBarreFret) {
+								return (
+									<Block
+										key={`barre-${guitarString}-${number}
+										}`}
+										className="tw-flex tw-h-6 tw-items-center"
+									>
 										<GuitarString />
-									)}
-								</Block>
-							);
-						}
+										{barreFret.firstGuitarString >= guitarString ? (
+											<Block className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-font-bold tw-leading-0 dfr-bg-color-gs-white dfr-text-color-gs-black">
+												1
+											</Block>
+										) : null}
+										<GuitarString />
+									</Block>
+								);
+							}
 
-						throw new Error("gonorrea"); // TODO
+							if (musicNotes.length === 0 || isUndefined(musicNote)) {
+								return (
+									<Block
+										key={`${guitarString}-${Date.now()}`}
+										data-h={`${guitarString}-${Date.now()}`}
+										className="tw-flex tw-h-6 tw-items-center"
+									>
+										<GuitarString />
+									</Block>
+								);
+							}
+
+							if (musicNote) {
+								return (
+									<Block
+										key={`default-${musicNote.guitarString}-${musicNote.finger}`}
+										className="tw-flex tw-h-6 tw-items-center"
+									>
+										<GuitarString />
+										<Block className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-font-bold tw-leading-0 dfr-bg-color-gs-white dfr-text-color-gs-black">
+											{musicNote.finger}
+										</Block>
+										<GuitarString />
+									</Block>
+								);
+							}
+						}
 					}
 
 					if (isSkippedGuitarStringsVariant) {
@@ -174,11 +181,9 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 								</Block>
 							);
 						}
-
-						throw new Error("gonorrea"); // TODO
 					}
 
-					return null;
+					throw new Error("It is not possible!!");
 				})}
 			</Block>
 		</Block>
@@ -197,6 +202,7 @@ type T_UseControllerReturn = Omit<T_GuitarFretProps, "variant"> & {
 	isEmptyVariant: boolean;
 	isSkippedGuitarStringsVariant: boolean;
 	isGuitarStringsNamesVariant: boolean;
+	isBarreFretChecker: (input: unknown) => input is T_BarreFret;
 };
 
 function useController({ variant, ...rest }: T_GuitarFretProps): T_UseControllerReturn {
@@ -206,6 +212,11 @@ function useController({ variant, ...rest }: T_GuitarFretProps): T_UseController
 	const isEmptyVariant = variant === VARIANTS.EMPTY;
 	const isSkippedGuitarStringsVariant = variant === VARIANTS.SKIPPED_GUITAR_STRINGS;
 	const isGuitarStringsNamesVariant = variant === VARIANTS.GUITAR_STRINGS_NAMES;
+
+	const isBarreFretChecker: T_UseControllerReturn["isBarreFretChecker"] =
+		function isBarreFretChecker(input): input is T_BarreFret {
+			return input !== undefined;
+		};
 
 	return {
 		// props
@@ -217,6 +228,9 @@ function useController({ variant, ...rest }: T_GuitarFretProps): T_UseController
 		isEmptyVariant,
 		isSkippedGuitarStringsVariant,
 		isGuitarStringsNamesVariant,
+
+		// utils
+		isBarreFretChecker,
 	};
 }
 
@@ -230,8 +244,8 @@ function SkippedGuitarStringIcon({
 }: {
 	touchedStrings: Required<T_GuitarFretProps>["touchedStrings"];
 	guitarString: T_GuitarString;
-}): T_ReactElement {
-	const playedString = touchedStrings[guitarString - 1];
+}): T_ReactElementNullable {
+	const playedString = touchedStrings.split(",").reverse()[guitarString - 1];
 
 	if (playedString === "x") {
 		return (
@@ -251,10 +265,14 @@ function SkippedGuitarStringIcon({
 		);
 	}
 
-	return (
-		<Icon
-			icon={Icon.icon.DOTS_CIRCLE_HORIZONTAL_SOLID}
-			size={16}
-		/>
-	);
+	if (playedString === "1") {
+		return (
+			<Icon
+				icon={Icon.icon.DOTS_CIRCLE_HORIZONTAL_SOLID}
+				size={16}
+			/>
+		);
+	}
+
+	return null;
 }
