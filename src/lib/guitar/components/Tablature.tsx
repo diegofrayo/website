@@ -4,52 +4,24 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Space, Block, Text, InlineText } from "~/components/primitive";
-import { AuthService } from "~/features/auth";
-import { useDidMount } from "~/hooks";
 import { createArray } from "~/utils/objects-and-arrays";
+import { isNotTrue } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import GuitarFret from "./GuitarFret";
 import { NUMBER_OF_STRINGS } from "../constants";
 import { T_GuitarFret, T_GuitarString } from "../types";
-import {
-	checkGuitarFretValidity,
-	checkGuitarStringValidity,
-	checkTablatureSpaceValidity,
-} from "../utils";
 
-interface I_SpacePosition {
-	space: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | "x";
-}
-
-interface I_GuitarStringPosition {
-	guitarString: T_GuitarString;
-}
-
-interface I_BarrePosition {
-	guitarFret: T_GuitarFret;
-}
-
-interface I_MusicNotePosition {
-	guitarFret: T_GuitarFret;
-	guitarString: T_GuitarString;
-}
-
-type T_Position = (
-	| I_SpacePosition
-	| I_GuitarStringPosition
-	| I_BarrePosition
-	| I_MusicNotePosition
-) & {
-	variant: "SPACE" | "GUITAR_STRING" | "MUSIC_NOTE" | "BARRE";
-};
-
+// WARN: False positive
+/* eslint-disable react/no-unused-prop-types */
 type T_TablatureProps = {
 	positions?: (T_Position | T_Position[])[];
 	notes?: string;
 };
 
 function Tablature(props: T_TablatureProps): T_ReactElementNullable {
+	return null;
+
 	const {
 		// props
 		notes,
@@ -62,7 +34,7 @@ function Tablature(props: T_TablatureProps): T_ReactElementNullable {
 		<Block className="tw-text-base">
 			{parsedPositions && (
 				<Block className="tw-flex tw-items-end">
-					<GuitarFret variant={GuitarFret.variant.STRINGS_NAMES} />
+					<GuitarFret variant={GuitarFret.variant.GUITAR_STRINGS_NAMES} />
 
 					{parsedPositions.map((position, positionIndex) => {
 						if ((position as T_Position).variant === "SPACE") {
@@ -103,8 +75,8 @@ function Tablature(props: T_TablatureProps): T_ReactElementNullable {
 										.map((guitarString) => {
 											if (Array.isArray(position)) {
 												const musicNotePosition = position.find(
-													(position) =>
-														(position as I_MusicNotePosition).guitarString === guitarString,
+													(position1) =>
+														(position1 as I_MusicNotePosition).guitarString === guitarString,
 												) as I_MusicNotePosition;
 
 												if (musicNotePosition) {
@@ -116,7 +88,7 @@ function Tablature(props: T_TablatureProps): T_ReactElementNullable {
 												}
 
 												const barrePosition = position.find(
-													(position) => position.variant === "BARRE",
+													(position1) => position1.variant === "BARRE",
 												) as I_BarrePosition;
 
 												if (barrePosition) {
@@ -163,14 +135,15 @@ export default Tablature;
 
 // --- Controller ---
 
-function useController({ positions, notes }: T_TablatureProps): Pick<T_TablatureProps, "notes"> & {
+function useController({ positions, notes }: T_TablatureProps): {
+	notes: T_TablatureProps["notes"];
 	parsedPositions: T_TablatureProps["positions"] | undefined;
 } {
-	function getPositions(positions: T_TablatureProps["positions"]): (T_Position | T_Position[])[] {
-		return (positions || []).map((position) => {
+	function getPositions(positionss: T_TablatureProps["positions"]): (T_Position | T_Position[])[] {
+		return (positionss || []).map((position) => {
 			if (Array.isArray(position)) {
-				return position.map((position) => {
-					return validAndParsePosition(position);
+				return position.map((position2) => {
+					return validAndParsePosition(position2);
 				});
 			}
 
@@ -178,10 +151,13 @@ function useController({ positions, notes }: T_TablatureProps): Pick<T_Tablature
 		});
 	}
 
-	function validAndParsePosition(position): T_Position {
+	function validAndParsePosition(position: T_Position | { space: string }): T_Position {
 		let positionVariant = "";
 
-		if (typeof (position as I_SpacePosition).space === "number" || position.space === "x") {
+		if (
+			typeof (position as I_SpacePosition).space === "number" ||
+			("space" in position && position.space === "x")
+		) {
 			checkTablatureSpaceValidity((position as I_SpacePosition).space);
 			positionVariant = "SPACE";
 		} else {
@@ -242,7 +218,7 @@ function Position({
 				isSeparator && "dfr-Tablature-Position--separator",
 			)}
 		>
-			{!isCell && <InlineText>{children || "0"}</InlineText>}
+			{isNotTrue(isCell) ? <InlineText>{children || "0"}</InlineText> : null}
 
 			<style jsx>{`
 				:global(.dfr-Tablature-Position--cell::before) {
@@ -282,3 +258,62 @@ function Position({
 		</Block>
 	);
 }
+
+// --- Utils ---
+
+function checkGuitarStringValidity(value: number): boolean {
+	if (Number.isNaN(value) || !(value >= 1 || value <= 6)) {
+		throw new Error(`Invalid guitar string (${value}). A guitar string must be between 1 and 6`);
+	}
+
+	return true;
+}
+
+function checkGuitarFretValidity(value: number): boolean {
+	if (Number.isNaN(value) || !(value >= 1 || value <= 16)) {
+		throw new Error(`Invalid guitar fret (${value}). A guitar fret must be between 1 and 16`);
+	}
+
+	return true;
+}
+
+function checkTablatureSpaceValidity(value: number | "x"): boolean {
+	if (
+		(typeof value === "string" && value !== "x") ||
+		(typeof value === "number" && (Number.isNaN(value) || !(value >= 1 || value <= 10)))
+	) {
+		throw new Error(
+			`Invalid tablature space (${value}). A tablature space must be between 1 and 10 or should be "x"`,
+		);
+	}
+
+	return true;
+}
+
+// --- Types ---
+
+interface I_SpacePosition {
+	space: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | "x";
+}
+
+interface I_GuitarStringPosition {
+	guitarString: T_GuitarString;
+}
+
+interface I_BarrePosition {
+	guitarFret: T_GuitarFret;
+}
+
+interface I_MusicNotePosition {
+	guitarFret: T_GuitarFret;
+	guitarString: T_GuitarString;
+}
+
+type T_Position = (
+	| I_SpacePosition
+	| I_GuitarStringPosition
+	| I_BarrePosition
+	| I_MusicNotePosition
+) & {
+	variant: "SPACE" | "GUITAR_STRING" | "MUSIC_NOTE" | "BARRE";
+};

@@ -1,324 +1,193 @@
-// @ts-nocheck
-
-import { isLocalhostEnvironment } from "~/utils/app";
 import {
-	createArray,
+	sortPlainArray,
 	transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
 import { replaceAll } from "~/utils/strings";
+import { exists, isEmptyString, isNotEmptyString, notFound } from "~/utils/validations";
 
+import Chord from "./chord-vo";
 import CHORDS from "./data/chords.json";
-import {
-	I_BarreMusicNote,
-	I_SimpleMusicNote,
-	T_Chord,
-	T_GroupedMusicNotesByGuitarFret,
-	T_GuitarFret,
-	T_MusicNote,
-	T_ParsedChord,
-} from "./types";
-import {
-	parseFret,
-	checkBarreChordValidity,
-	checkFingerValidity,
-	checkGuitarStringValidity,
-	isBarreChord,
-	parseBarre,
-	parseFinger,
-	parseGuitarString,
-	checkGuitarFretValidity,
-} from "./utils";
+import type { T_ChordsDatabase, T_ParsedChord, T_PlainChord, T_PlainChordDetails } from "./types";
 
 class GuitarService {
-	buildChord(musicNotes: T_MusicNote[] | string): T_ParsedChord {
-		try {
-			const parsedMusicNotes: T_MusicNote[] =
-				musicNotes === ""
-					? []
-					: typeof musicNotes === "string"
-					? musicNotes.split("|").map((musicNote: string): T_MusicNote => {
-							const [guitarString, guitarFret, finger, ...more] = musicNote.split(",");
+	public CHORD_BUTTON_SELECTOR = "dfr-GuitarChord";
 
-							if (!musicNote) {
-								throw new Error(
-									"You have entered a empty music note, probably you entered a '|' character at the end",
-								);
-							}
-
-							if (more.length > 0) {
-								throw new Error(
-									"A music note only can have 3 elements (guitarString,guitarFret,finger?) as maximum",
-								);
-							}
-
-							const parsedMusicNote: Partial<T_MusicNote> = {
-								guitarFret: parseFret(guitarFret),
-							};
-
-							if (isBarreChord(guitarString)) {
-								(parsedMusicNote as I_BarreMusicNote).barre = parseBarre(guitarString);
-							} else {
-								(parsedMusicNote as I_SimpleMusicNote).guitarString =
-									parseGuitarString(guitarString);
-								(parsedMusicNote as I_SimpleMusicNote).finger = parseFinger(finger);
-							}
-
-							return parsedMusicNote as T_MusicNote;
-					  })
-					: musicNotes;
-
-			const musicNotesFrets: T_GuitarFret[] = parsedMusicNotes
-				.map((musicNote) => {
-					checkGuitarFretValidity(musicNote.guitarFret);
-					return musicNote.guitarFret;
-				})
-				.sort((a, b) => a - b);
-
-			if (musicNotesFrets.length === 0) {
-				throw new Error("A chord must have at least one music note");
-			}
-
-			const groupedMusicNotesByGuitarFret = parsedMusicNotes.reduce(
-				(
-					result: T_GroupedMusicNotesByGuitarFret,
-					musicNote: T_MusicNote,
-				): T_GroupedMusicNotesByGuitarFret => {
-					if ((musicNote as I_BarreMusicNote).barre !== undefined) {
-						checkBarreChordValidity((musicNote as I_BarreMusicNote).barre);
-					} else {
-						checkFingerValidity((musicNote as I_SimpleMusicNote).finger);
-						checkGuitarStringValidity((musicNote as I_SimpleMusicNote).guitarString);
-					}
-
-					result[`${musicNote.guitarFret}`].push(musicNote);
-
-					if (
-						result[`${musicNote.guitarFret}`].find(
-							(musicNote) => (musicNote as I_BarreMusicNote).barre !== undefined,
-						) !== undefined &&
-						result[`${musicNote.guitarFret}`].length > 1
-					) {
-						throw new Error("A barre chord can't share a fret with another music note");
-					}
-
-					return result;
-				},
-				createArray(
-					Math.max(...musicNotesFrets) - Math.min(...musicNotesFrets) + 1,
-					Math.min(...musicNotesFrets),
-				).reduce(
-					(
-						result: T_GroupedMusicNotesByGuitarFret,
-						fret: T_GuitarFret,
-					): T_GroupedMusicNotesByGuitarFret => {
-						result[`${fret}`] = [];
-						return result;
-					},
-					{} as T_GroupedMusicNotesByGuitarFret,
-				),
-			);
-
-			return {
-				firstFret: musicNotesFrets[0],
-				lastFret: musicNotesFrets[musicNotesFrets.length - 1],
-				musicNotesAsString: this.musicNotesToString(parsedMusicNotes),
-				groupedMusicNotesByGuitarFret,
-			};
-		} catch (error) {
-			console.error("Error creating a chord");
-			console.error(error);
-			throw error;
-		}
+	parseChord(plainChordDetails: T_PlainChordDetails): T_ParsedChord {
+		return new Chord(plainChordDetails);
 	}
 
-	formatText(songContent: string): string {
-		let lastLineParsedIsBlank = false;
+	parseMusicText(lyrics: string): { parsedText: string; foundChords: string[] } {
+		let isTheLastParsedTextLineBlank = false;
 
-		const chords = {};
-		const parsedContent = songContent
+		const foundChords: Record<string, string> = {};
+		const parsedText = lyrics
 			.split("\n")
-			.map((line, index, array) => {
-				const isLastLine = array.length - 1 === index;
-				let parsedTextLine = line;
+			.map((currentTextLine, currentTextLineIndex, lyricsTextLinesArray) => {
+				const isCurrentLineTheLastOne = currentTextLineIndex === lyricsTextLinesArray.length - 1;
 
-				if (line === "") {
-					lastLineParsedIsBlank = true;
+				if (isEmptyString(currentTextLine)) {
+					isTheLastParsedTextLineBlank = true;
+
+					/*
+					 * I'm replacing blank lines for <br> elements
+					 * first:tw-hidden is a little hack
+					 * to avoid showing multiple <br> elements in a row
+					 */
 					return `<br class="first:tw-hidden" />`;
 				}
 
-				line
+				const currentTextLineParsed = currentTextLine
 					.split(" ")
-					.filter(Boolean)
-					.sort(this.sortChords)
-					.forEach((chord, _, textLineItems) => {
-						if (chord.includes("|")) {
-							chord
-								.split("|")
-								.filter(Boolean)
-								.forEach((chord, index) => {
-									parsedTextLine = this.parseTextLine({
-										parsedTextLine,
-										chord,
-										textLineItems,
-										replaceExactly: index > 0,
-										chords,
-										lastLineParsedIsBlank,
-										isLastLine,
-									});
-								});
-						} else {
-							parsedTextLine = this.parseTextLine({
-								parsedTextLine,
-								chord,
-								textLineItems,
-								chords,
-								lastLineParsedIsBlank,
-								isLastLine,
-							});
-						}
-					});
+					.filter((currentTextLineItem) => isNotEmptyString(currentTextLineItem))
+					.sort(this.sortTextLineItemsByLength)
+					.reduce((result, currentTextLineItem, _, currentTextLineItemsArray) => {
+						const { parsedTextLine, isCurrentTextLineItemAChord } = this.parseTextLine({
+							currentTextLineItem,
+							currentTextLineParsed: result,
+							exactReplacement: currentTextLineItemsArray.length === 1,
+							isCurrentLineTheLastOne,
+							isTheLastParsedTextLineBlank,
+						});
 
-				lastLineParsedIsBlank = false;
-				return this.lineToHTML(replaceAll(parsedTextLine, "%", ""));
+						if (isCurrentTextLineItemAChord) {
+							foundChords[currentTextLineItem] = currentTextLineItem;
+						}
+
+						return parsedTextLine;
+					}, currentTextLine);
+
+				isTheLastParsedTextLineBlank = false;
+				return `<span>${currentTextLineParsed}</span>`;
 			})
 			.join("\n");
 
-		console.log(
-			`"chords": [${Object.keys(chords)
-				.sort()
-				.map((chord) => `"${chord}"`)
-				.join(",")}]`,
-		);
-
-		return parsedContent;
+		return { parsedText, foundChords: Object.keys(foundChords).sort(sortPlainArray("asc")) };
 	}
 
-	findChord(chordName: string, chordIndex?: number): T_Chord | undefined {
-		const chord = CHORDS[chordName];
+	findChord(
+		rawChordName: string,
+		options?: { returnAllVariants: boolean },
+	): T_PlainChord | undefined {
+		const { chordName, chordVariantIndex } = this.parseChordName(rawChordName);
+		const chord = (CHORDS as unknown as T_ChordsDatabase)[chordName];
 
-		if (!chord) {
+		if (notFound(chord)) {
 			return undefined;
 		}
 
 		if (Array.isArray(chord)) {
-			if (chordIndex === undefined) {
-				return chord.map((chord) => {
+			if (options?.returnAllVariants) {
+				return chord.map((chordVariant, index) => {
 					return transformObjectKeysFromSnakeCaseToLowerCamelCase({
-						...chord,
+						...chordVariant,
 						name: chordName,
+						variantIndex: index,
 					});
-				}) as T_Chord;
+				});
 			}
 
-			if (!chord[chordIndex]) {
-				return undefined;
+			if (exists(chord[chordVariantIndex])) {
+				return transformObjectKeysFromSnakeCaseToLowerCamelCase({
+					...chord[chordVariantIndex],
+					name: chordName,
+					variantIndex: chordVariantIndex,
+				});
 			}
 
-			return transformObjectKeysFromSnakeCaseToLowerCamelCase({
-				...chord[chordIndex],
-				name: chordName,
-			}) as T_Chord;
+			return undefined;
 		}
 
 		return transformObjectKeysFromSnakeCaseToLowerCamelCase({
 			...chord,
 			name: chordName,
-		}) as T_Chord;
+			variantIndex: 0,
+		});
+	}
+
+	private parseChordName(rawChordName: string): {
+		chordName: string;
+		chordVariantIndex: number;
+	} {
+		// TODO: Regex for this kind of inputs: G[2] and try to extract the value inside of []
+		const hasChordMultipleVariants = rawChordName.includes("[") && rawChordName.includes("]");
+		const chordName = hasChordMultipleVariants
+			? rawChordName.substring(0, rawChordName.lastIndexOf("["))
+			: rawChordName;
+		const chordVariantIndex = hasChordMultipleVariants
+			? Number(replaceAll(rawChordName.substring(rawChordName.lastIndexOf("[")), ["[", "]"], "")) -
+			  1
+			: 0;
+
+		return { chordName, chordVariantIndex };
 	}
 
 	private parseTextLine({
-		parsedTextLine,
-		chord,
-		textLineItems,
-		replaceExactly = false,
-		chords,
-		lastLineParsedIsBlank,
-		isLastLine,
-	}) {
-		const chordHTML = this.chordToHTML(chord, lastLineParsedIsBlank, isLastLine);
+		currentTextLineItem,
+		currentTextLineParsed,
+		exactReplacement,
+		isCurrentLineTheLastOne,
+		isTheLastParsedTextLineBlank,
+	}: {
+		currentTextLineItem: string;
+		currentTextLineParsed: string;
+		exactReplacement: boolean;
+		isCurrentLineTheLastOne: boolean;
+		isTheLastParsedTextLineBlank: boolean;
+	}): {
+		parsedTextLine: string;
+		isCurrentTextLineItemAChord: boolean;
+	} {
+		// TODO: It is possible to avoid this as?
+		const chord = this.findChord(currentTextLineItem) as T_PlainChordDetails;
 
-		if (this.lineContainsAChord(chordHTML)) {
-			chords[chord] = chord;
+		if (notFound(chord)) {
+			return { parsedTextLine: currentTextLineParsed, isCurrentTextLineItemAChord: false };
 		}
 
-		if (textLineItems.length === 1 || replaceExactly) {
-			return replaceAll(parsedTextLine, chord, chordHTML);
-		}
-
-		return replaceAll(
-			replaceAll(
-				replaceAll(
-					replaceAll(parsedTextLine, ` ${chord} `, ` ${chordHTML} `),
-					`${chord}|`,
-					`${chordHTML}|`,
-				),
-				`${chord} `,
-				`${chordHTML} `,
-			),
-			` ${chord}`,
-			` ${chordHTML}`,
+		const chordAsHTML = this.chordToHTML(
+			chord,
+			isTheLastParsedTextLineBlank,
+			isCurrentLineTheLastOne,
 		);
-	}
 
-	private lineToHTML(content: string) {
-		return `<span>${content}</span>`;
+		return {
+			parsedTextLine: exactReplacement
+				? replaceAll(currentTextLineParsed, currentTextLineItem, chordAsHTML)
+				: replaceAll(
+						replaceAll(
+							replaceAll(
+								replaceAll(currentTextLineParsed, ` ${currentTextLineItem} `, ` ${chordAsHTML} `),
+								`${currentTextLineItem}|`,
+								`${chordAsHTML}|`,
+							),
+							`${currentTextLineItem} `,
+							`${chordAsHTML} `,
+						),
+						` ${currentTextLineItem}`,
+						` ${chordAsHTML}`,
+				  ),
+			isCurrentTextLineItemAChord: true,
+		};
 	}
 
 	private chordToHTML(
-		chordNameInput: string,
-		lastLineParsedIsBlank: boolean,
-		isLastLine: boolean,
+		chord: T_PlainChordDetails,
+		isTheLastParsedTextLineBlank: boolean,
+		isCurrentLineTheLastOne: boolean,
 	): string {
-		const isChordWithMultipleShapes = chordNameInput.includes("[") && chordNameInput.includes("]");
-		const chordName = isChordWithMultipleShapes
-			? chordNameInput.substring(0, chordNameInput.lastIndexOf("["))
-			: chordNameInput;
-		const chordIndex =
-			Number(
-				isChordWithMultipleShapes
-					? replaceAll(chordNameInput.substring(chordNameInput.lastIndexOf("[")), ["[", "]"], "")
-					: 1,
-			) - 1;
-
-		if (this.findChord(chordName, chordIndex)) {
-			return `<button class="dfr-Chord dfr-text-color-links ${isLastLine ? "" : "tw-mb-1"} ${
-				lastLineParsedIsBlank ? "" : "tw-mt-3"
-			}" data-chord-index="${chordIndex}">${chordName}</button>`;
-		}
-
-		return chordNameInput;
+		return `<button class="${this.CHORD_BUTTON_SELECTOR} dfr-text-color-links${
+			isCurrentLineTheLastOne ? "" : " tw-mb-1"
+		}${isTheLastParsedTextLineBlank ? "" : " tw-mt-3"}" data-chord-index="${chord.variantIndex}">${
+			chord.name
+		}</button>`;
 	}
 
-	private lineContainsAChord(line: string) {
-		return line.includes("<button");
-	}
-
-	private sortChords(a: string, b: string): number {
-		if (a.length > b.length) {
-			return -1;
-		}
-
+	private sortTextLineItemsByLength(a: string, b: string): number {
 		if (a.length < b.length) {
 			return 1;
 		}
 
 		return -1;
-	}
-
-	private musicNotesToString(musicNotes: T_MusicNote[]): string {
-		return musicNotes
-			.map((musicNote) => {
-				return `${
-					(musicNote as I_SimpleMusicNote).guitarString
-						? (musicNote as I_SimpleMusicNote).guitarString
-						: `${(musicNote as I_BarreMusicNote).barre}x`
-				},${musicNote.guitarFret}${
-					(musicNote as I_SimpleMusicNote).finger
-						? `,${(musicNote as I_SimpleMusicNote).finger}`
-						: ""
-				}`;
-			})
-			.join("|");
 	}
 }
 

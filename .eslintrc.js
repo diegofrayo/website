@@ -8,7 +8,6 @@ module.exports = {
 		"public/**/*",
 		"src/features/i18n",
 		"src/features/pages/personal/*/timer/**/*",
-		"src/lib/guitar",
 		"src/stores",
 		"src/stories",
 	],

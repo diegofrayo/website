@@ -16,10 +16,6 @@ export function isUndefined(input: unknown): input is undefined {
 	return input === undefined;
 }
 
-export function isNotUndefined(input: unknown): boolean {
-	return !isUndefined(input);
-}
-
 export function isObject(input: unknown): input is T_UnknownObject {
 	return typeof input === "object";
 }
@@ -50,6 +46,10 @@ export function isNotTrue(input: unknown): input is boolean {
 	return input === false;
 }
 
+export function isNotUndefined(input: unknown): boolean {
+	return input !== undefined;
+}
+
 export function isFalsy(input: unknown): boolean {
 	return !input;
 }
@@ -64,7 +64,7 @@ export function isEquals(input1: unknown, input2: unknown): boolean {
 
 // --- Strings ---
 
-export function isEmptyString(input: unknown): input is string {
+export function isEmptyString(input: unknown): boolean {
 	return typeof input === "string" && input.length === 0;
 }
 
@@ -86,6 +86,16 @@ export function isNotEmptyArray(input: unknown[]): boolean {
 
 export function isEmptyArray(input: unknown[]): boolean {
 	return input.length === 0;
+}
+
+// --- Semantic ---
+
+export function notFound(input: unknown): input is undefined {
+	return input === undefined;
+}
+
+export function exists(input: unknown): boolean {
+	return input !== undefined;
 }
 
 // --- DOM ---
