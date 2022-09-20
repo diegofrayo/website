@@ -15,7 +15,7 @@ import type { T_GuitarFret, T_ParsedChord, T_PlainChordDetails } from "../types"
 
 // WARN: False positive
 /* eslint-disable react/no-unused-prop-types */
-type T_GuitarChordProps = { chord: T_PlainChordDetails };
+type T_GuitarChordProps = { plainChord: T_PlainChordDetails };
 
 function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 	const {
@@ -127,17 +127,17 @@ export default GuitarChord;
 
 // --- Controller ---
 
-type T_UseControllerReturn = T_GuitarChordProps & {
+type T_UseControllerReturn = {
 	chordContainerRef: T_ReactRefObject<HTMLDivElement>;
 	handleDownloadAsImageClick: () => Promise<void>;
 	parsedChord: T_ParsedChord | undefined;
 	error: unknown;
 };
 
-function useController({ chord }: T_GuitarChordProps): T_UseControllerReturn {
+function useController({ plainChord }: T_GuitarChordProps): T_UseControllerReturn {
 	// hooks
 	const { data, error } = useExecuteCallback<T_PlainChordDetails, T_ParsedChord>(
-		chord,
+		plainChord,
 		(params) => {
 			return GuitarService.parseChord(params);
 		},
@@ -150,18 +150,15 @@ function useController({ chord }: T_GuitarChordProps): T_UseControllerReturn {
 	async function handleDownloadAsImageClick(): Promise<void> {
 		if (isNull(chordContainerRef.current)) return;
 
-		await downloadComponentAsImage(chordContainerRef.current, chord.name);
+		await downloadComponentAsImage(chordContainerRef.current, plainChord.name);
 
 		AnalyticsService.trackEvent("DOWNLOAD_CHORD_AS_IMAGE", {
-			chord: chord.name,
+			chord: plainChord.name,
 			page: window.location.pathname,
 		});
 	}
 
 	return {
-		// props
-		chord,
-
 		// states && refs
 		chordContainerRef,
 

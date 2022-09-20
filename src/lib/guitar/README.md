@@ -35,3 +35,4 @@ TODO
 - Falsos positivos de acordes (// TODO: % special characters) (Ando ganas)
 - Test: isBlankTheLastParsedTextLine
 - // TODO: Create a regex: Chords should be like this "{A}"
+- // Chord (Cambiar el nombre?) Leer articulo y refinar

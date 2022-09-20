@@ -5,12 +5,12 @@ import classNames from "classnames";
 
 import { Space, Block, Text, InlineText } from "~/components/primitive";
 import { createArray } from "~/utils/objects-and-arrays";
+import { isNotTrue } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import GuitarFret from "./GuitarFret";
 import { NUMBER_OF_STRINGS } from "../constants";
 import { T_GuitarFret, T_GuitarString } from "../types";
-import { isNotTrue } from "~/utils/validations";
 
 // WARN: False positive
 /* eslint-disable react/no-unused-prop-types */

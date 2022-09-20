@@ -4,11 +4,11 @@ import classNames from "classnames";
 import { Block, Icon, InlineText } from "~/components/primitive";
 import twcss from "~/lib/twcss";
 import { createArray, mirror } from "~/utils/objects-and-arrays";
+import { isUndefined } from "~/utils/validations";
 import type { T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import { NUMBER_OF_STRINGS } from "../constants";
 import type { T_MusicNote, T_GuitarFret, T_GuitarString, T_ParsedChord } from "../types";
-import { isNotEmptyString, isUndefined } from "~/utils/validations";
 
 const VARIANTS_OPTIONS = [
 	"GUITAR_STRINGS_NAMES",
@@ -164,7 +164,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 					}
 
 					if (isSkippedGuitarStringsVariant) {
-						if (isNotEmptyString(touchedStrings)) {
+						if (Array.isArray(touchedStrings)) {
 							return (
 								<Block
 									key={`${guitarString}-${Date.now()}`}

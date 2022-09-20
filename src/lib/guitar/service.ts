@@ -1,28 +1,32 @@
-import { logger } from "~/features/logging";
-import { transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/objects-and-arrays";
+import {
+	sortPlainArray,
+	transformObjectKeysFromSnakeCaseToLowerCamelCase,
+} from "~/utils/objects-and-arrays";
 import { replaceAll } from "~/utils/strings";
-import { exists, isEmptyString, notFound } from "~/utils/validations";
+import { exists, isEmptyString, isNotEmptyString, notFound } from "~/utils/validations";
 
-import ChordVO from "./chord-vo";
+import Chord from "./chord-vo";
 import CHORDS from "./data/chords.json";
 import type { T_ChordsDatabase, T_ParsedChord, T_PlainChord, T_PlainChordDetails } from "./types";
 
 class GuitarService {
+	public CHORD_BUTTON_SELECTOR = "dfr-GuitarChord";
+
 	parseChord(plainChordDetails: T_PlainChordDetails): T_ParsedChord {
-		return new ChordVO(plainChordDetails);
+		return new Chord(plainChordDetails);
 	}
 
-	parseSongLyrics(lyrics: string): string {
-		const songChords: Record<string, string> = {};
-		let isBlankTheLastParsedTextLine = false;
+	parseMusicText(lyrics: string): { parsedText: string; foundChords: string[] } {
+		let isTheLastParsedTextLineBlank = false;
 
-		const parsedLyrics = lyrics
+		const foundChords: Record<string, string> = {};
+		const parsedText = lyrics
 			.split("\n")
 			.map((currentTextLine, currentTextLineIndex, lyricsTextLinesArray) => {
 				const isCurrentLineTheLastOne = currentTextLineIndex === lyricsTextLinesArray.length - 1;
 
 				if (isEmptyString(currentTextLine)) {
-					isBlankTheLastParsedTextLine = true;
+					isTheLastParsedTextLineBlank = true;
 
 					/*
 					 * I'm replacing blank lines for <br> elements
@@ -34,7 +38,7 @@ class GuitarService {
 
 				const currentTextLineParsed = currentTextLine
 					.split(" ")
-					.filter(Boolean)
+					.filter((currentTextLineItem) => isNotEmptyString(currentTextLineItem))
 					.sort(this.sortTextLineItemsByLength)
 					.reduce((result, currentTextLineItem, _, currentTextLineItemsArray) => {
 						const { parsedTextLine, isCurrentTextLineItemAChord } = this.parseTextLine({
@@ -42,37 +46,29 @@ class GuitarService {
 							currentTextLineParsed: result,
 							exactReplacement: currentTextLineItemsArray.length === 1,
 							isCurrentLineTheLastOne,
-							isBlankTheLastParsedTextLine,
+							isTheLastParsedTextLineBlank,
 						});
 
 						if (isCurrentTextLineItemAChord) {
-							songChords[currentTextLineItem] = currentTextLineItem;
+							foundChords[currentTextLineItem] = currentTextLineItem;
 						}
 
 						return parsedTextLine;
 					}, currentTextLine);
 
-				isBlankTheLastParsedTextLine = false;
+				isTheLastParsedTextLineBlank = false;
 				return `<span>${currentTextLineParsed}</span>`;
 			})
 			.join("\n");
 
-		logger(
-			"LOG",
-			`"chords": [${Object.keys(songChords)
-				.sort()
-				.map((chord) => `"${chord}"`)
-				.join(",")}]`,
-		);
-
-		return parsedLyrics;
+		return { parsedText, foundChords: Object.keys(foundChords).sort(sortPlainArray("asc")) };
 	}
 
 	findChord(
-		chordNameInput: string,
+		rawChordName: string,
 		options?: { returnAllVariants: boolean },
 	): T_PlainChord | undefined {
-		const { chordName, chordVariantIndex } = this.parseChordName(chordNameInput);
+		const { chordName, chordVariantIndex } = this.parseChordName(rawChordName);
 		const chord = (CHORDS as unknown as T_ChordsDatabase)[chordName];
 
 		if (notFound(chord)) {
@@ -81,11 +77,11 @@ class GuitarService {
 
 		if (Array.isArray(chord)) {
 			if (options?.returnAllVariants) {
-				return chord.map((chordVariantItem, chordVariantItemIndex) => {
+				return chord.map((chordVariant, index) => {
 					return transformObjectKeysFromSnakeCaseToLowerCamelCase({
-						...chordVariantItem,
+						...chordVariant,
 						name: chordName,
-						variantIndex: chordVariantItemIndex,
+						variantIndex: index,
 					});
 				});
 			}
@@ -108,19 +104,18 @@ class GuitarService {
 		});
 	}
 
-	private parseChordName(chordNameInput: string): {
+	private parseChordName(rawChordName: string): {
 		chordName: string;
 		chordVariantIndex: number;
 	} {
-		// TODO: Regex
-		const hasChordMultipleVariants = chordNameInput.includes("[") && chordNameInput.includes("]");
+		// TODO: Regex for this kind of inputs: G[2] and try to extract the value inside of []
+		const hasChordMultipleVariants = rawChordName.includes("[") && rawChordName.includes("]");
 		const chordName = hasChordMultipleVariants
-			? chordNameInput.substring(0, chordNameInput.lastIndexOf("["))
-			: chordNameInput;
+			? rawChordName.substring(0, rawChordName.lastIndexOf("["))
+			: rawChordName;
 		const chordVariantIndex = hasChordMultipleVariants
-			? Number(
-					replaceAll(chordNameInput.substring(chordNameInput.lastIndexOf("[")), ["[", "]"], ""),
-			  ) - 1
+			? Number(replaceAll(rawChordName.substring(rawChordName.lastIndexOf("[")), ["[", "]"], "")) -
+			  1
 			: 0;
 
 		return { chordName, chordVariantIndex };
@@ -131,8 +126,14 @@ class GuitarService {
 		currentTextLineParsed,
 		exactReplacement,
 		isCurrentLineTheLastOne,
-		isBlankTheLastParsedTextLine,
-	}: T_ParseLyricsTextLineParams): {
+		isTheLastParsedTextLineBlank,
+	}: {
+		currentTextLineItem: string;
+		currentTextLineParsed: string;
+		exactReplacement: boolean;
+		isCurrentLineTheLastOne: boolean;
+		isTheLastParsedTextLineBlank: boolean;
+	}): {
 		parsedTextLine: string;
 		isCurrentTextLineItemAChord: boolean;
 	} {
@@ -143,27 +144,27 @@ class GuitarService {
 			return { parsedTextLine: currentTextLineParsed, isCurrentTextLineItemAChord: false };
 		}
 
-		const chordHTML = this.chordToHTML(
+		const chordAsHTML = this.chordToHTML(
 			chord,
-			isBlankTheLastParsedTextLine,
+			isTheLastParsedTextLineBlank,
 			isCurrentLineTheLastOne,
 		);
 
 		return {
 			parsedTextLine: exactReplacement
-				? replaceAll(currentTextLineParsed, currentTextLineItem, chordHTML)
+				? replaceAll(currentTextLineParsed, currentTextLineItem, chordAsHTML)
 				: replaceAll(
 						replaceAll(
 							replaceAll(
-								replaceAll(currentTextLineParsed, ` ${currentTextLineItem} `, ` ${chordHTML} `),
+								replaceAll(currentTextLineParsed, ` ${currentTextLineItem} `, ` ${chordAsHTML} `),
 								`${currentTextLineItem}|`,
-								`${chordHTML}|`,
+								`${chordAsHTML}|`,
 							),
 							`${currentTextLineItem} `,
-							`${chordHTML} `,
+							`${chordAsHTML} `,
 						),
 						` ${currentTextLineItem}`,
-						` ${chordHTML}`,
+						` ${chordAsHTML}`,
 				  ),
 			isCurrentTextLineItemAChord: true,
 		};
@@ -171,12 +172,12 @@ class GuitarService {
 
 	private chordToHTML(
 		chord: T_PlainChordDetails,
-		isBlankTheLastParsedTextLine: boolean,
+		isTheLastParsedTextLineBlank: boolean,
 		isCurrentLineTheLastOne: boolean,
 	): string {
-		return `<button class="dfr-Chord dfr-text-color-links${
+		return `<button class="${this.CHORD_BUTTON_SELECTOR} dfr-text-color-links${
 			isCurrentLineTheLastOne ? "" : " tw-mb-1"
-		}${isBlankTheLastParsedTextLine ? "" : " tw-mt-3"}" data-chord-index="${chord.variantIndex}">${
+		}${isTheLastParsedTextLineBlank ? "" : " tw-mt-3"}" data-chord-index="${chord.variantIndex}">${
 			chord.name
 		}</button>`;
 	}
@@ -191,13 +192,3 @@ class GuitarService {
 }
 
 export default new GuitarService();
-
-// --- Types ---
-
-type T_ParseLyricsTextLineParams = {
-	currentTextLineItem: string;
-	currentTextLineParsed: string;
-	exactReplacement: boolean;
-	isCurrentLineTheLastOne: boolean;
-	isBlankTheLastParsedTextLine: boolean;
-};

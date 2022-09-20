@@ -5,12 +5,13 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import SongPage from "~/features/pages/music/[song]";
 import MusicService, { T_Song } from "~/features/pages/music/service";
 import { getPageContentStaticProps } from "~/features/i18n";
+import { GuitarService } from "~/lib/guitar";
 import http from "~/lib/http";
 import dataLoader from "~/server";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { getMDXScope } from "~/features/mdx";
 import { ROUTES } from "~/features/routing";
-import { isUndefined } from "~/utils/validations";
+import { notFound } from "~/utils/validations";
 
 type T_PageProps = {
 	song: T_Song;
@@ -44,7 +45,7 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, T_StaticPat
 	callback: async ({ params }) => {
 		const song = await MusicService.getSong({ id: params.song });
 
-		if (isUndefined(song)) {
+		if (notFound(song)) {
 			return {
 				notFound: true,
 			};
@@ -57,13 +58,15 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, T_StaticPat
 			songContent = (await http.get(song.assets.serverUrl)).data;
 		}
 
+		const { parsedText, foundChords } = GuitarService.parseMusicText(songContent.txt);
 		const songMDXContent = await serialize(songContent.mdx, {
 			scope: {
 				DATA: {
 					...getMDXScope().DATA,
 					song: {
 						...song,
-						content: songContent.txt,
+						parsedLyrics: parsedText,
+						chords: foundChords,
 					},
 				},
 			},

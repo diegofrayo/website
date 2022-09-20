@@ -16,7 +16,7 @@ import type {
 	T_PlainChordDetails,
 } from "./types";
 
-class ChordVO {
+class Chord {
 	public name;
 
 	public firstFret;
@@ -31,18 +31,17 @@ class ChordVO {
 
 	public musicNotesGroupedByFret;
 
-	// TODO: Regex for this input ("6x,1|4,3,1|3,3,2|2,3,3")
-	constructor(unparsedChord: T_PlainChordDetails) {
-		const musicNotes = generateMusicNotes(unparsedChord.musicNotes);
+	constructor(plainChord: T_PlainChordDetails) {
+		const musicNotes = generateMusicNotes(plainChord.musicNotes);
 
-		this.name = unparsedChord.name;
-		this.barreFret = parseBarre(unparsedChord.musicNotes);
+		this.name = plainChord.name;
+		this.barreFret = parseBarre(plainChord.musicNotes);
 		this.isBarreChord = isNotUndefined(this.barreFret); // TODO: ??? (is assertion)
 		this.firstFret = this.isBarreChord ? this.barreFret?.fret || 1 : musicNotes[0].guitarFret;
 		this.lastFret = musicNotes[musicNotes.length - 1].guitarFret;
-		this.touchedStrings = parseTouchedStrings(unparsedChord.touchedStrings);
+		this.touchedStrings = parseTouchedStrings(plainChord.touchedStrings);
 		this.musicNotesGroupedByFret = musicNotes.reduce(
-			(result, musicNote: T_MusicNote): T_ParsedChord["musicNotesGroupedByFret"] => {
+			(result, musicNote) => {
 				return {
 					...result,
 					[`${musicNote.guitarFret}`]: (result[`${musicNote.guitarFret}`] || []).concat([
@@ -50,23 +49,17 @@ class ChordVO {
 					]),
 				};
 			},
-			createArray(this.lastFret - this.firstFret + 1, this.firstFret).reduce(
-				(
-					result: T_ParsedChord["musicNotesGroupedByFret"],
-					fret,
-				): T_ParsedChord["musicNotesGroupedByFret"] => {
-					return {
-						...result,
-						[`${fret}`]: [],
-					};
-				},
-				{} as T_ParsedChord["musicNotesGroupedByFret"],
-			),
+			createArray(this.lastFret - this.firstFret + 1, this.firstFret).reduce((result, fret) => {
+				return {
+					...result,
+					[`${fret}`]: [],
+				};
+			}, {} as T_ParsedChord["musicNotesGroupedByFret"]),
 		);
 	}
 }
 
-export default ChordVO;
+export default Chord;
 
 // --- Utils ---
 
@@ -122,6 +115,7 @@ function parseTouchedStrings(touchedStrings: string): T_ParsedChord["touchedStri
 	return touchedStrings.split(",").reverse() as T_ParsedChord["touchedStrings"];
 }
 
+// TODO: Regex for this input ("6x,1|4,3,1|3,3,2|2,3,3")
 function generateMusicNotes(input: string): T_MusicNote[] {
 	const musicNotes = input
 		.split("|")

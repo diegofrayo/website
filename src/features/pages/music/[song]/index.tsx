@@ -130,7 +130,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
 						<Pre
 							variant={Pre.variant.BREAK_WORDS}
 							dangerouslySetInnerHTML={{
-								__html: GuitarService.parseSongLyrics(song.chords.join(" | ")),
+								__html: GuitarService.parseMusicText(song.chords.join(" | ")).parsedText,
 							}}
 						/>
 					</Block>

@@ -24,12 +24,13 @@ export type T_PlainChordDetails = {
 	variantIndex: number;
 };
 
-export type T_ChordsDatabase = {
-	[key in string]: {
-		music_notes: string;
+export type T_ChordsDatabase = Record<
+	string,
+	{
+		music_notes: string | { music_notes: string; touched_strings: string }[];
 		touched_strings: string;
-	};
-};
+	}
+>;
 
 // --- Music note ---
 

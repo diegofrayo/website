@@ -16,7 +16,6 @@ import type { T_ReactChildren, T_ReactElement, T_ReactNode } from "~/types";
 /* eslint-disable react/no-unused-prop-types */
 type T_TextFormatterProps = {
 	children: string;
-	chords: string[];
 	insertions: { text: string; replacement: T_ReactElement }[];
 };
 
@@ -54,7 +53,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 											index === selectedUnparsedChordIndex ? "tw-block" : "tw-hidden",
 										)}
 									>
-										<GuitarChord chord={chord} />
+										<GuitarChord plainChord={chord} />
 									</Block>
 								);
 							})}
@@ -99,7 +98,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 							</Block>
 						</Block>
 					) : selectedUnparsedChord ? (
-						<GuitarChord chord={selectedUnparsedChord} />
+						<GuitarChord plainChord={selectedUnparsedChord} />
 					) : null}
 					<Space size={2} />
 					<Button
@@ -143,7 +142,7 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 
 	// effects
 	useDidMount(() => {
-		document.querySelectorAll(".dfr-Chord").forEach((button) => {
+		document.querySelectorAll(`.${GuitarService.CHORD_BUTTON_SELECTOR}`).forEach((button) => {
 			button.addEventListener("click", (event) => {
 				const target = event.target as HTMLButtonElement;
 				const chord = GuitarService.findChord(target.innerText, { returnAllVariants: true });
@@ -238,6 +237,6 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 		onModalCloseHandler,
 
 		// vars
-		parsedLyrics: parseInsertions(GuitarService.parseSongLyrics(children)),
+		parsedLyrics: parseInsertions(children),
 	};
 }
