@@ -57,6 +57,7 @@ function SongVO(data: T_UnknownObject): T_Song {
 	const song = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Song>(data);
 
 	song.artist = Array.isArray(song.artist) ? song.artist.join(", ") : song.artist;
+	song.sources = song.sources || [];
 
 	return song;
 }
