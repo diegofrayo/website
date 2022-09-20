@@ -27,3 +27,11 @@ REGEX
 
 (A|B|C|D|E|F|G)(m|6|7|\/|#|b|sus)?(([a-z]|[0-9]|(#|\/|°)){1,5})?
 https://www.chordpro.org/chordpro/chordpro-file-format-specification/
+
+
+TODO
+- Diferencia entre no undefined, undefined y null
+	T_Chord: barreFret? | undefined
+- Falsos positivos de acordes (// TODO: % special characters) (Ando ganas)
+- Test: isBlankTheLastParsedTextLine
+- // TODO: Create a regex: Chords should be like this "{A}"

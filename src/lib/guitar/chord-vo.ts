@@ -1,52 +1,48 @@
-// import { sortPlainArray } from "~/utils/objects-and-arrays";
-// import { replaceAll } from "~/utils/strings";
 import { createArray, sortBy } from "~/utils/objects-and-arrays";
 import {
 	isEmptyString,
 	isNotEmptyArray,
 	isNotTrue,
+	isNotUndefined,
 	isTrue,
-	isUndefined,
 } from "~/utils/validations";
 
 import type {
-	T_BarreFret,
 	T_Finger,
 	T_GuitarFret,
 	T_GuitarString,
 	T_MusicNote,
-	T_MusicNotesGroupedByFret,
-	T_UnparsedChordDetails,
+	T_ParsedChord,
+	T_PlainChordDetails,
 } from "./types";
 
-// TODO: Avoid type these attributes two times
 class ChordVO {
-	public name: string;
+	public name;
 
-	public firstFret: T_GuitarFret;
+	public firstFret;
 
-	public lastFret: T_GuitarFret;
+	public lastFret;
 
-	public barreFret: T_BarreFret | undefined;
+	public barreFret;
 
-	public isBarreChord = false;
+	public isBarreChord;
 
-	public musicNotesGroupedByFret: T_MusicNotesGroupedByFret;
+	public touchedStrings;
 
-	public touchedStrings: string;
+	public musicNotesGroupedByFret;
 
 	// TODO: Regex for this input ("6x,1|4,3,1|3,3,2|2,3,3")
-	constructor(unparsedChord: T_UnparsedChordDetails) {
+	constructor(unparsedChord: T_PlainChordDetails) {
 		const musicNotes = generateMusicNotes(unparsedChord.musicNotes);
 
 		this.name = unparsedChord.name;
-		this.touchedStrings = unparsedChord.touchedStrings;
 		this.barreFret = parseBarre(unparsedChord.musicNotes);
-		this.isBarreChord = isUndefined(this.barreFret) === false; // TODO : is for barreFret
+		this.isBarreChord = isNotUndefined(this.barreFret); // TODO: ??? (is assertion)
 		this.firstFret = this.isBarreChord ? this.barreFret?.fret || 1 : musicNotes[0].guitarFret;
 		this.lastFret = musicNotes[musicNotes.length - 1].guitarFret;
+		this.touchedStrings = parseTouchedStrings(unparsedChord.touchedStrings);
 		this.musicNotesGroupedByFret = musicNotes.reduce(
-			(result, musicNote: T_MusicNote): T_MusicNotesGroupedByFret => {
+			(result, musicNote: T_MusicNote): T_ParsedChord["musicNotesGroupedByFret"] => {
 				return {
 					...result,
 					[`${musicNote.guitarFret}`]: (result[`${musicNote.guitarFret}`] || []).concat([
@@ -55,13 +51,16 @@ class ChordVO {
 				};
 			},
 			createArray(this.lastFret - this.firstFret + 1, this.firstFret).reduce(
-				(result: T_MusicNotesGroupedByFret, fret): T_MusicNotesGroupedByFret => {
+				(
+					result: T_ParsedChord["musicNotesGroupedByFret"],
+					fret,
+				): T_ParsedChord["musicNotesGroupedByFret"] => {
 					return {
 						...result,
 						[`${fret}`]: [],
 					};
 				},
-				{} as T_MusicNotesGroupedByFret,
+				{} as T_ParsedChord["musicNotesGroupedByFret"],
 			),
 		);
 	}
@@ -97,9 +96,7 @@ function parseFinger(finger: string): T_Finger | undefined {
 	return isTrue(REGEX.test(finger)) ? (Number(finger) as T_Finger) : undefined;
 }
 
-function parseBarre(
-	input: string,
-): { firstGuitarString: T_GuitarString; fret: T_GuitarFret } | undefined {
+function parseBarre(input: string): T_ParsedChord["barreFret"] {
 	const numbersOfBarre = (input.match(/x/g) || []).length;
 
 	if (numbersOfBarre > 1) {
@@ -118,6 +115,11 @@ function parseBarre(
 	}
 
 	return undefined;
+}
+
+function parseTouchedStrings(touchedStrings: string): T_ParsedChord["touchedStrings"] {
+	// TODO: Regex
+	return touchedStrings.split(",").reverse() as T_ParsedChord["touchedStrings"];
 }
 
 function generateMusicNotes(input: string): T_MusicNote[] {

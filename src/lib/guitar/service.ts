@@ -5,67 +5,55 @@ import { exists, isEmptyString, notFound } from "~/utils/validations";
 
 import ChordVO from "./chord-vo";
 import CHORDS from "./data/chords.json";
-import {
-	T_PreparsedChord,
-	T_ChordsDatabase,
-	T_PreparsedChordDetails,
-	T_Chord,
-	T_UnparsedChordDetails,
-} from "./types";
+import type { T_ChordsDatabase, T_ParsedChord, T_PlainChord, T_PlainChordDetails } from "./types";
 
 class GuitarService {
-	// TODO: Regex for this input ("6x,1|4,3,1|3,3,2|2,3,3")
-	parseChord(unparsedChord: T_UnparsedChordDetails): T_Chord {
-		const chord = new ChordVO(unparsedChord);
-
-		return chord;
+	parseChord(plainChordDetails: T_PlainChordDetails): T_ParsedChord {
+		return new ChordVO(plainChordDetails);
 	}
 
 	parseSongLyrics(lyrics: string): string {
-		let isBlankTheLastParsedLine = false;
-
 		const songChords: Record<string, string> = {};
+		let isBlankTheLastParsedTextLine = false;
+
 		const parsedLyrics = lyrics
 			.split("\n")
-			.map((currentLyricsTextLine, currentLyricsTextLineIndex, lyricsTextLinesArray) => {
-				const isCurrentLineTheLastOne =
-					currentLyricsTextLineIndex === lyricsTextLinesArray.length - 1;
-				let currentLyricsTextLineParsed = currentLyricsTextLine;
+			.map((currentTextLine, currentTextLineIndex, lyricsTextLinesArray) => {
+				const isCurrentLineTheLastOne = currentTextLineIndex === lyricsTextLinesArray.length - 1;
 
-				if (isEmptyString(currentLyricsTextLineParsed)) {
-					isBlankTheLastParsedLine = true;
+				if (isEmptyString(currentTextLine)) {
+					isBlankTheLastParsedTextLine = true;
 
-					// I'm replacing blank lines for <br> elements
-					// first:tw-hidden is a little hack
-					// to avoid showing multiple <br> elements in a row
+					/*
+					 * I'm replacing blank lines for <br> elements
+					 * first:tw-hidden is a little hack
+					 * to avoid showing multiple <br> elements in a row
+					 */
 					return `<br class="first:tw-hidden" />`;
 				}
 
-				isBlankTheLastParsedLine = false;
-
-				// TODO: % special characters
-				currentLyricsTextLine
+				const currentTextLineParsed = currentTextLine
 					.split(" ")
 					.filter(Boolean)
-					.sort(this.sortTextLineItems)
-					.forEach((currentLyricsTextLineItem, _, currentLyricsTextLineItemsArray) => {
-						const { parsedTextLine, isTextLineItemAChord } = this.parseTextLine({
-							currentLyricsTextLineParsed,
-							currentLyricsTextLineItem,
-							exactReplacement: currentLyricsTextLineItemsArray.length === 1,
-							songChords,
+					.sort(this.sortTextLineItemsByLength)
+					.reduce((result, currentTextLineItem, _, currentTextLineItemsArray) => {
+						const { parsedTextLine, isCurrentTextLineItemAChord } = this.parseTextLine({
+							currentTextLineItem,
+							currentTextLineParsed: result,
+							exactReplacement: currentTextLineItemsArray.length === 1,
 							isCurrentLineTheLastOne,
-							isBlankTheLastParsedLine,
+							isBlankTheLastParsedTextLine,
 						});
 
-						if (isTextLineItemAChord) {
-							songChords[currentLyricsTextLineItem] = currentLyricsTextLineItem;
+						if (isCurrentTextLineItemAChord) {
+							songChords[currentTextLineItem] = currentTextLineItem;
 						}
 
-						currentLyricsTextLineParsed = parsedTextLine;
-					});
+						return parsedTextLine;
+					}, currentTextLine);
 
-				return `<span>${currentLyricsTextLineParsed}</span>`;
+				isBlankTheLastParsedTextLine = false;
+				return `<span>${currentTextLineParsed}</span>`;
 			})
 			.join("\n");
 
@@ -83,9 +71,9 @@ class GuitarService {
 	findChord(
 		chordNameInput: string,
 		options?: { returnAllVariants: boolean },
-	): T_PreparsedChord | undefined {
+	): T_PlainChord | undefined {
 		const { chordName, chordVariantIndex } = this.parseChordName(chordNameInput);
-		const chord = (CHORDS as T_ChordsDatabase)[chordName];
+		const chord = (CHORDS as unknown as T_ChordsDatabase)[chordName];
 
 		if (notFound(chord)) {
 			return undefined;
@@ -139,58 +127,61 @@ class GuitarService {
 	}
 
 	private parseTextLine({
-		currentLyricsTextLineParsed,
-		currentLyricsTextLineItem,
+		currentTextLineItem,
+		currentTextLineParsed,
 		exactReplacement,
 		isCurrentLineTheLastOne,
-		isBlankTheLastParsedLine,
-	}: T_ParseLyricsTextLine): { isTextLineItemAChord: boolean; parsedTextLine: string } {
-		const chord = this.findChord(currentLyricsTextLineItem) as T_PreparsedChordDetails;
+		isBlankTheLastParsedTextLine,
+	}: T_ParseLyricsTextLineParams): {
+		parsedTextLine: string;
+		isCurrentTextLineItemAChord: boolean;
+	} {
+		// TODO: It is possible to avoid this as?
+		const chord = this.findChord(currentTextLineItem) as T_PlainChordDetails;
 
 		if (notFound(chord)) {
-			return { parsedTextLine: currentLyricsTextLineParsed, isTextLineItemAChord: false };
+			return { parsedTextLine: currentTextLineParsed, isCurrentTextLineItemAChord: false };
 		}
 
-		const chordHTML = this.chordToHTML(chord, isBlankTheLastParsedLine, isCurrentLineTheLastOne);
+		const chordHTML = this.chordToHTML(
+			chord,
+			isBlankTheLastParsedTextLine,
+			isCurrentLineTheLastOne,
+		);
 
-		// TODO: Create a regex: Chords should be like this "{A}"
 		return {
-			isTextLineItemAChord: true,
 			parsedTextLine: exactReplacement
-				? replaceAll(currentLyricsTextLineParsed, currentLyricsTextLineItem, chordHTML)
+				? replaceAll(currentTextLineParsed, currentTextLineItem, chordHTML)
 				: replaceAll(
 						replaceAll(
 							replaceAll(
-								replaceAll(
-									currentLyricsTextLineParsed,
-									` ${currentLyricsTextLineItem} `,
-									` ${chordHTML} `,
-								),
-								`${currentLyricsTextLineItem}|`,
+								replaceAll(currentTextLineParsed, ` ${currentTextLineItem} `, ` ${chordHTML} `),
+								`${currentTextLineItem}|`,
 								`${chordHTML}|`,
 							),
-							`${currentLyricsTextLineItem} `,
+							`${currentTextLineItem} `,
 							`${chordHTML} `,
 						),
-						` ${currentLyricsTextLineItem}`,
+						` ${currentTextLineItem}`,
 						` ${chordHTML}`,
 				  ),
+			isCurrentTextLineItemAChord: true,
 		};
 	}
 
 	private chordToHTML(
-		chord: T_PreparsedChordDetails,
-		isBlankTheLastParsedLine: boolean,
+		chord: T_PlainChordDetails,
+		isBlankTheLastParsedTextLine: boolean,
 		isCurrentLineTheLastOne: boolean,
 	): string {
 		return `<button class="dfr-Chord dfr-text-color-links${
 			isCurrentLineTheLastOne ? "" : " tw-mb-1"
-		}${isBlankTheLastParsedLine ? "" : " tw-mt-3"}" data-chord-index="${chord.variantIndex}">${
+		}${isBlankTheLastParsedTextLine ? "" : " tw-mt-3"}" data-chord-index="${chord.variantIndex}">${
 			chord.name
 		}</button>`;
 	}
 
-	private sortTextLineItems(a: string, b: string): number {
+	private sortTextLineItemsByLength(a: string, b: string): number {
 		if (a.length < b.length) {
 			return 1;
 		}
@@ -203,11 +194,10 @@ export default new GuitarService();
 
 // --- Types ---
 
-type T_ParseLyricsTextLine = {
-	currentLyricsTextLineParsed: string;
-	currentLyricsTextLineItem: string;
+type T_ParseLyricsTextLineParams = {
+	currentTextLineItem: string;
+	currentTextLineParsed: string;
 	exactReplacement: boolean;
-	songChords: Record<string, string>;
 	isCurrentLineTheLastOne: boolean;
-	isBlankTheLastParsedLine: boolean;
+	isBlankTheLastParsedTextLine: boolean;
 };

@@ -7,13 +7,7 @@ import { createArray, mirror } from "~/utils/objects-and-arrays";
 import type { T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import { NUMBER_OF_STRINGS } from "../constants";
-import {
-	T_MusicNote,
-	T_GuitarFret,
-	T_ChordTouchedStrings,
-	T_GuitarString,
-	T_BarreFret,
-} from "../types";
+import type { T_MusicNote, T_GuitarFret, T_GuitarString, T_ParsedChord } from "../types";
 import { isNotEmptyString, isUndefined } from "~/utils/validations";
 
 const VARIANTS_OPTIONS = [
@@ -31,8 +25,8 @@ type T_GuitarFretProps = {
 	variant: T_Variant;
 	number?: T_GuitarFret;
 	musicNotes?: T_MusicNote[];
-	barreFret?: T_BarreFret | undefined;
-	touchedStrings?: T_ChordTouchedStrings;
+	barreFret?: T_ParsedChord["barreFret"];
+	touchedStrings?: T_ParsedChord["touchedStrings"];
 };
 
 function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
@@ -204,7 +198,7 @@ type T_UseControllerReturn = Omit<T_GuitarFretProps, "variant"> & {
 	isEmptyVariant: boolean;
 	isSkippedGuitarStringsVariant: boolean;
 	isGuitarStringsNamesVariant: boolean;
-	isBarreFretChecker: (input: unknown) => input is T_BarreFret;
+	isBarreFretChecker: (input: unknown) => input is NonNullable<T_ParsedChord["barreFret"]>;
 };
 
 function useController({ variant, ...rest }: T_GuitarFretProps): T_UseControllerReturn {
@@ -215,10 +209,10 @@ function useController({ variant, ...rest }: T_GuitarFretProps): T_UseController
 	const isSkippedGuitarStringsVariant = variant === VARIANTS.SKIPPED_GUITAR_STRINGS;
 	const isGuitarStringsNamesVariant = variant === VARIANTS.GUITAR_STRINGS_NAMES;
 
-	const isBarreFretChecker: T_UseControllerReturn["isBarreFretChecker"] =
-		function isBarreFretChecker(input): input is T_BarreFret {
-			return input !== undefined;
-		};
+	// utils
+	function isBarreFretChecker(input: unknown): input is NonNullable<T_ParsedChord["barreFret"]> {
+		return input !== undefined;
+	}
 
 	return {
 		// props
@@ -247,7 +241,7 @@ function SkippedGuitarStringIcon({
 	touchedStrings: Required<T_GuitarFretProps>["touchedStrings"];
 	guitarString: T_GuitarString;
 }): T_ReactElementNullable {
-	const playedString = touchedStrings.split(",").reverse()[guitarString - 1];
+	const playedString = touchedStrings[guitarString - 1];
 
 	if (playedString === "x") {
 		return (

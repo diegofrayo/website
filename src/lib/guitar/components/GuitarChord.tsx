@@ -11,17 +11,14 @@ import type { T_ReactElementNullable, T_ReactRefObject } from "~/types";
 
 import GuitarFret from "./GuitarFret";
 import GuitarService from "../service";
-import { T_Chord, T_GuitarFret, T_UnparsedChordDetails } from "../types";
+import type { T_GuitarFret, T_ParsedChord, T_PlainChordDetails } from "../types";
 
 // WARN: False positive
 /* eslint-disable react/no-unused-prop-types */
-type T_GuitarChordProps = { chord: T_UnparsedChordDetails };
+type T_GuitarChordProps = { chord: T_PlainChordDetails };
 
 function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 	const {
-		// props
-		chord,
-
 		// states && refs
 		chordContainerRef,
 
@@ -29,7 +26,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 		handleDownloadAsImageClick,
 
 		// vars
-		data,
+		parsedChord,
 		error,
 	} = useController(props);
 
@@ -44,11 +41,9 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 		);
 	}
 
-	if (isUndefined(data)) {
+	if (isUndefined(parsedChord)) {
 		return null;
 	}
-
-	const { firstFret, lastFret, musicNotesGroupedByFret, barreFret } = data;
 
 	return (
 		<Block
@@ -66,7 +61,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 					className="tw-mb-4 tw-truncate tw-text-center"
 					size={Title.size.MD}
 				>
-					{chord.name}
+					{parsedChord.name}
 				</Title>
 
 				<Block className="tw-flex-no-wrap tw-inline-flex tw-max-w-full tw-items-end tw-overflow-x-auto">
@@ -75,10 +70,10 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 					<Block className="tw-flex-no-wrap tw-relative tw-inline-flex">
 						<GuitarFret
 							variant={GuitarFret.variant.EMPTY}
-							number={(lastFret + 1) as T_GuitarFret}
+							number={(parsedChord.lastFret + 1) as T_GuitarFret}
 						/>
 
-						{Object.entries(musicNotesGroupedByFret)
+						{Object.entries(parsedChord.musicNotesGroupedByFret)
 							.reverse()
 							.map(([fretKey, musicNotes]) => {
 								const fret = Number(fretKey) as T_GuitarFret;
@@ -89,12 +84,14 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 										variant={GuitarFret.variant.DEFAULT}
 										number={fret}
 										musicNotes={musicNotes}
-										barreFret={barreFret?.fret === fret ? data.barreFret : undefined}
+										barreFret={
+											parsedChord.barreFret?.fret === fret ? parsedChord.barreFret : undefined
+										}
 									/>
 								);
 							})}
 
-						{firstFret > 1 ? (
+						{parsedChord.firstFret > 1 ? (
 							<GuitarFret
 								variant={GuitarFret.variant.EMPTY}
 								number={1}
@@ -106,7 +103,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 
 					<GuitarFret
 						variant={GuitarFret.variant.SKIPPED_GUITAR_STRINGS}
-						touchedStrings={chord.touchedStrings}
+						touchedStrings={parsedChord.touchedStrings}
 					/>
 				</Block>
 			</Block>
@@ -133,15 +130,18 @@ export default GuitarChord;
 type T_UseControllerReturn = T_GuitarChordProps & {
 	chordContainerRef: T_ReactRefObject<HTMLDivElement>;
 	handleDownloadAsImageClick: () => Promise<void>;
-	data: T_Chord | undefined;
+	parsedChord: T_ParsedChord | undefined;
 	error: unknown;
 };
 
 function useController({ chord }: T_GuitarChordProps): T_UseControllerReturn {
 	// hooks
-	const { data, error } = useExecuteCallback<T_UnparsedChordDetails, T_Chord>(chord, (params) => {
-		return GuitarService.parseChord(params);
-	});
+	const { data, error } = useExecuteCallback<T_PlainChordDetails, T_ParsedChord>(
+		chord,
+		(params) => {
+			return GuitarService.parseChord(params);
+		},
+	);
 
 	// states & refs
 	const chordContainerRef = React.useRef<HTMLDivElement>(null);
@@ -169,7 +169,7 @@ function useController({ chord }: T_GuitarChordProps): T_UseControllerReturn {
 		handleDownloadAsImageClick,
 
 		// vars
-		data,
+		parsedChord: data,
 		error,
 	};
 }

@@ -46,6 +46,10 @@ export function isNotTrue(input: unknown): input is boolean {
 	return input === false;
 }
 
+export function isNotUndefined(input: unknown): boolean {
+	return input !== undefined;
+}
+
 export function isFalsy(input: unknown): boolean {
 	return !input;
 }
@@ -60,7 +64,7 @@ export function isEquals(input1: unknown, input2: unknown): boolean {
 
 // --- Strings ---
 
-export function isEmptyString(input: unknown): input is string {
+export function isEmptyString(input: unknown): boolean {
 	return typeof input === "string" && input.length === 0;
 }
 
