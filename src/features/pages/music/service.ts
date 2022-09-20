@@ -2,10 +2,7 @@ import autoBind from "auto-bind";
 
 import http from "~/lib/http";
 import { ENV_VARS } from "~/constants";
-import {
-	sortBy,
-	transformObjectKeysFromSnakeCaseToLowerCamelCase,
-} from "~/utils/objects-and-arrays";
+import { transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/objects-and-arrays";
 import { isUndefined } from "~/utils/validations";
 import type { T_UnknownObject } from "~/types";
 
@@ -60,13 +57,6 @@ function SongVO(data: T_UnknownObject): T_Song {
 	const song = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Song>(data);
 
 	song.artist = Array.isArray(song.artist) ? song.artist.join(", ") : song.artist;
-	song.chords = song.chords.sort();
-	song.sources = (song.sources || []).sort(
-		sortBy([
-			{ param: "order", order: "asc" },
-			{ param: "title", order: "asc" },
-		]),
-	);
 
 	return song;
 }

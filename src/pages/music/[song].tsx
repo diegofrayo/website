@@ -74,7 +74,7 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, T_StaticPat
 
 		return {
 			props: {
-				song,
+				song: { ...song, chords: foundChords },
 				songMDXContent,
 			},
 		};
