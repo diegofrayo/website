@@ -21,3 +21,9 @@ Fmaj7|Fmaj7/F# two chords alternatives
 %A% dont parse like chord
 chord name: A A[1] A[2]
 // indexes starts in 1
+
+
+REGEX
+
+(A|B|C|D|E|F|G)(m|6|7|\/|#|b|sus)?(([a-z]|[0-9]|(#|\/|°)){1,5})?
+https://www.chordpro.org/chordpro/chordpro-file-format-specification/

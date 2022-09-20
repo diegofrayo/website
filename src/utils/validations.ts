@@ -16,10 +16,6 @@ export function isUndefined(input: unknown): input is undefined {
 	return input === undefined;
 }
 
-export function isNotUndefined(input: unknown): boolean {
-	return !isUndefined(input);
-}
-
 export function isObject(input: unknown): input is T_UnknownObject {
 	return typeof input === "object";
 }
@@ -86,6 +82,16 @@ export function isNotEmptyArray(input: unknown[]): boolean {
 
 export function isEmptyArray(input: unknown[]): boolean {
 	return input.length === 0;
+}
+
+// --- Semantic ---
+
+export function notFound(input: unknown): input is undefined {
+	return input === undefined;
+}
+
+export function exists(input: unknown): boolean {
+	return input !== undefined;
 }
 
 // --- DOM ---

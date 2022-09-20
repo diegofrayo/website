@@ -129,11 +129,13 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 									>
 										<GuitarString />
 										{barreFret.firstGuitarString >= guitarString ? (
-											<Block className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-font-bold tw-leading-0 dfr-bg-color-gs-white dfr-text-color-gs-black">
-												1
-											</Block>
+											<React.Fragment>
+												<Block className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-font-bold tw-leading-0 dfr-bg-color-gs-white dfr-text-color-gs-black">
+													1
+												</Block>
+												<GuitarString />
+											</React.Fragment>
 										) : null}
-										<GuitarString />
 									</Block>
 								);
 							}

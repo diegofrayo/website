@@ -1,10 +1,7 @@
 import { logger } from "~/features/logging";
-import {
-	sortPlainArray,
-	transformObjectKeysFromSnakeCaseToLowerCamelCase,
-} from "~/utils/objects-and-arrays";
+import { transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/objects-and-arrays";
 import { replaceAll } from "~/utils/strings";
-import { isEmptyString, isUndefined } from "~/utils/validations";
+import { exists, isEmptyString, notFound } from "~/utils/validations";
 
 import ChordVO from "./chord-vo";
 import CHORDS from "./data/chords.json";
@@ -46,10 +43,11 @@ class GuitarService {
 
 				isBlankTheLastParsedLine = false;
 
+				// TODO: % special characters
 				currentLyricsTextLine
 					.split(" ")
 					.filter(Boolean)
-					.sort(sortPlainArray("desc"))
+					.sort(this.sortTextLineItems)
 					.forEach((currentLyricsTextLineItem, _, currentLyricsTextLineItemsArray) => {
 						const { parsedTextLine, isTextLineItemAChord } = this.parseTextLine({
 							currentLyricsTextLineParsed,
@@ -67,7 +65,7 @@ class GuitarService {
 						currentLyricsTextLineParsed = parsedTextLine;
 					});
 
-				return `<span>${this.removeSpecialCharacters(currentLyricsTextLineParsed)}</span>`;
+				return `<span>${currentLyricsTextLineParsed}</span>`;
 			})
 			.join("\n");
 
@@ -82,16 +80,19 @@ class GuitarService {
 		return parsedLyrics;
 	}
 
-	findChord(chordNameInput: string): T_PreparsedChord | undefined {
+	findChord(
+		chordNameInput: string,
+		options?: { returnAllVariants: boolean },
+	): T_PreparsedChord | undefined {
 		const { chordName, chordVariantIndex } = this.parseChordName(chordNameInput);
 		const chord = (CHORDS as T_ChordsDatabase)[chordName];
 
-		if (isUndefined(chord)) {
+		if (notFound(chord)) {
 			return undefined;
 		}
 
 		if (Array.isArray(chord)) {
-			if (isUndefined(chordVariantIndex)) {
+			if (options?.returnAllVariants) {
 				return chord.map((chordVariantItem, chordVariantItemIndex) => {
 					return transformObjectKeysFromSnakeCaseToLowerCamelCase({
 						...chordVariantItem,
@@ -101,15 +102,15 @@ class GuitarService {
 				});
 			}
 
-			if (isUndefined(chord[chordVariantIndex])) {
-				return undefined;
+			if (exists(chord[chordVariantIndex])) {
+				return transformObjectKeysFromSnakeCaseToLowerCamelCase({
+					...chord[chordVariantIndex],
+					name: chordName,
+					variantIndex: chordVariantIndex,
+				});
 			}
 
-			return transformObjectKeysFromSnakeCaseToLowerCamelCase({
-				...chord[chordVariantIndex],
-				name: chordName,
-				variantIndex: chordVariantIndex,
-			});
+			return undefined;
 		}
 
 		return transformObjectKeysFromSnakeCaseToLowerCamelCase({
@@ -121,7 +122,7 @@ class GuitarService {
 
 	private parseChordName(chordNameInput: string): {
 		chordName: string;
-		chordVariantIndex: number | undefined;
+		chordVariantIndex: number;
 	} {
 		// TODO: Regex
 		const hasChordMultipleVariants = chordNameInput.includes("[") && chordNameInput.includes("]");
@@ -129,7 +130,9 @@ class GuitarService {
 			? chordNameInput.substring(0, chordNameInput.lastIndexOf("["))
 			: chordNameInput;
 		const chordVariantIndex = hasChordMultipleVariants
-			? Number(replaceAll(chordName.substring(chordName.lastIndexOf("[")), ["[", "]"], "")) - 1
+			? Number(
+					replaceAll(chordNameInput.substring(chordNameInput.lastIndexOf("[")), ["[", "]"], ""),
+			  ) - 1
 			: 0;
 
 		return { chordName, chordVariantIndex };
@@ -144,7 +147,7 @@ class GuitarService {
 	}: T_ParseLyricsTextLine): { isTextLineItemAChord: boolean; parsedTextLine: string } {
 		const chord = this.findChord(currentLyricsTextLineItem) as T_PreparsedChordDetails;
 
-		if (isUndefined(chord)) {
+		if (notFound(chord)) {
 			return { parsedTextLine: currentLyricsTextLineParsed, isTextLineItemAChord: false };
 		}
 
@@ -154,25 +157,25 @@ class GuitarService {
 		return {
 			isTextLineItemAChord: true,
 			parsedTextLine: exactReplacement
-				? replaceAll(currentLyricsTextLineParsed, chord.name, chordHTML)
+				? replaceAll(currentLyricsTextLineParsed, currentLyricsTextLineItem, chordHTML)
 				: replaceAll(
 						replaceAll(
 							replaceAll(
-								replaceAll(currentLyricsTextLineParsed, ` ${chord.name} `, ` ${chordHTML} `),
-								`${chord.name}|`,
+								replaceAll(
+									currentLyricsTextLineParsed,
+									` ${currentLyricsTextLineItem} `,
+									` ${chordHTML} `,
+								),
+								`${currentLyricsTextLineItem}|`,
 								`${chordHTML}|`,
 							),
-							`${chord.name} `,
+							`${currentLyricsTextLineItem} `,
 							`${chordHTML} `,
 						),
-						` ${chord.name}`,
+						` ${currentLyricsTextLineItem}`,
 						` ${chordHTML}`,
 				  ),
 		};
-	}
-
-	private removeSpecialCharacters(input: string): string {
-		return replaceAll(input, "%", "");
 	}
 
 	private chordToHTML(
@@ -185,14 +188,14 @@ class GuitarService {
 		}${isBlankTheLastParsedLine ? "" : " tw-mt-3"}" data-chord-index="${chord.variantIndex}">${
 			chord.name
 		}</button>`;
+	}
 
-		// return `<button class="dfr-Chord dfr-text-color-links ${
-		// 	isCurrentLineTheLastOne ? "" : "tw-mb-1"
-		// } ${isBlankTheLastParsedLine ? "" : "tw-mt-3"}" data-chord-index="${chord.variantIndex}">${
-		// 	chord.name
-		// }</button>`;
+	private sortTextLineItems(a: string, b: string): number {
+		if (a.length < b.length) {
+			return 1;
+		}
 
-		// return `<button class="dfr-Chord">${chord.name}</button>`;
+		return -1;
 	}
 }
 

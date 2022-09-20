@@ -9,7 +9,7 @@ import { showAlert } from "~/utils/browser";
 import { safeCastNumber } from "~/utils/numbers";
 import { createArray } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
-import { isNumber, isUndefined } from "~/utils/validations";
+import { isNumber, notFound } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement, T_ReactNode } from "~/types";
 
 // WARN: False positive
@@ -145,17 +145,17 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 	useDidMount(() => {
 		document.querySelectorAll(".dfr-Chord").forEach((button) => {
 			button.addEventListener("click", (event) => {
-				const target = event.target as HTMLElement;
-				const chord = GuitarService.findChord(target?.innerText);
+				const target = event.target as HTMLButtonElement;
+				const chord = GuitarService.findChord(target.innerText, { returnAllVariants: true });
 
-				if (isUndefined(chord)) {
-					showAlert(`"${target?.innerText}" details not found`);
+				if (notFound(chord)) {
+					showAlert(`"${target.innerText}" details not found`);
 					return;
 				}
 
 				setSelectedUnparsedChord(chord);
 				setSelectedUnparsedChordIndex(
-					safeCastNumber(target?.getAttribute("data-chord-index") || ""),
+					safeCastNumber(target.getAttribute("data-chord-index") || ""),
 				);
 				setIsModalVisible(true);
 			});

@@ -5,7 +5,7 @@ import { Button, Space, Title, Block, Text, InlineText } from "~/components/prim
 import { Emoji, Render, Timeline } from "~/components/shared";
 import { useQuery } from "~/hooks";
 import { safeCastNumber } from "~/utils/numbers";
-import { isNotUndefined, isUndefined, isNotEmptyString } from "~/utils/validations";
+import { exists, isUndefined, isNotEmptyString } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
 import TimelineService from "./service";
@@ -166,7 +166,7 @@ function useController(): T_UseControllerReturn {
 							...timelineGroup,
 							items: isNotEmptyString(selectedCategory)
 								? timelineGroup.items.filter((item) => {
-										return isNotUndefined(
+										return exists(
 											item.categories.find((category) => category.id === selectedCategory),
 										);
 								  })

@@ -7,7 +7,7 @@ import {
 	sortBy,
 	transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
-import { isNotUndefined } from "~/utils/validations";
+import { exists } from "~/utils/validations";
 import type { T_Object, T_UnknownObject } from "~/types";
 
 class BlogService {
@@ -86,7 +86,7 @@ function BlogPostVO(
 			return categories.find((item) => item.id === category);
 		})
 		.filter((category): category is T_BlogPostCategory => {
-			return isNotUndefined(category);
+			return exists(category);
 		})
 		.sort(sortBy([{ param: "value", order: "asc" }]));
 

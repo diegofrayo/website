@@ -6,7 +6,7 @@ import {
 	sortBy,
 	transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
-import { isNotUndefined, isUndefined } from "~/utils/validations";
+import { exists, isUndefined } from "~/utils/validations";
 import type { T_Object } from "~/types";
 
 import type {
@@ -56,7 +56,7 @@ class TimelineService {
 								return categories.find((c) => c.id === category);
 							})
 							.filter((category): category is T_TimelineCategory => {
-								return isNotUndefined(category);
+								return exists(category);
 							})
 							.sort(sortBy([{ param: "value", order: "asc" }])),
 					});
