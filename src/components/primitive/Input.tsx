@@ -46,7 +46,7 @@ const Input = React.forwardRef(function Input(
 				ref={ref}
 				id={id}
 				className={classNames(
-					"dfr-Input tw-block tw-w-full tw-resize-none tw-rounded-none tw-border tw-py-1 tw-px-2 tw-shadow-none dfr-bg-color-tertiary dfr-border-color-primary",
+					"dfr-Input tw-block tw-w-full tw-rounded-none tw-border tw-py-1 tw-px-2 tw-shadow-none dfr-bg-color-tertiary dfr-border-color-primary",
 					className,
 				)}
 				{...rest}
@@ -54,17 +54,24 @@ const Input = React.forwardRef(function Input(
 
 			<style jsx>
 				{`
-					.root :global(.dfr-Input) {
+					.root :global(input.dfr-Input) {
 						-webkit-appearance: none;
 						height: 37px;
+						resize: none;
 					}
 
-					.root :global(.dfr-Input:focus-within),
-					.root :global(.dfr-Input:focus) {
+					.root :global(input.dfr-Input:focus-within),
+					.root :global(input.dfr-Input:focus) {
 						border-radius: 0;
 						outline-color: var(--dfr-text-color-gs-400);
 						outline-style: solid;
 						outline-width: 1px;
+					}
+
+					.root :global(textarea.dfr-Input) {
+						min-height: 150px;
+						max-height: 300px;
+						resize: vertical;
 					}
 				`}
 			</style>

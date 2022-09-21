@@ -1,27 +1,31 @@
-// @ts-nocheck
-
 import * as React from "react";
 import classNames from "classnames";
 
 import { Space, Block, Text, InlineText } from "~/components/primitive";
 import { createArray } from "~/utils/objects-and-arrays";
-import { isNotTrue } from "~/utils/validations";
-import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
+import { generateSlug } from "~/utils/strings";
+import {
+	isNotEmptyArray,
+	isNotEmptyString,
+	isNotTrue,
+	isNotUndefined,
+	isNumber,
+	isUndefined,
+} from "~/utils/validations";
+import type { T_ReactChildren, T_ReactElement, T_UnknownObject } from "~/types";
 
 import GuitarFret from "./GuitarFret";
 import { NUMBER_OF_STRINGS } from "../constants";
-import { T_GuitarFret, T_GuitarString } from "../types";
+import type { T_GuitarFret, T_GuitarString } from "../types";
 
 // WARN: False positive
 /* eslint-disable react/no-unused-prop-types */
 type T_TablatureProps = {
-	positions?: (T_Position | T_Position[])[];
+	positions?: T_Positions[];
 	notes?: string;
 };
 
-function Tablature(props: T_TablatureProps): T_ReactElementNullable {
-	return null;
-
+function Tablature(props: T_TablatureProps): T_ReactElement {
 	const {
 		// props
 		notes,
@@ -32,20 +36,18 @@ function Tablature(props: T_TablatureProps): T_ReactElementNullable {
 
 	return (
 		<Block className="tw-text-base">
-			{parsedPositions && (
+			{parsedPositions ? (
 				<Block className="tw-flex tw-items-end">
 					<GuitarFret variant={GuitarFret.variant.GUITAR_STRINGS_NAMES} />
 
 					{parsedPositions.map((position, positionIndex) => {
-						if ((position as T_Position).variant === "SPACE") {
-							return createArray(
-								typeof (position as I_SpacePosition).space === "number"
-									? ((position as I_SpacePosition).space as number)
-									: 1,
-							).map((space) => {
+						if (isSpacePosition(position)) {
+							return createArray(position.space).map((space) => {
 								return (
 									<Block
-										key={`Tablature-position-${positionIndex}-${space}`}
+										key={generateSlug(
+											`Tablature-Block-positionIndex-${positionIndex}-space-${space}`,
+										)}
 										className="tw-ml-1"
 									>
 										{createArray(NUMBER_OF_STRINGS)
@@ -53,8 +55,9 @@ function Tablature(props: T_TablatureProps): T_ReactElementNullable {
 											.map((guitarString) => {
 												return (
 													<Position
-														key={`Position-${positionIndex}-${space}-${guitarString}`}
-														isSeparator={(position as I_SpacePosition).space === "x"}
+														key={generateSlug(
+															`Tablature-Position-positionIndex-${positionIndex}-space-${space}-guitarString-${guitarString}`,
+														)}
 														isCell
 													/>
 												);
@@ -66,7 +69,7 @@ function Tablature(props: T_TablatureProps): T_ReactElementNullable {
 
 						return (
 							<Block
-								key={`Tablature-position-${positionIndex}`}
+								key={generateSlug(`Tablature-Block-positionIndex-${positionIndex}`)}
 								className="tw-ml-1"
 							>
 								<Block>
@@ -74,43 +77,51 @@ function Tablature(props: T_TablatureProps): T_ReactElementNullable {
 										.reverse()
 										.map((guitarString) => {
 											if (Array.isArray(position)) {
-												const musicNotePosition = position.find(
-													(position1) =>
-														(position1 as I_MusicNotePosition).guitarString === guitarString,
-												) as I_MusicNotePosition;
+												const foundPosition =
+													position.find(
+														(item: T_UnknownObject) => item["guitarString"] === guitarString,
+													) ||
+													position.find((item: T_UnknownObject) => item["variant"] === "BARRE");
 
-												if (musicNotePosition) {
+												if (isMusicNotePosition(foundPosition)) {
 													return (
-														<Position key={`Position-${positionIndex}-${guitarString}`}>
-															{musicNotePosition.guitarFret || "0"}
+														<Position
+															key={generateSlug(
+																`Tablature-Position-positionIndex-${positionIndex}-guitarString-${guitarString}`,
+															)}
+														>
+															{foundPosition.guitarFret || "0"}
 														</Position>
 													);
 												}
 
-												const barrePosition = position.find(
-													(position1) => position1.variant === "BARRE",
-												) as I_BarrePosition;
-
-												if (barrePosition) {
-													return (
-														<Position key={`Position-${positionIndex}-${guitarString}`}>
-															{barrePosition.guitarFret}
-														</Position>
-													);
-												}
+												return (
+													<Position
+														key={generateSlug(
+															`Tablature-Position-positionIndex-${positionIndex}-guitarString-${guitarString}`,
+														)}
+														isCell
+													/>
+												);
 											}
 
-											if ((position as I_MusicNotePosition).guitarString === guitarString) {
+											if (position.guitarString === guitarString) {
 												return (
-													<Position key={`Position-${positionIndex}-${guitarString}`}>
-														{(position as I_MusicNotePosition).guitarFret}
+													<Position
+														key={generateSlug(
+															`Tablature-Position-positionIndex-${positionIndex}-guitarString-${guitarString}`,
+														)}
+													>
+														{position.guitarFret}
 													</Position>
 												);
 											}
 
 											return (
 												<Position
-													key={`Position-${positionIndex}-${guitarString}`}
+													key={generateSlug(
+														`Tablature-Position-positionIndex-${positionIndex}-guitarString-${guitarString}`,
+													)}
 													isCell
 												/>
 											);
@@ -120,13 +131,13 @@ function Tablature(props: T_TablatureProps): T_ReactElementNullable {
 						);
 					})}
 				</Block>
-			)}
+			) : null}
 
-			{parsedPositions && notes && <Space size={1} />}
+			{isNotUndefined(parsedPositions) && isNotEmptyString(notes) ? <Space size={1} /> : null}
 
-			{notes && (
+			{isNotEmptyString(notes) ? (
 				<Text className="tw-break-word tw-ml-2 tw-whitespace-pre-line tw-italic">{`"${notes}"`}</Text>
-			)}
+			) : null}
 		</Block>
 	);
 }
@@ -136,66 +147,21 @@ export default Tablature;
 // --- Controller ---
 
 function useController({ positions, notes }: T_TablatureProps): {
-	notes: T_TablatureProps["notes"];
 	parsedPositions: T_TablatureProps["positions"] | undefined;
+	notes: T_TablatureProps["notes"];
 } {
-	function getPositions(positionss: T_TablatureProps["positions"]): (T_Position | T_Position[])[] {
-		return (positionss || []).map((position) => {
-			if (Array.isArray(position)) {
-				return position.map((position2) => {
-					return validAndParsePosition(position2);
-				});
-			}
-
-			return validAndParsePosition(position);
-		});
-	}
-
-	function validAndParsePosition(position: T_Position | { space: string }): T_Position {
-		let positionVariant = "";
-
-		if (
-			typeof (position as I_SpacePosition).space === "number" ||
-			("space" in position && position.space === "x")
-		) {
-			checkTablatureSpaceValidity((position as I_SpacePosition).space);
-			positionVariant = "SPACE";
-		} else {
-			const hasGuitarStringParam =
-				typeof (position as I_MusicNotePosition).guitarString === "number";
-			const hasGuitarFretParam = typeof (position as I_BarrePosition).guitarFret === "number";
-
-			if (hasGuitarStringParam && !hasGuitarFretParam) {
-				checkGuitarStringValidity((position as I_MusicNotePosition).guitarString);
-				positionVariant = "GUITAR_STRING";
-			} else if (hasGuitarFretParam && !hasGuitarStringParam) {
-				checkGuitarFretValidity((position as I_MusicNotePosition).guitarFret);
-				positionVariant = "BARRE";
-			} else if (hasGuitarFretParam && hasGuitarStringParam) {
-				checkGuitarStringValidity((position as I_MusicNotePosition).guitarString);
-				checkGuitarFretValidity((position as I_MusicNotePosition).guitarFret);
-				positionVariant = "MUSIC_NOTE";
-			} else {
-				throw new Error("Invalid tablature position");
-			}
-		}
-
-		return { ...position, variant: positionVariant } as T_Position;
-	}
-
 	return {
 		// props
 		notes,
 
 		// vars
-		parsedPositions:
-			positions && positions.length > 0
-				? [
-						{ space: 1, variant: "SPACE" },
-						...getPositions(positions),
-						{ space: 1, variant: "SPACE" },
-				  ]
-				: undefined,
+		parsedPositions: isNotEmptyArray(positions)
+			? [
+					{ space: 1, variant: "SPACE" },
+					...parsePositions(positions),
+					{ space: 1, variant: "SPACE" },
+			  ]
+			: undefined,
 	};
 }
 
@@ -204,7 +170,6 @@ function useController({ positions, notes }: T_TablatureProps): {
 function Position({
 	children,
 	isCell = false,
-	isSeparator = false,
 }: {
 	children?: T_ReactChildren;
 	isCell?: boolean;
@@ -215,7 +180,6 @@ function Position({
 			className={classNames(
 				"dfr-Tablature-Position tw-relative tw-top-0.5 tw-h-6 tw-w-6 tw-text-center",
 				isCell && "dfr-Tablature-Position--cell",
-				isSeparator && "dfr-Tablature-Position--separator",
 			)}
 		>
 			{isNotTrue(isCell) ? <InlineText>{children || "0"}</InlineText> : null}
@@ -231,14 +195,6 @@ function Position({
 					position: absolute;
 					top: 10px;
 					width: 100%;
-				}
-
-				:global(.dfr-Tablature-Position--separator::before) {
-					height: 100%;
-					left: 8px;
-					max-height: 100%;
-					top: 0;
-					width: 1px;
 				}
 
 				:global(.tw-dark) :global(.dfr-Tablature-Position--cell::before) {
@@ -261,6 +217,72 @@ function Position({
 
 // --- Utils ---
 
+function parsePositions(positions: NonNullable<T_TablatureProps["positions"]>): T_Positions[] {
+	return positions.map((position) => {
+		if (Array.isArray(position)) {
+			return position.map((subPosition) => {
+				return parsePosition(subPosition);
+			});
+		}
+
+		return parsePosition(position);
+	});
+}
+
+function parsePosition(position: T_Position): T_Position {
+	if (isSpacePosition(position)) {
+		checkTablatureSpaceValidity(position.space);
+
+		return {
+			space: position.space,
+			variant: "SPACE",
+		};
+	}
+
+	if (isNumber(position.guitarString) && isNumber(position.guitarFret)) {
+		checkGuitarStringValidity(position.guitarString);
+		checkGuitarFretValidity(position.guitarFret);
+
+		return {
+			guitarString: position.guitarString,
+			guitarFret: position.guitarFret,
+			variant: "MUSIC_NOTE",
+		};
+	}
+
+	if (isNumber(position.guitarString) && isUndefined(position.guitarFret)) {
+		checkGuitarStringValidity(position.guitarString);
+
+		return {
+			guitarString: position.guitarString,
+			variant: "GUITAR_STRING",
+		};
+	}
+
+	if (isNumber(position.guitarFret) && isUndefined(position.guitarString)) {
+		checkGuitarFretValidity(position.guitarFret);
+
+		return {
+			guitarFret: position.guitarFret,
+			variant: "BARRE",
+		};
+	}
+
+	throw new Error("Invalid tablature position");
+}
+
+function isSpacePosition(input: T_Positions): input is T_SpacePosition {
+	return Array.isArray(input) ? false : isNumber((input as T_SpacePosition).space);
+}
+
+function isMusicNotePosition(input?: T_Position): input is T_MusicNotePosition {
+	return (
+		input?.variant === "MUSIC_NOTE" ||
+		input?.variant === "BARRE" ||
+		input?.variant === "GUITAR_STRING"
+	);
+}
+
 function checkGuitarStringValidity(value: number): boolean {
 	if (Number.isNaN(value) || !(value >= 1 || value <= 6)) {
 		throw new Error(`Invalid guitar string (${value}). A guitar string must be between 1 and 6`);
@@ -277,11 +299,8 @@ function checkGuitarFretValidity(value: number): boolean {
 	return true;
 }
 
-function checkTablatureSpaceValidity(value: number | "x"): boolean {
-	if (
-		(typeof value === "string" && value !== "x") ||
-		(typeof value === "number" && (Number.isNaN(value) || !(value >= 1 || value <= 10)))
-	) {
+function checkTablatureSpaceValidity(value: number): boolean {
+	if (typeof value === "number" && (Number.isNaN(value) || !(value >= 1 || value <= 10))) {
 		throw new Error(
 			`Invalid tablature space (${value}). A tablature space must be between 1 and 10 or should be "x"`,
 		);
@@ -292,28 +311,17 @@ function checkTablatureSpaceValidity(value: number | "x"): boolean {
 
 // --- Types ---
 
-interface I_SpacePosition {
-	space: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | "x";
-}
+type T_Position = T_MusicNotePosition | T_SpacePosition;
 
-interface I_GuitarStringPosition {
-	guitarString: T_GuitarString;
-}
-
-interface I_BarrePosition {
-	guitarFret: T_GuitarFret;
-}
-
-interface I_MusicNotePosition {
-	guitarFret: T_GuitarFret;
-	guitarString: T_GuitarString;
-}
-
-type T_Position = (
-	| I_SpacePosition
-	| I_GuitarStringPosition
-	| I_BarrePosition
-	| I_MusicNotePosition
-) & {
-	variant: "SPACE" | "GUITAR_STRING" | "MUSIC_NOTE" | "BARRE";
+type T_MusicNotePosition = {
+	guitarString?: T_GuitarString;
+	guitarFret?: T_GuitarFret;
+	variant: "MUSIC_NOTE" | "BARRE" | "GUITAR_STRING";
 };
+
+type T_SpacePosition = {
+	space: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+	variant: "SPACE";
+};
+
+type T_Positions = T_Position | T_SpacePosition | (T_Position | T_SpacePosition)[];
