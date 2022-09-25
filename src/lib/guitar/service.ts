@@ -1,7 +1,4 @@
-import {
-	sortPlainArray,
-	transformObjectKeysFromSnakeCaseToLowerCamelCase,
-} from "~/utils/objects-and-arrays";
+import { sortPlainArray } from "~/utils/objects-and-arrays";
 import { replaceAll } from "~/utils/strings";
 import { exists, isEmptyString, isNotEmptyString, notFound } from "~/utils/validations";
 
@@ -78,37 +75,40 @@ class GuitarService {
 		if (Array.isArray(chord)) {
 			if (options?.returnAllVariants) {
 				return chord.map((chordVariant, index) => {
-					return transformObjectKeysFromSnakeCaseToLowerCamelCase({
-						...chordVariant,
+					return {
 						name: chordName,
+						musicNotes: chordVariant.music_notes,
+						touchedStrings: chordVariant.touched_strings,
 						variantIndex: index,
-					});
+					};
 				});
 			}
 
 			if (exists(chord[chordVariantIndex])) {
-				return transformObjectKeysFromSnakeCaseToLowerCamelCase({
-					...chord[chordVariantIndex],
+				return {
 					name: chordName,
+					musicNotes: chord[chordVariantIndex].music_notes,
+					touchedStrings: chord[chordVariantIndex].touched_strings,
 					variantIndex: chordVariantIndex,
-				});
+				};
 			}
 
 			return undefined;
 		}
 
-		return transformObjectKeysFromSnakeCaseToLowerCamelCase({
-			...chord,
+		return {
 			name: chordName,
+			musicNotes: chord.music_notes,
+			touchedStrings: chord.touched_strings,
 			variantIndex: 0,
-		});
+		};
 	}
 
 	private parseChordName(rawChordName: string): {
 		chordName: string;
 		chordVariantIndex: number;
 	} {
-		// TODO: Regex for this kind of inputs: G[2] and try to extract the value inside of []
+		// TODO: Regex for this kind of inputs: G[2] and try to extract the value inside of [] ^(A|B|C|D|E|F|G)(\w{1-5})?(\[[1-9]\])?$(([a-z]|\/|#){1-5})?
 		const hasChordMultipleVariants = rawChordName.includes("[") && rawChordName.includes("]");
 		const chordName = hasChordMultipleVariants
 			? rawChordName.substring(0, rawChordName.lastIndexOf("["))
@@ -178,7 +178,7 @@ class GuitarService {
 		return `<button class="${this.CHORD_BUTTON_SELECTOR} dfr-text-color-links${
 			isCurrentLineTheLastOne ? "" : " tw-mb-1"
 		}${isTheLastParsedTextLineBlank ? "" : " tw-mt-3"}" data-chord-index="${chord.variantIndex}">${
-			chord.name
+			chord.variantIndex > 0 ? `${chord.name}   ` : chord.name
 		}</button>`;
 	}
 

@@ -105,7 +105,7 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
 												);
 											}
 
-											if (position.guitarString === guitarString) {
+											if (isMusicNotePosition(position) && position.guitarString === guitarString) {
 												return (
 													<Position
 														key={generateSlug(
@@ -229,7 +229,7 @@ function parsePositions(positions: NonNullable<T_TablatureProps["positions"]>): 
 	});
 }
 
-function parsePosition(position: T_Position): T_Position {
+function parsePosition(position: T_UnknownObject): T_Position {
 	if (isSpacePosition(position)) {
 		checkTablatureSpaceValidity(position.space);
 
@@ -239,31 +239,31 @@ function parsePosition(position: T_Position): T_Position {
 		};
 	}
 
-	if (isNumber(position.guitarString) && isNumber(position.guitarFret)) {
-		checkGuitarStringValidity(position.guitarString);
-		checkGuitarFretValidity(position.guitarFret);
+	if (isNumber(position["guitarString"]) && isNumber(position["guitarFret"])) {
+		checkGuitarStringValidity(position["guitarString"]);
+		checkGuitarFretValidity(position["guitarFret"]);
 
 		return {
-			guitarString: position.guitarString,
-			guitarFret: position.guitarFret,
+			guitarString: position["guitarString"] as T_GuitarString,
+			guitarFret: position["guitarFret"] as T_GuitarFret,
 			variant: "MUSIC_NOTE",
 		};
 	}
 
-	if (isNumber(position.guitarString) && isUndefined(position.guitarFret)) {
-		checkGuitarStringValidity(position.guitarString);
+	if (isNumber(position["guitarString"]) && isUndefined(position["guitarFret"])) {
+		checkGuitarStringValidity(position["guitarString"]);
 
 		return {
-			guitarString: position.guitarString,
+			guitarString: position["guitarString"] as T_GuitarString,
 			variant: "GUITAR_STRING",
 		};
 	}
 
-	if (isNumber(position.guitarFret) && isUndefined(position.guitarString)) {
-		checkGuitarFretValidity(position.guitarFret);
+	if (isNumber(position["guitarFret"]) && isUndefined(position["guitarString"])) {
+		checkGuitarFretValidity(position["guitarFret"]);
 
 		return {
-			guitarFret: position.guitarFret,
+			guitarFret: position["guitarFret"] as T_GuitarFret,
 			variant: "BARRE",
 		};
 	}
@@ -271,8 +271,8 @@ function parsePosition(position: T_Position): T_Position {
 	throw new Error("Invalid tablature position");
 }
 
-function isSpacePosition(input: T_Positions): input is T_SpacePosition {
-	return Array.isArray(input) ? false : isNumber((input as T_SpacePosition).space);
+function isSpacePosition(input: T_UnknownObject | T_UnknownObject[]): input is T_SpacePosition {
+	return Array.isArray(input) ? false : isNumber((input as T_SpacePosition)?.space);
 }
 
 function isMusicNotePosition(input?: T_Position): input is T_MusicNotePosition {
@@ -283,7 +283,7 @@ function isMusicNotePosition(input?: T_Position): input is T_MusicNotePosition {
 	);
 }
 
-function checkGuitarStringValidity(value: number): boolean {
+function checkGuitarStringValidity(value: number): value is T_GuitarString {
 	if (Number.isNaN(value) || !(value >= 1 || value <= 6)) {
 		throw new Error(`Invalid guitar string (${value}). A guitar string must be between 1 and 6`);
 	}
@@ -291,12 +291,12 @@ function checkGuitarStringValidity(value: number): boolean {
 	return true;
 }
 
-function checkGuitarFretValidity(value: number): boolean {
+function checkGuitarFretValidity(value: number): value is T_GuitarFret {
 	if (Number.isNaN(value) || !(value >= 1 || value <= 16)) {
 		throw new Error(`Invalid guitar fret (${value}). A guitar fret must be between 1 and 16`);
 	}
 
-	return true;
+	return false;
 }
 
 function checkTablatureSpaceValidity(value: number): boolean {
@@ -311,12 +311,22 @@ function checkTablatureSpaceValidity(value: number): boolean {
 
 // --- Types ---
 
-type T_Position = T_MusicNotePosition | T_SpacePosition;
+type T_Position = T_MusicNotePosition | T_SpacePosition | T_GuitarStringPosition | T_BarrePosition;
 
 type T_MusicNotePosition = {
-	guitarString?: T_GuitarString;
-	guitarFret?: T_GuitarFret;
-	variant: "MUSIC_NOTE" | "BARRE" | "GUITAR_STRING";
+	guitarString: T_GuitarString;
+	guitarFret: T_GuitarFret;
+	variant: "MUSIC_NOTE";
+};
+
+type T_BarrePosition = {
+	guitarFret: T_GuitarFret;
+	variant: "BARRE";
+};
+
+type T_GuitarStringPosition = {
+	guitarString: T_GuitarString;
+	variant: "GUITAR_STRING";
 };
 
 type T_SpacePosition = {
@@ -324,4 +334,4 @@ type T_SpacePosition = {
 	variant: "SPACE";
 };
 
-type T_Positions = T_Position | T_SpacePosition | (T_Position | T_SpacePosition)[];
+type T_Positions = T_Position | T_Position[];

@@ -145,7 +145,7 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 		document.querySelectorAll(`.${GuitarService.CHORD_BUTTON_SELECTOR}`).forEach((button) => {
 			button.addEventListener("click", (event) => {
 				const target = event.target as HTMLButtonElement;
-				const chord = GuitarService.findChord(target.innerText, { returnAllVariants: true });
+				const chord = GuitarService.findChord(target.innerText.trim(), { returnAllVariants: true });
 
 				if (notFound(chord)) {
 					showAlert(`"${target.innerText}" details not found`);
