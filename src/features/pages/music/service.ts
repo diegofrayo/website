@@ -73,9 +73,8 @@ export type T_Song = {
 	readonly country: string;
 	readonly category:
 		| "0|IN_PROGRESS"
-		| "1|DONE"
-		| "2|PLAY_WITH_MUSIC"
-		| "2|PLAY_WITH_SOMEONE"
+		| "1|FAVORITE"
+		| "2|WELL_DONE"
 		| "3|TO_PRACTICE"
 		| "4|SOME_DAY";
 	readonly spotifyUrl: string;
