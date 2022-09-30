@@ -11,7 +11,7 @@ import type { T_ReactElementNullable, T_ReactRefObject } from "~/types";
 
 import GuitarFret from "./GuitarFret";
 import GuitarService from "../service";
-import type { T_GuitarFret, T_ParsedChord, T_PlainChordDetails } from "../types";
+import type { T_GuitarFret, T_Chord, T_PlainChordDetails } from "../types";
 
 // WARN: False positive
 /* eslint-disable react/no-unused-prop-types */
@@ -130,18 +130,15 @@ export default GuitarChord;
 type T_UseControllerReturn = {
 	chordContainerRef: T_ReactRefObject<HTMLDivElement>;
 	handleDownloadAsImageClick: () => Promise<void>;
-	parsedChord: T_ParsedChord | undefined;
+	parsedChord: T_Chord | undefined;
 	error: unknown;
 };
 
 function useController({ plainChord }: T_GuitarChordProps): T_UseControllerReturn {
 	// hooks
-	const { data, error } = useExecuteCallback<T_PlainChordDetails, T_ParsedChord>(
-		plainChord,
-		(params) => {
-			return GuitarService.parseChord(params);
-		},
-	);
+	const { data, error } = useExecuteCallback<T_PlainChordDetails, T_Chord>(plainChord, (params) => {
+		return GuitarService.parseChord(params);
+	});
 
 	// states & refs
 	const chordContainerRef = React.useRef<HTMLDivElement>(null);

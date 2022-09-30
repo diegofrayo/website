@@ -20,7 +20,7 @@ function Books(): T_ReactElement {
 			{(books): T_ReactElement => {
 				return (
 					<Block className="dfr-Books tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
-						{books.map(({ id, title, calification, author, year, url, cover }) => {
+						{books.map(({ id, title, calification, author, url, cover, addedDate }) => {
 							return (
 								<Link
 									key={id}
@@ -63,7 +63,7 @@ function Books(): T_ReactElement {
 											</Text>
 											<Text className="tw-text-right tw-text-xs tw-font-bold tw-leading-none dfr-text-color-wb">
 												<Emoji className="tw-mr-1">🗓</Emoji>
-												<InlineText>{year}</InlineText>
+												<InlineText>{addedDate.split("/")[0]}</InlineText>
 											</Text>
 										</Block>
 									</Block>

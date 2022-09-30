@@ -2,14 +2,14 @@ import { sortPlainArray } from "~/utils/objects-and-arrays";
 import { replaceAll } from "~/utils/strings";
 import { exists, isEmptyString, isNotEmptyString, notFound } from "~/utils/validations";
 
-import Chord from "./chord-vo";
+import Chord from "./chord";
 import CHORDS from "./data/chords.json";
-import type { T_ChordsDatabase, T_ParsedChord, T_PlainChord, T_PlainChordDetails } from "./types";
+import type { T_ChordsDatabase, T_Chord, T_PlainChord, T_PlainChordDetails } from "./types";
 
 class GuitarService {
 	public CHORD_BUTTON_SELECTOR = "dfr-GuitarChord";
 
-	parseChord(plainChordDetails: T_PlainChordDetails): T_ParsedChord {
+	parseChord(plainChordDetails: T_PlainChordDetails): T_Chord {
 		return new Chord(plainChordDetails);
 	}
 
@@ -63,6 +63,11 @@ class GuitarService {
 
 	findChord(
 		rawChordName: string,
+		options: { returnAllVariants: boolean },
+	): T_PlainChordDetails[] | undefined;
+	findChord(rawChordName: string): T_PlainChordDetails | undefined;
+	findChord(
+		rawChordName: string,
 		options?: { returnAllVariants: boolean },
 	): T_PlainChord | undefined {
 		const { chordName, chordVariantIndex } = this.parseChordName(rawChordName);
@@ -108,7 +113,7 @@ class GuitarService {
 		chordName: string;
 		chordVariantIndex: number;
 	} {
-		// TODO: Regex for this kind of inputs: G[2] and try to extract the value inside of [] ^(A|B|C|D|E|F|G)(\w{1-5})?(\[[1-9]\])?$(([a-z]|\/|#){1-5})?
+		// TODO: [REGEX] | Regex for this kind of inputs: G[2] and try to extract the value inside of [] ^(A|B|C|D|E|F|G)(\w{1-5})?(\[[1-9]\])?$(([a-z]|\/|#){1-5})?
 		const hasChordMultipleVariants = rawChordName.includes("[") && rawChordName.includes("]");
 		const chordName = hasChordMultipleVariants
 			? rawChordName.substring(0, rawChordName.lastIndexOf("["))
@@ -137,8 +142,7 @@ class GuitarService {
 		parsedTextLine: string;
 		isCurrentTextLineItemAChord: boolean;
 	} {
-		// TODO: It is possible to avoid this as?
-		const chord = this.findChord(currentTextLineItem) as T_PlainChordDetails;
+		const chord = this.findChord(currentTextLineItem);
 
 		if (notFound(chord)) {
 			return { parsedTextLine: currentTextLineParsed, isCurrentTextLineItemAChord: false };
@@ -149,23 +153,23 @@ class GuitarService {
 			isTheLastParsedTextLineBlank,
 			isCurrentLineTheLastOne,
 		);
+		let parsedTextLine = "";
+
+		if (exactReplacement) {
+			parsedTextLine = replaceAll(currentTextLineParsed, currentTextLineItem, chordAsHTML);
+		} else {
+			parsedTextLine = replaceAll(
+				currentTextLineParsed,
+				` ${currentTextLineItem} `,
+				` ${chordAsHTML} `,
+			);
+			parsedTextLine = replaceAll(parsedTextLine, `${currentTextLineItem}|`, `${chordAsHTML}|`);
+			parsedTextLine = replaceAll(parsedTextLine, `${currentTextLineItem} `, `${chordAsHTML} `);
+			parsedTextLine = replaceAll(parsedTextLine, ` ${currentTextLineItem}`, ` ${chordAsHTML}`);
+		}
 
 		return {
-			parsedTextLine: exactReplacement
-				? replaceAll(currentTextLineParsed, currentTextLineItem, chordAsHTML)
-				: replaceAll(
-						replaceAll(
-							replaceAll(
-								replaceAll(currentTextLineParsed, ` ${currentTextLineItem} `, ` ${chordAsHTML} `),
-								`${currentTextLineItem}|`,
-								`${chordAsHTML}|`,
-							),
-							`${currentTextLineItem} `,
-							`${chordAsHTML} `,
-						),
-						` ${currentTextLineItem}`,
-						` ${chordAsHTML}`,
-				  ),
+			parsedTextLine,
 			isCurrentTextLineItemAChord: true,
 		};
 	}
@@ -175,10 +179,20 @@ class GuitarService {
 		isTheLastParsedTextLineBlank: boolean,
 		isCurrentLineTheLastOne: boolean,
 	): string {
+		/*
+		 * No default variant chords are written like this: G[2]
+		 * To keep the right spacing between the lyrics and chords
+		 * it is necessary to replace [2] with three spaces
+		 */
+		const REPLACE_SPACES_FOR_NO_DEFAULT_VARIANT_CHORDS = "   ";
+		const isDefaultVariantChord = chord.variantIndex === 0;
+
 		return `<button class="${this.CHORD_BUTTON_SELECTOR} dfr-text-color-links${
 			isCurrentLineTheLastOne ? "" : " tw-mb-1"
 		}${isTheLastParsedTextLineBlank ? "" : " tw-mt-3"}" data-chord-index="${chord.variantIndex}">${
-			chord.variantIndex > 0 ? `${chord.name}   ` : chord.name
+			isDefaultVariantChord
+				? chord.name
+				: `${chord.name}${REPLACE_SPACES_FOR_NO_DEFAULT_VARIANT_CHORDS}`
 		}</button>`;
 	}
 

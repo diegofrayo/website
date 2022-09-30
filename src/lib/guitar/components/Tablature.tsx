@@ -15,7 +15,7 @@ import {
 import type { T_ReactChildren, T_ReactElement, T_UnknownObject } from "~/types";
 
 import GuitarFret from "./GuitarFret";
-import { NUMBER_OF_STRINGS } from "../constants";
+import { NUMBER_OF_STRINGS, parseFret, parseGuitarString } from "../utils";
 import type { T_GuitarFret, T_GuitarString } from "../types";
 
 // WARN: False positive
@@ -240,30 +240,23 @@ function parsePosition(position: T_UnknownObject): T_Position {
 	}
 
 	if (isNumber(position["guitarString"]) && isNumber(position["guitarFret"])) {
-		checkGuitarStringValidity(position["guitarString"]);
-		checkGuitarFretValidity(position["guitarFret"]);
-
 		return {
-			guitarString: position["guitarString"] as T_GuitarString,
-			guitarFret: position["guitarFret"] as T_GuitarFret,
+			guitarString: parseGuitarString(position["guitarString"]),
+			guitarFret: parseFret(position["guitarFret"]),
 			variant: "MUSIC_NOTE",
 		};
 	}
 
 	if (isNumber(position["guitarString"]) && isUndefined(position["guitarFret"])) {
-		checkGuitarStringValidity(position["guitarString"]);
-
 		return {
-			guitarString: position["guitarString"] as T_GuitarString,
+			guitarString: parseGuitarString(position["guitarString"]),
 			variant: "GUITAR_STRING",
 		};
 	}
 
 	if (isNumber(position["guitarFret"]) && isUndefined(position["guitarString"])) {
-		checkGuitarFretValidity(position["guitarFret"]);
-
 		return {
-			guitarFret: position["guitarFret"] as T_GuitarFret,
+			guitarFret: parseFret(position["guitarFret"]),
 			variant: "BARRE",
 		};
 	}
@@ -281,22 +274,6 @@ function isMusicNotePosition(input?: T_Position): input is T_MusicNotePosition {
 		input?.variant === "BARRE" ||
 		input?.variant === "GUITAR_STRING"
 	);
-}
-
-function checkGuitarStringValidity(value: number): value is T_GuitarString {
-	if (Number.isNaN(value) || !(value >= 1 || value <= 6)) {
-		throw new Error(`Invalid guitar string (${value}). A guitar string must be between 1 and 6`);
-	}
-
-	return true;
-}
-
-function checkGuitarFretValidity(value: number): value is T_GuitarFret {
-	if (Number.isNaN(value) || !(value >= 1 || value <= 16)) {
-		throw new Error(`Invalid guitar fret (${value}). A guitar fret must be between 1 and 16`);
-	}
-
-	return false;
 }
 
 function checkTablatureSpaceValidity(value: number): boolean {

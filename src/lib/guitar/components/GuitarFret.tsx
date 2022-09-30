@@ -7,8 +7,8 @@ import { createArray, mirror } from "~/utils/objects-and-arrays";
 import { isUndefined } from "~/utils/validations";
 import type { T_ReactElement, T_ReactElementNullable } from "~/types";
 
-import { NUMBER_OF_STRINGS } from "../constants";
-import type { T_MusicNote, T_GuitarFret, T_GuitarString, T_ParsedChord } from "../types";
+import { NUMBER_OF_STRINGS } from "../utils";
+import type { T_MusicNote, T_GuitarFret, T_GuitarString, T_Chord } from "../types";
 
 const VARIANTS_OPTIONS = [
 	"GUITAR_STRINGS_NAMES",
@@ -25,8 +25,8 @@ type T_GuitarFretProps = {
 	variant: T_Variant;
 	number?: T_GuitarFret;
 	musicNotes?: T_MusicNote[];
-	barreFret?: T_ParsedChord["barreFret"];
-	touchedStrings?: T_ParsedChord["touchedStrings"];
+	barreFret?: T_Chord["barreFret"];
+	touchedStrings?: T_Chord["touchedStrings"];
 };
 
 function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
@@ -198,7 +198,7 @@ type T_UseControllerReturn = Omit<T_GuitarFretProps, "variant"> & {
 	isEmptyVariant: boolean;
 	isSkippedGuitarStringsVariant: boolean;
 	isGuitarStringsNamesVariant: boolean;
-	isBarreFretChecker: (input: unknown) => input is NonNullable<T_ParsedChord["barreFret"]>;
+	isBarreFretChecker: (input: unknown) => input is NonNullable<T_Chord["barreFret"]>;
 };
 
 function useController({ variant, ...rest }: T_GuitarFretProps): T_UseControllerReturn {
@@ -210,7 +210,7 @@ function useController({ variant, ...rest }: T_GuitarFretProps): T_UseController
 	const isGuitarStringsNamesVariant = variant === VARIANTS.GUITAR_STRINGS_NAMES;
 
 	// utils
-	function isBarreFretChecker(input: unknown): input is NonNullable<T_ParsedChord["barreFret"]> {
+	function isBarreFretChecker(input: unknown): input is NonNullable<T_Chord["barreFret"]> {
 		return input !== undefined;
 	}
 

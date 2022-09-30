@@ -1,6 +1,6 @@
 // --- Chords ---
 
-export type T_ParsedChord = {
+export type T_Chord = {
 	name: string;
 	firstFret: T_GuitarFret;
 	lastFret: T_GuitarFret;

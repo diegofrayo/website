@@ -5,16 +5,11 @@ import {
 	isNotTrue,
 	isNotUndefined,
 	isTrue,
+	isUndefined,
 } from "~/utils/validations";
 
-import type {
-	T_Finger,
-	T_GuitarFret,
-	T_GuitarString,
-	T_MusicNote,
-	T_ParsedChord,
-	T_PlainChordDetails,
-} from "./types";
+import { parseFret, parseGuitarString } from "./utils";
+import type { T_Finger, T_MusicNote, T_Chord, T_PlainChordDetails } from "./types";
 
 class Chord {
 	public name;
@@ -36,8 +31,8 @@ class Chord {
 
 		this.name = plainChord.name;
 		this.barreFret = parseBarre(plainChord.musicNotes);
-		this.isBarreChord = isNotUndefined(this.barreFret); // TODO: ??? (is assertion)
-		this.firstFret = this.isBarreChord ? this.barreFret?.fret || 1 : musicNotes[0].guitarFret;
+		this.isBarreChord = isNotUndefined(this.barreFret);
+		this.firstFret = isUndefined(this.barreFret) ? musicNotes[0].guitarFret : this.barreFret.fret;
 		this.lastFret = musicNotes[musicNotes.length - 1].guitarFret;
 		this.touchedStrings = parseTouchedStrings(plainChord.touchedStrings);
 		this.musicNotesGroupedByFret = musicNotes.reduce(
@@ -54,7 +49,7 @@ class Chord {
 					...result,
 					[`${fret}`]: [],
 				};
-			}, {} as T_ParsedChord["musicNotesGroupedByFret"]),
+			}, {} as T_Chord["musicNotesGroupedByFret"]),
 		);
 	}
 }
@@ -63,33 +58,19 @@ export default Chord;
 
 // --- Utils ---
 
-function parseGuitarString(stringNumber: string): T_GuitarString {
-	const REGEX = /^[1-6]$/;
+function parseFinger(finger: string | undefined): T_Finger | undefined {
+	if (isUndefined(finger)) return undefined;
 
-	if (isTrue(REGEX.test(stringNumber))) {
-		return Number(stringNumber) as T_GuitarString;
-	}
-
-	throw new Error("Invalid guitar string");
-}
-
-function parseFret(fret: string): T_GuitarFret {
-	const REGEX = /^(^[1-9]{1}|^1[0-6]{1})$/;
-
-	if (isTrue(REGEX.test(fret))) {
-		return Number(fret) as T_GuitarFret;
-	}
-
-	throw new Error("Invalid guitar fret");
-}
-
-function parseFinger(finger: string): T_Finger | undefined {
 	const REGEX = /^[1-4]$/;
 
-	return isTrue(REGEX.test(finger)) ? (Number(finger) as T_Finger) : undefined;
+	if (isTrue(REGEX.test(finger))) {
+		return Number(finger) as T_Finger;
+	}
+
+	throw new Error(`Invalid finger => value: (${finger}) | typeof: (${typeof finger})`);
 }
 
-function parseBarre(input: string): T_ParsedChord["barreFret"] {
+function parseBarre(input: string): T_Chord["barreFret"] {
 	const numbersOfBarre = (input.match(/x/g) || []).length;
 
 	if (numbersOfBarre > 1) {
@@ -110,9 +91,9 @@ function parseBarre(input: string): T_ParsedChord["barreFret"] {
 	return undefined;
 }
 
-function parseTouchedStrings(touchedStrings: string): T_ParsedChord["touchedStrings"] {
+function parseTouchedStrings(touchedStrings: string): T_Chord["touchedStrings"] {
 	// TODO: Regex
-	return touchedStrings.split(",").reverse() as T_ParsedChord["touchedStrings"];
+	return touchedStrings.split(",").reverse() as T_Chord["touchedStrings"];
 }
 
 // TODO: Regex for this input ("6x,1|4,3,1|3,3,2|2,3,3")
