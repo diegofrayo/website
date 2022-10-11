@@ -56,10 +56,19 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 						<Text>{resume.headline}</Text>
 						<Space size={1} />
 
-						<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
-							<InlineText>{resume.location.city}</InlineText> <InlineText> / </InlineText>
-							<InlineText>{resume.location.country}</InlineText>
-						</Text>
+						<Block>
+							<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
+								<InlineText is="strong">From: </InlineText>{" "}
+								<InlineText>{resume.location.from.city}</InlineText> <InlineText> / </InlineText>
+								<InlineText>{resume.location.from.country}</InlineText>
+							</Text>
+							<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
+								<InlineText is="strong">Living in: </InlineText>{" "}
+								<InlineText>{resume.location.from.city}</InlineText> <InlineText> / </InlineText>
+								<InlineText>{resume.location.from.country}</InlineText>
+							</Text>
+						</Block>
+
 						<Space size={4} />
 
 						<Block className="tw-text-center">
@@ -288,8 +297,8 @@ function ExperienceTimelineItem({
 				<Space size={2} />
 
 				<Pre
-					variant={Pre.variant.BREAK_WITH_BLANK_LINES}
-					className="dfr-font-family print:tw-text-sm md:tw-text-justify"
+					variant={Pre.variant.BREAK_WITH_BLANK_SPACES}
+					className="dfr-font-family print:tw-text-sm"
 				>
 					{description}
 				</Pre>
@@ -313,8 +322,8 @@ type T_Resume = {
 };
 
 type T_Location = {
-	country: string;
-	city: string;
+	from: { country: string; city: string };
+	living: { country: string; city: string };
 };
 
 type T_ContactInfo = {
@@ -338,8 +347,6 @@ type T_Education = {
 };
 
 type T_Experience = {
-	// WARN: False positive
-	// eslint-disable-next-line react/no-unused-prop-types
 	id: string;
 	role: string;
 	company: string;

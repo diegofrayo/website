@@ -4,7 +4,13 @@ import classNames from "classnames";
 import { mirror } from "~/utils/objects-and-arrays";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
-const VARIANTS_OPTIONS = ["UNSTYLED", "STYLED", "BREAK_WORDS", "BREAK_WITH_BLANK_LINES"] as const;
+const VARIANTS_OPTIONS = [
+	"UNSTYLED",
+	"STYLED",
+	"BREAK_WORDS",
+	"BREAK_WITH_BLANK_LINES",
+	"BREAK_WITH_BLANK_SPACES",
+] as const;
 type T_Variant = typeof VARIANTS_OPTIONS[number];
 const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
 type T_PreProps = T_HTMLElementAttributes["pre"] & {
@@ -54,6 +60,7 @@ function Pre({ children, className, variant, ...rest }: T_PreProps): T_ReactElem
 				`dfr-Pre--${variant}`,
 				variant === VARIANTS.BREAK_WORDS && "tw-whitespace-normal tw-break-all",
 				variant === VARIANTS.BREAK_WITH_BLANK_LINES && "tw-whitespace-pre-line tw-break-words",
+				variant === VARIANTS.BREAK_WITH_BLANK_SPACES && "tw-whitespace-pre-wrap tw-break-words",
 				className,
 			)}
 			{...rest}
