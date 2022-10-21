@@ -5,7 +5,7 @@ import { Button, Block, Icon, Text } from "~/components/primitive";
 import { ENV_VARS } from "~/constants";
 import { createArray } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
-import type { T_ReactElement, T_ReactFunctionComponent, T_ReactRefObject } from "~/types";
+import type { T_ReactElement, T_ReactFunctionComponent, T_ReactRef } from "~/types";
 
 import SourceCode, { T_SourceCodeProps } from "./SourceCode";
 
@@ -13,9 +13,15 @@ import SourceCode, { T_SourceCodeProps } from "./SourceCode";
 /* eslint-disable react/no-unused-prop-types */
 type T_PlaygroundProps = Pick<T_SourceCodeProps, "code" | "language"> & {
 	Component: T_ReactFunctionComponent;
+	height?: number | "auto";
+	tabsNames?: [string, string];
 };
 
-function Playground(props: T_PlaygroundProps): T_ReactElement {
+function Playground({
+	height = "auto",
+	tabsNames = ["", ""],
+	...props
+}: T_PlaygroundProps): T_ReactElement {
 	const {
 		// props
 		Component,
@@ -35,22 +41,24 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
 
 	return (
 		<div
-			className="dfr-Playground root tw-flex tw-h-[250px] tw-flex-col tw-border-4 dfr-border-color-gs-black dfr-bg-color-wb dark:dfr-border-color-primary"
+			className="dfr-Playground root tw-flex tw-min-h-[300px] tw-flex-col tw-border-4 dfr-border-color-gs-black dfr-bg-color-wb dark:dfr-border-color-primary"
+			style={{ height }}
 			data-markdown-block
 		>
 			<Block
-				className="tw-flex-1 tw-overflow-auto tw-p-2"
+				className="tw-relative tw-flex-1"
 				ref={contentRef}
 			>
 				{isSourceCodeTabSelected ? (
-					<SourceCode
-						language={language}
-						code={code}
-						displaySourceCodeDetails={false}
-						className="tw-h-full"
-					/>
+					<Block className="tw-absolute tw-inset-2 tw-overflow-auto">
+						<SourceCode
+							height="tw-h-full"
+							language={language}
+							code={code}
+						/>
+					</Block>
 				) : (
-					<Block className="tw-flex tw-h-full tw-flex-col tw-rounded-md tw-border-4 tw-border-gray-200">
+					<Block className="tw-absolute tw-inset-2 tw-flex tw-flex-col tw-rounded-md tw-border-4 tw-border-gray-200">
 						<Block className="tw-flex tw-flex-nowrap tw-items-center tw-justify-between tw-bg-gray-200 tw-p-2">
 							<Block className="tw-flex tw-items-center">
 								{createArray(3).map((element) => {
@@ -96,7 +104,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
 					)}
 					onClick={handleTabClick(0)}
 				>
-					Source code
+					{tabsNames[0] || "Source code"}
 				</Button>
 				<Button
 					variant={Button.variant.SIMPLE}
@@ -107,7 +115,7 @@ function Playground(props: T_PlaygroundProps): T_ReactElement {
 					)}
 					onClick={handleTabClick(1)}
 				>
-					Preview
+					{tabsNames[1] || "Preview"}
 				</Button>
 			</Block>
 
@@ -128,7 +136,7 @@ type T_UseControllerReturn = T_PlaygroundProps & {
 	isSourceCodeTabSelected: boolean;
 	isOutputTabSelected: boolean;
 	handleTabClick: (index: 0 | 1) => () => void;
-	contentRef: T_ReactRefObject<HTMLDivElement>;
+	contentRef: T_ReactRef<HTMLDivElement>;
 };
 
 function useController(props: T_PlaygroundProps): T_UseControllerReturn {

@@ -15,13 +15,7 @@ class FilmsService {
 
 		return data
 			.map((film: T_UnknownObject) => FilmVO(film))
-			.sort(
-				sortBy([
-					{ param: "addedDate", order: "desc" },
-					{ param: "calification", order: "desc" },
-					{ param: "title", order: "asc" },
-				]),
-			);
+			.sort(sortBy<T_Film>("-addedDate", "-calification", "title"));
 	}
 }
 

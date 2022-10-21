@@ -24,6 +24,7 @@ import type {
 	T_ReactOnChangeEventHandler,
 	T_ReactOnChangeEventObject,
 	T_ReactSetState,
+	T_SetTimeout,
 } from "~/types";
 
 function Ticks(): T_ReactElement {
@@ -38,7 +39,7 @@ function Ticks(): T_ReactElement {
 	const [ticksInputValue, setTicksInputValue] = React.useState(4);
 	const [intensityInputValue, setIntensityInputValue] = React.useState(1250);
 	const [cyclesInputValue, setCyclesInputValue] = React.useState(135);
-	const [timerInterval, setTimerInterval] = React.useState<NodeJS.Timeout | null>(null);
+	const [timerInterval, setTimerInterval] = React.useState<T_SetTimeout | null>(null);
 	const currentSessionDetails = React.useRef({
 		id: new Date().getTime(),
 		startDate: new Date(),
@@ -89,12 +90,7 @@ function Ticks(): T_ReactElement {
 						time: item.time || "11 minutes",
 					};
 				})
-				.sort(
-					sortBy([
-						{ param: "date", order: "desc" },
-						{ param: "id", order: "desc" },
-					]),
-				);
+				.sort(sortBy("-date", "-id"));
 		},
 		[],
 	);

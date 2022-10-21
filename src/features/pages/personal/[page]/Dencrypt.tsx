@@ -16,7 +16,7 @@ import type {
 	T_ReactElement,
 	T_ReactOnClickEventHandler,
 	T_ReactOnSubmitEventHandler,
-	T_ReactRefObject,
+	T_ReactRef,
 } from "~/types";
 
 function Dencrypt(): T_ReactElement {
@@ -92,7 +92,7 @@ export default Dencrypt;
 
 type T_UseControllerReturn = {
 	output: string;
-	inputRef: T_ReactRefObject<HTMLInputElement>;
+	inputRef: T_ReactRef<HTMLInputElement>;
 	onSubmitHandler: T_ReactOnSubmitEventHandler<HTMLFormElement>;
 	onInputFocusHandler: T_ReactOnClickEventHandler<HTMLInputElement>;
 };

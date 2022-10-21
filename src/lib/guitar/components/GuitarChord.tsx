@@ -7,7 +7,7 @@ import { useExecuteCallback } from "~/hooks";
 import { downloadComponentAsImage } from "~/utils/browser";
 import { getErrorMessage } from "~/utils/misc";
 import { isNull, isUndefined } from "~/utils/validations";
-import type { T_ReactElementNullable, T_ReactRefObject } from "~/types";
+import type { T_ReactElementNullable, T_ReactRef } from "~/types";
 
 import GuitarFret from "./GuitarFret";
 import GuitarService from "../service";
@@ -128,7 +128,7 @@ export default GuitarChord;
 // --- Controller ---
 
 type T_UseControllerReturn = {
-	chordContainerRef: T_ReactRefObject<HTMLDivElement>;
+	chordContainerRef: T_ReactRef<HTMLDivElement>;
 	handleDownloadAsImageClick: () => Promise<void>;
 	parsedChord: T_Chord | undefined;
 	error: unknown;

@@ -10,7 +10,7 @@ import type {
 	T_ReactElement,
 	T_ReactOnChangeEventHandler,
 	T_ReactOnKeyPressEventHandler,
-	T_ReactRefObject,
+	T_ReactRef,
 } from "~/types";
 
 function WhatsApp(): T_ReactElement {
@@ -121,7 +121,7 @@ export default WhatsApp;
 
 type T_UseControllerReturn = {
 	phone: string;
-	inputRef: T_ReactRefObject<HTMLInputElement>;
+	inputRef: T_ReactRef<HTMLInputElement>;
 	isInvalidPhone: boolean;
 	isWebOptionSelected: boolean;
 	whatsAppUrl: string;

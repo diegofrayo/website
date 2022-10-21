@@ -130,7 +130,7 @@ function generateMusicNotes(input: string): T_MusicNote[] {
 		throw new Error("A chord must have at least one music note");
 	}
 
-	return musicNotes.sort(sortBy([{ order: "asc", param: "guitarFret" }]));
+	return musicNotes.sort(sortBy("guitarFret"));
 }
 
 // TODO: Remove this probably

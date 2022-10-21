@@ -15,13 +15,7 @@ class BooksService {
 
 		return data
 			.map((book: T_UnknownObject) => BookVO(book))
-			.sort(
-				sortBy([
-					{ param: "addedDate", order: "desc" },
-					{ param: "calification", order: "desc" },
-					{ param: "title", order: "asc" },
-				]),
-			);
+			.sort(sortBy<T_Book>("-addedDate", "-calification", "title"));
 	}
 }
 

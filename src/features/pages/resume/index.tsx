@@ -36,10 +36,13 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 		>
 			<Block
 				is="main"
-				className="tw-relative tw-mx-auto tw-px-8 tw-py-16 dfr-max-w-layout dfr-shadow print:tw-w-full print:tw-border-0 print:tw-shadow-none"
+				className="tw-relative tw-mx-auto tw-px-8 tw-py-16 dfr-max-w-layout dfr-shadow print:tw-w-full print:tw-border-0 print:tw-p-0 print:tw-shadow-none"
 			>
 				<GoBack className="tw-absolute tw-top-0 print:tw-hidden" />
-				<PrintBlock>
+				<PrintBlock
+					className="print:tw-flex print:tw-items-center print:tw-justify-center"
+					fullPage
+				>
 					<Block
 						is="header"
 						className="tw-text-center"
@@ -124,63 +127,63 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 					</Block>
 				</PrintBlock>
 
-				<Block>
-					<PrintBlock>
-						<ResumeBlock title="Summary">
-							<Pre
-								variant={Pre.variant.BREAK_WITH_BLANK_LINES}
-								className="dfr-font-family md:tw-text-justify"
-							>
-								{resume.summary}
-							</Pre>
-						</ResumeBlock>
-						<ResumeBlock title="Education">
-							<Block>
-								{resume.education.map((item) => {
-									return (
-										<Block
-											key={generateSlug(item.degree)}
-											className="tw-mb-4 tw-flex tw-items-start last:tw-mb-0"
-										>
-											<Image
-												src={item.schoolLogo}
-												alt={`${item.school} logo`}
-												className="tw-relative tw-top-1 tw-mr-2 tw-h-12 tw-w-12 tw-flex-shrink-0"
-											/>
-											<Block>
-												<Title
-													is="h3"
-													variant={Title.variant.SECONDARY}
-													size={Title.size.MD}
-												>
-													{item.degree}
-												</Title>
-												<Link
-													variant={Link.variant.PRIMARY}
-													href={item.schoolWebsite}
-													className="tw-underline"
-													isExternalLink
-												>
-													{item.school}
-												</Link>
-												<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
-													<InlineText>{item.startDate}</InlineText> /{" "}
-													<InlineText>{item.endDate}</InlineText>
-												</Text>
-											</Block>
+				<PrintBlock fullPage>
+					<ResumeBlock title="Summary">
+						<Pre
+							variant={Pre.variant.BREAK_WITH_BLANK_LINES}
+							className="dfr-font-family md:tw-text-justify"
+						>
+							{resume.summary}
+						</Pre>
+					</ResumeBlock>
+					<ResumeBlock title="Education">
+						<Block>
+							{resume.education.map((item) => {
+								return (
+									<Block
+										key={generateSlug(item.degree)}
+										className="tw-mb-4 tw-flex tw-items-start last:tw-mb-0"
+									>
+										<Image
+											src={item.schoolLogo}
+											alt={`${item.school} logo`}
+											className="tw-relative tw-top-1 tw-mr-2 tw-h-12 tw-w-12 tw-flex-shrink-0"
+										/>
+										<Block>
+											<Title
+												is="h3"
+												variant={Title.variant.SECONDARY}
+												size={Title.size.MD}
+											>
+												{item.degree}
+											</Title>
+											<Link
+												variant={Link.variant.PRIMARY}
+												href={item.schoolWebsite}
+												className="tw-underline"
+												isExternalLink
+											>
+												{item.school}
+											</Link>
+											<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
+												<InlineText>{item.startDate}</InlineText> /{" "}
+												<InlineText>{item.endDate}</InlineText>
+											</Text>
 										</Block>
-									);
-								})}
-							</Block>
-						</ResumeBlock>
-					</PrintBlock>
+									</Block>
+								);
+							})}
+						</Block>
+					</ResumeBlock>
+				</PrintBlock>
 
-					<PrintBlock fullPage={false}>
-						<ResumeBlock title="Experience">
-							<ExperienceTimeline experience={resume.experience} />
-						</ResumeBlock>
-					</PrintBlock>
+				<PrintBlock>
+					<ResumeBlock title="Experience">
+						<ExperienceTimeline experience={resume.experience} />
+					</ResumeBlock>
+				</PrintBlock>
 
+				<PrintBlock className="print:tw-mt-[1200px] print:tw-pt-8">
 					<ResumeBlock title="Skills">
 						<List variant={List.variant.DEFAULT}>
 							{resume.skills.map((item) => {
@@ -188,7 +191,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 							})}
 						</List>
 					</ResumeBlock>
-				</Block>
+				</PrintBlock>
 			</Block>
 		</Page>
 	);
@@ -198,12 +201,18 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 
 function PrintBlock({
 	children,
-	fullPage = true,
+	fullPage = false,
+	className,
 }: {
 	children: T_ReactChildren;
 	fullPage?: boolean;
+	className?: string;
 }): T_ReactElement {
-	return <Block className={classNames(fullPage && "print:tw-h-screen")}>{children}</Block>;
+	return (
+		<Block className={classNames("print:tw-py-8", fullPage && "print:tw-h-screen", className)}>
+			{children}
+		</Block>
+	);
 }
 
 type T_ResumeBlockProps = {

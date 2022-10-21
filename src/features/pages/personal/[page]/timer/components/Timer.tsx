@@ -4,12 +4,12 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Block, Button, Icon, InlineText, Space, Text } from "~/components/primitive";
-import type { T_ReactElement } from "~/types";
+import { createArray } from "~/utils/objects-and-arrays";
+import type { T_ReactElement, T_SetTimeout } from "~/types";
 
 import { ROUTINE_ITEMS_STATUS, TIMER_STATUS } from "../constants";
 import { TimerPageContext } from "../context";
 import type { T_RoutineItem } from "../types";
-import { createArray } from "~/utils/objects-and-arrays";
 
 function Timer({
 	routineItem,
@@ -39,7 +39,7 @@ function Timer({
 	} = React.useContext(TimerPageContext);
 
 	// states
-	const [timerInterval, setTimerInterval] = React.useState<NodeJS.Timeout | null>(null);
+	const [timerInterval, setTimerInterval] = React.useState<T_SetTimeout | null>(null);
 	const [time, setTime] = React.useState(0);
 	const [sets, setSets] = React.useState<("START" | "REST" | "HIGH")[]>([]);
 	const [currentSet, setCurrentSet] = React.useState({ index: 0, isRest: false, isStart: true });

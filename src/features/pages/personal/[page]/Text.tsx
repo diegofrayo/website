@@ -11,7 +11,7 @@ import {
 } from "~/utils/browser";
 import { replaceAll } from "~/utils/strings";
 import { isNotEmptyString, isNull } from "~/utils/validations";
-import type { T_ReactElement, T_ReactOnClickEventHandler, T_ReactRefObject } from "~/types";
+import type { T_ReactElement, T_ReactOnClickEventHandler, T_ReactRef } from "~/types";
 
 function TextPage(): T_ReactElement {
 	const {
@@ -74,7 +74,7 @@ export default TextPage;
 
 type T_UseControllerReturn = {
 	output: string;
-	inputRef: T_ReactRefObject<HTMLInputElement>;
+	inputRef: T_ReactRef<HTMLInputElement>;
 	handleProcessTextClick: T_ReactOnClickEventHandler<HTMLButtonElement>;
 	onInputFocusHandler: T_ReactOnClickEventHandler<HTMLInputElement>;
 };

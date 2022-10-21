@@ -734,7 +734,7 @@ function useController() {
 
 				return [...result, { date, routine }];
 			}, [])
-			.sort(sortBy([{ param: "date", order: "desc" }]));
+			.sort(sortBy("-date"));
 	}, []);
 
 	const createNewRoutine = React.useCallback(function createNewRoutine(

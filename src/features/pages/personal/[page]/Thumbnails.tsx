@@ -3,12 +3,13 @@ import * as React from "react";
 import { Input, Block, Title, Image, InlineText, Space, Button } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { downloadComponentAsImage } from "~/utils/browser";
+import { generateSlug } from "~/utils/strings";
 import { isNull } from "~/utils/validations";
 import type {
 	T_ReactElement,
 	T_ReactOnChangeEventHandler,
 	T_ReactOnClickEventHandler,
-	T_ReactRefObject,
+	T_ReactRef,
 } from "~/types";
 
 function Thumbnails(): T_ReactElement {
@@ -70,7 +71,7 @@ export default Thumbnails;
 type T_UseControllerReturn = {
 	title: string;
 	src: string;
-	thumbnailRef: T_ReactRefObject<HTMLDivElement>;
+	thumbnailRef: T_ReactRef<HTMLDivElement>;
 	onChangeHandler: (inputName: "src" | "title") => T_ReactOnChangeEventHandler<HTMLInputElement>;
 	handleDownloadAsImageClick: T_ReactOnClickEventHandler<HTMLButtonElement>;
 };
@@ -78,6 +79,10 @@ type T_UseControllerReturn = {
 function useController(): T_UseControllerReturn {
 	// vars
 	const BLOG_POSTS = [
+		{
+			slug: "my-typescript-snippets",
+			title: "My TypeScript snippets",
+		},
 		{
 			slug: "connecting-a-firebase-project-with-a-go-daddy-domain",
 			title: "Connecting a Firebase project with a Go Daddy domain",
@@ -91,7 +96,7 @@ function useController(): T_UseControllerReturn {
 			title: "Publishing a npm private package to GitHub pakages using GitHub actions",
 		},
 	];
-	const CURRENT_BLOG_POST = BLOG_POSTS[1];
+	const CURRENT_BLOG_POST = BLOG_POSTS[0];
 
 	// states & refs
 	const [title, setTitle] = React.useState(CURRENT_BLOG_POST.title);
@@ -119,7 +124,7 @@ function useController(): T_UseControllerReturn {
 				return;
 			}
 
-			await downloadComponentAsImage(thumbnailRef.current, CURRENT_BLOG_POST.slug);
+			await downloadComponentAsImage(thumbnailRef.current, generateSlug(title));
 		};
 
 	return {

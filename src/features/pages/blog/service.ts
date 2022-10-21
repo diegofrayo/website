@@ -20,7 +20,7 @@ class BlogService {
 
 		const result = Object.values(posts)
 			.map((blogPost) => BlogPostVO(blogPost, categories, locale))
-			.sort(sortBy([{ param: "publishedAt", order: "desc" }]));
+			.sort(sortBy("-publishedAt"));
 
 		return result;
 	}
@@ -88,7 +88,7 @@ function BlogPostVO(
 		.filter((category): category is T_BlogPostCategory => {
 			return exists(category);
 		})
-		.sort(sortBy([{ param: "value", order: "asc" }]));
+		.sort(sortBy("value"));
 
 	return blogPost;
 }

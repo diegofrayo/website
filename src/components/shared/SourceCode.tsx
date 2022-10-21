@@ -16,6 +16,7 @@ type T_SourceCodeProps = {
 	fileName?: string;
 	sourceURL?: string;
 	className?: string;
+	height?: string;
 	displaySourceCodeDetails?: boolean;
 };
 
@@ -25,6 +26,7 @@ function SourceCode({
 	code = "",
 	sourceURL = "",
 	className = "",
+	height = "tw-h-[600px]",
 	displaySourceCodeDetails = true,
 }: T_SourceCodeProps): T_ReactElement {
 	// hooks
@@ -40,13 +42,14 @@ function SourceCode({
 	return (
 		<Block
 			className={classNames(
-				"dfr-SourceCode tw-overflow-hidden tw-rounded-md tw-border dfr-border-color-primary dfr-bg-color-wb dark:tw-bg-transparent",
+				"dfr-SourceCode tw-flex tw-flex-col tw-overflow-hidden tw-rounded-md tw-border dfr-border-color-primary dfr-bg-color-wb dark:tw-bg-transparent",
 				className,
+				height,
 			)}
 			data-markdown-block
 		>
 			{displaySourceCodeDetails ? (
-				<Block className="tw-flex tw-flex-wrap tw-items-center tw-justify-between tw-px-4 tw-py-2 tw-pr-2 tw-font-mono tw-text-sm dfr-text-color-bw dark:dfr-bg-color-tertiary">
+				<Block className="tw-flex tw-flex-shrink-0 tw-flex-wrap tw-items-center tw-justify-between tw-px-4 tw-py-2 tw-pr-2 tw-font-mono tw-text-sm dfr-text-color-bw dark:dfr-bg-color-tertiary">
 					{isNotEmptyString(codeTitle) ? (
 						<code className="tw-mr-4 tw-flex-1 tw-truncate tw-font-bold">{codeTitle}</code>
 					) : null}
@@ -74,7 +77,7 @@ function SourceCode({
 							variant={Pre.variant.UNSTYLED}
 							className={classNames(
 								classNameProp,
-								"tw-h-full tw-overflow-x-auto tw-p-4 tw-text-base",
+								"tw-flex-1 tw-overflow-x-auto tw-p-4 tw-text-base",
 								displaySourceCodeDetails && "tw-border-y dfr-border-color-primary",
 							)}
 							style={style}
@@ -109,7 +112,7 @@ function SourceCode({
 			</Highlight>
 
 			{displaySourceCodeDetails ? (
-				<Block className="tw-flex tw-flex-col-reverse tw-py-2 tw-px-4 tw-pr-2 tw-text-sm  dark:dfr-bg-color-tertiary sm:tw-flex-row sm:tw-justify-end">
+				<Block className="tw-flex tw-flex-shrink-0 tw-flex-col-reverse tw-py-2 tw-px-4 tw-pr-2 tw-text-sm dark:dfr-bg-color-tertiary sm:tw-flex-row sm:tw-justify-end">
 					{isNotEmptyString(sourceURL) ? (
 						<React.Fragment>
 							<Link

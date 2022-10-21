@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import { isDOMNode, isNotTrue, isNull } from "~/utils/validations";
-import type { T_ReactRefObject } from "~/types";
+import type { T_ReactRef } from "~/types";
 
-function useClickOutside(ref: T_ReactRefObject<HTMLElement>, callback: () => void): void {
+function useClickOutside(ref: T_ReactRef<HTMLElement>, callback: () => void): void {
 	// effects
 	React.useEffect(() => {
 		const controller = new AbortController();

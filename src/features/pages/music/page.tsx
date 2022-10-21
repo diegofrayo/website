@@ -10,7 +10,7 @@ import { focusElement } from "~/utils/browser";
 import { ROUTES } from "~/features/routing";
 import { removeAccents } from "~/utils/strings";
 import { isNotTrue, isFalsy, isNotEquals, isNull } from "~/utils/validations";
-import type { T_ReactElement, T_ReactOnChangeEventHandler, T_ReactRefObject } from "~/types";
+import type { T_ReactElement, T_ReactOnChangeEventHandler, T_ReactRef } from "~/types";
 
 import { SongDetails } from "./components";
 import MusicService, { T_Song } from "./service";
@@ -126,7 +126,7 @@ export default MusicPage;
 
 type T_UseController = {
 	inputValue: string;
-	inputRef: T_ReactRefObject<HTMLInputElement>;
+	inputRef: T_ReactRef<HTMLInputElement>;
 	isLoading: boolean;
 	error: unknown;
 	data: T_Song[] | undefined;

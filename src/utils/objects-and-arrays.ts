@@ -1,15 +1,15 @@
-import { logger } from "~/features/logging";
 import type { T_UnknownObject, T_Primitive } from "~/types";
 
 import { or } from "./fp";
 import { between } from "./numbers";
 import {
 	isBoolean,
-	isDate,
+	isNotTrue,
 	isNull,
 	isNumber,
 	isObject,
 	isString,
+	isTrue,
 	isUndefined,
 } from "./validations";
 
@@ -32,87 +32,99 @@ export function createArray(length: number, start?: number): number[] {
 	return Array.from(Array(length).keys()).map((value) => value + (start === undefined ? 1 : start));
 }
 
-type T_Order = "asc" | "desc";
-type T_Criteria = { param: string; order: T_Order };
-type T_SorterFunction = (a: T_UnknownObject, b: T_UnknownObject) => number;
+export function getRandomItem<G_ItemType>(array: G_ItemType[]): G_ItemType {
+	return array[between(0, array.length - 1)];
+}
 
-// NOTE: Inspiration: https://www.npmjs.com/package/sort-by
-export function sortBy(criteria: T_Criteria[]): T_SorterFunction {
-	const sortByReturn: T_SorterFunction = function sortByReturn(a, b) {
-		return criteria.reduce(
-			(result, { param, order }: T_Criteria) => {
+type T_SortableType = string | number | boolean | Date;
+
+export function sortPlainArray(
+	order: "asc" | "desc",
+): (a: T_SortableType, b: T_SortableType) => number {
+	return function sortByReturn(a, b) {
+		const greater = order === "desc" ? -1 : 1;
+		const smaller = order === "desc" ? 1 : -1;
+		const aParam = a;
+		const bParam = b;
+
+		if (aParam > bParam) {
+			return greater;
+		}
+
+		if (aParam < bParam) {
+			return smaller;
+		}
+
+		return 0;
+	};
+}
+
+type T_PickSortableAttributes<G_Type> = {
+	[Key in keyof G_Type as G_Type[Key] extends T_SortableType ? Key : never]: G_Type[Key];
+};
+
+type T_ExtendTypeKeys<G_Type> = {
+	[Key in keyof T_PickSortableAttributes<G_Type>]: G_Type[Key];
+} & {
+	[Key in keyof T_PickSortableAttributes<G_Type> as Key extends string
+		? `-${Key}`
+		: never]: G_Type[Key];
+};
+
+// asc  = 1...5  |  "title"
+// desc = 5...1  |  "-title"
+export function sortBy<G_ItemType>(
+	...criteria: (keyof {
+		[Key in keyof T_ExtendTypeKeys<G_ItemType>]: string;
+	})[]
+): (a: G_ItemType, b: G_ItemType) => number {
+	return function sortByReturn(a, b) {
+		return removeDuplicates(criteria).reduce(
+			(result, criteriaItem) => {
 				if (result.finish) {
 					return result;
 				}
 
+				// WARN (as)
+				const attribute = (criteriaItem as string).replace("-", "") as keyof G_ItemType;
+				const order = (criteriaItem as string).startsWith("-") ? "desc" : "asc";
 				const greater = order === "desc" ? -1 : 1;
 				const smaller = order === "desc" ? 1 : -1;
-				const aParam = a[param];
-				const bParam = b[param];
+				const aParam = a[attribute];
+				const bParam = b[attribute];
 
-				if (
-					or<string | number | boolean | Date>(aParam, [isString, isNumber, isDate, isBoolean]) &&
-					or<string | number | boolean | Date>(bParam, [isString, isNumber, isDate, isBoolean])
-				) {
-					if (aParam > bParam) {
+				if (isBoolean(aParam) && isBoolean(bParam)) {
+					if (isTrue(aParam) && isNotTrue(bParam)) {
 						return { result: greater, finish: true };
 					}
 
-					if (aParam < bParam) {
+					if (isNotTrue(aParam) && isTrue(bParam)) {
 						return { result: smaller, finish: true };
 					}
 
 					return result;
 				}
 
-				logger("WARN", "Invalid elements types for comparison", a, b);
+				if (aParam > bParam) {
+					return { result: greater, finish: true };
+				}
+
+				if (aParam < bParam) {
+					return { result: smaller, finish: true };
+				}
 
 				return result;
 			},
 			{ result: 0, finish: false },
 		).result;
 	};
-
-	return sortByReturn;
-}
-
-type T_SortPlainArrayReturn = (a: unknown, b: unknown) => number;
-
-export function sortPlainArray(order: T_Order): T_SortPlainArrayReturn {
-	const sortByReturn: T_SortPlainArrayReturn = function sortByReturn(a, b) {
-		const greater = order === "desc" ? -1 : 1;
-		const smaller = order === "desc" ? 1 : -1;
-		const aParam = a;
-		const bParam = b;
-
-		if (
-			or<string | number | boolean | Date>(aParam, [isString, isNumber, isDate, isBoolean]) &&
-			or<string | number | boolean | Date>(bParam, [isString, isNumber, isDate, isBoolean])
-		) {
-			if (aParam > bParam) {
-				return greater;
-			}
-
-			if (aParam < bParam) {
-				return smaller;
-			}
-
-			return 0;
-		}
-
-		logger("WARN", "Invalid elements types for comparison", a, b);
-
-		return 0;
-	};
-
-	return sortByReturn;
-}
-
-export function getRandomItem<G_ItemType>(array: G_ItemType[]): G_ItemType {
-	return array[between(0, array.length - 1)];
 }
 
 // --- Private ---
+
+function removeDuplicates<G_ItemType>(array: G_ItemType[]): G_ItemType[] {
+	return array.filter((item, index) => array.indexOf(item) === index);
+}
 
 function convertSnakeCaseToLowerCamelCase(str: string): string {
 	return str

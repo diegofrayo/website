@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { isBoolean, isNull, isNotEmptyString } from "~/utils/validations";
-import type { T_HTMLElementAttributes, T_ReactElement, T_ReactRefObject } from "~/types";
+import type { T_HTMLElementAttributes, T_ReactElement, T_ReactRef } from "~/types";
 
 import Block from "./Block";
 
@@ -63,7 +63,7 @@ export default Collapsible;
 
 type T_UseControllerReturn = Pick<T_CollapsibleProps, "children" | "className"> & {
 	computedTitle: string;
-	containerRef: T_ReactRefObject<HTMLDetailsElement>;
+	containerRef: T_ReactRef<HTMLDetailsElement>;
 	handleToggleClick: () => void;
 };
 

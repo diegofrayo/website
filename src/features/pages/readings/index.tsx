@@ -39,13 +39,7 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 						}),
 					);
 				}, [])
-				.sort(
-					sortBy([
-						{ param: "starred", order: "desc" },
-						{ param: "date", order: "desc" },
-						{ param: "title", order: "asc" },
-					]),
-				),
+				.sort(sortBy("-starred", "-date", "title")),
 			categoryColors: Object.keys(data.readings).reduce((result, category, index) => {
 				return {
 					...result,

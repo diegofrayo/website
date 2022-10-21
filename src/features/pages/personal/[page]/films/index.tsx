@@ -267,14 +267,7 @@ function useController(): T_UseControllerReturn {
 			? data
 			: {
 					films: filterFilms(data, selectedCategory).sort(
-						sortBy(
-							isAddedDateFilterEnabled
-								? [{ param: "addedDate", order: "desc" }]
-								: [
-										{ param: "calification", order: "desc" },
-										{ param: "title", order: "asc" },
-								  ],
-						),
+						isAddedDateFilterEnabled ? sortBy("-addedDate") : sortBy("-calification", "title"),
 					),
 					categories: Object.values({
 						peliculas: "película",

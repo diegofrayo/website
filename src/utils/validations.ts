@@ -4,7 +4,7 @@
  * - https://npm.io/package/x-utils-es
  */
 
-import { T_ReactEventTarget, T_UnknownObject } from "~/types";
+import { T_UnknownObject } from "~/types";
 
 // --- Primitives ---
 
@@ -17,6 +17,7 @@ export function isUndefined(input: unknown): input is undefined {
 }
 
 export function isObject(input: unknown): input is T_UnknownObject {
+	if (!input || Array.isArray(input)) return false;
 	return typeof input === "object";
 }
 
@@ -100,6 +101,6 @@ export function exists(input: unknown): boolean {
 
 // --- DOM ---
 
-export function isDOMNode(element: T_ReactEventTarget | null): element is Node {
-	return "nodeType" in (element || {});
+export function isDOMNode(element: unknown): element is Node {
+	return "nodeType" in (isObject(element) ? element : {});
 }

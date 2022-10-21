@@ -1,7 +1,7 @@
 import * as React from "react";
-import { T_ReactSetState } from "~/types";
 
 import { isBoolean, isNumber, isString } from "~/utils/validations";
+import type { T_ReactSetState } from "~/types";
 
 type T_UseEnhacedStateStringReturn = [
 	state: string,

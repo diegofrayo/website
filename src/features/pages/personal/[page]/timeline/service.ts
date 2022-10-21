@@ -58,13 +58,13 @@ class TimelineService {
 							.filter((category): category is T_TimelineCategory => {
 								return exists(category);
 							})
-							.sort(sortBy([{ param: "value", order: "asc" }])),
+							.sort(sortBy("value")),
 					});
-					mutatedResult[year].items.sort(sortBy([{ param: "startDate", order: "desc" }]));
+					mutatedResult[year].items.sort(sortBy("-startDate"));
 
 					return mutatedResult;
 				}, {}),
-			).sort(sortBy([{ param: "year", order: "desc" }])),
+			).sort(sortBy("-year")),
 		};
 	}
 }
