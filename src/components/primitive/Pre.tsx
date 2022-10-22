@@ -4,15 +4,14 @@ import classNames from "classnames";
 import { mirror } from "~/utils/objects-and-arrays";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
-const VARIANTS_OPTIONS = [
+const VARIANTS = mirror([
 	"UNSTYLED",
 	"STYLED",
 	"BREAK_WORDS",
 	"BREAK_WITH_BLANK_LINES",
 	"BREAK_WITH_BLANK_SPACES",
-] as const;
-type T_Variant = typeof VARIANTS_OPTIONS[number];
-const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
+]);
+type T_Variant = keyof typeof VARIANTS;
 type T_PreProps = T_HTMLElementAttributes["pre"] & {
 	variant: T_Variant;
 };

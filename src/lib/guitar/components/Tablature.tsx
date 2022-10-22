@@ -12,7 +12,7 @@ import {
 	isNumber,
 	isUndefined,
 } from "~/utils/validations";
-import type { T_ReactChildren, T_ReactElement, T_UnknownObject } from "~/types";
+import type { T_ReactChildren, T_ReactElement, T_Object } from "~/types";
 
 import GuitarFret from "./GuitarFret";
 import { NUMBER_OF_STRINGS, parseFret, parseGuitarString } from "../utils";
@@ -79,9 +79,8 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
 											if (Array.isArray(position)) {
 												const foundPosition =
 													position.find(
-														(item: T_UnknownObject) => item["guitarString"] === guitarString,
-													) ||
-													position.find((item: T_UnknownObject) => item["variant"] === "BARRE");
+														(item: T_Object) => item["guitarString"] === guitarString,
+													) || position.find((item: T_Object) => item["variant"] === "BARRE");
 
 												if (isMusicNotePosition(foundPosition)) {
 													return (
@@ -229,7 +228,7 @@ function parsePositions(positions: NonNullable<T_TablatureProps["positions"]>): 
 	});
 }
 
-function parsePosition(position: T_UnknownObject): T_Position {
+function parsePosition(position: T_Object): T_Position {
 	if (isSpacePosition(position)) {
 		checkTablatureSpaceValidity(position.space);
 
@@ -264,7 +263,7 @@ function parsePosition(position: T_UnknownObject): T_Position {
 	throw new Error("Invalid tablature position");
 }
 
-function isSpacePosition(input: T_UnknownObject | T_UnknownObject[]): input is T_SpacePosition {
+function isSpacePosition(input: T_Object | T_Object[]): input is T_SpacePosition {
 	return Array.isArray(input) ? false : isNumber((input as T_SpacePosition)?.space);
 }
 

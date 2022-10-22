@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import { useDidMount, useToggleBodyScroll } from "~/hooks";
+import { getScrollPosition, setScrollPosition } from "~/utils/browser";
 import { isNull, isTrue } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
-import { getScrollPosition, setScrollPosition } from "~/utils/browser";
 
 type T_ModalProps = {
 	children: T_ReactChildren;

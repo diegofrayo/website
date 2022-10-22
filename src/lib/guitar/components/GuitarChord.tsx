@@ -3,7 +3,7 @@ import * as React from "react";
 import { Button, Title, Block, InlineText } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { AnalyticsService } from "~/features/analytics";
-import { useExecuteCallback } from "~/hooks";
+import { useAsync } from "~/hooks";
 import { downloadComponentAsImage } from "~/utils/browser";
 import { getErrorMessage } from "~/utils/misc";
 import { isNull, isUndefined } from "~/utils/validations";
@@ -136,7 +136,7 @@ type T_UseControllerReturn = {
 
 function useController({ plainChord }: T_GuitarChordProps): T_UseControllerReturn {
 	// hooks
-	const { data, error } = useExecuteCallback<T_PlainChordDetails, T_Chord>(plainChord, (params) => {
+	const { data, error } = useAsync<T_PlainChordDetails, T_Chord>(plainChord, (params) => {
 		return GuitarService.parseChord(params);
 	});
 

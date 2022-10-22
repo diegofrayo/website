@@ -9,12 +9,10 @@ import Icon from "./Icon";
 import Link from "./Link";
 import { isString } from "~/utils/validations";
 
-const VARIANTS_OPTIONS = ["UNSTYLED", "PRIMARY", "SECONDARY"] as const;
-const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
-type T_Variant = typeof VARIANTS_OPTIONS[number];
-const SIZES_OPTIONS = ["XS", "SM", "MD", "LG", "XL"] as const;
-const SIZES = mirror<T_Size>(SIZES_OPTIONS);
-type T_Size = typeof SIZES_OPTIONS[number];
+const VARIANTS = mirror(["UNSTYLED", "PRIMARY", "SECONDARY"]);
+type T_Variant = keyof typeof VARIANTS;
+const SIZES = mirror(["XS", "SM", "MD", "LG", "XL"]);
+type T_Size = keyof typeof SIZES;
 
 type T_TitleProps = {
 	children: T_ReactChildren;

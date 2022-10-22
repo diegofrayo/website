@@ -4,7 +4,7 @@
  * - https://npm.io/package/x-utils-es
  */
 
-import { T_UnknownObject } from "~/types";
+import { T_Object } from "~/types";
 
 // --- Primitives ---
 
@@ -16,7 +16,7 @@ export function isUndefined(input: unknown): input is undefined {
 	return input === undefined;
 }
 
-export function isObject(input: unknown): input is T_UnknownObject {
+export function isObject(input: unknown): input is T_Object {
 	if (!input || Array.isArray(input)) return false;
 	return typeof input === "object";
 }

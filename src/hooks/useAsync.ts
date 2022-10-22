@@ -7,7 +7,7 @@ type T_UseExecuteCallbackReturn<G_Data> = {
 	error: unknown;
 };
 
-function useExecuteCallback<G_Params = unknown, G_Data = unknown>(
+function useAsync<G_Params = unknown, G_Data = unknown>(
 	params: G_Params,
 	callback: T_Callback<G_Params, G_Data>,
 ): T_UseExecuteCallbackReturn<G_Data> {
@@ -44,4 +44,4 @@ function useExecuteCallback<G_Params = unknown, G_Data = unknown>(
 	return { isLoading, data, error };
 }
 
-export default useExecuteCallback;
+export default useAsync;

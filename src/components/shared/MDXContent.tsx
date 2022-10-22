@@ -6,8 +6,8 @@ import { MDXComponents } from "~/features/mdx";
 import { mirror } from "~/utils/objects-and-arrays";
 import type { T_ReactElement } from "~/types";
 
-type T_Variants = "DEFAULT" | "UNSTYLED";
-const VARIANTS = mirror(["DEFAULT", "UNSTYLED"]) as Record<T_Variants, T_Variants>;
+const VARIANTS = mirror(["DEFAULT", "UNSTYLED"]);
+type T_Variants = keyof typeof VARIANTS;
 
 type T_MDXContentProps = {
 	content: MDXRemoteSerializeResult;

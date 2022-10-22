@@ -1,4 +1,4 @@
-import type { T_UnknownObject, T_Primitive } from "~/types";
+import type { T_Object, T_Primitive } from "~/types";
 
 import { or } from "./fp";
 import { between } from "./numbers";
@@ -13,19 +13,16 @@ import {
 	isUndefined,
 } from "./validations";
 
-export function transformObjectKeysFromSnakeCaseToLowerCamelCase<G_Result = T_UnknownObject>(
-	object: T_UnknownObject,
+export function transformObjectKeysFromSnakeCaseToLowerCamelCase<G_Result = T_Object>(
+	object: T_Object,
 ): G_Result {
 	return transformObjectKeysFromSnakeCaseToLowerCamelCasePrivate(object) as G_Result;
 }
 
-export function mirror<G_Variant extends string>(
-	elements: readonly G_Variant[],
-): Record<G_Variant, G_Variant> {
-	return elements.reduce(
-		(result, element) => ({ ...result, [element]: element }),
-		{} as Record<G_Variant, G_Variant>,
-	);
+export function mirror<G_Keys extends string, G_Return extends Record<G_Keys, G_Keys>>(
+	elements: G_Keys[],
+): G_Return {
+	return elements.reduce((result, element) => ({ ...result, [element]: element }), {} as G_Return);
 }
 
 export function createArray(length: number, start?: number): number[] {
@@ -85,7 +82,7 @@ export function sortBy<G_ItemType>(
 					return result;
 				}
 
-				// WARN (as)
+				// WARN: This "as" is safe and not too bad
 				const attribute = (criteriaItem as string).replace("-", "") as keyof G_ItemType;
 				const order = (criteriaItem as string).startsWith("-") ? "desc" : "asc";
 				const greater = order === "desc" ? -1 : 1;
@@ -141,8 +138,8 @@ function isPrimitiveValue(value: unknown): value is T_Primitive {
 }
 
 function transformObjectKeysFromSnakeCaseToLowerCamelCasePrivate(
-	object: T_UnknownObject | T_Primitive,
-): T_UnknownObject | T_Primitive {
+	object: T_Object | T_Primitive,
+): T_Object | T_Primitive {
 	if (isPrimitiveValue(object)) {
 		return object;
 	}
@@ -172,5 +169,5 @@ function transformObjectKeysFromSnakeCaseToLowerCamelCasePrivate(
 		}
 
 		return result;
-	}, {} as T_UnknownObject);
+	}, {} as T_Object);
 }

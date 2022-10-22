@@ -99,23 +99,23 @@ function Playground({
 					variant={Button.variant.SIMPLE}
 					className={classNames(
 						"tw-flex-1 tw-cursor-pointer tw-p-2 tw-text-center",
-						isSourceCodeTabSelected &&
+						isOutputTabSelected &&
 							"tw-font-bold dfr-text-color-gs-white dfr-bg-color-bw hover:tw-opacity-100 dark:dfr-bg-color-tertiary",
 					)}
 					onClick={handleTabClick(0)}
 				>
-					{tabsNames[0] || "Source code"}
+					{tabsNames[0] || "Preview"}
 				</Button>
 				<Button
 					variant={Button.variant.SIMPLE}
 					className={classNames(
 						"tw-flex-1 tw-cursor-pointer tw-p-2 tw-text-center",
-						isOutputTabSelected &&
+						isSourceCodeTabSelected &&
 							"tw-font-bold dfr-text-color-gs-white dfr-bg-color-bw hover:tw-opacity-100 dark:dfr-bg-color-tertiary",
 					)}
 					onClick={handleTabClick(1)}
 				>
-					{tabsNames[1] || "Preview"}
+					{tabsNames[1] || "Source code"}
 				</Button>
 			</Block>
 
@@ -163,8 +163,8 @@ function useController(props: T_PlaygroundProps): T_UseControllerReturn {
 		contentRef,
 
 		// vars
-		isSourceCodeTabSelected: tab === 0,
-		isOutputTabSelected: tab === 1,
+		isOutputTabSelected: tab === 0,
+		isSourceCodeTabSelected: tab === 1,
 
 		// handlers
 		handleTabClick,

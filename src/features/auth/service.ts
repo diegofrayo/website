@@ -5,7 +5,7 @@ import { readDevToolsConfig } from "~/features/development-tools";
 import { isBrowser, isLocalhostEnvironment } from "~/utils/app";
 import { ENV_VARS } from "~/constants";
 import { isNotEmptyString, isObject } from "~/utils/validations";
-import type { T_UnknownObject } from "~/types";
+import type { T_Object } from "~/types";
 
 class AuthService {
 	private LOCAL_STORAGE_KEY = "DFR_AUTH";
@@ -14,7 +14,7 @@ class AuthService {
 		autoBind(this);
 	}
 
-	async signIn(values: T_UnknownObject): Promise<void> {
+	async signIn(values: T_Object): Promise<void> {
 		return http
 			.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
 				path: "/auth",

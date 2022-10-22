@@ -2,7 +2,7 @@ import classNames from "classnames";
 import * as React from "react";
 
 import { isObject, isString } from "~/utils/validations";
-import type { T_ReactChildren, T_ReactFunctionComponent, T_UnknownObject } from "~/types";
+import type { T_ReactChildren, T_ReactFunctionComponent, T_Object } from "~/types";
 
 import { HTML_TAGS, T_HTMLTag } from "./constants";
 
@@ -38,7 +38,7 @@ function TWCSSCreator(Tag: T_ElementToRender): I_TWCSSComponentDefinition {
 					componentStyles: styles,
 					classNameProp: className,
 					TWCSSVariant,
-					componentProps: rest as T_UnknownObject,
+					componentProps: rest as T_Object,
 				});
 
 				return (
@@ -66,7 +66,7 @@ type T_GenerateClassNameParams = {
 	componentStyles: T_StylesParam;
 	classNameProp: string;
 	TWCSSVariant: string | undefined;
-	componentProps: T_UnknownObject;
+	componentProps: T_Object;
 };
 
 function generateClassName({
@@ -104,7 +104,7 @@ interface I_TWCSSCreator {
 }
 
 interface I_TWCSSComponentDefinition {
-	(styles: T_StylesParam, staticProps?: T_UnknownObject): T_TWCSSReactComponent;
+	(styles: T_StylesParam, staticProps?: T_Object): T_TWCSSReactComponent;
 }
 
 type T_TWCSSReactComponent = T_ReactFunctionComponent<{
@@ -123,7 +123,7 @@ type T_StylesParam =
 			[key: string]: T_StylesParamFunction;
 	  };
 
-type T_StylesParamFunction = string | ((props: T_UnknownObject) => string);
+type T_StylesParamFunction = string | ((props: T_Object) => string);
 
 /*
  * WARN:

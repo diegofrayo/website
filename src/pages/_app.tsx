@@ -25,7 +25,7 @@ import { T_Metadata } from "~/stores/modules/metadata";
 import { isMobileDevice, isPWA } from "~/utils/browser";
 import { MDXComponents, updateMDXScope } from "~/features/mdx";
 import { initPWARoutingConfig } from "~/features/routing";
-import type { T_ReactElement, T_UnknownObject } from "~/types";
+import type { T_ReactElement, T_Object } from "~/types";
 
 import ErrorPage from "./500";
 
@@ -125,7 +125,7 @@ export default CustomApp;
 // https://nextjs.org/docs/api-reference/data-fetching/get-initial-props
 // https://linguinecode.com/post/next-js-typescript-getinitialprops
 // @ts-ignore
-CustomApp.getInitialProps = async (appContext): Promise<T_UnknownObject> => {
+CustomApp.getInitialProps = async (appContext): Promise<T_Object> => {
 	const metadata = await MetadataService.fetchData(appContext.router.locale);
 	const appProps = await App.getInitialProps(appContext);
 

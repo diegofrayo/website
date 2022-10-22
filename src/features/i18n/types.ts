@@ -1,14 +1,14 @@
 // @ts-nocheck
 
-import type { T_ObjectWithPrimitives, T_UnknownObject } from "~/types";
+import type { T_ObjectWithPrimitives, T_Object } from "~/types";
 
 export type T_Locale = "en";
 
 export type T_PageContent = {
 	seo?: T_ObjectWithPrimitives;
-	page?: T_UnknownObject & {
+	page?: T_Object & {
 		common?: T_ObjectWithPrimitives;
-		config?: T_UnknownObject;
+		config?: T_Object;
 	};
 	layout?: {
 		header?: T_ObjectWithPrimitives;
@@ -16,4 +16,4 @@ export type T_PageContent = {
 	};
 };
 
-export type T_TranslationFunction = (key: string, params?: T_UnknownObject) => string;
+export type T_TranslationFunction = (key: string, params?: T_Object) => string;

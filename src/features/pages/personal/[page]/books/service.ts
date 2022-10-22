@@ -4,7 +4,7 @@ import {
 	sortBy,
 	transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
-import type { T_UnknownObject } from "~/types";
+import type { T_Object } from "~/types";
 
 class BooksService {
 	static async fetchBooks(): Promise<T_Book[]> {
@@ -14,7 +14,7 @@ class BooksService {
 		});
 
 		return data
-			.map((book: T_UnknownObject) => BookVO(book))
+			.map((book: T_Object) => BookVO(book))
 			.sort(sortBy<T_Book>("-addedDate", "-calification", "title"));
 	}
 }
@@ -23,7 +23,7 @@ export default BooksService;
 
 // --- Value objects ---
 
-function BookVO(data: T_UnknownObject): T_Book {
+function BookVO(data: T_Object): T_Book {
 	const book = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Book>(data);
 
 	return book;

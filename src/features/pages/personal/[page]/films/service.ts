@@ -4,7 +4,7 @@ import {
 	sortBy,
 	transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
-import type { T_UnknownObject } from "~/types";
+import type { T_Object } from "~/types";
 
 class FilmsService {
 	static async fetchFilms(): Promise<T_Film[]> {
@@ -14,7 +14,7 @@ class FilmsService {
 		});
 
 		return data
-			.map((film: T_UnknownObject) => FilmVO(film))
+			.map((film: T_Object) => FilmVO(film))
 			.sort(sortBy<T_Film>("-addedDate", "-calification", "title"));
 	}
 }
@@ -23,7 +23,7 @@ export default FilmsService;
 
 // --- Value objects ---
 
-function FilmVO(data: T_UnknownObject): T_Film {
+function FilmVO(data: T_Object): T_Film {
 	const film = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Film>(data);
 
 	film.categories = film.categories || [];

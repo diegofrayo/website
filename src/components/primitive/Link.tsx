@@ -8,9 +8,8 @@ import { logger } from "~/features/logging";
 import { mirror } from "~/utils/objects-and-arrays";
 import type { T_HTMLElementAttributes, T_ReactElementNullable } from "~/types";
 
-const VARIANTS_OPTIONS = ["UNSTYLED", "SIMPLE", "PRIMARY", "SECONDARY"] as const;
-type T_Variant = typeof VARIANTS_OPTIONS[number];
-const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
+const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "PRIMARY", "SECONDARY"]);
+type T_Variant = keyof typeof VARIANTS;
 
 export type T_LinkProps = T_HTMLElementAttributes["a"] & {
 	variant: T_Variant;

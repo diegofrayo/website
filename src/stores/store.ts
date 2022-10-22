@@ -51,7 +51,7 @@ export function createPreloadedState({
 	locale?: T_Locale;
 }): T_PreloadedState {
 	const pageConfig =
-		(transformObjectKeysFromSnakeCaseToLowerCamelCase(pageContent?.page?.config) as T_Object) || {};
+		transformObjectKeysFromSnakeCaseToLowerCamelCase(pageContent?.page?.config) || {};
 
 	if (!pageConfig.locales) {
 		pageConfig.locales = [locale || I18nService.getCurrentLocale()];

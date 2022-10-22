@@ -4,7 +4,7 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { Page, MainLayout } from "~/components/layout";
 import { Icon, Space, Button, Block, Text, InlineText, Image, Link } from "~/components/primitive";
 import { MDXContent, RateContent } from "~/components/shared";
-import { withSafeRendering } from "~/hocs";
+import { withOnlyClientRendering } from "~/hocs";
 import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/features/i18n";
 import twcss from "~/lib/twcss";
@@ -16,7 +16,8 @@ import { getFormattedDatesDifference } from "~/utils/dates";
 import { ROUTES } from "~/features/routing";
 import type { T_ReactElement } from "~/types";
 
-import { T_BlogPost } from "./service";
+import { PostSources } from "./components";
+import type { T_BlogPost } from "./service";
 
 type T_PageProps = {
 	post: T_BlogPost;
@@ -60,6 +61,8 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
 				<Space size={8} />
 
 				<MDXContent content={postMDXContent} />
+				<PostSources sources={post.assets.sources} />
+
 				<Space
 					sizeTop={8}
 					sizeBottom={24}
@@ -116,7 +119,10 @@ function BlogPostDetails({
 		<Block className="tw-flex tw-flex-col tw-items-center tw-justify-center sm:tw-flex-row">
 			{isPublished ? (
 				<React.Fragment>
-					<BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary">
+					<BlogPostDetailsItem
+						is="div"
+						className="tw-border-b-2 tw-border-dotted dfr-border-color-primary"
+					>
 						<BlogPostDetailsItemIcon icon={Icon.icon.CALENDAR} />
 						<Text>
 							<InlineText className="tw-mr-1">{t("page:published_at")}</InlineText>
@@ -126,7 +132,10 @@ function BlogPostDetails({
 					<Space responsive="tw-my-1 tw-block sm:tw-my-0 sm:tw-mx-4 sm:tw-inline-block" />
 				</React.Fragment>
 			) : null}
-			<BlogPostDetailsItem className="tw-border-b-2 tw-border-dotted dfr-border-color-primary">
+			<BlogPostDetailsItem
+				is="div"
+				className="tw-border-b-2 tw-border-dotted dfr-border-color-primary"
+			>
 				<BlogPostDetailsItemIcon icon={Icon.icon.EDIT} />
 				<Text>
 					<InlineText className="tw-mr-1">{t("page:updated_at")}</InlineText>
@@ -144,7 +153,7 @@ const BlogPostDetailsItem = twcss(Button)(
 	},
 );
 
-const BlogPostDetailsItemLink = withSafeRendering(
+const BlogPostDetailsItemLink = withOnlyClientRendering(
 	function BlogPostDetailsItemLink(): T_ReactElement {
 		// hooks
 		const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);

@@ -4,7 +4,7 @@ import http from "~/lib/http";
 import { ENV_VARS } from "~/constants";
 import { transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/objects-and-arrays";
 import { isUndefined } from "~/utils/validations";
-import type { T_UnknownObject } from "~/types";
+import type { T_Object } from "~/types";
 
 class MusicService {
 	constructor() {
@@ -12,7 +12,7 @@ class MusicService {
 	}
 
 	async fetchSongs(): Promise<T_Song[]> {
-		const songs = (await this.fetchData()).map((song: T_UnknownObject) => SongVO(song));
+		const songs = (await this.fetchData()).map((song: T_Object) => SongVO(song));
 		const chordsPage = songs.find((song) => this.isChordsSong(song));
 
 		return (isUndefined(chordsPage) ? [] : [chordsPage]).concat(
@@ -31,7 +31,7 @@ class MusicService {
 		return song.id === "chords";
 	}
 
-	private async fetchData(): Promise<T_UnknownObject[]> {
+	private async fetchData(): Promise<T_Object[]> {
 		const { data } = await http.post(
 			`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
 			{
@@ -53,7 +53,7 @@ export default new MusicService();
 
 // --- Value objects ---
 
-function SongVO(data: T_UnknownObject): T_Song {
+function SongVO(data: T_Object): T_Song {
 	const song = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Song>(data);
 
 	song.artist = Array.isArray(song.artist) ? song.artist.join(", ") : song.artist;

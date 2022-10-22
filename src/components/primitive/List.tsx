@@ -4,9 +4,8 @@ import classNames from "classnames";
 import { mirror } from "~/utils/objects-and-arrays";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
-const VARIANTS_OPTIONS = ["UNSTYLED", "DEFAULT"] as const;
-const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
-type T_Variant = typeof VARIANTS_OPTIONS[number];
+const VARIANTS = mirror(["UNSTYLED", "DEFAULT"]);
+type T_Variant = keyof typeof VARIANTS;
 
 type T_ListProps = T_HTMLElementAttributes["ul"] & {
 	is?: "ul" | "menu";

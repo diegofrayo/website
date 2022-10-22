@@ -8,7 +8,7 @@ import {
 	transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
 import { exists } from "~/utils/validations";
-import type { T_Object, T_UnknownObject } from "~/types";
+import type { T_Object } from "~/types";
 
 class BlogService {
 	constructor() {
@@ -90,6 +90,11 @@ function BlogPostVO(
 		})
 		.sort(sortBy("value"));
 
+	blogPost.assets = {
+		...blogPost.assets,
+		sources: blogPost.assets.sources || [],
+	};
+
 	return blogPost;
 }
 
@@ -106,7 +111,10 @@ export type T_BlogPost = {
 	publishedAt: string;
 	updatedAt: string;
 	isPublished: boolean;
-	assets?: T_UnknownObject;
+	assets: {
+		sources: { title: string; url: string }[];
+		// [Key in keyof K]: unknown;
+	};
 };
 
 type T_BlogPostCategory = { id: "tech" | "personal"; value: string };

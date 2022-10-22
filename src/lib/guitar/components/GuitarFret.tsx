@@ -10,14 +10,8 @@ import type { T_ReactElement, T_ReactElementNullable } from "~/types";
 import { NUMBER_OF_STRINGS } from "../utils";
 import type { T_MusicNote, T_GuitarFret, T_GuitarString, T_Chord } from "../types";
 
-const VARIANTS_OPTIONS = [
-	"GUITAR_STRINGS_NAMES",
-	"EMPTY",
-	"DEFAULT",
-	"SKIPPED_GUITAR_STRINGS",
-] as const;
-const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
-type T_Variant = typeof VARIANTS_OPTIONS[number];
+const VARIANTS = mirror(["GUITAR_STRINGS_NAMES", "EMPTY", "DEFAULT", "SKIPPED_GUITAR_STRINGS"]);
+type T_Variant = keyof typeof VARIANTS;
 
 // WARN: False positive
 /* eslint-disable react/no-unused-prop-types */

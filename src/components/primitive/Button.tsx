@@ -4,9 +4,8 @@ import classNames from "classnames";
 import { mirror } from "~/utils/objects-and-arrays";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
-const VARIANTS_OPTIONS = ["UNSTYLED", "SIMPLE", "DEFAULT"] as const;
-const VARIANTS = mirror<T_Variant>(VARIANTS_OPTIONS);
-type T_Variant = typeof VARIANTS_OPTIONS[number];
+const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "DEFAULT"]);
+type T_Variant = keyof typeof VARIANTS;
 type T_ButtonProps = T_HTMLElementAttributes["button"] & {
 	variant?: T_Variant;
 	type?: "submit" | "button" | "reset";

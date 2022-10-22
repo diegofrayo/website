@@ -18,13 +18,11 @@ export type T_Primitive = string | number | boolean | null;
 
 // --- Objects ---
 
-type T_GenericObject<Type> = Record<string | number | symbol, Type>;
+type T_GenericObject<G_Type = unknown> = Record<string | number | symbol, G_Type>;
 
-export type T_UnknownObject = T_GenericObject<unknown>;
+export type T_Object<G_Type = unknown> = T_GenericObject<G_Type>;
 
 export type T_ObjectWithPrimitives = T_GenericObject<T_Primitive>;
-
-export type T_Object<Type = unknown> = T_GenericObject<Type>;
 
 // --- React ---
 
@@ -43,7 +41,7 @@ export type T_ReactElement = JSX.Element;
 export type T_ReactElementNullable = JSX.Element | null;
 
 // for components as props
-export type T_ReactFunctionComponent<G_ComponentProps = T_UnknownObject> =
+export type T_ReactFunctionComponent<G_ComponentProps = T_Object> =
 	React.FunctionComponent<G_ComponentProps>;
 
 export type T_ReactRef<G_RefType> = React.RefObject<G_RefType>;

@@ -3,11 +3,20 @@ import * as React from "react";
 import { Link, List, Title, Block, Text } from "~/components/primitive";
 import { useTranslation } from "~/features/i18n";
 import { generateSlug } from "~/utils/strings";
-import type { T_ReactElement } from "~/types";
+import { isEmptyArray } from "~/utils/validations";
+import type { T_ReactElementNullable } from "~/types";
 
-function PostSources({ sources }: { sources: { title: string; url: string }[] }): T_ReactElement {
+function PostSources({
+	sources,
+}: {
+	sources: { title: string; url: string }[];
+}): T_ReactElementNullable {
 	// hooks
 	const { t } = useTranslation();
+
+	if (isEmptyArray(sources)) {
+		return null;
+	}
 
 	return (
 		<Block

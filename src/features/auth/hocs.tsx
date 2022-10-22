@@ -6,11 +6,11 @@ import { readDevToolsConfig } from "~/features/development-tools";
 import { redirect as globalRedirect, ROUTES } from "~/features/routing";
 import { isLocalhostEnvironment } from "~/utils/app";
 import { isNotTrue } from "~/utils/validations";
-import type { T_ReactElementNullable, T_ReactFunctionComponent, T_UnknownObject } from "~/types";
+import type { T_ReactElementNullable, T_ReactFunctionComponent, T_Object } from "~/types";
 
 import AuthService from "./service";
 
-export function withAuthPage<G_ComponentProps = T_UnknownObject>(
+export function withAuthPage<G_ComponentProps = T_Object>(
 	Component: T_ReactFunctionComponent<G_ComponentProps>,
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	options?: { denyLoggedIn?: boolean; allowIf?: (props: G_ComponentProps) => boolean }, // WARN: False positive

@@ -7,8 +7,8 @@ import { isNotEmptyString, isNumber, isString, isUndefined } from "~/utils/valid
 import type { T_HTMLElementAttributes, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import { ICONS } from "./constants";
-import type { T_IconName, T_LibraryIconComponent, T_Icon } from "./types";
 import isIconElementFromLibrary from "./utils";
+import type { T_IconName, T_LibraryIconComponent, T_Icon } from "./types";
 import Image, { T_ImagePrimitiveComponent } from "../Image";
 import Block from "../Block";
 
@@ -35,7 +35,7 @@ function Icon(props: T_IconProps): T_ReactElementNullable {
 	);
 }
 
-Icon.icon = mirror<keyof typeof ICONS>(Object.keys(ICONS) as T_IconName[]);
+Icon.icon = mirror(Object.keys(ICONS) as T_IconName[]);
 
 export default Icon;
 export type { T_IconName };
@@ -129,6 +129,7 @@ function useController({
 function Wrapper({ children, className = "" }: T_HTMLElementAttributes["span"]): T_ReactElement {
 	return (
 		<Block
+			is="span"
 			className={classNames(
 				"tw-inline-flex tw-items-center tw-justify-center tw-align-middle",
 				className,
