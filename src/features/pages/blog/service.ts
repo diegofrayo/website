@@ -90,10 +90,8 @@ function BlogPostVO(
 		})
 		.sort(sortBy("value"));
 
-	blogPost.assets = {
-		...blogPost.assets,
-		sources: blogPost.assets.sources || [],
-	};
+	blogPost.assets ??= {};
+	blogPost.sources ??= [];
 
 	return blogPost;
 }
@@ -111,10 +109,8 @@ export type T_BlogPost = {
 	publishedAt: string;
 	updatedAt: string;
 	isPublished: boolean;
-	assets: {
-		sources: { title: string; url: string }[];
-		// [Key in keyof K]: unknown;
-	};
+	sources: { title: string; url: string }[];
+	assets: T_Object;
 };
 
 type T_BlogPostCategory = { id: "tech" | "personal"; value: string };

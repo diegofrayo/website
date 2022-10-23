@@ -61,7 +61,7 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
 				<Space size={8} />
 
 				<MDXContent content={postMDXContent} />
-				<PostSources sources={post.assets.sources} />
+				<PostSources sources={post.sources} />
 
 				<Space
 					sizeTop={8}

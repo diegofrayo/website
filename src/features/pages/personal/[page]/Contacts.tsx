@@ -168,6 +168,24 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 						);
 					})}
 				</Block>
+				<Space
+					size={4}
+					variant={Space.variant.DASHED}
+				/>
+
+				<Block>
+					<Link
+						variant={Link.variant.PRIMARY}
+						href="https://www.notion.so/diegofrayo/Negocios-y-servicios-9fba1e55789746cfa9fcaab908fcc794"
+						isExternalLink
+					>
+						<Icon
+							icon={Icon.icon.LINK}
+							wrapperClassName="tw-mr-1"
+						/>
+						<InlineText>Negocios y servicios</InlineText>
+					</Link>
+				</Block>
 			</MainLayout>
 		</Page>
 	);
