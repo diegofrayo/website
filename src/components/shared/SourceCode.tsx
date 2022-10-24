@@ -7,7 +7,7 @@ import { Block, Button, Icon, InlineText, Link, Pre, Space } from "~/components/
 import { useTranslation } from "~/features/i18n";
 import twcss from "~/lib/twcss";
 import { handleCopyToClipboardClick } from "~/utils/browser";
-import { isEmptyString, isNotEmptyString } from "~/utils/validations";
+import { isNotEmptyString } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
 type T_SourceCodeProps = {
@@ -16,18 +16,18 @@ type T_SourceCodeProps = {
 	fileName?: string;
 	sourceURL?: string;
 	className?: string;
-	height?: string;
-	displaySourceCodeDetails?: boolean;
+	height?: "100%" | "auto" | number;
+	noBorder?: boolean;
 };
 
 function SourceCode({
 	language,
+	code,
 	fileName = "",
-	code = "",
 	sourceURL = "",
 	className = "",
-	height = "",
-	displaySourceCodeDetails = true,
+	height = "auto",
+	noBorder = false,
 }: T_SourceCodeProps): T_ReactElement {
 	// hooks
 	const { t } = useTranslation();
@@ -42,22 +42,30 @@ function SourceCode({
 	return (
 		<Block
 			className={classNames(
-				"dfr-SourceCode tw-flex tw-flex-col tw-rounded-md dfr-bg-color-wb dark:tw-bg-transparent",
+				"dfr-SourceCode tw-flex tw-flex-col dfr-bg-color-wb dark:tw-bg-transparent",
 				className,
-				isEmptyString(height) ? "tw-max-h-[600px]" : height,
 			)}
+			style={{
+				height,
+				maxHeight: height === "auto" ? 500 : "none",
+			}}
 			data-markdown-block
 		>
-			{displaySourceCodeDetails ? (
-				<Block className="tw-flex tw-flex-shrink-0 tw-flex-wrap tw-items-center tw-justify-between tw-rounded-t-md tw-border tw-border-b-0 tw-px-4 tw-py-2 tw-pr-2 tw-font-mono tw-text-sm dfr-border-color-primary dfr-text-color-bw dark:dfr-bg-color-tertiary">
-					{isNotEmptyString(codeTitle) ? (
-						<code className="tw-mr-4 tw-flex-1 tw-truncate tw-font-bold">{codeTitle}</code>
-					) : null}
-					<InlineText className="tw-ml-auto tw-inline-block tw-flex-shrink-0 tw-bg-yellow-300 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-yellow-700">
-						{language}
-					</InlineText>
-				</Block>
-			) : null}
+			<Block
+				className={classNames(
+					"tw-flex tw-flex-shrink-0 tw-flex-wrap tw-items-center tw-justify-between tw-py-2 tw-font-mono tw-text-sm dfr-text-color-bw",
+					noBorder
+						? ""
+						: "tw-rounded-t-md tw-border tw-border-b-0 tw-px-4 tw-pr-2 dfr-border-color-primary dark:dfr-bg-color-tertiary",
+				)}
+			>
+				{isNotEmptyString(codeTitle) ? (
+					<code className="tw-mr-4 tw-flex-1 tw-truncate tw-font-bold">{codeTitle}</code>
+				) : null}
+				<InlineText className="tw-ml-auto tw-inline-block tw-flex-shrink-0 tw-bg-yellow-300 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-yellow-700">
+					{language}
+				</InlineText>
+			</Block>
 
 			<Highlight
 				{...defaultProps}
@@ -78,7 +86,6 @@ function SourceCode({
 							className={classNames(
 								classNameProp,
 								"tw-flex-1 tw-overflow-x-auto tw-p-4 tw-text-base",
-								displaySourceCodeDetails && "tw-border-y dfr-border-color-primary",
 							)}
 							style={style}
 						>
@@ -111,38 +118,41 @@ function SourceCode({
 				}}
 			</Highlight>
 
-			{displaySourceCodeDetails ? (
-				<Block className="tw-flex tw-flex-shrink-0 tw-flex-col-reverse tw-rounded-b-md tw-border tw-border-t-0 tw-py-2 tw-px-4 tw-pr-2 tw-text-sm dfr-border-color-primary dark:dfr-bg-color-tertiary sm:tw-flex-row sm:tw-justify-end">
-					{isNotEmptyString(sourceURL) ? (
-						<React.Fragment>
-							<Link
-								variant={Link.variant.SECONDARY}
-								href={sourceURL}
-								className="tw-text-right"
-								isExternalLink
-							>
-								<Icon
-									icon={Icon.icon.GITHUB}
-									withBackgroundWhenDarkMode
-								/>
-								<InlineText className="tw-ml-1 tw-lowercase">
-									{t("page:see_source_code")}
-								</InlineText>
-							</Link>
-							<Space responsive="tw-block tw-mb-1 tw-mr-0 sm:tw-inline-block sm:tw-mb-0 sm:tw-mr-6" />
-						</React.Fragment>
-					) : null}
-					<Button
-						variant={Button.variant.DEFAULT}
-						className="tw-text-right"
-						data-clipboard-text={code}
-						onClick={handleCopyToClipboardClick}
-					>
-						<Icon icon={Icon.icon.CLIPBOARD} />
-						<InlineText className="tw-ml-1 tw-lowercase">{t("page:copy_to_clipboard")}</InlineText>
-					</Button>
-				</Block>
-			) : null}
+			<Block
+				className={classNames(
+					"tw-flex tw-flex-shrink-0 tw-flex-col-reverse tw-py-2 tw-text-sm sm:tw-flex-row sm:tw-justify-end",
+					noBorder
+						? ""
+						: "tw-rounded-b-md tw-border tw-border-t-0 tw-px-4 tw-pr-2 dfr-border-color-primary dark:dfr-bg-color-tertiary",
+				)}
+			>
+				{isNotEmptyString(sourceURL) ? (
+					<React.Fragment>
+						<Link
+							variant={Link.variant.SECONDARY}
+							href={sourceURL}
+							className="tw-text-right"
+							isExternalLink
+						>
+							<Icon
+								icon={Icon.icon.GITHUB}
+								withBackgroundWhenDarkMode
+							/>
+							<InlineText className="tw-ml-1 tw-lowercase">{t("page:see_source_code")}</InlineText>
+						</Link>
+						<Space responsive="tw-block tw-mb-1 tw-mr-0 sm:tw-inline-block sm:tw-mb-0 sm:tw-mr-6" />
+					</React.Fragment>
+				) : null}
+				<Button
+					variant={Button.variant.DEFAULT}
+					className="tw-text-right"
+					data-clipboard-text={code}
+					onClick={handleCopyToClipboardClick}
+				>
+					<Icon icon={Icon.icon.CLIPBOARD} />
+					<InlineText className="tw-ml-1 tw-lowercase">{t("page:copy_to_clipboard")}</InlineText>
+				</Button>
+			</Block>
 		</Block>
 	);
 }

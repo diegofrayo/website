@@ -32,7 +32,7 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
 					:global(.dfr-MDXContent--default) > :global(.dfr-Pre--styled),
 					:global(.dfr-MDXContent--default) > :global(ul),
 					:global(.dfr-MDXContent--default) > :global(a) > :global(img),
-					:global(.dfr-MDXContent--default) :global(*[data-markdown-block]) {
+					:global(.dfr-MDXContent--default) > :global(*[data-markdown-block]) {
 						@apply tw-mb-6;
 					}
 

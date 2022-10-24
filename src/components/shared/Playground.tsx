@@ -1,47 +1,52 @@
 import * as React from "react";
+// import * as Tabs from "@radix-ui/react-tabs";
 import classNames from "classnames";
 
 import { Button, Block, Icon, Text } from "~/components/primitive";
 import { ENV_VARS } from "~/constants";
 import { createArray } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
-import type { T_ReactElement, T_ReactFunctionComponent, T_ReactRef } from "~/types";
+import type { T_ReactElement, T_ReactFunctionComponent } from "~/types";
 
 import SourceCode, { T_SourceCodeProps } from "./SourceCode";
 
-// WARN: False positive
-/* eslint-disable react/no-unused-prop-types */
-type T_PlaygroundProps = Pick<T_SourceCodeProps, "code" | "language"> & {
-	Component: T_ReactFunctionComponent;
+type T_PlaygroundProps = {
+	fileName?: T_SourceCodeProps["fileName"];
+	language: T_SourceCodeProps["language"];
+	Preview: T_ReactFunctionComponent;
+	sourceCode: T_SourceCodeProps["code"];
 	height?: number | "auto";
-	tabsNames?: [string, string];
 };
 
 function Playground({
-	height = "auto",
-	tabsNames = ["", ""],
-	...props
+	fileName = "Source code",
+	language,
+	Preview,
+	sourceCode,
+	height = 500,
 }: T_PlaygroundProps): T_ReactElement {
-	const {
-		// props
-		Component,
-		code,
-		language,
+	// states & refs
+	const [tab, setTab] = React.useState(0);
+	const contentRef = React.useRef<HTMLDivElement>(null);
 
-		// states & refs
-		contentRef,
+	// vars
+	const isOutputTabSelected = tab === 0;
+	const isSourceCodeTabSelected = tab === 1;
 
-		// vars
-		isSourceCodeTabSelected,
-		isOutputTabSelected,
+	// handlers
+	function handleTabClick(index: number): () => void {
+		return () => {
+			setTab(index);
 
-		// handlers
-		handleTabClick,
-	} = useController(props);
+			if (contentRef.current) {
+				contentRef.current.scrollTop = 0;
+			}
+		};
+	}
 
 	return (
 		<div
-			className="dfr-Playground root tw-flex tw-min-h-[300px] tw-flex-col tw-border-4 dfr-border-color-gs-black dfr-bg-color-wb dark:dfr-border-color-primary"
+			className="dfr-Playground root tw-flex tw-flex-col tw-border-4 dfr-border-color-gs-black dfr-bg-color-wb dark:dfr-border-color-primary"
 			style={{ height }}
 			data-markdown-block
 		>
@@ -50,15 +55,17 @@ function Playground({
 				ref={contentRef}
 			>
 				{isSourceCodeTabSelected ? (
-					<Block className="tw-absolute tw-inset-2 tw-overflow-auto">
+					<Block className="tw-absolute tw-inset-x-4 tw-inset-y-2 tw-overflow-auto">
 						<SourceCode
-							height="tw-h-full"
+							height="100%"
+							fileName={fileName}
 							language={language}
-							code={code}
+							code={sourceCode}
+							noBorder
 						/>
 					</Block>
 				) : (
-					<Block className="tw-absolute tw-inset-2 tw-flex tw-flex-col tw-rounded-md tw-border-4 tw-border-gray-200">
+					<Block className="tw-absolute tw-inset-4 tw-flex tw-flex-col tw-rounded-md tw-border-4 tw-border-gray-200">
 						<Block className="tw-flex tw-flex-nowrap tw-items-center tw-justify-between tw-bg-gray-200 tw-p-2">
 							<Block className="tw-flex tw-items-center">
 								{createArray(3).map((element) => {
@@ -89,7 +96,7 @@ function Playground({
 							</Block>
 						</Block>
 						<Block className="tw-flex-1 tw-overflow-auto tw-p-2 dfr-bg-color-gs-white">
-							<Component />
+							<Preview />
 						</Block>
 					</Block>
 				)}
@@ -104,7 +111,7 @@ function Playground({
 					)}
 					onClick={handleTabClick(0)}
 				>
-					{tabsNames[0] || "Preview"}
+					Preview
 				</Button>
 				<Button
 					variant={Button.variant.SIMPLE}
@@ -115,58 +122,11 @@ function Playground({
 					)}
 					onClick={handleTabClick(1)}
 				>
-					{tabsNames[1] || "Source code"}
+					Source code
 				</Button>
 			</Block>
-
-			<style jsx>{`
-				.root :global(.dfr-SourceCode) {
-					margin: 0;
-				}
-			`}</style>
 		</div>
 	);
 }
 
 export default Playground;
-
-// --- Controller ---
-
-type T_UseControllerReturn = T_PlaygroundProps & {
-	isSourceCodeTabSelected: boolean;
-	isOutputTabSelected: boolean;
-	handleTabClick: (index: 0 | 1) => () => void;
-	contentRef: T_ReactRef<HTMLDivElement>;
-};
-
-function useController(props: T_PlaygroundProps): T_UseControllerReturn {
-	// states & refs
-	const [tab, setTab] = React.useState(0);
-	const contentRef = React.useRef<HTMLDivElement>(null);
-
-	// handlers
-	const handleTabClick: T_UseControllerReturn["handleTabClick"] = function handleTabClick(index) {
-		return () => {
-			setTab(index);
-
-			if (contentRef.current) {
-				contentRef.current.scrollTop = 0;
-			}
-		};
-	};
-
-	return {
-		// props
-		...props,
-
-		// states & refs
-		contentRef,
-
-		// vars
-		isOutputTabSelected: tab === 0,
-		isSourceCodeTabSelected: tab === 1,
-
-		// handlers
-		handleTabClick,
-	};
-}

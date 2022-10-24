@@ -58,10 +58,7 @@ export function MFMAMSpotifyPlaylist(): T_ReactElementNullable {
 	}
 
 	return (
-		<Block
-			className="tw-border-4 dfr-border-color-gs-black dark:dfr-border-color-gs-700"
-			data-markdown-block
-		>
+		<Block className="tw-border-4 dfr-border-color-gs-black dark:dfr-border-color-gs-700">
 			<iframe
 				src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"
 				height="380"

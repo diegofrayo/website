@@ -34,6 +34,7 @@
 	"dependencies": {
 		"@heroicons/react": "^2.0.4",
 		"@mdx-js/react": "^2.0.0",
+		"@radix-ui/react-tabs": "^1.0.1",
 		"@reduxjs/toolkit": "^1.6.1",
 		"@splitbee/web": "^0.2.4",
 		"auto-bind": "^5.0.1",
