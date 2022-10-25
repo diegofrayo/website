@@ -71,9 +71,7 @@ type T_ExtendTypeKeys<G_Type> = {
 // asc  = 1...5  |  "title"
 // desc = 5...1  |  "-title"
 export function sortBy<G_ItemType>(
-	...criteria: (keyof {
-		[Key in keyof T_ExtendTypeKeys<G_ItemType>]: string;
-	})[]
+	...criteria: (keyof T_ExtendTypeKeys<G_ItemType>)[]
 ): (a: G_ItemType, b: G_ItemType) => number {
 	return function sortByReturn(a, b) {
 		return removeDuplicates(criteria).reduce(

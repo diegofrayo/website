@@ -90,7 +90,10 @@ function BlogPostVO(
 		})
 		.sort(sortBy("value"));
 
-	blogPost.assets ??= {};
+	blogPost.assets = {
+		...blogPost.assets,
+		sourceCodeSnippets: blogPost.assets?.sourceCodeSnippets || {},
+	};
 	blogPost.sources ??= [];
 
 	return blogPost;
@@ -110,10 +113,12 @@ export type T_BlogPost = {
 	updatedAt: string;
 	isPublished: boolean;
 	sources: { title: string; url: string }[];
-	assets: T_Object;
+	assets: T_Object & {
+		sourceCodeSnippets: T_Object<string>;
+	};
 };
 
-type T_BlogPostCategory = { id: "tech" | "personal"; value: string };
+type T_BlogPostCategory = { id: string; value: string; color: string };
 
 type T_BlogPostFetchDTO = {
 	config: {

@@ -10,7 +10,13 @@
     <loc>https://diegofrayo.vercel.app/resume</loc>
   </url>
   <url>
+    <loc>https://diegofrayo.vercel.app/readings</loc>
+  </url>
+  <url>
     <loc>https://diegofrayo.vercel.app/blog</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/blog/javascript-arrays-cheatsheet</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/blog/my-typescript-snippets</loc>
@@ -65,6 +71,9 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/la-edad-del-cielo</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/la-espera</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/los-libros-de-la-buena-memoria</loc>

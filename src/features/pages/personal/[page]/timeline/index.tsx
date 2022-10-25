@@ -9,21 +9,44 @@ import { exists, isUndefined, isNotEmptyString } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
 import TimelineService from "./service";
-import { T_TimelineCategory, T_TimelineFetchResponse, T_TimelineGroupItem } from "./types";
+import type { T_TimelineCategory, T_TimelineFetchResponse, T_TimelineGroupItem } from "./types";
 
 function TimelinePage(): T_ReactElement {
+	// hook
 	const {
-		// states & refs
-		selectedCategory,
-
-		// vars
 		isLoading,
 		error,
-		data,
+		data: fetchData,
+	} = useQuery<T_TimelineFetchResponse>("timeline", TimelineService.fetchData);
 
-		// handlers
-		handleSelectFilterClick,
-	} = useController();
+	// states & refs
+	const [selectedCategory, setSelectedCategory] = React.useState("");
+
+	// vars
+	const data = isUndefined(fetchData)
+		? fetchData
+		: {
+				...fetchData,
+				timeline: fetchData.timeline.map((timelineGroup) => {
+					return {
+						...timelineGroup,
+						items: isNotEmptyString(selectedCategory)
+							? timelineGroup.items.filter((item) => {
+									return exists(
+										item.categories.find((category) => category.id === selectedCategory),
+									);
+							  })
+							: timelineGroup.items,
+					};
+				}),
+		  };
+
+	// handlers
+	function handleSelectFilterClick(category: string): () => void {
+		return () => {
+			setSelectedCategory(category === selectedCategory ? "" : category);
+		};
+	}
 
 	return (
 		<Render
@@ -79,115 +102,9 @@ function TimelinePage(): T_ReactElement {
 
 export default TimelinePage;
 
-// --- Controller ---
-
-type T_UseControllerReturn = {
-	isLoading: boolean;
-	error: unknown;
-	data: T_TimelineFetchResponse | undefined;
-	selectedCategory: string;
-	handleSelectFilterClick: (filter: string) => () => void;
-	formatDate: (startDate: string, endDate: string) => string;
-};
-
-function useController(): T_UseControllerReturn {
-	// hook
-	const { isLoading, error, data } = useQuery<T_TimelineFetchResponse>(
-		"timeline",
-		TimelineService.fetchData,
-	);
-
-	// states & refs
-	const [selectedCategory, setSelectedCategory] = React.useState("");
-
-	// handlers
-	function handleSelectFilterClick(category: string): () => void {
-		return () => {
-			setSelectedCategory(category === selectedCategory ? "" : category);
-		};
-	}
-
-	// utils
-	const formatDate: T_UseControllerReturn["formatDate"] = function formatDate(startDate, endDate) {
-		const MONTHS = [
-			"enero",
-			"febrero",
-			"marzo",
-			"abril",
-			"mayo",
-			"junio",
-			"julio",
-			"agosto",
-			"septiembre",
-			"octubre",
-			"noviembre",
-			"diciembre",
-		];
-
-		const startDateItems = startDate.split("/");
-		const startDateDay = safeCastNumber(startDateItems[2]);
-		let output = `${startDateDay ? `${startDateDay} de ` : ""}${
-			MONTHS[Number(startDateItems[1]) - 1]
-		}`;
-
-		if (endDate && startDate !== endDate) {
-			const endDateItems = endDate.split("/");
-			const haveStartAndEndDateDifferentYear = startDateItems[0] !== endDateItems[0];
-
-			output += `${haveStartAndEndDateDifferentYear ? ` del ${startDateItems[0]}` : ""} al ${Number(
-				endDateItems[2],
-			)} de ${MONTHS[Number(endDateItems[1]) - 1]}${
-				haveStartAndEndDateDifferentYear ? ` del ${endDateItems[0]}` : ""
-			}`;
-		}
-
-		return output;
-	};
-
-	return {
-		// states & refs
-		selectedCategory,
-
-		// handlers
-		handleSelectFilterClick,
-
-		// utils
-		formatDate,
-
-		// vars
-		isLoading,
-		error,
-		data: isUndefined(data)
-			? data
-			: {
-					...data,
-					timeline: data.timeline.map((timelineGroup) => {
-						return {
-							...timelineGroup,
-							items: isNotEmptyString(selectedCategory)
-								? timelineGroup.items.filter((item) => {
-										return exists(
-											item.categories.find((category) => category.id === selectedCategory),
-										);
-								  })
-								: timelineGroup.items,
-						};
-					}),
-			  },
-	};
-}
-
 // --- Components ---
 
-function TimelineItem({ data }: { data: unknown }): T_ReactElement {
-	// vars
-	const timelineGroupItem = data as T_TimelineGroupItem;
-
-	const {
-		// handlers
-		formatDate,
-	} = useController();
-
+function TimelineItem({ data: timelineGroupItem }: { data: T_TimelineGroupItem }): T_ReactElement {
 	return (
 		<Block>
 			<Text className="tw-text-sm">
@@ -211,4 +128,42 @@ function TimelineItem({ data }: { data: unknown }): T_ReactElement {
 			</Block>
 		</Block>
 	);
+}
+
+// --- Utils ---
+
+function formatDate(startDate: string, endDate: string): string {
+	const MONTHS = [
+		"enero",
+		"febrero",
+		"marzo",
+		"abril",
+		"mayo",
+		"junio",
+		"julio",
+		"agosto",
+		"septiembre",
+		"octubre",
+		"noviembre",
+		"diciembre",
+	];
+
+	const startDateItems = startDate.split("/");
+	const startDateDay = safeCastNumber(startDateItems[2]);
+	let output = `${startDateDay ? `${startDateDay} de ` : ""}${
+		MONTHS[Number(startDateItems[1]) - 1]
+	}`;
+
+	if (endDate && startDate !== endDate) {
+		const endDateItems = endDate.split("/");
+		const haveStartAndEndDateDifferentYear = startDateItems[0] !== endDateItems[0];
+
+		output += `${haveStartAndEndDateDifferentYear ? ` del ${startDateItems[0]}` : ""} al ${Number(
+			endDateItems[2],
+		)} de ${MONTHS[Number(endDateItems[1]) - 1]}${
+			haveStartAndEndDateDifferentYear ? ` del ${endDateItems[0]}` : ""
+		}`;
+	}
+
+	return output;
 }

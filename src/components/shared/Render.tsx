@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { Block, Text, InlineText } from "~/components/primitive";
 import { getErrorMessage } from "~/utils/misc";
-import { isUndefined } from "~/utils/validations";
 import type { T_ReactElementNullable } from "~/types";
 
 import Emoji from "./Emoji";
@@ -38,7 +37,7 @@ function Render<G_Data>({
 		);
 	}
 
-	if (!isUndefined(data)) {
+	if (data) {
 		return children(data);
 	}
 

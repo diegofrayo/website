@@ -28,7 +28,7 @@ async function main() {
 			{ path: "/", hasToBeIndexed: true },
 			{ path: "/about-me", hasToBeIndexed: true },
 			{ path: "/resume", hasToBeIndexed: true },
-			{ path: "/readings", hasToBeIndexed: false },
+			{ path: "/readings", hasToBeIndexed: true },
 		]
 			.concat([{ path: "/blog", hasToBeIndexed: true }])
 			.concat(

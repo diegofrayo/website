@@ -8,7 +8,7 @@ import { generateSlug } from "~/utils/strings";
 import type { T_ReactElement } from "~/types";
 
 type T_MTSCodeExample = {
-	fileName: string;
+	fileName?: T_SourceCodeProps["fileName"];
 	languages: [T_SourceCodeProps["language"], T_SourceCodeProps["language"]];
 	usageCode: string;
 	typingCode: string;
@@ -16,10 +16,10 @@ type T_MTSCodeExample = {
 };
 
 function MTSCodeExample({
+	fileName = "",
+	languages,
 	typingCode,
 	usageCode,
-	languages,
-	fileName,
 	height = "auto",
 }: T_MTSCodeExample): T_ReactElement {
 	// hooks
@@ -48,7 +48,7 @@ function MTSCodeExample({
 			>
 				<SourceCode
 					language={languages[0]}
-					fileName={fileName}
+					fileName={fileName || "Types"}
 					code={typingCode}
 					height="100%"
 					noBorder
@@ -60,7 +60,7 @@ function MTSCodeExample({
 			>
 				<SourceCode
 					language={languages[1]}
-					fileName={fileName}
+					fileName={fileName || "Usage"}
 					code={usageCode}
 					height="100%"
 					noBorder

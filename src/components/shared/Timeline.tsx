@@ -5,15 +5,18 @@ import { Block, Title } from "~/components/primitive";
 import { generateSlug } from "~/utils/strings";
 import type { T_ReactElement, T_ReactFunctionComponent } from "~/types";
 
-type T_TimelineProps = {
+type T_TimelineProps<G_Item> = {
 	timeline: {
 		title: string;
-		items: { id: string; [key: string]: unknown }[];
+		items: G_Item[];
 	}[];
-	TimelineItem: T_ReactFunctionComponent<{ data: unknown }>;
+	TimelineItem: T_ReactFunctionComponent<{ data: G_Item }>;
 };
 
-function Timeline({ timeline, TimelineItem }: T_TimelineProps): T_ReactElement {
+function Timeline<G_Item extends { id: string; [key: string]: unknown }>({
+	timeline,
+	TimelineItem,
+}: T_TimelineProps<G_Item>): T_ReactElement {
 	let itemsCounter = 0;
 
 	return (

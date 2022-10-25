@@ -89,12 +89,6 @@ function BlogEntry({
 	const { t } = useTranslation();
 	const { locale } = useRouter();
 
-	// vars
-	const CATEGORIES_COLORS = {
-		tech: "tw-bg-green-200 dark:tw-bg-green-400 dfr-text-color-gs-black tw-opacity-75",
-		personal: "tw-bg-blue-200 dark:tw-bg-blue-400 dfr-text-color-gs-black tw-opacity-75",
-	};
-
 	// utils
 	function getLocale(): T_Locale {
 		return locales.find((l) => l === locale) || locales[0];
@@ -123,12 +117,27 @@ function BlogEntry({
 					<Title
 						is="h1"
 						variant={Title.variant.SECONDARY}
-						className="tw-mb-4 tw-px-2"
+						className="tw-px-2"
 					>
 						{title}
 					</Title>
-					<Block className="tw-absolute tw-bottom-0 tw-flex tw-w-full tw-items-end tw-justify-between tw-px-2 tw-py-2">
-						<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
+					<Block className="tw-px-2">
+						{categories.map((category) => {
+							return (
+								<InlineText
+									key={category.id}
+									className={classNames(
+										"tw-mr-1 tw-inline-block tw-py-1 tw-px-2 tw-text-xs tw-font-semibold dfr-text-color-gs-white",
+										category.color,
+									)}
+								>
+									{category.value}
+								</InlineText>
+							);
+						})}
+					</Block>
+					<Block className="tw-absolute tw-bottom-0 tw-flex tw-w-full tw-items-end tw-justify-end tw-px-2 tw-py-2">
+						<Text className="tw-text-right tw-text-xs tw-italic dfr-text-color-secondary">
 							{isPublished ? (
 								<React.Fragment>
 									<InlineText>{t("page:published_at")} </InlineText>
@@ -140,21 +149,6 @@ function BlogEntry({
 								"Draft 📝"
 							)}
 						</Text>
-						<Block>
-							{categories.map((category) => {
-								return (
-									<InlineText
-										key={category.id}
-										className={classNames(
-											"tw-inline-block tw-py-1 tw-px-2 tw-text-xs tw-font-semibold",
-											CATEGORIES_COLORS[category.id],
-										)}
-									>
-										{category.value}
-									</InlineText>
-								);
-							})}
-						</Block>
 					</Block>
 				</Block>
 			</Link>

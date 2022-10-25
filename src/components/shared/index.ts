@@ -4,6 +4,7 @@ export { default as GoBack } from "./GoBack";
 export { default as ImageWithLink } from "./ImageWithLink";
 export { default as Loader } from "./Loader";
 export { default as MDXContent } from "./MDXContent";
+export { default as MarkdownContent } from "./MarkdownContent";
 export { default as Playground } from "./Playground";
 export { default as ProtectedComponent } from "./ProtectedComponent";
 export { default as RateContent } from "./RateContent";

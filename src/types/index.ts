@@ -22,7 +22,9 @@ type T_GenericObject<G_Type = unknown> = Record<string | number | symbol, G_Type
 
 export type T_Object<G_Type = unknown> = T_GenericObject<G_Type>;
 
-export type T_ObjectWithPrimitives = T_GenericObject<T_Primitive>;
+export type T_JSON = T_GenericObject<
+	string | number | boolean | null | T_JSON[] | { [key: string]: T_JSON }
+>;
 
 // --- React ---
 

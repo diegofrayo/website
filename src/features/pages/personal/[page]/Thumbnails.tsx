@@ -80,6 +80,10 @@ function useController(): T_UseControllerReturn {
 	// vars
 	const BLOG_POSTS = [
 		{
+			slug: "javascript-arrays-cheatsheet",
+			title: "JavaScript arrays cheatsheet",
+		},
+		{
 			slug: "my-typescript-snippets",
 			title: "My TypeScript snippets",
 		},

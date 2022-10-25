@@ -82,10 +82,6 @@ function MainMenu(): T_ReactElement {
 			...(AuthService.isUserLoggedIn()
 				? [
 						{
-							label: translator.t("layout:header:common:menu_item_readings"),
-							url: ROUTES.READINGS,
-						},
-						{
 							label: translator.t("layout:header:common:menu_item_personal"),
 							url: ROUTES.PERSONAL,
 						},
@@ -138,6 +134,10 @@ function MainMenu(): T_ReactElement {
 			{
 				label: translator.t("layout:header:menu:music"),
 				url: ROUTES.MUSIC,
+			},
+			{
+				label: translator.t("layout:header:common:menu_item_readings"),
+				url: ROUTES.READINGS,
 			},
 		];
 	}

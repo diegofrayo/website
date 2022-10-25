@@ -11,7 +11,7 @@ import { isNotEmptyString } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
 type T_SourceCodeProps = {
-	language: "jsx" | "tsx" | "css" | "typescript" | "javascript" | "bash" | "yaml";
+	language: "jsx" | "tsx" | "css" | "typescript" | "javascript" | "bash" | "yaml" | "markdown";
 	code: string;
 	fileName?: string;
 	sourceURL?: string;
