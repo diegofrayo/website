@@ -1,4 +1,5 @@
 import * as React from "react";
+import classNames from "classnames";
 
 import { useDidMount, useToggleBodyScroll } from "~/hooks";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
@@ -64,7 +65,7 @@ function Backdrop({ children, className, onCloseHandler }: T_BackdropProps): T_R
 
 	return (
 		<dialog
-			className={className}
+			className={classNames("tw-p-3 sm:tw-p-6", className)}
 			ref={dialogRef}
 		>
 			{children}
@@ -72,8 +73,6 @@ function Backdrop({ children, className, onCloseHandler }: T_BackdropProps): T_R
 			<style jsx>
 				{`
 					dialog {
-						@apply tw-p-3;
-						@apply sm:tw-p-6;
 						background-color: transparent;
 						max-height: 100%;
 						max-width: 100%;

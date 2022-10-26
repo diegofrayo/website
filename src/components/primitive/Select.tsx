@@ -5,6 +5,7 @@ import { isNotEmptyString } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
 import { Label } from "./Input";
+import styles from "./Select.styles.module.css";
 
 type T_SelectProps = T_HTMLElementAttributes["select"] & {
 	id: string;
@@ -28,36 +29,16 @@ function Select({
 	return (
 		<label
 			{...containerProps}
-			className={classNames("root", "tw-block", containerProps.className)}
+			className={classNames(styles["dfr-Select"], "tw-block", containerProps.className)}
 			htmlFor={id}
 		>
 			{isNotEmptyString(label) ? <Label {...labelProps}>{label}</Label> : null}
 			<select
-				className={classNames("dfr-Select", className)}
+				className={className}
 				{...rest}
 			>
 				{children}
 			</select>
-
-			<style jsx>{`
-				select {
-					@apply dfr-bg-color-tertiary;
-					@apply dfr-border-color-primary;
-					@apply tw-px-1 tw-py-1.5;
-					border-radius: 0;
-					border-width: 1px;
-					height: 37px;
-					width: 100%;
-				}
-
-				select:focus-within,
-				select:focus {
-					border-radius: 0;
-					outline-color: var(--dfr-text-color-gs-400);
-					outline-style: solid;
-					outline-width: 1px;
-				}
-			`}</style>
 		</label>
 	);
 }

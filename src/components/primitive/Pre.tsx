@@ -35,7 +35,7 @@ function Pre({ children, className, variant, ...rest }: T_PreProps): T_ReactElem
 						}
 
 						.root :global(.dfr-Code) {
-							@apply dfr-text-color-gs-700;
+							color: var(--dfr-text-color-gs-700);
 							font-style: normal;
 						}
 
@@ -45,7 +45,7 @@ function Pre({ children, className, variant, ...rest }: T_PreProps): T_ReactElem
 						}
 
 						:global(.tw-dark) :global(.dfr-Pre--styled) :global(.dfr-Code) {
-							@apply dfr-text-color-primary;
+							color: var(--dfr-text-color-primary);
 						}
 					`}
 				</style>

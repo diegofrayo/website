@@ -1,8 +1,8 @@
 import * as React from "react";
 import ReactMarkdown from "react-markdown";
 
-import { Code, List } from "~/components/primitive";
-import type { T_ReactChildren, T_ReactElement } from "~/types";
+import { Code, Link, List } from "~/components/primitive";
+import type { T_HTMLElementAttributes, T_ReactChildren, T_ReactElement } from "~/types";
 
 import TitleCreator from "./TitleCreator";
 
@@ -16,6 +16,17 @@ export default MarkdownContent;
 
 // DOCS: https://github.com/remarkjs/react-markdown#appendix-b-components
 const MDComponents = {
+	a: function A({ children, href = "" }: T_HTMLElementAttributes["a"]): T_ReactElement {
+		return (
+			<Link
+				href={href}
+				variant={Link.variant.PRIMARY}
+				isExternalLink
+			>
+				{children}
+			</Link>
+		);
+	},
 	code: function InlineCode({ children }: { children: T_ReactChildren }): T_ReactElement {
 		return <Code variant={Code.variant.MARKDOWN}>{children}</Code>;
 	},

@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import { logger } from "~/features/logging";
-import { isFalsy } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElementNullable } from "~/types";
 
 export type T_ImagePrimitiveComponent = (
@@ -9,19 +8,20 @@ export type T_ImagePrimitiveComponent = (
 ) => T_ReactElementNullable;
 
 const Image: T_ImagePrimitiveComponent = function Image({ src, ...rest }) {
-	if (isFalsy(src)) {
-		logger("WARN", `Invalid src("${src}") prop`);
-		return null;
+	if (src) {
+		return (
+			<img
+				src={src}
+				loading="lazy"
+				alt="Generic alt text"
+				{...rest}
+			/>
+		);
 	}
 
-	return (
-		<img
-			src={src}
-			loading="lazy"
-			alt="Generic alt text"
-			{...rest}
-		/>
-	);
+	logger("WARN", `Invalid src("${src}") prop`);
+
+	return null;
 };
 
 export default Image;

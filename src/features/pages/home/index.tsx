@@ -21,6 +21,8 @@ import { ROUTES } from "~/features/routing";
 import { generateSlug } from "~/utils/strings";
 import type { T_ReactElement, T_ReactElementNullable } from "~/types";
 
+import styles from "./index.styles.module.css";
+
 type T_HomeProps = {
 	data: {
 		song: {
@@ -190,7 +192,7 @@ function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElementNullable {
 				{`
 					:global(.dfr-PictureFrame)::before,
 					:global(.dfr-PictureFrame)::after {
-						@apply dfr-bg-color-bw;
+						background-color: var(--dfr-bg-color-bw);
 						content: " ";
 						display: block;
 						height: 50px;
@@ -285,7 +287,12 @@ function TV({ song }: T_TVProps): T_ReactElement {
 	}
 
 	return (
-		<Block className="dfr-TV tw-relative tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-bg-gradient-to-b tw-from-gray-500 tw-to-gray-700 tw-p-2 dark:tw-from-gray-200 dark:tw-to-gray-400">
+		<Block
+			className={classNames(
+				styles["TV"],
+				"tw-relative tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-bg-gradient-to-b tw-from-gray-500 tw-to-gray-700 tw-p-2 dark:tw-from-gray-200 dark:tw-to-gray-400",
+			)}
+		>
 			<Block className="tw-relative tw-h-16 tw-w-16 tw-overflow-hidden">
 				<Block
 					className="tw-relative tw-flex tw-h-full tw-items-center tw-justify-center tw-bg-cover"
@@ -376,37 +383,6 @@ function TV({ song }: T_TVProps): T_ReactElement {
 					)}
 				</Block>
 			</Block>
-
-			<style jsx>
-				{`
-					:global(.dfr-TV)::before,
-					:global(.dfr-TV)::after {
-						@apply tw-bg-gray-700;
-						@apply tw-w-2;
-						@apply tw-h-6;
-						content: " ";
-						display: block;
-						position: absolute;
-						top: 90%;
-						z-index: 0;
-					}
-
-					:global(.tw-dark) :global(.dfr-TV)::before,
-					:global(.tw-dark) :global(.dfr-TV)::after {
-						@apply tw-bg-gray-400;
-					}
-
-					:global(.dfr-TV)::before {
-						transform: rotate(45deg);
-						left: 15%;
-					}
-
-					:global(.dfr-TV)::after {
-						transform: rotate(-45deg);
-						right: 15%;
-					}
-				`}
-			</style>
 		</Block>
 	);
 }

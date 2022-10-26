@@ -208,9 +208,9 @@ function Bible() {
 
 			<style jsx>{`
 				.root :global(a) {
-					@apply dfr-text-color-links;
-					@apply tw-mt-2;
+					color: var(--dfr-text-color-links);
 					font-weight: bold;
+					margin-top: 0.5rem;
 				}
 			`}</style>
 		</div>

@@ -18,6 +18,8 @@ function List({
 	className = "",
 	variant = VARIANTS.UNSTYLED,
 }: T_ListProps): T_ReactElement {
+	const isDefaultVariant = variant === VARIANTS.DEFAULT;
+
 	return (
 		<Element
 			className={classNames(
@@ -26,28 +28,21 @@ function List({
 				className,
 			)}
 		>
-			{children}
+			{React.Children.map(children, (child) => {
+				if (React.isValidElement(child)) {
+					return React.cloneElement(child, {
+						...child.props,
+						isDefaultVariant,
+					});
+				}
+
+				return child;
+			})}
 
 			<style jsx>
 				{`
 					.dfr-List--default {
 						padding-left: 19px;
-					}
-
-					.dfr-List--default :global(li) {
-						@apply tw-mb-3;
-						@apply last:tw-mb-0;
-						position: relative;
-					}
-
-					.dfr-List--default :global(li)::before {
-						@apply dfr-text-color-bw;
-						content: "❯";
-						font-weight: bold;
-						font-size: 14px;
-						left: -19px;
-						position: absolute;
-						top: 2px;
 					}
 				`}
 			</style>
@@ -63,7 +58,31 @@ export default List;
 
 List.Item = function ListItem({
 	children,
+	isDefaultVariant = false,
+	className,
 	...rest
-}: T_HTMLElementAttributes["li"]): T_ReactElement {
-	return <li {...rest}>{children}</li>;
+}: T_HTMLElementAttributes["li"] & { isDefaultVariant?: boolean }): T_ReactElement {
+	return (
+		<li
+			className={classNames(
+				className,
+				isDefaultVariant &&
+					"dfr-List-Item--default tw-relative tw-mb-3 before:dfr-text-color-bw last:tw-mb-0",
+			)}
+			{...rest}
+		>
+			{children}
+
+			<style jsx>{`
+				.dfr-List-Item--default::before {
+					content: "❯";
+					font-size: 14px;
+					font-weight: bold;
+					left: -19px;
+					position: absolute;
+					top: 2px;
+				}
+			`}</style>
+		</li>
+	);
 };

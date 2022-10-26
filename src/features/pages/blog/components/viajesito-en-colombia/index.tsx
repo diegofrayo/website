@@ -303,7 +303,7 @@ function SlideContent({
 				}
 
 				.root :global(.media-container--fullscreen) {
-					@apply tw-bg-transparent;
+					background-color: transparent;
 					height: auto;
 				}
 			`}</style>

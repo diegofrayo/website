@@ -3349,6 +3349,11 @@
   dependencies:
     tslib "^2.4.0"
 
+"@swc/plugin-styled-jsx@^1.5.18":
+  version "1.5.18"
+  resolved "https://registry.yarnpkg.com/@swc/plugin-styled-jsx/-/plugin-styled-jsx-1.5.18.tgz#16a3c708fdbdd72eec257894ba25d7ec91a304e8"
+  integrity sha512-Pz+wQl0SobQ+PXZ0ZBu2o6s5wYqLD/yyrnWb8fOlcgkS3ijtdvHnpNVQLsjxsimzH13L7DoAUkMzK1ZO/Gzyeg==
+
 "@types/acorn@^4.0.0":
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/@types/acorn/-/acorn-4.0.6.tgz#d61ca5480300ac41a7d973dd5b84d0a591154a22"

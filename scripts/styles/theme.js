@@ -142,7 +142,7 @@ const MY_THEME = {
 		property: "backgroundColor",
 		value: {
 			light: TW_COLORS.red["400"],
-			dark: TW_COLORS.amber["400"],
+			dark: TW_COLORS.amber["600"],
 		},
 	},
 

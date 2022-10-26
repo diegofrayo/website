@@ -9,6 +9,11 @@ const withPWA = require("next-pwa")({
 
 module.exports = withMDX()(
 	withPWA({
+		// TODO: Replace babel with swc someday
+		// swcMinify: true,
+		// experimental: {
+		// 	swcPlugins: [["@swc/plugin-styled-jsx", {}]],
+		// },
 		eslint: {
 			ignoreDuringBuilds: true,
 		},

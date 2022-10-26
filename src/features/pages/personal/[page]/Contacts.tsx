@@ -1,4 +1,5 @@
 import * as React from "react";
+import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
 import {
@@ -20,6 +21,8 @@ import { formatPhoneNumber } from "~/utils/formatting";
 import { generateSlug } from "~/utils/strings";
 import { isEmptyString, isNotEmptyString } from "~/utils/validations";
 import type { T_Object, T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
+
+import styles from "./Contacts.styles.module.css";
 
 type T_ContactsProps = {
 	contacts: T_Object<T_GroupOfContacts>;
@@ -309,7 +312,7 @@ function ContactLinks({
 	whatsAppOption: T_WhatsAppOption;
 }): T_ReactElement {
 	return (
-		<div className="root">
+		<div className={classNames(styles["ContactLinks"])}>
 			{Array.isArray(contact.phone) ? (
 				<Block>
 					{contact.phone.map((item) => {
@@ -422,23 +425,6 @@ function ContactLinks({
 					/>
 				</SMSButton>
 			) : null}
-
-			<style jsx>
-				{`
-					.root > :global(div) {
-						@apply tw-my-1;
-					}
-
-					.root :global(a) {
-						@apply tw-mr-2;
-						display: inline-block;
-					}
-
-					.root :global(a):last-child {
-						@apply tw-mr-0;
-					}
-				`}
-			</style>
 		</div>
 	);
 }

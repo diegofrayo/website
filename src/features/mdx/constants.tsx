@@ -56,6 +56,7 @@ export function updateMDXScope(PERSONAL_INFO: T_Metadata["website"]): void {
 	};
 }
 
+// DOCS: https://mdxjs.com/table-of-components/
 /* WARN:
  * I don't know how to type this object, so, I used any for this
  * It is not important to solve this
@@ -78,8 +79,11 @@ export const MDXComponents = {
 	h3: TitleCreator("h3", { showLinkIcon: true }),
 	h4: TitleCreator("h4", { showLinkIcon: true }),
 	img: Image,
-	ul: function UL({ children }: { children: T_ReactChildren }): T_ReactElement {
+	ul: function Ul({ children }: { children: T_ReactChildren }): T_ReactElement {
 		return <List variant={List.variant.DEFAULT}>{children}</List>;
+	},
+	li: function Li({ children, ...rest }: { children: T_ReactChildren }): T_ReactElement {
+		return <List.Item {...rest}>{children}</List.Item>;
 	},
 	pre: function CustomPre({ children }: { children: T_ReactChildren }): T_ReactElement {
 		return <Pre variant={Pre.variant.STYLED}>{children}</Pre>;

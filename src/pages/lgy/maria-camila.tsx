@@ -18,66 +18,63 @@ function MariaCamila(): T_ReactElement {
 	useDocumentTitle("Feliz cumple!!");
 
 	return (
-		<Block className="tw-mx-auto tw-max-w-lg tw-p-6">
-			<Title className="tw-mb-12">
-				🎉
-				<br />
-				Feliz cumpleaños!
-				<br />
-				Maria Camila
-				<br />
-				👩‍⚕️
-			</Title>
+		<Block
+			is="main"
+			className="tw-bg-blue-300"
+		>
+			<Block className="tw-mx-auto tw-max-w-lg tw-p-6">
+				<Title className="tw-mb-12">
+					🎉
+					<br />
+					Feliz cumpleaños!
+					<br />
+					Maria Camila
+					<br />
+					👩‍⚕️
+				</Title>
 
-			<Text
-				emoji="🤓"
-				left
-			>
-				Se que es lo <Marked>mismo</Marked> del año pasado
-			</Text>
+				<Text
+					emoji="🤓"
+					left
+				>
+					Se que es lo <Marked>mismo</Marked> del año pasado
+				</Text>
 
-			<Text emoji="🙁">
-				Pero hay que <Marked>re-usar</Marked> las cosas y cuidar al planeta
-			</Text>
+				<Text emoji="🙁">
+					Pero hay que <Marked>re-usar</Marked> las cosas y cuidar al planeta
+				</Text>
 
-			<Text
-				emoji="👧"
-				left
-			>
-				Ya no eres una <Marked>bichota</Marked>
-			</Text>
+				<Text
+					emoji="👧"
+					left
+				>
+					Ya no eres una <Marked>bichota</Marked>
+				</Text>
 
-			<Text emoji="👸">
-				Eres toda una <Marked>Scarlet Linares!</Marked>
-			</Text>
+				<Text emoji="👸">
+					Eres toda una <Marked>Scarlet Linares!</Marked>
+				</Text>
 
-			<Block className="tw-my-8">
-				<Image />
+				<Block className="tw-my-8">
+					<Image />
+				</Block>
+
+				<hr className="tw-mt-10 tw-h-px tw-border tw-border-dashed tw-border-blue-600 tw-opacity-50 tw-shadow-md" />
+
+				<Block className="tw-my-8">
+					<iframe
+						src="https://www.youtube.com/embed/57KDWLTDTuo"
+						height="315"
+						width="100%"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						frameBorder="0"
+						loading="lazy"
+						title="YouTube video player"
+						allowFullScreen
+					/>
+					<Title className="tw-mt-4">Exitos en esta nueva etapa de tu vida ✌️</Title>
+				</Block>
 			</Block>
-
-			<hr className="tw-mt-10 tw-h-px tw-border tw-border-dashed tw-border-blue-600 tw-opacity-50 tw-shadow-md" />
-
-			<Block className="tw-my-8">
-				<iframe
-					src="https://www.youtube.com/embed/57KDWLTDTuo"
-					height="315"
-					width="100%"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-					frameBorder="0"
-					loading="lazy"
-					title="YouTube video player"
-					allowFullScreen
-				/>
-				<Title className="tw-mt-4">Exitos en esta nueva etapa de tu vida ✌️</Title>
-			</Block>
-
-			<style jsx>
-				{`
-					:global(body) {
-						@apply tw-bg-blue-300;
-					}
-				`}
-			</style>
 		</Block>
 	);
 }
