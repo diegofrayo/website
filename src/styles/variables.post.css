@@ -9,6 +9,7 @@ html {
 	--dfr-text-color-secondary: rgba(161, 161, 170, 1);
 	--dfr-text-color-links: rgba(217, 119, 6, 1);
 	--dfr-text-color-inline-code: rgba(220, 38, 38, 1);
+	--dfr-bg-color-inline-code: #f87171;
 	--dfr-bg-color-gs-white: #fff;
 	--dfr-text-color-gs-white: rgba(255, 255, 255, 1);
 	--dfr-border-t-color-gs-white: #fff;
@@ -62,6 +63,7 @@ html.tw-dark {
 	--dfr-text-color-secondary: rgba(107, 114, 128, 1);
 	--dfr-text-color-links: rgba(248, 113, 113, 1);
 	--dfr-text-color-inline-code: rgba(251, 191, 36, 1);
+	--dfr-bg-color-inline-code: #fbbf24;
 	--dfr-bg-color-gs-white: #fff;
 	--dfr-text-color-gs-white: rgba(255, 255, 255, 1);
 	--dfr-border-t-color-gs-white: #fff;

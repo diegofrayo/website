@@ -14,9 +14,10 @@ export default MarkdownContent;
 
 // --- Utils ---
 
+// DOCS: https://github.com/remarkjs/react-markdown#appendix-b-components
 const MDComponents = {
 	code: function InlineCode({ children }: { children: T_ReactChildren }): T_ReactElement {
-		return <Code>{children}</Code>;
+		return <Code variant={Code.variant.MARKDOWN}>{children}</Code>;
 	},
 	h1: TitleCreator("h1", { showLinkIcon: true }),
 	h2: TitleCreator("h2", { showLinkIcon: true }),

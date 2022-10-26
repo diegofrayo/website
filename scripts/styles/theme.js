@@ -138,6 +138,13 @@ const MY_THEME = {
 			dark: TW_COLORS.amber["400"],
 		},
 	},
+	["bg-color-inline-code"]: {
+		property: "backgroundColor",
+		value: {
+			light: TW_COLORS.red["400"],
+			dark: TW_COLORS.amber["400"],
+		},
+	},
 
 	...enhanceTheme(COMMON_COLORS, ["bg", "text", "border"]),
 };

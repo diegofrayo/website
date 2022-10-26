@@ -82,29 +82,36 @@ function useController(): T_UseControllerReturn {
 		{
 			slug: "javascript-arrays-cheatsheet",
 			title: "JavaScript arrays cheatsheet",
+			image: 2,
 		},
 		{
-			slug: "my-typescript-snippets",
-			title: "My TypeScript snippets",
+			slug: "typescript-snippets",
+			title: "TypeScript snippets",
+			image: 1,
 		},
 		{
 			slug: "connecting-a-firebase-project-with-a-go-daddy-domain",
 			title: "Connecting a Firebase project with a Go Daddy domain",
+			image: 2,
 		},
 		{
 			slug: "my-favorite-music-and-mdx",
 			title: "My favorite music and MDX",
+			image: 1,
 		},
 		{
 			slug: "publishing-a-npm-private-package-to-github-packages-using-github-actions",
 			title: "Publishing a npm private package to GitHub pakages using GitHub actions",
+			image: 2,
 		},
 	];
 	const CURRENT_BLOG_POST = BLOG_POSTS[0];
 
 	// states & refs
 	const [title, setTitle] = React.useState(CURRENT_BLOG_POST.title);
-	const [src, setSrc] = React.useState("/static/images/pages/personal/thumbnails/code-1.png");
+	const [src, setSrc] = React.useState(
+		`/static/images/pages/personal/thumbnails/code-${CURRENT_BLOG_POST.image}.png`,
+	);
 	const thumbnailRef = React.useRef<HTMLDivElement>(null);
 
 	// handlers

@@ -7,7 +7,7 @@ import { useTabs } from "~/hooks";
 import { generateSlug } from "~/utils/strings";
 import type { T_ReactElement } from "~/types";
 
-type T_MTSCodeExample = {
+type T_TSCodeExample = {
 	fileName?: T_SourceCodeProps["fileName"];
 	languages: [T_SourceCodeProps["language"], T_SourceCodeProps["language"]];
 	usageCode: string;
@@ -15,13 +15,13 @@ type T_MTSCodeExample = {
 	height?: "auto" | number;
 };
 
-function MTSCodeExample({
+function TSCodeExample({
 	fileName = "",
 	languages,
 	typingCode,
 	usageCode,
 	height = "auto",
-}: T_MTSCodeExample): T_ReactElement {
+}: T_TSCodeExample): T_ReactElement {
 	// hooks
 	const { selectTab, selectedTabIndex } = useTabs();
 
@@ -73,7 +73,7 @@ function MTSCodeExample({
 				{TABS_LIST.map((tabName, index) => {
 					return (
 						<Tabs.Trigger
-							key={generateSlug(`MTSCodeExample-Tabs.ListElement-tabName-${tabName}`)}
+							key={generateSlug(`TSCodeExample-Tabs.ListElement-tabName-${tabName}`)}
 							value={TABS_LIST[index]}
 							className={classNames(
 								"tw-w-1/2 tw-p-2 tw-text-center",
@@ -91,4 +91,4 @@ function MTSCodeExample({
 	);
 }
 
-export default MTSCodeExample;
+export default TSCodeExample;

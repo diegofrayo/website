@@ -12,6 +12,10 @@ export function isNull(input: unknown): input is null {
 	return input === null;
 }
 
+export function isArray<G_ItemsType = unknown>(input: unknown): input is G_ItemsType[] {
+	return Array.isArray(input);
+}
+
 export function isUndefined(input: unknown): input is undefined {
 	return input === undefined;
 }
