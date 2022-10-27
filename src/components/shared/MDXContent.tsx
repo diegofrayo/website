@@ -5,9 +5,9 @@ import classNames from "classnames";
 import { Block } from "~/components/primitive";
 import { MDXComponents } from "~/features/mdx";
 import { mirror } from "~/utils/objects-and-arrays";
-import type { T_ReactElement } from "~/types";
 
-import styles from "./MDXContent.styles.module.css";
+import styles from "~/styles/markdown.module.css";
+import type { T_ReactElement } from "~/types";
 
 const VARIANTS = mirror(["DEFAULT", "UNSTYLED"]);
 type T_Variants = keyof typeof VARIANTS;
@@ -21,8 +21,8 @@ function MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps):
 	return (
 		<Block
 			className={classNames(
-				"dfr-MDXContent",
-				variant === VARIANTS.DEFAULT && styles["dfr-MDXContent--default"],
+				"dfr-MarkdownContent",
+				variant === VARIANTS.DEFAULT && styles["dfr-MarkdownContent--default"],
 			)}
 		>
 			<MDXRemote

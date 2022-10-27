@@ -145,6 +145,13 @@ const MY_THEME = {
 			dark: TW_COLORS.amber["600"],
 		},
 	},
+	["border-color-inline-code"]: {
+		property: "borderColor",
+		value: {
+			light: TW_COLORS.red["400"],
+			dark: TW_COLORS.amber["600"],
+		},
+	},
 
 	...enhanceTheme(COMMON_COLORS, ["bg", "text", "border"]),
 };

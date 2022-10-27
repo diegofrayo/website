@@ -74,26 +74,6 @@ export const MDXComponents = {
 			</Link>
 		);
 	},
-	h1: TitleCreator("h1", { showLinkIcon: true }),
-	h2: TitleCreator("h2", { showLinkIcon: true }),
-	h3: TitleCreator("h3", { showLinkIcon: true }),
-	h4: TitleCreator("h4", { showLinkIcon: true }),
-	img: Image,
-	ul: function Ul({ children }: { children: T_ReactChildren }): T_ReactElement {
-		return <List variant={List.variant.DEFAULT}>{children}</List>;
-	},
-	li: function Li({ children, ...rest }: { children: T_ReactChildren }): T_ReactElement {
-		return <List.Item {...rest}>{children}</List.Item>;
-	},
-	pre: function CustomPre({ children }: { children: T_ReactChildren }): T_ReactElement {
-		return <Pre variant={Pre.variant.STYLED}>{children}</Pre>;
-	},
-	code: function InlineCode({ children }: { children: T_ReactChildren }): T_ReactElement {
-		return <Code>{children}</Code>;
-	},
-	hr: function HR(): T_ReactElement {
-		return <Space variant={Space.variant.DASHED} />;
-	},
 	blockquote: function Blockquote({ children }: { children: T_ReactChildren }): T_ReactElement {
 		return (
 			<Block
@@ -104,6 +84,24 @@ export const MDXComponents = {
 			</Block>
 		);
 	},
+	code: function InlineCode({ children }: { children: T_ReactChildren }): T_ReactElement {
+		return <Code>{children}</Code>;
+	},
+	h1: TitleCreator("h1", { showLinkIcon: true }),
+	h2: TitleCreator("h2", { showLinkIcon: true }),
+	h3: TitleCreator("h3", { showLinkIcon: true }),
+	h4: TitleCreator("h4", { showLinkIcon: true }),
+	hr: function HR(): T_ReactElement {
+		return <Space variant={Space.variant.DASHED} />;
+	},
+	img: Image,
+	pre: function CustomPre({ children }: { children: T_ReactChildren }): T_ReactElement {
+		return <Pre variant={Pre.variant.STYLED}>{children}</Pre>;
+	},
+	ul: function Ul({ children }: { children: T_ReactChildren }): T_ReactElement {
+		return <List variant={List.variant.DEFAULT}>{children}</List>;
+	},
+	li: List.Item,
 
 	// Primitive components
 	Block,

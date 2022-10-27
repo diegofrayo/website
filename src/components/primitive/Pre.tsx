@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { mirror } from "~/utils/objects-and-arrays";
-import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
+import type { T_HTMLElementAttributes, T_Object, T_ReactChildren, T_ReactElement } from "~/types";
 
 const VARIANTS = mirror([
 	"UNSTYLED",
@@ -24,7 +24,7 @@ function Pre({ children, className, variant, ...rest }: T_PreProps): T_ReactElem
 					{...rest}
 					className={classNames("tw-overflow-x-auto", className)}
 				>
-					{children}
+					{removeCodeElements(children)}
 				</pre>
 
 				<style jsx>
@@ -32,19 +32,11 @@ function Pre({ children, className, variant, ...rest }: T_PreProps): T_ReactElem
 						.root pre {
 							word-break: keep-all;
 							overflow-x: auto;
-						}
-
-						.root :global(.dfr-Code) {
 							color: var(--dfr-text-color-gs-700);
 							font-style: normal;
 						}
 
-						.root :global(.dfr-Code::before),
-						.root :global(.dfr-Code::after) {
-							content: "";
-						}
-
-						:global(.tw-dark) :global(.dfr-Pre--styled) :global(.dfr-Code) {
+						:global(.tw-dark) .root pre {
 							color: var(--dfr-text-color-primary);
 						}
 					`}
@@ -64,7 +56,7 @@ function Pre({ children, className, variant, ...rest }: T_PreProps): T_ReactElem
 			)}
 			{...rest}
 		>
-			{children}
+			{removeCodeElements(children)}
 		</pre>
 	);
 }
@@ -72,3 +64,18 @@ function Pre({ children, className, variant, ...rest }: T_PreProps): T_ReactElem
 Pre.variant = VARIANTS;
 
 export default Pre;
+
+// --- Utils ---
+
+function removeCodeElements(children: T_PreProps["children"]): T_ReactChildren {
+	return React.Children.map(children, (child) => {
+		if (
+			React.isValidElement(child) &&
+			(child.type as React.JSXElementConstructor<T_Object>).name === "InlineCode"
+		) {
+			return child.props.children;
+		}
+
+		return child;
+	});
+}

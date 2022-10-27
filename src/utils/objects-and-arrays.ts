@@ -33,6 +33,34 @@ export function getRandomItem<G_ItemType>(array: G_ItemType[]): G_ItemType {
 	return array[between(0, array.length - 1)];
 }
 
+export function pick<G_Object, G_ObjectKeys extends keyof G_Object>(
+	obj: G_Object,
+	keys: G_ObjectKeys[],
+): Pick<G_Object, G_ObjectKeys> {
+	const result = {} as Pick<G_Object, G_ObjectKeys>;
+
+	keys.forEach((key) => {
+		if (key in obj) {
+			result[key] = obj[key];
+		}
+	});
+
+	return result;
+}
+
+export function omit<G_Object, G_ObjectKeys extends keyof G_Object>(
+	obj: G_Object,
+	keys: G_ObjectKeys[],
+): Omit<G_Object, G_ObjectKeys> {
+	const result = { ...obj };
+
+	keys.forEach((key) => {
+		delete result[key];
+	});
+
+	return result;
+}
+
 type T_SortableType = string | number | boolean | Date;
 
 export function sortPlainArray(

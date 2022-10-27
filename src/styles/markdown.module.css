@@ -1,0 +1,65 @@
+/* Spacing: parent components */
+.dfr-MarkdownContent--default > blockquote,
+.dfr-MarkdownContent--default > hr,
+.dfr-MarkdownContent--default > ol,
+.dfr-MarkdownContent--default > p,
+.dfr-MarkdownContent--default > :global(.dfr-Pre--styled),
+.dfr-MarkdownContent--default > ul,
+.dfr-MarkdownContent--default > a > img,
+.dfr-MarkdownContent--default > *[data-markdown-block] {
+	@apply tw-mb-6;
+}
+
+.dfr-MarkdownContent--default > *:last-child {
+	@apply tw-mb-0;
+}
+
+/* Spacing: nested components */
+.dfr-MarkdownContent--default li > p,
+.dfr-MarkdownContent--default li > :global(.dfr-Pre--styled),
+.dfr-MarkdownContent--default li > blockquote,
+.dfr-MarkdownContent--default li > img,
+.dfr-MarkdownContent--default blockquote > p,
+.dfr-MarkdownContent--default li > a > img {
+	@apply tw-mb-3;
+}
+
+/* Spacing: titles */
+.dfr-MarkdownContent--default > h1,
+.dfr-MarkdownContent--default > h2,
+.dfr-MarkdownContent--default > h3,
+.dfr-MarkdownContent--default > h4,
+.dfr-MarkdownContent--default *[data-markdown-title] {
+	@apply tw-mt-8;
+	@apply tw-mb-3;
+}
+
+/* Spacing: nested UL lists */
+.dfr-MarkdownContent--default li > ul,
+.dfr-MarkdownContent--default li > :global(.dfr-Pre--styled) {
+	@apply tw-mt-3;
+}
+
+/* Ordered lists */
+.dfr-MarkdownContent--default ol {
+	@apply tw-pl-9;
+	list-style-type: decimal;
+}
+
+.dfr-MarkdownContent--default ol > li {
+	@apply tw-mb-6;
+}
+
+/* Images */
+.dfr-MarkdownContent--default > a > img,
+.dfr-MarkdownContent--default li > a > img {
+	@apply dfr-shadow;
+	@apply tw-rounded-md;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+:global(.tw-dark) .dfr-MarkdownContent--default > a > img,
+:global(.tw-dark) .dfr-MarkdownContent--default li > a > img {
+	@apply dark-v-dfr-shadow;
+}
