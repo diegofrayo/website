@@ -2,7 +2,12 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { mirror } from "~/utils/objects-and-arrays";
-import type { T_HTMLElementAttributes, T_Object, T_ReactChildren, T_ReactElement } from "~/types";
+import type {
+	T_HTMLElementAttributes,
+	T_ReactChildren,
+	T_ReactElement,
+	T_ReactNode,
+} from "~/types";
 
 const VARIANTS = mirror([
 	"UNSTYLED",
@@ -69,13 +74,20 @@ export default Pre;
 
 function removeCodeElements(children: T_PreProps["children"]): T_ReactChildren {
 	return React.Children.map(children, (child) => {
-		if (
-			React.isValidElement(child) &&
-			(child.type as React.JSXElementConstructor<T_Object>).name === "InlineCode"
-		) {
+		if (isInlineCodeElement(child)) {
 			return child.props.children;
 		}
 
 		return child;
 	});
+}
+
+function isInlineCodeElement(child: T_ReactNode): child is T_ReactElement {
+	/* WARN:
+	 * I use this any because I get problems when the code is minified
+	 * I can't do this validation using function.name
+	 */
+	// @ts-ignore
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	return React.isValidElement(child) && (child.type as any).customName === "InlineCode";
 }

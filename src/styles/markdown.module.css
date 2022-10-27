@@ -1,12 +1,6 @@
 /* Spacing: parent components */
-.dfr-MarkdownContent--default > blockquote,
-.dfr-MarkdownContent--default > hr,
-.dfr-MarkdownContent--default > ol,
-.dfr-MarkdownContent--default > p,
-.dfr-MarkdownContent--default > :global(.dfr-Pre--styled),
-.dfr-MarkdownContent--default > ul,
-.dfr-MarkdownContent--default > a > img,
-.dfr-MarkdownContent--default > *[data-markdown-block] {
+.dfr-MarkdownContent--default
+	> :is(blockquote, hr, ol, p, :global(.dfr-Pre--styled), ul, a > img, *[data-markdown-block]) {
 	@apply tw-mb-6;
 }
 
@@ -15,28 +9,21 @@
 }
 
 /* Spacing: nested components */
-.dfr-MarkdownContent--default li > p,
-.dfr-MarkdownContent--default li > :global(.dfr-Pre--styled),
-.dfr-MarkdownContent--default li > blockquote,
-.dfr-MarkdownContent--default li > img,
-.dfr-MarkdownContent--default blockquote > p,
-.dfr-MarkdownContent--default li > a > img {
+.dfr-MarkdownContent--default
+	:is(li > p, li > :global(.dfr-Pre--styled), li > blockquote, li > img, blockquote > p, li
+		> a
+		> img) {
 	@apply tw-mb-3;
 }
 
 /* Spacing: titles */
-.dfr-MarkdownContent--default > h1,
-.dfr-MarkdownContent--default > h2,
-.dfr-MarkdownContent--default > h3,
-.dfr-MarkdownContent--default > h4,
-.dfr-MarkdownContent--default *[data-markdown-title] {
+.dfr-MarkdownContent--default :is(> h1, h2, h3, h4) {
 	@apply tw-mt-8;
 	@apply tw-mb-3;
 }
 
 /* Spacing: nested UL lists */
-.dfr-MarkdownContent--default li > ul,
-.dfr-MarkdownContent--default li > :global(.dfr-Pre--styled) {
+.dfr-MarkdownContent--default :is(li > ul, li > :global(.dfr-Pre--styled)) {
 	@apply tw-mt-3;
 }
 
@@ -51,15 +38,13 @@
 }
 
 /* Images */
-.dfr-MarkdownContent--default > a > img,
-.dfr-MarkdownContent--default li > a > img {
+.dfr-MarkdownContent--default :is(> a > img, li > a > img) {
 	@apply dfr-shadow;
 	@apply tw-rounded-md;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-:global(.tw-dark) .dfr-MarkdownContent--default > a > img,
-:global(.tw-dark) .dfr-MarkdownContent--default li > a > img {
+:global(.tw-dark) .dfr-MarkdownContent--default :is(> a > img, li > a > img) {
 	@apply dark-v-dfr-shadow;
 }

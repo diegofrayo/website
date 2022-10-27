@@ -60,8 +60,7 @@ const Input = React.forwardRef(function Input(
 						resize: none;
 					}
 
-					.root :global(input.dfr-Input:focus-within),
-					.root :global(input.dfr-Input:focus) {
+					.root :global(:is(input.dfr-Input:focus, input.dfr-Input:focus-within)) {
 						border-radius: 0;
 						outline-color: var(--dfr-text-color-gs-400);
 						outline-style: solid;

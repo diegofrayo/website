@@ -66,12 +66,12 @@ function Title(props: T_TitleProps): T_ReactElement {
 
 				<style jsx>
 					{`
-						:global(.dfr-Title--primary):hover :global(.dfr-Link) {
-							visibility: visible;
-						}
-
 						:global(.dfr-Title--primary) {
 							scroll-margin-top: 20px;
+						}
+
+						:global(.dfr-Title--primary):hover :global(.dfr-Link) {
+							visibility: visible;
 						}
 					`}
 				</style>

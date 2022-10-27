@@ -27,7 +27,7 @@ import * as MusicComponents from "~/features/pages/music/components";
 import * as ResumeComponents from "~/features/pages/resume";
 import { ROUTES } from "~/features/routing";
 import { T_Metadata } from "~/stores/modules/metadata";
-import type { T_ReactChildren, T_ReactElement } from "~/types";
+import type { T_ReactChildren, T_ReactElement, T_ReactFunctionComponent } from "~/types";
 
 let MDXScope: {
 	DATA: {
@@ -84,9 +84,15 @@ export const MDXComponents = {
 			</Block>
 		);
 	},
-	code: function InlineCode({ children }: { children: T_ReactChildren }): T_ReactElement {
-		return <Code>{children}</Code>;
-	},
+	code: ((): T_ReactFunctionComponent<{ children: T_ReactChildren }> => {
+		function InnerInlineCode({ children }: { children: T_ReactChildren }): T_ReactElement {
+			return <Code>{children}</Code>;
+		}
+
+		InnerInlineCode.customName = "InlineCode";
+
+		return InnerInlineCode;
+	})(),
 	h1: TitleCreator("h1", { showLinkIcon: true }),
 	h2: TitleCreator("h2", { showLinkIcon: true }),
 	h3: TitleCreator("h3", { showLinkIcon: true }),
