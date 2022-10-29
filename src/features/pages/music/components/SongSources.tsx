@@ -8,8 +8,6 @@ import { isEmptyArray } from "~/utils/validations";
 
 import { T_Song } from "../service";
 
-// WARN: False positive
-/* eslint-disable react/no-unused-prop-types */
 type T_SongSourcesProps = {
 	sources: T_Song["sources"];
 };

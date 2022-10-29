@@ -1,13 +1,18 @@
 import * as React from "react";
 
 import { Collapsible } from "~/components/primitive";
-import { MarkdownContent } from "~/components/shared";
+import { SourceCode } from "~/components/shared";
 import type { T_ReactElement } from "~/types";
 
 function JACContent({ title, content }: { title: string; content: string }): T_ReactElement {
 	return (
 		<Collapsible title={title}>
-			<MarkdownContent content={content} />
+			<SourceCode
+				fileName={title}
+				language="javascript"
+				code={content}
+				height={650}
+			/>
 		</Collapsible>
 	);
 }

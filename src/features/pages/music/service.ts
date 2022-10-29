@@ -82,7 +82,6 @@ export type T_Song = {
 	readonly createdAt: string;
 	readonly isPublic: boolean;
 	sources: {
-		order: number;
 		text: string;
 		url: string;
 		source: "youtube" | "lacuerda" | "url" | "instagram" | "spotify" | "ultimate-guitar";
