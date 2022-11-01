@@ -1,7 +1,7 @@
 import { getPageContentStaticProps } from "~/features/i18n";
-import TicksPage from "~/features/pages/personal/[page]/Ticks";
+import StopwatchPage from "~/features/pages/personal/[page]/Stopwatch";
 
-export default TicksPage;
+export default StopwatchPage;
 
 // --- Next.js functions ---
 

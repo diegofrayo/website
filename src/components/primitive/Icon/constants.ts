@@ -1,4 +1,5 @@
 import {
+	ArchiveBoxIcon,
 	ArrowPathIcon,
 	ArrowTopRightOnSquareIcon,
 	ArrowUpIcon,
@@ -170,6 +171,12 @@ export const ICONS = {
 	},
 
 	// library icons
+	ARCHIVE_BOX: {
+		icon: ArchiveBoxIcon,
+		defaultProps: {
+			className: "",
+		},
+	},
 	ARROW_UP: {
 		icon: ArrowUpIcon,
 		defaultProps: {

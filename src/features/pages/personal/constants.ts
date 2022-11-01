@@ -33,17 +33,17 @@ export const PERSONAL_PAGES = [
 
 	// tools
 	{
-		slug: "timer",
-		title: "timer",
-		componentName: "",
-		icon: Icon.icon.CLOCK,
-		type: "TOOL",
-	},
-	{
 		slug: "ticks",
 		title: "ticks",
 		componentName: "",
 		icon: Icon.icon.HEART,
+		type: "TOOL",
+	},
+	{
+		slug: "stopwatch",
+		title: "stopwatch",
+		componentName: "",
+		icon: Icon.icon.CLOCK,
 		type: "TOOL",
 	},
 	{
@@ -86,6 +86,13 @@ export const PERSONAL_PAGES = [
 		title: "thumbnails",
 		componentName: "Thumbnails",
 		icon: Icon.icon.PHOTO,
+		type: "TOOL",
+	},
+	{
+		slug: "timer",
+		title: "timer",
+		componentName: "",
+		icon: Icon.icon.ARCHIVE_BOX,
 		type: "TOOL",
 	},
 ] as const;

@@ -278,19 +278,19 @@ function Timer({
 			)}
 		>
 			<audio
-				src="/static/sounds/timer/set-completed.mp3"
+				src="/static/sounds/completed-2.mp3"
 				id="audio-set-completed"
 				preload="auto"
 				className="tw-hidden"
 			/>
 			<audio
-				src="/static/sounds/timer/routine-item-completed.mp3"
+				src="/static/sounds/completed-1.mp3"
 				id="audio-routine-item-completed"
 				preload="auto"
 				className="tw-hidden"
 			/>
 			<audio
-				src="/static/sounds/timer/clock-tick.mp3"
+				src="/static/sounds/countdown.mp3"
 				id="audio-clock-tick"
 				preload="auto"
 				className="tw-hidden"

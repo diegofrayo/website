@@ -447,19 +447,19 @@ function Ticks(): T_ReactElement {
 					) : null}
 
 					<audio
-						src={`/static/sounds/ticks/${ticksAudio}.mp3`}
+						src={`/static/sounds/tick-${ticksAudio}.mp3`}
 						id="audio-tick"
 						preload="auto"
 						className="tw-hidden"
 					/>
 					<audio
-						src={`/static/sounds/ticks/${cyclesAudio}.mp3`}
+						src={`/static/sounds/tick-${cyclesAudio}.mp3`}
 						id="audio-cycle-completed"
 						preload="auto"
 						className="tw-hidden"
 					/>
 					<audio
-						src="/static/sounds/ticks/session-completed.mp3"
+						src="/static/sounds/completed-3.mp3"
 						id="audio-session-completed"
 						preload="auto"
 						className="tw-hidden"
