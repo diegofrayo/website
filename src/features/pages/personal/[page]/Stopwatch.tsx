@@ -4,7 +4,6 @@ import classNames from "classnames";
 import { MainLayout, Page } from "~/components/layout";
 import { Block, Button, InlineText, Input, Select, Space, Text } from "~/components/primitive";
 import { isConfirmAlertAccepted, showAlert } from "~/utils/browser";
-import { createArray } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
 import { isNotTrue } from "~/utils/validations";
 import type {
@@ -171,28 +170,18 @@ function Stopwatch(): T_ReactElement {
 			config={{
 				title: PAGE_TITLE,
 				disableSEO: true,
-				scripts: createArray(3).map((item) => {
-					return {
-						element: "link",
-						props: {
-							rel: "preload",
-							as: "audio",
-							href: `/static/sounds/ticks/${item}.mp3`,
-						},
-					};
-				}),
 			}}
 		>
 			<MainLayout title={`${PAGE_TITLE}`}>
 				<Block className="tw-mx-auto tw-w-96 tw-max-w-full">
-					<Text className="tw-text-center tw-text-6xl">
+					<Text className="tw-text-center tw-font-sans tw-text-4xl">
 						{secondsToTime(time)
 							.split("")
 							.map((char, index) => {
 								return (
 									<InlineText
 										key={generateSlug(`Stopwatch-InlineText-index-${index}`)}
-										className={classNames("tw-inline-block", char !== ":" && "tw-w-12")}
+										className={classNames("tw-inline-block", char !== ":" && "tw-w-8")}
 									>
 										{char}
 									</InlineText>
@@ -205,7 +194,8 @@ function Stopwatch(): T_ReactElement {
 						<Block className="tw-flex tw-justify-between tw-gap-1">
 							<Input
 								componentProps={{ label: "Time" }}
-								containerProps={{ className: "tw-text-left tw-flex-1" }}
+								containerProps={{ className: "tw-text-left tw-flex-1 tw-flex-shrink-0 tw-min-w-0" }}
+								labelProps={{ className: "tw-truncate" }}
 								id="time"
 								type="number"
 								className="tw-text-left"
@@ -217,8 +207,11 @@ function Stopwatch(): T_ReactElement {
 								onChange={onInputChangeHandler(setTimeInputValue)}
 							/>
 							<Select
-								componentProps={{ label: "Minutes/Seconds" }}
-								containerProps={{ className: "tw-flex-1 tw-text-right" }}
+								componentProps={{ label: "Measure" }}
+								containerProps={{
+									className: "tw-flex-1 tw-text-right tw-flex-shrink-0 tw-min-w-0",
+								}}
+								labelProps={{ className: "tw-truncate" }}
 								id="select-time-measure"
 								defaultValue="seconds"
 								className="tw-text-right"

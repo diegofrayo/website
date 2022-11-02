@@ -15,7 +15,7 @@ import {
 import { useDidMount, useEnhancedState } from "~/hooks";
 import { isConfirmAlertAccepted, showAlert } from "~/utils/browser";
 import { generateDate, getDatesDiff } from "~/utils/dates";
-import { createArray, sortBy } from "~/utils/objects-and-arrays";
+import { sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
 import { isNotEmptyArray, isNotTrue, isNumber } from "~/utils/validations";
 import type {
@@ -265,16 +265,6 @@ function Ticks(): T_ReactElement {
 			config={{
 				title: PAGE_TITLE,
 				disableSEO: true,
-				scripts: createArray(3).map((item) => {
-					return {
-						element: "link",
-						props: {
-							rel: "preload",
-							as: "audio",
-							href: `/static/sounds/ticks/${item}.mp3`,
-						},
-					};
-				}),
 			}}
 		>
 			<MainLayout title={`${PAGE_TITLE}`}>

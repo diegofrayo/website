@@ -86,10 +86,14 @@ export default Input;
 
 // --- Components ---
 
-export function Label({ children, ...rest }: T_HTMLElementAttributes["p"]): T_ReactElement {
+export function Label({
+	children,
+	className,
+	...rest
+}: T_HTMLElementAttributes["p"]): T_ReactElement {
 	return (
 		<Text
-			className="tw-mb-1 tw-cursor-pointer tw-font-bold"
+			className={classNames("tw-mb-1 tw-cursor-pointer tw-font-bold", className)}
 			{...rest}
 		>
 			{children}
