@@ -456,7 +456,7 @@ type T_LinkItemProps = {
 function LinkItem({ label, url, className = "" }: T_LinkItemProps): T_ReactElement {
 	// handlers
 	function handleItemClick(): void {
-		AnalyticsService.trackEvent("HOME|DESKTOP", { page: label });
+		AnalyticsService.trackEvent("HOME|DESKTOP_LINK", { page: label });
 	}
 
 	return (

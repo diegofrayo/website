@@ -190,6 +190,21 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 								return <List.Item key={generateSlug(item)}>{item}</List.Item>;
 							})}
 						</List>
+
+						<Block className="tw-mt-8 tw-border-t tw-border-dashed tw-pt-8 tw-text-center dfr-border-color-primary print:tw-hidden">
+							<Link
+								variant={Link.variant.SECONDARY}
+								href="https://drive.google.com/open?id=1zOaXbESJ4mXasY0WybvfTD9G9qN2Ya7g&authuser=diegofrayo%40gmail.com&usp=drive_fs"
+								isExternalLink
+							>
+								<Icon
+									icon={Icon.icon.ARROW_DOWN_TRAY}
+									wrapperClassName="tw-mb-2"
+									size={48}
+								/>
+								<Text>Download this resume as PDF</Text>
+							</Link>
+						</Block>
 					</ResumeBlock>
 				</PrintBlock>
 			</Block>
