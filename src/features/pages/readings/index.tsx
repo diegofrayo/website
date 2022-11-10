@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { Page, MainLayout } from "~/components/layout";
 import { Block, InlineText, Link, List, Text } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
-import { withAuthComponent, withAuthPage } from "~/features/auth";
+import { withAuthComponent } from "~/features/auth";
 import { sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
 import { isNotEmptyString } from "~/utils/validations";
@@ -98,7 +98,7 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 	);
 }
 
-export default withAuthPage(Readings);
+export default Readings;
 
 // --- Components ---
 

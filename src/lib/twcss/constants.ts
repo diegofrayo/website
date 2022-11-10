@@ -63,8 +63,6 @@ const HTML_TAGS = [
 	"map",
 	"mark",
 	"marquee",
-	"menu",
-	"menuitem",
 	"meta",
 	"meter",
 	"nav",

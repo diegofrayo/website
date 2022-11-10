@@ -139,3 +139,7 @@ CustomApp.getInitialProps = async (appContext): Promise<T_Object> => {
 		},
 	};
 };
+
+export function reportWebVitals(metrics: unknown): void {
+	logger("LOG", metrics);
+}

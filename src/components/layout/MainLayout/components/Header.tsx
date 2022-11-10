@@ -158,10 +158,7 @@ function MainMenu(): T_ReactElement {
 			</Button>
 
 			{showMenu ? (
-				<List
-					is="menu"
-					className="tw-absolute tw-top-full tw-left-[-65px] tw-z-40 tw-block tw-w-40 tw-overflow-hidden dfr-shadow"
-				>
+				<List className="tw-absolute tw-top-full tw-left-[-65px] tw-z-40 tw-block tw-w-40 tw-overflow-hidden dfr-shadow">
 					{items.map((item) => {
 						const isLinkActive =
 							pathname === item.url ||
@@ -224,10 +221,7 @@ function SettingsMenu(): T_ReactElement {
 			</Button>
 
 			{showMenu ? (
-				<List
-					is="menu"
-					className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden dfr-shadow"
-				>
+				<List className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden dfr-shadow">
 					<ToggleThemeMenuItem />
 					<RefreshAPPMenuItem />
 					<ISRMenuItem />

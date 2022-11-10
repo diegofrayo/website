@@ -8,12 +8,10 @@ const VARIANTS = mirror(["UNSTYLED", "DEFAULT"]);
 type T_Variant = keyof typeof VARIANTS;
 
 type T_ListProps = T_HTMLElementAttributes["ul"] & {
-	is?: "ul" | "menu";
 	variant?: T_Variant;
 };
 
 function List({
-	is: Element = "ul",
 	children,
 	className = "",
 	variant = VARIANTS.UNSTYLED,
@@ -21,7 +19,7 @@ function List({
 	const isDefaultVariant = variant === VARIANTS.DEFAULT;
 
 	return (
-		<Element
+		<ul
 			className={classNames(
 				`dfr-List dfr-List--${variant.toLowerCase()}`,
 				"tw-list-inside tw-list-none",
@@ -46,7 +44,7 @@ function List({
 					}
 				`}
 			</style>
-		</Element>
+		</ul>
 	);
 }
 

@@ -19,6 +19,7 @@ const twcss: I_TWCSS = Object.assign(
 export default twcss;
 
 // --- Components ---
+
 function TWCSSCreator(Tag: T_ElementToRender): I_TWCSSComponentDefinition {
 	const TWCSSComponentDefinition: I_TWCSSComponentDefinition = function TWCSSComponentDefinition(
 		styles,
@@ -201,8 +202,6 @@ interface I_TWCSS extends I_TWCSSCreator {
 	map: I_TWCSSComponentDefinition;
 	mark: I_TWCSSComponentDefinition;
 	marquee: I_TWCSSComponentDefinition;
-	menu: I_TWCSSComponentDefinition;
-	menuitem: I_TWCSSComponentDefinition;
 	meta: I_TWCSSComponentDefinition;
 	meter: I_TWCSSComponentDefinition;
 	nav: I_TWCSSComponentDefinition;

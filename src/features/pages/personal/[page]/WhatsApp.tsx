@@ -32,7 +32,7 @@ function WhatsApp(): T_ReactElement {
 
 	return (
 		<Block>
-			<Block className="tw-flex-no-wrap tw-flex tw-w-full tw-items-end">
+			<Block className="tw-flex-no-wrap tw-flex tw-w-full tw-items-center tw-justify-center">
 				<Input
 					componentProps={{ label: "Ingrese un número de celular" }}
 					id="input"
@@ -57,7 +57,7 @@ function WhatsApp(): T_ReactElement {
 				>
 					<Icon
 						icon={Icon.icon.WHATSAPP}
-						size={48}
+						size={36}
 					/>
 				</Link>
 			</Block>

@@ -7,8 +7,9 @@ import { isNotEmptyString, isNumber, isString, isUndefined } from "~/utils/valid
 import type { T_HTMLElementAttributes, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import { ICONS } from "./constants";
-import isIconElementFromLibrary from "./utils";
+import isIconElementFromLibraryChecker from "./utils";
 import type { T_IconName, T_LibraryIconComponent, T_Icon } from "./types";
+
 import Image, { T_ImagePrimitiveComponent } from "../Image";
 import Block from "../Block";
 
@@ -73,41 +74,6 @@ function useController({
 		};
 	}
 
-	// vars
-	/*
-	 * This assertion is undesirable but necessary because I'm typing
-	 * the icons keys object in a different way in comparison to the
-	 * other components
-	 */
-	const icon = ICONS[iconName] as T_Icon;
-	const baseIconClassNames = classNames(
-		"tw-inline-block",
-		isUndefined(size) && "tw-w-4 tw-h-4",
-		isString(size) && size,
-		icon.defaultProps.className,
-		iconClassName,
-	);
-	const wrapperProps = {
-		className: classNames(
-			"dfr-Icon",
-			withBackgroundWhenDarkMode &&
-				"dark:dfr-bg-color-gs-white dark:tw-rounded-full tw-overflow-hidden",
-			wrapperClassName,
-		),
-	};
-	const iconComponentProps = isIconElementFromLibrary(icon.icon)
-		? {
-				className: classNames(baseIconClassNames, getColorStyles()),
-				...(isNumber(size) ? { style: { width: size, height: size } } : {}),
-		  }
-		: {
-				src: icon.icon,
-				alt: `${icon.defaultProps.alt} icon`,
-				className: classNames(baseIconClassNames, withBackgroundWhenDarkMode && "dark:tw-p-0.5"),
-				...(isNumber(size) ? { style: { width: size, height: size } } : {}),
-		  };
-	const IconComponent = isIconElementFromLibrary(icon.icon) ? icon.icon : Image;
-
 	// utils
 	function getColorStyles(): string {
 		if (isNotEmptyString(color)) {
@@ -120,6 +86,58 @@ function useController({
 
 		return "dfr-text-color-bw";
 	}
+
+	// vars
+	/*
+	 * This assertion is undesirable but necessary because I'm typing
+	 * the icons keys object in a different way in comparison to the
+	 * other components
+	 */
+	const icon = ICONS[iconName] as T_Icon;
+	const wrapperProps = {
+		className: classNames(
+			"dfr-Icon",
+			withBackgroundWhenDarkMode &&
+				"dark:dfr-bg-color-gs-white dark:tw-rounded-full tw-overflow-hidden",
+			wrapperClassName,
+		),
+	};
+
+	if (isIconElementFromLibraryChecker(icon.icon)) {
+		const baseIconClassNames = classNames(
+			"tw-inline-block",
+			icon.defaultProps.className,
+			iconClassName,
+			isUndefined(size) && "tw-w-4 tw-h-4",
+			isString(size) && size,
+		);
+		const iconComponentProps = {
+			className: classNames(baseIconClassNames, getColorStyles()),
+			...(isNumber(size) ? { style: { width: size, height: size } } : {}),
+		};
+		const IconComponent = icon.icon;
+
+		return { wrapperProps, iconComponentProps, IconComponent };
+	}
+
+	if (isString(size)) {
+		throw new Error(`Size value for "${iconName}" has to be a number`);
+	}
+
+	const baseIconClassNames = classNames(
+		"tw-inline-block",
+		icon.defaultProps.className,
+		iconClassName,
+	);
+	const iconComponentProps = {
+		src: icon.icon,
+		alt: `${icon.defaultProps.alt} icon`,
+		className: classNames(baseIconClassNames, withBackgroundWhenDarkMode && "dark:tw-p-0.5"),
+		useNextImage: true,
+		width: isNumber(size) ? size : 24,
+		height: isNumber(size) ? size : 24,
+	};
+	const IconComponent = Image;
 
 	return { wrapperProps, iconComponentProps, IconComponent };
 }

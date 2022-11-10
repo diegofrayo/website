@@ -93,7 +93,10 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 								<InlineText className="tw-mr-1 tw-inline-block tw-text-right tw-text-xs tw-font-bold">
 									{whatsAppOption}
 								</InlineText>
-								<Icon icon={Icon.icon.WHATSAPP} />
+								<Icon
+									icon={Icon.icon.WHATSAPP}
+									size={24}
+								/>
 							</Button>
 							<Space
 								size={1}

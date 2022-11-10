@@ -1,26 +1,31 @@
 import * as React from "react";
-import { useRouter } from "next/router";
 import NProgress from "nprogress";
+import classNames from "classnames";
+import { useRouter } from "next/router";
 
 import { Block } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import type { T_ReactElement, T_SetTimeout } from "~/types";
+import type { T_ReactElementNullable } from "~/types";
 
-function ProgressBar(): T_ReactElement {
+import styles from "./ProgressBar.styles.module.css";
+
+function NProgressBar(): T_ReactElementNullable {
 	// hooks
 	const router = useRouter();
 
 	// effects
 	useDidMount(() => {
-		let timeout: T_SetTimeout;
+		NProgress.configure({ parent: ".NProgressBar" });
 
 		function showProgressBar(): void {
-			timeout = setTimeout(NProgress.start, 100);
+			NProgress.done();
+			NProgress.start();
 		}
 
 		function hideProgressBar(): void {
-			clearTimeout(timeout);
-			NProgress.done();
+			setTimeout(() => {
+				NProgress.done();
+			}, 1000);
 		}
 
 		router.events.on("routeChangeStart", showProgressBar);
@@ -34,21 +39,7 @@ function ProgressBar(): T_ReactElement {
 		};
 	});
 
-	return (
-		<Block>
-			<style jsx>{`
-				:global(#nprogress .bar) {
-					@apply tw-bg-yellow-500;
-					height: 5px;
-					left: 0;
-					position: fixed;
-					top: 0;
-					width: 100%;
-					z-index: 1000;
-				}
-			`}</style>
-		</Block>
-	);
+	return <Block className={classNames("NProgressBar", styles["NProgressBar"])} />;
 }
 
-export default ProgressBar;
+export default NProgressBar;

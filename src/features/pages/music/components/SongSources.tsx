@@ -54,7 +54,7 @@ function SongSources({ sources }: T_SongSourcesProps): T_ReactElementNullable {
 												? Icon.icon.INSTAGRAM
 												: Icon.icon.LINK
 										}
-										size="tw-w-8 tw-h-8"
+										size={32}
 										wrapperClassName="tw-mr-2"
 									/>
 								)}

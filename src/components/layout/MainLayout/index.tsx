@@ -142,7 +142,7 @@ function FooterIcon({ icon, url }: T_FooterIconProps): T_ReactElement {
 		>
 			<Icon
 				icon={icon}
-				size="tw-w-8 tw-h-8"
+				size={32}
 			/>
 		</Link>
 	);
