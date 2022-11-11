@@ -8,9 +8,9 @@ import type { T_HTMLElementAttributes, T_ReactElement, T_ReactElementNullable } 
 
 import { ICONS } from "./constants";
 import isIconElementFromLibraryChecker from "./utils";
-import type { T_IconName, T_LibraryIconComponent, T_Icon } from "./types";
+import type { T_IconName, T_Icon } from "./types";
 
-import Image, { T_ImagePrimitiveComponent } from "../Image";
+import Image from "../Image";
 import Block from "../Block";
 
 type T_IconProps = {
@@ -22,71 +22,14 @@ type T_IconProps = {
 	withBackgroundWhenDarkMode?: boolean;
 };
 
-function Icon(props: T_IconProps): T_ReactElementNullable {
-	const { wrapperProps, iconComponentProps, IconComponent } = useController(props);
-
-	if (isUndefined(IconComponent)) {
-		return null;
-	}
-
-	return (
-		<Wrapper {...wrapperProps}>
-			<IconComponent {...iconComponentProps} />
-		</Wrapper>
-	);
-}
-
-Icon.icon = mirror(Object.keys(ICONS) as T_IconName[]);
-
-export default Icon;
-export type { T_IconName };
-
-// --- Controller ---
-
-type T_UseControllerReturn = {
-	wrapperProps: { className: string } | undefined;
-	iconComponentProps:
-		| {
-				src?: string;
-				alt?: string;
-				className: string;
-				style?: { width: number; height: number };
-		  }
-		| undefined;
-	IconComponent: T_LibraryIconComponent | T_ImagePrimitiveComponent | undefined;
-};
-
-function useController({
+function Icon({
 	icon: iconName,
 	size = undefined,
 	color = undefined,
 	iconClassName = "",
 	wrapperClassName = "",
 	withBackgroundWhenDarkMode = false,
-}: T_IconProps): T_UseControllerReturn {
-	if (isUndefined(ICONS[iconName])) {
-		logger("WARN", "Icon does not exist", iconName);
-
-		return {
-			wrapperProps: undefined,
-			iconComponentProps: undefined,
-			IconComponent: undefined,
-		};
-	}
-
-	// utils
-	function getColorStyles(): string {
-		if (isNotEmptyString(color)) {
-			return color;
-		}
-
-		if (isNotEmptyString(icon.defaultProps.color)) {
-			return icon.defaultProps.color;
-		}
-
-		return "dfr-text-color-bw";
-	}
-
+}: T_IconProps): T_ReactElementNullable {
 	// vars
 	/*
 	 * This assertion is undesirable but necessary because I'm typing
@@ -103,6 +46,25 @@ function useController({
 		),
 	};
 
+	// utils
+	function getColorStyles(): string {
+		if (isNotEmptyString(color)) {
+			return color;
+		}
+
+		if (isNotEmptyString(icon.defaultProps.color)) {
+			return icon.defaultProps.color;
+		}
+
+		return "dfr-text-color-bw";
+	}
+
+	// render
+	if (isUndefined(icon)) {
+		logger("WARN", "Icon does not exist", iconName);
+		return null;
+	}
+
 	if (isIconElementFromLibraryChecker(icon.icon)) {
 		const baseIconClassNames = classNames(
 			"tw-inline-block",
@@ -117,7 +79,11 @@ function useController({
 		};
 		const IconComponent = icon.icon;
 
-		return { wrapperProps, iconComponentProps, IconComponent };
+		return (
+			<Wrapper {...wrapperProps}>
+				<IconComponent {...iconComponentProps} />
+			</Wrapper>
+		);
 	}
 
 	if (isString(size)) {
@@ -133,14 +99,22 @@ function useController({
 		src: icon.icon,
 		alt: `${icon.defaultProps.alt} icon`,
 		className: classNames(baseIconClassNames, withBackgroundWhenDarkMode && "dark:tw-p-0.5"),
-		useNextImage: true,
 		width: isNumber(size) ? size : 24,
 		height: isNumber(size) ? size : 24,
 	};
 	const IconComponent = Image;
 
-	return { wrapperProps, iconComponentProps, IconComponent };
+	return (
+		<Wrapper {...wrapperProps}>
+			<IconComponent {...iconComponentProps} />
+		</Wrapper>
+	);
 }
+
+Icon.icon = mirror(Object.keys(ICONS) as T_IconName[]);
+
+export default Icon;
+export type { T_IconName };
 
 // --- Components ---
 

@@ -177,12 +177,15 @@ function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElementNullable {
 					photo.portrait === true ? "tw-h-24" : "tw-h-20",
 				)}
 			>
-				<Image
-					src={photo.src}
-					className="tw-block tw-h-full tw-w-full tw-overflow-hidden tw-rounded-md tw-border-2 tw-border-yellow-700 dfr-transition-opacity"
-					alt="Photography taken by Diego Rayo"
-					onClick={handleImageClick}
-				/>
+				<Block className="tw-relative tw-h-full tw-w-full tw-overflow-hidden tw-rounded-md tw-border-2 tw-border-yellow-700">
+					<Image
+						src={photo.src}
+						alt="Photography taken by Diego Rayo"
+						className="dfr-transition-opacity"
+						onClick={handleImageClick}
+						fill
+					/>
+				</Block>
 			</Block>
 			<Text className="tw-mx-auto tw-h-4 tw-w-16 tw-rounded-bl-md tw-rounded-br-md tw-border-2 tw-border-t-0 tw-border-yellow-700 tw-text-center tw-text-xxs tw-font-bold tw-italic dfr-bg-color-gs-white dfr-text-color-gs-black">
 				{t("layout:header:room:welcome")}

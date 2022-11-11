@@ -163,7 +163,8 @@ function Thumbnail({ title, src, thumbnailRef }: T_ThumbnailProps): T_ReactEleme
 			<Image
 				src={src}
 				alt="Blog post thumbnail"
-				className="tw-w-24"
+				width={96}
+				height={96}
 			/>
 			<Title
 				is="h1"

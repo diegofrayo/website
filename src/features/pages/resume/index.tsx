@@ -147,7 +147,9 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 										<Image
 											src={item.schoolLogo}
 											alt={`${item.school} logo`}
-											className="tw-relative tw-top-1 tw-mr-2 tw-h-12 tw-w-12 tw-flex-shrink-0"
+											className="tw-relative tw-top-1 tw-mr-2 tw-flex-shrink-0"
+											width={48}
+											height={48}
 										/>
 										<Block>
 											<Title
@@ -286,7 +288,7 @@ function ExperienceTimelineItem({
 					<Image
 						src={companyLogo}
 						alt="Company logo"
-						className="tw-h-full tw-w-full"
+						fill
 					/>
 				) : (
 					<Block className="tw-h-full tw-w-full dfr-bg-color-wb" />

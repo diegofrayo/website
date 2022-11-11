@@ -150,14 +150,18 @@ function Films(): T_ReactElement {
 													{source === "imdb" ? (
 														<Image
 															src="/static/images/misc/imdb.png"
-															className="tw-h-6 tw-w-6 tw-flex-shrink-0 tw-rounded-full"
 															alt="imdb icon"
+															className="tw-flex-shrink-0 tw-rounded-full"
+															width={24}
+															height={24}
 														/>
 													) : source === "Amazon Prime Video" ? (
 														<Image
 															src="/static/images/misc/amazon-prime-video.png"
-															className="tw-h-6 tw-w-6 tw-flex-shrink-0 tw-rounded-full"
 															alt="Amazon Prime Video icon"
+															className="tw-flex-shrink-0 tw-rounded-full"
+															width={24}
+															height={24}
 														/>
 													) : (
 														<Icon

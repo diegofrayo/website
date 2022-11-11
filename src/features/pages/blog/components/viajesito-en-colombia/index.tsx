@@ -284,12 +284,14 @@ function SlideContent({
 				) : (
 					<Image
 						src={src}
+						alt={caption}
 						className={classNames(
 							"tw-mx-auto tw-max-h-full tw-max-w-full",
 							isNotTrue(isFullscreenVariant) && "tw-cursor-pointer",
 						)}
-						alt={caption}
+						useNextImage={false}
 						onClick={handleImageClick}
+						// TODO: Use next/image
 					/>
 				)}
 			</Block>

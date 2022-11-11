@@ -46,5 +46,21 @@ module.exports = withMDX()(
 				},
 			];
 		},
+		images: {
+			domains: [
+				// TODO: Add local IP address
+				getImagesDomain(process.env.NEXT_PUBLIC_ASSETS_SERVER_URL),
+			],
+		},
 	}),
 );
+
+// --- Utils ---
+
+function getImagesDomain(domain) {
+	if (domain.includes(":4000")) {
+		return domain.replace("http://", "").replace(":4000", "");
+	}
+
+	return domain;
+}

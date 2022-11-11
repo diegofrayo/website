@@ -41,7 +41,9 @@ function SongSources({ sources }: T_SongSourcesProps): T_ReactElementNullable {
 									<Image
 										src="/static/images/misc/lacuerda.png"
 										alt="La cuerda icon"
-										className="tw-mr-2 tw-h-8 tw-w-8 tw-rounded-full"
+										className="tw-mr-2 tw-rounded-full"
+										width={32}
+										height={32}
 									/>
 								) : (
 									<Icon

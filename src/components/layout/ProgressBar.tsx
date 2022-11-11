@@ -25,7 +25,7 @@ function NProgressBar(): T_ReactElementNullable {
 		function hideProgressBar(): void {
 			setTimeout(() => {
 				NProgress.done();
-			}, 1000);
+			}, 250);
 		}
 
 		router.events.on("routeChangeStart", showProgressBar);

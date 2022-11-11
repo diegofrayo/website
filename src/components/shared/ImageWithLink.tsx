@@ -2,11 +2,10 @@ import * as React from "react";
 
 import { Image, Link } from "~/components/primitive";
 import { isNotEmptyString } from "~/utils/validations";
-import type { T_HTMLElementAttributes, T_ReactElementNullable } from "~/types";
+import type { T_ImageProps } from "~/components/primitive/Image";
+import type { T_ReactElementNullable } from "~/types";
 
-type T_ImageWithLink = T_HTMLElementAttributes["img"];
-
-function ImageWithLink({ src, className, alt, ...rest }: T_ImageWithLink): T_ReactElementNullable {
+function ImageWithLink({ src, ...rest }: T_ImageProps): T_ReactElementNullable {
 	if (isNotEmptyString(src)) {
 		return (
 			<Link
@@ -17,8 +16,6 @@ function ImageWithLink({ src, className, alt, ...rest }: T_ImageWithLink): T_Rea
 			>
 				<Image
 					src={src}
-					alt={alt}
-					className={className}
 					{...rest}
 				/>
 			</Link>

@@ -57,7 +57,10 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
 					src={post.thumbnail}
 					alt="Blog post thumbnail"
 					className="tw-mx-auto tw-rounded-md"
+					width={576}
+					height={432}
 				/>
+
 				<Space size={8} />
 
 				<MDXContent content={postMDXContent} />
