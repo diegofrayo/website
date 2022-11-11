@@ -9,7 +9,7 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
   - react
   - next.js
   - tailwind-css
-  - mdx using [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) and [xdm](https://www.npmjs.com/package/xdm)
+  - mdx using [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
 
 - **Experiments**
   - redux
@@ -47,13 +47,14 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 ===============================================================================
  Language            Files        Lines         Code     Comments       Blanks
 ===============================================================================
- CSS                     2          296          241           12           43
- JSON                    1          103          103            0            0
- Markdown                1           59            0           46           13
- TSX                   108        13244        11257          506         1481
- TypeScript             79         3823         3106          146          571
+ CSS                     7          401          329           17           55
+ JSON                    1          113          113            0            0
+ Markdown                2           68            0           53           15
+ TSX                   113        13763        11691          534         1538
+ TypeScript             81         4057         3249          180          628
 ===============================================================================
- Total                 191        17525        14707          710         2108
+ Total                 204        18402        15382          784         2236
+===============================================================================
 ```
 
 ---

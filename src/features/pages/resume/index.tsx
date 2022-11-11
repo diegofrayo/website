@@ -47,12 +47,6 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 						is="header"
 						className="tw-text-center"
 					>
-						<Image
-							src={resume.profilePhoto}
-							alt="Profile photo"
-							className="tw-mx-auto tw-mb-4 tw-hidden tw-h-32 tw-w-32 tw-rounded-full dfr-shadow"
-						/>
-
 						<Title is="h1">{resume.fullName}</Title>
 						<Space size={2} />
 

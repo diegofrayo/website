@@ -1,9 +1,10 @@
 import * as React from "react";
 import NextImage, { ImageProps } from "next/future/image";
 
+import { ENV_VARS } from "~/constants";
 import { logger } from "~/features/logging";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { isString } from "~/utils/validations";
+import { isNotTrue, isString } from "~/utils/validations";
 import type { T_ReactElementNullable } from "~/types";
 
 export type T_ImageProps = ImageProps & { useNextImage?: boolean };
@@ -17,7 +18,11 @@ function Image({
 }: T_ImageProps): T_ReactElementNullable {
 	if (src) {
 		// TODO: Enable this component on production
-		if (useNextImage && isDevelopmentEnvironment()) {
+		if (
+			useNextImage &&
+			(isDevelopmentEnvironment() ||
+				isNotTrue((src as string).includes(ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL)))
+		) {
 			return (
 				<NextImage
 					src={src}
