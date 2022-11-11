@@ -132,19 +132,3 @@ function generateMusicNotes(input: string): T_MusicNote[] {
 
 	return musicNotes.sort(sortBy("guitarFret"));
 }
-
-// TODO: Remove this probably
-// function parseBarre(input: string): T_GuitarString {
-// 	if (isBarreChord(input)) {
-// 		return Number(replaceAll(input, "x", "")) as T_GuitarString;
-// 	}
-
-// 	// TODO: Improve error messages
-// 	throw new Error("Invalid barre");
-// }
-
-// function isBarreChord(guitarString: string): boolean {
-// 	const REGEX = /^[4-6]x$/;
-
-// 	return isTrue(REGEX.test(guitarString));
-// }

@@ -7,6 +7,12 @@ const withPWA = require("next-pwa")({
 	disable: process.env.DISABLE_PWA === "true",
 });
 
+console.log(
+	"~~~ DOMAINS CONFIG ~~~",
+	process.env.NEXT_PUBLIC_ASSETS_SERVER_URL,
+	new URL(process.env.NEXT_PUBLIC_ASSETS_SERVER_URL).hostname,
+);
+
 module.exports = withMDX()(
 	withPWA({
 		swcMinify: true,
@@ -47,20 +53,8 @@ module.exports = withMDX()(
 			];
 		},
 		images: {
-			domains: [
-				// TODO: Add local IP address
-				getImagesDomain(process.env.NEXT_PUBLIC_ASSETS_SERVER_URL),
-			],
+			disableStaticImages: true,
+			domains: [new URL(process.env.NEXT_PUBLIC_ASSETS_SERVER_URL).hostname],
 		},
 	}),
 );
-
-// --- Utils ---
-
-function getImagesDomain(domain) {
-	if (domain.includes(":4000")) {
-		return domain.replace("http://", "").replace(":4000", "");
-	}
-
-	return domain;
-}

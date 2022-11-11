@@ -105,9 +105,6 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 							const isBarreFret = isBarreFretChecker(barreFret);
 							const musicNote = musicNotes.find((chord) => chord.guitarString === guitarString);
 
-							// TODO: Este as es una regonorrea
-							// TODO: Borrar los as de abajo
-
 							if (isBarreFret) {
 								return (
 									<Block

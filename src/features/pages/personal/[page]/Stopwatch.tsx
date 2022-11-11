@@ -48,17 +48,24 @@ function Stopwatch(): T_ReactElement {
 		[timerInterval],
 	);
 
+	const updateTimeValue = React.useCallback(
+		function updateTimeValue(): void {
+			setTime(timeMeasure === "minutes" ? timeInputValue * 60 : timeInputValue);
+		},
+		[timeInputValue, timeMeasure],
+	);
+
 	const resetUI = React.useCallback(
 		function resetUI(confirmBeforeReset: boolean): void {
 			if (confirmBeforeReset && isConfirmAlertAccepted("Are you sure?") === false) {
 				return;
 			}
 
-			setTime(0);
 			stopInterval();
+			updateTimeValue();
 			setTimerStatus("NOT_STARTED");
 		},
-		[stopInterval, setTimerStatus, setTime],
+		[stopInterval, setTimerStatus, updateTimeValue],
 	);
 
 	// handlers
@@ -117,7 +124,6 @@ function Stopwatch(): T_ReactElement {
 			const selectedOption = event.currentTarget.value as typeof timeMeasure;
 
 			setTimeMeasure(selectedOption);
-			setTime(selectedOption === "minutes" ? time * 60 : time);
 		};
 
 	const secondsToTime = React.useCallback(function secondsToTime(secondsParam: number): string {
@@ -148,13 +154,6 @@ function Stopwatch(): T_ReactElement {
 	// effects
 	React.useEffect(
 		function checkTimeProgress(): void {
-			setTime(timeInputValue);
-		},
-		[timeInputValue],
-	);
-
-	React.useEffect(
-		function checkTimeProgress(): void {
 			if (time === 0 && isTimerStarted) {
 				stopInterval();
 				setTime(timeInputValue);
@@ -164,6 +163,8 @@ function Stopwatch(): T_ReactElement {
 		},
 		[time, stopInterval, timeInputValue, isTimerStarted],
 	);
+
+	React.useEffect(updateTimeValue, [timeInputValue, timeMeasure, updateTimeValue]);
 
 	return (
 		<Page
