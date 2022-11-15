@@ -80,6 +80,7 @@ function SourceCode({
 					theme={highLightTheme}
 				>
 					{(props): T_ReactElementNullable => {
+						// TODO: Find the cause because I'm having problems renedering some piece of codes
 						if (!props) return null;
 
 						const { className: classNameProp, style, tokens, getLineProps, getTokenProps } = props;
