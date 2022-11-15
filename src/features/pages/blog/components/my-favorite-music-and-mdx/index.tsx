@@ -17,7 +17,7 @@ type T_GitHubRepoProps = {
 export function MFMAMGitHubRepo({ name, url, description }: T_GitHubRepoProps): T_ReactElement {
 	return (
 		<Block
-			className="tw-text-right"
+			className="tw-text-center"
 			data-markdown-block
 		>
 			<Link
@@ -29,7 +29,7 @@ export function MFMAMGitHubRepo({ name, url, description }: T_GitHubRepoProps): 
 				<Icon
 					icon={Icon.icon.GITHUB}
 					wrapperClassName="tw-mr-3"
-					size={32}
+					size={24}
 					withBackgroundWhenDarkMode
 				/>
 				<Block className="tw-flex-1 tw-text-left">

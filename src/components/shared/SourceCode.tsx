@@ -1,16 +1,21 @@
 import * as React from "react";
-import Highlight, { defaultProps } from "prism-react-renderer";
-import dracula from "prism-react-renderer/themes/dracula";
 import classNames from "classnames";
+import { ErrorBoundary } from "react-error-boundary";
+import Highlight, { defaultProps } from "prism-react-renderer";
+import highLightTheme from "prism-react-renderer/themes/nightOwl";
+// NOTE: Nice themes => nightOwl | drakula | oceanicNext | okaidia | palenight | vsDark
 
 import { Block, Button, Icon, InlineText, Link, Pre, Space } from "~/components/primitive";
 import { useTranslation } from "~/features/i18n";
 import twcss from "~/lib/twcss";
+import { isDevelopmentEnvironment } from "~/utils/app";
 import { handleCopyToClipboardClick } from "~/utils/browser";
+import { getErrorMessage } from "~/utils/misc";
 import { isNotEmptyString } from "~/utils/validations";
-import type { T_ReactElement } from "~/types";
+import type { T_ReactElement, T_ReactElementNullable } from "~/types";
 
 type T_SourceCodeProps = {
+	// DOCS: https://github.com/FormidableLabs/prism-react-renderer#language
 	language: "jsx" | "tsx" | "css" | "typescript" | "javascript" | "bash" | "yaml" | "markdown";
 	code: string;
 	fileName?: string;
@@ -67,56 +72,56 @@ function SourceCode({
 				</InlineText>
 			</Block>
 
-			<Highlight
-				{...defaultProps}
-				code={code}
-				language={language}
-				theme={dracula}
-			>
-				{({
-					className: classNameProp,
-					style,
-					tokens,
-					getLineProps,
-					getTokenProps,
-				}): T_ReactElement => {
-					return (
-						<Pre
-							variant={Pre.variant.UNSTYLED}
-							className={classNames(
-								classNameProp,
-								"tw-flex-1 tw-overflow-x-auto tw-p-4 tw-text-base",
-							)}
-							style={style}
-						>
-							{tokens.map((line, i) => {
-								return (
-									<Line
-										// WARN: I use the index here because this is a external library and this code was taken from the examples page
-										// eslint-disable-next-line react/no-array-index-key
-										key={i}
-										{...getLineProps({ line, key: i })}
-									>
-										<LineNo>{i + 1}</LineNo>
-										<LineContent>
-											{line.map((token, key) => {
-												return (
-													<InlineText
-														// WARN: I use the index here because this is a external library and this code was taken from the examples page
-														// eslint-disable-next-line react/no-array-index-key
-														key={key}
-														{...getTokenProps({ token, key })}
-													/>
-												);
-											})}
-										</LineContent>
-									</Line>
-								);
-							})}
-						</Pre>
-					);
-				}}
-			</Highlight>
+			<ErrorBoundary FallbackComponent={ErrorFallback}>
+				<Highlight
+					{...defaultProps}
+					code={code}
+					language={language}
+					theme={highLightTheme}
+				>
+					{(props): T_ReactElementNullable => {
+						if (!props) return null;
+
+						const { className: classNameProp, style, tokens, getLineProps, getTokenProps } = props;
+
+						return (
+							<Pre
+								variant={Pre.variant.UNSTYLED}
+								className={classNames(
+									classNameProp,
+									"tw-flex-1 tw-overflow-x-auto tw-p-4 tw-text-base",
+								)}
+								style={style}
+							>
+								{tokens.map((line, i) => {
+									return (
+										<Line
+											// WARN: I use the index here because this is a external library and this code was taken from the examples page
+											// eslint-disable-next-line react/no-array-index-key
+											key={i}
+											{...getLineProps({ line, key: i })}
+										>
+											<LineNo>{i + 1}</LineNo>
+											<LineContent>
+												{line.map((token, key) => {
+													return (
+														<InlineText
+															// WARN: I use the index here because this is a external library and this code was taken from the examples page
+															// eslint-disable-next-line react/no-array-index-key
+															key={key}
+															{...getTokenProps({ token, key })}
+														/>
+													);
+												})}
+											</LineContent>
+										</Line>
+									);
+								})}
+							</Pre>
+						);
+					}}
+				</Highlight>
+			</ErrorBoundary>
 
 			<Block
 				className={classNames(
@@ -136,6 +141,7 @@ function SourceCode({
 						>
 							<Icon
 								icon={Icon.icon.GITHUB}
+								size={16}
 								withBackgroundWhenDarkMode
 							/>
 							<InlineText className="tw-ml-1 tw-lowercase">{t("page:see_source_code")}</InlineText>
@@ -165,3 +171,15 @@ export type { T_SourceCodeProps };
 const Line = twcss.div`tw-table-row`;
 const LineNo = twcss.span`tw-table-cell tw-text-right tw-pr-4 tw-opacity-50 tw-select-none`;
 const LineContent = twcss.span`tw-table-cell`;
+
+function ErrorFallback({ error }: { error: unknown }): T_ReactElement {
+	return (
+		<Block className="tw-border tw-border-dashed tw-border-red-600 tw-p-1 tw-text-center tw-text-red-600">
+			<Pre variant={Pre.variant.BREAK_WITH_BLANK_LINES}>
+				{isDevelopmentEnvironment()
+					? getErrorMessage(error)
+					: "💥 Opps! Something went wrong rendering this component 💥"}
+			</Pre>
+		</Block>
+	);
+}
