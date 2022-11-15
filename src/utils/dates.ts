@@ -3,12 +3,16 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 
 import { I18nService } from "~/features/i18n";
 
+import { addLeftPadding } from "./formatting";
+
 dayjs.extend(customParseFormat);
 
 export function generateDate(): string {
 	const date = new Date();
 
-	return `${date.getFullYear()}/${addPadding(date.getMonth() + 1)}/${addPadding(date.getDate())}`;
+	return `${date.getFullYear()}/${addLeftPadding(date.getMonth() + 1)}/${addLeftPadding(
+		date.getDate(),
+	)}`;
 }
 
 export function getFormattedDatesDifference(
@@ -43,10 +47,4 @@ export function getFormattedDatesDifference(
 
 export function getDatesDiff(startDate: Date, endDate: Date, format: "minute" | "year"): number {
 	return dayjs(endDate).diff(dayjs(startDate), format);
-}
-
-// --- Private ---
-
-function addPadding(number: number): string {
-	return number >= 10 ? `${number}` : `0${number}`;
 }

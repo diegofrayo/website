@@ -3,8 +3,6 @@ import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Block, InlineText, Link, List, Text } from "~/components/primitive";
-import { Emoji } from "~/components/shared";
-import { withAuthComponent } from "~/features/auth";
 import { sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
 import { isNotEmptyString } from "~/utils/validations";
@@ -75,7 +73,6 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 									{isNotEmptyString(reading.author) ? ` | ${reading.author}` : ""}
 								</Text>
 								<Block>
-									<DoneMark done={reading.done} />
 									<InlineText
 										className={classNames(
 											"tw-inline-block tw-rounded-md tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold dfr-text-color-gs-white",
@@ -100,26 +97,12 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 
 export default Readings;
 
-// --- Components ---
-
-const DoneMark = withAuthComponent(function DoneMark({
-	done,
-}: Pick<T_Reading, "done">): T_ReactElement {
-	return (
-		<React.Fragment>
-			<Emoji className="tw-text-xs">{done ? "✅" : "❌"}</Emoji>
-			<InlineText className="tw-mx-1">|</InlineText>
-		</React.Fragment>
-	);
-});
-
 // --- Types ---
 
 type T_Reading = {
 	url: string;
 	title: string;
 	date: string;
-	done: boolean;
 	starred: boolean;
 	author?: string;
 };

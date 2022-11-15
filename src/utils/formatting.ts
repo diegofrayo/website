@@ -8,3 +8,7 @@ export function formatPhoneNumber(phone: string): string {
 
 	return phone;
 }
+
+export function addLeftPadding(number: number): string {
+	return number >= 10 ? `${number}` : `0${number}`;
+}

@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { MainLayout, Page } from "~/components/layout";
 import { Block, Button, InlineText, Input, Select, Space, Text } from "~/components/primitive";
 import { isConfirmAlertAccepted, showAlert } from "~/utils/browser";
+import { addLeftPadding } from "~/utils/formatting";
 import { generateSlug } from "~/utils/strings";
 import { isNotTrue } from "~/utils/validations";
 import type {
@@ -146,10 +147,6 @@ function Stopwatch(): T_ReactElement {
 			hours,
 		)}:${addLeftPadding(Math.floor(minutes))}:${addLeftPadding(lastSeconds)}`;
 	}, []);
-
-	function addLeftPadding(number: number): string {
-		return `${number < 10 ? "0" : ""}${number}`;
-	}
 
 	// effects
 	React.useEffect(

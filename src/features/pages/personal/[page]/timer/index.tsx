@@ -13,6 +13,7 @@ import http from "~/lib/http";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { setScrollPosition, isConfirmAlertAccepted } from "~/utils/browser";
 import { ENV_VARS } from "~/constants";
+import { addLeftPadding } from "~/utils/formatting";
 import { delay } from "~/utils/misc";
 import { sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
@@ -421,10 +422,6 @@ function useController() {
 			hours,
 		)}:${addLeftPadding(Math.floor(minutes))}:${addLeftPadding(lastSeconds)}`;
 	}, []);
-
-	function addLeftPadding(number: number): string {
-		return `${number < 10 ? "0" : ""}${number}`;
-	}
 
 	const calculateRoutineItemTotalTime = React.useCallback(
 		function calculateRoutineItemTotalTime(

@@ -7,12 +7,6 @@ const withPWA = require("next-pwa")({
 	disable: process.env.DISABLE_PWA === "true",
 });
 
-console.log(
-	"~~~ DOMAINS CONFIG ~~~",
-	process.env.NEXT_PUBLIC_ASSETS_SERVER_URL,
-	new URL(process.env.NEXT_PUBLIC_ASSETS_SERVER_URL).hostname,
-);
-
 module.exports = withMDX()(
 	withPWA({
 		swcMinify: true,

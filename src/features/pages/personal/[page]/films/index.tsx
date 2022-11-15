@@ -8,7 +8,7 @@ import { getScrollPosition, setScrollPosition, isInViewport } from "~/utils/brow
 import { sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
 import { isEmptyString, isUndefined } from "~/utils/validations";
-import type { T_Object, T_ReactElement } from "~/types";
+import type { T_Object, T_ReactElement, T_ReactOnClickEventObject } from "~/types";
 
 import FilmsService, { T_Film } from "./service";
 
@@ -26,6 +26,7 @@ function Films(): T_ReactElement {
 		// handlers
 		handleSelectFilterClick,
 		handleToggleOrderByFilterClick,
+		handleFilmItemClick,
 	} = useController();
 
 	return (
@@ -79,11 +80,11 @@ function Films(): T_ReactElement {
 							>
 								Ordenar por
 							</Title>
-							<Block className="tw-justify-betweden tw-flex tw-flex-wrap">
+							<Block className="tw-flex tw-flex-wrap">
 								<Button
 									variant={Button.variant.SIMPLE}
 									className={classNames(
-										"tw-underlidne tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm",
+										"tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm",
 										isAddedDateFilterEnabled
 											? "tw-bg-yellow-400 tw-font-bold dark:tw-bg-yellow-600 dark:dfr-text-color-gs-white"
 											: "dfr-bg-color-tertiary",
@@ -110,82 +111,85 @@ function Films(): T_ReactElement {
 							<Block className="tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
 								{films.map(({ id, source, title, type, calification, cover }, index) => {
 									return (
-										<Link
+										<Block
 											key={id}
-											variant={Link.variant.UNSTYLED}
-											href={
-												source === "Netflix"
-													? `https://www.netflix.com/title/${id}`
-													: source === "YouTube"
-													? `https://www.youtube.com/watch?v=${id}`
-													: `https://www.imdb.com/title/${id}`
-											}
+											is="article"
 											className={classNames(
-												"tw-relative tw-mx-2 tw-mb-6 tw-h-64 tw-w-48 tw-shadow-lg tw-duration-500 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 hover:tw-opacity-75 hover:tw-shadow-2xl",
+												"tw-relative tw-mx-2 tw-mb-6 tw-flex tw-h-64 tw-w-48 tw-cursor-pointer tw-shadow-lg tw-duration-500 hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 hover:tw-opacity-75 hover:tw-shadow-2xl",
 												index % 2 === 0 ? "sm:tw-rotate-2" : "sm:tw--rotate-2",
 											)}
-											isExternalLink
+											onClick={handleFilmItemClick}
 										>
-											<Block
-												is="article"
-												className="tw-flex tw-h-full tw-w-full tw-bg-no-repeat"
-												style={{
-													backgroundImage: `url(${cover})`,
-													backgroundSize: "100% 100%",
-												}}
-											>
-												<Icon
-													wrapperClassName="tw-absolute tw--top-2 tw--right-2 dfr-bg-color-bw dark:dfr-bg-color-wb tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8"
-													icon={
-														calification === 5
-															? Icon.icon.STAR
-															: calification === 4
-															? Icon.icon.HEART_SOLID
-															: Icon.icon.CHECK
-													}
-													size={24}
-												/>
+											<Image
+												src={cover}
+												alt={title}
+												className="tw-z-10"
+												fill
+											/>
+											<Icon
+												wrapperClassName="tw-absolute tw--top-2 tw--right-2 dfr-bg-color-bw dark:dfr-bg-color-wb tw-rounded-full tw-shadow-md tw-p-1 tw-w-8 tw-h-8 tw-z-20"
+												icon={
+													calification === 5
+														? Icon.icon.STAR
+														: calification === 4
+														? Icon.icon.HEART_SOLID
+														: Icon.icon.CHECK
+												}
+												size={18}
+											/>
 
-												<Block className="tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-70 tw-p-2 dfr-bg-color-bw">
-													{source === "imdb" ? (
-														<Image
-															src="/static/images/misc/imdb.png"
-															alt="imdb icon"
-															className="tw-flex-shrink-0 tw-rounded-full"
-															width={24}
-															height={24}
-														/>
-													) : source === "Amazon Prime Video" ? (
-														<Image
-															src="/static/images/misc/amazon-prime-video.png"
-															alt="Amazon Prime Video icon"
-															className="tw-flex-shrink-0 tw-rounded-full"
-															width={24}
-															height={24}
-														/>
-													) : (
-														<Icon
-															icon={source === "Netflix" ? Icon.icon.NETFLIX : Icon.icon.YOUTUBE}
-															size={24}
-															wrapperClassName="tw-flex-shrink-0"
-														/>
-													)}
+											<Block className="tw-z-20 tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-70 tw-p-2 dfr-bg-color-bw">
+												{source === "imdb" ? (
+													<Image
+														src="/static/images/misc/imdb.png"
+														alt="imdb icon"
+														className="tw-flex-shrink-0 tw-rounded-full"
+														width={24}
+														height={24}
+													/>
+												) : source === "Amazon Prime Video" ? (
+													<Image
+														src="/static/images/misc/amazon-prime-video.png"
+														alt="Amazon Prime Video icon"
+														className="tw-flex-shrink-0 tw-rounded-full"
+														width={24}
+														height={24}
+													/>
+												) : (
+													<Icon
+														icon={source === "Netflix" ? Icon.icon.NETFLIX : Icon.icon.YOUTUBE}
+														size={24}
+														wrapperClassName="tw-flex-shrink-0"
+													/>
+												)}
 
-													<Block className="tw-flex-1 tw-text-right">
-														<Title
-															is="h1"
-															variant={Title.variant.UNSTYLED}
-															className="tw-mb-2 tw-break-words tw-uppercase tw-leading-tight dfr-text-color-wb"
+												<Block className="tw-z-20 tw-flex-1 tw-text-right">
+													<Title
+														is="h1"
+														variant={Title.variant.UNSTYLED}
+														className="tw-mb-2 tw-break-words tw-uppercase tw-leading-tight dfr-text-color-wb"
+													>
+														<Link
+															variant={Link.variant.UNSTYLED}
+															href={
+																source === "Netflix"
+																	? `https://www.netflix.com/title/${id}`
+																	: source === "YouTube"
+																	? `https://www.youtube.com/watch?v=${id}`
+																	: `https://www.imdb.com/title/${id}`
+															}
+															className="title-link"
+															isExternalLink
 														>
 															{title}
-														</Title>
-														<Text className="tw-text-sm tw-font-bold tw-lowercase tw-italic tw-leading-none dfr-text-color-secondary">
-															{type}
-														</Text>
-													</Block>
+														</Link>
+													</Title>
+													<Text className="tw-text-sm tw-font-bold tw-lowercase tw-italic tw-leading-none dfr-text-color-secondary">
+														{type}
+													</Text>
 												</Block>
 											</Block>
-										</Link>
+										</Block>
 									);
 								})}
 							</Block>
@@ -209,6 +213,7 @@ type T_UseControllerReturn = {
 	data: T_Data | undefined;
 	handleSelectFilterClick: (filter: string) => () => void;
 	handleToggleOrderByFilterClick: () => void;
+	handleFilmItemClick: (event: T_ReactOnClickEventObject<HTMLDivElement>) => void;
 };
 
 function useController(): T_UseControllerReturn {
@@ -237,6 +242,17 @@ function useController(): T_UseControllerReturn {
 			};
 		};
 
+	const handleFilmItemClick: T_UseControllerReturn["handleFilmItemClick"] =
+		function handleFilmItemClick(event) {
+			const link = event.currentTarget.querySelector(".title-link") as HTMLLinkElement;
+
+			if (link) {
+				link.click();
+			} else {
+				throw Error("Link does not work");
+			}
+		};
+
 	function handleToggleOrderByFilterClick(): void {
 		setIsAddedDateFilterEnabled((currentValue) => !currentValue);
 	}
@@ -263,6 +279,7 @@ function useController(): T_UseControllerReturn {
 		// handlers
 		handleSelectFilterClick,
 		handleToggleOrderByFilterClick,
+		handleFilmItemClick,
 
 		// vars
 		isLoading,

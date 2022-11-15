@@ -30,9 +30,9 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 1. Create a `.env` file
 
    ```
-   NEXT_PUBLIC_ASSETS_SERVER_URL=https://diegofrayo-backend.vercel.app
-   NEXT_PUBLIC_WEBSITE_URL=http://localhost:3000
-	 DISABLE_PWA=true
+	NEXT_PUBLIC_ASSETS_SERVER_URL=https://diegofrayo-backend.vercel.app
+	NEXT_PUBLIC_WEBSITE_URL=http://localhost:3000
+	DISABLE_PWA=true
    ```
 
 1. `yarn install`
