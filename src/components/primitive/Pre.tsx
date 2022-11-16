@@ -19,33 +19,33 @@ const VARIANTS = mirror([
 type T_Variant = keyof typeof VARIANTS;
 type T_PreProps = T_HTMLElementAttributes["pre"] & {
 	variant: T_Variant;
+	wrapperClassName?: string;
 };
 
-function Pre({ children, className, variant, ...rest }: T_PreProps): T_ReactElement {
+function Pre({
+	children,
+	className,
+	variant,
+	wrapperClassName,
+	...rest
+}: T_PreProps): T_ReactElement {
 	if (variant === VARIANTS.STYLED) {
 		return (
-			<div className="dfr-Pre--styled root tw-rounded-md tw-border tw-p-4 tw-font-mono tw-text-base dfr-bg-color-secondary dfr-border-color-primary dark:dfr-bg-color-tertiary">
+			<div
+				className={classNames(
+					"dfr-Pre--styled root tw-overflow-auto tw-rounded-md tw-border tw-p-4 tw-font-mono tw-text-base dfr-bg-color-secondary dfr-border-color-primary dark:dfr-bg-color-tertiary",
+					wrapperClassName,
+				)}
+			>
 				<pre
 					{...rest}
-					className={classNames("tw-overflow-x-auto", className)}
+					className={classNames(
+						"tw-break-keep tw-h-full tw-w-full dfr-text-color-gs-700 dark:dfr-text-color-primary",
+						className,
+					)}
 				>
 					{removeCodeElements(children)}
 				</pre>
-
-				<style jsx>
-					{`
-						.root pre {
-							word-break: keep-all;
-							overflow-x: auto;
-							color: var(--dfr-text-color-gs-700);
-							font-style: normal;
-						}
-
-						:global(.tw-dark) .root pre {
-							color: var(--dfr-text-color-primary);
-						}
-					`}
-				</style>
 			</div>
 		);
 	}

@@ -8,11 +8,10 @@ import highLightTheme from "prism-react-renderer/themes/nightOwl";
 import { Block, Button, Icon, InlineText, Link, Pre, Space } from "~/components/primitive";
 import { useTranslation } from "~/features/i18n";
 import twcss from "~/lib/twcss";
-import { isDevelopmentEnvironment } from "~/utils/app";
 import { handleCopyToClipboardClick } from "~/utils/browser";
-import { getErrorMessage } from "~/utils/misc";
 import { isNotEmptyString } from "~/utils/validations";
-import type { T_ReactElement, T_ReactElementNullable } from "~/types";
+import type { T_ReactElement, T_ReactElementNullable, T_ReactFunctionComponent } from "~/types";
+import { generateSlug } from "~/utils/strings";
 
 type T_SourceCodeProps = {
 	// DOCS: https://github.com/FormidableLabs/prism-react-renderer#language
@@ -72,19 +71,20 @@ function SourceCode({
 				</InlineText>
 			</Block>
 
-			<ErrorBoundary FallbackComponent={ErrorFallback}>
+			<ErrorBoundary FallbackComponent={ErrorFallback(code)}>
 				<Highlight
 					{...defaultProps}
 					code={code}
 					language={language}
 					theme={highLightTheme}
 				>
-					{(props): T_ReactElementNullable => {
-						// TODO: Find the cause because I'm having problems renedering some piece of codes
-						if (!props) return null;
-
-						const { className: classNameProp, style, tokens, getLineProps, getTokenProps } = props;
-
+					{({
+						className: classNameProp,
+						style,
+						tokens,
+						getLineProps,
+						getTokenProps,
+					}): T_ReactElementNullable => {
 						return (
 							<Pre
 								variant={Pre.variant.UNSTYLED}
@@ -97,9 +97,7 @@ function SourceCode({
 								{tokens.map((line, i) => {
 									return (
 										<Line
-											// WARN: I use the index here because this is a external library and this code was taken from the examples page
-											// eslint-disable-next-line react/no-array-index-key
-											key={i}
+											key={generateSlug(`Line-i-${i}`)}
 											{...getLineProps({ line, key: i })}
 										>
 											<LineNo>{i + 1}</LineNo>
@@ -107,9 +105,7 @@ function SourceCode({
 												{line.map((token, key) => {
 													return (
 														<InlineText
-															// WARN: I use the index here because this is a external library and this code was taken from the examples page
-															// eslint-disable-next-line react/no-array-index-key
-															key={key}
+															key={generateSlug(`InlineText-key-${key}`)}
 															{...getTokenProps({ token, key })}
 														/>
 													);
@@ -173,14 +169,20 @@ const Line = twcss.div`tw-table-row`;
 const LineNo = twcss.span`tw-table-cell tw-text-right tw-pr-4 tw-opacity-50 tw-select-none`;
 const LineContent = twcss.span`tw-table-cell`;
 
-function ErrorFallback({ error }: { error: unknown }): T_ReactElement {
-	return (
-		<Block className="tw-border tw-border-dashed tw-border-red-600 tw-p-1 tw-text-center tw-text-red-600">
-			<Pre variant={Pre.variant.BREAK_WITH_BLANK_LINES}>
-				{isDevelopmentEnvironment()
-					? getErrorMessage(error)
-					: "💥 Opps! Something went wrong rendering this component 💥"}
+function ErrorFallback(code: T_SourceCodeProps["code"]): T_ReactFunctionComponent<{
+	error: Error;
+	resetErrorBoundary: (...args: Array<unknown>) => void;
+}> {
+	function ErrorFallbackComponent(): T_ReactElement {
+		return (
+			<Pre
+				variant={Pre.variant.STYLED}
+				wrapperClassName="tw-flex-1"
+			>
+				{code}
 			</Pre>
-		</Block>
-	);
+		);
+	}
+
+	return ErrorFallbackComponent;
 }

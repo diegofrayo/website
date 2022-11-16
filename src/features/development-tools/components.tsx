@@ -6,7 +6,7 @@ import { AnalyticsService } from "~/features/analytics";
 import { AuthService, withAuthComponent } from "~/features/auth";
 import { renderIf } from "~/hocs";
 import { useClickOutside, useDidMount, useOnWindowResize } from "~/hooks";
-import { isLocalhostEnvironment } from "~/utils/app";
+import { isLocalhostEnvironment, isServer } from "~/utils/app";
 import type {
 	T_ReactChildren,
 	T_ReactElement,
@@ -16,7 +16,7 @@ import type {
 
 import { initDevToolsConfig, readDevToolsConfig, updateDevToolsConfig } from "./utils";
 
-function DevelopmentTools(): T_ReactElementNullable {
+export function DevelopmentTools(): T_ReactElementNullable {
 	// states & refs
 	const [isConfigOpened, setIsConfigOpened] = React.useState(false);
 	const containerRef = React.useRef<HTMLDivElement>(null);
@@ -78,7 +78,13 @@ function DevelopmentTools(): T_ReactElementNullable {
 	);
 }
 
-export default DevelopmentTools;
+export function Bomb(): T_ReactElementNullable {
+	if (isServer()) {
+		return null;
+	}
+
+	throw new Error("This a Bomb component");
+}
 
 // --- Components ---
 
