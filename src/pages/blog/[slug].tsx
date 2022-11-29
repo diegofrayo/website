@@ -19,16 +19,15 @@ type T_StaticPath = { slug: string };
 
 export const getStaticPaths: GetStaticPaths<T_StaticPath> = async function getStaticPaths() {
 	return {
-		paths: (await BlogService.fetchPosts()).reduce(
-			(result: { params: T_StaticPath; locale: T_Locale }[], post: T_BlogPost) => {
+		paths: (await BlogService.fetchPosts())
+			.filter((post) => post.isPublished)
+			.reduce((result: { params: T_StaticPath; locale: T_Locale }[], post: T_BlogPost) => {
 				return result.concat(
 					post.locales.map((locale: T_Locale) => {
 						return { params: { slug: post.slug }, locale };
 					}),
 				);
-			},
-			[],
-		),
+			}, []),
 		fallback: "blocking",
 	};
 };
