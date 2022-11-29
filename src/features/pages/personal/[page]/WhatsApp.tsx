@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Icon, Input, Link, Block, Button, InlineText } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
-import { focusElement, handleCopyToClipboardClick, isMobileDevice } from "~/utils/browser";
+import { focusElement, handleCopyToClipboardClick } from "~/utils/browser";
 import { generateSlug, replaceAll } from "~/utils/strings";
 import { isNull } from "~/utils/validations";
 import type {
@@ -19,7 +19,7 @@ function WhatsApp(): T_ReactElement {
 		phone,
 		inputRef,
 		isInvalidPhone,
-		isWebOptionSelected,
+		isAppOptionSelected,
 
 		// vars
 		whatsAppUrl,
@@ -70,11 +70,11 @@ function WhatsApp(): T_ReactElement {
 							id="radio-app"
 							name="option"
 							value="app"
-							checked={!isWebOptionSelected}
+							checked={!isAppOptionSelected}
 							onChange={onRadioChangeHandler}
 						/>
 						<InlineText
-							is={!isWebOptionSelected ? "strong" : "span"}
+							is={!isAppOptionSelected ? "strong" : "span"}
 							className="tw-cursor-pointer"
 						>
 							app
@@ -89,11 +89,11 @@ function WhatsApp(): T_ReactElement {
 							id="radio-web"
 							name="option"
 							value="web"
-							checked={isWebOptionSelected}
+							checked={isAppOptionSelected}
 							onChange={onRadioChangeHandler}
 						/>
 						<InlineText
-							is={isWebOptionSelected ? "strong" : "span"}
+							is={isAppOptionSelected ? "strong" : "span"}
 							className="tw-cursor-pointer"
 						>
 							web
@@ -123,7 +123,7 @@ type T_UseControllerReturn = {
 	phone: string;
 	inputRef: T_ReactRef<HTMLInputElement>;
 	isInvalidPhone: boolean;
-	isWebOptionSelected: boolean;
+	isAppOptionSelected: boolean;
 	whatsAppUrl: string;
 	onKeyPressHandler: T_ReactOnKeyPressEventHandler<HTMLInputElement>;
 	onChangeHandler: T_ReactOnChangeEventHandler<HTMLInputElement>;
@@ -134,7 +134,7 @@ function useController(): T_UseControllerReturn {
 	// states & refs
 	const [phone, setPhone] = React.useState("");
 	const [isInvalidPhone, setIsInvalidPhone] = React.useState(true);
-	const [isWebOptionSelected, setIsWebOptionSelected] = React.useState(true);
+	const [isAppOptionSelected, setIsAppOptionSelected] = React.useState(true);
 	const inputRef = React.useRef<HTMLInputElement>(null);
 
 	// effects
@@ -142,7 +142,6 @@ function useController(): T_UseControllerReturn {
 		if (isNull(inputRef.current)) return;
 
 		focusElement(inputRef.current);
-		setIsWebOptionSelected(!isMobileDevice());
 	});
 
 	React.useEffect(() => {
@@ -166,7 +165,7 @@ function useController(): T_UseControllerReturn {
 
 	const onRadioChangeHandler: T_UseControllerReturn["onRadioChangeHandler"] =
 		function onRadioChangeHandler(event) {
-			setIsWebOptionSelected(event.currentTarget.value === "web");
+			setIsAppOptionSelected(event.currentTarget.value === "web");
 		};
 
 	// utils
@@ -175,7 +174,7 @@ function useController(): T_UseControllerReturn {
 		url.append("phone", `${phone.includes("+") ? "" : "+57"}${phone}`);
 		url.append("text", "Hey!");
 
-		return `https://${isWebOptionSelected ? "web" : "api"}.whatsapp.com/send?${url.toString()}`;
+		return `https://${isAppOptionSelected ? "web" : "api"}.whatsapp.com/send?${url.toString()}`;
 	}
 
 	return {
@@ -183,7 +182,7 @@ function useController(): T_UseControllerReturn {
 		phone,
 		inputRef,
 		isInvalidPhone,
-		isWebOptionSelected,
+		isAppOptionSelected,
 
 		// vars
 		whatsAppUrl: composeWhatsAppUrl(),

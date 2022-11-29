@@ -9,7 +9,7 @@ const withPWA = require("next-pwa")({
 
 module.exports = withMDX()(
 	withPWA({
-		// TODO: Set this config as true someday (keep updated of "prism-react-renderer" releases)
+		// TODO: Set this config as true someday (keep informed about "prism-react-renderer" releases)
 		swcMinify: process.env.NODE_ENV !== "production",
 		eslint: {
 			ignoreDuringBuilds: true,

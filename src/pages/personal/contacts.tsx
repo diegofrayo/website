@@ -1,5 +1,5 @@
 import { ENV_VARS } from "~/constants";
-import ContactsPage from "~/features/pages/personal/[page]/Contacts";
+import ContactsPage from "~/features/pages/personal/[page]/contacts";
 import { getPageContentStaticProps } from "~/features/i18n";
 import http from "~/lib/http";
 

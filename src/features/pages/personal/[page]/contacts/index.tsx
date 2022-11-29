@@ -16,13 +16,13 @@ import { Emoji } from "~/components/shared";
 import { withAuthPage } from "~/features/auth";
 import { useDidMount, useEnhancedState } from "~/hooks";
 import { isServer } from "~/utils/app";
-import { handleCopyToClipboardClick, isMobileDevice } from "~/utils/browser";
+import { handleCopyToClipboardClick } from "~/utils/browser";
 import { formatPhoneNumber } from "~/utils/formatting";
 import { generateSlug } from "~/utils/strings";
 import { isEmptyString, isNotEmptyString } from "~/utils/validations";
 import type { T_Object, T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 
-import styles from "./Contacts.styles.module.css";
+import styles from "./styles.module.css";
 
 type T_ContactsProps = {
 	contacts: T_Object<T_GroupOfContacts>;
@@ -42,7 +42,8 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 
 	// effects
 	useDidMount(() => {
-		setWhatsAppOption(isMobileDevice() ? "api" : "web");
+		// NOTE: Disable temporary
+		// setWhatsAppOption(isMobileDevice() ? "api" : "web");
 	});
 
 	// handlers

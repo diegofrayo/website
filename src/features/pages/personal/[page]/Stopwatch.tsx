@@ -3,6 +3,7 @@ import classNames from "classnames";
 
 import { MainLayout, Page } from "~/components/layout";
 import { Block, Button, InlineText, Input, Select, Space, Text } from "~/components/primitive";
+import { useDidMount } from "~/hooks";
 import { isConfirmAlertAccepted, showAlert } from "~/utils/browser";
 import { addLeftPadding } from "~/utils/formatting";
 import { generateSlug } from "~/utils/strings";
@@ -149,6 +150,10 @@ function Stopwatch(): T_ReactElement {
 	}, []);
 
 	// effects
+	useDidMount(() => {
+		playSound("audio-stopwatch-completed");
+	});
+
 	React.useEffect(
 		function checkTimeProgress(): void {
 			if (time === 0 && isTimerStarted) {
