@@ -20,7 +20,7 @@ type T_StaticPath = { slug: string };
 export const getStaticPaths: GetStaticPaths<T_StaticPath> = async function getStaticPaths() {
 	return {
 		paths: (await BlogService.fetchPosts())
-			.filter((post) => post.isPublished)
+			.filter((post) => post.hasToBePreRendered)
 			.reduce((result: { params: T_StaticPath; locale: T_Locale }[], post: T_BlogPost) => {
 				return result.concat(
 					post.locales.map((locale: T_Locale) => {

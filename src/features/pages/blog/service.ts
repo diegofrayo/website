@@ -112,6 +112,7 @@ export type T_BlogPost = {
 	publishedAt: string;
 	updatedAt: string;
 	isPublished: boolean;
+	hasToBePreRendered: boolean;
 	sources: { title: string; url: string }[];
 	assets: T_Object & {
 		sourceCodeSnippets: T_Object<string>;

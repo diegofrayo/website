@@ -8,7 +8,6 @@ function JACContent({ title, content }: { title: string; content: string }): T_R
 	return (
 		<Collapsible title={title}>
 			<SourceCode
-				fileName={title}
 				language="javascript"
 				code={content}
 				height={650}
