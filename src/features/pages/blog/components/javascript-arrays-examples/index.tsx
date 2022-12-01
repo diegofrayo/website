@@ -4,7 +4,7 @@ import { Collapsible } from "~/components/primitive";
 import { SourceCode } from "~/components/shared";
 import type { T_ReactElement } from "~/types";
 
-function JACContent({ title, content }: { title: string; content: string }): T_ReactElement {
+function JAEContent({ title, content }: { title: string; content: string }): T_ReactElement {
 	return (
 		<Collapsible title={title}>
 			<SourceCode
@@ -16,4 +16,4 @@ function JACContent({ title, content }: { title: string; content: string }): T_R
 	);
 }
 
-export default JACContent;
+export default JAEContent;

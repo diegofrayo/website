@@ -80,8 +80,8 @@ function useController(): T_UseControllerReturn {
 	// vars
 	const BLOG_POSTS = [
 		{
-			slug: "javascript-arrays-cheatsheet",
-			title: "JavaScript arrays cheatsheet",
+			slug: "javascript-arrays-examples",
+			title: "JavaScript arrays examples",
 			image: 2,
 		},
 		{
@@ -165,6 +165,7 @@ function Thumbnail({ title, src, thumbnailRef }: T_ThumbnailProps): T_ReactEleme
 				alt="Blog post thumbnail"
 				width={96}
 				height={96}
+				useNextImage={false}
 			/>
 			<Title
 				is="h1"

@@ -45,6 +45,12 @@ module.exports = withMDX()(
 					permanent: true,
 					locale: false,
 				},
+				{
+					source: "/blog/javascript-arrays-cheatsheet",
+					destination: "/blog/javascript-arrays-examples",
+					permanent: true,
+					locale: false,
+				},
 			];
 		},
 		images: {
