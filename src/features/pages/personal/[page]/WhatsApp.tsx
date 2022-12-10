@@ -70,11 +70,11 @@ function WhatsApp(): T_ReactElement {
 							id="radio-app"
 							name="option"
 							value="app"
-							checked={!isAppOptionSelected}
+							checked={isAppOptionSelected}
 							onChange={onRadioChangeHandler}
 						/>
 						<InlineText
-							is={!isAppOptionSelected ? "strong" : "span"}
+							is={isAppOptionSelected ? "strong" : "span"}
 							className="tw-cursor-pointer"
 						>
 							app
@@ -89,11 +89,11 @@ function WhatsApp(): T_ReactElement {
 							id="radio-web"
 							name="option"
 							value="web"
-							checked={isAppOptionSelected}
+							checked={!isAppOptionSelected}
 							onChange={onRadioChangeHandler}
 						/>
 						<InlineText
-							is={isAppOptionSelected ? "strong" : "span"}
+							is={!isAppOptionSelected ? "strong" : "span"}
 							className="tw-cursor-pointer"
 						>
 							web
@@ -165,7 +165,7 @@ function useController(): T_UseControllerReturn {
 
 	const onRadioChangeHandler: T_UseControllerReturn["onRadioChangeHandler"] =
 		function onRadioChangeHandler(event) {
-			setIsAppOptionSelected(event.currentTarget.value === "web");
+			setIsAppOptionSelected(event.currentTarget.value === "app");
 		};
 
 	// utils

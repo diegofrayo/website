@@ -283,9 +283,11 @@ function ContactPhone({ phone, country }: T_ContactPhoneProps): T_ReactElementNu
 		GB: "🇬🇧",
 		ISR: "🇮🇱",
 		MX: "🇲🇽",
+		NI: "🇳🇮",
 		PE: "🇵🇪",
 		PY: "🇵🇾",
 		SP: "🇪🇸",
+		SW: "🇸🇪",
 		USA: "🇺🇲",
 		UY: "🇺🇾",
 	};

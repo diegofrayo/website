@@ -1,5 +1,3 @@
-import autoBind from "auto-bind";
-
 import http from "~/lib/http";
 import { I18nService, T_Locale } from "~/features/i18n";
 import { ENV_VARS } from "~/constants";
@@ -11,11 +9,7 @@ import { exists } from "~/utils/validations";
 import type { T_Object } from "~/types";
 
 class BlogService {
-	constructor() {
-		autoBind(this);
-	}
-
-	async fetchPosts(locale?: T_Locale): Promise<T_BlogPost[]> {
+	fetchPosts = async (locale?: T_Locale): Promise<T_BlogPost[]> => {
 		const { posts, categories } = await this.fetchData();
 
 		const result = Object.values(posts)
@@ -23,19 +17,19 @@ class BlogService {
 			.sort(sortBy("-publishedAt"));
 
 		return result;
-	}
+	};
 
-	async fetchPost(criteria: {
+	fetchPost = async (criteria: {
 		locale: T_Locale;
 		slug: T_BlogPost["slug"];
-	}): Promise<T_BlogPost | undefined> {
+	}): Promise<T_BlogPost | undefined> => {
 		const posts = await this.fetchPosts(criteria.locale);
 		const post = posts.find((item) => item.slug === criteria.slug);
 
 		return post;
-	}
+	};
 
-	private async fetchData(): Promise<{
+	private fetchData = async function fetchData(): Promise<{
 		posts: T_BlogPostFetchDTO[];
 		categories: T_BlogPostCategory[];
 	}> {
@@ -53,7 +47,7 @@ class BlogService {
 		);
 
 		return data;
-	}
+	};
 }
 
 export default new BlogService();
