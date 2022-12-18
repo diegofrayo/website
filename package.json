@@ -8,7 +8,7 @@
 		"build:ts": "tsc --noEmit",
 		"husky:install": "husky install ./.husky",
 		"===== PROD =====": "",
-		"no-opt-install": "npm run install --ignore-optional",
+		"no-opt-install": "npm install --omit=optional --force",
 		"build": "next build",
 		"start": "next start",
 		"export": "next build && next export",

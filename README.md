@@ -35,7 +35,7 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 	DISABLE_PWA=true
    ```
 
-1. `npm run install`
+1. `npm install`
 
 1. `npm run husky:install` (Required to commit changes)
 
