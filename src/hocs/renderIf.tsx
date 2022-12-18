@@ -20,6 +20,8 @@ function renderIf<G_ComponentProps>(
 			});
 
 			if (hasToRender) {
+				// TODO: Typing issue
+				// @ts-ignore
 				return <WrappedComponent {...props} />;
 			}
 

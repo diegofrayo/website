@@ -46,6 +46,8 @@ export function withAuthPage<G_ComponentProps = T_Object>(
 		}
 
 		if (isUserLoggedIn) {
+			// TODO: Typing issue
+			// @ts-ignore
 			return <Component {...props} />;
 		}
 

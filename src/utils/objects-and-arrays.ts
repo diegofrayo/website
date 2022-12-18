@@ -33,7 +33,7 @@ export function getRandomItem<G_ItemType>(array: G_ItemType[]): G_ItemType {
 	return array[between(0, array.length - 1)];
 }
 
-export function pick<G_Object, G_ObjectKeys extends keyof G_Object>(
+export function pick<G_Object extends object, G_ObjectKeys extends keyof G_Object>(
 	obj: G_Object,
 	keys: G_ObjectKeys[],
 ): Pick<G_Object, G_ObjectKeys> {

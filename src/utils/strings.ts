@@ -63,13 +63,3 @@ export function createRandomString(length: number): string {
 function escapeRegExp(text: string): string {
 	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
-
-/*
-function generateObjectKeyInUpperCase(url: string): string {
-  return url.toUpperCase().replace(/-+/g, "_");
-}
-
-function generateObjectKeyInLowerCase(url: string): string {
-  return url.toLowerCase().replace(/-+/g, "_");
-}
-*/

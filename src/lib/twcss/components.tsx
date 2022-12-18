@@ -85,8 +85,10 @@ function generateClassName({
 	if (isObject(componentStyles)) {
 		const TWCSSVariantStyles = isString(TWCSSVariant) ? componentStyles[TWCSSVariant] : "";
 
+		// TODO: Typing issue
+		// @ts-ignore
 		return classNames(
-			componentStyles.$TWCSS_BASE_STYLES,
+			componentStyles.$TWCSS_BASE_STYLES as string,
 			typeof TWCSSVariantStyles === "function"
 				? TWCSSVariantStyles(componentProps)
 				: TWCSSVariantStyles,

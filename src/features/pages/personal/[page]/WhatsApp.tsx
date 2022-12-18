@@ -174,7 +174,7 @@ function useController(): T_UseControllerReturn {
 		url.append("phone", `${phone.includes("+") ? "" : "+57"}${phone}`);
 		url.append("text", "Hey!");
 
-		return `https://${isAppOptionSelected ? "web" : "api"}.whatsapp.com/send?${url.toString()}`;
+		return `https://${isAppOptionSelected ? "api" : "web"}.whatsapp.com/send?${url.toString()}`;
 	}
 
 	return {

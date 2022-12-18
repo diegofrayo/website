@@ -35,11 +35,11 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 	DISABLE_PWA=true
    ```
 
-1. `yarn install`
+1. `npm run install`
 
-1. `yarn husky:install` (Required to commit changes)
+1. `npm run husky:install` (Required to commit changes)
 
-1. `yarn dev`
+1. `npm run dev`
 
 ## Stats
 

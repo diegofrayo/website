@@ -40,7 +40,7 @@ function Pre({
 				<pre
 					{...rest}
 					className={classNames(
-						"tw-break-keep tw-h-full tw-w-full dfr-text-color-gs-700 dark:dfr-text-color-primary",
+						"tw-h-full tw-w-full tw-break-keep dfr-text-color-gs-700 dark:dfr-text-color-primary",
 						className,
 					)}
 				>

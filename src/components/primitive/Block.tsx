@@ -38,6 +38,8 @@ const Block = React.forwardRef<HTMLDivElement, T_BlockProps>(function Block(
 	return (
 		<Tag
 			className={composeClassName()}
+			// TODO: Typing issue
+			// @ts-ignore
 			ref={ref}
 			{...rest}
 		>

@@ -1,8 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn scripts:all
-yarn format
-yarn lint
-yarn build
+npm run scripts:all
+npm run format
+npm run lint
+npm run build
 git add .

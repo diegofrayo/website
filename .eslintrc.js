@@ -92,6 +92,12 @@ module.exports = {
 				allowFunctions: true,
 			},
 		],
+		"react/no-unknown-property": [
+			"error",
+			{
+				ignore: ["jsx"],
+			},
+		],
 	},
 	settings: {
 		react: {

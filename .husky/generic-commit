@@ -1,7 +1,7 @@
-yarn build:ts
-yarn scripts:all
-yarn format
-yarn lint
+npm run build:ts
+npm run scripts:all
+npm run format
+npm run lint
 git add .
 git commit -m ":art: [minor] changes" --no-verify
 git push
