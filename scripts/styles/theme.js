@@ -91,21 +91,27 @@ const MY_THEME = {
 		property: "backgroundColor",
 		value: {
 			light: TW_COLORS.gray["50"],
-			dark: color(BG_DARK_MODE).lighten(0.3).hex(),
+			dark: color(BG_DARK_MODE)
+				.lighten(0.3)
+				.hex(),
 		},
 	},
 	["bg-color-tertiary"]: {
 		property: "backgroundColor",
 		value: {
 			light: TW_COLORS.gray["100"],
-			dark: color(BG_DARK_MODE).lighten(0.6).hex(),
+			dark: color(BG_DARK_MODE)
+				.lighten(0.6)
+				.hex(),
 		},
 	},
 	["border-color-primary"]: {
 		property: "borderColor",
 		value: {
 			light: TW_COLORS.gray["200"],
-			dark: color(BG_DARK_MODE).lighten(0.9).hex(),
+			dark: color(BG_DARK_MODE)
+				.lighten(0.9)
+				.hex(),
 		},
 	},
 	["text-color-primary"]: {

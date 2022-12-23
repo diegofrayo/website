@@ -118,7 +118,7 @@ export async function downloadComponentAsImage(
 ): Promise<void> {
 	const domtoimage = await import("dom-to-image");
 
-	// WARN: This library's(dom-to-image) type file has issues
+	// NOTE: This library's(dom-to-image) type file has issues
 	// @ts-ignore
 	return domtoimage.toPng(componentRef, { quality: 1 }).then((dataUrl: string) => {
 		const link = document.createElement("a");

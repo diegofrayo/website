@@ -12,8 +12,6 @@ import { generateSlug } from "~/utils/strings";
 import { isNumber, notFound } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement, T_ReactNode } from "~/types";
 
-// WARN: False positive
-/* eslint-disable react/no-unused-prop-types */
 type T_TextFormatterProps = {
 	children: string;
 	insertions: { text: string; replacement: T_ReactElement }[];

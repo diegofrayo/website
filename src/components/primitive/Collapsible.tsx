@@ -5,8 +5,6 @@ import type { T_HTMLElementAttributes, T_ReactElement, T_ReactRef } from "~/type
 
 import Block from "./Block";
 
-// WARN: False positive
-/* eslint-disable react/no-unused-prop-types */
 type T_CollapsibleProps = T_HTMLElementAttributes["details"] & {
 	title?: string;
 	openedByDefault?: boolean;
