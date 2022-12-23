@@ -6,14 +6,13 @@ import { readDevToolsConfig } from "~/features/development-tools";
 import { redirect as globalRedirect, ROUTES } from "~/features/routing";
 import { isLocalhostEnvironment } from "~/utils/app";
 import { isNotTrue } from "~/utils/validations";
-import type { T_ReactElementNullable, T_ReactFunctionComponent, T_Object } from "~/types";
+import type { T_ReactElementNullable, T_ReactFunctionComponent } from "~/types";
 
 import AuthService from "./service";
 
-export function withAuthPage<G_ComponentProps = T_Object>(
+export function withAuthPage<G_ComponentProps extends object>(
 	Component: T_ReactFunctionComponent<G_ComponentProps>,
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	options?: { denyLoggedIn?: boolean; allowIf?: (props: G_ComponentProps) => boolean }, // WARN: False positive
+	options?: { denyLoggedIn?: boolean; allowIf?: (props: G_ComponentProps) => boolean },
 ): T_ReactFunctionComponent<G_ComponentProps> {
 	return function WithAuthComponent(props: G_ComponentProps): T_ReactElementNullable {
 		// states & refs
@@ -46,8 +45,6 @@ export function withAuthPage<G_ComponentProps = T_Object>(
 		}
 
 		if (isUserLoggedIn) {
-			// TODO: Typing issue
-			// @ts-ignore
 			return <Component {...props} />;
 		}
 
@@ -55,7 +52,7 @@ export function withAuthPage<G_ComponentProps = T_Object>(
 	};
 }
 
-export function withAuthComponent<G_ComponentProps>(
+export function withAuthComponent<G_ComponentProps extends object>(
 	WrappedComponent: T_ReactFunctionComponent<G_ComponentProps>,
 ): T_ReactFunctionComponent<G_ComponentProps> {
 	return renderIf(WrappedComponent)(() => AuthService.isUserLoggedIn());

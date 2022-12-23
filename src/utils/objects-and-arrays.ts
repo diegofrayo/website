@@ -108,7 +108,7 @@ export function sortBy<G_ItemType>(
 					return result;
 				}
 
-				// WARN: This "as" is safe and not too bad
+				// NOTE: This "as" is safe and not too bad
 				const attribute = (criteriaItem as string).replace("-", "") as keyof G_ItemType;
 				const order = (criteriaItem as string).startsWith("-") ? "desc" : "asc";
 				const greater = order === "desc" ? -1 : 1;

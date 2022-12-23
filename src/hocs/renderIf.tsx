@@ -8,7 +8,7 @@ type T_RenderIfReturn<G_ComponentProps> = (
 	callback: () => boolean,
 ) => T_ReactFunctionComponent<G_ComponentProps>;
 
-function renderIf<G_ComponentProps>(
+function renderIf<G_ComponentProps extends object>(
 	WrappedComponent: T_ReactFunctionComponent<G_ComponentProps>,
 ): T_RenderIfReturn<G_ComponentProps> {
 	const renderIfReturn: T_RenderIfReturn<G_ComponentProps> = function renderIfReturn(callback) {
@@ -20,8 +20,6 @@ function renderIf<G_ComponentProps>(
 			});
 
 			if (hasToRender) {
-				// TODO: Typing issue
-				// @ts-ignore
 				return <WrappedComponent {...props} />;
 			}
 
