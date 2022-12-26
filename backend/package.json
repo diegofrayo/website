@@ -5,16 +5,19 @@
 	"author": "@diegofrayo",
 	"license": "ISC",
 	"scripts": {
-		"start": "npm run build && cross-env NODE_ENV=production node dist/server.js",
+		"===== DEV =====": "",
 		"dev": "cross-env NODE_ENV=development nodemon",
-		"build": "swc src -d dist --source-maps --copy-files",
+		"prepare": "cd .. && husky install backend/.husky",
+		"===== PROD =====": "",
+		"build": "npm run build:ts && swc src -d dist --source-maps --copy-files",
 		"build:ts": "tsc --noEmit",
+		"start": "npm run build && cross-env NODE_ENV=production node dist/server.js",
 		"===== FORMATTING =====": "",
 		"format": "prettier --write \"./**/*.{ts,js,json}\"",
 		"format:dev": "npm run format && git add .",
 		"lint": "eslint --ignore-path .gitignore --ext .ts src/",
 		"lint:fix": "npm run lint -- --fix",
-		"lint:no-warnings": "cross-env NO_LINT_WARNINGS=true npm run lint"
+		"lint:no-warnings": "cross-env NO_LINT_WARNINGS=true && npm run lint"
 	},
 	"dependencies": {
 		"dotenv": "^16.0.1",
@@ -29,6 +32,8 @@
 		"@types/express": "^4.17.15",
 		"cross-env": "^7.0.3",
 		"nodemon": "^2.0.19",
+		"ts-node": "^10.9.1",
+		"tsconfig-paths": "^4.1.1",
 		"typescript": "^4.7.4"
 	},
 	"optionalDependencies": {

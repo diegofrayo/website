@@ -1,0 +1,11 @@
+{
+  "name": "@diegofrayo/website",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "husky:install": "husky install"
+  },
+  "optionalDependencies": {
+    "husky": "^8.0.2"
+  }
+}

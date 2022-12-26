@@ -19,6 +19,7 @@ module.exports = {
 		ecmaVersion: 2018,
 		sourceType: "module",
 		ecmaFeatures: {},
+		project: "./tsconfig.json",
 	},
 	globals: {
 		console: true,
@@ -34,6 +35,7 @@ module.exports = {
 		"no-nested-ternary": "off",
 
 		"@typescript-eslint/ban-ts-comment": warnRulesValue,
+		"@typescript-eslint/lines-between-class-members": warnRulesValue,
 		"import/prefer-default-export": warnRulesValue,
 		"no-alert": warnRulesValue,
 		"no-console": warnRulesValue,
