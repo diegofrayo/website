@@ -1,0 +1,197 @@
+{
+  "categories": [
+    { "id": "firebase", "value": "firebase", "color": "tw-bg-amber-500" },
+    { "id": "github-actions", "value": "github-actions", "color": "tw-bg-blue-500" },
+    { "id": "go-daddy", "value": "go-daddy", "color": "tw-bg-cyan-500" },
+    { "id": "javascript", "value": "javascript", "color": "tw-bg-pink-500" },
+    { "id": "markdown", "value": "markdown", "color": "tw-bg-red-500" },
+    { "id": "mdx", "value": "mdx", "color": "tw-bg-sky-500" },
+    { "id": "next.js", "value": "next.js", "color": "tw-bg-green-500" },
+    { "id": "npm", "value": "npm", "color": "tw-bg-teal-500" },
+    { "id": "tailwind-css", "value": "tailwind-css", "color": "tw-bg-violet-500" },
+    { "id": "trips", "value": "trips", "color": "tw-bg-slate-500" },
+    { "id": "typescript", "value": "typescript", "color": "tw-bg-amber-500" }
+  ],
+  "posts": {
+    "javascript-arrays-examples": {
+      "config": {
+        "slug": "javascript-arrays-examples",
+        "categories": ["javascript"],
+        "locales": ["en"],
+        "created_at": "2022/10/25",
+        "published_at": "2022/10/25",
+        "updated_at": "2022/10/25",
+        "is_published": true,
+        "has_to_be_pre_rendered": false,
+        "sources": []
+      },
+      "en": {
+        "title": "JavaScript arrays examples",
+        "description": "I have bad memory and some friends learning JavaScript 🤷‍♂️"
+      },
+      "assets": {}
+    },
+    "typescript-snippets": {
+      "config": {
+        "slug": "typescript-snippets",
+        "categories": ["typescript"],
+        "locales": ["en"],
+        "created_at": "2022/10/19",
+        "published_at": "2022/10/21",
+        "updated_at": "2022/10/25",
+        "is_published": true,
+        "has_to_be_pre_rendered": true,
+        "sources": [
+          {
+            "title": "How To Use Generics in TypeScript",
+            "url": "https://digitalocean.com/community/tutorials/how-to-use-generics-in-typescript"
+          }
+        ]
+      },
+      "en": {
+        "title": "TypeScript snippets",
+        "description": "Some examples, exercises, and pieces of code about TypeScript made by me."
+      },
+      "assets": {}
+    },
+    "a-trip-around-colombia": {
+      "config": {
+        "slug": "a-trip-around-colombia",
+        "categories": ["trips"],
+        "locales": ["en"],
+        "created_at": "2022/04/14",
+        "published_at": "2022/04/30",
+        "updated_at": "2022/05/01",
+        "is_published": true,
+        "has_to_be_pre_rendered": true,
+        "sources": []
+      },
+      "es": {
+        "title": "A trip around Colombia",
+        "description": "This a brief summary about my first vacations as a \"young adult\" around Colombia."
+      },
+      "en": {
+        "title": "Viajesito en Colombia",
+        "description": "Este es un breve resumen acerca de mis primeras vacaciones como \"joven adulto\" por Colombia."
+      },
+      "assets": {}
+    },
+    "publishing-a-npm-private-package-to-github-packages-using-github-actions": {
+      "config": {
+        "slug": "publishing-a-npm-private-package-to-github-packages-using-github-actions",
+        "categories": ["github-actions", "npm"],
+        "locales": ["en"],
+        "created_at": "2021/03/19",
+        "published_at": "2021/03/19",
+        "updated_at": "2021/03/19",
+        "is_published": true,
+        "has_to_be_pre_rendered": true,
+        "sources": [
+          {
+            "title": "Authentication in a workflow",
+            "url": "https://docs.github.com/en/actions/reference/authentication-in-a-workflow"
+          },
+          {
+            "title": "Creating a personal access token",
+            "url": "https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token"
+          },
+          {
+            "title": "Configuring npm for use with GitHub Packages",
+            "url": "https://docs.github.com/en/packages/guides/configuring-npm-for-use-with-github-packages"
+          },
+          {
+            "title": "Publishing Node.js packages",
+            "url": "https://docs.github.com/en/actions/guides/publishing-nodejs-packages"
+          },
+          {
+            "title": "setup-node [#Publish to npmjs and GPR with npm]",
+            "url": "https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#publish-to-npmjs-and-gpr-with-npm"
+          },
+          {
+            "title": "Publishing and Installing Private GitHub Packages using Yarn and Lerna",
+            "url": "https://viewsource.io/publishing-and-installing-private-github-packages-using-yarn-and-lerna"
+          }
+        ]
+      },
+      "en": {
+        "title": "Publishing a npm private package to GitHub pakages using GitHub actions",
+        "description": "In this tutorial I want to explain how to publish a private npm package to GitHub packages using GitHub Actions."
+      },
+      "assets": {}
+    },
+    "my-favorite-music-and-mdx": {
+      "config": {
+        "slug": "my-favorite-music-and-mdx",
+        "categories": ["mdx", "next.js", "markdown", "tailwind-css"],
+        "locales": ["en"],
+        "created_at": "2020/11/28",
+        "published_at": "2020/12/03",
+        "updated_at": "2021/08/14",
+        "is_published": true,
+        "has_to_be_pre_rendered": true,
+        "sources": []
+      },
+      "en": {
+        "title": "My favorite music and MDX",
+        "description": "MDX is a Markdown language enhancement, making it more powerful and customizable, because MDX allows rendering React components inside of Markdown files. Spotify just created a playlist with the most listened songs by me during this 2020, so, I took this opportunity to write a tutorial about MDX and Next.js"
+      },
+      "assets": {
+        "github": {
+          "name": "website",
+          "url": "https://github.com/diegofrayo/website",
+          "description": "My personal website",
+          "files": {
+            "MDXContent": {
+              "fileName": "src/components/shared/MDXContent.tsx",
+              "url": "https://github.com/diegofrayo/website/blob/master/src/components/shared/MDXContent.tsx"
+            },
+            "SourceCode": {
+              "fileName": "src/components/shared/SourceCode.tsx",
+              "url": "https://github.com/diegofrayo/website/blob/master/src/components/shared/SourceCode.tsx"
+            },
+            "mdx": {
+              "fileName": "src/features/mdx/constants.tsx",
+              "url": "https://github.com/diegofrayo/website/blob/master/src/features/mdx/constants.tsx"
+            },
+            "components|blog|slug": {
+              "fileName": "src/features/pages/blog/[slug].tsx",
+              "url": "https://github.com/diegofrayo/website/blob/master/src/features/pages/blog/[slug].tsx"
+            },
+            "pages|blog|slug": {
+              "fileName": "src/pages/blog/[slug].tsx",
+              "url": "https://github.com/diegofrayo/website/blob/master/src/pages/blog/[slug].tsx"
+            },
+            "MDXContent-Styles": {
+              "fileName": "src/styles/markdown.module.css",
+              "url": "https://github.com/diegofrayo/website/blob/master/src/styles/markdown.module.css"
+            }
+          }
+        }
+      }
+    },
+    "connecting-a-firebase-project-with-a-go-daddy-domain": {
+      "config": {
+        "slug": "connecting-a-firebase-project-with-a-go-daddy-domain",
+        "categories": ["go-daddy", "firebase"],
+        "locales": ["en"],
+        "created_at": "2018/06/01",
+        "published_at": "2018/06/01",
+        "updated_at": "2018/06/01",
+        "is_published": true,
+        "has_to_be_pre_rendered": true,
+        "sources": []
+      },
+      "en": {
+        "title": "Connecting a Firebase project with a Go Daddy domain",
+        "description": "In this tutorial I want to explain how to connect a Go Daddy domain with a Firebase project."
+      },
+      "assets": {
+        "images": {
+          "1": "{{url}}/pages/blog/[slug]/assets/{{slug}}/1.png",
+          "2": "{{url}}/pages/blog/[slug]/assets/{{slug}}/2.png",
+          "3": "{{url}}/pages/blog/[slug]/assets/{{slug}}/3.png"
+        }
+      }
+    }
+  }
+}

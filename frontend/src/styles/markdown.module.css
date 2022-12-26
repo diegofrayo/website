@@ -1,0 +1,55 @@
+/* Spacing: parent components */
+.dfr-MarkdownContent--default
+	> :is(blockquote, hr, ol, p, :global(.dfr-Pre--styled), ul, a > img, *[data-markdown-block]) {
+	@apply tw-mb-6;
+}
+
+.dfr-MarkdownContent--default > *:last-child {
+	@apply tw-mb-0;
+}
+
+/* Spacing: nested components */
+.dfr-MarkdownContent--default
+	:is(
+		li > p,
+		li > :global(.dfr-Pre--styled),
+		li > blockquote,
+		li > img,
+		blockquote > p,
+		li > a > img
+	) {
+	@apply tw-mb-3;
+}
+
+/* Spacing: titles */
+.dfr-MarkdownContent--default > :is(h1, h2, h3, h4) {
+	@apply tw-mt-8;
+	@apply tw-mb-3;
+}
+
+/* Spacing: nested UL lists */
+.dfr-MarkdownContent--default :is(li > ul, li > :global(.dfr-Pre--styled)) {
+	@apply tw-mt-3;
+}
+
+/* Ordered lists */
+.dfr-MarkdownContent--default ol {
+	@apply tw-pl-9;
+	list-style-type: decimal;
+}
+
+.dfr-MarkdownContent--default ol > li {
+	@apply tw-mb-6;
+}
+
+/* Images */
+.dfr-MarkdownContent--default :is(> a > img, li > a > img) {
+	@apply dfr-shadow;
+	@apply tw-rounded-md;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+:global(.tw-dark) .dfr-MarkdownContent--default :is(> a > img, li > a > img) {
+	@apply dark-v-dfr-shadow;
+}
