@@ -1,29 +1,63 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "target": "es2017",
-    "lib": ["es2017", "esnext.asynciterable"],
-    "typeRoots": ["node_modules/@types"],
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "module": "commonjs",
-    "pretty": true,
-    "sourceMap": true,
-    "declaration": true,
-    "outDir": "dist",
-    "allowJs": true,
-    "noEmit": false,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "importHelpers": true,
-    "baseUrl": "src",
-    "paths": {
-      "~/*": ["*"]
-    }
-  },
-  "include": ["src/**/*.ts", "src/**/*.json", ".env"],
-  "exclude": ["node_modules", "src/http", "src/logs", "src/tests"]
+	"compileOnSave": false,
+	"compilerOptions": {
+		// Type-checking
+		"alwaysStrict": true,
+		"strict": true,
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"useUnknownInCatchVariables": true,
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false,
+		"exactOptionalPropertyTypes": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitReturns": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+
+		// Modules
+		"baseUrl": "src",
+		"paths": {
+			"~/*": ["*"]
+		},
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+
+		// JavaScript support
+		"allowJs": true,
+		"checkJs": true,
+
+		// Language and Environment
+		"jsx": "preserve",
+		"target": "es2017",
+		"lib": ["es2017", "esnext.asynciterable"],
+
+		// Completeness
+		"skipLibCheck": true,
+
+		// Emit
+		"noEmit": false,
+
+		// Interop Constraints
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
+		"incremental": true,
+
+		// Other
+		"allowSyntheticDefaultImports": true,
+		"declaration": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"outDir": "dist",
+		"pretty": true,
+		"sourceMap": true,
+		"typeRoots": ["node_modules/@types"]
+	},
+	"include": ["src/**/*.ts", "src/**/*.json", ".env"],
+	"exclude": ["node_modules", "src/framework"]
 }

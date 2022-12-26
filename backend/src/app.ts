@@ -1,18 +1,18 @@
 import express from "express";
 
-import { getEntries } from "~/utils";
+import { getEntries } from "~/utils/objects-and-arrays";
 import envVars from "~/utils/env";
-import type { Controller } from "~/types";
+import type { T_Controller } from "~/types";
 
 class App {
 	private app: express.Application;
 
-	constructor(controllers: Controller[]) {
+	constructor(controllers: T_Controller[]) {
 		this.app = express();
 		this.initControllers(controllers);
 	}
 
-	start() {
+	start(): void {
 		const PORT = 3000;
 
 		this.app.listen(envVars.PORT, () => {
@@ -20,8 +20,8 @@ class App {
 		});
 	}
 
-	initControllers(controllers: Controller[]) {
-		controllers.map((Controller) => {
+	initControllers(controllers: T_Controller[]): void {
+		controllers.forEach((Controller) => {
 			const controller = new Controller();
 
 			getEntries(controller.getConfig()).forEach(([path, pathConfig]) => {

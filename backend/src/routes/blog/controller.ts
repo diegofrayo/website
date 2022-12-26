@@ -1,11 +1,10 @@
-import { IController } from "~/types";
+import { I_Controller, T_Request, T_Response } from "~/types";
 
 import BlogService from "./service";
 
-class BlogController extends IController {
+class BlogController extends I_Controller {
 	constructor() {
-		super();
-		this.name = "blog";
+		super("blog");
 		this.config = {
 			"/": {
 				method: "get",
@@ -14,7 +13,7 @@ class BlogController extends IController {
 		};
 	}
 
-	private async get(_, res) {
+	private async get(_: T_Request, res: T_Response): Promise<void> {
 		const posts = await BlogService.get();
 
 		res.json(posts);

@@ -1,7 +1,7 @@
 import { cleanEnv, port, str } from "envalid";
 import { config } from "dotenv";
 
-config({ path: `.env.${process.env.NODE_ENV || "development"}.local` });
+config({ path: `.env.${process.env["NODE_ENV"] || "development"}.local` });
 
 const envVars = cleanEnv(process.env, {
 	NODE_ENV: str({ choices: ["development", "production"] }),

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const RawBlogPosts = z.object({
+const RawBlogResponseSchema = z.object({
 	categories: z.array(z.object({ id: z.string(), value: z.string(), color: z.string() })),
 	posts: z.record(
 		z.object({
@@ -25,3 +25,5 @@ export const RawBlogPosts = z.object({
 		}),
 	),
 });
+
+export type T_RawBlogResponse = z.infer<typeof RawBlogResponseSchema>;

@@ -1,21 +1,30 @@
-import { IController } from "~/types";
+import { I_Controller, T_Request, T_Response } from "~/types";
 
 import MusicService from "./service";
 
-class MusicController extends IController {
+class MusicController extends I_Controller {
 	constructor() {
-		super();
-		this.name = "music";
+		super("music");
 		this.config = {
 			"/": {
 				method: "get",
 				handler: this.get,
 			},
+			"/:songId": {
+				method: "get",
+				handler: this.findSong,
+			},
 		};
 	}
 
-	private async get(_, res) {
+	private async get(_: T_Request, res: T_Response): Promise<void> {
 		const response = await MusicService.get();
+
+		res.json(response);
+	}
+
+	private async findSong(req: T_Request, res: T_Response): Promise<void> {
+		const response = await MusicService.findOne(req.params["songId"]);
 
 		res.json(response);
 	}

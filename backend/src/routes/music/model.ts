@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const RawMusic = z.object({
+const RawMusicResponseSchema = z.object({
 	songs: z.array(
 		z.object({
 			id: z.string(),
@@ -29,3 +29,7 @@ export const RawMusic = z.object({
 		]),
 	),
 });
+
+export type T_RawMusicResponse = z.infer<typeof RawMusicResponseSchema>;
+
+export type T_RawMusicSongResponse = z.infer<typeof RawMusicResponseSchema.shape.songs.element>;
