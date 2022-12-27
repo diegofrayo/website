@@ -1,6 +1,6 @@
 import DataManager from "~/modules/data-manager";
 
-import { T_RawBlogResponse } from "./model";
+import { T_RawBlogResponse } from "./models";
 
 class BlogService {
 	async get(): Promise<T_RawBlogResponse> {

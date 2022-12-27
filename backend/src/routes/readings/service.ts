@@ -1,6 +1,6 @@
 import DataManager from "~/modules/data-manager";
 
-import { T_RawReadingsResponse } from "./model";
+import type { T_RawReadingsResponse } from "./model";
 
 class ReadingsService {
 	async get(): Promise<T_RawReadingsResponse> {

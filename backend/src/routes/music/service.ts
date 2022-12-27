@@ -1,6 +1,6 @@
 import DataManager from "~/modules/data-manager";
 
-import { T_RawMusicResponse, T_RawMusicSongResponse } from "./model";
+import { T_RawMusicResponse, T_RawMusicSongResponse } from "./models";
 
 class MusicService {
 	async get(): Promise<T_RawMusicResponse> {

@@ -1,8 +1,9 @@
-import { I_Controller, T_Request, T_Response } from "~/types";
+import { Controller } from "~/modules/mvc";
+import type { T_Request, T_Response } from "~/types";
 
 import ReadingsService from "./service";
 
-class ReadingsController extends I_Controller {
+class ReadingsController extends Controller {
 	constructor() {
 		super("readings");
 		this.config = {

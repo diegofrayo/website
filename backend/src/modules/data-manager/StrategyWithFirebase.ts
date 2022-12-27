@@ -4,7 +4,7 @@ import { getDatabase, ref, child, get } from "firebase/database";
 import envVars from "~/utils/env";
 
 import I_DataManager from "./Interface";
-import { T_QueryConfigParam } from "./Types";
+import type { T_QueryConfigParam } from "./Types";
 
 class StrategyWithFirebase implements I_DataManager {
 	constructor() {

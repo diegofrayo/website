@@ -13,6 +13,11 @@ const envVars = cleanEnv(process.env, {
 	FIREBASE_API_KEY: str(),
 	FIREBASE_AUTH_DOMAIN: str(),
 	FIREBASE_DATABASE_URL: str(),
+
+	// # TOKENS
+	PROTECT_ALL_RESOURCES_TOKEN: str(),
+	PROTECT_SOME_DATA_TOKEN: str(),
+	AUTH_TOKEN: str(),
 });
 
 export default envVars;
