@@ -5,5 +5,5 @@ import StrategyWithFileSystem from "./StrategyWithFileSystem";
 import StrategyWithFirebase from "./StrategyWithFirebase";
 
 export default new DataManagerContext(
-	envVars.isProd ? new StrategyWithFirebase() : new StrategyWithFileSystem(),
+	envVars.isProduction ? new StrategyWithFirebase() : new StrategyWithFileSystem(),
 );

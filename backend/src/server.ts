@@ -1,7 +1,7 @@
 import App from "~/app";
 import {
 	requestsBodyParserMiddleware,
-	protectAllResourcesMiddleware,
+	basicProtectionForAllRoutesMiddleware,
 	authMiddleware,
 	errorHandlerMiddleware,
 } from "~/middlewares";
@@ -10,15 +10,24 @@ import BlogController from "~/routes/blog";
 import DataController, { dataControllerMiddleware } from "~/routes/data";
 import MusicController from "~/routes/music";
 import ReadingsController from "~/routes/readings";
+import TestsController from "~/routes/tests";
 
 new App({
-	controllers: [BlogController, MusicController, ReadingsController, DataController],
-	middlewares: [
-		requestsBodyParserMiddleware,
-		sessionMiddleware,
-		authMiddleware,
-		protectAllResourcesMiddleware,
-		dataControllerMiddleware,
-		errorHandlerMiddleware,
+	controllers: [
+		BlogController,
+		DataController,
+		MusicController,
+		ReadingsController,
+		TestsController,
 	],
+	middlewares: {
+		beforeControllers: [
+			requestsBodyParserMiddleware,
+			sessionMiddleware,
+			authMiddleware,
+			basicProtectionForAllRoutesMiddleware,
+			dataControllerMiddleware,
+		],
+		afterControllers: [errorHandlerMiddleware],
+	},
 }).start();

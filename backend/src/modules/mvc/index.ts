@@ -1,5 +1,7 @@
 import type { T_NextFunction, T_Request, T_Response } from "~/types";
 
+// --- Controllers ---
+
 export abstract class Controller {
 	protected config: T_Config | undefined;
 	public name: string;

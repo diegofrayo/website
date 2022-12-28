@@ -20,6 +20,7 @@ module.exports = {
 		sourceType: "module",
 		ecmaFeatures: {},
 		project: "./tsconfig.json",
+		tsconfigRootDir: __dirname,
 	},
 	globals: {
 		console: true,

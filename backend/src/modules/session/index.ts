@@ -22,12 +22,17 @@ const MemoryStore = memorystore(session);
 
 export const sessionMiddleware = [
 	session({
-		cookie: { maxAge: 86400000 },
+		cookie: {
+			maxAge: 86_400_000, // The cookie that stores the session id will expire in 24hrs
+			httpOnly: true, // The cookie only can be readed by the server, but no by the client
+			secure: envVars.isProduction,
+		},
 		store: new MemoryStore({
-			checkPeriod: 86400000, // prune expired entries every 24h
+			checkPeriod: 86_400_000, // It prunes expired entries every 24h
 		}),
-		resave: false,
 		secret: envVars.SESSION_TOKEN,
+		resave: false,
+		saveUninitialized: false,
 	}),
 ];
 

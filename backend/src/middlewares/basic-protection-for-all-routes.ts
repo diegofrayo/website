@@ -6,7 +6,6 @@ function basicProtectionForAllRoutesMiddleware(
 	res: T_Response,
 	next: T_NextFunction,
 ): void {
-	// return next();
 	if (req.headers.authorization?.includes(envVars.PROTECT_ALL_RESOURCES_TOKEN)) {
 		next();
 	} else {

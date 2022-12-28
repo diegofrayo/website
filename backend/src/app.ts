@@ -1,6 +1,7 @@
 import express from "express";
 
 import envVars from "~/modules/env";
+import { logger } from "~/modules/logger";
 import { getEntries } from "~/utils/objects-and-arrays";
 import type { T_Controller } from "~/modules/mvc";
 import type { T_Middleware } from "~/types";
@@ -8,15 +9,19 @@ import type { T_Middleware } from "~/types";
 class App {
 	private app: express.Application;
 
-	constructor(config: { controllers: T_Controller[]; middlewares: T_Middleware[][] }) {
+	constructor(config: {
+		controllers: T_Controller[];
+		middlewares: { beforeControllers: T_Middleware[][]; afterControllers: T_Middleware[][] };
+	}) {
 		this.app = express();
+		this.initMiddlewares(config.middlewares.beforeControllers);
 		this.initControllers(config.controllers);
-		this.initMiddlewares(config.middlewares);
+		this.initMiddlewares(config.middlewares.afterControllers);
 	}
 
 	start(): void {
 		this.app.listen(envVars.PORT, () => {
-			console.log(`The application is running on port ${envVars.PORT}`);
+			logger("log", `The application is running on port ${envVars.PORT}`);
 		});
 	}
 
