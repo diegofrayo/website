@@ -18,6 +18,7 @@ const envVars = cleanEnv(process.env, {
 	PROTECT_ALL_RESOURCES_TOKEN: str(),
 	PROTECT_SOME_DATA_TOKEN: str(),
 	AUTH_TOKEN: str(),
+	SESSION_TOKEN: str(),
 });
 
 export default envVars;

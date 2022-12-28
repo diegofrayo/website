@@ -1,6 +1,6 @@
 import express from "express";
 
-import envVars from "~/utils/env";
+import envVars from "~/modules/env";
 import { getEntries } from "~/utils/objects-and-arrays";
 import type { T_Controller } from "~/modules/mvc";
 import type { T_Middleware } from "~/types";
@@ -12,18 +12,6 @@ class App {
 		this.app = express();
 		this.initControllers(config.controllers);
 		this.initMiddlewares(config.middlewares);
-
-		// this.app.get("/error", (req: T_Request, res: T_Response, next: T_NextFunction) => {
-		// 	throw new Error("My error");
-		// 	console.log(req, res, next);
-		// 	// setTimeout(() => {
-		// 	// 	try {
-		// 	// 		throw new Error("My error");
-		// 	// 	} catch (error) {
-		// 	// 		next(error);
-		// 	// 	}
-		// 	// }, 1000);
-		// });
 	}
 
 	start(): void {

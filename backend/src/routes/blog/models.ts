@@ -12,7 +12,6 @@ const RawBlogResponseSchema = z.object({
 				published_at: z.string(),
 				updated_at: z.string(),
 				is_published: z.boolean(),
-				has_to_be_pre_rendered: z.boolean(),
 				sources: z.array(
 					z.object({
 						title: z.string(),

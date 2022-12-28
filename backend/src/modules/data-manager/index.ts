@@ -1,4 +1,4 @@
-import envVars from "~/utils/env";
+import envVars from "~/modules/env";
 
 import DataManagerContext from "./Context";
 import StrategyWithFileSystem from "./StrategyWithFileSystem";

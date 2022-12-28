@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const RawMusicResponseSchema = z.object({
-	songs: z.array(
+	songs: z.record(
 		z.object({
 			id: z.string(),
 			title: z.string(),

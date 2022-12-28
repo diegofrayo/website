@@ -1,4 +1,4 @@
-import envVars from "~/utils/env";
+import envVars from "~/modules/env";
 import type { T_NextFunction, T_Request, T_Response } from "~/types";
 
 import { isPrivateModel } from "./utils";

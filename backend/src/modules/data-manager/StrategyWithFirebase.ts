@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, child, get } from "firebase/database";
 
-import envVars from "~/utils/env";
+import envVars from "~/modules/env";
 
 import I_DataManager from "./Interface";
 import type { T_QueryConfigParam } from "./Types";

@@ -17,6 +17,26 @@ class MusicService {
 
 		return data;
 	}
+
+	filterResults(rawMusicResponse: T_RawMusicResponse, isUserLoggedIn: boolean): T_RawMusicResponse {
+		if (isUserLoggedIn) {
+			return rawMusicResponse;
+		}
+
+		return {
+			...rawMusicResponse,
+			songs: Object.values(rawMusicResponse.songs).reduce((result, song) => {
+				if (song.is_public) {
+					return {
+						...result,
+						[song.id]: song,
+					};
+				}
+
+				return result;
+			}, {}),
+		};
+	}
 }
 
 export default new MusicService();
