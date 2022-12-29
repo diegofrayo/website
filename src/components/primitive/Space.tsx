@@ -8,6 +8,8 @@ import { isNotEmptyString, isNumber } from "~/utils/validations";
 const VARIANTS = mirror(["DEFAULT", "DASHED"]);
 type T_Variant = keyof typeof VARIANTS;
 
+// WARN: False positive
+/* eslint-disable react/no-unused-prop-types */
 type T_SpaceProps = T_HTMLElementAttributes["hr"] & {
 	className?: string;
 	variant?: T_Variant;

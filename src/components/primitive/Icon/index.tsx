@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { logger } from "~/features/logging";
-import { mirror } from "~/utils/objects-and-arrays";
+import { getObjectKeys, mirror } from "~/utils/objects-and-arrays";
 import { isNotEmptyString, isNumber, isString, isUndefined } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElement, T_ReactElementNullable } from "~/types";
 
@@ -111,7 +111,7 @@ function Icon({
 	);
 }
 
-Icon.icon = mirror(Object.keys(ICONS) as T_IconName[]);
+Icon.icon = mirror(getObjectKeys(ICONS));
 
 export default Icon;
 export type { T_IconName };

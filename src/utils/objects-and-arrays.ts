@@ -197,3 +197,9 @@ function transformObjectKeysFromSnakeCaseToLowerCamelCasePrivate(
 		return result;
 	}, {} as T_Object);
 }
+
+export function getObjectKeys<G_Object extends object, G_Return extends (keyof G_Object)[]>(
+	object: G_Object,
+): G_Return {
+	return Object.keys(object) as G_Return;
+}

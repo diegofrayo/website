@@ -10,9 +10,14 @@
 
 /* Spacing: nested components */
 .dfr-MarkdownContent--default
-	:is(li > p, li > :global(.dfr-Pre--styled), li > blockquote, li > img, blockquote > p, li
-		> a
-		> img) {
+	:is(
+		li > p,
+		li > :global(.dfr-Pre--styled),
+		li > blockquote,
+		li > img,
+		blockquote > p,
+		li > a > img
+	) {
 	@apply tw-mb-3;
 }
 

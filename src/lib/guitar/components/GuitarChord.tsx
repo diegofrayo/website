@@ -13,6 +13,8 @@ import GuitarFret from "./GuitarFret";
 import GuitarService from "../service";
 import type { T_GuitarFret, T_Chord, T_PlainChordDetails } from "../types";
 
+// WARN: False positive
+/* eslint-disable react/no-unused-prop-types */
 type T_GuitarChordProps = { plainChord: T_PlainChordDetails };
 
 function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {

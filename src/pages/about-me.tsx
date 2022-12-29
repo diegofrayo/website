@@ -53,6 +53,7 @@ export const getStaticProps = getPageContentStaticProps<T_AboutMePageProps, { pa
 		const file = (await http.get(fileURL)).data;
 
 		const pageMDXContent = await serialize(file, {
+			mdxOptions: { development: false },
 			scope: getMDXScope(),
 		});
 

@@ -18,6 +18,8 @@ import GuitarFret from "./GuitarFret";
 import { NUMBER_OF_STRINGS, parseFret, parseGuitarString } from "../utils";
 import type { T_GuitarFret, T_GuitarString } from "../types";
 
+// WARN: False positive
+/* eslint-disable react/no-unused-prop-types */
 type T_TablatureProps = {
 	positions?: T_Positions[];
 	notes?: string;

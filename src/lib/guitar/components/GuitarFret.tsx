@@ -13,6 +13,8 @@ import type { T_MusicNote, T_GuitarFret, T_GuitarString, T_Chord } from "../type
 const VARIANTS = mirror(["GUITAR_STRINGS_NAMES", "EMPTY", "DEFAULT", "SKIPPED_GUITAR_STRINGS"]);
 type T_Variant = keyof typeof VARIANTS;
 
+// WARN: False positive
+/* eslint-disable react/no-unused-prop-types */
 type T_GuitarFretProps = {
 	variant: T_Variant;
 	number?: T_GuitarFret;

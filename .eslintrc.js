@@ -28,9 +28,8 @@ module.exports = {
 		ecmaVersion: 2018,
 		sourceType: "module",
 		project: "./tsconfig.json",
-		ecmaFeatures: {
-			jsx: true,
-		},
+		tsconfigRootDir: __dirname,
+		ecmaFeatures: { jsx: true },
 	},
 	globals: {
 		console: true,

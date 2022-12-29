@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Block, InlineText, Link, List, Text } from "~/components/primitive";
-import { sortBy } from "~/utils/objects-and-arrays";
+import { getObjectKeys, sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
 import { isNotEmptyString } from "~/utils/validations";
 import type { T_Object, T_ReactElement } from "~/types";
@@ -38,7 +38,7 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 					);
 				}, [])
 				.sort(sortBy("-starred", "-date", "title")),
-			categoryColors: Object.keys(data.readings).reduce((result, category, index) => {
+			categoryColors: getObjectKeys(data.readings).reduce((result, category, index) => {
 				return {
 					...result,
 					[category]: data.categoryColors[index],

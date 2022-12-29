@@ -5,12 +5,12 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import SongPage from "~/features/pages/music/[song]";
 import MusicService, { T_Song } from "~/features/pages/music/service";
 import { getPageContentStaticProps } from "~/features/i18n";
+import { getMDXScope } from "~/features/mdx";
+import { ROUTES } from "~/features/routing";
 import { GuitarService } from "~/lib/guitar";
 import http from "~/lib/http";
 import dataLoader from "~/server";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { getMDXScope } from "~/features/mdx";
-import { ROUTES } from "~/features/routing";
 import { notFound } from "~/utils/validations";
 
 type T_PageProps = {
@@ -60,6 +60,7 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, T_StaticPat
 
 		const { parsedText, foundChords } = GuitarService.parseMusicText(songContent.txt);
 		const songMDXContent = await serialize(songContent.mdx, {
+			mdxOptions: { development: false },
 			scope: {
 				DATA: {
 					...getMDXScope().DATA,
