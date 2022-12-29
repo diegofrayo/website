@@ -19,6 +19,10 @@ export type T_Response = express.Response;
 
 export type T_NextFunction = express.NextFunction;
 
+export type T_ExpressRouter = express.Router;
+
+export type T_ExpressApplication = express.Application;
+
 // --- Data ---
 
 export type T_Primitive = string | number | boolean | null;

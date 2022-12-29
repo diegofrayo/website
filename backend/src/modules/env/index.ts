@@ -15,10 +15,10 @@ const envVars = cleanEnv(process.env, {
 	FIREBASE_DATABASE_URL: str(),
 
 	// # TOKENS
-	PROTECT_ALL_RESOURCES_TOKEN: str(),
-	PROTECT_SOME_DATA_TOKEN: str(),
+	BASIC_RESOURCES_PROTECTION_TOKEN: str(),
+	PRIVATE_DATA_PROTECTION_TOKEN: str(),
 	AUTH_TOKEN: str(),
-	SESSION_TOKEN: str(),
+	SESSIONS_TOKEN: str(),
 });
 
 export default envVars;

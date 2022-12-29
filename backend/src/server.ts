@@ -1,32 +1,26 @@
 import App from "~/app";
 import {
 	requestsBodyParserMiddleware,
-	basicProtectionForAllRoutesMiddleware,
+	basicResourcesProtectionMiddleware,
 	authMiddleware,
-	errorHandlerMiddleware,
 } from "~/middlewares";
+import { errorHandlerMiddleware } from "~/modules/errors-handling";
 import { sessionMiddleware } from "~/modules/session";
 import BlogController from "~/routes/blog";
-import DataController, { dataControllerMiddleware } from "~/routes/data";
+import DataRouter from "~/routes/data";
 import MusicController from "~/routes/music";
 import ReadingsController from "~/routes/readings";
 import TestsController from "~/routes/tests";
 
 new App({
-	controllers: [
-		BlogController,
-		DataController,
-		MusicController,
-		ReadingsController,
-		TestsController,
-	],
+	routers: [DataRouter],
+	controllers: [BlogController, MusicController, ReadingsController, TestsController],
 	middlewares: {
 		beforeControllers: [
 			requestsBodyParserMiddleware,
 			sessionMiddleware,
+			basicResourcesProtectionMiddleware,
 			authMiddleware,
-			basicProtectionForAllRoutesMiddleware,
-			dataControllerMiddleware,
 		],
 		afterControllers: [errorHandlerMiddleware],
 	},

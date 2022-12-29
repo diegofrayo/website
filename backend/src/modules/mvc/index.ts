@@ -1,10 +1,17 @@
-import type { T_NextFunction, T_Request, T_Response } from "~/types";
+import { getEntries } from "~/utils/objects-and-arrays";
+import type {
+	T_ExpressApplication,
+	T_NextFunction,
+	T_Request,
+	T_Response,
+	T_ExpressRouter,
+} from "~/types";
 
 // --- Controllers ---
 
 export abstract class Controller {
 	protected config: T_Config | undefined;
-	public name: string;
+	public readonly name: string;
 
 	constructor(name: string) {
 		this.name = name;
@@ -18,6 +25,31 @@ export abstract class Controller {
 		return this.config;
 	}
 }
+
+export function injectControllers(
+	controllers: T_Controller[],
+	app: T_ExpressRouter | T_ExpressApplication,
+): void {
+	controllers.forEach((ControllerClass) => {
+		const controller = new ControllerClass();
+
+		getEntries(controller.getConfig()).forEach(([path, pathConfig]) => {
+			// NOTE: I don't know why I had to use this "as", I got a weird typescript error, but I think this assertion is safe
+			(app as T_ExpressApplication)[pathConfig.method](
+				`/${controller.name}${path}`,
+				async (req, res, next) => {
+					try {
+						await pathConfig.handler(req, res, next);
+					} catch (error) {
+						next(error);
+					}
+				},
+			);
+		});
+	});
+}
+
+// --- Types ---
 
 export type T_Controller = new () => Controller;
 

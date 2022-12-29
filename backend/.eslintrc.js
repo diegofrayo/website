@@ -18,9 +18,9 @@ module.exports = {
 	parserOptions: {
 		ecmaVersion: 2018,
 		sourceType: "module",
-		ecmaFeatures: {},
 		project: "./tsconfig.json",
 		tsconfigRootDir: __dirname,
+		ecmaFeatures: {},
 	},
 	globals: {
 		console: true,
@@ -29,6 +29,7 @@ module.exports = {
 	},
 	rules: {
 		// --- Rules configured by myself --
+		"@typescript-eslint/lines-between-class-members": "off",
 		"@typescript-eslint/no-use-before-define": "off",
 		"class-methods-use-this": "off",
 		"import/extensions": "off",
@@ -36,7 +37,6 @@ module.exports = {
 		"no-nested-ternary": "off",
 
 		"@typescript-eslint/ban-ts-comment": warnRulesValue,
-		"@typescript-eslint/lines-between-class-members": warnRulesValue,
 		"import/prefer-default-export": warnRulesValue,
 		"no-alert": warnRulesValue,
 		"no-console": warnRulesValue,

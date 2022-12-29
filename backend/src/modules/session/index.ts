@@ -30,7 +30,7 @@ export const sessionMiddleware = [
 		store: new MemoryStore({
 			checkPeriod: 86_400_000, // It prunes expired entries every 24h
 		}),
-		secret: envVars.SESSION_TOKEN,
+		secret: envVars.SESSIONS_TOKEN,
 		resave: false,
 		saveUninitialized: false,
 	}),

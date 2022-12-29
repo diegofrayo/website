@@ -2,20 +2,22 @@ import express from "express";
 
 import envVars from "~/modules/env";
 import { logger } from "~/modules/logger";
-import { getEntries } from "~/utils/objects-and-arrays";
-import type { T_Controller } from "~/modules/mvc";
-import type { T_Middleware } from "~/types";
+import { injectControllers, T_Controller } from "~/modules/mvc";
+import type { T_ExpressApplication, T_ExpressRouter, T_Middleware } from "~/types";
 
 class App {
-	private app: express.Application;
+	private app: T_ExpressApplication;
 
 	constructor(config: {
 		controllers: T_Controller[];
+		routers: T_ExpressRouter[];
 		middlewares: { beforeControllers: T_Middleware[][]; afterControllers: T_Middleware[][] };
 	}) {
 		this.app = express();
+
 		this.initMiddlewares(config.middlewares.beforeControllers);
-		this.initControllers(config.controllers);
+		this.initControllers(config.controllers, this.app);
+		this.initRouters(config.routers);
 		this.initMiddlewares(config.middlewares.afterControllers);
 	}
 
@@ -25,19 +27,13 @@ class App {
 		});
 	}
 
-	initControllers(controllers: T_Controller[]): void {
-		controllers.forEach((Controller) => {
-			const controller = new Controller();
+	initControllers(controllers: T_Controller[], app: T_ExpressApplication): void {
+		injectControllers(controllers, app);
+	}
 
-			getEntries(controller.getConfig()).forEach(([path, pathConfig]) => {
-				this.app[pathConfig.method](`/${controller.name}${path}`, async (req, res, next) => {
-					try {
-						await pathConfig.handler(req, res, next);
-					} catch (error) {
-						next(error);
-					}
-				});
-			});
+	initRouters(routers: T_ExpressRouter[]): void {
+		routers.forEach((router) => {
+			this.app.use("/", router);
 		});
 	}
 
