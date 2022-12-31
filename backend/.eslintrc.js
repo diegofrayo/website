@@ -41,6 +41,15 @@ module.exports = {
 		"no-alert": warnRulesValue,
 		"no-console": warnRulesValue,
 		"no-debugger": warnRulesValue,
+		"@typescript-eslint/ban-types": [
+			warnRulesValue,
+			{
+				types: {
+					Function: true,
+				},
+				extendDefaults: true,
+			},
+		],
 
 		"@typescript-eslint/naming-convention": [
 			"error",

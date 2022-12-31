@@ -11,6 +11,7 @@ function basicResourcesProtectionMiddleware(
 	) {
 		next();
 	} else {
+		// TODO: Custom error
 		res.status(404).send("Auth error");
 	}
 }

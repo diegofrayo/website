@@ -1,8 +1,0 @@
-cd backend
-npm run format
-npm run lint
-npm run build
-git add .
-git commit -m ":memo: [update] content" --no-verify
-git push
-clear

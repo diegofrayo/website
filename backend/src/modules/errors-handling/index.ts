@@ -7,7 +7,7 @@ import type { T_ErrorMiddleware, T_NextFunction, T_Object, T_Request, T_Response
 // --- Middleware ---
 
 const errorHandler: T_ErrorMiddleware = (err, req, res, next) => {
-	logger("log", "Custom error handler", req.baseUrl);
+	logger("log", "errorHandlerMiddleware", req.baseUrl);
 
 	if (res.headersSent) {
 		next(err);
@@ -38,17 +38,21 @@ process.on("uncaughtException", (error: Error) => {
 
 // --- Utils ---
 
-function getError(error: Error | AppError | T_Object, res: T_Response): T_ResponseError {
+function getError(error: AppError | Error | unknown, res: T_Response): T_ResponseError {
 	if (error instanceof AppError) {
 		return {
-			statusCode: error.statusCode,
+			statusCode: isErrorStatusCode(error.statusCode) ? error.statusCode : 500,
 			body: {
 				message: error.message,
-				details: {
-					id: error.id,
-					type: error.type,
-				},
-				...(envVars.isDevelopment ? { stack: error.stack } : {}),
+				...(envVars.isDevelopment
+					? {
+							details: {
+								id: error.id,
+								type: error.type,
+							},
+							stack: error.stack,
+					  }
+					: {}),
 			},
 		};
 	}

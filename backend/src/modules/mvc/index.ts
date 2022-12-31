@@ -41,6 +41,7 @@ export function injectControllers(
 					try {
 						await pathConfig.handler(req, res, next);
 					} catch (error) {
+						// TODO: Custom error
 						next(error);
 					}
 				},

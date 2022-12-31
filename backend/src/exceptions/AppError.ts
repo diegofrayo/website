@@ -8,12 +8,18 @@ class AppError extends Error {
 		INTERNAL_SERVER_ERROR: 500,
 	};
 	message: string;
-	statusCode: number;
+	statusCode: number | null;
 	type: string;
 	id: string;
 	cause?: string;
 
-	constructor(message: string, statusCode: number, type: string, id: string, cause?: string) {
+	constructor(
+		message: string,
+		statusCode: number | null,
+		type: string,
+		id: string,
+		cause?: string,
+	) {
 		super(message);
 		this.id = id;
 		this.statusCode = statusCode;

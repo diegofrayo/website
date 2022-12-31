@@ -15,7 +15,8 @@ const privateDataProtectionMiddleware = (
 	) {
 		next();
 	} else {
-		res.send("Error");
+		// TODO: Custom error
+		res.status(404).send("Auth error");
 	}
 };
 
