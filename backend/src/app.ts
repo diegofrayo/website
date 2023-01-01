@@ -1,6 +1,8 @@
 import express from "express";
 
+import AppError from "~/exceptions/AppError";
 import envVars from "~/modules/env";
+import { getError } from "~/modules/errors-handling";
 import { logger } from "~/modules/logger";
 import { injectControllers, T_Controller } from "~/modules/mvc";
 import type { T_ExpressApplication, T_ExpressRouter, T_Middleware } from "~/types";
@@ -15,6 +17,7 @@ class App {
 	}) {
 		this.app = express();
 
+		this.extendResponseObject();
 		this.initMiddlewares(config.middlewares.beforeControllers);
 		this.initControllers(config.controllers, this.app);
 		this.initRouters(config.routers);
@@ -43,6 +46,16 @@ class App {
 				this.app.use(middleware);
 			});
 		});
+	}
+
+	extendResponseObject(): void {
+		// NOTE: I don't know how to solve this type error, I didn't find docs
+		// or examples about it
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
+		this.app.response.sendError = function sendError(error: AppError): unknown {
+			return this.status(error.statusCode).send(getError(error, this).body);
+		};
 	}
 }
 

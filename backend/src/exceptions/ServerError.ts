@@ -1,7 +1,11 @@
 import AppError from "./AppError";
 
 export default class ServerError extends AppError {
-	constructor(message: string) {
-		super(message, 500, "SERVER_ERROR", "SVR1");
+	constructor({
+		id = "server_error",
+		description = "Something went wrong",
+		cause,
+	}: Partial<AppError>) {
+		super(id, description, 500, cause);
 	}
 }

@@ -1,3 +1,4 @@
+import HttpError from "~/exceptions/HttpError";
 import envVars from "~/modules/env";
 import type { T_NextFunction, T_Request, T_Response } from "~/types";
 
@@ -11,8 +12,12 @@ function basicResourcesProtectionMiddleware(
 	) {
 		next();
 	} else {
-		// TODO: Custom error
-		res.status(404).send("Auth error");
+		res.sendError(
+			new HttpError({
+				type: HttpError.types.UNAUTHORIZED,
+				description: "basic protection token is missing or is wrong",
+			}),
+		);
 	}
 }
 

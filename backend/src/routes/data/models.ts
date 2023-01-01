@@ -13,4 +13,6 @@ export const findDataReqBodySchema = z.object({
 	]),
 });
 
-export type T_ModelParam = z.infer<typeof findDataReqBodySchema.shape.model>;
+export type T_FindDataReqBody = z.infer<typeof findDataReqBodySchema>;
+
+export type T_Model = z.infer<typeof findDataReqBodySchema.shape.model>;

@@ -38,12 +38,12 @@ export const sessionMiddleware = [
 
 // --- Types ---
 
-export interface I_UserSession {
-	isUserLoggedIn: boolean;
-}
-
 declare module "express-session" {
 	// NOTE: This "disable" statement is ok, because these types statement is like a little hack
 	// eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/no-empty-interface
 	interface SessionData extends I_UserSession {}
+}
+
+export interface I_UserSession {
+	isUserLoggedIn: boolean;
 }

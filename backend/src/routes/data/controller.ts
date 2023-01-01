@@ -1,7 +1,8 @@
 import { Controller } from "~/modules/mvc";
+import { parseSchema } from "~/modules/schemas";
 import type { T_Request, T_Response } from "~/types";
 
-import { findDataReqBodySchema } from "./models";
+import { findDataReqBodySchema, T_FindDataReqBody } from "./models";
 import DataService from "./service";
 
 class DataController extends Controller {
@@ -16,8 +17,9 @@ class DataController extends Controller {
 	}
 
 	private async findData(req: T_Request, res: T_Response): Promise<void> {
-		// TODO: Custom error
-		const { model } = findDataReqBodySchema.parse(req.body);
+		const { model } = parseSchema<T_FindDataReqBody>(findDataReqBodySchema, req.body, {
+			httpError: true,
+		});
 		const response = await DataService.findData(model);
 
 		res.json(response);

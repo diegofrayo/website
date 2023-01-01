@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, child, get } from "firebase/database";
 
-import AppError from "~/exceptions/AppError";
 import envVars from "~/modules/env";
 
 import I_DataManager from "./Interface";
@@ -21,19 +20,7 @@ class StrategyWithFirebase implements I_DataManager {
 			return snapshot.val() as G_Return;
 		}
 
-		// TODO: Custom error
-		throw new AppError(
-			`Data not found on "${path}"`,
-			null,
-			"AppError.FIREBASE_ERROR",
-			"FIREBASE_DATA_NOT_FOUND",
-		);
-
-		// try {
-		// 	connectToDatabase();
-		// } catch (err) {
-		// 	throw new Error('Connecting to database failed.', { cause: err });
-		// }
+		throw new Error(`Data not found on "${path}" on Firebase`);
 	}
 }
 

@@ -22,7 +22,7 @@ const errorHandler: T_ErrorMiddleware = (err, req, res, next) => {
 			res.json(errorResponse.body);
 		},
 		default: () => {
-			res.type("text/plain").send(errorResponse.body.message);
+			res.type("text/plain").send(errorResponse.body.error_description);
 		},
 	});
 };
@@ -38,23 +38,24 @@ process.on("uncaughtException", (error: Error) => {
 
 // --- Utils ---
 
-function getError(error: AppError | Error | unknown, res: T_Response): T_ResponseError {
+export function getError(error: AppError | Error | unknown, res: T_Response): T_ResponseError {
 	if (error instanceof AppError) {
-		return {
+		const result: T_ResponseError = {
 			statusCode: isErrorStatusCode(error.statusCode) ? error.statusCode : 500,
 			body: {
-				message: error.message,
-				...(envVars.isDevelopment
-					? {
-							details: {
-								id: error.id,
-								type: error.type,
-							},
-							stack: error.stack,
-					  }
-					: {}),
+				error: error.id,
+				error_description: error.description,
 			},
 		};
+
+		if (envVars.isDevelopment) {
+			result.body.details = {
+				stack: error.stack || "",
+				cause: error.cause || "",
+			};
+		}
+
+		return result;
 	}
 
 	if (error instanceof Error) {
@@ -62,11 +63,16 @@ function getError(error: AppError | Error | unknown, res: T_Response): T_Respons
 			statusCode: isErrorStatusCode(res.statusCode) ? res.statusCode : 500,
 			body: envVars.isDevelopment
 				? {
-						message: error.message,
-						stack: error.stack,
+						error: "server_error",
+						error_description: error.message,
+						details: {
+							stack: error.stack || "",
+							cause: (error as unknown as T_Object)["cause"] || "",
+						},
 				  }
 				: {
-						message: "Something went wrong",
+						error: "server_error",
+						error_description: "Something went wrong",
 				  },
 		};
 	}
@@ -76,7 +82,8 @@ function getError(error: AppError | Error | unknown, res: T_Response): T_Respons
 	return {
 		statusCode: 500,
 		body: {
-			message: "Something went wrong",
+			error: "unhandled_error",
+			error_description: "Something went wrong",
 		},
 	};
 }
@@ -96,10 +103,13 @@ function isErrorStatusCode(statusCode: unknown): statusCode is number {
 // --- Types ---
 
 type T_ResponseError = {
-	statusCode: number;
+	statusCode: NonNullable<AppError["statusCode"]>;
 	body: {
-		message: string;
-		stack?: Error["stack"] | undefined;
-		details?: T_Object;
+		error: AppError["id"];
+		error_description: AppError["description"];
+		details?: {
+			stack?: AppError["stack"];
+			cause?: AppError["cause"];
+		};
 	};
 };

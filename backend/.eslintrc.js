@@ -34,10 +34,10 @@ module.exports = {
 		"class-methods-use-this": "off",
 		"import/extensions": "off",
 		"import/no-unresolved": "off",
+		"import/prefer-default-export": "off",
 		"no-nested-ternary": "off",
 
 		"@typescript-eslint/ban-ts-comment": warnRulesValue,
-		"import/prefer-default-export": warnRulesValue,
 		"no-alert": warnRulesValue,
 		"no-console": warnRulesValue,
 		"no-debugger": warnRulesValue,

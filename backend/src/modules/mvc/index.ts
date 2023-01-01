@@ -1,3 +1,5 @@
+import AppError from "~/exceptions/AppError";
+import ServerError from "~/exceptions/ServerError";
 import { getEntries } from "~/utils/objects-and-arrays";
 import type {
 	T_ExpressApplication,
@@ -41,8 +43,17 @@ export function injectControllers(
 					try {
 						await pathConfig.handler(req, res, next);
 					} catch (error) {
-						// TODO: Custom error
-						next(error);
+						if (error instanceof AppError) {
+							next(error);
+						} else {
+							next(
+								new ServerError({
+									id: "controller_error",
+									description: "an uncaught error has been thrown from a controller",
+									cause: error,
+								}),
+							);
+						}
 					}
 				},
 			);
