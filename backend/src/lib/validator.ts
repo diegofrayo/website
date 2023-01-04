@@ -7,7 +7,7 @@ function isNull(input: unknown): input is null {
 }
 
 function isFunction(input: unknown): input is Function {
-	return typeof input === "function";
+	return isUndefined(input) === false && typeof input === "function";
 }
 
 function isArray<G_ItemsType>(input: unknown): input is G_ItemsType[] {
@@ -105,9 +105,21 @@ function exists(input: unknown): boolean {
 	return input !== undefined;
 }
 
+// --- Values ---
+
+function isEmail(email: unknown): email is string {
+	return (
+		String(email)
+			.toLowerCase()
+			.match(
+				/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+			) !== null
+	);
+}
+
 // --- DOM ---
 
-const API = {
+const v = {
 	isNull,
 	isFunction,
 	isArray,
@@ -136,6 +148,8 @@ const API = {
 
 	notFound,
 	exists,
+
+	isEmail,
 };
 
-export default API;
+export default v;

@@ -6,6 +6,7 @@ import {
 } from "~/middlewares";
 import { errorHandlerMiddleware } from "~/modules/errors-handling";
 import { sessionMiddleware } from "~/modules/session";
+import AuthController from "~/routes/auth";
 import BlogController from "~/routes/blog";
 import DataRouter from "~/routes/data";
 import MusicController from "~/routes/music";
@@ -14,7 +15,13 @@ import TestsController from "~/routes/tests";
 
 new App({
 	routers: [DataRouter],
-	controllers: [BlogController, MusicController, ReadingsController, TestsController],
+	controllers: [
+		BlogController,
+		MusicController,
+		ReadingsController,
+		TestsController,
+		AuthController,
+	],
 	middlewares: {
 		beforeControllers: [
 			requestsBodyParserMiddleware,
