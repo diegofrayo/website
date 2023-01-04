@@ -1,22 +1,28 @@
-import session from "express-session";
-import memorystore from "memorystore";
-
-import envVars from "~/modules/env";
-import type { T_Request } from "~/types";
+import v from "~/lib/validator";
+import type { T_NextFunction, T_Request, T_Response } from "~/types";
 
 // --- Utils ---
 
-export function getUserSession(req: T_Request): I_UserSession {
-	if (!req.session) {
-		return {
-			isUserLoggedIn: false,
-		};
-	}
+export function getUserSession(req: T_Request): T_UserSession {
+	const DEFAULT_VALUES = {
+		isUserLoggedIn: false,
+	};
+	const userSession = {
+		isUserLoggedIn: v.isUndefined(req.session.isUserLoggedIn)
+			? DEFAULT_VALUES.isUserLoggedIn
+			: req.session.isUserLoggedIn,
+	};
 
-	return req.session as I_UserSession;
+	return userSession;
 }
 
 // --- Middleware ---
+
+/*
+// TODO: Enable this someday
+
+// import session from "express-session";
+// import memorystore from "memorystore";
 
 const MemoryStore = memorystore(session);
 
@@ -35,15 +41,32 @@ export const sessionMiddleware = [
 		saveUninitialized: false,
 	}),
 ];
+*/
+
+export const sessionMiddleware = [
+	(_: T_Request, __: T_Response, next: T_NextFunction): void => {
+		next();
+	},
+];
 
 // --- Types ---
 
+/*
+// TODO: Enable this someday
 declare module "express-session" {
 	// NOTE: This "disable" statement is ok, because these types statement is like a little hack
 	// eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/no-empty-interface
 	interface SessionData extends I_UserSession {}
 }
+*/
 
-export interface I_UserSession {
-	isUserLoggedIn: boolean;
+declare module "express-serve-static-core" {
+	// eslint-disable-next-line @typescript-eslint/naming-convention
+	interface Request {
+		session: T_UserSession;
+	}
 }
+
+export type T_UserSession = {
+	isUserLoggedIn: boolean;
+};

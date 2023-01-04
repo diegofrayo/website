@@ -1,5 +1,6 @@
 import HttpError from "~/exceptions/HttpError";
 import envVars from "~/modules/env";
+import v from "~/lib/validator";
 import type { T_NextFunction, T_Request, T_Response } from "~/types";
 
 function basicResourcesProtectionMiddleware(
@@ -7,6 +8,9 @@ function basicResourcesProtectionMiddleware(
 	res: T_Response,
 	next: T_NextFunction,
 ): void {
+	// TODO: Remove this later, when sessionMiddleware is enabled again
+	if (v.isUndefined(req.session)) req.session = { isUserLoggedIn: false };
+
 	if (
 		req.headers["dfr-basic-resources-protection-token"] === envVars.BASIC_RESOURCES_PROTECTION_TOKEN
 	) {

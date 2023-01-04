@@ -8,7 +8,7 @@
 		"===== DEV =====": "",
 		"dev": "cross-env NODE_ENV=development nodemon",
 		"prepare": "cd .. && husky install backend/.husky",
-		"test": "jest __tests__",
+		"test": "jest --verbose",
 		"===== PROD =====": "",
 		"build": "npm run build:ts && swc src -d dist --source-maps --copy-files",
 		"build:ts": "tsc --noEmit",

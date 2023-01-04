@@ -1,6 +1,7 @@
 import { expect, test, describe } from "@jest/globals";
 
-import { generateSlug, replaceAll } from "../../utils/strings";
+import { generateSlug, replaceAll } from "~/utils/strings";
+import { toStringInput, T_GetFunctionArguments, T_TestCase } from "~/test";
 
 const generateSlugTestCase: T_TestCase<
 	T_GetFunctionArguments<typeof generateSlug>,
@@ -26,7 +27,7 @@ const generateSlugTestCase: T_TestCase<
 
 describe(`testing "${generateSlugTestCase.functionName}" function`, () => {
 	generateSlugTestCase.cases.forEach((item) => {
-		test(`with "${item.input}" input`, () => {
+		test(`with "${toStringInput(item.input)}" input`, () => {
 			expect(generateSlugTestCase.fn(...item.input)).toBe(item.expected);
 		});
 	});
@@ -43,24 +44,10 @@ const replaceAllTestCase: T_TestCase<
 
 describe(`testing "${replaceAllTestCase.functionName}" function`, () => {
 	replaceAllTestCase.cases.forEach((item) => {
-		test(`with "${JSON.stringify(item.input)}" input`, () => {
+		test(`with "${toStringInput(item.input)}" input`, () => {
 			expect(replaceAllTestCase.fn(item.input[0], item.input[1], item.input[2])).toBe(
 				item.expected,
 			);
 		});
 	});
 });
-
-// --- Types ---
-
-type T_GetFunctionArguments<F extends Function> = F extends (...args: infer A) => unknown
-	? A
-	: never;
-type T_TestCase<G_Arguments extends Array<unknown>, G_Return> = {
-	functionName: string;
-	fn: (...args: G_Arguments) => G_Return;
-	cases: {
-		input: G_Arguments;
-		expected: G_Return;
-	}[];
-};

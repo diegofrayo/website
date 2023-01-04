@@ -89,7 +89,13 @@ export function getError(error: AppError | Error | unknown, res: T_Response): T_
 }
 
 function logError(error: T_ResponseError): void {
-	logger("error", error);
+	logger("error", {
+		...error,
+		body: {
+			...error.body,
+			details: JSON.stringify(error.body.details || {}),
+		},
+	});
 }
 
 function isErrorStatusCode(statusCode: unknown): statusCode is number {

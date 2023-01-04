@@ -38,5 +38,5 @@ export function parseSchema<G_InputType>(
 // --- Utils ---
 
 function getErrorsName(errors: ZodIssue[]): string {
-	return errors.map((error) => error.path.join(".")).join(",");
+	return JSON.stringify(errors.map((error) => error.path.join(".")));
 }

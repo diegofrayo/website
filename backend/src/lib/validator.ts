@@ -6,7 +6,7 @@ function isNull(input: unknown): input is null {
 	return input === null;
 }
 
-function isFunction(input: unknown): boolean {
+function isFunction(input: unknown): input is Function {
 	return typeof input === "function";
 }
 
