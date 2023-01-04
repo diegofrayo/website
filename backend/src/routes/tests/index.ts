@@ -32,6 +32,12 @@ class ErrorController extends Controller {
 					}, 1000);
 				},
 			},
+			"/cookies": {
+				method: "get",
+				handler: async (req, res): Promise<void> => {
+					res.send(req.cookies);
+				},
+			},
 		};
 	}
 }

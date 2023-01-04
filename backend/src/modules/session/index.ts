@@ -1,3 +1,5 @@
+/*
+
 import v from "~/lib/validator";
 import type { T_NextFunction, T_Request, T_Response } from "~/types";
 
@@ -42,7 +44,7 @@ export const sessionMiddleware = [
 	}),
 ];
 */
-
+/*
 export const sessionMiddleware = [
 	(_: T_Request, __: T_Response, next: T_NextFunction): void => {
 		next();
@@ -59,7 +61,7 @@ declare module "express-session" {
 	interface SessionData extends I_UserSession {}
 }
 */
-
+/*
 declare module "express-serve-static-core" {
 	// eslint-disable-next-line @typescript-eslint/naming-convention
 	interface Request {
@@ -70,3 +72,7 @@ declare module "express-serve-static-core" {
 export type T_UserSession = {
 	isUserLoggedIn: boolean;
 };
+
+*/
+
+export default {};

@@ -1,6 +1,5 @@
 import express from "express";
 
-import AppError from "~/exceptions/AppError";
 import envVars from "~/modules/env";
 import { getError } from "~/modules/errors-handling";
 import { logger } from "~/modules/logger";
@@ -53,8 +52,10 @@ class App {
 		// or examples about it
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
-		this.app.response.sendError = function sendError(error: AppError): unknown {
-			return this.status(error.statusCode).send(getError(error, this).body);
+		this.app.response.sendError = function sendError(input: unknown): unknown {
+			const error = getError(input, this);
+
+			return this.status(error.statusCode).send(error.body);
 		};
 	}
 }

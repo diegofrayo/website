@@ -10,9 +10,12 @@ function basicResourcesProtectionMiddleware(
 ): void {
 	// TODO: Remove this later, when sessionMiddleware is enabled again
 	if (v.isUndefined(req.session)) req.session = { isUserLoggedIn: false };
+	const isRequestForPublicFolder = req.originalUrl.startsWith("/static/");
 
 	if (
-		req.headers["dfr-basic-resources-protection-token"] === envVars.BASIC_RESOURCES_PROTECTION_TOKEN
+		req.headers["dfr-basic-resources-protection-token"] ===
+			envVars.BASIC_RESOURCES_PROTECTION_TOKEN ||
+		isRequestForPublicFolder
 	) {
 		next();
 	} else {

@@ -1,5 +1,4 @@
 import { Controller } from "~/modules/mvc";
-import { getUserSession } from "~/modules/session";
 import type { T_Request, T_Response } from "~/types";
 
 import MusicService from "./service";
@@ -22,7 +21,7 @@ class MusicController extends Controller {
 	private async get(req: T_Request, res: T_Response): Promise<void> {
 		const response = await MusicService.get();
 
-		res.json(MusicService.filterResults(response, getUserSession(req).isUserLoggedIn));
+		res.json(MusicService.filterResults(response, req.session.isUserLoggedIn));
 	}
 
 	private async findSong(req: T_Request, res: T_Response): Promise<void> {

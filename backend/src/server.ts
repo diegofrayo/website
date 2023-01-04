@@ -1,12 +1,12 @@
 import App from "~/app";
 import {
-	requestsBodyParserMiddleware,
 	basicResourcesProtectionMiddleware,
-	authMiddleware,
+	cookieParserMiddleware,
+	requestsBodyParserMiddleware,
+	staticFilesMiddleware,
 } from "~/middlewares";
 import { errorHandlerMiddleware } from "~/modules/errors-handling";
-import { sessionMiddleware } from "~/modules/session";
-import AuthController from "~/routes/auth";
+import { authMiddleware } from "~/modules/auth";
 import BlogController from "~/routes/blog";
 import DataRouter from "~/routes/data";
 import MusicController from "~/routes/music";
@@ -15,17 +15,12 @@ import TestsController from "~/routes/tests";
 
 new App({
 	routers: [DataRouter],
-	controllers: [
-		BlogController,
-		MusicController,
-		ReadingsController,
-		TestsController,
-		AuthController,
-	],
+	controllers: [BlogController, MusicController, ReadingsController, TestsController],
 	middlewares: {
 		beforeControllers: [
+			staticFilesMiddleware,
 			requestsBodyParserMiddleware,
-			sessionMiddleware,
+			cookieParserMiddleware,
 			basicResourcesProtectionMiddleware,
 			authMiddleware,
 		],

@@ -1,0 +1,32 @@
+{
+	"seo": {
+		"en": {
+			"title": "Diego Rayo | Software Developer",
+			"description": "Hi, I'm Diego, a Software Developer. I have over 6 years of experience developing Web Solutions. I usually work using JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL."
+		}
+	},
+	"website": {
+		"email": "diegofrayo@gmail.com",
+		"fullName": "Diego Fernando Rayo Zamora",
+		"shortName": "Diego Rayo",
+		"username": "diegofrayo",
+		"jobTitle": "Software Developer",
+		"url": "https://diegofrayo.vercel.app",
+		"nationality": "Colombian",
+		"birthDate": "1993/08/31",
+		"age": 29,
+		"address": {
+			"@type": "PostalAddress",
+			"addressLocality": "Armenia",
+			"addressRegion": "Quindío",
+			"addressCountry": "Colombia"
+		},
+		"social": {
+			"linkedin": "https://linkedin.com/in/diegofrayo",
+			"github": "https://github.com/diegofrayo",
+			"twitter": "https://twitter.com/diegofrayo",
+			"couchsurfing": "https://couchsurfing.com/people/diegofrayo",
+			"spotify": "https://open.spotify.com/user/225gv7ppksrad4xzfwoyej4iq"
+		}
+	}
+}

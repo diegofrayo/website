@@ -1,4 +1,4 @@
-import AppError from "~/exceptions/AppError";
+/*
 import HttpError from "~/exceptions/HttpError";
 import { Controller } from "~/modules/mvc";
 import { parseSchemaSafe } from "~/modules/schemas";
@@ -42,12 +42,17 @@ class AuthController extends Controller {
 			} else {
 				const response = await AuthService.signIn(authCredentials);
 
+				AuthService.saveCookie(res, response.token);
+
 				res.json(response);
 			}
 		} catch (error) {
-			res.sendError(error as AppError);
+			res.sendError(error);
 		}
 	}
 }
 
 export default AuthController;
+*/
+
+export default {};

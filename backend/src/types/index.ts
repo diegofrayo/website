@@ -1,7 +1,5 @@
 import express from "express";
 
-import AppError from "~/exceptions/AppError";
-
 // --- Express ---
 
 export type T_Middleware =
@@ -28,7 +26,7 @@ export type T_ExpressApplication = express.Application;
 declare module "express-serve-static-core" {
 	// eslint-disable-next-line @typescript-eslint/naming-convention
 	interface Response {
-		sendError: (error: AppError) => unknown;
+		sendError: (error: unknown) => unknown;
 	}
 }
 
