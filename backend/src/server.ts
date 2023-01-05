@@ -2,6 +2,7 @@ import App from "~/app";
 import {
 	basicResourcesProtectionMiddleware,
 	cookieParserMiddleware,
+	corsMiddleware,
 	requestsBodyParserMiddleware,
 	staticFilesMiddleware,
 } from "~/middlewares";
@@ -18,6 +19,7 @@ new App({
 	controllers: [BlogController, MusicController, ReadingsController, TestsController],
 	middlewares: {
 		beforeControllers: [
+			corsMiddleware,
 			staticFilesMiddleware,
 			requestsBodyParserMiddleware,
 			cookieParserMiddleware,

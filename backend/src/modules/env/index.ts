@@ -1,4 +1,4 @@
-import { cleanEnv, port, str } from "envalid";
+import { cleanEnv, port, str, url } from "envalid";
 import { config } from "dotenv";
 
 config({ path: `.env.${process.env["NODE_ENV"] || "development"}.local` });
@@ -8,6 +8,7 @@ const envVars = cleanEnv(process.env, {
 
 	// # SERVER
 	PORT: port(),
+	CORS_ALLOWED_ORIGINS: url(),
 
 	// # FIREBASE
 	FIREBASE_API_KEY: str(),
