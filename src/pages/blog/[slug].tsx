@@ -51,7 +51,6 @@ export const getStaticProps = getPageContentStaticProps<
 			path: `/pages/blog/[slug]/${locale}/${replaceAll(post.createdAt, "/", "-")}-${post.slug}.mdx`,
 		})) as string;
 		const postMDXContent = await serialize(file, {
-			mdxOptions: { development: false },
 			scope: {
 				DATA: {
 					...getMDXScope().DATA,

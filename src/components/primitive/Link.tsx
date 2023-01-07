@@ -45,7 +45,6 @@ function Link(props: T_LinkProps): T_ReactElementNullable {
 				href={href}
 				className={classNames("dfr-Link", className)}
 				TWCSSVariant={variant}
-				is="a"
 				data-variant={variant}
 			>
 				{children}
@@ -54,21 +53,18 @@ function Link(props: T_LinkProps): T_ReactElementNullable {
 	}
 
 	return (
-		<NextLink
+		<LinkElement
+			{...rest}
 			href={href}
 			locale={rest.locale || false}
 			passHref
+			className={classNames("dfr-Link", className)}
+			TWCSSVariant={variant}
+			is={NextLink}
+			data-variant={variant}
 		>
-			<LinkElement
-				{...rest}
-				className={classNames("dfr-Link", className)}
-				TWCSSVariant={variant}
-				is="a"
-				data-variant={variant}
-			>
-				{children}
-			</LinkElement>
-		</NextLink>
+			{children}
+		</LinkElement>
 	);
 }
 

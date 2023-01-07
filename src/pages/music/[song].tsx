@@ -60,7 +60,6 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, T_StaticPat
 
 		const { parsedText, foundChords } = GuitarService.parseMusicText(songContent.txt);
 		const songMDXContent = await serialize(songContent.mdx, {
-			mdxOptions: { development: false },
 			scope: {
 				DATA: {
 					...getMDXScope().DATA,

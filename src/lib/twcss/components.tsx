@@ -133,7 +133,7 @@ type T_StylesParamFunction = string | ((props: T_Object) => string);
  */
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type T_ElementToRender = T_HTMLTag | T_ReactFunctionComponent<any>;
+type T_ElementToRender = T_HTMLTag | T_ReactFunctionComponent<any> | any;
 
 type T_ReactForwardedRef = React.ForwardedRef<unknown>;
 

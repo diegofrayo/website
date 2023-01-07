@@ -1,5 +1,5 @@
 import * as React from "react";
-import NextImage, { ImageProps } from "next/future/image";
+import NextImage, { ImageProps } from "next/image";
 
 import { logger } from "~/features/logging";
 import { isString } from "~/utils/validations";
