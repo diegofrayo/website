@@ -12,11 +12,11 @@ import BlogController from "~/routes/blog";
 import DataRouter from "~/routes/data";
 import MusicController from "~/routes/music";
 import ReadingsController from "~/routes/readings";
-import TestsController from "~/routes/tests";
+import TestsRouter from "~/routes/tests";
 
 new App({
-	routers: [DataRouter],
-	controllers: [BlogController, MusicController, ReadingsController, TestsController],
+	routers: [DataRouter, TestsRouter],
+	controllers: [BlogController, MusicController, ReadingsController],
 	middlewares: {
 		beforeControllers: [
 			corsMiddleware,

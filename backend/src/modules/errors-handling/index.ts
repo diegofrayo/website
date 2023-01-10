@@ -2,20 +2,20 @@ import AppError from "~/exceptions/AppError";
 import v from "~/lib/validator";
 import envVars from "~/modules/env";
 import { logger } from "~/modules/logger";
-import type { T_ErrorMiddleware, T_NextFunction, T_Object, T_Request, T_Response } from "~/types";
+import type { T_ErrorMiddleware, T_Object, T_Response } from "~/types";
 
 // --- Middleware ---
 
 const errorHandler: T_ErrorMiddleware = (err, req, res, next) => {
 	logger("log", "errorHandlerMiddleware", req.baseUrl);
 
-	if (res.headersSent) {
-		next(err);
-		return;
-	}
-
 	const errorResponse = getError(err, res);
 	logError(errorResponse);
+
+	if (res.headersSent) {
+		next(errorResponse);
+		return;
+	}
 
 	res.status(errorResponse.statusCode).format({
 		"application/json": () => {
@@ -33,12 +33,16 @@ export const errorHandlerMiddleware = [errorHandler];
 
 process.on("uncaughtException", (error: Error) => {
 	logger("error", `Uncaught Exception: ${error.message}`);
-	errorHandler(error, {} as T_Request, {} as T_Response, (() => undefined) as T_NextFunction);
+	logError(getError(error));
+});
+
+process.on("exit", () => {
+	logger("error", ".exit() handler");
 });
 
 // --- Utils ---
 
-export function getError(error: AppError | Error | unknown, res: T_Response): T_ResponseError {
+export function getError(error: AppError | Error | unknown, res?: T_Response): T_ResponseError {
 	if (error instanceof AppError) {
 		const result: T_ResponseError = {
 			statusCode: isErrorStatusCode(error.statusCode) ? error.statusCode : 500,
@@ -60,7 +64,7 @@ export function getError(error: AppError | Error | unknown, res: T_Response): T_
 
 	if (error instanceof Error) {
 		return {
-			statusCode: isErrorStatusCode(res.statusCode) ? res.statusCode : 500,
+			statusCode: res && isErrorStatusCode(res.statusCode) ? res.statusCode : 500,
 			body: envVars.isDevelopment
 				? {
 						error: "server_error",

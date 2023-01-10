@@ -10,12 +10,11 @@ function basicResourcesProtectionMiddleware(
 ): void {
 	// TODO: Remove this later, when sessionMiddleware is enabled again
 	if (v.isUndefined(req.session)) req.session = { isUserLoggedIn: false };
-	const isRequestForPublicFolder = req.originalUrl.startsWith("/static/");
 
 	if (
 		req.headers["dfr-basic-resources-protection-token"] ===
 			envVars.BASIC_RESOURCES_PROTECTION_TOKEN ||
-		isRequestForPublicFolder
+		resourceIsInWhitelist(req.originalUrl)
 	) {
 		next();
 	} else {
@@ -29,3 +28,17 @@ function basicResourcesProtectionMiddleware(
 }
 
 export default [basicResourcesProtectionMiddleware];
+
+// --- Utils ---
+
+function resourceIsInWhitelist(url: string): boolean {
+	const WHITELIST = ["/static/", "/tests/"];
+
+	for (const item of WHITELIST) {
+		if (url.startsWith(item)) {
+			return true;
+		}
+	}
+
+	return false;
+}

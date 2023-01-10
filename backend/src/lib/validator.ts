@@ -6,7 +6,7 @@ function isNull(input: unknown): input is null {
 	return input === null;
 }
 
-function isFunction(input: unknown): input is Function {
+function isFunction<G_InputType = Function>(input: unknown): input is G_InputType {
 	return isUndefined(input) === false && typeof input === "function";
 }
 
@@ -22,7 +22,7 @@ function isUndefined(input: unknown): input is undefined {
 	return typeof input === "undefined";
 }
 
-function isObject(input: unknown): input is T_Object {
+function isObject<G_InputType = T_Object>(input: unknown): input is G_InputType {
 	if (!input || Array.isArray(input)) return false;
 	return typeof input === "object";
 }
@@ -95,6 +95,18 @@ function isEmptyArray(input: unknown): boolean {
 	return Array.isArray(input) && input.length === 0;
 }
 
+// --- Objects ---
+
+function isEmptyObject(input: unknown): input is object {
+	return (
+		!!input && Object.keys(input).length === 0 && Object.getPrototypeOf(input) === Object.prototype
+	);
+}
+
+function isNotEmptyObject(input: unknown): input is object {
+	return isEmptyObject(input) === false;
+}
+
 // --- Semantic ---
 
 function notFound(input: unknown): input is undefined {
@@ -145,6 +157,9 @@ const v = {
 
 	isNotEmptyArray,
 	isEmptyArray,
+
+	isEmptyObject,
+	isNotEmptyObject,
 
 	notFound,
 	exists,

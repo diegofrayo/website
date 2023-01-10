@@ -2,7 +2,7 @@ const warnRulesValue = process.env.NO_LINT_WARNINGS ? "off" : "warn";
 
 module.exports = {
 	parser: "@typescript-eslint/parser",
-	plugins: ["prettier", "no-loops", "@typescript-eslint"],
+	plugins: ["prettier", "@typescript-eslint"],
 	ignorePatterns: ["dist/**/*", "src/_framework/**/*"],
 	extends: [
 		"airbnb",
@@ -37,10 +37,11 @@ module.exports = {
 		"import/prefer-default-export": "off",
 		"no-nested-ternary": "off",
 
-		"@typescript-eslint/ban-ts-comment": warnRulesValue,
+		"no-restricted-syntax": warnRulesValue,
 		"no-alert": warnRulesValue,
 		"no-console": warnRulesValue,
 		"no-debugger": warnRulesValue,
+		"@typescript-eslint/ban-ts-comment": warnRulesValue,
 		"@typescript-eslint/ban-types": [
 			warnRulesValue,
 			{
@@ -68,7 +69,6 @@ module.exports = {
 		"@typescript-eslint/no-explicit-any": "error",
 		"@typescript-eslint/no-shadow": ["error", { allow: ["params", "data", "result"] }],
 		"@typescript-eslint/no-unused-vars": "error",
-		"no-loops/no-loops": "error",
 		"no-restricted-exports": ["error", { restrictedNamedExports: [] }],
 	},
 };
