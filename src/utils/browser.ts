@@ -1,11 +1,11 @@
 import { toast } from "react-toastify";
 
-import { logAndReportError, logger } from "~/features/logging";
 import { I18nService } from "~/features/i18n";
+import { logAndReportError, logger } from "~/features/logging";
+import v from "~/lib/v";
 import type { T_ReactOnClickEventObject, T_SetTimeout } from "~/types";
 
 import { getErrorMessage } from "./misc";
-import { isEmptyString, isString, isUndefined } from "./validations";
 
 export function showToast({
 	type,
@@ -195,15 +195,15 @@ export async function copyToClipboard(
 	parameter: T_ReactOnClickEventObject<HTMLButtonElement> | string,
 ): Promise<void> {
 	try {
-		const clipboardText = isString(parameter)
+		const clipboardText = v.isString(parameter)
 			? parameter
 			: parameter.currentTarget.getAttribute("data-clipboard-text") || "";
 
-		if (isUndefined(navigator.clipboard)) {
+		if (v.isUndefined(navigator.clipboard)) {
 			throw new Error("Clipboard not supported");
 		}
 
-		if (isEmptyString(clipboardText)) {
+		if (v.isEmptyString(clipboardText)) {
 			throw new Error("Any text was selected to copy");
 		}
 
@@ -256,4 +256,8 @@ export function getAndroidVersion(): number {
 
 export function isAndroid(): boolean {
 	return navigator.userAgent.toLowerCase().indexOf("android") > -1;
+}
+
+export function isDOMNode(element: unknown): element is Node {
+	return "nodeType" in (v.isObject(element) ? element : {});
 }

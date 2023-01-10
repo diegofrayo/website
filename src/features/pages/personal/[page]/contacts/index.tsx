@@ -15,11 +15,11 @@ import {
 import { Emoji } from "~/components/shared";
 import { withAuthPage } from "~/features/auth";
 import { useDidMount, useEnhancedState } from "~/hooks";
+import v from "~/lib/v";
 import { isServer } from "~/utils/app";
 import { handleCopyToClipboardClick } from "~/utils/browser";
 import { formatPhoneNumber } from "~/utils/formatting";
 import { generateSlug } from "~/utils/strings";
-import { isEmptyString, isNotEmptyString } from "~/utils/validations";
 import type { T_Object, T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import styles from "./styles.module.css";
@@ -291,10 +291,10 @@ function ContactPhone({ phone, country }: T_ContactPhoneProps): T_ReactElementNu
 		USA: "🇺🇲",
 		UY: "🇺🇾",
 	};
-	const phoneWithoutCode = isNotEmptyString(phone) ? phone.split(" ")[1] : "";
+	const phoneWithoutCode = v.isNotEmptyString(phone) ? phone.split(" ")[1] : "";
 	const isPhoneFromColombia = country === "CO";
 
-	if (isEmptyString(phoneWithoutCode)) {
+	if (v.isEmptyString(phoneWithoutCode)) {
 		return null;
 	}
 
@@ -339,7 +339,7 @@ function ContactLinks({
 						);
 					})}
 				</Block>
-			) : isNotEmptyString(contact.phone) ? (
+			) : v.isNotEmptyString(contact.phone) ? (
 				<WhastAppButton
 					phone={contact.phone}
 					whatsAppOption={whatsAppOption}
@@ -351,7 +351,7 @@ function ContactLinks({
 				</WhastAppButton>
 			) : null}
 
-			{isNotEmptyString(contact.instagram) ? (
+			{v.isNotEmptyString(contact.instagram) ? (
 				<Link
 					variant={Link.variant.SIMPLE}
 					href={`https://instagram.com/${contact.instagram}`}
@@ -385,7 +385,7 @@ function ContactLinks({
 						);
 					})}
 				</Block>
-			) : isNotEmptyString(contact.phone) ? (
+			) : v.isNotEmptyString(contact.phone) ? (
 				<PhoneButton
 					phone={contact.phone}
 					country={contact.country}
@@ -419,7 +419,7 @@ function ContactLinks({
 						);
 					})}
 				</Block>
-			) : isNotEmptyString(contact.phone) ? (
+			) : v.isNotEmptyString(contact.phone) ? (
 				<SMSButton
 					phone={contact.phone}
 					country={contact.country}

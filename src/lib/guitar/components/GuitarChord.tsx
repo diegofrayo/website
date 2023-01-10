@@ -4,9 +4,9 @@ import { Button, Title, Block, InlineText } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
 import { AnalyticsService } from "~/features/analytics";
 import { useAsync } from "~/hooks";
+import v from "~/lib/v";
 import { downloadComponentAsImage } from "~/utils/browser";
 import { getErrorMessage } from "~/utils/misc";
-import { isNull, isUndefined } from "~/utils/validations";
 import type { T_ReactElementNullable, T_ReactRef } from "~/types";
 
 import GuitarFret from "./GuitarFret";
@@ -41,7 +41,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 		);
 	}
 
-	if (isUndefined(parsedChord)) {
+	if (v.isUndefined(parsedChord)) {
 		return null;
 	}
 
@@ -145,7 +145,7 @@ function useController({ plainChord }: T_GuitarChordProps): T_UseControllerRetur
 
 	// handlers
 	async function handleDownloadAsImageClick(): Promise<void> {
-		if (isNull(chordContainerRef.current)) return;
+		if (v.isNull(chordContainerRef.current)) return;
 
 		await downloadComponentAsImage(chordContainerRef.current, plainChord.name);
 

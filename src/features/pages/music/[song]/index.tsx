@@ -5,13 +5,13 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { Icon, Button, Space, Block, Text, Pre } from "~/components/primitive";
 import { Page, MainLayout } from "~/components/layout";
 import { MDXContent, Loader, RateContent } from "~/components/shared";
-import { useDidMount } from "~/hooks";
 import { useTranslation } from "~/features/i18n";
+import { ROUTES } from "~/features/routing";
+import { useDidMount } from "~/hooks";
 import { GuitarService } from "~/lib/guitar";
+import v from "~/lib/v";
 import { copyToClipboard } from "~/utils/browser";
 import { safeCastNumber } from "~/utils/numbers";
-import { ROUTES } from "~/features/routing";
-import { isNotTrue } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
 import { SongDetails, SongSources } from "../components";
@@ -63,7 +63,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
 				replaceTitle: !MusicService.isChordsSong(song),
 				description: t("seo:description", { title: song.title, artist: song.artist }),
 				pathname: `${ROUTES.MUSIC}/${song.id}`,
-				disableSEO: isNotTrue(song.isPublic),
+				disableSEO: v.isNotTrue(song.isPublic),
 			}}
 		>
 			<MainLayout title={song.title}>

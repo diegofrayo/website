@@ -1,8 +1,8 @@
 import * as React from "react";
 import classNames from "classnames";
 
+import v from "~/lib/v";
 import { copyToClipboard } from "~/utils/browser";
-import { isArrayOf, isString } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
 type T_CodeProps = T_HTMLElementAttributes["code"];
@@ -10,9 +10,9 @@ type T_CodeProps = T_HTMLElementAttributes["code"];
 function Code({ children, className, ...rest }: T_CodeProps): T_ReactElement {
 	// handlers
 	function handleClick(): void {
-		if (isArrayOf(children, "string")) {
+		if (v.isArrayOf(children, "string")) {
 			copyToClipboard(children.join(""));
-		} else if (isString(children)) {
+		} else if (v.isString(children)) {
 			copyToClipboard(children);
 		}
 	}

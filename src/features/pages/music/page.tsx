@@ -4,12 +4,12 @@ import classNames from "classnames";
 import { Page, MainLayout } from "~/components/layout";
 import { Link, Space, Input, Text, InlineText, Block } from "~/components/primitive";
 import { Render, Emoji } from "~/components/shared";
-import { useDidMount, useQuery } from "~/hooks";
 import { I18nService, useTranslation } from "~/features/i18n";
-import { focusElement } from "~/utils/browser";
 import { ROUTES } from "~/features/routing";
+import { useDidMount, useQuery } from "~/hooks";
+import v from "~/lib/v";
+import { focusElement } from "~/utils/browser";
 import { removeAccents } from "~/utils/strings";
-import { isNotTrue, isFalsy, isNotEquals, isNull } from "~/utils/validations";
 import type { T_ReactElement, T_ReactOnChangeEventHandler, T_ReactRef } from "~/types";
 
 import { SongDetails } from "./components";
@@ -99,7 +99,7 @@ function MusicPage(): T_ReactElement {
 														href={`${ROUTES.MUSIC}/${song.id}`}
 														className={classNames(
 															"tw-block sm:tw-truncate",
-															isNotTrue(song.isPublic) && "tw-line-through",
+															v.isNotTrue(song.isPublic) && "tw-line-through",
 														)}
 														title={song.title}
 													>
@@ -153,9 +153,9 @@ function useController(): T_UseController {
 			"keydown",
 			function focusInputAndSelectText(event: KeyboardEvent): void {
 				if (
-					isNull(inputRef.current) ||
-					isNotEquals(event.code, "KeyF") ||
-					isFalsy(event.metaKey || event.ctrlKey)
+					v.isNull(inputRef.current) ||
+					v.isNotEquals(event.code, "KeyF") ||
+					v.isFalsy(event.metaKey || event.ctrlKey)
 				) {
 					return;
 				}

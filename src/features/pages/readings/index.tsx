@@ -3,9 +3,9 @@ import classNames from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Block, InlineText, Link, List, Text } from "~/components/primitive";
+import v from "~/lib/v";
 import { getObjectKeys, sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
-import { isNotEmptyString } from "~/utils/validations";
 import type { T_Object, T_ReactElement } from "~/types";
 
 type T_ReadingsProps = {
@@ -70,7 +70,7 @@ function Readings({ data }: T_ReadingsProps): T_ReactElement {
 								</Link>
 								<Text className="tw-text-xs tw-font-bold tw-italic dfr-text-color-bw">
 									{new URL(reading.url).host}
-									{isNotEmptyString(reading.author) ? ` | ${reading.author}` : ""}
+									{v.isNotEmptyString(reading.author) ? ` | ${reading.author}` : ""}
 								</Text>
 								<Block>
 									<InlineText

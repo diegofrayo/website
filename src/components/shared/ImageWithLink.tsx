@@ -1,12 +1,12 @@
 import * as React from "react";
 
 import { Image, Link } from "~/components/primitive";
-import { isNotEmptyString } from "~/utils/validations";
+import v from "~/lib/v";
 import type { T_ImageProps } from "~/components/primitive/Image";
 import type { T_ReactElementNullable } from "~/types";
 
 function ImageWithLink({ src, ...rest }: T_ImageProps): T_ReactElementNullable {
-	if (isNotEmptyString(src)) {
+	if (v.isNotEmptyString(src)) {
 		return (
 			<Link
 				variant={Link.variant.SIMPLE}

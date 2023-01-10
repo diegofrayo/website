@@ -3,9 +3,9 @@ import axios, { AxiosResponse } from "axios";
 import { ENV_VARS } from "~/constants";
 import { readDevToolsConfig } from "~/features/development-tools";
 import { logAndReportError } from "~/features/logging";
+import v from "~/lib/v";
 import { isBrowser, isLocalhostEnvironment } from "~/utils/app";
 import { showToast } from "~/utils/browser";
-import { isNotEmptyString } from "~/utils/validations";
 
 axios.interceptors.request.use((config) => {
 	if (
@@ -31,7 +31,7 @@ axios.interceptors.response.use(
 		if (isBrowser()) {
 			const cacheKey = getCacheKey(response);
 
-			if (isNotEmptyString(cacheKey)) {
+			if (v.isNotEmptyString(cacheKey)) {
 				window.localStorage.setItem(cacheKey, JSON.stringify(response.data));
 			}
 		}
@@ -45,7 +45,7 @@ axios.interceptors.response.use(
 			const cacheKey = getCacheKey(error.response || { config: error.config });
 			const cachedData = window.localStorage.getItem(cacheKey);
 
-			if (isNotEmptyString(cachedData)) {
+			if (v.isNotEmptyString(cachedData)) {
 				showToast({
 					type: "ALERT",
 					message: "Data loaded from cache",

@@ -3,8 +3,8 @@ import splitbee from "@splitbee/web";
 
 import { AuthService } from "~/features/auth";
 import { logger } from "~/features/logging";
+import v from "~/lib/v";
 import { isLocalhostEnvironment } from "~/utils/app";
-import { isNotEmptyString, isTrue } from "~/utils/validations";
 import type { T_Object } from "~/types";
 
 class AnalyticsService {
@@ -15,7 +15,7 @@ class AnalyticsService {
 	private isLibraryInitialized = false;
 
 	init(): void {
-		if (this.isAnalyticsDisabled() || isTrue(this.isLibraryInitialized)) {
+		if (this.isAnalyticsDisabled() || v.isTrue(this.isLibraryInitialized)) {
 			return;
 		}
 
@@ -50,7 +50,7 @@ class AnalyticsService {
 	isAnalyticsDisabled(): boolean {
 		if (
 			window.location.href.includes("a=d") ||
-			isNotEmptyString(window.localStorage.getItem("DFR_ANALYTICS_DISABLED"))
+			v.isNotEmptyString(window.localStorage.getItem("DFR_ANALYTICS_DISABLED"))
 		) {
 			window.localStorage.setItem("DFR_ANALYTICS_DISABLED", "true");
 			return true;

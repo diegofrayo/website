@@ -4,8 +4,8 @@ import classNames from "classnames";
 import { Button, Space, Title, Block, Text, InlineText } from "~/components/primitive";
 import { Emoji, Render, Timeline } from "~/components/shared";
 import { useQuery } from "~/hooks";
+import v from "~/lib/v";
 import { safeCastNumber } from "~/utils/numbers";
-import { exists, isUndefined, isNotEmptyString } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
 import TimelineService from "./service";
@@ -23,16 +23,16 @@ function TimelinePage(): T_ReactElement {
 	const [selectedCategory, setSelectedCategory] = React.useState("");
 
 	// vars
-	const data = isUndefined(fetchData)
+	const data = v.isUndefined(fetchData)
 		? fetchData
 		: {
 				...fetchData,
 				timeline: fetchData.timeline.map((timelineGroup) => {
 					return {
 						...timelineGroup,
-						items: isNotEmptyString(selectedCategory)
+						items: v.isNotEmptyString(selectedCategory)
 							? timelineGroup.items.filter((item) => {
-									return exists(
+									return v.exists(
 										item.categories.find((category) => category.id === selectedCategory),
 									);
 							  })

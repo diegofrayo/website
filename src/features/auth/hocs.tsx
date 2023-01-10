@@ -2,10 +2,10 @@ import * as React from "react";
 
 import { renderIf } from "~/hocs";
 import { useDidMount } from "~/hooks";
+import v from "~/lib/v";
 import { readDevToolsConfig } from "~/features/development-tools";
 import { redirect as globalRedirect, ROUTES } from "~/features/routing";
 import { isLocalhostEnvironment } from "~/utils/app";
-import { isNotTrue } from "~/utils/validations";
 import type { T_ReactElementNullable, T_ReactFunctionComponent } from "~/types";
 
 import AuthService from "./service";
@@ -20,7 +20,7 @@ export function withAuthPage<G_ComponentProps extends object>(
 
 		// effects
 		useDidMount(() => {
-			if (isLocalhostEnvironment() && isNotTrue(readDevToolsConfig().authPagesEnabled)) {
+			if (isLocalhostEnvironment() && v.isNotTrue(readDevToolsConfig().authPagesEnabled)) {
 				redirect(false);
 				return;
 			}

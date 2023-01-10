@@ -1,9 +1,9 @@
 import autoBind from "auto-bind";
 
-import http from "~/lib/http";
 import { ENV_VARS } from "~/constants";
+import http from "~/lib/http";
+import v from "~/lib/v";
 import { transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/objects-and-arrays";
-import { isUndefined } from "~/utils/validations";
 import type { T_Object } from "~/types";
 
 class MusicService {
@@ -15,7 +15,7 @@ class MusicService {
 		const songs = (await this.fetchData()).map((song: T_Object) => SongVO(song));
 		const chordsPage = songs.find((song) => this.isChordsSong(song));
 
-		return (isUndefined(chordsPage) ? [] : [chordsPage]).concat(
+		return (v.isUndefined(chordsPage) ? [] : [chordsPage]).concat(
 			songs.filter((song) => this.isChordsSong(song) === false),
 		);
 	}

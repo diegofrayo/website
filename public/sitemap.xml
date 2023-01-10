@@ -40,16 +40,13 @@
     <loc>https://diegofrayo.vercel.app/music/chords</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/music/la-bestia-pop</loc>
-  </url>
-  <url>
-    <loc>https://diegofrayo.vercel.app/music/me-matan-limon</loc>
-  </url>
-  <url>
     <loc>https://diegofrayo.vercel.app/music/a-las-nueve</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/el-tesoro</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/la-bestia-pop</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/la-miel-en-tu-ventana</loc>
@@ -95,6 +92,9 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/mariposa-tecknicolor</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/me-matan-limon</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/par-mil</loc>

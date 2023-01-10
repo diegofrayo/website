@@ -3,8 +3,8 @@ import * as React from "react";
 
 import { Block, Button, Icon, InlineText } from "~/components/primitive";
 import { goBack } from "~/features/routing";
+import v from "~/lib/v";
 import { isConfirmAlertAccepted } from "~/utils/browser";
-import { isNotTrue, isTrue } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
 type T_GoBackProps = {
@@ -16,8 +16,8 @@ function GoBack({ className, withConfirmation = false }: T_GoBackProps): T_React
 	// handlers
 	function handleGoBackClick(): void {
 		if (
-			isNotTrue(withConfirmation) ||
-			(isTrue(withConfirmation) && isConfirmAlertAccepted("¿Are you sure?"))
+			v.isNotTrue(withConfirmation) ||
+			(v.isTrue(withConfirmation) && isConfirmAlertAccepted("¿Are you sure?"))
 		) {
 			goBack();
 		}

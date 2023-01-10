@@ -3,8 +3,8 @@ import classNames from "classnames";
 
 import { Block, Icon, InlineText } from "~/components/primitive";
 import twcss from "~/lib/twcss";
+import v from "~/lib/v";
 import { createArray, mirror } from "~/utils/objects-and-arrays";
-import { isUndefined } from "~/utils/validations";
 import type { T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import { NUMBER_OF_STRINGS } from "../utils";
@@ -125,7 +125,7 @@ function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 								);
 							}
 
-							if (musicNotes.length === 0 || isUndefined(musicNote)) {
+							if (musicNotes.length === 0 || v.isUndefined(musicNote)) {
 								return (
 									<Block
 										key={`${guitarString}-${Date.now()}`}

@@ -3,6 +3,7 @@ import classNames from "classnames";
 
 import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
+import v from "~/lib/v";
 import {
 	focusElement,
 	focusInputAndSelectText,
@@ -10,7 +11,6 @@ import {
 	isSmallScreen,
 } from "~/utils/browser";
 import { replaceAll } from "~/utils/strings";
-import { isNotEmptyString, isNull } from "~/utils/validations";
 import type { T_ReactElement, T_ReactOnClickEventHandler, T_ReactRef } from "~/types";
 
 function TextPage(): T_ReactElement {
@@ -57,7 +57,10 @@ function TextPage(): T_ReactElement {
 				</output>
 				<Button
 					variant={Button.variant.DEFAULT}
-					className={classNames("tw-ml-auto", isNotEmptyString(output) ? "tw-block" : "tw-hidden")}
+					className={classNames(
+						"tw-ml-auto",
+						v.isNotEmptyString(output) ? "tw-block" : "tw-hidden",
+					)}
 					data-clipboard-text={output}
 					onClick={handleCopyToClipboardClick}
 				>
@@ -86,7 +89,7 @@ function useController(): T_UseControllerReturn {
 
 	// effects
 	useDidMount(() => {
-		if (isSmallScreen() || isNull(inputRef.current)) {
+		if (isSmallScreen() || v.isNull(inputRef.current)) {
 			return;
 		}
 

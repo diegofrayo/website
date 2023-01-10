@@ -53,6 +53,15 @@ module.exports = {
 		"react/require-default-props": "off",
 
 		"@typescript-eslint/ban-ts-comment": warnRulesValue,
+		"@typescript-eslint/ban-types": [
+			warnRulesValue,
+			{
+				types: {
+					Function: true,
+				},
+				extendDefaults: true,
+			},
+		],
 		"import/prefer-default-export": warnRulesValue,
 		"no-alert": warnRulesValue,
 		"no-console": warnRulesValue,

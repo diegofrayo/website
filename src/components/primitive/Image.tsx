@@ -2,7 +2,7 @@ import * as React from "react";
 import NextImage, { ImageProps } from "next/image";
 
 import { logger } from "~/features/logging";
-import { isString } from "~/utils/validations";
+import v from "~/lib/v";
 import type { T_ReactElementNullable } from "~/types";
 
 export type T_ImageProps = ImageProps & { useNextImage?: boolean };
@@ -26,7 +26,7 @@ function Image({
 			);
 		}
 
-		if (isString(src)) {
+		if (v.isString(src)) {
 			return (
 				<img
 					src={src}

@@ -8,10 +8,10 @@ import highLightTheme from "prism-react-renderer/themes/nightOwl";
 import { Block, Button, Icon, InlineText, Link, Pre, Space } from "~/components/primitive";
 import { useTranslation } from "~/features/i18n";
 import twcss from "~/lib/twcss";
+import v from "~/lib/v";
 import { handleCopyToClipboardClick } from "~/utils/browser";
-import { isNotEmptyString } from "~/utils/validations";
-import type { T_ReactElement, T_ReactElementNullable, T_ReactFunctionComponent } from "~/types";
 import { generateSlug } from "~/utils/strings";
+import type { T_ReactElement, T_ReactElementNullable, T_ReactFunctionComponent } from "~/types";
 
 type T_SourceCodeProps = {
 	// DOCS: https://github.com/FormidableLabs/prism-react-renderer#language
@@ -37,9 +37,9 @@ function SourceCode({
 	const { t } = useTranslation();
 
 	// vars
-	const codeTitle = isNotEmptyString(fileName)
+	const codeTitle = v.isNotEmptyString(fileName)
 		? `// ${fileName}`
-		: isNotEmptyString(sourceURL)
+		: v.isNotEmptyString(sourceURL)
 		? `// ${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}`
 		: "";
 
@@ -63,7 +63,7 @@ function SourceCode({
 						: "tw-rounded-t-md tw-border tw-border-b-0 tw-px-4 tw-pr-2 dfr-border-color-primary dark:dfr-bg-color-tertiary",
 				)}
 			>
-				{isNotEmptyString(codeTitle) ? (
+				{v.isNotEmptyString(codeTitle) ? (
 					<code className="tw-mr-4 tw-flex-1 tw-truncate tw-font-bold">{codeTitle}</code>
 				) : null}
 				<InlineText className="tw-ml-auto tw-inline-block tw-flex-shrink-0 tw-bg-yellow-300 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-yellow-700">
@@ -128,7 +128,7 @@ function SourceCode({
 						: "tw-rounded-b-md tw-border tw-border-t-0 tw-px-4 tw-pr-2 dfr-border-color-primary dark:dfr-bg-color-tertiary",
 				)}
 			>
-				{isNotEmptyString(sourceURL) ? (
+				{v.isNotEmptyString(sourceURL) ? (
 					<React.Fragment>
 						<Link
 							variant={Link.variant.SECONDARY}

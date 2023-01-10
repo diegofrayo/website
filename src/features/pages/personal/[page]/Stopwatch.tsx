@@ -4,10 +4,10 @@ import classNames from "classnames";
 import { MainLayout, Page } from "~/components/layout";
 import { Block, Button, InlineText, Input, Select, Space, Text } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
+import v from "~/lib/v";
 import { isConfirmAlertAccepted, showAlert } from "~/utils/browser";
 import { addLeftPadding } from "~/utils/formatting";
 import { generateSlug } from "~/utils/strings";
-import { isNotTrue } from "~/utils/validations";
 import type {
 	T_HTMLElementAttributes,
 	T_ReactElement,
@@ -76,7 +76,7 @@ function Stopwatch(): T_ReactElement {
 			document.getElementById("form") as HTMLFormElement
 		)?.checkValidity();
 
-		if (isNotTrue(areInputValuesValid)) {
+		if (v.isNotTrue(areInputValuesValid)) {
 			showAlert("Inputs values are not valid");
 			return;
 		}

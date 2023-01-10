@@ -2,16 +2,9 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Space, Block, Text, InlineText } from "~/components/primitive";
+import v from "~/lib/v";
 import { createArray } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
-import {
-	isNotEmptyArray,
-	isNotEmptyString,
-	isNotTrue,
-	isNotUndefined,
-	isNumber,
-	isUndefined,
-} from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement, T_Object } from "~/types";
 
 import GuitarFret from "./GuitarFret";
@@ -132,9 +125,9 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
 				</Block>
 			) : null}
 
-			{isNotUndefined(parsedPositions) && isNotEmptyString(notes) ? <Space size={1} /> : null}
+			{v.isNotUndefined(parsedPositions) && v.isNotEmptyString(notes) ? <Space size={1} /> : null}
 
-			{isNotEmptyString(notes) ? (
+			{v.isNotEmptyString(notes) ? (
 				<Text className="tw-break-word tw-ml-2 tw-whitespace-pre-line tw-italic">{`"${notes}"`}</Text>
 			) : null}
 		</Block>
@@ -154,7 +147,7 @@ function useController({ positions, notes }: T_TablatureProps): {
 		notes,
 
 		// vars
-		parsedPositions: isNotEmptyArray(positions)
+		parsedPositions: v.isNotEmptyArray(positions)
 			? [
 					{ space: 1, variant: "SPACE" },
 					...parsePositions(positions),
@@ -181,7 +174,7 @@ function Position({
 				isCell && "dfr-Tablature-Position--cell",
 			)}
 		>
-			{isNotTrue(isCell) ? <InlineText>{children || "0"}</InlineText> : null}
+			{v.isNotTrue(isCell) ? <InlineText>{children || "0"}</InlineText> : null}
 
 			<style jsx>{`
 				:global(.dfr-Tablature-Position--cell::before) {
@@ -238,7 +231,7 @@ function parsePosition(position: T_Object): T_Position {
 		};
 	}
 
-	if (isNumber(position["guitarString"]) && isNumber(position["guitarFret"])) {
+	if (v.isNumber(position["guitarString"]) && v.isNumber(position["guitarFret"])) {
 		return {
 			guitarString: parseGuitarString(position["guitarString"]),
 			guitarFret: parseFret(position["guitarFret"]),
@@ -246,14 +239,14 @@ function parsePosition(position: T_Object): T_Position {
 		};
 	}
 
-	if (isNumber(position["guitarString"]) && isUndefined(position["guitarFret"])) {
+	if (v.isNumber(position["guitarString"]) && v.isUndefined(position["guitarFret"])) {
 		return {
 			guitarString: parseGuitarString(position["guitarString"]),
 			variant: "GUITAR_STRING",
 		};
 	}
 
-	if (isNumber(position["guitarFret"]) && isUndefined(position["guitarString"])) {
+	if (v.isNumber(position["guitarFret"]) && v.isUndefined(position["guitarString"])) {
 		return {
 			guitarFret: parseFret(position["guitarFret"]),
 			variant: "BARRE",
@@ -264,7 +257,7 @@ function parsePosition(position: T_Object): T_Position {
 }
 
 function isSpacePosition(input: T_Object | T_Object[]): input is T_SpacePosition {
-	return Array.isArray(input) ? false : isNumber((input as T_SpacePosition)?.space);
+	return Array.isArray(input) ? false : v.isNumber((input as T_SpacePosition)?.space);
 }
 
 function isMusicNotePosition(input?: T_Position): input is T_MusicNotePosition {

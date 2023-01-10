@@ -9,9 +9,9 @@ import { getMDXScope } from "~/features/mdx";
 import { ROUTES } from "~/features/routing";
 import { GuitarService } from "~/lib/guitar";
 import http from "~/lib/http";
+import v from "~/lib/v";
 import dataLoader from "~/server";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { notFound } from "~/utils/validations";
 
 type T_PageProps = {
 	song: T_Song;
@@ -45,7 +45,7 @@ export const getStaticProps = getPageContentStaticProps<T_PageProps, T_StaticPat
 	callback: async ({ params }) => {
 		const song = await MusicService.getSong({ id: params.song });
 
-		if (notFound(song)) {
+		if (v.notFound(song)) {
 			return {
 				notFound: true,
 			};

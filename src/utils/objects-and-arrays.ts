@@ -1,17 +1,8 @@
+import v from "~/lib/v";
 import type { T_Object, T_Primitive } from "~/types";
 
 import { or } from "./fp";
 import { between } from "./numbers";
-import {
-	isBoolean,
-	isNotTrue,
-	isNull,
-	isNumber,
-	isObject,
-	isString,
-	isTrue,
-	isUndefined,
-} from "./validations";
 
 export function transformObjectKeysFromSnakeCaseToLowerCamelCase<G_Result = T_Object>(
 	object: T_Object,
@@ -116,12 +107,12 @@ export function sortBy<G_ItemType>(
 				const aParam = a[attribute];
 				const bParam = b[attribute];
 
-				if (isBoolean(aParam) && isBoolean(bParam)) {
-					if (isTrue(aParam) && isNotTrue(bParam)) {
+				if (v.isBoolean(aParam) && v.isBoolean(bParam)) {
+					if (v.isTrue(aParam) && v.isNotTrue(bParam)) {
 						return { result: greater, finish: true };
 					}
 
-					if (isNotTrue(aParam) && isTrue(bParam)) {
+					if (v.isNotTrue(aParam) && v.isTrue(bParam)) {
 						return { result: smaller, finish: true };
 					}
 
@@ -160,7 +151,7 @@ function convertSnakeCaseToLowerCamelCase(str: string): string {
 }
 
 function isPrimitiveValue(value: unknown): value is T_Primitive {
-	return or(value, [isUndefined, isNumber, isNull, isString, isBoolean]);
+	return or(value, [v.isUndefined, v.isNumber, v.isNull, v.isString, v.isBoolean]);
 }
 
 function transformObjectKeysFromSnakeCaseToLowerCamelCasePrivate(
@@ -187,7 +178,7 @@ function transformObjectKeysFromSnakeCaseToLowerCamelCasePrivate(
 			};
 		}
 
-		if (isObject(value)) {
+		if (v.isObject(value)) {
 			return {
 				...result,
 				[transformedKey]: transformObjectKeysFromSnakeCaseToLowerCamelCase(value),

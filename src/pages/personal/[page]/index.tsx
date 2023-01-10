@@ -3,7 +3,7 @@ import { GetStaticPaths } from "next";
 import { getPageContentStaticProps } from "~/features/i18n";
 import PersonalPage from "~/features/pages/personal/[page]";
 import { PERSONAL_PAGES } from "~/features/pages/personal";
-import { isNotEmptyString } from "~/utils/validations";
+import v from "~/lib/v";
 
 export default PersonalPage;
 
@@ -14,7 +14,7 @@ type T_PageProps = { page: string };
 export const getStaticPaths: GetStaticPaths<T_PageProps> = async function getStaticPaths() {
 	return {
 		paths: PERSONAL_PAGES.filter((page) => {
-			return isNotEmptyString(page.componentName);
+			return v.isNotEmptyString(page.componentName);
 		}).map((page) => {
 			return {
 				params: { page: page.slug },

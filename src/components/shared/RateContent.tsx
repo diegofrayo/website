@@ -4,10 +4,10 @@ import classNames from "classnames";
 import { Button, Block, Text, Space } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { AnalyticsService } from "~/features/analytics";
-import { logAndReportError } from "~/features/logging";
 import { T_TranslationFunction, useTranslation } from "~/features/i18n";
+import { logAndReportError } from "~/features/logging";
+import v from "~/lib/v";
 import { showToast } from "~/utils/browser";
-import { isEmptyString, isNotEmptyString } from "~/utils/validations";
 import type { T_Object, T_ReactElement } from "~/types";
 
 import Emoji from "./Emoji";
@@ -80,7 +80,7 @@ function useController(): T_UseController {
 
 	// vars
 	const LOCAL_STORAGE_KEY = "DFR_CONTENT_RATED";
-	const isQuestionAnswered = isNotEmptyString(questionAnswer);
+	const isQuestionAnswered = v.isNotEmptyString(questionAnswer);
 
 	// effects
 	useDidMount(() => {
@@ -109,7 +109,7 @@ function useController(): T_UseController {
 	function initLocalStorageData(): void {
 		const storedData = window.localStorage.getItem(LOCAL_STORAGE_KEY) || "";
 
-		if (isNotEmptyString(storedData)) {
+		if (v.isNotEmptyString(storedData)) {
 			window.localStorage.setItem(
 				LOCAL_STORAGE_KEY,
 				JSON.stringify({ [window.location.pathname]: "" }),
@@ -131,7 +131,7 @@ function useController(): T_UseController {
 		try {
 			const savedData = window.localStorage.getItem(LOCAL_STORAGE_KEY) || "";
 
-			if (isEmptyString(savedData)) {
+			if (v.isEmptyString(savedData)) {
 				return {};
 			}
 

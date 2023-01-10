@@ -3,9 +3,9 @@ import classNames from "classnames";
 
 import { Icon, Input, Link, Block, Button, InlineText } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
+import v from "~/lib/v";
 import { focusElement, handleCopyToClipboardClick } from "~/utils/browser";
 import { generateSlug, replaceAll } from "~/utils/strings";
-import { isNull } from "~/utils/validations";
 import type {
 	T_ReactElement,
 	T_ReactOnChangeEventHandler,
@@ -139,7 +139,7 @@ function useController(): T_UseControllerReturn {
 
 	// effects
 	useDidMount(() => {
-		if (isNull(inputRef.current)) return;
+		if (v.isNull(inputRef.current)) return;
 
 		focusElement(inputRef.current);
 	});

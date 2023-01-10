@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 import { Block, Button, Icon, Image, Modal, Text } from "~/components/primitive";
 import { useDidMount, useEnhancedState } from "~/hooks";
-import { isNotTrue } from "~/utils/validations";
+import v from "~/lib/v";
 import type { T_ReactElement, T_ReactElementNullable, T_ReactSetState } from "~/types";
 
 const Context = React.createContext({} as T_Context);
@@ -115,7 +115,7 @@ function Gallery({
 			<div
 				className={classNames(
 					"root tw-relative tw-h-full dfr-bg-color-secondary",
-					isNotTrue(isFullscreenVariant) && "tw-rounded-md tw-border dfr-border-color-primary",
+					v.isNotTrue(isFullscreenVariant) && "tw-rounded-md tw-border dfr-border-color-primary",
 				)}
 			>
 				<Swiper
@@ -287,7 +287,7 @@ function SlideContent({
 						alt={caption}
 						className={classNames(
 							"tw-mx-auto tw-max-h-full tw-max-w-full",
-							isNotTrue(isFullscreenVariant) && "tw-cursor-pointer",
+							v.isNotTrue(isFullscreenVariant) && "tw-cursor-pointer",
 						)}
 						useNextImage={false}
 						onClick={handleImageClick}

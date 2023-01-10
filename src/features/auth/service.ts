@@ -1,10 +1,10 @@
 import autoBind from "auto-bind";
 
-import http from "~/lib/http";
-import { readDevToolsConfig } from "~/features/development-tools";
-import { isBrowser, isLocalhostEnvironment } from "~/utils/app";
 import { ENV_VARS } from "~/constants";
-import { isNotEmptyString, isObject } from "~/utils/validations";
+import { readDevToolsConfig } from "~/features/development-tools";
+import http from "~/lib/http";
+import v from "~/lib/v";
+import { isBrowser, isLocalhostEnvironment } from "~/utils/app";
 import type { T_Object } from "~/types";
 
 class AuthService {
@@ -33,12 +33,12 @@ class AuthService {
 			return readDevToolsConfig().isUserLoggedIn === true;
 		}
 
-		return isNotEmptyString(this.getToken());
+		return v.isNotEmptyString(this.getToken());
 	}
 
 	isSignInError(error: unknown): error is T_SignInError {
-		if (isObject(error)) {
-			return isNotEmptyString((error as T_SignInError).data?.code);
+		if (v.isObject(error)) {
+			return v.isNotEmptyString((error as T_SignInError).data?.code);
 		}
 
 		return false;

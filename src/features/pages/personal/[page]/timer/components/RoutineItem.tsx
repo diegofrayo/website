@@ -4,13 +4,13 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { Block, Button, Icon, InlineText, Space, Text, Title } from "~/components/primitive";
+import v from "~/lib/v";
 import { pluralize } from "~/utils/strings";
 import type { T_ReactElement } from "~/types";
 
 import { ROUTINE_ITEMS_STATUS } from "../constants";
 import { TimerPageContext } from "../context";
 import type { T_RoutineItem } from "../types";
-import { isNotEmptyString } from "~/utils/validations";
 
 export default function RoutineItem({
 	id,
@@ -115,7 +115,7 @@ export default function RoutineItem({
 								{secondsToTime(calculateRoutineItemTotalTime(sets, highTime, restTime))}
 							</InlineText>
 						</Block>
-						{isNotEmptyString(notes) ? (
+						{v.isNotEmptyString(notes) ? (
 							<React.Fragment>
 								<Space size={1.5} />
 								<Block

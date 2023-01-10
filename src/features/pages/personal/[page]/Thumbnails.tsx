@@ -2,9 +2,9 @@ import * as React from "react";
 
 import { Input, Block, Title, Image, InlineText, Space, Button } from "~/components/primitive";
 import { Emoji } from "~/components/shared";
+import v from "~/lib/v";
 import { downloadComponentAsImage } from "~/utils/browser";
 import { generateSlug } from "~/utils/strings";
-import { isNull } from "~/utils/validations";
 import type {
 	T_ReactElement,
 	T_ReactOnChangeEventHandler,
@@ -131,7 +131,7 @@ function useController(): T_UseControllerReturn {
 
 	const handleDownloadAsImageClick: T_UseControllerReturn["handleDownloadAsImageClick"] =
 		async function handleDownloadAsImageClick() {
-			if (isNull(thumbnailRef.current)) {
+			if (v.isNull(thumbnailRef.current)) {
 				return;
 			}
 

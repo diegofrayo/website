@@ -2,8 +2,8 @@ import * as React from "react";
 
 import { Link, List, Title, Block, Text } from "~/components/primitive";
 import { useTranslation } from "~/features/i18n";
+import v from "~/lib/v";
 import { generateSlug } from "~/utils/strings";
-import { isEmptyArray } from "~/utils/validations";
 import type { T_ReactElementNullable } from "~/types";
 
 function PostSources({
@@ -14,7 +14,7 @@ function PostSources({
 	// hooks
 	const { t } = useTranslation();
 
-	if (isEmptyArray(sources)) {
+	if (v.isEmptyArray(sources)) {
 		return null;
 	}
 

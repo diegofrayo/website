@@ -2,7 +2,7 @@ import classNames from "classnames";
 import * as React from "react";
 
 import { Block, Image, InlineText, Text } from "~/components/primitive";
-import { isNotEmptyString } from "~/utils/validations";
+import v from "~/lib/v";
 import type { T_ReactElement } from "~/types";
 
 type T_AboutMeBlockProps = {
@@ -15,7 +15,7 @@ export default function AboutMeBlock({ image, text, layout }: T_AboutMeBlockProp
 	return (
 		<Block className="tw-mb-8 tw-text-justify">
 			<Text className={classNames(layout === "C" && " tw-text-center")}>
-				{isNotEmptyString(image) ? (
+				{v.isNotEmptyString(image) ? (
 					<Image
 						src={image}
 						alt="Photography of Diego Rayo taken by him"

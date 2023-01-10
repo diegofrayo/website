@@ -1,12 +1,12 @@
 import autoBind from "auto-bind";
 
-import http from "~/lib/http";
 import { ENV_VARS } from "~/constants";
+import http from "~/lib/http";
+import v from "~/lib/v";
 import {
 	sortBy,
 	transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
-import { exists, isUndefined } from "~/utils/validations";
 import type { T_Object } from "~/types";
 
 import type {
@@ -41,7 +41,7 @@ class TimelineService {
 					const year = timelineGroupItemParsed.startDate.split("/")[0];
 					const mutatedResult = { ...result };
 
-					if (isUndefined(result[year])) {
+					if (v.isUndefined(result[year])) {
 						mutatedResult[year] = {
 							year: Number(year),
 							title: year,
@@ -56,7 +56,7 @@ class TimelineService {
 								return categories.find((c) => c.id === category);
 							})
 							.filter((category): category is T_TimelineCategory => {
-								return exists(category);
+								return v.exists(category);
 							})
 							.sort(sortBy("value")),
 					});

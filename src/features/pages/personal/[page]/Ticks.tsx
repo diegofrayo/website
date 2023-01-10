@@ -13,11 +13,11 @@ import {
 	Text,
 } from "~/components/primitive";
 import { useDidMount, useEnhancedState } from "~/hooks";
+import v from "~/lib/v";
 import { isConfirmAlertAccepted, showAlert } from "~/utils/browser";
 import { generateDate, getDatesDiff } from "~/utils/dates";
 import { sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
-import { isNotEmptyArray, isNotTrue, isNumber } from "~/utils/validations";
 import type {
 	T_HTMLElementAttributes,
 	T_ReactElement,
@@ -83,7 +83,7 @@ function Ticks(): T_ReactElement {
 				.map((item) => {
 					return {
 						...item,
-						id: isNumber(item.id) ? item.id : 0,
+						id: v.isNumber(item.id) ? item.id : 0,
 						cycles: item.cycles || 0,
 						ticksPerCycle: item.ticksPerCycle || 4,
 						intensity: item.intensity || 1250,
@@ -135,7 +135,7 @@ function Ticks(): T_ReactElement {
 			document.getElementById("form") as HTMLFormElement
 		)?.checkValidity();
 
-		if (isNotTrue(areInputValuesValid)) {
+		if (v.isNotTrue(areInputValuesValid)) {
 			showAlert("Inputs values are not valid");
 			return;
 		}
@@ -393,7 +393,7 @@ function Ticks(): T_ReactElement {
 								<InlineText className="tw-inline-block tw-w-8 tw-text-center">{cycles}</InlineText>
 							</Text>
 						</Block>
-					) : isNotEmptyArray(history) ? (
+					) : v.isNotEmptyArray(history) ? (
 						<Block className="tw-text-left tw-text-sm">
 							<Space
 								size={10}

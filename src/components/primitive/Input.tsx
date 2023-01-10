@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { isNotEmptyString } from "~/utils/validations";
+import v from "~/lib/v";
 import type { T_HTMLElementAttributes, T_ReactElement, T_ReactFunctionComponent } from "~/types";
 
 import Text from "./Text";
@@ -41,7 +41,7 @@ const Input = React.forwardRef(function Input(
 			className={classNames("root", "tw-block", containerProps.className)}
 			htmlFor={id}
 		>
-			{isNotEmptyString(label) ? <Label {...labelProps}>{label}</Label> : null}
+			{v.isNotEmptyString(label) ? <Label {...labelProps}>{label}</Label> : null}
 			<Element
 				ref={ref}
 				id={id}

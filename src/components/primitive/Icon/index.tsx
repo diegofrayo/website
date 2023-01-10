@@ -2,8 +2,8 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { logger } from "~/features/logging";
+import v from "~/lib/v";
 import { getObjectKeys, mirror } from "~/utils/objects-and-arrays";
-import { isNotEmptyString, isNumber, isString, isUndefined } from "~/utils/validations";
 import type { T_HTMLElementAttributes, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import { ICONS } from "./constants";
@@ -48,11 +48,11 @@ function Icon({
 
 	// utils
 	function getColorStyles(): string {
-		if (isNotEmptyString(color)) {
+		if (v.isNotEmptyString(color)) {
 			return color;
 		}
 
-		if (isNotEmptyString(icon.defaultProps.color)) {
+		if (v.isNotEmptyString(icon.defaultProps.color)) {
 			return icon.defaultProps.color;
 		}
 
@@ -60,7 +60,7 @@ function Icon({
 	}
 
 	// render
-	if (isUndefined(icon)) {
+	if (v.isUndefined(icon)) {
 		logger("WARN", "Icon does not exist", iconName);
 		return null;
 	}
@@ -70,12 +70,12 @@ function Icon({
 			"tw-inline-block",
 			icon.defaultProps.className,
 			iconClassName,
-			isUndefined(size) && "tw-w-4 tw-h-4",
-			isString(size) && size,
+			v.isUndefined(size) && "tw-w-4 tw-h-4",
+			v.isString(size) && size,
 		);
 		const iconComponentProps = {
 			className: classNames(baseIconClassNames, getColorStyles()),
-			...(isNumber(size) ? { style: { width: size, height: size } } : {}),
+			...(v.isNumber(size) ? { style: { width: size, height: size } } : {}),
 		};
 		const IconComponent = icon.icon;
 
@@ -86,7 +86,7 @@ function Icon({
 		);
 	}
 
-	if (isString(size)) {
+	if (v.isString(size)) {
 		throw new Error(`Size value for "${iconName}" has to be a number`);
 	}
 
@@ -99,8 +99,8 @@ function Icon({
 		src: icon.icon,
 		alt: `${icon.defaultProps.alt} icon`,
 		className: classNames(baseIconClassNames, withBackgroundWhenDarkMode && "dark:tw-p-0.5"),
-		width: isNumber(size) ? size : 24,
-		height: isNumber(size) ? size : 24,
+		width: v.isNumber(size) ? size : 24,
+		height: v.isNumber(size) ? size : 24,
 	};
 	const IconComponent = Image;
 

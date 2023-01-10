@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { isNotEmptyString } from "~/utils/validations";
+import v from "~/lib/v";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
 import { Label } from "./Input";
@@ -32,7 +32,7 @@ function Select({
 			className={classNames(styles["dfr-Select"], "tw-block", containerProps.className)}
 			htmlFor={id}
 		>
-			{isNotEmptyString(label) ? <Label {...labelProps}>{label}</Label> : null}
+			{v.isNotEmptyString(label) ? <Label {...labelProps}>{label}</Label> : null}
 			<select
 				className={className}
 				{...rest}

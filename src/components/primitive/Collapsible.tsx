@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { isBoolean, isNotEmptyString } from "~/utils/validations";
+import v from "~/lib/v";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 
 import Block from "./Block";
@@ -85,7 +85,7 @@ function useController({
 
 	// effects
 	React.useEffect(() => {
-		if (isBoolean(opened)) {
+		if (v.isBoolean(opened)) {
 			setIsOpen(opened);
 		}
 	}, [opened]);
@@ -107,7 +107,7 @@ function useController({
 		isOpen,
 
 		// vars
-		computedTitle: isNotEmptyString(title) ? title : isOpen ? "Hide" : "Show",
+		computedTitle: v.isNotEmptyString(title) ? title : isOpen ? "Hide" : "Show",
 
 		// handlers
 		handleToggleClick: () => setIsOpen((currentValue) => !currentValue),

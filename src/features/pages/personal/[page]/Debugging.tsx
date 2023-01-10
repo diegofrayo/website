@@ -6,8 +6,8 @@ import { AnalyticsService } from "~/features/analytics";
 import { AuthService } from "~/features/auth";
 import { clearLogsHistory, getLogsHistory } from "~/features/logging";
 import { useDidMount } from "~/hooks";
+import v from "~/lib/v";
 import { isBrowser, isDevelopmentEnvironment, isLocalhostEnvironment, isServer } from "~/utils/app";
-import { isNotEmptyArray } from "~/utils/validations";
 import {
 	getAndroidVersion,
 	getScreenSize,
@@ -73,7 +73,7 @@ function Debugging(): T_ReactElement {
 	return (
 		<Block>
 			<Pre variant={Pre.variant.STYLED}>{content.vars}</Pre>
-			{isNotEmptyArray(content.logs) ? (
+			{v.isNotEmptyArray(content.logs) ? (
 				<React.Fragment>
 					<Space size={3} />
 					<Pre variant={Pre.variant.STYLED}>{content.logs.join("\n\n--- /// ---\n\n")}</Pre>

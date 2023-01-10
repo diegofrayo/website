@@ -1,6 +1,5 @@
 import { ENV_VARS } from "~/constants";
-
-import { isEmptyString } from "./validations";
+import v from "~/lib/v";
 
 const MY_STUPID_SECRET_KEY = ENV_VARS.NEXT_PUBLIC_CRYPTO_KEY;
 
@@ -15,7 +14,7 @@ export async function decrypt(value: string): Promise<string> {
 		CryptoJS.enc.Utf8,
 	);
 
-	if (isEmptyString(decryptedText)) {
+	if (v.isEmptyString(decryptedText)) {
 		throw new Error(`decrypt: value "${value}" has not been decrypted`);
 	}
 

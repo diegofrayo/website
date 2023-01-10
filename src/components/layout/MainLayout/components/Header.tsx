@@ -4,21 +4,21 @@ import classNames from "classnames";
 import { useRouter } from "next/router";
 
 import { Block, Button, Icon, Link, List, Text, Space } from "~/components/primitive";
+import { ENV_VARS } from "~/constants";
 import { AuthService, withAuthComponent } from "~/features/auth";
-import { logAndReportError } from "~/features/logging";
 import { I18nService, useTranslation } from "~/features/i18n";
+import { logAndReportError } from "~/features/logging";
 import { renderIf } from "~/hocs";
 import { useClickOutside, useDidMount, useEnhancedState } from "~/hooks";
 import http from "~/lib/http";
+import v from "~/lib/v";
 import { useStoreSelector } from "~/stores";
 import { selectWebsiteMetadata, T_WebsiteMetadata } from "~/stores/modules/metadata";
+import { ROUTES, T_RoutesValues } from "~/features/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { deletePWACache, isPWA, showAlert } from "~/utils/browser";
-import { ENV_VARS } from "~/constants";
-import { ROUTES, T_RoutesValues } from "~/features/routing";
 import { getErrorMessage } from "~/utils/misc";
 import { generateSlug } from "~/utils/strings";
-import { isNotTrue, isNotEquals } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 function Header(): T_ReactElement {
@@ -163,7 +163,7 @@ function MainMenu(): T_ReactElement {
 						const isLinkActive =
 							pathname === item.url ||
 							asPath === item.url ||
-							(isNotEquals(item.url, ROUTES.HOME) && pathname.startsWith(item.url));
+							(v.isNotEquals(item.url, ROUTES.HOME) && pathname.startsWith(item.url));
 
 						return (
 							<List.Item
@@ -250,10 +250,10 @@ function ToggleThemeMenuItem(): T_ReactElement {
 		<SettingsMenuItem title={t("layout:header:settings:theme")}>
 			<Button
 				variant={Button.variant.SIMPLE}
-				disabled={isNotTrue(isDarkMode)}
+				disabled={v.isNotTrue(isDarkMode)}
 				className={classNames(
 					"tw-border-dashed tw-border-yellow-600 tw-py-0.5",
-					isNotTrue(isDarkMode) && "tw-border-b",
+					v.isNotTrue(isDarkMode) && "tw-border-b",
 				)}
 				onClick={handleToggleThemeClick}
 			>

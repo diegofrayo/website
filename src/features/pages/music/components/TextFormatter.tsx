@@ -5,11 +5,11 @@ import reactStringReplace from "react-string-replace";
 import { Button, Icon, Modal, Space, Block, InlineText, Pre } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import { GuitarChord, GuitarService, T_PlainChord } from "~/lib/guitar";
+import v from "~/lib/v";
 import { showAlert } from "~/utils/browser";
 import { safeCastNumber } from "~/utils/numbers";
 import { createArray } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
-import { isNumber, notFound } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement, T_ReactNode } from "~/types";
 
 // WARN: False positive
@@ -147,7 +147,7 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 				const target = event.target as HTMLButtonElement;
 				const chord = GuitarService.findChord(target.innerText.trim(), { returnAllVariants: true });
 
-				if (notFound(chord)) {
+				if (v.notFound(chord)) {
 					showAlert(`"${target.innerText}" details not found`);
 					return;
 				}
@@ -170,7 +170,7 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 	const handleUpdateSelectedUnparsedChordVariantClick: T_UseControllerReturn["handleUpdateSelectedUnparsedChordVariantClick"] =
 		function handleUpdateSelectedUnparsedChordVariantClick(value) {
 			return () => {
-				if (isNumber(value)) {
+				if (v.isNumber(value)) {
 					setSelectedUnparsedChordIndex(value);
 					return;
 				}

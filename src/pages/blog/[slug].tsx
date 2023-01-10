@@ -7,9 +7,9 @@ import BlogService, { T_BlogPost } from "~/features/pages/blog/service";
 import { getPageContentStaticProps, T_Locale } from "~/features/i18n";
 import { getMDXScope } from "~/features/mdx";
 import { ROUTES } from "~/features/routing";
+import v from "~/lib/v";
 import dataLoader from "~/server";
 import { replaceAll } from "~/utils/strings";
-import { isUndefined } from "~/utils/validations";
 
 export default BlogPostPage;
 
@@ -41,7 +41,7 @@ export const getStaticProps = getPageContentStaticProps<
 	callback: async ({ params, locale }) => {
 		const post = await BlogService.fetchPost({ slug: params.slug, locale });
 
-		if (isUndefined(post)) {
+		if (v.isUndefined(post)) {
 			return {
 				notFound: true,
 			};

@@ -4,10 +4,10 @@ import { useRouter } from "next/router";
 import { Block, Button, Icon, Link, Title, Text } from "~/components/primitive";
 import { T_IconName } from "~/components/primitive/Icon";
 import { useOnWindowStopScroll } from "~/hooks";
+import v from "~/lib/v";
 import { useStoreSelector } from "~/stores";
 import { selectWebsiteMetadata, T_WebsiteMetadata } from "~/stores/modules/metadata";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
-import { isNotEmptyString } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 import Header from "./components/Header";
@@ -47,9 +47,9 @@ function MainLayout({
 					id="body"
 					className="tw-py-32"
 				>
-					{isNotEmptyString(title) ? (
+					{v.isNotEmptyString(title) ? (
 						<Block className="tw-text-center">
-							{isNotEmptyString(parentUrl) ? (
+							{v.isNotEmptyString(parentUrl) ? (
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={parentUrl}

@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { Space, Button, Input, Block, Text } from "~/components/primitive";
 import { logAndReportError } from "~/features/logging";
 import { useDidMount } from "~/hooks";
+import v from "~/lib/v";
 import {
 	focusElement,
 	focusInputAndSelectText,
@@ -11,7 +12,6 @@ import {
 	isSmallScreen,
 } from "~/utils/browser";
 import { decrypt, encrypt } from "~/utils/dencrypt";
-import { isEmptyString, isNotEmptyString, isNull } from "~/utils/validations";
 import type {
 	T_ReactElement,
 	T_ReactOnClickEventHandler,
@@ -75,7 +75,10 @@ function Dencrypt(): T_ReactElement {
 				</output>
 				<Button
 					variant={Button.variant.DEFAULT}
-					className={classNames("tw-ml-auto", isNotEmptyString(output) ? "tw-block" : "tw-hidden")}
+					className={classNames(
+						"tw-ml-auto",
+						v.isNotEmptyString(output) ? "tw-block" : "tw-hidden",
+					)}
 					data-clipboard-text={output}
 					onClick={handleCopyToClipboardClick}
 				>
@@ -104,7 +107,7 @@ function useController(): T_UseControllerReturn {
 
 	// effects
 	useDidMount(() => {
-		if (isSmallScreen() || isNull(inputRef.current)) {
+		if (isSmallScreen() || v.isNull(inputRef.current)) {
 			return;
 		}
 
@@ -118,7 +121,7 @@ function useController(): T_UseControllerReturn {
 		event.preventDefault();
 		const text = (inputRef.current?.value || "").trim();
 
-		if (isEmptyString(text)) {
+		if (v.isEmptyString(text)) {
 			return;
 		}
 

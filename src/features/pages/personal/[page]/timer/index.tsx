@@ -7,17 +7,17 @@ import classNames from "classnames";
 import { Page } from "~/components/layout";
 import { Block, Button, Icon, InlineText, Space, Text, Title } from "~/components/primitive";
 import { GoBack, Render } from "~/components/shared";
+import { ENV_VARS } from "~/constants";
 import { withAuthPage } from "~/features/auth";
 import { useDidMount, useQuery } from "~/hooks";
 import http from "~/lib/http";
+import v from "~/lib/v";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { setScrollPosition, isConfirmAlertAccepted } from "~/utils/browser";
-import { ENV_VARS } from "~/constants";
 import { addLeftPadding } from "~/utils/formatting";
 import { delay } from "~/utils/misc";
 import { sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
-import { isNotEquals, isNotTrue } from "~/utils/validations";
 import type { T_ReactElement } from "~/types";
 
 import { ROUTINE_ITEMS_STATUS, ROUTINE_STATUS, TIMER_STATUS } from "./constants";
@@ -131,10 +131,10 @@ function TimerPage(): T_ReactElement {
 							<Block
 								className={classNames(
 									"tw-relative tw-mx-auto tw-min-h-screen tw-max-w-sm tw-shadow-md tw-shadow-gray-600 dfr-bg-color-wb",
-									isNotTrue(isUILocked) && "tw-pt-8",
+									v.isNotTrue(isUILocked) && "tw-pt-8",
 								)}
 							>
-								{isNotTrue(isUILocked) ? (
+								{v.isNotTrue(isUILocked) ? (
 									<GoBack
 										className="tw-absolute tw-top-0"
 										withConfirmation
@@ -870,7 +870,7 @@ function useController() {
 
 			if (
 				isRoutineCompleted(currentRoutine) &&
-				isNotEquals(currentRoutine.status, ROUTINE_STATUS.COMPLETED)
+				v.isNotEquals(currentRoutine.status, ROUTINE_STATUS.COMPLETED)
 			) {
 				markRoutineAsCompleted(currentRoutine);
 			} else {

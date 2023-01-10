@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { isBoolean, isNumber, isString } from "~/utils/validations";
+import v from "~/lib/v";
 import type { T_ReactSetState } from "~/types";
 
 type T_UseEnhacedStateStringReturn = [
@@ -35,7 +35,7 @@ function useEnhancedState(
 	const initialStateRef = React.useRef<typeof initialState>(initialState);
 	const [enhancedState, setEnhancedState] = React.useState<typeof initialState>(initialState);
 
-	if (isString(enhancedState)) {
+	if (v.isString(enhancedState)) {
 		return [
 			enhancedState,
 			setEnhancedState,
@@ -45,7 +45,7 @@ function useEnhancedState(
 		];
 	}
 
-	if (isBoolean(enhancedState)) {
+	if (v.isBoolean(enhancedState)) {
 		return [
 			enhancedState,
 			setEnhancedState,
@@ -58,7 +58,7 @@ function useEnhancedState(
 		];
 	}
 
-	if (isNumber(enhancedState)) {
+	if (v.isNumber(enhancedState)) {
 		return [
 			enhancedState,
 			setEnhancedState,

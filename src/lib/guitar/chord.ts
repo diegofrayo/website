@@ -1,12 +1,5 @@
+import v from "~/lib/v";
 import { createArray, sortBy } from "~/utils/objects-and-arrays";
-import {
-	isEmptyString,
-	isNotEmptyArray,
-	isNotTrue,
-	isNotUndefined,
-	isTrue,
-	isUndefined,
-} from "~/utils/validations";
 
 import { parseFret, parseGuitarString } from "./utils";
 import type { T_Finger, T_MusicNote, T_Chord, T_PlainChordDetails } from "./types";
@@ -31,8 +24,8 @@ class Chord {
 
 		this.name = plainChord.name;
 		this.barreFret = parseBarre(plainChord.musicNotes);
-		this.isBarreChord = isNotUndefined(this.barreFret);
-		this.firstFret = isUndefined(this.barreFret) ? musicNotes[0].guitarFret : this.barreFret.fret;
+		this.isBarreChord = v.isNotUndefined(this.barreFret);
+		this.firstFret = v.isUndefined(this.barreFret) ? musicNotes[0].guitarFret : this.barreFret.fret;
 		this.lastFret = musicNotes[musicNotes.length - 1].guitarFret;
 		this.touchedStrings = parseTouchedStrings(plainChord.touchedStrings);
 		this.musicNotesGroupedByFret = musicNotes.reduce(
@@ -59,11 +52,11 @@ export default Chord;
 // --- Utils ---
 
 function parseFinger(finger: string | undefined): T_Finger | undefined {
-	if (isUndefined(finger)) return undefined;
+	if (v.isUndefined(finger)) return undefined;
 
 	const REGEX = /^[1-4]$/;
 
-	if (isTrue(REGEX.test(finger))) {
+	if (v.isTrue(REGEX.test(finger))) {
 		return Number(finger) as T_Finger;
 	}
 
@@ -100,17 +93,17 @@ function parseTouchedStrings(touchedStrings: string): T_Chord["touchedStrings"] 
 function generateMusicNotes(input: string): T_MusicNote[] {
 	const musicNotes = input
 		.split("|")
-		.filter((item) => isNotTrue(item.includes("x")))
+		.filter((item) => v.isNotTrue(item.includes("x")))
 		.map((rawMusicNote: string): T_MusicNote => {
 			const [guitarString, guitarFret, finger, ...more] = rawMusicNote.split(",");
 
-			if (isNotEmptyArray(more)) {
+			if (v.isNotEmptyArray(more)) {
 				throw new Error(
 					"A music note only can have 3 elements (guitarString,guitarFret,finger?) as maximum",
 				);
 			}
 
-			if (isEmptyString(rawMusicNote)) {
+			if (v.isEmptyString(rawMusicNote)) {
 				throw new Error(
 					"You have entered a empty music note, probably because you have entered a single '|' character at the end or two '|' next to each other",
 				);

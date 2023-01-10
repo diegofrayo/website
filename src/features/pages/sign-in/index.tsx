@@ -3,12 +3,12 @@ import * as React from "react";
 import { Page } from "~/components/layout";
 import { Input } from "~/components/primitive";
 import { AuthService, withAuthPage } from "~/features/auth";
-import { logAndReportError } from "~/features/logging";
 import { getPageContentStaticProps } from "~/features/i18n";
+import { logAndReportError } from "~/features/logging";
 import { redirect, ROUTES } from "~/features/routing";
+import v from "~/lib/v";
 import { showToast } from "~/utils/browser";
 import { getErrorMessage } from "~/utils/misc";
-import { isEmptyString } from "~/utils/validations";
 import type {
 	T_ReactElement,
 	T_ReactOnChangeEventHandler,
@@ -88,7 +88,7 @@ function useController(): T_UseControllerReturn {
 	const onKeyPressHandler: T_UseControllerReturn["onKeyPressHandler"] = async function onKeyPress(
 		event,
 	) {
-		if (event.key !== "Enter" || isEmptyString(inputValue)) {
+		if (event.key !== "Enter" || v.isEmptyString(inputValue)) {
 			return;
 		}
 

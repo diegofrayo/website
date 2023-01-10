@@ -6,6 +6,7 @@ import { AnalyticsService } from "~/features/analytics";
 import { DevelopmentTools } from "~/features/development-tools";
 import { I18nService, T_Locale } from "~/features/i18n";
 import { useDidMount, useDocumentTitle } from "~/hooks";
+import v from "~/lib/v";
 import { useStoreSelector } from "~/stores";
 import {
 	selectWebsiteMetadata,
@@ -17,7 +18,6 @@ import { selectPageConfig, T_PageConfig } from "~/stores/modules/page-config";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { ROUTES, T_RoutesValues } from "~/features/routing";
 import { generateSlug } from "~/utils/strings";
-import { isNotEmptyString, isTrue } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 type T_PageProps = {
@@ -48,7 +48,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 
 	// vars
 	const metadata = {
-		title: isNotEmptyString(config.title)
+		title: v.isNotEmptyString(config.title)
 			? `${config.title}${config.replaceTitle ? "" : ` - ${SEO_METADATA.title}`}`
 			: SEO_METADATA.title,
 		url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
@@ -80,7 +80,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 					name="google-site-verification"
 					content="Gf-6mROjwXEjbtUUtl2rX5NgzWuzWxgxoKYTaGsqvtw"
 				/>
-				{isTrue(config.disableSEO) ? (
+				{v.isTrue(config.disableSEO) ? (
 					<meta
 						name="robots"
 						content="noindex,nofollow"

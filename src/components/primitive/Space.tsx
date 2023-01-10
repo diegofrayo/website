@@ -1,9 +1,9 @@
 import * as React from "react";
 import classNames from "classnames";
 
+import v from "~/lib/v";
 import { mirror } from "~/utils/objects-and-arrays";
 import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
-import { isNotEmptyString, isNumber } from "~/utils/validations";
 
 const VARIANTS = mirror(["DEFAULT", "DASHED"]);
 type T_Variant = keyof typeof VARIANTS;
@@ -55,7 +55,7 @@ function useController({
 		return classNames(
 			"tw-flex-shrink-0",
 			isVerticalOrientation ? "tw-h-full" : "tw-h-px",
-			isNotEmptyString(responsive)
+			v.isNotEmptyString(responsive)
 				? responsive
 				: classNames(composeSizeClassNames(), isVerticalOrientation && "tw-inline-block"),
 			variant === VARIANTS.DEFAULT && "tw-border-0",
@@ -87,7 +87,7 @@ function useController({
 	}
 
 	function composeSingleSideClassName(singleSide: string, singleSideSize?: number): string {
-		if (isNumber(singleSideSize)) {
+		if (v.isNumber(singleSideSize)) {
 			return `tw-${singleSide}-${singleSideSize}`;
 		}
 

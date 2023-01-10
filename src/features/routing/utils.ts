@@ -1,7 +1,7 @@
 import { NextRouter } from "next/router";
 
+import v from "~/lib/v";
 import { isPWA } from "~/utils/browser";
-import { isNotTrue, isNotEmptyString, isNotEquals } from "~/utils/validations";
 
 // --- Constants ---
 
@@ -66,18 +66,21 @@ export function redirect(path: string): void {
 export function initPWARoutingConfig(router: NextRouter): () => void {
 	const lastPageVisited = window.localStorage.getItem(LOCAL_STORAGE_KEY);
 
-	if (isNotTrue(window.navigator.onLine)) {
+	if (v.isNotTrue(window.navigator.onLine)) {
 		return () => undefined;
 	}
 
-	if (isNotEmptyString(lastPageVisited) && isNotEquals(lastPageVisited, window.location.pathname)) {
+	if (
+		v.isNotEmptyString(lastPageVisited) &&
+		v.isNotEquals(lastPageVisited, window.location.pathname)
+	) {
 		window.localStorage.removeItem(LOCAL_STORAGE_KEY);
 
 		const BLACKLIST = ["/lgy/"];
 		const isCurrentPageInBlacklist =
 			BLACKLIST.find((item) => window.location.pathname.includes(item)) !== undefined;
 
-		if (isNotTrue(isCurrentPageInBlacklist)) {
+		if (v.isNotTrue(isCurrentPageInBlacklist)) {
 			window.location.href = lastPageVisited;
 		}
 

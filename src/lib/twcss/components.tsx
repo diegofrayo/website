@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import * as React from "react";
 
-import { isObject, isString } from "~/utils/validations";
+import v from "~/lib/v";
 import type { T_ReactChildren, T_ReactFunctionComponent, T_Object } from "~/types";
 
 import { HTML_TAGS, T_HTMLTag } from "./constants";
@@ -77,16 +77,16 @@ function generateClassName({
 	componentProps,
 }: T_GenerateClassNameParams): string {
 	// twcss.a`x y z` | twcss.a("x y z")
-	if (Array.isArray(componentStyles) || isString(componentStyles)) {
+	if (Array.isArray(componentStyles) || v.isString(componentStyles)) {
 		return classNames(componentStyles.toString(), classNameProp);
 	}
 
 	// twcss.a({ $TWCSS_BASE_STYLES: "y", a: "a", b: "b" c: (props) => `a ${props.x ? "s" : "w"}`})
-	if (isObject(componentStyles)) {
-		const TWCSSVariantStyles = isString(TWCSSVariant) ? componentStyles[TWCSSVariant] : "";
+	if (v.isObject(componentStyles)) {
+		const TWCSSVariantStyles = v.isString(TWCSSVariant) ? componentStyles[TWCSSVariant] : "";
 
 		return classNames(
-			isString(componentStyles.$TWCSS_BASE_STYLES) && componentStyles.$TWCSS_BASE_STYLES,
+			v.isString(componentStyles.$TWCSS_BASE_STYLES) && componentStyles.$TWCSS_BASE_STYLES,
 			typeof TWCSSVariantStyles === "function"
 				? TWCSSVariantStyles(componentProps)
 				: TWCSSVariantStyles,

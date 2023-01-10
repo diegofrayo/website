@@ -2,9 +2,9 @@ import * as React from "react";
 
 import { Icon, Image, Link, List, Block, Text } from "~/components/primitive";
 import { useTranslation } from "~/features/i18n";
-import type { T_ReactElementNullable } from "~/types";
+import v from "~/lib/v";
 import { generateSlug } from "~/utils/strings";
-import { isEmptyArray } from "~/utils/validations";
+import type { T_ReactElementNullable } from "~/types";
 
 import { T_Song } from "../service";
 
@@ -16,7 +16,7 @@ function SongSources({ sources }: T_SongSourcesProps): T_ReactElementNullable {
 	// hooks
 	const { t } = useTranslation();
 
-	if (isEmptyArray(sources)) {
+	if (v.isEmptyArray(sources)) {
 		return null;
 	}
 

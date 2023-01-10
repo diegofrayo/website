@@ -5,14 +5,14 @@ import { Page, MainLayout } from "~/components/layout";
 import { Redirect } from "~/components/shared";
 import { withAuthPage } from "~/features/auth";
 import { ROUTES } from "~/features/routing";
-import { isUndefined } from "~/utils/validations";
+import v from "~/lib/v";
 import type { T_ReactElement } from "~/types";
 
 /*
 // NOTE: It doesn't work, here is the explanation (because of css-modules)
 // https://github.com/vercel/next.js/issues/31271#issuecomment-965969089
 const PERSONAL_PAGES_COMPONENTS = PERSONAL_PAGES.filter((page) => {
-	return isNotEmptyString(page.componentName);
+	return v.isNotEmptyString(page.componentName);
 }).map((page) => {
 	return {
 		...page,
@@ -80,7 +80,7 @@ function PersonalPage({ page }: T_PersonalPageProps): T_ReactElement {
 	// vars
 	const pageConfig = PERSONAL_PAGES_COMPONENTS.find((item) => item.slug === page);
 
-	if (isUndefined(pageConfig)) {
+	if (v.isUndefined(pageConfig)) {
 		return <Redirect href={ROUTES.ERROR_404} />;
 	}
 

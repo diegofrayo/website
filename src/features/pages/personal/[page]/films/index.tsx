@@ -4,10 +4,10 @@ import classNames from "classnames";
 import { Button, Icon, Image, Link, Space, Title, Block, Text } from "~/components/primitive";
 import { Render } from "~/components/shared";
 import { useQuery } from "~/hooks";
+import v from "~/lib/v";
 import { getScrollPosition, setScrollPosition, isInViewport } from "~/utils/browser";
 import { sortBy } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
-import { isEmptyString, isUndefined } from "~/utils/validations";
 import type { T_Object, T_ReactElement, T_ReactOnClickEventObject } from "~/types";
 
 import FilmsService, { T_Film } from "./service";
@@ -259,7 +259,7 @@ function useController(): T_UseControllerReturn {
 
 	// utils
 	function filterFilms(films: T_Film[], filter: string): T_Film[] {
-		if (isEmptyString(filter)) {
+		if (v.isEmptyString(filter)) {
 			return films;
 		}
 
@@ -284,7 +284,7 @@ function useController(): T_UseControllerReturn {
 		// vars
 		isLoading,
 		error,
-		data: isUndefined(data)
+		data: v.isUndefined(data)
 			? data
 			: {
 					films: filterFilms(data, selectedCategory).sort(

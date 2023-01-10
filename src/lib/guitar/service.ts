@@ -1,6 +1,6 @@
+import v from "~/lib/v";
 import { sortPlainArray } from "~/utils/objects-and-arrays";
 import { replaceAll } from "~/utils/strings";
-import { exists, isEmptyString, isNotEmptyString, notFound } from "~/utils/validations";
 
 import Chord from "./chord";
 import CHORDS from "./data/chords.json";
@@ -22,7 +22,7 @@ class GuitarService {
 			.map((currentTextLine, currentTextLineIndex, lyricsTextLinesArray) => {
 				const isCurrentLineTheLastOne = currentTextLineIndex === lyricsTextLinesArray.length - 1;
 
-				if (isEmptyString(currentTextLine)) {
+				if (v.isEmptyString(currentTextLine)) {
 					isTheLastParsedTextLineBlank = true;
 
 					/*
@@ -35,7 +35,7 @@ class GuitarService {
 
 				const currentTextLineParsed = currentTextLine
 					.split(" ")
-					.filter((currentTextLineItem) => isNotEmptyString(currentTextLineItem))
+					.filter((currentTextLineItem) => v.isNotEmptyString(currentTextLineItem))
 					.sort(this.sortTextLineItemsByLength)
 					.reduce((result, currentTextLineItem, _, currentTextLineItemsArray) => {
 						const { parsedTextLine, isCurrentTextLineItemAChord } = this.parseTextLine({
@@ -73,7 +73,7 @@ class GuitarService {
 		const { chordName, chordVariantIndex } = this.parseChordName(rawChordName);
 		const chord = (CHORDS as unknown as T_ChordsDatabase)[chordName];
 
-		if (notFound(chord)) {
+		if (v.notFound(chord)) {
 			return undefined;
 		}
 
@@ -89,7 +89,7 @@ class GuitarService {
 				});
 			}
 
-			if (exists(chord[chordVariantIndex])) {
+			if (v.exists(chord[chordVariantIndex])) {
 				return {
 					name: chordName,
 					musicNotes: chord[chordVariantIndex].music_notes,
@@ -144,7 +144,7 @@ class GuitarService {
 	} {
 		const chord = this.findChord(currentTextLineItem);
 
-		if (notFound(chord)) {
+		if (v.notFound(chord)) {
 			return { parsedTextLine: currentTextLineParsed, isCurrentTextLineItemAChord: false };
 		}
 

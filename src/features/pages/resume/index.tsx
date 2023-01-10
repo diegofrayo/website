@@ -17,8 +17,8 @@ import {
 import { GoBack } from "~/components/shared";
 import { useTranslation } from "~/features/i18n";
 import { ROUTES } from "~/features/routing";
+import v from "~/lib/v";
 import { generateSlug } from "~/utils/strings";
-import { isNotEmptyString } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactElement {
@@ -278,7 +278,7 @@ function ExperienceTimelineItem({
 			className="tw-relative tw-mb-8 tw-pl-9 last:tw-mb-0 print:tw-mb-20"
 		>
 			<Block className="tw-absolute tw--left-4 tw-top-0 tw-h-10 tw-w-10 tw-overflow-hidden tw-border-4 dfr-border-color-bw">
-				{isNotEmptyString(companyLogo) ? (
+				{v.isNotEmptyString(companyLogo) ? (
 					<Image
 						src={companyLogo}
 						alt="Company logo"
@@ -298,7 +298,7 @@ function ExperienceTimelineItem({
 					{role}
 				</Title>
 
-				{isNotEmptyString(companyWebsite) ? (
+				{v.isNotEmptyString(companyWebsite) ? (
 					<Link
 						className="tw-underline"
 						href={companyWebsite}

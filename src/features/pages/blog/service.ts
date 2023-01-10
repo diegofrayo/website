@@ -1,11 +1,11 @@
-import http from "~/lib/http";
-import { I18nService, T_Locale } from "~/features/i18n";
 import { ENV_VARS } from "~/constants";
+import { I18nService, T_Locale } from "~/features/i18n";
+import http from "~/lib/http";
+import v from "~/lib/v";
 import {
 	sortBy,
 	transformObjectKeysFromSnakeCaseToLowerCamelCase,
 } from "~/utils/objects-and-arrays";
-import { exists } from "~/utils/validations";
 import type { T_Object } from "~/types";
 
 class BlogService {
@@ -80,7 +80,7 @@ function BlogPostVO(
 			return categories.find((item) => item.id === category);
 		})
 		.filter((category): category is T_BlogPostCategory => {
-			return exists(category);
+			return v.exists(category);
 		})
 		.sort(sortBy("value"));
 

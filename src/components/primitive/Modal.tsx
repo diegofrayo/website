@@ -2,8 +2,8 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { useDidMount, useToggleBodyScroll } from "~/hooks";
+import v from "~/lib/v";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
-import { isNull, isTrue } from "~/utils/validations";
 import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 
 type T_ModalProps = {
@@ -51,7 +51,7 @@ function Backdrop({ children, className, onCloseHandler }: T_BackdropProps): T_R
 
 	// effects
 	useDidMount(() => {
-		if (isNull(dialogRef.current) || isTrue(dialogRef.current.open)) {
+		if (v.isNull(dialogRef.current) || v.isTrue(dialogRef.current.open)) {
 			return;
 		}
 

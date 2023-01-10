@@ -1,13 +1,13 @@
 import * as React from "react";
 import classNames from "classnames";
 
+import v from "~/lib/v";
 import { mirror } from "~/utils/objects-and-arrays";
 import { generateSlug } from "~/utils/strings";
 import type { T_HTMLElementAttributes, T_ReactChildren, T_ReactElement } from "~/types";
 
 import Icon from "./Icon";
 import Link from "./Link";
-import { isString } from "~/utils/validations";
 
 const VARIANTS = mirror(["UNSTYLED", "PRIMARY", "SECONDARY"]);
 type T_Variant = keyof typeof VARIANTS;
@@ -126,7 +126,7 @@ function useController({
 				SECONDARY: "dfr-text-color-bw",
 				UNSTYLED: "",
 			}[variant],
-			isString(size) &&
+			v.isString(size) &&
 				{
 					XS: "tw-text-md",
 					SM: "tw-text-xl",
@@ -146,7 +146,7 @@ function useController({
 		...rest,
 
 		// vars
-		id: variant === VARIANTS.PRIMARY && isString(children) ? generateSlug(children) : id,
+		id: variant === VARIANTS.PRIMARY && v.isString(children) ? generateSlug(children) : id,
 		className: classNames(
 			`dfr-Title dfr-Title--${variant.toLowerCase()}`,
 			"tw-font-bold",
