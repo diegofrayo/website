@@ -51,9 +51,7 @@ function composeClassName(
 ): string {
 	return classNames(
 		className,
-		variant === VARIANTS.FEATURED &&
-			"dfr-bg-color-secondary dfr-border-color-primary tw-border tw-border-l-4 tw-p-4",
-		variant === VARIANTS.QUOTE &&
-			"dfr-border-color-primary dfr-text-color-secondary tw-px-4 tw-border-l-4 tw-italic",
+		variant === VARIANTS.FEATURED && "tw-border tw-border-l-4 tw-p-4",
+		variant === VARIANTS.QUOTE && "tw-px-4 tw-border-l-4 tw-italic",
 	);
 }

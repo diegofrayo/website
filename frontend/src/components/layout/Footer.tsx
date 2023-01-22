@@ -1,6 +1,7 @@
 import * as React from "react";
+import classNames from "classnames";
 
-import { Block, Button, Icon, Link, Text } from "~/components/primitive";
+import { Block, Button, Icon, Link } from "~/components/primitive";
 import { useOnWindowStopScroll } from "~/@diegofrayo/library/hooks";
 import { getScrollPosition, setScrollPosition } from "~/@diegofrayo/library/utils/browser";
 import type { T_IconName } from "~/components/primitive/Icon";
@@ -14,39 +15,39 @@ function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement
 	return (
 		<Block
 			is="footer"
-			className="dfr-bg-color-gs-black tw-relative print:tw-hidden"
+			className="tw-relative tw-border-t tw-border-slate-100 tw-bg-slate-50 tw-py-4 tw-px-8 tw-text-center tw-text-slate-500 print:tw-hidden"
 		>
-			<Block className="dfr-max-w-layout dfr-text-color-gs-400 tw-mx-auto tw-px-8 tw-text-center">
-				<Block className="tw-pt-16 tw-pb-8">
-					<Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase">contact me</Text>
-					<Block className="tw-mt-2 tw-inline-block tw-pt-2">
-						<Block className="tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
-							<FooterIcon
-								url={"WEBSITE_METADATA.social.linkedin"}
-								icon={Icon.icon.LINKEDIN}
-							/>
-							<FooterIcon
-								url={"WEBSITE_METADATA.social.github"}
-								icon={Icon.icon.GITHUB_LIGHT}
-							/>
-							<FooterIcon
-								url={"WEBSITE_METADATA.social.twitter"}
-								icon={Icon.icon.TWITTER}
-							/>
-							<FooterIcon
-								url={"WEBSITE_METADATA.social.couchsurfing"}
-								icon={Icon.icon.COUCHSURFING}
-							/>
-							<FooterIcon
-								url={"WEBSITE_METADATA.social.spotify"}
-								icon={Icon.icon.SPOTIFY}
-							/>
-						</Block>
-					</Block>
+			<Block className="tw-my-16">
+				<Block className="tw-inline-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
+					<FooterIcon
+						url={"WEBSITE_METADATA.social.linkedin"}
+						icon={Icon.icon.LINKEDIN}
+						className="tw-bg-sky-800"
+					/>
+					<FooterIcon
+						url={"WEBSITE_METADATA.social.github"}
+						icon={Icon.icon.GITHUB_LIGHT}
+						className="tw-bg-gray-700"
+					/>
+					<FooterIcon
+						url={"WEBSITE_METADATA.social.twitter"}
+						icon={Icon.icon.TWITTER}
+						className="tw-bg-blue-900"
+					/>
+					<FooterIcon
+						url={"WEBSITE_METADATA.social.couchsurfing"}
+						icon={Icon.icon.COUCHSURFING}
+						className="tw-bg-orange-900"
+					/>
+					<FooterIcon
+						url={"WEBSITE_METADATA.social.spotify"}
+						icon={Icon.icon.SPOTIFY}
+						className="tw-bg-green-900"
+					/>
 				</Block>
-				<Block className="tw-py-4 tw-text-xs">
-					Diego Rayo | @diegofrayo | Software Developer | {new Date().getFullYear()}
-				</Block>
+			</Block>
+			<Block className="tw-text-xs">
+				Diego Rayo | @diegofrayo | Software Developer | {new Date().getFullYear()}
 			</Block>
 
 			{hasToDisplayGoToTheTopButton ? <GoToTopButton /> : null}
@@ -61,18 +62,19 @@ export default Footer;
 type T_FooterIconProps = {
 	icon: T_IconName;
 	url: string;
+	className: string;
 };
 
-function FooterIcon({ icon, url }: T_FooterIconProps): T_ReactElement {
+function FooterIcon({ icon, url, className }: T_FooterIconProps): T_ReactElement {
 	return (
 		<Link
 			variant={Link.variant.SIMPLE}
 			href={url}
-			className="tw-m-2 tw-inline-block sm:tw-my-0 sm:tw-ml-0 sm:tw-mr-4 last:sm:tw-mr-0"
+			className={classNames("tw-m-2 tw-inline-block tw-rounded-xl tw-p-2", className)}
 		>
 			<Icon
 				icon={icon}
-				size={32}
+				size={48}
 			/>
 		</Link>
 	);
@@ -105,12 +107,12 @@ function GoToTopButton(): T_ReactElementNullable {
 		return (
 			<Button
 				variant={Button.variant.SIMPLE}
-				className="dfr-shadow dfr-bg-color-gs-black tw-fixed tw-bottom-3 tw-right-3 tw-z-50 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-bg-opacity-70 tw-text-2xl sm:tw-right-4 sm:tw-bottom-4"
+				className="tw-fixed tw-bottom-3 tw-right-3 tw-z-50 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-bg-black tw-bg-opacity-70 tw-text-2xl sm:tw-right-4 sm:tw-bottom-4"
 				onClick={handleGoToTheTopClick}
 			>
 				<Icon
 					icon={Icon.icon.ARROW_UP}
-					color="dfr-text-color-gs-white"
+					color="tw-text-white"
 				/>
 			</Button>
 		);

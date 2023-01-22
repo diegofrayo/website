@@ -137,8 +137,7 @@ function Wrapper({
 			is="span"
 			className={classNames(
 				"tw-inline-flex tw-items-center tw-justify-center tw-align-middle",
-				withBackgroundWhenDarkMode &&
-					"dark:dfr-bg-color-gs-white tw-overflow-hidden dark:tw-rounded-full",
+				withBackgroundWhenDarkMode && "tw-overflow-hidden dark:tw-rounded-full",
 				className,
 			)}
 		>
@@ -183,7 +182,7 @@ function LibraryIcon({ icon, iconClassName, size, color }: T_LibraryIconProps) {
 			return icon.defaultProps.color;
 		}
 
-		return "dfr-text-color-bw";
+		return "";
 	}
 
 	function getSizeStyles(): string {

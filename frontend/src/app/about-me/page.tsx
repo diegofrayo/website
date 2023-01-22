@@ -1,8 +1,10 @@
+import * as React from "react";
+
 function AboutMePage() {
 	return (
-		<main>
+		<React.Fragment>
 			<h1>About me</h1>
-		</main>
+		</React.Fragment>
 	);
 }
 

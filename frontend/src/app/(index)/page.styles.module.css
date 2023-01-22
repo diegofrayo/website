@@ -1,0 +1,57 @@
+.dfr-PictureFrame::before,
+.dfr-PictureFrame::after {
+	@apply tw-bg-black;
+	content: " ";
+	display: block;
+	height: 50px;
+	position: absolute;
+	top: -40px;
+	width: 2.5px;
+	z-index: -1;
+}
+
+.dfr-PictureFrame::before {
+	transform: rotate(45deg);
+	left: 46px;
+}
+
+.dfr-PictureFrame::after {
+	transform: rotate(-45deg);
+	right: 46px;
+}
+
+.dfr-PictureFrame--portrait::before,
+.dfr-PictureFrame--portrait::after {
+	height: 24px;
+	top: -17px;
+}
+
+.dfr-PictureFrame--portrait::before {
+	transform: rotate(-40deg);
+}
+
+.dfr-PictureFrame--portrait::after {
+	transform: rotate(40deg);
+}
+
+.dfr-TV::before,
+.dfr-TV::after {
+	@apply tw-bg-gray-700;
+	@apply tw-w-2;
+	@apply tw-h-6;
+	content: " ";
+	display: block;
+	position: absolute;
+	top: 90%;
+	z-index: 0;
+}
+
+.dfr-TV::before {
+	left: 15%;
+	transform: rotate(45deg);
+}
+
+.dfr-TV::after {
+	right: 15%;
+	transform: rotate(-45deg);
+}

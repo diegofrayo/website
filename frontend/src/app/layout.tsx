@@ -1,3 +1,5 @@
+"use client";
+
 import "~/styles/globals.css";
 
 import * as React from "react";
@@ -24,12 +26,14 @@ function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html
 			lang="en"
-			className={classNames("tw-bg-gray-800 tw-py-4", baseFont.variable, titlesFont.variable)}
+			className={classNames("tw-bg-white", baseFont.variable, titlesFont.variable)}
 		>
 			<head />
-			<body className="tw-mx-auto tw-max-w-screen-lg tw-rounded-md tw-border-8 tw-border-yellow-500 tw-bg-white">
+			<body className="tw-flex tw-min-h-screen tw-flex-col">
 				<Header />
-				<main>{children}</main>
+				<main className="tw-mx-auto tw-flex tw-w-full tw-max-w-screen-lg tw-flex-1 tw-items-center tw-justify-center">
+					{children}
+				</main>
 				<Footer />
 			</body>
 		</html>
@@ -37,5 +41,3 @@ function RootLayout({ children }: { children: React.ReactNode }) {
 }
 
 export default RootLayout;
-
-// --- Components ---

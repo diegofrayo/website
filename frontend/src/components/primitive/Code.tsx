@@ -25,7 +25,7 @@ function Code(props: T_CodeProps): T_ReactElement {
 	return (
 		<code
 			className={classNames(
-				"dfr-text-color-inline-code hover:dfr-border-color-inline-code tw-cursor-pointer tw-text-base tw-italic hover:tw-border-b hover:tw-border-dashed",
+				"tw-cursor-pointer tw-text-base tw-italic hover:tw-border-b hover:tw-border-dashed",
 				className,
 			)}
 			onClick={handleClick}

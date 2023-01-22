@@ -80,9 +80,8 @@ function useLink({
 	const isExternalLink = href.startsWith("/") === false && href.startsWith("#") === false;
 	const composedClassName = classNames(className, {
 		"dfr-transition-opacity": variant === VARIANTS.SIMPLE,
-		"dfr-transition-opacity dfr-text-color-links tw-font-bold tw-underline":
-			variant === VARIANTS.PRIMARY,
-		"dfr-transition-opacity dfr-text-color-bw tw-font-bold": variant === VARIANTS.SECONDARY,
+		"dfr-transition-opacity tw-font-bold tw-underline": variant === VARIANTS.PRIMARY,
+		"dfr-transition-opacity tw-font-bold": variant === VARIANTS.SECONDARY,
 	});
 
 	// utils

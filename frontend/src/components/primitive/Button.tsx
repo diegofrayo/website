@@ -44,7 +44,7 @@ function composeClassName(
 	return classNames(
 		variant === VARIANTS.SIMPLE && "dfr-transition-opacity",
 		variant === VARIANTS.DEFAULT &&
-			"dfr-transition-opacity dfr-text-color-gs-black tw-text-sm tw-lowercase dark:dfr-text-color-gs-white tw-font-bold",
+			"dfr-transition-opacity tw-text-black tw-text-sm tw-lowercase dark:tw-text-white tw-font-bold",
 		disabled && "tw-cursor-not-allowed tw-opacity-50",
 		className,
 	);
