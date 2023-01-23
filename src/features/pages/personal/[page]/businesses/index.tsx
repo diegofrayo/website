@@ -12,7 +12,6 @@ import {
 	Space,
 	Text,
 } from "~/components/primitive";
-import { Emoji } from "~/components/shared";
 import { withAuthPage } from "~/features/auth";
 import { useDidMount, useEnhancedState } from "~/hooks";
 import v from "~/lib/v";
@@ -24,21 +23,21 @@ import type { T_Object, T_ReactChildren, T_ReactElement, T_ReactElementNullable 
 
 import styles from "./styles.module.css";
 
-type T_ContactsProps = {
-	contacts: T_Object<T_GroupOfContacts>;
+type T_BusinessesProps = {
+	businesses: T_Object<T_GroupOfBusinesses>;
 };
 
-function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
+function Businesses({ businesses }: T_BusinessesProps): T_ReactElementNullable {
 	// hooks
 	const [isAllCollapsibleOpened, setAllCollapsibleOpened, toggleIsAllCollapsibleOpened] =
 		useEnhancedState(false);
 
 	// states & refs
-	const { current: totalOfContacts } = React.useRef<number>(countAllContacts(contacts));
+	const { current: totalOfBusinesses } = React.useRef<number>(countAllBusinesses(businesses));
 	const [whatsAppOption, setWhatsAppOption] = React.useState<T_WhatsAppOption>("api");
 
 	// vars
-	const PAGE_TITLE = "Contacts";
+	const PAGE_TITLE = "Businesses";
 
 	// effects
 	useDidMount(() => {
@@ -84,7 +83,7 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 							>
 								Número total de contactos:
 							</InlineText>
-							<InlineText>{totalOfContacts}</InlineText>
+							<InlineText>{totalOfBusinesses}</InlineText>
 						</Block>
 						<Block className="tw-hidden print:tw-hidden sm:tw-block">
 							<Button
@@ -134,77 +133,81 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 				</Block>
 
 				<Block>
-					{Object.entries(contacts).map(([groupName, groupData]: [string, T_GroupOfContacts]) => {
-						const parsedGroupName = groupName.split("-").slice(1).join("-");
+					{Object.entries(businesses).map(
+						([groupName, groupData]: [string, T_GroupOfBusinesses]) => {
+							const parsedGroupName = groupName;
 
-						if (Array.isArray(groupData)) {
+							if (Array.isArray(groupData)) {
+								return (
+									<BusinessesGroup
+										key={generateSlug(parsedGroupName)}
+										groupName={parsedGroupName}
+										businesses={groupData}
+										collapsibleOpened={isAllCollapsibleOpened}
+										whatsAppOption={whatsAppOption}
+									/>
+								);
+							}
+
 							return (
-								<ContactsGroup
-									key={generateSlug(parsedGroupName)}
-									groupName={parsedGroupName}
-									contacts={groupData}
-									collapsibleOpened={isAllCollapsibleOpened}
-									whatsAppOption={whatsAppOption}
-								/>
+								<Collapsible
+									key={generateSlug(groupName)}
+									title={`${parsedGroupName} [${countGroupOfBusinesses(groupData)}]`}
+									className="tw-mb-8 last:tw-mb-0"
+									opened={isAllCollapsibleOpened}
+								>
+									{Object.entries(groupData).map(
+										([subGroupName, subGroupBusinesses]: [string, T_Business[]]) => {
+											const parsedSubGroupName = subGroupName;
+
+											return (
+												<BusinessesGroup
+													key={generateSlug(parsedSubGroupName)}
+													groupName={parsedSubGroupName}
+													businesses={subGroupBusinesses}
+													collapsibleOpened={isAllCollapsibleOpened}
+													whatsAppOption={whatsAppOption}
+												/>
+											);
+										},
+									)}
+								</Collapsible>
 							);
-						}
-
-						return (
-							<Collapsible
-								key={generateSlug(groupName)}
-								title={`${parsedGroupName} [${countGroupOfContacts(groupData)}]`}
-								className="tw-mb-8 last:tw-mb-0"
-								opened={isAllCollapsibleOpened}
-							>
-								{Object.entries(groupData).map(
-									([subGroupName, subGroupContacts]: [string, T_Contact[]]) => {
-										const parsedSubGroupName = subGroupName.split("-").slice(1).join("-");
-
-										return (
-											<ContactsGroup
-												key={generateSlug(parsedSubGroupName)}
-												groupName={parsedSubGroupName}
-												contacts={subGroupContacts}
-												collapsibleOpened={isAllCollapsibleOpened}
-												whatsAppOption={whatsAppOption}
-											/>
-										);
-									},
-								)}
-							</Collapsible>
-						);
-					})}
+						},
+					)}
 				</Block>
 			</MainLayout>
 		</Page>
 	);
 }
 
-export default withAuthPage<T_ContactsProps>(Contacts);
+export default withAuthPage<T_BusinessesProps>(Businesses);
 
 // --- Components ---
 
-type T_ContactsGroupProps = {
+type T_BusinessesGroupProps = {
 	groupName: string;
-	contacts: T_Contact[];
+	businesses: T_Business[];
 	collapsibleOpened: boolean;
 	whatsAppOption: T_WhatsAppOption;
 };
 
-function ContactsGroup({
+function BusinessesGroup({
 	groupName,
-	contacts,
+	businesses,
 	collapsibleOpened,
 	whatsAppOption,
-}: T_ContactsGroupProps): T_ReactElement {
+}: T_BusinessesGroupProps): T_ReactElement {
 	return (
 		<div className="root tw-mb-8 last:tw-mb-0">
 			<Collapsible
-				title={`${groupName} [${countGroupOfContacts(contacts)}]`}
+				title={`${groupName} [${countGroupOfBusinesses(businesses)}]`}
 				opened={collapsibleOpened}
 			>
 				<Block className="tw-flex tw-flex-wrap">
-					{contacts.map((contact) => {
+					{businesses.map((contact) => {
+						if (v.isString(contact)) return null;
+
 						const contactPhone = Array.isArray(contact.phone)
 							? contact.phone.map((i) => i.value)
 							: [contact.phone];
@@ -217,14 +220,13 @@ function ContactsGroup({
 								<Text className="tw-mb-1 tw-font-bold tw-leading-tight">{contact.name}</Text>
 								{contactPhone.map((phone) => {
 									return (
-										<ContactPhone
+										<BusinessPhone
 											key={generateSlug(phone)}
 											phone={phone}
-											country={contact.country}
 										/>
 									);
 								})}
-								<ContactLinks
+								<BusinessLinks
 									contact={contact}
 									whatsAppOption={whatsAppOption}
 								/>
@@ -249,58 +251,31 @@ function ContactsGroup({
 	);
 }
 
-type T_ContactPhoneProps = {
+type T_BusinessPhoneProps = {
 	phone: string;
-	country: T_Contact["country"];
 };
 
-function ContactPhone({ phone, country }: T_ContactPhoneProps): T_ReactElementNullable {
-	// vars
-	const COUNTRIES_EMOJIS = {
-		AR: "🇦🇷",
-		BR: "🇧🇷",
-		CA: "🇨🇦",
-		CO: "🇨🇴",
-		FR: "🇫🇷",
-		GB: "🇬🇧",
-		ISR: "🇮🇱",
-		MX: "🇲🇽",
-		NI: "🇳🇮",
-		PE: "🇵🇪",
-		PY: "🇵🇾",
-		SP: "🇪🇸",
-		SW: "🇸🇪",
-		USA: "🇺🇲",
-		UY: "🇺🇾",
-	};
-	const phoneWithoutCode = v.isNotEmptyString(phone) ? phone.split(" ")[1] : "";
-	const isPhoneFromColombia = country === "CO";
-
-	if (v.isEmptyString(phoneWithoutCode)) {
-		return null;
-	}
-
+function BusinessPhone({ phone }: T_BusinessPhoneProps): T_ReactElementNullable {
 	return (
 		<Button
 			className="tw-mb-1 tw-block tw-text-sm tw-italic dfr-text-color-secondary"
-			data-clipboard-text={isPhoneFromColombia ? phoneWithoutCode : phone}
+			data-clipboard-text={phone}
 			onClick={handleCopyToClipboardClick}
 		>
-			<Emoji className="tw-mr-2 tw-not-italic">{COUNTRIES_EMOJIS[country]}</Emoji>
-			<InlineText>{isPhoneFromColombia ? formatPhoneNumber(phoneWithoutCode) : phone}</InlineText>
+			<InlineText>{formatPhoneNumber(phone)}</InlineText>
 		</Button>
 	);
 }
 
-function ContactLinks({
+function BusinessLinks({
 	contact,
 	whatsAppOption,
 }: {
-	contact: T_Contact;
+	contact: T_Business;
 	whatsAppOption: T_WhatsAppOption;
 }): T_ReactElement {
 	return (
-		<div className={classNames(styles["ContactLinks"])}>
+		<div className={classNames(styles["BusinessLinks"])}>
 			{Array.isArray(contact.phone) ? (
 				<Block>
 					{contact.phone.map((item) => {
@@ -346,6 +321,19 @@ function ContactLinks({
 				</Link>
 			) : null}
 
+			{v.isNotEmptyString(contact.maps) ? (
+				<Link
+					variant={Link.variant.SIMPLE}
+					href={contact.maps}
+					isExternalLink
+				>
+					<Icon
+						icon={Icon.icon.MAPS}
+						size={24}
+					/>
+				</Link>
+			) : null}
+
 			{Array.isArray(contact.phone) ? (
 				<Block>
 					{contact.phone.map((item) => {
@@ -353,7 +341,6 @@ function ContactLinks({
 							<PhoneButton
 								key={generateSlug(item.label)}
 								phone={item.value}
-								country={contact.country}
 							>
 								<Icon
 									icon={Icon.icon.PHONE_SOLID}
@@ -368,50 +355,13 @@ function ContactLinks({
 					})}
 				</Block>
 			) : v.isNotEmptyString(contact.phone) ? (
-				<PhoneButton
-					phone={contact.phone}
-					country={contact.country}
-				>
+				<PhoneButton phone={contact.phone}>
 					<Icon
 						icon={Icon.icon.PHONE_SOLID}
 						size={24}
 						color="tw-text-blue-600 dark:tw-text-blue-500"
 					/>
 				</PhoneButton>
-			) : null}
-
-			{Array.isArray(contact.phone) ? (
-				<Block>
-					{contact.phone.map((item) => {
-						return (
-							<SMSButton
-								key={generateSlug(item.label)}
-								phone={item.value}
-								country={contact.country}
-							>
-								<Icon
-									icon={Icon.icon.CHAT_SOLID}
-									size={24}
-									color="tw-text-red-600 dark:tw-text-red-500"
-								/>
-								<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-italic tw-text-red-600 dark:tw-text-red-500">
-									{item.label}
-								</InlineText>
-							</SMSButton>
-						);
-					})}
-				</Block>
-			) : v.isNotEmptyString(contact.phone) ? (
-				<SMSButton
-					phone={contact.phone}
-					country={contact.country}
-				>
-					<Icon
-						icon={Icon.icon.CHAT_SOLID}
-						size={24}
-						color="tw-text-red-600 dark:tw-text-red-500"
-					/>
-				</SMSButton>
 			) : null}
 		</div>
 	);
@@ -459,103 +409,57 @@ function WhastAppButton({
 type T_PhoneButtonProps = {
 	children: T_ReactChildren;
 	phone: string;
-	country: T_Contact["country"];
 };
 
-function PhoneButton({ children, phone, country }: T_PhoneButtonProps): T_ReactElementNullable {
-	// vars
-	const isPhoneNumberFromColombia = country === "CO";
-
+function PhoneButton({ children, phone }: T_PhoneButtonProps): T_ReactElementNullable {
 	// utils
 	function generatePhoneLink(): string {
 		return `tel:${phone.split(" ").slice(1).join("").trim()}`;
 	}
 
-	if (isPhoneNumberFromColombia) {
-		return (
-			<Link
-				variant={Link.variant.SIMPLE}
-				href={generatePhoneLink()}
-				isExternalLink
-			>
-				{children}
-			</Link>
-		);
-	}
-
-	return null;
-}
-
-function SMSButton({ children, phone, country }: T_PhoneButtonProps): T_ReactElementNullable {
-	// vars
-	const phoneWithoutCountryCode = phone.split(" ").slice(1).join("").trim();
-	const isCellphoneNumber =
-		phoneWithoutCountryCode.length === 10 && phoneWithoutCountryCode.startsWith("3");
-	const isPhoneNumberFromColombia = country === "CO";
-
-	// utils
-	function generateSMSLink(): string {
-		return `sms:${phoneWithoutCountryCode}&body=Hello`;
-	}
-
-	if (isPhoneNumberFromColombia && isCellphoneNumber) {
-		return (
-			<Link
-				variant={Link.variant.SIMPLE}
-				href={generateSMSLink()}
-				isExternalLink
-			>
-				{children}
-			</Link>
-		);
-	}
-
-	return null;
+	return (
+		<Link
+			variant={Link.variant.SIMPLE}
+			href={generatePhoneLink()}
+			isExternalLink
+		>
+			{children}
+		</Link>
+	);
 }
 
 // --- Utils ---
 
-function countAllContacts(contacts: T_ContactsProps["contacts"]): number {
-	const result = Object.values(contacts).reduce((result, groupOfContacts) => {
-		return result + countGroupOfContacts(groupOfContacts);
+function countAllBusinesses(businesses: T_BusinessesProps["businesses"]): number {
+	const result = Object.values(businesses).reduce((result, groupOfBusinesses) => {
+		return result + countGroupOfBusinesses(groupOfBusinesses);
 	}, 0);
 
 	return result;
 }
 
-function countGroupOfContacts(contacts: T_GroupOfContacts): number {
-	if (Array.isArray(contacts)) {
-		return contacts.length;
+function countGroupOfBusinesses(businesses: T_GroupOfBusinesses): number {
+	if (Array.isArray(businesses)) {
+		return businesses.length;
 	}
 
-	return Object.values(contacts).reduce(
-		(result, groupOfContacts: T_Contact[]) => result + groupOfContacts.length,
+	return Object.values(businesses).reduce(
+		(result, groupOfBusinesses: T_Business[]) => result + groupOfBusinesses.length,
 		0,
 	);
 }
 
 // --- Types ---
 
-type T_GroupOfContacts = T_Contact[] | T_Object<T_Contact[]>;
+type T_GroupOfBusinesses = T_Business[] | T_Object<T_Business[]>;
 
-type T_Contact = {
+type T_Business = {
+	id: string;
 	name: string;
 	phone: string | { label: string; value: string }[];
 	instagram: string;
-	country:
-		| "AR"
-		| "BR"
-		| "CA"
-		| "CO"
-		| "FR"
-		| "GB"
-		| "ISR"
-		| "MX"
-		| "PE"
-		| "PY"
-		| "SP"
-		| "USA"
-		| "UY";
+	maps: string;
+	menu: string;
 };
 
 type T_WhatsAppOption = "api" | "web";

@@ -10,6 +10,13 @@ export const PERSONAL_PAGES = [
 		type: "DATA",
 	},
 	{
+		slug: "businesses",
+		title: "businesses",
+		componentName: "",
+		icon: Icon.icon.BRIEFCASE,
+		type: "DATA",
+	},
+	{
 		slug: "films",
 		title: "films",
 		componentName: "films/index",

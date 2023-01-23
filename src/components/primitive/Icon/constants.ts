@@ -7,6 +7,7 @@ import {
 	ArrowUturnRightIcon,
 	Bars4Icon,
 	BookOpenIcon,
+	BriefcaseIcon,
 	CalendarIcon,
 	ChatBubbleLeftEllipsisIcon,
 	ChevronDoubleDownIcon,
@@ -128,6 +129,13 @@ export const ICONS = {
 			alt: "Linkedin",
 		},
 	},
+	MAPS: {
+		icon: "/static/images/icons/maps.svg",
+		defaultProps: {
+			className: "",
+			alt: "Google Maps",
+		},
+	},
 	NETFLIX: {
 		icon: "/static/images/icons/netflix.svg",
 		defaultProps: {
@@ -192,6 +200,12 @@ export const ICONS = {
 	},
 	BOOK_OPEN: {
 		icon: BookOpenIcon,
+		defaultProps: {
+			className: "",
+		},
+	},
+	BRIEFCASE: {
+		icon: BriefcaseIcon,
 		defaultProps: {
 			className: "",
 		},
