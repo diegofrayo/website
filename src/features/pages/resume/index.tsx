@@ -72,7 +72,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 							<Link
 								variant={Link.variant.SIMPLE}
 								href={`mailto:${resume.contactInfo.email}`}
-								className="tw-mx-2 tw-inline-block"
+								className="tw-mx-2 tw-hidden print:tw-inline-block"
 								isExternalLink
 							>
 								<Icon
