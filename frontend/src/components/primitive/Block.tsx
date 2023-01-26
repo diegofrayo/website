@@ -15,6 +15,7 @@ type T_BlockProps = T_HTMLElementAttributes["div"] & {
 		| "header"
 		| "aside"
 		| "footer"
+		| "nav"
 		| "blockquote"
 		| "span";
 	variant?: T_Variant;

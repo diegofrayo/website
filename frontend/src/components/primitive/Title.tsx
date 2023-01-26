@@ -52,7 +52,7 @@ function Title(props: T_TitleProps): T_ReactElement {
 					variant={Link.variant.SIMPLE}
 					href={`#${id}`}
 					className={classNames(
-						"tw-visible tw-float-left tw--ml-5 tw-pr-1 tw-leading-0 sm:tw-invisible",
+						"tw-leading-0 tw-visible tw-float-left tw--ml-5 tw-pr-1 sm:tw-invisible",
 						{
 							h1: "tw-pt-3",
 							h2: "tw-pt-2.5",
@@ -68,7 +68,7 @@ function Title(props: T_TitleProps): T_ReactElement {
 				</Link>
 				{children}
 
-				<style jsx>
+				{/* <style jsx>
 					{`
 						:global(.dfr-Title--primary) {
 							scroll-margin-top: 20px;
@@ -78,7 +78,7 @@ function Title(props: T_TitleProps): T_ReactElement {
 							visibility: visible;
 						}
 					`}
-				</style>
+				</style> */}
 			</Tag>
 		);
 	}

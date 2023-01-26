@@ -1,0 +1,12 @@
+.BusinessLinks > div {
+	@apply tw-my-1;
+}
+
+.BusinessLinks a {
+	@apply tw-mr-2;
+	display: inline-block;
+}
+
+.BusinessLinks a:last-child {
+	@apply tw-mr-0;
+}

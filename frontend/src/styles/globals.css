@@ -1,3 +1,5 @@
+@import "../@legacy/src/styles/variables.post.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +8,22 @@ html {
 	font-family: var(--font-base);
 }
 
+body {
+	@apply tw-text-slate-700;
+}
+
 h1 {
 	font-family: var(--font-titles);
+}
+
+* {
+	line-height: 0;
+}
+
+a {
+	line-height: 1;
+}
+
+p {
+	line-height: normal;
 }

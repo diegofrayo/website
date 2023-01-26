@@ -66,8 +66,8 @@ function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElement {
 		<Block
 			className={classNames(
 				styles["dfr-PictureFrame"],
-				"dfr-PictureFrame tw-relative tw-mx-auto tw-mb-8 tw-rotate-2 tw-transition-transform hover:tw-rotate-0",
-				isPortrait ? "dfr-PictureFrame--portrait tw-w-20" : "tw-w-32",
+				"tw-relative tw-mx-auto tw-mb-8 tw-rotate-2 tw-transition-transform hover:tw-rotate-0",
+				isPortrait ? `${styles["dfr-PictureFrame--portrait"]} tw-w-20` : "tw-w-32",
 			)}
 		>
 			<Block
@@ -82,6 +82,7 @@ function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElement {
 						alt="Photography taken by Diego Rayo"
 						className="dfr-transition-opacity"
 						onClick={handleImageClick}
+						useNextImage={false} // TODO: [next/image] check it out a undesired effect
 						fill
 					/>
 				</Block>
@@ -324,7 +325,7 @@ function LinkItem({ label, url, className = "" }: T_LinkItemProps): T_ReactEleme
 		<Link
 			variant={Link.variant.SIMPLE}
 			className={classNames(
-				"tw-flex tw-flex-1 tw-items-center tw-bg-yellow-700 tw-px-2 tw-py-0.5 tw-text-xs tw-font-bold tw-text-white",
+				"tw-flex tw-flex-1 tw-items-center tw-bg-yellow-700 tw-px-2 tw-py-2 tw-text-xs tw-font-bold tw-text-white",
 				className,
 			)}
 			href={url}

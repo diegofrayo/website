@@ -1,13 +1,20 @@
 /** @type {import('tailwindcss').Config} */
+
+const dfrUtilitiesPlugin = require("./src/@legacy/scripts/styles/tailwind");
+
 module.exports = {
 	jit: true,
 	prefix: "tw-",
 	darkMode: "class",
 	important: false,
-	content: ["./src/**/*.{js,ts,jsx,tsx}"],
+	plugins: [dfrUtilitiesPlugin],
+	content: ["./src/**/*.{ts,tsx}"],
 	safelist: [
 		{
 			pattern: /^(sm:|md:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)/,
+		},
+		{
+			pattern: /dfr-/,
 		},
 		{
 			pattern: /tw-max-w/,
@@ -17,16 +24,18 @@ module.exports = {
 		},
 	],
 	theme: {
-		// screens: {
-		// // => @media (min-width: 640px) { ... }
-		// sm: "640px",
-		// // => @media (min-width: 768px) { ... }
-		// md: "768px",
-		// },
+		screens: {
+			// => @media (min-width: 640px) { ... }
+			sm: "640px",
+
+			// => @media (min-width: 768px) { ... }
+			md: "768px",
+		},
 		extend: {
 			transitionDuration: {
 				DEFAULT: "500ms",
 			},
+			zIndex: {},
 			lineHeight: {
 				0: "0",
 			},
@@ -37,13 +46,7 @@ module.exports = {
 			fontSize: {
 				xxs: "0.6rem",
 			},
-			borderWidth: {
-				12: "12px",
-				16: "16px",
-				24: "24px",
-				32: "32px",
-			},
+			borderWidth: {},
 		},
 	},
-	plugins: [],
 };

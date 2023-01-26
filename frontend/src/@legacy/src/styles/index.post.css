@@ -1,0 +1,177 @@
+@import "./variables.post.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html.css-debugging * {
+	background-color: rgba(255, 0, 0, 0.1);
+	box-shadow: 0 0 0 1px red;
+}
+
+/* --- Global --- */
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	@apply dfr-bg-color-gs-black;
+	height: 100%;
+}
+
+body {
+	@apply dfr-bg-color-primary;
+	@apply dfr-font-family;
+	@apply dfr-text-color-primary;
+	cursor: default;
+	font-size: 18px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	scroll-behavior: smooth;
+	scrollbar-gutter: stable;
+	word-break: break-word;
+}
+
+body.scroll-disabled {
+	overflow: hidden;
+}
+
+/* --- Scrollbar --- */
+
+::-webkit-scrollbar {
+	height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	@apply dfr-bg-color-gs-400;
+	@apply tw-rounded-sm;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+}
+
+body.mobile ::-webkit-scrollbar-thumb {
+	display: none;
+}
+
+/* --- Toast --- */
+
+/** Used to define container behavior: width, position: fixed etc... **/
+.Toastify__toast-container {
+	@apply tw-p-4;
+}
+
+.tw-dark .Toastify__toast-container {
+}
+
+/** Used to define the position of the ToastContainer **/
+.Toastify__toast-container--top-left {
+}
+.Toastify__toast-container--top-center {
+}
+.Toastify__toast-container--top-right {
+}
+.Toastify__toast-container--bottom-left {
+}
+.Toastify__toast-container--bottom-center {
+	bottom: 0;
+}
+.Toastify__toast-container--bottom-right {
+}
+
+/** Classes for the displayed toast **/
+.Toastify__toast {
+	@apply dfr-bg-color-gs-black;
+	@apply tw-bg-opacity-80;
+	@apply tw-text-sm;
+	border: 1px dashed;
+	border-radius: 0;
+	font-weight: bold;
+	text-align: center;
+}
+
+.tw-dark .Toastify__toast {
+}
+
+.Toastify__toast--rtl {
+}
+
+.Toastify__toast--dark {
+}
+
+.Toastify__toast--default {
+}
+
+.Toastify__toast--info {
+}
+
+.Toastify__toast--success {
+	@apply tw-text-green-400;
+	@apply tw-border-green-400;
+}
+
+.Toastify__toast--success .Toastify__close-button {
+	@apply tw-text-green-400;
+}
+
+.Toastify__toast--warning {
+	@apply tw-text-yellow-400;
+	@apply tw-border-yellow-400;
+}
+
+.Toastify__toast--warning .Toastify__close-button {
+	@apply tw-text-yellow-400;
+}
+
+.Toastify__toast--error {
+	@apply tw-text-red-400;
+	@apply tw-border-red-400;
+}
+
+.Toastify__toast--error .Toastify__close-button {
+	@apply tw-text-red-400;
+}
+
+.Toastify__toast-body {
+}
+
+/** Classes for the close button. Better use your own closeButton **/
+.Toastify__close-button {
+}
+
+.Toastify__close-button--default {
+}
+
+.Toastify__close-button > svg {
+}
+
+.Toastify__close-button:hover,
+.Toastify__close-button:focus {
+}
+
+/** Classes for the progress bar **/
+.Toastify__progress-bar {
+}
+
+.Toastify__progress-bar--animated {
+}
+
+.Toastify__progress-bar--controlled {
+}
+
+.Toastify__progress-bar--rtl {
+}
+
+.Toastify__progress-bar--default {
+}
+
+.Toastify__progress-bar--dark {
+}

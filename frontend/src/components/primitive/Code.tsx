@@ -35,14 +35,14 @@ function Code(props: T_CodeProps): T_ReactElement {
 		>
 			{children}
 
-			<style jsx>
+			{/* <style jsx>
 				{`
 					code::before,
 					code::after {
 						content: "\`";
 					}
 				`}
-			</style>
+			</style> */}
 		</code>
 	);
 }

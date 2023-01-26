@@ -1,0 +1,21 @@
+// @ts-nocheck
+
+import * as React from "react";
+
+import Title from "~/@legacy/src/components/primitive/Title";
+
+const Story = (props) => <Title {...props} />;
+
+export default {
+	title: "primitive/Title",
+	component: Title,
+	argTypes: {},
+};
+
+// --- Stories ---
+
+export const MarkdownTitle = Story.bind({});
+MarkdownTitle.args = {
+	children: "I'm a [MarkdownTitle] Title",
+	is: "h1",
+};

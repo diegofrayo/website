@@ -10,6 +10,7 @@ function Image({
 	alt,
 	className = "",
 	useNextImage = true,
+	fill,
 	...rest
 }: T_ImageProps): T_ReactElementNullable {
 	if (useNextImage) {
@@ -18,6 +19,7 @@ function Image({
 				src={src}
 				alt={alt}
 				className={className}
+				fill={fill}
 				{...rest}
 			/>
 		);

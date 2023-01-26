@@ -4,6 +4,7 @@ export { default as Icon } from "./Icon";
 export { default as Image } from "./Image";
 export { default as InlineText } from "./InlineText";
 export { default as Link } from "./Link";
+export { default as List } from "./List";
 export { default as Space } from "./Space";
 export { default as Text } from "./Text";
 export { default as Title } from "./Title";

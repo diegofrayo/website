@@ -1,0 +1,20 @@
+[
+	{
+		"text": "Hi there. My name is ${METADATA.website.shortName}, I'm ${METADATA.website.age} years old, from Armenia, Quindío, and I work as a Software Developer.",
+		"layout": "L"
+	},
+	{
+		"image": "${process.env.BACKEND_URL}/pages/about-me/assets/2.jpg",
+		"text": "I enjoy reading and learning about history, old civilizations, and human behavior. I like playing guitar, coding, hiking, biking, photography, cooking, playing soccer, and table tennis.",
+		"layout": "L"
+	},
+	{
+		"image": "${process.env.BACKEND_URL}/pages/about-me/assets/3.jpg",
+		"text": "This website is like a digital garden for me, a place to have fun coding, and also to express ideas, thoughts, knowledge, and information that I usually don't post on my social networks. Besides, it is a good place to experiment and learn new things about Software Development.",
+		"layout": "R"
+	},
+	{
+		"text": "Welcome to my space!",
+		"layout": "C"
+	}
+]

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>diegofrayo</id>
+    <title>Diego Rayo | Software Developer</title>
+    <updated>2023-01-23T19:41:08.116Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>Diego Fernando Rayo Zamora</name>
+        <email>diegofrayo@gmail.com</email>
+        <uri>https://diegofrayo.vercel.app</uri>
+    </author>
+    <link rel="alternate" href="https://diegofrayo.vercel.app"/>
+    <link rel="self" href="https://diegofrayo.vercel.app/atom.xml"/>
+    <subtitle>Hi, I'm Diego, a Software Developer. I have over 6 years of experience developing Web Solutions. I usually work using JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js, and GraphQL.</subtitle>
+    <logo>https://diegofrayo.vercel.app/static/images/favicon/favicon.ico</logo>
+    <icon>https://diegofrayo.vercel.app/static/images/favicon/android-chrome-512x512.png</icon>
+    <rights>All rights reserved 2023, Diego Rayo</rights>
+    <category term="Blog"/>
+    <category term="JAMStack"/>
+    <category term="MDX"/>
+    <category term="Next.js"/>
+    <category term="Programming"/>
+    <category term="React"/>
+    <category term="Software Development"/>
+    <category term="Tech"/>
+    <category term="TypeScript"/>
+    <entry>
+        <title type="html"><![CDATA[Viajesito en Colombia]]></title>
+        <id>https://diegofrayo.vercel.app/blog/a-trip-around-colombia</id>
+        <link href="https://diegofrayo.vercel.app/blog/a-trip-around-colombia"/>
+        <updated>2022-05-01T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Este es un breve resumen acerca de mis primeras vacaciones como "joven adulto" por Colombia.]]></summary>
+        <content type="html"><![CDATA[Este es un breve resumen acerca de mis primeras vacaciones como "joven adulto" por Colombia.]]></content>
+        <author>
+            <name>Diego Rayo</name>
+            <email>diegofrayo@gmail.com</email>
+            <uri>https://diegofrayo.vercel.app</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Publishing a npm private package to GitHub pakages using GitHub actions]]></title>
+        <id>https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</id>
+        <link href="https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions"/>
+        <updated>2021-03-19T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[In this tutorial I want to explain how to publish a private npm package to GitHub packages using GitHub Actions.]]></summary>
+        <content type="html"><![CDATA[In this tutorial I want to explain how to publish a private npm package to GitHub packages using GitHub Actions.]]></content>
+        <author>
+            <name>Diego Rayo</name>
+            <email>diegofrayo@gmail.com</email>
+            <uri>https://diegofrayo.vercel.app</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[My favorite music and MDX]]></title>
+        <id>https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx</id>
+        <link href="https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx"/>
+        <updated>2021-08-14T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[MDX is a Markdown language enhancement, making it more powerful and customizable, because MDX allows rendering React components inside of Markdown files. Spotify just created a playlist with the most listened songs by me during this 2020, so, I took this opportunity to write a tutorial about MDX and Next.js]]></summary>
+        <content type="html"><![CDATA[MDX is a Markdown language enhancement, making it more powerful and customizable, because MDX allows rendering React components inside of Markdown files. Spotify just created a playlist with the most listened songs by me during this 2020, so, I took this opportunity to write a tutorial about MDX and Next.js]]></content>
+        <author>
+            <name>Diego Rayo</name>
+            <email>diegofrayo@gmail.com</email>
+            <uri>https://diegofrayo.vercel.app</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Connecting a Firebase project with a Go Daddy domain]]></title>
+        <id>https://diegofrayo.vercel.app/blog/connecting-a-firebase-project-with-a-go-daddy-domain</id>
+        <link href="https://diegofrayo.vercel.app/blog/connecting-a-firebase-project-with-a-go-daddy-domain"/>
+        <updated>2018-06-01T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[In this tutorial I want to explain how to connect a Go Daddy domain with a Firebase project.]]></summary>
+        <content type="html"><![CDATA[In this tutorial I want to explain how to connect a Go Daddy domain with a Firebase project.]]></content>
+        <author>
+            <name>Diego Rayo</name>
+            <email>diegofrayo@gmail.com</email>
+            <uri>https://diegofrayo.vercel.app</uri>
+        </author>
+    </entry>
+</feed>
