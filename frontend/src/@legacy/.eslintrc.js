@@ -66,7 +66,7 @@ module.exports = {
 		"no-alert": warnRulesValue,
 		"no-console": warnRulesValue,
 		"no-debugger": warnRulesValue,
-		"react/jsx-props-no-spreading": [
+		"react/jsx-props-no-spbookmark": [
 			warnRulesValue,
 			{
 				html: "ignore",

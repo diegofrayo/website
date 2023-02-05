@@ -5,13 +5,25 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import highLightTheme from "prism-react-renderer/themes/nightOwl";
 // NOTE: Nice themes => nightOwl | drakula | oceanicNext | okaidia | palenight | vsDark
 
-import { Block, Button, Icon, InlineText, Link, Pre, Space } from "~/@legacy/src/components/primitive";
+import {
+	Block,
+	Button,
+	Icon,
+	InlineText,
+	Link,
+	Pre,
+	Space,
+} from "~/@legacy/src/components/primitive";
 import { useTranslation } from "~/@legacy/src/features/i18n";
 import twcss from "~/@legacy/src/lib/twcss";
 import v from "~/@legacy/src/lib/v";
 import { handleCopyToClipboardClick } from "~/@legacy/src/utils/browser";
 import { generateSlug } from "~/@legacy/src/utils/strings";
-import type { T_ReactElement, T_ReactElementNullable, T_ReactFunctionComponent } from "~/@legacy/src/types";
+import type {
+	T_ReactElement,
+	T_ReactElementNullable,
+	T_ReactFunctionComponent,
+} from "~/@legacy/src/types";
 
 type T_SourceCodeProps = {
 	// DOCS: https://github.com/FormidableLabs/prism-react-renderer#language

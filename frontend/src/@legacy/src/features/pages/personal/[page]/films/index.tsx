@@ -150,7 +150,7 @@ function Films(): T_ReactElement {
 											<Block className="tw-z-20 tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-70 tw-p-2 dfr-bg-color-bw">
 												{source === "imdb" ? (
 													<Image
-														src="/@legacy/static/images/misc/imdb.png"
+														src="/static/images/misc/imdb.png"
 														alt="imdb icon"
 														className="tw-flex-shrink-0 tw-rounded-full"
 														width={24}
@@ -158,7 +158,7 @@ function Films(): T_ReactElement {
 													/>
 												) : source === "Amazon Prime Video" ? (
 													<Image
-														src="/@legacy/static/images/misc/amazon-prime-video.png"
+														src="/static/images/misc/amazon-prime-video.png"
 														alt="Amazon Prime Video icon"
 														className="tw-flex-shrink-0 tw-rounded-full"
 														width={24}

@@ -12,6 +12,16 @@ type T_FooterProps = {
 };
 
 function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement {
+	const WEBSITE_METADATA = {
+		social: {
+			linkedin: "https://linkedin.com/in/diegofrayo",
+			github: "https://github.com/diegofrayo",
+			twitter: "https://twitter.com/diegofrayo",
+			couchsurfing: "https://couchsurfing.com/people/diegofrayo",
+			spotify: "https://open.spotify.com/user/225gv7ppksrad4xzfwoyej4iq",
+		},
+	};
+
 	return (
 		<Block
 			is="footer"
@@ -20,29 +30,29 @@ function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement
 			<Block className="tw-my-16">
 				<Block className="tw-inline-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
 					<FooterIcon
-						url={"WEBSITE_METADATA.social.linkedin"}
+						url={WEBSITE_METADATA.social.linkedin}
 						icon={Icon.icon.LINKEDIN}
 						className="tw-bg-sky-800"
 					/>
 					<FooterIcon
-						url={"WEBSITE_METADATA.social.github"}
+						url={WEBSITE_METADATA.social.github}
 						icon={Icon.icon.GITHUB_LIGHT}
 						className="tw-bg-gray-700"
 					/>
 					<FooterIcon
-						url={"WEBSITE_METADATA.social.twitter"}
+						url={WEBSITE_METADATA.social.twitter}
 						icon={Icon.icon.TWITTER}
-						className="tw-bg-blue-900"
+						className="tw-bg-sky-700"
 					/>
 					<FooterIcon
-						url={"WEBSITE_METADATA.social.couchsurfing"}
+						url={WEBSITE_METADATA.social.couchsurfing}
 						icon={Icon.icon.COUCHSURFING}
 						className="tw-bg-orange-900"
 					/>
 					<FooterIcon
-						url={"WEBSITE_METADATA.social.spotify"}
+						url={WEBSITE_METADATA.social.spotify}
 						icon={Icon.icon.SPOTIFY}
-						className="tw-bg-green-900"
+						className="tw-bg-green-700"
 					/>
 				</Block>
 			</Block>
@@ -74,7 +84,7 @@ function FooterIcon({ icon, url, className }: T_FooterIconProps): T_ReactElement
 		>
 			<Icon
 				icon={icon}
-				size={48}
+				iconClassName="tw-h-8 tw-w-8 md:tw-h-16 md:tw-w-16"
 			/>
 		</Link>
 	);

@@ -39,7 +39,7 @@ function SongSources({ sources }: T_SongSourcesProps): T_ReactElementNullable {
 							>
 								{item.source.includes("lacuerda") ? (
 									<Image
-										src="/@legacy/static/images/misc/lacuerda.png"
+										src="/static/images/misc/lacuerda.png"
 										alt="La cuerda icon"
 										className="tw-mr-2 tw-rounded-full"
 										width={32}

@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 
 import { Block, Link, Title } from "~/components/primitive";
@@ -43,7 +45,7 @@ function AboutMePage() {
 			/>
 			<AboutMeBlock
 				image={`${DATA.SERVER_URL}/cms/about-me/assets/1.jpg`}
-				text="I enjoy reading and learning about history, old civilizations, and human behavior. I like playing guitar, coding, hiking, biking, photography, cooking, playing soccer, and table tennis."
+				text="I enjoy bookmark and learning about history, old civilizations, and human behavior. I like playing guitar, coding, hiking, biking, photography, cooking, playing soccer, and table tennis."
 				layout="L"
 			/>
 			<AboutMeBlock

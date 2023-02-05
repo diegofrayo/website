@@ -13,14 +13,18 @@ import v from "~/@legacy/src/lib/v";
 import dataLoader from "~/@legacy/src/server";
 import { isDevelopmentEnvironment } from "~/@legacy/src/utils/app";
 
-type T_PageProps = {
-	song: T_Song;
-	songMDXContent: MDXRemoteSerializeResult;
-};
+import hola from "./(components)";
+
+console.log(hola);
 
 export default SongPage;
 
 // --- Next.js functions ---
+
+type T_PageProps = {
+	song: T_Song;
+	songMDXContent: MDXRemoteSerializeResult;
+};
 
 type T_StaticPath = { song: string };
 

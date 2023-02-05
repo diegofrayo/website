@@ -1,3 +1,5 @@
+"use client";
+
 import "~/styles/globals.css";
 
 import * as React from "react";
@@ -29,7 +31,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
 			<head />
 			<body className="tw-flex tw-min-h-screen tw-flex-col">
 				<Header />
-				<main className="tw-mx-auto tw-flex tw-w-full tw-flex-1 tw-items-center tw-justify-center tw-py-8 tw-px-4 dfr-max-w-layout">
+				<main className="tw-mx-auto tw-flex tw-w-full tw-flex-1 tw-items-center tw-justify-center tw-py-20 tw-px-4 dfr-max-w-layout">
 					{children}
 				</main>
 				<Footer />

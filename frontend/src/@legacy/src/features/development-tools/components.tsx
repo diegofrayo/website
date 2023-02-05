@@ -1,7 +1,16 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { Block, Button, Icon, InlineText, Link, Select, Space, Text } from "~/@legacy/src/components/primitive";
+import {
+	Block,
+	Button,
+	Icon,
+	InlineText,
+	Link,
+	Select,
+	Space,
+	Text,
+} from "~/@legacy/src/components/primitive";
 import { AnalyticsService } from "~/@legacy/src/features/analytics";
 import { AuthService, withAuthComponent } from "~/@legacy/src/features/auth";
 import { renderIf } from "~/@legacy/src/hocs";

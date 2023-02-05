@@ -1,5 +1,6 @@
 import "react-toastify/dist/ReactToastify.min.css";
 import "~/@legacy/src/styles/index.post.css";
+import "~/styles/globals.css";
 
 import * as React from "react";
 import App from "next/app";

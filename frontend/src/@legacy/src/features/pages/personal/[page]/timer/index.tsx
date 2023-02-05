@@ -87,7 +87,7 @@ function TimerPage(): T_ReactElement {
 						props: {
 							rel: "preload",
 							as: "audio",
-							href: "/@legacy/static/sounds/timer/set-completed.mp3",
+							href: "/static/sounds/timer/set-completed.mp3",
 						},
 					},
 					{
@@ -95,7 +95,7 @@ function TimerPage(): T_ReactElement {
 						props: {
 							rel: "preload",
 							as: "audio",
-							href: "/@legacy/static/sounds/timer/routine-item-completed.mp3",
+							href: "/static/sounds/timer/routine-item-completed.mp3",
 						},
 					},
 					{
@@ -103,7 +103,7 @@ function TimerPage(): T_ReactElement {
 						props: {
 							rel: "preload",
 							as: "audio",
-							href: "/@legacy/static/sounds/timer/clock-tick.mp3",
+							href: "/static/sounds/timer/clock-tick.mp3",
 						},
 					},
 				],

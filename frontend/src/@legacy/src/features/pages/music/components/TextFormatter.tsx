@@ -2,7 +2,15 @@ import * as React from "react";
 import classNames from "classnames";
 import reactStringReplace from "react-string-replace";
 
-import { Button, Icon, Modal, Space, Block, InlineText, Pre } from "~/@legacy/src/components/primitive";
+import {
+	Button,
+	Icon,
+	Modal,
+	Space,
+	Block,
+	InlineText,
+	Pre,
+} from "~/@legacy/src/components/primitive";
 import { useDidMount } from "~/@legacy/src/hooks";
 import { GuitarChord, GuitarService, T_PlainChord } from "~/@legacy/src/lib/guitar";
 import v from "~/@legacy/src/lib/v";

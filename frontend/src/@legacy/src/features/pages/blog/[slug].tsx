@@ -2,7 +2,16 @@ import * as React from "react";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { Page, MainLayout } from "~/@legacy/src/components/layout";
-import { Icon, Space, Button, Block, Text, InlineText, Image, Link } from "~/@legacy/src/components/primitive";
+import {
+	Icon,
+	Space,
+	Button,
+	Block,
+	Text,
+	InlineText,
+	Image,
+	Link,
+} from "~/@legacy/src/components/primitive";
 import { MDXContent, RateContent } from "~/@legacy/src/components/shared";
 import { withOnlyClientRendering } from "~/@legacy/src/hocs";
 import { useDidMount } from "~/@legacy/src/hooks";

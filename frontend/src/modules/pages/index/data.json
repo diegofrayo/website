@@ -1,0 +1,19 @@
+{
+	"featured": [
+		{ "text": "/music", "url": "/music" },
+		{ "text": "/contacts", "url": "/personal/contacts" },
+		{ "text": "/businesses", "url": "/personal/businesses" },
+		{ "text": "/p/stopwatch", "url": "/personal/stopwatch" },
+		{ "text": "/p/dencrypt", "url": "/personal/whatsapp" },
+		{ "text": "/p/whatsapp", "url": "/personal/dencrypt" }
+	],
+	"song": {
+		"title": "High and Dry",
+		"artist": "Jorge Drexler",
+		"thumbnail": "https://i.scdn.co/image/ab67616d0000b2730fbd8d7f3f8746644d81ee66",
+		"audio": "https://p.scdn.co/mp3-preview/cf00ee8d69dfcaeb68d97fc07478baca75a91865",
+		"url": "https://open.spotify.com/track/0hf3E2TAapWRy5PhAjp0l8",
+		"source": "spotify"
+	},
+	"photo": { "src": "/cms/home/assets/7.jpg", "portrait": false }
+}

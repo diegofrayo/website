@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 
 import { Block, Button, Icon, Link, List } from "~/components/primitive";
@@ -34,6 +32,10 @@ function Header() {
 		setIsMenuOpened((currentValue) => !currentValue);
 	}
 
+	function handleMenuItemClick() {
+		setIsMenuOpened(false);
+	}
+
 	return (
 		<Block
 			is="header"
@@ -45,6 +47,7 @@ function Header() {
 						variant={Link.variant.SIMPLE}
 						href="/"
 						className="tw-inline-block"
+						onClick={handleMenuItemClick}
 					>
 						<h1 className="tw-text-center tw-text-3xl tw-font-bold tw-italic tw-text-black">
 							diegofrayo
@@ -75,6 +78,7 @@ function Header() {
 										<Link
 											variant={Link.variant.SIMPLE}
 											href={item.url}
+											onClick={handleMenuItemClick}
 										>
 											{item.text}
 										</Link>
@@ -90,14 +94,3 @@ function Header() {
 }
 
 export default Header;
-
-// TODO: [css] border-image for the title (https://css-generators.com/custom-borders/)
-/* <Block className="border tw-h-1.5 tw-rounded-md tw-bg-yellow-800" /> */
-/* <style jsx>{`
-	.root :global(div) {
-	--mask: conic-gradient(from -60deg at bottom, #0000, #000 0deg 115deg, #0000 100deg) 100%/10px
-	100%;
-	-webkit-mask: var(--mask);
-	mask: var(--mask);
-	}
-	`}</style> */

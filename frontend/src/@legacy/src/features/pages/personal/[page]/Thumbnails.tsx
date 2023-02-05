@@ -118,7 +118,7 @@ function useController(): T_UseControllerReturn {
 	// states & refs
 	const [title, setTitle] = React.useState(CURRENT_BLOG_POST.title);
 	const [src, setSrc] = React.useState(
-		`/@legacy/static/images/pages/personal/thumbnails/code-${CURRENT_BLOG_POST.image}.png`,
+		`/static/images/pages/personal/thumbnails/code-${CURRENT_BLOG_POST.image}.png`,
 	);
 	const thumbnailRef = React.useRef<HTMLDivElement>(null);
 

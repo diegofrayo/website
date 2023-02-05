@@ -2,16 +2,16 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { mirror } from "~/@diegofrayo/library/utils/objects-and-arrays";
-
-import Icon from "./Icon";
-import Link from "./Link";
-import {
+import v from "~/@diegofrayo/library/v";
+import { generateSlug } from "~/@diegofrayo/library/utils/strings";
+import type {
 	T_HTMLElementAttributes,
 	T_ReactChildren,
 	T_ReactElement,
 } from "~/@diegofrayo/library/types/react";
-import v from "~/@diegofrayo/library/v";
-import { generateSlug } from "~/@diegofrayo/library/utils/strings";
+
+import Icon from "./Icon";
+import Link from "./Link";
 
 const VARIANTS = mirror(["UNSTYLED", "PRIMARY", "SECONDARY"]);
 type T_Variant = keyof typeof VARIANTS;
@@ -52,7 +52,7 @@ function Title(props: T_TitleProps): T_ReactElement {
 					variant={Link.variant.SIMPLE}
 					href={`#${id}`}
 					className={classNames(
-						"tw-leading-0 tw-visible tw-float-left tw--ml-5 tw-pr-1 sm:tw-invisible",
+						"tw-visible tw-float-left tw--ml-5 tw-pr-1 tw-leading-0 sm:tw-invisible",
 						{
 							h1: "tw-pt-3",
 							h2: "tw-pt-2.5",

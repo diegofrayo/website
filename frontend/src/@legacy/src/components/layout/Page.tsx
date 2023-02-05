@@ -53,7 +53,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 			: SEO_METADATA.title,
 		url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
 		description: config.description || SEO_METADATA.description,
-		image: config.image || "/@legacy/static/images/meta-og-image.png",
+		image: config.image || "/static/images/meta-og-image.png",
 	};
 
 	// effects
@@ -150,7 +150,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 				})}
 				<link
 					rel="manifest"
-					href="/@legacy/site.webmanifest"
+					href="/site.webmanifest"
 				/>
 				<link
 					rel="canonical"
@@ -159,37 +159,35 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 				<link
 					rel="apple-touch-icon"
 					sizes="180x180"
-					href="/@legacy/static/images/favicon/apple-touch-icon.png"
+					href="/static/images/favicon/apple-touch-icon.png"
 				/>
 				<link
 					rel="icon"
 					type="image/png"
 					sizes="32x32"
-					href="/@legacy/static/images/favicon/favicon-32x32.png"
+					href="/static/images/favicon/favicon-32x32.png"
 				/>
 				<link
 					rel="icon"
 					type="image/png"
 					sizes="16x16"
-					href="/@legacy/static/images/favicon/favicon-16x16.png"
+					href="/static/images/favicon/favicon-16x16.png"
 				/>
 				<link
 					rel="icon"
-					href={`/@legacy/static/images/favicon/favicon${
-						isDevelopmentEnvironment() ? "-dev" : ""
-					}.ico?v=3`}
+					href={`/static/images/favicon/favicon${isDevelopmentEnvironment() ? "-dev" : ""}.ico?v=3`}
 				/>
 				<link
 					rel="alternate"
 					type="application/rss+xml"
 					title={`RSS Feed for ${WEBSITE_METADATA.url.replace("https://", "")}`}
-					href="/@legacy/rss.xml"
+					href="/rss.xml"
 				/>
 				<link
 					rel="alternate"
 					type="application/rss+atom"
 					title={`Atom Feed for ${WEBSITE_METADATA.url.replace("https://", "")}`}
-					href="/@legacy/atom.xml"
+					href="/atom.xml"
 				/>
 
 				{[ROUTES.HOME, ROUTES.ABOUT_ME, ROUTES.RESUME].includes(

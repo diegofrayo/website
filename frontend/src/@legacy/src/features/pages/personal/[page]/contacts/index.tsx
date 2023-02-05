@@ -20,7 +20,12 @@ import { isServer } from "~/@legacy/src/utils/app";
 import { handleCopyToClipboardClick } from "~/@legacy/src/utils/browser";
 import { formatPhoneNumber } from "~/@legacy/src/utils/formatting";
 import { generateSlug } from "~/@legacy/src/utils/strings";
-import type { T_Object, T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/@legacy/src/types";
+import type {
+	T_Object,
+	T_ReactChildren,
+	T_ReactElement,
+	T_ReactElementNullable,
+} from "~/@legacy/src/types";
 
 import styles from "./styles.module.css";
 

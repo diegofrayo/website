@@ -7,7 +7,12 @@ import { AuthService } from "~/@legacy/src/features/auth";
 import { clearLogsHistory, getLogsHistory } from "~/@legacy/src/features/logging";
 import { useDidMount } from "~/@legacy/src/hooks";
 import v from "~/@legacy/src/lib/v";
-import { isBrowser, isDevelopmentEnvironment, isLocalhostEnvironment, isServer } from "~/@legacy/src/utils/app";
+import {
+	isBrowser,
+	isDevelopmentEnvironment,
+	isLocalhostEnvironment,
+	isServer,
+} from "~/@legacy/src/utils/app";
 import {
 	getAndroidVersion,
 	getScreenSize,

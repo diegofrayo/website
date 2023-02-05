@@ -284,7 +284,7 @@ function Stopwatch(): T_ReactElement {
 					<Space size={2} />
 
 					<audio
-						src={`/@legacy/static/sounds/${stopwatchAudio}.mp3`}
+						src={`/static/sounds/${stopwatchAudio}.mp3`}
 						id="audio-stopwatch-completed"
 						preload="auto"
 						className="tw-hidden"

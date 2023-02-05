@@ -2,7 +2,11 @@ import * as React from "react";
 import classNames from "classnames";
 
 import v from "~/@legacy/src/lib/v";
-import type { T_HTMLElementAttributes, T_ReactElement, T_ReactFunctionComponent } from "~/@legacy/src/types";
+import type {
+	T_HTMLElementAttributes,
+	T_ReactElement,
+	T_ReactFunctionComponent,
+} from "~/@legacy/src/types";
 
 import Text from "./Text";
 

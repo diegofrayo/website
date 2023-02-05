@@ -3,7 +3,15 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { Block, Button, Icon, InlineText, Space, Text, Title } from "~/@legacy/src/components/primitive";
+import {
+	Block,
+	Button,
+	Icon,
+	InlineText,
+	Space,
+	Text,
+	Title,
+} from "~/@legacy/src/components/primitive";
 import v from "~/@legacy/src/lib/v";
 import { pluralize } from "~/@legacy/src/utils/strings";
 import type { T_ReactElement } from "~/@legacy/src/types";

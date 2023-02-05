@@ -60,119 +60,119 @@ import { T_ReactElement } from "~/@legacy/src/types";
 export const ICONS = {
 	// own
 	COUCHSURFING: {
-		icon: "/@legacy/static/images/icons/couchsurfing.png",
+		icon: "/static/images/icons/couchsurfing.png",
 		defaultProps: {
 			className: "tw-rounded-full",
 			alt: "Couchsurfing",
 		},
 	},
 	GITHUB: {
-		icon: "/@legacy/static/images/icons/github.svg",
+		icon: "/static/images/icons/github.svg",
 		defaultProps: {
 			className: "",
 			alt: "GitHub",
 		},
 	},
 	GITHUB_LIGHT: {
-		icon: "/@legacy/static/images/icons/github-light.svg",
+		icon: "/static/images/icons/github-light.svg",
 		defaultProps: {
 			className: "",
 			alt: "GitHub light",
 		},
 	},
 	GMAIL: {
-		icon: "/@legacy/static/images/icons/gmail.svg",
+		icon: "/static/images/icons/gmail.svg",
 		defaultProps: {
 			className: "",
 			alt: "Email",
 		},
 	},
 	GUITAR: {
-		icon: "/@legacy/static/images/icons/guitar.svg",
+		icon: "/static/images/icons/guitar.svg",
 		defaultProps: {
 			className: "",
 			alt: "Guitar",
 		},
 	},
 	FLOWER_1: {
-		icon: "/@legacy/static/images/icons/flower-1.svg",
+		icon: "/static/images/icons/flower-1.svg",
 		defaultProps: {
 			className: "",
 			alt: "Flower 1",
 		},
 	},
 	FLOWER_2: {
-		icon: "/@legacy/static/images/icons/flower-2.svg",
+		icon: "/static/images/icons/flower-2.svg",
 		defaultProps: {
 			className: "",
 			alt: "Flower 1",
 		},
 	},
 	FLOWER_3: {
-		icon: "/@legacy/static/images/icons/flower-3.svg",
+		icon: "/static/images/icons/flower-3.svg",
 		defaultProps: {
 			className: "",
 			alt: "Flower 1",
 		},
 	},
 	INSTAGRAM: {
-		icon: "/@legacy/static/images/icons/instagram.svg",
+		icon: "/static/images/icons/instagram.svg",
 		defaultProps: {
 			className: "",
 			alt: "Instagram",
 		},
 	},
 	LINKEDIN: {
-		icon: "/@legacy/static/images/icons/linkedin.svg",
+		icon: "/static/images/icons/linkedin.svg",
 		defaultProps: {
 			className: "",
 			alt: "Linkedin",
 		},
 	},
 	MAPS: {
-		icon: "/@legacy/static/images/icons/maps.svg",
+		icon: "/static/images/icons/maps.svg",
 		defaultProps: {
 			className: "",
 			alt: "Google Maps",
 		},
 	},
 	NETFLIX: {
-		icon: "/@legacy/static/images/icons/netflix.svg",
+		icon: "/static/images/icons/netflix.svg",
 		defaultProps: {
 			className: "tw-rounded-full",
 			alt: "Netflix",
 		},
 	},
 	SPOTIFY: {
-		icon: "/@legacy/static/images/icons/spotify.svg",
+		icon: "/static/images/icons/spotify.svg",
 		defaultProps: {
 			className: "",
 			alt: "Spotify",
 		},
 	},
 	SOCCER: {
-		icon: "/@legacy/static/images/icons/soccer.svg",
+		icon: "/static/images/icons/soccer.svg",
 		defaultProps: {
 			className: "",
 			alt: "Soccer",
 		},
 	},
 	TWITTER: {
-		icon: "/@legacy/static/images/icons/twitter.svg",
+		icon: "/static/images/icons/twitter.svg",
 		defaultProps: {
 			className: "",
 			alt: "Twitter",
 		},
 	},
 	WHATSAPP: {
-		icon: "/@legacy/static/images/icons/whatsapp.svg",
+		icon: "/static/images/icons/whatsapp.svg",
 		defaultProps: {
 			className: "",
 			alt: "WhatsApp",
 		},
 	},
 	YOUTUBE: {
-		icon: "/@legacy/static/images/icons/youtube.svg",
+		icon: "/static/images/icons/youtube.svg",
 		defaultProps: {
 			className: "",
 			alt: "YouTube",

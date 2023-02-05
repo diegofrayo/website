@@ -27,7 +27,11 @@ import * as MusicComponents from "~/@legacy/src/features/pages/music/components"
 import * as ResumeComponents from "~/@legacy/src/features/pages/resume";
 import { ROUTES } from "~/@legacy/src/features/routing";
 import { T_Metadata } from "~/@legacy/src/stores/modules/metadata";
-import type { T_ReactChildren, T_ReactElement, T_ReactFunctionComponent } from "~/@legacy/src/types";
+import type {
+	T_ReactChildren,
+	T_ReactElement,
+	T_ReactFunctionComponent,
+} from "~/@legacy/src/types";
 
 let MDXScope: {
 	DATA: {

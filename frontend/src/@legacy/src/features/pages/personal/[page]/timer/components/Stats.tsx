@@ -2,7 +2,14 @@
 
 import * as React from "react";
 
-import { Block, Button, Collapsible, Icon, InlineText, Space } from "~/@legacy/src/components/primitive";
+import {
+	Block,
+	Button,
+	Collapsible,
+	Icon,
+	InlineText,
+	Space,
+} from "~/@legacy/src/components/primitive";
 import type { T_ReactElement } from "~/@legacy/src/types";
 
 import type { T_RoutineStats, T_Routine } from "../types";

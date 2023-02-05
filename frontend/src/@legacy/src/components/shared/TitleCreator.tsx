@@ -1,7 +1,11 @@
 import * as React from "react";
 
 import TitlePrimitive, { T_TitleProps } from "~/@legacy/src/components/primitive/Title";
-import type { T_ReactChildren, T_ReactElement, T_ReactFunctionComponent } from "~/@legacy/src/types";
+import type {
+	T_ReactChildren,
+	T_ReactElement,
+	T_ReactFunctionComponent,
+} from "~/@legacy/src/types";
 
 /*
  * WARN:

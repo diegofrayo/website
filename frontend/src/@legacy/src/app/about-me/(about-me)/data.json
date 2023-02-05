@@ -5,7 +5,7 @@
 	},
 	{
 		"image": "${process.env.BACKEND_URL}/pages/about-me/assets/2.jpg",
-		"text": "I enjoy reading and learning about history, old civilizations, and human behavior. I like playing guitar, coding, hiking, biking, photography, cooking, playing soccer, and table tennis.",
+		"text": "I enjoy bookmark and learning about history, old civilizations, and human behavior. I like playing guitar, coding, hiking, biking, photography, cooking, playing soccer, and table tennis.",
 		"layout": "L"
 	},
 	{

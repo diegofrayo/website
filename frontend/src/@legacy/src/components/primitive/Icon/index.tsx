@@ -4,7 +4,11 @@ import classNames from "classnames";
 import { logger } from "~/@legacy/src/features/logging";
 import v from "~/@legacy/src/lib/v";
 import { getObjectKeys, mirror } from "~/@legacy/src/utils/objects-and-arrays";
-import type { T_HTMLElementAttributes, T_ReactElement, T_ReactElementNullable } from "~/@legacy/src/types";
+import type {
+	T_HTMLElementAttributes,
+	T_ReactElement,
+	T_ReactElementNullable,
+} from "~/@legacy/src/types";
 
 import { ICONS } from "./constants";
 import isIconElementFromLibraryChecker from "./utils";

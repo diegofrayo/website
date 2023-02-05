@@ -1,6 +1,12 @@
 import * as React from "react";
 
-import { Block, Icon, Link, Text, Title as TitlePrimitive } from "~/@legacy/src/components/primitive";
+import {
+	Block,
+	Icon,
+	Link,
+	Text,
+	Title as TitlePrimitive,
+} from "~/@legacy/src/components/primitive";
 import type { T_ReactElement, T_ReactElementNullable } from "~/@legacy/src/types";
 import { isDevelopmentEnvironment } from "~/@legacy/src/utils/app";
 

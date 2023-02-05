@@ -1,6 +1,14 @@
 import * as React from "react";
 
-import { Icon, Link, Title, Block, Text, InlineText, Image } from "~/@legacy/src/components/primitive";
+import {
+	Icon,
+	Link,
+	Title,
+	Block,
+	Text,
+	InlineText,
+	Image,
+} from "~/@legacy/src/components/primitive";
 import { Emoji, Render } from "~/@legacy/src/components/shared";
 import { useQuery } from "~/@legacy/src/hooks";
 import type { T_ReactElement, T_ReactOnClickEventObject } from "~/@legacy/src/types";

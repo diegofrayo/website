@@ -46,7 +46,10 @@ function Link(props: T_LinkProps): T_ReactElementNullable {
 	}
 
 	return (
+		// TODO: [typescript]
+		// @ts-ignore
 		<NextLink
+			{...htmlAttributes}
 			href={href}
 			className={composedClassName}
 			passHref
