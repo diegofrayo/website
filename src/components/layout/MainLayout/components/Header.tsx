@@ -87,8 +87,8 @@ function MainMenu(): T_ReactElement {
 						},
 
 						{
-							label: translator.t("layout:header:common:menu_item_readings"),
-							url: ROUTES.READINGS,
+							label: translator.t("layout:header:common:menu_item_bookmarks"),
+							url: ROUTES.BOOKMARKS,
 						},
 						{
 							label: translator.t("layout:header:common:menu_item_personal"),

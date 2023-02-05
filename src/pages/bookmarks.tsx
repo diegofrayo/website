@@ -1,10 +1,10 @@
 import { ENV_VARS } from "~/constants";
 import { getPageContentStaticProps } from "~/features/i18n";
-import ReadingsPage from "~/features/pages/readings";
+import BookmarksPage from "~/features/pages/bookmarks";
 import http from "~/lib/http";
 import { transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/objects-and-arrays";
 
-export default ReadingsPage;
+export default BookmarksPage;
 
 // --- Next.js functions ---
 
@@ -15,7 +15,7 @@ export const getStaticProps = getPageContentStaticProps({
 				(
 					await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
 						path: "/data",
-						model: "readings",
+						model: "bookmarks",
 					})
 				).data,
 			),
