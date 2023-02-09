@@ -24,16 +24,19 @@ import type { T_Object, T_ReactChildren, T_ReactElement, T_ReactElementNullable 
 import styles from "./styles.module.css";
 
 type T_BusinessesProps = {
-	businesses: T_Object<T_GroupOfBusinesses>;
+	data: {
+		places: T_Business[];
+		categories: T_Object<T_GroupOfBusinesses>;
+	};
 };
 
-function Businesses({ businesses }: T_BusinessesProps): T_ReactElementNullable {
+function Businesses({ data }: T_BusinessesProps): T_ReactElementNullable {
 	// hooks
 	const [isAllCollapsibleOpened, setAllCollapsibleOpened, toggleIsAllCollapsibleOpened] =
 		useEnhancedState(false);
 
 	// states & refs
-	const { current: totalOfBusinesses } = React.useRef<number>(countAllBusinesses(businesses));
+	const { current: totalOfBusinesses } = React.useRef<number>(countAllBusinesses(data.categories));
 	const [whatsAppOption, setWhatsAppOption] = React.useState<T_WhatsAppOption>("api");
 
 	// vars
@@ -133,7 +136,7 @@ function Businesses({ businesses }: T_BusinessesProps): T_ReactElementNullable {
 				</Block>
 
 				<Block>
-					{Object.entries(businesses).map(
+					{Object.entries(data.categories).map(
 						([groupName, groupData]: [string, T_GroupOfBusinesses]) => {
 							const parsedGroupName = groupName;
 
@@ -141,6 +144,7 @@ function Businesses({ businesses }: T_BusinessesProps): T_ReactElementNullable {
 								return (
 									<BusinessesGroup
 										key={generateSlug(parsedGroupName)}
+										places={data.places}
 										groupName={parsedGroupName}
 										businesses={groupData}
 										collapsibleOpened={isAllCollapsibleOpened}
@@ -163,6 +167,7 @@ function Businesses({ businesses }: T_BusinessesProps): T_ReactElementNullable {
 											return (
 												<BusinessesGroup
 													key={generateSlug(parsedSubGroupName)}
+													places={data.places}
 													groupName={parsedSubGroupName}
 													businesses={subGroupBusinesses}
 													collapsibleOpened={isAllCollapsibleOpened}
@@ -186,6 +191,7 @@ export default withAuthPage<T_BusinessesProps>(Businesses);
 // --- Components ---
 
 type T_BusinessesGroupProps = {
+	places: T_BusinessesProps["data"]["places"];
 	groupName: string;
 	businesses: T_Business[];
 	collapsibleOpened: boolean;
@@ -193,6 +199,7 @@ type T_BusinessesGroupProps = {
 };
 
 function BusinessesGroup({
+	places,
 	groupName,
 	businesses,
 	collapsibleOpened,
@@ -205,8 +212,18 @@ function BusinessesGroup({
 				opened={collapsibleOpened}
 			>
 				<Block className="tw-flex tw-flex-wrap">
-					{businesses.map((contact) => {
-						if (v.isString(contact)) return null;
+					{businesses.map((item) => {
+						let contact;
+
+						if (v.isString(item)) {
+							contact = places.find((place) => place.id === item);
+
+							if (v.notFound(contact)) {
+								throw new Error(`Place "item" not found`);
+							}
+						} else {
+							contact = item;
+						}
 
 						const contactPhone = Array.isArray(contact.phone)
 							? contact.phone.map((i) => i.value)
@@ -385,7 +402,7 @@ function WhastAppButton({
 	// handlers
 	function composeWhatsAppUrl(): string {
 		const url = new URLSearchParams();
-		url.append("phone", phone.replace(" ", "").trim());
+		url.append("phone", `+57${phone.replace(" ", "").trim()}`);
 		url.append("text", "Hola");
 
 		return `https://${whatsAppOption}.whatsapp.com/send?${url.toString()}`;
@@ -414,7 +431,7 @@ type T_PhoneButtonProps = {
 function PhoneButton({ children, phone }: T_PhoneButtonProps): T_ReactElementNullable {
 	// utils
 	function generatePhoneLink(): string {
-		return `tel:${phone.split(" ").slice(1).join("").trim()}`;
+		return `tel:${phone}`;
 	}
 
 	return (
@@ -430,7 +447,7 @@ function PhoneButton({ children, phone }: T_PhoneButtonProps): T_ReactElementNul
 
 // --- Utils ---
 
-function countAllBusinesses(businesses: T_BusinessesProps["businesses"]): number {
+function countAllBusinesses(businesses: T_BusinessesProps["data"]["categories"]): number {
 	const result = Object.values(businesses).reduce((result, groupOfBusinesses) => {
 		return result + countGroupOfBusinesses(groupOfBusinesses);
 	}, 0);

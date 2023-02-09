@@ -19,7 +19,7 @@ export const getStaticProps = getPageContentStaticProps({
 
 		return {
 			props: {
-				businesses: businesses.categories,
+				data: businesses,
 			},
 		};
 	},

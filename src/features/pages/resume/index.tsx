@@ -179,7 +179,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 					</ResumeBlock>
 				</PrintBlock>
 
-				<PrintBlock className="print:tw-mt-[1200px] print:tw-pt-8">
+				<PrintBlock className="print:tw-mt-[100px] print:tw-pt-8">
 					<ResumeBlock title="Skills">
 						<List variant={List.variant.DEFAULT}>
 							{resume.skills.map((item) => {
@@ -312,7 +312,7 @@ function ExperienceTimelineItem({
 				)}
 
 				<Text className="tw-text-xs tw-italic dfr-text-color-secondary">
-					<InlineText>{startDate}</InlineText> / <InlineText>{endDate}</InlineText>
+					<InlineText>{startDate}</InlineText> / <InlineText>{endDate || "present"}</InlineText>
 				</Text>
 				<Space size={2} />
 
