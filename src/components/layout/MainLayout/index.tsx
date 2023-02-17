@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useRouter } from "next/router";
+import classNames from "classnames";
 
 import { Block, Button, Icon, Link, Title, Text } from "~/components/primitive";
 import { T_IconName } from "~/components/primitive/Icon";
@@ -16,12 +17,14 @@ type T_MainLayoutProps = {
 	title: string;
 	children: T_ReactChildren;
 	hasToDisplayGoToTheTopButton?: boolean;
+	width?: string;
 };
 
 function MainLayout({
 	children,
 	title = "",
 	hasToDisplayGoToTheTopButton = true,
+	width,
 }: T_MainLayoutProps): T_ReactElement {
 	// hooks
 	const { pathname } = useRouter();
@@ -40,7 +43,7 @@ function MainLayout({
 
 	return (
 		<Block is="main">
-			<Block className="tw-mx-auto tw-px-8 dfr-max-w-layout">
+			<Block className={classNames("tw-mx-auto tw-px-8", width || "dfr-max-w-layout")}>
 				<Header />
 
 				<Block

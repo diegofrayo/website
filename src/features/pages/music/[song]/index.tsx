@@ -66,7 +66,10 @@ function SongPage(props: T_PageProps): T_ReactElement {
 				disableSEO: v.isNotTrue(song.isPublic),
 			}}
 		>
-			<MainLayout title={song.title}>
+			<MainLayout
+				title={song.title}
+				width="tw-max-w-[1024px]"
+			>
 				<SongDetails song={song} />
 				<Space size={6} />
 
