@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 
-import { Block, Button, Icon, Link, Title, Text } from "~/components/primitive";
+import { Block, Button, Icon, Link, Title, Text, Space } from "~/components/primitive";
 import { T_IconName } from "~/components/primitive/Icon";
 import { useOnWindowStopScroll } from "~/hooks";
 import v from "~/lib/v";
@@ -95,37 +95,33 @@ function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement
 			is="footer"
 			className="tw-relative dfr-bg-color-gs-black print:tw-hidden"
 		>
-			<Block className="tw-mx-auto tw-px-8 tw-text-center dfr-max-w-layout dfr-text-color-gs-400">
-				<Block className="tw-pt-16 tw-pb-8">
-					<Text className="tw-text-center tw-text-xs tw-font-bold tw-uppercase">contact me</Text>
-					<Block className="tw-mt-2 tw-inline-block tw-pt-2">
-						<Block className="tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
-							<FooterIcon
-								url={WEBSITE_METADATA.social.linkedin}
-								icon={Icon.icon.LINKEDIN}
-							/>
-							<FooterIcon
-								url={WEBSITE_METADATA.social.github}
-								icon={Icon.icon.GITHUB_LIGHT}
-							/>
-							<FooterIcon
-								url={WEBSITE_METADATA.social.twitter}
-								icon={Icon.icon.TWITTER}
-							/>
-							<FooterIcon
-								url={WEBSITE_METADATA.social.couchsurfing}
-								icon={Icon.icon.COUCHSURFING}
-							/>
-							<FooterIcon
-								url={WEBSITE_METADATA.social.spotify}
-								icon={Icon.icon.SPOTIFY}
-							/>
-						</Block>
-					</Block>
+			<Block className="tw-mx-auto tw-px-8 tw-py-16 tw-text-center dfr-max-w-layout dfr-text-color-gs-400">
+				<Block className="tw-inline-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
+					<FooterIcon
+						url={WEBSITE_METADATA.social.linkedin}
+						icon={Icon.icon.LINKEDIN}
+					/>
+					<FooterIcon
+						url={WEBSITE_METADATA.social.github}
+						icon={Icon.icon.GITHUB_LIGHT}
+					/>
+					<FooterIcon
+						url={WEBSITE_METADATA.social.twitter}
+						icon={Icon.icon.TWITTER}
+					/>
+					<FooterIcon
+						url={WEBSITE_METADATA.social.couchsurfing}
+						icon={Icon.icon.COUCHSURFING}
+					/>
+					<FooterIcon
+						url={WEBSITE_METADATA.social.spotify}
+						icon={Icon.icon.SPOTIFY}
+					/>
 				</Block>
-				<Block className="tw-py-4 tw-text-xs">
+				<Space size={2} />
+				<Text className="tw-text-xs">
 					Diego Rayo | @diegofrayo | Software Developer | {new Date().getFullYear()}
-				</Block>
+				</Text>
 			</Block>
 
 			{hasToDisplayGoToTheTopButton ? <GoToTopButton /> : null}

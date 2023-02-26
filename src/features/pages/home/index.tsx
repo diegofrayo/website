@@ -417,11 +417,13 @@ function Table(): T_ReactElement {
 		<Block className="tw-relative tw-overflow-hidden tw-border-4 tw-border-b-0 tw-border-yellow-900">
 			<Block className="tw-w-5/12 tw-border-r-4 tw-border-yellow-900 tw-pb-1">
 				<Block className="tw-bg-yellow-900">
+					{/*
 					<LinkItem
 						label="about me"
 						url={ROUTES.ABOUT_ME}
 					/>
 					<Space size={0.5} />
+					*/}
 					<LinkItem
 						label="resume"
 						url={ROUTES.RESUME}

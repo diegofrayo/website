@@ -192,7 +192,7 @@ function MainMenu(): T_ReactElement {
 	);
 }
 
-function SettingsMenu(): T_ReactElement {
+const SettingsMenu = withAuthComponent(function SettingsMenu(): T_ReactElement {
 	// states & refs
 	const menuRef = React.useRef<HTMLDivElement>(null);
 	const [showMenu, setShowMenu, toggleShowMenu] = useEnhancedState(false);
@@ -233,7 +233,7 @@ function SettingsMenu(): T_ReactElement {
 			) : null}
 		</Block>
 	);
-}
+});
 
 function ToggleThemeMenuItem(): T_ReactElement {
 	// hooks

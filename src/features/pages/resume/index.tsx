@@ -277,7 +277,7 @@ function ExperienceTimelineItem({
 			is="section"
 			className="tw-relative tw-mb-8 tw-pl-9 last:tw-mb-0 print:tw-mb-20"
 		>
-			<Block className="tw-absolute tw--left-4 tw-top-0 tw-h-10 tw-w-10 tw-overflow-hidden tw-border-4 dfr-border-color-bw">
+			<Block className="tw-absolute tw--left-4 tw-top-0 tw-h-10 tw-w-10 tw-overflow-hidden tw-border-4 dfr-border-color-bw dfr-bg-color-wb">
 				{v.isNotEmptyString(companyLogo) ? (
 					<Image
 						src={companyLogo}
@@ -285,7 +285,7 @@ function ExperienceTimelineItem({
 						fill
 					/>
 				) : (
-					<Block className="tw-h-full tw-w-full dfr-bg-color-wb" />
+					<Block className="tw-h-full tw-w-full" />
 				)}
 			</Block>
 
