@@ -2,9 +2,9 @@ import * as React from "react";
 import { useRouter } from "next/router";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
-import { Icon, Button, Space, Block, Text, Pre } from "~/components/primitive";
+import { Icon, Button, Space, Block, Text, Pre, Collapsible } from "~/components/primitive";
 import { Page, MainLayout } from "~/components/layout";
-import { MDXContent, Loader, RateContent } from "~/components/shared";
+import { MDXContent, Loader, RateContent, ProtectedComponent } from "~/components/shared";
 import { useTranslation } from "~/features/i18n";
 import { ROUTES } from "~/features/routing";
 import { useDidMount } from "~/hooks";
@@ -137,6 +137,16 @@ function SongPage(props: T_PageProps): T_ReactElement {
 							}}
 						/>
 					</Block>
+					{song.interpretation ? (
+						<ProtectedComponent className="tw-border-t-4 tw-p-4 dfr-bg-color-secondary">
+							<Collapsible
+								title="Interpretación"
+								contentClassName="tw-italic dfr-text-color-secondary"
+							>
+								{`"${song.interpretation}"`}
+							</Collapsible>
+						</ProtectedComponent>
+					) : null}
 				</Block>
 				<Space size={2} />
 

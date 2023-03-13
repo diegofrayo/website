@@ -14,6 +14,7 @@ type T_CollapsibleProps = T_HTMLElementAttributes["details"] & {
 	title?: string;
 	openedByDefault?: boolean;
 	opened?: boolean;
+	contentClassName?: string;
 
 	onShowContentHandler?: () => void;
 	onHideContentHandler?: () => void;
@@ -24,6 +25,7 @@ function Collapsible(props: T_CollapsibleProps): T_ReactElement {
 		// props
 		children,
 		className,
+		contentClassName,
 
 		// states & refs
 		isOpen,
@@ -54,7 +56,13 @@ function Collapsible(props: T_CollapsibleProps): T_ReactElement {
 				</InlineText>
 				<InlineText>{computedTitle}</InlineText>
 			</Title>
-			<Block className={classNames("tw-mt-2 tw-pl-5", isOpen ? "tw-block" : "tw-hidden")}>
+			<Block
+				className={classNames(
+					"tw-mt-2 tw-pl-5",
+					contentClassName,
+					isOpen ? "tw-block" : "tw-hidden",
+				)}
+			>
 				{children}
 			</Block>
 		</Block>
@@ -65,7 +73,10 @@ export default Collapsible;
 
 // --- Controller ---
 
-type T_UseControllerReturn = Pick<T_CollapsibleProps, "children" | "className"> & {
+type T_UseControllerReturn = Pick<
+	T_CollapsibleProps,
+	"children" | "className" | "contentClassName"
+> & {
 	computedTitle: string;
 	handleToggleClick: () => void;
 	isOpen: boolean;
@@ -77,6 +88,7 @@ function useController({
 	openedByDefault = false,
 	opened,
 	className = "",
+	contentClassName = "",
 	onShowContentHandler = (): void => undefined,
 	onHideContentHandler = (): void => undefined,
 }: T_CollapsibleProps): T_UseControllerReturn {
@@ -102,6 +114,7 @@ function useController({
 		// props
 		children,
 		className,
+		contentClassName,
 
 		// states & refs
 		isOpen,

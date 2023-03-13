@@ -31,22 +31,13 @@
     <loc>https://diegofrayo.vercel.app/music/chords</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/music/adios</loc>
-  </url>
-  <url>
-    <loc>https://diegofrayo.vercel.app/music/cancion-para-los-dias-de-la-vida</loc>
-  </url>
-  <url>
-    <loc>https://diegofrayo.vercel.app/music/a-las-nueve</loc>
+    <loc>https://diegofrayo.vercel.app/music/ando-ganas</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/el-tesoro</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/la-bestia-pop</loc>
-  </url>
-  <url>
-    <loc>https://diegofrayo.vercel.app/music/la-miel-en-tu-ventana</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/luz</loc>
@@ -61,13 +52,16 @@
     <loc>https://diegofrayo.vercel.app/music/un-poco-de-amor-frances</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/music/ando-ganas</loc>
+    <loc>https://diegofrayo.vercel.app/music/a-las-nueve</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/music/arrancarmelo</loc>
+    <loc>https://diegofrayo.vercel.app/music/adios</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/cancion-de-cuna</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/cancion-para-los-dias-de-la-vida</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/doscientos-anos</loc>
@@ -83,6 +77,9 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/la-espera</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/la-miel-en-tu-ventana</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/los-libros-de-la-buena-memoria</loc>
@@ -109,7 +106,13 @@
     <loc>https://diegofrayo.vercel.app/music/vientito-del-tucuman</loc>
   </url>
   <url>
+    <loc>https://diegofrayo.vercel.app/music/y-mientras-tanto-el-sol-se-muere</loc>
+  </url>
+  <url>
     <loc>https://diegofrayo.vercel.app/music/alma-de-diamante</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/arrancarmelo</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/bailando-con-tu-sombra</loc>
@@ -167,9 +170,6 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/vasos-vacios</loc>
-  </url>
-  <url>
-    <loc>https://diegofrayo.vercel.app/music/y-mientras-tanto-el-sol-se-muere</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/zona-de-promesas</loc>
