@@ -143,7 +143,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
 								title="Interpretación"
 								contentClassName="tw-italic dfr-text-color-secondary"
 							>
-								{`"${song.interpretation}"`}
+								<Pre variant={Pre.variant.BREAK_WITH_BLANK_LINES}>{song.interpretation}</Pre>
 							</Collapsible>
 						</ProtectedComponent>
 					) : null}
