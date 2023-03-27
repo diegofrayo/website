@@ -71,12 +71,7 @@ export type T_Song = {
 	readonly album: string;
 	readonly year: number;
 	readonly country: string;
-	readonly category:
-		| "0|IN_PROGRESS"
-		| "1|FAVORITE"
-		| "2|WELL_DONE"
-		| "3|TO_PRACTICE"
-		| "4|SOME_DAY";
+	readonly category: "0|IN_PROGRESS" | "1|FAVORITE" | "2|TO_PRACTICE" | "3|SOME_DAY";
 	readonly spotifyUrl: string;
 	readonly youtubeUrl: string;
 	readonly createdAt: string;

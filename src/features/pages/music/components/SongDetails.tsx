@@ -118,7 +118,7 @@ const Category = withAuthComponent(function Category({ category }: { category: s
 	const { t } = useTranslation();
 
 	// vars
-	const EMOJIS = ["🚧", "⭐", "🟩", "🟨", "🟥"];
+	const EMOJIS = ["🚧", "⭐", "🟨", "🟥"];
 
 	return (
 		<Block className="sm:tw-flex sm:tw-flex-nowrap">
