@@ -1,0 +1,24 @@
+{
+  "autorun": false,
+  "terminals": [
+    {
+      "name": "Backend I",
+      "description": "backend",
+      "focus": true,
+      "commands": ["cd zzz-current-backend", "npm run dev"]
+    },
+    {
+      "name": "Backend II",
+      "description": "backend",
+      "focus": true,
+      "commands": ["cd zzz-current-backend", "npm run scripts:music:dev"],
+      "split": "Backend I"
+    },
+    {
+      "name": "Frontend",
+      "description": "frontend",
+      "focus": true,
+      "commands": ["cd zzz-current-frontend"]
+    }
+  ]
+}
