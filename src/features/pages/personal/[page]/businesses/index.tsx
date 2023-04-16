@@ -138,7 +138,7 @@ function Businesses({ data }: T_BusinessesProps): T_ReactElementNullable {
 				<Block>
 					{Object.entries(data.categories).map(
 						([groupName, groupData]: [string, T_GroupOfBusinesses]) => {
-							const parsedGroupName = groupName;
+							const parsedGroupName = groupName.split("-").slice(1).join("");
 
 							if (Array.isArray(groupData)) {
 								return (
@@ -346,6 +346,19 @@ function BusinessLinks({
 				>
 					<Icon
 						icon={Icon.icon.MAPS}
+						size={24}
+					/>
+				</Link>
+			) : null}
+
+			{v.isNotEmptyString(contact.menu) ? (
+				<Link
+					variant={Link.variant.SIMPLE}
+					href={contact.menu}
+					isExternalLink
+				>
+					<Icon
+						icon={Icon.icon.LINK}
 						size={24}
 					/>
 				</Link>
