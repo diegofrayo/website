@@ -116,7 +116,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
 
 					<Block className="tw-max-w-full tw-border-y-4 tw-p-4 dfr-border-color-primary">
 						<Block
-							className="tw-overflow-x-scroll tw-pb-1"
+							className="song-content tw-overflow-x-scroll tw-pb-1"
 							style={{ fontSize: `${fontSize}rem` }}
 						>
 							<MDXContent
@@ -154,6 +154,12 @@ function SongPage(props: T_PageProps): T_ReactElement {
 				<Space size={8} />
 
 				<RateContent />
+
+				<style jsx>{`
+					:global(.song-content pre) {
+						font-family: "PT Mono";
+					}
+				`}</style>
 			</MainLayout>
 		</Page>
 	);

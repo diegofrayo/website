@@ -1,6 +1,6 @@
 import * as React from "react";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import classNames from "classnames";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { Block } from "~/components/primitive";
 import { MDXComponents } from "~/features/mdx";
