@@ -2,23 +2,26 @@
   "autorun": false,
   "terminals": [
     {
-      "name": "Backend I",
+      "name": "Backend I (server)",
       "description": "backend",
       "focus": true,
-      "commands": ["cd zzz-current-backend", "npm run dev"]
+      "commands": ["cd zzz-current-backend", "npm run dev"],
+      "execute": false
     },
     {
-      "name": "Backend II",
+      "name": "Backend II (music)",
       "description": "backend",
       "focus": true,
       "commands": ["cd zzz-current-backend", "npm run scripts:music:dev"],
-      "split": "Backend I"
+      "split": "Backend I (server)",
+      "execute": false
     },
     {
       "name": "Frontend",
       "description": "frontend",
       "focus": true,
-      "commands": ["cd zzz-current-frontend"]
+      "commands": ["cd zzz-current-frontend", "npm run dev"],
+      "execute": false
     }
   ]
 }
