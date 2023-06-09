@@ -13,7 +13,7 @@ import { replaceAll } from "~/utils/strings";
 
 export default BlogPostPage;
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 type T_StaticPath = { slug: string };
 

@@ -31,7 +31,7 @@ function useEnhancedState(initialState: number): T_UseEnhacedStateNumberReturn;
 function useEnhancedState(
 	initialState: unknown,
 ): T_UseEnhacedStateStringReturn | T_UseEnhacedStateBooleanReturn | T_UseEnhacedStateNumberReturn {
-	// states & refs
+	// --- STATES & REFS ---
 	const initialStateRef = React.useRef<typeof initialState>(initialState);
 	const [enhancedState, setEnhancedState] = React.useState<typeof initialState>(initialState);
 

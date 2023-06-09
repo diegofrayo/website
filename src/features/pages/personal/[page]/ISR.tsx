@@ -14,10 +14,10 @@ import type {
 
 function ISR(): T_ReactElement {
 	const {
-		// states & refs
+		// --- STATES & REFS ---
 		path,
 
-		// handlers
+		// --- HANDLERS ---
 		handleUpdateClick,
 		onChangeHandler,
 	} = useController();
@@ -52,7 +52,7 @@ function ISR(): T_ReactElement {
 
 export default ISR;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = {
 	path: string;
@@ -61,10 +61,10 @@ type T_UseControllerReturn = {
 };
 
 function useController(): T_UseControllerReturn {
-	// states & refs
+	// --- STATES & REFS ---
 	const [path, setPath] = React.useState("/resume");
 
-	// handlers
+	// --- HANDLERS ---
 	const onChangeHandler: T_UseControllerReturn["onChangeHandler"] = function onChangeHandler(
 		event,
 	) {
@@ -83,10 +83,10 @@ function useController(): T_UseControllerReturn {
 		};
 
 	return {
-		// states & refs
+		// --- STATES & REFS ---
 		path,
 
-		// handlers
+		// --- HANDLERS ---
 		onChangeHandler,
 		handleUpdateClick,
 	};

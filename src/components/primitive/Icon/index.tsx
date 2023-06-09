@@ -30,7 +30,7 @@ function Icon({
 	wrapperClassName = "",
 	withBackgroundWhenDarkMode = false,
 }: T_IconProps): T_ReactElementNullable {
-	// vars
+	// --- VARS ---
 	/*
 	 * This assertion is undesirable but necessary because I'm typing
 	 * the icons keys object in a different way in comparison to the
@@ -46,7 +46,7 @@ function Icon({
 		),
 	};
 
-	// utils
+	// --- UTILS ---
 	function getColorStyles(): string {
 		if (v.isNotEmptyString(color)) {
 			return color;
@@ -59,7 +59,6 @@ function Icon({
 		return "dfr-text-color-bw";
 	}
 
-	// render
 	if (v.isUndefined(icon)) {
 		logger("WARN", "Icon does not exist", iconName);
 		return null;
@@ -116,7 +115,7 @@ Icon.icon = mirror(getObjectKeys(ICONS));
 export default Icon;
 export type { T_IconName };
 
-// --- Components ---
+// --- COMPONENTS ---
 
 function Wrapper({ children, className = "" }: T_HTMLElementAttributes["span"]): T_ReactElement {
 	return (

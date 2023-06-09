@@ -3,7 +3,7 @@ import { NextRouter } from "next/router";
 import v from "~/lib/v";
 import { isPWA } from "~/utils/browser";
 
-// --- Constants ---
+// --- CONSTANTS ---
 
 export type T_RoutesKeys =
 	| "HOME"
@@ -51,7 +51,7 @@ export const ROUTES: Readonly<Record<T_RoutesKeys, T_RoutesValues>> = {
 	ERROR_500: "/500",
 };
 
-// --- Utils ---
+// --- UTILS ---
 
 const LOCAL_STORAGE_KEY = "DFR_LAST_PAGE";
 

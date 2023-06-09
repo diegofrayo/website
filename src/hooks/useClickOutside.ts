@@ -5,7 +5,7 @@ import { isDOMNode } from "~/utils/browser";
 import type { T_ReactRef } from "~/types";
 
 function useClickOutside(ref: T_ReactRef<HTMLElement>, callback: () => void): void {
-	// effects
+	// --- EFFECTS ---
 	React.useEffect(() => {
 		const controller = new AbortController();
 

@@ -33,32 +33,30 @@ import type {
 
 function TimerPage(): T_ReactElement {
 	const {
-		// states
+		// --- STATES & REFS ---
 		currentRoutine,
 		currentRoutineItem,
 		currentRoutineItemIndex,
 		timerStatus,
 		routinesHistory,
 		isUILocked,
-
-		// states setters
 		setTimerStatus,
 		setIsUILocked,
 
-		// handlers
+		// --- HANDLERS ---
 		handleInitRoutineClick,
 		handleCompleteRoutineClick,
 		handleCancelRoutineClick,
 		handleUploadRoutineHistoryClick,
 		handleDeleteRoutineHistoryClick,
 
-		// vars
+		// --- VARS ---
 		routineItemsStartTime,
 		routinesTemplates,
 		isLoading,
 		error,
 
-		// utils
+		// --- UTILS ---
 		timeToSeconds,
 		secondsToTime,
 		getStats,
@@ -110,16 +108,14 @@ function TimerPage(): T_ReactElement {
 					return currentRoutine ? (
 						<TimerPageContext.Provider
 							value={{
-								// states
+								// --- STATES & REFS ---
 								currentRoutine,
 								timerStatus,
 								isUILocked,
-
-								// states setters
 								setTimerStatus,
 								setIsUILocked,
 
-								// utils
+								// --- UTILS ---
 								timeToSeconds,
 								secondsToTime,
 								calculateRoutineItemTotalTime,
@@ -329,10 +325,10 @@ function TimerPage(): T_ReactElement {
 
 export default withAuthPage(TimerPage);
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 function useController() {
-	// hooks
+	// --- HOOKS ---
 	const { theme, setTheme } = useTheme();
 	const {
 		data: routinesTemplates,
@@ -374,7 +370,7 @@ function useController() {
 		},
 	);
 
-	// states
+	// --- STATES & REFS ---
 	const [currentRoutine, setCurrentRoutine] = React.useState<T_Routine>();
 	const [currentRoutineItem, setCurrentRoutineItem] = React.useState<T_RoutineItem>();
 	const [currentRoutineItemIndex, setCurrentRoutineItemIndex] = React.useState<number>(0);
@@ -385,7 +381,7 @@ function useController() {
 	const [isUILocked, setIsUILocked] = React.useState(false);
 	const LOCAL_STORAGE_KEY = "DFR_TIMER";
 
-	// utils
+	// --- UTILS ---
 	const timeToSeconds = React.useCallback(function timeToSeconds(time?: string): number {
 		if (!time || time.split(":").length === 0) return 0;
 
@@ -762,7 +758,7 @@ function useController() {
 	},
 	[]);
 
-	// handlers
+	// --- HANDLERS ---
 	function handleInitRoutineClick(routineTemplate: T_Routine) {
 		return () => {
 			const loadedRoutineFromLocalStorage = readRoutineFromLocalStorage()[createFormattedDate()];
@@ -856,7 +852,7 @@ function useController() {
 		[saveDataInLocalStorage, fetchRoutinesHistory],
 	);
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		if (theme === "dark") setTheme("light");
 	});
@@ -892,32 +888,30 @@ function useController() {
 	);
 
 	return {
-		// states
+		// --- STATES & REFS ---
 		currentRoutine,
 		currentRoutineItem,
 		currentRoutineItemIndex,
 		timerStatus,
 		routinesHistory,
 		isUILocked,
-
-		// states setters
 		setTimerStatus,
 		setIsUILocked,
 
-		// handlers
+		// --- HANDLERS ---
 		handleInitRoutineClick,
 		handleCompleteRoutineClick,
 		handleCancelRoutineClick,
 		handleUploadRoutineHistoryClick,
 		handleDeleteRoutineHistoryClick,
 
-		// vars
+		// --- VARS ---
 		routinesTemplates,
 		isLoading,
 		error,
 		routineItemsStartTime: routinesTemplates?.metadata.routineItemsStartTime || 0,
 
-		// utils
+		// --- UTILS ---
 		timeToSeconds,
 		secondsToTime,
 		getStats,

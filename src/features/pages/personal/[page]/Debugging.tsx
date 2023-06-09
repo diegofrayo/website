@@ -20,13 +20,13 @@ import {
 import type { T_ReactElement } from "~/types";
 
 function Debugging(): T_ReactElement {
-	// states & refs
+	// --- STATES & REFS ---
 	const [content, setContent] = React.useState<{ vars: string; logs: string[] }>({
 		vars: "",
 		logs: [],
 	});
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		setContent({
 			vars: JSON.stringify(
@@ -64,7 +64,7 @@ function Debugging(): T_ReactElement {
 		});
 	});
 
-	// handlers
+	// --- HANDLERS ---
 	function handleClearLogsClick(): void {
 		clearLogsHistory();
 		window.location.reload();

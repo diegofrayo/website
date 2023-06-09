@@ -6,10 +6,10 @@ type T_UseTabsReturn = {
 };
 
 function useTabs(): T_UseTabsReturn {
-	// states & refs
+	// --- STATES & REFS ---
 	const [tabIndex, setTabIndex] = React.useState(0);
 
-	// handlers
+	// --- HANDLERS ---
 	const selectTab: T_UseTabsReturn["selectTab"] = function selectTab(newTabIndex) {
 		setTabIndex(newTabIndex);
 	};

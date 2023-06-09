@@ -12,7 +12,7 @@ export default {
 	argTypes: {},
 };
 
-// --- Stories ---
+// --- STORIES ---
 
 export const Div = Story.bind({});
 Div.args = {

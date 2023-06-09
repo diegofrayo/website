@@ -14,16 +14,16 @@ import FilmsService, { T_Film } from "./service";
 
 function Films(): T_ReactElement {
 	const {
-		// states & refs
+		// --- STATES & REFS ---
 		selectedCategory,
 		isAddedDateFilterEnabled,
 
-		// vars
+		// --- VARS ---
 		isLoading,
 		error,
 		data,
 
-		// handlers
+		// --- HANDLERS ---
 		handleSelectFilterClick,
 		handleToggleOrderByFilterClick,
 		handleFilmItemClick,
@@ -56,7 +56,7 @@ function Films(): T_ReactElement {
 											key={category}
 											variant={Button.variant.SIMPLE}
 											className={classNames(
-												"tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm",
+												"tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-px-3 tw-py-1 tw-text-left tw-text-sm",
 												category === selectedCategory
 													? "tw-bg-yellow-400 tw-font-bold dark:tw-bg-yellow-600 dark:dfr-text-color-gs-white"
 													: "dfr-bg-color-tertiary",
@@ -84,7 +84,7 @@ function Films(): T_ReactElement {
 								<Button
 									variant={Button.variant.SIMPLE}
 									className={classNames(
-										"tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm",
+										"tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-px-3 tw-py-1 tw-text-left tw-text-sm",
 										isAddedDateFilterEnabled
 											? "tw-bg-yellow-400 tw-font-bold dark:tw-bg-yellow-600 dark:dfr-text-color-gs-white"
 											: "dfr-bg-color-tertiary",
@@ -203,7 +203,7 @@ function Films(): T_ReactElement {
 
 export default Films;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = {
 	selectedCategory: string;
@@ -217,14 +217,14 @@ type T_UseControllerReturn = {
 };
 
 function useController(): T_UseControllerReturn {
-	// hooks
+	// --- HOOKS ---
 	const { isLoading, error, data } = useQuery<T_Film[]>("films", FilmsService.fetchFilms);
 
-	// states & refs
+	// --- STATES & REFS ---
 	const [isAddedDateFilterEnabled, setIsAddedDateFilterEnabled] = React.useState(true);
 	const [selectedCategory, setSelectedCategory] = React.useState("");
 
-	// handlers
+	// --- HANDLERS ---
 	const handleSelectFilterClick: T_UseControllerReturn["handleSelectFilterClick"] =
 		function handleSelectFilter(category) {
 			return () => {
@@ -257,7 +257,7 @@ function useController(): T_UseControllerReturn {
 		setIsAddedDateFilterEnabled((currentValue) => !currentValue);
 	}
 
-	// utils
+	// --- UTILS ---
 	function filterFilms(films: T_Film[], filter: string): T_Film[] {
 		if (v.isEmptyString(filter)) {
 			return films;
@@ -272,16 +272,16 @@ function useController(): T_UseControllerReturn {
 	}
 
 	return {
-		// states & refs
+		// --- STATES & REFS ---
 		selectedCategory,
 		isAddedDateFilterEnabled,
 
-		// handlers
+		// --- HANDLERS ---
 		handleSelectFilterClick,
 		handleToggleOrderByFilterClick,
 		handleFilmItemClick,
 
-		// vars
+		// --- VARS ---
 		isLoading,
 		error,
 		data: v.isUndefined(data)
@@ -317,7 +317,7 @@ function useController(): T_UseControllerReturn {
 	};
 }
 
-// --- Types ---
+// --- TYPES ---
 
 type T_Data = {
 	films: T_Film[];

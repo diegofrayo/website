@@ -22,18 +22,18 @@ type T_CollapsibleProps = T_HTMLElementAttributes["details"] & {
 
 function Collapsible(props: T_CollapsibleProps): T_ReactElement {
 	const {
-		// props
+		// --- PROPS ---
 		children,
 		className,
 		contentClassName,
 
-		// states & refs
+		// --- STATES & REFS ---
 		isOpen,
 
-		// vars
+		// --- VARS ---
 		computedTitle,
 
-		// handlers
+		// --- HANDLERS ---
 		handleToggleClick,
 	} = useController(props);
 
@@ -71,7 +71,7 @@ function Collapsible(props: T_CollapsibleProps): T_ReactElement {
 
 export default Collapsible;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = Pick<
 	T_CollapsibleProps,
@@ -92,10 +92,10 @@ function useController({
 	onShowContentHandler = (): void => undefined,
 	onHideContentHandler = (): void => undefined,
 }: T_CollapsibleProps): T_UseControllerReturn {
-	// states & refs
+	// --- STATES & REFS ---
 	const [isOpen, setIsOpen] = React.useState(openedByDefault);
 
-	// effects
+	// --- EFFECTS ---
 	React.useEffect(() => {
 		if (v.isBoolean(opened)) {
 			setIsOpen(opened);
@@ -111,18 +111,18 @@ function useController({
 	}, [isOpen, onShowContentHandler, onHideContentHandler]);
 
 	return {
-		// props
+		// --- PROPS ---
 		children,
 		className,
 		contentClassName,
 
-		// states & refs
+		// --- STATES & REFS ---
 		isOpen,
 
-		// vars
+		// --- VARS ---
 		computedTitle: v.isNotEmptyString(title) ? title : isOpen ? "Hide" : "Show",
 
-		// handlers
+		// --- HANDLERS ---
 		handleToggleClick: () => setIsOpen((currentValue) => !currentValue),
 	};
 }

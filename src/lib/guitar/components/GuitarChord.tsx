@@ -19,13 +19,13 @@ type T_GuitarChordProps = { plainChord: T_PlainChordDetails };
 
 function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 	const {
-		// states && refs
+		// --- STATES & REFS --- && refs
 		chordContainerRef,
 
-		// handlers
+		// --- HANDLERS ---
 		handleDownloadAsImageClick,
 
-		// vars
+		// --- VARS ---
 		parsedChord,
 		error,
 	} = useController(props);
@@ -98,7 +98,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 							/>
 						) : null}
 
-						<Block className="tw-relative tw-top-6 tw--left-0.5 tw-h-36 tw-w-3 tw-rounded-tr-md tw-rounded-br-md dfr-bg-color-bw dark:dfr-bg-color-wb" />
+						<Block className="tw-relative tw--left-0.5 tw-top-6 tw-h-36 tw-w-3 tw-rounded-br-md tw-rounded-tr-md dfr-bg-color-bw dark:dfr-bg-color-wb" />
 					</Block>
 
 					<GuitarFret
@@ -125,7 +125,7 @@ function GuitarChord(props: T_GuitarChordProps): T_ReactElementNullable {
 
 export default GuitarChord;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = {
 	chordContainerRef: T_ReactRef<HTMLDivElement>;
@@ -135,15 +135,15 @@ type T_UseControllerReturn = {
 };
 
 function useController({ plainChord }: T_GuitarChordProps): T_UseControllerReturn {
-	// hooks
+	// --- HOOKS ---
 	const { data, error } = useAsync<T_PlainChordDetails, T_Chord>(plainChord, (params) => {
 		return GuitarService.parseChord(params);
 	});
 
-	// states & refs
+	// --- STATES & REFS ---
 	const chordContainerRef = React.useRef<HTMLDivElement>(null);
 
-	// handlers
+	// --- HANDLERS ---
 	async function handleDownloadAsImageClick(): Promise<void> {
 		if (v.isNull(chordContainerRef.current)) return;
 
@@ -156,13 +156,13 @@ function useController({ plainChord }: T_GuitarChordProps): T_UseControllerRetur
 	}
 
 	return {
-		// states && refs
+		// --- STATES & REFS --- && refs
 		chordContainerRef,
 
-		// handlers
+		// --- HANDLERS ---
 		handleDownloadAsImageClick,
 
-		// vars
+		// --- VARS ---
 		parsedChord: data,
 		error,
 	};

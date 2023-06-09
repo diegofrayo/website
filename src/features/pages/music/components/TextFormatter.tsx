@@ -21,16 +21,16 @@ type T_TextFormatterProps = {
 
 function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 	const {
-		// states
+		// --- STATES & REFS ---
 		isModalVisible,
 		selectedUnparsedChord,
 		selectedUnparsedChordIndex,
 		handleUpdateSelectedUnparsedChordVariantClick,
 
-		// handlers
+		// --- HANDLERS ---
 		onModalCloseHandler,
 
-		// vars
+		// --- VARS ---
 		parsedLyrics,
 	} = useController(props);
 
@@ -119,7 +119,7 @@ function TextFormatter(props: T_TextFormatterProps): T_ReactElement {
 
 export default TextFormatter;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = {
 	isModalVisible: boolean;
@@ -133,14 +133,14 @@ type T_UseControllerReturn = {
 };
 
 function useController({ children, insertions }: T_TextFormatterProps): T_UseControllerReturn {
-	// states & refs
+	// --- STATES & REFS ---
 	const [isModalVisible, setIsModalVisible] = React.useState(false);
 	const [selectedUnparsedChord, setSelectedUnparsedChord] = React.useState<
 		T_PlainChord | undefined
 	>(undefined);
 	const [selectedUnparsedChordIndex, setSelectedUnparsedChordIndex] = React.useState(0);
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		document.querySelectorAll(`.${GuitarService.CHORD_BUTTON_SELECTOR}`).forEach((button) => {
 			button.addEventListener("click", (event) => {
@@ -161,7 +161,7 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 		});
 	});
 
-	// handlers
+	// --- HANDLERS ---
 	function onModalCloseHandler(): void {
 		setIsModalVisible(false);
 		setSelectedUnparsedChord(undefined);
@@ -190,7 +190,7 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 			};
 		};
 
-	// utils
+	// --- UTILS ---
 	function parseInsertions(parsedContent: string): T_ReactChildren {
 		let result: (string | T_ReactNode)[] = [];
 
@@ -227,16 +227,16 @@ function useController({ children, insertions }: T_TextFormatterProps): T_UseCon
 	}
 
 	return {
-		// states
+		// --- STATES & REFS ---
 		isModalVisible,
 		selectedUnparsedChord,
 		selectedUnparsedChordIndex,
 
-		// handlers
+		// --- HANDLERS ---
 		handleUpdateSelectedUnparsedChordVariantClick,
 		onModalCloseHandler,
 
-		// vars
+		// --- VARS ---
 		parsedLyrics: parseInsertions(children),
 	};
 }

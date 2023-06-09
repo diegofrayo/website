@@ -25,23 +25,23 @@ type T_PageProps = {
 };
 
 function SongPage(props: T_PageProps): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const router = useRouter();
 	const { t } = useTranslation();
 	const {
-		// props
+		// --- PROPS ---
 		song,
 		songMDXContent,
 
-		// states & refs
+		// --- STATES & REFS ---
 		fontSize,
 
-		// handlers
+		// --- HANDLERS ---
 		handleIncreaseFontSizeClick,
 		handleDecreaseFontSizeClick,
 		handleCopyUrlClick,
 
-		// vars
+		// --- VARS ---
 		isMaxFontSize,
 		isMinFontSize,
 	} = useController(props);
@@ -167,7 +167,7 @@ function SongPage(props: T_PageProps): T_ReactElement {
 
 export default SongPage;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = {
 	song: T_PageProps["song"];
@@ -181,13 +181,13 @@ type T_UseControllerReturn = {
 };
 
 function useController({ songMDXContent, song }: T_PageProps): T_UseControllerReturn {
-	// states & refs
+	// --- STATES & REFS ---
 	const [fontSize, setFontSize] = React.useState(0);
 
-	// vars
+	// --- VARS ---
 	const LOCAL_STORAGE_KEY = "DFR_MUSIC_FONT_SIZE";
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		setFontSize(getFontSize());
 	});
@@ -199,7 +199,7 @@ function useController({ songMDXContent, song }: T_PageProps): T_UseControllerRe
 		[fontSize],
 	);
 
-	// handlers
+	// --- HANDLERS ---
 	function handleIncreaseFontSizeClick(): void {
 		setFontSize((currentValue) => Number((currentValue + 0.2).toFixed(1)));
 	}
@@ -212,7 +212,7 @@ function useController({ songMDXContent, song }: T_PageProps): T_UseControllerRe
 		copyToClipboard(window.location.href);
 	}
 
-	// utils
+	// --- UTILS ---
 	function getFontSize(): number {
 		const INITIAL_VALUE = 0.8;
 		const readedFontSize = safeCastNumber(
@@ -228,19 +228,19 @@ function useController({ songMDXContent, song }: T_PageProps): T_UseControllerRe
 	}
 
 	return {
-		// props
+		// --- PROPS ---
 		song,
 		songMDXContent,
 
-		// states & refs
+		// --- STATES & REFS ---
 		fontSize,
 
-		// handlers
+		// --- HANDLERS ---
 		handleIncreaseFontSizeClick,
 		handleDecreaseFontSizeClick,
 		handleCopyUrlClick,
 
-		// vars
+		// --- VARS ---
 		isMaxFontSize: fontSize === 2,
 		isMinFontSize: fontSize === 0.6,
 	};

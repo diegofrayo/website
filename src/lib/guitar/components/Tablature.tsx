@@ -20,10 +20,10 @@ type T_TablatureProps = {
 
 function Tablature(props: T_TablatureProps): T_ReactElement {
 	const {
-		// props
+		// --- PROPS ---
 		notes,
 
-		// vars
+		// --- VARS ---
 		parsedPositions,
 	} = useController(props);
 
@@ -136,17 +136,17 @@ function Tablature(props: T_TablatureProps): T_ReactElement {
 
 export default Tablature;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 function useController({ positions, notes }: T_TablatureProps): {
 	parsedPositions: T_TablatureProps["positions"] | undefined;
 	notes: T_TablatureProps["notes"];
 } {
 	return {
-		// props
+		// --- PROPS ---
 		notes,
 
-		// vars
+		// --- VARS ---
 		parsedPositions: v.isNotEmptyArray(positions)
 			? [
 					{ space: 1, variant: "SPACE" },
@@ -157,7 +157,7 @@ function useController({ positions, notes }: T_TablatureProps): {
 	};
 }
 
-// --- Components ---
+// --- COMPONENTS ---
 
 function Position({
 	children,
@@ -207,7 +207,7 @@ function Position({
 	);
 }
 
-// --- Utils ---
+// --- UTILS ---
 
 function parsePositions(positions: NonNullable<T_TablatureProps["positions"]>): T_Positions[] {
 	return positions.map((position) => {
@@ -278,7 +278,7 @@ function checkTablatureSpaceValidity(value: number): boolean {
 	return true;
 }
 
-// --- Types ---
+// --- TYPES ---
 
 type T_Position = T_MusicNotePosition | T_SpacePosition | T_GuitarStringPosition | T_BarrePosition;
 

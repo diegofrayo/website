@@ -22,30 +22,28 @@ function Timer({
 }): T_ReactElement {
 	// context
 	const {
-		// states
+		// --- STATES & REFS ---
 		currentRoutine,
 		timerStatus,
 		isUILocked,
-
-		// states setters
 		setTimerStatus,
 		setIsUILocked,
 
-		// utils
+		// --- UTILS ---
 		secondsToTime,
 		timeToSeconds,
 		markRoutineItemAsCompleted,
 		updateRoutineItem,
 	} = React.useContext(TimerPageContext);
 
-	// states
+	// --- STATES & REFS ---
 	const [timerInterval, setTimerInterval] = React.useState<T_SetTimeout | null>(null);
 	const [time, setTime] = React.useState(0);
 	const [sets, setSets] = React.useState<("START" | "REST" | "HIGH")[]>([]);
 	const [currentSet, setCurrentSet] = React.useState({ index: 0, isRest: false, isStart: true });
 	const [isSoundsMuted, setIsSoundsMuted] = React.useState(false);
 
-	// utils
+	// --- UTILS ---
 	const playSound = React.useCallback(
 		function playSound(mode: "ROUTINE_ITEM_COMPLETED" | "SET_COMPLETED" | "COUNTDOWN") {
 			try {
@@ -115,7 +113,7 @@ function Timer({
 		[setTime, timeToSeconds, routineItemsStartTime],
 	);
 
-	// effects
+	// --- EFFECTS ---
 	React.useEffect(
 		function getTimerReady() {
 			const numberOfSets = Array.isArray(routineItem.sets)
@@ -192,7 +190,7 @@ function Timer({
 		],
 	);
 
-	// handlers
+	// --- HANDLERS ---
 	function handleStartRoutineItemClick() {
 		if (timerInterval) {
 			stopTimer(timerInterval);
@@ -257,7 +255,7 @@ function Timer({
 		setIsUILocked((currentValue) => !currentValue);
 	}
 
-	// vars
+	// --- VARS ---
 	const isTimerRunning = timerInterval !== null;
 	const isRoutineItemCompleted = routineItem.status === ROUTINE_ITEMS_STATUS.COMPLETED;
 	const showNextSetButton = !isRoutineItemCompleted;
@@ -267,7 +265,7 @@ function Timer({
 	return (
 		<Block
 			className={classNames(
-				"tw-py-8 tw-px-4 tw-text-center dfr-text-color-gs-white",
+				"tw-px-4 tw-py-8 tw-text-center dfr-text-color-gs-white",
 				isRoutineItemCompleted
 					? "tw-bg-green-600"
 					: currentSet.isStart

@@ -61,7 +61,7 @@
 	"Dm": { "music_notes": "1,1,1|3,2,2|2,3,3", "touched_strings": "x,x,0,1,1,1" },
 	"Dm6": { "music_notes": "3,2,2|1,1,1", "touched_strings": "x,x,0,1,0,1" },
 	"Dm7": { "music_notes": "2,1,1|1,1,2|3,2,3", "touched_strings": "x,x,0,1,1,1" },
-	"Dsus2": { "music_notes": "3,2,2|2,3,3", "touched_strings": "x,x,0,1,1,0" },
+	"Dsus2": { "music_notes": "3,2,1|2,3,3", "touched_strings": "x,x,0,1,1,0" },
 	"Dsus4": { "music_notes": "3,2,1|1,2,2|2,3,3|1,3,4", "touched_strings": "x,x,0,1,1,1" },
 	"E": { "music_notes": "5,2,2|4,2,3|3,1,1", "touched_strings": "0,1,1,1,0,0" },
 	"E7": { "music_notes": "5,2,2|3,1,1", "touched_strings": "0,1,0,1,0,0" },

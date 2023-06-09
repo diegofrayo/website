@@ -14,13 +14,13 @@ function useOnWindowStopScroll({
 	let isScrolling: T_SetTimeout;
 	let isMounted = false;
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		isMounted = true;
 		window.addEventListener("scroll", onScroll, false);
 	});
 
-	// utils
+	// --- UTILS ---
 	function onScrollStopped(): void {
 		if (!isMounted) return;
 

@@ -22,13 +22,13 @@ function TSCodeExample({
 	usageCode,
 	height = "auto",
 }: T_TSCodeExample): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { selectTab, selectedTabIndex } = useTabs();
 
-	// vars
+	// --- VARS ---
 	const TABS_LIST = ["Types", "Usage"];
 
-	// handlers
+	// --- HANDLERS ---
 	function handleTabClick(tabIndex: number): () => void {
 		return () => {
 			selectTab(tabIndex);

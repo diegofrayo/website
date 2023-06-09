@@ -63,7 +63,7 @@ export function createPreloadedState({
 	};
 }
 
-// --- Utils ---
+// --- UTILS ---
 
 function createStore(preloadedState: T_PreloadedState) {
 	return configureStore({

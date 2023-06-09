@@ -16,7 +16,7 @@ type T_AboutMePageProps = {
 };
 
 function AboutMePage({ pageMDXContent }: T_AboutMePageProps): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 
 	return (
@@ -40,7 +40,7 @@ function AboutMePage({ pageMDXContent }: T_AboutMePageProps): T_ReactElement {
 
 export default AboutMePage;
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps = getPageContentStaticProps<T_AboutMePageProps, { page: string }>({
 	page: ROUTES.ABOUT_ME,

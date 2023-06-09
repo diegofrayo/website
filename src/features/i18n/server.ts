@@ -93,7 +93,7 @@ export default function getPageContentStaticProps<G_PageProps, G_GetStaticPropsP
 	return getStaticProps;
 }
 
-// --- Utils ---
+// --- UTILS ---
 
 type T_GetContentParams = {
 	page?: string | string[];

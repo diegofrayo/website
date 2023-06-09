@@ -5,7 +5,7 @@ import http from "~/lib/http";
 
 export default ContactsPage;
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps = getPageContentStaticProps({
 	callback: async () => {

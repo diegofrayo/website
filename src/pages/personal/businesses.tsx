@@ -5,7 +5,7 @@ import http from "~/lib/http";
 
 export default BusinessesPage;
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps = getPageContentStaticProps({
 	callback: async () => {

@@ -18,7 +18,7 @@ function Text({ children, className = "", ...rest }: T_TextProps): T_ReactElemen
 
 export default Text;
 
-// --- Utils ---
+// --- UTILS ---
 
 function removeTextElements(children: T_ReactChildren): T_ReactChildren {
 	if (React.isValidElement(children) && children.type === "p") {

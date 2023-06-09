@@ -8,7 +8,7 @@ import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
 type T_CodeProps = T_HTMLElementAttributes["code"];
 
 function Code({ children, className, ...rest }: T_CodeProps): T_ReactElement {
-	// handlers
+	// --- HANDLERS ---
 	function handleClick(): void {
 		if (v.isArrayOf(children, "string")) {
 			copyToClipboard(children.join(""));

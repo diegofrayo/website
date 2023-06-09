@@ -24,7 +24,7 @@ const Block = React.forwardRef<HTMLDivElement, T_BlockProps>(function Block(
 	{ is: Tag = "div", children, variant = VARIANTS.UNSTYLED, className = "", ...rest },
 	ref,
 ): T_ReactElement {
-	// utils
+	// --- UTILS ---
 	function composeClassName(): string {
 		return classNames(
 			className,

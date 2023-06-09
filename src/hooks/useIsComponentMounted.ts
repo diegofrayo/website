@@ -3,10 +3,10 @@ import * as React from "react";
 import useDidMount from "./useDidMount";
 
 function useIsComponentMounted(): boolean {
-	// states & refs
+	// --- STATES & REFS ---
 	const isMountedRef = React.useRef(true);
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		isMountedRef.current = true;
 

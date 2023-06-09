@@ -24,13 +24,13 @@ type T_TitleProps = {
 
 function Title(props: T_TitleProps): T_ReactElement {
 	const {
-		// props
+		// --- PROPS ---
 		variant,
 		showLinkIcon,
 		children,
 		is: Tag,
 
-		// vars
+		// --- VARS ---
 		id,
 		className,
 
@@ -96,7 +96,7 @@ Title.size = SIZES;
 export default Title;
 export type { T_TitleProps };
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = T_TitleProps;
 
@@ -110,7 +110,7 @@ function useController({
 	id = "",
 	...rest
 }: T_TitleProps): T_UseControllerReturn {
-	// utils
+	// --- UTILS ---
 	function generateStyles(tag: T_TitleProps["is"]): string {
 		return classNames(
 			{
@@ -138,14 +138,14 @@ function useController({
 	}
 
 	return {
-		// props
+		// --- PROPS ---
 		variant,
 		showLinkIcon,
 		children,
 		is,
 		...rest,
 
-		// vars
+		// --- VARS ---
 		id: variant === VARIANTS.PRIMARY && v.isString(children) ? generateSlug(children) : id,
 		className: classNames(
 			`dfr-Title dfr-Title--${variant.toLowerCase()}`,

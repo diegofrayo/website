@@ -21,7 +21,7 @@ class BooksService {
 
 export default BooksService;
 
-// --- Value objects ---
+// --- VALUE OBJECTS ---
 
 function BookVO(data: T_Object): T_Book {
 	const book = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Book>(data);
@@ -29,7 +29,7 @@ function BookVO(data: T_Object): T_Book {
 	return book;
 }
 
-// --- Types ---
+// --- TYPES ---
 
 export type T_Book = {
 	id: string;

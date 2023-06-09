@@ -3,6 +3,6 @@ import TicksPage from "~/features/pages/personal/[page]/Ticks";
 
 export default TicksPage;
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps = getPageContentStaticProps();

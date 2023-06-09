@@ -3,6 +3,6 @@ import StopwatchPage from "~/features/pages/personal/[page]/Stopwatch";
 
 export default StopwatchPage;
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps = getPageContentStaticProps();

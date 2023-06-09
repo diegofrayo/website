@@ -28,7 +28,7 @@ import type {
 } from "~/types";
 
 function Ticks(): T_ReactElement {
-	// states & refs
+	// --- STATES & REFS ---
 	const [ticksAudio, setTicksAudio] = React.useState<"1" | "2" | "3">("1");
 	const [cyclesAudio, setCyclesAudio] = React.useState<"1" | "2" | "3">("3");
 	const [ticks, setTicks, , , resetTicks] = useEnhancedState(0);
@@ -55,14 +55,14 @@ function Ticks(): T_ReactElement {
 		}[]
 	>([]);
 
-	// vars
+	// --- VARS ---
 	const PAGE_TITLE = "ticks";
 	const LOCAL_STORAGE_KEY = "DFR_TICKS";
 	const isTimerStarted = timerStatus !== "NOT_STARTED";
 	const isTimerNotStarted = timerStatus === "NOT_STARTED";
 	const isTimerPaused = timerStatus === "PAUSED";
 
-	// utils
+	// --- UTILS ---
 	function playSound(
 		elementId: "audio-cycle-completed" | "audio-tick" | "audio-session-completed",
 	): void {
@@ -129,7 +129,7 @@ function Ticks(): T_ReactElement {
 		return `${seconds === 0 ? `${minutes} minutes` : `${minutes} minutes and ${seconds} seconds`}`;
 	}
 
-	// handlers
+	// --- HANDLERS ---
 	function handleStartClick(): void {
 		const areInputValuesValid = (
 			document.getElementById("form") as HTMLFormElement
@@ -243,7 +243,7 @@ function Ticks(): T_ReactElement {
 			setCyclesAudio(event.currentTarget.value as typeof cyclesAudio);
 		};
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		setHistory(readHistoryFromLocalStorage());
 	});
@@ -462,7 +462,7 @@ function Ticks(): T_ReactElement {
 
 export default Ticks;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 type T_ActionButtonProps = T_HTMLElementAttributes["button"];
 

@@ -51,7 +51,7 @@ class MusicService {
 
 export default new MusicService();
 
-// --- Value objects ---
+// --- VALUE OBJECTS ---
 
 function SongVO(data: T_Object): T_Song {
 	const song = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Song>(data);
@@ -62,7 +62,7 @@ function SongVO(data: T_Object): T_Song {
 	return song;
 }
 
-// --- Types ---
+// --- TYPES ---
 
 export type T_Song = {
 	readonly id: string;

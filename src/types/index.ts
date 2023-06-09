@@ -1,10 +1,10 @@
 import * as React from "react";
 
-// --- Data ---
+// --- DATA ---
 
 export type T_Primitive = string | number | boolean | null;
 
-// --- Objects ---
+// --- OBJECTS ---
 
 type T_GenericObject<G_Type = unknown> = Record<string | number | symbol, G_Type>;
 
@@ -14,7 +14,7 @@ export type T_JSON = T_GenericObject<
 	string | number | boolean | null | T_JSON[] | { [key: string]: T_JSON }
 >;
 
-// --- React ---
+// --- REACT ---
 
 // for children prop
 export type T_ReactChildren = React.ReactNode;
@@ -40,7 +40,7 @@ export type T_ReactEffectCallback = React.EffectCallback;
 
 export type T_ReactSetState<G_State> = React.Dispatch<React.SetStateAction<G_State>>;
 
-// --- React Event Handlers ---
+// --- REACT EVENT HANDLERS ---
 
 export type T_ReactEventTarget = EventTarget;
 
@@ -57,8 +57,7 @@ export type T_ReactOnChangeEventHandler<G_HTMLElement> = React.ChangeEventHandle
 export type T_ReactOnFocusEventHandler<G_HTMLElement = HTMLInputElement> =
 	React.FocusEventHandler<G_HTMLElement>;
 
-export type T_ReactOnKeyPressEventHandler<G_HTMLElement> =
-	React.KeyboardEventHandler<G_HTMLElement>;
+export type T_ReactOnKeyUpEventHandler<G_HTMLElement> = React.KeyboardEventHandler<G_HTMLElement>;
 
 export type T_ReactOnSubmitEventHandler<G_HTMLElement> = React.FormEventHandler<G_HTMLElement>;
 

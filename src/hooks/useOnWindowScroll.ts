@@ -3,10 +3,10 @@ import * as React from "react";
 type T_Callback = (event: Event) => void;
 
 function useOnWindowScroll(callback: T_Callback, when = true): void {
-	// states & refs
+	// --- STATES & REFS ---
 	const savedHandler = React.useRef<T_Callback>(callback);
 
-	// effects
+	// --- EFFECTS ---
 	React.useEffect(() => {
 		savedHandler.current = callback;
 	});

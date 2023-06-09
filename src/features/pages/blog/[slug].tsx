@@ -25,11 +25,11 @@ type T_PageProps = {
 };
 
 function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 	const dispatch = useStoreActionsDispatcher();
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		dispatch(setLocales(post.locales));
 	});
@@ -83,12 +83,12 @@ function BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {
 
 export default BlogPostPage;
 
-// --- Components ---
+// --- COMPONENTS ---
 function BlogPostActions(): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 
-	// handlers
+	// --- HANDLERS ---
 	function handleCopyUrlClick(): void {
 		copyToClipboard(window.location.href);
 	}
@@ -115,7 +115,7 @@ function BlogPostDetails({
 	updatedAt,
 	isPublished,
 }: T_BlogPostDetailsProps): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 
 	return (
@@ -158,11 +158,11 @@ const BlogPostDetailsItem = twcss(Button)(
 
 const BlogPostDetailsItemLink = withOnlyClientRendering(
 	function BlogPostDetailsItemLink(): T_ReactElement {
-		// hooks
+		// --- HOOKS ---
 		const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 		const { t } = useTranslation();
 
-		// utils
+		// --- UTILS ---
 		function composeMailToURL(): string {
 			return `mailto:${WEBSITE_METADATA.email}?subject=${t("page:email_message_subject")}&body=${t(
 				"page:email_message_body",

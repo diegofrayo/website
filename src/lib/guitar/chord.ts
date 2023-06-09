@@ -49,7 +49,7 @@ class Chord {
 
 export default Chord;
 
-// --- Utils ---
+// --- UTILS ---
 
 function parseFinger(finger: string | undefined): T_Finger | undefined {
 	if (v.isUndefined(finger)) return undefined;

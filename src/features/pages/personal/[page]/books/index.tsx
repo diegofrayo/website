@@ -8,10 +8,10 @@ import type { T_ReactElement, T_ReactOnClickEventObject } from "~/types";
 import BooksService, { T_Book } from "./service";
 
 function Books(): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { isLoading, error, data } = useQuery<T_Book[]>("books", BooksService.fetchBooks);
 
-	// handlers
+	// --- HANDLERS ---
 	function handleBookItemClick(event: T_ReactOnClickEventObject<HTMLDivElement>): void {
 		const link = event.currentTarget.querySelector(".title-link") as HTMLLinkElement;
 
@@ -36,7 +36,7 @@ function Books(): T_ReactElement {
 								<Block
 									key={id}
 									is="article"
-									className="tw-relative tw-mx-2 tw-mb-6 tw-flex tw-h-64 tw-w-48 tw-cursor-pointer tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 tw-shadow-lg tw-duration-500 dfr-border-color-bw hover:tw-translate-x-1 hover:tw--translate-y-1 hover:tw-rotate-0 hover:tw-opacity-75 hover:tw-shadow-2xl sm:tw--rotate-1"
+									className="tw-relative tw-mx-2 tw-mb-6 tw-flex tw-h-64 tw-w-48 tw-cursor-pointer tw-overflow-hidden tw-rounded-br-md tw-rounded-tr-md tw-border-l-8 tw-shadow-lg tw-duration-500 dfr-border-color-bw hover:tw--translate-y-1 hover:tw-translate-x-1 hover:tw-rotate-0 hover:tw-opacity-75 hover:tw-shadow-2xl sm:tw--rotate-1"
 									onClick={handleBookItemClick}
 								>
 									<Image

@@ -18,7 +18,7 @@ const twcss: I_TWCSS = Object.assign(
 
 export default twcss;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 function TWCSSCreator(Tag: T_ElementToRender): I_TWCSSComponentDefinition {
 	const TWCSSComponentDefinition: I_TWCSSComponentDefinition = function TWCSSComponentDefinition(
@@ -61,7 +61,7 @@ function TWCSSCreator(Tag: T_ElementToRender): I_TWCSSComponentDefinition {
 	return TWCSSComponentDefinition;
 }
 
-// --- Utils ---
+// --- UTILS ---
 
 type T_GenerateClassNameParams = {
 	componentStyles: T_StylesParam;
@@ -98,7 +98,7 @@ function generateClassName({
 	return classNames(classNameProp);
 }
 
-// --- Types ---
+// --- TYPES ---
 
 interface I_TWCSSCreator {
 	(Tag: T_ElementToRender): I_TWCSSComponentDefinition;

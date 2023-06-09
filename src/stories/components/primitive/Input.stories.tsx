@@ -11,7 +11,7 @@ export default {
 	argTypes: {},
 };
 
-// --- Stories ---
+// --- STORIES ---
 
 export const WithLabel = (): T_ReactElement => {
 	const [inputValue, setInputValue] = React.useState("I have a label");

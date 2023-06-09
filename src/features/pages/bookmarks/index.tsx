@@ -16,11 +16,11 @@ type T_BookmarksProps = {
 };
 
 function Bookmarks({ data }: T_BookmarksProps): T_ReactElement {
-	// vars
+	// --- VARS ---
 	const PAGE_TITLE = "Bookmarks";
 	const { parsedBookmarks, categoryColors } = parseBookmarks(data);
 
-	// utils
+	// --- UTILS ---
 	function parseBookmarks(data: T_BookmarksProps["data"]): {
 		parsedBookmarks: T_BookmarkWithCategory[];
 		categoryColors: T_Object<string>;
@@ -97,7 +97,7 @@ function Bookmarks({ data }: T_BookmarksProps): T_ReactElement {
 
 export default Bookmarks;
 
-// --- Types ---
+// --- TYPES ---
 
 type T_Bookmark = {
 	url: string;

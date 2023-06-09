@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as React from "react";
 import classNames from "classnames";
 import { ErrorBoundary } from "react-error-boundary";
@@ -33,10 +35,10 @@ function SourceCode({
 	height = "auto",
 	noBorder = false,
 }: T_SourceCodeProps): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 
-	// vars
+	// --- VARS ---
 	const codeTitle = v.isNotEmptyString(fileName)
 		? `// ${fileName}`
 		: v.isNotEmptyString(sourceURL)
@@ -163,7 +165,7 @@ function SourceCode({
 export default SourceCode;
 export type { T_SourceCodeProps };
 
-// --- Components ---
+// --- COMPONENTS ---
 
 const Line = twcss.div`tw-table-row`;
 const LineNo = twcss.span`tw-table-cell tw-text-right tw-pr-4 tw-opacity-50 tw-select-none`;

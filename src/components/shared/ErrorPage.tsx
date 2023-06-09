@@ -6,7 +6,7 @@ import { useTranslation } from "~/features/i18n";
 import type { T_ReactElement } from "~/types";
 
 function ErrorPage(): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 
 	return (

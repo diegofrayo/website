@@ -8,7 +8,7 @@ import { redirect, ROUTES } from "~/features/routing";
 import type { T_ReactElement } from "~/types";
 
 function SignOutPage(): T_ReactElement {
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		setTimeout(() => {
 			window.localStorage.clear();

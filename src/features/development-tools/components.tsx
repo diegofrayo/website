@@ -17,11 +17,11 @@ import type {
 import { initDevToolsConfig, readDevToolsConfig, updateDevToolsConfig } from "./utils";
 
 export function DevelopmentTools(): T_ReactElementNullable {
-	// states & refs
+	// --- STATES & REFS ---
 	const [isConfigOpened, setIsConfigOpened] = React.useState(false);
 	const containerRef = React.useRef<HTMLDivElement>(null);
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		initDevToolsConfig();
 	});
@@ -30,14 +30,14 @@ export function DevelopmentTools(): T_ReactElementNullable {
 		setIsConfigOpened(false);
 	});
 
-	// handlers
+	// --- HANDLERS ---
 	function handleToggleShowConfigClick(): void {
 		setIsConfigOpened((currentValue) => !currentValue);
 	}
 
 	return isLocalhostEnvironment() ? (
 		<Block
-			className="tw-fixed tw-top-2 tw-left-2 tw-z-40 tw-rounded-md tw-p-2 tw-text-sm dfr-shadow dfr-bg-color-secondary print:tw-hidden"
+			className="tw-fixed tw-left-2 tw-top-2 tw-z-40 tw-rounded-md tw-p-2 tw-text-sm dfr-shadow dfr-bg-color-secondary print:tw-hidden"
 			ref={containerRef}
 		>
 			<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
@@ -74,7 +74,7 @@ export function DevelopmentTools(): T_ReactElementNullable {
 			) : null}
 		</Block>
 	) : (
-		<Flags className="tw-fixed tw-top-2 tw-right-2 tw-z-40 tw-rounded-md tw-p-1 dfr-shadow dfr-bg-color-secondary print:tw-hidden" />
+		<Flags className="tw-fixed tw-right-2 tw-top-2 tw-z-40 tw-rounded-md tw-p-1 dfr-shadow dfr-bg-color-secondary print:tw-hidden" />
 	);
 }
 
@@ -86,7 +86,7 @@ export function Bomb(): T_ReactElementNullable {
 	throw new Error("This a Bomb component");
 }
 
-// --- Components ---
+// --- COMPONENTS ---
 
 const Flags = renderIf(function Flags({
 	className = "",
@@ -122,10 +122,10 @@ function Flag({ className, color }: T_FlagProps): T_ReactElement {
 }
 
 function CSSDebugging(): T_ReactElement {
-	// vars
+	// --- VARS ---
 	const { isCSSDebuggingEnabled } = readDevToolsConfig();
 
-	// handlers
+	// --- HANDLERS ---
 	function onChangeHandler(event: T_ReactOnChangeEventObject<HTMLSelectElement>): void {
 		const isCSSDebuggingEnabledValue = event.currentTarget.value === "true";
 
@@ -153,10 +153,10 @@ function CSSDebugging(): T_ReactElement {
 }
 
 function UsersConfig(): T_ReactElement {
-	// vars
+	// --- VARS ---
 	const { isUserLoggedIn } = readDevToolsConfig();
 
-	// handlers
+	// --- HANDLERS ---
 	function onChangeHandler(event: T_ReactOnChangeEventObject<HTMLSelectElement>): void {
 		updateDevToolsConfig({ isUserLoggedIn: event.currentTarget.value === "true" });
 		window.location.reload();
@@ -177,10 +177,10 @@ function UsersConfig(): T_ReactElement {
 }
 
 function EnvironmentConfig(): T_ReactElement {
-	// vars
+	// --- VARS ---
 	const { isDevelopmentEnvironment: isDevelopmentEnvironmentConfig } = readDevToolsConfig();
 
-	// handlers
+	// --- HANDLERS ---
 	function onChangeHandler(event: T_ReactOnChangeEventObject<HTMLSelectElement>): void {
 		updateDevToolsConfig({ isDevelopmentEnvironment: event.currentTarget.value === "true" });
 		window.location.reload();
@@ -201,10 +201,10 @@ function EnvironmentConfig(): T_ReactElement {
 }
 
 function HTTPRequestsConfig(): T_ReactElement {
-	// vars
+	// --- VARS ---
 	const { httpRequestsHaveToFail } = readDevToolsConfig();
 
-	// handlers
+	// --- HANDLERS ---
 	function onChangeHandler(event: T_ReactOnChangeEventObject<HTMLSelectElement>): void {
 		updateDevToolsConfig({ httpRequestsHaveToFail: event.currentTarget.value === "true" });
 		window.location.reload();
@@ -225,10 +225,10 @@ function HTTPRequestsConfig(): T_ReactElement {
 }
 
 function AuthPagesConfig(): T_ReactElement {
-	// vars
+	// --- VARS ---
 	const { authPagesEnabled } = readDevToolsConfig();
 
-	// handlers
+	// --- HANDLERS ---
 	function onChangeHandler(event: T_ReactOnChangeEventObject<HTMLSelectElement>): void {
 		updateDevToolsConfig({ authPagesEnabled: event.currentTarget.value === "true" });
 		window.location.reload();
@@ -274,10 +274,10 @@ function ErrorPages(): T_ReactElement {
 }
 
 function WindowSizeConfig(): T_ReactElement {
-	// states & refs
+	// --- STATES & REFS ---
 	const [size, setSize] = React.useState([0, 0]);
 
-	// effects
+	// --- EFFECTS ---
 	useOnWindowResize(() => {
 		setSize([window.innerWidth, window.innerHeight]);
 	});

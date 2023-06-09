@@ -4,7 +4,7 @@ import { ROUTES } from "~/features/routing";
 
 export default MusicPage;
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps = getPageContentStaticProps({
 	page: ROUTES.MUSIC,

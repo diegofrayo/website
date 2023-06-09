@@ -17,19 +17,19 @@ import MusicService, { T_Song } from "./service";
 
 function MusicPage(): T_ReactElement {
 	const {
-		// states
+		// --- STATES & REFS ---
 		inputValue,
 		inputRef,
 
-		// vars
+		// --- VARS ---
 		isLoading,
 		error,
 		data,
 
-		// handlers
+		// --- HANDLERS ---
 		onInputChangeHandler,
 
-		// utils
+		// --- UTILS ---
 		parseData,
 	} = useController();
 	const { t } = useTranslation();
@@ -122,7 +122,7 @@ function MusicPage(): T_ReactElement {
 
 export default MusicPage;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseController = {
 	inputValue: string;
@@ -138,14 +138,14 @@ type T_UseController = {
 };
 
 function useController(): T_UseController {
-	// hooks
+	// --- HOOKS ---
 	const { isLoading, error, data } = useQuery("music", MusicService.fetchSongs);
 
-	// states & refs
+	// --- STATES & REFS ---
 	const [inputValue, setInputValue] = React.useState("");
 	const inputRef = React.useRef<HTMLInputElement>(null);
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		const controller = new AbortController();
 
@@ -171,13 +171,13 @@ function useController(): T_UseController {
 		};
 	});
 
-	// handlers
+	// --- HANDLERS ---
 	const onInputChangeHandler: T_UseController["onInputChangeHandler"] =
 		function onInputChangeHandler(event) {
 			setInputValue(event.currentTarget.value.toLowerCase());
 		};
 
-	// utils
+	// --- UTILS ---
 	const parseData: T_UseController["parseData"] = function parseData(songs) {
 		return {
 			chordsPage: songs[0],
@@ -191,19 +191,19 @@ function useController(): T_UseController {
 	};
 
 	return {
-		// states
+		// --- STATES & REFS ---
 		inputValue,
 		inputRef,
 
-		// vars
+		// --- VARS ---
 		isLoading,
 		error,
 		data,
 
-		// handlers
+		// --- HANDLERS ---
 		onInputChangeHandler,
 
-		// utils
+		// --- UTILS ---
 		parseData,
 	};
 }

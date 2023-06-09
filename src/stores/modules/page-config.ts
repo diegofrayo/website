@@ -26,13 +26,13 @@ export { REDUCER_NAME };
 
 export const { setLocales } = slice.actions;
 
-// --- Selectors ---
+// --- SELECTORS ---
 
 export function selectPageConfig(store: T_Store): T_Locale[] {
 	return store[REDUCER_NAME];
 }
 
-// --- Types ---
+// --- TYPES ---
 
 export type T_PageConfig = {
 	locales: T_Locale[];

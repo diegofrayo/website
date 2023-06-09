@@ -25,15 +25,15 @@ function Playground({
 	sourceCode,
 	height = 500,
 }: T_PlaygroundProps): T_ReactElement {
-	// states & refs
+	// --- STATES & REFS ---
 	const [tab, setTab] = React.useState(0);
 	const contentRef = React.useRef<HTMLDivElement>(null);
 
-	// vars
+	// --- VARS ---
 	const isOutputTabSelected = tab === 0;
 	const isSourceCodeTabSelected = tab === 1;
 
-	// handlers
+	// --- HANDLERS ---
 	function handleTabClick(index: number): () => void {
 		return () => {
 			setTab(index);

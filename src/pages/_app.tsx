@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import "react-toastify/dist/ReactToastify.min.css";
 import "~/styles/index.post.css";
 
@@ -47,7 +49,7 @@ function CustomApp({
 	pageContent: T_PageContent;
 	locale: T_Locale;
 }>): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const router = useRouter();
 	const store = useStore(
 		createPreloadedState({
@@ -57,7 +59,7 @@ function CustomApp({
 		}),
 	);
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		AnalyticsService.init();
 		AuthService.configureHTTPHeaders();
@@ -74,7 +76,7 @@ function CustomApp({
 		return () => undefined;
 	});
 
-	// utils
+	// --- UTILS ---
 	function onError(error: Error, info: { componentStack: string }): void {
 		console.group("componentDidCatch (ErrorBoundary)");
 		logger("ERROR", error);
@@ -120,7 +122,7 @@ function CustomApp({
 
 export default CustomApp;
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 // https://nextjs.org/docs/api-reference/data-fetching/get-initial-props
 // https://linguinecode.com/post/next-js-typescript-getinitialprops

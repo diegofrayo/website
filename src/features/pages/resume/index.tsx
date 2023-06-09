@@ -22,7 +22,7 @@ import { generateSlug } from "~/utils/strings";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 
 	return (
@@ -208,7 +208,7 @@ export default function ResumePage({ resume }: { resume: T_Resume }): T_ReactEle
 	);
 }
 
-// --- Components ---
+// --- COMPONENTS ---
 
 function PrintBlock({
 	children,
@@ -239,7 +239,7 @@ function ResumeBlock({ title, children }: T_ResumeBlockProps): T_ReactElement {
 		>
 			<Title
 				is="h2"
-				className="tw-mx-auto tw-mb-8 tw-w-full tw-border-4 tw-py-1 tw-px-2 tw-text-center tw-uppercase dfr-border-color-bw print:tw-w-72 md:tw-w-72"
+				className="tw-mx-auto tw-mb-8 tw-w-full tw-border-4 tw-px-2 tw-py-1 tw-text-center tw-uppercase dfr-border-color-bw print:tw-w-72 md:tw-w-72"
 			>
 				{title}
 			</Title>
@@ -327,7 +327,7 @@ function ExperienceTimelineItem({
 	);
 }
 
-// --- Types ---
+// --- TYPES ---
 
 type T_Resume = {
 	profilePhoto: string;

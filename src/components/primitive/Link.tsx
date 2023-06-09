@@ -20,10 +20,10 @@ export type T_LinkProps = T_HTMLElementAttributes["a"] & {
 
 function Link(props: T_LinkProps): T_ReactElementNullable {
 	const {
-		// utils
+		// --- UTILS ---
 		composeLinkAttributes,
 
-		// props
+		// --- PROPS ---
 		children,
 		variant,
 		href,
@@ -72,7 +72,7 @@ Link.variant = VARIANTS;
 
 export default Link;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = T_LinkProps & {
 	composeLinkAttributes: () => { target?: "_blank"; rel?: "noreferrer" };
@@ -93,17 +93,17 @@ function useController({
 		};
 
 	return {
-		// utils
+		// --- UTILS ---
 		composeLinkAttributes,
 
-		// props
+		// --- PROPS ---
 		href,
 		isExternalLink,
 		...rest,
 	};
 }
 
-// --- Components ---
+// --- COMPONENTS ---
 
 const LinkElement = twcss.a({
 	$TWCSS_BASE_STYLES: "",

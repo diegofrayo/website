@@ -18,11 +18,11 @@ type T_VECTimelineItem = {
 };
 
 export default function VECTimelineItem({ data }: { data: T_VECTimelineItem }): T_ReactElement {
-	// states & refs
+	// --- STATES & REFS ---
 	const [isModalVisible, setIsModalVisible, toggleIsModalVisible] = useEnhancedState(false);
 	const [sharedIndex, setSharedIndex] = React.useState(0);
 
-	// handlers
+	// --- HANDLERS ---
 	function handleCloseModalClick(): void {
 		setIsModalVisible(false);
 	}
@@ -44,7 +44,7 @@ export default function VECTimelineItem({ data }: { data: T_VECTimelineItem }): 
 				<Block className="tw-relative tw-mx-auto tw-h-full tw-w-full tw-overflow-auto tw-border dfr-max-w-layout dfr-bg-color-secondary dfr-border-color-primary">
 					<Button
 						variant={Button.variant.SIMPLE}
-						className="tw-absolute tw-top-2 tw-right-2 tw-z-10"
+						className="tw-absolute tw-right-2 tw-top-2 tw-z-10"
 						onClick={handleCloseModalClick}
 					>
 						<Icon
@@ -66,7 +66,7 @@ export default function VECTimelineItem({ data }: { data: T_VECTimelineItem }): 
 	);
 }
 
-// --- Components ---
+// --- COMPONENTS ---
 
 type T_GalleryProps = {
 	variant: "DEFAULT" | "FULLSCREEN";
@@ -83,10 +83,10 @@ function Gallery({
 	setSharedIndex,
 	initialSlide = 0,
 }: T_GalleryProps): T_ReactElement {
-	// states & refs
+	// --- STATES & REFS ---
 	const [activeIndex, setActiveIndex] = React.useState(1);
 
-	// vars
+	// --- VARS ---
 	const isFullscreenVariant = variant === "FULLSCREEN";
 	const contextValueMemoized = React.useMemo(() => {
 		return {
@@ -98,7 +98,7 @@ function Gallery({
 		};
 	}, [activeIndex, setActiveIndex, isFullscreenVariant, setSharedIndex, toggleIsModalVisible]);
 
-	// handlers
+	// --- HANDLERS ---
 	function onSlideChangeHandler(): void {
 		/*
 		 * I use `this` here because of the library docs is not enough clear
@@ -172,13 +172,13 @@ type T_NavigationProps = {
 };
 
 function Navigation({ activeIndex, totalElements }: T_NavigationProps): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const swiper = useSwiper();
 
 	// context
 	const { isFullscreenVariant } = React.useContext(Context);
 
-	// handlers
+	// --- HANDLERS ---
 	function handlePrevItemClick(): void {
 		swiper.slidePrev();
 	}
@@ -230,19 +230,19 @@ function SlideContent({
 	asset: { src, caption, type, isLandscape },
 	index,
 }: T_SlideContentProps): T_ReactElementNullable {
-	// states & refs
+	// --- STATES & REFS ---
 	const [photosHeight, setPhotosHeight] = React.useState(0);
 
 	// context
 	const { isFullscreenVariant, toggleIsModalVisible, setSharedIndex } = React.useContext(Context);
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		const REST_OF_ELEMENTS_HEIGHT = 40 + 80 + 24 * 2 + 16 * 2 + (32 + 24 + 8);
 		setPhotosHeight(window.innerHeight - REST_OF_ELEMENTS_HEIGHT);
 	});
 
-	// handlers
+	// --- HANDLERS ---
 	function handleImageClick(): void {
 		if (isFullscreenVariant) return;
 
@@ -323,7 +323,7 @@ function SlideContent({
 	);
 }
 
-// --- Types ---
+// --- TYPES ---
 
 type T_Context = {
 	activeIndex: number;

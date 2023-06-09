@@ -15,11 +15,11 @@ import type { T_ReactElement, T_ReactOnClickEventHandler, T_ReactRef } from "~/t
 
 function TextPage(): T_ReactElement {
 	const {
-		// states & refs
+		// --- STATES & REFS ---
 		output,
 		inputRef,
 
-		// handlers
+		// --- HANDLERS ---
 		handleProcessTextClick,
 		onInputFocusHandler,
 	} = useController();
@@ -31,7 +31,7 @@ function TextPage(): T_ReactElement {
 				containerProps={{ className: "tw-my-1" }}
 				id="input"
 				type="text"
-				autoComplete="on"
+				autoComplete="off"
 				className="tw-h-40"
 				ref={inputRef}
 				onClick={onInputFocusHandler}
@@ -73,7 +73,7 @@ function TextPage(): T_ReactElement {
 
 export default TextPage;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = {
 	output: string;
@@ -83,11 +83,11 @@ type T_UseControllerReturn = {
 };
 
 function useController(): T_UseControllerReturn {
-	// states & refs
+	// --- STATES & REFS ---
 	const [output, setOutput] = React.useState("");
 	const inputRef = React.useRef<HTMLInputElement>(null);
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		if (isSmallScreen() || v.isNull(inputRef.current)) {
 			return;
@@ -96,7 +96,7 @@ function useController(): T_UseControllerReturn {
 		focusElement(inputRef.current);
 	});
 
-	// handlers
+	// --- HANDLERS ---
 	const handleProcessTextClick: T_UseControllerReturn["handleProcessTextClick"] =
 		function handleProcessTextClick(): void {
 			const text = (inputRef.current?.value || "").trim();
@@ -108,17 +108,17 @@ function useController(): T_UseControllerReturn {
 			focusInputAndSelectText(event.currentTarget);
 		};
 
-	// utils
+	// --- UTILS ---
 	function processText(text: string): string {
 		return replaceAll(text, "\n", " ");
 	}
 
 	return {
-		// states & refs
+		// --- STATES & REFS ---
 		output,
 		inputRef,
 
-		// handlers
+		// --- HANDLERS ---
 		handleProcessTextClick,
 		onInputFocusHandler,
 	};

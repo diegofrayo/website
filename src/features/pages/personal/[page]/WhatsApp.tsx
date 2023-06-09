@@ -9,23 +9,23 @@ import { generateSlug, replaceAll } from "~/utils/strings";
 import type {
 	T_ReactElement,
 	T_ReactOnChangeEventHandler,
-	T_ReactOnKeyPressEventHandler,
+	T_ReactOnKeyUpEventHandler,
 	T_ReactRef,
 } from "~/types";
 
 function WhatsApp(): T_ReactElement {
 	const {
-		// states & refs
+		// --- STATES & REFS ---
 		phone,
 		inputRef,
 		isInvalidPhone,
 		isAppOptionSelected,
 
-		// vars
+		// --- VARS ---
 		whatsAppUrl,
 
-		// handlers
-		onKeyPressHandler,
+		// --- HANDLERS ---
+		onKeyUpHandler,
 		onChangeHandler,
 		onRadioChangeHandler,
 	} = useController();
@@ -43,7 +43,7 @@ function WhatsApp(): T_ReactElement {
 					placeholder="🇨🇴 +57"
 					pattern="\+?[0-9]{10,15}"
 					onChange={onChangeHandler}
-					onKeyPress={onKeyPressHandler}
+					onKeyUp={onKeyUpHandler}
 				/>
 				<Link
 					variant={Link.variant.SIMPLE}
@@ -104,7 +104,7 @@ function WhatsApp(): T_ReactElement {
 			<Block className="tw-mt-3 tw-text-left sm:tw-text-center">
 				<Button
 					variant={Button.variant.UNSTYLED}
-					className="tw-inline-block tw-border tw-border-dashed tw-py-1 tw-px-2 tw-text-xs tw-italic dfr-border-color-primary"
+					className="tw-inline-block tw-border tw-border-dashed tw-px-2 tw-py-1 tw-text-xs tw-italic dfr-border-color-primary"
 					data-clipboard-text={whatsAppUrl}
 					onClick={handleCopyToClipboardClick}
 				>
@@ -117,7 +117,7 @@ function WhatsApp(): T_ReactElement {
 
 export default WhatsApp;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = {
 	phone: string;
@@ -125,19 +125,19 @@ type T_UseControllerReturn = {
 	isInvalidPhone: boolean;
 	isAppOptionSelected: boolean;
 	whatsAppUrl: string;
-	onKeyPressHandler: T_ReactOnKeyPressEventHandler<HTMLInputElement>;
+	onKeyUpHandler: T_ReactOnKeyUpEventHandler<HTMLInputElement>;
 	onChangeHandler: T_ReactOnChangeEventHandler<HTMLInputElement>;
 	onRadioChangeHandler: T_ReactOnChangeEventHandler<HTMLInputElement>;
 };
 
 function useController(): T_UseControllerReturn {
-	// states & refs
+	// --- STATES & REFS ---
 	const [phone, setPhone] = React.useState("");
 	const [isInvalidPhone, setIsInvalidPhone] = React.useState(true);
 	const [isAppOptionSelected, setIsAppOptionSelected] = React.useState(true);
 	const inputRef = React.useRef<HTMLInputElement>(null);
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		if (v.isNull(inputRef.current)) return;
 
@@ -148,10 +148,8 @@ function useController(): T_UseControllerReturn {
 		setIsInvalidPhone(!inputRef?.current?.validity?.valid || !phone);
 	}, [phone]);
 
-	// handlers
-	const onKeyPressHandler: T_UseControllerReturn["onKeyPressHandler"] = function onKeyPressHandler(
-		event,
-	) {
+	// --- HANDLERS ---
+	const onKeyUpHandler: T_UseControllerReturn["onKeyUpHandler"] = function onKeyUpHandler(event) {
 		if (event.key !== "Enter" || isInvalidPhone) return;
 		document.getElementById("link-to-wp")?.click();
 	};
@@ -168,7 +166,7 @@ function useController(): T_UseControllerReturn {
 			setIsAppOptionSelected(event.currentTarget.value === "app");
 		};
 
-	// utils
+	// --- UTILS ---
 	function composeWhatsAppUrl(): string {
 		const url = new URLSearchParams();
 		url.append("phone", `${phone.includes("+") ? "" : "+57"}${phone}`);
@@ -178,17 +176,17 @@ function useController(): T_UseControllerReturn {
 	}
 
 	return {
-		// states & refs
+		// --- STATES & REFS ---
 		phone,
 		inputRef,
 		isInvalidPhone,
 		isAppOptionSelected,
 
-		// vars
+		// --- VARS ---
 		whatsAppUrl: composeWhatsAppUrl(),
 
-		// handlers
-		onKeyPressHandler,
+		// --- HANDLERS ---
+		onKeyUpHandler,
 		onChangeHandler,
 		onRadioChangeHandler,
 	};

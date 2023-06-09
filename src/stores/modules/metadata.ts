@@ -16,7 +16,7 @@ export default slice.reducer;
 
 export { REDUCER_NAME };
 
-// --- Selectors ---
+// --- SELECTORS ---
 
 export function selectWebsiteMetadata(store: T_Store): T_WebsiteMetadata {
 	return store[REDUCER_NAME].website;
@@ -26,7 +26,7 @@ export function selectSEOMetadata(store: T_Store): T_SEOMetadata {
 	return store[REDUCER_NAME].seo;
 }
 
-// --- Types ---
+// --- TYPES ---
 
 export type T_Metadata = {
 	website: T_WebsiteMetadata;

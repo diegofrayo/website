@@ -45,7 +45,7 @@ function Select({
 
 export default Select;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 Select.Option = function SelectOption({
 	children,

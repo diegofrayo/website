@@ -31,24 +31,24 @@ type T_BusinessesProps = {
 };
 
 function Businesses({ data }: T_BusinessesProps): T_ReactElementNullable {
-	// hooks
+	// --- HOOKS ---
 	const [isAllCollapsibleOpened, setAllCollapsibleOpened, toggleIsAllCollapsibleOpened] =
 		useEnhancedState(false);
 
-	// states & refs
+	// --- STATES & REFS ---
 	const { current: totalOfBusinesses } = React.useRef<number>(countAllBusinesses(data.categories));
 	const [whatsAppOption, setWhatsAppOption] = React.useState<T_WhatsAppOption>("api");
 
-	// vars
+	// --- VARS ---
 	const PAGE_TITLE = "Businesses";
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		// NOTE: Disable temporary
 		// setWhatsAppOption(isMobileDevice() ? "api" : "web");
 	});
 
-	// handlers
+	// --- HANDLERS ---
 	function handleToggleAllCollapsibleOpenedClick(): void {
 		toggleIsAllCollapsibleOpened();
 	}
@@ -188,7 +188,7 @@ function Businesses({ data }: T_BusinessesProps): T_ReactElementNullable {
 
 export default withAuthPage<T_BusinessesProps>(Businesses);
 
-// --- Components ---
+// --- COMPONENTS ---
 
 type T_BusinessesGroupProps = {
 	places: T_BusinessesProps["data"]["places"];
@@ -408,11 +408,11 @@ function WhastAppButton({
 	phone,
 	whatsAppOption,
 }: T_WhastAppButtonProps): T_ReactElementNullable {
-	// vars
+	// --- VARS ---
 	const isColombianHomePhoneNumber = phone.split(" ")[1]?.startsWith("606");
 	const isAssistanceServiceNumber = phone.split(" ")[1]?.length === 3;
 
-	// handlers
+	// --- HANDLERS ---
 	function composeWhatsAppUrl(): string {
 		const url = new URLSearchParams();
 		url.append("phone", `+57${phone.replace(" ", "").trim()}`);
@@ -442,7 +442,7 @@ type T_PhoneButtonProps = {
 };
 
 function PhoneButton({ children, phone }: T_PhoneButtonProps): T_ReactElementNullable {
-	// utils
+	// --- UTILS ---
 	function generatePhoneLink(): string {
 		return `tel:${phone}`;
 	}
@@ -458,7 +458,7 @@ function PhoneButton({ children, phone }: T_PhoneButtonProps): T_ReactElementNul
 	);
 }
 
-// --- Utils ---
+// --- UTILS ---
 
 function countAllBusinesses(businesses: T_BusinessesProps["data"]["categories"]): number {
 	const result = Object.values(businesses).reduce((result, groupOfBusinesses) => {
@@ -479,7 +479,7 @@ function countGroupOfBusinesses(businesses: T_GroupOfBusinesses): number {
 	);
 }
 
-// --- Types ---
+// --- TYPES ---
 
 type T_GroupOfBusinesses = T_Business[] | T_Object<T_Business[]>;
 

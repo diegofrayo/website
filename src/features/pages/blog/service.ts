@@ -93,7 +93,7 @@ function BlogPostVO(
 	return blogPost;
 }
 
-// --- Types ---
+// --- TYPES ---
 
 export type T_BlogPost = {
 	title: string;

@@ -12,7 +12,7 @@ export default {
 	argTypes: {},
 };
 
-// --- Stories ---
+// --- STORIES ---
 
 export const OpenByDefault = Story.bind({});
 OpenByDefault.args = {

@@ -42,7 +42,7 @@ type T_HomeProps = {
 };
 
 function Home({ data }: T_HomeProps): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 
 	return (
@@ -72,14 +72,14 @@ function Home({ data }: T_HomeProps): T_ReactElement {
 
 export default Home;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 type T_Featured = {
 	content: T_HomeProps["data"]["featured"];
 };
 
 function Featured({ content }: T_Featured): T_ReactElement {
-	// handlers
+	// --- HANDLERS ---
 	function handleItemClick(itemText: string): () => void {
 		return function onItemClickHandler() {
 			AnalyticsService.trackEvent("HOME|FEATURED", { page: itemText });
@@ -92,7 +92,7 @@ function Featured({ content }: T_Featured): T_ReactElement {
 				is="section"
 				className="tw-relative tw-rounded-t-md tw-border-8 tw-border-yellow-700 tw-bg-green-700 tw-p-4"
 			>
-				<Emoji className="tw-absolute tw--top-4 tw--left-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-shadow dfr-bg-color-gs-white">
+				<Emoji className="tw-absolute tw--left-4 tw--top-4 tw-flex tw-h-8 tw-w-8 tw-items-center tw-justify-center tw-rounded-full tw-text-sm dfr-shadow dfr-bg-color-gs-white">
 					📌
 				</Emoji>
 				<Title
@@ -156,10 +156,10 @@ type T_PictureFrameProps = {
 };
 
 function PictureFrame({ photo }: T_PictureFrameProps): T_ReactElementNullable {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 
-	// handlers
+	// --- HANDLERS ---
 	function handleImageClick(): void {
 		AnalyticsService.trackEvent("HOME|PICTURE_FRAME", { action: "CLICK" });
 	}
@@ -239,12 +239,12 @@ type T_TVProps = {
 };
 
 function TV({ song }: T_TVProps): T_ReactElement {
-	// states
+	// --- STATES & REFS ---
 	const [showInfo, setShowInfo] = React.useState(false);
 	const [isAudioPlaying, setIsAudioPlaying] = React.useState(false);
 	const [hasNotStartedTV, setHasNotStartedTV] = React.useState(true);
 
-	// effects
+	// --- EFFECTS ---
 	React.useEffect(() => {
 		if (showInfo === false) {
 			setIsAudioPlaying(false);
@@ -252,7 +252,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
 		}
 	}, [showInfo]);
 
-	// handlers
+	// --- HANDLERS ---
 	function handlePlayAndPauseClick(): void {
 		const audioElement = getAudioElement();
 		setIsAudioPlaying((currentValue) => !currentValue);
@@ -284,7 +284,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
 		setShowInfo(false);
 	}
 
-	// utils
+	// --- UTILS ---
 	function getAudioElement(): HTMLAudioElement {
 		return document.getElementById("tv-audio") as HTMLAudioElement;
 	}
@@ -339,7 +339,7 @@ function TV({ song }: T_TVProps): T_ReactElement {
 
 				<Block
 					className={classNames(
-						"tw-absolute tw-top-0 tw-left-0 tw-h-full tw-w-full tw-transition-transform dfr-bg-color-gs-black",
+						"tw-absolute tw-left-0 tw-top-0 tw-h-full tw-w-full tw-transition-transform dfr-bg-color-gs-black",
 						showInfo && "tw-translate-x-full",
 					)}
 				/>
@@ -457,7 +457,7 @@ type T_LinkItemProps = {
 };
 
 function LinkItem({ label, url, className = "" }: T_LinkItemProps): T_ReactElement {
-	// handlers
+	// --- HANDLERS ---
 	function handleItemClick(): void {
 		AnalyticsService.trackEvent("HOME|DESKTOP_LINK", { page: label });
 	}

@@ -58,7 +58,7 @@ export function createRandomString(length: number): string {
 	return result.toUpperCase();
 }
 
-// --- Private functions ---
+// --- UTILS ---
 
 function escapeRegExp(text: string): string {
 	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");

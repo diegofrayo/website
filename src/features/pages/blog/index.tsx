@@ -16,7 +16,7 @@ import type { T_ReactElement } from "~/types";
 import BlogService, { T_BlogPost } from "./service";
 
 function Blog(): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { isLoading, error, data } = useQuery<T_BlogPost[]>("blog", BlogService.fetchPosts);
 	const { t } = useTranslation();
 
@@ -69,7 +69,7 @@ function Blog(): T_ReactElement {
 
 export default Blog;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 type T_BlogEntryProps = Pick<
 	T_BlogPost,
@@ -85,11 +85,11 @@ function BlogEntry({
 	thumbnail,
 	isPublished,
 }: T_BlogEntryProps): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 	const { locale } = useRouter();
 
-	// utils
+	// --- UTILS ---
 	function getLocale(): T_Locale {
 		return locales.find((l) => l === locale) || locales[0];
 	}
@@ -112,7 +112,7 @@ function BlogEntry({
 				/>
 				<Block
 					is="footer"
-					className="tw-relative tw-flex-1 tw-pt-2 tw-pb-8"
+					className="tw-relative tw-flex-1 tw-pb-8 tw-pt-2"
 				>
 					<Title
 						is="h1"
@@ -127,7 +127,7 @@ function BlogEntry({
 								<InlineText
 									key={category.id}
 									className={classNames(
-										"tw-mr-1 tw-inline-block tw-py-1 tw-px-2 tw-text-xs tw-font-semibold dfr-text-color-gs-white",
+										"tw-mr-1 tw-inline-block tw-px-2 tw-py-1 tw-text-xs tw-font-semibold dfr-text-color-gs-white",
 										category.color,
 									)}
 								>

@@ -10,7 +10,7 @@ import type { T_ReactElement } from "~/types";
 import { PERSONAL_PAGES } from "./constants";
 
 function PersonalPage(): T_ReactElement {
-	// vars
+	// --- VARS ---
 	const PAGE_TITLE = "Personal";
 
 	return (
@@ -36,7 +36,7 @@ function PersonalPage(): T_ReactElement {
 
 export default withAuthPage(PersonalPage);
 
-// --- Components ---
+// --- COMPONENTS ---
 
 type T_PagesListProps = {
 	pages: { slug: string; title: string; icon: T_IconName }[];

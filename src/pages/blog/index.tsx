@@ -4,7 +4,7 @@ import { ROUTES } from "~/features/routing";
 
 export default BlogPage;
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps = getPageContentStaticProps({
 	page: ROUTES.BLOG,

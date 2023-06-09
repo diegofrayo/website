@@ -23,28 +23,28 @@ export default function RoutineItem({
 }: T_RoutineItem): T_ReactElement {
 	// context
 	const {
-		// states
+		// --- STATES & REFS ---
 		currentRoutine,
 		isUILocked,
 
-		// utils
+		// --- UTILS ---
 		setRoutineItemAsStarted,
 		calculateRoutineItemTotalTime,
 		secondsToTime,
 		markRoutineItemAsCompleted,
 	} = React.useContext(TimerPageContext);
 
-	// states
+	// --- STATES & REFS ---
 	const [isTitleTruncated, setIsTitleTruncated] = React.useState(true);
 
-	// vars
+	// --- VARS ---
 	const borderStyles = {
 		"tw-border-gray-200 tw-bg-gray-100": status === ROUTINE_ITEMS_STATUS.NOT_STARTED,
 		"tw-border-yellow-200 tw-bg-yellow-100": status === ROUTINE_ITEMS_STATUS.IN_PROGRESS,
 		"tw-border-green-200 tw-bg-green-100": status === ROUTINE_ITEMS_STATUS.COMPLETED,
 	};
 
-	// handlers
+	// --- HANDLERS ---
 	function handleMarkAsCompletedClick() {
 		markRoutineItemAsCompleted(currentRoutine, id, status, "SEARCH_FOR_NEXT_ROUTINE_ITEM");
 	}
@@ -94,7 +94,7 @@ export default function RoutineItem({
 				{highTime ? (
 					<Block className="tw-flex tw-items-center tw-justify-between">
 						<InlineText className="tw-text-sm">Tiempo de acción</InlineText>
-						<InlineText className="tw-w-20 tw-rounded-lg tw-bg-red-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold dfr-text-color-gs-white">
+						<InlineText className="tw-w-20 tw-rounded-lg tw-bg-red-600 tw-px-2 tw-py-1 tw-text-center tw-text-xs tw-font-bold dfr-text-color-gs-white">
 							{highTime}
 						</InlineText>
 					</Block>
@@ -104,14 +104,14 @@ export default function RoutineItem({
 						<Space size={0.5} />
 						<Block className="tw-flex tw-items-center tw-justify-between">
 							<InlineText className="tw-text-sm">Tiempo de descanso</InlineText>
-							<InlineText className="tw-w-20 tw-rounded-lg tw-bg-blue-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold dfr-text-color-gs-white">
+							<InlineText className="tw-w-20 tw-rounded-lg tw-bg-blue-600 tw-px-2 tw-py-1 tw-text-center tw-text-xs tw-font-bold dfr-text-color-gs-white">
 								{restTime}
 							</InlineText>
 						</Block>
 						<Space size={0.5} />
 						<Block className="tw-flex tw-items-center tw-justify-between">
 							<InlineText className="tw-text-sm">Tiempo total</InlineText>
-							<InlineText className="tw-w-20 tw-rounded-lg tw-bg-green-600 tw-py-1 tw-px-2 tw-text-center tw-text-xs tw-font-bold dfr-text-color-gs-white">
+							<InlineText className="tw-w-20 tw-rounded-lg tw-bg-green-600 tw-px-2 tw-py-1 tw-text-center tw-text-xs tw-font-bold dfr-text-color-gs-white">
 								{secondsToTime(calculateRoutineItemTotalTime(sets, highTime, restTime))}
 							</InlineText>
 						</Block>
@@ -120,7 +120,7 @@ export default function RoutineItem({
 								<Space size={1.5} />
 								<Block
 									className={classNames(
-										"tw-rounded-md tw-border-0 tw-bg-opacity-50 tw-px-2 tw-pt-1 tw-pb-2",
+										"tw-rounded-md tw-border-0 tw-bg-opacity-50 tw-px-2 tw-pb-2 tw-pt-1",
 										{
 											"tw-bg-gray-300": status === ROUTINE_ITEMS_STATUS.NOT_STARTED,
 											"tw-bg-yellow-300": status === ROUTINE_ITEMS_STATUS.IN_PROGRESS,

@@ -63,7 +63,7 @@ const http = axios;
 
 export default http;
 
-// --- Utils ---
+// --- UTILS ---
 
 function getCacheKey(response: AxiosResponse): string {
 	return response?.config?.headers["dfr-local-cache"] || "";

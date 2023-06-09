@@ -13,7 +13,7 @@ type T_SongSourcesProps = {
 };
 
 function SongSources({ sources }: T_SongSourcesProps): T_ReactElementNullable {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 
 	if (v.isEmptyArray(sources)) {

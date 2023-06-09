@@ -520,7 +520,7 @@ export const ICONS = {
 	},
 } as const;
 
-// --- Types ---
+// --- TYPES ---
 
 export type T_Icon = {
 	icon: string | T_LibraryIconComponent;

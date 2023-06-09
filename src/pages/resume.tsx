@@ -6,7 +6,7 @@ import { ROUTES } from "~/features/routing";
 
 export default ResumePage;
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps = getPageContentStaticProps({
 	page: ROUTES.RESUME,

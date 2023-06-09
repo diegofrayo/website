@@ -41,12 +41,12 @@ type T_PageProps = {
 };
 
 function Page({ children, config = {} }: T_PageProps): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 	const SEO_METADATA = useStoreSelector<T_SEOMetadata>(selectSEOMetadata);
 	const { locales } = useStoreSelector<T_PageConfig>(selectPageConfig);
 
-	// vars
+	// --- VARS ---
 	const metadata = {
 		title: v.isNotEmptyString(config.title)
 			? `${config.title}${config.replaceTitle ? "" : ` - ${SEO_METADATA.title}`}`
@@ -56,7 +56,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 		image: config.image || "/static/images/meta-og-image.png",
 	};
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		AnalyticsService.trackPageLoaded();
 	});

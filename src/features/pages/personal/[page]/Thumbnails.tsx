@@ -14,12 +14,12 @@ import type {
 
 function Thumbnails(): T_ReactElement {
 	const {
-		// states & refs
+		// --- STATES & REFS ---
 		title,
 		src,
 		thumbnailRef,
 
-		// handlers
+		// --- HANDLERS ---
 		onChangeHandler,
 		handleDownloadAsImageClick,
 	} = useController();
@@ -66,7 +66,7 @@ function Thumbnails(): T_ReactElement {
 
 export default Thumbnails;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = {
 	title: string;
@@ -77,7 +77,7 @@ type T_UseControllerReturn = {
 };
 
 function useController(): T_UseControllerReturn {
-	// vars
+	// --- VARS ---
 	const BLOG_POSTS = [
 		{
 			slug: "javascript-arrays-examples",
@@ -107,14 +107,14 @@ function useController(): T_UseControllerReturn {
 	];
 	const CURRENT_BLOG_POST = BLOG_POSTS[0];
 
-	// states & refs
+	// --- STATES & REFS ---
 	const [title, setTitle] = React.useState(CURRENT_BLOG_POST.title);
 	const [src, setSrc] = React.useState(
 		`/static/images/pages/personal/thumbnails/code-${CURRENT_BLOG_POST.image}.png`,
 	);
 	const thumbnailRef = React.useRef<HTMLDivElement>(null);
 
-	// handlers
+	// --- HANDLERS ---
 	const onChangeHandler: T_UseControllerReturn["onChangeHandler"] = function onChangeHandler(
 		inputName,
 	) {
@@ -139,18 +139,18 @@ function useController(): T_UseControllerReturn {
 		};
 
 	return {
-		// states & refs
+		// --- STATES & REFS ---
 		title,
 		src,
 		thumbnailRef,
 
-		// handlers
+		// --- HANDLERS ---
 		onChangeHandler,
 		handleDownloadAsImageClick,
 	};
 }
 
-// --- Components ---
+// --- COMPONENTS ---
 
 type T_ThumbnailProps = Pick<T_UseControllerReturn, "title" | "src" | "thumbnailRef">;
 

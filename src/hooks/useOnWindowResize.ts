@@ -3,10 +3,10 @@ import * as React from "react";
 type T_Callback = () => void;
 
 function useOnWindowResize(callback: T_Callback): void {
-	// states & refs
+	// --- STATES & REFS ---
 	const savedHandler = React.useRef<T_Callback>(callback);
 
-	// effects
+	// --- EFFECTS ---
 	React.useEffect(() => {
 		savedHandler.current = callback;
 	});

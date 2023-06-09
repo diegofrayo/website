@@ -46,7 +46,7 @@ const Input = React.forwardRef(function Input(
 				ref={ref}
 				id={id}
 				className={classNames(
-					"dfr-Input tw-block tw-w-full tw-rounded-none tw-border tw-py-1 tw-px-2 tw-shadow-none dfr-bg-color-tertiary dfr-border-color-primary",
+					"dfr-Input tw-block tw-w-full tw-rounded-none tw-border tw-px-2 tw-py-1 tw-shadow-none dfr-bg-color-tertiary dfr-border-color-primary",
 					className,
 				)}
 				{...rest}
@@ -84,7 +84,7 @@ Input.Label = Label;
 
 export default Input;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 export function Label({
 	children,

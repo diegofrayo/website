@@ -11,7 +11,7 @@ function PostSources({
 }: {
 	sources: { title: string; url: string }[];
 }): T_ReactElementNullable {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 
 	if (v.isEmptyArray(sources)) {

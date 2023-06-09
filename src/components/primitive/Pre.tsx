@@ -70,7 +70,7 @@ Pre.variant = VARIANTS;
 
 export default Pre;
 
-// --- Utils ---
+// --- UTILS ---
 
 function removeCodeElements(children: T_PreProps["children"]): T_ReactChildren {
 	return React.Children.map(children, (child) => {

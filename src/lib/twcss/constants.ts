@@ -132,5 +132,5 @@ const HTML_TAGS = [
 	"tspan",
 ] as const;
 
-export type T_HTMLTag = typeof HTML_TAGS[number];
+export type T_HTMLTag = (typeof HTML_TAGS)[number];
 export { HTML_TAGS };

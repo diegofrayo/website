@@ -32,7 +32,7 @@ Space.variant = VARIANTS;
 
 export default Space;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = { className: string };
 
@@ -47,10 +47,10 @@ function useController({
 	sizeLeft,
 	sizeRight,
 }: T_SpaceProps): T_UseControllerReturn {
-	// vars
+	// --- VARS ---
 	const isVerticalOrientation = orientation === "v";
 
-	// utils
+	// --- UTILS ---
 	function composeClassName(): string {
 		return classNames(
 			"tw-flex-shrink-0",

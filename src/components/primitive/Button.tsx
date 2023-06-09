@@ -20,7 +20,7 @@ function Button({
 	onClick,
 	...rest
 }: T_ButtonProps): T_ReactElement {
-	// utils
+	// --- UTILS ---
 	function composeClassName(): string {
 		return classNames(
 			variant === VARIANTS.SIMPLE && "dfr-transition-opacity",

@@ -14,16 +14,16 @@ import Emoji from "./Emoji";
 
 function RateContent(): T_ReactElement {
 	const {
-		// hooks
+		// --- HOOKS ---
 		t,
 
-		// vars
+		// --- VARS ---
 		isQuestionAnswered,
 
-		// states & refs
+		// --- STATES & REFS ---
 		questionAnswer,
 
-		// handlers
+		// --- HANDLERS ---
 		handleAnswerClick,
 	} = useController();
 
@@ -62,7 +62,7 @@ function RateContent(): T_ReactElement {
 
 export default RateContent;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseController = {
 	t: T_TranslationFunction;
@@ -72,23 +72,23 @@ type T_UseController = {
 };
 
 function useController(): T_UseController {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 
-	// states & refs
+	// --- STATES & REFS ---
 	const [questionAnswer, setQuestionAnswer] = React.useState("");
 
-	// vars
+	// --- VARS ---
 	const LOCAL_STORAGE_KEY = "DFR_CONTENT_RATED";
 	const isQuestionAnswered = v.isNotEmptyString(questionAnswer);
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		initLocalStorageData();
 		setQuestionAnswer(readLocalStorageData()[window.location.pathname] || "");
 	});
 
-	// handlers
+	// --- HANDLERS ---
 	const handleAnswerClick: T_UseController["handleAnswerClick"] = function handleAnswerClick(
 		answer,
 	) {
@@ -105,7 +105,7 @@ function useController(): T_UseController {
 		};
 	};
 
-	// utils
+	// --- UTILS ---
 	function initLocalStorageData(): void {
 		const storedData = window.localStorage.getItem(LOCAL_STORAGE_KEY) || "";
 
@@ -143,16 +143,16 @@ function useController(): T_UseController {
 	}
 
 	return {
-		// hooks
+		// --- HOOKS ---
 		t,
 
-		// vars
+		// --- VARS ---
 		isQuestionAnswered,
 
-		// states & refs
+		// --- STATES & REFS ---
 		questionAnswer,
 
-		// handlers
+		// --- HANDLERS ---
 		handleAnswerClick,
 	};
 }

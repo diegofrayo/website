@@ -20,7 +20,7 @@ type T_PageProps = {
 
 export default SongPage;
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 type T_StaticPath = { song: string };
 

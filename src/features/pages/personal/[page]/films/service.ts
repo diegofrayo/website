@@ -21,7 +21,7 @@ class FilmsService {
 
 export default FilmsService;
 
-// --- Value objects ---
+// --- VALUE OBJECTS ---
 
 function FilmVO(data: T_Object): T_Film {
 	const film = transformObjectKeysFromSnakeCaseToLowerCamelCase<T_Film>(data);
@@ -31,7 +31,7 @@ function FilmVO(data: T_Object): T_Film {
 	return film;
 }
 
-// --- Types ---
+// --- TYPES ---
 
 export type T_Film = {
 	id: string;

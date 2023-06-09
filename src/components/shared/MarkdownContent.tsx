@@ -27,7 +27,7 @@ function MarkdownContent({ content }: { content: string }): T_ReactElement {
 
 export default MarkdownContent;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 function Li({ children, ...rest }: { children: T_ReactChildren }): T_ReactElement {
 	return (

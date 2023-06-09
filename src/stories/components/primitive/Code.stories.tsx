@@ -12,7 +12,7 @@ export default {
 	argTypes: {},
 };
 
-// --- Stories ---
+// --- STORIES ---
 
 export const Inline = Story.bind({});
 Inline.args = {

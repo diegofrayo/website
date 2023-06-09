@@ -134,7 +134,7 @@ export function sortBy<G_ItemType>(
 	};
 }
 
-// --- Private ---
+// --- UTILS ---
 
 function removeDuplicates<G_ItemType>(array: G_ItemType[]): G_ItemType[] {
 	return array.filter((item, index) => array.indexOf(item) === index);

@@ -65,7 +65,7 @@ class AuthService {
 
 export default new AuthService();
 
-// --- Types ---
+// --- TYPES ---
 
 type T_SignInError = {
 	data: {

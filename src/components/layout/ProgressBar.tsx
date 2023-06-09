@@ -10,10 +10,10 @@ import type { T_ReactElementNullable } from "~/types";
 import styles from "./ProgressBar.styles.module.css";
 
 function NProgressBar(): T_ReactElementNullable {
-	// hooks
+	// --- HOOKS ---
 	const router = useRouter();
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		NProgress.configure({ parent: ".NProgressBar" });
 

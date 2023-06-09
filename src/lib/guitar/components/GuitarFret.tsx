@@ -25,16 +25,16 @@ type T_GuitarFretProps = {
 
 function GuitarFret(props: T_GuitarFretProps): T_ReactElement {
 	const {
-		// props
+		// --- PROPS ---
 		number,
 		musicNotes,
 		touchedStrings,
 		barreFret,
 
-		// utils
+		// --- UTILS ---
 		isBarreFretChecker,
 
-		// vars
+		// --- VARS ---
 		GUITAR_STRINGS_NAMES,
 		isGuitarStringsNamesVariant,
 		isEmptyVariant,
@@ -181,7 +181,7 @@ GuitarFret.variant = VARIANTS;
 
 export default GuitarFret;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = Omit<T_GuitarFretProps, "variant"> & {
 	GUITAR_STRINGS_NAMES: string[];
@@ -193,35 +193,35 @@ type T_UseControllerReturn = Omit<T_GuitarFretProps, "variant"> & {
 };
 
 function useController({ variant, ...rest }: T_GuitarFretProps): T_UseControllerReturn {
-	// vars
+	// --- VARS ---
 	const GUITAR_STRINGS_NAMES = ["E", "A", "D", "G", "B", "E"].reverse();
 	const isDefaultVariant = variant === VARIANTS.DEFAULT;
 	const isEmptyVariant = variant === VARIANTS.EMPTY;
 	const isSkippedGuitarStringsVariant = variant === VARIANTS.SKIPPED_GUITAR_STRINGS;
 	const isGuitarStringsNamesVariant = variant === VARIANTS.GUITAR_STRINGS_NAMES;
 
-	// utils
+	// --- UTILS ---
 	function isBarreFretChecker(input: unknown): input is NonNullable<T_Chord["barreFret"]> {
 		return input !== undefined;
 	}
 
 	return {
-		// props
+		// --- PROPS ---
 		...rest,
 
-		// vars
+		// --- VARS ---
 		GUITAR_STRINGS_NAMES,
 		isDefaultVariant,
 		isEmptyVariant,
 		isSkippedGuitarStringsVariant,
 		isGuitarStringsNamesVariant,
 
-		// utils
+		// --- UTILS ---
 		isBarreFretChecker,
 	};
 }
 
-// --- Components ---
+// --- COMPONENTS ---
 
 const GuitarString = twcss.span`tw-border dfr-bg-color-gs-black tw-block tw-h-1 tw-flex-1`;
 

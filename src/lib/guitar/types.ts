@@ -1,4 +1,4 @@
-// --- Chords ---
+// --- CHORDS ---
 
 export type T_Chord = {
 	name: string;
@@ -36,7 +36,7 @@ export type T_ChordsDatabase = Record<
 	  }[]
 >;
 
-// --- Music note ---
+// --- MUSIC NOTE ---
 
 export type T_MusicNote = {
 	guitarString: T_GuitarString;
@@ -44,7 +44,7 @@ export type T_MusicNote = {
 	finger: T_Finger | undefined;
 };
 
-// --- Music notes elements ---
+// --- MUSIC NOTES ELEMENTS ---
 
 export type T_GuitarString = 1 | 2 | 3 | 4 | 5 | 6;
 export type T_GuitarFret = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;

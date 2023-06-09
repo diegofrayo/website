@@ -12,19 +12,19 @@ import { getErrorMessage } from "~/utils/misc";
 import type {
 	T_ReactElement,
 	T_ReactOnChangeEventHandler,
-	T_ReactOnKeyPressEventHandler,
+	T_ReactOnKeyUpEventHandler,
 	T_ReactOnSubmitEventHandler,
 } from "~/types";
 
 function SignInPage(): T_ReactElement {
 	const {
-		// states & refs
+		// --- STATES & REFS ---
 		inputValue,
 		isInputDisabled,
 
-		// handlers
+		// --- HANDLERS ---
 		onInputChangeHandler,
-		onKeyPressHandler,
+		onKeyUpHandler,
 		onSubmitHandler,
 	} = useController();
 
@@ -56,7 +56,7 @@ function SignInPage(): T_ReactElement {
 					autoComplete="new-password"
 					disabled={isInputDisabled}
 					onChange={onInputChangeHandler}
-					onKeyPress={onKeyPressHandler}
+					onKeyUp={onKeyUpHandler}
 				/>
 			</form>
 		</Page>
@@ -65,29 +65,27 @@ function SignInPage(): T_ReactElement {
 
 export default withAuthPage(SignInPage, { denyLoggedIn: true });
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps = getPageContentStaticProps();
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = {
 	inputValue: string;
 	isInputDisabled: boolean;
 	onInputChangeHandler: T_ReactOnChangeEventHandler<HTMLInputElement>;
-	onKeyPressHandler: T_ReactOnKeyPressEventHandler<HTMLInputElement>;
+	onKeyUpHandler: T_ReactOnKeyUpEventHandler<HTMLInputElement>;
 	onSubmitHandler: T_ReactOnSubmitEventHandler<HTMLFormElement>;
 };
 
 function useController(): T_UseControllerReturn {
-	// states & refs
+	// --- STATES & REFS ---
 	const [inputValue, setInputValue] = React.useState("");
 	const [isInputDisabled, setIsInputDisabled] = React.useState(false);
 
-	// handlers
-	const onKeyPressHandler: T_UseControllerReturn["onKeyPressHandler"] = async function onKeyPress(
-		event,
-	) {
+	// --- HANDLERS ---
+	const onKeyUpHandler: T_UseControllerReturn["onKeyUpHandler"] = async function onKeyUp(event) {
 		if (event.key !== "Enter" || v.isEmptyString(inputValue)) {
 			return;
 		}
@@ -123,13 +121,13 @@ function useController(): T_UseControllerReturn {
 	};
 
 	return {
-		// states & refs
+		// --- STATES & REFS ---
 		inputValue,
 		isInputDisabled,
 
-		// handlers
+		// --- HANDLERS ---
 		onInputChangeHandler,
-		onKeyPressHandler,
+		onKeyUpHandler,
 		onSubmitHandler,
 	};
 }

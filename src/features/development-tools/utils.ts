@@ -35,7 +35,7 @@ export function updateDevToolsConfig(updatedConfig: Partial<T_DevToolsConfig>): 
 	);
 }
 
-// --- Types ---
+// --- TYPES ---
 
 type T_DevToolsConfig = {
 	isUserLoggedIn: boolean;

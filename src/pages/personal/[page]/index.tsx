@@ -7,7 +7,7 @@ import v from "~/lib/v";
 
 export default PersonalPage;
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 type T_PageProps = { page: string };
 

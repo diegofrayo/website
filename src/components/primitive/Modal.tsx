@@ -19,7 +19,7 @@ function Modal({
 	visible,
 	onCloseHandler,
 }: T_ModalProps): T_ReactElementNullable {
-	// hooks
+	// --- HOOKS ---
 	useToggleBodyScroll(visible);
 
 	if (visible) {
@@ -38,18 +38,18 @@ function Modal({
 
 export default Modal;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 type T_BackdropProps = Pick<T_ModalProps, "children" | "onCloseHandler"> & {
 	className: T_ModalProps["className"];
 };
 
 function Backdrop({ children, className, onCloseHandler }: T_BackdropProps): T_ReactElement {
-	// states & refs
+	// --- STATES & REFS ---
 	const dialogRef = React.useRef<HTMLDialogElement>(null);
 	const scrollPosition = React.useRef(0);
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		if (v.isNull(dialogRef.current) || v.isTrue(dialogRef.current.open)) {
 			return;

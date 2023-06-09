@@ -26,13 +26,13 @@ function MainLayout({
 	hasToDisplayGoToTheTopButton = true,
 	width,
 }: T_MainLayoutProps): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { pathname } = useRouter();
 
-	// vars
+	// --- VARS ---
 	const parentUrl = getParentURL();
 
-	// utils
+	// --- UTILS ---
 	function getParentURL(): string {
 		if (pathname === "/") return "";
 
@@ -82,12 +82,12 @@ function MainLayout({
 
 export default MainLayout;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 type T_FooterProps = Pick<T_MainLayoutProps, "hasToDisplayGoToTheTopButton">;
 
 function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
 	return (
@@ -148,10 +148,10 @@ function FooterIcon({ icon, url }: T_FooterIconProps): T_ReactElement {
 }
 
 function GoToTopButton(): T_ReactElementNullable {
-	// states & refs
+	// --- STATES & REFS ---
 	const [hasToDisplayTheButton, setHasToDisplayTheBottom] = React.useState(false);
 
-	// effects
+	// --- EFFECTS ---
 	useOnWindowStopScroll({
 		onScrollStoppedCallback: () => {
 			setHasToDisplayTheBottom(false);
@@ -165,7 +165,7 @@ function GoToTopButton(): T_ReactElementNullable {
 		},
 	});
 
-	// handlers
+	// --- HANDLERS ---
 	function handleGoToTheTopClick(): void {
 		setScrollPosition(0);
 	}
@@ -174,7 +174,7 @@ function GoToTopButton(): T_ReactElementNullable {
 		return (
 			<Button
 				variant={Button.variant.SIMPLE}
-				className="tw-fixed tw-bottom-3 tw-right-3 tw-z-50 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-bg-opacity-70 tw-text-2xl dfr-shadow dfr-bg-color-gs-black sm:tw-right-4 sm:tw-bottom-4"
+				className="tw-fixed tw-bottom-3 tw-right-3 tw-z-50 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-bg-opacity-70 tw-text-2xl dfr-shadow dfr-bg-color-gs-black sm:tw-bottom-4 sm:tw-right-4"
 				onClick={handleGoToTheTopClick}
 			>
 				<Icon

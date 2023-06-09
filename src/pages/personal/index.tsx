@@ -3,6 +3,6 @@ import { getPageContentStaticProps } from "~/features/i18n";
 
 export default PersonalPage;
 
-// --- Next.js functions ---
+// --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps = getPageContentStaticProps();

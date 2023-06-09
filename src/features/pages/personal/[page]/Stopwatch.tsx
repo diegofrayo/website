@@ -18,7 +18,7 @@ import type {
 } from "~/types";
 
 function Stopwatch(): T_ReactElement {
-	// states & refs
+	// --- STATES & REFS ---
 	const [time, setTime] = React.useState(25);
 	const [timeInputValue, setTimeInputValue] = React.useState(25);
 	const [timeMeasure, setTimeMeasure] = React.useState<"seconds" | "minutes">("seconds");
@@ -28,13 +28,13 @@ function Stopwatch(): T_ReactElement {
 	);
 	const [timerInterval, setTimerInterval] = React.useState<T_SetTimeout | null>(null);
 
-	// vars
+	// --- VARS ---
 	const PAGE_TITLE = "stopwatch";
 	const isTimerStarted = timerStatus !== "NOT_STARTED";
 	const isTimerNotStarted = timerStatus === "NOT_STARTED";
 	const isTimerPaused = timerStatus === "PAUSED";
 
-	// utils
+	// --- UTILS ---
 	function playSound(elementId: "audio-stopwatch-completed"): void {
 		(document.getElementById(elementId) as HTMLAudioElement)?.play();
 	}
@@ -70,7 +70,7 @@ function Stopwatch(): T_ReactElement {
 		[stopInterval, setTimerStatus, updateTimeValue],
 	);
 
-	// handlers
+	// --- HANDLERS ---
 	function handleStartClick(): void {
 		const areInputValuesValid = (
 			document.getElementById("form") as HTMLFormElement
@@ -149,7 +149,7 @@ function Stopwatch(): T_ReactElement {
 		)}:${addLeftPadding(Math.floor(minutes))}:${addLeftPadding(lastSeconds)}`;
 	}, []);
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		playSound("audio-stopwatch-completed");
 	});
@@ -289,7 +289,7 @@ function Stopwatch(): T_ReactElement {
 
 export default Stopwatch;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 type T_ActionButtonProps = T_HTMLElementAttributes["button"];
 

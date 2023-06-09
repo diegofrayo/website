@@ -22,7 +22,7 @@ import { generateSlug } from "~/utils/strings";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 function Header(): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
 	return (
@@ -43,7 +43,7 @@ function Header(): T_ReactElement {
 				</Block>
 			</Block>
 
-			<Block className="tw-absolute tw-top-8 tw-right-0">
+			<Block className="tw-absolute tw-right-0 tw-top-8">
 				<SettingsMenu />
 			</Block>
 		</Block>
@@ -52,7 +52,7 @@ function Header(): T_ReactElement {
 
 export default Header;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 type T_MainMenuItem = {
 	label: string;
@@ -60,16 +60,16 @@ type T_MainMenuItem = {
 };
 
 function MainMenu(): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { currentLocale } = useTranslation();
 	const { pathname, asPath } = useRouter();
 
-	// states & refs
+	// --- STATES & REFS ---
 	const [items, setItems] = React.useState<T_MainMenuItem[]>(createItems());
 	const [showMenu, setShowMenu] = React.useState(false);
 	const menuRef = React.useRef<HTMLDivElement>(null);
 
-	// effects
+	// --- EFFECTS ---
 	useClickOutside(menuRef, () => {
 		setShowMenu(false);
 	});
@@ -110,7 +110,7 @@ function MainMenu(): T_ReactElement {
 		]);
 	}, [currentLocale]);
 
-	// handlers
+	// --- HANDLERS ---
 	function handleToggleMenuClick(): void {
 		setShowMenu((currentValue) => !currentValue);
 	}
@@ -119,7 +119,7 @@ function MainMenu(): T_ReactElement {
 		setShowMenu((currentValue) => !currentValue);
 	}
 
-	// utils
+	// --- UTILS ---
 	function createItems(): T_MainMenuItem[] {
 		const translator = I18nService.getInstance();
 
@@ -160,7 +160,7 @@ function MainMenu(): T_ReactElement {
 			</Button>
 
 			{showMenu ? (
-				<List className="tw-absolute tw-top-full tw-left-[-65px] tw-z-40 tw-block tw-w-40 tw-overflow-hidden dfr-shadow">
+				<List className="tw-absolute tw-left-[-65px] tw-top-full tw-z-40 tw-block tw-w-40 tw-overflow-hidden dfr-shadow">
 					{items.map((item) => {
 						const isLinkActive =
 							pathname === item.url ||
@@ -193,16 +193,16 @@ function MainMenu(): T_ReactElement {
 }
 
 const SettingsMenu = withAuthComponent(function SettingsMenu(): T_ReactElement {
-	// states & refs
+	// --- STATES & REFS ---
 	const menuRef = React.useRef<HTMLDivElement>(null);
 	const [showMenu, setShowMenu, toggleShowMenu] = useEnhancedState(false);
 
-	// effects
+	// --- EFFECTS ---
 	useClickOutside(menuRef, () => {
 		setShowMenu(false);
 	});
 
-	// handlers
+	// --- HANDLERS ---
 	function handleToggleShowMenuClick(): void {
 		toggleShowMenu();
 	}
@@ -223,7 +223,7 @@ const SettingsMenu = withAuthComponent(function SettingsMenu(): T_ReactElement {
 			</Button>
 
 			{showMenu ? (
-				<List className="tw-absolute tw-top-full tw-right-0 tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden dfr-shadow">
+				<List className="tw-absolute tw-right-0 tw-top-full tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden dfr-shadow">
 					<ToggleThemeMenuItem />
 					<RefreshAPPMenuItem />
 					<ISRMenuItem />
@@ -236,14 +236,14 @@ const SettingsMenu = withAuthComponent(function SettingsMenu(): T_ReactElement {
 });
 
 function ToggleThemeMenuItem(): T_ReactElement {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 	const { theme, setTheme } = useTheme();
 
-	// vars
+	// --- VARS ---
 	const isDarkMode = theme === "dark";
 
-	// handlers
+	// --- HANDLERS ---
 	function handleToggleThemeClick(): void {
 		setTheme(isDarkMode ? "light" : "dark");
 	}
@@ -289,7 +289,7 @@ function ToggleThemeMenuItem(): T_ReactElement {
 }
 
 const RefreshAPPMenuItem = renderIf(function RefreshAPPMenuItem() {
-	// handlers
+	// --- HANDLERS ---
 	async function handleRefreshClick(): Promise<void> {
 		await deletePWACache();
 		window.location.reload();
@@ -308,7 +308,7 @@ const RefreshAPPMenuItem = renderIf(function RefreshAPPMenuItem() {
 })(() => AuthService.isUserLoggedIn() && isPWA());
 
 const ISRMenuItem = withAuthComponent(function ISRMenuItem() {
-	// handlers
+	// --- HANDLERS ---
 	async function handleISROnDemandClick(): Promise<void> {
 		try {
 			await http.post("/api/diegofrayo", {
@@ -337,13 +337,13 @@ const ISRMenuItem = withAuthComponent(function ISRMenuItem() {
 });
 
 const EnvironmentMenuItem = withAuthComponent(function EnvironmentMenuItem() {
-	// hooks
+	// --- HOOKS ---
 	const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
 
-	// states & refs
+	// --- STATES & REFS ---
 	const [url, setUrl] = React.useState("/");
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		setUrl(
 			isDevelopmentEnvironment()
@@ -366,7 +366,7 @@ const EnvironmentMenuItem = withAuthComponent(function EnvironmentMenuItem() {
 });
 
 function PrintMenuItem(): T_ReactElement {
-	// handlers
+	// --- HANDLERS ---
 	function handlePrintClick(): void {
 		window.print();
 	}

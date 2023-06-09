@@ -29,24 +29,24 @@ type T_ContactsProps = {
 };
 
 function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
-	// hooks
+	// --- HOOKS ---
 	const [isAllCollapsibleOpened, setAllCollapsibleOpened, toggleIsAllCollapsibleOpened] =
 		useEnhancedState(false);
 
-	// states & refs
+	// --- STATES & REFS ---
 	const { current: totalOfContacts } = React.useRef<number>(countAllContacts(contacts));
 	const [whatsAppOption, setWhatsAppOption] = React.useState<T_WhatsAppOption>("api");
 
-	// vars
+	// --- VARS ---
 	const PAGE_TITLE = "Contacts";
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		// NOTE: Disable temporary
 		// setWhatsAppOption(isMobileDevice() ? "api" : "web");
 	});
 
-	// handlers
+	// --- HANDLERS ---
 	function handleToggleAllCollapsibleOpenedClick(): void {
 		toggleIsAllCollapsibleOpened();
 	}
@@ -182,7 +182,7 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 
 export default withAuthPage<T_ContactsProps>(Contacts);
 
-// --- Components ---
+// --- COMPONENTS ---
 
 type T_ContactsGroupProps = {
 	groupName: string;
@@ -255,7 +255,7 @@ type T_ContactPhoneProps = {
 };
 
 function ContactPhone({ phone, country }: T_ContactPhoneProps): T_ReactElementNullable {
-	// vars
+	// --- VARS ---
 	const COUNTRIES_EMOJIS = {
 		AR: "🇦🇷",
 		BR: "🇧🇷",
@@ -428,11 +428,11 @@ function WhastAppButton({
 	phone,
 	whatsAppOption,
 }: T_WhastAppButtonProps): T_ReactElementNullable {
-	// vars
+	// --- VARS ---
 	const isColombianHomePhoneNumber = phone.split(" ")[1]?.startsWith("606");
 	const isAssistanceServiceNumber = phone.split(" ")[1]?.length === 3;
 
-	// handlers
+	// --- HANDLERS ---
 	function composeWhatsAppUrl(): string {
 		const url = new URLSearchParams();
 		url.append("phone", phone.replace(" ", "").trim());
@@ -463,10 +463,10 @@ type T_PhoneButtonProps = {
 };
 
 function PhoneButton({ children, phone, country }: T_PhoneButtonProps): T_ReactElementNullable {
-	// vars
+	// --- VARS ---
 	const isPhoneNumberFromColombia = country === "CO";
 
-	// utils
+	// --- UTILS ---
 	function generatePhoneLink(): string {
 		return `tel:${phone.split(" ").slice(1).join("").trim()}`;
 	}
@@ -487,13 +487,13 @@ function PhoneButton({ children, phone, country }: T_PhoneButtonProps): T_ReactE
 }
 
 function SMSButton({ children, phone, country }: T_PhoneButtonProps): T_ReactElementNullable {
-	// vars
+	// --- VARS ---
 	const phoneWithoutCountryCode = phone.split(" ").slice(1).join("").trim();
 	const isCellphoneNumber =
 		phoneWithoutCountryCode.length === 10 && phoneWithoutCountryCode.startsWith("3");
 	const isPhoneNumberFromColombia = country === "CO";
 
-	// utils
+	// --- UTILS ---
 	function generateSMSLink(): string {
 		return `sms:${phoneWithoutCountryCode}&body=Hello`;
 	}
@@ -513,7 +513,7 @@ function SMSButton({ children, phone, country }: T_PhoneButtonProps): T_ReactEle
 	return null;
 }
 
-// --- Utils ---
+// --- UTILS ---
 
 function countAllContacts(contacts: T_ContactsProps["contacts"]): number {
 	const result = Object.values(contacts).reduce((result, groupOfContacts) => {
@@ -534,7 +534,7 @@ function countGroupOfContacts(contacts: T_GroupOfContacts): number {
 	);
 }
 
-// --- Types ---
+// --- TYPES ---
 
 type T_GroupOfContacts = T_Contact[] | T_Object<T_Contact[]>;
 

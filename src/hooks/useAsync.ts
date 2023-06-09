@@ -11,13 +11,13 @@ function useAsync<G_Params = unknown, G_Data = unknown>(
 	params: G_Params,
 	callback: T_Callback<G_Params, G_Data>,
 ): T_UseExecuteCallbackReturn<G_Data> {
-	// states & refs
+	// --- STATES & REFS ---
 	const [isLoading, setIsLoading] = React.useState(true);
 	const [data, setData] = React.useState<G_Data | undefined>(undefined);
 	const [error, setError] = React.useState<unknown>(undefined);
 	const savedHandler = React.useRef<typeof callback>(callback);
 
-	// effects
+	// --- EFFECTS ---
 	React.useEffect(() => {
 		savedHandler.current = callback;
 	});

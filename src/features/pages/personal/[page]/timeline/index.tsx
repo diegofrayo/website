@@ -19,10 +19,10 @@ function TimelinePage(): T_ReactElement {
 		data: fetchData,
 	} = useQuery<T_TimelineFetchResponse>("timeline", TimelineService.fetchData);
 
-	// states & refs
+	// --- STATES & REFS ---
 	const [selectedCategory, setSelectedCategory] = React.useState("");
 
-	// vars
+	// --- VARS ---
 	const data = v.isUndefined(fetchData)
 		? fetchData
 		: {
@@ -41,7 +41,7 @@ function TimelinePage(): T_ReactElement {
 				}),
 		  };
 
-	// handlers
+	// --- HANDLERS ---
 	function handleSelectFilterClick(category: string): () => void {
 		return () => {
 			setSelectedCategory(category === selectedCategory ? "" : category);
@@ -75,7 +75,7 @@ function TimelinePage(): T_ReactElement {
 											key={category.id}
 											variant={Button.variant.SIMPLE}
 											className={classNames(
-												"tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-py-1 tw-px-3 tw-text-left tw-text-sm",
+												"tw-my-1 tw-mr-2 tw-inline-block tw-truncate tw-rounded-md tw-px-3 tw-py-1 tw-text-left tw-text-sm",
 												category.id === selectedCategory
 													? "tw-bg-yellow-400 tw-font-bold dark:tw-bg-yellow-600 dark:dfr-text-color-gs-white"
 													: "dfr-bg-color-tertiary",
@@ -102,7 +102,7 @@ function TimelinePage(): T_ReactElement {
 
 export default TimelinePage;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 function TimelineItem({ data: timelineGroupItem }: { data: T_TimelineGroupItem }): T_ReactElement {
 	return (
@@ -130,7 +130,7 @@ function TimelineItem({ data: timelineGroupItem }: { data: T_TimelineGroupItem }
 	);
 }
 
-// --- Utils ---
+// --- UTILS ---
 
 function formatDate(startDate: string, endDate: string): string {
 	const MONTHS = [

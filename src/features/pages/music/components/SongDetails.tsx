@@ -18,7 +18,7 @@ function SongDetails({
 	song: T_Song;
 	className?: string;
 }): T_ReactElementNullable {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 
 	if (MusicService.isChordsSong(song)) {
@@ -111,13 +111,13 @@ function SongDetails({
 
 export default SongDetails;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 const Category = withAuthComponent(function Category({ category }: { category: string }) {
-	// hooks
+	// --- HOOKS ---
 	const { t } = useTranslation();
 
-	// vars
+	// --- VARS ---
 	const EMOJIS = ["🚧", "⭐", "🟩", "🟨", "🟥"];
 
 	return (

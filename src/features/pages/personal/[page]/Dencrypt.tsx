@@ -15,53 +15,51 @@ import { decrypt, encrypt } from "~/utils/dencrypt";
 import type {
 	T_ReactElement,
 	T_ReactOnClickEventHandler,
-	T_ReactOnSubmitEventHandler,
+	T_ReactOnKeyUpEventHandler,
 	T_ReactRef,
 } from "~/types";
 
 function Dencrypt(): T_ReactElement {
 	const {
-		// states & refs
+		// --- STATES & REFS ---
 		output,
 		inputRef,
 
-		// handlers
-		onSubmitHandler,
+		// --- HANDLERS ---
+		onKeyUpHandler,
 		onInputFocusHandler,
+		handleEncryptClick,
+		handleDecryptClick,
 	} = useController();
 
 	return (
 		<Block>
-			<form
-				className="tw-mb-8"
-				onSubmit={onSubmitHandler}
-			>
-				<Input
-					componentProps={{ label: "Ingrese un texto" }}
-					containerProps={{ className: "tw-my-1" }}
-					id="input"
-					type="text"
-					autoComplete="on"
-					ref={inputRef}
-					onClick={onInputFocusHandler}
-				/>
-				<Block className="tw-flex tw-flex-wrap tw-justify-between">
-					<Button
-						variant={Button.variant.DEFAULT}
-						type="submit"
-						value="encrypt"
-					>
-						encriptar
-					</Button>
-					<Button
-						variant={Button.variant.DEFAULT}
-						type="submit"
-						value="decrypt"
-					>
-						desencriptar
-					</Button>
-				</Block>
-			</form>
+			<Input
+				componentProps={{ label: "Ingrese un texto" }}
+				containerProps={{ className: "tw-my-1" }}
+				id="input"
+				type="text"
+				autoComplete="off"
+				ref={inputRef}
+				onKeyUp={onKeyUpHandler}
+				onClick={onInputFocusHandler}
+			/>
+			<Block className="tw-flex tw-flex-wrap tw-justify-between">
+				<Button
+					variant={Button.variant.DEFAULT}
+					type="button"
+					onClick={handleEncryptClick}
+				>
+					encriptar
+				</Button>
+				<Button
+					variant={Button.variant.DEFAULT}
+					type="button"
+					onClick={handleDecryptClick}
+				>
+					desencriptar
+				</Button>
+			</Block>
 
 			<Space
 				size={10}
@@ -91,21 +89,23 @@ function Dencrypt(): T_ReactElement {
 
 export default Dencrypt;
 
-// --- Controller ---
+// --- CONTROLLER ---
 
 type T_UseControllerReturn = {
 	output: string;
 	inputRef: T_ReactRef<HTMLInputElement>;
-	onSubmitHandler: T_ReactOnSubmitEventHandler<HTMLFormElement>;
+	onKeyUpHandler: T_ReactOnKeyUpEventHandler<HTMLInputElement>;
 	onInputFocusHandler: T_ReactOnClickEventHandler<HTMLInputElement>;
+	handleEncryptClick: T_ReactOnClickEventHandler;
+	handleDecryptClick: T_ReactOnClickEventHandler;
 };
 
 function useController(): T_UseControllerReturn {
-	// states & refs
+	// --- STATES & REFS ---
 	const [output, setOutput] = React.useState("");
 	const inputRef = React.useRef<HTMLInputElement>(null);
 
-	// effects
+	// --- EFFECTS ---
 	useDidMount(() => {
 		if (isSmallScreen() || v.isNull(inputRef.current)) {
 			return;
@@ -114,20 +114,15 @@ function useController(): T_UseControllerReturn {
 		focusElement(inputRef.current);
 	});
 
-	// handlers
-	const onSubmitHandler: T_UseControllerReturn["onSubmitHandler"] = function onSubmitHandler(
+	// --- HANDLERS ---
+	const onKeyUpHandler: T_UseControllerReturn["onKeyUpHandler"] = function onKeyUpHandler(
 		event,
 	): void {
-		event.preventDefault();
+		if (event.key !== "Enter") return;
+
 		const text = (inputRef.current?.value || "").trim();
 
-		if (v.isEmptyString(text)) {
-			return;
-		}
-
-		// WARN: Find a better way to accomplish this
-		// @ts-ignore
-		if (event.nativeEvent?.submitter.value === "decrypt") {
+		if (text.startsWith("U2F")) {
 			decryptText(text);
 		} else {
 			encryptText(text);
@@ -139,7 +134,29 @@ function useController(): T_UseControllerReturn {
 			focusInputAndSelectText(event.currentTarget);
 		};
 
-	// utils
+	const handleEncryptClick: T_UseControllerReturn["handleEncryptClick"] =
+		function handleEncryptClick() {
+			const text = (inputRef.current?.value || "").trim();
+
+			if (v.isEmptyString(text)) {
+				return;
+			}
+
+			encryptText(text);
+		};
+
+	const handleDecryptClick: T_UseControllerReturn["handleDecryptClick"] =
+		function handleDecryptClick() {
+			const text = (inputRef.current?.value || "").trim();
+
+			if (v.isEmptyString(text)) {
+				return;
+			}
+
+			decryptText(text);
+		};
+
+	// --- UTILS ---
 	async function encryptText(text: string): Promise<void> {
 		try {
 			const encryptedText = await encrypt(text);
@@ -161,12 +178,14 @@ function useController(): T_UseControllerReturn {
 	}
 
 	return {
-		// states & refs
+		// --- STATES & REFS ---
 		output,
 		inputRef,
 
-		// handlers
-		onSubmitHandler,
+		// --- HANDLERS ---
+		onKeyUpHandler,
 		onInputFocusHandler,
+		handleEncryptClick,
+		handleDecryptClick,
 	};
 }

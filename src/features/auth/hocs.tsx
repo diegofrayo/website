@@ -15,10 +15,10 @@ export function withAuthPage<G_ComponentProps extends object>(
 	options?: { denyLoggedIn?: boolean; allowIf?: (props: G_ComponentProps) => boolean },
 ): T_ReactFunctionComponent<G_ComponentProps> {
 	return function WithAuthComponent(props: G_ComponentProps): T_ReactElementNullable {
-		// states & refs
+		// --- STATES & REFS ---
 		const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
 
-		// effects
+		// --- EFFECTS ---
 		useDidMount(() => {
 			if (isLocalhostEnvironment() && v.isNotTrue(readDevToolsConfig().authPagesEnabled)) {
 				redirect(false);
@@ -34,7 +34,7 @@ export function withAuthPage<G_ComponentProps extends object>(
 			}
 		});
 
-		// utils
+		// --- UTILS ---
 		function redirect(predicate: boolean): void {
 			if (predicate) {
 				globalRedirect(ROUTES.HOME);

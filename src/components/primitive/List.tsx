@@ -52,7 +52,7 @@ List.variant = VARIANTS;
 
 export default List;
 
-// --- Components ---
+// --- COMPONENTS ---
 
 List.Item = function ListItem({
 	children,

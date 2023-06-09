@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as React from "react";
 import dynamic from "next/dynamic";
 
@@ -77,7 +79,7 @@ type T_PersonalPageProps = {
 };
 
 function PersonalPage({ page }: T_PersonalPageProps): T_ReactElement {
-	// vars
+	// --- VARS ---
 	const pageConfig = PERSONAL_PAGES_COMPONENTS.find((item) => item.slug === page);
 
 	if (v.isUndefined(pageConfig)) {

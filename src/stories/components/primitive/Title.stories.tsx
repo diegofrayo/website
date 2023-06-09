@@ -12,7 +12,7 @@ export default {
 	argTypes: {},
 };
 
-// --- Stories ---
+// --- STORIES ---
 
 export const MarkdownTitle = Story.bind({});
 MarkdownTitle.args = {

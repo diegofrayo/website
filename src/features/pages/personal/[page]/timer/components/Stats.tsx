@@ -28,10 +28,10 @@ function Stats({
 	// context
 	const { secondsToTime, timeToSeconds, isUILocked } = React.useContext(TimerPageContext);
 
-	// states
+	// --- STATES & REFS ---
 	const [elapsedTime, setElapsedTime] = React.useState("");
 
-	// vars
+	// --- VARS ---
 	const isRenderedFromTimerScreen =
 		deleteRoutineHandler === undefined && uploadRoutineHandler === undefined;
 
@@ -148,12 +148,12 @@ Stats.Item = function StatsItem({ label, value }: { label: string; value: string
 	return (
 		<Block className="tw-flex tw-justify-between">
 			<InlineText
-				className="tw-w-2/4 tw-border-b tw-py-1 tw-px-2 dfr-border-color-primary"
+				className="tw-w-2/4 tw-border-b tw-px-2 tw-py-1 dfr-border-color-primary"
 				is="strong"
 			>
 				{label}
 			</InlineText>
-			<InlineText className="tw-flex tw-w-2/4 tw-items-center tw-justify-end tw-border-b tw-border-l tw-py-1 tw-px-2 tw-text-right dfr-border-color-primary">
+			<InlineText className="tw-flex tw-w-2/4 tw-items-center tw-justify-end tw-border-b tw-border-l tw-px-2 tw-py-1 tw-text-right dfr-border-color-primary">
 				{value}
 			</InlineText>
 		</Block>

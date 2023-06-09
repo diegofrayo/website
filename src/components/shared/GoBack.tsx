@@ -13,7 +13,7 @@ type T_GoBackProps = {
 };
 
 function GoBack({ className, withConfirmation = false }: T_GoBackProps): T_ReactElement {
-	// handlers
+	// --- HANDLERS ---
 	function handleGoBackClick(): void {
 		if (
 			v.isNotTrue(withConfirmation) ||
