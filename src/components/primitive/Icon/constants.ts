@@ -46,6 +46,7 @@ import {
 import {
 	ChatBubbleLeftEllipsisIcon as ChatBubbleLeftEllipsisIconSolid,
 	CheckIcon,
+	CheckBadgeIcon as CheckBadgeIconSolid,
 	CogIcon,
 	EllipsisHorizontalCircleIcon as EllipsisHorizontalCircleIconSolid,
 	HeartIcon as HeartIconSolid,
@@ -233,6 +234,13 @@ export const ICONS = {
 		defaultProps: {
 			className: "",
 			color: "tw-text-green-500",
+		},
+	},
+	CHECK_BADGE: {
+		icon: CheckBadgeIconSolid,
+		defaultProps: {
+			className: "",
+			color: "",
 		},
 	},
 	CHEVRON_DOWN: {

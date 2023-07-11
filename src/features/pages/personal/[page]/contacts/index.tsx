@@ -264,6 +264,7 @@ function ContactPhone({ phone, country }: T_ContactPhoneProps): T_ReactElementNu
 		FR: "🇫🇷",
 		GB: "🇬🇧",
 		ISR: "🇮🇱",
+		IT: "🇮🇹",
 		MX: "🇲🇽",
 		NI: "🇳🇮",
 		PE: "🇵🇪",

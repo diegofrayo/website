@@ -104,6 +104,16 @@ function SongDetails({
 						/>
 					</Link>
 				</Block>
+
+				{song.done ? (
+					<Block className="tw-ml-2 tw-inline-block tw-border-l tw-pl-2 dfr-border-color-primary">
+						<Icon
+							icon={Icon.icon.CHECK_BADGE}
+							size={24}
+							color="tw-text-blue-500"
+						/>
+					</Block>
+				) : null}
 			</Block>
 		</Block>
 	);
@@ -118,7 +128,7 @@ const Category = withAuthComponent(function Category({ category }: { category: s
 	const { t } = useTranslation();
 
 	// --- VARS ---
-	const EMOJIS = ["🚧", "⭐", "🟩", "🟨", "🟥"];
+	const EMOJIS = ["🚧", "⭐", "👌", "🤷‍♂️", "👷"];
 
 	return (
 		<Block className="sm:tw-flex sm:tw-flex-nowrap">
