@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import classNames from "classnames";
 
 import { Block, Button, Icon, Link, Title } from "~/components/primitive";
-import { useDidMount, useOnWindowResize, useOnWindowStopScroll } from "~/hooks";
+import { useDidMount, useOnWindowStopScroll } from "~/hooks";
 import v from "~/lib/v";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
 import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
@@ -90,16 +90,21 @@ function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement
 
 	// --- EFFECTS ---
 	useDidMount(() => {
-		setTimeout(() => {
+		function bodyObserver(): void {
 			setBodyHasScroll(
 				document.documentElement.scrollHeight > document.documentElement.clientHeight,
 			);
 			setShowFooter(true);
-		}, 1000);
-	});
+		}
 
-	useOnWindowResize(() => {
-		setBodyHasScroll(document.documentElement.scrollHeight > document.documentElement.clientHeight);
+		bodyObserver();
+
+		const observer = new ResizeObserver(bodyObserver);
+		observer.observe(document.body);
+
+		return () => {
+			observer.disconnect();
+		};
 	});
 
 	if (!showFooter) {
