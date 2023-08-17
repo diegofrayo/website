@@ -31,28 +31,10 @@
     <loc>https://diegofrayo.vercel.app/music/chords</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/music/los-libros-de-la-buena-memoria</loc>
-  </url>
-  <url>
-    <loc>https://diegofrayo.vercel.app/music/no-quiere-decir</loc>
-  </url>
-  <url>
-    <loc>https://diegofrayo.vercel.app/music/spaghetti-del-rock</loc>
-  </url>
-  <url>
-    <loc>https://diegofrayo.vercel.app/music/y-mientras-tanto-el-sol-se-muere</loc>
-  </url>
-  <url>
-    <loc>https://diegofrayo.vercel.app/music/ando-ganas</loc>
-  </url>
-  <url>
     <loc>https://diegofrayo.vercel.app/music/arrancarmelo</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/music/bajan</loc>
-  </url>
-  <url>
-    <loc>https://diegofrayo.vercel.app/music/cuando-pase-el-temblor</loc>
+    <loc>https://diegofrayo.vercel.app/music/de-nada-sirve</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/el-tesoro</loc>
@@ -82,6 +64,15 @@
     <loc>https://diegofrayo.vercel.app/music/vientito-del-tucuman</loc>
   </url>
   <url>
+    <loc>https://diegofrayo.vercel.app/music/ando-ganas</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/bajan</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/cuando-pase-el-temblor</loc>
+  </url>
+  <url>
     <loc>https://diegofrayo.vercel.app/music/bicho-de-ciudad</loc>
   </url>
   <url>
@@ -91,9 +82,6 @@
     <loc>https://diegofrayo.vercel.app/music/cancion-para-los-dias-de-la-vida</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.vercel.app/music/de-nada-sirve</loc>
-  </url>
-  <url>
     <loc>https://diegofrayo.vercel.app/music/ella-tambien</loc>
   </url>
   <url>
@@ -101,6 +89,9 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/la-edad-del-cielo</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/los-libros-de-la-buena-memoria</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/a-las-nueve</loc>
@@ -226,6 +217,9 @@
     <loc>https://diegofrayo.vercel.app/music/no-diggity</loc>
   </url>
   <url>
+    <loc>https://diegofrayo.vercel.app/music/no-quiere-decir</loc>
+  </url>
+  <url>
     <loc>https://diegofrayo.vercel.app/music/que-he-sacado-con-quererte</loc>
   </url>
   <url>
@@ -238,6 +232,9 @@
     <loc>https://diegofrayo.vercel.app/music/seres-extranos</loc>
   </url>
   <url>
+    <loc>https://diegofrayo.vercel.app/music/spaghetti-del-rock</loc>
+  </url>
+  <url>
     <loc>https://diegofrayo.vercel.app/music/stand-by-me</loc>
   </url>
   <url>
@@ -248,6 +245,9 @@
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/veo-chiquito</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/music/y-mientras-tanto-el-sol-se-muere</loc>
   </url>
   <url>
     <loc>https://diegofrayo.vercel.app/music/zamba-de-mi-esperanza</loc>

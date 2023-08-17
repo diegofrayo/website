@@ -408,7 +408,6 @@ function Ticks(): T_ReactElement {
 										<Text className="tw-font-bold">
 											<InlineText className="tw-inline-block tw-w-20">{item.date}</InlineText> |{" "}
 											<InlineText className="tw-inline-block tw-w-20">
-												{" "}
 												{item.cycles} cycles
 											</InlineText>
 										</Text>

@@ -2,12 +2,9 @@ import * as React from "react";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 
-import { Block, Button, Icon, Link, Title, Text, Space } from "~/components/primitive";
-import { T_IconName } from "~/components/primitive/Icon";
-import { useOnWindowStopScroll } from "~/hooks";
+import { Block, Button, Icon, Link, Title } from "~/components/primitive";
+import { useDidMount, useOnWindowResize, useOnWindowStopScroll } from "~/hooks";
 import v from "~/lib/v";
-import { useStoreSelector } from "~/stores";
-import { selectWebsiteMetadata, T_WebsiteMetadata } from "~/stores/modules/metadata";
 import { getScrollPosition, setScrollPosition } from "~/utils/browser";
 import type { T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
 
@@ -86,64 +83,43 @@ export default MainLayout;
 
 type T_FooterProps = Pick<T_MainLayoutProps, "hasToDisplayGoToTheTopButton">;
 
-function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement {
-	// --- HOOKS ---
-	const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
+function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElementNullable {
+	// --- STATES & REFS ---
+	const [bodyHasScroll, setBodyHasScroll] = React.useState(true);
+	const [showFooter, setShowFooter] = React.useState(false);
+
+	// --- EFFECTS ---
+	useDidMount(() => {
+		setTimeout(() => {
+			setBodyHasScroll(
+				document.documentElement.scrollHeight > document.documentElement.clientHeight,
+			);
+			setShowFooter(true);
+		}, 1000);
+	});
+
+	useOnWindowResize(() => {
+		setBodyHasScroll(document.documentElement.scrollHeight > document.documentElement.clientHeight);
+	});
+
+	if (!showFooter) {
+		return null;
+	}
 
 	return (
 		<Block
 			is="footer"
-			className="tw-relative dfr-bg-color-gs-black print:tw-hidden"
+			className={classNames(
+				"tw-w-full tw-py-2 dfr-bg-color-gs-black print:tw-hidden",
+				!bodyHasScroll && "tw-absolute tw-bottom-0",
+			)}
 		>
-			<Block className="tw-mx-auto tw-px-8 tw-py-16 tw-text-center dfr-max-w-layout dfr-text-color-gs-400">
-				<Block className="tw-inline-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
-					<FooterIcon
-						url={WEBSITE_METADATA.social.linkedin}
-						icon={Icon.icon.LINKEDIN}
-					/>
-					<FooterIcon
-						url={WEBSITE_METADATA.social.github}
-						icon={Icon.icon.GITHUB_LIGHT}
-					/>
-					<FooterIcon
-						url={WEBSITE_METADATA.social.twitter}
-						icon={Icon.icon.TWITTER}
-					/>
-					<FooterIcon
-						url={WEBSITE_METADATA.social.couchsurfing}
-						icon={Icon.icon.COUCHSURFING}
-					/>
-					<FooterIcon
-						url={WEBSITE_METADATA.social.spotify}
-						icon={Icon.icon.SPOTIFY}
-					/>
-				</Block>
-				<Space size={2} />
-				<Text className="tw-text-xs">
-					Diego Rayo | @diegofrayo | Software Developer | {new Date().getFullYear()}
-				</Text>
+			<Block className="tw-mx-auto tw-px-8 tw-py-2 tw-text-center tw-text-sm dfr-max-w-layout dfr-text-color-gs-400">
+				Diego Rayo | @diegofrayo | Software Developer | {new Date().getFullYear()}
 			</Block>
 
 			{hasToDisplayGoToTheTopButton ? <GoToTopButton /> : null}
 		</Block>
-	);
-}
-
-type T_FooterIconProps = { icon: T_IconName; url: string };
-
-function FooterIcon({ icon, url }: T_FooterIconProps): T_ReactElement {
-	return (
-		<Link
-			variant={Link.variant.SIMPLE}
-			href={url}
-			className="tw-m-2 tw-inline-block sm:tw-my-0 sm:tw-ml-0 sm:tw-mr-4 last:sm:tw-mr-0"
-			isExternalLink
-		>
-			<Icon
-				icon={icon}
-				size={32}
-			/>
-		</Link>
 	);
 }
 

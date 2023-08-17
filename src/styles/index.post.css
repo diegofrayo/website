@@ -16,7 +16,7 @@ html.css-debugging * {
 }
 
 html {
-	@apply dfr-bg-color-gs-black;
+	@apply dfr-bg-color-gs-white;
 	height: 100%;
 }
 
