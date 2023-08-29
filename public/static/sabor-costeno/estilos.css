@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(199, 243, 244);
+  background-image: url("assets/brick-wall.png");
+  font-family: "Raleway", sans-serif;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+a {
+  text-transform: uppercase;
+  transition: all 500ms;
+}
+
+a:hover {
+  opacity: 0.75;
+}
+
+.contenedor {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+#logo-principal {
+  border-radius: 100%;
+  box-shadow: 0px 10px 20px -3px rgb(119 119 119);
+  height: 120px;
+  margin-bottom: 20px;
+  width: 120px;
+}
+
+h1 {
+  color: black;
+  font-family: "Black Ops One", cursive;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.direccion {
+  color: #515151;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.link-icono {
+  display: inline-block;
+  margin: 5px;
+}
+
+.icono {
+  height: 24px;
+  width: 24px;
+}
+
+.boton-accion {
+  background-color: #068084;
+  border-radius: 10px;
+  border: 2px solid #095e61;
+  color: white;
+  display: block;
+  margin-bottom: 10px;
+  padding: 15px 0;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+}
+
+.boton-accion:hover {
+  transform: translateX(1px) translateY(1px);
+}
+
+@media (max-width: 640px) {
+  .boton-accion {
+    font-size: 14px;
+  }
+}
