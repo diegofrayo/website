@@ -35,7 +35,7 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 
 	// --- STATES & REFS ---
 	const { current: totalOfContacts } = React.useRef<number>(countAllContacts(contacts));
-	const [whatsAppOption, setWhatsAppOption] = React.useState<T_WhatsAppOption>("api");
+	const [whatsAppOption, setWhatsAppOption] = React.useState<T_WhatsAppOption>("web");
 
 	// --- VARS ---
 	const PAGE_TITLE = "Contacts";

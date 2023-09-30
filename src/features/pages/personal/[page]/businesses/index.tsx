@@ -37,7 +37,7 @@ function Businesses({ data }: T_BusinessesProps): T_ReactElementNullable {
 
 	// --- STATES & REFS ---
 	const { current: totalOfBusinesses } = React.useRef<number>(countAllBusinesses(data.categories));
-	const [whatsAppOption, setWhatsAppOption] = React.useState<T_WhatsAppOption>("api");
+	const [whatsAppOption, setWhatsAppOption] = React.useState<T_WhatsAppOption>("web");
 
 	// --- VARS ---
 	const PAGE_TITLE = "Businesses";

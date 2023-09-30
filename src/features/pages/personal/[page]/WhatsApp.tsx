@@ -134,7 +134,7 @@ function useController(): T_UseControllerReturn {
 	// --- STATES & REFS ---
 	const [phone, setPhone] = React.useState("");
 	const [isInvalidPhone, setIsInvalidPhone] = React.useState(true);
-	const [isAppOptionSelected, setIsAppOptionSelected] = React.useState(true);
+	const [isAppOptionSelected, setIsAppOptionSelected] = React.useState(false);
 	const inputRef = React.useRef<HTMLInputElement>(null);
 
 	// --- EFFECTS ---
