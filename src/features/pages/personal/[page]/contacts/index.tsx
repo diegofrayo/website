@@ -17,7 +17,7 @@ import { withAuthPage } from "~/features/auth";
 import { useDidMount, useEnhancedState } from "~/hooks";
 import v from "~/lib/v";
 import { isServer } from "~/utils/app";
-import { handleCopyToClipboardClick } from "~/utils/browser";
+import { handleCopyToClipboardClick, isMobileDevice } from "~/utils/browser";
 import { formatPhoneNumber } from "~/utils/formatting";
 import { generateSlug } from "~/utils/strings";
 import type { T_Object, T_ReactChildren, T_ReactElement, T_ReactElementNullable } from "~/types";
@@ -42,8 +42,7 @@ function Contacts({ contacts }: T_ContactsProps): T_ReactElementNullable {
 
 	// --- EFFECTS ---
 	useDidMount(() => {
-		// NOTE: Disable temporary
-		// setWhatsAppOption(isMobileDevice() ? "api" : "web");
+		setWhatsAppOption(isMobileDevice() ? "api" : "web");
 	});
 
 	// --- HANDLERS ---
