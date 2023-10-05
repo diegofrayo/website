@@ -1,6 +1,6 @@
 # website
 
-My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
+My personal website [[dr-tools.vercel.app]](https://dr-tools.vercel.app)
 
 ## Tech stack
 
@@ -30,7 +30,7 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 1. Create a `.env` file
 
    ```
-	NEXT_PUBLIC_ASSETS_SERVER_URL=https://diegofrayo-backend.vercel.app
+	NEXT_PUBLIC_ASSETS_SERVER_URL=https://dr-tools-backend.vercel.app
 	NEXT_PUBLIC_WEBSITE_URL=http://localhost:3000
 	DISABLE_PWA=true
    ```

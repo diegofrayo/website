@@ -1,7 +1,5 @@
 import HomePage from "~/features/pages/home";
 import { getPageContentStaticProps } from "~/features/i18n";
-import http from "~/lib/http";
-import { ENV_VARS } from "~/constants";
 import { ROUTES } from "~/features/routing";
 
 export default HomePage;
@@ -13,12 +11,26 @@ export const getStaticProps = getPageContentStaticProps({
 	callback: async () => {
 		return {
 			props: {
-				data: (
-					await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
-						path: "/data",
-						model: "home",
-					})
-				).data,
+				data: {
+					featured: [
+						{
+							text: "/d/contacts",
+							url: "/personal/contacts",
+						},
+						{
+							text: "/d/businesses",
+							url: "/personal/businesses",
+						},
+						{
+							text: "/t/dencrypt",
+							url: "/personal/dencrypt",
+						},
+						{
+							text: "/t/whatsapp",
+							url: "/personal/whatsapp",
+						},
+					],
+				},
 			},
 		};
 	},

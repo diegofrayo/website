@@ -19,6 +19,21 @@ module.exports = withMDX()(
 			defaultLocale: "en",
 			localeDetection: false,
 		},
+		headers() {
+			const headers = [];
+
+			headers.push({
+				source: "/:path*",
+				headers: [
+					{
+						key: "X-Robots-Tag",
+						value: "noindex",
+					},
+				],
+			});
+
+			return headers;
+		},
 		redirects() {
 			return [
 				{

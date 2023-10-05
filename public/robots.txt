@@ -4,5 +4,3 @@ disallow: /lgy
 disallow: /personal
 disallow: /readings
 disallow: /static
-
-Sitemap: https://diegofrayo.vercel.app/sitemap.xml

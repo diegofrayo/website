@@ -24,7 +24,6 @@ import { ENV_VARS } from "~/constants";
 import AboutMeBlock from "~/features/pages/about-me/components";
 import * as BlogComponents from "~/features/pages/blog/components";
 import * as MusicComponents from "~/features/pages/music/components";
-import * as ResumeComponents from "~/features/pages/resume";
 import { ROUTES } from "~/features/routing";
 import { T_Metadata } from "~/stores/modules/metadata";
 import type { T_ReactChildren, T_ReactElement, T_ReactFunctionComponent } from "~/types";
@@ -129,6 +128,5 @@ export const MDXComponents = {
 	// Pages components
 	...BlogComponents,
 	...MusicComponents,
-	...ResumeComponents,
 	AboutMeBlock,
 } as any; // eslint-disable-line @typescript-eslint/no-explicit-any

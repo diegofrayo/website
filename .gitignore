@@ -36,9 +36,6 @@ yarn-error.log*
 
 # own
 .docs
-public/atom.xml
-public/feed.json
-public/rss.xml
 tsconfig.tsbuildinfo
 
 # service worker

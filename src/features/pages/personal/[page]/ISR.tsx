@@ -62,7 +62,7 @@ type T_UseControllerReturn = {
 
 function useController(): T_UseControllerReturn {
 	// --- STATES & REFS ---
-	const [path, setPath] = React.useState("/resume");
+	const [path, setPath] = React.useState("/about-me");
 
 	// --- HANDLERS ---
 	const onChangeHandler: T_UseControllerReturn["onChangeHandler"] = function onChangeHandler(

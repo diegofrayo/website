@@ -1,6 +1,5 @@
 import * as React from "react";
 import Head from "next/head";
-import Script from "next/script";
 
 import { AnalyticsService } from "~/features/analytics";
 import { DevelopmentTools } from "~/features/development-tools";
@@ -16,7 +15,6 @@ import {
 } from "~/stores/modules/metadata";
 import { selectPageConfig, T_PageConfig } from "~/stores/modules/page-config";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { ROUTES, T_RoutesValues } from "~/features/routing";
 import { generateSlug } from "~/utils/strings";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
@@ -54,6 +52,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 		url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
 		description: config.description || SEO_METADATA.description,
 		image: config.image || "/static/images/meta-og-image.png",
+		disableSEO: true,
 	};
 
 	// --- EFFECTS ---
@@ -77,15 +76,9 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 					content="black"
 				/>
 				<meta
-					name="google-site-verification"
-					content="Gf-6mROjwXEjbtUUtl2rX5NgzWuzWxgxoKYTaGsqvtw"
+					name="robots"
+					content="noindex,nofollow"
 				/>
-				{v.isTrue(config.disableSEO) ? (
-					<meta
-						name="robots"
-						content="noindex,nofollow"
-					/>
-				) : null}
 				<meta
 					name="description"
 					content={metadata.description}
@@ -177,38 +170,6 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 					rel="icon"
 					href={`/static/images/favicon/favicon${isDevelopmentEnvironment() ? "-dev" : ""}.ico?v=3`}
 				/>
-				<link
-					rel="alternate"
-					type="application/rss+xml"
-					title={`RSS Feed for ${WEBSITE_METADATA.url.replace("https://", "")}`}
-					href="/rss.xml"
-				/>
-				<link
-					rel="alternate"
-					type="application/rss+atom"
-					title={`Atom Feed for ${WEBSITE_METADATA.url.replace("https://", "")}`}
-					href="/atom.xml"
-				/>
-
-				{[ROUTES.HOME, ROUTES.ABOUT_ME, ROUTES.RESUME].includes(
-					config.pathname as T_RoutesValues,
-				) ? (
-					<Script
-						type="application/ld+json"
-						dangerouslySetInnerHTML={{
-							__html: JSON.stringify({
-								"@context": "http://schema.org",
-								"@type": "Person",
-								name: WEBSITE_METADATA.fullName,
-								email: WEBSITE_METADATA.email,
-								jobTitle: WEBSITE_METADATA.jobTitle,
-								url: WEBSITE_METADATA.url,
-								address: WEBSITE_METADATA.address,
-								sameAs: [WEBSITE_METADATA.social.github, WEBSITE_METADATA.social.linkedin],
-							}),
-						}}
-					/>
-				) : null}
 			</Head>
 			{children}
 			<DevelopmentTools />

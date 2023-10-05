@@ -9,7 +9,7 @@ async function main() {
 
 	envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"] = `http://${localIP}:4000`;
 	envVars["NEXT_PUBLIC_WEBSITE_URL"] = `http://${localIP}:3000`;
-	// envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"] = `https://diegofrayo-backend.vercel.app`;
+	// envVars["NEXT_PUBLIC_ASSETS_SERVER_URL"] = `https://dr-tools-backend.vercel.app`;
 
 	fs.writeFileSync("./.env", stringify(envVars));
 
@@ -37,7 +37,7 @@ function getIP() {
 			});
 		});
 
-		return results.en0[0];
+		return results.en0?.[0] || results["Wi-Fi"]?.[0] || "localhost";
 	} catch (error) {
 		console.log("Error getting the ip address:", error.message);
 		return "localhost";

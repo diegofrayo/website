@@ -14,7 +14,6 @@ export type T_RoutesKeys =
 	| "MUSIC_DETAILS"
 	| "PERSONAL"
 	| "BOOKMARKS"
-	| "RESUME"
 	| "SIGN_IN"
 	| "SIGN_OUT"
 	| "ERROR_404"
@@ -29,7 +28,6 @@ export type T_RoutesValues =
 	| "/music/[song]"
 	| "/personal"
 	| "/bookmarks"
-	| "/resume"
 	| "/sign-in"
 	| "/sign-out"
 	| "/404"
@@ -38,7 +36,6 @@ export type T_RoutesValues =
 export const ROUTES: Readonly<Record<T_RoutesKeys, T_RoutesValues>> = {
 	HOME: "/",
 	ABOUT_ME: "/about-me",
-	RESUME: "/resume",
 	BOOKMARKS: "/bookmarks",
 	BLOG: "/blog",
 	BLOG_DETAILS: "/blog/[slug]",
