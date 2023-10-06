@@ -68,7 +68,7 @@ function Icon({
 			return icon.defaultProps.color;
 		}
 
-		return "dr-text-color-surface-600";
+		return "";
 	}
 
 	if (v.isUndefined(icon)) {
