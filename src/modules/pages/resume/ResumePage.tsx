@@ -92,15 +92,15 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 
 							<Space size={4} />
 
-							<Block className="tw-text-center">
+							<Block className="tw-text-center dr-text-color-surface-600">
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={`mailto:${data.contactInfo.email}`}
-									className="tw-mx-2 tw-hidden print:tw-inline-block"
+									className="tw-mx-2"
 									isExternalLink
 								>
 									<Icon
-										icon={Icon.icon.GMAIL}
+										icon={Icon.icon.GMAIL_MONO}
 										size={32}
 									/>
 								</Link>
@@ -130,7 +130,6 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 												<Icon
 													icon={Icon.icon.LINK}
 													size={26}
-													color="dr-text-color-surface-600"
 												/>
 											) : (
 												<Icon

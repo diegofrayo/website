@@ -1,5 +1,5 @@
 import * as React from "react";
-import ErrorPage from "~/features/pages/ErrorPage";
+import ErrorPage from "~/modules/pages/ErrorPage";
 
 function Page404Error() {
 	return (

@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { MainLayout, Page } from "~/components/layout";
 import { Block, InlineText, Link, Space, Text, Title } from "~/components/primitive";
-import { ROUTES } from "~/features/routing";
+import { ROUTES } from "~/modules/routing";
 import type { T_PageContent } from "~/data/loader";
 
 import { BlogPostCategory } from "./components";

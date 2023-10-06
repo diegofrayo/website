@@ -1,4 +1,4 @@
-import { logAndReportError } from "~/features/logging";
+import { logAndReportError } from "~/modules/logging";
 import v from "@diegofrayo/v";
 
 export function isConfirmAlertAccepted(message: string): boolean {

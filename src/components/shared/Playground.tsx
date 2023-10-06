@@ -2,7 +2,7 @@ import * as React from "react";
 import cn from "classnames";
 
 import { Button, Block, Icon, Text } from "~/components/primitive";
-import EnvVars from "~/features/env-vars";
+import EnvVars from "~/modules/env-vars";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import type DR from "@diegofrayo/types";

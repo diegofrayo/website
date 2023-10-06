@@ -15,8 +15,8 @@ import {
 	Title,
 } from "~/components/primitive";
 import WEBSITE_METADATA from "~/data/generated/metadata.json";
-import { withAuth } from "~/features/auth";
-import { ROUTES, useRouting } from "~/features/routing";
+import { withAuth } from "~/modules/auth";
+import { ROUTES, useRouting } from "~/modules/routing";
 import { renderIf, withOnlyClientRendering } from "~/hocs";
 import { useDidMount, useOnWindowStopScroll } from "~/hooks";
 import { isDevelopmentEnvironment } from "~/utils/app";

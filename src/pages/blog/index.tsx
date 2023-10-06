@@ -1,10 +1,10 @@
 import type { GetStaticProps } from "next";
 
 import { loadData, loadPageContent } from "~/data/loader";
-import type { T_BlogPageProps } from "~/features/pages/blog/BlogPage";
-import type { T_RawBlogPostsResponse } from "~/features/pages/blog/types";
+import type { T_BlogPageProps } from "~/modules/pages/blog/BlogPage";
+import type { T_RawBlogPostsResponse } from "~/modules/pages/blog/types";
 
-export { default } from "~/features/pages/blog/BlogPage";
+export { default } from "~/modules/pages/blog/BlogPage";
 
 // --- NEXT.JS FUNCTIONS ---
 

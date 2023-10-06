@@ -1,4 +1,4 @@
-import { logger } from "~/features/logging";
+import { logger } from "~/modules/logging";
 import { isBrowser, isServer } from "~/utils/app";
 import v from "@diegofrayo/v";
 

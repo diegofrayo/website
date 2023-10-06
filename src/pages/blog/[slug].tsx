@@ -1,12 +1,12 @@
 import type { GetStaticProps, GetStaticPaths } from "next";
 
 import { loadData } from "~/data/loader";
-import { compile } from "~/features/mdx/server";
+import { compile } from "~/modules/mdx/server";
 import { replaceAll } from "@diegofrayo/utils/strings";
-import type { T_RawBlogPostsResponse } from "~/features/pages/blog/types";
-import type { T_BlogPostPageProps } from "~/features/pages/blog/BlogPostPage";
+import type { T_RawBlogPostsResponse } from "~/modules/pages/blog/types";
+import type { T_BlogPostPageProps } from "~/modules/pages/blog/BlogPostPage";
 
-export { default } from "~/features/pages/blog/BlogPostPage";
+export { default } from "~/modules/pages/blog/BlogPostPage";
 
 // --- NEXT.JS FUNCTIONS ---
 

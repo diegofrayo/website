@@ -2,7 +2,7 @@
 
 import { Feed } from "feed";
 import { readFile, writeFile } from "../utils";
-import type { T_RawBlogPostsResponse } from "../../../src/features/pages/blog/types";
+import type { T_RawBlogPostsResponse } from "../../../src/modules/pages/blog/types";
 
 async function main() {
 	await generateRSSFiles();

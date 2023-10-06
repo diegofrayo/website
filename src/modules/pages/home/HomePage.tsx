@@ -3,7 +3,7 @@ import cn from "classnames";
 
 import { MainLayout, Page } from "~/components/layout";
 import { Block, Button, Icon, Image, InlineText, Space } from "~/components/primitive";
-import AnalyticsService from "~/features/analytics";
+import AnalyticsService from "~/modules/analytics";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import type { T_PageContent } from "~/data/loader";

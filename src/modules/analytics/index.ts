@@ -1,8 +1,8 @@
 import autoBind from "auto-bind";
 import splitbee from "@splitbee/web";
 
-import { AuthService } from "~/features/auth";
-import { logger } from "~/features/logging";
+import { AuthService } from "~/modules/auth";
+import { logger } from "~/modules/logging";
 import LocalStorageManager from "@diegofrayo/utils/local-storage";
 import type DR from "@diegofrayo/types";
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import cn from "classnames";
 
-import { logger } from "~/features/logging";
+import { logger } from "~/modules/logging";
 import { getObjectKeys, mirror } from "@diegofrayo/utils/arrays-and-objects";
 import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
@@ -68,7 +68,7 @@ function Icon({
 			return icon.defaultProps.color;
 		}
 
-		return "";
+		return "dr-text-color-surface-600";
 	}
 
 	if (v.isUndefined(icon)) {

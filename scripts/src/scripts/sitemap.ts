@@ -1,7 +1,7 @@
 /* eslint @typescript-eslint/dot-notation: 0 */
 
 import { readFile, removeFirstAndLastBlankLines, replaceAll, writeFile } from "../utils";
-import type { T_RawBlogPostsResponse } from "../../../src/features/pages/blog/types";
+import type { T_RawBlogPostsResponse } from "../../../src/modules/pages/blog/types";
 
 async function main() {
 	const BLOG_POSTS = JSON.parse(

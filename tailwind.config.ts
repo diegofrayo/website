@@ -7,7 +7,7 @@ const config: Config = {
 	important: false,
 	content: [
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/features/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/modules/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	safelist: [

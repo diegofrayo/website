@@ -23,14 +23,14 @@ import {
 	Tooltip,
 } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/generated/metadata.json";
-import { MDXContent } from "~/features/mdx/client";
-import { ROUTES } from "~/features/routing";
+import { MDXContent } from "~/modules/mdx/client";
+import { ROUTES } from "~/modules/routing";
 import { withOnlyClientRendering } from "~/hocs";
 import { useLocalStorageState } from "~/hooks";
 import twcss from "@diegofrayo/twcss";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
-import type { T_BlogPost } from "~/features/pages/blog/types";
+import type { T_BlogPost } from "~/modules/pages/blog/types";
 import type DR from "@diegofrayo/types";
 
 import * as BlogPostsComponents from "./components/my-favorite-music-and-mdx";

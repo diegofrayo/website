@@ -1,20 +1,20 @@
 import cn from "classnames";
 
 type T_GithubMonoIconProps = {
-	color?: string;
+	className?: string;
 	width?: string;
 	height?: string;
 };
 
-function GithubMonoIcon({ color, height, width }: T_GithubMonoIconProps) {
+function GithubMonoIcon({ className, height, width }: T_GithubMonoIconProps) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			className={cn("icon icon-tabler icon-tabler-brand-github", color)}
+			className={cn("icon icon-tabler icon-tabler-brand-github", className)}
 			viewBox="0 0 24 24"
 			width={width}
 			height={height}
-			strokeWidth="1.5"
+			strokeWidth="1"
 			stroke="currentColor"
 			fill="none"
 			strokeLinecap="round"
