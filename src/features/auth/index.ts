@@ -6,7 +6,7 @@ import type DR from "@diegofrayo/types";
 // --- SERVICE ---
 
 class AuthServiceClass {
-	#isLoggedIn = false;
+	#isUserLoggedIn = false;
 
 	#LS_AUTH = LocalStorageManager.createItem({ key: "DR_AUTH", value: false });
 
@@ -23,18 +23,18 @@ class AuthServiceClass {
 		const startSession = searchParams.get("auth") === "true";
 
 		if (closeSession) {
-			this.#isLoggedIn = false;
+			this.#isUserLoggedIn = false;
 			this.#LS_AUTH.remove();
 		} else if (startSession) {
-			this.#isLoggedIn = true;
-			this.#LS_AUTH.set(this.#isLoggedIn);
+			this.#isUserLoggedIn = true;
+			this.#LS_AUTH.set(this.#isUserLoggedIn);
 		} else if (this.#LS_AUTH.exists()) {
-			this.#isLoggedIn = this.#LS_AUTH.get();
+			this.#isUserLoggedIn = this.#LS_AUTH.get();
 		}
 	}
 
-	isLoggedIn() {
-		return this.#isLoggedIn;
+	isUserLoggedIn() {
+		return this.#isUserLoggedIn;
 	}
 }
 
@@ -45,5 +45,5 @@ export const AuthService = new AuthServiceClass();
 export function withAuth<G_ComponentProps extends object>(
 	Component: DR.React.FunctionComponent<G_ComponentProps>,
 ): DR.React.FunctionComponent<G_ComponentProps> {
-	return renderIf(Component)(() => AuthService.isLoggedIn());
+	return renderIf(Component)(() => AuthService.isUserLoggedIn());
 }

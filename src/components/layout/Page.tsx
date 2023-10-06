@@ -3,8 +3,9 @@ import Head from "next/head";
 import Script from "next/script";
 
 import WEBSITE_METADATA from "~/data/generated/metadata.json";
+import AnalyticsService from "~/features/analytics";
 import { ROUTES, type T_RoutesValues } from "~/features/routing";
-import { useDocumentTitle } from "~/hooks";
+import { useDidMount, useDocumentTitle } from "~/hooks";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
@@ -41,6 +42,10 @@ function Page({ children, config }: T_PageProps) {
 	};
 
 	// --- EFFECTS ---
+	useDidMount(() => {
+		AnalyticsService.trackPageLoaded();
+	});
+
 	useDocumentTitle(metadata.title);
 
 	return (

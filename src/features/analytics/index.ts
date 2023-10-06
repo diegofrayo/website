@@ -1,63 +1,66 @@
-// import autoBind from "auto-bind";
-// import splitbee from "@splitbee/web";
+import autoBind from "auto-bind";
+import splitbee from "@splitbee/web";
 
-// import { logger } from "~/features/logging";
-// import { isLocalhostEnvironment } from "~/utils/app";
-// import v from "@diegofrayo/v";
-// import { AuthService } from "~/features/auth";
-// import type DR from "@diegofrayo/types";
+import { AuthService } from "~/features/auth";
+import { logger } from "~/features/logging";
+import LocalStorageManager from "@diegofrayo/utils/local-storage";
+import type DR from "@diegofrayo/types";
 
-// class AnalyticsService {
-// 	constructor() {
-// 		autoBind(this);
-// 	}
+class AnalyticsServiceClass {
+	constructor() {
+		autoBind(this);
+	}
 
-// 	private isLibraryInitialized = false;
+	private isLibraryAlreadyInitialized = false;
 
-// 	init(): void {
-// 		if (this.isAnalyticsDisabled() || this.isLibraryInitialized) {
-// 			return;
-// 		}
+	private LS_AnalyticsDisabled = LocalStorageManager.createItem({
+		key: "DFR_ANALYTICS_DISABLED",
+		value: false,
+		readInitialValueFromStorage: true,
+	});
 
-// 		splitbee.init();
-// 		this.isLibraryInitialized = true;
-// 	}
+	init(): void {
+		if (this.isAnalyticsDisabled() || this.isLibraryAlreadyInitialized) {
+			return;
+		}
 
-// 	trackPageLoaded(): void {
-// 		if (this.isAnalyticsDisabled()) {
-// 			logger("LOG", `Page "${window.location.pathname}" visit was not tracked`);
-// 			return;
-// 		}
+		splitbee.init();
+		this.isLibraryAlreadyInitialized = true;
+	}
 
-// 		/*
-// 		 * NOTE: Splitbee tracks a page loaded automatically,
-// 		 * it is not necessary invoking any function
-// 		 */
-// 		this.init();
-// 		logger("LOG", `Page "${window.location.pathname}" visit was tracked`);
-// 	}
+	trackPageLoaded(): void {
+		if (this.isAnalyticsDisabled()) {
+			logger("LOG", `Page "${window.location.pathname}" visit was not tracked`);
+			return;
+		}
 
-// 	trackEvent(name: string, data: DR.Object<string | number | boolean>): void {
-// 		if (this.isAnalyticsDisabled()) {
-// 			logger("LOG", `Event "${name}" was not tracked`, data);
-// 			return;
-// 		}
+		this.init();
+		logger("LOG", `Page "${window.location.pathname}" visit was tracked`);
+	}
 
-// 		this.init();
-// 		splitbee.track(name, data);
-// 	}
+	trackEvent(name: string, data: DR.Object<DR.Primitive>): void {
+		if (this.isAnalyticsDisabled()) {
+			logger("LOG", `Event "${name}" was not tracked`, data);
+			return;
+		}
 
-// 	isAnalyticsDisabled(): boolean {
-// 		if (
-// 			window.location.href.includes("a=d") ||
-// 			v.isNotEmptyString(window.localStorage.getItem("DFR_ANALYTICS_DISABLED"))
-// 		) {
-// 			window.localStorage.setItem("DFR_ANALYTICS_DISABLED", "true");
-// 			return true;
-// 		}
+		this.init();
+		splitbee.track(name, data);
+	}
 
-// 		return AuthService.isLoggedIn() || isLocalhostEnvironment();
-// 	}
-// }
+	isAnalyticsDisabled(): boolean {
+		if (
+			new URLSearchParams(window.location.search).get("analytics") === "false" ||
+			this.LS_AnalyticsDisabled.get() === true
+		) {
+			this.LS_AnalyticsDisabled.set(true);
+			return true;
+		}
 
-// export default new AnalyticsService();
+		return AuthService.isUserLoggedIn();
+	}
+}
+
+const AnalyticsService = new AnalyticsServiceClass();
+
+export default AnalyticsService;

@@ -3,6 +3,7 @@ import cn from "classnames";
 
 import { MainLayout, Page } from "~/components/layout";
 import { Block, Button, Icon, Image, InlineText, Space } from "~/components/primitive";
+import AnalyticsService from "~/features/analytics";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import type { T_PageContent } from "~/data/loader";
@@ -101,8 +102,7 @@ type T_PictureFrameProps = {
 function PictureFrame({ photo }: T_PictureFrameProps) {
 	// --- HANDLERS ---
 	function handleImageClick(): void {
-		// TODO
-		// AnalyticsService.trackEvent("HOME|PICTURE_FRAME", { action: "CLICK" });
+		AnalyticsService.trackEvent("HOME|PICTURE_FRAME", { action: "CLICK" });
 	}
 
 	return (
@@ -154,8 +154,7 @@ function TV({ song }: T_TVProps) {
 	function handlePlayAndPauseClick(): void {
 		const audioElement = getAudioElement();
 		setIsAudioPlaying((currentValue) => !currentValue);
-		// TODO
-		// AnalyticsService.trackEvent("HOME|TV", { action: audioElement.paused ? "PLAY" : "PAUSE" });
+		AnalyticsService.trackEvent("HOME|TV", { action: audioElement.paused ? "PLAY" : "PAUSE" });
 
 		if (audioElement.paused) {
 			audioElement.play();
@@ -166,8 +165,7 @@ function TV({ song }: T_TVProps) {
 	}
 
 	function handleStartTVClick(): void {
-		// TODO
-		// AnalyticsService.trackEvent("HOME|TV", { action: "START" });
+		AnalyticsService.trackEvent("HOME|TV", { action: "START" });
 		setHasNotStartedTV(false);
 		setShowInfo(true);
 	}
@@ -175,8 +173,7 @@ function TV({ song }: T_TVProps) {
 	function handleToggleTurnOnTVClick(): void {
 		getAudioElement().currentTime = 0;
 		setShowInfo((currentValue) => {
-			// TODO
-			// AnalyticsService.trackEvent("HOME|TV", { action: currentValue ? "TURN_OFF" : "TURN_ON" });
+			AnalyticsService.trackEvent("HOME|TV", { action: currentValue ? "TURN_OFF" : "TURN_ON" });
 			return !currentValue;
 		});
 	}
