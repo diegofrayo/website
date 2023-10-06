@@ -1,69 +1,34 @@
-// @ts-nocheck
-
-import "react-toastify/dist/ReactToastify.min.css";
-import "~/styles/index.post.css";
+import "@radix-ui/themes/styles.css";
+import "~/styles/app.css";
 
 import * as React from "react";
-import App from "next/app";
-import { useRouter } from "next/router";
-import type { AppProps } from "next/app";
-import { ThemeProvider } from "next-themes";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ToastContainer } from "react-toastify";
+import { Staatliches, Black_Ops_One, Rubik } from "next/font/google";
+import { Theme } from "@radix-ui/themes";
+import router from "next/router";
+import * as RadixTooltip from "@radix-ui/react-tooltip";
+import { Toaster } from "sonner";
 import { ErrorBoundary } from "react-error-boundary";
-import { I18nextProvider } from "react-i18next";
-import { Provider } from "react-redux";
-import { MDXProvider } from "@mdx-js/react";
+import type { AppProps } from "next/app";
 
-import { ProgressBar } from "~/components/layout";
-import { AnalyticsService } from "~/features/analytics";
-import { AuthService } from "~/features/auth";
 import { addErrorsGlobalListener, logger } from "~/features/logging";
-import { I18nService, T_Locale, T_PageContent } from "~/features/i18n";
-import { MetadataService } from "~/features/metadata";
-import { useDidMount } from "~/hooks";
-import { createPreloadedState, useStore } from "~/stores";
-import { T_Metadata } from "~/stores/modules/metadata";
-import { isMobileDevice, isPWA } from "~/utils/browser";
-import { MDXComponents, updateMDXScope } from "~/features/mdx";
+import ErrorPage from "~/features/pages/ErrorPage";
 import { initPWARoutingConfig } from "~/features/routing";
-import type { T_ReactElement, T_Object } from "~/types";
+import { useDidMount } from "~/hooks";
+import { isServer, recoverFromBreakingChanges } from "~/utils/app";
+import { isMobileDevice, isPWA } from "@diegofrayo/utils/browser";
+import type DR from "@diegofrayo/types";
 
-import ErrorPage from "./500";
+// --- PROPS & TYPES ---
 
-const queryClient = new QueryClient({
-	defaultOptions: {
-		queries: {
-			cacheTime: 1000 * 60 * 60 * 24 * 30, // 30 days
-			refetchOnWindowFocus: false,
-			retry: false,
-		},
-	},
-});
+type T_CustomAppProps = AppProps;
 
-function CustomApp({
-	Component,
-	pageProps,
-}: AppProps<{
-	metadata: T_Metadata;
-	pageContent: T_PageContent;
-	locale: T_Locale;
-}>): T_ReactElement {
-	// --- HOOKS ---
-	const router = useRouter();
-	const store = useStore(
-		createPreloadedState({
-			metadata: pageProps.metadata,
-			pageContent: pageProps.pageContent,
-			locale: pageProps.locale,
-		}),
-	);
+// --- COMPONENT DEFINITION ---
 
+function CustomApp({ Component, pageProps }: T_CustomAppProps) {
 	// --- EFFECTS ---
 	useDidMount(() => {
-		AnalyticsService.init();
-		AuthService.configureHTTPHeaders();
 		addErrorsGlobalListener();
+		recoverFromBreakingChanges();
 
 		if (isPWA()) {
 			return initPWARoutingConfig(router);
@@ -77,6 +42,7 @@ function CustomApp({
 	});
 
 	// --- UTILS ---
+
 	function onError(error: Error, info: { componentStack: string }): void {
 		console.group("componentDidCatch (ErrorBoundary)");
 		logger("ERROR", error);
@@ -85,63 +51,107 @@ function CustomApp({
 	}
 
 	return (
-		<Provider store={store}>
-			<I18nextProvider
-				i18n={I18nService.createInstance({
-					messages: pageProps.pageContent,
-					locale: pageProps.locale,
-				})}
-			>
-				<ErrorBoundary
-					FallbackComponent={ErrorPage}
-					onError={onError}
-				>
-					<QueryClientProvider client={queryClient}>
-						<ThemeProvider
-							storageKey="DFR_THEME"
-							defaultTheme="light"
-							attribute="class"
-							themes={["light", "dark"]}
-							value={{ light: "tw-light", dark: "tw-dark" }}
-						>
-							<MDXProvider components={MDXComponents}>
-								<Component {...pageProps} />
-							</MDXProvider>
-							<ProgressBar />
-							<ToastContainer
-								autoClose={3000}
-								hideProgressBar
-							/>
-						</ThemeProvider>
-					</QueryClientProvider>
-				</ErrorBoundary>
-			</I18nextProvider>
-		</Provider>
+		<ErrorBoundary
+			FallbackComponent={ErrorFallback}
+			onError={onError}
+		>
+			<Theme appearance="dark">
+				<RadixTooltip.Provider>
+					<CustomErrorBoundary>
+						<Component {...pageProps} />
+						<Toaster
+							position="bottom-center"
+							toastOptions={{
+								style: { justifyContent: "center" },
+							}}
+							closeButton
+						/>
+					</CustomErrorBoundary>
+				</RadixTooltip.Provider>
+			</Theme>
+		</ErrorBoundary>
 	);
 }
 
 export default CustomApp;
 
-// --- NEXT.JS FUNCTIONS ---
+// --- STYLES ---
 
-// https://nextjs.org/docs/api-reference/data-fetching/get-initial-props
-// https://linguinecode.com/post/next-js-typescript-getinitialprops
-// @ts-ignore
-CustomApp.getInitialProps = async (appContext): Promise<T_Object> => {
-	const metadata = await MetadataService.fetchData(appContext.router.locale);
-	const appProps = await App.getInitialProps(appContext);
+const fontMainTitle = Black_Ops_One({
+	display: "swap",
+	subsets: ["latin"],
+	weight: ["400"],
+	variable: "--font-main-title",
+});
 
-	updateMDXScope(metadata.website);
+const fontTitles = Staatliches({
+	display: "swap",
+	subsets: ["latin"],
+	weight: ["400"],
+	variable: "--font-titles",
+});
 
-	return {
-		...appProps,
-		pageProps: {
-			...appProps.pageProps,
-			metadata,
-		},
-	};
-};
+const fontTexts = Rubik({
+	display: "swap",
+	subsets: ["latin"],
+	weight: ["400", "700"],
+	variable: "--font-texts",
+});
 
-export function reportWebVitals(metrics: unknown): void {
-	logger("LOG", metrics);
+(function injectGlobalStyles(): void {
+	if (isServer()) {
+		return;
+	}
+
+	const css = `
+    html {
+      --font-main-title: ${fontMainTitle.style.fontFamily};
+      --font-titles: ${fontTitles.style.fontFamily};
+      --font-texts: ${fontTexts.style.fontFamily};
+    }
+  `;
+
+	const style = document.createElement("style");
+	style.appendChild(document.createTextNode(css));
+
+	const head = document.head || document.getElementsByTagName("head")[0];
+	head.appendChild(style);
+})();
+
+// --- COMPONENTS ---
+
+function ErrorFallback() {
+	return (
+		<ErrorPage
+			variant="500"
+			title="500"
+		/>
+	);
+}
+
+class CustomErrorBoundary extends React.Component<
+	{ children: DR.React.Children },
+	{ hasError: boolean }
+> {
+	constructor(props: { children: DR.React.Children }) {
+		super(props);
+		this.state = { hasError: false };
+	}
+
+	static getDerivedStateFromError() {
+		return { hasError: true };
+	}
+
+	componentDidCatch(error: unknown, errorInfo: unknown) {
+		logger("ERROR", error);
+		logger("ERROR", errorInfo);
+	}
+
+	render() {
+		if (this.state.hasError) {
+			return <ErrorFallback />;
+		}
+
+		return this.props.children;
+	}
 }

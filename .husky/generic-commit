@@ -1,5 +1,4 @@
 npm run build:ts
-npm run scripts:all
 npm run format
 npm run lint
 git add .

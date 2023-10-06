@@ -1,0 +1,17 @@
+{
+	"config": {
+		"locales": ["en"],
+		"default_locale": "en",
+		"is_seo_enabled": false,
+		"pathname": "/resume"
+	},
+	"content": {
+		"en": {
+			"seo": {
+				"title": "Resume",
+				"description": "I'm a Software Developer. Focused on JavaScript, TypeScript, React, Next.js, Tailwind CSS, and Node.js"
+			},
+			"texts": {}
+		}
+	}
+}

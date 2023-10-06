@@ -1,25 +1,20 @@
-import HomePage from "~/features/pages/home";
-import { getPageContentStaticProps } from "~/features/i18n";
-import http from "~/lib/http";
-import { ENV_VARS } from "~/constants";
-import { ROUTES } from "~/features/routing";
+import type { GetStaticProps } from "next";
+
+import HomePage, { type T_HomePageProps } from "~/features/pages/home/page";
+import { loadData, loadPageContent } from "~/data/loader";
 
 export default HomePage;
 
 // --- NEXT.JS FUNCTIONS ---
 
-export const getStaticProps = getPageContentStaticProps({
-	page: ROUTES.HOME,
-	callback: async () => {
-		return {
-			props: {
-				data: (
-					await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
-						path: "/data",
-						model: "home",
-					})
-				).data,
-			},
-		};
-	},
-});
+export const getStaticProps: GetStaticProps<T_HomePageProps> = async () => {
+	const content = await loadPageContent({ page: "home" });
+	const data = await loadData<T_HomePageProps["data"]>({ page: "home" });
+
+	return {
+		props: {
+			content,
+			data,
+		},
+	};
+};

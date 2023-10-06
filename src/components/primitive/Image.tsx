@@ -1,49 +1,39 @@
 import * as React from "react";
 import NextImage, { ImageProps } from "next/image";
 
-import { logger } from "~/features/logging";
-import v from "~/lib/v";
-import type { T_ReactElementNullable } from "~/types";
+import { omit } from "@diegofrayo/utils/arrays-and-objects";
+import type DR from "@diegofrayo/types";
 
-export type T_ImageProps = ImageProps & { useNextImage?: boolean };
+// --- PROPS & TYPES ---
 
-function Image({
-	src,
-	alt,
-	className = "",
-	useNextImage = true,
-	...rest
-}: T_ImageProps): T_ReactElementNullable {
-	if (src) {
-		if (useNextImage) {
-			return (
-				<NextImage
-					src={src}
-					alt={alt}
-					className={className}
-					{...rest}
-				/>
-			);
-		}
+type T_ImgHtmlAttributes = DR.DOM.HTMLElementAttributes["img"];
 
-		if (v.isString(src)) {
-			return (
-				<img
-					src={src}
-					alt={alt}
-					className={className}
-					loading="lazy"
-					{...rest}
-				/>
-			);
-		}
+interface I_NativeImage extends T_ImgHtmlAttributes {
+	alt: string;
+	useNativeImage: true;
+}
 
-		throw new Error(`Invalid src prop => (${src}"`);
+interface I_NextImage extends ImageProps {
+	alt: string;
+}
+
+export type T_ImageProps = I_NativeImage | I_NextImage;
+
+// --- COMPONENT DEFINITION ---
+
+function Image({ ...props }: T_ImageProps) {
+	if ("useNativeImage" in props) {
+		return (
+			// eslint-disable-next-line @next/next/no-img-element
+			<img
+				loading="lazy"
+				{...omit(props, ["useNativeImage"])}
+				alt={props.alt}
+			/>
+		);
 	}
 
-	logger("WARN", `Invalid src prop => (${src}"`);
-
-	return null;
+	return <NextImage {...props} />;
 }
 
 export default Image;

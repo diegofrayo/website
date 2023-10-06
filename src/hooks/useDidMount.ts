@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import type { T_ReactEffectCallback } from "~/types";
+import type DR from "@diegofrayo/types";
 
-function useDidMount(callback: T_ReactEffectCallback): void {
+function useDidMount(callback: DR.React.EffectCallback): void {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	React.useEffect(callback, []);
 }

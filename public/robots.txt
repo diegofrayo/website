@@ -1,8 +1,5 @@
 User-agent: *
 
-disallow: /lgy
-disallow: /personal
-disallow: /readings
-disallow: /static
+disallow: /assets
 
 Sitemap: https://diegofrayo.vercel.app/sitemap.xml

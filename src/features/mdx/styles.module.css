@@ -1,0 +1,50 @@
+/* Spacing: parent components */
+.dr-mdx-content
+	> :is(blockquote, hr, ol, p, :global(.dr-pre--styled), ul, a > img, *[data-markdown-block]) {
+	@apply tw-mb-6;
+}
+
+.dr-mdx-content > *:last-child {
+	@apply tw-mb-0;
+}
+
+/* Spacing: nested components */
+.dr-mdx-content
+	:is(
+		li > p,
+		li > :global(.dr-pre--styled),
+		li > blockquote,
+		li > img,
+		blockquote > p,
+		li > a > img
+	) {
+	@apply tw-mb-3;
+}
+
+/* Spacing: titles */
+.dr-mdx-content > :is(h1, h2, h3, h4) {
+	@apply tw-mt-8;
+	@apply tw-mb-3;
+}
+
+/* Spacing: nested UL lists */
+.dr-mdx-content :is(li > ul, li > :global(.dr-pre--styled)) {
+	@apply tw-mt-3;
+}
+
+/* Ordered lists */
+.dr-mdx-content ol {
+	@apply tw-pl-9;
+	list-style-type: decimal;
+}
+
+.dr-mdx-content ol > li {
+	@apply tw-mb-6;
+}
+
+/* Images */
+.dr-mdx-content :is(> a > img, li > a > img) {
+	@apply tw-rounded-md;
+	margin-left: auto;
+	margin-right: auto;
+}

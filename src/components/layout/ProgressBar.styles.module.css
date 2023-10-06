@@ -1,9 +1,0 @@
-.NProgressBar :global(#nprogress .bar) {
-	@apply tw-bg-yellow-500;
-	height: 5px;
-	left: 0;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 1000;
-}

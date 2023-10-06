@@ -5,11 +5,11 @@ module.exports = {
 	parser: "@typescript-eslint/parser",
 	plugins: ["prettier", "no-loops", "react-hooks", "@typescript-eslint"],
 	ignorePatterns: [
+		"*.config.js",
+		".docs/**/*",
+		".eslintrc.js",
 		"public/**/*",
-		"src/features/i18n",
-		"src/features/pages/personal/*/timer/**/*",
-		"src/stores",
-		"src/stories",
+		"tailwind.config.ts",
 	],
 	extends: [
 		"airbnb",
@@ -23,13 +23,14 @@ module.exports = {
 		"plugin:react-hooks/recommended",
 		"plugin:react/recommended",
 		"prettier",
+		"next/core-web-vitals",
 	],
 	parserOptions: {
 		ecmaVersion: 2018,
 		sourceType: "module",
-		project: "./tsconfig.json",
-		tsconfigRootDir: __dirname,
 		ecmaFeatures: { jsx: true },
+		tsconfigRootDir: __dirname,
+		project: "./tsconfig.json",
 	},
 	globals: {
 		console: true,
@@ -42,12 +43,14 @@ module.exports = {
 		"jsx-a11y/click-events-have-key-events": "off",
 		"jsx-a11y/media-has-caption": "off",
 
-		// --- Rules configured by myself --
+		// --- NOTE: Rules configured by myself --
+		"@typescript-eslint/explicit-function-return-type": "off",
 		"@typescript-eslint/no-use-before-define": "off",
 		"class-methods-use-this": "off",
 		"import/extensions": "off",
 		"import/no-unresolved": "off",
 		"no-nested-ternary": "off",
+		"react/destructuring-assignment": "off",
 		"react/jsx-fragments": "off",
 		"react/prop-types": "off",
 		"react/require-default-props": "off",
@@ -63,6 +66,7 @@ module.exports = {
 			},
 		],
 		"import/prefer-default-export": warnRulesValue,
+		"import/no-cycle": warnRulesValue,
 		"no-alert": warnRulesValue,
 		"no-console": warnRulesValue,
 		"no-debugger": warnRulesValue,
@@ -88,7 +92,6 @@ module.exports = {
 				prefix: ["T_"],
 			},
 		],
-		"@typescript-eslint/explicit-function-return-type": "error",
 		"@typescript-eslint/no-explicit-any": "error",
 		"@typescript-eslint/no-shadow": ["error", { allow: ["params", "data", "result"] }],
 		"@typescript-eslint/no-unused-vars": "error",
@@ -103,7 +106,7 @@ module.exports = {
 		"react/no-unknown-property": [
 			"error",
 			{
-				ignore: ["jsx"],
+				ignore: ["jsx", "global"],
 			},
 		],
 	},

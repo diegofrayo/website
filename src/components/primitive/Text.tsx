@@ -1,14 +1,18 @@
 import * as React from "react";
-import classNames from "classnames";
+import cn from "classnames";
 
-import type { T_HTMLElementAttributes, T_ReactChildren, T_ReactElement } from "~/types";
+import type DR from "@diegofrayo/types";
 
-type T_TextProps = T_HTMLElementAttributes["p"];
+// --- PROPS & TYPES ---
 
-function Text({ children, className = "", ...rest }: T_TextProps): T_ReactElement {
+type T_TextProps = DR.DOM.HTMLElementAttributes["p"];
+
+// --- COMPONENT DEFINITION ---
+
+function Text({ children, className = "", ...rest }: T_TextProps) {
 	return (
 		<p
-			className={classNames("dfr-Text", className)}
+			className={cn("dr-text", className)}
 			{...rest}
 		>
 			{removeTextElements(children)}
@@ -18,9 +22,9 @@ function Text({ children, className = "", ...rest }: T_TextProps): T_ReactElemen
 
 export default Text;
 
-// --- UTILS ---
+// --- INTERNALS ---
 
-function removeTextElements(children: T_ReactChildren): T_ReactChildren {
+function removeTextElements(children: DR.React.Children): DR.React.Children {
 	if (React.isValidElement(children) && children.type === "p") {
 		return children.props.children;
 	}

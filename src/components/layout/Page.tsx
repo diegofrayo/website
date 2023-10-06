@@ -2,33 +2,22 @@ import * as React from "react";
 import Head from "next/head";
 import Script from "next/script";
 
-import { AnalyticsService } from "~/features/analytics";
-import { DevelopmentTools } from "~/features/development-tools";
-import { I18nService, T_Locale } from "~/features/i18n";
-import { useDidMount, useDocumentTitle } from "~/hooks";
-import v from "~/lib/v";
-import { useStoreSelector } from "~/stores";
-import {
-	selectWebsiteMetadata,
-	selectSEOMetadata,
-	T_SEOMetadata,
-	T_WebsiteMetadata,
-} from "~/stores/modules/metadata";
-import { selectPageConfig, T_PageConfig } from "~/stores/modules/page-config";
+import WEBSITE_METADATA from "~/data/metadata.json";
+import { ROUTES, type T_RoutesValues } from "~/features/routing";
+import { useDocumentTitle } from "~/hooks";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { ROUTES, T_RoutesValues } from "~/features/routing";
-import { generateSlug } from "~/utils/strings";
-import type { T_ReactChildren, T_ReactElement } from "~/types";
+import v from "@diegofrayo/v";
+import type DR from "@diegofrayo/types";
 
 type T_PageProps = {
-	children: T_ReactChildren;
+	children: DR.React.Children;
 	config: {
+		disableSEO?: boolean;
 		title?: string;
 		replaceTitle?: boolean;
-		pathname?: string;
 		description?: string;
+		pathname?: string;
 		image?: string;
-		disableSEO?: boolean;
 		scripts?: {
 			element: "link";
 			props: {
@@ -40,27 +29,18 @@ type T_PageProps = {
 	};
 };
 
-function Page({ children, config = {} }: T_PageProps): T_ReactElement {
-	// --- HOOKS ---
-	const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
-	const SEO_METADATA = useStoreSelector<T_SEOMetadata>(selectSEOMetadata);
-	const { locales } = useStoreSelector<T_PageConfig>(selectPageConfig);
-
+function Page({ children, config }: T_PageProps) {
 	// --- VARS ---
 	const metadata = {
 		title: v.isNotEmptyString(config.title)
-			? `${config.title}${config.replaceTitle ? "" : ` - ${SEO_METADATA.title}`}`
-			: SEO_METADATA.title,
+			? `${config.title}${config.replaceTitle ? "" : ` - ${WEBSITE_METADATA.title}`}`
+			: WEBSITE_METADATA.title,
 		url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
-		description: config.description || SEO_METADATA.description,
-		image: config.image || "/static/images/meta-og-image.png",
+		description: config.description || WEBSITE_METADATA.description,
+		image: config.image || "/assets/images/meta-og-image.png",
 	};
 
 	// --- EFFECTS ---
-	useDidMount(() => {
-		AnalyticsService.trackPageLoaded();
-	});
-
 	useDocumentTitle(metadata.title);
 
 	return (
@@ -80,7 +60,7 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 					name="google-site-verification"
 					content="Gf-6mROjwXEjbtUUtl2rX5NgzWuzWxgxoKYTaGsqvtw"
 				/>
-				{v.isTrue(config.disableSEO) ? (
+				{config.disableSEO ? (
 					<meta
 						name="robots"
 						content="noindex,nofollow"
@@ -112,42 +92,9 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 				/>
 				<meta
 					property="og:site_name"
-					content={SEO_METADATA.title}
+					content={WEBSITE_METADATA.title}
 				/>
 
-				{(config.scripts || []).map((script) => {
-					const Tag = script.element;
-
-					return (
-						<Tag
-							key={generateSlug(script.props.href)}
-							href={script.props.href}
-							rel={script.props.rel}
-							as={script.props.as}
-						/>
-					);
-				})}
-				{locales.map((locale: T_Locale) => {
-					if (locale === I18nService.getDefaultLocale()) {
-						return (
-							<link
-								key={locale}
-								rel="alternate"
-								hrefLang="x-default"
-								href={metadata.url}
-							/>
-						);
-					}
-
-					return (
-						<link
-							key={locale}
-							rel="alternate"
-							hrefLang={locale}
-							href={`${WEBSITE_METADATA.url}/${locale}${config.pathname}`}
-						/>
-					);
-				})}
 				<link
 					rel="manifest"
 					href="/site.webmanifest"
@@ -159,41 +106,28 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 				<link
 					rel="apple-touch-icon"
 					sizes="180x180"
-					href="/static/images/favicon/apple-touch-icon.png"
+					href="/assets/images/favicon/apple-touch-icon.png"
 				/>
 				<link
 					rel="icon"
 					type="image/png"
 					sizes="32x32"
-					href="/static/images/favicon/favicon-32x32.png"
+					href="/assets/images/favicon/favicon-32x32.png"
 				/>
 				<link
 					rel="icon"
 					type="image/png"
 					sizes="16x16"
-					href="/static/images/favicon/favicon-16x16.png"
+					href="/assets/images/favicon/favicon-16x16.png"
 				/>
 				<link
 					rel="icon"
-					href={`/static/images/favicon/favicon${isDevelopmentEnvironment() ? "-dev" : ""}.ico?v=3`}
-				/>
-				<link
-					rel="alternate"
-					type="application/rss+xml"
-					title={`RSS Feed for ${WEBSITE_METADATA.url.replace("https://", "")}`}
-					href="/rss.xml"
-				/>
-				<link
-					rel="alternate"
-					type="application/rss+atom"
-					title={`Atom Feed for ${WEBSITE_METADATA.url.replace("https://", "")}`}
-					href="/atom.xml"
+					href={`/assets/images/favicon/favicon${isDevelopmentEnvironment() ? "-dev" : ""}.ico?v=1`}
 				/>
 
-				{[ROUTES.HOME, ROUTES.ABOUT_ME, ROUTES.RESUME].includes(
-					config.pathname as T_RoutesValues,
-				) ? (
+				{[ROUTES.HOME, ROUTES.RESUME].includes(config.pathname as T_RoutesValues) ? (
 					<Script
+						id="application/ld+json"
 						type="application/ld+json"
 						dangerouslySetInnerHTML={{
 							__html: JSON.stringify({
@@ -204,14 +138,19 @@ function Page({ children, config = {} }: T_PageProps): T_ReactElement {
 								jobTitle: WEBSITE_METADATA.jobTitle,
 								url: WEBSITE_METADATA.url,
 								address: WEBSITE_METADATA.address,
-								sameAs: [WEBSITE_METADATA.social.github, WEBSITE_METADATA.social.linkedin],
+								sameAs: [
+									WEBSITE_METADATA.social.github,
+									WEBSITE_METADATA.social.linkedin,
+									WEBSITE_METADATA.social.twitter,
+									WEBSITE_METADATA.social.instagram,
+									WEBSITE_METADATA.social.spotify,
+								],
 							}),
 						}}
 					/>
 				) : null}
 			</Head>
 			{children}
-			<DevelopmentTools />
 		</React.Fragment>
 	);
 }

@@ -1,17 +1,17 @@
 import * as React from "react";
-import classNames from "classnames";
+import cn from "classnames";
+import * as Separator from "@radix-ui/react-separator";
 
-import v from "~/lib/v";
-import { mirror } from "~/utils/objects-and-arrays";
-import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
+import v from "@diegofrayo/v";
+import { mirror } from "@diegofrayo/utils/arrays-and-objects";
+
+// --- PROPS & TYPES ---
 
 const VARIANTS = mirror(["DEFAULT", "DASHED"]);
 type T_Variant = keyof typeof VARIANTS;
 
-// WARN: False positive
-/* eslint-disable react/no-unused-prop-types */
-type T_SpaceProps = T_HTMLElementAttributes["hr"] & {
-	className?: string;
+type T_SpaceProps = {
+	clasName?: string;
 	variant?: T_Variant;
 	orientation?: "h" | "v";
 	responsive?: string;
@@ -22,23 +22,11 @@ type T_SpaceProps = T_HTMLElementAttributes["hr"] & {
 	sizeBottom?: number;
 };
 
-function Space(props: T_SpaceProps): T_ReactElement {
-	const { className } = useController(props);
+// --- COMPONENT DEFINITION ---
 
-	return <hr className={className} />;
-}
-
-Space.variant = VARIANTS;
-
-export default Space;
-
-// --- CONTROLLER ---
-
-type T_UseControllerReturn = { className: string };
-
-function useController({
-	className = "",
+function Space({
 	variant = VARIANTS.DEFAULT,
+	clasName = "",
 	orientation = "h",
 	responsive = "",
 	size,
@@ -46,47 +34,47 @@ function useController({
 	sizeBottom,
 	sizeLeft,
 	sizeRight,
-}: T_SpaceProps): T_UseControllerReturn {
+}: T_SpaceProps) {
 	// --- VARS ---
 	const isVerticalOrientation = orientation === "v";
 
 	// --- UTILS ---
-	function composeClassName(): string {
-		return classNames(
-			"tw-flex-shrink-0",
-			isVerticalOrientation ? "tw-h-full" : "tw-h-px",
-			v.isNotEmptyString(responsive)
-				? responsive
-				: classNames(composeSizeClassNames(), isVerticalOrientation && "tw-inline-block"),
-			variant === VARIANTS.DEFAULT && "tw-border-0",
-			variant === VARIANTS.DASHED && "dfr-border-color-primary tw-border-dashed",
-			className,
+	function composeStyles(): string {
+		return cn(
+			"dr-space tw-flex-shrink-0",
+			{ "tw-border-0": variant === VARIANTS.DEFAULT },
+			{ "dr-border-color-primary tw-border-dashed": variant === VARIANTS.DASHED },
+			{ "tw-h-full": isVerticalOrientation },
+			{ "tw-h-px": !isVerticalOrientation },
+			v.isNotEmptyString(responsive) ? responsive : composeSizeStyles(),
+			clasName,
 		);
 	}
 
-	function composeSizeClassNames(): string {
+	function composeSizeStyles(): string {
 		if (isVerticalOrientation) {
 			if (sizeLeft || sizeRight) {
-				return `${composeSingleSideClassName("ml", sizeLeft)} ${composeSingleSideClassName(
-					"mr",
-					sizeRight,
-				)}`.trim();
+				return cn(
+					"tw-inline-block",
+					composeSingleSideStyles("ml", sizeLeft),
+					composeSingleSideStyles("mr", sizeRight),
+				);
 			}
 
-			return composeSingleSideClassName("mx", size);
+			return cn("tw-inline-block", composeSingleSideStyles("mx", size));
 		}
 
 		if (sizeTop || sizeBottom) {
-			return `${composeSingleSideClassName("mt", sizeTop)} ${composeSingleSideClassName(
-				"mb",
-				sizeBottom,
-			)}`.trim();
+			return cn(composeSingleSideStyles("mt", sizeTop), composeSingleSideStyles("mb", sizeBottom));
 		}
 
-		return composeSingleSideClassName("my", size);
+		return composeSingleSideStyles("my", size);
 	}
 
-	function composeSingleSideClassName(singleSide: string, singleSideSize?: number): string {
+	function composeSingleSideStyles(
+		singleSide: "my" | "mt" | "mb" | "mx" | "ml" | "mr",
+		singleSideSize?: number,
+	): string {
 		if (v.isNumber(singleSideSize)) {
 			return `tw-${singleSide}-${singleSideSize}`;
 		}
@@ -94,7 +82,14 @@ function useController({
 		return "";
 	}
 
-	return {
-		className: composeClassName(),
-	};
+	return (
+		<Separator.Root
+			className={composeStyles()}
+			orientation={isVerticalOrientation ? "vertical" : "horizontal"}
+		/>
+	);
 }
+
+Space.variant = VARIANTS;
+
+export default Space;

@@ -1,64 +1,59 @@
 import * as React from "react";
-import classNames from "classnames";
+import cn from "classnames";
+import { cva } from "class-variance-authority";
+import { highlight } from "sugar-high";
 
-import { mirror } from "~/utils/objects-and-arrays";
-import type {
-	T_HTMLElementAttributes,
-	T_ReactChildren,
-	T_ReactElement,
-	T_ReactNode,
-} from "~/types";
+import { mirror } from "@diegofrayo/utils/arrays-and-objects";
+import type DR from "@diegofrayo/types";
+
+// --- PROPS & TYPES ---
 
 const VARIANTS = mirror([
 	"UNSTYLED",
 	"STYLED",
-	"BREAK_WORDS",
+	"HIGHLIGHTED",
 	"BREAK_WITH_BLANK_LINES",
 	"BREAK_WITH_BLANK_SPACES",
 ]);
 type T_Variant = keyof typeof VARIANTS;
-type T_PreProps = T_HTMLElementAttributes["pre"] & {
-	variant: T_Variant;
-	wrapperClassName?: string;
+type T_PreProps = DR.DOM.HTMLElementAttributes["pre"] & {
+	variant?: T_Variant;
 };
 
-function Pre({
-	children,
-	className,
-	variant,
-	wrapperClassName,
-	...rest
-}: T_PreProps): T_ReactElement {
-	if (variant === VARIANTS.STYLED) {
+// --- COMPONENT DEFINITION ---
+
+function Pre({ children, className, variant = VARIANTS.UNSTYLED, ...rest }: T_PreProps) {
+	// --- STATES & REFS ---
+	const [highlightedCode, setHighlightedCode] = React.useState("");
+
+	// --- VARS ---
+	const isStyledVariant = variant === VARIANTS.STYLED;
+	const isHighlightedVariant = variant === VARIANTS.HIGHLIGHTED;
+
+	// --- EFFECTS ---
+	React.useEffect(
+		function highlightCode() {
+			if (isStyledVariant || isHighlightedVariant) {
+				setHighlightedCode(
+					highlight(React.isValidElement(children) ? children.props.children : children),
+				);
+			}
+		},
+		[isStyledVariant, isHighlightedVariant, children],
+	);
+
+	if (isStyledVariant || isHighlightedVariant) {
 		return (
-			<div
-				className={classNames(
-					"dfr-Pre--styled root tw-overflow-auto tw-rounded-md tw-border tw-p-4 tw-font-mono tw-text-base dfr-bg-color-secondary dfr-border-color-primary dark:dfr-bg-color-tertiary",
-					wrapperClassName,
-				)}
-			>
-				<pre
-					{...rest}
-					className={classNames(
-						"tw-h-full tw-w-full tw-break-keep dfr-text-color-gs-700 dark:dfr-text-color-primary",
-						className,
-					)}
-				>
-					{removeCodeElements(children)}
-				</pre>
-			</div>
+			<pre
+				className={cn(`dr-pre dr-pre--${variant.toLowerCase()}`, styles({ variant }), className)}
+				dangerouslySetInnerHTML={{ __html: highlightedCode }}
+			/>
 		);
 	}
 
 	return (
 		<pre
-			className={classNames(
-				`dfr-Pre--${variant}`,
-				variant === VARIANTS.BREAK_WORDS && "tw-whitespace-normal tw-break-all",
-				variant === VARIANTS.BREAK_WITH_BLANK_LINES && "tw-whitespace-pre-line tw-break-words",
-				variant === VARIANTS.BREAK_WITH_BLANK_SPACES && "tw-whitespace-pre-wrap tw-break-words",
-				className,
-			)}
+			className={cn(`dr-pre dr-pre--${variant.toLowerCase()}`, styles({ variant }), className)}
 			{...rest}
 		>
 			{removeCodeElements(children)}
@@ -70,9 +65,24 @@ Pre.variant = VARIANTS;
 
 export default Pre;
 
-// --- UTILS ---
+// --- STYLES ---
 
-function removeCodeElements(children: T_PreProps["children"]): T_ReactChildren {
+const styles = cva("tw-overflow-auto tw-font-mono", {
+	variants: {
+		variant: {
+			[VARIANTS.UNSTYLED]: "",
+			[VARIANTS.STYLED]:
+				"tw-rounded-md tw-border tw-p-4 dr-bg-color-surface-200 dr-border-color-surface-300",
+			[VARIANTS.HIGHLIGHTED]: "tw-p-4 dr-bg-color-surface-200",
+			[VARIANTS.BREAK_WITH_BLANK_LINES]: "tw-whitespace-pre-line tw-break-words",
+			[VARIANTS.BREAK_WITH_BLANK_SPACES]: "tw-whitespace-pre-wrap tw-break-words",
+		},
+	},
+});
+
+// --- INTERNALS ---
+
+function removeCodeElements(children: T_PreProps["children"]): DR.React.Children {
 	return React.Children.map(children, (child) => {
 		if (isInlineCodeElement(child)) {
 			return child.props.children;
@@ -82,7 +92,7 @@ function removeCodeElements(children: T_PreProps["children"]): T_ReactChildren {
 	});
 }
 
-function isInlineCodeElement(child: T_ReactNode): child is T_ReactElement {
+function isInlineCodeElement(child: DR.React.Node): child is DR.React.JSXElement {
 	/* WARN:
 	 * I use this any because I get problems when the code is minified
 	 * I can't do this validation using function.name

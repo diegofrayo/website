@@ -1,0 +1,59 @@
+/* --- LIBS --- */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "./variables.css";
+@import "./radix-ui.css";
+@import "./sugar-high.css";
+
+/* --- COMPONENTS & PAGES --- */
+
+@import "./../features/pages/resume/styles.css";
+
+/* --- GLOBAL --- */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	@apply dr-font-texts;
+	@apply dr-text-color-surface-600;
+	background-image: url("/assets/images/textures/thunder.jpg");
+	cursor: default;
+	font-size: 18px;
+	overflow: auto;
+	scroll-behavior: smooth;
+	scrollbar-gutter: stable;
+	word-break: break-word;
+}
+
+body.scroll-disabled {
+	overflow: hidden;
+}
+
+/* --- SCROLLBAR --- */
+
+::-webkit-scrollbar {
+	/* height: 10px; */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	/* background-color: transparent; */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	/* @apply dr-bg-color-primary-400; */
+	/* @apply tw-rounded-md; */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+}
+
+body.mobile ::-webkit-scrollbar-thumb {
+	/* display: none; */
+}

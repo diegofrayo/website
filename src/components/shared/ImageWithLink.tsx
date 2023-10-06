@@ -1,11 +1,10 @@
 import * as React from "react";
 
 import { Image, Link } from "~/components/primitive";
-import v from "~/lib/v";
-import type { T_ImageProps } from "~/components/primitive/Image";
-import type { T_ReactElementNullable } from "~/types";
+import { type T_ImageProps } from "~/components/primitive/Image";
+import v from "@diegofrayo/v";
 
-function ImageWithLink({ src, ...rest }: T_ImageProps): T_ReactElementNullable {
+function ImageWithLink({ src, alt, ...rest }: T_ImageProps) {
 	if (v.isNotEmptyString(src)) {
 		return (
 			<Link
@@ -15,8 +14,9 @@ function ImageWithLink({ src, ...rest }: T_ImageProps): T_ReactElementNullable {
 				isExternalLink
 			>
 				<Image
-					src={src}
 					{...rest}
+					src={src}
+					alt={alt}
 				/>
 			</Link>
 		);

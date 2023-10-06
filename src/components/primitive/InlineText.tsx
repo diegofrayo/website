@@ -1,12 +1,16 @@
 import * as React from "react";
 
-import type { T_HTMLElementAttributes, T_ReactElement } from "~/types";
+import type DR from "@diegofrayo/types";
 
-type T_InlineTextProps = T_HTMLElementAttributes["span"] & {
+// --- PROPS & TYPES ---
+
+type T_InlineTextProps = DR.DOM.HTMLElementAttributes["span"] & {
 	is?: "span" | "strong";
 };
 
-function InlineText({ is: Tag = "span", children, ...rest }: T_InlineTextProps): T_ReactElement {
+// --- COMPONENT DEFINITION ---
+
+function InlineText({ is: Tag = "span", children, ...rest }: T_InlineTextProps) {
 	return <Tag {...rest}>{children}</Tag>;
 }
 
