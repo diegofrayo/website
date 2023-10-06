@@ -1,9 +1,8 @@
 import * as React from "react";
-import { useTheme } from "next-themes";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 
-import { Block, Button, Icon, Link, List, Text, Space } from "~/components/primitive";
+import { Block, Button, Icon, Link, List, Text } from "~/components/primitive";
 import { ENV_VARS } from "~/constants";
 import { AuthService, withAuthComponent } from "~/features/auth";
 import { I18nService, useTranslation } from "~/features/i18n";
@@ -22,9 +21,6 @@ import { generateSlug } from "~/utils/strings";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
 function Header(): T_ReactElement {
-	// --- HOOKS ---
-	const WEBSITE_METADATA = useStoreSelector<T_WebsiteMetadata>(selectWebsiteMetadata);
-
 	return (
 		<Block
 			is="header"
@@ -36,7 +32,7 @@ function Header(): T_ReactElement {
 					href={ROUTES.HOME}
 					className="tw-border-b-2 tw-border-dotted dfr-border-color-bw"
 				>
-					{WEBSITE_METADATA.username}
+					DR TOOLS
 				</Link>
 				<Block className="tw-mt-2">
 					<MainMenu />
@@ -219,7 +215,7 @@ const SettingsMenu = withAuthComponent(function SettingsMenu(): T_ReactElement {
 
 			{showMenu ? (
 				<List className="tw-absolute tw-right-0 tw-top-full tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden dfr-shadow">
-					<ToggleThemeMenuItem />
+					{/* <ToggleThemeMenuItem /> */}
 					<RefreshAPPMenuItem />
 					<ISRMenuItem />
 					<EnvironmentMenuItem />
@@ -230,6 +226,7 @@ const SettingsMenu = withAuthComponent(function SettingsMenu(): T_ReactElement {
 	);
 });
 
+/*
 function ToggleThemeMenuItem(): T_ReactElement {
 	// --- HOOKS ---
 	const { t } = useTranslation();
@@ -282,6 +279,7 @@ function ToggleThemeMenuItem(): T_ReactElement {
 		</SettingsMenuItem>
 	);
 }
+*/
 
 const RefreshAPPMenuItem = renderIf(function RefreshAPPMenuItem() {
 	// --- HANDLERS ---

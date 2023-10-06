@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { Icon, Input, Link, Block, Button, InlineText } from "~/components/primitive";
 import { useDidMount } from "~/hooks";
 import v from "~/lib/v";
-import { focusElement, handleCopyToClipboardClick } from "~/utils/browser";
+import { focusElement, handleCopyToClipboardClick, isMobileDevice } from "~/utils/browser";
 import { generateSlug, replaceAll } from "~/utils/strings";
 import type {
 	T_ReactElement,
@@ -142,6 +142,7 @@ function useController(): T_UseControllerReturn {
 		if (v.isNull(inputRef.current)) return;
 
 		focusElement(inputRef.current);
+		setIsAppOptionSelected(isMobileDevice());
 	});
 
 	React.useEffect(() => {

@@ -120,7 +120,7 @@ function Footer({ hasToDisplayGoToTheTopButton }: T_FooterProps): T_ReactElement
 			)}
 		>
 			<Block className="tw-mx-auto tw-px-8 tw-py-2 tw-text-center tw-text-sm dfr-max-w-layout dfr-text-color-gs-400">
-				Diego Rayo | @diegofrayo | Software Developer | {new Date().getFullYear()}
+				DR Tools | {new Date().getFullYear()}
 			</Block>
 
 			{hasToDisplayGoToTheTopButton ? <GoToTopButton /> : null}

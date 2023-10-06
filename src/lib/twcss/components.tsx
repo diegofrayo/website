@@ -8,12 +8,15 @@ import { HTML_TAGS, T_HTMLTag } from "./constants";
 
 const twcss: I_TWCSS = Object.assign(
 	TWCSSCreator,
-	HTML_TAGS.reduce((result, tagName) => {
-		return {
-			...result,
-			[tagName]: TWCSSCreator(tagName),
-		};
-	}, {} as Record<T_HTMLTag, I_TWCSSComponentDefinition>),
+	HTML_TAGS.reduce(
+		(result, tagName) => {
+			return {
+				...result,
+				[tagName]: TWCSSCreator(tagName),
+			};
+		},
+		{} as Record<T_HTMLTag, I_TWCSSComponentDefinition>,
+	),
 );
 
 export default twcss;

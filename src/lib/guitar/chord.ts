@@ -37,12 +37,15 @@ class Chord {
 					]),
 				};
 			},
-			createArray(this.lastFret - this.firstFret + 1, this.firstFret).reduce((result, fret) => {
-				return {
-					...result,
-					[`${fret}`]: [],
-				};
-			}, {} as T_Chord["musicNotesGroupedByFret"]),
+			createArray(this.lastFret - this.firstFret + 1, this.firstFret).reduce(
+				(result, fret) => {
+					return {
+						...result,
+						[`${fret}`]: [],
+					};
+				},
+				{} as T_Chord["musicNotesGroupedByFret"],
+			),
 		);
 	}
 }

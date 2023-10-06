@@ -1,6 +1,3 @@
 User-agent: *
 
-disallow: /lgy
-disallow: /personal
-disallow: /readings
-disallow: /static
+disallow: /
