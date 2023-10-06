@@ -1,0 +1,162 @@
+In this tutorial I want to explain how to publish a private npm package to GitHub Packages using GitHub Actions. Also, the package will be linked to a private repository belonging to an organization. For this tutorial, I'm going to use `my-pkg` as the name of the package and `@my-organization` as the name of the organization.
+
+## Publishing the package
+
+1. Create the `package.json` file. Example:
+
+   ```json
+   {
+   	"name": "@my-organization/my-pkg",
+   	"private": false,
+   	"description": "Your package description",
+   	"version": "1.0.0",
+   	"author": "@my-organization",
+   	"source": "src/index.js",
+   	"main": "dist/index.cjs.js",
+   	"keywords": [],
+   	"repository": "git://github.com/my-organization/my-pkg.git",
+   	"publishConfig": {
+   		"registry": "https://npm.pkg.github.com"
+   	},
+   	"files": ["dist/*.js", "dist/*.css", "package.json", "README.md"],
+   	"scripts": {
+   		"build": "rollup -c",
+   		"build-watch": "rollup -c -w",
+   		"format": "prettier --write \"src/**/*.{js,jsx,json}\"",
+   		"lint": "eslint --fix \"src/**/*.{js,jsx}\" --ignore-pattern \"src/forms/*\""
+   	},
+   	"dependencies": {
+   		"axios": "^0.21.1",
+   		"classnames": "^2.2.6",
+   		"date-fns": "^2.17.0",
+   		"formik": "^2.2.6",
+   		"google-map-react": "^2.1.9",
+   		"hoist-non-react-statics": "^3.3.2",
+   		"lodash": "^4.17.20",
+   		"postcss": "^8.2.1",
+   		"react-error-boundary": "^3.1.0",
+   		"react-google-recaptcha": "^2.1.0",
+   		"react-helmet": "^6.1.0",
+   		"react-query": "^3.9.8",
+   		"react-slideshow-image": "^3.4.3",
+   		"react-toastify": "^7.0.3"
+   	},
+   	"peerDependencies": {
+   		"gatsby": "^2.26.1",
+   		"react": "^16.12.0",
+   		"react-dom": "^16.12.0",
+   		"styled-components": "^5.2.1"
+   	},
+   	"devDependencies": {
+   		"@babel/cli": "^7.13.10",
+   		"@babel/core": "^7.13.10",
+   		"@babel/preset-env": "^7.13.10",
+   		"@babel/preset-react": "^7.12.13",
+   		"@rollup/plugin-babel": "^5.3.0",
+   		"@rollup/plugin-commonjs": "^17.1.0",
+   		"@rollup/plugin-json": "^4.1.0",
+   		"@rollup/plugin-node-resolve": "^11.2.0",
+   		"babel-eslint": "^10.1.0",
+   		"dotenv": "^8.2.0",
+   		"eslint": "^7.18.0",
+   		"eslint-config-airbnb": "^18.2.1",
+   		"eslint-config-prettier": "^7.2.0",
+   		"eslint-plugin-import": "^2.22.1",
+   		"eslint-plugin-jsx-a11y": "^6.4.1",
+   		"eslint-plugin-prettier": "^3.3.1",
+   		"eslint-plugin-react": "^7.22.0",
+   		"eslint-plugin-react-hooks": "^4.2.0",
+   		"husky": "^4.3.8",
+   		"lint-staged": "^10.5.3",
+   		"npm-run-all": "^4.1.5",
+   		"prettier": "^2.2.1",
+   		"rollup": "^2.41.1",
+   		"rollup-plugin-alias": "^2.2.0",
+   		"rollup-plugin-css-only": "^3.1.0",
+   		"rollup-plugin-delete": "^2.0.0",
+   		"rollup-plugin-hot-css": "^0.4.0",
+   		"rollup-plugin-includepaths": "^0.2.4",
+   		"rollup-plugin-peer-deps-external": "^2.2.4",
+   		"sass": "^1.32.7"
+   	}
+   }
+   ```
+
+   > **Important:**
+   >
+   > - `"name": "@my-organization/my-pkg"` | The name of the package must have this structure: **@organization/package-name**
+   > - `"repository": "git://github.com/my-organization/my-pkg.git"` | Here, you have to set the URL of your repository
+   > - `"publishConfig": {"registry": "https://npm.pkg.github.com"}` | This attribute serves to tell GitHub that you will publish this package to its registry
+   > - `"private": false` | Even if the package will be private, the value of this attribute must be **false**
+
+1. Create the workflow `.yml` file in `.github/workflows` folder
+
+   ```yml
+   name: Publishing my-pkg
+
+   on:
+     push:
+       branches:
+         - master
+
+   jobs:
+     publish-gpr:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v2
+
+         - uses: actions/setup-node@v2
+           with:
+             node-version: 12
+             registry-url: "https://registry.npmjs.org"
+
+         - name: Install dependencies
+           run: npm install
+
+         - name: Build package
+           run: npm run build
+
+         - uses: actions/setup-node@v2
+           with:
+             node-version: 12
+             registry-url: "https://npm.pkg.github.com"
+             scope: "@my-organization"
+
+         - name: Publish package
+           run: npm publish
+           env:
+             NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+   ```
+
+   > **Important:**
+   >
+   > - This workflow executes when the `master` branch is pushed. It is responsible to install and build the package using npm through the `name: Install dependencies` and `name: Build package` steps
+   > - Before execute the two previous steps, it is important to set `registry-url: "https://registry.npmjs.org"` to indicate to GitHub you will use the npm registry to build the package
+   > - Before publish the package, it is necessary to set `registry-url: "https://npm.pkg.github.com"` to indicate to GitHub you will publish the package to its packages registry
+   > - To upload the package is required to set `NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}`, it is a [secret](https://docs.github.com/en/actions/reference/authentication-in-a-workflow) created by GitHub automatically in the project's repository. Also, you can use another authentication method like **personal access tokens**. In this [link](https://docs.github.com/en/packages/guides/configuring-npm-for-use-with-github-packages#authenticating-to-github-packages) you can read more about this
+
+## Installing the published package in a project
+
+1. Create a `.npmrc` file on the root folder of the project that will use the published package
+
+   ```bash
+   @my-organization:registry=https://npm.pkg.github.com
+   //npm.pkg.github.com/:_authToken=YOUR_PERSONAL_ACCESS_TOKEN
+   ```
+
+   > In this [link](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) you can see how to create a **personal access token**
+
+1. Add the package to the `package.json` file dependencies
+
+   ```json
+   "dependencies": {
+     "@my-organization/my-pkg": "1.0.0",
+     ...
+   }
+   ```
+
+1. Install the dependencies executing `npm install`
+
+## Final words
+
+Sometimes, these kind of tasks are hard, specially for no expert people in deployments, servers and infrastructure like me. I hope that this tutorial has been useful for you, bye bye.

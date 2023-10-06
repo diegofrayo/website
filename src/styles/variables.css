@@ -1,0 +1,22 @@
+html { --dr-font-main-title: var(--font-main-title);
+--dr-font-titles: var(--font-titles);
+--dr-font-texts: var(--font-texts);
+--dr-color-primary-100: rgba(209, 212, 66, 1);
+--dr-color-primary-200: rgba(215, 217, 91, 1);
+--dr-color-primary-300: rgba(222, 221, 113, 1);
+--dr-color-primary-400: rgba(227, 226, 134, 1);
+--dr-color-primary-500: rgba(233, 231, 154, 1);
+--dr-color-primary-600: rgba(238, 236, 175, 1);
+--dr-color-surface-100: rgba(0, 0, 0, 1);
+--dr-color-surface-200: rgba(30, 30, 30, 1);
+--dr-color-surface-300: rgba(53, 53, 53, 1);
+--dr-color-surface-400: rgba(78, 78, 78, 1);
+--dr-color-surface-500: rgba(105, 105, 105, 1);
+--dr-color-surface-600: rgba(133, 133, 133, 1);
+--dr-color-surface-mixed-100: rgba(25, 24, 13, 1);
+--dr-color-surface-mixed-200: rgba(46, 45, 36, 1);
+--dr-color-surface-mixed-300: rgba(68, 68, 59, 1);
+--dr-color-surface-mixed-400: rgba(92, 91, 84, 1);
+--dr-color-surface-mixed-500: rgba(117, 116, 110, 1);
+--dr-color-surface-mixed-600: rgba(143, 143, 137, 1);
+ }

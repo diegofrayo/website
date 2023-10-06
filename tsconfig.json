@@ -11,7 +11,7 @@
 		"allowUnusedLabels": false,
 		"exactOptionalPropertyTypes": true,
 		"noFallthroughCasesInSwitch": true,
-		"noImplicitReturns": true,
+		"noImplicitReturns": false,
 		"noPropertyAccessFromIndexSignature": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
@@ -19,10 +19,11 @@
 		// Modules
 		"baseUrl": ".",
 		"paths": {
-			"~/*": ["src/*"]
+			"@diegofrayo/*": ["./src/lib/@diegofrayo/*"],
+			"~/*": ["./src/*"]
 		},
 		"module": "esnext",
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"resolveJsonModule": true,
 
 		// JavaScript support
@@ -31,7 +32,7 @@
 
 		// Language and Environment
 		"jsx": "preserve",
-		"target": "es5",
+		"target": "es6",
 		"lib": ["dom", "dom.iterable", "esnext"],
 
 		// Completeness
@@ -40,12 +41,19 @@
 		// Emit
 		"noEmit": true,
 
+		// Editor support
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+
 		// Interop Constraints
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"isolatedModules": true,
 		"incremental": true
 	},
-	"include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"],
+	"include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx", ".next/types/**/*.ts"],
 	"exclude": ["node_modules"]
 }

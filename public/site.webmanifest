@@ -1,20 +1,20 @@
 {
 	"name": "Diego Rayo | Software Developer",
 	"lang": "en",
-	"short_name": "DR Tools",
-	"theme_color": "#ffffff",
-	"background_color": "#ffffff",
+	"short_name": "DR",
+	"theme_color": "#000",
+	"background_color": "#000",
 	"display": "standalone",
 	"scope": "/",
 	"start_url": "/",
 	"icons": [
 		{
-			"src": "/static/images/favicon/android-chrome-192x192.png",
+			"src": "/assets/images/favicon/android-chrome-192x192.png",
 			"sizes": "192x192",
 			"type": "image/png"
 		},
 		{
-			"src": "/static/images/favicon/android-chrome-512x512.png",
+			"src": "/assets/images/favicon/android-chrome-512x512.png",
 			"sizes": "512x512",
 			"type": "image/png"
 		}

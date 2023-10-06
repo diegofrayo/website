@@ -1,4 +1,304 @@
 import {
+	ArrowDownTrayIcon,
+	ArrowPathIcon,
+	ArrowTopRightOnSquareIcon,
+	ArrowUpIcon,
+	Bars4Icon,
+	CalendarIcon,
+	ChevronDownIcon,
+	ChevronLeftIcon,
+	ClipboardIcon,
+	CogIcon,
+	DocumentTextIcon,
+	EnvelopeIcon,
+	ExclamationTriangleIcon,
+	GlobeAltIcon,
+	HomeIcon,
+	LinkIcon,
+	PauseIcon,
+	PlayIcon,
+	RssIcon,
+	Square3Stack3DIcon,
+	UserCircleIcon,
+	WrenchIcon,
+	XMarkIcon,
+} from "@heroicons/react/24/outline";
+
+const ICONS = {
+	// --- OWN ICONS ---
+	GITHUB: {
+		icon: "/assets/images/icons/github.svg",
+		defaultProps: {
+			alt: "GitHub",
+		},
+	},
+	GITHUB_MONO: {
+		icon: "/assets/images/icons/github-mono.svg",
+		defaultProps: {
+			alt: "GitHub",
+		},
+	},
+	GMAIL: {
+		icon: "/assets/images/icons/gmail.svg",
+		defaultProps: {
+			alt: "Email",
+		},
+	},
+	GMAIL_MONO: {
+		icon: "/assets/images/icons/gmail-mono.svg",
+		defaultProps: {
+			alt: "GitHub",
+		},
+	},
+	GUITAR: {
+		icon: "/assets/images/icons/guitar.svg",
+		defaultProps: {
+			className: "",
+			alt: "Guitar",
+		},
+	},
+	INSTAGRAM: {
+		icon: "/assets/images/icons/instagram.svg",
+		defaultProps: {
+			alt: "Instagram",
+		},
+	},
+	INSTAGRAM_MONO: {
+		icon: "/assets/images/icons/instagram-mono.svg",
+		defaultProps: {
+			alt: "Instagram",
+		},
+	},
+	LINKEDIN: {
+		icon: "/assets/images/icons/linkedin.svg",
+		defaultProps: {
+			alt: "Linkedin",
+		},
+	},
+	LINKEDIN_MONO: {
+		icon: "/assets/images/icons/linkedin-mono.svg",
+		defaultProps: {
+			alt: "Linkedin",
+		},
+	},
+	MAPS: {
+		icon: "/assets/images/icons/maps.svg",
+		defaultProps: {
+			alt: "Google Maps",
+		},
+	},
+	NETFLIX: {
+		icon: "/assets/images/icons/netflix.svg",
+		defaultProps: {
+			className: "tw-rounded-full",
+			alt: "Netflix",
+		},
+	},
+	SOCCER: {
+		icon: "/assets/images/icons/soccer.svg",
+		defaultProps: {
+			className: "",
+			alt: "Soccer",
+		},
+	},
+	SPOTIFY: {
+		icon: "/assets/images/icons/spotify.svg",
+		defaultProps: {
+			alt: "Spotify",
+		},
+	},
+	SPOTIFY_MONO: {
+		icon: "/assets/images/icons/spotify-mono.svg",
+		defaultProps: {
+			alt: "Linkedin",
+		},
+	},
+	TWITTER: {
+		icon: "/assets/images/icons/twitter.svg",
+		defaultProps: {
+			alt: "Twitter",
+		},
+	},
+	WHATSAPP: {
+		icon: "/assets/images/icons/whatsapp.svg",
+		defaultProps: {
+			alt: "WhatsApp",
+		},
+	},
+	YOUTUBE: {
+		icon: "/assets/images/icons/youtube.svg",
+		defaultProps: {
+			alt: "YouTube",
+		},
+	},
+
+	// --- LIBRARY ICONS ---
+	ARROW_DOWN_TRAY: {
+		icon: ArrowDownTrayIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	ARROW_UP: {
+		icon: ArrowUpIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	CALENDAR: {
+		icon: CalendarIcon,
+		defaultProps: {
+			className: "",
+		},
+	},
+	CHEVRON_DOWN: {
+		icon: ChevronDownIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	CHEVRON_LEFT: {
+		icon: ChevronLeftIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	CLIPBOARD: {
+		icon: ClipboardIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	CLOSE: {
+		icon: XMarkIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	DOCUMENT_TEXT: {
+		icon: DocumentTextIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	EXTERNAL_LINK: {
+		icon: ArrowTopRightOnSquareIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	ENVELOPE: {
+		icon: EnvelopeIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	GLOBE_ALT: {
+		icon: GlobeAltIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	HOME: {
+		icon: HomeIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	LINK: {
+		icon: LinkIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	MENU: {
+		icon: Bars4Icon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	PAUSE: {
+		icon: PauseIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	PLAY: {
+		icon: PlayIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	REFRESH: {
+		icon: ArrowPathIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	RSS: {
+		icon: RssIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	SETTINGS: {
+		icon: CogIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	STACK: {
+		icon: Square3Stack3DIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	TOOL: {
+		icon: WrenchIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	USER_CIRCLE: {
+		icon: UserCircleIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	WARNING: {
+		icon: ExclamationTriangleIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+};
+
+export default ICONS;
+
+/*
+import {
 	ArchiveBoxIcon,
 	ArrowDownTrayIcon,
 	ArrowPathIcon,
@@ -56,145 +356,14 @@ import {
 	StarIcon,
 	SunIcon,
 } from "@heroicons/react/24/solid";
-import { T_ReactElement } from "~/types";
+import { DR.React.JSXElement } from "~/types";
 
 export const ICONS = {
-	// own
-	COUCHSURFING: {
-		icon: "/static/images/icons/couchsurfing.png",
-		defaultProps: {
-			className: "tw-rounded-full",
-			alt: "Couchsurfing",
-		},
-	},
-	GITHUB: {
-		icon: "/static/images/icons/github.svg",
-		defaultProps: {
-			className: "",
-			alt: "GitHub",
-		},
-	},
-	GITHUB_LIGHT: {
-		icon: "/static/images/icons/github-light.svg",
-		defaultProps: {
-			className: "",
-			alt: "GitHub light",
-		},
-	},
-	GMAIL: {
-		icon: "/static/images/icons/gmail.svg",
-		defaultProps: {
-			className: "",
-			alt: "Email",
-		},
-	},
-	GUITAR: {
-		icon: "/static/images/icons/guitar.svg",
-		defaultProps: {
-			className: "",
-			alt: "Guitar",
-		},
-	},
-	FLOWER_1: {
-		icon: "/static/images/icons/flower-1.svg",
-		defaultProps: {
-			className: "",
-			alt: "Flower 1",
-		},
-	},
-	FLOWER_2: {
-		icon: "/static/images/icons/flower-2.svg",
-		defaultProps: {
-			className: "",
-			alt: "Flower 1",
-		},
-	},
-	FLOWER_3: {
-		icon: "/static/images/icons/flower-3.svg",
-		defaultProps: {
-			className: "",
-			alt: "Flower 1",
-		},
-	},
-	INSTAGRAM: {
-		icon: "/static/images/icons/instagram.svg",
-		defaultProps: {
-			className: "",
-			alt: "Instagram",
-		},
-	},
-	LINKEDIN: {
-		icon: "/static/images/icons/linkedin.svg",
-		defaultProps: {
-			className: "",
-			alt: "Linkedin",
-		},
-	},
-	MAPS: {
-		icon: "/static/images/icons/maps.svg",
-		defaultProps: {
-			className: "",
-			alt: "Google Maps",
-		},
-	},
-	NETFLIX: {
-		icon: "/static/images/icons/netflix.svg",
-		defaultProps: {
-			className: "tw-rounded-full",
-			alt: "Netflix",
-		},
-	},
-	SPOTIFY: {
-		icon: "/static/images/icons/spotify.svg",
-		defaultProps: {
-			className: "",
-			alt: "Spotify",
-		},
-	},
-	SOCCER: {
-		icon: "/static/images/icons/soccer.svg",
-		defaultProps: {
-			className: "",
-			alt: "Soccer",
-		},
-	},
-	TWITTER: {
-		icon: "/static/images/icons/twitter.svg",
-		defaultProps: {
-			className: "",
-			alt: "Twitter",
-		},
-	},
-	WHATSAPP: {
-		icon: "/static/images/icons/whatsapp.svg",
-		defaultProps: {
-			className: "",
-			alt: "WhatsApp",
-		},
-	},
-	YOUTUBE: {
-		icon: "/static/images/icons/youtube.svg",
-		defaultProps: {
-			className: "",
-			alt: "YouTube",
-		},
-	},
+
 
 	// library icons
 	ARCHIVE_BOX: {
 		icon: ArchiveBoxIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
-	ARROW_DOWN_TRAY: {
-		icon: ArrowDownTrayIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
-	ARROW_UP: {
-		icon: ArrowUpIcon,
 		defaultProps: {
 			className: "",
 		},
@@ -278,13 +447,6 @@ export const ICONS = {
 			color: "",
 		},
 	},
-	CLIPBOARD: {
-		icon: ClipboardIcon,
-		defaultProps: {
-			className: "",
-			color: "tw-text-yellow-700",
-		},
-	},
 	CLOCK: {
 		icon: ClockIcon,
 		defaultProps: {
@@ -296,13 +458,6 @@ export const ICONS = {
 		icon: CodeBracketIcon,
 		defaultProps: {
 			className: "",
-		},
-	},
-	COG: {
-		icon: CogIcon,
-		defaultProps: {
-			className: "",
-			color: "",
 		},
 	},
 	DOCUMENT_TEXT: {
@@ -344,12 +499,7 @@ export const ICONS = {
 			className: "",
 		},
 	},
-	GLOBE_ALT: {
-		icon: GlobeAltIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
+
 	HEART: {
 		icon: HeartIcon,
 		defaultProps: {
@@ -366,12 +516,6 @@ export const ICONS = {
 	},
 	KEY: {
 		icon: KeyIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
-	LINK: {
-		icon: LinkIcon,
 		defaultProps: {
 			className: "",
 		},
@@ -398,7 +542,7 @@ export const ICONS = {
 		icon: MinusIcon,
 		defaultProps: {
 			className: "",
-			color: "dfr-text-color-gs-white dark:dfr-text-color-gs-black",
+			color: "",
 		},
 	},
 	MOON: {
@@ -455,19 +599,6 @@ export const ICONS = {
 		icon: PrinterIcon,
 		defaultProps: {
 			className: "",
-		},
-	},
-	REFRESH: {
-		icon: ArrowPathIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
-	REPLY: {
-		icon: ArrowUturnRightIcon,
-		defaultProps: {
-			className: "",
-			color: "",
 		},
 	},
 	SERVER: {
@@ -539,6 +670,8 @@ export type T_Icon = {
 	};
 };
 
-export type T_LibraryIconComponent = (props: React.ComponentProps<"svg">) => T_ReactElement;
+export type T_LibraryIconComponent = (props: React.ComponentProps<"svg">) => DR.React.JSXElement;
 
 export type T_IconName = keyof typeof ICONS;
+
+*/

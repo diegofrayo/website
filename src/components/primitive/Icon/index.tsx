@@ -1,26 +1,50 @@
 import * as React from "react";
-import classNames from "classnames";
+import cn from "classnames";
 
 import { logger } from "~/features/logging";
-import v from "~/lib/v";
-import { getObjectKeys, mirror } from "~/utils/objects-and-arrays";
-import type { T_HTMLElementAttributes, T_ReactElement, T_ReactElementNullable } from "~/types";
+import { getObjectKeys, mirror } from "@diegofrayo/utils/arrays-and-objects";
+import v from "@diegofrayo/v";
+import type DR from "@diegofrayo/types";
 
-import { ICONS } from "./constants";
-import isIconElementFromLibraryChecker from "./utils";
-import type { T_IconName, T_Icon } from "./types";
-
-import Image from "../Image";
+import ICONS from "./constants";
 import Block from "../Block";
+import Image from "../Image";
+
+// --- PROPS & TYPES ---
+
+export type T_IconName = keyof typeof ICONS;
+
+interface I_LibraryIcon {
+	icon: T_LibraryIconComponent;
+	defaultProps: {
+		className?: string;
+		color?: string;
+	};
+}
+
+interface I_CustomIcon {
+	icon: string;
+	defaultProps: {
+		className?: string;
+		alt: string;
+		color?: string;
+	};
+}
+
+type T_Icon = I_LibraryIcon | I_CustomIcon;
+
+type T_LibraryIconComponent = (props: React.ComponentProps<"svg">) => DR.React.JSXElement;
 
 type T_IconProps = {
 	icon: T_IconName;
-	size?: number | string; // number: width | string: className
+	size?: number | string; // number: for width and height attrs | string: for className attr
 	color?: string;
 	iconClassName?: string;
 	wrapperClassName?: string;
-	withBackgroundWhenDarkMode?: boolean;
+	wrapperProps?: DR.Object;
 };
+
+// --- COMPONENT DEFINITION ---
 
 function Icon({
 	icon: iconName,
@@ -28,26 +52,14 @@ function Icon({
 	color = undefined,
 	iconClassName = "",
 	wrapperClassName = "",
-	withBackgroundWhenDarkMode = false,
-}: T_IconProps): T_ReactElementNullable {
+	wrapperProps: wrapperPropsProp = {},
+}: T_IconProps) {
 	// --- VARS ---
-	/*
-	 * This assertion is undesirable but necessary because I'm typing
-	 * the icons keys object in a different way in comparison to the
-	 * other components
-	 */
 	const icon = ICONS[iconName] as T_Icon;
-	const wrapperProps = {
-		className: classNames(
-			"dfr-Icon",
-			withBackgroundWhenDarkMode &&
-				"dark:dfr-bg-color-gs-white dark:tw-rounded-full tw-overflow-hidden",
-			wrapperClassName,
-		),
-	};
+	const wrapperProps = { className: cn("dr-icon", wrapperClassName), ...wrapperPropsProp };
 
 	// --- UTILS ---
-	function getColorStyles(): string {
+	function getLibraryIconColorStyles(): string {
 		if (v.isNotEmptyString(color)) {
 			return color;
 		}
@@ -56,7 +68,7 @@ function Icon({
 			return icon.defaultProps.color;
 		}
 
-		return "dfr-text-color-bw";
+		return "";
 	}
 
 	if (v.isUndefined(icon)) {
@@ -64,17 +76,17 @@ function Icon({
 		return null;
 	}
 
-	if (isIconElementFromLibraryChecker(icon.icon)) {
-		const baseIconClassNames = classNames(
-			"tw-inline-block",
-			icon.defaultProps.className,
-			iconClassName,
-			v.isUndefined(size) && "tw-w-4 tw-h-4",
-			v.isString(size) && size,
-		);
+	const iconBaseStyles = cn(
+		"tw-inline-block",
+		icon.defaultProps.className,
+		iconClassName,
+		v.isString(size) && size,
+	);
+
+	if (isLibraryIcon(icon)) {
 		const iconComponentProps = {
-			className: classNames(baseIconClassNames, getColorStyles()),
-			...(v.isNumber(size) ? { style: { width: size, height: size } } : {}),
+			className: cn(iconBaseStyles, getLibraryIconColorStyles()),
+			...(v.isNumber(size) ? { width: size, height: size } : { width: 16, height: 16 }),
 		};
 		const IconComponent = icon.icon;
 
@@ -85,48 +97,56 @@ function Icon({
 		);
 	}
 
-	if (v.isString(size)) {
-		throw new Error(`Size value for "${iconName}" has to be a number`);
+	if (isCustomIcon(icon)) {
+		const iconComponentProps = {
+			src: icon.icon,
+			alt: `${icon.defaultProps.alt} icon`,
+			className: cn(iconBaseStyles),
+			...(v.isNumber(size) ? { width: size, height: size } : { width: 24, height: 24 }),
+		};
+		const IconComponent = Image;
+
+		return (
+			<Wrapper {...wrapperProps}>
+				<IconComponent {...iconComponentProps} />
+			</Wrapper>
+		);
 	}
 
-	const baseIconClassNames = classNames(
-		"tw-inline-block",
-		icon.defaultProps.className,
+	logger("WARN", "Invalid props combinations", {
+		icon,
+		size,
+		color,
 		iconClassName,
-	);
-	const iconComponentProps = {
-		src: icon.icon,
-		alt: `${icon.defaultProps.alt} icon`,
-		className: classNames(baseIconClassNames, withBackgroundWhenDarkMode && "dark:tw-p-0.5"),
-		width: v.isNumber(size) ? size : 24,
-		height: v.isNumber(size) ? size : 24,
-	};
-	const IconComponent = Image;
+		wrapperClassName,
+	});
 
-	return (
-		<Wrapper {...wrapperProps}>
-			<IconComponent {...iconComponentProps} />
-		</Wrapper>
-	);
+	return null;
 }
 
 Icon.icon = mirror(getObjectKeys(ICONS));
 
 export default Icon;
-export type { T_IconName };
 
 // --- COMPONENTS ---
 
-function Wrapper({ children, className = "" }: T_HTMLElementAttributes["span"]): T_ReactElement {
+function Wrapper({ children, className = "" }: DR.DOM.HTMLElementAttributes["span"]) {
 	return (
 		<Block
 			is="span"
-			className={classNames(
-				"tw-inline-flex tw-items-center tw-justify-center tw-align-middle",
-				className,
-			)}
+			className={cn("tw-inline-flex tw-items-center tw-justify-center tw-align-middle", className)}
 		>
 			{children}
 		</Block>
 	);
+}
+
+// --- INTERNALS ---
+
+function isLibraryIcon(iconConfig: T_Icon): iconConfig is I_LibraryIcon {
+	return !v.isString(iconConfig.icon);
+}
+
+function isCustomIcon(iconConfig: T_Icon): iconConfig is I_CustomIcon {
+	return v.isString(iconConfig.icon);
 }

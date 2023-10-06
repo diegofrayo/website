@@ -1,0 +1,17 @@
+.dr-list-item--default {
+	@apply tw-mb-1;
+	margin-left: 20px;
+	position: relative;
+}
+
+.dr-list-item--default::last {
+	@apply tw-mb-0;
+}
+
+.dr-list-item--default::before {
+	content: "›";
+	font-weight: bold;
+	left: -12.5px;
+	position: absolute;
+	top: -1px;
+}

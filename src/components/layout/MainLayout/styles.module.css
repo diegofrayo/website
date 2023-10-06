@@ -1,0 +1,11 @@
+.radix-navigation-menu-trigger-icon {
+	transition: transform 250ms ease;
+}
+
+[data-state="open"] > .radix-navigation-menu-trigger-icon {
+	transform: rotate(-180deg);
+}
+
+.radix-hover-card-content > span {
+	overflow: hidden;
+}

@@ -1,0 +1,355 @@
+/* --- NAVIGATION MENU --- */
+
+.radix-navigation-menu-root {
+	position: relative;
+}
+
+.radix-navigation-menu-list {
+	list-style: none;
+	margin: 0;
+}
+
+.radix-navigation-menu-trigger {
+	line-height: 1;
+	outline: none;
+	user-select: none;
+}
+.radix-navigation-menu-trigger:hover {
+	cursor: pointer;
+}
+
+.radix-navigation-menu-content {
+	animation-duration: 250ms;
+	animation-timing-function: ease;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.radix-navigation-menu-content[data-motion="from-start"] {
+	animation-name: enterFromLeft;
+}
+.radix-navigation-menu-content[data-motion="from-end"] {
+	animation-name: enterFromRight;
+}
+.radix-navigation-menu-content[data-motion="to-start"] {
+	animation-name: exitToLeft;
+}
+.radix-navigation-menu-content[data-motion="to-end"] {
+	animation-name: exitToRight;
+}
+
+.radix-viewport-position {
+	display: flex;
+	justify-content: center;
+	perspective: 2000px;
+	position: absolute;
+	top: 100%;
+	width: 100%;
+}
+
+.radix-viewport-position--ltr {
+	left: 0;
+}
+
+.radix-viewport-position--rtl {
+	right: 0;
+}
+
+.radix-navigation-menu-viewport {
+	height: var(--radix-navigation-menu-viewport-height);
+	overflow: hidden;
+	position: relative;
+	transform-origin: top center;
+	transition:
+		width,
+		height,
+		300ms ease;
+}
+.radix-navigation-menu-viewport[data-state="open"] {
+	animation: scaleIn 200ms ease;
+}
+.radix-navigation-menu-viewport[data-state="closed"] {
+	animation: scaleOut 200ms ease;
+}
+
+@keyframes enterFromRight {
+	from {
+		opacity: 0;
+		transform: translateX(200px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes enterFromLeft {
+	from {
+		opacity: 0;
+		transform: translateX(-200px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes exitToRight {
+	from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(200px);
+	}
+}
+
+@keyframes exitToLeft {
+	from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(-200px);
+	}
+}
+
+@keyframes scaleIn {
+	from {
+		opacity: 0;
+		transform: rotateX(-30deg) scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: rotateX(0deg) scale(1);
+	}
+}
+
+@keyframes scaleOut {
+	from {
+		opacity: 1;
+		transform: rotateX(0deg) scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: rotateX(-10deg) scale(0.95);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+/* --- HOVER CARD --- */
+
+.radix-hover-card-content {
+	animation-duration: 400ms;
+	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+	border-radius: 6px;
+	will-change: transform, opacity;
+}
+.radix-hover-card-content[data-side="top"] {
+	animation-name: slideDownAndFade;
+}
+.radix-hover-card-content[data-side="right"] {
+	animation-name: slideLeftAndFade;
+}
+.radix-hover-card-content[data-side="bottom"] {
+	animation-name: slideUpAndFade;
+}
+.radix-hover-card-content[data-side="left"] {
+	animation-name: slideRightAndFade;
+}
+
+@keyframes slideUpAndFade {
+	0% {
+		opacity: 0;
+		transform: translateY(2px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideRightAndFade {
+	0% {
+		opacity: 0;
+		transform: translateX(-2px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideDownAndFade {
+	0% {
+		opacity: 0;
+		transform: translateY(-2px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideLeftAndFade {
+	0% {
+		opacity: 0;
+		transform: translateX(2px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+/* TOOLTIP */
+
+.radix-tooltip-content {
+	animation-duration: 400ms;
+	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+	line-height: 1;
+	user-select: none;
+	will-change: transform, opacity;
+}
+.radix-tooltip-content[data-state="delayed-open"][data-side="top"] {
+	animation-name: slideDownAndFade;
+}
+.radix-tooltip-content[data-state="delayed-open"][data-side="right"] {
+	animation-name: slideLeftAndFade;
+}
+.radix-tooltip-content[data-state="delayed-open"][data-side="bottom"] {
+	animation-name: slideUpAndFade;
+}
+.radix-tooltip-content[data-state="delayed-open"][data-side="left"] {
+	animation-name: slideRightAndFade;
+}
+
+@keyframes slideUpAndFade {
+	from {
+		opacity: 0;
+		transform: translateY(2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideRightAndFade {
+	from {
+		opacity: 0;
+		transform: translateX(-2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideDownAndFade {
+	from {
+		opacity: 0;
+		transform: translateY(-2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideLeftAndFade {
+	from {
+		opacity: 0;
+		transform: translateX(2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+/* POPOVER */
+
+.radix-popover-content {
+	animation-duration: 400ms;
+	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+	will-change: transform, opacity;
+}
+.radix-popover-content:focus {
+}
+.radix-popover-content[data-state="open"][data-side="top"] {
+	animation-name: slideDownAndFade;
+}
+.radix-popover-content[data-state="open"][data-side="right"] {
+	animation-name: slideLeftAndFade;
+}
+.radix-popover-content[data-state="open"][data-side="bottom"] {
+	animation-name: slideUpAndFade;
+}
+.radix-popover-content[data-state="open"][data-side="left"] {
+	animation-name: slideRightAndFade;
+}
+
+@keyframes slideUpAndFade {
+	from {
+		opacity: 0;
+		transform: translateY(2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideRightAndFade {
+	from {
+		opacity: 0;
+		transform: translateX(-2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideDownAndFade {
+	from {
+		opacity: 0;
+		transform: translateY(-2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideLeftAndFade {
+	from {
+		opacity: 0;
+		transform: translateX(2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}

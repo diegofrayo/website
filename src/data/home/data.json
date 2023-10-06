@@ -1,0 +1,17 @@
+{
+	"featured": [
+		{ "text": "/d/contacts", "url": "/personal/contacts" },
+		{ "text": "/d/businesses", "url": "/personal/businesses" },
+		{ "text": "/t/dencrypt", "url": "/personal/dencrypt" },
+		{ "text": "/t/whatsapp", "url": "/personal/whatsapp" }
+	],
+	"song": {
+		"title": "Fuji",
+		"artist": "Loli Molina",
+		"thumbnail": "https://i.scdn.co/image/ab67616d0000b273410f27120b492c32b9f8b1c0",
+		"audio": "https://p.scdn.co/mp3-preview/c5d9cd5e1e5409a7c3e55adadf3d9b56ea49c553",
+		"url": "https://open.spotify.com/track/1s1XgeIjN3tyyuduv3VhRU",
+		"source": "spotify"
+	},
+	"photo": { "src": "/assets/images/pages/home/assets/4.jpg", "portrait": false }
+}

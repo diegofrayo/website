@@ -1,6 +1,6 @@
-import useDidMount from "./useDidMount";
+import type DR from "@diegofrayo/types";
 
-import type { T_SetTimeout } from "~/types";
+import useDidMount from "./useDidMount";
 
 function useOnWindowStopScroll({
 	onScrollStoppedCallback,
@@ -11,7 +11,8 @@ function useOnWindowStopScroll({
 	onScrollCallback?: () => void;
 	timeout?: number;
 }): () => void {
-	let isScrolling: T_SetTimeout;
+	// --- VARS ---
+	let isScrolling: DR.SetTimeout;
 	let isMounted = false;
 
 	// --- EFFECTS ---

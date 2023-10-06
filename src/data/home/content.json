@@ -1,0 +1,17 @@
+{
+	"config": {
+		"locales": ["es", "en"],
+		"default_locale": "en",
+		"is_seo_enabled": false,
+		"pathname": "/"
+	},
+	"content": {
+		"en": {
+			"seo": {
+				"title": "",
+				"description": "I'm a Software Developer. Focused on JavaScript, TypeScript, React, Next.js, Tailwind CSS, and Node.js"
+			},
+			"texts": {}
+		}
+	}
+}

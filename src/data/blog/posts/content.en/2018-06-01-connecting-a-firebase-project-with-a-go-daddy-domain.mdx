@@ -1,0 +1,92 @@
+<Callout variant={Callout.variant.WARNING}>
+	This tutorial is old, I don't use Firebase hosting and Go Daddy anymore. This website is hosted on
+	[Vercel](https://vercel.com).
+</Callout>
+
+In this tutorial I want to explain how to connect a **Go Daddy** domain with a **Firebase** project.
+
+## Requirements
+
+- **Node.js**
+- A **Go Daddy** domain
+- A **Firebase project**
+
+## Connecting our Firebase project with the Go Daddy domain
+
+1. Go to `https://console.firebase.google.com/project/[YOUR-PROJECT-ID]/hosting` and click on **Connect a domain**.
+
+1. Now, you should see a modal, where you have to type the domain's name, for example: `diegofrayo.com`, and then click on **Continue**.
+
+1. It's necessary to verify you are domain's owner, so, you have to create a **TXT record** on the domain's configuration on **Go Daddy**. To accomplish it, log into **Go Daddy** and go to `https://dcc.godaddy.com/manage/[YOUR-DOMAIN.COM]/dns`. Now, you have to create the **TXT record** using the information that Firebase provides you and wait until **Firebase** verifies that you are the domain's owner. _(I had to wait around one hour)_
+
+   > **IMPORTANT:** To create a **TXT Record**, it is required to enter a _Host_. **Firebase** proposes to use our domain's name as _Host_, for example `diegofrayo.com`. I **didn't** use my domain's name as _Host_, instead, I used the `@` symbol.
+
+1. After **Firebase** verifies that the domain is yours, you have to create the **A records** using the information that Firebase provides. To do this, you have to go to the domain's configuration on **Go Daddy** and create them the same way that you have created the **TXT records** in the steps above. Before create them, it is important to delete all **A records** that you have created formerly.
+
+   > **IMPORTANT:** To create an **A record**, it is necessary to enter the _Host_ and the _IP address_ where you domain will point. **Firebase** proposes to use the domain's name as _Host_, for example `diegofrayo.com`. I **didn't** use my domain's name as _Host_, instead, I used the `@` symbol.
+
+   <ImageWithLink
+   	src={DATA.post.assets.images["1"]}
+   	alt="Creating a A record"
+   	width={698}
+   	height={190}
+   />
+
+   The domain's configuration on **Go Daddy** should look like this:
+
+   <ImageWithLink
+   	src={DATA.post.assets.images["2"]}
+   	alt="The domain's configuration"
+   	width={698}
+   	height={371}
+   />
+
+1. Now, you should wait a couple of hours until the changes take effect _(I waited for around 4 hours)_. After this, you will have the **Go Daddy** domain connected with your **Firebase** project.
+
+## Deploying our website on Firebase Hosting
+
+To deploy our website on **Firebase Hosting**, let's follow the next steps.
+
+1. Install **firebase-tools:** `npm install -g firebase-tools`.
+
+1. Create a folder for our project and init it.
+
+   ```bash
+   mkdir project-name
+   cd project-name
+   firebase init
+   ```
+
+   > When you execute the third command, you have to sign in using your **Google** Account.
+
+1. Now, your project should have the next structure:
+
+   <ImageWithLink
+   	src={DATA.post.assets.images["3"]}
+   	alt="Our project's structure"
+   	width={268}
+   	height={366}
+   />
+
+   Inside of `public` folder we must store all website's assets. The `firebase.json` file should look like this:
+
+   ```json
+   {
+   	"hosting": {
+   		"public": "public",
+   		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+   	}
+   }
+   ```
+
+   > In adition, we can configure more things in this file, for example, redirections, rewrites and other interesting stuff. In this [link](https://firebase.google.com/docs/hosting/full-config?authuser=0) you can read more about this configuration file.
+
+1. To test the website on your local environment, you can use `firebase serve` command, it creates a HTTP server and you can access it via [http://localhost:5000](http://localhost:5000).
+
+1. To deploy the website on **Firebase Hosting**, just execute `firebase deploy` command.
+
+## Final words
+
+When you are creating the **A and TXT records** on **Go Daddy**, it's important to be patient and wait until the changes take effect, it could take a couple of hours. As you have seen, using **Firebase Hosting** you can deploy a website easily, besides getting an SSL certificate for free.
+
+I hope this tutorial has been useful for you, thanks for reading...

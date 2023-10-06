@@ -1,69 +1,53 @@
-import { GetStaticPaths } from "next";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
+import type { GetStaticProps, GetStaticPaths } from "next";
 
-import BlogPostPage from "~/features/pages/blog/[slug]";
-import BlogService, { T_BlogPost } from "~/features/pages/blog/service";
-import { getPageContentStaticProps, T_Locale } from "~/features/i18n";
-import { getMDXScope } from "~/features/mdx";
-import { ROUTES } from "~/features/routing";
-import v from "~/lib/v";
-import dataLoader from "~/server";
-import { replaceAll } from "~/utils/strings";
+import { loadData } from "~/data/loader";
+import { compile } from "~/features/mdx/server";
+import { replaceAll } from "@diegofrayo/utils/strings";
+import type { T_RawBlogPostsResponse } from "~/features/pages/blog/types";
+import type { T_BlogPostPageProps } from "~/features/pages/blog/BlogPostPage";
 
-export default BlogPostPage;
+export { default } from "~/features/pages/blog/BlogPostPage";
 
 // --- NEXT.JS FUNCTIONS ---
 
-type T_StaticPath = { slug: string };
+export const getStaticPaths: GetStaticPaths = async function getStaticPaths() {
+	const data = await loadData<T_RawBlogPostsResponse>({ page: "blog" });
 
-export const getStaticPaths: GetStaticPaths<T_StaticPath> = async function getStaticPaths() {
 	return {
-		paths: (await BlogService.fetchPosts())
-			.filter((post) => post.hasToBePreRendered)
-			.reduce((result: { params: T_StaticPath; locale: T_Locale }[], post: T_BlogPost) => {
-				return result.concat(
-					post.locales.map((locale: T_Locale) => {
-						return { params: { slug: post.slug }, locale };
-					}),
-				);
-			}, []),
+		paths: Object.values(data)
+			.filter((post) => post.config.is_published)
+			.map((post) => {
+				return { params: { slug: post.config.slug } };
+			}),
 		fallback: "blocking",
 	};
 };
 
-export const getStaticProps = getPageContentStaticProps<
-	{ post: T_BlogPost; postMDXContent: MDXRemoteSerializeResult },
-	T_StaticPath
->({
-	page: [ROUTES.BLOG, ROUTES.BLOG_DETAILS],
-	localesExtractor: (data) => data.post.locales,
-	callback: async ({ params, locale }) => {
-		const post = await BlogService.fetchPost({ slug: params.slug, locale });
+export const getStaticProps: GetStaticProps<T_BlogPostPageProps, { slug: string }> = async ({
+	params,
+}) => {
+	const DEFAULT_LANG = "en";
+	const posts = await loadData<T_RawBlogPostsResponse>({ page: "blog" });
+	const slug = params?.slug || "";
+	const postDetails = { ...posts[slug] };
 
-		if (v.isUndefined(post)) {
-			return {
-				notFound: true,
-			};
-		}
+	if (!postDetails) throw new Error(`Invalid post slug: "${slug}"`);
 
-		const file = (await dataLoader({
-			path: `/pages/blog/[slug]/${locale}/${replaceAll(post.createdAt, "/", "-")}-${post.slug}.mdx`,
-		})) as string;
-		const postMDXContent = await serialize(file, {
-			scope: {
-				DATA: {
-					...getMDXScope().DATA,
-					post,
-				},
+	const mdxCompiled = await compile({
+		source: `./src/data/blog/posts/content.${DEFAULT_LANG}/${replaceAll(
+			postDetails.config.created_at,
+			"/",
+			"-",
+		)}-${postDetails.config.slug}.mdx`,
+	});
+
+	return {
+		props: {
+			postDetails: {
+				...postDetails,
+				content: postDetails.content[DEFAULT_LANG],
 			},
-		});
-
-		return {
-			props: {
-				post,
-				postMDXContent,
-			},
-		};
-	},
-});
+			postContent: mdxCompiled.code,
+		},
+	};
+};

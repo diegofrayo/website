@@ -2,17 +2,17 @@ import * as React from "react";
 import hoistNonReactStatics from "hoist-non-react-statics";
 
 import { useDidMount } from "~/hooks";
-import type { T_ReactElementNullable, T_ReactFunctionComponent } from "~/types";
+import type DR from "@diegofrayo/types";
 
 type T_RenderIfReturn<G_ComponentProps> = (
 	callback: () => boolean,
-) => T_ReactFunctionComponent<G_ComponentProps>;
+) => DR.React.FunctionComponent<G_ComponentProps>;
 
 function renderIf<G_ComponentProps extends object>(
-	WrappedComponent: T_ReactFunctionComponent<G_ComponentProps>,
+	WrappedComponent: DR.React.FunctionComponent<G_ComponentProps>,
 ): T_RenderIfReturn<G_ComponentProps> {
 	const renderIfReturn: T_RenderIfReturn<G_ComponentProps> = function renderIfReturn(callback) {
-		function RenderIfComponent(props: G_ComponentProps): T_ReactElementNullable {
+		function RenderIfComponent(props: G_ComponentProps): DR.React.JSXElementNullable {
 			const [hasToRender, setHasToRender] = React.useState(false);
 
 			useDidMount(() => {

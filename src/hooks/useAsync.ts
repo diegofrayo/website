@@ -28,11 +28,12 @@ function useAsync<G_Params = unknown, G_Data = unknown>(
 				setIsLoading(true);
 
 				const result = await savedHandler.current(params);
+
 				setData(result);
 				setError(undefined);
-			} catch (e) {
+			} catch (err) {
 				setData(undefined);
-				setError(e);
+				setError(err);
 			} finally {
 				setIsLoading(false);
 			}

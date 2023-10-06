@@ -1,11 +1,13 @@
-import { ErrorPage } from "~/components/shared";
-import { getPageContentStaticProps } from "~/features/i18n";
-import { ROUTES } from "~/features/routing";
+import * as React from "react";
+import ErrorPage from "~/features/pages/ErrorPage";
 
-export default ErrorPage;
+function Page500Error() {
+	return (
+		<ErrorPage
+			title="500"
+			variant="500"
+		/>
+	);
+}
 
-// --- NEXT.JS FUNCTIONS ---
-
-export const getStaticProps = getPageContentStaticProps({
-	page: ROUTES.ERROR_500,
-});
+export default Page500Error;

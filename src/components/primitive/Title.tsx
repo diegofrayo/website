@@ -1,88 +1,40 @@
 import * as React from "react";
-import classNames from "classnames";
+import { cva } from "class-variance-authority";
+import cn from "classnames";
 
-import v from "~/lib/v";
-import { mirror } from "~/utils/objects-and-arrays";
-import { generateSlug } from "~/utils/strings";
-import type { T_HTMLElementAttributes, T_ReactChildren, T_ReactElement } from "~/types";
+import { mirror } from "@diegofrayo/utils/arrays-and-objects";
+import type DR from "@diegofrayo/types";
 
-import Icon from "./Icon";
-import Link from "./Link";
+// --- PROPS & TYPES ---
 
-const VARIANTS = mirror(["UNSTYLED", "PRIMARY", "SECONDARY"]);
+const VARIANTS = mirror(["UNSTYLED", "DEFAULT", "PRIMARY"]);
 type T_Variant = keyof typeof VARIANTS;
-const SIZES = mirror(["XS", "SM", "MD", "LG", "XL"]);
+
+const SIZES = mirror(["MD", "LG", "XL"]);
 type T_Size = keyof typeof SIZES;
 
-type T_TitleProps = {
-	children: T_ReactChildren;
-	is: "h1" | "h2" | "h3" | "h4";
+const ELEMENTS = mirror(["h1", "h2", "h3", "h4", "h5", "h6"]);
+type T_Elements = keyof typeof ELEMENTS;
+
+export type T_TitleProps = {
+	is: T_Elements;
 	variant?: T_Variant;
 	size?: T_Size;
-	showLinkIcon?: boolean;
-} & T_HTMLElementAttributes["h1"];
+} & DR.DOM.HTMLElementAttributes["h1"];
 
-function Title(props: T_TitleProps): T_ReactElement {
-	const {
-		// --- PROPS ---
-		variant,
-		showLinkIcon,
-		children,
-		is: Tag,
+// --- COMPONENT DEFINITION ---
 
-		// --- VARS ---
-		id,
-		className,
-
-		...rest
-	} = useController(props);
-
-	if (variant === VARIANTS.PRIMARY && showLinkIcon) {
-		return (
-			<Tag
-				id={id}
-				className={className}
-				{...rest}
-			>
-				<Link
-					variant={Link.variant.SIMPLE}
-					href={`#${id}`}
-					className={classNames(
-						"tw-visible tw-float-left tw--ml-5 tw-pr-1 tw-leading-0 sm:tw-invisible",
-						{
-							h1: "tw-pt-3",
-							h2: "tw-pt-2.5",
-							h3: "tw-pt-2",
-							h4: "tw-pt-1.5",
-						}[Tag],
-					)}
-				>
-					<Icon
-						icon={Icon.icon.LINK}
-						size={16}
-					/>
-				</Link>
-				{children}
-
-				<style jsx>
-					{`
-						:global(.dfr-Title--primary) {
-							scroll-margin-top: 20px;
-						}
-
-						:global(.dfr-Title--primary):hover :global(.dfr-Link) {
-							visibility: visible;
-						}
-					`}
-				</style>
-			</Tag>
-		);
-	}
-
+function Title({
+	children,
+	is: Tag,
+	variant = VARIANTS.UNSTYLED,
+	size,
+	className = "",
+	...rest
+}: T_TitleProps) {
 	return (
 		<Tag
-			id={id}
-			className={classNames(className)}
+			className={cn("tw-font-bold", styles({ variant, size, is: Tag }), className)}
 			{...rest}
 		>
 			{children}
@@ -94,64 +46,60 @@ Title.variant = VARIANTS;
 Title.size = SIZES;
 
 export default Title;
-export type { T_TitleProps };
 
-// --- CONTROLLER ---
+// --- STYLES ---
 
-type T_UseControllerReturn = T_TitleProps;
-
-function useController({
-	children,
-	is,
-	className = "",
-	size = undefined,
-	variant = VARIANTS.PRIMARY,
-	showLinkIcon = false,
-	id = "",
-	...rest
-}: T_TitleProps): T_UseControllerReturn {
-	// --- UTILS ---
-	function generateStyles(tag: T_TitleProps["is"]): string {
-		return classNames(
-			{
-				PRIMARY: classNames(
-					"dfr-text-color-bw",
-					{
-						h1: "tw-text-4xl",
-						h2: "tw-text-3xl",
-						h3: "tw-text-2xl",
-						h4: "tw-text-xl",
-					}[tag],
-				),
-				SECONDARY: "dfr-text-color-bw",
-				UNSTYLED: "",
-			}[variant],
-			v.isString(size) &&
-				{
-					XS: "tw-text-md",
-					SM: "tw-text-xl",
-					MD: "tw-text-2xl",
-					LG: "tw-text-3xl",
-					XL: "tw-text-4xl",
-				}[size],
-		);
-	}
-
-	return {
-		// --- PROPS ---
-		variant,
-		showLinkIcon,
-		children,
-		is,
-		...rest,
-
-		// --- VARS ---
-		id: variant === VARIANTS.PRIMARY && v.isString(children) ? generateSlug(children) : id,
-		className: classNames(
-			`dfr-Title dfr-Title--${variant.toLowerCase()}`,
-			"tw-font-bold",
-			generateStyles(is),
-			className,
-		),
-	};
-}
+const styles = cva("dr-title", {
+	variants: {
+		variant: {
+			[VARIANTS.UNSTYLED]: "",
+			[VARIANTS.DEFAULT]: "dr-font-titles",
+			[VARIANTS.PRIMARY]: "dr-font-titles",
+		},
+		size: {
+			[SIZES.MD]: "tw-text-2xl",
+			[SIZES.LG]: "tw-text-3xl",
+			[SIZES.XL]: "tw-text-4xl",
+		},
+		is: {
+			h1: "",
+			h2: "",
+			h3: "",
+			h4: "",
+			h5: "",
+			h6: "",
+		},
+	},
+	compoundVariants: [
+		{
+			variant: VARIANTS.PRIMARY,
+			is: ELEMENTS.h1,
+			className: "tw-text-4xl",
+		},
+		{
+			variant: VARIANTS.PRIMARY,
+			is: ELEMENTS.h2,
+			className: "tw-text-3xl",
+		},
+		{
+			variant: VARIANTS.PRIMARY,
+			is: ELEMENTS.h3,
+			className: "tw-text-2xl",
+		},
+		{
+			variant: VARIANTS.PRIMARY,
+			is: ELEMENTS.h4,
+			className: "tw-text-xl",
+		},
+		{
+			variant: VARIANTS.PRIMARY,
+			is: ELEMENTS.h5,
+			className: "tw-text-lg",
+		},
+		{
+			variant: VARIANTS.PRIMARY,
+			is: ELEMENTS.h6,
+			className: "tw-text-base",
+		},
+	],
+});

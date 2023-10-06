@@ -1,44 +1,26 @@
-# website
+# @diegofrayo/website
 
-My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
+My personal website | [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 
 ## Tech stack
 
-- **Main**
-  - typescript
-  - react
-  - next.js
-  - tailwind-css
-  - mdx using [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
-
-- **Experiments**
-  - redux
-  - react-query
-  - axios
-  - storybook
-  - next-pwa
-
-- **Linting and formatting**
-  - prettier
-  - eslint
-  - husky
+- TypeScript
+- React.js
+- Next.js
+- Tailwind CSS
+- MDX with [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
+- ESLint & Prettier & Husky
 
 ## Setup
 
 1. `git clone https://github.com/diegofrayo/website.git`
-
 1. Create a `.env` file
-
    ```
-	NEXT_PUBLIC_ASSETS_SERVER_URL=https://diegofrayo-backend.vercel.app
-	NEXT_PUBLIC_WEBSITE_URL=http://localhost:3000
-	DISABLE_PWA=true
+    NODE_ENV=development
+    NEXT_PUBLIC_WEBSITE_URL=http://localhost:3000
    ```
-
 1. `npm install`
-
-1. `npm run husky:install` (Required to commit changes)
-
+1. `npm run husky:install`
 1. `npm run dev`
 
 ## Stats
@@ -47,13 +29,11 @@ My personal website [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 ===============================================================================
  Language            Files        Lines         Code     Comments       Blanks
 ===============================================================================
- CSS                     7          401          329           17           55
- JSON                    1          113          113            0            0
- Markdown                2           68            0           53           15
- TSX                   113        13763        11691          534         1538
- TypeScript             81         4057         3249          180          628
+ CSS                     6          305          268            4           33
+ TSX                    24         2272         1806          172          294
+ TypeScript             22         1399          564          647          188
 ===============================================================================
- Total                 204        18402        15382          784         2236
+ Total                  52         3976         2638          823          515
 ===============================================================================
 ```
 

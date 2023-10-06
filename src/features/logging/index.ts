@@ -1,16 +1,15 @@
 import { isServer } from "~/utils/app";
+import LocalStorageManager from "@diegofrayo/utils/local-storage";
 
-const LOCAL_STORAGE_KEY = "DFR_GLOBAL_ERRORS";
+const LS_Logs = LocalStorageManager.createItem<string[]>({
+	key: "DR_LOGS",
+	value: [],
+	saveWhenCreating: true,
+});
 
-export function addErrorsGlobalListener(): void {
-	window.onerror = function onerror(msg, url, lineNo, columnNo, error): boolean {
-		logAndReportError(
-			` ${msg} \n ${url} \n ${lineNo} \n ${columnNo} \n ${error} `,
-			"window.onerror",
-		);
-
-		return false;
-	};
+export function logger(type: "LOG" | "WARN" | "ERROR", ...args: unknown[]): void {
+	// eslint-disable-next-line no-console
+	console[type === "LOG" ? "log" : type === "WARN" ? "warn" : "error"](...args);
 }
 
 export function logAndReportError(error: unknown, source?: string): void {
@@ -26,46 +25,38 @@ export function logAndReportError(error: unknown, source?: string): void {
 			: typeof error === "string"
 			? error
 			: "Unknown error";
-
-	window.localStorage.setItem(
-		LOCAL_STORAGE_KEY,
-		JSON.stringify([
-			`ERROR: ${source || "No source"} | ${new Date()}: \n ${parsedError}`,
-			...getLogsHistory(),
-		]),
-	);
+	addLog(source, parsedError);
 }
 
-export function logForDebugging(input: unknown, source?: string): void {
+export function logForRemoteDebugging(input: unknown, source?: string): void {
 	logger("LOG", input);
 
 	if (isServer()) {
 		return;
 	}
 
-	const parsedInput = input && typeof input === "object" ? JSON.stringify(input) : input;
-
-	window.localStorage.setItem(
-		LOCAL_STORAGE_KEY,
-		JSON.stringify([
-			`LOG: ${source || "No source"} | ${new Date()}: \n ${parsedInput}`,
-			...getLogsHistory(),
-		]),
-	);
+	addLog(source, input);
 }
 
-export function getLogsHistory(): string[] {
-	try {
-		return JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY) || "---");
-	} catch (error) {
-		return [];
-	}
+export function addErrorsGlobalListener(): void {
+	window.onerror = function onerror(msg, url, lineNo, columnNo, error): boolean {
+		logAndReportError(
+			` ${msg} \n ${url} \n ${lineNo} \n ${columnNo} \n ${error} `,
+			"window.onerror",
+		);
+
+		return false;
+	};
 }
 
 export function clearLogsHistory(): void {
-	window.localStorage.removeItem(LOCAL_STORAGE_KEY);
+	LS_Logs.remove();
 }
 
-export function logger(type: "LOG" | "WARN" | "ERROR", ...args: unknown[]): void {
-	console[type === "LOG" ? "log" : type === "WARN" ? "warn" : "error"](...args);
+// --- INTERNALS ---
+
+function addLog(source: string | undefined, content: unknown) {
+	LS_Logs.set(
+		[`LOG: ${source || "No source"} | ${new Date()}: \n ${content}`].concat(LS_Logs.get()),
+	);
 }

@@ -1,20 +1,16 @@
-import { ENV_VARS } from "~/constants";
-import { readDevToolsConfig } from "~/features/development-tools";
+import EnvVars from "~/features/env-vars";
+import LocalStorageManager from "@diegofrayo/utils/local-storage";
 
 export function isDevelopmentEnvironment(): boolean {
-	if (isLocalhostEnvironment() && isBrowser()) {
-		return readDevToolsConfig().isDevelopmentEnvironment === true;
-	}
-
 	return (
-		(isBrowser() ? window.location.href : ENV_VARS.NEXT_PUBLIC_WEBSITE_URL).includes(
+		(isBrowser() ? window.location.href : EnvVars.NEXT_PUBLIC_WEBSITE_URL).includes(
 			"vercel.app",
 		) === false
 	);
 }
 
 export function isLocalhostEnvironment(): boolean {
-	const url = isBrowser() ? window.location.href : ENV_VARS.NEXT_PUBLIC_WEBSITE_URL;
+	const url = isBrowser() ? window.location.href : EnvVars.NEXT_PUBLIC_WEBSITE_URL;
 	return url.includes("localhost") || url.includes("192.");
 }
 
@@ -24,4 +20,30 @@ export function isBrowser(): boolean {
 
 export function isServer(): boolean {
 	return !isBrowser();
+}
+
+export function throwError(message: string) {
+	throw new Error(message);
+}
+
+export function recoverFromBreakingChanges() {
+	const LS_BreakingChanges = LocalStorageManager.createItem({
+		key: "DR_BREAKING_CHANGES",
+		value: "",
+		saveWhenCreating: true,
+		readInitialValueFromStorage: true,
+	});
+	const BREAKING_CHANGES = [
+		"Mon Oct 02 2023 15:29:15",
+		"Mon Oct 02 2023 16:30:15",
+		"Mon Oct 02 2023 16:59:15",
+	];
+	const lastBreakingChange = BREAKING_CHANGES.at(-1) as string;
+	const thereAreBreakingChanges = LS_BreakingChanges.get() !== lastBreakingChange;
+
+	if (thereAreBreakingChanges) {
+		window.localStorage.clear();
+		LS_BreakingChanges.set(lastBreakingChange);
+		window.location.reload();
+	}
 }

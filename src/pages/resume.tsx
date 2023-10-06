@@ -1,28 +1,23 @@
-import ResumePage from "~/features/pages/resume";
-import { getPageContentStaticProps } from "~/features/i18n";
-import http from "~/lib/http";
-import { ENV_VARS } from "~/constants";
-import { ROUTES } from "~/features/routing";
+import type { GetStaticProps } from "next";
+
+import { loadData, loadPageContent } from "~/data/loader";
+import ResumePage, { type T_ResumePageProps } from "~/features/pages/resume/page";
 
 export default ResumePage;
 
 // --- NEXT.JS FUNCTIONS ---
 
-export const getStaticProps = getPageContentStaticProps({
-	page: ROUTES.RESUME,
-	callback: async () => {
-		const { data: resume } = await http.post(
-			`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
-			{
-				path: "/data",
-				model: "resume",
-			},
-		);
+export const getStaticProps: GetStaticProps<T_ResumePageProps> = async () => {
+	const DEFAULT_LANG = "en";
+	const content = await loadPageContent({ page: "resume" });
+	const data = await loadData<T_ResumePageProps["data"]>({
+		fullPath: `./src/data/resume/data.${DEFAULT_LANG}.json`,
+	});
 
-		return {
-			props: {
-				resume,
-			},
-		};
-	},
-});
+	return {
+		props: {
+			content,
+			data,
+		},
+	};
+};

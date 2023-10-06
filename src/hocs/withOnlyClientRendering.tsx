@@ -1,11 +1,11 @@
 import { isBrowser } from "~/utils/app";
-import type { T_ReactFunctionComponent } from "~/types";
+import type DR from "@diegofrayo/types";
 
 import renderIf from "./renderIf";
 
 function withOnlyClientRendering<G_ComponentProps extends object>(
-	Component: T_ReactFunctionComponent<G_ComponentProps>,
-): T_ReactFunctionComponent<G_ComponentProps> {
+	Component: DR.React.FunctionComponent<G_ComponentProps>,
+): DR.React.FunctionComponent<G_ComponentProps> {
 	return renderIf(Component)(() => isBrowser());
 }
 
