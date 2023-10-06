@@ -1,50 +1,50 @@
 {
-    "version": "https://jsonfeed.org/version/1",
-    "title": "Diego Rayo | New Website",
-    "home_page_url": "https://diegofrayo.vercel.app",
-    "feed_url": "https://diegofrayo.vercel.app/feed.json",
-    "description": "Hi, I'm Diego, a Software Developer. I have +5 years of experience developing Web Solutions. I usually work using JavaScript, TypeScript, React, Next.js, Tailwind CSS, and Node.js",
-    "icon": "https://diegofrayo.vercel.app/assets/images/favicon/favicon.ico",
-    "author": {
-        "name": "Diego Fernando Rayo Zamora",
-        "url": "https://diegofrayo.vercel.app"
-    },
-    "items": [
-        {
-            "id": "https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions",
-            "content_html": "How to publish a private npm package to GitHub packages using GitHub Actions.",
-            "url": "https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions",
-            "title": "Publishing a npm private package to GitHub packages using GitHub actions",
-            "summary": "How to publish a private npm package to GitHub packages using GitHub Actions.",
-            "date_modified": "2021-03-19T05:00:00.000Z",
-            "author": {
-                "name": "Diego Rayo",
-                "url": "https://diegofrayo.vercel.app"
-            }
-        },
-        {
-            "id": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
-            "content_html": "Introduction to MDX and how to use it with Next.js to create a simple blog.",
-            "url": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
-            "title": "My favorite music and MDX",
-            "summary": "Introduction to MDX and how to use it with Next.js to create a simple blog.",
-            "date_modified": "2021-08-14T05:00:00.000Z",
-            "author": {
-                "name": "Diego Rayo",
-                "url": "https://diegofrayo.vercel.app"
-            }
-        },
-        {
-            "id": "https://diegofrayo.vercel.app/blog/connecting-a-firebase-project-with-a-go-daddy-domain",
-            "content_html": "How to deploy a simple web project in Firebase and link it with Go Daddy domain.",
-            "url": "https://diegofrayo.vercel.app/blog/connecting-a-firebase-project-with-a-go-daddy-domain",
-            "title": "Connecting a Firebase project with a Go Daddy domain",
-            "summary": "How to deploy a simple web project in Firebase and link it with Go Daddy domain.",
-            "date_modified": "2018-06-01T05:00:00.000Z",
-            "author": {
-                "name": "Diego Rayo",
-                "url": "https://diegofrayo.vercel.app"
-            }
-        }
-    ]
+	"version": "https://jsonfeed.org/version/1",
+	"title": "Diego Rayo | New Website",
+	"home_page_url": "https://diegofrayo.vercel.app",
+	"feed_url": "https://diegofrayo.vercel.app/feed.json",
+	"description": "Hi, I'm Diego, a Software Developer. I have +5 years of experience developing Web Solutions. I usually work using JavaScript, TypeScript, React, Next.js, Tailwind CSS, and Node.js",
+	"icon": "https://diegofrayo.vercel.app/assets/images/favicon/favicon.ico",
+	"author": {
+		"name": "Diego Fernando Rayo Zamora",
+		"url": "https://diegofrayo.vercel.app"
+	},
+	"items": [
+		{
+			"id": "https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions",
+			"content_html": "How to publish a private npm package to GitHub packages using GitHub Actions.",
+			"url": "https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions",
+			"title": "Publishing a npm private package to GitHub packages using GitHub actions",
+			"summary": "How to publish a private npm package to GitHub packages using GitHub Actions.",
+			"date_modified": "2021-03-19T05:00:00.000Z",
+			"author": {
+				"name": "Diego Rayo",
+				"url": "https://diegofrayo.vercel.app"
+			}
+		},
+		{
+			"id": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
+			"content_html": "Introduction to MDX and how to use it with Next.js to create a simple blog.",
+			"url": "https://diegofrayo.vercel.app/blog/my-favorite-music-and-mdx",
+			"title": "My favorite music and MDX",
+			"summary": "Introduction to MDX and how to use it with Next.js to create a simple blog.",
+			"date_modified": "2021-08-14T05:00:00.000Z",
+			"author": {
+				"name": "Diego Rayo",
+				"url": "https://diegofrayo.vercel.app"
+			}
+		},
+		{
+			"id": "https://diegofrayo.vercel.app/blog/connecting-a-firebase-project-with-a-go-daddy-domain",
+			"content_html": "How to deploy a simple web project in Firebase and link it with Go Daddy domain.",
+			"url": "https://diegofrayo.vercel.app/blog/connecting-a-firebase-project-with-a-go-daddy-domain",
+			"title": "Connecting a Firebase project with a Go Daddy domain",
+			"summary": "How to deploy a simple web project in Firebase and link it with Go Daddy domain.",
+			"date_modified": "2018-06-01T05:00:00.000Z",
+			"author": {
+				"name": "Diego Rayo",
+				"url": "https://diegofrayo.vercel.app"
+			}
+		}
+	]
 }

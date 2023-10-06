@@ -182,12 +182,12 @@ type T_ToolsMenuItemProps = I_ToolsMenuItemPropsLink | I_ToolsMenuItemPropsButto
 
 function ToolsMenuItem(props: T_ToolsMenuItemProps) {
 	return (
-		<List.Item className="tw-border-b dr-border-color-surface-300 last:tw-border-0">
+		<List.Item className="tw-border-b tw-text-sm dr-border-color-surface-300 last:tw-border-0">
 			{"url" in props ? (
 				<Link
 					variant={Link.variant.SIMPLE}
 					href={props.url}
-					className="tw-flex tw-h-8 tw-items-center tw-justify-between tw-px-2 tw-text-sm"
+					className="tw-flex tw-h-8 tw-w-full tw-items-center tw-justify-between tw-px-2"
 					{...(props.isExternalLink ? { isExternalLink: props.isExternalLink } : {})}
 				>
 					<InlineText>{props.title}</InlineText>
@@ -196,7 +196,7 @@ function ToolsMenuItem(props: T_ToolsMenuItemProps) {
 			) : (
 				<Button
 					variant={Button.variant.SIMPLE}
-					className="tw-flex tw-h-8 tw-items-center tw-justify-between tw-px-2 tw-text-sm"
+					className="tw-flex tw-h-8 tw-w-full tw-items-center tw-justify-between tw-px-2"
 					onClick={props.onClick}
 				>
 					<InlineText>{props.title}</InlineText>
