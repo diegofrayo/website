@@ -62,11 +62,7 @@ function SourceCode({
 				{code}
 			</Pre>
 
-			<Block
-				className={cn(
-					"tw-flex tw-flex-shrink-0 tw-flex-col-reverse tw-rounded-b-md tw-px-4 tw-py-2 tw-pr-2 tw-text-sm tw-font-bold dr-text-color-surface-500 sm:tw-flex-row sm:tw-justify-end",
-				)}
-			>
+			<Block className="tw-flex tw-flex-shrink-0 tw-flex-col-reverse tw-rounded-b-md tw-px-4 tw-py-2 tw-pr-2 tw-text-sm tw-font-bold tw-text-white sm:tw-flex-row sm:tw-justify-end">
 				{v.isNotEmptyString(sourceURL) ? (
 					<React.Fragment>
 						<Link

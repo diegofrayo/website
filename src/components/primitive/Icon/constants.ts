@@ -23,6 +23,7 @@ import {
 	WrenchIcon,
 	XMarkIcon,
 } from "@heroicons/react/24/outline";
+import GithubMonoIcon from "./github";
 
 const ICONS = {
 	// --- OWN ICONS ---
@@ -33,7 +34,7 @@ const ICONS = {
 		},
 	},
 	GITHUB_MONO: {
-		icon: "/assets/images/icons/github-mono.svg",
+		icon: GithubMonoIcon,
 		defaultProps: {
 			alt: "GitHub",
 		},
