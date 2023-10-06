@@ -2,7 +2,7 @@ import * as React from "react";
 import Head from "next/head";
 import Script from "next/script";
 
-import WEBSITE_METADATA from "~/data/metadata.json";
+import WEBSITE_METADATA from "~/data/generated/metadata.json";
 import { ROUTES, type T_RoutesValues } from "~/features/routing";
 import { useDocumentTitle } from "~/hooks";
 import { isDevelopmentEnvironment } from "~/utils/app";

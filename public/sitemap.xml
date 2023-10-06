@@ -15,6 +15,15 @@
     <loc>https://diegofrayo.vercel.app/blog</loc>
   </url>
   <url>
+    <loc>https://diegofrayo.vercel.app/blog/javascript-arrays-examples</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/blog/typescript-snippets</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.vercel.app/blog/a-trip-around-colombia</loc>
+  </url>
+  <url>
     <loc>https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</loc>
   </url>
   <url>

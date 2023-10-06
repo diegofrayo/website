@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Diego Rayo | New Website</title>
+        <title>Diego Rayo | Software Developer</title>
         <link>https://diegofrayo.vercel.app</link>
-        <description>Hi, I'm Diego, a Software Developer. I have +5 years of experience developing Web Solutions. I usually work using JavaScript, TypeScript, React, Next.js, Tailwind CSS, and Node.js</description>
-        <lastBuildDate>Fri, 06 Oct 2023 00:35:06 GMT</lastBuildDate>
+        <description>Hi, I'm Diego, a Software Developer. I have +7 years of experience developing Web Solutions. Focused on JavaScript, TypeScript, React, Next.js, Tailwind CSS, and Node.js</description>
+        <lastBuildDate>Fri, 06 Oct 2023 03:11:19 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <image>
-            <title>Diego Rayo | New Website</title>
+            <title>Diego Rayo | Software Developer</title>
             <url>https://diegofrayo.vercel.app/assets/images/favicon/favicon.ico</url>
             <link>https://diegofrayo.vercel.app</link>
         </image>
@@ -24,6 +24,33 @@
         <category>Tech</category>
         <category>TypeScript</category>
         <atom:link href="https://diegofrayo.vercel.app/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[JavaScript arrays examples]]></title>
+            <link>https://diegofrayo.vercel.app/blog/javascript-arrays-examples</link>
+            <guid>https://diegofrayo.vercel.app/blog/javascript-arrays-examples</guid>
+            <pubDate>Tue, 25 Oct 2022 05:00:00 GMT</pubDate>
+            <description><![CDATA[I have bad memory and some friends learning JavaScript 🤷‍♂️]]></description>
+            <content:encoded><![CDATA[I have bad memory and some friends learning JavaScript 🤷‍♂️]]></content:encoded>
+            <author>diegofrayo@gmail.com (Diego Rayo)</author>
+        </item>
+        <item>
+            <title><![CDATA[TypeScript snippets]]></title>
+            <link>https://diegofrayo.vercel.app/blog/typescript-snippets</link>
+            <guid>https://diegofrayo.vercel.app/blog/typescript-snippets</guid>
+            <pubDate>Tue, 25 Oct 2022 05:00:00 GMT</pubDate>
+            <description><![CDATA[Some examples, exercises, and pieces of code about TypeScript made by me.]]></description>
+            <content:encoded><![CDATA[Some examples, exercises, and pieces of code about TypeScript made by me.]]></content:encoded>
+            <author>diegofrayo@gmail.com (Diego Rayo)</author>
+        </item>
+        <item>
+            <title><![CDATA[A trip around Colombia]]></title>
+            <link>https://diegofrayo.vercel.app/blog/a-trip-around-colombia</link>
+            <guid>https://diegofrayo.vercel.app/blog/a-trip-around-colombia</guid>
+            <pubDate>Sun, 01 May 2022 05:00:00 GMT</pubDate>
+            <description><![CDATA[This a brief summary about my first vacations as a "young adult" around Colombia.]]></description>
+            <content:encoded><![CDATA[This a brief summary about my first vacations as a "young adult" around Colombia.]]></content:encoded>
+            <author>diegofrayo@gmail.com (Diego Rayo)</author>
+        </item>
         <item>
             <title><![CDATA[Publishing a npm private package to GitHub packages using GitHub actions]]></title>
             <link>https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</link>

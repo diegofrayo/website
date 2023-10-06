@@ -2,14 +2,14 @@
 	"config": {
 		"locales": ["en"],
 		"default_locale": "en",
-		"is_seo_enabled": false,
+		"is_seo_enabled": true,
 		"pathname": "/blog"
 	},
 	"content": {
 		"en": {
 			"seo": {
 				"title": "Blog",
-				"description": "In this blog, You will find out content about programming, mainly about frontend stuff, React, Next.js, MDX, Tailwind CSS, and other tools I used to build this website."
+				"description": "In this blog, You will find out content about programming, mainly about frontend stuff, React, Next.js, MDX, Tailwind CSS, and other tools I used to build this website"
 			},
 			"texts": {
 				"created": "Created",
@@ -27,7 +27,6 @@
 				"year": "year",
 				"year_plural": "years",
 				"years_ago": "{{number}} $t(page:year, {\"count\": {{number}} }) ago",
-
 				"copy_to_clipboard": "Copy",
 				"copy_url_to_clipboard": "Copy URL",
 				"published_at": "Published at",
@@ -35,7 +34,7 @@
 				"sources": "Sources",
 				"email_message_label": "Send a comment via e-mail",
 				"email_message_subject": "Blog post comment",
-				"email_message_body": "I have a comment about a blog post: {{url}}"
+				"email_message_body": "I have a comment about this blog post: {{url}}"
 			}
 		}
 	}

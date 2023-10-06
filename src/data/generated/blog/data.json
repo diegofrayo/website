@@ -1,0 +1,199 @@
+{
+	"javascript-arrays-examples": {
+		"config": {
+			"slug": "javascript-arrays-examples",
+			"categories": ["javascript"],
+			"locales": ["en"],
+			"created_at": "2022/10/25",
+			"published_at": "2022/10/25",
+			"updated_at": "2022/10/25",
+			"is_published": false,
+			"sources": []
+		},
+		"content": {
+			"en": {
+				"title": "JavaScript arrays examples",
+				"description": "I have bad memory and some friends learning JavaScript 🤷‍♂️"
+			}
+		},
+		"assets": { "$sourceCodeFiles": {} }
+	},
+	"typescript-snippets": {
+		"config": {
+			"slug": "typescript-snippets",
+			"categories": ["typescript"],
+			"locales": ["en"],
+			"created_at": "2022/10/19",
+			"published_at": "2022/10/21",
+			"updated_at": "2022/10/25",
+			"is_published": false,
+			"sources": [
+				{
+					"title": "How To Use Generics in TypeScript",
+					"url": "https://digitalocean.com/community/tutorials/how-to-use-generics-in-typescript"
+				}
+			]
+		},
+		"content": {
+			"en": {
+				"title": "TypeScript snippets",
+				"description": "Some examples, exercises, and pieces of code about TypeScript made by me."
+			}
+		},
+		"assets": { "$sourceCodeFiles": {} }
+	},
+	"a-trip-around-colombia": {
+		"config": {
+			"slug": "a-trip-around-colombia",
+			"categories": ["trips"],
+			"locales": ["en"],
+			"created_at": "2022/04/14",
+			"published_at": "2022/04/30",
+			"updated_at": "2022/05/01",
+			"is_published": false,
+			"sources": []
+		},
+		"content": {
+			"en": {
+				"title": "A trip around Colombia",
+				"description": "This a brief summary about my first vacations as a \"young adult\" around Colombia."
+			},
+			"es": {
+				"title": "Viajesito en Colombia",
+				"description": "Este es un breve resumen acerca de mis primeras vacaciones como \"joven adulto\" por Colombia."
+			}
+		},
+		"assets": { "$sourceCodeFiles": {} }
+	},
+	"publishing-a-npm-private-package-to-github-packages-using-github-actions": {
+		"config": {
+			"slug": "publishing-a-npm-private-package-to-github-packages-using-github-actions",
+			"categories": ["github-actions", "npm"],
+			"locales": ["en"],
+			"created_at": "2021/03/19",
+			"published_at": "2021/03/19",
+			"updated_at": "2021/03/19",
+			"is_published": true,
+			"sources": [
+				{
+					"title": "Authentication in a workflow",
+					"url": "https://docs.github.com/en/actions/reference/authentication-in-a-workflow"
+				},
+				{
+					"title": "Creating a personal access token",
+					"url": "https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token"
+				},
+				{
+					"title": "Configuring npm for use with GitHub Packages",
+					"url": "https://docs.github.com/en/packages/guides/configuring-npm-for-use-with-github-packages"
+				},
+				{
+					"title": "Publishing Node.js packages",
+					"url": "https://docs.github.com/en/actions/guides/publishing-nodejs-packages"
+				},
+				{
+					"title": "setup-node [#Publish to npmjs and GPR with npm]",
+					"url": "https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#publish-to-npmjs-and-gpr-with-npm"
+				},
+				{
+					"title": "Publishing and Installing Private GitHub Packages using Yarn and Lerna",
+					"url": "https://viewsource.io/publishing-and-installing-private-github-packages-using-yarn-and-lerna"
+				}
+			]
+		},
+		"content": {
+			"en": {
+				"title": "Publishing a npm private package to GitHub packages using GitHub actions",
+				"description": "How to publish a private npm package to GitHub packages using GitHub Actions."
+			}
+		},
+		"assets": { "$sourceCodeFiles": {} }
+	},
+	"my-favorite-music-and-mdx": {
+		"config": {
+			"slug": "my-favorite-music-and-mdx",
+			"categories": ["mdx", "next.js", "markdown", "tailwind-css"],
+			"locales": ["en"],
+			"created_at": "2020/11/28",
+			"published_at": "2020/12/03",
+			"updated_at": "2021/08/14",
+			"is_published": true,
+			"sources": []
+		},
+		"content": {
+			"en": {
+				"title": "My favorite music and MDX",
+				"description": "Introduction to MDX and how to use it with Next.js to create a simple blog."
+			}
+		},
+		"assets": {
+			"github": {
+				"name": "website",
+				"url": "https://github.com/diegofrayo/website",
+				"description": "My personal website",
+				"files": {
+					"MDXContent": {
+						"fileName": "src/components/shared/MDXContent.tsx",
+						"url": "https://github.com/diegofrayo/website/blob/master/src/components/shared/MDXContent.tsx"
+					},
+					"SourceCode": {
+						"fileName": "src/components/shared/SourceCode.tsx",
+						"url": "https://github.com/diegofrayo/website/blob/master/src/components/shared/SourceCode.tsx"
+					},
+					"mdx": {
+						"fileName": "src/features/mdx/constants.tsx",
+						"url": "https://github.com/diegofrayo/website/blob/master/src/features/mdx/constants.tsx"
+					},
+					"components|blog|slug": {
+						"fileName": "src/features/pages/blog/[slug].tsx",
+						"url": "https://github.com/diegofrayo/website/blob/master/src/features/pages/blog/[slug].tsx"
+					},
+					"pages|blog|slug": {
+						"fileName": "src/pages/blog/[slug].tsx",
+						"url": "https://github.com/diegofrayo/website/blob/master/src/pages/blog/[slug].tsx"
+					},
+					"MDXContent-Styles": {
+						"fileName": "src/styles/markdown.module.css",
+						"url": "https://github.com/diegofrayo/website/blob/master/src/styles/markdown.module.css"
+					}
+				}
+			},
+			"$sourceCodeFiles": {
+				"1": "export function HelloWorldMDX({ text }: T_Object): T_ReactElement {\r\n  return <p className=\"tw-bg-red-200 tw-block tw-p-2 tw-text-red-700\">{text}</p>;\r\n}\r",
+				"4": "type T_StaticPath = { slug: string };\n\nexport const getStaticPaths: GetStaticPaths<T_StaticPath> = async function getStaticPaths() {\n\treturn {\n\t\tpaths: (await BlogService.fetchPosts()).reduce(\n\t\t\t(result: { params: T_StaticPath; locale: T_Locale }[], post: T_BlogPost) => {\n\t\t\t\treturn result.concat(\n\t\t\t\t\tpost.locales.map((locale: T_Locale) => {\n\t\t\t\t\t\treturn { params: { slug: post.slug }, locale };\n\t\t\t\t\t}),\n\t\t\t\t);\n\t\t\t},\n\t\t\t[],\n\t\t),\n\t\tfallback: \"blocking\",\n\t};\n};",
+				"5": "type T_StaticPath = { slug: string };\n\nexport const getStaticProps = getPageContentStaticProps<\n\t{ post: T_BlogPost; postMDXContent: MDXRemoteSerializeResult },\n\tT_StaticPath\n>({\n\tpage: [ROUTES.BLOG, ROUTES.BLOG_DETAILS],\n\tlocalesExtractor: (data) => data.post.locales,\n\tcallback: async ({ params, locale }) => {\n\t\tconst post = await BlogService.fetchPost({ slug: params.slug, locale });\n\n\t\tif (isUndefined(post)) {\n\t\t\treturn {\n\t\t\t\tnotFound: true,\n\t\t\t};\n\t\t}\n\n\t\tconst file = (await dataLoader({\n\t\t\tpath: `/pages/blog/[slug]/${locale}/${replaceAll(post.createdAt, \"/\", \"-\")}-${post.slug}.mdx`,\n\t\t})) as string;\n\t\tconst postMDXContent = await serialize(file, {\n\t\t\tscope: {\n\t\t\t\tDATA: {\n\t\t\t\t\t...getMDXScope().DATA,\n\t\t\t\t\tpost,\n\t\t\t\t},\n\t\t\t},\n\t\t});\n\n\t\treturn {\n\t\t\tprops: {\n\t\t\t\tpost,\n\t\t\t\tpostMDXContent,\n\t\t\t},\n\t\t};\n\t},\n});",
+				"6": "import * as React from \"react\";\r\nimport { MDXRemoteSerializeResult } from \"next-mdx-remote\";\r\n\r\nimport { Page, MainLayout } from \"~/components/layout\";\r\nimport { Icon, Space, Button, Block, Text, InlineText, Image, Link } from \"~/components/primitive\";\r\nimport { MDXContent, RateContent } from \"~/components/shared\";\r\nimport { withSafeRendering } from \"~/hocs\";\r\nimport { useDidMount } from \"~/hooks\";\r\nimport { useTranslation } from \"~/features/i18n\";\r\nimport twcss from \"~/lib/twcss\";\r\nimport { useStoreSelector, useStoreActionsDispatcher } from \"~/stores\";\r\nimport { selectWebsiteMetadata, T_WebsiteMetadata } from \"~/stores/modules/metadata\";\r\nimport { setLocales } from \"~/stores/modules/page-config\";\r\nimport { copyToClipboard } from \"~/utils/browser\";\r\nimport { getFormattedDatesDifference } from \"~/utils/dates\";\r\nimport { ROUTES } from \"~/features/routing\";\r\nimport type { T_ReactElement } from \"~/types\";\r\n\r\nimport { T_BlogPost } from \"./service\";\r\n\r\ntype T_PageProps = {\r\n\tpost: T_BlogPost;\r\n\tpostMDXContent: MDXRemoteSerializeResult;\r\n};\r\n\r\nfunction BlogPostPage({ post, postMDXContent }: T_PageProps): T_ReactElement {\r\n\t// hooks\r\n\tconst { t } = useTranslation();\r\n\tconst dispatch = useStoreActionsDispatcher();\r\n\r\n\t// effects\r\n\tuseDidMount(() => {\r\n\t\tdispatch(setLocales(post.locales));\r\n\t});\r\n\r\n\treturn (\r\n\t\t<Page\r\n\t\t\tconfig={{\r\n\t\t\t\ttitle: post.title,\r\n\t\t\t\treplaceTitle: true,\r\n\t\t\t\tdescription: post.description,\r\n\t\t\t\tpathname: `${ROUTES.BLOG}/${post.slug}`,\r\n\t\t\t\timage: post.thumbnail,\r\n\t\t\t\tdisableSEO: Boolean(t(\"page:config:is_seo_enabled\")),\r\n\t\t\t}}\r\n\t\t>\r\n\t\t\t<MainLayout title={post.title}>\r\n\t\t\t\t<BlogPostDetails\r\n\t\t\t\t\tpublishedAt={post.publishedAt}\r\n\t\t\t\t\tupdatedAt={post.updatedAt}\r\n\t\t\t\t\tisPublished={post.isPublished}\r\n\t\t\t\t/>\r\n\t\t\t\t<Space size={8} />\r\n\r\n\t\t\t\t<Image\r\n\t\t\t\t\tsrc={post.thumbnail}\r\n\t\t\t\t\talt=\"Blog post thumbnail\"\r\n\t\t\t\t\tclassName=\"tw-mx-auto tw-rounded-md\"\r\n\t\t\t\t/>\r\n\t\t\t\t<Space size={8} />\r\n\r\n\t\t\t\t<MDXContent content={postMDXContent} />\r\n\t\t\t\t<Space size={8} />\r\n\r\n\t\t\t\t<RateContent />\r\n\t\t\t\t<Space size={8} />\r\n\r\n\t\t\t\t<BlogPostActions />\r\n\t\t\t</MainLayout>\r\n\t\t</Page>\r\n\t);\r\n}\r\n\r\nexport default BlogPostPage;\r",
+				"7": "import * as React from \"react\";\r\nimport { MDXRemote, MDXRemoteSerializeResult } from \"next-mdx-remote\";\r\nimport classNames from \"classnames\";\r\n\r\nimport { Block } from \"~/components/primitive\";\r\nimport { MDXComponents } from \"~/features/mdx\";\r\nimport { mirror } from \"~/utils/objects-and-arrays\";\r\n\r\nimport styles from \"~/styles/markdown.module.css\";\r\nimport type { T_ReactElement } from \"~/types\";\r\n\r\nconst VARIANTS = mirror([\"DEFAULT\", \"UNSTYLED\"]);\r\ntype T_Variants = keyof typeof VARIANTS;\r\n\r\ntype T_MDXContentProps = {\r\n\tcontent: MDXRemoteSerializeResult;\r\n\tvariant?: T_Variants;\r\n};\r\n\r\nfunction MDXContent({ content, variant = VARIANTS.DEFAULT }: T_MDXContentProps): T_ReactElement {\r\n\treturn (\r\n\t\t<Block\r\n\t\t\tclassName={classNames(\r\n\t\t\t\t\"dfr-MarkdownContent\",\r\n\t\t\t\tvariant === VARIANTS.DEFAULT && styles[\"dfr-MarkdownContent--default\"],\r\n\t\t\t)}\r\n\t\t>\r\n\t\t\t<MDXRemote {...content} components={MDXComponents} />\r\n\t\t</Block>\r\n\t);\r\n}\r\n\r\nMDXContent.variant = VARIANTS;\r\n\r\nexport default MDXContent;\r",
+				"8": "import * as React from \"react\";\r\nimport classNames from \"classnames\";\r\nimport { ErrorBoundary } from \"react-error-boundary\";\r\nimport Highlight, { defaultProps } from \"prism-react-renderer\";\r\nimport highLightTheme from \"prism-react-renderer/themes/nightOwl\";\r\n// NOTE: Nice themes => nightOwl | drakula | oceanicNext | okaidia | palenight | vsDark\r\n\r\nimport { Block, Button, Icon, InlineText, Link, Pre, Space } from \"~/components/primitive\";\r\nimport { useTranslation } from \"~/features/i18n\";\r\nimport twcss from \"~/lib/twcss\";\r\nimport { isDevelopmentEnvironment } from \"~/utils/app\";\r\nimport { handleCopyToClipboardClick } from \"~/utils/browser\";\r\nimport { getErrorMessage } from \"~/utils/misc\";\r\nimport { isNotEmptyString } from \"~/utils/validations\";\r\nimport type { T_ReactElement, T_ReactElementNullable } from \"~/types\";\r\n\r\ntype T_SourceCodeProps = {\r\n\t// DOCS: https://github.com/FormidableLabs/prism-react-renderer#language\r\n\tlanguage: \"jsx\" | \"tsx\" | \"css\" | \"typescript\" | \"javascript\" | \"bash\" | \"yaml\" | \"markdown\";\r\n\tcode: string;\r\n\tfileName?: string;\r\n\tsourceURL?: string;\r\n\tclassName?: string;\r\n\theight?: \"100%\" | \"auto\" | number;\r\n\tnoBorder?: boolean;\r\n};\r\n\r\nfunction SourceCode({\r\n\tlanguage,\r\n\tcode,\r\n\tfileName = \"\",\r\n\tsourceURL = \"\",\r\n\tclassName = \"\",\r\n\theight = \"auto\",\r\n\tnoBorder = false,\r\n}: T_SourceCodeProps): T_ReactElement {\r\n\t// hooks\r\n\tconst { t } = useTranslation();\r\n\r\n\t// vars\r\n\tconst codeTitle = isNotEmptyString(fileName)\r\n\t\t? `// ${fileName}`\r\n\t\t: isNotEmptyString(sourceURL)\r\n\t\t? `// ${sourceURL.slice(sourceURL.lastIndexOf(\"/\") + 1, sourceURL.length)}`\r\n\t\t: \"\";\r\n\r\n\treturn (\r\n\t\t<Block\r\n\t\t\tclassName={classNames(\r\n\t\t\t\t\"dfr-SourceCode tw-flex tw-flex-col dfr-bg-color-wb dark:tw-bg-transparent\",\r\n\t\t\t\tclassName,\r\n\t\t\t)}\r\n\t\t\tstyle={{\r\n\t\t\t\theight,\r\n\t\t\t\tmaxHeight: height === \"auto\" ? 500 : \"none\",\r\n\t\t\t}}\r\n\t\t\tdata-markdown-block\r\n\t\t>\r\n\t\t\t<Block\r\n\t\t\t\tclassName={classNames(\r\n\t\t\t\t\t\"tw-flex tw-flex-shrink-0 tw-flex-wrap tw-items-center tw-justify-between tw-py-2 tw-font-mono tw-text-sm dfr-text-color-bw\",\r\n\t\t\t\t\tnoBorder\r\n\t\t\t\t\t\t? \"\"\r\n\t\t\t\t\t\t: \"tw-rounded-t-md tw-border tw-border-b-0 tw-px-4 tw-pr-2 dfr-border-color-primary dark:dfr-bg-color-tertiary\",\r\n\t\t\t\t)}\r\n\t\t\t>\r\n\t\t\t\t{isNotEmptyString(codeTitle) ? (\r\n\t\t\t\t\t<code className=\"tw-mr-4 tw-flex-1 tw-truncate tw-font-bold\">{codeTitle}</code>\r\n\t\t\t\t) : null}\r\n\t\t\t\t<InlineText className=\"tw-ml-auto tw-inline-block tw-flex-shrink-0 tw-bg-yellow-300 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-yellow-700\">\r\n\t\t\t\t\t{language}\r\n\t\t\t\t</InlineText>\r\n\t\t\t</Block>\r\n\r\n\t\t\t<ErrorBoundary FallbackComponent={ErrorFallback}>\r\n\t\t\t\t<Highlight {...defaultProps} code={code} language={language} theme={highLightTheme}>\r\n\t\t\t\t\t{(props): T_ReactElementNullable => {\r\n\t\t\t\t\t\tif (!props) return null;\r\n\r\n\t\t\t\t\t\tconst { className: classNameProp, style, tokens, getLineProps, getTokenProps } = props;\r\n\r\n\t\t\t\t\t\treturn (\r\n\t\t\t\t\t\t\t<Pre\r\n\t\t\t\t\t\t\t\tvariant={Pre.variant.UNSTYLED}\r\n\t\t\t\t\t\t\t\tclassName={classNames(\r\n\t\t\t\t\t\t\t\t\tclassNameProp,\r\n\t\t\t\t\t\t\t\t\t\"tw-flex-1 tw-overflow-x-auto tw-p-4 tw-text-base\",\r\n\t\t\t\t\t\t\t\t)}\r\n\t\t\t\t\t\t\t\tstyle={style}\r\n\t\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t\t{tokens.map((line, i) => {\r\n\t\t\t\t\t\t\t\t\treturn (\r\n\t\t\t\t\t\t\t\t\t\t<Line\r\n\t\t\t\t\t\t\t\t\t\t\t// WARN: I use the index here because this is a external library and this code was taken from the examples page\r\n\t\t\t\t\t\t\t\t\t\t\t// eslint-disable-next-line react/no-array-index-key\r\n\t\t\t\t\t\t\t\t\t\t\tkey={i}\r\n\t\t\t\t\t\t\t\t\t\t\t{...getLineProps({ line, key: i })}\r\n\t\t\t\t\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t\t\t\t\t<LineNo>{i + 1}</LineNo>\r\n\t\t\t\t\t\t\t\t\t\t\t<LineContent>\r\n\t\t\t\t\t\t\t\t\t\t\t\t{line.map((token, key) => {\r\n\t\t\t\t\t\t\t\t\t\t\t\t\treturn (\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<InlineText\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// WARN: I use the index here because this is a external library and this code was taken from the examples page\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// eslint-disable-next-line react/no-array-index-key\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tkey={key}\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{...getTokenProps({ token, key })}\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t/>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t);\r\n\t\t\t\t\t\t\t\t\t\t\t\t})}\r\n\t\t\t\t\t\t\t\t\t\t\t</LineContent>\r\n\t\t\t\t\t\t\t\t\t\t</Line>\r\n\t\t\t\t\t\t\t\t\t);\r\n\t\t\t\t\t\t\t\t})}\r\n\t\t\t\t\t\t\t</Pre>\r\n\t\t\t\t\t\t);\r\n\t\t\t\t\t}}\r\n\t\t\t\t</Highlight>\r\n\t\t\t</ErrorBoundary>\r\n\r\n\t\t\t<Block\r\n\t\t\t\tclassName={classNames(\r\n\t\t\t\t\t\"tw-flex tw-flex-shrink-0 tw-flex-col-reverse tw-py-2 tw-text-sm sm:tw-flex-row sm:tw-justify-end\",\r\n\t\t\t\t\tnoBorder\r\n\t\t\t\t\t\t? \"\"\r\n\t\t\t\t\t\t: \"tw-rounded-b-md tw-border tw-border-t-0 tw-px-4 tw-pr-2 dfr-border-color-primary dark:dfr-bg-color-tertiary\",\r\n\t\t\t\t)}\r\n\t\t\t>\r\n\t\t\t\t{isNotEmptyString(sourceURL) ? (\r\n\t\t\t\t\t<React.Fragment>\r\n\t\t\t\t\t\t<Link\r\n\t\t\t\t\t\t\tvariant={Link.variant.SECONDARY}\r\n\t\t\t\t\t\t\thref={sourceURL}\r\n\t\t\t\t\t\t\tclassName=\"tw-text-right\"\r\n\t\t\t\t\t\t\tisExternalLink\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t<Icon icon={Icon.icon.GITHUB} size={16} withBackgroundWhenDarkMode />\r\n\t\t\t\t\t\t\t<InlineText className=\"tw-ml-1 tw-lowercase\">{t(\"page:see_source_code\")}</InlineText>\r\n\t\t\t\t\t\t</Link>\r\n\t\t\t\t\t\t<Space responsive=\"tw-block tw-mb-1 tw-mr-0 sm:tw-inline-block sm:tw-mb-0 sm:tw-mr-6\" />\r\n\t\t\t\t\t</React.Fragment>\r\n\t\t\t\t) : null}\r\n\t\t\t\t<Button\r\n\t\t\t\t\tvariant={Button.variant.DEFAULT}\r\n\t\t\t\t\tclassName=\"tw-text-right\"\r\n\t\t\t\t\tdata-clipboard-text={code}\r\n\t\t\t\t\tonClick={handleCopyToClipboardClick}\r\n\t\t\t\t>\r\n\t\t\t\t\t<Icon icon={Icon.icon.CLIPBOARD} />\r\n\t\t\t\t\t<InlineText className=\"tw-ml-1 tw-lowercase\">{t(\"page:copy_to_clipboard\")}</InlineText>\r\n\t\t\t\t</Button>\r\n\t\t\t</Block>\r\n\t\t</Block>\r\n\t);\r\n}\r\n\r\nexport default SourceCode;\r\nexport type { T_SourceCodeProps };\r\n\r\n// --- Components ---\r\n\r\nconst Line = twcss.div`tw-table-row`;\r\nconst LineNo = twcss.span`tw-table-cell tw-text-right tw-pr-4 tw-opacity-50 tw-select-none`;\r\nconst LineContent = twcss.span`tw-table-cell`;\r\n\r\nfunction ErrorFallback({ error }: { error: unknown }): T_ReactElement {\r\n\treturn (\r\n\t\t<Block className=\"tw-border tw-border-dashed tw-border-red-600 tw-p-1 tw-text-center tw-text-red-600\">\r\n\t\t\t<Pre variant={Pre.variant.BREAK_WITH_BLANK_LINES}>\r\n\t\t\t\t{isDevelopmentEnvironment()\r\n\t\t\t\t\t? getErrorMessage(error)\r\n\t\t\t\t\t: \"💥 Opps! Something went wrong rendering this component 💥\"}\r\n\t\t\t</Pre>\r\n\t\t</Block>\r\n\t);\r\n}\r",
+				"7-styles": "/* Spacing: parent components */\r\n.dfr-MarkdownContent--default\r\n\t> :is(blockquote, hr, ol, p, :global(.dfr-Pre--styled), ul, a > img, *[data-markdown-block]) {\r\n\t@apply tw-mb-6;\r\n}\r\n\r\n.dfr-MarkdownContent--default > *:last-child {\r\n\t@apply tw-mb-0;\r\n}\r\n\r\n/* Spacing: nested components */\r\n.dfr-MarkdownContent--default\r\n\t:is(li > p, li > :global(.dfr-Pre--styled), li > blockquote, li > img, blockquote > p, li\r\n\t\t> a\r\n\t\t> img) {\r\n\t@apply tw-mb-3;\r\n}\r\n\r\n/* Spacing: titles */\r\n.dfr-MarkdownContent--default :is(> h1, h2, h3, h4) {\r\n\t@apply tw-mt-8;\r\n\t@apply tw-mb-3;\r\n}\r\n\r\n/* Spacing: nested UL lists */\r\n.dfr-MarkdownContent--default :is(li > ul, li > :global(.dfr-Pre--styled)) {\r\n\t@apply tw-mt-3;\r\n}\r\n\r\n/* Ordered lists */\r\n.dfr-MarkdownContent--default ol {\r\n\t@apply tw-pl-9;\r\n\tlist-style-type: decimal;\r\n}\r\n\r\n.dfr-MarkdownContent--default ol > li {\r\n\t@apply tw-mb-6;\r\n}\r\n\r\n/* Images */\r\n.dfr-MarkdownContent--default :is(> a > img, li > a > img) {\r\n\t@apply dfr-shadow;\r\n\t@apply tw-rounded-md;\r\n\tmargin-left: auto;\r\n\tmargin-right: auto;\r\n}\r\n\r\n:global(.tw-dark) .dfr-MarkdownContent--default :is(> a > img, li > a > img) {\r\n\t@apply dark-v-dfr-shadow;\r\n}\r",
+				"github": "{\n\t\"name\": \"website\",\n\t\"url\": \"https://github.com/diegofrayo/website\",\n\t\"description\": \"My personal website\",\n\t\"files\": {\n\t\t\"MDXContent\": {\n\t\t\t\"fileName\": \"src/components/shared/MDXContent.tsx\",\n\t\t\t\"url\": \"https://github.com/diegofrayo/website/blob/master/src/components/shared/MDXContent.tsx\"\n\t\t},\n\t\t\"SourceCode\": {\n\t\t\t\"fileName\": \"src/components/shared/SourceCode.tsx\",\n\t\t\t\"url\": \"https://github.com/diegofrayo/website/blob/master/src/components/shared/SourceCode.tsx\"\n\t\t},\n\t\t\"mdx\": {\n\t\t\t\"fileName\": \"src/features/mdx/constants.tsx\",\n\t\t\t\"url\": \"https://github.com/diegofrayo/website/blob/master/src/features/mdx/constants.tsx\"\n\t\t},\n\t\t\"components|blog|slug\": {\n\t\t\t\"fileName\": \"src/features/pages/blog/[slug].tsx\",\n\t\t\t\"url\": \"https://github.com/diegofrayo/website/blob/master/src/features/pages/blog/[slug].tsx\"\n\t\t},\n\t\t\"pages|blog|slug\": {\n\t\t\t\"fileName\": \"src/pages/blog/[slug].tsx\",\n\t\t\t\"url\": \"https://github.com/diegofrayo/website/blob/master/src/pages/blog/[slug].tsx\"\n\t\t},\n\t\t\"MDXContent-Styles\": {\n\t\t\t\"fileName\": \"src/styles/markdown.module.css\",\n\t\t\t\"url\": \"https://github.com/diegofrayo/website/blob/master/src/styles/markdown.module.css\"\n\t\t}\n\t}\n}"
+			}
+		}
+	},
+	"connecting-a-firebase-project-with-a-go-daddy-domain": {
+		"config": {
+			"slug": "connecting-a-firebase-project-with-a-go-daddy-domain",
+			"categories": ["go-daddy", "firebase", "node.js", "hosting"],
+			"locales": ["en"],
+			"created_at": "2018/06/01",
+			"published_at": "2018/06/01",
+			"updated_at": "2018/06/01",
+			"is_published": true,
+			"sources": []
+		},
+		"content": {
+			"en": {
+				"title": "Connecting a Firebase project with a Go Daddy domain",
+				"description": "How to deploy a simple web project in Firebase and link it with Go Daddy domain."
+			}
+		},
+		"assets": {
+			"images": {
+				"1": "/assets/images/pages/blog/posts/assets/connecting-a-firebase-project-with-a-go-daddy-domain/1.png",
+				"2": "/assets/images/pages/blog/posts/assets/connecting-a-firebase-project-with-a-go-daddy-domain/2.png",
+				"3": "/assets/images/pages/blog/posts/assets/connecting-a-firebase-project-with-a-go-daddy-domain/3.png"
+			},
+			"$sourceCodeFiles": {}
+		}
+	}
+}

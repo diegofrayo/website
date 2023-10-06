@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<T_BlogPostPageProps, { slug: string 
 	if (!postDetails) throw new Error(`Invalid post slug: "${slug}"`);
 
 	const mdxCompiled = await compile({
-		source: `./src/data/blog/posts/content.${DEFAULT_LANG}/${replaceAll(
+		source: `./src/data/generated/blog/posts/content/${replaceAll(
 			postDetails.config.created_at,
 			"/",
 			"-",

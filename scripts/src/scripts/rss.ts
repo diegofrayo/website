@@ -16,9 +16,9 @@ main();
 
 async function generateRSSFiles() {
 	const DEFAULT_LOCALE = "en";
-	const WEBSITE_METADATA = JSON.parse(await readFile("./src/data/metadata.json"));
+	const WEBSITE_METADATA = JSON.parse(await readFile("./src/data/generated/metadata.json"));
 	const BLOG_POSTS = JSON.parse(
-		await readFile("./src/data/blog/data.json"),
+		await readFile("./src/data/generated/blog/data.json"),
 	) as T_RawBlogPostsResponse;
 	const feed = new Feed({
 		title: WEBSITE_METADATA.title,

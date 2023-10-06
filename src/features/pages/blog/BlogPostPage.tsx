@@ -22,7 +22,7 @@ import {
 	Toast,
 	Tooltip,
 } from "~/components/shared";
-import WEBSITE_METADATA from "~/data/metadata.json";
+import WEBSITE_METADATA from "~/data/generated/metadata.json";
 import { MDXContent } from "~/features/mdx/client";
 import { ROUTES } from "~/features/routing";
 import { withOnlyClientRendering } from "~/hocs";

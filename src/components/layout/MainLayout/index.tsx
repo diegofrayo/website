@@ -14,7 +14,7 @@ import {
 	Text,
 	Title,
 } from "~/components/primitive";
-import WEBSITE_METADATA from "~/data/metadata.json";
+import WEBSITE_METADATA from "~/data/generated/metadata.json";
 import { withAuth } from "~/features/auth";
 import { ROUTES, useRouting } from "~/features/routing";
 import { renderIf, withOnlyClientRendering } from "~/hocs";

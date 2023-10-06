@@ -5,22 +5,22 @@ import type { T_RawBlogPostsResponse } from "../../../src/features/pages/blog/ty
 
 async function main() {
 	const BLOG_POSTS = JSON.parse(
-		await readFile("./src/data/blog/data.json"),
+		await readFile("./src/data/generated/blog/data.json"),
 	) as T_RawBlogPostsResponse;
-	const WEBSITE_METADATA = JSON.parse(await readFile("./src/data/metadata.json"));
+	const WEBSITE_METADATA = JSON.parse(await readFile("./src/data/generated/metadata.json"));
 	const WEBSITE_PAGES = {
 		HOME: "/",
 		RESUME: "/resume",
 		BLOG: "/blog",
 	};
-
 	const sitemapItems = Object.values(WEBSITE_PAGES).concat(
 		Object.values(BLOG_POSTS).map((post) => {
 			return `/blog/${post.config.slug}`;
 		}),
 	);
 
-	generateSitemapFile(sitemapItems, WEBSITE_METADATA["url"]);
+	await generateSitemapFile(sitemapItems, WEBSITE_METADATA["url"]);
+
 	console.log(`"sitemap" script executed successfully`);
 }
 
