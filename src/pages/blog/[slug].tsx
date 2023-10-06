@@ -14,11 +14,9 @@ export const getStaticPaths: GetStaticPaths = async function getStaticPaths() {
 	const data = await loadData<T_RawBlogPostsResponse>({ page: "blog" });
 
 	return {
-		paths: Object.values(data)
-			.filter((post) => post.config.is_published)
-			.map((post) => {
-				return { params: { slug: post.config.slug } };
-			}),
+		paths: Object.values(data).map((post) => {
+			return { params: { slug: post.config.slug } };
+		}),
 		fallback: "blocking",
 	};
 };

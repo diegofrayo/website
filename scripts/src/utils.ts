@@ -58,12 +58,12 @@ export function replaceAll(str: string, toReplace: string, replacement: string) 
 export function removeFirstAndLastBlankLines(input: string) {
 	let output = input;
 
-	if (output.startsWith("\n")) {
-		output = output.substring(1);
+	if (output.trim().startsWith("\n")) {
+		output = output.trim().substring(1);
 	}
 
-	if (output.endsWith("\n")) {
-		output = output.substring(0, output.length - 1);
+	if (output.trim().endsWith("\n")) {
+		output = output.trim().substring(0, output.length - 1);
 	}
 
 	return output;

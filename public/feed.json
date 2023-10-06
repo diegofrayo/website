@@ -11,42 +11,6 @@
 	},
 	"items": [
 		{
-			"id": "https://diegofrayo.vercel.app/blog/javascript-arrays-examples",
-			"content_html": "I have bad memory and some friends learning JavaScript 🤷‍♂️",
-			"url": "https://diegofrayo.vercel.app/blog/javascript-arrays-examples",
-			"title": "JavaScript arrays examples",
-			"summary": "I have bad memory and some friends learning JavaScript 🤷‍♂️",
-			"date_modified": "2022-10-25T05:00:00.000Z",
-			"author": {
-				"name": "Diego Rayo",
-				"url": "https://diegofrayo.vercel.app"
-			}
-		},
-		{
-			"id": "https://diegofrayo.vercel.app/blog/typescript-snippets",
-			"content_html": "Some examples, exercises, and pieces of code about TypeScript made by me.",
-			"url": "https://diegofrayo.vercel.app/blog/typescript-snippets",
-			"title": "TypeScript snippets",
-			"summary": "Some examples, exercises, and pieces of code about TypeScript made by me.",
-			"date_modified": "2022-10-25T05:00:00.000Z",
-			"author": {
-				"name": "Diego Rayo",
-				"url": "https://diegofrayo.vercel.app"
-			}
-		},
-		{
-			"id": "https://diegofrayo.vercel.app/blog/a-trip-around-colombia",
-			"content_html": "This a brief summary about my first vacations as a \"young adult\" around Colombia.",
-			"url": "https://diegofrayo.vercel.app/blog/a-trip-around-colombia",
-			"title": "A trip around Colombia",
-			"summary": "This a brief summary about my first vacations as a \"young adult\" around Colombia.",
-			"date_modified": "2022-05-01T05:00:00.000Z",
-			"author": {
-				"name": "Diego Rayo",
-				"url": "https://diegofrayo.vercel.app"
-			}
-		},
-		{
 			"id": "https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions",
 			"content_html": "How to publish a private npm package to GitHub packages using GitHub Actions.",
 			"url": "https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions",

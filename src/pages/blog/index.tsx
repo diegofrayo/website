@@ -16,14 +16,12 @@ export const getStaticProps: GetStaticProps<T_BlogPageProps> = async () => {
 	return {
 		props: {
 			content,
-			data: Object.values(posts)
-				.filter((post) => post.config.is_published)
-				.map((post) => {
-					return {
-						...post,
-						content: post.content[DEFAULT_LANG],
-					};
-				}),
+			data: Object.values(posts).map((post) => {
+				return {
+					...post,
+					content: post.content[DEFAULT_LANG],
+				};
+			}),
 		},
 	};
 };

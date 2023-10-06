@@ -23,7 +23,14 @@ import {
 	WrenchIcon,
 	XMarkIcon,
 } from "@heroicons/react/24/outline";
-import GithubMonoIcon from "./github";
+import {
+	GithubMonoIcon,
+	GmailMonoIcon,
+	InstagramMonoIcon,
+	LinkedinMonoIcon,
+	SpotifyMonoIcon,
+	TwitterMonoIcon,
+} from "./social-icons";
 
 const ICONS = {
 	// --- OWN ICONS ---
@@ -36,7 +43,8 @@ const ICONS = {
 	GITHUB_MONO: {
 		icon: GithubMonoIcon,
 		defaultProps: {
-			alt: "GitHub",
+			className: "",
+			color: "",
 		},
 	},
 	GMAIL: {
@@ -46,15 +54,15 @@ const ICONS = {
 		},
 	},
 	GMAIL_MONO: {
-		icon: "/assets/images/icons/gmail-mono.svg",
+		icon: GmailMonoIcon,
 		defaultProps: {
-			alt: "GitHub",
+			className: "",
+			color: "",
 		},
 	},
 	GUITAR: {
 		icon: "/assets/images/icons/guitar.svg",
 		defaultProps: {
-			className: "",
 			alt: "Guitar",
 		},
 	},
@@ -65,9 +73,10 @@ const ICONS = {
 		},
 	},
 	INSTAGRAM_MONO: {
-		icon: "/assets/images/icons/instagram-mono.svg",
+		icon: InstagramMonoIcon,
 		defaultProps: {
-			alt: "Instagram",
+			className: "",
+			color: "",
 		},
 	},
 	LINKEDIN: {
@@ -77,9 +86,10 @@ const ICONS = {
 		},
 	},
 	LINKEDIN_MONO: {
-		icon: "/assets/images/icons/linkedin-mono.svg",
+		icon: LinkedinMonoIcon,
 		defaultProps: {
-			alt: "Linkedin",
+			className: "",
+			color: "",
 		},
 	},
 	MAPS: {
@@ -98,7 +108,6 @@ const ICONS = {
 	SOCCER: {
 		icon: "/assets/images/icons/soccer.svg",
 		defaultProps: {
-			className: "",
 			alt: "Soccer",
 		},
 	},
@@ -109,13 +118,14 @@ const ICONS = {
 		},
 	},
 	SPOTIFY_MONO: {
-		icon: "/assets/images/icons/spotify-mono.svg",
+		icon: SpotifyMonoIcon,
 		defaultProps: {
-			alt: "Linkedin",
+			className: "",
+			color: "",
 		},
 	},
 	TWITTER: {
-		icon: "/assets/images/icons/twitter.svg",
+		icon: TwitterMonoIcon,
 		defaultProps: {
 			alt: "Twitter",
 		},

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>diegofrayo</id>
     <title>Diego Rayo | Software Developer</title>
-    <updated>2023-10-06T05:02:18.568Z</updated>
+    <updated>2023-10-06T15:25:33.399Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Diego Fernando Rayo Zamora</name>
@@ -24,45 +24,6 @@
     <category term="Software Development"/>
     <category term="Tech"/>
     <category term="TypeScript"/>
-    <entry>
-        <title type="html"><![CDATA[JavaScript arrays examples]]></title>
-        <id>https://diegofrayo.vercel.app/blog/javascript-arrays-examples</id>
-        <link href="https://diegofrayo.vercel.app/blog/javascript-arrays-examples"/>
-        <updated>2022-10-25T05:00:00.000Z</updated>
-        <summary type="html"><![CDATA[I have bad memory and some friends learning JavaScript 🤷‍♂️]]></summary>
-        <content type="html"><![CDATA[I have bad memory and some friends learning JavaScript 🤷‍♂️]]></content>
-        <author>
-            <name>Diego Rayo</name>
-            <email>diegofrayo@gmail.com</email>
-            <uri>https://diegofrayo.vercel.app</uri>
-        </author>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[TypeScript snippets]]></title>
-        <id>https://diegofrayo.vercel.app/blog/typescript-snippets</id>
-        <link href="https://diegofrayo.vercel.app/blog/typescript-snippets"/>
-        <updated>2022-10-25T05:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Some examples, exercises, and pieces of code about TypeScript made by me.]]></summary>
-        <content type="html"><![CDATA[Some examples, exercises, and pieces of code about TypeScript made by me.]]></content>
-        <author>
-            <name>Diego Rayo</name>
-            <email>diegofrayo@gmail.com</email>
-            <uri>https://diegofrayo.vercel.app</uri>
-        </author>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[A trip around Colombia]]></title>
-        <id>https://diegofrayo.vercel.app/blog/a-trip-around-colombia</id>
-        <link href="https://diegofrayo.vercel.app/blog/a-trip-around-colombia"/>
-        <updated>2022-05-01T05:00:00.000Z</updated>
-        <summary type="html"><![CDATA[This a brief summary about my first vacations as a "young adult" around Colombia.]]></summary>
-        <content type="html"><![CDATA[This a brief summary about my first vacations as a "young adult" around Colombia.]]></content>
-        <author>
-            <name>Diego Rayo</name>
-            <email>diegofrayo@gmail.com</email>
-            <uri>https://diegofrayo.vercel.app</uri>
-        </author>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Publishing a npm private package to GitHub packages using GitHub actions]]></title>
         <id>https://diegofrayo.vercel.app/blog/publishing-a-npm-private-package-to-github-packages-using-github-actions</id>

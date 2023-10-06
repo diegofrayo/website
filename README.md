@@ -13,15 +13,15 @@ My personal website | [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 
 ## Setup
 
-1. `git clone https://github.com/diegofrayo/website.git`
+1. Clone the repo: `git clone https://github.com/diegofrayo/website.git`
 1. Create a `.env` file
    ```
     NODE_ENV=development
     NEXT_PUBLIC_WEBSITE_URL=http://localhost:3000
    ```
-1. `npm install`
-1. `npm run husky:install`
-1. `npm run dev`
+1. Install deps: `npm install`
+1. Install git hooks: `npm run husky:install`
+1. Run this project: `npm run dev`
 
 ## Stats
 
@@ -29,11 +29,13 @@ My personal website | [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 ===============================================================================
  Language            Files        Lines         Code     Comments       Blanks
 ===============================================================================
- CSS                     6          305          268            4           33
- TSX                    24         2272         1806          172          294
- TypeScript             22         1399          564          647          188
+ CSS                     9          579          491           22           66
+ JSON                    7          415          415            0            0
+ Markdown                1           59            0           46           13
+ TSX                    41         4113         3474          147          492
+ TypeScript             30         2050         1342          448          260
 ===============================================================================
- Total                  52         3976         2638          823          515
+ Total                  88         7216         5722          663          831
 ===============================================================================
 ```
 
