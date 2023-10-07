@@ -11,7 +11,7 @@ async function main() {
 
 	writeFile("./.env", stringify(envVars));
 
-	console.log(`"build-env-file" script executed successfully`);
+	console.log(`"env-file" script executed successfully`);
 	console.log("Local IP address:", envVars.NEXT_PUBLIC_WEBSITE_URL);
 }
 

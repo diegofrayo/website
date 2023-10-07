@@ -2,9 +2,8 @@
 . "$(dirname "$0")/_/husky.sh"
 
 npm run lint
-npm run script:build-sitemap
-npm run script:build-rss
-npm run styles:build
+npm run seo
+npm run styles
 npm run format
 npm run build
 git add .
