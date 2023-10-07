@@ -1,6 +1,6 @@
 /* eslint @typescript-eslint/dot-notation: 0 */
 
-import { readFile, removeFirstAndLastBlankLines, replaceAll, writeFile } from "../utils";
+import { readFile, replaceAll, writeFile } from "../utils";
 import type { T_RawBlogPostsResponse } from "../../../src/modules/pages/blog/types";
 
 async function main() {
@@ -30,7 +30,7 @@ main();
 
 function generateSitemapFile(sitemapItems: string[], websiteUrl: string) {
 	const output = replaceAll(
-		removeFirstAndLastBlankLines(`
+		`
       <?xml version="1.0" encoding="UTF-8" ?>
       <urlset
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -40,15 +40,15 @@ function generateSitemapFile(sitemapItems: string[], websiteUrl: string) {
       >
       ${sitemapItems
 				.map((path) => {
-					return removeFirstAndLastBlankLines(`
+					return `
               <url>
                 <loc>${websiteUrl}${path}</loc>
               </url>
-          `);
+          `;
 				})
 				.join("\n")}
       </urlset>
-    `),
+    `,
 		" ".repeat(6),
 		"",
 	)

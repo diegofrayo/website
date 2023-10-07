@@ -23,10 +23,11 @@ import {
 	Tooltip,
 } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/generated/metadata.json";
-import { MDXContent } from "~/modules/mdx/client";
-import { ROUTES } from "~/modules/routing";
 import { withOnlyClientRendering } from "~/hocs";
 import { useLocalStorageState } from "~/hooks";
+import AnalyticsService from "~/modules/analytics";
+import { MDXContent } from "~/modules/mdx/client";
+import { ROUTES } from "~/modules/routing";
 import twcss from "@diegofrayo/twcss";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
@@ -166,10 +167,10 @@ const RateContent = withOnlyClientRendering(function RateContent() {
 
 	function handleAnswerClick(answer: "YES" | "NO") {
 		return () => {
-			// AnalyticsService.trackEvent("RATE_CONTENT", {
-			// 	answer,
-			// 	page: window.location.pathname,
-			// });
+			AnalyticsService.trackEvent("RATE_CONTENT", {
+				answer,
+				page: window.location.pathname,
+			});
 
 			setRatedContent({ [window.location.pathname]: answer });
 			Toast.success("Thanks for answering");
@@ -177,9 +178,9 @@ const RateContent = withOnlyClientRendering(function RateContent() {
 	}
 
 	return (
-		<Block className="tw-text-center print:tw-hidden">
+		<Block className="tw-text-center tw-text-white print:tw-hidden">
 			<Text className="tw-mb-2 tw-text-sm tw-font-bold">This content was useful for you?</Text>
-			<Block className={cn("tw-text-center tw-text-xl", isQuestionAnswered && "tw-opacity-50")}>
+			<Block className={cn("tw-text-center tw-text-xl", isQuestionAnswered && "tw-opacity-75")}>
 				<Button
 					variant={Button.variant.SIMPLE}
 					disabled={isQuestionAnswered}
@@ -216,7 +217,7 @@ const RateContent = withOnlyClientRendering(function RateContent() {
 
 const BlogPostActions = withOnlyClientRendering(function BlogPostActions() {
 	return (
-		<Block className="tw-flex tw-flex-wrap tw-justify-between tw-border tw-border-l-8 tw-p-4 dr-border-color-surface-300">
+		<Block className="tw-flex tw-flex-wrap tw-justify-between tw-border tw-border-l-8 tw-p-4 tw-text-white dr-border-color-surface-300">
 			<BlogPostDetailsCopyUrlItem />
 			<Space responsive="tw-w-full tw-my-1 sm:tw-hidden" />
 			<BlogPostDetailsSendCommentItem />

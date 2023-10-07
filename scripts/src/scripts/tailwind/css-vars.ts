@@ -3,9 +3,10 @@
 import fs from "fs";
 import colorConvert from "color-convert";
 import CUSTOM_THEME, { COLOR_PALETTE } from "./theme";
+import { formatCode } from "../../utils";
 
-function main() {
-	fs.writeFileSync("./src/styles/variables.css", generateCSSVars());
+async function main() {
+	fs.writeFileSync("./src/styles/variables.css", await formatCode(generateCSSVars(), "css"));
 }
 
 main();

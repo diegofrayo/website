@@ -15,14 +15,14 @@ import {
 	Title,
 } from "~/components/primitive";
 import WEBSITE_METADATA from "~/data/generated/metadata.json";
-import { withAuth } from "~/modules/auth";
-import { ROUTES, useRouting } from "~/modules/routing";
 import { renderIf, withOnlyClientRendering } from "~/hocs";
 import { useDidMount, useOnWindowStopScroll } from "~/hooks";
+import { withAuth } from "~/modules/auth";
+import { ROUTES, useRouting } from "~/modules/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { generateSlug } from "@diegofrayo/utils/strings";
-import v from "@diegofrayo/v";
 import { getScrollPosition, isPWA, setScrollPosition } from "@diegofrayo/utils/browser";
+import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
 import { type T_IconName } from "~/components/primitive/Icon";
 
@@ -52,9 +52,7 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 						>
 							@diegofrayo
 						</Link>
-						<Text className="tw-font-mono tw-text-sm tw-font-thin dr-text-color-surface-500">
-							software developer
-						</Text>
+						<Text className="tw-font-mono tw-text-sm tw-font-thin">software developer</Text>
 					</Title>
 
 					<ToolsMenu />
@@ -147,6 +145,7 @@ const ToolsMenu = withAuth(function ToolsMenu() {
 								icon={Icon.icon.SETTINGS}
 								wrapperClassName={styles["radix-navigation-menu-trigger-icon"]}
 								size="tw-wh-6 sm:tw-wh-8"
+								color="tw-text-white"
 							/>
 						</RadixNavigationMenu.Trigger>
 						<RadixNavigationMenu.Content className="radix-navigation-menu-content">
@@ -350,7 +349,7 @@ const NavigationMenuItem = React.forwardRef<HTMLAnchorElement, T_NavigationMenuI
 					className={cn(
 						"tw-flex tw-items-center tw-justify-start tw-px-6 tw-py-1.5 tw-text-left tw-text-3xl tw-uppercase dr-font-titles sm:tw-justify-center sm:tw-text-center sm:tw-text-xl sm:dr-bg-color-surface-200",
 						isCurrentPathActive(href)
-							? "tw-font-bold tw-text-white sm:dr-bg-color-surface-300"
+							? "tw-text-white sm:dr-bg-color-surface-300"
 							: "dr-text-color-surface-600",
 					)}
 					href={href}
@@ -403,12 +402,22 @@ function Footer() {
 						is="section"
 						className="tw-rounded-md tw-border tw-px-3 tw-py-2 tw-text-sm dr-bg-color-surface-200 dr-border-color-surface-300"
 					>
-						<Title
-							is="h2"
-							className="tw-text-center tw-text-base tw-font-bold"
-						>
-							TECH STACK
-						</Title>
+						<Block className="tw-flex tw-justify-between tw-text-white">
+							<Title
+								is="h2"
+								className="tw-text-center tw-text-base tw-font-bold"
+							>
+								TECH STACK
+							</Title>
+							<Link
+								variant={Link.variant.SIMPLE}
+								href={`${WEBSITE_METADATA.social.github}/website`}
+								className="tw-inline-block"
+								isExternalLink
+							>
+								<Icon icon={Icon.icon.CODE} />
+							</Link>
+						</Block>
 						<Space size={0.5} />
 						<List
 							variant={List.variant.DEFAULT}
@@ -486,8 +495,9 @@ function StackItem({ toolName, href, description }: T_StackItemProps) {
 	return (
 		<React.Fragment>
 			<Link
-				variant={Link.variant.PRIMARY}
+				variant={Link.variant.SIMPLE}
 				href={href}
+				className="tw-font-bold tw-underline"
 				isExternalLink
 			>
 				<InlineText>{toolName}</InlineText>

@@ -54,7 +54,7 @@ const styles = cva("dr-title", {
 		variant: {
 			[VARIANTS.UNSTYLED]: "",
 			[VARIANTS.DEFAULT]: "dr-font-titles",
-			[VARIANTS.PRIMARY]: "dr-font-titles",
+			[VARIANTS.PRIMARY]: "tw-text-white dr-font-titles",
 		},
 		size: {
 			[SIZES.MD]: "tw-text-2xl",

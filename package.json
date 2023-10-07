@@ -37,7 +37,6 @@
 		"@radix-ui/react-popover": "^1.0.7",
 		"@radix-ui/react-separator": "^1.0.3",
 		"@radix-ui/react-tooltip": "^1.0.7",
-		"@radix-ui/themes": "^1.1.2",
 		"@splitbee/web": "^0.3.0",
 		"@types/node": "^20.5.9",
 		"@types/react": "18.2.20",

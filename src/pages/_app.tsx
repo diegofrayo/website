@@ -1,9 +1,7 @@
-import "@radix-ui/themes/styles.css";
 import "~/styles/app.css";
 
 import * as React from "react";
-import { Staatliches, Black_Ops_One, Rubik } from "next/font/google";
-import { Theme } from "@radix-ui/themes";
+import { Staatliches, Black_Ops_One, Montserrat } from "next/font/google";
 import router from "next/router";
 import * as RadixTooltip from "@radix-ui/react-tooltip";
 import { Toaster } from "sonner";
@@ -55,20 +53,18 @@ function CustomApp({ Component, pageProps }: T_CustomAppProps) {
 			FallbackComponent={ErrorFallback}
 			onError={onError}
 		>
-			<Theme appearance="dark">
-				<RadixTooltip.Provider>
-					<CustomErrorBoundary>
-						<Component {...pageProps} />
-						<Toaster
-							position="bottom-center"
-							toastOptions={{
-								style: { justifyContent: "center" },
-							}}
-							closeButton
-						/>
-					</CustomErrorBoundary>
-				</RadixTooltip.Provider>
-			</Theme>
+			<RadixTooltip.Provider>
+				<CustomErrorBoundary>
+					<Component {...pageProps} />
+					<Toaster
+						position="bottom-center"
+						toastOptions={{
+							style: { justifyContent: "center" },
+						}}
+						closeButton
+					/>
+				</CustomErrorBoundary>
+			</RadixTooltip.Provider>
 		</ErrorBoundary>
 	);
 }
@@ -91,7 +87,7 @@ const fontTitles = Staatliches({
 	variable: "--font-titles",
 });
 
-const fontTexts = Rubik({
+const fontTexts = Montserrat({
 	display: "swap",
 	subsets: ["latin"],
 	weight: ["400", "700"],

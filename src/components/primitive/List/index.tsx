@@ -24,7 +24,7 @@ function List({ children, variant = VARIANTS.UNSTYLED, className = "" }: T_ListP
 	return (
 		<ul
 			className={cn(
-				"dr-list tw-block tw-w-full tw-list-inside tw-list-none",
+				"dr-list tw-block tw-w-full",
 				isDefaultVariant && styles["dr-list--default"],
 				className,
 			)}
@@ -57,11 +57,7 @@ List.Item = function ListItem({
 }: DR.DOM.HTMLElementAttributes["li"] & { isDefaultVariant?: boolean }) {
 	return (
 		<li
-			className={cn(
-				"dr-list-item",
-				isDefaultVariant && cn(styles["dr-list-item--default"]),
-				className,
-			)}
+			className={cn("dr-list-item", isDefaultVariant && styles["dr-list-item--default"], className)}
 			{...rest}
 		>
 			{children}

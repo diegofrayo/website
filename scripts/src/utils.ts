@@ -1,5 +1,7 @@
 import * as fs from "fs";
 import path from "path";
+import * as prettier from "prettier";
+import prettierConfig from "../../.prettierrc.js";
 
 // --- FILES ---
 
@@ -67,6 +69,14 @@ export function removeFirstAndLastBlankLines(input: string) {
 	}
 
 	return output;
+}
+
+export function formatCode(code: string, parser: "css") {
+	// @ts-ignore
+	return prettier.format(code, {
+		parser,
+		...prettierConfig,
+	});
 }
 
 // --- MISC ---

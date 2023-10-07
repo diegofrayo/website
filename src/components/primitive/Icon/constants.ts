@@ -8,6 +8,7 @@ import {
 	ChevronDownIcon,
 	ChevronLeftIcon,
 	ClipboardIcon,
+	CodeBracketIcon,
 	CogIcon,
 	DocumentTextIcon,
 	EnvelopeIcon,
@@ -187,6 +188,13 @@ const ICONS = {
 	},
 	CLOSE: {
 		icon: XMarkIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	CODE: {
+		icon: CodeBracketIcon,
 		defaultProps: {
 			className: "",
 			color: "",
