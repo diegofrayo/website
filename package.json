@@ -5,7 +5,7 @@
 	"scripts": {
 		"===== SETUP =====": "",
 		"husky:install": "husky install ./.husky",
-		"postinstall": "npm run styles && npm run seo",
+		"postinstall": "npm run styles:tw-plugins && npm run seo",
 		"===== DEV =====": "",
 		"dev": "npm-run-all --parallel build:env-file styles dev:next",
 		"dev:next": "next dev",
