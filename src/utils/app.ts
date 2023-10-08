@@ -1,5 +1,5 @@
 import EnvVars from "~/modules/env-vars";
-import LocalStorageManager from "@diegofrayo/utils/local-storage";
+import { LocalStorageManager } from "@diegofrayo/storage";
 
 export function isDevelopmentEnvironment(): boolean {
 	return (

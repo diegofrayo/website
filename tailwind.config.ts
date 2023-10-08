@@ -51,6 +51,16 @@ const config: Config = {
 			minHeight: {
 				"dv-screen": "100dvh",
 			},
+			animation: {
+				intermitent: "intermitent 1.5s infinite",
+			},
+			keyframes: {
+				intermitent: {
+					"0%": { opacity: "0" },
+					"50%": { opacity: "1" },
+					"100%": { opacity: "0" },
+				},
+			},
 		},
 	},
 	plugins: [drPlugins],

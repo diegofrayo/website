@@ -1,7 +1,7 @@
 import { NextRouter, useRouter } from "next/router";
 
 import { isPWA } from "@diegofrayo/utils/browser";
-import LocalStorageManager from "@diegofrayo/utils/local-storage";
+import { LocalStorageManager } from "@diegofrayo/storage";
 
 // --- CONSTANTS & TYPES ---
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { getMDXComponent } from "mdx-bundler/client";
+import { getMDXComponent, getMDXExport } from "mdx-bundler/client";
 import cn from "classnames";
 
 import {
@@ -29,11 +29,13 @@ export function MDXContent({ code, components = {}, globals = {} }: T_MDXContent
 	const Component = React.useMemo(() => getMDXComponent(code, globals), [code, globals]);
 
 	return (
-		<Block className={cn(styles["dr-mdx-content"])}>
+		<Block className={cn("dr-mdx-content", styles["dr-mdx-content"])}>
 			<Component components={{ ...MDXComponents, ...components }} />
 		</Block>
 	);
 }
+
+export { getMDXExport };
 
 // DOCS: https://mdxjs.com/table-of-components/
 /* WARN:

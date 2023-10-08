@@ -1,5 +1,6 @@
 import * as React from "react";
 import cn from "classnames";
+import dynamic from "next/dynamic";
 
 import { MainLayout, Page } from "~/components/layout";
 import {
@@ -17,24 +18,21 @@ import {
 	Callout,
 	CopyToClipboardPopover,
 	ImageWithLink,
-	Playground,
-	SourceCode,
 	Toast,
 	Tooltip,
 } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/generated/metadata.json";
 import { withOnlyClientRendering } from "~/hocs";
-import { useLocalStorageState } from "~/hooks";
 import AnalyticsService from "~/modules/analytics";
-import { MDXContent } from "~/modules/mdx/client";
+import { MDXContent, getMDXExport } from "~/modules/mdx/client";
 import { ROUTES } from "~/modules/routing";
 import twcss from "@diegofrayo/twcss";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
+import { useLocalStorageState } from "@diegofrayo/storage";
 import type { T_BlogPost } from "~/modules/pages/blog/types";
 import type DR from "@diegofrayo/types";
 
-import * as BlogPostsComponents from "./components/my-favorite-music-and-mdx";
 import { BlogPostCategory } from "./components";
 
 export type T_BlogPostPageProps = {
@@ -58,13 +56,7 @@ function BlogPostPage({ postDetails, postContent }: T_BlogPostPageProps) {
 
 				<MDXContent
 					code={postContent}
-					components={{
-						Callout,
-						ImageWithLink,
-						Playground,
-						SourceCode,
-						...BlogPostsComponents,
-					}}
+					components={getBlogPostDynamicComponents(getMDXExport(postContent))}
 					globals={{
 						DATA: { post: postDetails },
 					}}
@@ -84,6 +76,63 @@ function BlogPostPage({ postDetails, postContent }: T_BlogPostPageProps) {
 }
 
 export default BlogPostPage;
+
+// --- UTILS ---
+
+function getBlogPostDynamicComponents(componentsMap: DR.Object<string>) {
+	const COMPONENTS_PATHS_MAP = {
+		Playground: "../../../components/shared/Playground",
+		SourceCode: "../../../components/shared/SourceCode",
+		MFMAMGitHubRepo: "./components/my-favorite-music-and-mdx/MFMAMGitHubRepo",
+		MFMAMHelloWorldMDX: "./components/my-favorite-music-and-mdx/MFMAMHelloWorldMDX",
+		MFMAMSpotifyPlaylist: "./components/my-favorite-music-and-mdx/MFMAMSpotifyPlaylist",
+	} as DR.Object<string>;
+
+	const components = {
+		Callout,
+		CopyToClipboardPopover,
+		ImageWithLink,
+		Toast,
+		Tooltip,
+	} as DR.Object;
+
+	Object.keys(componentsMap["Components"] || {}).forEach((componentName) => {
+		if (COMPONENTS_PATHS_MAP[componentName]) {
+			if (componentName === "Playground") {
+				components[componentName] = dynamic(() => import("../../../components/shared/Playground"), {
+					ssr: true,
+				});
+			} else if (componentName === "SourceCode") {
+				components[componentName] = dynamic(() => import("../../../components/shared/SourceCode"), {
+					ssr: true,
+				});
+			} else if (componentName === "MFMAMGitHubRepo") {
+				components[componentName] = dynamic(
+					() => import("./components/my-favorite-music-and-mdx/MFMAMGitHubRepo"),
+					{
+						ssr: true,
+					},
+				);
+			} else if (componentName === "MFMAMHelloWorldMDX") {
+				components[componentName] = dynamic(
+					() => import("./components/my-favorite-music-and-mdx/MFMAMHelloWorldMDX"),
+					{
+						ssr: true,
+					},
+				);
+			} else if (componentName === "MFMAMSpotifyPlaylist") {
+				components[componentName] = dynamic(
+					() => import("./components/my-favorite-music-and-mdx/MFMAMSpotifyPlaylist"),
+					{
+						ssr: true,
+					},
+				);
+			}
+		}
+	});
+
+	return components;
+}
 
 // --- COMPONENTS ---
 

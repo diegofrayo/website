@@ -3,7 +3,7 @@ import splitbee from "@splitbee/web";
 
 import { AuthService } from "~/modules/auth";
 import { logger } from "~/modules/logging";
-import LocalStorageManager from "@diegofrayo/utils/local-storage";
+import { LocalStorageManager } from "@diegofrayo/storage";
 import type DR from "@diegofrayo/types";
 
 class AnalyticsServiceClass {

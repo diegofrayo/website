@@ -26,6 +26,7 @@ import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
 import { type T_IconName } from "~/components/primitive/Icon";
 
+import { TypingEffectText } from "~/components/shared";
 import styles from "./styles.module.css";
 
 type T_MainLayoutProps = {
@@ -52,7 +53,9 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 						>
 							@diegofrayo
 						</Link>
-						<Text className="tw-font-mono tw-text-sm tw-font-thin">software developer</Text>
+						<TypingEffectText className="tw-font-mono tw-text-sm tw-font-thin">
+							software developer
+						</TypingEffectText>
 					</Title>
 
 					<ToolsMenu />

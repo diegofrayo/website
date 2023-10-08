@@ -1,11 +1,6 @@
 import * as React from "react";
 
 import { Block, Icon, Link, Text, Title } from "~/components/primitive";
-import { isDevelopmentEnvironment } from "~/utils/app";
-
-export function MFMAMHelloWorldMDX({ text }: { text: string }) {
-	return <Text className="tw-block tw-bg-red-200 tw-p-2 tw-text-red-700">{text}</Text>;
-}
 
 type T_GitHubRepoProps = {
 	name: string;
@@ -13,7 +8,7 @@ type T_GitHubRepoProps = {
 	description: string;
 };
 
-export function MFMAMGitHubRepo({ name, url, description }: T_GitHubRepoProps) {
+export default function MFMAMGitHubRepo({ name, url, description }: T_GitHubRepoProps) {
 	return (
 		<Block
 			className="tw-text-center"
@@ -46,25 +41,6 @@ export function MFMAMGitHubRepo({ name, url, description }: T_GitHubRepoProps) {
 					wrapperClassName="tw-absolute tw-top-2 tw-right-2"
 				/>
 			</Link>
-		</Block>
-	);
-}
-
-export function MFMAMSpotifyPlaylist() {
-	if (isDevelopmentEnvironment()) {
-		return null;
-	}
-
-	return (
-		<Block className="tw-overflow-hidden tw-rounded-3xl tw-border-4 dr-border-color-surface-300">
-			<iframe
-				src="https://open.spotify.com/embed/playlist/37i9dQZF1EM1nsROE2cRZE"
-				height="500"
-				width="100%"
-				allow="encrypted-media"
-				loading="lazy"
-				title="Spotify playlist"
-			/>
 		</Block>
 	);
 }

@@ -46,9 +46,8 @@ export function envalid<
 		) {
 			if (envVarConfig.validate(envVarValue)) {
 				return { ...result, [envVarKey]: envVarValue || "" };
-			} else {
-				throw new Error(envVarConfig.getErrorMessage(envVarKey, envVarValue));
 			}
+			throw new Error(envVarConfig.getErrorMessage(envVarKey, envVarValue));
 		}
 
 		return { ...result, [envVarKey]: envVarValue || "" };

@@ -3,7 +3,7 @@ import * as React from "react";
 import LocalStorageManager, {
 	type T_LocalStorageState,
 	type T_LocalStorageStateConfig,
-} from "@diegofrayo/utils/local-storage";
+} from "./service";
 
 function useLocalStorageState<G_ValueType>(
 	config: T_LocalStorageStateConfig<G_ValueType>,

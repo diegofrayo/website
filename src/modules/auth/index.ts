@@ -1,6 +1,6 @@
 import { renderIf } from "~/hocs";
 import { isBrowser } from "~/utils/app";
-import LocalStorageManager from "@diegofrayo/utils/local-storage";
+import { LocalStorageManager } from "@diegofrayo/storage";
 import type DR from "@diegofrayo/types";
 
 // --- SERVICE ---
