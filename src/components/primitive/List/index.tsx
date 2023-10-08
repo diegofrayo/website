@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 
 // --- PROPS & TYPES ---
 
-const VARIANTS = mirror(["UNSTYLED", "DEFAULT"]);
+const VARIANTS = mirror(["UNSTYLED", "SIMPLE"]);
 type T_Variant = keyof typeof VARIANTS;
 
 type T_ListProps = DR.DOM.HTMLElementAttributes["ul"] & {
@@ -19,7 +19,7 @@ type T_ListProps = DR.DOM.HTMLElementAttributes["ul"] & {
 
 function List({ children, variant = VARIANTS.UNSTYLED, className = "" }: T_ListProps) {
 	// --- VARS ---
-	const isDefaultVariant = variant === VARIANTS.DEFAULT;
+	const isDefaultVariant = variant === VARIANTS.SIMPLE;
 
 	return (
 		<ul

@@ -84,10 +84,10 @@ In this tutorial I want to explain how to publish a private npm package to GitHu
 
    > **Important:**
    >
-   > - `"name": "@my-organization/my-pkg"` | The name of the package must have this structure: **@organization/package-name**
-   > - `"repository": "git://github.com/my-organization/my-pkg.git"` | Here, you have to set the URL of your repository
-   > - `"publishConfig": {"registry": "https://npm.pkg.github.com"}` | This attribute serves to tell GitHub that you will publish this package to its registry
-   > - `"private": false` | Even if the package will be private, the value of this attribute must be **false**
+   > - The name of the package must have this structure: **@organization/package-name** | `"name": "@my-organization/my-pkg"`
+   > - You have to set the URL of your repository | `"repository": "git://github.com/my-organization/my-pkg.git"`
+   > - This attribute serves to tell GitHub that you will publish this package to its registry | `"publishConfig": {"registry": "https://npm.pkg.github.com"}`
+   > - Even if the package will be private, the value of this attribute must be **false** | `"private": false`
 
 1. Create the workflow `.yml` file in `.github/workflows` folder
 
@@ -159,4 +159,4 @@ In this tutorial I want to explain how to publish a private npm package to GitHu
 
 ## Final words
 
-Sometimes, these kind of tasks are hard, specially for no expert people in deployments, servers and infrastructure like me. I hope that this tutorial has been useful for you, bye bye.
+Sometimes, these kind of tasks are hard, specially for no expert people in deployments, servers and infrastructure like me. I hope that this tutorial has been useful for you.

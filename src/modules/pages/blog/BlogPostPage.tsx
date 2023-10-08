@@ -89,7 +89,7 @@ export default BlogPostPage;
 
 function BlogPostDetails({ postDetails }: Pick<T_BlogPostPageProps, "postDetails">) {
 	return (
-		<Block className="tw-border-b-8 tw-border-double tw-border-white tw-pb-16 tw-text-center tw-text-xs">
+		<Block className="tw-border-b-8 tw-border-double tw-border-white tw-pb-16 tw-text-center tw-text-sm">
 			<Tooltip
 				text="YYYY/MM/DD"
 				triggerAsChild={false}
@@ -130,7 +130,7 @@ function BlogPostSources({ sources }: { sources: { title: string; url: string }[
 				Sources
 			</Title>
 			<Space size={1} />
-			<List variant={List.variant.DEFAULT}>
+			<List variant={List.variant.SIMPLE}>
 				{sources.map((source) => {
 					const { host } = new URL(source.url);
 

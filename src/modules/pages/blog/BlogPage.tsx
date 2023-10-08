@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { MainLayout, Page } from "~/components/layout";
-import { Block, InlineText, Link, Space, Text, Title } from "~/components/primitive";
+import { Block, InlineText, Link, Text, Title } from "~/components/primitive";
 import { ROUTES } from "~/modules/routing";
 import type { T_PageContent } from "~/data/loader";
 
@@ -30,22 +30,21 @@ function BlogPage({ content, data: posts }: T_BlogPageProps) {
 							key={post.config.slug}
 							href={`${ROUTES.BLOG}/${post.config.slug}`}
 							variant={Link.variant.SIMPLE}
-							className="tw-mb-6 tw-block tw-border-l-8 tw-border-t tw-pl-2 dr-border-t-color-surface-100 dr-border-l-color-surface-300 last:tw-mb-0"
+							className="tw-mb-10 tw-block last:tw-mb-0"
 						>
 							<Title
+								variant={Title.variant.SIMPLE}
 								is="h2"
 								className="tw--mt-1.5 dr-text-color-primary-100"
-								size={Title.size.MD}
+								size={Title.size.LG}
 							>
 								{post.content.title}
 							</Title>
-							<Space size={0.5} />
 
-							<Text className="tw-text-sm dr-text-color-surface-500">
+							<Text className="tw-text-sm tw-text-white">
 								<InlineText>Published at</InlineText>{" "}
 								<InlineText is="strong">{post.config.published_at}</InlineText>
 							</Text>
-							<Space size={0.5} />
 							<Text>{post.content.description}</Text>
 							<Block>
 								{post.config.categories.map((category) => {

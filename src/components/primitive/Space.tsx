@@ -7,7 +7,7 @@ import { mirror } from "@diegofrayo/utils/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-const VARIANTS = mirror(["DEFAULT", "DASHED"]);
+const VARIANTS = mirror(["SIMPLE", "DASHED"]);
 type T_Variant = keyof typeof VARIANTS;
 
 type T_SpaceProps = {
@@ -25,7 +25,7 @@ type T_SpaceProps = {
 // --- COMPONENT DEFINITION ---
 
 function Space({
-	variant = VARIANTS.DEFAULT,
+	variant = VARIANTS.SIMPLE,
 	clasName = "",
 	orientation = "h",
 	responsive = "",
@@ -42,7 +42,7 @@ function Space({
 	function composeStyles(): string {
 		return cn(
 			"dr-space tw-flex-shrink-0",
-			{ "tw-border-0": variant === VARIANTS.DEFAULT },
+			{ "tw-border-0": variant === VARIANTS.SIMPLE },
 			{ "dr-border-color-primary tw-border-dashed": variant === VARIANTS.DASHED },
 			{ "tw-h-full": isVerticalOrientation },
 			{ "tw-h-px": !isVerticalOrientation },

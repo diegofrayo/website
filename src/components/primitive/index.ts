@@ -1,4 +1,5 @@
 export { default as Block } from "./Block";
+export { default as Blockquote } from "./Blockquote";
 export { default as Button } from "./Button";
 export { default as Code } from "./Code";
 export { default as Icon } from "./Icon";

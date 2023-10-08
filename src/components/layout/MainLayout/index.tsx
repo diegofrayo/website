@@ -67,7 +67,7 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 						<Block className="tw-text-center">
 							<Title
 								is="h1"
-								variant={Title.variant.DEFAULT}
+								variant={Title.variant.SIMPLE}
 								className="tw-mb-16 tw-inline-block tw-border-b-8 tw-border-double tw-border-white tw-text-6xl tw-font-bold tw-uppercase tw-leading-none tw-text-white md:tw-text-8xl lg:tw-text-10xl"
 							>
 								{title}
@@ -420,7 +420,7 @@ function Footer() {
 						</Block>
 						<Space size={0.5} />
 						<List
-							variant={List.variant.DEFAULT}
+							variant={List.variant.SIMPLE}
 							className="tw-text-left"
 						>
 							<List.Item>

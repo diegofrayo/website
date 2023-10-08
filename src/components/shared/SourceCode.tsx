@@ -42,11 +42,7 @@ function SourceCode({
 			}}
 			data-markdown-block
 		>
-			<Block
-				className={cn(
-					"tw-flex tw-flex-shrink-0 tw-flex-wrap tw-items-center tw-justify-between tw-rounded-t-md tw-px-4 tw-py-2 tw-pr-2 tw-font-mono tw-text-sm",
-				)}
-			>
+			<Block className="tw-flex tw-flex-shrink-0 tw-flex-wrap tw-items-center tw-justify-between tw-rounded-t-md tw-px-2 tw-py-2 tw-font-mono tw-text-sm">
 				{v.isNotEmptyString(codeTitle) ? (
 					<Code className="tw-mr-4 tw-flex-1 tw-truncate tw-font-bold">{codeTitle}</Code>
 				) : null}
@@ -62,7 +58,7 @@ function SourceCode({
 				{code}
 			</Pre>
 
-			<Block className="tw-flex tw-flex-shrink-0 tw-flex-col-reverse tw-rounded-b-md tw-px-4 tw-py-2 tw-pr-2 tw-text-sm tw-font-bold tw-text-white sm:tw-flex-row sm:tw-justify-end">
+			<Block className="tw-flex tw-flex-shrink-0 tw-flex-col-reverse tw-rounded-b-md tw-px-2 tw-py-2 tw-text-sm tw-font-bold tw-text-white sm:tw-flex-row sm:tw-justify-end">
 				{v.isNotEmptyString(sourceURL) ? (
 					<React.Fragment>
 						<Link

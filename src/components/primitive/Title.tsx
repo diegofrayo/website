@@ -7,7 +7,7 @@ import type DR from "@diegofrayo/types";
 
 // --- PROPS & TYPES ---
 
-const VARIANTS = mirror(["UNSTYLED", "DEFAULT", "PRIMARY"]);
+const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "PRIMARY"]);
 type T_Variant = keyof typeof VARIANTS;
 
 const SIZES = mirror(["MD", "LG", "XL"]);
@@ -53,7 +53,7 @@ const styles = cva("dr-title", {
 	variants: {
 		variant: {
 			[VARIANTS.UNSTYLED]: "",
-			[VARIANTS.DEFAULT]: "dr-font-titles",
+			[VARIANTS.SIMPLE]: "dr-font-titles",
 			[VARIANTS.PRIMARY]: "tw-text-white dr-font-titles",
 		},
 		size: {

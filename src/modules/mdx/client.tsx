@@ -2,7 +2,18 @@ import * as React from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 import cn from "classnames";
 
-import { Link, List, Pre, Space, Text, Code, Block, Title, Image } from "~/components/primitive";
+import {
+	Block,
+	Blockquote,
+	Code,
+	Image,
+	Link,
+	List,
+	Pre,
+	Space,
+	Text,
+	Title,
+} from "~/components/primitive";
 import type { T_TitleProps } from "~/components/primitive/Title";
 import type DR from "@diegofrayo/types";
 
@@ -43,6 +54,7 @@ export const MDXComponents = {
 			</Link>
 		);
 	},
+	blockquote: Blockquote,
 	code: function CustomCode({ children }: DR.DOM.HTMLElementAttributes["code"]) {
 		return <Code variant={Code.variant.STYLED}>{children}</Code>;
 	},
@@ -62,14 +74,14 @@ export const MDXComponents = {
 			/>
 		);
 	},
+	li: List.Item,
+	p: Text,
 	pre: function CustomPre({ children }: DR.DOM.HTMLElementAttributes["pre"]) {
 		return <Pre variant={Pre.variant.STYLED}>{children}</Pre>;
 	},
 	ul: function CustomUl({ children }: DR.DOM.HTMLElementAttributes["ul"]) {
-		return <List variant={List.variant.DEFAULT}>{children}</List>;
+		return <List variant={List.variant.SIMPLE}>{children}</List>;
 	},
-	li: List.Item,
-	p: Text,
 
 	// --- CUSTOM COMPONENTS ---
 	Block,

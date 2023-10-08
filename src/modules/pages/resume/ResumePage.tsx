@@ -68,7 +68,7 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 							<Title
 								is="h1"
 								size={Title.size.XL}
-								variant={Title.variant.DEFAULT}
+								variant={Title.variant.SIMPLE}
 							>
 								{data.fullName}
 							</Title>
@@ -171,7 +171,7 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 											<Block>
 												<Title
 													is="h3"
-													variant={Title.variant.DEFAULT}
+													variant={Title.variant.SIMPLE}
 													size={Title.size.MD}
 												>
 													{item.degree}
@@ -289,7 +289,7 @@ function ResumeBlock({ title, children }: T_ResumeBlockProps) {
 		>
 			<Title
 				is="h2"
-				variant={Title.variant.DEFAULT}
+				variant={Title.variant.SIMPLE}
 				className="tw-mb-8 tw-w-full tw-border-b-4 tw-border-l-4 tw-border-double tw-border-black tw-py-2 tw-pl-4 tw-text-left tw-uppercase"
 				size={Title.size.LG}
 			>
@@ -344,7 +344,7 @@ function ExperienceTimelineItem({
 			<Block>
 				<Title
 					is="h3"
-					variant={Title.variant.DEFAULT}
+					variant={Title.variant.SIMPLE}
 					size={Title.size.MD}
 				>
 					{role}
@@ -368,7 +368,7 @@ function ExperienceTimelineItem({
 				</Text>
 				<Space size={2} />
 
-				<List variant={List.variant.DEFAULT}>
+				<List variant={List.variant.SIMPLE}>
 					{description.split("› ").map((line, index) => {
 						if (!line) return null;
 

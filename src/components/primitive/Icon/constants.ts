@@ -21,6 +21,7 @@ import {
 	RssIcon,
 	Square3Stack3DIcon,
 	UserCircleIcon,
+	WindowIcon,
 	WrenchIcon,
 	XMarkIcon,
 } from "@heroicons/react/24/outline";
@@ -307,6 +308,13 @@ const ICONS = {
 	},
 	WARNING: {
 		icon: ExclamationTriangleIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	WINDOW: {
+		icon: WindowIcon,
 		defaultProps: {
 			className: "",
 			color: "",

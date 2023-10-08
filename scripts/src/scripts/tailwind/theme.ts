@@ -22,7 +22,7 @@ const MY_THEME = {
 			transition: TW_DEFAULT_THEME.transitionProperty.opacity,
 			transitionDuration: TW_DEFAULT_THEME.transitionDuration["500"],
 			"&:hover": {
-				opacity: TW_DEFAULT_THEME.opacity[70],
+				opacity: TW_DEFAULT_THEME.opacity[75],
 			},
 		},
 	},

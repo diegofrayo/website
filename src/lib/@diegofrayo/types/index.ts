@@ -102,6 +102,7 @@ declare namespace DR {
 
 	// --- JS ---
 	export type SetTimeout = NodeJS.Timeout;
+	export type ProcessEnv = NodeJS.ProcessEnv;
 }
 
 export default DR;
