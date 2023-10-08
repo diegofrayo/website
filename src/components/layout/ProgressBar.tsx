@@ -8,6 +8,8 @@ import { useDidMount } from "~/hooks";
 import type { T_ReactElementNullable } from "~/types";
 
 import styles from "./ProgressBar.styles.module.css";
+import { delay } from "~/utils/misc";
+import { logger } from "~/features/logging";
 
 function NProgressBar(): T_ReactElementNullable {
 	// --- HOOKS ---
@@ -22,10 +24,22 @@ function NProgressBar(): T_ReactElementNullable {
 			NProgress.start();
 		}
 
-		function hideProgressBar(): void {
+		async function hideProgressBar(): Promise<void> {
 			setTimeout(() => {
 				NProgress.done();
 			}, 250);
+
+			//  ---
+
+			await delay(1500);
+
+			const $menu = document.getElementsByTagName("vercel-live-feedback")[0];
+			if ($menu) {
+				$menu.remove();
+				logger("LOG", "removePreviewDeploymentsMenu executed!");
+			} else {
+				logger("LOG", "vercel-live-feedback element not found");
+			}
 		}
 
 		router.events.on("routeChangeStart", showProgressBar);

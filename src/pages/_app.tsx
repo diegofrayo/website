@@ -27,7 +27,6 @@ import { T_Metadata } from "~/stores/modules/metadata";
 import { isMobileDevice, isPWA } from "~/utils/browser";
 import { MDXComponents, updateMDXScope } from "~/features/mdx";
 import { initPWARoutingConfig } from "~/features/routing";
-import { delay } from "~/utils/misc";
 import type { T_ReactElement, T_Object } from "~/types";
 
 import ErrorPage from "./500";
@@ -65,7 +64,6 @@ function CustomApp({
 		AnalyticsService.init();
 		AuthService.configureHTTPHeaders();
 		addErrorsGlobalListener();
-		removePreviewDeploymentsMenu();
 
 		if (isPWA()) {
 			return initPWARoutingConfig(router);
@@ -84,16 +82,6 @@ function CustomApp({
 		logger("ERROR", error);
 		logger("ERROR", info);
 		console.groupEnd();
-	}
-
-	async function removePreviewDeploymentsMenu(): void {
-		await delay(1500);
-
-		const $menu = document.getElementsByTagName("vercel-live-feedback")[0];
-		if ($menu) {
-			$menu.remove();
-			logger("LOG", "removePreviewDeploymentsMenu executed!");
-		}
 	}
 
 	return (
