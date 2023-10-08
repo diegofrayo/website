@@ -144,9 +144,9 @@ function Stopwatch(): T_ReactElement {
 		const minutes = seconds / 60 - 60 * hours;
 		const lastSeconds = Math.round((minutes - Math.floor(minutes)) * 60);
 
-		return `${addLeftPadding(hours)}:${addLeftPadding(Math.floor(minutes))}:${addLeftPadding(
-			lastSeconds,
-		)}`;
+		return `${addLeftPadding(
+			hours,
+		)}:${addLeftPadding(Math.floor(minutes))}:${addLeftPadding(lastSeconds)}`;
 	}, []);
 
 	// --- EFFECTS ---

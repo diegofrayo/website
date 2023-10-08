@@ -414,9 +414,9 @@ function useController() {
 		const minutes = seconds / 60 - 60 * hours;
 		const lastSeconds = Math.round((minutes - Math.floor(minutes)) * 60);
 
-		return `${addLeftPadding(hours)}:${addLeftPadding(Math.floor(minutes))}:${addLeftPadding(
-			lastSeconds,
-		)}`;
+		return `${addLeftPadding(
+			hours,
+		)}:${addLeftPadding(Math.floor(minutes))}:${addLeftPadding(lastSeconds)}`;
 	}, []);
 
 	const calculateRoutineItemTotalTime = React.useCallback(
@@ -500,9 +500,7 @@ function useController() {
 	// private
 	const createFormattedDate = React.useCallback(function createFormattedDate() {
 		const date = new Date();
-		return `${date.getFullYear()}/${addLeftPadding(date.getMonth() + 1)}/${addLeftPadding(
-			date.getDate(),
-		)}`;
+		return `${date.getFullYear()}/${addLeftPadding(date.getMonth() + 1)}/${addLeftPadding(date.getDate())}`;
 	}, []);
 
 	const updateRoutine = React.useCallback(function updateRoutine(
@@ -525,7 +523,8 @@ function useController() {
 		};
 
 		return routineUpdated;
-	}, []);
+	},
+	[]);
 
 	function searchForNextNotStartedRoutineItem(routine: T_Routine) {
 		const routineItemFound =
@@ -756,7 +755,8 @@ function useController() {
 				};
 			}),
 		};
-	}, []);
+	},
+	[]);
 
 	// --- HANDLERS ---
 	function handleInitRoutineClick(routineTemplate: T_Routine) {
