@@ -6,4 +6,4 @@ export { default as Popover } from "./Popover";
 export { default as SourceCode } from "./SourceCode";
 export { default as Toast } from "./Toast";
 export { default as Tooltip } from "./Tooltip";
-export { default as TypingEffectText } from "./TypingEffectText";
+export { default as TypingTextEffect } from "./TypingTextEffect";

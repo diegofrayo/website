@@ -1,7 +1,7 @@
 import * as React from "react";
 import type DR from "@diegofrayo/types";
 
-function useTypingEffect(text: string) {
+function useTypingTextEffect(text: string) {
 	const [output, setOutput] = React.useState(text.charAt(0));
 	const outputIndexRef = React.useRef(1);
 	const intervalRef = React.useRef<DR.SetTimeout | null>(null);
@@ -37,4 +37,4 @@ function useTypingEffect(text: string) {
 	return output;
 }
 
-export default useTypingEffect;
+export default useTypingTextEffect;

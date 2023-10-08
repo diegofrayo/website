@@ -14,6 +14,7 @@ import {
 	Text,
 	Title,
 } from "~/components/primitive";
+import { TypingTextEffect } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/generated/metadata.json";
 import { renderIf, withOnlyClientRendering } from "~/hocs";
 import { useDidMount, useOnWindowStopScroll } from "~/hooks";
@@ -26,7 +27,6 @@ import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
 import { type T_IconName } from "~/components/primitive/Icon";
 
-import { TypingEffectText } from "~/components/shared";
 import styles from "./styles.module.css";
 
 type T_MainLayoutProps = {
@@ -53,9 +53,9 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 						>
 							@diegofrayo
 						</Link>
-						<TypingEffectText className="tw-font-mono tw-text-sm tw-font-thin">
+						<TypingTextEffect className="tw-font-mono tw-text-sm tw-font-thin">
 							software developer
-						</TypingEffectText>
+						</TypingTextEffect>
 					</Title>
 
 					<ToolsMenu />
