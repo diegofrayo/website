@@ -1,7 +1,5 @@
 import { createArray } from "./arrays-and-objects";
 
-// --- PUBLIC FUNCTIONS ---
-
 export function generateSlug(str: string): string {
 	let result = str.replace(/^\s+|\s+$/g, "").toLowerCase();
 
@@ -36,7 +34,37 @@ export function replaceAll(str: string, toReplace: string | string[], replacemen
 	return str.replace(new RegExp(escapeRegExp(toReplace), "g"), replacement);
 }
 
-// --- PRIVATE FUNCTIONS ---
+export function removeFirstAndLastBlankLines(input: string) {
+	let output = input;
+
+	if (output.trim().startsWith("\n")) {
+		output = output.trim().substring(1);
+	}
+
+	if (output.trim().endsWith("\n")) {
+		output = output.trim().substring(0, output.length - 1);
+	}
+
+	return output;
+}
+
+export function createRandomString(length: number) {
+	const CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	const charactersLength = CHARACTERS.length;
+	let result = "";
+
+	createArray(length).forEach(() => {
+		result += CHARACTERS.charAt(Math.floor(Math.random() * charactersLength));
+	});
+
+	return result.toUpperCase();
+}
+
+export function addLeftPadding(number: number) {
+	return `${number < 10 ? "0" : ""}${number}`;
+}
+
+// --- INTERNALS ---
 
 function escapeRegExp(text: string): string {
 	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");

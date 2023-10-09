@@ -28,7 +28,8 @@
 		"styles:css-vars": "ts-node --project ./scripts/tsconfig.json scripts/src/scripts/tailwind/css-vars.ts",
 		"styles:tw-plugins": "ts-node --project ./scripts/tsconfig.json --emit --compilerHost scripts/src/scripts/tailwind/plugins.ts",
 		"===== UTILS =====": "",
-		"scripts:commit": "sh ./.husky/generic-commit",
+		"scripts:commit": "sh ./scripts/src/scripts/generic-commit.sh",
+		"scripts:sync-shared-lib": "sh ./scripts/src/scripts/sync-shared-lib.sh",
 		"scripts:code-stats": "tokei ./src",
 		"scripts:code-complexity": "npx code-complexity . --filter \"./src/**/*.tsx\" --limit 10 --sort complexity"
 	},

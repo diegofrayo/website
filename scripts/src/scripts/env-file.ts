@@ -1,7 +1,8 @@
 import { networkInterfaces } from "os";
 import { parse, stringify } from "envfile";
 
-import { readFile, writeFile, throwError, getErrorMessage } from "../utils";
+import { readFile, writeFile } from "../../../src/lib/@diegofrayo/utils/files";
+import { throwError, getErrorMessage } from "../../../src/lib/@diegofrayo/utils/misc";
 
 async function main() {
 	const localIP = getIP();

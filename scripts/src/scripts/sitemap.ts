@@ -1,6 +1,7 @@
 /* eslint @typescript-eslint/dot-notation: 0 */
 
-import { readFile, replaceAll, writeFile } from "../utils";
+import { readFile, writeFile } from "../../../src/lib/@diegofrayo/utils/files";
+import { replaceAll } from "../../../src/lib/@diegofrayo/utils/strings";
 import type { T_RawBlogPostsResponse } from "../../../src/modules/pages/blog/types";
 
 async function main() {

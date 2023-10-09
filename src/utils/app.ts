@@ -22,10 +22,6 @@ export function isServer(): boolean {
 	return !isBrowser();
 }
 
-export function throwError(message: string) {
-	throw new Error(message);
-}
-
 export function recoverFromBreakingChanges() {
 	const LS_BreakingChanges = LocalStorageManager.createItem({
 		key: "DR_BREAKING_CHANGES",

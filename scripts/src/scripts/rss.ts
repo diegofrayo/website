@@ -1,7 +1,7 @@
 /* eslint @typescript-eslint/dot-notation: 0 */
 
 import { Feed } from "feed";
-import { readFile, writeFile } from "../utils";
+import { readFile, writeFile } from "../../../src/lib/@diegofrayo/utils/files";
 import type { T_RawBlogPostsResponse } from "../../../src/modules/pages/blog/types";
 
 async function main() {

@@ -1,10 +1,7 @@
-// Type definitions for @diegofrayo/library [1.0.0]
-// Project: @diegofrayo/library
-// Definitions by: Diego Rayo
-
 /* eslint @typescript-eslint/naming-convention: 0 */
 /* eslint @typescript-eslint/no-namespace: 0 */
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import * as ReactLibrary from "react";
 
 declare namespace DR {
@@ -83,6 +80,7 @@ declare namespace DR {
 
 	// --- DOM ---
 	export namespace DOM {
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		export import HTMLElementAttributes = JSX.IntrinsicElements;
 	}
 

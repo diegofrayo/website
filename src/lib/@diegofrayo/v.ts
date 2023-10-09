@@ -4,7 +4,7 @@
  * - https://npm.io/package/x-utils-es
  */
 
-import type DR from "@diegofrayo/types";
+import type DR from "./types";
 
 // --- PRIMITIVES ---
 
