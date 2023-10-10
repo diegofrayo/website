@@ -10,6 +10,7 @@ import {
 	ClipboardIcon,
 	CodeBracketIcon,
 	CogIcon,
+	DocumentDuplicateIcon,
 	DocumentTextIcon,
 	EnvelopeIcon,
 	ExclamationTriangleIcon,
@@ -196,6 +197,13 @@ const ICONS = {
 	},
 	CODE: {
 		icon: CodeBracketIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	COPY: {
+		icon: DocumentDuplicateIcon,
 		defaultProps: {
 			className: "",
 			color: "",

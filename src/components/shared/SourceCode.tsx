@@ -1,90 +1,100 @@
 import * as React from "react";
 import cn from "classnames";
+import { highlight } from "sugar-high";
 
-import { Block, Code, Icon, InlineText, Link, Pre, Space } from "~/components/primitive";
+import { Block, Icon, Link, Pre } from "~/components/primitive";
 import v from "@diegofrayo/v";
+import { generateSlug } from "@diegofrayo/utils/strings";
+import { createArray } from "@diegofrayo/utils/arrays-and-objects";
+import type DR from "@diegofrayo/types";
 
 import CopyToClipboardPopover from "./CopyToClipboardPopover";
 
 export type T_SourceCodeProps = {
-	language: "jsx" | "tsx" | "css" | "typescript" | "javascript" | "bash" | "yaml" | "markdown";
-	code: string;
-	fileName?: string;
+	code: DR.React.Children;
 	sourceURL?: string;
 	className?: string;
-	height?: "100%" | "auto" | number;
 };
 
-function SourceCode({
-	language,
-	code,
-	fileName = "",
-	sourceURL = "",
-	className = "",
-	height = "auto",
-}: T_SourceCodeProps) {
-	// --- VARS ---
-	const codeTitle = v.isNotEmptyString(fileName)
-		? `// ${fileName}`
-		: v.isNotEmptyString(sourceURL)
-		? `// ${sourceURL.slice(sourceURL.lastIndexOf("/") + 1, sourceURL.length)}`
-		: "";
+function SourceCode({ code, sourceURL = "", className = "" }: T_SourceCodeProps) {
+	// --- STATES & REFS ---
+	const [highlightedCode, setHighlightedCode] = React.useState("");
+	const [containerHeight, setContainerHeight] = React.useState<number | "auto">("auto");
+	const containerRef = React.useRef<null | HTMLDivElement>(null);
+
+	// --- EFFECTS ---
+	React.useEffect(
+		function highlightCode() {
+			setHighlightedCode(highlight(extractChildren()));
+		},
+		[code],
+	);
+
+	React.useEffect(
+		function onHighlightedCode() {
+			if (highlightedCode && containerRef.current) {
+				const sourceCodeHeight = containerRef.current.querySelector("pre")?.offsetHeight || 500;
+				setContainerHeight(sourceCodeHeight > 500 ? 500 : "auto");
+			}
+		},
+		[highlightedCode],
+	);
+
+	// --- UTILS ---
+	function extractChildren() {
+		return React.isValidElement(code) ? code.props.children : code;
+	}
 
 	return (
 		<Block
 			className={cn(
-				"dr-source-code tw-flex tw-flex-col tw-rounded-md tw-border dr-border-color-surface-300",
+				"dr-source-code",
+				"tw-relative tw-overflow-hidden tw-rounded-md tw-border dr-bg-color-surface-200 dr-border-color-surface-300",
 				className,
 			)}
-			style={{
-				height,
-				maxHeight: height === "auto" ? 500 : "none",
-			}}
+			style={{ height: containerHeight }}
+			ref={containerRef}
 			data-markdown-block
 		>
-			<Block className="tw-flex tw-flex-shrink-0 tw-flex-wrap tw-items-center tw-justify-between tw-rounded-t-md tw-px-2 tw-py-2 tw-font-mono tw-text-sm">
-				{v.isNotEmptyString(codeTitle) ? (
-					<Code className="tw-mr-4 tw-flex-1 tw-truncate tw-font-bold">{codeTitle}</Code>
-				) : null}
-				<InlineText className="tw-ml-auto tw-inline-block tw-flex-shrink-0 tw-bg-yellow-300 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-yellow-700">
-					{language}
-				</InlineText>
-			</Block>
-
-			<Pre
-				variant={Pre.variant.HIGHLIGHTED}
-				className="tw-flex-1 tw-border-y dr-border-color-surface-300"
-			>
-				{code}
-			</Pre>
-
-			<Block className="tw-flex tw-flex-shrink-0 tw-flex-col-reverse tw-rounded-b-md tw-px-2 tw-py-2 tw-text-sm tw-font-bold tw-text-white sm:tw-flex-row sm:tw-justify-end">
-				{v.isNotEmptyString(sourceURL) ? (
-					<React.Fragment>
+			<Block className="tw-absolute tw-right-0 tw-top-0 tw-flex tw-w-full tw-justify-between tw-pb-1 tw-text-right dr-bg-color-surface-300">
+				<Block className="tw-ml-2 tw-flex tw-pt-2">
+					{createArray(3).map((element) => {
+						return (
+							<Block
+								key={generateSlug(`source-code-block-element-${element}`)}
+								className={cn("tw-mr-1.5 tw-inline-block tw-rounded-full tw-wh-3 last:tw-mr-0", {
+									"tw-bg-red-500": element === 1,
+									"tw-bg-yellow-500": element === 2,
+									"tw-bg-green-500": element === 3,
+								})}
+							/>
+						);
+					})}
+				</Block>
+				<Block>
+					{v.isNotEmptyString(sourceURL) ? (
 						<Link
 							variant={Link.variant.SIMPLE}
 							href={sourceURL}
-							className="tw-ml-auto tw-inline-block tw-w-48 tw-text-right sm:tw-ml-0 sm:tw-text-left"
+							className="tw-mr-2 tw-inline-block"
 							isExternalLink
 						>
-							<Icon
-								icon={Icon.icon.GITHUB_MONO}
-								size={16}
-							/>
-							<InlineText className="tw-ml-1 tw-lowercase">See source code</InlineText>
+							<Icon icon={Icon.icon.EXTERNAL_LINK} />
 						</Link>
-						<Space responsive="tw-block tw-mb-1 tw-mr-0 sm:tw-inline-block sm:tw-mb-0 sm:tw-mr-6" />
-					</React.Fragment>
-				) : null}
-
-				<CopyToClipboardPopover
-					textToCopy={code}
-					buttonClassName="tw-text-right tw-w-48 tw-ml-auto tw-inline-block"
-				>
-					<Icon icon={Icon.icon.CLIPBOARD} />
-					<InlineText className="tw-ml-1 tw-lowercase">Copy to clipboard</InlineText>
-				</CopyToClipboardPopover>
+					) : null}
+					<CopyToClipboardPopover
+						textToCopy={extractChildren()}
+						className="tw-mr-2 tw-inline-block"
+					>
+						<Icon icon={Icon.icon.COPY} />
+					</CopyToClipboardPopover>
+				</Block>
 			</Block>
+			<Pre
+				variant={Pre.variant.UNSTYLED}
+				className="tw-max-h-full tw-overflow-auto tw-p-3 tw-pt-10 tw-text-base"
+				dangerouslySetInnerHTML={{ __html: highlightedCode }}
+			/>
 		</Block>
 	);
 }

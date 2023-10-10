@@ -1,20 +1,13 @@
 import * as React from "react";
 import cn from "classnames";
 import { cva } from "class-variance-authority";
-import { highlight } from "sugar-high";
 
 import { mirror } from "@diegofrayo/utils/arrays-and-objects";
 import type DR from "@diegofrayo/types";
 
 // --- PROPS & TYPES ---
 
-const VARIANTS = mirror([
-	"UNSTYLED",
-	"STYLED",
-	"HIGHLIGHTED",
-	"BREAK_WITH_BLANK_LINES",
-	"BREAK_WITH_BLANK_SPACES",
-]);
+const VARIANTS = mirror(["UNSTYLED", "BREAK_WITH_BLANK_LINES", "BREAK_WITH_BLANK_SPACES"]);
 type T_Variant = keyof typeof VARIANTS;
 type T_PreProps = DR.DOM.HTMLElementAttributes["pre"] & {
 	variant?: T_Variant;
@@ -23,34 +16,6 @@ type T_PreProps = DR.DOM.HTMLElementAttributes["pre"] & {
 // --- COMPONENT DEFINITION ---
 
 function Pre({ children, className, variant = VARIANTS.UNSTYLED, ...rest }: T_PreProps) {
-	// --- STATES & REFS ---
-	const [highlightedCode, setHighlightedCode] = React.useState("");
-
-	// --- VARS ---
-	const isStyledVariant = variant === VARIANTS.STYLED;
-	const isHighlightedVariant = variant === VARIANTS.HIGHLIGHTED;
-
-	// --- EFFECTS ---
-	React.useEffect(
-		function highlightCode() {
-			if (isStyledVariant || isHighlightedVariant) {
-				setHighlightedCode(
-					highlight(React.isValidElement(children) ? children.props.children : children),
-				);
-			}
-		},
-		[isStyledVariant, isHighlightedVariant, children],
-	);
-
-	if (isStyledVariant || isHighlightedVariant) {
-		return (
-			<pre
-				className={cn(`dr-pre dr-pre--${variant.toLowerCase()}`, styles({ variant }), className)}
-				dangerouslySetInnerHTML={{ __html: highlightedCode }}
-			/>
-		);
-	}
-
 	return (
 		<pre
 			className={cn(`dr-pre dr-pre--${variant.toLowerCase()}`, styles({ variant }), className)}
@@ -67,15 +32,14 @@ export default Pre;
 
 // --- STYLES ---
 
-const styles = cva("tw-overflow-auto tw-font-mono", {
+const styles = cva("tw-font-mono", {
 	variants: {
 		variant: {
 			[VARIANTS.UNSTYLED]: "",
-			[VARIANTS.STYLED]:
-				"tw-rounded-md tw-border tw-p-4 dr-bg-color-surface-200 dr-border-color-surface-300",
-			[VARIANTS.HIGHLIGHTED]: "tw-p-4 dr-bg-color-surface-200",
-			[VARIANTS.BREAK_WITH_BLANK_LINES]: "tw-whitespace-pre-line tw-break-words",
-			[VARIANTS.BREAK_WITH_BLANK_SPACES]: "tw-whitespace-pre-wrap tw-break-words",
+			[VARIANTS.BREAK_WITH_BLANK_LINES]:
+				"tw-overflow-auto tw-whitespace-pre-line tw-break-words tw-text-base",
+			[VARIANTS.BREAK_WITH_BLANK_SPACES]:
+				"tw-overflow-auto tw-whitespace-pre-wrap tw-break-words tw-text-base",
 		},
 	},
 });

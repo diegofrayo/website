@@ -1,6 +1,5 @@
 export const Components = {
 	Playground: "Playground",
-	SourceCode: "SourceCode",
 	MFMAMGitHubRepo: "MFMAMGitHubRepo",
 	MFMAMHelloWorldMDX: "MFMAMGitHubRepo",
 	MFMAMSpotifyPlaylist: "MFMAMSpotifyPlaylist",
@@ -34,8 +33,6 @@ Now, I'm going to explain how to use **next-mdx-remote** for rendering a blog po
 First, I created the `getStaticPaths` function where the `paths` property is an array of slugs of all my blog posts that I want to **pre-render**.
 
 <SourceCode
-	fileName={DATA.post.assets.github.files["pages|blog|slug"].fileName}
-	language="typescript"
 	code={DATA.post.assets.$sourceCodeFiles["4"]}
 	sourceURL={DATA.post.assets.github.files["pages|blog|slug"].url}
 />
@@ -45,8 +42,6 @@ First, I created the `getStaticPaths` function where the `paths` property is an 
 Now, inside of the `getStaticProps` function, the **MDX** content of all blog posts is readed. This function only executes at build time, I mean, on the server side. At the moment I store all my blog posts **MDX** files inside of this website repository. In the future, I could store them on a **CMS**, for example.
 
 <SourceCode
-	fileName={DATA.post.assets.github.files["pages|blog|slug"].fileName}
-	language="typescript"
 	code={DATA.post.assets.$sourceCodeFiles["5"]}
 	sourceURL={DATA.post.assets.github.files["pages|blog|slug"].url}
 />
@@ -58,8 +53,6 @@ Now, inside of the `getStaticProps` function, the **MDX** content of all blog po
 Finally, this is the component that renders a blog post:
 
 <SourceCode
-	fileName={DATA.post.assets.github.files["components|blog|slug"].fileName}
-	language="tsx"
 	code={DATA.post.assets.$sourceCodeFiles["6"]}
 	sourceURL={DATA.post.assets.github.files["components|blog|slug"].url}
 />
@@ -67,14 +60,10 @@ Finally, this is the component that renders a blog post:
 In regards to the **MDX** components styling, at the beginning I used this [Tailwind CSS plugin](https://tailwindcss.com/docs/typography-plugin), but then, I decided don't use it anymore and I built a component with my own styles.
 
 <SourceCode
-	fileName={DATA.post.assets.github.files["MDXContent"].fileName}
-	language="tsx"
 	code={DATA.post.assets.$sourceCodeFiles["7"]}
 	sourceURL={DATA.post.assets.github.files["MDXContent"].url}
 />
 <SourceCode
-	fileName={DATA.post.assets.github.files["MDXContent-Styles"].fileName}
-	language="css"
 	code={DATA.post.assets.$sourceCodeFiles["7-styles"]}
 	sourceURL={DATA.post.assets.github.files["MDXContent-Styles"].url}
 />
@@ -84,8 +73,6 @@ In regards to the **MDX** components styling, at the beginning I used this [Tail
 I used [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer) for code syntax highlighting:
 
 <SourceCode
-	fileName={DATA.post.assets.github.files["SourceCode"].fileName}
-	language="tsx"
 	code={DATA.post.assets.$sourceCodeFiles["8"]}
 	sourceURL={DATA.post.assets.github.files["SourceCode"].url}
 />

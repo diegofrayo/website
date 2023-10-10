@@ -9,11 +9,11 @@ import {
 	Image,
 	Link,
 	List,
-	Pre,
 	Space,
 	Text,
 	Title,
 } from "~/components/primitive";
+import { SourceCode } from "~/components/shared";
 import type { T_TitleProps } from "~/components/primitive/Title";
 import type DR from "@diegofrayo/types";
 
@@ -79,7 +79,7 @@ export const MDXComponents = {
 	li: List.Item,
 	p: Text,
 	pre: function CustomPre({ children }: DR.DOM.HTMLElementAttributes["pre"]) {
-		return <Pre variant={Pre.variant.STYLED}>{children}</Pre>;
+		return <SourceCode code={children} />;
 	},
 	ul: function CustomUl({ children }: DR.DOM.HTMLElementAttributes["ul"]) {
 		return <List variant={List.variant.SIMPLE}>{children}</List>;
@@ -87,6 +87,7 @@ export const MDXComponents = {
 
 	// --- CUSTOM COMPONENTS ---
 	Block,
+	SourceCode,
 };
 
 // --- INTERNALS ---

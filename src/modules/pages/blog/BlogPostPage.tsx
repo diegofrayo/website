@@ -102,10 +102,6 @@ function getBlogPostDynamicComponents(componentsMap: DR.Object<string>) {
 				components[componentName] = dynamic(() => import("../../../components/shared/Playground"), {
 					ssr: true,
 				});
-			} else if (componentName === "SourceCode") {
-				components[componentName] = dynamic(() => import("../../../components/shared/SourceCode"), {
-					ssr: true,
-				});
 			} else if (componentName === "MFMAMGitHubRepo") {
 				components[componentName] = dynamic(
 					() => import("./components/my-favorite-music-and-mdx/MFMAMGitHubRepo"),

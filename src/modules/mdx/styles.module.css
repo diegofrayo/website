@@ -1,6 +1,5 @@
 /* Spacing: parent components */
-.dr-mdx-content
-	> :is(blockquote, hr, ol, p, :global(.dr-pre--styled), ul, a > img, *[data-markdown-block]) {
+.dr-mdx-content > :is(blockquote, hr, ol, p, ul, a > img, *[data-markdown-block]) {
 	@apply tw-mb-6;
 }
 
@@ -12,7 +11,7 @@
 .dr-mdx-content
 	:is(
 		li > p,
-		li > :global(.dr-pre--styled),
+		li > :global(.dr-source-code),
 		li > blockquote,
 		li > img,
 		blockquote > p,
@@ -28,7 +27,7 @@
 }
 
 /* Spacing: nested UL lists */
-.dr-mdx-content :is(li > ul, li > :global(.dr-pre--styled)) {
+.dr-mdx-content :is(li > ul, li > :global(.dr-source-code)) {
 	@apply tw-mt-3;
 }
 

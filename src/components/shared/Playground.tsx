@@ -10,20 +10,12 @@ import type DR from "@diegofrayo/types";
 import SourceCode, { T_SourceCodeProps } from "./SourceCode";
 
 type T_PlaygroundProps = {
-	fileName?: T_SourceCodeProps["fileName"];
-	language: T_SourceCodeProps["language"];
 	Preview: DR.React.FunctionComponent;
 	sourceCode: T_SourceCodeProps["code"];
-	height?: number | "auto";
+	height?: number;
 };
 
-function Playground({
-	fileName = "",
-	language,
-	Preview,
-	sourceCode,
-	height = 500,
-}: T_PlaygroundProps) {
+function Playground({ Preview, sourceCode, height = 500 }: T_PlaygroundProps) {
 	// --- STATES & REFS ---
 	const [tab, setTab] = React.useState(0);
 	const contentRef = React.useRef<HTMLDivElement>(null);
@@ -45,7 +37,7 @@ function Playground({
 
 	return (
 		<Block
-			className="dr-playground root tw-flex tw-flex-col tw-border-4 dr-border-color-surface-300"
+			className="dr-playground tw-flex tw-flex-col tw-border-4 dr-border-color-surface-300"
 			style={{ height }}
 			data-markdown-block
 		>
@@ -55,12 +47,7 @@ function Playground({
 			>
 				{isSourceCodeTabSelected ? (
 					<Block className="tw-absolute tw-inset-4 tw-overflow-auto">
-						<SourceCode
-							height="100%"
-							fileName={fileName}
-							language={language}
-							code={sourceCode}
-						/>
+						<SourceCode code={sourceCode} />
 					</Block>
 				) : (
 					<Block className="tw-absolute tw-inset-4 tw-flex tw-flex-col tw-rounded-md tw-border-4 dr-border-color-surface-200">
@@ -71,7 +58,7 @@ function Playground({
 										<Block
 											key={generateSlug(`playground-block-element-${element}`)}
 											className={cn(
-												"tw-mr-1.5 tw-inline-block tw-h-3 tw-w-3 tw-rounded-full last:tw-mr-0",
+												"tw-mr-1.5 tw-inline-block tw-rounded-full tw-wh-3 last:tw-mr-0",
 												{
 													"tw-bg-red-500": element === 1,
 													"tw-bg-yellow-500": element === 2,

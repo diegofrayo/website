@@ -11,13 +11,13 @@ import Popover from "./Popover";
 type T_CopyToClipboardPopoverProps = {
 	children: DR.React.Children;
 	textToCopy: string;
-	buttonClassName?: string;
+	className?: string;
 };
 
 function CopyToClipboardPopover({
 	children,
 	textToCopy,
-	buttonClassName,
+	className,
 }: T_CopyToClipboardPopoverProps) {
 	// --- STATES & REFS ---
 	const [showPopover, setShowPopover] = React.useState(false);
@@ -42,7 +42,7 @@ function CopyToClipboardPopover({
 		>
 			<Button
 				variant={Button.variant.SIMPLE}
-				className={buttonClassName}
+				className={className}
 				onClick={handleClick}
 			>
 				{children}
