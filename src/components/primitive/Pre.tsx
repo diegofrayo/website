@@ -21,7 +21,7 @@ function Pre({ children, className, variant = VARIANTS.UNSTYLED, ...rest }: T_Pr
 			className={cn(`dr-pre dr-pre--${variant.toLowerCase()}`, styles({ variant }), className)}
 			{...rest}
 		>
-			{removeCodeElements(children)}
+			{children}
 		</pre>
 	);
 }
@@ -32,36 +32,12 @@ export default Pre;
 
 // --- STYLES ---
 
-const styles = cva("tw-font-mono", {
+const styles = cva("", {
 	variants: {
 		variant: {
 			[VARIANTS.UNSTYLED]: "",
-			[VARIANTS.BREAK_WITH_BLANK_LINES]:
-				"tw-overflow-auto tw-whitespace-pre-line tw-break-words tw-text-base",
-			[VARIANTS.BREAK_WITH_BLANK_SPACES]:
-				"tw-overflow-auto tw-whitespace-pre-wrap tw-break-words tw-text-base",
+			[VARIANTS.BREAK_WITH_BLANK_LINES]: "tw-whitespace-pre-line tw-break-words",
+			[VARIANTS.BREAK_WITH_BLANK_SPACES]: "tw-whitespace-pre-wrap tw-break-words",
 		},
 	},
 });
-
-// --- INTERNALS ---
-
-function removeCodeElements(children: T_PreProps["children"]): DR.React.Children {
-	return React.Children.map(children, (child) => {
-		if (isInlineCodeElement(child)) {
-			return child.props.children;
-		}
-
-		return child;
-	});
-}
-
-function isInlineCodeElement(child: DR.React.Node): child is DR.React.JSXElement {
-	/* WARN:
-	 * I use this any because I get problems when the code is minified
-	 * I can't do this validation using function.name
-	 */
-	// @ts-ignore
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	return React.isValidElement(child) && (child.type as any).customName === "InlineCode";
-}

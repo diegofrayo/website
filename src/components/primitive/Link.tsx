@@ -1,7 +1,7 @@
 import * as React from "react";
-import { cva } from "class-variance-authority";
-import cn from "classnames";
 import NextLink, { LinkProps } from "next/link";
+import cn from "classnames";
+import { cva } from "class-variance-authority";
 
 import { mirror } from "@diegofrayo/utils/arrays-and-objects";
 import type DR from "@diegofrayo/types";
@@ -45,7 +45,11 @@ function Link({ variant = VARIANTS.UNSTYLED, ...props }: T_LinkProps) {
 		return (
 			<a
 				href={props.href}
-				className={cn(styles({ variant }), props.className)}
+				className={cn(
+					`dr-link dr-link--${variant.toLowerCase()}`,
+					styles({ variant }),
+					props.className,
+				)}
 				{...composeLinkAttributes()}
 			>
 				{props.children}
@@ -56,7 +60,11 @@ function Link({ variant = VARIANTS.UNSTYLED, ...props }: T_LinkProps) {
 	return (
 		<NextLink
 			href={props.href}
-			className={cn(styles({ variant }), props.className)}
+			className={cn(
+				`dr-link dr-link--${variant.toLowerCase()}`,
+				styles({ variant }),
+				props.className,
+			)}
 			passHref
 		>
 			{props.children}

@@ -31,7 +31,11 @@ const Button = React.forwardRef<HTMLButtonElement, T_ButtonProps>(function Butto
 	return (
 		<button
 			type={type} // eslint-disable-line react/button-has-type
-			className={cn(styles({ variant, disabled }), className)}
+			className={cn(
+				`dr-button dr-button--${variant.toLowerCase()}`,
+				styles({ variant, disabled }),
+				className,
+			)}
 			disabled={disabled}
 			onClick={onClick}
 			ref={forwardedRef}

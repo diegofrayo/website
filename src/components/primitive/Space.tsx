@@ -1,6 +1,6 @@
 import * as React from "react";
-import cn from "classnames";
 import * as Separator from "@radix-ui/react-separator";
+import cn from "classnames";
 
 import v from "@diegofrayo/v";
 import { mirror } from "@diegofrayo/utils/arrays-and-objects";
@@ -9,7 +9,6 @@ import { mirror } from "@diegofrayo/utils/arrays-and-objects";
 
 const VARIANTS = mirror(["SIMPLE", "DASHED"]);
 type T_Variant = keyof typeof VARIANTS;
-
 type T_SpaceProps = {
 	clasName?: string;
 	variant?: T_Variant;
@@ -41,7 +40,8 @@ function Space({
 	// --- UTILS ---
 	function composeStyles(): string {
 		return cn(
-			"dr-space tw-flex-shrink-0",
+			`dr-space dr-space--${variant.toLowerCase()}`,
+			"tw-flex-shrink-0",
 			{ "tw-border-0": variant === VARIANTS.SIMPLE },
 			{ "dr-border-color-primary tw-border-dashed": variant === VARIANTS.DASHED },
 			{ "tw-h-full": isVerticalOrientation },

@@ -17,7 +17,7 @@ import {
 import { TypingTextEffect } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/generated/metadata.json";
 import { renderIf, withOnlyClientRendering } from "~/hocs";
-import { useDidMount, useOnWindowStopScroll } from "~/hooks";
+import { useDidMount, useOnWindowStopScroll, useToggleBodyScroll } from "~/hooks";
 import { withAuth } from "~/modules/auth";
 import { ROUTES, useRouting } from "~/modules/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
@@ -251,9 +251,13 @@ function NavigationMenu() {
 	// --- STATES & REFS ---
 	const [showMenu, setShowMenu] = React.useState(false);
 
+	// --- HOOKS ---
+	useToggleBodyScroll(showMenu);
+
 	// --- HANDLERS ---
 	function handleToggleMenuClick() {
 		setShowMenu((currentState) => !currentState);
+		setScrollPosition(0);
 	}
 
 	return (

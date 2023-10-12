@@ -36,24 +36,27 @@ body.scroll-disabled {
 /* --- SCROLLBAR --- */
 
 ::-webkit-scrollbar {
-	/* height: 10px; */
+	@apply dr-bg-color-surface-200;
+	height: 7.5px;
+	width: 7.5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-	/* background-color: transparent; */
+	background-color: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	/* @apply dr-bg-color-primary-400; */
-	/* @apply tw-rounded-md; */
+	@apply dr-bg-color-surface-400;
+	@apply tw-rounded-md;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
+	@apply dr-bg-color-surface-300;
 }
 
 body.mobile ::-webkit-scrollbar-thumb {
-	/* display: none; */
+	display: none;
 }

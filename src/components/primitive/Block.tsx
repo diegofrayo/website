@@ -16,8 +16,8 @@ const Block = React.forwardRef<HTMLDivElement, T_BlockProps>(function Block(
 ) {
 	return (
 		<Tag
-			className={className}
 			ref={ref}
+			className={className}
 			{...rest}
 		>
 			{children}

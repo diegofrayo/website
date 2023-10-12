@@ -1,5 +1,5 @@
 import * as React from "react";
-import NextImage, { ImageProps } from "next/image";
+import NextImage, { type ImageProps } from "next/image";
 
 import { omit } from "@diegofrayo/utils/arrays-and-objects";
 import type DR from "@diegofrayo/types";

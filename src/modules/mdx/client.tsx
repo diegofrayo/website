@@ -17,6 +17,7 @@ import { SourceCode } from "~/components/shared";
 import type { T_TitleProps } from "~/components/primitive/Title";
 import type DR from "@diegofrayo/types";
 
+import v from "@diegofrayo/v";
 import styles from "./styles.module.css";
 
 type T_MDXContentProps = {
@@ -58,7 +59,11 @@ export const MDXComponents = {
 	},
 	blockquote: Blockquote,
 	code: function CustomCode({ children }: DR.DOM.HTMLElementAttributes["code"]) {
-		return <Code variant={Code.variant.STYLED}>{children}</Code>;
+		if (v.isString(children)) {
+			return <Code variant={Code.variant.STYLED}>{children}</Code>;
+		}
+
+		throw new Error("Code component: Invalid children");
 	},
 	h1: createTitleComponent("h1", {}),
 	h2: createTitleComponent("h2", {}),

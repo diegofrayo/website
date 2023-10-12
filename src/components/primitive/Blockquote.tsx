@@ -3,7 +3,11 @@ import cn from "classnames";
 
 import type DR from "@diegofrayo/types";
 
+// --- PROPS & TYPES ---
+
 type T_BlockquoteProps = DR.DOM.HTMLElementAttributes["blockquote"];
+
+// --- COMPONENT DEFINITION ---
 
 function Blockquote({ children, className, ...rest }: T_BlockquoteProps) {
 	return (

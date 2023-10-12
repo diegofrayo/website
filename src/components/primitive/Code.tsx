@@ -10,18 +10,23 @@ import type DR from "@diegofrayo/types";
 
 const VARIANTS = mirror(["UNSTYLED", "STYLED"]);
 type T_Variant = keyof typeof VARIANTS;
-
 type T_CodeProps = DR.DOM.HTMLElementAttributes["code"] & {
+	children: string;
 	variant?: T_Variant;
 };
 
-function Code({ variant = VARIANTS.UNSTYLED, children, className, ...rest }: T_CodeProps) {
+// --- COMPONENT DEFINITION ---
+
+function Code({ variant = VARIANTS.UNSTYLED, children, className }: T_CodeProps) {
 	if (variant === VARIANTS.STYLED) {
 		return (
-			<CopyToClipboardPopover textToCopy={String(children)}>
+			<CopyToClipboardPopover textToCopy={children}>
 				<code
-					className={cn("dr-code dr-code--styled", styles({ variant }), className)}
-					{...rest}
+					className={cn(
+						`dr-code dr-code--${variant.toLowerCase()}`,
+						styles({ variant }),
+						className,
+					)}
 				>
 					{children}
 				</code>
@@ -29,7 +34,13 @@ function Code({ variant = VARIANTS.UNSTYLED, children, className, ...rest }: T_C
 		);
 	}
 
-	return <code className={cn("dr-code", styles({ variant }), className)}>{children}</code>;
+	return (
+		<code
+			className={cn(`dr-code dr-code--${variant.toLowerCase()}`, styles({ variant }), className)}
+		>
+			{children}
+		</code>
+	);
 }
 
 Code.variant = VARIANTS;

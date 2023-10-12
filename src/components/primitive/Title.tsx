@@ -34,7 +34,12 @@ function Title({
 }: T_TitleProps) {
 	return (
 		<Tag
-			className={cn("tw-font-bold", styles({ variant, size, is: Tag }), className)}
+			className={cn(
+				`dr-title dr-title--${variant.toLowerCase()}`,
+				"tw-font-bold",
+				styles({ variant, size, is: Tag }),
+				className,
+			)}
 			{...rest}
 		>
 			{children}
@@ -49,7 +54,7 @@ export default Title;
 
 // --- STYLES ---
 
-const styles = cva("dr-title", {
+const styles = cva("", {
 	variants: {
 		variant: {
 			[VARIANTS.UNSTYLED]: "",

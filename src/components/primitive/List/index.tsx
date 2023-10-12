@@ -10,7 +10,6 @@ import styles from "./styles.module.css";
 
 const VARIANTS = mirror(["UNSTYLED", "SIMPLE"]);
 type T_Variant = keyof typeof VARIANTS;
-
 type T_ListProps = DR.DOM.HTMLElementAttributes["ul"] & {
 	variant?: T_Variant;
 };
@@ -24,7 +23,8 @@ function List({ children, variant = VARIANTS.UNSTYLED, className = "" }: T_ListP
 	return (
 		<ul
 			className={cn(
-				"dr-list tw-block tw-w-full",
+				`dr-list dr-list--${variant.toLowerCase()}`,
+				"tw-block tw-w-full",
 				isDefaultVariant && styles["dr-list--default"],
 				className,
 			)}
@@ -57,7 +57,11 @@ List.Item = function ListItem({
 }: DR.DOM.HTMLElementAttributes["li"] & { isDefaultVariant?: boolean }) {
 	return (
 		<li
-			className={cn("dr-list-item", isDefaultVariant && styles["dr-list-item--default"], className)}
+			className={cn(
+				`dr-list-item dr-list-item--${isDefaultVariant ? "default" : "unstyled"}`,
+				isDefaultVariant && styles["dr-list-item--default"],
+				className,
+			)}
 			{...rest}
 		>
 			{children}

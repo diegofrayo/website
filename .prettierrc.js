@@ -3,7 +3,6 @@ module.exports = {
 	printWidth: 100,
 	tabWidth: 2,
 	useTabs: true,
-	plugins: ["prettier-plugin-tailwindcss"],
 
 	// common
 	bracketSpacing: true,
@@ -14,10 +13,11 @@ module.exports = {
 	semi: true,
 	trailingComma: "all",
 
+	// plugins
+	plugins: ["prettier-plugin-tailwindcss"],
+	tailwindFunctions: ["cva", "cn"],
+
 	// jsx
 	bracketSameLine: false,
 	singleAttributePerLine: true,
-
-	// tailwind config
-	tailwindFunctions: ["cva", "cn"],
 };
