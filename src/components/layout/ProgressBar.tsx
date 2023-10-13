@@ -18,28 +18,19 @@ function NProgressBar(): T_ReactElementNullable {
 	// --- EFFECTS ---
 	useDidMount(() => {
 		NProgress.configure({ parent: ".NProgressBar" });
+		removeVercelPreviewDeploymentsMenu();
 
 		function showProgressBar(): void {
 			NProgress.done();
 			NProgress.start();
 		}
 
-		async function hideProgressBar(): Promise<void> {
+		function hideProgressBar(): void {
 			setTimeout(() => {
 				NProgress.done();
 			}, 250);
 
-			//  ---
-
-			await delay(1500);
-
-			const $menu = document.getElementsByTagName("vercel-live-feedback")[0];
-			if ($menu) {
-				$menu.remove();
-				logger("LOG", "removePreviewDeploymentsMenu executed!");
-			} else {
-				logger("LOG", "vercel-live-feedback element not found");
-			}
+			removeVercelPreviewDeploymentsMenu();
 		}
 
 		router.events.on("routeChangeStart", showProgressBar);
@@ -52,6 +43,19 @@ function NProgressBar(): T_ReactElementNullable {
 			router.events.off("routeChangeError", hideProgressBar);
 		};
 	});
+
+	// --- UTILS ---
+	async function removeVercelPreviewDeploymentsMenu(): Promise<void> {
+		await delay(1500);
+		const $menu = document.getElementsByTagName("vercel-live-feedback")[0];
+
+		if ($menu) {
+			$menu.remove();
+			logger("LOG", "vercel-live-feedback element removed!");
+		} else {
+			logger("LOG", "vercel-live-feedback element not found!");
+		}
+	}
 
 	return <Block className={classNames("NProgressBar", styles["NProgressBar"])} />;
 }
