@@ -8,7 +8,7 @@ import { createArray } from "@diegofrayo/utils/arrays-and-objects";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import type { T_PageContent } from "~/data/loader";
 
-import styles from "./styles.module.css";
+import styles from "./HomePage.styles.module.css";
 
 // --- COMPONENT DEFINITION ---
 
@@ -47,7 +47,7 @@ function HomePage({ content, data }: T_HomePageProps) {
 			<MainLayout title={content.content.seo.title}>
 				<Block className="sm:tw-py-12">
 					<Room
-						tvSong={data.song}
+						song={data.song}
 						frameImage={data.photo}
 					/>
 				</Block>
@@ -61,11 +61,11 @@ export default HomePage;
 // --- COMPONENTS ---
 
 type T_RoomProps = {
-	tvSong: T_HomePageProps["data"]["song"];
+	song: T_HomePageProps["data"]["song"];
 	frameImage: T_HomePageProps["data"]["photo"];
 };
 
-function Room({ tvSong, frameImage }: T_RoomProps) {
+function Room({ song, frameImage }: T_RoomProps) {
 	return (
 		<Block
 			className="tw-relative tw-mx-auto tw-w-80 tw-max-w-full tw-overflow-hidden tw-rounded-3xl tw-bg-black tw-px-2 tw-pt-16"
@@ -76,7 +76,7 @@ function Room({ tvSong, frameImage }: T_RoomProps) {
 			<PictureFrame photo={frameImage} />
 			<Space size={8} />
 
-			<TV song={tvSong} />
+			<Radio song={song} />
 			<Table />
 
 			<React.Fragment>
@@ -132,29 +132,22 @@ function PictureFrame({ photo }: T_PictureFrameProps) {
 	);
 }
 
-type T_TVProps = {
-	song: T_RoomProps["tvSong"];
+type T_RadioProps = {
+	song: T_RoomProps["song"];
 };
 
-function TV({ song }: T_TVProps) {
+function Radio({ song }: T_RadioProps) {
 	// --- STATES & REFS ---
-	const [showInfo, setShowInfo] = React.useState(false);
 	const [isAudioPlaying, setIsAudioPlaying] = React.useState(false);
-	const [hasNotStartedTV, setHasNotStartedTV] = React.useState(true);
-
-	// --- EFFECTS ---
-	React.useEffect(() => {
-		if (showInfo === false) {
-			setIsAudioPlaying(false);
-			getAudioElement().pause();
-		}
-	}, [showInfo]);
+	const [hasNotStartedRadio, setHasNotStartedRadio] = React.useState(true);
 
 	// --- HANDLERS ---
 	function handlePlayAndPauseClick(): void {
-		const audioElement = getAudioElement();
+		setHasNotStartedRadio(false);
 		setIsAudioPlaying((currentValue) => !currentValue);
-		AnalyticsService.trackEvent("HOME|TV", { action: audioElement.paused ? "PLAY" : "PAUSE" });
+
+		const audioElement = getAudioElement();
+		AnalyticsService.trackEvent("HOME|DEVICE", { action: audioElement.paused ? "PLAY" : "PAUSE" });
 
 		if (audioElement.paused) {
 			audioElement.play();
@@ -164,107 +157,78 @@ function TV({ song }: T_TVProps) {
 		}
 	}
 
-	function handleStartTVClick(): void {
-		AnalyticsService.trackEvent("HOME|TV", { action: "START" });
-		setHasNotStartedTV(false);
-		setShowInfo(true);
-	}
-
-	function handleToggleTurnOnTVClick(): void {
-		getAudioElement().currentTime = 0;
-		setShowInfo((currentValue) => {
-			AnalyticsService.trackEvent("HOME|TV", { action: currentValue ? "TURN_OFF" : "TURN_ON" });
-			return !currentValue;
-		});
-	}
-
 	function onSongEndedHandler(): void {
-		setShowInfo(false);
+		setIsAudioPlaying(false);
 	}
 
 	// --- UTILS ---
 	function getAudioElement(): HTMLAudioElement {
-		return document.getElementById("tv-audio") as HTMLAudioElement;
+		return document.getElementById("radio-audio") as HTMLAudioElement;
 	}
 
 	return (
-		<Block
-			className={cn(
-				styles["tv"],
-				"tw-relative tw-mx-auto tw-mb-2 tw-flex tw-w-28 tw-max-w-full tw-items-stretch tw-rounded-md tw-bg-gradient-to-b tw-from-gray-500 tw-to-gray-700 tw-p-2",
-			)}
-		>
-			<Block className="tw-relative tw-overflow-hidden tw-wh-16">
-				<Block
-					className="tw-relative tw-flex tw-h-full tw-items-center tw-justify-center tw-bg-cover"
-					title={`${song.title} - ${song.artist}`}
-					style={{ backgroundImage: `url(${song.thumbnail})` }}
-				>
-					<Button
-						variant={Button.variant.SIMPLE}
-						onClick={handlePlayAndPauseClick}
-					>
-						<Icon
-							icon={isAudioPlaying ? Icon.icon.PAUSE : Icon.icon.PLAY}
-							wrapperClassName="tw-bg-black/70 tw-rounded-full tw-p-1"
-							color="tw-text-white"
+		<Block className={cn(styles["radio"], "tw-mx-auto tw-w-24")}>
+			<Block className="tw-text-center tw-leading-0">
+				{createArray(5).map((item) => {
+					return (
+						<Block
+							key={generateSlug(`${item}`)}
+							className="tw-mr-0.5 tw-inline-block tw-h-2 tw-w-3 tw-rounded-t-sm tw-border tw-border-b-0 tw-border-black tw-bg-gray-500 last:tw-mr-0 last:tw-bg-red-700"
 						/>
-						<audio
-							id="tv-audio"
-							className="tw-hidden"
-							onEnded={onSongEndedHandler}
-						>
-							<source
-								type="audio/mpeg"
-								src={song.audio}
-							/>
-						</audio>
-					</Button>
-				</Block>
-				<Block
-					className={cn(
-						"tw-absolute tw-left-0 tw-top-0 tw-bg-black tw-transition-transform tw-wh-full",
-						showInfo && "tw-translate-x-full",
-					)}
-				/>
+					);
+				})}
 			</Block>
-			<Space
-				size={1}
-				orientation="v"
-			/>
-
-			<Block className="tw-flex tw-flex-1 tw-flex-col tw-items-center tw-justify-between tw-py-1">
-				<Block className="tw-w-full tw-text-center">
-					{createArray(8).map((i) => {
+			<Block className="tw-rounded-md tw-border tw-border-b-0 tw-border-black tw-bg-gradient-to-b tw-from-gray-500 tw-to-gray-700 tw-px-1 tw-py-1">
+				<Block className="tw-flex tw-items-start tw-justify-center tw-rounded-md tw-border tw-border-t-2 tw-border-black tw-bg-white tw-pb-0.5">
+					{createArray(17).map((item) => {
 						return (
 							<Block
-								key={generateSlug(`TV-Block-i-${i}`)}
-								className="tw-my-0.5 tw-rounded-md tw-border-b tw-border-gray-400 tw-bg-transparent"
+								key={generateSlug(`Radio-Block-Item-${item}`)}
+								className={cn(
+									"tw-mx-0.5 tw-inline-block tw-w-px tw-border-l tw-border-black",
+									item % 2 === 0 ? "tw-h-2" : "tw-h-1",
+								)}
 							/>
 						);
 					})}
 				</Block>
-				<Block className="tw-overflow-hidden tw-rounded-full tw-bg-black tw-transition-transform tw-wh-6">
-					{hasNotStartedTV ? (
+				<Space size={0.5} />
+				<Block className="tw-flex tw-gap-1 tw-px-2">
+					<Block
+						className={cn(
+							"tw-relative tw-flex-shrink-0 tw-overflow-hidden tw-rounded-full tw-border tw-border-black tw-wh-10",
+							isAudioPlaying ? "tw-animate-spin-slow" : "tw-rotate-45",
+						)}
+						style={{
+							backgroundSize: "3px 3px",
+							backgroundImage:
+								"linear-gradient(to right, black 1px, transparent 1px),                linear-gradient(to bottom, black 1px, transparent 1px)",
+						}}
+					/>
+					<Block className="tw-flex tw-flex-1 tw-items-center tw-justify-end">
 						<Button
-							className="tw-flex tw-items-center tw-justify-center tw-wh-full"
-							onClick={handleStartTVClick}
+							variant={Button.variant.SIMPLE}
+							onClick={handlePlayAndPauseClick}
 						>
-							<Block className="tw-relative tw-animate-ping tw-rounded-full tw-bg-green-500 tw-wh-2" />
-						</Button>
-					) : (
-						<Button
-							className={cn("tw-transition-transform tw-wh-full", showInfo && "tw-rotate-90")}
-							onClick={handleToggleTurnOnTVClick}
-						>
-							<Block
-								className={cn(
-									"tw-relative tw--top-2 tw-mx-auto tw-h-4 tw-w-0.5",
-									showInfo ? "tw-bg-green-500" : "tw-bg-red-500",
-								)}
+							<Icon
+								icon={isAudioPlaying ? Icon.icon.PAUSE : Icon.icon.PLAY_SOLID}
+								size={14}
+								wrapperClassName="tw-bg-black/70 tw-rounded-full tw-p-1"
+								iconClassName={hasNotStartedRadio ? "tw-animate-pulse" : ""}
+								color={isAudioPlaying ? "tw-text-red-700" : "tw-text-green-700"}
 							/>
+							<audio
+								id="radio-audio"
+								className="tw-hidden"
+								onEnded={onSongEndedHandler}
+							>
+								<source
+									type="audio/mpeg"
+									src={song.audio}
+								/>
+							</audio>
 						</Button>
-					)}
+					</Block>
 				</Block>
 			</Block>
 		</Block>

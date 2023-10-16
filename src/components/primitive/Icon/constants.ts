@@ -26,6 +26,7 @@ import {
 	WrenchIcon,
 	XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { PlayIcon as PlaySolidIcon } from "@heroicons/react/24/solid";
 import {
 	GithubMonoIcon,
 	GmailMonoIcon,
@@ -267,6 +268,13 @@ const ICONS = {
 	},
 	PLAY: {
 		icon: PlayIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	PLAY_SOLID: {
+		icon: PlaySolidIcon,
 		defaultProps: {
 			className: "",
 			color: "",

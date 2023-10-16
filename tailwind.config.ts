@@ -36,6 +36,9 @@ const config: Config = {
 			lg: "1024px",
 		},
 		extend: {
+			lineHeight: {
+				"0": "0",
+			},
 			borderWidth: {
 				"12": "12px",
 			},
@@ -53,6 +56,7 @@ const config: Config = {
 			},
 			animation: {
 				intermitent: "intermitent 1.5s infinite",
+				"spin-slow": "spin 2s linear infinite",
 			},
 			keyframes: {
 				intermitent: {

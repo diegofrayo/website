@@ -32,25 +32,3 @@
 .picture-frame--portrait::after {
 	transform: rotate(40deg);
 }
-
-.tv::before,
-.tv::after {
-	@apply tw-bg-gray-700;
-	@apply tw-w-2;
-	@apply tw-h-6;
-	content: " ";
-	display: block;
-	position: absolute;
-	top: 90%;
-	z-index: 0;
-}
-
-.tv::before {
-	transform: rotate(45deg);
-	left: 15%;
-}
-
-.tv::after {
-	transform: rotate(-45deg);
-	right: 15%;
-}
