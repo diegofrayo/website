@@ -27,8 +27,8 @@ function BlogPage({ content, data: posts }: T_BlogPageProps) {
 				{Object.values(posts).map((post) => {
 					return (
 						<Link
-							key={post.config.slug}
-							href={`${ROUTES.BLOG}/${post.config.slug}`}
+							key={post.slug}
+							href={`${ROUTES.BLOG}/${post.slug}`}
 							variant={Link.variant.SIMPLE}
 							className="tw-mb-10 tw-block last:tw-mb-0"
 						>
@@ -43,11 +43,11 @@ function BlogPage({ content, data: posts }: T_BlogPageProps) {
 
 							<Text className="tw-text-sm tw-text-white">
 								<InlineText>Published at</InlineText>{" "}
-								<InlineText is="strong">{post.config.published_at}</InlineText>
+								<InlineText is="strong">{post.published_at}</InlineText>
 							</Text>
 							<Text>{post.content.description}</Text>
 							<Block>
-								{post.config.categories.map((category) => {
+								{post.categories.map((category) => {
 									return <BlogPostCategory key={category}>{category}</BlogPostCategory>;
 								})}
 							</Block>

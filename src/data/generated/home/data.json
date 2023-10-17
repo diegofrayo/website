@@ -1,17 +1,1 @@
-{
-	"featured": [
-		{ "text": "/d/contacts", "url": "/personal/contacts" },
-		{ "text": "/d/businesses", "url": "/personal/businesses" },
-		{ "text": "/t/dencrypt", "url": "/personal/dencrypt" },
-		{ "text": "/t/whatsapp", "url": "/personal/whatsapp" }
-	],
-	"song": {
-		"title": "Díganselo",
-		"artist": "El Kuelgue",
-		"thumbnail": "https://i.scdn.co/image/ab67616d0000b2732c354d4c855f5f42927acaab",
-		"audio": "https://p.scdn.co/mp3-preview/dad1be8448b765d5f0f6056146fa76b8419a99b7",
-		"url": "https://open.spotify.com/track/4CZnsSrphc4CJ5cQT4NWEB",
-		"source": "spotify"
-	},
-	"photo": { "src": "/assets/images/pages/home/assets/5.jpg", "portrait": false }
-}
+{"song":{"title":"High and Dry","artist":"Jorge Drexler","thumbnail":"https://i.scdn.co/image/ab67616d0000b2730fbd8d7f3f8746644d81ee66","audio":"https://p.scdn.co/mp3-preview/cf00ee8d69dfcaeb68d97fc07478baca75a91865","url":"https://open.spotify.com/track/0hf3E2TAapWRy5PhAjp0l8","source":"spotify"},"photo":{"src":"/assets/images/pages/home/assets/2.jpg"}}

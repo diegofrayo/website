@@ -1,14 +1,16 @@
 import type DR from "@diegofrayo/types";
 
-export type T_RawBlogPostsResponse = DR.Object<T_RawBlogPost>;
+export type T_RawBlogPostsResponse = DR.Object<T_RawBlogPostResponse["details"]>;
 
-export type T_BlogPost = Pick<T_RawBlogPost, "config" | "assets"> & {
-	content: T_RawBlogPost["content"]["en"];
-};
-
-type T_RawBlogPost = {
-	config: {
+export type T_RawBlogPostResponse = {
+	details: {
 		slug: string;
+		content: {
+			en: {
+				title: string;
+				description: string;
+			};
+		};
 		categories: Array<string>;
 		locales: Array<string>;
 		created_at: string;
@@ -16,12 +18,11 @@ type T_RawBlogPost = {
 		updated_at: string;
 		is_published: boolean;
 		sources: Array<{ title: string; url: string }>;
+		assets: DR.Object;
 	};
-	content: {
-		en: {
-			title: string;
-			description: string;
-		};
-	};
-	assets: DR.Object;
+	content: string;
+};
+
+export type T_BlogPost = Omit<T_RawBlogPostResponse["details"], "content"> & {
+	content: T_RawBlogPostResponse["details"]["content"]["en"];
 };

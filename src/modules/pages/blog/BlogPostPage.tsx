@@ -46,8 +46,8 @@ function BlogPostPage({ postDetails, postContent }: T_BlogPostPageProps) {
 			config={{
 				title: postDetails.content.title,
 				description: postDetails.content.description,
-				disableSEO: postDetails.config.is_published === false,
-				pathname: `${ROUTES.BLOG}/${postDetails.config.slug}`,
+				disableSEO: postDetails.is_published === false,
+				pathname: `${ROUTES.BLOG}/${postDetails.slug}`,
 			}}
 		>
 			<MainLayout title={postDetails.content.title}>
@@ -63,7 +63,7 @@ function BlogPostPage({ postDetails, postContent }: T_BlogPostPageProps) {
 				/>
 				<Space size={5} />
 
-				<BlogPostSources sources={postDetails.config.sources} />
+				<BlogPostSources sources={postDetails.sources} />
 				<Space size={12} />
 
 				<RateContent />
@@ -145,12 +145,12 @@ function BlogPostDetails({ postDetails }: Pick<T_BlogPostPageProps, "postDetails
 						wrapperClassName="tw-relative tw--top-0.5"
 					/>{" "}
 					<InlineText>Published at</InlineText>{" "}
-					<InlineText is="strong">{postDetails.config.published_at}</InlineText>
+					<InlineText is="strong">{postDetails.published_at}</InlineText>
 				</Text>
 			</Tooltip>
 			<Space size={0.5} />
 			<Block>
-				{postDetails.config.categories.map((category) => {
+				{postDetails.categories.map((category) => {
 					return <BlogPostCategory key={category}>{category}</BlogPostCategory>;
 				})}
 			</Block>

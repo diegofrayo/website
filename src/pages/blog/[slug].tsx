@@ -2,8 +2,7 @@ import type { GetStaticProps, GetStaticPaths } from "next";
 
 import { loadData } from "~/data/loader";
 import { compile } from "~/modules/mdx/server";
-import { replaceAll } from "@diegofrayo/utils/strings";
-import type { T_RawBlogPostsResponse } from "~/modules/pages/blog/types";
+import type { T_RawBlogPostResponse, T_RawBlogPostsResponse } from "~/modules/pages/blog/types";
 import type { T_BlogPostPageProps } from "~/modules/pages/blog/BlogPostPage";
 
 export { default } from "~/modules/pages/blog/BlogPostPage";
@@ -15,7 +14,7 @@ export const getStaticPaths: GetStaticPaths = async function getStaticPaths() {
 
 	return {
 		paths: Object.values(data).map((post) => {
-			return { params: { slug: post.config.slug } };
+			return { params: { slug: post.slug } };
 		}),
 		fallback: "blocking",
 	};
@@ -25,25 +24,19 @@ export const getStaticProps: GetStaticProps<T_BlogPostPageProps, { slug: string 
 	params,
 }) => {
 	const DEFAULT_LANG = "en";
-	const posts = await loadData<T_RawBlogPostsResponse>({ page: "blog" });
 	const slug = params?.slug || "";
-	const postDetails = { ...posts[slug] };
+	if (!slug) throw new Error(`Invalid slug: "${slug}"`);
 
-	if (!postDetails) throw new Error(`Invalid post slug: "${slug}"`);
-
-	const mdxCompiled = await compile({
-		source: `./src/data/generated/blog/posts/content/${replaceAll(
-			postDetails.config.created_at,
-			"/",
-			"-",
-		)}-${postDetails.config.slug}.mdx`,
+	const post = await loadData<T_RawBlogPostResponse>({
+		fullPath: `./src/data/generated/blog/posts/${slug}.json`,
 	});
+	const mdxCompiled = await compile({ content: post.content });
 
 	return {
 		props: {
 			postDetails: {
-				...postDetails,
-				content: postDetails.content[DEFAULT_LANG],
+				...post.details,
+				content: post.details.content[DEFAULT_LANG],
 			},
 			postContent: mdxCompiled.code,
 		},

@@ -16,7 +16,7 @@ async function main() {
 	};
 	const sitemapItems = Object.values(WEBSITE_PAGES).concat(
 		Object.values(BLOG_POSTS).map((post) => {
-			return `/blog/${post.config.slug}`;
+			return `/blog/${post.slug}`;
 		}),
 	);
 

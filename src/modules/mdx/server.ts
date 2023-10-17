@@ -1,9 +1,10 @@
 import fs from "fs";
 import { bundleMDX } from "mdx-bundler";
 
-export async function compile({ source }: { source: string }) {
-	const mdxSource = fs.readFileSync(source, "utf-8");
-	const result = await bundleMDX({ source: mdxSource });
+export async function compile(config: { sourcePath: string } | { content: string }) {
+	const result = await bundleMDX({
+		source: "sourcePath" in config ? fs.readFileSync(config.sourcePath, "utf-8") : config.content,
+	});
 
 	return result;
 }

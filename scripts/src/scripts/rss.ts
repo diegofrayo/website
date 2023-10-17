@@ -43,7 +43,7 @@ async function generateRSSFiles() {
 
 	Object.values(BLOG_POSTS).forEach((post) => {
 		const postContent = post.content[DEFAULT_LOCALE];
-		const postUrl = `${WEBSITE_METADATA.url}/blog/${post.config.slug}`;
+		const postUrl = `${WEBSITE_METADATA.url}/blog/${post.slug}`;
 
 		feed.addItem({
 			title: postContent.title,
@@ -58,7 +58,7 @@ async function generateRSSFiles() {
 					link: WEBSITE_METADATA.url,
 				},
 			],
-			date: new Date(post.config.updated_at),
+			date: new Date(post.updated_at),
 		});
 	});
 

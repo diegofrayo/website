@@ -15,10 +15,6 @@ import styles from "./HomePage.styles.module.css";
 export type T_HomePageProps = {
 	content: T_PageContent;
 	data: {
-		featured: Array<{
-			text: string;
-			url: string;
-		}>;
 		song: {
 			title: string;
 			artist: string;
@@ -29,7 +25,6 @@ export type T_HomePageProps = {
 		};
 		photo: {
 			src: string;
-			portrait: boolean;
 		};
 	};
 };
@@ -48,7 +43,7 @@ function HomePage({ content, data }: T_HomePageProps) {
 				<Block className="sm:tw-py-12">
 					<Room
 						song={data.song}
-						frameImage={data.photo}
+						image={data.photo}
 					/>
 				</Block>
 			</MainLayout>
@@ -62,10 +57,10 @@ export default HomePage;
 
 type T_RoomProps = {
 	song: T_HomePageProps["data"]["song"];
-	frameImage: T_HomePageProps["data"]["photo"];
+	image: T_HomePageProps["data"]["photo"];
 };
 
-function Room({ song, frameImage }: T_RoomProps) {
+function Room({ song, image }: T_RoomProps) {
 	return (
 		<Block
 			className="tw-relative tw-mx-auto tw-w-80 tw-max-w-full tw-overflow-hidden tw-rounded-3xl tw-bg-black tw-px-2 tw-pt-16"
@@ -73,7 +68,7 @@ function Room({ song, frameImage }: T_RoomProps) {
 				backgroundImage: 'url("/assets/images/textures/green-gobbler.png")',
 			}}
 		>
-			<PictureFrame photo={frameImage} />
+			<PictureFrame photo={image} />
 			<Space size={8} />
 
 			<Radio song={song} />
@@ -96,7 +91,7 @@ function Room({ song, frameImage }: T_RoomProps) {
 }
 
 type T_PictureFrameProps = {
-	photo: T_RoomProps["frameImage"];
+	photo: T_RoomProps["image"];
 };
 
 function PictureFrame({ photo }: T_PictureFrameProps) {
@@ -106,20 +101,9 @@ function PictureFrame({ photo }: T_PictureFrameProps) {
 	}
 
 	return (
-		<Block
-			className={cn(
-				styles["picture-frame"],
-				"tw-relative tw-mx-auto tw--rotate-2 tw-rounded-md tw-transition-transform hover:tw-rotate-0",
-				photo.portrait === true ? "dr-picture-frame--portrait tw-w-20" : "tw-w-32",
-			)}
-		>
-			<Block
-				className={cn(
-					"tw-border-4 tw-border-yellow-500 tw-bg-white tw-p-1.5",
-					photo.portrait === true ? "tw-h-24" : "tw-h-20",
-				)}
-			>
-				<Block className="tw-relative tw-overflow-hidden tw-rounded-md tw-border tw-border-yellow-500 tw-wh-full">
+		<Block className={cn(styles["picture-frame"], "tw-relative tw-mx-auto tw-w-32 tw-rounded-md")}>
+			<Block className="tw-h-20 tw-rounded-md tw-border-4 tw-border-white">
+				<Block className="tw-relative tw-wh-full">
 					<Image
 						src={photo.src}
 						alt="Photography taken by Diego Rayo"
@@ -139,11 +123,9 @@ type T_RadioProps = {
 function Radio({ song }: T_RadioProps) {
 	// --- STATES & REFS ---
 	const [isAudioPlaying, setIsAudioPlaying] = React.useState(false);
-	const [hasNotStartedRadio, setHasNotStartedRadio] = React.useState(true);
 
 	// --- HANDLERS ---
 	function handlePlayAndPauseClick(): void {
-		setHasNotStartedRadio(false);
 		setIsAudioPlaying((currentValue) => !currentValue);
 
 		const audioElement = getAudioElement();
@@ -167,13 +149,16 @@ function Radio({ song }: T_RadioProps) {
 	}
 
 	return (
-		<Block className={cn(styles["radio"], "tw-mx-auto tw-w-24")}>
+		<Block className="tw-mx-auto tw-w-24">
 			<Block className="tw-text-center tw-leading-0">
-				{createArray(5).map((item) => {
+				{createArray(4).map((item) => {
 					return (
 						<Block
-							key={generateSlug(`${item}`)}
-							className="tw-mr-0.5 tw-inline-block tw-h-2 tw-w-3 tw-rounded-t-sm tw-border tw-border-b-0 tw-border-black tw-bg-gray-500 last:tw-mr-0 last:tw-bg-red-700"
+							key={generateSlug(`Radio-Block-Item-Button-${item}`)}
+							className={cn(
+								"tw-mr-0.5 tw-inline-block tw-h-2 tw-w-3 tw-rounded-t-sm tw-border tw-border-b-0 tw-border-black tw-bg-gray-500 last:tw-mr-0 last:tw-bg-red-700",
+								isAudioPlaying && "last:tw-h-1",
+							)}
 						/>
 					);
 				})}
@@ -183,7 +168,7 @@ function Radio({ song }: T_RadioProps) {
 					{createArray(17).map((item) => {
 						return (
 							<Block
-								key={generateSlug(`Radio-Block-Item-${item}`)}
+								key={generateSlug(`Radio-Block-Item-Lines-${item}`)}
 								className={cn(
 									"tw-mx-0.5 tw-inline-block tw-w-px tw-border-l tw-border-black",
 									item % 2 === 0 ? "tw-h-2" : "tw-h-1",
@@ -196,7 +181,7 @@ function Radio({ song }: T_RadioProps) {
 				<Block className="tw-flex tw-gap-1 tw-px-2">
 					<Block
 						className={cn(
-							"tw-relative tw-flex-shrink-0 tw-overflow-hidden tw-rounded-full tw-border tw-border-black tw-wh-10",
+							"tw-relative tw-flex tw-flex-shrink-0 tw-items-center tw-justify-center tw-overflow-hidden tw-rounded-full tw-border tw-border-black tw-wh-10",
 							isAudioPlaying ? "tw-animate-spin-slow" : "tw-rotate-45",
 						)}
 						style={{
@@ -204,7 +189,14 @@ function Radio({ song }: T_RadioProps) {
 							backgroundImage:
 								"linear-gradient(to right, black 1px, transparent 1px),                linear-gradient(to bottom, black 1px, transparent 1px)",
 						}}
-					/>
+					>
+						<Image
+							src={song.thumbnail}
+							alt={`${song.title} | ${song.artist}`}
+							className="tw-rounded-full tw-border tw-border-black tw-wh-6"
+							useNativeImage
+						/>
+					</Block>
 					<Block className="tw-flex tw-flex-1 tw-items-center tw-justify-end">
 						<Button
 							variant={Button.variant.SIMPLE}
@@ -214,8 +206,8 @@ function Radio({ song }: T_RadioProps) {
 								icon={isAudioPlaying ? Icon.icon.PAUSE : Icon.icon.PLAY_SOLID}
 								size={14}
 								wrapperClassName="tw-bg-black/70 tw-rounded-full tw-p-1"
-								iconClassName={hasNotStartedRadio ? "tw-animate-pulse" : ""}
-								color={isAudioPlaying ? "tw-text-red-700" : "tw-text-green-700"}
+								iconClassName={isAudioPlaying ? "" : "tw-animate-pulse"}
+								color={isAudioPlaying ? "tw-text-red-500" : "tw-text-green-500"}
 							/>
 							<audio
 								id="radio-audio"

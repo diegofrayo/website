@@ -6,29 +6,15 @@
 	height: 50px;
 	position: absolute;
 	top: -40px;
-	width: 1px;
+	width: 3px;
 }
 
 .picture-frame::before {
 	transform: rotate(45deg);
-	left: 46px;
+	left: 44px;
 }
 
 .picture-frame::after {
 	transform: rotate(-45deg);
 	right: 46px;
-}
-
-.picture-frame--portrait::before,
-.picture-frame--portrait::after {
-	height: 24px;
-	top: -17px;
-}
-
-.picture-frame--portrait::before {
-	transform: rotate(-40deg);
-}
-
-.picture-frame--portrait::after {
-	transform: rotate(40deg);
 }
