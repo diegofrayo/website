@@ -15,13 +15,15 @@ class AnalyticsServiceClass {
 
 	private isLibraryAlreadyInitialized = false;
 
+	private DISABLE_ANALYTICS_FLAG = "analytics=false";
+
 	private LS_AnalyticsDisabled = LocalStorageManager.createItem({
-		key: "DFR_ANALYTICS_DISABLED",
+		key: "DR_ANALYTICS_DISABLED",
 		value: false,
 		readInitialValueFromStorage: true,
 	});
 
-	init(): void {
+	init() {
 		if (this.isAnalyticsDisabled() || this.isLibraryAlreadyInitialized) {
 			return;
 		}
@@ -30,7 +32,7 @@ class AnalyticsServiceClass {
 		this.isLibraryAlreadyInitialized = true;
 	}
 
-	trackPageLoaded(): void {
+	trackPageLoaded() {
 		if (this.isAnalyticsDisabled()) {
 			logger("LOG", `Page "${window.location.pathname}" visit was not tracked`);
 			return;
@@ -40,7 +42,7 @@ class AnalyticsServiceClass {
 		logger("LOG", `Page "${window.location.pathname}" visit was tracked`);
 	}
 
-	trackEvent(name: string, data: DR.Object<DR.Primitive>): void {
+	trackEvent(name: string, data: DR.Object<DR.Primitive>) {
 		if (this.isAnalyticsDisabled()) {
 			logger("LOG", `Event "${name}" was not tracked`, data);
 			return;
@@ -50,10 +52,14 @@ class AnalyticsServiceClass {
 		splitbee.track(name, data);
 	}
 
-	isAnalyticsDisabled(): boolean {
+	composeURLWithDisableFlag(route: string) {
+		return `${route}?${this.DISABLE_ANALYTICS_FLAG}`;
+	}
+
+	isAnalyticsDisabled() {
 		if (
 			isDevelopmentEnvironment() ||
-			new URLSearchParams(window.location.search).get("analytics") === "false" ||
+			window.location.href.includes(this.DISABLE_ANALYTICS_FLAG) ||
 			this.LS_AnalyticsDisabled.get() === true
 		) {
 			this.LS_AnalyticsDisabled.set(true);

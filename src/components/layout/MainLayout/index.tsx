@@ -28,6 +28,7 @@ import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
 import { type T_IconName } from "~/components/primitive/Icon";
 
+import AnalyticsService from "~/modules/analytics";
 import styles from "./styles.module.css";
 
 type T_MainLayoutProps = {
@@ -254,7 +255,7 @@ const SignOutMenuItem = renderIf(function SignOutMenuItem() {
 	// --- HANDLERS ---
 	function handleClick() {
 		AuthService.destroySession();
-		redirect(ROUTES.HOME);
+		redirect(AnalyticsService.composeURLWithDisableFlag(ROUTES.HOME));
 	}
 
 	return (
