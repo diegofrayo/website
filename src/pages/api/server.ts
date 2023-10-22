@@ -1,16 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import signInHandler from "~/server/api/handlers/sign-in";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+import signInHandler from "~/server/api/endpoints/sign-in/handler";
+import { sendServerError } from "~/server/api/utils";
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	const { $_ACTION } = req.body;
 
 	switch ($_ACTION) {
 		case "/sign-in":
-			signInHandler(req, res);
+			await signInHandler(req, res);
 			break;
 
 		default:
-			res.status(400).json({ message: `Invalid action: "${$_ACTION}"` });
+			sendServerError(res, { statusCode: 400, message: `Invalid action: "${$_ACTION}"` });
 			break;
 	}
 }

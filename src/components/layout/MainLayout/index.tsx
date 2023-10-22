@@ -1,7 +1,6 @@
 import * as React from "react";
 import cn from "classnames";
 import * as RadixNavigationMenu from "@radix-ui/react-navigation-menu";
-import * as RadixHoverCard from "@radix-ui/react-hover-card";
 
 import {
 	Block,
@@ -39,10 +38,10 @@ type T_MainLayoutProps = {
 function MainLayout({ title, children }: T_MainLayoutProps) {
 	return (
 		<Block is="main">
-			<Block className="tw-mx-auto tw-min-h-dv-screen tw-max-w-screen-md tw-px-6 tw-py-12 dr-bg-color-surface-100">
+			<Block className="tw-mx-auto tw-min-h-dv-screen tw-max-w-screen-md tw-px-6 tw-py-12 dr-bg-color-surface-100 print:tw-bg-transparent">
 				<Block
 					is="header"
-					className="tw-relative tw-flex tw-flex-col tw-items-center tw-justify-between"
+					className="tw-relative tw-flex tw-flex-col tw-items-center tw-justify-between print:tw-hidden"
 				>
 					<Title
 						is="h1"
@@ -65,11 +64,14 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 					<NavigationMenu />
 				</Block>
 
-				<Space size={12} />
+				<Space
+					size={12}
+					clasName="print:tw-hidden"
+				/>
 
 				<Block>
 					{v.isNotEmptyString(title) ? (
-						<Block className="tw-text-center">
+						<Block className="tw-text-center print:tw-hidden">
 							<Title
 								is="h1"
 								variant={Title.variant.SIMPLE}
@@ -83,7 +85,10 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 					{children}
 				</Block>
 
-				<Space size={24} />
+				<Space
+					size={24}
+					clasName="print:tw-hidden"
+				/>
 
 				<Footer />
 			</Block>
@@ -419,99 +424,11 @@ const NavigationMenuItem = React.forwardRef<HTMLAnchorElement, T_NavigationMenuI
 );
 
 function Footer() {
-	// --- STATES & REFS ---
-	const [isHoverCardOpen, setIsHoverCardOpen] = React.useState(false);
-
-	// --- HANDLERS ---
-	function onHoverCardToggleHandler() {
-		setIsHoverCardOpen((currentState) => !currentState);
-	}
-
 	return (
 		<Block
 			is="footer"
-			className="tw-text-center"
+			className="tw-text-center print:tw-hidden"
 		>
-			<RadixHoverCard.Root open={isHoverCardOpen}>
-				<RadixHoverCard.Trigger>
-					<Block
-						className="tw-inline-block tw-cursor-context-menu tw-p-1"
-						onClick={onHoverCardToggleHandler}
-					>
-						<Icon icon={Icon.icon.STACK} />
-					</Block>
-				</RadixHoverCard.Trigger>
-				<RadixHoverCard.Content
-					className={cn("radix-hover-card-content", styles["radix-hover-card-content"])}
-					side="top"
-					sideOffset={0}
-					onMouseLeave={onHoverCardToggleHandler}
-				>
-					<Block
-						is="section"
-						className="tw-rounded-md tw-border tw-px-3 tw-py-2 tw-text-sm dr-bg-color-surface-200 dr-border-color-surface-300"
-					>
-						<Block className="tw-flex tw-justify-between tw-text-white">
-							<Title
-								is="h2"
-								className="tw-text-center tw-text-base tw-font-bold"
-							>
-								TECH STACK
-							</Title>
-							<Link
-								variant={Link.variant.SIMPLE}
-								href={`${WEBSITE_METADATA.social.github}/website`}
-								className="tw-inline-block"
-								isExternalLink
-							>
-								<Icon icon={Icon.icon.CODE} />
-							</Link>
-						</Block>
-						<Space size={0.5} />
-						<List
-							variant={List.variant.SIMPLE}
-							className="tw-text-left"
-						>
-							<List.Item>
-								<StackItem
-									toolName="typescript"
-									href="https://typescriptlang.org"
-									description="as the main language"
-								/>
-							</List.Item>
-							<List.Item>
-								<StackItem
-									toolName="next.js"
-									href="https://nextjs.org"
-									description="as web framework"
-								/>
-							</List.Item>
-							<List.Item>
-								<StackItem
-									toolName="tailwindcss"
-									href="https://tailwindcss.com"
-									description="as css framework"
-								/>
-							</List.Item>
-							<List.Item>
-								<StackItem
-									toolName="vercel"
-									href="https://vercel.com"
-									description="as hosting platform"
-								/>
-							</List.Item>
-						</List>
-					</Block>
-
-					<RadixHoverCard.Arrow
-						width={20}
-						height={10}
-						className="radix-hover-card-arrow tw-relative tw--top-1 tw-fill-[var(--dr-color-surface-300)]"
-					/>
-				</RadixHoverCard.Content>
-			</RadixHoverCard.Root>
-			<Space size={2} />
-
 			<Block>
 				{SOCIAL_ICONS.map((socialIcon) => {
 					return (
@@ -525,39 +442,12 @@ function Footer() {
 			<Space size={2} />
 
 			<Text className="tw-text-sm">
-				© {new Date().getFullYear()} All rights reserved | Coded by{" "}
+				<InlineText>© {new Date().getFullYear()} All rights reserved | Coded by </InlineText>
 				<InlineText is="strong">Diego Rayo</InlineText>
 			</Text>
 
 			<GoToTopButton />
 		</Block>
-	);
-}
-
-type T_StackItemProps = {
-	toolName: string;
-	href: string;
-	description: string;
-};
-
-function StackItem({ toolName, href, description }: T_StackItemProps) {
-	return (
-		<React.Fragment>
-			<Link
-				variant={Link.variant.SIMPLE}
-				href={href}
-				className="tw-font-bold tw-underline"
-				isExternalLink
-			>
-				<InlineText>{toolName}</InlineText>
-				<Icon
-					icon={Icon.icon.EXTERNAL_LINK}
-					wrapperClassName="tw-ml-0.5 tw-mr-1.5"
-					size={12}
-				/>
-			</Link>
-			<InlineText>{description}</InlineText>
-		</React.Fragment>
 	);
 }
 
@@ -637,7 +527,7 @@ const WindowSize = withOnlyClientRendering(function WindowSize() {
 
 	if (isDevelopmentEnvironment(EnvVars)) {
 		return (
-			<div className="tw-fixed tw-bottom-0 tw-left-0 tw-bg-black tw-bg-opacity-50 tw-p-2.5 tw-font-bold tw-text-white">
+			<div className="tw-fixed tw-bottom-0 tw-left-0 tw-bg-black/80 tw-p-2.5 tw-font-bold tw-text-white print:tw-hidden">
 				<span>{size.join("x")} | </span>
 				<span className="tw-inline-block sm:tw-hidden">mobile</span>
 				<span className="tw-hidden sm:tw-inline-block md:tw-hidden">sm</span>

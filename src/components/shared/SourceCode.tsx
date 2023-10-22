@@ -63,7 +63,7 @@ function SourceCode({ code, sourceURL = "", className = "" }: T_SourceCodeProps)
 					{createArray(3).map((element) => {
 						return (
 							<Block
-								key={generateSlug(`source-code-block-element-${element}`)}
+								key={generateSlug(`SourceCode-Block-element-${element}`)}
 								className={cn("tw-mr-1.5 tw-inline-block tw-rounded-full tw-wh-3 last:tw-mr-0", {
 									"tw-bg-red-500": element === 1,
 									"tw-bg-yellow-500": element === 2,

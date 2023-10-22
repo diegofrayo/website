@@ -178,6 +178,10 @@
 	animation-name: slideRightAndFade;
 }
 
+.radix-hover-card-content > span {
+	overflow: hidden;
+}
+
 @keyframes slideUpAndFade {
 	0% {
 		opacity: 0;

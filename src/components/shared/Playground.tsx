@@ -56,7 +56,7 @@ function Playground({ Preview, sourceCode, height = 500 }: T_PlaygroundProps) {
 								{createArray(3).map((element) => {
 									return (
 										<Block
-											key={generateSlug(`playground-block-element-${element}`)}
+											key={generateSlug(`Playground-Block-element-${element}`)}
 											className={cn(
 												"tw-mr-1.5 tw-inline-block tw-rounded-full tw-wh-3 last:tw-mr-0",
 												{

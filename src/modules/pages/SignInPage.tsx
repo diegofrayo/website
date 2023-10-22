@@ -6,6 +6,7 @@ import { Toast } from "~/components/shared";
 import ServerAPI from "~/modules/api";
 import { AuthService, withAuthRulesPage } from "~/modules/auth";
 import { ROUTES, redirect } from "~/modules/routing";
+import { SignInForm, T_SignInFormSchema } from "~/server/api/endpoints/sign-in/schemas";
 import { getErrorMessage } from "@diegofrayo/utils/misc";
 import type DR from "@diegofrayo/types";
 
@@ -25,6 +26,7 @@ function SignInPage() {
 						name="email"
 						type="email"
 						componentProps={{ label: "Email" }}
+						{...SignInForm.emailConstraints}
 						required
 					/>
 					<Space size={1} />
@@ -34,7 +36,7 @@ function SignInPage() {
 						name="password"
 						type="password"
 						componentProps={{ label: "Password" }}
-						minLength={10}
+						{...SignInForm.passwordConstraints}
 						required
 					/>
 					<Space size={2} />
@@ -61,7 +63,7 @@ function Form({ children }: { children: DR.React.Children }) {
 		event.preventDefault();
 
 		const formDataEntries = new FormData(event.currentTarget).entries();
-		const body = Object.fromEntries(formDataEntries) as T_FormData;
+		const body = Object.fromEntries(formDataEntries) as T_SignInFormSchema;
 
 		try {
 			await SignInAPI.signIn("/sign-in", body);
@@ -85,11 +87,7 @@ function Form({ children }: { children: DR.React.Children }) {
 // --- API ---
 
 const SignInAPI = {
-	signIn: (path: string, body: T_FormData) => {
+	signIn: (path: string, body: T_SignInFormSchema) => {
 		return ServerAPI.post(path, body);
 	},
 };
-
-// --- TYPES ---
-
-type T_FormData = { email: string; password: string };

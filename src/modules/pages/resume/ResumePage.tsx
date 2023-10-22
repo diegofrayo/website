@@ -37,11 +37,10 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 			}}
 		>
 			<MainLayout title={content.content.seo.title}>
-				{/*
-				<Block className="tw-text-right">
+				<Block className="tw-text-right print:tw-hidden">
 					<Link
 						href="https://drive.google.com/file/d/1zOaXbESJ4mXasY0WybvfTD9G9qN2Ya7g/view?usp=sharing"
-						className="tw-ml-3 tw-inline-block tw-rounded-t-md tw-border tw-border-gray-700 tw-bg-gray-700 tw-px-3 tw-py-1 tw-text-sm tw-font-bold tw-italic tw-text-white"
+						className="tw--mb-0.5 tw-inline-block tw-rounded-t-md tw-border tw-border-gray-700 tw-bg-gray-700 tw-px-3 tw-py-1 tw-text-sm tw-font-bold tw-text-white hover:tw-underline"
 						isExternalLink
 					>
 						<Icon
@@ -51,8 +50,6 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 						<InlineText>Download as PDF</InlineText>
 					</Link>
 				</Block>
-        */}
-
 				<Block
 					className="tw-relative tw-mx-auto tw-max-w-screen-md tw-overflow-hidden tw-border-12 tw-border-gray-700
         tw-bg-white tw-px-6 tw-py-16 tw-font-serif tw-text-black print:tw-w-full print:tw-border-0 print:tw-p-0 md:tw-px-8"
@@ -306,7 +303,7 @@ type T_ExperienceTimelineProps = {
 
 export function ExperienceTimeline({ experience }: T_ExperienceTimelineProps) {
 	return (
-		<Block className="tw-ml-2 tw-border-l-2 tw-border-dashed tw-border-black">
+		<Block className="tw-ml-2 tw-border-l-2 tw-border-black print:tw-border-0">
 			{experience.map((item) => {
 				return (
 					<ExperienceTimelineItem
@@ -329,7 +326,7 @@ function ExperienceTimelineItem({
 			is="section"
 			className="tw-relative tw-mb-8 tw-pl-10 last:tw-mb-0 print:tw-mb-20"
 		>
-			<Block className="tw-absolute tw--left-3 tw-top-0 tw-overflow-hidden tw-border-2 tw-border-black tw-bg-white tw-wh-10">
+			<Block className="tw-absolute tw--left-2 tw-top-0 tw-overflow-hidden tw-border-2 tw-border-black tw-bg-white tw-wh-10">
 				{v.isNotEmptyString(companyLogo) ? (
 					<Image
 						src={companyLogo}
@@ -375,7 +372,7 @@ function ExperienceTimelineItem({
 						const [contentName, ...content] = line.split(":");
 
 						return (
-							<List.Item key={generateSlug(`${company}-description-item-${index}`)}>
+							<List.Item key={generateSlug(`ExperienceTimelineItem-List.Item-${company}-${index}`)}>
 								<Pre
 									variant={Pre.variant.BREAK_WITH_BLANK_SPACES}
 									className="tw-font-serif print:tw-text-sm"
@@ -389,7 +386,9 @@ function ExperienceTimelineItem({
 												.map((item) => {
 													return (
 														<InlineText
-															key={generateSlug(`${company}-description-tech-stack-${item}`)}
+															key={generateSlug(
+																`ExperienceTimelineItem-InlineText-${company}-${item}`,
+															)}
 															className="tw-mr-1 tw-mt-1 tw-inline-block tw-rounded-md tw-border tw-border-dotted tw-border-gray-200 tw-bg-gray-100 tw-px-1.5 tw-py-0.5 tw-font-mono tw-text-sm tw-text-gray-600"
 														>
 															{item.trim()}
