@@ -18,7 +18,7 @@ import { TypingTextEffect } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/metadata.json";
 import { renderIf, withOnlyClientRendering } from "~/hocs";
 import { useDidMount, useOnWindowStopScroll, useToggleBodyScroll } from "~/hooks";
-import { AuthService, withAuth } from "~/modules/auth";
+import { AuthService } from "~/modules/auth";
 import EnvVars from "~/modules/env-vars";
 import { ROUTES, redirect, useRouting } from "~/modules/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
