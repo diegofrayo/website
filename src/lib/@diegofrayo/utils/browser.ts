@@ -1,5 +1,4 @@
-import { logAndReportError } from "~/modules/logging";
-import v from "@diegofrayo/v";
+import v from "../v";
 
 export function isConfirmAlertAccepted(message: string): boolean {
 	return window.confirm(message);
@@ -29,7 +28,7 @@ export async function copyToClipboard(text: string): Promise<void> {
 
 		await navigator.clipboard.writeText(text);
 	} catch (error) {
-		logAndReportError(error);
+		console.error(error);
 	}
 }
 

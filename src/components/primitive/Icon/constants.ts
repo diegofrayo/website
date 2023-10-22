@@ -1,5 +1,6 @@
 import {
 	ArrowDownTrayIcon,
+	ArrowLeftOnRectangleIcon,
 	ArrowPathIcon,
 	ArrowTopRightOnSquareIcon,
 	ArrowUpIcon,
@@ -226,6 +227,13 @@ const ICONS = {
 	},
 	ENVELOPE: {
 		icon: EnvelopeIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	EXIT: {
+		icon: ArrowLeftOnRectangleIcon,
 		defaultProps: {
 			className: "",
 			color: "",

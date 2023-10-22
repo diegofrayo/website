@@ -1,8 +1,8 @@
 import * as React from "react";
 import cn from "classnames";
 
-import v from "@diegofrayo/v";
-import type DR from "@diegofrayo/types";
+import v from "../v";
+import type DR from "../types";
 
 import { HTML_TAGS, T_HTMLTag } from "./constants";
 

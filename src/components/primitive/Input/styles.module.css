@@ -1,0 +1,23 @@
+.dr-input--styled :global(input) {
+	@apply dr-bg-color-surface-200;
+	-webkit-appearance: none;
+	border: 1px solid var(--dr-color-surface-300);
+	height: 37px;
+	resize: none;
+}
+
+.dr-input--styled :global(:is(input:focus, input:focus-within)) {
+	border-radius: 0;
+	outline-color: var(--dr-color-surface-600);
+	outline-style: solid;
+	outline-width: 1px;
+}
+
+.dr-input--styled :global(input.touched:invalid) {
+	@apply tw-bg-red-900;
+	@apply tw-outline-red-400;
+	@apply tw-text-red-300;
+	border-radius: 0;
+	outline-style: solid;
+	outline-width: 1px;
+}

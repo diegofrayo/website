@@ -15,11 +15,12 @@ import {
 	Title,
 } from "~/components/primitive";
 import { TypingTextEffect } from "~/components/shared";
-import WEBSITE_METADATA from "~/data/generated/metadata.json";
+import WEBSITE_METADATA from "~/data/metadata.json";
 import { renderIf, withOnlyClientRendering } from "~/hocs";
 import { useDidMount, useOnWindowStopScroll, useToggleBodyScroll } from "~/hooks";
-import { withAuth } from "~/modules/auth";
-import { ROUTES, useRouting } from "~/modules/routing";
+import { AuthService, withAuth } from "~/modules/auth";
+import EnvVars from "~/modules/env-vars";
+import { ROUTES, redirect, useRouting } from "~/modules/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import { getScrollPosition, isPWA, setScrollPosition } from "@diegofrayo/utils/browser";
@@ -155,6 +156,8 @@ const ToolsMenu = withAuth(function ToolsMenu() {
 							<List className="tw-block tw-overflow-hidden tw-rounded-md tw-border dr-bg-color-surface-200 dr-border-color-surface-300">
 								<EnvironmentMenuItem />
 								<ReloadPageMenuItem />
+								<SignInMenuItem />
+								<SignOutMenuItem />
 							</List>
 						</RadixNavigationMenu.Content>
 					</RadixNavigationMenu.Item>
@@ -167,20 +170,25 @@ const ToolsMenu = withAuth(function ToolsMenu() {
 	);
 });
 
-interface I_ToolsMenuItemPropsLink {
+interface I_ToolsMenuItemLinkProps {
 	url: string;
 	title: string;
 	icon: T_IconName;
 	isExternalLink?: boolean;
+
+	onClick?: never;
 }
 
-interface I_ToolsMenuItemPropsButton {
+interface I_ToolsMenuItemButtonProps {
 	title: string;
 	icon: T_IconName;
 	onClick: DR.React.Events.OnClickEventHandler<HTMLButtonElement>;
+
+	url?: never;
+	isExternalLink?: never;
 }
 
-type T_ToolsMenuItemProps = I_ToolsMenuItemPropsLink | I_ToolsMenuItemPropsButton;
+type T_ToolsMenuItemProps = I_ToolsMenuItemLinkProps | I_ToolsMenuItemButtonProps;
 
 function ToolsMenuItem(props: T_ToolsMenuItemProps) {
 	return (
@@ -216,7 +224,7 @@ const EnvironmentMenuItem = renderIf(function EnvironmentMenuItem() {
 	// --- EFFECTS ---
 	useDidMount(() => {
 		setUrl(
-			isDevelopmentEnvironment()
+			isDevelopmentEnvironment(EnvVars)
 				? `${WEBSITE_METADATA.url}${window.location.pathname}`
 				: `http://localhost:3000${window.location.pathname}`,
 		);
@@ -225,15 +233,41 @@ const EnvironmentMenuItem = renderIf(function EnvironmentMenuItem() {
 	return (
 		<ToolsMenuItem
 			url={url}
-			title={`Open this page in "${isDevelopmentEnvironment() ? "prod" : "dev"}"`}
+			title={`Open this page in "${isDevelopmentEnvironment(EnvVars) ? "prod" : "dev"}"`}
 			icon={Icon.icon.EXTERNAL_LINK}
 			isExternalLink
 		/>
 	);
 })(() => isPWA() === false);
 
+const SignInMenuItem = renderIf(function SignInMenuItem() {
+	return (
+		<ToolsMenuItem
+			url={ROUTES.SIGN_IN}
+			title="Sign in"
+			icon={Icon.icon.USER_CIRCLE}
+		/>
+	);
+})(() => isPWA());
+
+const SignOutMenuItem = renderIf(function SignOutMenuItem() {
+	// --- HANDLERS ---
+	function handleClick() {
+		AuthService.destroySession();
+		redirect(ROUTES.HOME);
+	}
+
+	return (
+		<ToolsMenuItem
+			title="Sign out"
+			icon={Icon.icon.EXIT}
+			onClick={handleClick}
+		/>
+	);
+})(() => AuthService.isUserLoggedIn() === true);
+
 const ReloadPageMenuItem = renderIf(function ReloadPageMenuItem() {
-	// --- EFFECTS ---
+	// --- HANDLERS ---
 	function handleClick() {
 		window.location.reload();
 	}
@@ -256,8 +290,15 @@ function NavigationMenu() {
 
 	// --- HANDLERS ---
 	function handleToggleMenuClick() {
-		setShowMenu((currentState) => !currentState);
-		setScrollPosition(0);
+		setShowMenu((currentState) => {
+			const newState = !currentState;
+
+			if (newState === true) {
+				setScrollPosition(0);
+			}
+
+			return newState;
+		});
 	}
 
 	return (
@@ -593,7 +634,7 @@ const WindowSize = withOnlyClientRendering(function WindowSize() {
 		return () => window.removeEventListener("resize", updateSize);
 	}, []);
 
-	if (isDevelopmentEnvironment()) {
+	if (isDevelopmentEnvironment(EnvVars)) {
 		return (
 			<div className="tw-fixed tw-bottom-0 tw-left-0 tw-bg-black tw-bg-opacity-50 tw-p-2.5 tw-font-bold tw-text-white">
 				<span>{size.join("x")} | </span>

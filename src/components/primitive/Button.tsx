@@ -52,7 +52,7 @@ export default Button;
 
 // --- STYLES ---
 
-const styles = cva("dr-button", {
+const styles = cva("", {
 	variants: {
 		variant: {
 			[VARIANTS.UNSTYLED]: "",

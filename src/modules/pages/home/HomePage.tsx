@@ -6,7 +6,7 @@ import { Block, Button, Icon, Image, InlineText, Space } from "~/components/prim
 import AnalyticsService from "~/modules/analytics";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
 import { generateSlug } from "@diegofrayo/utils/strings";
-import type { T_PageContent } from "~/data/loader";
+import type { T_PageContent } from "~/server/data-loader";
 
 import styles from "./HomePage.styles.module.css";
 

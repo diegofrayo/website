@@ -1,6 +1,6 @@
 import type { GetStaticProps } from "next";
 
-import { loadData, loadPageContent } from "~/data/loader";
+import { loadData, loadPageContent } from "~/server/data-loader";
 import type { T_BlogPageProps } from "~/modules/pages/blog/BlogPage";
 import type { T_RawBlogPostsResponse } from "~/modules/pages/blog/types";
 

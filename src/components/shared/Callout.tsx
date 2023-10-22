@@ -2,7 +2,8 @@ import * as React from "react";
 import { cva } from "class-variance-authority";
 import cn from "classnames";
 
-import { Block, Icon } from "~/components/primitive";
+import Block from "~/components/primitive/Block";
+import Icon from "~/components/primitive/Icon";
 import { mirror } from "@diegofrayo/utils/arrays-and-objects";
 import type DR from "@diegofrayo/types";
 
@@ -18,10 +19,11 @@ type T_CalloutProps = {
 
 // --- COMPONENT DEFINITION ---
 
-function Callout({ children, variant }: T_CalloutProps) {
+function Callout({ children, variant = VARIANTS.ERROR }: T_CalloutProps) {
 	return (
 		<Block
 			className={cn(
+				`dr-callout dr-callout--${variant.toLowerCase()}`,
 				"tw-flex tw-items-center tw-justify-center tw-rounded-lg tw-p-4",
 				styles({ variant }),
 			)}
@@ -35,7 +37,11 @@ function Callout({ children, variant }: T_CalloutProps) {
 						size={24}
 					/>
 				) : (
-					"x"
+					<Icon
+						icon={Icon.icon.CLOSE}
+						color=""
+						size={24}
+					/>
 				)}
 			</Block>
 			<Block>{children}</Block>
@@ -49,7 +55,7 @@ export default Callout;
 
 // --- STYLES ---
 
-const styles = cva("dr-callout", {
+const styles = cva("", {
 	variants: {
 		variant: {
 			[VARIANTS.ERROR]: "",

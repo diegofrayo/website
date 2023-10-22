@@ -25,8 +25,8 @@ interface I_LibraryIcon {
 interface I_CustomIcon {
 	icon: string;
 	defaultProps: {
-		className?: string;
 		alt: string;
+		className?: string;
 		color?: string;
 	};
 }
@@ -99,8 +99,8 @@ function Icon({
 
 	if (isCustomIcon(icon)) {
 		const iconComponentProps = {
-			src: icon.icon,
 			alt: `${icon.defaultProps.alt} icon`,
+			src: icon.icon,
 			className: cn(iconBaseStyles),
 			...(v.isNumber(size) ? { width: size, height: size } : { width: 24, height: 24 }),
 		};

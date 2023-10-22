@@ -1,4 +1,4 @@
-import { isBrowser } from "~/utils/app";
+import { isBrowser } from "@diegofrayo/utils/misc";
 import type DR from "@diegofrayo/types";
 
 import renderIf from "./renderIf";

@@ -1,5 +1,5 @@
-import { isServer } from "~/utils/app";
 import { LocalStorageManager } from "@diegofrayo/storage";
+import { isServer } from "@diegofrayo/utils/misc";
 
 const LS_Logs = LocalStorageManager.createItem<string[]>({
 	key: "DR_LOGS",

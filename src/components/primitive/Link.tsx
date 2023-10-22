@@ -78,7 +78,7 @@ export default Link;
 
 // --- STYLES ---
 
-const styles = cva("dr-link", {
+const styles = cva("", {
 	variants: {
 		variant: {
 			[VARIANTS.UNSTYLED]: "",

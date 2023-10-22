@@ -8,12 +8,13 @@ import { Toaster } from "sonner";
 import { ErrorBoundary } from "react-error-boundary";
 import type { AppProps } from "next/app";
 
+import { useDidMount } from "~/hooks";
 import { addErrorsGlobalListener, logger } from "~/modules/logging";
 import ErrorPage from "~/modules/pages/ErrorPage";
 import { initPWARoutingConfig } from "~/modules/routing";
-import { useDidMount } from "~/hooks";
-import { isServer, recoverFromBreakingChanges } from "~/utils/app";
+import { recoverFromBreakingChanges } from "~/utils/errors-recovery";
 import { isMobileDevice, isPWA } from "@diegofrayo/utils/browser";
+import { isServer } from "@diegofrayo/utils/misc";
 import type DR from "@diegofrayo/types";
 
 // --- PROPS & TYPES ---
@@ -62,6 +63,7 @@ function CustomApp({ Component, pageProps }: T_CustomAppProps) {
 							style: { justifyContent: "center" },
 						}}
 						closeButton
+						richColors
 					/>
 				</CustomErrorBoundary>
 			</RadixTooltip.Provider>

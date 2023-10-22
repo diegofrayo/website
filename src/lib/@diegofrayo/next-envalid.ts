@@ -1,4 +1,4 @@
-import { isBrowser, isServer } from "~/utils/app";
+import { isBrowser, isServer } from "./utils/misc";
 import v from "./v";
 
 type T_EnvVarConfigAPI = {

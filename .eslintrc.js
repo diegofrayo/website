@@ -66,7 +66,6 @@ module.exports = {
 			},
 		],
 		"import/prefer-default-export": warnRulesValue,
-		"import/no-cycle": warnRulesValue,
 		"no-alert": warnRulesValue,
 		"no-console": warnRulesValue,
 		"no-debugger": warnRulesValue,

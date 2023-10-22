@@ -5,15 +5,16 @@ import { LocalStorageManager } from "@diegofrayo/storage";
 
 // --- CONSTANTS & TYPES ---
 
-export type T_RoutesKeys = "HOME" | "RESUME" | "BLOG";
-
-export type T_RoutesValues = "/" | "/resume" | "/blog" | "/blog/[slug]";
-
-export const ROUTES: Readonly<Record<T_RoutesKeys, T_RoutesValues>> = {
+export const ROUTES = {
 	HOME: "/",
 	RESUME: "/resume",
 	BLOG: "/blog",
-};
+	SIGN_IN: "/sign-in",
+} as const;
+
+export type T_RoutesKeys = keyof typeof ROUTES;
+
+export type T_RoutesValues = (typeof ROUTES)[T_RoutesKeys];
 
 // --- HOOKS ---
 

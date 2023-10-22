@@ -2,7 +2,7 @@ import * as React from "react";
 import cn from "classnames";
 import { cva } from "class-variance-authority";
 
-import { CopyToClipboardPopover } from "~/components/shared";
+import CopyToClipboardPopover from "~/components/shared/CopyToClipboardPopover";
 import { mirror } from "@diegofrayo/utils/arrays-and-objects";
 import type DR from "@diegofrayo/types";
 

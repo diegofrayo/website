@@ -21,7 +21,7 @@ import {
 	Toast,
 	Tooltip,
 } from "~/components/shared";
-import WEBSITE_METADATA from "~/data/generated/metadata.json";
+import WEBSITE_METADATA from "~/data/metadata.json";
 import { withOnlyClientRendering } from "~/hocs";
 import AnalyticsService from "~/modules/analytics";
 import { MDXContent, getMDXExport } from "~/modules/mdx/client";
@@ -30,10 +30,10 @@ import twcss from "@diegofrayo/twcss";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 import { useLocalStorageState } from "@diegofrayo/storage";
-import type { T_BlogPost } from "~/modules/pages/blog/types";
 import type DR from "@diegofrayo/types";
 
 import { BlogPostCategory } from "./components";
+import type { T_BlogPost } from "./types";
 
 export type T_BlogPostPageProps = {
 	postDetails: T_BlogPost;

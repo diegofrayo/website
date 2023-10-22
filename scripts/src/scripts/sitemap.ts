@@ -6,9 +6,9 @@ import type { T_RawBlogPostsResponse } from "../../../src/modules/pages/blog/typ
 
 async function main() {
 	const BLOG_POSTS = JSON.parse(
-		await readFile("./src/data/generated/blog/data.json"),
+		await readFile("./src/data/blog/data.json"),
 	) as T_RawBlogPostsResponse;
-	const WEBSITE_METADATA = JSON.parse(await readFile("./src/data/generated/metadata.json"));
+	const WEBSITE_METADATA = JSON.parse(await readFile("./src/data/metadata.json"));
 	const WEBSITE_PAGES = {
 		HOME: "/",
 		RESUME: "/resume",

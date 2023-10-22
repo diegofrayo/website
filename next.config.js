@@ -1,7 +1,7 @@
 const withPWA = require("next-pwa")({
 	dest: "public",
 	scope: "/",
-	disable: process.env.NODE_ENV === "development",
+	disable: process.env.DISABLE_PWA === "true",
 });
 
 /** @type {import('next').NextConfig} */

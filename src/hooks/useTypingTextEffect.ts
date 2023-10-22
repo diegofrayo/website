@@ -6,24 +6,27 @@ function useTypingTextEffect(text: string) {
 	const outputIndexRef = React.useRef(1);
 	const intervalRef = React.useRef<DR.SetTimeout | null>(null);
 
-	React.useEffect(function startInterval() {
-		if (!intervalRef.current) {
-			intervalRef.current = setInterval(() => {
-				setOutput((currentState) => {
-					const newState = `${currentState}${text.charAt(outputIndexRef.current)}`;
-					outputIndexRef.current += 1;
+	React.useEffect(
+		function startInterval() {
+			if (!intervalRef.current) {
+				intervalRef.current = setInterval(() => {
+					setOutput((currentState) => {
+						const newState = `${currentState}${text.charAt(outputIndexRef.current)}`;
+						outputIndexRef.current += 1;
 
-					return newState;
-				});
-			}, 250);
-		}
-
-		return () => {
-			if (intervalRef.current) {
-				clearInterval(intervalRef.current);
+						return newState;
+					});
+				}, 250);
 			}
-		};
-	}, []);
+
+			return () => {
+				if (intervalRef.current) {
+					clearInterval(intervalRef.current);
+				}
+			};
+		},
+		[text],
+	);
 
 	React.useEffect(
 		function stopInterval() {

@@ -8,7 +8,7 @@ type T_LoadPageContentParams = {
 
 export async function loadPageContent({ page, lang = "en" }: T_LoadPageContentParams) {
 	const pageContent = JSON.parse(
-		fs.readFileSync(`./src/data/generated/${page}/content.json`, "utf-8"),
+		fs.readFileSync(`./src/data/${page}/content.json`, "utf-8"),
 	) as T_RawPageContent;
 
 	return { ...pageContent, content: pageContent.content[lang] };
@@ -19,7 +19,7 @@ export async function loadData<G_Data>(
 ) {
 	const data = JSON.parse(
 		fs.readFileSync(
-			"fullPath" in config ? config.fullPath : `./src/data/generated/${config.page}/data.json`,
+			"fullPath" in config ? config.fullPath : `./src/data/${config.page}/data.json`,
 			"utf-8",
 		),
 	);

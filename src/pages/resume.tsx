@@ -1,6 +1,6 @@
 import type { GetStaticProps } from "next";
 
-import { loadData, loadPageContent } from "~/data/loader";
+import { loadData, loadPageContent } from "~/server/data-loader";
 import ResumePage, { type T_ResumePageProps } from "~/modules/pages/resume/ResumePage";
 
 export default ResumePage;

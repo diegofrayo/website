@@ -3,7 +3,7 @@ import * as React from "react";
 import { MainLayout, Page } from "~/components/layout";
 import { Block, InlineText, Link, Text, Title } from "~/components/primitive";
 import { ROUTES } from "~/modules/routing";
-import type { T_PageContent } from "~/data/loader";
+import type { T_PageContent } from "~/server/data-loader";
 
 import { BlogPostCategory } from "./components";
 import type { T_BlogPost } from "./types";

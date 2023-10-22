@@ -1,10 +1,12 @@
 import autoBind from "auto-bind";
 import splitbee from "@splitbee/web";
 
-import { AuthService } from "~/modules/auth";
-import { logger } from "~/modules/logging";
+import { isDevelopmentEnvironment } from "~/utils/app";
 import { LocalStorageManager } from "@diegofrayo/storage";
 import type DR from "@diegofrayo/types";
+
+import { AuthService } from "../auth";
+import { logger } from "../logging";
 
 class AnalyticsServiceClass {
 	constructor() {
@@ -50,6 +52,7 @@ class AnalyticsServiceClass {
 
 	isAnalyticsDisabled(): boolean {
 		if (
+			isDevelopmentEnvironment() ||
 			new URLSearchParams(window.location.search).get("analytics") === "false" ||
 			this.LS_AnalyticsDisabled.get() === true
 		) {

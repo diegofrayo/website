@@ -17,7 +17,7 @@
 		"no-opt-install": "npm install --omit=optional --force",
 		"===== FORMATTING =====": "",
 		"lint": "eslint --ignore-path .gitignore --ext .js --ext .ts --ext .tsx --fix ./",
-		"lint:no-warnings": "NO_LINT_WARNINGS=true && npm run lint",
+		"lint:no-warnings": "NO_LINT_WARNINGS=true npm run lint",
 		"format": "prettier --write \"./**/*.{ts,tsx,json,css,mjs,js}\"",
 		"===== SEO =====": "",
 		"seo": "npm run seo:rss && npm run seo:sitemap",
@@ -61,7 +61,8 @@
 		"sonner": "^1.0.3",
 		"sugar-high": "^0.5.2",
 		"tailwindcss": "3.3.3",
-		"typescript": "5.1.6"
+		"typescript": "5.1.6",
+		"valibot": "^0.19.0"
 	},
 	"devDependencies": {
 		"@types/color-convert": "^2.0.1",

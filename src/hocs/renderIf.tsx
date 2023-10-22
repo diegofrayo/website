@@ -13,13 +13,13 @@ function renderIf<G_ComponentProps extends object>(
 ): T_RenderIfReturn<G_ComponentProps> {
 	const renderIfReturn: T_RenderIfReturn<G_ComponentProps> = function renderIfReturn(callback) {
 		function RenderIfComponent(props: G_ComponentProps): DR.React.JSXElementNullable {
-			const [hasToRender, setHasToRender] = React.useState(false);
+			const [allowRender, setAllowRender] = React.useState(false);
 
 			useDidMount(() => {
-				setHasToRender(callback());
+				setAllowRender(callback());
 			});
 
-			if (hasToRender) {
+			if (allowRender) {
 				return <WrappedComponent {...props} />;
 			}
 

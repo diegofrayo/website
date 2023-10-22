@@ -3,9 +3,9 @@
 
 npm run scripts:sync-shared-lib
 npm run build:ts
-npm run lint
 npm run seo
 npm run styles
+npm run lint
 npm run format
 npm run build
 git add .

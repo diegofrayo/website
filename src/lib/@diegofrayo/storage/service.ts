@@ -1,6 +1,5 @@
-import { logger } from "~/modules/logging";
-import { isBrowser, isServer } from "~/utils/app";
-import v from "@diegofrayo/v";
+import { isBrowser, isServer } from "../utils/misc";
+import v from "../v";
 
 export type T_LocalStorageStateConfig<G_ValueType> = {
 	key: string;
@@ -27,7 +26,7 @@ const LocalStorageManager = {
 			const valueFromStorage = getItem({ key, type: typeof value });
 
 			if (readInitialValueFromStorage && valueFromStorage !== null) {
-				logger("LOG", "...");
+				console.log("...");
 			} else if (saveWhenCreating && valueFromStorage === null) {
 				setItem(key, value);
 			}
@@ -74,7 +73,7 @@ function setItem(key: string, newValue: unknown) {
 			window.localStorage.setItem(key, String(newValue));
 		}
 	} catch (error) {
-		logger("WARN", error);
+		console.warn(error);
 		window.localStorage.removeItem(key);
 	}
 }
@@ -108,7 +107,7 @@ function getItem({
 
 		return value;
 	} catch (error) {
-		logger("WARN", error);
+		console.warn(error);
 		window.localStorage.removeItem(key);
 
 		return value;

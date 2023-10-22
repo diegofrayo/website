@@ -22,12 +22,19 @@ function SourceCode({ code, sourceURL = "", className = "" }: T_SourceCodeProps)
 	const [containerHeight, setContainerHeight] = React.useState<number | "auto">("auto");
 	const containerRef = React.useRef<null | HTMLDivElement>(null);
 
+	// --- UTILS ---
+	const extractChildren = React.useCallback(function extractChildren(
+		codeParam: T_SourceCodeProps["code"],
+	) {
+		return React.isValidElement(codeParam) ? codeParam.props.children : codeParam;
+	}, []);
+
 	// --- EFFECTS ---
 	React.useEffect(
 		function highlightCode() {
-			setHighlightedCode(highlight(extractChildren()));
+			setHighlightedCode(highlight(extractChildren(code)));
 		},
-		[code],
+		[code, extractChildren],
 	);
 
 	React.useEffect(
@@ -39,11 +46,6 @@ function SourceCode({ code, sourceURL = "", className = "" }: T_SourceCodeProps)
 		},
 		[highlightedCode],
 	);
-
-	// --- UTILS ---
-	function extractChildren() {
-		return React.isValidElement(code) ? code.props.children : code;
-	}
 
 	return (
 		<Block
@@ -83,7 +85,7 @@ function SourceCode({ code, sourceURL = "", className = "" }: T_SourceCodeProps)
 						</Link>
 					) : null}
 					<CopyToClipboardPopover
-						textToCopy={extractChildren()}
+						textToCopy={extractChildren(code)}
 						className="tw-mr-2 tw-inline-block"
 					>
 						<Icon icon={Icon.icon.COPY} />

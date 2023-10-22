@@ -2,9 +2,10 @@ import * as React from "react";
 import Head from "next/head";
 import Script from "next/script";
 
-import WEBSITE_METADATA from "~/data/generated/metadata.json";
+import WEBSITE_METADATA from "~/data/metadata.json";
 import AnalyticsService from "~/modules/analytics";
-import { ROUTES, type T_RoutesValues } from "~/modules/routing";
+import EnvVars from "~/modules/env-vars";
+import { ROUTES } from "~/modules/routing";
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import v from "@diegofrayo/v";
@@ -127,10 +128,12 @@ function Page({ children, config }: T_PageProps) {
 				/>
 				<link
 					rel="icon"
-					href={`/assets/images/favicon/favicon${isDevelopmentEnvironment() ? "-dev" : ""}.ico?v=1`}
+					href={`/assets/images/favicon/favicon${
+						isDevelopmentEnvironment(EnvVars) ? "-dev" : ""
+					}.ico?v=1`}
 				/>
 
-				{[ROUTES.HOME, ROUTES.RESUME].includes(config.pathname as T_RoutesValues) ? (
+				{([ROUTES.HOME, ROUTES.RESUME] as string[]).includes(config.pathname || "") ? (
 					<Script
 						id="application/ld+json"
 						type="application/ld+json"

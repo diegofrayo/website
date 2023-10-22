@@ -17,7 +17,7 @@ import {
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
-import type { T_PageContent } from "~/data/loader";
+import type { T_PageContent } from "~/server/data-loader";
 
 // --- COMPONENT DEFINITION ---
 

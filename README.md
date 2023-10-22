@@ -18,6 +18,7 @@ My personal website | [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
    ```
     NODE_ENV=development
     NEXT_PUBLIC_WEBSITE_URL=http://localhost:3000
+    DISABLE_PWA=true
    ```
 1. Install deps: `npm install`
 1. Install git hooks: `npm run husky:install`
@@ -29,13 +30,13 @@ My personal website | [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
 ===============================================================================
  Language            Files        Lines         Code     Comments       Blanks
 ===============================================================================
- CSS                     9          579          491           22           66
- JSON                    7          415          415            0            0
+ CSS                    10          565          486           17           62
+ JSON                   10           82           82            0            0
  Markdown                1           59            0           46           13
- TSX                    41         4113         3474          147          492
- TypeScript             30         2050         1342          448          260
+ TSX                    48         4410         3729          152          529
+ TypeScript             42         2486         1706          451          329
 ===============================================================================
- Total                  88         7216         5722          663          831
+ Total                 111         7602         6003          666          933
 ===============================================================================
 ```
 

@@ -1,6 +1,6 @@
 import type { GetStaticProps, GetStaticPaths } from "next";
 
-import { loadData } from "~/data/loader";
+import { loadData } from "~/server/data-loader";
 import { compile } from "~/modules/mdx/server";
 import type { T_RawBlogPostResponse, T_RawBlogPostsResponse } from "~/modules/pages/blog/types";
 import type { T_BlogPostPageProps } from "~/modules/pages/blog/BlogPostPage";
@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps<T_BlogPostPageProps, { slug: string 
 	if (!slug) throw new Error(`Invalid slug: "${slug}"`);
 
 	const post = await loadData<T_RawBlogPostResponse>({
-		fullPath: `./src/data/generated/blog/posts/${slug}.json`,
+		fullPath: `./src/data/blog/posts/${slug}.json`,
 	});
 	const mdxCompiled = await compile({ content: post.content });
 

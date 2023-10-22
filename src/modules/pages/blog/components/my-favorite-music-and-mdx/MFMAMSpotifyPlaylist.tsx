@@ -1,10 +1,11 @@
 import * as React from "react";
 
 import { Block } from "~/components/primitive";
+import EnvVars from "~/modules/env-vars";
 import { isDevelopmentEnvironment } from "~/utils/app";
 
 export default function MFMAMSpotifyPlaylist() {
-	if (isDevelopmentEnvironment()) {
+	if (isDevelopmentEnvironment(EnvVars)) {
 		return null;
 	}
 

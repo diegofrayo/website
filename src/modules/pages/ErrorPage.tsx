@@ -2,9 +2,9 @@ import * as React from "react";
 
 import { MainLayout, Page } from "~/components/layout";
 import { Block, Button, Space, Text, Title } from "~/components/primitive";
-import { ROUTES } from "~/modules/routing";
 import { useDidMount } from "~/hooks";
-import { recoverFromBreakingChanges } from "~/utils/app";
+import { ROUTES } from "~/modules/routing";
+import { recoverFromBreakingChanges } from "~/utils/errors-recovery";
 
 function ErrorPage({ title, variant }: { variant: "404" | "500"; title: string }) {
 	// --- VARS ---

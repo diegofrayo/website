@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Button } from "~/components/primitive";
+import Button from "~/components/primitive/Button";
 import { copyToClipboard } from "@diegofrayo/utils/browser";
 import type DR from "@diegofrayo/types";
 

@@ -1,7 +1,7 @@
 import type { GetStaticProps } from "next";
 
 import HomePage, { type T_HomePageProps } from "~/modules/pages/home/HomePage";
-import { loadData, loadPageContent } from "~/data/loader";
+import { loadData, loadPageContent } from "~/server/data-loader";
 
 export default HomePage;
 
