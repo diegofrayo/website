@@ -52,7 +52,7 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 				</Block>
 				<Block
 					className="tw-relative tw-mx-auto tw-max-w-screen-md tw-overflow-hidden tw-border-12 tw-border-gray-700
-        tw-bg-white tw-px-6 tw-py-16 tw-font-serif tw-text-black print:tw-w-full print:tw-border-0 print:tw-p-0 md:tw-px-8"
+        tw-bg-white tw-px-6 tw-py-16 tw-text-black print:tw-w-full print:tw-border-0 print:tw-p-0 md:tw-px-8"
 				>
 					<PrintBlock
 						className="print:tw-flex print:tw-items-center print:tw-justify-center"
@@ -145,7 +145,7 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 						<ResumeBlock title="Summary">
 							<Pre
 								variant={Pre.variant.BREAK_WITH_BLANK_LINES}
-								className="tw-font-serif md:tw-text-justify"
+								className="dr-font-texts md:tw-text-justify"
 							>
 								{data.summary}
 							</Pre>
@@ -176,7 +176,7 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 												<Link
 													variant={Link.variant.SIMPLE}
 													href={item.schoolWebsite}
-													className="tw-underline"
+													className="tw-text-base tw-underline"
 													isExternalLink
 												>
 													{item.school}
@@ -324,7 +324,7 @@ function ExperienceTimelineItem({
 	return (
 		<Block
 			is="section"
-			className="tw-relative tw-mb-8 tw-pl-10 last:tw-mb-0 print:tw-mb-20"
+			className="tw-relative tw-mb-8 tw-pl-10 last:tw-mb-0 print:odd:tw-mb-9 print:even:tw-mb-64"
 		>
 			<Block className="tw-absolute tw--left-2 tw-top-0 tw-overflow-hidden tw-border-2 tw-border-black tw-bg-white tw-wh-10">
 				{v.isNotEmptyString(companyLogo) ? (
@@ -350,20 +350,20 @@ function ExperienceTimelineItem({
 				{v.isNotEmptyString(companyWebsite) ? (
 					<Link
 						variant={Link.variant.SIMPLE}
-						className="tw-underline"
+						className="tw-text-base tw-text-black tw-underline"
 						href={companyWebsite}
 						isExternalLink
 					>
 						{company}
 					</Link>
 				) : (
-					<Text className="tw-text-black">{company}</Text>
+					<Text className="tw-text-base tw-text-black">{company}</Text>
 				)}
 
 				<Text className="tw-text-xs tw-italic tw-text-gray-400">
 					<InlineText>{startDate}</InlineText> / <InlineText>{endDate || "present"}</InlineText>
 				</Text>
-				<Space size={2} />
+				<Space size={1} />
 
 				<List variant={List.variant.SIMPLE}>
 					{description.split("› ").map((line, index) => {
@@ -375,7 +375,7 @@ function ExperienceTimelineItem({
 							<List.Item key={generateSlug(`ExperienceTimelineItem-List.Item-${company}-${index}`)}>
 								<Pre
 									variant={Pre.variant.BREAK_WITH_BLANK_SPACES}
-									className="tw-font-serif print:tw-text-sm"
+									className="dr-font-texts print:tw-text-sm"
 								>
 									<InlineText is="strong">{contentName}:</InlineText>
 									{contentName === "Tech-stack" ? (
@@ -389,7 +389,7 @@ function ExperienceTimelineItem({
 															key={generateSlug(
 																`ExperienceTimelineItem-InlineText-${company}-${item}`,
 															)}
-															className="tw-mr-1 tw-mt-1 tw-inline-block tw-rounded-md tw-border tw-border-dotted tw-border-gray-200 tw-bg-gray-100 tw-px-1.5 tw-py-0.5 tw-font-mono tw-text-sm tw-text-gray-600"
+															className="tw-mr-1 tw-mt-1 tw-inline-block tw-rounded-md tw-border tw-border-dotted tw-border-gray-200 tw-bg-gray-100 tw-px-1.5 tw-py-0.5 tw-font-mono tw-text-sm tw-text-gray-600 print:tw-text-xs"
 														>
 															{item.trim()}
 														</InlineText>
