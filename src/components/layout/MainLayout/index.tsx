@@ -127,7 +127,7 @@ const SOCIAL_ICONS = [
 
 // --- COMPONENTS ---
 
-const ToolsMenu = withAuth(function ToolsMenu() {
+const ToolsMenu = renderIf(function ToolsMenu() {
 	// --- HANDLERS ---
 	function onPointerEventHandler(event: DR.React.Events.OnMouseEvent<HTMLButtonElement>): void {
 		event.preventDefault();
@@ -169,7 +169,7 @@ const ToolsMenu = withAuth(function ToolsMenu() {
 			</RadixNavigationMenu.Root>
 		</Block>
 	);
-});
+})(() => AuthService.isUserLoggedIn() || isPWA());
 
 interface I_ToolsMenuItemLinkProps {
 	url: string;
@@ -218,7 +218,7 @@ function ToolsMenuItem(props: T_ToolsMenuItemProps) {
 	);
 }
 
-const EnvironmentMenuItem = renderIf(function EnvironmentMenuItem() {
+function EnvironmentMenuItem() {
 	// --- STATES & REFS ---
 	const [url, setUrl] = React.useState("/");
 
@@ -239,7 +239,7 @@ const EnvironmentMenuItem = renderIf(function EnvironmentMenuItem() {
 			isExternalLink
 		/>
 	);
-})(() => isPWA() === false);
+}
 
 const SignInMenuItem = renderIf(function SignInMenuItem() {
 	return (
@@ -249,7 +249,7 @@ const SignInMenuItem = renderIf(function SignInMenuItem() {
 			icon={Icon.icon.USER_CIRCLE}
 		/>
 	);
-})(() => isPWA());
+})(() => AuthService.isUserLoggedIn() === false);
 
 const SignOutMenuItem = renderIf(function SignOutMenuItem() {
 	// --- HANDLERS ---
@@ -267,7 +267,7 @@ const SignOutMenuItem = renderIf(function SignOutMenuItem() {
 	);
 })(() => AuthService.isUserLoggedIn() === true);
 
-const ReloadPageMenuItem = renderIf(function ReloadPageMenuItem() {
+const ReloadPageMenuItem = function ReloadPageMenuItem() {
 	// --- HANDLERS ---
 	function handleClick() {
 		window.location.reload();
@@ -280,7 +280,7 @@ const ReloadPageMenuItem = renderIf(function ReloadPageMenuItem() {
 			onClick={handleClick}
 		/>
 	);
-})(() => isPWA() === true);
+};
 
 function NavigationMenu() {
 	// --- STATES & REFS ---
