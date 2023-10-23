@@ -4,7 +4,7 @@ export function throwError(message: string): never {
 	throw new Error(message);
 }
 
-export function getErrorMessage(error: unknown): string {
+export function getErrorMessage(error: unknown) {
 	if (isHttpError(error)) {
 		return error.response.data.message;
 	}
@@ -20,12 +20,18 @@ export function getErrorMessage(error: unknown): string {
 	return "Unknown error";
 }
 
-export function isBrowser(): boolean {
+export function isBrowser() {
 	return typeof window !== "undefined";
 }
 
-export function isServer(): boolean {
+export function isServer() {
 	return !isBrowser();
+}
+
+export function delay(ms: number) {
+	return new Promise((resolve) => {
+		setTimeout(resolve, ms);
+	});
 }
 
 // --- INTERNALS ---

@@ -52,11 +52,11 @@ export function withAuth<G_ComponentProps extends object>(
 
 type T_Options =
 	| {
-			requireAuth: boolean;
-			allowAuth?: never;
+			requireAuth: true;
+			requireNoAuth?: never;
 	  }
 	| {
-			allowAuth: boolean;
+			requireNoAuth: true;
 			requireAuth?: never;
 	  };
 
