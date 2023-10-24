@@ -2,10 +2,11 @@ import * as React from "react";
 import cn from "classnames";
 import { highlight } from "sugar-high";
 
-import { Block, Icon, Link, Pre } from "~/components/primitive";
+import { Block, Button, Icon, Link, Pre } from "~/components/primitive";
 import v from "@diegofrayo/v";
-import { generateSlug } from "@diegofrayo/utils/strings";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
+import { throwError } from "@diegofrayo/utils/misc";
+import { generateSlug } from "@diegofrayo/utils/strings";
 import type DR from "@diegofrayo/types";
 
 import CopyToClipboardPopover from "./CopyToClipboardPopover";
@@ -26,7 +27,9 @@ function SourceCode({ code, sourceURL = "", className = "" }: T_SourceCodeProps)
 	const extractChildren = React.useCallback(function extractChildren(
 		codeParam: T_SourceCodeProps["code"],
 	) {
-		return React.isValidElement(codeParam) ? codeParam.props.children : codeParam;
+		const result = React.isValidElement(codeParam) ? codeParam.props.children : codeParam;
+
+		return v.isString(result) ? result : throwError("Invalid text to copy or highlight");
 	}, []);
 
 	// --- EFFECTS ---
@@ -84,11 +87,13 @@ function SourceCode({ code, sourceURL = "", className = "" }: T_SourceCodeProps)
 							<Icon icon={Icon.icon.EXTERNAL_LINK} />
 						</Link>
 					) : null}
-					<CopyToClipboardPopover
-						textToCopy={extractChildren(code)}
-						className="tw-mr-2 tw-inline-block"
-					>
-						<Icon icon={Icon.icon.COPY} />
+					<CopyToClipboardPopover textToCopy={extractChildren(code)}>
+						<Button
+							variant={Button.variant.SIMPLE}
+							className="tw-mr-2 tw-inline-block"
+						>
+							<Icon icon={Icon.icon.COPY} />
+						</Button>
 					</CopyToClipboardPopover>
 				</Block>
 			</Block>

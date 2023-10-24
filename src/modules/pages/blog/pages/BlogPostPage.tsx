@@ -22,7 +22,7 @@ import {
 	Tooltip,
 } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/metadata.json";
-import { withOnlyClientRendering } from "~/hocs";
+import { withOnlyClientRender } from "~/hocs";
 import AnalyticsService from "~/modules/analytics";
 import { MDXContent, getMDXExport } from "~/modules/mdx/client";
 import { ROUTES } from "~/modules/routing";
@@ -32,8 +32,8 @@ import v from "@diegofrayo/v";
 import { useLocalStorageState } from "@diegofrayo/storage";
 import type DR from "@diegofrayo/types";
 
-import { BlogPostCategory } from "./components";
-import type { T_BlogPost } from "./types";
+import { BlogPostCategory } from "../components";
+import type { T_BlogPost } from "../types";
 
 export type T_BlogPostPageProps = {
 	postDetails: T_BlogPost;
@@ -67,7 +67,7 @@ function BlogPostPage({ postDetails, postContent }: T_BlogPostPageProps) {
 				<Space size={12} />
 
 				<RateContent />
-				<Space size={1.5} />
+				<Space size={4} />
 
 				<BlogPostActions />
 			</MainLayout>
@@ -99,26 +99,29 @@ function getBlogPostDynamicComponents(componentsMap: DR.Object<string>) {
 	Object.keys(componentsMap["Components"] || {}).forEach((componentName) => {
 		if (COMPONENTS_PATHS_MAP[componentName]) {
 			if (componentName === "Playground") {
-				components[componentName] = dynamic(() => import("../../../components/shared/Playground"), {
-					ssr: true,
-				});
+				components[componentName] = dynamic(
+					() => import("../../../../components/shared/Playground"),
+					{
+						ssr: true,
+					},
+				);
 			} else if (componentName === "MFMAMGitHubRepo") {
 				components[componentName] = dynamic(
-					() => import("./components/my-favorite-music-and-mdx/MFMAMGitHubRepo"),
+					() => import("../components/my-favorite-music-and-mdx/MFMAMGitHubRepo"),
 					{
 						ssr: true,
 					},
 				);
 			} else if (componentName === "MFMAMHelloWorldMDX") {
 				components[componentName] = dynamic(
-					() => import("./components/my-favorite-music-and-mdx/MFMAMHelloWorldMDX"),
+					() => import("../components/my-favorite-music-and-mdx/MFMAMHelloWorldMDX"),
 					{
 						ssr: true,
 					},
 				);
 			} else if (componentName === "MFMAMSpotifyPlaylist") {
 				components[componentName] = dynamic(
-					() => import("./components/my-favorite-music-and-mdx/MFMAMSpotifyPlaylist"),
+					() => import("../components/my-favorite-music-and-mdx/MFMAMSpotifyPlaylist"),
 					{
 						ssr: true,
 					},
@@ -197,7 +200,7 @@ function BlogPostSources({ sources }: { sources: { title: string; url: string }[
 	);
 }
 
-const RateContent = withOnlyClientRendering(function RateContent() {
+const RateContent = withOnlyClientRender(function RateContent() {
 	// --- STATES & REFS ---
 	const [ratedContent, setRatedContent] = useLocalStorageState<DR.Object<string>>({
 		key: "DR_RATED_CONTENT",
@@ -209,6 +212,7 @@ const RateContent = withOnlyClientRendering(function RateContent() {
 	// --- VARS ---
 	const questionAnswer = ratedContent[window.location.pathname] || "";
 	const isQuestionAnswered = v.isNotEmptyString(questionAnswer);
+	const ANSWERS = ["YES", "NO"];
 
 	function handleAnswerClick(answer: "YES" | "NO") {
 		return () => {
@@ -223,44 +227,36 @@ const RateContent = withOnlyClientRendering(function RateContent() {
 	}
 
 	return (
-		<Block className="tw-text-center tw-text-white print:tw-hidden">
+		<Block className="tw-text-center">
 			<Text className="tw-mb-2 tw-text-sm tw-font-bold">This content was useful for you?</Text>
-			<Block className={cn("tw-text-center tw-text-xl", isQuestionAnswered && "tw-opacity-75")}>
-				<Button
-					variant={Button.variant.SIMPLE}
-					disabled={isQuestionAnswered}
-					onClick={handleAnswerClick("YES")}
-				>
-					<InlineText>👍</InlineText>
-					<Text
-						className={cn("tw-text-sm", questionAnswer === "YES" && "tw-font-bold tw-underline")}
-					>
-						YES
-					</Text>
-				</Button>
-				<Space
-					size={3}
-					orientation="v"
-				/>
-				<Button
-					variant={Button.variant.SIMPLE}
-					className={cn(questionAnswer === "NO" && "tw-font-bold")}
-					disabled={isQuestionAnswered}
-					onClick={handleAnswerClick("NO")}
-				>
-					<InlineText>👎</InlineText>
-					<Text
-						className={cn("tw-text-sm", questionAnswer === "NO" && "tw-font-bold tw-underline")}
-					>
-						NO
-					</Text>
-				</Button>
+			<Block>
+				{ANSWERS.map((answer) => {
+					return (
+						<Button
+							key={generateSlug(answer)}
+							variant={Button.variant.STYLED}
+							className={cn("tw-mx-3 tw-w-12", questionAnswer === answer && "tw-text-white")}
+							disabled={isQuestionAnswered}
+							onClick={handleAnswerClick("YES")}
+						>
+							<InlineText className="tw-text-2xl">{answer === "YES" ? "👍" : "👎"}</InlineText>
+							<Text
+								className={cn(
+									"tw-text-sm",
+									questionAnswer === answer && "tw-font-bold tw-underline",
+								)}
+							>
+								{answer}
+							</Text>
+						</Button>
+					);
+				})}
 			</Block>
 		</Block>
 	);
 });
 
-const BlogPostActions = withOnlyClientRendering(function BlogPostActions() {
+const BlogPostActions = withOnlyClientRender(function BlogPostActions() {
 	return (
 		<Block className="tw-flex tw-flex-wrap tw-justify-between tw-border tw-border-l-8 tw-p-4 tw-text-white dr-border-color-surface-300">
 			<BlogPostDetailsCopyUrlItem />
@@ -303,8 +299,10 @@ function BlogPostDetailsCopyUrlItem() {
 	return (
 		<BlogPostDetailsItem is="div">
 			<CopyToClipboardPopover textToCopy={window.location.href}>
-				<BlogPostDetailsItemIcon icon={Icon.icon.LINK} />
-				<InlineText>Copy URL</InlineText>
+				<Button variant={Button.variant.SIMPLE}>
+					<BlogPostDetailsItemIcon icon={Icon.icon.LINK} />
+					<InlineText>Copy URL</InlineText>
+				</Button>
 			</CopyToClipboardPopover>
 		</BlogPostDetailsItem>
 	);

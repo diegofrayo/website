@@ -1,10 +1,10 @@
 import v from "../v";
 
-export function isConfirmAlertAccepted(message: string): boolean {
+export function isConfirmAlertAccepted(message: string) {
 	return window.confirm(message);
 }
 
-export function isPWA(): boolean {
+export function isPWA() {
 	/* WARN:
 	 * I ignore this because I'm accessing to a untyped attribute
 	 * (navigator.standalone) on navigator object.
@@ -32,7 +32,7 @@ export async function copyToClipboard(text: string): Promise<void> {
 	}
 }
 
-export function isMobileDevice(): boolean {
+export function isMobileDevice() {
 	/* WARN:
 	 * I ignore this because I'm accessing to a untyped attribute
 	 * (window.opera) on window object.
@@ -58,10 +58,46 @@ export function isMobileDevice(): boolean {
 	return isMobileResult;
 }
 
-export function getScrollPosition(): number {
+export function getScrollPosition() {
 	return document.body.scrollTop || document.documentElement.scrollTop || 0;
 }
 
-export function setScrollPosition(val: number, behavior?: "auto"): void {
+export function setScrollPosition(val: number, behavior?: "auto") {
 	window.scroll({ top: val, behavior: behavior || "smooth" });
+}
+
+export function focusElement(element: HTMLElement) {
+	element.focus();
+	element.click();
+}
+
+export function focusInputAndSelectText(element: HTMLInputElement): void {
+	element.focus();
+	element.select();
+}
+
+export function isSmallScreen(): boolean {
+	return getScreenSize() === "XS";
+}
+
+export function getScreenSize(): "XS" | "SM" | "MD" | "LG" | "XL" {
+	const width = window.innerWidth;
+
+	if (width < 640) {
+		return "XS";
+	}
+
+	if (width < 768) {
+		return "SM";
+	}
+
+	if (width < 1024) {
+		return "MD";
+	}
+
+	if (width < 1280) {
+		return "LG";
+	}
+
+	return "XL";
 }

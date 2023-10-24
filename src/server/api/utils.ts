@@ -1,14 +1,14 @@
 import type { NextApiResponse } from "next";
 import { ValiError } from "valibot";
 
-import HttpError from "./errors";
+import { CustomError } from "./errors";
 
 export function sendServerError(res: NextApiResponse, error: unknown) {
 	res.status(getStatusCode(error)).json(createServerErrorMessage(error));
 }
 
 function getStatusCode(error: unknown) {
-	if (error instanceof HttpError) {
+	if (error instanceof CustomError) {
 		return error.statusCode;
 	}
 
@@ -20,7 +20,7 @@ function getStatusCode(error: unknown) {
 }
 
 function createServerErrorMessage(error: unknown) {
-	if (error instanceof HttpError) {
+	if (error instanceof CustomError) {
 		return { ...error, message: error.message };
 	}
 

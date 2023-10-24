@@ -2,7 +2,7 @@
 
 import v from "@diegofrayo/v";
 
-abstract class ServerError extends Error {
+export abstract class CustomError extends Error {
 	constructor(
 		public id: string,
 		public message: string,
@@ -19,7 +19,13 @@ abstract class ServerError extends Error {
 	}
 }
 
-class HttpError extends ServerError {
+export class ServerError extends CustomError {
+	constructor(message: string) {
+		super("ServerError", message, 500);
+	}
+}
+
+export class HttpError extends CustomError {
 	static types = {
 		OK: { name: "OK", statusCode: 200 },
 		NO_CONTENT: { name: "NO_CONTENT", statusCode: 204 },
@@ -41,5 +47,3 @@ class HttpError extends ServerError {
 		super(id, message, type.statusCode);
 	}
 }
-
-export default HttpError;

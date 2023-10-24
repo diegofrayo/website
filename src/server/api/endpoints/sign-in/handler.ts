@@ -3,8 +3,8 @@ import { parse } from "valibot";
 
 import EnvVars from "~/modules/env-vars";
 
+import { HttpError } from "../../errors";
 import { sendServerError } from "../../utils";
-import HttpError from "../../errors";
 import { SignInForm } from "./schemas";
 
 export default function signInHandler(req: NextApiRequest, res: NextApiResponse) {

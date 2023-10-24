@@ -10,6 +10,7 @@ export const ROUTES = {
 	RESUME: "/resume",
 	BLOG: "/blog",
 	SIGN_IN: "/sign-in",
+	APPS: "/apps",
 } as const;
 
 export type T_RoutesKeys = keyof typeof ROUTES;

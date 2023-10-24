@@ -3,9 +3,9 @@ import type { GetStaticProps, GetStaticPaths } from "next";
 import { loadData } from "~/server/data-loader";
 import { compile } from "~/modules/mdx/server";
 import type { T_RawBlogPostResponse, T_RawBlogPostsResponse } from "~/modules/pages/blog/types";
-import type { T_BlogPostPageProps } from "~/modules/pages/blog/BlogPostPage";
+import type { T_BlogPostPageProps } from "~/modules/pages/blog/pages/BlogPostPage";
 
-export { default } from "~/modules/pages/blog/BlogPostPage";
+export { default } from "~/modules/pages/blog/pages/BlogPostPage";
 
 // --- NEXT.JS FUNCTIONS ---
 

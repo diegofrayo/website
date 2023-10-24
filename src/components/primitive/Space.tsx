@@ -43,7 +43,7 @@ function Space({
 			`dr-space dr-space--${variant.toLowerCase()}`,
 			"tw-flex-shrink-0",
 			{ "tw-border-0": variant === VARIANTS.SIMPLE },
-			{ "dr-border-color-primary tw-border-dashed": variant === VARIANTS.DASHED },
+			{ "tw-border-t tw-border-dashed dr-border-color-surface-300": variant === VARIANTS.DASHED },
 			{ "tw-h-full": isVerticalOrientation },
 			{ "tw-h-px": !isVerticalOrientation },
 			v.isNotEmptyString(responsive) ? responsive : composeSizeStyles(),

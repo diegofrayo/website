@@ -93,11 +93,11 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={`mailto:${data.contactInfo.email}`}
-									className="tw-mx-2"
+									className="tw-mx-2 tw-inline-block"
 									isExternalLink
 								>
 									<Icon
-										icon={Icon.icon.GMAIL_MONO}
+										icon={Icon.icon.GMAIL}
 										size={32}
 									/>
 								</Link>
@@ -108,7 +108,7 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 									isExternalLink
 								>
 									<Icon
-										icon={Icon.icon.LINKEDIN_MONO}
+										icon={Icon.icon.LINKEDIN}
 										size={30}
 									/>
 								</Link>
@@ -126,12 +126,14 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 											{isPersonalWebsite ? (
 												<Icon
 													icon={Icon.icon.LINK}
-													size={26}
+													size={20}
+													wrapperClassName="tw-rounded-full tw-bg-black tw-p-1.5 tw-text-white"
 												/>
 											) : (
 												<Icon
-													icon={Icon.icon.GITHUB_MONO}
-													size={30}
+													icon={Icon.icon.GITHUB}
+													size={28}
+													wrapperClassName="tw-border tw-rounded-full tw-border-black"
 												/>
 											)}
 										</Link>
@@ -324,7 +326,7 @@ function ExperienceTimelineItem({
 	return (
 		<Block
 			is="section"
-			className="tw-relative tw-mb-8 tw-pl-10 last:tw-mb-0 print:odd:tw-mb-9 print:even:tw-mb-64"
+			className="tw-relative tw-mb-8 tw-pl-10 last:tw-mb-0 print:odd:tw-mb-9 print:even:tw-mb-72"
 		>
 			<Block className="tw-absolute tw--left-2 tw-top-0 tw-overflow-hidden tw-border-2 tw-border-black tw-bg-white tw-wh-10">
 				{v.isNotEmptyString(companyLogo) ? (
@@ -375,7 +377,7 @@ function ExperienceTimelineItem({
 							<List.Item key={generateSlug(`ExperienceTimelineItem-List.Item-${company}-${index}`)}>
 								<Pre
 									variant={Pre.variant.BREAK_WITH_BLANK_SPACES}
-									className="dr-font-texts print:tw-text-sm"
+									className="tw-text-base dr-font-texts print:tw-text-sm"
 								>
 									<InlineText is="strong">{contentName}:</InlineText>
 									{contentName === "Tech-stack" ? (
@@ -389,7 +391,7 @@ function ExperienceTimelineItem({
 															key={generateSlug(
 																`ExperienceTimelineItem-InlineText-${company}-${item}`,
 															)}
-															className="tw-mr-1 tw-mt-1 tw-inline-block tw-rounded-md tw-border tw-border-dotted tw-border-gray-200 tw-bg-gray-100 tw-px-1.5 tw-py-0.5 tw-font-mono tw-text-sm tw-text-gray-600 print:tw-text-xs"
+															className="tw-mr-1 tw-mt-1 tw-inline-block tw-rounded-md tw-border tw-border-dotted tw-border-gray-200 tw-bg-gray-100 tw-px-1.5 tw-py-0.5 tw-font-mono tw-text-sm tw-text-gray-600"
 														>
 															{item.trim()}
 														</InlineText>

@@ -5,9 +5,11 @@ import { cva } from "class-variance-authority";
 import { mirror } from "@diegofrayo/utils/arrays-and-objects";
 import type DR from "@diegofrayo/types";
 
+import styles from "./styles.module.css";
+
 // --- PROPS & TYPES ---
 
-const VARIANTS = mirror(["UNSTYLED", "SIMPLE"]);
+const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "STYLED"]);
 type T_Variant = keyof typeof VARIANTS;
 type T_ButtonProps = DR.DOM.HTMLElementAttributes["button"] & {
 	variant?: T_Variant;
@@ -33,7 +35,7 @@ const Button = React.forwardRef<HTMLButtonElement, T_ButtonProps>(function Butto
 			type={type} // eslint-disable-line react/button-has-type
 			className={cn(
 				`dr-button dr-button--${variant.toLowerCase()}`,
-				styles({ variant, disabled }),
+				stylesVariants({ variant, disabled }),
 				className,
 			)}
 			disabled={disabled}
@@ -52,14 +54,15 @@ export default Button;
 
 // --- STYLES ---
 
-const styles = cva("", {
+const stylesVariants = cva("", {
 	variants: {
 		variant: {
 			[VARIANTS.UNSTYLED]: "",
 			[VARIANTS.SIMPLE]: "dr-transition-opacity",
+			[VARIANTS.STYLED]: styles[`dr-button--${VARIANTS.STYLED.toLowerCase()}`],
 		},
 		disabled: {
-			true: "tw-cursor-not-allowed tw-opacity-50",
+			true: "tw-pointer-events-none tw-opacity-50",
 		},
 	},
 });

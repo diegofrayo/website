@@ -1,3 +1,5 @@
+import * as React from "react";
+
 import { InlineText } from "~/components/primitive";
 
 export function BlogPostCategory({ children }: { children: string }) {

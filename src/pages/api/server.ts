@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+import dencryptHandler from "~/server/api/endpoints/dencrypt/handler";
 import signInHandler from "~/server/api/endpoints/sign-in/handler";
 import { sendServerError } from "~/server/api/utils";
 
@@ -7,8 +8,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	const { $_ACTION } = req.body;
 
 	switch ($_ACTION) {
-		case "/sign-in":
+		case "POST/sign-in":
 			await signInHandler(req, res);
+			break;
+
+		case "POST/dencrypt":
+			await dencryptHandler(req, res);
 			break;
 
 		default:

@@ -11,12 +11,14 @@ import {
 	ClipboardIcon,
 	CodeBracketIcon,
 	CogIcon,
+	CommandLineIcon,
 	DocumentDuplicateIcon,
 	DocumentTextIcon,
 	EnvelopeIcon,
 	ExclamationTriangleIcon,
 	GlobeAltIcon,
 	HomeIcon,
+	KeyIcon,
 	LinkIcon,
 	PauseIcon,
 	PlayIcon,
@@ -204,6 +206,13 @@ const ICONS = {
 			color: "",
 		},
 	},
+	COMMAND_LINE: {
+		icon: CommandLineIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
 	COPY: {
 		icon: DocumentDuplicateIcon,
 		defaultProps: {
@@ -248,6 +257,13 @@ const ICONS = {
 	},
 	HOME: {
 		icon: HomeIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	KEY: {
+		icon: KeyIcon,
 		defaultProps: {
 			className: "",
 			color: "",
@@ -563,12 +579,6 @@ export const ICONS = {
 		defaultProps: {
 			className: "",
 			color: "tw-text-red-500",
-		},
-	},
-	KEY: {
-		icon: KeyIcon,
-		defaultProps: {
-			className: "",
 		},
 	},
 	LOCK_CLOSED: {

@@ -1,7 +1,8 @@
 import * as React from "react";
 
-import Button from "~/components/primitive/Button";
+import Block from "~/components/primitive/Block";
 import { copyToClipboard } from "@diegofrayo/utils/browser";
+import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
 
 import Popover from "./Popover";
@@ -11,14 +12,9 @@ import Popover from "./Popover";
 type T_CopyToClipboardPopoverProps = {
 	children: DR.React.Children;
 	textToCopy: string;
-	className?: string;
 };
 
-function CopyToClipboardPopover({
-	children,
-	textToCopy,
-	className,
-}: T_CopyToClipboardPopoverProps) {
+function CopyToClipboardPopover({ children, textToCopy }: T_CopyToClipboardPopoverProps) {
 	// --- STATES & REFS ---
 	const [showPopover, setShowPopover] = React.useState(false);
 
@@ -40,13 +36,23 @@ function CopyToClipboardPopover({
 			text="copied!"
 			open={showPopover}
 		>
-			<Button
-				variant={Button.variant.SIMPLE}
-				className={className}
-				onClick={handleClick}
-			>
-				{children}
-			</Button>
+			<Block is="span">
+				{React.Children.map(children, (child) => {
+					if (React.isValidElement(child)) {
+						return React.cloneElement(child as DR.React.JSXElement, {
+							onClick: () => {
+								handleClick();
+
+								if (v.isFunction(child.props.onClick)) {
+									child.props.onClick();
+								}
+							},
+						});
+					}
+
+					return null;
+				})}
+			</Block>
 		</Popover>
 	);
 }

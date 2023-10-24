@@ -6,6 +6,8 @@ import CopyToClipboardPopover from "~/components/shared/CopyToClipboardPopover";
 import { mirror } from "@diegofrayo/utils/arrays-and-objects";
 import type DR from "@diegofrayo/types";
 
+import Button from "./Button";
+
 // --- PROPS & TYPES ---
 
 const VARIANTS = mirror(["UNSTYLED", "STYLED"]);
@@ -21,15 +23,17 @@ function Code({ variant = VARIANTS.UNSTYLED, children, className }: T_CodeProps)
 	if (variant === VARIANTS.STYLED) {
 		return (
 			<CopyToClipboardPopover textToCopy={children}>
-				<code
-					className={cn(
-						`dr-code dr-code--${variant.toLowerCase()}`,
-						styles({ variant }),
-						className,
-					)}
-				>
-					{children}
-				</code>
+				<Button variant={Button.variant.SIMPLE}>
+					<code
+						className={cn(
+							`dr-code dr-code--${variant.toLowerCase()}`,
+							styles({ variant }),
+							className,
+						)}
+					>
+						{children}
+					</code>
+				</Button>
 			</CopyToClipboardPopover>
 		);
 	}

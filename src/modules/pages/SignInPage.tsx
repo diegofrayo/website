@@ -13,7 +13,9 @@ import type DR from "@diegofrayo/types";
 
 function SignInPage() {
 	// --- HOOKS ---
-	const { mutation: signInMutation, isLoading } = useAsync("/sign-in", SignInAPI.signIn);
+	const { mutation: signInMutation, isLoading } = useAsync("/sign-in", SignInAPI.signIn, {
+		withDelay: true,
+	});
 
 	// --- HANDLERS ---
 	async function onSubmitHandler(event: DR.React.Events.OnSubmitEvent<HTMLFormElement>) {

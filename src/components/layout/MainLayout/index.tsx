@@ -15,9 +15,9 @@ import {
 } from "~/components/primitive";
 import { TypingTextEffect } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/metadata.json";
-import { renderIf, withOnlyClientRendering } from "~/hocs";
+import { renderIf, withOnlyClientRender } from "~/hocs";
 import { useDidMount, useOnWindowStopScroll, useToggleBodyScroll } from "~/hooks";
-import { AuthService } from "~/modules/auth";
+import { AuthService, withAuth } from "~/modules/auth";
 import EnvVars from "~/modules/env-vars";
 import { ROUTES, redirect, useRouting } from "~/modules/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
@@ -160,6 +160,7 @@ const ToolsMenu = renderIf(function ToolsMenu() {
 						</RadixNavigationMenu.Trigger>
 						<RadixNavigationMenu.Content className="radix-navigation-menu-content">
 							<List className="tw-block tw-overflow-hidden tw-rounded-md tw-border dr-bg-color-surface-200 dr-border-color-surface-300">
+								<AppsMenuItem />
 								<EnvironmentMenuItem />
 								<ReloadPageMenuItem />
 								<SignInMenuItem />
@@ -246,6 +247,16 @@ function EnvironmentMenuItem() {
 	);
 }
 
+const AppsMenuItem = withAuth(function AppsMenuItem() {
+	return (
+		<ToolsMenuItem
+			url={ROUTES.APPS}
+			title="Go to Apps page"
+			icon={Icon.icon.COMMAND_LINE}
+		/>
+	);
+});
+
 const SignInMenuItem = renderIf(function SignInMenuItem() {
 	return (
 		<ToolsMenuItem
@@ -256,7 +267,7 @@ const SignInMenuItem = renderIf(function SignInMenuItem() {
 	);
 })(() => AuthService.isUserLoggedIn() === false);
 
-const SignOutMenuItem = renderIf(function SignOutMenuItem() {
+const SignOutMenuItem = withAuth(function SignOutMenuItem() {
 	// --- HANDLERS ---
 	function handleClick() {
 		AuthService.destroySession();
@@ -270,9 +281,9 @@ const SignOutMenuItem = renderIf(function SignOutMenuItem() {
 			onClick={handleClick}
 		/>
 	);
-})(() => AuthService.isUserLoggedIn() === true);
+});
 
-const ReloadPageMenuItem = function ReloadPageMenuItem() {
+function ReloadPageMenuItem() {
 	// --- HANDLERS ---
 	function handleClick() {
 		window.location.reload();
@@ -285,7 +296,7 @@ const ReloadPageMenuItem = function ReloadPageMenuItem() {
 			onClick={handleClick}
 		/>
 	);
-};
+}
 
 function NavigationMenu() {
 	// --- STATES & REFS ---
@@ -510,7 +521,7 @@ function GoToTopButton() {
 	return null;
 }
 
-const WindowSize = withOnlyClientRendering(function WindowSize() {
+const WindowSize = withOnlyClientRender(function WindowSize() {
 	const [size, setSize] = React.useState([0, 0]);
 
 	React.useLayoutEffect(() => {
