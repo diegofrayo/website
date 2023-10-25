@@ -17,6 +17,8 @@ import {
 	type T_DencryptResponseSchema,
 } from "~/server/api/endpoints/dencrypt/schemas";
 
+import { Output } from "../components";
+
 function DencryptPage() {
 	// --- HOOKS ---
 	const { mutation: dencryptMutation, isLoading } = useAsync("/dencrypt", DencryptAPI.dencrypt);
@@ -126,10 +128,10 @@ function DencryptPage() {
 						/>
 
 						<Input.Label>Output</Input.Label>
-						<output className="tw-block tw-min-h-[40px] tw-w-full tw-whitespace-break-spaces tw-break-all tw-border tw-p-3 tw-font-mono tw-text-sm dr-border-color-surface-300">
-							{output}
-						</output>
-						<Block className="tw-mt-2 tw-flex tw-justify-end tw-gap-2">
+						<Output>{output}</Output>
+						<Space size={1} />
+
+						<Block className="tw-flex tw-justify-end tw-gap-2">
 							<Button
 								variant={Button.variant.STYLED}
 								onClick={handleClearClick}

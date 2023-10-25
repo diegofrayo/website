@@ -71,12 +71,12 @@ export function focusElement(element: HTMLElement) {
 	element.click();
 }
 
-export function focusInputAndSelectText(element: HTMLInputElement): void {
+export function focusInputAndSelectText(element: HTMLInputElement) {
 	element.focus();
 	element.select();
 }
 
-export function isSmallScreen(): boolean {
+export function isSmallScreen() {
 	return getScreenSize() === "XS";
 }
 
@@ -100,4 +100,42 @@ export function getScreenSize(): "XS" | "SM" | "MD" | "LG" | "XL" {
 	}
 
 	return "XL";
+}
+
+export function is_iOS_AndMobileDevice() {
+	/* WARN:
+	 * I ignore this because I'm accessing to a untyped attribute
+	 * (navigator.userAgentData) on navigator object.
+	 * This code is irrelevant, i'm not going to try to fix this
+	 */
+	// @ts-ignore
+	const browserPlatform = window.navigator.userAgentData?.platform || window.navigator.platform;
+	const isIpadWithIOS13 = navigator.userAgent.includes("Mac") && "ontouchend" in document;
+	const APPLE_DEVICES_NAMES = [
+		"iPad Simulator",
+		"iPhone Simulator",
+		"iPod Simulator",
+		"iPad",
+		"iPhone",
+		"iPod",
+	];
+
+	return APPLE_DEVICES_NAMES.includes(browserPlatform) || isIpadWithIOS13;
+}
+
+export function getAndroidVersion() {
+	try {
+		const ua: string = navigator.userAgent.toLowerCase();
+		const match: RegExpMatchArray | null = ua.match(/android\s([0-9.]*)/);
+
+		if (!match) throw new Error();
+
+		return parseFloat(match[1]);
+	} catch (error) {
+		return -1;
+	}
+}
+
+export function isAndroid() {
+	return navigator.userAgent.toLowerCase().indexOf("android") > -1;
 }

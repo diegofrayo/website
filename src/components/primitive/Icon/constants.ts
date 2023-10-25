@@ -5,7 +5,9 @@ import {
 	ArrowTopRightOnSquareIcon,
 	ArrowUpIcon,
 	Bars4Icon,
+	BeakerIcon,
 	CalendarIcon,
+	ChartBarSquareIcon,
 	ChevronDownIcon,
 	ChevronLeftIcon,
 	ClipboardIcon,
@@ -29,7 +31,11 @@ import {
 	WrenchIcon,
 	XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { PlayIcon as PlaySolidIcon } from "@heroicons/react/24/solid";
+import {
+	CheckBadgeIcon as CheckBadgeIconSolid,
+	PlayIcon as PlayIconSolid,
+	XCircleIcon as XCircleIconSolid,
+} from "@heroicons/react/24/solid";
 import {
 	GithubMonoIcon,
 	GmailMonoIcon,
@@ -179,10 +185,30 @@ const ICONS = {
 			color: "",
 		},
 	},
+	BEAKER: {
+		icon: BeakerIcon,
+		defaultProps: {
+			className: "",
+		},
+	},
 	CALENDAR: {
 		icon: CalendarIcon,
 		defaultProps: {
 			className: "",
+		},
+	},
+	CHART_BAR_SQUARE: {
+		icon: ChartBarSquareIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	CHECK_BADGE: {
+		icon: CheckBadgeIconSolid,
+		defaultProps: {
+			className: "",
+			color: "",
 		},
 	},
 	CHEVRON_DOWN: {
@@ -208,6 +234,13 @@ const ICONS = {
 	},
 	CLOSE: {
 		icon: XMarkIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	CLOSE_SOLID: {
+		icon: XCircleIconSolid,
 		defaultProps: {
 			className: "",
 			color: "",
@@ -312,7 +345,7 @@ const ICONS = {
 		},
 	},
 	PLAY_SOLID: {
-		icon: PlaySolidIcon,
+		icon: PlayIconSolid,
 		defaultProps: {
 			className: "",
 			color: "",
@@ -484,13 +517,6 @@ export const ICONS = {
 		defaultProps: {
 			className: "",
 			color: "tw-text-green-500",
-		},
-	},
-	CHECK_BADGE: {
-		icon: CheckBadgeIconSolid,
-		defaultProps: {
-			className: "",
-			color: "",
 		},
 	},
 	CHEVRON_DOWN: {

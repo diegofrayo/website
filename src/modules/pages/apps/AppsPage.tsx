@@ -18,12 +18,12 @@ function AppsPage() {
 						return (
 							<Block
 								key={app.id}
-								className="tw-rounded-md tw-border-8 tw-border-double tw-p-4 tw-text-center dr-bg-color-surface-200 dr-border-color-surface-300"
+								className="tw-flex tw-items-center tw-justify-center tw-rounded-md tw-border-8 tw-border-double dr-bg-color-surface-200 dr-border-color-surface-300 tw-wh-44"
 							>
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={`/apps/${app.id}`}
-									className="tw-block"
+									className="tw-block tw-text-center"
 								>
 									<Icon
 										icon={app.icon}
@@ -55,5 +55,15 @@ const APPS = [
 		id: "whatsapp",
 		icon: Icon.icon.WHATSAPP_MONO,
 		name: "whatsapp",
+	},
+	{
+		id: "debugger",
+		icon: Icon.icon.CODE,
+		name: "debugger",
+	},
+	{
+		id: "experiments",
+		icon: Icon.icon.BEAKER,
+		name: "experiments",
 	},
 ];

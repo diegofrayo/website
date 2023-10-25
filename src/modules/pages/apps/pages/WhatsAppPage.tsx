@@ -1,14 +1,17 @@
 import * as React from "react";
 import cn from "classnames";
 
+import { MainLayout, Page } from "~/components/layout";
 import { Input, Block, Button, Space, Select, Title } from "~/components/primitive";
+import { CopyToClipboardPopover } from "~/components/shared";
 import { useDidMount } from "~/hooks";
+import { withAuthRulesPage } from "~/modules/auth";
 import v from "@diegofrayo/v";
 import { isMobileDevice } from "@diegofrayo/utils/browser";
 import { generateSlug, replaceAll } from "@diegofrayo/utils/strings";
-import { CopyToClipboardPopover } from "~/components/shared";
-import DR from "@diegofrayo/types";
-import { MainLayout, Page } from "~/components/layout";
+import type DR from "@diegofrayo/types";
+
+import { Output } from "../components";
 
 function WhatsAppPage() {
 	// --- STATES & REFS ---
@@ -129,12 +132,12 @@ function WhatsAppPage() {
 							variant={Title.variant.PRIMARY}
 							className="tw-mb-3"
 						>
-							Result
+							Output
 						</Title>
-						<output className="tw-block tw-min-h-[40px] tw-w-full tw-whitespace-break-spaces tw-break-all tw-border tw-p-3 tw-font-mono tw-text-sm dr-border-color-surface-300">
-							{whatsAppUrl}
-						</output>
-						<Block className="tw-mt-2 tw-flex tw-justify-end tw-gap-2">
+						<Output>{whatsAppUrl}</Output>
+						<Space size={1} />
+
+						<Block className="tw-flex tw-justify-end tw-gap-2">
 							<Button
 								variant={Button.variant.STYLED}
 								onClick={handleOpenLinkClick}
@@ -152,7 +155,7 @@ function WhatsAppPage() {
 	);
 }
 
-export default WhatsAppPage;
+export default withAuthRulesPage(WhatsAppPage, { requireAuth: true });
 
 // --- CONSTANTS ---
 

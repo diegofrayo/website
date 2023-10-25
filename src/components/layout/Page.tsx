@@ -40,6 +40,7 @@ function Page({ children, config }: T_PageProps) {
 		url: `${WEBSITE_METADATA.url}${config.pathname || ""}`,
 		description: config.description || WEBSITE_METADATA.description,
 		image: config.image || "/assets/images/meta-og-image.png",
+		disableSEO: v.isBoolean(config.disableSEO) ? config.disableSEO : true,
 	};
 
 	// --- EFFECTS ---
@@ -66,7 +67,7 @@ function Page({ children, config }: T_PageProps) {
 					name="google-site-verification"
 					content="Gf-6mROjwXEjbtUUtl2rX5NgzWuzWxgxoKYTaGsqvtw"
 				/>
-				{config.disableSEO ? (
+				{metadata.disableSEO ? (
 					<meta
 						name="robots"
 						content="noindex,nofollow"

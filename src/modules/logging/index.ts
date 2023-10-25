@@ -49,6 +49,10 @@ export function addErrorsGlobalListener(): void {
 	};
 }
 
+export function getLogsHistory() {
+	return LS_Logs.get();
+}
+
 export function clearLogsHistory(): void {
 	LS_Logs.remove();
 }

@@ -38,10 +38,14 @@ type T_MainLayoutProps = {
 function MainLayout({ title, children }: T_MainLayoutProps) {
 	return (
 		<Block is="main">
-			<Block className="tw-mx-auto tw-min-h-dv-screen tw-max-w-screen-md tw-px-6 tw-py-12 dr-bg-color-surface-100 print:tw-bg-transparent">
+			<Block className="tw-relative tw-mx-auto tw-min-h-dv-screen tw-max-w-screen-md tw-px-6 tw-py-12 dr-bg-color-surface-100 print:tw-bg-transparent">
+				<Block className="tw-absolute tw--top-1 tw-left-0">
+					<Flags />
+				</Block>
+
 				<Block
 					is="header"
-					className="tw-relative tw-flex tw-flex-col tw-items-center tw-justify-between print:tw-hidden"
+					className="tw-relative print:tw-hidden"
 				>
 					<Title
 						is="h1"
@@ -52,16 +56,18 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 							href={ROUTES.HOME}
 							className="tw-block tw-text-2xl tw-text-white dr-font-main-title sm:tw-text-4xl"
 						>
-							@diegofrayo
+							{`@${WEBSITE_METADATA.username}`}
 						</Link>
 						<TypingTextEffect className="tw-font-mono tw-text-sm tw-font-thin">
-							software developer
+							{WEBSITE_METADATA.jobTitle.toLowerCase()}
 						</TypingTextEffect>
 					</Title>
 
-					<ToolsMenu />
-
 					<NavigationMenu />
+
+					<Block className="tw-absolute tw--top-1 tw-right-0">
+						<ToolsMenu />
+					</Block>
 				</Block>
 
 				<Space
@@ -139,40 +145,38 @@ const ToolsMenu = renderIf(function ToolsMenu() {
 	}
 
 	return (
-		<Block className="tw-absolute tw--top-1 tw-right-0">
-			<RadixNavigationMenu.Root
-				className="radix-navigation-menu-root tw-z-10"
-				delayDuration={0}
-			>
-				<RadixNavigationMenu.List className="radix-navigation-menu-list">
-					<RadixNavigationMenu.Item>
-						<RadixNavigationMenu.Trigger
-							className="radix-navigation-menu-trigger tw-p-2 tw-pr-0 tw-text-center"
-							onPointerMove={onPointerEventHandler}
-							onPointerLeave={onPointerEventHandler}
-						>
-							<Icon
-								icon={Icon.icon.SETTINGS}
-								wrapperClassName={styles["radix-navigation-menu-trigger-icon"]}
-								size="tw-wh-6 sm:tw-wh-8"
-								color="tw-text-white"
-							/>
-						</RadixNavigationMenu.Trigger>
-						<RadixNavigationMenu.Content className="radix-navigation-menu-content">
-							<List className="tw-block tw-overflow-hidden tw-rounded-md tw-border dr-bg-color-surface-200 dr-border-color-surface-300">
-								<EnvironmentMenuItem />
-								<ReloadPageMenuItem />
-								<SignInMenuItem />
-								<SignOutMenuItem />
-							</List>
-						</RadixNavigationMenu.Content>
-					</RadixNavigationMenu.Item>
-				</RadixNavigationMenu.List>
-				<Block className="radix-viewport-position radix-viewport-position--rtl tw-w-56 tw-rounded-md">
-					<RadixNavigationMenu.Viewport className="radix-navigation-menu-viewport tw-w-full" />
-				</Block>
-			</RadixNavigationMenu.Root>
-		</Block>
+		<RadixNavigationMenu.Root
+			className="radix-navigation-menu-root tw-z-10"
+			delayDuration={0}
+		>
+			<RadixNavigationMenu.List className="radix-navigation-menu-list">
+				<RadixNavigationMenu.Item>
+					<RadixNavigationMenu.Trigger
+						className="radix-navigation-menu-trigger tw-p-2 tw-pr-0 tw-text-center"
+						onPointerMove={onPointerEventHandler}
+						onPointerLeave={onPointerEventHandler}
+					>
+						<Icon
+							icon={Icon.icon.SETTINGS}
+							wrapperClassName={styles["radix-navigation-menu-trigger-icon"]}
+							size="tw-wh-6 sm:tw-wh-8"
+							color="tw-text-white"
+						/>
+					</RadixNavigationMenu.Trigger>
+					<RadixNavigationMenu.Content className="radix-navigation-menu-content">
+						<List className="tw-block tw-overflow-hidden tw-rounded-md tw-border dr-bg-color-surface-200 dr-border-color-surface-300">
+							<EnvironmentMenuItem />
+							<ReloadPageMenuItem />
+							<SignInMenuItem />
+							<SignOutMenuItem />
+						</List>
+					</RadixNavigationMenu.Content>
+				</RadixNavigationMenu.Item>
+			</RadixNavigationMenu.List>
+			<Block className="radix-viewport-position radix-viewport-position--rtl tw-w-56 tw-rounded-md">
+				<RadixNavigationMenu.Viewport className="radix-navigation-menu-viewport tw-w-full" />
+			</Block>
+		</RadixNavigationMenu.Root>
 	);
 })(() => AuthService.isUserLoggedIn() || isPWA());
 
@@ -522,10 +526,53 @@ function GoToTopButton() {
 	return null;
 }
 
+function Flags() {
+	// --- STATES & REFS ---
+	const [showAnalyticsFlag, setShowAnalyticsFlag] = React.useState(false);
+	const [showAuthFlag, setShowAuthFlag] = React.useState(false);
+
+	// --- EFFECTS ---
+	useDidMount(() => {
+		setShowAnalyticsFlag(AnalyticsService.isAnalyticsDisabled());
+		setShowAuthFlag(AuthService.isUserLoggedIn());
+	});
+
+	return (
+		<Block className="tw-flex tw-gap-1 tw-px-1 tw-py-3">
+			{showAnalyticsFlag ? (
+				<Block className="tw-relative tw-flex tw-items-center tw-justify-center tw-rounded-full tw-border dr-bg-color-surface-200 dr-border-color-surface-300 tw-wh-6">
+					<Icon
+						icon={Icon.icon.CHART_BAR_SQUARE}
+						size={14}
+					/>
+					<Icon
+						icon={Icon.icon.CLOSE_SOLID}
+						size={12}
+						wrapperClassName="tw-absolute tw--top-1 tw--right-1 tw-text-red-700"
+					/>
+				</Block>
+			) : null}
+			{showAuthFlag ? (
+				<Block className="tw-relative tw-flex tw-items-center tw-justify-center tw-rounded-full tw-border dr-bg-color-surface-200 dr-border-color-surface-300 tw-wh-6">
+					<Icon
+						icon={Icon.icon.USER_CIRCLE}
+						size={14}
+					/>
+					<Icon
+						icon={Icon.icon.CHECK_BADGE}
+						size={12}
+						wrapperClassName="tw-absolute tw--top-1 tw--right-1 tw-text-green-700"
+					/>
+				</Block>
+			) : null}
+		</Block>
+	);
+}
+
 const WindowSize = withOnlyClientRender(function WindowSize() {
 	const [size, setSize] = React.useState([0, 0]);
 
-	React.useLayoutEffect(() => {
+	React.useEffect(() => {
 		const updateSize = () => {
 			setSize([window.innerWidth, window.innerHeight]);
 		};
