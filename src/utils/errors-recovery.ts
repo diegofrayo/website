@@ -11,6 +11,7 @@ export function recoverFromBreakingChanges() {
 		"Mon Oct 02 2023 15:29:15",
 		"Mon Oct 02 2023 16:30:15",
 		"Mon Oct 02 2023 16:59:15",
+		"Mon Oct 24 2023 07:04:15",
 	];
 	const lastBreakingChange = BREAKING_CHANGES.at(-1) as string;
 	const thereAreBreakingChanges = LS_BreakingChanges.get() !== lastBreakingChange;

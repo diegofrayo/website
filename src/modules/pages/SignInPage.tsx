@@ -40,7 +40,7 @@ function SignInPage() {
 				disableSEO: true,
 			}}
 		>
-			<MainLayout>
+			<MainLayout title="Sign in">
 				<Form onSubmit={onSubmitHandler}>
 					<Input
 						variant={Input.variant.STYLED}
@@ -65,9 +65,9 @@ function SignInPage() {
 					/>
 					<Space size={2} />
 					<Button
-						variant={Button.variant.SIMPLE}
+						variant={Button.variant.STYLED}
 						type="submit"
-						className="tw-block tw-w-full tw-rounded-md tw-p-2 tw-text-center tw-font-bold tw-uppercase dr-text-color-surface-100 dr-bg-color-surface-600"
+						className="tw-block tw-w-full"
 						disabled={isLoading}
 					>
 						{isLoading ? "Loading..." : "Sign in"}
@@ -85,7 +85,7 @@ export default withAuthRulesPage(SignInPage, { requireNoAuth: true });
 function Form({ children, onSubmit }: DR.DOM.HTMLElementAttributes["form"]) {
 	return (
 		<form
-			className="tw-mx-auto tw-w-64 tw-max-w-full"
+			className="tw-mx-auto tw-w-96 tw-max-w-full"
 			onSubmit={onSubmit}
 		>
 			{children}

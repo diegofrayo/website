@@ -35,7 +35,10 @@ export function useRouting(): T_UseRoutingReturn {
 			return true;
 		}
 
-		if (pathname.startsWith(ROUTES.BLOG) && pathnameParam.startsWith(ROUTES.BLOG)) {
+		if (
+			(pathname.startsWith(ROUTES.BLOG) && pathnameParam.startsWith(ROUTES.BLOG)) ||
+			(pathname.startsWith(ROUTES.APPS) && pathnameParam.startsWith(ROUTES.APPS))
+		) {
 			return true;
 		}
 
@@ -45,12 +48,12 @@ export function useRouting(): T_UseRoutingReturn {
 	return { pathname, asPath, isCurrentPathActive };
 }
 
-// --- UTILITIES ---
+// --- UTILS ---
 
 const LS_LastPage = LocalStorageManager.createItem({
 	key: "DR_LAST_PAGE",
 	value: "",
-	saveWhenCreating: true,
+	saveWhenCreating: false,
 	readInitialValueFromStorage: true,
 });
 
@@ -76,16 +79,7 @@ export function initPWARoutingConfig(router: NextRouter): () => void {
 	}
 
 	if (lastPageVisited && lastPageVisited !== window.location.pathname) {
-		LS_LastPage.remove();
-
-		const BLACKLIST = [""];
-		const isCurrentPageInBlacklist =
-			BLACKLIST.find((item) => window.location.pathname.includes(item)) !== undefined;
-
-		if (!isCurrentPageInBlacklist) {
-			window.location.href = lastPageVisited;
-		}
-
+		window.location.href = lastPageVisited;
 		return () => undefined;
 	}
 

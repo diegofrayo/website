@@ -20,6 +20,7 @@ class AnalyticsServiceClass {
 	private LS_AnalyticsDisabled = LocalStorageManager.createItem({
 		key: "DR_ANALYTICS_DISABLED",
 		value: false,
+		saveWhenCreating: false,
 		readInitialValueFromStorage: true,
 	});
 

@@ -88,7 +88,7 @@ function DencryptPage() {
 			}}
 		>
 			<MainLayout title="Dencrypt">
-				<Block>
+				<Block className="tw-mx-auto tw-w-96 tw-max-w-full">
 					<Input
 						ref={inputRef}
 						variant={Input.variant.STYLED}
@@ -126,10 +126,10 @@ function DencryptPage() {
 						/>
 
 						<Input.Label>Output</Input.Label>
-						<output className="tw-mb-2 tw-block tw-min-h-[40px] tw-w-full tw-border tw-p-3 dr-border-color-surface-300">
+						<output className="tw-block tw-min-h-[40px] tw-w-full tw-whitespace-break-spaces tw-break-all tw-border tw-p-3 tw-font-mono tw-text-sm dr-border-color-surface-300">
 							{output}
 						</output>
-						<Block className="tw-flex tw-justify-end tw-gap-2">
+						<Block className="tw-mt-2 tw-flex tw-justify-end tw-gap-2">
 							<Button
 								variant={Button.variant.STYLED}
 								onClick={handleClearClick}

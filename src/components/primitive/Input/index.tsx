@@ -34,6 +34,7 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
 		componentProps: { label = "", customErrorMessage = "" } = {},
 		containerProps = {},
 		labelProps = {},
+		onChange,
 		...rest
 	}: T_InputProps,
 	forwardedRef,
@@ -48,6 +49,8 @@ const Input = React.forwardRef<HTMLInputElement, T_InputProps>(function Input(
 		setTouched(true);
 		setErrorMessage(event.currentTarget.validationMessage);
 		setShowErrorMessage(event.currentTarget.validity.valid === false);
+
+		onChange?.(event);
 	}
 
 	function onInvalidHandler(event: DR.React.Events.OnChangeEvent<HTMLInputElement>) {

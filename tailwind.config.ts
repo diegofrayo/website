@@ -43,6 +43,7 @@ const config: Config = {
 				"12": "12px",
 			},
 			fontSize: {
+				xxs: "0.5rem",
 				"7xl": "4.5rem",
 				"8xl": "5.25rem",
 				"9xl": "6rem",

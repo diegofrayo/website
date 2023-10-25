@@ -37,6 +37,7 @@ import {
 	LinkedinMonoIcon,
 	SpotifyMonoIcon,
 	TwitterMonoIcon,
+	WhatsAppMonoIcon,
 } from "./social-icons";
 
 const ICONS = {
@@ -137,10 +138,23 @@ const ICONS = {
 			alt: "Twitter",
 		},
 	},
+	WEBSITE: {
+		icon: "/assets/images/icons/website.svg",
+		defaultProps: {
+			alt: "Website",
+		},
+	},
 	WHATSAPP: {
 		icon: "/assets/images/icons/whatsapp.svg",
 		defaultProps: {
 			alt: "WhatsApp",
+		},
+	},
+	WHATSAPP_MONO: {
+		icon: WhatsAppMonoIcon,
+		defaultProps: {
+			className: "",
+			color: "",
 		},
 	},
 	YOUTUBE: {

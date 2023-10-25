@@ -109,7 +109,7 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 								>
 									<Icon
 										icon={Icon.icon.LINKEDIN}
-										size={30}
+										size={32}
 									/>
 								</Link>
 								{data.contactInfo.websites.map((website) => {
@@ -120,20 +120,18 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 											key={generateSlug(website.name)}
 											variant={Link.variant.SIMPLE}
 											href={website.value}
-											className="tw-mx-2 tw-inline-block"
+											className="tw-mx-2 tw-inline-block tw-leading-0"
 											isExternalLink
 										>
 											{isPersonalWebsite ? (
 												<Icon
-													icon={Icon.icon.LINK}
-													size={20}
-													wrapperClassName="tw-rounded-full tw-bg-black tw-p-1.5 tw-text-white"
+													icon={Icon.icon.WEBSITE}
+													size={36}
 												/>
 											) : (
 												<Icon
 													icon={Icon.icon.GITHUB}
-													size={28}
-													wrapperClassName="tw-border tw-rounded-full tw-border-black"
+													size={32}
 												/>
 											)}
 										</Link>

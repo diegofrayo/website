@@ -1,5 +1,5 @@
 .dr-input--styled :global(input) {
-	@apply dr-bg-color-surface-200;
+	@apply tw-px-2 tw-text-base dr-bg-color-surface-200;
 	-webkit-appearance: none;
 	border: 1px solid var(--dr-color-surface-300);
 	height: 37px;

@@ -160,7 +160,6 @@ const ToolsMenu = renderIf(function ToolsMenu() {
 						</RadixNavigationMenu.Trigger>
 						<RadixNavigationMenu.Content className="radix-navigation-menu-content">
 							<List className="tw-block tw-overflow-hidden tw-rounded-md tw-border dr-bg-color-surface-200 dr-border-color-surface-300">
-								<AppsMenuItem />
 								<EnvironmentMenuItem />
 								<ReloadPageMenuItem />
 								<SignInMenuItem />
@@ -169,7 +168,7 @@ const ToolsMenu = renderIf(function ToolsMenu() {
 						</RadixNavigationMenu.Content>
 					</RadixNavigationMenu.Item>
 				</RadixNavigationMenu.List>
-				<Block className="radix-viewport-position radix-viewport-position--rtl tw-w-52 tw-rounded-md">
+				<Block className="radix-viewport-position radix-viewport-position--rtl tw-w-56 tw-rounded-md">
 					<RadixNavigationMenu.Viewport className="radix-navigation-menu-viewport tw-w-full" />
 				</Block>
 			</RadixNavigationMenu.Root>
@@ -246,16 +245,6 @@ function EnvironmentMenuItem() {
 		/>
 	);
 }
-
-const AppsMenuItem = withAuth(function AppsMenuItem() {
-	return (
-		<ToolsMenuItem
-			url={ROUTES.APPS}
-			title="Go to Apps page"
-			icon={Icon.icon.COMMAND_LINE}
-		/>
-	);
-});
 
 const SignInMenuItem = renderIf(function SignInMenuItem() {
 	return (
@@ -393,6 +382,7 @@ function NavigationMenuItems() {
 			>
 				Resume
 			</NavigationMenuItem>
+			<AppsNavigationMenuItem />
 		</List>
 	);
 }
@@ -433,6 +423,17 @@ const NavigationMenuItem = React.forwardRef<HTMLAnchorElement, T_NavigationMenuI
 		);
 	},
 );
+
+const AppsNavigationMenuItem = withAuth(function AppsNavigationMenuItem() {
+	return (
+		<NavigationMenuItem
+			href={ROUTES.APPS}
+			icon={Icon.icon.COMMAND_LINE}
+		>
+			Apps
+		</NavigationMenuItem>
+	);
+});
 
 function Footer() {
 	return (

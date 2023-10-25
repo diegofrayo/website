@@ -1,0 +1,13 @@
+.dr-select--styled :global(select) {
+	@apply tw-px-2 tw-text-base dr-bg-color-surface-200;
+	border: 1px solid var(--dr-color-surface-300);
+	height: 37px;
+	width: 100%;
+}
+
+.dr-select--styled :global(:is(select:focus, select:focus-within)) {
+	border-radius: 0;
+	outline-color: var(--dr-color-surface-600);
+	outline-style: solid;
+	outline-width: 1px;
+}

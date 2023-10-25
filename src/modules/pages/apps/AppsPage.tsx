@@ -13,7 +13,7 @@ function AppsPage() {
 			}}
 		>
 			<MainLayout title="Apps">
-				<Block className="tw-flex tw-flex-row tw-justify-center">
+				<Block className="tw-flex tw-flex-row tw-flex-wrap tw-justify-center tw-gap-4">
 					{APPS.map((app) => {
 						return (
 							<Block
@@ -50,5 +50,10 @@ const APPS = [
 		id: "dencrypt",
 		icon: Icon.icon.KEY,
 		name: "dencrypt",
+	},
+	{
+		id: "whatsapp",
+		icon: Icon.icon.WHATSAPP_MONO,
+		name: "whatsapp",
 	},
 ];

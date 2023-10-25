@@ -13,7 +13,12 @@ import { ROUTES, redirect } from "../routing";
 class AuthServiceClass {
 	#isUserLoggedIn = false;
 
-	#LS_AUTH = LocalStorageManager.createItem({ key: "DR_AUTH", value: false });
+	#LS_AUTH = LocalStorageManager.createItem({
+		key: "DR_AUTH",
+		value: false,
+		saveWhenCreating: false,
+		readInitialValueFromStorage: true,
+	});
 
 	constructor() {
 		if (isBrowser()) {
