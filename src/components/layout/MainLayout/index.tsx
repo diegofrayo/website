@@ -25,7 +25,7 @@ import EnvVars from "~/modules/env-vars";
 import { logAndReportError } from "~/modules/logging";
 import { ROUTES, redirect, useRouting } from "~/modules/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { getErrorMessage } from "@diegofrayo/utils/misc";
+import { delay, getErrorMessage } from "@diegofrayo/utils/misc";
 import type DR from "@diegofrayo/types";
 import {
 	deletePWACache,
@@ -298,6 +298,7 @@ const ISRMenuItem = withAuth(function ISRMenuItem() {
 				});
 
 				await deletePWACache();
+				await delay(2000);
 				window.location.reload();
 			}
 		} catch (error) {

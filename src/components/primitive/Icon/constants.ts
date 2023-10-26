@@ -6,6 +6,8 @@ import {
 	ArrowUpIcon,
 	Bars4Icon,
 	BeakerIcon,
+	BriefcaseIcon,
+	BuildingStorefrontIcon,
 	CalendarIcon,
 	ChartBarSquareIcon,
 	ChevronDoubleDownIcon,
@@ -126,6 +128,13 @@ const ICONS = {
 			alt: "Netflix",
 		},
 	},
+	RESTAURANT_MENU: {
+		icon: "/assets/images/icons/restaurant-menu.png",
+		defaultProps: {
+			className: "",
+			alt: "Restaurant menu",
+		},
+	},
 	SOCCER: {
 		icon: "/assets/images/icons/soccer.svg",
 		defaultProps: {
@@ -196,6 +205,14 @@ const ICONS = {
 		icon: BeakerIcon,
 		defaultProps: {
 			className: "",
+			color: "",
+		},
+	},
+	BRIEFCASE: {
+		icon: BriefcaseIcon,
+		defaultProps: {
+			className: "",
+			color: "",
 		},
 	},
 	CALENDAR: {
@@ -418,6 +435,13 @@ const ICONS = {
 			color: "",
 		},
 	},
+	STORE: {
+		icon: BuildingStorefrontIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
 	TOOL: {
 		icon: WrenchIcon,
 		defaultProps: {
@@ -474,12 +498,6 @@ export const ICONS = {
 	},
 	BOOK_OPEN: {
 		icon: BookOpenIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
-	BRIEFCASE: {
-		icon: BriefcaseIcon,
 		defaultProps: {
 			className: "",
 		},

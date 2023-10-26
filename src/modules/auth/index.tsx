@@ -2,11 +2,12 @@ import * as React from "react";
 
 import { renderIf } from "~/hocs";
 import { useDidMount } from "~/hooks";
+import { isProductionEnvironment } from "~/utils/app";
 import { LocalStorageManager } from "@diegofrayo/storage";
-import { isBrowser } from "@diegofrayo/utils/misc";
 import type DR from "@diegofrayo/types";
+import { isBrowser } from "@diegofrayo/utils/misc";
 
-import { ROUTES, redirect } from "../routing";
+import { goBack } from "../routing";
 
 // --- SERVICE ---
 
@@ -55,15 +56,18 @@ export function withAuth<G_ComponentProps extends object>(
 	return renderIf(Component)(() => AuthService.isUserLoggedIn());
 }
 
-type T_Options =
-	| {
-			requireAuth: true;
-			requireNoAuth?: never;
-	  }
-	| {
-			requireNoAuth: true;
-			requireAuth?: never;
-	  };
+interface I_OptionsRequireAuth {
+	requirePin?: boolean;
+	requireAuth: true;
+	requireNoAuth?: never;
+}
+interface I_OptionsRequireNoAuth {
+	requirePin?: boolean;
+	requireNoAuth: true;
+	requireAuth?: never;
+}
+
+type T_Options = I_OptionsRequireAuth | I_OptionsRequireNoAuth;
 
 export function withAuthRulesPage<G_ComponentProps extends object>(
 	Component: DR.React.FunctionComponent<G_ComponentProps>,
@@ -76,19 +80,30 @@ export function withAuthRulesPage<G_ComponentProps extends object>(
 		// --- EFFECTS ---
 		useDidMount(() => {
 			if ("requireAuth" in options) {
-				redirectUser(AuthService.isUserLoggedIn() === false);
+				redirectUser(AuthService.isUserLoggedIn() === false || checkSecurityPinConfig());
 			} else {
-				redirectUser(AuthService.isUserLoggedIn());
+				redirectUser(AuthService.isUserLoggedIn() || checkSecurityPinConfig());
 			}
 		});
 
 		// --- UTILS ---
 		function redirectUser(hasToRedirect: boolean): void {
 			if (hasToRedirect) {
-				redirect(ROUTES.HOME);
+				goBack();
 			} else {
 				setAllowRender(true);
 			}
+		}
+
+		function checkSecurityPinConfig() {
+			if (options.requirePin === true && isProductionEnvironment()) {
+				const SECURITY_PIN = "1256";
+				const pin = window.prompt("Type the security pin");
+
+				return pin !== SECURITY_PIN;
+			}
+
+			return false;
 		}
 
 		if (allowRender) {

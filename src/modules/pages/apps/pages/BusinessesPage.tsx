@@ -16,18 +16,18 @@ import { CopyToClipboardPopover } from "~/components/shared";
 import { withOnlyClientRender } from "~/hocs";
 import { useDidMount, useEnhancedState } from "~/hooks";
 import { withAuthRulesPage } from "~/modules/auth";
-import { isContact, type T_Contact, type T_ContactsData } from "@diegofrayo/types/contacts";
+import { isBusiness, type T_Business, type T_BusinessesData } from "@diegofrayo/types/businesses";
 import { isMobileDevice } from "@diegofrayo/utils/browser";
 import { throwError } from "@diegofrayo/utils/misc";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
 
-export type T_ContactsPageProps = {
-	data: T_ContactsData;
+export type T_BusinessesPageProps = {
+	data: T_BusinessesData;
 };
 
-function ContactsPage({ data: contacts }: T_ContactsPageProps) {
+function BusinessesPage({ data: businesses }: T_BusinessesPageProps) {
 	// --- HOOKS ---
 	const [isAllCollapsiblesOpened, , toggleIsAllCollapsiblesOpened] = useEnhancedState(false);
 
@@ -35,7 +35,7 @@ function ContactsPage({ data: contacts }: T_ContactsPageProps) {
 	const [whatsAppLinksMode, setWhatsAppLinksMode] = React.useState<T_WhatsAppLinksMode>("web");
 
 	// --- VARS ---
-	const PAGE_TITLE = "Contactos";
+	const PAGE_TITLE = "Negocios";
 
 	// --- EFFECTS ---
 	useDidMount(() => {
@@ -104,8 +104,8 @@ function ContactsPage({ data: contacts }: T_ContactsPageProps) {
 
 				<Space size={4} />
 
-				<Contacts
-					contacts={contacts}
+				<Businesses
+					businesses={businesses}
 					whatsAppLinksMode={whatsAppLinksMode}
 					isAllCollapsiblesOpened={isAllCollapsiblesOpened}
 				/>
@@ -114,111 +114,111 @@ function ContactsPage({ data: contacts }: T_ContactsPageProps) {
 	);
 }
 
-export default withAuthRulesPage(withOnlyClientRender(ContactsPage), {
+export default withAuthRulesPage(withOnlyClientRender(BusinessesPage), {
 	requireAuth: true,
 	requirePin: true,
 });
 
 // --- COMPONENTS ---
 
-type T_Contacts = {
-	contacts: T_ContactsPageProps["data"];
+type T_Businesses = {
+	businesses: T_BusinessesPageProps["data"];
 	whatsAppLinksMode: T_WhatsAppLinksMode;
 	isAllCollapsiblesOpened: boolean;
 };
 
-function Contacts({ contacts, whatsAppLinksMode, isAllCollapsiblesOpened }: T_Contacts) {
+function Businesses({ businesses, whatsAppLinksMode, isAllCollapsiblesOpened }: T_Businesses) {
 	return (
-		<CategoryContacts
-			categoryName="Contactos"
-			contacts={contacts}
+		<CategoryBusinesses
+			categoryName="Negocios"
+			businesses={businesses}
 			whatsAppLinksMode={whatsAppLinksMode}
 			isAllCollapsiblesOpened={isAllCollapsiblesOpened}
 		/>
 	);
 }
 
-type T_CategoryContactsProps = {
+type T_CategoryBusinessesProps = {
 	categoryName: string;
-	contacts: unknown;
+	businesses: unknown;
 	whatsAppLinksMode: T_WhatsAppLinksMode;
 	isAllCollapsiblesOpened: boolean;
 };
 
-function CategoryContacts({
+function CategoryBusinesses({
 	categoryName,
-	contacts,
+	businesses,
 	whatsAppLinksMode,
 	isAllCollapsiblesOpened,
-}: T_CategoryContactsProps) {
+}: T_CategoryBusinessesProps) {
 	return (
 		<Block
 			className="tw-mt-4"
 			style={{ breakBefore: "left", pageBreakBefore: "left" }}
 		>
 			<Collapsible
-				title={`${categoryName} [${countContacts(contacts)}]`}
+				title={`${categoryName} [${countBusinesses(businesses)}]`}
 				opened={isAllCollapsiblesOpened}
 			>
-				{v.isArray<T_Contact>(contacts) ? (
+				{v.isArray<T_Business>(businesses) ? (
 					<Block className="tw-flex tw-flex-wrap tw-pt-4">
-						{contacts.map((contact) => {
-							const contactPhone = v.isArray(contact.phone)
-								? contact.phone.map((i) => i.value)
-								: [contact.phone];
+						{businesses.map((business) => {
+							const businessPhone = v.isArray(business.phone)
+								? business.phone.map((i) => i.value)
+								: [business.phone];
 
 							return (
 								<Block
-									key={generateSlug(categoryName + contact.name)}
+									key={generateSlug(categoryName + business.name)}
 									className="tw-mb-8 tw-w-full tw-pr-4 sm:tw-w-1/2"
 									style={{ breakInside: "avoid", pageBreakInside: "avoid" }}
 								>
-									<Text className="tw-mb-1 tw-font-bold tw-leading-tight">{contact.name}</Text>
+									<Text className="tw-mb-1 tw-font-bold tw-leading-tight">{business.name}</Text>
 									<Block>
-										{contactPhone.map((phone) => {
+										{businessPhone.map((phone) => {
 											return (
-												<ContactPhone
-													key={generateSlug(contact.name + phone)}
+												<BusinessPhone
+													key={generateSlug(business.name + phone)}
 													phone={phone}
-													country={contact.country}
+													country={business.country}
 												/>
 											);
 										})}
 									</Block>
-									<ContactLinks
-										contact={contact}
+									<BusinessLinks
+										business={business}
 										whatsAppLinksMode={whatsAppLinksMode}
 									/>
 								</Block>
 							);
 						})}
 					</Block>
-				) : v.isObject(contacts) ? (
-					Object.entries(contacts).map(([subCategoryName, subCategoryContacts], index) => {
+				) : v.isObject(businesses) ? (
+					Object.entries(businesses).map(([subCategoryName, subCategoryBusinesses], index) => {
 						return (
-							<CategoryContacts
-								key={generateSlug(`CategoryContacts-${subCategoryName}-${index}`)}
+							<CategoryBusinesses
+								key={generateSlug(`CategoryBusinesses-${subCategoryName}-${index}`)}
 								categoryName={parseCategoryName(subCategoryName)}
-								contacts={subCategoryContacts}
+								businesses={subCategoryBusinesses}
 								whatsAppLinksMode={whatsAppLinksMode}
 								isAllCollapsiblesOpened={isAllCollapsiblesOpened}
 							/>
 						);
 					})
 				) : (
-					throwError(`Invalid contacts prop: "${typeof contacts}"`)
+					throwError(`Invalid businesses prop: "${typeof businesses}"`)
 				)}
 			</Collapsible>
 		</Block>
 	);
 }
 
-type T_ContactPhoneProps = {
+type T_BusinessPhoneProps = {
 	phone: string;
-	country: T_Contact["country"];
+	country: T_Business["country"];
 };
 
-function ContactPhone({ phone, country }: T_ContactPhoneProps) {
+function BusinessPhone({ phone, country }: T_BusinessPhoneProps) {
 	// --- VARS ---
 	const COUNTRIES_EMOJIS = {
 		AR: "🇦🇷",
@@ -264,18 +264,18 @@ function ContactPhone({ phone, country }: T_ContactPhoneProps) {
 	);
 }
 
-function ContactLinks({
-	contact,
+function BusinessLinks({
+	business,
 	whatsAppLinksMode,
 }: {
-	contact: T_Contact;
+	business: T_Business;
 	whatsAppLinksMode: T_WhatsAppLinksMode;
 }) {
 	return (
 		<Block className="tw-flex tw-flex-wrap tw-gap-x-3 tw-gap-y-1">
-			{v.isArray(contact.phone) ? (
+			{v.isArray(business.phone) ? (
 				<Block className="tw-flex tw-w-full tw-gap-3">
-					{contact.phone.map((item) => {
+					{business.phone.map((item) => {
 						return (
 							<WhastAppButton
 								key={generateSlug(item.label)}
@@ -293,9 +293,9 @@ function ContactLinks({
 						);
 					})}
 				</Block>
-			) : v.isNotEmptyString(contact.phone) ? (
+			) : v.isNotEmptyString(business.phone) ? (
 				<WhastAppButton
-					phone={contact.phone}
+					phone={business.phone}
 					whatsAppLinksMode={whatsAppLinksMode}
 				>
 					<Icon
@@ -305,10 +305,10 @@ function ContactLinks({
 				</WhastAppButton>
 			) : null}
 
-			{v.isNotEmptyString(contact.instagram) ? (
+			{v.isNotEmptyString(business.instagram) ? (
 				<Link
 					variant={Link.variant.SIMPLE}
-					href={`https://instagram.com/${contact.instagram}`}
+					href={`https://instagram.com/${business.instagram}`}
 					className="tw-inline-block"
 					isExternalLink
 				>
@@ -319,14 +319,14 @@ function ContactLinks({
 				</Link>
 			) : null}
 
-			{v.isArray(contact.phone) ? (
+			{v.isArray(business.phone) ? (
 				<Block className="tw-flex tw-w-full tw-gap-3">
-					{contact.phone.map((item) => {
+					{business.phone.map((item) => {
 						return (
 							<PhoneButton
 								key={generateSlug(item.label)}
 								phone={item.value}
-								country={contact.country}
+								country={business.country}
 							>
 								<Icon
 									icon={Icon.icon.PHONE_SOLID}
@@ -339,10 +339,10 @@ function ContactLinks({
 						);
 					})}
 				</Block>
-			) : v.isNotEmptyString(contact.phone) ? (
+			) : v.isNotEmptyString(business.phone) ? (
 				<PhoneButton
-					phone={contact.phone}
-					country={contact.country}
+					phone={business.phone}
+					country={business.country}
 				>
 					<Icon
 						icon={Icon.icon.PHONE_SOLID}
@@ -352,37 +352,30 @@ function ContactLinks({
 				</PhoneButton>
 			) : null}
 
-			{v.isArray(contact.phone) ? (
-				<Block className="tw-flex tw-w-full tw-gap-3">
-					{contact.phone.map((item) => {
-						return (
-							<SMSButton
-								key={generateSlug(item.label)}
-								phone={item.value}
-								country={contact.country}
-							>
-								<Icon
-									icon={Icon.icon.CHAT_SOLID}
-									color="tw-text-red-500"
-								/>
-								<InlineText className="tw-mx-1 tw-text-sm tw-font-bold tw-capitalize tw-text-red-500">
-									{item.label}
-								</InlineText>
-							</SMSButton>
-						);
-					})}
-				</Block>
-			) : v.isNotEmptyString(contact.phone) ? (
-				<SMSButton
-					phone={contact.phone}
-					country={contact.country}
+			{v.isNotEmptyString(business.maps) ? (
+				<Link
+					variant={Link.variant.SIMPLE}
+					href={business.maps}
+					isExternalLink
 				>
 					<Icon
-						icon={Icon.icon.CHAT_SOLID}
+						icon={Icon.icon.MAPS}
 						size={24}
-						color="tw-text-red-500"
 					/>
-				</SMSButton>
+				</Link>
+			) : null}
+
+			{v.isNotEmptyString(business.menu) ? (
+				<Link
+					variant={Link.variant.SIMPLE}
+					href={business.menu}
+					isExternalLink
+				>
+					<Icon
+						icon={Icon.icon.RESTAURANT_MENU}
+						size={16}
+					/>
+				</Link>
 			) : null}
 		</Block>
 	);
@@ -428,7 +421,7 @@ function WhastAppButton({ children, phone, whatsAppLinksMode }: T_WhastAppButton
 type T_PhoneButtonProps = {
 	children: DR.React.Children;
 	phone: string;
-	country: T_Contact["country"];
+	country: T_Business["country"];
 };
 
 function PhoneButton({ children, phone, country }: T_PhoneButtonProps) {
@@ -445,33 +438,6 @@ function PhoneButton({ children, phone, country }: T_PhoneButtonProps) {
 			<Link
 				variant={Link.variant.SIMPLE}
 				href={generatePhoneLink()}
-				isExternalLink
-			>
-				{children}
-			</Link>
-		);
-	}
-
-	return null;
-}
-
-function SMSButton({ children, phone, country }: T_PhoneButtonProps) {
-	// --- VARS ---
-	const phoneWithoutCountryCode = phone.split(" ").slice(1).join("").trim();
-	const isCellphoneNumber =
-		phoneWithoutCountryCode.length === 10 && phoneWithoutCountryCode.startsWith("3");
-	const isPhoneNumberFromColombia = country === "CO";
-
-	// --- UTILS ---
-	function generateSMSLink(): string {
-		return `sms:${phoneWithoutCountryCode}&body=Hola!`;
-	}
-
-	if (isPhoneNumberFromColombia && isCellphoneNumber) {
-		return (
-			<Link
-				variant={Link.variant.SIMPLE}
-				href={generateSMSLink()}
 				isExternalLink
 			>
 				{children}
@@ -505,8 +471,8 @@ function formatPhoneNumber(phone: string, phoneCountryCode: string) {
 	return phone;
 }
 
-function countContacts(input: unknown): number {
-	if (isContact(input)) {
+function countBusinesses(input: unknown): number {
+	if (isBusiness(input)) {
 		return 1;
 	}
 
@@ -515,12 +481,12 @@ function countContacts(input: unknown): number {
 	}
 
 	if (v.isObject(input)) {
-		return Object.values(input).reduce((result: number, categoryContacts) => {
-			return result + countContacts(categoryContacts);
+		return Object.values(input).reduce((result: number, categoryBusinesses) => {
+			return result + countBusinesses(categoryBusinesses);
 		}, 0);
 	}
 
-	throw new Error(`Error counting contacts => Invalid input type: "${typeof input}"`);
+	throw new Error(`Error counting businesses => Invalid input type: "${typeof input}"`);
 }
 
 function parseCategoryName(input: string) {

@@ -149,7 +149,7 @@ function DencryptPage() {
 	);
 }
 
-export default withAuthRulesPage(DencryptPage, { requireAuth: true });
+export default withAuthRulesPage(DencryptPage, { requireAuth: true, requirePin: true });
 
 // --- API ---
 

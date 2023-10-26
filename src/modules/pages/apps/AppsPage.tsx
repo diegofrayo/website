@@ -52,6 +52,11 @@ const APPS = [
 		name: "contacts",
 	},
 	{
+		id: "businesses",
+		icon: Icon.icon.STORE,
+		name: "businesses",
+	},
+	{
 		id: "dencrypt",
 		icon: Icon.icon.KEY,
 		name: "dencrypt",

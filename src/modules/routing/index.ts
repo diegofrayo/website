@@ -66,9 +66,9 @@ export function redirect(path: string): void {
 }
 
 export function goBack(): void {
-	const urlItems = window.location.pathname.split("/");
+	const urlItems = window.location.pathname.split("/").filter(Boolean);
 
-	redirect(`${urlItems.slice(0, urlItems.length - 1).join("/")}/`);
+	redirect(`/${urlItems.slice(0, urlItems.length - 1).join("/")}`);
 }
 
 export function initPWARoutingConfig(router: NextRouter): () => void {
