@@ -77,7 +77,7 @@ function WhatsAppPage() {
 					<Block>
 						<Title
 							is="h2"
-							variant={Title.variant.PRIMARY}
+							variant={Title.variant.STYLED}
 							className="tw-mb-3"
 						>
 							Config
@@ -129,7 +129,7 @@ function WhatsAppPage() {
 
 						<Title
 							is="h2"
-							variant={Title.variant.PRIMARY}
+							variant={Title.variant.STYLED}
 							className="tw-mb-3"
 						>
 							Output

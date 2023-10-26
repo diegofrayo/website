@@ -50,7 +50,7 @@ export const MDXComponents = {
 		return (
 			<Link
 				href={href || ""}
-				variant={Link.variant.PRIMARY}
+				variant={Link.variant.STYLED}
 				isExternalLink
 			>
 				{children}
@@ -103,7 +103,7 @@ function createTitleComponent(Tag: "h1" | "h2" | "h3" | "h4", props: Omit<T_Titl
 			<Title
 				{...props}
 				is={Tag}
-				variant={Title.variant.PRIMARY}
+				variant={Title.variant.STYLED}
 			>
 				{children}
 			</Title>

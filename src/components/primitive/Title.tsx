@@ -7,7 +7,7 @@ import type DR from "@diegofrayo/types";
 
 // --- PROPS & TYPES ---
 
-const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "PRIMARY"]);
+const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "STYLED"]);
 type T_Variant = keyof typeof VARIANTS;
 
 const SIZES = mirror(["MD", "LG", "XL"]);
@@ -59,7 +59,7 @@ const styles = cva("", {
 		variant: {
 			[VARIANTS.UNSTYLED]: "",
 			[VARIANTS.SIMPLE]: "dr-font-titles",
-			[VARIANTS.PRIMARY]: "tw-text-white dr-font-titles",
+			[VARIANTS.STYLED]: "tw-text-white dr-font-titles",
 		},
 		size: {
 			[SIZES.MD]: "tw-text-2xl",
@@ -77,32 +77,32 @@ const styles = cva("", {
 	},
 	compoundVariants: [
 		{
-			variant: VARIANTS.PRIMARY,
+			variant: VARIANTS.STYLED,
 			is: ELEMENTS.h1,
 			className: "tw-text-4xl",
 		},
 		{
-			variant: VARIANTS.PRIMARY,
+			variant: VARIANTS.STYLED,
 			is: ELEMENTS.h2,
 			className: "tw-text-3xl",
 		},
 		{
-			variant: VARIANTS.PRIMARY,
+			variant: VARIANTS.STYLED,
 			is: ELEMENTS.h3,
 			className: "tw-text-2xl",
 		},
 		{
-			variant: VARIANTS.PRIMARY,
+			variant: VARIANTS.STYLED,
 			is: ELEMENTS.h4,
 			className: "tw-text-xl",
 		},
 		{
-			variant: VARIANTS.PRIMARY,
+			variant: VARIANTS.STYLED,
 			is: ELEMENTS.h5,
 			className: "tw-text-lg",
 		},
 		{
-			variant: VARIANTS.PRIMARY,
+			variant: VARIANTS.STYLED,
 			is: ELEMENTS.h6,
 			className: "tw-text-base",
 		},

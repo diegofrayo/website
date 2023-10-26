@@ -8,7 +8,7 @@ import type DR from "@diegofrayo/types";
 
 // --- PROPS & TYPES ---
 
-const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "PRIMARY"]);
+const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "STYLED"]);
 type T_Variant = keyof typeof VARIANTS;
 
 type T_AnchorHtmlAttributes = DR.DOM.HTMLElementAttributes["a"];
@@ -83,7 +83,7 @@ const styles = cva("", {
 		variant: {
 			[VARIANTS.UNSTYLED]: "",
 			[VARIANTS.SIMPLE]: "dr-transition-opacity",
-			[VARIANTS.PRIMARY]:
+			[VARIANTS.STYLED]:
 				"tw-font-bold tw-underline dr-transition-opacity dr-text-color-primary-100",
 		},
 	},

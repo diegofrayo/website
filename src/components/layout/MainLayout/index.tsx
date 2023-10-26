@@ -13,21 +13,21 @@ import {
 	Text,
 	Title,
 } from "~/components/primitive";
+import { type T_IconName } from "~/components/primitive/Icon";
 import { TypingTextEffect } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/metadata.json";
 import { renderIf, withOnlyClientRender } from "~/hocs";
 import { useDidMount, useOnWindowStopScroll, useToggleBodyScroll } from "~/hooks";
+import AnalyticsService from "~/modules/analytics";
 import { AuthService, withAuth } from "~/modules/auth";
 import EnvVars from "~/modules/env-vars";
 import { ROUTES, redirect, useRouting } from "~/modules/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { generateSlug } from "@diegofrayo/utils/strings";
-import { getScrollPosition, isPWA, setScrollPosition } from "@diegofrayo/utils/browser";
-import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
-import { type T_IconName } from "~/components/primitive/Icon";
+import { getScrollPosition, isPWA, setScrollPosition } from "@diegofrayo/utils/browser";
+import { generateSlug } from "@diegofrayo/utils/strings";
+import v from "@diegofrayo/v";
 
-import AnalyticsService from "~/modules/analytics";
 import styles from "./styles.module.css";
 
 type T_MainLayoutProps = {
@@ -36,6 +36,21 @@ type T_MainLayoutProps = {
 };
 
 function MainLayout({ title, children }: T_MainLayoutProps) {
+	// --- HOOKS ---
+	const { pathname } = useRouting();
+
+	// --- VARS ---
+	const parentUrl = getParentURL();
+
+	// --- UTILS ---
+	function getParentURL() {
+		if (pathname === "/") return "";
+
+		const urlParts = pathname.split("/");
+
+		return `${urlParts.slice(0, urlParts.length - 1).join("/")}/`;
+	}
+
 	return (
 		<Block is="main">
 			<Block className="tw-relative tw-mx-auto tw-min-h-dv-screen tw-max-w-screen-md tw-px-6 tw-py-12 dr-bg-color-surface-100 print:tw-bg-transparent">
@@ -78,6 +93,17 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 				<Block>
 					{v.isNotEmptyString(title) ? (
 						<Block className="tw-text-center print:tw-hidden">
+							{v.isNotEmptyString(parentUrl) ? (
+								<Block>
+									<Link
+										variant={Link.variant.SIMPLE}
+										href={parentUrl}
+										className="tw-mb-4 tw-inline-block tw-text-base tw-text-white tw-underline"
+									>
+										{parentUrl}
+									</Link>
+								</Block>
+							) : null}
 							<Title
 								is="h1"
 								variant={Title.variant.SIMPLE}

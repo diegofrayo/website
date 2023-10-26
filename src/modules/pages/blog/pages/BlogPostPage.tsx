@@ -173,7 +173,7 @@ function BlogPostSources({ sources }: { sources: { title: string; url: string }[
 		>
 			<Title
 				is="h2"
-				variant={Title.variant.PRIMARY}
+				variant={Title.variant.STYLED}
 			>
 				Sources
 			</Title>
@@ -185,7 +185,7 @@ function BlogPostSources({ sources }: { sources: { title: string; url: string }[
 					return (
 						<List.Item key={generateSlug(source.title)}>
 							<Link
-								variant={Link.variant.PRIMARY}
+								variant={Link.variant.STYLED}
 								href={source.url}
 								isExternalLink
 							>

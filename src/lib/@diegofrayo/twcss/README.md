@@ -23,7 +23,7 @@ Library with `styled-components` flavored syntax for creating components easily 
   const MyElement = twcss.p({
     $TWCSS_BASE_STYLES: "tw-text-lg",
     UNSTYLED: "",
-    PRIMARY:
+    STYLED:
       "tw-bg-gray-400",
     SECONDARY: (props) => `tw-text-white ${props.active ? "tw-font-bold" : ""}`,
   });

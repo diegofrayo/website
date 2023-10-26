@@ -82,7 +82,7 @@ function DebuggerPage() {
 			<MainLayout title="Debugger">
 				<Block>
 					<Title
-						variant={Title.variant.PRIMARY}
+						variant={Title.variant.STYLED}
 						is="h2"
 					>
 						Info
@@ -95,7 +95,7 @@ function DebuggerPage() {
 							<Space size={6} />
 
 							<Title
-								variant={Title.variant.PRIMARY}
+								variant={Title.variant.STYLED}
 								is="h2"
 							>
 								Logs
