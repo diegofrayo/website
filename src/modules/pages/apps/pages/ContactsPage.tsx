@@ -29,8 +29,7 @@ export type T_ContactsPageProps = {
 
 function ContactsPage({ data: contacts }: T_ContactsPageProps) {
 	// --- HOOKS ---
-	const [isAllCollapsiblesOpened, setAllCollapsiblesOpened, toggleIsAllCollapsiblesOpened] =
-		useEnhancedState(false);
+	const [isAllCollapsiblesOpened, , toggleIsAllCollapsiblesOpened] = useEnhancedState(false);
 
 	// --- STATES & REFS ---
 	const [whatsAppLinksMode, setWhatsAppLinksMode] = React.useState<T_WhatsAppLinksMode>("web");
@@ -48,15 +47,6 @@ function ContactsPage({ data: contacts }: T_ContactsPageProps) {
 		toggleIsAllCollapsiblesOpened();
 	}
 
-	function handlePrintClick(): void {
-		setAllCollapsiblesOpened(true);
-		setWhatsAppLinksMode("app");
-
-		setTimeout(() => {
-			window.print();
-		}, 1000);
-	}
-
 	function handleToggleWhatsAppLinksModeClick(): void {
 		setWhatsAppLinksMode(whatsAppLinksMode === "app" ? "web" : "app");
 	}
@@ -69,7 +59,7 @@ function ContactsPage({ data: contacts }: T_ContactsPageProps) {
 			}}
 		>
 			<MainLayout title={PAGE_TITLE}>
-				<Block className="tw-flex tw-flex-col tw-gap-y-2 tw-border tw-p-4 dr-bg-color-surface-200 dr-border-color-surface-300 print:tw-hidden sm:tw-flex-row sm:tw-justify-between">
+				<Block className="tw-flex tw-flex-row tw-justify-between tw-gap-y-2 tw-border tw-p-4 dr-bg-color-surface-200 dr-border-color-surface-300 print:tw-hidden">
 					<Title
 						is="h2"
 						variant={Title.variant.SIMPLE}
@@ -90,8 +80,8 @@ function ContactsPage({ data: contacts }: T_ContactsPageProps) {
 								size={24}
 							/>
 							<Text className="tw-ml-1 tw-inline-block">
-								<InlineText className="tw-hidden xs:tw-inline-block">Modo de links:</InlineText>{" "}
-								<InlineText className="tw-inline-block tw-w-10 tw-text-left xs:tw-underline">
+								<InlineText className="tw-hidden sm:tw-inline-block">Modo de links:</InlineText>{" "}
+								<InlineText className="tw-inline-block tw-w-10 tw-text-left sm:tw-underline">
 									{whatsAppLinksMode}
 								</InlineText>
 							</Text>
@@ -108,13 +98,6 @@ function ContactsPage({ data: contacts }: T_ContactsPageProps) {
 										: Icon.icon.CHEVRON_DOUBLE_DOWN
 								}
 							/>
-						</Button>
-
-						<Button
-							variant={Button.variant.STYLED}
-							onClick={handlePrintClick}
-						>
-							<Icon icon={Icon.icon.PRINTER} />
 						</Button>
 					</Block>
 				</Block>
