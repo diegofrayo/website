@@ -7,6 +7,10 @@ export function isDevelopmentEnvironment(EnvVars?: DR.Object<string>): boolean {
 	);
 }
 
+export function isProductionEnvironment(EnvVars?: DR.Object<string>): boolean {
+	return isDevelopmentEnvironment(EnvVars) === false;
+}
+
 export function isLocalhostEnvironment(EnvVars?: DR.Object<string>): boolean {
 	const url = isBrowser() ? window.location.href : getWebsiteURL(EnvVars);
 	return url.includes("localhost") || url.includes("192.");

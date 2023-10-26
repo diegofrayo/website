@@ -1,5 +1,10 @@
-import DR from "@diegofrayo/types";
 import fs from "fs";
+
+import EnvVars from "~/modules/env-vars";
+import { isProductionEnvironment } from "~/utils/app";
+import v from "@diegofrayo/v";
+import FirebaseService from "@diegofrayo/utils/database";
+import type DR from "@diegofrayo/types";
 
 type T_LoadPageContentParams = {
 	page: "home" | "resume" | "blog";
@@ -15,8 +20,14 @@ export async function loadPageContent({ page, lang = "en" }: T_LoadPageContentPa
 }
 
 export async function loadData<G_Data>(
-	config: Pick<T_LoadPageContentParams, "page"> | { fullPath: string },
+	config:
+		| { page: T_LoadPageContentParams["page"]; remotePath?: string }
+		| { fullPath: string; remotePath?: string },
 ) {
+	if (isProductionEnvironment(EnvVars) && v.isString(config.remotePath)) {
+		return (await FirebaseService.get(config.remotePath)) as G_Data;
+	}
+
 	const data = JSON.parse(
 		fs.readFileSync(
 			"fullPath" in config ? config.fullPath : `./src/data/${config.page}/data.json`,

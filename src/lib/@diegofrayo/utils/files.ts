@@ -1,6 +1,8 @@
 import * as fs from "fs";
 import path from "path";
 
+import v from "../v";
+
 export function writeFile(filePath: string, data: unknown) {
 	prepareFilePathFolder(filePath);
 	fs.writeFileSync(filePath, typeof data === "string" ? data : JSON.stringify(data));
@@ -82,7 +84,7 @@ export function readFolderFiles(
 			!opts ||
 			(opts.includeDirectories && file.isDirectory) ||
 			(opts.includeMediaFiles && isMediaFile(file.ext)) ||
-			(Array.isArray(opts.includeTheseExtensions) && opts.includeTheseExtensions.includes(file.ext))
+			(v.isArray(opts.includeTheseExtensions) && opts.includeTheseExtensions.includes(file.ext))
 		) {
 			return result.concat([file]);
 		}

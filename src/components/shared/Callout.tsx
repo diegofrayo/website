@@ -38,7 +38,7 @@ function Callout({ children, variant = VARIANTS.ERROR }: T_CalloutProps) {
 					/>
 				) : (
 					<Icon
-						icon={Icon.icon.CLOSE}
+						icon={Icon.icon.X}
 						color=""
 						size={24}
 					/>

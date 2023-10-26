@@ -1,3 +1,4 @@
+import v from "../v";
 import { createArray } from "./arrays-and-objects";
 
 export function generateSlug(str: string): string {
@@ -24,7 +25,7 @@ export function removeAccents(input: string): string {
 }
 
 export function replaceAll(str: string, toReplace: string | string[], replacement: string): string {
-	if (Array.isArray(toReplace)) {
+	if (v.isArray(toReplace)) {
 		return toReplace.reduce(
 			(result, item) => result.replace(new RegExp(escapeRegExp(item), "g"), replacement),
 			str,

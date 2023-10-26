@@ -6,6 +6,9 @@ const EnvVarsScheme = {
 	SIGN_IN_EMAIL: str(),
 	SIGN_IN_PASSWORD: str(),
 	DENCRYPT_KEY: str(),
+	DATABASE_API_KEY: str(),
+	DATABASE_AUTH_DOMAIN: str(),
+	DATABASE_URL: url(),
 };
 
 const EnvVars = envalid(EnvVarsScheme, {
@@ -14,6 +17,9 @@ const EnvVars = envalid(EnvVarsScheme, {
 	SIGN_IN_EMAIL: process.env["SIGN_IN_EMAIL"],
 	SIGN_IN_PASSWORD: process.env["SIGN_IN_PASSWORD"],
 	DENCRYPT_KEY: process.env["DENCRYPT_KEY"],
+	DATABASE_API_KEY: process.env["DATABASE_API_KEY"],
+	DATABASE_AUTH_DOMAIN: process.env["DATABASE_AUTH_DOMAIN"],
+	DATABASE_URL: process.env["DATABASE_URL"],
 });
 
 export default EnvVars;

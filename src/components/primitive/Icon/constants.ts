@@ -8,6 +8,8 @@ import {
 	BeakerIcon,
 	CalendarIcon,
 	ChartBarSquareIcon,
+	ChevronDoubleDownIcon,
+	ChevronDoubleUpIcon,
 	ChevronDownIcon,
 	ChevronLeftIcon,
 	ClipboardIcon,
@@ -18,12 +20,14 @@ import {
 	DocumentTextIcon,
 	EnvelopeIcon,
 	ExclamationTriangleIcon,
+	EyeIcon,
 	GlobeAltIcon,
 	HomeIcon,
 	KeyIcon,
 	LinkIcon,
 	PauseIcon,
 	PlayIcon,
+	PrinterIcon,
 	RssIcon,
 	Square3Stack3DIcon,
 	UserCircleIcon,
@@ -32,7 +36,9 @@ import {
 	XMarkIcon,
 } from "@heroicons/react/24/outline";
 import {
+	ChatBubbleLeftEllipsisIcon as ChatBubbleLeftEllipsisIconSolid,
 	CheckBadgeIcon as CheckBadgeIconSolid,
+	PhoneIcon as PhoneIconSolid,
 	PlayIcon as PlayIconSolid,
 	XCircleIcon as XCircleIconSolid,
 } from "@heroicons/react/24/solid";
@@ -204,8 +210,28 @@ const ICONS = {
 			color: "",
 		},
 	},
+	CHAT_SOLID: {
+		icon: ChatBubbleLeftEllipsisIconSolid,
+		defaultProps: {
+			className: "",
+		},
+	},
 	CHECK_BADGE: {
 		icon: CheckBadgeIconSolid,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	CHEVRON_DOUBLE_DOWN: {
+		icon: ChevronDoubleDownIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	CHEVRON_DOUBLE_UP: {
+		icon: ChevronDoubleUpIcon,
 		defaultProps: {
 			className: "",
 			color: "",
@@ -227,20 +253,6 @@ const ICONS = {
 	},
 	CLIPBOARD: {
 		icon: ClipboardIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
-	CLOSE: {
-		icon: XMarkIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
-	CLOSE_SOLID: {
-		icon: XCircleIconSolid,
 		defaultProps: {
 			className: "",
 			color: "",
@@ -295,6 +307,13 @@ const ICONS = {
 			color: "",
 		},
 	},
+	EYE: {
+		icon: EyeIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
 	GLOBE_ALT: {
 		icon: GlobeAltIcon,
 		defaultProps: {
@@ -337,6 +356,12 @@ const ICONS = {
 			color: "",
 		},
 	},
+	PHONE_SOLID: {
+		icon: PhoneIconSolid,
+		defaultProps: {
+			className: "",
+		},
+	},
 	PLAY: {
 		icon: PlayIcon,
 		defaultProps: {
@@ -349,6 +374,12 @@ const ICONS = {
 		defaultProps: {
 			className: "",
 			color: "",
+		},
+	},
+	PRINTER: {
+		icon: PrinterIcon,
+		defaultProps: {
+			className: "",
 		},
 	},
 	REFRESH: {
@@ -407,75 +438,26 @@ const ICONS = {
 			color: "",
 		},
 	},
+	X: {
+		icon: XMarkIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	X_SOLID: {
+		icon: XCircleIconSolid,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
 };
 
 export default ICONS;
 
 /*
-import {
-	ArchiveBoxIcon,
-	ArrowDownTrayIcon,
-	ArrowPathIcon,
-	ArrowTopRightOnSquareIcon,
-	ArrowUpIcon,
-	ArrowUturnRightIcon,
-	Bars4Icon,
-	BookOpenIcon,
-	BriefcaseIcon,
-	CalendarIcon,
-	ChatBubbleLeftEllipsisIcon,
-	ChevronDoubleDownIcon,
-	ChevronDoubleUpIcon,
-	ChevronDownIcon,
-	ChevronLeftIcon,
-	ChevronRightIcon,
-	ClipboardIcon,
-	ClockIcon,
-	CodeBracketIcon,
-	DocumentTextIcon,
-	EllipsisHorizontalCircleIcon,
-	FilmIcon,
-	GlobeAltIcon,
-	HeartIcon,
-	KeyIcon,
-	LinkIcon,
-	LockClosedIcon,
-	LockOpenIcon,
-	MagnifyingGlassMinusIcon,
-	MagnifyingGlassPlusIcon,
-	MusicalNoteIcon,
-	PauseIcon,
-	PencilSquareIcon,
-	PhoneIcon,
-	PhotoIcon,
-	PlayIcon,
-	PresentationChartLineIcon,
-	PrinterIcon,
-	ServerIcon,
-	SpeakerWaveIcon,
-	SpeakerXMarkIcon,
-	UserCircleIcon,
-	XMarkIcon,
-} from "@heroicons/react/24/outline";
-import {
-	ChatBubbleLeftEllipsisIcon as ChatBubbleLeftEllipsisIconSolid,
-	CheckIcon,
-	CheckBadgeIcon as CheckBadgeIconSolid,
-	CogIcon,
-	EllipsisHorizontalCircleIcon as EllipsisHorizontalCircleIconSolid,
-	HeartIcon as HeartIconSolid,
-	MinusIcon,
-	MoonIcon,
-	PhoneIcon as PhoneIconSolid,
-	StarIcon,
-	SunIcon,
-} from "@heroicons/react/24/solid";
-import { DR.React.JSXElement } from "~/types";
-
 export const ICONS = {
-
-
-	// library icons
 	ARCHIVE_BOX: {
 		icon: ArchiveBoxIcon,
 		defaultProps: {
@@ -506,45 +488,11 @@ export const ICONS = {
 			className: "",
 		},
 	},
-	CHAT_SOLID: {
-		icon: ChatBubbleLeftEllipsisIconSolid,
-		defaultProps: {
-			className: "",
-		},
-	},
 	CHECK: {
 		icon: CheckIcon,
 		defaultProps: {
 			className: "",
 			color: "tw-text-green-500",
-		},
-	},
-	CHEVRON_DOWN: {
-		icon: ChevronDownIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
-	CHEVRON_DOUBLE_DOWN: {
-		icon: ChevronDoubleDownIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
-	CHEVRON_DOUBLE_UP: {
-		icon: ChevronDoubleUpIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
-	CHEVRON_LEFT: {
-		icon: ChevronLeftIcon,
-		defaultProps: {
-			className: "",
-			color: "",
 		},
 	},
 	CHEVRON_RIGHT: {
@@ -559,12 +507,6 @@ export const ICONS = {
 		defaultProps: {
 			className: "",
 			color: "",
-		},
-	},
-	CODE: {
-		icon: CodeBracketIcon,
-		defaultProps: {
-			className: "",
 		},
 	},
 	DOCUMENT_TEXT: {
@@ -594,19 +536,12 @@ export const ICONS = {
 			className: "",
 		},
 	},
-	EXTERNAL_LINK: {
-		icon: ArrowTopRightOnSquareIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
 	FILM: {
 		icon: FilmIcon,
 		defaultProps: {
 			className: "",
 		},
 	},
-
 	HEART: {
 		icon: HeartIcon,
 		defaultProps: {
@@ -658,28 +593,8 @@ export const ICONS = {
 			className: "",
 		},
 	},
-	PAUSE: {
-		icon: PauseIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
-	PLAY: {
-		icon: PlayIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
 	PHONE: {
 		icon: PhoneIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
-	PHONE_SOLID: {
-		icon: PhoneIconSolid,
 		defaultProps: {
 			className: "",
 		},
@@ -692,12 +607,6 @@ export const ICONS = {
 	},
 	PRESENTATION_CHART_LINE: {
 		icon: PresentationChartLineIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
-	PRINTER: {
-		icon: PrinterIcon,
 		defaultProps: {
 			className: "",
 		},
@@ -722,12 +631,6 @@ export const ICONS = {
 			color: "",
 		},
 	},
-	USER_CIRCLE: {
-		icon: UserCircleIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
 	VOLUME_OFF: {
 		icon: SpeakerXMarkIcon,
 		defaultProps: {
@@ -736,12 +639,6 @@ export const ICONS = {
 	},
 	VOLUME_UP: {
 		icon: SpeakerWaveIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
-	X: {
-		icon: XMarkIcon,
 		defaultProps: {
 			className: "",
 		},

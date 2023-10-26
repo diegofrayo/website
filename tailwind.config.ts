@@ -26,6 +26,9 @@ const config: Config = {
 	],
 	theme: {
 		screens: {
+			// => @media (min-width: 480px) { ... }
+			xs: "480px",
+
 			// => @media (min-width: 640px) { ... }
 			sm: "640px",
 

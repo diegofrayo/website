@@ -353,7 +353,7 @@ function NavigationMenuDialog({ show, onCloseHandler }: T_NavigationMenuDialogPr
 					onClick={onCloseHandler}
 				>
 					<Icon
-						icon={Icon.icon.CLOSE}
+						icon={Icon.icon.X}
 						size={24}
 					/>
 				</Button>
@@ -542,11 +542,11 @@ function Flags() {
 			{showAnalyticsFlag ? (
 				<Block className="tw-relative tw-flex tw-items-center tw-justify-center tw-rounded-full tw-border dr-bg-color-surface-200 dr-border-color-surface-300 tw-wh-6">
 					<Icon
-						icon={Icon.icon.CHART_BAR_SQUARE}
+						icon={Icon.icon.EYE}
 						size={14}
 					/>
 					<Icon
-						icon={Icon.icon.CLOSE_SOLID}
+						icon={Icon.icon.X_SOLID}
 						size={12}
 						wrapperClassName="tw-absolute tw--top-1 tw--right-1 tw-text-red-700"
 					/>

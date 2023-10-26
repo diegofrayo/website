@@ -18,12 +18,12 @@ function AppsPage() {
 						return (
 							<Block
 								key={app.id}
-								className="tw-flex tw-items-center tw-justify-center tw-rounded-md tw-border-8 tw-border-double dr-bg-color-surface-200 dr-border-color-surface-300 tw-wh-44"
+								className="tw-rounded-md tw-border-8 tw-border-double dr-bg-color-surface-200 dr-border-color-surface-300"
 							>
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={`/apps/${app.id}`}
-									className="tw-block tw-text-center"
+									className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-text-center tw-wh-44"
 								>
 									<Icon
 										icon={app.icon}
@@ -46,6 +46,11 @@ export default withAuthRulesPage(AppsPage, { requireAuth: true });
 // --- COMPONENTS ---
 
 const APPS = [
+	{
+		id: "contacts",
+		icon: Icon.icon.USER_CIRCLE,
+		name: "contacts",
+	},
 	{
 		id: "dencrypt",
 		icon: Icon.icon.KEY,
