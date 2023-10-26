@@ -6,19 +6,20 @@ import { HttpError } from "../../errors";
 import { sendServerError } from "../../utils";
 import { parseRequestBody } from "./schemas";
 
-export default function signInHandler(req: NextApiRequest, res: NextApiResponse) {
+export default async function isrHandler(req: NextApiRequest, res: NextApiResponse) {
 	try {
-		const { email, password } = parseRequestBody(req.body);
+		const { path, secret } = parseRequestBody(req.body);
 
-		if (email.toLowerCase() === EnvVars.SIGN_IN_EMAIL && password === EnvVars.SIGN_IN_PASSWORD) {
-			res.status(200).send("Success");
-		} else {
+		if (secret !== EnvVars.ISR_SECURITY_PIN) {
 			throw new HttpError({
-				id: "INVALID_CREDENTIALS",
-				message: "Invalid email or password",
+				id: "ISR_WRONG_SECURITY_PIN",
+				message: "Wrong security pin",
 				type: HttpError.types.BAD_REQUEST,
 			});
 		}
+
+		await res.revalidate(path);
+		res.json({ revalidated: true, date: new Date() });
 	} catch (error) {
 		sendServerError(res, error);
 	}

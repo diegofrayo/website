@@ -1,4 +1,4 @@
-import { type Input, object, string, union, array, enumType } from "valibot";
+import { type Input, object, string, union, array, enumType, email } from "valibot";
 import v from "../v";
 
 export type T_ContactsData = Record<string, T_Contact[] | { [key: string]: T_ContactsData }>;
@@ -15,6 +15,7 @@ export const ContactSchema = object({
 		),
 	]),
 	instagram: string(),
+	email: union([string([email()]), string()]),
 	country: enumType([
 		"AR",
 		"BR",

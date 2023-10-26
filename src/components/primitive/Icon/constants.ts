@@ -29,6 +29,7 @@ import {
 	PlayIcon,
 	PrinterIcon,
 	RssIcon,
+	ServerIcon,
 	Square3Stack3DIcon,
 	UserCircleIcon,
 	WindowIcon,
@@ -396,6 +397,13 @@ const ICONS = {
 			color: "",
 		},
 	},
+	SERVER: {
+		icon: ServerIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
 	SETTINGS: {
 		icon: CogIcon,
 		defaultProps: {
@@ -609,13 +617,6 @@ export const ICONS = {
 		icon: PresentationChartLineIcon,
 		defaultProps: {
 			className: "",
-		},
-	},
-	SERVER: {
-		icon: ServerIcon,
-		defaultProps: {
-			className: "",
-			color: "",
 		},
 	},
 	STAR: {

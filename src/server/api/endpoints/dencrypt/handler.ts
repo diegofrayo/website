@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { parse } from "valibot";
 import cryptoJS from "crypto-js";
 
 import EnvVars from "~/modules/env-vars";
@@ -8,11 +7,11 @@ import v from "@diegofrayo/v";
 
 import { HttpError, ServerError } from "../../errors";
 import { sendServerError } from "../../utils";
-import { DencryptForm } from "./schemas";
+import { parseRequestBody } from "./schemas";
 
 export default async function dencryptHandler(req: NextApiRequest, res: NextApiResponse) {
 	try {
-		const { action, text } = parse(DencryptForm.schema, req.body);
+		const { action, text } = parseRequestBody(req.body);
 		const result = await (action === "encrypt" ? encrypt(text) : decrypt(text));
 
 		res.json({ output: result });

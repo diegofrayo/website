@@ -14,17 +14,25 @@ import {
 	Title,
 } from "~/components/primitive";
 import { type T_IconName } from "~/components/primitive/Icon";
-import { TypingTextEffect } from "~/components/shared";
+import { Toast, TypingTextEffect } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/metadata.json";
 import { renderIf, withOnlyClientRender } from "~/hocs";
 import { useDidMount, useOnWindowStopScroll, useToggleBodyScroll } from "~/hooks";
 import AnalyticsService from "~/modules/analytics";
+import ServerAPI from "~/modules/api";
 import { AuthService, withAuth } from "~/modules/auth";
 import EnvVars from "~/modules/env-vars";
+import { logAndReportError } from "~/modules/logging";
 import { ROUTES, redirect, useRouting } from "~/modules/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
+import { getErrorMessage } from "@diegofrayo/utils/misc";
 import type DR from "@diegofrayo/types";
-import { getScrollPosition, isPWA, setScrollPosition } from "@diegofrayo/utils/browser";
+import {
+	deletePWACache,
+	getScrollPosition,
+	isPWA,
+	setScrollPosition,
+} from "@diegofrayo/utils/browser";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 
@@ -192,6 +200,7 @@ const ToolsMenu = renderIf(function ToolsMenu() {
 					<RadixNavigationMenu.Content className="radix-navigation-menu-content">
 						<List className="tw-block tw-overflow-hidden tw-rounded-md tw-border dr-bg-color-surface-200 dr-border-color-surface-300">
 							<EnvironmentMenuItem />
+							<ISRMenuItem />
 							<ReloadPageMenuItem />
 							<SignInMenuItem />
 							<SignOutMenuItem />
@@ -268,20 +277,50 @@ function EnvironmentMenuItem() {
 
 	return (
 		<ToolsMenuItem
-			url={url}
 			title={`Open this page in "${isDevelopmentEnvironment(EnvVars) ? "prod" : "dev"}"`}
 			icon={Icon.icon.EXTERNAL_LINK}
+			url={url}
 			isExternalLink
 		/>
 	);
 }
 
+const ISRMenuItem = withAuth(function ISRMenuItem() {
+	// --- HANDLERS ---
+	async function handleISROnDemandClick() {
+		try {
+			const pin = window.prompt("Type the security pin");
+
+			if (v.isNotEmptyString(pin)) {
+				await ServerAPI.post("/isr", {
+					path: window.location.pathname,
+					secret: pin,
+				});
+
+				await deletePWACache();
+				window.location.reload();
+			}
+		} catch (error) {
+			logAndReportError(error);
+			Toast.error(getErrorMessage(error));
+		}
+	}
+
+	return (
+		<ToolsMenuItem
+			title="ISR on-demand"
+			icon={Icon.icon.SERVER}
+			onClick={handleISROnDemandClick}
+		/>
+	);
+});
+
 const SignInMenuItem = renderIf(function SignInMenuItem() {
 	return (
 		<ToolsMenuItem
-			url={ROUTES.SIGN_IN}
 			title="Sign in"
 			icon={Icon.icon.USER_CIRCLE}
+			url={ROUTES.SIGN_IN}
 		/>
 	);
 })(() => AuthService.isUserLoggedIn() === false);

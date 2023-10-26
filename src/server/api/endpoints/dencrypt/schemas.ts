@@ -1,4 +1,4 @@
-import { object, string, type Input, enumType, minLength } from "valibot";
+import { object, string, type Input, enumType, minLength, parse } from "valibot";
 
 export const DencryptForm = {
 	schema: object({
@@ -7,6 +7,10 @@ export const DencryptForm = {
 	}),
 };
 
-export type T_DencryptFormSchema = Input<typeof DencryptForm.schema>;
+export type T_DencryptForm = Input<typeof DencryptForm.schema>;
 
-export type T_DencryptResponseSchema = { output: string };
+export type T_DencryptResponse = { output: string };
+
+export function parseRequestBody(input: unknown) {
+	return parse(DencryptForm.schema, input);
+}

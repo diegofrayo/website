@@ -139,3 +139,13 @@ export function getAndroidVersion() {
 export function isAndroid() {
 	return navigator.userAgent.toLowerCase().indexOf("android") > -1;
 }
+
+export async function deletePWACache() {
+	const cacheKeys = await window.caches.keys();
+
+	return Promise.all(
+		cacheKeys.map((key) => {
+			return window.caches.delete(key);
+		}),
+	);
+}

@@ -350,7 +350,7 @@ function ContactLinks({
 			) : null}
 
 			{v.isArray(contact.phone) ? (
-				<Block className="tw-flex tw-w-full tw-gap-2">
+				<Block className="tw-flex tw-w-full tw-gap-3">
 					{contact.phone.map((item) => {
 						return (
 							<SMSButton

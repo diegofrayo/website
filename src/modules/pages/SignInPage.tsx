@@ -7,9 +7,9 @@ import { useAsync } from "~/hooks";
 import ServerAPI from "~/modules/api";
 import { AuthService, withAuthRulesPage } from "~/modules/auth";
 import { ROUTES, redirect } from "~/modules/routing";
-import { SignInForm, T_SignInFormSchema } from "~/server/api/endpoints/sign-in/schemas";
-import { getErrorMessage } from "@diegofrayo/utils/misc";
+import { SignInForm, type T_SignInForm } from "~/server/api/endpoints/sign-in/schemas";
 import type DR from "@diegofrayo/types";
+import { getErrorMessage } from "@diegofrayo/utils/misc";
 
 function SignInPage() {
 	// --- HOOKS ---
@@ -22,7 +22,7 @@ function SignInPage() {
 		event.preventDefault();
 
 		const formDataEntries = new FormData(event.currentTarget).entries();
-		const body = Object.fromEntries(formDataEntries) as T_SignInFormSchema;
+		const body = Object.fromEntries(formDataEntries) as T_SignInForm;
 
 		try {
 			await signInMutation("/sign-in", body);
@@ -48,7 +48,7 @@ function SignInPage() {
 						name="email"
 						type="email"
 						componentProps={{ label: "Email" }}
-						{...SignInForm.emailConstraints}
+						{...SignInForm.inputsConfig.email}
 						disabled={isLoading}
 						required
 					/>
@@ -59,7 +59,7 @@ function SignInPage() {
 						name="password"
 						type="password"
 						componentProps={{ label: "Password" }}
-						{...SignInForm.passwordConstraints}
+						{...SignInForm.inputsConfig.password}
 						disabled={isLoading}
 						required
 					/>
@@ -96,7 +96,7 @@ function Form({ children, onSubmit }: DR.DOM.HTMLElementAttributes["form"]) {
 // --- API ---
 
 const SignInAPI = {
-	signIn: (path: string, body: T_SignInFormSchema) => {
+	signIn: (path: string, body: T_SignInForm) => {
 		return ServerAPI.post(path, body);
 	},
 };

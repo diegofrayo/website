@@ -8,14 +8,14 @@ import { useAsync, useDidMount } from "~/hooks";
 import ServerAPI from "~/modules/api";
 import { withAuthRulesPage } from "~/modules/auth";
 import { logAndReportError } from "~/modules/logging";
-import v from "@diegofrayo/v";
+import {
+	type T_DencryptForm,
+	type T_DencryptResponse,
+} from "~/server/api/endpoints/dencrypt/schemas";
+import type DR from "@diegofrayo/types";
 import { focusElement, focusInputAndSelectText, isSmallScreen } from "@diegofrayo/utils/browser";
 import { getErrorMessage } from "@diegofrayo/utils/misc";
-import type DR from "@diegofrayo/types";
-import {
-	type T_DencryptFormSchema,
-	type T_DencryptResponseSchema,
-} from "~/server/api/endpoints/dencrypt/schemas";
+import v from "@diegofrayo/v";
 
 import { Output } from "../components";
 
@@ -66,7 +66,7 @@ function DencryptPage() {
 		return (inputRef.current?.value || "").trim();
 	}
 
-	async function launchDencryptRequest(action: T_DencryptFormSchema["action"]) {
+	async function launchDencryptRequest(action: T_DencryptForm["action"]) {
 		try {
 			setOutput("");
 			const text = getInputText();
@@ -154,7 +154,7 @@ export default withAuthRulesPage(DencryptPage, { requireAuth: true });
 // --- API ---
 
 const DencryptAPI = {
-	dencrypt: (body: T_DencryptFormSchema) => {
-		return ServerAPI.post<T_DencryptResponseSchema>("/dencrypt", body);
+	dencrypt: (body: T_DencryptForm) => {
+		return ServerAPI.post<T_DencryptResponse>("/dencrypt", body);
 	},
 };

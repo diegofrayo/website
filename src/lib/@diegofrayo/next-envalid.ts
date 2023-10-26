@@ -31,6 +31,15 @@ export function url(): T_EnvVarConfigAPI {
 	};
 }
 
+export function number(): T_EnvVarConfigAPI {
+	return {
+		validate: (input) => {
+			return v.isNumber(Number(input));
+		},
+		getErrorMessage,
+	};
+}
+
 export function envalid<
 	G_Object extends object,
 	G_Keys extends keyof G_Object,
