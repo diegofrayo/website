@@ -2,7 +2,7 @@ import autoBind from "auto-bind";
 import splitbee from "@splitbee/web";
 
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { LocalStorageManager } from "@diegofrayo/storage";
+import { BrowserStorageManager } from "@diegofrayo/storage";
 import type DR from "@diegofrayo/types";
 
 import { AuthService } from "../auth";
@@ -17,7 +17,7 @@ class AnalyticsServiceClass {
 
 	private DISABLE_ANALYTICS_FLAG = "analytics=false";
 
-	private LS_AnalyticsDisabled = LocalStorageManager.createItem({
+	private LS_AnalyticsDisabled = BrowserStorageManager.createItem({
 		key: "DR_ANALYTICS_DISABLED",
 		value: false,
 		saveWhenCreating: false,

@@ -26,11 +26,11 @@ import { withOnlyClientRender } from "~/hocs";
 import AnalyticsService from "~/modules/analytics";
 import { MDXContent, getMDXExport } from "~/modules/mdx/client";
 import { ROUTES } from "~/modules/routing";
+import { useBrowserStorageState } from "@diegofrayo/storage";
 import twcss from "@diegofrayo/twcss";
+import type DR from "@diegofrayo/types";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
-import { useLocalStorageState } from "@diegofrayo/storage";
-import type DR from "@diegofrayo/types";
 
 import { BlogPostCategory } from "../components";
 import type { T_BlogPost } from "../types";
@@ -202,7 +202,7 @@ function BlogPostSources({ sources }: { sources: { title: string; url: string }[
 
 const RateContent = withOnlyClientRender(function RateContent() {
 	// --- STATES & REFS ---
-	const [ratedContent, setRatedContent] = useLocalStorageState<DR.Object<string>>({
+	const [ratedContent, setRatedContent] = useBrowserStorageState<DR.Object<string>>({
 		key: "DR_RATED_CONTENT",
 		value: {},
 		saveWhenCreating: true,

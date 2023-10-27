@@ -3,7 +3,7 @@ import * as React from "react";
 import { renderIf } from "~/hocs";
 import { useDidMount } from "~/hooks";
 import { isProductionEnvironment } from "~/utils/app";
-import { LocalStorageManager } from "@diegofrayo/storage";
+import { BrowserStorageManager } from "@diegofrayo/storage";
 import type DR from "@diegofrayo/types";
 import { isBrowser } from "@diegofrayo/utils/misc";
 
@@ -14,7 +14,7 @@ import { goBack } from "../routing";
 class AuthServiceClass {
 	#isUserLoggedIn = false;
 
-	#LS_AUTH = LocalStorageManager.createItem({
+	#LS_AUTH = BrowserStorageManager.createItem({
 		key: "DR_AUTH",
 		value: false,
 		saveWhenCreating: false,
@@ -97,10 +97,25 @@ export function withAuthRulesPage<G_ComponentProps extends object>(
 
 		function checkSecurityPinConfig() {
 			if (options.requirePin === true && isProductionEnvironment()) {
+				const securityPinSession = BrowserStorageManager.createItem({
+					key: "DR_SECURITY_PIN_SESSION",
+					value: false,
+					readInitialValueFromStorage: true,
+					storage: "sessionStorage",
+				});
+				const isActiveSession = securityPinSession.get() === true;
+
+				if (isActiveSession) {
+					return false;
+				}
+
 				const SECURITY_PIN = "1256";
 				const pin = window.prompt("Type the security pin");
+				const pinMatched = pin === SECURITY_PIN;
 
-				return pin !== SECURITY_PIN;
+				securityPinSession.set(true);
+
+				return pinMatched === false;
 			}
 
 			return false;

@@ -1,7 +1,7 @@
 import { NextRouter, useRouter } from "next/router";
 
+import { BrowserStorageManager } from "@diegofrayo/storage";
 import { isPWA } from "@diegofrayo/utils/browser";
-import { LocalStorageManager } from "@diegofrayo/storage";
 
 // --- CONSTANTS & TYPES ---
 
@@ -50,7 +50,7 @@ export function useRouting(): T_UseRoutingReturn {
 
 // --- UTILS ---
 
-const LS_LastPage = LocalStorageManager.createItem({
+const LS_LastPage = BrowserStorageManager.createItem({
 	key: "DR_LAST_PAGE",
 	value: "",
 	saveWhenCreating: false,

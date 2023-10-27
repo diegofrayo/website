@@ -1,17 +1,17 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import * as React from "react";
 
-import LocalStorageManager, {
-	type T_LocalStorageState,
-	type T_LocalStorageStateConfig,
+import BrowserStorageManager, {
+	type T_BrowserStorageState,
+	type T_BrowserStorageStateConfig,
 } from "./service";
 
-function useLocalStorageState<G_ValueType>(
-	config: T_LocalStorageStateConfig<G_ValueType>,
+function useBrowserStorageState<G_ValueType>(
+	config: T_BrowserStorageStateConfig<G_ValueType>,
 ): [G_ValueType, (newValue: G_ValueType) => void] {
 	// --- STATES & REFS ---
-	const { current: LS_StateRef } = React.useRef<T_LocalStorageState<G_ValueType>>(
-		LocalStorageManager.createItem(config),
+	const { current: LS_StateRef } = React.useRef<T_BrowserStorageState<G_ValueType>>(
+		BrowserStorageManager.createItem(config),
 	);
 	const [state, setState] = React.useState<G_ValueType>(LS_StateRef.get());
 
@@ -26,4 +26,4 @@ function useLocalStorageState<G_ValueType>(
 	return [state, setEnhancedState];
 }
 
-export default useLocalStorageState;
+export default useBrowserStorageState;

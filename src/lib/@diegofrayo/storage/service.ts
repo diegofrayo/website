@@ -1,34 +1,38 @@
 import { isBrowser, isServer } from "../utils/misc";
 import v from "../v";
 
-export type T_LocalStorageStateConfig<G_ValueType> = {
+type T_Storage = "sessionStorage" | "localStorage";
+
+export type T_BrowserStorageStateConfig<G_ValueType> = {
 	key: string;
 	value: G_ValueType;
 	saveWhenCreating?: boolean;
 	readInitialValueFromStorage?: boolean;
+	storage?: T_Storage;
 };
 
-export type T_LocalStorageState<G_ValueType> = {
+export type T_BrowserStorageState<G_ValueType> = {
 	get: () => G_ValueType;
 	set: (newValue: G_ValueType) => void;
 	remove: () => void;
 	exists: () => boolean;
 };
 
-const LocalStorageManager = {
+const BrowserStorageManager = {
 	createItem: function createItem<G_ValueType>({
 		key,
 		value,
 		saveWhenCreating = false,
 		readInitialValueFromStorage = false,
-	}: T_LocalStorageStateConfig<G_ValueType>) {
+		storage = "localStorage",
+	}: T_BrowserStorageStateConfig<G_ValueType>) {
 		if (isBrowser()) {
-			const valueFromStorage = getItem({ key, type: typeof value });
+			const valueFromStorage = getItem({ key, type: typeof value, storage });
 
 			if (readInitialValueFromStorage && valueFromStorage !== null) {
 				console.log("...");
 			} else if (saveWhenCreating && valueFromStorage === null) {
-				setItem(key, value);
+				setItem(key, value, storage);
 			}
 		}
 
@@ -36,56 +40,58 @@ const LocalStorageManager = {
 			get: (): G_ValueType | null => {
 				if (isServer()) return null;
 
-				const valueFromStorage = getItem({ key, type: typeof value });
+				const valueFromStorage = getItem({ key, type: typeof value, storage });
 				return valueFromStorage === null ? value : valueFromStorage;
 			},
 
 			set: (newValue: G_ValueType) => {
 				if (isServer()) return;
 
-				setItem(key, newValue);
+				setItem(key, newValue, storage);
 			},
 
 			remove: () => {
 				if (isServer()) return;
 
-				window.localStorage.removeItem(key);
+				window[storage].removeItem(key);
 			},
 
 			exists: () => {
 				if (isServer()) return false;
 
-				return window.localStorage.getItem(key) !== null;
+				return window[storage].getItem(key) !== null;
 			},
-		} as T_LocalStorageState<G_ValueType>;
+		} as T_BrowserStorageState<G_ValueType>;
 	},
 };
 
-export default LocalStorageManager;
+export default BrowserStorageManager;
 
 // --- INTERNALS ---
 
-function setItem(key: string, newValue: unknown) {
+function setItem(key: string, newValue: unknown, storage: T_Storage) {
 	try {
 		if (v.isObject(newValue) || v.isArray(newValue)) {
-			window.localStorage.setItem(key, JSON.stringify(newValue));
+			window[storage].setItem(key, JSON.stringify(newValue));
 		} else {
-			window.localStorage.setItem(key, String(newValue));
+			window[storage].setItem(key, String(newValue));
 		}
 	} catch (error) {
 		console.warn(error);
-		window.localStorage.removeItem(key);
+		window[storage].removeItem(key);
 	}
 }
 
 function getItem({
 	key,
 	type,
+	storage,
 }: {
 	key: string;
 	type: string | number | boolean | unknown[] | Record<string, unknown>;
+	storage: T_Storage;
 }) {
-	const value = window.localStorage.getItem(key);
+	const value = window[storage].getItem(key);
 
 	try {
 		if (value === null) {
@@ -108,7 +114,7 @@ function getItem({
 		return value;
 	} catch (error) {
 		console.warn(error);
-		window.localStorage.removeItem(key);
+		window[storage].removeItem(key);
 
 		return value;
 	}

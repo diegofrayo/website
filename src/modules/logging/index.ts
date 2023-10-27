@@ -1,7 +1,7 @@
-import { LocalStorageManager } from "@diegofrayo/storage";
+import { BrowserStorageManager } from "@diegofrayo/storage";
 import { isServer } from "@diegofrayo/utils/misc";
 
-const LS_Logs = LocalStorageManager.createItem<string[]>({
+const LS_Logs = BrowserStorageManager.createItem<string[]>({
 	key: "DR_LOGS",
 	value: [],
 	saveWhenCreating: true,

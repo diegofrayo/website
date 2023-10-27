@@ -1,7 +1,7 @@
-import { LocalStorageManager } from "@diegofrayo/storage";
+import { BrowserStorageManager } from "@diegofrayo/storage";
 
 export function recoverFromBreakingChanges() {
-	const LS_BreakingChanges = LocalStorageManager.createItem({
+	const LS_BreakingChanges = BrowserStorageManager.createItem({
 		key: "DR_BREAKING_CHANGES",
 		value: "",
 		saveWhenCreating: true,
