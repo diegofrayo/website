@@ -9,7 +9,7 @@ export default HomePage;
 
 export const getStaticProps: GetStaticProps<T_HomePageProps> = async () => {
 	const content = await loadPageContent({ page: "home" });
-	const data = await loadData<T_HomePageProps["data"]>({ page: "home" });
+	const data = await loadData<T_HomePageProps["data"]>({ page: "home", remote: true });
 
 	return {
 		props: {
