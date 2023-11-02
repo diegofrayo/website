@@ -50,16 +50,24 @@ export function useRouting(): T_UseRoutingReturn {
 
 // --- UTILS ---
 
-const LS_LastPage = BrowserStorageManager.createItem({
-	key: "DR_LAST_PAGE",
+const BS_LastPageVisited = BrowserStorageManager.createItem({
+	key: "DR_LAST_PAGE_VISITED",
 	value: "",
 	saveWhenCreating: false,
 	readInitialValueFromStorage: true,
 });
 
+const BS_NoRedirectionsYet = BrowserStorageManager.createItem({
+	key: "DR_NO_REDIRECTIONS_YET",
+	value: true,
+	saveWhenCreating: true,
+	readInitialValueFromStorage: true,
+	storage: "sessionStorage",
+});
+
 export function redirect(path: string): void {
 	if (isPWA()) {
-		LS_LastPage.set(path);
+		BS_LastPageVisited.set(path);
 	}
 
 	window.location.href = path;
@@ -72,19 +80,25 @@ export function goBack(): void {
 }
 
 export function initPWARoutingConfig(router: NextRouter): () => void {
-	const lastPageVisited = LS_LastPage.get();
+	const lastPageVisited = BS_LastPageVisited.get();
 
 	if (!window.navigator.onLine) {
 		return () => undefined;
 	}
 
-	if (lastPageVisited && lastPageVisited !== window.location.pathname) {
+	if (
+		BS_NoRedirectionsYet.get() === true &&
+		lastPageVisited &&
+		lastPageVisited !== window.location.pathname
+	) {
+		BS_NoRedirectionsYet.set(false);
 		window.location.href = lastPageVisited;
+
 		return () => undefined;
 	}
 
 	const handleRouteChangeComplete = function handleRouteChangeComplete(): void {
-		LS_LastPage.set(window.location.pathname);
+		BS_LastPageVisited.set(window.location.pathname);
 	};
 
 	router.events.on("routeChangeComplete", handleRouteChangeComplete);

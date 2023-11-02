@@ -13,9 +13,9 @@ import { addErrorsGlobalListener, logger } from "~/modules/logging";
 import ErrorPage from "~/modules/pages/ErrorPage";
 import { initPWARoutingConfig } from "~/modules/routing";
 import { recoverFromBreakingChanges } from "~/utils/errors-recovery";
+import type DR from "@diegofrayo/types";
 import { isMobileDevice, isPWA } from "@diegofrayo/utils/browser";
 import { isServer } from "@diegofrayo/utils/misc";
-import type DR from "@diegofrayo/types";
 
 // --- PROPS & TYPES ---
 
@@ -29,12 +29,12 @@ function CustomApp({ Component, pageProps }: T_CustomAppProps) {
 		addErrorsGlobalListener();
 		recoverFromBreakingChanges();
 
-		if (isPWA()) {
-			return initPWARoutingConfig(router);
-		}
-
 		if (isMobileDevice()) {
 			document.body.classList.add("mobile");
+		}
+
+		if (isPWA()) {
+			return initPWARoutingConfig(router);
 		}
 
 		return () => undefined;

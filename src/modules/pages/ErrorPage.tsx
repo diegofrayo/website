@@ -19,11 +19,11 @@ function ErrorPage({ title, variant }: { variant: "404" | "500"; title: string }
 
 	// -- HANDLERS ---
 	function handleReloadPageClick() {
-		window.location.href = ROUTES.HOME;
+		window.location.reload();
 	}
 
 	function handleGoToHomeClick() {
-		window.location.reload();
+		window.location.href = ROUTES.HOME;
 	}
 
 	return (

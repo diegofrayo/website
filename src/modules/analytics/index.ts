@@ -17,7 +17,7 @@ class AnalyticsServiceClass {
 
 	private DISABLE_ANALYTICS_FLAG = "analytics=false";
 
-	private LS_AnalyticsDisabled = BrowserStorageManager.createItem({
+	private BS_AnalyticsDisabled = BrowserStorageManager.createItem({
 		key: "DR_ANALYTICS_DISABLED",
 		value: false,
 		saveWhenCreating: false,
@@ -61,9 +61,9 @@ class AnalyticsServiceClass {
 		if (
 			isDevelopmentEnvironment() ||
 			window.location.href.includes(this.DISABLE_ANALYTICS_FLAG) ||
-			this.LS_AnalyticsDisabled.get() === true
+			this.BS_AnalyticsDisabled.get() === true
 		) {
-			this.LS_AnalyticsDisabled.set(true);
+			this.BS_AnalyticsDisabled.set(true);
 			return true;
 		}
 

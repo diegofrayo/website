@@ -1,7 +1,7 @@
 import { BrowserStorageManager } from "@diegofrayo/storage";
 
 export function recoverFromBreakingChanges() {
-	const LS_BreakingChanges = BrowserStorageManager.createItem({
+	const BS_BreakingChanges = BrowserStorageManager.createItem({
 		key: "DR_BREAKING_CHANGES",
 		value: "",
 		saveWhenCreating: true,
@@ -14,11 +14,11 @@ export function recoverFromBreakingChanges() {
 		"Mon Oct 24 2023 07:04:15",
 	];
 	const lastBreakingChange = BREAKING_CHANGES.at(-1) as string;
-	const thereAreBreakingChanges = LS_BreakingChanges.get() !== lastBreakingChange;
+	const thereAreBreakingChanges = BS_BreakingChanges.get() !== lastBreakingChange;
 
 	if (thereAreBreakingChanges) {
 		window.localStorage.clear();
-		LS_BreakingChanges.set(lastBreakingChange);
+		BS_BreakingChanges.set(lastBreakingChange);
 		window.location.reload();
 	}
 }

@@ -14,7 +14,7 @@ import { goBack } from "../routing";
 class AuthServiceClass {
 	#isUserLoggedIn = false;
 
-	#LS_AUTH = BrowserStorageManager.createItem({
+	#BS_AUTH = BrowserStorageManager.createItem({
 		key: "DR_AUTH",
 		value: false,
 		saveWhenCreating: false,
@@ -28,17 +28,17 @@ class AuthServiceClass {
 	}
 
 	loadSession() {
-		this.#isUserLoggedIn = this.#LS_AUTH.get();
+		this.#isUserLoggedIn = this.#BS_AUTH.get();
 	}
 
 	createSession() {
 		this.#isUserLoggedIn = true;
-		this.#LS_AUTH.set(this.#isUserLoggedIn);
+		this.#BS_AUTH.set(this.#isUserLoggedIn);
 	}
 
 	destroySession() {
 		this.#isUserLoggedIn = false;
-		this.#LS_AUTH.remove();
+		this.#BS_AUTH.remove();
 	}
 
 	isUserLoggedIn() {
@@ -112,7 +112,6 @@ export function withAuthRulesPage<G_ComponentProps extends object>(
 				const SECURITY_PIN = "1256";
 				const pin = window.prompt("Type the security pin");
 				const pinMatched = pin === SECURITY_PIN;
-
 				securityPinSession.set(pinMatched);
 
 				return pinMatched === false;

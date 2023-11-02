@@ -1,7 +1,7 @@
 import { BrowserStorageManager } from "@diegofrayo/storage";
 import { isServer } from "@diegofrayo/utils/misc";
 
-const LS_Logs = BrowserStorageManager.createItem<string[]>({
+const BS_Logs = BrowserStorageManager.createItem<string[]>({
 	key: "DR_LOGS",
 	value: [],
 	saveWhenCreating: true,
@@ -50,17 +50,17 @@ export function addErrorsGlobalListener(): void {
 }
 
 export function getLogsHistory() {
-	return LS_Logs.get();
+	return BS_Logs.get();
 }
 
 export function clearLogsHistory(): void {
-	LS_Logs.remove();
+	BS_Logs.remove();
 }
 
 // --- INTERNALS ---
 
 function addLog(source: string | undefined, content: unknown) {
-	LS_Logs.set(
-		[`LOG: ${source || "No source"} | ${new Date()}: \n ${content}`].concat(LS_Logs.get()),
+	BS_Logs.set(
+		[`LOG: ${source || "No source"} | ${new Date()}: \n ${content}`].concat(BS_Logs.get()),
 	);
 }

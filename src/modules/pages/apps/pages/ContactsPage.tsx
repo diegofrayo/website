@@ -384,6 +384,15 @@ function ContactLinks({
 					/>
 				</SMSButton>
 			) : null}
+
+			{v.isNotEmptyString(contact.email) ? (
+				<Link
+					variant={Link.variant.SIMPLE}
+					href={`mailto:${contact.email}`}
+				>
+					<Icon icon={Icon.icon.GMAIL} />
+				</Link>
+			) : null}
 		</Block>
 	);
 }
