@@ -5,6 +5,7 @@ import { CustomError } from "./errors";
 
 export function sendServerError(res: NextApiResponse, error: unknown) {
 	const response = createServerErrorMessage(error);
+	console.error(error);
 	console.error(response);
 
 	res.status(getStatusCode(error)).json(response);

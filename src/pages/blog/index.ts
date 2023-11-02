@@ -11,7 +11,7 @@ export { default } from "~/modules/pages/blog/BlogPage";
 export const getStaticProps: GetStaticProps<T_BlogPageProps> = async () => {
 	const DEFAULT_LANG = "en";
 	const content = await loadPageContent({ page: "blog" });
-	const posts = await loadData<T_RawBlogPostsResponse>({ localPath: `./src/data/blog/data.json` });
+	const posts = await loadData<T_RawBlogPostsResponse>({ localPath: `blog/data.json` });
 
 	return {
 		props: {
