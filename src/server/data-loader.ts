@@ -3,7 +3,7 @@ import fs from "fs";
 import EnvVars from "~/modules/env-vars";
 import { isProductionEnvironment } from "~/utils/app";
 import type DR from "@diegofrayo/types";
-import FirebaseService from "@diegofrayo/utils/database";
+import DatabaseService from "@diegofrayo/utils/database";
 import v from "@diegofrayo/v";
 
 type T_LoadPageContentParams = {
@@ -27,7 +27,7 @@ export async function loadData<G_Data>(
 	if ("page" in config) {
 		const data =
 			isProductionEnvironment(EnvVars) && config.remote
-				? FirebaseService.get(config.page)
+				? await DatabaseService.get(config.page)
 				: JSON.parse(fs.readFileSync(`./src/data/_local_/${config.page}/data.json`, "utf-8"));
 
 		return data as G_Data;
@@ -35,7 +35,7 @@ export async function loadData<G_Data>(
 
 	const data =
 		isProductionEnvironment(EnvVars) && v.isString(config.remotePath)
-			? FirebaseService.get(config.remotePath)
+			? await DatabaseService.get(config.remotePath)
 			: JSON.parse(fs.readFileSync(config.localPath, "utf-8"));
 
 	return data as G_Data;

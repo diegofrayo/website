@@ -4,7 +4,10 @@ import { ValiError } from "valibot";
 import { CustomError } from "./errors";
 
 export function sendServerError(res: NextApiResponse, error: unknown) {
-	res.status(getStatusCode(error)).json(createServerErrorMessage(error));
+	const response = createServerErrorMessage(error);
+	console.error(response);
+
+	res.status(getStatusCode(error)).json(response);
 }
 
 function getStatusCode(error: unknown) {
@@ -25,8 +28,11 @@ function createServerErrorMessage(error: unknown) {
 	}
 
 	if (error instanceof ValiError) {
-		return { message: "Ooops, bad request, check the form values" };
+		return { message: "Ooops, bad request, check the form values", cause: error.message };
 	}
 
-	return { message: "Ooops, something went wrong :(" };
+	return {
+		message: "Ooops, something went wrong :(",
+		cause: error instanceof Error ? error.message : "",
+	};
 }
