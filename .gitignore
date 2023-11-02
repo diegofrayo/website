@@ -43,4 +43,4 @@ public/rss.xml
 public/sw*
 public/workbox*
 scripts/.ts-node
-src/data/_private
+src/data/_local_

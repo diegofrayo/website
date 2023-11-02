@@ -24,8 +24,8 @@ export const BusinessSchema = object({
 		),
 	]),
 	instagram: string(),
-	menu: union([string([length(0)]), string([url()])]),
 	maps: union([string([length(0)]), string([url()])]),
+	menu: union([string([length(0)]), string([url()])]),
 	country: enumType(["CO"]),
 });
 

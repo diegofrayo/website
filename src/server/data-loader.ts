@@ -2,12 +2,12 @@ import fs from "fs";
 
 import EnvVars from "~/modules/env-vars";
 import { isProductionEnvironment } from "~/utils/app";
-import v from "@diegofrayo/v";
-import FirebaseService from "@diegofrayo/utils/database";
 import type DR from "@diegofrayo/types";
+import FirebaseService from "@diegofrayo/utils/database";
+import v from "@diegofrayo/v";
 
 type T_LoadPageContentParams = {
-	page: "home" | "resume" | "blog";
+	page: "home" | "resume" | "blog" | "businesses" | "contacts";
 	lang?: "en";
 };
 
@@ -21,19 +21,22 @@ export async function loadPageContent({ page, lang = "en" }: T_LoadPageContentPa
 
 export async function loadData<G_Data>(
 	config:
-		| { page: T_LoadPageContentParams["page"]; remotePath?: string }
-		| { fullPath: string; remotePath?: string },
+		| { page: T_LoadPageContentParams["page"]; remote?: boolean }
+		| { localPath: string; remotePath?: string },
 ) {
-	if (isProductionEnvironment(EnvVars) && v.isString(config.remotePath)) {
-		return (await FirebaseService.get(config.remotePath)) as G_Data;
+	if ("page" in config) {
+		const data =
+			isProductionEnvironment(EnvVars) && config.remote
+				? FirebaseService.get(config.page)
+				: JSON.parse(fs.readFileSync(`./src/data/_local_/${config.page}/data.json`, "utf-8"));
+
+		return data as G_Data;
 	}
 
-	const data = JSON.parse(
-		fs.readFileSync(
-			"fullPath" in config ? config.fullPath : `./src/data/${config.page}/data.json`,
-			"utf-8",
-		),
-	);
+	const data =
+		isProductionEnvironment(EnvVars) && v.isString(config.remotePath)
+			? FirebaseService.get(config.remotePath)
+			: JSON.parse(fs.readFileSync(config.localPath, "utf-8"));
 
 	return data as G_Data;
 }

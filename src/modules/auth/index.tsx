@@ -113,7 +113,7 @@ export function withAuthRulesPage<G_ComponentProps extends object>(
 				const pin = window.prompt("Type the security pin");
 				const pinMatched = pin === SECURITY_PIN;
 
-				securityPinSession.set(true);
+				securityPinSession.set(pinMatched);
 
 				return pinMatched === false;
 			}

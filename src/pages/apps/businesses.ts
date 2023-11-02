@@ -10,10 +10,7 @@ export default BusinessesPage;
 // --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps: GetStaticProps<T_BusinessesPageProps> = async () => {
-	const data = await loadData<T_BusinessesPageProps["data"]>({
-		fullPath: `./src/data/_private/businesses/data.json`,
-		remotePath: "businesses",
-	});
+	const data = await loadData<T_BusinessesPageProps["data"]>({ page: "businesses" });
 
 	return {
 		props: {

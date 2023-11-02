@@ -8,10 +8,7 @@ export default ContactsPage;
 // --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps: GetStaticProps<T_ContactsPageProps> = async () => {
-	const data = await loadData<T_ContactsPageProps["data"]>({
-		fullPath: `./src/data/_private/contacts/data.json`,
-		remotePath: "contacts",
-	});
+	const data = await loadData<T_ContactsPageProps["data"]>({ page: "contacts" });
 
 	return {
 		props: {

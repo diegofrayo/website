@@ -10,7 +10,7 @@ export { default } from "~/modules/pages/blog/pages/BlogPostPage";
 // --- NEXT.JS FUNCTIONS ---
 
 export const getStaticPaths: GetStaticPaths = async function getStaticPaths() {
-	const data = await loadData<T_RawBlogPostsResponse>({ page: "blog" });
+	const data = await loadData<T_RawBlogPostsResponse>({ localPath: `./src/data/blog/data.json` });
 
 	return {
 		paths: Object.values(data).map((post) => {
@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps<T_BlogPostPageProps, { slug: string 
 	if (!slug) throw new Error(`Invalid slug: "${slug}"`);
 
 	const post = await loadData<T_RawBlogPostResponse>({
-		fullPath: `./src/data/blog/posts/${slug}.json`,
+		localPath: `./src/data/blog/posts/${slug}.json`,
 	});
 	const mdxCompiled = await compile({ content: post.content });
 

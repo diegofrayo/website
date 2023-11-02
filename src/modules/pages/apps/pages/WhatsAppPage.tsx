@@ -6,19 +6,19 @@ import { Input, Block, Button, Space, Select, Title } from "~/components/primiti
 import { CopyToClipboardPopover } from "~/components/shared";
 import { useDidMount } from "~/hooks";
 import { withAuthRulesPage } from "~/modules/auth";
-import v from "@diegofrayo/v";
+import type DR from "@diegofrayo/types";
 import { isMobileDevice } from "@diegofrayo/utils/browser";
 import { generateSlug, replaceAll } from "@diegofrayo/utils/strings";
-import type DR from "@diegofrayo/types";
+import v from "@diegofrayo/v";
 
 import { Output } from "../components";
 
 function WhatsAppPage() {
 	// --- STATES & REFS ---
 	const [phone, setPhone] = React.useState("");
-	const [message, setMessage] = React.useState(DEFAULT_INPUT_VALUES.message);
+	const [message, setMessage] = React.useState("");
 	const [isAppOptionSelected, setIsAppOptionSelected] = React.useState(false);
-	const isPhoneInputValid = React.useRef(false);
+	const isInputPhoneValid = React.useRef(false);
 
 	// --- VARS ---
 	const whatsAppUrl = composeWhatsAppUrl();
@@ -29,15 +29,15 @@ function WhatsAppPage() {
 	});
 
 	// --- HANDLERS ---
-	function onPhoneInputChangeHandler(event: DR.React.Events.OnChangeEvent<HTMLInputElement>) {
+	function onInputPhoneChangeHandler(event: DR.React.Events.OnChangeEvent<HTMLInputElement>) {
 		const { value } = event.currentTarget;
 
-		isPhoneInputValid.current = event.currentTarget.validity.valid;
+		isInputPhoneValid.current = event.currentTarget.validity.valid;
 
 		setPhone((value.includes("+") ? "+" : "") + replaceAll(generateSlug(value), "-", ""));
 	}
 
-	function onMessageInputChangeHandler(event: DR.React.Events.OnChangeEvent<HTMLInputElement>) {
+	function onInputMessageChangeHandler(event: DR.React.Events.OnChangeEvent<HTMLInputElement>) {
 		const { value } = event.currentTarget;
 		setMessage(value);
 	}
@@ -54,15 +54,12 @@ function WhatsAppPage() {
 	function composeWhatsAppUrl(): string {
 		const url = new URLSearchParams();
 
-		url.append(
-			"phone",
-			isPhoneInputValid.current
-				? `${phone.includes("+") ? "" : "+57"}${phone || DEFAULT_INPUT_VALUES.phone}`
-				: "INVALID_PHONE",
-		);
-		url.append("text", message || DEFAULT_INPUT_VALUES.message);
+		url.append("phone", `${phone.includes("+") ? "" : "+57"}${phone}`);
+		url.append("text", message || "Hola!");
 
-		return `https://${isAppOptionSelected ? "api" : "web"}.whatsapp.com/send?${url.toString()}`;
+		return isInputPhoneValid.current === false
+			? "Error: INVALID FORM VALUES"
+			: `https://${isAppOptionSelected ? "api" : "web"}.whatsapp.com/send?${url.toString()}`;
 	}
 
 	return (
@@ -91,7 +88,8 @@ function WhatsAppPage() {
 								placeholder="🇨🇴 +57"
 								pattern="\+?[0-9]{10,15}"
 								componentProps={{ label: "Phone number" }}
-								onChange={onPhoneInputChangeHandler}
+								onChange={onInputPhoneChangeHandler}
+								required
 							/>
 						</Block>
 						<Space size={2} />
@@ -102,7 +100,7 @@ function WhatsAppPage() {
 								type="text"
 								value={message}
 								componentProps={{ label: "Message" }}
-								onChange={onMessageInputChangeHandler}
+								onChange={onInputMessageChangeHandler}
 							/>
 						</Block>
 						<Space size={2} />
@@ -140,12 +138,18 @@ function WhatsAppPage() {
 						<Block className="tw-flex tw-justify-end tw-gap-2">
 							<Button
 								variant={Button.variant.STYLED}
+								disabled={isInputPhoneValid.current === false}
 								onClick={handleOpenLinkClick}
 							>
 								Open link
 							</Button>
 							<CopyToClipboardPopover textToCopy={whatsAppUrl}>
-								<Button variant={Button.variant.STYLED}>Copy URL</Button>
+								<Button
+									variant={Button.variant.STYLED}
+									disabled={isInputPhoneValid.current === false}
+								>
+									Copy URL
+								</Button>
 							</CopyToClipboardPopover>
 						</Block>
 					</Block>
@@ -156,10 +160,3 @@ function WhatsAppPage() {
 }
 
 export default withAuthRulesPage(WhatsAppPage, { requireAuth: true });
-
-// --- CONSTANTS ---
-
-const DEFAULT_INPUT_VALUES = {
-	message: "Hola!",
-	phone: "3113728898",
-};
