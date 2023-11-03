@@ -294,6 +294,10 @@
 
 /* POPOVER */
 
+.radix-popover-trigger[type="button"] {
+	-webkit-appearance: none;
+}
+
 .radix-popover-content {
 	animation-duration: 400ms;
 	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);

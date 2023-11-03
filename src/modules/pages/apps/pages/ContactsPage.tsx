@@ -59,7 +59,7 @@ function ContactsPage({ data: contacts }: T_ContactsPageProps) {
 			}}
 		>
 			<MainLayout title={PAGE_TITLE}>
-				<Block className="tw-flex tw-flex-row tw-justify-between tw-gap-y-2 tw-border tw-p-4 dr-bg-color-surface-200 dr-border-color-surface-300 print:tw-hidden">
+				<Block className="tw-flex tw-flex-row tw-flex-wrap tw-justify-between tw-gap-y-2 tw-border tw-p-4 dr-bg-color-surface-200 dr-border-color-surface-300 print:tw-hidden">
 					<Title
 						is="h2"
 						variant={Title.variant.SIMPLE}
@@ -170,7 +170,7 @@ function CategoryContacts({
 							return (
 								<Block
 									key={generateSlug(categoryName + contact.name)}
-									className="tw-mb-8 tw-w-full tw-pr-4 sm:tw-w-1/2"
+									className="tw-mb-8 tw-w-full tw-pr-4 last:tw-mb-4 sm:tw-w-1/2"
 									style={{ breakInside: "avoid", pageBreakInside: "avoid" }}
 								>
 									<Text className="tw-mb-1 tw-font-bold tw-leading-tight">{contact.name}</Text>
@@ -251,8 +251,8 @@ function ContactPhone({ phone, country }: T_ContactPhoneProps) {
 		<Block>
 			<CopyToClipboardPopover textToCopy={isPhoneFromColombia ? phoneWithoutCode : phone}>
 				<Button
-					className="tw-inline-block tw-text-sm"
 					variant={Button.variant.SIMPLE}
+					className="tw-inline-block tw-pr-1 tw-text-sm"
 				>
 					<InlineText className="tw-mr-1 tw-not-italic">{COUNTRIES_EMOJIS[country]}</InlineText>
 					<InlineText className="tw-italic">
@@ -274,7 +274,7 @@ function ContactLinks({
 	return (
 		<Block className="tw-flex tw-flex-wrap tw-gap-x-3 tw-gap-y-1">
 			{v.isArray(contact.phone) ? (
-				<Block className="tw-flex tw-w-full tw-gap-3">
+				<Block className="tw-flex tw-w-full tw-flex-wrap tw-gap-3">
 					{contact.phone.map((item) => {
 						return (
 							<WhastAppButton
@@ -320,7 +320,7 @@ function ContactLinks({
 			) : null}
 
 			{v.isArray(contact.phone) ? (
-				<Block className="tw-flex tw-w-full tw-gap-3">
+				<Block className="tw-flex tw-w-full tw-flex-wrap tw-gap-3">
 					{contact.phone.map((item) => {
 						return (
 							<PhoneButton
@@ -353,7 +353,7 @@ function ContactLinks({
 			) : null}
 
 			{v.isArray(contact.phone) ? (
-				<Block className="tw-flex tw-w-full tw-gap-3">
+				<Block className="tw-flex tw-w-full tw-flex-wrap tw-gap-3">
 					{contact.phone.map((item) => {
 						return (
 							<SMSButton

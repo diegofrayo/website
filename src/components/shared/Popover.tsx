@@ -14,7 +14,12 @@ type T_PopoverProps = {
 function Popover({ children, text, open }: T_PopoverProps) {
 	return (
 		<RadixPopover.Root {...(v.isBoolean(open) ? { open } : {})}>
-			<RadixPopover.Trigger asChild>{children}</RadixPopover.Trigger>
+			<RadixPopover.Trigger
+				className="radix-popover-trigger"
+				asChild
+			>
+				{children}
+			</RadixPopover.Trigger>
 			<RadixPopover.Portal>
 				<RadixPopover.Content
 					className={cn(
