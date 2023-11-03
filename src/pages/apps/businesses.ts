@@ -1,8 +1,7 @@
 import type { GetStaticProps } from "next";
 
-import BusinessesPage, {
-	type T_BusinessesPageProps,
-} from "~/modules/pages/apps/pages/BusinessesPage";
+import BusinessesPage from "~/modules/pages/apps/pages/BusinessesPage";
+import { type T_BusinessesPageProps } from "~/modules/pages/apps/pages/types";
 import { loadData } from "~/server/data-loader";
 
 export default BusinessesPage;

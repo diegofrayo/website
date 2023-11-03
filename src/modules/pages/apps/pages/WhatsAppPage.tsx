@@ -11,7 +11,7 @@ import { isMobileDevice } from "@diegofrayo/utils/browser";
 import { generateSlug, replaceAll } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 
-import { Output } from "../components";
+import { Output } from "./components";
 
 function WhatsAppPage() {
 	// --- STATES & REFS ---

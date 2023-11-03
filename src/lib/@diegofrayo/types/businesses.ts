@@ -32,5 +32,5 @@ export const BusinessSchema = object({
 export type T_Business = Input<typeof BusinessSchema>;
 
 export function isBusiness(input: unknown): input is T_Business {
-	return v.isObject(input) && v.isNotEmptyString(input["name"]);
+	return v.isObject(input) && v.isString(input["menu"]);
 }

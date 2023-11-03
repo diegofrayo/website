@@ -38,5 +38,5 @@ export const ContactSchema = object({
 export type T_Contact = Input<typeof ContactSchema>;
 
 export function isContact(input: unknown): input is T_Contact {
-	return v.isObject(input) && v.isNotEmptyString(input["name"]);
+	return v.isObject(input) && v.isString(input["email"]);
 }

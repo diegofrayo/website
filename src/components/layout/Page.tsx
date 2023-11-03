@@ -8,10 +8,10 @@ import EnvVars from "~/modules/env-vars";
 import { ROUTES } from "~/modules/routing";
 import { useDidMount, useDocumentTitle } from "~/hooks";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
+import v from "@diegofrayo/v";
 
-type T_PageProps = {
+export type T_PageProps = {
 	children: DR.React.Children;
 	config: {
 		disableSEO?: boolean;
