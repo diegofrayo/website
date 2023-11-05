@@ -183,3 +183,94 @@ export function WhatsAppMonoIcon({ className, height, width }: T_IconProps) {
 		</svg>
 	);
 }
+
+export function WebsiteIcon({ className, height, width }: T_IconProps) {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			className={className}
+			width={width}
+			height={height}
+			stroke="none"
+			// ---
+			version="1.1"
+			id="Layer_1"
+			x="0px"
+			y="0px"
+			viewBox="0 0 45.3 45.6"
+			enableBackground="new 0 0 45.3 45.6"
+		>
+			<g>
+				<circle
+					fill="none"
+					stroke="currentColor"
+					strokeWidth="1.3469"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					strokeMiterlimit="10"
+					cx="22.4"
+					cy="23.1"
+					r="18.9"
+				/>
+
+				<ellipse
+					fill="none"
+					stroke="currentColor"
+					strokeWidth="1.3469"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					strokeMiterlimit="10"
+					cx="22.4"
+					cy="23.1"
+					rx="7"
+					ry="18.9"
+				/>
+
+				<path
+					fill="none"
+					stroke="currentColor"
+					strokeWidth="1.3469"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					strokeMiterlimit="10"
+					d="
+        M22.4,13.4c-5.5,0-10.5-1.2-13.9-3c-3.1,3.4-4.9,7.8-4.9,12.7c0,4.9,1.9,9.3,4.9,12.7c3.4-1.8,8.4-3,13.9-3s10.5,1.2,13.9,3
+        c3.1-3.4,4.9-7.8,4.9-12.7c0-4.9-1.9-9.3-4.9-12.7C32.9,12.3,27.9,13.4,22.4,13.4z"
+				/>
+
+				<polyline
+					fill="none"
+					stroke="currentColor"
+					strokeWidth="1.3469"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					strokeMiterlimit="10"
+					points="
+        18.4,20.4 20.3,25.8 22.5,21.1 24.3,25.8 26.4,20.4 	"
+				/>
+
+				<polyline
+					fill="none"
+					stroke="currentColor"
+					strokeWidth="1.3469"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					strokeMiterlimit="10"
+					points="
+        31.1,20.4 33.1,25.8 35.2,21.1 37.1,25.8 39.1,20.4 	"
+				/>
+
+				<polyline
+					fill="none"
+					stroke="currentColor"
+					strokeWidth="1.3469"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					strokeMiterlimit="10"
+					points="
+        5.4,20.4 7.4,25.8 9.5,21.1 11.3,25.8 13.4,20.4 	"
+				/>
+			</g>
+		</svg>
+	);
+}

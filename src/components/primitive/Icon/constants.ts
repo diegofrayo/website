@@ -52,6 +52,7 @@ import {
 	LinkedinMonoIcon,
 	SpotifyMonoIcon,
 	TwitterMonoIcon,
+	WebsiteIcon,
 	WhatsAppMonoIcon,
 } from "./social-icons";
 
@@ -161,9 +162,10 @@ const ICONS = {
 		},
 	},
 	WEBSITE: {
-		icon: "/assets/images/icons/website.svg",
+		icon: WebsiteIcon,
 		defaultProps: {
-			alt: "Website",
+			className: "",
+			color: "",
 		},
 	},
 	WHATSAPP: {

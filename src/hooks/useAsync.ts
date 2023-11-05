@@ -54,7 +54,7 @@ function useAsync<G_CallbackArgs extends unknown[], G_CallbackReturn>(
 				throw err;
 			}
 		},
-		[],
+		[key, opts],
 	);
 
 	return { ...state, mutation: executeCallback };

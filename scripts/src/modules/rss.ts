@@ -45,21 +45,23 @@ async function generateRSSFiles() {
 		const postContent = post.content[DEFAULT_LOCALE];
 		const postUrl = `${WEBSITE_METADATA.url}/blog/${post.slug}`;
 
-		feed.addItem({
-			title: postContent.title,
-			id: postUrl,
-			link: postUrl,
-			description: postContent.description,
-			content: postContent.description,
-			author: [
-				{
-					name: WEBSITE_METADATA.shortName,
-					email: WEBSITE_METADATA.email,
-					link: WEBSITE_METADATA.url,
-				},
-			],
-			date: new Date(post.updated_at),
-		});
+		if (post.is_published) {
+			feed.addItem({
+				title: postContent.title,
+				id: postUrl,
+				link: postUrl,
+				description: postContent.description,
+				content: postContent.description,
+				author: [
+					{
+						name: WEBSITE_METADATA.shortName,
+						email: WEBSITE_METADATA.email,
+						link: WEBSITE_METADATA.url,
+					},
+				],
+				date: new Date(post.updated_at),
+			});
+		}
 	});
 
 	[

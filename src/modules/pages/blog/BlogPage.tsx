@@ -25,6 +25,10 @@ function BlogPage({ content, data: posts }: T_BlogPageProps) {
 		>
 			<MainLayout title={content.content.seo.title}>
 				{Object.values(posts).map((post) => {
+					if (post.is_published === false) {
+						return null;
+					}
+
 					return (
 						<Link
 							key={post.slug}

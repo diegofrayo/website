@@ -15,9 +15,11 @@ async function main() {
 		BLOG: "/blog",
 	};
 	const sitemapItems = Object.values(WEBSITE_PAGES).concat(
-		Object.values(BLOG_POSTS).map((post) => {
-			return `/blog/${post.slug}`;
-		}),
+		Object.values(BLOG_POSTS)
+			.map((post) => {
+				return post.is_published ? `/blog/${post.slug}` : "";
+			})
+			.filter(Boolean),
 	);
 
 	await generateSitemapFile(sitemapItems, WEBSITE_METADATA["url"]);
