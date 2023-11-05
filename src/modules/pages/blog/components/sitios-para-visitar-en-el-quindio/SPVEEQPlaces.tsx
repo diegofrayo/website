@@ -50,7 +50,7 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 									<Icon icon={Icon.icon.MAPS} />
 								</Link>
 							) : null}
-							{v.isNotEmptyString(place.maps) ? (
+							{v.isNotEmptyString(place.website) ? (
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={place.website}
