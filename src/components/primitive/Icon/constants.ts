@@ -14,6 +14,7 @@ import {
 	ChevronDoubleUpIcon,
 	ChevronDownIcon,
 	ChevronLeftIcon,
+	ChevronRightIcon,
 	ClipboardIcon,
 	CodeBracketIcon,
 	CogIcon,
@@ -54,7 +55,7 @@ import {
 	TwitterMonoIcon,
 	WebsiteIcon,
 	WhatsAppMonoIcon,
-} from "./social-icons";
+} from "./custom-icons";
 
 const ICONS = {
 	// --- OWN ICONS ---
@@ -266,6 +267,13 @@ const ICONS = {
 	},
 	CHEVRON_LEFT: {
 		icon: ChevronLeftIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	CHEVRON_RIGHT: {
+		icon: ChevronRightIcon,
 		defaultProps: {
 			className: "",
 			color: "",
@@ -521,13 +529,6 @@ export const ICONS = {
 		defaultProps: {
 			className: "",
 			color: "tw-text-green-500",
-		},
-	},
-	CHEVRON_RIGHT: {
-		icon: ChevronRightIcon,
-		defaultProps: {
-			className: "",
-			color: "",
 		},
 	},
 	CLOCK: {

@@ -88,6 +88,7 @@ export function initPWARoutingConfig(router: NextRouter): () => void {
 
 	if (
 		BS_NoRedirectionsYet.get() === true &&
+		window.location.pathname === ROUTES.HOME &&
 		lastPageVisited &&
 		lastPageVisited !== window.location.pathname
 	) {

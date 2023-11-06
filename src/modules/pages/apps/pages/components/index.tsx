@@ -11,9 +11,8 @@ import {
 	Link,
 	Space,
 	Text,
-	Title,
 } from "~/components/primitive";
-import { CopyToClipboardPopover } from "~/components/shared";
+import { BoxWithTitle, CopyToClipboardPopover } from "~/components/shared";
 import { withOnlyClientRender } from "~/hocs";
 import { useDidMount, useEnhancedState } from "~/hooks";
 import { withAuthRulesPage } from "~/modules/auth";
@@ -71,16 +70,10 @@ export const ContactsPage = withAuthRulesPage(
 		return (
 			<Page config={config}>
 				<MainLayout title={config.title || ""}>
-					<Block className="tw-flex tw-flex-row tw-flex-wrap tw-justify-between tw-gap-y-2 tw-border tw-p-4 dr-bg-color-surface-200 dr-border-color-surface-300 print:tw-hidden">
-						<Title
-							is="h2"
-							variant={Title.variant.SIMPLE}
-							size={Title.size.MD}
-							className="tw-leading-normal"
-						>
-							Configuración
-						</Title>
-
+					<BoxWithTitle
+						title="Configuración"
+						className="tw-flex tw-px-2 tw-pb-4 tw-pt-5"
+					>
 						<Block className="tw-flex tw-gap-x-2 tw-gap-y-4">
 							<Button
 								variant={Button.variant.STYLED}
@@ -112,7 +105,7 @@ export const ContactsPage = withAuthRulesPage(
 								/>
 							</Button>
 						</Block>
-					</Block>
+					</BoxWithTitle>
 
 					<Space size={4} />
 

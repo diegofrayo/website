@@ -1,3 +1,4 @@
+export { default as BoxWithTitle } from "./BoxWithTitle";
 export { default as Callout } from "./Callout";
 export { default as CopyToClipboardPopover } from "./CopyToClipboardPopover";
 export { default as ImageWithLink } from "./ImageWithLink";
