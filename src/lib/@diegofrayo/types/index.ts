@@ -75,6 +75,11 @@ declare namespace DR {
 
 			export type OnMouseEventHandler<G_HTMLElement> =
 				ReactLibrary.PointerEventHandler<G_HTMLElement>;
+
+			export type OnTouchEvent<G_HTMLElement> = ReactLibrary.TouchEvent<G_HTMLElement>;
+
+			export type OnTouchEventHandler<G_HTMLElement> =
+				ReactLibrary.TouchEventHandler<G_HTMLElement>;
 		}
 	}
 

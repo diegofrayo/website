@@ -5,6 +5,8 @@ import { Block, Button, Collapsible, Icon, Image, Link, Space, Text } from "~/co
 import { BoxWithTitle } from "~/components/shared";
 import type DR from "@diegofrayo/types";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
+import { isMobileDevice } from "@diegofrayo/utils/browser";
+import { safeCastNumber } from "@diegofrayo/utils/numbers";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 
@@ -135,27 +137,108 @@ export default SPVEEQPlaces;
 function ImageGallery({ id, images }: Pick<T_Place, "images" | "id">) {
 	// --- STATES & REFS ---
 	const [activeIndex, setActiveIndex] = React.useState(0);
-	const totalNumberOfImages = images.length;
+	const { current: totalNumberOfImages } = React.useRef(images.length);
+	const touchEventRef = React.useRef({ start: 0, end: 0 });
+	const imagesContainerRef = React.useRef<HTMLDivElement>(null);
+
+	// --- UTILS ---
+
+	const changeActivePhoto = React.useCallback(
+		function changeActivePhoto({
+			dataIndex,
+			dataDirection,
+		}: {
+			dataIndex?: number | null;
+			dataDirection?: string | null;
+		}) {
+			if (v.isNumber(dataIndex)) {
+				setActiveIndex(Number(dataIndex));
+			} else if (v.isString(dataDirection)) {
+				const isRightDirection = dataDirection === "right";
+
+				setActiveIndex((currentIndex) => {
+					const newIndex = isRightDirection ? currentIndex + 1 : currentIndex - 1;
+
+					return newIndex < 0
+						? totalNumberOfImages - 1
+						: newIndex === totalNumberOfImages
+						? 0
+						: newIndex;
+				});
+			} else {
+				throw new Error(`Invalid params: ${{ dataIndex, dataDirection }}`);
+			}
+		},
+		[setActiveIndex, totalNumberOfImages],
+	);
+
+	const checkSwipeDirection = React.useCallback(
+		function checkSwipeDirection({ start, end }: typeof touchEventRef.current) {
+			if (end < start) {
+				changeActivePhoto({ dataDirection: "right" });
+			} else if (end > start) {
+				changeActivePhoto({ dataDirection: "left" });
+			}
+		},
+		[changeActivePhoto],
+	);
+
+	// --- EFFECTS ---
+	React.useEffect(
+		function attachTouchEvents() {
+			const { current: imagesContainer } = imagesContainerRef;
+
+			if (!imagesContainer) {
+				return () => undefined;
+			}
+
+			function onTouchStart(event: TouchEvent) {
+				touchEventRef.current.start = event.changedTouches[0].screenX;
+			}
+
+			function onTouchEnd(event: TouchEvent) {
+				touchEventRef.current.end = event.changedTouches[0].screenX;
+				checkSwipeDirection(touchEventRef.current);
+			}
+
+			function onClickStart(event: MouseEvent) {
+				touchEventRef.current.start = event.clientX;
+			}
+
+			function onClickEnd(event: MouseEvent) {
+				touchEventRef.current.end = event.clientX;
+				checkSwipeDirection(touchEventRef.current);
+			}
+
+			if (isMobileDevice()) {
+				imagesContainer.addEventListener("touchstart", onTouchStart);
+				imagesContainer.addEventListener("touchend", onTouchEnd);
+			} else {
+				imagesContainer.addEventListener("mousedown", onClickStart);
+				imagesContainer.addEventListener("mouseup", onClickEnd);
+			}
+
+			return function dettachTouchEvents() {
+				if (isMobileDevice()) {
+					imagesContainer.removeEventListener("touchstart", onTouchStart);
+					imagesContainer.removeEventListener("touchend", onTouchEnd);
+				} else {
+					imagesContainer.removeEventListener("mousedown", onClickStart);
+					imagesContainer.removeEventListener("mouseup", onClickEnd);
+				}
+			};
+		},
+		[imagesContainerRef, checkSwipeDirection],
+	);
 
 	// --- HANDLERS ---
 	function handleChangeImage(event: DR.React.Events.OnClickEvent<HTMLButtonElement>) {
-		const dataIndex = event.currentTarget.getAttribute("data-index");
+		const dataIndex = safeCastNumber(event.currentTarget.getAttribute("data-index"), null);
 
-		if (dataIndex !== null) {
-			setActiveIndex(Number(dataIndex));
-		} else {
-			const isRightDirection = event.currentTarget.getAttribute("data-direction") === "right";
-
-			setActiveIndex((currentIndex) => {
-				const newIndex = isRightDirection ? currentIndex + 1 : currentIndex - 1;
-
-				return newIndex < 0
-					? totalNumberOfImages - 1
-					: newIndex === totalNumberOfImages
-					? 0
-					: newIndex;
-			});
-		}
+		changeActivePhoto({
+			dataIndex,
+			dataDirection: event.currentTarget.getAttribute("data-direction"),
+		});
 	}
 
 	if (images.length === 0) {
@@ -165,12 +248,21 @@ function ImageGallery({ id, images }: Pick<T_Place, "images" | "id">) {
 	return (
 		<Block className="tw-relative tw-inline-block tw-bg-white tw-p-2 tw-pb-3">
 			<Block className="tw-relative">
-				<NavigationArrow
-					direction="left"
-					onClick={handleChangeImage}
-				/>
+				<Block className="tw-relative tw-flex tw-max-h-72 tw-max-w-full tw-items-center tw-justify-center tw-bg-black tw-wh-72">
+					<Block
+						className="tw-absolute tw-left-0 tw-top-0 tw-h-full tw-w-full tw-cursor-pointer"
+						ref={imagesContainerRef}
+					>
+						<NavigationArrow
+							direction="left"
+							onClick={handleChangeImage}
+						/>
+						<NavigationArrow
+							direction="right"
+							onClick={handleChangeImage}
+						/>
+					</Block>
 
-				<Block className="tw-flex tw-max-h-72 tw-max-w-full tw-items-center tw-justify-center tw-bg-black tw-wh-72">
 					{images.map((image, index) => {
 						return (
 							<Image
@@ -186,11 +278,6 @@ function ImageGallery({ id, images }: Pick<T_Place, "images" | "id">) {
 						);
 					})}
 				</Block>
-
-				<NavigationArrow
-					direction="right"
-					onClick={handleChangeImage}
-				/>
 			</Block>
 
 			<Block className="tw-mt-2 tw-w-full tw-text-center">
