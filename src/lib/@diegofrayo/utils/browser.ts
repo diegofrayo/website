@@ -149,3 +149,17 @@ export async function deletePWACache() {
 		}),
 	);
 }
+
+export async function downloadComponentAsImage(
+	componentRef: HTMLElement,
+	fileName: string,
+): Promise<void> {
+	const domtoimage = await import("dom-to-image");
+
+	return domtoimage.DomToImage.toPng(componentRef, { quality: 1 }).then((dataUrl: string) => {
+		const link = document.createElement("a");
+		link.download = `${fileName}.png`;
+		link.href = dataUrl;
+		link.click();
+	});
+}

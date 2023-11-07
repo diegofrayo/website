@@ -21,6 +21,7 @@ type T_Place = {
 	website: string;
 	description: string;
 	links: string[];
+	draft: boolean;
 	images: { url: string; alt: string }[];
 };
 
@@ -28,6 +29,10 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 	return (
 		<Block>
 			{places.map((place) => {
+				if (place.draft) {
+					return null;
+				}
+
 				return (
 					<Collapsible
 						key={place.id}
@@ -100,13 +105,17 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 						</BoxWithTitle>
 						<Space size={2} />
 
-						<Block>
-							<Text>
-								<Text className="tw-font-bold">Info:</Text>
-								{place.description || "..."}
-							</Text>
-						</Block>
-						<Space size={2} />
+						{place.description ? (
+							<React.Fragment>
+								<Block>
+									<Text>
+										<Text className="tw-font-bold">Info:</Text>
+										{place.description || "..."}
+									</Text>
+								</Block>
+								<Space size={2} />
+							</React.Fragment>
+						) : null}
 
 						<ImageGallery
 							id={place.id}

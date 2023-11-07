@@ -44,3 +44,4 @@ public/sw*
 public/workbox*
 scripts/.ts-node
 src/data/_local_
+src/lib/@diegofrayo/kords
