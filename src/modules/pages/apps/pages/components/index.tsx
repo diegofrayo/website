@@ -371,10 +371,7 @@ function ContactLinks({
 					href={contact.menu}
 					isExternalLink
 				>
-					<Icon
-						icon={Icon.icon.RESTAURANT_MENU}
-						size={16}
-					/>
+					<Icon icon={Icon.icon.RESTAURANT_MENU} />
 				</Link>
 			) : null}
 		</Block>

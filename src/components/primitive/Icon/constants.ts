@@ -134,10 +134,11 @@ const ICONS = {
 		},
 	},
 	RESTAURANT_MENU: {
-		icon: "/assets/images/icons/restaurant-menu.png",
+		icon: `/assets/images/icons/restaurant-menu.png?v=${+new Date()}`,
 		defaultProps: {
 			className: "",
 			alt: "Restaurant menu",
+			size: 26,
 		},
 	},
 	SOCCER: {
@@ -170,6 +171,7 @@ const ICONS = {
 		defaultProps: {
 			className: "",
 			color: "",
+			size: 26,
 		},
 	},
 	WHATSAPP: {

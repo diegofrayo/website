@@ -198,7 +198,6 @@ export function WebsiteIcon({ className, height, width }: T_IconProps) {
 			x="0px"
 			y="0px"
 			viewBox="0 0 45.3 45.6"
-			enableBackground="new 0 0 45.3 45.6"
 		>
 			<g>
 				<circle
@@ -208,7 +207,7 @@ export function WebsiteIcon({ className, height, width }: T_IconProps) {
 					strokeLinecap="round"
 					strokeLinejoin="round"
 					strokeMiterlimit="10"
-					cx="22.4"
+					cx="22.1"
 					cy="23.1"
 					r="18.9"
 				/>
@@ -220,7 +219,7 @@ export function WebsiteIcon({ className, height, width }: T_IconProps) {
 					strokeLinecap="round"
 					strokeLinejoin="round"
 					strokeMiterlimit="10"
-					cx="22.4"
+					cx="22.1"
 					cy="23.1"
 					rx="7"
 					ry="18.9"
@@ -234,8 +233,8 @@ export function WebsiteIcon({ className, height, width }: T_IconProps) {
 					strokeLinejoin="round"
 					strokeMiterlimit="10"
 					d="
-        M22.4,13.4c-5.5,0-10.5-1.2-13.9-3c-3.1,3.4-4.9,7.8-4.9,12.7c0,4.9,1.9,9.3,4.9,12.7c3.4-1.8,8.4-3,13.9-3s10.5,1.2,13.9,3
-        c3.1-3.4,4.9-7.8,4.9-12.7c0-4.9-1.9-9.3-4.9-12.7C32.9,12.3,27.9,13.4,22.4,13.4z"
+		M22.1,13.4c-5.5,0-10.5-1.2-13.9-3c-3.1,3.4-4.9,7.8-4.9,12.7c0,4.9,1.9,9.3,4.9,12.7c3.4-1.8,8.4-3,13.9-3c5.5,0,10.5,1.2,13.9,3
+		c3.1-3.4,4.9-7.8,4.9-12.7c0-4.9-1.9-9.3-4.9-12.7C32.5,12.3,27.6,13.4,22.1,13.4z"
 				/>
 
 				<polyline
@@ -246,7 +245,7 @@ export function WebsiteIcon({ className, height, width }: T_IconProps) {
 					strokeLinejoin="round"
 					strokeMiterlimit="10"
 					points="
-        18.4,20.4 20.3,25.8 22.5,21.1 24.3,25.8 26.4,20.4 	"
+		18,20.4 20,25.8 22.1,21.1 24,25.8 26.1,20.4 	"
 				/>
 
 				<polyline
@@ -257,7 +256,7 @@ export function WebsiteIcon({ className, height, width }: T_IconProps) {
 					strokeLinejoin="round"
 					strokeMiterlimit="10"
 					points="
-        31.1,20.4 33.1,25.8 35.2,21.1 37.1,25.8 39.1,20.4 	"
+		30.8,20.4 32.7,25.8 34.9,21.1 36.7,25.8 38.8,20.4 	"
 				/>
 
 				<polyline
@@ -268,7 +267,7 @@ export function WebsiteIcon({ className, height, width }: T_IconProps) {
 					strokeLinejoin="round"
 					strokeMiterlimit="10"
 					points="
-        5.4,20.4 7.4,25.8 9.5,21.1 11.3,25.8 13.4,20.4 	"
+		5.1,20.4 7,25.8 9.2,21.1 11,25.8 13.1,20.4 	"
 				/>
 			</g>
 		</svg>

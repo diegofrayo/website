@@ -78,7 +78,7 @@ function Collapsible({
 				<InlineText
 					className={cn(
 						"tw-relative tw-top-0.5 tw-mr-2 tw-transform tw-text-sm",
-						isOpen && "tw-rotate-90",
+						isOpen ? "tw-top-1 tw-rotate-90" : "tw-top-0.5",
 					)}
 				>
 					&#9654;

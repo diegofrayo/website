@@ -19,6 +19,7 @@ interface I_LibraryIcon {
 	defaultProps: {
 		className?: string;
 		color?: string;
+		size?: number;
 	};
 }
 
@@ -28,6 +29,7 @@ interface I_CustomIcon {
 		alt: string;
 		className?: string;
 		color?: string;
+		size?: number;
 	};
 }
 
@@ -59,7 +61,7 @@ function Icon({
 	const wrapperProps = { className: cn("dr-icon", wrapperClassName), ...wrapperPropsProp };
 
 	// --- UTILS ---
-	function getLibraryIconColorStyles(): string {
+	function getLibraryIconColorStyles() {
 		if (v.isNotEmptyString(color)) {
 			return color;
 		}
@@ -69,6 +71,18 @@ function Icon({
 		}
 
 		return "";
+	}
+
+	function getIconSizeStyles(defaultSize: number) {
+		if (v.isNumber(size)) {
+			return { width: size, height: size };
+		}
+
+		if (v.isNumber(icon.defaultProps.size)) {
+			return { width: icon.defaultProps.size, height: icon.defaultProps.size };
+		}
+
+		return { width: defaultSize, height: defaultSize };
 	}
 
 	if (v.isUndefined(icon)) {
@@ -86,7 +100,7 @@ function Icon({
 	if (isLibraryIcon(icon)) {
 		const iconComponentProps = {
 			className: cn(iconBaseStyles, getLibraryIconColorStyles()),
-			...(v.isNumber(size) ? { width: size, height: size } : { width: 16, height: 16 }),
+			...getIconSizeStyles(16),
 		};
 		const IconComponent = icon.icon;
 
@@ -102,7 +116,7 @@ function Icon({
 			alt: `${icon.defaultProps.alt} icon`,
 			src: icon.icon,
 			className: cn(iconBaseStyles),
-			...(v.isNumber(size) ? { width: size, height: size } : { width: 24, height: 24 }),
+			...getIconSizeStyles(24),
 		};
 		const IconComponent = Image;
 

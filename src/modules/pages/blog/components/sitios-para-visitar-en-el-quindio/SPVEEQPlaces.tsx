@@ -50,7 +50,7 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 	return (
 		<Block>
 			{places.map((place) => {
-				if (place.draft) {
+				if (!place.published) {
 					return null;
 				}
 
@@ -120,11 +120,7 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 											className="tw-inline-block"
 											isExternalLink
 										>
-											<Icon
-												icon={Icon.icon.WEBSITE}
-												size={28}
-												wrapperClassName="tw-relative tw--top-0.5 tw--left-px"
-											/>
+											<Icon icon={Icon.icon.WEBSITE} />
 										</Link>
 									) : null}
 
@@ -143,8 +139,8 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 															size={16}
 														/>
 														<Icon
-															icon={Icon.icon.EXTERNAL_LINK}
-															size={8}
+															icon={Icon.icon.INFO}
+															size={10}
 															color="tw-text-white"
 															wrapperClassName="tw-absolute tw--bottom-0.5 tw--right-0.5"
 														/>
@@ -421,8 +417,7 @@ function InfoBlock({ icon, title, children }: T_InfoBlockProps) {
 				<Icon
 					icon={icon.name}
 					color={icon.color}
-					size={20}
-					wrapperClassName="tw-relative tw--top-px"
+					size={16}
 				/>
 				<InlineText
 					is="strong"
@@ -431,7 +426,7 @@ function InfoBlock({ icon, title, children }: T_InfoBlockProps) {
 					{title}:
 				</InlineText>
 			</Block>
-			<Block className="tw-pl-6 tw-text-base tw-font-bold">{children}</Block>
+			<Block className="tw-pl-5 tw-text-base tw-font-bold">{children}</Block>
 		</Block>
 	);
 }
@@ -449,6 +444,6 @@ type T_Place = {
 	website: string;
 	description: string;
 	links: string[];
-	draft: boolean;
+	published: boolean;
 	images: { url: string; alt: string }[];
 };
