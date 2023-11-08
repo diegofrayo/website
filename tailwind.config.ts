@@ -69,6 +69,12 @@ const config: Config = {
 					"100%": { opacity: "0" },
 				},
 			},
+			maxHeight: {
+				inherit: "inherit",
+			},
+			maxWidth: {
+				inherit: "inherit",
+			},
 		},
 	},
 	plugins: [drPlugins],

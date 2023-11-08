@@ -3,6 +3,7 @@ import cn from "classnames";
 
 import { Block, Button, Collapsible, Icon, Image, Link, Space, Text } from "~/components/primitive";
 import { BoxWithTitle } from "~/components/shared";
+import { useDidMount } from "~/hooks";
 import type DR from "@diegofrayo/types";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
 import { isMobileDevice } from "@diegofrayo/utils/browser";
@@ -14,20 +15,28 @@ type T_SPVEEQPlacesProps = {
 	data: T_Place[];
 };
 
-type T_Place = {
-	id: string;
-	name: string;
-	maps: string;
-	instagram: string;
-	location: string;
-	website: string;
-	description: string;
-	links: string[];
-	draft: boolean;
-	images: { url: string; alt: string }[];
-};
-
 function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
+	useDidMount(() => {
+		function generateImagesArray() {
+			const data = { id: "", name: "" };
+
+			if (!data.id || !data.name) return;
+
+			console.log(
+				createArray(10)
+					.map((i) => {
+						return JSON.stringify({
+							url: `/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/${data.id}/${i}.jpg`,
+							alt: data.name,
+						});
+					})
+					.join(","),
+			);
+		}
+
+		generateImagesArray();
+	});
+
 	return (
 		<Block>
 			{places.map((place) => {
@@ -110,10 +119,8 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 						{place.description ? (
 							<React.Fragment>
 								<Block>
-									<Text>
-										<Text className="tw-font-bold">Info:</Text>
-										{place.description || "..."}
-									</Text>
+									<Text className="tw-font-bold">Info:</Text>
+									<Text>{place.description}</Text>
 								</Block>
 								<Space size={2} />
 							</React.Fragment>
@@ -134,7 +141,9 @@ export default SPVEEQPlaces;
 
 // --- COMPONENTS ---
 
-function ImageGallery({ id, images }: Pick<T_Place, "images" | "id">) {
+type T_ImageGalleryProps = Pick<T_Place, "images" | "id"> & { noBounds?: boolean };
+
+function ImageGallery({ id, images, noBounds }: T_ImageGalleryProps) {
 	// --- STATES & REFS ---
 	const [activeIndex, setActiveIndex] = React.useState(0);
 	const { current: totalNumberOfImages } = React.useRef(images.length);
@@ -142,7 +151,6 @@ function ImageGallery({ id, images }: Pick<T_Place, "images" | "id">) {
 	const imagesContainerRef = React.useRef<HTMLDivElement>(null);
 
 	// --- UTILS ---
-
 	const changeActivePhoto = React.useCallback(
 		function changeActivePhoto({
 			dataIndex,
@@ -159,11 +167,15 @@ function ImageGallery({ id, images }: Pick<T_Place, "images" | "id">) {
 				setActiveIndex((currentIndex) => {
 					const newIndex = isRightDirection ? currentIndex + 1 : currentIndex - 1;
 
-					return newIndex < 0
-						? totalNumberOfImages - 1
-						: newIndex === totalNumberOfImages
-						? 0
-						: newIndex;
+					if (noBounds) {
+						return newIndex < 0
+							? totalNumberOfImages - 1
+							: newIndex === totalNumberOfImages
+							? 0
+							: newIndex;
+					}
+
+					return newIndex < 0 ? 0 : newIndex === totalNumberOfImages ? currentIndex : newIndex;
 				});
 			} else {
 				throw new Error(`Invalid params: ${{ dataIndex, dataDirection }}`);
@@ -174,10 +186,14 @@ function ImageGallery({ id, images }: Pick<T_Place, "images" | "id">) {
 
 	const checkSwipeDirection = React.useCallback(
 		function checkSwipeDirection({ start, end }: typeof touchEventRef.current) {
-			if (end < start) {
-				changeActivePhoto({ dataDirection: "right" });
-			} else if (end > start) {
-				changeActivePhoto({ dataDirection: "left" });
+			const diff = Math.abs(start - end);
+
+			if (diff > 15) {
+				if (end < start) {
+					changeActivePhoto({ dataDirection: "right" });
+				} else if (end > start) {
+					changeActivePhoto({ dataDirection: "left" });
+				}
 			}
 		},
 		[changeActivePhoto],
@@ -246,38 +262,43 @@ function ImageGallery({ id, images }: Pick<T_Place, "images" | "id">) {
 	}
 
 	return (
-		<Block className="tw-relative tw-inline-block tw-bg-white tw-p-2 tw-pb-3">
-			<Block className="tw-relative">
-				<Block className="tw-relative tw-flex tw-max-h-72 tw-max-w-full tw-items-center tw-justify-center tw-bg-black tw-wh-72">
-					<Block
-						className="tw-absolute tw-left-0 tw-top-0 tw-h-full tw-w-full tw-cursor-pointer"
-						ref={imagesContainerRef}
-					>
-						<NavigationArrow
-							direction="left"
-							onClick={handleChangeImage}
-						/>
-						<NavigationArrow
-							direction="right"
-							onClick={handleChangeImage}
-						/>
-					</Block>
-
-					{images.map((image, index) => {
-						return (
-							<Image
-								key={image.url}
-								src={image.url}
-								alt={image.alt}
-								className={cn(
-									"tw-mx-auto tw-max-h-full tw-max-w-full",
-									activeIndex !== index && "tw-hidden",
-								)}
-								useNativeImage
-							/>
-						);
-					})}
+		<Block className="tw-relative tw-overflow-hidden tw-bg-white tw-p-2 tw-pb-3">
+			<Block className="tw-relative tw-flex tw-h-[360px] tw-w-full tw-max-w-full tw-items-center tw-justify-center tw-overflow-hidden tw-bg-black md:tw-h-[570px]">
+				<Block
+					className="tw-absolute tw-left-0 tw-top-0 tw-h-full tw-w-full tw-cursor-grab"
+					ref={imagesContainerRef}
+				>
+					<NavigationArrow
+						direction="left"
+						noBounds={noBounds}
+						activeIndex={activeIndex}
+						totalNumberOfImages={images.length}
+						onClick={handleChangeImage}
+					/>
+					<NavigationArrow
+						direction="right"
+						noBounds={noBounds}
+						activeIndex={activeIndex}
+						totalNumberOfImages={images.length}
+						onClick={handleChangeImage}
+					/>
 				</Block>
+
+				{images.map((image, index) => {
+					return (
+						<Image
+							key={image.url}
+							src={image.url}
+							alt={image.alt}
+							className={cn(
+								"tw-mx-auto tw-max-h-full tw-max-w-full",
+								activeIndex !== index && "tw-hidden",
+							)}
+							loading={Math.abs(activeIndex - index) <= 1 ? "eager" : "lazy"}
+							useNativeImage
+						/>
+					);
+				})}
 			</Block>
 
 			<Block className="tw-mt-2 tw-w-full tw-text-center">
@@ -301,14 +322,28 @@ function ImageGallery({ id, images }: Pick<T_Place, "images" | "id">) {
 	);
 }
 
+type T_NavigationArrowProps = {
+	direction: "right" | "left";
+	activeIndex: number;
+	totalNumberOfImages: number;
+	noBounds: boolean | undefined;
+	onClick: DR.React.Events.OnMouseEventHandler<HTMLButtonElement>;
+};
+
 function NavigationArrow({
 	direction,
+	activeIndex,
+	totalNumberOfImages,
+	noBounds,
 	onClick,
-}: {
-	direction: "right" | "left";
-	onClick: DR.React.Events.OnMouseEventHandler<HTMLButtonElement>;
-}) {
+}: T_NavigationArrowProps) {
+	const isFirstIndex = activeIndex === 0;
+	const isLastIndex = activeIndex === totalNumberOfImages - 1;
 	const isRightDirection = direction === "right";
+
+	if (!noBounds && ((isLastIndex && isRightDirection) || (isFirstIndex && !isRightDirection))) {
+		return null;
+	}
 
 	return (
 		<Block
@@ -332,3 +367,18 @@ function NavigationArrow({
 		</Block>
 	);
 }
+
+// --- TYPES ---
+
+type T_Place = {
+	id: string;
+	name: string;
+	maps: string;
+	instagram: string;
+	location: string;
+	website: string;
+	description: string;
+	links: string[];
+	draft: boolean;
+	images: { url: string; alt: string }[];
+};

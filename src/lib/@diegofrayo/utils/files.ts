@@ -118,9 +118,7 @@ export function isMediaFile(extension: string) {
 	return ["jpg", "jpeg", "png", "gif", "heic", "mp4"].includes(extension.toLowerCase());
 }
 
-// --- INTERNALS ---
-
-function prepareFilePathFolder(filePath: string, isDirectory?: boolean) {
+export function prepareFilePathFolder(filePath: string, isDirectory?: boolean) {
 	const folderPath = isDirectory ? filePath : path.dirname(filePath);
 
 	if (!fs.existsSync(folderPath)) {
