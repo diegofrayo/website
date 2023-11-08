@@ -72,10 +72,15 @@ function Collapsible({
 				variant={Title.variant.UNSTYLED}
 				is="h2"
 				role="button"
-				className="tw-flex tw-items-center tw-font-bold"
+				className="tw-flex tw-items-start tw-font-bold"
 				onClick={handleToggleClick}
 			>
-				<InlineText className={cn("tw-mr-2 tw-transform tw-text-sm", isOpen && "tw-rotate-90")}>
+				<InlineText
+					className={cn(
+						"tw-relative tw-top-0.5 tw-mr-2 tw-transform tw-text-sm",
+						isOpen && "tw-rotate-90",
+					)}
+				>
 					&#9654;
 				</InlineText>
 				<InlineText>{computedTitle}</InlineText>

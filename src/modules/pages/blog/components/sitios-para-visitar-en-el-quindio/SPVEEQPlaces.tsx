@@ -11,6 +11,7 @@ import {
 	Link,
 	Space,
 } from "~/components/primitive";
+import { type T_IconName } from "~/components/primitive/Icon";
 import { BoxWithTitle } from "~/components/shared";
 import { useDidMount } from "~/hooks";
 import type DR from "@diegofrayo/types";
@@ -57,50 +58,36 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 					<Collapsible
 						key={place.id}
 						className="tw-mb-4 last:tw-mb-0"
-						contentClassName="tw-pt-2"
+						contentClassName="tw-pt-6"
 						title={`${place.name} [${place.location}]`}
 					>
 						<BoxWithTitle
 							title="Información"
 							className="tw-px-2 tw-py-4"
 						>
-							{v.isNotEmptyString(place.price) ? (
-								<Block className="tw-mb-4 last:tw-mb-0">
-									<Block className="tw-mb-1 tw-flex tw-items-center">
-										<Icon
-											icon={Icon.icon.MONEY}
-											color="tw-text-green-600"
-											size={22}
-											wrapperClassName="tw-relative tw--top-px"
-										/>
-										<InlineText
-											is="strong"
-											className="tw-ml-1 tw-mr-1 tw-text-white"
-										>
-											Precio:
-										</InlineText>
-									</Block>
-									<Block className="tw-pl-7 tw-text-base tw-font-bold">{place.price}</Block>
-								</Block>
+							{v.isNotEmptyString(place.category) ? (
+								<InfoBlock
+									title="Categoría"
+									icon={{ name: Icon.icon.TAG, color: "tw-text-yellow-600" }}
+								>
+									{place.category}
+								</InfoBlock>
 							) : null}
 
-							<Block className="tw-mb-4 last:tw-mb-0">
-								<Block className="tw-mb-1 tw-flex tw-items-center">
-									<Icon
-										icon={Icon.icon.INFO}
-										size={22}
-										color="tw-text-blue-600"
-										wrapperClassName="tw-relative tw--top-px"
-									/>
-									<InlineText
-										is="strong"
-										className="tw-ml-1 tw-mr-1 tw-text-white"
-									>
-										Links:
-									</InlineText>
-								</Block>
+							{v.isNotEmptyString(place.price) ? (
+								<InfoBlock
+									title="Precio"
+									icon={{ name: Icon.icon.MONEY, color: "tw-text-green-600" }}
+								>
+									{place.price}
+								</InfoBlock>
+							) : null}
 
-								<Block className="tw-flex tw-gap-2 tw-pl-7 tw-text-base tw-font-bold">
+							<InfoBlock
+								title="Links"
+								icon={{ name: Icon.icon.INFO, color: "tw-text-cyan-600" }}
+							>
+								<Block className="tw-flex tw-items-center tw-gap-2">
 									{v.isNotEmptyString(place.instagram) ? (
 										<Link
 											variant={Link.variant.SIMPLE}
@@ -111,6 +98,7 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 											<Icon icon={Icon.icon.INSTAGRAM} />
 										</Link>
 									) : null}
+
 									{v.isNotEmptyString(place.maps) ? (
 										<Link
 											variant={Link.variant.SIMPLE}
@@ -118,9 +106,13 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 											className="tw-inline-block"
 											isExternalLink
 										>
-											<Icon icon={Icon.icon.MAPS} />
+											<Icon
+												icon={Icon.icon.MAPS}
+												iconClassName="tw-rounded-full"
+											/>
 										</Link>
 									) : null}
+
 									{v.isNotEmptyString(place.website) ? (
 										<Link
 											variant={Link.variant.SIMPLE}
@@ -131,55 +123,45 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 											<Icon
 												icon={Icon.icon.WEBSITE}
 												size={28}
+												wrapperClassName="tw-relative tw--top-0.5 tw--left-px"
 											/>
 										</Link>
 									) : null}
 
-									{v.isNotEmptyArray(place.links) ? (
-										<Block className="tw-flex tw-gap-2">
-											{place.links.map((link) => {
+									{v.isNotEmptyArray(place.links)
+										? place.links.map((link) => {
 												return (
 													<Link
 														key={link}
 														variant={Link.variant.SIMPLE}
 														href={link}
-														className="tw-relative tw-inline-block"
+														className="tw-relative tw-inline-flex tw-h-[24px] tw-w-[24px] tw-items-center tw-justify-center tw-rounded-full tw-border dr-bg-color-surface-200 dr-border-color-surface-300"
 														isExternalLink
 													>
 														<Icon
 															icon={Icon.icon.LINK}
-															size={20}
+															size={16}
 														/>
 														<Icon
 															icon={Icon.icon.EXTERNAL_LINK}
-															size={10}
-															wrapperClassName="tw-absolute tw-bottom-0 tw--right-0.5"
+															size={8}
+															color="tw-text-white"
+															wrapperClassName="tw-absolute tw--bottom-0.5 tw--right-0.5"
 														/>
 													</Link>
 												);
-											})}
-										</Block>
-									) : null}
+										  })
+										: null}
 								</Block>
-							</Block>
+							</InfoBlock>
 
 							{place.description ? (
-								<Block className="tw-mb-4 last:tw-mb-0">
-									<Block className="tw-mb-1 tw-flex tw-items-center">
-										<Icon
-											icon={Icon.icon.INFO}
-											color="tw-text-blue-600"
-											size={22}
-											wrapperClassName="tw-relative tw--top-px"
-										/>
-										<InlineText
-											is="strong"
-											className="tw-ml-1 tw-mr-1 tw-text-white"
-										>
-											Detalles:
-										</InlineText>
-									</Block>
-								</Block>
+								<InfoBlock
+									title="Detalles"
+									icon={{ name: Icon.icon.INFO, color: "tw-text-blue-600" }}
+								>
+									{place.description}
+								</InfoBlock>
 							) : null}
 						</BoxWithTitle>
 						<Space size={2} />
@@ -426,6 +408,34 @@ function NavigationArrow({
 	);
 }
 
+type T_InfoBlockProps = {
+	icon: { name: T_IconName; color: string };
+	title: string;
+	children: DR.React.Children;
+};
+
+function InfoBlock({ icon, title, children }: T_InfoBlockProps) {
+	return (
+		<Block className="tw-mb-4 last:tw-mb-0">
+			<Block className="tw-mb-1 tw-flex tw-items-center">
+				<Icon
+					icon={icon.name}
+					color={icon.color}
+					size={20}
+					wrapperClassName="tw-relative tw--top-px"
+				/>
+				<InlineText
+					is="strong"
+					className="tw-ml-1 tw-mr-1 tw-text-white"
+				>
+					{title}:
+				</InlineText>
+			</Block>
+			<Block className="tw-pl-6 tw-text-base tw-font-bold">{children}</Block>
+		</Block>
+	);
+}
+
 // --- TYPES ---
 
 type T_Place = {
@@ -434,6 +444,7 @@ type T_Place = {
 	maps: string;
 	instagram: string;
 	location: string;
+	category: string;
 	price: string;
 	website: string;
 	description: string;

@@ -46,6 +46,7 @@ import {
 	InformationCircleIcon as InformationCircleIconSolid,
 	PhoneIcon as PhoneIconSolid,
 	PlayIcon as PlayIconSolid,
+	TagIcon as TagIconSolid,
 	XCircleIcon as XCircleIconSolid,
 } from "@heroicons/react/24/solid";
 import {
@@ -470,6 +471,13 @@ const ICONS = {
 	},
 	TOOL: {
 		icon: WrenchIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	TAG: {
+		icon: TagIconSolid,
 		defaultProps: {
 			className: "",
 			color: "",
