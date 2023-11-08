@@ -42,6 +42,8 @@ import {
 import {
 	ChatBubbleLeftEllipsisIcon as ChatBubbleLeftEllipsisIconSolid,
 	CheckBadgeIcon as CheckBadgeIconSolid,
+	CurrencyDollarIcon as CurrencyDollarIconSolid,
+	InformationCircleIcon as InformationCircleIconSolid,
 	PhoneIcon as PhoneIconSolid,
 	PlayIcon as PlayIconSolid,
 	XCircleIcon as XCircleIconSolid,
@@ -356,6 +358,13 @@ const ICONS = {
 			color: "",
 		},
 	},
+	INFO: {
+		icon: InformationCircleIconSolid,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
 	KEY: {
 		icon: KeyIcon,
 		defaultProps: {
@@ -372,6 +381,13 @@ const ICONS = {
 	},
 	MENU: {
 		icon: Bars4Icon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	MONEY: {
+		icon: CurrencyDollarIconSolid,
 		defaultProps: {
 			className: "",
 			color: "",

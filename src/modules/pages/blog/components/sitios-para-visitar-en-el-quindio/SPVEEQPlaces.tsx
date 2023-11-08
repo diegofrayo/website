@@ -1,7 +1,16 @@
 import * as React from "react";
 import cn from "classnames";
 
-import { Block, Button, Collapsible, Icon, Image, Link, Space, Text } from "~/components/primitive";
+import {
+	Block,
+	Button,
+	Collapsible,
+	Icon,
+	Image,
+	InlineText,
+	Link,
+	Space,
+} from "~/components/primitive";
 import { BoxWithTitle } from "~/components/shared";
 import { useDidMount } from "~/hooks";
 import type DR from "@diegofrayo/types";
@@ -52,79 +61,128 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 						title={`${place.name} [${place.location}]`}
 					>
 						<BoxWithTitle
-							title="Links"
-							className="tw-flex tw-gap-2 tw-px-2 tw-py-4"
+							title="Información"
+							className="tw-px-2 tw-py-4"
 						>
-							{v.isNotEmptyString(place.instagram) ? (
-								<Link
-									variant={Link.variant.SIMPLE}
-									href={place.instagram}
-									className="tw-inline-block"
-									isExternalLink
-								>
-									<Icon icon={Icon.icon.INSTAGRAM} />
-								</Link>
+							{v.isNotEmptyString(place.price) ? (
+								<Block className="tw-mb-4 last:tw-mb-0">
+									<Block className="tw-mb-1 tw-flex tw-items-center">
+										<Icon
+											icon={Icon.icon.MONEY}
+											color="tw-text-green-600"
+											size={22}
+											wrapperClassName="tw-relative tw--top-px"
+										/>
+										<InlineText
+											is="strong"
+											className="tw-ml-1 tw-mr-1 tw-text-white"
+										>
+											Precio:
+										</InlineText>
+									</Block>
+									<Block className="tw-pl-7 tw-text-base tw-font-bold">{place.price}</Block>
+								</Block>
 							) : null}
-							{v.isNotEmptyString(place.maps) ? (
-								<Link
-									variant={Link.variant.SIMPLE}
-									href={place.maps}
-									className="tw-inline-block"
-									isExternalLink
-								>
-									<Icon icon={Icon.icon.MAPS} />
-								</Link>
-							) : null}
-							{v.isNotEmptyString(place.website) ? (
-								<Link
-									variant={Link.variant.SIMPLE}
-									href={place.website}
-									className="tw-inline-block"
-									isExternalLink
-								>
+
+							<Block className="tw-mb-4 last:tw-mb-0">
+								<Block className="tw-mb-1 tw-flex tw-items-center">
 									<Icon
-										icon={Icon.icon.WEBSITE}
-										size={28}
+										icon={Icon.icon.INFO}
+										size={22}
+										color="tw-text-blue-600"
+										wrapperClassName="tw-relative tw--top-px"
 									/>
-								</Link>
-							) : null}
-							{v.isNotEmptyArray(place.links) ? (
-								<Block className="tw-flex tw-gap-2">
-									{place.links.map((link) => {
-										return (
-											<Link
-												key={link}
-												variant={Link.variant.SIMPLE}
-												href={link}
-												className="tw-relative tw-inline-block"
-												isExternalLink
-											>
-												<Icon
-													icon={Icon.icon.LINK}
-													size={20}
-												/>
-												<Icon
-													icon={Icon.icon.EXTERNAL_LINK}
-													size={10}
-													wrapperClassName="tw-absolute tw-bottom-0 tw--right-0.5"
-												/>
-											</Link>
-										);
-									})}
+									<InlineText
+										is="strong"
+										className="tw-ml-1 tw-mr-1 tw-text-white"
+									>
+										Links:
+									</InlineText>
+								</Block>
+
+								<Block className="tw-flex tw-gap-2 tw-pl-7 tw-text-base tw-font-bold">
+									{v.isNotEmptyString(place.instagram) ? (
+										<Link
+											variant={Link.variant.SIMPLE}
+											href={place.instagram}
+											className="tw-inline-block"
+											isExternalLink
+										>
+											<Icon icon={Icon.icon.INSTAGRAM} />
+										</Link>
+									) : null}
+									{v.isNotEmptyString(place.maps) ? (
+										<Link
+											variant={Link.variant.SIMPLE}
+											href={place.maps}
+											className="tw-inline-block"
+											isExternalLink
+										>
+											<Icon icon={Icon.icon.MAPS} />
+										</Link>
+									) : null}
+									{v.isNotEmptyString(place.website) ? (
+										<Link
+											variant={Link.variant.SIMPLE}
+											href={place.website}
+											className="tw-inline-block"
+											isExternalLink
+										>
+											<Icon
+												icon={Icon.icon.WEBSITE}
+												size={28}
+											/>
+										</Link>
+									) : null}
+
+									{v.isNotEmptyArray(place.links) ? (
+										<Block className="tw-flex tw-gap-2">
+											{place.links.map((link) => {
+												return (
+													<Link
+														key={link}
+														variant={Link.variant.SIMPLE}
+														href={link}
+														className="tw-relative tw-inline-block"
+														isExternalLink
+													>
+														<Icon
+															icon={Icon.icon.LINK}
+															size={20}
+														/>
+														<Icon
+															icon={Icon.icon.EXTERNAL_LINK}
+															size={10}
+															wrapperClassName="tw-absolute tw-bottom-0 tw--right-0.5"
+														/>
+													</Link>
+												);
+											})}
+										</Block>
+									) : null}
+								</Block>
+							</Block>
+
+							{place.description ? (
+								<Block className="tw-mb-4 last:tw-mb-0">
+									<Block className="tw-mb-1 tw-flex tw-items-center">
+										<Icon
+											icon={Icon.icon.INFO}
+											color="tw-text-blue-600"
+											size={22}
+											wrapperClassName="tw-relative tw--top-px"
+										/>
+										<InlineText
+											is="strong"
+											className="tw-ml-1 tw-mr-1 tw-text-white"
+										>
+											Detalles:
+										</InlineText>
+									</Block>
 								</Block>
 							) : null}
 						</BoxWithTitle>
 						<Space size={2} />
-
-						{place.description ? (
-							<React.Fragment>
-								<Block>
-									<Text className="tw-font-bold">Info:</Text>
-									<Text>{place.description}</Text>
-								</Block>
-								<Space size={2} />
-							</React.Fragment>
-						) : null}
 
 						<ImageGallery
 							id={place.id}
@@ -376,6 +434,7 @@ type T_Place = {
 	maps: string;
 	instagram: string;
 	location: string;
+	price: string;
 	website: string;
 	description: string;
 	links: string[];
