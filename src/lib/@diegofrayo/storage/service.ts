@@ -27,11 +27,13 @@ const BrowserStorageManager = {
 		storage = "localStorage",
 	}: T_BrowserStorageStateConfig<G_ValueType>) {
 		if (isBrowser()) {
-			const valueFromStorage = getItem({ key, type: typeof value, storage });
+			const storageValue = getItem({ key, type: typeof value, storage });
 
-			if (readInitialValueFromStorage && valueFromStorage !== null) {
-				console.log("...");
-			} else if (saveWhenCreating && valueFromStorage === null) {
+			if (
+				!(readInitialValueFromStorage && storageValue !== null) &&
+				saveWhenCreating &&
+				storageValue === null
+			) {
 				setItem(key, value, storage);
 			}
 		}
