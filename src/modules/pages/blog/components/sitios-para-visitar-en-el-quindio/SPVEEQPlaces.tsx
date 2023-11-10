@@ -13,7 +13,6 @@ import {
 } from "~/components/primitive";
 import { type T_IconName } from "~/components/primitive/Icon";
 import { BoxWithTitle } from "~/components/shared";
-import { useDidMount } from "~/hooks";
 import type DR from "@diegofrayo/types";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
 import { isMobileDevice } from "@diegofrayo/utils/browser";
@@ -26,27 +25,6 @@ type T_SPVEEQPlacesProps = {
 };
 
 function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
-	useDidMount(() => {
-		function generateImagesArray() {
-			const data = { id: "", name: "" };
-
-			if (!data.id || !data.name) return;
-
-			console.log(
-				createArray(10)
-					.map((i) => {
-						return JSON.stringify({
-							url: `/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/${data.id}/${i}.jpg`,
-							alt: data.name,
-						});
-					})
-					.join(","),
-			);
-		}
-
-		generateImagesArray();
-	});
-
 	return (
 		<Block>
 			{places.map((place) => {
