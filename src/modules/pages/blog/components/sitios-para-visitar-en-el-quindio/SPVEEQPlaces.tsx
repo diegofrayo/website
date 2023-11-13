@@ -316,14 +316,16 @@ function ImageGallery({ id, images, noBounds }: T_ImageGalleryProps) {
 			</Block>
 
 			<Block className="tw-mt-2 tw-w-full tw-text-center">
-				<Block className="tw-inline-flex tw-h-6 tw-items-center tw-justify-center tw-rounded-md tw-bg-black/80 tw-p-1">
+				<Block className="tw-inline-block tw-items-center tw-justify-center tw-rounded-md tw-bg-black/80 tw-px-1 tw-py-0.5">
 					{createArray(images.length, 0).map((index) => {
 						return (
 							<Button
 								key={generateSlug(`${id}-Button-${index}`)}
 								className={cn(
 									"tw-mx-1 tw-inline-block tw-rounded-full tw-border-0 tw-leading-0 dr-border-color-surface-600 tw-wh-2",
-									index === activeIndex ? "tw-bg-white/80" : "tw-bg-white/20",
+									index === activeIndex
+										? "tw-bg-white/80 tw-wh-3"
+										: "tw-relative tw--top-0.5 tw-bg-white/20",
 								)}
 								data-index={String(index)}
 								onClick={handleChangeImage}
