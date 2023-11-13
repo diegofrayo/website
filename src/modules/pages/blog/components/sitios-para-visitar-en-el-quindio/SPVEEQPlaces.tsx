@@ -41,7 +41,7 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 					>
 						<BoxWithTitle
 							title="Información"
-							className="tw-px-2 tw-py-4"
+							className="tw-px-2 tw-pb-3 tw-pt-4"
 						>
 							{v.isNotEmptyString(place.category) ? (
 								<InfoBlock
@@ -63,7 +63,7 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 
 							<InfoBlock
 								title="Links"
-								icon={{ name: Icon.icon.INFO, color: "tw-text-cyan-600" }}
+								icon={{ name: Icon.icon.LINK }}
 							>
 								<Block className="tw-flex tw-items-center tw-gap-2">
 									{v.isNotEmptyString(place.instagram) ? (
@@ -98,7 +98,10 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 											className="tw-inline-block"
 											isExternalLink
 										>
-											<Icon icon={Icon.icon.WEBSITE} />
+											<Icon
+												icon={Icon.icon.WEBSITE}
+												size={29.5}
+											/>
 										</Link>
 									) : null}
 
@@ -109,18 +112,12 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 														key={link}
 														variant={Link.variant.SIMPLE}
 														href={link}
-														className="tw-relative tw-inline-flex tw-h-[24px] tw-w-[24px] tw-items-center tw-justify-center tw-rounded-full tw-border dr-bg-color-surface-200 dr-border-color-surface-300"
+														className="tw--mr-1 tw-inline-block"
 														isExternalLink
 													>
 														<Icon
-															icon={Icon.icon.LINK}
-															size={16}
-														/>
-														<Icon
 															icon={Icon.icon.INFO}
-															size={10}
-															color="tw-text-white"
-															wrapperClassName="tw-absolute tw--bottom-0.5 tw--right-0.5"
+															size={29.5}
 														/>
 													</Link>
 												);
@@ -385,7 +382,7 @@ function NavigationArrow({
 }
 
 type T_InfoBlockProps = {
-	icon: { name: T_IconName; color: string };
+	icon: { name: T_IconName; color?: string };
 	title: string;
 	children: DR.React.Children;
 };
@@ -393,10 +390,10 @@ type T_InfoBlockProps = {
 function InfoBlock({ icon, title, children }: T_InfoBlockProps) {
 	return (
 		<Block className="tw-mb-4 last:tw-mb-0">
-			<Block className="tw-mb-1 tw-flex tw-items-center">
+			<Block className="tw-flex tw-items-center">
 				<Icon
 					icon={icon.name}
-					color={icon.color}
+					color={icon.color || ""}
 					size={16}
 				/>
 				<InlineText

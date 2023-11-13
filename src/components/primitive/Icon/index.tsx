@@ -2,9 +2,10 @@ import * as React from "react";
 import cn from "classnames";
 
 import { logger } from "~/modules/logging";
-import { getObjectKeys, mirror } from "@diegofrayo/utils/arrays-and-objects";
-import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
+import { getObjectKeys, mirror } from "@diegofrayo/utils/arrays-and-objects";
+import { generateSlug } from "@diegofrayo/utils/strings";
+import v from "@diegofrayo/v";
 
 import ICONS from "./constants";
 import Block from "../Block";
@@ -99,7 +100,7 @@ function Icon({
 
 	if (isLibraryIcon(icon)) {
 		const iconComponentProps = {
-			className: cn(iconBaseStyles, getLibraryIconColorStyles()),
+			className: cn(iconBaseStyles, getLibraryIconColorStyles(), `icon--${generateSlug(iconName)}`),
 			...getIconSizeStyles(16),
 		};
 		const IconComponent = icon.icon;
