@@ -3,6 +3,7 @@ const withPWA = require("next-pwa")({
 	scope: "/",
 	disable: process.env.DISABLE_PWA === "true",
 });
+const imagesRemoteDomain = new URL(process.env.NEXT_PUBLIC_WEBSITE_URL);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withPWA({
@@ -11,7 +12,13 @@ const nextConfig = withPWA({
 	},
 	images: {
 		disableStaticImages: true,
-		domains: [new URL(process.env.NEXT_PUBLIC_WEBSITE_URL).hostname],
+		remotePatterns: [
+			{
+				protocol: imagesRemoteDomain.protocol.slice(0, -1),
+				hostname: imagesRemoteDomain.hostname,
+				port: imagesRemoteDomain.port || "",
+			},
+		],
 	},
 });
 

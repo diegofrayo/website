@@ -43,12 +43,23 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 							title="Información"
 							className="tw-px-2 tw-pb-3 tw-pt-4"
 						>
-							{v.isNotEmptyString(place.category) ? (
+							{v.isNotEmptyArray(place.category) ? (
 								<InfoBlock
 									title="Categoría"
 									icon={{ name: Icon.icon.TAG, color: "tw-text-yellow-600" }}
 								>
-									{place.category}
+									<Block className="tw-flex tw-flex-wrap tw-gap-2">
+										{place.category.map((category) => {
+											return (
+												<InlineText
+													key={generateSlug(`${place.name}-${category}`)}
+													className="tw-inline-block tw-rounded-md tw-border tw-px-2 tw-py-0.5 tw-text-sm dr-bg-color-surface-200 dr-border-color-surface-300"
+												>
+													{category}
+												</InlineText>
+											);
+										})}
+									</Block>
 								</InfoBlock>
 							) : null}
 
@@ -105,24 +116,26 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 										</Link>
 									) : null}
 
-									{v.isNotEmptyArray(place.links)
-										? place.links.map((link) => {
-												return (
-													<Link
-														key={link}
-														variant={Link.variant.SIMPLE}
-														href={link}
-														className="tw--mr-1 tw-inline-block"
-														isExternalLink
-													>
-														<Icon
-															icon={Icon.icon.INFO}
-															size={29.5}
-														/>
-													</Link>
-												);
-										  })
-										: null}
+									<Block className="tw-flex tw-gap-1">
+										{v.isNotEmptyArray(place.links)
+											? place.links.map((link) => {
+													return (
+														<Link
+															key={link}
+															variant={Link.variant.SIMPLE}
+															href={link}
+															className="tw-inline-block"
+															isExternalLink
+														>
+															<Icon
+																icon={Icon.icon.INFO}
+																size={29.5}
+															/>
+														</Link>
+													);
+											  })
+											: null}
+									</Block>
 								</Block>
 							</InfoBlock>
 
@@ -416,7 +429,7 @@ type T_Place = {
 	maps: string;
 	instagram: string;
 	location: string;
-	category: string;
+	category: string[];
 	price: string;
 	website: string;
 	description: string;
