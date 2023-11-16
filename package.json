@@ -28,10 +28,10 @@
 		"styles:css-vars": "ts-node --project ./scripts/tsconfig.json scripts/src/modules/tailwind/css-vars.ts",
 		"styles:tw-plugins": "ts-node --project ./scripts/tsconfig.json --emit --compilerHost scripts/src/modules/tailwind/plugins.ts",
 		"===== UTILS =====": "",
-		"scripts:commit": "sh ./scripts/src/modules/generic-commit.sh",
-		"scripts:sync-shared-lib": "sh ./scripts/src/modules/sync-shared-lib.sh",
-		"scripts:code-stats": "tokei ./src",
-		"scripts:code-complexity": "npx code-complexity . --filter \"./src/**/*.tsx\" --limit 10 --sort complexity"
+		"script:commit": "sh ./scripts/src/modules/generic-commit.sh",
+		"script:sync-shared-lib": "sh ./scripts/src/modules/sync-shared-lib.sh",
+		"script:code-stats": "tokei ./src",
+		"script:code-complexity": "npx code-complexity . --filter \"./src/**/*.tsx\" --limit 10 --sort complexity"
 	},
 	"dependencies": {
 		"@heroicons/react": "^2.0.18",

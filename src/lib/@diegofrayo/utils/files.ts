@@ -115,7 +115,9 @@ export function renameFile(
 }
 
 export function isMediaFile(extension: string) {
-	return ["jpg", "jpeg", "png", "gif", "heic", "mp4"].includes(extension.toLowerCase());
+	return ["jpg", "jpeg", "png", "gif", "heic", "mp4", "webp", "avif"].includes(
+		extension.toLowerCase(),
+	);
 }
 
 export function prepareFilePathFolder(filePath: string, isDirectory?: boolean) {
