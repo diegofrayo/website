@@ -96,6 +96,12 @@ module.exports = {
 		"@typescript-eslint/no-unused-vars": "error",
 		"no-loops/no-loops": "error",
 		"no-restricted-exports": ["error", { restrictedNamedExports: [] }],
+		"prettier/prettier": [
+			"error",
+			{
+				endOfLine: "auto",
+			},
+		],
 		"react/jsx-no-bind": [
 			"error",
 			{
