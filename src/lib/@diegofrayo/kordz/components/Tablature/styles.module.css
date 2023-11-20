@@ -1,0 +1,17 @@
+.dr-tablature-position--cell::before {
+	background-color: black;
+	content: "";
+	display: inline-block;
+	height: 1px;
+	left: 0;
+	max-width: 100%;
+	position: absolute;
+	top: 10px;
+	width: 100%;
+}
+
+@media print {
+	.dr-tablature-position--cell::before {
+		border-bottom: 1px solid black;
+	}
+}

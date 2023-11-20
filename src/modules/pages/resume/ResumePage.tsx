@@ -98,7 +98,8 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 								>
 									<Icon
 										icon={Icon.icon.GMAIL}
-										size={32}
+										size={40}
+										iconClassName="tw-p-1"
 									/>
 								</Link>
 								<Link
@@ -109,7 +110,8 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 								>
 									<Icon
 										icon={Icon.icon.LINKEDIN}
-										size={32}
+										size={40}
+										iconClassName="tw-p-1"
 									/>
 								</Link>
 								{data.contactInfo.websites.map((website) => {
@@ -126,12 +128,13 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 											{isPersonalWebsite ? (
 												<Icon
 													icon={Icon.icon.WEBSITE}
-													size={32}
+													size={40}
 												/>
 											) : (
 												<Icon
 													icon={Icon.icon.GITHUB}
-													size={32}
+													size={40}
+													iconClassName="tw-p-1"
 												/>
 											)}
 										</Link>

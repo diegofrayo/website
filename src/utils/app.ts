@@ -1,5 +1,5 @@
-import { isBrowser, throwError } from "@diegofrayo/utils/misc";
 import type DR from "@diegofrayo/types";
+import { isBrowser, throwError } from "@diegofrayo/utils/misc";
 
 export function isDevelopmentEnvironment(EnvVars?: DR.Object<string>): boolean {
 	return (

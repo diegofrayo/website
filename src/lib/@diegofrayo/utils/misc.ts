@@ -34,6 +34,18 @@ export function delay(ms: number) {
 	});
 }
 
+export async function safeAsync<G_Return>(
+	callback: () => G_Return,
+): Promise<[G_Return, undefined] | [undefined, Error]> {
+	try {
+		const response = await callback();
+
+		return [response, undefined];
+	} catch (error) {
+		return [undefined, error as Error];
+	}
+}
+
 // --- INTERNALS ---
 
 type T_HttpError = { response: { data: { message: string } } };

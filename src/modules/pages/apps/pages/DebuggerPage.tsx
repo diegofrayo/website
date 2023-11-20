@@ -1,15 +1,19 @@
 import * as React from "react";
 
-import { Block, Button, Pre, Space, Title } from "~/components/primitive";
 import { MainLayout, Page } from "~/components/layout";
+import { Block, Button, Pre, Space, Title } from "~/components/primitive";
 import { SourceCode } from "~/components/shared";
 import { useDidMount } from "~/hooks";
 import AnalyticsService from "~/modules/analytics";
 import { AuthService, withAuthRulesPage } from "~/modules/auth";
 import EnvVars from "~/modules/env-vars";
 import { clearLogsHistory, getLogsHistory } from "~/modules/logging";
-import { isDevelopmentEnvironment, isLocalhostEnvironment } from "~/utils/app";
-import v from "@diegofrayo/v";
+import {
+	isDevelopmentEnvironment,
+	isLocalhostEnvironment,
+	isProductionEnvironment,
+	isRemoteLocalhostEnvironment,
+} from "~/utils/app";
 import {
 	getAndroidVersion,
 	getScreenSize,
@@ -20,6 +24,7 @@ import {
 	is_iOS_AndMobileDevice,
 } from "@diegofrayo/utils/browser";
 import { isBrowser, isServer } from "@diegofrayo/utils/misc";
+import v from "@diegofrayo/v";
 
 function DebuggerPage() {
 	// --- STATES & REFS ---
@@ -56,7 +61,9 @@ function DebuggerPage() {
 						isServer: isServer(),
 						isBrowser: isBrowser(),
 						isLocalhostEnvironment: isLocalhostEnvironment(EnvVars),
+						isProductionEnvironment: isProductionEnvironment(EnvVars),
 						isDevelopmentEnvironment: isDevelopmentEnvironment(EnvVars),
+						isRemoteLocalhostEnvironment: isRemoteLocalhostEnvironment(EnvVars),
 					},
 				},
 				undefined,

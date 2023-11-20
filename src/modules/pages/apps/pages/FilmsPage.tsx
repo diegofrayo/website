@@ -221,7 +221,7 @@ function FilmsPage() {
 														size={18}
 													/>
 
-													<Block className="tw-z-20 tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-70 tw-p-2 dr-bg-color-surface-100">
+													<Block className="tw-z-20 tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-90 tw-p-2 dr-bg-color-surface-100">
 														{source === "imdb" ? (
 															<Image
 																src="/assets/images/pages/apps/films/imdb.png"
@@ -238,9 +238,16 @@ function FilmsPage() {
 																width={24}
 																height={24}
 															/>
+														) : source === "Netflix" ? (
+															<Icon
+																icon={Icon.icon.NETFLIX}
+																size={24}
+																wrapperClassName="tw-flex-shrink-0"
+																iconClassName="tw-border dr-border-color-surface-300"
+															/>
 														) : (
 															<Icon
-																icon={source === "Netflix" ? Icon.icon.NETFLIX : Icon.icon.YOUTUBE}
+																icon={Icon.icon.YOUTUBE}
 																size={24}
 																wrapperClassName="tw-flex-shrink-0"
 															/>
