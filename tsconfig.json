@@ -22,8 +22,8 @@
 			"@diegofrayo/*": ["./src/lib/@diegofrayo/*"],
 			"~/*": ["./src/*"]
 		},
-		"module": "esnext",
-		"moduleResolution": "bundler",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
 		"resolveJsonModule": true,
 
 		// JavaScript support
@@ -32,8 +32,8 @@
 
 		// Language and Environment
 		"jsx": "preserve",
-		"target": "es6",
-		"lib": ["dom", "dom.iterable", "esnext"],
+		"target": "ES6",
+		"lib": ["DOM", "DOM.ITERABLE", "ESNext"],
 
 		// Completeness
 		"skipLibCheck": true,

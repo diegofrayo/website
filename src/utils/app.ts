@@ -13,7 +13,12 @@ export function isProductionEnvironment(EnvVars?: DR.Object<string>): boolean {
 
 export function isLocalhostEnvironment(EnvVars?: DR.Object<string>): boolean {
 	const url = isBrowser() ? window.location.href : getWebsiteURL(EnvVars);
-	return url.includes("localhost") || url.includes("192.");
+	return url.includes("localhost");
+}
+
+export function isRemoteLocalhostEnvironment(EnvVars?: DR.Object<string>): boolean {
+	const url = isBrowser() ? window.location.href : getWebsiteURL(EnvVars);
+	return url.includes("192.");
 }
 
 // --- INTERNALS ---

@@ -1,5 +1,6 @@
 /* eslint @typescript-eslint/dot-notation: 0 */
 
+import colorConvert from "color-convert";
 import plugin from "tailwindcss/plugin";
 import TW_DEFAULT_THEME from "tailwindcss/defaultTheme";
 import CUSTOM_THEME from "./theme";
@@ -40,6 +41,7 @@ function generateDefaultPluginConfig() {
 			currentResult[`.dr-${className}`] = createTailwindStyleValue({
 				cssProperty: config.property,
 				className,
+				value: config.value["default"],
 			});
 		}
 
@@ -61,13 +63,21 @@ function generateWidthAndHeightPluginConfig() {
 function createTailwindStyleValue({
 	cssProperty,
 	className,
+	value,
 }: {
 	cssProperty: string;
 	className: string;
+	value: string;
 }) {
+	if (cssProperty === "backgroundColor") {
+		return {
+			"--fallback": "1",
+			backgroundColor: hexToRgba(value),
+		};
+	}
+
 	if (
 		[
-			"backgroundColor",
 			"color",
 			"borderColor",
 			"borderTopColor",
@@ -77,7 +87,6 @@ function createTailwindStyleValue({
 		].includes(cssProperty)
 	) {
 		return {
-			"--fallback": "1",
 			[cssProperty]: `var(--dr-color-${className.split("-color-")[1]})`,
 		};
 	}
@@ -85,4 +94,9 @@ function createTailwindStyleValue({
 	return {
 		[cssProperty]: `var(--dr-${className})`,
 	};
+}
+
+function hexToRgba(value: string) {
+	const [r, g, b] = colorConvert.hex.rgb(value);
+	return `rgba(${r}, ${g}, ${b}, var(--tw-bg-opacity, var(--fallback)))`;
 }

@@ -21,7 +21,9 @@ import { Output } from "./components";
 
 function DencryptPage() {
 	// --- HOOKS ---
-	const { mutation: dencryptMutation, isLoading } = useAsync("/dencrypt", DencryptAPI.dencrypt);
+	const { asyncFn: dencryptMutation, isLoading } = useAsync("/dencrypt", DencryptAPI.dencrypt, {
+		autoLaunch: false,
+	});
 
 	// --- STATES & REFS ---
 	const [output, setOutput] = React.useState("");

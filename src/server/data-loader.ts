@@ -8,7 +8,7 @@ import DatabaseService from "@diegofrayo/utils/database";
 import v from "@diegofrayo/v";
 
 type T_LoadPageContentParams = {
-	page: "home" | "resume" | "blog" | "businesses" | "contacts";
+	page: "home" | "resume" | "blog" | "businesses" | "contacts" | "timeline" | "films" | "books";
 	lang?: "en";
 };
 
@@ -52,7 +52,7 @@ export async function loadData<G_Data>(
 
 type T_RawPageContent = {
 	config: {
-		locales: Array<"en">;
+		locales: "en"[];
 		default_locale: "en";
 		is_seo_enabled: boolean;
 		pathname: string;

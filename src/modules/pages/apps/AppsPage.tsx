@@ -67,6 +67,21 @@ const APPS = [
 		name: "whatsapp",
 	},
 	{
+		id: "books",
+		icon: Icon.icon.BOOK,
+		name: "books",
+	},
+	{
+		id: "films",
+		icon: Icon.icon.FILM,
+		name: "films",
+	},
+	{
+		id: "timeline",
+		icon: Icon.icon.PRESENTATION_CHART_LINE,
+		name: "timeline",
+	},
+	{
 		id: "debugger",
 		icon: Icon.icon.CODE,
 		name: "debugger",

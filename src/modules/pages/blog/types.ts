@@ -11,13 +11,13 @@ export type T_RawBlogPostResponse = {
 				description: string;
 			};
 		};
-		categories: Array<string>;
-		locales: Array<string>;
+		categories: string[];
+		locales: string[];
 		created_at: string;
 		published_at: string;
 		updated_at: string;
 		is_published: boolean;
-		sources: Array<{ title: string; url: string }>;
+		sources: { title: string; url: string }[];
 		assets: DR.Object;
 	};
 	content: string;

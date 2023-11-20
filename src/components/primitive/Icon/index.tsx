@@ -59,7 +59,10 @@ function Icon({
 }: T_IconProps) {
 	// --- VARS ---
 	const icon = ICONS[iconName] as T_Icon;
-	const wrapperProps = { className: cn("dr-icon", wrapperClassName), ...wrapperPropsProp };
+	const wrapperProps = {
+		className: cn("dr-icon", wrapperClassName),
+		...wrapperPropsProp,
+	};
 
 	// --- UTILS ---
 	function getLibraryIconColorStyles() {

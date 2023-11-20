@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { renderIf } from "~/hocs";
 import { useDidMount } from "~/hooks";
-import { isProductionEnvironment } from "~/utils/app";
+import { isProductionEnvironment, isRemoteLocalhostEnvironment } from "~/utils/app";
 import { BrowserStorageManager } from "@diegofrayo/storage";
 import type DR from "@diegofrayo/types";
 import { isBrowser } from "@diegofrayo/utils/misc";
@@ -28,7 +28,7 @@ class AuthServiceClass {
 	}
 
 	loadSession() {
-		this.#isUserLoggedIn = this.#BS_AUTH.get();
+		this.#isUserLoggedIn = isRemoteLocalhostEnvironment() ? true : this.#BS_AUTH.get();
 	}
 
 	createSession() {

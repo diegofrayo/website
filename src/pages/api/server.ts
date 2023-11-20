@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+import dataHandler from "~/server/api/endpoints/data/handler";
 import dencryptHandler from "~/server/api/endpoints/dencrypt/handler";
 import isrHandler from "~/server/api/endpoints/isr/handler";
 import signInHandler from "~/server/api/endpoints/sign-in/handler";
@@ -19,6 +20,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 		case "POST/isr":
 			await isrHandler(req, res);
+			break;
+
+		case "POST/data":
+			await dataHandler(req, res);
 			break;
 
 		default:

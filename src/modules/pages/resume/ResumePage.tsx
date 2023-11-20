@@ -89,11 +89,11 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 
 							<Space size={4} />
 
-							<Block className="tw-text-center dr-text-color-surface-600">
+							<Block className="tw-flex tw-justify-center tw-gap-2 dr-text-color-surface-600">
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={`mailto:${data.contactInfo.email}`}
-									className="tw-mx-2 tw-inline-block"
+									className="tw-inline-block"
 									isExternalLink
 								>
 									<Icon
@@ -104,7 +104,7 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={data.contactInfo.linkedin}
-									className="tw-mx-2 tw-inline-block"
+									className="tw-inline-block"
 									isExternalLink
 								>
 									<Icon
@@ -120,13 +120,13 @@ function ResumePage({ data, content }: T_ResumePageProps) {
 											key={generateSlug(website.name)}
 											variant={Link.variant.SIMPLE}
 											href={website.value}
-											className="tw-mx-2 tw-inline-block tw-leading-0"
+											className="tw-inline-block"
 											isExternalLink
 										>
 											{isPersonalWebsite ? (
 												<Icon
 													icon={Icon.icon.WEBSITE}
-													size={36}
+													size={32}
 												/>
 											) : (
 												<Icon

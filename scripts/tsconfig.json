@@ -10,8 +10,8 @@
 		"noImplicitAny": false,
 
 		// Modules
-		"module": "commonjs",
-		"moduleResolution": "node"
+		"module": "CommonJS",
+		"moduleResolution": "Node"
 	},
 	"include": ["src/**/*.ts"],
 	"exclude": [".ts-node"]

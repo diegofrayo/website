@@ -3,47 +3,73 @@
 import * as React from "react";
 
 import { logger } from "~/modules/logging";
-import v from "@diegofrayo/v";
 import { delay } from "@diegofrayo/utils/misc";
+import v from "@diegofrayo/v";
 
-type T_Callback<G_CallbackArgs extends unknown[], G_CallbackReturn> = (
-	...args: G_CallbackArgs
-) => Promise<G_CallbackReturn>;
+import useDidMount from "./useDidMount";
 
-type T_Opts = { withDelay?: number | true };
+type T_AsyncFn<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn> = (
+	...args: G_AsyncFnArgs
+) => Promise<G_AsyncFnReturn>;
 
-type T_UseAsyncReturn<
-	G_CallbackArgs extends unknown[],
-	G_CallbackReturn,
-> = T_State<G_CallbackReturn> & {
-	mutation: (...args: G_CallbackArgs) => Promise<G_CallbackReturn>;
+type T_Opts = {
+	autoLaunch?: boolean;
+	withDelay?: number | true;
 };
 
-function useAsync<G_CallbackArgs extends unknown[], G_CallbackReturn>(
+type T_UseAsyncReturn<
+	G_AsyncFnArgs extends unknown[],
+	G_AsyncFnReturn,
+> = T_State<G_AsyncFnReturn> & {
+	asyncFn: T_AsyncFn<G_AsyncFnArgs, G_AsyncFnReturn>;
+};
+
+function useAsync<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn>(
 	key: string,
-	callback: (...args: G_CallbackArgs) => Promise<G_CallbackReturn>,
-	opts?: T_Opts,
-): T_UseAsyncReturn<G_CallbackArgs, G_CallbackReturn> {
+	asyncFn: (...args: G_AsyncFnArgs) => Promise<G_AsyncFnReturn>,
+	optsParam?: T_Opts,
+): T_UseAsyncReturn<G_AsyncFnArgs, G_AsyncFnReturn> {
+	// --- VARS ---
+	const opts = React.useMemo(() => {
+		return {
+			autoLaunch: optsParam
+				? v.isBoolean(optsParam?.autoLaunch)
+					? optsParam?.autoLaunch
+					: true
+				: true,
+			withDelay: optsParam
+				? v.isBoolean(optsParam.withDelay)
+					? 1000
+					: v.isNumber(optsParam.withDelay)
+					? optsParam.withDelay
+					: 0
+				: 0,
+		};
+	}, [optsParam]);
+
 	// --- STATES & REFS ---
-	const [state, dispatch] = React.useReducer(createReducer<G_CallbackReturn>(), initialState);
-	const savedHandler = React.useRef<T_Callback<G_CallbackArgs, G_CallbackReturn>>(callback);
+	const [state, dispatch] = React.useReducer(createReducer<G_AsyncFnReturn>(), {
+		...initialState,
+		isLoading: opts.autoLaunch,
+	});
+	const savedHandler = React.useRef<T_AsyncFn<G_AsyncFnArgs, G_AsyncFnReturn>>(asyncFn);
+
+	// --- EFFECTS ---
+	useDidMount(() => {
+		if (opts.autoLaunch === true) {
+			// @ts-ignore
+			enhancedAsyncFn();
+		}
+	});
 
 	// --- API ---
-	const executeCallback: T_Callback<G_CallbackArgs, G_CallbackReturn> = React.useCallback(
-		async function executeCallback(...args) {
+	const enhancedAsyncFn: T_AsyncFn<G_AsyncFnArgs, G_AsyncFnReturn> = React.useCallback(
+		async function enhancedAsyncFn(...args) {
 			try {
-				logger("LOG", `Mutating "${key}"...`);
+				logger("LOG", `Executing "${key}"...`);
 
 				dispatch({ type: "LOADING" });
-				await delay(
-					opts
-						? v.isNumber(opts.withDelay)
-							? opts.withDelay
-							: v.isBoolean(opts.withDelay)
-							? 1000
-							: 0
-						: 0,
-				);
+				await delay(opts.withDelay);
 
 				const result = await savedHandler.current(...args);
 				dispatch({ type: "SUCCESS", payload: result });
@@ -57,7 +83,11 @@ function useAsync<G_CallbackArgs extends unknown[], G_CallbackReturn>(
 		[key, opts],
 	);
 
-	return { ...state, mutation: executeCallback };
+	return {
+		...state,
+		asyncFn: enhancedAsyncFn,
+		// ...(opts.autoLaunch ? {} : { asyncFn: enhancedAsyncFn }), // TODO
+	};
 }
 
 export default useAsync;

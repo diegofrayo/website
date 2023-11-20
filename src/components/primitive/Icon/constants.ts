@@ -6,10 +6,12 @@ import {
 	ArrowUpIcon,
 	Bars4Icon,
 	BeakerIcon,
+	BookOpenIcon,
 	BriefcaseIcon,
 	BuildingStorefrontIcon,
 	CalendarIcon,
 	ChartBarSquareIcon,
+	CheckIcon,
 	ChevronDoubleDownIcon,
 	ChevronDoubleUpIcon,
 	ChevronDownIcon,
@@ -24,16 +26,20 @@ import {
 	EnvelopeIcon,
 	ExclamationTriangleIcon,
 	EyeIcon,
+	FilmIcon,
 	GlobeAltIcon,
+	HeartIcon,
 	HomeIcon,
 	KeyIcon,
 	LinkIcon,
 	PauseIcon,
 	PlayIcon,
+	PresentationChartLineIcon,
 	PrinterIcon,
 	RssIcon,
 	ServerIcon,
 	Square3Stack3DIcon,
+	StarIcon,
 	UserCircleIcon,
 	WindowIcon,
 	WrenchIcon,
@@ -43,9 +49,12 @@ import {
 	ChatBubbleLeftEllipsisIcon as ChatBubbleLeftEllipsisIconSolid,
 	CheckBadgeIcon as CheckBadgeIconSolid,
 	CurrencyDollarIcon as CurrencyDollarIconSolid,
+	GlobeAltIcon as GlobeAltIconSolid,
+	HeartIcon as HeartIconSolid,
 	InformationCircleIcon as InformationCircleIconSolid,
 	PhoneIcon as PhoneIconSolid,
 	PlayIcon as PlayIconSolid,
+	StarIcon as StarIconSolid,
 	TagIcon as TagIconSolid,
 	XCircleIcon as XCircleIconSolid,
 } from "@heroicons/react/24/solid";
@@ -56,7 +65,6 @@ import {
 	LinkedinMonoIcon,
 	SpotifyMonoIcon,
 	TwitterMonoIcon,
-	WebsiteIcon,
 	WhatsAppMonoIcon,
 } from "./custom-icons";
 
@@ -66,6 +74,7 @@ const ICONS = {
 		icon: "/assets/images/icons/github.svg",
 		defaultProps: {
 			alt: "GitHub",
+			className: "",
 		},
 	},
 	GITHUB_MONO: {
@@ -79,6 +88,7 @@ const ICONS = {
 		icon: "/assets/images/icons/gmail.svg",
 		defaultProps: {
 			alt: "Email",
+			className: "",
 		},
 	},
 	GMAIL_MONO: {
@@ -98,6 +108,7 @@ const ICONS = {
 		icon: "/assets/images/icons/instagram.svg",
 		defaultProps: {
 			alt: "Instagram",
+			className: "",
 		},
 	},
 	INSTAGRAM_MONO: {
@@ -111,6 +122,7 @@ const ICONS = {
 		icon: "/assets/images/icons/linkedin.svg",
 		defaultProps: {
 			alt: "Linkedin",
+			className: "",
 		},
 	},
 	LINKEDIN_MONO: {
@@ -124,20 +136,21 @@ const ICONS = {
 		icon: "/assets/images/icons/maps.svg",
 		defaultProps: {
 			alt: "Google Maps",
+			className: "",
 		},
 	},
 	NETFLIX: {
 		icon: "/assets/images/icons/netflix.svg",
 		defaultProps: {
-			className: "tw-rounded-full",
 			alt: "Netflix",
+			className: "tw-rounded-full ",
 		},
 	},
 	RESTAURANT_MENU: {
 		icon: `/assets/images/icons/restaurant-menu.png?v=${+new Date()}`,
 		defaultProps: {
-			className: "",
 			alt: "Restaurant menu",
+			className: "",
 			size: 26,
 		},
 	},
@@ -151,6 +164,7 @@ const ICONS = {
 		icon: "/assets/images/icons/spotify.svg",
 		defaultProps: {
 			alt: "Spotify",
+			className: "",
 		},
 	},
 	SPOTIFY_MONO: {
@@ -164,10 +178,11 @@ const ICONS = {
 		icon: TwitterMonoIcon,
 		defaultProps: {
 			alt: "Twitter",
+			className: "",
 		},
 	},
 	WEBSITE: {
-		icon: WebsiteIcon,
+		icon: GlobeAltIconSolid,
 		defaultProps: {
 			className: "",
 			color: "",
@@ -178,6 +193,7 @@ const ICONS = {
 		icon: "/assets/images/icons/whatsapp.svg",
 		defaultProps: {
 			alt: "WhatsApp",
+			className: "",
 		},
 	},
 	WHATSAPP_MONO: {
@@ -191,6 +207,7 @@ const ICONS = {
 		icon: "/assets/images/icons/youtube.svg",
 		defaultProps: {
 			alt: "YouTube",
+			className: "",
 		},
 	},
 
@@ -214,6 +231,12 @@ const ICONS = {
 		defaultProps: {
 			className: "",
 			color: "",
+		},
+	},
+	BOOK: {
+		icon: BookOpenIcon,
+		defaultProps: {
+			className: "",
 		},
 	},
 	BRIEFCASE: {
@@ -240,6 +263,13 @@ const ICONS = {
 		icon: ChatBubbleLeftEllipsisIconSolid,
 		defaultProps: {
 			className: "",
+		},
+	},
+	CHECK: {
+		icon: CheckIcon,
+		defaultProps: {
+			className: "",
+			color: "tw-text-green-500",
 		},
 	},
 	CHECK_BADGE: {
@@ -347,11 +377,32 @@ const ICONS = {
 			color: "",
 		},
 	},
+	FILM: {
+		icon: FilmIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
 	GLOBE_ALT: {
 		icon: GlobeAltIcon,
 		defaultProps: {
 			className: "",
 			color: "",
+		},
+	},
+	HEART: {
+		icon: HeartIcon,
+		defaultProps: {
+			className: "",
+			color: "tw-text-red-500",
+		},
+	},
+	HEART_SOLID: {
+		icon: HeartIconSolid,
+		defaultProps: {
+			className: "",
+			color: "tw-text-red-500",
 		},
 	},
 	HOME: {
@@ -423,6 +474,13 @@ const ICONS = {
 			color: "",
 		},
 	},
+	PRESENTATION_CHART_LINE: {
+		icon: PresentationChartLineIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
 	PRINTER: {
 		icon: PrinterIcon,
 		defaultProps: {
@@ -462,6 +520,20 @@ const ICONS = {
 		defaultProps: {
 			className: "",
 			color: "",
+		},
+	},
+	STAR: {
+		icon: StarIcon,
+		defaultProps: {
+			className: "",
+			color: "tw-text-yellow-500",
+		},
+	},
+	STAR_SOLID: {
+		icon: StarIconSolid,
+		defaultProps: {
+			className: "",
+			color: "tw-text-yellow-500",
 		},
 	},
 	STORE: {
@@ -532,12 +604,6 @@ export const ICONS = {
 			className: "",
 		},
 	},
-	BOOK_OPEN: {
-		icon: BookOpenIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
 	CALENDAR: {
 		icon: CalendarIcon,
 		defaultProps: {
@@ -548,13 +614,6 @@ export const ICONS = {
 		icon: ChatBubbleLeftEllipsisIcon,
 		defaultProps: {
 			className: "",
-		},
-	},
-	CHECK: {
-		icon: CheckIcon,
-		defaultProps: {
-			className: "",
-			color: "tw-text-green-500",
 		},
 	},
 	CLOCK: {
@@ -589,26 +648,6 @@ export const ICONS = {
 		icon: PencilSquareIcon,
 		defaultProps: {
 			className: "",
-		},
-	},
-	FILM: {
-		icon: FilmIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
-	HEART: {
-		icon: HeartIcon,
-		defaultProps: {
-			className: "",
-			color: "tw-text-red-500",
-		},
-	},
-	HEART_SOLID: {
-		icon: HeartIconSolid,
-		defaultProps: {
-			className: "",
-			color: "tw-text-red-500",
 		},
 	},
 	LOCK_CLOSED: {
@@ -658,19 +697,6 @@ export const ICONS = {
 		icon: PhotoIcon,
 		defaultProps: {
 			className: "",
-		},
-	},
-	PRESENTATION_CHART_LINE: {
-		icon: PresentationChartLineIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
-	STAR: {
-		icon: StarIcon,
-		defaultProps: {
-			className: "",
-			color: "tw-text-yellow-500",
 		},
 	},
 	SUN: {

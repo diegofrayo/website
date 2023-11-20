@@ -84,7 +84,11 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 											className="tw-inline-block"
 											isExternalLink
 										>
-											<Icon icon={Icon.icon.INSTAGRAM} />
+											<Icon
+												icon={Icon.icon.INSTAGRAM}
+												iconClassName="tw-p-[3px]"
+												size={32}
+											/>
 										</Link>
 									) : null}
 
@@ -97,7 +101,8 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 										>
 											<Icon
 												icon={Icon.icon.MAPS}
-												iconClassName="tw-rounded-full"
+												iconClassName="tw-rounded-full tw-p-[3px]"
+												size={32}
 											/>
 										</Link>
 									) : null}
@@ -111,31 +116,29 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 										>
 											<Icon
 												icon={Icon.icon.WEBSITE}
-												size={29.5}
+												size={32}
 											/>
 										</Link>
 									) : null}
 
-									<Block className="tw-flex tw-gap-1">
-										{v.isNotEmptyArray(place.links)
-											? place.links.map((link) => {
-													return (
-														<Link
-															key={link}
-															variant={Link.variant.SIMPLE}
-															href={link}
-															className="tw-inline-block"
-															isExternalLink
-														>
-															<Icon
-																icon={Icon.icon.INFO}
-																size={29.5}
-															/>
-														</Link>
-													);
-											  })
-											: null}
-									</Block>
+									{v.isNotEmptyArray(place.links)
+										? place.links.map((link) => {
+												return (
+													<Link
+														key={link}
+														variant={Link.variant.SIMPLE}
+														href={link}
+														className="tw-inline-block"
+														isExternalLink
+													>
+														<Icon
+															icon={Icon.icon.INFO}
+															size={32}
+														/>
+													</Link>
+												);
+										  })
+										: null}
 								</Block>
 							</InfoBlock>
 
@@ -205,7 +208,7 @@ function ImageGallery({ id, images, noBounds }: T_ImageGalleryProps) {
 				throw new Error(`Invalid params: ${{ dataIndex, dataDirection }}`);
 			}
 		},
-		[setActiveIndex, totalNumberOfImages],
+		[setActiveIndex, totalNumberOfImages, noBounds],
 	);
 
 	const checkSwipeDirection = React.useCallback(

@@ -13,7 +13,8 @@ import { getErrorMessage } from "@diegofrayo/utils/misc";
 
 function SignInPage() {
 	// --- HOOKS ---
-	const { mutation: signInMutation, isLoading } = useAsync("/sign-in", SignInAPI.signIn, {
+	const { asyncFn: signInMutation, isLoading } = useAsync("/sign-in", SignInAPI.signIn, {
+		autoLaunch: false,
 		withDelay: true,
 	});
 
