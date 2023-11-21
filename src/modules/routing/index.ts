@@ -11,6 +11,7 @@ export const ROUTES = {
 	BLOG: "/blog",
 	SIGN_IN: "/sign-in",
 	APPS: "/apps",
+	KORDZ: "/kordz",
 } as const;
 
 export type T_RoutesKeys = keyof typeof ROUTES;

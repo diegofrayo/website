@@ -224,7 +224,7 @@ function FilmsPage() {
 													<Block className="tw-z-20 tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-90 tw-p-2 dr-bg-color-surface-100">
 														{source === "imdb" ? (
 															<Image
-																src="/assets/images/pages/apps/films/imdb.png"
+																src="/assets/images/pages/apps/films/imdb.jpg"
 																alt="imdb icon"
 																className="tw-flex-shrink-0 tw-rounded-full"
 																width={24}
@@ -232,7 +232,7 @@ function FilmsPage() {
 															/>
 														) : source === "Amazon Prime Video" ? (
 															<Image
-																src="/assets/images/pages/apps/films/amazon-prime-video.png"
+																src="/assets/images/pages/apps/films/amazon-prime-video.jpg"
 																alt="Amazon Prime Video icon"
 																className="tw-flex-shrink-0 tw-rounded-full"
 																width={24}

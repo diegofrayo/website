@@ -13,7 +13,7 @@ import {
 	Text,
 	Title,
 } from "~/components/primitive";
-import { type T_IconName } from "~/components/primitive/Icon";
+import type { T_IconName } from "~/components/primitive/Icon";
 import { Toast, TypingTextEffect } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/metadata.json";
 import { renderIf, withOnlyClientRender } from "~/hocs";
@@ -383,7 +383,7 @@ function NavigationMenu() {
 			delayDuration={0}
 		>
 			<RadixNavigationMenu.List className="radix-navigation-menu-list tw-text-center">
-				<RadixNavigationMenu.Item className="tw-inline-block sm:tw-hidden">
+				<RadixNavigationMenu.Item className="tw-inline-block md:tw-hidden">
 					<Button onClick={handleToggleMenuClick}>
 						<Icon
 							icon={Icon.icon.MENU}
@@ -397,7 +397,7 @@ function NavigationMenu() {
 					/>
 				</RadixNavigationMenu.Item>
 
-				<RadixNavigationMenu.Item className="tw-hidden sm:tw-inline-block">
+				<RadixNavigationMenu.Item className="tw-hidden md:tw-inline-block">
 					<NavigationMenuItems />
 				</RadixNavigationMenu.Item>
 			</RadixNavigationMenu.List>
@@ -433,7 +433,7 @@ function NavigationMenuDialog({ show, onCloseHandler }: T_NavigationMenuDialogPr
 
 function NavigationMenuItems() {
 	return (
-		<List className="sm:tw-inline-block sm:tw-overflow-hidden sm:tw-rounded-md sm:tw-border sm:dr-bg-color-surface-100 sm:dr-border-color-surface-300">
+		<List className="md:tw-inline-block md:tw-overflow-hidden md:tw-rounded-md md:tw-border md:dr-bg-color-surface-100 md:dr-border-color-surface-300">
 			<NavigationMenuItem
 				href={ROUTES.HOME}
 				icon={Icon.icon.HOME}
@@ -452,6 +452,7 @@ function NavigationMenuItems() {
 			>
 				Resume
 			</NavigationMenuItem>
+			<KordzNigationMenuItem />
 			<AppsNavigationMenuItem />
 		</List>
 	);
@@ -469,12 +470,12 @@ const NavigationMenuItem = React.forwardRef<HTMLAnchorElement, T_NavigationMenuI
 		const { isCurrentPathActive } = useRouting();
 
 		return (
-			<List.Item className="tw-block sm:tw-inline-block sm:tw-w-36 sm:tw-border-r sm:dr-border-color-surface-400 sm:last:tw-border-r-0">
+			<List.Item className="tw-block md:tw-inline-block md:tw-w-32 md:tw-border-r md:dr-border-color-surface-400 md:last:tw-border-r-0">
 				<Link
 					className={cn(
-						"tw-flex tw-items-center tw-justify-start tw-px-6 tw-py-1.5 tw-text-left tw-text-3xl tw-uppercase dr-font-titles sm:tw-justify-center sm:tw-text-center sm:tw-text-xl sm:dr-bg-color-surface-200",
+						"tw-flex tw-items-center tw-justify-start tw-px-6 tw-py-1.5 tw-text-left tw-text-3xl tw-uppercase dr-font-titles md:tw-justify-center md:tw-text-center md:tw-text-lg md:dr-bg-color-surface-200",
 						isCurrentPathActive(href)
-							? "tw-text-white sm:dr-bg-color-surface-300"
+							? "tw-text-white md:dr-bg-color-surface-300"
 							: "dr-text-color-surface-600",
 					)}
 					href={href}
@@ -493,6 +494,17 @@ const NavigationMenuItem = React.forwardRef<HTMLAnchorElement, T_NavigationMenuI
 		);
 	},
 );
+
+const KordzNigationMenuItem = withAuth(function KordzNigationMenuItem() {
+	return (
+		<NavigationMenuItem
+			href={ROUTES.KORDZ}
+			icon={Icon.icon.MUSIC_NOTE}
+		>
+			Kordz
+		</NavigationMenuItem>
+	);
+});
 
 const AppsNavigationMenuItem = withAuth(function AppsNavigationMenuItem() {
 	return (

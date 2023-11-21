@@ -8,7 +8,17 @@ import DatabaseService from "@diegofrayo/utils/database";
 import v from "@diegofrayo/v";
 
 type T_LoadPageContentParams = {
-	page: "home" | "resume" | "blog" | "businesses" | "contacts" | "timeline" | "films" | "books";
+	page:
+		| "home"
+		| "resume"
+		| "blog"
+		| "businesses"
+		| "contacts"
+		| "timeline"
+		| "films"
+		| "books"
+		| "kordz"
+		| "kordz/songs";
 	lang?: "en";
 };
 
@@ -35,6 +45,7 @@ export async function loadData<G_Data>(
 							"utf-8",
 						),
 				  );
+
 		return data as G_Data;
 	}
 

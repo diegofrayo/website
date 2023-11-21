@@ -11,9 +11,7 @@ import {
 	type T_PlainChordDetails,
 } from "./types";
 
-class GuitarService {
-	private CHORD_BUTTON_SELECTOR = "dr-guitar-chord";
-
+class KordzService {
 	parseChord(plainChordDetails: T_PlainChordDetails): T_Chord {
 		return new Chord(plainChordDetails);
 	}
@@ -114,6 +112,20 @@ class GuitarService {
 		};
 	}
 
+	generateChordsPageContent() {
+		const listOfChordsContent = Object.keys(CHORDS)
+			.sort()
+			.reduce((result, chordName, index, array) => {
+				const isLastItem = array.length - 1 === index;
+
+				return `${result}${chordName}${
+					isLastItem ? "" : chordName.charAt(0) !== array[index + 1]?.charAt(0) ? "\n\n" : "\n"
+				}`;
+			}, "");
+
+		return listOfChordsContent;
+	}
+
 	private parseChordName(rawChordName: string): {
 		chordName: string;
 		chordVariantIndex: number;
@@ -192,9 +204,13 @@ class GuitarService {
 		const REPLACE_SPACES_FOR_NO_DEFAULT_VARIANT_CHORDS = "   ";
 		const isDefaultVariantChord = chord.variantIndex === 0;
 
-		return `<button class="${this.CHORD_BUTTON_SELECTOR} dr-text-color-links${
-			isCurrentLineTheLastOne ? "" : " tw-mb-1"
-		}${isTheLastParsedTextLineBlank ? "" : " tw-mt-3"}" data-chord-index="${chord.variantIndex}">${
+		return `<button class="${[
+			"dr-kordz-chord-button",
+			!isCurrentLineTheLastOne && "tw-mb-1",
+			!isTheLastParsedTextLineBlank && "tw-mt-3",
+		]
+			.filter(Boolean)
+			.join(" ")}" data-chord-index="${chord.variantIndex}">${
 			isDefaultVariantChord
 				? chord.name
 				: `${chord.name}${REPLACE_SPACES_FOR_NO_DEFAULT_VARIANT_CHORDS}`
@@ -210,4 +226,4 @@ class GuitarService {
 	}
 }
 
-export default new GuitarService();
+export default new KordzService();

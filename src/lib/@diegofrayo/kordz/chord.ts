@@ -3,7 +3,7 @@ import { createArray } from "../utils/arrays-and-objects";
 import { sortBy } from "../sort";
 
 import { parseFret, parseGuitarString } from "./utils";
-import { type T_Finger, type T_MusicNote, type T_Chord, type T_PlainChordDetails } from "./types";
+import type { T_Finger, T_MusicNote, T_Chord, T_PlainChordDetails } from "./types";
 
 class Chord {
 	public name;

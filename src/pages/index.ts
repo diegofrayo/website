@@ -8,12 +8,12 @@ export default HomePage;
 // --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps: GetStaticProps<T_HomePageProps> = async () => {
-	const content = await loadPageContent({ page: "home" });
+	const cmsContent = await loadPageContent({ page: "home" });
 	const data = await loadData<T_HomePageProps["data"]>({ page: "home", remote: true });
 
 	return {
 		props: {
-			content,
+			cmsContent,
 			data,
 		},
 	};

@@ -1,5 +1,5 @@
 import v from "../v";
-import { type T_GuitarFret, type T_GuitarString } from "./types";
+import type { T_GuitarFret, T_GuitarString } from "./types";
 
 export const NUMBER_OF_STRINGS = 6;
 

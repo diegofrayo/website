@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { MainLayout, Page } from "~/components/layout";
-import { type T_PageProps } from "~/components/layout/Page";
+import type { T_PageProps } from "~/components/layout/Page";
 import {
 	Block,
 	Button,

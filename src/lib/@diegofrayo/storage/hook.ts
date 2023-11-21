@@ -15,12 +15,18 @@ function useBrowserStorageState<G_ValueType>(
 	);
 	const [state, setState] = React.useState<G_ValueType>(BS_StateRef.get());
 
+	// --- EFFECTS ---
+	React.useEffect(
+		function onLoad() {
+			setState(BS_StateRef.get());
+		},
+		[BS_StateRef],
+	);
+
 	// --- API ---
 	function setEnhancedState(newValue: G_ValueType) {
-		const newState = { ...BS_StateRef.get(), ...newValue };
-
-		BS_StateRef.set(newState);
-		setState(newState);
+		BS_StateRef.set(newValue);
+		setState(newValue);
 	}
 
 	return [state, setEnhancedState];

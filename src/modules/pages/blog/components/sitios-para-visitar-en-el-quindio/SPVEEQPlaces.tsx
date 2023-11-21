@@ -11,7 +11,7 @@ import {
 	Link,
 	Space,
 } from "~/components/primitive";
-import { type T_IconName } from "~/components/primitive/Icon";
+import type { T_IconName } from "~/components/primitive/Icon";
 import { BoxWithTitle } from "~/components/shared";
 import type DR from "@diegofrayo/types";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";

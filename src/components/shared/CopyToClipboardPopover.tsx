@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import Block from "~/components/primitive/Block";
+import type DR from "@diegofrayo/types";
 import { copyToClipboard } from "@diegofrayo/utils/browser";
 import v from "@diegofrayo/v";
-import type DR from "@diegofrayo/types";
 
 import Popover from "./Popover";
 
@@ -11,16 +11,21 @@ import Popover from "./Popover";
 
 type T_CopyToClipboardPopoverProps = {
 	children: DR.React.Children;
-	textToCopy: string;
+	textToCopy: string | (() => string);
+	popoverText?: string;
 };
 
-function CopyToClipboardPopover({ children, textToCopy }: T_CopyToClipboardPopoverProps) {
+function CopyToClipboardPopover({
+	children,
+	textToCopy,
+	popoverText = "copied!",
+}: T_CopyToClipboardPopoverProps) {
 	// --- STATES & REFS ---
 	const [showPopover, setShowPopover] = React.useState(false);
 
 	// --- HANDLERS ---
 	function handleClick(): void {
-		copyToClipboard(textToCopy);
+		copyToClipboard(v.isString(textToCopy) ? textToCopy : textToCopy());
 		setShowPopover((currentValue) => {
 			if (currentValue) {
 				return true;
@@ -33,7 +38,7 @@ function CopyToClipboardPopover({ children, textToCopy }: T_CopyToClipboardPopov
 
 	return (
 		<Popover
-			text="copied!"
+			text={popoverText}
 			open={showPopover}
 		>
 			<Block is="span">

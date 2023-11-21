@@ -2,53 +2,12 @@ import * as React from "react";
 
 import { renderIf } from "~/hocs";
 import { useDidMount } from "~/hooks";
-import { isProductionEnvironment, isRemoteLocalhostEnvironment } from "~/utils/app";
+import { isProductionEnvironment } from "~/utils/app";
 import { BrowserStorageManager } from "@diegofrayo/storage";
 import type DR from "@diegofrayo/types";
-import { isBrowser } from "@diegofrayo/utils/misc";
 
 import { goBack } from "../routing";
-
-// --- SERVICE ---
-
-class AuthServiceClass {
-	#isUserLoggedIn = false;
-
-	#BS_AUTH = BrowserStorageManager.createItem({
-		key: "DR_AUTH",
-		value: false,
-		saveWhenCreating: false,
-		readInitialValueFromStorage: true,
-	});
-
-	constructor() {
-		if (isBrowser()) {
-			this.loadSession();
-		}
-	}
-
-	loadSession() {
-		this.#isUserLoggedIn = isRemoteLocalhostEnvironment() ? true : this.#BS_AUTH.get();
-	}
-
-	createSession() {
-		this.#isUserLoggedIn = true;
-		this.#BS_AUTH.set(this.#isUserLoggedIn);
-	}
-
-	destroySession() {
-		this.#isUserLoggedIn = false;
-		this.#BS_AUTH.remove();
-	}
-
-	isUserLoggedIn() {
-		return this.#isUserLoggedIn;
-	}
-}
-
-export const AuthService = new AuthServiceClass();
-
-// --- HOCS ---
+import AuthService from "./service";
 
 export function withAuth<G_ComponentProps extends object>(
 	Component: DR.React.FunctionComponent<G_ComponentProps>,

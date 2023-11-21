@@ -1,4 +1,4 @@
-# @diegofrayo/lib/guitar
+# @diegofrayo/lib/kordz
 
 Examples
 

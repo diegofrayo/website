@@ -7,7 +7,12 @@ import type DR from "@diegofrayo/types";
 
 // --- PROPS & TYPES ---
 
-const VARIANTS = mirror(["UNSTYLED", "BREAK_WITH_BLANK_LINES", "BREAK_WITH_BLANK_SPACES"]);
+const VARIANTS = mirror([
+	"UNSTYLED",
+	"BREAK_WITH_BLANK_LINES",
+	"BREAK_WITH_BLANK_SPACES",
+	"BREAK_WORDS",
+]);
 type T_Variant = keyof typeof VARIANTS;
 type T_PreProps = DR.DOM.HTMLElementAttributes["pre"] & {
 	variant?: T_Variant;
@@ -38,6 +43,7 @@ const styles = cva("", {
 			[VARIANTS.UNSTYLED]: "",
 			[VARIANTS.BREAK_WITH_BLANK_LINES]: "tw-whitespace-pre-line tw-break-words",
 			[VARIANTS.BREAK_WITH_BLANK_SPACES]: "tw-whitespace-pre-wrap tw-break-words",
+			[VARIANTS.BREAK_WORDS]: "tw-whitespace-normal tw-break-all",
 		},
 	},
 });

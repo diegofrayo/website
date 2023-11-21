@@ -24,7 +24,7 @@ function Callout({ children, variant = VARIANTS.ERROR }: T_CalloutProps) {
 		<Block
 			className={cn(
 				`dr-callout dr-callout--${variant.toLowerCase()}`,
-				"tw-flex tw-items-center tw-justify-center tw-rounded-lg tw-p-4",
+				"tw-flex tw-items-center tw-justify-start tw-rounded-lg tw-p-4",
 				styles({ variant }),
 			)}
 			data-markdown-block
@@ -44,7 +44,7 @@ function Callout({ children, variant = VARIANTS.ERROR }: T_CalloutProps) {
 					/>
 				)}
 			</Block>
-			<Block>{children}</Block>
+			<Block className="flex-1">{children}</Block>
 		</Block>
 	);
 }

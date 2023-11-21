@@ -25,7 +25,7 @@ import styles from "./HomePage.styles.module.css";
 // --- COMPONENT DEFINITION ---
 
 export type T_HomePageProps = {
-	content: T_PageContent;
+	cmsContent: T_PageContent;
 	data: {
 		song: {
 			title: string;
@@ -41,17 +41,17 @@ export type T_HomePageProps = {
 	};
 };
 
-function HomePage({ content, data }: T_HomePageProps) {
+function HomePage({ cmsContent, data }: T_HomePageProps) {
 	return (
 		<Page
 			config={{
-				title: content.content.seo.title,
-				description: content.content.seo.description,
-				disableSEO: content.config.is_seo_enabled === false,
-				pathname: content.config.pathname,
+				title: cmsContent.content.seo.title,
+				description: cmsContent.content.seo.description,
+				disableSEO: cmsContent.config.is_seo_enabled === false,
+				pathname: cmsContent.config.pathname,
 			}}
 		>
-			<MainLayout title={content.content.seo.title}>
+			<MainLayout title={cmsContent.content.seo.title}>
 				<Block className="sm:tw-py-12">
 					<Room
 						song={data.song}

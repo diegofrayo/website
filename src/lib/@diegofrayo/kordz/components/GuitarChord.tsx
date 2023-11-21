@@ -4,7 +4,7 @@ import { downloadComponentAsImage } from "../../utils/browser";
 import { getErrorMessage, safeAsync } from "../../utils/misc";
 import v from "../../v";
 
-import { type T_GuitarFret, type T_PlainChordDetails } from "../types";
+import type { T_GuitarFret, T_PlainChordDetails } from "../types";
 import GuitarService from "../service";
 import GuitarFret from "./GuitarFret";
 

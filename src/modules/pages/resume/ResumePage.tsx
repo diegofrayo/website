@@ -22,21 +22,21 @@ import type { T_PageContent } from "~/server/data-loader";
 // --- COMPONENT DEFINITION ---
 
 export type T_ResumePageProps = {
-	content: T_PageContent;
+	cmsContent: T_PageContent;
 	data: T_Resume;
 };
 
-function ResumePage({ data, content }: T_ResumePageProps) {
+function ResumePage({ data, cmsContent }: T_ResumePageProps) {
 	return (
 		<Page
 			config={{
-				title: content.content.seo.title,
-				description: content.content.seo.description,
-				disableSEO: content.config.is_seo_enabled === false,
-				pathname: content.config.pathname,
+				title: cmsContent.content.seo.title,
+				description: cmsContent.content.seo.description,
+				disableSEO: cmsContent.config.is_seo_enabled === false,
+				pathname: cmsContent.config.pathname,
 			}}
 		>
-			<MainLayout title={content.content.seo.title}>
+			<MainLayout title={cmsContent.content.seo.title}>
 				<Block className="tw-text-right print:tw-hidden">
 					<Link
 						href="https://drive.google.com/file/d/1zOaXbESJ4mXasY0WybvfTD9G9qN2Ya7g/view?usp=sharing"

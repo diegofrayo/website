@@ -9,21 +9,21 @@ import { BlogPostCategory } from "./components";
 import type { T_BlogPost } from "./types";
 
 export type T_BlogPageProps = {
-	content: T_PageContent;
+	cmsContent: T_PageContent;
 	data: T_BlogPost[];
 };
 
-function BlogPage({ content, data: posts }: T_BlogPageProps) {
+function BlogPage({ cmsContent, data: posts }: T_BlogPageProps) {
 	return (
 		<Page
 			config={{
-				title: content.content.seo.title,
-				description: content.content.seo.description,
-				disableSEO: content.config.is_seo_enabled === false,
-				pathname: content.config.pathname,
+				title: cmsContent.content.seo.title,
+				description: cmsContent.content.seo.description,
+				disableSEO: cmsContent.config.is_seo_enabled === false,
+				pathname: cmsContent.config.pathname,
 			}}
 		>
-			<MainLayout title={content.content.seo.title}>
+			<MainLayout title={cmsContent.content.seo.title}>
 				{Object.values(posts).map((post) => {
 					if (post.is_published === false) {
 						return null;

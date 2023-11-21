@@ -32,6 +32,9 @@ import {
 	HomeIcon,
 	KeyIcon,
 	LinkIcon,
+	MagnifyingGlassMinusIcon,
+	MagnifyingGlassPlusIcon,
+	MusicalNoteIcon,
 	PauseIcon,
 	PlayIcon,
 	PresentationChartLineIcon,
@@ -447,6 +450,13 @@ const ICONS = {
 			color: "",
 		},
 	},
+	MUSIC_NOTE: {
+		icon: MusicalNoteIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
 	PAUSE: {
 		icon: PauseIcon,
 		defaultProps: {
@@ -592,6 +602,20 @@ const ICONS = {
 			color: "",
 		},
 	},
+	ZOOM_IN: {
+		icon: MagnifyingGlassPlusIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	ZOOM_OUT: {
+		icon: MagnifyingGlassMinusIcon,
+		defaultProps: {
+			className: "",
+		},
+		color: "",
+	},
 };
 
 export default ICONS;
@@ -681,12 +705,6 @@ export const ICONS = {
 			color: "",
 		},
 	},
-	MUSIC_NOTE: {
-		icon: MusicalNoteIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
 	PHONE: {
 		icon: PhoneIcon,
 		defaultProps: {
@@ -713,18 +731,6 @@ export const ICONS = {
 	},
 	VOLUME_UP: {
 		icon: SpeakerWaveIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
-	ZOOM_IN: {
-		icon: MagnifyingGlassPlusIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
-	ZOOM_OUT: {
-		icon: MagnifyingGlassMinusIcon,
 		defaultProps: {
 			className: "",
 		},

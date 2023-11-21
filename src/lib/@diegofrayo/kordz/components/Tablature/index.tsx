@@ -8,7 +8,7 @@ import v from "../../../v";
 
 import GuitarFret from "../GuitarFret";
 import { NUMBER_OF_STRINGS, parseFret, parseGuitarString } from "../../utils";
-import { type T_GuitarFret, type T_GuitarString } from "../../types";
+import type { T_GuitarFret, T_GuitarString } from "../../types";
 
 import styles from "./styles.module.css";
 

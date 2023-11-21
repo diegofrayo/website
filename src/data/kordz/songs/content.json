@@ -1,0 +1,20 @@
+{
+	"config": {
+		"locales": ["es"],
+		"default_locale": "es",
+		"is_seo_disabled": true,
+		"pathname": "/kordz"
+	},
+	"content": {
+		"en": {
+			"seo": {
+				"title": "{{title}}, {{artist}}: Letra y acordes",
+				"description": "Letra y acordes de \"{{title}}\" de \"{{artist}}\""
+			},
+			"texts": {
+				"sources": "Fuentes",
+				"disclaimer": "Esta transcripción está basada en el contenido de los siguientes enlaces:"
+			}
+		}
+	}
+}

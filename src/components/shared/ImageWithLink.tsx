@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { Image, Link } from "~/components/primitive";
-import { type T_ImageProps } from "~/components/primitive/Image";
+import type { T_ImageProps } from "~/components/primitive/Image";
 import v from "@diegofrayo/v";
 
 function ImageWithLink({ src, alt, ...rest }: T_ImageProps) {

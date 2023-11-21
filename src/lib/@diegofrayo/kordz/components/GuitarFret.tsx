@@ -6,7 +6,7 @@ import { createArray, mirror } from "../../utils/arrays-and-objects";
 import v from "../../v";
 
 import { NUMBER_OF_STRINGS } from "../utils";
-import { type T_MusicNote, type T_GuitarFret, type T_GuitarString, type T_Chord } from "../types";
+import type { T_MusicNote, T_GuitarFret, T_GuitarString, T_Chord } from "../types";
 
 const VARIANTS = mirror(["GUITAR_STRINGS_NAMES", "EMPTY", "DEFAULT", "SKIPPED_GUITAR_STRINGS"]);
 type T_Variant = keyof typeof VARIANTS;

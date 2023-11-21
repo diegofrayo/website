@@ -39,8 +39,8 @@ const BrowserStorageManager = {
 		}
 
 		return {
-			get: (): G_ValueType | null => {
-				if (isServer()) return null;
+			get: (): G_ValueType => {
+				if (isServer()) return value;
 
 				const valueFromStorage = getItem({ key, type: typeof value, storage });
 				return valueFromStorage === null ? value : valueFromStorage;
