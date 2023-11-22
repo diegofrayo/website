@@ -7,7 +7,12 @@ type T_SongBase = {
 	readonly album: string;
 	readonly year: number;
 	readonly country: string;
-	readonly category: "0|IN_PROGRESS" | "1|FAVORITE" | "2|WELL_DONE" | "3|OK" | "4|TO_PRACTICE";
+	readonly category:
+		| "0|IN_PROGRESS|🚧"
+		| "1|FAVORITE|⭐"
+		| "2|WELL_DONE|👌"
+		| "3|OK|🤷‍♂️"
+		| "4|TO_PRACTICE|👷";
 	readonly spotify_url: string;
 	readonly youtube_url: string;
 	readonly created_at: string;

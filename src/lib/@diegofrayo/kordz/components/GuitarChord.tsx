@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import { downloadComponentAsImage } from "../../utils/browser";
-import { getErrorMessage, safeAsync } from "../../utils/misc";
 import v from "../../v";
 
 import type { T_GuitarFret, T_PlainChordDetails } from "../types";
@@ -12,51 +10,37 @@ type T_GuitarChordProps = {
 	plainChord: T_PlainChordDetails;
 };
 
-async function GuitarChord({ plainChord }: T_GuitarChordProps) {
+function GuitarChord({ plainChord }: T_GuitarChordProps) {
 	// --- STATES & REFS ---
 	const chordContainerRef = React.useRef<HTMLDivElement>(null);
 
 	// --- VARS ---
-	const [parsedChord, error] = await safeAsync(() => GuitarService.parseChord(plainChord));
+	const parsedChord = GuitarService.parseChord(plainChord); // TODO
 
-	// --- HANDLERS ---
-	async function handleDownloadAsImageClick(): Promise<void> {
-		if (v.isNull(chordContainerRef.current)) return;
-
-		await downloadComponentAsImage(chordContainerRef.current, plainChord.name);
-
-		// TODO
-		// AnalyticsService.trackEvent("DOWNLOAD_CHORD_AS_IMAGE", {
-		// 	chord: plainChord.name,
-		// 	page: window.location.pathname,
-		// });
-	}
-
-	if (error) {
-		return (
-			<strong className="tw-mt-2 tw-block tw-text-red-700 dark:tw-text-red-400">
-				Syntax error: {getErrorMessage(error)}
-			</strong>
-		);
-	}
+	// TODO
+	// if (error) {
+	// 	return (
+	// 		<strong className="tw-mt-2 tw-block tw-text-red-700 dark:tw-text-red-400">
+	// 			Syntax error: {getErrorMessage(error)}
+	// 		</strong>
+	// 	);
+	// }
 
 	if (v.isUndefined(parsedChord)) {
 		return null;
 	}
 
 	return (
-		<article
-			is="article"
-			className="tw-max-w-full tw-text-center"
-		>
+		<article className="tw-max-w-full tw-text-center">
 			<section
-				is="section"
-				className="dark:dr-bg-color-primary tw-pb-2"
+				className="tw-pb-2 "
 				ref={chordContainerRef}
 			>
-				<h1 className="tw-mb-4 tw-truncate tw-text-center">{parsedChord.name}</h1>
+				<h1 className="tw-mb-6 tw-truncate tw-text-center tw-text-2xl tw-font-bold">
+					{parsedChord.name}
+				</h1>
 
-				<div className="tw-flex-no-wrap tw-inline-flex tw-max-w-full tw-items-end tw-overflow-x-auto">
+				<div className="tw-flex-no-wrap tw-inline-flex tw-max-w-full tw-items-end tw-overflow-x-auto tw-overflow-y-hidden">
 					<GuitarFret variant={GuitarFret.variant.GUITAR_STRINGS_NAMES} />
 
 					<div className="tw-flex-no-wrap tw-relative tw-inline-flex">
@@ -90,7 +74,7 @@ async function GuitarChord({ plainChord }: T_GuitarChordProps) {
 							/>
 						) : null}
 
-						<div className="dr-bg-color-bw dark:dr-bg-color-wb tw-relative tw--left-0.5 tw-top-6 tw-h-36 tw-w-3 tw-rounded-br-md tw-rounded-tr-md" />
+						<div className="tw-relative tw--left-0.5 tw-top-6 tw-h-36 tw-w-3 tw-rounded-br-md tw-rounded-tr-md tw-bg-black" />
 					</div>
 
 					<GuitarFret
@@ -99,18 +83,6 @@ async function GuitarChord({ plainChord }: T_GuitarChordProps) {
 					/>
 				</div>
 			</section>
-
-			<div className="tw-text-sm">
-				<div>
-					<button
-						type="button"
-						onClick={handleDownloadAsImageClick}
-					>
-						<span className="tw-mr-2">⬇️</span>
-						<span>descargar como imagen</span>
-					</button>
-				</div>
-			</div>
 		</article>
 	);
 }

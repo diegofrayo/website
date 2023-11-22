@@ -34,7 +34,7 @@ function GuitarFret({ variant, number, musicNotes, touchedStrings, barreFret }: 
 	return (
 		<div
 			className={cn(
-				"dark:dr-text-color-gs-white tw-flex-shrink-0 tw-text-xs",
+				"tw-flex-shrink-0 tw-text-xs",
 				isSkippedGuitarStringsVariant
 					? "tw-w-auto"
 					: isGuitarStringsNamesVariant
@@ -99,7 +99,7 @@ function GuitarFret({ variant, number, musicNotes, touchedStrings, barreFret }: 
 										<GuitarString />
 										{barreFret.firstGuitarString >= guitarString ? (
 											<React.Fragment>
-												<div className="dr-bg-color-gs-white dr-text-color-gs-black tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-font-bold tw-leading-0">
+												<div className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-bg-white tw-font-bold tw-leading-0 tw-text-black">
 													1
 												</div>
 												<GuitarString />
@@ -128,7 +128,7 @@ function GuitarFret({ variant, number, musicNotes, touchedStrings, barreFret }: 
 										className="tw-flex tw-h-6 tw-items-center"
 									>
 										<GuitarString />
-										<div className="dr-bg-color-gs-white dr-text-color-gs-black tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-font-bold tw-leading-0">
+										<div className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-bg-white tw-font-bold tw-leading-0 tw-text-black">
 											{musicNote.finger}
 										</div>
 										<GuitarString />
@@ -143,7 +143,7 @@ function GuitarFret({ variant, number, musicNotes, touchedStrings, barreFret }: 
 							return (
 								<div
 									key={`${guitarString}-${Date.now()}`}
-									className="tw-mx-2 tw-flex tw-h-6 tw-items-center"
+									className="tw-mx-1 tw-flex tw-h-6 tw-items-center"
 								>
 									<SkippedGuitarStringIcon
 										touchedStrings={touchedStrings}
@@ -167,7 +167,7 @@ export default GuitarFret;
 
 // --- COMPONENTS ---
 
-const GuitarString = twcss.span`tw-border dr-bg-color-gs-black tw-block tw-h-1 tw-flex-1`;
+const GuitarString = twcss.span`tw-border tw-bg-black tw-block tw-h-1 tw-flex-1`;
 
 function SkippedGuitarStringIcon({
 	touchedStrings,
@@ -179,15 +179,15 @@ function SkippedGuitarStringIcon({
 	const playedString = touchedStrings[guitarString - 1];
 
 	if (playedString === "x") {
-		return <span>✖</span>;
+		return <span className="tw-text-lg">✕</span>;
 	}
 
 	if (playedString === "0") {
-		return <span>⚇</span>;
+		return <span className="tw-relative tw--top-px tw-text-xl">⚇</span>;
 	}
 
 	if (playedString === "1") {
-		return <span>⚉</span>;
+		return <span className="tw-relative tw--top-px tw-text-xl">⚉</span>;
 	}
 
 	return null;

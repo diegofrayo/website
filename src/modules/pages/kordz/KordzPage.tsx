@@ -88,7 +88,7 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 							variant={Link.variant.STYLED}
 							href={`${ROUTES.KORDZ}/${chordsPage.id}`}
 						>
-							<InlineText className="tw-underline">Lista de acordes</InlineText>
+							<InlineText className="tw-underline">{chordsPage.title}</InlineText>
 						</Link>
 					</Block>
 					<Space

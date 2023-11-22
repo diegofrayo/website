@@ -2,9 +2,8 @@ import * as React from "react";
 import cn from "classnames";
 
 import { Block, Icon, InlineText, Link, Space } from "~/components/primitive";
-import { withAuth } from "~/modules/auth";
+import { ComponentWithAuth, withAuth } from "~/modules/auth";
 import type { T_Song } from "@diegofrayo/types/kordz";
-import { safeCastNumber } from "@diegofrayo/utils/numbers";
 import { replaceAll } from "@diegofrayo/utils/strings";
 
 import { isChordsSong } from "../utils";
@@ -61,7 +60,7 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 			<Category category={song.category} />
 
 			<Block className="tw-mt-2 tw-flex tw-items-center">
-				<Block className="tw-inline-flex tw-items-center tw-justify-center tw-rounded-md tw-border-2 tw-py-0.5 tw-pl-0.5 tw-pr-0.5 dr-border-color-surface-300 md:tw-pl-0 md:tw-pr-0">
+				<Block className="tw-inline-flex tw-items-center tw-justify-center tw-rounded-md tw-border-2 tw-py-0.5 tw-pl-0.5 tw-pr-0.5 dr-bg-color-surface-200 dr-border-color-surface-300 md:tw-pl-0 md:tw-pr-0">
 					<InlineText className="tw-w-5 tw-text-center tw-text-sm tw-not-italic md:tw-text-xs">
 						{song.country}
 					</InlineText>
@@ -95,13 +94,13 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 				</Block>
 
 				{song.done ? (
-					<Block className="tw-ml-2 tw-inline-block tw-border-l tw-pl-2 dr-border-color-surface-300">
+					<ComponentWithAuth className="tw-ml-2 tw-inline-block tw-border-l tw-pl-2 dr-border-color-surface-300">
 						<Icon
 							icon={Icon.icon.CHECK_BADGE}
 							size={24}
 							color="tw-text-blue-500"
 						/>
-					</Block>
+					</ComponentWithAuth>
 				) : null}
 			</Block>
 		</Block>
@@ -113,8 +112,7 @@ export default SongDetails;
 // --- COMPONENTS ---
 
 const Category = withAuth(function Category({ category }: { category: string }) {
-	// --- VARS ---
-	const EMOJIS = ["🚧", "⭐", "👌", "🤷‍♂️", "👷"];
+	const [, categoryName, categoryEmoji] = category.split("|");
 
 	return (
 		<Block className="sm:tw-flex sm:tw-flex-nowrap">
@@ -124,9 +122,9 @@ const Category = withAuth(function Category({ category }: { category: string }) 
 			>
 				Categoría:
 			</InlineText>
-			<InlineText>{EMOJIS[safeCastNumber(category.split("|")[0], 0)]}</InlineText>
+			<InlineText>{categoryEmoji}</InlineText>
 			<InlineText className="tw-ml-1 tw-capitalize">
-				{replaceAll(category.split("|")[1], "_", " ").toLowerCase()}
+				{replaceAll(categoryName, "_", " ").toLowerCase()}
 			</InlineText>
 		</Block>
 	);

@@ -1,6 +1,6 @@
 // --- CHORDS ---
 
-import type DR from "@diegofrayo/types";
+import type DR from "../types";
 
 export type T_Chord = {
 	name: string;

@@ -12,6 +12,8 @@ import {
 } from "./types";
 
 class KordzService {
+	CHORDS_BUTTON_SELECTOR = "dr-kordz-chord-button";
+
 	parseChord(plainChordDetails: T_PlainChordDetails): T_Chord {
 		return new Chord(plainChordDetails);
 	}
@@ -205,9 +207,9 @@ class KordzService {
 		const isDefaultVariantChord = chord.variantIndex === 0;
 
 		return `<button class="${[
-			"dr-kordz-chord-button",
-			!isCurrentLineTheLastOne && "tw-mb-1",
-			!isTheLastParsedTextLineBlank && "tw-mt-3",
+			this.CHORDS_BUTTON_SELECTOR,
+			!isCurrentLineTheLastOne && "tw-mb-0",
+			!isTheLastParsedTextLineBlank && "tw-mt-2",
 		]
 			.filter(Boolean)
 			.join(" ")}" data-chord-index="${chord.variantIndex}">${

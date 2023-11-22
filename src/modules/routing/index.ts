@@ -38,7 +38,8 @@ export function useRouting(): T_UseRoutingReturn {
 
 		if (
 			(pathname.startsWith(ROUTES.BLOG) && pathnameParam.startsWith(ROUTES.BLOG)) ||
-			(pathname.startsWith(ROUTES.APPS) && pathnameParam.startsWith(ROUTES.APPS))
+			(pathname.startsWith(ROUTES.APPS) && pathnameParam.startsWith(ROUTES.APPS)) ||
+			(pathname.startsWith(ROUTES.KORDZ) && pathnameParam.startsWith(ROUTES.KORDZ))
 		) {
 			return true;
 		}
