@@ -16,11 +16,11 @@ import {
 } from "~/components/primitive";
 import { CopyToClipboardPopover, Loader } from "~/components/shared";
 import { ClientRenderComponent } from "~/hocs";
-import { useDidMount } from "~/hooks";
 import { ComponentWithAuth } from "~/modules/auth";
 import { MDXContent } from "~/modules/mdx/client";
 import { ROUTES } from "~/modules/routing";
 import type { T_PageContent } from "~/server/data-loader";
+import { useDidMount } from "@diegofrayo/hooks";
 import { KordzService, TextFormatter, GuitarChord, type T_PlainChord } from "@diegofrayo/kordz";
 import { useBrowserStorageState } from "@diegofrayo/storage";
 import type { T_Song } from "@diegofrayo/types/kordz";
@@ -311,7 +311,7 @@ function ChordModal({
 											className={cn(
 												"tw-mx-1 tw-inline-flex tw-cursor-pointer tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-xs tw-leading-0 tw-wh-5",
 												selectedUnparsedChordIndex === index
-													? "tw-bg-white tw-text-black dr-border-color-surface-300"
+													? "tw-bg-white tw-font-bold tw-text-black dr-border-color-surface-300"
 													: "tw-text-white dr-bg-color-surface-300 dr-border-color-surface-400",
 											)}
 											onClick={handleUpdateSelectedUnparsedChordVariantClick(index)}

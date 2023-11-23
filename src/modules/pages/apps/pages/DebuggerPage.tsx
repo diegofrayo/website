@@ -3,7 +3,7 @@ import * as React from "react";
 import { MainLayout, Page } from "~/components/layout";
 import { Block, Button, Pre, Space, Title } from "~/components/primitive";
 import { SourceCode } from "~/components/shared";
-import { useDidMount } from "~/hooks";
+import { useDidMount } from "@diegofrayo/hooks";
 import AnalyticsService from "~/modules/analytics";
 import { AuthService, withAuthRulesPage } from "~/modules/auth";
 import EnvVars from "~/modules/env-vars";

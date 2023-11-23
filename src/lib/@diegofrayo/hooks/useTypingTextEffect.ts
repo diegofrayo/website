@@ -1,5 +1,6 @@
 import * as React from "react";
-import type DR from "@diegofrayo/types";
+
+import type DR from "../types";
 
 function useTypingTextEffect(text: string) {
 	const [output, setOutput] = React.useState(text.charAt(0));

@@ -174,3 +174,11 @@ export function isElementInViewport(element: HTMLElement): boolean {
 		bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
 	);
 }
+
+export function getTargetElement<G_HTMLElement>(event: Event): G_HTMLElement {
+	if (v.isNull(event.target)) {
+		throw new Error("Target element is null unexpectedly");
+	}
+
+	return event.target as G_HTMLElement;
+}

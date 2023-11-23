@@ -2,7 +2,7 @@ import * as React from "react";
 import cn from "classnames";
 
 import { Text, InlineText } from "~/components/primitive";
-import { useTypingTextEffect } from "~/hooks";
+import { useTypingTextEffect } from "@diegofrayo/hooks";
 
 type T_TypingTextEffectProps = {
 	children: string;

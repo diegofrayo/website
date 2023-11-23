@@ -6,7 +6,7 @@ import WEBSITE_METADATA from "~/data/metadata.json";
 import AnalyticsService from "~/modules/analytics";
 import EnvVars from "~/modules/env-vars";
 import { ROUTES } from "~/modules/routing";
-import { useDidMount, useDocumentTitle } from "~/hooks";
+import { useDidMount, useDocumentTitle } from "@diegofrayo/hooks";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import type DR from "@diegofrayo/types";
 import v from "@diegofrayo/v";

@@ -4,7 +4,7 @@ import cn from "classnames";
 import { MainLayout, Page } from "~/components/layout";
 import { Block, Button, Input, Space } from "~/components/primitive";
 import { CopyToClipboardPopover, Toast } from "~/components/shared";
-import { useAsync, useDidMount } from "~/hooks";
+import { useAsync, useDidMount } from "@diegofrayo/hooks";
 import ServerAPI from "~/modules/api";
 import { withAuthRulesPage } from "~/modules/auth";
 import { logAndReportError } from "~/modules/logging";

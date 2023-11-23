@@ -3,9 +3,9 @@ import cn from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Link, Space, Input, Text, InlineText, Block } from "~/components/primitive";
-import { useDidMount } from "~/hooks";
 import { ROUTES } from "~/modules/routing";
 import type { T_PageContent } from "~/server/data-loader";
+import { useDidMount } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
 import type { T_Song } from "@diegofrayo/types/kordz";
 import { focusElement } from "@diegofrayo/utils/browser";

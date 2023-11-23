@@ -1,7 +1,7 @@
 import * as React from "react";
 import hoistNonReactStatics from "hoist-non-react-statics";
 
-import { useDidMount } from "~/hooks";
+import { useDidMount } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
 
 type T_RenderIfReturn<G_ComponentProps> = (

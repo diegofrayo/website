@@ -11,7 +11,7 @@ function TextFormatter({ children }: T_TextFormatterProps) {
 	// --- EFFECTS ---
 	React.useEffect(() => {
 		document.querySelectorAll(`.${KordzService.CHORDS_BUTTON_SELECTOR}`).forEach((button) => {
-			button.addEventListener("click", function onClick(this: HTMLElement, event: Event) {
+			button.addEventListener("click", (event: Event) => {
 				const element = event.currentTarget as HTMLButtonElement;
 
 				window.dispatchEvent(

@@ -3,7 +3,7 @@ import * as React from "react";
 import { MainLayout, Page } from "~/components/layout";
 import { Button, Input, Space } from "~/components/primitive";
 import { Toast } from "~/components/shared";
-import { useAsync } from "~/hooks";
+import { useAsync } from "@diegofrayo/hooks";
 import ServerAPI from "~/modules/api";
 import { AuthService, withAuthRulesPage } from "~/modules/auth";
 import { ROUTES, redirect } from "~/modules/routing";

@@ -99,7 +99,7 @@ function GuitarFret({ variant, number, musicNotes, touchedStrings, barreFret }: 
 										<GuitarString />
 										{barreFret.firstGuitarString >= guitarString ? (
 											<React.Fragment>
-												<div className="tw-inline-flex tw-h-5 tw-w-5 tw-items-center tw-justify-center tw-rounded-full tw-border tw-bg-white tw-font-bold tw-leading-0 tw-text-black">
+												<div className="tw-inline-flex tw-h-5 tw-w-3 tw-items-center tw-justify-center tw-rounded-sm tw-border tw-bg-white tw-font-bold tw-leading-0 tw-text-black">
 													1
 												</div>
 												<GuitarString />

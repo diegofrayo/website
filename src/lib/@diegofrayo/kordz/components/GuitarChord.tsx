@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { useAsync } from "../../hooks";
+import { getErrorMessage } from "../../utils/misc";
 import v from "../../v";
 
 import type { T_GuitarFret, T_PlainChordDetails } from "../types";
@@ -11,20 +13,21 @@ type T_GuitarChordProps = {
 };
 
 function GuitarChord({ plainChord }: T_GuitarChordProps) {
+	// --- HOOKS ---
+	const { data: parsedChord, error } = useAsync("/chord", () =>
+		GuitarService.parseChord(plainChord),
+	);
+
 	// --- STATES & REFS ---
 	const chordContainerRef = React.useRef<HTMLDivElement>(null);
 
-	// --- VARS ---
-	const parsedChord = GuitarService.parseChord(plainChord); // TODO
-
-	// TODO
-	// if (error) {
-	// 	return (
-	// 		<strong className="tw-mt-2 tw-block tw-text-red-700 dark:tw-text-red-400">
-	// 			Syntax error: {getErrorMessage(error)}
-	// 		</strong>
-	// 	);
-	// }
+	if (error) {
+		return (
+			<strong className="tw-mt-2 tw-block tw-text-red-700">
+				Syntax error: {getErrorMessage(error)}
+			</strong>
+		);
+	}
 
 	if (v.isUndefined(parsedChord)) {
 		return null;

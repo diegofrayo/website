@@ -14,8 +14,8 @@ import {
 } from "~/components/primitive";
 import { BoxWithTitle, CopyToClipboardPopover } from "~/components/shared";
 import { withOnlyClientRender } from "~/hocs";
-import { useDidMount, useEnhancedState } from "~/hooks";
 import { withAuthRulesPage } from "~/modules/auth";
+import { useDidMount, useEnhancedState } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
 import { isBusiness, type T_Business } from "@diegofrayo/types/businesses";
 import { isContact, type T_Contact } from "@diegofrayo/types/contacts";

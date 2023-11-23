@@ -17,7 +17,7 @@ import type { T_IconName } from "~/components/primitive/Icon";
 import { Toast, TypingTextEffect } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/metadata.json";
 import { renderIf, withOnlyClientRender } from "~/hocs";
-import { useDidMount, useOnWindowStopScroll, useToggleBodyScroll } from "~/hooks";
+import { useDidMount, useOnWindowStopScroll, useToggleBodyScroll } from "@diegofrayo/hooks";
 import AnalyticsService from "~/modules/analytics";
 import ServerAPI from "~/modules/api";
 import { AuthService, withAuth } from "~/modules/auth";

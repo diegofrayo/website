@@ -8,11 +8,11 @@ import { Toaster } from "sonner";
 import { ErrorBoundary } from "react-error-boundary";
 import type { AppProps } from "next/app";
 
-import { useDidMount } from "~/hooks";
 import { addErrorsGlobalListener, logger } from "~/modules/logging";
 import ErrorPage from "~/modules/pages/ErrorPage";
 import { initPWARoutingConfig } from "~/modules/routing";
 import { recoverFromBreakingChanges } from "~/utils/errors-recovery";
+import { useDidMount } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
 import { isMobileDevice, isPWA } from "@diegofrayo/utils/browser";
 import { isServer } from "@diegofrayo/utils/misc";

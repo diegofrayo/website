@@ -76,7 +76,7 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 								title="Links"
 								icon={{ name: Icon.icon.LINK }}
 							>
-								<Block className="tw-flex tw-items-center tw-gap-2">
+								<Block className="tw-flex tw-items-center tw-gap-1">
 									{v.isNotEmptyString(place.instagram) ? (
 										<Link
 											variant={Link.variant.SIMPLE}

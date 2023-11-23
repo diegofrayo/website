@@ -4,7 +4,7 @@ import cn from "classnames";
 import { MainLayout, Page } from "~/components/layout";
 import { Button, Space, Text, InlineText, Title, Block } from "~/components/primitive";
 import { BoxWithTitle, Render } from "~/components/shared";
-import { useAsync } from "~/hooks";
+import { useAsync } from "@diegofrayo/hooks";
 import ServerAPI from "~/modules/api";
 import { withAuthRulesPage } from "~/modules/auth";
 import { sortBy } from "@diegofrayo/sort";

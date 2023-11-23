@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { renderIf } from "~/hocs";
-import { useDidMount } from "~/hooks";
+import { useDidMount } from "@diegofrayo/hooks";
 import { isProductionEnvironment } from "~/utils/app";
 import { BrowserStorageManager } from "@diegofrayo/storage";
 import type DR from "@diegofrayo/types";

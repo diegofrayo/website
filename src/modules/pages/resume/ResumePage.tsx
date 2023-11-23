@@ -392,7 +392,7 @@ function ExperienceTimelineItem({
 															key={generateSlug(
 																`ExperienceTimelineItem-InlineText-${company}-${item}`,
 															)}
-															className="tw-mr-1 tw-mt-1 tw-inline-block tw-rounded-md tw-border tw-border-dotted tw-border-gray-200 tw-bg-gray-100 tw-px-1.5 tw-py-0.5 tw-font-mono tw-text-sm tw-text-gray-600"
+															className="tw-mr-1 tw-mt-1 tw-inline-block tw-rounded-md tw-border tw-border-gray-200 tw-bg-gray-100 tw-px-1.5 tw-py-0.5 tw-font-mono tw-text-sm tw-text-gray-600"
 														>
 															{item.trim()}
 														</InlineText>

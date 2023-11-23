@@ -1,6 +1,7 @@
 import * as React from "react";
-import type DR from "@diegofrayo/types";
-import v from "@diegofrayo/v";
+
+import type DR from "../types";
+import v from "../v";
 
 type T_UseEnhacedStateStringReturn = [
 	state: string,

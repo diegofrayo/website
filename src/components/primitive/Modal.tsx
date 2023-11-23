@@ -1,7 +1,7 @@
 import * as React from "react";
 import cn from "classnames";
 
-import { useDidMount, useToggleBodyScroll } from "~/hooks";
+import { useDidMount, useToggleBodyScroll } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
 import { getScrollPosition, setScrollPosition } from "@diegofrayo/utils/browser";
 import v from "@diegofrayo/v";

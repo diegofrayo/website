@@ -46,6 +46,17 @@ export async function safeAsync<G_Return>(
 	}
 }
 
+export async function resolvePromisesSequentially(tasks: (() => unknown | Promise<unknown>)[]) {
+	return tasks.reduce(
+		async (resultPromised, task) => {
+			const result = await resultPromised;
+			const taskResult = await task();
+			return result.concat([taskResult]);
+		},
+		Promise.resolve([] as unknown[]),
+	);
+}
+
 // --- INTERNALS ---
 
 type T_HttpError = { response: { data: { message: string } } };

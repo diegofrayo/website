@@ -3,9 +3,9 @@ import * as React from "react";
 import { MainLayout, Page } from "~/components/layout";
 import { Icon, Link, Title, Block, Text, InlineText, Image } from "~/components/primitive";
 import { Render } from "~/components/shared";
-import { useAsync } from "~/hooks";
 import ServerAPI from "~/modules/api";
 import { withAuthRulesPage } from "~/modules/auth";
+import { useAsync } from "@diegofrayo/hooks";
 import { sortBy } from "@diegofrayo/sort";
 import type DR from "@diegofrayo/types";
 

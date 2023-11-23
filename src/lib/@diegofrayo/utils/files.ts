@@ -127,3 +127,7 @@ export function prepareFilePathFolder(filePath: string, isDirectory?: boolean) {
 		fs.mkdirSync(folderPath, { recursive: true });
 	}
 }
+
+export function deleteFolder(folderPath: string) {
+	fs.rmSync(folderPath, { recursive: true, force: true });
+}

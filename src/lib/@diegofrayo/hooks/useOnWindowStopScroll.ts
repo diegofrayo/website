@@ -1,4 +1,4 @@
-import type DR from "@diegofrayo/types";
+import type DR from "../types";
 
 import useDidMount from "./useDidMount";
 

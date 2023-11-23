@@ -2,15 +2,14 @@
 
 import * as React from "react";
 
-import { logger } from "~/modules/logging";
-import { delay } from "@diegofrayo/utils/misc";
-import v from "@diegofrayo/v";
+import { delay } from "../utils/misc";
+import v from "../v";
 
 import useDidMount from "./useDidMount";
 
 type T_AsyncFn<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn> = (
 	...args: G_AsyncFnArgs
-) => Promise<G_AsyncFnReturn>;
+) => Promise<G_AsyncFnReturn> | G_AsyncFnReturn;
 
 type T_Opts = {
 	autoLaunch?: boolean;
@@ -26,7 +25,7 @@ type T_UseAsyncReturn<
 
 function useAsync<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn>(
 	key: string,
-	asyncFn: (...args: G_AsyncFnArgs) => Promise<G_AsyncFnReturn>,
+	asyncFn: (...args: G_AsyncFnArgs) => Promise<G_AsyncFnReturn> | G_AsyncFnReturn,
 	optsParam?: T_Opts,
 ): T_UseAsyncReturn<G_AsyncFnArgs, G_AsyncFnReturn> {
 	// --- VARS ---
@@ -58,7 +57,7 @@ function useAsync<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn>(
 	useDidMount(() => {
 		if (opts.autoLaunch === true) {
 			// @ts-ignore
-			enhancedAsyncFn();
+			enhancedAsyncFn(); // TODO
 		}
 	});
 
@@ -66,7 +65,7 @@ function useAsync<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn>(
 	const enhancedAsyncFn: T_AsyncFn<G_AsyncFnArgs, G_AsyncFnReturn> = React.useCallback(
 		async function enhancedAsyncFn(...args) {
 			try {
-				logger("LOG", `Executing "${key}"...`);
+				console.log("LOG", `Executing "${key}"...`);
 
 				dispatch({ type: "LOADING" });
 				await delay(opts.withDelay);
