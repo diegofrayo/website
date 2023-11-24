@@ -474,7 +474,7 @@ type T_NavigationMenuItemProps = {
 };
 
 const NavigationMenuItem = React.forwardRef<HTMLAnchorElement, T_NavigationMenuItemProps>(
-	function NavigationMenuItem({ children, href, icon, ...props }, forwardedRef) {
+	function NavigationMenuItem({ children, href, icon }, forwardedRef) {
 		// --- HOOKS ---
 		const { isCurrentPathActive } = useRouting();
 
