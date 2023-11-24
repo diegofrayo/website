@@ -13,6 +13,7 @@ import {
 } from "~/components/primitive";
 import type { T_IconName } from "~/components/primitive/Icon";
 import { BoxWithTitle } from "~/components/shared";
+import AnalyticsService from "~/modules/analytics";
 import type DR from "@diegofrayo/types";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
 import { isMobileDevice } from "@diegofrayo/utils/browser";
@@ -38,6 +39,12 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 						className="tw-mb-4 last:tw-mb-0"
 						contentClassName="tw-pt-6"
 						title={`${place.name} [${place.location}]`}
+						onShowContentHandler={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|OPEN", {
+							place: place.id,
+						})}
+						onHideContentHandler={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|CLOSE", {
+							place: place.id,
+						})}
 					>
 						<BoxWithTitle
 							title="Información"
@@ -82,6 +89,10 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 											variant={Link.variant.SIMPLE}
 											href={place.instagram}
 											className="tw-inline-block"
+											onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
+												place: place.id,
+												link: "instagram",
+											})}
 											isExternalLink
 										>
 											<Icon
@@ -97,6 +108,10 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 											variant={Link.variant.SIMPLE}
 											href={place.maps}
 											className="tw-inline-block"
+											onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
+												place: place.id,
+												link: "maps",
+											})}
 											isExternalLink
 										>
 											<Icon
@@ -112,6 +127,10 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 											variant={Link.variant.SIMPLE}
 											href={place.website}
 											className="tw-inline-block"
+											onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
+												place: place.id,
+												link: "website",
+											})}
 											isExternalLink
 										>
 											<Icon
@@ -129,6 +148,10 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 														variant={Link.variant.SIMPLE}
 														href={link}
 														className="tw-inline-block"
+														onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
+															place: place.id,
+															link: "info",
+														})}
 														isExternalLink
 													>
 														<Icon

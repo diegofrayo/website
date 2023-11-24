@@ -83,7 +83,9 @@ function SourceCode({ code, sourceURL = "", className = "" }: T_SourceCodeProps)
 							variant={Link.variant.SIMPLE}
 							href={sourceURL}
 							className="tw-mr-2 tw-inline-block"
-							onClick={AnalyticsService.trackClickEvent("SOURCE_CODE|OPEN_LINK")}
+							onClick={AnalyticsService.trackClickEvent("SOURCE_CODE|OPEN_LINK", {
+								link: sourceURL,
+							})}
 							isExternalLink
 						>
 							<Icon icon={Icon.icon.EXTERNAL_LINK} />

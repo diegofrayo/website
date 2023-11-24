@@ -1,8 +1,8 @@
 import * as React from "react";
 import cn from "classnames";
 
-import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
+import v from "@diegofrayo/v";
 
 import Block from "./Block";
 import InlineText from "./InlineText";
@@ -33,6 +33,7 @@ function Collapsible({
 }: T_CollapsibleProps) {
 	// --- STATES & REFS ---
 	const [isOpen, setIsOpen] = React.useState(openedByDefault);
+	const touchedRef = React.useRef(false);
 
 	// --- VARS ---
 	const computedTitle = v.isNotEmptyString(title) ? title : isOpen ? "Hide" : "Show";
@@ -49,17 +50,20 @@ function Collapsible({
 
 	React.useEffect(
 		function onOpenChange() {
+			if (touchedRef.current === false) return;
+
 			if (isOpen) {
 				onShowContentHandler();
 			} else {
 				onHideContentHandler();
 			}
 		},
-		[isOpen, onShowContentHandler, onHideContentHandler],
+		[isOpen, onShowContentHandler, onHideContentHandler, touchedRef],
 	);
 
 	// --- HANDLERS ---
 	function handleToggleClick() {
+		touchedRef.current = true;
 		setIsOpen((currentValue) => !currentValue);
 	}
 
