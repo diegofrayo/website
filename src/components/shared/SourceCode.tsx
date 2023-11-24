@@ -3,6 +3,7 @@ import cn from "classnames";
 import { highlight } from "sugar-high";
 
 import { Block, Button, Icon, Link, Pre } from "~/components/primitive";
+import AnalyticsService from "~/modules/analytics";
 import v from "@diegofrayo/v";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
 import { throwError } from "@diegofrayo/utils/misc";
@@ -82,6 +83,7 @@ function SourceCode({ code, sourceURL = "", className = "" }: T_SourceCodeProps)
 							variant={Link.variant.SIMPLE}
 							href={sourceURL}
 							className="tw-mr-2 tw-inline-block"
+							onClick={AnalyticsService.trackClickEvent("SOURCE_CODE|OPEN_LINK")}
 							isExternalLink
 						>
 							<Icon icon={Icon.icon.EXTERNAL_LINK} />
@@ -91,6 +93,7 @@ function SourceCode({ code, sourceURL = "", className = "" }: T_SourceCodeProps)
 						<Button
 							variant={Button.variant.SIMPLE}
 							className="tw-mr-2 tw-inline-block"
+							onClick={AnalyticsService.trackClickEvent("SOURCE_CODE|COPY_CODE")}
 						>
 							<Icon icon={Icon.icon.COPY} />
 						</Button>

@@ -3,8 +3,8 @@ import NextLink, { LinkProps } from "next/link";
 import cn from "classnames";
 import { cva } from "class-variance-authority";
 
-import { mirror } from "@diegofrayo/utils/arrays-and-objects";
 import type DR from "@diegofrayo/types";
+import { mirror, omit } from "@diegofrayo/utils/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
@@ -31,10 +31,10 @@ export type T_LinkProps = I_NativeLink | I_NextLink;
 
 // --- COMPONENT DEFINITION ---
 
-function Link({ variant = VARIANTS.UNSTYLED, ...props }: T_LinkProps) {
+function Link({ variant = VARIANTS.UNSTYLED, href, className, ...props }: T_LinkProps) {
 	// --- UTILS ---
 	function composeLinkAttributes(): { target?: "_blank"; rel?: "noreferrer" } {
-		if (props.href.startsWith("#")) {
+		if (href.startsWith("#")) {
 			return {};
 		}
 
@@ -44,13 +44,10 @@ function Link({ variant = VARIANTS.UNSTYLED, ...props }: T_LinkProps) {
 	if ("isExternalLink" in props) {
 		return (
 			<a
-				href={props.href}
-				className={cn(
-					`dr-link dr-link--${variant.toLowerCase()}`,
-					styles({ variant }),
-					props.className,
-				)}
+				href={href}
+				className={cn(`dr-link dr-link--${variant.toLowerCase()}`, styles({ variant }), className)}
 				{...composeLinkAttributes()}
+				{...omit(props, ["isExternalLink"])}
 			>
 				{props.children}
 			</a>
@@ -59,13 +56,10 @@ function Link({ variant = VARIANTS.UNSTYLED, ...props }: T_LinkProps) {
 
 	return (
 		<NextLink
-			href={props.href}
-			className={cn(
-				`dr-link dr-link--${variant.toLowerCase()}`,
-				styles({ variant }),
-				props.className,
-			)}
+			href={href}
+			className={cn(`dr-link dr-link--${variant.toLowerCase()}`, styles({ variant }), className)}
 			passHref
+			{...props}
 		>
 			{props.children}
 		</NextLink>

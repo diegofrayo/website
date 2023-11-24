@@ -491,7 +491,6 @@ const NavigationMenuItem = React.forwardRef<HTMLAnchorElement, T_NavigationMenuI
 					ref={forwardedRef}
 					variant={Link.variant.SIMPLE}
 					onClick={AnalyticsService.trackClickEvent("GENERAL|NAVIGATION_MENU", { item: href })}
-					{...props}
 				>
 					<Icon
 						icon={icon}
@@ -567,7 +566,7 @@ function SocialIcon({ href, icon, name }: T_SocialIconProps) {
 			variant={Link.variant.SIMPLE}
 			href={href}
 			className="tw-mx-2 tw-inline-block"
-			onClick={AnalyticsService.trackClickEvent("GENERAL|SOCIAL_NETWORKS", { value: name })}
+			onClick={AnalyticsService.trackClickEvent("GENERAL|SOCIAL_NETWORKS", { item: name })}
 			isExternalLink
 		>
 			<Icon
@@ -598,7 +597,7 @@ function GoToTopButton() {
 
 	// --- HANDLERS ---
 	function handleGoToTheTopClick() {
-		AnalyticsService.trackClickEvent("GENERAL|GO_TO_TOP");
+		AnalyticsService.trackEvent("GENERAL|GO_TO_TOP");
 
 		setScrollPosition(0);
 	}
