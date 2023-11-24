@@ -12,7 +12,7 @@ export function readFile(filePath: string) {
 	return fs.readFileSync(filePath).toString();
 }
 
-export function copyFolder(sourcePath: string, targetPath: string): void {
+export function copyFolder(sourcePath: string, targetPath: string) {
 	const targetFolder = path.resolve(targetPath, path.basename(sourcePath));
 
 	if (!fs.existsSync(targetFolder)) {
@@ -36,7 +36,7 @@ export function copyFolder(sourcePath: string, targetPath: string): void {
 export function copyFile(
 	filePath: string,
 	opts: { outputFolderPath: string; outputFileName?: string },
-): void {
+) {
 	prepareFilePathFolder(opts.outputFolderPath, true);
 
 	fs.copyFileSync(
@@ -93,7 +93,7 @@ export function readFolderFiles(
 	}, []);
 }
 
-export function createFolder(outputFolderPath: string): void {
+export function createFolder(outputFolderPath: string) {
 	fs.mkdirSync(outputFolderPath, { recursive: true });
 }
 

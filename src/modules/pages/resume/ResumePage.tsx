@@ -14,10 +14,11 @@ import {
 	Text,
 	Title,
 } from "~/components/primitive";
+import AnalyticsService from "~/modules/analytics";
+import type { T_PageContent } from "~/server/data-loader";
+import type DR from "@diegofrayo/types";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
-import type DR from "@diegofrayo/types";
-import type { T_PageContent } from "~/server/data-loader";
 
 // --- COMPONENT DEFINITION ---
 
@@ -41,6 +42,7 @@ function ResumePage({ data, cmsContent }: T_ResumePageProps) {
 					<Link
 						href="https://drive.google.com/file/d/1zOaXbESJ4mXasY0WybvfTD9G9qN2Ya7g/view?usp=sharing"
 						className="tw--mb-0.5 tw-inline-block tw-rounded-t-md tw-border tw-border-gray-700 tw-bg-gray-700 tw-px-3 tw-py-1 tw-text-sm tw-font-bold tw-text-white hover:tw-underline"
+						onClick={AnalyticsService.trackClickEvent("RESUME|DOWNLOAD_AS_PDF")}
 						isExternalLink
 					>
 						<Icon
@@ -94,6 +96,9 @@ function ResumePage({ data, cmsContent }: T_ResumePageProps) {
 									variant={Link.variant.SIMPLE}
 									href={`mailto:${data.contactInfo.email}`}
 									className="tw-inline-block"
+									onClick={AnalyticsService.trackClickEvent("RESUME|SOCIAL_NETWORK", {
+										item: "email",
+									})}
 									isExternalLink
 								>
 									<Icon
@@ -106,6 +111,9 @@ function ResumePage({ data, cmsContent }: T_ResumePageProps) {
 									variant={Link.variant.SIMPLE}
 									href={data.contactInfo.linkedin}
 									className="tw-inline-block"
+									onClick={AnalyticsService.trackClickEvent("RESUME|SOCIAL_NETWORK", {
+										item: "linkedin",
+									})}
 									isExternalLink
 								>
 									<Icon
@@ -123,6 +131,9 @@ function ResumePage({ data, cmsContent }: T_ResumePageProps) {
 											variant={Link.variant.SIMPLE}
 											href={website.value}
 											className="tw-inline-block"
+											onClick={AnalyticsService.trackClickEvent("RESUME|SOCIAL_NETWORK", {
+												item: isPersonalWebsite ? "website" : "github",
+											})}
 											isExternalLink
 										>
 											{isPersonalWebsite ? (
@@ -180,6 +191,9 @@ function ResumePage({ data, cmsContent }: T_ResumePageProps) {
 													variant={Link.variant.SIMPLE}
 													href={item.schoolWebsite}
 													className="tw-text-base tw-underline"
+													onClick={AnalyticsService.trackClickEvent("RESUME|EDUCATION", {
+														item: item.school,
+													})}
 													isExternalLink
 												>
 													{item.school}
@@ -355,6 +369,9 @@ function ExperienceTimelineItem({
 						variant={Link.variant.SIMPLE}
 						className="tw-text-base tw-text-black tw-underline"
 						href={companyWebsite}
+						onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", {
+							item: company,
+						})}
 						isExternalLink
 					>
 						{company}

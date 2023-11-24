@@ -43,7 +43,13 @@ class AnalyticsServiceClass {
 		logger("LOG", `Page "${window.location.pathname}" visit was tracked`);
 	}
 
-	trackEvent(name: string, data: DR.Object<DR.Primitive>) {
+	trackClickEvent(name: string, data?: DR.Object<DR.Primitive>) {
+		return () => {
+			this.trackEvent(name, data);
+		};
+	}
+
+	trackEvent(name: string, data?: DR.Object<DR.Primitive>) {
 		if (this.isAnalyticsDisabled()) {
 			logger("LOG", `Event "${name}" was not tracked`, data);
 			return;

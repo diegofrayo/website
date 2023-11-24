@@ -14,7 +14,7 @@ function BooksPage() {
 	const { data, isLoading, error } = useAsync("/books", BooksAPI.fetch);
 
 	// --- HANDLERS ---
-	function handleBookItemClick(event: DR.React.Events.OnClickEvent<HTMLDivElement>): void {
+	function handleBookItemClick(event: DR.React.Events.OnClickEvent<HTMLDivElement>) {
 		const link = event.currentTarget.querySelector("a");
 
 		if (link) {

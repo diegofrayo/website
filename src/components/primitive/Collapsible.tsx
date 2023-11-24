@@ -28,8 +28,8 @@ function Collapsible({
 	className = "",
 	contentClassName = "",
 	title = "",
-	onShowContentHandler = (): void => undefined,
-	onHideContentHandler = (): void => undefined,
+	onShowContentHandler = () => undefined,
+	onHideContentHandler = () => undefined,
 }: T_CollapsibleProps) {
 	// --- STATES & REFS ---
 	const [isOpen, setIsOpen] = React.useState(openedByDefault);

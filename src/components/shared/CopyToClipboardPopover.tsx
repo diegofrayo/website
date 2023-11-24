@@ -24,7 +24,7 @@ function CopyToClipboardPopover({
 	const [showPopover, setShowPopover] = React.useState(false);
 
 	// --- HANDLERS ---
-	function handleClick(): void {
+	function handleClick() {
 		copyToClipboard(v.isString(textToCopy) ? textToCopy : textToCopy());
 		setShowPopover((currentValue) => {
 			if (currentValue) {

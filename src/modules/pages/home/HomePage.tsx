@@ -111,11 +111,6 @@ type T_PictureFrameProps = {
 };
 
 function PictureFrame({ photo }: T_PictureFrameProps) {
-	// --- HANDLERS ---
-	function handleImageClick(): void {
-		AnalyticsService.trackEvent("HOME|PICTURE_FRAME", { action: "CLICK" });
-	}
-
 	return (
 		<Block className={cn(styles["picture-frame"], "tw-relative tw-mx-auto tw-w-32 tw-rounded-md")}>
 			<Block className="tw-h-20 tw-rounded-md tw-border-4 tw-border-white">
@@ -123,7 +118,6 @@ function PictureFrame({ photo }: T_PictureFrameProps) {
 					<Image
 						src={photo.src}
 						alt="Photography taken by Diego Rayo"
-						onClick={handleImageClick}
 						fill
 					/>
 				</Block>
@@ -141,7 +135,7 @@ function Radio({ song }: T_RadioProps) {
 	const [isAudioPlaying, setIsAudioPlaying] = React.useState(false);
 
 	// --- HANDLERS ---
-	function handlePlayAndPauseClick(): void {
+	function handlePlayAndPauseClick() {
 		setIsAudioPlaying((currentValue) => !currentValue);
 
 		const audioElement = getAudioElement();
@@ -155,7 +149,7 @@ function Radio({ song }: T_RadioProps) {
 		}
 	}
 
-	function onSongEndedHandler(): void {
+	function onSongEndedHandler() {
 		setIsAudioPlaying(false);
 	}
 
@@ -275,7 +269,11 @@ function StackPopover() {
 
 	// --- HANDLERS ---
 	function onHoverCardToggleHandler() {
-		setIsHoverCardOpen((currentState) => !currentState);
+		setIsHoverCardOpen((isOpen) => {
+			AnalyticsService.trackEvent("HOME|TECH_STACK", { action: isOpen ? "CLOSE" : "OPEN" });
+
+			return !isOpen;
+		});
 	}
 
 	return (

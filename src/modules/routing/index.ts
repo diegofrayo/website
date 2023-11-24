@@ -67,7 +67,7 @@ const BS_NoRedirectionsYet = BrowserStorageManager.createItem({
 	storage: "sessionStorage",
 });
 
-export function redirect(path: string): void {
+export function redirect(path: string) {
 	if (isPWA()) {
 		BS_LastPageVisited.set(path);
 	}
@@ -75,7 +75,7 @@ export function redirect(path: string): void {
 	window.location.href = path;
 }
 
-export function goBack(): void {
+export function goBack() {
 	const urlItems = window.location.pathname.split("/").filter(Boolean);
 
 	redirect(`/${urlItems.slice(0, urlItems.length - 1).join("/")}`);
@@ -100,7 +100,7 @@ export function initPWARoutingConfig(router: NextRouter): () => void {
 		return () => undefined;
 	}
 
-	const handleRouteChangeComplete = function handleRouteChangeComplete(): void {
+	const handleRouteChangeComplete = function handleRouteChangeComplete() {
 		BS_LastPageVisited.set(window.location.pathname);
 	};
 

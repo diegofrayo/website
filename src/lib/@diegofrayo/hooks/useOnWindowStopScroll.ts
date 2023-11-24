@@ -4,7 +4,7 @@ import useDidMount from "./useDidMount";
 
 function useOnWindowStopScroll({
 	onScrollStoppedCallback,
-	onScrollCallback = (): void => undefined,
+	onScrollCallback = () => undefined,
 	timeout = 3000,
 }: {
 	onScrollStoppedCallback: () => void;
@@ -22,13 +22,13 @@ function useOnWindowStopScroll({
 	});
 
 	// --- UTILS ---
-	function onScrollStopped(): void {
+	function onScrollStopped() {
 		if (!isMounted) return;
 
 		onScrollStoppedCallback();
 	}
 
-	function onScroll(): void {
+	function onScroll() {
 		window.clearTimeout(isScrolling);
 
 		onScrollCallback();

@@ -1,14 +1,12 @@
-/* eslint @typescript-eslint/dot-notation: 0 */
-
 import { readFile, writeFile } from "../../../src/lib/@diegofrayo/utils/files";
 import { replaceAll } from "../../../src/lib/@diegofrayo/utils/strings";
 import type { T_RawBlogPostsResponse } from "../../../src/modules/pages/blog/types";
+import WEBSITE_METADATA from "../../../src/data/metadata.json";
 
 async function main() {
 	const BLOG_POSTS = JSON.parse(
 		await readFile("./src/data/blog/data.json"),
 	) as T_RawBlogPostsResponse;
-	const WEBSITE_METADATA = JSON.parse(await readFile("./src/data/metadata.json"));
 	const WEBSITE_PAGES = {
 		HOME: "/",
 		RESUME: "/resume",
@@ -22,7 +20,7 @@ async function main() {
 			.filter(Boolean),
 	);
 
-	await generateSitemapFile(sitemapItems, WEBSITE_METADATA["url"]);
+	await generateSitemapFile(sitemapItems, WEBSITE_METADATA.url);
 
 	console.log(`"sitemap" script executed successfully`);
 }

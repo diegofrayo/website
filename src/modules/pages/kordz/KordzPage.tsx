@@ -31,7 +31,7 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 
 		document.addEventListener(
 			"keydown",
-			function focusInputAndSelectText(event: KeyboardEvent): void {
+			function focusInputAndSelectText(event: KeyboardEvent) {
 				if (
 					v.isNull(inputRef.current) ||
 					v.isNotEquals(event.code, "KeyF") ||

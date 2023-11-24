@@ -52,7 +52,7 @@ function FilmsPage() {
 		};
 	}
 
-	function handleFilmItemClick(event: DR.React.Events.OnClickEvent<HTMLDivElement>): void {
+	function handleFilmItemClick(event: DR.React.Events.OnClickEvent<HTMLDivElement>) {
 		const link = event.currentTarget.querySelector("a");
 
 		if (link) {
@@ -62,7 +62,7 @@ function FilmsPage() {
 		}
 	}
 
-	function handleToggleOrderByFilterClick(): void {
+	function handleToggleOrderByFilterClick() {
 		setIsAddedDateFilterEnabled((currentValue) => !currentValue);
 	}
 

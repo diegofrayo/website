@@ -46,7 +46,7 @@ export function withAuthRulesPage<G_ComponentProps extends object>(
 		});
 
 		// --- UTILS ---
-		function redirectUser(hasToRedirect: boolean): void {
+		function redirectUser(hasToRedirect: boolean) {
 			if (hasToRedirect) {
 				goBack();
 			} else {

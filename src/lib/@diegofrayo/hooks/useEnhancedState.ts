@@ -39,7 +39,7 @@ function useEnhancedState(
 		return [
 			enhancedState,
 			setEnhancedState,
-			function resetEnhancedState(): void {
+			function resetEnhancedState() {
 				setEnhancedState(initialStateRef.current);
 			},
 		];
@@ -49,10 +49,10 @@ function useEnhancedState(
 		return [
 			enhancedState,
 			setEnhancedState,
-			function toggleEnhancedState(): void {
+			function toggleEnhancedState() {
 				setEnhancedState((currentValue: boolean) => !currentValue);
 			},
-			function resetEnhancedState(): void {
+			function resetEnhancedState() {
 				setEnhancedState(initialStateRef.current);
 			},
 		];
@@ -62,13 +62,13 @@ function useEnhancedState(
 		return [
 			enhancedState,
 			setEnhancedState,
-			function incrementEnhancedState(): void {
+			function incrementEnhancedState() {
 				setEnhancedState((currentValue: number) => currentValue + 1);
 			},
-			function decrementEnhancedState(): void {
+			function decrementEnhancedState() {
 				setEnhancedState((currentValue: number) => currentValue - 1);
 			},
-			function resetEnhancedState(): void {
+			function resetEnhancedState() {
 				setEnhancedState(initialStateRef.current);
 			},
 		];

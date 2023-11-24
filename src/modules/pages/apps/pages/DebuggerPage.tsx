@@ -74,7 +74,7 @@ function DebuggerPage() {
 	});
 
 	// --- HANDLERS ---
-	function handleClearLogsClick(): void {
+	function handleClearLogsClick() {
 		clearLogsHistory();
 		setContent((currentState) => ({ ...currentState, logs: [] }));
 	}

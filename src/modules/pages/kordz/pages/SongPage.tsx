@@ -81,7 +81,7 @@ function SongPage({ cmsContent, songDetails, songContent }: T_SongPageProps) {
 	});
 
 	// --- HANDLERS ---
-	function onModalCloseHandler(): void {
+	function onModalCloseHandler() {
 		setIsModalVisible(false);
 		setSelectedUnparsedChord(undefined);
 	}

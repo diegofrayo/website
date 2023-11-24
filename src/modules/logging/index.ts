@@ -7,12 +7,12 @@ const BS_Logs = BrowserStorageManager.createItem<string[]>({
 	saveWhenCreating: true,
 });
 
-export function logger(type: "LOG" | "WARN" | "ERROR", ...args: unknown[]): void {
+export function logger(type: "LOG" | "WARN" | "ERROR", ...args: unknown[]) {
 	// eslint-disable-next-line no-console
 	console[type === "LOG" ? "log" : type === "WARN" ? "warn" : "error"](...args);
 }
 
-export function logAndReportError(error: unknown, source?: string): void {
+export function logAndReportError(error: unknown, source?: string) {
 	logger("ERROR", error);
 
 	if (isServer()) {
@@ -28,7 +28,7 @@ export function logAndReportError(error: unknown, source?: string): void {
 	addLog(source, parsedError);
 }
 
-export function logForRemoteDebugging(input: unknown, source?: string): void {
+export function logForRemoteDebugging(input: unknown, source?: string) {
 	logger("LOG", input);
 
 	if (isServer()) {
@@ -38,7 +38,7 @@ export function logForRemoteDebugging(input: unknown, source?: string): void {
 	addLog(source, input);
 }
 
-export function addErrorsGlobalListener(): void {
+export function addErrorsGlobalListener() {
 	window.onerror = function onerror(msg, url, lineNo, columnNo, error): boolean {
 		logAndReportError(
 			` ${msg} \n ${url} \n ${lineNo} \n ${columnNo} \n ${error} `,
@@ -53,7 +53,7 @@ export function getLogsHistory() {
 	return BS_Logs.get();
 }
 
-export function clearLogsHistory(): void {
+export function clearLogsHistory() {
 	BS_Logs.remove();
 }
 

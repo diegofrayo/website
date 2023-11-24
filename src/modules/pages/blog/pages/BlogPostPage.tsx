@@ -224,7 +224,7 @@ const RateContent = withOnlyClientRender(function RateContent() {
 
 	function handleAnswerClick(answer: "YES" | "NO") {
 		return () => {
-			AnalyticsService.trackEvent("RATE_CONTENT", {
+			AnalyticsService.trackEvent("BLOG|RATE_CONTENT", {
 				answer,
 				page: window.location.pathname,
 			});
@@ -295,6 +295,7 @@ function BlogPostDetailsSendCommentItem() {
 		<BlogPostDetailsItem
 			is={Link}
 			href={composeMailToURL()}
+			onClick={AnalyticsService.trackClickEvent("BLOG|SEND_COMMENT", { url: window.location.href })}
 			isExternalLink
 		>
 			<BlogPostDetailsItemIcon icon={Icon.icon.ENVELOPE} />
@@ -307,7 +308,10 @@ function BlogPostDetailsCopyUrlItem() {
 	return (
 		<BlogPostDetailsItem is="div">
 			<CopyToClipboardPopover textToCopy={window.location.href}>
-				<Button variant={Button.variant.SIMPLE}>
+				<Button
+					variant={Button.variant.SIMPLE}
+					onClick={AnalyticsService.trackClickEvent("BLOG|COPY_URL", { url: window.location.href })}
+				>
 					<BlogPostDetailsItemIcon icon={Icon.icon.LINK} />
 					<InlineText>Copy URL</InlineText>
 				</Button>

@@ -39,7 +39,7 @@ function DencryptPage() {
 	});
 
 	// --- HANDLERS ---
-	function onKeyUpHandler(event: DR.React.Events.OnKeyUpEvent<HTMLInputElement>): void {
+	function onKeyUpHandler(event: DR.React.Events.OnKeyUpEvent<HTMLInputElement>) {
 		const text = getInputText();
 
 		if (event.key === "Enter" && v.isNotEmptyString(text)) {

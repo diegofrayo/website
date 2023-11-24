@@ -1,8 +1,7 @@
-/* eslint @typescript-eslint/dot-notation: 0 */
-
 import { Feed } from "feed";
-import { readFile, writeFile } from "../../../src/lib/@diegofrayo/utils/files";
-import type { T_RawBlogPostsResponse } from "../../../src/modules/pages/blog/types";
+import { writeFile } from "../../../src/lib/@diegofrayo/utils/files";
+import BLOG_POSTS from "../../../src/data/blog/data.json";
+import WEBSITE_METADATA from "../../../src/data/metadata.json";
 
 async function main() {
 	await generateRSSFiles();
@@ -16,10 +15,6 @@ main();
 
 async function generateRSSFiles() {
 	const DEFAULT_LOCALE = "en";
-	const WEBSITE_METADATA = JSON.parse(await readFile("./src/data/metadata.json"));
-	const BLOG_POSTS = JSON.parse(
-		await readFile("./src/data/blog/data.json"),
-	) as T_RawBlogPostsResponse;
 	const feed = new Feed({
 		title: WEBSITE_METADATA.title,
 		description: WEBSITE_METADATA.description,

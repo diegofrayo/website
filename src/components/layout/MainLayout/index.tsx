@@ -78,6 +78,7 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 							variant={Link.variant.SIMPLE}
 							href={ROUTES.HOME}
 							className="tw-block tw-text-2xl tw-text-white dr-font-main-title sm:tw-text-4xl"
+							onClick={AnalyticsService.trackClickEvent("GENERAL|HEADER_LINK")}
 						>
 							{`@${WEBSITE_METADATA.username}`}
 						</Link>
@@ -107,6 +108,9 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 										variant={Link.variant.SIMPLE}
 										href={parentUrl}
 										className="tw-mb-4 tw-inline-block tw-text-base tw-text-white tw-underline"
+										onClick={AnalyticsService.trackClickEvent("GENERAL|BREADCUMB_LINK", {
+											link: parentUrl,
+										})}
 									>
 										{parentUrl}
 									</Link>
@@ -144,26 +148,31 @@ export default MainLayout;
 
 const SOCIAL_ICONS = [
 	{
+		name: "github",
 		href: WEBSITE_METADATA.social.github,
 		icon: Icon.icon.GITHUB_MONO,
 		className: "",
 	},
 	{
+		name: "linkedin",
 		href: WEBSITE_METADATA.social.linkedin,
 		icon: Icon.icon.LINKEDIN_MONO,
 		className: "",
 	},
 	{
+		name: "twitter",
 		href: WEBSITE_METADATA.social.twitter,
 		icon: Icon.icon.TWITTER,
 		className: "",
 	},
 	{
+		name: "instagram",
 		href: WEBSITE_METADATA.social.instagram,
 		icon: Icon.icon.INSTAGRAM_MONO,
 		className: "",
 	},
 	{
+		name: "spotify",
 		href: WEBSITE_METADATA.social.spotify,
 		icon: Icon.icon.SPOTIFY_MONO,
 		className: "",
@@ -174,7 +183,7 @@ const SOCIAL_ICONS = [
 
 const ToolsMenu = renderIf(function ToolsMenu() {
 	// --- HANDLERS ---
-	function onPointerEventHandler(event: DR.React.Events.OnMouseEvent<HTMLButtonElement>): void {
+	function onPointerEventHandler(event: DR.React.Events.OnMouseEvent<HTMLButtonElement>) {
 		event.preventDefault();
 	}
 
@@ -415,7 +424,7 @@ function NavigationMenuDialog({ show, onCloseHandler }: T_NavigationMenuDialogPr
 		return (
 			<Block className="tw-fixed tw-left-0 tw-top-0 tw-z-20 tw-flex tw-h-screen tw-w-screen tw-items-center tw-justify-center tw-bg-black/80 tw-backdrop-blur-md">
 				<Button
-					className="tw-top tw-absolute tw-top-[132.5px] tw-block tw-w-full"
+					className="tw-top tw-absolute tw-top-[141px] tw-block tw-w-full"
 					onClick={onCloseHandler}
 				>
 					<Icon
@@ -481,6 +490,7 @@ const NavigationMenuItem = React.forwardRef<HTMLAnchorElement, T_NavigationMenuI
 					href={href}
 					ref={forwardedRef}
 					variant={Link.variant.SIMPLE}
+					onClick={AnalyticsService.trackClickEvent("GENERAL|NAVIGATION_MENU", { item: href })}
 					{...props}
 				>
 					<Icon
@@ -548,14 +558,16 @@ function Footer() {
 type T_SocialIconProps = {
 	href: string;
 	icon: T_IconName;
+	name: string;
 };
 
-function SocialIcon({ href, icon }: T_SocialIconProps) {
+function SocialIcon({ href, icon, name }: T_SocialIconProps) {
 	return (
 		<Link
 			variant={Link.variant.SIMPLE}
 			href={href}
 			className="tw-mx-2 tw-inline-block"
+			onClick={AnalyticsService.trackClickEvent("GENERAL|SOCIAL_NETWORKS", { value: name })}
 			isExternalLink
 		>
 			<Icon
@@ -585,7 +597,9 @@ function GoToTopButton() {
 	});
 
 	// --- HANDLERS ---
-	function handleGoToTheTopClick(): void {
+	function handleGoToTheTopClick() {
+		AnalyticsService.trackClickEvent("GENERAL|GO_TO_TOP");
+
 		setScrollPosition(0);
 	}
 

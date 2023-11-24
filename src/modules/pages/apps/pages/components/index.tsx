@@ -59,11 +59,11 @@ export const ContactsPage = withAuthRulesPage(
 		});
 
 		// --- HANDLERS ---
-		function handleToggleAllCollapsiblesOpenedClick(): void {
+		function handleToggleAllCollapsiblesOpenedClick() {
 			toggleIsAllCollapsiblesOpened();
 		}
 
-		function handleToggleWhatsAppLinksModeClick(): void {
+		function handleToggleWhatsAppLinksModeClick() {
 			setWhatsAppLinksMode(whatsAppLinksMode === "app" ? "web" : "app");
 		}
 

@@ -42,7 +42,7 @@ function CustomApp({ Component, pageProps }: T_CustomAppProps) {
 
 	// --- UTILS ---
 
-	function onError(error: Error, info: { componentStack: string }): void {
+	function onError(error: Error, info: { componentStack: string }) {
 		console.group("componentDidCatch (ErrorBoundary)");
 		logger("ERROR", error);
 		logger("ERROR", info);
@@ -96,7 +96,7 @@ const fontTexts = Montserrat({
 	variable: "--font-texts",
 });
 
-(function injectGlobalStyles(): void {
+(function injectGlobalStyles() {
 	if (isServer()) {
 		return;
 	}
