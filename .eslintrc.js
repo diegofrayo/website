@@ -5,9 +5,10 @@ module.exports = {
 	parser: "@typescript-eslint/parser",
 	plugins: ["prettier", "no-loops", "react-hooks", "@typescript-eslint"],
 	ignorePatterns: [
-		"public/**/*",
+		"public",
+		"src/data",
 		"src/features/i18n",
-		"src/features/pages/personal/*/timer/**/*",
+		"src/features/pages/personal",
 		"src/stores",
 		"src/stories",
 	],

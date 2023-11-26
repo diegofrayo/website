@@ -1,43 +1,6 @@
 import { Icon } from "~/components/primitive";
 
 export const PERSONAL_PAGES = [
-	// personal
-	{
-		slug: "contacts",
-		title: "contacts",
-		componentName: "",
-		icon: Icon.icon.USER_CIRCLE,
-		type: "DATA",
-	},
-	{
-		slug: "businesses",
-		title: "businesses",
-		componentName: "",
-		icon: Icon.icon.BRIEFCASE,
-		type: "DATA",
-	},
-	{
-		slug: "films",
-		title: "films",
-		componentName: "films/index",
-		icon: Icon.icon.FILM,
-		type: "DATA",
-	},
-	{
-		slug: "timeline",
-		title: "timeline",
-		componentName: "timeline/index",
-		icon: Icon.icon.PRESENTATION_CHART_LINE,
-		type: "DATA",
-	},
-	{
-		slug: "books",
-		title: "books",
-		componentName: "books/index",
-		icon: Icon.icon.BOOK_OPEN,
-		type: "DATA",
-	},
-
 	// tools
 	{
 		slug: "ticks",
@@ -72,13 +35,6 @@ export const PERSONAL_PAGES = [
 		title: "text",
 		componentName: "Text",
 		icon: Icon.icon.DOCUMENT_TEXT,
-		type: "TOOL",
-	},
-	{
-		slug: "isr",
-		title: "isr",
-		componentName: "ISR",
-		icon: Icon.icon.REFRESH,
 		type: "TOOL",
 	},
 	{

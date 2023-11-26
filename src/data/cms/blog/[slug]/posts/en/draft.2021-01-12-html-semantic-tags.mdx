@@ -1,0 +1,191 @@
+## Layout
+
+<Playground
+	Component={() => <HSTMain />}
+	code={`<main role="main">
+  <header>
+    <h1>header</h1>
+    <nav>
+      <ul>
+        <li>
+          <a href="/page-1">Page 1</a>
+        </li>
+        <li>
+          <a href="/page-2">Page 2</a>
+        </li>
+        <li>
+          <a href="/page-3">Page 3</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div>
+    <aside>
+      <section>
+        <h2>About me</h2>
+        <div>content...</div>
+      </section>
+      <hr />
+      <section>
+        <h2>Links</h2>
+        <div>content...</div>
+      </section>
+    </aside>
+    <section>
+      <h2>Main content</h2>
+      <article>
+        <header>
+          <h1>article header</h1>
+        </header>
+        <div>
+          <p>article content</p>
+        </div>
+        <footer>article footer</footer>
+      </article>
+      <hr />
+      <article>
+        <header>
+          <h1>article header</h1>
+        </header>
+        <div>
+          <p>article content</p>
+        </div>
+        <footer>article footer</footer>
+      </article>
+    </section>
+  </div>
+  <footer>footer</footer>
+</main>`}
+	language="html"
+/>
+
+- **main**
+
+  - solo debería existir un elemento de este tipo por página
+  - debe ser el elemento principal de una página
+
+- **section**
+
+  - es un contenedor que agrupa contenido relacionado
+  - por lo general contiene un título al inicio
+  - ejemplos: formulario de contácto, sección de comentarios, noticias relacionadas
+
+- **aside**
+
+  - contiene información complementaria que puede estar relacionada o no al contenido principal de la página
+  - no necesariamente hay que verla como una sección lateral de una página
+
+- **article**
+
+  - puede contener header, footer y títulos (h1)
+  - su contenido está relacionado, es independiente y reusable para usar en varias páginas e incluso en multiples sitios web
+  - un elemento de este tipo puede cambiar de lugar y su información se deberá seguir entendiendo
+
+- **div**
+
+  - puede contener cualquier tipo de elementos
+  - sus elementos podrían no estar relacionados entre si
+
+- **span**
+  - es un contenedor en línea
+  - usualmente contiene textos muy cortos o iconos
+
+> En progreso... 🚧
+
+## Texts
+
+<Playground Component={() => <HSTTexts />} code={``} language="html" />
+
+## More interesting tags
+
+### details
+
+<Playground
+	Component={() => {
+		return (
+			<details>
+				<summary>Click here to hide or show</summary>
+				<p>- Visible</p>
+			</details>
+		);
+	}}
+	code={`<details>
+  <summary>Click here to hide or show</summary>
+  <p>- Visible</p>
+</details>`}
+	language="html"
+/>
+
+### figure
+
+<Playground
+	Component={() => {
+		return (
+			<figure>
+				<Image
+					src="https://pbs.twimg.com/profile_images/584210917384159233/_R5HuMuR.jpg"
+					alt="Puppy"
+					width="150"
+					height="150"
+				/>
+				<figcaption>Puppy</figcaption>
+			</figure>
+		);
+	}}
+	code={`<figure>
+  <Image
+    src="https://pbs.twimg.com/profile_images/584210917384159233/_R5HuMuR.jpg"
+    alt="Puppy"
+    width="150"
+    height="150"
+  />
+  <figcaption>Puppy</figcaption>
+</figure>`}
+	language="html"
+/>
+
+### progress
+
+<Playground Component={() => <HSTMeasure />} code={``} language="html" />
+
+### dialog
+
+<Playground
+	Component={() => {
+		return <dialog open>This is an open dialog window</dialog>;
+	}}
+	code={`<dialog open>This is an open dialog window</dialog>`}
+	language="html"
+/>
+
+### output
+
+<Playground
+	Component={() => {
+		return null;
+	}}
+	code={`l`}
+	language="html"
+/>
+
+### datalist
+
+<Playground
+	Component={() => {
+		return (
+			<div>
+				<input list="books" />
+				<datalist id="books">
+					<option value="Fiction" />
+					<option value="Non-Fiction" />
+				</datalist>
+			</div>
+		);
+	}}
+	code={`l`}
+	language="html"
+/>
+
+## Fuentes
+
+- [HTML5 Tags List: Get to Know the Most Useful Elements | bitdegree.org](https://bitdegree.org/learn/html5-tags)

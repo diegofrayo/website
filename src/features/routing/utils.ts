@@ -7,13 +7,11 @@ import { isPWA } from "~/utils/browser";
 
 export type T_RoutesKeys =
 	| "HOME"
-	| "ABOUT_ME"
 	| "BLOG"
 	| "BLOG_DETAILS"
 	| "MUSIC"
 	| "MUSIC_DETAILS"
 	| "PERSONAL"
-	| "BOOKMARKS"
 	| "SIGN_IN"
 	| "SIGN_OUT"
 	| "ERROR_404"
@@ -21,13 +19,11 @@ export type T_RoutesKeys =
 
 export type T_RoutesValues =
 	| "/"
-	| "/about-me"
 	| "/blog"
 	| "/blog/[slug]"
 	| "/music"
 	| "/music/[song]"
 	| "/personal"
-	| "/bookmarks"
 	| "/sign-in"
 	| "/sign-out"
 	| "/404"
@@ -35,8 +31,6 @@ export type T_RoutesValues =
 
 export const ROUTES: Readonly<Record<T_RoutesKeys, T_RoutesValues>> = {
 	HOME: "/",
-	ABOUT_ME: "/about-me",
-	BOOKMARKS: "/bookmarks",
 	BLOG: "/blog",
 	BLOG_DETAILS: "/blog/[slug]",
 	MUSIC: "/music",

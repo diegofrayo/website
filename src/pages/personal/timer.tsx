@@ -1,5 +1,5 @@
 import TimerPage from "~/features/pages/personal/[page]/timer";
-import { getPageContentStaticProps } from "~/features/i18n";
+import getPageContentStaticProps from "~/features/i18n/server";
 
 export default TimerPage;
 

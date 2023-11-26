@@ -1,0 +1,18 @@
+{
+	"config": {
+		"locales": ["en"],
+		"default_locale": "en",
+		"is_seo_disabled": false,
+		"reload_when_locale_changes": false
+	},
+	"en": {
+		"seo": {
+			"title": "{{title}}, {{artist}}: Chords and lyrics",
+			"description": "Chords and lyrics of \"{{title}}\" by \"{{artist}}\""
+		},
+		"texts": {
+			"sources": "Sources",
+			"disclaimer": "\"I'm not the author of this transcription, I created it based on below links content\""
+		}
+	}
+}

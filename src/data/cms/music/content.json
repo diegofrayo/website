@@ -1,0 +1,25 @@
+{
+	"config": {
+		"locales": ["en"],
+		"default_locale": "en",
+		"is_seo_disabled": false,
+		"reload_when_locale_changes": false
+	},
+	"en": {
+		"seo": {
+			"title": "Music",
+			"description": "Chords and lyrics of some songs that I can play on guitar"
+		},
+		"texts": {
+			"title": "Music",
+			"chords_title": "List of chords",
+			"input_label": "Search",
+			"input_placeholder": "Type a title or an artist...",
+			"results_title": "Results",
+			"artist": "Artist",
+			"album": "Album",
+			"year": "Year",
+			"category": "Category"
+		}
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"config": {
+		"locales": ["en"],
+		"default_locale": "en",
+		"is_seo_disabled": false,
+		"reload_when_locale_changes": false
+	},
+	"en": {
+		"seo": {
+			"title": "",
+			"description": ""
+		},
+		"texts": {}
+	}
+}

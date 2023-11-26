@@ -1,0 +1,69 @@
+{
+	"layout": {
+		"header": {
+			"common": {
+				"menu_item_blog": "Blog",
+				"menu_item_personal": "Personal",
+				"menu_item_bookmarks": "Bookmarks"
+			},
+			"es": {
+				"room": {
+					"welcome": "bienvenido"
+				},
+				"menu": {
+					"home": "Inicio",
+					"about_me": "Acerca de mí",
+					"music": "Música",
+					"projects": "Proyectos",
+					"sign_in": "Iniciar sesión",
+					"sign_out": "Cerrar sesión"
+				},
+				"settings": {
+					"language": "Idiomas disponibles",
+					"theme": "Modo"
+				}
+			},
+			"en": {
+				"room": {
+					"welcome": "welcome"
+				},
+				"menu": {
+					"home": "Home",
+					"about_me": "About me",
+					"music": "Music",
+					"projects": "Projects",
+					"sign_in": "Sign in",
+					"sign_out": "Sign out"
+				},
+				"settings": {
+					"language": "Available languages",
+					"theme": "Theme"
+				}
+			}
+		},
+		"footer": {
+			"es": {
+				"resources_disclaimer": "Este sitio web usa recursos de"
+			},
+			"en": {
+				"resources_disclaimer": "This website uses resources from"
+			}
+		}
+	},
+	"common": {
+		"es": {
+			"copy_to_clipboard": "Copiado",
+			"useful_question": "¿Te gustó este contenido?",
+			"useful_question_yes": "SI",
+			"useful_question_no": "NO",
+			"useful_question_thanks": "Gracias por tu respuesta"
+		},
+		"en": {
+			"copy_to_clipboard": "Copied",
+			"useful_question": "Did you like this content?",
+			"useful_question_yes": "YES",
+			"useful_question_no": "NO",
+			"useful_question_thanks": "Thanks for answering"
+		}
+	}
+}

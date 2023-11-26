@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { T_IconName } from "~/components/primitive/Icon";
 import { Page, MainLayout } from "~/components/layout";
-import { Link, Block, Icon, InlineText, Space, List } from "~/components/primitive";
+import { Link, Block, Icon, InlineText, List } from "~/components/primitive";
 import { withAuthPage } from "~/features/auth";
 import { ROUTES } from "~/features/routing";
 import type { T_ReactElement } from "~/types";
@@ -22,11 +22,6 @@ function PersonalPage(): T_ReactElement {
 		>
 			<MainLayout title={PAGE_TITLE}>
 				<Block className="tw-w-full sm:tw-mx-auto sm:tw-max-w-md">
-					<PagesList pages={PERSONAL_PAGES.filter((page) => page.type === "DATA")} />
-					<Space
-						size={4}
-						variant={Space.variant.DASHED}
-					/>
 					<PagesList pages={PERSONAL_PAGES.filter((page) => page.type === "TOOL")} />
 				</Block>
 			</MainLayout>

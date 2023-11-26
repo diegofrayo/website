@@ -1,0 +1,31 @@
+{
+	"config": {
+		"locales": ["en"],
+		"default_locale": "en",
+		"is_seo_disabled": false,
+		"reload_when_locale_changes": true
+	},
+	"en": {
+		"seo": {
+			"title": "Blog",
+			"description": "In this blog, You will find out content about programming, mainly about frontend stuff, React, Next.js, MDX, Tailwind CSS, and other tools I used to build this website."
+		},
+		"texts": {
+			"created_at": "Created",
+			"published_at": "Published",
+			"updated_at": "Updated",
+			"today": "today",
+			"yesterday": "yesterday",
+			"days_ago": "{{number}} days ago",
+			"month": "month",
+			"month_plural": "months",
+			"months_ago": "{{number}} $t(page:month, {\"count\": {{number}} }) ago",
+			"week": "week",
+			"week_plural": "weeks",
+			"weeks_ago": "{{number}} $t(page:week, {\"count\": {{number}} }) ago",
+			"year": "year",
+			"year_plural": "years",
+			"years_ago": "{{number}} $t(page:year, {\"count\": {{number}} }) ago"
+		}
+	}
+}

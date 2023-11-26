@@ -1,5 +1,5 @@
 import HomePage from "~/features/pages/home";
-import { getPageContentStaticProps } from "~/features/i18n";
+import getPageContentStaticProps from "~/features/i18n/server";
 import { ROUTES } from "~/features/routing";
 
 export default HomePage;
@@ -12,24 +12,7 @@ export const getStaticProps = getPageContentStaticProps({
 		return {
 			props: {
 				data: {
-					featured: [
-						{
-							text: "/d/contacts",
-							url: "/personal/contacts",
-						},
-						{
-							text: "/d/businesses",
-							url: "/personal/businesses",
-						},
-						{
-							text: "/t/dencrypt",
-							url: "/personal/dencrypt",
-						},
-						{
-							text: "/t/whatsapp",
-							url: "/personal/whatsapp",
-						},
-					],
+					featured: [],
 				},
 			},
 		};

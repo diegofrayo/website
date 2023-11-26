@@ -1,0 +1,15 @@
+{
+	"config": {
+		"locales": ["en"],
+		"default_locale": "en",
+		"is_seo_disabled": true,
+		"reload_when_locale_changes": false
+	},
+	"en": {
+		"seo": { "title": "", "description": "" },
+		"texts": {
+			"title": "🙈 500 Error 🙈",
+			"body": "I will try to fix this bug as soon as possible, avoiding to affect this current sprint goal so that the client can get the maximum value possible."
+		}
+	}
+}

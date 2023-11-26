@@ -1,10 +1,12 @@
-import http from "~/lib/http";
-import { ENV_VARS } from "~/constants";
+import fs from "fs";
+import pathNodeJs from "path";
 
-type T_DataLoaderParams = { path: string };
+export function dataFileLoader<G_Return>(path: string): G_Return {
+	const data = fs.readFileSync(pathNodeJs.join(process.cwd(), "src/data/cms/", path), "utf8");
 
-export default async function dataLoader({ path }: T_DataLoaderParams): Promise<unknown> {
-	const { data } = await http.get(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}${path}`);
+	if (path.endsWith(".json")) {
+		return JSON.parse(data) as G_Return;
+	}
 
-	return data;
+	return data as G_Return;
 }

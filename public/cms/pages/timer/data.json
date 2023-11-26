@@ -1,0 +1,170 @@
+{
+	"metadata": { "version": "2.0", "routineItemsStartTime": 15 },
+	"exercises": {
+		"_comment0_": "=== PRE ENTRENAMIENTO ===",
+		"calentamiento-basico": {
+			"notes": "",
+			"highTime": "10:00",
+			"sets": 1,
+			"title": "Calentamiento básico",
+			"id": "calentamiento-basico"
+		},
+		"calentamiento-de-miembros": {
+			"notes": "",
+			"highTime": "05:00",
+			"sets": 1,
+			"title": "Calentamiento de miembros",
+			"id": "calentamiento-de-miembros"
+		},
+		"_comment1_": "=== ESTIRAMIENTOS DE COLUMNA ===",
+		"estiramiento-de-columna-suspendido": {
+			"notes": "",
+			"highTime": "00:20",
+			"restTime": "00:10",
+			"sets": 4,
+			"title": "Estiramiento de columna suspendido",
+			"id": "estiramiento-de-columna-suspendido"
+		},
+		"alineacion-lateral-de-disco": {
+			"notes": "",
+			"highTime": "00:07",
+			"restTime": "00:05",
+			"sets": 10,
+			"title": "Alineación lateral de disco",
+			"id": "alineacion-lateral-de-disco"
+		},
+		"extension-de-espalda": {
+			"notes": "",
+			"highTime": "00:07",
+			"restTime": "00:05",
+			"sets": 10,
+			"title": "Extensión de espalda",
+			"id": "extension-de-espalda"
+		},
+		"_comment2_": "=== FORTALECIMIENTOS ===",
+		"puentes": {
+			"notes": "",
+			"highTime": "00:10",
+			"restTime": "00:10",
+			"sets": 10,
+			"title": "Puentes",
+			"id": "puentes"
+		},
+		"lumbares": {
+			"notes": "Mover un objeto de un lado a otro manteniendo la postura elevada, pies separados, la mirada no tiene que estar al frente necesariamente, hacer el movimiento de las brazos lento y estirándolos completamente",
+			"highTime": "01:00",
+			"restTime": "00:30",
+			"sets": 2,
+			"title": "Lumbares",
+			"id": "lumbares"
+		},
+		"sentadillas": {
+			"notes": "",
+			"highTime": "00:50",
+			"restTime": "00:30",
+			"sets": 2,
+			"title": "Sentadillas",
+			"id": "sentadillas"
+		},
+		"gluteo": {
+			"notes": "2 series de 10 repeticiones por cada pierna. Espalda recta, inclinada intentando juntar el hombro con la rodilla, la pierna de apoyo no se debe inclinar hacia adelante, la otra pierna debe bajar hasta el piso en un movimiento recto",
+			"highTime": "03:00",
+			"restTime": "01:00",
+			"sets": 4,
+			"title": "gluteo",
+			"id": "gluteo"
+		},
+		"levantamiento-de-pierna-y-brazo": {
+			"notes": "",
+			"highTime": "00:50",
+			"restTime": "00:30",
+			"sets": 2,
+			"title": "Levantamiento de pierna y brazo",
+			"id": "levantamiento-de-pierna-y-brazo"
+		},
+		"_comment3_": "=== ESTIRAMIENTOS MUSCULARES ===",
+		"estiramiento-con-banda": {
+			"notes": "",
+			"highTime": "01:00",
+			"restTime": "00:15",
+			"sets": 2,
+			"title": "Estiramiento con banda",
+			"id": "estiramiento-con-banda"
+		},
+		"estiramientos-basicos": {
+			"notes": "",
+			"highTime": "00:40",
+			"restTime": "00:15",
+			"sets": 9,
+			"title": "Estiramientos básicos",
+			"id": "estiramientos-basicos"
+		},
+		"estiramientos-relajantes": {
+			"notes": "",
+			"highTime": "01:00",
+			"restTime": "00:15",
+			"sets": 5,
+			"title": "Estiramientos relajantes",
+			"id": "estiramientos-relajantes"
+		},
+		"_comment4_": "=== FUNDAMENTALES ===",
+		"pelota": {
+			"notes": "2 series de 5 repeticiones con ambas piernas, sosteniendo 3 segundos",
+			"highTime": "00:15",
+			"restTime": "00:15",
+			"sets": 20,
+			"title": "Pelota",
+			"id": "pelota"
+		},
+		"abdominales": {
+			"notes": "Estirado | Lado | Codos | Lado | Codos",
+			"highTime": "00:25",
+			"restTime": "00:20",
+			"sets": 5,
+			"title": "Abdominales",
+			"id": "abdominales"
+		},
+		"abdominales-en-fondos": {
+			"notes": "",
+			"highTime": "00:25",
+			"restTime": "00:20",
+			"sets": 3,
+			"title": "Abdominales",
+			"id": "abdominales"
+		},
+		"_comment5_": "=== FUERZA ===",
+		"fondos": {
+			"notes": "",
+			"highTime": "00:50",
+			"restTime": "00:30",
+			"sets": 3,
+			"title": "Fondos",
+			"id": "fondos"
+		},
+		"flexiones": {
+			"notes": "4 series de 7 repeticiones. Abdomen y gluteos contraidos",
+			"highTime": "00:50",
+			"restTime": "00:30",
+			"sets": 3,
+			"title": "Flexiones",
+			"id": "flexiones"
+		},
+		"dominadas": {
+			"notes": "",
+			"highTime": "00:50",
+			"restTime": "00:30",
+			"sets": 3,
+			"title": "Dominadas",
+			"id": "dominadas"
+		}
+	},
+	"routines": [
+		{
+			"id": "test",
+			"items": ["calentamiento-basico"],
+			"name": "test",
+			"restTimeBetweenItems": "02:00",
+			"createdAt": "2022/11/01"
+		}
+	]
+}

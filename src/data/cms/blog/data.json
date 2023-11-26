@@ -1,0 +1,154 @@
+{
+	"categories": [
+		{
+			"color": "tw-bg-amber-500",
+			"id": "firebase",
+			"value": "firebase"
+		},
+		{
+			"color": "tw-bg-blue-500",
+			"id": "github-actions",
+			"value": "github-actions"
+		},
+		{
+			"color": "tw-bg-cyan-500",
+			"id": "go-daddy",
+			"value": "go-daddy"
+		},
+		{
+			"color": "tw-bg-pink-500",
+			"id": "javascript",
+			"value": "javascript"
+		},
+		{
+			"color": "tw-bg-red-500",
+			"id": "markdown",
+			"value": "markdown"
+		},
+		{
+			"color": "tw-bg-sky-500",
+			"id": "mdx",
+			"value": "mdx"
+		},
+		{
+			"color": "tw-bg-green-500",
+			"id": "next.js",
+			"value": "next.js"
+		},
+		{
+			"color": "tw-bg-teal-500",
+			"id": "npm",
+			"value": "npm"
+		},
+		{
+			"color": "tw-bg-violet-500",
+			"id": "tailwind-css",
+			"value": "tailwind-css"
+		},
+		{
+			"color": "tw-bg-slate-500",
+			"id": "trips",
+			"value": "trips"
+		},
+		{
+			"color": "tw-bg-amber-500",
+			"id": "typescript",
+			"value": "typescript"
+		}
+	],
+	"posts": {
+		"a-trip-around-colombia": {
+			"config": {
+				"categories": ["trips"],
+				"created_at": "2022/04/14",
+				"has_to_be_pre_rendered": true,
+				"is_published": false,
+				"locales": ["en"],
+				"published_at": "2022/04/30",
+				"slug": "a-trip-around-colombia",
+				"updated_at": "2022/05/01"
+			},
+			"en": {
+				"description": "Este es un breve resumen acerca de mis primeras vacaciones como \"joven adulto\" por Colombia.",
+				"title": "Viajesito en Colombia"
+			},
+			"es": {
+				"description": "This a brief summary about my first vacations as a \"young adult\" around Colombia.",
+				"title": "A trip around Colombia"
+			}
+		},
+		"javascript-arrays-examples": {
+			"assets": {
+				"sourceCodeSnippets": {
+					"array-adding-elements": "// Description: {add element at the end of the array}\n// Mutative: {false}\nconst input1 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input1.concat([\"f\"])); // [\"a\",\"b\",\"c\",\"d\",\"e\",\"f\"]\nconsole.log(input1); // [\"a\",\"b\",\"c\",\"d\",\"e\"]\n\n// Description: {add element at the end of the array}\n// Mutative: {true}\nconst input2 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input2.push(\"f\")); // 6\nconsole.log(input2); // [\"a\",\"b\",\"c\",\"d\",\"e\",\"f\"]\n\n// Description: {add element at the beginning of the array}\n// Mutative: {true}\nconst input3 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input3.unshift(\"0\")); // 6\nconsole.log(input3); // [\"0\",\"a\",\"b\",\"c\",\"d\",\"e\"]\n\n// Description: {add element at a given position}\n// Mutative: {true}\nconst input4 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input4.splice(2, 0, \"b.a\")); // []\nconsole.log(input4); // [\"a\",\"b\",\"b.a\",\"c\",\"d\",\"e\"]",
+					"array-mutative-methods": "// Description: {sort}\n// Mutative: {true}\nconst input1 = [\"e\",\"d\",\"c\",\"b\",\"a\"];\nconsole.log(input1.sort()); // [\"a\",\"b\",\"c\",\"d\",\"e\"]\nconsole.log(input1); // [\"a\",\"b\",\"c\",\"d\",\"e\"]\n\n// Description: {reverse}\n// Mutative: {true}\nconst input2 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input2.reverse()); // [\"e\",\"d\",\"c\",\"b\",\"a\"]\nconsole.log(input2); // [\"e\",\"d\",\"c\",\"b\",\"a\"]",
+					"array-removing-elements": "// Description: {remove by element value}\n// Mutative: {false}\nconst input1 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input1.filter(element => element !== 'a')); // [\"b\",\"c\",\"d\",\"e\"]\nconsole.log(input1); // [\"a\",\"b\",\"c\",\"d\",\"e\"]\n\n// Description: {remove by index}\n// Mutative: {true}\nconst input2 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input2.splice(2, 1)); // [\"c\"]\nconsole.log(input2); // [\"a\",\"b\",\"d\",\"e\"]\n\n// Description: {remove the first element}\n// Mutative: {true}\nconst input3 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input3.shift()); // \"a\"\nconsole.log(input3); // [\"b\",\"c\",\"d\",\"e\"]\n\n// Description: {remove the last element}\n// Mutative: {true}\nconst input4 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input4.pop()); // \"e\"\nconsole.log(input4); // [\"a\",\"b\",\"c\",\"d\"]",
+					"array-subsets": "// Description: {Subset with a given start and end}\n// Mutative: {false}\nconst input1 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input1.slice(1, input1.length - 1)); // [\"b\",\"c\",\"d\"]\nconsole.log(input1); // [\"a\",\"b\",\"c\",\"d\",\"e\"]\n\n// Description: {Subset with a given start and end}\n// Mutative: {true}\nconst input2 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input2.splice(input2.length - 1, 1)); // [\"e\"]\nconsole.log(input2.splice(0, 1)); // [\"a\"]\nconsole.log(input2); // [\"b\",\"c\",\"d\"]",
+					"array-updating-elements": "// Description: {Update by index}\n// Mutative: {true}\nconst input1 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input1[0] = \"firstElement\"); // \"firstElement\"\nconsole.log(input1); // [\"firstElement\",\"b\",\"c\",\"d\",\"e\"]\n\n// Description: {Update by value}\n// Mutative: {false}\nconst input2 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input2.map((element) => element === \"a\" ? \"AAA\" : element)); // [\"AAA\",\"b\",\"c\",\"d\",\"e\"]\nconsole.log(input2); // [\"a\",\"b\",\"c\",\"d\",\"e\"]\n\n// Description: {replacing}\n// Mutative: {true}\nconst input3 = [\"a\",\"b\",\"c\",\"d\",\"e\"];\nconsole.log(input3.splice(2, 1, \"X\")); // [\"c\"]\nconsole.log(input3); // [\"a\",\"b\",\"X\",\"d\",\"e\"]"
+				}
+			},
+			"config": {
+				"categories": ["javascript"],
+				"created_at": "2022/10/25",
+				"has_to_be_pre_rendered": false,
+				"is_published": false,
+				"locales": ["en"],
+				"published_at": "2022/10/25",
+				"slug": "javascript-arrays-examples",
+				"updated_at": "2022/10/25"
+			},
+			"en": {
+				"description": "I have bad memory and some friends learning JavaScript 🤷‍♂️",
+				"title": "JavaScript arrays examples"
+			}
+		},
+		"typescript-snippets": {
+			"assets": {
+				"sourceCodeSnippets": {
+					"event-handlers": "export type T_ReactEventTarget = EventTarget;\n\nexport type T_ReactOnClickEventObject<G_HTMLElement> = React.MouseEvent<G_HTMLElement>;\n\nexport type T_ReactOnClickEventHandler<G_HTMLElement = HTMLButtonElement> =\n  React.MouseEventHandler<G_HTMLElement>;\n\nexport type T_ReactOnChangeEventObject<G_HTMLElement = HTMLInputElement> =\n  React.ChangeEvent<G_HTMLElement>;\n\nexport type T_ReactOnChangeEventHandler<G_HTMLElement> = React.ChangeEventHandler<G_HTMLElement>;\n\nexport type T_ReactOnFocusEventHandler<G_HTMLElement = HTMLInputElement> =\n  React.FocusEventHandler<G_HTMLElement>;\n\nexport type T_ReactOnKeyPressEventHandler<G_HTMLElement> =\n  React.KeyboardEventHandler<G_HTMLElement>;\n\nexport type T_ReactOnSubmitEventHandler<G_HTMLElement> = React.FormEventHandler<G_HTMLElement>;",
+					"event-handlers-usage": "// ###### onClick event handlers ######\n\nfunction Button() {\n  // way 1\n  function handleClick(event: T_ReactOnClickEventObject<HTMLButtonElement>): void {\n    console.log(event);\n  }\n\n  // way 2\n  const handleClick: T_ReactOnClickEventHandler<HTMLButtonElement> = function handleClick(event) {\n    console.log(event);\n  };\n\n  return <button onClick={handleClick}>my button</button>;\n}\n\n// ###### \"mouse\" event listeners ######\n\nfunction useClickOutside(ref: T_ReactRef<HTMLElement>, callback: () => void): void {\n  // effects\n  React.useEffect(() => {\n    const controller = new AbortController();\n\n    document.addEventListener(\n      \"mousedown\",\n      function handleClickOutside(event: MouseEvent): void {\n        if (\n          isDOMNode(event.target) &&\n          !isNull(ref.current) &&\n          isNotTrue(ref.current.contains(event.target))\n        ) {\n          callback();\n        }\n      },\n      { signal: controller.signal },\n    );\n\n    return () => {\n      controller.abort();\n    };\n  }, [ref, callback]);\n\n  // utils\n  function isDOMNode(element: unknown): element is Node {\n    return \"nodeType\" in (element || {});\n  }\n}\n\n// ###### \"scroll\" event listeners ######\n\ntype T_Callback = (event: Event) => void;\n\nfunction useOnWindowScroll(callback: T_Callback, when = true): void {\n  // states & refs\n  const savedHandler = React.useRef<T_Callback>(callback);\n\n  // effects\n  React.useEffect(() => {\n    savedHandler.current = callback;\n  });\n\n  React.useEffect(() => {\n    if (!when) {\n      return () => undefined;\n    }\n\n    const passedCb: EventListener = (event: Event) => {\n      savedHandler.current(event);\n    };\n\n    window.addEventListener(\"scroll\", passedCb);\n\n    return () => {\n      window.removeEventListener(\"scroll\", passedCb);\n    };\n  }, [when]);\n}",
+					"generics-1": "function identity<G_Param>(value: G_Param): G_Param {\n  return value;\n}",
+					"generics-1-usage": "// It's a number and the type was inferred\nconst myNumber = identity(5);\nconsole.log(myNumber);\n\ntype Person = {\n  name: string;\n};\n\n// The type was passed explicitely (Person)\nconst person = identity<Person>({ name: \"Diego\" });\nconsole.log(person);",
+					"generics-2": "function pick<G_Object, G_ObjectKeys extends keyof G_Object>(\n  obj: G_Object,\n  keys: G_ObjectKeys[],\n): Pick<G_Object, G_ObjectKeys> {\n  const result = {} as Pick<G_Object, G_ObjectKeys>;\n\n  keys.forEach((key) => {\n    if (key in obj) {\n      result[key] = obj[key];\n    }\n  });\n\n  return result;\n}\n\nfunction stringifyObjectKeyValues<\n  G_ObjectShape extends Record<string, number | boolean>,\n  G_Return extends { [K in keyof G_ObjectShape]: string },\n>(input: G_ObjectShape): G_Return {\n  return Object.entries(input).reduce((result, [key, value]) => {\n    return {\n      ...result,\n      [key]: String(value),\n    };\n  }, {} as G_Return);\n}\n\nfunction mirror<G_Keys extends string, G_Return extends Record<G_Keys, G_Keys>>(\n  elements: G_Keys[],\n): G_Return {\n  return elements.reduce((result, element) => ({ ...result, [element]: element }), {} as G_Return);\n}",
+					"generics-2-usage": "// ###### \"pick\" output ######\n\nconst car = {\n  year: 8,\n  brand: \"mazda\",\n  color: \"red\",\n};\n\nconst yearAndBrand = pick(car, [\"brand\", \"year\"]);\nconsole.log(yearAndBrand.brand); // \"mazda\"\nconsole.log(yearAndBrand.color); // TS error\n\nconst colorAndYear = pick(car, [\"whatever\"]); // TS error\n\n// ###### \"stringifyObjectKeyValues\" output ######\n\nconst test1 = { num: 4, bool: true };\nconsole.log(stringifyObjectKeyValues(test1));\n// output: {num: \"4, bool: \"true\" }\n\nconst test2 = { num: 4, bool: \"true\" };\nconsole.log(stringifyObjectKeyValues(test2)); // TS error\n\n// ###### \"mirror\" output ######\n\nconst VARIANTS = mirror([\"UNSTYLED\", \"SIMPLE\", \"DEFAULT\"]);\ntype T_Variant = keyof typeof VARIANTS;\nconsole.log(VARIANTS);\n// output: { \"UNSTYLED\": \"UNSTYLED\", \"SIMPLE\": \"SIMPLE\", \"DEFAULT\": \"DEFAULT\"}",
+					"generics-3": "type CustomOmit<G_Type extends Record<string, any>, G_KeysToOmit extends keyof G_Type> = {\n  [Key in keyof G_Type as Key extends G_KeysToOmit ? never : Key]: G_Type[Key];\n};\n\ntype CustomPick<G_Type extends Record<string, any>, G_KeysToOmit extends keyof G_Type> = {\n  [Key in G_KeysToOmit]: G_Type[Key];\n};",
+					"generics-3-usage": "type T_MyObject = {\n  a: string;\n  b: number;\n  c: boolean;\n};\n\ntype ResultOmit1 = CustomOmit<T_MyObject, \"a\" | \"b\">;\ntype ResultOmit2 = CustomOmit<T_MyObject, \"a\" | \"d\">; // TS error\ntype ResultPick1 = CustomPick<T_MyObject, \"a\" | \"a\">;\ntype ResultPick2 = CustomPick<T_MyObject, \"asdd\">; // TS error",
+					"generics-4": "// ###### Example 1 ######\n\ntype T_GetReturnType<T> = T extends (...args: any[]) => infer U ? U : never;\n\n// ###### Example 2 ######\n\nexport function useSelector(selector: (store: T_Store) => T_StoreItemValue<T_Store>) {}\n\ntype T_StoreItemValue<G_Object> = G_Object extends { [Key in keyof G_Object as Key]: infer U }\n  ? U\n  : never;\n\n// ###### Example 3 ######\n\ntype T_NestedOmit<\n  T extends Record<string, any>,\n  KeysToOmit extends string,\n> = KeysToOmit extends `${infer KeyPart1}.${infer KeyPart2}`\n  ? KeyPart1 extends keyof T\n    ? Omit<T, KeyPart1> & {\n        [NewKeys in KeyPart1]: T_NestedOmit<T[NewKeys], KeyPart2>;\n      }\n    : T\n  : Omit<T, KeysToOmit>;",
+					"generics-4-usage": "// ###### Example 1 ######\n\nfunction someFunction() {\n  return true;\n}\n\ntype T_ReturnTypeOfSomeFunction1 = T_GetReturnType<typeof someFunction>; // boolean\ntype T_ReturnTypeOfSomeFunction2 = T_GetReturnType<\"string\">; // never\n\n// ###### Example 2 ######\n\ntype T_SomeType = {\n  a: {\n    b: string;\n    c: {\n      d: number;\n      e: string[];\n    };\n    f: number;\n  };\n  g: number | string;\n  h: {\n    i: string;\n    j: number;\n  };\n  k: {\n    l: number;\n  };\n};\n\ntype T_Result = T_NestedOmit<T_SomeType, \"a.zede3\" | \"a.c.e\" | \"h.i\" | \"k\">;\n\n/*\n// Output\ntype T_SomeType = {\n  a: {\n    b: string;\n    c: {\n      d: number;\n    };\n    f: number;\n  };\n  g: number | string;\n  h: {\n    j: number;\n  };\n};\n*/",
+					"high-order-components": "import * as React from \"react\";\nimport hoistNonReactStatics from \"hoist-non-react-statics\";\n\nimport { useDidMount } from \"~/hooks\";\nimport type { T_ReactElementNullable, T_ReactFunctionComponent } from \"~/types\";\n\ntype T_RenderIfReturn<G_ComponentProps> = (\n  callback: () => boolean,\n) => T_ReactFunctionComponent<G_ComponentProps>;\n\nfunction renderIf<G_ComponentProps>(\n  WrappedComponent: T_ReactFunctionComponent<G_ComponentProps>,\n): T_RenderIfReturn<G_ComponentProps> {\n  const renderIfReturn: T_RenderIfReturn<G_ComponentProps> = function renderIfReturn(callback) {\n    function RenderIfComponent(props: G_ComponentProps): T_ReactElementNullable {\n      const [hasToRender, setHasToRender] = React.useState(false);\n\n      useDidMount(() => {\n        setHasToRender(callback());\n      });\n\n      if (hasToRender) {\n        return <WrappedComponent {...props} />;\n      }\n\n      return null;\n    }\n\n    RenderIfComponent.displayName = `renderIf(${\n      WrappedComponent.displayName || WrappedComponent.name || \"Component\"\n    })`;\n\n    return hoistNonReactStatics(RenderIfComponent, WrappedComponent);\n  };\n\n  return renderIfReturn;\n}\n\nexport default renderIf;",
+					"high-order-components-usage": "const Dashboard = renderIf(function Dashboard() {\n  return <div>Protected dashboard</div>;\n})(() => isUserLoggedIn());",
+					"overloading": "import * as React from \"react\";\n\nimport { isBoolean, isNumber, isString } from \"~/utils/validations\";\nimport type { T_ReactSetState } from \"~/types\";\n\ntype T_UseEnhacedStateStringReturn = [\n  state: string,\n  setState: T_ReactSetState<string>,\n  resetState: () => void,\n];\n\ntype T_UseEnhacedStateBooleanReturn = [\n  state: boolean,\n  setState: T_ReactSetState<boolean>,\n  toggleState: () => void,\n  resetState: () => void,\n];\n\ntype T_UseEnhacedStateNumberReturn = [\n  state: number,\n  setState: T_ReactSetState<number>,\n  incrementState: () => void,\n  decrementState: () => void,\n  resetState: () => void,\n];\n\nfunction useEnhancedState(initialState: string): T_UseEnhacedStateStringReturn;\nfunction useEnhancedState(initialState: boolean): T_UseEnhacedStateBooleanReturn;\nfunction useEnhancedState(initialState: number): T_UseEnhacedStateNumberReturn;\n\nfunction useEnhancedState(\n  initialState: unknown,\n): T_UseEnhacedStateStringReturn | T_UseEnhacedStateBooleanReturn | T_UseEnhacedStateNumberReturn {\n  // states & refs\n  const initialStateRef = React.useRef<typeof initialState>(initialState);\n  const [enhancedState, setEnhancedState] = React.useState<typeof initialState>(initialState);\n\n  if (isString(enhancedState)) {\n    return [\n      enhancedState,\n      setEnhancedState,\n      function resetEnhancedState(): void {\n        setEnhancedState(initialStateRef.current);\n      },\n    ];\n  }\n\n  if (isBoolean(enhancedState)) {\n    return [\n      enhancedState,\n      setEnhancedState,\n      function toggleEnhancedState(): void {\n        setEnhancedState((currentValue: boolean) => !currentValue);\n      },\n      function resetEnhancedState(): void {\n        setEnhancedState(initialStateRef.current);\n      },\n    ];\n  }\n\n  if (isNumber(enhancedState)) {\n    return [\n      enhancedState,\n      setEnhancedState,\n      function incrementEnhancedState(): void {\n        setEnhancedState((currentValue: number) => currentValue + 1);\n      },\n      function decrementEnhancedState(): void {\n        setEnhancedState((currentValue: number) => currentValue - 1);\n      },\n      function resetEnhancedState(): void {\n        setEnhancedState(initialStateRef.current);\n      },\n    ];\n  }\n\n  throw new Error(\"Impossible state\");\n}\n\nexport default useEnhancedState;",
+					"react": "// for children prop\nexport type T_ReactChildren = React.ReactNode;\n\n// for styles prop\nexport type T_ReactStyles = React.CSSProperties;\n\nexport type T_ReactNode = React.ReactNode;\n\n// for returns\nexport type T_ReactElement = JSX.Element;\n\n// for returns\nexport type T_ReactElementNullable = JSX.Element | null;\n\n// for components as props\nexport type T_ReactFunctionComponent<G_ComponentProps = Record<string, any>> =\n  React.FunctionComponent<G_ComponentProps>;\n\nexport type T_ReactRef<G_RefType> = React.RefObject<G_RefType>;\n\nexport type T_ReactEffectCallback = React.EffectCallback;\n\nexport type T_ReactSetState<G_State> = React.Dispatch<React.SetStateAction<G_State>>;\n\n// html native elements props\nexport type T_HTMLElementAttributes = JSX.IntrinsicElements;",
+					"react-component-with-generics": "import * as React from \"react\";\n\nimport { Block, Text, InlineText } from \"~/components/primitive\";\nimport { getErrorMessage } from \"~/utils/misc\";\nimport type { T_ReactElementNullable } from \"~/types\";\n\ntype T_RenderProps<G_Data> = {\n  isLoading: boolean;\n  error: unknown;\n  data: G_Data | undefined;\n  children: (data: G_Data) => T_ReactElementNullable;\n};\n\nfunction Render<G_Data>({\n  isLoading,\n  error,\n  data,\n  children,\n}: T_RenderProps<G_Data>): T_ReactElementNullable {\n  if (isLoading) {\n    return (\n      <Block className=\"tw-p-2 tw-text-center\">\n        <Loader />\n      </Block>\n    );\n  }\n\n  if (error) {\n    return (\n      <Text className=\"tw-p-2 tw-text-center tw-text-sm tw-text-red-600\">\n        <Emoji className=\"tw-mr-2\">😵</Emoji>\n        <InlineText>{getErrorMessage(error)}</InlineText>\n      </Text>\n    );\n  }\n\n  if (data) {\n    return children(data);\n  }\n\n  throw new Error(\"Invalid state\");\n}\n\nexport default Render;",
+					"react-component-with-generics-usage": "import * as React from \"react\";\n\nimport { Link, Block, Text, InlineText, Title } from \"~/components/primitive\";\nimport { Render } from \"~/components/shared\";\nimport { useQuery } from \"~/hooks\";\nimport type { T_ReactElement } from \"~/types\";\n\nimport BlogService, { T_BlogPost } from \"./service\";\n\nfunction Blog(): T_ReactElement {\n  // hooks\n  const { isLoading, error, data } = useQuery<T_BlogPost[]>(\"blog\", BlogService.fetchPosts);\n\n  return (\n    <Render isLoading={isLoading} error={error} data={data}>\n      {(posts): T_ReactElement => {\n        return (\n          <Block className=\"tw-flex tw-flex-wrap tw-justify-between\">\n            {posts.map((post) => {\n              return (\n                <BlogEntry\n                  key={post.slug}\n                  slug={post.slug}\n                  title={post.title}\n                  categories={post.categories}\n                  publishedAt={post.publishedAt}\n                  isPublished={post.isPublished}\n                  locales={post.locales}\n                  thumbnail={post.thumbnail}\n                />\n              );\n            })}\n          </Block>\n        );\n      }}\n    </Render>\n  );\n}\n\nexport default Blog;",
+					"react-usage": "type T_MyComponentProps = {\n  children: T_ReactChildren;\n  visible: boolean;\n  innerContainerStyles: T_ReactStyles;\n  containerAttributes: T_HTMLElementAttributes[\"div\"];\n};\n\nfunction MyComponent({\n  children,\n  visible,\n  innerContainerStyles,\n  containerAttributes,\n}: T_MyComponentProps): T_ReactElementNullable {\n  if (visible) {\n    return (\n      <div {...containerAttributes} style={innerContainerStyles}>\n        {children}\n      </div>\n    );\n  }\n\n  return null;\n}\n\nfunction useMyHook({ callback }: { callback: T_ReactEffectCallback }): {\n  index: number;\n  setIndex: T_ReactSetState<number>;\n  myRef: T_ReactRef<HTMLDivElement>;\n} {\n  const [index, setIndex] = React.useState(0);\n  const myRef = React.useRef<HTMLDivElement>(null);\n\n  React.useEffect(callback, []);\n\n  return {\n    index,\n    setIndex,\n    myRef,\n  };\n}",
+					"sorting": "type T_SortableType = string | number | boolean | Date;\n\ntype T_PickSortableAttributes<G_Type> = {\n  [Key in keyof G_Type as G_Type[Key] extends T_SortableType ? Key : never]: G_Type[Key];\n};\n\ntype T_ExtendTypeKeys<G_Type> = {\n  [Key in keyof T_PickSortableAttributes<G_Type>]: G_Type[Key];\n} & {\n  [Key in keyof T_PickSortableAttributes<G_Type> as Key extends string\n    ? `-${Key}`\n    : never]: G_Type[Key];\n};\n\n// asc  = 1...5  |  \"title\"\n// desc = 5...1  |  \"-title\"\nexport function sortBy<G_ItemType>(\n  ...criteria: (keyof T_ExtendTypeKeys<G_ItemType>)[]\n): (a: G_ItemType, b: G_ItemType) => number {\n  return function sortByReturn(a, b) {\n    return removeDuplicates(criteria).reduce(\n      (result, criteriaItem) => {\n        if (result.finish) {\n          return result;\n        }\n\n        const attribute = (criteriaItem as string).replace(\"-\", \"\") as keyof G_ItemType;\n        const order = (criteriaItem as string).startsWith(\"-\") ? \"desc\" : \"asc\";\n        const greater = order === \"desc\" ? -1 : 1;\n        const smaller = order === \"desc\" ? 1 : -1;\n        const aParam = a[attribute];\n        const bParam = b[attribute];\n\n        if (isBoolean(aParam) && isBoolean(bParam)) {\n          if (isTrue(aParam) && isNotTrue(bParam)) {\n            return { result: greater, finish: true };\n          }\n\n          if (isNotTrue(aParam) && isTrue(bParam)) {\n            return { result: smaller, finish: true };\n          }\n\n          return result;\n        }\n\n        if (aParam > bParam) {\n          return { result: greater, finish: true };\n        }\n\n        if (aParam < bParam) {\n          return { result: smaller, finish: true };\n        }\n\n        return result;\n      },\n      { result: 0, finish: false },\n    ).result;\n  };\n}",
+					"sorting-usage": "const myArray = [\n  { name: \"carlos\", age: 31 },\n  { name: \"daniel\", age: 32 },\n  { name: \"diego\", age: 31 },\n  { name: \"diego\", age: 34 },\n];\n\nconsole.log(myArray.sort(sortBy(\"name\", \"-age\")));\n\n/*\n  [\n    { name: \"carlos\", age: 31 },\n    { name: \"daniel\", age: 32 },\n    { name: \"diego\", age: 34 },\n    { name: \"diego\", age: 31 },\n  ]\n */",
+					"timeouts": "export type T_SetTimeout = NodeJS.Timeout;",
+					"timeouts-usage": "function MyBlock({ children, ...props }: T_HTMLElementAttributes[\"div\"]) {\n  const [timerInterval, setTimerInterval] = React.useState<T_SetTimeout | null>(null);\n\n  function start(): void {\n    setTimerInterval(setInterval(() => {}, 1000));\n  }\n\n  function stopInterval() {\n    if (timerInterval) {\n      clearInterval(timerInterval);\n    }\n\n    setTimerInterval(null);\n  }\n\n  return <div {...props}>{children}</div>;\n}",
+					"type-guards": "// ###### typeof checkings ######\n\nexport function isNull(input: unknown): input is null {\n  return input === null;\n}\n\nexport function isUndefined(input: unknown): input is undefined {\n  return input === undefined;\n}\n\nexport function isObject(input: unknown): input is T_Object {\n  if (!input || Array.isArray(input)) return false;\n  return typeof input === \"object\";\n}\n\nexport function isString(input: unknown): input is string {\n  return typeof input === \"string\";\n}\n\nexport function isNumber(input: unknown): input is number {\n  return typeof input === \"number\";\n}\n\nexport function isBoolean(input: unknown): input is boolean {\n  return typeof input === \"boolean\";\n}\n\nexport function isDate(input: unknown): input is Date {\n  return input instanceof Date;\n}\n\n// ###### Comparisons ######\n\nexport function isTrue(input: unknown): input is boolean {\n  return input === true;\n}\n\nexport function isNotTrue(input: unknown): input is boolean {\n  return input === false;\n}\n\nexport function isNotUndefined(input: unknown): boolean {\n  return input !== undefined;\n}\n\nexport function isFalsy(input: unknown): boolean {\n  return !input;\n}\n\nexport function isNotEquals(input1: unknown, input2: unknown): boolean {\n  return input1 !== input2;\n}\n\nexport function isEquals(input1: unknown, input2: unknown): boolean {\n  return input1 === input2;\n}\n\n// ###### Strings ######\n\nexport function isEmptyString(input: unknown): boolean {\n  return typeof input === \"string\" && input.length === 0;\n}\n\nexport function isNotEmptyString(input: unknown): input is string {\n  return typeof input === \"string\" && input.length > 0;\n}\n\n// ###### Numbers ######\n\nexport function isBetween(input: number, range: [number, number]): boolean {\n  return input >= range[0] && input <= range[1];\n}\n\n// ###### Arrays ######\n\nexport function isNotEmptyArray(input: unknown): input is unknown[] {\n  return Array.isArray(input) && input.length > 0;\n}\n\nexport function isEmptyArray(input: unknown): boolean {\n  return Array.isArray(input) && input.length === 0;\n}"
+				}
+			},
+			"config": {
+				"categories": ["typescript"],
+				"created_at": "2022/10/19",
+				"has_to_be_pre_rendered": true,
+				"is_published": false,
+				"locales": ["en"],
+				"published_at": "2022/10/21",
+				"slug": "typescript-snippets",
+				"sources": [
+					{
+						"title": "How To Use Generics in TypeScript",
+						"url": "https://digitalocean.com/community/tutorials/how-to-use-generics-in-typescript"
+					}
+				],
+				"updated_at": "2022/10/25"
+			},
+			"en": {
+				"description": "Some examples, exercises, and pieces of code about TypeScript made by me.",
+				"title": "TypeScript snippets"
+			}
+		}
+	}
+}

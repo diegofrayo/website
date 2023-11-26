@@ -1,6 +1,4 @@
-import { ENV_VARS } from "~/constants";
 import { I18nService, T_Locale } from "~/features/i18n";
-import http from "~/lib/http";
 import v from "~/lib/v";
 import {
 	sortBy,
@@ -8,49 +6,39 @@ import {
 } from "~/utils/objects-and-arrays";
 import type { T_Object } from "~/types";
 
-class BlogService {
-	fetchPosts = async (locale?: T_Locale): Promise<T_BlogPost[]> => {
-		const { posts, categories } = await this.fetchData();
+class BlogServiceClass {
+	fetchPosts = async (data: {
+		posts: T_BlogPostFetchDTO[];
+		categories: T_BlogPostCategory[];
+	}): Promise<T_BlogPost[]> => {
+		const { posts, categories } = data;
 
 		const result = Object.values(posts)
-			.map((blogPost) => BlogPostVO(blogPost, categories, locale))
+			.map((blogPost) => BlogPostVO(blogPost, categories))
 			.sort(sortBy("-publishedAt"));
 
 		return result;
 	};
 
-	fetchPost = async (criteria: {
-		locale: T_Locale;
-		slug: T_BlogPost["slug"];
-	}): Promise<T_BlogPost | undefined> => {
-		const posts = await this.fetchPosts(criteria.locale);
+	fetchPost = async (
+		data: {
+			posts: T_BlogPostFetchDTO[];
+			categories: T_BlogPostCategory[];
+		},
+		criteria: {
+			slug: T_BlogPost["slug"];
+		},
+	): Promise<T_BlogPost | undefined> => {
+		const posts = await this.fetchPosts(data);
 		const post = posts.find((item) => item.slug === criteria.slug);
 
 		return post;
 	};
-
-	private fetchData = async function fetchData(): Promise<{
-		posts: T_BlogPostFetchDTO[];
-		categories: T_BlogPostCategory[];
-	}> {
-		const { data } = await http.post(
-			`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
-			{
-				path: "/data",
-				model: "blog",
-			},
-			{
-				headers: {
-					"dfr-local-cache": "DFR_BLOG",
-				},
-			},
-		);
-
-		return data;
-	};
 }
 
-export default new BlogService();
+const BlogService = new BlogServiceClass();
+
+export default BlogService;
 
 // --- Value objects ---
 

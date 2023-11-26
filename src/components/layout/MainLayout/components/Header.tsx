@@ -3,20 +3,16 @@ import classNames from "classnames";
 import { useRouter } from "next/router";
 
 import { Block, Button, Icon, Link, List, Text } from "~/components/primitive";
-import { ENV_VARS } from "~/constants";
 import { AuthService, withAuthComponent } from "~/features/auth";
 import { I18nService, useTranslation } from "~/features/i18n";
-import { logAndReportError } from "~/features/logging";
 import { renderIf } from "~/hocs";
 import { useClickOutside, useDidMount, useEnhancedState } from "~/hooks";
-import http from "~/lib/http";
 import v from "~/lib/v";
 import { useStoreSelector } from "~/stores";
 import { selectWebsiteMetadata, T_WebsiteMetadata } from "~/stores/modules/metadata";
 import { ROUTES, T_RoutesValues } from "~/features/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { deletePWACache, isPWA, showAlert } from "~/utils/browser";
-import { getErrorMessage } from "~/utils/misc";
+import { deletePWACache, isPWA } from "~/utils/browser";
 import { generateSlug } from "~/utils/strings";
 import type { T_ReactChildren, T_ReactElement } from "~/types";
 
@@ -78,21 +74,8 @@ function MainMenu(): T_ReactElement {
 			...(AuthService.isUserLoggedIn()
 				? [
 						{
-							label: translator.t("layout:header:menu:about_me"),
-							url: ROUTES.ABOUT_ME,
-						},
-
-						{
-							label: translator.t("layout:header:common:menu_item_bookmarks"),
-							url: ROUTES.BOOKMARKS,
-						},
-						{
 							label: translator.t("layout:header:common:menu_item_personal"),
 							url: ROUTES.PERSONAL,
-						},
-						{
-							label: translator.t("layout:header:menu:sign_out"),
-							url: ROUTES.SIGN_OUT,
 						},
 				  ]
 				: isPWA()
@@ -217,7 +200,6 @@ const SettingsMenu = withAuthComponent(function SettingsMenu(): T_ReactElement {
 				<List className="tw-absolute tw-right-0 tw-top-full tw-z-40 tw-mt-2 tw-w-48 tw-overflow-hidden dfr-shadow">
 					{/* <ToggleThemeMenuItem /> */}
 					<RefreshAPPMenuItem />
-					<ISRMenuItem />
 					<EnvironmentMenuItem />
 					<PrintMenuItem />
 				</List>
@@ -299,35 +281,6 @@ const RefreshAPPMenuItem = renderIf(function RefreshAPPMenuItem() {
 		</SettingsMenuItem>
 	);
 })(() => AuthService.isUserLoggedIn() && isPWA());
-
-const ISRMenuItem = withAuthComponent(function ISRMenuItem() {
-	// --- HANDLERS ---
-	async function handleISROnDemandClick(): Promise<void> {
-		try {
-			await http.post("/api/diegofrayo", {
-				path: window.location.pathname,
-				secret: ENV_VARS.NEXT_PUBLIC_ISR_TOKEN,
-			});
-
-			await deletePWACache();
-			window.location.reload();
-		} catch (error) {
-			logAndReportError(error);
-			showAlert(`ERROR: ${getErrorMessage(error)}`);
-		}
-	}
-
-	return (
-		<SettingsMenuItem title="ISR on-demand">
-			<Button
-				variant={Button.variant.SIMPLE}
-				onClick={handleISROnDemandClick}
-			>
-				<Icon icon={Icon.icon.SERVER} />
-			</Button>
-		</SettingsMenuItem>
-	);
-});
 
 const EnvironmentMenuItem = withAuthComponent(function EnvironmentMenuItem() {
 	// --- HOOKS ---

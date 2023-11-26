@@ -1,18 +1,16 @@
 import autoBind from "auto-bind";
 
-import { ENV_VARS } from "~/constants";
-import http from "~/lib/http";
 import v from "~/lib/v";
 import { transformObjectKeysFromSnakeCaseToLowerCamelCase } from "~/utils/objects-and-arrays";
 import type { T_Object } from "~/types";
 
-class MusicService {
+class MusicServiceClass {
 	constructor() {
 		autoBind(this);
 	}
 
-	async fetchSongs(): Promise<T_Song[]> {
-		const songs = (await this.fetchData()).map((song: T_Object) => SongVO(song));
+	async fetchSongs(data: { songs: T_Song[] }): Promise<T_Song[]> {
+		const songs = data.songs.map((song: T_Object) => SongVO(song));
 		const chordsPage = songs.find((song) => this.isChordsSong(song));
 
 		return (v.isUndefined(chordsPage) ? [] : [chordsPage]).concat(
@@ -20,8 +18,11 @@ class MusicService {
 		);
 	}
 
-	async getSong(criteria: Pick<T_Song, "id">): Promise<T_Song | undefined> {
-		const songs = await this.fetchSongs();
+	async getSong(
+		data: { songs: T_Song[] },
+		criteria: Pick<T_Song, "id">,
+	): Promise<T_Song | undefined> {
+		const songs = await this.fetchSongs(data);
 		const song = songs.find((item) => item.id === criteria.id);
 
 		return song;
@@ -30,26 +31,11 @@ class MusicService {
 	isChordsSong(song: T_Song): boolean {
 		return song.id === "chords";
 	}
-
-	private async fetchData(): Promise<T_Object[]> {
-		const { data } = await http.post(
-			`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
-			{
-				path: "/data",
-				model: "music",
-			},
-			{
-				headers: {
-					"dfr-local-cache": "DFR_MUSIC",
-				},
-			},
-		);
-
-		return data.songs;
-	}
 }
 
-export default new MusicService();
+const MusicService = new MusicServiceClass();
+
+export default MusicService;
 
 // --- VALUE OBJECTS ---
 

@@ -20,8 +20,6 @@ import {
 	Timeline,
 	TitleCreator,
 } from "~/components/shared";
-import { ENV_VARS } from "~/constants";
-import AboutMeBlock from "~/features/pages/about-me/components";
 import * as BlogComponents from "~/features/pages/blog/components";
 import * as MusicComponents from "~/features/pages/music/components";
 import { ROUTES } from "~/features/routing";
@@ -31,13 +29,11 @@ import type { T_ReactChildren, T_ReactElement, T_ReactFunctionComponent } from "
 let MDXScope: {
 	DATA: {
 		ROUTES: typeof ROUTES;
-		SERVER_URL: string;
 		PERSONAL_INFO: T_Metadata["website"] | undefined;
 	};
 } = {
 	DATA: {
 		ROUTES,
-		SERVER_URL: ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL,
 		PERSONAL_INFO: undefined,
 	},
 };
@@ -128,5 +124,4 @@ export const MDXComponents = {
 	// Pages components
 	...BlogComponents,
 	...MusicComponents,
-	AboutMeBlock,
 } as any; // eslint-disable-line @typescript-eslint/no-explicit-any

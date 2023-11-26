@@ -1,6 +1,6 @@
 import { GetStaticPaths } from "next";
 
-import { getPageContentStaticProps } from "~/features/i18n";
+import getPageContentStaticProps from "~/features/i18n/server";
 import PersonalPage from "~/features/pages/personal/[page]";
 import { PERSONAL_PAGES } from "~/features/pages/personal";
 import v from "~/lib/v";

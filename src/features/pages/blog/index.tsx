@@ -4,20 +4,16 @@ import { useRouter } from "next/router";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Link, Block, Text, InlineText, Title } from "~/components/primitive";
-import { Render } from "~/components/shared";
 import { AuthService } from "~/features/auth";
-import { useQuery } from "~/hooks";
 import { T_Locale, useTranslation } from "~/features/i18n";
 import { getFormattedDatesDifference } from "~/utils/dates";
 import { ROUTES } from "~/features/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
 import type { T_ReactElement } from "~/types";
 
-import BlogService, { T_BlogPost } from "./service";
+import { T_BlogPost } from "./service";
 
-function Blog(): T_ReactElement {
-	// --- HOOKS ---
-	const { isLoading, error, data } = useQuery<T_BlogPost[]>("blog", BlogService.fetchPosts);
+function Blog({ data: posts }: { data: T_BlogPost[] }): T_ReactElement {
 	const { t } = useTranslation();
 
 	return (
@@ -30,38 +26,26 @@ function Blog(): T_ReactElement {
 			}}
 		>
 			<MainLayout title={t("seo:title")}>
-				<Render
-					isLoading={isLoading}
-					error={error}
-					data={data}
-				>
-					{(posts): T_ReactElement => {
-						return (
-							<Block className="tw-flex tw-flex-wrap tw-justify-between">
-								{posts
-									.filter((post: T_BlogPost) => {
-										return (
-											isDevelopmentEnvironment() || AuthService.isUserLoggedIn() || post.isPublished
-										);
-									})
-									.map((post) => {
-										return (
-											<BlogEntry
-												key={post.slug}
-												slug={post.slug}
-												title={post.title}
-												categories={post.categories}
-												publishedAt={post.publishedAt}
-												isPublished={post.isPublished}
-												locales={post.locales}
-												thumbnail={post.thumbnail}
-											/>
-										);
-									})}
-							</Block>
-						);
-					}}
-				</Render>
+				<Block className="tw-flex tw-flex-wrap tw-justify-between">
+					{posts
+						.filter((post: T_BlogPost) => {
+							return isDevelopmentEnvironment() || AuthService.isUserLoggedIn() || post.isPublished;
+						})
+						.map((post) => {
+							return (
+								<BlogEntry
+									key={post.slug}
+									slug={post.slug}
+									title={post.title}
+									categories={post.categories}
+									publishedAt={post.publishedAt}
+									isPublished={post.isPublished}
+									locales={post.locales}
+									thumbnail={post.thumbnail}
+								/>
+							);
+						})}
+				</Block>
 			</MainLayout>
 		</Page>
 	);

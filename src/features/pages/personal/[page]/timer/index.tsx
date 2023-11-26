@@ -337,18 +337,7 @@ function useController() {
 	} = useQuery(
 		"timer",
 		async () => {
-			const { data } = await http.post(
-				`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`,
-				{
-					path: "/timer",
-					method: "GET",
-				},
-				{
-					headers: {
-						"dfr-local-cache": LOCAL_STORAGE_KEY,
-					},
-				},
-			);
+			const { data } = await http.get("/cms/pages/timer/data.json");
 
 			return data;
 		},
@@ -816,15 +805,6 @@ function useController() {
 		function handleUploadRoutineHistoryClick(date, routine) {
 			return async () => {
 				try {
-					await http.post(`${ENV_VARS.NEXT_PUBLIC_ASSETS_SERVER_URL}/api/diegofrayo`, {
-						path: "/timer",
-						method: "POST",
-						payload: {
-							date,
-							routine,
-						},
-					});
-
 					alert("La rutina fue guardada correctamente");
 				} catch (error) {
 					console.error(error);

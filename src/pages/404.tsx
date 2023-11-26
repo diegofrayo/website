@@ -1,5 +1,5 @@
 import { ErrorPage } from "~/components/shared";
-import { getPageContentStaticProps } from "~/features/i18n";
+import getPageContentStaticProps from "~/features/i18n/server";
 import { ROUTES } from "~/features/routing";
 
 export default ErrorPage;

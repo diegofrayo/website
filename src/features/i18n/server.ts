@@ -3,6 +3,8 @@
 import http from "~/lib/http";
 import type { T_Object } from "~/types";
 import { ROUTES, T_RoutesValues } from "~/features/routing";
+import fs from "fs";
+import path from "path";
 
 import I18nService from "./service";
 import { T_Locale, T_PageContent } from "./types";
@@ -161,10 +163,11 @@ async function fetchPageContent({
 }
 
 async function readFile(page) {
-	const { data } = await http.get(
-		`${process.env.NEXT_PUBLIC_ASSETS_SERVER_URL}/${
-			page ? `pages${page === ROUTES.HOME ? "/home" : page}/` : ""
-		}content.json`,
+	const data = JSON.parse(
+		fs.readFileSync(
+			path.join(process.cwd(), `src/data/cms/${page === "home" ? "" : page}/content.json`),
+			"utf8",
+		),
 	);
 
 	return data;

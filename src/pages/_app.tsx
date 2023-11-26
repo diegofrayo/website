@@ -20,7 +20,7 @@ import { AnalyticsService } from "~/features/analytics";
 import { AuthService } from "~/features/auth";
 import { addErrorsGlobalListener, logger } from "~/features/logging";
 import { I18nService, T_Locale, T_PageContent } from "~/features/i18n";
-import { MetadataService } from "~/features/metadata";
+import METADATA from "~/data/cms/metadata.json";
 import { useDidMount } from "~/hooks";
 import { createPreloadedState, useStore } from "~/stores";
 import { T_Metadata } from "~/stores/modules/metadata";
@@ -128,7 +128,7 @@ export default CustomApp;
 // https://linguinecode.com/post/next-js-typescript-getinitialprops
 // @ts-ignore
 CustomApp.getInitialProps = async (appContext): Promise<T_Object> => {
-	const metadata = await MetadataService.fetchData(appContext.router.locale);
+	const metadata = METADATA;
 	const appProps = await App.getInitialProps(appContext);
 
 	updateMDXScope(metadata.website);

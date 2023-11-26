@@ -1,0 +1,2656 @@
+{
+	"chords": "{\"??1\":{\"music_notes\":\"6,6,3|5,6,4|4,5,2|2,4,1\",\"touched_strings\":\"1,1,1,0,1,0\"},\"??2\":{\"music_notes\":\"6,6,2\",\"touched_strings\":\"1,0,0,0,0,0\"},\"A\":[{\"music_notes\":\"4,2,1|3,2,2|2,2,3\",\"touched_strings\":\"x,0,1,1,1,0\"},{\"music_notes\":\"6x,4|5,7,3|4,7,3|3,6,2\",\"touched_strings\":\"0,1,1,1,0,0\"}],\"A#\":[{\"music_notes\":\"6x,1|4,3,1|3,3,2|2,3,3\",\"touched_strings\":\"x,0,1,1,1,0\"},{\"music_notes\":\"6x,6|5,8,3|4,8,3|3,7,2\",\"touched_strings\":\"x,1,1,1,0,0\"}],\"A#dim7\":{\"music_notes\":\"5,1,1|4,2,2|2,2,3\",\"touched_strings\":\"x,1,1,0,1,0\"},\"A#m\":[{\"music_notes\":\"6x,1|2,2,2|4,3,3|3,3,4\",\"touched_strings\":\"x,0,1,1,1,0\"},{\"music_notes\":\"6x,5|5,7,3|4,7,4\",\"touched_strings\":\"x,1,1,0,0,0\"}],\"A#m7\":{\"music_notes\":\"6x,1|2,2,2|4,3,3\",\"touched_strings\":\"x,0,1,0,1,0\"},\"A/G\":{\"music_notes\":\"4,2,1|3,2,2|2,2,3|6,3,4\",\"touched_strings\":\"1,0,1,1,1,0\"},\"A6\":{\"music_notes\":\"3,2,1|2,2,2|1,2,3\",\"touched_strings\":\"x,0,0,1,1,1\"},\"A7\":{\"music_notes\":\"4,2,1|2,2,2\",\"touched_strings\":\"x,0,1,0,1,0\"},\"Am\":{\"music_notes\":\"4,2,2|3,2,3|2,1,1\",\"touched_strings\":\"x,0,1,1,1,0\"},\"Am/F#\":{\"music_notes\":\"4,2,3|3,2,3|2,1,1|6,2,2\",\"touched_strings\":\"1,0,1,1,1,0\"},\"Am/G\":{\"music_notes\":\"4,2,2|3,2,3|2,1,1|6,3,4\",\"touched_strings\":\"1,0,1,1,1,0\"},\"Am7\":{\"music_notes\":\"4,2,2|2,1,1\",\"touched_strings\":\"x,0,1,0,1,0\"},\"Am7/11\":{\"music_notes\":\"2,3,1|4,5,3|3,5,4\",\"touched_strings\":\"x,0,1,1,1,0\"},\"Asus\":{\"music_notes\":\"4,2,1|3,2,2|2,2,3|2,3,4\",\"touched_strings\":\"x,0,1,1,1,0\"},\"Asus2\":{\"music_notes\":\"4,2,2|3,2,3\",\"touched_strings\":\"x,0,1,1,0,0\"},\"Asus2/G\":{\"music_notes\":\"4,2,2|3,2,3|6,3,4\",\"touched_strings\":\"1,0,1,1,0,0\"},\"Asus4\":{\"music_notes\":\"3,2,2|2,2,3|2,3,3|2,3,4\",\"touched_strings\":\"x,0,0,1,1,0\"},\"B\":[{\"music_notes\":\"6x,2|4,4,2|3,4,3|2,4,4\",\"touched_strings\":\"0,0,1,1,1,0\"},{\"music_notes\":\"6x,7|5,9,3|4,9,3|3,8,2\",\"touched_strings\":\"0,1,1,1,0,0\"}],\"B7\":{\"music_notes\":\"6x,2|4,4,2|2,4,3\",\"touched_strings\":\"0,0,1,0,1,0\"},\"Bm\":{\"music_notes\":\"6x,2|2,3,2|4,4,3|3,4,4\",\"touched_strings\":\"0,0,1,1,1,0\"},\"Bm7\":{\"music_notes\":\"6x,2|2,3,2|4,4,3\",\"touched_strings\":\"0,0,1,0,1,0\"},\"Bmaj7\":{\"music_notes\":\"6x,2|3,3,2|4,4,3|2,4,4\",\"touched_strings\":\"0,0,1,1,1,0\"},\"C\":[{\"music_notes\":\"5,3,3|4,2,2|2,1,1\",\"touched_strings\":\"0,1,0,1,1,0\"},{\"music_notes\":\"5x,3|4,5,2|3,5,3|2,5,4\",\"touched_strings\":\"0,0,1,1,1,0\"},{\"music_notes\":\"6x,8|5,10,3|4,10,3|3,9,2\",\"touched_strings\":\"0,1,1,1,0,0\"}],\"C#\":{\"music_notes\":\"5x,3|4,6,2|3,6,3|2,6,4\",\"touched_strings\":\"0,0,1,1,1,0\"},\"C#7\":{\"music_notes\":\"5x,3|4,6,2|2,6,4\",\"touched_strings\":\"0,0,1,0,1,0\"},\"C#m\":{\"music_notes\":\"5x,3|4,6,3|3,6,3|2,5,2\",\"touched_strings\":\"0,0,1,1,1,0\"},\"C#m7\":{\"music_notes\":\"5x,3|4,6,3|2,5,2\",\"touched_strings\":\"0,0,1,0,1,0\"},\"C/G\":{\"music_notes\":\"6,3,3|5,3,4|4,2,2|2,1,1\",\"touched_strings\":\"1,1,1,0,1,0\"},\"C7\":[{\"music_notes\":\"5x,3|4,5,3|2,5,4\",\"touched_strings\":\"0,0,1,0,1,0\"},{\"music_notes\":\"5,3,3|4,2,2|2,1,1|3,3,4\",\"touched_strings\":\"0,1,1,1,1,0\"}],\"Cadd9\":{\"music_notes\":\"4,2,1|5,3,2|2,3,3|1,3,4\",\"touched_strings\":\"0,1,1,0,1,1\"},\"Cm\":{\"music_notes\":\"5x,3|4,5,3|3,5,3|2,4,2\",\"touched_strings\":\"0,0,1,1,1,0\"},\"Cm7\":{\"music_notes\":\"5x,3|4,5,3|2,4,2\",\"touched_strings\":\"0,0,1,0,1,0\"},\"Cmaj7\":{\"music_notes\":\"4,2,1|5,3,2\",\"touched_strings\":\"0,1,1,0,0,0\"},\"Cmaj7#11/D\":{\"music_notes\":\"2,2,2|1,2,3\",\"touched_strings\":\"0,0,0,0,1,1\"},\"Csus2\":{\"music_notes\":\"5,3,3|2,1,1\",\"touched_strings\":\"0,1,0,0,1,0\"},\"D\":{\"music_notes\":\"3,2,1|1,2,2|2,3,3\",\"touched_strings\":\"x,x,0,1,1,1\"},\"D#\":{\"music_notes\":\"6x,1|3,3,1|2,3,2|1,3,3\",\"touched_strings\":\"x,x,0,1,1,1\"},\"D#°7\":{\"music_notes\":\"4,1,1|3,2,3|2,1,2|1,2,4\",\"touched_strings\":\"x,x,1,1,1,1\"},\"D/F#\":{\"music_notes\":\"6,2,1|3,2,2|1,2,3|2,3,4\",\"touched_strings\":\"x,x,0,1,1,1\"},\"D7\":{\"music_notes\":\"2,1,1|3,2,2|1,2,3\",\"touched_strings\":\"x,x,0,1,1,1\"},\"Dm\":{\"music_notes\":\"1,1,1|3,2,2|2,3,3\",\"touched_strings\":\"x,x,0,1,1,1\"},\"Dm6\":{\"music_notes\":\"3,2,2|1,1,1\",\"touched_strings\":\"x,x,0,1,0,1\"},\"Dm7\":{\"music_notes\":\"2,1,1|1,1,2|3,2,3\",\"touched_strings\":\"x,x,0,1,1,1\"},\"Dsus2\":{\"music_notes\":\"3,2,1|2,3,3\",\"touched_strings\":\"x,x,0,1,1,0\"},\"Dsus4\":{\"music_notes\":\"3,2,1|1,2,2|2,3,3|1,3,4\",\"touched_strings\":\"x,x,0,1,1,1\"},\"E\":{\"music_notes\":\"5,2,2|4,2,3|3,1,1\",\"touched_strings\":\"0,1,1,1,0,0\"},\"E7\":{\"music_notes\":\"5,2,2|3,1,1\",\"touched_strings\":\"0,1,0,1,0,0\"},\"E7/9\":{\"music_notes\":\"3,1,1|5,2,2|2,3,3|1,3,4\",\"touched_strings\":\"0,1,0,1,1,1\"},\"Ebm\":{\"music_notes\":\"6x,6|2,7,2|4,8,3|3,8,4\",\"touched_strings\":\"0,0,1,1,1,0\"},\"Ebmaj7\":[{\"music_notes\":\"4,1,1|3,3,2|2,3,3|1,3,4\",\"touched_strings\":\"x,x,1,1,1,1\"},{\"music_notes\":\"4,1,1|3,1,2|2,1,2|1,3,4\",\"touched_strings\":\"x,x,1,1,1,1\"}],\"Em\":{\"music_notes\":\"5,2,2|4,2,3\",\"touched_strings\":\"0,1,1,0,0,0\"},\"Em6\":{\"music_notes\":\"5,2,1|4,2,2|2,2,3\",\"touched_strings\":\"0,1,1,0,1,0\"},\"Em7\":[{\"music_notes\":\"5,2,1|4,2,2|2,3,3\",\"touched_strings\":\"0,1,1,0,1,0\"},{\"music_notes\":\"5,2,2\",\"touched_strings\":\"0,1,0,0,0,0\"}],\"Em9\":{\"music_notes\":\"5,2,1|4,2,2|2,3,3|1,2,3\",\"touched_strings\":\"0,1,1,0,1,1\"},\"Em°\":{\"music_notes\":\"5,2,2|4,1,1\",\"touched_strings\":\"0,1,1,0,0,0\"},\"Esus\":{\"music_notes\":\"5,2,3|4,2,2|3,1,1|3,2,4\",\"touched_strings\":\"0,1,1,1,0,0\"},\"Esus4\":{\"music_notes\":\"5,2,1|4,2,2|3,2,3\",\"touched_strings\":\"x,1,1,1,0,0\"},\"F\":{\"music_notes\":\"6x,1|5,3,3|4,3,3|3,2,2\",\"touched_strings\":\"0,1,1,1,0,0\"},\"F#\":{\"music_notes\":\"6x,2|5,4,3|4,4,3|3,3,2\",\"touched_strings\":\"0,1,1,1,0,0\"},\"F#7\":{\"music_notes\":\"6x,2|5,4,3|3,3,2\",\"touched_strings\":\"0,1,0,1,0,0\"},\"F#dim7\":{\"music_notes\":\"4,4,1|2,4,2|3,5,3|1,5,4\",\"touched_strings\":\"0,0,1,1,1,1\"},\"F#m\":{\"music_notes\":\"6x,2|5,4,3|4,4,4\",\"touched_strings\":\"0,1,1,0,0,0\"},\"F#m7\":{\"music_notes\":\"6x,2|5,4,3\",\"touched_strings\":\"0,1,0,0,0,0\"},\"F#madd11\":{\"music_notes\":\"6x,2|4,4,3\",\"touched_strings\":\"0,0,1,0,0,0\"},\"F#maj7\":{\"music_notes\":\"6x,1|2,2,2|3,3,3|4,4,4\",\"touched_strings\":\"0,0,1,1,1,0\"},\"F#°\":{\"music_notes\":\"6,2,2|3,2,3|2,1,1\",\"touched_strings\":\"1,0,0,1,1,0\"},\"F7\":{\"music_notes\":\"6x,1|5,3,3|3,2,2\",\"touched_strings\":\"0,1,0,1,0,0\"},\"Fadd9\":{\"music_notes\":\"2,1,1|3,2,2|4,3,3|1,3,4\",\"touched_strings\":\"0,0,1,1,1,1\"},\"Fm\":{\"music_notes\":\"6x,1|5,3,3|4,3,4\",\"touched_strings\":\"0,1,1,0,0,0\"},\"Fmaj7\":{\"music_notes\":\"2,1,1|3,2,2|4,3,3\",\"touched_strings\":\"0,0,1,1,1,0\"},\"Fmaj7/F#\":{\"music_notes\":\"2,1,1|3,2,2|4,4,4\",\"touched_strings\":\"0,0,1,1,1,0\"},\"Fsus2\":{\"music_notes\":\"6x,8|4,10,3|3,10,4\",\"touched_strings\":\"0,0,1,1,0,0\"},\"G\":[{\"music_notes\":\"5,2,1|6,3,2|1,3,3\",\"touched_strings\":\"1,1,0,0,0,1\"},{\"music_notes\":\"6x,3|5,5,3|4,5,3|3,4,2\",\"touched_strings\":\"0,1,1,1,0,0\"},{\"music_notes\":\"6,3,2|5,2,1|1,3,3\",\"touched_strings\":\"1,1,0,0,0,1\"}],\"G#\":{\"music_notes\":\"6x,3|5,6,3|4,6,3|3,5,2\",\"touched_strings\":\"0,1,1,1,0,0\"},\"G#m\":{\"music_notes\":\"6x,3|5,6,3|4,6,4\",\"touched_strings\":\"0,1,1,0,0,0\"},\"G/C\":{\"music_notes\":\"6,3,3|4,2,2|2,1,1\",\"touched_strings\":\"1,0,1,0,1,0\"},\"G/D\":{\"music_notes\":\"3,4,3|2,3,1|1,3,2\",\"touched_strings\":\"0,0,0,1,1,1\"},\"G6\":[{\"music_notes\":\"2,3,1|3,4,2|4,5,3\",\"touched_strings\":\"0,0,1,1,1,0\"},{\"music_notes\":\"6,3,2|5,2,1\",\"touched_strings\":\"1,1,0,0,0,0\"}],\"G7\":{\"music_notes\":\"6,3,3|5,2,2|1,1,1\",\"touched_strings\":\"1,1,0,0,0,1\"},\"Gm\":{\"music_notes\":\"6x,3|5,5,3|4,5,4\",\"touched_strings\":\"0,1,1,0,0,0\"},\"Gmaj7\":{\"music_notes\":\"5,2,1|6,3,2|1,2,3\",\"touched_strings\":\"1,1,0,0,0,1\"}}",
+	"songs": [
+		{
+			"album": "",
+			"artist": "",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1tglyoDHb9SExCgSgSLqKShcEJJQWG53q"
+			},
+			"category": "1|FAVORITE",
+			"country": "🇦🇷",
+			"created_at": "2021/04/18",
+			"id": "chords",
+			"interpretation": "",
+			"is_public": true,
+			"order": 1,
+			"spotify_url": "",
+			"title": "Listado de acordes",
+			"year": 0,
+			"youtube_url": ""
+		},
+		{
+			"album": "A 18' del sol",
+			"artist": "Invisible",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1tGMwlItA82uJrg5EYUpIBHch1AC0Tn7n"
+			},
+			"category": "0|IN_PROGRESS",
+			"country": "🇦🇷",
+			"created_at": "2021/01/12",
+			"id": "cancion-para-los-dias-de-la-vida",
+			"interpretation": "- Fuerza del canto: Baja\n- Velocidad de rasgueo: Baja o media\n- Fuerza de rasgueo: Baja\n- Complejidad: Díficil\n",
+			"is_public": true,
+			"order": 1,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Canción para los días de la vida",
+					"url": "https://acordes.lacuerda.net/luis_a_spinetta/cancion_para_los_dias_de_la_vida-2.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "canción para los días de la vida - luis alberto spinetta (guitar cover)",
+					"url": "https://youtu.be/rZoVCxtfOL4"
+				},
+				{
+					"source": "youtube",
+					"text": "Canción para los días de la vida (Spinetta cover)",
+					"url": "https://youtu.be/8r2HS3qJ4G4"
+				},
+				{
+					"source": "youtube",
+					"text": "Canción para los días de la vida - Spinetta",
+					"url": "https://youtu.be/oIfk9XBBapc"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/3T5SksrlFxunlotQ0lmSwv",
+			"title": "Canción para los días de la vida",
+			"year": 1977,
+			"youtube_url": "https://youtu.be/q1Sr16pdF64"
+		},
+		{
+			"album": "El jardín de los presentes",
+			"artist": "Invisible",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1ueVR5-xaXz4ZKfOcI_yi6dR0Y5zQ72VJ"
+			},
+			"category": "0|IN_PROGRESS",
+			"country": "🇦🇷",
+			"created_at": "2021/05/05",
+			"id": "los-libros-de-la-buena-memoria",
+			"interpretation": "",
+			"is_public": true,
+			"order": 2,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "los libros de la buena memoria - luis alberto spinetta (guitar cover)",
+					"url": "https://youtu.be/PQcXWO_-V5Q"
+				},
+				{
+					"source": "youtube",
+					"text": "Cómo tocar Spinetta Los libros de la buena memoria Invisible Acordes Tutorial Letra Cover",
+					"url": "https://youtu.be/pZ3c1k1hSyE"
+				},
+				{
+					"source": "lacuerda",
+					"text": "Los libros de la buena memoria",
+					"url": "https://acordes.lacuerda.net/invisible/los_libros_de_la_buena_memoria.shtml"
+				},
+				{
+					"source": "instagram",
+					"text": "micaela.basadoni",
+					"url": "https://instagram.com/p/CJUrhvfg415"
+				},
+				{
+					"source": "youtube",
+					"text": "Spinetta - Los libros de la buena memoria // Cover",
+					"url": "https://youtu.be/JiQcXSKeuak"
+				},
+				{
+					"source": "instagram",
+					"text": "fran.depanema",
+					"url": "https://instagram.com/p/BwiNUB8ls5i"
+				},
+				{
+					"source": "instagram",
+					"text": "ondadomarduo",
+					"url": "https://instagram.com/p/Bn2Mt3Fhh0b"
+				},
+				{
+					"source": "instagram",
+					"text": "ticky_mago",
+					"url": "https://instagram.com/p/BaFsU_gF1mX"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/649a4t4L3MuUgNqr9BFPzT",
+			"title": "Los libros de la buena memoria",
+			"year": 1976,
+			"youtube_url": "https://youtu.be/npKMjBjjNKQ"
+		},
+		{
+			"album": "Porco Rex",
+			"artist": "Indio Solari y los Fundamentalistas del Aire Acondicionado",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1ucykAFx-2EvV5O6WdX_BJY45kvwTdZUi"
+			},
+			"category": "0|IN_PROGRESS",
+			"country": "🇦🇷",
+			"created_at": "2022/03/08",
+			"id": "y-mientras-tanto-el-sol-se-muere",
+			"interpretation": "",
+			"is_public": true,
+			"order": 3,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Y mientras tanto el sol se muere",
+					"url": "https://acordes.lacuerda.net/indio_solari/y_mientras_tanto_el_sol_se_muere.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "mientras tanto el sol se muere acustico",
+					"url": "https://youtu.be/yRX95Z1iQjk"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/4kyqER2JEip8vrxwtutTsO",
+			"title": "Y mientras tanto el sol se muere",
+			"year": 2007,
+			"youtube_url": "https://youtu.be/kJ1Fv23KxP0"
+		},
+		{
+			"album": "Ay ay ay",
+			"artist": "Los Piojos",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1rg-HuYfPuuvXyMEVO5W0FeEgPeJD5XOr"
+			},
+			"category": "1|FAVORITE",
+			"country": "🇦🇷",
+			"created_at": "2021/03/27",
+			"id": "ando-ganas",
+			"interpretation": "- Fuerza del canto: Media o alta\n- Velocidad de rasgueo: Rápida\n- Fuerza de rasgueo: Media o alta\n- Complejidad: Fácil\n",
+			"is_public": true,
+			"order": 1,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Ando ganas",
+					"url": "https://acordes.lacuerda.net/piojos/ando_ganas-5.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Ando Ganas - Los Piojos - Cover",
+					"url": "https://youtu.be/ygy53pb51Nk"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/4vsmIkU6VJa9dXXqasvzx0",
+			"title": "Ando ganas",
+			"year": 1994,
+			"youtube_url": "https://youtu.be/qfLfimOh1nU"
+		},
+		{
+			"album": "Desconocido",
+			"artist": "Wos",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1yVatjU4GSn-QFjxLqFFvaQtJlFk7mV-L"
+			},
+			"category": "1|FAVORITE",
+			"country": "🇦🇷",
+			"created_at": "2022/09/17",
+			"id": "arrancarmelo",
+			"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Media\n- Complejidad: Media\n",
+			"is_public": true,
+			"order": 2,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "ARRANCARMELO, WOS: Acordes",
+					"url": "https://acordes.lacuerda.net/wos/arrancarmelo-3.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Arrancarmelo - wos (cover)",
+					"url": "https://youtu.be/GAoWM_EGkdg"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/2x8oBuYaObjqHqgGuIUZ0b",
+			"title": "Arrancármelo",
+			"year": 2022,
+			"youtube_url": "https://youtu.be/RNLsc_DWDUw"
+		},
+		{
+			"album": "Artaud",
+			"artist": "Pescado Rabioso",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1rMUhAVAOcNMVk6yMP3B8_Pme2xGwp-kk"
+			},
+			"category": "1|FAVORITE",
+			"country": "🇦🇷",
+			"created_at": "2021/01/10",
+			"id": "bajan",
+			"interpretation": "- Fuerza del canto: Media o alta\n- Velocidad de rasgueo: Media o baja\n- Fuerza de rasgueo: Media o baja\n- Rasgueo: Tipo folklore o sino marcando bien los acordes\n- Complejidad: Media\n",
+			"is_public": true,
+			"order": 3,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Bajan",
+					"url": "https://acordes.lacuerda.net/luis_a_spinetta/bajan-2.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Bajan - Luis Alberto Spinetta",
+					"url": "https://youtu.be/ru5kV95Q8WE"
+				},
+				{
+					"source": "youtube",
+					"text": "Como Tocar Bajan de Spinetta",
+					"url": "https://youtu.be/MlgpU7JFMCg"
+				},
+				{
+					"source": "youtube",
+					"text": "Bajan - Spinetta (Cover by Silvina Moreno)",
+					"url": "https://youtu.be/T3C-jpWNOEs"
+				},
+				{
+					"source": "spotify",
+					"text": "Bajan (A Capella Version) - Originally Performed By Pescado Rabioso",
+					"url": "https://open.spotify.com/track/4qcuXE1niE1zwiEPRHUskW"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/6hmYi0E6EBEmDeztQHaH0C",
+			"title": "Bajan",
+			"year": 1973,
+			"youtube_url": "https://youtu.be/bZcMPnY9_dg"
+		},
+		{
+			"album": "Nada personal",
+			"artist": "Soda Stereo",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1r9zCwCybUBHiKxDZkJKENkItWd4VlySv"
+			},
+			"category": "1|FAVORITE",
+			"country": "🇦🇷",
+			"created_at": "2021/07/01",
+			"id": "cuando-pase-el-temblor",
+			"interpretation": "- Fuerza del canto: Media o baja\n- Velocidad de rasgueo: Media o rápida\n- Fuerza de rasgueo: Media o baja\n- Complejidad: Fácil\n",
+			"is_public": true,
+			"order": 4,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Cuando pase el temblor",
+					"url": "https://acordes.lacuerda.net/soda_stereo/cuando_pase_el_temblor-6.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Cuando pase el temblor - Soda Stereo (Cover Acústico)",
+					"url": "https://youtu.be/VEcbuuj4PFI"
+				},
+				{
+					"source": "youtube",
+					"text": "TUTORIAL Cuando pase el temblor - Soda Stereo (por NachoAste)",
+					"url": "https://youtu.be/RKoV-PNpYyg"
+				},
+				{
+					"source": "youtube",
+					"text": "COMO TOCAR \"CUANDO PASE EL TEMBLOR\" -SODA STEREO -PARA PRINCIPIANTES Y AVANZADOS",
+					"url": "https://youtu.be/w8Sm8Oak7qY"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/3uMYq07Kj5m564OQwdSCrD",
+			"title": "Cuando pase el temblor",
+			"year": 1995,
+			"youtube_url": "https://youtu.be/OH4OSdTa7Pg"
+		},
+		{
+			"album": "La Síntesis O'konor",
+			"artist": "Él Mató a un Policía Motorizado",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1w5JE5ok_EETEFHx-TNDVrc9RTYl3bg3A"
+			},
+			"category": "1|FAVORITE",
+			"country": "🇦🇷",
+			"created_at": "2022/08/10",
+			"id": "el-tesoro",
+			"interpretation": "- Fuerza del canto: Como sea\n- Velocidad de rasgueo: Media o baja\n- Fuerza de rasgueo: Como sea\n- Complejidad: Fácil\n",
+			"is_public": true,
+			"order": 5,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "EL TESORO, El mató a un Policía Motorizado: Acordes",
+					"url": "https://acordes.lacuerda.net/mato_a_un_policia_motorizado/el_tesoro-4.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Santiago Motorizado - El Tesoro",
+					"url": "https://youtu.be/rLGZYr6hfJ0"
+				},
+				{
+					"source": "youtube",
+					"text": "El tesoro, cover él mató a un policía motorizado",
+					"url": "https://youtu.be/FpWdIj43K2M"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/0l6LVRTDNFSHVBsqQvMR62",
+			"title": "El tesoro",
+			"year": 2017,
+			"youtube_url": "https://youtu.be/GFa9NhZ0Yho"
+		},
+		{
+			"album": "Gulp!",
+			"artist": "Patricio Rey y sus Redonditos de Ricota",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=10HfbALRYl7kEx1ehBhswe5xuHIi2APVt"
+			},
+			"category": "1|FAVORITE",
+			"country": "🇦🇷",
+			"created_at": "2022/12/28",
+			"id": "la-bestia-pop",
+			"interpretation": "- Fuerza del canto: Normal\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Normal\n- Complejidad: Media\n",
+			"is_public": true,
+			"order": 6,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "COMO TOCAR \"La bestia pop\" de Los Redondos | Tutorial guitarra acústica/criolla acordes",
+					"url": "https://youtu.be/sBp_B3nAtIA"
+				},
+				{
+					"source": "instagram",
+					"text": "Sofi & Roll 💙 en Instagram: “A brillar mi amor💙 Va de vuelta porque mi cel anda como el culin y me lo cortó. . . . #labestiapop #patriciorey #losredondos…”",
+					"url": "https://instagram.com/p/Cl2Qyh-Dwc7"
+				},
+				{
+					"source": "youtube",
+					"text": "🦎Cómo tocar La bestia pop Redonditos de Ricota con guitarra criolla Acordes Tutorial Letra Cover",
+					"url": "https://youtu.be/hfdTSrqy4wo"
+				},
+				{
+					"source": "lacuerda",
+					"text": "LA BESTIA POP, Patricio Rey y sus Redonditos de Ricota: Acordes",
+					"url": "https://acordes.lacuerda.net/patricio_rey/la_bestia_pop.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/5WeBnrDPyLhxruxVryHCkn",
+			"title": "La bestia pop",
+			"year": 1985,
+			"youtube_url": "https://youtu.be/obkKYJINyco"
+		},
+		{
+			"album": "Naranja persa",
+			"artist": "Ciro y los Persas",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1s9pzSh9CWKFf7Jvc1dPRw3oA8SNfZdgN"
+			},
+			"category": "1|FAVORITE",
+			"country": "🇦🇷",
+			"created_at": "2022/05/23",
+			"id": "luz",
+			"interpretation": "- Fuerza del canto: Normal\n- Velocidad de rasgueo: Media o rápida\n- Fuerza de rasgueo: Normal\n- Complejidad: Fácil\n",
+			"is_public": true,
+			"order": 7,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Luz (Cover) Ciro y Los Persas",
+					"url": "https://youtu.be/Vj_pONZx-8A"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/3nLL7rb00qmExkNTyJJqSv",
+			"title": "Luz",
+			"year": 2016,
+			"youtube_url": "https://youtu.be/EotTm9fms6o"
+		},
+		{
+			"album": "Despierta",
+			"artist": "Las Pelotas",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1rV3vSFjuR9vvwCi-snTNmncyIWWlKOyq"
+			},
+			"category": "1|FAVORITE",
+			"country": "🇦🇷",
+			"created_at": "2021/07/04",
+			"id": "personalmente",
+			"interpretation": "- Fuerza del canto: Normal\n- Velocidad de rasgueo: Lenta\n- Fuerza de rasgueo: Normal\n- Rasgueo: Lento y con pausas\n- Complejidad: Media\n",
+			"is_public": true,
+			"order": 8,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "PERSONALMENTE, Las Pelotas: Acordes",
+					"url": "https://acordes.lacuerda.net/pelotas/personalmente.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "COMO TOCAR \"Personalmente\" de Las Pelotas Tutorial guitarra acústica/criolla acordes rasgueo punteo",
+					"url": "https://youtu.be/FBSTHuLEEVk"
+				},
+				{
+					"source": "instagram",
+					"text": "sofiandroll",
+					"url": "https://www.instagram.com/p/CiThWLQvj66"
+				},
+				{
+					"source": "youtube",
+					"text": "Personalmente - Las Pelotas (Cover @lodelmagomusic)",
+					"url": "https://youtu.be/Bj-Ah577USc"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/7q7XFO9av9VpNJSXKJwJxD",
+			"title": "Personalmente",
+			"year": 2009,
+			"youtube_url": "https://youtu.be/fuwfOdrV32k"
+		},
+		{
+			"album": "El amor después del amor",
+			"artist": "Fito Paez",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1rNHN1j4T56LNPtTpnpT5hfap0CbG0Xp7"
+			},
+			"category": "1|FAVORITE",
+			"country": "🇦🇷",
+			"created_at": "2021/07/04",
+			"id": "petalo-de-sal",
+			"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Baja\n- Fuerza de rasgueo: Baja\n- Complejidad: Media\n",
+			"is_public": true,
+			"order": 9,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "\"PETALOS DE SAL\". TUTORIAL PARA GUITARRA",
+					"url": "https://youtu.be/ec7i0dfiX9E?t=285"
+				},
+				{
+					"source": "youtube",
+					"text": "PETALOS DE SAL-FITO PAEZ. COVER",
+					"url": "https://youtu.be/bHVcvLZR9cI"
+				},
+				{
+					"source": "youtube",
+					"text": "pétalo de sal ( voz cruda Fito Paez y Spinetta)",
+					"url": "https://youtu.be/5IO7L287MUM"
+				},
+				{
+					"source": "youtube",
+					"text": "Pétalo De Sal | Fito Páez - Joaquín Martínez",
+					"url": "https://youtu.be/d5K8l1mdx5g"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/47rrhPXwe6sfKtIDwJAsO4",
+			"title": "Pétalo de sal",
+			"year": 1992,
+			"youtube_url": "https://youtu.be/QlQosYFO-kA"
+		},
+		{
+			"album": "Artaud",
+			"artist": "Pescado Rabioso",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1sPmd-UkbJpvbCxoODW4aW99aqo7G2Dx4"
+			},
+			"category": "1|FAVORITE",
+			"country": "🇦🇷",
+			"created_at": "2021/04/04",
+			"id": "todas-las-hojas-son-del-viento",
+			"interpretation": "- Fuerza del canto: Suave o media\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Suave o media\n- Rasgueo: Marcar acordes largos\n- Complejidad: Fácil\n",
+			"is_public": true,
+			"order": 10,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Todas las hojas son del viento",
+					"url": "https://acordes.lacuerda.net/luis_a_spinetta/todas_las_hojas_son_del_viento-4.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Todas las Hojas son del Viento (Pescado Rabioso / Cover)",
+					"url": "https://youtu.be/fndCBPG2fCA"
+				},
+				{
+					"source": "youtube",
+					"text": "Como Tocar \"Todas Las Hojas Son del Viento\" de Spinetta en Guitarra",
+					"url": "https://youtu.be/Yo6YOrFDvvQ"
+				},
+				{
+					"source": "youtube",
+					"text": "Todas Las Hojas Son Del Viento - Pescado Rabioso (Cover)",
+					"url": "https://youtu.be/PPFiQRF9UG4"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/689lBKIELtWGHfsPWpR6rv",
+			"title": "Todas las hojas son del viento",
+			"year": 1973,
+			"youtube_url": "https://youtu.be/b-u-bchAnW4"
+		},
+		{
+			"album": "Canción animal",
+			"artist": "Soda Stereo",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1uFmcLSbNYnEmhHheiw-rAHCR8dG-7InR"
+			},
+			"category": "1|FAVORITE",
+			"country": "🇦🇷",
+			"created_at": "2021/04/23",
+			"id": "te-para-tres",
+			"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Baja\n- Complejidad: Fácil\n",
+			"is_public": true,
+			"order": 11,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Té para 3",
+					"url": "https://acordes.lacuerda.net/soda_stereo/te_para_3-2.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "cómo tocar en guitarra TÉ PARA TRES de SODA STEREO tutorial",
+					"url": "https://youtu.be/XZFQOFP5Klg"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/2kMVxFh1y5gow2hBtqGO4m",
+			"title": "Té para tres",
+			"year": 1990,
+			"youtube_url": "https://youtu.be/91XRV1mKUe4"
+		},
+		{
+			"album": "La mosca y la sopa",
+			"artist": "Patricio Rey y sus Redonditos de Ricota",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1uPWwvV893qE7PMset0xHLGc94Rvh2o_r"
+			},
+			"category": "1|FAVORITE",
+			"country": "🇦🇷",
+			"created_at": "2021/04/05",
+			"id": "un-poco-de-amor-frances",
+			"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Rápida\n- Fuerza de rasgueo: Media\n- Complejidad: Fácil\n",
+			"is_public": true,
+			"order": 12,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Cómo tocar Un poco de amor francés Redonditos de Ricota con guitarra criolla Acordes Tutorial Letra",
+					"url": "https://youtu.be/nCFafzchI7E"
+				},
+				{
+					"source": "lacuerda",
+					"text": "Un poco de amor francés",
+					"url": "https://acordes.lacuerda.net/patricio_rey/un_poco_de_amor_frances-5.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Cómo tocar UN POCO DE AMOR FRANCÉS de LOS REDONDOS en ukelele tutorial",
+					"url": "https://youtu.be/HCXF4D2hXP0"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/1MRhIdcloOD0uiiG3ybXGX",
+			"title": "Un poco de amor francés",
+			"year": 1991,
+			"youtube_url": "https://youtu.be/LDdH3HYlGA4"
+		},
+		{
+			"album": "Civilización",
+			"artist": "Los Piojos",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1ubZhnMv31C1N3nyu4ZciU5rxXF8Rm9pS"
+			},
+			"category": "2|WELL_DONE",
+			"country": "🇦🇷",
+			"created_at": "2021/06/22",
+			"id": "bicho-de-ciudad",
+			"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Baja\n- Complejidad: Media\n",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Bicho de ciudad",
+					"url": "https://acordes.lacuerda.net/piojos/bicho_de_ciudad.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Cómo tocar Los Piojos Bicho de ciudad con guitarra criolla Acordes Tutorial Letra Cover",
+					"url": "https://youtu.be/FCz1p5xjlvM"
+				},
+				{
+					"source": "youtube",
+					"text": "Como tocar Bicho de ciudad Los piojos guitarra (letra y acordes)",
+					"url": "https://youtu.be/MUKa2nM4690"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/1L9ybuuZdLY3biLEgfN4zB",
+			"title": "Bicho de ciudad",
+			"year": 2007,
+			"youtube_url": "https://youtu.be/esI9dPBmt34"
+		},
+		{
+			"album": "Máquina de sangre",
+			"artist": "Los Piojos",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1sRjDG4lWrRQVkvoHK9QhkujWY9bPMd6k"
+			},
+			"category": "2|WELL_DONE",
+			"country": "🇦🇷",
+			"created_at": "2022/06/15",
+			"id": "cancion-de-cuna",
+			"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Baja\n- Complejidad: Alta\n",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "GUITARRA | Canción De Cuna - Los Piojos (Guitarra cover/tutorial) Martin Lopez",
+					"url": "https://youtu.be/Q8dd001CdOs"
+				},
+				{
+					"source": "youtube",
+					"text": "CANCION DE CUNA LOS PIOJOS TUTORIAL GUITARRA ARPEGIO RASGUEO",
+					"url": "https://youtu.be/pUm3tfoW3kE"
+				},
+				{
+					"source": "lacuerda",
+					"text": "Canción de cuna",
+					"url": "https://acordes.lacuerda.net/piojos/cancion_de_cuna-2.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/6dkGg8FxGzFVRdcMsuVhkb",
+			"title": "Canción de cuna",
+			"year": 2003,
+			"youtube_url": "https://youtu.be/xBibCV8jTBY"
+		},
+		{
+			"album": "Otras canciones",
+			"artist": ["NTVG", "Jorge Drexler"],
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=13Ny66gZbfjzNwMJslpjBxAW53o8OJLwl"
+			},
+			"category": "2|WELL_DONE",
+			"country": "🇺🇾",
+			"created_at": "2023/05/14",
+			"id": "de-nada-sirve",
+			"interpretation": "- Fuerza del canto: Alta o media\n- Velocidad de rasgueo: Rápida o media\n- Fuerza de rasgueo: Alta o media\n- Rasgueo: Ver el video #1\n- Complejidad: Media\n",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "GUITARRA | De Nada Sirve - No Te Va Gustar Ft. Jorge Drexler (Guitarra cover/tutorial) Martin Lopez",
+					"url": "https://youtube.com/watch?v=lbU-KXYY4vU"
+				},
+				{
+					"source": "lacuerda",
+					"text": "DE NADA SIRVE, No Te Va Gustar: Acordes",
+					"url": "https://acordes.lacuerda.net/no_te_va_gustar/de_nada_sirve.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "NTVG - De nada sirve (cover by Nicoplos)",
+					"url": "https://youtube.com/watch?v=pw0r3D7A6iE"
+				},
+				{
+					"source": "youtube",
+					"text": "De nada sirve - versión - Cynthia Lozada y Lucho Aberastain",
+					"url": "https://youtube.com/watch?v=8lor5UqUQIg"
+				},
+				{
+					"source": "youtube",
+					"text": "El jhovas -como tocar de nada sirve -no te va a gustar y jorge drexler",
+					"url": "https://youtube.com/watch?v=OykIkDdpue4"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/2CFDPiNUxcSOqfQtUHYNxF",
+			"title": "De nada sirve",
+			"year": 2019,
+			"youtube_url": "https://youtu.be/I_818q1nMp8"
+		},
+		{
+			"album": "¡Bang! ¡Bang! Estás liquidado",
+			"artist": "Patricio Rey y sus Redonditos de Ricota",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1uCg4lH-y-KjNj_9qSKp_8sJHoY_nJyOl"
+			},
+			"category": "2|WELL_DONE",
+			"country": "🇦🇷",
+			"created_at": "2022/03/16",
+			"id": "esa-estrella-era-mi-lujo",
+			"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Media\n- Complejidad: Fácil\n",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Esa estrella era mi lujo",
+					"url": "https://acordes.lacuerda.net/patricio_rey/esa_estrella_era_mi_lujo.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Messi no nos abandones!(Base Esa estrella era mi lujo) Duke Gastou",
+					"url": "https://youtu.be/QggbpqT9CrY"
+				},
+				{
+					"source": "instagram",
+					"text": "Era hora de que vuelva... les dejo este tremendo temon.. obviamente al haber desaparecido tanto instagram no me va a mostrar mucho.. así… | Instagram",
+					"url": "https://instagram.com/p/Cx3xeyRO_Jq"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/5exsngywf8qMS6f00gKVWY",
+			"title": "Esa estrella era mi lujo",
+			"year": 1989,
+			"youtube_url": "https://youtu.be/OP1e9OJhk7E"
+		},
+		{
+			"album": "Frontera",
+			"artist": "Jorge Drexler",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1sC90eNXn67WqE2zCJPXAbgq8B39FKN8P"
+			},
+			"category": "2|WELL_DONE",
+			"country": "🇺🇾",
+			"created_at": "2021/08/13",
+			"id": "la-edad-del-cielo",
+			"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Lenta\n- Fuerza de rasgueo: Suave\n- Rasgueo: [Versos]: ↓↑x↑ | [Coro]: ↓  x↓  ↓\n- Complejidad: Media\n",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Tutorial de La edad del cielo (Jorge Drexler)",
+					"url": "https://youtu.be/JEhK6jCuaBU"
+				},
+				{
+					"source": "lacuerda",
+					"text": "La edad del cielo",
+					"url": "https://acordes.lacuerda.net/jorge_drexler/la_edad_del_cielo-2.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/75lisbgzhfJdIt5YdPuAWP",
+			"title": "La edad del cielo",
+			"year": 1999,
+			"youtube_url": "https://youtu.be/oZd_spRPUEM"
+		},
+		{
+			"album": "El calor del pleno invierno",
+			"artist": "NTVG",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1-wS8see8UyxojhqPVAqi33D6-3wT2YGY"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇺🇾",
+			"created_at": "2022/12/07",
+			"id": "a-las-nueve",
+			"interpretation": "- Fuerza del canto: Suave\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Suave\n- Complejidad: Díficil\n",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "url",
+					"text": "No te va gustar – A las nueve|Estudio Satori",
+					"url": "https://estudiosatori.com.ar/no-te-va-gustar-a-las-nueve"
+				},
+				{
+					"source": "youtube",
+					"text": "cómo tocar A LAS NUEVE de NO TE VA GUSTAR en guitarra tutorial",
+					"url": "https://youtu.be/TapVlgxh-mM"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/0CgpCtEPvyDizcg2p47VrU",
+			"title": "A las nueve",
+			"year": 2012,
+			"youtube_url": "https://youtu.be/30oa0b2mdUo"
+		},
+		{
+			"album": "Ahí vamos",
+			"artist": "Gustavo Cerati",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=11QMJktxtzc5I9FwG85SUyCE0bFl3yWbN"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2023/02/11",
+			"id": "adios",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Adiós Gustavo Cerati Guitarra acústica cover",
+					"url": "https://youtu.be/hB30oh8Vw2E"
+				},
+				{
+					"source": "youtube",
+					"text": "Como tocar Adios - Gustavo Cerati Tutorial Tablaturas || Triada35",
+					"url": "https://youtu.be/Oliy9rcOCRU"
+				},
+				{
+					"source": "lacuerda",
+					"text": "ADIOS, Gustavo Cerati: Acordes",
+					"url": "https://acordes.lacuerda.net/gustavo_cerati/adios-7.shtml"
+				},
+				{
+					"source": "instagram",
+					"text": "NOE alonso en Instagram: “Me lo pidieron y aca esta ❤️🫶🏻 Mi canción favorita de GUSTAVITO 🧡🦊 #cerati #gustavo #adios #byebye #guitartutorial #tutorialguitarrafacil…”",
+					"url": "https://instagram.com/p/CoQjENQoeIf/"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/1rh4kDY9T4fHVDum8Foi5k",
+			"title": "Adiós",
+			"year": 2006,
+			"youtube_url": "https://youtu.be/217Bw85-5cw"
+		},
+		{
+			"album": "Alma de diamante",
+			"artist": "Spinetta Jade",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1t_MzeS0VarfVl2izP9BnBv372ffLXPWz"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/04/30",
+			"id": "alma-de-diamante",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Alma de diamante",
+					"url": "https://acordes.lacuerda.net/luis_a_spinetta/alma_de_diamante.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Alma de diamante-Luis A. Spinetta cover Estefy Lennon",
+					"url": "https://youtu.be/mbeu8cJUSss"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/6F3VxUPgfcvDDpk2UxsJ5a",
+			"title": "Alma de diamante",
+			"year": 1980,
+			"youtube_url": "https://youtu.be/hEL2AgzRmjc"
+		},
+		{
+			"album": "Fenix",
+			"artist": "Victor Heredia",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1rCFqATBohi9fAeCn85pXVUcGuyWCM7QM"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/04/29",
+			"id": "bailando-con-tu-sombra",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Bailando con tu sombra",
+					"url": "https://acordes.lacuerda.net/abel_pintos/bailando_con_tu_sombra.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Como tocar guitarra Bailando con tu Sombra de V. Heredia",
+					"url": "https://youtu.be/vRUJRqK1rFk"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/1kepq9J67v8HhEEfGdYq9m",
+			"title": "Bailando con tu sombra",
+			"year": 2003,
+			"youtube_url": "https://youtu.be/puUKQ_pJ_v4"
+		},
+		{
+			"album": "Vida",
+			"artist": "Sui Generis",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1seNa6wpAK1qcKU1Adlp5d9wbX0DYzeHP"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/07/22",
+			"id": "cancion-para-mi-muerte",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Cancion para mi muerte",
+					"url": "https://acordes.lacuerda.net/charly_garcia/cancion_para_mi_muerte.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Como tocar Cancion Para mi Muerte - Sui Generis",
+					"url": "https://youtu.be/LPgjbAkvCZs"
+				},
+				{
+					"source": "youtube",
+					"text": "Como tocar Cancion para mi muerte de Sui generis en Guitarra acustica CLASE TUTORIAL",
+					"url": "https://youtu.be/tqurvSUyl28"
+				},
+				{
+					"source": "youtube",
+					"text": "TUTORIAL Canción para mi muerte - Sui Generis",
+					"url": "https://youtu.be/4YMTqaD2kXI"
+				},
+				{
+					"source": "youtube",
+					"text": "CANCIÓN PARA MI MUERTE- cover",
+					"url": "https://youtu.be/2XhWkNGihzo"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/0LWO6hUTJz6KBrSA2iJOpH?autoplay=true",
+			"title": "Canción para mi muerte",
+			"year": 1972,
+			"youtube_url": "https://youtu.be/NAtB8AOpZIY"
+		},
+		{
+			"album": "El jardín de los presentes",
+			"artist": "Invisible",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1yuJmQ9AjehCfHiatXx1RfcfRqJn0hGNZ"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2022/09/25",
+			"id": "doscientos-anos",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Sebastian Martino -- 200 años (Invisible)",
+					"url": "https://youtu.be/uScCRbOIj_Y"
+				},
+				{
+					"source": "lacuerda",
+					"text": "200 AÑOS, Luis Alberto Spinetta: Acordes",
+					"url": "https://acordes.lacuerda.net/luis_a_spinetta/200_anios.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/0CPARYGdedbVXR1kOX9G2R",
+			"title": "Doscientos años",
+			"year": 1976,
+			"youtube_url": "https://youtu.be/vghq50Hwcpo"
+		},
+		{
+			"album": "Durazno Sangrando",
+			"artist": "Invisible",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1t17I9GlJUCESUYOzzp3tykqKRj2QJ_-w"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/04/20",
+			"id": "durazno-sangrando",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Durazno sangrando",
+					"url": "https://acordes.lacuerda.net/luis_a_spinetta/durazno_sangrando-3.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Como Tocar Durazno Sangrando de Spinetta en Guitarra",
+					"url": "https://youtu.be/aZgOHYMBKs8"
+				},
+				{
+					"source": "instagram",
+					"text": "ticky_mago",
+					"url": "https://instagram.com/p/Bs-1na-nZ3l"
+				},
+				{
+					"source": "youtube",
+					"text": "Durazno Sangrando - Luis Alberto Spinetta (Unplugged) (cover guitarra)",
+					"url": "https://youtu.be/UOBLf7wFoOM"
+				},
+				{
+					"source": "youtube",
+					"text": "Durazno Sangrando - Invisible (Cover)",
+					"url": "https://youtu.be/gg41hxaQzo8"
+				},
+				{
+					"source": "youtube",
+					"text": "DURAZNO SANGRANDO- COVER",
+					"url": "https://youtu.be/TuXAQ-o0P7E"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/6pjbkrGImw09Nv5Ji3emkr",
+			"title": "Durazno sangrando",
+			"year": 1975,
+			"youtube_url": "https://youtu.be/i4_pVlJdbEY"
+		},
+		{
+			"album": "Bingo Fuel",
+			"artist": "Indio Solari y los Fundamentalistas del Aire Acondicionado",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1sE_xXjY11XxdBoseir7_NXpvb5WZ7bSH"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/04/30",
+			"id": "el-tesoro-de-los-inocentes",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "EL TESORO DE LOS INOCENTES, Los Fundamentalistas del Aire Acondicionado: Acordes",
+					"url": "https://acordes.lacuerda.net/fundamentalistas_del_aire/el_tesoro_de_los_inocentes-5.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "COVER Y COMO TOCAR CON LA GUITARRA - EL TESORO DE LOS INOCENTES. INDIO SOLARI TUTORIAL ACORDES",
+					"url": "https://youtu.be/aRKwxpQcVkk"
+				},
+				{
+					"source": "youtube",
+					"text": "El tesoro de los inocentes - Indio Solari (Cover)",
+					"url": "https://youtu.be/vhdIUCb_4h0"
+				},
+				{
+					"source": "youtube",
+					"text": "EL TESORO DE LOS INOCENTES - COMO TOCARLO",
+					"url": "https://youtu.be/40O_dP8a_Ek"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/7qGn9WweEDJw8KZwJqB1KN",
+			"title": "El tesoro de los inocentes",
+			"year": 2004,
+			"youtube_url": "https://youtu.be/NH9lciAWeJw"
+		},
+		{
+			"album": "El tiempo está después",
+			"artist": "Fernando Cabrera",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1t7z94sZDP0Xu_Cz45an0V1jDnkafYhuK"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇺🇾",
+			"created_at": "2021/07/04",
+			"id": "el-tiempo-esta-despues",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "El tiempo está después",
+					"url": "https://acordes.lacuerda.net/fernando_cabrera/el_tiempo_esta_despues.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "El tiempo esta despues - Perota chingo (cover)",
+					"url": "https://youtu.be/9yoeSeytTS0"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/0tbLOU9BO0mGip1N8sTBZ9",
+			"title": "El tiempo está después",
+			"year": 1989,
+			"youtube_url": "https://youtu.be/nvwvgr0kzWI"
+		},
+		{
+			"album": "Kamikaze",
+			"artist": "Luis Alberto Spinetta",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1st6SvLeRPeRPZTnKvXcZK1lQ9g_DqngG"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/04/23",
+			"id": "ella-tambien",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Ella También",
+					"url": "https://acordes.lacuerda.net/luis_a_spinetta/ella_tambien-2.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Ella también - Luis Alberto Spinetta (Cover) Guitarra y Voz",
+					"url": "https://youtu.be/rCZGXuJWsRY"
+				},
+				{
+					"source": "youtube",
+					"text": "Ella También - Luis Alberto Spinetta (Guitar Cover)",
+					"url": "https://youtu.be/-FiGf8jtcCo"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/4y1ze4JPCe7XVv28VlZ4k0",
+			"title": "Ella también",
+			"year": 1982,
+			"youtube_url": "https://youtu.be/JpJW5yFwb40"
+		},
+		{
+			"album": "Desconocido",
+			"artist": "Indio Solari y los Fundamentalistas del Aire Acondicionado",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1ycBdUHyKQ2WS_vO7_3X48nZ4MtukD54q"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2022/09/21",
+			"id": "encuentro-con-un-angel-amateur",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "ENCUENTRO CON UN ANGEL AMATEUR, Los Fundamentalistas del Aire Acondicionado: Acordes",
+					"url": "https://acordes.lacuerda.net/fundamentalistas_del_aire/encuentro_con_un_angel_amateur-3.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/0tyUt9J9teuyBsuZqaeKWh",
+			"title": "Encuentro con un ángel amateur",
+			"year": 2021,
+			"youtube_url": "https://youtu.be/UxfTDxxzjBE"
+		},
+		{
+			"album": "Sea",
+			"artist": "Jorge Drexler",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1tNRkv45o4IEP9431noXdgaTnMQ_tK7-R"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇺🇾",
+			"created_at": "2021/08/13",
+			"id": "horas",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Horas - Jorge Drexler",
+					"url": "https://youtu.be/M6wKv1RXbdE"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/736D1R1c4aoGcn7ZEmtyH4",
+			"title": "Horas",
+			"year": 2001,
+			"youtube_url": "https://youtu.be/zArFAn4rQgM"
+		},
+		{
+			"album": "La dulzura",
+			"artist": "Cultura Profética",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1uQxmnMRIUH4vXzJurNmRjyVyKhTPdO9i"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇵🇷",
+			"created_at": "2021/07/04",
+			"id": "la-espera",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "instagram",
+					"text": "milkareyesgarcia",
+					"url": "https://instagram.com/p/B87Fd98hWfTYF9r2zHdnUx5a4MZnPAsjux462Q0"
+				},
+				{
+					"source": "instagram",
+					"text": "milkareyesgarcia",
+					"url": "https://instagram.com/p/Bjdb5XLlY0V4kNut5vSgqKpKCBD2tkrymZB_hA0"
+				},
+				{
+					"source": "lacuerda",
+					"text": "La Espera",
+					"url": "https://acordes.lacuerda.net/cultura_profetica/la_espera-2.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "La Espera - Cultura Profética (Samuel Castro - Cover)",
+					"url": "https://youtu.be/NPj7rgwu6dQ"
+				},
+				{
+					"source": "youtube",
+					"text": "Cultura Profetica - La Espera (Cover by Eze)",
+					"url": "https://youtu.be/qJH29riNexw"
+				},
+				{
+					"source": "youtube",
+					"text": "Willy Rodriguez_La espera",
+					"url": "https://youtu.be/8brWB-51YHM"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/0vl8naLAWvkm7EiE4DQdl5",
+			"title": "La espera",
+			"year": 2010,
+			"youtube_url": "https://youtu.be/TxypVAeGGI4"
+		},
+		{
+			"album": "Estrelicia MTV Unplugged",
+			"artist": "Spinetta y los Socios del Desierto",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1yAtsOQSqni0FaR4JRdryAy6vc_kNb9T_"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2022/09/01",
+			"id": "la-miel-en-tu-ventana",
+			"interpretation": "- Fuerza del canto: Suave\n- Velocidad de rasgueo: Rápida\n- Fuerza de rasgueo: Baja\n- Complejidad: Díficil\n",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "LA MIEL EN TU VENTANA, Spinetta y los Socios del Desierto: Acordes",
+					"url": "https://acordes.lacuerda.net/spinetta_y_los_socios_del_desierto/la_miel_en_tu_ventana.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Como tocar La Miel En Tu Ventana (Acordes - Explicacion) - Luis Alberto Spinetta",
+					"url": "https://youtu.be/eOVhJCPEjEY"
+				},
+				{
+					"source": "youtube",
+					"text": "La miel en tu ventana, Spinetta cover by Erick Pérez de Costa Rica",
+					"url": "https://youtu.be/rRx5UDo34Nk"
+				},
+				{
+					"source": "youtube",
+					"text": "La Miel En Tu Ventana - Luis Alberto Spinetta (Cover)",
+					"url": "https://youtu.be/HSsxs-REGoU"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/0wTDQd5FhSuuxDUUFl9hJ7",
+			"title": "La miel en tu ventana",
+			"year": 1997,
+			"youtube_url": "https://youtu.be/E2nrlV4DwdE"
+		},
+		{
+			"album": "El recital",
+			"artist": "Gustavo Pena El Príncipe",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1rRgAmScKipxZZQRmTQcxpi_VGEIcmNee"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇺🇾",
+			"created_at": "2021/08/13",
+			"id": "mandolin",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Mandolin (Cover - María Victoria Rambosio)",
+					"url": "https://youtu.be/FB4gKCfQZ_A"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/0HxLlkUPaWb4zZInxl43Fw",
+			"title": "Mandolín",
+			"year": 2003,
+			"youtube_url": "https://youtu.be/56yjg8xJWw4"
+		},
+		{
+			"album": "Circo Beat",
+			"artist": "Fito Paez",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1r6-G9UqKBThth_S0evbKzc_Yx9m-bRvi"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/05/10",
+			"id": "mariposa-tecknicolor",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "cómo tocar MARIPOSA TECKNICOLOR de FITO PÁEZ en guitarra tutorial",
+					"url": "https://youtu.be/mfomemgURwo"
+				},
+				{
+					"source": "instagram",
+					"text": "franciscocharco",
+					"url": "https://instagram.com/reel/CfXbz8rF5MY"
+				},
+				{
+					"source": "instagram",
+					"text": "mandrearamirez",
+					"url": "https://instagram.com/p/BhzwwmBlPNw"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/2RognU2ViRdA6HxnpAITJl",
+			"title": "Mariposa tecknicolor",
+			"year": 1994,
+			"youtube_url": "https://youtu.be/uzxeVzFrlq8"
+		},
+		{
+			"album": "Luzbelito",
+			"artist": "Patricio Rey y sus Redonditos de Ricota",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1-ztgTO-7pecvCfuwJm0ypUtm-_2U3xxh"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2022/12/18",
+			"id": "me-matan-limon",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "ME MATAN LIMON, Patricio Rey y sus Redonditos de Ricota: Acordes",
+					"url": "https://acordes.lacuerda.net/patricio_rey/me_matan_limon.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Acordes Me matan limón Redonditos Cómo tocar",
+					"url": "https://youtu.be/SX_ya4_AcGA"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/7h0wz5amgGNqbcGOo9ebXD",
+			"title": "Me matan limón",
+			"year": 1996,
+			"youtube_url": "https://youtu.be/xdDw4Bbj57w"
+		},
+		{
+			"album": "Un mañana",
+			"artist": "Luis Alberto Spinetta",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1rnnStSoUwjLsZI1AfUc-iRj8x3AEM6p9"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2022/05/12",
+			"id": "no-quiere-decir",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "NO QUIERE DECIR, Luis Alberto Spinetta: Acordes",
+					"url": "https://acordes.lacuerda.net/luis_a_spinetta/no_quiere_decir.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "No quiere decir - Luis Alberto Spinetta (Cover)",
+					"url": "https://youtu.be/KpYSz77BPtY"
+				},
+				{
+					"source": "youtube",
+					"text": "No Quiere Decir",
+					"url": "https://youtu.be/s7t_o8mllYI"
+				},
+				{
+					"source": "youtube",
+					"text": "No quiere decir (Luis Alberto Spinetta) - Cover",
+					"url": "https://youtu.be/TzWDQXxT1xo"
+				},
+				{
+					"source": "youtube",
+					"text": "Lunar - No quiere decir (cover)",
+					"url": "https://youtu.be/AvAJRb8YSaM"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/4qwaQvUrRwK2t1G6Q5pwbY",
+			"title": "No quiere decir",
+			"year": 2008,
+			"youtube_url": "https://youtu.be/FNIh1-RfG6g"
+		},
+		{
+			"album": "Narigón del siglo",
+			"artist": "Divididos",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1tzqGe0aZ7ZZIjbxk0eAjB4f0YlQldAxR"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/03/28",
+			"id": "par-mil",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Como Tocar Par Mil de Divididos - Tutorial Para Guitarra Acustica - Ricardo Mollo",
+					"url": "https://youtu.be/ju0ACmzXb9Q"
+				},
+				{
+					"source": "youtube",
+					"text": "GUITARRA | Par Mil - Divididos (Guitarra cover/tutorial) Martin Lopez",
+					"url": "https://youtu.be/QhjBRjEFnGM"
+				},
+				{
+					"source": "lacuerda",
+					"text": "PAR MIL, Divididos: Acordes",
+					"url": "https://acordes.lacuerda.net/divididos/par_mil-3.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Par Mil - Divididos (Cover - Isabel Dunas)",
+					"url": "https://youtu.be/ccUfpINARuk"
+				},
+				{
+					"source": "youtube",
+					"text": "💡Par mil de Divididos, pero cada vez que digo Luz, la luz se pone mas brillante",
+					"url": "https://youtu.be/pTLX_zxoW90"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/0wUFXsXHZc2h6wKRcmJNWF",
+			"title": "Par mil",
+			"year": 2000,
+			"youtube_url": "https://youtu.be/Z_tHBX0mj1s"
+		},
+		{
+			"album": "Bocanada",
+			"artist": "Gustavo Cerati",
+			"assets": {
+				"punteo": "/cms/pages/music/[song]/assets/images/puente/punteo.png",
+				"server_url": "https://drive.google.com/uc?id=1rGDz-6vsRTQcEAGxq3mntP_31CkksZRz"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/06/05",
+			"id": "puente",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Como tocar Puente de GUSTAVO CERATI en Guitarra (HD) Tutorial COMPLETO",
+					"url": "https://youtu.be/HzwBL1VoSbA"
+				},
+				{
+					"source": "youtube",
+					"text": "Puente GUSTAVO CERATI Acustico Guitara Cover Demo Christianvib",
+					"url": "https://youtu.be/lwdS4z8kYo8"
+				},
+				{
+					"source": "lacuerda",
+					"text": "Puente",
+					"url": "https://acordes.lacuerda.net/gustavo_cerati/puente-4.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Gonzalo Aloras - Puente (Cerati)",
+					"url": "https://youtu.be/KhNisBgjBhs"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/2UkcvsKD0hZH7ALfG3m7AP",
+			"title": "Puente",
+			"year": 1999,
+			"youtube_url": "https://youtu.be/eAO7CEcCD3s"
+		},
+		{
+			"album": "El jardín de los presentes",
+			"artist": "Invisible",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1u-8vBsWmgzUSFfWOjStTgKhA7pkBNHab"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/03/23",
+			"id": "que-ves-el-cielo",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Que ves el cielo",
+					"url": "https://acordes.lacuerda.net/invisible/que_ves_el_cielo.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Cómo tocar Spinetta (Invisible) Que ves el cielo con Acordes Tutorial Letra Cover Pedro Aznar",
+					"url": "https://youtu.be/IX4BZ3PkbZ4"
+				},
+				{
+					"source": "youtube",
+					"text": "que ves el cielo ( cover) temazo del flaco spinetta",
+					"url": "https://youtu.be/bGkqLWnaph8"
+				},
+				{
+					"source": "youtube",
+					"text": "Que Ves El Cielo - Invisible (Cover)",
+					"url": "https://youtu.be/2xluLfcoJMg"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/2G6XFgIRMn0ZdIBao0ggoM",
+			"title": "Que ves el cielo",
+			"year": 1976,
+			"youtube_url": "https://youtu.be/OU_HZZF_bl8"
+		},
+		{
+			"album": "Confesiones de invierno",
+			"artist": "Sui Generis",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1shZHzdWR5E9DI0vCpB3QCfzagXfAuAfj"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/12/09",
+			"id": "rasguna-las-piedras",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "cómo tocar en guitarra RASGUÑA LAS PIEDRAS de SUI GENERIS tutorial COMPLETO",
+					"url": "https://youtu.be/dulUsEl8DYo"
+				},
+				{
+					"source": "youtube",
+					"text": "RASGUÑA LAS PIEDRAS- SUI GENERIS- TUTORIAL GUITARRA",
+					"url": "https://youtu.be/4QpLXNx9UIo"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/3zhH1Ng7NRBX8ZQAULwXNm?autoplay=true",
+			"title": "Rasguña las piedras",
+			"year": 1973,
+			"youtube_url": "https://youtu.be/wZi-HDLJifI"
+		},
+		{
+			"album": "Privé",
+			"artist": ["Luis Alberto Spinetta", "Charly García"],
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1rVym07j18JyTevwd0vNphiXchZ4BkPLX"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/04/28",
+			"id": "rezo-por-vos",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "cómo tocar en guitarra REZO POR VOS de CHARLY GARCÍA Y SPINETTA tutorial acordes unplugged",
+					"url": "https://youtu.be/j9WythaS_Vg"
+				},
+				{
+					"source": "lacuerda",
+					"text": "Rezo por vos",
+					"url": "https://acordes.lacuerda.net/charly_garcia/rezo_por_vos-2.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Cómo tocar Rezo por vos Charly García Spinetta con guitarra criolla Acordes Tutorial Letra Cover",
+					"url": "https://youtu.be/L2ODxKj43Yco"
+				},
+				{
+					"source": "youtube",
+					"text": "Rezo por vos - Charly García/Luis Alberto Spinetta (Guitar Cover)",
+					"url": "https://youtu.be/96wAYDC1ZqU"
+				},
+				{
+					"source": "url",
+					"text": "REZO POR VOS",
+					"url": "https://estudiosatori.com.ar/luis-alberto-spinetta-charly-garcia-rezo-por-vos"
+				},
+				{
+					"source": "instagram",
+					"text": "sofiandroll",
+					"url": "https://instagram.com/p/B8zpqk6n4ro"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/46TZ5rawdrjoFwsQLGlcLr",
+			"title": "Rezo por vos",
+			"year": 1986,
+			"youtube_url": "https://youtu.be/kHPja5eLZdU"
+		},
+		{
+			"album": "Perotá Chingó",
+			"artist": "Perotá Chingó",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1tVd_NbhVk-pQF0vIuKvu8Si_mVeM4P67"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/07/04",
+			"id": "rie-chinito",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Ríe Chinito",
+					"url": "https://acordes.lacuerda.net/dolo_y_maju/rie_chinito-2.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Kevin kaarl | Ríe Chinito | Tutorial | Acordes | como tocar COVER",
+					"url": "https://youtu.be/EkEb6XZ0hBE"
+				},
+				{
+					"source": "instagram",
+					"text": "martynmccontre",
+					"url": "https://instagram.com/p/Bky5LNTAgfK"
+				},
+				{
+					"source": "instagram",
+					"text": "cgprensaycomunicacion",
+					"url": "https://instagram.com/p/BkLvNSPHNhM"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/4UZdPR7auDwEnpPc5vHU7n",
+			"title": "Ríe chinito",
+			"year": 2014,
+			"youtube_url": "https://youtu.be/_aIuna5a8Dc"
+		},
+		{
+			"album": "Built on Glass",
+			"artist": "Chet Faker",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1u3yYvtq1kDdSQMky89AClNtIqmpSQyx1"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇺",
+			"created_at": "2021/04/22",
+			"id": "talk-is-cheap",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Talk is Cheap - Chet Faker (cover)",
+					"url": "https://youtu.be/wyrWEINvhe0"
+				},
+				{
+					"source": "ultimate-guitar",
+					"text": "Talk Is Cheap chords by Chet Faker",
+					"url": "https://tabs.ultimate-guitar.com/tab/chet-faker/talk-is-cheap-chords-1471017"
+				},
+				{
+					"source": "instagram",
+					"text": "lui.vizotto",
+					"url": "https://instagram.com/p/BTFOrx8AK-0"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/655HjEK4nNzceomQVpNzgN",
+			"title": "Talk is cheap",
+			"year": 2014,
+			"youtube_url": "https://youtu.be/aP_-P_BS6KY"
+		},
+		{
+			"album": "El ritmo mundial",
+			"artist": "Los Fabulosos Cadillacs",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1sAadh-lH1-kf9cmFtYFbecx4bznDGD-_"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/01/10",
+			"id": "vasos-vacios",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Vicentico - Vasos Vacíos “Version Acústica” (Campaña Codo a Codo 2020)",
+					"url": "https://youtu.be/S2HxHyv8I1s"
+				},
+				{
+					"source": "lacuerda",
+					"text": "Vasos vacíos",
+					"url": "https://acordes.lacuerda.net/fabulosos/vasos_vacios-5.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Cómo tocar en guitarra VASOS VACIOS de LOS FABULOSOS CADILLACS tutorial COMPLETO acordes fácil",
+					"url": "https://youtu.be/ZDmAf6KyYPU"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/6G9painkkIlE8HauZrG4Vw",
+			"title": "Vasos vacíos",
+			"year": 1998,
+			"youtube_url": "https://youtu.be/8Zdhan166z0"
+		},
+		{
+			"album": "3er arco",
+			"artist": "Los Piojos",
+			"assets": {
+				"punteo_1": "/cms/pages/music/[song]/assets/images/verano-del-92/punteo-1.png",
+				"punteo_2": "/cms/pages/music/[song]/assets/images/verano-del-92/punteo-2.png",
+				"server_url": "https://drive.google.com/uc?id=1rT4h6bNoVLvxil38nx05Qi-h5gRaivSt"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/03/23",
+			"id": "verano-del-92",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "VERANO DEL 92, los Piojos: Acordes",
+					"url": "https://acordes.lacuerda.net/piojos/verano_del_92.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "GUITARRA | Verano Del 92 - Los Piojos (Guitarra cover/tutorial) Martin Lopez",
+					"url": "https://youtu.be/LrR3DVPh7aU"
+				},
+				{
+					"source": "youtube",
+					"text": "cómo tocar VERANO DEL '92 de LOS PIOJOS en ukelele tutorial completo",
+					"url": "https://youtu.be/6ALi7AlVqzo"
+				},
+				{
+					"source": "youtube",
+					"text": "Cómo tocar Los piojos Verano del 92 Tutorial Acordes Guitarra",
+					"url": "https://youtu.be/RaeHAbmgUPo"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/1NXvuBAq48QrxRFQZVmORQ",
+			"title": "Verano del 92",
+			"year": 1996,
+			"youtube_url": "https://youtu.be/DaVRJca0z5c"
+		},
+		{
+			"album": "Gol de mujer",
+			"artist": "Divididos",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1wPlMz0Br3BZyEw3wYLDK3kR8JSYX844O"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2022/08/13",
+			"id": "vientito-del-tucuman",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "VIENTITO DEL TUCUMAN, Divididos: Acordes",
+					"url": "https://acordes.lacuerda.net/divididos/vientito_del_tucuman.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Vientito Del Tucumán (Divididos) - Mariano Wettstein",
+					"url": "https://youtu.be/Hak_RN7Gk94"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/3KxKBGEhIJNk9ulzhXZ5X9",
+			"title": "Vientito del Tucumán",
+			"year": 1998,
+			"youtube_url": "https://youtu.be/j16SQc7f50I"
+		},
+		{
+			"album": "Zona de promesas",
+			"artist": "Soda Stereo",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1rSZ4d7g_9dKeMyo37wFsOQXIMHyQ4m-J"
+			},
+			"category": "3|TO_PRACTICE",
+			"country": "🇦🇷",
+			"created_at": "2021/06/26",
+			"id": "zona-de-promesas",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Zona de Promesas SODA STEREO Cover | Tutorial Guitarra Demo Christianvib",
+					"url": "https://youtu.be/UiJt0bA8jmE"
+				},
+				{
+					"source": "youtube",
+					"text": "Zona De Promesas - Soda Stereo (Cover)",
+					"url": "https://youtu.be/dfTiZeh9T-U"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/2EGq3O7pchSqjQ6gx82byi",
+			"title": "Zona de promesas",
+			"year": 1993,
+			"youtube_url": "https://youtu.be/tPOkA5H1DfY"
+		},
+		{
+			"album": "Usted Señalemelo",
+			"artist": "Usted Señalemelo",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1u4v6dMQpnSjdjTfMZWDmLHBNouEZiVpT"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2021/04/24",
+			"id": "agua-marfil",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "COMO Tocar 🎸 AGUA MARFIL - USTED SEÑALEMELO (GUITARRA) Acordes y acompañamiento TUTORIAL",
+					"url": "https://youtu.be/P7R1MB18yyo"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/6mYdnKt43uGw3gmtOz4yQi",
+			"title": "Agua marfil",
+			"year": 2015,
+			"youtube_url": "https://youtu.be/3NQoPCxqn9o"
+		},
+		{
+			"album": "Aguas",
+			"artist": "Perotá Chingó",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1u5eCFUezezagHnm3s2YYf3-1KAZehWzB"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2021/04/28",
+			"id": "aguacero",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Aguacero",
+					"url": "https://acordes.lacuerda.net/perota_chingo/aguacero.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/4BgpB2GGQ2njzpS3RN4C3w",
+			"title": "Aguacero",
+			"year": 2017,
+			"youtube_url": "https://youtu.be/tNuO2|vlI9Y"
+		},
+		{
+			"album": "Espejos",
+			"artist": "Ciro y los Persas",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1tYecfMWVJVSdFW155xuBMu1liRkSakdO"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2021/02/25",
+			"id": "antes-y-despues",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Antes y después",
+					"url": "https://acordes.lacuerda.net/ciro_y_los_persas/antes_y_despues.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/7dVj5UjkSMybmGDCdyVPUt",
+			"title": "Antes y después",
+			"year": 2010,
+			"youtube_url": "https://youtu.be/e5egGC28OcY"
+		},
+		{
+			"album": "Vengo del placard de otro",
+			"artist": "Divididos",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1rIEw4IoQUgn1UJQbqS6TNAHePQ2haJ9W"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2021/07/04",
+			"id": "ay-que-dios-boludo",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Fercho Marchetti - Ay, que dios boludo (Cover Divididos)",
+					"url": "https://youtu.be/UAlm1i5W3yI"
+				},
+				{
+					"source": "lacuerda",
+					"text": "Ay que Dios boludo",
+					"url": "https://acordes.lacuerda.net/divididos/ay_que_dios_boludo-2.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "\"Ay, que dios boludo\" (Divididos) cover Fito Castro",
+					"url": "https://youtu.be/rgAcqqZZAck"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/2BtPSOvL4L9QmpMRMFf7zy",
+			"title": "Ay que Dios boludo",
+			"year": 2001,
+			"youtube_url": "https://youtu.be/KRVs8tfo4X4"
+		},
+		{
+			"album": "Lado D (Digital) [Espíritu Inquieto]",
+			"artist": "Gustavo Pena El Príncipe",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1wKJ9EX9s1NlWiI_StBhpfgMbjnOTNJDN"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2022/08/12",
+			"id": "como-que-no",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "COMO QUE NO?, Gustavo Pena \"el Príncipe\": Acordes",
+					"url": "https://acordes.lacuerda.net/gustavo_pena_el_principe/como_que_no.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/4Il3mAsbDvbNHSN5C9SUAQ",
+			"title": "Como que no",
+			"year": 2003,
+			"youtube_url": "https://youtu.be/75O5zTBEy6g"
+		},
+		{
+			"album": "Estrelicia MTV Unplugged",
+			"artist": "Luis Alberto Spinetta",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1IC4qa2izHyg2FEYU1BWNUaVhs-P3rTa6"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2023/10/08",
+			"id": "fuji",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "FUJI, Spinetta y los Socios del Desierto: Tablatura",
+					"url": "https://acordes.lacuerda.net/spinetta_y_los_socios_del_desierto/fuji-2.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Loli Molina - Fuji ( Luis Alberto Spinetta ) - en vivo",
+					"url": "https://youtu.be/TkrhivLt2Sk"
+				},
+				{
+					"source": "youtube",
+					"text": "Loli Molina - Fuji (Spinetta cover) - Queretaro Trovafest 2019",
+					"url": "https://youtu.be/RO53Hfmr7vg"
+				},
+				{
+					"source": "youtube",
+					"text": "LOLI MOLINA CANTO TODO Y NOS LLENO DE CALMA",
+					"url": "https://youtu.be/mGxUma3E0Ws"
+				},
+				{
+					"source": "youtube",
+					"text": "fuji (Spinetta)",
+					"url": "https://youtu.be/fsN5kcC5mJc"
+				},
+				{
+					"source": "youtube",
+					"text": "Como tocar Fuji de Spinetta",
+					"url": "https://youtu.be/O9b59Ss6whI"
+				},
+				{
+					"source": "youtube",
+					"text": "NINGÚN ACORDE NACE LOCO: SPINETTA - Fuji",
+					"url": "https://youtu.be/-1PXmG574Yw"
+				},
+				{
+					"source": "youtube",
+					"text": "Fuji - Spinetta y los Socios del Desierto (+Tab)",
+					"url": "https://youtu.be/rIvDu-cFh18"
+				},
+				{
+					"source": "youtube",
+					"text": "FUJI - SPINETTA (Cover)",
+					"url": "https://youtu.be/S2pAeBhf41Q"
+				},
+				{
+					"source": "youtube",
+					"text": "Fuji - (Spinetta y los socios del desierto) - Cover",
+					"url": "https://youtu.be/pvSoMppd8QY"
+				},
+				{
+					"source": "youtube",
+					"text": "Fuji (Luis Alberto Spinetta) - Gino Donofrio",
+					"url": "https://youtu.be/ue846BMrf5E"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/1rSmZR0CkunwAs5rpXMdpa",
+			"title": "Fuji",
+			"year": 1997,
+			"youtube_url": "https://youtu.be/7NaIujlFBf8"
+		},
+		{
+			"album": "Vengo del placard de otro",
+			"artist": "Divididos",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1u1aVgvPLvgstsrxNV91m3J1Y67uLVHkE"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2022/05/17",
+			"id": "guanuqueando",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Guanuqueando (divididos)",
+					"url": "https://youtu.be/uKcWI6BDTdk"
+				},
+				{
+					"source": "lacuerda",
+					"text": "Guanuqueando",
+					"url": "https://acordes.lacuerda.net/divididos/guanuqueando-2.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/259Zco2M4NlQ5lTXuq20AI",
+			"title": "Guanuqueando",
+			"year": 2002,
+			"youtube_url": "https://youtu.be/7OlzxfSKjtI"
+		},
+		{
+			"album": "Hasta la raíz",
+			"artist": "Natalia Lafourcade",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1rv-fME7r-Q7NDY2gLIgBF8BE9DRZ8vXx"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇲🇽",
+			"created_at": "2021/06/22",
+			"id": "hasta-la-raiz",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Como tocar Hasta La Raiz NATALIA LAFOURCADE | Guitarra Tutorial FACIL Christianvib",
+					"url": "https://youtu.be/_hFFRDKvUVc"
+				},
+				{
+					"source": "lacuerda",
+					"text": "Hasta la raíz",
+					"url": "https://acordes.lacuerda.net/natalia_lafourcade/hasta_la_raiz-3.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/692C4fgt86NVLGwKXe4KCs",
+			"title": "Hasta la raíz",
+			"year": 2015,
+			"youtube_url": "https://youtu.be/IKmPci5VXz0"
+		},
+		{
+			"album": "Luzbelito",
+			"artist": "Patricio Rey y sus Redonditos de Ricota",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1sv2x8NIQkzaQvU8TKgIL0wemrtEzL8uu"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2021/06/03",
+			"id": "juguetes-perdidos",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Cómo tocar Juguetes perdidos Redonditos de Ricota con guitarra criolla Acordes Tutorial Letra Cover",
+					"url": "https://youtu.be/kjIJA_I64FE"
+				},
+				{
+					"source": "lacuerda",
+					"text": "Juguetes Perdidos",
+					"url": "https://acordes.lacuerda.net/patricio_rey/juguetes_perdidos.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/1SBGb9SOYwb8H7LhK5daAS",
+			"title": "Juguetes perdidos",
+			"year": 1996,
+			"youtube_url": "https://youtu.be/c5xFMhjslw8"
+		},
+		{
+			"album": "Clásicos de la provincia",
+			"artist": "Carlos Vives",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1u4Rz9D_b0lumk3C3MShMEju-Ul4jhgje"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇨🇴",
+			"created_at": "2021/06/04",
+			"id": "la-gota-fria",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "la Gota Fría",
+					"url": "https://acordes.lacuerda.net/carlos_vives/la_gota_fria.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "LA GOTA FRÍA / cover by Manuel Guiñazu",
+					"url": "https://youtu.be/zq2h4cqBKuA"
+				},
+				{
+					"source": "youtube",
+					"text": "Como tocar la gota fría en guitarra acústica (mi primer video)",
+					"url": "https://youtu.be/eQY4qmAUE8c"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/4tXR895KKljrC2VptgyEhJ",
+			"title": "La gota fría",
+			"year": 1993,
+			"youtube_url": "https://youtu.be/Nmb80HXWsFQ"
+		},
+		{
+			"album": "Si",
+			"artist": "Julieta Venegas",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1ttGvsAZNrIKJWbk11zKSGum6uii3T7vY"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇲🇽",
+			"created_at": "2022/05/12",
+			"id": "lento",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Julieta Venegas. Lento 🎶. (Cover)",
+					"url": "https://youtu.be/UAbhfMBTHgM"
+				},
+				{
+					"source": "lacuerda",
+					"text": "Lento",
+					"url": "https://acordes.lacuerda.net/julieta_venegas/lento.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/2NsMwNWumJXCdTg2IZCLZ5",
+			"title": "Lento",
+			"year": 2004,
+			"youtube_url": "https://youtu.be/ZSIzwYzCkHQ"
+		},
+		{
+			"album": "Thinking in Textures",
+			"artist": "Chet Faker",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1yUVUanH_pGOE4ouC18FoUxV9XAGxr5gS"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇺",
+			"created_at": "2022/09/15",
+			"id": "love-and-feeling",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Chet Faker - Love & Feeling (Live Sessions Acoustic Guitar Cover)",
+					"url": "https://youtu.be/b5xyEI6c650"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/0Dg1RcUS88uvvnldv80kOx",
+			"title": "Love and feeling",
+			"year": 2012,
+			"youtube_url": "https://youtu.be/Wpks0qalBhU"
+		},
+		{
+			"album": "La Conquista del Espacio",
+			"artist": "Fito Paez",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1zncLON2-SrgsIgqa-zvSiXHfoD87Tg20"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2022/11/14",
+			"id": "maelstrom",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "MAELSTRöM, Fito Paez: Acordes",
+					"url": "https://acordes.lacuerda.net/fito_paez/maelstrm.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Maelström - Fito Paez (cover)",
+					"url": "https://youtu.be/dP44lx39feQ"
+				},
+				{
+					"source": "youtube",
+					"text": "Maelström (Fito Paez) cover by Lean",
+					"url": "https://youtu.be/DZrh5F1iOSE"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/5JyeXhwxBQFEne4FxPbCxN",
+			"title": "Maelström",
+			"year": 2020,
+			"youtube_url": "https://youtu.be/dZQ5H1mPA10"
+		},
+		{
+			"album": "Almendra",
+			"artist": "Almendra",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1sbdeptxrUCCcGigjiLd2KxFTK0B9kN_U"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2022/05/21",
+			"id": "muchacha-ojos-de-papel",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "url",
+					"text": "Muchacha ojos de papel",
+					"url": "https://estudiosatori.com.ar/almendra-muchacha-ojos-de-papel"
+				},
+				{
+					"source": "youtube",
+					"text": "cómo tocar MUCHACHA OJOS DE PAPEL de ALMENDRA en guitarra tutorial SPINETTA",
+					"url": "https://youtu.be/hJk0Epi7J18"
+				},
+				{
+					"source": "youtube",
+					"text": "Como Tocar Muchacha Ojos de Papel del Flaco Spinetta",
+					"url": "https://youtu.be/MVEOia6dSxw"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/6GPkBUXMrGSkwK3TrrHHXN",
+			"title": "Muchacha ojos de papel",
+			"year": 1969,
+			"youtube_url": "https://youtu.be/znK_KQT2vek"
+		},
+		{
+			"album": "Lebon & Co",
+			"artist": "Serú Girán",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1tDxeUANWyE27gxoqXkUm1lxh9dQE_yOT"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2021/07/04",
+			"id": "mundo-agradable",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Cómo tocar Seru Giran Mundo agradable Acordes Tutorial Guitarra criolla Cover",
+					"url": "https://youtu.be/9RIIFrAJQXI"
+				},
+				{
+					"source": "lacuerda",
+					"text": "Mundo agradable",
+					"url": "https://acordes.lacuerda.net/seru_giran/mundo_agradable.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/4VcZ2jEE3t9ij9XJV9n7in",
+			"title": "Mundo agradable",
+			"year": 2019,
+			"youtube_url": "https://youtu.be/O9RbVM2N3s4"
+		},
+		{
+			"album": "Thinking in Textures",
+			"artist": "Chet Faker",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1xIkXgdKCLH5sOqnp25m3Vyc7oxOlxl-A"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇺",
+			"created_at": "2022/08/19",
+			"id": "no-diggity",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "No Diggity - Chet Faker (acoustic cover + chords)",
+					"url": "https://youtu.be/ti2CYxvlSec"
+				},
+				{
+					"source": "youtube",
+					"text": "Chet Faker - No Diggity (Guitar Tutorial/Lesson)",
+					"url": "https://youtu.be/vqeIBEUhFDc"
+				},
+				{
+					"source": "youtube",
+					"text": "No Diggity - Chet Faker (Acoustic Cover)",
+					"url": "https://youtu.be/BjU3vEHgQNk"
+				},
+				{
+					"source": "url",
+					"text": "NO DIGGITY CHORDS (ver 2) by Chet Faker for guitar, ukulele, piano at Ultimate-Guitar",
+					"url": "https://tabs.ultimate-guitar.com/tab/chet-faker/no-diggity-chords-1680685"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/2xD7RvKFJl52xyds3wQFXQ",
+			"title": "No diggity",
+			"year": 2012,
+			"youtube_url": "https://youtu.be/wPSZp_rOXHg"
+		},
+		{
+			"album": "Desconocido",
+			"artist": "Violeta Parra",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1rBBpYMUtRe_AiwY4a_4HGb8T4qg9tsyg"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇨🇱",
+			"created_at": "2022/07/03",
+			"id": "que-he-sacado-con-quererte",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Que he sacado con quererte",
+					"url": "https://acordes.lacuerda.net/violeta_parra/que_he_sacado_con_quererte.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/4enJ0KY8NBx7ybKcxhdzJy",
+			"title": "Que he sacado con quererte",
+			"year": 1964,
+			"youtube_url": "https://youtu.be/QsEEwHBr2K4"
+		},
+		{
+			"album": "Elija y Gane",
+			"artist": "Luis Alberto Spinetta",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1soOf19vtyFVLkjPnyfq5w6OiGW29rLTd"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2021/07/21",
+			"id": "quedandote-o-yendote",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Quedándote o Yéndote",
+					"url": "https://acordes.lacuerda.net/luis_a_spinetta/quedandote_o_yendote-2.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Quedandote o yendote",
+					"url": "https://youtu.be/hCP49EN9gNE"
+				},
+				{
+					"source": "youtube",
+					"text": "Quedándote o Yéndote- Spinetta (Cover Luna Esandi)",
+					"url": "https://youtu.be/b9yCxAjr99s"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/5gUxsVRhWljyJz7pYakRL4",
+			"title": "Quedándote o yéndote",
+			"year": 1999,
+			"youtube_url": "https://youtu.be/Jqi2rk5l0-k"
+		},
+		{
+			"album": "Silvio",
+			"artist": "Silvio Rodríguez",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1ve_RL-Eg3fXvQCwTt2gWcBBMTtViYzFh"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇨🇺",
+			"created_at": "2022/07/20",
+			"id": "quien-fuera",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Cómo tocar \"Quien Fuera\" de Los Bunkers en Guitarra Acústica (HD) Tutorial - Christianvib",
+					"url": "https://youtu.be/Izg1yoo9b8s"
+				},
+				{
+					"source": "lacuerda",
+					"text": "QUIEN FUERA, Los Bunkers: Acordes",
+					"url": "https://acordes.lacuerda.net/bunkers/quien_fuera-2.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/5mLuPM0CpoXyrBncooRJZa",
+			"title": "Quien fuera",
+			"year": 1992,
+			"youtube_url": "https://youtu.be/hUwDnWkVMwU"
+		},
+		{
+			"album": "Perotá Chingó",
+			"artist": "Perotá Chingó",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1sk2DdGxR-A-doJKhElBeUqN10aHLQp8G"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2022/01/24",
+			"id": "seres-extranos",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Seres extraños",
+					"url": "https://acordes.lacuerda.net/fernando_cabrera/el_tiempo_esta_despues.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/1BYz7OhBUeMwjQsIDaVQv5",
+			"title": "Seres extraños",
+			"year": 2014,
+			"youtube_url": "https://youtu.be/d71NUVy2PpI"
+		},
+		{
+			"album": "Unknown",
+			"artist": "Ben E. King",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1xIHg8LIVlThhzkzWUZxzmXJZo5pRU5AH"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇺🇸",
+			"created_at": "2022/08/18",
+			"id": "stand-by-me",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "url",
+					"text": "STAND BY ME CHORDS by Ben E. King @ Ultimate-Guitar.Com",
+					"url": "https://tabs.ultimate-guitar.com/tab/ben-e-king/stand-by-me-chords-73005"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/3SdTKo2uVsxFblQjpScoHy",
+			"title": "Stand by me",
+			"year": 1961,
+			"youtube_url": "https://youtu.be/einn_UJgGGM"
+		},
+		{
+			"album": "A Rush of Blood to the Head",
+			"artist": "Coldplay",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1xJMui7hRbyumIlc-o2Gzv7WKzlicX06i"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇬🇧",
+			"created_at": "2022/08/19",
+			"id": "the-scientist",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "The Scientist Guitar Tutorial 🎸 - Coldplay Guitar Lesson |Easy Chords + Guitar Cover|",
+					"url": "https://youtu.be/qJ4jW8uVpM8"
+				},
+				{
+					"source": "url",
+					"text": "THE SCIENTIST CHORDS by Coldplay @ Ultimate-Guitar.Com",
+					"url": "https://tabs.ultimate-guitar.com/tab/coldplay/the-scientist-chords-42050"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/75JFxkI2RXiU7L9VXzMkle",
+			"title": "The scientist",
+			"year": 2002,
+			"youtube_url": "https://youtu.be/RB-RcX5DS5A"
+		},
+		{
+			"album": "De la cabeza con Bersuit Vergarabat",
+			"artist": "Bersuit Vergarabat",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1tkjVUGQkwnde79K97nojwnKXVjnGFBSh"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2021/10/02",
+			"id": "un-pacto",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Como tocar un pacto para vivir - Bersuit",
+					"url": "https://youtu.be/weOrhfR4k8I"
+				},
+				{
+					"source": "youtube",
+					"text": "Como tocar UN PACTO Bersuit en Guitarra [ACORDES+RASGIDOS+ARPEGIOS] TAB fácil!!",
+					"url": "https://youtu.be/QuTv6yFfsTY"
+				},
+				{
+					"source": "youtube",
+					"text": "COMO TOCAR \"Un pacto\" de La Bersuit | Tutorial guitarra acústica/criolla acordes arpegio rasgueo",
+					"url": "https://youtu.be/pg7o0Y8u3Vs"
+				},
+				{
+					"source": "lacuerda",
+					"text": "Un pacto",
+					"url": "https://acordes.lacuerda.net/bersuit/un_pacto_para_vivir.shtml"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/4J2Jf2GvaOSINTlTTHdmse",
+			"title": "Un pacto",
+			"year": 2002,
+			"youtube_url": "https://youtu.be/WNebXvrqGDE"
+		},
+		{
+			"album": "Aguas",
+			"artist": "Perotá Chingó",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1tpcgVHZFWYgnwREHQN5W6DWzkLu-G4Fi"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2021/04/01",
+			"id": "veo-chiquito",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Veo chiquito",
+					"url": "https://acordes.lacuerda.net/perota_chingo/veo_chiquito.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Roots session - Cover Perota Chingo -Veo chiquito",
+					"url": "https://youtu.be/DVvJ6ggFgv0"
+				},
+				{
+					"source": "youtube",
+					"text": "Veo chiquito - perotá chingó | Cover Carely",
+					"url": "https://youtu.be/2DCNlds65jk"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/44q38EV7P1sjbLI8RB6k9M",
+			"title": "Veo chiquito",
+			"year": 2017,
+			"youtube_url": "https://youtu.be/YLG3T74iy1o"
+		},
+		{
+			"album": "Éxitos de los Visconti",
+			"artist": "Los Visconti",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1uTH749kRmc2MMibMTwuVvP6G96TPJQZO"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2021/07/21",
+			"id": "zamba-de-mi-esperanza",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "lacuerda",
+					"text": "Zamba de mi esperanza",
+					"url": "https://acordes.lacuerda.net/chalchaleros/zamba_de_mi_esperanza.shtml"
+				},
+				{
+					"source": "youtube",
+					"text": "Zamba de mi esperanza - Tutorial Guitarra",
+					"url": "https://youtu.be/YC9b4hq8Zag"
+				},
+				{
+					"source": "youtube",
+					"text": "Zamba de mi esperanza - Euge Barker",
+					"url": "https://youtu.be/YUr6VdHJYcs"
+				},
+				{
+					"source": "youtube",
+					"text": "Zamba de mi esperanza - Los Chalchaleros Tutorial/Cover Guitarra",
+					"url": "https://youtu.be/iJuDJ7pL750"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/3Zb75jF6ClmT4qiQoCX03F",
+			"title": "Zamba de mi esperanza",
+			"year": 1964,
+			"youtube_url": "https://youtu.be/HX0NP-whJ58"
+		},
+		{
+			"album": "Desconocido",
+			"artist": "Daniel Toro",
+			"assets": {
+				"server_url": "https://drive.google.com/uc?id=1rxd4p10PYHiXk_5YwhAH4axuyXDzUTDU"
+			},
+			"category": "4|SOME_DAY",
+			"country": "🇦🇷",
+			"created_at": "2021/08/14",
+			"id": "zamba-para-olvidarte",
+			"interpretation": "",
+			"is_public": true,
+			"order": 0,
+			"sources": [
+				{
+					"source": "youtube",
+					"text": "Como tocar Zamba para olvidar | Tutorial GUITARRA",
+					"url": "https://youtu.be/x3IUP9gzAWQ?t=396"
+				}
+			],
+			"spotify_url": "https://open.spotify.com/track/5V1FwqoPmvZllRuQCuZAyx",
+			"title": "Zamba para olvidarte",
+			"year": 1977,
+			"youtube_url": "https://youtu.be/jlzEemNtNGA"
+		}
+	]
+}

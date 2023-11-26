@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 
-import { ENV_VARS } from "~/constants";
 import { readDevToolsConfig } from "~/features/development-tools";
 import { logAndReportError } from "~/features/logging";
 import v from "~/lib/v";
@@ -19,7 +18,6 @@ axios.interceptors.request.use((config) => {
 	return {
 		...config,
 		headers: {
-			Authorization: `Bearer ${ENV_VARS.TOKEN_FOR_PROTECTED_RESOURCES_BE}`,
 			"dfr-ua-browser": isBrowser(),
 			...config.headers,
 		},

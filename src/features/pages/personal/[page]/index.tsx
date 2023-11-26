@@ -24,23 +24,6 @@ const PERSONAL_PAGES_COMPONENTS = PERSONAL_PAGES.filter((page) => {
 */
 
 const PERSONAL_PAGES_COMPONENTS = [
-	// personal
-	{
-		slug: "films",
-		title: "films",
-		Component: dynamic(() => import("./films/index")),
-	},
-	{
-		slug: "timeline",
-		title: "timeline",
-		Component: dynamic(() => import("./timeline/index")),
-	},
-	{
-		slug: "books",
-		title: "books",
-		Component: dynamic(() => import("./books/index")),
-	},
-
 	// tools
 	{
 		slug: "whatsapp",
@@ -48,19 +31,9 @@ const PERSONAL_PAGES_COMPONENTS = [
 		Component: dynamic(() => import("./WhatsApp")),
 	},
 	{
-		slug: "dencrypt",
-		title: "dencrypt",
-		Component: dynamic(() => import("./Dencrypt")),
-	},
-	{
 		slug: "text",
 		title: "text",
 		Component: dynamic(() => import("./Text")),
-	},
-	{
-		slug: "isr",
-		title: "isr",
-		Component: dynamic(() => import("./ISR")),
 	},
 	{
 		slug: "debugging",
