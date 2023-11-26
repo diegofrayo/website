@@ -9,7 +9,7 @@ import type DR from "@diegofrayo/types";
 import { isMobileDevice } from "@diegofrayo/utils/browser";
 import { generateSlug, replaceAll } from "@diegofrayo/utils/strings";
 
-import { Output } from "./components";
+import { Output } from "../components";
 
 function WhatsAppPage() {
 	// --- STATES & REFS ---

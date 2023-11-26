@@ -38,12 +38,7 @@ export function MDXContent({ code, components = {}, globals = {} }: T_MDXContent
 
 export { getMDXExport };
 
-// DOCS: https://mdxjs.com/table-of-components/
-/* WARN:
- * I don't know how to type this object, so, I used any for this
- * It is not important to solve this
- */
-// @ts-ignore
+// DOCS: https://mdxjs.com/table-of-components
 export const MDXComponents = {
 	// --- PRIMITIVE COMPONENTS ---
 	a: function CustomA({ children, href }: DR.DOM.HTMLElementAttributes["a"]) {

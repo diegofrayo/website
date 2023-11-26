@@ -28,7 +28,7 @@ function TextFormatter({ children }: T_TextFormatterProps) {
 
 	return (
 		<pre
-			className="dr-kordz-text-formatter"
+			className="dr-kordz-text-formatter tw-leading-none"
 			dangerouslySetInnerHTML={{
 				__html: children,
 			}}

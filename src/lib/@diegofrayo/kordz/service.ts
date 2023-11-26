@@ -208,8 +208,8 @@ class KordzService {
 
 		return `<button class="${[
 			this.CHORDS_BUTTON_SELECTOR,
-			!isCurrentLineTheLastOne && "tw-mb-0",
-			!isTheLastParsedTextLineBlank && "tw-mt-2",
+			!isCurrentLineTheLastOne && "tw-mb-1",
+			!isTheLastParsedTextLineBlank && "tw-mt-3",
 		]
 			.filter(Boolean)
 			.join(" ")}" data-chord-index="${chord.variantIndex}">${

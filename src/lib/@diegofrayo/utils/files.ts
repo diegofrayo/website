@@ -9,7 +9,7 @@ export function writeFile(filePath: string, data: unknown) {
 }
 
 export function readFile(filePath: string) {
-	return fs.readFileSync(filePath).toString();
+	return fs.readFileSync(filePath).toString().trim();
 }
 
 export function copyFolder(sourcePath: string, targetPath: string) {

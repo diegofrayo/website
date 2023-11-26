@@ -35,20 +35,6 @@ export function replaceAll(str: string, toReplace: string | string[], replacemen
 	return str.replace(new RegExp(escapeRegExp(toReplace), "g"), replacement);
 }
 
-export function removeFirstAndLastBlankLines(input: string) {
-	let output = input;
-
-	if (output.trim().startsWith("\n")) {
-		output = output.trim().substring(1);
-	}
-
-	if (output.trim().endsWith("\n")) {
-		output = output.trim().substring(0, output.length - 1);
-	}
-
-	return output;
-}
-
 export function createRandomString(length: number) {
 	const CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 	const charactersLength = CHARACTERS.length;

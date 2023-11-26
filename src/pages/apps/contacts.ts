@@ -1,7 +1,7 @@
 import type { GetStaticProps } from "next";
 
 import ContactsPage from "~/modules/pages/apps/pages/ContactsPage";
-import type { T_ContactsPageProps } from "~/modules/pages/apps/pages/types";
+import type { T_ContactsPageProps } from "~/modules/pages/apps/types";
 import { loadData } from "~/server/data-loader";
 
 export default ContactsPage;

@@ -177,15 +177,17 @@ function BlogPostSources({ sources }: { sources: { title: string; url: string }[
 	return (
 		<Block
 			is="section"
-			className="tw-border tw-p-4 dr-bg-color-surface-200 dr-border-color-surface-300"
+			className="tw-rounded-md tw-p-4 dr-text-color-primary-600 dr-bg-color-surface-mixed-400"
 		>
 			<Title
-				is="h2"
-				variant={Title.variant.STYLED}
+				is="h3"
+				className="tw-text-white"
+				size={Title.size.MD}
 			>
 				Sources
 			</Title>
 			<Space size={1} />
+
 			<List variant={List.variant.SIMPLE}>
 				{sources.map((source) => {
 					const { host } = new URL(source.url);
@@ -199,7 +201,7 @@ function BlogPostSources({ sources }: { sources: { title: string; url: string }[
 							>
 								{source.title}
 							</Link>
-							<Text className="tw-text-xs tw-font-bold tw-italic">{host}</Text>
+							<Text className="tw-text-xs tw-italic">{host}</Text>
 						</List.Item>
 					);
 				})}

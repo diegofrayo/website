@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { delay } from "../utils/misc";
+import { delay, safeAsync } from "../utils/misc";
 import v from "../v";
 
 import useDidMount from "./useDidMount";
@@ -11,36 +11,59 @@ type T_AsyncFn<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn> = (
 	...args: G_AsyncFnArgs
 ) => Promise<G_AsyncFnReturn> | G_AsyncFnReturn;
 
-type T_Opts = {
-	autoLaunch?: boolean;
+type T_UseAsyncReturnBase<G_AsyncFnReturn> = T_State<G_AsyncFnReturn>;
+
+type T_OptsBase = {
 	withDelay?: number | true;
 };
 
-type T_UseAsyncReturn<
+type T_Opts1 = T_OptsBase & {
+	autoLaunch?: true;
+};
+
+type T_Opts2 = T_OptsBase & {
+	autoLaunch: false;
+};
+
+type T_Return1<G_AsyncFnReturn> = T_UseAsyncReturnBase<G_AsyncFnReturn>;
+
+type T_Return2<
 	G_AsyncFnArgs extends unknown[],
 	G_AsyncFnReturn,
-> = T_State<G_AsyncFnReturn> & {
+> = T_UseAsyncReturnBase<G_AsyncFnReturn> & {
 	asyncFn: T_AsyncFn<G_AsyncFnArgs, G_AsyncFnReturn>;
 };
 
 function useAsync<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn>(
 	key: string,
 	asyncFn: (...args: G_AsyncFnArgs) => Promise<G_AsyncFnReturn> | G_AsyncFnReturn,
-	optsParam?: T_Opts,
-): T_UseAsyncReturn<G_AsyncFnArgs, G_AsyncFnReturn> {
+	optsParam?: T_Opts1,
+): T_Return1<G_AsyncFnReturn>;
+
+function useAsync<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn>(
+	key: string,
+	asyncFn: (...args: G_AsyncFnArgs) => Promise<G_AsyncFnReturn> | G_AsyncFnReturn,
+	optsParam?: T_Opts2,
+): T_Return2<G_AsyncFnArgs, G_AsyncFnReturn>;
+
+function useAsync<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn>(
+	key: string,
+	asyncFn: (...args: G_AsyncFnArgs) => Promise<G_AsyncFnReturn> | G_AsyncFnReturn,
+	optsParam?: T_Opts1 | T_Opts2,
+): T_Return1<G_AsyncFnReturn> | T_Return2<G_AsyncFnArgs, G_AsyncFnReturn> {
 	// --- VARS ---
 	const opts = React.useMemo(() => {
 		return {
 			autoLaunch: optsParam
-				? v.isBoolean(optsParam?.autoLaunch)
-					? optsParam?.autoLaunch
+				? v.isBoolean(optsParam["autoLaunch"])
+					? optsParam["autoLaunch"]
 					: true
 				: true,
 			withDelay: optsParam
-				? v.isBoolean(optsParam.withDelay)
+				? v.isBoolean(optsParam["withDelay"])
 					? 1000
-					: v.isNumber(optsParam.withDelay)
-					? optsParam.withDelay
+					: v.isNumber(optsParam["withDelay"])
+					? optsParam["withDelay"]
 					: 0
 				: 0,
 		};
@@ -57,7 +80,8 @@ function useAsync<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn>(
 	useDidMount(() => {
 		if (opts.autoLaunch === true) {
 			// @ts-ignore
-			enhancedAsyncFn(); // TODO
+			// TODO
+			safeAsync(() => enhancedAsyncFn());
 		}
 	});
 
@@ -82,10 +106,15 @@ function useAsync<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn>(
 		[key, opts],
 	);
 
+	if (!opts.autoLaunch) {
+		return {
+			...state,
+		};
+	}
+
 	return {
 		...state,
 		asyncFn: enhancedAsyncFn,
-		// ...(opts.autoLaunch ? {} : { asyncFn: enhancedAsyncFn }), // TODO
 	};
 }
 

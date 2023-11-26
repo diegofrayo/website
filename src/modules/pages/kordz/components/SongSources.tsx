@@ -16,8 +16,8 @@ function SongSources({ sources }: T_SongSourcesProps) {
 
 	return (
 		<Block
-			className="tw-rounded-md tw-p-4 dr-text-color-primary-600 dr-bg-color-surface-mixed-400"
 			is="section"
+			className="tw-rounded-md tw-p-4 dr-text-color-primary-600 dr-bg-color-surface-mixed-400"
 		>
 			<Title
 				is="h3"

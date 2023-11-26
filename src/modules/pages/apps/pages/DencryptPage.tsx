@@ -17,7 +17,7 @@ import { focusElement, focusInputAndSelectText, isSmallScreen } from "@diegofray
 import { getErrorMessage } from "@diegofrayo/utils/misc";
 import v from "@diegofrayo/v";
 
-import { Output } from "./components";
+import { Output } from "../components";
 
 function DencryptPage() {
 	// --- HOOKS ---

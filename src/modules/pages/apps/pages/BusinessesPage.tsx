@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { ContactsPage as ContactsPageComponent } from "./components";
-import { T_BusinessesPageProps } from "./types";
+import { ContactsPage as ContactsPageComponent } from "../components";
+import type { T_BusinessesPageProps } from "../types";
 
 export default function BusinessesPage({ data }: T_BusinessesPageProps) {
 	return (
