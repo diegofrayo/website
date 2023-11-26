@@ -23,7 +23,7 @@ function Home({ data }: T_HomeProps): T_ReactElement {
 	return (
 		<Page
 			config={{
-				title: t("seo:title"),
+				title: "",
 				description: t("seo:description"),
 				pathname: ROUTES.HOME,
 				disableSEO: Boolean(t("page:config:is_seo_disabled")),

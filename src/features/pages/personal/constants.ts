@@ -24,13 +24,6 @@ export const PERSONAL_PAGES = [
 		type: "TOOL",
 	},
 	{
-		slug: "dencrypt",
-		title: "dencrypt",
-		componentName: "Dencrypt",
-		icon: Icon.icon.KEY,
-		type: "TOOL",
-	},
-	{
 		slug: "text",
 		title: "text",
 		componentName: "Text",

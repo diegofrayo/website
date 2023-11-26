@@ -201,7 +201,6 @@ const SettingsMenu = withAuthComponent(function SettingsMenu(): T_ReactElement {
 					{/* <ToggleThemeMenuItem /> */}
 					<RefreshAPPMenuItem />
 					<EnvironmentMenuItem />
-					<PrintMenuItem />
 				</List>
 			) : null}
 		</Block>
@@ -310,24 +309,6 @@ const EnvironmentMenuItem = withAuthComponent(function EnvironmentMenuItem() {
 		</SettingsMenuItem>
 	);
 });
-
-function PrintMenuItem(): T_ReactElement {
-	// --- HANDLERS ---
-	function handlePrintClick(): void {
-		window.print();
-	}
-
-	return (
-		<SettingsMenuItem title="Print">
-			<Button
-				variant={Button.variant.SIMPLE}
-				onClick={handlePrintClick}
-			>
-				<Icon icon={Icon.icon.PRINTER} />
-			</Button>
-		</SettingsMenuItem>
-	);
-}
 
 type T_SettingsMenuItemProps = {
 	children: T_ReactChildren;
