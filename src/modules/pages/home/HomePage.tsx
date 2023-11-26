@@ -310,6 +310,7 @@ function StackPopover() {
 							variant={Link.variant.SIMPLE}
 							href={`${WEBSITE_METADATA.social.github}/website`}
 							className="tw-inline-block"
+							onClick={AnalyticsService.trackClickEvent("HOME|TECH_STACK|ITEM", { item: "github" })}
 							isExternalLink
 						>
 							<Icon icon={Icon.icon.CODE} />
@@ -374,6 +375,7 @@ function StackItem({ toolName, href, description }: T_StackItemProps) {
 				variant={Link.variant.SIMPLE}
 				href={href}
 				className="tw-font-bold tw-underline"
+				onClick={AnalyticsService.trackClickEvent("HOME|TECH_STACK|ITEM", { item: toolName })}
 				isExternalLink
 			>
 				<InlineText>{toolName}</InlineText>
