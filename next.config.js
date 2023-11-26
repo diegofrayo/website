@@ -70,7 +70,7 @@ module.exports = withMDX()(
 		},
 		images: {
 			disableStaticImages: true,
-			domains: [new URL(process.env.NEXT_PUBLIC_ASSETS_SERVER_URL).hostname],
+			domains: [new URL(process.env.NEXT_PUBLIC_WEBSITE_URL).hostname],
 		},
 	}),
 );
