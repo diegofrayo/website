@@ -424,7 +424,7 @@ function NavigationMenuDialog({ show, onCloseHandler }: T_NavigationMenuDialogPr
 		return (
 			<Block className="tw-fixed tw-left-0 tw-top-0 tw-z-20 tw-flex tw-h-screen tw-w-screen tw-items-center tw-justify-center tw-bg-black/80 tw-backdrop-blur-md">
 				<Button
-					className="tw-top tw-absolute tw-top-[135px] tw-block tw-w-full sm:tw-top-[141px]"
+					className="tw-top tw-absolute tw-top-[132px] tw-block tw-w-full sm:tw-top-[141px]"
 					onClick={onCloseHandler}
 				>
 					<Icon

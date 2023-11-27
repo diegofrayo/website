@@ -73,7 +73,7 @@ function GuitarChord({ plainChord }: T_GuitarChordProps) {
 						{parsedChord.firstFret > 1 ? (
 							<GuitarFret
 								variant={GuitarFret.variant.EMPTY}
-								number={1}
+								number={(parsedChord.firstFret - 1) as T_GuitarFret}
 							/>
 						) : null}
 
