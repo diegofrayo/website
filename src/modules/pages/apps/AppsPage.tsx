@@ -28,6 +28,7 @@ function AppsPage() {
 									<Icon
 										icon={app.icon}
 										size={44}
+										color="inherit"
 									/>
 									<Space size={1} />
 									<Text className="tw-font-bold">{app.name}</Text>
@@ -65,6 +66,16 @@ const APPS = [
 		id: "whatsapp",
 		icon: Icon.icon.WHATSAPP_MONO,
 		name: "whatsapp",
+	},
+	{
+		id: "stopwatch",
+		icon: Icon.icon.CLOCK,
+		name: "stopwatch",
+	},
+	{
+		id: "ticks",
+		icon: Icon.icon.HEART,
+		name: "ticks",
 	},
 	{
 		id: "books",

@@ -18,6 +18,7 @@ import {
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	ClipboardIcon,
+	ClockIcon,
 	CodeBracketIcon,
 	CogIcon,
 	CommandLineIcon,
@@ -319,6 +320,13 @@ const ICONS = {
 	},
 	CLIPBOARD: {
 		icon: ClipboardIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	CLOCK: {
+		icon: ClockIcon,
 		defaultProps: {
 			className: "",
 			color: "",
@@ -640,13 +648,6 @@ export const ICONS = {
 			className: "",
 		},
 	},
-	CLOCK: {
-		icon: ClockIcon,
-		defaultProps: {
-			className: "",
-			color: "",
-		},
-	},
 	DOCUMENT_TEXT: {
 		icon: DocumentTextIcon,
 		defaultProps: {
@@ -682,12 +683,6 @@ export const ICONS = {
 	},
 	LOCK_OPEN: {
 		icon: LockOpenIcon,
-		defaultProps: {
-			className: "",
-		},
-	},
-	MENU: {
-		icon: Bars4Icon,
 		defaultProps: {
 			className: "",
 		},
