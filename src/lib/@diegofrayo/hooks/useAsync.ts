@@ -106,7 +106,7 @@ function useAsync<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn>(
 		[key, opts],
 	);
 
-	if (!opts.autoLaunch) {
+	if (opts.autoLaunch) {
 		return {
 			...state,
 		};
