@@ -64,12 +64,12 @@ function Ticks() {
 	// --- UTILS ---
 	function playSound(
 		elementId: "audio-cycle-completed" | "audio-tick" | "audio-session-completed",
-	): void {
+	) {
 		(document.getElementById(elementId) as HTMLAudioElement)?.play();
 	}
 
 	const stopInterval = React.useCallback(
-		function stopInterval(): void {
+		function stopInterval() {
 			if (timerInterval) clearInterval(timerInterval);
 			setTimerInterval(null);
 		},
@@ -95,7 +95,7 @@ function Ticks() {
 	);
 
 	const resetUI = React.useCallback(
-		function resetUI(confirmBeforeReset: boolean): void {
+		function resetUI(confirmBeforeReset: boolean) {
 			if (confirmBeforeReset && isConfirmAlertAccepted("Are you sure?") === false) {
 				return;
 			}
@@ -129,7 +129,7 @@ function Ticks() {
 	}
 
 	// --- HANDLERS ---
-	function handleStartClick(): void {
+	function handleStartClick() {
 		const areInputValuesValid = (
 			document.getElementById("form") as HTMLFormElement
 		)?.checkValidity();
@@ -139,7 +139,7 @@ function Ticks() {
 			return;
 		}
 
-		const intervalHandler = function intervalHandler(): void {
+		const intervalHandler = function intervalHandler() {
 			setTicks((currentTicks) => {
 				if (currentTicks === ticksInputValue) {
 					playSound("audio-tick");
@@ -171,11 +171,11 @@ function Ticks() {
 		setTimerInterval(setInterval(intervalHandler, intensityInputValue));
 	}
 
-	function handleResetClick(): void {
+	function handleResetClick() {
 		resetUI(true);
 	}
 
-	function handlePauseClick(): void {
+	function handlePauseClick() {
 		if (isTimerPaused) {
 			handleStartClick();
 		} else {
@@ -185,7 +185,7 @@ function Ticks() {
 	}
 
 	const handleSaveClick = React.useCallback(
-		function handleSaveClick(): void {
+		function handleSaveClick() {
 			const data = readHistoryFromLocalStorage();
 
 			data.push({
@@ -216,7 +216,7 @@ function Ticks() {
 	);
 
 	function handleDeleteHistoryItemClick(itemIndex: number) {
-		return (): void => {
+		return () => {
 			const data = readHistoryFromLocalStorage().filter((_, index) => index !== itemIndex);
 			setHistory(data);
 		};
@@ -225,7 +225,7 @@ function Ticks() {
 	function onInputChangeHandler(
 		setter: DR.React.SetState<number>,
 	): (event: DR.React.Events.OnChangeEvent) => void {
-		return (event: DR.React.Events.OnChangeEvent): void => {
+		return (event: DR.React.Events.OnChangeEvent) => {
 			setter(Number(event.currentTarget.value));
 		};
 	}
@@ -246,7 +246,7 @@ function Ticks() {
 	});
 
 	React.useEffect(
-		function checkCyclesProgress(): void {
+		function checkCyclesProgress() {
 			if (cyclesInputValue === 0) return;
 
 			if (cycles === cyclesInputValue) {
@@ -351,7 +351,7 @@ function Ticks() {
 					<Block className="tw-flex tw-justify-center tw-gap-3">
 						{isTimerStarted ? (
 							<ActionButton
-								className="tw-border-yellow-300 tw-bg-yellow-200 tw-text-yellow-700"
+								className="tw-border-yellow-500 tw-bg-yellow-600 tw-text-yellow-300"
 								onClick={handlePauseClick}
 							>
 								{isTimerPaused ? "Resume" : "Pause"}
@@ -359,7 +359,7 @@ function Ticks() {
 						) : null}
 						{isTimerNotStarted ? (
 							<ActionButton
-								className="tw-border-green-200 tw-bg-green-100 tw-text-green-600"
+								className="tw-border-green-800 tw-bg-green-900 tw-text-green-600"
 								onClick={handleStartClick}
 							>
 								Start
@@ -367,7 +367,7 @@ function Ticks() {
 						) : null}
 						{isTimerPaused ? (
 							<ActionButton
-								className="tw-border-blue-200 tw-bg-blue-100 tw-text-blue-600"
+								className="tw-border-blue-800 tw-bg-blue-900 tw-text-blue-600"
 								onClick={handleSaveClick}
 							>
 								Save
@@ -375,7 +375,7 @@ function Ticks() {
 						) : null}
 						{isTimerStarted ? (
 							<ActionButton
-								className="tw-border-red-200 tw-bg-red-100 tw-text-red-600"
+								className="tw-border-red-800 tw-bg-red-900 tw-text-red-600"
 								onClick={handleResetClick}
 							>
 								Reset
@@ -474,7 +474,7 @@ function ActionButton({ children, onClick, className }: T_ActionButtonProps) {
 		<Button
 			variant={Button.variant.SIMPLE}
 			className={cn(
-				"tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-sm tw-font-bold dark:tw-border-0 sm:tw-h-24 sm:tw-w-24 sm:tw-text-base",
+				"tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-xs tw-font-bold sm:tw-h-24 sm:tw-w-24 sm:tw-text-base",
 				className,
 			)}
 			onClick={onClick}

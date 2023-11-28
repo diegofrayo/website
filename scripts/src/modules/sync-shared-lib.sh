@@ -15,7 +15,7 @@ cp ./src/lib/@diegofrayo/utils/misc.ts "$backend_repo_dir/utils"
 cp ./src/lib/@diegofrayo/utils/strings.ts "$backend_repo_dir/utils"
 
 # ---- ---- ----
-exit 1;
+exit;
 # ---- ---- ----
 
 # copy only required files to "scripts" repo

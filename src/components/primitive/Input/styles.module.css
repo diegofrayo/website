@@ -13,6 +13,10 @@
 	outline-width: 1px;
 }
 
+.dr-input--styled :global(input:disabled) {
+	color: white;
+}
+
 .dr-input--styled :global(input.touched:invalid) {
 	@apply tw-bg-red-900;
 	@apply tw-outline-red-400;

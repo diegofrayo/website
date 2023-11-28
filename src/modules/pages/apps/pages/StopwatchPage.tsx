@@ -3,7 +3,6 @@ import cn from "classnames";
 
 import { MainLayout, Page } from "~/components/layout";
 import { Block, Button, InlineText, Input, Select, Space, Text } from "~/components/primitive";
-import { useDidMount } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
 import { isConfirmAlertAccepted } from "@diegofrayo/utils/browser";
 import { addLeftPadding, generateSlug } from "@diegofrayo/utils/strings";
@@ -27,7 +26,7 @@ function Stopwatch() {
 	const isTimerPaused = timerStatus === "PAUSED";
 
 	// --- UTILS ---
-	function playSound(elementId: "audio-stopwatch-completed") {
+	function playSound(elementId: "audio-stopwatch-completed" | "audio-tick") {
 		(document.getElementById(elementId) as HTMLAudioElement)?.play();
 	}
 
@@ -83,6 +82,7 @@ function Stopwatch() {
 			});
 		};
 
+		playSound("audio-tick");
 		setTimerStatus("IN_PROGRESS");
 		setTimerInterval(setInterval(intervalHandler, 1000));
 	}
@@ -142,10 +142,6 @@ function Stopwatch() {
 	}, []);
 
 	// --- EFFECTS ---
-	useDidMount(() => {
-		playSound("audio-stopwatch-completed");
-	});
-
 	React.useEffect(
 		function checkTimeProgress() {
 			if (time === 0 && isTimerStarted) {
@@ -215,8 +211,18 @@ function Stopwatch() {
 								disabled={isTimerStarted}
 								onChange={onTimeMeasureSelectChangeHandler}
 							>
-								<Select.Option value="seconds">seconds</Select.Option>
-								<Select.Option value="minutes">minutes</Select.Option>
+								<Select.Option
+									value="seconds"
+									className="tw-capitalize"
+								>
+									seconds
+								</Select.Option>
+								<Select.Option
+									value="minutes"
+									className="tw-capitalize"
+								>
+									minutes
+								</Select.Option>
 							</Select>
 						</Block>
 						<Space size={2} />
@@ -231,12 +237,42 @@ function Stopwatch() {
 								disabled={isTimerStarted}
 								onChange={onStopwatchSoundSelectChangeHandler}
 							>
-								<Select.Option value="tick-1">tick-1</Select.Option>
-								<Select.Option value="tick-2">tick-2</Select.Option>
-								<Select.Option value="tick-3">tick-3</Select.Option>
-								<Select.Option value="completed-1">completed-1</Select.Option>
-								<Select.Option value="completed-2">completed-2</Select.Option>
-								<Select.Option value="completed-3">completed-3</Select.Option>
+								<Select.Option
+									value="tick-1"
+									className="tw-capitalize"
+								>
+									tick-1
+								</Select.Option>
+								<Select.Option
+									value="tick-2"
+									className="tw-capitalize"
+								>
+									tick-2
+								</Select.Option>
+								<Select.Option
+									value="tick-3"
+									className="tw-capitalize"
+								>
+									tick-3
+								</Select.Option>
+								<Select.Option
+									value="completed-1"
+									className="tw-capitalize"
+								>
+									completed-1
+								</Select.Option>
+								<Select.Option
+									value="completed-2"
+									className="tw-capitalize"
+								>
+									completed-2
+								</Select.Option>
+								<Select.Option
+									value="completed-3"
+									className="tw-capitalize"
+								>
+									completed-3
+								</Select.Option>
 							</Select>
 						</Block>
 					</form>
@@ -245,7 +281,7 @@ function Stopwatch() {
 					<Block className="tw-flex tw-justify-center tw-gap-3">
 						{isTimerStarted ? (
 							<ActionButton
-								className="tw-border-yellow-300 tw-bg-yellow-200 tw-text-yellow-700"
+								className="tw-border-yellow-500 tw-bg-yellow-600 tw-text-yellow-300"
 								onClick={handlePauseClick}
 							>
 								{isTimerPaused ? "Resume" : "Pause"}
@@ -253,7 +289,7 @@ function Stopwatch() {
 						) : null}
 						{isTimerNotStarted ? (
 							<ActionButton
-								className="tw-border-green-200 tw-bg-green-100 tw-text-green-600"
+								className="tw-border-green-800 tw-bg-green-900 tw-text-green-600"
 								onClick={handleStartClick}
 							>
 								Start
@@ -261,7 +297,7 @@ function Stopwatch() {
 						) : null}
 						{isTimerStarted ? (
 							<ActionButton
-								className="tw-border-red-200 tw-bg-red-100 tw-text-red-600"
+								className="tw-border-red-800 tw-bg-red-900 tw-text-red-600"
 								onClick={handleResetClick}
 							>
 								Reset
@@ -293,7 +329,7 @@ function ActionButton({ children, onClick, className }: T_ActionButtonProps) {
 		<Button
 			variant={Button.variant.SIMPLE}
 			className={cn(
-				"tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-sm tw-font-bold dark:tw-border-0 sm:tw-h-24 sm:tw-w-24 sm:tw-text-base",
+				"tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-sm tw-font-bold sm:tw-h-24 sm:tw-w-24 sm:tw-text-base",
 				className,
 			)}
 			onClick={onClick}

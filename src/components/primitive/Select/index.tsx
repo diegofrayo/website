@@ -62,6 +62,21 @@ export default Select;
 
 // --- COMPONENTS ---
 
-Select.Option = function SelectOption({ children, value }: { children: string; value: string }) {
-	return <option value={value}>{children}</option>;
+Select.Option = function SelectOption({
+	children,
+	value,
+	className,
+}: {
+	children: string;
+	value: string;
+	className?: string;
+}) {
+	return (
+		<option
+			value={value}
+			className={className}
+		>
+			{children}
+		</option>
+	);
 };
