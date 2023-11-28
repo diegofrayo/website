@@ -1,5 +1,4 @@
 import * as React from "react";
-import cn from "classnames";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Link, Space, Input, Text, InlineText, Block } from "~/components/primitive";
@@ -125,12 +124,10 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 										<Link
 											variant={Link.variant.STYLED}
 											href={`${ROUTES.KORDZ}/${song.id}`}
-											className={cn(
-												"tw-block sm:tw-truncate",
-												v.isNotTrue(song.is_public) && "tw-line-through",
-											)}
+											className="tw-block sm:tw-truncate"
 											title={song.title}
 										>
+											{song.is_public ? "" : "☒"}
 											{song.title}
 										</Link>
 										<SongDetails song={song} />

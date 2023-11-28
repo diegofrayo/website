@@ -12,7 +12,8 @@ type T_SongBase = {
 		| "1|FAVORITE|⭐"
 		| "2|WELL_DONE|👌"
 		| "3|OK|🤷‍♂️"
-		| "4|TO_PRACTICE|👷";
+		| "4|TO_PRACTICE|👷"
+		| "5|SOCIAL|🎶";
 	readonly spotify_url: string;
 	readonly youtube_url: string;
 	readonly created_at: string;

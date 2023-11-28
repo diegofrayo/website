@@ -313,7 +313,7 @@ function Stopwatch() {
 						className="tw-hidden"
 					/>
 					<audio
-						src={"/assets/sounds/tick-1.mp3"}
+						src="/assets/sounds/tick-1.mp3"
 						id="audio-tick"
 						preload="auto"
 						className="tw-hidden"
