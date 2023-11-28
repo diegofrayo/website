@@ -15,6 +15,7 @@
 
 .dr-input--styled :global(input:disabled) {
 	color: white;
+	opacity: 0.4;
 }
 
 .dr-input--styled :global(input.touched:invalid) {

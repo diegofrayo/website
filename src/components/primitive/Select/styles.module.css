@@ -12,3 +12,8 @@
 	outline-style: solid;
 	outline-width: 1px;
 }
+
+.dr-select--styled :global(select:disabled) {
+	color: white;
+	opacity: 0.4;
+}

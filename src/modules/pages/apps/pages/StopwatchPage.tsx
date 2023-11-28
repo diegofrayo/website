@@ -312,6 +312,12 @@ function Stopwatch() {
 						preload="auto"
 						className="tw-hidden"
 					/>
+					<audio
+						src={"/assets/sounds/tick-1.mp3"}
+						id="audio-tick"
+						preload="auto"
+						className="tw-hidden"
+					/>
 				</Block>
 			</MainLayout>
 		</Page>
@@ -329,7 +335,7 @@ function ActionButton({ children, onClick, className }: T_ActionButtonProps) {
 		<Button
 			variant={Button.variant.SIMPLE}
 			className={cn(
-				"tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-sm tw-font-bold sm:tw-h-24 sm:tw-w-24 sm:tw-text-base",
+				"tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-full tw-border tw-text-xs tw-font-bold sm:tw-h-24 sm:tw-w-24 sm:tw-text-base",
 				className,
 			)}
 			onClick={onClick}
