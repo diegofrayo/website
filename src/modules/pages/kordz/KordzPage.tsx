@@ -127,7 +127,7 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 											className="tw-block sm:tw-truncate"
 											title={song.title}
 										>
-											{song.is_public ? "" : "☒"}
+											{song.is_public ? "" : "☒ "}
 											{song.title}
 										</Link>
 										<SongDetails song={song} />
