@@ -370,31 +370,6 @@
 			"youtube_url": "https://youtu.be/obkKYJINyco"
 		},
 		{
-			"album": "Naranja persa",
-			"artist": "Ciro y los Persas",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1s9pzSh9CWKFf7Jvc1dPRw3oA8SNfZdgN"
-			},
-			"category": "1|FAVORITE",
-			"country": "🇦🇷",
-			"created_at": "2022/05/23",
-			"id": "luz",
-			"interpretation": "- Fuerza del canto: Normal\n- Velocidad de rasgueo: Media o rápida\n- Fuerza de rasgueo: Normal\n- Complejidad: Fácil\n",
-			"is_public": true,
-			"order": 7,
-			"sources": [
-				{
-					"source": "youtube",
-					"text": "Luz (Cover) Ciro y Los Persas",
-					"url": "https://youtu.be/Vj_pONZx-8A"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/3nLL7rb00qmExkNTyJJqSv",
-			"title": "Luz",
-			"year": 2016,
-			"youtube_url": "https://youtu.be/EotTm9fms6o"
-		},
-		{
 			"album": "Despierta",
 			"artist": "Las Pelotas",
 			"assets": {
@@ -2403,36 +2378,6 @@
 			"youtube_url": "https://youtu.be/Jqi2rk5l0-k"
 		},
 		{
-			"album": "Silvio",
-			"artist": "Silvio Rodríguez",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1ve_RL-Eg3fXvQCwTt2gWcBBMTtViYzFh"
-			},
-			"category": "4|SOME_DAY",
-			"country": "🇨🇺",
-			"created_at": "2022/07/20",
-			"id": "quien-fuera",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "youtube",
-					"text": "Cómo tocar \"Quien Fuera\" de Los Bunkers en Guitarra Acústica (HD) Tutorial - Christianvib",
-					"url": "https://youtu.be/Izg1yoo9b8s"
-				},
-				{
-					"source": "lacuerda",
-					"text": "QUIEN FUERA, Los Bunkers: Acordes",
-					"url": "https://acordes.lacuerda.net/bunkers/quien_fuera-2.shtml"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/5mLuPM0CpoXyrBncooRJZa",
-			"title": "Quien fuera",
-			"year": 1992,
-			"youtube_url": "https://youtu.be/hUwDnWkVMwU"
-		},
-		{
 			"album": "Perotá Chingó",
 			"artist": "Perotá Chingó",
 			"assets": {
@@ -2551,41 +2496,6 @@
 			"title": "Un pacto",
 			"year": 2002,
 			"youtube_url": "https://youtu.be/WNebXvrqGDE"
-		},
-		{
-			"album": "Aguas",
-			"artist": "Perotá Chingó",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1tpcgVHZFWYgnwREHQN5W6DWzkLu-G4Fi"
-			},
-			"category": "4|SOME_DAY",
-			"country": "🇦🇷",
-			"created_at": "2021/04/01",
-			"id": "veo-chiquito",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "Veo chiquito",
-					"url": "https://acordes.lacuerda.net/perota_chingo/veo_chiquito.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "Roots session - Cover Perota Chingo -Veo chiquito",
-					"url": "https://youtu.be/DVvJ6ggFgv0"
-				},
-				{
-					"source": "youtube",
-					"text": "Veo chiquito - perotá chingó | Cover Carely",
-					"url": "https://youtu.be/2DCNlds65jk"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/44q38EV7P1sjbLI8RB6k9M",
-			"title": "Veo chiquito",
-			"year": 2017,
-			"youtube_url": "https://youtu.be/YLG3T74iy1o"
 		},
 		{
 			"album": "Éxitos de los Visconti",
