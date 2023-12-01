@@ -91,7 +91,7 @@ function Ticks() {
 				})
 				.sort(sortBy("-date", "-id"));
 		},
-		[],
+		[history],
 	);
 
 	const resetUI = React.useCallback(

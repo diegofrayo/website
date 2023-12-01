@@ -27,6 +27,7 @@ import {
 	EnvelopeIcon,
 	ExclamationTriangleIcon,
 	EyeIcon,
+	EyeSlashIcon,
 	FilmIcon,
 	GlobeAltIcon,
 	HeartIcon,
@@ -383,6 +384,13 @@ const ICONS = {
 	},
 	EYE: {
 		icon: EyeIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	EYE_SLASH: {
+		icon: EyeSlashIcon,
 		defaultProps: {
 			className: "",
 			color: "",

@@ -164,7 +164,10 @@ class KordzService {
 		const chord = this.findChord(currentTextLineItem);
 
 		if (v.notFound(chord)) {
-			return { parsedTextLine: currentTextLineParsed, isCurrentTextLineItemAChord: false };
+			return {
+				parsedTextLine: currentTextLineParsed.replace("$", " "),
+				isCurrentTextLineItemAChord: false,
+			};
 		}
 
 		const chordAsHTML = this.chordToHTML(

@@ -1,0 +1,33 @@
+{
+	"details": {
+		"id": "a-las-nueve",
+		"title": "A las nueve",
+		"artist": "NTVG",
+		"album": "El calor del pleno invierno",
+		"year": 2012,
+		"country": "🇺🇾",
+		"category": "2|WELL_DONE|👌",
+		"order": 0,
+		"created_at": "2022/12/07",
+		"is_public": true,
+		"spotify_url": "https://open.spotify.com/track/0CgpCtEPvyDizcg2p47VrU",
+		"youtube_url": "https://youtu.be/30oa0b2mdUo",
+		"assets": {},
+		"interpretation": "- Fuerza del canto: Media o alta\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Media\n- Complejidad: Media\n",
+		"sources": [
+			{
+				"text": "No te va gustar – A las nueve|Estudio Satori",
+				"url": "https://estudiosatori.com.ar/no-te-va-gustar-a-las-nueve",
+				"source": "url"
+			},
+			{
+				"text": "cómo tocar A LAS NUEVE de NO TE VA GUSTAR en guitarra tutorial",
+				"url": "https://youtu.be/TapVlgxh-mM",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "G               G                  Dm            Dm\n   ¿Cómo que tenés que irte? si recién te vi llegar\n      Am           Am            G             G\nsolo me das en un rato lo que tenés para dar\n   G             G               Dm            Dm\nespero sea una broma, aunque en realidad lo entiendo\n       Am                        G           G\nno querés sinceridad, ni que te siga mintiendo\n\n\nAm                C            G    G\n       Sé que te vas a las nueve,\nFmaj7             C                 G\n       sé que me muero a las diez\n\n\n         G                     Dm             Dm\nSabes estoy de tu lado, no me pidas mas que eso\n           Am           Am        G               G\ncuando la noche se apague, vas a darme un solo beso\n G                 G         Dm             Dm\ntengo la mente cansada y mi piel se va con vos\n            Am          Am          G             G\nya me explicaste mil veces, lo que veo es lo que sos\n\n\nAm                C            G    G\n       Sé que te vas a las nueve,\nFmaj7             C                 G\n       sé que me muero a las diez\n\n\nB7            B7        C        C\n    No puedo dar garantías\nB7          B7         C               Cm\n    si se apaga cada día, no creo que pueda esperar\n\n\nG                                  Dm              Dm\nYo te lo quise hacer fácil, la distancia no es el fin\n          Am            Am      G              G\npero no quiero entregarme y que algo muera en mi\n    G                         Dm             Dm\nya sé, no tenés idea, vos te vas y yo me quedo\n      Am            Am             G           G\nsolo voy a perdonarte porque otra cosa no quiero\n\n\nAm                C            G    G\n       Sé que te vas a las nueve,\nFmaj7             C                 G\n       sé que me muero a las diez\n\nAm                C            G    G\n       Sé que te vas a las nueve,\nFmaj7             C                 G\n       sé que me muero a las diez\n\nAm          C            G          G\n                $A las nueve,\nFmaj7       C                       G\n        me muero a las diez"
+}

@@ -1,1 +1,62 @@
-{"sitios-para-visitar-en-el-quindio":{"slug":"sitios-para-visitar-en-el-quindio","content":{"en":{"title":"Sitios para visitar en el Quindío","description":"Algunos sitios que suelo recomendar cuando me preguntan que hacer en el Quindío."}},"categories":["quindio","colombia","armenia","turismo","viajes"],"locales":["es"],"created_at":"2023/11/03","published_at":"2023/11/07","updated_at":"2023/11/07","is_published":true},"publishing-a-npm-private-package-to-github-packages-using-github-actions":{"slug":"publishing-a-npm-private-package-to-github-packages-using-github-actions","content":{"en":{"title":"Publishing a npm private package to GitHub packages using GitHub actions","description":"How to publish a private npm package to GitHub packages using GitHub Actions."}},"categories":["github-actions","npm","private-packages"],"locales":["en"],"created_at":"2021/03/19","published_at":"2021/03/19","updated_at":"2021/03/19","is_published":true},"my-favorite-music-and-mdx":{"slug":"my-favorite-music-and-mdx","content":{"en":{"title":"My favorite music and MDX","description":"Introduction to MDX and how to use it with Next.js to create a simple blog."}},"categories":["mdx","next.js","markdown","tailwind-css"],"locales":["en"],"created_at":"2020/11/28","published_at":"2020/12/03","updated_at":"2021/08/14","is_published":true},"connecting-a-firebase-project-with-a-go-daddy-domain":{"slug":"connecting-a-firebase-project-with-a-go-daddy-domain","content":{"en":{"title":"Connecting a Firebase project with a Go Daddy domain","description":"How to deploy a simple web project in Firebase and link it with Go Daddy domain."}},"categories":["go-daddy","firebase","node.js","hosting"],"locales":["en"],"created_at":"2018/06/01","published_at":"2018/06/01","updated_at":"2018/06/01","is_published":true}}
+{
+	"sitios-para-visitar-en-el-quindio": {
+		"slug": "sitios-para-visitar-en-el-quindio",
+		"content": {
+			"en": {
+				"title": "Sitios para visitar en el Quindío",
+				"description": "Algunos sitios que suelo recomendar cuando me preguntan que hacer en el Quindío."
+			}
+		},
+		"categories": ["quindio", "colombia", "armenia", "turismo", "viajes"],
+		"locales": ["es"],
+		"created_at": "2023/11/03",
+		"published_at": "2023/11/07",
+		"updated_at": "2023/11/07",
+		"is_published": true
+	},
+	"publishing-a-npm-private-package-to-github-packages-using-github-actions": {
+		"slug": "publishing-a-npm-private-package-to-github-packages-using-github-actions",
+		"content": {
+			"en": {
+				"title": "Publishing a npm private package to GitHub packages using GitHub actions",
+				"description": "How to publish a private npm package to GitHub packages using GitHub Actions."
+			}
+		},
+		"categories": ["github-actions", "npm", "private-packages"],
+		"locales": ["en"],
+		"created_at": "2021/03/19",
+		"published_at": "2021/03/19",
+		"updated_at": "2021/03/19",
+		"is_published": true
+	},
+	"my-favorite-music-and-mdx": {
+		"slug": "my-favorite-music-and-mdx",
+		"content": {
+			"en": {
+				"title": "My favorite music and MDX",
+				"description": "Introduction to MDX and how to use it with Next.js to create a simple blog."
+			}
+		},
+		"categories": ["mdx", "next.js", "markdown", "tailwind-css"],
+		"locales": ["en"],
+		"created_at": "2020/11/28",
+		"published_at": "2020/12/03",
+		"updated_at": "2021/08/14",
+		"is_published": true
+	},
+	"connecting-a-firebase-project-with-a-go-daddy-domain": {
+		"slug": "connecting-a-firebase-project-with-a-go-daddy-domain",
+		"content": {
+			"en": {
+				"title": "Connecting a Firebase project with a Go Daddy domain",
+				"description": "How to deploy a simple web project in Firebase and link it with Go Daddy domain."
+			}
+		},
+		"categories": ["go-daddy", "firebase", "node.js", "hosting"],
+		"locales": ["en"],
+		"created_at": "2018/06/01",
+		"published_at": "2018/06/01",
+		"updated_at": "2018/06/01",
+		"is_published": true
+	}
+}

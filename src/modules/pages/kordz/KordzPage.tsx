@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Link, Space, Input, Text, InlineText, Block } from "~/components/primitive";
+import { Link, Space, Input, Text, InlineText, Block, Icon } from "~/components/primitive";
 import { ROUTES } from "~/modules/routing";
 import type { T_PageContent } from "~/server/data-loader";
 import { useDidMount } from "@diegofrayo/hooks";
@@ -127,8 +127,14 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 											className="tw-block sm:tw-truncate"
 											title={song.title}
 										>
-											{song.is_public ? "" : "☒ "}
-											{song.title}
+											{!song.is_public ? (
+												<Icon
+													icon={Icon.icon.EYE_SLASH}
+													color="dr-text-color-surface-600"
+													wrapperClassName="tw-mr-1"
+												/>
+											) : null}
+											<InlineText>{song.title}</InlineText>
 										</Link>
 										<SongDetails song={song} />
 									</Block>
