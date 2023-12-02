@@ -735,36 +735,6 @@
 			"youtube_url": "https://youtu.be/oZd_spRPUEM"
 		},
 		{
-			"album": "El calor del pleno invierno",
-			"artist": "NTVG",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1-wS8see8UyxojhqPVAqi33D6-3wT2YGY"
-			},
-			"category": "3|TO_PRACTICE",
-			"country": "🇺🇾",
-			"created_at": "2022/12/07",
-			"id": "a-las-nueve",
-			"interpretation": "- Fuerza del canto: Suave\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Suave\n- Complejidad: Díficil\n",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "url",
-					"text": "No te va gustar – A las nueve|Estudio Satori",
-					"url": "https://estudiosatori.com.ar/no-te-va-gustar-a-las-nueve"
-				},
-				{
-					"source": "youtube",
-					"text": "cómo tocar A LAS NUEVE de NO TE VA GUSTAR en guitarra tutorial",
-					"url": "https://youtu.be/TapVlgxh-mM"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/0CgpCtEPvyDizcg2p47VrU",
-			"title": "A las nueve",
-			"year": 2012,
-			"youtube_url": "https://youtu.be/30oa0b2mdUo"
-		},
-		{
 			"album": "Ahí vamos",
 			"artist": "Gustavo Cerati",
 			"assets": {
@@ -1998,36 +1968,6 @@
 			"youtube_url": "https://youtu.be/7NaIujlFBf8"
 		},
 		{
-			"album": "Vengo del placard de otro",
-			"artist": "Divididos",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1u1aVgvPLvgstsrxNV91m3J1Y67uLVHkE"
-			},
-			"category": "4|SOME_DAY",
-			"country": "🇦🇷",
-			"created_at": "2022/05/17",
-			"id": "guanuqueando",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "youtube",
-					"text": "Guanuqueando (divididos)",
-					"url": "https://youtu.be/uKcWI6BDTdk"
-				},
-				{
-					"source": "lacuerda",
-					"text": "Guanuqueando",
-					"url": "https://acordes.lacuerda.net/divididos/guanuqueando-2.shtml"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/259Zco2M4NlQ5lTXuq20AI",
-			"title": "Guanuqueando",
-			"year": 2002,
-			"youtube_url": "https://youtu.be/7OlzxfSKjtI"
-		},
-		{
 			"album": "Hasta la raíz",
 			"artist": "Natalia Lafourcade",
 			"assets": {
@@ -2318,31 +2258,6 @@
 			"youtube_url": "https://youtu.be/wPSZp_rOXHg"
 		},
 		{
-			"album": "Desconocido",
-			"artist": "Violeta Parra",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1rBBpYMUtRe_AiwY4a_4HGb8T4qg9tsyg"
-			},
-			"category": "4|SOME_DAY",
-			"country": "🇨🇱",
-			"created_at": "2022/07/03",
-			"id": "que-he-sacado-con-quererte",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "Que he sacado con quererte",
-					"url": "https://acordes.lacuerda.net/violeta_parra/que_he_sacado_con_quererte.shtml"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/4enJ0KY8NBx7ybKcxhdzJy",
-			"title": "Que he sacado con quererte",
-			"year": 1964,
-			"youtube_url": "https://youtu.be/QsEEwHBr2K4"
-		},
-		{
 			"album": "Elija y Gane",
 			"artist": "Luis Alberto Spinetta",
 			"assets": {
@@ -2376,31 +2291,6 @@
 			"title": "Quedándote o yéndote",
 			"year": 1999,
 			"youtube_url": "https://youtu.be/Jqi2rk5l0-k"
-		},
-		{
-			"album": "Perotá Chingó",
-			"artist": "Perotá Chingó",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1sk2DdGxR-A-doJKhElBeUqN10aHLQp8G"
-			},
-			"category": "4|SOME_DAY",
-			"country": "🇦🇷",
-			"created_at": "2022/01/24",
-			"id": "seres-extranos",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "Seres extraños",
-					"url": "https://acordes.lacuerda.net/fernando_cabrera/el_tiempo_esta_despues.shtml"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/1BYz7OhBUeMwjQsIDaVQv5",
-			"title": "Seres extraños",
-			"year": 2014,
-			"youtube_url": "https://youtu.be/d71NUVy2PpI"
 		},
 		{
 			"album": "Unknown",
