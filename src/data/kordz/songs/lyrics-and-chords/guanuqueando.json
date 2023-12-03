@@ -1,0 +1,33 @@
+{
+	"details": {
+		"id": "guanuqueando",
+		"title": "Guanuqueando",
+		"artist": "Divididos",
+		"album": "Vengo del placard de otro",
+		"year": 2002,
+		"country": "🇦🇷",
+		"category": "2|WELL_DONE|👌",
+		"order": 0,
+		"created_at": "2022/05/17",
+		"is_public": true,
+		"spotify_url": "https://open.spotify.com/track/259Zco2M4NlQ5lTXuq20AI",
+		"youtube_url": "https://youtu.be/7OlzxfSKjtI",
+		"assets": {},
+		"interpretation": "- Fuerza del canto: Alta o media\n- Velocidad de rasgueo: Alta\n- Fuerza de rasgueo: Alta\n- Complejidad: Alta\n",
+		"sources": [
+			{
+				"text": "Guanuqueando (divididos)",
+				"url": "https://youtu.be/uKcWI6BDTdk",
+				"source": "youtube"
+			},
+			{
+				"text": "Guanuqueando",
+				"url": "https://acordes.lacuerda.net/divididos/guanuqueando-2.shtml",
+				"source": "lacuerda"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "    F#m                 C#m\nVerteros de labios quebrados\n    D                 A\nsamponias y quenas sonando\n   Bm                  A\nantiguo respiro en la boca\nG     E   E7              A\nbe...sos,    besos de mi raza\n\n    F#m                   C#m\nPerdido en la noche el silencio\n    D                    A\nla tarde que se hace distancia\n    Bm                      A\nmisterios que el tiempo descifra\nG   E   E7               A\ne...se,    ese es su respiro\n\nE7  Esus  D\n\n E       D                      E E7\nSiento quenas que en el viento huyen\n    C#7                      D      E\ntrayendo amores y silencios de las peñas\n  D               Dm            A\nque encierran el sol en su corazón\n\nE7  Esus  D\n\n                   E\nEntre airampos de luna\n    D                       E E7\nsamponias que en el viento huyen\n     C#7                              D\nen viaje buscando el cielo un cóndor va\n E       D           Dm             A\ncomo mi ser resucitará buscando la luz\n\n\nF#m  C#m  D  A  Bm  A  G  E  A   | (x2)\nE7 Esus D\n\n\n E       D                      E E7\nSiento quenas que en el viento huyen\n    C#7                      D      E\ntrayendo amores y silencios de las peñas\n  D               Dm            A\nque encierran el sol en su corazón\n\nE7  Esus  D\n\n                   E\nEntre airampos de luna\n    D                       E E7\nsamponias que en el viento huyen\n     C#7                              D\nen viaje buscando el cielo un cóndor va\n E       D           Dm             A\ncomo mi ser resucitará buscando la luz\n\n\nF#m  C#m  D  A  Bm  A  G  E  A   | (x3)"
+}

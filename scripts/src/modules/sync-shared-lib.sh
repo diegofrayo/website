@@ -1,3 +1,5 @@
+# npm run script:sync-shared-lib
+
 # copy only required files to "diegofrayo-backend" repo
 backend_repo_dir=../diegofrayo-backend/src/@diegofrayo
 

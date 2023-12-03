@@ -1,0 +1,28 @@
+{
+	"details": {
+		"id": "que-he-sacado-con-quererte",
+		"title": "Que he sacado con quererte",
+		"artist": "Violeta Parra",
+		"album": "Desconocido",
+		"year": 1964,
+		"country": "🇨🇱",
+		"category": "4|ARCHIVED|🗃️",
+		"order": 0,
+		"created_at": "2022/07/03",
+		"is_public": true,
+		"spotify_url": "https://open.spotify.com/track/4enJ0KY8NBx7ybKcxhdzJy",
+		"youtube_url": "https://youtu.be/QsEEwHBr2K4",
+		"assets": {},
+		"interpretation": "- Fuerza del canto: Alta\n- Velocidad de rasgueo: Baja o media\n- Fuerza de rasgueo: Media o alta\n- Complejidad: Fácil\n",
+		"sources": [
+			{
+				"text": "Que he sacado con quererte",
+				"url": "https://acordes.lacuerda.net/violeta_parra/que_he_sacado_con_quererte.shtml",
+				"source": "lacuerda"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "  Bm\nQue he sacado con luna ayayai!!!\n  D\nque los dos miramos junto ayayai!!!\n  D\nque he sacado con los nombres ayayai!!!\nBm\nestampados en el muro ayayai!!!\n Bm\ncomo cambia el calendario ayayai!!!\n Bm\ncambia todo en este mundo ayayai!!!\n\n\nBm\nAyayai\nA    Bm\nay   ay\n\n\n  Bm\nQue he sacado con el lirio ayayi\n  D\nque plantamos en el patio ayayai\n D\nno era uno el que plantaba ayayai\nBm\neran dos enamorados ayayai\n Bm\nhortelano tu plantío ayayai\n Bm\ncon el tiempo no ha cambiado ayayai\n\n\nBm\nAyayai\nA    Bm\nay   ay\n\n\n  Bm\nQue he sacado con las sombras ayayai\n D\ndel aromo por testigo ayayai\nD\ny los cuatro pies marcado ayayai\nBm\nen la orilla del camino ayayai\n  Bm\nque he sacado con quererte ayayai\n  Bm\nclavelito florecido ayayai\n\n\nBm\nAyayai\nA    Bm\nay   ay\n\n\nBm\nAquí esta la misma luna ayayai\nD\nen el patio el blanco lirio ayayai\n D\nlos dos nombres en el muro ayayai\nBm\ny tu rastro en el camino ayayai\n Bm\npero tu palomo ingrato ayayai\n Bm\nya no arrullas en mi nido ayayai\n\n\nBm\nAyayai\nA    Bm\nay   ay"
+}
