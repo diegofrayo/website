@@ -38,7 +38,7 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 						key={place.id}
 						className="tw-mb-4 last:tw-mb-0"
 						contentClassName="tw-pt-6"
-						title={`${place.name} [${place.location}]`}
+						title={`${place.name} [${place.location}]${place.featured ? " 🌟" : ""}`}
 						onShowContentHandler={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|OPEN", {
 							place: place.id,
 						})}
@@ -459,7 +459,8 @@ type T_Place = {
 	price: string;
 	website: string;
 	description: string;
-	links: string[];
 	published: boolean;
+	featured: boolean;
+	links: string[];
 	images: { url: string; alt: string }[];
 };

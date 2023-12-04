@@ -24,6 +24,7 @@ export const ContactSchema = object({
 		"FR",
 		"GB",
 		"ISR",
+		"IT",
 		"MX",
 		"NI",
 		"PE",

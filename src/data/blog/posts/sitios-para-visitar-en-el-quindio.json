@@ -36,6 +36,7 @@
 						"category": ["🥾 Caminatas", "🌲 Naturaleza", "📸 Fotografía"],
 						"price": "[6.000 - 15.000] COP (aproximadamente)",
 						"published": true,
+						"featured": true,
 						"links": [
 							"https://es.wikipedia.org/wiki/Valle_de_Cocora",
 							"http://www.colparques.net/COCORA#aceptar"
@@ -94,6 +95,7 @@
 						"category": ["🏕️ Camping", "🥾 Caminatas", "🌲 Naturaleza", "📸 Fotografía"],
 						"price": "≥ 90.000 COP (aproximadamente)",
 						"published": true,
+						"featured": true,
 						"links": [],
 						"images": [
 							{
@@ -133,6 +135,7 @@
 						"category": ["🥾 Caminatas", "🌲 Naturaleza", "📸 Fotografía"],
 						"price": "≥ 90.000 COP (aproximadamente)",
 						"published": true,
+						"featured": true,
 						"links": [],
 						"images": [
 							{
@@ -188,6 +191,7 @@
 						"category": ["🥾 Caminatas", "🌲 Naturaleza", "📸 Fotografía"],
 						"price": "≥ 90.000 COP (aproximadamente)",
 						"published": true,
+						"featured": true,
 						"links": [],
 						"images": [
 							{
@@ -249,6 +253,7 @@
 						],
 						"price": "10.000 COP",
 						"published": true,
+						"featured": true,
 						"links": [],
 						"images": [
 							{
@@ -274,6 +279,22 @@
 							{
 								"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/cascadas-de-santa-rita/6.jpg",
 								"alt": "Cascadas de Santa Rita"
+							},
+							{
+								"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/cascadas-de-santa-rita/7.jpg",
+								"alt": "Cascadas de Santa Rita"
+							},
+							{
+								"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/cascadas-de-santa-rita/8.jpg",
+								"alt": "Cascadas de Santa Rita"
+							},
+							{
+								"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/cascadas-de-santa-rita/9.jpg",
+								"alt": "Cascadas de Santa Rita"
+							},
+							{
+								"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/cascadas-de-santa-rita/10.jpg",
+								"alt": "Cascadas de Santa Rita"
 							}
 						]
 					},
@@ -288,6 +309,7 @@
 						"category": ["🌊 Cascadas", "🥾 Caminatas", "🌲 Naturaleza"],
 						"price": "Gratis",
 						"published": true,
+						"featured": false,
 						"links": ["https://rutasdelosandes.com/amp/colombia/quindio/chorros-san-rafael.html"],
 						"images": [
 							{
@@ -311,6 +333,7 @@
 						"category": ["🦜 Aves", "🔆 Parque temático", "🥾 Caminatas", "🌲 Naturaleza"],
 						"price": "60.000 COP",
 						"published": true,
+						"featured": false,
 						"links": [],
 						"images": [
 							{
@@ -366,6 +389,7 @@
 						"category": ["🥾 Caminatas", "🌲 Naturaleza", "⛰️ Montañismo"],
 						"price": "[5.000 - 10.000] COP (aproximadamente)",
 						"published": true,
+						"featured": false,
 						"links": [
 							"https://rutasdelosandes.com/amp/colombia/quindio/penas-blancas.html",
 							"https://milcienmillas.com/ecoparque-penas-blancas-calarca-quindio"
@@ -412,6 +436,7 @@
 						"category": ["🥾 Caminatas", "🌲 Naturaleza", "⛰️ Montañismo"],
 						"price": "[5.000 - 10.000] COP (aproximadamente)",
 						"published": true,
+						"featured": false,
 						"links": [],
 						"images": [
 							{
@@ -473,6 +498,7 @@
 						],
 						"price": "≥ 70.000 COP (aproximadamente)",
 						"published": true,
+						"featured": true,
 						"links": [],
 						"images": [
 							{
@@ -528,6 +554,7 @@
 						"category": ["🦊 Animales", "🦜 Aves", "🌲 Naturaleza"],
 						"price": "4.000 COP",
 						"published": true,
+						"featured": true,
 						"links": [],
 						"images": [
 							{
@@ -583,6 +610,7 @@
 						"category": ["🏛️ Cultural"],
 						"price": "Gratis",
 						"published": true,
+						"featured": false,
 						"links": [],
 						"images": [
 							{
@@ -622,6 +650,7 @@
 						"category": ["🌊 Cascadas", "🥾 Caminatas", "🌲 Naturaleza"],
 						"price": "Gratis",
 						"published": true,
+						"featured": false,
 						"links": [],
 						"images": [
 							{
@@ -661,6 +690,7 @@
 						"category": ["🔆 Parque temático", "🏛️ Cultural"],
 						"price": "Consultar en el sitio web del parque",
 						"published": true,
+						"featured": false,
 						"links": [],
 						"images": [
 							{
@@ -692,6 +722,7 @@
 						"category": ["🔆 Parque temático", "🏛️ Cultural"],
 						"price": "Consultar en el sitio web del parque",
 						"published": true,
+						"featured": false,
 						"links": [],
 						"images": [
 							{
@@ -731,6 +762,7 @@
 						"category": ["🔆 Parque temático", "🏛️ Cultural"],
 						"price": "Consultar en el sitio web del parque",
 						"published": true,
+						"featured": false,
 						"links": ["https://www.locuviajes.com/parque-del-cafe"],
 						"images": [
 							{
@@ -766,6 +798,7 @@
 						"category": ["🔆 Parque temático", "🦊 Animales"],
 						"price": "Consultar en el sitio web del parque",
 						"published": true,
+						"featured": false,
 						"links": [],
 						"images": [
 							{
@@ -797,6 +830,7 @@
 						"category": ["🌱 Reserva natural", "🦜 Aves", "🦊 Animales", "🥾 Caminatas"],
 						"price": "Depende de la agencia turística o guía",
 						"published": true,
+						"featured": false,
 						"links": [
 							"https://rutasdelosandes.com/amp/colombia/risaralda/barbas-bremen.html",
 							"https://montesandinos.com/barbas-bremen"
@@ -835,6 +869,7 @@
 						"category": [],
 						"price": "",
 						"published": false,
+						"featured": false,
 						"links": [],
 						"images": []
 					},
@@ -849,6 +884,7 @@
 						"category": [],
 						"price": "",
 						"published": false,
+						"featured": false,
 						"links": [],
 						"images": []
 					}
