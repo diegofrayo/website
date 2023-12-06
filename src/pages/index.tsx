@@ -1,20 +1,10 @@
-import HomePage from "~/features/pages/home";
-import getPageContentStaticProps from "~/features/i18n/server";
 import { ROUTES } from "~/features/routing";
+import { useDidMount } from "~/hooks";
 
-export default HomePage;
+export default function HomePage(): null {
+	useDidMount(() => {
+		window.location.href = ROUTES.MUSIC;
+	});
 
-// --- NEXT.JS FUNCTIONS ---
-
-export const getStaticProps = getPageContentStaticProps({
-	page: ROUTES.HOME,
-	callback: async () => {
-		return {
-			props: {
-				data: {
-					featured: [],
-				},
-			},
-		};
-	},
-});
+	return null;
+}

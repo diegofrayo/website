@@ -1868,31 +1868,6 @@
 			"youtube_url": "https://youtu.be/KRVs8tfo4X4"
 		},
 		{
-			"album": "Lado D (Digital) [Espíritu Inquieto]",
-			"artist": "Gustavo Pena El Príncipe",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1wKJ9EX9s1NlWiI_StBhpfgMbjnOTNJDN"
-			},
-			"category": "4|SOME_DAY",
-			"country": "🇦🇷",
-			"created_at": "2022/08/12",
-			"id": "como-que-no",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "COMO QUE NO?, Gustavo Pena \"el Príncipe\": Acordes",
-					"url": "https://acordes.lacuerda.net/gustavo_pena_el_principe/como_que_no.shtml"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/4Il3mAsbDvbNHSN5C9SUAQ",
-			"title": "Como que no",
-			"year": 2003,
-			"youtube_url": "https://youtu.be/75O5zTBEy6g"
-		},
-		{
 			"album": "Estrelicia MTV Unplugged",
 			"artist": "Luis Alberto Spinetta",
 			"assets": {
