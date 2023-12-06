@@ -29,6 +29,7 @@
 		"styles:tw-plugins": "ts-node --project ./scripts/tsconfig.json --emit --compilerHost scripts/src/modules/tailwind/plugins.ts",
 		"===== UTILS =====": "",
 		"script:commit": "sh ./scripts/src/modules/generic-commit.sh",
+		"script:assets-commit": "sh ./scripts/src/modules/assets-commit.sh",
 		"script:sync-shared-lib": "sh ./scripts/src/modules/sync-shared-lib.sh",
 		"script:code-stats": "tokei ./src",
 		"script:code-complexity": "npx code-complexity . --filter \"./src/**/*.tsx\" --limit 10 --sort complexity"

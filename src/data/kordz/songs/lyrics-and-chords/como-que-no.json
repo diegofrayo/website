@@ -1,0 +1,28 @@
+{
+	"details": {
+		"id": "como-que-no",
+		"title": "Como que no",
+		"artist": "Gustavo Pena El Príncipe",
+		"album": "Lado D (Digital) [Espíritu Inquieto]",
+		"year": 2003,
+		"country": "🇦🇷",
+		"category": "2|WELL_DONE|👌",
+		"order": 0,
+		"created_at": "2022/08/12",
+		"is_public": true,
+		"spotify_url": "https://open.spotify.com/track/4Il3mAsbDvbNHSN5C9SUAQ",
+		"youtube_url": "https://youtu.be/75O5zTBEy6g",
+		"assets": {},
+		"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Baja\n- Fuerza de rasgueo: Baja\n- Complejidad: Media\n",
+		"sources": [
+			{
+				"text": "COMO QUE NO?, Gustavo Pena \"el Príncipe\": Acordes",
+				"url": "https://acordes.lacuerda.net/gustavo_pena_el_principe/como_que_no.shtml",
+				"source": "lacuerda"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "F#\n\n                         Bm\nLos pibes allá en la esquina,\n                A\nestán como dibujados,\n                    G\nno les pagan sus pecados,\n                  F#\nno les tocó religión\n\n                 Bm\nEsperan la tardecita\n                   A\ny van hasta la plazita,\n                  G\nfuman y beben un poco,\n                     F#\ndespués tocan el tambor\n\n\n                          Bm\nPorque esperan que en el cielo este el amor\n                A\nque no tuviste vos\n                  G\nque no! como que no!\n             F#\nmíralo! míralo!\n\n\n                      Bm\nLos pibes cumplen condenas,\n                    A\nentran y salen las penas,\n                    G\nentran y salen las penas,\n                F#\nde su niño corazón\n\n                  Bm\nY tienen la valentía\n               A\nde ganarse el día a día,\n                      G\naunque una noche sin luna,\n                     F#\nse pierda tu encendedor\n\n\n                    Bm\nPorque tiene mucho cielo y mucho mar\n                 A\nme gusta este lugar\n                  G\nque no! como que no!\n             F#\nmíralo! míralo!\n\n\n                        Bm\nRegando el patio a manguera\n                 A\nniña de la primavera\n                 G\nniña de la primavera\n                   F#\nregá mi patio de amor\n\n                     Bm\nQue llega otro nuevo año\n                A\nque somete a la espera\n                     G\nde que se haga verdadera\n                   F#\ntu locura y tu ilusión\n\n\n                    Bm\nPorque tiene mucho cielo y mucho mar\n                 A\nme gusta este lugar\n                  G\nque no! como que no!\n             F#\nmíralo! míralo!\n\n\n                      Bm\nOh, no eres tú mi cantar\n                      A\nno puedo cantar, ni quiero\n                    G\na este Jesús del madero\n                          F#\nsino al que anduvo en la mar!\n\n                     Bm\nCantar de la tierra mía\n           A\nque echa flores\n                   G\nal Jesús de la agonía\n                     F#\ny es la fe de mis mayores\n\n\n                    Bm\nPorque tiene mucho cielo y mucho mar\n                 A\nme gusta este lugar\n                  G\nque no! como que no!\n             F#\nmíralo! míralo!\n\n                    Bm\nPorque tiene mucho cielo y mucho mar\n                 A\nme gusta este lugar\n                  G\nque no! como que no!\n             F#\nmíralo! míralo!\n\n                    Bm\nPorque tiene mucho cielo y mucho mar"
+}
