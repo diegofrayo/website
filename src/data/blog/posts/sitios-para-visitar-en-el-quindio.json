@@ -610,7 +610,7 @@
 						"category": ["🏛️ Cultural"],
 						"price": "Gratis",
 						"published": true,
-						"featured": false,
+						"featured": true,
 						"links": [],
 						"images": [
 							{
@@ -635,6 +635,18 @@
 							},
 							{
 								"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/museo-del-oro-quimbaya/6.jpg",
+								"alt": "Museo del oro Quimbaya"
+							},
+							{
+								"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/museo-del-oro-quimbaya/7.jpg",
+								"alt": "Museo del oro Quimbaya"
+							},
+							{
+								"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/museo-del-oro-quimbaya/8.jpg",
+								"alt": "Museo del oro Quimbaya"
+							},
+							{
+								"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/museo-del-oro-quimbaya/9.jpg",
 								"alt": "Museo del oro Quimbaya"
 							}
 						]

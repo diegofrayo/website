@@ -13,7 +13,7 @@
 		"spotify_url": "https://open.spotify.com/track/44q38EV7P1sjbLI8RB6k9M",
 		"youtube_url": "https://youtu.be/YLG3T74iy1o",
 		"assets": {},
-		"interpretation": "- Fuerza del canto: Baja\n- Velocidad de rasgueo: Muy baja\n- Fuerza de rasgueo: Baja\n- Complejidad: Media\n",
+		"interpretation": "- Fuerza del canto: Baja\n- Velocidad de rasgueo: Baja\n- Fuerza de rasgueo: Baja\n- Complejidad: Fácil\n",
 		"sources": [
 			{
 				"text": "Veo chiquito",
@@ -34,5 +34,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": " C#m\nCanto\n           G#m       E   F#m\ntengo que cantar\n           C#m\nel viento me llena\n\n\n   C#m\nCamino\n           G#m       E   F#m\ntengo que soltar\n         C#m\nel agua me enseña\n\n\n C#m\nSueño\n           G#m       E   F#m\nque puedo volar\n         C#m\ncreo en mis alas\n\n\n   C#m\nY vuelo\n        G#m          E   F#m\ndejo este suelo\n            C#m\nel canto es el andar\n\n\n    C#m\nTe veo\n          G#m        E   F#m\nsoy desde el cielo\n          C#m\nel canto me eleva\n\n\nna... na na, na na, na na...\n\n\n C#m                            |\nCanto                           |\n         G#m         E   F#m    |\nveo chiquito                    |\n C#m                            |\ncanto                           | (x2)\n\n\n  C#m                           |\nPréstame tu sol                 |\n       G#m                      |\nvida préstame tu sol            |\n       E    F#m    C#m          |\nvida préstame  tu sol           | (x2)"
+	"txt": " C#m\nCanto\n           G#m       E   F#m\ntengo que cantar\n           C#m\nel viento me llena\n\n\n   C#m\nCamino\n           G#m       E   F#m\ntengo que soltar\n         C#m\nel agua me enseña\n\n\n C#m\nSueño\n           G#m       E   F#m\nque puedo volar\n         C#m\ncreo en mis alas\n\n\n   C#m\nY vuelo\n        G#m          E   F#m\ndejo este suelo\n            C#m\nel canto es el andar\n\n\n    C#m\nTe veo\n          G#m        E   F#m\nsoy desde el cielo\n          C#m\nel canto me eleva\n\n\n C#m   G#m    E  F#m    C#m\nna... na na, na na, na na...\n\n\n C#m                            |\nCanto                           |\n         G#m         E   F#m    |\nveo chiquito                    |\n C#m                            |\ncanto                           | (x2)\n\n\n  C#m                           |\nPréstame tu sol                 |\n       G#m                      |\nvida préstame tu sol            |\n       E    F#m    C#m          |\nvida préstame  tu sol           | (x2)"
 }
