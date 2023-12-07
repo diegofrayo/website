@@ -7,13 +7,14 @@ const config: Config = {
 	important: false,
 	content: [
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/data/**/*.json",
 		"./src/lib/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/modules/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	safelist: [
 		{
-			pattern: /^(sm:|md:)?(tw-my-|tw-mx-|tw-mt-|tw-mb-)/,
+			pattern: /^(sm:|md:)?(tw-m|tw--m)/,
 		},
 		{
 			pattern: /dr-/,

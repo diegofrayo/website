@@ -6,7 +6,9 @@ import {
 	Block,
 	Blockquote,
 	Code,
+	Icon,
 	Image,
+	InlineText,
 	Link,
 	List,
 	Space,
@@ -87,6 +89,9 @@ export const MDXComponents = {
 
 	// --- CUSTOM COMPONENTS ---
 	Block,
+	Icon,
+	InlineText,
+	Link,
 	SourceCode,
 };
 

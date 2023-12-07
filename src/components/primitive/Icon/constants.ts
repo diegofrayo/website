@@ -75,6 +75,13 @@ import {
 
 const ICONS = {
 	// --- OWN ICONS ---
+	AIRBNB: {
+		icon: "/assets/images/icons/airbnb.png",
+		defaultProps: {
+			alt: "AirBnb",
+			className: "",
+		},
+	},
 	GITHUB: {
 		icon: "/assets/images/icons/github.svg",
 		defaultProps: {
