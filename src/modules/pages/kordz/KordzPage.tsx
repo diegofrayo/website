@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Link, Space, Input, Text, InlineText, Block, Icon } from "~/components/primitive";
+import { AuthService, ComponentWithAuth } from "~/modules/auth";
 import { ROUTES } from "~/modules/routing";
 import type { T_PageContent } from "~/server/data-loader";
 import { useDidMount } from "@diegofrayo/hooks";
@@ -114,8 +115,12 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 						</Block>
 						<Space size={2} />
 
-						<Block className="tw-flex tw-flex-wrap tw-justify-between">
+						<ComponentWithAuth className="tw-flex tw-flex-wrap tw-justify-between">
 							{songsList.map((song) => {
+								if (AuthService.isGuestUser() && !song.is_public) {
+									return null;
+								}
+
 								return (
 									<Block
 										key={song.id}
@@ -140,7 +145,7 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 									</Block>
 								);
 							})}
-						</Block>
+						</ComponentWithAuth>
 					</Block>
 				</Block>
 			</MainLayout>

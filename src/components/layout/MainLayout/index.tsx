@@ -461,7 +461,12 @@ function NavigationMenuItems() {
 			>
 				Resume
 			</NavigationMenuItem>
-			<KordzNigationMenuItem />
+			<NavigationMenuItem
+				href={ROUTES.KORDZ}
+				icon={Icon.icon.MUSIC_NOTE}
+			>
+				Kordz
+			</NavigationMenuItem>
 			<AppsNavigationMenuItem />
 		</List>
 	);
@@ -503,17 +508,6 @@ const NavigationMenuItem = React.forwardRef<HTMLAnchorElement, T_NavigationMenuI
 		);
 	},
 );
-
-const KordzNigationMenuItem = withAuth(function KordzNigationMenuItem() {
-	return (
-		<NavigationMenuItem
-			href={ROUTES.KORDZ}
-			icon={Icon.icon.MUSIC_NOTE}
-		>
-			Kordz
-		</NavigationMenuItem>
-	);
-});
 
 const AppsNavigationMenuItem = withAuth(function AppsNavigationMenuItem() {
 	return (

@@ -35,6 +35,10 @@ class AuthServiceClass {
 	isUserLoggedIn() {
 		return this.#isUserLoggedIn;
 	}
+
+	isGuestUser() {
+		return this.#isUserLoggedIn === false;
+	}
 }
 
 const AuthService = new AuthServiceClass();
