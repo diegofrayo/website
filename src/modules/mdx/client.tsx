@@ -6,6 +6,7 @@ import {
 	Block,
 	Blockquote,
 	Code,
+	Collapsible,
 	Icon,
 	Image,
 	InlineText,
@@ -15,7 +16,7 @@ import {
 	Text,
 	Title,
 } from "~/components/primitive";
-import { SourceCode } from "~/components/shared";
+import { SourceCode, BoxWithTitle } from "~/components/shared";
 import type { T_TitleProps } from "~/components/primitive/Title";
 import type DR from "@diegofrayo/types";
 
@@ -89,6 +90,8 @@ export const MDXComponents = {
 
 	// --- CUSTOM COMPONENTS ---
 	Block,
+	BoxWithTitle,
+	Collapsible,
 	Icon,
 	InlineText,
 	Link,
