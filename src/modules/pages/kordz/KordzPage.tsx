@@ -2,7 +2,8 @@ import * as React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
 import { Link, Space, Input, Text, InlineText, Block, Icon } from "~/components/primitive";
-import { AuthService, ComponentWithAuth } from "~/modules/auth";
+import { ClientRenderComponent } from "~/hocs";
+import { AuthService } from "~/modules/auth";
 import { ROUTES } from "~/modules/routing";
 import type { T_PageContent } from "~/server/data-loader";
 import { useDidMount } from "@diegofrayo/hooks";
@@ -115,37 +116,39 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 						</Block>
 						<Space size={2} />
 
-						<ComponentWithAuth className="tw-flex tw-flex-wrap tw-justify-between">
-							{songsList.map((song) => {
-								if (AuthService.isGuestUser() && !song.is_public) {
-									return null;
-								}
+						<ClientRenderComponent>
+							<Block className="tw-flex tw-flex-wrap tw-justify-between">
+								{songsList.map((song) => {
+									if (AuthService.isGuestUser() && !song.is_public) {
+										return null;
+									}
 
-								return (
-									<Block
-										key={song.id}
-										className="tw-mb-6 tw-w-full sm:tw-w-5/12"
-									>
-										<Link
-											variant={Link.variant.STYLED}
-											href={`${ROUTES.KORDZ}/${song.id}`}
-											className="tw-block sm:tw-truncate"
-											title={song.title}
+									return (
+										<Block
+											key={song.id}
+											className="tw-mb-6 tw-w-full sm:tw-w-5/12"
 										>
-											{!song.is_public ? (
-												<Icon
-													icon={Icon.icon.EYE_SLASH}
-													color="dr-text-color-surface-600"
-													wrapperClassName="tw-mr-1"
-												/>
-											) : null}
-											<InlineText>{song.title}</InlineText>
-										</Link>
-										<SongDetails song={song} />
-									</Block>
-								);
-							})}
-						</ComponentWithAuth>
+											<Link
+												variant={Link.variant.STYLED}
+												href={`${ROUTES.KORDZ}/${song.id}`}
+												className="tw-block sm:tw-truncate"
+												title={song.title}
+											>
+												{!song.is_public ? (
+													<Icon
+														icon={Icon.icon.EYE_SLASH}
+														color="dr-text-color-surface-600"
+														wrapperClassName="tw-mr-1"
+													/>
+												) : null}
+												<InlineText>{song.title}</InlineText>
+											</Link>
+											<SongDetails song={song} />
+										</Block>
+									);
+								})}
+							</Block>
+						</ClientRenderComponent>
 					</Block>
 				</Block>
 			</MainLayout>
