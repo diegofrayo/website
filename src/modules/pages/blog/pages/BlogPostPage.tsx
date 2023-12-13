@@ -87,6 +87,7 @@ function getBlogPostDynamicComponents(componentsMap: DR.Object<string>) {
 		MFMAMHelloWorldMDX: "./components/my-favorite-music-and-mdx/MFMAMHelloWorldMDX",
 		MFMAMSpotifyPlaylist: "./components/my-favorite-music-and-mdx/MFMAMSpotifyPlaylist",
 		SPVEEQPlaces: "./components/sitios-para-visitar-en-el-quindio/SPVEEQPlaces",
+		SPVEEQRecommendations: "./components/sitios-para-visitar-en-el-quindio/SPVEEQRecommendations",
 	} as DR.Object<string>;
 
 	const components = {
@@ -130,6 +131,13 @@ function getBlogPostDynamicComponents(componentsMap: DR.Object<string>) {
 			} else if (componentName === "SPVEEQPlaces") {
 				components[componentName] = dynamic(
 					() => import("../components/sitios-para-visitar-en-el-quindio/SPVEEQPlaces"),
+					{
+						ssr: true,
+					},
+				);
+			} else if (componentName === "SPVEEQRecommendations") {
+				components[componentName] = dynamic(
+					() => import("../components/sitios-para-visitar-en-el-quindio/SPVEEQRecommendations"),
 					{
 						ssr: true,
 					},

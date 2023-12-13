@@ -38,7 +38,7 @@ function ResumePage({ data, cmsContent }: T_ResumePageProps) {
 			}}
 		>
 			<MainLayout title={cmsContent.content.seo.title}>
-				<Block className="tw-text-right print:tw-hidden">
+				<Block className="tw-hidden tw-text-right print:tw-hidden">
 					<Link
 						href="https://drive.google.com/file/d/1zOaXbESJ4mXasY0WybvfTD9G9qN2Ya7g/view?usp=sharing"
 						className="tw--mb-0.5 tw-inline-block tw-rounded-t-md tw-border tw-border-gray-700 tw-bg-gray-700 tw-px-3 tw-py-1 tw-text-sm tw-font-bold tw-text-white hover:tw-underline"
