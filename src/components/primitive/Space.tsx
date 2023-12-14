@@ -38,7 +38,7 @@ function Space({
 	const isVerticalOrientation = orientation === "v";
 
 	// --- UTILS ---
-	function composeStyles(): string {
+	function composeStyles() {
 		return cn(
 			`dr-space dr-space--${variant.toLowerCase()}`,
 			"tw-flex-shrink-0",
@@ -51,7 +51,7 @@ function Space({
 		);
 	}
 
-	function composeSizeStyles(): string {
+	function composeSizeStyles() {
 		if (isVerticalOrientation) {
 			if (sizeLeft || sizeRight) {
 				return cn(
@@ -74,7 +74,7 @@ function Space({
 	function composeSingleSideStyles(
 		singleSide: "my" | "mt" | "mb" | "mx" | "ml" | "mr",
 		singleSideSize?: number,
-	): string {
+	) {
 		if (v.isNumber(singleSideSize)) {
 			return `tw-${singleSide}-${singleSideSize}`;
 		}

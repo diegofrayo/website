@@ -5,7 +5,7 @@ import { addLeftPadding } from "@diegofrayo/utils/strings";
 
 dayjs.extend(customParseFormat);
 
-export function generateDate(): string {
+export function generateDate() {
 	const date = new Date();
 
 	return `${date.getFullYear()}/${addLeftPadding(date.getMonth() + 1)}/${addLeftPadding(
@@ -13,6 +13,6 @@ export function generateDate(): string {
 	)}`;
 }
 
-export function getDatesDiff(startDate: Date, endDate: Date, format: "minute" | "year"): number {
+export function getDatesDiff(startDate: Date, endDate: Date, format: "minute" | "year") {
 	return dayjs(endDate).diff(dayjs(startDate), format);
 }

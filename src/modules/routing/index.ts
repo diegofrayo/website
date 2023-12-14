@@ -31,7 +31,7 @@ export function useRouting(): T_UseRoutingReturn {
 	const { pathname, asPath } = useRouter();
 
 	// --- API ---
-	function isCurrentPathActive(pathnameParam: string): boolean {
+	function isCurrentPathActive(pathnameParam: string) {
 		if (pathname === pathnameParam || asPath === pathnameParam) {
 			return true;
 		}
@@ -55,14 +55,14 @@ export function useRouting(): T_UseRoutingReturn {
 const BS_LastPageVisited = BrowserStorageManager.createItem({
 	key: "DR_LAST_PAGE_VISITED",
 	value: "",
-	saveWhenCreating: false,
+	saveWhileInitialization: false,
 	readInitialValueFromStorage: true,
 });
 
 const BS_NoRedirectionsYet = BrowserStorageManager.createItem({
 	key: "DR_NO_REDIRECTIONS_YET",
 	value: true,
-	saveWhenCreating: true,
+	saveWhileInitialization: true,
 	readInitialValueFromStorage: true,
 	storage: "sessionStorage",
 });

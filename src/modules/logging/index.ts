@@ -4,7 +4,7 @@ import { isServer } from "@diegofrayo/utils/misc";
 const BS_Logs = BrowserStorageManager.createItem<string[]>({
 	key: "DR_LOGS",
 	value: [],
-	saveWhenCreating: true,
+	saveWhileInitialization: true,
 });
 
 export function logger(type: "LOG" | "WARN" | "ERROR", ...args: unknown[]) {
@@ -39,7 +39,7 @@ export function logForRemoteDebugging(input: unknown, source?: string) {
 }
 
 export function addErrorsGlobalListener() {
-	window.onerror = function onerror(msg, url, lineNo, columnNo, error): boolean {
+	window.onerror = function onerror(msg, url, lineNo, columnNo, error) {
 		logAndReportError(
 			` ${msg} \n ${url} \n ${lineNo} \n ${columnNo} \n ${error} `,
 			"window.onerror",

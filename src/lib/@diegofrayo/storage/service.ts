@@ -6,7 +6,7 @@ type T_Storage = "sessionStorage" | "localStorage";
 export type T_BrowserStorageStateConfig<G_ValueType> = {
 	key: string;
 	value: G_ValueType;
-	saveWhenCreating?: boolean;
+	saveWhileInitialization?: boolean;
 	readInitialValueFromStorage?: boolean;
 	storage?: T_Storage;
 };
@@ -22,7 +22,7 @@ const BrowserStorageManager = {
 	createItem: function createItem<G_ValueType>({
 		key,
 		value,
-		saveWhenCreating = false,
+		saveWhileInitialization = false,
 		readInitialValueFromStorage = false,
 		storage = "localStorage",
 	}: T_BrowserStorageStateConfig<G_ValueType>) {
@@ -31,7 +31,7 @@ const BrowserStorageManager = {
 
 			if (
 				!(readInitialValueFromStorage && storageValue !== null) &&
-				saveWhenCreating &&
+				saveWhileInitialization &&
 				storageValue === null
 			) {
 				setItem(key, value, storage);

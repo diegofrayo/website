@@ -44,7 +44,7 @@ function SongPage({ cmsContent, songDetails, songContent }: T_SongPageProps) {
 	const [fontSize, setFontSize] = useBrowserStorageState({
 		key: "DR_KORDZ_FONT_SIZE",
 		value: 1,
-		saveWhenCreating: true,
+		saveWhileInitialization: true,
 		readInitialValueFromStorage: true,
 	});
 

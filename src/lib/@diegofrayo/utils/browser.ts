@@ -40,7 +40,7 @@ export function isMobileDevice() {
 	 */
 	// @ts-ignore
 	const navigatorDetails = navigator.userAgent || navigator.vendor || window.opera;
-	const isMobileResult = (function checker(input: string): boolean {
+	const isMobileResult = (function checker(input: string) {
 		if (
 			/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(
 				input,
@@ -164,7 +164,7 @@ export async function downloadComponentAsImage(
 	});
 }
 
-export function isElementInViewport(element: HTMLElement): boolean {
+export function isElementInViewport(element: HTMLElement) {
 	const bounding = element.getBoundingClientRect();
 
 	return (
@@ -181,4 +181,8 @@ export function getTargetElement<G_HTMLElement>(event: Event): G_HTMLElement {
 	}
 
 	return event.target as G_HTMLElement;
+}
+
+export function showAlert(message: string) {
+	alert(message);
 }

@@ -51,7 +51,7 @@ function Ticks() {
 	>({
 		value: [],
 		key: "DR_TICKS",
-		saveWhenCreating: true,
+		saveWhileInitialization: true,
 		readInitialValueFromStorage: true,
 	});
 
@@ -108,7 +108,7 @@ function Ticks() {
 		[resetTicks, resetCycles, stopInterval, setTimerStatus],
 	);
 
-	function calculateEstimatedTime(): string {
+	function calculateEstimatedTime() {
 		if (cyclesInputValue === 0) {
 			return "Free session";
 		}

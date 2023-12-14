@@ -120,7 +120,7 @@ function Stopwatch() {
 			setTimeMeasure(selectedOption);
 		};
 
-	const secondsToTime = React.useCallback(function secondsToTime(secondsParam: number): string {
+	const secondsToTime = React.useCallback(function secondsToTime(secondsParam: number) {
 		const seconds = Math.round(secondsParam);
 
 		if (seconds < 60) {

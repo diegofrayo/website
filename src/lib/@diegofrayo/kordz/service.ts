@@ -200,7 +200,7 @@ class KordzService {
 		chord: T_PlainChordDetails,
 		isTheLastParsedTextLineBlank: boolean,
 		isCurrentLineTheLastOne: boolean,
-	): string {
+	) {
 		/*
 		 * No default variant chords are written like this: G[2]
 		 * To keep the right spacing between the lyrics and chords
@@ -222,7 +222,7 @@ class KordzService {
 		}</button>`;
 	}
 
-	private sortTextLineItemsByLength(a: string, b: string): number {
+	private sortTextLineItemsByLength(a: string, b: string) {
 		if (a.length < b.length) {
 			return 1;
 		}

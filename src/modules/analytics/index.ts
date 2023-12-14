@@ -20,7 +20,7 @@ class AnalyticsServiceClass {
 	private BS_AnalyticsDisabled = BrowserStorageManager.createItem({
 		key: "DR_ANALYTICS_DISABLED",
 		value: false,
-		saveWhenCreating: false,
+		saveWhileInitialization: false,
 		readInitialValueFromStorage: true,
 	});
 

@@ -49,7 +49,7 @@ function WhatsAppPage() {
 	}
 
 	// --- UTILS ---
-	function composeWhatsAppUrl(): string {
+	function composeWhatsAppUrl() {
 		const url = new URLSearchParams();
 
 		url.append("phone", `${phone.includes("+") ? "" : "+57"}${phone}`);

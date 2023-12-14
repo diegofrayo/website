@@ -215,7 +215,7 @@ function isMusicNotePosition(input?: T_Position): input is T_MusicNotePosition {
 	);
 }
 
-function checkTablatureSpaceValidity(value: number): boolean {
+function checkTablatureSpaceValidity(value: number) {
 	if (typeof value === "number" && (Number.isNaN(value) || !(value >= 1 || value <= 10))) {
 		throw new Error(
 			`Invalid tablature space (${value}). A tablature space must be between 1 and 10 or should be "x"`,

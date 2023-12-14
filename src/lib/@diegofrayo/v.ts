@@ -60,25 +60,25 @@ function isNotTrue(input: unknown): input is boolean {
 	return input === false;
 }
 
-function isNotUndefined(input: unknown): boolean {
+function isNotUndefined(input: unknown) {
 	return input !== undefined;
 }
 
-function isFalsy(input: unknown): boolean {
+function isFalsy(input: unknown) {
 	return !input;
 }
 
-function isNotEquals(input1: unknown, input2: unknown): boolean {
+function isNotEquals(input1: unknown, input2: unknown) {
 	return input1 !== input2;
 }
 
-function isEquals(input1: unknown, input2: unknown): boolean {
+function isEquals(input1: unknown, input2: unknown) {
 	return input1 === input2;
 }
 
 // --- Strings ---
 
-function isEmptyString(input: unknown): boolean {
+function isEmptyString(input: unknown) {
 	return typeof input === "string" && input.length === 0;
 }
 
@@ -88,7 +88,7 @@ function isNotEmptyString(input: unknown): input is string {
 
 // --- NUMBERS ---
 
-function isBetween(input: number, range: [number, number]): boolean {
+function isBetween(input: number, range: [number, number]) {
 	return input >= range[0] && input <= range[1];
 }
 
@@ -98,7 +98,7 @@ function isNotEmptyArray(input: unknown): input is unknown[] {
 	return Array.isArray(input) && input.length > 0;
 }
 
-function isEmptyArray(input: unknown): boolean {
+function isEmptyArray(input: unknown) {
 	return Array.isArray(input) && input.length === 0;
 }
 
@@ -120,7 +120,7 @@ function notFound(input: unknown): input is undefined {
 	return input === undefined;
 }
 
-function exists(input: unknown): boolean {
+function exists(input: unknown) {
 	return input !== undefined;
 }
 

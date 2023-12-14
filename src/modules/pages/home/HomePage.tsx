@@ -15,10 +15,12 @@ import {
 	Title,
 } from "~/components/primitive";
 import WEBSITE_METADATA from "~/data/metadata.json";
+import { ClientRenderComponent } from "~/hocs";
+import { ComponentWithAuth } from "~/modules/auth";
 import AnalyticsService from "~/modules/analytics";
+import type { T_PageContent } from "~/server/data-loader";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
 import { generateSlug } from "@diegofrayo/utils/strings";
-import type { T_PageContent } from "~/server/data-loader";
 
 import styles from "./HomePage.styles.module.css";
 
@@ -53,10 +55,7 @@ function HomePage({ cmsContent, data }: T_HomePageProps) {
 		>
 			<MainLayout title={cmsContent.content.seo.title}>
 				<Block className="sm:tw-py-12">
-					<Room
-						song={data.song}
-						image={data.photo}
-					/>
+					<Room song={data.song} />
 				</Block>
 			</MainLayout>
 		</Page>
@@ -69,10 +68,9 @@ export default HomePage;
 
 type T_RoomProps = {
 	song: T_HomePageProps["data"]["song"];
-	image: T_HomePageProps["data"]["photo"];
 };
 
-function Room({ song, image }: T_RoomProps) {
+function Room({ song }: T_RoomProps) {
 	return (
 		<Block
 			className="tw-relative tw-mx-auto tw-w-80 tw-max-w-full tw-overflow-hidden tw-rounded-3xl tw-bg-black tw-px-2 tw-pt-16"
@@ -80,15 +78,15 @@ function Room({ song, image }: T_RoomProps) {
 				backgroundImage: 'url("/assets/images/textures/green-gobbler.png")',
 			}}
 		>
-			<PictureFrame photo={image} />
+			<PictureFrame />
 			<Space size={8} />
 
 			<Radio song={song} />
 			<Table />
 
-			<Block className="tw-absolute tw--bottom-1 tw-left-0 tw-overflow-hidden tw-rounded-full tw-bg-black">
+			<ComponentWithAuth className="tw-absolute tw--bottom-1 tw-left-0 tw-overflow-hidden tw-rounded-full tw-bg-black">
 				<StackPopover />
-			</Block>
+			</ComponentWithAuth>
 
 			<React.Fragment>
 				<Icon
@@ -106,23 +104,23 @@ function Room({ song, image }: T_RoomProps) {
 	);
 }
 
-type T_PictureFrameProps = {
-	photo: T_RoomProps["image"];
-};
-
-function PictureFrame({ photo }: T_PictureFrameProps) {
+function PictureFrame() {
 	return (
-		<Block className={cn(styles["picture-frame"], "tw-relative tw-mx-auto tw-w-32 tw-rounded-md")}>
-			<Block className="tw-h-20 tw-rounded-md tw-border-4 tw-border-white">
-				<Block className="tw-relative tw-wh-full">
-					<Image
-						src={photo.src}
-						alt="Photography taken by Diego Rayo"
-						fill
-					/>
+		<ClientRenderComponent>
+			<Block
+				className={cn(styles["picture-frame"], "tw-relative tw-mx-auto tw-w-32 tw-rounded-md")}
+			>
+				<Block className="tw-h-20 tw-rounded-md tw-border-4 tw-border-white">
+					<Block className="tw-relative tw-wh-full">
+						<Image
+							src={`/assets/images/pages/home/assets/IMG_${new Date().getDate()}.jpg`}
+							alt="Photography taken by Diego Rayo"
+							fill
+						/>
+					</Block>
 				</Block>
 			</Block>
-		</Block>
+		</ClientRenderComponent>
 	);
 }
 

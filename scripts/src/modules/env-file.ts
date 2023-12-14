@@ -27,7 +27,7 @@ type T_EnvVars = {
 
 // --- UTILS ---
 
-function getIP(): string {
+function getIP() {
 	try {
 		const nets = networkInterfaces();
 		const results = Object.create(null);

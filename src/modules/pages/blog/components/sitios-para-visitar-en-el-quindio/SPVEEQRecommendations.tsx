@@ -39,7 +39,7 @@ function SPVEEQRecommendations({ data: recommendations }: T_SPVEEQRecommendation
 						)}
 					>
 						<BoxWithTitle
-							title="Contacto"
+							title="Links de contacto"
 							className="tw-my-2 tw-p-2 tw-pt-3"
 						>
 							{v.isNotEmptyString(recommendation.instagram) ? (

@@ -223,7 +223,7 @@ const RateContent = withOnlyClientRender(function RateContent() {
 	const [ratedContent, setRatedContent] = useBrowserStorageState<DR.Object<string>>({
 		key: "DR_RATED_CONTENT",
 		value: {},
-		saveWhenCreating: true,
+		saveWhileInitialization: true,
 		readInitialValueFromStorage: true,
 	});
 

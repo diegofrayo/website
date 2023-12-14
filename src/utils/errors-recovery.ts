@@ -4,7 +4,7 @@ export function recoverFromBreakingChanges() {
 	const BS_BreakingChanges = BrowserStorageManager.createItem({
 		key: "DR_BREAKING_CHANGES",
 		value: "",
-		saveWhenCreating: true,
+		saveWhileInitialization: true,
 		readInitialValueFromStorage: true,
 	});
 	const BREAKING_CHANGES = [

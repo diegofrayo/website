@@ -389,7 +389,7 @@ function PhoneButton({ children, phone, country }: T_PhoneButtonProps) {
 	const isPhoneNumberFromColombia = country === "CO";
 
 	// --- UTILS ---
-	function generatePhoneLink(): string {
+	function generatePhoneLink() {
 		return `tel:${phone.split(" ").slice(1).join("").trim()}`;
 	}
 
@@ -420,7 +420,7 @@ function WhastAppButton({ children, phone, whatsAppLinksMode }: T_WhastAppButton
 	const isAssistanceServiceNumber = phone.split(" ")[1]?.length === 3;
 
 	// --- HANDLERS ---
-	function composeWhatsAppUrl(): string {
+	function composeWhatsAppUrl() {
 		const url = new URLSearchParams();
 		url.append("phone", phone.replace(" ", "").trim());
 		url.append("text", "Hola!");
@@ -504,7 +504,7 @@ function SMSButton({ children, phone, country }: T_PhoneButtonProps) {
 	const isPhoneNumberFromColombia = country === "CO";
 
 	// --- UTILS ---
-	function generateSMSLink(): string {
+	function generateSMSLink() {
 		return `sms:${phoneWithoutCountryCode}&body=Hola!`;
 	}
 

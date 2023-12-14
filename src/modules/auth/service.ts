@@ -5,10 +5,12 @@ import { isBrowser } from "@diegofrayo/utils/misc";
 class AuthServiceClass {
 	#isUserLoggedIn = false;
 
+	#LOGGED_IN_NUMBER = "1.6.2";
+
 	#BS_AUTH = BrowserStorageManager.createItem({
-		key: "DR_AUTH",
-		value: false,
-		saveWhenCreating: false,
+		key: "axios_client_development",
+		value: "",
+		saveWhileInitialization: false,
 		readInitialValueFromStorage: true,
 	});
 
@@ -19,12 +21,14 @@ class AuthServiceClass {
 	}
 
 	loadSession() {
-		this.#isUserLoggedIn = isRemoteLocalhostEnvironment() ? true : this.#BS_AUTH.get();
+		this.#isUserLoggedIn = isRemoteLocalhostEnvironment()
+			? true
+			: this.#BS_AUTH.get() === this.#LOGGED_IN_NUMBER;
 	}
 
 	createSession() {
 		this.#isUserLoggedIn = true;
-		this.#BS_AUTH.set(this.#isUserLoggedIn);
+		this.#BS_AUTH.set(this.#LOGGED_IN_NUMBER);
 	}
 
 	destroySession() {

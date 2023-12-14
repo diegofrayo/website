@@ -68,6 +68,11 @@ const APPS = [
 		name: "whatsapp",
 	},
 	{
+		id: "series",
+		icon: Icon.icon.CLOCK,
+		name: "series",
+	},
+	{
 		id: "stopwatch",
 		icon: Icon.icon.CLOCK,
 		name: "stopwatch",
