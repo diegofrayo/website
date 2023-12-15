@@ -1698,36 +1698,6 @@
 			"youtube_url": "https://youtu.be/DaVRJca0z5c"
 		},
 		{
-			"album": "Gol de mujer",
-			"artist": "Divididos",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1wPlMz0Br3BZyEw3wYLDK3kR8JSYX844O"
-			},
-			"category": "3|TO_PRACTICE",
-			"country": "🇦🇷",
-			"created_at": "2022/08/13",
-			"id": "vientito-del-tucuman",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "VIENTITO DEL TUCUMAN, Divididos: Acordes",
-					"url": "https://acordes.lacuerda.net/divididos/vientito_del_tucuman.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "Vientito Del Tucumán (Divididos) - Mariano Wettstein",
-					"url": "https://youtu.be/Hak_RN7Gk94"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/3KxKBGEhIJNk9ulzhXZ5X9",
-			"title": "Vientito del Tucumán",
-			"year": 1998,
-			"youtube_url": "https://youtu.be/j16SQc7f50I"
-		},
-		{
 			"album": "Zona de promesas",
 			"artist": "Soda Stereo",
 			"assets": {
