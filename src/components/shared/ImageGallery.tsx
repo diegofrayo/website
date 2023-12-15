@@ -135,7 +135,7 @@ function ImageGallery({ id, images, noBounds, className }: T_ImageGalleryProps) 
 	}
 
 	return (
-		<Block className={cn("tw-relative tw-overflow-hidden tw-bg-white tw-p-2 tw-pb-3", className)}>
+		<Block className={cn("tw-relative tw-overflow-hidden tw-bg-white tw-p-2", className)}>
 			<Block className="tw-relative tw-flex tw-h-[360px] tw-w-full tw-max-w-full tw-items-center tw-justify-center tw-overflow-hidden tw-bg-black md:tw-h-[570px]">
 				<Block
 					className={cn(
@@ -163,7 +163,7 @@ function ImageGallery({ id, images, noBounds, className }: T_ImageGalleryProps) 
 			</Block>
 
 			{totalNumberOfImages > 1 ? (
-				<Block className="tw-mt-2 tw-flex tw-w-full tw-justify-between tw-gap-3 tw-text-center">
+				<Block className="tw-mt-2 tw-flex tw-w-full tw-items-center tw-justify-between tw-gap-3">
 					<Block className="tw-flex tw-w-8 tw-items-center tw-justify-start">
 						<NavigationArrow
 							direction="left"
@@ -174,16 +174,14 @@ function ImageGallery({ id, images, noBounds, className }: T_ImageGalleryProps) 
 						/>
 					</Block>
 
-					<Block className="tw-inline-block tw-items-center tw-justify-center tw-rounded-md tw-bg-black/80 tw-px-1 tw-py-0.5">
+					<Block className="tw-inline-flex tw-h-8 tw-items-center tw-justify-center tw-rounded-md tw-bg-black/80 tw-px-1">
 						{createArray(totalNumberOfImages, 0).map((index) => {
 							return (
 								<Button
 									key={generateSlug(`${id}-Button-${index}`)}
 									className={cn(
-										"tw-mx-1 tw-inline-block tw-rounded-full tw-border-0 tw-leading-0 dr-border-color-surface-600 tw-wh-2",
-										index === activeIndex
-											? "tw-bg-white/80 tw-wh-3"
-											: "tw-relative tw--top-0.5 tw-bg-white/20",
+										"tw-mx-1 tw-inline-block tw-rounded-full tw-border-0 tw-leading-0 dr-border-color-surface-600 tw-wh-3",
+										index === activeIndex ? "tw-bg-white/80" : "tw-bg-white/20",
 									)}
 									data-index={String(index)}
 									onClick={handleChangeImage}
