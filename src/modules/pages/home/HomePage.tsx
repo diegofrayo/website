@@ -20,6 +20,7 @@ import { ComponentWithAuth } from "~/modules/auth";
 import AnalyticsService from "~/modules/analytics";
 import type { T_PageContent } from "~/server/data-loader";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
+import { between } from "@diegofrayo/utils/numbers";
 import { generateSlug } from "@diegofrayo/utils/strings";
 
 import styles from "./HomePage.styles.module.css";
@@ -105,6 +106,9 @@ function Room({ song }: T_RoomProps) {
 }
 
 function PictureFrame() {
+	const date = new Date().getDate();
+	const PHOTO_LIMIT = 24;
+
 	return (
 		<ClientRenderComponent>
 			<Block
@@ -113,7 +117,9 @@ function PictureFrame() {
 				<Block className="tw-h-20 tw-rounded-md tw-border-4 tw-border-white">
 					<Block className="tw-relative tw-wh-full">
 						<Image
-							src={`/assets/images/pages/home/assets/IMG_${new Date().getDate()}.jpg`}
+							src={`/assets/images/pages/home/assets/IMG_${
+								date <= PHOTO_LIMIT ? date : between(1, PHOTO_LIMIT)
+							}.jpg`}
 							alt="Photography taken by Diego Rayo"
 							fill
 						/>
