@@ -1,0 +1,23 @@
+{
+	"details": {
+		"id": "zamba-para-olvidarte",
+		"title": "Zamba para olvidarte",
+		"artist": "Daniel Toro",
+		"album": "Desconocido",
+		"year": 1977,
+		"country": "🇦🇷",
+		"category": "3|OK|🤷‍♂️",
+		"order": 0,
+		"created_at": "2021/08/14",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/5V1FwqoPmvZllRuQCuZAyx",
+		"youtube_url": "https://youtu.be/jlzEemNtNGA",
+		"assets": {},
+		"sources": [],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "    Am             G    Am\nNo sé para que volvis..te\n Am                 G   Am\nsi yo empezaba a olvi..dar\nF                   Em\n no sé si ya lo sabrás\n    F                E\nlloré cuando vos te fuiste\n    F              Em\nno sé para que volviste,\n     Am          G    Am\nque mal me hace recordar\n\n    Am                  G    Am\nLa tarde se ha puesto tris..te\nAm             G    Am\ny yo prefiero ca..llar\nF                     Em\n para que vamos a hablar\n    F                E\nde cosas que ya no existen\n    F              Em\nno sé para que volviste,\n    Am           G         Am\nya ves que es mejor no hablar\n\n\n     E          F\nQue pena me da saber que al final\n          Dm              E\nde este amor ya no queda nada\n F                  Em\nsolo una pobre canción\n    F                 E\nda vueltas por mi guitarra\n   F    G     F        G   F\ny hace rato que te extraaaña\n    E              Am\nmi zamba para olvidar\n\n\n    Am             G   Am\nMi zamba vivió conmi..go,\n Am            G   Am\nparte de mi sole..dad\nF                   Em\n no sé si ya lo sabrás\n    F              E\nmi vida se fue contigo\n    F               Em\ncontigo mi amor contigo\n     Am          G    Am\nque mal me hace recordar\n\n     Am              G    Am\nMis manos ya son de ba..rro,\n    Am               G   Am\nde tanto apretar al do..lor\nF                         Em\n y ahora que me falta el sol\n    F               E\nno sé que venís buscando\n    F                Em\nllorando mi amor llorando\n    Am       G    Am\ntambién olvidame vos\n\n\n     E          F\nQue pena me da saber que al final\n          Dm              E\nde este amor ya no queda nada\n F                  Em\nsolo una pobre canción\n    F                 E\nda vueltas por mi guitarra\n   F    G     F        G   F\ny hace rato que te extraaaña\n    E              Am\nmi zamba para olvidar"
+}
