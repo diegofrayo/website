@@ -1,0 +1,44 @@
+{
+	"details": {
+		"id": "zamba-de-mi-esperanza",
+		"title": "Zamba de mi esperanza",
+		"artist": "Los Visconti",
+		"album": "Éxitos de los Visconti",
+		"year": 1964,
+		"country": "🇦🇷",
+		"category": "3|OK|🤷‍♂️",
+		"order": 0,
+		"created_at": "2021/07/21",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/3Zb75jF6ClmT4qiQoCX03F",
+		"youtube_url": "https://youtu.be/HX0NP-whJ58",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Zamba de mi esperanza",
+				"url": "https://acordes.lacuerda.net/chalchaleros/zamba_de_mi_esperanza.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Zamba de mi esperanza - Tutorial Guitarra",
+				"url": "https://youtu.be/YC9b4hq8Zag",
+				"source": "youtube"
+			},
+			{
+				"text": "Zamba de mi esperanza - Euge Barker",
+				"url": "https://youtu.be/YUr6VdHJYcs",
+				"source": "youtube"
+			},
+			{
+				"text": "Zamba de mi esperanza - Los Chalchaleros Tutorial/Cover Guitarra",
+				"url": "https://youtu.be/iJuDJ7pL750",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": " E\nZamba de mi esperanza,\n                      B7\namanecida como un querer,\n A               E\nsueño, sueño del alma,                 |\n             B7            E      E7   |\nque a veces muere sin florecer         | (x2)\n\n\n E\nZamba a ti te canto,\n                          B7\nporque tu canto derrama amor,\n   A             E\ncaricia de tu pañuelo,                 |\n             B7            E      E7   |\nque va envolviendo mi corazón          | (x2)\n\n\n    E              B7\nEstrella tú que miraste,\n                          E\ntú que escuchaste mi padecer,\n\n    E\nEstrella deja que cante,\n           B7            E        E7\ndeja que quiera como yo se\n\n    A              E\nEstrella deja que cante,\n           B7            E        E7\ndeja que quiera como yo se\n\n\n    E\nEl tiempo que va pasando,\n                         B7\ncomo la vida, no vuelve más,\n    A              E\nel tiempo me va matando,               |\n        B7           E            E7   |\ny tu cariño será, será                 | (x2)\n\n\n    E\nHundido en el horizonte,\n                             B7\nsoy polvareda que al viento va,\n A              E\nzamba ya no me dejes,                  |\n           B7            E        E7   |\nyo sin tu canto no vivo más            | (x2)\n\n\n    E\nEl tiempo que va pasando,\n                         B7\ncomo la vida, no vuelve más,\n    A              E\nel tiempo me va matando,               |\n        B7           E            E7   |\ny tu cariño será, será                 | (x2)\n\n\n    E              B7\nEstrella tú que miraste,\n                          E\ntú que escuchaste mi padecer,\n\n    E\nEstrella deja que cante,\n           B7            E        E7\ndeja que quiera como yo se\n\n    A              E\nEstrella deja que cante,\n           B7            E        E7\ndeja que quiera como yo se"
+}
