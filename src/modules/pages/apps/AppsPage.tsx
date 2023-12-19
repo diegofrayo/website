@@ -69,7 +69,7 @@ const APPS = [
 	},
 	{
 		id: "series",
-		icon: Icon.icon.CLOCK,
+		icon: Icon.icon.EDIT,
 		name: "series",
 	},
 	{

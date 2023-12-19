@@ -38,6 +38,7 @@ import {
 	MagnifyingGlassPlusIcon,
 	MusicalNoteIcon,
 	PauseIcon,
+	PencilSquareIcon,
 	PlayIcon,
 	PresentationChartLineIcon,
 	PrinterIcon,
@@ -368,6 +369,12 @@ const ICONS = {
 			color: "",
 		},
 	},
+	EDIT: {
+		icon: PencilSquareIcon,
+		defaultProps: {
+			className: "",
+		},
+	},
 	EXTERNAL_LINK: {
 		icon: ArrowTopRightOnSquareIcon,
 		defaultProps: {
@@ -682,12 +689,6 @@ export const ICONS = {
 		defaultProps: {
 			className: "",
 			color: "",
-		},
-	},
-	EDIT: {
-		icon: PencilSquareIcon,
-		defaultProps: {
-			className: "",
 		},
 	},
 	LOCK_CLOSED: {

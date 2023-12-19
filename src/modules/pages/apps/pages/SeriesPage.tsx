@@ -3,56 +3,88 @@ import cn from "classnames";
 
 import { MainLayout, Page } from "~/components/layout";
 import { Block, Button, InlineText, Input, Space, Text } from "~/components/primitive";
-import { useEnhancedState } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
-import { isConfirmAlertAccepted, showAlert } from "@diegofrayo/utils/browser";
-import v from "@diegofrayo/v";
 
 function Series() {
 	// --- STATES & REFS ---
-	const [series, setSeries, , , resetSeries] = useEnhancedState(0);
-	const [cycles, , incrementCycles, , resetCycles] = useEnhancedState(0);
 	const [timerStatus, setTimerStatus] = React.useState<"NOT_STARTED" | "IN_PROGRESS" | "PAUSED">(
 		"NOT_STARTED",
 	);
 	const [doingTimeInputValue, setDoingInputValue] = React.useState(30);
-	const [restTimeInputValue, setIntensityInputValue] = React.useState(30);
-	const [seriesInputValue, setSeriesInputValue] = React.useState(4);
+	const [restTimeInputValue, setRestTimeInputValue] = React.useState(30);
+	const [seriesInputValue, setSeriesInputValue] = React.useState(2);
 	const [timerInterval, setTimerInterval] = React.useState<DR.SetTimeout | null>(null);
+	const [timeCounter, setTimeCounter] = React.useState<{ type: "doing" | "rest"; value: number }>({
+		type: "rest",
+		value: 0,
+	});
+	const [seriesCounter, setSeriesCounter] = React.useState(0);
 
 	// --- VARS ---
 	const PAGE_TITLE = "Series";
 	const isTimerStarted = timerStatus !== "NOT_STARTED";
 	const isTimerNotStarted = timerStatus === "NOT_STARTED";
-	const isTimerPaused = timerStatus === "PAUSED";
 
 	// --- UTILS ---
-	function playSound(
-		elementId: "audio-cycle-completed" | "audio-serie" | "audio-session-completed",
-	) {
+	function playSound(elementId: "audio-tick" | "audio-completed" | "audio-start" | "audio-rest") {
 		(document.getElementById(elementId) as HTMLAudioElement)?.play();
 	}
 
+	const startInterval = React.useCallback(
+		function startInterval() {
+			setTimerStatus("IN_PROGRESS");
+			setTimeCounter((currentState) => {
+				const isDoingTime = currentState.type === "doing";
+
+				if (isDoingTime) {
+					playSound("audio-rest");
+
+					return {
+						type: "rest",
+						value: restTimeInputValue,
+					};
+				}
+
+				playSound("audio-start");
+				return {
+					type: "doing",
+					value: doingTimeInputValue,
+				};
+			});
+
+			setTimerInterval(
+				setInterval(function intervalHandler() {
+					setTimeCounter((currentState) => {
+						return {
+							...currentState,
+							value: currentState.value - 1,
+						};
+					});
+				}, 1000),
+			);
+		},
+		[doingTimeInputValue, restTimeInputValue],
+	);
+
 	const stopInterval = React.useCallback(
 		function stopInterval() {
-			if (timerInterval) clearInterval(timerInterval);
+			if (timerInterval) {
+				clearInterval(timerInterval);
+			}
+
 			setTimerInterval(null);
 		},
 		[timerInterval],
 	);
 
 	const resetUI = React.useCallback(
-		function resetUI(confirmBeforeReset: boolean) {
-			if (confirmBeforeReset && isConfirmAlertAccepted("Are you sure?") === false) {
-				return;
-			}
-
-			resetSeries();
-			resetCycles();
+		function resetUI() {
 			stopInterval();
+			setSeriesCounter(0);
 			setTimerStatus("NOT_STARTED");
+			setTimeCounter({ type: "rest", value: 0 });
 		},
-		[resetSeries, resetCycles, stopInterval, setTimerStatus],
+		[stopInterval, setTimerStatus, setSeriesCounter, setTimeCounter],
 	);
 
 	function calculateEstimatedTime() {
@@ -73,53 +105,11 @@ function Series() {
 
 	// --- HANDLERS ---
 	function handleStartClick() {
-		const areInputValuesValid = (
-			document.getElementById("form") as HTMLFormElement
-		)?.checkValidity();
-
-		if (v.isNotTrue(areInputValuesValid)) {
-			showAlert("Inputs values are not valid");
-			return;
-		}
-
-		const intervalHandler = function intervalHandler() {
-			setSeries((currentSeries) => {
-				if (currentSeries === seriesInputValue) {
-					playSound("audio-serie");
-					return 1;
-				}
-
-				if (currentSeries === seriesInputValue - 1) {
-					playSound("audio-cycle-completed");
-					incrementCycles();
-					return currentSeries + 1;
-				}
-
-				if (currentSeries < seriesInputValue) {
-					playSound("audio-serie");
-					return currentSeries + 1;
-				}
-
-				return currentSeries;
-			});
-		};
-
-		intervalHandler();
-		setTimerStatus("IN_PROGRESS");
-		setTimerInterval(setInterval(intervalHandler, restTimeInputValue));
+		startInterval();
 	}
 
 	function handleResetClick() {
-		resetUI(true);
-	}
-
-	function handlePauseClick() {
-		if (isTimerPaused) {
-			handleStartClick();
-		} else {
-			stopInterval();
-			setTimerStatus("PAUSED");
-		}
+		resetUI();
 	}
 
 	function onInputChangeHandler(
@@ -130,15 +120,37 @@ function Series() {
 		};
 	}
 
+	// --- EFFECTS ---
 	React.useEffect(
-		function checkCyclesProgress() {
-			if (doingTimeInputValue === 0) return;
+		function checkTimeProgress() {
+			if (!timerInterval) return;
 
-			if (cycles === doingTimeInputValue) {
-				playSound("audio-session-completed");
+			if (timeCounter.value === 0) {
+				stopInterval();
+
+				const newSeriesCounter = seriesCounter + 1;
+				setSeriesCounter(newSeriesCounter);
+
+				if (newSeriesCounter === seriesInputValue * 2 - 1) {
+					playSound("audio-completed");
+					resetUI();
+				} else {
+					startInterval();
+				}
+			} else if (timeCounter.type === "doing") {
+				playSound("audio-tick");
 			}
 		},
-		[doingTimeInputValue, cycles],
+		[
+			resetUI,
+			startInterval,
+			stopInterval,
+			seriesCounter,
+			seriesInputValue,
+			timeCounter,
+			timerInterval,
+			timerStatus,
+		],
 	);
 
 	return (
@@ -161,7 +173,7 @@ function Series() {
 								className="tw-text-left"
 								value={String(doingTimeInputValue)}
 								disabled={isTimerStarted}
-								min="5"
+								min="1"
 								max="600"
 								onChange={onInputChangeHandler(setDoingInputValue)}
 								required
@@ -175,9 +187,9 @@ function Series() {
 								className="tw-text-center"
 								value={String(restTimeInputValue)}
 								disabled={isTimerStarted}
-								min="5"
+								min="1"
 								max="600"
-								onChange={onInputChangeHandler(setIntensityInputValue)}
+								onChange={onInputChangeHandler(setRestTimeInputValue)}
 								required
 							/>
 							<Input
@@ -203,14 +215,6 @@ function Series() {
 					</form>
 					<Space size={3} />
 					<Block className="tw-flex tw-justify-center tw-gap-3">
-						{isTimerStarted ? (
-							<ActionButton
-								className="tw-border-yellow-500 tw-bg-yellow-600 tw-text-yellow-300"
-								onClick={handlePauseClick}
-							>
-								{isTimerPaused ? "Resume" : "Pause"}
-							</ActionButton>
-						) : null}
 						{isTimerNotStarted ? (
 							<ActionButton
 								className="tw-border-green-800 tw-bg-green-900 tw-text-green-600"
@@ -234,18 +238,34 @@ function Series() {
 						<Block className="tw-text-center">
 							<Text>
 								<InlineText is="strong">Current serie:</InlineText>{" "}
-								<InlineText className="tw-inline-block tw-w-8 tw-text-center">{series}</InlineText>
-							</Text>
-							<Text>
-								<InlineText is="strong">Cycles finished:</InlineText>{" "}
-								<InlineText className="tw-inline-block tw-w-8 tw-text-center">{cycles}</InlineText>
+								<InlineText className="tw-inline-block tw-w-8 tw-text-center">
+									{seriesCounter}
+								</InlineText>
 							</Text>
 						</Block>
 					) : null}
 
 					<audio
-						src="/assets/sounds/completed-3.mp3"
-						id="audio-session-completed"
+						src="/assets/sounds/tick-1.mp3"
+						id="audio-tick"
+						preload="auto"
+						className="tw-hidden"
+					/>
+					<audio
+						src="/assets/sounds/completed-1.mp3"
+						id="audio-completed"
+						preload="auto"
+						className="tw-hidden"
+					/>
+					<audio
+						src="/assets/sounds/start.mp3"
+						id="audio-start"
+						preload="auto"
+						className="tw-hidden"
+					/>
+					<audio
+						src="/assets/sounds/rest.mp3"
+						id="audio-rest"
 						preload="auto"
 						className="tw-hidden"
 					/>
