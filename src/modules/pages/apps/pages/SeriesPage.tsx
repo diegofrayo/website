@@ -208,10 +208,21 @@ function Series() {
 							/>
 						</Block>
 						<Space size={2} />
-						<Text className="tw-text-center">
-							<InlineText is="strong">Estimated time: </InlineText>
-							<InlineText>{calculateEstimatedTime()}</InlineText>
-						</Text>
+						<Block>
+							<Text className="tw-text-center">
+								<InlineText is="strong">Estimated time: </InlineText>
+								<InlineText>{calculateEstimatedTime()}</InlineText>
+							</Text>
+							<Text
+								className={cn("tw-text-center", isTimerStarted ? "tw-visible" : "tw-invisible")}
+							>
+								<InlineText is="strong">Current serie: </InlineText>
+								<InlineText className="tw-inline-block tw-w-8 tw-text-left">
+									{Math[timeCounter.type === "rest" ? "ceil" : "round"]((seriesCounter + 1) / 2)}/
+									{seriesInputValue}
+								</InlineText>
+							</Text>
+						</Block>
 					</form>
 					<Space size={3} />
 					<Block className="tw-flex tw-justify-center tw-gap-3">
@@ -233,17 +244,6 @@ function Series() {
 						) : null}
 					</Block>
 					<Space size={2} />
-
-					{isTimerStarted ? (
-						<Block className="tw-text-center">
-							<Text>
-								<InlineText is="strong">Current serie:</InlineText>{" "}
-								<InlineText className="tw-inline-block tw-w-8 tw-text-center">
-									{seriesCounter}
-								</InlineText>
-							</Text>
-						</Block>
-					) : null}
 
 					<audio
 						src="/assets/sounds/tick-1.mp3"

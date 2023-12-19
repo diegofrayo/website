@@ -11,6 +11,7 @@ type T_SPVEEQRecommendationsProps = {
 		name: string;
 		instagram: string;
 		airbnb: string;
+		whatsapp: string;
 		description: string;
 	}[];
 };
@@ -64,6 +65,19 @@ function SPVEEQRecommendations({ data: recommendations }: T_SPVEEQRecommendation
 								>
 									<Icon
 										icon={Icon.icon.AIRBNB}
+										size={24}
+									/>
+								</Link>
+							) : null}
+							{v.isNotEmptyString(recommendation.whatsapp) ? (
+								<Link
+									href={`https://api.whatsapp.com/send?phone=${recommendation.whatsapp}`}
+									variant={Link.variant.SIMPLE}
+									className="tw-mr-2 tw-inline-block"
+									isExternalLink
+								>
+									<Icon
+										icon={Icon.icon.WHATSAPP}
 										size={24}
 									/>
 								</Link>
