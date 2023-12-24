@@ -212,7 +212,7 @@ class KordzService {
 		return `<button class="${[
 			this.CHORDS_BUTTON_SELECTOR,
 			!isCurrentLineTheLastOne && "tw-mb-1",
-			!isTheLastParsedTextLineBlank && "tw-mt-3",
+			!isTheLastParsedTextLineBlank && "tw-mt-1",
 		]
 			.filter(Boolean)
 			.join(" ")}" data-chord-index="${chord.variantIndex}">${

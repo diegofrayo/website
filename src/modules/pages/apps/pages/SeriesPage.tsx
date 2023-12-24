@@ -241,7 +241,7 @@ function Series() {
 							</Block>
 							<Space size={1} />
 
-							<Text className="tw-text-center tw-text-white">
+							<Text className="tw-text-center tw-text-sm tw-text-white">
 								<InlineText is="strong">Estimated time: </InlineText>
 								<InlineText>{calculateEstimatedTime()}</InlineText>
 							</Text>

@@ -6,7 +6,6 @@ import { BoxWithTitle, CopyToClipboardPopover } from "~/components/shared";
 import { withAuthRulesPage } from "~/modules/auth";
 import { useDidMount } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
-import { isMobileDevice } from "@diegofrayo/utils/browser";
 import { generateSlug, replaceAll } from "@diegofrayo/utils/strings";
 
 import { Output } from "../components";
@@ -23,7 +22,8 @@ function WhatsAppPage() {
 
 	// --- EFFECTS ---
 	useDidMount(() => {
-		setIsAppOptionSelected(isMobileDevice());
+		setIsAppOptionSelected(true);
+		// setIsAppOptionSelected(isMobileDevice());
 	});
 
 	// --- HANDLERS ---
