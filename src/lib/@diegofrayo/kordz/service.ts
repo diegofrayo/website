@@ -1,4 +1,5 @@
 import { sortPlainArray } from "../sort";
+import { createArray } from "../utils/arrays-and-objects";
 import { replaceAll } from "../utils/strings";
 import v from "../v";
 
@@ -165,7 +166,12 @@ class KordzService {
 
 		if (v.notFound(chord)) {
 			return {
-				parsedTextLine: currentTextLineParsed.replace("$", " "),
+				parsedTextLine: currentTextLineParsed.replace("$", " ").replace(
+					"{SEPARATOR}",
+					createArray(40)
+						.map(() => "=")
+						.join(""),
+				),
 				isCurrentTextLineItemAChord: false,
 			};
 		}

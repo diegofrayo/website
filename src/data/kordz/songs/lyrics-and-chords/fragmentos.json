@@ -1,0 +1,29 @@
+{
+	"details": {
+		"id": "fragmentos",
+		"title": "Fragmentos",
+		"artist": "Desconocido",
+		"album": "Desconocido",
+		"year": 0,
+		"country": "🌎",
+		"category": "3|OK|🤷‍♂️",
+		"order": 0,
+		"created_at": "2023/12/25",
+		"is_public": false,
+		"done": true,
+		"spotify_url": "",
+		"youtube_url": "",
+		"interpretation": "",
+		"assets": {},
+		"sources": [
+			{
+				"text": "No digas nada- Cali y El Dandee (Cover by Xandra Garsem)",
+				"url": "https://youtu.be/X_kOB8m8veA",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "                     F\nNo digas nada por favor\n                             G\nque hablando el alma me destrozas\n                       C\nquiero decirte tantas cosas,\n         Em             Am\nquiero acordarme de tu olor\n\n                     F\nNo digas nada por favor\n                         G\nno vaya a ser que me despierte\n                             E\nde un sueño en el que puedo verte\n   E7                        Am\ny aún puedo hablarte de mi amor\n          G           F\nno digas nada ten piedad,\n         C          F\nsolo te pido que mañana por la noche\n    G\ndormido me des la oportunidad\n\n\n{SEPARATOR}\n\n\n               Em\nY es que me espera\n     ??1\ny cobijo me dará\n           Em\nentre sus manos\n           ??1\nhasta que luego venga Fuji\n        Em\ncon el mundo\n      ??1                      Em\nY me hace las señales con las piernas\n          ??1                    Am\ndesde un punto de la calle, desolada,\n          Am                     Am\ny es que puedo soportar esta distancia,\n             Am                         ??2\ny es que te has impreso en mi como una luz"
+}
