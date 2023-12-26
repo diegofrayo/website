@@ -4,7 +4,7 @@ import cn from "classnames";
 import { MainLayout, Page } from "~/components/layout";
 import { Block, Button, InlineText, Input, Select, Space, Text } from "~/components/primitive";
 import type DR from "@diegofrayo/types";
-import { isConfirmAlertAccepted } from "@diegofrayo/utils/browser";
+import { isConfirmAlertAccepted, showAlert } from "@diegofrayo/utils/browser";
 import { addLeftPadding, generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 
@@ -68,7 +68,7 @@ function Stopwatch() {
 		)?.checkValidity();
 
 		if (v.isNotTrue(areInputValuesValid)) {
-			// showAlert("Inputs values are not valid");
+			showAlert("Inputs values are not valid");
 			return;
 		}
 

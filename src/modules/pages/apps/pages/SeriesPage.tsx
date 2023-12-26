@@ -157,8 +157,11 @@ function Series() {
 
 				if (newSeriesCounter === seriesInputValue * 2 - 1) {
 					playSound("audio-completed");
-					showAlert("Completed");
-					resetUI();
+
+					setTimeout(() => {
+						showAlert("Completed");
+						resetUI();
+					}, 2000);
 				} else {
 					startInterval();
 				}
@@ -190,17 +193,15 @@ function Series() {
 					<form id="form">
 						<BoxWithTitle
 							title="Config"
-							className="tw-px-2 tw-pb-4 tw-pt-6"
+							className="tw-px-4 tw-pb-4 tw-pt-6"
 						>
-							<Block className="tw-flex tw-justify-between tw-gap-1">
+							<Block>
 								<Input
 									variant={Input.variant.STYLED}
 									componentProps={{ label: "Doing time" }}
-									containerProps={{ className: "tw-text-left tw-flex-1" }}
-									labelProps={{ className: "tw-text-xs" }}
+									labelProps={{ className: "tw-text-sm" }}
 									id="input-doing-time"
 									type="number"
-									className="tw-text-left"
 									value={String(doingTimeInputValue)}
 									disabled={isTimerStarted}
 									min="1"
@@ -208,14 +209,14 @@ function Series() {
 									onChange={onInputChangeHandler(setDoingInputValue)}
 									required
 								/>
+								<Space size={2} />
+
 								<Input
 									variant={Input.variant.STYLED}
 									componentProps={{ label: "Rest time" }}
-									containerProps={{ className: "tw-text-center tw-flex-1" }}
-									labelProps={{ className: "tw-text-xs" }}
+									labelProps={{ className: "tw-text-sm" }}
 									id="input-rest-time"
 									type="number"
-									className="tw-text-center"
 									value={String(restTimeInputValue)}
 									disabled={isTimerStarted}
 									min="1"
@@ -223,14 +224,14 @@ function Series() {
 									onChange={onInputChangeHandler(setRestTimeInputValue)}
 									required
 								/>
+								<Space size={2} />
+
 								<Input
 									variant={Input.variant.STYLED}
 									componentProps={{ label: "Series" }}
-									containerProps={{ className: "tw-text-right" }}
-									labelProps={{ className: "tw-text-xs" }}
+									labelProps={{ className: "tw-text-sm" }}
 									id="input-series-time"
 									type="number"
-									className="tw-text-right"
 									value={String(seriesInputValue)}
 									disabled={isTimerStarted}
 									min="1"

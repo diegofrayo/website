@@ -51,9 +51,11 @@ function WhatsAppPage() {
 	// --- UTILS ---
 	function composeWhatsAppUrl() {
 		const url = new URLSearchParams();
-
 		url.append("phone", `${phone.includes("+") ? "" : "+57"}${phone}`);
-		url.append("text", message || "Hola!");
+
+		if (!isAppOptionSelected) {
+			url.append("text", message || "Hola!");
+		}
 
 		return isInputPhoneValid.current === false
 			? "Error: INVALID FORM VALUES"

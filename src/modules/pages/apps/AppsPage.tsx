@@ -23,7 +23,7 @@ function AppsPage() {
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={`/apps/${app.id}`}
-									className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-text-center tw-wh-44"
+									className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-text-center tw-wh-32 sm:tw-wh-44"
 								>
 									<Icon
 										icon={app.icon}
@@ -31,7 +31,7 @@ function AppsPage() {
 										color="inherit"
 									/>
 									<Space size={1} />
-									<Text className="tw-font-bold">{app.name}</Text>
+									<Text className="tw-text-sm tw-font-bold sm:tw-text-base">{app.name}</Text>
 								</Link>
 							</Block>
 						);

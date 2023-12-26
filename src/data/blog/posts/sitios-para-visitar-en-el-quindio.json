@@ -311,7 +311,10 @@
 						"price": "Gratis",
 						"published": true,
 						"featured": false,
-						"links": ["https://rutasdelosandes.com/amp/colombia/quindio/chorros-san-rafael.html"],
+						"links": [
+							"https://www.instagram.com/p/Cx6MI6tRvaQ",
+							"https://rutasdelosandes.com/amp/colombia/quindio/chorros-san-rafael.html"
+						],
 						"images": [
 							{
 								"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/chorros-de-san-rafael/1.jpg",
@@ -664,7 +667,7 @@
 						"price": "Gratis",
 						"published": true,
 						"featured": false,
-						"links": [],
+						"links": ["https://www.instagram.com/p/Cz1tZTkRwHy"],
 						"images": [
 							{
 								"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/salto-del-hippie/1.jpg",

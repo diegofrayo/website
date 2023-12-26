@@ -422,7 +422,10 @@ function WhastAppButton({ children, phone, whatsAppLinksMode }: T_WhastAppButton
 	function composeWhatsAppUrl() {
 		const url = new URLSearchParams();
 		url.append("phone", phone.replace(" ", "").trim());
-		url.append("text", "Hola!");
+
+		if (whatsAppLinksMode === "web") {
+			url.append("text", "Hola!");
+		}
 
 		return `https://${
 			whatsAppLinksMode === "web" ? "web" : "api"

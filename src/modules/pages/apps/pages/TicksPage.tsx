@@ -18,7 +18,7 @@ import { useDidMount, useEnhancedState } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
 import { sortBy } from "@diegofrayo/sort";
 import { useBrowserStorageState } from "@diegofrayo/storage";
-import { isConfirmAlertAccepted } from "@diegofrayo/utils/browser";
+import { isConfirmAlertAccepted, showAlert } from "@diegofrayo/utils/browser";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 
@@ -135,7 +135,7 @@ function Ticks() {
 		)?.checkValidity();
 
 		if (v.isNotTrue(areInputValuesValid)) {
-			// showAlert("Inputs values are not valid");
+			showAlert("Inputs values are not valid");
 			return;
 		}
 
