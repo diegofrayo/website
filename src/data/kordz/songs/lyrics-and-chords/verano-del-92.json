@@ -1,0 +1,52 @@
+{
+	"details": {
+		"id": "verano-del-92",
+		"title": "Verano del 92",
+		"artist": "Los Piojos",
+		"album": "3er arco",
+		"year": 1996,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 1,
+		"created_at": "2021/03/23",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/1NXvuBAq48QrxRFQZVmORQ",
+		"youtube_url": "https://youtu.be/DaVRJca0z5c",
+		"assets": {
+			"punteo_1": "/assets/images/pages/kordz/songs/verano-del-92/rasgueo-1.png",
+			"punteo_2": "/assets/images/pages/kordz/songs/verano-del-92/rasgueo-2.png"
+		},
+		"sources": [
+			{
+				"text": "Verano Del 92, Los Piojos (acordes) (ver 3) en TusAcordes.com",
+				"url": "https://www.tusacordes.com/tab/los_piojos-verano_del_92-acordes-32038",
+				"source": "url"
+			},
+			{
+				"text": "GUITARRA | Verano Del 92 - Los Piojos (Guitarra cover/tutorial) Martin Lopez",
+				"url": "https://youtu.be/LrR3DVPh7aU",
+				"source": "youtube"
+			},
+			{
+				"text": "cómo tocar VERANO DEL '92 de LOS PIOJOS en ukelele tutorial completo",
+				"url": "https://youtu.be/6ALi7AlVqzo",
+				"source": "youtube"
+			},
+			{
+				"text": "Cómo tocar Los piojos Verano del 92 Tutorial Acordes Guitarra",
+				"url": "https://youtu.be/RaeHAbmgUPo",
+				"source": "youtube"
+			},
+			{
+				"text": "Los Piojos Verano del 92 Cover y acordes Guitarra",
+				"url": "https://youtu.be/SPt8p-vJ33Y",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "G    D     A     |\nOhh, ohhh, ohh   | (x2)\n\n\nD                        A                      |\n  Juan Pedro Fasola,       nuestro gran amigo   |\nA                        D                      |\n  que ganas de verte,      tenemos todos acá    |\nD                        A                      |\n  hace tanto tiempo,       que no te sentimos   |\nA                        D                      |\n  contando aquel cuento,                        |\nD                                               |\n  de la buena pipa, ahí va                      | (x2)\n\n\n G               D              A      |\nVoy a quemar la piedra de tu locura    |\n  G             D                 A    |\nasí no hay amargura y se va el dolor   | (x2)\n\n\n G   D     A\nFasolita querido a ver cuando venís por acá\n G   D     A\nFasolita querido, que te quiero ver\nte quiero contar, lo mal que se vive\nlo bien que se está\n\n\nG    D     A     |\nOhh, ohhh, ohh   | (x2)\n\n\nD                        A                      |\n  Juan Pedro Fasola,       nuestro gran amigo   |\nA                        D                      |\n  que ganas de verte,      tenemos todos acá    |\nD                        A                      |\n  hace tanto tiempo,       que no te sentimos   |\nA                        D                      |\n  contando aquel cuento,                        |\nD                                               |\n  de la buena pipa, ahí va                      | (x2)\n\n\n G               D              A       |\nVoy a quemar la piedra de tu locura     |\n  G             D                 A     |\nasí no hay amargura y se va el dolor    | (x2)\n\n\n G   D     A\nFasolita querido a ver cuando venís por acá\n G   D     A\nFasolita querido, que te quiero ver\nte quiero contar, lo mal que se vive\nlo bien que se está\n\n\nG    D     A                         |\nOhh, ohh, ohh                        |\nsuba al árbol que está amaneciendo   |\n                                     |\nG    D     A                         |\nOhh, ohh, ohh                        |\nsuavemente la hoja tírese            | (x3)"
+}

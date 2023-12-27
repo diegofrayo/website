@@ -10,15 +10,18 @@ import { addLeftPadding } from "@diegofrayo/utils/strings";
 
 function Series() {
 	// --- STATES & REFS ---
-	const [timerStatus, setTimerStatus] = React.useState<"NOT_STARTED" | "IN_PROGRESS" | "PAUSED">(
+	const [timerStatus, setTimerStatus] = React.useState<"NOT_STARTED" | "IN_PROGRESS">(
 		"NOT_STARTED",
 	);
 	const [doingTimeInputValue, setDoingInputValue] = React.useState(30);
 	const [restTimeInputValue, setRestTimeInputValue] = React.useState(30);
 	const [seriesInputValue, setSeriesInputValue] = React.useState(2);
 	const [timerInterval, setTimerInterval] = React.useState<DR.SetTimeout | null>(null);
-	const [timeCounter, setTimeCounter] = React.useState<{ type: "doing" | "rest"; value: number }>({
-		type: "rest",
+	const [timeCounter, setTimeCounter] = React.useState<{
+		type: "NOT_STARTED" | "STARTING" | "DOING" | "REST";
+		value: number;
+	}>({
+		type: "NOT_STARTED",
 		value: 0,
 	});
 	const [seriesCounter, setSeriesCounter] = React.useState(0);
@@ -37,20 +40,28 @@ function Series() {
 		function startInterval() {
 			setTimerStatus("IN_PROGRESS");
 			setTimeCounter((currentState) => {
-				const isDoingTime = currentState.type === "doing";
+				const isDoingTime = currentState.type === "DOING";
+				const isNotStartedTime = currentState.type === "NOT_STARTED";
+
+				if (isNotStartedTime) {
+					return {
+						type: "STARTING",
+						value: 5,
+					};
+				}
 
 				if (isDoingTime) {
 					playSound("audio-rest");
 
 					return {
-						type: "rest",
+						type: "REST",
 						value: restTimeInputValue,
 					};
 				}
 
 				playSound("audio-start");
 				return {
-					type: "doing",
+					type: "DOING",
 					value: doingTimeInputValue,
 				};
 			});
@@ -85,7 +96,7 @@ function Series() {
 			stopInterval();
 			setSeriesCounter(0);
 			setTimerStatus("NOT_STARTED");
-			setTimeCounter({ type: "rest", value: 0 });
+			setTimeCounter({ type: "NOT_STARTED", value: 0 });
 		},
 		[stopInterval, setTimerStatus, setSeriesCounter, setTimeCounter],
 	);
@@ -128,7 +139,7 @@ function Series() {
 	}
 
 	// --- HANDLERS ---
-	function handleStartClick() {
+	async function handleStartClick() {
 		startInterval();
 	}
 
@@ -152,6 +163,11 @@ function Series() {
 			if (timeCounter.value === 0) {
 				stopInterval();
 
+				if (timeCounter.type === "STARTING") {
+					startInterval();
+					return;
+				}
+
 				const newSeriesCounter = seriesCounter + 1;
 				setSeriesCounter(newSeriesCounter);
 
@@ -161,11 +177,11 @@ function Series() {
 					setTimeout(() => {
 						showAlert("Completed");
 						resetUI();
-					}, 2000);
+					}, 1000);
 				} else {
 					startInterval();
 				}
-			} else if (timeCounter.type === "doing") {
+			} else if (timeCounter.type === "DOING" || timeCounter.type === "STARTING") {
 				playSound("audio-tick");
 			}
 		},
@@ -190,105 +206,105 @@ function Series() {
 		>
 			<MainLayout title={PAGE_TITLE}>
 				<Block className="tw-mx-auto tw-w-96 tw-max-w-full">
-					<form id="form">
-						<BoxWithTitle
-							title="Config"
-							className="tw-px-4 tw-pb-4 tw-pt-6"
-						>
-							<Block>
-								<Input
-									variant={Input.variant.STYLED}
-									componentProps={{ label: "Doing time" }}
-									labelProps={{ className: "tw-text-sm" }}
-									id="input-doing-time"
-									type="number"
-									value={String(doingTimeInputValue)}
-									disabled={isTimerStarted}
-									min="1"
-									max="600"
-									onChange={onInputChangeHandler(setDoingInputValue)}
-									required
-								/>
-								<Space size={2} />
+					<BoxWithTitle
+						title="Details"
+						className={cn(
+							"tw-px-2 tw-pb-4 tw-pt-6 tw-text-center",
+							timerStatus === "NOT_STARTED" ? "tw-hidden" : "tw-block",
+						)}
+					>
+						<Text className="tw-font-mono tw-text-7xl tw-text-white">
+							{secondsToTime(timeCounter.value)}
+						</Text>
 
-								<Input
-									variant={Input.variant.STYLED}
-									componentProps={{ label: "Rest time" }}
-									labelProps={{ className: "tw-text-sm" }}
-									id="input-rest-time"
-									type="number"
-									value={String(restTimeInputValue)}
-									disabled={isTimerStarted}
-									min="1"
-									max="600"
-									onChange={onInputChangeHandler(setRestTimeInputValue)}
-									required
-								/>
-								<Space size={2} />
+						<Text className="tw-text-4xl tw-font-bold tw-uppercase">{timeCounter.type}</Text>
+						<Space size={1} />
 
-								<Input
-									variant={Input.variant.STYLED}
-									componentProps={{ label: "Series" }}
-									labelProps={{ className: "tw-text-sm" }}
-									id="input-series-time"
-									type="number"
-									value={String(seriesInputValue)}
-									disabled={isTimerStarted}
-									min="1"
-									max="10"
-									onChange={onInputChangeHandler(setSeriesInputValue)}
-									required
-								/>
-							</Block>
-							<Space size={1} />
-
-							<Text className="tw-text-center tw-text-sm tw-text-white">
-								<InlineText is="strong">Estimated time: </InlineText>
-								<InlineText>{calculateEstimatedTime()}</InlineText>
-							</Text>
-							<Space size={3} />
-
-							<Block className="tw-flex tw-justify-center tw-gap-3">
-								{isTimerNotStarted ? (
-									<ActionButton
-										className="tw-border-green-800 tw-bg-green-900 tw-text-green-600"
-										onClick={handleStartClick}
-									>
-										Start
-									</ActionButton>
-								) : null}
-								{isTimerStarted ? (
-									<ActionButton
-										className="tw-border-red-800 tw-bg-red-900 tw-text-red-600"
-										onClick={handleResetClick}
-									>
-										Reset
-									</ActionButton>
-								) : null}
-							</Block>
-						</BoxWithTitle>
-						<Space size={2} />
-
-						<BoxWithTitle
-							title="Details"
-							className={cn(
-								"tw-px-2 tw-pb-4 tw-pt-6 tw-text-center",
-								timerStatus === "NOT_STARTED" ? "tw-hidden" : "tw-block",
-							)}
-						>
-							<Text className="tw-font-mono tw-text-7xl tw-text-white">
-								{secondsToTime(timeCounter.value)}
-							</Text>
-
-							<Text className="tw-text-4xl tw-font-bold tw-uppercase">{timeCounter.type}</Text>
-							<Space size={1} />
-
+						{timeCounter.type === "DOING" || timeCounter.type === "REST" ? (
 							<Text>
-								{Math[timeCounter.type === "rest" ? "ceil" : "round"]((seriesCounter + 1) / 2)}/
+								{Math[timeCounter.type === "REST" ? "ceil" : "round"]((seriesCounter + 1) / 2)}/
 								{seriesInputValue}
 							</Text>
-						</BoxWithTitle>
-					</form>
+						) : null}
+					</BoxWithTitle>
+					<Space size={2} />
+
+					<BoxWithTitle
+						title="Config"
+						className="tw-px-4 tw-pb-4 tw-pt-6"
+					>
+						<Block>
+							<Input
+								variant={Input.variant.STYLED}
+								componentProps={{ label: "Doing time" }}
+								labelProps={{ className: "tw-text-sm" }}
+								id="input-doing-time"
+								type="number"
+								value={String(doingTimeInputValue)}
+								disabled={isTimerStarted}
+								min="1"
+								max="600"
+								onChange={onInputChangeHandler(setDoingInputValue)}
+								required
+							/>
+							<Space size={2} />
+
+							<Input
+								variant={Input.variant.STYLED}
+								componentProps={{ label: "Rest time" }}
+								labelProps={{ className: "tw-text-sm" }}
+								id="input-rest-time"
+								type="number"
+								value={String(restTimeInputValue)}
+								disabled={isTimerStarted}
+								min="1"
+								max="600"
+								onChange={onInputChangeHandler(setRestTimeInputValue)}
+								required
+							/>
+							<Space size={2} />
+
+							<Input
+								variant={Input.variant.STYLED}
+								componentProps={{ label: "Series" }}
+								labelProps={{ className: "tw-text-sm" }}
+								id="input-series-time"
+								type="number"
+								value={String(seriesInputValue)}
+								disabled={isTimerStarted}
+								min="1"
+								max="10"
+								onChange={onInputChangeHandler(setSeriesInputValue)}
+								required
+							/>
+						</Block>
+						<Space size={1} />
+
+						<Text className="tw-text-center tw-text-sm tw-text-white">
+							<InlineText is="strong">Estimated time: </InlineText>
+							<InlineText>{calculateEstimatedTime()}</InlineText>
+						</Text>
+						<Space size={3} />
+
+						<Block className="tw-flex tw-justify-center tw-gap-3">
+							{isTimerNotStarted ? (
+								<ActionButton
+									className="tw-border-green-800 tw-bg-green-900 tw-text-green-600"
+									onClick={handleStartClick}
+								>
+									Start
+								</ActionButton>
+							) : null}
+							{isTimerStarted ? (
+								<ActionButton
+									className="tw-border-red-800 tw-bg-red-900 tw-text-red-600"
+									onClick={handleResetClick}
+								>
+									Reset
+								</ActionButton>
+							) : null}
+						</Block>
+					</BoxWithTitle>
 					<Space size={2} />
 
 					<audio

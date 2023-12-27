@@ -52,6 +52,7 @@ export type T_CustomFile = {
 	stats: fs.Stats;
 	ext: string;
 	isDirectory: boolean;
+	parentFolderPath: string;
 };
 
 export function readFolderFiles(
@@ -74,6 +75,7 @@ export function readFolderFiles(
 			stats,
 			ext: ext.toLowerCase().slice(1),
 			isDirectory: stats.isDirectory(),
+			parentFolderPath: path.basename(path.dirname(filePath)),
 		};
 
 		if (opts?.recursive && file.isDirectory) {
