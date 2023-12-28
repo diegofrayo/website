@@ -51,6 +51,10 @@ export function addLeftPadding(number: number) {
 	return `${number < 10 ? "0" : ""}${number}`;
 }
 
+export function capitalize(input: string) {
+	return input[0].toUpperCase() + input.slice(1);
+}
+
 // --- INTERNALS ---
 
 function escapeRegExp(text: string) {

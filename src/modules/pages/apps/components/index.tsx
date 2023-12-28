@@ -20,7 +20,7 @@ import type DR from "@diegofrayo/types";
 import { isBusiness, type T_Business } from "@diegofrayo/types/businesses";
 import { isContact, type T_Contact } from "@diegofrayo/types/contacts";
 import { throwError } from "@diegofrayo/utils/misc";
-import { generateSlug } from "@diegofrayo/utils/strings";
+import { capitalize, generateSlug, replaceAll } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 
 import {
@@ -38,14 +38,18 @@ export function Output({ children }: { children: string }) {
 	);
 }
 
+type T_ContactsPageComponentProps = {
+	config: T_PageProps["config"];
+	data: (T_ContactsPageProps | T_BusinessesPageProps)["data"];
+	variant: "businesses" | "contacts";
+};
+
 export const ContactsPage = withAuthRulesPage(
 	withOnlyClientRender(function ContactsPage({
 		config,
 		data,
-	}: {
-		config: T_PageProps["config"];
-		data: (T_ContactsPageProps | T_BusinessesPageProps)["data"];
-	}) {
+		variant,
+	}: T_ContactsPageComponentProps) {
 		// --- HOOKS ---
 		const [isAllCollapsiblesOpened, , toggleIsAllCollapsiblesOpened] = useEnhancedState(false);
 
@@ -64,6 +68,95 @@ export const ContactsPage = withAuthRulesPage(
 
 		function handleToggleWhatsAppLinksModeClick() {
 			setWhatsAppLinksMode(whatsAppLinksMode === "app" ? "web" : "app");
+		}
+
+		function handleDownloadAsHTMLClick() {
+			const content = generateContactsListAsText("", data);
+			const text = replaceAll(
+				replaceAll(HTML_CONTACTS_PAGE, "{CONTENT}", content),
+				"{TITLE}",
+				capitalize(variant),
+			);
+
+			const element = document.createElement("a");
+			element.setAttribute("href", `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`);
+			element.setAttribute("download", `${variant}.html`);
+			element.style.display = "none";
+
+			document.body.appendChild(element);
+			element.click();
+			document.body.removeChild(element);
+		}
+
+		// --- UTILS ---
+		function generateContactsListAsText(contactsGroupTitle: string, contacts: unknown): string {
+			if (v.isArray<T_Contact>(contacts)) {
+				return `
+          <details style="margin-bottom: 20px;">
+            <summary style="cursor: pointer">${contactsGroupTitle}</summary>
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                padding-left: 20px;
+                padding-top: 10px;
+              "
+            >
+              ${contacts
+								.map((contact) => {
+									const phone = v.isArray(contact.phone) ? contact.phone[0].value : contact.phone;
+									const [phoneCountryCode, phoneWithoutCode] = v.isNotEmptyString(phone)
+										? phone.split(" ")
+										: ["", ""];
+									const formattedPhone = formatPhoneNumber(phoneWithoutCode, phoneCountryCode);
+
+									return `
+                    <div>
+                      <p style="font-weight: bold">${contact.name}</p>
+                      <hr class="separator" style="margin: 2px auto" />
+
+                      <p style="font-style: italic; font-size: 0.8rem">
+                        ${formattedPhone}
+                      </p>
+                      <hr class="separator" style="margin: 3px auto" />
+
+                      <div>
+                        <a class="cta-link" href="tel:${phoneWithoutCode}" target="_blank"
+                          >📞 Llamar</a
+                        >
+                        <a
+                          class="cta-link"
+                          href="https://api.whatsapp.com/send?phone=${encodeURIComponent(
+														phone.replace(" ", "").trim(),
+													)}"
+                          target="_blank"
+                          >📝 WhatsApp</a
+                        >
+                      </div>
+                    </div>
+                  `;
+								})
+								.join("\n")}
+            </div>
+          </details>
+        `;
+			}
+
+			if (v.isObject(contacts)) {
+				return Object.entries(contacts)
+					.map(([subCategoryName, subCategoryContacts]: [string, unknown]) => {
+						return generateContactsListAsText(
+							`${contactsGroupTitle ? `${contactsGroupTitle} / ` : ""}${
+								subCategoryName.match(/^\d/) ? subCategoryName.substring(2) : subCategoryName
+							}`,
+							subCategoryContacts,
+						);
+					})
+					.join("\n");
+			}
+
+			return "";
 		}
 
 		return (
@@ -102,6 +195,13 @@ export const ContactsPage = withAuthRulesPage(
 											: Icon.icon.CHEVRON_DOUBLE_DOWN
 									}
 								/>
+							</Button>
+
+							<Button
+								variant={Button.variant.STYLED}
+								onClick={handleDownloadAsHTMLClick}
+							>
+								<Icon icon={Icon.icon.ARROW_DOWN_TRAY} />
 							</Button>
 						</Block>
 					</BoxWithTitle>
@@ -524,3 +624,72 @@ function SMSButton({ children, phone, country }: T_PhoneButtonProps) {
 
 	return null;
 }
+
+const HTML_CONTACTS_PAGE = `
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>{TITLE}</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+    </head>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: rgb(200, 200, 200);
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        padding: 20px;
+      }
+
+      .cta-link {
+        text-decoration: none;
+        display: inline-block;
+        background-color: rgb(6, 145, 1);
+        color: white;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 0.7rem;
+      }
+
+      .separator {
+        background-color: transparent;
+        border: 0;
+      }
+    </style>
+    <body>
+      <main
+        style="
+          -moz-box-shadow: 0px 0px 5px 0px rgba(138, 138, 138, 1);
+          -webkit-box-shadow: 0px 0px 5px 0px rgba(138, 138, 138, 1);
+          box-shadow: 0px 0px 5px 0px rgba(138, 138, 138, 1);
+
+          background-color: white;
+          border-radius: 20px;
+          margin: 0 auto;
+          max-width: 100%;
+          padding: 20px;
+          width: 640px;
+        "
+      >
+        <h1 style="text-align: center">{TITLE}</h1>
+        <hr class="separator" style="margin: 20px auto" />
+
+        <div>
+          {CONTENT}
+        </div>
+      </main>
+    </body>
+  </html>
+`;

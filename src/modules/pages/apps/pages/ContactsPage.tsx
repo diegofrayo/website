@@ -7,6 +7,7 @@ export default function ContactsPage({ data }: T_ContactsPageProps) {
 	return (
 		<ContactsPageComponent
 			config={{ title: "Contactos", disableSEO: true }}
+			variant="contacts"
 			data={data}
 		/>
 	);
