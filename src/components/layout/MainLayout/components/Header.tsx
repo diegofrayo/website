@@ -25,7 +25,7 @@ function Header(): T_ReactElement {
 			<Block className="tw-text-center">
 				<Link
 					variant={Link.variant.SECONDARY}
-					href={ROUTES.HOME}
+					href={ROUTES.MUSIC}
 					className="tw-border-b-2 tw-border-dotted dfr-border-color-bw"
 				>
 					DR TOOLS
@@ -67,26 +67,7 @@ function MainMenu(): T_ReactElement {
 	});
 
 	React.useEffect(() => {
-		const translator = I18nService.getInstance();
-
-		setItems([
-			...createItems(),
-			...(AuthService.isUserLoggedIn()
-				? [
-						{
-							label: translator.t("layout:header:common:menu_item_personal"),
-							url: ROUTES.PERSONAL,
-						},
-				  ]
-				: isPWA()
-				? [
-						{
-							label: translator.t("layout:header:menu:sign_in"),
-							url: ROUTES.SIGN_IN,
-						},
-				  ]
-				: []),
-		]);
+		setItems([...createItems()]);
 	}, [currentLocale]);
 
 	// --- HANDLERS ---
@@ -104,16 +85,16 @@ function MainMenu(): T_ReactElement {
 
 		return [
 			{
-				label: translator.t("layout:header:menu:home"),
-				url: ROUTES.HOME,
-			},
-			{
 				label: translator.t("layout:header:common:menu_item_blog"),
 				url: ROUTES.BLOG,
 			},
 			{
 				label: translator.t("layout:header:menu:music"),
 				url: ROUTES.MUSIC,
+			},
+			{
+				label: translator.t("layout:header:common:menu_item_personal"),
+				url: ROUTES.PERSONAL,
 			},
 		];
 	}

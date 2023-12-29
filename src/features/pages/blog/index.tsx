@@ -66,7 +66,6 @@ function BlogEntry({
 	categories,
 	publishedAt,
 	locales,
-	thumbnail,
 	isPublished,
 }: T_BlogEntryProps): T_ReactElement {
 	// --- HOOKS ---
@@ -89,11 +88,6 @@ function BlogEntry({
 				locale={getLocale()}
 				className="tw-flex tw-h-full tw-w-full tw-flex-col"
 			>
-				<Block
-					is="header"
-					className="tw-h-[280px] tw-bg-cover tw-bg-center tw-bg-no-repeat sm:tw-h-[140px]"
-					style={{ backgroundImage: `url('${thumbnail}')` }}
-				/>
 				<Block
 					is="footer"
 					className="tw-relative tw-flex-1 tw-pb-8 tw-pt-2"
