@@ -17,7 +17,7 @@ function TextFormatter({ children }: T_TextFormatterProps) {
 				window.dispatchEvent(
 					new CustomEvent("KORDZ_CHORD_SELECTED", {
 						detail: {
-							chord: KordzService.findChord(element.innerText, { returnAllVariants: true }),
+							chord: KordzService.findChord(element.innerText.trim(), { returnAllVariants: true }),
 							selectedChordIndex: safeCastNumber(element.getAttribute("data-chord-index") || "", 0),
 						},
 					}),

@@ -53,6 +53,7 @@ export type T_CustomFile = {
 	ext: string;
 	isDirectory: boolean;
 	parentFolderPath: string;
+	parentFolderName: string;
 };
 
 export function readFolderFiles(
@@ -75,7 +76,8 @@ export function readFolderFiles(
 			stats,
 			ext: ext.toLowerCase().slice(1),
 			isDirectory: stats.isDirectory(),
-			parentFolderPath: path.basename(path.dirname(filePath)),
+			parentFolderPath: path.dirname(filePath),
+			parentFolderName: path.basename(path.dirname(filePath)),
 		};
 
 		if (opts?.recursive && file.isDirectory) {
@@ -105,10 +107,11 @@ export function fileExists(filePath: string) {
 
 export function renameFile(
 	currentFilePath: string,
-	opts: { newFilePath?: string; newFileName?: string },
+	opts: { newFilePath?: string; newFileName: string },
 ) {
 	if (opts.newFilePath) {
-		fs.renameSync(currentFilePath, opts.newFilePath);
+		prepareFilePathFolder(opts.newFilePath, true);
+		fs.renameSync(currentFilePath, path.resolve(opts.newFilePath, opts.newFileName));
 	} else if (opts.newFileName) {
 		fs.renameSync(currentFilePath, path.resolve(path.dirname(currentFilePath), opts.newFileName));
 	} else {
