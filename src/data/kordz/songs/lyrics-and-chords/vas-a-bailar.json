@@ -17,23 +17,23 @@
 		"assets": {},
 		"sources": [
 			{
-				"text": "🦎Cómo tocar Vas a bailar Ciro y Los Persas Tutorial Cover acústico Acordes Guitarra criolla",
-				"url": "https://youtu.be/oasYa2rWVt8",
-				"source": "youtube"
-			},
-			{
-				"text": "RASGUEO \"Vas a bailar\" Ciro y Los Persas COVER EN LA DESCRIPCIÓN Y COMENTARIOS",
-				"url": "https://youtu.be/E0RGVHaaFc4",
-				"source": "youtube"
-			},
-			{
 				"text": "VAS A BAILAR, Ciro y los Persas: Acordes",
 				"url": "https://acordes.lacuerda.net/ciro_y_los_persas/vas_a_bailar-3.shtml",
 				"source": "lacuerda"
+			},
+			{
+				"text": "Vas a Bailar (cover) Ciro y Los Persas",
+				"url": "https://youtu.be/HLESXONFwEk",
+				"source": "youtube"
+			},
+			{
+				"text": "🦎Cómo tocar Vas a bailar Ciro y Los Persas Tutorial Cover acústico Acordes Guitarra criolla",
+				"url": "https://youtu.be/oasYa2rWVt8",
+				"source": "youtube"
 			}
 		],
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "G            D              Em       C\n   En estos tiempos de oquedad,\nG            D        Em             C\n   de oscuridad iluminada,\nG              D             Em      C\n   de distracción a perpetuidad,\nG              D             Em      C\n   de imbecilidad tan programada\n\nG               D\n   Aunque no encuentres la voz,\nEm                     C\naunque te paguen con platos de arroz,\nG                    D\naunque te asustes y puedas caer,\n Em                C\nla dignidad no se pierde sabés\n\n\nG              D         Em7[2]     Cadd9\n   No estás aquí para pasar\nG              D           Em7[2]   Cadd9\n   sin que te vean, que carajo!\nG             D\n   si ser lo mismo es virtud,\n Em7[2]                 Cadd9\nvos sabés bien que también es quietud,\n G                   D\nsi anda rondando la felicidad\n Em7[2]            Cadd9\nno tengas tanto temor de cambiar\n\n\n G        Em   C               Cm             |\nVas a bailar, como si fuera la última noche   | (x2)\n\n\nG             D               Em7[2]     Cadd9\n   No sos un mueble en un rincón,\nG             D              Em7[2]      Cadd9\n   o solo un número en un legajo\nG             D\n   te quiero oír respirar,\n  Em7[2]               Cadd9\nquiero abrazarte y sentirte vibrar,\n G                     D\nno hay que viajar a otra dimensión,\n Em7[2]               Cadd9               Cm\npara escuchar lo que suena mejor, dentro tuyo\n\n\n G        Em   C               Cm             |\nVas a bailar, como si fuera la última noche   | (x2)\n\n\nG             D\n   Si ser lo mismo es virtud,\n Em7[2]                 Cadd9\nvos sabés bien que también es quietud,\n G                     D\nno hay que viajar a otra dimensión,\n Em7[2]               Cadd9               Cm\npara escuchar lo que suena mejor, dentro tuyo\n\n\nG  Em  C  Cm   | x2\n\n\nG  Em   C              Cm\n       Tanta soledad, todos conectados,\n\nG  Em   C                       Cm\n       niños de pantalla bienvenidos al mercado\n\nG"
+	"txt": "G            D              Em       C\n   En estos tiempos de oquedad,\nG            D        Em             C\n   de oscuridad iluminada,\nG              D             Em      C\n   de distracción a perpetuidad,\nG              D             Em      C\n   de imbecilidad tan programada\n\nG               D\n   Aunque no encuentres la voz,\nEm                     C\naunque te paguen con platos de arroz,\nG                    D\naunque te asustes y puedas caer,\n Em                C\nla dignidad no se pierde sabés\n\n\nG              D         Em7[2]     Cadd9\n   No estás aquí para pasar\nG              D           Em7[2]   Cadd9\n   sin que te vean, que carajo!\nG             D\n   si ser lo mismo es virtud,\n Em7[2]                 Cadd9\nvos sabés bien que también es quietud,\n G                   D\nsi anda rondando la felicidad\n Em7[2]            Cadd9\nno tengas tanto temor de cambiar\n\n\n G        Em   C               Cm             |\nVas a bailar, como si fuera la última noche   | (x2)\n\n\nG             D               Em7[2]     Cadd9\n   No sos un mueble en un rincón,\nG             D              Em7[2]      Cadd9\n   o solo un número en un legajo\nG             D\n   te quiero oír respirar,\n  Em7[2]               Cadd9\nquiero abrazarte y sentirte vibrar,\n G                     D\nno hay que viajar a otra dimensión,\n Em7[2]               Cadd9               Cm\npara escuchar lo que suena mejor, dentro tuyo\n\n\n G        Em   C               Cm             |\nVas a bailar, como si fuera la última noche   | (x2)\n\n\nG  Em  C  Cm   | x2\n\n\nG             D\n   Si ser lo mismo es virtud,\n Em7[2]                 Cadd9\nvos sabés bien que también es quietud,\n G                     D\nno hay que viajar a otra dimensión,\n Em7[2]               Cadd9               Cm\npara escuchar lo que suena mejor, dentro tuyo\n\n\n G        Em   C               Cm\nVas a bailar, como si fuera la última noche\n G        Em   C               Cm\nVas a bailar, como si fuera la última noche\n G        Em   C                 Cm\nVas a bailar, como si nadie estuviera viendo\n G        Em   C                   Cm\nVas a bailar, porque no hay otro que este momento\n\n\nG  Em  C  Cm   | x2\n\n\nG  Em   C              Cm\n       Tanta soledad, todos conectados,\n\nG  Em   C                       Cm\n       niños de pantalla bienvenidos al mercado\n\nG"
 }
