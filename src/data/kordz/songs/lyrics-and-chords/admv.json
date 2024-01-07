@@ -1,0 +1,44 @@
+{
+	"details": {
+		"id": "admv",
+		"title": "ADMV",
+		"artist": "Maluma",
+		"album": "Papi Juancho",
+		"year": 2020,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 1,
+		"created_at": "2024/01/06",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/4j3iq13kHs5PB94jdTp3Y3",
+		"youtube_url": "https://youtu.be/Oe2u0QqauRw",
+		"interpretation": "",
+		"assets": {},
+		"sources": [
+			{
+				"text": "ADMV, Maluma: Acordes",
+				"url": "https://acordes.lacuerda.net/maluma/admv.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Cómo tocar \"ADMV\" de Maluma en Guitarra. TUTORIAL FÁCIL",
+				"url": "https://youtu.be/-s_avjcyNcA",
+				"source": "youtube"
+			},
+			{
+				"text": "ADMV (Amor De Mi Vida) versión Romantica - Maluma - cover de Winder",
+				"url": "https://youtu.be/vK2lXs7iRrk",
+				"source": "youtube"
+			},
+			{
+				"text": "Maluma - ADMV (Sergio Serrano)",
+				"url": "https://youtu.be/SdI-w0tpTJo",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "D  A  F#m  E\n\n\n  D                                            C#m\nNo te has ido de mi vida, vida mía, pero ya te extraño\nF#m                                     E\n¿Quién diría? Nadie lo creía y ya vamos pa' un año\n                 D\nDe solo pensar en perderte\n              A\nLas milésimas se vuelven horas\n                 F#m\nContigo yo me voy a muerte\n                       E\nY mucho más cuando estamos a solas\n           D                                         A\nCuando nos falle la memoria y solo queden las fotografías\n          F#m                           E\nQue se me olvide todo, menos que tú eres mía\n\n\n                     D                     A\nCuando los años nos pesen y las piernas no caminen\n                 F#m                       E\nLos ojos se nos cierren y la piel ya no se estire\n                     D                         A\nCuando lo único que pese sea lo que hicimos en vida\n                      Bm            E\nY aunque nada de esto pase, woh-oh\nEres el amor de vida, woh-oh-oh-oh\nEres el amor de mi vida\n\n\n                  D\nMe encanta verte desnudita\n                           A\nEres la pintura más bonita\n\n¿Tanta belleza quién la explica?\n            F#m\nLa ducha mojaíta'\nSi salimos, fina exquisita\n                                     E\nY en los parches under no se quita\n                 D                                   A\nTo' los planes cambiaron, era perro y me amarraron\n                                F#m\nEl corazón me robaron, justo y necesario\n                 E\nMe hace sentir millonario\n\n\n                     D                     A\nCuando los años nos pesen y las piernas no caminen\n                 F#m                       E\nLos ojos se nos cierren y la piel ya no se estire\n                     D                         A\nCuando lo único que pese sea lo que hicimos en vida\n                      Bm            E\nY aunque nada de esto pase, woh-oh\nEres el amor de vida, woh-oh-oh-oh\nEres el amor de mi vida\n\n\n                               D\nSiempre me he soñado una vida contigo\n                                F#m\nMás valen los hechos que lo prometido\n                              E\nSin saber a dónde vayas te persigo, oh-oh\n          G                                      D\nY cuando falle la memoria y solo queden las fotografías\n           F#m                            E\nQue se me olvide todo, menos que tú eres mía\n\n\n                     D                     A\nCuando los años nos pesen y las piernas no caminen\n                 F#m                       E\nLos ojos se nos cierren y la piel ya no se estire\n                     D                         A\nCuando lo único que pese sea lo que hicimos en vida\n                      Bm            E\nY aunque nada de esto pase, woh-oh\nEres el amor de vida, woh-oh-oh-oh\nEres el amor de mi vida"
+}

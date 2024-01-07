@@ -1,0 +1,49 @@
+{
+	"details": {
+		"id": "todas-las-hojas-son-del-viento",
+		"title": "Todas las hojas son del viento",
+		"artist": "Pescado Rabioso",
+		"album": "Artaud",
+		"year": 1973,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 3,
+		"created_at": "2021/04/04",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/689lBKIELtWGHfsPWpR6rv",
+		"youtube_url": "https://youtu.be/b-u-bchAnW4",
+		"assets": { "server_url": "https://drive.google.com/uc?id=1sPmd-UkbJpvbCxoODW4aW99aqo7G2Dx4" },
+		"interpretation": "- Fuerza del canto: Suave o media\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Suave o media\n- Rasgueo: Marcar acordes largos\n- Complejidad: Fácil\n",
+		"sources": [
+			{
+				"text": "Todas las hojas son del viento",
+				"url": "https://acordes.lacuerda.net/luis_a_spinetta/todas_las_hojas_son_del_viento-4.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Todas las Hojas son del Viento (Pescado Rabioso / Cover)",
+				"url": "https://youtu.be/fndCBPG2fCA",
+				"source": "youtube"
+			},
+			{
+				"text": "Como Tocar \"Todas Las Hojas Son del Viento\" de Spinetta en Guitarra",
+				"url": "https://youtu.be/Yo6YOrFDvvQ",
+				"source": "youtube"
+			},
+			{
+				"text": "Todas Las Hojas Son Del Viento - Pescado Rabioso (Cover)",
+				"url": "https://youtu.be/PPFiQRF9UG4",
+				"source": "youtube"
+			},
+			{
+				"text": "Tutoriales de música en Instagram",
+				"url": "https://www.instagram.com/reel/C1tymt7Ojhr",
+				"source": "instagram"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": " G6[1]\nCuida bien al niño\n Fmaj7\ncuida bien su mente\n G6[1]\ndale un sol de enero\n Fmaj7\ndale un vientre blanco\n\n G                      Em\nDale tibia leche de tu cuerpo\n\n\nC/G           D             G\n   Todas las hojas son del viento\nC/G               D                 G\n   ya que él las mueve hasta en la muerte\nC/G           D             G\n   todas las hojas son del viento\n\n          C       G    |\nMenos la luz del sol   | (x2)\n\n\n G6[1]\nHoy que un hijo hiciste\n Fmaj7\ncambia ya tu mente\n G6[1]\ncuídalo de drogas\n Fmaj7\nnunca lo reprimas\n\n G                         Em\nDale el áurea misma de tu sexo\n\n\nC/G           D             G\n   Todas las hojas son del viento\nC/G               D                 G\n   ya que él las mueve hasta en la muerte\nC/G           D             G\n   todas las hojas son del viento\n\n          C       G    |\nMenos la luz del sol   | (x4)"
+}
