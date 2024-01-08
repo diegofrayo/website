@@ -210,91 +210,6 @@
 			"youtube_url": "https://youtu.be/RNLsc_DWDUw"
 		},
 		{
-			"album": "Artaud",
-			"artist": "Pescado Rabioso",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1rMUhAVAOcNMVk6yMP3B8_Pme2xGwp-kk"
-			},
-			"category": "1|FAVORITE",
-			"country": "🇦🇷",
-			"created_at": "2021/01/10",
-			"id": "bajan",
-			"interpretation": "- Fuerza del canto: Media o alta\n- Velocidad de rasgueo: Media o baja\n- Fuerza de rasgueo: Media o baja\n- Rasgueo: Tipo folklore o sino marcando bien los acordes\n- Complejidad: Media\n",
-			"is_public": true,
-			"order": 3,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "Bajan",
-					"url": "https://acordes.lacuerda.net/luis_a_spinetta/bajan-2.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "Bajan - Luis Alberto Spinetta",
-					"url": "https://youtu.be/ru5kV95Q8WE"
-				},
-				{
-					"source": "youtube",
-					"text": "Como Tocar Bajan de Spinetta",
-					"url": "https://youtu.be/MlgpU7JFMCg"
-				},
-				{
-					"source": "youtube",
-					"text": "Bajan - Spinetta (Cover by Silvina Moreno)",
-					"url": "https://youtu.be/T3C-jpWNOEs"
-				},
-				{
-					"source": "spotify",
-					"text": "Bajan (A Capella Version) - Originally Performed By Pescado Rabioso",
-					"url": "https://open.spotify.com/track/4qcuXE1niE1zwiEPRHUskW"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/6hmYi0E6EBEmDeztQHaH0C",
-			"title": "Bajan",
-			"year": 1973,
-			"youtube_url": "https://youtu.be/bZcMPnY9_dg"
-		},
-		{
-			"album": "Nada personal",
-			"artist": "Soda Stereo",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1r9zCwCybUBHiKxDZkJKENkItWd4VlySv"
-			},
-			"category": "1|FAVORITE",
-			"country": "🇦🇷",
-			"created_at": "2021/07/01",
-			"id": "cuando-pase-el-temblor",
-			"interpretation": "- Fuerza del canto: Media o baja\n- Velocidad de rasgueo: Media o rápida\n- Fuerza de rasgueo: Media o baja\n- Complejidad: Fácil\n",
-			"is_public": true,
-			"order": 4,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "Cuando pase el temblor",
-					"url": "https://acordes.lacuerda.net/soda_stereo/cuando_pase_el_temblor-6.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "Cuando pase el temblor - Soda Stereo (Cover Acústico)",
-					"url": "https://youtu.be/VEcbuuj4PFI"
-				},
-				{
-					"source": "youtube",
-					"text": "TUTORIAL Cuando pase el temblor - Soda Stereo (por NachoAste)",
-					"url": "https://youtu.be/RKoV-PNpYyg"
-				},
-				{
-					"source": "youtube",
-					"text": "COMO TOCAR \"CUANDO PASE EL TEMBLOR\" -SODA STEREO -PARA PRINCIPIANTES Y AVANZADOS",
-					"url": "https://youtu.be/w8Sm8Oak7qY"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/3uMYq07Kj5m564OQwdSCrD",
-			"title": "Cuando pase el temblor",
-			"year": 1995,
-			"youtube_url": "https://youtu.be/OH4OSdTa7Pg"
-		},
-		{
 			"album": "La Síntesis O'konor",
 			"artist": "Él Mató a un Policía Motorizado",
 			"assets": {
@@ -410,116 +325,6 @@
 			"youtube_url": "https://youtu.be/fuwfOdrV32k"
 		},
 		{
-			"album": "El amor después del amor",
-			"artist": "Fito Paez",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1rNHN1j4T56LNPtTpnpT5hfap0CbG0Xp7"
-			},
-			"category": "1|FAVORITE",
-			"country": "🇦🇷",
-			"created_at": "2021/07/04",
-			"id": "petalo-de-sal",
-			"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Baja\n- Fuerza de rasgueo: Baja\n- Complejidad: Media\n",
-			"is_public": true,
-			"order": 9,
-			"sources": [
-				{
-					"source": "youtube",
-					"text": "\"PETALOS DE SAL\". TUTORIAL PARA GUITARRA",
-					"url": "https://youtu.be/ec7i0dfiX9E?t=285"
-				},
-				{
-					"source": "youtube",
-					"text": "PETALOS DE SAL-FITO PAEZ. COVER",
-					"url": "https://youtu.be/bHVcvLZR9cI"
-				},
-				{
-					"source": "youtube",
-					"text": "pétalo de sal ( voz cruda Fito Paez y Spinetta)",
-					"url": "https://youtu.be/5IO7L287MUM"
-				},
-				{
-					"source": "youtube",
-					"text": "Pétalo De Sal | Fito Páez - Joaquín Martínez",
-					"url": "https://youtu.be/d5K8l1mdx5g"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/47rrhPXwe6sfKtIDwJAsO4",
-			"title": "Pétalo de sal",
-			"year": 1992,
-			"youtube_url": "https://youtu.be/QlQosYFO-kA"
-		},
-		{
-			"album": "Artaud",
-			"artist": "Pescado Rabioso",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1sPmd-UkbJpvbCxoODW4aW99aqo7G2Dx4"
-			},
-			"category": "1|FAVORITE",
-			"country": "🇦🇷",
-			"created_at": "2021/04/04",
-			"id": "todas-las-hojas-son-del-viento",
-			"interpretation": "- Fuerza del canto: Suave o media\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Suave o media\n- Rasgueo: Marcar acordes largos\n- Complejidad: Fácil\n",
-			"is_public": true,
-			"order": 10,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "Todas las hojas son del viento",
-					"url": "https://acordes.lacuerda.net/luis_a_spinetta/todas_las_hojas_son_del_viento-4.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "Todas las Hojas son del Viento (Pescado Rabioso / Cover)",
-					"url": "https://youtu.be/fndCBPG2fCA"
-				},
-				{
-					"source": "youtube",
-					"text": "Como Tocar \"Todas Las Hojas Son del Viento\" de Spinetta en Guitarra",
-					"url": "https://youtu.be/Yo6YOrFDvvQ"
-				},
-				{
-					"source": "youtube",
-					"text": "Todas Las Hojas Son Del Viento - Pescado Rabioso (Cover)",
-					"url": "https://youtu.be/PPFiQRF9UG4"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/689lBKIELtWGHfsPWpR6rv",
-			"title": "Todas las hojas son del viento",
-			"year": 1973,
-			"youtube_url": "https://youtu.be/b-u-bchAnW4"
-		},
-		{
-			"album": "Canción animal",
-			"artist": "Soda Stereo",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1uFmcLSbNYnEmhHheiw-rAHCR8dG-7InR"
-			},
-			"category": "1|FAVORITE",
-			"country": "🇦🇷",
-			"created_at": "2021/04/23",
-			"id": "te-para-tres",
-			"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Baja\n- Complejidad: Fácil\n",
-			"is_public": true,
-			"order": 11,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "Té para 3",
-					"url": "https://acordes.lacuerda.net/soda_stereo/te_para_3-2.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "cómo tocar en guitarra TÉ PARA TRES de SODA STEREO tutorial",
-					"url": "https://youtu.be/XZFQOFP5Klg"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/2kMVxFh1y5gow2hBtqGO4m",
-			"title": "Té para tres",
-			"year": 1990,
-			"youtube_url": "https://youtu.be/91XRV1mKUe4"
-		},
-		{
 			"album": "La mosca y la sopa",
 			"artist": "Patricio Rey y sus Redonditos de Ricota",
 			"assets": {
@@ -590,86 +395,6 @@
 			"youtube_url": "https://youtu.be/esI9dPBmt34"
 		},
 		{
-			"album": "Máquina de sangre",
-			"artist": "Los Piojos",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1sRjDG4lWrRQVkvoHK9QhkujWY9bPMd6k"
-			},
-			"category": "2|WELL_DONE",
-			"country": "🇦🇷",
-			"created_at": "2022/06/15",
-			"id": "cancion-de-cuna",
-			"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Baja\n- Complejidad: Alta\n",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "youtube",
-					"text": "GUITARRA | Canción De Cuna - Los Piojos (Guitarra cover/tutorial) Martin Lopez",
-					"url": "https://youtu.be/Q8dd001CdOs"
-				},
-				{
-					"source": "youtube",
-					"text": "CANCION DE CUNA LOS PIOJOS TUTORIAL GUITARRA ARPEGIO RASGUEO",
-					"url": "https://youtu.be/pUm3tfoW3kE"
-				},
-				{
-					"source": "lacuerda",
-					"text": "Canción de cuna",
-					"url": "https://acordes.lacuerda.net/piojos/cancion_de_cuna-2.shtml"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/6dkGg8FxGzFVRdcMsuVhkb",
-			"title": "Canción de cuna",
-			"year": 2003,
-			"youtube_url": "https://youtu.be/xBibCV8jTBY"
-		},
-		{
-			"album": "Otras canciones",
-			"artist": ["NTVG", "Jorge Drexler"],
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=13Ny66gZbfjzNwMJslpjBxAW53o8OJLwl"
-			},
-			"category": "2|WELL_DONE",
-			"country": "🇺🇾",
-			"created_at": "2023/05/14",
-			"id": "de-nada-sirve",
-			"interpretation": "- Fuerza del canto: Alta o media\n- Velocidad de rasgueo: Rápida o media\n- Fuerza de rasgueo: Alta o media\n- Rasgueo: Ver el video #1\n- Complejidad: Media\n",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "youtube",
-					"text": "GUITARRA | De Nada Sirve - No Te Va Gustar Ft. Jorge Drexler (Guitarra cover/tutorial) Martin Lopez",
-					"url": "https://youtube.com/watch?v=lbU-KXYY4vU"
-				},
-				{
-					"source": "lacuerda",
-					"text": "DE NADA SIRVE, No Te Va Gustar: Acordes",
-					"url": "https://acordes.lacuerda.net/no_te_va_gustar/de_nada_sirve.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "NTVG - De nada sirve (cover by Nicoplos)",
-					"url": "https://youtube.com/watch?v=pw0r3D7A6iE"
-				},
-				{
-					"source": "youtube",
-					"text": "De nada sirve - versión - Cynthia Lozada y Lucho Aberastain",
-					"url": "https://youtube.com/watch?v=8lor5UqUQIg"
-				},
-				{
-					"source": "youtube",
-					"text": "El jhovas -como tocar de nada sirve -no te va a gustar y jorge drexler",
-					"url": "https://youtube.com/watch?v=OykIkDdpue4"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/2CFDPiNUxcSOqfQtUHYNxF",
-			"title": "De nada sirve",
-			"year": 2019,
-			"youtube_url": "https://youtu.be/I_818q1nMp8"
-		},
-		{
 			"album": "¡Bang! ¡Bang! Estás liquidado",
 			"artist": "Patricio Rey y sus Redonditos de Ricota",
 			"assets": {
@@ -703,36 +428,6 @@
 			"title": "Esa estrella era mi lujo",
 			"year": 1989,
 			"youtube_url": "https://youtu.be/OP1e9OJhk7E"
-		},
-		{
-			"album": "Frontera",
-			"artist": "Jorge Drexler",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1sC90eNXn67WqE2zCJPXAbgq8B39FKN8P"
-			},
-			"category": "2|WELL_DONE",
-			"country": "🇺🇾",
-			"created_at": "2021/08/13",
-			"id": "la-edad-del-cielo",
-			"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Lenta\n- Fuerza de rasgueo: Suave\n- Rasgueo: [Versos]: ↓↑x↑ | [Coro]: ↓  x↓  ↓\n- Complejidad: Media\n",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "youtube",
-					"text": "Tutorial de La edad del cielo (Jorge Drexler)",
-					"url": "https://youtu.be/JEhK6jCuaBU"
-				},
-				{
-					"source": "lacuerda",
-					"text": "La edad del cielo",
-					"url": "https://acordes.lacuerda.net/jorge_drexler/la_edad_del_cielo-2.shtml"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/75lisbgzhfJdIt5YdPuAWP",
-			"title": "La edad del cielo",
-			"year": 1999,
-			"youtube_url": "https://youtu.be/oZd_spRPUEM"
 		},
 		{
 			"album": "Ahí vamos",
@@ -1030,41 +725,6 @@
 			"youtube_url": "https://youtu.be/nvwvgr0kzWI"
 		},
 		{
-			"album": "Kamikaze",
-			"artist": "Luis Alberto Spinetta",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1st6SvLeRPeRPZTnKvXcZK1lQ9g_DqngG"
-			},
-			"category": "3|TO_PRACTICE",
-			"country": "🇦🇷",
-			"created_at": "2021/04/23",
-			"id": "ella-tambien",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "Ella También",
-					"url": "https://acordes.lacuerda.net/luis_a_spinetta/ella_tambien-2.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "Ella también - Luis Alberto Spinetta (Cover) Guitarra y Voz",
-					"url": "https://youtu.be/rCZGXuJWsRY"
-				},
-				{
-					"source": "youtube",
-					"text": "Ella También - Luis Alberto Spinetta (Guitar Cover)",
-					"url": "https://youtu.be/-FiGf8jtcCo"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/4y1ze4JPCe7XVv28VlZ4k0",
-			"title": "Ella también",
-			"year": 1982,
-			"youtube_url": "https://youtu.be/JpJW5yFwb40"
-		},
-		{
 			"album": "Desconocido",
 			"artist": "Indio Solari y los Fundamentalistas del Aire Acondicionado",
 			"assets": {
@@ -1165,71 +825,6 @@
 			"youtube_url": "https://youtu.be/TxypVAeGGI4"
 		},
 		{
-			"album": "Estrelicia MTV Unplugged",
-			"artist": "Spinetta y los Socios del Desierto",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1yAtsOQSqni0FaR4JRdryAy6vc_kNb9T_"
-			},
-			"category": "3|TO_PRACTICE",
-			"country": "🇦🇷",
-			"created_at": "2022/09/01",
-			"id": "la-miel-en-tu-ventana",
-			"interpretation": "- Fuerza del canto: Suave\n- Velocidad de rasgueo: Rápida\n- Fuerza de rasgueo: Baja\n- Complejidad: Díficil\n",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "LA MIEL EN TU VENTANA, Spinetta y los Socios del Desierto: Acordes",
-					"url": "https://acordes.lacuerda.net/spinetta_y_los_socios_del_desierto/la_miel_en_tu_ventana.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "Como tocar La Miel En Tu Ventana (Acordes - Explicacion) - Luis Alberto Spinetta",
-					"url": "https://youtu.be/eOVhJCPEjEY"
-				},
-				{
-					"source": "youtube",
-					"text": "La miel en tu ventana, Spinetta cover by Erick Pérez de Costa Rica",
-					"url": "https://youtu.be/rRx5UDo34Nk"
-				},
-				{
-					"source": "youtube",
-					"text": "La Miel En Tu Ventana - Luis Alberto Spinetta (Cover)",
-					"url": "https://youtu.be/HSsxs-REGoU"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/0wTDQd5FhSuuxDUUFl9hJ7",
-			"title": "La miel en tu ventana",
-			"year": 1997,
-			"youtube_url": "https://youtu.be/E2nrlV4DwdE"
-		},
-		{
-			"album": "El recital",
-			"artist": "Gustavo Pena El Príncipe",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1rRgAmScKipxZZQRmTQcxpi_VGEIcmNee"
-			},
-			"category": "3|TO_PRACTICE",
-			"country": "🇺🇾",
-			"created_at": "2021/08/13",
-			"id": "mandolin",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "youtube",
-					"text": "Mandolin (Cover - María Victoria Rambosio)",
-					"url": "https://youtu.be/FB4gKCfQZ_A"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/0HxLlkUPaWb4zZInxl43Fw",
-			"title": "Mandolín",
-			"year": 2003,
-			"youtube_url": "https://youtu.be/56yjg8xJWw4"
-		},
-		{
 			"album": "Circo Beat",
 			"artist": "Fito Paez",
 			"assets": {
@@ -1295,51 +890,6 @@
 			"youtube_url": "https://youtu.be/xdDw4Bbj57w"
 		},
 		{
-			"album": "Un mañana",
-			"artist": "Luis Alberto Spinetta",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1rnnStSoUwjLsZI1AfUc-iRj8x3AEM6p9"
-			},
-			"category": "3|TO_PRACTICE",
-			"country": "🇦🇷",
-			"created_at": "2022/05/12",
-			"id": "no-quiere-decir",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "NO QUIERE DECIR, Luis Alberto Spinetta: Acordes",
-					"url": "https://acordes.lacuerda.net/luis_a_spinetta/no_quiere_decir.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "No quiere decir - Luis Alberto Spinetta (Cover)",
-					"url": "https://youtu.be/KpYSz77BPtY"
-				},
-				{
-					"source": "youtube",
-					"text": "No Quiere Decir",
-					"url": "https://youtu.be/s7t_o8mllYI"
-				},
-				{
-					"source": "youtube",
-					"text": "No quiere decir (Luis Alberto Spinetta) - Cover",
-					"url": "https://youtu.be/TzWDQXxT1xo"
-				},
-				{
-					"source": "youtube",
-					"text": "Lunar - No quiere decir (cover)",
-					"url": "https://youtu.be/AvAJRb8YSaM"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/4qwaQvUrRwK2t1G6Q5pwbY",
-			"title": "No quiere decir",
-			"year": 2008,
-			"youtube_url": "https://youtu.be/FNIh1-RfG6g"
-		},
-		{
 			"album": "Narigón del siglo",
 			"artist": "Divididos",
 			"assets": {
@@ -1383,47 +933,6 @@
 			"title": "Par mil",
 			"year": 2000,
 			"youtube_url": "https://youtu.be/Z_tHBX0mj1s"
-		},
-		{
-			"album": "Bocanada",
-			"artist": "Gustavo Cerati",
-			"assets": {
-				"punteo": "/cms/pages/music/[song]/assets/images/puente/punteo.png",
-				"server_url": "https://drive.google.com/uc?id=1rGDz-6vsRTQcEAGxq3mntP_31CkksZRz"
-			},
-			"category": "3|TO_PRACTICE",
-			"country": "🇦🇷",
-			"created_at": "2021/06/05",
-			"id": "puente",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "youtube",
-					"text": "Como tocar Puente de GUSTAVO CERATI en Guitarra (HD) Tutorial COMPLETO",
-					"url": "https://youtu.be/HzwBL1VoSbA"
-				},
-				{
-					"source": "youtube",
-					"text": "Puente GUSTAVO CERATI Acustico Guitara Cover Demo Christianvib",
-					"url": "https://youtu.be/lwdS4z8kYo8"
-				},
-				{
-					"source": "lacuerda",
-					"text": "Puente",
-					"url": "https://acordes.lacuerda.net/gustavo_cerati/puente-4.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "Gonzalo Aloras - Puente (Cerati)",
-					"url": "https://youtu.be/KhNisBgjBhs"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/2UkcvsKD0hZH7ALfG3m7AP",
-			"title": "Puente",
-			"year": 1999,
-			"youtube_url": "https://youtu.be/eAO7CEcCD3s"
 		},
 		{
 			"album": "El jardín de los presentes",
@@ -1546,46 +1055,6 @@
 			"youtube_url": "https://youtu.be/kHPja5eLZdU"
 		},
 		{
-			"album": "Perotá Chingó",
-			"artist": "Perotá Chingó",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1tVd_NbhVk-pQF0vIuKvu8Si_mVeM4P67"
-			},
-			"category": "3|TO_PRACTICE",
-			"country": "🇦🇷",
-			"created_at": "2021/07/04",
-			"id": "rie-chinito",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "Ríe Chinito",
-					"url": "https://acordes.lacuerda.net/dolo_y_maju/rie_chinito-2.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "Kevin kaarl | Ríe Chinito | Tutorial | Acordes | como tocar COVER",
-					"url": "https://youtu.be/EkEb6XZ0hBE"
-				},
-				{
-					"source": "instagram",
-					"text": "martynmccontre",
-					"url": "https://instagram.com/p/Bky5LNTAgfK"
-				},
-				{
-					"source": "instagram",
-					"text": "cgprensaycomunicacion",
-					"url": "https://instagram.com/p/BkLvNSPHNhM"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/4UZdPR7auDwEnpPc5vHU7n",
-			"title": "Ríe chinito",
-			"year": 2014,
-			"youtube_url": "https://youtu.be/_aIuna5a8Dc"
-		},
-		{
 			"album": "Built on Glass",
 			"artist": "Chet Faker",
 			"assets": {
@@ -1619,83 +1088,6 @@
 			"title": "Talk is cheap",
 			"year": 2014,
 			"youtube_url": "https://youtu.be/aP_-P_BS6KY"
-		},
-		{
-			"album": "El ritmo mundial",
-			"artist": "Los Fabulosos Cadillacs",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1sAadh-lH1-kf9cmFtYFbecx4bznDGD-_"
-			},
-			"category": "3|TO_PRACTICE",
-			"country": "🇦🇷",
-			"created_at": "2021/01/10",
-			"id": "vasos-vacios",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "youtube",
-					"text": "Vicentico - Vasos Vacíos “Version Acústica” (Campaña Codo a Codo 2020)",
-					"url": "https://youtu.be/S2HxHyv8I1s"
-				},
-				{
-					"source": "lacuerda",
-					"text": "Vasos vacíos",
-					"url": "https://acordes.lacuerda.net/fabulosos/vasos_vacios-5.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "Cómo tocar en guitarra VASOS VACIOS de LOS FABULOSOS CADILLACS tutorial COMPLETO acordes fácil",
-					"url": "https://youtu.be/ZDmAf6KyYPU"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/6G9painkkIlE8HauZrG4Vw",
-			"title": "Vasos vacíos",
-			"year": 1998,
-			"youtube_url": "https://youtu.be/8Zdhan166z0"
-		},
-		{
-			"album": "3er arco",
-			"artist": "Los Piojos",
-			"assets": {
-				"punteo_1": "/cms/pages/music/[song]/assets/images/verano-del-92/punteo-1.png",
-				"punteo_2": "/cms/pages/music/[song]/assets/images/verano-del-92/punteo-2.png",
-				"server_url": "https://drive.google.com/uc?id=1rT4h6bNoVLvxil38nx05Qi-h5gRaivSt"
-			},
-			"category": "3|TO_PRACTICE",
-			"country": "🇦🇷",
-			"created_at": "2021/03/23",
-			"id": "verano-del-92",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "VERANO DEL 92, los Piojos: Acordes",
-					"url": "https://acordes.lacuerda.net/piojos/verano_del_92.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "GUITARRA | Verano Del 92 - Los Piojos (Guitarra cover/tutorial) Martin Lopez",
-					"url": "https://youtu.be/LrR3DVPh7aU"
-				},
-				{
-					"source": "youtube",
-					"text": "cómo tocar VERANO DEL '92 de LOS PIOJOS en ukelele tutorial completo",
-					"url": "https://youtu.be/6ALi7AlVqzo"
-				},
-				{
-					"source": "youtube",
-					"text": "Cómo tocar Los piojos Verano del 92 Tutorial Acordes Guitarra",
-					"url": "https://youtu.be/RaeHAbmgUPo"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/1NXvuBAq48QrxRFQZVmORQ",
-			"title": "Verano del 92",
-			"year": 1996,
-			"youtube_url": "https://youtu.be/DaVRJca0z5c"
 		},
 		{
 			"album": "Zona de promesas",
@@ -1913,36 +1305,6 @@
 			"youtube_url": "https://youtu.be/7NaIujlFBf8"
 		},
 		{
-			"album": "Hasta la raíz",
-			"artist": "Natalia Lafourcade",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1rv-fME7r-Q7NDY2gLIgBF8BE9DRZ8vXx"
-			},
-			"category": "4|SOME_DAY",
-			"country": "🇲🇽",
-			"created_at": "2021/06/22",
-			"id": "hasta-la-raiz",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "youtube",
-					"text": "Como tocar Hasta La Raiz NATALIA LAFOURCADE | Guitarra Tutorial FACIL Christianvib",
-					"url": "https://youtu.be/_hFFRDKvUVc"
-				},
-				{
-					"source": "lacuerda",
-					"text": "Hasta la raíz",
-					"url": "https://acordes.lacuerda.net/natalia_lafourcade/hasta_la_raiz-3.shtml"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/692C4fgt86NVLGwKXe4KCs",
-			"title": "Hasta la raíz",
-			"year": 2015,
-			"youtube_url": "https://youtu.be/IKmPci5VXz0"
-		},
-		{
 			"album": "Luzbelito",
 			"artist": "Patricio Rey y sus Redonditos de Ricota",
 			"assets": {
@@ -2006,36 +1368,6 @@
 			"title": "La gota fría",
 			"year": 1993,
 			"youtube_url": "https://youtu.be/Nmb80HXWsFQ"
-		},
-		{
-			"album": "Si",
-			"artist": "Julieta Venegas",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1ttGvsAZNrIKJWbk11zKSGum6uii3T7vY"
-			},
-			"category": "4|SOME_DAY",
-			"country": "🇲🇽",
-			"created_at": "2022/05/12",
-			"id": "lento",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "youtube",
-					"text": "Julieta Venegas. Lento 🎶. (Cover)",
-					"url": "https://youtu.be/UAbhfMBTHgM"
-				},
-				{
-					"source": "lacuerda",
-					"text": "Lento",
-					"url": "https://acordes.lacuerda.net/julieta_venegas/lento.shtml"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/2NsMwNWumJXCdTg2IZCLZ5",
-			"title": "Lento",
-			"year": 2004,
-			"youtube_url": "https://youtu.be/ZSIzwYzCkHQ"
 		},
 		{
 			"album": "Thinking in Textures",
