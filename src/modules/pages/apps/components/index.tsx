@@ -100,6 +100,7 @@ export const ContactsPage = withAuthRulesPage(
                 display: flex;
                 flex-wrap: wrap;
                 gap: 20px;
+                justify-content: space-between;
                 padding-left: 20px;
                 padding-top: 10px;
               "
@@ -113,16 +114,25 @@ export const ContactsPage = withAuthRulesPage(
 									const formattedPhone = formatPhoneNumber(phoneWithoutCode, phoneCountryCode);
 
 									return `
-                    <div>
+                    <div style="width: 48%;">
                       <p style="font-weight: bold">${contact.name}</p>
                       <hr class="separator" style="margin: 2px auto" />
 
+                      ${
+												phone
+													? `
                       <p style="font-style: italic; font-size: 0.8rem">
                         ${formattedPhone}
                       </p>
                       <hr class="separator" style="margin: 3px auto" />
+                            `
+													: ""
+											}
 
-                      <div>
+                      <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                        ${
+													phone
+														? `
                         <a class="cta-link" href="tel:${phoneWithoutCode}" target="_blank"
                           >📞 Llamar</a
                         >
@@ -133,7 +143,39 @@ export const ContactsPage = withAuthRulesPage(
 													)}"
                           target="_blank"
                           >📝 WhatsApp</a
-                        >
+                        >`
+														: ""
+												}
+
+                        ${
+													contact.instagram
+														? `
+                        <a class="cta-link" href="https://instagram.com/${contact.instagram}" target="_blank">
+                          📸 Instagram
+                        </a>
+                        `
+														: ""
+												}
+
+                        ${
+													isBusiness(contact) && contact.maps
+														? `
+                        <a class="cta-link" href="${contact.maps}" target="_blank">
+                        📍 Maps
+                        </a>
+                        `
+														: ""
+												}
+
+                        ${
+													isBusiness(contact) && contact.menu
+														? `
+                        <a class="cta-link" href="${contact.menu}" target="_blank">
+                        📝 Menu
+                        </a>
+                        `
+														: ""
+												}
                       </div>
                     </div>
                   `;
@@ -655,13 +697,18 @@ const HTML_CONTACTS_PAGE = `
       }
 
       .cta-link {
-        text-decoration: none;
-        display: inline-block;
         background-color: rgb(6, 145, 1);
-        color: white;
         border-radius: 5px;
-        padding: 5px 10px;
+        color: white;
+        display: inline-block;
         font-size: 0.7rem;
+        padding: 5px 10px;
+        text-decoration: none;
+        transition: all 500ms;
+      }
+
+      .cta-link:hover {
+        opacity: 0.8;
       }
 
       .separator {
