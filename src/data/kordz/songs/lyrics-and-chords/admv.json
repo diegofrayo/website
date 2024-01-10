@@ -6,8 +6,8 @@
 		"album": "Papi Juancho",
 		"year": 2020,
 		"country": "🇦🇷",
-		"category": "0|IN_PROGRESS|🚧",
-		"order": 1,
+		"category": "2|WELL_DONE|👌",
+		"order": 0,
 		"created_at": "2024/01/06",
 		"is_public": true,
 		"done": false,
@@ -16,6 +16,11 @@
 		"interpretation": "",
 		"assets": {},
 		"sources": [
+			{
+				"text": "ADMV (Amor De Mi Vida) versión Romantica - Maluma - cover de Winder",
+				"url": "https://youtu.be/vK2lXs7iRrk",
+				"source": "youtube"
+			},
 			{
 				"text": "ADMV, Maluma: Acordes",
 				"url": "https://acordes.lacuerda.net/maluma/admv.shtml",
@@ -27,11 +32,6 @@
 				"source": "youtube"
 			},
 			{
-				"text": "ADMV (Amor De Mi Vida) versión Romantica - Maluma - cover de Winder",
-				"url": "https://youtu.be/vK2lXs7iRrk",
-				"source": "youtube"
-			},
-			{
 				"text": "Maluma - ADMV (Sergio Serrano)",
 				"url": "https://youtu.be/SdI-w0tpTJo",
 				"source": "youtube"
@@ -40,5 +40,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "D  A  F#m  E\n\n\n    D                                                  C#m\nNo te has ido de mi vida, vida mía, pero ya te extraño\n        F#m                                    E\n¿Quién diría? Nadie lo creía y ya vamos pa' un año\n                   D\nde solo pensar en perderte\n                  A\nlas milésimas se vuelven horas\n                     F#m\ncontigo yo me voy a muerte\n                      E\ny mucho más cuando estamos a solas\n            D                                         A\ncuando nos falle la memoria y solo queden las fotografías\n             F#m                           E\nque se me olvide todo, menos que tú eres mía\n\n\n                     D                      A\nCuando los años nos pesen y las piernas no caminen\n                 F#m                          E\nlos ojos se nos cierren y la piel ya no se estire\n                     D                          A\ncuando lo único que pese sea lo que hicimos en vida\n                       F#m\ny aunque nada de esto pase, woh-oh\nE\n   eres el amor de vida\n\n\n                       D\nMe encanta verte desnudita\n\neres la pintura más bonita\n  A\n¿Tanta belleza quién la explica?\n            F#m\nla ducha mojaíta'\nsi salimos, fina exquisita\nE\ny en los parches under no se quita\n                   D\nto' los planes cambiaron, era perro y me amarraron\nA                                   F#m\nel corazón me robaron, justo y necesario\n                     E\nme hace sentir millonario\n\n\n                     D                      A\nCuando los años nos pesen y las piernas no caminen\n                 F#m                          E\nlos ojos se nos cierren y la piel ya no se estire\n                     D                          A\ncuando lo único que pese sea lo que hicimos en vida\n                       F#m\ny aunque nada de esto pase, woh-oh\nE\n   eres el amor de vida\n\n\nG                                    D\n   Siempre me he soñado una vida contigo\n                                  Bm\nmás valen los hechos que lo prometido\n                               E\nsin saber a dónde vayas te persigo, oh-oh\n          G                                         D\ny cuando falle la memoria y solo queden las fotografías\n             F#m                           E\nque se me olvide todo, menos que tú eres mía\n\n\n                     D                      A\nCuando los años nos pesen y las piernas no caminen\n                 F#m                          E\nlos ojos se nos cierren y la piel ya no se estire\n                     D                          A\ncuando lo único que pese sea lo que hicimos en vida\n                       F#m\ny aunque nada de esto pase, woh-oh\nE\n   eres el amor de vida"
+	"txt": "D  A  F#m  E\n\n\n    D                                                  A\nNo te has ido de mi vida, vida mía, pero ya te extraño\n        F#m                                    E\n¿Quién diría? Nadie lo creía y ya vamos pa' un año\n                   D\nde solo pensar en perderte\n                  A\nlas milésimas se vuelven horas\n                     F#m\ncontigo yo me voy a muerte\n                      E\ny mucho más cuando estamos a solas\n            D                                         A\ncuando nos falle la memoria y solo queden las fotografías\n             F#m                           E\nque se me olvide todo, menos que tú eres mía\n\n\n                     D                      A\nCuando los años nos pesen y las piernas no caminen\n                 F#m                          E\nlos ojos se nos cierren y la piel ya no se estire\n                     D                          A\ncuando lo único que pese sea lo que hicimos en vida\n                       F#m\ny aunque nada de esto pase, woh-oh\nE                   D\n   eres el amor de vida, woh-oh\nA                   F#m   E\n   eres el amor de vida\n\n\n                      D\nMe gusta tenerte cerquita\neres la pintura más bonita\nA\n  ¿Tanta belleza quién la explica?\n                F#m\nmis noches favoritas\nsi salimos, fina exquisita\nE\ntu me enamoraste en cada cita\n                   D\nto' los planes cambiaron, ellos nunca imaginaron\nA                                     F#m\n  el corazón me robaron, justo y necesario\n                      E\nme haces sentir millonario\n\n\n                     D                      A\nCuando los años nos pesen y las piernas no caminen\n                 F#m                          E\nlos ojos se nos cierren y la piel ya no se estire\n                     D                          A\ncuando lo único que pese sea lo que hicimos en vida\n                       F#m\ny aunque nada de esto pase, woh-oh\nE                   D\n   eres el amor de vida, woh-oh\nA                   F#m   E\n   eres el amor de vida\n\n\nG                                    D\n   Siempre me he soñado una vida contigo\n                                  Bm\nmás valen los hechos que lo prometido\n                               E\nsin saber a dónde vayas te persigo, oh-oh\n          G                                         D\ny cuando falle la memoria y solo queden las fotografías\n             F#m                           E\nque se me olvide todo, menos que tú eres mía\n\n\n                     D                      A\nCuando los años nos pesen y las piernas no caminen\n                 F#m                          E\nlos ojos se nos cierren y la piel ya no se estire\n                     D                          A\ncuando lo único que pese sea lo que hicimos en vida\n                       F#m\ny aunque nada de esto pase, woh-oh\nE\n   eres el amor de vida"
 }
