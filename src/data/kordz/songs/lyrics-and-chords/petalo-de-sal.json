@@ -1,0 +1,44 @@
+{
+	"details": {
+		"id": "petalo-de-sal",
+		"title": "Pétalo de sal",
+		"artist": "Fito Paez",
+		"album": "El amor después del amor",
+		"year": 1992,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 19,
+		"created_at": "2021/07/04",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/47rrhPXwe6sfKtIDwJAsO4",
+		"youtube_url": "https://youtu.be/QlQosYFO-kA",
+		"assets": {},
+		"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Baja\n- Fuerza de rasgueo: Baja\n- Complejidad: Media\n",
+		"sources": [
+			{
+				"text": "\"PETALOS DE SAL\". TUTORIAL PARA GUITARRA",
+				"url": "https://youtu.be/ec7i0dfiX9E?t=285",
+				"source": "youtube"
+			},
+			{
+				"text": "PETALOS DE SAL-FITO PAEZ. COVER",
+				"url": "https://youtu.be/bHVcvLZR9cI",
+				"source": "youtube"
+			},
+			{
+				"text": "pétalo de sal ( voz cruda Fito Paez y Spinetta)",
+				"url": "https://youtu.be/5IO7L287MUM",
+				"source": "youtube"
+			},
+			{
+				"text": "Pétalo De Sal | Fito Páez - Joaquín Martínez",
+				"url": "https://youtu.be/d5K8l1mdx5g",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{INTRO}\",\n\t\t\treplacement: (\n\t\t\t\t<Tablature\n\t\t\t\t\tpositions={[\n\t\t\t\t\t\t{ guitarString: 4, guitarFret: 4 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 2 },\n\t\t\t\t\t\t{ space: 2 },\n\t\t\t\t\t\t{ guitarString: 4, guitarFret: 4 },\n\t\t\t\t\t\t{ guitarString: 3 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 2 },\n\t\t\t\t\t\t{ space: 1 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 4 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 4 },\n\t\t\t\t\t\t{ guitarString: 4, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 4 },\n\t\t\t\t\t\t{ guitarString: 4, guitarFret: 2 },\n\t\t\t\t\t\t{ space: 2 },\n\t\t\t\t\t\t{ guitarString: 5, guitarFret: 4 },\n\t\t\t\t\t\t{ guitarString: 4 },\n\t\t\t\t\t\t{ guitarString: 4, guitarFret: 2 },\n\t\t\t\t\t\t{ space: 1 },\n\t\t\t\t\t\t{ guitarString: 4, guitarFret: 4 },\n\t\t\t\t\t\t{ guitarString: 5 },\n\t\t\t\t\t\t{ guitarString: 6, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 4 },\n\t\t\t\t\t]}\n\t\t\t\t\tnotes=\"La canción se toca con el capo en el traste 1. Este punteo se toca al inicio y al final de la canción\"\n\t\t\t\t/>\n\t\t\t),\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
+	"txt": "{INTRO}\n\n\n         Em7       A6            Em7             A6\nFurioso pétalo de sal, la misma calle, el mismo bar\n           Em7            A6             A7\nnada te importa en la ciudad si nadie espera\n\n         Em7         A6              Em7         A6\nElla se vuelve carmesí, no se si es Baires o Madrid\n           Em7            A6             A7\nnada te importa en la ciudad si nadie espera\n\n\n              Em7         A6           G             Bm\nY no es tan trágico, mi amor, es este sueño es este sol\n      A6       A#dim7    Bm         Bm7       E7\nque ayer pareció tan extraño, o al menos tus labios\n\n Em      A7      A6              Em      A7   A6\nYo te entiendo bien, es como hablarle a la pared\n         Em   A7    Cmaj7\ny tu podrías darme fe\n\n\n         Em7       A6            Em7             A6\nFurioso pétalo de sal, la misma calle, el mismo bar\n           Em7            A6             A7\nnada te importa en la ciudad si nadie espera\n\n\n              Em7         A6           G             Bm\nY no es tan trágico, mi amor, es este sueño es este sol\n      A6       A#dim7    Bm         Bm7       E7\nque ayer pareció tan extraño, o al menos tus labios\n\n Em      A7      A6              Em      A7   A6\nYo te entiendo bien, es como hablarle a la pared\n         Em         A7     Bm          E7\ny te imagino dando vueltas en el vecindario\n\n\nG#m               C#            F#           B\nAlgo tienen estos años, que me hacen poner así\nG#m                  C#     F#\ny decirte que te extraño y voy a verte\n   Em7   A6   Em7   A6   Em7   A6   A7\nfeliz\n\n\n{INTRO}"
+}

@@ -1,0 +1,39 @@
+{
+	"details": {
+		"id": "vasos-vacios",
+		"title": "Vasos vacíos",
+		"artist": "Los Fabulosos Cadillacs",
+		"album": "El ritmo mundial",
+		"year": 1998,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 26,
+		"created_at": "2021/01/10",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/6G9painkkIlE8HauZrG4Vw",
+		"youtube_url": "https://youtu.be/8Zdhan166z0",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Vicentico - Vasos Vacíos “Version Acústica” (Campaña Codo a Codo 2020)",
+				"url": "https://youtu.be/S2HxHyv8I1s",
+				"source": "youtube"
+			},
+			{
+				"text": "Vasos vacíos",
+				"url": "https://acordes.lacuerda.net/fabulosos/vasos_vacios-5.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Cómo tocar en guitarra VASOS VACIOS de LOS FABULOSOS CADILLACS tutorial COMPLETO acordes fácil",
+				"url": "https://youtu.be/ZDmAf6KyYPU",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{INTRO}\",\n\t\t\treplacement: (\n\t\t\t\t<Tablature\n\t\t\t\t\tpositions={[\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ space: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 5 },\n\t\t\t\t\t\t{ guitarString: 1 },\n\t\t\t\t\t\t{ space: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ space: 3 },\n\t\t\t\t\t\t{ guitarString: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t]}\n\t\t\t\t\tnotes=\"Este intro se toca pulsando la cuerda 3 en el traste 1 y la cuerda 4 en el traste 2. Se repite 4 veces\"\n\t\t\t\t/>\n\t\t\t),\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
+	"txt": "{INTRO}\n\n\n G\nNo se bien que día es hoy\n   Em\nsolo se que te vi salir\n      C\ny en cinco minutos perdí\n     D\nlas letras para hablarte a vos\n\n\n    G\nYo se que no tengo palabras\n   Em\ny nunca las voy a tener\n      C\npor eso aprovecho esta noche\n     D\ntal vez lo puedas entender\n\n\n      G\nPor eso aprovecho esta noche\n     Em\ntal vez lo puedas entender\n    C\nno me importa poner las letras\n   D\nsolo me importa mi mujer\n\n\n   G\nMañana cuando te levantes\n   Em\ny pienses lo que dije ayer\n    C\nay viejo porque en este juego\n   D\na mi siempre me toca perder\n\n\n C\nSiempre habrá vasos vacíos\n      G            Em\ncon agua de la ciudad\n     C                 D\nla nuestra es agua de río\n              G\nmezclada con mar\n\n   C\nLevanta los brazos mujer\n   G                     Em\ny ponte esta noche a bailar\n         C                 D\nque la nuestra es agua de río\n              G\nmezclada con mar\n\n\n G\nNo se bien que día es hoy\n   Em\nsolo se que te vi salir\n      C\ny en cinco minutos perdí\n     D\nlas letras para hablarte a vos\n\n\n    G\nYo se que no tengo palabras\n   Em\ny nunca las voy a tener\n      C\npor eso aprovecho esta noche\n     D\ntal vez lo puedas entender\n\n\n      G\nPor eso aprovecho esta noche\n     Em\ntal vez lo puedas entender\n    C\nno me importa poner las letras\n   D\nsolo me importa mi mujer\n\n\n   G\nMañana cuando te levantes\n   Em\ny pienses lo que dije ayer\n    C\nay viejo porque en este juego\n   D\na mi siempre me toca perder\n\n\n C\nSiempre habrá vasos vacíos\n      G            Em\ncon agua de la ciudad\n     C                 D\nla nuestra es agua de río\n              G\nmezclada con mar\n\n   C\nLevanta los brazos mujer\n   G                     Em\ny ponte esta noche a bailar\n         C                 D\nque la nuestra es agua de río\n              G\nmezclada con mar\n\n\n   G\nA ti te quiero decir\n    Em\nno te preocupes mi amor\n     C\nque yo te voy a entender\n     D\nque yo te voy a entender\n\n\n C\nSiempre habrá vasos vacíos\n      G            Em\ncon agua de la ciudad\n     C                 D\nla nuestra es agua de río\n              G\nmezclada con mar\n\n   C\nLevanta los brazos mujer\n   G                     Em\ny ponte esta noche a bailar\n         C                 D\nque la nuestra es agua de río\n              G\nmezclada con mar"
+}

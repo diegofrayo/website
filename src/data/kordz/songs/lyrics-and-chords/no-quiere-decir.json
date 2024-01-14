@@ -1,0 +1,45 @@
+{
+	"details": {
+		"id": "no-quiere-decir",
+		"title": "No quiere decir",
+		"artist": "Luis Alberto Spinetta",
+		"album": "Un mañana",
+		"year": 2008,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 17,
+		"created_at": "2022/05/12",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/4qwaQvUrRwK2t1G6Q5pwbY",
+		"youtube_url": "https://youtu.be/FNIh1-RfG6g",
+		"assets": {},
+		"sources": [
+			{
+				"text": "NO QUIERE DECIR, Luis Alberto Spinetta: Acordes",
+				"url": "https://acordes.lacuerda.net/luis_a_spinetta/no_quiere_decir.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "No quiere decir - Luis Alberto Spinetta (Cover)",
+				"url": "https://youtu.be/KpYSz77BPtY",
+				"source": "youtube"
+			},
+			{ "text": "No Quiere Decir", "url": "https://youtu.be/s7t_o8mllYI", "source": "youtube" },
+			{
+				"text": "No quiere decir (Luis Alberto Spinetta) - Cover",
+				"url": "https://youtu.be/TzWDQXxT1xo",
+				"source": "youtube"
+			},
+			{
+				"text": "Lunar - No quiere decir (cover)",
+				"url": "https://youtu.be/AvAJRb8YSaM",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "INTRO: Ebmaj7 Cm7 Am7 Gmaj7   (x2)\n       Bm7 Am7 Gmaj7 Cmaj7\n\n\n           Bm7\nAunque el sol te abrigue\n     Am7                Gmaj7       Cmaj7\nno quiere decir que no tengas más frío\n         Bm7\ny si la luna se cubre\n     Am7                Gmaj7     Cmaj7\nno quiere decir que no tengas su luz\n\n      Bm7\nCada día es la mañana\n    Am7           Gmaj7      Cmaj7\ndesnuda y tu corazón tiene prisa\n         Bm7\ny si el mundo se oculta\n     Am7                Gmaj7    Cmaj7\nno quiere decir que no puedas volar\n\n\n Ebmaj7             Cm7\nMientras el cielo brille amor\n     Am7         Gmaj7\npor tí yo esperaré\nEbmaj7                  Cm7\noye sólo la distancia amor\n       Am7         Gmaj7\ny por tí yo esperaré\n\n\nBm7 Am7 Gmaj7 Cmaj7   (x2)\n\n\n     Bm7\nUna vida lejana\n      Am7                 Gmaj7      Cmaj7\nse escucha pedir por su amor sin destino\n         Bm7\ny si la noche la calla\n     Am7                 Gmaj7    Cmaj7\nno quiere decir que se apague su sed\n\n          Bm7\nSi en un sueño la buscas\n     Am7                  Gmaj7        Cmaj7\nno quiere decir que ella no esté a tu lado\n          Bm7\ny si sus manos se escapan\n     Am7                Gmaj7      Cmaj7\nno quiere decir que no tengas tu piel\n\n\n Ebmaj7               Cm7\nVa en mis alas el reclamo amor,\n Am7             Gmaj7\nva desde mi corazón\n Ebmaj7            Cm7\nva en mis alas el reclamo amor,\n Am7             Gmaj7\nva desde mi corazón\n\n\nINTRO\n\n\n           Bm7\nAunque el sol te abrigue\n     Am7                Gmaj7       Cmaj7\nno quiere decir que no tengas más frío\n         Bm7\ny si la luna se cubre\n     Am7                Gmaj7     Cmaj7\nno quiere decir que no tengas su luz\n\n      Bm7\nCada día es la mañana\n    Am7           Gmaj7      Cmaj7\ndesnuda y tu corazón tiene prisa\n         Bm7\ny si el mundo se oculta\n     Am7                Gmaj7    Cmaj7\nno quiere decir que no puedas volar\n\n\n Ebmaj7          Cm7\nCada tanto la palabra adiós\n   Am7          Gmaj7\nretoma el amanecer\n Ebmaj7             Cm7\ncada vez que la pronuncias amor\n    Am7              Gmaj7\ndespués yo debo renacer"
+}

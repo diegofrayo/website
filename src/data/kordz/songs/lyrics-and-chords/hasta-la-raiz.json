@@ -1,0 +1,34 @@
+{
+	"details": {
+		"id": "hasta-la-raiz",
+		"title": "Hasta la raíz",
+		"artist": "Natalia Lafourcade",
+		"album": "Hasta la raíz",
+		"year": 2015,
+		"country": "🇲🇽",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 10,
+		"created_at": "2021/06/22",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/692C4fgt86NVLGwKXe4KCs",
+		"youtube_url": "https://youtu.be/IKmPci5VXz0",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Como tocar Hasta La Raiz NATALIA LAFOURCADE | Guitarra Tutorial FACIL Christianvib",
+				"url": "https://youtu.be/_hFFRDKvUVc",
+				"source": "youtube"
+			},
+			{
+				"text": "Hasta la raíz",
+				"url": "https://acordes.lacuerda.net/natalia_lafourcade/hasta_la_raiz-3.shtml",
+				"source": "lacuerda"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter\n\n    insertions={[\n    \t{\n    \t\ttext: \"{NOTE}\",\n    \t\treplacement: <Tablature notes=\"La canción se toca con el capo en el traste 1\" />,\n    \t},\n    ]}\n\n>\n\n    {DATA.song.parsedLyrics}\n\n</TextFormatter>",
+	"txt": "{NOTE}\n\n\n Bm\nSigo cruzando ríos,\nandando selvas,\namando el sol\n            D\ncada día sigo sacando espinas\nde lo profundo del corazón\n             G\nen la noche sigo encendiendo sueños\n                                         D\npara limpiar con el humo sagrado cada recuerdo\n\n\n Bm\nCuando escribo tu nombre\nen la arena blanca con fondo azul\n                 D\ncuando miro el cielo en la forma cruel de una nube gris aparezcas tú\n             G\nuna tarde suba una alta loma\n                                        D\nmire el pasado sabrás que no te he olvidado\n\n\n             F#m               Em\nYo te llevo dentro, hasta la raíz\n                 F#m                  Bm\ny, por más que crezca, vas a estar aquí\n               F#m\naunque yo me oculte tras la montaña\n      Fm        Em\ny encuentre un campo lleno de caña\nno habrá manera, mi rayo de luna\n           D\nque tú te vayas\n\n\nBm  D  G  D\n\n\n Bm\nPienso que cada instante sobrevivido al caminar\n          D\ny cada segundo de incertidumbre\ncada momento de no saber\n               G\nson la clave exacta de este tejido\nque ando cargando bajo la piel\n           D\nasí te protejo\naquí sigues dentro\n\n\n             F#m               Em\nYo te llevo dentro, hasta la raíz\n                 F#m                  Bm\ny, por más que crezca, vas a estar aquí\n               F#m\naunque yo me oculte tras la montaña\n      Fm        Em\ny encuentre un campo lleno de caña\nno habrá manera, mi rayo de luna\n           D\nque tú te vayas\n\n\nBm  D  G  D\n\n\n             F#m               Em\nYo te llevo dentro, hasta la raíz\n                 F#m                  Bm\ny, por más que crezca, vas a estar aquí\n               F#m\naunque yo me oculte tras la montaña\n      Fm        Em\ny encuentre un campo lleno de caña\nno habrá manera, mi rayo de luna\n           D\nque tú te vayas"
+}

@@ -1,0 +1,44 @@
+{
+	"details": {
+		"id": "la-miel-en-tu-ventana",
+		"title": "La miel en tu ventana",
+		"artist": "Spinetta y los Socios del Desierto",
+		"album": "Estrelicia MTV Unplugged",
+		"year": 1997,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 13,
+		"created_at": "2022/09/01",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/0wTDQd5FhSuuxDUUFl9hJ7",
+		"youtube_url": "https://youtu.be/E2nrlV4DwdE",
+		"assets": {},
+		"interpretation": "- Fuerza del canto: Suave\n- Velocidad de rasgueo: Rápida\n- Fuerza de rasgueo: Baja\n- Complejidad: Díficil\n",
+		"sources": [
+			{
+				"text": "LA MIEL EN TU VENTANA, Spinetta y los Socios del Desierto: Acordes",
+				"url": "https://acordes.lacuerda.net/spinetta_y_los_socios_del_desierto/la_miel_en_tu_ventana.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Como tocar La Miel En Tu Ventana (Acordes - Explicacion) - Luis Alberto Spinetta",
+				"url": "https://youtu.be/eOVhJCPEjEY",
+				"source": "youtube"
+			},
+			{
+				"text": "La miel en tu ventana, Spinetta cover by Erick Pérez de Costa Rica",
+				"url": "https://youtu.be/rRx5UDo34Nk",
+				"source": "youtube"
+			},
+			{
+				"text": "La Miel En Tu Ventana - Luis Alberto Spinetta (Cover)",
+				"url": "https://youtu.be/HSsxs-REGoU",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "INTRO: Dsus2  Dsus2   (x4)\n       ↓\n\n    D                         Cmaj7#11/D           |\nNo deja de tentarme en las mañanas                 |\n    D                             Cmaj7#11/D       |\nla miel que deja el sol en tu ventana,             |\n                                                   |\n                                                   |\n    Asus2   Asus2/G    D                           |\nEl sol, no sabe donde vas                          |\n    Asus2   Asus2/G   D     G                      |\nel sol, no dice yo te a....mo....                  |\n                                                   |\n                                                   |\n    D                         Am7         D        |\nNo deja de tentarme en las mañanas tanta luz...    | (x2)"
+}

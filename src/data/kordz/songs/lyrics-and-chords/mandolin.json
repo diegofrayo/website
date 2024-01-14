@@ -1,0 +1,29 @@
+{
+	"details": {
+		"id": "mandolin",
+		"title": "Mandolín",
+		"artist": "Gustavo Pena El Príncipe",
+		"album": "El recital",
+		"year": 2003,
+		"country": "🇺🇾",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 16,
+		"created_at": "2021/08/13",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/0HxLlkUPaWb4zZInxl43Fw",
+		"youtube_url": "https://youtu.be/56yjg8xJWw4",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Mandolin (Cover - María Victoria Rambosio)",
+				"url": "https://youtu.be/FB4gKCfQZ_A",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": " Dm                                      Am\nTiene una mirada ebria de palabras y poesías,\nDm                                          Am\n   bajo un cielo claro de un pueblito por ahí\nDm                                          Am\nun mundo imaginario lleno de ilusiones coloridas,\n       Dm                             Am\ny el amor monta en su caballo y es feliz\n\n\nDm                               Am\nEy la primera, es la verdadera, nena\nDm                              Am\nEy la segunda, que no te confunda\nDm                                  Am   G\nEy la tercera, pierde un turno espera... el amor\n\n\n Dm                                            Am\nTodo tiene un tiempo, vos y yo tenemos la alegría\nDm                                       Am\n   de tener espacio adentro de este corazón\nDm                                            Am\nguardo una sonrisa, para esos momentos de la vida,\nDm                       Am\naúú aúú,           aún así\n       Dm                Am\ny el amor,    juntito a mí\n\n\nDm                               Am\nEy la primera, es la verdadera, nena\nDm                              Am\nEy la segunda, que no te confunda\nDm                                  Am   G\nEy la tercera, pierde un turno espera... el amor\nDm        Am        Dm        Am\n     el amor   el amor   el amor\n\n\n Dm                                      Am\nTiene una mirada ebria de palabras y poesías,\nDm                                          Am\n   bajo un cielo claro de un pueblito por ahí\nDm                                          Am\nun mundo imaginario lleno de ilusiones coloridas,\n       Dm                             Am\ny el amor monta en su caballo y es feliz\n\n\nDm                               Am\nEy la primera, es la verdadera, nena\nDm                              Am\nEy la segunda, que no te confunda\nDm                                  Am   G\nEy la tercera, pierde un turno espera... el amor"
+}
