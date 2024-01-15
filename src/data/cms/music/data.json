@@ -285,46 +285,6 @@
 			"youtube_url": "https://youtu.be/obkKYJINyco"
 		},
 		{
-			"album": "Despierta",
-			"artist": "Las Pelotas",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1rV3vSFjuR9vvwCi-snTNmncyIWWlKOyq"
-			},
-			"category": "1|FAVORITE",
-			"country": "🇦🇷",
-			"created_at": "2021/07/04",
-			"id": "personalmente",
-			"interpretation": "- Fuerza del canto: Normal\n- Velocidad de rasgueo: Lenta\n- Fuerza de rasgueo: Normal\n- Rasgueo: Lento y con pausas\n- Complejidad: Media\n",
-			"is_public": true,
-			"order": 8,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "PERSONALMENTE, Las Pelotas: Acordes",
-					"url": "https://acordes.lacuerda.net/pelotas/personalmente.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "COMO TOCAR \"Personalmente\" de Las Pelotas Tutorial guitarra acústica/criolla acordes rasgueo punteo",
-					"url": "https://youtu.be/FBSTHuLEEVk"
-				},
-				{
-					"source": "instagram",
-					"text": "sofiandroll",
-					"url": "https://www.instagram.com/p/CiThWLQvj66"
-				},
-				{
-					"source": "youtube",
-					"text": "Personalmente - Las Pelotas (Cover @lodelmagomusic)",
-					"url": "https://youtu.be/Bj-Ah577USc"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/7q7XFO9av9VpNJSXKJwJxD",
-			"title": "Personalmente",
-			"year": 2009,
-			"youtube_url": "https://youtu.be/fuwfOdrV32k"
-		},
-		{
 			"album": "La mosca y la sopa",
 			"artist": "Patricio Rey y sus Redonditos de Ricota",
 			"assets": {
@@ -933,46 +893,6 @@
 			"title": "Par mil",
 			"year": 2000,
 			"youtube_url": "https://youtu.be/Z_tHBX0mj1s"
-		},
-		{
-			"album": "El jardín de los presentes",
-			"artist": "Invisible",
-			"assets": {
-				"server_url": "https://drive.google.com/uc?id=1u-8vBsWmgzUSFfWOjStTgKhA7pkBNHab"
-			},
-			"category": "3|TO_PRACTICE",
-			"country": "🇦🇷",
-			"created_at": "2021/03/23",
-			"id": "que-ves-el-cielo",
-			"interpretation": "",
-			"is_public": true,
-			"order": 0,
-			"sources": [
-				{
-					"source": "lacuerda",
-					"text": "Que ves el cielo",
-					"url": "https://acordes.lacuerda.net/invisible/que_ves_el_cielo.shtml"
-				},
-				{
-					"source": "youtube",
-					"text": "Cómo tocar Spinetta (Invisible) Que ves el cielo con Acordes Tutorial Letra Cover Pedro Aznar",
-					"url": "https://youtu.be/IX4BZ3PkbZ4"
-				},
-				{
-					"source": "youtube",
-					"text": "que ves el cielo ( cover) temazo del flaco spinetta",
-					"url": "https://youtu.be/bGkqLWnaph8"
-				},
-				{
-					"source": "youtube",
-					"text": "Que Ves El Cielo - Invisible (Cover)",
-					"url": "https://youtu.be/2xluLfcoJMg"
-				}
-			],
-			"spotify_url": "https://open.spotify.com/track/2G6XFgIRMn0ZdIBao0ggoM",
-			"title": "Que ves el cielo",
-			"year": 1976,
-			"youtube_url": "https://youtu.be/OU_HZZF_bl8"
 		},
 		{
 			"album": "Confesiones de invierno",
