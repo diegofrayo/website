@@ -14,6 +14,8 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 		return null;
 	}
 
+	const artist = v.isArray(song.artist) ? song.artist.join(", ") : song.artist;
+
 	return (
 		<Block className={cn("tw-text-sm tw-italic", className)}>
 			<Block className="sm:tw-flex sm:tw-flex-nowrap">
@@ -25,9 +27,9 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 				</InlineText>
 				<InlineText
 					className="sm:tw-flex-1 sm:tw-truncate"
-					title={song.artist}
+					title={artist}
 				>
-					{song.artist}
+					{artist}
 				</InlineText>
 			</Block>
 			<Block className="sm:tw-flex sm:tw-flex-nowrap">

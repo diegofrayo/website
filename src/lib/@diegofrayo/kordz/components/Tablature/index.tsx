@@ -121,7 +121,9 @@ function Tablature({ positions, notes }: T_TablatureProps) {
 				</div>
 			) : null}
 
-			{v.isNotUndefined(parsedPositions) && v.isNotEmptyString(notes) ? <hr /> : null}
+			{v.isNotUndefined(parsedPositions) && v.isNotEmptyString(notes) ? (
+				<hr className="tw-my-0.5 tw-border-0 tw-bg-transparent" />
+			) : null}
 
 			{v.isNotEmptyString(notes) ? (
 				<p className="tw-break-word tw-ml-2 tw-whitespace-pre-line tw-italic">{`"${notes}"`}</p>

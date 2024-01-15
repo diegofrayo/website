@@ -1,5 +1,5 @@
 .dr-tablature-position--cell::before {
-	background-color: black;
+	@apply dr-bg-color-surface-600;
 	content: "";
 	display: inline-block;
 	height: 1px;
@@ -8,10 +8,4 @@
 	position: absolute;
 	top: 10px;
 	width: 100%;
-}
-
-@media print {
-	.dr-tablature-position--cell::before {
-		border-bottom: 1px solid black;
-	}
 }

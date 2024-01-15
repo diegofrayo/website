@@ -21,7 +21,14 @@ import { MDXContent } from "~/modules/mdx/client";
 import { ROUTES } from "~/modules/routing";
 import type { T_PageContent } from "~/server/data-loader";
 import { useDidMount } from "@diegofrayo/hooks";
-import { KordzService, TextFormatter, GuitarChord, type T_PlainChord } from "@diegofrayo/kordz";
+import {
+	GuitarChord,
+	KordzService,
+	MusicTextNote,
+	Tablature,
+	TextFormatter,
+	type T_PlainChord,
+} from "@diegofrayo/kordz";
 import { useBrowserStorageState } from "@diegofrayo/storage";
 import type { T_Song } from "@diegofrayo/types/kordz";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
@@ -141,8 +148,7 @@ function SongPage({ cmsContent, songDetails, songContent }: T_SongPageProps) {
 				replaceTitle: !isChordsSong(songDetails),
 				description: parseSEOItem(cmsContent.content.seo.description),
 				pathname: `${ROUTES.KORDZ}/${songDetails.id}`,
-				disableSEO: true,
-				// disableSEO: songDetails.is_public === false, // TODO
+				disableSEO: songDetails.is_public === false,
 			}}
 		>
 			<MainLayout title={songDetails.title}>
@@ -194,7 +200,7 @@ function SongPage({ cmsContent, songDetails, songContent }: T_SongPageProps) {
 								<MDXContent
 									code={songContent}
 									globals={{ DATA: { song: songDetails } }}
-									components={{ TextFormatter }}
+									components={{ TextFormatter, Tablature, MusicTextNote }}
 								/>
 							</Block>
 						</ClientRenderComponent>

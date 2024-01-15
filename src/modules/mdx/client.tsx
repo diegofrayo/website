@@ -1,6 +1,6 @@
 import * as React from "react";
-import { getMDXComponent, getMDXExport } from "mdx-bundler/client";
 import cn from "classnames";
+import { getMDXComponent, getMDXExport } from "mdx-bundler/client";
 
 import {
 	Block,
@@ -16,11 +16,12 @@ import {
 	Text,
 	Title,
 } from "~/components/primitive";
-import { SourceCode, BoxWithTitle } from "~/components/shared";
+import { SourceCode, BoxWithTitle, ImageWithLink } from "~/components/shared";
 import type { T_TitleProps } from "~/components/primitive/Title";
+import { ComponentWithAuth } from "~/modules/auth";
 import type DR from "@diegofrayo/types";
-
 import v from "@diegofrayo/v";
+
 import styles from "./styles.module.css";
 
 type T_MDXContentProps = {
@@ -92,7 +93,9 @@ export const MDXComponents = {
 	Block,
 	BoxWithTitle,
 	Collapsible,
+	ComponentWithAuth,
 	Icon,
+	ImageWithLink,
 	InlineText,
 	Link,
 	SourceCode,

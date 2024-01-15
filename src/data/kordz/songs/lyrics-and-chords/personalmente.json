@@ -1,0 +1,44 @@
+{
+	"details": {
+		"id": "personalmente",
+		"title": "Personalmente",
+		"artist": "Las Pelotas",
+		"album": "Despierta",
+		"year": 2009,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 18,
+		"created_at": "2021/07/04",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/7q7XFO9av9VpNJSXKJwJxD",
+		"youtube_url": "https://youtu.be/fuwfOdrV32k",
+		"assets": {},
+		"interpretation": "- Fuerza del canto: Normal\n- Velocidad de rasgueo: Lenta\n- Fuerza de rasgueo: Normal\n- Rasgueo: Lento y con pausas\n- Complejidad: Media\n",
+		"sources": [
+			{
+				"text": "PERSONALMENTE, Las Pelotas: Acordes",
+				"url": "https://acordes.lacuerda.net/pelotas/personalmente.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "COMO TOCAR \"Personalmente\" de Las Pelotas Tutorial guitarra acústica/criolla acordes rasgueo punteo",
+				"url": "https://youtu.be/FBSTHuLEEVk",
+				"source": "youtube"
+			},
+			{
+				"text": "sofiandroll",
+				"url": "https://www.instagram.com/p/CiThWLQvj66",
+				"source": "instagram"
+			},
+			{
+				"text": "Personalmente - Las Pelotas (Cover @lodelmagomusic)",
+				"url": "https://youtu.be/Bj-Ah577USc",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "INTRO: E  F#   | (x4)\n\n\nE            F#\n   Deja que ruede\n                        E\ncomo el aire entre las hojas\n                      F#\ntodo es oro, todo es sal\n\nE                  F#\n   Que llegará el día\n                     E\nque no quemen sus recuerdos\n                     F#     C#m\nque se apagará el dolor\n\n\n                F#          C#m\nPersonalmente creo\n                 F#         C#m\nque todo esto es una locura\n                F#          C#m\npersonalmente creo\n                 F#\nque todo esto es una locura\n\n\nE F#   (x2)\n\n\nE              F#\n   Cómo es la vida\n                     E\ncuántas veces en el cielo\n                     F#\n  cuántas en la oscuridad\n\nE                  F#\n   Que sólo es el tiempo\n                   E\nel que llevará tú vida\n                       F#    C#m\na dónde quieres que estés\n\n\n                F#            C#m\nPersonalmente creo\n                 F#           C#m\nque todo esto es una locura\n                F#            C#m\npersonalmente creo\n                 F#\nque todo esto es una locura\n\n\nE  F#   (x2)\n\n\n E                  F#\nDeja, sigamos remontando vuelo\n E                        F#\ndeja, la luz siempre atraviesa el bosque\n     E                F#\ndespués es solo un recuerdo\n     E            F#\ndespués solo pasará\n\nE            F#\n   Deja que ruede\nE              F#\n   llegará el día\nE        F#\n   la locura\nE        F#\n   la locura..."
+}
