@@ -1,0 +1,39 @@
+{
+	"details": {
+		"id": "quedandote-o-yendote",
+		"title": "Quedándote o yéndote",
+		"artist": "Luis Alberto Spinetta",
+		"album": "Elija y Gane",
+		"year": 1999,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 53,
+		"created_at": "2021/07/21",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/5gUxsVRhWljyJz7pYakRL4",
+		"youtube_url": "https://youtu.be/Jqi2rk5l0-k",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Quedándote o Yéndote",
+				"url": "https://acordes.lacuerda.net/luis_a_spinetta/quedandote_o_yendote-2.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Quedandote o yendote",
+				"url": "https://youtu.be/hCP49EN9gNE",
+				"source": "youtube"
+			},
+			{
+				"text": "Quedándote o Yéndote- Spinetta (Cover Luna Esandi)",
+				"url": "https://youtu.be/b9yCxAjr99s",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "INTRO:\nA (0,5 | 2,4 | 2,3 | 2,2)   (x3)\nDm6 ↓\n\n\n      Em7           D                       A\nY deberás plantar     y ver así a la flor nacer\n      Em7           D                               A\ny deberás crear       si quieres ver a tu tierra en paz\n\nD          E           A            D                   E D\n  el sol empuja con su luz el cielo brilla renovando la vida,\n\n\nA (con dedo 4 en 3,2)\nLA LA LA LA LA...\n\n\n      Em7           D                   A\ny deberás amar,       amar amar hasta morir\n      Em7           D                    A\ny deberás crecer      sabiendo reír y llorar\n\nD           E           A          D                       E D\n  la lluvia borra la maldad y lava todas las heridas de tu alma,\n\n\nF#m E A D\nLA LA LA LA LA...   (x2)\n\n\n      Em7           D                      A\nde tí saldrá la luz   tan sólo así serás feliz\n      Em7           D                         A\ny deberás luchar      si quieres descubrir la fe\n\nD           E           A          D                       E D\n  la lluvia borra la maldad y lava todas las heridas de tu alma,\n\n\nF#m E A D\nLA LA LA LA LA...   (x2)\n\n\nC#m                        D          E\n  este agua lleva en sí la fuerza del fuego\n   F          G         B      A     A/G     Asus2\nla voz que responde por tí por mí-----i------i...\n         Em7            D                   A\ny esto será siempre así   quedándote o yéndote\n\n\nDm6"
+}

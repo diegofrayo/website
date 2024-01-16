@@ -1,0 +1,49 @@
+{
+	"details": {
+		"id": "par-mil",
+		"title": "Par mil",
+		"artist": "Divididos",
+		"album": "Narigón del siglo",
+		"year": 2000,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 47,
+		"created_at": "2021/03/28",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/0wUFXsXHZc2h6wKRcmJNWF",
+		"youtube_url": "https://youtu.be/Z_tHBX0mj1s",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Como Tocar Par Mil de Divididos - Tutorial Para Guitarra Acustica - Ricardo Mollo",
+				"url": "https://youtu.be/ju0ACmzXb9Q",
+				"source": "youtube"
+			},
+			{
+				"text": "GUITARRA | Par Mil - Divididos (Guitarra cover/tutorial) Martin Lopez",
+				"url": "https://youtu.be/QhjBRjEFnGM",
+				"source": "youtube"
+			},
+			{
+				"text": "PAR MIL, Divididos: Acordes",
+				"url": "https://acordes.lacuerda.net/divididos/par_mil-3.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Par Mil - Divididos (Cover - Isabel Dunas)",
+				"url": "https://youtu.be/ccUfpINARuk",
+				"source": "youtube"
+			},
+			{
+				"text": "💡Par mil de Divididos, pero cada vez que digo Luz, la luz se pone mas brillante",
+				"url": "https://youtu.be/pTLX_zxoW90",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{SOLO}\",\n\t\t\treplacement: (\n\t\t\t\t<Tablature\n\t\t\t\t\tnotes=\"Version del solo con punteo en vez de rasgueo\"\n\t\t\t\t\tpositions={[\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 4 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 5 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 4 },\n\t\t\t\t\t\t{ space: 2 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 6 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 4 },\n\t\t\t\t\t\t{ guitarString: 4, guitarFret: 7 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 6 },\n\t\t\t\t\t\t{ space: 2 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 4 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 6 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 7 },\n\t\t\t\t\t\t{ guitarString: 4, guitarFret: 7 },\n\t\t\t\t\t\t{ guitarString: 4, guitarFret: 5 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 5 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 4 },\n\t\t\t\t\t]}\n\t\t\t\t/>\n\t\t\t),\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
+	"txt": "INTRO: G D   (x4)\n\n\nG                     D        G   D\nQue hay de esa imagen en mi cielo\nG               D       G   D\nno creo ser tan importante\n\nG                D\nCamino mi propia luz\nG                     D\ny me siento un haz de luz\nG                  D\nclaridad de propio ser\n\n\nG    G    G   Cadd9\nLuz, luz, luz del alma\nC                                G   D   G   D\n   soy un hombre que espera el alba\n\n\nG                     D          G   D\nQue hay de esa imagen de mi infierno\nG              D        G     D\nsi ya fui roto al tomar aire\n\nG                 D\nCaminaste por mis brasas\nG                   D\nme soñé en la oscuridad\nG                  D\nme estrellé contra mí\n\n\nG    G    G   Cadd9\nLuz, luz, luz del alma\nC                                G   D   G   D\n   soy un hombre que espera el alba\n\n\nSOLO: Em A D Cadd9 G\n\n\nG                  D\nNo confunda ché pastor\nG                    D\nno me interesa tu cielo\nG                        D\ntoda el agua va hacia el mar\n\n\nG    G    G   Cadd9\nLuz, luz, luz del alma\nC                                G   D   G   D\n   soy un hombre que espera el alba\n\nG    G    G   Cadd9\nLuz, luz, luz del alba\nC                                G   D   G   D\n   soy un hombre que espera el alma\n\n\nSOLO: Em A D Cadd9 G\n\n\n{SOLO}"
+}

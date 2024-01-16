@@ -1,0 +1,39 @@
+{
+	"details": {
+		"id": "ay-que-dios-boludo",
+		"title": "Ay que Dios boludo",
+		"artist": "Divididos",
+		"album": "Vengo del placard de otro",
+		"year": 2001,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 10,
+		"created_at": "2021/07/04",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/2BtPSOvL4L9QmpMRMFf7zy",
+		"youtube_url": "https://youtu.be/KRVs8tfo4X4",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Fercho Marchetti - Ay, que dios boludo (Cover Divididos)",
+				"url": "https://youtu.be/UAlm1i5W3yI",
+				"source": "youtube"
+			},
+			{
+				"text": "Ay que Dios boludo",
+				"url": "https://acordes.lacuerda.net/divididos/ay_que_dios_boludo-2.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "\"Ay, que dios boludo\" (Divididos) cover Fito Castro",
+				"url": "https://youtu.be/rgAcqqZZAck",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "INTRO: C G D A   (x2)\n\n\nC               G                 D         A\n  el amor me llenó la cama de arandelas y tachuelas\nC                  G              D          A\n  me operé de este bandoneón con anestesia local\nC               G                   D             A\n  entonces engordé de ideas y ahora hago ayuno de bocho\nC            G             D         A\n  encima me enamoré y engordó mi corazón también\n\n\nAm C [C (Desde el 5to traste)]   (x2)\n\n\nAm         G/C          F#°      C/G\nse me divorciaron las mesitas de luz\nAm          G/C            F#°  C/G\n  por ser rebelde no hay nego...cio\nAm             G/C        F#°         C/G\nay, que dios boludo se pinchó en la mitad\nAm              G/C         F#°  C/G\n  se hizo el canchero con mila...gros\n\n\nC      G                Am\n  vestite pebeta que te llevo a pasear\nC            G               Am\n  esta noche paqueta nos vuelve a besar\nC      G            Am                   F\n  vestite pebeta te llevo a pasear, esta noche\n\n\nC G D A   (x2)\n\n\nC               G              D             A\n  tus penas son una cajita musical que se oxidó\nC                 G                D            A\n  carnaval de los picaflores, maquillaje y bombachita\nC               G                D         A\n  aquellarre de presidentes un ratito cada uno\nC            G                D              A\n  la azafata vuelve a ser, la que trae el perfume y el pedal\n\n\nC G D A   (x4)\n\n\nC      G                Am\n  vestite pebeta que te llevo a pasear\nC            G              Am\n  esta noche paqueta nos vuelve a besar\nC      G            Am                   F\n  vestite pebeta te llevo a pasear, esta noche\n\n\nC G D A   (x6)"
+}

@@ -1,0 +1,34 @@
+{
+	"details": {
+		"id": "el-tiempo-esta-despues",
+		"title": "El tiempo está después",
+		"artist": "Fernando Cabrera",
+		"album": "El tiempo está después",
+		"year": 1989,
+		"country": "🇺🇾",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 24,
+		"created_at": "2021/07/04",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/0tbLOU9BO0mGip1N8sTBZ9",
+		"youtube_url": "https://youtu.be/nvwvgr0kzWI",
+		"assets": {},
+		"sources": [
+			{
+				"text": "El tiempo está después",
+				"url": "https://acordes.lacuerda.net/fernando_cabrera/el_tiempo_esta_despues.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "El tiempo esta despues - Perota chingo (cover)",
+				"url": "https://youtu.be/9yoeSeytTS0",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "D\nLa calle Llupes raya al medio\n               Bm\nencuentra Belvedere\n\nel tren saluda desde abajo\n                  G\ncon silbos de tristeza\n\naquellas filas infinitas\n               Em\nsaliendo de Central\n                    A7\nel empedrado está tapado\n            D\npero allí está\n\n\nD\nLa primavera en aquel barrio\n             Bm\nse llama soledad\nse llama gritos de ternura\n                G\npidiendo para entrar\ny en el apuro está lloviendo\n               Em\nya no se apretarán\n                       A7\nmis lágrimas en tus bolsillos\n               D\ncambiaste de sacón\n\n\n                   Bm\nUn día nos encontraremos\n             G\nen otro carnaval\n                         Em\ntendremos suerte si aprendemos\n                     D\nque no hay ningún rincón\n                        Bm\nque no hay ningún atracadero\n               G\nque pueda disolver\n                          Em\nen su escondite lo que fuimos\n                    D\nel tiempo está después"
+}

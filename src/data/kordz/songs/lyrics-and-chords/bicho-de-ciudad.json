@@ -1,0 +1,39 @@
+{
+	"details": {
+		"id": "bicho-de-ciudad",
+		"title": "Bicho de ciudad",
+		"artist": "Los Piojos",
+		"album": "Civilización",
+		"year": 2007,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 13,
+		"created_at": "2021/06/22",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/1L9ybuuZdLY3biLEgfN4zB",
+		"youtube_url": "https://youtu.be/esI9dPBmt34",
+		"assets": {},
+		"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Baja\n- Complejidad: Media\n",
+		"sources": [
+			{
+				"text": "Bicho de ciudad",
+				"url": "https://acordes.lacuerda.net/piojos/bicho_de_ciudad.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Cómo tocar Los Piojos Bicho de ciudad con guitarra criolla Acordes Tutorial Letra Cover",
+				"url": "https://youtu.be/FCz1p5xjlvM",
+				"source": "youtube"
+			},
+			{
+				"text": "Como tocar Bicho de ciudad Los piojos guitarra (letra y acordes)",
+				"url": "https://youtu.be/MUKa2nM4690",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "D              G             D          G\n  ¿Qué voy a hacer con tanto cielo para mí?\nD         G              D           G\n  voy a volar, yo soy un bicho de ciudad\nD              G               D          G\n  ¿Qué voy a hacer, cual es el camino a seguir?\nD         G           D            G\n  voy a soñar con ese beso al regresar\n\nD            G           D           G\n  Cierro los ojos, no imagino algo mejor,\nD         G       D            G\n  respiro hondo      y tomo el vino\n\n\nBm         G            D           A\n  Y no te asustes si me río como un loco,\nEm       G           D          A\n  es necesario que a veces sea así,\nBm        G            D               A\n  será la vida que siempre nos pega un poco,\nEm         G           D              A\n  nos encandila con lo que está por venir\n\n\nA      Em    Bm - Bm |\n↓↓↓↓   ↓↓    ↓       |\nF#m    D     A  - A  |\n↓↓↓↓   ↓↓    ↓       | (x2)\n\n\nA     G\nAhhhh ahhhh\n\n\nD              G             D          G\n  ¿Qué voy a hacer con tanto cielo para mí?\nD         G              D           G\n  voy a volar, yo soy un bicho de ciudad\nD         G          D           G\n  bajo un árbol me refugio del calor,\nD         G       D            G\n  en el silencio,   escucho el río\n\n\nBm         G            D           A\n  Y no te asustes si me río como un loco,\nEm       G           D         A\n  es necesario que mañana sea así,\nBm        G            D               A\n  será la vida que siempre nos pega un poco,\nEm         G           D            A\n  nos encandila con lo que está por venir\n\n\nA      Em    Bm - Bm |\n↓↓↓↓   ↓↓    ↓       |\nF#m    D     A  - A  |\n↓↓↓↓   ↓↓    ↓       | (x2)\n\n\nA     G\nAhhhh ahhhh\n\n\nD       G                 D           G\n  Es perfecto el aire, la cumbre bajo el sol,\nD           G            D              G\n  de lo que quede de mí,    te llevo un poco\n\n\nBm         G            D           A\n  Y no te asustes si me río como un loco,\nEm       G           D         A\n  es necesario que mañana sea así,\nBm        G            D               A\n  será la vida que siempre nos pega un poco,\nEm         G           D            A\n  nos encandila con lo que está por venir\n\n\nA      Em    Bm - Bm |\n↓↓↓↓   ↓↓    ↓       |\nF#m    D     A  - A  |\n↓↓↓↓   ↓↓    ↓       | (x2)\n\n\nA     G\nAhhhh ahhhh"
+}

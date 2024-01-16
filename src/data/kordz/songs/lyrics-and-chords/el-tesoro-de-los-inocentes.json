@@ -1,0 +1,44 @@
+{
+	"details": {
+		"id": "el-tesoro-de-los-inocentes",
+		"title": "El tesoro de los inocentes",
+		"artist": "Indio Solari y los Fundamentalistas del Aire Acondicionado",
+		"album": "Bingo Fuel",
+		"year": 2004,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 23,
+		"created_at": "2021/04/30",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/7qGn9WweEDJw8KZwJqB1KN",
+		"youtube_url": "https://youtu.be/NH9lciAWeJw",
+		"assets": {},
+		"sources": [
+			{
+				"text": "EL TESORO DE LOS INOCENTES, Los Fundamentalistas del Aire Acondicionado: Acordes",
+				"url": "https://acordes.lacuerda.net/fundamentalistas_del_aire/el_tesoro_de_los_inocentes-5.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "COVER Y COMO TOCAR CON LA GUITARRA - EL TESORO DE LOS INOCENTES. INDIO SOLARI TUTORIAL ACORDES",
+				"url": "https://youtu.be/aRKwxpQcVkk",
+				"source": "youtube"
+			},
+			{
+				"text": "El tesoro de los inocentes - Indio Solari (Cover)",
+				"url": "https://youtu.be/vhdIUCb_4h0",
+				"source": "youtube"
+			},
+			{
+				"text": "EL TESORO DE LOS INOCENTES - COMO TOCARLO",
+				"url": "https://youtu.be/40O_dP8a_Ek",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "INTRO:\nEm C D       (x3)       |\n10,1 - 8,2   (x5)       | (x2)\n\n1,2 - 2,3 - 2,3 - 0,2   | (x2)\n\nD ↓↑↓\n2,3 - 0,3 - 2,3 - 0,2 - 1,2 - 0,2\n\n\nEm      C        D  Em\n   El tesoro que no ves\n      C          D  Em\nla inocencia que no ves\n      C          D   C\nlos milagros que van a estar de tu lado, cuando comiences a...\n\n  Em         C            D Em\nLeer, de los labios y a ignorar,\n      C        D  Em\nlos embustes y gustar\n       C         D   C\ncon tu lengua de las aguas que son dulces, aunque te sientas mal\n\n\n      G    G       G       G      D\nSi no hay amor que no haya nada entonces, alma mía\n             Em\nno vas a regatear!\n\n\n      C        D     Em\nUn hermoso día el de hoy!\n        C         D  Em\nay! Qué bello día es hoy!\n     C      D C\nestá para desatar nuestra tormenta, que va a tronar por el...\n\n  Em      C           D  Em\nDolor, juegan a \"primero yo\"\n     C            D  Em\ny después a \"también yo\"\n         C       D  C\ny a \"las migas para mí\" y cierran el juego, porque ya saben que...\n\n\n   G     G     G      G      D\nEl tonto nunca puede oler al diablo (vida mía!)\n                   Em\nni si caga en su nariz\n\n\n       C         D   Em\nEsa mancha que está allí...\n     C               D    Em\npor allí... en el suelo! allí!\n        C       D C\ny en tu bella cicatriz... parece sangre y sin embargo\n\n     Em       C        D  Em\nSonreís, el tesoro que no ves!\n      C          D  Em\nla inocencia que no ves!\n      C          D C\nel placer es tan oscuro como el culo, de un topo negro y...\n\n\n      G    G       G       G      D\nSi no hay amor que no haya nada entonces, alma mía\n             Em\nno vas a regatear!\n\n\nEm   C     D             Em                         |\n        Placer que es cruel...                      |\n(le echás el guante)                                |\nEm   C      D    Em                                 |\n        sin lágrimas...                             |\n(a tu pena)                                         |\n C                                                  |\nallí nomás...                                       |\n(y el mundo allí nomás)                             |\n              Em                                    |\nel sol cocina lento...                              |\n                                                    |\nEm   C     D             Em                         |\n        Placer que es cruel...                      |\n(vos siempre estás con una excusa a flor de labios) |\nEm   C      D    Em                                 |\n        sin lágrimas...                             |\n(con tus dolores)                                   |\n C                                                  |\nallí nomás,                                         |\n(sin vida)                                          |\n                    Em                              |\ncon tu sangre en el suelo...                        | (x2)"
+}

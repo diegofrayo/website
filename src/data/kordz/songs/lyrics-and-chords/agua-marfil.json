@@ -1,0 +1,29 @@
+{
+	"details": {
+		"id": "agua-marfil",
+		"title": "Agua marfil",
+		"artist": "Usted Señalemelo",
+		"album": "Usted Señalemelo",
+		"year": 2015,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 4,
+		"created_at": "2021/04/24",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/6mYdnKt43uGw3gmtOz4yQi",
+		"youtube_url": "https://youtu.be/3NQoPCxqn9o",
+		"assets": {},
+		"sources": [
+			{
+				"text": "COMO Tocar 🎸 AGUA MARFIL - USTED SEÑALEMELO (GUITARRA) Acordes y acompañamiento TUTORIAL",
+				"url": "https://youtu.be/P7R1MB18yyo",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{NOTE}\",\n\t\t\treplacement: <Tablature notes=\"La canción se toca con el capo en el traste 4\" />,\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
+	"txt": "{NOTE}\n\n\nINTRO: D G   (x2)\n\n\nD                     G\n   Tu vestido agua marfil\n                        D\nsalió volando a todos lados\n                      G\nestalló en un mar sin fin\n                         D\nsirenas cantaban al costado\n\n\nOhhh... Ohhh Ohhh... | D G   (x2)\n\n\nD                        G\n      circulares agua marfil\n                          D\nsaltaban van para todos lados\n                G\nme perdí volándote\n                           Bm\ny encantado del lugar callado\n\n\n   D      G     F#7  Bm\ntu cuer...po baila...ba\n     D    G          F#7  Bm\nmi cabe...za se enrosca...ba\n     D   G   F#7   Bm\ny el a...gua mar...fil\n             D   G\nconfundiendo mas aquí\n\n\nD                G\n   nubes agua marfil\n                         D\natormentaron lo inatormentado\n                   G\ntan grande tu lago que\n                   Bm\nmis gritos no llegaron\n\n\n   D      G     F#7  Bm\ntu cuer...po baila...ba\n   D    G      F#7    Bm\ntu ri...sa lo acompañaba\n     D   G   F#7   Bm\ny el a...gua mar...fil\n       D   G   F#7\nuniéndonos mas así\n\n\nD              F#7  Bm        F#7\n   corramos juntos, no mires atrás\nD              F#7  Bm        F#7       F#7\n   corramos juntos, no mires atrás, hay húmedad\n\n\nD                     G\n   tu vestido agua marfil\n                        D\nsalió volando a todos lados\n                      G\nestalló en un mar sin fin\n                         D\nsirenas cantaban al costado\n\n\n   D      G     F#7  Bm\ntu cuer...po baila...ba\n     D    G          F#7  Bm\nmi cabe...za se enrosca...ba\n     D   G   F#7   Bm\ny el a...gua mar...fil\n      D           G\nconfundiendo mas aquí"
+}

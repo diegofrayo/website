@@ -1,0 +1,34 @@
+{
+	"details": {
+		"id": "arrancarmelo",
+		"title": "Arrancármelo",
+		"artist": "Wos",
+		"album": "Desconocido",
+		"year": 2022,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 9,
+		"created_at": "2022/09/17",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/2x8oBuYaObjqHqgGuIUZ0b",
+		"youtube_url": "https://youtu.be/RNLsc_DWDUw",
+		"assets": {},
+		"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Media\n- Complejidad: Media\n",
+		"sources": [
+			{
+				"text": "ARRANCARMELO, WOS: Acordes",
+				"url": "https://acordes.lacuerda.net/wos/arrancarmelo-3.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Arrancarmelo - wos (cover)",
+				"url": "https://youtu.be/GAoWM_EGkdg",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "INTRO: C  Gm  F  Fm\n\n\nC                       Gm                            |\n   Y no tengo pensado       hundirme acá tirado       |\nF                       Fm                            |\n   y no tengo planeado      morirme desangrado        |\n     C                Gm                         F    |\n   y no, oh-oh, no me pidas que no vuelva a intentar  |\n           Fm                                         |\n   que las cosa' vuelvan a su lugar                   | (x2)\n\n\nC\n   Qué rabia me da el amor,\n           Gm\nvoy a arrancármelo\nqué rabia me da el amor,\n         F\nvoy a quedármelo\n   F                         Fm\nprefiero lo tortuoso del ritual\n                     Fm\nque lo decoroso de estar siempre igual\nC\n   ¿Habrá motivo para estar mal\n                Gm\no debo debo ser yo presintiendo el final?\n                     F\nno es eterno el carnaval\nsi es etéreo lo carnal\n        Fm\nencontraremos algún otro canal\n                  C\npara juntar el plexo\nde fondo un saxo y queremo' sexo\n        Gm     Gm                      Gm\nahora recuerdo la primera vez que te reíste\n      F\ny las ganas que me dieron de\nque se me ocurra un chiste\n      Fm\n¿Cómo van a convencerme de que la magia no existe?\n\n\nC                       Gm                            |\n   Y no tengo pensado       hundirme acá tirado       |\nF                       Fm                            |\n   y no tengo planeado      morirme desangrado        |\n     C                Gm                         F    |\n   y no, oh-oh, no me pidas que no vuelva a intentar  |\n           Fm                                         |\n   que las cosa' vuelvan a su lugar                   | (x2)"
+}

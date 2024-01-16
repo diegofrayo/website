@@ -1,0 +1,39 @@
+{
+	"details": {
+		"id": "muchacha-ojos-de-papel",
+		"title": "Muchacha ojos de papel",
+		"artist": "Almendra",
+		"album": "Almendra",
+		"year": 1969,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 45,
+		"created_at": "2022/05/21",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/6GPkBUXMrGSkwK3TrrHHXN",
+		"youtube_url": "https://youtu.be/znK_KQT2vek",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Muchacha ojos de papel",
+				"url": "https://estudiosatori.com.ar/almendra-muchacha-ojos-de-papel",
+				"source": "url"
+			},
+			{
+				"text": "cómo tocar MUCHACHA OJOS DE PAPEL de ALMENDRA en guitarra tutorial SPINETTA",
+				"url": "https://youtu.be/hJk0Epi7J18",
+				"source": "youtube"
+			},
+			{
+				"text": "Como Tocar Muchacha Ojos de Papel del Flaco Spinetta",
+				"url": "https://youtu.be/MVEOia6dSxw",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "G    D       Em       Em\n   Muchacha ojos de papel\n        Am7    Am7         D              Dsus4 D\na dónde vas?       quédate hasta el alba\nG    D      Em       Em\n   muchacha pequeños pies\n          Am7  Am7         D              Dsus4 D\nno corras más,     quédate hasta el alba\n\n\nEm             Em°     Em7[2]           Em6\n   Sueña un sueño despacito entre mis manos\nC            G              Am7        Dsus4 D\n   hasta que por la ventana suba el sol\n\n\nG    D        Em      Em\n   Muchacha piel de rayón\n          Am7  D              G\nno corras más,   tú tiempo es hoy\n\n\nG              C     Em\n   Y no hables más muchacha\n    Cm     G[2]\ncorazón de tiza\n       C    G[2]\ncuando todo duerman\n     Am7       G\nte robaré un color\n\n\nG              C     Em\n   Y no hables más muchacha\n    Cm     G[2]\ncorazón de tiza\n       C    G[2]\ncuando todo duerman\n     Am7       G\nte robaré un color\n\n\nG         D       Em            Em\n   Muchacha voz de gorrión\n              Am7  Am7                 D           Dsus4 D\nAdonde vas?     Quédate hasta el día\nG          D       Em            Em\n   Muchacha pechos de miel\n                  Am7  Am7                  D           Dsus4 D\nNo corras más,        quedate hasta el día\n\n\nEm                    Em°                  Em7[2]                Em6\n   Duerme un poco y yo entre tanto construiré\nC           G               Am7                       Dsus4 D\n   un castillo en tu vientre hasta que el sol\n\nG         D            Em     Em\n   Muchacha te haga reír\n              Am7  D                 G     G\nHasta llorar,         hasta llorar\n\n\nG              C     Em\n   Y no hables más muchacha\n    Cm     G\ncorazón de tiza\n       C    G\ncuando todo duerman\n     Am7       G\nte robaré un color\n\n\nG  C  Em  Cm  G  C  G  Am7  G  G\n    Laralalá…"
+}

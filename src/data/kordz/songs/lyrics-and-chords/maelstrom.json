@@ -1,0 +1,39 @@
+{
+	"details": {
+		"id": "maelstrom",
+		"title": "Maelström",
+		"artist": "Fito Paez",
+		"album": "La Conquista del Espacio",
+		"year": 2020,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 41,
+		"created_at": "2022/11/14",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/5JyeXhwxBQFEne4FxPbCxN",
+		"youtube_url": "https://youtu.be/dZQ5H1mPA10",
+		"assets": {},
+		"sources": [
+			{
+				"text": "MAELSTRöM, Fito Paez: Acordes",
+				"url": "https://acordes.lacuerda.net/fito_paez/maelstrm.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Maelström - Fito Paez (cover)",
+				"url": "https://youtu.be/dP44lx39feQ",
+				"source": "youtube"
+			},
+			{
+				"text": "Maelström (Fito Paez) cover by Lean",
+				"url": "https://youtu.be/DZrh5F1iOSE",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "INTRO: G  F  C | G  F  C\n\n\nG                          D\n   Cuando me cuentan del dolor\n   Em                  A\nyo sé que ya pasó lo peor\nC                        G   F   C\n   la imaginación no cuenta, mi amor\n\nG                            D\n   Es muy sencillo ser un tonto\n    Em                    A7\ny negar por siempre qué pasa\nC                       G\nhay una señal del infinito\n       Am7                     D\nque es más inmensa que tu libertad\n\n\n  G               C\nY hoy me siento feliz\n   Am                          D\ndespués de haber pasado por el maelström\n       G                          C\nqué hermoso fue mi amor cuando te vi,\nAm7      D         Em\n   sin hablar del ayer\n\n\nInstrumental:\nEm  Am\nD   G\nC   Am  B  Em  C\nAm7 D   G\n\n\n  G                     C\nY hoy amanezco en la montaña\n    Am                      D\ny podría ser el mar o la ciudad\n       G                          C\nno hay nadie que reine o que se entrone\n              Am7        D        G    D\npor sobre el amor, es la única verdad\n\n\n  G              C\nY hoy volvés a reír\n    Am                           D\nlas drogas son la luz también el poison\n  G                       C\ny hoy volvés tan solo a vivir,\nAm7         D\n   dejando atrás\n\n\nInstrumental:\nEm  Am\nD   G\nC   Am  B  Em  C\nAm7 D   G\n\n\n  G               C\nY hoy me siento feliz\n   Am                          D\ndespués de haber salido de ese maelström\n       G                          C\nqué hermoso fue mi amor cuando te vi,\nAm7       D       G    Em7\n   hoy, mañana y ayer\n\n\nAm7       D7      Bm7  Em7\n   Hoy, mañana y ayer\nAm7       D       G\n   hoy, mañana y ayer"
+}

@@ -1,0 +1,49 @@
+{
+	"details": {
+		"id": "cancion-para-mi-muerte",
+		"title": "Canción para mi muerte",
+		"artist": "Sui Generis",
+		"album": "Vida",
+		"year": 1972,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 16,
+		"created_at": "2021/07/22",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/0LWO6hUTJz6KBrSA2iJOpH?autoplay=true",
+		"youtube_url": "https://youtu.be/NAtB8AOpZIY",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Cancion para mi muerte",
+				"url": "https://acordes.lacuerda.net/charly_garcia/cancion_para_mi_muerte.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Como tocar Cancion Para mi Muerte - Sui Generis",
+				"url": "https://youtu.be/LPgjbAkvCZs",
+				"source": "youtube"
+			},
+			{
+				"text": "Como tocar Cancion para mi muerte de Sui generis en Guitarra acustica CLASE TUTORIAL",
+				"url": "https://youtu.be/tqurvSUyl28",
+				"source": "youtube"
+			},
+			{
+				"text": "TUTORIAL Canción para mi muerte - Sui Generis",
+				"url": "https://youtu.be/4YMTqaD2kXI",
+				"source": "youtube"
+			},
+			{
+				"text": "CANCIÓN PARA MI MUERTE- cover",
+				"url": "https://youtu.be/2XhWkNGihzo",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "        G                               Fadd9\nHubo un tiempo en que fui hermoso y fui libre de verdad,\n      Cadd9                     Dsus4         D\nguardaba todos mis sueños en castillos de cristal\n       G                        Fadd9\npoco a poco fui creciendo y mis fábulas de amor,\n      Cadd9                  Dsus4       D\nse fueron desvaneciendo como pompas de jabón\n\n\n        Bm          Em           Bm        Em\nte encontraré una mañana, dentro de mi habitación\n     D#         Dsus4     G                    Em     Am7      D7\ny prepararás la cama para dos...   tu ru ru ru rururu tu ru da\n\n\n      G                       Fadd9\nes larga la carretera, cuando uno mira atrás\n       Cadd9                       Dsus4        D\nvas cruzando las fronteras, sin darte cuenta quizás\n    G                        Fadd9\ntomate del pasamanos, porque antes de llegar\n      Cadd9                     Dsus4        D\nse aferraron mil ancianos, pero se fueron igual\n\n\n        Bm          Em           Bm        Em\nte encontraré una mañana, dentro de mi habitación\n     D#         Dsus4     G                    Em     Am7      D7\ny prepararás la cama para dos...   tu ru ru ru rururu tu ru da\n\n\n      G                        Fadd9\nquisiera saber tu nombre, tu lugar tu dirección\n        Cadd9                        Dsus4      D\ny si te han puesto teléfono, tambien tu numeración\n     G                          Fadd9\nte suplico que me avises, si me vienes a buscar\n         Cadd9                    Dsus4         D\nno es porque te tenga miedo, solo me quiero arreglar\n\n\n        Bm          Em           Bm        Em\nte encontraré una mañana, dentro de mi habitación\n     D#         Dsus4     G                    Em     Am7      D7\ny prepararás la cama para dos...   tu ru ru ru rururu tu ru da"
+}

@@ -1,0 +1,29 @@
+{
+	"details": {
+		"id": "encuentro-con-un-angel-amateur",
+		"title": "Encuentro con un ángel amateur",
+		"artist": "Indio Solari y los Fundamentalistas del Aire Acondicionado",
+		"album": "Desconocido",
+		"year": 2021,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 26,
+		"created_at": "2022/09/21",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/0tyUt9J9teuyBsuZqaeKWh",
+		"youtube_url": "https://youtu.be/UxfTDxxzjBE",
+		"assets": {},
+		"sources": [
+			{
+				"text": "ENCUENTRO CON UN ANGEL AMATEUR, Los Fundamentalistas del Aire Acondicionado: Acordes",
+				"url": "https://acordes.lacuerda.net/fundamentalistas_del_aire/encuentro_con_un_angel_amateur-3.shtml",
+				"source": "lacuerda"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "C\n   Empiezo por el final\nG\n   terminaré en el principio\nC\n   mis intereses quizás\nG\n   no fueron saludables\n\n\nF\n   Yo ya no puedo cumplir\nF\n   hazañas que prometí\n   C              G\n   solo seguir cantando…\n\n\nC\n   La traición duele hacia atrás\nG\n   no sabes cuando comienza\nC\n   un ángel sonso amateur\nG\n   me condenó al Paraíso\n\n\nF\n   Solo me falta saber\nF\n   la fecha y el lugar\n   C             G\n   y allí iré cantando…\n\n\nSOLO: C  G (x2) | F  C  F  G\n\n\nC\nMis amores refugié\nG\n   en el arcón del amor propio\nC\nal soberbio todo le es\nG\n   sufrido y muy aburrido\n\n\nF\n   Yo ya no puedo cumplir\nF\n   hazañas que prometí\n   C               G\n   solo marchar cantando…\n\n\nC                     G\nMás de una vez me escuché decir\nC\nque en la resistencia está\nG\n todo el hidalgo valor de la vida\n\n\nF\n   Yo ya no puedo cumplir\nF\n   hazañas que prometí\n   C               G\n   solo esperar cantando…\n\n\nSOLO: C  G (x2)   |   F  C  F  Fm  C"
+}

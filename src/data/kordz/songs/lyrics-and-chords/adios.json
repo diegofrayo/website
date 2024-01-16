@@ -1,0 +1,44 @@
+{
+	"details": {
+		"id": "adios",
+		"title": "Adiós",
+		"artist": "Gustavo Cerati",
+		"album": "Ahí vamos",
+		"year": 2006,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 3,
+		"created_at": "2023/02/11",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/1rh4kDY9T4fHVDum8Foi5k",
+		"youtube_url": "https://youtu.be/217Bw85-5cw",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Adiós Gustavo Cerati Guitarra acústica cover",
+				"url": "https://youtu.be/hB30oh8Vw2E",
+				"source": "youtube"
+			},
+			{
+				"text": "Como tocar Adios - Gustavo Cerati Tutorial Tablaturas || Triada35",
+				"url": "https://youtu.be/Oliy9rcOCRU",
+				"source": "youtube"
+			},
+			{
+				"text": "ADIOS, Gustavo Cerati: Acordes",
+				"url": "https://acordes.lacuerda.net/gustavo_cerati/adios-7.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "NOE alonso en Instagram: “Me lo pidieron y aca esta ❤️🫶🏻 Mi canción favorita de GUSTAVITO 🧡🦊 #cerati #gustavo #adios #byebye #guitartutorial #tutorialguitarrafacil…”",
+				"url": "https://instagram.com/p/CoQjENQoeIf/",
+				"source": "instagram"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "Em      A        D         G             A  G\n   Suspiraban lo mismo los dos\nEm           A            D        G     A  G\n   y hoy son parte de una lluvia lejos\nEm          A         D           G      A  G\n   no te confundas no sirve el rencor\nEm       A         D           G         A  G\n   son espasmos después del adiós\n\n\nBm          F#m            G               D\n   Ponés canciones tristes para sentirte mejor\nA                Bm\n   tu esencia es más visible,\n    G\ndel mismo dolor\n   Gm                Em  A  D  G  A  G\nvendrá un nuevo amanecer\n\n\nEm            A        D     G           A  G\n   Tal vez colmaban la necesidad\nEm            A        D            G    A  G\n   pero hay vacíos que no pueden llenar\nEm        A       D       G              A  G\n   no conocían la profundidad\nEm              A      D          G      A  G\n   hasta que un día no   dio para más\n\n\nBm          F#m       G                D\n   Quedabas esperando ecos que no volverán\nA             Bm\n   flotando entre rechazos\n    G\ndel mismo dolor\n   Gm                Em  A  D  G  A  G\nvendrá un nuevo amanecer\n\n\nBm           F#\n   Separarse de la especie\nA              E           Esus4  E\npor algo superior\nG          D          A    Asus   A  Asus\n   no es soberbia es amor\nG          D          E    Esus4  E\n   no es soberbia es amor\nG          Gm\n   poder decir adiós\nGm  Gm  Gm  Gm         Em  A  D  G  A  G\n↓↓  ↓↓  ↓↓  ↓↓   es crecer"
+}

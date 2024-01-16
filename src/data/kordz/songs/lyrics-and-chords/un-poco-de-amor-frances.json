@@ -1,0 +1,39 @@
+{
+	"details": {
+		"id": "un-poco-de-amor-frances",
+		"title": "Un poco de amor francés",
+		"artist": "Patricio Rey y sus Redonditos de Ricota",
+		"album": "La mosca y la sopa",
+		"year": 1991,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 61,
+		"created_at": "2021/04/05",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/1MRhIdcloOD0uiiG3ybXGX",
+		"youtube_url": "https://youtu.be/LDdH3HYlGA4",
+		"assets": {},
+		"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Rápida\n- Fuerza de rasgueo: Media\n- Complejidad: Fácil\n",
+		"sources": [
+			{
+				"text": "Cómo tocar Un poco de amor francés Redonditos de Ricota con guitarra criolla Acordes Tutorial Letra",
+				"url": "https://youtu.be/nCFafzchI7E",
+				"source": "youtube"
+			},
+			{
+				"text": "Un poco de amor francés",
+				"url": "https://acordes.lacuerda.net/patricio_rey/un_poco_de_amor_frances-5.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Cómo tocar UN POCO DE AMOR FRANCÉS de LOS REDONDOS en ukelele tutorial",
+				"url": "https://youtu.be/HCXF4D2hXP0",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "INTRO: C Am Dm G\n\n\nC\n   Una tipa rapaz\nAm\n   como te gusta a vos\nDm                   G\nesa tipa vino a consolarte\n\nC\n   Un poco de amor francés\n   Am\nno muerde, su lengua no\n   Dm                         G\nno es sincera, pero te gusta oírla...\n\n\nC Am Dm G\n\n\nC\n   Es una linda ración\n    Am\ncon un defecto (con uno o dos)\n  Dm                              G\ny es un cocktel, que no se mezcla solo\n\n\nAm                           |\nQuiere, si quiere más        |\n(ya no la engatuzás)         |\nF                      G     |\n   es una copa de lo mejor   |\n          C    Am  Dm  G     |\ncuando se ríe                | (x2)\n\n\nC\n   El lujo es vulgaridad\nAm\ndijo, y me conquistó\nDm                          G\nde esa miel no comen las hormigas\n\nC\n   Una tipa rapaz\nAm\n   como te gusta a vos\nDm                   G\nesa tipa vino a consolarte\n\n\nAm\nQuiere, si quiere más\n(ya no la engatuzás)\nF                      G\n   es una copa de lo mejor\n          C    Am  Dm  G\ncuando se ríe\n\n\nC  Am  Dm  G"
+}

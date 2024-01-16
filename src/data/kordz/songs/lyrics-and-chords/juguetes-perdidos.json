@@ -1,0 +1,34 @@
+{
+	"details": {
+		"id": "juguetes-perdidos",
+		"title": "Juguetes perdidos",
+		"artist": "Patricio Rey y sus Redonditos de Ricota",
+		"album": "Luzbelito",
+		"year": 1996,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 31,
+		"created_at": "2021/06/03",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/1SBGb9SOYwb8H7LhK5daAS",
+		"youtube_url": "https://youtu.be/c5xFMhjslw8",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Cómo tocar Juguetes perdidos Redonditos de Ricota con guitarra criolla Acordes Tutorial Letra Cover",
+				"url": "https://youtu.be/kjIJA_I64FE",
+				"source": "youtube"
+			},
+			{
+				"text": "Juguetes Perdidos",
+				"url": "https://acordes.lacuerda.net/patricio_rey/juguetes_perdidos.shtml",
+				"source": "lacuerda"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "INTRO: E      E A (x2)\n\n\nE                   A\n Banderas en tu corazón\n yo quiero verlas\nE                        A\n ondeando luzca el sol o no\n\nB         A     B         A\n banderas rojas, banderas negras,\nB          A         G    F#   E\n de lienzo blanco en tu cora...zón\n\n\nE                      A\n perfume al filo del dolor\n así invisible\nE                   A\n licor venéreo del amor\n\nB                A      B         A\n que está en las pieles, sedas de sedas,\nB           A          G    F#   E\n que guarda nombres en tu cora...zón\n\n\nE    F#      E       F#\n son pájaros de la noche\nE    F#       E           F#\n que oímos cantar y nunca vemos\n\nB             A       B\n cuando el granizo golpeó\n       A      B\n la campana sonó\n       A          B         A         E\n despertó sus tristezas atronando sus nidos\n\n\n    A\nesperando allí nomás,\nen el camino,\nE                 A\nla bella señora está desencarnada\n\nB          A    B         A\n cuando la noche es más oscura\nB            A      G    F#   E\n se viene el día en tu cora...zón\n\n\nE                       A\nestás cambiando más que yo (yira, yira, yira)\nE                     A\nasusta un poco verte así (yira, yira, yira)\nB           A   B           A\n cuanto más alto trepa el monito,\nB          A             G      F# E\n así es la vida, el culo más se le ve\n\n\nE   F#        E     F#\n yo sé que no puedo darte\nE     F#             E     F#\n algo más que un par de promesas, no:\n\nB            A     B\n ticks de la revolución,\n           A        B\n de implacable rocanrol\n             A        B               A         E\n y un par de sienes ardientes que son todo el tesoro\n\n\n      A\ntan veloces son\n                     E\ncomo borrones, así veloces\n                        A\nhundiendo el a ce le ra dor\n\nB       A    B          A\n atragantados por los licores\nB         A         G    F#   E\n soplando brasas en tu cora...zón\n\n\nA\nvas a robarle el gorro al diablo así:\nE                                      A\nadorándolo, como quiere él, engañandolo\n\nB           A     B         A\n sin tus banderas, sedas de sedas,\nB            A          G    F#   E\n que guardan nombres en tu cora...zón\n\n\nE\n este asunto está ahora y para siempre en tus manos, nene\nE A\n    ooooh\nE\nooohh oooh\nA\n por primera vez vas a robar algo más que puta guita\n\n\nB          A    B         A\n cuando la noche es más oscura\nB            A      G    F#   E\n se viene el día en tu cora...zón\n\n\nsin ese diablo que mea en todas partes\ny en nigún lado hace espuma"
+}

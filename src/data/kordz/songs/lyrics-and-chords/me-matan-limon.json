@@ -1,0 +1,34 @@
+{
+	"details": {
+		"id": "me-matan-limon",
+		"title": "Me matan limón",
+		"artist": "Patricio Rey y sus Redonditos de Ricota",
+		"album": "Luzbelito",
+		"year": 1996,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 44,
+		"created_at": "2022/12/18",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/7h0wz5amgGNqbcGOo9ebXD",
+		"youtube_url": "https://youtu.be/xdDw4Bbj57w",
+		"assets": {},
+		"sources": [
+			{
+				"text": "ME MATAN LIMON, Patricio Rey y sus Redonditos de Ricota: Acordes",
+				"url": "https://acordes.lacuerda.net/patricio_rey/me_matan_limon.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Acordes Me matan limón Redonditos Cómo tocar",
+				"url": "https://youtu.be/SX_ya4_AcGA",
+				"source": "youtube"
+			}
+		],
+		"chords": [],
+		"interpretation": ""
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "INTRO: G  F  C\n\n\n   G\nNi bien amainó,\n      F\nla tormenta olvidó\n       C                 G\nlas promesas hechas otra vez\n\n   G\nMe matan Limón!\n     F\nHijueputas Limón!\n        C                           G\npor los techos viene el bloque otra vez\n\n\nC          G\nOh... otra vez\nC          G\nOh... otra vez\nC          G\nOh... otra vez\n\n\nG\nPasan las dos (delatandolo)\n F\napenas las dos (delatandolo a las dos)\n      C                          G\nde la tarde y zumba feo algún moscón\n\n       G\nVoy sangrando Limón (padrecito de)\n      F\nme la dieron Limón (nuestros pobres que)\n        C                        G\nsangran por las tejas como vos Limón\n\n\nC          G\nOh... otra vez\nC          G\nOh... otra vez\nC          G\nOh... otra vez\n\n\nSOLO: G#m  Am   |   C  B  A#  A   |   C  D  E\n\n\n      G\nNunca pudo llorar,\n     F\nni soñar al dormir\n     C                         G\npero sabe que las dos es tarde ya\n\n        G\nTodo el bloque Limón (nuestra gente no)\n        F\nbaila y canta mi Dios (no quiere escuchar)\n        C                         G\ncumbias y merengues crueles, otra vez\n\n\nC          G\nOh... otra vez\nC          G\nOh... otra vez\nC          G\nOh... otra vez"
+}

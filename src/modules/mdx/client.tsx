@@ -99,6 +99,7 @@ export const MDXComponents = {
 	InlineText,
 	Link,
 	SourceCode,
+	Space,
 };
 
 // --- INTERNALS ---

@@ -1,0 +1,44 @@
+{
+	"details": {
+		"id": "la-bestia-pop",
+		"title": "La bestia pop",
+		"artist": "Patricio Rey y sus Redonditos de Ricota",
+		"album": "Gulp!",
+		"year": 1985,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 32,
+		"created_at": "2022/12/28",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/5WeBnrDPyLhxruxVryHCkn",
+		"youtube_url": "https://youtu.be/obkKYJINyco",
+		"assets": {},
+		"interpretation": "- Fuerza del canto: Normal\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Normal\n- Complejidad: Media\n",
+		"sources": [
+			{
+				"text": "COMO TOCAR \"La bestia pop\" de Los Redondos | Tutorial guitarra acústica/criolla acordes",
+				"url": "https://youtu.be/sBp_B3nAtIA",
+				"source": "youtube"
+			},
+			{
+				"text": "Sofi & Roll 💙 en Instagram: “A brillar mi amor💙 Va de vuelta porque mi cel anda como el culin y me lo cortó. . . . #labestiapop #patriciorey #losredondos…”",
+				"url": "https://instagram.com/p/Cl2Qyh-Dwc7",
+				"source": "instagram"
+			},
+			{
+				"text": "🦎Cómo tocar La bestia pop Redonditos de Ricota con guitarra criolla Acordes Tutorial Letra Cover",
+				"url": "https://youtu.be/hfdTSrqy4wo",
+				"source": "youtube"
+			},
+			{
+				"text": "LA BESTIA POP, Patricio Rey y sus Redonditos de Ricota: Acordes",
+				"url": "https://acordes.lacuerda.net/patricio_rey/la_bestia_pop.shtml",
+				"source": "lacuerda"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "Bm              Em      F#\n   Mi héroe es, la gran bestia pop,\nBm                         Em     F#\n   que enciende en sueños,     la vigilia\nBm                      Em    F#   Bm      G   F#\n   que antes que cuente diez, dormirá\n\n\n     Bm               G      F#       Bm            G   F#\nA brillar, mi amor,        vamos a brillar, mi amor\n     Bm               G      F#       Bm            G   F#\nA brillar, mi amor,        vamos a brillar, mi amor\n\n\nBm                   Em       F#\n   Mi amigo está, groggie sin destilar\nBm                 Em    F#\n   pero yo se, que hay caballos que\nBm                       Em  F#  Bm        G   F#\n   se mueren potros sin      galopar\n\n\n     Bm               G      F#       Bm            G   F#\nA brillar, mi amor,        vamos a brillar, mi amor\n     Bm               G      F#       Bm            G   F#\nA brillar, mi amor,        vamos a brillar, mi amor\n\n\nSOLO: Bm  G  F#   (x4)\n\n\nBm                  Em       F#        Bm\n   Voy a bailar, el rock del rico Luna Park\n                 Em  F#\n   y atomizar la butaca y brillar\nBm                Em     F#          Bm    G   F#\n   como mi héroe .... La gran bestia pop\n\n\n     Bm               G      F#       Bm            G   F#\nA brillar, mi amor,        vamos a brillar, mi amor\n     Bm               G      F#       Bm            G   F#\nA brillar, mi amor,        vamos a brillar, mi amor\n\n\nBm              Em      F#\n   Mi héroe es, la gran bestia pop,\nBm                         Em     F#\n   que enciende en sueños,     la vigilia\nBm                      Em    F#   Bm      G   F#\n   que antes que cuente diez, dormirá\n\n\n     Bm               G      F#       Bm            G   F#\nA brillar, mi amor,        vamos a brillar, mi amor\n     Bm               G      F#       Bm            G   F#\nA brillar, mi amor,        vamos a brillar, mi amor"
+}

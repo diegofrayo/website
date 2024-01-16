@@ -1,0 +1,60 @@
+{
+	"details": {
+		"id": "los-libros-de-la-buena-memoria",
+		"title": "Los libros de la buena memoria",
+		"artist": "Invisible",
+		"album": "El jardín de los presentes",
+		"year": 1976,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 39,
+		"created_at": "2021/05/05",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/649a4t4L3MuUgNqr9BFPzT",
+		"youtube_url": "https://youtu.be/npKMjBjjNKQ",
+		"assets": {},
+		"interpretation": "",
+		"sources": [
+			{
+				"text": "los libros de la buena memoria - luis alberto spinetta (guitar cover)",
+				"url": "https://youtu.be/PQcXWO_-V5Q",
+				"source": "youtube"
+			},
+			{
+				"text": "Cómo tocar Spinetta Los libros de la buena memoria Invisible Acordes Tutorial Letra Cover",
+				"url": "https://youtu.be/pZ3c1k1hSyE",
+				"source": "youtube"
+			},
+			{
+				"text": "Los libros de la buena memoria",
+				"url": "https://acordes.lacuerda.net/invisible/los_libros_de_la_buena_memoria.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "micaela.basadoni",
+				"url": "https://instagram.com/p/CJUrhvfg415",
+				"source": "instagram"
+			},
+			{
+				"text": "Spinetta - Los libros de la buena memoria // Cover",
+				"url": "https://youtu.be/JiQcXSKeuak",
+				"source": "youtube"
+			},
+			{
+				"text": "fran.depanema",
+				"url": "https://instagram.com/p/BwiNUB8ls5i",
+				"source": "instagram"
+			},
+			{
+				"text": "ondadomarduo",
+				"url": "https://instagram.com/p/Bn2Mt3Fhh0b",
+				"source": "instagram"
+			},
+			{ "text": "ticky_mago", "url": "https://instagram.com/p/BaFsU_gF1mX", "source": "instagram" }
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{SOLO}\",\n\t\t\treplacement: (\n\t\t\t\t<div>\n\t\t\t\t\t<Tablature\n\t\t\t\t\t\tpositions={[\n\t\t\t\t\t\t\t[{ guitarString: 6 }, { guitarString: 1 }],\n\t\t\t\t\t\t\t{ space: 1 },\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 2 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t{ space: 1 },\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 2 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 3 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 3 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 5 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 5 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 3 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 3 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 5 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 5 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 7 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 7 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 7 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 7 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[{ guitarString: 6 }, { guitarString: 1 }],\n\t\t\t\t\t\t]}\n\t\t\t\t\t\tnotes=\"(x3)\"\n\t\t\t\t\t/>\n\t\t\t\t\t<Space size={4} />\n\t\t\t\t\t<Tablature\n\t\t\t\t\t\tpositions={[\n\t\t\t\t\t\t\t[{ guitarString: 6 }, { guitarString: 1 }],\n\t\t\t\t\t\t\t{ space: 1 },\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 2 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t{ space: 1 },\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 2 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 3 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 3 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 5 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 5 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 3 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 3 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 5 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 5 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 7 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 7 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 7 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 7 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{ guitarString: 6, guitarFret: 12 },\n\t\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 12 },\n\t\t\t\t\t\t\t],\n\t\t\t\t\t\t]}\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t),\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
+	"txt": "INTRO: Em7 Am7 Bm7 Cmaj7   (x2)\n\n\nEm7          Am7          Bm7  Cmaj7\n   El vino entibia sueños al jadear\nEm7         Am7           Bm7   Cmaj7\n   desde su boca de verdeado dulzor\nEm7            Am7          Bm7     Cmaj7\n   y entre los libros de la buena memoria\nEm7          Am7           Bm7             Cmaj7\n   se queda oyendo como un ciego frente al mar\n\n\nBm7       Em7         Bm7     Em\nMi voz le llegará, mi boca también\nBm7           Em7\ntal vez le confiaré\n     Am7       Bm7         Cmaj7\nque eras el vestigio del futuro\n\n\nEm7           Am7        Bm7  Cmaj7\n   Rojas y verdes, luces del amor\nEm7          Am7         Bm7     Cmaj7\n   prestidigitan bajo un halo de rouge\nEm7              Am7          Bm7         Cmaj7\n   ¿Qué sombra extraña te ocultó de mi guiño\nEm7           Am7         Bm7        Cmaj7\n   que nunca oíste la hojarasca crepitar?\n\n\nBm7          Em7         Bm7        Em\nPues yo te escribiré, yo te haré llorar\nBm7       Em7\nmi boca besará\n  Am7        Bm7          Cmaj7\ntoda la ternura de tu acuario\n\n\n{SOLO}\n\n\nEm7            Am7      Bm7      Cmaj7\n   Mas si la luna enrojeciera en sed\nEm7          Am7         Bm7      Cmaj7\n   o las impalas recorrieran tu estante\nEm7          Am7       Bm7       Cmaj7\n   no volverías a triunfar en tu alma\nEm7            Am7           Bm7        Cmaj7\n   yo sé que haría largos viajes por llegar\n\n\nBm7           Em7    Bm7    Em\nParado estoy aquí, esperándote\nBm7           Em7\ntodo se oscureció\n   Am7         Bm7         Cmaj7\nya no sé si el mar descansará\n\n\nEm7           Am7            Bm7  Cmaj7\n   Habrá crecido un tallo en el nogal\nEm7         Am7         Bm7       Cmaj7\n   la luz habrá tiznado gente sin fé\nEm7         Am7            Bm7     Cmaj7\n   esta botella se ha vaciado también\nEm7              Am7        Bm7       Cmaj7\n   que ni los sueños se cobijan del rumor\n\n\nBm7          Em7       Bm7     Em\nLicor no vuelvas ya, deja de reír\nBm7         Em7\nno es necesario más\n   Am7          Bm7           Cmaj7\nya se ven los tigres en la lluvia"
+}

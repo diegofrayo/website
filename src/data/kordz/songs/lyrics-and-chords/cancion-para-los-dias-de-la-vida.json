@@ -1,0 +1,44 @@
+{
+	"details": {
+		"id": "cancion-para-los-dias-de-la-vida",
+		"title": "Canción para los días de la vida",
+		"artist": "Invisible",
+		"album": "A 18' del sol",
+		"year": 1977,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 15,
+		"created_at": "2021/01/12",
+		"is_public": true,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/3T5SksrlFxunlotQ0lmSwv",
+		"youtube_url": "https://youtu.be/q1Sr16pdF64",
+		"assets": {},
+		"interpretation": "- Fuerza del canto: Baja\n- Velocidad de rasgueo: Baja o media\n- Fuerza de rasgueo: Baja\n- Complejidad: Díficil\n",
+		"sources": [
+			{
+				"text": "Canción para los días de la vida",
+				"url": "https://acordes.lacuerda.net/luis_a_spinetta/cancion_para_los_dias_de_la_vida-2.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "canción para los días de la vida - luis alberto spinetta (guitar cover)",
+				"url": "https://youtu.be/rZoVCxtfOL4",
+				"source": "youtube"
+			},
+			{
+				"text": "Canción para los días de la vida (Spinetta cover)",
+				"url": "https://youtu.be/8r2HS3qJ4G4",
+				"source": "youtube"
+			},
+			{
+				"text": "Canción para los días de la vida - Spinetta",
+				"url": "https://youtu.be/oIfk9XBBapc",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{INTRO}\",\n\t\t\treplacement: (\n\t\t\t\t<Tablature\n\t\t\t\t\tpositions={[\n\t\t\t\t\t\t[\n\t\t\t\t\t\t\t{ guitarString: 3, guitarFret: 2 },\n\t\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t],\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 4 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 5 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 7 },\n\t\t\t\t\t\t[\n\t\t\t\t\t\t\t{ guitarFret: 2 },\n\t\t\t\t\t\t\t{ guitarString: 5, guitarFret: 4 },\n\t\t\t\t\t\t\t{ guitarString: 4, guitarFret: 4 },\n\t\t\t\t\t\t],\n\t\t\t\t\t]}\n\t\t\t\t\tnotes=\"Empieza con un D y termina con un F#m. Se repite 2 veces\"\n\t\t\t\t/>\n\t\t\t),\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
+	"txt": "{INTRO}\n\n\nA          G#m        F#m\nEste día empieza a crecer\nA            B       Bm\nvoy a ver si puedo correr\nF#m      C#m     D               C#m\ncon la mañana silbándome en la espalda\nBm     C#m             E   INTRO   (x2)\n   o mirarme en las burbu..jas\n\n\nA              G#m     F#m\nTengo que aprender a volar\nA           B        Bm\nentre tanta gente de pie\nF#m           C#m       D         C#m\ncuidan de mis alas unos gnomos de lata\nBm        C#m         E   INTRO   (x2)\n   que de noche nunca rí..en\n\n\nA            G#m          F#m\nSi la lluvia llega hasta aquí\nA         B         Bm\nvoy a limitarme a vivir\nF#m        C#m          D          C#m\nmojaré mis alas como el árbol o el ángel\nBm      C#m          E   INTRO   (x2)\n   o quizás muera de pe..na\n\n\nA           G#m        F#m\nTengo mucho tiempo por hoy\nA           B         Bm   E\nlos relojes harán que can..te\n\n\nAm  Am  Am/G Am/G  Bm7 |\nLA  LA  LA   LA    LA  | (x2)\n\nE        E   E\nLA RA RA LA  LA\n\nAm  Asus2  Asus4 |\nLA  LA     LA    | (x2)\n\n\n       C#   G#      A#m        A#m7\nY la espuma gira en torno a mi piel\n   C#         G#           A            E\nme han puesto manos para hablarle a las cosas\n   C       G        Am     Am/G\nde mí y al fin mi duende nació\nC            G               G#       E      A\ntiene orejas blancas como un soplo de pan y arroz\n     C#m7  F#m7\ny un hongo como nariz\nA            C#m\ncuatro pelos locos\n        F#m7          C#m\ny un violín que nunca calla\nD             C#m7     Bm7\n   solo se desprende\n      C#m7           E    INTRO   (x2)\ny es igual a las guirnal..das\n\n\nA           G#m     F#m\nEste día es algo de sal\nA         B           Bm\nme dejó vibrando al nacer\nF#m         C#m           D        C#m\npesa y es liviano como un hilo sin nombre\nBm          C#m          E   INTRO   (x2)\n   suena un poco a mi guita..rra\n\n\nA              G#m       F#m\nTengo que aprender a ser luz\nA           B       Bm\nentre tanta gente detrás\nF#m           C#m           D            C#m\nme pondré las ramas de este sol que me espera\nBm       C#m           E   INTRO   (x2)\n   para usarme como al ai..re\n\n\n  C         G        Am       Am/G\nY es que al fin mi duende se abrió\nC            G         G#      E\ntiene un corazón de mantel y batón\n     A        C#m7    F#m7\ny un guiño al ver que todo es verdad\nA             C#m\nya los gnomos cuiden\n        F#m7            C#m\na un violín que siempre canta\nD               C#m7    Bm7\n   nunca se adormece y\n      C#m7           E    INTRO   (x2)\ny es igual a las guirnal..das\n\n  F#m7         C#m    D          C#m7    Bm7\nY es que nunca calla, solo se desprende\n      C#m7           E    INTRO   (x2)\ny es igual a las guirnal..das"
+}
