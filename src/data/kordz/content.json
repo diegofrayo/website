@@ -2,7 +2,7 @@
 	"config": {
 		"locales": ["es"],
 		"default_locale": "es",
-		"is_seo_disabled": true,
+		"is_seo_disabled": false,
 		"pathname": "/kordz"
 	},
 	"content": {

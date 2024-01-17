@@ -9,7 +9,7 @@
 		"category": "0|IN_PROGRESS|🚧",
 		"order": 0,
 		"created_at": "2021/04/30",
-		"is_public": true,
+		"is_public": false,
 		"done": false,
 		"spotify_url": "https://open.spotify.com/track/7qGn9WweEDJw8KZwJqB1KN",
 		"youtube_url": "https://youtu.be/NH9lciAWeJw",

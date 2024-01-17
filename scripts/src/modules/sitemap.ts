@@ -1,24 +1,37 @@
 import { readFile, writeFile } from "../../../src/lib/@diegofrayo/utils/files";
 import { replaceAll } from "../../../src/lib/@diegofrayo/utils/strings";
 import type { T_RawBlogPostsResponse } from "../../../src/modules/pages/blog/types";
+import type { T_RawKordzResponse } from "../../../src/modules/pages/kordz/types";
 import WEBSITE_METADATA from "../../../src/data/metadata.json";
 
 async function main() {
 	const BLOG_POSTS = JSON.parse(
 		await readFile("./src/data/blog/data.json"),
 	) as T_RawBlogPostsResponse;
+	const KORDZ_SONGS = JSON.parse(
+		await readFile("./src/data/_local_/kordz/data.json"),
+	) as T_RawKordzResponse;
 	const WEBSITE_PAGES = {
 		HOME: "/",
 		RESUME: "/resume",
 		BLOG: "/blog",
+		KORDZ: "/kordz",
 	};
-	const sitemapItems = Object.values(WEBSITE_PAGES).concat(
-		Object.values(BLOG_POSTS)
-			.map((post) => {
-				return post.is_published ? `/blog/${post.slug}` : "";
-			})
-			.filter(Boolean),
-	);
+	const sitemapItems = Object.values(WEBSITE_PAGES)
+		.concat(
+			Object.values(BLOG_POSTS)
+				.map((post) => {
+					return post.is_published ? `/blog/${post.slug}` : "";
+				})
+				.filter(Boolean),
+		)
+		.concat(
+			Object.values(KORDZ_SONGS)
+				.map((song) => {
+					return song.is_public ? `/kordz/${song.id}` : "";
+				})
+				.filter(Boolean),
+		);
 
 	await generateSitemapFile(sitemapItems, WEBSITE_METADATA.url);
 
