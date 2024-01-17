@@ -3,7 +3,7 @@ import type DR from "./index";
 type T_SongBase = {
 	readonly id: string;
 	readonly title: string;
-	artist: string;
+	readonly artist: string;
 	readonly album: string;
 	readonly year: number;
 	readonly country: string;

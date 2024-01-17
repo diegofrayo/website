@@ -6,6 +6,7 @@ import type { T_RawKordzResponse, T_RawSongResponse } from "~/modules/pages/kord
 import { isChordsSong } from "~/modules/pages/kordz/utils";
 import { loadData, loadPageContent } from "~/server/data-loader";
 import { KordzService } from "@diegofrayo/kordz";
+import v from "@diegofrayo/v";
 
 export { default } from "~/modules/pages/kordz/pages/SongPage";
 
@@ -45,6 +46,9 @@ export const getStaticProps: GetStaticProps<T_SongPageProps, { song: string }> =
 				...data.details,
 				chords: foundChords,
 				parsedLyrics: parsedText,
+				artist: v.isArray(data.details.artist)
+					? data.details.artist.join(", ")
+					: data.details.artist,
 			},
 			songContent: mdxCompiled.code,
 		},
