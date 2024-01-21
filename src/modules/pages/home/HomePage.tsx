@@ -88,7 +88,7 @@ function Room({ song }: T_RoomProps) {
 				<StackPopover />
 			</ComponentWithAuth>
 
-			<React.Fragment>
+			<ComponentWithAuth withoutContainer>
 				<Icon
 					icon={Icon.icon.SOCCER}
 					size={40}
@@ -99,7 +99,7 @@ function Room({ song }: T_RoomProps) {
 					size={80}
 					wrapperClassName="tw-absolute tw--right-7 tw-bottom-0 tw--rotate-45"
 				/>
-			</React.Fragment>
+			</ComponentWithAuth>
 		</Block>
 	);
 }

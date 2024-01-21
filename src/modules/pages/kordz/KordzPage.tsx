@@ -24,12 +24,14 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 	// --- STATES & REFS ---
 	const [inputValue, setInputValue] = React.useState("");
 	const inputRef = React.useRef<HTMLInputElement>(null);
-	const { chordsPage, songsList } = parseData(data);
+	const [filteredData, setFilteredData] = React.useState<T_KordzPageProps["data"]>([data[0]]);
+	const { chordsPage, songsList } = parseData(filteredData);
 
 	// --- EFFECTS ---
 	useDidMount(() => {
-		const controller = new AbortController();
+		initialDataFiltering();
 
+		const controller = new AbortController();
 		document.addEventListener(
 			"keydown",
 			function focusInputAndSelectText(event: KeyboardEvent) {
@@ -70,6 +72,18 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 				  })
 				: songs.slice(1),
 		};
+	}
+
+	function initialDataFiltering() {
+		setFilteredData(
+			data.filter((song) => {
+				if (AuthService.isGuestUser() && !song.is_public) {
+					return false;
+				}
+
+				return true;
+			}),
+		);
 	}
 
 	return (
@@ -119,10 +133,6 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 						<ClientRenderComponent>
 							<Block className="tw-flex tw-flex-wrap tw-justify-between">
 								{songsList.map((song) => {
-									if (AuthService.isGuestUser() && !song.is_public) {
-										return null;
-									}
-
 									return (
 										<Block
 											key={song.id}
@@ -134,13 +144,13 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 												className="tw-block sm:tw-truncate"
 												title={song.title}
 											>
-												{!song.is_public ? (
+												{song.is_public ? null : (
 													<Icon
 														icon={Icon.icon.EYE_SLASH}
 														color="dr-text-color-surface-600"
 														wrapperClassName="tw-mr-1"
 													/>
-												) : null}
+												)}
 												<InlineText>{song.title}</InlineText>
 											</Link>
 											<SongDetails song={song} />

@@ -10,7 +10,7 @@
 		"order": 0,
 		"created_at": "2023/11/28",
 		"is_public": false,
-		"done": false,
+		"done": true,
 		"spotify_url": "",
 		"youtube_url": "",
 		"interpretation": "",

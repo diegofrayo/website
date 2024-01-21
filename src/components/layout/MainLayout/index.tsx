@@ -20,7 +20,7 @@ import { renderIf, withOnlyClientRender } from "~/hocs";
 import { useDidMount, useOnWindowStopScroll, useToggleBodyScroll } from "@diegofrayo/hooks";
 import AnalyticsService from "~/modules/analytics";
 import ServerAPI from "~/modules/api";
-import { AuthService, withAuth } from "~/modules/auth";
+import { AuthService, ComponentWithAuth, withAuth } from "~/modules/auth";
 import EnvVars from "~/modules/env-vars";
 import { logAndReportError } from "~/modules/logging";
 import { ROUTES, redirect, useRouting } from "~/modules/routing";
@@ -455,12 +455,14 @@ function NavigationMenuItems() {
 			>
 				Blog
 			</NavigationMenuItem>
-			<NavigationMenuItem
-				href={ROUTES.RESUME}
-				icon={Icon.icon.DOCUMENT_TEXT}
-			>
-				Resume
-			</NavigationMenuItem>
+			<ComponentWithAuth withoutContainer>
+				<NavigationMenuItem
+					href={ROUTES.RESUME}
+					icon={Icon.icon.DOCUMENT_TEXT}
+				>
+					Resume
+				</NavigationMenuItem>
+			</ComponentWithAuth>
 			<NavigationMenuItem
 				href={ROUTES.KORDZ}
 				icon={Icon.icon.MUSIC_NOTE}
