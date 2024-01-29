@@ -67,7 +67,7 @@ export function withAuthRulesPage<G_ComponentProps extends object>(
 					const isActiveSession = securityPinSession.get() === true;
 
 					if (isActiveSession) {
-						return false;
+						return true;
 					}
 
 					const LOCAL_SECURITY = "1256";
@@ -76,8 +76,7 @@ export function withAuthRulesPage<G_ComponentProps extends object>(
 					securityPinSession.set(pinMatched);
 
 					return pinMatched;
-				}
-				if (options.requireRemoteSecurityPin === true) {
+				} else if (options.requireRemoteSecurityPin === true) {
 					try {
 						const pinMatched = (
 							await ServerAPI.post<boolean>("/security-pin", {
@@ -91,6 +90,8 @@ export function withAuthRulesPage<G_ComponentProps extends object>(
 						return false;
 					}
 				}
+
+				return true;
 			}
 
 			return false;
