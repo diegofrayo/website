@@ -102,7 +102,7 @@ function BooksPage() {
 	);
 }
 
-export default withAuthRulesPage(BooksPage, { requireAuth: true, requirePin: true });
+export default withAuthRulesPage(BooksPage, { requireAuth: true, requireSecurityPin: true });
 
 // --- API ---
 

@@ -295,7 +295,7 @@ function FilmsPage() {
 	);
 }
 
-export default withAuthRulesPage(FilmsPage, { requireAuth: true, requirePin: true });
+export default withAuthRulesPage(FilmsPage, { requireAuth: true, requireSecurityPin: true });
 
 // --- API ---
 

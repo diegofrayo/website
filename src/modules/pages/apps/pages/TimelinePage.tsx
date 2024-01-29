@@ -98,7 +98,10 @@ function TimelinePage() {
 	);
 }
 
-export default withAuthRulesPage(TimelinePage, { requireAuth: true, requirePin: true });
+export default withAuthRulesPage(TimelinePage, {
+	requireAuth: true,
+	requireRemoteSecurityPin: true,
+});
 
 // --- API ---
 

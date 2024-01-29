@@ -263,7 +263,7 @@ export const ContactsPage = withAuthRulesPage(
 	}),
 	{
 		requireAuth: true,
-		requirePin: true,
+		requireSecurityPin: true,
 	},
 );
 

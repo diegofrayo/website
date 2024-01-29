@@ -1,8 +1,9 @@
 import * as React from "react";
 
 import { renderIf } from "~/hocs";
-import { useDidMount } from "@diegofrayo/hooks";
+import ServerAPI from "~/modules/api";
 import { isProductionEnvironment } from "~/utils/app";
+import { useDidMount } from "@diegofrayo/hooks";
 import { BrowserStorageManager } from "@diegofrayo/storage";
 import type DR from "@diegofrayo/types";
 
@@ -16,12 +17,14 @@ export function withAuth<G_ComponentProps extends object>(
 }
 
 interface I_OptionsRequireAuth {
-	requirePin?: boolean;
+	requireSecurityPin?: boolean;
+	requireRemoteSecurityPin?: boolean;
 	requireAuth: true;
 	requireNoAuth?: never;
 }
 interface I_OptionsRequireNoAuth {
-	requirePin?: boolean;
+	requireSecurityPin?: boolean;
+	requireRemoteSecurityPin?: boolean;
 	requireNoAuth: true;
 	requireAuth?: never;
 }
@@ -38,45 +41,67 @@ export function withAuthRulesPage<G_ComponentProps extends object>(
 
 		// --- EFFECTS ---
 		useDidMount(() => {
-			if ("requireAuth" in options) {
-				redirectUser(AuthService.isUserLoggedIn() === false || checkSecurityPinConfig());
-			} else {
-				redirectUser(AuthService.isUserLoggedIn() || checkSecurityPinConfig());
-			}
+			checkConfig();
 		});
 
 		// --- UTILS ---
+		async function checkConfig() {
+			const isValidSecurityPin = await checkSecurityPinConfig();
+
+			if ("requireAuth" in options) {
+				redirectUser(AuthService.isUserLoggedIn() === false || !isValidSecurityPin);
+			} else {
+				redirectUser(AuthService.isUserLoggedIn() || !isValidSecurityPin);
+			}
+		}
+
+		async function checkSecurityPinConfig() {
+			if (isProductionEnvironment()) {
+				if (options.requireSecurityPin === true) {
+					const securityPinSession = BrowserStorageManager.createItem({
+						key: "DR_LOCAL_SECURITY_SESSION",
+						value: false,
+						readInitialValueFromStorage: true,
+						storage: "sessionStorage",
+					});
+					const isActiveSession = securityPinSession.get() === true;
+
+					if (isActiveSession) {
+						return false;
+					}
+
+					const LOCAL_SECURITY = "1256";
+					const pin = window.prompt("Type the security pin");
+					const pinMatched = pin === LOCAL_SECURITY;
+					securityPinSession.set(pinMatched);
+
+					return pinMatched;
+				}
+				if (options.requireRemoteSecurityPin === true) {
+					try {
+						const pinMatched = (
+							await ServerAPI.post<boolean>("/security-pin", {
+								path: window.location.pathname,
+								securityPin: window.prompt("Type the security pin"),
+							})
+						).data;
+
+						return pinMatched;
+					} catch (error) {
+						return false;
+					}
+				}
+			}
+
+			return false;
+		}
+
 		function redirectUser(hasToRedirect: boolean) {
 			if (hasToRedirect) {
 				goBack();
 			} else {
 				setAllowRender(true);
 			}
-		}
-
-		function checkSecurityPinConfig() {
-			if (options.requirePin === true && isProductionEnvironment()) {
-				const securityPinSession = BrowserStorageManager.createItem({
-					key: "DR_SECURITY_PIN_SESSION",
-					value: false,
-					readInitialValueFromStorage: true,
-					storage: "sessionStorage",
-				});
-				const isActiveSession = securityPinSession.get() === true;
-
-				if (isActiveSession) {
-					return false;
-				}
-
-				const SECURITY_PIN = "1256";
-				const pin = window.prompt("Type the security pin");
-				const pinMatched = pin === SECURITY_PIN;
-				securityPinSession.set(pinMatched);
-
-				return pinMatched === false;
-			}
-
-			return false;
 		}
 
 		if (allowRender) {

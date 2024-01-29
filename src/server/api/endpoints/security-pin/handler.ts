@@ -8,18 +8,17 @@ import { parseRequestBody } from "./schemas";
 
 export default async function isrHandler(req: NextApiRequest, res: NextApiResponse) {
 	try {
-		const { path, secret } = parseRequestBody(req.body);
+		const { securityPin } = parseRequestBody(req.body);
 
-		if (secret !== EnvVars.SECURITY_PIN) {
+		if (securityPin !== EnvVars.SECURITY_PIN) {
 			throw new HttpError({
-				id: "ISR_WRONG_SECURITY_PIN",
+				id: "WRONG_SECURITY_PIN",
 				message: "Wrong security pin",
 				type: HttpError.types.BAD_REQUEST,
 			});
 		}
 
-		await res.revalidate(path);
-		res.json({ revalidated: true, date: new Date() });
+		res.send(true);
 	} catch (error) {
 		sendServerError(res, error);
 	}

@@ -27,12 +27,12 @@
 	"Asus2/G": { "music_notes": "4,2,2|3,2,3|6,3,4", "touched_strings": "1,0,1,1,0,0" },
 	"Asus4": { "music_notes": "3,2,2|2,2,3|2,3,4", "touched_strings": "x,0,0,1,1,0" },
 	"B": [
-		{ "music_notes": "6x,2|4,4,2|3,4,3|2,4,4", "touched_strings": "0,0,1,1,1,0" },
+		{ "music_notes": "5x,2|4,4,2|3,4,3|2,4,4", "touched_strings": "x,0,1,1,1,0" },
 		{ "music_notes": "6x,7|5,9,3|4,9,4|3,8,2", "touched_strings": "0,1,1,1,0,0" }
 	],
-	"B7": { "music_notes": "6x,2|4,4,2|2,4,3", "touched_strings": "0,0,1,0,1,0" },
-	"Bm": { "music_notes": "6x,2|2,3,2|4,4,3|3,4,4", "touched_strings": "0,0,1,1,1,0" },
-	"Bm7": { "music_notes": "6x,2|2,3,2|4,4,3", "touched_strings": "0,0,1,0,1,0" },
+	"B7": { "music_notes": "5x,2|4,4,2|2,4,3", "touched_strings": "x,0,1,0,1,0" },
+	"Bm": { "music_notes": "5x,2|2,3,2|4,4,3|3,4,4", "touched_strings": "x,0,1,1,1,0" },
+	"Bm7": { "music_notes": "5x,2|2,3,2|4,4,3", "touched_strings": "x,0,1,0,1,0" },
 	"Bmaj7": { "music_notes": "6x,2|3,3,2|4,4,3|2,4,4", "touched_strings": "0,0,1,1,1,0" },
 	"C": [
 		{ "music_notes": "5,3,3|4,2,2|2,1,1", "touched_strings": "0,1,0,1,1,0" },
