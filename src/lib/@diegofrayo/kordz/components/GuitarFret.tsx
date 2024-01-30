@@ -143,7 +143,7 @@ function GuitarFret({ variant, number, musicNotes, touchedStrings, barreFret }: 
 							return (
 								<div
 									key={`${guitarString}-${Date.now()}`}
-									className="tw-mx-1 tw-flex tw-h-6 tw-items-center"
+									className="tw-mx-1 tw-flex tw-h-6 tw-items-center tw-justify-center"
 								>
 									<SkippedGuitarStringIcon
 										touchedStrings={touchedStrings}
@@ -179,7 +179,7 @@ function SkippedGuitarStringIcon({
 	const playedString = touchedStrings[guitarString - 1];
 
 	if (playedString === "x") {
-		return <span className="tw-text-lg">✕</span>;
+		return <span className="tw-text-lg tw-text-red-700">✕</span>;
 	}
 
 	if (playedString === "0") {

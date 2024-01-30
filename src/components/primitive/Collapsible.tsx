@@ -15,6 +15,7 @@ type T_CollapsibleProps = DR.DOM.HTMLElementAttributes["details"] & {
 	openedByDefault?: boolean;
 	opened?: boolean;
 	contentClassName?: string;
+	showIcon?: boolean;
 	onShowContentHandler?: () => void;
 	onHideContentHandler?: () => void;
 };
@@ -28,6 +29,7 @@ function Collapsible({
 	className = "",
 	contentClassName = "",
 	title = "",
+	showIcon = true,
 	onShowContentHandler = () => undefined,
 	onHideContentHandler = () => undefined,
 }: T_CollapsibleProps) {
@@ -79,17 +81,21 @@ function Collapsible({
 				className="tw-flex tw-items-start tw-font-bold"
 				onClick={handleToggleClick}
 			>
-				<InlineText
-					className={cn(
-						"tw-relative tw-top-0.5 tw-mr-2 tw-transform tw-text-sm",
-						isOpen ? "tw-top-1 tw-rotate-90" : "tw-top-0.5",
-					)}
-				>
-					&#9654;
-				</InlineText>
+				{showIcon ? (
+					<InlineText
+						className={cn(
+							"tw-relative tw-top-0.5 tw-mr-2 tw-transform tw-text-sm",
+							isOpen ? "tw-top-1 tw-rotate-90" : "tw-top-0.5",
+						)}
+					>
+						&#9654;
+					</InlineText>
+				) : null}
 				<InlineText>{computedTitle}</InlineText>
 			</Title>
-			<Block className={cn("tw-pl-5", contentClassName, isOpen ? "tw-block" : "tw-hidden")}>
+			<Block
+				className={cn(showIcon && "tw-pl-5", contentClassName, isOpen ? "tw-block" : "tw-hidden")}
+			>
 				{children}
 			</Block>
 		</Block>

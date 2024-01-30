@@ -14,7 +14,7 @@
 		"spotify_url": "https://open.spotify.com/track/6hmYi0E6EBEmDeztQHaH0C",
 		"youtube_url": "https://youtu.be/bZcMPnY9_dg",
 		"assets": {},
-		"interpretation": "- Fuerza del canto: Media o alta\n- Velocidad de rasgueo: Media o baja\n- Fuerza de rasgueo: Media o baja\n- Rasgueo: Tipo folklore o sino marcando bien los acordes\n- Complejidad: Media\n",
+		"interpretation": "- Fuerza del canto: Media o baja\n- Velocidad de rasgueo: Media o baja\n- Fuerza de rasgueo: Media o baja\n- Rasgueo: Tipo folklore o sino marcando bien los acordes\n- Complejidad: Media\n",
 		"sources": [
 			{
 				"text": "Bajan",
@@ -32,6 +32,11 @@
 				"source": "youtube"
 			},
 			{
+				"text": "Spinetta - Bajan (Fermín - Subte Línea D) - 2023",
+				"url": "https://youtu.be/zQfYMgiP3iU",
+				"source": "youtube"
+			},
+			{
 				"text": "Bajan - Spinetta (Cover by Silvina Moreno)",
 				"url": "https://youtu.be/T3C-jpWNOEs",
 				"source": "youtube"
@@ -45,5 +50,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{INTRO}\",\n\t\t\treplacement: (\n\t\t\t\t<Tablature\n\t\t\t\t\tpositions={[\n\t\t\t\t\t\t{ guitarString: 6, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 6 },\n\t\t\t\t\t\t{ space: 2 },\n\t\t\t\t\t\t{ guitarString: 1 },\n\t\t\t\t\t\t{ guitarString: 2 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 1 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 2 },\n\t\t\t\t\t\t{ space: 1 },\n\t\t\t\t\t\t{ guitarString: 1 },\n\t\t\t\t\t\t{ space: 2 },\n\t\t\t\t\t\t{ guitarString: 6, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 6 },\n\t\t\t\t\t]}\n\t\t\t\t\tnotes=\"Pulsar la cuerda 3 en el traste 1 y la cuerda 4 en el traste 2. Se repite 4 veces\"\n\t\t\t\t/>\n\t\t\t),\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
-	"txt": "{INTRO}\n\n\nE                    F#m\n    Tengo tiempo               para saber\nC#m                  F#dim7         B\n    si  lo  que    sueño       concluye en algo\nE                    F#m\n    no te apures               ya más loco\nC#m                  F#dim7         B\n    porque es     entonces     cuando las horas\n\n\n C#m       G#m      B            C#m\nBajan, el día  es  vidrio  sin  sol\n           G#m       B           C#m\nbajan, la noche te oculta  la   voz\n\n      C      Am7     G#m   F#m\nY además    vos    querés sol\n    C#m       G#                    C#m\ndespacio también podés hallar la luna\n\n\nG#m  E  A\n↓    ↓  ↓\n\n\n{INTRO}\n\n\nE                  F#m\n    Viejo roble              del camino\nC#m                F#dim7         B\n    tus hojas    siempre     se agitan algo\nE                  F#m\n    nena, nena,              que bien te ves\nC#m                F#dim7         B\n    cuando en tus  ojos      no importa si las horas\n\n\n C#m       G#m      B           C#m\nBajan, el día se   sienta a  morir\n C#m       G#m      B         C#m\nbajan, la noche se nubla sin fin\n\n      C      Am7    G#m    F#m\nY además    vos    sos el sol\n    C#m       G#                 C#m\ndespacio también podés ser la luna\n\n\nG#m  E  A\n↓    ↓  ↓\n\n\n{INTRO}\n\n\nE\n↓"
+	"txt": "{INTRO}\n\n\nE                    F#m\n    Tengo tiempo               para saber\nC#m                  F#dim7         B\n    si  lo  que    sueño       concluye en algo\nE                    F#m\n    no te apures               ya más loco\nC#m                  F#dim7         B\n    porque es     entonces     cuando las horas\n\n\n C#m       G#m      B            C#m\nBajan, el día  es  vidrio  sin  sol\n C#m       G#m       B           C#m\nbajan, la noche te oculta  la   voz\n\n      C      Am7     G#m   F#m\nY además    vos    querés sol\n    C#m       G#                    C#m\ndespacio también podés hallar la luna\n\n\nG#m  E  A\n↓    ↓  ↓\n\n\n{INTRO}\n\n\nE                  F#m\n    Viejo roble              del camino\nC#m                F#dim7         B\n    tus hojas    siempre     se agitan algo\nE                  F#m\n    nena, nena,              que bien te ves\nC#m                F#dim7          B\n    cuando en tus  ojos      no importa si las horas\n\n\n C#m       G#m      B           C#m\nBajan, el día se   sienta a  morir\n C#m       G#m      B         C#m\nbajan, la noche se nubla sin fin\n\n      C      Am7    G#m    F#m\nY además    vos    sos el sol\n    C#m       G#                 C#m\ndespacio también podés ser la luna\n\n\nG#m  E  A\n↓    ↓  ↓\n\n\n{INTRO}\n\n\nE\n↓"
 }

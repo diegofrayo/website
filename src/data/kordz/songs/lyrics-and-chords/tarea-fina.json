@@ -1,0 +1,34 @@
+{
+	"details": {
+		"id": "tarea-fina",
+		"title": "Tarea fina",
+		"artist": "Patricio Rey y sus Redonditos de Ricota",
+		"album": "La mosca y la sopa",
+		"year": 1991,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 0,
+		"created_at": "2024/01/30",
+		"is_public": false,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/4mZHvbJWkK9uVmD9SvHKao",
+		"youtube_url": "https://youtu.be/s3c7GX_-w9M",
+		"interpretation": "",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Tarea Fina - Los Redondos (ft. elfran cover)",
+				"url": "https://youtu.be/04XS5ZF6mi8",
+				"source": "youtube"
+			},
+			{
+				"text": "TAREA FINA, Patricio Rey y sus Redonditos de Ricota: Acordes",
+				"url": "https://acordes.lacuerda.net/patricio_rey/tarea_fina-7.shtml",
+				"source": "lacuerda"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": " C\nQuemando la turbina te escapas\nvas a volver a herirme otra vez?\n       Am\nen tu ternura esta acechándome\nuna buena traición de mujer\nque hecha hielo y brasas en mi corazón\n    G\n(fumando en la oscuridad)\n\n C\nSobrio no te puedo ni hablar\nestoy perdido sin mi estupidez\n    Am\nun auto guapo va a venir por vos\ny nada va a cambiar\nvas a vivir en le delta en un lanchón\n G\nbuscando de que reír\n\n\n A#                   F\nCon las piernas más bonitas\n C                    A#\nlas más lindas piernas que vi\n G                  F\ny un juego rico de amores\n C                A#      G\ncaída libre para dos      oh oh\n\n\n    C\nLe das la copa al fin, vencedor\ntarea fina, perdida en mi soledad\n    Am\nno se si no me gusta mas que el rock\n(nunca lo vi llorar)\nsi no va sin freno no anda bien\n    G\nni me encadena a su show\n\n\n A#                   F\nCon las piernas más bonitas\n C                    A#\nlas más lindas piernas que vi\n G                  F\ny un juego rico de amores\n C                A#      G\ncaída libre para dos      oh oh"
+}

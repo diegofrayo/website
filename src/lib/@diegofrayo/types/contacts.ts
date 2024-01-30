@@ -1,4 +1,4 @@
-import { type Input, object, string, union, array, enumType, email } from "valibot";
+import { type Input, object, string, union, array, enumType, email, optional } from "valibot";
 import v from "../v";
 
 export type T_ContactsData = Record<string, T_Contact[] | { [key: string]: T_ContactsData }>;
@@ -34,6 +34,7 @@ export const ContactSchema = object({
 		"USA",
 		"UY",
 	]),
+	notes: optional(string()),
 });
 
 export type T_Contact = Input<typeof ContactSchema>;

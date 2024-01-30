@@ -338,6 +338,17 @@ function CategoryContacts({
 										contact={contact}
 										whatsAppLinksMode={whatsAppLinksMode}
 									/>
+									{v.isNotEmptyString(contact.notes) ? (
+										<Collapsible
+											title="Notas"
+											className="tw-mt-3 tw-text-sm"
+											contentClassName="tw-italic"
+											showIcon={false}
+											opened
+										>
+											{contact.notes}
+										</Collapsible>
+									) : null}
 								</Block>
 							);
 						})}

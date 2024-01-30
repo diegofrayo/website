@@ -76,7 +76,8 @@ export function withAuthRulesPage<G_ComponentProps extends object>(
 					securityPinSession.set(pinMatched);
 
 					return pinMatched;
-				} else if (options.requireRemoteSecurityPin === true) {
+				}
+				if (options.requireRemoteSecurityPin === true) {
 					try {
 						const pinMatched = (
 							await ServerAPI.post<boolean>("/security-pin", {
@@ -90,11 +91,9 @@ export function withAuthRulesPage<G_ComponentProps extends object>(
 						return false;
 					}
 				}
-
-				return true;
 			}
 
-			return false;
+			return true;
 		}
 
 		function redirectUser(hasToRedirect: boolean) {
