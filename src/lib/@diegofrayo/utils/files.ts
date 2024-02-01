@@ -56,14 +56,38 @@ export type T_CustomFile = {
 	parentFolderName: string;
 };
 
+interface I_ReadFolderFilesOpts1 {
+	includeDirectories?: boolean;
+	recursive?: boolean;
+	includeTheseExtensions: string[];
+	includeMediaFiles?: never;
+	includeImages?: never;
+}
+
+interface I_ReadFolderFilesOpts2 {
+	includeDirectories?: boolean;
+	recursive?: boolean;
+	includeTheseExtensions?: never;
+	includeMediaFiles: true;
+	includeImages?: never;
+}
+
+interface I_ReadFolderFilesOpts3 {
+	includeDirectories?: boolean;
+	recursive?: boolean;
+	includeTheseExtensions?: never;
+	includeMediaFiles?: never;
+	includeImages: true;
+}
+
+type T_ReadFolderFilesOpts =
+	| I_ReadFolderFilesOpts1
+	| I_ReadFolderFilesOpts2
+	| I_ReadFolderFilesOpts3;
+
 export function readFolderFiles(
 	sourceFolderPath: string,
-	opts?: {
-		includeDirectories?: boolean;
-		includeTheseExtensions?: string[];
-		includeMediaFiles?: boolean;
-		recursive?: boolean;
-	},
+	opts?: T_ReadFolderFilesOpts,
 ): T_CustomFile[] {
 	return fs.readdirSync(sourceFolderPath).reduce((result: T_CustomFile[], fileName) => {
 		const filePath = path.resolve(sourceFolderPath, fileName);
@@ -87,7 +111,8 @@ export function readFolderFiles(
 		if (
 			!opts ||
 			(opts.includeDirectories && file.isDirectory) ||
-			(opts.includeMediaFiles && isMediaFile(file.ext)) ||
+			(v.isBoolean(opts.includeMediaFiles) && isMediaFile(file.ext)) ||
+			(v.isBoolean(opts.includeImages) && isImageFile(file.ext)) ||
 			(v.isArray(opts.includeTheseExtensions) && opts.includeTheseExtensions.includes(file.ext))
 		) {
 			return result.concat([file]);
@@ -120,9 +145,11 @@ export function renameFile(
 }
 
 export function isMediaFile(extension: string) {
-	return ["jpg", "jpeg", "png", "gif", "webp", "avif", "heic", "mp4", "mov"].includes(
-		extension.toLowerCase(),
-	);
+	return isImageFile(extension) || ["heic", "mp4", "mov"].includes(extension.toLowerCase());
+}
+
+export function isImageFile(extension: string) {
+	return ["jpg", "jpeg", "png", "gif", "webp", "avif"].includes(extension.toLowerCase());
 }
 
 export function prepareFilePathFolder(filePath: string, isDirectory?: boolean) {
