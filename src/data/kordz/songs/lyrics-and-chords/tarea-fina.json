@@ -13,7 +13,7 @@
 		"done": true,
 		"spotify_url": "https://open.spotify.com/track/4mZHvbJWkK9uVmD9SvHKao",
 		"youtube_url": "https://youtu.be/s3c7GX_-w9M",
-		"interpretation": "",
+		"interpretation": "- Fuerza del canto: Alta\n- Velocidad de rasgueo: Alta\n- Fuerza de rasgueo: Alta\n- Complejidad: Media\n",
 		"assets": {},
 		"sources": [
 			{
@@ -30,5 +30,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "C\n  Quemando la turbina... te escapas\nvas a volver a herirme otra vez?\n          Am\nen tu ternura esta acechándome\nuna buena traición de mujer\nque hecha hielo y brasas en mi corazón\nG\n  fumando en la oscuridad\n\nC\n  Sobrio no te puedo... ni hablar\nestoy perdido sin mi estupidez\n         Am\nun auto guapo va a venir por vos\ny nada va a cambiar\nvas a vivir en el delta en un lanchón\nG\n  buscando de que reír\n\n\nA#                          F\n  Con las piernas más... bonitas\nC                                A#  G\n  las más lindas piernas... que vi   oh oh\nG                      F\n  y un juego rico de amores\n  C               A#  G\ncaída libre para dos  oh oh\n\n\nC\n  Le das la copa al fin... al vencedor\ntarea fina pérdida en mi soledad\n       Am\nno se si no me gusta mas que el rock\n(nunca lo vi llorar)\nsi no va sin freno no anda bien\nG\n  ni me encadena a su show\n\n\nA#                          F\n  Con las piernas más... bonitas\nC                                A#  G\n  las más lindas piernas... que vi   oh oh\nG                      F\n  y un juego rico de amores\n  C               A#  G\ncaída libre para dos  oh oh"
+	"txt": "C\n  Quemando la turbina... te escapas\nvas a volver a herirme otra vez?\n          Am\nen tu ternura está acechándome\nuna buena traición de mujer\nque echa hielo y brasas en mi corazón\nG\n  fumando en la oscuridad\n\nC\n  Sobrio no te puedo... ni hablar\nestoy perdido sin mi estupidez\n         Am\nun auto guapo va a venir por vos\ny nada va a cambiar\nvas a vivir en el delta en un lanchón\nG\n  buscando de que reír\n\n\nA#                          F\n  Con las piernas más... bonitas\nC                                A#\n  las más lindas piernas... que vi\nG                      F\n  y un juego rico de amores\n  C               A#  G\ncaída libre para dos  oh oh\n\n\nC\n  Le das la copa al fin... al vencedor\ntarea fina pérdida en mi soledad\n       Am\nno se si no me gusta mas que el rock\nnunca la vi llorar\nsi no va sin freno no anda bien\nG\n  ni me encadena a su show\n\n\nA#                          F\n  Con las piernas más... bonitas\nC                                A#\n  las más lindas piernas... que vi\nG                      F\n  y un juego rico de amores\n  C               A#  G\ncaída libre para dos  oh oh"
 }

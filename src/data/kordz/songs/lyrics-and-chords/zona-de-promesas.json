@@ -14,6 +14,7 @@
 		"spotify_url": "https://open.spotify.com/track/2EGq3O7pchSqjQ6gx82byi",
 		"youtube_url": "https://youtu.be/tPOkA5H1DfY",
 		"assets": {},
+		"interpretation": "- Fuerza del canto: Media\n- Velocidad de rasgueo: Media\n- Fuerza de rasgueo: Media\n- Complejidad: Media\n",
 		"sources": [
 			{
 				"text": "Zona de Promesas SODA STEREO Cover | Tutorial Guitarra Demo Christianvib",
@@ -24,16 +25,10 @@
 				"text": "Zona De Promesas - Soda Stereo (Cover)",
 				"url": "https://youtu.be/dfTiZeh9T-U",
 				"source": "youtube"
-			},
-			{
-				"text": "Zona de promesas - Soda Stereo (con acordes)",
-				"url": "https://youtu.be/gngMVdFnAIE",
-				"source": "youtube"
 			}
 		],
-		"chords": [],
-		"interpretation": ""
+		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "G       D    G\n  Mama sabe bien\n      D        C     D    C  D\n  perdí una bata...lla\nG         D    G\n  quiero regresar\n   D        C     D       C  D\n  solo a besar...la\n\n\nAm         Fadd9         Fmaj7      Fadd9\n  No está mal ser mi    dueño otra vez\nAm      B7             Em       D       A7\n  ni temer que el río sangre y calme\n         C7    B7     Em     D\n  al contarle mis plegarias\n\n\n  G  Cadd9  G  Cadd9  Em7  D  Fadd9\n\n\n   G     Cadd9     G\n  Tarda  en    llegar\n  Cadd9     Em7       D\n  y al   final, al final\n   Fmaj7         G\n  hay      recompensa\n\n\n  G D  G D  C D  C D\n\n\nG       D    G\n  Mama sabe bien\n      D        C    D   C  D\n  pequeña prince...sa\nG         D    G\n  cuando regresé,\nD          C    D       C  D\n  todo quema...ba\n\n\nAm         Fadd9         Fmaj7      Fadd9\n  No está mal ser mi    dueño otra vez\nAm      B7             Em       D       A7\n  ni temer que el río sangre y calme\n        C7  B7    Em     D\n  se bucear en silencio\n\n\n  G  Cadd9  G  Cadd9  Em7  D  Fadd9\n\n\n   G     Cadd9     G                           |\n  Tarda  en    llegar                          |\n  Cadd9     Em7       D                        |\n  y al   final, al final                       |\n   Fmaj7         G      Cadd9  Em7  D  Fadd9   |\n  hay      recompensa                          | (x2)\n\n   G     Cadd9     G\n  Tarda  en    llegar\n  Cadd9     Em7       D\n  y al   final, al final\n   Fmaj7         G      Cadd9  G  Cadd9  Em7\n  hay      recompensa\n\n\n         D    Fadd9    G\n  En la zona de    promesas"
+	"txt": "G       D    G\n  Mama sabe bien\n      D        C     D    C  D\n  perdí una bata...lla\nG         D    G\n  quiero regresar\n   D        C     D       C  D\n  solo a besar...la\n\n\nAm         Fadd9         Fmaj7      Fadd9\n  No está mal ser mi    dueño otra vez\nAm      B7             Em       D       A7\n  ni temer que el río sangre y calme\n         C7    B7     Em     D\n  al contarle mis plegarias\n\n\n  G  Cadd9  G  Cadd9  Em7  D  Fadd9\n\n\n   G     Cadd9     G\n  Tarda  en    llegar\n  Cadd9     Em7       D\n  y al   final, al final\n            Fmaj7   G\n  hay      recompensa\n\n\n  G D  G D  C D  C D\n\n\nG       D    G\n  Mama sabe bien\n      D        C    D   C  D\n  pequeña prince...sa\nG         D    G\n  cuando regresé,\nD          C    D       C  D\n  todo quema...ba\n\n\nAm         Fadd9         Fmaj7      Fadd9\n  No está mal ser mi    dueño otra vez\nAm      B7             Em       D       A7\n  ni temer que el río sangre y calme\n        C7  B7    Em     D\n  se bucear en silencio\n\n\n  G  Cadd9  G  Cadd9  Em7  D  Fadd9\n\n\n   G     Cadd9     G                           |\n  Tarda  en    llegar                          |\n  Cadd9     Em7       D                        |\n  y al   final, al final                       |\n            Fmaj7   G   Cadd9  Em7  D  Fadd9   |\n  hay      recompensa                          | (x2)\n\n   G     Cadd9     G\n  Tarda  en    llegar\n  Cadd9     Em7       D\n  y al   final, al final\n            Fmaj7   G      Cadd9  G  Cadd9  Em7\n  hay      recompensa\n\n\n         D    Fadd9    G\n  En la zona de    promesas"
 }
