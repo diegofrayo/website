@@ -6,14 +6,15 @@
 		"album": "Desconocido",
 		"year": 2021,
 		"country": "🇦🇷",
-		"category": "4|REVIEW|🕵️",
+		"category": "2|WELL_DONE|👌",
 		"order": 0,
 		"created_at": "2022/09/21",
-		"is_public": false,
-		"done": false,
+		"is_public": true,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/0tyUt9J9teuyBsuZqaeKWh",
 		"youtube_url": "https://youtu.be/UxfTDxxzjBE",
 		"assets": {},
+		"interpretation": "- Fuerza del canto: Baja o media\n- Velocidad de rasgueo: Baja o media\n- Fuerza de rasgueo: Baja o media\n- Complejidad: Media\n",
 		"sources": [
 			{
 				"text": "ENCUENTRO CON UN ANGEL AMATEUR, Los Fundamentalistas del Aire Acondicionado: Acordes",
@@ -21,9 +22,8 @@
 				"source": "lacuerda"
 			}
 		],
-		"chords": [],
-		"interpretation": ""
+		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "C\n   Empiezo por el final\nG\n   terminaré en el principio\nC\n   mis intereses quizás\nG\n   no fueron saludables\n\n\nF\n   Yo ya no puedo cumplir\nF\n   hazañas que prometí\n   C              G\n   solo seguir cantando…\n\n\nC\n   La traición duele hacia atrás\nG\n   no sabes cuando comienza\nC\n   un ángel sonso amateur\nG\n   me condenó al Paraíso\n\n\nF\n   Solo me falta saber\nF\n   la fecha y el lugar\n   C             G\n   y allí iré cantando…\n\n\nSOLO: C  G (x2) | F  C  F  G\n\n\nC\nMis amores refugié\nG\n   en el arcón del amor propio\nC\nal soberbio todo le es\nG\n   sufrido y muy aburrido\n\n\nF\n   Yo ya no puedo cumplir\nF\n   hazañas que prometí\n   C               G\n   solo marchar cantando…\n\n\nC                     G\nMás de una vez me escuché decir\nC\nque en la resistencia está\nG\n todo el hidalgo valor de la vida\n\n\nF\n   Yo ya no puedo cumplir\nF\n   hazañas que prometí\n   C               G\n   solo esperar cantando…\n\n\nSOLO: C  G (x2)   |   F  C  F  Fm  C"
+	"txt": "C\n   Empiezo por el final\nG\n   terminaré en el principio\nC\n   mis intereses quizás\nG\n   no fueron saludables\n\n\nF\n   Yo ya no puedo cumplir\nF\n   hazañas que prometí\n C              G\nsolo seguir cantando…\n\n\nC\n   La traición duele hacia atrás\nG\n   no sabes cuando comienza\nC\n   un ángel sonso amateur\nG\n   me condenó al paraíso\n\n\nF\n   Solo me falta saber\nF\n   la fecha y el lugar\nC              G\ny allí iré cantando…\n\n\nC G   | (x2)\nF C F G\n\n\n C\nMis amores refugié\nG\n  en el arcón del amor propio\nC\nal soberbio todo le es\nG\n  sufrido y muy aburrido\n\n\nF\n   Yo ya no puedo cumplir\nF\n   hazañas que prometí\n C               G\nsolo marchar cantando…\n\nC\n\n C                      G\nMás de una vez me escuché decir\n  C\nque en la resistencia está\nG\n todo el hidalgo valor de la vida\n\n\nF\n   Yo ya no puedo cumplir\nF\n   hazañas que prometí\n C               G\nsolo esperar cantando…\n\n\nC G   | (x2)\nF C F Fm C"
 }
