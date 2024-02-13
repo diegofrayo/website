@@ -152,21 +152,6 @@ const ICONS = {
 			className: "",
 		},
 	},
-	NETFLIX: {
-		icon: "/assets/images/icons/netflix.svg",
-		defaultProps: {
-			alt: "Netflix",
-			className: "tw-rounded-full ",
-		},
-	},
-	RESTAURANT_MENU: {
-		icon: `/assets/images/icons/restaurant-menu.png?v=${+new Date()}`,
-		defaultProps: {
-			alt: "Restaurant menu",
-			className: "",
-			size: 26,
-		},
-	},
 	SOCCER: {
 		icon: "/assets/images/icons/soccer.svg",
 		defaultProps: {

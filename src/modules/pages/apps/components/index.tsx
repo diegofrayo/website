@@ -7,6 +7,7 @@ import {
 	Button,
 	Collapsible,
 	Icon,
+	Image,
 	InlineText,
 	Link,
 	Space,
@@ -524,7 +525,13 @@ function ContactLinks({
 					href={contact.menu}
 					isExternalLink
 				>
-					<Icon icon={Icon.icon.RESTAURANT_MENU} />
+					<Image
+						src="/assets/images/icons/restaurant-menu.png"
+						alt="Restaurant menu icon"
+						width={26}
+						height={26}
+						className="tw-inline-block"
+					/>
 				</Link>
 			) : null}
 		</Block>

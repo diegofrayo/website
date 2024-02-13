@@ -14,6 +14,7 @@ import {
 	isElementInViewport,
 	setScrollPosition,
 } from "@diegofrayo/utils/browser";
+import { throwError } from "@diegofrayo/utils/misc";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 
@@ -89,6 +90,7 @@ function FilmsPage() {
 			netflix: "netflix",
 			youtube: "youtube",
 			amazon_prime_video: "amazon prime video",
+			star_plus: "star +",
 		};
 
 		const generatedCategories = Object.values(
@@ -191,7 +193,7 @@ function FilmsPage() {
 										{films.length}]
 									</Title>
 									<Block className="tw-flex tw-flex-wrap tw-justify-center sm:tw-justify-between">
-										{films.map(({ id, source, title, type, calification, cover }, index) => {
+										{films.map(({ id, source, title, type, calification, cover, url }, index) => {
 											return (
 												<Block
 													key={id}
@@ -239,11 +241,20 @@ function FilmsPage() {
 																height={24}
 															/>
 														) : source === "Netflix" ? (
-															<Icon
-																icon={Icon.icon.NETFLIX}
-																size={24}
-																wrapperClassName="tw-flex-shrink-0"
-																iconClassName="tw-border dr-border-color-surface-300"
+															<Image
+																src="/assets/images/pages/apps/films/netflix.svg"
+																alt="Netflix icon"
+																className="tw-flex-shrink-0 tw-rounded-full"
+																width={24}
+																height={24}
+															/>
+														) : source === "Star +" ? (
+															<Image
+																src="/assets/images/pages/apps/films/star-plus.jpg"
+																alt="Netflix icon"
+																className="tw-flex-shrink-0 tw-rounded-full"
+																width={24}
+																height={24}
 															/>
 														) : (
 															<Icon
@@ -268,7 +279,9 @@ function FilmsPage() {
 																			? `https://www.youtube.com/watch?v=${id}`
 																			: source === "imdb"
 																			? `https://www.imdb.com/title/${id}`
-																			: `https://www.primevideo.com/detail/${id}`
+																			: source === "Amazon Prime Video"
+																			? `https://www.primevideo.com/detail/${id}`
+																			: url || throwError(`Invalid film (${id}) url and source`)
 																	}
 																	className="title-link"
 																	isExternalLink
@@ -322,10 +335,11 @@ type T_Film = {
 	id: string;
 	title: string;
 	type: "Serie" | "Película" | "Documental" | "Serie documental";
-	source: "Netflix" | "YouTube" | "imdb" | "Amazon Prime Video";
+	source: "Netflix" | "YouTube" | "imdb" | "Amazon Prime Video" | "Star +";
 	categories: string[];
 	calification: number;
 	cover: string;
 	added_date: string;
 	is_public: boolean;
+	url?: string;
 };
