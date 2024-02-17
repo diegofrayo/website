@@ -6,14 +6,14 @@
 		"album": "La mosca y la sopa",
 		"year": 1991,
 		"country": "🇦🇷",
-		"category": "0|IN_PROGRESS|🚧",
+		"category": "3|OK|🤷‍♂️",
 		"order": 0,
 		"created_at": "2024/01/30",
 		"is_public": true,
 		"done": true,
 		"spotify_url": "https://open.spotify.com/track/4mZHvbJWkK9uVmD9SvHKao",
 		"youtube_url": "https://youtu.be/s3c7GX_-w9M",
-		"interpretation": "- Fuerza del canto: Alta\n- Velocidad de rasgueo: Alta\n- Fuerza de rasgueo: Alta\n- Complejidad: Media\n",
+		"interpretation": "- Fuerza del canto: Alta\n- Velocidad de rasgueo: Alta\n- Fuerza de rasgueo: Alta\n- Complejidad: Alta\n",
 		"assets": {},
 		"sources": [
 			{
@@ -25,6 +25,11 @@
 				"text": "TAREA FINA, Patricio Rey y sus Redonditos de Ricota: Acordes",
 				"url": "https://acordes.lacuerda.net/patricio_rey/tarea_fina-7.shtml",
 				"source": "lacuerda"
+			},
+			{
+				"text": "Tarea fina - PR (cover) Fernando medina.",
+				"url": "https://youtu.be/vMEAIM53M0A",
+				"source": "youtube"
 			}
 		],
 		"chords": []

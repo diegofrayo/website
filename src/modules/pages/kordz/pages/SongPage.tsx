@@ -124,7 +124,10 @@ function SongPage({ cmsContent, songDetails, songContent }: T_SongPageProps) {
 
 	// --- UTILS ---
 	function parseSEOItem(input: string) {
-		return input.replace("{{title}}", songDetails.title).replace("{{artist}}", songDetails.artist);
+		return input
+			.replace("{{title}}", songDetails.title)
+			.replace("{{artist}}", songDetails.artist)
+			.replace(", :", ":");
 	}
 
 	function getCurrentHref() {
