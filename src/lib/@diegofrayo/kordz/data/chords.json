@@ -83,7 +83,10 @@
 	"Em°": { "music_notes": "5,2,2|4,1,1", "touched_strings": "0,1,1,0,0,0" },
 	"Esus": { "music_notes": "5,2,2|4,2,3|3,2,4|3,1,1", "touched_strings": "0,1,1,1,0,0" },
 	"Esus4": { "music_notes": "5,2,2|4,2,3|3,2,4|3,1,1", "touched_strings": "0,1,1,1,0,0" },
-	"F": { "music_notes": "6x,1|5,3,3|4,3,4|3,2,2", "touched_strings": "0,1,1,1,0,0" },
+	"F": [
+		{ "music_notes": "6x,1|5,3,3|4,3,4|3,2,2", "touched_strings": "0,1,1,1,0,0" },
+		{ "music_notes": "2,1,1|5,3,3|4,3,4|3,2,2", "touched_strings": "0,1,1,1,1,0" }
+	],
 	"F#": { "music_notes": "6x,2|5,4,3|4,4,4|3,3,2", "touched_strings": "0,1,1,1,0,0" },
 	"F#7": { "music_notes": "6x,2|5,4,3|3,3,2", "touched_strings": "0,1,0,1,0,0" },
 	"F#dim7": { "music_notes": "4,4,1|2,4,2|3,5,3|1,5,4", "touched_strings": "x,x,1,1,1,1" },
