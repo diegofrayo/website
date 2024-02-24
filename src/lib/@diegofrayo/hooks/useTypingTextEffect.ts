@@ -23,6 +23,7 @@ function useTypingTextEffect(text: string) {
 			return () => {
 				if (intervalRef.current) {
 					clearInterval(intervalRef.current);
+					intervalRef.current = null;
 				}
 			};
 		},
@@ -33,6 +34,7 @@ function useTypingTextEffect(text: string) {
 		function stopInterval() {
 			if (output === text && intervalRef.current) {
 				clearInterval(intervalRef.current);
+				intervalRef.current = null;
 			}
 		},
 		[output, text],

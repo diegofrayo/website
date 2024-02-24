@@ -94,7 +94,7 @@ function parseTouchedStrings(touchedStrings: string): T_Chord["touchedStrings"] 
 function generateMusicNotes(input: string): T_MusicNote[] {
 	const musicNotes = input
 		.split("|")
-		.filter((item) => v.isNotTrue(item.includes("x")))
+		.filter((item) => v.isFalse(item.includes("x")))
 		.map((rawMusicNote: string): T_MusicNote => {
 			const [guitarString, guitarFret, finger, ...more] = rawMusicNote.split(",");
 

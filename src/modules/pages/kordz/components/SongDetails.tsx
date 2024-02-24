@@ -14,7 +14,6 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 		return null;
 	}
 
-
 	return (
 		<Block className={cn("tw-text-sm tw-italic", className)}>
 			{v.isNotEmptyString(song.artist) ? (

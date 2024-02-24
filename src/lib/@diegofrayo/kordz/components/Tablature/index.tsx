@@ -121,11 +121,11 @@ function Tablature({ positions, notes }: T_TablatureProps) {
 				</div>
 			) : null}
 
-			{v.isNotUndefined(parsedPositions) && v.isNotEmptyString(notes) ? (
+			{v.isDefined(parsedPositions) && v.isNotEmpty(notes) ? (
 				<hr className="tw-my-0.5 tw-border-0 tw-bg-transparent" />
 			) : null}
 
-			{v.isNotEmptyString(notes) ? (
+			{v.isNotEmpty(notes) ? (
 				<p className="tw-break-word tw-ml-2 tw-whitespace-pre-line tw-italic">{`"${notes}"`}</p>
 			) : null}
 		</div>
@@ -151,7 +151,7 @@ function Position({
 				isCell && styles["dr-tablature-position--cell"],
 			)}
 		>
-			{v.isNotTrue(isCell) ? <span>{children || "0"}</span> : null}
+			{v.isFalse(isCell) ? <span>{children || "0"}</span> : null}
 		</div>
 	);
 }

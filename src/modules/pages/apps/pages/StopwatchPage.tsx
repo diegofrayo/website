@@ -67,7 +67,7 @@ function Stopwatch() {
 			document.getElementById("form") as HTMLFormElement
 		)?.checkValidity();
 
-		if (v.isNotTrue(areInputValuesValid)) {
+		if (v.isFalse(areInputValuesValid)) {
 			showAlert("Inputs values are not valid");
 			return;
 		}

@@ -1,0 +1,35 @@
+{
+	"details": {
+		"id": "ayer-la-vi",
+		"title": "Ayer la vi",
+		"artist": "Don Omar",
+		"album": "King of Kings: Armageddon Edition",
+		"year": 2006,
+		"country": "🇵🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 0,
+		"created_at": "2024/02/23",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/5vhndYCJweXnnsYr3BaP73",
+		"youtube_url": "https://youtu.be/jysEx3Mi2L0",
+		"interpretation": "",
+		"assets": {},
+		"sources": [
+			{ "text": "Ayer la vi (cover)", "url": "https://youtu.be/Ng2iY3MuTLA", "source": "youtube" },
+			{
+				"text": "Ayer La Vi - Don Omar | Cover Ian Rey (Guitarra y voz)",
+				"url": "https://youtu.be/KyE0QcYPVPs",
+				"source": "youtube"
+			},
+			{
+				"text": "Ayer la vi - Don Omar (Cover)",
+				"url": "https://youtu.be/NqiB5wblzxY",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "                 G       Am\nAyer la vi por ahí tomando\n             G          Am\nqueriendo morir, llorando\n                    G             Am\nquién le hizo eso a ella, tan bella\n                   G                  Am\nque ahoga hoy sus sueños en esa botella\n\n\n                     G[2]                  Am[2]\nUsted se fue y la dejó en un rincón llorando\n                  G[2]                  Am[2]\ny aún aquí estoy yo por sus besos rogando\n              G[2]                 Am[2]\ncomo no pudo ver lo que por dentro es\n                 G[2]                 Am[2]\nya no quiere querer y qué le puedo hacer\n\n\nTodo fue culpa de usted que la dejó llorando\nY aún aquí estoy yo por sus besos rogando\nComo no pudiste ver lo que por dentro es\nYa no quiere querer y qué le puedo hacer\n\n\n                G                    Am\nNadie deja que muera una flor tan bella\n                G                 Am\nNi deja sin castillo a una doncella\n                     G                    Am\nQuién bajó del firmamento tan linda estrella\n                  G                        Am\nLe pagó con sufrimiento y hoy no brilla ella\n\n                G                    Am\nNadie deja que muera una flor tan bella\n                G                 Am\nNi deja sin castillo a una doncella\n                     G                    Am\nQuién bajó del firmamento tan linda estrella\n                  G                        Am\nLe pagó con sufrimiento y hoy no brilla ella\n\n\nTodo fue culpa de usted que la dejó llorando\nY aún aquí estoy yo por sus besos rogando\nComo no pudiste ver lo que por dentro es\nYa no quiere querer y qué le puedo hacer\n\nTodo fue culpa de usted que la dejó llorando\nY aún aquí estoy yo por sus besos rogando\nComo no pudiste ver lo que por dentro es\nYa no quiere querer y qué le puedo hacer\n\n\n                G[2]            Am[2]\nSi ahora llora sola, sola, solita\n                  G[2]                    Am[2]\nlas penas de un amor que sus hojas marchitan\n                G[2]            Am[2]\nsi ahora llora sola, sola, solita\n                  G[2]                    Am[2]\nlas penas de un amor que sus hojas marchitan\n\n\nTodo fue culpa de usted que la dejó llorando\nY aún aquí estoy yo por sus besos rogando\nComo no pudiste ver lo que por dentro es\nYa no quiere querer y qué le puedo hacer\n\n\n                 G       Am\nAyer la vi por ahí tomando\n             G          Am\nqueriendo morir, llorando\n                    G             Am\nquién le hizo eso a ella, tan bella\n                   G                  Am\nque ahoga hoy sus sueños en esa botella"
+}

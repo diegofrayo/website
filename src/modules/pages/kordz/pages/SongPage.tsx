@@ -57,9 +57,9 @@ function SongPage({ cmsContent, songDetails, songContent }: T_SongPageProps) {
 
 	// --- STATES & REFS ---
 	const [isModalVisible, setIsModalVisible] = React.useState(false);
-	const [selectedUnparsedChord, setSelectedUnparsedChord] = React.useState<
-		T_PlainChord | undefined
-	>(undefined);
+	const [selectedUnparsedChord, setSelectedUnparsedChord] = React.useState<T_PlainChord | null>(
+		null,
+	);
 	const [selectedUnparsedChordIndex, setSelectedUnparsedChordIndex] = React.useState(0);
 
 	// --- VARS ---
@@ -89,7 +89,7 @@ function SongPage({ cmsContent, songDetails, songContent }: T_SongPageProps) {
 	// --- HANDLERS ---
 	function onModalCloseHandler() {
 		setIsModalVisible(false);
-		setSelectedUnparsedChord(undefined);
+		setSelectedUnparsedChord(null);
 	}
 
 	function handleUpdateSelectedUnparsedChordVariantClick(value: string | number) {
@@ -256,7 +256,7 @@ export default SongPage;
 
 type T_ChordModalProps = {
 	isModalVisible: boolean;
-	selectedUnparsedChord: T_PlainChord | undefined;
+	selectedUnparsedChord: T_PlainChord | null;
 	selectedUnparsedChordIndex: number;
 	handleUpdateSelectedUnparsedChordVariantClick: (input: number | "+" | "-") => () => void;
 	onModalCloseHandler: () => void;

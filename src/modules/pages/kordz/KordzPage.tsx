@@ -37,8 +37,8 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 			function focusInputAndSelectText(event: KeyboardEvent) {
 				if (
 					v.isNull(inputRef.current) ||
-					v.isNotEquals(event.code, "KeyF") ||
-					v.isFalsy(event.metaKey || event.ctrlKey)
+					v.isNotEqual(event.code, "KeyF") ||
+					v.isFalse(event.metaKey || event.ctrlKey)
 				) {
 					return;
 				}

@@ -12,7 +12,7 @@ import {
 	type T_PlainChordDetails,
 } from "./types";
 
-class KordzService {
+class KordzServiceClass {
 	CHORDS_BUTTON_SELECTOR = "dr-kordz-chord-button";
 
 	parseChord(plainChordDetails: T_PlainChordDetails): T_Chord {
@@ -237,4 +237,6 @@ class KordzService {
 	}
 }
 
-export default new KordzService();
+const KordzService = new KordzServiceClass();
+
+export default KordzService;

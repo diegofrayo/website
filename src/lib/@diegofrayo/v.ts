@@ -1,38 +1,11 @@
 /*
  * Inspiration:
  * - https://github.com/kibertoad/validation-utils
- * - https://npm.io/package/x-utils-es
+ * - https://validatejs.org
+ * - https://github.com/anonym101/x-utils-es
  */
 
-import type DR from "./types";
-
 // --- PRIMITIVES ---
-
-function isNull(input: unknown): input is null {
-	return input === null;
-}
-
-function isFunction<G_InputType = Function>(input: unknown): input is G_InputType {
-	return isUndefined(input) === false && typeof input === "function";
-}
-
-function isArray<G_ItemsType = unknown>(input: unknown): input is G_ItemsType[] {
-	return Array.isArray(input);
-}
-
-function isArrayOf<G_ItemsType>(input: unknown, type: "string"): input is G_ItemsType[] {
-	// eslint-disable-next-line valid-typeof
-	return Array.isArray(input) && input.every((item) => typeof item === type);
-}
-
-function isUndefined(input: unknown): input is undefined {
-	return typeof input === "undefined";
-}
-
-function isObject<G_InputType = DR.Object>(input: unknown): input is G_InputType {
-	if (!input || Array.isArray(input)) return false;
-	return typeof input === "object";
-}
 
 function isString(input: unknown): input is string {
 	return typeof input === "string";
@@ -50,46 +23,59 @@ function isDate(input: unknown): input is Date {
 	return input instanceof Date;
 }
 
-// --- GENERICS ---
-
-function isTrue(input: unknown): input is boolean {
-	return input === true;
+function isNull(input: unknown): input is null {
+	return input === null;
 }
 
-function isNotTrue(input: unknown): input is boolean {
-	return input === false;
+function isUndefined(input: unknown): input is undefined {
+	return typeof input === "undefined";
 }
 
-function isNotUndefined(input: unknown) {
-	return input !== undefined;
+function isObject<G_InputType = Record<string | number | symbol, unknown>>(
+	input: unknown,
+): input is G_InputType {
+	if (isNil(input) || isArray(input)) return false;
+
+	return typeof input === "object";
 }
 
-function isFalsy(input: unknown) {
-	return !input;
+function isArray<G_ItemsType = unknown>(input: unknown): input is G_ItemsType[] {
+	return Array.isArray(input);
 }
 
-function isNotEquals(input1: unknown, input2: unknown) {
-	return input1 !== input2;
+function isArrayOf<G_ItemsType>(input: unknown, type: "string"): input is G_ItemsType[] {
+	// eslint-disable-next-line valid-typeof
+	return Array.isArray(input) && input.every((item) => typeof item === type);
 }
 
-function isEquals(input1: unknown, input2: unknown) {
-	return input1 === input2;
+function isFunction<G_InputType = Function>(input: unknown): input is G_InputType {
+	return isUndefined(input) === false && typeof input === "function";
 }
 
-// --- Strings ---
+// --- STRINGS ---
 
 function isEmptyString(input: unknown) {
 	return typeof input === "string" && input.length === 0;
 }
 
 function isNotEmptyString(input: unknown): input is string {
-	return typeof input === "string" && input.length > 0;
+	return isEmptyString(input) === false;
 }
 
 // --- NUMBERS ---
 
-function isBetween(input: number, range: [number, number]) {
+function between(input: number, range: [number, number]) {
 	return input >= range[0] && input <= range[1];
+}
+
+// --- BOOLEANS ---
+
+function isTrue(input: unknown): input is boolean {
+	return input === true;
+}
+
+function isFalse(input: unknown): input is boolean {
+	return input === false;
 }
 
 // --- ARRAYS ---
@@ -99,7 +85,7 @@ function isNotEmptyArray(input: unknown): input is unknown[] {
 }
 
 function isEmptyArray(input: unknown) {
-	return Array.isArray(input) && input.length === 0;
+	return isNotEmptyArray(input) === false;
 }
 
 // --- OBJECTS ---
@@ -114,14 +100,46 @@ function isNotEmptyObject(input: unknown): input is object {
 	return isEmptyObject(input) === false;
 }
 
-// --- SEMANTIC ---
+// --- SEMANTICS ---
 
-function notFound(input: unknown): input is undefined {
-	return input === undefined;
+function isEmpty(input: unknown) {
+	return isEmptyString(input) || isEmptyObject(input) || isEmptyArray(input);
+}
+
+function isNotEmpty(input: unknown): input is string {
+	return isFalse(isEmpty(input));
+}
+
+function isNil(input: unknown): input is null | undefined {
+	return input === null || input === undefined;
+}
+
+function isNotNil(input: unknown) {
+	return isNil(input) === false;
+}
+
+function isFalsy(input: unknown) {
+	return !input;
+}
+
+function isEqual(input1: unknown, input2: unknown) {
+	return input1 === input2;
+}
+
+function isNotEqual(input1: unknown, input2: unknown) {
+	return isEqual(input1, input2) === false;
+}
+
+function isDefined(input: unknown) {
+	return input !== undefined;
 }
 
 function exists(input: unknown) {
-	return input !== undefined;
+	return isDefined(input);
+}
+
+function notFound(input: unknown): input is undefined {
+	return isDefined(input) === false;
 }
 
 // --- VALUES ---
@@ -137,38 +155,50 @@ function isEmail(email: unknown): email is string {
 }
 
 const v = {
-	isNull,
-	isFunction,
-	isArray,
-	isArrayOf,
-	isUndefined,
+	// --- PRIMITIVES ---
 	isString,
 	isNumber,
 	isBoolean,
 	isDate,
+	isNull,
+	isUndefined,
 	isObject,
+	isArray,
+	isArrayOf,
+	isFunction,
 
-	isTrue,
-	isNotTrue,
-	isNotUndefined,
-	isFalsy,
-	isNotEquals,
-	isEquals,
-
+	// --- STRINGS ---
 	isEmptyString,
 	isNotEmptyString,
 
-	isBetween,
+	// --- NUMBERS ---
+	between,
 
+	// --- BOOLEANS ---
+	isTrue,
+	isFalse,
+
+	// --- ARRAYS ---
 	isNotEmptyArray,
 	isEmptyArray,
 
+	// --- OBJECTS ---
 	isEmptyObject,
 	isNotEmptyObject,
 
-	notFound,
+	// --- SEMANTICS ---
+	isEmpty,
+	isNotEmpty,
+	isNil,
+	isNotNil,
+	isFalsy,
+	isEqual,
+	isNotEqual,
+	isDefined,
 	exists,
+	notFound,
 
+	// --- VALUES ---
 	isEmail,
 };
 

@@ -57,11 +57,11 @@ export function sortBy<G_ItemType>(
 				const bParam = b[attribute];
 
 				if (v.isBoolean(aParam) && v.isBoolean(bParam)) {
-					if (v.isTrue(aParam) && v.isNotTrue(bParam)) {
+					if (v.isTrue(aParam) && v.isFalse(bParam)) {
 						return { result: greater, finish: true };
 					}
 
-					if (v.isNotTrue(aParam) && v.isTrue(bParam)) {
+					if (v.isFalse(aParam) && v.isTrue(bParam)) {
 						return { result: smaller, finish: true };
 					}
 
