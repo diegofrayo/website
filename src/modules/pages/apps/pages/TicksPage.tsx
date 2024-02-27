@@ -14,31 +14,17 @@ import {
 } from "~/components/primitive";
 import { ClientRenderComponent } from "~/hocs";
 import { generateDate, getDatesDiff } from "~/utils/dates";
-import { useDidMount, useEnhancedState } from "@diegofrayo/hooks";
+import { useDidMount } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
 import { sortBy } from "@diegofrayo/sort";
 import { useBrowserStorageState } from "@diegofrayo/storage";
-import { isConfirmAlertAccepted, showAlert } from "@diegofrayo/utils/browser";
+import { focusElement, isConfirmAlertAccepted } from "@diegofrayo/utils/browser";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
+import { Toast } from "~/components/shared";
 
 function Ticks() {
-	// --- STATES & REFS ---
-	const [ticksAudio, setTicksAudio] = React.useState<"1" | "2" | "3">("1");
-	const [cyclesAudio, setCyclesAudio] = React.useState<"1" | "2" | "3">("3");
-	const [ticks, setTicks, , , resetTicks] = useEnhancedState(0);
-	const [cycles, , incrementCycles, , resetCycles] = useEnhancedState(0);
-	const [timerStatus, setTimerStatus] = React.useState<"NOT_STARTED" | "IN_PROGRESS" | "PAUSED">(
-		"NOT_STARTED",
-	);
-	const [ticksInputValue, setTicksInputValue] = React.useState(4);
-	const [intensityInputValue, setIntensityInputValue] = React.useState(1250);
-	const [cyclesInputValue, setCyclesInputValue] = React.useState(135);
-	const [timerInterval, setTimerInterval] = React.useState<DR.SetTimeout | null>(null);
-	const currentSessionDetails = React.useRef({
-		id: new Date().getTime(),
-		startDate: new Date(),
-	});
+	// --- HOOKS ---
 	const [history, setHistory] = useBrowserStorageState<
 		{
 			id: number;
@@ -50,10 +36,24 @@ function Ticks() {
 		}[]
 	>({
 		value: [],
-		key: "DR_TICKS",
+		key: "DR_TICKS_HISTORY",
 		saveWhileInitialization: true,
 		readInitialValueFromStorage: true,
 	});
+
+	// --- STATES & REFS ---
+	const formRef = React.useRef<HTMLFormElement>(null);
+	const timerIntervalRef = React.useRef<DR.SetTimeout | null>(null);
+	const [
+		{ currentSessionDetails, ticksCounter, cyclesCounter, timerStatus, ticksCounterStatus },
+		{ resetState, setTimerStatus, setTicksCounter },
+	] = useTicks();
+
+	const [ticksInputValue, setTicksInputValue] = React.useState(4);
+	const [intensityInputValue, setIntensityInputValue] = React.useState(1250);
+	const [cyclesInputValue, setCyclesInputValue] = React.useState(135);
+	const [ticksAudioSelectOption, setTicksAudio] = React.useState<"1" | "2" | "3">("1");
+	const [cyclesAudioSelectOption, setCyclesAudio] = React.useState<"1" | "2" | "3">("3");
 
 	// --- VARS ---
 	const PAGE_TITLE = "Ticks";
@@ -70,10 +70,13 @@ function Ticks() {
 
 	const stopInterval = React.useCallback(
 		function stopInterval() {
-			if (timerInterval) clearInterval(timerInterval);
-			setTimerInterval(null);
+			if (timerIntervalRef.current) {
+				clearInterval(timerIntervalRef.current);
+			}
+
+			timerIntervalRef.current = null;
 		},
-		[timerInterval],
+		[timerIntervalRef],
 	);
 
 	const readHistoryFromLocalStorage = React.useCallback(
@@ -100,12 +103,10 @@ function Ticks() {
 				return;
 			}
 
-			resetTicks();
-			resetCycles();
+			resetState();
 			stopInterval();
-			setTimerStatus("NOT_STARTED");
 		},
-		[resetTicks, resetCycles, stopInterval, setTimerStatus],
+		[resetState, stopInterval],
 	);
 
 	function calculateEstimatedTime() {
@@ -128,47 +129,36 @@ function Ticks() {
 		return `${seconds === 0 ? `${minutes} minutes` : `${minutes} minutes and ${seconds} seconds`}`;
 	}
 
+	function getInvalidFormInputs(form: HTMLFormElement) {
+		const fields = Array.from(form.elements) as HTMLFormElement[];
+
+		return fields.filter((field) => {
+			return v.isFalsy(field.checkValidity());
+		});
+	}
+
 	// --- HANDLERS ---
 	function handleStartClick() {
-		const areInputValuesValid = (
-			document.getElementById("form") as HTMLFormElement
-		)?.checkValidity();
+		if (v.isNull(formRef.current)) {
+			throw new Error("Invalid form ref");
+		}
 
-		if (v.isFalse(areInputValuesValid)) {
-			showAlert("Inputs values are not valid");
+		const isFormValid = formRef.current.checkValidity();
+
+		if (isFormValid === false) {
+			const invalidInputs = getInvalidFormInputs(formRef.current);
+			focusElement(invalidInputs[0]);
+			Toast.error(`Invalid form`);
 			return;
 		}
 
 		const intervalHandler = function intervalHandler() {
-			setTicks((currentTicks) => {
-				if (currentTicks === ticksInputValue) {
-					playSound("audio-tick");
-					return 1;
-				}
-
-				if (currentTicks === ticksInputValue - 1) {
-					playSound("audio-cycle-completed");
-					incrementCycles();
-					return currentTicks + 1;
-				}
-
-				if (currentTicks < ticksInputValue) {
-					playSound("audio-tick");
-					return currentTicks + 1;
-				}
-
-				return currentTicks;
-			});
-		};
-
-		currentSessionDetails.current = {
-			id: new Date().getTime(),
-			startDate: new Date(),
+			setTicksCounter(ticksInputValue);
 		};
 
 		intervalHandler();
 		setTimerStatus("IN_PROGRESS");
-		setTimerInterval(setInterval(intervalHandler, intensityInputValue));
+		timerIntervalRef.current = setInterval(intervalHandler, intensityInputValue);
 	}
 
 	function handleResetClick() {
@@ -186,19 +176,18 @@ function Ticks() {
 
 	const handleSaveClick = React.useCallback(
 		function handleSaveClick() {
-			const data = readHistoryFromLocalStorage();
+			if (v.isNull(currentSessionDetails)) {
+				throw new Error("Impossible state");
+			}
 
+			const data = readHistoryFromLocalStorage();
 			data.push({
-				id: currentSessionDetails.current.id,
+				id: currentSessionDetails.id,
 				date: generateDate(),
-				cycles,
+				cycles: cyclesCounter,
 				ticksPerCycle: ticksInputValue,
 				intensity: intensityInputValue,
-				time: `${getDatesDiff(
-					currentSessionDetails.current.startDate,
-					new Date(),
-					"minute",
-				)} minutes`,
+				time: `${getDatesDiff(currentSessionDetails.startDate, new Date(), "minute")} minutes`,
 			});
 
 			setHistory(data);
@@ -211,7 +200,7 @@ function Ticks() {
 			ticksInputValue,
 			intensityInputValue,
 			readHistoryFromLocalStorage,
-			cycles,
+			cyclesCounter,
 		],
 	);
 
@@ -232,12 +221,12 @@ function Ticks() {
 
 	const onTicksSoundSelectChangeHandler: DR.React.Events.OnChangeEventHandler<HTMLSelectElement> =
 		function onTicksSoundSelectChangeHandler(event) {
-			setTicksAudio(event.currentTarget.value as typeof ticksAudio);
+			setTicksAudio(event.currentTarget.value as typeof ticksAudioSelectOption);
 		};
 
 	const onCyclesSoundSelectChangeHandler: DR.React.Events.OnChangeEventHandler<HTMLSelectElement> =
 		function onCyclesSoundSelectChangeHandler(event) {
-			setCyclesAudio(event.currentTarget.value as typeof cyclesAudio);
+			setCyclesAudio(event.currentTarget.value as typeof cyclesAudioSelectOption);
 		};
 
 	// --- EFFECTS ---
@@ -249,12 +238,25 @@ function Ticks() {
 		function checkCyclesProgress() {
 			if (cyclesInputValue === 0) return;
 
-			if (cycles === cyclesInputValue) {
+			if (cyclesCounter === cyclesInputValue) {
 				handleSaveClick();
 				playSound("audio-session-completed");
 			}
 		},
-		[cyclesInputValue, cycles, handleSaveClick],
+		[cyclesInputValue, cyclesCounter, handleSaveClick],
+	);
+
+	React.useEffect(
+		function checkTicksProgress() {
+			if (timerStatus !== "IN_PROGRESS") return;
+
+			if (ticksCounterStatus === "NEW_TICK") {
+				playSound("audio-tick");
+			} else if (ticksCounterStatus === "CYCLE_COMPLETED") {
+				playSound("audio-cycle-completed");
+			}
+		},
+		[ticksCounterStatus, timerStatus],
 	);
 
 	return (
@@ -264,9 +266,9 @@ function Ticks() {
 				disableSEO: true,
 			}}
 		>
-			<MainLayout title={`${PAGE_TITLE}`}>
+			<MainLayout title={PAGE_TITLE}>
 				<Block className="tw-mx-auto tw-w-96 tw-max-w-full">
-					<form id="form">
+					<form ref={formRef}>
 						<Block className="tw-flex tw-justify-between tw-gap-1">
 							<Input
 								variant={Input.variant.STYLED}
@@ -342,12 +344,28 @@ function Ticks() {
 							</Select>
 						</Block>
 						<Space size={2} />
-						<Text className="tw-text-center">
-							<InlineText is="strong">Estimated time: </InlineText>
-							<InlineText>{calculateEstimatedTime()}</InlineText>
-						</Text>
+
+						<Block className="tw-text-center">
+							<Text>
+								<InlineText is="strong">Estimated time: </InlineText>
+								<InlineText>{calculateEstimatedTime()}</InlineText>
+							</Text>
+							<Text>
+								<InlineText is="strong">Current tick:</InlineText>{" "}
+								<InlineText className="tw-inline-block tw-w-8 tw-text-center">
+									{ticksCounter}
+								</InlineText>
+							</Text>
+							<Text>
+								<InlineText is="strong">Cycles finished:</InlineText>{" "}
+								<InlineText className="tw-inline-block tw-w-8 tw-text-center">
+									{cyclesCounter}
+								</InlineText>
+							</Text>
+						</Block>
 					</form>
 					<Space size={3} />
+
 					<Block className="tw-flex tw-justify-center tw-gap-3">
 						{isTimerStarted ? (
 							<ActionButton
@@ -384,18 +402,7 @@ function Ticks() {
 					</Block>
 					<Space size={2} />
 
-					{isTimerStarted ? (
-						<Block className="tw-text-center">
-							<Text>
-								<InlineText is="strong">Current tick:</InlineText>{" "}
-								<InlineText className="tw-inline-block tw-w-8 tw-text-center">{ticks}</InlineText>
-							</Text>
-							<Text>
-								<InlineText is="strong">Cycles finished:</InlineText>{" "}
-								<InlineText className="tw-inline-block tw-w-8 tw-text-center">{cycles}</InlineText>
-							</Text>
-						</Block>
-					) : v.isNotEmptyArray(history) ? (
+					{v.isNotEmptyArray(history) ? (
 						<ClientRenderComponent>
 							<Block className="tw-text-left tw-text-sm">
 								<Space
@@ -409,19 +416,16 @@ function Ticks() {
 											className="tw-mb-4 last:tw-mb-0"
 										>
 											<Text className="tw-font-bold">
-												<InlineText className="tw-inline-block tw-w-20">{item.date}</InlineText> |{" "}
-												<InlineText className="tw-inline-block tw-w-20">
-													{item.cycles} cycles
-												</InlineText>
+												{item.date} | {item.cycles} cycles
 											</Text>
 											<Block className="tw-flex tw-justify-between">
-												<InlineText className="tw-inline-block tw-w-20">
+												<InlineText className="tw-inline-block tw-w-24">
 													{item.ticksPerCycle} ticks
 												</InlineText>
-												<InlineText className="tw-inline-block tw-w-20">
+												<InlineText className="tw-inline-block tw-w-24">
 													{item.intensity}ms
 												</InlineText>
-												<InlineText className="tw-inline-block tw-w-20">{item.time}</InlineText>
+												<InlineText className="tw-inline-block tw-w-24">{item.time}</InlineText>
 												<Button
 													variant={Button.variant.SIMPLE}
 													onClick={handleDeleteHistoryItemClick(index)}
@@ -440,13 +444,13 @@ function Ticks() {
 					) : null}
 
 					<audio
-						src={`/assets/sounds/tick-${ticksAudio}.mp3`}
+						src={`/assets/sounds/tick-${ticksAudioSelectOption}.mp3`}
 						id="audio-tick"
 						preload="auto"
 						className="tw-hidden"
 					/>
 					<audio
-						src={`/assets/sounds/tick-${cyclesAudio}.mp3`}
+						src={`/assets/sounds/tick-${cyclesAudioSelectOption}.mp3`}
 						id="audio-cycle-completed"
 						preload="auto"
 						className="tw-hidden"
@@ -482,4 +486,121 @@ function ActionButton({ children, onClick, className }: T_ActionButtonProps) {
 			{children}
 		</Button>
 	);
+}
+
+// --- HOOKS ---
+
+type T_UseTicksState = {
+	timerIntervalRef: DR.SetTimeout | null;
+	currentSessionDetails: { id: number; startDate: Date } | null;
+	ticksCounter: number;
+	cyclesCounter: number;
+	timerStatus: "NOT_STARTED" | "IN_PROGRESS" | "PAUSED";
+	ticksCounterStatus: "NEW_TICK" | "CYCLE_COMPLETED";
+};
+
+type T_UseTicksAction =
+	| { type: "RESET_STATE" }
+	| { type: "SET_TIMER_STATUS"; payload: { timerStatus: T_UseTicksState["timerStatus"] } }
+	| { type: "SET_TICKS_COUNTER"; payload: { ticksInputValue: number } }
+	| { type: "INCREMENT_CYCLES_COUNTER" };
+
+const INITIAL_STATE: T_UseTicksState = {
+	timerIntervalRef: null,
+	currentSessionDetails: null,
+	ticksCounter: 0,
+	cyclesCounter: 0,
+	timerStatus: "NOT_STARTED",
+	ticksCounterStatus: "NEW_TICK",
+};
+
+function useTicks() {
+	const [state, updateState] = React.useReducer(
+		(currentState: T_UseTicksState, action: T_UseTicksAction): T_UseTicksState => {
+			switch (action.type) {
+				case "RESET_STATE":
+					return {
+						...currentState,
+						cyclesCounter: 0,
+						ticksCounter: 0,
+						timerStatus: "NOT_STARTED",
+					};
+
+				case "SET_TIMER_STATUS":
+					return {
+						...currentState,
+						timerStatus: action.payload.timerStatus,
+						currentSessionDetails:
+							action.payload.timerStatus === "IN_PROGRESS"
+								? {
+										id: new Date().getTime(),
+										startDate: new Date(),
+								  }
+								: currentState.currentSessionDetails,
+					};
+
+				case "SET_TICKS_COUNTER":
+					// DOCS: New cycle started
+					if (currentState.ticksCounter === action.payload.ticksInputValue) {
+						// WARN: Side-effect in useReducer
+						// playSound("audio-tick");
+
+						return {
+							...currentState,
+							ticksCounter: 1,
+							ticksCounterStatus: "NEW_TICK",
+							timerStatus: "IN_PROGRESS",
+						};
+					}
+
+					// DOCS: Cycle completed
+					if (currentState.ticksCounter === action.payload.ticksInputValue - 1) {
+						// WARN: Side-effect in useReducer
+						// playSound("audio-cycle-completed");
+
+						return {
+							...currentState,
+							ticksCounter: currentState.ticksCounter + 1,
+							cyclesCounter: currentState.cyclesCounter + 1,
+							ticksCounterStatus: "CYCLE_COMPLETED",
+							timerStatus: "IN_PROGRESS",
+						};
+					}
+
+					// DOCS: New tick
+					if (currentState.ticksCounter < action.payload.ticksInputValue) {
+						// WARN: Side-effect in useReducer
+						// playSound("audio-tick");
+
+						return {
+							...currentState,
+							ticksCounter: currentState.ticksCounter + 1,
+							ticksCounterStatus: "NEW_TICK",
+							timerStatus: "IN_PROGRESS",
+						};
+					}
+
+					return currentState;
+
+				default:
+					return currentState;
+			}
+		},
+		INITIAL_STATE,
+	);
+
+	return [
+		state,
+		{
+			resetState: function resetCyclesCounter() {
+				updateState({ type: "RESET_STATE" });
+			},
+			setTimerStatus: function setTimerStatus(timerStatus: T_UseTicksState["timerStatus"]) {
+				updateState({ type: "SET_TIMER_STATUS", payload: { timerStatus } });
+			},
+			setTicksCounter: function setTicksCounter(ticksInputValue: number) {
+				updateState({ type: "SET_TICKS_COUNTER", payload: { ticksInputValue } });
+			},
+		},
+	] as const;
 }
