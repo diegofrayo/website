@@ -6,14 +6,14 @@
 		"album": "Desatormentándonos",
 		"year": 1972,
 		"country": "🇦🇷",
-		"category": "0|IN_PROGRESS|🚧",
+		"category": "1|FAVORITE|⭐",
 		"order": 0,
 		"created_at": "2024/02/22",
 		"is_public": true,
-		"done": false,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/0GxqCJ9d3aNAc6UROiV7os",
 		"youtube_url": "https://youtu.be/2CCWXWVBctE",
-		"interpretation": "",
+		"interpretation": "- Fuerza del canto: Baja\n- Velocidad de rasgueo: Baja o media\n- Fuerza de rasgueo: Baja\n- Complejidad: Media\n",
 		"assets": {},
 		"sources": [
 			{
@@ -46,5 +46,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "Intro: C/G   F | (X2)\n\n\n             C/G   F\nE ------------0----1--\nB ------------1----1--\nG ------------0----2--\nD ------------2----3--\nA ------0--2--3----3--\nE ---3--------3----1--\n\n\nC/G         F[2]\n   Deja tu miedo atrás\nC/G            F[2]\n   alguien te sonreirá, piensa\nC/G         A#       Am\n   abre tu mente al sol\nD              G\n   todo irá mejor\n\n\nA ------0--2---\nE ---3---------\n\n\nC/G          F[2]\n   Antes de despertar\nC/G           F[2]\n   desde tu cuerpo actual, verás\nC/G            A#      Am\n   tu voz saldrá a gritar\nD              G\n   todo irá mejor\n\n\nE ---3--4---\n\n\nAm                F#dim7\n   Dulce tres nocturno\n       Am                G\nse aparece mostrando su signo\n               Am\ndetrás del diamante\n¿será azul?\n\nAm                F#dim7\n   Dulce tres nocturno\n     Am                     G\nnecesito que cuentes tu historia\n          Am\npara conocerte\n\n\n F         G\nVen hacia mi\n F         G\nven hacia mi...\ndulce tres....\n\nE ---3--4---\n\nIntro: C/G   F | (X2)"
+	"txt": "C/G   F | (X2)\n\n\nC/G         F[2]\n   Deja tu miedo atrás\nC/G            F[2]\n   alguien te sonreirá, piensa\nC/G         A#       Am\n   abre tu mente al sol\nD              G\n   todo irá mejor\n\n\nC/G          F[2]\n   Antes de despertar\nC/G           F[2]\n   desde tu cuerpo actual, verás\nC/G            A#      Am\n   tu voz saldrá a gritar\nD              G\n   todo irá mejor\n\n\nAm                ??3\n   Dulce tres nocturno\n       Am                G\nse aparece mostrando su signo\n               Am\ndetrás del diamante\n¿será azul?\n\nAm                ??3\n   Dulce tres nocturno\n     Am                     G\nnecesito que cuentes tu historia\n          Am\npara conocerte\n\n\n F         G\nVen hacia mi\n F         G\nven hacia mi...\ndulce tres....\n\n\nC/G   F | (X2)"
 }

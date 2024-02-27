@@ -6,7 +6,6 @@ import { Block, Button, InlineText, Input, Select, Space, Text } from "~/compone
 import type DR from "@diegofrayo/types";
 import { isConfirmAlertAccepted, showAlert } from "@diegofrayo/utils/browser";
 import { addLeftPadding, generateSlug } from "@diegofrayo/utils/strings";
-import v from "@diegofrayo/v";
 
 function Stopwatch() {
 	// --- STATES & REFS ---
@@ -63,11 +62,9 @@ function Stopwatch() {
 
 	// --- HANDLERS ---
 	function handleStartClick() {
-		const areInputValuesValid = (
-			document.getElementById("form") as HTMLFormElement
-		)?.checkValidity();
+		const isFormValid = (document.getElementById("form") as HTMLFormElement)?.checkValidity();
 
-		if (v.isFalse(areInputValuesValid)) {
+		if (isFormValid === false) {
 			showAlert("Inputs values are not valid");
 			return;
 		}

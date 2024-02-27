@@ -151,7 +151,7 @@ function Position({
 				isCell && styles["dr-tablature-position--cell"],
 			)}
 		>
-			{v.isFalse(isCell) ? <span>{children || "0"}</span> : null}
+			{isCell === false ? <span>{children || "0"}</span> : null}
 		</div>
 	);
 }

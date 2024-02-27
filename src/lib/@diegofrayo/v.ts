@@ -59,7 +59,7 @@ function isEmptyString(input: unknown) {
 }
 
 function isNotEmptyString(input: unknown): input is string {
-	return isEmptyString(input) === false;
+	return typeof input === "string" && input.length > 0;
 }
 
 // --- NUMBERS ---
@@ -85,19 +85,21 @@ function isNotEmptyArray(input: unknown): input is unknown[] {
 }
 
 function isEmptyArray(input: unknown) {
-	return isNotEmptyArray(input) === false;
+	return Array.isArray(input) && input.length === 0;
 }
 
 // --- OBJECTS ---
 
 function isEmptyObject(input: unknown): input is object {
 	return (
-		!!input && Object.keys(input).length === 0 && Object.getPrototypeOf(input) === Object.prototype
+		isObject(input) &&
+		Object.keys(input).length === 0 &&
+		Object.getPrototypeOf(input) === Object.prototype
 	);
 }
 
 function isNotEmptyObject(input: unknown): input is object {
-	return isEmptyObject(input) === false;
+	return isObject(input) && Object.keys(input).length > 0;
 }
 
 // --- SEMANTICS ---
@@ -107,7 +109,7 @@ function isEmpty(input: unknown) {
 }
 
 function isNotEmpty(input: unknown): input is string {
-	return isFalse(isEmpty(input));
+	return isEmpty(input) === false;
 }
 
 function isNil(input: unknown): input is null | undefined {
