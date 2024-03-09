@@ -99,5 +99,8 @@
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-unicorn": "^48.0.1",
 		"husky": "^6.0.0"
+	},
+	"engines": {
+		"node": "18.17.0"
 	}
 }
