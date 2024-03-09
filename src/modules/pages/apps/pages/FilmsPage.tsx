@@ -90,7 +90,7 @@ function FilmsPage() {
 			netflix: "netflix",
 			youtube: "youtube",
 			amazon_prime_video: "amazon prime video",
-			star_plus: "star +",
+			star_plus: "star+",
 		};
 
 		const generatedCategories = Object.values(
@@ -248,10 +248,10 @@ function FilmsPage() {
 																width={24}
 																height={24}
 															/>
-														) : source === "Star +" ? (
+														) : source === "Star+" ? (
 															<Image
 																src="/assets/images/pages/apps/films/star-plus.jpg"
-																alt="Netflix icon"
+																alt="Star+ icon"
 																className="tw-flex-shrink-0 tw-rounded-full"
 																width={24}
 																height={24}
@@ -335,7 +335,7 @@ type T_Film = {
 	id: string;
 	title: string;
 	type: "Serie" | "Película" | "Documental" | "Serie documental";
-	source: "Netflix" | "YouTube" | "imdb" | "Amazon Prime Video" | "Star +";
+	source: "Netflix" | "YouTube" | "imdb" | "Amazon Prime Video" | "Star+";
 	categories: string[];
 	calification: number;
 	cover: string;
