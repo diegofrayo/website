@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import drPlugins from "./scripts/.ts-node/plugins.js";
+import drPlugins from "./scripts/src/modules/tailwind/output/plugins.js";
 
 const config: Config = {
 	prefix: "tw-",

@@ -42,5 +42,5 @@ public/feed.json
 public/rss.xml
 public/sw*
 public/workbox*
-scripts/.ts-node
+scripts/src/modules/tailwind/output
 src/data/_local_

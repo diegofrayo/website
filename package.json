@@ -26,7 +26,7 @@
 		"===== STYLES =====": "",
 		"styles": "npm run styles:css-vars && npm run styles:tw-plugins",
 		"styles:css-vars": "ts-node --project ./scripts/tsconfig.json scripts/src/modules/tailwind/css-vars.ts",
-		"styles:tw-plugins": "ts-node --project ./scripts/tsconfig.json --emit --compilerHost scripts/src/modules/tailwind/plugins.ts",
+		"styles:tw-plugins": "tsc --project ./scripts/src/modules/tailwind/tsconfig.json",
 		"===== UTILS =====": "",
 		"script:generic-commit": "sh ./scripts/src/modules/generic-commit.sh",
 		"script:assets-commit": "sh ./scripts/src/modules/assets-commit.sh",
@@ -101,6 +101,6 @@
 		"husky": "^6.0.0"
 	},
 	"engines": {
-		"node": "18.17.0"
+		"node": "18.19.1"
 	}
 }
