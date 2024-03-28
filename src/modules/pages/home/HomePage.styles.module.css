@@ -3,18 +3,46 @@
 	@apply tw-bg-white;
 	content: " ";
 	display: block;
-	height: 50px;
 	position: absolute;
-	top: -40px;
 	width: 3px;
 }
 
 .picture-frame::before {
 	transform: rotate(45deg);
-	left: 44px;
 }
 
 .picture-frame::after {
 	transform: rotate(-45deg);
+}
+
+.picture-frame--landscape::before,
+.picture-frame--landscape::after {
+	height: 50px;
+	top: -40px;
+}
+
+.picture-frame--landscape::before {
+	left: 44px;
+}
+
+.picture-frame--landscape::after {
 	right: 46px;
+}
+
+.picture-frame--portrait::before,
+.picture-frame--portrait::after,
+.picture-frame--square::before,
+.picture-frame--square::after {
+	height: 25px;
+	top: -20px;
+}
+
+.picture-frame--portrait::before,
+.picture-frame--square:before {
+	left: 38px;
+}
+
+.picture-frame--portrait::after,
+.picture-frame--square::after {
+	right: 38px;
 }

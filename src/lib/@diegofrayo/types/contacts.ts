@@ -29,6 +29,7 @@ export const ContactSchema = object({
 		"NI",
 		"PE",
 		"PY",
+		"SK",
 		"SP",
 		"SW",
 		"USA",

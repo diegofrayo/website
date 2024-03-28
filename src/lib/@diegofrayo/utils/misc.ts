@@ -57,6 +57,23 @@ export async function resolvePromisesSequentially(tasks: (() => unknown | Promis
 	);
 }
 
+export function getImageOrientation(source: string): Promise<"portrait" | "landscape" | "square"> {
+	return new Promise((resolve) => {
+		const img = new Image();
+
+		img.src = source;
+		img.onload = () => {
+			if (img.naturalWidth > img.naturalHeight) {
+				resolve("landscape");
+			} else if (img.naturalWidth < img.naturalHeight) {
+				resolve("portrait");
+			}
+
+			resolve("square");
+		};
+	});
+}
+
 // --- INTERNALS ---
 
 type T_HttpError = { response: { data: { message: string } } };

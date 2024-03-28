@@ -628,6 +628,7 @@ function ContactPhone({ phone, country }: T_ContactPhoneProps) {
 		NI: "🇳🇮",
 		PE: "🇵🇪",
 		PY: "🇵🇾",
+		SK: "🇰🇷",
 		SP: "🇪🇸",
 		SW: "🇸🇪",
 		USA: "🇺🇲",

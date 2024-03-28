@@ -15,13 +15,15 @@ import {
 	Title,
 } from "~/components/primitive";
 import WEBSITE_METADATA from "~/data/metadata.json";
-import { ClientRenderComponent } from "~/hocs";
+import { withOnlyClientRender } from "~/hocs";
 import AnalyticsService from "~/modules/analytics";
 import { ComponentWithAuth } from "~/modules/auth";
 import type { T_PageContent } from "~/server/data-loader";
 import { createArray } from "@diegofrayo/utils/arrays-and-objects";
 import { generateSlug } from "@diegofrayo/utils/strings";
 
+import { getImageOrientation } from "@diegofrayo/utils/misc";
+import { useAsync } from "@diegofrayo/hooks";
 import styles from "./HomePage.styles.module.css";
 
 // --- COMPONENT DEFINITION ---
@@ -104,25 +106,45 @@ function Room({ song }: T_RoomProps) {
 	);
 }
 
-function PictureFrame() {
+const PictureFrame = withOnlyClientRender(function PictureFrame() {
+	// --- VARS ---
+	const imageSrc = `/assets/images/pages/home/assets/IMG_${new Date().getDate()}.jpg`;
+
+	// --- HOOKS ---
+	const { data: imageOrientation } = useAsync("image", () => getImageOrientation(imageSrc), {
+		autoLaunch: true,
+	});
+
+	// --- STATES & REFS ---
+	const isPortrait = imageOrientation === "portrait";
+	const isLandscape = imageOrientation === "landscape";
+
 	return (
-		<ClientRenderComponent>
+		<Block
+			className={cn(
+				styles["picture-frame"],
+				styles[`picture-frame--${imageOrientation}`],
+				"tw-relative tw-mx-auto tw-rounded-md",
+				isLandscape ? "tw-w-32" : isPortrait ? "tw-w-24" : "tw-w-24",
+			)}
+		>
 			<Block
-				className={cn(styles["picture-frame"], "tw-relative tw-mx-auto tw-w-32 tw-rounded-md")}
+				className={cn(
+					"tw-rounded-md tw-border-4 tw-border-white",
+					isLandscape ? "tw-h-20" : isPortrait ? "tw-h-32" : "tw-h-24",
+				)}
 			>
-				<Block className="tw-h-20 tw-rounded-md tw-border-4 tw-border-white">
-					<Block className="tw-relative tw-wh-full">
-						<Image
-							src={`/assets/images/pages/home/assets/IMG_${new Date().getDate()}.jpg`}
-							alt="Photography taken by Diego Rayo"
-							fill
-						/>
-					</Block>
+				<Block className="tw-relative tw-wh-full">
+					<Image
+						src={imageSrc}
+						alt="Photography taken by Diego Rayo"
+						fill
+					/>
 				</Block>
 			</Block>
-		</ClientRenderComponent>
+		</Block>
 	);
-}
+});
 
 type T_RadioProps = {
 	song: T_RoomProps["song"];
