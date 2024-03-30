@@ -33,7 +33,7 @@ import {
 	isPWA,
 	setScrollPosition,
 } from "@diegofrayo/utils/browser";
-import { generateSlug } from "@diegofrayo/utils/strings";
+import { createRandomString, generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 
 import styles from "./styles.module.css";
@@ -47,6 +47,9 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 	// --- HOOKS ---
 	const { pathname } = useRouting();
 
+	// --- STATES & REFS ---
+	const [forceRenderKey, setForceRenderKey] = React.useState("");
+
 	// --- VARS ---
 	const parentUrl = getParentURL();
 
@@ -57,6 +60,10 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 		const urlParts = pathname.split("/");
 
 		return `${urlParts.slice(0, urlParts.length - 1).join("/")}/`;
+	}
+
+	function dispatchForcedRender() {
+		setForceRenderKey(createRandomString(10));
 	}
 
 	return (
@@ -90,7 +97,7 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 					<NavigationMenu />
 
 					<Block className="tw-absolute tw--top-1 tw-right-0">
-						<ToolsMenu />
+						<ToolsMenu dispatchForcedRender={dispatchForcedRender} />
 					</Block>
 				</Block>
 
@@ -99,7 +106,7 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 					clasName="print:tw-hidden"
 				/>
 
-				<Block>
+				<Block key={forceRenderKey}>
 					{v.isNotEmptyString(title) ? (
 						<Block className="tw-text-center print:tw-hidden">
 							{v.isNotEmptyString(parentUrl) ? (
@@ -181,7 +188,11 @@ const SOCIAL_ICONS = [
 
 // --- COMPONENTS ---
 
-const ToolsMenu = renderIf(function ToolsMenu() {
+type T_ToolsMenuProps = {
+	dispatchForcedRender: () => void;
+};
+
+const ToolsMenu = renderIf(function ToolsMenu({ dispatchForcedRender }: T_ToolsMenuProps) {
 	// --- HANDLERS ---
 	function onPointerEventHandler(event: DR.React.Events.OnMouseEvent<HTMLButtonElement>) {
 		event.preventDefault();
@@ -211,6 +222,7 @@ const ToolsMenu = renderIf(function ToolsMenu() {
 							<EnvironmentMenuItem />
 							<ISRMenuItem />
 							<ReloadPageMenuItem />
+							<SwitchUserModeMenuItem dispatchForcedRender={dispatchForcedRender} />
 							<SignInMenuItem />
 							<SignOutMenuItem />
 						</List>
@@ -268,6 +280,31 @@ function ToolsMenuItem(props: T_ToolsMenuItemProps) {
 				</Button>
 			)}
 		</List.Item>
+	);
+}
+
+type T_SwitchUserModeMenuItemProps = {
+	dispatchForcedRender: () => void;
+};
+
+function SwitchUserModeMenuItem({ dispatchForcedRender }: T_SwitchUserModeMenuItemProps) {
+	// --- HANDLERS ---
+	function handleClick() {
+		if (AuthService.isGuestUser()) {
+			AuthService.createTemporalSession();
+		} else {
+			AuthService.destroyTemporalSession();
+		}
+
+		dispatchForcedRender();
+	}
+
+	return (
+		<ToolsMenuItem
+			title={`Switch to "${AuthService.isGuestUser() ? "user" : "guest"}" mode`}
+			icon={Icon.icon.USER_CIRCLE}
+			onClick={handleClick}
+		/>
 	);
 }
 

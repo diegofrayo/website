@@ -43,6 +43,14 @@ class AuthServiceClass {
 	isGuestUser() {
 		return this.#isUserLoggedIn === false;
 	}
+
+	createTemporalSession() {
+		this.#isUserLoggedIn = true;
+	}
+
+	destroyTemporalSession() {
+		this.#isUserLoggedIn = false;
+	}
 }
 
 const AuthService = new AuthServiceClass();
