@@ -1,0 +1,23 @@
+{
+	"details": {
+		"id": "el-pescador",
+		"title": "El pescador",
+		"artist": "",
+		"album": "",
+		"year": 2000,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 0,
+		"created_at": "2024/04/13",
+		"is_public": false,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/",
+		"youtube_url": "https://youtu.be/",
+		"interpretation": "",
+		"assets": {},
+		"sources": [],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": " Gm\nVa subiendo la corriente\ncon chinchorro y atarraya\n                  A#\nla canoa de bareque\n   D               Gm\npara llegar a la playa\n\n Gm\nLa luna espera sonriente\ncon su mágico esplendor\n                   A#\nla llegada del valiente\n D               Gm\ndel valiente pescador\n\n\nGm\nEl pescador, habla con la luna\nel pescador, habla con la playa\n                          A#\nel pescador, no tiene fortuna\n D             Gm\nsólo su atarraya\n\n\nGm  C | (x4)\n\n\n Gm\nRegresan los pescadores\ncon su carga pa' vender\n                   A#\nal puerto de sus amores\n D               Gm\ndonde tiene su querer\n\nGm\nY esta cumbia reggae llama\n\"al alegre pescador\"\n                  A#\nla compuse una mañana\n  D            Gm\nuna mañana de sol"
+}

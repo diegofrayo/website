@@ -1,0 +1,29 @@
+{
+	"details": {
+		"id": "carinito",
+		"title": "Cariñito",
+		"artist": "Los Hispanos",
+		"album": "Qué Chévere",
+		"year": 1979,
+		"country": "🇨🇴",
+		"category": "0|IN_PROGRESS|🚧",
+		"order": 0,
+		"created_at": "2024/04/12",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/3tVWENH97jFTBPgNBfi9FU",
+		"youtube_url": "https://youtu.be/pgLjWFIR5Co",
+		"interpretation": "",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Cariñito - Rodolfo Aicardi - Cifra Club",
+				"url": "https://www.cifraclub.com/rodolfo-aicardi/carinito",
+				"source": "url"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "  Am          C           E7            Am\nLloro por quererte, por amarte y por desearte\n  Am          C           E7            Am\nlloro por quererte, por amarte y por desearte\n\nF        C     F         C\nAy... cariño   ay... mi vida\n E             Am\nnunca... pero nunca\n        C     E   Am\nme abandones cariñito\n\n\n  Am          C           E7            Am\nLloro por quererte, por amarte y por desearte\n  Am          C           E7            Am\nlloro por quererte, por amarte y por desearte\n\nF        C     F         C\nAy... cariño   ay... mi vida\n E             Am\nnunca... pero nunca\n        C     E   Am\nme abandones cariñito"
+}
