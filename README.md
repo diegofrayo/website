@@ -1,6 +1,6 @@
 # @diegofrayo/website
 
-My personal website | [[diegofrayo.vercel.app]](https://diegofrayo.vercel.app)
+My personal website | [[diegofrayo.dev]](https://diegofrayo.dev)
 
 ## Tech stack
 

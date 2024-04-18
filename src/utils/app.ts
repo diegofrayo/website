@@ -2,9 +2,7 @@ import type DR from "@diegofrayo/types";
 import { isBrowser, throwError } from "@diegofrayo/utils/misc";
 
 export function isDevelopmentEnvironment(EnvVars?: DR.Object<string>) {
-	return (
-		(isBrowser() ? window.location.href : getWebsiteURL(EnvVars)).includes("vercel.app") === false
-	);
+	return (isBrowser() ? window.location.href : getWebsiteURL(EnvVars)).includes(".dev") === false;
 }
 
 export function isProductionEnvironment(EnvVars?: DR.Object<string>) {

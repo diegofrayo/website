@@ -16,9 +16,13 @@ export const getStaticPaths: GetStaticPaths = async function getStaticPaths() {
 	const songs = await loadData<T_RawKordzResponse>({ page: "kordz", remote: true });
 
 	return {
-		paths: songs.map((song) => {
-			return { params: { song: song.id } };
-		}),
+		paths: songs
+			.filter((song) => {
+				return song.done && song.is_public;
+			})
+			.map((song) => {
+				return { params: { song: song.id } };
+			}),
 		fallback: "blocking",
 	};
 };
