@@ -1,0 +1,34 @@
+{
+	"details": {
+		"id": "a-primeira-vista",
+		"title": "A Primeira Vista",
+		"artist": "Chico César",
+		"album": "Aos Vivos",
+		"year": 1995,
+		"country": "🇧🇷",
+		"category": "1|FAVORITE|⭐",
+		"order": 0,
+		"created_at": "2024/04/17",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/0bvgTYp3MEsWmG8imCpJZZ",
+		"youtube_url": "https://youtu.be/LuIYXmu4SQk",
+		"interpretation": "",
+		"assets": {},
+		"sources": [
+			{
+				"text": "A primera vista - Chico César - Cifra Club",
+				"url": "https://www.cifraclub.com/chico-cesar/a-primera-vista/",
+				"source": "url"
+			},
+			{
+				"text": "A PRIMERA VISTA, Pedro Aznar: Acordes",
+				"url": "https://acordes.lacuerda.net/pedro_aznar/a_primera_vista-2.shtml",
+				"source": "lacuerda"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "PORTUGUÊS\n\n\nC\n   Quando não tinha nada, eu quis\nAm\n   quando tudo era ausência, esperei\nF\n   quando tive frio, tremi\nDm                          G\n   quando tive coragem, liguei\n\nC\n   Quando chegou carta, abri\nAm\n   quando ouvi Prince, dancei\nF\n   quando o olho brilhou, entendi\nDm                      G\n   quando criei asas, voei\n\nC\n   Quando me chamou, eu vim\nAm\n   quando dei por mim, tava aqui\nF\n   quando lhe achei, me perdi\nDm                           G\n   quando vi você, me apaixonei\n\n\nC            Am\nÔ amarrara dzaia soiê\n  F\nDzaia dzaia\n Dm              G\nAí iii iinga dunrã\n\nC            Am\nÔ amarrara dzaia soiê\n  F\nDzaia dzaia\n Dm              G\nAí iii iinga dunrã\n\n\nC\n   Quando não tinha nada, eu quis\nAm\n   quando tudo era ausência, esperei\nF\n   quando tive frio, tremi\nDm                          G\n   quando tive coragem, liguei\n\nC\n   Quando chegou carta, abri\nAm\n   quando ouvi Salif Keita, dancei\nF\n   quando o olho brilhou, entendi\nDm                      G\n   quando criei asas, voei\n\nC\n   Quando me chamou, eu vim\nAm\n   quando dei por mim, tava aqui\nF\n   quando lhe achei, me perdi\nDm                           G\n   quando vi você, me apaixonei\n\n\nC            Am\nÔ amarrara dzaia soiê\n  F\nDzaia dzaia\n Dm              G\nAí iii iinga dunrã\n\nC            Am\nÔ amarrara dzaia soiê\n  F\nDzaia dzaia\n Dm              G\nAí iii iinga dunrã\n\n\n{SEPARATOR}\n\n\nESPAÑOL\n\n\nC\n   Cuando no tenía nada deseé,\nAm\n   cuando todo era ausencia esperé,\nF\n   cuando tuve frío temblé,\nDm                        G\n   cuando tuve coraje llamé\n\nC\n   Cuando llegó carta la abrí,\nAm\n   cuando escuché a Prince bailé,\nF\n   cuando el ojo brilló entendí,\nDm                             G\n   cuando me crecieron alas volé\n\nC\n   Cuando me llamó allá fui,\nAm\n   cuando me di cuenta estaba ahí,\nF\n   cuando te encontré me perdí,\nDm                          G\n   en cuanto te vi me enamoré...\n\n\nC            Am\nÔ amarrara dzaia soiê\n  F\nDzaia dzaia\n Dm              G\nAí iii iinga dunrã\n\nC            Am\nÔ amarrara dzaia soiê\n  F\nDzaia dzaia\n Dm              G\nAí iii iinga dunrã\n\n\nC\n   Cuando no tenía nada deseé,\nAm\n   cuando todo era ausencia esperé,\nF\n   cuando tuve frío temblé,\nDm                        G\n   cuando tuve coraje llamé\n\nC\n   Cuando llegó carta la abrí,\nAm\n   cuando oí a Salif Keita bailé,\nF\n   cuando el ojo brilló entendí,\nDm                             G\n   cuando me crecieron alas volé\n\nC\n   Cuando me llamó allá fui,\nAm\n   cuando me di cuenta estaba ahí,\nF\n   cuando te encontré me perdí,\nDm                          G\n   en cuanto te vi me enamoré...\n\n\nC            Am\nÔ amarrara dzaia soiê\n  F\nDzaia dzaia\n Dm              G\nAí iii iinga dunrã\n\nC            Am\nÔ amarrara dzaia soiê\n  F\nDzaia dzaia\n Dm              G\nAí iii iinga dunrã"
+}

@@ -2,22 +2,22 @@
 	"details": {
 		"id": "el-pescador",
 		"title": "El pescador",
-		"artist": "",
-		"album": "",
-		"year": 2000,
-		"country": "🇦🇷",
+		"artist": "Totó la Momposina",
+		"album": "La candela viva",
+		"year": 1993,
+		"country": "🇨🇴",
 		"category": "0|IN_PROGRESS|🚧",
 		"order": 0,
 		"created_at": "2024/04/13",
-		"is_public": false,
-		"done": false,
-		"spotify_url": "https://open.spotify.com/track/",
-		"youtube_url": "https://youtu.be/",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/2Ju42T1PwVXzBoG4qnRgxm",
+		"youtube_url": "https://youtu.be/5WJk1D6P4p0",
 		"interpretation": "",
 		"assets": {},
 		"sources": [],
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": " Gm\nVa subiendo la corriente\ncon chinchorro y atarraya\n                  A#\nla canoa de bareque\n   D               Gm\npara llegar a la playa\n\n Gm\nLa luna espera sonriente\ncon su mágico esplendor\n                   A#\nla llegada del valiente\n D               Gm\ndel valiente pescador\n\n\nGm\nEl pescador, habla con la luna\nel pescador, habla con la playa\n                          A#\nel pescador, no tiene fortuna\n D             Gm\nsólo su atarraya\n\n\nGm  C | (x4)\n\n\n Gm\nRegresan los pescadores\ncon su carga pa' vender\n                   A#\nal puerto de sus amores\n D               Gm\ndonde tiene su querer\n\nGm\nY esta cumbia reggae llama\n\"al alegre pescador\"\n                  A#\nla compuse una mañana\n  D            Gm\nuna mañana de sol"
+	"txt": "    Am\nVa subiendo la corriente\n      Am\ncon chinchorro y atarraya\n      Am       C\nla canoa de bareque\n   E7              Am\npara llegar a la playa\n\n    Am\nLa luna espera sonriente\n     Am\ncon su mágico esplendor\n     Am           C\nla llegada del valiente\n     E7            Am\ndel valiente pescador\n\n\n         Am                E7\nEl pescador, habla con la luna\n\t\t     Am                 E7\nel pescador, habla con la playa\n         Am               C\nel pescador, no tiene fortuna\nE7              Am\n   sólo su atarraya\n\n\nAm  C   | (x4)\n\n\n    Am\nRegresan los pescadores\n     Am\ncon su carga pa' vender\n    Am             C\nal puerto de sus amores\n    E7             Am\ndonde tiene su querer\n\n\n         Am                E7\nEl pescador, habla con la luna\n\t\t     Am                 E7\nel pescador, habla con la playa\n         Am               C\nel pescador, no tiene fortuna\nE7              Am\n   sólo su atarraya"
 }

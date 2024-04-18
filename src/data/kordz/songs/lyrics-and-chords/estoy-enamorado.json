@@ -1,0 +1,29 @@
+{
+	"details": {
+		"id": "estoy-enamorado",
+		"title": "Estoy enamorado",
+		"artist": "Donato y Estéfano",
+		"album": "Mar adentro",
+		"year": 1995,
+		"country": "🇨🇴",
+		"category": "5|SOCIAL|🎶",
+		"order": 0,
+		"created_at": "2024/04/17",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/1nP4oETNVXDruqvbq5rgHM",
+		"youtube_url": "https://youtu.be/KRS25KqpoiE",
+		"interpretation": "",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Estoy enamorado-Donato y Estefano-Cover/Acordes-Emmanuel Pereyra-Guitarra-EmmanuelX8",
+				"url": "https://youtu.be/BM-xELpUCnc",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "C        F\nUuu,maa-eo\nG              C\nuuu,eo,eo,maa-eo\n\n\n          C\nQuiero beber los besos de tu boca\n          F\ncomo si fueran gotas de rocío,\n              G\ny allá en el aire dibujar tu nombre\n               C\njunto con el mío\n\n          C\nY en un acorde dulce de guitarra\n          F\npasear locuras por tus sentimientos,\n              G\ny en el sutil abrazo de la noche\n                  C\nsepas lo que siento\n\n\n                F\nQue estoy enamorado,\nG                     C     E   Am\n  y tu amor me hace grande, eh, eh\n                F           G\nque estoy enamorado y que bien,\n                        C\ny que bien me hace amarte\n\n\nC        F\nUuu,maa-eo\nG              C\nuuu,eo,eo,maa-eo\n\n\n           C\nDentro de ti quedarme en cautiverio\n        F\npara sumarme al aire que respiras,\n             G\ny en cada espacio unir mis ilusiones\n                C\njunto con tu vida\n\n            C\nQue si naufrago me quede en tu orilla\n             F\ncuando el recuerdo asome a mi mente,\n           G\ny que despierte del sueño profundo\n              C\nsolo para verte\n\n\n                F\nQue estoy enamorado,\nG                     C     E   Am\n  y tu amor me hace grande, eh, eh\n                F           G\nque estoy enamorado y que bien,\n                        C\ny que bien me hace amarte\n\n\n Am                D/F#                  G\nVoy a encender el fuego de tu piel callada\n      E                            F\nmojaré tus labios de agua apasionada\n              G                   C\npara que tengamos sueños de la nada"
+}
