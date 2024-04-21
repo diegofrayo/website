@@ -6,7 +6,7 @@
 		"album": "La candela viva",
 		"year": 1993,
 		"country": "🇨🇴",
-		"category": "0|IN_PROGRESS|🚧",
+		"category": "5|SOCIAL|🎶",
 		"order": 0,
 		"created_at": "2024/04/13",
 		"is_public": true,
@@ -19,5 +19,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "    Am\nVa subiendo la corriente\n      Am\ncon chinchorro y atarraya\n      Am       C\nla canoa de bareque\n   E7              Am\npara llegar a la playa\n\n    Am\nLa luna espera sonriente\n     Am\ncon su mágico esplendor\n     Am           C\nla llegada del valiente\n     E7            Am\ndel valiente pescador\n\n\n         Am                E7\nEl pescador, habla con la luna\n\t\t     Am                 E7\nel pescador, habla con la playa\n         Am               C\nel pescador, no tiene fortuna\nE7              Am\n   sólo su atarraya\n\n\nAm  C   | (x4)\n\n\n    Am\nRegresan los pescadores\n     Am\ncon su carga pa' vender\n    Am             C\nal puerto de sus amores\n    E7             Am\ndonde tiene su querer\n\n\n         Am                E7\nEl pescador, habla con la luna\n\t\t     Am                 E7\nel pescador, habla con la playa\n         Am               C\nel pescador, no tiene fortuna\nE7              Am\n   sólo su atarraya"
+	"txt": "    Am\nVa subiendo la corriente\n      Am\ncon chinchorro y atarraya\n      Am       C\nla canoa de bareque\n   E7              Am\npara llegar a la playa\n\n    Am\nLa luna espera sonriente\n     Am\ncon su mágico esplendor\n     Am           C\nla llegada del valiente\n     E7            Am\ndel valiente pescador\n\n\n         Am                E7\nEl pescador, habla con la luna\n         Am                 E7\nel pescador, habla con la playa\n         Am               C\nel pescador, no tiene fortuna\nE7              Am\n   sólo su atarraya\n\n\nAm  C   | (x4)\n\n\n    Am\nRegresan los pescadores\n     Am\ncon su carga pa' vender\n    Am             C\nal puerto de sus amores\n    E7             Am\ndonde tiene su querer\n\n\n         Am                E7\nEl pescador, habla con la luna\n         Am                 E7\nel pescador, habla con la playa\n         Am               C\nel pescador, no tiene fortuna\nE7              Am\n   sólo su atarraya"
 }

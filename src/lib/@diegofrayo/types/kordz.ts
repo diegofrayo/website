@@ -11,7 +11,7 @@ type T_SongBase = {
 		| "0|IN_PROGRESS|🚧"
 		| "1|FAVORITE|⭐"
 		| "2|WELL_DONE|👌"
-		| "3|OK|🤷‍♂️"
+		| "3|CHECKED|☑️"
 		| "4|REVIEW|🕵️"
 		| "5|SOCIAL|🎶"
 		| "6|ARCHIVED|🗃️";
