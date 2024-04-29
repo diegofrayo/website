@@ -65,7 +65,7 @@ function Page({ children, config }: T_PageProps) {
 				/>
 				<meta
 					name="google-site-verification"
-					content="Gf-6mROjwXEjbtUUtl2rX5NgzWuzWxgxoKYTaGsqvtw"
+					content="fLKb-EbTxZ9s9_1_TZvTWamJhMrEmoiNa4LVU5jnVyc"
 				/>
 				{metadata.disableSEO ? (
 					<meta
