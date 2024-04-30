@@ -25,11 +25,8 @@ import { throwError } from "@diegofrayo/utils/misc";
 import { capitalize, generateSlug, replaceAll } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 
-import {
-	type T_BusinessesPageProps,
-	type T_ContactsPageProps,
-	type T_WhatsAppLinksMode,
-} from "../types";
+import type { T_ContactsPageProps } from "../pages/ContactsPage";
+import type { T_BusinessesPageProps } from "../pages/BusinessesPage";
 import { countContacts, formatPhoneNumber, parseCategoryName } from "../utils";
 
 export function Output({ children }: { children: string }) {
@@ -760,3 +757,7 @@ const HTML_CONTACTS_PAGE = `
     </body>
   </html>
 `;
+
+// --- TYPES ---
+
+type T_WhatsAppLinksMode = "app" | "web";

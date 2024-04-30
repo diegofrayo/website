@@ -15,6 +15,7 @@ type T_CollapsibleProps = DR.DOM.HTMLElementAttributes["details"] & {
 	openedByDefault?: boolean;
 	opened?: boolean;
 	contentClassName?: string;
+	titleClassName?: string;
 	showIcon?: boolean;
 	onShowContentHandler?: () => void;
 	onHideContentHandler?: () => void;
@@ -28,6 +29,7 @@ function Collapsible({
 	opened,
 	className = "",
 	contentClassName = "",
+	titleClassName = "",
 	title = "",
 	showIcon = true,
 	onShowContentHandler = () => undefined,
@@ -78,7 +80,7 @@ function Collapsible({
 				variant={Title.variant.UNSTYLED}
 				is="h2"
 				role="button"
-				className="tw-flex tw-items-start tw-font-bold"
+				className={cn("tw-flex tw-items-start tw-font-bold", titleClassName)}
 				onClick={handleToggleClick}
 			>
 				{showIcon ? (

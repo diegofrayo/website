@@ -41,9 +41,10 @@ import styles from "./styles.module.css";
 type T_MainLayoutProps = {
 	children: DR.React.Children;
 	title?: string;
+	width?: string;
 };
 
-function MainLayout({ title, children }: T_MainLayoutProps) {
+function MainLayout({ title, children, width = "tw-max-w-screen-md" }: T_MainLayoutProps) {
 	// --- HOOKS ---
 	const { pathname } = useRouting();
 
@@ -68,7 +69,12 @@ function MainLayout({ title, children }: T_MainLayoutProps) {
 
 	return (
 		<Block is="main">
-			<Block className="tw-relative tw-mx-auto tw-min-h-dv-screen tw-max-w-screen-md tw-px-6 tw-py-12 dr-bg-color-surface-100 print:tw-bg-transparent">
+			<Block
+				className={cn(
+					"tw-relative tw-mx-auto tw-min-h-dv-screen tw-px-6 tw-py-12 dr-bg-color-surface-100 print:tw-bg-transparent",
+					width,
+				)}
+			>
 				<Block className="tw-absolute tw--top-1 tw-left-0">
 					<Flags />
 				</Block>

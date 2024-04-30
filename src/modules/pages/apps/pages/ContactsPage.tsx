@@ -1,7 +1,11 @@
 import * as React from "react";
 
+import type { T_ContactsData } from "@diegofrayo/types/contacts";
 import { ContactsPage as ContactsPageComponent } from "../components";
-import type { T_ContactsPageProps } from "../types";
+
+export type T_ContactsPageProps = {
+	data: T_ContactsData;
+};
 
 export default function ContactsPage({ data }: T_ContactsPageProps) {
 	return (
