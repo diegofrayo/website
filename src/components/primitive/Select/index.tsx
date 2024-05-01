@@ -66,15 +66,17 @@ Select.Option = function SelectOption({
 	children,
 	value,
 	className,
+	...rest
 }: {
 	children: string;
 	value: string;
 	className?: string;
-}) {
+} & DR.DOM.HTMLElementAttributes["option"]) {
 	return (
 		<option
 			value={value}
 			className={className}
+			{...rest}
 		>
 			{children}
 		</option>
