@@ -63,6 +63,11 @@ const APPS = [
 		name: "films",
 	},
 	{
+		id: "bets",
+		icon: Icon.icon.SOCCER,
+		name: "bets",
+	},
+	{
 		id: "dencrypt",
 		icon: Icon.icon.KEY,
 		name: "dencrypt",
@@ -71,11 +76,6 @@ const APPS = [
 		id: "whatsapp",
 		icon: Icon.icon.WHATSAPP_MONO,
 		name: "whatsapp",
-	},
-	{
-		id: "debugger",
-		icon: Icon.icon.CODE,
-		name: "debugger",
 	},
 	{
 		id: "series",
@@ -101,6 +101,11 @@ const APPS = [
 		id: "timeline",
 		icon: Icon.icon.PRESENTATION_CHART_LINE,
 		name: "timeline",
+	},
+	{
+		id: "debugger",
+		icon: Icon.icon.CODE,
+		name: "debugger",
 	},
 	{
 		id: "experiments",

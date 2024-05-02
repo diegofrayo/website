@@ -28,6 +28,7 @@ import { isDevelopmentEnvironment } from "~/utils/app";
 import { delay, getErrorMessage } from "@diegofrayo/utils/misc";
 import type DR from "@diegofrayo/types";
 import {
+	copyToClipboard,
 	deletePWACache,
 	getScrollPosition,
 	isPWA,
@@ -225,6 +226,7 @@ const ToolsMenu = renderIf(function ToolsMenu({ dispatchForcedRender }: T_ToolsM
 					</RadixNavigationMenu.Trigger>
 					<RadixNavigationMenu.Content className="radix-navigation-menu-content">
 						<List className="tw-block tw-overflow-hidden tw-rounded-md tw-border dr-bg-color-surface-200 dr-border-color-surface-300">
+							<CopyURLMenuItem />
 							<EnvironmentMenuItem />
 							<ISRMenuItem />
 							<ReloadPageMenuItem />
@@ -309,6 +311,21 @@ function SwitchUserModeMenuItem({ dispatchForcedRender }: T_SwitchUserModeMenuIt
 		<ToolsMenuItem
 			title={`Switch to "${AuthService.isGuestUser() ? "user" : "guest"}" mode`}
 			icon={Icon.icon.USER_CIRCLE}
+			onClick={handleClick}
+		/>
+	);
+}
+
+function CopyURLMenuItem() {
+	// --- HANDLERS ---
+	function handleClick() {
+		copyToClipboard(window.location.href);
+	}
+
+	return (
+		<ToolsMenuItem
+			title="Copy URL"
+			icon={Icon.icon.LINK}
 			onClick={handleClick}
 		/>
 	);

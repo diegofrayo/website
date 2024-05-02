@@ -5,7 +5,9 @@ import { MainLayout, Page } from "~/components/layout";
 import {
 	Block,
 	Collapsible,
+	Icon,
 	InlineText,
+	Link,
 	List,
 	Pre,
 	Select,
@@ -154,21 +156,21 @@ function BetsPage({ data }: T_BetsPageProps) {
               <Space size={2} />
               */}
 
-							{Object.entries(leagues).map(([leagueTitle, league]) => {
+							{Object.entries(leagues).map(([leagueName, league]) => {
 								if (league.matches.length === 0) {
 									return null;
 								}
 
 								return (
 									<Block
-										key={`${fixtureDate}-${leagueTitle}`}
+										key={`${fixtureDate}-${leagueName}`}
 										className="tw-mb-8 tw-overflow-auto tw-rounded-md dr-bg-color-surface-200"
 									>
 										<Title
 											is="h2"
 											className="tw-p-2 tw-text-center tw-text-xl tw-text-white dr-bg-color-surface-300"
 										>
-											{leagueTitle}
+											{leagueName}
 										</Title>
 
 										<Block className="tw-p-5">
@@ -197,7 +199,7 @@ function BetsPage({ data }: T_BetsPageProps) {
 												([date, matchesGroupedByDate]) => {
 													return (
 														<Block
-															key={`${leagueTitle}-${date}`}
+															key={`${leagueName}-${date}`}
 															className="tw-mb-4 last:tw-mb-0"
 														>
 															{/*
@@ -288,7 +290,7 @@ function BetsPage({ data }: T_BetsPageProps) {
 																		/>
 
 																		<Block className="tw-flex tw-justify-between tw-gap-2">
-																			{Object.values(match.teams).map((team) => {
+																			{Object.entries(match.teams).map(([teamSide, team]) => {
 																				return (
 																					<Block
 																						key={team.name}
@@ -296,12 +298,27 @@ function BetsPage({ data }: T_BetsPageProps) {
 																					>
 																						<Title
 																							is="h4"
-																							className="tw-p-1 tw-text-center dr-bg-color-surface-100"
+																							className="tw-relative tw-p-1 tw-text-center dr-bg-color-surface-100"
 																						>
-																							{team.name}{" "}
-																							{Number.isInteger(team.standings)
-																								? `[${team.standings}]`
-																								: ""}
+																							<InlineText>
+																								{team.name}{" "}
+																								{Number.isInteger(team.standings)
+																									? `[${team.standings}]`
+																									: ""}
+																							</InlineText>
+																							<Link
+																								variant={Link.variant.SIMPLE}
+																								href={`https://www.google.com/search?q=${encodeURI(
+																									`${team.name} equipo ${league.country} 365scores`,
+																								)}`}
+																								className="tw-absolute tw-right-2"
+																								isExternalLink
+																							>
+																								<Icon
+																									icon={Icon.icon.GOOGLE}
+																									size={16}
+																								/>
+																							</Link>
 																						</Title>
 
 																						<Block className="tw-px-4 tw-pb-1 tw-pt-3 dr-bg-color-surface-300">
@@ -345,6 +362,9 @@ function BetsPage({ data }: T_BetsPageProps) {
 																										id="matches-filter"
 																										variant={Select.variant.STYLED}
 																										onChange={onMatchesFilterChange(team.name)}
+																										defaultValue={
+																											teamSide === "home" ? "Local" : "Visitante"
+																										}
 																									>
 																										<Select.Option value="Todos">
 																											Todos
@@ -375,7 +395,8 @@ function BetsPage({ data }: T_BetsPageProps) {
 																									{filterMatches(
 																										team.matches,
 																										team.name,
-																										matchesFilters[team.name],
+																										matchesFilters[team.name] ||
+																											(teamSide === "home" ? "Local" : "Visitante"),
 																									).map((playedMatch) => {
 																										const currentTeam =
 																											playedMatch.teams.home.name === team.name
@@ -405,7 +426,8 @@ function BetsPage({ data }: T_BetsPageProps) {
 																													</InlineText>
 
 																													{Number.isInteger(
-																														playedMatch.teams.home.standings,
+																														playedMatch.teams.home.standings &&
+																															playedMatch.teams.away.standings,
 																													) ? (
 																														<InlineText>
 																															{`Posiciones: [${playedMatch.teams.home.standings}] | [${playedMatch.teams.away.standings}]`}
@@ -450,6 +472,8 @@ export type T_BetsPageProps = {
 		[date in string]: {
 			// Leagues
 			[leagueName in string]: {
+				name: string;
+				country: string;
 				standings: {
 					teamId: number;
 					teamName: string;

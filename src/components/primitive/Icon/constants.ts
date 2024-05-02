@@ -117,6 +117,12 @@ const ICONS = {
 			alt: "Guitar",
 		},
 	},
+	GOOGLE: {
+		icon: "/assets/images/icons/google.svg",
+		defaultProps: {
+			alt: "Google",
+		},
+	},
 	INSTAGRAM: {
 		icon: "/assets/images/icons/instagram.svg",
 		defaultProps: {
