@@ -1,6 +1,6 @@
 import * as React from "react";
-import cn from "classnames";
 
+import cn from "~/lib/cn";
 import type DR from "@diegofrayo/types";
 import v from "@diegofrayo/v";
 

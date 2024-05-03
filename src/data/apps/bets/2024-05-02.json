@@ -1,14 +1,14 @@
-{
-	"Liga MX (Mexico)": {
-		"name": "Liga MX",
-		"country": "Mexico",
+[
+	{
+		"name": "UEFA Europa Conference League",
+		"country": "World",
 		"standings": [],
 		"matches": [
 			{
-				"id": "2024-05-02-Necaxa-Club Queretaro",
-				"fullDate": "2024-05-02T20:00",
+				"id": "2024-05-02-Aston Villa-Olympiakos Piraeus",
+				"fullDate": "2024-05-02T14:00",
 				"date": "2024-05-02",
-				"hour": "20:00",
+				"hour": "14:00",
 				"predictions": [
 					{
 						"name": "Goles por equipo local",
@@ -28,12 +28,12 @@
 				],
 				"teams": {
 					"home": {
-						"id": 2288,
-						"name": "Necaxa",
-						"score": 1,
-						"winner": true,
+						"id": 66,
+						"name": "Aston Villa",
+						"score": 2,
+						"winner": false,
 						"standings": null,
-						"featured": false,
+						"featured": true,
 						"stats": {
 							"total_de_partidos": 0,
 							"total_de_goles": 0,
@@ -58,12 +58,12 @@
 						"matches": []
 					},
 					"away": {
-						"id": 2290,
-						"name": "Club Queretaro",
-						"score": 1,
-						"winner": false,
+						"id": 553,
+						"name": "Olympiakos Piraeus",
+						"score": 4,
+						"winner": true,
 						"standings": null,
-						"featured": false,
+						"featured": true,
 						"stats": {
 							"total_de_partidos": 0,
 							"total_de_goles": 0,
@@ -90,10 +90,10 @@
 				}
 			},
 			{
-				"id": "2024-05-02-Pachuca-U.N.A.M. - Pumas",
-				"fullDate": "2024-05-02T22:15",
+				"id": "2024-05-02-Fiorentina-Club Brugge KV",
+				"fullDate": "2024-05-02T14:00",
 				"date": "2024-05-02",
-				"hour": "22:15",
+				"hour": "14:00",
 				"predictions": [
 					{
 						"name": "Goles por equipo local",
@@ -113,12 +113,12 @@
 				],
 				"teams": {
 					"home": {
-						"id": 2292,
-						"name": "Pachuca",
-						"score": 0,
-						"winner": false,
+						"id": 502,
+						"name": "Fiorentina",
+						"score": 3,
+						"winner": true,
 						"standings": null,
-						"featured": false,
+						"featured": true,
 						"stats": {
 							"total_de_partidos": 0,
 							"total_de_goles": 0,
@@ -143,12 +143,12 @@
 						"matches": []
 					},
 					"away": {
-						"id": 2286,
-						"name": "U.N.A.M. - Pumas",
-						"score": 0,
-						"winner": true,
+						"id": 569,
+						"name": "Club Brugge KV",
+						"score": 2,
+						"winner": false,
 						"standings": null,
-						"featured": false,
+						"featured": true,
 						"stats": {
 							"total_de_partidos": 0,
 							"total_de_goles": 0,
@@ -176,7 +176,7 @@
 			}
 		]
 	},
-	"UEFA Europa League (World)": {
+	{
 		"name": "UEFA Europa League",
 		"country": "World",
 		"standings": [],
@@ -1797,1088 +1797,298 @@
 			}
 		]
 	},
-	"Pro League (Saudi-Arabia)": {
-		"name": "Pro League",
-		"country": "Saudi-Arabia",
+	{
+		"name": "Premier League",
+		"country": "England",
 		"standings": [
 			{
-				"teamId": 2932,
-				"teamName": "Al-Hilal Saudi FC",
+				"teamId": 42,
+				"teamName": "Arsenal",
 				"points": 80,
 				"stats": {
-					"goalsDiff": 68,
-					"played": 28,
-					"win": 26,
-					"draw": 2,
-					"lose": 0,
-					"goals": { "for": 86, "against": 18 }
+					"goalsDiff": 57,
+					"played": 35,
+					"win": 25,
+					"draw": 5,
+					"lose": 5,
+					"goals": { "for": 85, "against": 28 }
 				}
 			},
 			{
-				"teamId": 2939,
-				"teamName": "Al-Nassr",
-				"points": 71,
+				"teamId": 50,
+				"teamName": "Manchester City",
+				"points": 79,
 				"stats": {
-					"goalsDiff": 49,
-					"played": 29,
-					"win": 23,
-					"draw": 2,
-					"lose": 4,
-					"goals": { "for": 84, "against": 35 }
-				}
-			},
-			{
-				"teamId": 2929,
-				"teamName": "Al-Ahli Jeddah",
-				"points": 52,
-				"stats": {
-					"goalsDiff": 24,
-					"played": 28,
-					"win": 15,
+					"goalsDiff": 50,
+					"played": 34,
+					"win": 24,
 					"draw": 7,
-					"lose": 6,
-					"goals": { "for": 54, "against": 30 }
+					"lose": 3,
+					"goals": { "for": 82, "against": 32 }
 				}
 			},
 			{
-				"teamId": 2936,
-				"teamName": "Al Taawon",
+				"teamId": 40,
+				"teamName": "Liverpool",
+				"points": 75,
+				"stats": {
+					"goalsDiff": 41,
+					"played": 35,
+					"win": 22,
+					"draw": 9,
+					"lose": 4,
+					"goals": { "for": 77, "against": 36 }
+				}
+			},
+			{
+				"teamId": 66,
+				"teamName": "Aston Villa",
+				"points": 67,
+				"stats": {
+					"goalsDiff": 21,
+					"played": 35,
+					"win": 20,
+					"draw": 7,
+					"lose": 8,
+					"goals": { "for": 73, "against": 52 }
+				}
+			},
+			{
+				"teamId": 47,
+				"teamName": "Tottenham",
+				"points": 60,
+				"stats": {
+					"goalsDiff": 13,
+					"played": 34,
+					"win": 18,
+					"draw": 6,
+					"lose": 10,
+					"goals": { "for": 67, "against": 54 }
+				}
+			},
+			{
+				"teamId": 33,
+				"teamName": "Manchester United",
+				"points": 54,
+				"stats": {
+					"goalsDiff": 1,
+					"played": 34,
+					"win": 16,
+					"draw": 6,
+					"lose": 12,
+					"goals": { "for": 52, "against": 51 }
+				}
+			},
+			{
+				"teamId": 34,
+				"teamName": "Newcastle",
+				"points": 53,
+				"stats": {
+					"goalsDiff": 19,
+					"played": 34,
+					"win": 16,
+					"draw": 5,
+					"lose": 13,
+					"goals": { "for": 74, "against": 55 }
+				}
+			},
+			{
+				"teamId": 49,
+				"teamName": "Chelsea",
 				"points": 51,
 				"stats": {
-					"goalsDiff": 17,
-					"played": 29,
+					"goalsDiff": 6,
+					"played": 34,
 					"win": 14,
 					"draw": 9,
-					"lose": 6,
-					"goals": { "for": 48, "against": 31 }
-				}
-			},
-			{
-				"teamId": 2938,
-				"teamName": "Al-Ittihad FC",
-				"points": 50,
-				"stats": {
-					"goalsDiff": 15,
-					"played": 29,
-					"win": 15,
-					"draw": 5,
-					"lose": 9,
-					"goals": { "for": 55, "against": 40 }
-				}
-			},
-			{
-				"teamId": 2934,
-				"teamName": "Al-Ettifaq",
-				"points": 41,
-				"stats": {
-					"goalsDiff": 5,
-					"played": 29,
-					"win": 10,
-					"draw": 11,
-					"lose": 8,
-					"goals": { "for": 35, "against": 30 }
-				}
-			},
-			{
-				"teamId": 2931,
-				"teamName": "Al-Fateh",
-				"points": 40,
-				"stats": {
-					"goalsDiff": 4,
-					"played": 29,
-					"win": 11,
-					"draw": 7,
 					"lose": 11,
-					"goals": { "for": 48, "against": 44 }
+					"goals": { "for": 65, "against": 59 }
 				}
 			},
 			{
-				"teamId": 2956,
-				"teamName": "Damac",
-				"points": 38,
+				"teamId": 48,
+				"teamName": "West Ham",
+				"points": 49,
 				"stats": {
-					"goalsDiff": 5,
-					"played": 29,
-					"win": 10,
-					"draw": 8,
-					"lose": 11,
-					"goals": { "for": 40, "against": 35 }
+					"goalsDiff": -9,
+					"played": 35,
+					"win": 13,
+					"draw": 10,
+					"lose": 12,
+					"goals": { "for": 56, "against": 65 }
 				}
 			},
 			{
-				"teamId": 2940,
-				"teamName": "Al Shabab",
-				"points": 38,
-				"stats": {
-					"goalsDiff": 3,
-					"played": 29,
-					"win": 10,
-					"draw": 8,
-					"lose": 11,
-					"goals": { "for": 39, "against": 36 }
-				}
-			},
-			{
-				"teamId": 2944,
-				"teamName": "Al-Fayha",
-				"points": 38,
+				"teamId": 35,
+				"teamName": "Bournemouth",
+				"points": 48,
 				"stats": {
 					"goalsDiff": -8,
-					"played": 29,
-					"win": 10,
-					"draw": 8,
-					"lose": 11,
-					"goals": { "for": 38, "against": 46 }
+					"played": 35,
+					"win": 13,
+					"draw": 9,
+					"lose": 13,
+					"goals": { "for": 52, "against": 60 }
 				}
 			},
 			{
-				"teamId": 2928,
-				"teamName": "Al Khaleej Saihat",
+				"teamId": 39,
+				"teamName": "Wolves",
+				"points": 46,
+				"stats": {
+					"goalsDiff": -7,
+					"played": 35,
+					"win": 13,
+					"draw": 7,
+					"lose": 15,
+					"goals": { "for": 48, "against": 55 }
+				}
+			},
+			{
+				"teamId": 51,
+				"teamName": "Brighton",
+				"points": 44,
+				"stats": {
+					"goalsDiff": -5,
+					"played": 34,
+					"win": 11,
+					"draw": 11,
+					"lose": 12,
+					"goals": { "for": 52, "against": 57 }
+				}
+			},
+			{
+				"teamId": 36,
+				"teamName": "Fulham",
+				"points": 43,
+				"stats": {
+					"goalsDiff": -4,
+					"played": 35,
+					"win": 12,
+					"draw": 7,
+					"lose": 16,
+					"goals": { "for": 51, "against": 55 }
+				}
+			},
+			{
+				"teamId": 52,
+				"teamName": "Crystal Palace",
+				"points": 40,
+				"stats": {
+					"goalsDiff": -12,
+					"played": 35,
+					"win": 10,
+					"draw": 10,
+					"lose": 15,
+					"goals": { "for": 45, "against": 57 }
+				}
+			},
+			{
+				"teamId": 45,
+				"teamName": "Everton",
+				"points": 36,
+				"stats": {
+					"goalsDiff": -11,
+					"played": 35,
+					"win": 12,
+					"draw": 8,
+					"lose": 15,
+					"goals": { "for": 37, "against": 48 }
+				}
+			},
+			{
+				"teamId": 55,
+				"teamName": "Brentford",
 				"points": 35,
 				"stats": {
 					"goalsDiff": -8,
-					"played": 29,
+					"played": 35,
 					"win": 9,
 					"draw": 8,
-					"lose": 12,
-					"goals": { "for": 32, "against": 40 }
-				}
-			},
-			{
-				"teamId": 2937,
-				"teamName": "Al Wehda Club",
-				"points": 32,
-				"stats": {
-					"goalsDiff": -8,
-					"played": 29,
-					"win": 9,
-					"draw": 5,
-					"lose": 15,
-					"goals": { "for": 41, "against": 49 }
-				}
-			},
-			{
-				"teamId": 2935,
-				"teamName": "Al-Raed",
-				"points": 31,
-				"stats": {
-					"goalsDiff": -7,
-					"played": 29,
-					"win": 8,
-					"draw": 7,
-					"lose": 14,
-					"goals": { "for": 38, "against": 45 }
-				}
-			},
-			{
-				"teamId": 10511,
-				"teamName": "Al Riyadh",
-				"points": 28,
-				"stats": {
-					"goalsDiff": -25,
-					"played": 29,
-					"win": 7,
-					"draw": 7,
-					"lose": 15,
-					"goals": { "for": 26, "against": 51 }
-				}
-			},
-			{
-				"teamId": 2977,
-				"teamName": "Al Akhdoud",
-				"points": 27,
-				"stats": {
-					"goalsDiff": -20,
-					"played": 29,
-					"win": 8,
-					"draw": 3,
 					"lose": 18,
-					"goals": { "for": 27, "against": 47 }
+					"goals": { "for": 52, "against": 60 }
 				}
 			},
 			{
-				"teamId": 2942,
-				"teamName": "Al Taee",
+				"teamId": 65,
+				"teamName": "Nottingham Forest",
 				"points": 26,
 				"stats": {
-					"goalsDiff": -28,
-					"played": 29,
+					"goalsDiff": -20,
+					"played": 35,
 					"win": 7,
-					"draw": 5,
-					"lose": 17,
-					"goals": { "for": 29, "against": 57 }
+					"draw": 9,
+					"lose": 19,
+					"goals": { "for": 42, "against": 62 }
 				}
 			},
 			{
-				"teamId": 2951,
-				"teamName": "Abha",
+				"teamId": 1359,
+				"teamName": "Luton",
 				"points": 25,
 				"stats": {
-					"goalsDiff": -47,
-					"played": 29,
-					"win": 7,
-					"draw": 4,
-					"lose": 18,
-					"goals": { "for": 31, "against": 78 }
+					"goalsDiff": -29,
+					"played": 35,
+					"win": 6,
+					"draw": 7,
+					"lose": 22,
+					"goals": { "for": 48, "against": 77 }
 				}
 			},
 			{
-				"teamId": 2945,
-				"teamName": "Al-Hazm",
-				"points": 19,
+				"teamId": 44,
+				"teamName": "Burnley",
+				"points": 24,
 				"stats": {
-					"goalsDiff": -39,
-					"played": 29,
+					"goalsDiff": -32,
+					"played": 35,
+					"win": 5,
+					"draw": 9,
+					"lose": 21,
+					"goals": { "for": 38, "against": 70 }
+				}
+			},
+			{
+				"teamId": 62,
+				"teamName": "Sheffield Utd",
+				"points": 16,
+				"stats": {
+					"goalsDiff": -63,
+					"played": 35,
 					"win": 3,
-					"draw": 10,
-					"lose": 16,
-					"goals": { "for": 29, "against": 68 }
+					"draw": 7,
+					"lose": 25,
+					"goals": { "for": 34, "against": 97 }
 				}
 			}
 		],
 		"matches": [
 			{
-				"id": "2024-05-02-Al-Hazm-Al Akhdoud",
-				"fullDate": "2024-05-02T10:00",
+				"id": "2024-05-02-Chelsea-Tottenham",
+				"fullDate": "2024-05-02T13:30",
 				"date": "2024-05-02",
-				"hour": "10:00",
+				"hour": "13:30",
 				"predictions": [
 					{
 						"name": "Goles por equipo local",
-						"recommendable": false,
-						"acceptancePercentage": "0.13",
+						"recommendable": true,
+						"acceptancePercentage": "0.75",
 						"criteria": {
 							"home": [
-								{ "description": "Promedio de goles >= 1.5", "check": "❌" },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌" },
-								{ "description": "Promedio de goles de visitante >= 1.5", "check": "✅" },
-								{ "description": "Ha marcado en los ultimos 3 partidos de local", "check": "❌" },
-								{ "description": "No ha perdido los ultimos 3 partidos de local", "check": "❌" },
-								{
-									"description": "El local está al menos 5 posiciones mas arriba que el rival",
-									"check": "❌"
-								},
-								{
-									"description": "El local está en las primeras 6 posiciones de la tabla",
-									"check": "❌"
-								},
-								{ "description": "El local es un equipo destacado", "check": "❌" }
-							],
-							"away": []
-						}
-					}
-				],
-				"teams": {
-					"home": {
-						"id": 2945,
-						"name": "Al-Hazm",
-						"score": 0,
-						"winner": null,
-						"standings": 18,
-						"featured": false,
-						"stats": {
-							"total_de_partidos": 15,
-							"total_de_goles": 14,
-							"promedio_de_goles": 0.9,
-							"---|---": 0,
-							"goles_de_local": 6,
-							"promedio_de_goles_de_local": 0.9,
-							"partidos_de_local": 7,
-							"partidos_ganados_de_local": 1,
-							"partidos_perdidos_de_local": 4,
-							"partidos_empatados_de_local": 2,
-							"partidos_con_goles_de_local": 4,
-							"---||---": 0,
-							"goles_de_visitante": 8,
-							"promedio_de_goles_de_visitante": 1,
-							"partidos_de_visitante": 8,
-							"partidos_ganados_de_visitante": 1,
-							"partidos_perdidos_de_visitante": 3,
-							"partidos_empatados_de_visitante": 4,
-							"partidos_con_goles_de_visitante": 4
-						},
-						"matches": [
-							{
-								"id": "2024-04-25-Al Wehda Club-Al-Hazm",
-								"fullDate": "2024-04-25T13:00",
-								"date": "2024-04-25",
-								"hour": "13:00",
-								"teams": {
-									"home": {
-										"id": 2937,
-										"name": "Al Wehda Club",
-										"score": 0,
-										"winner": false,
-										"standings": 12,
-										"featured": false
-									},
-									"away": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 2,
-										"winner": true,
-										"standings": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-20-Al-Hazm-Al-Ittihad FC",
-								"fullDate": "2024-04-20T13:00",
-								"date": "2024-04-20",
-								"hour": "13:00",
-								"teams": {
-									"home": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 2,
-										"winner": false,
-										"standings": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2938,
-										"name": "Al-Ittihad FC",
-										"score": 3,
-										"winner": true,
-										"standings": 5,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-07-Al-Raed-Al-Hazm",
-								"fullDate": "2024-04-07T14:00",
-								"date": "2024-04-07",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2935,
-										"name": "Al-Raed",
-										"score": 2,
-										"winner": true,
-										"standings": 13,
-										"featured": false
-									},
-									"away": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 0,
-										"winner": false,
-										"standings": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-01-Al-Hazm-Damac",
-								"fullDate": "2024-04-01T14:00",
-								"date": "2024-04-01",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 0,
-										"winner": null,
-										"standings": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 0,
-										"winner": null,
-										"standings": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-29-Al Taawon-Al-Hazm",
-								"fullDate": "2024-03-29T14:00",
-								"date": "2024-03-29",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2936,
-										"name": "Al Taawon",
-										"score": 4,
-										"winner": true,
-										"standings": 4,
-										"featured": false
-									},
-									"away": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 0,
-										"winner": false,
-										"standings": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-14-Al-Hazm-Al Shabab",
-								"fullDate": "2024-03-14T14:00",
-								"date": "2024-03-14",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 0,
-										"winner": false,
-										"standings": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2940,
-										"name": "Al Shabab",
-										"score": 3,
-										"winner": true,
-										"standings": 9,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-08-Al Taee-Al-Hazm",
-								"fullDate": "2024-03-08T09:00",
-								"date": "2024-03-08",
-								"hour": "09:00",
-								"teams": {
-									"home": {
-										"id": 2942,
-										"name": "Al Taee",
-										"score": 1,
-										"winner": true,
-										"standings": 16,
-										"featured": false
-									},
-									"away": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 0,
-										"winner": false,
-										"standings": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-29-Al-Nassr-Al-Hazm",
-								"fullDate": "2024-02-29T12:00",
-								"date": "2024-02-29",
-								"hour": "12:00",
-								"teams": {
-									"home": {
-										"id": 2939,
-										"name": "Al-Nassr",
-										"score": 4,
-										"winner": null,
-										"standings": 2,
-										"featured": true
-									},
-									"away": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 4,
-										"winner": null,
-										"standings": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-24-Al-Hazm-Al Khaleej Saihat",
-								"fullDate": "2024-02-24T12:00",
-								"date": "2024-02-24",
-								"hour": "12:00",
-								"teams": {
-									"home": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 1,
-										"winner": null,
-										"standings": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2928,
-										"name": "Al Khaleej Saihat",
-										"score": 1,
-										"winner": null,
-										"standings": 11,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-17-Al-Hazm-Al-Fayha",
-								"fullDate": "2024-02-17T09:00",
-								"date": "2024-02-17",
-								"hour": "09:00",
-								"teams": {
-									"home": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 1,
-										"winner": false,
-										"standings": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2944,
-										"name": "Al-Fayha",
-										"score": 3,
-										"winner": true,
-										"standings": 10,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-28-Al-Ettifaq-Al-Hazm",
-								"fullDate": "2023-12-28T10:00",
-								"date": "2023-12-28",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2934,
-										"name": "Al-Ettifaq",
-										"score": 1,
-										"winner": null,
-										"standings": 6,
-										"featured": false
-									},
-									"away": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 1,
-										"winner": null,
-										"standings": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-22-Al-Hazm-Al-Ahli Jeddah",
-								"fullDate": "2023-12-22T10:00",
-								"date": "2023-12-22",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 0,
-										"winner": false,
-										"standings": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 4,
-										"winner": true,
-										"standings": 3,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-14-Abha-Al-Hazm",
-								"fullDate": "2023-12-14T10:00",
-								"date": "2023-12-14",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2951,
-										"name": "Abha",
-										"score": 1,
-										"winner": null,
-										"standings": 17,
-										"featured": false
-									},
-									"away": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 1,
-										"winner": null,
-										"standings": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-07-Al-Hazm-Al-Fateh",
-								"fullDate": "2023-12-07T10:00",
-								"date": "2023-12-07",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 2,
-										"winner": true,
-										"standings": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 0,
-										"winner": false,
-										"standings": 7,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-11-30-Al Riyadh-Al-Hazm",
-								"fullDate": "2023-11-30T10:00",
-								"date": "2023-11-30",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 0,
-										"winner": null,
-										"standings": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 0,
-										"winner": null,
-										"standings": 18,
-										"featured": false
-									}
-								}
-							}
-						]
-					},
-					"away": {
-						"id": 2977,
-						"name": "Al Akhdoud",
-						"score": 0,
-						"winner": null,
-						"standings": 15,
-						"featured": false,
-						"stats": {
-							"total_de_partidos": 15,
-							"total_de_goles": 17,
-							"promedio_de_goles": 1.1,
-							"---|---": 0,
-							"goles_de_local": 13,
-							"promedio_de_goles_de_local": 1.6,
-							"partidos_de_local": 8,
-							"partidos_ganados_de_local": 5,
-							"partidos_perdidos_de_local": 3,
-							"partidos_empatados_de_local": 0,
-							"partidos_con_goles_de_local": 8,
-							"---||---": 0,
-							"goles_de_visitante": 4,
-							"promedio_de_goles_de_visitante": 0.6,
-							"partidos_de_visitante": 7,
-							"partidos_ganados_de_visitante": 0,
-							"partidos_perdidos_de_visitante": 5,
-							"partidos_empatados_de_visitante": 2,
-							"partidos_con_goles_de_visitante": 3
-						},
-						"matches": [
-							{
-								"id": "2024-04-27-Al Akhdoud-Abha",
-								"fullDate": "2024-04-27T10:00",
-								"date": "2024-04-27",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 4,
-										"winner": true,
-										"standings": 15,
-										"featured": false
-									},
-									"away": {
-										"id": 2951,
-										"name": "Abha",
-										"score": 0,
-										"winner": false,
-										"standings": 17,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-20-Al Akhdoud-Damac",
-								"fullDate": "2024-04-20T10:00",
-								"date": "2024-04-20",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 1,
-										"winner": false,
-										"standings": 15,
-										"featured": false
-									},
-									"away": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 2,
-										"winner": true,
-										"standings": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-07-Al-Fayha-Al Akhdoud",
-								"fullDate": "2024-04-07T14:00",
-								"date": "2024-04-07",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2944,
-										"name": "Al-Fayha",
-										"score": 3,
-										"winner": true,
-										"standings": 10,
-										"featured": false
-									},
-									"away": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 0,
-										"winner": false,
-										"standings": 15,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-02-Al-Hilal Saudi FC-Al Akhdoud",
-								"fullDate": "2024-04-02T14:00",
-								"date": "2024-04-02",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2932,
-										"name": "Al-Hilal Saudi FC",
-										"score": 3,
-										"winner": true,
-										"standings": 1,
-										"featured": true
-									},
-									"away": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 0,
-										"winner": false,
-										"standings": 15,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-29-Al Akhdoud-Al-Raed",
-								"fullDate": "2024-03-29T14:00",
-								"date": "2024-03-29",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 1,
-										"winner": false,
-										"standings": 15,
-										"featured": false
-									},
-									"away": {
-										"id": 2935,
-										"name": "Al-Raed",
-										"score": 3,
-										"winner": true,
-										"standings": 13,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-14-Al Khaleej Saihat-Al Akhdoud",
-								"fullDate": "2024-03-14T14:00",
-								"date": "2024-03-14",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2928,
-										"name": "Al Khaleej Saihat",
-										"score": 2,
-										"winner": null,
-										"standings": 11,
-										"featured": false
-									},
-									"away": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 2,
-										"winner": null,
-										"standings": 15,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-08-Al-Ittihad FC-Al Akhdoud",
-								"fullDate": "2024-03-08T12:00",
-								"date": "2024-03-08",
-								"hour": "12:00",
-								"teams": {
-									"home": {
-										"id": 2938,
-										"name": "Al-Ittihad FC",
-										"score": 2,
-										"winner": true,
-										"standings": 5,
-										"featured": false
-									},
-									"away": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 1,
-										"winner": false,
-										"standings": 15,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-01-Al Akhdoud-Al Riyadh",
-								"fullDate": "2024-03-01T09:00",
-								"date": "2024-03-01",
-								"hour": "09:00",
-								"teams": {
-									"home": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 1,
-										"winner": false,
-										"standings": 15,
-										"featured": false
-									},
-									"away": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 2,
-										"winner": true,
-										"standings": 14,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-23-Al Taawon-Al Akhdoud",
-								"fullDate": "2024-02-23T09:00",
-								"date": "2024-02-23",
-								"hour": "09:00",
-								"teams": {
-									"home": {
-										"id": 2936,
-										"name": "Al Taawon",
-										"score": 3,
-										"winner": true,
-										"standings": 4,
-										"featured": false
-									},
-									"away": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 1,
-										"winner": false,
-										"standings": 15,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-16-Al Akhdoud-Al-Ahli Jeddah",
-								"fullDate": "2024-02-16T12:00",
-								"date": "2024-02-16",
-								"hour": "12:00",
-								"teams": {
-									"home": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 3,
-										"winner": true,
-										"standings": 15,
-										"featured": false
-									},
-									"away": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 2,
-										"winner": false,
-										"standings": 3,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-30-Al-Fateh-Al Akhdoud",
-								"fullDate": "2023-12-30T10:00",
-								"date": "2023-12-30",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 0,
-										"winner": null,
-										"standings": 7,
-										"featured": false
-									},
-									"away": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 0,
-										"winner": null,
-										"standings": 15,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-22-Al Akhdoud-Al Shabab",
-								"fullDate": "2023-12-22T10:00",
-								"date": "2023-12-22",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 1,
-										"winner": true,
-										"standings": 15,
-										"featured": false
-									},
-									"away": {
-										"id": 2940,
-										"name": "Al Shabab",
-										"score": 0,
-										"winner": false,
-										"standings": 9,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-14-Al Akhdoud-Al Taee",
-								"fullDate": "2023-12-14T10:00",
-								"date": "2023-12-14",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 1,
-										"winner": true,
-										"standings": 15,
-										"featured": false
-									},
-									"away": {
-										"id": 2942,
-										"name": "Al Taee",
-										"score": 0,
-										"winner": false,
-										"standings": 16,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-09-Al Wehda Club-Al Akhdoud",
-								"fullDate": "2023-12-09T13:00",
-								"date": "2023-12-09",
-								"hour": "13:00",
-								"teams": {
-									"home": {
-										"id": 2937,
-										"name": "Al Wehda Club",
-										"score": 2,
-										"winner": true,
-										"standings": 12,
-										"featured": false
-									},
-									"away": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 0,
-										"winner": false,
-										"standings": 15,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-02-Al Akhdoud-Al-Ettifaq",
-								"fullDate": "2023-12-02T10:00",
-								"date": "2023-12-02",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 1,
-										"winner": true,
-										"standings": 15,
-										"featured": false
-									},
-									"away": {
-										"id": 2934,
-										"name": "Al-Ettifaq",
-										"score": 0,
-										"winner": false,
-										"standings": 6,
-										"featured": false
-									}
-								}
-							}
-						]
-					}
-				}
-			},
-			{
-				"id": "2024-05-02-Al-Fateh-Al Riyadh",
-				"fullDate": "2024-05-02T13:00",
-				"date": "2024-05-02",
-				"hour": "13:00",
-				"predictions": [
-					{
-						"name": "Goles por equipo local",
-						"recommendable": false,
-						"acceptancePercentage": "0.50",
-						"criteria": {
-							"home": [
-								{ "description": "Promedio de goles >= 1.5", "check": "❌" },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌" },
+								{ "description": "Promedio de goles >= 1.5", "check": "✅" },
+								{ "description": "Promedio de goles de local >= 1.5", "check": "✅" },
 								{ "description": "Promedio de goles de visitante >= 1.5", "check": "✅" },
 								{ "description": "Ha marcado en los ultimos 3 partidos de local", "check": "✅" },
-								{ "description": "No ha perdido los ultimos 3 partidos de local", "check": "❌" },
+								{ "description": "No ha perdido los ultimos 3 partidos de local", "check": "✅" },
 								{
 									"description": "El local está al menos 5 posiciones mas arriba que el rival",
-									"check": "✅"
+									"check": "❌"
 								},
 								{
 									"description": "El local está en las primeras 6 posiciones de la tabla",
-									"check": "✅"
+									"check": "❌"
 								},
-								{ "description": "El local es un equipo destacado", "check": "❌" }
+								{ "description": "El local es un equipo destacado", "check": "✅" }
 							],
 							"away": []
 						}
@@ -2886,1403 +2096,659 @@
 				],
 				"teams": {
 					"home": {
-						"id": 2931,
-						"name": "Al-Fateh",
+						"id": 49,
+						"name": "Chelsea",
 						"score": 2,
-						"winner": null,
-						"standings": 7,
-						"featured": false,
+						"winner": true,
+						"standings": 8,
+						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
-							"total_de_goles": 19,
-							"promedio_de_goles": 1.3,
+							"total_de_goles": 35,
+							"promedio_de_goles": 2.3,
 							"---|---": 0,
-							"goles_de_local": 9,
-							"promedio_de_goles_de_local": 1.1,
-							"partidos_de_local": 8,
-							"partidos_ganados_de_local": 2,
-							"partidos_perdidos_de_local": 3,
-							"partidos_empatados_de_local": 3,
+							"goles_de_local": 22,
+							"promedio_de_goles_de_local": 3.1,
+							"partidos_de_local": 7,
+							"partidos_ganados_de_local": 5,
+							"partidos_perdidos_de_local": 1,
+							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 6,
 							"---||---": 0,
-							"goles_de_visitante": 10,
-							"promedio_de_goles_de_visitante": 1.4,
-							"partidos_de_visitante": 7,
+							"goles_de_visitante": 13,
+							"promedio_de_goles_de_visitante": 1.6,
+							"partidos_de_visitante": 8,
 							"partidos_ganados_de_visitante": 2,
-							"partidos_perdidos_de_visitante": 4,
-							"partidos_empatados_de_visitante": 1,
+							"partidos_perdidos_de_visitante": 2,
+							"partidos_empatados_de_visitante": 4,
 							"partidos_con_goles_de_visitante": 6
 						},
 						"matches": [
 							{
-								"id": "2024-04-26-Al-Hilal Saudi FC-Al-Fateh",
-								"fullDate": "2024-04-26T10:00",
-								"date": "2024-04-26",
-								"hour": "10:00",
+								"id": "2024-04-27-Aston Villa-Chelsea",
+								"fullDate": "2024-04-27T14:00",
+								"date": "2024-04-27",
+								"hour": "14:00",
 								"teams": {
 									"home": {
-										"id": 2932,
-										"name": "Al-Hilal Saudi FC",
-										"score": 3,
+										"id": 66,
+										"name": "Aston Villa",
+										"score": 2,
+										"winner": null,
+										"standings": 4,
+										"featured": true
+									},
+									"away": {
+										"id": 49,
+										"name": "Chelsea",
+										"score": 2,
+										"winner": null,
+										"standings": 8,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-23-Arsenal-Chelsea",
+								"fullDate": "2024-04-23T14:00",
+								"date": "2024-04-23",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 42,
+										"name": "Arsenal",
+										"score": 5,
 										"winner": true,
 										"standings": 1,
 										"featured": true
 									},
 									"away": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 1,
-										"winner": false,
-										"standings": 7,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-18-Al-Fateh-Al-Raed",
-								"fullDate": "2024-04-18T13:00",
-								"date": "2024-04-18",
-								"hour": "13:00",
-								"teams": {
-									"home": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 3,
-										"winner": true,
-										"standings": 7,
-										"featured": false
-									},
-									"away": {
-										"id": 2935,
-										"name": "Al-Raed",
-										"score": 1,
-										"winner": false,
-										"standings": 13,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-07-Abha-Al-Fateh",
-								"fullDate": "2024-04-07T14:00",
-								"date": "2024-04-07",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2951,
-										"name": "Abha",
-										"score": 2,
-										"winner": true,
-										"standings": 17,
-										"featured": false
-									},
-									"away": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 1,
-										"winner": false,
-										"standings": 7,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-03-Al-Fateh-Al-Ettifaq",
-								"fullDate": "2024-04-03T14:00",
-								"date": "2024-04-03",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 1,
-										"winner": true,
-										"standings": 7,
-										"featured": false
-									},
-									"away": {
-										"id": 2934,
-										"name": "Al-Ettifaq",
+										"id": 49,
+										"name": "Chelsea",
 										"score": 0,
 										"winner": false,
-										"standings": 6,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-30-Al Wehda Club-Al-Fateh",
-								"fullDate": "2024-03-30T14:00",
-								"date": "2024-03-30",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2937,
-										"name": "Al Wehda Club",
-										"score": 2,
-										"winner": false,
-										"standings": 12,
-										"featured": false
-									},
-									"away": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 3,
-										"winner": true,
-										"standings": 7,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-16-Al-Fateh-Al-Ittihad FC",
-								"fullDate": "2024-03-16T14:00",
-								"date": "2024-03-16",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 2,
-										"winner": false,
-										"standings": 7,
-										"featured": false
-									},
-									"away": {
-										"id": 2938,
-										"name": "Al-Ittihad FC",
-										"score": 4,
-										"winner": true,
-										"standings": 5,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-09-Al-Fateh-Al Khaleej Saihat",
-								"fullDate": "2024-03-09T09:00",
-								"date": "2024-03-09",
-								"hour": "09:00",
-								"teams": {
-									"home": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 1,
-										"winner": false,
-										"standings": 7,
-										"featured": false
-									},
-									"away": {
-										"id": 2928,
-										"name": "Al Khaleej Saihat",
-										"score": 2,
-										"winner": true,
-										"standings": 11,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-02-Al-Ahli Jeddah-Al-Fateh",
-								"fullDate": "2024-03-02T12:00",
-								"date": "2024-03-02",
-								"hour": "12:00",
-								"teams": {
-									"home": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 1,
-										"winner": null,
-										"standings": 3,
-										"featured": false
-									},
-									"away": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 1,
-										"winner": null,
-										"standings": 7,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-23-Al-Fateh-Damac",
-								"fullDate": "2024-02-23T12:00",
-								"date": "2024-02-23",
-								"hour": "12:00",
-								"teams": {
-									"home": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 1,
-										"winner": null,
-										"standings": 7,
-										"featured": false
-									},
-									"away": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 1,
-										"winner": null,
 										"standings": 8,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
 							{
-								"id": "2024-02-17-Al-Nassr-Al-Fateh",
-								"fullDate": "2024-02-17T12:00",
-								"date": "2024-02-17",
-								"hour": "12:00",
+								"id": "2024-04-20-Manchester City-Chelsea",
+								"fullDate": "2024-04-20T11:15",
+								"date": "2024-04-20",
+								"hour": "11:15",
 								"teams": {
 									"home": {
-										"id": 2939,
-										"name": "Al-Nassr",
-										"score": 2,
+										"id": 50,
+										"name": "Manchester City",
+										"score": 1,
 										"winner": true,
 										"standings": 2,
 										"featured": true
 									},
 									"away": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 1,
+										"id": 49,
+										"name": "Chelsea",
+										"score": 0,
 										"winner": false,
-										"standings": 7,
-										"featured": false
+										"standings": 8,
+										"featured": true
 									}
 								}
 							},
 							{
-								"id": "2023-12-30-Al-Fateh-Al Akhdoud",
-								"fullDate": "2023-12-30T10:00",
-								"date": "2023-12-30",
-								"hour": "10:00",
+								"id": "2024-04-15-Chelsea-Everton",
+								"fullDate": "2024-04-15T14:00",
+								"date": "2024-04-15",
+								"hour": "14:00",
 								"teams": {
 									"home": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 0,
-										"winner": null,
-										"standings": 7,
-										"featured": false
+										"id": 49,
+										"name": "Chelsea",
+										"score": 6,
+										"winner": true,
+										"standings": 8,
+										"featured": true
 									},
 									"away": {
-										"id": 2977,
-										"name": "Al Akhdoud",
+										"id": 45,
+										"name": "Everton",
 										"score": 0,
-										"winner": null,
+										"winner": false,
 										"standings": 15,
 										"featured": false
 									}
 								}
 							},
 							{
-								"id": "2023-12-23-Al Taawon-Al-Fateh",
-								"fullDate": "2023-12-23T10:00",
-								"date": "2023-12-23",
+								"id": "2024-04-07-Sheffield Utd-Chelsea",
+								"fullDate": "2024-04-07T11:30",
+								"date": "2024-04-07",
+								"hour": "11:30",
+								"teams": {
+									"home": {
+										"id": 62,
+										"name": "Sheffield Utd",
+										"score": 2,
+										"winner": null,
+										"standings": 20,
+										"featured": false
+									},
+									"away": {
+										"id": 49,
+										"name": "Chelsea",
+										"score": 2,
+										"winner": null,
+										"standings": 8,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-04-Chelsea-Manchester United",
+								"fullDate": "2024-04-04T14:15",
+								"date": "2024-04-04",
+								"hour": "14:15",
+								"teams": {
+									"home": {
+										"id": 49,
+										"name": "Chelsea",
+										"score": 4,
+										"winner": true,
+										"standings": 8,
+										"featured": true
+									},
+									"away": {
+										"id": 33,
+										"name": "Manchester United",
+										"score": 3,
+										"winner": false,
+										"standings": 6,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-30-Chelsea-Burnley",
+								"fullDate": "2024-03-30T10:00",
+								"date": "2024-03-30",
 								"hour": "10:00",
 								"teams": {
 									"home": {
-										"id": 2936,
-										"name": "Al Taawon",
+										"id": 49,
+										"name": "Chelsea",
+										"score": 2,
+										"winner": null,
+										"standings": 8,
+										"featured": true
+									},
+									"away": {
+										"id": 44,
+										"name": "Burnley",
+										"score": 2,
+										"winner": null,
+										"standings": 19,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-17-Chelsea-Leicester",
+								"fullDate": "2024-03-17T07:45",
+								"date": "2024-03-17",
+								"hour": "07:45",
+								"teams": {
+									"home": {
+										"id": 49,
+										"name": "Chelsea",
+										"score": 4,
+										"winner": true,
+										"standings": 8,
+										"featured": true
+									},
+									"away": {
+										"id": 46,
+										"name": "Leicester",
+										"score": 2,
+										"winner": false,
+										"standings": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-11-Chelsea-Newcastle",
+								"fullDate": "2024-03-11T15:00",
+								"date": "2024-03-11",
+								"hour": "15:00",
+								"teams": {
+									"home": {
+										"id": 49,
+										"name": "Chelsea",
+										"score": 3,
+										"winner": true,
+										"standings": 8,
+										"featured": true
+									},
+									"away": {
+										"id": 34,
+										"name": "Newcastle",
+										"score": 2,
+										"winner": false,
+										"standings": 7,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-02-Brentford-Chelsea",
+								"fullDate": "2024-03-02T10:00",
+								"date": "2024-03-02",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 55,
+										"name": "Brentford",
+										"score": 2,
+										"winner": null,
+										"standings": 16,
+										"featured": false
+									},
+									"away": {
+										"id": 49,
+										"name": "Chelsea",
+										"score": 2,
+										"winner": null,
+										"standings": 8,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-02-28-Chelsea-Leeds",
+								"fullDate": "2024-02-28T14:30",
+								"date": "2024-02-28",
+								"hour": "14:30",
+								"teams": {
+									"home": {
+										"id": 49,
+										"name": "Chelsea",
+										"score": 3,
+										"winner": true,
+										"standings": 8,
+										"featured": true
+									},
+									"away": {
+										"id": 63,
+										"name": "Leeds",
+										"score": 2,
+										"winner": false,
+										"standings": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-25-Chelsea-Liverpool",
+								"fullDate": "2024-02-25T10:00",
+								"date": "2024-02-25",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 49,
+										"name": "Chelsea",
+										"score": 0,
+										"winner": false,
+										"standings": 8,
+										"featured": true
+									},
+									"away": {
+										"id": 40,
+										"name": "Liverpool",
+										"score": 1,
+										"winner": true,
+										"standings": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-02-17-Manchester City-Chelsea",
+								"fullDate": "2024-02-17T12:30",
+								"date": "2024-02-17",
+								"hour": "12:30",
+								"teams": {
+									"home": {
+										"id": 50,
+										"name": "Manchester City",
+										"score": 1,
+										"winner": null,
+										"standings": 2,
+										"featured": true
+									},
+									"away": {
+										"id": 49,
+										"name": "Chelsea",
+										"score": 1,
+										"winner": null,
+										"standings": 8,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-02-12-Crystal Palace-Chelsea",
+								"fullDate": "2024-02-12T15:00",
+								"date": "2024-02-12",
+								"hour": "15:00",
+								"teams": {
+									"home": {
+										"id": 52,
+										"name": "Crystal Palace",
+										"score": 1,
+										"winner": false,
+										"standings": 14,
+										"featured": false
+									},
+									"away": {
+										"id": 49,
+										"name": "Chelsea",
+										"score": 3,
+										"winner": true,
+										"standings": 8,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-02-07-Aston Villa-Chelsea",
+								"fullDate": "2024-02-07T15:00",
+								"date": "2024-02-07",
+								"hour": "15:00",
+								"teams": {
+									"home": {
+										"id": 66,
+										"name": "Aston Villa",
 										"score": 1,
 										"winner": false,
 										"standings": 4,
-										"featured": false
+										"featured": true
 									},
 									"away": {
-										"id": 2931,
-										"name": "Al-Fateh",
+										"id": 49,
+										"name": "Chelsea",
 										"score": 3,
 										"winner": true,
-										"standings": 7,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-15-Al-Fateh-Al Shabab",
-								"fullDate": "2023-12-15T10:00",
-								"date": "2023-12-15",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 1,
-										"winner": null,
-										"standings": 7,
-										"featured": false
-									},
-									"away": {
-										"id": 2940,
-										"name": "Al Shabab",
-										"score": 1,
-										"winner": null,
-										"standings": 9,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-07-Al-Hazm-Al-Fateh",
-								"fullDate": "2023-12-07T10:00",
-								"date": "2023-12-07",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 2,
-										"winner": true,
-										"standings": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 0,
-										"winner": false,
-										"standings": 7,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-02-Al-Fateh-Al Taee",
-								"fullDate": "2023-12-02T10:00",
-								"date": "2023-12-02",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 0,
-										"winner": false,
-										"standings": 7,
-										"featured": false
-									},
-									"away": {
-										"id": 2942,
-										"name": "Al Taee",
-										"score": 1,
-										"winner": true,
-										"standings": 16,
-										"featured": false
+										"standings": 8,
+										"featured": true
 									}
 								}
 							}
 						]
 					},
 					"away": {
-						"id": 10511,
-						"name": "Al Riyadh",
-						"score": 2,
-						"winner": null,
-						"standings": 14,
-						"featured": false,
+						"id": 47,
+						"name": "Tottenham",
+						"score": 0,
+						"winner": false,
+						"standings": 5,
+						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
-							"total_de_goles": 12,
-							"promedio_de_goles": 0.8,
+							"total_de_goles": 26,
+							"promedio_de_goles": 1.7,
 							"---|---": 0,
-							"goles_de_local": 7,
-							"promedio_de_goles_de_local": 0.9,
-							"partidos_de_local": 8,
-							"partidos_ganados_de_local": 2,
+							"goles_de_local": 17,
+							"promedio_de_goles_de_local": 1.9,
+							"partidos_de_local": 9,
+							"partidos_ganados_de_local": 6,
 							"partidos_perdidos_de_local": 3,
-							"partidos_empatados_de_local": 3,
-							"partidos_con_goles_de_local": 6,
+							"partidos_empatados_de_local": 0,
+							"partidos_con_goles_de_local": 8,
 							"---||---": 0,
-							"goles_de_visitante": 5,
-							"promedio_de_goles_de_visitante": 0.7,
-							"partidos_de_visitante": 7,
+							"goles_de_visitante": 9,
+							"promedio_de_goles_de_visitante": 1.5,
+							"partidos_de_visitante": 6,
 							"partidos_ganados_de_visitante": 1,
-							"partidos_perdidos_de_visitante": 5,
-							"partidos_empatados_de_visitante": 1,
+							"partidos_perdidos_de_visitante": 2,
+							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 4
 						},
 						"matches": [
 							{
-								"id": "2024-04-25-Al Riyadh-Al-Ahli Jeddah",
-								"fullDate": "2024-04-25T13:00",
-								"date": "2024-04-25",
-								"hour": "13:00",
+								"id": "2024-04-28-Tottenham-Arsenal",
+								"fullDate": "2024-04-28T08:00",
+								"date": "2024-04-28",
+								"hour": "08:00",
 								"teams": {
 									"home": {
-										"id": 10511,
-										"name": "Al Riyadh",
+										"id": 47,
+										"name": "Tottenham",
 										"score": 2,
-										"winner": true,
-										"standings": 14,
-										"featured": false
+										"winner": false,
+										"standings": 5,
+										"featured": true
 									},
 									"away": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 1,
-										"winner": false,
-										"standings": 3,
-										"featured": false
+										"id": 42,
+										"name": "Arsenal",
+										"score": 3,
+										"winner": true,
+										"standings": 1,
+										"featured": true
 									}
 								}
 							},
 							{
-								"id": "2024-04-19-Al Riyadh-Al Taee",
-								"fullDate": "2024-04-19T10:00",
-								"date": "2024-04-19",
-								"hour": "10:00",
+								"id": "2024-04-13-Newcastle-Tottenham",
+								"fullDate": "2024-04-13T06:30",
+								"date": "2024-04-13",
+								"hour": "06:30",
 								"teams": {
 									"home": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 1,
-										"winner": false,
-										"standings": 14,
-										"featured": false
+										"id": 34,
+										"name": "Newcastle",
+										"score": 4,
+										"winner": true,
+										"standings": 7,
+										"featured": true
 									},
 									"away": {
-										"id": 2942,
-										"name": "Al Taee",
-										"score": 2,
-										"winner": true,
-										"standings": 16,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-06-Al-Ettifaq-Al Riyadh",
-								"fullDate": "2024-04-06T14:00",
-								"date": "2024-04-06",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2934,
-										"name": "Al-Ettifaq",
-										"score": 1,
-										"winner": true,
-										"standings": 6,
-										"featured": false
-									},
-									"away": {
-										"id": 10511,
-										"name": "Al Riyadh",
+										"id": 47,
+										"name": "Tottenham",
 										"score": 0,
 										"winner": false,
-										"standings": 14,
+										"standings": 5,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-07-Tottenham-Nottingham Forest",
+								"fullDate": "2024-04-07T12:00",
+								"date": "2024-04-07",
+								"hour": "12:00",
+								"teams": {
+									"home": {
+										"id": 47,
+										"name": "Tottenham",
+										"score": 3,
+										"winner": true,
+										"standings": 5,
+										"featured": true
+									},
+									"away": {
+										"id": 65,
+										"name": "Nottingham Forest",
+										"score": 1,
+										"winner": false,
+										"standings": 17,
 										"featured": false
 									}
 								}
 							},
 							{
-								"id": "2024-04-03-Al Shabab-Al Riyadh",
-								"fullDate": "2024-04-03T14:00",
-								"date": "2024-04-03",
-								"hour": "14:00",
+								"id": "2024-04-02-West Ham-Tottenham",
+								"fullDate": "2024-04-02T14:15",
+								"date": "2024-04-02",
+								"hour": "14:15",
 								"teams": {
 									"home": {
-										"id": 2940,
-										"name": "Al Shabab",
+										"id": 48,
+										"name": "West Ham",
 										"score": 1,
-										"winner": true,
+										"winner": null,
 										"standings": 9,
 										"featured": false
 									},
 									"away": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 0,
-										"winner": false,
-										"standings": 14,
-										"featured": false
+										"id": 47,
+										"name": "Tottenham",
+										"score": 1,
+										"winner": null,
+										"standings": 5,
+										"featured": true
 									}
 								}
 							},
 							{
-								"id": "2024-03-30-Al Riyadh-Abha",
-								"fullDate": "2024-03-30T14:00",
+								"id": "2024-03-30-Tottenham-Luton",
+								"fullDate": "2024-03-30T10:00",
 								"date": "2024-03-30",
-								"hour": "14:00",
+								"hour": "10:00",
 								"teams": {
 									"home": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 1,
-										"winner": null,
-										"standings": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 2951,
-										"name": "Abha",
-										"score": 1,
-										"winner": null,
-										"standings": 17,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-15-Al-Fayha-Al Riyadh",
-								"fullDate": "2024-03-15T14:00",
-								"date": "2024-03-15",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2944,
-										"name": "Al-Fayha",
-										"score": 1,
-										"winner": null,
-										"standings": 10,
-										"featured": false
-									},
-									"away": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 1,
-										"winner": null,
-										"standings": 14,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-08-Al Riyadh-Al-Hilal Saudi FC",
-								"fullDate": "2024-03-08T09:00",
-								"date": "2024-03-08",
-								"hour": "09:00",
-								"teams": {
-									"home": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 1,
-										"winner": false,
-										"standings": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 2932,
-										"name": "Al-Hilal Saudi FC",
-										"score": 3,
-										"winner": true,
-										"standings": 1,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-03-01-Al Akhdoud-Al Riyadh",
-								"fullDate": "2024-03-01T09:00",
-								"date": "2024-03-01",
-								"hour": "09:00",
-								"teams": {
-									"home": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 1,
-										"winner": false,
-										"standings": 15,
-										"featured": false
-									},
-									"away": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 2,
-										"winner": true,
-										"standings": 14,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-23-Al Riyadh-Al-Raed",
-								"fullDate": "2024-02-23T09:00",
-								"date": "2024-02-23",
-								"hour": "09:00",
-								"teams": {
-									"home": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 1,
-										"winner": null,
-										"standings": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 2935,
-										"name": "Al-Raed",
-										"score": 1,
-										"winner": null,
-										"standings": 13,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-18-Al-Ittihad FC-Al Riyadh",
-								"fullDate": "2024-02-18T12:00",
-								"date": "2024-02-18",
-								"hour": "12:00",
-								"teams": {
-									"home": {
-										"id": 2938,
-										"name": "Al-Ittihad FC",
+										"id": 47,
+										"name": "Tottenham",
 										"score": 2,
 										"winner": true,
 										"standings": 5,
-										"featured": false
-									},
-									"away": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 0,
-										"winner": false,
-										"standings": 14,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-28-Al Riyadh-Damac",
-								"fullDate": "2023-12-28T10:00",
-								"date": "2023-12-28",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 1,
-										"winner": true,
-										"standings": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 0,
-										"winner": false,
-										"standings": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-24-Al Wehda Club-Al Riyadh",
-								"fullDate": "2023-12-24T13:00",
-								"date": "2023-12-24",
-								"hour": "13:00",
-								"teams": {
-									"home": {
-										"id": 2937,
-										"name": "Al Wehda Club",
-										"score": 3,
-										"winner": true,
-										"standings": 12,
-										"featured": false
-									},
-									"away": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 1,
-										"winner": false,
-										"standings": 14,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-16-Al Riyadh-Al Khaleej Saihat",
-								"fullDate": "2023-12-16T10:00",
-								"date": "2023-12-16",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 0,
-										"winner": false,
-										"standings": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 2928,
-										"name": "Al Khaleej Saihat",
-										"score": 1,
-										"winner": true,
-										"standings": 11,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-08-Al-Nassr-Al Riyadh",
-								"fullDate": "2023-12-08T13:00",
-								"date": "2023-12-08",
-								"hour": "13:00",
-								"teams": {
-									"home": {
-										"id": 2939,
-										"name": "Al-Nassr",
-										"score": 4,
-										"winner": true,
-										"standings": 2,
 										"featured": true
 									},
 									"away": {
-										"id": 10511,
-										"name": "Al Riyadh",
+										"id": 1359,
+										"name": "Luton",
 										"score": 1,
 										"winner": false,
-										"standings": 14,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-11-30-Al Riyadh-Al-Hazm",
-								"fullDate": "2023-11-30T10:00",
-								"date": "2023-11-30",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 0,
-										"winner": null,
-										"standings": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 0,
-										"winner": null,
 										"standings": 18,
 										"featured": false
 									}
 								}
-							}
-						]
-					}
-				}
-			},
-			{
-				"id": "2024-05-02-Al-Ahli Jeddah-Damac",
-				"fullDate": "2024-05-02T13:00",
-				"date": "2024-05-02",
-				"hour": "13:00",
-				"predictions": [
-					{
-						"name": "Goles por equipo local",
-						"recommendable": false,
-						"acceptancePercentage": "0.50",
-						"criteria": {
-							"home": [
-								{ "description": "Promedio de goles >= 1.5", "check": "✅" },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌" },
-								{ "description": "Promedio de goles de visitante >= 1.5", "check": "✅" },
-								{ "description": "Ha marcado en los ultimos 3 partidos de local", "check": "❌" },
-								{ "description": "No ha perdido los ultimos 3 partidos de local", "check": "❌" },
-								{
-									"description": "El local está al menos 5 posiciones mas arriba que el rival",
-									"check": "✅"
-								},
-								{
-									"description": "El local está en las primeras 6 posiciones de la tabla",
-									"check": "✅"
-								},
-								{ "description": "El local es un equipo destacado", "check": "❌" }
-							],
-							"away": []
-						}
-					}
-				],
-				"teams": {
-					"home": {
-						"id": 2929,
-						"name": "Al-Ahli Jeddah",
-						"score": 4,
-						"winner": true,
-						"standings": 3,
-						"featured": false,
-						"stats": {
-							"total_de_partidos": 15,
-							"total_de_goles": 28,
-							"promedio_de_goles": 1.9,
-							"---|---": 0,
-							"goles_de_local": 3,
-							"promedio_de_goles_de_local": 0.5,
-							"partidos_de_local": 6,
-							"partidos_ganados_de_local": 2,
-							"partidos_perdidos_de_local": 1,
-							"partidos_empatados_de_local": 3,
-							"partidos_con_goles_de_local": 3,
-							"---||---": 0,
-							"goles_de_visitante": 25,
-							"promedio_de_goles_de_visitante": 2.8,
-							"partidos_de_visitante": 9,
-							"partidos_ganados_de_visitante": 5,
-							"partidos_perdidos_de_visitante": 2,
-							"partidos_empatados_de_visitante": 2,
-							"partidos_con_goles_de_visitante": 9
-						},
-						"matches": [
-							{
-								"id": "2024-04-25-Al Riyadh-Al-Ahli Jeddah",
-								"fullDate": "2024-04-25T13:00",
-								"date": "2024-04-25",
-								"hour": "13:00",
-								"teams": {
-									"home": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 2,
-										"winner": true,
-										"standings": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 1,
-										"winner": false,
-										"standings": 3,
-										"featured": false
-									}
-								}
 							},
 							{
-								"id": "2024-04-05-Al Wehda Club-Al-Ahli Jeddah",
-								"fullDate": "2024-04-05T14:00",
-								"date": "2024-04-05",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2937,
-										"name": "Al Wehda Club",
-										"score": 1,
-										"winner": null,
-										"standings": 12,
-										"featured": false
-									},
-									"away": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 1,
-										"winner": null,
-										"standings": 3,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-01-Al-Ahli Jeddah-Al-Ittihad FC",
-								"fullDate": "2024-04-01T14:00",
-								"date": "2024-04-01",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 1,
-										"winner": true,
-										"standings": 3,
-										"featured": false
-									},
-									"away": {
-										"id": 2938,
-										"name": "Al-Ittihad FC",
-										"score": 0,
-										"winner": false,
-										"standings": 5,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-29-Al-Ettifaq-Al-Ahli Jeddah",
-								"fullDate": "2024-03-29T14:00",
-								"date": "2024-03-29",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2934,
-										"name": "Al-Ettifaq",
-										"score": 2,
-										"winner": null,
-										"standings": 6,
-										"featured": false
-									},
-									"away": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 2,
-										"winner": null,
-										"standings": 3,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-15-Al-Ahli Jeddah-Al-Nassr",
-								"fullDate": "2024-03-15T14:00",
-								"date": "2024-03-15",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 0,
-										"winner": false,
-										"standings": 3,
-										"featured": false
-									},
-									"away": {
-										"id": 2939,
-										"name": "Al-Nassr",
-										"score": 1,
-										"winner": true,
-										"standings": 2,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-03-09-Al Taawon-Al-Ahli Jeddah",
-								"fullDate": "2024-03-09T12:00",
-								"date": "2024-03-09",
-								"hour": "12:00",
-								"teams": {
-									"home": {
-										"id": 2936,
-										"name": "Al Taawon",
-										"score": 0,
-										"winner": false,
-										"standings": 4,
-										"featured": false
-									},
-									"away": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 1,
-										"winner": true,
-										"standings": 3,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-02-Al-Ahli Jeddah-Al-Fateh",
-								"fullDate": "2024-03-02T12:00",
-								"date": "2024-03-02",
-								"hour": "12:00",
-								"teams": {
-									"home": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 1,
-										"winner": null,
-										"standings": 3,
-										"featured": false
-									},
-									"away": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 1,
-										"winner": null,
-										"standings": 7,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-24-Al Taee-Al-Ahli Jeddah",
-								"fullDate": "2024-02-24T09:00",
-								"date": "2024-02-24",
-								"hour": "09:00",
-								"teams": {
-									"home": {
-										"id": 2942,
-										"name": "Al Taee",
-										"score": 1,
-										"winner": false,
-										"standings": 16,
-										"featured": false
-									},
-									"away": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 4,
-										"winner": true,
-										"standings": 3,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-16-Al Akhdoud-Al-Ahli Jeddah",
-								"fullDate": "2024-02-16T12:00",
-								"date": "2024-02-16",
-								"hour": "12:00",
-								"teams": {
-									"home": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 3,
-										"winner": true,
-										"standings": 15,
-										"featured": false
-									},
-									"away": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 2,
-										"winner": false,
-										"standings": 3,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-29-Al-Ahli Jeddah-Al Khaleej Saihat",
-								"fullDate": "2023-12-29T13:00",
-								"date": "2023-12-29",
-								"hour": "13:00",
-								"teams": {
-									"home": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 1,
-										"winner": true,
-										"standings": 3,
-										"featured": false
-									},
-									"away": {
-										"id": 2928,
-										"name": "Al Khaleej Saihat",
-										"score": 0,
-										"winner": false,
-										"standings": 11,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-22-Al-Hazm-Al-Ahli Jeddah",
-								"fullDate": "2023-12-22T10:00",
-								"date": "2023-12-22",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 0,
-										"winner": false,
-										"standings": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 4,
-										"winner": true,
-										"standings": 3,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-14-Al-Fayha-Al-Ahli Jeddah",
-								"fullDate": "2023-12-14T13:00",
-								"date": "2023-12-14",
-								"hour": "13:00",
-								"teams": {
-									"home": {
-										"id": 2944,
-										"name": "Al-Fayha",
-										"score": 0,
-										"winner": false,
-										"standings": 10,
-										"featured": false
-									},
-									"away": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 4,
-										"winner": true,
-										"standings": 3,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-09-Al-Ahli Jeddah-Al-Raed",
-								"fullDate": "2023-12-09T10:00",
-								"date": "2023-12-09",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 0,
-										"winner": null,
-										"standings": 3,
-										"featured": false
-									},
-									"away": {
-										"id": 2935,
-										"name": "Al-Raed",
-										"score": 0,
-										"winner": null,
-										"standings": 13,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-11-30-Abha-Al-Ahli Jeddah",
-								"fullDate": "2023-11-30T10:00",
-								"date": "2023-11-30",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2951,
-										"name": "Abha",
-										"score": 0,
-										"winner": false,
-										"standings": 17,
-										"featured": false
-									},
-									"away": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 6,
-										"winner": true,
-										"standings": 3,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-11-25-Al-Ahli Jeddah-Al Shabab",
-								"fullDate": "2023-11-25T13:00",
-								"date": "2023-11-25",
-								"hour": "13:00",
-								"teams": {
-									"home": {
-										"id": 2929,
-										"name": "Al-Ahli Jeddah",
-										"score": 0,
-										"winner": null,
-										"standings": 3,
-										"featured": false
-									},
-									"away": {
-										"id": 2940,
-										"name": "Al Shabab",
-										"score": 0,
-										"winner": null,
-										"standings": 9,
-										"featured": false
-									}
-								}
-							}
-						]
-					},
-					"away": {
-						"id": 2956,
-						"name": "Damac",
-						"score": 1,
-						"winner": false,
-						"standings": 8,
-						"featured": false,
-						"stats": {
-							"total_de_partidos": 15,
-							"total_de_goles": 16,
-							"promedio_de_goles": 1.1,
-							"---|---": 0,
-							"goles_de_local": 7,
-							"promedio_de_goles_de_local": 0.9,
-							"partidos_de_local": 8,
-							"partidos_ganados_de_local": 3,
-							"partidos_perdidos_de_local": 5,
-							"partidos_empatados_de_local": 0,
-							"partidos_con_goles_de_local": 3,
-							"---||---": 0,
-							"goles_de_visitante": 9,
-							"promedio_de_goles_de_visitante": 1.3,
-							"partidos_de_visitante": 7,
-							"partidos_ganados_de_visitante": 3,
-							"partidos_perdidos_de_visitante": 2,
-							"partidos_empatados_de_visitante": 2,
-							"partidos_con_goles_de_visitante": 5
-						},
-						"matches": [
-							{
-								"id": "2024-04-26-Damac-Al Taawon",
-								"fullDate": "2024-04-26T10:00",
-								"date": "2024-04-26",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 0,
-										"winner": false,
-										"standings": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2936,
-										"name": "Al Taawon",
-										"score": 1,
-										"winner": true,
-										"standings": 4,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-20-Al Akhdoud-Damac",
-								"fullDate": "2024-04-20T10:00",
-								"date": "2024-04-20",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2977,
-										"name": "Al Akhdoud",
-										"score": 1,
-										"winner": false,
-										"standings": 15,
-										"featured": false
-									},
-									"away": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 2,
-										"winner": true,
-										"standings": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-05-Damac-Al-Nassr",
-								"fullDate": "2024-04-05T14:00",
-								"date": "2024-04-05",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 0,
-										"winner": false,
-										"standings": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2939,
-										"name": "Al-Nassr",
-										"score": 1,
-										"winner": true,
-										"standings": 2,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-04-01-Al-Hazm-Damac",
-								"fullDate": "2024-04-01T14:00",
-								"date": "2024-04-01",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2945,
-										"name": "Al-Hazm",
-										"score": 0,
-										"winner": null,
-										"standings": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 0,
-										"winner": null,
-										"standings": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-29-Damac-Al Khaleej Saihat",
-								"fullDate": "2024-03-29T14:00",
-								"date": "2024-03-29",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 0,
-										"winner": false,
-										"standings": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2928,
-										"name": "Al Khaleej Saihat",
-										"score": 1,
-										"winner": true,
-										"standings": 11,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-16-Al-Hilal Saudi FC-Damac",
-								"fullDate": "2024-03-16T14:00",
+								"id": "2024-03-16-Fulham-Tottenham",
+								"fullDate": "2024-03-16T12:30",
 								"date": "2024-03-16",
-								"hour": "14:00",
+								"hour": "12:30",
 								"teams": {
 									"home": {
-										"id": 2932,
-										"name": "Al-Hilal Saudi FC",
-										"score": 2,
+										"id": 36,
+										"name": "Fulham",
+										"score": 3,
 										"winner": true,
-										"standings": 1,
+										"standings": 13,
+										"featured": false
+									},
+									"away": {
+										"id": 47,
+										"name": "Tottenham",
+										"score": 0,
+										"winner": false,
+										"standings": 5,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-10-Aston Villa-Tottenham",
+								"fullDate": "2024-03-10T08:00",
+								"date": "2024-03-10",
+								"hour": "08:00",
+								"teams": {
+									"home": {
+										"id": 66,
+										"name": "Aston Villa",
+										"score": 0,
+										"winner": false,
+										"standings": 4,
 										"featured": true
 									},
 									"away": {
-										"id": 2956,
-										"name": "Damac",
+										"id": 47,
+										"name": "Tottenham",
+										"score": 4,
+										"winner": true,
+										"standings": 5,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-02-Tottenham-Crystal Palace",
+								"fullDate": "2024-03-02T10:00",
+								"date": "2024-03-02",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 47,
+										"name": "Tottenham",
+										"score": 3,
+										"winner": true,
+										"standings": 5,
+										"featured": true
+									},
+									"away": {
+										"id": 52,
+										"name": "Crystal Palace",
 										"score": 1,
 										"winner": false,
-										"standings": 8,
+										"standings": 14,
 										"featured": false
 									}
 								}
 							},
 							{
-								"id": "2024-03-07-Damac-Al Wehda Club",
-								"fullDate": "2024-03-07T09:00",
-								"date": "2024-03-07",
-								"hour": "09:00",
+								"id": "2024-02-17-Tottenham-Wolves",
+								"fullDate": "2024-02-17T10:00",
+								"date": "2024-02-17",
+								"hour": "10:00",
 								"teams": {
 									"home": {
-										"id": 2956,
-										"name": "Damac",
+										"id": 47,
+										"name": "Tottenham",
 										"score": 1,
-										"winner": true,
-										"standings": 8,
-										"featured": false
+										"winner": false,
+										"standings": 5,
+										"featured": true
 									},
 									"away": {
-										"id": 2937,
-										"name": "Al Wehda Club",
-										"score": 0,
+										"id": 39,
+										"name": "Wolves",
+										"score": 2,
+										"winner": true,
+										"standings": 11,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-10-Tottenham-Brighton",
+								"fullDate": "2024-02-10T10:00",
+								"date": "2024-02-10",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 47,
+										"name": "Tottenham",
+										"score": 2,
+										"winner": true,
+										"standings": 5,
+										"featured": true
+									},
+									"away": {
+										"id": 51,
+										"name": "Brighton",
+										"score": 1,
 										"winner": false,
 										"standings": 12,
 										"featured": false
@@ -4290,119 +2756,47 @@
 								}
 							},
 							{
-								"id": "2024-03-02-Damac-Al-Ettifaq",
-								"fullDate": "2024-03-02T09:00",
-								"date": "2024-03-02",
-								"hour": "09:00",
+								"id": "2024-02-03-Everton-Tottenham",
+								"fullDate": "2024-02-03T07:30",
+								"date": "2024-02-03",
+								"hour": "07:30",
 								"teams": {
 									"home": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 0,
-										"winner": false,
-										"standings": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2934,
-										"name": "Al-Ettifaq",
+										"id": 45,
+										"name": "Everton",
 										"score": 2,
-										"winner": true,
-										"standings": 6,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-23-Al-Fateh-Damac",
-								"fullDate": "2024-02-23T12:00",
-								"date": "2024-02-23",
-								"hour": "12:00",
-								"teams": {
-									"home": {
-										"id": 2931,
-										"name": "Al-Fateh",
-										"score": 1,
 										"winner": null,
-										"standings": 7,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 1,
+										"id": 47,
+										"name": "Tottenham",
+										"score": 2,
 										"winner": null,
-										"standings": 8,
-										"featured": false
+										"standings": 5,
+										"featured": true
 									}
 								}
 							},
 							{
-								"id": "2024-02-16-Damac-Al Shabab",
-								"fullDate": "2024-02-16T09:00",
-								"date": "2024-02-16",
-								"hour": "09:00",
+								"id": "2024-01-31-Tottenham-Brentford",
+								"fullDate": "2024-01-31T14:30",
+								"date": "2024-01-31",
+								"hour": "14:30",
 								"teams": {
 									"home": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 0,
-										"winner": false,
-										"standings": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2940,
-										"name": "Al Shabab",
-										"score": 1,
-										"winner": true,
-										"standings": 9,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-28-Al Riyadh-Damac",
-								"fullDate": "2023-12-28T10:00",
-								"date": "2023-12-28",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 10511,
-										"name": "Al Riyadh",
-										"score": 1,
-										"winner": true,
-										"standings": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 0,
-										"winner": false,
-										"standings": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-21-Damac-Al Taee",
-								"fullDate": "2023-12-21T10:00",
-								"date": "2023-12-21",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2956,
-										"name": "Damac",
+										"id": 47,
+										"name": "Tottenham",
 										"score": 3,
 										"winner": true,
-										"standings": 8,
-										"featured": false
+										"standings": 5,
+										"featured": true
 									},
 									"away": {
-										"id": 2942,
-										"name": "Al Taee",
-										"score": 0,
+										"id": 55,
+										"name": "Brentford",
+										"score": 2,
 										"winner": false,
 										"standings": 16,
 										"featured": false
@@ -4410,73 +2804,73 @@
 								}
 							},
 							{
-								"id": "2023-12-15-Al-Raed-Damac",
-								"fullDate": "2023-12-15T10:00",
-								"date": "2023-12-15",
-								"hour": "10:00",
+								"id": "2024-01-26-Tottenham-Manchester City",
+								"fullDate": "2024-01-26T15:00",
+								"date": "2024-01-26",
+								"hour": "15:00",
 								"teams": {
 									"home": {
-										"id": 2935,
-										"name": "Al-Raed",
+										"id": 47,
+										"name": "Tottenham",
 										"score": 0,
 										"winner": false,
-										"standings": 13,
-										"featured": false
-									},
-									"away": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 1,
-										"winner": true,
-										"standings": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2023-12-07-Damac-Al-Ittihad FC",
-								"fullDate": "2023-12-07T10:00",
-								"date": "2023-12-07",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 3,
-										"winner": true,
-										"standings": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2938,
-										"name": "Al-Ittihad FC",
-										"score": 1,
-										"winner": false,
 										"standings": 5,
-										"featured": false
+										"featured": true
+									},
+									"away": {
+										"id": 50,
+										"name": "Manchester City",
+										"score": 1,
+										"winner": true,
+										"standings": 2,
+										"featured": true
 									}
 								}
 							},
 							{
-								"id": "2023-12-01-Al-Fayha-Damac",
-								"fullDate": "2023-12-01T10:00",
-								"date": "2023-12-01",
-								"hour": "10:00",
+								"id": "2024-01-14-Manchester United-Tottenham",
+								"fullDate": "2024-01-14T11:30",
+								"date": "2024-01-14",
+								"hour": "11:30",
 								"teams": {
 									"home": {
-										"id": 2944,
-										"name": "Al-Fayha",
+										"id": 33,
+										"name": "Manchester United",
 										"score": 2,
-										"winner": false,
-										"standings": 10,
-										"featured": false
+										"winner": null,
+										"standings": 6,
+										"featured": true
 									},
 									"away": {
-										"id": 2956,
-										"name": "Damac",
-										"score": 4,
+										"id": 47,
+										"name": "Tottenham",
+										"score": 2,
+										"winner": null,
+										"standings": 5,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-01-05-Tottenham-Burnley",
+								"fullDate": "2024-01-05T15:00",
+								"date": "2024-01-05",
+								"hour": "15:00",
+								"teams": {
+									"home": {
+										"id": 47,
+										"name": "Tottenham",
+										"score": 1,
 										"winner": true,
-										"standings": 8,
+										"standings": 5,
+										"featured": true
+									},
+									"away": {
+										"id": 44,
+										"name": "Burnley",
+										"score": 0,
+										"winner": false,
+										"standings": 19,
 										"featured": false
 									}
 								}
@@ -4487,7 +2881,184 @@
 			}
 		]
 	},
-	"Division 1 (Saudi-Arabia)": {
+	{
+		"name": "Liga MX",
+		"country": "Mexico",
+		"standings": [],
+		"matches": [
+			{
+				"id": "2024-05-02-Necaxa-Club Queretaro",
+				"fullDate": "2024-05-02T20:00",
+				"date": "2024-05-02",
+				"hour": "20:00",
+				"predictions": [
+					{
+						"name": "Goles por equipo local",
+						"recommendable": false,
+						"acceptancePercentage": "0.00",
+						"criteria": {
+							"home": [
+								{ "description": "Promedio de goles >= 1.5", "check": "❌" },
+								{ "description": "Promedio de goles de local >= 1.5", "check": "❌" },
+								{ "description": "Promedio de goles de visitante >= 1.5", "check": "❌" },
+								{ "description": "Ha marcado en los ultimos 3 partidos de local", "check": "❌" },
+								{ "description": "No ha perdido los ultimos 3 partidos de local", "check": "❌" }
+							],
+							"away": []
+						}
+					}
+				],
+				"teams": {
+					"home": {
+						"id": 2288,
+						"name": "Necaxa",
+						"score": 1,
+						"winner": true,
+						"standings": null,
+						"featured": false,
+						"stats": {
+							"total_de_partidos": 0,
+							"total_de_goles": 0,
+							"promedio_de_goles": 0,
+							"---|---": 0,
+							"goles_de_local": 0,
+							"promedio_de_goles_de_local": 0,
+							"partidos_de_local": 0,
+							"partidos_ganados_de_local": 0,
+							"partidos_perdidos_de_local": 0,
+							"partidos_empatados_de_local": 0,
+							"partidos_con_goles_de_local": 0,
+							"---||---": 0,
+							"goles_de_visitante": 0,
+							"promedio_de_goles_de_visitante": 0,
+							"partidos_de_visitante": 0,
+							"partidos_ganados_de_visitante": 0,
+							"partidos_perdidos_de_visitante": 0,
+							"partidos_empatados_de_visitante": 0,
+							"partidos_con_goles_de_visitante": 0
+						},
+						"matches": []
+					},
+					"away": {
+						"id": 2290,
+						"name": "Club Queretaro",
+						"score": 1,
+						"winner": false,
+						"standings": null,
+						"featured": false,
+						"stats": {
+							"total_de_partidos": 0,
+							"total_de_goles": 0,
+							"promedio_de_goles": 0,
+							"---|---": 0,
+							"goles_de_local": 0,
+							"promedio_de_goles_de_local": 0,
+							"partidos_de_local": 0,
+							"partidos_ganados_de_local": 0,
+							"partidos_perdidos_de_local": 0,
+							"partidos_empatados_de_local": 0,
+							"partidos_con_goles_de_local": 0,
+							"---||---": 0,
+							"goles_de_visitante": 0,
+							"promedio_de_goles_de_visitante": 0,
+							"partidos_de_visitante": 0,
+							"partidos_ganados_de_visitante": 0,
+							"partidos_perdidos_de_visitante": 0,
+							"partidos_empatados_de_visitante": 0,
+							"partidos_con_goles_de_visitante": 0
+						},
+						"matches": []
+					}
+				}
+			},
+			{
+				"id": "2024-05-02-Pachuca-U.N.A.M. - Pumas",
+				"fullDate": "2024-05-02T22:15",
+				"date": "2024-05-02",
+				"hour": "22:15",
+				"predictions": [
+					{
+						"name": "Goles por equipo local",
+						"recommendable": false,
+						"acceptancePercentage": "0.00",
+						"criteria": {
+							"home": [
+								{ "description": "Promedio de goles >= 1.5", "check": "❌" },
+								{ "description": "Promedio de goles de local >= 1.5", "check": "❌" },
+								{ "description": "Promedio de goles de visitante >= 1.5", "check": "❌" },
+								{ "description": "Ha marcado en los ultimos 3 partidos de local", "check": "❌" },
+								{ "description": "No ha perdido los ultimos 3 partidos de local", "check": "❌" }
+							],
+							"away": []
+						}
+					}
+				],
+				"teams": {
+					"home": {
+						"id": 2292,
+						"name": "Pachuca",
+						"score": 0,
+						"winner": false,
+						"standings": null,
+						"featured": true,
+						"stats": {
+							"total_de_partidos": 0,
+							"total_de_goles": 0,
+							"promedio_de_goles": 0,
+							"---|---": 0,
+							"goles_de_local": 0,
+							"promedio_de_goles_de_local": 0,
+							"partidos_de_local": 0,
+							"partidos_ganados_de_local": 0,
+							"partidos_perdidos_de_local": 0,
+							"partidos_empatados_de_local": 0,
+							"partidos_con_goles_de_local": 0,
+							"---||---": 0,
+							"goles_de_visitante": 0,
+							"promedio_de_goles_de_visitante": 0,
+							"partidos_de_visitante": 0,
+							"partidos_ganados_de_visitante": 0,
+							"partidos_perdidos_de_visitante": 0,
+							"partidos_empatados_de_visitante": 0,
+							"partidos_con_goles_de_visitante": 0
+						},
+						"matches": []
+					},
+					"away": {
+						"id": 2286,
+						"name": "U.N.A.M. - Pumas",
+						"score": 0,
+						"winner": true,
+						"standings": null,
+						"featured": false,
+						"stats": {
+							"total_de_partidos": 0,
+							"total_de_goles": 0,
+							"promedio_de_goles": 0,
+							"---|---": 0,
+							"goles_de_local": 0,
+							"promedio_de_goles_de_local": 0,
+							"partidos_de_local": 0,
+							"partidos_ganados_de_local": 0,
+							"partidos_perdidos_de_local": 0,
+							"partidos_empatados_de_local": 0,
+							"partidos_con_goles_de_local": 0,
+							"---||---": 0,
+							"goles_de_visitante": 0,
+							"promedio_de_goles_de_visitante": 0,
+							"partidos_de_visitante": 0,
+							"partidos_ganados_de_visitante": 0,
+							"partidos_perdidos_de_visitante": 0,
+							"partidos_empatados_de_visitante": 0,
+							"partidos_con_goles_de_visitante": 0
+						},
+						"matches": []
+					}
+				}
+			}
+		]
+	},
+	{
 		"name": "Division 1",
 		"country": "Saudi-Arabia",
 		"standings": [
@@ -4904,7 +3475,7 @@
 										"score": 1,
 										"winner": false,
 										"standings": 6,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -4920,7 +3491,7 @@
 										"score": 0,
 										"winner": false,
 										"standings": 3,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 2990,
@@ -4944,7 +3515,7 @@
 										"score": 1,
 										"winner": null,
 										"standings": 5,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 2990,
@@ -4992,7 +3563,7 @@
 										"score": 0,
 										"winner": false,
 										"standings": 4,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 2990,
@@ -5064,7 +3635,7 @@
 										"score": 1,
 										"winner": false,
 										"standings": 7,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 2990,
@@ -5120,7 +3691,7 @@
 										"score": 6,
 										"winner": true,
 										"standings": 1,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -5136,7 +3707,7 @@
 										"score": 2,
 										"winner": true,
 										"standings": 2,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 2990,
@@ -5247,7 +3818,7 @@
 										"score": 3,
 										"winner": true,
 										"standings": 1,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -5263,7 +3834,7 @@
 										"score": 1,
 										"winner": false,
 										"standings": 3,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 2947,
@@ -5335,7 +3906,7 @@
 										"score": 3,
 										"winner": true,
 										"standings": 7,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 2947,
@@ -5431,7 +4002,7 @@
 										"score": 1,
 										"winner": true,
 										"standings": 5,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 2947,
@@ -5487,7 +4058,7 @@
 										"score": 1,
 										"winner": null,
 										"standings": 4,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -5545,1092 +4116,8 @@
 			}
 		]
 	},
-	"Premier League (England)": {
-		"name": "Premier League",
-		"country": "England",
-		"standings": [
-			{
-				"teamId": 42,
-				"teamName": "Arsenal",
-				"points": 80,
-				"stats": {
-					"goalsDiff": 57,
-					"played": 35,
-					"win": 25,
-					"draw": 5,
-					"lose": 5,
-					"goals": { "for": 85, "against": 28 }
-				}
-			},
-			{
-				"teamId": 50,
-				"teamName": "Manchester City",
-				"points": 79,
-				"stats": {
-					"goalsDiff": 50,
-					"played": 34,
-					"win": 24,
-					"draw": 7,
-					"lose": 3,
-					"goals": { "for": 82, "against": 32 }
-				}
-			},
-			{
-				"teamId": 40,
-				"teamName": "Liverpool",
-				"points": 75,
-				"stats": {
-					"goalsDiff": 41,
-					"played": 35,
-					"win": 22,
-					"draw": 9,
-					"lose": 4,
-					"goals": { "for": 77, "against": 36 }
-				}
-			},
-			{
-				"teamId": 66,
-				"teamName": "Aston Villa",
-				"points": 67,
-				"stats": {
-					"goalsDiff": 21,
-					"played": 35,
-					"win": 20,
-					"draw": 7,
-					"lose": 8,
-					"goals": { "for": 73, "against": 52 }
-				}
-			},
-			{
-				"teamId": 47,
-				"teamName": "Tottenham",
-				"points": 60,
-				"stats": {
-					"goalsDiff": 15,
-					"played": 33,
-					"win": 18,
-					"draw": 6,
-					"lose": 9,
-					"goals": { "for": 67, "against": 52 }
-				}
-			},
-			{
-				"teamId": 33,
-				"teamName": "Manchester United",
-				"points": 54,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 34,
-					"win": 16,
-					"draw": 6,
-					"lose": 12,
-					"goals": { "for": 52, "against": 51 }
-				}
-			},
-			{
-				"teamId": 34,
-				"teamName": "Newcastle",
-				"points": 53,
-				"stats": {
-					"goalsDiff": 19,
-					"played": 34,
-					"win": 16,
-					"draw": 5,
-					"lose": 13,
-					"goals": { "for": 74, "against": 55 }
-				}
-			},
-			{
-				"teamId": 48,
-				"teamName": "West Ham",
-				"points": 49,
-				"stats": {
-					"goalsDiff": -9,
-					"played": 35,
-					"win": 13,
-					"draw": 10,
-					"lose": 12,
-					"goals": { "for": 56, "against": 65 }
-				}
-			},
-			{
-				"teamId": 49,
-				"teamName": "Chelsea",
-				"points": 48,
-				"stats": {
-					"goalsDiff": 4,
-					"played": 33,
-					"win": 13,
-					"draw": 9,
-					"lose": 11,
-					"goals": { "for": 63, "against": 59 }
-				}
-			},
-			{
-				"teamId": 35,
-				"teamName": "Bournemouth",
-				"points": 48,
-				"stats": {
-					"goalsDiff": -8,
-					"played": 35,
-					"win": 13,
-					"draw": 9,
-					"lose": 13,
-					"goals": { "for": 52, "against": 60 }
-				}
-			},
-			{
-				"teamId": 39,
-				"teamName": "Wolves",
-				"points": 46,
-				"stats": {
-					"goalsDiff": -7,
-					"played": 35,
-					"win": 13,
-					"draw": 7,
-					"lose": 15,
-					"goals": { "for": 48, "against": 55 }
-				}
-			},
-			{
-				"teamId": 51,
-				"teamName": "Brighton",
-				"points": 44,
-				"stats": {
-					"goalsDiff": -5,
-					"played": 34,
-					"win": 11,
-					"draw": 11,
-					"lose": 12,
-					"goals": { "for": 52, "against": 57 }
-				}
-			},
-			{
-				"teamId": 36,
-				"teamName": "Fulham",
-				"points": 43,
-				"stats": {
-					"goalsDiff": -4,
-					"played": 35,
-					"win": 12,
-					"draw": 7,
-					"lose": 16,
-					"goals": { "for": 51, "against": 55 }
-				}
-			},
-			{
-				"teamId": 52,
-				"teamName": "Crystal Palace",
-				"points": 40,
-				"stats": {
-					"goalsDiff": -12,
-					"played": 35,
-					"win": 10,
-					"draw": 10,
-					"lose": 15,
-					"goals": { "for": 45, "against": 57 }
-				}
-			},
-			{
-				"teamId": 45,
-				"teamName": "Everton",
-				"points": 36,
-				"stats": {
-					"goalsDiff": -11,
-					"played": 35,
-					"win": 12,
-					"draw": 8,
-					"lose": 15,
-					"goals": { "for": 37, "against": 48 }
-				}
-			},
-			{
-				"teamId": 55,
-				"teamName": "Brentford",
-				"points": 35,
-				"stats": {
-					"goalsDiff": -8,
-					"played": 35,
-					"win": 9,
-					"draw": 8,
-					"lose": 18,
-					"goals": { "for": 52, "against": 60 }
-				}
-			},
-			{
-				"teamId": 65,
-				"teamName": "Nottingham Forest",
-				"points": 26,
-				"stats": {
-					"goalsDiff": -20,
-					"played": 35,
-					"win": 7,
-					"draw": 9,
-					"lose": 19,
-					"goals": { "for": 42, "against": 62 }
-				}
-			},
-			{
-				"teamId": 1359,
-				"teamName": "Luton",
-				"points": 25,
-				"stats": {
-					"goalsDiff": -29,
-					"played": 35,
-					"win": 6,
-					"draw": 7,
-					"lose": 22,
-					"goals": { "for": 48, "against": 77 }
-				}
-			},
-			{
-				"teamId": 44,
-				"teamName": "Burnley",
-				"points": 24,
-				"stats": {
-					"goalsDiff": -32,
-					"played": 35,
-					"win": 5,
-					"draw": 9,
-					"lose": 21,
-					"goals": { "for": 38, "against": 70 }
-				}
-			},
-			{
-				"teamId": 62,
-				"teamName": "Sheffield Utd",
-				"points": 16,
-				"stats": {
-					"goalsDiff": -63,
-					"played": 35,
-					"win": 3,
-					"draw": 7,
-					"lose": 25,
-					"goals": { "for": 34, "against": 97 }
-				}
-			}
-		],
-		"matches": [
-			{
-				"id": "2024-05-02-Chelsea-Tottenham",
-				"fullDate": "2024-05-02T13:30",
-				"date": "2024-05-02",
-				"hour": "13:30",
-				"predictions": [
-					{
-						"name": "Goles por equipo local",
-						"recommendable": true,
-						"acceptancePercentage": "0.75",
-						"criteria": {
-							"home": [
-								{ "description": "Promedio de goles >= 1.5", "check": "✅" },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "✅" },
-								{ "description": "Promedio de goles de visitante >= 1.5", "check": "✅" },
-								{ "description": "Ha marcado en los ultimos 3 partidos de local", "check": "✅" },
-								{ "description": "No ha perdido los ultimos 3 partidos de local", "check": "✅" },
-								{
-									"description": "El local está al menos 5 posiciones mas arriba que el rival",
-									"check": "❌"
-								},
-								{
-									"description": "El local está en las primeras 6 posiciones de la tabla",
-									"check": "❌"
-								},
-								{ "description": "El local es un equipo destacado", "check": "✅" }
-							],
-							"away": []
-						}
-					}
-				],
-				"teams": {
-					"home": {
-						"id": 49,
-						"name": "Chelsea",
-						"score": 2,
-						"winner": true,
-						"standings": 9,
-						"featured": true,
-						"stats": {
-							"total_de_partidos": 15,
-							"total_de_goles": 35,
-							"promedio_de_goles": 2.3,
-							"---|---": 0,
-							"goles_de_local": 22,
-							"promedio_de_goles_de_local": 3.1,
-							"partidos_de_local": 7,
-							"partidos_ganados_de_local": 5,
-							"partidos_perdidos_de_local": 1,
-							"partidos_empatados_de_local": 1,
-							"partidos_con_goles_de_local": 6,
-							"---||---": 0,
-							"goles_de_visitante": 13,
-							"promedio_de_goles_de_visitante": 1.6,
-							"partidos_de_visitante": 8,
-							"partidos_ganados_de_visitante": 2,
-							"partidos_perdidos_de_visitante": 2,
-							"partidos_empatados_de_visitante": 4,
-							"partidos_con_goles_de_visitante": 6
-						},
-						"matches": [
-							{
-								"id": "2024-04-27-Aston Villa-Chelsea",
-								"fullDate": "2024-04-27T14:00",
-								"date": "2024-04-27",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 66,
-										"name": "Aston Villa",
-										"score": 2,
-										"winner": null,
-										"standings": 4,
-										"featured": false
-									},
-									"away": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 2,
-										"winner": null,
-										"standings": 9,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-04-23-Arsenal-Chelsea",
-								"fullDate": "2024-04-23T14:00",
-								"date": "2024-04-23",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 42,
-										"name": "Arsenal",
-										"score": 5,
-										"winner": true,
-										"standings": 1,
-										"featured": true
-									},
-									"away": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 0,
-										"winner": false,
-										"standings": 9,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-04-20-Manchester City-Chelsea",
-								"fullDate": "2024-04-20T11:15",
-								"date": "2024-04-20",
-								"hour": "11:15",
-								"teams": {
-									"home": {
-										"id": 50,
-										"name": "Manchester City",
-										"score": 1,
-										"winner": true,
-										"standings": 2,
-										"featured": true
-									},
-									"away": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 0,
-										"winner": false,
-										"standings": 9,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-04-15-Chelsea-Everton",
-								"fullDate": "2024-04-15T14:00",
-								"date": "2024-04-15",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 6,
-										"winner": true,
-										"standings": 9,
-										"featured": true
-									},
-									"away": {
-										"id": 45,
-										"name": "Everton",
-										"score": 0,
-										"winner": false,
-										"standings": 15,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-07-Sheffield Utd-Chelsea",
-								"fullDate": "2024-04-07T11:30",
-								"date": "2024-04-07",
-								"hour": "11:30",
-								"teams": {
-									"home": {
-										"id": 62,
-										"name": "Sheffield Utd",
-										"score": 2,
-										"winner": null,
-										"standings": 20,
-										"featured": false
-									},
-									"away": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 2,
-										"winner": null,
-										"standings": 9,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-04-04-Chelsea-Manchester United",
-								"fullDate": "2024-04-04T14:15",
-								"date": "2024-04-04",
-								"hour": "14:15",
-								"teams": {
-									"home": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 4,
-										"winner": true,
-										"standings": 9,
-										"featured": true
-									},
-									"away": {
-										"id": 33,
-										"name": "Manchester United",
-										"score": 3,
-										"winner": false,
-										"standings": 6,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-30-Chelsea-Burnley",
-								"fullDate": "2024-03-30T10:00",
-								"date": "2024-03-30",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 2,
-										"winner": null,
-										"standings": 9,
-										"featured": true
-									},
-									"away": {
-										"id": 44,
-										"name": "Burnley",
-										"score": 2,
-										"winner": null,
-										"standings": 19,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-17-Chelsea-Leicester",
-								"fullDate": "2024-03-17T07:45",
-								"date": "2024-03-17",
-								"hour": "07:45",
-								"teams": {
-									"home": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 4,
-										"winner": true,
-										"standings": 9,
-										"featured": true
-									},
-									"away": {
-										"id": 46,
-										"name": "Leicester",
-										"score": 2,
-										"winner": false,
-										"standings": null,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-11-Chelsea-Newcastle",
-								"fullDate": "2024-03-11T15:00",
-								"date": "2024-03-11",
-								"hour": "15:00",
-								"teams": {
-									"home": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 3,
-										"winner": true,
-										"standings": 9,
-										"featured": true
-									},
-									"away": {
-										"id": 34,
-										"name": "Newcastle",
-										"score": 2,
-										"winner": false,
-										"standings": 7,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-02-Brentford-Chelsea",
-								"fullDate": "2024-03-02T10:00",
-								"date": "2024-03-02",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 55,
-										"name": "Brentford",
-										"score": 2,
-										"winner": null,
-										"standings": 16,
-										"featured": false
-									},
-									"away": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 2,
-										"winner": null,
-										"standings": 9,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-02-28-Chelsea-Leeds",
-								"fullDate": "2024-02-28T14:30",
-								"date": "2024-02-28",
-								"hour": "14:30",
-								"teams": {
-									"home": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 3,
-										"winner": true,
-										"standings": 9,
-										"featured": true
-									},
-									"away": {
-										"id": 63,
-										"name": "Leeds",
-										"score": 2,
-										"winner": false,
-										"standings": null,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-25-Chelsea-Liverpool",
-								"fullDate": "2024-02-25T10:00",
-								"date": "2024-02-25",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 0,
-										"winner": false,
-										"standings": 9,
-										"featured": true
-									},
-									"away": {
-										"id": 40,
-										"name": "Liverpool",
-										"score": 1,
-										"winner": true,
-										"standings": 3,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-17-Manchester City-Chelsea",
-								"fullDate": "2024-02-17T12:30",
-								"date": "2024-02-17",
-								"hour": "12:30",
-								"teams": {
-									"home": {
-										"id": 50,
-										"name": "Manchester City",
-										"score": 1,
-										"winner": null,
-										"standings": 2,
-										"featured": true
-									},
-									"away": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 1,
-										"winner": null,
-										"standings": 9,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-02-12-Crystal Palace-Chelsea",
-								"fullDate": "2024-02-12T15:00",
-								"date": "2024-02-12",
-								"hour": "15:00",
-								"teams": {
-									"home": {
-										"id": 52,
-										"name": "Crystal Palace",
-										"score": 1,
-										"winner": false,
-										"standings": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 3,
-										"winner": true,
-										"standings": 9,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-02-07-Aston Villa-Chelsea",
-								"fullDate": "2024-02-07T15:00",
-								"date": "2024-02-07",
-								"hour": "15:00",
-								"teams": {
-									"home": {
-										"id": 66,
-										"name": "Aston Villa",
-										"score": 1,
-										"winner": false,
-										"standings": 4,
-										"featured": false
-									},
-									"away": {
-										"id": 49,
-										"name": "Chelsea",
-										"score": 3,
-										"winner": true,
-										"standings": 9,
-										"featured": true
-									}
-								}
-							}
-						]
-					},
-					"away": {
-						"id": 47,
-						"name": "Tottenham",
-						"score": 0,
-						"winner": false,
-						"standings": 5,
-						"featured": true,
-						"stats": {
-							"total_de_partidos": 15,
-							"total_de_goles": 26,
-							"promedio_de_goles": 1.7,
-							"---|---": 0,
-							"goles_de_local": 17,
-							"promedio_de_goles_de_local": 1.9,
-							"partidos_de_local": 9,
-							"partidos_ganados_de_local": 6,
-							"partidos_perdidos_de_local": 3,
-							"partidos_empatados_de_local": 0,
-							"partidos_con_goles_de_local": 8,
-							"---||---": 0,
-							"goles_de_visitante": 9,
-							"promedio_de_goles_de_visitante": 1.5,
-							"partidos_de_visitante": 6,
-							"partidos_ganados_de_visitante": 1,
-							"partidos_perdidos_de_visitante": 2,
-							"partidos_empatados_de_visitante": 3,
-							"partidos_con_goles_de_visitante": 4
-						},
-						"matches": [
-							{
-								"id": "2024-04-28-Tottenham-Arsenal",
-								"fullDate": "2024-04-28T08:00",
-								"date": "2024-04-28",
-								"hour": "08:00",
-								"teams": {
-									"home": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 2,
-										"winner": false,
-										"standings": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 42,
-										"name": "Arsenal",
-										"score": 3,
-										"winner": true,
-										"standings": 1,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-04-13-Newcastle-Tottenham",
-								"fullDate": "2024-04-13T06:30",
-								"date": "2024-04-13",
-								"hour": "06:30",
-								"teams": {
-									"home": {
-										"id": 34,
-										"name": "Newcastle",
-										"score": 4,
-										"winner": true,
-										"standings": 7,
-										"featured": false
-									},
-									"away": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 0,
-										"winner": false,
-										"standings": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-04-07-Tottenham-Nottingham Forest",
-								"fullDate": "2024-04-07T12:00",
-								"date": "2024-04-07",
-								"hour": "12:00",
-								"teams": {
-									"home": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 3,
-										"winner": true,
-										"standings": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 65,
-										"name": "Nottingham Forest",
-										"score": 1,
-										"winner": false,
-										"standings": 17,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-02-West Ham-Tottenham",
-								"fullDate": "2024-04-02T14:15",
-								"date": "2024-04-02",
-								"hour": "14:15",
-								"teams": {
-									"home": {
-										"id": 48,
-										"name": "West Ham",
-										"score": 1,
-										"winner": null,
-										"standings": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 1,
-										"winner": null,
-										"standings": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-03-30-Tottenham-Luton",
-								"fullDate": "2024-03-30T10:00",
-								"date": "2024-03-30",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 2,
-										"winner": true,
-										"standings": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 1359,
-										"name": "Luton",
-										"score": 1,
-										"winner": false,
-										"standings": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-16-Fulham-Tottenham",
-								"fullDate": "2024-03-16T12:30",
-								"date": "2024-03-16",
-								"hour": "12:30",
-								"teams": {
-									"home": {
-										"id": 36,
-										"name": "Fulham",
-										"score": 3,
-										"winner": true,
-										"standings": 13,
-										"featured": false
-									},
-									"away": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 0,
-										"winner": false,
-										"standings": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-03-10-Aston Villa-Tottenham",
-								"fullDate": "2024-03-10T08:00",
-								"date": "2024-03-10",
-								"hour": "08:00",
-								"teams": {
-									"home": {
-										"id": 66,
-										"name": "Aston Villa",
-										"score": 0,
-										"winner": false,
-										"standings": 4,
-										"featured": false
-									},
-									"away": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 4,
-										"winner": true,
-										"standings": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-03-02-Tottenham-Crystal Palace",
-								"fullDate": "2024-03-02T10:00",
-								"date": "2024-03-02",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 3,
-										"winner": true,
-										"standings": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 52,
-										"name": "Crystal Palace",
-										"score": 1,
-										"winner": false,
-										"standings": 14,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-17-Tottenham-Wolves",
-								"fullDate": "2024-02-17T10:00",
-								"date": "2024-02-17",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 1,
-										"winner": false,
-										"standings": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 39,
-										"name": "Wolves",
-										"score": 2,
-										"winner": true,
-										"standings": 11,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-10-Tottenham-Brighton",
-								"fullDate": "2024-02-10T10:00",
-								"date": "2024-02-10",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 2,
-										"winner": true,
-										"standings": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 51,
-										"name": "Brighton",
-										"score": 1,
-										"winner": false,
-										"standings": 12,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-03-Everton-Tottenham",
-								"fullDate": "2024-02-03T07:30",
-								"date": "2024-02-03",
-								"hour": "07:30",
-								"teams": {
-									"home": {
-										"id": 45,
-										"name": "Everton",
-										"score": 2,
-										"winner": null,
-										"standings": 15,
-										"featured": false
-									},
-									"away": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 2,
-										"winner": null,
-										"standings": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-31-Tottenham-Brentford",
-								"fullDate": "2024-01-31T14:30",
-								"date": "2024-01-31",
-								"hour": "14:30",
-								"teams": {
-									"home": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 3,
-										"winner": true,
-										"standings": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 55,
-										"name": "Brentford",
-										"score": 2,
-										"winner": false,
-										"standings": 16,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-01-26-Tottenham-Manchester City",
-								"fullDate": "2024-01-26T15:00",
-								"date": "2024-01-26",
-								"hour": "15:00",
-								"teams": {
-									"home": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 0,
-										"winner": false,
-										"standings": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 50,
-										"name": "Manchester City",
-										"score": 1,
-										"winner": true,
-										"standings": 2,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-14-Manchester United-Tottenham",
-								"fullDate": "2024-01-14T11:30",
-								"date": "2024-01-14",
-								"hour": "11:30",
-								"teams": {
-									"home": {
-										"id": 33,
-										"name": "Manchester United",
-										"score": 2,
-										"winner": null,
-										"standings": 6,
-										"featured": false
-									},
-									"away": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 2,
-										"winner": null,
-										"standings": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-05-Tottenham-Burnley",
-								"fullDate": "2024-01-05T15:00",
-								"date": "2024-01-05",
-								"hour": "15:00",
-								"teams": {
-									"home": {
-										"id": 47,
-										"name": "Tottenham",
-										"score": 1,
-										"winner": true,
-										"standings": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 44,
-										"name": "Burnley",
-										"score": 0,
-										"winner": false,
-										"standings": 19,
-										"featured": false
-									}
-								}
-							}
-						]
-					}
-				}
-			}
-		]
-	},
-	"King's Cup (Saudi-Arabia)": {
-		"name": "King's Cup",
+	{
+		"name": "Pro League",
 		"country": "Saudi-Arabia",
 		"standings": [
 			{
@@ -6662,14 +4149,14 @@
 			{
 				"teamId": 2929,
 				"teamName": "Al-Ahli Jeddah",
-				"points": 52,
+				"points": 55,
 				"stats": {
-					"goalsDiff": 24,
-					"played": 28,
-					"win": 15,
+					"goalsDiff": 27,
+					"played": 29,
+					"win": 16,
 					"draw": 7,
 					"lose": 6,
-					"goals": { "for": 54, "against": 30 }
+					"goals": { "for": 58, "against": 31 }
 				}
 			},
 			{
@@ -6714,27 +4201,14 @@
 			{
 				"teamId": 2931,
 				"teamName": "Al-Fateh",
-				"points": 40,
+				"points": 41,
 				"stats": {
 					"goalsDiff": 4,
-					"played": 29,
+					"played": 30,
 					"win": 11,
-					"draw": 7,
-					"lose": 11,
-					"goals": { "for": 48, "against": 44 }
-				}
-			},
-			{
-				"teamId": 2956,
-				"teamName": "Damac",
-				"points": 38,
-				"stats": {
-					"goalsDiff": 5,
-					"played": 29,
-					"win": 10,
 					"draw": 8,
 					"lose": 11,
-					"goals": { "for": 40, "against": 35 }
+					"goals": { "for": 50, "against": 46 }
 				}
 			},
 			{
@@ -6748,6 +4222,19 @@
 					"draw": 8,
 					"lose": 11,
 					"goals": { "for": 39, "against": 36 }
+				}
+			},
+			{
+				"teamId": 2956,
+				"teamName": "Damac",
+				"points": 38,
+				"stats": {
+					"goalsDiff": 2,
+					"played": 30,
+					"win": 10,
+					"draw": 8,
+					"lose": 12,
+					"goals": { "for": 41, "against": 39 }
 				}
 			},
 			{
@@ -6805,25 +4292,25 @@
 			{
 				"teamId": 10511,
 				"teamName": "Al Riyadh",
-				"points": 28,
+				"points": 29,
 				"stats": {
 					"goalsDiff": -25,
-					"played": 29,
+					"played": 30,
 					"win": 7,
-					"draw": 7,
+					"draw": 8,
 					"lose": 15,
-					"goals": { "for": 26, "against": 51 }
+					"goals": { "for": 28, "against": 53 }
 				}
 			},
 			{
 				"teamId": 2977,
 				"teamName": "Al Akhdoud",
-				"points": 27,
+				"points": 28,
 				"stats": {
 					"goalsDiff": -20,
-					"played": 29,
+					"played": 30,
 					"win": 8,
-					"draw": 3,
+					"draw": 4,
 					"lose": 18,
 					"goals": { "for": 27, "against": 47 }
 				}
@@ -6857,20 +4344,2469 @@
 			{
 				"teamId": 2945,
 				"teamName": "Al-Hazm",
-				"points": 19,
+				"points": 20,
 				"stats": {
 					"goalsDiff": -39,
-					"played": 29,
+					"played": 30,
 					"win": 3,
-					"draw": 10,
+					"draw": 11,
 					"lose": 16,
 					"goals": { "for": 29, "against": 68 }
 				}
 			}
 		],
-		"matches": []
+		"matches": [
+			{
+				"id": "2024-05-02-Al-Hazm-Al Akhdoud",
+				"fullDate": "2024-05-02T10:00",
+				"date": "2024-05-02",
+				"hour": "10:00",
+				"predictions": [
+					{
+						"name": "Goles por equipo local",
+						"recommendable": false,
+						"acceptancePercentage": "0.13",
+						"criteria": {
+							"home": [
+								{ "description": "Promedio de goles >= 1.5", "check": "❌" },
+								{ "description": "Promedio de goles de local >= 1.5", "check": "❌" },
+								{ "description": "Promedio de goles de visitante >= 1.5", "check": "✅" },
+								{ "description": "Ha marcado en los ultimos 3 partidos de local", "check": "❌" },
+								{ "description": "No ha perdido los ultimos 3 partidos de local", "check": "❌" },
+								{
+									"description": "El local está al menos 5 posiciones mas arriba que el rival",
+									"check": "❌"
+								},
+								{
+									"description": "El local está en las primeras 6 posiciones de la tabla",
+									"check": "❌"
+								},
+								{ "description": "El local es un equipo destacado", "check": "❌" }
+							],
+							"away": []
+						}
+					}
+				],
+				"teams": {
+					"home": {
+						"id": 2945,
+						"name": "Al-Hazm",
+						"score": 0,
+						"winner": null,
+						"standings": 18,
+						"featured": false,
+						"stats": {
+							"total_de_partidos": 15,
+							"total_de_goles": 14,
+							"promedio_de_goles": 0.9,
+							"---|---": 0,
+							"goles_de_local": 6,
+							"promedio_de_goles_de_local": 0.9,
+							"partidos_de_local": 7,
+							"partidos_ganados_de_local": 1,
+							"partidos_perdidos_de_local": 4,
+							"partidos_empatados_de_local": 2,
+							"partidos_con_goles_de_local": 4,
+							"---||---": 0,
+							"goles_de_visitante": 8,
+							"promedio_de_goles_de_visitante": 1,
+							"partidos_de_visitante": 8,
+							"partidos_ganados_de_visitante": 1,
+							"partidos_perdidos_de_visitante": 3,
+							"partidos_empatados_de_visitante": 4,
+							"partidos_con_goles_de_visitante": 4
+						},
+						"matches": [
+							{
+								"id": "2024-04-25-Al Wehda Club-Al-Hazm",
+								"fullDate": "2024-04-25T13:00",
+								"date": "2024-04-25",
+								"hour": "13:00",
+								"teams": {
+									"home": {
+										"id": 2937,
+										"name": "Al Wehda Club",
+										"score": 0,
+										"winner": false,
+										"standings": 12,
+										"featured": false
+									},
+									"away": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 2,
+										"winner": true,
+										"standings": 18,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-20-Al-Hazm-Al-Ittihad FC",
+								"fullDate": "2024-04-20T13:00",
+								"date": "2024-04-20",
+								"hour": "13:00",
+								"teams": {
+									"home": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 2,
+										"winner": false,
+										"standings": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 2938,
+										"name": "Al-Ittihad FC",
+										"score": 3,
+										"winner": true,
+										"standings": 5,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-07-Al-Raed-Al-Hazm",
+								"fullDate": "2024-04-07T14:00",
+								"date": "2024-04-07",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2935,
+										"name": "Al-Raed",
+										"score": 2,
+										"winner": true,
+										"standings": 13,
+										"featured": false
+									},
+									"away": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 0,
+										"winner": false,
+										"standings": 18,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-01-Al-Hazm-Damac",
+								"fullDate": "2024-04-01T14:00",
+								"date": "2024-04-01",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 0,
+										"winner": null,
+										"standings": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 0,
+										"winner": null,
+										"standings": 9,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-29-Al Taawon-Al-Hazm",
+								"fullDate": "2024-03-29T14:00",
+								"date": "2024-03-29",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2936,
+										"name": "Al Taawon",
+										"score": 4,
+										"winner": true,
+										"standings": 4,
+										"featured": true
+									},
+									"away": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 0,
+										"winner": false,
+										"standings": 18,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-14-Al-Hazm-Al Shabab",
+								"fullDate": "2024-03-14T14:00",
+								"date": "2024-03-14",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 0,
+										"winner": false,
+										"standings": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 2940,
+										"name": "Al Shabab",
+										"score": 3,
+										"winner": true,
+										"standings": 8,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-08-Al Taee-Al-Hazm",
+								"fullDate": "2024-03-08T09:00",
+								"date": "2024-03-08",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 2942,
+										"name": "Al Taee",
+										"score": 1,
+										"winner": true,
+										"standings": 16,
+										"featured": false
+									},
+									"away": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 0,
+										"winner": false,
+										"standings": 18,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-29-Al-Nassr-Al-Hazm",
+								"fullDate": "2024-02-29T12:00",
+								"date": "2024-02-29",
+								"hour": "12:00",
+								"teams": {
+									"home": {
+										"id": 2939,
+										"name": "Al-Nassr",
+										"score": 4,
+										"winner": null,
+										"standings": 2,
+										"featured": true
+									},
+									"away": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 4,
+										"winner": null,
+										"standings": 18,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-24-Al-Hazm-Al Khaleej Saihat",
+								"fullDate": "2024-02-24T12:00",
+								"date": "2024-02-24",
+								"hour": "12:00",
+								"teams": {
+									"home": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 1,
+										"winner": null,
+										"standings": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 2928,
+										"name": "Al Khaleej Saihat",
+										"score": 1,
+										"winner": null,
+										"standings": 11,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-17-Al-Hazm-Al-Fayha",
+								"fullDate": "2024-02-17T09:00",
+								"date": "2024-02-17",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 1,
+										"winner": false,
+										"standings": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 2944,
+										"name": "Al-Fayha",
+										"score": 3,
+										"winner": true,
+										"standings": 10,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-28-Al-Ettifaq-Al-Hazm",
+								"fullDate": "2023-12-28T10:00",
+								"date": "2023-12-28",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2934,
+										"name": "Al-Ettifaq",
+										"score": 1,
+										"winner": null,
+										"standings": 6,
+										"featured": true
+									},
+									"away": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 1,
+										"winner": null,
+										"standings": 18,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-22-Al-Hazm-Al-Ahli Jeddah",
+								"fullDate": "2023-12-22T10:00",
+								"date": "2023-12-22",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 0,
+										"winner": false,
+										"standings": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 4,
+										"winner": true,
+										"standings": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2023-12-14-Abha-Al-Hazm",
+								"fullDate": "2023-12-14T10:00",
+								"date": "2023-12-14",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2951,
+										"name": "Abha",
+										"score": 1,
+										"winner": null,
+										"standings": 17,
+										"featured": false
+									},
+									"away": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 1,
+										"winner": null,
+										"standings": 18,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-07-Al-Hazm-Al-Fateh",
+								"fullDate": "2023-12-07T10:00",
+								"date": "2023-12-07",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 2,
+										"winner": true,
+										"standings": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 0,
+										"winner": false,
+										"standings": 7,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2023-11-30-Al Riyadh-Al-Hazm",
+								"fullDate": "2023-11-30T10:00",
+								"date": "2023-11-30",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 0,
+										"winner": null,
+										"standings": 14,
+										"featured": false
+									},
+									"away": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 0,
+										"winner": null,
+										"standings": 18,
+										"featured": false
+									}
+								}
+							}
+						]
+					},
+					"away": {
+						"id": 2977,
+						"name": "Al Akhdoud",
+						"score": 0,
+						"winner": null,
+						"standings": 15,
+						"featured": false,
+						"stats": {
+							"total_de_partidos": 15,
+							"total_de_goles": 17,
+							"promedio_de_goles": 1.1,
+							"---|---": 0,
+							"goles_de_local": 13,
+							"promedio_de_goles_de_local": 1.6,
+							"partidos_de_local": 8,
+							"partidos_ganados_de_local": 5,
+							"partidos_perdidos_de_local": 3,
+							"partidos_empatados_de_local": 0,
+							"partidos_con_goles_de_local": 8,
+							"---||---": 0,
+							"goles_de_visitante": 4,
+							"promedio_de_goles_de_visitante": 0.6,
+							"partidos_de_visitante": 7,
+							"partidos_ganados_de_visitante": 0,
+							"partidos_perdidos_de_visitante": 5,
+							"partidos_empatados_de_visitante": 2,
+							"partidos_con_goles_de_visitante": 3
+						},
+						"matches": [
+							{
+								"id": "2024-04-27-Al Akhdoud-Abha",
+								"fullDate": "2024-04-27T10:00",
+								"date": "2024-04-27",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 4,
+										"winner": true,
+										"standings": 15,
+										"featured": false
+									},
+									"away": {
+										"id": 2951,
+										"name": "Abha",
+										"score": 0,
+										"winner": false,
+										"standings": 17,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-20-Al Akhdoud-Damac",
+								"fullDate": "2024-04-20T10:00",
+								"date": "2024-04-20",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 1,
+										"winner": false,
+										"standings": 15,
+										"featured": false
+									},
+									"away": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 2,
+										"winner": true,
+										"standings": 9,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-07-Al-Fayha-Al Akhdoud",
+								"fullDate": "2024-04-07T14:00",
+								"date": "2024-04-07",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2944,
+										"name": "Al-Fayha",
+										"score": 3,
+										"winner": true,
+										"standings": 10,
+										"featured": false
+									},
+									"away": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 0,
+										"winner": false,
+										"standings": 15,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-02-Al-Hilal Saudi FC-Al Akhdoud",
+								"fullDate": "2024-04-02T14:00",
+								"date": "2024-04-02",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2932,
+										"name": "Al-Hilal Saudi FC",
+										"score": 3,
+										"winner": true,
+										"standings": 1,
+										"featured": true
+									},
+									"away": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 0,
+										"winner": false,
+										"standings": 15,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-29-Al Akhdoud-Al-Raed",
+								"fullDate": "2024-03-29T14:00",
+								"date": "2024-03-29",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 1,
+										"winner": false,
+										"standings": 15,
+										"featured": false
+									},
+									"away": {
+										"id": 2935,
+										"name": "Al-Raed",
+										"score": 3,
+										"winner": true,
+										"standings": 13,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-14-Al Khaleej Saihat-Al Akhdoud",
+								"fullDate": "2024-03-14T14:00",
+								"date": "2024-03-14",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2928,
+										"name": "Al Khaleej Saihat",
+										"score": 2,
+										"winner": null,
+										"standings": 11,
+										"featured": false
+									},
+									"away": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 2,
+										"winner": null,
+										"standings": 15,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-08-Al-Ittihad FC-Al Akhdoud",
+								"fullDate": "2024-03-08T12:00",
+								"date": "2024-03-08",
+								"hour": "12:00",
+								"teams": {
+									"home": {
+										"id": 2938,
+										"name": "Al-Ittihad FC",
+										"score": 2,
+										"winner": true,
+										"standings": 5,
+										"featured": true
+									},
+									"away": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 1,
+										"winner": false,
+										"standings": 15,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-01-Al Akhdoud-Al Riyadh",
+								"fullDate": "2024-03-01T09:00",
+								"date": "2024-03-01",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 1,
+										"winner": false,
+										"standings": 15,
+										"featured": false
+									},
+									"away": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 2,
+										"winner": true,
+										"standings": 14,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-23-Al Taawon-Al Akhdoud",
+								"fullDate": "2024-02-23T09:00",
+								"date": "2024-02-23",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 2936,
+										"name": "Al Taawon",
+										"score": 3,
+										"winner": true,
+										"standings": 4,
+										"featured": true
+									},
+									"away": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 1,
+										"winner": false,
+										"standings": 15,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-16-Al Akhdoud-Al-Ahli Jeddah",
+								"fullDate": "2024-02-16T12:00",
+								"date": "2024-02-16",
+								"hour": "12:00",
+								"teams": {
+									"home": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 3,
+										"winner": true,
+										"standings": 15,
+										"featured": false
+									},
+									"away": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 2,
+										"winner": false,
+										"standings": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2023-12-30-Al-Fateh-Al Akhdoud",
+								"fullDate": "2023-12-30T10:00",
+								"date": "2023-12-30",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 0,
+										"winner": null,
+										"standings": 7,
+										"featured": true
+									},
+									"away": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 0,
+										"winner": null,
+										"standings": 15,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-22-Al Akhdoud-Al Shabab",
+								"fullDate": "2023-12-22T10:00",
+								"date": "2023-12-22",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 1,
+										"winner": true,
+										"standings": 15,
+										"featured": false
+									},
+									"away": {
+										"id": 2940,
+										"name": "Al Shabab",
+										"score": 0,
+										"winner": false,
+										"standings": 8,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-14-Al Akhdoud-Al Taee",
+								"fullDate": "2023-12-14T10:00",
+								"date": "2023-12-14",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 1,
+										"winner": true,
+										"standings": 15,
+										"featured": false
+									},
+									"away": {
+										"id": 2942,
+										"name": "Al Taee",
+										"score": 0,
+										"winner": false,
+										"standings": 16,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-09-Al Wehda Club-Al Akhdoud",
+								"fullDate": "2023-12-09T13:00",
+								"date": "2023-12-09",
+								"hour": "13:00",
+								"teams": {
+									"home": {
+										"id": 2937,
+										"name": "Al Wehda Club",
+										"score": 2,
+										"winner": true,
+										"standings": 12,
+										"featured": false
+									},
+									"away": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 0,
+										"winner": false,
+										"standings": 15,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-02-Al Akhdoud-Al-Ettifaq",
+								"fullDate": "2023-12-02T10:00",
+								"date": "2023-12-02",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 1,
+										"winner": true,
+										"standings": 15,
+										"featured": false
+									},
+									"away": {
+										"id": 2934,
+										"name": "Al-Ettifaq",
+										"score": 0,
+										"winner": false,
+										"standings": 6,
+										"featured": true
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			{
+				"id": "2024-05-02-Al-Fateh-Al Riyadh",
+				"fullDate": "2024-05-02T13:00",
+				"date": "2024-05-02",
+				"hour": "13:00",
+				"predictions": [
+					{
+						"name": "Goles por equipo local",
+						"recommendable": true,
+						"acceptancePercentage": "0.63",
+						"criteria": {
+							"home": [
+								{ "description": "Promedio de goles >= 1.5", "check": "❌" },
+								{ "description": "Promedio de goles de local >= 1.5", "check": "❌" },
+								{ "description": "Promedio de goles de visitante >= 1.5", "check": "✅" },
+								{ "description": "Ha marcado en los ultimos 3 partidos de local", "check": "✅" },
+								{ "description": "No ha perdido los ultimos 3 partidos de local", "check": "❌" },
+								{
+									"description": "El local está al menos 5 posiciones mas arriba que el rival",
+									"check": "✅"
+								},
+								{
+									"description": "El local está en las primeras 6 posiciones de la tabla",
+									"check": "✅"
+								},
+								{ "description": "El local es un equipo destacado", "check": "✅" }
+							],
+							"away": []
+						}
+					}
+				],
+				"teams": {
+					"home": {
+						"id": 2931,
+						"name": "Al-Fateh",
+						"score": 2,
+						"winner": null,
+						"standings": 7,
+						"featured": true,
+						"stats": {
+							"total_de_partidos": 15,
+							"total_de_goles": 19,
+							"promedio_de_goles": 1.3,
+							"---|---": 0,
+							"goles_de_local": 9,
+							"promedio_de_goles_de_local": 1.1,
+							"partidos_de_local": 8,
+							"partidos_ganados_de_local": 2,
+							"partidos_perdidos_de_local": 3,
+							"partidos_empatados_de_local": 3,
+							"partidos_con_goles_de_local": 6,
+							"---||---": 0,
+							"goles_de_visitante": 10,
+							"promedio_de_goles_de_visitante": 1.4,
+							"partidos_de_visitante": 7,
+							"partidos_ganados_de_visitante": 2,
+							"partidos_perdidos_de_visitante": 4,
+							"partidos_empatados_de_visitante": 1,
+							"partidos_con_goles_de_visitante": 6
+						},
+						"matches": [
+							{
+								"id": "2024-04-26-Al-Hilal Saudi FC-Al-Fateh",
+								"fullDate": "2024-04-26T10:00",
+								"date": "2024-04-26",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2932,
+										"name": "Al-Hilal Saudi FC",
+										"score": 3,
+										"winner": true,
+										"standings": 1,
+										"featured": true
+									},
+									"away": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 1,
+										"winner": false,
+										"standings": 7,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-18-Al-Fateh-Al-Raed",
+								"fullDate": "2024-04-18T13:00",
+								"date": "2024-04-18",
+								"hour": "13:00",
+								"teams": {
+									"home": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 3,
+										"winner": true,
+										"standings": 7,
+										"featured": true
+									},
+									"away": {
+										"id": 2935,
+										"name": "Al-Raed",
+										"score": 1,
+										"winner": false,
+										"standings": 13,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-07-Abha-Al-Fateh",
+								"fullDate": "2024-04-07T14:00",
+								"date": "2024-04-07",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2951,
+										"name": "Abha",
+										"score": 2,
+										"winner": true,
+										"standings": 17,
+										"featured": false
+									},
+									"away": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 1,
+										"winner": false,
+										"standings": 7,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-03-Al-Fateh-Al-Ettifaq",
+								"fullDate": "2024-04-03T14:00",
+								"date": "2024-04-03",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 1,
+										"winner": true,
+										"standings": 7,
+										"featured": true
+									},
+									"away": {
+										"id": 2934,
+										"name": "Al-Ettifaq",
+										"score": 0,
+										"winner": false,
+										"standings": 6,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-30-Al Wehda Club-Al-Fateh",
+								"fullDate": "2024-03-30T14:00",
+								"date": "2024-03-30",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2937,
+										"name": "Al Wehda Club",
+										"score": 2,
+										"winner": false,
+										"standings": 12,
+										"featured": false
+									},
+									"away": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 3,
+										"winner": true,
+										"standings": 7,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-16-Al-Fateh-Al-Ittihad FC",
+								"fullDate": "2024-03-16T14:00",
+								"date": "2024-03-16",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 2,
+										"winner": false,
+										"standings": 7,
+										"featured": true
+									},
+									"away": {
+										"id": 2938,
+										"name": "Al-Ittihad FC",
+										"score": 4,
+										"winner": true,
+										"standings": 5,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-09-Al-Fateh-Al Khaleej Saihat",
+								"fullDate": "2024-03-09T09:00",
+								"date": "2024-03-09",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 1,
+										"winner": false,
+										"standings": 7,
+										"featured": true
+									},
+									"away": {
+										"id": 2928,
+										"name": "Al Khaleej Saihat",
+										"score": 2,
+										"winner": true,
+										"standings": 11,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-02-Al-Ahli Jeddah-Al-Fateh",
+								"fullDate": "2024-03-02T12:00",
+								"date": "2024-03-02",
+								"hour": "12:00",
+								"teams": {
+									"home": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 1,
+										"winner": null,
+										"standings": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 1,
+										"winner": null,
+										"standings": 7,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-02-23-Al-Fateh-Damac",
+								"fullDate": "2024-02-23T12:00",
+								"date": "2024-02-23",
+								"hour": "12:00",
+								"teams": {
+									"home": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 1,
+										"winner": null,
+										"standings": 7,
+										"featured": true
+									},
+									"away": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 1,
+										"winner": null,
+										"standings": 9,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-17-Al-Nassr-Al-Fateh",
+								"fullDate": "2024-02-17T12:00",
+								"date": "2024-02-17",
+								"hour": "12:00",
+								"teams": {
+									"home": {
+										"id": 2939,
+										"name": "Al-Nassr",
+										"score": 2,
+										"winner": true,
+										"standings": 2,
+										"featured": true
+									},
+									"away": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 1,
+										"winner": false,
+										"standings": 7,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2023-12-30-Al-Fateh-Al Akhdoud",
+								"fullDate": "2023-12-30T10:00",
+								"date": "2023-12-30",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 0,
+										"winner": null,
+										"standings": 7,
+										"featured": true
+									},
+									"away": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 0,
+										"winner": null,
+										"standings": 15,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-23-Al Taawon-Al-Fateh",
+								"fullDate": "2023-12-23T10:00",
+								"date": "2023-12-23",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2936,
+										"name": "Al Taawon",
+										"score": 1,
+										"winner": false,
+										"standings": 4,
+										"featured": true
+									},
+									"away": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 3,
+										"winner": true,
+										"standings": 7,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2023-12-15-Al-Fateh-Al Shabab",
+								"fullDate": "2023-12-15T10:00",
+								"date": "2023-12-15",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 1,
+										"winner": null,
+										"standings": 7,
+										"featured": true
+									},
+									"away": {
+										"id": 2940,
+										"name": "Al Shabab",
+										"score": 1,
+										"winner": null,
+										"standings": 8,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-07-Al-Hazm-Al-Fateh",
+								"fullDate": "2023-12-07T10:00",
+								"date": "2023-12-07",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 2,
+										"winner": true,
+										"standings": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 0,
+										"winner": false,
+										"standings": 7,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2023-12-02-Al-Fateh-Al Taee",
+								"fullDate": "2023-12-02T10:00",
+								"date": "2023-12-02",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 0,
+										"winner": false,
+										"standings": 7,
+										"featured": true
+									},
+									"away": {
+										"id": 2942,
+										"name": "Al Taee",
+										"score": 1,
+										"winner": true,
+										"standings": 16,
+										"featured": false
+									}
+								}
+							}
+						]
+					},
+					"away": {
+						"id": 10511,
+						"name": "Al Riyadh",
+						"score": 2,
+						"winner": null,
+						"standings": 14,
+						"featured": false,
+						"stats": {
+							"total_de_partidos": 15,
+							"total_de_goles": 12,
+							"promedio_de_goles": 0.8,
+							"---|---": 0,
+							"goles_de_local": 7,
+							"promedio_de_goles_de_local": 0.9,
+							"partidos_de_local": 8,
+							"partidos_ganados_de_local": 2,
+							"partidos_perdidos_de_local": 3,
+							"partidos_empatados_de_local": 3,
+							"partidos_con_goles_de_local": 6,
+							"---||---": 0,
+							"goles_de_visitante": 5,
+							"promedio_de_goles_de_visitante": 0.7,
+							"partidos_de_visitante": 7,
+							"partidos_ganados_de_visitante": 1,
+							"partidos_perdidos_de_visitante": 5,
+							"partidos_empatados_de_visitante": 1,
+							"partidos_con_goles_de_visitante": 4
+						},
+						"matches": [
+							{
+								"id": "2024-04-25-Al Riyadh-Al-Ahli Jeddah",
+								"fullDate": "2024-04-25T13:00",
+								"date": "2024-04-25",
+								"hour": "13:00",
+								"teams": {
+									"home": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 2,
+										"winner": true,
+										"standings": 14,
+										"featured": false
+									},
+									"away": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 1,
+										"winner": false,
+										"standings": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-19-Al Riyadh-Al Taee",
+								"fullDate": "2024-04-19T10:00",
+								"date": "2024-04-19",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 1,
+										"winner": false,
+										"standings": 14,
+										"featured": false
+									},
+									"away": {
+										"id": 2942,
+										"name": "Al Taee",
+										"score": 2,
+										"winner": true,
+										"standings": 16,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-06-Al-Ettifaq-Al Riyadh",
+								"fullDate": "2024-04-06T14:00",
+								"date": "2024-04-06",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2934,
+										"name": "Al-Ettifaq",
+										"score": 1,
+										"winner": true,
+										"standings": 6,
+										"featured": true
+									},
+									"away": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 0,
+										"winner": false,
+										"standings": 14,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-03-Al Shabab-Al Riyadh",
+								"fullDate": "2024-04-03T14:00",
+								"date": "2024-04-03",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2940,
+										"name": "Al Shabab",
+										"score": 1,
+										"winner": true,
+										"standings": 8,
+										"featured": false
+									},
+									"away": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 0,
+										"winner": false,
+										"standings": 14,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-30-Al Riyadh-Abha",
+								"fullDate": "2024-03-30T14:00",
+								"date": "2024-03-30",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 1,
+										"winner": null,
+										"standings": 14,
+										"featured": false
+									},
+									"away": {
+										"id": 2951,
+										"name": "Abha",
+										"score": 1,
+										"winner": null,
+										"standings": 17,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-15-Al-Fayha-Al Riyadh",
+								"fullDate": "2024-03-15T14:00",
+								"date": "2024-03-15",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2944,
+										"name": "Al-Fayha",
+										"score": 1,
+										"winner": null,
+										"standings": 10,
+										"featured": false
+									},
+									"away": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 1,
+										"winner": null,
+										"standings": 14,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-08-Al Riyadh-Al-Hilal Saudi FC",
+								"fullDate": "2024-03-08T09:00",
+								"date": "2024-03-08",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 1,
+										"winner": false,
+										"standings": 14,
+										"featured": false
+									},
+									"away": {
+										"id": 2932,
+										"name": "Al-Hilal Saudi FC",
+										"score": 3,
+										"winner": true,
+										"standings": 1,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-01-Al Akhdoud-Al Riyadh",
+								"fullDate": "2024-03-01T09:00",
+								"date": "2024-03-01",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 1,
+										"winner": false,
+										"standings": 15,
+										"featured": false
+									},
+									"away": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 2,
+										"winner": true,
+										"standings": 14,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-23-Al Riyadh-Al-Raed",
+								"fullDate": "2024-02-23T09:00",
+								"date": "2024-02-23",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 1,
+										"winner": null,
+										"standings": 14,
+										"featured": false
+									},
+									"away": {
+										"id": 2935,
+										"name": "Al-Raed",
+										"score": 1,
+										"winner": null,
+										"standings": 13,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-18-Al-Ittihad FC-Al Riyadh",
+								"fullDate": "2024-02-18T12:00",
+								"date": "2024-02-18",
+								"hour": "12:00",
+								"teams": {
+									"home": {
+										"id": 2938,
+										"name": "Al-Ittihad FC",
+										"score": 2,
+										"winner": true,
+										"standings": 5,
+										"featured": true
+									},
+									"away": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 0,
+										"winner": false,
+										"standings": 14,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-28-Al Riyadh-Damac",
+								"fullDate": "2023-12-28T10:00",
+								"date": "2023-12-28",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 1,
+										"winner": true,
+										"standings": 14,
+										"featured": false
+									},
+									"away": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 0,
+										"winner": false,
+										"standings": 9,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-24-Al Wehda Club-Al Riyadh",
+								"fullDate": "2023-12-24T13:00",
+								"date": "2023-12-24",
+								"hour": "13:00",
+								"teams": {
+									"home": {
+										"id": 2937,
+										"name": "Al Wehda Club",
+										"score": 3,
+										"winner": true,
+										"standings": 12,
+										"featured": false
+									},
+									"away": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 1,
+										"winner": false,
+										"standings": 14,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-16-Al Riyadh-Al Khaleej Saihat",
+								"fullDate": "2023-12-16T10:00",
+								"date": "2023-12-16",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 0,
+										"winner": false,
+										"standings": 14,
+										"featured": false
+									},
+									"away": {
+										"id": 2928,
+										"name": "Al Khaleej Saihat",
+										"score": 1,
+										"winner": true,
+										"standings": 11,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-08-Al-Nassr-Al Riyadh",
+								"fullDate": "2023-12-08T13:00",
+								"date": "2023-12-08",
+								"hour": "13:00",
+								"teams": {
+									"home": {
+										"id": 2939,
+										"name": "Al-Nassr",
+										"score": 4,
+										"winner": true,
+										"standings": 2,
+										"featured": true
+									},
+									"away": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 1,
+										"winner": false,
+										"standings": 14,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-11-30-Al Riyadh-Al-Hazm",
+								"fullDate": "2023-11-30T10:00",
+								"date": "2023-11-30",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 0,
+										"winner": null,
+										"standings": 14,
+										"featured": false
+									},
+									"away": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 0,
+										"winner": null,
+										"standings": 18,
+										"featured": false
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			{
+				"id": "2024-05-02-Al-Ahli Jeddah-Damac",
+				"fullDate": "2024-05-02T13:00",
+				"date": "2024-05-02",
+				"hour": "13:00",
+				"predictions": [
+					{
+						"name": "Goles por equipo local",
+						"recommendable": true,
+						"acceptancePercentage": "0.63",
+						"criteria": {
+							"home": [
+								{ "description": "Promedio de goles >= 1.5", "check": "✅" },
+								{ "description": "Promedio de goles de local >= 1.5", "check": "❌" },
+								{ "description": "Promedio de goles de visitante >= 1.5", "check": "✅" },
+								{ "description": "Ha marcado en los ultimos 3 partidos de local", "check": "❌" },
+								{ "description": "No ha perdido los ultimos 3 partidos de local", "check": "❌" },
+								{
+									"description": "El local está al menos 5 posiciones mas arriba que el rival",
+									"check": "✅"
+								},
+								{
+									"description": "El local está en las primeras 6 posiciones de la tabla",
+									"check": "✅"
+								},
+								{ "description": "El local es un equipo destacado", "check": "✅" }
+							],
+							"away": []
+						}
+					}
+				],
+				"teams": {
+					"home": {
+						"id": 2929,
+						"name": "Al-Ahli Jeddah",
+						"score": 4,
+						"winner": true,
+						"standings": 3,
+						"featured": true,
+						"stats": {
+							"total_de_partidos": 15,
+							"total_de_goles": 28,
+							"promedio_de_goles": 1.9,
+							"---|---": 0,
+							"goles_de_local": 3,
+							"promedio_de_goles_de_local": 0.5,
+							"partidos_de_local": 6,
+							"partidos_ganados_de_local": 2,
+							"partidos_perdidos_de_local": 1,
+							"partidos_empatados_de_local": 3,
+							"partidos_con_goles_de_local": 3,
+							"---||---": 0,
+							"goles_de_visitante": 25,
+							"promedio_de_goles_de_visitante": 2.8,
+							"partidos_de_visitante": 9,
+							"partidos_ganados_de_visitante": 5,
+							"partidos_perdidos_de_visitante": 2,
+							"partidos_empatados_de_visitante": 2,
+							"partidos_con_goles_de_visitante": 9
+						},
+						"matches": [
+							{
+								"id": "2024-04-25-Al Riyadh-Al-Ahli Jeddah",
+								"fullDate": "2024-04-25T13:00",
+								"date": "2024-04-25",
+								"hour": "13:00",
+								"teams": {
+									"home": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 2,
+										"winner": true,
+										"standings": 14,
+										"featured": false
+									},
+									"away": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 1,
+										"winner": false,
+										"standings": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-05-Al Wehda Club-Al-Ahli Jeddah",
+								"fullDate": "2024-04-05T14:00",
+								"date": "2024-04-05",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2937,
+										"name": "Al Wehda Club",
+										"score": 1,
+										"winner": null,
+										"standings": 12,
+										"featured": false
+									},
+									"away": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 1,
+										"winner": null,
+										"standings": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-01-Al-Ahli Jeddah-Al-Ittihad FC",
+								"fullDate": "2024-04-01T14:00",
+								"date": "2024-04-01",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 1,
+										"winner": true,
+										"standings": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 2938,
+										"name": "Al-Ittihad FC",
+										"score": 0,
+										"winner": false,
+										"standings": 5,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-29-Al-Ettifaq-Al-Ahli Jeddah",
+								"fullDate": "2024-03-29T14:00",
+								"date": "2024-03-29",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2934,
+										"name": "Al-Ettifaq",
+										"score": 2,
+										"winner": null,
+										"standings": 6,
+										"featured": true
+									},
+									"away": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 2,
+										"winner": null,
+										"standings": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-15-Al-Ahli Jeddah-Al-Nassr",
+								"fullDate": "2024-03-15T14:00",
+								"date": "2024-03-15",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 0,
+										"winner": false,
+										"standings": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 2939,
+										"name": "Al-Nassr",
+										"score": 1,
+										"winner": true,
+										"standings": 2,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-09-Al Taawon-Al-Ahli Jeddah",
+								"fullDate": "2024-03-09T12:00",
+								"date": "2024-03-09",
+								"hour": "12:00",
+								"teams": {
+									"home": {
+										"id": 2936,
+										"name": "Al Taawon",
+										"score": 0,
+										"winner": false,
+										"standings": 4,
+										"featured": true
+									},
+									"away": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 1,
+										"winner": true,
+										"standings": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-02-Al-Ahli Jeddah-Al-Fateh",
+								"fullDate": "2024-03-02T12:00",
+								"date": "2024-03-02",
+								"hour": "12:00",
+								"teams": {
+									"home": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 1,
+										"winner": null,
+										"standings": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 1,
+										"winner": null,
+										"standings": 7,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-02-24-Al Taee-Al-Ahli Jeddah",
+								"fullDate": "2024-02-24T09:00",
+								"date": "2024-02-24",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 2942,
+										"name": "Al Taee",
+										"score": 1,
+										"winner": false,
+										"standings": 16,
+										"featured": false
+									},
+									"away": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 4,
+										"winner": true,
+										"standings": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-02-16-Al Akhdoud-Al-Ahli Jeddah",
+								"fullDate": "2024-02-16T12:00",
+								"date": "2024-02-16",
+								"hour": "12:00",
+								"teams": {
+									"home": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 3,
+										"winner": true,
+										"standings": 15,
+										"featured": false
+									},
+									"away": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 2,
+										"winner": false,
+										"standings": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2023-12-29-Al-Ahli Jeddah-Al Khaleej Saihat",
+								"fullDate": "2023-12-29T13:00",
+								"date": "2023-12-29",
+								"hour": "13:00",
+								"teams": {
+									"home": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 1,
+										"winner": true,
+										"standings": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 2928,
+										"name": "Al Khaleej Saihat",
+										"score": 0,
+										"winner": false,
+										"standings": 11,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-22-Al-Hazm-Al-Ahli Jeddah",
+								"fullDate": "2023-12-22T10:00",
+								"date": "2023-12-22",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 0,
+										"winner": false,
+										"standings": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 4,
+										"winner": true,
+										"standings": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2023-12-14-Al-Fayha-Al-Ahli Jeddah",
+								"fullDate": "2023-12-14T13:00",
+								"date": "2023-12-14",
+								"hour": "13:00",
+								"teams": {
+									"home": {
+										"id": 2944,
+										"name": "Al-Fayha",
+										"score": 0,
+										"winner": false,
+										"standings": 10,
+										"featured": false
+									},
+									"away": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 4,
+										"winner": true,
+										"standings": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2023-12-09-Al-Ahli Jeddah-Al-Raed",
+								"fullDate": "2023-12-09T10:00",
+								"date": "2023-12-09",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 0,
+										"winner": null,
+										"standings": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 2935,
+										"name": "Al-Raed",
+										"score": 0,
+										"winner": null,
+										"standings": 13,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-11-30-Abha-Al-Ahli Jeddah",
+								"fullDate": "2023-11-30T10:00",
+								"date": "2023-11-30",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2951,
+										"name": "Abha",
+										"score": 0,
+										"winner": false,
+										"standings": 17,
+										"featured": false
+									},
+									"away": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 6,
+										"winner": true,
+										"standings": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2023-11-25-Al-Ahli Jeddah-Al Shabab",
+								"fullDate": "2023-11-25T13:00",
+								"date": "2023-11-25",
+								"hour": "13:00",
+								"teams": {
+									"home": {
+										"id": 2929,
+										"name": "Al-Ahli Jeddah",
+										"score": 0,
+										"winner": null,
+										"standings": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 2940,
+										"name": "Al Shabab",
+										"score": 0,
+										"winner": null,
+										"standings": 8,
+										"featured": false
+									}
+								}
+							}
+						]
+					},
+					"away": {
+						"id": 2956,
+						"name": "Damac",
+						"score": 1,
+						"winner": false,
+						"standings": 9,
+						"featured": false,
+						"stats": {
+							"total_de_partidos": 15,
+							"total_de_goles": 16,
+							"promedio_de_goles": 1.1,
+							"---|---": 0,
+							"goles_de_local": 7,
+							"promedio_de_goles_de_local": 0.9,
+							"partidos_de_local": 8,
+							"partidos_ganados_de_local": 3,
+							"partidos_perdidos_de_local": 5,
+							"partidos_empatados_de_local": 0,
+							"partidos_con_goles_de_local": 3,
+							"---||---": 0,
+							"goles_de_visitante": 9,
+							"promedio_de_goles_de_visitante": 1.3,
+							"partidos_de_visitante": 7,
+							"partidos_ganados_de_visitante": 3,
+							"partidos_perdidos_de_visitante": 2,
+							"partidos_empatados_de_visitante": 2,
+							"partidos_con_goles_de_visitante": 5
+						},
+						"matches": [
+							{
+								"id": "2024-04-26-Damac-Al Taawon",
+								"fullDate": "2024-04-26T10:00",
+								"date": "2024-04-26",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 0,
+										"winner": false,
+										"standings": 9,
+										"featured": false
+									},
+									"away": {
+										"id": 2936,
+										"name": "Al Taawon",
+										"score": 1,
+										"winner": true,
+										"standings": 4,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-20-Al Akhdoud-Damac",
+								"fullDate": "2024-04-20T10:00",
+								"date": "2024-04-20",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2977,
+										"name": "Al Akhdoud",
+										"score": 1,
+										"winner": false,
+										"standings": 15,
+										"featured": false
+									},
+									"away": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 2,
+										"winner": true,
+										"standings": 9,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-05-Damac-Al-Nassr",
+								"fullDate": "2024-04-05T14:00",
+								"date": "2024-04-05",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 0,
+										"winner": false,
+										"standings": 9,
+										"featured": false
+									},
+									"away": {
+										"id": 2939,
+										"name": "Al-Nassr",
+										"score": 1,
+										"winner": true,
+										"standings": 2,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-01-Al-Hazm-Damac",
+								"fullDate": "2024-04-01T14:00",
+								"date": "2024-04-01",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2945,
+										"name": "Al-Hazm",
+										"score": 0,
+										"winner": null,
+										"standings": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 0,
+										"winner": null,
+										"standings": 9,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-29-Damac-Al Khaleej Saihat",
+								"fullDate": "2024-03-29T14:00",
+								"date": "2024-03-29",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 0,
+										"winner": false,
+										"standings": 9,
+										"featured": false
+									},
+									"away": {
+										"id": 2928,
+										"name": "Al Khaleej Saihat",
+										"score": 1,
+										"winner": true,
+										"standings": 11,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-16-Al-Hilal Saudi FC-Damac",
+								"fullDate": "2024-03-16T14:00",
+								"date": "2024-03-16",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 2932,
+										"name": "Al-Hilal Saudi FC",
+										"score": 2,
+										"winner": true,
+										"standings": 1,
+										"featured": true
+									},
+									"away": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 1,
+										"winner": false,
+										"standings": 9,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-07-Damac-Al Wehda Club",
+								"fullDate": "2024-03-07T09:00",
+								"date": "2024-03-07",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 1,
+										"winner": true,
+										"standings": 9,
+										"featured": false
+									},
+									"away": {
+										"id": 2937,
+										"name": "Al Wehda Club",
+										"score": 0,
+										"winner": false,
+										"standings": 12,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-02-Damac-Al-Ettifaq",
+								"fullDate": "2024-03-02T09:00",
+								"date": "2024-03-02",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 0,
+										"winner": false,
+										"standings": 9,
+										"featured": false
+									},
+									"away": {
+										"id": 2934,
+										"name": "Al-Ettifaq",
+										"score": 2,
+										"winner": true,
+										"standings": 6,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-02-23-Al-Fateh-Damac",
+								"fullDate": "2024-02-23T12:00",
+								"date": "2024-02-23",
+								"hour": "12:00",
+								"teams": {
+									"home": {
+										"id": 2931,
+										"name": "Al-Fateh",
+										"score": 1,
+										"winner": null,
+										"standings": 7,
+										"featured": true
+									},
+									"away": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 1,
+										"winner": null,
+										"standings": 9,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-16-Damac-Al Shabab",
+								"fullDate": "2024-02-16T09:00",
+								"date": "2024-02-16",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 0,
+										"winner": false,
+										"standings": 9,
+										"featured": false
+									},
+									"away": {
+										"id": 2940,
+										"name": "Al Shabab",
+										"score": 1,
+										"winner": true,
+										"standings": 8,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-28-Al Riyadh-Damac",
+								"fullDate": "2023-12-28T10:00",
+								"date": "2023-12-28",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 10511,
+										"name": "Al Riyadh",
+										"score": 1,
+										"winner": true,
+										"standings": 14,
+										"featured": false
+									},
+									"away": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 0,
+										"winner": false,
+										"standings": 9,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-21-Damac-Al Taee",
+								"fullDate": "2023-12-21T10:00",
+								"date": "2023-12-21",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 3,
+										"winner": true,
+										"standings": 9,
+										"featured": false
+									},
+									"away": {
+										"id": 2942,
+										"name": "Al Taee",
+										"score": 0,
+										"winner": false,
+										"standings": 16,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-15-Al-Raed-Damac",
+								"fullDate": "2023-12-15T10:00",
+								"date": "2023-12-15",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2935,
+										"name": "Al-Raed",
+										"score": 0,
+										"winner": false,
+										"standings": 13,
+										"featured": false
+									},
+									"away": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 1,
+										"winner": true,
+										"standings": 9,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2023-12-07-Damac-Al-Ittihad FC",
+								"fullDate": "2023-12-07T10:00",
+								"date": "2023-12-07",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 3,
+										"winner": true,
+										"standings": 9,
+										"featured": false
+									},
+									"away": {
+										"id": 2938,
+										"name": "Al-Ittihad FC",
+										"score": 1,
+										"winner": false,
+										"standings": 5,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2023-12-01-Al-Fayha-Damac",
+								"fullDate": "2023-12-01T10:00",
+								"date": "2023-12-01",
+								"hour": "10:00",
+								"teams": {
+									"home": {
+										"id": 2944,
+										"name": "Al-Fayha",
+										"score": 2,
+										"winner": false,
+										"standings": 10,
+										"featured": false
+									},
+									"away": {
+										"id": 2956,
+										"name": "Damac",
+										"score": 4,
+										"winner": true,
+										"standings": 9,
+										"featured": false
+									}
+								}
+							}
+						]
+					}
+				}
+			}
+		]
 	},
-	"Copa Do Brasil (Brazil)": {
+	{
 		"name": "Copa Do Brasil",
 		"country": "Brazil",
 		"standings": [],
@@ -10911,182 +10847,5 @@
 				}
 			}
 		]
-	},
-	"UEFA Europa Conference League (World)": {
-		"name": "UEFA Europa Conference League",
-		"country": "World",
-		"standings": [],
-		"matches": [
-			{
-				"id": "2024-05-02-Aston Villa-Olympiakos Piraeus",
-				"fullDate": "2024-05-02T14:00",
-				"date": "2024-05-02",
-				"hour": "14:00",
-				"predictions": [
-					{
-						"name": "Goles por equipo local",
-						"recommendable": false,
-						"acceptancePercentage": "0.00",
-						"criteria": {
-							"home": [
-								{ "description": "Promedio de goles >= 1.5", "check": "❌" },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌" },
-								{ "description": "Promedio de goles de visitante >= 1.5", "check": "❌" },
-								{ "description": "Ha marcado en los ultimos 3 partidos de local", "check": "❌" },
-								{ "description": "No ha perdido los ultimos 3 partidos de local", "check": "❌" }
-							],
-							"away": []
-						}
-					}
-				],
-				"teams": {
-					"home": {
-						"id": 66,
-						"name": "Aston Villa",
-						"score": 2,
-						"winner": false,
-						"standings": null,
-						"featured": false,
-						"stats": {
-							"total_de_partidos": 0,
-							"total_de_goles": 0,
-							"promedio_de_goles": 0,
-							"---|---": 0,
-							"goles_de_local": 0,
-							"promedio_de_goles_de_local": 0,
-							"partidos_de_local": 0,
-							"partidos_ganados_de_local": 0,
-							"partidos_perdidos_de_local": 0,
-							"partidos_empatados_de_local": 0,
-							"partidos_con_goles_de_local": 0,
-							"---||---": 0,
-							"goles_de_visitante": 0,
-							"promedio_de_goles_de_visitante": 0,
-							"partidos_de_visitante": 0,
-							"partidos_ganados_de_visitante": 0,
-							"partidos_perdidos_de_visitante": 0,
-							"partidos_empatados_de_visitante": 0,
-							"partidos_con_goles_de_visitante": 0
-						},
-						"matches": []
-					},
-					"away": {
-						"id": 553,
-						"name": "Olympiakos Piraeus",
-						"score": 4,
-						"winner": true,
-						"standings": null,
-						"featured": false,
-						"stats": {
-							"total_de_partidos": 0,
-							"total_de_goles": 0,
-							"promedio_de_goles": 0,
-							"---|---": 0,
-							"goles_de_local": 0,
-							"promedio_de_goles_de_local": 0,
-							"partidos_de_local": 0,
-							"partidos_ganados_de_local": 0,
-							"partidos_perdidos_de_local": 0,
-							"partidos_empatados_de_local": 0,
-							"partidos_con_goles_de_local": 0,
-							"---||---": 0,
-							"goles_de_visitante": 0,
-							"promedio_de_goles_de_visitante": 0,
-							"partidos_de_visitante": 0,
-							"partidos_ganados_de_visitante": 0,
-							"partidos_perdidos_de_visitante": 0,
-							"partidos_empatados_de_visitante": 0,
-							"partidos_con_goles_de_visitante": 0
-						},
-						"matches": []
-					}
-				}
-			},
-			{
-				"id": "2024-05-02-Fiorentina-Club Brugge KV",
-				"fullDate": "2024-05-02T14:00",
-				"date": "2024-05-02",
-				"hour": "14:00",
-				"predictions": [
-					{
-						"name": "Goles por equipo local",
-						"recommendable": false,
-						"acceptancePercentage": "0.00",
-						"criteria": {
-							"home": [
-								{ "description": "Promedio de goles >= 1.5", "check": "❌" },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌" },
-								{ "description": "Promedio de goles de visitante >= 1.5", "check": "❌" },
-								{ "description": "Ha marcado en los ultimos 3 partidos de local", "check": "❌" },
-								{ "description": "No ha perdido los ultimos 3 partidos de local", "check": "❌" }
-							],
-							"away": []
-						}
-					}
-				],
-				"teams": {
-					"home": {
-						"id": 502,
-						"name": "Fiorentina",
-						"score": 3,
-						"winner": true,
-						"standings": null,
-						"featured": true,
-						"stats": {
-							"total_de_partidos": 0,
-							"total_de_goles": 0,
-							"promedio_de_goles": 0,
-							"---|---": 0,
-							"goles_de_local": 0,
-							"promedio_de_goles_de_local": 0,
-							"partidos_de_local": 0,
-							"partidos_ganados_de_local": 0,
-							"partidos_perdidos_de_local": 0,
-							"partidos_empatados_de_local": 0,
-							"partidos_con_goles_de_local": 0,
-							"---||---": 0,
-							"goles_de_visitante": 0,
-							"promedio_de_goles_de_visitante": 0,
-							"partidos_de_visitante": 0,
-							"partidos_ganados_de_visitante": 0,
-							"partidos_perdidos_de_visitante": 0,
-							"partidos_empatados_de_visitante": 0,
-							"partidos_con_goles_de_visitante": 0
-						},
-						"matches": []
-					},
-					"away": {
-						"id": 569,
-						"name": "Club Brugge KV",
-						"score": 2,
-						"winner": false,
-						"standings": null,
-						"featured": false,
-						"stats": {
-							"total_de_partidos": 0,
-							"total_de_goles": 0,
-							"promedio_de_goles": 0,
-							"---|---": 0,
-							"goles_de_local": 0,
-							"promedio_de_goles_de_local": 0,
-							"partidos_de_local": 0,
-							"partidos_ganados_de_local": 0,
-							"partidos_perdidos_de_local": 0,
-							"partidos_empatados_de_local": 0,
-							"partidos_con_goles_de_local": 0,
-							"---||---": 0,
-							"goles_de_visitante": 0,
-							"promedio_de_goles_de_visitante": 0,
-							"partidos_de_visitante": 0,
-							"partidos_ganados_de_visitante": 0,
-							"partidos_perdidos_de_visitante": 0,
-							"partidos_empatados_de_visitante": 0,
-							"partidos_con_goles_de_visitante": 0
-						},
-						"matches": []
-					}
-				}
-			}
-		]
 	}
-}
+]

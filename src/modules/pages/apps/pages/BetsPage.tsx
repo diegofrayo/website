@@ -17,7 +17,7 @@ import {
 } from "~/components/primitive";
 import { withAuthRulesPage } from "~/modules/auth";
 import type DR from "@diegofrayo/types";
-import { generateSlug } from "@diegofrayo/utils/strings";
+import { addLeftPadding, generateSlug } from "@diegofrayo/utils/strings";
 
 function BetsPage({ data }: T_BetsPageProps) {
 	// --- STATES & REFS ---
@@ -127,6 +127,17 @@ function BetsPage({ data }: T_BetsPageProps) {
 		return title;
 	}
 
+	function checkMatchStarted(fullDate: string) {
+		const currentDate = new Date();
+		const currentDateFormatted = `${currentDate.getFullYear()}-${addLeftPadding(
+			currentDate.getMonth() + 1,
+		)}-${addLeftPadding(currentDate.getDate())}T${addLeftPadding(
+			new Date().getHours(),
+		)}:${addLeftPadding(new Date().getMinutes())}`;
+
+		return currentDateFormatted >= fullDate;
+	}
+
 	return (
 		<Page
 			config={{
@@ -136,7 +147,7 @@ function BetsPage({ data }: T_BetsPageProps) {
 		>
 			<MainLayout
 				title="Bets"
-				width="tw-max-w-[1280px]"
+				className="tw-max-w-[1280px] tw-text-sm lg:tw-text-base"
 			>
 				{Object.entries(data).map(([fixtureDate, leagues], index) => {
 					return (
@@ -156,7 +167,9 @@ function BetsPage({ data }: T_BetsPageProps) {
               <Space size={2} />
               */}
 
-							{Object.entries(leagues).map(([leagueName, league]) => {
+							{leagues.map((league) => {
+								const leagueName = `${league.name} (${league.country})`;
+
 								if (league.matches.length === 0) {
 									return null;
 								}
@@ -168,7 +181,7 @@ function BetsPage({ data }: T_BetsPageProps) {
 									>
 										<Title
 											is="h2"
-											className="tw-p-2 tw-text-center tw-text-xl tw-text-white dr-bg-color-surface-300"
+											className="tw-p-2 tw-text-center tw-text-base tw-text-white dr-bg-color-surface-300 lg:tw-text-xl"
 										>
 											{leagueName}
 										</Title>
@@ -180,7 +193,7 @@ function BetsPage({ data }: T_BetsPageProps) {
 														title="Posiciones"
 														contentClassName="tw-pt-1"
 													>
-														<Pre className="tw-w-full tw-max-w-full tw-overflow-auto tw-rounded-md tw-px-4 tw-py-3 tw-text-base dr-bg-color-surface-100">
+														<Pre className="tw-w-full tw-max-w-full tw-overflow-auto tw-rounded-md tw-px-4 tw-py-3 dr-bg-color-surface-100">
 															{league.standings
 																.map((team, standingIndex) => {
 																	return `${standingIndex + 1}. ${team.teamName} | ${team.points}`;
@@ -218,6 +231,11 @@ function BetsPage({ data }: T_BetsPageProps) {
 																		title={composeFixtureMatchTitle(match)}
 																		className="tw-mb-2 last:tw-mb-0"
 																		contentClassName="tw-pt-2"
+																		titleClassName={
+																			checkMatchStarted(match.fullDate)
+																				? "tw-text-red-700"
+																				: "tw-text-green-700"
+																		}
 																	>
 																		<Collapsible
 																			title="Predicciones de apuestas"
@@ -308,7 +326,7 @@ function BetsPage({ data }: T_BetsPageProps) {
 																							</InlineText>
 																							<Link
 																								variant={Link.variant.SIMPLE}
-																								href={`https://www.google.com/search?q=${encodeURI(
+																								href={`https://www.google.com/search?q=${encodeURIComponent(
 																									`${team.name} equipo ${league.country} 365scores`,
 																								)}`}
 																								className="tw-absolute tw-right-2"
@@ -470,29 +488,26 @@ export default withAuthRulesPage(BetsPage, { requireAuth: true });
 export type T_BetsPageProps = {
 	data: {
 		[date in string]: {
-			// Leagues
-			[leagueName in string]: {
-				name: string;
-				country: string;
-				standings: {
-					teamId: number;
-					teamName: string;
-					points: number;
-					stats: {
-						goalsDiff: number;
-						played: number;
-						win: number;
-						draw: number;
-						lose: number;
-						goals: {
-							for: number;
-							against: number;
-						};
+			name: string;
+			country: string;
+			standings: {
+				teamId: number;
+				teamName: string;
+				points: number;
+				stats: {
+					goalsDiff: number;
+					played: number;
+					win: number;
+					draw: number;
+					lose: number;
+					goals: {
+						for: number;
+						against: number;
 					};
-				}[];
-				matches: T_FixtureMatch[];
-			};
-		};
+				};
+			}[];
+			matches: T_FixtureMatch[];
+		}[];
 	};
 };
 

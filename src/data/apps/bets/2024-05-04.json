@@ -1,5 +1,5 @@
-{
-	"Serie A (Italy)": {
+[
+	{
 		"name": "Serie A",
 		"country": "Italy",
 		"standings": [
@@ -266,7 +266,7 @@
 		],
 		"matches": []
 	},
-	"La Liga (Spain)": {
+	{
 		"name": "La Liga",
 		"country": "Spain",
 		"standings": [
@@ -533,7 +533,7 @@
 		],
 		"matches": []
 	},
-	"Jupiler Pro League (Belgium)": {
+	{
 		"name": "Jupiler Pro League",
 		"country": "Belgium",
 		"standings": [
@@ -588,11 +588,375 @@
 					"lose": 23,
 					"goals": { "for": 27, "against": 65 }
 				}
+			},
+			{
+				"teamId": 554,
+				"teamName": "Anderlecht",
+				"points": 42,
+				"stats": {
+					"goalsDiff": 30,
+					"played": 36,
+					"win": 21,
+					"draw": 10,
+					"lose": 5,
+					"goals": { "for": 67, "against": 37 }
+				}
+			},
+			{
+				"teamId": 569,
+				"teamName": "Club Brugge KV",
+				"points": 42,
+				"stats": {
+					"goalsDiff": 46,
+					"played": 36,
+					"win": 19,
+					"draw": 10,
+					"lose": 7,
+					"goals": { "for": 78, "against": 32 }
+				}
+			},
+			{
+				"teamId": 1393,
+				"teamName": "Union St. Gilloise",
+				"points": 41,
+				"stats": {
+					"goalsDiff": 34,
+					"played": 36,
+					"win": 23,
+					"draw": 7,
+					"lose": 6,
+					"goals": { "for": 74, "against": 40 }
+				}
+			},
+			{
+				"teamId": 742,
+				"teamName": "Genk",
+				"points": 34,
+				"stats": {
+					"goalsDiff": 16,
+					"played": 36,
+					"win": 15,
+					"draw": 12,
+					"lose": 9,
+					"goals": { "for": 56, "against": 40 }
+				}
+			},
+			{
+				"teamId": 741,
+				"teamName": "Cercle Brugge",
+				"points": 30,
+				"stats": {
+					"goalsDiff": 7,
+					"played": 36,
+					"win": 15,
+					"draw": 8,
+					"lose": 13,
+					"goals": { "for": 50, "against": 43 }
+				}
+			},
+			{
+				"teamId": 740,
+				"teamName": "Antwerp",
+				"points": 29,
+				"stats": {
+					"goalsDiff": 18,
+					"played": 36,
+					"win": 15,
+					"draw": 10,
+					"lose": 11,
+					"goals": { "for": 57, "against": 39 }
+				}
+			},
+			{
+				"teamId": 631,
+				"teamName": "Gent",
+				"points": 39,
+				"stats": {
+					"goalsDiff": 26,
+					"played": 36,
+					"win": 17,
+					"draw": 11,
+					"lose": 8,
+					"goals": { "for": 70, "against": 44 }
+				}
+			},
+			{
+				"teamId": 266,
+				"teamName": "KV Mechelen",
+				"points": 33,
+				"stats": {
+					"goalsDiff": 7,
+					"played": 36,
+					"win": 16,
+					"draw": 7,
+					"lose": 13,
+					"goals": { "for": 51, "against": 44 }
+				}
+			},
+			{
+				"teamId": 735,
+				"teamName": "St. Truiden",
+				"points": 28,
+				"stats": {
+					"goalsDiff": -11,
+					"played": 36,
+					"win": 12,
+					"draw": 12,
+					"lose": 12,
+					"goals": { "for": 44, "against": 55 }
+				}
+			},
+			{
+				"teamId": 260,
+				"teamName": "OH Leuven",
+				"points": 23,
+				"stats": {
+					"goalsDiff": -15,
+					"played": 36,
+					"win": 9,
+					"draw": 10,
+					"lose": 17,
+					"goals": { "for": 40, "against": 55 }
+				}
+			},
+			{
+				"teamId": 733,
+				"teamName": "Standard Liege",
+				"points": 22,
+				"stats": {
+					"goalsDiff": -12,
+					"played": 36,
+					"win": 8,
+					"draw": 15,
+					"lose": 13,
+					"goals": { "for": 41, "against": 53 }
+				}
+			},
+			{
+				"teamId": 261,
+				"teamName": "KVC Westerlo",
+				"points": 17,
+				"stats": {
+					"goalsDiff": -19,
+					"played": 36,
+					"win": 7,
+					"draw": 11,
+					"lose": 18,
+					"goals": { "for": 50, "against": 69 }
+				}
+			},
+			{
+				"teamId": 1393,
+				"teamName": "Union St. Gilloise",
+				"points": 70,
+				"stats": {
+					"goalsDiff": 32,
+					"played": 30,
+					"win": 21,
+					"draw": 7,
+					"lose": 2,
+					"goals": { "for": 63, "against": 31 }
+				}
+			},
+			{
+				"teamId": 554,
+				"teamName": "Anderlecht",
+				"points": 63,
+				"stats": {
+					"goalsDiff": 28,
+					"played": 30,
+					"win": 18,
+					"draw": 9,
+					"lose": 3,
+					"goals": { "for": 58, "against": 30 }
+				}
+			},
+			{
+				"teamId": 740,
+				"teamName": "Antwerp",
+				"points": 52,
+				"stats": {
+					"goalsDiff": 28,
+					"played": 30,
+					"win": 14,
+					"draw": 10,
+					"lose": 6,
+					"goals": { "for": 55, "against": 27 }
+				}
+			},
+			{
+				"teamId": 569,
+				"teamName": "Club Brugge KV",
+				"points": 51,
+				"stats": {
+					"goalsDiff": 33,
+					"played": 30,
+					"win": 14,
+					"draw": 9,
+					"lose": 7,
+					"goals": { "for": 62, "against": 29 }
+				}
+			},
+			{
+				"teamId": 741,
+				"teamName": "Cercle Brugge",
+				"points": 47,
+				"stats": {
+					"goalsDiff": 10,
+					"played": 30,
+					"win": 14,
+					"draw": 5,
+					"lose": 11,
+					"goals": { "for": 44, "against": 34 }
+				}
+			},
+			{
+				"teamId": 742,
+				"teamName": "Genk",
+				"points": 47,
+				"stats": {
+					"goalsDiff": 20,
+					"played": 30,
+					"win": 12,
+					"draw": 11,
+					"lose": 7,
+					"goals": { "for": 51, "against": 31 }
+				}
+			},
+			{
+				"teamId": 631,
+				"teamName": "Gent",
+				"points": 47,
+				"stats": {
+					"goalsDiff": 15,
+					"played": 30,
+					"win": 12,
+					"draw": 11,
+					"lose": 7,
+					"goals": { "for": 53, "against": 38 }
+				}
+			},
+			{
+				"teamId": 266,
+				"teamName": "KV Mechelen",
+				"points": 45,
+				"stats": {
+					"goalsDiff": 5,
+					"played": 30,
+					"win": 13,
+					"draw": 6,
+					"lose": 11,
+					"goals": { "for": 39, "against": 34 }
+				}
+			},
+			{
+				"teamId": 735,
+				"teamName": "St. Truiden",
+				"points": 40,
+				"stats": {
+					"goalsDiff": -11,
+					"played": 30,
+					"win": 10,
+					"draw": 10,
+					"lose": 10,
+					"goals": { "for": 35, "against": 46 }
+				}
+			},
+			{
+				"teamId": 733,
+				"teamName": "Standard Liege",
+				"points": 34,
+				"stats": {
+					"goalsDiff": -8,
+					"played": 30,
+					"win": 8,
+					"draw": 10,
+					"lose": 12,
+					"goals": { "for": 33, "against": 41 }
+				}
+			},
+			{
+				"teamId": 261,
+				"teamName": "KVC Westerlo",
+				"points": 30,
+				"stats": {
+					"goalsDiff": -12,
+					"played": 30,
+					"win": 7,
+					"draw": 9,
+					"lose": 14,
+					"goals": { "for": 42, "against": 54 }
+				}
+			},
+			{
+				"teamId": 260,
+				"teamName": "OH Leuven",
+				"points": 29,
+				"stats": {
+					"goalsDiff": -13,
+					"played": 30,
+					"win": 7,
+					"draw": 8,
+					"lose": 15,
+					"goals": { "for": 34, "against": 47 }
+				}
+			},
+			{
+				"teamId": 736,
+				"teamName": "Charleroi",
+				"points": 29,
+				"stats": {
+					"goalsDiff": -22,
+					"played": 30,
+					"win": 7,
+					"draw": 8,
+					"lose": 15,
+					"goals": { "for": 26, "against": 48 }
+				}
+			},
+			{
+				"teamId": 739,
+				"teamName": "AS Eupen",
+				"points": 24,
+				"stats": {
+					"goalsDiff": -34,
+					"played": 30,
+					"win": 7,
+					"draw": 3,
+					"lose": 20,
+					"goals": { "for": 24, "against": 58 }
+				}
+			},
+			{
+				"teamId": 734,
+				"teamName": "Kortrijk",
+				"points": 24,
+				"stats": {
+					"goalsDiff": -35,
+					"played": 30,
+					"win": 6,
+					"draw": 6,
+					"lose": 18,
+					"goals": { "for": 22, "against": 57 }
+				}
+			},
+			{
+				"teamId": 6224,
+				"teamName": "RWDM",
+				"points": 23,
+				"stats": {
+					"goalsDiff": -36,
+					"played": 30,
+					"win": 5,
+					"draw": 8,
+					"lose": 17,
+					"goals": { "for": 31, "against": 67 }
+				}
 			}
 		],
 		"matches": []
 	},
-	"Süper Lig (Turkey)": {
+	{
 		"name": "Süper Lig",
 		"country": "Turkey",
 		"standings": [
@@ -859,7 +1223,7 @@
 		],
 		"matches": []
 	},
-	"Bundesliga (Austria)": {
+	{
 		"name": "Bundesliga",
 		"country": "Austria",
 		"standings": [
@@ -940,23 +1304,247 @@
 					"lose": 19,
 					"goals": { "for": 17, "against": 56 }
 				}
+			},
+			{
+				"teamId": 637,
+				"teamName": "Sturm Graz",
+				"points": 38,
+				"stats": {
+					"goalsDiff": 31,
+					"played": 28,
+					"win": 18,
+					"draw": 7,
+					"lose": 3,
+					"goals": { "for": 49, "against": 18 }
+				}
+			},
+			{
+				"teamId": 571,
+				"teamName": "Red Bull Salzburg",
+				"points": 35,
+				"stats": {
+					"goalsDiff": 37,
+					"played": 28,
+					"win": 18,
+					"draw": 6,
+					"lose": 4,
+					"goals": { "for": 60, "against": 23 }
+				}
+			},
+			{
+				"teamId": 1026,
+				"teamName": "Lask Linz",
+				"points": 27,
+				"stats": {
+					"goalsDiff": 9,
+					"played": 28,
+					"win": 12,
+					"draw": 9,
+					"lose": 7,
+					"goals": { "for": 33, "against": 24 }
+				}
+			},
+			{
+				"teamId": 781,
+				"teamName": "Rapid Vienna",
+				"points": 22,
+				"stats": {
+					"goalsDiff": 17,
+					"played": 28,
+					"win": 9,
+					"draw": 12,
+					"lose": 7,
+					"goals": { "for": 44, "against": 27 }
+				}
+			},
+			{
+				"teamId": 1405,
+				"teamName": "Austria Klagenfurt",
+				"points": 22,
+				"stats": {
+					"goalsDiff": -4,
+					"played": 28,
+					"win": 9,
+					"draw": 12,
+					"lose": 7,
+					"goals": { "for": 38, "against": 42 }
+				}
+			},
+			{
+				"teamId": 1072,
+				"teamName": "TSV Hartberg",
+				"points": 21,
+				"stats": {
+					"goalsDiff": -3,
+					"played": 28,
+					"win": 10,
+					"draw": 8,
+					"lose": 10,
+					"goals": { "for": 41, "against": 44 }
+				}
+			},
+			{
+				"teamId": 571,
+				"teamName": "Red Bull Salzburg",
+				"points": 50,
+				"stats": {
+					"goalsDiff": 33,
+					"played": 22,
+					"win": 15,
+					"draw": 5,
+					"lose": 2,
+					"goals": { "for": 45, "against": 12 }
+				}
+			},
+			{
+				"teamId": 637,
+				"teamName": "Sturm Graz",
+				"points": 46,
+				"stats": {
+					"goalsDiff": 22,
+					"played": 22,
+					"win": 13,
+					"draw": 7,
+					"lose": 2,
+					"goals": { "for": 37, "against": 15 }
+				}
+			},
+			{
+				"teamId": 1026,
+				"teamName": "Lask Linz",
+				"points": 35,
+				"stats": {
+					"goalsDiff": 8,
+					"played": 22,
+					"win": 9,
+					"draw": 8,
+					"lose": 5,
+					"goals": { "for": 26, "against": 18 }
+				}
+			},
+			{
+				"teamId": 1405,
+				"teamName": "Austria Klagenfurt",
+				"points": 34,
+				"stats": {
+					"goalsDiff": 2,
+					"played": 22,
+					"win": 8,
+					"draw": 10,
+					"lose": 4,
+					"goals": { "for": 29, "against": 27 }
+				}
+			},
+			{
+				"teamId": 1072,
+				"teamName": "TSV Hartberg",
+				"points": 34,
+				"stats": {
+					"goalsDiff": 5,
+					"played": 22,
+					"win": 9,
+					"draw": 7,
+					"lose": 6,
+					"goals": { "for": 33, "against": 28 }
+				}
+			},
+			{
+				"teamId": 781,
+				"teamName": "Rapid Vienna",
+				"points": 33,
+				"stats": {
+					"goalsDiff": 17,
+					"played": 22,
+					"win": 8,
+					"draw": 9,
+					"lose": 5,
+					"goals": { "for": 38, "against": 21 }
+				}
+			},
+			{
+				"teamId": 601,
+				"teamName": "Austria Vienna",
+				"points": 33,
+				"stats": {
+					"goalsDiff": 3,
+					"played": 22,
+					"win": 9,
+					"draw": 6,
+					"lose": 7,
+					"goals": { "for": 25, "against": 22 }
+				}
+			},
+			{
+				"teamId": 1025,
+				"teamName": "Wolfsberger AC",
+				"points": 30,
+				"stats": {
+					"goalsDiff": -3,
+					"played": 22,
+					"win": 8,
+					"draw": 6,
+					"lose": 8,
+					"goals": { "for": 29, "against": 32 }
+				}
+			},
+			{
+				"teamId": 618,
+				"teamName": "SCR Altach",
+				"points": 19,
+				"stats": {
+					"goalsDiff": -13,
+					"played": 22,
+					"win": 4,
+					"draw": 7,
+					"lose": 11,
+					"goals": { "for": 17, "against": 30 }
+				}
+			},
+			{
+				"teamId": 1394,
+				"teamName": "FC BW Linz",
+				"points": 19,
+				"stats": {
+					"goalsDiff": -16,
+					"played": 22,
+					"win": 4,
+					"draw": 7,
+					"lose": 11,
+					"goals": { "for": 22, "against": 38 }
+				}
+			},
+			{
+				"teamId": 1398,
+				"teamName": "WSG Wattens",
+				"points": 14,
+				"stats": {
+					"goalsDiff": -22,
+					"played": 22,
+					"win": 4,
+					"draw": 2,
+					"lose": 16,
+					"goals": { "for": 20, "against": 42 }
+				}
+			},
+			{
+				"teamId": 1399,
+				"teamName": "Austria Lustenau",
+				"points": 10,
+				"stats": {
+					"goalsDiff": -36,
+					"played": 22,
+					"win": 2,
+					"draw": 4,
+					"lose": 16,
+					"goals": { "for": 13, "against": 49 }
+				}
 			}
 		],
 		"matches": []
 	},
-	"Primera A (Colombia)": {
-		"name": "Primera A",
-		"country": "Colombia",
-		"standings": [],
-		"matches": []
-	},
-	"Major League Soccer (USA)": {
-		"name": "Major League Soccer",
-		"country": "USA",
-		"standings": [],
-		"matches": []
-	},
-	"Pro League (Saudi-Arabia)": {
+	{ "name": "Primera A", "country": "Colombia", "standings": [], "matches": [] },
+	{ "name": "Major League Soccer", "country": "USA", "standings": [], "matches": [] },
+	{
 		"name": "Pro League",
 		"country": "Saudi-Arabia",
 		"standings": [
@@ -1197,7 +1785,7 @@
 		],
 		"matches": []
 	},
-	"Premier League (England)": {
+	{
 		"name": "Premier League",
 		"country": "England",
 		"standings": [
@@ -1464,7 +2052,7 @@
 		],
 		"matches": []
 	},
-	"Ligue 1 (France)": {
+	{
 		"name": "Ligue 1",
 		"country": "France",
 		"standings": [
@@ -1705,8 +2293,8 @@
 		],
 		"matches": []
 	},
-	"Serie A (Brazil)": { "name": "Serie A", "country": "Brazil", "standings": [], "matches": [] },
-	"Bundesliga (Germany)": {
+	{ "name": "Serie A", "country": "Brazil", "standings": [], "matches": [] },
+	{
 		"name": "Bundesliga",
 		"country": "Germany",
 		"standings": [
@@ -1947,7 +2535,7 @@
 		],
 		"matches": []
 	},
-	"Primeira Liga (Portugal)": {
+	{
 		"name": "Primeira Liga",
 		"country": "Portugal",
 		"standings": [
@@ -2188,4 +2776,4 @@
 		],
 		"matches": []
 	}
-}
+]

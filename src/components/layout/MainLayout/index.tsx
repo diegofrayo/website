@@ -1,5 +1,4 @@
 import * as React from "react";
-import cn from "classnames";
 import * as RadixNavigationMenu from "@radix-ui/react-navigation-menu";
 
 import {
@@ -17,7 +16,7 @@ import type { T_IconName } from "~/components/primitive/Icon";
 import { Toast, TypingTextEffect } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/metadata.json";
 import { renderIf, withOnlyClientRender } from "~/hocs";
-import { useDidMount, useOnWindowStopScroll, useToggleBodyScroll } from "@diegofrayo/hooks";
+import cn from "~/lib/cn";
 import AnalyticsService from "~/modules/analytics";
 import ServerAPI from "~/modules/api";
 import { AuthService, ComponentWithAuth, withAuth } from "~/modules/auth";
@@ -25,8 +24,9 @@ import EnvVars from "~/modules/env-vars";
 import { logAndReportError } from "~/modules/logging";
 import { ROUTES, redirect, useRouting } from "~/modules/routing";
 import { isDevelopmentEnvironment } from "~/utils/app";
-import { delay, getErrorMessage } from "@diegofrayo/utils/misc";
 import type DR from "@diegofrayo/types";
+import { useDidMount, useOnWindowStopScroll, useToggleBodyScroll } from "@diegofrayo/hooks";
+import { delay, getErrorMessage } from "@diegofrayo/utils/misc";
 import {
 	copyToClipboard,
 	deletePWACache,
@@ -42,10 +42,10 @@ import styles from "./styles.module.css";
 type T_MainLayoutProps = {
 	children: DR.React.Children;
 	title?: string;
-	width?: string;
+	className?: string;
 };
 
-function MainLayout({ title, children, width = "tw-max-w-screen-md" }: T_MainLayoutProps) {
+function MainLayout({ title, children, className }: T_MainLayoutProps) {
 	// --- HOOKS ---
 	const { pathname } = useRouting();
 
@@ -72,8 +72,8 @@ function MainLayout({ title, children, width = "tw-max-w-screen-md" }: T_MainLay
 		<Block is="main">
 			<Block
 				className={cn(
-					"tw-relative tw-mx-auto tw-min-h-dv-screen tw-px-6 tw-py-12 dr-bg-color-surface-100 print:tw-bg-transparent",
-					width,
+					"tw-relative tw-mx-auto tw-min-h-dv-screen tw-max-w-5xl tw-px-6 tw-py-12 dr-bg-color-surface-100 print:tw-bg-transparent",
+					className,
 				)}
 			>
 				<Block className="tw-absolute tw--top-1 tw-left-0">
