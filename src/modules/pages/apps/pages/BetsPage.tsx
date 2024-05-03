@@ -289,12 +289,12 @@ function BetsPage({ data }: T_BetsPageProps) {
 																			variant={Space.variant.DASHED}
 																		/>
 
-																		<Block className="tw-flex tw-justify-between tw-gap-2">
+																		<Block className="tw-flex tw-flex-wrap tw-justify-between tw-gap-2 lg:tw-flex-nowrap">
 																			{Object.entries(match.teams).map(([teamSide, team]) => {
 																				return (
 																					<Block
 																						key={team.name}
-																						className="tw-w-[50%] tw-flex-shrink-0 tw-overflow-auto tw-rounded-md"
+																						className="tw-w-full tw-flex-shrink-0 tw-overflow-auto tw-rounded-md lg:tw-w-[50%]"
 																					>
 																						<Title
 																							is="h4"
