@@ -2,6 +2,7 @@
 	{
 		"name": "UEFA Europa Conference League",
 		"country": "World",
+		"flag": "🌎",
 		"standings": [],
 		"matches": [
 			{
@@ -179,6 +180,7 @@
 	{
 		"name": "UEFA Europa League",
 		"country": "World",
+		"flag": "🌎",
 		"standings": [],
 		"matches": [
 			{
@@ -1800,6 +1802,7 @@
 	{
 		"name": "Premier League",
 		"country": "England",
+		"flag": "🇬🇧",
 		"standings": [
 			{
 				"teamId": 42,
@@ -2884,6 +2887,7 @@
 	{
 		"name": "Liga MX",
 		"country": "Mexico",
+		"flag": "🇲🇽",
 		"standings": [],
 		"matches": [
 			{
@@ -3061,6 +3065,7 @@
 	{
 		"name": "Division 1",
 		"country": "Saudi-Arabia",
+		"flag": "🇸🇦",
 		"standings": [
 			{
 				"teamId": 2933,
@@ -4119,6 +4124,7 @@
 	{
 		"name": "Pro League",
 		"country": "Saudi-Arabia",
+		"flag": "🇸🇦",
 		"standings": [
 			{
 				"teamId": 2932,
@@ -6809,6 +6815,7 @@
 	{
 		"name": "Copa Do Brasil",
 		"country": "Brazil",
+		"flag": "🇧🇷",
 		"standings": [],
 		"matches": [
 			{

@@ -2,6 +2,7 @@
 	{
 		"name": "Bundesliga",
 		"country": "Germany",
+		"flag": "🇩🇪",
 		"standings": [
 			{
 				"teamId": 168,
@@ -274,7 +275,7 @@
 					"home": {
 						"id": 167,
 						"name": "1899 Hoffenheim",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"standings": 9,
 						"featured": false,
@@ -665,7 +666,7 @@
 					"away": {
 						"id": 173,
 						"name": "RB Leipzig",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"standings": 4,
 						"featured": true,
@@ -1060,6 +1061,7 @@
 	{
 		"name": "La Liga",
 		"country": "Spain",
+		"flag": "🇪🇸",
 		"standings": [
 			{
 				"teamId": 541,
@@ -1358,8 +1360,8 @@
 					"home": {
 						"id": 546,
 						"name": "Getafe",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"standings": 10,
 						"featured": false,
 						"stats": {
@@ -1749,8 +1751,8 @@
 					"away": {
 						"id": 531,
 						"name": "Athletic Club",
-						"score": null,
-						"winner": null,
+						"score": 2,
+						"winner": true,
 						"standings": 5,
 						"featured": true,
 						"stats": {
@@ -2144,6 +2146,7 @@
 	{
 		"name": "Ligue 1",
 		"country": "France",
+		"flag": "🇫🇷",
 		"standings": [
 			{
 				"teamId": 85,
@@ -2416,8 +2419,8 @@
 					"home": {
 						"id": 96,
 						"name": "Toulouse",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": false,
 						"standings": 10,
 						"featured": false,
 						"stats": {
@@ -2807,8 +2810,8 @@
 					"away": {
 						"id": 82,
 						"name": "Montpellier",
-						"score": null,
-						"winner": null,
+						"score": 2,
+						"winner": true,
 						"standings": 12,
 						"featured": false,
 						"stats": {
@@ -3232,8 +3235,8 @@
 					"home": {
 						"id": 116,
 						"name": "Lens",
-						"score": null,
-						"winner": null,
+						"score": 2,
+						"winner": true,
 						"standings": 6,
 						"featured": true,
 						"stats": {
@@ -3623,8 +3626,8 @@
 					"away": {
 						"id": 97,
 						"name": "Lorient",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"standings": 17,
 						"featured": false,
 						"stats": {
@@ -4018,6 +4021,7 @@
 	{
 		"name": "Premier League",
 		"country": "England",
+		"flag": "🇬🇧",
 		"standings": [
 			{
 				"teamId": 42,
@@ -4316,7 +4320,7 @@
 					"home": {
 						"id": 1359,
 						"name": "Luton",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"standings": 18,
 						"featured": false,
@@ -4707,7 +4711,7 @@
 					"away": {
 						"id": 45,
 						"name": "Everton",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"standings": 15,
 						"featured": false,
@@ -5102,6 +5106,7 @@
 	{
 		"name": "Primeira Liga",
 		"country": "Portugal",
+		"flag": "🇵🇹",
 		"standings": [
 			{
 				"teamId": 228,
@@ -5374,8 +5379,8 @@
 					"home": {
 						"id": 215,
 						"name": "Moreirense",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": true,
 						"standings": 6,
 						"featured": true,
 						"stats": {
@@ -5765,8 +5770,8 @@
 					"away": {
 						"id": 810,
 						"name": "Vizela",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"standings": 18,
 						"featured": false,
 						"stats": {
@@ -6160,6 +6165,7 @@
 	{
 		"name": "Serie A",
 		"country": "Italy",
+		"flag": "🇮🇹",
 		"standings": [
 			{
 				"teamId": 505,
@@ -6458,7 +6464,7 @@
 					"home": {
 						"id": 503,
 						"name": "Torino",
-						"score": null,
+						"score": 0,
 						"winner": null,
 						"standings": 10,
 						"featured": false,
@@ -6849,7 +6855,7 @@
 					"away": {
 						"id": 500,
 						"name": "Bologna",
-						"score": null,
+						"score": 0,
 						"winner": null,
 						"standings": 4,
 						"featured": true,
@@ -7244,6 +7250,7 @@
 	{
 		"name": "Süper Lig",
 		"country": "Turkey",
+		"flag": "🇹🇷",
 		"standings": [
 			{
 				"teamId": 645,
@@ -7542,7 +7549,7 @@
 					"home": {
 						"id": 1010,
 						"name": "Ankaragucu",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"standings": 14,
 						"featured": false,
@@ -7933,7 +7940,7 @@
 					"away": {
 						"id": 996,
 						"name": "Alanyaspor",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"standings": 8,
 						"featured": false,
@@ -8358,8 +8365,8 @@
 					"home": {
 						"id": 549,
 						"name": "Besiktas",
-						"score": null,
-						"winner": null,
+						"score": 3,
+						"winner": true,
 						"standings": 5,
 						"featured": true,
 						"stats": {
@@ -8749,8 +8756,8 @@
 					"away": {
 						"id": 1007,
 						"name": "Rizespor",
-						"score": null,
-						"winner": null,
+						"score": 2,
+						"winner": false,
 						"standings": 7,
 						"featured": true,
 						"stats": {
@@ -9144,6 +9151,7 @@
 	{
 		"name": "Bundesliga",
 		"country": "Austria",
+		"flag": "🇦🇹",
 		"standings": [
 			{
 				"teamId": 571,
@@ -9494,8 +9502,8 @@
 					"home": {
 						"id": 1399,
 						"name": "Austria Lustenau",
-						"score": null,
-						"winner": null,
+						"score": 2,
+						"winner": true,
 						"standings": 23,
 						"featured": false,
 						"stats": {
@@ -9885,8 +9893,8 @@
 					"away": {
 						"id": 601,
 						"name": "Austria Vienna",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"standings": 9,
 						"featured": false,
 						"stats": {
@@ -10280,6 +10288,7 @@
 	{
 		"name": "Eredivisie",
 		"country": "Netherlands",
+		"flag": "🇳🇱",
 		"standings": [
 			{
 				"teamId": 197,
@@ -10552,7 +10561,7 @@
 					"home": {
 						"id": 205,
 						"name": "Fortuna Sittard",
-						"score": null,
+						"score": 0,
 						"winner": null,
 						"standings": 12,
 						"featured": false,
@@ -10943,7 +10952,7 @@
 					"away": {
 						"id": 410,
 						"name": "GO Ahead Eagles",
-						"score": null,
+						"score": 0,
 						"winner": null,
 						"standings": 9,
 						"featured": false,
@@ -11368,7 +11377,7 @@
 					"home": {
 						"id": 419,
 						"name": "Almere City FC",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"standings": 13,
 						"featured": false,
@@ -11759,7 +11768,7 @@
 					"away": {
 						"id": 210,
 						"name": "Heerenveen",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"standings": 10,
 						"featured": false,
@@ -12154,6 +12163,7 @@
 	{
 		"name": "Jupiler Pro League",
 		"country": "Belgium",
+		"flag": "🇧🇪",
 		"standings": [
 			{
 				"teamId": 1393,
@@ -12608,7 +12618,7 @@
 					"home": {
 						"id": 261,
 						"name": "KVC Westerlo",
-						"score": null,
+						"score": 2,
 						"winner": null,
 						"standings": 20,
 						"featured": false,
@@ -12999,7 +13009,7 @@
 					"away": {
 						"id": 735,
 						"name": "St. Truiden",
-						"score": null,
+						"score": 2,
 						"winner": null,
 						"standings": 12,
 						"featured": false,
@@ -13394,6 +13404,7 @@
 	{
 		"name": "Pro League",
 		"country": "Saudi-Arabia",
+		"flag": "🇸🇦",
 		"standings": [
 			{
 				"teamId": 2932,
@@ -14057,7 +14068,7 @@
 					"away": {
 						"id": 2932,
 						"name": "Al-Hilal Saudi FC",
-						"score": 1,
+						"score": 3,
 						"winner": true,
 						"standings": 1,
 						"featured": true,
@@ -14482,8 +14493,8 @@
 					"home": {
 						"id": 2934,
 						"name": "Al-Ettifaq",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": false,
 						"standings": 6,
 						"featured": true,
 						"stats": {
@@ -14873,8 +14884,8 @@
 					"away": {
 						"id": 2944,
 						"name": "Al-Fayha",
-						"score": null,
-						"winner": null,
+						"score": 2,
+						"winner": true,
 						"standings": 10,
 						"featured": false,
 						"stats": {
@@ -15298,8 +15309,8 @@
 					"home": {
 						"id": 2951,
 						"name": "Abha",
-						"score": null,
-						"winner": null,
+						"score": 3,
+						"winner": true,
 						"standings": 17,
 						"featured": false,
 						"stats": {
@@ -15689,8 +15700,8 @@
 					"away": {
 						"id": 2938,
 						"name": "Al-Ittihad FC",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": false,
 						"standings": 5,
 						"featured": true,
 						"stats": {

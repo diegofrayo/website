@@ -122,7 +122,7 @@ function BetsPage({ data }: T_BetsPageProps) {
 			match.teams.home.score === null ? "" : `(${match.teams.home.score})`
 		} - ${match.teams.away.featured ? "🔰" : ""}${match.teams.away.name} ${
 			match.teams.away.score === null ? "" : `(${match.teams.away.score})`
-		} | ${match.hour}`;
+		}`;
 
 		return title;
 	}
@@ -153,7 +153,7 @@ function BetsPage({ data }: T_BetsPageProps) {
 					return (
 						<Collapsible
 							key={fixtureDate}
-							title={`${fixtureDate}${index === 0 ? " (Hoy)" : ""}`}
+							title={`${fixtureDate} (${index === 0 ? "Hoy" : index === 1 ? "Mañana" : "Ayer"})`}
 							className="tw-mb-4 last:tw-mb-0"
 							contentClassName="tw-pt-2"
 							opened={index === 0}
@@ -181,9 +181,9 @@ function BetsPage({ data }: T_BetsPageProps) {
 									>
 										<Title
 											is="h2"
-											className="tw-p-2 tw-text-center tw-text-base tw-text-white dr-bg-color-surface-300 lg:tw-text-xl"
+											className="tw-p-2 tw-text-left tw-text-base tw-text-white dr-bg-color-surface-300 lg:tw-text-center lg:tw-text-xl"
 										>
-											{leagueName}
+											{league.flag} {leagueName}
 										</Title>
 
 										<Block className="tw-p-5">
@@ -247,7 +247,7 @@ function BetsPage({ data }: T_BetsPageProps) {
 																						key={generateSlug(`${match.id}-${prediction.name}`)}
 																						className="tw-overflow-hidden tw-rounded-md tw-px-4 tw-py-3 dr-bg-color-surface-300"
 																					>
-																						<Text className="tw-text-xl tw-font-bold">
+																						<Text className="tw-text-lg tw-font-bold">
 																							<InlineText className="tw-underline">
 																								{prediction.name}
 																							</InlineText>
@@ -259,7 +259,7 @@ function BetsPage({ data }: T_BetsPageProps) {
 																						</Text>
 																						<Space size={1} />
 
-																						<Block className="tw-text-base">
+																						<Block>
 																							<Text>
 																								<InlineText is="strong">
 																									- Es recomendable:
@@ -345,7 +345,7 @@ function BetsPage({ data }: T_BetsPageProps) {
 																								className="tw-mb-2"
 																								contentClassName="tw-pt-1"
 																							>
-																								<Pre className="tw-w-full tw-max-w-full tw-overflow-auto tw-rounded-md tw-px-4 tw-py-3 tw-text-base dr-bg-color-surface-200">
+																								<Pre className="tw-w-full tw-max-w-full tw-overflow-x-auto tw-overflow-y-hidden tw-rounded-md tw-px-4 tw-py-3 tw-text-sm dr-bg-color-surface-200">
 																									{Object.entries(team.stats).map(
 																										([key, value]) => {
 																											if (key.includes("--")) {
@@ -377,12 +377,12 @@ function BetsPage({ data }: T_BetsPageProps) {
 																							>
 																								<Block>
 																									<Select
-																										id="matches-filter"
+																										id={`${match.id}-matches-filter-${teamSide}`}
 																										variant={Select.variant.STYLED}
-																										onChange={onMatchesFilterChange(team.name)}
 																										defaultValue={
 																											teamSide === "home" ? "Local" : "Visitante"
 																										}
+																										onChange={onMatchesFilterChange(team.name)}
 																									>
 																										<Select.Option value="Todos">
 																											Todos
@@ -424,9 +424,9 @@ function BetsPage({ data }: T_BetsPageProps) {
 																										return (
 																											<List.Item
 																												key={playedMatch.id}
-																												className="tw-ml-3 tw-text-base"
+																												className="tw-ml-3"
 																											>
-																												<Text>
+																												<Text className="lg:tw-truncate">
 																													<InlineText className="tw-mr-1 tw-text-xs">
 																														{currentTeam.winner === true
 																															? "✅"
@@ -438,10 +438,10 @@ function BetsPage({ data }: T_BetsPageProps) {
 																														{composePlayedMatchTitle(playedMatch)}
 																													</InlineText>
 																												</Text>
-																												<Text className="tw-mb-4 tw-flex tw-justify-between tw-text-sm">
-																													<InlineText className="tw-ml-5 tw-italic">
+																												<Text className="tw-mb-4 tw-flex tw-flex-col tw-justify-between tw-text-sm lg:tw-flex-row">
+																													<InlineTet className="tw-ml-0 tw-italic lg:tw-ml-5">
 																														{playedMatch.date}
-																													</InlineText>
+																													</InlineTet>
 
 																													{Number.isInteger(
 																														playedMatch.teams.home.standings &&
@@ -490,6 +490,7 @@ export type T_BetsPageProps = {
 		[date in string]: {
 			name: string;
 			country: string;
+			flag: string;
 			standings: {
 				teamId: number;
 				teamName: string;

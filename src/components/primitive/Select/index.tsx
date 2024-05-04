@@ -48,6 +48,7 @@ function Select({
 			{v.isNotEmptyString(label) ? <Label {...labelProps}>{label}</Label> : null}
 			<select
 				className={className}
+				id={id}
 				{...rest}
 			>
 				{children}
