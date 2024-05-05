@@ -441,7 +441,7 @@
 										"score": 1,
 										"winner": false,
 										"standings": 10,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -561,7 +561,7 @@
 										"score": 0,
 										"winner": false,
 										"standings": 12,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -728,7 +728,7 @@
 										"score": 1,
 										"winner": true,
 										"standings": 12,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 176,
@@ -1048,7 +1048,7 @@
 										"score": 1,
 										"winner": null,
 										"standings": 10,
-										"featured": false
+										"featured": true
 									}
 								}
 							}
@@ -1209,7 +1209,7 @@
 										"score": 1,
 										"winner": null,
 										"standings": 10,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -1329,7 +1329,7 @@
 										"score": 2,
 										"winner": null,
 										"standings": 12,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -1624,7 +1624,7 @@
 										"score": 0,
 										"winner": false,
 										"standings": 10,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -1792,7 +1792,7 @@
 										"score": 0,
 										"winner": false,
 										"standings": 12,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -2185,7 +2185,7 @@
 										"score": 1,
 										"winner": false,
 										"standings": 10,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 180,
@@ -2265,7 +2265,7 @@
 										"score": 1,
 										"winner": null,
 										"standings": 12,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -2632,7 +2632,7 @@
 										"score": 1,
 										"winner": true,
 										"standings": 10,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -2680,7 +2680,7 @@
 										"score": 1,
 										"winner": null,
 										"standings": 12,
-										"featured": false
+										"featured": true
 									}
 								}
 							}
@@ -7060,14 +7060,14 @@
 			{
 				"teamId": 50,
 				"teamName": "Manchester City",
-				"points": 79,
+				"points": 82,
 				"stats": {
-					"goalsDiff": 50,
-					"played": 34,
-					"win": 24,
+					"goalsDiff": 54,
+					"played": 35,
+					"win": 25,
 					"draw": 7,
 					"lose": 3,
-					"goals": { "for": 82, "against": 32 }
+					"goals": { "for": 87, "against": 33 }
 				}
 			},
 			{
@@ -7088,12 +7088,12 @@
 				"teamName": "Aston Villa",
 				"points": 67,
 				"stats": {
-					"goalsDiff": 21,
-					"played": 35,
+					"goalsDiff": 20,
+					"played": 36,
 					"win": 20,
 					"draw": 7,
-					"lose": 8,
-					"goals": { "for": 73, "against": 52 }
+					"lose": 9,
+					"goals": { "for": 73, "against": 53 }
 				}
 			},
 			{
@@ -7123,6 +7123,19 @@
 				}
 			},
 			{
+				"teamId": 49,
+				"teamName": "Chelsea",
+				"points": 54,
+				"stats": {
+					"goalsDiff": 11,
+					"played": 35,
+					"win": 15,
+					"draw": 9,
+					"lose": 11,
+					"goals": { "for": 70, "against": 59 }
+				}
+			},
+			{
 				"teamId": 33,
 				"teamName": "Manchester United",
 				"points": 54,
@@ -7136,29 +7149,16 @@
 				}
 			},
 			{
-				"teamId": 49,
-				"teamName": "Chelsea",
-				"points": 51,
-				"stats": {
-					"goalsDiff": 6,
-					"played": 34,
-					"win": 14,
-					"draw": 9,
-					"lose": 11,
-					"goals": { "for": 65, "against": 59 }
-				}
-			},
-			{
 				"teamId": 48,
 				"teamName": "West Ham",
 				"points": 49,
 				"stats": {
-					"goalsDiff": -9,
-					"played": 35,
+					"goalsDiff": -14,
+					"played": 36,
 					"win": 13,
 					"draw": 10,
-					"lose": 12,
-					"goals": { "for": 56, "against": 65 }
+					"lose": 13,
+					"goals": { "for": 56, "against": 70 }
 				}
 			},
 			{
@@ -7175,16 +7175,29 @@
 				}
 			},
 			{
+				"teamId": 51,
+				"teamName": "Brighton",
+				"points": 47,
+				"stats": {
+					"goalsDiff": -4,
+					"played": 35,
+					"win": 12,
+					"draw": 11,
+					"lose": 12,
+					"goals": { "for": 53, "against": 57 }
+				}
+			},
+			{
 				"teamId": 39,
 				"teamName": "Wolves",
 				"points": 46,
 				"stats": {
-					"goalsDiff": -7,
-					"played": 35,
+					"goalsDiff": -11,
+					"played": 36,
 					"win": 13,
 					"draw": 7,
-					"lose": 15,
-					"goals": { "for": 48, "against": 55 }
+					"lose": 16,
+					"goals": { "for": 49, "against": 60 }
 				}
 			},
 			{
@@ -7198,19 +7211,6 @@
 					"draw": 8,
 					"lose": 16,
 					"goals": { "for": 51, "against": 55 }
-				}
-			},
-			{
-				"teamId": 51,
-				"teamName": "Brighton",
-				"points": 44,
-				"stats": {
-					"goalsDiff": -5,
-					"played": 34,
-					"win": 11,
-					"draw": 11,
-					"lose": 12,
-					"goals": { "for": 52, "against": 57 }
 				}
 			},
 			{
@@ -7343,7 +7343,7 @@
 						"name": "Brighton",
 						"score": null,
 						"winner": null,
-						"standings": 13,
+						"standings": 11,
 						"featured": false,
 						"stats": {
 							"total_de_partidos": 15,
@@ -7386,7 +7386,7 @@
 										"name": "Brighton",
 										"score": 0,
 										"winner": false,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -7402,7 +7402,7 @@
 										"name": "Brighton",
 										"score": 0,
 										"winner": false,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									},
 									"away": {
@@ -7434,7 +7434,7 @@
 										"name": "Brighton",
 										"score": 1,
 										"winner": null,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -7450,7 +7450,7 @@
 										"name": "Brighton",
 										"score": 0,
 										"winner": false,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									},
 									"away": {
@@ -7482,7 +7482,7 @@
 										"name": "Brighton",
 										"score": 0,
 										"winner": null,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -7506,7 +7506,7 @@
 										"name": "Brighton",
 										"score": 1,
 										"winner": false,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -7522,7 +7522,7 @@
 										"name": "Brighton",
 										"score": 1,
 										"winner": true,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									},
 									"away": {
@@ -7546,7 +7546,7 @@
 										"name": "Brighton",
 										"score": 1,
 										"winner": true,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									},
 									"away": {
@@ -7578,7 +7578,7 @@
 										"name": "Brighton",
 										"score": 0,
 										"winner": false,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -7594,7 +7594,7 @@
 										"name": "Fulham",
 										"score": 3,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": false
 									},
 									"away": {
@@ -7602,7 +7602,7 @@
 										"name": "Brighton",
 										"score": 0,
 										"winner": false,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -7618,7 +7618,7 @@
 										"name": "Wolves",
 										"score": 1,
 										"winner": true,
-										"standings": 11,
+										"standings": 12,
 										"featured": false
 									},
 									"away": {
@@ -7626,7 +7626,7 @@
 										"name": "Brighton",
 										"score": 0,
 										"winner": false,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -7642,7 +7642,7 @@
 										"name": "Brighton",
 										"score": 1,
 										"winner": null,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									},
 									"away": {
@@ -7674,7 +7674,7 @@
 										"name": "Brighton",
 										"score": 5,
 										"winner": true,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -7698,7 +7698,7 @@
 										"name": "Brighton",
 										"score": 1,
 										"winner": false,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -7714,7 +7714,7 @@
 										"name": "Brighton",
 										"score": 4,
 										"winner": true,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									},
 									"away": {
@@ -7801,7 +7801,7 @@
 										"name": "Chelsea",
 										"score": 2,
 										"winner": null,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -7969,7 +7969,7 @@
 										"name": "Wolves",
 										"score": 0,
 										"winner": false,
-										"standings": 11,
+										"standings": 12,
 										"featured": false
 									}
 								}
@@ -8018,7 +8018,7 @@
 										"score": 0,
 										"winner": false,
 										"standings": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -8058,7 +8058,7 @@
 										"score": 0,
 										"winner": null,
 										"standings": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 66,
@@ -8131,7 +8131,7 @@
 					{
 						"name": "Goles por equipo local",
 						"recommendable": true,
-						"acceptancePercentage": "0.75",
+						"acceptancePercentage": "0.88",
 						"criteria": {
 							"home": [
 								{ "description": "Promedio de goles >= 1.5", "check": "✅" },
@@ -8145,7 +8145,7 @@
 								},
 								{
 									"description": "El local está en las primeras 6 posiciones de la tabla",
-									"check": "❌"
+									"check": "✅"
 								},
 								{ "description": "El local es un equipo destacado", "check": "✅" }
 							],
@@ -8159,7 +8159,7 @@
 						"name": "Chelsea",
 						"score": null,
 						"winner": null,
-						"standings": 8,
+						"standings": 7,
 						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
@@ -8194,7 +8194,7 @@
 										"name": "Chelsea",
 										"score": 2,
 										"winner": true,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -8226,7 +8226,7 @@
 										"name": "Chelsea",
 										"score": 2,
 										"winner": null,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -8250,7 +8250,7 @@
 										"name": "Chelsea",
 										"score": 0,
 										"winner": false,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -8274,7 +8274,7 @@
 										"name": "Chelsea",
 										"score": 0,
 										"winner": false,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -8290,7 +8290,7 @@
 										"name": "Chelsea",
 										"score": 6,
 										"winner": true,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -8322,7 +8322,7 @@
 										"name": "Chelsea",
 										"score": 2,
 										"winner": null,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -8338,7 +8338,7 @@
 										"name": "Chelsea",
 										"score": 4,
 										"winner": true,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -8346,7 +8346,7 @@
 										"name": "Manchester United",
 										"score": 3,
 										"winner": false,
-										"standings": 7,
+										"standings": 8,
 										"featured": true
 									}
 								}
@@ -8362,7 +8362,7 @@
 										"name": "Chelsea",
 										"score": 2,
 										"winner": null,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -8386,7 +8386,7 @@
 										"name": "Chelsea",
 										"score": 4,
 										"winner": true,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -8410,7 +8410,7 @@
 										"name": "Chelsea",
 										"score": 3,
 										"winner": true,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -8442,7 +8442,7 @@
 										"name": "Chelsea",
 										"score": 2,
 										"winner": null,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -8458,7 +8458,7 @@
 										"name": "Chelsea",
 										"score": 3,
 										"winner": true,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -8482,7 +8482,7 @@
 										"name": "Chelsea",
 										"score": 0,
 										"winner": false,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -8514,7 +8514,7 @@
 										"name": "Chelsea",
 										"score": 1,
 										"winner": null,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -8538,7 +8538,7 @@
 										"name": "Chelsea",
 										"score": 3,
 										"winner": true,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -8665,7 +8665,7 @@
 										"name": "Fulham",
 										"score": 2,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": false
 									}
 								}
@@ -8705,7 +8705,7 @@
 										"name": "Wolves",
 										"score": 1,
 										"winner": false,
-										"standings": 11,
+										"standings": 12,
 										"featured": false
 									},
 									"away": {
@@ -9058,7 +9058,7 @@
 										"name": "Fulham",
 										"score": 1,
 										"winner": false,
-										"standings": 12,
+										"standings": 13,
 										"featured": false
 									},
 									"away": {
@@ -9154,7 +9154,7 @@
 										"name": "Manchester United",
 										"score": 2,
 										"winner": null,
-										"standings": 7,
+										"standings": 8,
 										"featured": true
 									},
 									"away": {
@@ -9210,7 +9210,7 @@
 										"name": "Brighton",
 										"score": 1,
 										"winner": false,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -9226,7 +9226,7 @@
 										"name": "Manchester United",
 										"score": 4,
 										"winner": true,
-										"standings": 7,
+										"standings": 8,
 										"featured": true
 									},
 									"away": {
@@ -9401,7 +9401,7 @@
 										"name": "Chelsea",
 										"score": 2,
 										"winner": true,
-										"standings": 8,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -9545,7 +9545,7 @@
 										"name": "Fulham",
 										"score": 3,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": false
 									},
 									"away": {
@@ -9625,7 +9625,7 @@
 										"name": "Wolves",
 										"score": 2,
 										"winner": true,
-										"standings": 11,
+										"standings": 12,
 										"featured": false
 									}
 								}
@@ -9649,7 +9649,7 @@
 										"name": "Brighton",
 										"score": 1,
 										"winner": false,
-										"standings": 13,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -9737,7 +9737,7 @@
 										"name": "Manchester United",
 										"score": 2,
 										"winner": null,
-										"standings": 7,
+										"standings": 8,
 										"featured": true
 									},
 									"away": {
@@ -13273,12 +13273,12 @@
 				"teamName": "Inter",
 				"points": 89,
 				"stats": {
-					"goalsDiff": 63,
-					"played": 34,
+					"goalsDiff": 62,
+					"played": 35,
 					"win": 28,
 					"draw": 5,
-					"lose": 1,
-					"goals": { "for": 81, "against": 18 }
+					"lose": 2,
+					"goals": { "for": 81, "against": 19 }
 				}
 			},
 			{
@@ -13349,14 +13349,14 @@
 			{
 				"teamId": 487,
 				"teamName": "Lazio",
-				"points": 55,
+				"points": 56,
 				"stats": {
 					"goalsDiff": 8,
-					"played": 34,
+					"played": 35,
 					"win": 17,
-					"draw": 4,
+					"draw": 5,
 					"lose": 13,
-					"goals": { "for": 43, "against": 35 }
+					"goals": { "for": 45, "against": 37 }
 				}
 			},
 			{
@@ -13364,12 +13364,12 @@
 				"teamName": "Fiorentina",
 				"points": 50,
 				"stats": {
-					"goalsDiff": 13,
-					"played": 33,
+					"goalsDiff": 12,
+					"played": 34,
 					"win": 14,
 					"draw": 8,
-					"lose": 11,
-					"goals": { "for": 50, "against": 37 }
+					"lose": 12,
+					"goals": { "for": 51, "against": 39 }
 				}
 			},
 			{
@@ -13401,14 +13401,14 @@
 			{
 				"teamId": 1579,
 				"teamName": "Monza",
-				"points": 44,
+				"points": 45,
 				"stats": {
 					"goalsDiff": -8,
-					"played": 34,
+					"played": 35,
 					"win": 11,
-					"draw": 11,
+					"draw": 12,
 					"lose": 12,
-					"goals": { "for": 36, "against": 44 }
+					"goals": { "for": 38, "against": 46 }
 				}
 			},
 			{
@@ -13427,51 +13427,51 @@
 			{
 				"teamId": 867,
 				"teamName": "Lecce",
-				"points": 36,
+				"points": 37,
 				"stats": {
 					"goalsDiff": -18,
-					"played": 34,
+					"played": 35,
 					"win": 8,
-					"draw": 12,
+					"draw": 13,
 					"lose": 14,
-					"goals": { "for": 31, "against": 49 }
-				}
-			},
-			{
-				"teamId": 490,
-				"teamName": "Cagliari",
-				"points": 32,
-				"stats": {
-					"goalsDiff": -23,
-					"played": 34,
-					"win": 7,
-					"draw": 11,
-					"lose": 16,
-					"goals": { "for": 36, "against": 59 }
+					"goals": { "for": 32, "against": 50 }
 				}
 			},
 			{
 				"teamId": 504,
 				"teamName": "Verona",
-				"points": 31,
+				"points": 34,
 				"stats": {
-					"goalsDiff": -14,
-					"played": 34,
-					"win": 7,
+					"goalsDiff": -13,
+					"played": 35,
+					"win": 8,
 					"draw": 10,
 					"lose": 17,
-					"goals": { "for": 31, "against": 45 }
+					"goals": { "for": 33, "against": 46 }
+				}
+			},
+			{
+				"teamId": 490,
+				"teamName": "Cagliari",
+				"points": 33,
+				"stats": {
+					"goalsDiff": -23,
+					"played": 35,
+					"win": 7,
+					"draw": 12,
+					"lose": 16,
+					"goals": { "for": 37, "against": 60 }
 				}
 			},
 			{
 				"teamId": 512,
 				"teamName": "Frosinone",
-				"points": 31,
+				"points": 32,
 				"stats": {
 					"goalsDiff": -20,
-					"played": 34,
+					"played": 35,
 					"win": 7,
-					"draw": 10,
+					"draw": 11,
 					"lose": 17,
 					"goals": { "for": 43, "against": 63 }
 				}
@@ -13479,12 +13479,12 @@
 			{
 				"teamId": 511,
 				"teamName": "Empoli",
-				"points": 31,
+				"points": 32,
 				"stats": {
 					"goalsDiff": -24,
-					"played": 34,
+					"played": 35,
 					"win": 8,
-					"draw": 7,
+					"draw": 8,
 					"lose": 19,
 					"goals": { "for": 26, "against": 50 }
 				}
@@ -13505,14 +13505,14 @@
 			{
 				"teamId": 488,
 				"teamName": "Sassuolo",
-				"points": 26,
+				"points": 29,
 				"stats": {
-					"goalsDiff": -30,
-					"played": 34,
-					"win": 6,
+					"goalsDiff": -29,
+					"played": 35,
+					"win": 7,
 					"draw": 8,
 					"lose": 20,
-					"goals": { "for": 40, "against": 70 }
+					"goals": { "for": 41, "against": 70 }
 				}
 			},
 			{
@@ -13567,7 +13567,7 @@
 						"name": "Cagliari",
 						"score": null,
 						"winner": null,
-						"standings": 14,
+						"standings": 15,
 						"featured": false,
 						"stats": {
 							"total_de_partidos": 15,
@@ -13610,7 +13610,7 @@
 										"name": "Cagliari",
 										"score": 0,
 										"winner": false,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -13626,7 +13626,7 @@
 										"name": "Cagliari",
 										"score": 2,
 										"winner": null,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -13658,7 +13658,7 @@
 										"name": "Cagliari",
 										"score": 2,
 										"winner": null,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -13674,7 +13674,7 @@
 										"name": "Cagliari",
 										"score": 2,
 										"winner": true,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -13698,7 +13698,7 @@
 										"name": "Cagliari",
 										"score": 1,
 										"winner": null,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -13706,7 +13706,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": null,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									}
 								}
@@ -13730,7 +13730,7 @@
 										"name": "Cagliari",
 										"score": 0,
 										"winner": false,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -13746,7 +13746,7 @@
 										"name": "Cagliari",
 										"score": 4,
 										"winner": true,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -13778,7 +13778,7 @@
 										"name": "Cagliari",
 										"score": 1,
 										"winner": true,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -13794,7 +13794,7 @@
 										"name": "Cagliari",
 										"score": 1,
 										"winner": null,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -13826,7 +13826,7 @@
 										"name": "Cagliari",
 										"score": 1,
 										"winner": null,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -13842,7 +13842,7 @@
 										"name": "Cagliari",
 										"score": 1,
 										"winner": false,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -13874,7 +13874,7 @@
 										"name": "Cagliari",
 										"score": 0,
 										"winner": false,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -13890,7 +13890,7 @@
 										"name": "Cagliari",
 										"score": 1,
 										"winner": false,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -13922,7 +13922,7 @@
 										"name": "Cagliari",
 										"score": 1,
 										"winner": false,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -13938,7 +13938,7 @@
 										"name": "Cagliari",
 										"score": 2,
 										"winner": true,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -14145,7 +14145,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": true,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									}
 								}
@@ -14594,7 +14594,7 @@
 										"name": "Cagliari",
 										"score": 1,
 										"winner": true,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -14754,7 +14754,7 @@
 										"name": "Verona",
 										"score": 2,
 										"winner": true,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -15097,7 +15097,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": null,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -15129,7 +15129,7 @@
 										"name": "Cagliari",
 										"score": 1,
 										"winner": false,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -15199,7 +15199,7 @@
 						"name": "Verona",
 						"score": null,
 						"winner": null,
-						"standings": 15,
+						"standings": 14,
 						"featured": false,
 						"stats": {
 							"total_de_partidos": 15,
@@ -15242,7 +15242,7 @@
 										"name": "Verona",
 										"score": 0,
 										"winner": false,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									}
 								}
@@ -15258,7 +15258,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": true,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -15290,7 +15290,7 @@
 										"name": "Verona",
 										"score": 2,
 										"winner": null,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									}
 								}
@@ -15306,7 +15306,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": false,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -15330,7 +15330,7 @@
 										"name": "Cagliari",
 										"score": 1,
 										"winner": null,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -15338,7 +15338,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": null,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									}
 								}
@@ -15354,7 +15354,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": false,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -15386,7 +15386,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": true,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									}
 								}
@@ -15402,7 +15402,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": true,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -15434,7 +15434,7 @@
 										"name": "Verona",
 										"score": 0,
 										"winner": false,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									}
 								}
@@ -15450,7 +15450,7 @@
 										"name": "Verona",
 										"score": 2,
 										"winner": null,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -15482,7 +15482,7 @@
 										"name": "Verona",
 										"score": 0,
 										"winner": null,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									}
 								}
@@ -15506,7 +15506,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": false,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									}
 								}
@@ -15522,7 +15522,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": null,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -15554,7 +15554,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": false,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									}
 								}
@@ -15570,7 +15570,7 @@
 										"name": "Verona",
 										"score": 2,
 										"winner": true,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -16218,7 +16218,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": false,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -16449,7 +16449,7 @@
 										"name": "Cagliari",
 										"score": 0,
 										"winner": false,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -16513,7 +16513,7 @@
 										"name": "Verona",
 										"score": 1,
 										"winner": false,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -17211,7 +17211,7 @@
 										"score": 1,
 										"winner": false,
 										"standings": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							}
@@ -17305,7 +17305,7 @@
 										"name": "Cagliari",
 										"score": 2,
 										"winner": null,
-										"standings": 14,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -17521,7 +17521,7 @@
 										"name": "Verona",
 										"score": 2,
 										"winner": null,
-										"standings": 15,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -17648,12 +17648,25 @@
 				"teamName": "Trabzonspor",
 				"points": 58,
 				"stats": {
-					"goalsDiff": 15,
-					"played": 34,
+					"goalsDiff": 13,
+					"played": 35,
 					"win": 18,
 					"draw": 4,
+					"lose": 13,
+					"goals": { "for": 61, "against": 48 }
+				}
+			},
+			{
+				"teamId": 564,
+				"teamName": "Istanbul Basaksehir",
+				"points": 55,
+				"stats": {
+					"goalsDiff": 10,
+					"played": 35,
+					"win": 16,
+					"draw": 7,
 					"lose": 12,
-					"goals": { "for": 60, "against": 45 }
+					"goals": { "for": 50, "against": 40 }
 				}
 			},
 			{
@@ -17667,19 +17680,6 @@
 					"draw": 6,
 					"lose": 13,
 					"goals": { "for": 48, "against": 42 }
-				}
-			},
-			{
-				"teamId": 564,
-				"teamName": "Istanbul Basaksehir",
-				"points": 52,
-				"stats": {
-					"goalsDiff": 7,
-					"played": 34,
-					"win": 15,
-					"draw": 7,
-					"lose": 12,
-					"goals": { "for": 46, "against": 39 }
 				}
 			},
 			{
@@ -17700,12 +17700,12 @@
 				"teamName": "Kasimpasa",
 				"points": 49,
 				"stats": {
-					"goalsDiff": -3,
-					"played": 34,
+					"goalsDiff": -6,
+					"played": 35,
 					"win": 14,
 					"draw": 7,
-					"lose": 13,
-					"goals": { "for": 56, "against": 59 }
+					"lose": 14,
+					"goals": { "for": 57, "against": 63 }
 				}
 			},
 			{
@@ -17761,16 +17761,29 @@
 				}
 			},
 			{
+				"teamId": 3603,
+				"teamName": "Samsunspor",
+				"points": 42,
+				"stats": {
+					"goalsDiff": -5,
+					"played": 35,
+					"win": 11,
+					"draw": 9,
+					"lose": 15,
+					"goals": { "for": 40, "against": 45 }
+				}
+			},
+			{
 				"teamId": 1001,
 				"teamName": "Kayserispor",
-				"points": 40,
+				"points": 41,
 				"stats": {
 					"goalsDiff": -9,
-					"played": 34,
+					"played": 35,
 					"win": 11,
-					"draw": 10,
+					"draw": 11,
 					"lose": 13,
-					"goals": { "for": 39, "against": 48 }
+					"goals": { "for": 41, "against": 50 }
 				}
 			},
 			{
@@ -17787,29 +17800,16 @@
 				}
 			},
 			{
-				"teamId": 3603,
-				"teamName": "Samsunspor",
-				"points": 39,
-				"stats": {
-					"goalsDiff": -7,
-					"played": 34,
-					"win": 10,
-					"draw": 9,
-					"lose": 15,
-					"goals": { "for": 37, "against": 44 }
-				}
-			},
-			{
 				"teamId": 3589,
 				"teamName": "Fatih Karagümrük",
-				"points": 36,
+				"points": 37,
 				"stats": {
 					"goalsDiff": -2,
-					"played": 34,
+					"played": 35,
 					"win": 9,
-					"draw": 9,
+					"draw": 10,
 					"lose": 16,
-					"goals": { "for": 41, "against": 43 }
+					"goals": { "for": 43, "against": 45 }
 				}
 			},
 			{
@@ -17999,7 +17999,7 @@
 										"name": "Ankaragucu",
 										"score": 3,
 										"winner": true,
-										"standings": 13,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -18079,7 +18079,7 @@
 										"name": "Besiktas",
 										"score": 0,
 										"winner": false,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									}
 								}
@@ -18127,7 +18127,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 2,
 										"winner": true,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									}
 								}
@@ -18151,7 +18151,7 @@
 										"name": "Samsunspor",
 										"score": 1,
 										"winner": null,
-										"standings": 14,
+										"standings": 12,
 										"featured": false
 									}
 								}
@@ -18223,7 +18223,7 @@
 										"name": "Kayserispor",
 										"score": 1,
 										"winner": null,
-										"standings": 12,
+										"standings": 13,
 										"featured": false
 									}
 								}
@@ -18350,7 +18350,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 2,
 										"winner": true,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									}
 								}
@@ -18446,7 +18446,7 @@
 										"name": "Samsunspor",
 										"score": 0,
 										"winner": false,
-										"standings": 14,
+										"standings": 12,
 										"featured": false
 									}
 								}
@@ -18462,7 +18462,7 @@
 										"name": "Kayserispor",
 										"score": 1,
 										"winner": null,
-										"standings": 12,
+										"standings": 13,
 										"featured": false
 									},
 									"away": {
@@ -18582,7 +18582,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 1,
 										"winner": true,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									},
 									"away": {
@@ -18732,7 +18732,7 @@
 						"name": "Istanbul Basaksehir",
 						"score": null,
 						"winner": null,
-						"standings": 5,
+						"standings": 4,
 						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
@@ -18775,7 +18775,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 2,
 										"winner": true,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									}
 								}
@@ -18791,7 +18791,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 2,
 										"winner": true,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									},
 									"away": {
@@ -18823,7 +18823,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 3,
 										"winner": true,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									}
 								}
@@ -18839,7 +18839,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 1,
 										"winner": null,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									},
 									"away": {
@@ -18847,7 +18847,7 @@
 										"name": "Besiktas",
 										"score": 1,
 										"winner": null,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									}
 								}
@@ -18863,7 +18863,7 @@
 										"name": "Ankaragucu",
 										"score": 2,
 										"winner": true,
-										"standings": 13,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -18871,7 +18871,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 1,
 										"winner": false,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									}
 								}
@@ -18887,7 +18887,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 1,
 										"winner": true,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									},
 									"away": {
@@ -18911,7 +18911,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 1,
 										"winner": true,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									},
 									"away": {
@@ -18919,7 +18919,7 @@
 										"name": "Samsunspor",
 										"score": 0,
 										"winner": false,
-										"standings": 14,
+										"standings": 12,
 										"featured": false
 									}
 								}
@@ -18943,7 +18943,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 0,
 										"winner": false,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									}
 								}
@@ -18967,7 +18967,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 2,
 										"winner": true,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									}
 								}
@@ -18983,7 +18983,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 2,
 										"winner": false,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									},
 									"away": {
@@ -18991,7 +18991,7 @@
 										"name": "Kayserispor",
 										"score": 3,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": false
 									}
 								}
@@ -19015,7 +19015,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 0,
 										"winner": false,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									}
 								}
@@ -19031,7 +19031,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 1,
 										"winner": true,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									},
 									"away": {
@@ -19055,7 +19055,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 2,
 										"winner": true,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									},
 									"away": {
@@ -19087,7 +19087,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 3,
 										"winner": true,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									}
 								}
@@ -19103,7 +19103,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 0,
 										"winner": false,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									},
 									"away": {
@@ -19166,7 +19166,7 @@
 										"name": "Samsunspor",
 										"score": 0,
 										"winner": false,
-										"standings": 14,
+										"standings": 12,
 										"featured": false
 									}
 								}
@@ -19230,7 +19230,7 @@
 										"name": "Kayserispor",
 										"score": 0,
 										"winner": false,
-										"standings": 12,
+										"standings": 13,
 										"featured": false
 									},
 									"away": {
@@ -19751,7 +19751,7 @@
 										"name": "Besiktas",
 										"score": 0,
 										"winner": false,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									},
 									"away": {
@@ -19847,7 +19847,7 @@
 										"name": "Ankaragucu",
 										"score": 0,
 										"winner": false,
-										"standings": 13,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -19903,7 +19903,7 @@
 										"name": "Istanbul Basaksehir",
 										"score": 0,
 										"winner": false,
-										"standings": 5,
+										"standings": 4,
 										"featured": true
 									}
 								}
@@ -20238,7 +20238,7 @@
 										"name": "Ankaragucu",
 										"score": 0,
 										"winner": null,
-										"standings": 13,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -20270,7 +20270,7 @@
 										"name": "Besiktas",
 										"score": 0,
 										"winner": false,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									}
 								}
@@ -25344,27 +25344,40 @@
 			{
 				"teamId": 1062,
 				"teamName": "Atletico-MG",
-				"points": 8,
+				"points": 9,
 				"stats": {
 					"goalsDiff": 6,
-					"played": 4,
+					"played": 5,
 					"win": 2,
-					"draw": 2,
+					"draw": 3,
 					"lose": 0,
-					"goals": { "for": 7, "against": 1 }
+					"goals": { "for": 9, "against": 3 }
 				}
 			},
 			{
 				"teamId": 794,
 				"teamName": "RB Bragantino",
-				"points": 8,
+				"points": 9,
 				"stats": {
 					"goalsDiff": 2,
-					"played": 4,
+					"played": 5,
+					"win": 2,
+					"draw": 3,
+					"lose": 0,
+					"goals": { "for": 7, "against": 5 }
+				}
+			},
+			{
+				"teamId": 127,
+				"teamName": "Flamengo",
+				"points": 8,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 5,
 					"win": 2,
 					"draw": 2,
-					"lose": 0,
-					"goals": { "for": 6, "against": 4 }
+					"lose": 1,
+					"goals": { "for": 5, "against": 5 }
 				}
 			},
 			{
@@ -25420,19 +25433,6 @@
 				}
 			},
 			{
-				"teamId": 127,
-				"teamName": "Flamengo",
-				"points": 7,
-				"stats": {
-					"goalsDiff": 0,
-					"played": 4,
-					"win": 2,
-					"draw": 1,
-					"lose": 1,
-					"goals": { "for": 4, "against": 4 }
-				}
-			},
-			{
 				"teamId": 130,
 				"teamName": "Gremio",
 				"points": 6,
@@ -25442,6 +25442,19 @@
 					"win": 2,
 					"draw": 0,
 					"lose": 2,
+					"goals": { "for": 4, "against": 3 }
+				}
+			},
+			{
+				"teamId": 154,
+				"teamName": "Fortaleza EC",
+				"points": 6,
+				"stats": {
+					"goalsDiff": 1,
+					"played": 4,
+					"win": 1,
+					"draw": 3,
+					"lose": 0,
 					"goals": { "for": 4, "against": 3 }
 				}
 			},
@@ -25459,16 +25472,16 @@
 				}
 			},
 			{
-				"teamId": 154,
-				"teamName": "Fortaleza EC",
+				"teamId": 131,
+				"teamName": "Corinthians",
 				"points": 5,
 				"stats": {
-					"goalsDiff": 1,
-					"played": 3,
+					"goalsDiff": 0,
+					"played": 5,
 					"win": 1,
 					"draw": 2,
-					"lose": 0,
-					"goals": { "for": 4, "against": 3 }
+					"lose": 2,
+					"goals": { "for": 3, "against": 3 }
 				}
 			},
 			{
@@ -25498,6 +25511,19 @@
 				}
 			},
 			{
+				"teamId": 124,
+				"teamName": "Fluminense",
+				"points": 5,
+				"stats": {
+					"goalsDiff": -3,
+					"played": 5,
+					"win": 1,
+					"draw": 2,
+					"lose": 2,
+					"goals": { "for": 7, "against": 10 }
+				}
+			},
+			{
 				"teamId": 126,
 				"teamName": "Sao Paulo",
 				"points": 4,
@@ -25508,32 +25534,6 @@
 					"draw": 1,
 					"lose": 2,
 					"goals": { "for": 5, "against": 4 }
-				}
-			},
-			{
-				"teamId": 131,
-				"teamName": "Corinthians",
-				"points": 4,
-				"stats": {
-					"goalsDiff": 0,
-					"played": 4,
-					"win": 1,
-					"draw": 1,
-					"lose": 2,
-					"goals": { "for": 3, "against": 3 }
-				}
-			},
-			{
-				"teamId": 124,
-				"teamName": "Fluminense",
-				"points": 4,
-				"stats": {
-					"goalsDiff": -3,
-					"played": 4,
-					"win": 1,
-					"draw": 1,
-					"lose": 2,
-					"goals": { "for": 5, "against": 8 }
 				}
 			},
 			{
@@ -25686,7 +25686,7 @@
 										"name": "Bahia",
 										"score": 1,
 										"winner": true,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -25766,7 +25766,7 @@
 										"name": "Atletico Paranaense",
 										"score": 0,
 										"winner": false,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									}
 								}
@@ -25838,7 +25838,7 @@
 										"name": "Juventude",
 										"score": 1,
 										"winner": false,
-										"standings": 13,
+										"standings": 14,
 										"featured": false
 									}
 								}
@@ -25878,7 +25878,7 @@
 										"name": "Juventude",
 										"score": 0,
 										"winner": null,
-										"standings": 13,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -25998,7 +25998,7 @@
 										"name": "Internacional",
 										"score": 3,
 										"winner": true,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -26018,7 +26018,7 @@
 						"name": "Criciuma",
 						"score": null,
 						"winner": null,
-						"standings": 10,
+						"standings": 11,
 						"featured": false,
 						"stats": {
 							"total_de_partidos": 15,
@@ -26053,7 +26053,7 @@
 										"name": "Bahia",
 										"score": 1,
 										"winner": true,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -26061,7 +26061,7 @@
 										"name": "Criciuma",
 										"score": 0,
 										"winner": false,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -26085,7 +26085,7 @@
 										"name": "Criciuma",
 										"score": 4,
 										"winner": true,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -26101,7 +26101,7 @@
 										"name": "Criciuma",
 										"score": null,
 										"winner": null,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									},
 									"away": {
@@ -26109,7 +26109,7 @@
 										"name": "Fortaleza EC",
 										"score": null,
 										"winner": null,
-										"standings": 11,
+										"standings": 10,
 										"featured": true
 									}
 								}
@@ -26133,7 +26133,7 @@
 										"name": "Criciuma",
 										"score": 1,
 										"winner": null,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -26149,7 +26149,7 @@
 										"name": "Criciuma",
 										"score": 1,
 										"winner": null,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									},
 									"away": {
@@ -26157,7 +26157,7 @@
 										"name": "Juventude",
 										"score": 1,
 										"winner": null,
-										"standings": 13,
+										"standings": 14,
 										"featured": false
 									}
 								}
@@ -26173,7 +26173,7 @@
 										"name": "Criciuma",
 										"score": 1,
 										"winner": null,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									},
 									"away": {
@@ -26205,7 +26205,7 @@
 										"name": "Criciuma",
 										"score": 2,
 										"winner": true,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -26221,7 +26221,7 @@
 										"name": "Criciuma",
 										"score": 2,
 										"winner": true,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									},
 									"away": {
@@ -26253,7 +26253,7 @@
 										"name": "Criciuma",
 										"score": 1,
 										"winner": false,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -26269,7 +26269,7 @@
 										"name": "Criciuma",
 										"score": 2,
 										"winner": true,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									},
 									"away": {
@@ -26301,7 +26301,7 @@
 										"name": "Criciuma",
 										"score": 1,
 										"winner": null,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -26325,7 +26325,7 @@
 										"name": "Criciuma",
 										"score": 1,
 										"winner": null,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -26341,7 +26341,7 @@
 										"name": "Criciuma",
 										"score": 2,
 										"winner": true,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									},
 									"away": {
@@ -26373,7 +26373,7 @@
 										"name": "Criciuma",
 										"score": 0,
 										"winner": null,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -26397,7 +26397,7 @@
 										"name": "Criciuma",
 										"score": 0,
 										"winner": null,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -26502,7 +26502,7 @@
 										"name": "Cruzeiro",
 										"score": 3,
 										"winner": true,
-										"standings": 7,
+										"standings": 8,
 										"featured": true
 									},
 									"away": {
@@ -26534,7 +26534,7 @@
 										"name": "Bahia",
 										"score": 2,
 										"winner": null,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -26582,7 +26582,7 @@
 										"name": "Palmeiras",
 										"score": 1,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									}
 								}
@@ -26598,7 +26598,7 @@
 										"name": "Bahia",
 										"score": 1,
 										"winner": null,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -26630,7 +26630,7 @@
 										"name": "Bahia",
 										"score": 2,
 										"winner": false,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -26670,7 +26670,7 @@
 										"name": "Fortaleza EC",
 										"score": 0,
 										"winner": false,
-										"standings": 11,
+										"standings": 10,
 										"featured": true
 									},
 									"away": {
@@ -26694,7 +26694,7 @@
 										"name": "Bahia",
 										"score": 2,
 										"winner": true,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -26834,7 +26834,7 @@
 						"name": "Sao Paulo",
 						"score": null,
 						"winner": null,
-						"standings": 14,
+						"standings": 16,
 						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
@@ -26877,7 +26877,7 @@
 										"name": "Sao Paulo",
 										"score": 3,
 										"winner": true,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									}
 								}
@@ -26893,7 +26893,7 @@
 										"name": "Sao Paulo",
 										"score": 0,
 										"winner": null,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									},
 									"away": {
@@ -26901,7 +26901,7 @@
 										"name": "Palmeiras",
 										"score": 0,
 										"winner": null,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									}
 								}
@@ -26925,7 +26925,7 @@
 										"name": "Sao Paulo",
 										"score": 2,
 										"winner": true,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									}
 								}
@@ -26949,7 +26949,7 @@
 										"name": "Sao Paulo",
 										"score": 3,
 										"winner": true,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									}
 								}
@@ -26965,7 +26965,7 @@
 										"name": "Flamengo",
 										"score": 2,
 										"winner": true,
-										"standings": 8,
+										"standings": 4,
 										"featured": true
 									},
 									"away": {
@@ -26973,7 +26973,7 @@
 										"name": "Sao Paulo",
 										"score": 1,
 										"winner": false,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									}
 								}
@@ -26989,7 +26989,7 @@
 										"name": "Sao Paulo",
 										"score": 1,
 										"winner": false,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									},
 									"away": {
@@ -26997,7 +26997,7 @@
 										"name": "Fortaleza EC",
 										"score": 2,
 										"winner": true,
-										"standings": 11,
+										"standings": 10,
 										"featured": true
 									}
 								}
@@ -27013,7 +27013,7 @@
 										"name": "Sao Paulo",
 										"score": 2,
 										"winner": true,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									},
 									"away": {
@@ -27045,7 +27045,7 @@
 										"name": "Sao Paulo",
 										"score": 1,
 										"winner": false,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									}
 								}
@@ -27061,7 +27061,7 @@
 										"name": "Sao Paulo",
 										"score": 1,
 										"winner": false,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									},
 									"away": {
@@ -27093,7 +27093,7 @@
 										"name": "Sao Paulo",
 										"score": 3,
 										"winner": true,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									}
 								}
@@ -27109,7 +27109,7 @@
 										"name": "Sao Paulo",
 										"score": 1,
 										"winner": null,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									},
 									"away": {
@@ -27117,7 +27117,7 @@
 										"name": "Palmeiras",
 										"score": 1,
 										"winner": null,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									}
 								}
@@ -27141,7 +27141,7 @@
 										"name": "Sao Paulo",
 										"score": 3,
 										"winner": true,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									}
 								}
@@ -27165,7 +27165,7 @@
 										"name": "Sao Paulo",
 										"score": 1,
 										"winner": null,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									}
 								}
@@ -27181,7 +27181,7 @@
 										"name": "Sao Paulo",
 										"score": 2,
 										"winner": null,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									},
 									"away": {
@@ -27205,7 +27205,7 @@
 										"name": "Sao Paulo",
 										"score": 0,
 										"winner": false,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									},
 									"away": {
@@ -27231,7 +27231,7 @@
 					{
 						"name": "Goles por equipo local",
 						"recommendable": true,
-						"acceptancePercentage": "0.75",
+						"acceptancePercentage": "0.88",
 						"criteria": {
 							"home": [
 								{ "description": "Promedio de goles >= 1.5", "check": "✅" },
@@ -27241,7 +27241,7 @@
 								{ "description": "No ha perdido los ultimos 3 partidos de local", "check": "❌" },
 								{
 									"description": "El local está al menos 5 posiciones mas arriba que el rival",
-									"check": "❌"
+									"check": "✅"
 								},
 								{
 									"description": "El local está en las primeras 6 posiciones de la tabla",
@@ -27318,7 +27318,7 @@
 										"name": "Flamengo",
 										"score": 0,
 										"winner": false,
-										"standings": 8,
+										"standings": 4,
 										"featured": true
 									},
 									"away": {
@@ -27374,7 +27374,7 @@
 										"name": "Juventude",
 										"score": 1,
 										"winner": false,
-										"standings": 13,
+										"standings": 14,
 										"featured": false
 									}
 								}
@@ -27414,7 +27414,7 @@
 										"name": "Cruzeiro",
 										"score": 3,
 										"winner": true,
-										"standings": 7,
+										"standings": 8,
 										"featured": true
 									},
 									"away": {
@@ -27630,7 +27630,7 @@
 										"name": "Fluminense",
 										"score": 2,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": true
 									},
 									"away": {
@@ -27650,7 +27650,7 @@
 						"name": "Bahia",
 						"score": null,
 						"winner": null,
-						"standings": 5,
+						"standings": 6,
 						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
@@ -27685,7 +27685,7 @@
 										"name": "Bahia",
 										"score": 1,
 										"winner": true,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -27693,7 +27693,7 @@
 										"name": "Criciuma",
 										"score": 0,
 										"winner": false,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -27709,7 +27709,7 @@
 										"name": "Bahia",
 										"score": 1,
 										"winner": true,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -27741,7 +27741,7 @@
 										"name": "Bahia",
 										"score": 2,
 										"winner": null,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -27757,7 +27757,7 @@
 										"name": "Bahia",
 										"score": 2,
 										"winner": true,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -27765,7 +27765,7 @@
 										"name": "Fluminense",
 										"score": 1,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": true
 									}
 								}
@@ -27781,7 +27781,7 @@
 										"name": "Internacional",
 										"score": 2,
 										"winner": true,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -27789,7 +27789,7 @@
 										"name": "Bahia",
 										"score": 1,
 										"winner": false,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -27805,7 +27805,7 @@
 										"name": "Bahia",
 										"score": 3,
 										"winner": true,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -27829,7 +27829,7 @@
 										"name": "Bahia",
 										"score": 1,
 										"winner": null,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -27861,7 +27861,7 @@
 										"name": "Bahia",
 										"score": 2,
 										"winner": false,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -27885,7 +27885,7 @@
 										"name": "Bahia",
 										"score": 0,
 										"winner": false,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -27901,7 +27901,7 @@
 										"name": "Bahia",
 										"score": 1,
 										"winner": true,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -27925,7 +27925,7 @@
 										"name": "Bahia",
 										"score": 2,
 										"winner": true,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -27949,7 +27949,7 @@
 										"name": "Bahia",
 										"score": 4,
 										"winner": true,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -27981,7 +27981,7 @@
 										"name": "Bahia",
 										"score": 2,
 										"winner": null,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -28005,7 +28005,7 @@
 										"name": "Bahia",
 										"score": 1,
 										"winner": true,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -28029,7 +28029,7 @@
 										"name": "Bahia",
 										"score": 2,
 										"winner": true,
-										"standings": 5,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -28075,7 +28075,7 @@
 						"name": "Atletico Paranaense",
 						"score": null,
 						"winner": null,
-						"standings": 4,
+						"standings": 5,
 						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
@@ -28118,7 +28118,7 @@
 										"name": "Atletico Paranaense",
 										"score": 1,
 										"winner": false,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									}
 								}
@@ -28134,7 +28134,7 @@
 										"name": "Juventude",
 										"score": 1,
 										"winner": null,
-										"standings": 13,
+										"standings": 14,
 										"featured": false
 									},
 									"away": {
@@ -28142,7 +28142,7 @@
 										"name": "Atletico Paranaense",
 										"score": 1,
 										"winner": null,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									}
 								}
@@ -28166,7 +28166,7 @@
 										"name": "Atletico Paranaense",
 										"score": 1,
 										"winner": true,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									}
 								}
@@ -28182,7 +28182,7 @@
 										"name": "Atletico Paranaense",
 										"score": 1,
 										"winner": true,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									},
 									"away": {
@@ -28190,7 +28190,7 @@
 										"name": "Internacional",
 										"score": 0,
 										"winner": false,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -28214,7 +28214,7 @@
 										"name": "Atletico Paranaense",
 										"score": 0,
 										"winner": false,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									}
 								}
@@ -28230,7 +28230,7 @@
 										"name": "Atletico Paranaense",
 										"score": 4,
 										"winner": true,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									},
 									"away": {
@@ -28254,7 +28254,7 @@
 										"name": "Atletico Paranaense",
 										"score": 6,
 										"winner": true,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									},
 									"away": {
@@ -28278,7 +28278,7 @@
 										"name": "Atletico Paranaense",
 										"score": 3,
 										"winner": true,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									},
 									"away": {
@@ -28310,7 +28310,7 @@
 										"name": "Atletico Paranaense",
 										"score": 4,
 										"winner": true,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									}
 								}
@@ -28334,7 +28334,7 @@
 										"name": "Atletico Paranaense",
 										"score": 1,
 										"winner": true,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									}
 								}
@@ -28350,7 +28350,7 @@
 										"name": "Atletico Paranaense",
 										"score": 1,
 										"winner": true,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									},
 									"away": {
@@ -28382,7 +28382,7 @@
 										"name": "Atletico Paranaense",
 										"score": 2,
 										"winner": true,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									}
 								}
@@ -28398,7 +28398,7 @@
 										"name": "Atletico Paranaense",
 										"score": 6,
 										"winner": true,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									},
 									"away": {
@@ -28430,7 +28430,7 @@
 										"name": "Atletico Paranaense",
 										"score": 0,
 										"winner": false,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									}
 								}
@@ -28446,7 +28446,7 @@
 										"name": "Atletico Paranaense",
 										"score": 3,
 										"winner": true,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									},
 									"away": {
@@ -28501,7 +28501,7 @@
 										"name": "Fortaleza EC",
 										"score": 0,
 										"winner": null,
-										"standings": 11,
+										"standings": 10,
 										"featured": true
 									},
 									"away": {
@@ -28533,7 +28533,7 @@
 										"name": "Criciuma",
 										"score": 4,
 										"winner": true,
-										"standings": 10,
+										"standings": 11,
 										"featured": false
 									}
 								}
@@ -28549,7 +28549,7 @@
 										"name": "Fluminense",
 										"score": 2,
 										"winner": true,
-										"standings": 16,
+										"standings": 15,
 										"featured": true
 									},
 									"away": {
@@ -28789,7 +28789,7 @@
 										"name": "Fluminense",
 										"score": 0,
 										"winner": null,
-										"standings": 16,
+										"standings": 15,
 										"featured": true
 									},
 									"away": {
@@ -28845,7 +28845,7 @@
 										"name": "Flamengo",
 										"score": 0,
 										"winner": null,
-										"standings": 8,
+										"standings": 4,
 										"featured": true
 									}
 								}
@@ -29070,7 +29070,7 @@
 										"name": "Atletico Paranaense",
 										"score": 4,
 										"winner": true,
-										"standings": 4,
+										"standings": 5,
 										"featured": true
 									},
 									"away": {
@@ -29282,7 +29282,7 @@
 						"name": "Palmeiras",
 						"score": null,
 						"winner": null,
-						"standings": 12,
+						"standings": 13,
 						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
@@ -29317,7 +29317,7 @@
 										"name": "Palmeiras",
 										"score": 2,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									},
 									"away": {
@@ -29341,7 +29341,7 @@
 										"name": "Sao Paulo",
 										"score": 0,
 										"winner": null,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									},
 									"away": {
@@ -29349,7 +29349,7 @@
 										"name": "Palmeiras",
 										"score": 0,
 										"winner": null,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									}
 								}
@@ -29373,7 +29373,7 @@
 										"name": "Palmeiras",
 										"score": 3,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									}
 								}
@@ -29389,7 +29389,7 @@
 										"name": "Palmeiras",
 										"score": 0,
 										"winner": null,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									},
 									"away": {
@@ -29397,7 +29397,7 @@
 										"name": "Flamengo",
 										"score": 0,
 										"winner": null,
-										"standings": 8,
+										"standings": 4,
 										"featured": true
 									}
 								}
@@ -29413,7 +29413,7 @@
 										"name": "Palmeiras",
 										"score": 0,
 										"winner": false,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									},
 									"away": {
@@ -29421,7 +29421,7 @@
 										"name": "Internacional",
 										"score": 1,
 										"winner": true,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -29445,7 +29445,7 @@
 										"name": "Palmeiras",
 										"score": 1,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									}
 								}
@@ -29461,7 +29461,7 @@
 										"name": "Palmeiras",
 										"score": 3,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									},
 									"away": {
@@ -29485,7 +29485,7 @@
 										"name": "Palmeiras",
 										"score": 2,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									},
 									"away": {
@@ -29517,7 +29517,7 @@
 										"name": "Palmeiras",
 										"score": 1,
 										"winner": null,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									}
 								}
@@ -29541,7 +29541,7 @@
 										"name": "Palmeiras",
 										"score": 0,
 										"winner": false,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									}
 								}
@@ -29557,7 +29557,7 @@
 										"name": "Palmeiras",
 										"score": 1,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									},
 									"away": {
@@ -29581,7 +29581,7 @@
 										"name": "Palmeiras",
 										"score": 5,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									},
 									"away": {
@@ -29605,7 +29605,7 @@
 										"name": "Palmeiras",
 										"score": 1,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									},
 									"away": {
@@ -29629,7 +29629,7 @@
 										"name": "Sao Paulo",
 										"score": 1,
 										"winner": null,
-										"standings": 14,
+										"standings": 16,
 										"featured": true
 									},
 									"away": {
@@ -29637,7 +29637,7 @@
 										"name": "Palmeiras",
 										"score": 1,
 										"winner": null,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									}
 								}
@@ -29661,7 +29661,7 @@
 										"name": "Palmeiras",
 										"score": 2,
 										"winner": true,
-										"standings": 12,
+										"standings": 13,
 										"featured": true
 									}
 								}
@@ -32431,7 +32431,7 @@
 										"score": 3,
 										"winner": true,
 										"standings": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							}
@@ -32449,14 +32449,14 @@
 			{
 				"teamId": 197,
 				"teamName": "PSV Eindhoven",
-				"points": 84,
+				"points": 87,
 				"stats": {
-					"goalsDiff": 86,
-					"played": 31,
-					"win": 27,
+					"goalsDiff": 88,
+					"played": 32,
+					"win": 28,
 					"draw": 3,
 					"lose": 1,
-					"goals": { "for": 103, "against": 17 }
+					"goals": { "for": 107, "against": 19 }
 				}
 			},
 			{
@@ -32477,38 +32477,51 @@
 				"teamName": "Twente",
 				"points": 63,
 				"stats": {
-					"goalsDiff": 28,
-					"played": 31,
+					"goalsDiff": 27,
+					"played": 32,
 					"win": 19,
 					"draw": 6,
-					"lose": 6,
-					"goals": { "for": 59, "against": 31 }
+					"lose": 7,
+					"goals": { "for": 60, "against": 33 }
 				}
 			},
 			{
 				"teamId": 201,
 				"teamName": "AZ Alkmaar",
-				"points": 58,
+				"points": 61,
 				"stats": {
-					"goalsDiff": 27,
-					"played": 31,
-					"win": 17,
+					"goalsDiff": 28,
+					"played": 32,
+					"win": 18,
 					"draw": 7,
 					"lose": 7,
-					"goals": { "for": 62, "against": 35 }
+					"goals": { "for": 64, "against": 36 }
 				}
 			},
 			{
 				"teamId": 194,
 				"teamName": "Ajax",
-				"points": 49,
+				"points": 52,
 				"stats": {
-					"goalsDiff": 7,
-					"played": 31,
-					"win": 13,
+					"goalsDiff": 10,
+					"played": 32,
+					"win": 14,
 					"draw": 10,
 					"lose": 8,
-					"goals": { "for": 65, "against": 58 }
+					"goals": { "for": 69, "against": 59 }
+				}
+			},
+			{
+				"teamId": 207,
+				"teamName": "Utrecht",
+				"points": 49,
+				"stats": {
+					"goalsDiff": 3,
+					"played": 32,
+					"win": 13,
+					"draw": 10,
+					"lose": 9,
+					"goals": { "for": 46, "against": 43 }
 				}
 			},
 			{
@@ -32525,32 +32538,6 @@
 				}
 			},
 			{
-				"teamId": 207,
-				"teamName": "Utrecht",
-				"points": 46,
-				"stats": {
-					"goalsDiff": 2,
-					"played": 31,
-					"win": 12,
-					"draw": 10,
-					"lose": 9,
-					"goals": { "for": 45, "against": 43 }
-				}
-			},
-			{
-				"teamId": 426,
-				"teamName": "Sparta Rotterdam",
-				"points": 43,
-				"stats": {
-					"goalsDiff": 3,
-					"played": 31,
-					"win": 12,
-					"draw": 7,
-					"lose": 12,
-					"goals": { "for": 46, "against": 43 }
-				}
-			},
-			{
 				"teamId": 410,
 				"teamName": "GO Ahead Eagles",
 				"points": 43,
@@ -32561,6 +32548,19 @@
 					"draw": 10,
 					"lose": 11,
 					"goals": { "for": 45, "against": 42 }
+				}
+			},
+			{
+				"teamId": 426,
+				"teamName": "Sparta Rotterdam",
+				"points": 43,
+				"stats": {
+					"goalsDiff": 1,
+					"played": 32,
+					"win": 12,
+					"draw": 7,
+					"lose": 13,
+					"goals": { "for": 48, "against": 47 }
 				}
 			},
 			{
@@ -32620,12 +32620,25 @@
 				"teamName": "Heracles",
 				"points": 32,
 				"stats": {
-					"goalsDiff": -24,
-					"played": 31,
+					"goalsDiff": -29,
+					"played": 32,
 					"win": 9,
 					"draw": 5,
-					"lose": 17,
-					"goals": { "for": 41, "against": 65 }
+					"lose": 18,
+					"goals": { "for": 41, "against": 70 }
+				}
+			},
+			{
+				"teamId": 417,
+				"teamName": "Waalwijk",
+				"points": 28,
+				"stats": {
+					"goalsDiff": -16,
+					"played": 32,
+					"win": 7,
+					"draw": 7,
+					"lose": 18,
+					"goals": { "for": 36, "against": 52 }
 				}
 			},
 			{
@@ -32642,29 +32655,16 @@
 				}
 			},
 			{
-				"teamId": 417,
-				"teamName": "Waalwijk",
-				"points": 25,
-				"stats": {
-					"goalsDiff": -21,
-					"played": 31,
-					"win": 6,
-					"draw": 7,
-					"lose": 18,
-					"goals": { "for": 31, "against": 52 }
-				}
-			},
-			{
 				"teamId": 416,
 				"teamName": "FC Volendam",
 				"points": 19,
 				"stats": {
-					"goalsDiff": -45,
-					"played": 31,
+					"goalsDiff": -48,
+					"played": 32,
 					"win": 4,
 					"draw": 7,
-					"lose": 20,
-					"goals": { "for": 30, "against": 75 }
+					"lose": 21,
+					"goals": { "for": 31, "against": 79 }
 				}
 			},
 			{
@@ -32672,12 +32672,12 @@
 				"teamName": "Vitesse",
 				"points": 2,
 				"stats": {
-					"goalsDiff": -45,
-					"played": 31,
+					"goalsDiff": -46,
+					"played": 32,
 					"win": 5,
 					"draw": 5,
-					"lose": 21,
-					"goals": { "for": 25, "against": 70 }
+					"lose": 22,
+					"goals": { "for": 25, "against": 71 }
 				}
 			}
 		],
@@ -32826,7 +32826,7 @@
 										"name": "Excelsior",
 										"score": 0,
 										"winner": false,
-										"standings": 15,
+										"standings": 16,
 										"featured": false
 									},
 									"away": {
@@ -32850,7 +32850,7 @@
 										"name": "NEC Nijmegen",
 										"score": 3,
 										"winner": true,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -32922,7 +32922,7 @@
 										"name": "GO Ahead Eagles",
 										"score": 0,
 										"winner": false,
-										"standings": 9,
+										"standings": 8,
 										"featured": false
 									},
 									"away": {
@@ -33110,7 +33110,7 @@
 						"name": "Sparta Rotterdam",
 						"score": null,
 						"winner": null,
-						"standings": 8,
+						"standings": 9,
 						"featured": false,
 						"stats": {
 							"total_de_partidos": 15,
@@ -33145,7 +33145,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 1,
 										"winner": true,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									},
 									"away": {
@@ -33177,7 +33177,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 3,
 										"winner": true,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									}
 								}
@@ -33193,7 +33193,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 1,
 										"winner": false,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									},
 									"away": {
@@ -33225,7 +33225,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 4,
 										"winner": true,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									}
 								}
@@ -33241,7 +33241,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 4,
 										"winner": true,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									},
 									"away": {
@@ -33265,7 +33265,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 2,
 										"winner": null,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									},
 									"away": {
@@ -33297,7 +33297,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 1,
 										"winner": false,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									}
 								}
@@ -33313,7 +33313,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 1,
 										"winner": null,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									},
 									"away": {
@@ -33337,7 +33337,7 @@
 										"name": "NEC Nijmegen",
 										"score": 2,
 										"winner": true,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -33345,7 +33345,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 0,
 										"winner": false,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									}
 								}
@@ -33361,7 +33361,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 4,
 										"winner": true,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									},
 									"away": {
@@ -33369,7 +33369,7 @@
 										"name": "Excelsior",
 										"score": 2,
 										"winner": false,
-										"standings": 15,
+										"standings": 16,
 										"featured": false
 									}
 								}
@@ -33393,7 +33393,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 0,
 										"winner": false,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									}
 								}
@@ -33409,7 +33409,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 0,
 										"winner": false,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									},
 									"away": {
@@ -33433,7 +33433,7 @@
 										"name": "Waalwijk",
 										"score": 1,
 										"winner": null,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -33441,7 +33441,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 1,
 										"winner": null,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									}
 								}
@@ -33457,7 +33457,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 0,
 										"winner": false,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									},
 									"away": {
@@ -33465,7 +33465,7 @@
 										"name": "GO Ahead Eagles",
 										"score": 2,
 										"winner": true,
-										"standings": 9,
+										"standings": 8,
 										"featured": false
 									}
 								}
@@ -33489,7 +33489,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 2,
 										"winner": true,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									}
 								}
@@ -33618,7 +33618,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 1,
 										"winner": false,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									},
 									"away": {
@@ -33698,7 +33698,7 @@
 										"name": "GO Ahead Eagles",
 										"score": 0,
 										"winner": false,
-										"standings": 9,
+										"standings": 8,
 										"featured": false
 									}
 								}
@@ -33762,7 +33762,7 @@
 										"name": "Utrecht",
 										"score": 1,
 										"winner": true,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -33834,7 +33834,7 @@
 										"name": "NEC Nijmegen",
 										"score": 3,
 										"winner": true,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -33906,7 +33906,7 @@
 										"name": "Waalwijk",
 										"score": 1,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -33926,7 +33926,7 @@
 						"name": "Waalwijk",
 						"score": null,
 						"winner": null,
-						"standings": 16,
+						"standings": 15,
 						"featured": false,
 						"stats": {
 							"total_de_partidos": 15,
@@ -33961,7 +33961,7 @@
 										"name": "Waalwijk",
 										"score": 2,
 										"winner": null,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -33969,7 +33969,7 @@
 										"name": "Utrecht",
 										"score": 2,
 										"winner": null,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -33993,7 +33993,7 @@
 										"name": "Waalwijk",
 										"score": 2,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -34017,7 +34017,7 @@
 										"name": "Waalwijk",
 										"score": 2,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -34033,7 +34033,7 @@
 										"name": "Waalwijk",
 										"score": 0,
 										"winner": null,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -34057,7 +34057,7 @@
 										"name": "Waalwijk",
 										"score": 1,
 										"winner": null,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -34081,7 +34081,7 @@
 										"name": "Excelsior",
 										"score": 1,
 										"winner": null,
-										"standings": 15,
+										"standings": 16,
 										"featured": false
 									},
 									"away": {
@@ -34089,7 +34089,7 @@
 										"name": "Waalwijk",
 										"score": 1,
 										"winner": null,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -34105,7 +34105,7 @@
 										"name": "Waalwijk",
 										"score": 3,
 										"winner": true,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -34129,7 +34129,7 @@
 										"name": "GO Ahead Eagles",
 										"score": 1,
 										"winner": true,
-										"standings": 9,
+										"standings": 8,
 										"featured": false
 									},
 									"away": {
@@ -34137,7 +34137,7 @@
 										"name": "Waalwijk",
 										"score": 0,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -34153,7 +34153,7 @@
 										"name": "Waalwijk",
 										"score": 0,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -34185,7 +34185,7 @@
 										"name": "Waalwijk",
 										"score": 0,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -34201,7 +34201,7 @@
 										"name": "Waalwijk",
 										"score": 2,
 										"winner": true,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -34209,7 +34209,7 @@
 										"name": "NEC Nijmegen",
 										"score": 0,
 										"winner": false,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -34233,7 +34233,7 @@
 										"name": "Waalwijk",
 										"score": 0,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -34249,7 +34249,7 @@
 										"name": "Waalwijk",
 										"score": 1,
 										"winner": null,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -34257,7 +34257,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 1,
 										"winner": null,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									}
 								}
@@ -34281,7 +34281,7 @@
 										"name": "Waalwijk",
 										"score": 1,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -34297,7 +34297,7 @@
 										"name": "Waalwijk",
 										"score": 1,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -34351,7 +34351,7 @@
 						"name": "Utrecht",
 						"score": null,
 						"winner": null,
-						"standings": 7,
+						"standings": 6,
 						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
@@ -34386,7 +34386,7 @@
 										"name": "Waalwijk",
 										"score": 2,
 										"winner": null,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -34394,7 +34394,7 @@
 										"name": "Utrecht",
 										"score": 2,
 										"winner": null,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -34410,7 +34410,7 @@
 										"name": "Utrecht",
 										"score": 2,
 										"winner": true,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -34418,7 +34418,7 @@
 										"name": "GO Ahead Eagles",
 										"score": 1,
 										"winner": false,
-										"standings": 9,
+										"standings": 8,
 										"featured": false
 									}
 								}
@@ -34442,7 +34442,7 @@
 										"name": "Utrecht",
 										"score": 3,
 										"winner": true,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -34458,7 +34458,7 @@
 										"name": "Utrecht",
 										"score": 5,
 										"winner": true,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -34490,7 +34490,7 @@
 										"name": "Utrecht",
 										"score": 2,
 										"winner": false,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -34506,7 +34506,7 @@
 										"name": "Utrecht",
 										"score": 1,
 										"winner": true,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -34514,7 +34514,7 @@
 										"name": "NEC Nijmegen",
 										"score": 0,
 										"winner": false,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -34538,7 +34538,7 @@
 										"name": "Utrecht",
 										"score": 1,
 										"winner": null,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -34562,7 +34562,7 @@
 										"name": "Utrecht",
 										"score": 0,
 										"winner": false,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -34578,7 +34578,7 @@
 										"name": "Utrecht",
 										"score": 1,
 										"winner": true,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -34610,7 +34610,7 @@
 										"name": "Utrecht",
 										"score": 1,
 										"winner": true,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -34626,7 +34626,7 @@
 										"name": "Utrecht",
 										"score": 4,
 										"winner": true,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -34650,7 +34650,7 @@
 										"name": "Utrecht",
 										"score": 4,
 										"winner": true,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -34674,7 +34674,7 @@
 										"name": "Excelsior",
 										"score": 1,
 										"winner": null,
-										"standings": 15,
+										"standings": 16,
 										"featured": false
 									},
 									"away": {
@@ -34682,7 +34682,7 @@
 										"name": "Utrecht",
 										"score": 1,
 										"winner": null,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -34698,7 +34698,7 @@
 										"name": "Utrecht",
 										"score": 1,
 										"winner": null,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -34730,7 +34730,7 @@
 										"name": "Utrecht",
 										"score": 0,
 										"winner": null,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -34833,7 +34833,7 @@
 										"name": "NEC Nijmegen",
 										"score": 3,
 										"winner": true,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -34857,7 +34857,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 4,
 										"winner": true,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									}
 								}
@@ -34921,7 +34921,7 @@
 										"name": "Waalwijk",
 										"score": 3,
 										"winner": true,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									},
 									"away": {
@@ -34969,7 +34969,7 @@
 										"name": "Excelsior",
 										"score": 1,
 										"winner": false,
-										"standings": 15,
+										"standings": 16,
 										"featured": false
 									},
 									"away": {
@@ -35073,7 +35073,7 @@
 										"name": "GO Ahead Eagles",
 										"score": 2,
 										"winner": true,
-										"standings": 9,
+										"standings": 8,
 										"featured": false
 									}
 								}
@@ -35202,7 +35202,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 1,
 										"winner": true,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									},
 									"away": {
@@ -35226,7 +35226,7 @@
 										"name": "Excelsior",
 										"score": 4,
 										"winner": true,
-										"standings": 15,
+										"standings": 16,
 										"featured": false
 									},
 									"away": {
@@ -35258,7 +35258,7 @@
 										"name": "Waalwijk",
 										"score": 2,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -35378,7 +35378,7 @@
 										"name": "NEC Nijmegen",
 										"score": 5,
 										"winner": true,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -35466,7 +35466,7 @@
 										"name": "Utrecht",
 										"score": 4,
 										"winner": true,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -35601,7 +35601,7 @@
 										"name": "Excelsior",
 										"score": 2,
 										"winner": null,
-										"standings": 15,
+										"standings": 16,
 										"featured": false
 									}
 								}
@@ -35673,7 +35673,7 @@
 										"name": "GO Ahead Eagles",
 										"score": 1,
 										"winner": null,
-										"standings": 9,
+										"standings": 8,
 										"featured": false
 									}
 								}
@@ -35713,7 +35713,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 2,
 										"winner": null,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									},
 									"away": {
@@ -35817,7 +35817,7 @@
 										"name": "Utrecht",
 										"score": 0,
 										"winner": false,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -35889,7 +35889,7 @@
 										"name": "NEC Nijmegen",
 										"score": 2,
 										"winner": null,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -36018,7 +36018,7 @@
 										"name": "NEC Nijmegen",
 										"score": 0,
 										"winner": false,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -36050,7 +36050,7 @@
 										"name": "Waalwijk",
 										"score": 2,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -36170,7 +36170,7 @@
 										"name": "Excelsior",
 										"score": 0,
 										"winner": false,
-										"standings": 15,
+										"standings": 16,
 										"featured": false
 									}
 								}
@@ -36186,7 +36186,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 1,
 										"winner": null,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									},
 									"away": {
@@ -36561,7 +36561,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 1,
 										"winner": false,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									}
 								}
@@ -36609,7 +36609,7 @@
 										"name": "GO Ahead Eagles",
 										"score": 0,
 										"winner": false,
-										"standings": 9,
+										"standings": 8,
 										"featured": false
 									}
 								}
@@ -36633,7 +36633,7 @@
 										"name": "Utrecht",
 										"score": 1,
 										"winner": true,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -36649,7 +36649,7 @@
 										"name": "Excelsior",
 										"score": 0,
 										"winner": false,
-										"standings": 15,
+										"standings": 16,
 										"featured": false
 									},
 									"away": {
@@ -36681,7 +36681,7 @@
 										"name": "Waalwijk",
 										"score": 0,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -36721,7 +36721,7 @@
 										"name": "NEC Nijmegen",
 										"score": 1,
 										"winner": true,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -36834,7 +36834,7 @@
 										"name": "GO Ahead Eagles",
 										"score": 1,
 										"winner": false,
-										"standings": 9,
+										"standings": 8,
 										"featured": false
 									},
 									"away": {
@@ -36866,7 +36866,7 @@
 										"name": "NEC Nijmegen",
 										"score": 0,
 										"winner": false,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									}
 								}
@@ -36962,7 +36962,7 @@
 										"name": "Utrecht",
 										"score": 2,
 										"winner": false,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									}
 								}
@@ -37130,7 +37130,7 @@
 										"name": "Waalwijk",
 										"score": 0,
 										"winner": false,
-										"standings": 16,
+										"standings": 15,
 										"featured": false
 									}
 								}
@@ -37178,7 +37178,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 0,
 										"winner": false,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									}
 								}
@@ -37249,7 +37249,7 @@
 										"name": "NEC Nijmegen",
 										"score": 2,
 										"winner": null,
-										"standings": 6,
+										"standings": 7,
 										"featured": true
 									},
 									"away": {
@@ -37281,7 +37281,7 @@
 										"name": "Excelsior",
 										"score": 1,
 										"winner": false,
-										"standings": 15,
+										"standings": 16,
 										"featured": false
 									}
 								}
@@ -37297,7 +37297,7 @@
 										"name": "Utrecht",
 										"score": 5,
 										"winner": true,
-										"standings": 7,
+										"standings": 6,
 										"featured": true
 									},
 									"away": {
@@ -37465,7 +37465,7 @@
 										"name": "GO Ahead Eagles",
 										"score": 1,
 										"winner": null,
-										"standings": 9,
+										"standings": 8,
 										"featured": false
 									},
 									"away": {
@@ -37489,7 +37489,7 @@
 										"name": "Sparta Rotterdam",
 										"score": 0,
 										"winner": false,
-										"standings": 8,
+										"standings": 9,
 										"featured": false
 									},
 									"away": {
@@ -39060,7 +39060,7 @@
 										"score": 0,
 										"winner": false,
 										"standings": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1393,
@@ -39116,7 +39116,7 @@
 										"score": 3,
 										"winner": true,
 										"standings": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -39204,7 +39204,7 @@
 										"score": 1,
 										"winner": false,
 										"standings": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1393,
