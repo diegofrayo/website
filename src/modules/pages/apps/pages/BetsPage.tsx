@@ -439,9 +439,9 @@ function BetsPage({ data }: T_BetsPageProps) {
 																													</InlineText>
 																												</Text>
 																												<Text className="tw-mb-4 tw-flex tw-flex-col tw-justify-between tw-text-sm lg:tw-flex-row">
-																													<InlineTet className="tw-ml-0 tw-italic lg:tw-ml-5">
+																													<InlineText className="tw-ml-0 tw-italic lg:tw-ml-5">
 																														{playedMatch.date}
-																													</InlineTet>
+																													</InlineText>
 
 																													{Number.isInteger(
 																														playedMatch.teams.home.standings &&
