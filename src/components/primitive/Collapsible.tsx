@@ -10,8 +10,8 @@ import Title from "./Title";
 
 // --- PROPS & TYPES ---
 
-type T_CollapsibleProps = DR.DOM.HTMLElementAttributes["details"] & {
-	title?: string;
+type T_CollapsibleProps = Omit<DR.DOM.HTMLElementAttributes["details"], "title"> & {
+	title?: string | DR.React.JSXElement;
 	openedByDefault?: boolean;
 	opened?: boolean;
 	contentClassName?: string;
@@ -76,25 +76,32 @@ function Collapsible({
 			className={cn("dr-collapsible", className)}
 			is="section"
 		>
-			<Title
-				variant={Title.variant.UNSTYLED}
-				is="h2"
-				role="button"
-				className={cn("tw-flex tw-items-start tw-font-bold", titleClassName)}
-				onClick={handleToggleClick}
-			>
-				{showIcon ? (
-					<InlineText
-						className={cn(
-							"tw-relative tw-top-0.5 tw-mr-2 tw-transform tw-text-sm",
-							isOpen ? "tw-top-1 tw-rotate-90" : "tw-top-0.5",
-						)}
-					>
-						&#9654;
-					</InlineText>
-				) : null}
-				<InlineText>{computedTitle}</InlineText>
-			</Title>
+			{React.isValidElement(title) ? (
+				React.cloneElement(title as DR.React.JSXElement, {
+					onClick: handleToggleClick,
+					role: "button",
+				})
+			) : (
+				<Title
+					variant={Title.variant.UNSTYLED}
+					is="h2"
+					role="button"
+					className={cn("tw-flex tw-items-start tw-font-bold", titleClassName)}
+					onClick={handleToggleClick}
+				>
+					{showIcon ? (
+						<InlineText
+							className={cn(
+								"tw-relative tw-top-0.5 tw-mr-2 tw-transform tw-text-sm",
+								isOpen ? "tw-top-1 tw-rotate-90" : "tw-top-0.5",
+							)}
+						>
+							&#9654;
+						</InlineText>
+					) : null}
+					<InlineText>{computedTitle}</InlineText>
+				</Title>
+			)}
 			<Block
 				className={cn(showIcon && "tw-pl-5", contentClassName, isOpen ? "tw-block" : "tw-hidden")}
 			>
