@@ -16,7 +16,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -61,8 +64,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -71,7 +74,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -98,6 +106,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 4,
 							"partidos_con_goles_de_local": 3,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 75,
 							"---||---": 0,
 							"goles_de_visitante": 6,
 							"promedio_de_goles_de_visitante": 0.9,
@@ -106,6 +116,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 57.1,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 1,
@@ -118,6 +130,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 1,
 							"ultimos_promedio_de_goles_de_visitante": 0.3,
@@ -125,7 +139,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -509,6 +525,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 87.5,
 							"---||---": 0,
 							"goles_de_visitante": 4,
 							"promedio_de_goles_de_visitante": 0.6,
@@ -517,6 +535,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 3,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 57.1,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 0,
@@ -529,6 +549,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 1,
 							"ultimos_promedio_de_goles_de_visitante": 0.3,
@@ -536,7 +558,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -914,7 +938,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
-						"warnings": [],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -959,8 +986,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"recommendable": true,
+						"acceptancePercentage": 1,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -968,8 +995,13 @@
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
-									"check": "❌",
-									"weight": 1
+									"check": "✅",
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -996,6 +1028,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 12,
 							"promedio_de_goles_de_visitante": 1.5,
@@ -1004,6 +1038,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 5,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 87.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -1016,6 +1052,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 6,
 							"ultimos_promedio_de_goles_de_visitante": 2,
@@ -1023,7 +1061,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -1086,7 +1126,7 @@
 										"score": 2,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 456,
@@ -1394,7 +1434,7 @@
 						"score": null,
 						"winner": null,
 						"position": null,
-						"featured": false,
+						"featured": true,
 						"stats": {
 							"total_de_partidos": 14,
 							"total_de_goles": 21,
@@ -1407,6 +1447,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 71.4,
 							"---||---": 0,
 							"goles_de_visitante": 11,
 							"promedio_de_goles_de_visitante": 1.6,
@@ -1415,6 +1457,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 85.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 5,
@@ -1427,6 +1471,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.7,
@@ -1434,7 +1480,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -1457,7 +1505,7 @@
 										"score": 3,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -1481,7 +1529,7 @@
 										"score": 1,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -1505,7 +1553,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -1521,7 +1569,7 @@
 										"score": 0,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 126,
@@ -1545,7 +1593,7 @@
 										"score": 1,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1150,
@@ -1577,7 +1625,7 @@
 										"score": 3,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -1593,7 +1641,7 @@
 										"score": 2,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 456,
@@ -1617,7 +1665,7 @@
 										"score": 4,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1154,
@@ -1649,7 +1697,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -1673,7 +1721,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -1689,7 +1737,7 @@
 										"score": 0,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1992,
@@ -1713,7 +1761,7 @@
 										"score": 3,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1152,
@@ -1721,7 +1769,7 @@
 										"score": 1,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -1737,7 +1785,7 @@
 										"score": 2,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1983,
@@ -1761,7 +1809,7 @@
 										"score": 1,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1984,
@@ -1788,7 +1836,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": true,
 						"acceptancePercentage": 0.75,
-						"warnings": [{ "description": "Ambos equipos son destacados" }],
+						"warnings": [
+							{ "description": "Ambos equipos son destacados" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -1843,7 +1894,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -1870,6 +1926,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 8,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 87.5,
 							"---||---": 0,
 							"goles_de_visitante": 8,
 							"promedio_de_goles_de_visitante": 1.1,
@@ -1878,6 +1936,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 3,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 42.9,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 1,
@@ -1890,6 +1950,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 0,
 							"ultimos_promedio_de_goles_de_visitante": 0,
@@ -1897,7 +1959,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 0
+							"ultimos_partidos_con_goles_de_visitante": 0,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -2281,6 +2345,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 87.5,
 							"---||---": 0,
 							"goles_de_visitante": 11,
 							"promedio_de_goles_de_visitante": 1.6,
@@ -2289,6 +2355,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 85.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 7,
@@ -2301,6 +2369,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 8,
 							"ultimos_promedio_de_goles_de_visitante": 2.7,
@@ -2308,7 +2378,9 @@
 							"ultimos_partidos_ganados_de_visitante": 3,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -2686,7 +2758,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": true,
 						"acceptancePercentage": 0.75,
-						"warnings": [{ "description": "Ambos equipos son destacados" }],
+						"warnings": [
+							{ "description": "Ambos equipos son destacados" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -2741,7 +2816,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -2768,6 +2848,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 0,
 							"partidos_con_goles_de_local": 9,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 77.8,
 							"---||---": 0,
 							"goles_de_visitante": 11,
 							"promedio_de_goles_de_visitante": 1.8,
@@ -2776,6 +2858,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 66.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 4,
@@ -2788,6 +2872,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -2795,7 +2881,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -3010,7 +3098,7 @@
 										"score": 3,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -3179,6 +3267,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 0,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 85.7,
 							"---||---": 0,
 							"goles_de_visitante": 11,
 							"promedio_de_goles_de_visitante": 1.4,
@@ -3187,6 +3277,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 62.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 5,
@@ -3199,6 +3291,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.7,
@@ -3206,7 +3300,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -3293,7 +3389,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1158,
@@ -3584,7 +3680,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -3629,8 +3728,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -3639,7 +3738,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -3666,6 +3770,8 @@
 							"partidos_perdidos_de_local": 3,
 							"partidos_empatados_de_local": 4,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 62.5,
 							"---||---": 0,
 							"goles_de_visitante": 4,
 							"promedio_de_goles_de_visitante": 0.7,
@@ -3674,6 +3780,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 3,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 33.3,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -3686,6 +3794,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 1,
 							"ultimos_promedio_de_goles_de_visitante": 0.3,
@@ -3693,7 +3803,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -3884,7 +3996,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -4053,6 +4165,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---||---": 0,
 							"goles_de_visitante": 20,
 							"promedio_de_goles_de_visitante": 2.2,
@@ -4061,6 +4175,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 9,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 77.8,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -4073,6 +4189,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 8,
 							"ultimos_promedio_de_goles_de_visitante": 2.7,
@@ -4080,7 +4198,9 @@
 							"ultimos_partidos_ganados_de_visitante": 3,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -4167,7 +4287,7 @@
 										"score": 0,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 126,
@@ -4457,8 +4577,8 @@
 						"id": "GEL",
 						"name": "Goles por equipo local",
 						"recommendable": true,
-						"acceptancePercentage": 0.6,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"acceptancePercentage": 0.75,
+						"warnings": [{ "description": "Ambos equipos son destacados" }],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -4468,7 +4588,7 @@
 									"check": "✅",
 									"weight": 0.6
 								},
-								{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
+								{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.15 },
 								{
 									"description": "El local está en las primeras 6 posiciones de la tabla",
 									"check": "❌",
@@ -4513,7 +4633,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -4527,7 +4652,7 @@
 						"score": null,
 						"winner": null,
 						"position": null,
-						"featured": false,
+						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
 							"total_de_goles": 25,
@@ -4540,6 +4665,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 71.4,
 							"---||---": 0,
 							"goles_de_visitante": 13,
 							"promedio_de_goles_de_visitante": 1.6,
@@ -4548,6 +4675,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 8,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 50,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 5,
@@ -4560,6 +4689,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -4567,7 +4698,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -4582,7 +4715,7 @@
 										"score": 2,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1125,
@@ -4590,7 +4723,7 @@
 										"score": 1,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -4606,7 +4739,7 @@
 										"score": 3,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1132,
@@ -4638,7 +4771,7 @@
 										"score": 1,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -4662,7 +4795,7 @@
 										"score": 2,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -4678,7 +4811,7 @@
 										"score": 3,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1135,
@@ -4686,7 +4819,7 @@
 										"score": 2,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -4710,7 +4843,7 @@
 										"score": 3,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -4734,7 +4867,7 @@
 										"score": 2,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -4750,7 +4883,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 127,
@@ -4782,7 +4915,7 @@
 										"score": 2,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -4798,7 +4931,7 @@
 										"score": 3,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1139,
@@ -4822,7 +4955,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1127,
@@ -4854,7 +4987,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -4878,7 +5011,7 @@
 										"score": 1,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -4894,7 +5027,7 @@
 										"score": 1,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1134,
@@ -4918,7 +5051,7 @@
 										"score": 0,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1136,
@@ -4951,6 +5084,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 11,
 							"promedio_de_goles_de_visitante": 1.4,
@@ -4959,6 +5094,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 50,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -4971,6 +5108,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.7,
@@ -4978,7 +5117,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -5073,7 +5214,7 @@
 										"score": 2,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -5364,7 +5505,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -5409,8 +5553,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -5419,7 +5563,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -5446,6 +5595,8 @@
 							"partidos_perdidos_de_local": 4,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 3,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 42.9,
 							"---||---": 0,
 							"goles_de_visitante": 7,
 							"promedio_de_goles_de_visitante": 0.9,
@@ -5454,6 +5605,8 @@
 							"partidos_perdidos_de_visitante": 6,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 25,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -5466,6 +5619,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -5473,7 +5628,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -5857,6 +6014,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 0,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 10,
 							"promedio_de_goles_de_visitante": 1.3,
@@ -5865,6 +6024,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 62.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -5877,6 +6038,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -5884,7 +6047,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -6262,7 +6427,7 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [],
+						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -6317,7 +6482,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -6344,6 +6514,8 @@
 							"partidos_perdidos_de_local": 4,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 3,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---||---": 0,
 							"goles_de_visitante": 10,
 							"promedio_de_goles_de_visitante": 1.1,
@@ -6352,6 +6524,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 66.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -6364,6 +6538,8 @@
 							"ultimos_partidos_perdidos_de_local": 3,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 0,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.7,
@@ -6371,7 +6547,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -6755,6 +6933,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 85.7,
 							"---||---": 0,
 							"goles_de_visitante": 8,
 							"promedio_de_goles_de_visitante": 1,
@@ -6763,6 +6943,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 62.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -6775,6 +6957,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -6782,7 +6966,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -7160,7 +7346,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -7205,8 +7394,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -7215,7 +7404,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -7242,6 +7436,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 83.3,
 							"---||---": 0,
 							"goles_de_visitante": 7,
 							"promedio_de_goles_de_visitante": 0.9,
@@ -7250,6 +7446,8 @@
 							"partidos_perdidos_de_visitante": 5,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 37.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 1,
@@ -7262,6 +7460,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 1,
 							"ultimos_promedio_de_goles_de_visitante": 0.3,
@@ -7269,7 +7469,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 3,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 0
 						},
 						"matches": [
 							{
@@ -7629,6 +7831,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 4,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 77.8,
 							"---||---": 0,
 							"goles_de_visitante": 7,
 							"promedio_de_goles_de_visitante": 1.2,
@@ -7637,6 +7841,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 83.3,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 1,
@@ -7649,6 +7855,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 2,
 							"ultimos_promedio_de_goles_de_visitante": 0.7,
@@ -7656,7 +7864,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -8034,7 +8244,7 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [],
+						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -8089,7 +8299,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -8116,6 +8331,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 71.4,
 							"---||---": 0,
 							"goles_de_visitante": 8,
 							"promedio_de_goles_de_visitante": 1,
@@ -8124,6 +8341,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 50,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 0,
@@ -8136,6 +8355,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 0,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 1,
 							"ultimos_promedio_de_goles_de_visitante": 0.3,
@@ -8143,7 +8364,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -8527,6 +8750,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 71.4,
 							"---||---": 0,
 							"goles_de_visitante": 11,
 							"promedio_de_goles_de_visitante": 1.4,
@@ -8535,6 +8760,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 62.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 4,
@@ -8547,6 +8774,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.7,
@@ -8554,7 +8783,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -8987,7 +9218,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -9014,6 +9250,8 @@
 							"partidos_perdidos_de_local": 4,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 50,
 							"---||---": 0,
 							"goles_de_visitante": 6,
 							"promedio_de_goles_de_visitante": 0.9,
@@ -9022,6 +9260,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 42.9,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -9034,6 +9274,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 0,
 							"ultimos_promedio_de_goles_de_visitante": 0,
@@ -9041,7 +9283,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 0
+							"ultimos_partidos_con_goles_de_visitante": 0,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -9425,6 +9669,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 0,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 11,
 							"promedio_de_goles_de_visitante": 1.2,
@@ -9433,6 +9679,8 @@
 							"partidos_perdidos_de_visitante": 5,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 44.4,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -9445,6 +9693,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 6,
 							"ultimos_promedio_de_goles_de_visitante": 2,
@@ -9452,7 +9702,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -9838,7 +10090,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": true,
 						"acceptancePercentage": 0.75,
-						"warnings": [{ "description": "Ambos equipos son destacados" }],
+						"warnings": [
+							{ "description": "Ambos equipos son destacados" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -9893,7 +10148,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -9920,6 +10180,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 13,
 							"promedio_de_goles_de_visitante": 1.6,
@@ -9928,6 +10190,8 @@
 							"partidos_perdidos_de_visitante": 0,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 8,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 100,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -9940,6 +10204,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -9947,7 +10213,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -10331,6 +10599,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 87.5,
 							"---||---": 0,
 							"goles_de_visitante": 19,
 							"promedio_de_goles_de_visitante": 2.7,
@@ -10339,6 +10609,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 57.1,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 5,
@@ -10351,6 +10623,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 8,
 							"ultimos_promedio_de_goles_de_visitante": 2.7,
@@ -10358,7 +10632,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -10744,7 +11020,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": true,
 						"acceptancePercentage": 0.75,
-						"warnings": [{ "description": "Ambos equipos son destacados" }],
+						"warnings": [
+							{ "description": "Ambos equipos son destacados" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -10799,7 +11078,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -10826,6 +11110,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 0,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 17,
 							"promedio_de_goles_de_visitante": 1.9,
@@ -10834,6 +11120,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 9,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 66.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 7,
@@ -10846,6 +11134,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 7,
 							"ultimos_promedio_de_goles_de_visitante": 2.3,
@@ -10853,7 +11143,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -11237,6 +11529,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 8,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 87.5,
 							"---||---": 0,
 							"goles_de_visitante": 8,
 							"promedio_de_goles_de_visitante": 1.1,
@@ -11245,6 +11539,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 57.1,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 9,
@@ -11257,6 +11553,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -11264,7 +11562,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -12126,7 +12426,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0.15,
-						"warnings": [{ "description": "Ambos equipos son destacados" }],
+						"warnings": [
+							{ "description": "Ambos equipos son destacados" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -12171,8 +12474,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -12181,7 +12484,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -12208,6 +12516,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 85.7,
 							"---||---": 0,
 							"goles_de_visitante": 9,
 							"promedio_de_goles_de_visitante": 1.1,
@@ -12216,6 +12526,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 75,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 4,
@@ -12228,6 +12540,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -12235,7 +12549,9 @@
 							"ultimos_partidos_ganados_de_visitante": 3,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -12619,6 +12935,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 0,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 85.7,
 							"---||---": 0,
 							"goles_de_visitante": 16,
 							"promedio_de_goles_de_visitante": 2,
@@ -12627,6 +12945,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 4,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 75,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -12639,6 +12959,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 9,
 							"ultimos_promedio_de_goles_de_visitante": 3,
@@ -12646,7 +12968,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -13024,7 +13348,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0.15,
-						"warnings": [{ "description": "Ambos equipos son destacados" }],
+						"warnings": [
+							{ "description": "Ambos equipos son destacados" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -13069,8 +13396,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -13079,7 +13406,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -13106,6 +13438,8 @@
 							"partidos_perdidos_de_local": 4,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 55.6,
 							"---||---": 0,
 							"goles_de_visitante": 13,
 							"promedio_de_goles_de_visitante": 2.2,
@@ -13114,6 +13448,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 66.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -13126,6 +13462,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 6,
 							"ultimos_promedio_de_goles_de_visitante": 2,
@@ -13133,7 +13471,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -13517,6 +13857,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 13,
 							"promedio_de_goles_de_visitante": 1.4,
@@ -13525,6 +13867,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 77.8,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 8,
@@ -13537,6 +13881,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -13544,7 +13890,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -14220,7 +14568,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -14247,6 +14600,8 @@
 							"partidos_perdidos_de_local": 3,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 57.1,
 							"---||---": 0,
 							"goles_de_visitante": 7,
 							"promedio_de_goles_de_visitante": 0.9,
@@ -14255,6 +14610,8 @@
 							"partidos_perdidos_de_visitante": 6,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 25,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 2,
@@ -14267,6 +14624,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -14274,7 +14633,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -14658,6 +15019,8 @@
 							"partidos_perdidos_de_local": 3,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 62.5,
 							"---||---": 0,
 							"goles_de_visitante": 5,
 							"promedio_de_goles_de_visitante": 0.7,
@@ -14666,6 +15029,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 42.9,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 4,
@@ -14678,6 +15043,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -14685,7 +15052,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 3,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 0
 						},
 						"matches": [
 							{
@@ -15063,7 +15432,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0.3,
-						"warnings": [{ "description": "Ambos equipos son destacados" }],
+						"warnings": [
+							{ "description": "Ambos equipos son destacados" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -15108,8 +15480,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -15118,7 +15490,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -15145,6 +15522,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 71.4,
 							"---||---": 0,
 							"goles_de_visitante": 12,
 							"promedio_de_goles_de_visitante": 1.5,
@@ -15153,6 +15532,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 62.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 1,
@@ -15165,6 +15546,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -15172,7 +15555,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -15556,6 +15941,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 85.7,
 							"---||---": 0,
 							"goles_de_visitante": 10,
 							"promedio_de_goles_de_visitante": 1.3,
@@ -15564,6 +15951,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 4,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 87.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -15576,6 +15965,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 6,
 							"ultimos_promedio_de_goles_de_visitante": 2,
@@ -15583,7 +15974,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -15961,7 +16354,7 @@
 						"name": "Goles por equipo local",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
-						"warnings": [],
+						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -16007,7 +16400,7 @@
 						"id": "GPP",
 						"name": "Goles por partido",
 						"recommendable": false,
-						"acceptancePercentage": 0,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -16016,7 +16409,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -16043,6 +16441,8 @@
 							"partidos_perdidos_de_local": 3,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 57.1,
 							"---||---": 0,
 							"goles_de_visitante": 8,
 							"promedio_de_goles_de_visitante": 1,
@@ -16051,6 +16451,8 @@
 							"partidos_perdidos_de_visitante": 6,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 25,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 5,
@@ -16063,6 +16465,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.7,
@@ -16070,7 +16474,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -16454,6 +16860,8 @@
 							"partidos_perdidos_de_local": 4,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 50,
 							"---||---": 0,
 							"goles_de_visitante": 13,
 							"promedio_de_goles_de_visitante": 1.9,
@@ -16462,6 +16870,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 4,
@@ -16474,6 +16884,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 8,
 							"ultimos_promedio_de_goles_de_visitante": 2.7,
@@ -16481,7 +16893,9 @@
 							"ultimos_partidos_ganados_de_visitante": 3,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -16840,6 +17254,2373 @@
 										"score": 0,
 										"winner": false,
 										"position": 8,
+										"featured": false
+									}
+								}
+							}
+						]
+					}
+				}
+			}
+		]
+	},
+	{
+		"name": "Copa Colombia",
+		"country": "Colombia",
+		"flag": "🇨🇴",
+		"standings": [
+			{
+				"teamId": 1131,
+				"teamName": "Bucaramanga",
+				"points": 38,
+				"stats": {
+					"goalsDiff": 14,
+					"played": 19,
+					"win": 11,
+					"draw": 5,
+					"lose": 3,
+					"goals": { "for": 24, "against": 10 }
+				}
+			},
+			{
+				"teamId": 1142,
+				"teamName": "Deportes Tolima",
+				"points": 38,
+				"stats": {
+					"goalsDiff": 13,
+					"played": 19,
+					"win": 11,
+					"draw": 5,
+					"lose": 3,
+					"goals": { "for": 31, "against": 18 }
+				}
+			},
+			{
+				"teamId": 1462,
+				"teamName": "Deportivo Pereira",
+				"points": 34,
+				"stats": {
+					"goalsDiff": 10,
+					"played": 19,
+					"win": 10,
+					"draw": 4,
+					"lose": 5,
+					"goals": { "for": 28, "against": 18 }
+				}
+			},
+			{
+				"teamId": 1139,
+				"teamName": "Santa Fe",
+				"points": 34,
+				"stats": {
+					"goalsDiff": 10,
+					"played": 19,
+					"win": 10,
+					"draw": 4,
+					"lose": 5,
+					"goals": { "for": 22, "against": 12 }
+				}
+			},
+			{
+				"teamId": 1134,
+				"teamName": "La Equidad",
+				"points": 33,
+				"stats": {
+					"goalsDiff": 8,
+					"played": 19,
+					"win": 9,
+					"draw": 6,
+					"lose": 4,
+					"goals": { "for": 22, "against": 14 }
+				}
+			},
+			{
+				"teamId": 1125,
+				"teamName": "Millonarios",
+				"points": 31,
+				"stats": {
+					"goalsDiff": 8,
+					"played": 19,
+					"win": 9,
+					"draw": 4,
+					"lose": 6,
+					"goals": { "for": 28, "against": 20 }
+				}
+			},
+			{
+				"teamId": 1135,
+				"teamName": "Junior",
+				"points": 29,
+				"stats": {
+					"goalsDiff": 3,
+					"played": 19,
+					"win": 8,
+					"draw": 5,
+					"lose": 6,
+					"goals": { "for": 24, "against": 21 }
+				}
+			},
+			{
+				"teamId": 1136,
+				"teamName": "Once Caldas",
+				"points": 29,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 19,
+					"win": 8,
+					"draw": 5,
+					"lose": 6,
+					"goals": { "for": 16, "against": 16 }
+				}
+			},
+			{
+				"teamId": 1128,
+				"teamName": "Independiente Medellin",
+				"points": 29,
+				"stats": {
+					"goalsDiff": -9,
+					"played": 19,
+					"win": 8,
+					"draw": 5,
+					"lose": 6,
+					"goals": { "for": 22, "against": 31 }
+				}
+			},
+			{
+				"teamId": 1138,
+				"teamName": "America de Cali",
+				"points": 25,
+				"stats": {
+					"goalsDiff": 6,
+					"played": 19,
+					"win": 6,
+					"draw": 7,
+					"lose": 6,
+					"goals": { "for": 22, "against": 16 }
+				}
+			},
+			{
+				"teamId": 1144,
+				"teamName": "Rionegro Aguilas",
+				"points": 25,
+				"stats": {
+					"goalsDiff": 1,
+					"played": 19,
+					"win": 7,
+					"draw": 4,
+					"lose": 8,
+					"goals": { "for": 20, "against": 19 }
+				}
+			},
+			{
+				"teamId": 1137,
+				"teamName": "Atletico Nacional",
+				"points": 24,
+				"stats": {
+					"goalsDiff": 1,
+					"played": 19,
+					"win": 6,
+					"draw": 6,
+					"lose": 7,
+					"goals": { "for": 21, "against": 20 }
+				}
+			},
+			{
+				"teamId": 1147,
+				"teamName": "Fortaleza FC",
+				"points": 24,
+				"stats": {
+					"goalsDiff": -2,
+					"played": 19,
+					"win": 6,
+					"draw": 6,
+					"lose": 7,
+					"goals": { "for": 18, "against": 20 }
+				}
+			},
+			{
+				"teamId": 1133,
+				"teamName": "Jaguares",
+				"points": 22,
+				"stats": {
+					"goalsDiff": -3,
+					"played": 19,
+					"win": 5,
+					"draw": 7,
+					"lose": 7,
+					"goals": { "for": 17, "against": 20 }
+				}
+			},
+			{
+				"teamId": 1127,
+				"teamName": "Deportivo Cali",
+				"points": 21,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 19,
+					"win": 5,
+					"draw": 6,
+					"lose": 8,
+					"goals": { "for": 24, "against": 24 }
+				}
+			},
+			{
+				"teamId": 1126,
+				"teamName": "Deportivo Pasto",
+				"points": 19,
+				"stats": {
+					"goalsDiff": -6,
+					"played": 19,
+					"win": 5,
+					"draw": 4,
+					"lose": 10,
+					"goals": { "for": 15, "against": 21 }
+				}
+			},
+			{
+				"teamId": 1132,
+				"teamName": "Chico",
+				"points": 18,
+				"stats": {
+					"goalsDiff": -13,
+					"played": 19,
+					"win": 5,
+					"draw": 3,
+					"lose": 11,
+					"goals": { "for": 22, "against": 35 }
+				}
+			},
+			{
+				"teamId": 1129,
+				"teamName": "Envigado",
+				"points": 16,
+				"stats": {
+					"goalsDiff": -10,
+					"played": 19,
+					"win": 3,
+					"draw": 7,
+					"lose": 9,
+					"goals": { "for": 15, "against": 25 }
+				}
+			},
+			{
+				"teamId": 1141,
+				"teamName": "Alianza Petrolera",
+				"points": 16,
+				"stats": {
+					"goalsDiff": -14,
+					"played": 19,
+					"win": 4,
+					"draw": 4,
+					"lose": 11,
+					"goals": { "for": 15, "against": 29 }
+				}
+			},
+			{
+				"teamId": 1140,
+				"teamName": "Patriotas",
+				"points": 15,
+				"stats": {
+					"goalsDiff": -17,
+					"played": 19,
+					"win": 4,
+					"draw": 3,
+					"lose": 12,
+					"goals": { "for": 8, "against": 25 }
+				}
+			},
+			{
+				"teamId": 1141,
+				"teamName": "Alianza Petrolera",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1138,
+				"teamName": "America de Cali",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1131,
+				"teamName": "Bucaramanga",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1137,
+				"teamName": "Atletico Nacional",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1132,
+				"teamName": "Chico",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1142,
+				"teamName": "Deportes Tolima",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1127,
+				"teamName": "Deportivo Cali",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1126,
+				"teamName": "Deportivo Pasto",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1462,
+				"teamName": "Deportivo Pereira",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1129,
+				"teamName": "Envigado",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1147,
+				"teamName": "Fortaleza FC",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1128,
+				"teamName": "Independiente Medellin",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1139,
+				"teamName": "Santa Fe",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1133,
+				"teamName": "Jaguares",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1135,
+				"teamName": "Junior",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1134,
+				"teamName": "La Equidad",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1125,
+				"teamName": "Millonarios",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1136,
+				"teamName": "Once Caldas",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1140,
+				"teamName": "Patriotas",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1144,
+				"teamName": "Rionegro Aguilas",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			}
+		],
+		"matches": [
+			{
+				"id": "2024-05-08-Envigado-Real Cartagena",
+				"fullDate": "2024-05-08T16:00",
+				"date": "2024-05-08",
+				"hour": "16:00",
+				"predictions": [
+					{
+						"id": "GEL",
+						"name": "Goles por equipo local",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"check": "❌",
+									"weight": 0.6
+								},
+								{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
+								{
+									"description": "El local está en las primeras 6 posiciones de la tabla",
+									"check": "❌",
+									"weight": 0.15
+								},
+								{
+									"description": "El local está al menos 5 posiciones mas arriba que el rival",
+									"check": "❌",
+									"weight": 0.1
+								},
+								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
+								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
+								{
+									"description": "Promedio de goles de visitante >= 1.5",
+									"check": "✅",
+									"weight": 0
+								},
+								{
+									"description": "Ha marcado en los últimos 3 partidos de local",
+									"check": "✅",
+									"weight": 0
+								},
+								{
+									"description": "No ha perdido los últimos 3 partidos de local",
+									"check": "✅",
+									"weight": 0
+								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GPP",
+						"name": "Goles por partido",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "❌",
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
+								}
+							],
+							"away": []
+						}
+					}
+				],
+				"teams": {
+					"home": {
+						"id": 1129,
+						"name": "Envigado",
+						"score": 2,
+						"winner": true,
+						"position": 18,
+						"featured": false,
+						"stats": {
+							"total_de_partidos": 15,
+							"total_de_goles": 16,
+							"promedio_de_goles": 1.1,
+							"---|---": 0,
+							"goles_de_local": 9,
+							"promedio_de_goles_de_local": 1,
+							"partidos_de_local": 9,
+							"partidos_ganados_de_local": 3,
+							"partidos_perdidos_de_local": 3,
+							"partidos_empatados_de_local": 3,
+							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 66.7,
+							"---||---": 0,
+							"goles_de_visitante": 7,
+							"promedio_de_goles_de_visitante": 1.2,
+							"partidos_de_visitante": 6,
+							"partidos_ganados_de_visitante": 2,
+							"partidos_perdidos_de_visitante": 3,
+							"partidos_empatados_de_visitante": 1,
+							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 50,
+							"---|||---": 0,
+							"ultimos_total_de_partidos": 3,
+							"ultimos_total_de_goles": 3,
+							"ultimos_promedio_de_goles": 1,
+							"---||||---": 0,
+							"ultimos_goles_de_local": 3,
+							"ultimos_promedio_de_goles_de_local": 1,
+							"ultimos_partidos_de_local": 3,
+							"ultimos_partidos_ganados_de_local": 1,
+							"ultimos_partidos_perdidos_de_local": 2,
+							"ultimos_partidos_empatados_de_local": 0,
+							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
+							"---|||||---": 0,
+							"ultimos_goles_de_visitante": 4,
+							"ultimos_promedio_de_goles_de_visitante": 1.3,
+							"ultimos_partidos_de_visitante": 3,
+							"ultimos_partidos_ganados_de_visitante": 1,
+							"ultimos_partidos_perdidos_de_visitante": 1,
+							"ultimos_partidos_empatados_de_visitante": 1,
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+						},
+						"matches": [
+							{
+								"id": "2024-04-28-Envigado-Independiente Medellin",
+								"fullDate": "2024-04-28T17:00",
+								"date": "2024-04-28",
+								"hour": "17:00",
+								"teams": {
+									"home": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 0,
+										"winner": false,
+										"position": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 1128,
+										"name": "Independiente Medellin",
+										"score": 1,
+										"winner": true,
+										"position": 9,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-25-Quindio-Envigado",
+								"fullDate": "2024-04-25T19:00",
+								"date": "2024-04-25",
+								"hour": "19:00",
+								"teams": {
+									"home": {
+										"id": 1461,
+										"name": "Quindio",
+										"score": 2,
+										"winner": false,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 3,
+										"winner": true,
+										"position": 18,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-21-Deportivo Cali-Envigado",
+								"fullDate": "2024-04-21T16:10",
+								"date": "2024-04-21",
+								"hour": "16:10",
+								"teams": {
+									"home": {
+										"id": 1127,
+										"name": "Deportivo Cali",
+										"score": 2,
+										"winner": true,
+										"position": 15,
+										"featured": false
+									},
+									"away": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 0,
+										"winner": false,
+										"position": 18,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-16-Envigado-Deportes Tolima",
+								"fullDate": "2024-04-16T16:00",
+								"date": "2024-04-16",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 0,
+										"winner": false,
+										"position": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 1142,
+										"name": "Deportes Tolima",
+										"score": 2,
+										"winner": true,
+										"position": 2,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-14-Junior-Envigado",
+								"fullDate": "2024-04-14T18:20",
+								"date": "2024-04-14",
+								"hour": "18:20",
+								"teams": {
+									"home": {
+										"id": 1135,
+										"name": "Junior",
+										"score": 1,
+										"winner": null,
+										"position": 7,
+										"featured": true
+									},
+									"away": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 1,
+										"winner": null,
+										"position": 18,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-10-Envigado-Quindio",
+								"fullDate": "2024-04-10T16:00",
+								"date": "2024-04-10",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 3,
+										"winner": true,
+										"position": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 1461,
+										"name": "Quindio",
+										"score": 2,
+										"winner": false,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-05-Envigado-Deportivo Pereira",
+								"fullDate": "2024-04-05T16:00",
+								"date": "2024-04-05",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 1,
+										"winner": null,
+										"position": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 1,
+										"winner": null,
+										"position": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-30-Envigado-Atletico Nacional",
+								"fullDate": "2024-03-30T14:00",
+								"date": "2024-03-30",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 0,
+										"winner": false,
+										"position": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 1137,
+										"name": "Atletico Nacional",
+										"score": 1,
+										"winner": true,
+										"position": 12,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-24-Bucaramanga-Envigado",
+								"fullDate": "2024-03-24T16:00",
+								"date": "2024-03-24",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1131,
+										"name": "Bucaramanga",
+										"score": 3,
+										"winner": true,
+										"position": 1,
+										"featured": true
+									},
+									"away": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 1,
+										"winner": false,
+										"position": 18,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-20-Orsomarso-Envigado",
+								"fullDate": "2024-03-20T16:00",
+								"date": "2024-03-20",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1469,
+										"name": "Orsomarso",
+										"score": 0,
+										"winner": false,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 1,
+										"winner": true,
+										"position": 18,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-17-Envigado-Millonarios",
+								"fullDate": "2024-03-17T14:00",
+								"date": "2024-03-17",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 1,
+										"winner": null,
+										"position": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 1125,
+										"name": "Millonarios",
+										"score": 1,
+										"winner": null,
+										"position": 6,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-10-Once Caldas-Envigado",
+								"fullDate": "2024-03-10T14:00",
+								"date": "2024-03-10",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 1136,
+										"name": "Once Caldas",
+										"score": 2,
+										"winner": true,
+										"position": 8,
+										"featured": false
+									},
+									"away": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 1,
+										"winner": false,
+										"position": 18,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-05-Envigado-Orsomarso",
+								"fullDate": "2024-03-05T16:00",
+								"date": "2024-03-05",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 1,
+										"winner": true,
+										"position": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 1469,
+										"name": "Orsomarso",
+										"score": 0,
+										"winner": false,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-01-Envigado-Jaguares",
+								"fullDate": "2024-03-01T16:00",
+								"date": "2024-03-01",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 2,
+										"winner": null,
+										"position": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 1133,
+										"name": "Jaguares",
+										"score": 2,
+										"winner": null,
+										"position": 14,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-27-Envigado-Patriotas",
+								"fullDate": "2024-02-27T16:00",
+								"date": "2024-02-27",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 1,
+										"winner": true,
+										"position": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 1140,
+										"name": "Patriotas",
+										"score": 0,
+										"winner": false,
+										"position": 20,
+										"featured": false
+									}
+								}
+							}
+						]
+					},
+					"away": {
+						"id": 1459,
+						"name": "Real Cartagena",
+						"score": 0,
+						"winner": false,
+						"position": null,
+						"featured": false,
+						"stats": {
+							"total_de_partidos": 15,
+							"total_de_goles": 21,
+							"promedio_de_goles": 1.4,
+							"---|---": 0,
+							"goles_de_local": 16,
+							"promedio_de_goles_de_local": 2,
+							"partidos_de_local": 8,
+							"partidos_ganados_de_local": 5,
+							"partidos_perdidos_de_local": 1,
+							"partidos_empatados_de_local": 2,
+							"partidos_con_goles_de_local": 8,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 87.5,
+							"---||---": 0,
+							"goles_de_visitante": 5,
+							"promedio_de_goles_de_visitante": 0.7,
+							"partidos_de_visitante": 7,
+							"partidos_ganados_de_visitante": 2,
+							"partidos_perdidos_de_visitante": 2,
+							"partidos_empatados_de_visitante": 3,
+							"partidos_con_goles_de_visitante": 3,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
+							"---|||---": 0,
+							"ultimos_total_de_partidos": 3,
+							"ultimos_total_de_goles": 5,
+							"ultimos_promedio_de_goles": 1.7,
+							"---||||---": 0,
+							"ultimos_goles_de_local": 7,
+							"ultimos_promedio_de_goles_de_local": 2.3,
+							"ultimos_partidos_de_local": 3,
+							"ultimos_partidos_ganados_de_local": 2,
+							"ultimos_partidos_perdidos_de_local": 1,
+							"ultimos_partidos_empatados_de_local": 0,
+							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
+							"---|||||---": 0,
+							"ultimos_goles_de_visitante": 1,
+							"ultimos_promedio_de_goles_de_visitante": 0.3,
+							"ultimos_partidos_de_visitante": 3,
+							"ultimos_partidos_ganados_de_visitante": 1,
+							"ultimos_partidos_perdidos_de_visitante": 1,
+							"ultimos_partidos_empatados_de_visitante": 1,
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+						},
+						"matches": [
+							{
+								"id": "2024-05-05-Real Cartagena-Orsomarso",
+								"fullDate": "2024-05-05T15:00",
+								"date": "2024-05-05",
+								"hour": "15:00",
+								"teams": {
+									"home": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 1,
+										"winner": false,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1469,
+										"name": "Orsomarso",
+										"score": 2,
+										"winner": true,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-05-02-Barranquilla-Real Cartagena",
+								"fullDate": "2024-05-02T15:30",
+								"date": "2024-05-02",
+								"hour": "15:30",
+								"teams": {
+									"home": {
+										"id": 1466,
+										"name": "Barranquilla",
+										"score": 0,
+										"winner": false,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 1,
+										"winner": true,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-28-Real Cartagena-Real Santander",
+								"fullDate": "2024-04-28T15:30",
+								"date": "2024-04-28",
+								"hour": "15:30",
+								"teams": {
+									"home": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 3,
+										"winner": true,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1463,
+										"name": "Real Santander",
+										"score": 1,
+										"winner": false,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-24-Real Cartagena-Huila",
+								"fullDate": "2024-04-24T15:30",
+								"date": "2024-04-24",
+								"hour": "15:30",
+								"teams": {
+									"home": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 3,
+										"winner": true,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1130,
+										"name": "Huila",
+										"score": 1,
+										"winner": false,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-20-Leones FC-Real Cartagena",
+								"fullDate": "2024-04-20T15:00",
+								"date": "2024-04-20",
+								"hour": "15:00",
+								"teams": {
+									"home": {
+										"id": 1143,
+										"name": "Leones FC",
+										"score": 0,
+										"winner": null,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 0,
+										"winner": null,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-14-Real Cartagena-Real Soacha",
+								"fullDate": "2024-04-14T16:00",
+								"date": "2024-04-14",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 2,
+										"winner": true,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 22099,
+										"name": "Real Soacha",
+										"score": 1,
+										"winner": false,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-10-Huila-Real Cartagena",
+								"fullDate": "2024-04-10T16:00",
+								"date": "2024-04-10",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1130,
+										"name": "Huila",
+										"score": 2,
+										"winner": true,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 0,
+										"winner": false,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-04-Depor FC-Real Cartagena",
+								"fullDate": "2024-04-04T15:30",
+								"date": "2024-04-04",
+								"hour": "15:30",
+								"teams": {
+									"home": {
+										"id": 1468,
+										"name": "Depor FC",
+										"score": 0,
+										"winner": false,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 2,
+										"winner": true,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-26-Real Cartagena-Barranquilla",
+								"fullDate": "2024-03-26T16:00",
+								"date": "2024-03-26",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 1,
+										"winner": null,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1466,
+										"name": "Barranquilla",
+										"score": 1,
+										"winner": null,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-19-Quindio-Real Cartagena",
+								"fullDate": "2024-03-19T19:30",
+								"date": "2024-03-19",
+								"hour": "19:30",
+								"teams": {
+									"home": {
+										"id": 1461,
+										"name": "Quindio",
+										"score": 1,
+										"winner": true,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 0,
+										"winner": false,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-11-Union Magdalena-Real Cartagena",
+								"fullDate": "2024-03-11T18:00",
+								"date": "2024-03-11",
+								"hour": "18:00",
+								"teams": {
+									"home": {
+										"id": 1465,
+										"name": "Union Magdalena",
+										"score": 2,
+										"winner": null,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 2,
+										"winner": null,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-03-Real Cartagena-Popayan",
+								"fullDate": "2024-03-03T15:30",
+								"date": "2024-03-03",
+								"hour": "15:30",
+								"teams": {
+									"home": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 2,
+										"winner": true,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1460,
+										"name": "Popayan",
+										"score": 0,
+										"winner": false,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-28-Llaneros-Real Cartagena",
+								"fullDate": "2024-02-28T18:00",
+								"date": "2024-02-28",
+								"hour": "18:00",
+								"teams": {
+									"home": {
+										"id": 1464,
+										"name": "Llaneros",
+										"score": 0,
+										"winner": null,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 0,
+										"winner": null,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-23-Real Cartagena-Bogota FC",
+								"fullDate": "2024-02-23T15:30",
+								"date": "2024-02-23",
+								"hour": "15:30",
+								"teams": {
+									"home": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 3,
+										"winner": true,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1458,
+										"name": "Bogota FC",
+										"score": 0,
+										"winner": false,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-17-Real Cartagena-Cucuta",
+								"fullDate": "2024-02-17T16:00",
+								"date": "2024-02-17",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1459,
+										"name": "Real Cartagena",
+										"score": 1,
+										"winner": null,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1470,
+										"name": "Cucuta",
+										"score": 1,
+										"winner": null,
+										"position": null,
+										"featured": false
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			{
+				"id": "2024-05-08-Deportivo Pereira-Fortaleza FC",
+				"fullDate": "2024-05-08T19:30",
+				"date": "2024-05-08",
+				"hour": "19:30",
+				"predictions": [
+					{
+						"id": "GEL",
+						"name": "Goles por equipo local",
+						"recommendable": false,
+						"acceptancePercentage": 0.4,
+						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"check": "❌",
+									"weight": 0.6
+								},
+								{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.15 },
+								{
+									"description": "El local está en las primeras 6 posiciones de la tabla",
+									"check": "✅",
+									"weight": 0.15
+								},
+								{
+									"description": "El local está al menos 5 posiciones mas arriba que el rival",
+									"check": "✅",
+									"weight": 0.1
+								},
+								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
+								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
+								{
+									"description": "Promedio de goles de visitante >= 1.5",
+									"check": "✅",
+									"weight": 0
+								},
+								{
+									"description": "Ha marcado en los últimos 3 partidos de local",
+									"check": "✅",
+									"weight": 0
+								},
+								{
+									"description": "No ha perdido los últimos 3 partidos de local",
+									"check": "✅",
+									"weight": 0
+								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GPP",
+						"name": "Goles por partido",
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
+						"warnings": [],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
+								}
+							],
+							"away": []
+						}
+					}
+				],
+				"teams": {
+					"home": {
+						"id": 1462,
+						"name": "Deportivo Pereira",
+						"score": null,
+						"winner": null,
+						"position": 3,
+						"featured": true,
+						"stats": {
+							"total_de_partidos": 15,
+							"total_de_goles": 18,
+							"promedio_de_goles": 1.2,
+							"---|---": 0,
+							"goles_de_local": 10,
+							"promedio_de_goles_de_local": 1.3,
+							"partidos_de_local": 8,
+							"partidos_ganados_de_local": 4,
+							"partidos_perdidos_de_local": 2,
+							"partidos_empatados_de_local": 2,
+							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 75,
+							"---||---": 0,
+							"goles_de_visitante": 8,
+							"promedio_de_goles_de_visitante": 1.1,
+							"partidos_de_visitante": 7,
+							"partidos_ganados_de_visitante": 3,
+							"partidos_perdidos_de_visitante": 1,
+							"partidos_empatados_de_visitante": 3,
+							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 85.7,
+							"---|||---": 0,
+							"ultimos_total_de_partidos": 3,
+							"ultimos_total_de_goles": 4,
+							"ultimos_promedio_de_goles": 1.3,
+							"---||||---": 0,
+							"ultimos_goles_de_local": 2,
+							"ultimos_promedio_de_goles_de_local": 0.7,
+							"ultimos_partidos_de_local": 3,
+							"ultimos_partidos_ganados_de_local": 1,
+							"ultimos_partidos_perdidos_de_local": 1,
+							"ultimos_partidos_empatados_de_local": 1,
+							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
+							"---|||||---": 0,
+							"ultimos_goles_de_visitante": 4,
+							"ultimos_promedio_de_goles_de_visitante": 1.3,
+							"ultimos_partidos_de_visitante": 3,
+							"ultimos_partidos_ganados_de_visitante": 2,
+							"ultimos_partidos_perdidos_de_visitante": 0,
+							"ultimos_partidos_empatados_de_visitante": 1,
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
+						},
+						"matches": [
+							{
+								"id": "2024-05-04-Deportivo Pereira-Bucaramanga",
+								"fullDate": "2024-05-04T17:00",
+								"date": "2024-05-04",
+								"hour": "17:00",
+								"teams": {
+									"home": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 1,
+										"winner": true,
+										"position": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 1131,
+										"name": "Bucaramanga",
+										"score": 0,
+										"winner": false,
+										"position": 1,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-28-La Equidad-Deportivo Pereira",
+								"fullDate": "2024-04-28T17:00",
+								"date": "2024-04-28",
+								"hour": "17:00",
+								"teams": {
+									"home": {
+										"id": 1134,
+										"name": "La Equidad",
+										"score": 0,
+										"winner": false,
+										"position": 5,
+										"featured": true
+									},
+									"away": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 2,
+										"winner": true,
+										"position": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-24-Leones FC-Deportivo Pereira",
+								"fullDate": "2024-04-24T19:00",
+								"date": "2024-04-24",
+								"hour": "19:00",
+								"teams": {
+									"home": {
+										"id": 1143,
+										"name": "Leones FC",
+										"score": 1,
+										"winner": null,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 1,
+										"winner": null,
+										"position": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-20-Deportivo Pereira-Millonarios",
+								"fullDate": "2024-04-20T16:00",
+								"date": "2024-04-20",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 1,
+										"winner": false,
+										"position": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 1125,
+										"name": "Millonarios",
+										"score": 2,
+										"winner": true,
+										"position": 6,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-17-Atletico Nacional-Deportivo Pereira",
+								"fullDate": "2024-04-17T20:20",
+								"date": "2024-04-17",
+								"hour": "20:20",
+								"teams": {
+									"home": {
+										"id": 1137,
+										"name": "Atletico Nacional",
+										"score": 0,
+										"winner": false,
+										"position": 12,
+										"featured": false
+									},
+									"away": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 1,
+										"winner": true,
+										"position": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-13-Deportivo Pereira-Jaguares",
+								"fullDate": "2024-04-13T20:30",
+								"date": "2024-04-13",
+								"hour": "20:30",
+								"teams": {
+									"home": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 0,
+										"winner": null,
+										"position": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 1133,
+										"name": "Jaguares",
+										"score": 0,
+										"winner": null,
+										"position": 14,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-09-Deportivo Pereira-Leones FC",
+								"fullDate": "2024-04-09T20:00",
+								"date": "2024-04-09",
+								"hour": "20:00",
+								"teams": {
+									"home": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 1,
+										"winner": null,
+										"position": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 1143,
+										"name": "Leones FC",
+										"score": 1,
+										"winner": null,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-05-Envigado-Deportivo Pereira",
+								"fullDate": "2024-04-05T16:00",
+								"date": "2024-04-05",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1129,
+										"name": "Envigado",
+										"score": 1,
+										"winner": null,
+										"position": 18,
+										"featured": false
+									},
+									"away": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 1,
+										"winner": null,
+										"position": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-31-Deportivo Pereira-Bucaramanga",
+								"fullDate": "2024-03-31T16:10",
+								"date": "2024-03-31",
+								"hour": "16:10",
+								"teams": {
+									"home": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 1,
+										"winner": false,
+										"position": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 1131,
+										"name": "Bucaramanga",
+										"score": 2,
+										"winner": true,
+										"position": 1,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-23-Deportes Tolima-Deportivo Pereira",
+								"fullDate": "2024-03-23T16:10",
+								"date": "2024-03-23",
+								"hour": "16:10",
+								"teams": {
+									"home": {
+										"id": 1142,
+										"name": "Deportes Tolima",
+										"score": 2,
+										"winner": true,
+										"position": 2,
+										"featured": true
+									},
+									"away": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 1,
+										"winner": false,
+										"position": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-20-Real Soacha-Deportivo Pereira",
+								"fullDate": "2024-03-20T18:00",
+								"date": "2024-03-20",
+								"hour": "18:00",
+								"teams": {
+									"home": {
+										"id": 22099,
+										"name": "Real Soacha",
+										"score": 0,
+										"winner": null,
+										"position": null,
+										"featured": false
+									},
+									"away": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 0,
+										"winner": null,
+										"position": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-17-Deportivo Pereira-Rionegro Aguilas",
+								"fullDate": "2024-03-17T20:30",
+								"date": "2024-03-17",
+								"hour": "20:30",
+								"teams": {
+									"home": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 2,
+										"winner": true,
+										"position": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 1144,
+										"name": "Rionegro Aguilas",
+										"score": 1,
+										"winner": false,
+										"position": 11,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-10-Patriotas-Deportivo Pereira",
+								"fullDate": "2024-03-10T20:30",
+								"date": "2024-03-10",
+								"hour": "20:30",
+								"teams": {
+									"home": {
+										"id": 1140,
+										"name": "Patriotas",
+										"score": 0,
+										"winner": false,
+										"position": 20,
+										"featured": false
+									},
+									"away": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 2,
+										"winner": true,
+										"position": 3,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-07-Deportivo Pereira-Real Soacha",
+								"fullDate": "2024-03-07T20:00",
+								"date": "2024-03-07",
+								"hour": "20:00",
+								"teams": {
+									"home": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 2,
+										"winner": true,
+										"position": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 22099,
+										"name": "Real Soacha",
+										"score": 0,
+										"winner": false,
+										"position": null,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-02-Deportivo Pereira-America de Cali",
+								"fullDate": "2024-03-02T18:10",
+								"date": "2024-03-02",
+								"hour": "18:10",
+								"teams": {
+									"home": {
+										"id": 1462,
+										"name": "Deportivo Pereira",
+										"score": 2,
+										"winner": true,
+										"position": 3,
+										"featured": true
+									},
+									"away": {
+										"id": 1138,
+										"name": "America de Cali",
+										"score": 0,
+										"winner": false,
+										"position": 10,
+										"featured": false
+									}
+								}
+							}
+						]
+					},
+					"away": {
+						"id": 1147,
+						"name": "Fortaleza FC",
+						"score": null,
+						"winner": null,
+						"position": 13,
+						"featured": false,
+						"stats": {
+							"total_de_partidos": 15,
+							"total_de_goles": 14,
+							"promedio_de_goles": 0.9,
+							"---|---": 0,
+							"goles_de_local": 7,
+							"promedio_de_goles_de_local": 1,
+							"partidos_de_local": 7,
+							"partidos_ganados_de_local": 2,
+							"partidos_perdidos_de_local": 3,
+							"partidos_empatados_de_local": 2,
+							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 57.1,
+							"---||---": 0,
+							"goles_de_visitante": 7,
+							"promedio_de_goles_de_visitante": 0.9,
+							"partidos_de_visitante": 8,
+							"partidos_ganados_de_visitante": 3,
+							"partidos_perdidos_de_visitante": 2,
+							"partidos_empatados_de_visitante": 3,
+							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 75,
+							"---|||---": 0,
+							"ultimos_total_de_partidos": 3,
+							"ultimos_total_de_goles": 2,
+							"ultimos_promedio_de_goles": 0.7,
+							"---||||---": 0,
+							"ultimos_goles_de_local": 4,
+							"ultimos_promedio_de_goles_de_local": 1.3,
+							"ultimos_partidos_de_local": 3,
+							"ultimos_partidos_ganados_de_local": 2,
+							"ultimos_partidos_perdidos_de_local": 1,
+							"ultimos_partidos_empatados_de_local": 0,
+							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
+							"---|||||---": 0,
+							"ultimos_goles_de_visitante": 2,
+							"ultimos_promedio_de_goles_de_visitante": 0.7,
+							"ultimos_partidos_de_visitante": 3,
+							"ultimos_partidos_ganados_de_visitante": 1,
+							"ultimos_partidos_perdidos_de_visitante": 0,
+							"ultimos_partidos_empatados_de_visitante": 2,
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
+						},
+						"matches": [
+							{
+								"id": "2024-04-28-Rionegro Aguilas-Fortaleza FC",
+								"fullDate": "2024-04-28T17:00",
+								"date": "2024-04-28",
+								"hour": "17:00",
+								"teams": {
+									"home": {
+										"id": 1144,
+										"name": "Rionegro Aguilas",
+										"score": 1,
+										"winner": null,
+										"position": 11,
+										"featured": false
+									},
+									"away": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 1,
+										"winner": null,
+										"position": 13,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-25-Once Caldas-Fortaleza FC",
+								"fullDate": "2024-04-25T20:00",
+								"date": "2024-04-25",
+								"hour": "20:00",
+								"teams": {
+									"home": {
+										"id": 1136,
+										"name": "Once Caldas",
+										"score": 0,
+										"winner": false,
+										"position": 8,
+										"featured": false
+									},
+									"away": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 1,
+										"winner": true,
+										"position": 13,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-22-Fortaleza FC-Bucaramanga",
+								"fullDate": "2024-04-22T16:00",
+								"date": "2024-04-22",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 0,
+										"winner": false,
+										"position": 13,
+										"featured": false
+									},
+									"away": {
+										"id": 1131,
+										"name": "Bucaramanga",
+										"score": 2,
+										"winner": true,
+										"position": 1,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-04-18-La Equidad-Fortaleza FC",
+								"fullDate": "2024-04-18T16:00",
+								"date": "2024-04-18",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1134,
+										"name": "La Equidad",
+										"score": 0,
+										"winner": null,
+										"position": 5,
+										"featured": true
+									},
+									"away": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 0,
+										"winner": null,
+										"position": 13,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-13-Fortaleza FC-Once Caldas",
+								"fullDate": "2024-04-13T14:00",
+								"date": "2024-04-13",
+								"hour": "14:00",
+								"teams": {
+									"home": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 2,
+										"winner": true,
+										"position": 13,
+										"featured": false
+									},
+									"away": {
+										"id": 1136,
+										"name": "Once Caldas",
+										"score": 0,
+										"winner": false,
+										"position": 8,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-09-Fortaleza FC-Once Caldas",
+								"fullDate": "2024-04-09T18:00",
+								"date": "2024-04-09",
+								"hour": "18:00",
+								"teams": {
+									"home": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 2,
+										"winner": true,
+										"position": 13,
+										"featured": false
+									},
+									"away": {
+										"id": 1136,
+										"name": "Once Caldas",
+										"score": 1,
+										"winner": false,
+										"position": 8,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-04-05-Atletico Nacional-Fortaleza FC",
+								"fullDate": "2024-04-05T18:10",
+								"date": "2024-04-05",
+								"hour": "18:10",
+								"teams": {
+									"home": {
+										"id": 1137,
+										"name": "Atletico Nacional",
+										"score": 1,
+										"winner": false,
+										"position": 12,
+										"featured": false
+									},
+									"away": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 2,
+										"winner": true,
+										"position": 13,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-30-Fortaleza FC-Millonarios",
+								"fullDate": "2024-03-30T20:30",
+								"date": "2024-03-30",
+								"hour": "20:30",
+								"teams": {
+									"home": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 1,
+										"winner": false,
+										"position": 13,
+										"featured": false
+									},
+									"away": {
+										"id": 1125,
+										"name": "Millonarios",
+										"score": 2,
+										"winner": true,
+										"position": 6,
+										"featured": true
+									}
+								}
+							},
+							{
+								"id": "2024-03-24-Jaguares-Fortaleza FC",
+								"fullDate": "2024-03-24T18:20",
+								"date": "2024-03-24",
+								"hour": "18:20",
+								"teams": {
+									"home": {
+										"id": 1133,
+										"name": "Jaguares",
+										"score": 0,
+										"winner": false,
+										"position": 14,
+										"featured": false
+									},
+									"away": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 1,
+										"winner": true,
+										"position": 13,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-18-Fortaleza FC-America de Cali",
+								"fullDate": "2024-03-18T18:20",
+								"date": "2024-03-18",
+								"hour": "18:20",
+								"teams": {
+									"home": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 0,
+										"winner": null,
+										"position": 13,
+										"featured": false
+									},
+									"away": {
+										"id": 1138,
+										"name": "America de Cali",
+										"score": 0,
+										"winner": null,
+										"position": 10,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-09-Santa Fe-Fortaleza FC",
+								"fullDate": "2024-03-09T16:10",
+								"date": "2024-03-09",
+								"hour": "16:10",
+								"teams": {
+									"home": {
+										"id": 1139,
+										"name": "Santa Fe",
+										"score": 2,
+										"winner": true,
+										"position": 4,
+										"featured": true
+									},
+									"away": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 0,
+										"winner": false,
+										"position": 13,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-03-04-Deportivo Pasto-Fortaleza FC",
+								"fullDate": "2024-03-04T20:10",
+								"date": "2024-03-04",
+								"hour": "20:10",
+								"teams": {
+									"home": {
+										"id": 1126,
+										"name": "Deportivo Pasto",
+										"score": 1,
+										"winner": true,
+										"position": 16,
+										"featured": false
+									},
+									"away": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 0,
+										"winner": false,
+										"position": 13,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-28-Fortaleza FC-Alianza Petrolera",
+								"fullDate": "2024-02-28T15:15",
+								"date": "2024-02-28",
+								"hour": "15:15",
+								"teams": {
+									"home": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 1,
+										"winner": false,
+										"position": 13,
+										"featured": false
+									},
+									"away": {
+										"id": 1141,
+										"name": "Alianza Petrolera",
+										"score": 2,
+										"winner": true,
+										"position": 19,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-23-Fortaleza FC-Chico",
+								"fullDate": "2024-02-23T16:00",
+								"date": "2024-02-23",
+								"hour": "16:00",
+								"teams": {
+									"home": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 1,
+										"winner": null,
+										"position": 13,
+										"featured": false
+									},
+									"away": {
+										"id": 1132,
+										"name": "Chico",
+										"score": 1,
+										"winner": null,
+										"position": 17,
+										"featured": false
+									}
+								}
+							},
+							{
+								"id": "2024-02-17-Independiente Medellin-Fortaleza FC",
+								"fullDate": "2024-02-17T18:05",
+								"date": "2024-02-17",
+								"hour": "18:05",
+								"teams": {
+									"home": {
+										"id": 1128,
+										"name": "Independiente Medellin",
+										"score": 2,
+										"winner": null,
+										"position": 9,
+										"featured": true
+									},
+									"away": {
+										"id": 1147,
+										"name": "Fortaleza FC",
+										"score": 2,
+										"winner": null,
+										"position": 13,
 										"featured": false
 									}
 								}

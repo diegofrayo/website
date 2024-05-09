@@ -515,14 +515,12 @@ function NavigationMenuItems() {
 			>
 				Blog
 			</NavigationMenuItem>
-			<ComponentWithAuth withoutContainer>
-				<NavigationMenuItem
-					href={ROUTES.RESUME}
-					icon={Icon.icon.DOCUMENT_TEXT}
-				>
-					Resume
-				</NavigationMenuItem>
-			</ComponentWithAuth>
+			<NavigationMenuItem
+				href={ROUTES.RESUME}
+				icon={Icon.icon.DOCUMENT_TEXT}
+			>
+				Resume
+			</NavigationMenuItem>
 			<NavigationMenuItem
 				href={ROUTES.KORDZ}
 				icon={Icon.icon.MUSIC_NOTE}

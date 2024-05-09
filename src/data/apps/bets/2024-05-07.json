@@ -16,9 +16,12 @@
 						"name": "Goles por equipo local",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
@@ -64,14 +67,19 @@
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -82,8 +90,8 @@
 					"home": {
 						"id": 2808,
 						"name": "Caracas FC",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"position": null,
 						"featured": false,
 						"stats": {
@@ -98,6 +106,8 @@
 							"partidos_perdidos_de_local": 4,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 42.9,
 							"---||---": 0,
 							"goles_de_visitante": 5,
 							"promedio_de_goles_de_visitante": 0.6,
@@ -106,6 +116,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 4,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 62.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -118,6 +130,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 0,
 							"ultimos_promedio_de_goles_de_visitante": 0,
@@ -125,7 +139,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 0
+							"ultimos_partidos_con_goles_de_visitante": 0,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -493,8 +509,8 @@
 					"away": {
 						"id": 2348,
 						"name": "Penarol",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": true,
 						"position": null,
 						"featured": true,
 						"stats": {
@@ -509,6 +525,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 85.7,
 							"---||---": 0,
 							"goles_de_visitante": 16,
 							"promedio_de_goles_de_visitante": 2,
@@ -517,6 +535,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 75,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 7,
@@ -529,6 +549,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 7,
 							"ultimos_promedio_de_goles_de_visitante": 2.3,
@@ -536,7 +558,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -914,9 +938,12 @@
 						"name": "Goles por equipo local",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
@@ -962,14 +989,19 @@
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -980,8 +1012,8 @@
 					"home": {
 						"id": 437,
 						"name": "Rosario Central",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"position": null,
 						"featured": false,
 						"stats": {
@@ -996,6 +1028,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 85.7,
 							"---||---": 0,
 							"goles_de_visitante": 4,
 							"promedio_de_goles_de_visitante": 0.5,
@@ -1004,6 +1038,8 @@
 							"partidos_perdidos_de_visitante": 6,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 25,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -1016,6 +1052,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -1023,7 +1061,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -1391,8 +1431,8 @@
 					"away": {
 						"id": 1062,
 						"name": "Atletico-MG",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": true,
 						"position": null,
 						"featured": true,
 						"stats": {
@@ -1407,6 +1447,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 8,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 14,
 							"promedio_de_goles_de_visitante": 2,
@@ -1415,6 +1457,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 85.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 7,
@@ -1427,6 +1471,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.7,
@@ -1434,7 +1480,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -1812,8 +1860,11 @@
 						"name": "Goles por equipo local",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
-						"right": false,
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
@@ -1860,14 +1911,19 @@
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -1878,7 +1934,7 @@
 					"home": {
 						"id": 2356,
 						"name": "Club Nacional",
-						"score": null,
+						"score": 2,
 						"winner": null,
 						"position": null,
 						"featured": false,
@@ -1894,6 +1950,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 8,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 7,
 							"promedio_de_goles_de_visitante": 1.2,
@@ -1902,6 +1960,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 3,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 66.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 8,
@@ -1914,6 +1974,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -1921,7 +1983,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -2289,7 +2353,7 @@
 					"away": {
 						"id": 435,
 						"name": "River Plate",
-						"score": null,
+						"score": 2,
 						"winner": null,
 						"position": null,
 						"featured": true,
@@ -2305,6 +2369,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 8,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 87.5,
 							"---||---": 0,
 							"goles_de_visitante": 10,
 							"promedio_de_goles_de_visitante": 1.4,
@@ -2313,6 +2379,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 7,
@@ -2325,6 +2393,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 7,
 							"ultimos_promedio_de_goles_de_visitante": 2.3,
@@ -2332,7 +2402,9 @@
 							"ultimos_partidos_ganados_de_visitante": 3,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -2710,8 +2782,11 @@
 						"name": "Goles por equipo local",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
-						"right": false,
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
@@ -2758,14 +2833,19 @@
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -2776,8 +2856,8 @@
 					"home": {
 						"id": 2318,
 						"name": "Palestino",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": true,
 						"position": null,
 						"featured": false,
 						"stats": {
@@ -2792,6 +2872,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 75,
 							"---||---": 0,
 							"goles_de_visitante": 8,
 							"promedio_de_goles_de_visitante": 1.1,
@@ -2800,6 +2882,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 7,
@@ -2812,6 +2896,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -2819,7 +2905,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -2890,7 +2978,7 @@
 										"score": 1,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -3187,8 +3275,8 @@
 					"away": {
 						"id": 127,
 						"name": "Flamengo",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"position": null,
 						"featured": true,
 						"stats": {
@@ -3203,6 +3291,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 87.5,
 							"---||---": 0,
 							"goles_de_visitante": 10,
 							"promedio_de_goles_de_visitante": 1.4,
@@ -3211,6 +3301,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 85.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 2,
@@ -3223,6 +3315,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 2,
 							"ultimos_promedio_de_goles_de_visitante": 0.7,
@@ -3230,7 +3324,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -3461,7 +3557,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 127,
@@ -3608,9 +3704,12 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
@@ -3653,17 +3752,22 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -3674,7 +3778,7 @@
 					"home": {
 						"id": 2807,
 						"name": "Deportivo Tachira FC",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"position": null,
 						"featured": false,
@@ -3690,6 +3794,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 0,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---||---": 0,
 							"goles_de_visitante": 3,
 							"promedio_de_goles_de_visitante": 0.3,
@@ -3698,6 +3804,8 @@
 							"partidos_perdidos_de_visitante": 5,
 							"partidos_empatados_de_visitante": 4,
 							"partidos_con_goles_de_visitante": 3,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 44.4,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 2,
@@ -3710,6 +3818,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 1,
 							"ultimos_promedio_de_goles_de_visitante": 0.3,
@@ -3717,7 +3827,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 3,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 0
 						},
 						"matches": [
 							{
@@ -4085,7 +4197,7 @@
 					"away": {
 						"id": 1179,
 						"name": "Libertad Asuncion",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"position": null,
 						"featured": true,
@@ -4101,6 +4213,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 75,
 							"---||---": 0,
 							"goles_de_visitante": 9,
 							"promedio_de_goles_de_visitante": 1.3,
@@ -4109,6 +4223,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 2,
@@ -4121,6 +4237,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -4128,7 +4246,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -4506,8 +4626,11 @@
 						"name": "Goles por equipo local",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
-						"warnings": [],
-						"right": false,
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
@@ -4551,17 +4674,22 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"recommendable": true,
+						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
-									"check": "❌",
-									"weight": 1
+									"check": "✅",
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -4572,7 +4700,7 @@
 					"home": {
 						"id": 2540,
 						"name": "Universitario",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"position": null,
 						"featured": false,
@@ -4588,6 +4716,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 0,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 9,
 							"promedio_de_goles_de_visitante": 1,
@@ -4596,6 +4726,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 4,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 77.8,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 7,
@@ -4608,6 +4740,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -4615,7 +4749,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -4750,7 +4886,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 2540,
@@ -4983,10 +5119,10 @@
 					"away": {
 						"id": 1135,
 						"name": "Junior",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"position": null,
-						"featured": false,
+						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
 							"total_de_goles": 21,
@@ -4999,6 +5135,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 4,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 11,
 							"promedio_de_goles_de_visitante": 1.6,
@@ -5007,6 +5145,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 57.1,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -5019,6 +5159,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -5026,7 +5168,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -5041,7 +5185,7 @@
 										"score": 2,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1125,
@@ -5049,7 +5193,7 @@
 										"score": 1,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -5073,7 +5217,7 @@
 										"score": 0,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -5089,7 +5233,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1158,
@@ -5113,7 +5257,7 @@
 										"score": 1,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1136,
@@ -5137,7 +5281,7 @@
 										"score": 3,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1135,
@@ -5145,7 +5289,7 @@
 										"score": 2,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -5161,7 +5305,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1129,
@@ -5185,7 +5329,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 2540,
@@ -5217,7 +5361,7 @@
 										"score": 1,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -5241,7 +5385,7 @@
 										"score": 3,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -5257,7 +5401,7 @@
 										"score": 1,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1134,
@@ -5289,7 +5433,7 @@
 										"score": 0,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -5305,7 +5449,7 @@
 										"score": 3,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1133,
@@ -5337,7 +5481,7 @@
 										"score": 2,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -5353,7 +5497,7 @@
 										"score": 0,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1137,
@@ -5385,7 +5529,7 @@
 										"score": 3,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							}
@@ -5412,8 +5556,8 @@
 						"name": "Goles por equipo local",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
-						"warnings": [],
-						"right": false,
+						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
@@ -5458,16 +5602,21 @@
 						"id": "GPP",
 						"name": "Goles por partido",
 						"recommendable": false,
-						"acceptancePercentage": 0,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -5478,8 +5627,8 @@
 					"home": {
 						"id": 2359,
 						"name": "Racing Montevideo",
-						"score": null,
-						"winner": null,
+						"score": 2,
+						"winner": true,
 						"position": null,
 						"featured": false,
 						"stats": {
@@ -5494,6 +5643,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 4,
 							"partidos_con_goles_de_local": 8,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 75,
 							"---||---": 0,
 							"goles_de_visitante": 14,
 							"promedio_de_goles_de_visitante": 2,
@@ -5502,6 +5653,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -5514,6 +5667,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.7,
@@ -5521,7 +5676,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -5889,8 +6046,8 @@
 					"away": {
 						"id": 458,
 						"name": "Argentinos JRS",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": false,
 						"position": null,
 						"featured": false,
 						"stats": {
@@ -5905,6 +6062,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 8,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 80,
 							"---||---": 0,
 							"goles_de_visitante": 7,
 							"promedio_de_goles_de_visitante": 1.4,
@@ -5913,6 +6072,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 80,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 2,
@@ -5925,6 +6086,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.7,
@@ -5932,7 +6095,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -6310,8 +6475,11 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
-						"right": false,
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
@@ -6355,17 +6523,22 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -6376,8 +6549,8 @@
 					"home": {
 						"id": 1175,
 						"name": "Nacional Asuncion",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"position": null,
 						"featured": false,
 						"stats": {
@@ -6392,6 +6565,8 @@
 							"partidos_perdidos_de_local": 5,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 37.5,
 							"---||---": 0,
 							"goles_de_visitante": 9,
 							"promedio_de_goles_de_visitante": 1.3,
@@ -6400,6 +6575,8 @@
 							"partidos_perdidos_de_visitante": 5,
 							"partidos_empatados_de_visitante": 0,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 28.6,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -6412,6 +6589,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -6419,7 +6598,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -6787,8 +6968,8 @@
 					"away": {
 						"id": 131,
 						"name": "Corinthians",
-						"score": null,
-						"winner": null,
+						"score": 2,
+						"winner": true,
 						"position": null,
 						"featured": true,
 						"stats": {
@@ -6803,6 +6984,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 3,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 83.3,
 							"---||---": 0,
 							"goles_de_visitante": 10,
 							"promedio_de_goles_de_visitante": 1.1,
@@ -6811,6 +6994,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 66.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 5,
@@ -6823,6 +7008,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 2,
 							"ultimos_promedio_de_goles_de_visitante": 0.7,
@@ -6830,7 +7017,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -7208,9 +7397,12 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
@@ -7253,17 +7445,22 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -7274,8 +7471,8 @@
 					"home": {
 						"id": 2541,
 						"name": "Cesar Vallejo",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": false,
 						"position": null,
 						"featured": false,
 						"stats": {
@@ -7290,6 +7487,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 85.7,
 							"---||---": 0,
 							"goles_de_visitante": 6,
 							"promedio_de_goles_de_visitante": 0.8,
@@ -7298,6 +7497,8 @@
 							"partidos_perdidos_de_visitante": 5,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 37.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -7310,6 +7511,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 1,
 							"ultimos_promedio_de_goles_de_visitante": 0.3,
@@ -7317,7 +7520,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -7685,8 +7890,8 @@
 					"away": {
 						"id": 1128,
 						"name": "Independiente Medellin",
-						"score": null,
-						"winner": null,
+						"score": 5,
+						"winner": true,
 						"position": null,
 						"featured": true,
 						"stats": {
@@ -7701,6 +7906,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 8,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 75,
 							"---||---": 0,
 							"goles_de_visitante": 10,
 							"promedio_de_goles_de_visitante": 1.4,
@@ -7709,6 +7916,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 85.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 5,
@@ -7721,6 +7930,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 6,
 							"ultimos_promedio_de_goles_de_visitante": 2,
@@ -7728,7 +7939,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -8007,7 +8220,7 @@
 										"score": 2,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1128,
@@ -8031,7 +8244,7 @@
 										"score": 0,
 										"winner": false,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 1128,
@@ -8106,7 +8319,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -8151,8 +8367,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -8161,7 +8377,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -8188,6 +8409,8 @@
 							"partidos_perdidos_de_local": 3,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 3,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 57.1,
 							"---||---": 0,
 							"goles_de_visitante": 4,
 							"promedio_de_goles_de_visitante": 0.8,
@@ -8196,6 +8419,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 3,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 60,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 2,
@@ -8208,6 +8433,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 1,
 							"ultimos_promedio_de_goles_de_visitante": 0.3,
@@ -8215,7 +8442,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -8527,6 +8756,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 83.3,
 							"---||---": 0,
 							"goles_de_visitante": 9,
 							"promedio_de_goles_de_visitante": 1,
@@ -8535,6 +8766,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 88.9,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -8547,6 +8780,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 2,
 							"ultimos_promedio_de_goles_de_visitante": 0.7,
@@ -8554,7 +8789,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -8932,8 +9169,11 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
-						"right": false,
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
@@ -8977,17 +9217,22 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -8998,8 +9243,8 @@
 					"home": {
 						"id": 1141,
 						"name": "Alianza Petrolera",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"position": null,
 						"featured": false,
 						"stats": {
@@ -9014,6 +9259,8 @@
 							"partidos_perdidos_de_local": 5,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 37.5,
 							"---||---": 0,
 							"goles_de_visitante": 5,
 							"promedio_de_goles_de_visitante": 0.7,
@@ -9022,6 +9269,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 2,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 42.9,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -9034,6 +9283,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -9041,7 +9292,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -9256,7 +9509,7 @@
 										"score": 2,
 										"winner": true,
 										"position": null,
-										"featured": false
+										"featured": true
 									}
 								}
 							},
@@ -9409,8 +9662,8 @@
 					"away": {
 						"id": 135,
 						"name": "Cruzeiro",
-						"score": null,
-						"winner": null,
+						"score": 3,
+						"winner": true,
 						"position": null,
 						"featured": true,
 						"stats": {
@@ -9425,6 +9678,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 85.7,
 							"---||---": 0,
 							"goles_de_visitante": 5,
 							"promedio_de_goles_de_visitante": 0.6,
@@ -9433,6 +9688,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 5,
 							"partidos_con_goles_de_visitante": 3,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 75,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -9445,6 +9702,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 1,
 							"ultimos_promedio_de_goles_de_visitante": 0.3,
@@ -9452,7 +9711,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -9830,9 +10091,9 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [],
+						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
@@ -9879,13 +10140,18 @@
 						"acceptancePercentage": 0,
 						"warnings": [],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -9896,8 +10162,8 @@
 					"home": {
 						"id": 10487,
 						"name": "Sportivo Ameliano",
-						"score": null,
-						"winner": null,
+						"score": 2,
+						"winner": true,
 						"position": null,
 						"featured": false,
 						"stats": {
@@ -9912,6 +10178,8 @@
 							"partidos_perdidos_de_local": 4,
 							"partidos_empatados_de_local": 0,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 42.9,
 							"---||---": 0,
 							"goles_de_visitante": 9,
 							"promedio_de_goles_de_visitante": 1.1,
@@ -9920,6 +10188,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 75,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 5,
@@ -9932,6 +10202,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.7,
@@ -9939,7 +10211,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -10307,8 +10581,8 @@
 					"away": {
 						"id": 2352,
 						"name": "Danubio",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": false,
 						"position": null,
 						"featured": false,
 						"stats": {
@@ -10323,6 +10597,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 4,
 							"partidos_con_goles_de_local": 3,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---||---": 0,
 							"goles_de_visitante": 12,
 							"promedio_de_goles_de_visitante": 1.3,
@@ -10331,6 +10607,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 66.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -10343,6 +10621,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 7,
 							"ultimos_promedio_de_goles_de_visitante": 2.3,
@@ -10350,7 +10630,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -10728,9 +11010,9 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [],
+						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
@@ -10777,13 +11059,18 @@
 						"acceptancePercentage": 0,
 						"warnings": [],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -10794,8 +11081,8 @@
 					"home": {
 						"id": 3700,
 						"name": "Always Ready",
-						"score": null,
-						"winner": null,
+						"score": 3,
+						"winner": true,
 						"position": null,
 						"featured": false,
 						"stats": {
@@ -10810,6 +11097,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 87.5,
 							"---||---": 0,
 							"goles_de_visitante": 6,
 							"promedio_de_goles_de_visitante": 0.9,
@@ -10818,6 +11107,8 @@
 							"partidos_perdidos_de_visitante": 5,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 28.6,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 4,
@@ -10830,6 +11121,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 2,
 							"ultimos_promedio_de_goles_de_visitante": 0.7,
@@ -10837,7 +11130,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -11205,8 +11500,8 @@
 					"away": {
 						"id": 442,
 						"name": "Defensa Y Justicia",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"position": null,
 						"featured": false,
 						"stats": {
@@ -11221,6 +11516,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 75,
 							"---||---": 0,
 							"goles_de_visitante": 8,
 							"promedio_de_goles_de_visitante": 1.1,
@@ -11229,6 +11526,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -11241,6 +11540,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -11248,7 +11549,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -11634,9 +11937,12 @@
 						"name": "Goles por equipo local",
 						"recommendable": true,
 						"acceptancePercentage": 0.75,
-						"warnings": [{ "description": "Ambos equipos son destacados" }],
+						"warnings": [
+							{ "description": "Ambos equipos son destacados" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
@@ -11682,14 +11988,19 @@
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -11700,8 +12011,8 @@
 					"home": {
 						"id": 85,
 						"name": "Paris Saint Germain",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"position": null,
 						"featured": true,
 						"stats": {
@@ -11716,6 +12027,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 4,
 							"partidos_con_goles_de_local": 8,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 87.5,
 							"---||---": 0,
 							"goles_de_visitante": 18,
 							"promedio_de_goles_de_visitante": 2.6,
@@ -11724,6 +12037,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 85.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 7,
@@ -11736,6 +12051,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 8,
 							"ultimos_promedio_de_goles_de_visitante": 2.7,
@@ -11743,7 +12060,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -12111,8 +12430,8 @@
 					"away": {
 						"id": 165,
 						"name": "Borussia Dortmund",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": true,
 						"position": null,
 						"featured": true,
 						"stats": {
@@ -12127,6 +12446,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 75,
 							"---||---": 0,
 							"goles_de_visitante": 11,
 							"promedio_de_goles_de_visitante": 1.6,
@@ -12135,6 +12456,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 7,
@@ -12147,6 +12470,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -12154,7 +12479,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -12775,9 +13102,12 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
@@ -12820,17 +13150,22 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -12841,7 +13176,7 @@
 					"home": {
 						"id": 2948,
 						"name": "Hajer",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"position": 16,
 						"featured": false,
@@ -12857,6 +13192,8 @@
 							"partidos_perdidos_de_local": 4,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 42.9,
 							"---||---": 0,
 							"goles_de_visitante": 9,
 							"promedio_de_goles_de_visitante": 1.1,
@@ -12865,6 +13202,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 50,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 2,
@@ -12877,6 +13216,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -12884,7 +13225,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -13252,7 +13595,7 @@
 					"away": {
 						"id": 10509,
 						"name": "Al Kholood",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"position": 2,
 						"featured": true,
@@ -13268,6 +13611,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 87.5,
 							"---||---": 0,
 							"goles_de_visitante": 8,
 							"promedio_de_goles_de_visitante": 1.1,
@@ -13276,6 +13621,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 0,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 57.1,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -13288,6 +13635,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -13295,7 +13644,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -13673,9 +14024,9 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [],
+						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
@@ -13722,13 +14073,18 @@
 						"acceptancePercentage": 0,
 						"warnings": [],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -13739,7 +14095,7 @@
 					"home": {
 						"id": 2992,
 						"name": "Al Najma",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"position": 9,
 						"featured": false,
@@ -13755,6 +14111,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 71.4,
 							"---||---": 0,
 							"goles_de_visitante": 13,
 							"promedio_de_goles_de_visitante": 1.6,
@@ -13763,6 +14121,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 8,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 75,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -13775,6 +14135,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -13782,7 +14144,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -14150,7 +14514,7 @@
 					"away": {
 						"id": 2990,
 						"name": "Al Safa",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"position": 10,
 						"featured": false,
@@ -14166,6 +14530,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 87.5,
 							"---||---": 0,
 							"goles_de_visitante": 11,
 							"promedio_de_goles_de_visitante": 1.6,
@@ -14174,6 +14540,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 85.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 7,
@@ -14186,6 +14554,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 6,
 							"ultimos_promedio_de_goles_de_visitante": 2,
@@ -14193,7 +14563,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -14571,9 +14943,12 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
@@ -14616,17 +14991,22 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -14637,8 +15017,8 @@
 					"home": {
 						"id": 2947,
 						"name": "Jeddah Club",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": true,
 						"position": 14,
 						"featured": false,
 						"stats": {
@@ -14653,6 +15033,8 @@
 							"partidos_perdidos_de_local": 4,
 							"partidos_empatados_de_local": 4,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 55.6,
 							"---||---": 0,
 							"goles_de_visitante": 8,
 							"promedio_de_goles_de_visitante": 1.3,
@@ -14661,6 +15043,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 33.3,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 2,
@@ -14673,6 +15057,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.7,
@@ -14680,7 +15066,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -15048,8 +15436,8 @@
 					"away": {
 						"id": 2930,
 						"name": "Al-Faisaly FC",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"position": 6,
 						"featured": true,
 						"stats": {
@@ -15064,6 +15452,8 @@
 							"partidos_perdidos_de_local": 4,
 							"partidos_empatados_de_local": 0,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 50,
 							"---||---": 0,
 							"goles_de_visitante": 9,
 							"promedio_de_goles_de_visitante": 1.3,
@@ -15072,6 +15462,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 4,
@@ -15084,6 +15476,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -15091,7 +15485,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
