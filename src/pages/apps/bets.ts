@@ -13,6 +13,8 @@ export default BetsPage;
 
 export const getStaticProps: GetStaticProps<T_BetsPageProps> = async () => {
 	const monday = dayjs(dateWithoutTimezone(new Date("2024/05/06")));
+	console.log(monday);
+
 	const dates = (
 		dateWithoutTimezone().getDay() <= 4
 			? [
@@ -28,10 +30,21 @@ export const getStaticProps: GetStaticProps<T_BetsPageProps> = async () => {
 			  ]
 	).map((date) => {
 		return `${date.getFullYear()}-${addLeftPadding(date.getMonth() + 1)}-${addLeftPadding(
-			date.getDate() + 1,
+			date.getDate(),
 		)}`;
 	});
 	const data = {} as T_BetsPageProps["data"];
+
+	console.log(dateWithoutTimezone());
+	console.log(dateWithoutTimezone().getDay());
+	console.log("dates", [
+		monday.toDate(),
+		monday.add(1, "day").toDate(),
+		monday.add(2, "day").toDate(),
+		monday.add(3, "day").toDate(),
+	]);
+	console.log("dates-transformed", dates);
+	console.log("monday", monday);
 
 	// eslint-disable-next-line no-loops/no-loops, no-restricted-syntax
 	for (const date of dates) {
