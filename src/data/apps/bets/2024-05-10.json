@@ -251,7 +251,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -296,8 +299,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -306,7 +309,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -317,6 +325,7 @@
 					"home": {
 						"id": 170,
 						"name": "FC Augsburg",
+						"country": "🇩🇪",
 						"score": null,
 						"winner": null,
 						"position": 9,
@@ -333,6 +342,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 71.4,
 							"---||---": 0,
 							"goles_de_visitante": 15,
 							"promedio_de_goles_de_visitante": 1.9,
@@ -341,6 +352,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 50,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 2,
@@ -353,6 +366,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -360,7 +375,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 3,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 0
 						},
 						"matches": [
 							{
@@ -372,6 +389,7 @@
 									"home": {
 										"id": 165,
 										"name": "Borussia Dortmund",
+										"country": "🇩🇪",
 										"score": 5,
 										"winner": true,
 										"position": 5,
@@ -380,6 +398,7 @@
 									"away": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
 										"position": 9,
@@ -396,6 +415,7 @@
 									"home": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 0,
 										"winner": false,
 										"position": 9,
@@ -404,6 +424,7 @@
 									"away": {
 										"id": 162,
 										"name": "Werder Bremen",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
 										"position": 11,
@@ -420,6 +441,7 @@
 									"home": {
 										"id": 169,
 										"name": "Eintracht Frankfurt",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
 										"position": 6,
@@ -428,6 +450,7 @@
 									"away": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
 										"position": 9,
@@ -444,6 +467,7 @@
 									"home": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": true,
 										"position": 9,
@@ -452,6 +476,7 @@
 									"away": {
 										"id": 182,
 										"name": "Union Berlin",
+										"country": "🇩🇪",
 										"score": 0,
 										"winner": false,
 										"position": 15,
@@ -468,6 +493,7 @@
 									"home": {
 										"id": 167,
 										"name": "1899 Hoffenheim",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
 										"position": 8,
@@ -476,6 +502,7 @@
 									"away": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
 										"position": 9,
@@ -492,6 +519,7 @@
 									"home": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": null,
 										"position": 9,
@@ -500,6 +528,7 @@
 									"away": {
 										"id": 192,
 										"name": "1.FC Köln",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": null,
 										"position": 17,
@@ -516,6 +545,7 @@
 									"home": {
 										"id": 161,
 										"name": "VfL Wolfsburg",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
 										"position": 12,
@@ -524,6 +554,7 @@
 									"away": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
 										"position": 9,
@@ -540,6 +571,7 @@
 									"home": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": true,
 										"position": 9,
@@ -548,6 +580,7 @@
 									"away": {
 										"id": 180,
 										"name": "FC Heidenheim",
+										"country": "🇩🇪",
 										"score": 0,
 										"winner": false,
 										"position": 10,
@@ -564,6 +597,7 @@
 									"home": {
 										"id": 181,
 										"name": "SV Darmstadt 98",
+										"country": "🇩🇪",
 										"score": 0,
 										"winner": false,
 										"position": 18,
@@ -572,6 +606,7 @@
 									"away": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 6,
 										"winner": true,
 										"position": 9,
@@ -588,6 +623,7 @@
 									"home": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": true,
 										"position": 9,
@@ -596,6 +632,7 @@
 									"away": {
 										"id": 160,
 										"name": "SC Freiburg",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
 										"position": 7,
@@ -612,6 +649,7 @@
 									"home": {
 										"id": 164,
 										"name": "FSV Mainz 05",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": true,
 										"position": 16,
@@ -620,6 +658,7 @@
 									"away": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 0,
 										"winner": false,
 										"position": 9,
@@ -636,6 +675,7 @@
 									"home": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": null,
 										"position": 9,
@@ -644,6 +684,7 @@
 									"away": {
 										"id": 173,
 										"name": "RB Leipzig",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": null,
 										"position": 4,
@@ -660,6 +701,7 @@
 									"home": {
 										"id": 176,
 										"name": "Vfl Bochum",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": null,
 										"position": 14,
@@ -668,6 +710,7 @@
 									"away": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": null,
 										"position": 9,
@@ -684,6 +727,7 @@
 									"home": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": false,
 										"position": 9,
@@ -692,6 +736,7 @@
 									"away": {
 										"id": 157,
 										"name": "Bayern Munich",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
 										"position": 2,
@@ -708,6 +753,7 @@
 									"home": {
 										"id": 163,
 										"name": "Borussia Monchengladbach",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
 										"position": 13,
@@ -716,6 +762,7 @@
 									"away": {
 										"id": 170,
 										"name": "FC Augsburg",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": true,
 										"position": 9,
@@ -728,6 +775,7 @@
 					"away": {
 						"id": 172,
 						"name": "VfB Stuttgart",
+						"country": "🇩🇪",
 						"score": null,
 						"winner": null,
 						"position": 3,
@@ -744,6 +792,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 17,
 							"promedio_de_goles_de_visitante": 2.1,
@@ -752,6 +802,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 8,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 75,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -764,6 +816,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -771,7 +825,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -783,6 +839,7 @@
 									"home": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
 										"position": 3,
@@ -791,6 +848,7 @@
 									"away": {
 										"id": 157,
 										"name": "Bayern Munich",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
 										"position": 2,
@@ -807,6 +865,7 @@
 									"home": {
 										"id": 168,
 										"name": "Bayer Leverkusen",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": null,
 										"position": 1,
@@ -815,6 +874,7 @@
 									"away": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": null,
 										"position": 3,
@@ -831,6 +891,7 @@
 									"home": {
 										"id": 162,
 										"name": "Werder Bremen",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": true,
 										"position": 11,
@@ -839,6 +900,7 @@
 									"away": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
 										"position": 3,
@@ -855,6 +917,7 @@
 									"home": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
 										"position": 3,
@@ -863,6 +926,7 @@
 									"away": {
 										"id": 169,
 										"name": "Eintracht Frankfurt",
+										"country": "🇩🇪",
 										"score": 0,
 										"winner": false,
 										"position": 6,
@@ -879,6 +943,7 @@
 									"home": {
 										"id": 165,
 										"name": "Borussia Dortmund",
+										"country": "🇩🇪",
 										"score": 0,
 										"winner": false,
 										"position": 5,
@@ -887,6 +952,7 @@
 									"away": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": true,
 										"position": 3,
@@ -903,6 +969,7 @@
 									"home": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": null,
 										"position": 3,
@@ -911,6 +978,7 @@
 									"away": {
 										"id": 180,
 										"name": "FC Heidenheim",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": null,
 										"position": 10,
@@ -927,6 +995,7 @@
 									"home": {
 										"id": 167,
 										"name": "1899 Hoffenheim",
+										"country": "🇩🇪",
 										"score": 0,
 										"winner": false,
 										"position": 8,
@@ -935,6 +1004,7 @@
 									"away": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
 										"position": 3,
@@ -951,6 +1021,7 @@
 									"home": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": true,
 										"position": 3,
@@ -959,6 +1030,7 @@
 									"away": {
 										"id": 182,
 										"name": "Union Berlin",
+										"country": "🇩🇪",
 										"score": 0,
 										"winner": false,
 										"position": 15,
@@ -975,6 +1047,7 @@
 									"home": {
 										"id": 161,
 										"name": "VfL Wolfsburg",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": false,
 										"position": 12,
@@ -983,6 +1056,7 @@
 									"away": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
 										"position": 3,
@@ -999,6 +1073,7 @@
 									"home": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": null,
 										"position": 3,
@@ -1007,6 +1082,7 @@
 									"away": {
 										"id": 192,
 										"name": "1.FC Köln",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": null,
 										"position": 17,
@@ -1023,6 +1099,7 @@
 									"home": {
 										"id": 181,
 										"name": "SV Darmstadt 98",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
 										"position": 18,
@@ -1031,6 +1108,7 @@
 									"away": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": true,
 										"position": 3,
@@ -1047,6 +1125,7 @@
 									"home": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
 										"position": 3,
@@ -1055,6 +1134,7 @@
 									"away": {
 										"id": 164,
 										"name": "FSV Mainz 05",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
 										"position": 16,
@@ -1071,6 +1151,7 @@
 									"home": {
 										"id": 168,
 										"name": "Bayer Leverkusen",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
 										"position": 1,
@@ -1079,6 +1160,7 @@
 									"away": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": false,
 										"position": 3,
@@ -1095,6 +1177,7 @@
 									"home": {
 										"id": 160,
 										"name": "SC Freiburg",
+										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
 										"position": 7,
@@ -1103,6 +1186,7 @@
 									"away": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
 										"position": 3,
@@ -1119,6 +1203,7 @@
 									"home": {
 										"id": 172,
 										"name": "VfB Stuttgart",
+										"country": "🇩🇪",
 										"score": 5,
 										"winner": true,
 										"position": 3,
@@ -1127,6 +1212,7 @@
 									"away": {
 										"id": 173,
 										"name": "RB Leipzig",
+										"country": "🇩🇪",
 										"score": 2,
 										"winner": false,
 										"position": 4,
@@ -1463,8 +1549,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -1473,7 +1559,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -1484,6 +1575,7 @@
 					"home": {
 						"id": 542,
 						"name": "Alaves",
+						"country": "🇪🇸",
 						"score": null,
 						"winner": null,
 						"position": 11,
@@ -1500,6 +1592,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 7,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 75,
 							"---||---": 0,
 							"goles_de_visitante": 4,
 							"promedio_de_goles_de_visitante": 0.6,
@@ -1508,6 +1602,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 2,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 42.9,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -1520,6 +1616,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 1,
 							"ultimos_promedio_de_goles_de_visitante": 0.3,
@@ -1527,7 +1625,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -1539,6 +1639,7 @@
 									"home": {
 										"id": 532,
 										"name": "Valencia",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 8,
@@ -1547,6 +1648,7 @@
 									"away": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": true,
 										"position": 11,
@@ -1563,6 +1665,7 @@
 									"home": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 3,
 										"winner": true,
 										"position": 11,
@@ -1571,6 +1674,7 @@
 									"away": {
 										"id": 538,
 										"name": "Celta Vigo",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 15,
@@ -1587,6 +1691,7 @@
 									"home": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 2,
 										"winner": true,
 										"position": 11,
@@ -1595,6 +1700,7 @@
 									"away": {
 										"id": 530,
 										"name": "Atletico Madrid",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 4,
@@ -1611,6 +1717,7 @@
 									"home": {
 										"id": 715,
 										"name": "Granada CF",
+										"country": "🇪🇸",
 										"score": 2,
 										"winner": true,
 										"position": 19,
@@ -1619,6 +1726,7 @@
 									"away": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 11,
@@ -1635,6 +1743,7 @@
 									"home": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 11,
@@ -1643,6 +1752,7 @@
 									"away": {
 										"id": 548,
 										"name": "Real Sociedad",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": true,
 										"position": 6,
@@ -1659,6 +1769,7 @@
 									"home": {
 										"id": 531,
 										"name": "Athletic Club",
+										"country": "🇪🇸",
 										"score": 2,
 										"winner": true,
 										"position": 5,
@@ -1667,6 +1778,7 @@
 									"away": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 11,
@@ -1683,6 +1795,7 @@
 									"home": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": true,
 										"position": 11,
@@ -1691,6 +1804,7 @@
 									"away": {
 										"id": 728,
 										"name": "Rayo Vallecano",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 16,
@@ -1707,6 +1821,7 @@
 									"home": {
 										"id": 727,
 										"name": "Osasuna",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": true,
 										"position": 13,
@@ -1715,6 +1830,7 @@
 									"away": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 11,
@@ -1731,6 +1847,7 @@
 									"home": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": null,
 										"position": 11,
@@ -1739,6 +1856,7 @@
 									"away": {
 										"id": 798,
 										"name": "Mallorca",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": null,
 										"position": 17,
@@ -1755,6 +1873,7 @@
 									"home": {
 										"id": 543,
 										"name": "Real Betis",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": null,
 										"position": 7,
@@ -1763,6 +1882,7 @@
 									"away": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": null,
 										"position": 11,
@@ -1779,6 +1899,7 @@
 									"home": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": null,
 										"position": 11,
@@ -1787,6 +1908,7 @@
 									"away": {
 										"id": 533,
 										"name": "Villarreal",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": null,
 										"position": 9,
@@ -1803,6 +1925,7 @@
 									"home": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": false,
 										"position": 11,
@@ -1811,6 +1934,7 @@
 									"away": {
 										"id": 529,
 										"name": "Barcelona",
+										"country": "🇪🇸",
 										"score": 3,
 										"winner": true,
 										"position": 3,
@@ -1827,6 +1951,7 @@
 									"home": {
 										"id": 723,
 										"name": "Almeria",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 20,
@@ -1835,6 +1960,7 @@
 									"away": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 3,
 										"winner": true,
 										"position": 11,
@@ -1851,6 +1977,7 @@
 									"home": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": true,
 										"position": 11,
@@ -1859,6 +1986,7 @@
 									"away": {
 										"id": 724,
 										"name": "Cadiz",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 18,
@@ -1875,6 +2003,7 @@
 									"home": {
 										"id": 531,
 										"name": "Athletic Club",
+										"country": "🇪🇸",
 										"score": 2,
 										"winner": true,
 										"position": 5,
@@ -1883,6 +2012,7 @@
 									"away": {
 										"id": 542,
 										"name": "Alaves",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 11,
@@ -1895,6 +2025,7 @@
 					"away": {
 						"id": 547,
 						"name": "Girona",
+						"country": "🇪🇸",
 						"score": null,
 						"winner": null,
 						"position": 2,
@@ -1911,6 +2042,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 8,
 							"promedio_de_goles_de_visitante": 1,
@@ -1919,6 +2052,8 @@
 							"partidos_perdidos_de_visitante": 6,
 							"partidos_empatados_de_visitante": 0,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 25,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 10,
@@ -1931,6 +2066,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -1938,7 +2075,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -1950,6 +2089,7 @@
 									"home": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 4,
 										"winner": true,
 										"position": 2,
@@ -1958,6 +2098,7 @@
 									"away": {
 										"id": 529,
 										"name": "Barcelona",
+										"country": "🇪🇸",
 										"score": 2,
 										"winner": false,
 										"position": 3,
@@ -1974,6 +2115,7 @@
 									"home": {
 										"id": 534,
 										"name": "Las Palmas",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 14,
@@ -1982,6 +2124,7 @@
 									"away": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 2,
 										"winner": true,
 										"position": 2,
@@ -1998,6 +2141,7 @@
 									"home": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 4,
 										"winner": true,
 										"position": 2,
@@ -2006,6 +2150,7 @@
 									"away": {
 										"id": 724,
 										"name": "Cadiz",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": false,
 										"position": 18,
@@ -2022,6 +2167,7 @@
 									"home": {
 										"id": 530,
 										"name": "Atletico Madrid",
+										"country": "🇪🇸",
 										"score": 3,
 										"winner": true,
 										"position": 4,
@@ -2030,6 +2176,7 @@
 									"away": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": false,
 										"position": 2,
@@ -2046,6 +2193,7 @@
 									"home": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 3,
 										"winner": true,
 										"position": 2,
@@ -2054,6 +2202,7 @@
 									"away": {
 										"id": 543,
 										"name": "Real Betis",
+										"country": "🇪🇸",
 										"score": 2,
 										"winner": false,
 										"position": 7,
@@ -2070,6 +2219,7 @@
 									"home": {
 										"id": 546,
 										"name": "Getafe",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": true,
 										"position": 10,
@@ -2078,6 +2228,7 @@
 									"away": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 2,
@@ -2094,6 +2245,7 @@
 									"home": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 2,
 										"winner": true,
 										"position": 2,
@@ -2102,6 +2254,7 @@
 									"away": {
 										"id": 727,
 										"name": "Osasuna",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 13,
@@ -2118,6 +2271,7 @@
 									"home": {
 										"id": 798,
 										"name": "Mallorca",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": true,
 										"position": 17,
@@ -2126,6 +2280,7 @@
 									"away": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 2,
@@ -2142,6 +2297,7 @@
 									"home": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 3,
 										"winner": true,
 										"position": 2,
@@ -2150,6 +2306,7 @@
 									"away": {
 										"id": 728,
 										"name": "Rayo Vallecano",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 16,
@@ -2166,6 +2323,7 @@
 									"home": {
 										"id": 531,
 										"name": "Athletic Club",
+										"country": "🇪🇸",
 										"score": 3,
 										"winner": true,
 										"position": 5,
@@ -2174,6 +2332,7 @@
 									"away": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 2,
 										"winner": false,
 										"position": 2,
@@ -2190,6 +2349,7 @@
 									"home": {
 										"id": 541,
 										"name": "Real Madrid",
+										"country": "🇪🇸",
 										"score": 4,
 										"winner": true,
 										"position": 1,
@@ -2198,6 +2358,7 @@
 									"away": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 2,
@@ -2214,6 +2375,7 @@
 									"home": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": null,
 										"position": 2,
@@ -2222,6 +2384,7 @@
 									"away": {
 										"id": 548,
 										"name": "Real Sociedad",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": null,
 										"position": 6,
@@ -2238,6 +2401,7 @@
 									"home": {
 										"id": 538,
 										"name": "Celta Vigo",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": 15,
@@ -2246,6 +2410,7 @@
 									"away": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": true,
 										"position": 2,
@@ -2262,6 +2427,7 @@
 									"home": {
 										"id": 798,
 										"name": "Mallorca",
+										"country": "🇪🇸",
 										"score": 3,
 										"winner": true,
 										"position": 17,
@@ -2270,6 +2436,7 @@
 									"away": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 2,
 										"winner": false,
 										"position": 2,
@@ -2286,6 +2453,7 @@
 									"home": {
 										"id": 547,
 										"name": "Girona",
+										"country": "🇪🇸",
 										"score": 5,
 										"winner": true,
 										"position": 2,
@@ -2294,6 +2462,7 @@
 									"away": {
 										"id": 536,
 										"name": "Sevilla",
+										"country": "🇪🇸",
 										"score": 1,
 										"winner": false,
 										"position": 12,
@@ -2614,7 +2783,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "✅",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -2625,6 +2799,7 @@
 					"home": {
 						"id": 84,
 						"name": "Nice",
+						"country": "🇫🇷",
 						"score": null,
 						"winner": null,
 						"position": 5,
@@ -2641,6 +2816,8 @@
 							"partidos_perdidos_de_local": 3,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 50,
 							"---||---": 0,
 							"goles_de_visitante": 14,
 							"promedio_de_goles_de_visitante": 1.6,
@@ -2649,6 +2826,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 66.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 8,
@@ -2661,6 +2840,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.7,
@@ -2668,7 +2849,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -2680,6 +2863,7 @@
 									"home": {
 										"id": 95,
 										"name": "Strasbourg",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 13,
@@ -2688,6 +2872,7 @@
 									"away": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
 										"position": 5,
@@ -2704,6 +2889,7 @@
 									"home": {
 										"id": 81,
 										"name": "Marseille",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": null,
 										"position": 9,
@@ -2712,6 +2898,7 @@
 									"away": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": null,
 										"position": 5,
@@ -2728,6 +2915,7 @@
 									"home": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
 										"position": 5,
@@ -2736,6 +2924,7 @@
 									"away": {
 										"id": 97,
 										"name": "Lorient",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 17,
@@ -2752,6 +2941,7 @@
 									"home": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 12,
@@ -2760,6 +2950,7 @@
 									"away": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 5,
@@ -2776,6 +2967,7 @@
 									"home": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 5,
@@ -2784,6 +2976,7 @@
 									"away": {
 										"id": 83,
 										"name": "Nantes",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
 										"position": 14,
@@ -2800,6 +2993,7 @@
 									"home": {
 										"id": 116,
 										"name": "Lens",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 6,
@@ -2808,6 +3002,7 @@
 									"away": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
 										"position": 5,
@@ -2824,6 +3019,7 @@
 									"home": {
 										"id": 85,
 										"name": "Paris Saint Germain",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
 										"position": 1,
@@ -2832,6 +3028,7 @@
 									"away": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 5,
@@ -2848,6 +3045,7 @@
 									"home": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 5,
@@ -2856,6 +3054,7 @@
 									"away": {
 										"id": 82,
 										"name": "Montpellier",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
 										"position": 10,
@@ -2872,6 +3071,7 @@
 									"home": {
 										"id": 96,
 										"name": "Toulouse",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
 										"position": 11,
@@ -2880,6 +3080,7 @@
 									"away": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 5,
@@ -2896,6 +3097,7 @@
 									"home": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 5,
@@ -2904,6 +3106,7 @@
 									"away": {
 										"id": 99,
 										"name": "Clermont Foot",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 18,
@@ -2920,6 +3123,7 @@
 									"home": {
 										"id": 80,
 										"name": "Lyon",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": true,
 										"position": 7,
@@ -2928,6 +3132,7 @@
 									"away": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 5,
@@ -2944,6 +3149,7 @@
 									"home": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": false,
 										"position": 5,
@@ -2952,6 +3158,7 @@
 									"away": {
 										"id": 91,
 										"name": "Monaco",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
 										"position": 2,
@@ -2968,6 +3175,7 @@
 									"home": {
 										"id": 82,
 										"name": "Montpellier",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 10,
@@ -2976,6 +3184,7 @@
 									"away": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 4,
 										"winner": true,
 										"position": 5,
@@ -2992,6 +3201,7 @@
 									"home": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 3,
@@ -3000,6 +3210,7 @@
 									"away": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 5,
@@ -3016,6 +3227,7 @@
 									"home": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": true,
 										"position": 5,
@@ -3024,6 +3236,7 @@
 									"away": {
 										"id": 112,
 										"name": "Metz",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 16,
@@ -3036,6 +3249,7 @@
 					"away": {
 						"id": 111,
 						"name": "LE Havre",
+						"country": "🇫🇷",
 						"score": null,
 						"winner": null,
 						"position": 15,
@@ -3052,6 +3266,8 @@
 							"partidos_perdidos_de_local": 5,
 							"partidos_empatados_de_local": 0,
 							"partidos_con_goles_de_local": 3,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 28.6,
 							"---||---": 0,
 							"goles_de_visitante": 10,
 							"promedio_de_goles_de_visitante": 1.3,
@@ -3060,6 +3276,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 4,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 50,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 6,
@@ -3072,6 +3290,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.7,
@@ -3079,7 +3299,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -3091,6 +3313,7 @@
 									"home": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
 										"position": 15,
@@ -3099,6 +3322,7 @@
 									"away": {
 										"id": 95,
 										"name": "Strasbourg",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 13,
@@ -3115,6 +3339,7 @@
 									"home": {
 										"id": 85,
 										"name": "Paris Saint Germain",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": null,
 										"position": 1,
@@ -3123,6 +3348,7 @@
 									"away": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": null,
 										"position": 15,
@@ -3139,6 +3365,7 @@
 									"home": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 15,
@@ -3147,6 +3374,7 @@
 									"away": {
 										"id": 112,
 										"name": "Metz",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": true,
 										"position": 16,
@@ -3163,6 +3391,7 @@
 									"home": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 15,
@@ -3171,6 +3400,7 @@
 									"away": {
 										"id": 83,
 										"name": "Nantes",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": true,
 										"position": 14,
@@ -3187,6 +3417,7 @@
 									"home": {
 										"id": 116,
 										"name": "Lens",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
 										"position": 6,
@@ -3195,6 +3426,7 @@
 									"away": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
 										"position": 15,
@@ -3211,6 +3443,7 @@
 									"home": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 15,
@@ -3219,6 +3452,7 @@
 									"away": {
 										"id": 82,
 										"name": "Montpellier",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
 										"position": 10,
@@ -3235,6 +3469,7 @@
 									"home": {
 										"id": 99,
 										"name": "Clermont Foot",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
 										"position": 18,
@@ -3243,6 +3478,7 @@
 									"away": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 15,
@@ -3259,6 +3495,7 @@
 									"home": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": true,
 										"position": 15,
@@ -3267,6 +3504,7 @@
 									"away": {
 										"id": 96,
 										"name": "Toulouse",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 11,
@@ -3283,6 +3521,7 @@
 									"home": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": true,
 										"position": 3,
@@ -3291,6 +3530,7 @@
 									"away": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 15,
@@ -3307,6 +3547,7 @@
 									"home": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 15,
@@ -3315,6 +3556,7 @@
 									"away": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
 										"position": 12,
@@ -3331,6 +3573,7 @@
 									"home": {
 										"id": 79,
 										"name": "Lille",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
 										"position": 4,
@@ -3339,6 +3582,7 @@
 									"away": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 15,
@@ -3355,6 +3599,7 @@
 									"home": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 15,
@@ -3363,6 +3608,7 @@
 									"away": {
 										"id": 94,
 										"name": "Rennes",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": true,
 										"position": 8,
@@ -3379,6 +3625,7 @@
 									"home": {
 										"id": 95,
 										"name": "Strasbourg",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
 										"position": 13,
@@ -3387,6 +3634,7 @@
 									"away": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 15,
@@ -3403,6 +3651,7 @@
 									"home": {
 										"id": 91,
 										"name": "Monaco",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
 										"position": 2,
@@ -3411,6 +3660,7 @@
 									"away": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
 										"position": 15,
@@ -3427,6 +3677,7 @@
 									"home": {
 										"id": 97,
 										"name": "Lorient",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": null,
 										"position": 17,
@@ -3435,6 +3686,7 @@
 									"away": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": null,
 										"position": 15,
@@ -3502,8 +3754,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -3512,7 +3764,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -3523,6 +3780,7 @@
 					"home": {
 						"id": 106,
 						"name": "Stade Brestois 29",
+						"country": "🇫🇷",
 						"score": null,
 						"winner": null,
 						"position": 3,
@@ -3539,6 +3797,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 85.7,
 							"---||---": 0,
 							"goles_de_visitante": 16,
 							"promedio_de_goles_de_visitante": 2,
@@ -3547,6 +3807,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 62.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 5,
@@ -3559,6 +3821,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 9,
 							"ultimos_promedio_de_goles_de_visitante": 3,
@@ -3566,7 +3830,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -3578,6 +3844,7 @@
 									"home": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 3,
@@ -3586,6 +3853,7 @@
 									"away": {
 										"id": 83,
 										"name": "Nantes",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 14,
@@ -3602,6 +3870,7 @@
 									"home": {
 										"id": 94,
 										"name": "Rennes",
+										"country": "🇫🇷",
 										"score": 4,
 										"winner": false,
 										"position": 8,
@@ -3610,6 +3879,7 @@
 									"away": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 5,
 										"winner": true,
 										"position": 3,
@@ -3626,6 +3896,7 @@
 									"home": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 3,
@@ -3634,6 +3905,7 @@
 									"away": {
 										"id": 91,
 										"name": "Monaco",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
 										"position": 2,
@@ -3650,6 +3922,7 @@
 									"home": {
 										"id": 80,
 										"name": "Lyon",
+										"country": "🇫🇷",
 										"score": 4,
 										"winner": true,
 										"position": 7,
@@ -3658,6 +3931,7 @@
 									"away": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": false,
 										"position": 3,
@@ -3674,6 +3948,7 @@
 									"home": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 4,
 										"winner": true,
 										"position": 3,
@@ -3682,6 +3957,7 @@
 									"away": {
 										"id": 112,
 										"name": "Metz",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": false,
 										"position": 16,
@@ -3698,6 +3974,7 @@
 									"home": {
 										"id": 97,
 										"name": "Lorient",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 17,
@@ -3706,6 +3983,7 @@
 									"away": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": true,
 										"position": 3,
@@ -3722,6 +4000,7 @@
 									"home": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
 										"position": 3,
@@ -3730,6 +4009,7 @@
 									"away": {
 										"id": 79,
 										"name": "Lille",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
 										"position": 4,
@@ -3746,6 +4026,7 @@
 									"home": {
 										"id": 116,
 										"name": "Lens",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": true,
 										"position": 6,
@@ -3754,6 +4035,7 @@
 									"away": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 3,
@@ -3770,6 +4052,7 @@
 									"home": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": true,
 										"position": 3,
@@ -3778,6 +4061,7 @@
 									"away": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 15,
@@ -3794,6 +4078,7 @@
 									"home": {
 										"id": 95,
 										"name": "Strasbourg",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 13,
@@ -3802,6 +4087,7 @@
 									"away": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
 										"position": 3,
@@ -3818,6 +4104,7 @@
 									"home": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": true,
 										"position": 3,
@@ -3826,6 +4113,7 @@
 									"away": {
 										"id": 81,
 										"name": "Marseille",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 9,
@@ -3842,6 +4130,7 @@
 									"home": {
 										"id": 99,
 										"name": "Clermont Foot",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
 										"position": 18,
@@ -3850,6 +4139,7 @@
 									"away": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
 										"position": 3,
@@ -3866,6 +4156,7 @@
 									"home": {
 										"id": 85,
 										"name": "Paris Saint Germain",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
 										"position": 1,
@@ -3874,6 +4165,7 @@
 									"away": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 3,
@@ -3890,6 +4182,7 @@
 									"home": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 3,
@@ -3898,6 +4191,7 @@
 									"away": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 5,
@@ -3914,6 +4208,7 @@
 									"home": {
 										"id": 85,
 										"name": "Paris Saint Germain",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": null,
 										"position": 1,
@@ -3922,6 +4217,7 @@
 									"away": {
 										"id": 106,
 										"name": "Stade Brestois 29",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": null,
 										"position": 3,
@@ -3934,6 +4230,7 @@
 					"away": {
 						"id": 93,
 						"name": "Reims",
+						"country": "🇫🇷",
 						"score": null,
 						"winner": null,
 						"position": 12,
@@ -3950,6 +4247,8 @@
 							"partidos_perdidos_de_local": 3,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 57.1,
 							"---||---": 0,
 							"goles_de_visitante": 12,
 							"promedio_de_goles_de_visitante": 1.5,
@@ -3958,6 +4257,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 50,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -3970,6 +4271,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -3977,7 +4280,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -3989,6 +4294,7 @@
 									"home": {
 										"id": 99,
 										"name": "Clermont Foot",
+										"country": "🇫🇷",
 										"score": 4,
 										"winner": true,
 										"position": 18,
@@ -3997,6 +4303,7 @@
 									"away": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 12,
@@ -4013,6 +4320,7 @@
 									"home": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 12,
@@ -4021,6 +4329,7 @@
 									"away": {
 										"id": 82,
 										"name": "Montpellier",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
 										"position": 10,
@@ -4037,6 +4346,7 @@
 									"home": {
 										"id": 95,
 										"name": "Strasbourg",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
 										"position": 13,
@@ -4045,6 +4355,7 @@
 									"away": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 12,
@@ -4061,6 +4372,7 @@
 									"home": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 12,
@@ -4069,6 +4381,7 @@
 									"away": {
 										"id": 84,
 										"name": "Nice",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 5,
@@ -4085,6 +4398,7 @@
 									"home": {
 										"id": 80,
 										"name": "Lyon",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
 										"position": 7,
@@ -4093,6 +4407,7 @@
 									"away": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
 										"position": 12,
@@ -4109,6 +4424,7 @@
 									"home": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
 										"position": 12,
@@ -4117,6 +4433,7 @@
 									"away": {
 										"id": 112,
 										"name": "Metz",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 16,
@@ -4133,6 +4450,7 @@
 									"home": {
 										"id": 85,
 										"name": "Paris Saint Germain",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": null,
 										"position": 1,
@@ -4141,6 +4459,7 @@
 									"away": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": null,
 										"position": 12,
@@ -4157,6 +4476,7 @@
 									"home": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 12,
@@ -4165,6 +4485,7 @@
 									"away": {
 										"id": 79,
 										"name": "Lille",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": true,
 										"position": 4,
@@ -4181,6 +4502,7 @@
 									"home": {
 										"id": 111,
 										"name": "LE Havre",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 15,
@@ -4189,6 +4511,7 @@
 									"away": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
 										"position": 12,
@@ -4205,6 +4528,7 @@
 									"home": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
 										"position": 12,
@@ -4213,6 +4537,7 @@
 									"away": {
 										"id": 116,
 										"name": "Lens",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
 										"position": 6,
@@ -4229,6 +4554,7 @@
 									"home": {
 										"id": 97,
 										"name": "Lorient",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
 										"position": 17,
@@ -4237,6 +4563,7 @@
 									"away": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
 										"position": 12,
@@ -4253,6 +4580,7 @@
 									"home": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": false,
 										"position": 12,
@@ -4261,6 +4589,7 @@
 									"away": {
 										"id": 96,
 										"name": "Toulouse",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
 										"position": 11,
@@ -4277,6 +4606,7 @@
 									"home": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 12,
@@ -4285,6 +4615,7 @@
 									"away": {
 										"id": 83,
 										"name": "Nantes",
+										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
 										"position": 14,
@@ -4301,6 +4632,7 @@
 									"home": {
 										"id": 115,
 										"name": "Sochaux",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
 										"position": null,
@@ -4309,6 +4641,7 @@
 									"away": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 2,
 										"winner": false,
 										"position": 12,
@@ -4325,6 +4658,7 @@
 									"home": {
 										"id": 91,
 										"name": "Monaco",
+										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
 										"position": 2,
@@ -4333,6 +4667,7 @@
 									"away": {
 										"id": 93,
 										"name": "Reims",
+										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
 										"position": 12,
@@ -4653,7 +4988,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -4664,6 +5004,7 @@
 					"home": {
 						"id": 223,
 						"name": "Chaves",
+						"country": "🇵🇹",
 						"score": null,
 						"winner": null,
 						"position": 17,
@@ -4680,6 +5021,8 @@
 							"partidos_perdidos_de_local": 4,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 50,
 							"---||---": 0,
 							"goles_de_visitante": 4,
 							"promedio_de_goles_de_visitante": 0.6,
@@ -4688,6 +5031,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 57.1,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -4700,6 +5045,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 2,
 							"ultimos_promedio_de_goles_de_visitante": 0.7,
@@ -4707,7 +5054,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -4719,6 +5068,7 @@
 									"home": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": false,
 										"position": 17,
@@ -4727,6 +5077,7 @@
 									"away": {
 										"id": 212,
 										"name": "FC Porto",
+										"country": "🇵🇹",
 										"score": 3,
 										"winner": true,
 										"position": 3,
@@ -4743,6 +5094,7 @@
 									"home": {
 										"id": 4716,
 										"name": "Casa Pia",
+										"country": "🇵🇹",
 										"score": 3,
 										"winner": true,
 										"position": 11,
@@ -4751,6 +5103,7 @@
 									"away": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": false,
 										"position": 17,
@@ -4767,6 +5120,7 @@
 									"home": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": null,
 										"position": 17,
@@ -4775,6 +5129,7 @@
 									"away": {
 										"id": 230,
 										"name": "Estoril",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": null,
 										"position": 13,
@@ -4791,6 +5146,7 @@
 									"home": {
 										"id": 810,
 										"name": "Vizela",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": false,
 										"position": 18,
@@ -4799,6 +5155,7 @@
 									"away": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": true,
 										"position": 17,
@@ -4815,6 +5172,7 @@
 									"home": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": false,
 										"position": 17,
@@ -4823,6 +5181,7 @@
 									"away": {
 										"id": 216,
 										"name": "Portimonense",
+										"country": "🇵🇹",
 										"score": 3,
 										"winner": true,
 										"position": 16,
@@ -4839,6 +5198,7 @@
 									"home": {
 										"id": 211,
 										"name": "Benfica",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": true,
 										"position": 2,
@@ -4847,6 +5207,7 @@
 									"away": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": false,
 										"position": 17,
@@ -4863,6 +5224,7 @@
 									"home": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": false,
 										"position": 17,
@@ -4871,6 +5233,7 @@
 									"away": {
 										"id": 224,
 										"name": "Guimaraes",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": true,
 										"position": 5,
@@ -4887,6 +5250,7 @@
 									"home": {
 										"id": 762,
 										"name": "GIL Vicente",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": null,
 										"position": 12,
@@ -4895,6 +5259,7 @@
 									"away": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": null,
 										"position": 17,
@@ -4911,6 +5276,7 @@
 									"home": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": false,
 										"position": 17,
@@ -4919,6 +5285,7 @@
 									"away": {
 										"id": 240,
 										"name": "Arouca",
+										"country": "🇵🇹",
 										"score": 5,
 										"winner": true,
 										"position": 7,
@@ -4935,6 +5302,7 @@
 									"home": {
 										"id": 15130,
 										"name": "Estrela",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": null,
 										"position": 15,
@@ -4943,6 +5311,7 @@
 									"away": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": null,
 										"position": 17,
@@ -4959,6 +5328,7 @@
 									"home": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": true,
 										"position": 17,
@@ -4967,6 +5337,7 @@
 									"away": {
 										"id": 222,
 										"name": "Boavista",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": false,
 										"position": 14,
@@ -4983,6 +5354,7 @@
 									"home": {
 										"id": 215,
 										"name": "Moreirense",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": true,
 										"position": 6,
@@ -4991,6 +5363,7 @@
 									"away": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": false,
 										"position": 17,
@@ -5007,6 +5380,7 @@
 									"home": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": null,
 										"position": 17,
@@ -5015,6 +5389,7 @@
 									"away": {
 										"id": 231,
 										"name": "Farense",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": null,
 										"position": 9,
@@ -5031,6 +5406,7 @@
 									"home": {
 										"id": 217,
 										"name": "SC Braga",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": null,
 										"position": 4,
@@ -5039,6 +5415,7 @@
 									"away": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": null,
 										"position": 17,
@@ -5055,6 +5432,7 @@
 									"home": {
 										"id": 223,
 										"name": "Chaves",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": null,
 										"position": 17,
@@ -5063,6 +5441,7 @@
 									"away": {
 										"id": 226,
 										"name": "Rio Ave",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": null,
 										"position": 10,
@@ -5075,6 +5454,7 @@
 					"away": {
 						"id": 242,
 						"name": "Famalicao",
+						"country": "🇵🇹",
 						"score": null,
 						"winner": null,
 						"position": 8,
@@ -5091,6 +5471,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 75,
 							"---||---": 0,
 							"goles_de_visitante": 7,
 							"promedio_de_goles_de_visitante": 1,
@@ -5099,6 +5481,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 42.9,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 4,
@@ -5111,6 +5495,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -5118,7 +5504,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -5130,6 +5518,7 @@
 									"home": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": true,
 										"position": 8,
@@ -5138,6 +5527,7 @@
 									"away": {
 										"id": 211,
 										"name": "Benfica",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": false,
 										"position": 2,
@@ -5154,6 +5544,7 @@
 									"home": {
 										"id": 230,
 										"name": "Estoril",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": true,
 										"position": 13,
@@ -5162,6 +5553,7 @@
 									"away": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": false,
 										"position": 8,
@@ -5178,6 +5570,7 @@
 									"home": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": null,
 										"position": 8,
@@ -5186,6 +5579,7 @@
 									"away": {
 										"id": 216,
 										"name": "Portimonense",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": null,
 										"position": 16,
@@ -5202,6 +5596,7 @@
 									"home": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": false,
 										"position": 8,
@@ -5210,6 +5605,7 @@
 									"away": {
 										"id": 228,
 										"name": "Sporting CP",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": true,
 										"position": 1,
@@ -5226,6 +5622,7 @@
 									"home": {
 										"id": 212,
 										"name": "FC Porto",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": null,
 										"position": 3,
@@ -5234,6 +5631,7 @@
 									"away": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": null,
 										"position": 8,
@@ -5250,6 +5648,7 @@
 									"home": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 3,
 										"winner": true,
 										"position": 8,
@@ -5258,6 +5657,7 @@
 									"away": {
 										"id": 810,
 										"name": "Vizela",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": false,
 										"position": 18,
@@ -5274,6 +5674,7 @@
 									"home": {
 										"id": 762,
 										"name": "GIL Vicente",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": false,
 										"position": 12,
@@ -5282,6 +5683,7 @@
 									"away": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": true,
 										"position": 8,
@@ -5298,6 +5700,7 @@
 									"home": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": null,
 										"position": 8,
@@ -5306,6 +5709,7 @@
 									"away": {
 										"id": 15130,
 										"name": "Estrela",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": null,
 										"position": 15,
@@ -5322,6 +5726,7 @@
 									"home": {
 										"id": 224,
 										"name": "Guimaraes",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": true,
 										"position": 5,
@@ -5330,6 +5735,7 @@
 									"away": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": false,
 										"position": 8,
@@ -5346,6 +5752,7 @@
 									"home": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": null,
 										"position": 8,
@@ -5354,6 +5761,7 @@
 									"away": {
 										"id": 222,
 										"name": "Boavista",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": null,
 										"position": 14,
@@ -5370,6 +5778,7 @@
 									"home": {
 										"id": 240,
 										"name": "Arouca",
+										"country": "🇵🇹",
 										"score": 3,
 										"winner": true,
 										"position": 7,
@@ -5378,6 +5787,7 @@
 									"away": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": false,
 										"position": 8,
@@ -5394,6 +5804,7 @@
 									"home": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": true,
 										"position": 8,
@@ -5402,6 +5813,7 @@
 									"away": {
 										"id": 226,
 										"name": "Rio Ave",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": false,
 										"position": 10,
@@ -5418,6 +5830,7 @@
 									"home": {
 										"id": 231,
 										"name": "Farense",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": null,
 										"position": 9,
@@ -5426,6 +5839,7 @@
 									"away": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": null,
 										"position": 8,
@@ -5442,6 +5856,7 @@
 									"home": {
 										"id": 215,
 										"name": "Moreirense",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": true,
 										"position": 6,
@@ -5450,6 +5865,7 @@
 									"away": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 0,
 										"winner": false,
 										"position": 8,
@@ -5466,6 +5882,7 @@
 									"home": {
 										"id": 242,
 										"name": "Famalicao",
+										"country": "🇵🇹",
 										"score": 1,
 										"winner": false,
 										"position": 8,
@@ -5474,6 +5891,7 @@
 									"away": {
 										"id": 217,
 										"name": "SC Braga",
+										"country": "🇵🇹",
 										"score": 2,
 										"winner": true,
 										"position": 4,
@@ -5765,7 +6183,10 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [
+							{ "description": "El equipo visitante es destacado y el local no" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -5810,8 +6231,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -5820,7 +6241,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -5831,6 +6257,7 @@
 					"home": {
 						"id": 512,
 						"name": "Frosinone",
+						"country": "🇮🇹",
 						"score": null,
 						"winner": null,
 						"position": 16,
@@ -5847,6 +6274,8 @@
 							"partidos_perdidos_de_local": 3,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 57.1,
 							"---||---": 0,
 							"goles_de_visitante": 7,
 							"promedio_de_goles_de_visitante": 0.9,
@@ -5855,6 +6284,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 5,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 62.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -5867,6 +6298,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 2,
 							"ultimos_promedio_de_goles_de_visitante": 0.7,
@@ -5874,7 +6307,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 3,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -5886,6 +6321,7 @@
 									"home": {
 										"id": 511,
 										"name": "Empoli",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": null,
 										"position": 17,
@@ -5894,6 +6330,7 @@
 									"away": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": null,
 										"position": 16,
@@ -5910,6 +6347,7 @@
 									"home": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 3,
 										"winner": true,
 										"position": 16,
@@ -5918,6 +6356,7 @@
 									"away": {
 										"id": 514,
 										"name": "Salernitana",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": false,
 										"position": 20,
@@ -5934,6 +6373,7 @@
 									"home": {
 										"id": 503,
 										"name": "Torino",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": null,
 										"position": 10,
@@ -5942,6 +6382,7 @@
 									"away": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": null,
 										"position": 16,
@@ -5958,6 +6399,7 @@
 									"home": {
 										"id": 492,
 										"name": "Napoli",
+										"country": "🇮🇹",
 										"score": 2,
 										"winner": null,
 										"position": 8,
@@ -5966,6 +6408,7 @@
 									"away": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 2,
 										"winner": null,
 										"position": 16,
@@ -5982,6 +6425,7 @@
 									"home": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": null,
 										"position": 16,
@@ -5990,6 +6434,7 @@
 									"away": {
 										"id": 500,
 										"name": "Bologna",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": null,
 										"position": 4,
@@ -6006,6 +6451,7 @@
 									"home": {
 										"id": 495,
 										"name": "Genoa",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": null,
 										"position": 12,
@@ -6014,6 +6460,7 @@
 									"away": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": null,
 										"position": 16,
@@ -6030,6 +6477,7 @@
 									"home": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 2,
 										"winner": false,
 										"position": 16,
@@ -6038,6 +6486,7 @@
 									"away": {
 										"id": 487,
 										"name": "Lazio",
+										"country": "🇮🇹",
 										"score": 3,
 										"winner": true,
 										"position": 7,
@@ -6054,6 +6503,7 @@
 									"home": {
 										"id": 488,
 										"name": "Sassuolo",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": true,
 										"position": 19,
@@ -6062,6 +6512,7 @@
 									"away": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": false,
 										"position": 16,
@@ -6078,6 +6529,7 @@
 									"home": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": null,
 										"position": 16,
@@ -6086,6 +6538,7 @@
 									"away": {
 										"id": 867,
 										"name": "Lecce",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": null,
 										"position": 13,
@@ -6102,6 +6555,7 @@
 									"home": {
 										"id": 496,
 										"name": "Juventus",
+										"country": "🇮🇹",
 										"score": 3,
 										"winner": true,
 										"position": 3,
@@ -6110,6 +6564,7 @@
 									"away": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 2,
 										"winner": false,
 										"position": 16,
@@ -6126,6 +6581,7 @@
 									"home": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": false,
 										"position": 16,
@@ -6134,6 +6590,7 @@
 									"away": {
 										"id": 497,
 										"name": "AS Roma",
+										"country": "🇮🇹",
 										"score": 3,
 										"winner": true,
 										"position": 6,
@@ -6150,6 +6607,7 @@
 									"home": {
 										"id": 502,
 										"name": "Fiorentina",
+										"country": "🇮🇹",
 										"score": 5,
 										"winner": true,
 										"position": 9,
@@ -6158,6 +6616,7 @@
 									"away": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": false,
 										"position": 16,
@@ -6174,6 +6633,7 @@
 									"home": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 2,
 										"winner": false,
 										"position": 16,
@@ -6182,6 +6642,7 @@
 									"away": {
 										"id": 489,
 										"name": "AC Milan",
+										"country": "🇮🇹",
 										"score": 3,
 										"winner": true,
 										"position": 2,
@@ -6198,6 +6659,7 @@
 									"home": {
 										"id": 504,
 										"name": "Verona",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": null,
 										"position": 14,
@@ -6206,6 +6668,7 @@
 									"away": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": null,
 										"position": 16,
@@ -6222,6 +6685,7 @@
 									"home": {
 										"id": 512,
 										"name": "Frosinone",
+										"country": "🇮🇹",
 										"score": 3,
 										"winner": true,
 										"position": 16,
@@ -6230,6 +6694,7 @@
 									"away": {
 										"id": 490,
 										"name": "Cagliari",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": false,
 										"position": 15,
@@ -6242,6 +6707,7 @@
 					"away": {
 						"id": 505,
 						"name": "Inter",
+						"country": "🇮🇹",
 						"score": null,
 						"winner": null,
 						"position": 1,
@@ -6258,6 +6724,8 @@
 							"partidos_perdidos_de_local": 0,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 8,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
 							"goles_de_visitante": 14,
 							"promedio_de_goles_de_visitante": 2,
@@ -6266,6 +6734,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 0,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 4,
@@ -6278,6 +6748,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -6285,7 +6757,9 @@
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -6297,6 +6771,7 @@
 									"home": {
 										"id": 488,
 										"name": "Sassuolo",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": true,
 										"position": 19,
@@ -6305,6 +6780,7 @@
 									"away": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": false,
 										"position": 1,
@@ -6321,6 +6797,7 @@
 									"home": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 2,
 										"winner": true,
 										"position": 1,
@@ -6329,6 +6806,7 @@
 									"away": {
 										"id": 503,
 										"name": "Torino",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": false,
 										"position": 10,
@@ -6345,6 +6823,7 @@
 									"home": {
 										"id": 489,
 										"name": "AC Milan",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": false,
 										"position": 2,
@@ -6353,6 +6832,7 @@
 									"away": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 2,
 										"winner": true,
 										"position": 1,
@@ -6369,6 +6849,7 @@
 									"home": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 2,
 										"winner": null,
 										"position": 1,
@@ -6377,6 +6858,7 @@
 									"away": {
 										"id": 490,
 										"name": "Cagliari",
+										"country": "🇮🇹",
 										"score": 2,
 										"winner": null,
 										"position": 15,
@@ -6393,6 +6875,7 @@
 									"home": {
 										"id": 494,
 										"name": "Udinese",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": false,
 										"position": 18,
@@ -6401,6 +6884,7 @@
 									"away": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 2,
 										"winner": true,
 										"position": 1,
@@ -6417,6 +6901,7 @@
 									"home": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 2,
 										"winner": true,
 										"position": 1,
@@ -6425,6 +6910,7 @@
 									"away": {
 										"id": 511,
 										"name": "Empoli",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": false,
 										"position": 17,
@@ -6441,6 +6927,7 @@
 									"home": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": null,
 										"position": 1,
@@ -6449,6 +6936,7 @@
 									"away": {
 										"id": 492,
 										"name": "Napoli",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": null,
 										"position": 8,
@@ -6465,6 +6953,7 @@
 									"home": {
 										"id": 530,
 										"name": "Atletico Madrid",
+										"country": "🇪🇸",
 										"score": 2,
 										"winner": true,
 										"position": null,
@@ -6473,6 +6962,7 @@
 									"away": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": false,
 										"position": 1,
@@ -6489,6 +6979,7 @@
 									"home": {
 										"id": 500,
 										"name": "Bologna",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": false,
 										"position": 4,
@@ -6497,6 +6988,7 @@
 									"away": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": true,
 										"position": 1,
@@ -6513,6 +7005,7 @@
 									"home": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 2,
 										"winner": true,
 										"position": 1,
@@ -6521,6 +7014,7 @@
 									"away": {
 										"id": 495,
 										"name": "Genoa",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": false,
 										"position": 12,
@@ -6537,6 +7031,7 @@
 									"home": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 4,
 										"winner": true,
 										"position": 1,
@@ -6545,6 +7040,7 @@
 									"away": {
 										"id": 499,
 										"name": "Atalanta",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": false,
 										"position": 5,
@@ -6561,6 +7057,7 @@
 									"home": {
 										"id": 867,
 										"name": "Lecce",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": false,
 										"position": 13,
@@ -6569,6 +7066,7 @@
 									"away": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 4,
 										"winner": true,
 										"position": 1,
@@ -6585,6 +7083,7 @@
 									"home": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 1,
 										"winner": true,
 										"position": 1,
@@ -6593,6 +7092,7 @@
 									"away": {
 										"id": 530,
 										"name": "Atletico Madrid",
+										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
 										"position": null,
@@ -6609,6 +7109,7 @@
 									"home": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 4,
 										"winner": true,
 										"position": 1,
@@ -6617,6 +7118,7 @@
 									"away": {
 										"id": 514,
 										"name": "Salernitana",
+										"country": "🇮🇹",
 										"score": 0,
 										"winner": false,
 										"position": 20,
@@ -6633,6 +7135,7 @@
 									"home": {
 										"id": 497,
 										"name": "AS Roma",
+										"country": "🇮🇹",
 										"score": 2,
 										"winner": false,
 										"position": 6,
@@ -6641,6 +7144,7 @@
 									"away": {
 										"id": 505,
 										"name": "Inter",
+										"country": "🇮🇹",
 										"score": 4,
 										"winner": true,
 										"position": 1,
@@ -7877,8 +8381,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -7887,7 +8391,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -7898,6 +8407,7 @@
 					"home": {
 						"id": 733,
 						"name": "Standard Liege",
+						"country": "🇧🇪",
 						"score": null,
 						"winner": null,
 						"position": 16,
@@ -7914,6 +8424,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 85.7,
 							"---||---": 0,
 							"goles_de_visitante": 12,
 							"promedio_de_goles_de_visitante": 1.5,
@@ -7922,6 +8434,8 @@
 							"partidos_perdidos_de_visitante": 5,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 7,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 37.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 2,
@@ -7934,6 +8448,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 3,
 							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 7,
 							"ultimos_promedio_de_goles_de_visitante": 2.3,
@@ -7941,7 +8457,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -7953,6 +8471,7 @@
 									"home": {
 										"id": 260,
 										"name": "OH Leuven",
+										"country": "🇧🇪",
 										"score": 3,
 										"winner": true,
 										"position": 24,
@@ -7961,6 +8480,7 @@
 									"away": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": false,
 										"position": 16,
@@ -7977,6 +8497,7 @@
 									"home": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": null,
 										"position": 16,
@@ -7985,6 +8506,7 @@
 									"away": {
 										"id": 735,
 										"name": "St. Truiden",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": null,
 										"position": 14,
@@ -8001,6 +8523,7 @@
 									"home": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 0,
 										"winner": null,
 										"position": 16,
@@ -8009,6 +8532,7 @@
 									"away": {
 										"id": 266,
 										"name": "KV Mechelen",
+										"country": "🇧🇪",
 										"score": 0,
 										"winner": null,
 										"position": 9,
@@ -8025,6 +8549,7 @@
 									"home": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 3,
 										"winner": null,
 										"position": 21,
@@ -8033,6 +8558,7 @@
 									"away": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 3,
 										"winner": null,
 										"position": 16,
@@ -8049,6 +8575,7 @@
 									"home": {
 										"id": 735,
 										"name": "St. Truiden",
+										"country": "🇧🇪",
 										"score": 3,
 										"winner": null,
 										"position": 14,
@@ -8057,6 +8584,7 @@
 									"away": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 3,
 										"winner": null,
 										"position": 16,
@@ -8073,6 +8601,7 @@
 									"home": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 0,
 										"winner": null,
 										"position": 16,
@@ -8081,6 +8610,7 @@
 									"away": {
 										"id": 260,
 										"name": "OH Leuven",
+										"country": "🇧🇪",
 										"score": 0,
 										"winner": null,
 										"position": 24,
@@ -8097,6 +8627,7 @@
 									"home": {
 										"id": 631,
 										"name": "Gent",
+										"country": "🇧🇪",
 										"score": 5,
 										"winner": true,
 										"position": 7,
@@ -8105,6 +8636,7 @@
 									"away": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": false,
 										"position": 16,
@@ -8121,6 +8653,7 @@
 									"home": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 4,
 										"winner": true,
 										"position": 16,
@@ -8129,6 +8662,7 @@
 									"away": {
 										"id": 739,
 										"name": "AS Eupen",
+										"country": "🇧🇪",
 										"score": 0,
 										"winner": false,
 										"position": 27,
@@ -8145,6 +8679,7 @@
 									"home": {
 										"id": 742,
 										"name": "Genk",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": true,
 										"position": 6,
@@ -8153,6 +8688,7 @@
 									"away": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 0,
 										"winner": false,
 										"position": 16,
@@ -8169,6 +8705,7 @@
 									"home": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 4,
 										"winner": true,
 										"position": 16,
@@ -8177,6 +8714,7 @@
 									"away": {
 										"id": 631,
 										"name": "Gent",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": false,
 										"position": 7,
@@ -8193,6 +8731,7 @@
 									"home": {
 										"id": 1393,
 										"name": "Union St. Gilloise",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": true,
 										"position": 1,
@@ -8201,6 +8740,7 @@
 									"away": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": false,
 										"position": 16,
@@ -8217,6 +8757,7 @@
 									"home": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": true,
 										"position": 21,
@@ -8225,6 +8766,7 @@
 									"away": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": false,
 										"position": 16,
@@ -8241,6 +8783,7 @@
 									"home": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": true,
 										"position": 16,
@@ -8249,6 +8792,7 @@
 									"away": {
 										"id": 260,
 										"name": "OH Leuven",
+										"country": "🇧🇪",
 										"score": 0,
 										"winner": false,
 										"position": 24,
@@ -8265,6 +8809,7 @@
 									"home": {
 										"id": 6224,
 										"name": "RWDM",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": null,
 										"position": 20,
@@ -8273,6 +8818,7 @@
 									"away": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": null,
 										"position": 16,
@@ -8289,6 +8835,7 @@
 									"home": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 0,
 										"winner": false,
 										"position": 16,
@@ -8297,6 +8844,7 @@
 									"away": {
 										"id": 740,
 										"name": "Antwerp",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": true,
 										"position": 3,
@@ -8309,6 +8857,7 @@
 					"away": {
 						"id": 261,
 						"name": "KVC Westerlo",
+						"country": "🇧🇪",
 						"score": null,
 						"winner": null,
 						"position": 21,
@@ -8325,6 +8874,8 @@
 							"partidos_perdidos_de_local": 3,
 							"partidos_empatados_de_local": 4,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---||---": 0,
 							"goles_de_visitante": 7,
 							"promedio_de_goles_de_visitante": 1.2,
@@ -8333,6 +8884,8 @@
 							"partidos_perdidos_de_visitante": 5,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 16.7,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 5,
@@ -8345,6 +8898,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 3,
 							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -8352,7 +8907,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 3,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 0
 						},
 						"matches": [
 							{
@@ -8364,6 +8921,7 @@
 									"home": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": null,
 										"position": 21,
@@ -8372,6 +8930,7 @@
 									"away": {
 										"id": 735,
 										"name": "St. Truiden",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": null,
 										"position": 14,
@@ -8388,6 +8947,7 @@
 									"home": {
 										"id": 631,
 										"name": "Gent",
+										"country": "🇧🇪",
 										"score": 3,
 										"winner": true,
 										"position": 7,
@@ -8396,6 +8956,7 @@
 									"away": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": false,
 										"position": 21,
@@ -8412,6 +8973,7 @@
 									"home": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": null,
 										"position": 21,
@@ -8420,6 +8982,7 @@
 									"away": {
 										"id": 260,
 										"name": "OH Leuven",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": null,
 										"position": 24,
@@ -8436,6 +8999,7 @@
 									"home": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 3,
 										"winner": null,
 										"position": 21,
@@ -8444,6 +9008,7 @@
 									"away": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 3,
 										"winner": null,
 										"position": 16,
@@ -8460,6 +9025,7 @@
 									"home": {
 										"id": 266,
 										"name": "KV Mechelen",
+										"country": "🇧🇪",
 										"score": 3,
 										"winner": true,
 										"position": 9,
@@ -8468,6 +9034,7 @@
 									"away": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": false,
 										"position": 21,
@@ -8484,6 +9051,7 @@
 									"home": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 0,
 										"winner": false,
 										"position": 21,
@@ -8492,6 +9060,7 @@
 									"away": {
 										"id": 631,
 										"name": "Gent",
+										"country": "🇧🇪",
 										"score": 3,
 										"winner": true,
 										"position": 7,
@@ -8508,6 +9077,7 @@
 									"home": {
 										"id": 735,
 										"name": "St. Truiden",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": true,
 										"position": 14,
@@ -8516,6 +9086,7 @@
 									"away": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 0,
 										"winner": false,
 										"position": 21,
@@ -8532,6 +9103,7 @@
 									"home": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": null,
 										"position": 21,
@@ -8540,6 +9112,7 @@
 									"away": {
 										"id": 742,
 										"name": "Genk",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": null,
 										"position": 6,
@@ -8556,6 +9129,7 @@
 									"home": {
 										"id": 266,
 										"name": "KV Mechelen",
+										"country": "🇧🇪",
 										"score": 3,
 										"winner": true,
 										"position": 9,
@@ -8564,6 +9138,7 @@
 									"away": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": false,
 										"position": 21,
@@ -8580,6 +9155,7 @@
 									"home": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 0,
 										"winner": false,
 										"position": 21,
@@ -8588,6 +9164,7 @@
 									"away": {
 										"id": 736,
 										"name": "Charleroi",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": true,
 										"position": 11,
@@ -8604,6 +9181,7 @@
 									"home": {
 										"id": 735,
 										"name": "St. Truiden",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": true,
 										"position": 14,
@@ -8612,6 +9190,7 @@
 									"away": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 0,
 										"winner": false,
 										"position": 21,
@@ -8628,6 +9207,7 @@
 									"home": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": true,
 										"position": 21,
@@ -8636,6 +9216,7 @@
 									"away": {
 										"id": 733,
 										"name": "Standard Liege",
+										"country": "🇧🇪",
 										"score": 1,
 										"winner": false,
 										"position": 16,
@@ -8652,6 +9233,7 @@
 									"home": {
 										"id": 1393,
 										"name": "Union St. Gilloise",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": null,
 										"position": 1,
@@ -8660,6 +9242,7 @@
 									"away": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": null,
 										"position": 21,
@@ -8676,6 +9259,7 @@
 									"home": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 0,
 										"winner": false,
 										"position": 21,
@@ -8684,6 +9268,7 @@
 									"away": {
 										"id": 260,
 										"name": "OH Leuven",
+										"country": "🇧🇪",
 										"score": 3,
 										"winner": true,
 										"position": 24,
@@ -8700,6 +9285,7 @@
 									"home": {
 										"id": 261,
 										"name": "KVC Westerlo",
+										"country": "🇧🇪",
 										"score": 4,
 										"winner": true,
 										"position": 21,
@@ -8708,6 +9294,7 @@
 									"away": {
 										"id": 741,
 										"name": "Cercle Brugge",
+										"country": "🇧🇪",
 										"score": 2,
 										"winner": false,
 										"position": 5,
@@ -8973,7 +9560,7 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [],
+						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -9028,7 +9615,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -9039,6 +9631,7 @@
 					"home": {
 						"id": 2951,
 						"name": "Abha",
+						"country": "🇸🇦",
 						"score": null,
 						"winner": null,
 						"position": 16,
@@ -9055,6 +9648,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 85.7,
 							"---||---": 0,
 							"goles_de_visitante": 7,
 							"promedio_de_goles_de_visitante": 0.9,
@@ -9063,6 +9658,8 @@
 							"partidos_perdidos_de_visitante": 7,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 12.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -9075,6 +9672,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 1,
 							"ultimos_promedio_de_goles_de_visitante": 0.3,
@@ -9082,7 +9681,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -9094,6 +9695,7 @@
 									"home": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 16,
@@ -9102,6 +9704,7 @@
 									"away": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 5,
@@ -9118,6 +9721,7 @@
 									"home": {
 										"id": 2977,
 										"name": "Al Akhdoud",
+										"country": "🇸🇦",
 										"score": 4,
 										"winner": true,
 										"position": 15,
@@ -9126,6 +9730,7 @@
 									"away": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 16,
@@ -9142,6 +9747,7 @@
 									"home": {
 										"id": 2940,
 										"name": "Al Shabab",
+										"country": "🇸🇦",
 										"score": 5,
 										"winner": true,
 										"position": 6,
@@ -9150,6 +9756,7 @@
 									"away": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 16,
@@ -9166,6 +9773,7 @@
 									"home": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 16,
@@ -9174,6 +9782,7 @@
 									"away": {
 										"id": 2931,
 										"name": "Al-Fateh",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 7,
@@ -9190,6 +9799,7 @@
 									"home": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 16,
@@ -9198,6 +9808,7 @@
 									"away": {
 										"id": 2939,
 										"name": "Al-Nassr",
+										"country": "🇸🇦",
 										"score": 8,
 										"winner": true,
 										"position": 2,
@@ -9214,6 +9825,7 @@
 									"home": {
 										"id": 10511,
 										"name": "Al Riyadh",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 14,
@@ -9222,6 +9834,7 @@
 									"away": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 16,
@@ -9238,6 +9851,7 @@
 									"home": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 16,
@@ -9246,6 +9860,7 @@
 									"away": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 12,
@@ -9262,6 +9877,7 @@
 									"home": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 8,
@@ -9270,6 +9886,7 @@
 									"away": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 16,
@@ -9286,6 +9903,7 @@
 									"home": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 16,
@@ -9294,6 +9912,7 @@
 									"away": {
 										"id": 2942,
 										"name": "Al Taee",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 17,
@@ -9310,6 +9929,7 @@
 									"home": {
 										"id": 2944,
 										"name": "Al-Fayha",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 9,
@@ -9318,6 +9938,7 @@
 									"away": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": false,
 										"position": 16,
@@ -9334,6 +9955,7 @@
 									"home": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 16,
@@ -9342,6 +9964,7 @@
 									"away": {
 										"id": 2936,
 										"name": "Al Taawon",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 4,
@@ -9358,6 +9981,7 @@
 									"home": {
 										"id": 2935,
 										"name": "Al-Raed",
+										"country": "🇸🇦",
 										"score": 4,
 										"winner": true,
 										"position": 13,
@@ -9366,6 +9990,7 @@
 									"away": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": false,
 										"position": 16,
@@ -9382,6 +10007,7 @@
 									"home": {
 										"id": 2932,
 										"name": "Al-Hilal Saudi FC",
+										"country": "🇸🇦",
 										"score": 7,
 										"winner": true,
 										"position": 1,
@@ -9390,6 +10016,7 @@
 									"away": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 16,
@@ -9406,6 +10033,7 @@
 									"home": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 16,
@@ -9414,6 +10042,7 @@
 									"away": {
 										"id": 2945,
 										"name": "Al-Hazm",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 18,
@@ -9430,6 +10059,7 @@
 									"home": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 11,
@@ -9438,6 +10068,7 @@
 									"away": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 16,
@@ -9450,6 +10081,7 @@
 					"away": {
 						"id": 2956,
 						"name": "Damac",
+						"country": "🇸🇦",
 						"score": null,
 						"winner": null,
 						"position": 10,
@@ -9466,6 +10098,8 @@
 							"partidos_perdidos_de_local": 5,
 							"partidos_empatados_de_local": 0,
 							"partidos_con_goles_de_local": 3,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 37.5,
 							"---||---": 0,
 							"goles_de_visitante": 6,
 							"promedio_de_goles_de_visitante": 0.9,
@@ -9474,6 +10108,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 57.1,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -9486,6 +10122,8 @@
 							"ultimos_partidos_perdidos_de_local": 3,
 							"ultimos_partidos_empatados_de_local": 0,
 							"ultimos_partidos_con_goles_de_local": 0,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 0,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -9493,7 +10131,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -9505,6 +10145,7 @@
 									"home": {
 										"id": 2929,
 										"name": "Al-Ahli Jeddah",
+										"country": "🇸🇦",
 										"score": 4,
 										"winner": true,
 										"position": 3,
@@ -9513,6 +10154,7 @@
 									"away": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 10,
@@ -9529,6 +10171,7 @@
 									"home": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 10,
@@ -9537,6 +10180,7 @@
 									"away": {
 										"id": 2936,
 										"name": "Al Taawon",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 4,
@@ -9553,6 +10197,7 @@
 									"home": {
 										"id": 2977,
 										"name": "Al Akhdoud",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 15,
@@ -9561,6 +10206,7 @@
 									"away": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 10,
@@ -9577,6 +10223,7 @@
 									"home": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 10,
@@ -9585,6 +10232,7 @@
 									"away": {
 										"id": 2939,
 										"name": "Al-Nassr",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 2,
@@ -9601,6 +10249,7 @@
 									"home": {
 										"id": 2945,
 										"name": "Al-Hazm",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 18,
@@ -9609,6 +10258,7 @@
 									"away": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 10,
@@ -9625,6 +10275,7 @@
 									"home": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 10,
@@ -9633,6 +10284,7 @@
 									"away": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 11,
@@ -9649,6 +10301,7 @@
 									"home": {
 										"id": 2932,
 										"name": "Al-Hilal Saudi FC",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 1,
@@ -9657,6 +10310,7 @@
 									"away": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 10,
@@ -9673,6 +10327,7 @@
 									"home": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 10,
@@ -9681,6 +10336,7 @@
 									"away": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 12,
@@ -9697,6 +10353,7 @@
 									"home": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 10,
@@ -9705,6 +10362,7 @@
 									"away": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 8,
@@ -9721,6 +10379,7 @@
 									"home": {
 										"id": 2931,
 										"name": "Al-Fateh",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 7,
@@ -9729,6 +10388,7 @@
 									"away": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 10,
@@ -9745,6 +10405,7 @@
 									"home": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 10,
@@ -9753,6 +10414,7 @@
 									"away": {
 										"id": 2940,
 										"name": "Al Shabab",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 6,
@@ -9769,6 +10431,7 @@
 									"home": {
 										"id": 10511,
 										"name": "Al Riyadh",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 14,
@@ -9777,6 +10440,7 @@
 									"away": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 10,
@@ -9793,6 +10457,7 @@
 									"home": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 10,
@@ -9801,6 +10466,7 @@
 									"away": {
 										"id": 2942,
 										"name": "Al Taee",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 17,
@@ -9817,6 +10483,7 @@
 									"home": {
 										"id": 2935,
 										"name": "Al-Raed",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 13,
@@ -9825,6 +10492,7 @@
 									"away": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 10,
@@ -9841,6 +10509,7 @@
 									"home": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 10,
@@ -9849,6 +10518,7 @@
 									"away": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 5,
@@ -9871,7 +10541,7 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0.3,
-						"warnings": [],
+						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -9916,8 +10586,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -9926,7 +10596,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -9937,6 +10612,7 @@
 					"home": {
 						"id": 2938,
 						"name": "Al-Ittihad FC",
+						"country": "🇸🇦",
 						"score": null,
 						"winner": null,
 						"position": 5,
@@ -9953,6 +10629,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 1,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 75,
 							"---||---": 0,
 							"goles_de_visitante": 9,
 							"promedio_de_goles_de_visitante": 1.3,
@@ -9961,6 +10639,8 @@
 							"partidos_perdidos_de_visitante": 4,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 4,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 42.9,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 5,
@@ -9973,6 +10653,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
@@ -9980,7 +10662,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -9992,6 +10676,7 @@
 									"home": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 16,
@@ -10000,6 +10685,7 @@
 									"away": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 5,
@@ -10016,6 +10702,7 @@
 									"home": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 5,
@@ -10024,6 +10711,7 @@
 									"away": {
 										"id": 2940,
 										"name": "Al Shabab",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 6,
@@ -10040,6 +10728,7 @@
 									"home": {
 										"id": 2945,
 										"name": "Al-Hazm",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": false,
 										"position": 18,
@@ -10048,6 +10737,7 @@
 									"away": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 5,
@@ -10064,6 +10754,7 @@
 									"home": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 5,
@@ -10072,6 +10763,7 @@
 									"away": {
 										"id": 2936,
 										"name": "Al Taawon",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 4,
@@ -10088,6 +10780,7 @@
 									"home": {
 										"id": 2929,
 										"name": "Al-Ahli Jeddah",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 3,
@@ -10096,6 +10789,7 @@
 									"away": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 5,
@@ -10112,6 +10806,7 @@
 									"home": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 5,
@@ -10120,6 +10815,7 @@
 									"away": {
 										"id": 2944,
 										"name": "Al-Fayha",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 9,
@@ -10136,6 +10832,7 @@
 									"home": {
 										"id": 2931,
 										"name": "Al-Fateh",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": false,
 										"position": 7,
@@ -10144,6 +10841,7 @@
 									"away": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 4,
 										"winner": true,
 										"position": 5,
@@ -10160,6 +10858,7 @@
 									"home": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 5,
@@ -10168,6 +10867,7 @@
 									"away": {
 										"id": 2932,
 										"name": "Al-Hilal Saudi FC",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 1,
@@ -10184,6 +10884,7 @@
 									"home": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 5,
@@ -10192,6 +10893,7 @@
 									"away": {
 										"id": 2977,
 										"name": "Al Akhdoud",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 15,
@@ -10208,6 +10910,7 @@
 									"home": {
 										"id": 2932,
 										"name": "Al-Hilal Saudi FC",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 1,
@@ -10216,6 +10919,7 @@
 									"away": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 5,
@@ -10232,6 +10936,7 @@
 									"home": {
 										"id": 2932,
 										"name": "Al-Hilal Saudi FC",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 1,
@@ -10240,6 +10945,7 @@
 									"away": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 5,
@@ -10256,6 +10962,7 @@
 									"home": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 5,
@@ -10264,6 +10971,7 @@
 									"away": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 12,
@@ -10280,6 +10988,7 @@
 									"home": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 5,
@@ -10288,6 +10997,7 @@
 									"away": {
 										"id": 4216,
 										"name": "Navbahor",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": null,
@@ -10304,6 +11014,7 @@
 									"home": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 5,
@@ -10312,6 +11023,7 @@
 									"away": {
 										"id": 10511,
 										"name": "Al Riyadh",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 14,
@@ -10328,6 +11040,7 @@
 									"home": {
 										"id": 4216,
 										"name": "Navbahor",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": null,
@@ -10336,6 +11049,7 @@
 									"away": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 5,
@@ -10348,6 +11062,7 @@
 					"away": {
 						"id": 2934,
 						"name": "Al-Ettifaq",
+						"country": "🇸🇦",
 						"score": null,
 						"winner": null,
 						"position": 8,
@@ -10364,6 +11079,8 @@
 							"partidos_perdidos_de_local": 3,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 62.5,
 							"---||---": 0,
 							"goles_de_visitante": 8,
 							"promedio_de_goles_de_visitante": 1.1,
@@ -10372,6 +11089,8 @@
 							"partidos_perdidos_de_visitante": 2,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 3,
@@ -10384,6 +11103,8 @@
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -10391,7 +11112,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -10403,6 +11126,7 @@
 									"home": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 8,
@@ -10411,6 +11135,7 @@
 									"away": {
 										"id": 2944,
 										"name": "Al-Fayha",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 9,
@@ -10427,6 +11152,7 @@
 									"home": {
 										"id": 2935,
 										"name": "Al-Raed",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": null,
 										"position": 13,
@@ -10435,6 +11161,7 @@
 									"away": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": null,
 										"position": 8,
@@ -10451,6 +11178,7 @@
 									"home": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 8,
@@ -10459,6 +11187,7 @@
 									"away": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 12,
@@ -10475,6 +11204,7 @@
 									"home": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 8,
@@ -10483,6 +11213,7 @@
 									"away": {
 										"id": 10511,
 										"name": "Al Riyadh",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 14,
@@ -10499,6 +11230,7 @@
 									"home": {
 										"id": 2931,
 										"name": "Al-Fateh",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 7,
@@ -10507,6 +11239,7 @@
 									"away": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 8,
@@ -10523,6 +11256,7 @@
 									"home": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": null,
 										"position": 8,
@@ -10531,6 +11265,7 @@
 									"away": {
 										"id": 2929,
 										"name": "Al-Ahli Jeddah",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": null,
 										"position": 3,
@@ -10547,6 +11282,7 @@
 									"home": {
 										"id": 2942,
 										"name": "Al Taee",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 17,
@@ -10555,6 +11291,7 @@
 									"away": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 8,
@@ -10571,6 +11308,7 @@
 									"home": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 8,
@@ -10579,6 +11317,7 @@
 									"away": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 16,
@@ -10595,6 +11334,7 @@
 									"home": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 10,
@@ -10603,6 +11343,7 @@
 									"away": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 8,
@@ -10619,6 +11360,7 @@
 									"home": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 8,
@@ -10627,6 +11369,7 @@
 									"away": {
 										"id": 2932,
 										"name": "Al-Hilal Saudi FC",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 1,
@@ -10643,6 +11386,7 @@
 									"home": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 11,
@@ -10651,6 +11395,7 @@
 									"away": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 8,
@@ -10667,6 +11412,7 @@
 									"home": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 8,
@@ -10675,6 +11421,7 @@
 									"away": {
 										"id": 2945,
 										"name": "Al-Hazm",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 18,
@@ -10691,6 +11438,7 @@
 									"home": {
 										"id": 2939,
 										"name": "Al-Nassr",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 2,
@@ -10699,6 +11447,7 @@
 									"away": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 8,
@@ -10715,6 +11464,7 @@
 									"home": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 8,
@@ -10723,6 +11473,7 @@
 									"away": {
 										"id": 2936,
 										"name": "Al Taawon",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 4,
@@ -10739,6 +11490,7 @@
 									"home": {
 										"id": 2940,
 										"name": "Al Shabab",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 6,
@@ -10747,6 +11499,7 @@
 									"away": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 8,
@@ -10824,7 +11577,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -10835,6 +11593,7 @@
 					"home": {
 						"id": 2928,
 						"name": "Al Khaleej Saihat",
+						"country": "🇸🇦",
 						"score": null,
 						"winner": null,
 						"position": 11,
@@ -10851,6 +11610,8 @@
 							"partidos_perdidos_de_local": 3,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 57.1,
 							"---||---": 0,
 							"goles_de_visitante": 7,
 							"promedio_de_goles_de_visitante": 0.9,
@@ -10859,6 +11620,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 3,
 							"partidos_con_goles_de_visitante": 6,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 87.5,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 1,
@@ -10871,6 +11634,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 2,
 							"ultimos_promedio_de_goles_de_visitante": 0.7,
@@ -10878,7 +11643,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 2
+							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -10890,6 +11657,7 @@
 									"home": {
 										"id": 2942,
 										"name": "Al Taee",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 17,
@@ -10898,6 +11666,7 @@
 									"away": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 11,
@@ -10914,6 +11683,7 @@
 									"home": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 11,
@@ -10922,6 +11692,7 @@
 									"away": {
 										"id": 2939,
 										"name": "Al-Nassr",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 2,
@@ -10938,6 +11709,7 @@
 									"home": {
 										"id": 2936,
 										"name": "Al Taawon",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 4,
@@ -10946,6 +11718,7 @@
 									"away": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 11,
@@ -10962,6 +11735,7 @@
 									"home": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 11,
@@ -10970,6 +11744,7 @@
 									"away": {
 										"id": 2932,
 										"name": "Al-Hilal Saudi FC",
+										"country": "🇸🇦",
 										"score": 4,
 										"winner": true,
 										"position": 1,
@@ -10986,6 +11761,7 @@
 									"home": {
 										"id": 2935,
 										"name": "Al-Raed",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 13,
@@ -10994,6 +11770,7 @@
 									"away": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 11,
@@ -11010,6 +11787,7 @@
 									"home": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 10,
@@ -11018,6 +11796,7 @@
 									"away": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 11,
@@ -11034,6 +11813,7 @@
 									"home": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": null,
 										"position": 11,
@@ -11042,6 +11822,7 @@
 									"away": {
 										"id": 2977,
 										"name": "Al Akhdoud",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": null,
 										"position": 15,
@@ -11058,6 +11839,7 @@
 									"home": {
 										"id": 2931,
 										"name": "Al-Fateh",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 7,
@@ -11066,6 +11848,7 @@
 									"away": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 11,
@@ -11082,6 +11865,7 @@
 									"home": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 11,
@@ -11090,6 +11874,7 @@
 									"away": {
 										"id": 2940,
 										"name": "Al Shabab",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 6,
@@ -11106,6 +11891,7 @@
 									"home": {
 										"id": 2945,
 										"name": "Al-Hazm",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 18,
@@ -11114,6 +11900,7 @@
 									"away": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 11,
@@ -11130,6 +11917,7 @@
 									"home": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 11,
@@ -11138,6 +11926,7 @@
 									"away": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 8,
@@ -11154,6 +11943,7 @@
 									"home": {
 										"id": 2929,
 										"name": "Al-Ahli Jeddah",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 3,
@@ -11162,6 +11952,7 @@
 									"away": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 11,
@@ -11178,6 +11969,7 @@
 									"home": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 11,
@@ -11186,6 +11978,7 @@
 									"away": {
 										"id": 2944,
 										"name": "Al-Fayha",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 9,
@@ -11202,6 +11995,7 @@
 									"home": {
 										"id": 10511,
 										"name": "Al Riyadh",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 14,
@@ -11210,6 +12004,7 @@
 									"away": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 11,
@@ -11226,6 +12021,7 @@
 									"home": {
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 11,
@@ -11234,6 +12030,7 @@
 									"away": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 16,
@@ -11246,6 +12043,7 @@
 					"away": {
 						"id": 2937,
 						"name": "Al Wehda Club",
+						"country": "🇸🇦",
 						"score": null,
 						"winner": null,
 						"position": 12,
@@ -11262,6 +12060,8 @@
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 3,
 							"partidos_con_goles_de_local": 6,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 71.4,
 							"---||---": 0,
 							"goles_de_visitante": 3,
 							"promedio_de_goles_de_visitante": 0.4,
@@ -11270,6 +12070,8 @@
 							"partidos_perdidos_de_visitante": 6,
 							"partidos_empatados_de_visitante": 1,
 							"partidos_con_goles_de_visitante": 2,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 25,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 0,
@@ -11282,6 +12084,8 @@
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 2,
 							"ultimos_promedio_de_goles_de_visitante": 0.7,
@@ -11289,7 +12093,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
 						"matches": [
 							{
@@ -11301,6 +12107,7 @@
 									"home": {
 										"id": 2939,
 										"name": "Al-Nassr",
+										"country": "🇸🇦",
 										"score": 6,
 										"winner": true,
 										"position": 2,
@@ -11309,6 +12116,7 @@
 									"away": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 12,
@@ -11325,6 +12133,7 @@
 									"home": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 12,
@@ -11333,6 +12142,7 @@
 									"away": {
 										"id": 2945,
 										"name": "Al-Hazm",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 18,
@@ -11349,6 +12159,7 @@
 									"home": {
 										"id": 2934,
 										"name": "Al-Ettifaq",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 8,
@@ -11357,6 +12168,7 @@
 									"away": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
 										"position": 12,
@@ -11373,6 +12185,7 @@
 									"home": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 12,
@@ -11381,6 +12194,7 @@
 									"away": {
 										"id": 2929,
 										"name": "Al-Ahli Jeddah",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 3,
@@ -11397,6 +12211,7 @@
 									"home": {
 										"id": 2944,
 										"name": "Al-Fayha",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 9,
@@ -11405,6 +12220,7 @@
 									"away": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 12,
@@ -11421,6 +12237,7 @@
 									"home": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": false,
 										"position": 12,
@@ -11429,6 +12246,7 @@
 									"away": {
 										"id": 2931,
 										"name": "Al-Fateh",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 7,
@@ -11445,6 +12263,7 @@
 									"home": {
 										"id": 2951,
 										"name": "Abha",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 16,
@@ -11453,6 +12272,7 @@
 									"away": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 12,
@@ -11469,6 +12289,7 @@
 									"home": {
 										"id": 2956,
 										"name": "Damac",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 10,
@@ -11477,6 +12298,7 @@
 									"away": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 12,
@@ -11493,6 +12315,7 @@
 									"home": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": null,
 										"position": 12,
@@ -11501,6 +12324,7 @@
 									"away": {
 										"id": 2936,
 										"name": "Al Taawon",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": null,
 										"position": 4,
@@ -11517,6 +12341,7 @@
 									"home": {
 										"id": 2938,
 										"name": "Al-Ittihad FC",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 5,
@@ -11525,6 +12350,7 @@
 									"away": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 12,
@@ -11541,6 +12367,7 @@
 									"home": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 12,
@@ -11549,6 +12376,7 @@
 									"away": {
 										"id": 2942,
 										"name": "Al Taee",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
 										"position": 17,
@@ -11565,6 +12393,7 @@
 									"home": {
 										"id": 2940,
 										"name": "Al Shabab",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
 										"position": 6,
@@ -11573,6 +12402,7 @@
 									"away": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 12,
@@ -11589,6 +12419,7 @@
 									"home": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
 										"position": 12,
@@ -11597,6 +12428,7 @@
 									"away": {
 										"id": 10511,
 										"name": "Al Riyadh",
+										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
 										"position": 14,
@@ -11613,6 +12445,7 @@
 									"home": {
 										"id": 2932,
 										"name": "Al-Hilal Saudi FC",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 1,
@@ -11621,6 +12454,7 @@
 									"away": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 12,
@@ -11637,6 +12471,7 @@
 									"home": {
 										"id": 2937,
 										"name": "Al Wehda Club",
+										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
 										"position": 12,
@@ -11645,6 +12480,7 @@
 									"away": {
 										"id": 2977,
 										"name": "Al Akhdoud",
+										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
 										"position": 15,
@@ -11936,7 +12772,7 @@
 						"name": "Goles por equipo local",
 						"recommendable": false,
 						"acceptancePercentage": 0.25,
-						"warnings": [],
+						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
 						"right": false,
 						"fail": false,
 						"criteria": {
@@ -11981,8 +12817,8 @@
 					{
 						"id": "GPP",
 						"name": "Goles por partido",
-						"recommendable": true,
-						"acceptancePercentage": 1,
+						"recommendable": false,
+						"acceptancePercentage": 0.5,
 						"warnings": [],
 						"right": false,
 						"fail": false,
@@ -11991,7 +12827,12 @@
 								{
 									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 1
+									"weight": 0.5
+								},
+								{
+									"description": "El equipo local puede hacer un gol",
+									"check": "❌",
+									"weight": 0.5
 								}
 							],
 							"away": []
@@ -12002,6 +12843,7 @@
 					"home": {
 						"id": 119,
 						"name": "Internacional",
+						"country": "🇧🇷",
 						"score": null,
 						"winner": null,
 						"position": 9,
@@ -12018,6 +12860,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 2,
 							"partidos_con_goles_de_local": 4,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 80,
 							"---||---": 0,
 							"goles_de_visitante": 9,
 							"promedio_de_goles_de_visitante": 0.9,
@@ -12026,6 +12870,8 @@
 							"partidos_perdidos_de_visitante": 1,
 							"partidos_empatados_de_visitante": 4,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 90,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 1,
@@ -12038,6 +12884,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 2,
 							"ultimos_promedio_de_goles_de_visitante": 0.7,
@@ -12045,7 +12893,9 @@
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 1
+							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
 						"matches": [
 							{
@@ -12057,6 +12907,7 @@
 									"home": {
 										"id": 15708,
 										"name": "Real Tomayapo",
+										"country": "🇧🇷",
 										"score": null,
 										"winner": null,
 										"position": null,
@@ -12065,6 +12916,7 @@
 									"away": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": null,
 										"winner": null,
 										"position": 9,
@@ -12081,6 +12933,7 @@
 									"home": {
 										"id": 135,
 										"name": "Cruzeiro",
+										"country": "🇧🇷",
 										"score": null,
 										"winner": null,
 										"position": 10,
@@ -12089,6 +12942,7 @@
 									"away": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": null,
 										"winner": null,
 										"position": 9,
@@ -12105,6 +12959,7 @@
 									"home": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": null,
 										"position": 9,
@@ -12113,6 +12968,7 @@
 									"away": {
 										"id": 144,
 										"name": "Atletico Goianiense",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": null,
 										"position": 19,
@@ -12129,6 +12985,7 @@
 									"home": {
 										"id": 1149,
 										"name": "Delfin SC",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": false,
 										"position": null,
@@ -12137,6 +12994,7 @@
 									"away": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 2,
 										"winner": true,
 										"position": 9,
@@ -12153,6 +13011,7 @@
 									"home": {
 										"id": 134,
 										"name": "Atletico Paranaense",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": true,
 										"position": 1,
@@ -12161,6 +13020,7 @@
 									"away": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": false,
 										"position": 9,
@@ -12177,6 +13037,7 @@
 									"home": {
 										"id": 121,
 										"name": "Palmeiras",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": false,
 										"position": 6,
@@ -12185,6 +13046,7 @@
 									"away": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": true,
 										"position": 9,
@@ -12201,6 +13063,7 @@
 									"home": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 2,
 										"winner": true,
 										"position": 9,
@@ -12209,6 +13072,7 @@
 									"away": {
 										"id": 118,
 										"name": "Bahia",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": false,
 										"position": 2,
@@ -12225,6 +13089,7 @@
 									"home": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": null,
 										"position": 9,
@@ -12233,6 +13098,7 @@
 									"away": {
 										"id": 15708,
 										"name": "Real Tomayapo",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": null,
 										"position": null,
@@ -12249,6 +13115,7 @@
 									"home": {
 										"id": 440,
 										"name": "Belgrano Cordoba",
+										"country": "🇦🇷",
 										"score": 0,
 										"winner": null,
 										"position": null,
@@ -12257,6 +13124,7 @@
 									"away": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": null,
 										"position": 9,
@@ -12273,6 +13141,7 @@
 									"home": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": false,
 										"position": 9,
@@ -12281,6 +13150,7 @@
 									"away": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": true,
 										"position": 15,
@@ -12297,6 +13167,7 @@
 									"home": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": null,
 										"position": 15,
@@ -12305,6 +13176,7 @@
 									"away": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": null,
 										"position": 9,
@@ -12321,6 +13193,7 @@
 									"home": {
 										"id": 7782,
 										"name": "Nova Iguaçu",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": false,
 										"position": null,
@@ -12329,6 +13202,7 @@
 									"away": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 2,
 										"winner": true,
 										"position": 9,
@@ -12345,6 +13219,7 @@
 									"home": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 3,
 										"winner": true,
 										"position": 9,
@@ -12353,6 +13228,7 @@
 									"away": {
 										"id": 10004,
 										"name": "São Luiz",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": false,
 										"position": null,
@@ -12369,6 +13245,7 @@
 									"home": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": false,
 										"position": 15,
@@ -12377,6 +13254,7 @@
 									"away": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 2,
 										"winner": true,
 										"position": 9,
@@ -12393,6 +13271,7 @@
 									"home": {
 										"id": 1207,
 										"name": "ASA",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": false,
 										"position": null,
@@ -12401,6 +13280,7 @@
 									"away": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 2,
 										"winner": true,
 										"position": 9,
@@ -12413,6 +13293,7 @@
 					"away": {
 						"id": 152,
 						"name": "Juventude",
+						"country": "🇧🇷",
 						"score": null,
 						"winner": null,
 						"position": 15,
@@ -12429,6 +13310,8 @@
 							"partidos_perdidos_de_local": 1,
 							"partidos_empatados_de_local": 5,
 							"partidos_con_goles_de_local": 5,
+							"promedio_de_puntos_de_local": 0,
+							"porcentaje_de_puntos_ganados_de_local": 87.5,
 							"---||---": 0,
 							"goles_de_visitante": 8,
 							"promedio_de_goles_de_visitante": 1.1,
@@ -12437,6 +13320,8 @@
 							"partidos_perdidos_de_visitante": 3,
 							"partidos_empatados_de_visitante": 2,
 							"partidos_con_goles_de_visitante": 5,
+							"promedio_de_puntos_de_visitante": 0,
+							"porcentaje_de_puntos_ganados_de_visitante": 57.1,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
 							"ultimos_total_de_goles": 2,
@@ -12449,6 +13334,8 @@
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_promedio_de_puntos_de_local": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
 							"ultimos_promedio_de_goles_de_visitante": 1,
@@ -12456,7 +13343,9 @@
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3
+							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_promedio_de_puntos_de_visitante": 0,
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
 						},
 						"matches": [
 							{
@@ -12468,6 +13357,7 @@
 									"home": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": null,
 										"winner": null,
 										"position": 15,
@@ -12476,6 +13366,7 @@
 									"away": {
 										"id": 144,
 										"name": "Atletico Goianiense",
+										"country": "🇧🇷",
 										"score": null,
 										"winner": null,
 										"position": 19,
@@ -12492,6 +13383,7 @@
 									"home": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": null,
 										"position": 15,
@@ -12500,6 +13392,7 @@
 									"away": {
 										"id": 134,
 										"name": "Atletico Paranaense",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": null,
 										"position": 1,
@@ -12516,6 +13409,7 @@
 									"home": {
 										"id": 120,
 										"name": "Botafogo",
+										"country": "🇧🇷",
 										"score": 5,
 										"winner": true,
 										"position": 3,
@@ -12524,6 +13418,7 @@
 									"away": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": false,
 										"position": 15,
@@ -12540,6 +13435,7 @@
 									"home": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 2,
 										"winner": true,
 										"position": 15,
@@ -12548,6 +13444,7 @@
 									"away": {
 										"id": 131,
 										"name": "Corinthians",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": false,
 										"position": 14,
@@ -12564,6 +13461,7 @@
 									"home": {
 										"id": 140,
 										"name": "Criciuma",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": null,
 										"position": 13,
@@ -12572,6 +13470,7 @@
 									"away": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": null,
 										"position": 15,
@@ -12588,6 +13487,7 @@
 									"home": {
 										"id": 130,
 										"name": "Gremio",
+										"country": "🇧🇷",
 										"score": 3,
 										"winner": true,
 										"position": 11,
@@ -12596,6 +13496,7 @@
 									"away": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": false,
 										"position": 15,
@@ -12612,6 +13513,7 @@
 									"home": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": null,
 										"position": 15,
@@ -12620,6 +13522,7 @@
 									"away": {
 										"id": 130,
 										"name": "Gremio",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": null,
 										"position": 11,
@@ -12636,6 +13539,7 @@
 									"home": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": false,
 										"position": 9,
@@ -12644,6 +13548,7 @@
 									"away": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": true,
 										"position": 15,
@@ -12660,6 +13565,7 @@
 									"home": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": null,
 										"position": 15,
@@ -12668,6 +13574,7 @@
 									"away": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": null,
 										"position": 9,
@@ -12684,6 +13591,7 @@
 									"home": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 3,
 										"winner": true,
 										"position": 15,
@@ -12692,6 +13600,7 @@
 									"away": {
 										"id": 149,
 										"name": "Paysandu",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": false,
 										"position": null,
@@ -12708,6 +13617,7 @@
 									"home": {
 										"id": 10049,
 										"name": "Guarany de Bagé",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": false,
 										"position": null,
@@ -12716,6 +13626,7 @@
 									"away": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 4,
 										"winner": true,
 										"position": 15,
@@ -12732,6 +13643,7 @@
 									"home": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": false,
 										"position": 15,
@@ -12740,6 +13652,7 @@
 									"away": {
 										"id": 119,
 										"name": "Internacional",
+										"country": "🇧🇷",
 										"score": 2,
 										"winner": true,
 										"position": 9,
@@ -12756,6 +13669,7 @@
 									"home": {
 										"id": 15505,
 										"name": "Iguatu",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": null,
 										"position": null,
@@ -12764,6 +13678,7 @@
 									"away": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": null,
 										"position": 15,
@@ -12780,6 +13695,7 @@
 									"home": {
 										"id": 141,
 										"name": "Brasil DE Pelotas",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": true,
 										"position": null,
@@ -12788,6 +13704,7 @@
 									"away": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 0,
 										"winner": false,
 										"position": 15,
@@ -12804,6 +13721,7 @@
 									"home": {
 										"id": 152,
 										"name": "Juventude",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": null,
 										"position": 15,
@@ -12812,6 +13730,7 @@
 									"away": {
 										"id": 7770,
 										"name": "Caxias",
+										"country": "🇧🇷",
 										"score": 1,
 										"winner": null,
 										"position": null,

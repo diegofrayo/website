@@ -4,6 +4,7 @@ import jsConvertCase from "js-convert-case";
 import { MainLayout, Page } from "~/components/layout";
 import {
 	Block,
+	Button,
 	Collapsible,
 	Icon,
 	InlineText,
@@ -15,12 +16,267 @@ import {
 	Text,
 	Title,
 } from "~/components/primitive";
+import { BoxWithTitle } from "~/components/shared";
 import cn from "~/lib/cn";
 import { withAuthRulesPage } from "~/modules/auth";
 import type DR from "@diegofrayo/types";
 import { addLeftPadding, generateSlug } from "@diegofrayo/utils/strings";
 
 function BetsPage({ data }: T_BetsPageProps) {
+	// --- STATES & REFS ---
+	const [renderType, setRenderType] = React.useState<"strategy" | "date">("strategy");
+
+	// --- HANDLERS ---
+	function toggleRenderType() {
+		setRenderType((currentValue) => {
+			return currentValue === "strategy" ? "date" : "strategy";
+		});
+	}
+
+	return (
+		<Page
+			config={{
+				title: "Bets",
+				disableSEO: true,
+			}}
+		>
+			<MainLayout
+				title="Bets"
+				className="tw-max-w-[1280px] tw-text-sm lg:tw-text-base"
+			>
+				<Block className="tw-text-center">
+					<BoxWithTitle
+						title="Agrupar por:"
+						className="tw-inline-flex tw-gap-2 tw-p-5"
+					>
+						<Button
+							variant={Button.variant.STYLED}
+							className={cn(renderType === "date" && "dr-bg-color-surface-300")}
+							onClick={toggleRenderType}
+						>
+							Fecha
+						</Button>
+						<Button
+							variant={Button.variant.STYLED}
+							className={cn(renderType === "strategy" && "dr-bg-color-surface-300")}
+							onClick={toggleRenderType}
+						>
+							Estrategia
+						</Button>
+					</BoxWithTitle>
+				</Block>
+				<Space size={4} />
+
+				{renderType === "strategy" ? (
+					<RenderByStrategy data={data} />
+				) : (
+					<RenderByDate data={data} />
+				)}
+			</MainLayout>
+		</Page>
+	);
+}
+
+export default withAuthRulesPage(BetsPage, { requireAuth: true });
+
+// --- COMPONENTS ---
+
+function RenderByStrategy({ data }: T_BetsPageProps) {
+	// --- UTILS ---
+	function groupByStrategy() {
+		const output = {} as { [key in string]: T_FixtureMatch[] };
+
+		Object.values(data).forEach((fixtureLeagues) => {
+			fixtureLeagues.forEach((league) => {
+				league.matches.forEach((match) => {
+					match.predictions.forEach((prediction) => {
+						if (!output[prediction.name]) {
+							output[prediction.name] = [];
+						}
+
+						output[prediction.name].push(match);
+					});
+				});
+			});
+		});
+
+		Object.entries(output).forEach(([strategyName, matches]) => {
+			output[strategyName] = matches.sort((a: T_FixtureMatch, b: T_FixtureMatch) => {
+				const predictionTeamA = a.predictions.find((prediction) => {
+					return prediction.name === strategyName;
+				}) as T_FixtureMatch["predictions"][number];
+				const predictionTeamB = b.predictions.find((prediction) => {
+					return prediction.name === strategyName;
+				}) as T_FixtureMatch["predictions"][number];
+
+				if (a.done && !b.done) {
+					return 1;
+				}
+
+				if (!a.done && b.done) {
+					return -1;
+				}
+
+				if (predictionTeamA.recommendable && !predictionTeamB.recommendable) {
+					return -1;
+				}
+
+				if (!predictionTeamA.recommendable && predictionTeamB.recommendable) {
+					return 1;
+				}
+
+				if (predictionTeamA.warnings.length === 0 && predictionTeamB.warnings.length > 0) {
+					return -1;
+				}
+
+				return predictionTeamA.acceptancePercentage > predictionTeamB.acceptancePercentage
+					? -1
+					: predictionTeamA.acceptancePercentage < predictionTeamB.acceptancePercentage
+					? 1
+					: 0;
+			});
+		});
+
+		return output;
+	}
+
+	return Object.entries(groupByStrategy()).map(([strategyName, matches]) => {
+		return (
+			<Collapsible
+				key={strategyName}
+				title={strategyName}
+				className="tw-mb-4 last:tw-mb-0"
+				contentClassName="tw-py-5 tw-pr-5 dr-bg-color-surface-200"
+			>
+				{matches.map((match) => {
+					return (
+						<FixtureMatch
+							key={match.id}
+							variant="strategy"
+							match={match}
+							topKey={strategyName}
+						/>
+					);
+				})}
+			</Collapsible>
+		);
+	});
+}
+
+function RenderByDate({ data }: T_BetsPageProps) {
+	// --- UTILS ---
+	function groupMatchesByDate(matches: T_FixtureMatch[]) {
+		return matches.reduce(
+			(result, match) => {
+				const resultUpdated = { ...result };
+				const matchDate = match.date;
+
+				if (!resultUpdated[matchDate]) {
+					resultUpdated[matchDate] = [];
+				}
+
+				resultUpdated[matchDate].push(match);
+
+				return resultUpdated;
+			},
+			{} as { [key in string]: T_FixtureMatch[] },
+		);
+	}
+
+	return Object.entries(data).map(([fixtureDate, fixtureLeagues]) => {
+		return (
+			<Collapsible
+				key={fixtureDate}
+				title={fixtureDate}
+				className="tw-mb-4 last:tw-mb-0"
+				contentClassName="tw-pt-2"
+			>
+				{fixtureLeagues.map((league) => {
+					const leagueName = `${league.name} (${league.country})`;
+
+					if (league.matches.length === 0) {
+						return null;
+					}
+
+					return (
+						<Collapsible
+							key={`${fixtureDate}-${leagueName}`}
+							title={
+								<Title
+									is="h2"
+									className="tw-p-2 tw-text-left tw-text-base tw-text-white dr-bg-color-surface-300 lg:tw-text-center lg:tw-text-xl"
+								>
+									{league.flag} {leagueName}
+								</Title>
+							}
+							className="tw-mb-8 tw-overflow-auto tw-rounded-md dr-bg-color-surface-200"
+							contentClassName="tw-p-4"
+						>
+							{league.standings.length > 0 ? (
+								<React.Fragment>
+									<Collapsible
+										title="Posiciones"
+										contentClassName="tw-pt-1"
+									>
+										<Pre className="tw-w-full tw-max-w-full tw-overflow-auto tw-rounded-md tw-px-4 tw-py-3 dr-bg-color-surface-100">
+											{league.standings
+												.map((team, standingIndex) => {
+													return `${standingIndex + 1}. ${team.teamName} | ${team.points}`;
+												})
+												.join("\n")}
+										</Pre>
+									</Collapsible>
+									<Space
+										size={4}
+										variant={Space.variant.DASHED}
+									/>
+								</React.Fragment>
+							) : null}
+
+							{Object.entries(groupMatchesByDate(league.matches)).map(
+								([date, matchesGroupedByDate]) => {
+									return (
+										<Block
+											key={`${leagueName}-${date}`}
+											className="tw-mb-4 last:tw-mb-0"
+										>
+											{matchesGroupedByDate.map((match) => {
+												return (
+													<FixtureMatch
+														key={match.id}
+														variant="date"
+														match={match}
+														leagueCountry={league.country}
+														topKey={date}
+													/>
+												);
+											})}
+										</Block>
+									);
+								},
+							)}
+						</Collapsible>
+					);
+				})}
+			</Collapsible>
+		);
+	});
+}
+
+function FixtureMatch({
+	variant,
+	match,
+	leagueCountry,
+	topKey,
+}: {
+	variant: "date" | "strategy";
+	match: T_FixtureMatch;
+	leagueCountry?: T_League["country"];
+	topKey: string;
+}) {
+	// --- VARS ---
+	const isStrategyVariant = variant === "strategy";
+
 	// --- STATES & REFS ---
 	const [matchesFilters, setMatchesFilters] = React.useState<T_PlayedMatchesFilters>({});
 
@@ -45,73 +301,45 @@ function BetsPage({ data }: T_BetsPageProps) {
 		}
 
 		if (filter === "Local") {
-			return matches.filter((match) => {
-				return match.teams.home.name === teamName;
+			return matches.filter((item) => {
+				return item.teams.home.name === teamName;
 			});
 		}
 
 		if (filter === "Visitante") {
-			return matches.filter((match) => {
-				return match.teams.away.name === teamName;
+			return matches.filter((item) => {
+				return item.teams.away.name === teamName;
 			});
 		}
 
 		if (filter === "Ganados") {
-			return matches.filter((match) => {
+			return matches.filter((item) => {
 				return (
-					(match.teams.home.name === teamName && match.teams.home.winner === true) ||
-					(match.teams.away.name === teamName && match.teams.away.winner === true)
+					(item.teams.home.name === teamName && item.teams.home.winner === true) ||
+					(item.teams.away.name === teamName && item.teams.away.winner === true)
 				);
 			});
 		}
 
 		if (filter === "Perdidos") {
-			return matches.filter((match) => {
+			return matches.filter((item) => {
 				return (
-					(match.teams.home.name === teamName && match.teams.home.winner === false) ||
-					(match.teams.away.name === teamName && match.teams.away.winner === false)
+					(item.teams.home.name === teamName && item.teams.home.winner === false) ||
+					(item.teams.away.name === teamName && item.teams.away.winner === false)
 				);
 			});
 		}
 
 		if (filter === "Empatados") {
-			return matches.filter((match) => {
+			return matches.filter((item) => {
 				return (
-					(match.teams.home.name === teamName && match.teams.home.winner === null) ||
-					(match.teams.away.name === teamName && match.teams.away.winner === null)
+					(item.teams.home.name === teamName && item.teams.home.winner === null) ||
+					(item.teams.away.name === teamName && item.teams.away.winner === null)
 				);
 			});
 		}
 
 		return matches;
-	}
-
-	function groupMatchesByDate(matches: T_FixtureMatch[]) {
-		return matches.reduce(
-			(result, match) => {
-				const resultUpdated = { ...result };
-				const matchDate = match.date;
-
-				if (!resultUpdated[matchDate]) {
-					resultUpdated[matchDate] = [];
-				}
-
-				resultUpdated[matchDate].push(match);
-
-				return resultUpdated;
-			},
-			{} as { [key in string]: T_FixtureMatch[] },
-		);
-	}
-
-	function composeMatchTitle(match: T_PlayedMatch | T_FixtureMatch) {
-		const title = `${match.teams.home.featured ? "🔰" : ""}${match.teams.home.name} ${
-			match.teams.home.score === null ? "" : `(${match.teams.home.score})`
-		} - ${match.teams.away.featured ? "🔰" : ""}${match.teams.away.name} ${
-			match.teams.away.score === null ? "" : `(${match.teams.away.score})`
-		}`;
-
-		return title;
 	}
 
 	function checkMatchStarted(fullDate: string) {
@@ -125,407 +353,297 @@ function BetsPage({ data }: T_BetsPageProps) {
 		return currentDateFormatted >= fullDate;
 	}
 
+	function composeMatchTitle(matchParam: T_PlayedMatch | T_FixtureMatch) {
+		const title = `${matchParam.teams.home.featured ? "🔰" : ""}${matchParam.teams.home.name} ${
+			matchParam.teams.home.score === null ? "" : `(${matchParam.teams.home.score})`
+		} - ${matchParam.teams.away.featured ? "🔰" : ""}${matchParam.teams.away.name} ${
+			matchParam.teams.away.score === null ? "" : `(${matchParam.teams.away.score})`
+		}`;
+
+		return title;
+	}
+
 	return (
-		<Page
-			config={{
-				title: "Bets",
-				disableSEO: true,
-			}}
-		>
-			<MainLayout
-				title="Bets"
-				className="tw-max-w-[1280px] tw-text-sm lg:tw-text-base"
-			>
-				{Object.entries(data).map(([fixtureDate, leagues], index) => {
-					return (
-						<Collapsible
-							key={fixtureDate}
-							title={`${fixtureDate}${index === 0 ? " (Hoy)" : ""}`}
-							className="tw-mb-4 last:tw-mb-0"
-							contentClassName="tw-pt-2"
+		<Collapsible
+			title={
+				<Title
+					is="h2"
+					className="tw-cursor-pointer tw-px-2 tw-pb-4 tw-pt-3 tw-text-center"
+				>
+					<Block>
+						<Text
+							className={cn(
+								checkMatchStarted(match.fullDate) ? "tw-text-red-700" : "tw-text-green-700",
+							)}
 						>
-							{leagues.map((league) => {
-								const leagueName = `${league.name} (${league.country})`;
+							{composeMatchTitle(match)}
+						</Text>
+						<Text>{composeTeamsCountry(match.teams.home.country, match.teams.away.country)}</Text>
+					</Block>
+					<Text>{isStrategyVariant ? `${match.date} | ${match.hour}` : `${match.hour}`}</Text>
+					<Space size={1} />
 
-								if (league.matches.length === 0) {
-									return null;
-								}
+					<Block className="tw-flex tw-items-center tw-justify-center tw-gap-2">
+						{match.predictions.map((prediction) => {
+							if (isStrategyVariant && prediction.name !== topKey) {
+								return null;
+							}
 
-								return (
-									<Collapsible
-										key={`${fixtureDate}-${leagueName}`}
-										title={
-											<Title
-												is="h2"
-												className="tw-p-2 tw-text-left tw-text-base tw-text-white dr-bg-color-surface-300 lg:tw-text-center lg:tw-text-xl"
+							return (
+								<Block
+									key={`${match.id}-${prediction.id}`}
+									className={cn(
+										"tw-overflow-hidden tw-rounded-md tw-border tw-bg-black tw-pr-1 dr-border-color-surface-400",
+										prediction.recommendable && "tw-shadow-sm dr-shadow-color-primary-600",
+									)}
+								>
+									<InlineText className="tw-inline-block tw-px-2 tw-py-1.5 tw-text-sm tw-text-white dr-bg-color-surface-300">
+										{prediction.id}
+									</InlineText>
+									<Block className="tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-px-2 tw-text-xs">
+										<InlineText>{prediction.recommendable ? "🌟" : "👎"}</InlineText>
+
+										{prediction.right ? <InlineText>✅</InlineText> : null}
+
+										{prediction.fail ? <InlineText>❌</InlineText> : null}
+
+										{prediction.warnings.length > 0 ? <InlineText>⚠️</InlineText> : null}
+									</Block>
+								</Block>
+							);
+						})}
+					</Block>
+				</Title>
+			}
+			className="tw-mb-10 tw-rounded-md tw-border tw-border-dashed dr-border-color-surface-300 last:tw-mb-0"
+			contentClassName="tw-py-4 dr-border-color-surface-300 tw-border-t tw-pr-5"
+		>
+			<Collapsible
+				title="Predicciones de apuestas"
+				contentClassName="tw-pt-0.5"
+			>
+				{match.predictions.map((prediction) => {
+					return (
+						<Block
+							key={generateSlug(`${match.id}-${prediction.name}`)}
+							className="tw-mb-2 tw-overflow-hidden tw-rounded-md tw-px-4 tw-py-3 dr-bg-color-surface-300 last:tw-mb-0"
+						>
+							<Text className="tw-text-lg tw-font-bold">
+								<InlineText className="tw-underline">{prediction.name}</InlineText>
+								{prediction.recommendable ? (
+									<InlineText className="tw-ml-1 tw-text-sm">🌟</InlineText>
+								) : null}
+							</Text>
+							<Space size={1} />
+
+							<Block>
+								<Text>
+									<InlineText is="strong">- Es recomendable:</InlineText>{" "}
+									<InlineText className="tw-text-xs">
+										{prediction.recommendable ? "✅" : "❌"}
+									</InlineText>
+								</Text>
+								<Text>
+									<InlineText is="strong">- Porcentaje de aceptacion:</InlineText>{" "}
+									<InlineText>{prediction.acceptancePercentage * 100}%</InlineText>
+								</Text>
+
+								<Text className="tw-font-bold">- Criterios:</Text>
+								<List variant={List.variant.SIMPLE}>
+									{prediction.criteria.home.map((criteria) => {
+										return (
+											<List.Item
+												key={generateSlug(`${match.id}-${criteria.description}`)}
+												className={cn(
+													"tw-ml-3 tw-text-sm",
+													criteria.weight > 0 ? "tw-underline" : "",
+												)}
 											>
-												{league.flag} {leagueName}
-											</Title>
-										}
-										className="tw-mb-8 tw-overflow-auto tw-rounded-md dr-bg-color-surface-200"
-										contentClassName="tw-p-4"
-									>
-										{league.standings.length > 0 ? (
-											<React.Fragment>
-												<Collapsible
-													title="Posiciones"
-													contentClassName="tw-pt-1"
-												>
-													<Pre className="tw-w-full tw-max-w-full tw-overflow-auto tw-rounded-md tw-px-4 tw-py-3 dr-bg-color-surface-100">
-														{league.standings
-															.map((team, standingIndex) => {
-																return `${standingIndex + 1}. ${team.teamName} | ${team.points}`;
-															})
-															.join("\n")}
-													</Pre>
-												</Collapsible>
-												<Space
-													size={4}
-													variant={Space.variant.DASHED}
-												/>
-											</React.Fragment>
-										) : null}
+												<InlineText className="tw-mr-2">{criteria.description}</InlineText>
+												<InlineText className="tw-text-xs">{criteria.check}</InlineText>
+											</List.Item>
+										);
+									})}
+								</List>
 
-										{Object.entries(groupMatchesByDate(league.matches)).map(
-											([date, matchesGroupedByDate]) => {
+								{prediction.warnings.length > 0 ? (
+									<React.Fragment>
+										<Text className="tw-font-bold">- Advertencias:</Text>
+										<List variant={List.variant.SIMPLE}>
+											{prediction.warnings.map((warning, warningIndex) => {
 												return (
-													<Block
-														key={`${leagueName}-${date}`}
-														className="tw-mb-4 last:tw-mb-0"
+													<List.Item
+														key={generateSlug(`${match.id}-${warningIndex}`)}
+														className={cn("tw-ml-3 tw-text-sm")}
 													>
-														{matchesGroupedByDate.map((match) => {
-															return (
-																<Collapsible
-																	key={match.id}
-																	title={
-																		<Title
-																			is="h2"
-																			className="tw-cursor-pointer tw-px-2 tw-pb-4 tw-pt-3 tw-text-center"
-																		>
-																			<Text
-																				className={cn(
-																					checkMatchStarted(match.fullDate)
-																						? "tw-text-red-700"
-																						: "tw-text-green-700",
-																				)}
-																			>
-																				{composeMatchTitle(match)}
-																			</Text>
-																			<Text>{match.hour}</Text>
-																			<Space size={1} />
-
-																			<Block className="tw-flex tw-items-center tw-justify-center tw-gap-2">
-																				{match.predictions.map((prediction) => {
-																					return (
-																						<Block
-																							key={`${match.id}-${prediction.id}`}
-																							className={cn(
-																								"tw-overflow-hidden tw-rounded-md tw-border tw-bg-black tw-pr-1 dr-border-color-surface-400",
-																								prediction.recommendable &&
-																									"tw-shadow-sm dr-shadow-color-primary-600",
-																							)}
-																						>
-																							<InlineText className="tw-inline-block tw-px-2 tw-py-1.5 tw-text-sm tw-text-white dr-bg-color-surface-300">
-																								{prediction.id}
-																							</InlineText>
-																							<Block className="tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-px-2 tw-text-xs">
-																								<InlineText>
-																									{prediction.recommendable ? "🌟" : "👎"}
-																								</InlineText>
-
-																								{prediction.right ? (
-																									<InlineText>✅</InlineText>
-																								) : null}
-
-																								{prediction.fail ? (
-																									<InlineText>❌</InlineText>
-																								) : null}
-
-																								{prediction.warnings.length > 0 ? (
-																									<InlineText>⚠️</InlineText>
-																								) : null}
-																							</Block>
-																						</Block>
-																					);
-																				})}
-																			</Block>
-																		</Title>
-																	}
-																	className="tw-mb-10 tw-rounded-md tw-border tw-border-dashed dr-border-color-surface-300 last:tw-mb-0"
-																	contentClassName="tw-py-4 dr-border-color-surface-300 tw-border-t tw-pr-5"
-																>
-																	<Collapsible
-																		title="Predicciones de apuestas"
-																		contentClassName="tw-pt-0.5"
-																	>
-																		{match.predictions.map((prediction) => {
-																			return (
-																				<Block
-																					key={generateSlug(`${match.id}-${prediction.name}`)}
-																					className="tw-overflow-hidden tw-rounded-md tw-px-4 tw-py-3 dr-bg-color-surface-300"
-																				>
-																					<Text className="tw-text-lg tw-font-bold">
-																						<InlineText className="tw-underline">
-																							{prediction.name}
-																						</InlineText>
-																						{prediction.recommendable ? (
-																							<InlineText className="tw-ml-1 tw-text-sm">
-																								🌟
-																							</InlineText>
-																						) : null}
-																					</Text>
-																					<Space size={1} />
-
-																					<Block>
-																						<Text>
-																							<InlineText is="strong">
-																								- Es recomendable:
-																							</InlineText>{" "}
-																							<InlineText className="tw-text-xs">
-																								{prediction.recommendable ? "✅" : "❌"}
-																							</InlineText>
-																						</Text>
-																						<Text>
-																							<InlineText is="strong">
-																								- Porcentaje de aceptacion:
-																							</InlineText>{" "}
-																							<InlineText>
-																								{prediction.acceptancePercentage * 100}%
-																							</InlineText>
-																						</Text>
-
-																						<Text className="tw-font-bold">- Criterios:</Text>
-																						<List variant={List.variant.SIMPLE}>
-																							{prediction.criteria.home.map((criteria) => {
-																								return (
-																									<List.Item
-																										key={generateSlug(
-																											`${match.id}-${criteria.description}`,
-																										)}
-																										className={cn(
-																											"tw-ml-3 tw-text-sm",
-																											criteria.weight > 0 ? "tw-underline" : "",
-																										)}
-																									>
-																										<InlineText className="tw-mr-2">
-																											{criteria.description}
-																										</InlineText>
-																										<InlineText className="tw-text-xs">
-																											{criteria.check}
-																										</InlineText>
-																									</List.Item>
-																								);
-																							})}
-																						</List>
-
-																						{prediction.warnings.length > 0 ? (
-																							<React.Fragment>
-																								<Text className="tw-font-bold">
-																									- Advertencias:
-																								</Text>
-																								<List variant={List.variant.SIMPLE}>
-																									{prediction.warnings.map(
-																										(warning, warningIndex) => {
-																											return (
-																												<List.Item
-																													key={generateSlug(
-																														`${match.id}-${warningIndex}`,
-																													)}
-																													className={cn("tw-ml-3 tw-text-sm")}
-																												>
-																													<InlineText className="tw-mr-2">
-																														{warning.description}
-																													</InlineText>
-																												</List.Item>
-																											);
-																										},
-																									)}
-																								</List>
-																							</React.Fragment>
-																						) : null}
-																					</Block>
-																				</Block>
-																			);
-																		})}
-																	</Collapsible>
-																	<Space
-																		size={4}
-																		variant={Space.variant.DASHED}
-																	/>
-																	<Block className="tw-flex tw-flex-wrap tw-justify-between tw-gap-2 lg:tw-flex-nowrap">
-																		{Object.entries(match.teams).map(([teamSide, team]) => {
-																			return (
-																				<Block
-																					key={team.name}
-																					className="tw-w-full tw-flex-shrink-0 tw-overflow-auto tw-rounded-md lg:tw-w-[49%]"
-																				>
-																					<Title
-																						is="h4"
-																						className="tw-relative tw-p-1 tw-text-center dr-bg-color-surface-100"
-																					>
-																						<InlineText>
-																							{team.featured ? "🔰" : ""}
-																							{team.name}{" "}
-																							{Number.isInteger(team.position)
-																								? `[${team.position}]`
-																								: ""}
-																						</InlineText>
-																						<Link
-																							variant={Link.variant.SIMPLE}
-																							href={`https://www.google.com/search?q=${encodeURIComponent(
-																								`${team.name} equipo ${league.country} 365scores`,
-																							)}`}
-																							className="tw-absolute tw-right-2"
-																							isExternalLink
-																						>
-																							<Icon
-																								icon={Icon.icon.GOOGLE}
-																								size={16}
-																							/>
-																						</Link>
-																					</Title>
-
-																					<Block className="tw-px-4 tw-pb-1 tw-pt-3 dr-bg-color-surface-300">
-																						<Collapsible
-																							title="Estadísticas"
-																							className="tw-mb-2"
-																							contentClassName="tw-pt-1"
-																						>
-																							<Pre className="tw-w-full tw-max-w-full tw-overflow-x-auto tw-overflow-y-hidden tw-rounded-md tw-px-4 tw-py-3 tw-text-sm dr-bg-color-surface-200">
-																								{Object.entries(team.stats).map(([key, value]) => {
-																									if (key.includes("---")) {
-																										return (
-																											<Space
-																												key={`${match.id}-stats-${key}`}
-																												size={2}
-																											/>
-																										);
-																									}
-
-																									return (
-																										<Text key={`${match.id}-stats-${key}`}>
-																											<InlineText is="strong">
-																												- {jsConvertCase.toSentenceCase(key)}
-																											</InlineText>
-																											: {value}
-																											{key.includes("porcentaje") ? "%" : ""}
-																										</Text>
-																									);
-																								})}
-																							</Pre>
-																						</Collapsible>
-
-																						<Collapsible
-																							title="Partidos"
-																							className="tw-mb-2"
-																							contentClassName="tw-pt-2"
-																						>
-																							<Block>
-																								<Select
-																									id={`${match.id}-matches-filter-${teamSide}`}
-																									variant={Select.variant.STYLED}
-																									defaultValue={
-																										teamSide === "home" ? "Local" : "Visitante"
-																									}
-																									onChange={onMatchesFilterChange(team.name)}
-																								>
-																									<Select.Option value="Todos">Todos</Select.Option>
-																									<Select.Option value="Local">Local</Select.Option>
-																									<Select.Option value="Visitante">
-																										Visitante
-																									</Select.Option>
-																									<Select.Option value="Ganados">
-																										Ganados
-																									</Select.Option>
-																									<Select.Option value="Perdidos">
-																										Perdidos
-																									</Select.Option>
-																									<Select.Option value="Empatados">
-																										Empatados
-																									</Select.Option>
-																								</Select>
-																							</Block>
-																							<Space size={1} />
-
-																							<List
-																								variant={List.variant.SIMPLE}
-																								className="tw-rounded-md tw-p-2 tw-pt-4 dr-bg-color-surface-200"
-																							>
-																								{filterMatches(
-																									team.matches,
-																									team.name,
-																									matchesFilters[team.name] ||
-																										(teamSide === "home" ? "Local" : "Visitante"),
-																								).map((playedMatch) => {
-																									const currentTeam =
-																										playedMatch.teams.home.name === team.name
-																											? playedMatch.teams.home
-																											: playedMatch.teams.away;
-
-																									return (
-																										<List.Item
-																											key={`${generateSlug(
-																												playedMatch.id + playedMatch.hour,
-																											)}`}
-																											className="tw-ml-3"
-																										>
-																											<Text className="lg:tw-truncate">
-																												<InlineText className="tw-mr-1 tw-text-xs">
-																													{currentTeam.winner === true
-																														? "✅"
-																														: currentTeam.winner === false
-																														? "❌"
-																														: "🔳"}{" "}
-																												</InlineText>
-																												<InlineText>
-																													{composeMatchTitle(playedMatch)}
-																												</InlineText>
-																											</Text>
-																											<Text className="tw-mb-4 tw-flex tw-flex-col tw-justify-between tw-text-sm lg:tw-flex-row">
-																												<InlineText className="tw-ml-0 tw-italic lg:tw-ml-5">
-																													{playedMatch.date}
-																												</InlineText>
-
-																												{Number.isInteger(
-																													playedMatch.teams.home.position,
-																												) &&
-																												Number.isInteger(
-																													playedMatch.teams.away.position,
-																												) ? (
-																													<InlineText>
-																														{`Posiciones: [${playedMatch.teams.home.position}] | [${playedMatch.teams.away.position}]`}
-																													</InlineText>
-																												) : null}
-																											</Text>
-																										</List.Item>
-																									);
-																								})}
-																							</List>
-																						</Collapsible>
-																					</Block>
-																				</Block>
-																			);
-																		})}
-																	</Block>
-																</Collapsible>
-															);
-														})}
-													</Block>
+														<InlineText className="tw-mr-2">{warning.description}</InlineText>
+													</List.Item>
 												);
-											},
-										)}
-									</Collapsible>
-								);
-							})}
-						</Collapsible>
+											})}
+										</List>
+									</React.Fragment>
+								) : null}
+							</Block>
+						</Block>
 					);
 				})}
-			</MainLayout>
-		</Page>
+			</Collapsible>
+			<Space
+				size={4}
+				variant={Space.variant.DASHED}
+			/>
+			<Block className="tw-flex tw-flex-wrap tw-justify-between tw-gap-2 lg:tw-flex-nowrap">
+				{Object.entries(match.teams).map(([teamSide, team]) => {
+					return (
+						<Block
+							key={team.name}
+							className="tw-w-full tw-flex-shrink-0 tw-overflow-auto tw-rounded-md lg:tw-w-[49%]"
+						>
+							<Title
+								is="h4"
+								className="tw-relative tw-p-1 tw-text-center dr-bg-color-surface-100"
+							>
+								<InlineText>
+									{team.featured ? "🔰" : ""}
+									{team.name} {Number.isInteger(team.position) ? `[${team.position}]` : ""}
+								</InlineText>
+								<Link
+									variant={Link.variant.SIMPLE}
+									href={`https://www.google.com/search?q=${encodeURIComponent(
+										`${team.name} equipo ${leagueCountry || ""} 365scores`,
+									)}`}
+									className="tw-absolute tw-right-2"
+									isExternalLink
+								>
+									<Icon
+										icon={Icon.icon.GOOGLE}
+										size={16}
+									/>
+								</Link>
+							</Title>
+
+							<Block className="tw-px-4 tw-pb-1 tw-pt-3 dr-bg-color-surface-300">
+								<Collapsible
+									title="Estadísticas"
+									className="tw-mb-2"
+									contentClassName="tw-pt-1"
+								>
+									<Pre className="tw-w-full tw-max-w-full tw-overflow-x-auto tw-overflow-y-hidden tw-rounded-md tw-px-4 tw-py-3 tw-text-sm dr-bg-color-surface-200">
+										{Object.entries(team.stats).map(([key, value]) => {
+											if (key.includes("---")) {
+												return (
+													<Space
+														key={`${match.id}-stats-${key}`}
+														size={2}
+													/>
+												);
+											}
+
+											return (
+												<Text key={`${match.id}-stats-${key}`}>
+													<InlineText is="strong">- {jsConvertCase.toSentenceCase(key)}</InlineText>
+													: {value}
+													{key.includes("porcentaje") ? "%" : ""}
+												</Text>
+											);
+										})}
+									</Pre>
+								</Collapsible>
+
+								<Collapsible
+									title="Partidos"
+									className="tw-mb-2"
+									contentClassName="tw-pt-2"
+								>
+									<Block>
+										<Select
+											id={generateSlug(`${topKey}-${match.id}-matches-filter-${teamSide}`)}
+											variant={Select.variant.STYLED}
+											defaultValue={teamSide === "home" ? "Local" : "Visitante"}
+											onChange={onMatchesFilterChange(team.name)}
+										>
+											<Select.Option value="Todos">Todos</Select.Option>
+											<Select.Option value="Local">Local</Select.Option>
+											<Select.Option value="Visitante">Visitante</Select.Option>
+											<Select.Option value="Ganados">Ganados</Select.Option>
+											<Select.Option value="Perdidos">Perdidos</Select.Option>
+											<Select.Option value="Empatados">Empatados</Select.Option>
+										</Select>
+									</Block>
+									<Space size={1} />
+
+									<List
+										variant={List.variant.SIMPLE}
+										className="tw-rounded-md tw-p-2 tw-pt-4 dr-bg-color-surface-200"
+									>
+										{filterMatches(
+											team.matches,
+											team.name,
+											matchesFilters[team.name] || (teamSide === "home" ? "Local" : "Visitante"),
+										).map((playedMatch) => {
+											const currentTeam =
+												playedMatch.teams.home.name === team.name
+													? playedMatch.teams.home
+													: playedMatch.teams.away;
+
+											return (
+												<List.Item
+													key={`${generateSlug(playedMatch.id + playedMatch.hour)}`}
+													className="tw-ml-3"
+												>
+													<Text className="lg:tw-truncate">
+														<InlineText className="tw-mr-1 tw-text-xs">
+															{currentTeam.winner === true
+																? "✅"
+																: currentTeam.winner === false
+																? "❌"
+																: "🔳"}{" "}
+														</InlineText>
+														<InlineText>{composeMatchTitle(playedMatch)}</InlineText>
+													</Text>
+													<Block className="tw-ml-0 lg:tw-ml-5">
+														<Text>
+															{composeTeamsCountry(
+																playedMatch.teams.home.country,
+																playedMatch.teams.away.country,
+															)}
+														</Text>
+														<Text className="tw-mb-4 tw-flex tw-flex-col tw-justify-between tw-text-sm lg:tw-flex-row">
+															<InlineText className="tw-italic">{playedMatch.date}</InlineText>
+
+															{Number.isInteger(playedMatch.teams.home.position) &&
+															Number.isInteger(playedMatch.teams.away.position) ? (
+																<InlineText>
+																	{`Posiciones: [${playedMatch.teams.home.position}] | [${playedMatch.teams.away.position}]`}
+																</InlineText>
+															) : null}
+														</Text>
+													</Block>
+												</List.Item>
+											);
+										})}
+									</List>
+								</Collapsible>
+							</Block>
+						</Block>
+					);
+				})}
+			</Block>
+		</Collapsible>
 	);
 }
 
-export default withAuthRulesPage(BetsPage, { requireAuth: true });
+// --- UTILS ---
+
+function composeTeamsCountry(teamHomeCountry: string, teamAwayCountry: string) {
+	if (teamHomeCountry && teamAwayCountry) {
+		return `${teamHomeCountry} - ${teamAwayCountry}`;
+	}
+
+	const country = teamHomeCountry || teamAwayCountry || "🌎";
+
+	return `${country} - ${country}`;
+}
 
 // --- TYPES ---
 
@@ -543,6 +661,15 @@ export type T_BetsPageProps = {
 			matches: T_FixtureMatch[];
 		}[];
 	};
+};
+
+type T_League = {
+	id: number;
+	name: string;
+	type: "League" | "Cup";
+	country: string;
+	flag: string;
+	season: number;
 };
 
 type T_LeagueStandings = {
@@ -567,6 +694,7 @@ type T_FixtureMatch = {
 	fullDate: string;
 	date: string;
 	hour: string;
+	done: boolean;
 	predictions: {
 		id: string;
 		name: string;
@@ -586,6 +714,7 @@ type T_FixtureMatch = {
 		home: {
 			id: number;
 			name: string;
+			country: string;
 			score: number | null;
 			winner: boolean | null;
 			position: number | null;
@@ -596,6 +725,7 @@ type T_FixtureMatch = {
 		away: {
 			id: number;
 			name: string;
+			country: string;
 			score: number | null;
 			winner: boolean | null;
 			position: number | null;
@@ -615,6 +745,7 @@ type T_PlayedMatch = {
 		home: {
 			id: number;
 			name: string;
+			country: string;
 			score: number;
 			winner: boolean | null;
 			position: number | null;
@@ -623,6 +754,7 @@ type T_PlayedMatch = {
 		away: {
 			id: number;
 			name: string;
+			country: string;
 			score: number;
 			winner: boolean | null;
 			position: number | null;

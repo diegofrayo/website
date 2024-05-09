@@ -12,18 +12,23 @@ export default BetsPage;
 // --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps: GetStaticProps<T_BetsPageProps> = async () => {
-	const today = dayjs(dateWithoutTimezone());
-	const dates = [
-		today.toDate(),
-		today.add(1, "day").toDate(),
-		today.add(2, "day").toDate(),
-		today.add(3, "day").toDate(),
-		today.subtract(1, "day").toDate(),
-		today.subtract(2, "day").toDate(),
-		today.subtract(3, "day").toDate(),
-	].map((date) => {
+	const monday = dayjs(dateWithoutTimezone(new Date("2024/05/06")));
+	const dates = (
+		dateWithoutTimezone().getDay() <= 4
+			? [
+					monday.toDate(),
+					monday.add(1, "day").toDate(),
+					monday.add(2, "day").toDate(),
+					monday.add(3, "day").toDate(),
+			  ]
+			: [
+					monday.add(4, "day").toDate(),
+					monday.add(5, "day").toDate(),
+					monday.add(6, "day").toDate(),
+			  ]
+	).map((date) => {
 		return `${date.getFullYear()}-${addLeftPadding(date.getMonth() + 1)}-${addLeftPadding(
-			date.getDate(),
+			date.getDate() + 1,
 		)}`;
 	});
 	const data = {} as T_BetsPageProps["data"];
