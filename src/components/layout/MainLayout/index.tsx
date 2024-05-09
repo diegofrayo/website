@@ -19,7 +19,7 @@ import { renderIf, withOnlyClientRender } from "~/hocs";
 import cn from "~/lib/cn";
 import AnalyticsService from "~/modules/analytics";
 import ServerAPI from "~/modules/api";
-import { AuthService, ComponentWithAuth, withAuth } from "~/modules/auth";
+import { AuthService, withAuth } from "~/modules/auth";
 import EnvVars from "~/modules/env-vars";
 import { logAndReportError } from "~/modules/logging";
 import { ROUTES, redirect, useRouting } from "~/modules/routing";
