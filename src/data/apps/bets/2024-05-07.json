@@ -85,6 +85,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -151,7 +166,6 @@
 								"fullDate": "2024-04-23T17:00",
 								"date": "2024-04-23",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2808,
@@ -178,7 +192,6 @@
 								"fullDate": "2024-04-19T18:00",
 								"date": "2024-04-19",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2810,
@@ -205,7 +218,6 @@
 								"fullDate": "2024-04-14T19:30",
 								"date": "2024-04-14",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2808,
@@ -232,7 +244,6 @@
 								"fullDate": "2024-04-10T19:00",
 								"date": "2024-04-10",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2348,
@@ -259,7 +270,6 @@
 								"fullDate": "2024-04-07T15:00",
 								"date": "2024-04-07",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2825,
@@ -286,7 +296,6 @@
 								"fullDate": "2024-04-04T17:00",
 								"date": "2024-04-04",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2808,
@@ -313,7 +322,6 @@
 								"fullDate": "2024-03-30T16:45",
 								"date": "2024-03-30",
 								"hour": "16:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2808,
@@ -340,7 +348,6 @@
 								"fullDate": "2024-03-24T16:45",
 								"date": "2024-03-24",
 								"hour": "16:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2811,
@@ -367,7 +374,6 @@
 								"fullDate": "2024-03-20T16:45",
 								"date": "2024-03-20",
 								"hour": "16:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2808,
@@ -394,7 +400,6 @@
 								"fullDate": "2024-03-16T19:30",
 								"date": "2024-03-16",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2827,
@@ -421,7 +426,6 @@
 								"fullDate": "2024-03-09T17:00",
 								"date": "2024-03-09",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2806,
@@ -448,7 +452,6 @@
 								"fullDate": "2024-03-03T15:00",
 								"date": "2024-03-03",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2808,
@@ -475,7 +478,6 @@
 								"fullDate": "2024-02-24T16:45",
 								"date": "2024-02-24",
 								"hour": "16:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2818,
@@ -502,7 +504,6 @@
 								"fullDate": "2024-02-16T18:00",
 								"date": "2024-02-16",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2808,
@@ -529,7 +530,6 @@
 								"fullDate": "2024-02-11T14:00",
 								"date": "2024-02-11",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 16847,
@@ -616,7 +616,6 @@
 								"fullDate": "2024-05-03T13:00",
 								"date": "2024-05-03",
 								"hour": "13:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2358,
@@ -643,7 +642,6 @@
 								"fullDate": "2024-04-29T18:00",
 								"date": "2024-04-29",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2348,
@@ -670,7 +668,6 @@
 								"fullDate": "2024-04-23T19:00",
 								"date": "2024-04-23",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1062,
@@ -697,7 +694,6 @@
 								"fullDate": "2024-04-20T13:00",
 								"date": "2024-04-20",
 								"hour": "13:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2361,
@@ -724,7 +720,6 @@
 								"fullDate": "2024-04-14T16:00",
 								"date": "2024-04-14",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2348,
@@ -751,7 +746,6 @@
 								"fullDate": "2024-04-10T19:00",
 								"date": "2024-04-10",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2348,
@@ -778,7 +772,6 @@
 								"fullDate": "2024-04-07T16:00",
 								"date": "2024-04-07",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2370,
@@ -805,7 +798,6 @@
 								"fullDate": "2024-04-04T17:00",
 								"date": "2024-04-04",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 437,
@@ -832,7 +824,6 @@
 								"fullDate": "2024-03-29T14:00",
 								"date": "2024-03-29",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2348,
@@ -859,7 +850,6 @@
 								"fullDate": "2024-03-15T17:30",
 								"date": "2024-03-15",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2359,
@@ -886,7 +876,6 @@
 								"fullDate": "2024-03-09T17:30",
 								"date": "2024-03-09",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2348,
@@ -913,7 +902,6 @@
 								"fullDate": "2024-03-03T18:00",
 								"date": "2024-03-03",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2354,
@@ -940,7 +928,6 @@
 								"fullDate": "2024-02-24T18:00",
 								"date": "2024-02-24",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2348,
@@ -967,7 +954,6 @@
 								"fullDate": "2024-02-18T18:00",
 								"date": "2024-02-18",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2369,
@@ -994,7 +980,6 @@
 								"fullDate": "2024-01-23T19:30",
 								"date": "2024-01-23",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2348,
@@ -1100,6 +1085,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -1166,7 +1166,6 @@
 								"fullDate": "2024-04-23T17:00",
 								"date": "2024-04-23",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2808,
@@ -1193,7 +1192,6 @@
 								"fullDate": "2024-04-18T17:30",
 								"date": "2024-04-18",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 437,
@@ -1220,7 +1218,6 @@
 								"fullDate": "2024-04-10T17:00",
 								"date": "2024-04-10",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1062,
@@ -1247,7 +1244,6 @@
 								"fullDate": "2024-04-07T19:00",
 								"date": "2024-04-07",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 435,
@@ -1274,7 +1270,6 @@
 								"fullDate": "2024-04-04T17:00",
 								"date": "2024-04-04",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 437,
@@ -1301,7 +1296,6 @@
 								"fullDate": "2024-03-28T18:00",
 								"date": "2024-03-28",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 437,
@@ -1328,7 +1322,6 @@
 								"fullDate": "2024-03-19T19:15",
 								"date": "2024-03-19",
 								"hour": "19:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -1355,7 +1348,6 @@
 								"fullDate": "2024-03-13T17:45",
 								"date": "2024-03-13",
 								"hour": "17:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 437,
@@ -1382,7 +1374,6 @@
 								"fullDate": "2024-03-09T19:30",
 								"date": "2024-03-09",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 437,
@@ -1409,7 +1400,6 @@
 								"fullDate": "2024-03-05T19:30",
 								"date": "2024-03-05",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 438,
@@ -1436,7 +1426,6 @@
 								"fullDate": "2024-02-29T19:15",
 								"date": "2024-02-29",
 								"hour": "19:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 445,
@@ -1463,7 +1452,6 @@
 								"fullDate": "2024-02-25T17:45",
 								"date": "2024-02-25",
 								"hour": "17:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 457,
@@ -1490,7 +1478,6 @@
 								"fullDate": "2024-02-17T19:00",
 								"date": "2024-02-17",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 437,
@@ -1517,7 +1504,6 @@
 								"fullDate": "2024-02-13T19:30",
 								"date": "2024-02-13",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 453,
@@ -1544,7 +1530,6 @@
 								"fullDate": "2024-02-08T17:30",
 								"date": "2024-02-08",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 437,
@@ -1631,7 +1616,6 @@
 								"fullDate": "2024-05-04T14:00",
 								"date": "2024-05-04",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 124,
@@ -1658,7 +1642,6 @@
 								"fullDate": "2024-04-30T19:30",
 								"date": "2024-04-30",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1062,
@@ -1685,7 +1668,6 @@
 								"fullDate": "2024-04-27T16:30",
 								"date": "2024-04-27",
 								"hour": "16:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1193,
@@ -1712,7 +1694,6 @@
 								"fullDate": "2024-04-23T19:00",
 								"date": "2024-04-23",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1062,
@@ -1739,7 +1720,6 @@
 								"fullDate": "2024-04-20T19:00",
 								"date": "2024-04-20",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1062,
@@ -1766,7 +1746,6 @@
 								"fullDate": "2024-04-17T18:00",
 								"date": "2024-04-17",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1062,
@@ -1793,7 +1772,6 @@
 								"fullDate": "2024-04-14T14:00",
 								"date": "2024-04-14",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 131,
@@ -1820,7 +1798,6 @@
 								"fullDate": "2024-04-10T17:00",
 								"date": "2024-04-10",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1062,
@@ -1847,7 +1824,6 @@
 								"fullDate": "2024-04-07T13:30",
 								"date": "2024-04-07",
 								"hour": "13:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 135,
@@ -1874,7 +1850,6 @@
 								"fullDate": "2024-04-04T17:00",
 								"date": "2024-04-04",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2808,
@@ -1901,7 +1876,6 @@
 								"fullDate": "2024-03-30T14:30",
 								"date": "2024-03-30",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1062,
@@ -1928,7 +1902,6 @@
 								"fullDate": "2024-03-17T17:00",
 								"date": "2024-03-17",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 125,
@@ -1955,7 +1928,6 @@
 								"fullDate": "2024-03-09T14:30",
 								"date": "2024-03-09",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1062,
@@ -1982,7 +1954,6 @@
 								"fullDate": "2024-03-02T14:30",
 								"date": "2024-03-02",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1062,
@@ -2009,7 +1980,6 @@
 								"fullDate": "2024-02-24T14:30",
 								"date": "2024-02-24",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 125,
@@ -2115,6 +2085,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -2181,7 +2166,6 @@
 								"fullDate": "2024-05-03T18:00",
 								"date": "2024-05-03",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2356,
@@ -2208,7 +2192,6 @@
 								"fullDate": "2024-04-28T16:00",
 								"date": "2024-04-28",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2362,
@@ -2235,7 +2218,6 @@
 								"fullDate": "2024-04-24T17:00",
 								"date": "2024-04-24",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2356,
@@ -2262,7 +2244,6 @@
 								"fullDate": "2024-04-20T16:00",
 								"date": "2024-04-20",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2356,
@@ -2289,7 +2270,6 @@
 								"fullDate": "2024-04-16T18:30",
 								"date": "2024-04-16",
 								"hour": "18:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2373,
@@ -2316,7 +2296,6 @@
 								"fullDate": "2024-04-11T19:00",
 								"date": "2024-04-11",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 435,
@@ -2343,7 +2322,6 @@
 								"fullDate": "2024-04-06T16:00",
 								"date": "2024-04-06",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2356,
@@ -2370,7 +2348,6 @@
 								"fullDate": "2024-04-03T17:00",
 								"date": "2024-04-03",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2356,
@@ -2397,7 +2374,6 @@
 								"fullDate": "2024-03-29T14:00",
 								"date": "2024-03-29",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2348,
@@ -2424,7 +2400,6 @@
 								"fullDate": "2024-03-23T16:30",
 								"date": "2024-03-23",
 								"hour": "16:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2356,
@@ -2451,7 +2426,6 @@
 								"fullDate": "2024-03-14T19:30",
 								"date": "2024-03-14",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2356,
@@ -2478,7 +2452,6 @@
 								"fullDate": "2024-03-10T17:30",
 								"date": "2024-03-10",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2350,
@@ -2505,7 +2478,6 @@
 								"fullDate": "2024-03-07T19:30",
 								"date": "2024-03-07",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3700,
@@ -2532,7 +2504,6 @@
 								"fullDate": "2024-03-02T18:00",
 								"date": "2024-03-02",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2356,
@@ -2559,7 +2530,6 @@
 								"fullDate": "2024-02-28T17:00",
 								"date": "2024-02-28",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2356,
@@ -2646,7 +2616,6 @@
 								"fullDate": "2024-04-24T19:30",
 								"date": "2024-04-24",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1179,
@@ -2673,7 +2642,6 @@
 								"fullDate": "2024-04-21T13:30",
 								"date": "2024-04-21",
 								"hour": "13:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 435,
@@ -2700,7 +2668,6 @@
 								"fullDate": "2024-04-15T18:00",
 								"date": "2024-04-15",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 478,
@@ -2727,7 +2694,6 @@
 								"fullDate": "2024-04-11T19:00",
 								"date": "2024-04-11",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 435,
@@ -2754,7 +2720,6 @@
 								"fullDate": "2024-04-07T19:00",
 								"date": "2024-04-07",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 435,
@@ -2781,7 +2746,6 @@
 								"fullDate": "2024-04-02T19:30",
 								"date": "2024-04-02",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2807,
@@ -2808,7 +2772,6 @@
 								"fullDate": "2024-03-29T18:30",
 								"date": "2024-03-29",
 								"hour": "18:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 445,
@@ -2835,7 +2798,6 @@
 								"fullDate": "2024-03-22T18:00",
 								"date": "2024-03-22",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 473,
@@ -2862,7 +2824,6 @@
 								"fullDate": "2024-03-17T16:30",
 								"date": "2024-03-17",
 								"hour": "16:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 435,
@@ -2889,7 +2850,6 @@
 								"fullDate": "2024-03-13T19:10",
 								"date": "2024-03-13",
 								"hour": "19:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 435,
@@ -2916,7 +2876,6 @@
 								"fullDate": "2024-03-09T17:15",
 								"date": "2024-03-09",
 								"hour": "17:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 453,
@@ -2943,7 +2902,6 @@
 								"fullDate": "2024-03-06T19:30",
 								"date": "2024-03-06",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 435,
@@ -2970,7 +2928,6 @@
 								"fullDate": "2024-03-02T19:30",
 								"date": "2024-03-02",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 456,
@@ -2997,7 +2954,6 @@
 								"fullDate": "2024-02-25T15:00",
 								"date": "2024-02-25",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 435,
@@ -3024,7 +2980,6 @@
 								"fullDate": "2024-02-18T17:15",
 								"date": "2024-02-18",
 								"hour": "17:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 435,
@@ -3130,6 +3085,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -3196,7 +3166,6 @@
 								"fullDate": "2024-05-03T14:30",
 								"date": "2024-05-03",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2318,
@@ -3223,7 +3192,6 @@
 								"fullDate": "2024-04-28T19:30",
 								"date": "2024-04-28",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2319,
@@ -3250,7 +3218,6 @@
 								"fullDate": "2024-04-25T19:00",
 								"date": "2024-04-25",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2318,
@@ -3277,7 +3244,6 @@
 								"fullDate": "2024-04-21T14:00",
 								"date": "2024-04-21",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2318,
@@ -3304,7 +3270,6 @@
 								"fullDate": "2024-04-17T14:30",
 								"date": "2024-04-17",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2318,
@@ -3331,7 +3296,6 @@
 								"fullDate": "2024-04-14T14:00",
 								"date": "2024-04-14",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2337,
@@ -3358,7 +3322,6 @@
 								"fullDate": "2024-04-10T19:30",
 								"date": "2024-04-10",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 127,
@@ -3385,7 +3348,6 @@
 								"fullDate": "2024-04-04T19:00",
 								"date": "2024-04-04",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2318,
@@ -3412,7 +3374,6 @@
 								"fullDate": "2024-03-29T18:30",
 								"date": "2024-03-29",
 								"hour": "18:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2331,
@@ -3439,7 +3400,6 @@
 								"fullDate": "2024-03-23T16:00",
 								"date": "2024-03-23",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2325,
@@ -3466,7 +3426,6 @@
 								"fullDate": "2024-03-17T16:00",
 								"date": "2024-03-17",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2318,
@@ -3493,7 +3452,6 @@
 								"fullDate": "2024-03-12T19:30",
 								"date": "2024-03-12",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2318,
@@ -3520,7 +3478,6 @@
 								"fullDate": "2024-03-09T18:30",
 								"date": "2024-03-09",
 								"hour": "18:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2320,
@@ -3547,7 +3504,6 @@
 								"fullDate": "2024-03-05T19:30",
 								"date": "2024-03-05",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1175,
@@ -3574,7 +3530,6 @@
 								"fullDate": "2024-03-02T16:00",
 								"date": "2024-03-02",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2318,
@@ -3661,7 +3616,6 @@
 								"fullDate": "2024-05-04T16:30",
 								"date": "2024-05-04",
 								"hour": "16:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 794,
@@ -3688,7 +3642,6 @@
 								"fullDate": "2024-05-01T19:30",
 								"date": "2024-05-01",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 127,
@@ -3715,7 +3668,6 @@
 								"fullDate": "2024-04-28T09:00",
 								"date": "2024-04-28",
 								"hour": "09:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 127,
@@ -3742,7 +3694,6 @@
 								"fullDate": "2024-04-24T19:30",
 								"date": "2024-04-24",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3702,
@@ -3769,7 +3720,6 @@
 								"fullDate": "2024-04-21T14:00",
 								"date": "2024-04-21",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 121,
@@ -3796,7 +3746,6 @@
 								"fullDate": "2024-04-17T19:30",
 								"date": "2024-04-17",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 127,
@@ -3823,7 +3772,6 @@
 								"fullDate": "2024-04-14T14:00",
 								"date": "2024-04-14",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 144,
@@ -3850,7 +3798,6 @@
 								"fullDate": "2024-04-10T19:30",
 								"date": "2024-04-10",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 127,
@@ -3877,7 +3824,6 @@
 								"fullDate": "2024-04-07T15:00",
 								"date": "2024-04-07",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 127,
@@ -3904,7 +3850,6 @@
 								"fullDate": "2024-04-02T17:00",
 								"date": "2024-04-02",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1125,
@@ -3931,7 +3876,6 @@
 								"fullDate": "2024-03-30T15:00",
 								"date": "2024-03-30",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 7782,
@@ -3958,7 +3902,6 @@
 								"fullDate": "2024-03-16T19:00",
 								"date": "2024-03-16",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 127,
@@ -3985,7 +3928,6 @@
 								"fullDate": "2024-03-09T19:00",
 								"date": "2024-03-09",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 124,
@@ -4012,7 +3954,6 @@
 								"fullDate": "2024-03-02T14:00",
 								"date": "2024-03-02",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 127,
@@ -4039,7 +3980,6 @@
 								"fullDate": "2024-02-25T14:00",
 								"date": "2024-02-25",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 127,
@@ -4145,6 +4085,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -4211,7 +4166,6 @@
 								"fullDate": "2024-04-24T17:00",
 								"date": "2024-04-24",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2356,
@@ -4238,7 +4192,6 @@
 								"fullDate": "2024-04-20T18:00",
 								"date": "2024-04-20",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2813,
@@ -4265,7 +4218,6 @@
 								"fullDate": "2024-04-14T16:45",
 								"date": "2024-04-14",
 								"hour": "16:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2807,
@@ -4292,7 +4244,6 @@
 								"fullDate": "2024-04-09T19:00",
 								"date": "2024-04-09",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1179,
@@ -4319,7 +4270,6 @@
 								"fullDate": "2024-04-05T15:00",
 								"date": "2024-04-05",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2840,
@@ -4346,7 +4296,6 @@
 								"fullDate": "2024-04-02T19:30",
 								"date": "2024-04-02",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2807,
@@ -4373,7 +4322,6 @@
 								"fullDate": "2024-03-28T18:30",
 								"date": "2024-03-28",
 								"hour": "18:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2807,
@@ -4400,7 +4348,6 @@
 								"fullDate": "2024-03-24T19:30",
 								"date": "2024-03-24",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2854,
@@ -4427,7 +4374,6 @@
 								"fullDate": "2024-03-20T19:30",
 								"date": "2024-03-20",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2807,
@@ -4454,7 +4400,6 @@
 								"fullDate": "2024-03-15T18:00",
 								"date": "2024-03-15",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2838,
@@ -4481,7 +4426,6 @@
 								"fullDate": "2024-03-08T17:00",
 								"date": "2024-03-08",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2807,
@@ -4508,7 +4452,6 @@
 								"fullDate": "2024-03-03T15:00",
 								"date": "2024-03-03",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2808,
@@ -4535,7 +4478,6 @@
 								"fullDate": "2024-02-23T15:00",
 								"date": "2024-02-23",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2814,
@@ -4562,7 +4504,6 @@
 								"fullDate": "2024-02-17T19:30",
 								"date": "2024-02-17",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2807,
@@ -4589,7 +4530,6 @@
 								"fullDate": "2024-02-10T14:00",
 								"date": "2024-02-10",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2806,
@@ -4676,7 +4616,6 @@
 								"fullDate": "2024-05-03T19:00",
 								"date": "2024-05-03",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1179,
@@ -4703,7 +4642,6 @@
 								"fullDate": "2024-04-28T16:30",
 								"date": "2024-04-28",
 								"hour": "16:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2140,
@@ -4730,7 +4668,6 @@
 								"fullDate": "2024-04-24T19:30",
 								"date": "2024-04-24",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1179,
@@ -4757,7 +4694,6 @@
 								"fullDate": "2024-04-20T19:00",
 								"date": "2024-04-20",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1179,
@@ -4784,7 +4720,6 @@
 								"fullDate": "2024-04-18T18:00",
 								"date": "2024-04-18",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1175,
@@ -4811,7 +4746,6 @@
 								"fullDate": "2024-04-14T16:30",
 								"date": "2024-04-14",
 								"hour": "16:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1183,
@@ -4838,7 +4772,6 @@
 								"fullDate": "2024-04-09T19:00",
 								"date": "2024-04-09",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1179,
@@ -4865,7 +4798,6 @@
 								"fullDate": "2024-04-06T19:30",
 								"date": "2024-04-06",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1179,
@@ -4892,7 +4824,6 @@
 								"fullDate": "2024-04-03T17:00",
 								"date": "2024-04-03",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2356,
@@ -4919,7 +4850,6 @@
 								"fullDate": "2024-03-31T18:30",
 								"date": "2024-03-31",
 								"hour": "18:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1179,
@@ -4946,7 +4876,6 @@
 								"fullDate": "2024-03-16T19:00",
 								"date": "2024-03-16",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1181,
@@ -4973,7 +4902,6 @@
 								"fullDate": "2024-03-11T17:30",
 								"date": "2024-03-11",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1179,
@@ -5000,7 +4928,6 @@
 								"fullDate": "2024-02-26T17:30",
 								"date": "2024-02-26",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1179,
@@ -5027,7 +4954,6 @@
 								"fullDate": "2024-02-18T16:15",
 								"date": "2024-02-18",
 								"hour": "16:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1177,
@@ -5054,7 +4980,6 @@
 								"fullDate": "2024-02-11T16:15",
 								"date": "2024-02-11",
 								"hour": "16:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1176,
@@ -5160,6 +5085,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -5226,7 +5166,6 @@
 								"fullDate": "2024-05-03T15:00",
 								"date": "2024-05-03",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10492,
@@ -5253,7 +5192,6 @@
 								"fullDate": "2024-04-28T20:00",
 								"date": "2024-04-28",
 								"hour": "20:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2540,
@@ -5280,7 +5218,6 @@
 								"fullDate": "2024-04-24T17:00",
 								"date": "2024-04-24",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 120,
@@ -5307,7 +5244,6 @@
 								"fullDate": "2024-04-19T15:00",
 								"date": "2024-04-19",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2552,
@@ -5334,7 +5270,6 @@
 								"fullDate": "2024-04-13T20:00",
 								"date": "2024-04-13",
 								"hour": "20:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2544,
@@ -5361,7 +5296,6 @@
 								"fullDate": "2024-04-09T21:00",
 								"date": "2024-04-09",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1135,
@@ -5388,7 +5322,6 @@
 								"fullDate": "2024-04-05T20:30",
 								"date": "2024-04-05",
 								"hour": "20:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2540,
@@ -5415,7 +5348,6 @@
 								"fullDate": "2024-04-02T21:00",
 								"date": "2024-04-02",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2540,
@@ -5442,7 +5374,6 @@
 								"fullDate": "2024-03-30T20:00",
 								"date": "2024-03-30",
 								"hour": "20:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2541,
@@ -5469,7 +5400,6 @@
 								"fullDate": "2024-03-12T20:30",
 								"date": "2024-03-12",
 								"hour": "20:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2540,
@@ -5496,7 +5426,6 @@
 								"fullDate": "2024-03-08T20:00",
 								"date": "2024-03-08",
 								"hour": "20:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 20960,
@@ -5523,7 +5452,6 @@
 								"fullDate": "2024-03-01T20:30",
 								"date": "2024-03-01",
 								"hour": "20:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2540,
@@ -5550,7 +5478,6 @@
 								"fullDate": "2024-02-24T15:00",
 								"date": "2024-02-24",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2539,
@@ -5577,7 +5504,6 @@
 								"fullDate": "2024-02-17T20:00",
 								"date": "2024-02-17",
 								"hour": "20:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2540,
@@ -5604,7 +5530,6 @@
 								"fullDate": "2024-02-10T20:00",
 								"date": "2024-02-10",
 								"hour": "20:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2553,
@@ -5691,7 +5616,6 @@
 								"fullDate": "2024-05-04T19:15",
 								"date": "2024-05-04",
 								"hour": "19:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1135,
@@ -5718,7 +5642,6 @@
 								"fullDate": "2024-04-28T17:00",
 								"date": "2024-04-28",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1127,
@@ -5745,7 +5668,6 @@
 								"fullDate": "2024-04-23T21:00",
 								"date": "2024-04-23",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1135,
@@ -5772,7 +5694,6 @@
 								"fullDate": "2024-04-20T18:10",
 								"date": "2024-04-20",
 								"hour": "18:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1135,
@@ -5799,7 +5720,6 @@
 								"fullDate": "2024-04-17T18:10",
 								"date": "2024-04-17",
 								"hour": "18:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1125,
@@ -5826,7 +5746,6 @@
 								"fullDate": "2024-04-14T18:20",
 								"date": "2024-04-14",
 								"hour": "18:20",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1135,
@@ -5853,7 +5772,6 @@
 								"fullDate": "2024-04-09T21:00",
 								"date": "2024-04-09",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1135,
@@ -5880,7 +5798,6 @@
 								"fullDate": "2024-04-06T20:20",
 								"date": "2024-04-06",
 								"hour": "20:20",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1138,
@@ -5907,7 +5824,6 @@
 								"fullDate": "2024-04-03T17:00",
 								"date": "2024-04-03",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 120,
@@ -5934,7 +5850,6 @@
 								"fullDate": "2024-03-29T19:30",
 								"date": "2024-03-29",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1135,
@@ -5961,7 +5876,6 @@
 								"fullDate": "2024-03-22T18:10",
 								"date": "2024-03-22",
 								"hour": "18:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1140,
@@ -5988,7 +5902,6 @@
 								"fullDate": "2024-03-15T20:10",
 								"date": "2024-03-15",
 								"hour": "20:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1135,
@@ -6015,7 +5928,6 @@
 								"fullDate": "2024-03-08T18:10",
 								"date": "2024-03-08",
 								"hour": "18:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1144,
@@ -6042,7 +5954,6 @@
 								"fullDate": "2024-03-02T20:20",
 								"date": "2024-03-02",
 								"hour": "20:20",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1135,
@@ -6069,7 +5980,6 @@
 								"fullDate": "2024-02-25T20:30",
 								"date": "2024-02-25",
 								"hour": "20:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1462,
@@ -6180,6 +6090,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -6246,7 +6171,6 @@
 								"fullDate": "2024-05-03T18:00",
 								"date": "2024-05-03",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2356,
@@ -6273,7 +6197,6 @@
 								"fullDate": "2024-04-29T13:00",
 								"date": "2024-04-29",
 								"hour": "13:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2359,
@@ -6300,7 +6223,6 @@
 								"fullDate": "2024-04-25T17:00",
 								"date": "2024-04-25",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1175,
@@ -6327,7 +6249,6 @@
 								"fullDate": "2024-04-19T11:30",
 								"date": "2024-04-19",
 								"hour": "11:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2359,
@@ -6354,7 +6275,6 @@
 								"fullDate": "2024-04-14T08:00",
 								"date": "2024-04-14",
 								"hour": "08:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2354,
@@ -6381,7 +6301,6 @@
 								"fullDate": "2024-04-09T17:00",
 								"date": "2024-04-09",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -6408,7 +6327,6 @@
 								"fullDate": "2024-04-06T10:30",
 								"date": "2024-04-06",
 								"hour": "10:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2359,
@@ -6435,7 +6353,6 @@
 								"fullDate": "2024-04-02T19:30",
 								"date": "2024-04-02",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2359,
@@ -6462,7 +6379,6 @@
 								"fullDate": "2024-03-29T10:30",
 								"date": "2024-03-29",
 								"hour": "10:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2369,
@@ -6489,7 +6405,6 @@
 								"fullDate": "2024-03-15T17:30",
 								"date": "2024-03-15",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2359,
@@ -6516,7 +6431,6 @@
 								"fullDate": "2024-03-10T14:30",
 								"date": "2024-03-10",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2363,
@@ -6543,7 +6457,6 @@
 								"fullDate": "2024-03-07T17:00",
 								"date": "2024-03-07",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2359,
@@ -6570,7 +6483,6 @@
 								"fullDate": "2024-03-02T08:00",
 								"date": "2024-03-02",
 								"hour": "08:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2359,
@@ -6597,7 +6509,6 @@
 								"fullDate": "2024-02-23T18:30",
 								"date": "2024-02-23",
 								"hour": "18:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2360,
@@ -6624,7 +6535,6 @@
 								"fullDate": "2024-02-18T15:00",
 								"date": "2024-02-18",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2359,
@@ -6711,7 +6621,6 @@
 								"fullDate": "2024-04-28T13:30",
 								"date": "2024-04-28",
 								"hour": "13:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -6738,7 +6647,6 @@
 								"fullDate": "2024-04-23T19:30",
 								"date": "2024-04-23",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -6765,7 +6673,6 @@
 								"fullDate": "2024-04-20T13:30",
 								"date": "2024-04-20",
 								"hour": "13:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -6792,7 +6699,6 @@
 								"fullDate": "2024-04-15T18:00",
 								"date": "2024-04-15",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -6819,7 +6725,6 @@
 								"fullDate": "2024-04-09T17:00",
 								"date": "2024-04-09",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -6846,7 +6751,6 @@
 								"fullDate": "2024-04-06T17:30",
 								"date": "2024-04-06",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 438,
@@ -6873,7 +6777,6 @@
 								"fullDate": "2024-04-02T17:00",
 								"date": "2024-04-02",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1175,
@@ -6900,7 +6803,6 @@
 								"fullDate": "2024-03-28T19:00",
 								"date": "2024-03-28",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 478,
@@ -6927,7 +6829,6 @@
 								"fullDate": "2024-03-19T19:15",
 								"date": "2024-03-19",
 								"hour": "19:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -6954,7 +6855,6 @@
 								"fullDate": "2024-03-14T17:15",
 								"date": "2024-03-14",
 								"hour": "17:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -6981,7 +6881,6 @@
 								"fullDate": "2024-03-10T15:00",
 								"date": "2024-03-10",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 445,
@@ -7008,7 +6907,6 @@
 								"fullDate": "2024-03-06T15:00",
 								"date": "2024-03-06",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -7035,7 +6933,6 @@
 								"fullDate": "2024-03-02T17:15",
 								"date": "2024-03-02",
 								"hour": "17:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 453,
@@ -7062,7 +6959,6 @@
 								"fullDate": "2024-02-26T17:30",
 								"date": "2024-02-26",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -7089,7 +6985,6 @@
 								"fullDate": "2024-02-20T17:30",
 								"date": "2024-02-20",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -7195,6 +7090,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -7261,7 +7171,6 @@
 								"fullDate": "2024-05-03T19:00",
 								"date": "2024-05-03",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1175,
@@ -7288,7 +7197,6 @@
 								"fullDate": "2024-04-28T16:30",
 								"date": "2024-04-28",
 								"hour": "16:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1174,
@@ -7315,7 +7223,6 @@
 								"fullDate": "2024-04-25T17:00",
 								"date": "2024-04-25",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1175,
@@ -7342,7 +7249,6 @@
 								"fullDate": "2024-04-21T19:00",
 								"date": "2024-04-21",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1175,
@@ -7369,7 +7275,6 @@
 								"fullDate": "2024-04-18T18:00",
 								"date": "2024-04-18",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1175,
@@ -7396,7 +7301,6 @@
 								"fullDate": "2024-04-13T19:30",
 								"date": "2024-04-13",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1181,
@@ -7423,7 +7327,6 @@
 								"fullDate": "2024-04-09T17:00",
 								"date": "2024-04-09",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 131,
@@ -7450,7 +7353,6 @@
 								"fullDate": "2024-04-05T19:30",
 								"date": "2024-04-05",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1175,
@@ -7477,7 +7379,6 @@
 								"fullDate": "2024-04-02T17:00",
 								"date": "2024-04-02",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1175,
@@ -7504,7 +7405,6 @@
 								"fullDate": "2024-03-29T17:00",
 								"date": "2024-03-29",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1176,
@@ -7531,7 +7431,6 @@
 								"fullDate": "2024-03-17T16:40",
 								"date": "2024-03-17",
 								"hour": "16:40",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1175,
@@ -7558,7 +7457,6 @@
 								"fullDate": "2024-03-12T19:30",
 								"date": "2024-03-12",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2318,
@@ -7585,7 +7483,6 @@
 								"fullDate": "2024-03-08T16:00",
 								"date": "2024-03-08",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1177,
@@ -7612,7 +7509,6 @@
 								"fullDate": "2024-03-05T19:30",
 								"date": "2024-03-05",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1175,
@@ -7639,7 +7535,6 @@
 								"fullDate": "2024-02-28T19:30",
 								"date": "2024-02-28",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1137,
@@ -7726,7 +7621,6 @@
 								"fullDate": "2024-05-04T19:00",
 								"date": "2024-05-04",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 131,
@@ -7753,7 +7647,6 @@
 								"fullDate": "2024-05-01T18:00",
 								"date": "2024-05-01",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2233,
@@ -7780,7 +7673,6 @@
 								"fullDate": "2024-04-28T14:00",
 								"date": "2024-04-28",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 131,
@@ -7807,7 +7699,6 @@
 								"fullDate": "2024-04-23T19:30",
 								"date": "2024-04-23",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -7834,7 +7725,6 @@
 								"fullDate": "2024-04-20T16:30",
 								"date": "2024-04-20",
 								"hour": "16:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 794,
@@ -7861,7 +7751,6 @@
 								"fullDate": "2024-04-17T18:00",
 								"date": "2024-04-17",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 152,
@@ -7888,7 +7777,6 @@
 								"fullDate": "2024-04-14T14:00",
 								"date": "2024-04-14",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 131,
@@ -7915,7 +7803,6 @@
 								"fullDate": "2024-04-09T17:00",
 								"date": "2024-04-09",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 131,
@@ -7942,7 +7829,6 @@
 								"fullDate": "2024-04-02T19:30",
 								"date": "2024-04-02",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2359,
@@ -7969,7 +7855,6 @@
 								"fullDate": "2024-03-15T18:00",
 								"date": "2024-03-15",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 7865,
@@ -7996,7 +7881,6 @@
 								"fullDate": "2024-03-10T14:00",
 								"date": "2024-03-10",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10018,
@@ -8023,7 +7907,6 @@
 								"fullDate": "2024-03-02T14:00",
 								"date": "2024-03-02",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 131,
@@ -8050,7 +7933,6 @@
 								"fullDate": "2024-02-25T18:00",
 								"date": "2024-02-25",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 131,
@@ -8077,7 +7959,6 @@
 								"fullDate": "2024-02-22T18:00",
 								"date": "2024-02-22",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1194,
@@ -8104,7 +7985,6 @@
 								"fullDate": "2024-02-18T16:00",
 								"date": "2024-02-18",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 121,
@@ -8210,6 +8090,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -8276,7 +8171,6 @@
 								"fullDate": "2024-05-03T18:00",
 								"date": "2024-05-03",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2562,
@@ -8303,7 +8197,6 @@
 								"fullDate": "2024-04-29T20:00",
 								"date": "2024-04-29",
 								"hour": "20:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2541,
@@ -8330,7 +8223,6 @@
 								"fullDate": "2024-04-25T19:00",
 								"date": "2024-04-25",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3700,
@@ -8357,7 +8249,6 @@
 								"fullDate": "2024-04-20T15:30",
 								"date": "2024-04-20",
 								"hour": "15:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10492,
@@ -8384,7 +8275,6 @@
 								"fullDate": "2024-04-14T13:00",
 								"date": "2024-04-14",
 								"hour": "13:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2541,
@@ -8411,7 +8301,6 @@
 								"fullDate": "2024-04-10T21:00",
 								"date": "2024-04-10",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1128,
@@ -8438,7 +8327,6 @@
 								"fullDate": "2024-04-06T15:30",
 								"date": "2024-04-06",
 								"hour": "15:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2552,
@@ -8465,7 +8353,6 @@
 								"fullDate": "2024-04-02T21:00",
 								"date": "2024-04-02",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2541,
@@ -8492,7 +8379,6 @@
 								"fullDate": "2024-03-30T20:00",
 								"date": "2024-03-30",
 								"hour": "20:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2541,
@@ -8519,7 +8405,6 @@
 								"fullDate": "2024-03-14T13:30",
 								"date": "2024-03-14",
 								"hour": "13:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2560,
@@ -8546,7 +8431,6 @@
 								"fullDate": "2024-03-10T15:00",
 								"date": "2024-03-10",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2544,
@@ -8573,7 +8457,6 @@
 								"fullDate": "2024-03-07T19:30",
 								"date": "2024-03-07",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2541,
@@ -8600,7 +8483,6 @@
 								"fullDate": "2024-03-02T19:00",
 								"date": "2024-03-02",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2541,
@@ -8627,7 +8509,6 @@
 								"fullDate": "2024-02-25T19:00",
 								"date": "2024-02-25",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 20960,
@@ -8654,7 +8535,6 @@
 								"fullDate": "2024-02-18T19:30",
 								"date": "2024-02-18",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2541,
@@ -8741,7 +8621,6 @@
 								"fullDate": "2024-04-28T17:00",
 								"date": "2024-04-28",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1129,
@@ -8768,7 +8647,6 @@
 								"fullDate": "2024-04-25T21:00",
 								"date": "2024-04-25",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1128,
@@ -8795,7 +8673,6 @@
 								"fullDate": "2024-04-22T18:20",
 								"date": "2024-04-22",
 								"hour": "18:20",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1128,
@@ -8822,7 +8699,6 @@
 								"fullDate": "2024-04-18T18:10",
 								"date": "2024-04-18",
 								"hour": "18:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1140,
@@ -8849,7 +8725,6 @@
 								"fullDate": "2024-04-14T16:10",
 								"date": "2024-04-14",
 								"hour": "16:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1128,
@@ -8876,7 +8751,6 @@
 								"fullDate": "2024-04-10T21:00",
 								"date": "2024-04-10",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1128,
@@ -8903,7 +8777,6 @@
 								"fullDate": "2024-04-07T18:10",
 								"date": "2024-04-07",
 								"hour": "18:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1133,
@@ -8930,7 +8803,6 @@
 								"fullDate": "2024-04-04T21:00",
 								"date": "2024-04-04",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3700,
@@ -8957,7 +8829,6 @@
 								"fullDate": "2024-04-01T18:20",
 								"date": "2024-04-01",
 								"hour": "18:20",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1128,
@@ -8984,7 +8855,6 @@
 								"fullDate": "2024-03-22T20:20",
 								"date": "2024-03-22",
 								"hour": "20:20",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1134,
@@ -9011,7 +8881,6 @@
 								"fullDate": "2024-03-16T20:30",
 								"date": "2024-03-16",
 								"hour": "20:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1128,
@@ -9038,7 +8907,6 @@
 								"fullDate": "2024-03-09T20:30",
 								"date": "2024-03-09",
 								"hour": "20:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1142,
@@ -9065,7 +8933,6 @@
 								"fullDate": "2024-03-05T21:00",
 								"date": "2024-03-05",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1142,
@@ -9092,7 +8959,6 @@
 								"fullDate": "2024-03-03T18:10",
 								"date": "2024-03-03",
 								"hour": "18:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1128,
@@ -9119,7 +8985,6 @@
 								"fullDate": "2024-02-29T19:45",
 								"date": "2024-02-29",
 								"hour": "19:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1128,
@@ -9225,6 +9090,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -9291,7 +9171,6 @@
 								"fullDate": "2024-04-24T19:30",
 								"date": "2024-04-24",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 15708,
@@ -9318,7 +9197,6 @@
 								"fullDate": "2024-04-10T19:00",
 								"date": "2024-04-10",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 119,
@@ -9345,7 +9223,6 @@
 								"fullDate": "2024-04-07T18:30",
 								"date": "2024-04-07",
 								"hour": "18:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 15708,
@@ -9372,7 +9249,6 @@
 								"fullDate": "2024-04-04T21:00",
 								"date": "2024-04-04",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 15708,
@@ -9399,7 +9275,6 @@
 								"fullDate": "2024-03-30T14:00",
 								"date": "2024-03-30",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 17760,
@@ -9426,7 +9301,6 @@
 								"fullDate": "2024-03-13T19:00",
 								"date": "2024-03-13",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 15708,
@@ -9453,7 +9327,6 @@
 								"fullDate": "2024-03-08T19:30",
 								"date": "2024-03-08",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3709,
@@ -9480,7 +9353,6 @@
 								"fullDate": "2024-03-05T17:00",
 								"date": "2024-03-05",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 15708,
@@ -9507,7 +9379,6 @@
 								"fullDate": "2024-03-02T14:00",
 								"date": "2024-03-02",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3711,
@@ -9534,7 +9405,6 @@
 								"fullDate": "2024-02-26T19:00",
 								"date": "2024-02-26",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 15708,
@@ -9561,7 +9431,6 @@
 								"fullDate": "2024-02-20T17:00",
 								"date": "2024-02-20",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 15708,
@@ -9588,7 +9457,6 @@
 								"fullDate": "2024-02-17T19:00",
 								"date": "2024-02-17",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 12259,
@@ -9675,7 +9543,6 @@
 								"fullDate": "2024-05-04T19:00",
 								"date": "2024-05-04",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 135,
@@ -9702,7 +9569,6 @@
 								"fullDate": "2024-04-28T18:00",
 								"date": "2024-04-28",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 119,
@@ -9729,7 +9595,6 @@
 								"fullDate": "2024-04-25T21:00",
 								"date": "2024-04-25",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1149,
@@ -9756,7 +9621,6 @@
 								"fullDate": "2024-04-21T14:00",
 								"date": "2024-04-21",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 134,
@@ -9783,7 +9647,6 @@
 								"fullDate": "2024-04-17T18:00",
 								"date": "2024-04-17",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 121,
@@ -9810,7 +9673,6 @@
 								"fullDate": "2024-04-13T16:30",
 								"date": "2024-04-13",
 								"hour": "16:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 119,
@@ -9837,7 +9699,6 @@
 								"fullDate": "2024-04-10T19:00",
 								"date": "2024-04-10",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 119,
@@ -9864,7 +9725,6 @@
 								"fullDate": "2024-04-02T17:00",
 								"date": "2024-04-02",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 440,
@@ -9891,7 +9751,6 @@
 								"fullDate": "2024-03-25T19:45",
 								"date": "2024-03-25",
 								"hour": "19:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 119,
@@ -9918,7 +9777,6 @@
 								"fullDate": "2024-03-17T14:00",
 								"date": "2024-03-17",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 152,
@@ -9945,7 +9803,6 @@
 								"fullDate": "2024-03-14T18:00",
 								"date": "2024-03-14",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 7782,
@@ -9972,7 +9829,6 @@
 								"fullDate": "2024-03-09T14:30",
 								"date": "2024-03-09",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 119,
@@ -9999,7 +9855,6 @@
 								"fullDate": "2024-03-02T14:30",
 								"date": "2024-03-02",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 152,
@@ -10026,7 +9881,6 @@
 								"fullDate": "2024-02-28T18:00",
 								"date": "2024-02-28",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1207,
@@ -10053,7 +9907,6 @@
 								"fullDate": "2024-02-25T16:00",
 								"date": "2024-02-25",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 119,
@@ -10159,6 +10012,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -10225,7 +10093,6 @@
 								"fullDate": "2024-04-28T17:00",
 								"date": "2024-04-28",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1131,
@@ -10252,7 +10119,6 @@
 								"fullDate": "2024-04-23T21:00",
 								"date": "2024-04-23",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1141,
@@ -10279,7 +10145,6 @@
 								"fullDate": "2024-04-20T20:30",
 								"date": "2024-04-20",
 								"hour": "20:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1141,
@@ -10306,7 +10171,6 @@
 								"fullDate": "2024-04-17T16:00",
 								"date": "2024-04-17",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1144,
@@ -10333,7 +10197,6 @@
 								"fullDate": "2024-04-14T20:30",
 								"date": "2024-04-14",
 								"hour": "20:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1141,
@@ -10360,7 +10223,6 @@
 								"fullDate": "2024-04-11T19:00",
 								"date": "2024-04-11",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 135,
@@ -10387,7 +10249,6 @@
 								"fullDate": "2024-04-07T16:00",
 								"date": "2024-04-07",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1140,
@@ -10414,7 +10275,6 @@
 								"fullDate": "2024-04-03T21:00",
 								"date": "2024-04-03",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1141,
@@ -10441,7 +10301,6 @@
 								"fullDate": "2024-03-29T17:00",
 								"date": "2024-03-29",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1141,
@@ -10468,7 +10327,6 @@
 								"fullDate": "2024-03-25T16:00",
 								"date": "2024-03-25",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1136,
@@ -10495,7 +10353,6 @@
 								"fullDate": "2024-03-15T18:00",
 								"date": "2024-03-15",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1141,
@@ -10522,7 +10379,6 @@
 								"fullDate": "2024-03-10T18:20",
 								"date": "2024-03-10",
 								"hour": "18:20",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1138,
@@ -10549,7 +10405,6 @@
 								"fullDate": "2024-03-06T21:00",
 								"date": "2024-03-06",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1141,
@@ -10576,7 +10431,6 @@
 								"fullDate": "2024-03-03T20:20",
 								"date": "2024-03-03",
 								"hour": "20:20",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1141,
@@ -10603,7 +10457,6 @@
 								"fullDate": "2024-02-28T15:15",
 								"date": "2024-02-28",
 								"hour": "15:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1147,
@@ -10690,7 +10543,6 @@
 								"fullDate": "2024-05-04T19:00",
 								"date": "2024-05-04",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 135,
@@ -10717,7 +10569,6 @@
 								"fullDate": "2024-04-28T14:00",
 								"date": "2024-04-28",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 135,
@@ -10744,7 +10595,6 @@
 								"fullDate": "2024-04-23T17:00",
 								"date": "2024-04-23",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2326,
@@ -10771,7 +10621,6 @@
 								"fullDate": "2024-04-20T19:00",
 								"date": "2024-04-20",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1062,
@@ -10798,7 +10647,6 @@
 								"fullDate": "2024-04-17T18:00",
 								"date": "2024-04-17",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 154,
@@ -10825,7 +10673,6 @@
 								"fullDate": "2024-04-14T15:00",
 								"date": "2024-04-14",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 135,
@@ -10852,7 +10699,6 @@
 								"fullDate": "2024-04-11T19:00",
 								"date": "2024-04-11",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 135,
@@ -10879,7 +10725,6 @@
 								"fullDate": "2024-04-07T13:30",
 								"date": "2024-04-07",
 								"hour": "13:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 135,
@@ -10906,7 +10751,6 @@
 								"fullDate": "2024-04-04T19:00",
 								"date": "2024-04-04",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1157,
@@ -10933,7 +10777,6 @@
 								"fullDate": "2024-03-30T14:30",
 								"date": "2024-03-30",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1062,
@@ -10960,7 +10803,6 @@
 								"fullDate": "2024-03-16T14:30",
 								"date": "2024-03-16",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 135,
@@ -10987,7 +10829,6 @@
 								"fullDate": "2024-03-10T17:30",
 								"date": "2024-03-10",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2227,
@@ -11014,7 +10855,6 @@
 								"fullDate": "2024-03-02T14:30",
 								"date": "2024-03-02",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 135,
@@ -11041,7 +10881,6 @@
 								"fullDate": "2024-02-25T09:00",
 								"date": "2024-02-25",
 								"hour": "09:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 13084,
@@ -11068,7 +10907,6 @@
 								"fullDate": "2024-02-21T17:15",
 								"date": "2024-02-21",
 								"hour": "17:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 7864,
@@ -11171,6 +11009,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -11237,7 +11090,6 @@
 								"fullDate": "2024-05-03T16:30",
 								"date": "2024-05-03",
 								"hour": "16:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10487,
@@ -11264,7 +11116,6 @@
 								"fullDate": "2024-04-29T18:30",
 								"date": "2024-04-29",
 								"hour": "18:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1182,
@@ -11291,7 +11142,6 @@
 								"fullDate": "2024-04-24T21:00",
 								"date": "2024-04-24",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 16847,
@@ -11318,7 +11168,6 @@
 								"fullDate": "2024-04-20T16:30",
 								"date": "2024-04-20",
 								"hour": "16:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10487,
@@ -11345,7 +11194,6 @@
 								"fullDate": "2024-04-14T19:00",
 								"date": "2024-04-14",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1176,
@@ -11372,7 +11220,6 @@
 								"fullDate": "2024-04-09T19:30",
 								"date": "2024-04-09",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2352,
@@ -11399,7 +11246,6 @@
 								"fullDate": "2024-04-05T19:30",
 								"date": "2024-04-05",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1175,
@@ -11426,7 +11272,6 @@
 								"fullDate": "2024-04-02T19:30",
 								"date": "2024-04-02",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10487,
@@ -11453,7 +11298,6 @@
 								"fullDate": "2024-03-26T17:00",
 								"date": "2024-03-26",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10491,
@@ -11480,7 +11324,6 @@
 								"fullDate": "2024-03-18T17:30",
 								"date": "2024-03-18",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10487,
@@ -11507,7 +11350,6 @@
 								"fullDate": "2024-03-11T17:30",
 								"date": "2024-03-11",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1179,
@@ -11534,7 +11376,6 @@
 								"fullDate": "2024-03-07T19:30",
 								"date": "2024-03-07",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10487,
@@ -11561,7 +11402,6 @@
 								"fullDate": "2024-03-02T16:00",
 								"date": "2024-03-02",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10487,
@@ -11588,7 +11428,6 @@
 								"fullDate": "2024-02-25T16:15",
 								"date": "2024-02-25",
 								"hour": "16:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1187,
@@ -11615,7 +11454,6 @@
 								"fullDate": "2024-02-16T18:45",
 								"date": "2024-02-16",
 								"hour": "18:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10487,
@@ -11702,7 +11540,6 @@
 								"fullDate": "2024-05-03T10:30",
 								"date": "2024-05-03",
 								"hour": "10:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2352,
@@ -11729,7 +11566,6 @@
 								"fullDate": "2024-04-28T08:00",
 								"date": "2024-04-28",
 								"hour": "08:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2373,
@@ -11756,7 +11592,6 @@
 								"fullDate": "2024-04-24T17:00",
 								"date": "2024-04-24",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2352,
@@ -11783,7 +11618,6 @@
 								"fullDate": "2024-04-20T08:00",
 								"date": "2024-04-20",
 								"hour": "08:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2352,
@@ -11810,7 +11644,6 @@
 								"fullDate": "2024-04-14T16:00",
 								"date": "2024-04-14",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2348,
@@ -11837,7 +11670,6 @@
 								"fullDate": "2024-04-09T19:30",
 								"date": "2024-04-09",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2352,
@@ -11864,7 +11696,6 @@
 								"fullDate": "2024-04-06T13:00",
 								"date": "2024-04-06",
 								"hour": "13:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2352,
@@ -11891,7 +11722,6 @@
 								"fullDate": "2024-04-03T17:00",
 								"date": "2024-04-03",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 16847,
@@ -11918,7 +11748,6 @@
 								"fullDate": "2024-03-30T17:00",
 								"date": "2024-03-30",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2350,
@@ -11945,7 +11774,6 @@
 								"fullDate": "2024-03-24T14:00",
 								"date": "2024-03-24",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2352,
@@ -11972,7 +11800,6 @@
 								"fullDate": "2024-03-10T08:00",
 								"date": "2024-03-10",
 								"hour": "08:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2358,
@@ -11999,7 +11826,6 @@
 								"fullDate": "2024-03-06T19:30",
 								"date": "2024-03-06",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2360,
@@ -12026,7 +11852,6 @@
 								"fullDate": "2024-03-02T15:00",
 								"date": "2024-03-02",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2351,
@@ -12053,7 +11878,6 @@
 								"fullDate": "2024-02-24T15:00",
 								"date": "2024-02-24",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2361,
@@ -12080,7 +11904,6 @@
 								"fullDate": "2024-02-17T15:00",
 								"date": "2024-02-17",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2357,
@@ -12183,6 +12006,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -12249,7 +12087,6 @@
 								"fullDate": "2024-04-25T19:00",
 								"date": "2024-04-25",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3700,
@@ -12276,7 +12113,6 @@
 								"fullDate": "2024-04-10T17:00",
 								"date": "2024-04-10",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 442,
@@ -12303,7 +12139,6 @@
 								"fullDate": "2024-04-07T17:00",
 								"date": "2024-04-07",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 17762,
@@ -12330,7 +12165,6 @@
 								"fullDate": "2024-04-04T21:00",
 								"date": "2024-04-04",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3700,
@@ -12357,7 +12191,6 @@
 								"fullDate": "2024-03-31T14:00",
 								"date": "2024-03-31",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3700,
@@ -12384,7 +12217,6 @@
 								"fullDate": "2024-03-28T14:00",
 								"date": "2024-03-28",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 22266,
@@ -12411,7 +12243,6 @@
 								"fullDate": "2024-03-14T19:30",
 								"date": "2024-03-14",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2356,
@@ -12438,7 +12269,6 @@
 								"fullDate": "2024-03-11T17:00",
 								"date": "2024-03-11",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3700,
@@ -12465,7 +12295,6 @@
 								"fullDate": "2024-03-09T16:30",
 								"date": "2024-03-09",
 								"hour": "16:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3700,
@@ -12492,7 +12321,6 @@
 								"fullDate": "2024-03-07T19:30",
 								"date": "2024-03-07",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3700,
@@ -12519,7 +12347,6 @@
 								"fullDate": "2024-03-02T19:00",
 								"date": "2024-03-02",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3704,
@@ -12546,7 +12373,6 @@
 								"fullDate": "2024-02-27T19:30",
 								"date": "2024-02-27",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2546,
@@ -12573,7 +12399,6 @@
 								"fullDate": "2024-02-23T14:00",
 								"date": "2024-02-23",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 15702,
@@ -12600,7 +12425,6 @@
 								"fullDate": "2024-02-20T19:30",
 								"date": "2024-02-20",
 								"hour": "19:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3700,
@@ -12627,7 +12451,6 @@
 								"fullDate": "2024-02-16T19:00",
 								"date": "2024-02-16",
 								"hour": "19:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 3700,
@@ -12714,7 +12537,6 @@
 								"fullDate": "2024-04-25T21:00",
 								"date": "2024-04-25",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 1128,
@@ -12741,7 +12563,6 @@
 								"fullDate": "2024-04-20T13:30",
 								"date": "2024-04-20",
 								"hour": "13:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 458,
@@ -12768,7 +12589,6 @@
 								"fullDate": "2024-04-17T17:30",
 								"date": "2024-04-17",
 								"hour": "17:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 442,
@@ -12795,7 +12615,6 @@
 								"fullDate": "2024-04-10T17:00",
 								"date": "2024-04-10",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 442,
@@ -12822,7 +12641,6 @@
 								"fullDate": "2024-04-07T17:15",
 								"date": "2024-04-07",
 								"hour": "17:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 460,
@@ -12849,7 +12667,6 @@
 								"fullDate": "2024-04-02T21:00",
 								"date": "2024-04-02",
 								"hour": "21:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2541,
@@ -12876,7 +12693,6 @@
 								"fullDate": "2024-03-29T16:00",
 								"date": "2024-03-29",
 								"hour": "16:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 442,
@@ -12903,7 +12719,6 @@
 								"fullDate": "2024-03-21T15:45",
 								"date": "2024-03-21",
 								"hour": "15:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 442,
@@ -12930,7 +12745,6 @@
 								"fullDate": "2024-03-15T17:15",
 								"date": "2024-03-15",
 								"hour": "17:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 436,
@@ -12939,7 +12753,7 @@
 										"score": 1,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 442,
@@ -12957,7 +12771,6 @@
 								"fullDate": "2024-03-10T17:15",
 								"date": "2024-03-10",
 								"hour": "17:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 442,
@@ -12984,7 +12797,6 @@
 								"fullDate": "2024-03-07T19:15",
 								"date": "2024-03-07",
 								"hour": "19:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 440,
@@ -13011,7 +12823,6 @@
 								"fullDate": "2024-03-03T15:00",
 								"date": "2024-03-03",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 442,
@@ -13038,7 +12849,6 @@
 								"fullDate": "2024-02-26T17:00",
 								"date": "2024-02-26",
 								"hour": "17:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 442,
@@ -13065,7 +12875,6 @@
 								"fullDate": "2024-02-20T18:00",
 								"date": "2024-02-20",
 								"hour": "18:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 442,
@@ -13092,7 +12901,6 @@
 								"fullDate": "2024-02-14T15:00",
 								"date": "2024-02-14",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 452,
@@ -13206,6 +13014,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -13272,7 +13095,6 @@
 								"fullDate": "2024-05-01T14:00",
 								"date": "2024-05-01",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 165,
@@ -13299,7 +13121,6 @@
 								"fullDate": "2024-04-27T14:00",
 								"date": "2024-04-27",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 85,
@@ -13326,7 +13147,6 @@
 								"fullDate": "2024-04-24T12:00",
 								"date": "2024-04-24",
 								"hour": "12:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 97,
@@ -13353,7 +13173,6 @@
 								"fullDate": "2024-04-21T14:00",
 								"date": "2024-04-21",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 85,
@@ -13380,7 +13199,6 @@
 								"fullDate": "2024-04-16T14:00",
 								"date": "2024-04-16",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 529,
@@ -13407,7 +13225,6 @@
 								"fullDate": "2024-04-10T14:00",
 								"date": "2024-04-10",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 85,
@@ -13434,7 +13251,6 @@
 								"fullDate": "2024-04-06T14:00",
 								"date": "2024-04-06",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 85,
@@ -13461,7 +13277,6 @@
 								"fullDate": "2024-04-03T14:10",
 								"date": "2024-04-03",
 								"hour": "14:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 85,
@@ -13488,7 +13303,6 @@
 								"fullDate": "2024-03-31T13:45",
 								"date": "2024-03-31",
 								"hour": "13:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 81,
@@ -13515,7 +13329,6 @@
 								"fullDate": "2024-03-17T14:45",
 								"date": "2024-03-17",
 								"hour": "14:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 82,
@@ -13542,7 +13355,6 @@
 								"fullDate": "2024-03-13T15:10",
 								"date": "2024-03-13",
 								"hour": "15:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 85,
@@ -13569,7 +13381,6 @@
 								"fullDate": "2024-03-10T07:00",
 								"date": "2024-03-10",
 								"hour": "07:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 85,
@@ -13596,7 +13407,6 @@
 								"fullDate": "2024-03-05T15:00",
 								"date": "2024-03-05",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 548,
@@ -13623,7 +13433,6 @@
 								"fullDate": "2024-03-01T15:00",
 								"date": "2024-03-01",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 91,
@@ -13650,7 +13459,6 @@
 								"fullDate": "2024-02-25T11:05",
 								"date": "2024-02-25",
 								"hour": "11:05",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 85,
@@ -13737,7 +13545,6 @@
 								"fullDate": "2024-05-04T08:30",
 								"date": "2024-05-04",
 								"hour": "08:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 165,
@@ -13764,7 +13571,6 @@
 								"fullDate": "2024-05-01T14:00",
 								"date": "2024-05-01",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 165,
@@ -13791,7 +13597,6 @@
 								"fullDate": "2024-04-27T08:30",
 								"date": "2024-04-27",
 								"hour": "08:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 173,
@@ -13818,7 +13623,6 @@
 								"fullDate": "2024-04-21T10:30",
 								"date": "2024-04-21",
 								"hour": "10:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 165,
@@ -13845,7 +13649,6 @@
 								"fullDate": "2024-04-16T14:00",
 								"date": "2024-04-16",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 165,
@@ -13872,7 +13675,6 @@
 								"fullDate": "2024-04-13T08:30",
 								"date": "2024-04-13",
 								"hour": "08:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 163,
@@ -13899,7 +13701,6 @@
 								"fullDate": "2024-04-10T14:00",
 								"date": "2024-04-10",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 530,
@@ -13926,7 +13727,6 @@
 								"fullDate": "2024-04-06T11:30",
 								"date": "2024-04-06",
 								"hour": "11:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 165,
@@ -13953,7 +13753,6 @@
 								"fullDate": "2024-03-30T12:30",
 								"date": "2024-03-30",
 								"hour": "12:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 157,
@@ -13980,7 +13779,6 @@
 								"fullDate": "2024-03-17T11:30",
 								"date": "2024-03-17",
 								"hour": "11:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 165,
@@ -14007,7 +13805,6 @@
 								"fullDate": "2024-03-13T15:00",
 								"date": "2024-03-13",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 165,
@@ -14034,7 +13831,6 @@
 								"fullDate": "2024-03-09T12:30",
 								"date": "2024-03-09",
 								"hour": "12:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 162,
@@ -14061,7 +13857,6 @@
 								"fullDate": "2024-03-02T09:30",
 								"date": "2024-03-02",
 								"hour": "09:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 182,
@@ -14088,7 +13883,6 @@
 								"fullDate": "2024-02-25T11:30",
 								"date": "2024-02-25",
 								"hour": "11:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 165,
@@ -14115,7 +13909,6 @@
 								"fullDate": "2024-02-20T15:00",
 								"date": "2024-02-20",
 								"hour": "15:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 197,
@@ -14142,6 +13935,496 @@
 				}
 			}
 		]
+	},
+	{
+		"name": "UEFA Europa Conference League",
+		"country": "World",
+		"flag": "🌎",
+		"standings": [],
+		"matches": []
+	},
+	{
+		"name": "Copa Argentina",
+		"country": "Argentina",
+		"flag": "🇦🇷",
+		"standings": [],
+		"matches": []
+	},
+	{
+		"name": "Liga MX",
+		"country": "Mexico",
+		"flag": "🇲🇽",
+		"standings": [
+			{
+				"teamId": 2287,
+				"teamName": "Club America",
+				"points": 40,
+				"stats": {
+					"goalsDiff": 23,
+					"played": 17,
+					"win": 12,
+					"draw": 4,
+					"lose": 1,
+					"goals": { "for": 37, "against": 14 }
+				}
+			},
+			{
+				"teamId": 2287,
+				"teamName": "Club America",
+				"points": 35,
+				"stats": {
+					"goalsDiff": 18,
+					"played": 17,
+					"win": 10,
+					"draw": 5,
+					"lose": 2,
+					"goals": { "for": 30, "against": 12 }
+				}
+			},
+			{
+				"teamId": 2295,
+				"teamName": "Cruz Azul",
+				"points": 33,
+				"stats": {
+					"goalsDiff": 9,
+					"played": 17,
+					"win": 10,
+					"draw": 3,
+					"lose": 4,
+					"goals": { "for": 23, "against": 14 }
+				}
+			},
+			{
+				"teamId": 2282,
+				"teamName": "Monterrey",
+				"points": 33,
+				"stats": {
+					"goalsDiff": 12,
+					"played": 17,
+					"win": 10,
+					"draw": 3,
+					"lose": 4,
+					"goals": { "for": 27, "against": 15 }
+				}
+			},
+			{
+				"teamId": 2281,
+				"teamName": "Toluca",
+				"points": 32,
+				"stats": {
+					"goalsDiff": 15,
+					"played": 17,
+					"win": 9,
+					"draw": 5,
+					"lose": 3,
+					"goals": { "for": 38, "against": 23 }
+				}
+			},
+			{
+				"teamId": 2282,
+				"teamName": "Monterrey",
+				"points": 32,
+				"stats": {
+					"goalsDiff": 13,
+					"played": 17,
+					"win": 9,
+					"draw": 5,
+					"lose": 3,
+					"goals": { "for": 32, "against": 19 }
+				}
+			},
+			{
+				"teamId": 2279,
+				"teamName": "Tigres UANL",
+				"points": 31,
+				"stats": {
+					"goalsDiff": 11,
+					"played": 17,
+					"win": 9,
+					"draw": 4,
+					"lose": 4,
+					"goals": { "for": 34, "against": 23 }
+				}
+			},
+			{
+				"teamId": 2278,
+				"teamName": "Guadalajara Chivas",
+				"points": 31,
+				"stats": {
+					"goalsDiff": 7,
+					"played": 17,
+					"win": 9,
+					"draw": 4,
+					"lose": 4,
+					"goals": { "for": 24, "against": 17 }
+				}
+			},
+			{
+				"teamId": 2279,
+				"teamName": "Tigres UANL",
+				"points": 30,
+				"stats": {
+					"goalsDiff": 14,
+					"played": 17,
+					"win": 8,
+					"draw": 6,
+					"lose": 3,
+					"goals": { "for": 32, "against": 18 }
+				}
+			},
+			{
+				"teamId": 2292,
+				"teamName": "Pachuca",
+				"points": 29,
+				"stats": {
+					"goalsDiff": 7,
+					"played": 17,
+					"win": 9,
+					"draw": 2,
+					"lose": 6,
+					"goals": { "for": 34, "against": 27 }
+				}
+			},
+			{
+				"teamId": 2286,
+				"teamName": "U.N.A.M. - Pumas",
+				"points": 28,
+				"stats": {
+					"goalsDiff": 9,
+					"played": 17,
+					"win": 8,
+					"draw": 4,
+					"lose": 5,
+					"goals": { "for": 27, "against": 18 }
+				}
+			},
+			{
+				"teamId": 2286,
+				"teamName": "U.N.A.M. - Pumas",
+				"points": 27,
+				"stats": {
+					"goalsDiff": 5,
+					"played": 17,
+					"win": 7,
+					"draw": 6,
+					"lose": 4,
+					"goals": { "for": 27, "against": 22 }
+				}
+			},
+			{
+				"teamId": 2288,
+				"teamName": "Necaxa",
+				"points": 27,
+				"stats": {
+					"goalsDiff": 1,
+					"played": 17,
+					"win": 7,
+					"draw": 6,
+					"lose": 4,
+					"goals": { "for": 30, "against": 29 }
+				}
+			},
+			{
+				"teamId": 2278,
+				"teamName": "Guadalajara Chivas",
+				"points": 27,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 17,
+					"win": 8,
+					"draw": 3,
+					"lose": 6,
+					"goals": { "for": 22, "against": 22 }
+				}
+			},
+			{
+				"teamId": 2291,
+				"teamName": "Puebla",
+				"points": 25,
+				"stats": {
+					"goalsDiff": -1,
+					"played": 17,
+					"win": 7,
+					"draw": 4,
+					"lose": 6,
+					"goals": { "for": 24, "against": 25 }
+				}
+			},
+			{
+				"teamId": 2290,
+				"teamName": "Club Queretaro",
+				"points": 24,
+				"stats": {
+					"goalsDiff": 1,
+					"played": 17,
+					"win": 6,
+					"draw": 6,
+					"lose": 5,
+					"goals": { "for": 22, "against": 21 }
+				}
+			},
+			{
+				"teamId": 2289,
+				"teamName": "Leon",
+				"points": 24,
+				"stats": {
+					"goalsDiff": -2,
+					"played": 17,
+					"win": 7,
+					"draw": 3,
+					"lose": 7,
+					"goals": { "for": 23, "against": 25 }
+				}
+			},
+			{
+				"teamId": 2314,
+				"teamName": "Atletico San Luis",
+				"points": 23,
+				"stats": {
+					"goalsDiff": 5,
+					"played": 17,
+					"win": 7,
+					"draw": 2,
+					"lose": 8,
+					"goals": { "for": 31, "against": 26 }
+				}
+			},
+			{
+				"teamId": 2289,
+				"teamName": "Leon",
+				"points": 23,
+				"stats": {
+					"goalsDiff": 1,
+					"played": 17,
+					"win": 6,
+					"draw": 5,
+					"lose": 6,
+					"goals": { "for": 23, "against": 22 }
+				}
+			},
+			{
+				"teamId": 2285,
+				"teamName": "Santos Laguna",
+				"points": 23,
+				"stats": {
+					"goalsDiff": -3,
+					"played": 17,
+					"win": 7,
+					"draw": 2,
+					"lose": 8,
+					"goals": { "for": 31, "against": 34 }
+				}
+			},
+			{
+				"teamId": 14002,
+				"teamName": "Mazatlán",
+				"points": 22,
+				"stats": {
+					"goalsDiff": -2,
+					"played": 17,
+					"win": 6,
+					"draw": 4,
+					"lose": 7,
+					"goals": { "for": 25, "against": 27 }
+				}
+			},
+			{
+				"teamId": 2292,
+				"teamName": "Pachuca",
+				"points": 22,
+				"stats": {
+					"goalsDiff": -11,
+					"played": 17,
+					"win": 5,
+					"draw": 7,
+					"lose": 5,
+					"goals": { "for": 16, "against": 27 }
+				}
+			},
+			{
+				"teamId": 2281,
+				"teamName": "Toluca",
+				"points": 21,
+				"stats": {
+					"goalsDiff": 4,
+					"played": 17,
+					"win": 5,
+					"draw": 6,
+					"lose": 6,
+					"goals": { "for": 23, "against": 19 }
+				}
+			},
+			{
+				"teamId": 2280,
+				"teamName": "Club Tijuana",
+				"points": 20,
+				"stats": {
+					"goalsDiff": -3,
+					"played": 17,
+					"win": 6,
+					"draw": 2,
+					"lose": 9,
+					"goals": { "for": 23, "against": 26 }
+				}
+			},
+			{
+				"teamId": 2290,
+				"teamName": "Club Queretaro",
+				"points": 19,
+				"stats": {
+					"goalsDiff": -11,
+					"played": 17,
+					"win": 5,
+					"draw": 4,
+					"lose": 8,
+					"goals": { "for": 18, "against": 29 }
+				}
+			},
+			{
+				"teamId": 2298,
+				"teamName": "FC Juarez",
+				"points": 18,
+				"stats": {
+					"goalsDiff": -10,
+					"played": 17,
+					"win": 5,
+					"draw": 3,
+					"lose": 9,
+					"goals": { "for": 24, "against": 34 }
+				}
+			},
+			{
+				"teamId": 2295,
+				"teamName": "Cruz Azul",
+				"points": 17,
+				"stats": {
+					"goalsDiff": -8,
+					"played": 17,
+					"win": 5,
+					"draw": 2,
+					"lose": 10,
+					"goals": { "for": 21, "against": 29 }
+				}
+			},
+			{
+				"teamId": 2283,
+				"teamName": "Atlas",
+				"points": 17,
+				"stats": {
+					"goalsDiff": -10,
+					"played": 17,
+					"win": 4,
+					"draw": 5,
+					"lose": 8,
+					"goals": { "for": 14, "against": 24 }
+				}
+			},
+			{
+				"teamId": 2298,
+				"teamName": "FC Juarez",
+				"points": 16,
+				"stats": {
+					"goalsDiff": -7,
+					"played": 17,
+					"win": 4,
+					"draw": 4,
+					"lose": 9,
+					"goals": { "for": 19, "against": 26 }
+				}
+			},
+			{
+				"teamId": 2314,
+				"teamName": "Atletico San Luis",
+				"points": 16,
+				"stats": {
+					"goalsDiff": -10,
+					"played": 17,
+					"win": 5,
+					"draw": 1,
+					"lose": 11,
+					"goals": { "for": 25, "against": 35 }
+				}
+			},
+			{
+				"teamId": 14002,
+				"teamName": "Mazatlán",
+				"points": 16,
+				"stats": {
+					"goalsDiff": -11,
+					"played": 17,
+					"win": 4,
+					"draw": 4,
+					"lose": 9,
+					"goals": { "for": 21, "against": 32 }
+				}
+			},
+			{
+				"teamId": 2285,
+				"teamName": "Santos Laguna",
+				"points": 15,
+				"stats": {
+					"goalsDiff": -13,
+					"played": 17,
+					"win": 4,
+					"draw": 3,
+					"lose": 10,
+					"goals": { "for": 15, "against": 28 }
+				}
+			},
+			{
+				"teamId": 2288,
+				"teamName": "Necaxa",
+				"points": 15,
+				"stats": {
+					"goalsDiff": -9,
+					"played": 17,
+					"win": 3,
+					"draw": 6,
+					"lose": 8,
+					"goals": { "for": 18, "against": 27 }
+				}
+			},
+			{
+				"teamId": 2280,
+				"teamName": "Club Tijuana",
+				"points": 14,
+				"stats": {
+					"goalsDiff": -9,
+					"played": 17,
+					"win": 2,
+					"draw": 8,
+					"lose": 7,
+					"goals": { "for": 21, "against": 30 }
+				}
+			},
+			{
+				"teamId": 2283,
+				"teamName": "Atlas",
+				"points": 14,
+				"stats": {
+					"goalsDiff": -10,
+					"played": 17,
+					"win": 3,
+					"draw": 5,
+					"lose": 9,
+					"goals": { "for": 21, "against": 31 }
+				}
+			},
+			{
+				"teamId": 2291,
+				"teamName": "Puebla",
+				"points": 5,
+				"stats": {
+					"goalsDiff": -25,
+					"played": 17,
+					"win": 1,
+					"draw": 2,
+					"lose": 14,
+					"goals": { "for": 18, "against": 43 }
+				}
+			}
+		],
+		"matches": []
 	},
 	{
 		"name": "Division 1",
@@ -14464,6 +14747,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -14530,7 +14828,6 @@
 								"fullDate": "2024-04-29T12:50",
 								"date": "2024-04-29",
 								"hour": "12:50",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2948,
@@ -14557,7 +14854,6 @@
 								"fullDate": "2024-04-22T11:10",
 								"date": "2024-04-22",
 								"hour": "11:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 13170,
@@ -14584,7 +14880,6 @@
 								"fullDate": "2024-04-15T10:40",
 								"date": "2024-04-15",
 								"hour": "10:40",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2948,
@@ -14611,7 +14906,6 @@
 								"fullDate": "2024-03-28T13:45",
 								"date": "2024-03-28",
 								"hour": "13:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2926,
@@ -14638,7 +14932,6 @@
 								"fullDate": "2024-03-16T13:30",
 								"date": "2024-03-16",
 								"hour": "13:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2948,
@@ -14665,7 +14958,6 @@
 								"fullDate": "2024-03-11T13:45",
 								"date": "2024-03-11",
 								"hour": "13:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2992,
@@ -14692,7 +14984,6 @@
 								"fullDate": "2024-03-04T10:20",
 								"date": "2024-03-04",
 								"hour": "10:20",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2991,
@@ -14719,7 +15010,6 @@
 								"fullDate": "2024-02-28T10:20",
 								"date": "2024-02-28",
 								"hour": "10:20",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2948,
@@ -14746,7 +15036,6 @@
 								"fullDate": "2024-02-20T11:00",
 								"date": "2024-02-20",
 								"hour": "11:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2947,
@@ -14773,7 +15062,6 @@
 								"fullDate": "2024-02-17T08:15",
 								"date": "2024-02-17",
 								"hour": "08:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2943,
@@ -14800,7 +15088,6 @@
 								"fullDate": "2024-02-12T07:35",
 								"date": "2024-02-12",
 								"hour": "07:35",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2948,
@@ -14827,7 +15114,6 @@
 								"fullDate": "2024-02-06T07:25",
 								"date": "2024-02-06",
 								"hour": "07:25",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2990,
@@ -14854,7 +15140,6 @@
 								"fullDate": "2024-02-01T10:05",
 								"date": "2024-02-01",
 								"hour": "10:05",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2948,
@@ -14881,7 +15166,6 @@
 								"fullDate": "2024-01-09T07:15",
 								"date": "2024-01-09",
 								"hour": "07:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2948,
@@ -14908,7 +15192,6 @@
 								"fullDate": "2024-01-03T09:40",
 								"date": "2024-01-03",
 								"hour": "09:40",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2933,
@@ -14995,7 +15278,6 @@
 								"fullDate": "2024-04-30T11:15",
 								"date": "2024-04-30",
 								"hour": "11:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10509,
@@ -15022,7 +15304,6 @@
 								"fullDate": "2024-04-23T11:30",
 								"date": "2024-04-23",
 								"hour": "11:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2961,
@@ -15049,7 +15330,6 @@
 								"fullDate": "2024-04-16T11:05",
 								"date": "2024-04-16",
 								"hour": "11:05",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10509,
@@ -15076,7 +15356,6 @@
 								"fullDate": "2024-03-29T13:45",
 								"date": "2024-03-29",
 								"hour": "13:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2930,
@@ -15103,7 +15382,6 @@
 								"fullDate": "2024-03-15T13:45",
 								"date": "2024-03-15",
 								"hour": "13:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10509,
@@ -15130,7 +15408,6 @@
 								"fullDate": "2024-03-09T10:25",
 								"date": "2024-03-09",
 								"hour": "10:25",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2933,
@@ -15157,7 +15434,6 @@
 								"fullDate": "2024-03-04T08:10",
 								"date": "2024-03-04",
 								"hour": "08:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 13170,
@@ -15184,7 +15460,6 @@
 								"fullDate": "2024-02-26T08:00",
 								"date": "2024-02-26",
 								"hour": "08:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10509,
@@ -15211,7 +15486,6 @@
 								"fullDate": "2024-02-20T08:05",
 								"date": "2024-02-20",
 								"hour": "08:05",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10507,
@@ -15238,7 +15512,6 @@
 								"fullDate": "2024-02-14T07:55",
 								"date": "2024-02-14",
 								"hour": "07:55",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10509,
@@ -15265,7 +15538,6 @@
 								"fullDate": "2024-02-07T07:55",
 								"date": "2024-02-07",
 								"hour": "07:55",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10509,
@@ -15292,7 +15564,6 @@
 								"fullDate": "2024-01-31T07:45",
 								"date": "2024-01-31",
 								"hour": "07:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2992,
@@ -15319,7 +15590,6 @@
 								"fullDate": "2024-01-24T07:40",
 								"date": "2024-01-24",
 								"hour": "07:40",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10509,
@@ -15346,7 +15616,6 @@
 								"fullDate": "2024-01-08T07:10",
 								"date": "2024-01-08",
 								"hour": "07:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2950,
@@ -15373,7 +15642,6 @@
 								"fullDate": "2024-01-01T07:25",
 								"date": "2024-01-01",
 								"hour": "07:25",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10509,
@@ -15476,6 +15744,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -15542,7 +15825,6 @@
 								"fullDate": "2024-05-01T11:10",
 								"date": "2024-05-01",
 								"hour": "11:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2926,
@@ -15569,7 +15851,6 @@
 								"fullDate": "2024-04-24T11:15",
 								"date": "2024-04-24",
 								"hour": "11:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2958,
@@ -15596,7 +15877,6 @@
 								"fullDate": "2024-04-17T11:05",
 								"date": "2024-04-17",
 								"hour": "11:05",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2992,
@@ -15623,7 +15903,6 @@
 								"fullDate": "2024-03-27T13:45",
 								"date": "2024-03-27",
 								"hour": "13:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2992,
@@ -15650,7 +15929,6 @@
 								"fullDate": "2024-03-17T14:30",
 								"date": "2024-03-17",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2947,
@@ -15677,7 +15955,6 @@
 								"fullDate": "2024-03-11T13:45",
 								"date": "2024-03-11",
 								"hour": "13:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2992,
@@ -15704,7 +15981,6 @@
 								"fullDate": "2024-03-05T10:45",
 								"date": "2024-03-05",
 								"hour": "10:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2971,
@@ -15731,7 +16007,6 @@
 								"fullDate": "2024-02-28T08:00",
 								"date": "2024-02-28",
 								"hour": "08:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2992,
@@ -15758,7 +16033,6 @@
 								"fullDate": "2024-02-19T10:15",
 								"date": "2024-02-19",
 								"hour": "10:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2950,
@@ -15785,7 +16059,6 @@
 								"fullDate": "2024-02-13T08:00",
 								"date": "2024-02-13",
 								"hour": "08:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2992,
@@ -15812,7 +16085,6 @@
 								"fullDate": "2024-02-07T08:10",
 								"date": "2024-02-07",
 								"hour": "08:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2943,
@@ -15839,7 +16111,6 @@
 								"fullDate": "2024-01-31T07:45",
 								"date": "2024-01-31",
 								"hour": "07:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2992,
@@ -15866,7 +16137,6 @@
 								"fullDate": "2024-01-22T07:30",
 								"date": "2024-01-22",
 								"hour": "07:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2959,
@@ -15893,7 +16163,6 @@
 								"fullDate": "2024-01-08T07:30",
 								"date": "2024-01-08",
 								"hour": "07:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2992,
@@ -15920,7 +16189,6 @@
 								"fullDate": "2024-01-01T09:55",
 								"date": "2024-01-01",
 								"hour": "09:55",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2930,
@@ -16007,7 +16275,6 @@
 								"fullDate": "2024-05-02T12:00",
 								"date": "2024-05-02",
 								"hour": "12:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2990,
@@ -16034,7 +16301,6 @@
 								"fullDate": "2024-04-22T11:25",
 								"date": "2024-04-22",
 								"hour": "11:25",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2943,
@@ -16061,7 +16327,6 @@
 								"fullDate": "2024-04-15T12:45",
 								"date": "2024-04-15",
 								"hour": "12:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2990,
@@ -16088,7 +16353,6 @@
 								"fullDate": "2024-03-29T13:45",
 								"date": "2024-03-29",
 								"hour": "13:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2959,
@@ -16115,7 +16379,6 @@
 								"fullDate": "2024-03-16T13:30",
 								"date": "2024-03-16",
 								"hour": "13:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2990,
@@ -16142,7 +16405,6 @@
 								"fullDate": "2024-03-10T08:15",
 								"date": "2024-03-10",
 								"hour": "08:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2961,
@@ -16169,7 +16431,6 @@
 								"fullDate": "2024-03-03T10:20",
 								"date": "2024-03-03",
 								"hour": "10:20",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2950,
@@ -16196,7 +16457,6 @@
 								"fullDate": "2024-02-26T10:15",
 								"date": "2024-02-26",
 								"hour": "10:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2990,
@@ -16223,7 +16483,6 @@
 								"fullDate": "2024-02-20T07:55",
 								"date": "2024-02-20",
 								"hour": "07:55",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2971,
@@ -16250,7 +16509,6 @@
 								"fullDate": "2024-02-14T10:05",
 								"date": "2024-02-14",
 								"hour": "10:05",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2990,
@@ -16277,7 +16535,6 @@
 								"fullDate": "2024-02-06T07:25",
 								"date": "2024-02-06",
 								"hour": "07:25",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2990,
@@ -16304,7 +16561,6 @@
 								"fullDate": "2024-01-31T07:35",
 								"date": "2024-01-31",
 								"hour": "07:35",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2926,
@@ -16331,7 +16587,6 @@
 								"fullDate": "2024-01-24T09:55",
 								"date": "2024-01-24",
 								"hour": "09:55",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2990,
@@ -16358,7 +16613,6 @@
 								"fullDate": "2024-01-10T07:10",
 								"date": "2024-01-10",
 								"hour": "07:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2990,
@@ -16385,7 +16639,6 @@
 								"fullDate": "2024-01-01T07:25",
 								"date": "2024-01-01",
 								"hour": "07:25",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10509,
@@ -16491,6 +16744,21 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -16557,7 +16825,6 @@
 								"fullDate": "2024-05-02T12:00",
 								"date": "2024-05-02",
 								"hour": "12:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2990,
@@ -16584,7 +16851,6 @@
 								"fullDate": "2024-04-24T12:45",
 								"date": "2024-04-24",
 								"hour": "12:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2947,
@@ -16611,7 +16877,6 @@
 								"fullDate": "2024-04-16T12:45",
 								"date": "2024-04-16",
 								"hour": "12:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2947,
@@ -16638,7 +16903,6 @@
 								"fullDate": "2024-03-28T14:00",
 								"date": "2024-03-28",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2961,
@@ -16665,7 +16929,6 @@
 								"fullDate": "2024-03-17T14:30",
 								"date": "2024-03-17",
 								"hour": "14:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2947,
@@ -16692,7 +16955,6 @@
 								"fullDate": "2024-03-11T14:00",
 								"date": "2024-03-11",
 								"hour": "14:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2947,
@@ -16719,7 +16981,6 @@
 								"fullDate": "2024-03-05T07:50",
 								"date": "2024-03-05",
 								"hour": "07:50",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2926,
@@ -16746,7 +17007,6 @@
 								"fullDate": "2024-02-26T11:00",
 								"date": "2024-02-26",
 								"hour": "11:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2947,
@@ -16773,7 +17033,6 @@
 								"fullDate": "2024-02-20T11:00",
 								"date": "2024-02-20",
 								"hour": "11:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2947,
@@ -16800,7 +17059,6 @@
 								"fullDate": "2024-02-14T07:55",
 								"date": "2024-02-14",
 								"hour": "07:55",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2966,
@@ -16827,7 +17085,6 @@
 								"fullDate": "2024-02-05T10:05",
 								"date": "2024-02-05",
 								"hour": "10:05",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2950,
@@ -16854,7 +17111,6 @@
 								"fullDate": "2024-01-29T10:50",
 								"date": "2024-01-29",
 								"hour": "10:50",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2947,
@@ -16881,7 +17137,6 @@
 								"fullDate": "2024-01-23T10:45",
 								"date": "2024-01-23",
 								"hour": "10:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2947,
@@ -16908,7 +17163,6 @@
 								"fullDate": "2024-01-09T10:35",
 								"date": "2024-01-09",
 								"hour": "10:35",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2947,
@@ -16935,7 +17189,6 @@
 								"fullDate": "2024-01-01T07:45",
 								"date": "2024-01-01",
 								"hour": "07:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 13170,
@@ -17022,7 +17275,6 @@
 								"fullDate": "2024-04-29T11:10",
 								"date": "2024-04-29",
 								"hour": "11:10",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2930,
@@ -17049,7 +17301,6 @@
 								"fullDate": "2024-04-23T12:45",
 								"date": "2024-04-23",
 								"hour": "12:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2930,
@@ -17076,7 +17327,6 @@
 								"fullDate": "2024-04-17T10:45",
 								"date": "2024-04-17",
 								"hour": "10:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2959,
@@ -17103,7 +17353,6 @@
 								"fullDate": "2024-03-29T13:45",
 								"date": "2024-03-29",
 								"hour": "13:45",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2930,
@@ -17130,7 +17379,6 @@
 								"fullDate": "2024-03-16T13:30",
 								"date": "2024-03-16",
 								"hour": "13:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2990,
@@ -17157,7 +17405,6 @@
 								"fullDate": "2024-03-10T08:00",
 								"date": "2024-03-10",
 								"hour": "08:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2930,
@@ -17184,7 +17431,6 @@
 								"fullDate": "2024-03-03T08:00",
 								"date": "2024-03-03",
 								"hour": "08:00",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2930,
@@ -17211,7 +17457,6 @@
 								"fullDate": "2024-02-27T10:15",
 								"date": "2024-02-27",
 								"hour": "10:15",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2933,
@@ -17238,7 +17483,6 @@
 								"fullDate": "2024-02-19T08:05",
 								"date": "2024-02-19",
 								"hour": "08:05",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2958,
@@ -17265,7 +17509,6 @@
 								"fullDate": "2024-02-13T10:30",
 								"date": "2024-02-13",
 								"hour": "10:30",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2930,
@@ -17292,7 +17535,6 @@
 								"fullDate": "2024-02-08T10:05",
 								"date": "2024-02-08",
 								"hour": "10:05",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2991,
@@ -17319,7 +17561,6 @@
 								"fullDate": "2024-01-29T07:40",
 								"date": "2024-01-29",
 								"hour": "07:40",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2930,
@@ -17346,7 +17587,6 @@
 								"fullDate": "2024-01-23T07:50",
 								"date": "2024-01-23",
 								"hour": "07:50",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 10507,
@@ -17373,7 +17613,6 @@
 								"fullDate": "2024-01-10T07:40",
 								"date": "2024-01-10",
 								"hour": "07:40",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2961,
@@ -17400,7 +17639,6 @@
 								"fullDate": "2024-01-01T09:55",
 								"date": "2024-01-01",
 								"hour": "09:55",
-								"done": true,
 								"teams": {
 									"home": {
 										"id": 2930,
@@ -17427,5 +17665,533 @@
 				}
 			}
 		]
+	},
+	{
+		"name": "Copa Colombia",
+		"country": "Colombia",
+		"flag": "🇨🇴",
+		"standings": [
+			{
+				"teamId": 1131,
+				"teamName": "Bucaramanga",
+				"points": 38,
+				"stats": {
+					"goalsDiff": 14,
+					"played": 19,
+					"win": 11,
+					"draw": 5,
+					"lose": 3,
+					"goals": { "for": 24, "against": 10 }
+				}
+			},
+			{
+				"teamId": 1142,
+				"teamName": "Deportes Tolima",
+				"points": 38,
+				"stats": {
+					"goalsDiff": 13,
+					"played": 19,
+					"win": 11,
+					"draw": 5,
+					"lose": 3,
+					"goals": { "for": 31, "against": 18 }
+				}
+			},
+			{
+				"teamId": 1462,
+				"teamName": "Deportivo Pereira",
+				"points": 34,
+				"stats": {
+					"goalsDiff": 10,
+					"played": 19,
+					"win": 10,
+					"draw": 4,
+					"lose": 5,
+					"goals": { "for": 28, "against": 18 }
+				}
+			},
+			{
+				"teamId": 1139,
+				"teamName": "Santa Fe",
+				"points": 34,
+				"stats": {
+					"goalsDiff": 10,
+					"played": 19,
+					"win": 10,
+					"draw": 4,
+					"lose": 5,
+					"goals": { "for": 22, "against": 12 }
+				}
+			},
+			{
+				"teamId": 1134,
+				"teamName": "La Equidad",
+				"points": 33,
+				"stats": {
+					"goalsDiff": 8,
+					"played": 19,
+					"win": 9,
+					"draw": 6,
+					"lose": 4,
+					"goals": { "for": 22, "against": 14 }
+				}
+			},
+			{
+				"teamId": 1125,
+				"teamName": "Millonarios",
+				"points": 31,
+				"stats": {
+					"goalsDiff": 8,
+					"played": 19,
+					"win": 9,
+					"draw": 4,
+					"lose": 6,
+					"goals": { "for": 28, "against": 20 }
+				}
+			},
+			{
+				"teamId": 1135,
+				"teamName": "Junior",
+				"points": 29,
+				"stats": {
+					"goalsDiff": 3,
+					"played": 19,
+					"win": 8,
+					"draw": 5,
+					"lose": 6,
+					"goals": { "for": 24, "against": 21 }
+				}
+			},
+			{
+				"teamId": 1136,
+				"teamName": "Once Caldas",
+				"points": 29,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 19,
+					"win": 8,
+					"draw": 5,
+					"lose": 6,
+					"goals": { "for": 16, "against": 16 }
+				}
+			},
+			{
+				"teamId": 1128,
+				"teamName": "Independiente Medellin",
+				"points": 29,
+				"stats": {
+					"goalsDiff": -9,
+					"played": 19,
+					"win": 8,
+					"draw": 5,
+					"lose": 6,
+					"goals": { "for": 22, "against": 31 }
+				}
+			},
+			{
+				"teamId": 1138,
+				"teamName": "America de Cali",
+				"points": 25,
+				"stats": {
+					"goalsDiff": 6,
+					"played": 19,
+					"win": 6,
+					"draw": 7,
+					"lose": 6,
+					"goals": { "for": 22, "against": 16 }
+				}
+			},
+			{
+				"teamId": 1144,
+				"teamName": "Rionegro Aguilas",
+				"points": 25,
+				"stats": {
+					"goalsDiff": 1,
+					"played": 19,
+					"win": 7,
+					"draw": 4,
+					"lose": 8,
+					"goals": { "for": 20, "against": 19 }
+				}
+			},
+			{
+				"teamId": 1137,
+				"teamName": "Atletico Nacional",
+				"points": 24,
+				"stats": {
+					"goalsDiff": 1,
+					"played": 19,
+					"win": 6,
+					"draw": 6,
+					"lose": 7,
+					"goals": { "for": 21, "against": 20 }
+				}
+			},
+			{
+				"teamId": 1147,
+				"teamName": "Fortaleza FC",
+				"points": 24,
+				"stats": {
+					"goalsDiff": -2,
+					"played": 19,
+					"win": 6,
+					"draw": 6,
+					"lose": 7,
+					"goals": { "for": 18, "against": 20 }
+				}
+			},
+			{
+				"teamId": 1133,
+				"teamName": "Jaguares",
+				"points": 22,
+				"stats": {
+					"goalsDiff": -3,
+					"played": 19,
+					"win": 5,
+					"draw": 7,
+					"lose": 7,
+					"goals": { "for": 17, "against": 20 }
+				}
+			},
+			{
+				"teamId": 1127,
+				"teamName": "Deportivo Cali",
+				"points": 21,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 19,
+					"win": 5,
+					"draw": 6,
+					"lose": 8,
+					"goals": { "for": 24, "against": 24 }
+				}
+			},
+			{
+				"teamId": 1126,
+				"teamName": "Deportivo Pasto",
+				"points": 19,
+				"stats": {
+					"goalsDiff": -6,
+					"played": 19,
+					"win": 5,
+					"draw": 4,
+					"lose": 10,
+					"goals": { "for": 15, "against": 21 }
+				}
+			},
+			{
+				"teamId": 1132,
+				"teamName": "Chico",
+				"points": 18,
+				"stats": {
+					"goalsDiff": -13,
+					"played": 19,
+					"win": 5,
+					"draw": 3,
+					"lose": 11,
+					"goals": { "for": 22, "against": 35 }
+				}
+			},
+			{
+				"teamId": 1129,
+				"teamName": "Envigado",
+				"points": 16,
+				"stats": {
+					"goalsDiff": -10,
+					"played": 19,
+					"win": 3,
+					"draw": 7,
+					"lose": 9,
+					"goals": { "for": 15, "against": 25 }
+				}
+			},
+			{
+				"teamId": 1141,
+				"teamName": "Alianza Petrolera",
+				"points": 16,
+				"stats": {
+					"goalsDiff": -14,
+					"played": 19,
+					"win": 4,
+					"draw": 4,
+					"lose": 11,
+					"goals": { "for": 15, "against": 29 }
+				}
+			},
+			{
+				"teamId": 1140,
+				"teamName": "Patriotas",
+				"points": 15,
+				"stats": {
+					"goalsDiff": -17,
+					"played": 19,
+					"win": 4,
+					"draw": 3,
+					"lose": 12,
+					"goals": { "for": 8, "against": 25 }
+				}
+			},
+			{
+				"teamId": 1141,
+				"teamName": "Alianza Petrolera",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1138,
+				"teamName": "America de Cali",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1131,
+				"teamName": "Bucaramanga",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1137,
+				"teamName": "Atletico Nacional",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1132,
+				"teamName": "Chico",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1142,
+				"teamName": "Deportes Tolima",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1127,
+				"teamName": "Deportivo Cali",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1126,
+				"teamName": "Deportivo Pasto",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1462,
+				"teamName": "Deportivo Pereira",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1129,
+				"teamName": "Envigado",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1147,
+				"teamName": "Fortaleza FC",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1128,
+				"teamName": "Independiente Medellin",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1139,
+				"teamName": "Santa Fe",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1133,
+				"teamName": "Jaguares",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1135,
+				"teamName": "Junior",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1134,
+				"teamName": "La Equidad",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1125,
+				"teamName": "Millonarios",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1136,
+				"teamName": "Once Caldas",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1140,
+				"teamName": "Patriotas",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 1144,
+				"teamName": "Rionegro Aguilas",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			}
+		],
+		"matches": []
 	}
 ]

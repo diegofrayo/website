@@ -245,6 +245,7 @@
 				"fullDate": "2024-05-11T08:30",
 				"date": "2024-05-11",
 				"hour": "08:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -316,6 +317,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -1229,6 +1245,7 @@
 				"fullDate": "2024-05-11T08:30",
 				"date": "2024-05-11",
 				"hour": "08:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -1297,6 +1314,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -2210,6 +2242,7 @@
 				"fullDate": "2024-05-11T11:30",
 				"date": "2024-05-11",
 				"hour": "11:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -2281,6 +2314,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -3194,6 +3242,7 @@
 				"fullDate": "2024-05-11T08:30",
 				"date": "2024-05-11",
 				"hour": "08:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -3262,6 +3311,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -4175,6 +4239,7 @@
 				"fullDate": "2024-05-11T08:30",
 				"date": "2024-05-11",
 				"hour": "08:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -4243,6 +4308,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -5425,6 +5505,7 @@
 				"fullDate": "2024-05-11T14:00",
 				"date": "2024-05-11",
 				"hour": "14:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -5493,6 +5574,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -6406,6 +6502,7 @@
 				"fullDate": "2024-05-11T11:30",
 				"date": "2024-05-11",
 				"hour": "11:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -6477,6 +6574,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -7390,6 +7502,7 @@
 				"fullDate": "2024-05-11T09:15",
 				"date": "2024-05-11",
 				"hour": "09:15",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -7461,6 +7574,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -8374,6 +8502,7 @@
 				"fullDate": "2024-05-11T07:00",
 				"date": "2024-05-11",
 				"hour": "07:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -8442,6 +8571,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -9624,6 +9768,7 @@
 				"fullDate": "2024-05-11T09:00",
 				"date": "2024-05-11",
 				"hour": "09:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -9692,6 +9837,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -10605,6 +10765,7 @@
 				"fullDate": "2024-05-11T09:00",
 				"date": "2024-05-11",
 				"hour": "09:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -10673,6 +10834,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -11586,6 +11762,7 @@
 				"fullDate": "2024-05-11T06:30",
 				"date": "2024-05-11",
 				"hour": "06:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -11657,6 +11834,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -12570,6 +12762,7 @@
 				"fullDate": "2024-05-11T09:00",
 				"date": "2024-05-11",
 				"hour": "09:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -12638,6 +12831,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -13551,6 +13759,7 @@
 				"fullDate": "2024-05-11T11:30",
 				"date": "2024-05-11",
 				"hour": "11:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -13622,6 +13831,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -14535,6 +14759,7 @@
 				"fullDate": "2024-05-11T09:00",
 				"date": "2024-05-11",
 				"hour": "09:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -14603,6 +14828,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -15516,6 +15756,7 @@
 				"fullDate": "2024-05-11T09:00",
 				"date": "2024-05-11",
 				"hour": "09:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -15584,6 +15825,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -16497,6 +16753,7 @@
 				"fullDate": "2024-05-11T09:00",
 				"date": "2024-05-11",
 				"hour": "09:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -16565,6 +16822,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -17721,6 +17993,7 @@
 				"fullDate": "2024-05-11T12:00",
 				"date": "2024-05-11",
 				"hour": "12:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -17792,6 +18065,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -18705,6 +18993,7 @@
 				"fullDate": "2024-05-11T09:30",
 				"date": "2024-05-11",
 				"hour": "09:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -18773,6 +19062,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -19686,6 +19990,7 @@
 				"fullDate": "2024-05-11T09:30",
 				"date": "2024-05-11",
 				"hour": "09:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -19754,6 +20059,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -20667,6 +20987,7 @@
 				"fullDate": "2024-05-11T14:30",
 				"date": "2024-05-11",
 				"hour": "14:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -20738,6 +21059,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -21920,6 +22256,7 @@
 				"fullDate": "2024-05-11T13:45",
 				"date": "2024-05-11",
 				"hour": "13:45",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -21988,6 +22325,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -22901,6 +23253,7 @@
 				"fullDate": "2024-05-11T11:00",
 				"date": "2024-05-11",
 				"hour": "11:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -22972,6 +23325,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -24271,6 +24639,7 @@
 				"fullDate": "2024-05-11T18:30",
 				"date": "2024-05-11",
 				"hour": "18:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -24339,6 +24708,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -25252,6 +25636,7 @@
 				"fullDate": "2024-05-11T18:30",
 				"date": "2024-05-11",
 				"hour": "18:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -25320,6 +25705,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -26233,6 +26633,7 @@
 				"fullDate": "2024-05-11T18:45",
 				"date": "2024-05-11",
 				"hour": "18:45",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -26304,6 +26705,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -27217,6 +27633,7 @@
 				"fullDate": "2024-05-11T18:30",
 				"date": "2024-05-11",
 				"hour": "18:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -27288,6 +27705,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -28201,6 +28633,7 @@
 				"fullDate": "2024-05-11T18:30",
 				"date": "2024-05-11",
 				"hour": "18:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -28269,6 +28702,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -29182,6 +29630,7 @@
 				"fullDate": "2024-05-11T18:30",
 				"date": "2024-05-11",
 				"hour": "18:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -29250,6 +29699,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -30163,6 +30627,7 @@
 				"fullDate": "2024-05-11T18:30",
 				"date": "2024-05-11",
 				"hour": "18:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -30231,6 +30696,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -31144,6 +31624,7 @@
 				"fullDate": "2024-05-11T19:30",
 				"date": "2024-05-11",
 				"hour": "19:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -31212,6 +31693,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -32125,6 +32621,7 @@
 				"fullDate": "2024-05-11T19:30",
 				"date": "2024-05-11",
 				"hour": "19:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -32193,6 +32690,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -33106,6 +33618,7 @@
 				"fullDate": "2024-05-11T19:30",
 				"date": "2024-05-11",
 				"hour": "19:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -33174,6 +33687,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -34087,6 +34615,7 @@
 				"fullDate": "2024-05-11T20:30",
 				"date": "2024-05-11",
 				"hour": "20:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -34155,6 +34684,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -35068,6 +35612,7 @@
 				"fullDate": "2024-05-11T21:30",
 				"date": "2024-05-11",
 				"hour": "21:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -35139,6 +35684,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -36052,6 +36612,7 @@
 				"fullDate": "2024-05-11T21:30",
 				"date": "2024-05-11",
 				"hour": "21:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -36120,6 +36681,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -37562,6 +38138,7 @@
 				"fullDate": "2024-05-11T17:15",
 				"date": "2024-05-11",
 				"hour": "17:15",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -37633,6 +38210,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -38546,6 +39138,7 @@
 				"fullDate": "2024-05-11T19:30",
 				"date": "2024-05-11",
 				"hour": "19:30",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -38617,6 +39210,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -39799,6 +40407,7 @@
 				"fullDate": "2024-05-11T19:00",
 				"date": "2024-05-11",
 				"hour": "19:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -39870,6 +40479,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -40783,6 +41407,7 @@
 				"fullDate": "2024-05-11T14:00",
 				"date": "2024-05-11",
 				"hour": "14:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -40854,6 +41479,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -41767,6 +42407,7 @@
 				"fullDate": "2024-05-11T15:00",
 				"date": "2024-05-11",
 				"hour": "15:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -41835,6 +42476,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -43069,6 +43725,7 @@
 				"fullDate": "2024-05-11T10:00",
 				"date": "2024-05-11",
 				"hour": "10:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -43137,6 +43794,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -44050,6 +44722,7 @@
 				"fullDate": "2024-05-11T10:00",
 				"date": "2024-05-11",
 				"hour": "10:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -44118,6 +44791,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -45031,6 +45719,7 @@
 				"fullDate": "2024-05-11T10:00",
 				"date": "2024-05-11",
 				"hour": "10:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -45099,6 +45788,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -46437,6 +47141,7 @@
 				"fullDate": "2024-05-11T13:45",
 				"date": "2024-05-11",
 				"hour": "13:45",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -46508,6 +47213,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -47421,6 +48141,7 @@
 				"fullDate": "2024-05-11T11:15",
 				"date": "2024-05-11",
 				"hour": "11:15",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -47489,6 +48210,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -48402,6 +49138,7 @@
 				"fullDate": "2024-05-11T11:15",
 				"date": "2024-05-11",
 				"hour": "11:15",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -48470,6 +49207,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -49626,6 +50378,7 @@
 				"fullDate": "2024-05-11T10:00",
 				"date": "2024-05-11",
 				"hour": "10:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -49694,6 +50447,21 @@
 									"check": "❌",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
 							],
 							"away": []
 						}
@@ -50607,6 +51375,7 @@
 				"fullDate": "2024-05-11T10:00",
 				"date": "2024-05-11",
 				"hour": "10:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -50675,6 +51444,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
@@ -51588,6 +52372,7 @@
 				"fullDate": "2024-05-11T13:00",
 				"date": "2024-05-11",
 				"hour": "13:00",
+				"done": false,
 				"predictions": [
 					{
 						"id": "GEL",
@@ -51659,6 +52444,21 @@
 									"check": "✅",
 									"weight": 0.5
 								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "DO",
+						"name": "Doble oportunidad o Resultado final",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
 							],
 							"away": []
 						}
