@@ -212,25 +212,12 @@ function RenderByDate({ data }: T_BetsPageProps) {
 							className="tw-mb-8 tw-overflow-auto tw-rounded-md dr-bg-color-surface-200"
 							contentClassName="tw-p-4"
 						>
+							<LeagueStandings data={league.standings} />
 							{league.standings.length > 0 ? (
-								<React.Fragment>
-									<Collapsible
-										title="Posiciones"
-										contentClassName="tw-pt-1"
-									>
-										<Pre className="tw-w-full tw-max-w-full tw-overflow-auto tw-rounded-md tw-px-4 tw-py-3 dr-bg-color-surface-100">
-											{league.standings
-												.map((team, standingIndex) => {
-													return `${standingIndex + 1}. ${team.teamName} | ${team.points}`;
-												})
-												.join("\n")}
-										</Pre>
-									</Collapsible>
-									<Space
-										size={4}
-										variant={Space.variant.DASHED}
-									/>
-								</React.Fragment>
+								<Space
+									variant={Space.variant.DASHED}
+									size={4}
+								/>
 							) : null}
 
 							{Object.entries(groupMatchesByDate(league.matches)).map(
@@ -474,7 +461,7 @@ function FixtureMatch({
 												return (
 													<List.Item
 														key={generateSlug(`${match.id}-${warningIndex}`)}
-														className={cn("tw-ml-3 tw-text-sm")}
+														className="tw-ml-3 tw-text-sm"
 													>
 														<InlineText className="tw-mr-2">{warning.description}</InlineText>
 													</List.Item>
@@ -492,6 +479,7 @@ function FixtureMatch({
 				size={4}
 				variant={Space.variant.DASHED}
 			/>
+
 			<Block className="tw-flex tw-flex-wrap tw-justify-between tw-gap-2 lg:tw-flex-nowrap">
 				{Object.entries(match.teams).map(([teamSide, team]) => {
 					return (
@@ -629,6 +617,23 @@ function FixtureMatch({
 					);
 				})}
 			</Block>
+		</Collapsible>
+	);
+}
+
+function LeagueStandings({ data }: { data: T_LeagueStandings }) {
+	return (
+		<Collapsible
+			title="Posiciones"
+			contentClassName="tw-pt-1"
+		>
+			<Pre className="tw-w-full tw-max-w-full tw-overflow-auto tw-rounded-md tw-px-4 tw-py-3 dr-bg-color-surface-100">
+				{data
+					.map((team, standingIndex) => {
+						return `${standingIndex + 1}. ${team.teamName} | ${team.points}`;
+					})
+					.join("\n")}
+			</Pre>
 		</Collapsible>
 	);
 }
