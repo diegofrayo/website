@@ -366,7 +366,7 @@ function FixtureMatch({
 					<Text>{isStrategyVariant ? `${match.date} | ${match.hour}` : `${match.hour}`}</Text>
 					<Space size={1} />
 
-					<Block className="tw-flex tw-items-center tw-justify-center tw-gap-2">
+					<Block className="tw-flex tw-items-center tw-justify-center tw-gap-4">
 						{match.predictions.map((prediction) => {
 							if (isStrategyVariant && prediction.name !== topKey) {
 								return null;
@@ -376,8 +376,12 @@ function FixtureMatch({
 								<Block
 									key={`${match.id}-${prediction.id}`}
 									className={cn(
-										"tw-overflow-hidden tw-rounded-md tw-border tw-bg-black tw-pr-1 dr-border-color-surface-400",
-										prediction.recommendable && "tw-shadow-sm dr-shadow-color-primary-600",
+										"tw-relative tw-rounded-md tw-border tw-bg-black tw-pr-1 tw-shadow-sm dr-border-color-surface-400",
+										match.done
+											? prediction.right
+												? "tw-shadow-green-600"
+												: "tw-shadow-red-600"
+											: "dr-shadow-color-primary-600",
 									)}
 								>
 									<InlineText className="tw-inline-block tw-px-2 tw-py-1.5 tw-text-sm tw-text-white dr-bg-color-surface-300">
@@ -386,11 +390,16 @@ function FixtureMatch({
 									<Block className="tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-px-2 tw-text-xs">
 										<InlineText>{prediction.recommendable ? "🌟" : "👎"}</InlineText>
 
-										{prediction.right ? <InlineText>✅</InlineText> : null}
+										{match.done ? (
+											<React.Fragment>
+												{prediction.right ? <InlineText>✅</InlineText> : null}
+												{prediction.fail ? <InlineText>❌</InlineText> : null}
+											</React.Fragment>
+										) : null}
 
-										{prediction.fail ? <InlineText>❌</InlineText> : null}
-
-										{prediction.warnings.length > 0 ? <InlineText>⚠️</InlineText> : null}
+										{prediction.warnings.length > 0 ? (
+											<InlineText className="tw-absolute tw--bottom-1 tw--right-1">⚠️</InlineText>
+										) : null}
 									</Block>
 								</Block>
 							);
@@ -676,6 +685,7 @@ export type T_BetsPageProps = {
 };
 
 type T_League = {
+	enabled: false;
 	id: number;
 	name: string;
 	type: "League" | "Cup";

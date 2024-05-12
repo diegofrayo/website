@@ -15,19 +15,24 @@
 					{
 						"id": "GEL",
 						"name": "Equipo local marca un gol",
-						"recommendable": true,
+						"recommendable": false,
 						"acceptancePercentage": 0.6,
 						"warnings": [
 							{ "description": "El equipo visitante es destacado y el local no" },
 							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
 						],
-						"right": false,
-						"fail": true,
+						"right": true,
+						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
 									"check": "✅",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
+									"check": "❌",
 									"weight": 0.6
 								},
 								{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
@@ -42,7 +47,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "❌",
@@ -91,12 +95,16 @@
 						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [],
 						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -113,6 +121,11 @@
 							"home": [
 								{
 									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
 									"check": "✅",
 									"weight": 1
 								}
@@ -1034,19 +1047,24 @@
 					{
 						"id": "GEL",
 						"name": "Equipo local marca un gol",
-						"recommendable": true,
+						"recommendable": false,
 						"acceptancePercentage": 0.6,
 						"warnings": [
 							{ "description": "El equipo visitante es destacado y el local no" },
 							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
 						],
-						"right": false,
-						"fail": true,
+						"right": true,
+						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
 									"check": "✅",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
+									"check": "❌",
 									"weight": 0.6
 								},
 								{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
@@ -1061,7 +1079,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "❌",
@@ -1110,12 +1127,16 @@
 						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [],
 						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -1132,6 +1153,11 @@
 							"home": [
 								{
 									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
 									"check": "✅",
 									"weight": 1
 								}
@@ -2053,18 +2079,23 @@
 					{
 						"id": "GEL",
 						"name": "Equipo local marca un gol",
-						"recommendable": true,
+						"recommendable": false,
 						"acceptancePercentage": 0.6,
 						"warnings": [
 							{ "description": "El equipo visitante es destacado y el local no" },
 							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
 						],
-						"right": true,
-						"fail": false,
+						"right": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
+									"check": "✅",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
 									"check": "✅",
 									"weight": 0.6
 								},
@@ -2080,7 +2111,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "✅", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "✅",
@@ -2129,12 +2159,16 @@
 						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [],
 						"right": false,
 						"fail": true,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -2151,6 +2185,11 @@
 							"home": [
 								{
 									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
 									"check": "✅",
 									"weight": 1
 								}
@@ -2993,7 +3032,7 @@
 										"score": 2,
 										"winner": null,
 										"position": null,
-										"featured": false
+										"featured": true
 									},
 									"away": {
 										"id": 435,
@@ -3072,18 +3111,23 @@
 					{
 						"id": "GEL",
 						"name": "Equipo local marca un gol",
-						"recommendable": true,
+						"recommendable": false,
 						"acceptancePercentage": 0.6,
 						"warnings": [
 							{ "description": "El equipo visitante es destacado y el local no" },
 							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
 						],
-						"right": true,
-						"fail": false,
+						"right": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
+									"check": "✅",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
 									"check": "✅",
 									"weight": 0.6
 								},
@@ -3099,7 +3143,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "✅",
@@ -3148,12 +3191,16 @@
 						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [],
 						"right": false,
 						"fail": true,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -3170,6 +3217,11 @@
 							"home": [
 								{
 									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
 									"check": "✅",
 									"weight": 1
 								}
@@ -4102,7 +4154,12 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
+									"check": "❌",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
 									"check": "❌",
 									"weight": 0.6
 								},
@@ -4118,7 +4175,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "❌",
@@ -4167,12 +4223,16 @@
 						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [],
 						"right": false,
 						"fail": true,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -4190,6 +4250,11 @@
 								{
 									"description": "El equipo visitante es destacado y el local no",
 									"check": "✅",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+									"check": "❌",
 									"weight": 1
 								}
 							],
@@ -5110,18 +5175,23 @@
 					{
 						"id": "GEL",
 						"name": "Equipo local marca un gol",
-						"recommendable": true,
+						"recommendable": false,
 						"acceptancePercentage": 0.6,
 						"warnings": [
 							{ "description": "El equipo visitante es destacado y el local no" },
 							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
 						],
-						"right": true,
-						"fail": false,
+						"right": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
+									"check": "✅",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
 									"check": "✅",
 									"weight": 0.6
 								},
@@ -5137,7 +5207,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "✅", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "✅",
@@ -5186,12 +5255,16 @@
 						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [],
 						"right": false,
 						"fail": true,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -5208,6 +5281,11 @@
 							"home": [
 								{
 									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
 									"check": "✅",
 									"weight": 1
 								}
@@ -6137,15 +6215,20 @@
 					{
 						"id": "GEL",
 						"name": "Equipo local marca un gol",
-						"recommendable": true,
+						"recommendable": false,
 						"acceptancePercentage": 0.6,
 						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
-						"right": true,
-						"fail": false,
+						"right": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
+									"check": "✅",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
 									"check": "✅",
 									"weight": 0.6
 								},
@@ -6161,7 +6244,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "✅",
@@ -6215,7 +6297,11 @@
 						"fail": true,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -6223,16 +6309,21 @@
 					{
 						"id": "GEV",
 						"name": "Equipo visitante marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"recommendable": true,
+						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
-						"fail": true,
+						"right": true,
+						"fail": false,
 						"criteria": {
 							"home": [
 								{
 									"description": "El equipo visitante es destacado y el local no",
 									"check": "❌",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+									"check": "✅",
 									"weight": 1
 								}
 							],
@@ -7164,7 +7255,12 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
+									"check": "❌",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
 									"check": "❌",
 									"weight": 0.6
 								},
@@ -7180,7 +7276,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "✅",
@@ -7229,12 +7324,16 @@
 						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [],
 						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -7252,6 +7351,11 @@
 								{
 									"description": "El equipo visitante es destacado y el local no",
 									"check": "✅",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+									"check": "❌",
 									"weight": 1
 								}
 							],
@@ -8173,7 +8277,7 @@
 						"id": "GEL",
 						"name": "Equipo local marca un gol",
 						"recommendable": false,
-						"acceptancePercentage": 0,
+						"acceptancePercentage": 0.6,
 						"warnings": [
 							{ "description": "El equipo visitante es destacado y el local no" },
 							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
@@ -8183,8 +8287,13 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
 									"check": "❌",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
+									"check": "✅",
 									"weight": 0.6
 								},
 								{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
@@ -8199,7 +8308,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "✅",
@@ -8248,12 +8356,16 @@
 						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [],
 						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -8270,6 +8382,11 @@
 							"home": [
 								{
 									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
 									"check": "✅",
 									"weight": 1
 								}
@@ -9202,7 +9319,12 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
+									"check": "❌",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
 									"check": "❌",
 									"weight": 0.6
 								},
@@ -9218,7 +9340,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "✅",
@@ -9267,12 +9388,16 @@
 						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [],
 						"right": false,
 						"fail": true,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -9290,6 +9415,11 @@
 								{
 									"description": "El equipo visitante es destacado y el local no",
 									"check": "✅",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+									"check": "❌",
 									"weight": 1
 								}
 							],
@@ -10143,7 +10273,12 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
+									"check": "❌",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
 									"check": "❌",
 									"weight": 0.6
 								},
@@ -10159,7 +10294,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "❌",
@@ -10208,12 +10342,16 @@
 						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [],
 						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -10231,6 +10369,11 @@
 								{
 									"description": "El equipo visitante es destacado y el local no",
 									"check": "✅",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+									"check": "❌",
 									"weight": 1
 								}
 							],
@@ -11159,7 +11302,12 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
+									"check": "❌",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
 									"check": "❌",
 									"weight": 0.6
 								},
@@ -11175,7 +11323,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "✅",
@@ -11229,7 +11376,11 @@
 						"fail": true,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -11246,6 +11397,11 @@
 							"home": [
 								{
 									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
 									"check": "❌",
 									"weight": 1
 								}
@@ -12168,15 +12324,20 @@
 						"id": "GEL",
 						"name": "Equipo local marca un gol",
 						"recommendable": false,
-						"acceptancePercentage": 0,
+						"acceptancePercentage": 0.6,
 						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
 						"right": false,
 						"fail": true,
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
 									"check": "❌",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
+									"check": "✅",
 									"weight": 0.6
 								},
 								{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
@@ -12191,7 +12352,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "✅", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "✅",
@@ -12245,7 +12405,11 @@
 						"fail": true,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -12262,6 +12426,11 @@
 							"home": [
 								{
 									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
 									"check": "❌",
 									"weight": 1
 								}
@@ -13202,7 +13371,12 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
+									"description": "Hizo gol en los ultimos 3 partidos de local",
+									"check": "✅",
+									"weight": 0.6
+								},
+								{
+									"description": "Promedio de goles de local >= 1.4",
 									"check": "✅",
 									"weight": 0.6
 								},
@@ -13218,7 +13392,6 @@
 									"weight": 0.1
 								},
 								{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "✅", "weight": 0 },
 								{
 									"description": "Promedio de goles de visitante >= 1.5",
 									"check": "✅",
@@ -13265,14 +13438,18 @@
 					{
 						"id": "ELGE",
 						"name": "Equipo local gana o empata",
-						"recommendable": true,
-						"acceptancePercentage": 1,
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
-						"right": false,
-						"fail": true,
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": true,
+						"fail": false,
 						"criteria": {
 							"home": [
-								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+								{
+									"description": "El equipo local es destacado y el visitante no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -13280,16 +13457,21 @@
 					{
 						"id": "GEV",
 						"name": "Equipo visitante marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0,
-						"warnings": [{ "description": "El equipo local es destacado" }],
-						"right": false,
-						"fail": true,
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
 						"criteria": {
 							"home": [
 								{
 									"description": "El equipo visitante es destacado y el local no",
 									"check": "❌",
+									"weight": 1
+								},
+								{
+									"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+									"check": "✅",
 									"weight": 1
 								}
 							],
