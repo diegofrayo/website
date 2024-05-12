@@ -18,6 +18,19 @@
 				}
 			},
 			{
+				"teamId": 172,
+				"teamName": "VfB Stuttgart",
+				"points": 70,
+				"stats": {
+					"goalsDiff": 35,
+					"played": 33,
+					"win": 22,
+					"draw": 4,
+					"lose": 7,
+					"goals": { "for": 74, "against": 39 }
+				}
+			},
+			{
 				"teamId": 157,
 				"teamName": "Bayern Munich",
 				"points": 69,
@@ -31,29 +44,16 @@
 				}
 			},
 			{
-				"teamId": 172,
-				"teamName": "VfB Stuttgart",
-				"points": 67,
-				"stats": {
-					"goalsDiff": 34,
-					"played": 32,
-					"win": 21,
-					"draw": 4,
-					"lose": 7,
-					"goals": { "for": 73, "against": 39 }
-				}
-			},
-			{
 				"teamId": 173,
 				"teamName": "RB Leipzig",
-				"points": 63,
+				"points": 64,
 				"stats": {
 					"goalsDiff": 38,
-					"played": 32,
+					"played": 33,
 					"win": 19,
-					"draw": 6,
+					"draw": 7,
 					"lose": 7,
-					"goals": { "for": 74, "against": 36 }
+					"goals": { "for": 75, "against": 37 }
 				}
 			},
 			{
@@ -72,27 +72,27 @@
 			{
 				"teamId": 169,
 				"teamName": "Eintracht Frankfurt",
-				"points": 45,
+				"points": 46,
 				"stats": {
 					"goalsDiff": 1,
-					"played": 32,
+					"played": 33,
 					"win": 11,
-					"draw": 12,
+					"draw": 13,
 					"lose": 9,
-					"goals": { "for": 48, "against": 47 }
+					"goals": { "for": 49, "against": 48 }
 				}
 			},
 			{
 				"teamId": 160,
 				"teamName": "SC Freiburg",
-				"points": 41,
+				"points": 42,
 				"stats": {
 					"goalsDiff": -12,
-					"played": 32,
+					"played": 33,
 					"win": 11,
-					"draw": 8,
+					"draw": 9,
 					"lose": 13,
-					"goals": { "for": 43, "against": 55 }
+					"goals": { "for": 44, "against": 56 }
 				}
 			},
 			{
@@ -109,42 +109,42 @@
 				}
 			},
 			{
+				"teamId": 180,
+				"teamName": "FC Heidenheim",
+				"points": 39,
+				"stats": {
+					"goalsDiff": -8,
+					"played": 33,
+					"win": 9,
+					"draw": 12,
+					"lose": 12,
+					"goals": { "for": 46, "against": 54 }
+				}
+			},
+			{
 				"teamId": 170,
 				"teamName": "FC Augsburg",
 				"points": 39,
 				"stats": {
-					"goalsDiff": -8,
-					"played": 32,
+					"goalsDiff": -9,
+					"played": 33,
 					"win": 10,
 					"draw": 9,
-					"lose": 13,
-					"goals": { "for": 49, "against": 57 }
-				}
-			},
-			{
-				"teamId": 180,
-				"teamName": "FC Heidenheim",
-				"points": 38,
-				"stats": {
-					"goalsDiff": -8,
-					"played": 32,
-					"win": 9,
-					"draw": 11,
-					"lose": 12,
-					"goals": { "for": 45, "against": 53 }
+					"lose": 14,
+					"goals": { "for": 49, "against": 58 }
 				}
 			},
 			{
 				"teamId": 162,
 				"teamName": "Werder Bremen",
-				"points": 38,
+				"points": 39,
 				"stats": {
 					"goalsDiff": -9,
-					"played": 32,
+					"played": 33,
 					"win": 10,
-					"draw": 8,
+					"draw": 9,
 					"lose": 14,
-					"goals": { "for": 43, "against": 52 }
+					"goals": { "for": 44, "against": 53 }
 				}
 			},
 			{
@@ -163,14 +163,14 @@
 			{
 				"teamId": 163,
 				"teamName": "Borussia Monchengladbach",
-				"points": 33,
+				"points": 34,
 				"stats": {
 					"goalsDiff": -7,
-					"played": 32,
+					"played": 33,
 					"win": 7,
-					"draw": 12,
+					"draw": 13,
 					"lose": 13,
-					"goals": { "for": 55, "against": 62 }
+					"goals": { "for": 56, "against": 63 }
 				}
 			},
 			{
@@ -191,12 +191,12 @@
 				"teamName": "Union Berlin",
 				"points": 30,
 				"stats": {
-					"goalsDiff": -25,
-					"played": 32,
+					"goalsDiff": -26,
+					"played": 33,
 					"win": 8,
 					"draw": 6,
-					"lose": 18,
-					"goals": { "for": 29, "against": 54 }
+					"lose": 19,
+					"goals": { "for": 31, "against": 57 }
 				}
 			},
 			{
@@ -215,14 +215,14 @@
 			{
 				"teamId": 192,
 				"teamName": "1.FC Köln",
-				"points": 24,
+				"points": 27,
 				"stats": {
-					"goalsDiff": -30,
-					"played": 32,
-					"win": 4,
+					"goalsDiff": -29,
+					"played": 33,
+					"win": 5,
 					"draw": 12,
 					"lose": 16,
-					"goals": { "for": 24, "against": 54 }
+					"goals": { "for": 27, "against": 56 }
 				}
 			},
 			{
@@ -245,18 +245,18 @@
 				"fullDate": "2024-05-10T13:30",
 				"date": "2024-05-10",
 				"hour": "13:30",
-				"done": false,
+				"done": true,
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [
 							{ "description": "El equipo visitante es destacado y el local no" },
 							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
 						],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
@@ -285,12 +285,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -298,40 +298,59 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
+						"recommendable": true,
+						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
-						"right": false,
-						"fail": true,
+						"right": true,
+						"fail": false,
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -342,9 +361,9 @@
 						"id": 170,
 						"name": "FC Augsburg",
 						"country": "🇩🇪",
-						"score": null,
-						"winner": null,
-						"position": 9,
+						"score": 0,
+						"winner": false,
+						"position": 10,
 						"featured": false,
 						"stats": {
 							"total_de_partidos": 15,
@@ -417,7 +436,7 @@
 										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -434,7 +453,7 @@
 										"country": "🇩🇪",
 										"score": 0,
 										"winner": false,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -469,7 +488,7 @@
 										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -486,7 +505,7 @@
 										"country": "🇩🇪",
 										"score": 2,
 										"winner": true,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -521,7 +540,7 @@
 										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -538,7 +557,7 @@
 										"country": "🇩🇪",
 										"score": 1,
 										"winner": null,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -573,7 +592,7 @@
 										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -590,7 +609,7 @@
 										"country": "🇩🇪",
 										"score": 1,
 										"winner": true,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -599,7 +618,7 @@
 										"country": "🇩🇪",
 										"score": 0,
 										"winner": false,
-										"position": 10,
+										"position": 9,
 										"featured": false
 									}
 								}
@@ -625,7 +644,7 @@
 										"country": "🇩🇪",
 										"score": 6,
 										"winner": true,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -642,7 +661,7 @@
 										"country": "🇩🇪",
 										"score": 2,
 										"winner": true,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -677,7 +696,7 @@
 										"country": "🇩🇪",
 										"score": 0,
 										"winner": false,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -694,7 +713,7 @@
 										"country": "🇩🇪",
 										"score": 2,
 										"winner": null,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -729,7 +748,7 @@
 										"country": "🇩🇪",
 										"score": 1,
 										"winner": null,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -746,7 +765,7 @@
 										"country": "🇩🇪",
 										"score": 2,
 										"winner": false,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -755,7 +774,7 @@
 										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
-										"position": 2,
+										"position": 3,
 										"featured": true
 									}
 								}
@@ -781,7 +800,7 @@
 										"country": "🇩🇪",
 										"score": 2,
 										"winner": true,
-										"position": 9,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -792,9 +811,9 @@
 						"id": 172,
 						"name": "VfB Stuttgart",
 						"country": "🇩🇪",
-						"score": null,
-						"winner": null,
-						"position": 3,
+						"score": 1,
+						"winner": true,
+						"position": 2,
 						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
@@ -858,7 +877,7 @@
 										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									},
 									"away": {
@@ -867,7 +886,7 @@
 										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
-										"position": 2,
+										"position": 3,
 										"featured": true
 									}
 								}
@@ -893,7 +912,7 @@
 										"country": "🇩🇪",
 										"score": 2,
 										"winner": null,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									}
 								}
@@ -919,7 +938,7 @@
 										"country": "🇩🇪",
 										"score": 1,
 										"winner": false,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									}
 								}
@@ -936,7 +955,7 @@
 										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									},
 									"away": {
@@ -971,7 +990,7 @@
 										"country": "🇩🇪",
 										"score": 1,
 										"winner": true,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									}
 								}
@@ -988,7 +1007,7 @@
 										"country": "🇩🇪",
 										"score": 3,
 										"winner": null,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									},
 									"away": {
@@ -997,7 +1016,7 @@
 										"country": "🇩🇪",
 										"score": 3,
 										"winner": null,
-										"position": 10,
+										"position": 9,
 										"featured": false
 									}
 								}
@@ -1023,7 +1042,7 @@
 										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									}
 								}
@@ -1040,7 +1059,7 @@
 										"country": "🇩🇪",
 										"score": 2,
 										"winner": true,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									},
 									"away": {
@@ -1075,7 +1094,7 @@
 										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									}
 								}
@@ -1092,7 +1111,7 @@
 										"country": "🇩🇪",
 										"score": 1,
 										"winner": null,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									},
 									"away": {
@@ -1127,7 +1146,7 @@
 										"country": "🇩🇪",
 										"score": 2,
 										"winner": true,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									}
 								}
@@ -1144,7 +1163,7 @@
 										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									},
 									"away": {
@@ -1179,7 +1198,7 @@
 										"country": "🇩🇪",
 										"score": 2,
 										"winner": false,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									}
 								}
@@ -1205,7 +1224,7 @@
 										"country": "🇩🇪",
 										"score": 3,
 										"winner": true,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									}
 								}
@@ -1222,7 +1241,7 @@
 										"country": "🇩🇪",
 										"score": 5,
 										"winner": true,
-										"position": 3,
+										"position": 2,
 										"featured": true
 									},
 									"away": {
@@ -1263,14 +1282,14 @@
 			{
 				"teamId": 547,
 				"teamName": "Girona",
-				"points": 74,
+				"points": 75,
 				"stats": {
 					"goalsDiff": 31,
-					"played": 34,
+					"played": 35,
 					"win": 23,
-					"draw": 5,
+					"draw": 6,
 					"lose": 6,
-					"goals": { "for": 73, "against": 42 }
+					"goals": { "for": 75, "against": 44 }
 				}
 			},
 			{
@@ -1380,14 +1399,14 @@
 			{
 				"teamId": 542,
 				"teamName": "Alaves",
-				"points": 41,
+				"points": 42,
 				"stats": {
 					"goalsDiff": -6,
-					"played": 34,
+					"played": 35,
 					"win": 11,
-					"draw": 8,
+					"draw": 9,
 					"lose": 15,
-					"goals": { "for": 32, "against": 38 }
+					"goals": { "for": 34, "against": 40 }
 				}
 			},
 			{
@@ -1421,12 +1440,25 @@
 				"teamName": "Las Palmas",
 				"points": 37,
 				"stats": {
-					"goalsDiff": -13,
-					"played": 34,
+					"goalsDiff": -14,
+					"played": 35,
 					"win": 10,
 					"draw": 7,
-					"lose": 17,
-					"goals": { "for": 30, "against": 43 }
+					"lose": 18,
+					"goals": { "for": 30, "against": 44 }
+				}
+			},
+			{
+				"teamId": 798,
+				"teamName": "Mallorca",
+				"points": 35,
+				"stats": {
+					"goalsDiff": -12,
+					"played": 35,
+					"win": 7,
+					"draw": 14,
+					"lose": 14,
+					"goals": { "for": 28, "against": 40 }
 				}
 			},
 			{
@@ -1453,19 +1485,6 @@
 					"draw": 13,
 					"lose": 14,
 					"goals": { "for": 27, "against": 43 }
-				}
-			},
-			{
-				"teamId": 798,
-				"teamName": "Mallorca",
-				"points": 32,
-				"stats": {
-					"goalsDiff": -13,
-					"played": 34,
-					"win": 6,
-					"draw": 14,
-					"lose": 14,
-					"goals": { "for": 27, "against": 40 }
 				}
 			},
 			{
@@ -1514,16 +1533,16 @@
 				"fullDate": "2024-05-10T14:00",
 				"date": "2024-05-10",
 				"hour": "14:00",
-				"done": false,
+				"done": true,
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
@@ -1551,12 +1570,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -1564,32 +1583,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
+						"recommendable": true,
+						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -1601,6 +1620,25 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								}
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -1608,7 +1646,7 @@
 						"id": 542,
 						"name": "Alaves",
 						"country": "🇪🇸",
-						"score": null,
+						"score": 2,
 						"winner": null,
 						"position": 11,
 						"featured": false,
@@ -1709,7 +1747,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 15,
+										"position": 16,
 										"featured": false
 									}
 								}
@@ -1839,7 +1877,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 16,
+										"position": 17,
 										"featured": false
 									}
 								}
@@ -1891,7 +1929,7 @@
 										"country": "🇪🇸",
 										"score": 1,
 										"winner": null,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -2058,7 +2096,7 @@
 						"id": 547,
 						"name": "Girona",
 						"country": "🇪🇸",
-						"score": null,
+						"score": 2,
 						"winner": null,
 						"position": 2,
 						"featured": true,
@@ -2306,7 +2344,7 @@
 										"country": "🇪🇸",
 										"score": 1,
 										"winner": true,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -2341,7 +2379,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 16,
+										"position": 17,
 										"featured": false
 									}
 								}
@@ -2436,7 +2474,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 15,
+										"position": 16,
 										"featured": false
 									},
 									"away": {
@@ -2462,7 +2500,7 @@
 										"country": "🇪🇸",
 										"score": 3,
 										"winner": true,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -2542,14 +2580,14 @@
 			{
 				"teamId": 106,
 				"teamName": "Stade Brestois 29",
-				"points": 57,
+				"points": 58,
 				"stats": {
 					"goalsDiff": 16,
-					"played": 32,
+					"played": 33,
 					"win": 16,
-					"draw": 9,
+					"draw": 10,
 					"lose": 7,
-					"goals": { "for": 49, "against": 33 }
+					"goals": { "for": 50, "against": 34 }
 				}
 			},
 			{
@@ -2568,14 +2606,14 @@
 			{
 				"teamId": 84,
 				"teamName": "Nice",
-				"points": 51,
+				"points": 54,
 				"stats": {
-					"goalsDiff": 11,
-					"played": 31,
-					"win": 14,
+					"goalsDiff": 12,
+					"played": 32,
+					"win": 15,
 					"draw": 9,
 					"lose": 8,
-					"goals": { "for": 36, "against": 25 }
+					"goals": { "for": 37, "against": 25 }
 				}
 			},
 			{
@@ -2631,6 +2669,19 @@
 				}
 			},
 			{
+				"teamId": 93,
+				"teamName": "Reims",
+				"points": 41,
+				"stats": {
+					"goalsDiff": -7,
+					"played": 32,
+					"win": 11,
+					"draw": 8,
+					"lose": 13,
+					"goals": { "for": 39, "against": 46 }
+				}
+			},
+			{
 				"teamId": 82,
 				"teamName": "Montpellier",
 				"points": 40,
@@ -2654,19 +2705,6 @@
 					"draw": 10,
 					"lose": 12,
 					"goals": { "for": 39, "against": 42 }
-				}
-			},
-			{
-				"teamId": 93,
-				"teamName": "Reims",
-				"points": 40,
-				"stats": {
-					"goalsDiff": -7,
-					"played": 31,
-					"win": 11,
-					"draw": 7,
-					"lose": 13,
-					"goals": { "for": 38, "against": 45 }
 				}
 			},
 			{
@@ -2700,12 +2738,12 @@
 				"teamName": "LE Havre",
 				"points": 32,
 				"stats": {
-					"goalsDiff": -9,
-					"played": 32,
+					"goalsDiff": -10,
+					"played": 33,
 					"win": 7,
 					"draw": 11,
-					"lose": 14,
-					"goals": { "for": 33, "against": 42 }
+					"lose": 15,
+					"goals": { "for": 33, "against": 43 }
 				}
 			},
 			{
@@ -2754,15 +2792,15 @@
 				"fullDate": "2024-05-10T14:00",
 				"date": "2024-05-10",
 				"hour": "14:00",
-				"done": false,
+				"done": true,
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
@@ -2804,32 +2842,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
@@ -2841,6 +2879,25 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -2848,8 +2905,8 @@
 						"id": 84,
 						"name": "Nice",
 						"country": "🇫🇷",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": true,
 						"position": 5,
 						"featured": true,
 						"stats": {
@@ -2992,7 +3049,7 @@
 										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -3105,7 +3162,7 @@
 										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
-										"position": 10,
+										"position": 11,
 										"featured": false
 									}
 								}
@@ -3122,7 +3179,7 @@
 										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
-										"position": 11,
+										"position": 12,
 										"featured": false
 									},
 									"away": {
@@ -3226,7 +3283,7 @@
 										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
-										"position": 10,
+										"position": 11,
 										"featured": false
 									},
 									"away": {
@@ -3298,8 +3355,8 @@
 						"id": 111,
 						"name": "LE Havre",
 						"country": "🇫🇷",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"position": 15,
 						"featured": false,
 						"stats": {
@@ -3503,7 +3560,7 @@
 										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
-										"position": 10,
+										"position": 11,
 										"featured": false
 									}
 								}
@@ -3555,7 +3612,7 @@
 										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
-										"position": 11,
+										"position": 12,
 										"featured": false
 									}
 								}
@@ -3607,7 +3664,7 @@
 										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -3751,16 +3808,16 @@
 				"fullDate": "2024-05-10T14:00",
 				"date": "2024-05-10",
 				"hour": "14:00",
-				"done": false,
+				"done": true,
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0.4,
 						"warnings": [],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
@@ -3788,12 +3845,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -3801,32 +3858,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"acceptancePercentage": 0.4,
 						"warnings": [],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "✅",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "❌",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
@@ -3838,6 +3895,25 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -3845,7 +3921,7 @@
 						"id": 106,
 						"name": "Stade Brestois 29",
 						"country": "🇫🇷",
-						"score": null,
+						"score": 1,
 						"winner": null,
 						"position": 3,
 						"featured": true,
@@ -4295,9 +4371,9 @@
 						"id": 93,
 						"name": "Reims",
 						"country": "🇫🇷",
-						"score": null,
+						"score": 1,
 						"winner": null,
-						"position": 12,
+						"position": 10,
 						"featured": false,
 						"stats": {
 							"total_de_partidos": 15,
@@ -4370,7 +4446,7 @@
 										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -4387,7 +4463,7 @@
 										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -4396,7 +4472,7 @@
 										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
-										"position": 10,
+										"position": 11,
 										"featured": false
 									}
 								}
@@ -4422,7 +4498,7 @@
 										"country": "🇫🇷",
 										"score": 1,
 										"winner": false,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -4439,7 +4515,7 @@
 										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -4474,7 +4550,7 @@
 										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -4491,7 +4567,7 @@
 										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -4526,7 +4602,7 @@
 										"country": "🇫🇷",
 										"score": 2,
 										"winner": null,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -4543,7 +4619,7 @@
 										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -4578,7 +4654,7 @@
 										"country": "🇫🇷",
 										"score": 2,
 										"winner": true,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -4595,7 +4671,7 @@
 										"country": "🇫🇷",
 										"score": 1,
 										"winner": null,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -4630,7 +4706,7 @@
 										"country": "🇫🇷",
 										"score": 0,
 										"winner": false,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -4647,7 +4723,7 @@
 										"country": "🇫🇷",
 										"score": 2,
 										"winner": false,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -4656,7 +4732,7 @@
 										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
-										"position": 11,
+										"position": 12,
 										"featured": false
 									}
 								}
@@ -4673,7 +4749,7 @@
 										"country": "🇫🇷",
 										"score": 0,
 										"winner": null,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									},
 									"away": {
@@ -4708,7 +4784,7 @@
 										"country": "🇫🇷",
 										"score": 2,
 										"winner": false,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -4734,7 +4810,7 @@
 										"country": "🇫🇷",
 										"score": 3,
 										"winner": true,
-										"position": 12,
+										"position": 10,
 										"featured": false
 									}
 								}
@@ -4844,14 +4920,14 @@
 			{
 				"teamId": 242,
 				"teamName": "Famalicao",
-				"points": 39,
+				"points": 42,
 				"stats": {
-					"goalsDiff": -4,
-					"played": 32,
-					"win": 9,
+					"goalsDiff": -3,
+					"played": 33,
+					"win": 10,
 					"draw": 12,
 					"lose": 11,
-					"goals": { "for": 35, "against": 39 }
+					"goals": { "for": 36, "against": 39 }
 				}
 			},
 			{
@@ -4963,12 +5039,12 @@
 				"teamName": "Chaves",
 				"points": 23,
 				"stats": {
-					"goalsDiff": -37,
-					"played": 32,
+					"goalsDiff": -38,
+					"played": 33,
 					"win": 5,
 					"draw": 8,
-					"lose": 19,
-					"goals": { "for": 31, "against": 68 }
+					"lose": 20,
+					"goals": { "for": 31, "against": 69 }
 				}
 			},
 			{
@@ -4991,15 +5067,15 @@
 				"fullDate": "2024-05-10T14:15",
 				"date": "2024-05-10",
 				"hour": "14:15",
-				"done": false,
+				"done": true,
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
@@ -5028,12 +5104,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -5041,32 +5117,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0,
-						"warnings": [],
-						"right": false,
-						"fail": false,
-						"criteria": {
-							"home": [
-								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "❌",
-									"weight": 0.5
-								},
-								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
-								}
-							],
-							"away": []
-						}
-					},
-					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -5074,7 +5126,50 @@
 						"fail": true,
 						"criteria": {
 							"home": [
+								{
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "❌",
+									"weight": 0.6
+								},
+								{
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "❌",
+									"weight": 0.4
+								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -5085,8 +5180,8 @@
 						"id": 223,
 						"name": "Chaves",
 						"country": "🇵🇹",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"position": 17,
 						"featured": false,
 						"stats": {
@@ -5535,8 +5630,8 @@
 						"id": 242,
 						"name": "Famalicao",
 						"country": "🇵🇹",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": true,
 						"position": 8,
 						"featured": false,
 						"stats": {
@@ -5993,14 +6088,14 @@
 			{
 				"teamId": 505,
 				"teamName": "Inter",
-				"points": 89,
+				"points": 92,
 				"stats": {
-					"goalsDiff": 62,
-					"played": 35,
-					"win": 28,
+					"goalsDiff": 67,
+					"played": 36,
+					"win": 29,
 					"draw": 5,
 					"lose": 2,
-					"goals": { "for": 81, "against": 19 }
+					"goals": { "for": 86, "against": 19 }
 				}
 			},
 			{
@@ -6190,12 +6285,12 @@
 				"teamName": "Frosinone",
 				"points": 32,
 				"stats": {
-					"goalsDiff": -20,
-					"played": 35,
+					"goalsDiff": -25,
+					"played": 36,
 					"win": 7,
 					"draw": 11,
-					"lose": 17,
-					"goals": { "for": 43, "against": 63 }
+					"lose": 18,
+					"goals": { "for": 43, "against": 68 }
 				}
 			},
 			{
@@ -6257,18 +6352,18 @@
 				"fullDate": "2024-05-10T13:45",
 				"date": "2024-05-10",
 				"hour": "13:45",
-				"done": false,
+				"done": true,
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [
 							{ "description": "El equipo visitante es destacado y el local no" },
 							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
 						],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
@@ -6297,12 +6392,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -6310,40 +6405,59 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
+						"recommendable": true,
+						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
-						"right": false,
-						"fail": true,
+						"right": true,
+						"fail": false,
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -6354,8 +6468,8 @@
 						"id": 512,
 						"name": "Frosinone",
 						"country": "🇮🇹",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"position": 16,
 						"featured": false,
 						"stats": {
@@ -6804,8 +6918,8 @@
 						"id": 505,
 						"name": "Inter",
 						"country": "🇮🇹",
-						"score": null,
-						"winner": null,
+						"score": 5,
+						"winner": true,
 						"position": 1,
 						"featured": true,
 						"stats": {
@@ -7255,476 +7369,359 @@
 		]
 	},
 	{
-		"name": "Liga MX",
-		"country": "Mexico",
-		"flag": "🇲🇽",
+		"name": "Liga Profesional Argentina",
+		"country": "Argentina",
+		"flag": "🇦🇷",
 		"standings": [
 			{
-				"teamId": 2287,
-				"teamName": "Club America",
-				"points": 35,
+				"teamId": 457,
+				"teamName": "Newells Old Boys",
+				"points": 3,
 				"stats": {
-					"goalsDiff": 18,
-					"played": 17,
-					"win": 10,
-					"draw": 5,
-					"lose": 2,
-					"goals": { "for": 30, "against": 12 }
-				}
-			},
-			{
-				"teamId": 2295,
-				"teamName": "Cruz Azul",
-				"points": 33,
-				"stats": {
-					"goalsDiff": 9,
-					"played": 17,
-					"win": 10,
-					"draw": 3,
-					"lose": 4,
-					"goals": { "for": 23, "against": 14 }
-				}
-			},
-			{
-				"teamId": 2281,
-				"teamName": "Toluca",
-				"points": 32,
-				"stats": {
-					"goalsDiff": 15,
-					"played": 17,
-					"win": 9,
-					"draw": 5,
-					"lose": 3,
-					"goals": { "for": 38, "against": 23 }
-				}
-			},
-			{
-				"teamId": 2282,
-				"teamName": "Monterrey",
-				"points": 32,
-				"stats": {
-					"goalsDiff": 13,
-					"played": 17,
-					"win": 9,
-					"draw": 5,
-					"lose": 3,
-					"goals": { "for": 32, "against": 19 }
-				}
-			},
-			{
-				"teamId": 2279,
-				"teamName": "Tigres UANL",
-				"points": 31,
-				"stats": {
-					"goalsDiff": 11,
-					"played": 17,
-					"win": 9,
-					"draw": 4,
-					"lose": 4,
-					"goals": { "for": 34, "against": 23 }
-				}
-			},
-			{
-				"teamId": 2278,
-				"teamName": "Guadalajara Chivas",
-				"points": 31,
-				"stats": {
-					"goalsDiff": 7,
-					"played": 17,
-					"win": 9,
-					"draw": 4,
-					"lose": 4,
-					"goals": { "for": 24, "against": 17 }
-				}
-			},
-			{
-				"teamId": 2292,
-				"teamName": "Pachuca",
-				"points": 29,
-				"stats": {
-					"goalsDiff": 7,
-					"played": 17,
-					"win": 9,
-					"draw": 2,
-					"lose": 6,
-					"goals": { "for": 34, "against": 27 }
-				}
-			},
-			{
-				"teamId": 2286,
-				"teamName": "U.N.A.M. - Pumas",
-				"points": 27,
-				"stats": {
-					"goalsDiff": 5,
-					"played": 17,
-					"win": 7,
-					"draw": 6,
-					"lose": 4,
-					"goals": { "for": 27, "against": 22 }
-				}
-			},
-			{
-				"teamId": 2288,
-				"teamName": "Necaxa",
-				"points": 27,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 17,
-					"win": 7,
-					"draw": 6,
-					"lose": 4,
-					"goals": { "for": 30, "against": 29 }
-				}
-			},
-			{
-				"teamId": 2290,
-				"teamName": "Club Queretaro",
-				"points": 24,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 17,
-					"win": 6,
-					"draw": 6,
-					"lose": 5,
-					"goals": { "for": 22, "against": 21 }
-				}
-			},
-			{
-				"teamId": 2289,
-				"teamName": "Leon",
-				"points": 24,
-				"stats": {
-					"goalsDiff": -2,
-					"played": 17,
-					"win": 7,
-					"draw": 3,
-					"lose": 7,
-					"goals": { "for": 23, "against": 25 }
-				}
-			},
-			{
-				"teamId": 2298,
-				"teamName": "FC Juarez",
-				"points": 16,
-				"stats": {
-					"goalsDiff": -7,
-					"played": 17,
-					"win": 4,
-					"draw": 4,
-					"lose": 9,
-					"goals": { "for": 19, "against": 26 }
-				}
-			},
-			{
-				"teamId": 2314,
-				"teamName": "Atletico San Luis",
-				"points": 16,
-				"stats": {
-					"goalsDiff": -10,
-					"played": 17,
-					"win": 5,
-					"draw": 1,
-					"lose": 11,
-					"goals": { "for": 25, "against": 35 }
-				}
-			},
-			{
-				"teamId": 14002,
-				"teamName": "Mazatlán",
-				"points": 16,
-				"stats": {
-					"goalsDiff": -11,
-					"played": 17,
-					"win": 4,
-					"draw": 4,
-					"lose": 9,
-					"goals": { "for": 21, "against": 32 }
-				}
-			},
-			{
-				"teamId": 2285,
-				"teamName": "Santos Laguna",
-				"points": 15,
-				"stats": {
-					"goalsDiff": -13,
-					"played": 17,
-					"win": 4,
-					"draw": 3,
-					"lose": 10,
-					"goals": { "for": 15, "against": 28 }
-				}
-			},
-			{
-				"teamId": 2280,
-				"teamName": "Club Tijuana",
-				"points": 14,
-				"stats": {
-					"goalsDiff": -9,
-					"played": 17,
-					"win": 2,
-					"draw": 8,
-					"lose": 7,
-					"goals": { "for": 21, "against": 30 }
-				}
-			},
-			{
-				"teamId": 2283,
-				"teamName": "Atlas",
-				"points": 14,
-				"stats": {
-					"goalsDiff": -10,
-					"played": 17,
-					"win": 3,
-					"draw": 5,
-					"lose": 9,
-					"goals": { "for": 21, "against": 31 }
-				}
-			},
-			{
-				"teamId": 2291,
-				"teamName": "Puebla",
-				"points": 5,
-				"stats": {
-					"goalsDiff": -25,
-					"played": 17,
+					"goalsDiff": 2,
+					"played": 1,
 					"win": 1,
-					"draw": 2,
-					"lose": 14,
-					"goals": { "for": 18, "against": 43 }
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 2, "against": 0 }
 				}
 			},
 			{
-				"teamId": 2287,
-				"teamName": "Club America",
-				"points": 40,
+				"teamId": 458,
+				"teamName": "Argentinos JRS",
+				"points": 3,
 				"stats": {
-					"goalsDiff": 23,
-					"played": 17,
-					"win": 12,
-					"draw": 4,
-					"lose": 1,
-					"goals": { "for": 37, "against": 14 }
+					"goalsDiff": 1,
+					"played": 1,
+					"win": 1,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 3, "against": 2 }
 				}
 			},
 			{
-				"teamId": 2282,
-				"teamName": "Monterrey",
-				"points": 33,
+				"teamId": 478,
+				"teamName": "Instituto Cordoba",
+				"points": 3,
 				"stats": {
-					"goalsDiff": 12,
-					"played": 17,
-					"win": 10,
-					"draw": 3,
-					"lose": 4,
-					"goals": { "for": 27, "against": 15 }
+					"goalsDiff": 1,
+					"played": 1,
+					"win": 1,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 2, "against": 1 }
 				}
 			},
 			{
-				"teamId": 2279,
-				"teamName": "Tigres UANL",
-				"points": 30,
-				"stats": {
-					"goalsDiff": 14,
-					"played": 17,
-					"win": 8,
-					"draw": 6,
-					"lose": 3,
-					"goals": { "for": 32, "against": 18 }
-				}
-			},
-			{
-				"teamId": 2286,
-				"teamName": "U.N.A.M. - Pumas",
-				"points": 28,
-				"stats": {
-					"goalsDiff": 9,
-					"played": 17,
-					"win": 8,
-					"draw": 4,
-					"lose": 5,
-					"goals": { "for": 27, "against": 18 }
-				}
-			},
-			{
-				"teamId": 2278,
-				"teamName": "Guadalajara Chivas",
-				"points": 27,
+				"teamId": 452,
+				"teamName": "Tigre",
+				"points": 0,
 				"stats": {
 					"goalsDiff": 0,
-					"played": 17,
-					"win": 8,
-					"draw": 3,
-					"lose": 6,
-					"goals": { "for": 22, "against": 22 }
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
 				}
 			},
 			{
-				"teamId": 2291,
-				"teamName": "Puebla",
-				"points": 25,
+				"teamId": 446,
+				"teamName": "Lanus",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 449,
+				"teamName": "Banfield",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 434,
+				"teamName": "Gimnasia L.P.",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 438,
+				"teamName": "Velez Sarsfield",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 460,
+				"teamName": "San Lorenzo",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 453,
+				"teamName": "Independiente",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 436,
+				"teamName": "Racing Club",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 445,
+				"teamName": "Huracan",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 450,
+				"teamName": "Estudiantes L.P.",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 435,
+				"teamName": "River Plate",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 451,
+				"teamName": "Boca Juniors",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 440,
+				"teamName": "Belgrano Cordoba",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 441,
+				"teamName": "Union Santa Fe",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 439,
+				"teamName": "Godoy Cruz",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 456,
+				"teamName": "Talleres Cordoba",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 455,
+				"teamName": "Atletico Tucuman",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 442,
+				"teamName": "Defensa Y Justicia",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 473,
+				"teamName": "Independ. Rivadavia",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 2432,
+				"teamName": "Barracas Central",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 476,
+				"teamName": "Deportivo Riestra",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 437,
+				"teamName": "Rosario Central",
+				"points": 0,
 				"stats": {
 					"goalsDiff": -1,
-					"played": 17,
-					"win": 7,
-					"draw": 4,
-					"lose": 6,
-					"goals": { "for": 24, "against": 25 }
+					"played": 1,
+					"win": 0,
+					"draw": 0,
+					"lose": 1,
+					"goals": { "for": 2, "against": 3 }
 				}
 			},
 			{
-				"teamId": 2314,
-				"teamName": "Atletico San Luis",
-				"points": 23,
+				"teamId": 474,
+				"teamName": "Sarmiento Junin",
+				"points": 0,
 				"stats": {
-					"goalsDiff": 5,
-					"played": 17,
-					"win": 7,
-					"draw": 2,
-					"lose": 8,
-					"goals": { "for": 31, "against": 26 }
+					"goalsDiff": -1,
+					"played": 1,
+					"win": 0,
+					"draw": 0,
+					"lose": 1,
+					"goals": { "for": 1, "against": 2 }
 				}
 			},
 			{
-				"teamId": 2289,
-				"teamName": "Leon",
-				"points": 23,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 17,
-					"win": 6,
-					"draw": 5,
-					"lose": 6,
-					"goals": { "for": 23, "against": 22 }
-				}
-			},
-			{
-				"teamId": 2285,
-				"teamName": "Santos Laguna",
-				"points": 23,
-				"stats": {
-					"goalsDiff": -3,
-					"played": 17,
-					"win": 7,
-					"draw": 2,
-					"lose": 8,
-					"goals": { "for": 31, "against": 34 }
-				}
-			},
-			{
-				"teamId": 14002,
-				"teamName": "Mazatlán",
-				"points": 22,
+				"teamId": 1064,
+				"teamName": "Platense",
+				"points": 0,
 				"stats": {
 					"goalsDiff": -2,
-					"played": 17,
-					"win": 6,
-					"draw": 4,
-					"lose": 7,
-					"goals": { "for": 25, "against": 27 }
-				}
-			},
-			{
-				"teamId": 2292,
-				"teamName": "Pachuca",
-				"points": 22,
-				"stats": {
-					"goalsDiff": -11,
-					"played": 17,
-					"win": 5,
-					"draw": 7,
-					"lose": 5,
-					"goals": { "for": 16, "against": 27 }
-				}
-			},
-			{
-				"teamId": 2281,
-				"teamName": "Toluca",
-				"points": 21,
-				"stats": {
-					"goalsDiff": 4,
-					"played": 17,
-					"win": 5,
-					"draw": 6,
-					"lose": 6,
-					"goals": { "for": 23, "against": 19 }
-				}
-			},
-			{
-				"teamId": 2280,
-				"teamName": "Club Tijuana",
-				"points": 20,
-				"stats": {
-					"goalsDiff": -3,
-					"played": 17,
-					"win": 6,
-					"draw": 2,
-					"lose": 9,
-					"goals": { "for": 23, "against": 26 }
-				}
-			},
-			{
-				"teamId": 2290,
-				"teamName": "Club Queretaro",
-				"points": 19,
-				"stats": {
-					"goalsDiff": -11,
-					"played": 17,
-					"win": 5,
-					"draw": 4,
-					"lose": 8,
-					"goals": { "for": 18, "against": 29 }
-				}
-			},
-			{
-				"teamId": 2298,
-				"teamName": "FC Juarez",
-				"points": 18,
-				"stats": {
-					"goalsDiff": -10,
-					"played": 17,
-					"win": 5,
-					"draw": 3,
-					"lose": 9,
-					"goals": { "for": 24, "against": 34 }
-				}
-			},
-			{
-				"teamId": 2295,
-				"teamName": "Cruz Azul",
-				"points": 17,
-				"stats": {
-					"goalsDiff": -8,
-					"played": 17,
-					"win": 5,
-					"draw": 2,
-					"lose": 10,
-					"goals": { "for": 21, "against": 29 }
-				}
-			},
-			{
-				"teamId": 2283,
-				"teamName": "Atlas",
-				"points": 17,
-				"stats": {
-					"goalsDiff": -10,
-					"played": 17,
-					"win": 4,
-					"draw": 5,
-					"lose": 8,
-					"goals": { "for": 14, "against": 24 }
-				}
-			},
-			{
-				"teamId": 2288,
-				"teamName": "Necaxa",
-				"points": 15,
-				"stats": {
-					"goalsDiff": -9,
-					"played": 17,
-					"win": 3,
-					"draw": 6,
-					"lose": 8,
-					"goals": { "for": 18, "against": 27 }
+					"played": 1,
+					"win": 0,
+					"draw": 0,
+					"lose": 1,
+					"goals": { "for": 0, "against": 2 }
 				}
 			}
 		],
@@ -8426,11 +8423,11 @@
 				"fullDate": "2024-05-10T13:45",
 				"date": "2024-05-10",
 				"hour": "13:45",
-				"done": false,
+				"done": true,
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0.15,
 						"warnings": [],
@@ -8463,7 +8460,7 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
@@ -8476,32 +8473,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"acceptancePercentage": 0.4,
 						"warnings": [],
 						"right": false,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "✅",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "❌",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
@@ -8510,6 +8507,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -9421,6 +9437,326 @@
 		]
 	},
 	{
+		"name": "Premiership",
+		"country": "Scotland",
+		"flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+		"standings": [
+			{
+				"teamId": 247,
+				"teamName": "Celtic",
+				"points": 84,
+				"stats": {
+					"goalsDiff": 58,
+					"played": 35,
+					"win": 26,
+					"draw": 6,
+					"lose": 3,
+					"goals": { "for": 85, "against": 27 }
+				}
+			},
+			{
+				"teamId": 257,
+				"teamName": "Rangers",
+				"points": 81,
+				"stats": {
+					"goalsDiff": 53,
+					"played": 35,
+					"win": 26,
+					"draw": 3,
+					"lose": 6,
+					"goals": { "for": 78, "against": 25 }
+				}
+			},
+			{
+				"teamId": 254,
+				"teamName": "Heart OF Midlothian",
+				"points": 63,
+				"stats": {
+					"goalsDiff": 9,
+					"played": 35,
+					"win": 19,
+					"draw": 6,
+					"lose": 10,
+					"goals": { "for": 46, "against": 37 }
+				}
+			},
+			{
+				"teamId": 250,
+				"teamName": "Kilmarnock",
+				"points": 52,
+				"stats": {
+					"goalsDiff": 6,
+					"played": 35,
+					"win": 13,
+					"draw": 13,
+					"lose": 9,
+					"goals": { "for": 44, "against": 38 }
+				}
+			},
+			{
+				"teamId": 251,
+				"teamName": "ST Mirren",
+				"points": 46,
+				"stats": {
+					"goalsDiff": -4,
+					"played": 35,
+					"win": 13,
+					"draw": 7,
+					"lose": 15,
+					"goals": { "for": 42, "against": 46 }
+				}
+			},
+			{
+				"teamId": 253,
+				"teamName": "Dundee",
+				"points": 41,
+				"stats": {
+					"goalsDiff": -13,
+					"played": 35,
+					"win": 10,
+					"draw": 11,
+					"lose": 14,
+					"goals": { "for": 46, "against": 59 }
+				}
+			},
+			{
+				"teamId": 249,
+				"teamName": "Hibernian",
+				"points": 42,
+				"stats": {
+					"goalsDiff": -6,
+					"played": 35,
+					"win": 10,
+					"draw": 12,
+					"lose": 13,
+					"goals": { "for": 48, "against": 54 }
+				}
+			},
+			{
+				"teamId": 252,
+				"teamName": "Aberdeen",
+				"points": 41,
+				"stats": {
+					"goalsDiff": -12,
+					"played": 35,
+					"win": 10,
+					"draw": 11,
+					"lose": 14,
+					"goals": { "for": 37, "against": 49 }
+				}
+			},
+			{
+				"teamId": 256,
+				"teamName": "Motherwell",
+				"points": 40,
+				"stats": {
+					"goalsDiff": -3,
+					"played": 35,
+					"win": 9,
+					"draw": 13,
+					"lose": 13,
+					"goals": { "for": 50, "against": 53 }
+				}
+			},
+			{
+				"teamId": 902,
+				"teamName": "Ross County",
+				"points": 33,
+				"stats": {
+					"goalsDiff": -25,
+					"played": 35,
+					"win": 8,
+					"draw": 9,
+					"lose": 18,
+					"goals": { "for": 34, "against": 59 }
+				}
+			},
+			{
+				"teamId": 258,
+				"teamName": "ST Johnstone",
+				"points": 31,
+				"stats": {
+					"goalsDiff": -25,
+					"played": 35,
+					"win": 7,
+					"draw": 10,
+					"lose": 18,
+					"goals": { "for": 25, "against": 50 }
+				}
+			},
+			{
+				"teamId": 255,
+				"teamName": "Livingston",
+				"points": 21,
+				"stats": {
+					"goalsDiff": -38,
+					"played": 35,
+					"win": 4,
+					"draw": 9,
+					"lose": 22,
+					"goals": { "for": 25, "against": 63 }
+				}
+			},
+			{
+				"teamId": 247,
+				"teamName": "Celtic",
+				"points": 78,
+				"stats": {
+					"goalsDiff": 54,
+					"played": 33,
+					"win": 24,
+					"draw": 6,
+					"lose": 3,
+					"goals": { "for": 80, "against": 26 }
+				}
+			},
+			{
+				"teamId": 257,
+				"teamName": "Rangers",
+				"points": 75,
+				"stats": {
+					"goalsDiff": 49,
+					"played": 33,
+					"win": 24,
+					"draw": 3,
+					"lose": 6,
+					"goals": { "for": 72, "against": 23 }
+				}
+			},
+			{
+				"teamId": 254,
+				"teamName": "Heart OF Midlothian",
+				"points": 62,
+				"stats": {
+					"goalsDiff": 12,
+					"played": 33,
+					"win": 19,
+					"draw": 5,
+					"lose": 9,
+					"goals": { "for": 46, "against": 34 }
+				}
+			},
+			{
+				"teamId": 250,
+				"teamName": "Kilmarnock",
+				"points": 51,
+				"stats": {
+					"goalsDiff": 9,
+					"played": 33,
+					"win": 13,
+					"draw": 12,
+					"lose": 8,
+					"goals": { "for": 43, "against": 34 }
+				}
+			},
+			{
+				"teamId": 251,
+				"teamName": "ST Mirren",
+				"points": 43,
+				"stats": {
+					"goalsDiff": -5,
+					"played": 33,
+					"win": 12,
+					"draw": 7,
+					"lose": 14,
+					"goals": { "for": 38, "against": 43 }
+				}
+			},
+			{
+				"teamId": 253,
+				"teamName": "Dundee",
+				"points": 41,
+				"stats": {
+					"goalsDiff": -10,
+					"played": 33,
+					"win": 10,
+					"draw": 11,
+					"lose": 12,
+					"goals": { "for": 44, "against": 54 }
+				}
+			},
+			{
+				"teamId": 249,
+				"teamName": "Hibernian",
+				"points": 39,
+				"stats": {
+					"goalsDiff": -7,
+					"played": 33,
+					"win": 9,
+					"draw": 12,
+					"lose": 12,
+					"goals": { "for": 44, "against": 51 }
+				}
+			},
+			{
+				"teamId": 256,
+				"teamName": "Motherwell",
+				"points": 37,
+				"stats": {
+					"goalsDiff": -5,
+					"played": 33,
+					"win": 8,
+					"draw": 13,
+					"lose": 12,
+					"goals": { "for": 46, "against": 51 }
+				}
+			},
+			{
+				"teamId": 252,
+				"teamName": "Aberdeen",
+				"points": 35,
+				"stats": {
+					"goalsDiff": -14,
+					"played": 33,
+					"win": 8,
+					"draw": 11,
+					"lose": 14,
+					"goals": { "for": 35, "against": 49 }
+				}
+			},
+			{
+				"teamId": 258,
+				"teamName": "ST Johnstone",
+				"points": 31,
+				"stats": {
+					"goalsDiff": -22,
+					"played": 33,
+					"win": 7,
+					"draw": 10,
+					"lose": 16,
+					"goals": { "for": 24, "against": 46 }
+				}
+			},
+			{
+				"teamId": 902,
+				"teamName": "Ross County",
+				"points": 30,
+				"stats": {
+					"goalsDiff": -24,
+					"played": 33,
+					"win": 7,
+					"draw": 9,
+					"lose": 17,
+					"goals": { "for": 32, "against": 56 }
+				}
+			},
+			{
+				"teamId": 255,
+				"teamName": "Livingston",
+				"points": 18,
+				"stats": {
+					"goalsDiff": -37,
+					"played": 33,
+					"win": 3,
+					"draw": 9,
+					"lose": 21,
+					"goals": { "for": 22, "against": 59 }
+				}
+			}
+		],
+		"matches": []
+	},
+	{
 		"name": "Pro League",
 		"country": "Saudi-Arabia",
 		"flag": "🇸🇦",
@@ -9441,14 +9777,14 @@
 			{
 				"teamId": 2939,
 				"teamName": "Al-Nassr",
-				"points": 74,
+				"points": 77,
 				"stats": {
-					"goalsDiff": 55,
-					"played": 30,
-					"win": 24,
+					"goalsDiff": 56,
+					"played": 31,
+					"win": 25,
 					"draw": 2,
 					"lose": 4,
-					"goals": { "for": 90, "against": 35 }
+					"goals": { "for": 93, "against": 37 }
 				}
 			},
 			{
@@ -9467,12 +9803,12 @@
 			{
 				"teamId": 2936,
 				"teamName": "Al Taawon",
-				"points": 51,
+				"points": 52,
 				"stats": {
 					"goalsDiff": 14,
-					"played": 30,
+					"played": 31,
 					"win": 14,
-					"draw": 9,
+					"draw": 10,
 					"lose": 7,
 					"goals": { "for": 48, "against": 34 }
 				}
@@ -9482,12 +9818,51 @@
 				"teamName": "Al-Ittihad FC",
 				"points": 50,
 				"stats": {
-					"goalsDiff": 13,
-					"played": 30,
+					"goalsDiff": 8,
+					"played": 31,
 					"win": 15,
 					"draw": 5,
-					"lose": 10,
-					"goals": { "for": 56, "against": 43 }
+					"lose": 11,
+					"goals": { "for": 56, "against": 48 }
+				}
+			},
+			{
+				"teamId": 2934,
+				"teamName": "Al-Ettifaq",
+				"points": 44,
+				"stats": {
+					"goalsDiff": 9,
+					"played": 31,
+					"win": 11,
+					"draw": 11,
+					"lose": 9,
+					"goals": { "for": 41, "against": 32 }
+				}
+			},
+			{
+				"teamId": 2931,
+				"teamName": "Al-Fateh",
+				"points": 42,
+				"stats": {
+					"goalsDiff": 4,
+					"played": 31,
+					"win": 11,
+					"draw": 9,
+					"lose": 11,
+					"goals": { "for": 52, "against": 48 }
+				}
+			},
+			{
+				"teamId": 2944,
+				"teamName": "Al-Fayha",
+				"points": 42,
+				"stats": {
+					"goalsDiff": -7,
+					"played": 31,
+					"win": 11,
+					"draw": 9,
+					"lose": 11,
+					"goals": { "for": 42, "against": 49 }
 				}
 			},
 			{
@@ -9504,53 +9879,14 @@
 				}
 			},
 			{
-				"teamId": 2931,
-				"teamName": "Al-Fateh",
-				"points": 41,
-				"stats": {
-					"goalsDiff": 4,
-					"played": 30,
-					"win": 11,
-					"draw": 8,
-					"lose": 11,
-					"goals": { "for": 50, "against": 46 }
-				}
-			},
-			{
-				"teamId": 2934,
-				"teamName": "Al-Ettifaq",
-				"points": 41,
-				"stats": {
-					"goalsDiff": 4,
-					"played": 30,
-					"win": 10,
-					"draw": 11,
-					"lose": 9,
-					"goals": { "for": 36, "against": 32 }
-				}
-			},
-			{
-				"teamId": 2944,
-				"teamName": "Al-Fayha",
-				"points": 41,
-				"stats": {
-					"goalsDiff": -7,
-					"played": 30,
-					"win": 11,
-					"draw": 8,
-					"lose": 11,
-					"goals": { "for": 40, "against": 47 }
-				}
-			},
-			{
 				"teamId": 2956,
 				"teamName": "Damac",
-				"points": 38,
+				"points": 39,
 				"stats": {
 					"goalsDiff": 2,
-					"played": 30,
+					"played": 31,
 					"win": 10,
-					"draw": 8,
+					"draw": 9,
 					"lose": 12,
 					"goals": { "for": 41, "against": 39 }
 				}
@@ -9560,25 +9896,25 @@
 				"teamName": "Al Khaleej Saihat",
 				"points": 36,
 				"stats": {
-					"goalsDiff": -8,
-					"played": 30,
+					"goalsDiff": -9,
+					"played": 31,
 					"win": 9,
 					"draw": 9,
-					"lose": 12,
-					"goals": { "for": 32, "against": 40 }
+					"lose": 13,
+					"goals": { "for": 33, "against": 42 }
 				}
 			},
 			{
 				"teamId": 2937,
 				"teamName": "Al Wehda Club",
-				"points": 32,
+				"points": 35,
 				"stats": {
-					"goalsDiff": -14,
-					"played": 30,
-					"win": 9,
+					"goalsDiff": -13,
+					"played": 31,
+					"win": 10,
 					"draw": 5,
 					"lose": 16,
-					"goals": { "for": 41, "against": 55 }
+					"goals": { "for": 43, "against": 56 }
 				}
 			},
 			{
@@ -9597,14 +9933,27 @@
 			{
 				"teamId": 10511,
 				"teamName": "Al Riyadh",
-				"points": 29,
+				"points": 30,
 				"stats": {
 					"goalsDiff": -25,
-					"played": 30,
+					"played": 31,
 					"win": 7,
-					"draw": 8,
+					"draw": 9,
 					"lose": 15,
 					"goals": { "for": 28, "against": 53 }
+				}
+			},
+			{
+				"teamId": 2951,
+				"teamName": "Abha",
+				"points": 29,
+				"stats": {
+					"goalsDiff": -45,
+					"played": 31,
+					"win": 8,
+					"draw": 5,
+					"lose": 18,
+					"goals": { "for": 34, "against": 79 }
 				}
 			},
 			{
@@ -9612,25 +9961,12 @@
 				"teamName": "Al Akhdoud",
 				"points": 28,
 				"stats": {
-					"goalsDiff": -20,
-					"played": 30,
+					"goalsDiff": -21,
+					"played": 31,
 					"win": 8,
 					"draw": 4,
-					"lose": 18,
-					"goals": { "for": 27, "against": 47 }
-				}
-			},
-			{
-				"teamId": 2951,
-				"teamName": "Abha",
-				"points": 28,
-				"stats": {
-					"goalsDiff": -45,
-					"played": 30,
-					"win": 8,
-					"draw": 4,
-					"lose": 18,
-					"goals": { "for": 34, "against": 79 }
+					"lose": 19,
+					"goals": { "for": 29, "against": 50 }
 				}
 			},
 			{
@@ -9666,15 +10002,15 @@
 				"fullDate": "2024-05-10T10:00",
 				"date": "2024-05-10",
 				"hour": "10:00",
-				"done": false,
+				"done": true,
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
@@ -9703,12 +10039,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -9716,32 +10052,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -9753,6 +10089,25 @@
 							],
 							"away": []
 						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
+							],
+							"away": []
+						}
 					}
 				],
 				"teams": {
@@ -9760,9 +10115,9 @@
 						"id": 2951,
 						"name": "Abha",
 						"country": "🇸🇦",
-						"score": null,
+						"score": 0,
 						"winner": null,
-						"position": 16,
+						"position": 15,
 						"featured": false,
 						"stats": {
 							"total_de_partidos": 15,
@@ -9826,7 +10181,7 @@
 										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -9852,7 +10207,7 @@
 										"country": "🇸🇦",
 										"score": 4,
 										"winner": true,
-										"position": 15,
+										"position": 16,
 										"featured": false
 									},
 									"away": {
@@ -9861,7 +10216,7 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -9878,8 +10233,8 @@
 										"country": "🇸🇦",
 										"score": 5,
 										"winner": true,
-										"position": 6,
-										"featured": true
+										"position": 9,
+										"featured": false
 									},
 									"away": {
 										"id": 2951,
@@ -9887,7 +10242,7 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -9904,7 +10259,7 @@
 										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -9930,7 +10285,7 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -9965,7 +10320,7 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -9982,7 +10337,7 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -10008,8 +10363,8 @@
 										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									},
 									"away": {
 										"id": 2951,
@@ -10017,7 +10372,7 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -10034,7 +10389,7 @@
 										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -10060,7 +10415,7 @@
 										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
-										"position": 9,
+										"position": 8,
 										"featured": false
 									},
 									"away": {
@@ -10069,7 +10424,7 @@
 										"country": "🇸🇦",
 										"score": 2,
 										"winner": false,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -10086,7 +10441,7 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -10121,7 +10476,7 @@
 										"country": "🇸🇦",
 										"score": 3,
 										"winner": false,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -10147,7 +10502,7 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -10164,7 +10519,7 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -10199,7 +10554,7 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -10210,7 +10565,7 @@
 						"id": 2956,
 						"name": "Damac",
 						"country": "🇸🇦",
-						"score": null,
+						"score": 0,
 						"winner": null,
 						"position": 10,
 						"featured": false,
@@ -10328,7 +10683,7 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
-										"position": 15,
+										"position": 16,
 										"featured": false
 									},
 									"away": {
@@ -10493,8 +10848,8 @@
 										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									}
 								}
 							},
@@ -10545,8 +10900,8 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
-										"position": 6,
-										"featured": true
+										"position": 9,
+										"featured": false
 									}
 								}
 							},
@@ -10663,15 +11018,18 @@
 				"fullDate": "2024-05-10T13:00",
 				"date": "2024-05-10",
 				"hour": "13:00",
-				"done": false,
+				"done": true,
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0.3,
-						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
-						"right": false,
+						"warnings": [
+							{ "description": "Ambos equipos son destacados" },
+							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+						],
+						"right": true,
 						"fail": false,
 						"criteria": {
 							"home": [
@@ -10700,12 +11058,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -10713,40 +11071,59 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
-						"warnings": [],
+						"acceptancePercentage": 0.4,
+						"warnings": [{ "description": "Ambos equipos son destacados" }],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "✅",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "❌",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
-						"warnings": [],
-						"right": true,
-						"fail": false,
+						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"right": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -10757,8 +11134,8 @@
 						"id": 2938,
 						"name": "Al-Ittihad FC",
 						"country": "🇸🇦",
-						"score": null,
-						"winner": null,
+						"score": 0,
+						"winner": false,
 						"position": 5,
 						"featured": true,
 						"stats": {
@@ -10823,7 +11200,7 @@
 										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -10858,8 +11235,8 @@
 										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
-										"position": 6,
-										"featured": true
+										"position": 9,
+										"featured": false
 									}
 								}
 							},
@@ -10962,7 +11339,7 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
-										"position": 9,
+										"position": 8,
 										"featured": false
 									}
 								}
@@ -11040,7 +11417,7 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
-										"position": 15,
+										"position": 16,
 										"featured": false
 									}
 								}
@@ -11207,10 +11584,10 @@
 						"id": 2934,
 						"name": "Al-Ettifaq",
 						"country": "🇸🇦",
-						"score": null,
-						"winner": null,
-						"position": 8,
-						"featured": false,
+						"score": 5,
+						"winner": true,
+						"position": 6,
+						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
 							"total_de_goles": 16,
@@ -11273,8 +11650,8 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									},
 									"away": {
 										"id": 2944,
@@ -11282,7 +11659,7 @@
 										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
-										"position": 9,
+										"position": 8,
 										"featured": false
 									}
 								}
@@ -11308,8 +11685,8 @@
 										"country": "🇸🇦",
 										"score": 2,
 										"winner": null,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									}
 								}
 							},
@@ -11325,8 +11702,8 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									},
 									"away": {
 										"id": 2937,
@@ -11351,8 +11728,8 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									},
 									"away": {
 										"id": 10511,
@@ -11386,8 +11763,8 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									}
 								}
 							},
@@ -11403,8 +11780,8 @@
 										"country": "🇸🇦",
 										"score": 2,
 										"winner": null,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									},
 									"away": {
 										"id": 2929,
@@ -11438,8 +11815,8 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									}
 								}
 							},
@@ -11455,8 +11832,8 @@
 										"country": "🇸🇦",
 										"score": 3,
 										"winner": true,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									},
 									"away": {
 										"id": 2951,
@@ -11464,7 +11841,7 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -11490,8 +11867,8 @@
 										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									}
 								}
 							},
@@ -11507,8 +11884,8 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									},
 									"away": {
 										"id": 2932,
@@ -11542,8 +11919,8 @@
 										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									}
 								}
 							},
@@ -11559,8 +11936,8 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": null,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									},
 									"away": {
 										"id": 2945,
@@ -11594,8 +11971,8 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									}
 								}
 							},
@@ -11611,8 +11988,8 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									},
 									"away": {
 										"id": 2936,
@@ -11637,8 +12014,8 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
-										"position": 6,
-										"featured": true
+										"position": 9,
+										"featured": false
 									},
 									"away": {
 										"id": 2934,
@@ -11646,8 +12023,8 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									}
 								}
 							}
@@ -11660,16 +12037,16 @@
 				"fullDate": "2024-05-10T13:00",
 				"date": "2024-05-10",
 				"hour": "13:00",
-				"done": false,
+				"done": true,
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
 						"right": false,
-						"fail": false,
+						"fail": true,
 						"criteria": {
 							"home": [
 								{
@@ -11697,12 +12074,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -11710,32 +12087,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0,
-						"warnings": [],
-						"right": false,
-						"fail": false,
-						"criteria": {
-							"home": [
-								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "❌",
-									"weight": 0.5
-								},
-								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
-								}
-							],
-							"away": []
-						}
-					},
-					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -11743,7 +12096,50 @@
 						"fail": true,
 						"criteria": {
 							"home": [
+								{
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "❌",
+									"weight": 0.6
+								},
+								{
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "❌",
+									"weight": 0.4
+								}
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -11754,8 +12150,8 @@
 						"id": 2928,
 						"name": "Al Khaleej Saihat",
 						"country": "🇸🇦",
-						"score": null,
-						"winner": null,
+						"score": 1,
+						"winner": false,
 						"position": 11,
 						"featured": false,
 						"stats": {
@@ -11985,7 +12381,7 @@
 										"country": "🇸🇦",
 										"score": 2,
 										"winner": null,
-										"position": 15,
+										"position": 16,
 										"featured": false
 									}
 								}
@@ -12037,8 +12433,8 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
-										"position": 6,
-										"featured": true
+										"position": 9,
+										"featured": false
 									}
 								}
 							},
@@ -12089,8 +12485,8 @@
 										"country": "🇸🇦",
 										"score": 2,
 										"winner": true,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									}
 								}
 							},
@@ -12141,7 +12537,7 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
-										"position": 9,
+										"position": 8,
 										"featured": false
 									}
 								}
@@ -12193,7 +12589,7 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -12204,8 +12600,8 @@
 						"id": 2937,
 						"name": "Al Wehda Club",
 						"country": "🇸🇦",
-						"score": null,
-						"winner": null,
+						"score": 2,
+						"winner": true,
 						"position": 12,
 						"featured": false,
 						"stats": {
@@ -12322,8 +12718,8 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": null,
-										"position": 8,
-										"featured": false
+										"position": 6,
+										"featured": true
 									},
 									"away": {
 										"id": 2937,
@@ -12374,7 +12770,7 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": false,
-										"position": 9,
+										"position": 8,
 										"featured": false
 									},
 									"away": {
@@ -12426,7 +12822,7 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
-										"position": 16,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -12556,8 +12952,8 @@
 										"country": "🇸🇦",
 										"score": 1,
 										"winner": true,
-										"position": 6,
-										"featured": true
+										"position": 9,
+										"featured": false
 									},
 									"away": {
 										"id": 2937,
@@ -12643,7 +13039,7 @@
 										"country": "🇸🇦",
 										"score": 0,
 										"winner": false,
-										"position": 15,
+										"position": 16,
 										"featured": false
 									}
 								}
@@ -12926,11 +13322,11 @@
 				"fullDate": "2024-05-10T19:00",
 				"date": "2024-05-10",
 				"hour": "19:00",
-				"done": false,
+				"done": true,
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0.25,
 						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
@@ -12963,7 +13359,7 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
@@ -12976,32 +13372,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"acceptancePercentage": 0.4,
 						"warnings": [],
 						"right": false,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "✅",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "❌",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
@@ -13010,6 +13406,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}

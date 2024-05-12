@@ -109,11 +109,14 @@ function RenderByStrategy({ data }: T_BetsPageProps) {
 					return prediction.name === strategyName;
 				}) as T_FixtureMatch["predictions"][number];
 
-				if (a.done && !b.done) {
+				const aDone = a.done || checkMatchStarted(a.fullDate);
+				const bDone = b.done || checkMatchStarted(b.fullDate);
+
+				if (aDone && !bDone) {
 					return 1;
 				}
 
-				if (!a.done && b.done) {
+				if (!aDone && bDone) {
 					return -1;
 				}
 
@@ -127,6 +130,10 @@ function RenderByStrategy({ data }: T_BetsPageProps) {
 
 				if (predictionTeamA.warnings.length === 0 && predictionTeamB.warnings.length > 0) {
 					return -1;
+				}
+
+				if (predictionTeamA.warnings.length > 0 && predictionTeamB.warnings.length === 0) {
+					return 1;
 				}
 
 				return predictionTeamA.acceptancePercentage > predictionTeamB.acceptancePercentage
@@ -327,17 +334,6 @@ function FixtureMatch({
 		}
 
 		return matches;
-	}
-
-	function checkMatchStarted(fullDate: string) {
-		const currentDate = new Date();
-		const currentDateFormatted = `${currentDate.getFullYear()}-${addLeftPadding(
-			currentDate.getMonth() + 1,
-		)}-${addLeftPadding(currentDate.getDate())}T${addLeftPadding(
-			new Date().getHours(),
-		)}:${addLeftPadding(new Date().getMinutes())}`;
-
-		return currentDateFormatted >= fullDate;
 	}
 
 	function composeMatchTitle(matchParam: T_PlayedMatch | T_FixtureMatch) {
@@ -648,6 +644,17 @@ function composeTeamsCountry(teamHomeCountry: string, teamAwayCountry: string) {
 	const country = teamHomeCountry || teamAwayCountry || "🌎";
 
 	return `${country} - ${country}`;
+}
+
+function checkMatchStarted(fullDate: string) {
+	const currentDate = new Date();
+	const currentDateFormatted = `${currentDate.getFullYear()}-${addLeftPadding(
+		currentDate.getMonth() + 1,
+	)}-${addLeftPadding(currentDate.getDate())}T${addLeftPadding(
+		new Date().getHours(),
+	)}:${addLeftPadding(new Date().getMinutes())}`;
+
+	return currentDateFormatted >= fullDate;
 }
 
 // --- TYPES ---

@@ -15,9 +15,8 @@ export default BetsPage;
 export const getStaticProps: GetStaticProps<T_BetsPageProps> = async () => {
 	const monday = dayjs(dateWithoutTimezone(new Date(2024, 4, 6)));
 	const dates = (
-		dateWithoutTimezone().getDay() >= 1 && dateWithoutTimezone().getDay() <= 4
+		dateWithoutTimezone().getDay() >= 2 && dateWithoutTimezone().getDay() <= 4
 			? [
-					monday.toDate(),
 					monday.add(1, "day").toDate(),
 					monday.add(2, "day").toDate(),
 					monday.add(3, "day").toDate(),
@@ -26,6 +25,7 @@ export const getStaticProps: GetStaticProps<T_BetsPageProps> = async () => {
 					monday.add(4, "day").toDate(),
 					monday.add(5, "day").toDate(),
 					monday.add(6, "day").toDate(),
+					monday.add(7, "day").toDate(),
 			  ]
 	).map((date) => {
 		// TODO: Weird issue related to getDate()

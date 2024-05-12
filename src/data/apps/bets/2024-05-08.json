@@ -14,7 +14,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [
@@ -50,12 +50,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -63,32 +63,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
+						"recommendable": true,
+						"acceptancePercentage": 1,
 						"warnings": [],
 						"right": false,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -97,6 +97,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -1014,7 +1033,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
 						"warnings": [
@@ -1063,8 +1082,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
@@ -1073,22 +1092,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -1097,6 +1116,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -1196,7 +1234,7 @@
 									"home": {
 										"id": 453,
 										"name": "Independiente",
-										"country": "",
+										"country": "🇦🇷",
 										"score": 2,
 										"winner": null,
 										"position": null,
@@ -1482,7 +1520,7 @@
 									"home": {
 										"id": 2432,
 										"name": "Barracas Central",
-										"country": "",
+										"country": "🇦🇷",
 										"score": 2,
 										"winner": true,
 										"position": null,
@@ -1988,7 +2026,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 0.75,
 						"warnings": [
@@ -2037,8 +2075,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
@@ -2047,22 +2085,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -2071,6 +2109,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -2988,7 +3045,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 0.75,
 						"warnings": [
@@ -3029,7 +3086,7 @@
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -3037,8 +3094,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
@@ -3047,22 +3104,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -3071,6 +3128,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -3988,7 +4064,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [
@@ -4024,12 +4100,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -4037,32 +4113,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
+						"recommendable": true,
+						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
-						"fail": true,
+						"right": true,
+						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -4071,6 +4147,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -4962,7 +5057,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 0.75,
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
@@ -5008,8 +5103,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
@@ -5018,22 +5113,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -5042,6 +5137,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -5427,7 +5541,7 @@
 									"home": {
 										"id": 1133,
 										"name": "Jaguares",
-										"country": "",
+										"country": "🇨🇴",
 										"score": 2,
 										"winner": true,
 										"position": null,
@@ -5967,7 +6081,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [
@@ -6003,7 +6117,7 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
@@ -6016,32 +6130,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
+						"recommendable": true,
+						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
-						"fail": true,
+						"right": true,
+						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -6050,6 +6164,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -6967,7 +7100,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
@@ -7000,7 +7133,7 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
@@ -7013,8 +7146,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -7023,22 +7156,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -7047,6 +7180,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -7964,7 +8116,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [
@@ -8000,12 +8152,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -8013,32 +8165,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
+						"recommendable": true,
+						"acceptancePercentage": 1,
 						"warnings": [],
-						"right": false,
-						"fail": true,
+						"right": true,
+						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -8047,6 +8199,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -8938,7 +9109,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
@@ -8971,12 +9142,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -8984,8 +9155,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -8994,22 +9165,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -9018,6 +9189,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -9935,7 +10125,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
 						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
@@ -9973,7 +10163,7 @@
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -9981,8 +10171,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
@@ -9991,22 +10181,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -10015,6 +10205,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -10625,7 +10834,7 @@
 									"away": {
 										"id": 439,
 										"name": "Godoy Cruz",
-										"country": "",
+										"country": "🇦🇷",
 										"score": 0,
 										"winner": false,
 										"position": null,
@@ -10940,7 +11149,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 0.75,
 						"warnings": [
@@ -10989,8 +11198,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
@@ -10999,22 +11208,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -11023,6 +11232,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -11948,7 +12176,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 0.75,
 						"warnings": [
@@ -11997,8 +12225,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
@@ -12007,22 +12235,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -12031,6 +12259,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -12945,7 +13192,359 @@
 		"name": "Copa Argentina",
 		"country": "Argentina",
 		"flag": "🇦🇷",
-		"standings": [],
+		"standings": [
+			{
+				"teamId": 457,
+				"teamName": "Newells Old Boys",
+				"points": 3,
+				"stats": {
+					"goalsDiff": 2,
+					"played": 1,
+					"win": 1,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 2, "against": 0 }
+				}
+			},
+			{
+				"teamId": 458,
+				"teamName": "Argentinos JRS",
+				"points": 3,
+				"stats": {
+					"goalsDiff": 1,
+					"played": 1,
+					"win": 1,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 3, "against": 2 }
+				}
+			},
+			{
+				"teamId": 478,
+				"teamName": "Instituto Cordoba",
+				"points": 3,
+				"stats": {
+					"goalsDiff": 1,
+					"played": 1,
+					"win": 1,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 2, "against": 1 }
+				}
+			},
+			{
+				"teamId": 452,
+				"teamName": "Tigre",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 446,
+				"teamName": "Lanus",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 449,
+				"teamName": "Banfield",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 434,
+				"teamName": "Gimnasia L.P.",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 438,
+				"teamName": "Velez Sarsfield",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 460,
+				"teamName": "San Lorenzo",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 453,
+				"teamName": "Independiente",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 436,
+				"teamName": "Racing Club",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 445,
+				"teamName": "Huracan",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 450,
+				"teamName": "Estudiantes L.P.",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 435,
+				"teamName": "River Plate",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 451,
+				"teamName": "Boca Juniors",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 440,
+				"teamName": "Belgrano Cordoba",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 441,
+				"teamName": "Union Santa Fe",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 439,
+				"teamName": "Godoy Cruz",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 456,
+				"teamName": "Talleres Cordoba",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 455,
+				"teamName": "Atletico Tucuman",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 442,
+				"teamName": "Defensa Y Justicia",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 473,
+				"teamName": "Independ. Rivadavia",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 2432,
+				"teamName": "Barracas Central",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 476,
+				"teamName": "Deportivo Riestra",
+				"points": 0,
+				"stats": {
+					"goalsDiff": 0,
+					"played": 0,
+					"win": 0,
+					"draw": 0,
+					"lose": 0,
+					"goals": { "for": 0, "against": 0 }
+				}
+			},
+			{
+				"teamId": 437,
+				"teamName": "Rosario Central",
+				"points": 0,
+				"stats": {
+					"goalsDiff": -1,
+					"played": 1,
+					"win": 0,
+					"draw": 0,
+					"lose": 1,
+					"goals": { "for": 2, "against": 3 }
+				}
+			},
+			{
+				"teamId": 474,
+				"teamName": "Sarmiento Junin",
+				"points": 0,
+				"stats": {
+					"goalsDiff": -1,
+					"played": 1,
+					"win": 0,
+					"draw": 0,
+					"lose": 1,
+					"goals": { "for": 1, "against": 2 }
+				}
+			},
+			{
+				"teamId": 1064,
+				"teamName": "Platense",
+				"points": 0,
+				"stats": {
+					"goalsDiff": -2,
+					"played": 1,
+					"win": 0,
+					"draw": 0,
+					"lose": 1,
+					"goals": { "for": 0, "against": 2 }
+				}
+			}
+		],
 		"matches": [
 			{
 				"id": "2024-05-08-Arsenal Sarandi-Estudiantes de Rio Cuarto",
@@ -12956,7 +13555,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
 						"warnings": [],
@@ -13002,32 +13601,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"acceptancePercentage": 0.6,
 						"warnings": [],
 						"right": false,
 						"fail": true,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "❌",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "✅",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "✅",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "❌",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -13036,6 +13635,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -13171,7 +13789,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
 						"warnings": [],
@@ -13217,32 +13835,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"acceptancePercentage": 0.6,
 						"warnings": [],
 						"right": false,
 						"fail": true,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "❌",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "✅",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "✅",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "❌",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -13251,6 +13869,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -13863,7 +14500,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0.3,
 						"warnings": [
@@ -13899,7 +14536,7 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
@@ -13912,32 +14549,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"acceptancePercentage": 0.4,
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
 						"right": false,
 						"fail": true,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "✅",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "❌",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -13946,6 +14583,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -14863,7 +15519,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0.15,
 						"warnings": [
@@ -14899,12 +15555,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -14912,32 +15568,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"acceptancePercentage": 0.4,
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
 						"right": false,
 						"fail": true,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "✅",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "❌",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -14946,6 +15602,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -15857,3243 +16532,6 @@
 		]
 	},
 	{
-		"name": "Division 1",
-		"country": "Saudi-Arabia",
-		"flag": "🇸🇦",
-		"standings": [
-			{
-				"teamId": 2933,
-				"teamName": "Al-Qadisiyah FC",
-				"points": 64,
-				"stats": {
-					"goalsDiff": 30,
-					"played": 31,
-					"win": 19,
-					"draw": 7,
-					"lose": 5,
-					"goals": { "for": 57, "against": 27 }
-				}
-			},
-			{
-				"teamId": 10509,
-				"teamName": "Al Kholood",
-				"points": 54,
-				"stats": {
-					"goalsDiff": 20,
-					"played": 30,
-					"win": 16,
-					"draw": 6,
-					"lose": 8,
-					"goals": { "for": 46, "against": 26 }
-				}
-			},
-			{
-				"teamId": 2961,
-				"teamName": "Al Orubah",
-				"points": 54,
-				"stats": {
-					"goalsDiff": 12,
-					"played": 30,
-					"win": 17,
-					"draw": 3,
-					"lose": 10,
-					"goals": { "for": 44, "against": 32 }
-				}
-			},
-			{
-				"teamId": 2950,
-				"teamName": "Al-Adalah",
-				"points": 53,
-				"stats": {
-					"goalsDiff": 10,
-					"played": 31,
-					"win": 14,
-					"draw": 11,
-					"lose": 6,
-					"goals": { "for": 48, "against": 38 }
-				}
-			},
-			{
-				"teamId": 2971,
-				"teamName": "Al Arabi SC",
-				"points": 52,
-				"stats": {
-					"goalsDiff": 22,
-					"played": 30,
-					"win": 15,
-					"draw": 7,
-					"lose": 8,
-					"goals": { "for": 56, "against": 34 }
-				}
-			},
-			{
-				"teamId": 2930,
-				"teamName": "Al-Faisaly FC",
-				"points": 47,
-				"stats": {
-					"goalsDiff": 2,
-					"played": 30,
-					"win": 14,
-					"draw": 5,
-					"lose": 11,
-					"goals": { "for": 44, "against": 42 }
-				}
-			},
-			{
-				"teamId": 2958,
-				"teamName": "Al Jabalain",
-				"points": 46,
-				"stats": {
-					"goalsDiff": 3,
-					"played": 31,
-					"win": 12,
-					"draw": 10,
-					"lose": 9,
-					"goals": { "for": 38, "against": 35 }
-				}
-			},
-			{
-				"teamId": 2926,
-				"teamName": "Al Baten",
-				"points": 45,
-				"stats": {
-					"goalsDiff": 2,
-					"played": 30,
-					"win": 13,
-					"draw": 6,
-					"lose": 11,
-					"goals": { "for": 37, "against": 35 }
-				}
-			},
-			{
-				"teamId": 2992,
-				"teamName": "Al Najma",
-				"points": 44,
-				"stats": {
-					"goalsDiff": 6,
-					"played": 30,
-					"win": 12,
-					"draw": 8,
-					"lose": 10,
-					"goals": { "for": 48, "against": 42 }
-				}
-			},
-			{
-				"teamId": 2990,
-				"teamName": "Al Safa",
-				"points": 40,
-				"stats": {
-					"goalsDiff": -3,
-					"played": 30,
-					"win": 11,
-					"draw": 7,
-					"lose": 12,
-					"goals": { "for": 41, "against": 44 }
-				}
-			},
-			{
-				"teamId": 10507,
-				"teamName": "Al Jandal",
-				"points": 39,
-				"stats": {
-					"goalsDiff": -8,
-					"played": 30,
-					"win": 11,
-					"draw": 6,
-					"lose": 13,
-					"goals": { "for": 30, "against": 38 }
-				}
-			},
-			{
-				"teamId": 13170,
-				"teamName": "Al-Ain",
-				"points": 38,
-				"stats": {
-					"goalsDiff": -3,
-					"played": 31,
-					"win": 10,
-					"draw": 11,
-					"lose": 10,
-					"goals": { "for": 37, "against": 40 }
-				}
-			},
-			{
-				"teamId": 2966,
-				"teamName": "Al Bukayriyah",
-				"points": 36,
-				"stats": {
-					"goalsDiff": -8,
-					"played": 31,
-					"win": 9,
-					"draw": 9,
-					"lose": 13,
-					"goals": { "for": 31, "against": 39 }
-				}
-			},
-			{
-				"teamId": 2947,
-				"teamName": "Jeddah Club",
-				"points": 35,
-				"stats": {
-					"goalsDiff": -11,
-					"played": 30,
-					"win": 9,
-					"draw": 8,
-					"lose": 13,
-					"goals": { "for": 40, "against": 51 }
-				}
-			},
-			{
-				"teamId": 2943,
-				"teamName": "Ohod",
-				"points": 33,
-				"stats": {
-					"goalsDiff": -4,
-					"played": 31,
-					"win": 7,
-					"draw": 12,
-					"lose": 12,
-					"goals": { "for": 34, "against": 38 }
-				}
-			},
-			{
-				"teamId": 2948,
-				"teamName": "Hajer",
-				"points": 24,
-				"stats": {
-					"goalsDiff": -21,
-					"played": 30,
-					"win": 4,
-					"draw": 12,
-					"lose": 14,
-					"goals": { "for": 26, "against": 47 }
-				}
-			},
-			{
-				"teamId": 2959,
-				"teamName": "Al Qaisoma",
-				"points": 23,
-				"stats": {
-					"goalsDiff": -19,
-					"played": 30,
-					"win": 6,
-					"draw": 5,
-					"lose": 19,
-					"goals": { "for": 36, "against": 55 }
-				}
-			},
-			{
-				"teamId": 2991,
-				"teamName": "Al Taraji",
-				"points": 19,
-				"stats": {
-					"goalsDiff": -30,
-					"played": 30,
-					"win": 4,
-					"draw": 7,
-					"lose": 19,
-					"goals": { "for": 25, "against": 55 }
-				}
-			}
-		],
-		"matches": [
-			{
-				"id": "2024-05-08-Al Taraji-Al Jandal",
-				"fullDate": "2024-05-08T10:55",
-				"date": "2024-05-08",
-				"hour": "10:55",
-				"done": true,
-				"predictions": [
-					{
-						"id": "GEL",
-						"name": "Goles por equipo local",
-						"recommendable": false,
-						"acceptancePercentage": 0,
-						"warnings": [],
-						"right": false,
-						"fail": true,
-						"criteria": {
-							"home": [
-								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
-									"check": "❌",
-									"weight": 0.6
-								},
-								{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
-								{
-									"description": "El local está en las primeras 6 posiciones de la tabla",
-									"check": "❌",
-									"weight": 0.15
-								},
-								{
-									"description": "El local está al menos 5 posiciones mas arriba que el rival",
-									"check": "❌",
-									"weight": 0.1
-								},
-								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
-								{
-									"description": "Promedio de goles de visitante >= 1.5",
-									"check": "✅",
-									"weight": 0
-								},
-								{
-									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
-									"weight": 0
-								},
-								{
-									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
-									"weight": 0
-								}
-							],
-							"away": []
-						}
-					},
-					{
-						"id": "GPP",
-						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0,
-						"warnings": [],
-						"right": false,
-						"fail": true,
-						"criteria": {
-							"home": [
-								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "❌",
-									"weight": 0.5
-								},
-								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
-								}
-							],
-							"away": []
-						}
-					},
-					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
-						"recommendable": false,
-						"acceptancePercentage": 0,
-						"warnings": [],
-						"right": false,
-						"fail": true,
-						"criteria": {
-							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
-							],
-							"away": []
-						}
-					}
-				],
-				"teams": {
-					"home": {
-						"id": 2991,
-						"name": "Al Taraji",
-						"country": "🇸🇦",
-						"score": 1,
-						"winner": null,
-						"position": 18,
-						"featured": false,
-						"stats": {
-							"total_de_partidos": 15,
-							"total_de_goles": 14,
-							"promedio_de_goles": 0.9,
-							"---|---": 0,
-							"goles_de_local": 7,
-							"promedio_de_goles_de_local": 1,
-							"partidos_de_local": 7,
-							"partidos_ganados_de_local": 1,
-							"partidos_perdidos_de_local": 3,
-							"partidos_empatados_de_local": 3,
-							"partidos_con_goles_de_local": 4,
-							"promedio_de_puntos_de_local": 0,
-							"porcentaje_de_puntos_ganados_de_local": 57.1,
-							"---||---": 0,
-							"goles_de_visitante": 7,
-							"promedio_de_goles_de_visitante": 0.9,
-							"partidos_de_visitante": 8,
-							"partidos_ganados_de_visitante": 0,
-							"partidos_perdidos_de_visitante": 6,
-							"partidos_empatados_de_visitante": 2,
-							"partidos_con_goles_de_visitante": 6,
-							"promedio_de_puntos_de_visitante": 0,
-							"porcentaje_de_puntos_ganados_de_visitante": 25,
-							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 2,
-							"ultimos_promedio_de_goles": 0.7,
-							"---||||---": 0,
-							"ultimos_goles_de_local": 4,
-							"ultimos_promedio_de_goles_de_local": 1.3,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 0,
-							"ultimos_partidos_perdidos_de_local": 1,
-							"ultimos_partidos_empatados_de_local": 2,
-							"ultimos_partidos_con_goles_de_local": 2,
-							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
-							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 3,
-							"ultimos_promedio_de_goles_de_visitante": 1,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 0,
-							"ultimos_partidos_perdidos_de_visitante": 2,
-							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3,
-							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
-						},
-						"matches": [
-							{
-								"id": "2024-04-30-Al Kholood-Al Taraji",
-								"fullDate": "2024-04-30T11:15",
-								"date": "2024-04-30",
-								"hour": "11:15",
-								"teams": {
-									"home": {
-										"id": 10509,
-										"name": "Al Kholood",
-										"country": "🇸🇦",
-										"score": 4,
-										"winner": true,
-										"position": 2,
-										"featured": true
-									},
-									"away": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-22-Al Taraji-Al Baten",
-								"fullDate": "2024-04-22T12:45",
-								"date": "2024-04-22",
-								"hour": "12:45",
-								"teams": {
-									"home": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-15-Al Safa-Al Taraji",
-								"fullDate": "2024-04-15T12:45",
-								"date": "2024-04-15",
-								"hour": "12:45",
-								"teams": {
-									"home": {
-										"id": 2990,
-										"name": "Al Safa",
-										"country": "🇸🇦",
-										"score": 4,
-										"winner": true,
-										"position": 10,
-										"featured": false
-									},
-									"away": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-29-Al-Adalah-Al Taraji",
-								"fullDate": "2024-03-29T13:30",
-								"date": "2024-03-29",
-								"hour": "13:30",
-								"teams": {
-									"home": {
-										"id": 2950,
-										"name": "Al-Adalah",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 4,
-										"featured": true
-									},
-									"away": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-17-Al Taraji-Al Jabalain",
-								"fullDate": "2024-03-17T13:30",
-								"date": "2024-03-17",
-								"hour": "13:30",
-								"teams": {
-									"home": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2958,
-										"name": "Al Jabalain",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 7,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-09-Al-Ain-Al Taraji",
-								"fullDate": "2024-03-09T08:10",
-								"date": "2024-03-09",
-								"hour": "08:10",
-								"teams": {
-									"home": {
-										"id": 13170,
-										"name": "Al-Ain",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 12,
-										"featured": false
-									},
-									"away": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-04-Al Taraji-Hajer",
-								"fullDate": "2024-03-04T10:20",
-								"date": "2024-03-04",
-								"hour": "10:20",
-								"teams": {
-									"home": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2948,
-										"name": "Hajer",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 16,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-27-Al Bukayriyah-Al Taraji",
-								"fullDate": "2024-02-27T07:55",
-								"date": "2024-02-27",
-								"hour": "07:55",
-								"teams": {
-									"home": {
-										"id": 2966,
-										"name": "Al Bukayriyah",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 13,
-										"featured": false
-									},
-									"away": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-21-Al Taraji-Al-Qadisiyah FC",
-								"fullDate": "2024-02-21T10:15",
-								"date": "2024-02-21",
-								"hour": "10:15",
-								"teams": {
-									"home": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2933,
-										"name": "Al-Qadisiyah FC",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 1,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-02-13-Al Najma-Al Taraji",
-								"fullDate": "2024-02-13T08:00",
-								"date": "2024-02-13",
-								"hour": "08:00",
-								"teams": {
-									"home": {
-										"id": 2992,
-										"name": "Al Najma",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 9,
-										"featured": false
-									},
-									"away": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-08-Al Taraji-Al-Faisaly FC",
-								"fullDate": "2024-02-08T10:05",
-								"date": "2024-02-08",
-								"hour": "10:05",
-								"teams": {
-									"home": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2930,
-										"name": "Al-Faisaly FC",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 6,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-29-Jeddah Club-Al Taraji",
-								"fullDate": "2024-01-29T10:50",
-								"date": "2024-01-29",
-								"hour": "10:50",
-								"teams": {
-									"home": {
-										"id": 2947,
-										"name": "Jeddah Club",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 18,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-01-23-Al Taraji-Al Orubah",
-								"fullDate": "2024-01-23T07:15",
-								"date": "2024-01-23",
-								"hour": "07:15",
-								"teams": {
-									"home": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 3,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-08-Al Taraji-Ohod",
-								"fullDate": "2024-01-08T07:10",
-								"date": "2024-01-08",
-								"hour": "07:10",
-								"teams": {
-									"home": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2943,
-										"name": "Ohod",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 15,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-01-02-Al Qaisoma-Al Taraji",
-								"fullDate": "2024-01-02T07:10",
-								"date": "2024-01-02",
-								"hour": "07:10",
-								"teams": {
-									"home": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 17,
-										"featured": false
-									},
-									"away": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 18,
-										"featured": false
-									}
-								}
-							}
-						]
-					},
-					"away": {
-						"id": 10507,
-						"name": "Al Jandal",
-						"country": "🇸🇦",
-						"score": 1,
-						"winner": null,
-						"position": 11,
-						"featured": false,
-						"stats": {
-							"total_de_partidos": 15,
-							"total_de_goles": 15,
-							"promedio_de_goles": 1,
-							"---|---": 0,
-							"goles_de_local": 10,
-							"promedio_de_goles_de_local": 1.3,
-							"partidos_de_local": 8,
-							"partidos_ganados_de_local": 4,
-							"partidos_perdidos_de_local": 3,
-							"partidos_empatados_de_local": 1,
-							"partidos_con_goles_de_local": 7,
-							"promedio_de_puntos_de_local": 0,
-							"porcentaje_de_puntos_ganados_de_local": 62.5,
-							"---||---": 0,
-							"goles_de_visitante": 5,
-							"promedio_de_goles_de_visitante": 0.7,
-							"partidos_de_visitante": 7,
-							"partidos_ganados_de_visitante": 1,
-							"partidos_perdidos_de_visitante": 4,
-							"partidos_empatados_de_visitante": 2,
-							"partidos_con_goles_de_visitante": 4,
-							"promedio_de_puntos_de_visitante": 0,
-							"porcentaje_de_puntos_ganados_de_visitante": 42.9,
-							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 4,
-							"ultimos_promedio_de_goles": 1.3,
-							"---||||---": 0,
-							"ultimos_goles_de_local": 5,
-							"ultimos_promedio_de_goles_de_local": 1.7,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 2,
-							"ultimos_partidos_perdidos_de_local": 1,
-							"ultimos_partidos_empatados_de_local": 0,
-							"ultimos_partidos_con_goles_de_local": 3,
-							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
-							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 3,
-							"ultimos_promedio_de_goles_de_visitante": 1,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 0,
-							"ultimos_partidos_perdidos_de_visitante": 3,
-							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2,
-							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 0
-						},
-						"matches": [
-							{
-								"id": "2024-05-01-Al Jandal-Al Orubah",
-								"fullDate": "2024-05-01T12:50",
-								"date": "2024-05-01",
-								"hour": "12:50",
-								"teams": {
-									"home": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 11,
-										"featured": false
-									},
-									"away": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 3,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-04-23-Al-Adalah-Al Jandal",
-								"fullDate": "2024-04-23T10:50",
-								"date": "2024-04-23",
-								"hour": "10:50",
-								"teams": {
-									"home": {
-										"id": 2950,
-										"name": "Al-Adalah",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 4,
-										"featured": true
-									},
-									"away": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 11,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-17-Al Jandal-Al Jabalain",
-								"fullDate": "2024-04-17T11:25",
-								"date": "2024-04-17",
-								"hour": "11:25",
-								"teams": {
-									"home": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 11,
-										"featured": false
-									},
-									"away": {
-										"id": 2958,
-										"name": "Al Jabalain",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 7,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-28-Al-Ain-Al Jandal",
-								"fullDate": "2024-03-28T14:00",
-								"date": "2024-03-28",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 13170,
-										"name": "Al-Ain",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 12,
-										"featured": false
-									},
-									"away": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": false,
-										"position": 11,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-16-Hajer-Al Jandal",
-								"fullDate": "2024-03-16T13:30",
-								"date": "2024-03-16",
-								"hour": "13:30",
-								"teams": {
-									"home": {
-										"id": 2948,
-										"name": "Hajer",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 16,
-										"featured": false
-									},
-									"away": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 11,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-11-Al Jandal-Al Arabi SC",
-								"fullDate": "2024-03-11T14:00",
-								"date": "2024-03-11",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 11,
-										"featured": false
-									},
-									"away": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-03-05-Al Jandal-Ohod",
-								"fullDate": "2024-03-05T07:00",
-								"date": "2024-03-05",
-								"hour": "07:00",
-								"teams": {
-									"home": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 11,
-										"featured": false
-									},
-									"away": {
-										"id": 2943,
-										"name": "Ohod",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 15,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-28-Al Najma-Al Jandal",
-								"fullDate": "2024-02-28T08:00",
-								"date": "2024-02-28",
-								"hour": "08:00",
-								"teams": {
-									"home": {
-										"id": 2992,
-										"name": "Al Najma",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 9,
-										"featured": false
-									},
-									"away": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 11,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-20-Al Jandal-Al Kholood",
-								"fullDate": "2024-02-20T08:05",
-								"date": "2024-02-20",
-								"hour": "08:05",
-								"teams": {
-									"home": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 11,
-										"featured": false
-									},
-									"away": {
-										"id": 10509,
-										"name": "Al Kholood",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 2,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-02-14-Al Safa-Al Jandal",
-								"fullDate": "2024-02-14T10:05",
-								"date": "2024-02-14",
-								"hour": "10:05",
-								"teams": {
-									"home": {
-										"id": 2990,
-										"name": "Al Safa",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 10,
-										"featured": false
-									},
-									"away": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 11,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-05-Al Jandal-Al Qaisoma",
-								"fullDate": "2024-02-05T08:05",
-								"date": "2024-02-05",
-								"hour": "08:05",
-								"teams": {
-									"home": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 11,
-										"featured": false
-									},
-									"away": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 17,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-01-29-Al-Qadisiyah FC-Al Jandal",
-								"fullDate": "2024-01-29T10:00",
-								"date": "2024-01-29",
-								"hour": "10:00",
-								"teams": {
-									"home": {
-										"id": 2933,
-										"name": "Al-Qadisiyah FC",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 1,
-										"featured": true
-									},
-									"away": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 11,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-01-23-Al Jandal-Al-Faisaly FC",
-								"fullDate": "2024-01-23T07:50",
-								"date": "2024-01-23",
-								"hour": "07:50",
-								"teams": {
-									"home": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 11,
-										"featured": false
-									},
-									"away": {
-										"id": 2930,
-										"name": "Al-Faisaly FC",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 6,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-09-Jeddah Club-Al Jandal",
-								"fullDate": "2024-01-09T10:35",
-								"date": "2024-01-09",
-								"hour": "10:35",
-								"teams": {
-									"home": {
-										"id": 2947,
-										"name": "Jeddah Club",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 11,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-01-03-Al Jandal-Al Bukayriyah",
-								"fullDate": "2024-01-03T07:35",
-								"date": "2024-01-03",
-								"hour": "07:35",
-								"teams": {
-									"home": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 11,
-										"featured": false
-									},
-									"away": {
-										"id": 2966,
-										"name": "Al Bukayriyah",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 13,
-										"featured": false
-									}
-								}
-							}
-						]
-					}
-				}
-			},
-			{
-				"id": "2024-05-08-Al Orubah-Al Arabi SC",
-				"fullDate": "2024-05-08T11:40",
-				"date": "2024-05-08",
-				"hour": "11:40",
-				"done": true,
-				"predictions": [
-					{
-						"id": "GEL",
-						"name": "Goles por equipo local",
-						"recommendable": false,
-						"acceptancePercentage": 0.3,
-						"warnings": [
-							{ "description": "Ambos equipos son destacados" },
-							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
-						],
-						"right": false,
-						"fail": true,
-						"criteria": {
-							"home": [
-								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
-									"check": "❌",
-									"weight": 0.6
-								},
-								{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.15 },
-								{
-									"description": "El local está en las primeras 6 posiciones de la tabla",
-									"check": "✅",
-									"weight": 0.15
-								},
-								{
-									"description": "El local está al menos 5 posiciones mas arriba que el rival",
-									"check": "❌",
-									"weight": 0.1
-								},
-								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
-								{
-									"description": "Promedio de goles de visitante >= 1.5",
-									"check": "✅",
-									"weight": 0
-								},
-								{
-									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
-									"weight": 0
-								},
-								{
-									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
-									"weight": 0
-								}
-							],
-							"away": []
-						}
-					},
-					{
-						"id": "GPP",
-						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0.5,
-						"warnings": [{ "description": "Ambos equipos son destacados" }],
-						"right": false,
-						"fail": true,
-						"criteria": {
-							"home": [
-								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "✅",
-									"weight": 0.5
-								},
-								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
-								}
-							],
-							"away": []
-						}
-					},
-					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
-						"recommendable": true,
-						"acceptancePercentage": 1,
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
-						"right": true,
-						"fail": false,
-						"criteria": {
-							"home": [
-								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
-							],
-							"away": []
-						}
-					}
-				],
-				"teams": {
-					"home": {
-						"id": 2961,
-						"name": "Al Orubah",
-						"country": "🇸🇦",
-						"score": 1,
-						"winner": true,
-						"position": 3,
-						"featured": true,
-						"stats": {
-							"total_de_partidos": 15,
-							"total_de_goles": 19,
-							"promedio_de_goles": 1.3,
-							"---|---": 0,
-							"goles_de_local": 7,
-							"promedio_de_goles_de_local": 1,
-							"partidos_de_local": 7,
-							"partidos_ganados_de_local": 3,
-							"partidos_perdidos_de_local": 2,
-							"partidos_empatados_de_local": 2,
-							"partidos_con_goles_de_local": 5,
-							"promedio_de_puntos_de_local": 0,
-							"porcentaje_de_puntos_ganados_de_local": 71.4,
-							"---||---": 0,
-							"goles_de_visitante": 12,
-							"promedio_de_goles_de_visitante": 1.5,
-							"partidos_de_visitante": 8,
-							"partidos_ganados_de_visitante": 4,
-							"partidos_perdidos_de_visitante": 3,
-							"partidos_empatados_de_visitante": 1,
-							"partidos_con_goles_de_visitante": 5,
-							"promedio_de_puntos_de_visitante": 0,
-							"porcentaje_de_puntos_ganados_de_visitante": 62.5,
-							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 1,
-							"ultimos_promedio_de_goles": 0.3,
-							"---||||---": 0,
-							"ultimos_goles_de_local": 2,
-							"ultimos_promedio_de_goles_de_local": 0.7,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 1,
-							"ultimos_partidos_perdidos_de_local": 2,
-							"ultimos_partidos_empatados_de_local": 0,
-							"ultimos_partidos_con_goles_de_local": 2,
-							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
-							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 3,
-							"ultimos_promedio_de_goles_de_visitante": 1,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 1,
-							"ultimos_partidos_perdidos_de_visitante": 1,
-							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 1,
-							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
-						},
-						"matches": [
-							{
-								"id": "2024-05-01-Al Jandal-Al Orubah",
-								"fullDate": "2024-05-01T12:50",
-								"date": "2024-05-01",
-								"hour": "12:50",
-								"teams": {
-									"home": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 11,
-										"featured": false
-									},
-									"away": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 3,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-04-23-Al Orubah-Al Kholood",
-								"fullDate": "2024-04-23T11:30",
-								"date": "2024-04-23",
-								"hour": "11:30",
-								"teams": {
-									"home": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 3,
-										"featured": true
-									},
-									"away": {
-										"id": 10509,
-										"name": "Al Kholood",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 2,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-04-17-Al Najma-Al Orubah",
-								"fullDate": "2024-04-17T11:05",
-								"date": "2024-04-17",
-								"hour": "11:05",
-								"teams": {
-									"home": {
-										"id": 2992,
-										"name": "Al Najma",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 9,
-										"featured": false
-									},
-									"away": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 3,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-03-28-Al Orubah-Jeddah Club",
-								"fullDate": "2024-03-28T14:00",
-								"date": "2024-03-28",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 3,
-										"featured": true
-									},
-									"away": {
-										"id": 2947,
-										"name": "Jeddah Club",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 14,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-15-Al-Qadisiyah FC-Al Orubah",
-								"fullDate": "2024-03-15T13:30",
-								"date": "2024-03-15",
-								"hour": "13:30",
-								"teams": {
-									"home": {
-										"id": 2933,
-										"name": "Al-Qadisiyah FC",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 1,
-										"featured": true
-									},
-									"away": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 3,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-03-10-Al Orubah-Al Safa",
-								"fullDate": "2024-03-10T08:15",
-								"date": "2024-03-10",
-								"hour": "08:15",
-								"teams": {
-									"home": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 3,
-										"featured": true
-									},
-									"away": {
-										"id": 2990,
-										"name": "Al Safa",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 10,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-04-Al Orubah-Al Qaisoma",
-								"fullDate": "2024-03-04T08:10",
-								"date": "2024-03-04",
-								"hour": "08:10",
-								"teams": {
-									"home": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 3,
-										"featured": true
-									},
-									"away": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 17,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-28-Hajer-Al Orubah",
-								"fullDate": "2024-02-28T10:20",
-								"date": "2024-02-28",
-								"hour": "10:20",
-								"teams": {
-									"home": {
-										"id": 2948,
-										"name": "Hajer",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 16,
-										"featured": false
-									},
-									"away": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 4,
-										"winner": true,
-										"position": 3,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-02-21-Al Baten-Al Orubah",
-								"fullDate": "2024-02-21T07:45",
-								"date": "2024-02-21",
-								"hour": "07:45",
-								"teams": {
-									"home": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 3,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-02-13-Al Orubah-Ohod",
-								"fullDate": "2024-02-13T06:50",
-								"date": "2024-02-13",
-								"hour": "06:50",
-								"teams": {
-									"home": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 3,
-										"featured": true
-									},
-									"away": {
-										"id": 2943,
-										"name": "Ohod",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 15,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-05-Al-Ain-Al Orubah",
-								"fullDate": "2024-02-05T08:05",
-								"date": "2024-02-05",
-								"hour": "08:05",
-								"teams": {
-									"home": {
-										"id": 13170,
-										"name": "Al-Ain",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 12,
-										"featured": false
-									},
-									"away": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 3,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-29-Al Orubah-Al-Adalah",
-								"fullDate": "2024-01-29T07:55",
-								"date": "2024-01-29",
-								"hour": "07:55",
-								"teams": {
-									"home": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 3,
-										"featured": true
-									},
-									"away": {
-										"id": 2950,
-										"name": "Al-Adalah",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 4,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-23-Al Taraji-Al Orubah",
-								"fullDate": "2024-01-23T07:15",
-								"date": "2024-01-23",
-								"hour": "07:15",
-								"teams": {
-									"home": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 3,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-10-Al Orubah-Al-Faisaly FC",
-								"fullDate": "2024-01-10T07:40",
-								"date": "2024-01-10",
-								"hour": "07:40",
-								"teams": {
-									"home": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 3,
-										"featured": true
-									},
-									"away": {
-										"id": 2930,
-										"name": "Al-Faisaly FC",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 6,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-03-Al Jabalain-Al Orubah",
-								"fullDate": "2024-01-03T07:50",
-								"date": "2024-01-03",
-								"hour": "07:50",
-								"teams": {
-									"home": {
-										"id": 2958,
-										"name": "Al Jabalain",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 7,
-										"featured": false
-									},
-									"away": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 3,
-										"featured": true
-									}
-								}
-							}
-						]
-					},
-					"away": {
-						"id": 2971,
-						"name": "Al Arabi SC",
-						"country": "🇸🇦",
-						"score": 0,
-						"winner": false,
-						"position": 5,
-						"featured": true,
-						"stats": {
-							"total_de_partidos": 15,
-							"total_de_goles": 27,
-							"promedio_de_goles": 1.8,
-							"---|---": 0,
-							"goles_de_local": 17,
-							"promedio_de_goles_de_local": 2.4,
-							"partidos_de_local": 7,
-							"partidos_ganados_de_local": 5,
-							"partidos_perdidos_de_local": 1,
-							"partidos_empatados_de_local": 1,
-							"partidos_con_goles_de_local": 6,
-							"promedio_de_puntos_de_local": 0,
-							"porcentaje_de_puntos_ganados_de_local": 85.7,
-							"---||---": 0,
-							"goles_de_visitante": 10,
-							"promedio_de_goles_de_visitante": 1.3,
-							"partidos_de_visitante": 8,
-							"partidos_ganados_de_visitante": 3,
-							"partidos_perdidos_de_visitante": 1,
-							"partidos_empatados_de_visitante": 4,
-							"partidos_con_goles_de_visitante": 7,
-							"promedio_de_puntos_de_visitante": 0,
-							"porcentaje_de_puntos_ganados_de_visitante": 87.5,
-							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 6,
-							"ultimos_promedio_de_goles": 2,
-							"---||||---": 0,
-							"ultimos_goles_de_local": 8,
-							"ultimos_promedio_de_goles_de_local": 2.7,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 2,
-							"ultimos_partidos_perdidos_de_local": 0,
-							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 3,
-							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
-							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 6,
-							"ultimos_promedio_de_goles_de_visitante": 2,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 1,
-							"ultimos_partidos_perdidos_de_visitante": 1,
-							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3,
-							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
-						},
-						"matches": [
-							{
-								"id": "2024-04-29-Al Arabi SC-Ohod",
-								"fullDate": "2024-04-29T11:10",
-								"date": "2024-04-29",
-								"hour": "11:10",
-								"teams": {
-									"home": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 2943,
-										"name": "Ohod",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": false,
-										"position": 15,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-23-Al-Faisaly FC-Al Arabi SC",
-								"fullDate": "2024-04-23T12:45",
-								"date": "2024-04-23",
-								"hour": "12:45",
-								"teams": {
-									"home": {
-										"id": 2930,
-										"name": "Al-Faisaly FC",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 6,
-										"featured": true
-									},
-									"away": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-04-15-Al Arabi SC-Al-Ain",
-								"fullDate": "2024-04-15T11:05",
-								"date": "2024-04-15",
-								"hour": "11:05",
-								"teams": {
-									"home": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 13170,
-										"name": "Al-Ain",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 12,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-29-Al Arabi SC-Al-Qadisiyah FC",
-								"fullDate": "2024-03-29T14:00",
-								"date": "2024-03-29",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 2933,
-										"name": "Al-Qadisiyah FC",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 1,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-03-17-Al-Adalah-Al Arabi SC",
-								"fullDate": "2024-03-17T13:30",
-								"date": "2024-03-17",
-								"hour": "13:30",
-								"teams": {
-									"home": {
-										"id": 2950,
-										"name": "Al-Adalah",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 4,
-										"featured": true
-									},
-									"away": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-03-11-Al Jandal-Al Arabi SC",
-								"fullDate": "2024-03-11T14:00",
-								"date": "2024-03-11",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 11,
-										"featured": false
-									},
-									"away": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-03-05-Al Arabi SC-Al Najma",
-								"fullDate": "2024-03-05T10:45",
-								"date": "2024-03-05",
-								"hour": "10:45",
-								"teams": {
-									"home": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 5,
-										"winner": true,
-										"position": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 2992,
-										"name": "Al Najma",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": false,
-										"position": 9,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-26-Al Kholood-Al Arabi SC",
-								"fullDate": "2024-02-26T08:00",
-								"date": "2024-02-26",
-								"hour": "08:00",
-								"teams": {
-									"home": {
-										"id": 10509,
-										"name": "Al Kholood",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 2,
-										"featured": true
-									},
-									"away": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-02-20-Al Arabi SC-Al Safa",
-								"fullDate": "2024-02-20T07:55",
-								"date": "2024-02-20",
-								"hour": "07:55",
-								"teams": {
-									"home": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 2990,
-										"name": "Al Safa",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 10,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-12-Al Qaisoma-Al Arabi SC",
-								"fullDate": "2024-02-12T07:35",
-								"date": "2024-02-12",
-								"hour": "07:35",
-								"teams": {
-									"home": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 17,
-										"featured": false
-									},
-									"away": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-02-06-Al Arabi SC-Al Jabalain",
-								"fullDate": "2024-02-06T07:50",
-								"date": "2024-02-06",
-								"hour": "07:50",
-								"teams": {
-									"home": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 2958,
-										"name": "Al Jabalain",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 7,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-01-Hajer-Al Arabi SC",
-								"fullDate": "2024-02-01T10:05",
-								"date": "2024-02-01",
-								"hour": "10:05",
-								"teams": {
-									"home": {
-										"id": 2948,
-										"name": "Hajer",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 16,
-										"featured": false
-									},
-									"away": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-23-Jeddah Club-Al Arabi SC",
-								"fullDate": "2024-01-23T10:45",
-								"date": "2024-01-23",
-								"hour": "10:45",
-								"teams": {
-									"home": {
-										"id": 2947,
-										"name": "Jeddah Club",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-10-Al Bukayriyah-Al Arabi SC",
-								"fullDate": "2024-01-10T07:30",
-								"date": "2024-01-10",
-								"hour": "07:30",
-								"teams": {
-									"home": {
-										"id": 2966,
-										"name": "Al Bukayriyah",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 13,
-										"featured": false
-									},
-									"away": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-02-Al Arabi SC-Al Baten",
-								"fullDate": "2024-01-02T07:25",
-								"date": "2024-01-02",
-								"hour": "07:25",
-								"teams": {
-									"home": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 8,
-										"featured": false
-									}
-								}
-							}
-						]
-					}
-				}
-			},
-			{
-				"id": "2024-05-08-Al Qaisoma-Al Baten",
-				"fullDate": "2024-05-08T12:50",
-				"date": "2024-05-08",
-				"hour": "12:50",
-				"done": true,
-				"predictions": [
-					{
-						"id": "GEL",
-						"name": "Goles por equipo local",
-						"recommendable": true,
-						"acceptancePercentage": 0.6,
-						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
-						"right": true,
-						"fail": false,
-						"criteria": {
-							"home": [
-								{
-									"description": "Promedio de goles de local >= 1 (Últimos 3 partidos)",
-									"check": "✅",
-									"weight": 0.6
-								},
-								{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
-								{
-									"description": "El local está en las primeras 6 posiciones de la tabla",
-									"check": "❌",
-									"weight": 0.15
-								},
-								{
-									"description": "El local está al menos 5 posiciones mas arriba que el rival",
-									"check": "❌",
-									"weight": 0.1
-								},
-								{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
-								{ "description": "Promedio de goles de local >= 1.5", "check": "❌", "weight": 0 },
-								{
-									"description": "Promedio de goles de visitante >= 1.5",
-									"check": "✅",
-									"weight": 0
-								},
-								{
-									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
-									"weight": 0
-								},
-								{
-									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
-									"weight": 0
-								}
-							],
-							"away": []
-						}
-					},
-					{
-						"id": "GPP",
-						"name": "Goles por partido",
-						"recommendable": false,
-						"acceptancePercentage": 0.5,
-						"warnings": [],
-						"right": false,
-						"fail": true,
-						"criteria": {
-							"home": [
-								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "❌",
-									"weight": 0.5
-								},
-								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "✅",
-									"weight": 0.5
-								}
-							],
-							"away": []
-						}
-					},
-					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
-						"recommendable": false,
-						"acceptancePercentage": 0,
-						"warnings": [],
-						"right": false,
-						"fail": true,
-						"criteria": {
-							"home": [
-								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
-							],
-							"away": []
-						}
-					}
-				],
-				"teams": {
-					"home": {
-						"id": 2959,
-						"name": "Al Qaisoma",
-						"country": "🇸🇦",
-						"score": 2,
-						"winner": null,
-						"position": 17,
-						"featured": false,
-						"stats": {
-							"total_de_partidos": 15,
-							"total_de_goles": 17,
-							"promedio_de_goles": 1.1,
-							"---|---": 0,
-							"goles_de_local": 9,
-							"promedio_de_goles_de_local": 1.3,
-							"partidos_de_local": 7,
-							"partidos_ganados_de_local": 3,
-							"partidos_perdidos_de_local": 3,
-							"partidos_empatados_de_local": 1,
-							"partidos_con_goles_de_local": 5,
-							"promedio_de_puntos_de_local": 0,
-							"porcentaje_de_puntos_ganados_de_local": 57.1,
-							"---||---": 0,
-							"goles_de_visitante": 8,
-							"promedio_de_goles_de_visitante": 1,
-							"partidos_de_visitante": 8,
-							"partidos_ganados_de_visitante": 1,
-							"partidos_perdidos_de_visitante": 6,
-							"partidos_empatados_de_visitante": 1,
-							"partidos_con_goles_de_visitante": 5,
-							"promedio_de_puntos_de_visitante": 0,
-							"porcentaje_de_puntos_ganados_de_visitante": 25,
-							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 5,
-							"ultimos_promedio_de_goles": 1.7,
-							"---||||---": 0,
-							"ultimos_goles_de_local": 3,
-							"ultimos_promedio_de_goles_de_local": 1,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 1,
-							"ultimos_partidos_perdidos_de_local": 2,
-							"ultimos_partidos_empatados_de_local": 0,
-							"ultimos_partidos_con_goles_de_local": 3,
-							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
-							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 5,
-							"ultimos_promedio_de_goles_de_visitante": 1.7,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 1,
-							"ultimos_partidos_perdidos_de_visitante": 2,
-							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3,
-							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
-						},
-						"matches": [
-							{
-								"id": "2024-04-30-Al-Qadisiyah FC-Al Qaisoma",
-								"fullDate": "2024-04-30T10:55",
-								"date": "2024-04-30",
-								"hour": "10:55",
-								"teams": {
-									"home": {
-										"id": 2933,
-										"name": "Al-Qadisiyah FC",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 1,
-										"featured": true
-									},
-									"away": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 17,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-24-Jeddah Club-Al Qaisoma",
-								"fullDate": "2024-04-24T12:45",
-								"date": "2024-04-24",
-								"hour": "12:45",
-								"teams": {
-									"home": {
-										"id": 2947,
-										"name": "Jeddah Club",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 14,
-										"featured": false
-									},
-									"away": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 17,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-17-Al Qaisoma-Al-Faisaly FC",
-								"fullDate": "2024-04-17T10:45",
-								"date": "2024-04-17",
-								"hour": "10:45",
-								"teams": {
-									"home": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 17,
-										"featured": false
-									},
-									"away": {
-										"id": 2930,
-										"name": "Al-Faisaly FC",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 6,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-03-29-Al Qaisoma-Al Safa",
-								"fullDate": "2024-03-29T13:45",
-								"date": "2024-03-29",
-								"hour": "13:45",
-								"teams": {
-									"home": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 17,
-										"featured": false
-									},
-									"away": {
-										"id": 2990,
-										"name": "Al Safa",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 10,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-15-Al Kholood-Al Qaisoma",
-								"fullDate": "2024-03-15T13:45",
-								"date": "2024-03-15",
-								"hour": "13:45",
-								"teams": {
-									"home": {
-										"id": 10509,
-										"name": "Al Kholood",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 2,
-										"featured": true
-									},
-									"away": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 17,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-10-Al Qaisoma-Al Bukayriyah",
-								"fullDate": "2024-03-10T08:00",
-								"date": "2024-03-10",
-								"hour": "08:00",
-								"teams": {
-									"home": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 17,
-										"featured": false
-									},
-									"away": {
-										"id": 2966,
-										"name": "Al Bukayriyah",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 13,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-04-Al Orubah-Al Qaisoma",
-								"fullDate": "2024-03-04T08:10",
-								"date": "2024-03-04",
-								"hour": "08:10",
-								"teams": {
-									"home": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 3,
-										"featured": true
-									},
-									"away": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 17,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-27-Al Qaisoma-Al-Adalah",
-								"fullDate": "2024-02-27T07:55",
-								"date": "2024-02-27",
-								"hour": "07:55",
-								"teams": {
-									"home": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 17,
-										"featured": false
-									},
-									"away": {
-										"id": 2950,
-										"name": "Al-Adalah",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 4,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-02-19-Al-Ain-Al Qaisoma",
-								"fullDate": "2024-02-19T08:05",
-								"date": "2024-02-19",
-								"hour": "08:05",
-								"teams": {
-									"home": {
-										"id": 13170,
-										"name": "Al-Ain",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 12,
-										"featured": false
-									},
-									"away": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": null,
-										"position": 17,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-12-Al Qaisoma-Al Arabi SC",
-								"fullDate": "2024-02-12T07:35",
-								"date": "2024-02-12",
-								"hour": "07:35",
-								"teams": {
-									"home": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 17,
-										"featured": false
-									},
-									"away": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 5,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-02-05-Al Jandal-Al Qaisoma",
-								"fullDate": "2024-02-05T08:05",
-								"date": "2024-02-05",
-								"hour": "08:05",
-								"teams": {
-									"home": {
-										"id": 10507,
-										"name": "Al Jandal",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 11,
-										"featured": false
-									},
-									"away": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 17,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-01-30-Al Jabalain-Al Qaisoma",
-								"fullDate": "2024-01-30T07:50",
-								"date": "2024-01-30",
-								"hour": "07:50",
-								"teams": {
-									"home": {
-										"id": 2958,
-										"name": "Al Jabalain",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 7,
-										"featured": false
-									},
-									"away": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 17,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-01-22-Al Qaisoma-Al Najma",
-								"fullDate": "2024-01-22T07:30",
-								"date": "2024-01-22",
-								"hour": "07:30",
-								"teams": {
-									"home": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 17,
-										"featured": false
-									},
-									"away": {
-										"id": 2992,
-										"name": "Al Najma",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 9,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-01-09-Hajer-Al Qaisoma",
-								"fullDate": "2024-01-09T07:15",
-								"date": "2024-01-09",
-								"hour": "07:15",
-								"teams": {
-									"home": {
-										"id": 2948,
-										"name": "Hajer",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 16,
-										"featured": false
-									},
-									"away": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 17,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-01-02-Al Qaisoma-Al Taraji",
-								"fullDate": "2024-01-02T07:10",
-								"date": "2024-01-02",
-								"hour": "07:10",
-								"teams": {
-									"home": {
-										"id": 2959,
-										"name": "Al Qaisoma",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 17,
-										"featured": false
-									},
-									"away": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 18,
-										"featured": false
-									}
-								}
-							}
-						]
-					},
-					"away": {
-						"id": 2926,
-						"name": "Al Baten",
-						"country": "🇸🇦",
-						"score": 2,
-						"winner": null,
-						"position": 8,
-						"featured": false,
-						"stats": {
-							"total_de_partidos": 15,
-							"total_de_goles": 20,
-							"promedio_de_goles": 1.3,
-							"---|---": 0,
-							"goles_de_local": 7,
-							"promedio_de_goles_de_local": 0.9,
-							"partidos_de_local": 8,
-							"partidos_ganados_de_local": 2,
-							"partidos_perdidos_de_local": 4,
-							"partidos_empatados_de_local": 2,
-							"partidos_con_goles_de_local": 5,
-							"promedio_de_puntos_de_local": 0,
-							"porcentaje_de_puntos_ganados_de_local": 50,
-							"---||---": 0,
-							"goles_de_visitante": 13,
-							"promedio_de_goles_de_visitante": 1.9,
-							"partidos_de_visitante": 7,
-							"partidos_ganados_de_visitante": 4,
-							"partidos_perdidos_de_visitante": 2,
-							"partidos_empatados_de_visitante": 1,
-							"partidos_con_goles_de_visitante": 6,
-							"promedio_de_puntos_de_visitante": 0,
-							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
-							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 4,
-							"ultimos_promedio_de_goles": 1.3,
-							"---||||---": 0,
-							"ultimos_goles_de_local": 2,
-							"ultimos_promedio_de_goles_de_local": 0.7,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 0,
-							"ultimos_partidos_perdidos_de_local": 2,
-							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 2,
-							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
-							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 8,
-							"ultimos_promedio_de_goles_de_visitante": 2.7,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 3,
-							"ultimos_partidos_perdidos_de_visitante": 0,
-							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3,
-							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
-						},
-						"matches": [
-							{
-								"id": "2024-05-01-Al Baten-Al Najma",
-								"fullDate": "2024-05-01T11:10",
-								"date": "2024-05-01",
-								"hour": "11:10",
-								"teams": {
-									"home": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2992,
-										"name": "Al Najma",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 9,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-22-Al Taraji-Al Baten",
-								"fullDate": "2024-04-22T12:45",
-								"date": "2024-04-22",
-								"hour": "12:45",
-								"teams": {
-									"home": {
-										"id": 2991,
-										"name": "Al Taraji",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 18,
-										"featured": false
-									},
-									"away": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-04-16-Al Baten-Al-Adalah",
-								"fullDate": "2024-04-16T11:05",
-								"date": "2024-04-16",
-								"hour": "11:05",
-								"teams": {
-									"home": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2950,
-										"name": "Al-Adalah",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 4,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-03-28-Al Baten-Hajer",
-								"fullDate": "2024-03-28T13:45",
-								"date": "2024-03-28",
-								"hour": "13:45",
-								"teams": {
-									"home": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2948,
-										"name": "Hajer",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 16,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-15-Al Bukayriyah-Al Baten",
-								"fullDate": "2024-03-15T13:45",
-								"date": "2024-03-15",
-								"hour": "13:45",
-								"teams": {
-									"home": {
-										"id": 2966,
-										"name": "Al Bukayriyah",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 13,
-										"featured": false
-									},
-									"away": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-10-Al-Faisaly FC-Al Baten",
-								"fullDate": "2024-03-10T08:00",
-								"date": "2024-03-10",
-								"hour": "08:00",
-								"teams": {
-									"home": {
-										"id": 2930,
-										"name": "Al-Faisaly FC",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 6,
-										"featured": true
-									},
-									"away": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-03-05-Al Baten-Jeddah Club",
-								"fullDate": "2024-03-05T07:50",
-								"date": "2024-03-05",
-								"hour": "07:50",
-								"teams": {
-									"home": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2947,
-										"name": "Jeddah Club",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 14,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-28-Ohod-Al Baten",
-								"fullDate": "2024-02-28T08:15",
-								"date": "2024-02-28",
-								"hour": "08:15",
-								"teams": {
-									"home": {
-										"id": 2943,
-										"name": "Ohod",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 15,
-										"featured": false
-									},
-									"away": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-21-Al Baten-Al Orubah",
-								"fullDate": "2024-02-21T07:45",
-								"date": "2024-02-21",
-								"hour": "07:45",
-								"teams": {
-									"home": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2961,
-										"name": "Al Orubah",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 3,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-02-14-Al Kholood-Al Baten",
-								"fullDate": "2024-02-14T07:55",
-								"date": "2024-02-14",
-								"hour": "07:55",
-								"teams": {
-									"home": {
-										"id": 10509,
-										"name": "Al Kholood",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 2,
-										"featured": true
-									},
-									"away": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": null,
-										"position": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-02-06-Al Baten-Al-Qadisiyah FC",
-								"fullDate": "2024-02-06T07:40",
-								"date": "2024-02-06",
-								"hour": "07:40",
-								"teams": {
-									"home": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": true,
-										"position": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2933,
-										"name": "Al-Qadisiyah FC",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 1,
-										"featured": true
-									}
-								}
-							},
-							{
-								"id": "2024-01-31-Al Baten-Al Safa",
-								"fullDate": "2024-01-31T07:35",
-								"date": "2024-01-31",
-								"hour": "07:35",
-								"teams": {
-									"home": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 1,
-										"winner": false,
-										"position": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2990,
-										"name": "Al Safa",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": true,
-										"position": 10,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-01-24-Al-Ain-Al Baten",
-								"fullDate": "2024-01-24T08:00",
-								"date": "2024-01-24",
-								"hour": "08:00",
-								"teams": {
-									"home": {
-										"id": 13170,
-										"name": "Al-Ain",
-										"country": "🇸🇦",
-										"score": 2,
-										"winner": false,
-										"position": 12,
-										"featured": false
-									},
-									"away": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 8,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-01-09-Al Baten-Al Jabalain",
-								"fullDate": "2024-01-09T07:15",
-								"date": "2024-01-09",
-								"hour": "07:15",
-								"teams": {
-									"home": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 8,
-										"featured": false
-									},
-									"away": {
-										"id": 2958,
-										"name": "Al Jabalain",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": null,
-										"position": 7,
-										"featured": false
-									}
-								}
-							},
-							{
-								"id": "2024-01-02-Al Arabi SC-Al Baten",
-								"fullDate": "2024-01-02T07:25",
-								"date": "2024-01-02",
-								"hour": "07:25",
-								"teams": {
-									"home": {
-										"id": 2971,
-										"name": "Al Arabi SC",
-										"country": "🇸🇦",
-										"score": 3,
-										"winner": true,
-										"position": 5,
-										"featured": true
-									},
-									"away": {
-										"id": 2926,
-										"name": "Al Baten",
-										"country": "🇸🇦",
-										"score": 0,
-										"winner": false,
-										"position": 8,
-										"featured": false
-									}
-								}
-							}
-						]
-					}
-				}
-			}
-		]
-	},
-	{
 		"name": "Copa Colombia",
 		"country": "Colombia",
 		"flag": "🇨🇴",
@@ -19629,7 +17067,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
@@ -19662,12 +17100,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -19675,8 +17113,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -19685,22 +17123,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -19709,6 +17147,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": true,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -20626,7 +18083,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
@@ -20659,12 +18116,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -20672,8 +18129,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -20682,22 +18139,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -20706,6 +18163,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": true,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}

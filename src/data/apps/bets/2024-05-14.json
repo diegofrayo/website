@@ -14,7 +14,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
 						"warnings": [],
@@ -60,32 +60,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"acceptancePercentage": 0.6,
 						"warnings": [],
 						"right": false,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "❌",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "✅",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "✅",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "❌",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -94,6 +94,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -167,7 +186,7 @@
 									"home": {
 										"id": 453,
 										"name": "Independiente",
-										"country": "",
+										"country": "🇦🇷",
 										"score": null,
 										"winner": null,
 										"position": null,
@@ -245,7 +264,7 @@
 									"home": {
 										"id": 453,
 										"name": "Independiente",
-										"country": "",
+										"country": "🇦🇷",
 										"score": 2,
 										"winner": null,
 										"position": null,
@@ -531,7 +550,7 @@
 									"home": {
 										"id": 2432,
 										"name": "Barracas Central",
-										"country": "",
+										"country": "🇦🇷",
 										"score": 2,
 										"winner": true,
 										"position": null,
@@ -1011,7 +1030,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0.15,
 						"warnings": [
@@ -1047,7 +1066,7 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
@@ -1060,32 +1079,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"acceptancePercentage": 0.4,
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
 						"right": false,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "✅",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "❌",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -1094,6 +1113,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -2011,7 +2049,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0.15,
 						"warnings": [
@@ -2047,7 +2085,7 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
@@ -2060,32 +2098,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"acceptancePercentage": 0.4,
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
 						"right": false,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "✅",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "❌",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -2094,6 +2132,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -3011,7 +3068,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0.15,
 						"warnings": [
@@ -3047,12 +3104,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -3060,32 +3117,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"acceptancePercentage": 0.4,
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
 						"right": false,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "✅",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "❌",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -3094,6 +3151,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -3176,7 +3252,7 @@
 									"away": {
 										"id": 1065,
 										"name": "Central Cordoba de Santiago",
-										"country": "",
+										"country": "🇦🇷",
 										"score": null,
 										"winner": null,
 										"position": null,
@@ -3375,7 +3451,7 @@
 									"home": {
 										"id": 445,
 										"name": "Huracan",
-										"country": "",
+										"country": "🇦🇷",
 										"score": 1,
 										"winner": true,
 										"position": null,
@@ -3479,7 +3555,7 @@
 									"home": {
 										"id": 453,
 										"name": "Independiente",
-										"country": "",
+										"country": "🇦🇷",
 										"score": 1,
 										"winner": null,
 										"position": null,
@@ -4011,7 +4087,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0.15,
 						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
@@ -4044,7 +4120,7 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
@@ -4057,32 +4133,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"acceptancePercentage": 0.4,
 						"warnings": [],
 						"right": false,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "✅",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "❌",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
@@ -4091,6 +4167,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -5016,7 +5111,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -5049,7 +5144,7 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
@@ -5062,8 +5157,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -5072,22 +5167,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -5096,6 +5191,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -6013,7 +6127,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 0.6,
 						"warnings": [
@@ -6062,8 +6176,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
@@ -6072,22 +6186,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -6096,6 +6210,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 1,
+						"warnings": [],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "✅",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -6169,7 +6302,7 @@
 									"home": {
 										"id": 445,
 										"name": "Huracan",
-										"country": "",
+										"country": "🇦🇷",
 										"score": null,
 										"winner": null,
 										"position": null,
@@ -7013,7 +7146,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -7046,12 +7179,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -7059,8 +7192,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -7069,22 +7202,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -7093,6 +7226,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -8010,7 +8162,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0.15,
 						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
@@ -8043,7 +8195,7 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
@@ -8056,32 +8208,32 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.5,
+						"acceptancePercentage": 0.4,
 						"warnings": [],
 						"right": false,
 						"fail": false,
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
-									"check": "✅",
-									"weight": 0.5
+									"description": "El equipo local o visitante puede hacer un gol",
+									"check": "❌",
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
-									"check": "❌",
-									"weight": 0.5
+									"description": "Alguno de los dos equipos es destacado",
+									"check": "✅",
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
@@ -8090,6 +8242,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -8752,7 +8923,7 @@
 									"away": {
 										"id": 2432,
 										"name": "Barracas Central",
-										"country": "",
+										"country": "🇦🇷",
 										"score": 3,
 										"winner": null,
 										"position": null,
@@ -8925,7 +9096,7 @@
 									"home": {
 										"id": 445,
 										"name": "Huracan",
-										"country": "",
+										"country": "🇦🇷",
 										"score": 1,
 										"winner": null,
 										"position": null,
@@ -8977,7 +9148,7 @@
 									"home": {
 										"id": 453,
 										"name": "Independiente",
-										"country": "",
+										"country": "🇦🇷",
 										"score": 2,
 										"winner": true,
 										"position": null,
@@ -9007,7 +9178,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -9040,12 +9211,12 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
 									"description": "No ha perdido los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								}
 							],
@@ -9053,8 +9224,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -9063,22 +9234,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -9087,6 +9258,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -10018,14 +10208,14 @@
 			{
 				"teamId": 547,
 				"teamName": "Girona",
-				"points": 74,
+				"points": 75,
 				"stats": {
 					"goalsDiff": 31,
-					"played": 34,
+					"played": 35,
 					"win": 23,
-					"draw": 5,
+					"draw": 6,
 					"lose": 6,
-					"goals": { "for": 73, "against": 42 }
+					"goals": { "for": 75, "against": 44 }
 				}
 			},
 			{
@@ -10135,14 +10325,14 @@
 			{
 				"teamId": 542,
 				"teamName": "Alaves",
-				"points": 41,
+				"points": 42,
 				"stats": {
 					"goalsDiff": -6,
-					"played": 34,
+					"played": 35,
 					"win": 11,
-					"draw": 8,
+					"draw": 9,
 					"lose": 15,
-					"goals": { "for": 32, "against": 38 }
+					"goals": { "for": 34, "against": 40 }
 				}
 			},
 			{
@@ -10176,12 +10366,25 @@
 				"teamName": "Las Palmas",
 				"points": 37,
 				"stats": {
-					"goalsDiff": -13,
-					"played": 34,
+					"goalsDiff": -14,
+					"played": 35,
 					"win": 10,
 					"draw": 7,
-					"lose": 17,
-					"goals": { "for": 30, "against": 43 }
+					"lose": 18,
+					"goals": { "for": 30, "against": 44 }
+				}
+			},
+			{
+				"teamId": 798,
+				"teamName": "Mallorca",
+				"points": 35,
+				"stats": {
+					"goalsDiff": -12,
+					"played": 35,
+					"win": 7,
+					"draw": 14,
+					"lose": 14,
+					"goals": { "for": 28, "against": 40 }
 				}
 			},
 			{
@@ -10208,19 +10411,6 @@
 					"draw": 13,
 					"lose": 14,
 					"goals": { "for": 27, "against": 43 }
-				}
-			},
-			{
-				"teamId": 798,
-				"teamName": "Mallorca",
-				"points": 32,
-				"stats": {
-					"goalsDiff": -13,
-					"played": 34,
-					"win": 6,
-					"draw": 14,
-					"lose": 14,
-					"goals": { "for": 27, "against": 40 }
 				}
 			},
 			{
@@ -10273,7 +10463,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
@@ -10306,7 +10496,7 @@
 								},
 								{
 									"description": "Ha marcado en los últimos 3 partidos de local",
-									"check": "✅",
+									"check": "❌",
 									"weight": 0
 								},
 								{
@@ -10319,8 +10509,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -10329,22 +10519,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "❌",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"warnings": [],
@@ -10353,6 +10543,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "❌", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -10507,7 +10716,7 @@
 										"country": "🇪🇸",
 										"score": 2,
 										"winner": true,
-										"position": 16,
+										"position": 17,
 										"featured": false
 									},
 									"away": {
@@ -10750,7 +10959,7 @@
 										"country": "🇪🇸",
 										"score": 3,
 										"winner": true,
-										"position": 15,
+										"position": 16,
 										"featured": false
 									}
 								}
@@ -10815,7 +11024,7 @@
 						"country": "🇪🇸",
 						"score": null,
 						"winner": null,
-						"position": 17,
+						"position": 15,
 						"featured": false,
 						"stats": {
 							"total_de_partidos": 15,
@@ -10879,7 +11088,7 @@
 										"country": "🇪🇸",
 										"score": null,
 										"winner": null,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -10905,7 +11114,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -10940,7 +11149,7 @@
 										"country": "🇪🇸",
 										"score": 1,
 										"winner": null,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -10966,7 +11175,7 @@
 										"country": "🇪🇸",
 										"score": 1,
 										"winner": false,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -10983,7 +11192,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -11018,7 +11227,7 @@
 										"country": "🇪🇸",
 										"score": 1,
 										"winner": false,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -11044,7 +11253,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": null,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -11061,7 +11270,7 @@
 										"country": "🇪🇸",
 										"score": 1,
 										"winner": true,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -11096,7 +11305,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -11113,7 +11322,7 @@
 										"country": "🇪🇸",
 										"score": 1,
 										"winner": true,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -11148,7 +11357,7 @@
 										"country": "🇪🇸",
 										"score": 1,
 										"winner": true,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -11174,7 +11383,7 @@
 										"country": "🇪🇸",
 										"score": 1,
 										"winner": null,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -11191,7 +11400,7 @@
 										"country": "🇪🇸",
 										"score": 1,
 										"winner": false,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -11217,7 +11426,7 @@
 										"country": "🇪🇸",
 										"score": 2,
 										"winner": true,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -11226,7 +11435,7 @@
 										"country": "🇪🇸",
 										"score": 1,
 										"winner": false,
-										"position": 16,
+										"position": 17,
 										"featured": false
 									}
 								}
@@ -11243,7 +11452,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": null,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -11270,7 +11479,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
@@ -11316,8 +11525,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
@@ -11326,22 +11535,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [],
@@ -11350,6 +11559,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -11608,7 +11836,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -11721,7 +11949,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 15,
+										"position": 16,
 										"featured": false
 									}
 								}
@@ -11816,16 +12044,16 @@
 						"featured": false,
 						"stats": {
 							"total_de_partidos": 15,
-							"total_de_goles": 14,
-							"promedio_de_goles": 0.9,
+							"total_de_goles": 16,
+							"promedio_de_goles": 1.1,
 							"---|---": 0,
-							"goles_de_local": 10,
-							"promedio_de_goles_de_local": 1.1,
+							"goles_de_local": 12,
+							"promedio_de_goles_de_local": 1.3,
 							"partidos_de_local": 9,
 							"partidos_ganados_de_local": 4,
 							"partidos_perdidos_de_local": 2,
 							"partidos_empatados_de_local": 3,
-							"partidos_con_goles_de_local": 7,
+							"partidos_con_goles_de_local": 8,
 							"promedio_de_puntos_de_local": 0,
 							"porcentaje_de_puntos_ganados_de_local": 77.8,
 							"---||---": 0,
@@ -11840,16 +12068,16 @@
 							"porcentaje_de_puntos_ganados_de_visitante": 50,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 4,
-							"ultimos_promedio_de_goles": 1.3,
+							"ultimos_total_de_goles": 6,
+							"ultimos_promedio_de_goles": 2,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 5,
-							"ultimos_promedio_de_goles_de_local": 1.7,
+							"ultimos_goles_de_local": 7,
+							"ultimos_promedio_de_goles_de_local": 2.3,
 							"ultimos_partidos_de_local": 3,
 							"ultimos_partidos_ganados_de_local": 2,
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_partidos_con_goles_de_local": 3,
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
@@ -11874,7 +12102,7 @@
 										"id": 542,
 										"name": "Alaves",
 										"country": "🇪🇸",
-										"score": null,
+										"score": 2,
 										"winner": null,
 										"position": 11,
 										"featured": false
@@ -11883,7 +12111,7 @@
 										"id": 547,
 										"name": "Girona",
 										"country": "🇪🇸",
-										"score": null,
+										"score": 2,
 										"winner": null,
 										"position": 2,
 										"featured": true
@@ -11937,7 +12165,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 15,
+										"position": 16,
 										"featured": false
 									}
 								}
@@ -12067,7 +12295,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 16,
+										"position": 17,
 										"featured": false
 									}
 								}
@@ -12119,7 +12347,7 @@
 										"country": "🇪🇸",
 										"score": 1,
 										"winner": null,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									}
 								}
@@ -12267,7 +12495,7 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Goles por equipo local",
+						"name": "Equipo local marca un gol",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [
@@ -12316,8 +12544,8 @@
 						}
 					},
 					{
-						"id": "GPP",
-						"name": "Goles por partido",
+						"id": "GEP",
+						"name": "Hay un gol en el partido",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
@@ -12326,22 +12554,22 @@
 						"criteria": {
 							"home": [
 								{
-									"description": "Alguno de los dos equipos es destacado",
+									"description": "El equipo local o visitante puede hacer un gol",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.6
 								},
 								{
-									"description": "El equipo local puede hacer un gol",
+									"description": "Alguno de los dos equipos es destacado",
 									"check": "✅",
-									"weight": 0.5
+									"weight": 0.4
 								}
 							],
 							"away": []
 						}
 					},
 					{
-						"id": "DO",
-						"name": "Doble oportunidad o Resultado final",
+						"id": "ELGE",
+						"name": "Equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"warnings": [{ "description": "El equipo visitante es destacado" }],
@@ -12350,6 +12578,25 @@
 						"criteria": {
 							"home": [
 								{ "description": "El equipo local es destacado", "check": "✅", "weight": 1 }
+							],
+							"away": []
+						}
+					},
+					{
+						"id": "GEV",
+						"name": "Equipo visitante marca un gol",
+						"recommendable": false,
+						"acceptancePercentage": 0,
+						"warnings": [{ "description": "El equipo local es destacado" }],
+						"right": false,
+						"fail": false,
+						"criteria": {
+							"home": [
+								{
+									"description": "El equipo visitante es destacado y el local no",
+									"check": "❌",
+									"weight": 1
+								}
 							],
 							"away": []
 						}
@@ -12366,8 +12613,8 @@
 						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
-							"total_de_goles": 24,
-							"promedio_de_goles": 1.6,
+							"total_de_goles": 26,
+							"promedio_de_goles": 1.7,
 							"---|---": 0,
 							"goles_de_local": 16,
 							"promedio_de_goles_de_local": 2.7,
@@ -12379,19 +12626,19 @@
 							"promedio_de_puntos_de_local": 0,
 							"porcentaje_de_puntos_ganados_de_local": 100,
 							"---||---": 0,
-							"goles_de_visitante": 8,
-							"promedio_de_goles_de_visitante": 0.9,
+							"goles_de_visitante": 10,
+							"promedio_de_goles_de_visitante": 1.1,
 							"partidos_de_visitante": 9,
 							"partidos_ganados_de_visitante": 2,
 							"partidos_perdidos_de_visitante": 6,
 							"partidos_empatados_de_visitante": 1,
-							"partidos_con_goles_de_visitante": 5,
+							"partidos_con_goles_de_visitante": 6,
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 33.3,
 							"---|||---": 0,
 							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 6,
-							"ultimos_promedio_de_goles": 2,
+							"ultimos_total_de_goles": 8,
+							"ultimos_promedio_de_goles": 2.7,
 							"---||||---": 0,
 							"ultimos_goles_de_local": 11,
 							"ultimos_promedio_de_goles_de_local": 3.7,
@@ -12403,13 +12650,13 @@
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 3,
-							"ultimos_promedio_de_goles_de_visitante": 1,
+							"ultimos_goles_de_visitante": 5,
+							"ultimos_promedio_de_goles_de_visitante": 1.7,
 							"ultimos_partidos_de_visitante": 3,
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_partidos_con_goles_de_visitante": 3,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
 						},
@@ -12424,7 +12671,7 @@
 										"id": 542,
 										"name": "Alaves",
 										"country": "🇪🇸",
-										"score": null,
+										"score": 2,
 										"winner": null,
 										"position": 11,
 										"featured": false
@@ -12433,7 +12680,7 @@
 										"id": 547,
 										"name": "Girona",
 										"country": "🇪🇸",
-										"score": null,
+										"score": 2,
 										"winner": null,
 										"position": 2,
 										"featured": true
@@ -12634,7 +12881,7 @@
 										"country": "🇪🇸",
 										"score": 1,
 										"winner": true,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -12669,7 +12916,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 16,
+										"position": 17,
 										"featured": false
 									}
 								}
@@ -12764,7 +13011,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 15,
+										"position": 16,
 										"featured": false
 									},
 									"away": {
@@ -12790,7 +13037,7 @@
 										"country": "🇪🇸",
 										"score": 3,
 										"winner": true,
-										"position": 17,
+										"position": 15,
 										"featured": false
 									},
 									"away": {
@@ -12902,7 +13149,7 @@
 										"country": "🇪🇸",
 										"score": 3,
 										"winner": true,
-										"position": 15,
+										"position": 16,
 										"featured": false
 									},
 									"away": {
@@ -12937,7 +13184,7 @@
 										"country": "🇪🇸",
 										"score": 0,
 										"winner": false,
-										"position": 16,
+										"position": 17,
 										"featured": false
 									}
 								}
@@ -13259,5 +13506,593 @@
 				}
 			}
 		]
+	},
+	{
+		"name": "Premier League",
+		"country": "England",
+		"flag": "🇬🇧",
+		"standings": [
+			{
+				"teamId": 42,
+				"teamName": "Arsenal",
+				"points": 83,
+				"stats": {
+					"goalsDiff": 60,
+					"played": 36,
+					"win": 26,
+					"draw": 5,
+					"lose": 5,
+					"goals": { "for": 88, "against": 28 }
+				}
+			},
+			{
+				"teamId": 50,
+				"teamName": "Manchester City",
+				"points": 82,
+				"stats": {
+					"goalsDiff": 54,
+					"played": 35,
+					"win": 25,
+					"draw": 7,
+					"lose": 3,
+					"goals": { "for": 87, "against": 33 }
+				}
+			},
+			{
+				"teamId": 40,
+				"teamName": "Liverpool",
+				"points": 78,
+				"stats": {
+					"goalsDiff": 43,
+					"played": 36,
+					"win": 23,
+					"draw": 9,
+					"lose": 4,
+					"goals": { "for": 81, "against": 38 }
+				}
+			},
+			{
+				"teamId": 66,
+				"teamName": "Aston Villa",
+				"points": 67,
+				"stats": {
+					"goalsDiff": 20,
+					"played": 36,
+					"win": 20,
+					"draw": 7,
+					"lose": 9,
+					"goals": { "for": 73, "against": 53 }
+				}
+			},
+			{
+				"teamId": 47,
+				"teamName": "Tottenham",
+				"points": 60,
+				"stats": {
+					"goalsDiff": 11,
+					"played": 35,
+					"win": 18,
+					"draw": 6,
+					"lose": 11,
+					"goals": { "for": 69, "against": 58 }
+				}
+			},
+			{
+				"teamId": 34,
+				"teamName": "Newcastle",
+				"points": 56,
+				"stats": {
+					"goalsDiff": 22,
+					"played": 35,
+					"win": 17,
+					"draw": 5,
+					"lose": 13,
+					"goals": { "for": 78, "against": 56 }
+				}
+			},
+			{
+				"teamId": 49,
+				"teamName": "Chelsea",
+				"points": 54,
+				"stats": {
+					"goalsDiff": 11,
+					"played": 35,
+					"win": 15,
+					"draw": 9,
+					"lose": 11,
+					"goals": { "for": 70, "against": 59 }
+				}
+			},
+			{
+				"teamId": 33,
+				"teamName": "Manchester United",
+				"points": 54,
+				"stats": {
+					"goalsDiff": -3,
+					"played": 35,
+					"win": 16,
+					"draw": 6,
+					"lose": 13,
+					"goals": { "for": 52, "against": 55 }
+				}
+			},
+			{
+				"teamId": 48,
+				"teamName": "West Ham",
+				"points": 49,
+				"stats": {
+					"goalsDiff": -14,
+					"played": 36,
+					"win": 13,
+					"draw": 10,
+					"lose": 13,
+					"goals": { "for": 56, "against": 70 }
+				}
+			},
+			{
+				"teamId": 35,
+				"teamName": "Bournemouth",
+				"points": 48,
+				"stats": {
+					"goalsDiff": -11,
+					"played": 36,
+					"win": 13,
+					"draw": 9,
+					"lose": 14,
+					"goals": { "for": 52, "against": 63 }
+				}
+			},
+			{
+				"teamId": 51,
+				"teamName": "Brighton",
+				"points": 47,
+				"stats": {
+					"goalsDiff": -4,
+					"played": 35,
+					"win": 12,
+					"draw": 11,
+					"lose": 12,
+					"goals": { "for": 53, "against": 57 }
+				}
+			},
+			{
+				"teamId": 39,
+				"teamName": "Wolves",
+				"points": 46,
+				"stats": {
+					"goalsDiff": -11,
+					"played": 36,
+					"win": 13,
+					"draw": 7,
+					"lose": 16,
+					"goals": { "for": 49, "against": 60 }
+				}
+			},
+			{
+				"teamId": 36,
+				"teamName": "Fulham",
+				"points": 44,
+				"stats": {
+					"goalsDiff": -4,
+					"played": 36,
+					"win": 12,
+					"draw": 8,
+					"lose": 16,
+					"goals": { "for": 51, "against": 55 }
+				}
+			},
+			{
+				"teamId": 52,
+				"teamName": "Crystal Palace",
+				"points": 43,
+				"stats": {
+					"goalsDiff": -8,
+					"played": 36,
+					"win": 11,
+					"draw": 10,
+					"lose": 15,
+					"goals": { "for": 49, "against": 57 }
+				}
+			},
+			{
+				"teamId": 45,
+				"teamName": "Everton",
+				"points": 37,
+				"stats": {
+					"goalsDiff": -11,
+					"played": 36,
+					"win": 12,
+					"draw": 9,
+					"lose": 15,
+					"goals": { "for": 38, "against": 49 }
+				}
+			},
+			{
+				"teamId": 55,
+				"teamName": "Brentford",
+				"points": 36,
+				"stats": {
+					"goalsDiff": -8,
+					"played": 36,
+					"win": 9,
+					"draw": 9,
+					"lose": 18,
+					"goals": { "for": 52, "against": 60 }
+				}
+			},
+			{
+				"teamId": 65,
+				"teamName": "Nottingham Forest",
+				"points": 29,
+				"stats": {
+					"goalsDiff": -18,
+					"played": 36,
+					"win": 8,
+					"draw": 9,
+					"lose": 19,
+					"goals": { "for": 45, "against": 63 }
+				}
+			},
+			{
+				"teamId": 1359,
+				"teamName": "Luton",
+				"points": 26,
+				"stats": {
+					"goalsDiff": -29,
+					"played": 36,
+					"win": 6,
+					"draw": 8,
+					"lose": 22,
+					"goals": { "for": 49, "against": 78 }
+				}
+			},
+			{
+				"teamId": 44,
+				"teamName": "Burnley",
+				"points": 24,
+				"stats": {
+					"goalsDiff": -35,
+					"played": 36,
+					"win": 5,
+					"draw": 9,
+					"lose": 22,
+					"goals": { "for": 39, "against": 74 }
+				}
+			},
+			{
+				"teamId": 62,
+				"teamName": "Sheffield Utd",
+				"points": 16,
+				"stats": {
+					"goalsDiff": -65,
+					"played": 36,
+					"win": 3,
+					"draw": 7,
+					"lose": 26,
+					"goals": { "for": 35, "against": 100 }
+				}
+			}
+		],
+		"matches": []
+	},
+	{
+		"name": "Premiership",
+		"country": "Scotland",
+		"flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+		"standings": [
+			{
+				"teamId": 247,
+				"teamName": "Celtic",
+				"points": 84,
+				"stats": {
+					"goalsDiff": 58,
+					"played": 35,
+					"win": 26,
+					"draw": 6,
+					"lose": 3,
+					"goals": { "for": 85, "against": 27 }
+				}
+			},
+			{
+				"teamId": 257,
+				"teamName": "Rangers",
+				"points": 81,
+				"stats": {
+					"goalsDiff": 53,
+					"played": 35,
+					"win": 26,
+					"draw": 3,
+					"lose": 6,
+					"goals": { "for": 78, "against": 25 }
+				}
+			},
+			{
+				"teamId": 254,
+				"teamName": "Heart OF Midlothian",
+				"points": 63,
+				"stats": {
+					"goalsDiff": 9,
+					"played": 35,
+					"win": 19,
+					"draw": 6,
+					"lose": 10,
+					"goals": { "for": 46, "against": 37 }
+				}
+			},
+			{
+				"teamId": 250,
+				"teamName": "Kilmarnock",
+				"points": 52,
+				"stats": {
+					"goalsDiff": 6,
+					"played": 35,
+					"win": 13,
+					"draw": 13,
+					"lose": 9,
+					"goals": { "for": 44, "against": 38 }
+				}
+			},
+			{
+				"teamId": 251,
+				"teamName": "ST Mirren",
+				"points": 46,
+				"stats": {
+					"goalsDiff": -4,
+					"played": 35,
+					"win": 13,
+					"draw": 7,
+					"lose": 15,
+					"goals": { "for": 42, "against": 46 }
+				}
+			},
+			{
+				"teamId": 253,
+				"teamName": "Dundee",
+				"points": 41,
+				"stats": {
+					"goalsDiff": -13,
+					"played": 35,
+					"win": 10,
+					"draw": 11,
+					"lose": 14,
+					"goals": { "for": 46, "against": 59 }
+				}
+			},
+			{
+				"teamId": 249,
+				"teamName": "Hibernian",
+				"points": 42,
+				"stats": {
+					"goalsDiff": -6,
+					"played": 35,
+					"win": 10,
+					"draw": 12,
+					"lose": 13,
+					"goals": { "for": 48, "against": 54 }
+				}
+			},
+			{
+				"teamId": 252,
+				"teamName": "Aberdeen",
+				"points": 41,
+				"stats": {
+					"goalsDiff": -12,
+					"played": 35,
+					"win": 10,
+					"draw": 11,
+					"lose": 14,
+					"goals": { "for": 37, "against": 49 }
+				}
+			},
+			{
+				"teamId": 256,
+				"teamName": "Motherwell",
+				"points": 40,
+				"stats": {
+					"goalsDiff": -3,
+					"played": 35,
+					"win": 9,
+					"draw": 13,
+					"lose": 13,
+					"goals": { "for": 50, "against": 53 }
+				}
+			},
+			{
+				"teamId": 902,
+				"teamName": "Ross County",
+				"points": 33,
+				"stats": {
+					"goalsDiff": -25,
+					"played": 35,
+					"win": 8,
+					"draw": 9,
+					"lose": 18,
+					"goals": { "for": 34, "against": 59 }
+				}
+			},
+			{
+				"teamId": 258,
+				"teamName": "ST Johnstone",
+				"points": 31,
+				"stats": {
+					"goalsDiff": -25,
+					"played": 35,
+					"win": 7,
+					"draw": 10,
+					"lose": 18,
+					"goals": { "for": 25, "against": 50 }
+				}
+			},
+			{
+				"teamId": 255,
+				"teamName": "Livingston",
+				"points": 21,
+				"stats": {
+					"goalsDiff": -38,
+					"played": 35,
+					"win": 4,
+					"draw": 9,
+					"lose": 22,
+					"goals": { "for": 25, "against": 63 }
+				}
+			},
+			{
+				"teamId": 247,
+				"teamName": "Celtic",
+				"points": 78,
+				"stats": {
+					"goalsDiff": 54,
+					"played": 33,
+					"win": 24,
+					"draw": 6,
+					"lose": 3,
+					"goals": { "for": 80, "against": 26 }
+				}
+			},
+			{
+				"teamId": 257,
+				"teamName": "Rangers",
+				"points": 75,
+				"stats": {
+					"goalsDiff": 49,
+					"played": 33,
+					"win": 24,
+					"draw": 3,
+					"lose": 6,
+					"goals": { "for": 72, "against": 23 }
+				}
+			},
+			{
+				"teamId": 254,
+				"teamName": "Heart OF Midlothian",
+				"points": 62,
+				"stats": {
+					"goalsDiff": 12,
+					"played": 33,
+					"win": 19,
+					"draw": 5,
+					"lose": 9,
+					"goals": { "for": 46, "against": 34 }
+				}
+			},
+			{
+				"teamId": 250,
+				"teamName": "Kilmarnock",
+				"points": 51,
+				"stats": {
+					"goalsDiff": 9,
+					"played": 33,
+					"win": 13,
+					"draw": 12,
+					"lose": 8,
+					"goals": { "for": 43, "against": 34 }
+				}
+			},
+			{
+				"teamId": 251,
+				"teamName": "ST Mirren",
+				"points": 43,
+				"stats": {
+					"goalsDiff": -5,
+					"played": 33,
+					"win": 12,
+					"draw": 7,
+					"lose": 14,
+					"goals": { "for": 38, "against": 43 }
+				}
+			},
+			{
+				"teamId": 253,
+				"teamName": "Dundee",
+				"points": 41,
+				"stats": {
+					"goalsDiff": -10,
+					"played": 33,
+					"win": 10,
+					"draw": 11,
+					"lose": 12,
+					"goals": { "for": 44, "against": 54 }
+				}
+			},
+			{
+				"teamId": 249,
+				"teamName": "Hibernian",
+				"points": 39,
+				"stats": {
+					"goalsDiff": -7,
+					"played": 33,
+					"win": 9,
+					"draw": 12,
+					"lose": 12,
+					"goals": { "for": 44, "against": 51 }
+				}
+			},
+			{
+				"teamId": 256,
+				"teamName": "Motherwell",
+				"points": 37,
+				"stats": {
+					"goalsDiff": -5,
+					"played": 33,
+					"win": 8,
+					"draw": 13,
+					"lose": 12,
+					"goals": { "for": 46, "against": 51 }
+				}
+			},
+			{
+				"teamId": 252,
+				"teamName": "Aberdeen",
+				"points": 35,
+				"stats": {
+					"goalsDiff": -14,
+					"played": 33,
+					"win": 8,
+					"draw": 11,
+					"lose": 14,
+					"goals": { "for": 35, "against": 49 }
+				}
+			},
+			{
+				"teamId": 258,
+				"teamName": "ST Johnstone",
+				"points": 31,
+				"stats": {
+					"goalsDiff": -22,
+					"played": 33,
+					"win": 7,
+					"draw": 10,
+					"lose": 16,
+					"goals": { "for": 24, "against": 46 }
+				}
+			},
+			{
+				"teamId": 902,
+				"teamName": "Ross County",
+				"points": 30,
+				"stats": {
+					"goalsDiff": -24,
+					"played": 33,
+					"win": 7,
+					"draw": 9,
+					"lose": 17,
+					"goals": { "for": 32, "against": 56 }
+				}
+			},
+			{
+				"teamId": 255,
+				"teamName": "Livingston",
+				"points": 18,
+				"stats": {
+					"goalsDiff": -37,
+					"played": 33,
+					"win": 3,
+					"draw": 9,
+					"lose": 21,
+					"goals": { "for": 22, "against": 59 }
+				}
+			}
+		],
+		"matches": []
 	}
 ]
