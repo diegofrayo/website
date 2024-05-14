@@ -84,78 +84,171 @@ export default withAuthRulesPage(BetsPage, { requireAuth: true });
 function RenderByStrategy({ data }: T_BetsPageProps) {
 	// --- UTILS ---
 	function groupByStrategy() {
-		const output = {} as { [key in string]: T_FixtureMatch[] };
+		const output = {} as DR.Object<{ stats: DR.Object<number>; matches: T_FixtureMatch[] }>;
 
 		Object.values(data).forEach((fixtureLeagues) => {
 			fixtureLeagues.forEach((league) => {
 				league.matches.forEach((match) => {
 					match.predictions.forEach((prediction) => {
 						if (!output[prediction.name]) {
-							output[prediction.name] = [];
+							output[prediction.name] = { stats: {}, matches: [] };
 						}
 
-						output[prediction.name].push(match);
+						output[prediction.name].matches.push(match);
 					});
 				});
 			});
 		});
 
-		Object.entries(output).forEach(([strategyName, matches]) => {
-			output[strategyName] = matches.sort((a: T_FixtureMatch, b: T_FixtureMatch) => {
-				const predictionTeamA = a.predictions.find((prediction) => {
-					return prediction.name === strategyName;
-				}) as T_FixtureMatch["predictions"][number];
-				const predictionTeamB = b.predictions.find((prediction) => {
-					return prediction.name === strategyName;
-				}) as T_FixtureMatch["predictions"][number];
+		Object.entries(output).forEach(([strategyName, strategy]) => {
+			output[strategyName].stats = output[strategyName].matches.reduce(
+				(result, match) => {
+					const newResult = {
+						...result,
+					};
 
-				const aDone = a.done || checkMatchStarted(a.fullDate);
-				const bDone = b.done || checkMatchStarted(b.fullDate);
+					const prediction = match.predictions.find((item) => item.name === strategyName);
 
-				if (aDone && !bDone) {
-					return 1;
-				}
+					if (prediction) {
+						if (prediction.recommendable) {
+							newResult.recomendables += 1;
+						}
 
-				if (!aDone && bDone) {
-					return -1;
-				}
+						if (match.played) {
+							const isPlayedMatchPrediction = checkIsPlayedMatchPrediction(match, prediction);
+							newResult.total_de_partidos_finalizados += 1;
 
-				if (predictionTeamA.recommendable && !predictionTeamB.recommendable) {
-					return -1;
-				}
+							if (prediction.recommendable) {
+								newResult.recomendables_finalizadas += 1;
 
-				if (!predictionTeamA.recommendable && predictionTeamB.recommendable) {
-					return 1;
-				}
+								if (isPlayedMatchPrediction) {
+									if (prediction.right) {
+										newResult.acertadas += 1;
+									}
 
-				if (predictionTeamA.warnings.length === 0 && predictionTeamB.warnings.length > 0) {
-					return -1;
-				}
+									if (prediction.fail) {
+										newResult.falladas += 1;
+									}
+								}
+							}
 
-				if (predictionTeamA.warnings.length > 0 && predictionTeamB.warnings.length === 0) {
-					return 1;
-				}
+							if (isPlayedMatchPrediction) {
+								if (prediction.lostRight) {
+									newResult.aciertos_perdidos += 1;
+								}
+								if (prediction.skippedFail) {
+									newResult.fallos_evitados += 1;
+								}
+							}
+						}
+					}
 
-				return predictionTeamA.acceptancePercentage > predictionTeamB.acceptancePercentage
-					? -1
-					: predictionTeamA.acceptancePercentage < predictionTeamB.acceptancePercentage
-					? 1
-					: 0;
-			});
+					return newResult;
+				},
+				{
+					total_de_partidos: output[strategyName].matches.length,
+					total_de_partidos_finalizados: 0,
+					recomendables: 0,
+					recomendables_finalizadas: 0,
+					acertadas: 0,
+					falladas: 0,
+					aciertos_perdidos: 0,
+					fallos_evitados: 0,
+				},
+			);
+
+			output[strategyName].matches = strategy.matches.sort(
+				(matchA: T_FixtureMatch, matchB: T_FixtureMatch) => {
+					const predictionTeamA = matchA.predictions.find((prediction) => {
+						return prediction.name === strategyName;
+					}) as T_FixtureMatch["predictions"][number];
+					const predictionTeamB = matchB.predictions.find((prediction) => {
+						return prediction.name === strategyName;
+					}) as T_FixtureMatch["predictions"][number];
+					const isPlayedMatchPredictionA = checkIsPlayedMatchPrediction(matchA, predictionTeamA);
+					const isPlayedMatchPredictionB = checkIsPlayedMatchPrediction(matchB, predictionTeamB);
+
+					if (matchA.played && !matchB.played) {
+						return 1;
+					}
+
+					if (!matchA.played && matchB.played) {
+						return -1;
+					}
+
+					if (predictionTeamA.recommendable && !predictionTeamB.recommendable) {
+						return -1;
+					}
+
+					if (!predictionTeamA.recommendable && predictionTeamB.recommendable) {
+						return 1;
+					}
+
+					if (predictionTeamA.warnings.length === 0 && predictionTeamB.warnings.length > 0) {
+						return -1;
+					}
+
+					if (predictionTeamA.warnings.length > 0 && predictionTeamB.warnings.length === 0) {
+						return 1;
+					}
+
+					if (isPlayedMatchPredictionA && isPlayedMatchPredictionB) {
+						if (predictionTeamA.skippedFail && !predictionTeamB.skippedFail) {
+							return -1;
+						}
+
+						if (!predictionTeamA.skippedFail && predictionTeamB.skippedFail) {
+							return 1;
+						}
+
+						if (predictionTeamA.lostRight && !predictionTeamB.lostRight) {
+							return -1;
+						}
+
+						if (!predictionTeamA.lostRight && predictionTeamB.lostRight) {
+							return 1;
+						}
+					}
+
+					return predictionTeamA.acceptancePercentage > predictionTeamB.acceptancePercentage
+						? -1
+						: predictionTeamA.acceptancePercentage < predictionTeamB.acceptancePercentage
+						? 1
+						: 0;
+				},
+			);
 		});
 
 		return output;
 	}
 
-	return Object.entries(groupByStrategy()).map(([strategyName, matches]) => {
+	return Object.entries(groupByStrategy()).map(([strategyName, strategy]) => {
 		return (
 			<Collapsible
 				key={strategyName}
 				title={strategyName}
 				className="tw-mb-4 last:tw-mb-0"
-				contentClassName="tw-py-5 tw-pr-5 dr-bg-color-surface-200"
+				contentClassName="tw-py-5 tw-px-5 tw-ml-5 tw dr-bg-color-surface-200 tw-mt-2"
 			>
-				{matches.map((match) => {
+				<Collapsible
+					title="Estadísticas"
+					className="tw-mb-2"
+					contentClassName="tw-pt-1"
+				>
+					<Pre className="tw-w-full tw-max-w-full tw-overflow-x-auto tw-overflow-y-hidden tw-rounded-md tw-px-4 tw-py-3 tw-text-sm dr-bg-color-surface-300">
+						{Object.entries(strategy.stats).map(([key, value]) => {
+							return (
+								<Text key={generateSlug(`${strategyName}-stats-${key}`)}>
+									<InlineText is="strong">- {jsConvertCase.toSentenceCase(key)}</InlineText>:{" "}
+									<InlineText>{value}</InlineText>
+								</Text>
+							);
+						})}
+					</Pre>
+				</Collapsible>
+				<Space size={5} />
+
+				{strategy.matches.map((match) => {
 					return (
 						<FixtureMatch
 							key={match.id}
@@ -337,13 +430,17 @@ function FixtureMatch({
 	}
 
 	function composeMatchTitle(matchParam: T_PlayedMatch | T_FixtureMatch) {
-		const title = `${matchParam.teams.home.featured ? "🔰" : ""}${matchParam.teams.home.name} ${
-			matchParam.teams.home.score === null ? "" : `(${matchParam.teams.home.score})`
-		} - ${matchParam.teams.away.featured ? "🔰" : ""}${matchParam.teams.away.name} ${
-			matchParam.teams.away.score === null ? "" : `(${matchParam.teams.away.score})`
-		}`;
+		if (matchParam.played) {
+			return `${matchParam.teams.home.featured ? "🔰" : ""}${matchParam.teams.home.name} ${
+				matchParam.teams.home.score === null ? "" : `(${matchParam.teams.home.score})`
+			} - ${matchParam.teams.away.featured ? "🔰" : ""}${matchParam.teams.away.name} ${
+				matchParam.teams.away.score === null ? "" : `(${matchParam.teams.away.score})`
+			}`;
+		}
 
-		return title;
+		return `${matchParam.teams.home.featured ? "🔰" : ""}${matchParam.teams.home.name} - ${
+			matchParam.teams.away.featured ? "🔰" : ""
+		}${matchParam.teams.away.name}`;
 	}
 
 	return (
@@ -368,6 +465,8 @@ function FixtureMatch({
 
 					<Block className="tw-flex tw-items-center tw-justify-center tw-gap-4">
 						{match.predictions.map((prediction) => {
+							const isPlayedMatchPrediction = checkIsPlayedMatchPrediction(match, prediction);
+
 							if (isStrategyVariant && prediction.name !== topKey) {
 								return null;
 							}
@@ -377,8 +476,8 @@ function FixtureMatch({
 									key={`${match.id}-${prediction.id}`}
 									className={cn(
 										"tw-relative tw-rounded-md tw-border tw-bg-black tw-pr-1 tw-shadow-sm dr-border-color-surface-400",
-										match.done
-											? prediction.right
+										isPlayedMatchPrediction
+											? prediction.right || prediction.skippedFail
 												? "tw-shadow-green-600"
 												: "tw-shadow-red-600"
 											: "dr-shadow-color-primary-600",
@@ -390,10 +489,14 @@ function FixtureMatch({
 									<Block className="tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-px-2 tw-text-xs">
 										<InlineText>{prediction.recommendable ? "🌟" : "👎"}</InlineText>
 
-										{match.done ? (
+										{isPlayedMatchPrediction ? (
 											<React.Fragment>
-												{prediction.right ? <InlineText>✅</InlineText> : null}
-												{prediction.fail ? <InlineText>❌</InlineText> : null}
+												{prediction.right || prediction.skippedFail ? (
+													<InlineText>✅</InlineText>
+												) : null}
+												{prediction.fail || prediction.lostRight ? (
+													<InlineText>❌</InlineText>
+												) : null}
 											</React.Fragment>
 										) : null}
 
@@ -442,7 +545,7 @@ function FixtureMatch({
 
 								<Text className="tw-font-bold">- Criterios:</Text>
 								<List variant={List.variant.SIMPLE}>
-									{prediction.criteria.home.map((criteria) => {
+									{prediction.criteria.map((criteria) => {
 										return (
 											<List.Item
 												key={generateSlug(`${match.id}-${criteria.description}`)}
@@ -666,6 +769,13 @@ function checkMatchStarted(fullDate: string) {
 	return currentDateFormatted >= fullDate;
 }
 
+function checkIsPlayedMatchPrediction(
+	match: T_FixtureMatch,
+	_: unknown,
+): _ is T_PlayedMatchPrediction {
+	return match.played;
+}
+
 // --- TYPES ---
 
 type T_FiltersValues = "Todos" | "Local" | "Visitante" | "Ganados" | "Perdidos" | "Empatados";
@@ -682,16 +792,6 @@ export type T_BetsPageProps = {
 			matches: T_FixtureMatch[];
 		}[];
 	};
-};
-
-type T_League = {
-	enabled: false;
-	id: number;
-	name: string;
-	type: "League" | "Cup";
-	country: string;
-	flag: string;
-	season: number;
 };
 
 type T_LeagueStandings = {
@@ -711,51 +811,94 @@ type T_LeagueStandings = {
 	};
 }[];
 
-type T_FixtureMatch = {
+type T_League = {
+	enabled: boolean;
+	id: number;
+	name: string;
+	type: string; // "League" | "Cup"
+	country: string;
+	flag: string;
+	season: number;
+};
+
+// type T_Team = T_PlayedMatchTeam | T_NextMatchTeam;
+
+type T_PlayedMatchTeam = {
+	id: number;
+	name: string;
+	country: string;
+	score: number;
+	winner: boolean | null;
+	position: number | null;
+	featured: boolean;
+};
+
+type T_NextMatchTeam = {
+	id: number;
+	name: string;
+	country: string;
+	position: number | null;
+	featured: boolean;
+};
+
+type T_FixtureMatch = T_FixturePlayedMatch | T_FixtureNextMatch;
+
+type T_FixturePlayedMatch = {
 	id: string;
 	fullDate: string;
 	date: string;
 	hour: string;
-	done: boolean;
-	predictions: {
-		id: string;
-		name: string;
-		acceptancePercentage: number;
-		recommendable: boolean;
-		right: boolean;
-		fail: boolean;
-		warnings: {
-			description: string;
-		}[];
-		criteria: {
-			home: { description: string; check: string; weight: number }[];
-			away: { description: string; check: string; weight: number }[];
-		};
-	}[];
+	played: true;
+	predictions: T_PlayedMatchPrediction[];
 	teams: {
-		home: {
-			id: number;
-			name: string;
-			country: string;
-			score: number | null;
-			winner: boolean | null;
-			position: number | null;
-			featured: boolean;
+		home: T_PlayedMatchTeam & {
 			stats: T_TeamStats;
 			matches: T_PlayedMatch[];
 		};
-		away: {
-			id: number;
-			name: string;
-			country: string;
-			score: number | null;
-			winner: boolean | null;
-			position: number | null;
-			featured: boolean;
+		away: T_PlayedMatchTeam & {
 			stats: T_TeamStats;
 			matches: T_PlayedMatch[];
 		};
 	};
+};
+
+type T_FixtureNextMatch = {
+	id: string;
+	fullDate: string;
+	date: string;
+	hour: string;
+	played: false;
+	predictions: T_NextMatchPrediction[];
+	teams: {
+		home: T_NextMatchTeam & {
+			stats: T_TeamStats;
+			matches: T_PlayedMatch[];
+		};
+		away: T_NextMatchTeam & {
+			stats: T_TeamStats;
+			matches: T_PlayedMatch[];
+		};
+	};
+};
+
+// type T_Prediction = T_NextMatchPrediction | T_PlayedMatchPrediction;
+
+type T_NextMatchPrediction = {
+	id: string;
+	name: string;
+	recommendable: boolean;
+	acceptancePercentage: number;
+	criteria: { description: string; check: string; weight: number }[];
+	warnings: {
+		description: string;
+	}[];
+};
+
+type T_PlayedMatchPrediction = T_NextMatchPrediction & {
+	right: boolean;
+	lostRight: boolean;
+	fail: boolean;
+	skippedFail: boolean;
 };
 
 type T_PlayedMatch = {
@@ -763,25 +906,10 @@ type T_PlayedMatch = {
 	fullDate: string;
 	date: string;
 	hour: string;
+	played: true;
 	teams: {
-		home: {
-			id: number;
-			name: string;
-			country: string;
-			score: number;
-			winner: boolean | null;
-			position: number | null;
-			featured: boolean;
-		};
-		away: {
-			id: number;
-			name: string;
-			country: string;
-			score: number;
-			winner: boolean | null;
-			position: number | null;
-			featured: boolean;
-		};
+		home: T_PlayedMatchTeam;
+		away: T_PlayedMatchTeam;
 	};
 };
 
