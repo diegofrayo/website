@@ -59,32 +59,32 @@ function enhanceTheme(
 										side === "t"
 											? "borderTopColor"
 											: side === "r"
-											? "borderRightColor"
-											: side === "b"
-											? "borderBottomColor"
-											: side === "l"
-											? "borderLeftColor"
-											: "borderColor",
+												? "borderRightColor"
+												: side === "b"
+													? "borderBottomColor"
+													: side === "l"
+														? "borderLeftColor"
+														: "borderColor",
 									value: colorConfig.value,
 								},
 							};
-					  }, {})
+						}, {})
 					: property === "shadow"
-					? {
-							[`${property}-${colorName}`]: {
-								property: "multiple",
-								value: {
-									"--tw-shadow-color": colorConfig.value.default,
-									"--tw-shadow": "var(--tw-shadow-colored)",
+						? {
+								[`${property}-${colorName}`]: {
+									property: "multiple",
+									value: {
+										"--tw-shadow-color": colorConfig.value.default,
+										"--tw-shadow": "var(--tw-shadow-colored)",
+									},
 								},
-							},
-					  }
-					: {
-							[`${property}-${colorName}`]: {
-								property: property === "bg" ? "backgroundColor" : "color",
-								value: colorConfig.value,
-							},
-					  }),
+							}
+						: {
+								[`${property}-${colorName}`]: {
+									property: property === "bg" ? "backgroundColor" : "color",
+									value: colorConfig.value,
+								},
+							}),
 			};
 		}, {});
 

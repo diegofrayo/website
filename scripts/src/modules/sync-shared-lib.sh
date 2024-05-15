@@ -16,10 +16,6 @@ cp ./src/lib/@diegofrayo/utils/files.ts "$backend_repo_dir/utils"
 cp ./src/lib/@diegofrayo/utils/misc.ts "$backend_repo_dir/utils"
 cp ./src/lib/@diegofrayo/utils/strings.ts "$backend_repo_dir/utils"
 
-# ---- ---- ----
-# exit;
-# ---- ---- ----
-
 # copy only required files to "scripts" repo
 scripts_repo_dir=../../scripts/src/@diegofrayo
 
@@ -35,3 +31,19 @@ cp ./src/lib/@diegofrayo/sort.ts "$scripts_repo_dir"
 
 mkdir -p "$scripts_repo_dir/types"
 cp ./src/lib/@diegofrayo/types/index.ts "$scripts_repo_dir/types"
+
+# copy only required files to "bets" repo
+bets_repo_dir=../../bets/src/@diegofrayo
+
+rm -r "$bets_repo_dir"
+mkdir -p "$bets_repo_dir/utils"
+cp ./src/lib/@diegofrayo/utils/arrays-and-objects.ts "$bets_repo_dir/utils"
+cp ./src/lib/@diegofrayo/utils/dates.ts "$bets_repo_dir/utils"
+cp ./src/lib/@diegofrayo/utils/files.ts "$bets_repo_dir/utils"
+cp ./src/lib/@diegofrayo/utils/misc.ts "$bets_repo_dir/utils"
+cp ./src/lib/@diegofrayo/utils/strings.ts "$bets_repo_dir/utils"
+cp ./src/lib/@diegofrayo/v.ts "$bets_repo_dir"
+cp ./src/lib/@diegofrayo/sort.ts "$bets_repo_dir"
+
+mkdir -p "$bets_repo_dir/types"
+cp ./src/lib/@diegofrayo/types/index.ts "$bets_repo_dir/types"

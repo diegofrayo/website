@@ -44,7 +44,7 @@ export async function loadData<G_Data>(
 							path.join(process.cwd(), `src/data/_local_/${config.page}/data.json`),
 							"utf-8",
 						),
-				  );
+					);
 
 		return data as G_Data;
 	}
@@ -54,7 +54,7 @@ export async function loadData<G_Data>(
 			? await DatabaseService.get(config.remotePath)
 			: JSON.parse(
 					fs.readFileSync(path.join(process.cwd(), `src/data/${config.localPath}`), "utf-8"),
-			  );
+				);
 
 	return data as G_Data;
 }

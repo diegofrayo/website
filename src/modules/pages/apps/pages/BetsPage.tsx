@@ -84,7 +84,10 @@ export default withAuthRulesPage(BetsPage, { requireAuth: true });
 function RenderByStrategy({ data }: T_BetsPageProps) {
 	// --- UTILS ---
 	function groupByStrategy() {
-		const output = {} as DR.Object<{ stats: DR.Object<number>; matches: T_FixtureMatch[] }>;
+		const output = {} as DR.Object<{
+			stats: DR.Object<number>;
+			matches: (T_FixtureMatch & { league: Pick<T_League, "country" | "name"> })[];
+		}>;
 
 		Object.values(data).forEach((fixtureLeagues) => {
 			fixtureLeagues.forEach((league) => {
@@ -94,7 +97,10 @@ function RenderByStrategy({ data }: T_BetsPageProps) {
 							output[prediction.name] = { stats: {}, matches: [] };
 						}
 
-						output[prediction.name].matches.push(match);
+						output[prediction.name].matches.push({
+							...match,
+							league: { country: league.country, name: league.name },
+						});
 					});
 				});
 			});
@@ -213,8 +219,8 @@ function RenderByStrategy({ data }: T_BetsPageProps) {
 					return predictionTeamA.acceptancePercentage > predictionTeamB.acceptancePercentage
 						? -1
 						: predictionTeamA.acceptancePercentage < predictionTeamB.acceptancePercentage
-						? 1
-						: 0;
+							? 1
+							: 0;
 				},
 			);
 		});
@@ -253,8 +259,9 @@ function RenderByStrategy({ data }: T_BetsPageProps) {
 						<FixtureMatch
 							key={match.id}
 							variant="strategy"
-							match={match}
 							topKey={strategyName}
+							match={match}
+							league={match.league}
 						/>
 					);
 				})}
@@ -279,7 +286,7 @@ function RenderByDate({ data }: T_BetsPageProps) {
 
 				return resultUpdated;
 			},
-			{} as { [key in string]: T_FixtureMatch[] },
+			{} as DR.Object<T_FixtureMatch[]>,
 		);
 	}
 
@@ -312,7 +319,10 @@ function RenderByDate({ data }: T_BetsPageProps) {
 							className="tw-mb-8 tw-overflow-auto tw-rounded-md dr-bg-color-surface-200"
 							contentClassName="tw-p-4"
 						>
-							<LeagueStandings data={league.standings} />
+							<LeagueStandings
+								topKey={fixtureDate}
+								data={league.standings}
+							/>
 							{league.standings.length > 0 ? (
 								<Space
 									variant={Space.variant.DASHED}
@@ -332,9 +342,9 @@ function RenderByDate({ data }: T_BetsPageProps) {
 													<FixtureMatch
 														key={match.id}
 														variant="date"
-														match={match}
-														leagueCountry={league.country}
 														topKey={date}
+														match={match}
+														league={league}
 													/>
 												);
 											})}
@@ -352,14 +362,14 @@ function RenderByDate({ data }: T_BetsPageProps) {
 
 function FixtureMatch({
 	variant,
-	match,
-	leagueCountry,
 	topKey,
+	match,
+	league,
 }: {
 	variant: "date" | "strategy";
-	match: T_FixtureMatch;
-	leagueCountry?: T_League["country"];
 	topKey: string;
+	match: T_FixtureMatch;
+	league: Pick<T_League, "country" | "name">;
 }) {
 	// --- VARS ---
 	const isStrategyVariant = variant === "strategy";
@@ -375,7 +385,7 @@ function FixtureMatch({
 			setMatchesFilters((currentValue) => {
 				return {
 					...currentValue,
-					[teamName]: event.currentTarget.value as T_FiltersValues,
+					[teamName]: event.target.value as T_FiltersValues,
 				};
 			});
 		};
@@ -459,6 +469,7 @@ function FixtureMatch({
 							{composeMatchTitle(match)}
 						</Text>
 						<Text>{composeTeamsCountry(match.teams.home.country, match.teams.away.country)}</Text>
+						{isStrategyVariant ? <Text>{league.name}</Text> : null}
 					</Block>
 					<Text>{isStrategyVariant ? `${match.date} | ${match.hour}` : `${match.hour}`}</Text>
 					<Space size={1} />
@@ -606,7 +617,7 @@ function FixtureMatch({
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={`https://www.google.com/search?q=${encodeURIComponent(
-										`${team.name} equipo ${leagueCountry || ""} 365scores`,
+										`${team.name} equipo ${league.country || ""} 365scores`,
 									)}`}
 									className="tw-absolute tw-right-2"
 									isExternalLink
@@ -692,8 +703,8 @@ function FixtureMatch({
 															{currentTeam.winner === true
 																? "✅"
 																: currentTeam.winner === false
-																? "❌"
-																: "🔳"}{" "}
+																	? "❌"
+																	: "🔳"}{" "}
 														</InlineText>
 														<InlineText>{composeMatchTitle(playedMatch)}</InlineText>
 													</Text>
@@ -729,19 +740,53 @@ function FixtureMatch({
 	);
 }
 
-function LeagueStandings({ data }: { data: T_LeagueStandings }) {
+function LeagueStandings({ topKey, data }: { topKey: string; data: T_LeagueStandings }) {
 	return (
 		<Collapsible
 			title="Posiciones"
-			contentClassName="tw-pt-1"
+			contentClassName="tw-pt-1 tw-overflow-auto"
 		>
-			<Pre className="tw-w-full tw-max-w-full tw-overflow-auto tw-rounded-md tw-px-4 tw-py-3 dr-bg-color-surface-100">
-				{data
-					.map((team, standingIndex) => {
-						return `${standingIndex + 1}. ${team.teamName} | ${team.points}`;
-					})
-					.join("\n")}
-			</Pre>
+			<table className="tw-min-w-[500px] tw-table-fixed">
+				<thead>
+					<tr className="">
+						<th className="tw-p-1">#</th>
+						<th className="tw-p-1 tw-text-left">Equipo</th>
+						<th className="tw-w-20 tw-p-1">Puntos</th>
+						<th className="tw-w-16 tw-p-1">PJ</th>
+						<th className="tw-w-16 tw-p-1">GAF</th>
+						<th className="tw-w-16 tw-p-1">GEC</th>
+						<th className="tw-w-16 tw-p-1">GD</th>
+					</tr>
+				</thead>
+				<tbody>
+					{data.map((teams, teamsIndex) => {
+						return (
+							<React.Fragment key={generateSlug(`${topKey}-league-standing-${teamsIndex}`)}>
+								{teams.map((team, standingIndex) => {
+									return (
+										<React.Fragment
+											key={generateSlug(
+												`${topKey}-league-standing-${team.teamId}-${standingIndex}`,
+											)}
+										>
+											<tr>
+												<td className="tw-p-1 tw-text-center">{standingIndex + 1}</td>
+												<td className="tw-p-1 tw-text-left">{team.teamName}</td>
+												<td className="tw-p-1 tw-text-center">{team.points}</td>
+												<td className="tw-p-1 tw-text-center">{team.stats.played}</td>
+												<td className="tw-p-1 tw-text-center">{team.stats.goals.for}</td>
+												<td className="tw-p-1 tw-text-center">{team.stats.goals.against}</td>
+												<td className="tw-p-1 tw-text-center">{team.stats.goalsDiff}</td>
+											</tr>
+										</React.Fragment>
+									);
+								})}
+								<tr className="tw-h-4 last:tw-hidden" />
+							</React.Fragment>
+						);
+					})}
+				</tbody>
+			</table>
 		</Collapsible>
 	);
 }
@@ -794,7 +839,7 @@ export type T_BetsPageProps = {
 	};
 };
 
-type T_LeagueStandings = {
+export type T_LeagueStandings = {
 	teamId: number;
 	teamName: string;
 	points: number;
@@ -809,7 +854,7 @@ type T_LeagueStandings = {
 			against: number;
 		};
 	};
-}[];
+}[][];
 
 type T_League = {
 	enabled: boolean;
@@ -916,7 +961,9 @@ type T_PlayedMatch = {
 type T_TeamStats = {
 	total_de_partidos: number;
 	total_de_goles: number;
+	total_de_goles_recibidos: number;
 	promedio_de_goles: number;
+	promedio_de_goles_recibidos: number;
 	"---|---": number;
 	partidos_de_local: number;
 	goles_de_local: number;

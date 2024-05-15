@@ -69,7 +69,7 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 							removeAccents(song.title).toLowerCase().includes(inputValue) ||
 							removeAccents(song.artist).toLowerCase().includes(inputValue)
 						);
-				  })
+					})
 				: songs.slice(1),
 		};
 	}

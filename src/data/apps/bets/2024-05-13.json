@@ -4,266 +4,268 @@
 		"country": "Spain",
 		"flag": "🇪🇸",
 		"standings": [
-			{
-				"teamId": 541,
-				"teamName": "Real Madrid",
-				"points": 90,
-				"stats": {
-					"goalsDiff": 56,
-					"played": 35,
-					"win": 28,
-					"draw": 6,
-					"lose": 1,
-					"goals": { "for": 78, "against": 22 }
+			[
+				{
+					"teamId": 541,
+					"teamName": "Real Madrid",
+					"points": 93,
+					"stats": {
+						"goalsDiff": 61,
+						"played": 36,
+						"win": 29,
+						"draw": 6,
+						"lose": 1,
+						"goals": { "for": 83, "against": 22 }
+					}
+				},
+				{
+					"teamId": 529,
+					"teamName": "Barcelona",
+					"points": 76,
+					"stats": {
+						"goalsDiff": 29,
+						"played": 35,
+						"win": 23,
+						"draw": 7,
+						"lose": 5,
+						"goals": { "for": 72, "against": 43 }
+					}
+				},
+				{
+					"teamId": 547,
+					"teamName": "Girona",
+					"points": 75,
+					"stats": {
+						"goalsDiff": 30,
+						"played": 36,
+						"win": 23,
+						"draw": 6,
+						"lose": 7,
+						"goals": { "for": 75, "against": 45 }
+					}
+				},
+				{
+					"teamId": 530,
+					"teamName": "Atletico Madrid",
+					"points": 70,
+					"stats": {
+						"goalsDiff": 25,
+						"played": 35,
+						"win": 22,
+						"draw": 4,
+						"lose": 9,
+						"goals": { "for": 64, "against": 39 }
+					}
+				},
+				{
+					"teamId": 531,
+					"teamName": "Athletic Club",
+					"points": 62,
+					"stats": {
+						"goalsDiff": 22,
+						"played": 35,
+						"win": 17,
+						"draw": 11,
+						"lose": 7,
+						"goals": { "for": 57, "against": 35 }
+					}
+				},
+				{
+					"teamId": 543,
+					"teamName": "Real Betis",
+					"points": 55,
+					"stats": {
+						"goalsDiff": 5,
+						"played": 35,
+						"win": 14,
+						"draw": 13,
+						"lose": 8,
+						"goals": { "for": 46, "against": 41 }
+					}
+				},
+				{
+					"teamId": 548,
+					"teamName": "Real Sociedad",
+					"points": 54,
+					"stats": {
+						"goalsDiff": 11,
+						"played": 35,
+						"win": 14,
+						"draw": 12,
+						"lose": 9,
+						"goals": { "for": 48, "against": 37 }
+					}
+				},
+				{
+					"teamId": 533,
+					"teamName": "Villarreal",
+					"points": 51,
+					"stats": {
+						"goalsDiff": 0,
+						"played": 36,
+						"win": 14,
+						"draw": 9,
+						"lose": 13,
+						"goals": { "for": 60, "against": 60 }
+					}
+				},
+				{
+					"teamId": 532,
+					"teamName": "Valencia",
+					"points": 48,
+					"stats": {
+						"goalsDiff": -2,
+						"played": 35,
+						"win": 13,
+						"draw": 9,
+						"lose": 13,
+						"goals": { "for": 37, "against": 39 }
+					}
+				},
+				{
+					"teamId": 546,
+					"teamName": "Getafe",
+					"points": 43,
+					"stats": {
+						"goalsDiff": -7,
+						"played": 35,
+						"win": 10,
+						"draw": 13,
+						"lose": 12,
+						"goals": { "for": 41, "against": 48 }
+					}
+				},
+				{
+					"teamId": 542,
+					"teamName": "Alaves",
+					"points": 42,
+					"stats": {
+						"goalsDiff": -11,
+						"played": 36,
+						"win": 11,
+						"draw": 9,
+						"lose": 16,
+						"goals": { "for": 34, "against": 45 }
+					}
+				},
+				{
+					"teamId": 536,
+					"teamName": "Sevilla",
+					"points": 41,
+					"stats": {
+						"goalsDiff": -2,
+						"played": 35,
+						"win": 10,
+						"draw": 11,
+						"lose": 14,
+						"goals": { "for": 47, "against": 49 }
+					}
+				},
+				{
+					"teamId": 727,
+					"teamName": "Osasuna",
+					"points": 41,
+					"stats": {
+						"goalsDiff": -14,
+						"played": 36,
+						"win": 11,
+						"draw": 8,
+						"lose": 17,
+						"goals": { "for": 40, "against": 54 }
+					}
+				},
+				{
+					"teamId": 534,
+					"teamName": "Las Palmas",
+					"points": 37,
+					"stats": {
+						"goalsDiff": -14,
+						"played": 35,
+						"win": 10,
+						"draw": 7,
+						"lose": 18,
+						"goals": { "for": 30, "against": 44 }
+					}
+				},
+				{
+					"teamId": 798,
+					"teamName": "Mallorca",
+					"points": 36,
+					"stats": {
+						"goalsDiff": -12,
+						"played": 36,
+						"win": 7,
+						"draw": 15,
+						"lose": 14,
+						"goals": { "for": 29, "against": 41 }
+					}
+				},
+				{
+					"teamId": 728,
+					"teamName": "Rayo Vallecano",
+					"points": 35,
+					"stats": {
+						"goalsDiff": -16,
+						"played": 35,
+						"win": 7,
+						"draw": 14,
+						"lose": 14,
+						"goals": { "for": 27, "against": 43 }
+					}
+				},
+				{
+					"teamId": 538,
+					"teamName": "Celta Vigo",
+					"points": 34,
+					"stats": {
+						"goalsDiff": -13,
+						"played": 35,
+						"win": 8,
+						"draw": 10,
+						"lose": 17,
+						"goals": { "for": 40, "against": 53 }
+					}
+				},
+				{
+					"teamId": 724,
+					"teamName": "Cadiz",
+					"points": 29,
+					"stats": {
+						"goalsDiff": -25,
+						"played": 35,
+						"win": 5,
+						"draw": 14,
+						"lose": 16,
+						"goals": { "for": 24, "against": 49 }
+					}
+				},
+				{
+					"teamId": 715,
+					"teamName": "Granada CF",
+					"points": 21,
+					"stats": {
+						"goalsDiff": -32,
+						"played": 35,
+						"win": 4,
+						"draw": 9,
+						"lose": 22,
+						"goals": { "for": 36, "against": 68 }
+					}
+				},
+				{
+					"teamId": 723,
+					"teamName": "Almeria",
+					"points": 17,
+					"stats": {
+						"goalsDiff": -35,
+						"played": 35,
+						"win": 2,
+						"draw": 11,
+						"lose": 22,
+						"goals": { "for": 35, "against": 70 }
+					}
 				}
-			},
-			{
-				"teamId": 529,
-				"teamName": "Barcelona",
-				"points": 76,
-				"stats": {
-					"goalsDiff": 29,
-					"played": 35,
-					"win": 23,
-					"draw": 7,
-					"lose": 5,
-					"goals": { "for": 72, "against": 43 }
-				}
-			},
-			{
-				"teamId": 547,
-				"teamName": "Girona",
-				"points": 75,
-				"stats": {
-					"goalsDiff": 31,
-					"played": 35,
-					"win": 23,
-					"draw": 6,
-					"lose": 6,
-					"goals": { "for": 75, "against": 44 }
-				}
-			},
-			{
-				"teamId": 530,
-				"teamName": "Atletico Madrid",
-				"points": 70,
-				"stats": {
-					"goalsDiff": 25,
-					"played": 35,
-					"win": 22,
-					"draw": 4,
-					"lose": 9,
-					"goals": { "for": 64, "against": 39 }
-				}
-			},
-			{
-				"teamId": 531,
-				"teamName": "Athletic Club",
-				"points": 62,
-				"stats": {
-					"goalsDiff": 22,
-					"played": 35,
-					"win": 17,
-					"draw": 11,
-					"lose": 7,
-					"goals": { "for": 57, "against": 35 }
-				}
-			},
-			{
-				"teamId": 543,
-				"teamName": "Real Betis",
-				"points": 55,
-				"stats": {
-					"goalsDiff": 5,
-					"played": 35,
-					"win": 14,
-					"draw": 13,
-					"lose": 8,
-					"goals": { "for": 46, "against": 41 }
-				}
-			},
-			{
-				"teamId": 548,
-				"teamName": "Real Sociedad",
-				"points": 54,
-				"stats": {
-					"goalsDiff": 11,
-					"played": 35,
-					"win": 14,
-					"draw": 12,
-					"lose": 9,
-					"goals": { "for": 48, "against": 37 }
-				}
-			},
-			{
-				"teamId": 532,
-				"teamName": "Valencia",
-				"points": 48,
-				"stats": {
-					"goalsDiff": -2,
-					"played": 35,
-					"win": 13,
-					"draw": 9,
-					"lose": 13,
-					"goals": { "for": 37, "against": 39 }
-				}
-			},
-			{
-				"teamId": 533,
-				"teamName": "Villarreal",
-				"points": 48,
-				"stats": {
-					"goalsDiff": -1,
-					"played": 35,
-					"win": 13,
-					"draw": 9,
-					"lose": 13,
-					"goals": { "for": 59, "against": 60 }
-				}
-			},
-			{
-				"teamId": 546,
-				"teamName": "Getafe",
-				"points": 43,
-				"stats": {
-					"goalsDiff": -7,
-					"played": 35,
-					"win": 10,
-					"draw": 13,
-					"lose": 12,
-					"goals": { "for": 41, "against": 48 }
-				}
-			},
-			{
-				"teamId": 542,
-				"teamName": "Alaves",
-				"points": 42,
-				"stats": {
-					"goalsDiff": -6,
-					"played": 35,
-					"win": 11,
-					"draw": 9,
-					"lose": 15,
-					"goals": { "for": 34, "against": 40 }
-				}
-			},
-			{
-				"teamId": 536,
-				"teamName": "Sevilla",
-				"points": 41,
-				"stats": {
-					"goalsDiff": -2,
-					"played": 35,
-					"win": 10,
-					"draw": 11,
-					"lose": 14,
-					"goals": { "for": 47, "against": 49 }
-				}
-			},
-			{
-				"teamId": 727,
-				"teamName": "Osasuna",
-				"points": 40,
-				"stats": {
-					"goalsDiff": -14,
-					"played": 35,
-					"win": 11,
-					"draw": 7,
-					"lose": 17,
-					"goals": { "for": 39, "against": 53 }
-				}
-			},
-			{
-				"teamId": 534,
-				"teamName": "Las Palmas",
-				"points": 37,
-				"stats": {
-					"goalsDiff": -14,
-					"played": 35,
-					"win": 10,
-					"draw": 7,
-					"lose": 18,
-					"goals": { "for": 30, "against": 44 }
-				}
-			},
-			{
-				"teamId": 798,
-				"teamName": "Mallorca",
-				"points": 35,
-				"stats": {
-					"goalsDiff": -12,
-					"played": 35,
-					"win": 7,
-					"draw": 14,
-					"lose": 14,
-					"goals": { "for": 28, "against": 40 }
-				}
-			},
-			{
-				"teamId": 728,
-				"teamName": "Rayo Vallecano",
-				"points": 35,
-				"stats": {
-					"goalsDiff": -16,
-					"played": 35,
-					"win": 7,
-					"draw": 14,
-					"lose": 14,
-					"goals": { "for": 27, "against": 43 }
-				}
-			},
-			{
-				"teamId": 538,
-				"teamName": "Celta Vigo",
-				"points": 34,
-				"stats": {
-					"goalsDiff": -13,
-					"played": 35,
-					"win": 8,
-					"draw": 10,
-					"lose": 17,
-					"goals": { "for": 40, "against": 53 }
-				}
-			},
-			{
-				"teamId": 724,
-				"teamName": "Cadiz",
-				"points": 29,
-				"stats": {
-					"goalsDiff": -25,
-					"played": 35,
-					"win": 5,
-					"draw": 14,
-					"lose": 16,
-					"goals": { "for": 24, "against": 49 }
-				}
-			},
-			{
-				"teamId": 715,
-				"teamName": "Granada CF",
-				"points": 21,
-				"stats": {
-					"goalsDiff": -32,
-					"played": 35,
-					"win": 4,
-					"draw": 9,
-					"lose": 22,
-					"goals": { "for": 36, "against": 68 }
-				}
-			},
-			{
-				"teamId": 723,
-				"teamName": "Almeria",
-				"points": 17,
-				"stats": {
-					"goalsDiff": -35,
-					"played": 35,
-					"win": 2,
-					"draw": 11,
-					"lose": 22,
-					"goals": { "for": 35, "against": 70 }
-				}
-			}
+			]
 		],
 		"matches": [
 			{
@@ -275,45 +277,44 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
+						"name": "El equipo local marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 1,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "✅", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
-								"check": "✅",
-								"weight": 0.15
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
+							},
+							{
+								"description": "El visitante está en los últimos 3 puestos de la tabla",
+								"check": "❌",
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "✅",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "❌",
 								"weight": 0
 							}
 						],
-						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }]
+						"warnings": [
+							{
+								"description": "El visitante tiene buenos resultados como visitante (Puntos ganados > 50%)"
+							}
+						]
 					},
 					{
 						"id": "GEP",
@@ -322,50 +323,62 @@
 						"acceptancePercentage": 1,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": []
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
+						"name": "El equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "✅",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "✅", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "✅", "weight": 0.25 }
 						],
 						"warnings": []
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"name": "El equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
+								"check": "✅",
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
+								"check": "✅",
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.083
+							},
+							{
+								"description": "El local está en los últimos 3 puestos de la tabla",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
-						"warnings": [{ "description": "El equipo local es destacado" }]
+						"warnings": [{ "description": "El local es destacado" }]
 					}
 				],
 				"teams": {
@@ -379,6 +392,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 31,
 							"promedio_de_goles": 2.1,
+							"total_de_goles_recibidos": 43,
+							"promedio_de_goles_recibidos": 1.2,
 							"---|---": 0,
 							"goles_de_local": 17,
 							"promedio_de_goles_de_local": 2.4,
@@ -400,29 +415,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 75,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 8,
-							"ultimos_promedio_de_goles": 2.7,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 9,
+							"ultimos_promedio_de_goles": 2.3,
+							"ultimos_total_de_goles_recibidos": 43,
+							"ultimos_promedio_de_goles_recibidos": 1.2,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 6,
-							"ultimos_promedio_de_goles_de_local": 2,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 2,
+							"ultimos_goles_de_local": 9,
+							"ultimos_promedio_de_goles_de_local": 2.3,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 3,
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 75,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 5,
-							"ultimos_promedio_de_goles_de_visitante": 1.7,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 1,
+							"ultimos_goles_de_visitante": 8,
+							"ultimos_promedio_de_goles_de_visitante": 2,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_partidos_con_goles_de_visitante": 4,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 50
 						},
 						"matches": [
 							{
@@ -472,7 +489,7 @@
 										"id": 532,
 										"name": "Valencia",
 										"country": "🇪🇸",
-										"position": 8,
+										"position": 9,
 										"featured": true,
 										"score": 2,
 										"winner": false
@@ -842,6 +859,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 18,
 							"promedio_de_goles": 1.2,
+							"total_de_goles_recibidos": 37,
+							"promedio_de_goles_recibidos": 1.1,
 							"---|---": 0,
 							"goles_de_local": 9,
 							"promedio_de_goles_de_local": 1.1,
@@ -863,29 +882,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 3,
-							"ultimos_promedio_de_goles": 1,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 5,
+							"ultimos_promedio_de_goles": 1.3,
+							"ultimos_total_de_goles_recibidos": 37,
+							"ultimos_promedio_de_goles_recibidos": 1.1,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 4,
-							"ultimos_promedio_de_goles_de_local": 1.3,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 1,
+							"ultimos_goles_de_local": 6,
+							"ultimos_promedio_de_goles_de_local": 1.5,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 2,
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_partidos_con_goles_de_local": 3,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 75,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 5,
-							"ultimos_promedio_de_goles_de_visitante": 1.7,
-							"ultimos_partidos_de_visitante": 3,
+							"ultimos_goles_de_visitante": 7,
+							"ultimos_promedio_de_goles_de_visitante": 1.8,
+							"ultimos_partidos_de_visitante": 4,
 							"ultimos_partidos_ganados_de_visitante": 2,
-							"ultimos_partidos_perdidos_de_visitante": 0,
+							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_partidos_con_goles_de_visitante": 4,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -1178,7 +1199,7 @@
 										"id": 533,
 										"name": "Villarreal",
 										"country": "🇪🇸",
-										"position": 9,
+										"position": 8,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -1304,266 +1325,268 @@
 		"country": "England",
 		"flag": "🇬🇧",
 		"standings": [
-			{
-				"teamId": 42,
-				"teamName": "Arsenal",
-				"points": 86,
-				"stats": {
-					"goalsDiff": 61,
-					"played": 37,
-					"win": 27,
-					"draw": 5,
-					"lose": 5,
-					"goals": { "for": 89, "against": 28 }
+			[
+				{
+					"teamId": 50,
+					"teamName": "Manchester City",
+					"points": 88,
+					"stats": {
+						"goalsDiff": 60,
+						"played": 37,
+						"win": 27,
+						"draw": 7,
+						"lose": 3,
+						"goals": { "for": 93, "against": 33 }
+					}
+				},
+				{
+					"teamId": 42,
+					"teamName": "Arsenal",
+					"points": 86,
+					"stats": {
+						"goalsDiff": 61,
+						"played": 37,
+						"win": 27,
+						"draw": 5,
+						"lose": 5,
+						"goals": { "for": 89, "against": 28 }
+					}
+				},
+				{
+					"teamId": 40,
+					"teamName": "Liverpool",
+					"points": 79,
+					"stats": {
+						"goalsDiff": 43,
+						"played": 37,
+						"win": 23,
+						"draw": 10,
+						"lose": 4,
+						"goals": { "for": 84, "against": 41 }
+					}
+				},
+				{
+					"teamId": 66,
+					"teamName": "Aston Villa",
+					"points": 68,
+					"stats": {
+						"goalsDiff": 20,
+						"played": 37,
+						"win": 20,
+						"draw": 8,
+						"lose": 9,
+						"goals": { "for": 76, "against": 56 }
+					}
+				},
+				{
+					"teamId": 47,
+					"teamName": "Tottenham",
+					"points": 63,
+					"stats": {
+						"goalsDiff": 10,
+						"played": 37,
+						"win": 19,
+						"draw": 6,
+						"lose": 12,
+						"goals": { "for": 71, "against": 61 }
+					}
+				},
+				{
+					"teamId": 34,
+					"teamName": "Newcastle",
+					"points": 57,
+					"stats": {
+						"goalsDiff": 22,
+						"played": 36,
+						"win": 17,
+						"draw": 6,
+						"lose": 13,
+						"goals": { "for": 79, "against": 57 }
+					}
+				},
+				{
+					"teamId": 49,
+					"teamName": "Chelsea",
+					"points": 57,
+					"stats": {
+						"goalsDiff": 12,
+						"played": 36,
+						"win": 16,
+						"draw": 9,
+						"lose": 11,
+						"goals": { "for": 73, "against": 61 }
+					}
+				},
+				{
+					"teamId": 33,
+					"teamName": "Manchester United",
+					"points": 54,
+					"stats": {
+						"goalsDiff": -4,
+						"played": 36,
+						"win": 16,
+						"draw": 6,
+						"lose": 14,
+						"goals": { "for": 52, "against": 56 }
+					}
+				},
+				{
+					"teamId": 48,
+					"teamName": "West Ham",
+					"points": 52,
+					"stats": {
+						"goalsDiff": -12,
+						"played": 37,
+						"win": 14,
+						"draw": 10,
+						"lose": 13,
+						"goals": { "for": 59, "against": 71 }
+					}
+				},
+				{
+					"teamId": 51,
+					"teamName": "Brighton",
+					"points": 48,
+					"stats": {
+						"goalsDiff": -4,
+						"played": 36,
+						"win": 12,
+						"draw": 12,
+						"lose": 12,
+						"goals": { "for": 54, "against": 58 }
+					}
+				},
+				{
+					"teamId": 35,
+					"teamName": "Bournemouth",
+					"points": 48,
+					"stats": {
+						"goalsDiff": -12,
+						"played": 37,
+						"win": 13,
+						"draw": 9,
+						"lose": 15,
+						"goals": { "for": 53, "against": 65 }
+					}
+				},
+				{
+					"teamId": 52,
+					"teamName": "Crystal Palace",
+					"points": 46,
+					"stats": {
+						"goalsDiff": -6,
+						"played": 37,
+						"win": 12,
+						"draw": 10,
+						"lose": 15,
+						"goals": { "for": 52, "against": 58 }
+					}
+				},
+				{
+					"teamId": 39,
+					"teamName": "Wolves",
+					"points": 46,
+					"stats": {
+						"goalsDiff": -13,
+						"played": 37,
+						"win": 13,
+						"draw": 7,
+						"lose": 17,
+						"goals": { "for": 50, "against": 63 }
+					}
+				},
+				{
+					"teamId": 36,
+					"teamName": "Fulham",
+					"points": 44,
+					"stats": {
+						"goalsDiff": -8,
+						"played": 37,
+						"win": 12,
+						"draw": 8,
+						"lose": 17,
+						"goals": { "for": 51, "against": 59 }
+					}
+				},
+				{
+					"teamId": 45,
+					"teamName": "Everton",
+					"points": 40,
+					"stats": {
+						"goalsDiff": -10,
+						"played": 37,
+						"win": 13,
+						"draw": 9,
+						"lose": 15,
+						"goals": { "for": 39, "against": 49 }
+					}
+				},
+				{
+					"teamId": 55,
+					"teamName": "Brentford",
+					"points": 39,
+					"stats": {
+						"goalsDiff": -7,
+						"played": 37,
+						"win": 10,
+						"draw": 9,
+						"lose": 18,
+						"goals": { "for": 54, "against": 61 }
+					}
+				},
+				{
+					"teamId": 65,
+					"teamName": "Nottingham Forest",
+					"points": 29,
+					"stats": {
+						"goalsDiff": -19,
+						"played": 37,
+						"win": 8,
+						"draw": 9,
+						"lose": 20,
+						"goals": { "for": 47, "against": 66 }
+					}
+				},
+				{
+					"teamId": 1359,
+					"teamName": "Luton",
+					"points": 26,
+					"stats": {
+						"goalsDiff": -31,
+						"played": 37,
+						"win": 6,
+						"draw": 8,
+						"lose": 23,
+						"goals": { "for": 50, "against": 81 }
+					}
+				},
+				{
+					"teamId": 44,
+					"teamName": "Burnley",
+					"points": 24,
+					"stats": {
+						"goalsDiff": -36,
+						"played": 37,
+						"win": 5,
+						"draw": 9,
+						"lose": 23,
+						"goals": { "for": 40, "against": 76 }
+					}
+				},
+				{
+					"teamId": 62,
+					"teamName": "Sheffield Utd",
+					"points": 16,
+					"stats": {
+						"goalsDiff": -66,
+						"played": 37,
+						"win": 3,
+						"draw": 7,
+						"lose": 27,
+						"goals": { "for": 35, "against": 101 }
+					}
 				}
-			},
-			{
-				"teamId": 50,
-				"teamName": "Manchester City",
-				"points": 85,
-				"stats": {
-					"goalsDiff": 58,
-					"played": 36,
-					"win": 26,
-					"draw": 7,
-					"lose": 3,
-					"goals": { "for": 91, "against": 33 }
-				}
-			},
-			{
-				"teamId": 40,
-				"teamName": "Liverpool",
-				"points": 78,
-				"stats": {
-					"goalsDiff": 43,
-					"played": 36,
-					"win": 23,
-					"draw": 9,
-					"lose": 4,
-					"goals": { "for": 81, "against": 38 }
-				}
-			},
-			{
-				"teamId": 66,
-				"teamName": "Aston Villa",
-				"points": 67,
-				"stats": {
-					"goalsDiff": 20,
-					"played": 36,
-					"win": 20,
-					"draw": 7,
-					"lose": 9,
-					"goals": { "for": 73, "against": 53 }
-				}
-			},
-			{
-				"teamId": 47,
-				"teamName": "Tottenham",
-				"points": 63,
-				"stats": {
-					"goalsDiff": 12,
-					"played": 36,
-					"win": 19,
-					"draw": 6,
-					"lose": 11,
-					"goals": { "for": 71, "against": 59 }
-				}
-			},
-			{
-				"teamId": 34,
-				"teamName": "Newcastle",
-				"points": 57,
-				"stats": {
-					"goalsDiff": 22,
-					"played": 36,
-					"win": 17,
-					"draw": 6,
-					"lose": 13,
-					"goals": { "for": 79, "against": 57 }
-				}
-			},
-			{
-				"teamId": 49,
-				"teamName": "Chelsea",
-				"points": 57,
-				"stats": {
-					"goalsDiff": 12,
-					"played": 36,
-					"win": 16,
-					"draw": 9,
-					"lose": 11,
-					"goals": { "for": 73, "against": 61 }
-				}
-			},
-			{
-				"teamId": 33,
-				"teamName": "Manchester United",
-				"points": 54,
-				"stats": {
-					"goalsDiff": -4,
-					"played": 36,
-					"win": 16,
-					"draw": 6,
-					"lose": 14,
-					"goals": { "for": 52, "against": 56 }
-				}
-			},
-			{
-				"teamId": 48,
-				"teamName": "West Ham",
-				"points": 52,
-				"stats": {
-					"goalsDiff": -12,
-					"played": 37,
-					"win": 14,
-					"draw": 10,
-					"lose": 13,
-					"goals": { "for": 59, "against": 71 }
-				}
-			},
-			{
-				"teamId": 51,
-				"teamName": "Brighton",
-				"points": 48,
-				"stats": {
-					"goalsDiff": -4,
-					"played": 36,
-					"win": 12,
-					"draw": 12,
-					"lose": 12,
-					"goals": { "for": 54, "against": 58 }
-				}
-			},
-			{
-				"teamId": 35,
-				"teamName": "Bournemouth",
-				"points": 48,
-				"stats": {
-					"goalsDiff": -12,
-					"played": 37,
-					"win": 13,
-					"draw": 9,
-					"lose": 15,
-					"goals": { "for": 53, "against": 65 }
-				}
-			},
-			{
-				"teamId": 52,
-				"teamName": "Crystal Palace",
-				"points": 46,
-				"stats": {
-					"goalsDiff": -6,
-					"played": 37,
-					"win": 12,
-					"draw": 10,
-					"lose": 15,
-					"goals": { "for": 52, "against": 58 }
-				}
-			},
-			{
-				"teamId": 39,
-				"teamName": "Wolves",
-				"points": 46,
-				"stats": {
-					"goalsDiff": -13,
-					"played": 37,
-					"win": 13,
-					"draw": 7,
-					"lose": 17,
-					"goals": { "for": 50, "against": 63 }
-				}
-			},
-			{
-				"teamId": 36,
-				"teamName": "Fulham",
-				"points": 44,
-				"stats": {
-					"goalsDiff": -8,
-					"played": 37,
-					"win": 12,
-					"draw": 8,
-					"lose": 17,
-					"goals": { "for": 51, "against": 59 }
-				}
-			},
-			{
-				"teamId": 45,
-				"teamName": "Everton",
-				"points": 40,
-				"stats": {
-					"goalsDiff": -10,
-					"played": 37,
-					"win": 13,
-					"draw": 9,
-					"lose": 15,
-					"goals": { "for": 39, "against": 49 }
-				}
-			},
-			{
-				"teamId": 55,
-				"teamName": "Brentford",
-				"points": 39,
-				"stats": {
-					"goalsDiff": -7,
-					"played": 37,
-					"win": 10,
-					"draw": 9,
-					"lose": 18,
-					"goals": { "for": 54, "against": 61 }
-				}
-			},
-			{
-				"teamId": 65,
-				"teamName": "Nottingham Forest",
-				"points": 29,
-				"stats": {
-					"goalsDiff": -19,
-					"played": 37,
-					"win": 8,
-					"draw": 9,
-					"lose": 20,
-					"goals": { "for": 47, "against": 66 }
-				}
-			},
-			{
-				"teamId": 1359,
-				"teamName": "Luton",
-				"points": 26,
-				"stats": {
-					"goalsDiff": -31,
-					"played": 37,
-					"win": 6,
-					"draw": 8,
-					"lose": 23,
-					"goals": { "for": 50, "against": 81 }
-				}
-			},
-			{
-				"teamId": 44,
-				"teamName": "Burnley",
-				"points": 24,
-				"stats": {
-					"goalsDiff": -36,
-					"played": 37,
-					"win": 5,
-					"draw": 9,
-					"lose": 23,
-					"goals": { "for": 40, "against": 76 }
-				}
-			},
-			{
-				"teamId": 62,
-				"teamName": "Sheffield Utd",
-				"points": 16,
-				"stats": {
-					"goalsDiff": -66,
-					"played": 37,
-					"win": 3,
-					"draw": 7,
-					"lose": 27,
-					"goals": { "for": 35, "against": 101 }
-				}
-			}
+			]
 		],
 		"matches": [
 			{
@@ -1575,47 +1598,44 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
+						"name": "El equipo local marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 0.9,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "✅", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
-								"check": "✅",
-								"weight": 0.15
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
+							},
+							{
+								"description": "El visitante está en los últimos 3 puestos de la tabla",
+								"check": "❌",
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "❌",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "❌",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "❌",
 								"weight": 0
 							}
 						],
 						"warnings": [
 							{ "description": "Ambos equipos son destacados" },
-							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+							{
+								"description": "El visitante tiene buenos resultados como visitante (Puntos ganados > 50%)"
+							}
 						]
 					},
 					{
@@ -1625,50 +1645,62 @@
 						"acceptancePercentage": 1,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": [{ "description": "Ambos equipos son destacados" }]
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"name": "El equipo local gana o empata",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "❌",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "✅", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "❌", "weight": 0.25 }
 						],
-						"warnings": [{ "description": "El equipo visitante es destacado" }]
+						"warnings": [{ "description": "El visitante es destacado" }]
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
+						"name": "El equipo visitante marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 1,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
 								"check": "✅",
-								"weight": 1
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
+								"check": "✅",
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
+							},
+							{
+								"description": "El local está en los últimos 3 puestos de la tabla",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
-						"warnings": [{ "description": "El equipo local es destacado" }]
+						"warnings": [{ "description": "El local es destacado" }]
 					}
 				],
 				"teams": {
@@ -1682,6 +1714,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 23,
 							"promedio_de_goles": 1.5,
+							"total_de_goles_recibidos": 56,
+							"promedio_de_goles_recibidos": 1.5,
 							"---|---": 0,
 							"goles_de_local": 18,
 							"promedio_de_goles_de_local": 2.3,
@@ -1703,29 +1737,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 57.1,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 2,
-							"ultimos_promedio_de_goles": 0.7,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 4,
+							"ultimos_promedio_de_goles": 1,
+							"ultimos_total_de_goles_recibidos": 56,
+							"ultimos_promedio_de_goles_recibidos": 1.5,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 7,
+							"ultimos_goles_de_local": 9,
 							"ultimos_promedio_de_goles_de_local": 2.3,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 1,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 2,
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 75,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 1,
-							"ultimos_promedio_de_goles_de_visitante": 0.3,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 1,
+							"ultimos_goles_de_visitante": 3,
+							"ultimos_promedio_de_goles_de_visitante": 0.8,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_partidos_con_goles_de_visitante": 2,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 50
 						},
 						"matches": [
 							{
@@ -1901,7 +1937,7 @@
 										"id": 42,
 										"name": "Arsenal",
 										"country": "🇬🇧",
-										"position": 1,
+										"position": 2,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -1982,7 +2018,7 @@
 										"id": 50,
 										"name": "Manchester City",
 										"country": "🇬🇧",
-										"position": 2,
+										"position": 1,
 										"featured": true,
 										"score": 4,
 										"winner": true
@@ -2145,6 +2181,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 33,
 							"promedio_de_goles": 2.2,
+							"total_de_goles_recibidos": 41,
+							"promedio_de_goles_recibidos": 1.1,
 							"---|---": 0,
 							"goles_de_local": 16,
 							"promedio_de_goles_de_local": 2.3,
@@ -2166,29 +2204,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 75,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 6,
-							"ultimos_promedio_de_goles": 2,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 9,
+							"ultimos_promedio_de_goles": 2.3,
+							"ultimos_total_de_goles_recibidos": 41,
+							"ultimos_promedio_de_goles_recibidos": 1.1,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 4,
-							"ultimos_promedio_de_goles_de_local": 1.3,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 1,
+							"ultimos_goles_de_local": 7,
+							"ultimos_promedio_de_goles_de_local": 1.8,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 2,
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 0,
-							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_partidos_con_goles_de_local": 2,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 50,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 5,
-							"ultimos_promedio_de_goles_de_visitante": 1.7,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 1,
+							"ultimos_goles_de_visitante": 6,
+							"ultimos_promedio_de_goles_de_visitante": 1.5,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_partidos_con_goles_de_visitante": 3,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -2535,7 +2575,7 @@
 										"id": 50,
 										"name": "Manchester City",
 										"country": "🇬🇧",
-										"position": 2,
+										"position": 1,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -2607,266 +2647,268 @@
 		"country": "Italy",
 		"flag": "🇮🇹",
 		"standings": [
-			{
-				"teamId": 505,
-				"teamName": "Inter",
-				"points": 92,
-				"stats": {
-					"goalsDiff": 67,
-					"played": 36,
-					"win": 29,
-					"draw": 5,
-					"lose": 2,
-					"goals": { "for": 86, "against": 19 }
+			[
+				{
+					"teamId": 505,
+					"teamName": "Inter",
+					"points": 92,
+					"stats": {
+						"goalsDiff": 67,
+						"played": 36,
+						"win": 29,
+						"draw": 5,
+						"lose": 2,
+						"goals": { "for": 86, "against": 19 }
+					}
+				},
+				{
+					"teamId": 489,
+					"teamName": "AC Milan",
+					"points": 74,
+					"stats": {
+						"goalsDiff": 29,
+						"played": 36,
+						"win": 22,
+						"draw": 8,
+						"lose": 6,
+						"goals": { "for": 72, "against": 43 }
+					}
+				},
+				{
+					"teamId": 500,
+					"teamName": "Bologna",
+					"points": 67,
+					"stats": {
+						"goalsDiff": 24,
+						"played": 36,
+						"win": 18,
+						"draw": 13,
+						"lose": 5,
+						"goals": { "for": 51, "against": 27 }
+					}
+				},
+				{
+					"teamId": 496,
+					"teamName": "Juventus",
+					"points": 67,
+					"stats": {
+						"goalsDiff": 21,
+						"played": 36,
+						"win": 18,
+						"draw": 13,
+						"lose": 5,
+						"goals": { "for": 49, "against": 28 }
+					}
+				},
+				{
+					"teamId": 499,
+					"teamName": "Atalanta",
+					"points": 63,
+					"stats": {
+						"goalsDiff": 26,
+						"played": 35,
+						"win": 19,
+						"draw": 6,
+						"lose": 10,
+						"goals": { "for": 65, "against": 39 }
+					}
+				},
+				{
+					"teamId": 497,
+					"teamName": "AS Roma",
+					"points": 60,
+					"stats": {
+						"goalsDiff": 19,
+						"played": 36,
+						"win": 17,
+						"draw": 9,
+						"lose": 10,
+						"goals": { "for": 63, "against": 44 }
+					}
+				},
+				{
+					"teamId": 487,
+					"teamName": "Lazio",
+					"points": 59,
+					"stats": {
+						"goalsDiff": 10,
+						"played": 36,
+						"win": 18,
+						"draw": 5,
+						"lose": 13,
+						"goals": { "for": 47, "against": 37 }
+					}
+				},
+				{
+					"teamId": 502,
+					"teamName": "Fiorentina",
+					"points": 53,
+					"stats": {
+						"goalsDiff": 13,
+						"played": 35,
+						"win": 15,
+						"draw": 8,
+						"lose": 12,
+						"goals": { "for": 53, "against": 40 }
+					}
+				},
+				{
+					"teamId": 492,
+					"teamName": "Napoli",
+					"points": 51,
+					"stats": {
+						"goalsDiff": 7,
+						"played": 36,
+						"win": 13,
+						"draw": 12,
+						"lose": 11,
+						"goals": { "for": 53, "against": 46 }
+					}
+				},
+				{
+					"teamId": 503,
+					"teamName": "Torino",
+					"points": 50,
+					"stats": {
+						"goalsDiff": 1,
+						"played": 36,
+						"win": 12,
+						"draw": 14,
+						"lose": 10,
+						"goals": { "for": 33, "against": 32 }
+					}
+				},
+				{
+					"teamId": 495,
+					"teamName": "Genoa",
+					"points": 46,
+					"stats": {
+						"goalsDiff": -1,
+						"played": 36,
+						"win": 11,
+						"draw": 13,
+						"lose": 12,
+						"goals": { "for": 43, "against": 44 }
+					}
+				},
+				{
+					"teamId": 1579,
+					"teamName": "Monza",
+					"points": 45,
+					"stats": {
+						"goalsDiff": -9,
+						"played": 36,
+						"win": 11,
+						"draw": 12,
+						"lose": 13,
+						"goals": { "for": 39, "against": 48 }
+					}
+				},
+				{
+					"teamId": 867,
+					"teamName": "Lecce",
+					"points": 37,
+					"stats": {
+						"goalsDiff": -20,
+						"played": 36,
+						"win": 8,
+						"draw": 13,
+						"lose": 15,
+						"goals": { "for": 32, "against": 52 }
+					}
+				},
+				{
+					"teamId": 504,
+					"teamName": "Verona",
+					"points": 34,
+					"stats": {
+						"goalsDiff": -14,
+						"played": 36,
+						"win": 8,
+						"draw": 10,
+						"lose": 18,
+						"goals": { "for": 34, "against": 48 }
+					}
+				},
+				{
+					"teamId": 494,
+					"teamName": "Udinese",
+					"points": 33,
+					"stats": {
+						"goalsDiff": -17,
+						"played": 36,
+						"win": 5,
+						"draw": 18,
+						"lose": 13,
+						"goals": { "for": 35, "against": 52 }
+					}
+				},
+				{
+					"teamId": 490,
+					"teamName": "Cagliari",
+					"points": 33,
+					"stats": {
+						"goalsDiff": -27,
+						"played": 36,
+						"win": 7,
+						"draw": 12,
+						"lose": 17,
+						"goals": { "for": 38, "against": 65 }
+					}
+				},
+				{
+					"teamId": 512,
+					"teamName": "Frosinone",
+					"points": 32,
+					"stats": {
+						"goalsDiff": -25,
+						"played": 36,
+						"win": 7,
+						"draw": 11,
+						"lose": 18,
+						"goals": { "for": 43, "against": 68 }
+					}
+				},
+				{
+					"teamId": 511,
+					"teamName": "Empoli",
+					"points": 32,
+					"stats": {
+						"goalsDiff": -26,
+						"played": 36,
+						"win": 8,
+						"draw": 8,
+						"lose": 20,
+						"goals": { "for": 26, "against": 52 }
+					}
+				},
+				{
+					"teamId": 488,
+					"teamName": "Sassuolo",
+					"points": 29,
+					"stats": {
+						"goalsDiff": -30,
+						"played": 36,
+						"win": 7,
+						"draw": 8,
+						"lose": 21,
+						"goals": { "for": 42, "against": 72 }
+					}
+				},
+				{
+					"teamId": 514,
+					"teamName": "Salernitana",
+					"points": 16,
+					"stats": {
+						"goalsDiff": -48,
+						"played": 36,
+						"win": 2,
+						"draw": 10,
+						"lose": 24,
+						"goals": { "for": 28, "against": 76 }
+					}
 				}
-			},
-			{
-				"teamId": 489,
-				"teamName": "AC Milan",
-				"points": 74,
-				"stats": {
-					"goalsDiff": 29,
-					"played": 36,
-					"win": 22,
-					"draw": 8,
-					"lose": 6,
-					"goals": { "for": 72, "against": 43 }
-				}
-			},
-			{
-				"teamId": 500,
-				"teamName": "Bologna",
-				"points": 67,
-				"stats": {
-					"goalsDiff": 24,
-					"played": 36,
-					"win": 18,
-					"draw": 13,
-					"lose": 5,
-					"goals": { "for": 51, "against": 27 }
-				}
-			},
-			{
-				"teamId": 496,
-				"teamName": "Juventus",
-				"points": 67,
-				"stats": {
-					"goalsDiff": 21,
-					"played": 36,
-					"win": 18,
-					"draw": 13,
-					"lose": 5,
-					"goals": { "for": 49, "against": 28 }
-				}
-			},
-			{
-				"teamId": 499,
-				"teamName": "Atalanta",
-				"points": 63,
-				"stats": {
-					"goalsDiff": 26,
-					"played": 35,
-					"win": 19,
-					"draw": 6,
-					"lose": 10,
-					"goals": { "for": 65, "against": 39 }
-				}
-			},
-			{
-				"teamId": 497,
-				"teamName": "AS Roma",
-				"points": 60,
-				"stats": {
-					"goalsDiff": 19,
-					"played": 36,
-					"win": 17,
-					"draw": 9,
-					"lose": 10,
-					"goals": { "for": 63, "against": 44 }
-				}
-			},
-			{
-				"teamId": 487,
-				"teamName": "Lazio",
-				"points": 59,
-				"stats": {
-					"goalsDiff": 10,
-					"played": 36,
-					"win": 18,
-					"draw": 5,
-					"lose": 13,
-					"goals": { "for": 47, "against": 37 }
-				}
-			},
-			{
-				"teamId": 502,
-				"teamName": "Fiorentina",
-				"points": 53,
-				"stats": {
-					"goalsDiff": 13,
-					"played": 35,
-					"win": 15,
-					"draw": 8,
-					"lose": 12,
-					"goals": { "for": 53, "against": 40 }
-				}
-			},
-			{
-				"teamId": 492,
-				"teamName": "Napoli",
-				"points": 51,
-				"stats": {
-					"goalsDiff": 7,
-					"played": 36,
-					"win": 13,
-					"draw": 12,
-					"lose": 11,
-					"goals": { "for": 53, "against": 46 }
-				}
-			},
-			{
-				"teamId": 503,
-				"teamName": "Torino",
-				"points": 50,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 36,
-					"win": 12,
-					"draw": 14,
-					"lose": 10,
-					"goals": { "for": 33, "against": 32 }
-				}
-			},
-			{
-				"teamId": 495,
-				"teamName": "Genoa",
-				"points": 46,
-				"stats": {
-					"goalsDiff": -1,
-					"played": 36,
-					"win": 11,
-					"draw": 13,
-					"lose": 12,
-					"goals": { "for": 43, "against": 44 }
-				}
-			},
-			{
-				"teamId": 1579,
-				"teamName": "Monza",
-				"points": 45,
-				"stats": {
-					"goalsDiff": -9,
-					"played": 36,
-					"win": 11,
-					"draw": 12,
-					"lose": 13,
-					"goals": { "for": 39, "against": 48 }
-				}
-			},
-			{
-				"teamId": 867,
-				"teamName": "Lecce",
-				"points": 37,
-				"stats": {
-					"goalsDiff": -20,
-					"played": 36,
-					"win": 8,
-					"draw": 13,
-					"lose": 15,
-					"goals": { "for": 32, "against": 52 }
-				}
-			},
-			{
-				"teamId": 504,
-				"teamName": "Verona",
-				"points": 34,
-				"stats": {
-					"goalsDiff": -14,
-					"played": 36,
-					"win": 8,
-					"draw": 10,
-					"lose": 18,
-					"goals": { "for": 34, "against": 48 }
-				}
-			},
-			{
-				"teamId": 494,
-				"teamName": "Udinese",
-				"points": 33,
-				"stats": {
-					"goalsDiff": -17,
-					"played": 36,
-					"win": 5,
-					"draw": 18,
-					"lose": 13,
-					"goals": { "for": 35, "against": 52 }
-				}
-			},
-			{
-				"teamId": 490,
-				"teamName": "Cagliari",
-				"points": 33,
-				"stats": {
-					"goalsDiff": -27,
-					"played": 36,
-					"win": 7,
-					"draw": 12,
-					"lose": 17,
-					"goals": { "for": 38, "against": 65 }
-				}
-			},
-			{
-				"teamId": 512,
-				"teamName": "Frosinone",
-				"points": 32,
-				"stats": {
-					"goalsDiff": -25,
-					"played": 36,
-					"win": 7,
-					"draw": 11,
-					"lose": 18,
-					"goals": { "for": 43, "against": 68 }
-				}
-			},
-			{
-				"teamId": 511,
-				"teamName": "Empoli",
-				"points": 32,
-				"stats": {
-					"goalsDiff": -26,
-					"played": 36,
-					"win": 8,
-					"draw": 8,
-					"lose": 20,
-					"goals": { "for": 26, "against": 52 }
-				}
-			},
-			{
-				"teamId": 488,
-				"teamName": "Sassuolo",
-				"points": 29,
-				"stats": {
-					"goalsDiff": -30,
-					"played": 36,
-					"win": 7,
-					"draw": 8,
-					"lose": 21,
-					"goals": { "for": 42, "against": 72 }
-				}
-			},
-			{
-				"teamId": 514,
-				"teamName": "Salernitana",
-				"points": 16,
-				"stats": {
-					"goalsDiff": -48,
-					"played": 36,
-					"win": 2,
-					"draw": 10,
-					"lose": 24,
-					"goals": { "for": 28, "against": 76 }
-				}
-			}
+			]
 		],
 		"matches": [
 			{
@@ -2878,94 +2920,105 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
+						"name": "El equipo local marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "❌",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "❌", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "❌", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
 								"check": "❌",
-								"weight": 0.15
+								"weight": 0.083
+							},
+							{
+								"description": "El visitante está en los últimos 3 puestos de la tabla",
+								"check": "❌",
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "❌",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "❌",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
-								"check": "✅",
 								"weight": 0
 							}
 						],
-						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }]
+						"warnings": [
+							{
+								"description": "El visitante tiene buenos resultados como visitante (Puntos ganados > 50%)"
+							}
+						]
 					},
 					{
 						"id": "GEP",
 						"name": "Hay un gol en el partido",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
-								"check": "❌",
-								"weight": 0.6
+								"description": "El local o visitante puede hacer un gol",
+								"check": "✅",
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "❌",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": []
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
+						"name": "El equipo local gana o empata",
 						"recommendable": false,
-						"acceptancePercentage": 0,
+						"acceptancePercentage": 0.25,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "❌",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "❌", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "✅", "weight": 0.25 }
 						],
 						"warnings": []
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"name": "El equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
+								"check": "✅",
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
+							},
+							{
+								"description": "El local está en los últimos 3 puestos de la tabla",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
 						"warnings": []
@@ -2982,6 +3035,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 12,
 							"promedio_de_goles": 0.8,
+							"total_de_goles_recibidos": 52,
+							"promedio_de_goles_recibidos": 1.4,
 							"---|---": 0,
 							"goles_de_local": 5,
 							"promedio_de_goles_de_local": 0.7,
@@ -3003,29 +3058,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 50,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 5,
-							"ultimos_promedio_de_goles": 1.7,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 6,
+							"ultimos_promedio_de_goles": 1.5,
+							"ultimos_total_de_goles_recibidos": 52,
+							"ultimos_promedio_de_goles_recibidos": 1.4,
 							"---||||---": 0,
 							"ultimos_goles_de_local": 2,
-							"ultimos_promedio_de_goles_de_local": 0.7,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_promedio_de_goles_de_local": 0.5,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 1,
-							"ultimos_partidos_perdidos_de_local": 0,
+							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 2,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 75,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 4,
+							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 1,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_partidos_con_goles_de_visitante": 3,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -3445,6 +3502,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 12,
 							"promedio_de_goles": 0.8,
+							"total_de_goles_recibidos": 52,
+							"promedio_de_goles_recibidos": 1.4,
 							"---|---": 0,
 							"goles_de_local": 7,
 							"promedio_de_goles_de_local": 0.9,
@@ -3466,29 +3525,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 57.1,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
+							"ultimos_total_de_partidos": 4,
 							"ultimos_total_de_goles": 3,
-							"ultimos_promedio_de_goles": 1,
+							"ultimos_promedio_de_goles": 0.8,
+							"ultimos_total_de_goles_recibidos": 52,
+							"ultimos_promedio_de_goles_recibidos": 1.4,
 							"---||||---": 0,
 							"ultimos_goles_de_local": 3,
-							"ultimos_promedio_de_goles_de_local": 1,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_promedio_de_goles_de_local": 0.8,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 0,
-							"ultimos_partidos_perdidos_de_local": 2,
+							"ultimos_partidos_perdidos_de_local": 3,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 25,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 2,
-							"ultimos_promedio_de_goles_de_visitante": 0.7,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 0,
+							"ultimos_goles_de_visitante": 4,
+							"ultimos_promedio_de_goles_de_visitante": 1,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_partidos_con_goles_de_visitante": 3,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -3909,45 +3970,44 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
+						"name": "El equipo local marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 0.75,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "✅", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
 								"check": "❌",
-								"weight": 0.15
+								"weight": 0.083
+							},
+							{
+								"description": "El visitante está en los últimos 3 puestos de la tabla",
+								"check": "❌",
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "❌",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "✅",
 								"weight": 0
 							}
 						],
-						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }]
+						"warnings": [
+							{
+								"description": "El visitante tiene buenos resultados como visitante (Puntos ganados > 50%)"
+							}
+						]
 					},
 					{
 						"id": "GEP",
@@ -3956,50 +4016,62 @@
 						"acceptancePercentage": 1,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": []
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
+						"name": "El equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "✅",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "✅", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "✅", "weight": 0.25 }
 						],
 						"warnings": []
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"name": "El equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
+								"check": "✅",
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
+							},
+							{
+								"description": "El local está en los últimos 3 puestos de la tabla",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
-						"warnings": [{ "description": "El equipo local es destacado" }]
+						"warnings": [{ "description": "El local es destacado" }]
 					}
 				],
 				"teams": {
@@ -4013,6 +4085,8 @@
 							"total_de_partidos": 14,
 							"total_de_goles": 21,
 							"promedio_de_goles": 1.5,
+							"total_de_goles_recibidos": 40,
+							"promedio_de_goles_recibidos": 1.1,
 							"---|---": 0,
 							"goles_de_local": 16,
 							"promedio_de_goles_de_local": 2,
@@ -4034,29 +4108,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 50,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 5,
-							"ultimos_promedio_de_goles": 1.7,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 10,
+							"ultimos_promedio_de_goles": 2.5,
+							"ultimos_total_de_goles_recibidos": 40,
+							"ultimos_promedio_de_goles_recibidos": 1.1,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 10,
-							"ultimos_promedio_de_goles_de_local": 3.3,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_goles_de_local": 11,
+							"ultimos_promedio_de_goles_de_local": 2.8,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 3,
 							"ultimos_partidos_perdidos_de_local": 0,
-							"ultimos_partidos_empatados_de_local": 0,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_empatados_de_local": 1,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 3,
-							"ultimos_promedio_de_goles_de_visitante": 1,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 0,
+							"ultimos_goles_de_visitante": 5,
+							"ultimos_promedio_de_goles_de_visitante": 1.3,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_partidos_con_goles_de_visitante": 4,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 50
 						},
 						"matches": [
 							{
@@ -4449,6 +4525,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 18,
 							"promedio_de_goles": 1.2,
+							"total_de_goles_recibidos": 48,
+							"promedio_de_goles_recibidos": 1.3,
 							"---|---": 0,
 							"goles_de_local": 12,
 							"promedio_de_goles_de_local": 1.5,
@@ -4470,29 +4548,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 71.4,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
+							"ultimos_total_de_partidos": 4,
 							"ultimos_total_de_goles": 4,
-							"ultimos_promedio_de_goles": 1.3,
+							"ultimos_promedio_de_goles": 1,
+							"ultimos_total_de_goles_recibidos": 48,
+							"ultimos_promedio_de_goles_recibidos": 1.3,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 5,
-							"ultimos_promedio_de_goles_de_local": 1.7,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 0,
+							"ultimos_goles_de_local": 6,
+							"ultimos_promedio_de_goles_de_local": 1.5,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 1,
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 50,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 1,
-							"ultimos_promedio_de_goles_de_visitante": 0.3,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 0,
+							"ultimos_goles_de_visitante": 4,
+							"ultimos_promedio_de_goles_de_visitante": 1,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_partidos_con_goles_de_visitante": 2,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -4911,357 +4991,359 @@
 		"country": "Argentina",
 		"flag": "🇦🇷",
 		"standings": [
-			{
-				"teamId": 435,
-				"teamName": "River Plate",
-				"points": 3,
-				"stats": {
-					"goalsDiff": 3,
-					"played": 1,
-					"win": 1,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 3, "against": 0 }
+			[
+				{
+					"teamId": 435,
+					"teamName": "River Plate",
+					"points": 3,
+					"stats": {
+						"goalsDiff": 3,
+						"played": 1,
+						"win": 1,
+						"draw": 0,
+						"lose": 0,
+						"goals": { "for": 3, "against": 0 }
+					}
+				},
+				{
+					"teamId": 434,
+					"teamName": "Gimnasia L.P.",
+					"points": 3,
+					"stats": {
+						"goalsDiff": 2,
+						"played": 1,
+						"win": 1,
+						"draw": 0,
+						"lose": 0,
+						"goals": { "for": 3, "against": 1 }
+					}
+				},
+				{
+					"teamId": 445,
+					"teamName": "Huracan",
+					"points": 3,
+					"stats": {
+						"goalsDiff": 2,
+						"played": 1,
+						"win": 1,
+						"draw": 0,
+						"lose": 0,
+						"goals": { "for": 3, "against": 1 }
+					}
+				},
+				{
+					"teamId": 456,
+					"teamName": "Talleres Cordoba",
+					"points": 3,
+					"stats": {
+						"goalsDiff": 2,
+						"played": 1,
+						"win": 1,
+						"draw": 0,
+						"lose": 0,
+						"goals": { "for": 3, "against": 1 }
+					}
+				},
+				{
+					"teamId": 457,
+					"teamName": "Newells Old Boys",
+					"points": 3,
+					"stats": {
+						"goalsDiff": 2,
+						"played": 1,
+						"win": 1,
+						"draw": 0,
+						"lose": 0,
+						"goals": { "for": 2, "against": 0 }
+					}
+				},
+				{
+					"teamId": 473,
+					"teamName": "Independ. Rivadavia",
+					"points": 3,
+					"stats": {
+						"goalsDiff": 2,
+						"played": 1,
+						"win": 1,
+						"draw": 0,
+						"lose": 0,
+						"goals": { "for": 2, "against": 0 }
+					}
+				},
+				{
+					"teamId": 458,
+					"teamName": "Argentinos JRS",
+					"points": 3,
+					"stats": {
+						"goalsDiff": 1,
+						"played": 1,
+						"win": 1,
+						"draw": 0,
+						"lose": 0,
+						"goals": { "for": 3, "against": 2 }
+					}
+				},
+				{
+					"teamId": 478,
+					"teamName": "Instituto Cordoba",
+					"points": 3,
+					"stats": {
+						"goalsDiff": 1,
+						"played": 1,
+						"win": 1,
+						"draw": 0,
+						"lose": 0,
+						"goals": { "for": 2, "against": 1 }
+					}
+				},
+				{
+					"teamId": 450,
+					"teamName": "Estudiantes L.P.",
+					"points": 3,
+					"stats": {
+						"goalsDiff": 1,
+						"played": 1,
+						"win": 1,
+						"draw": 0,
+						"lose": 0,
+						"goals": { "for": 1, "against": 0 }
+					}
+				},
+				{
+					"teamId": 441,
+					"teamName": "Union Santa Fe",
+					"points": 3,
+					"stats": {
+						"goalsDiff": 1,
+						"played": 1,
+						"win": 1,
+						"draw": 0,
+						"lose": 0,
+						"goals": { "for": 1, "against": 0 }
+					}
+				},
+				{
+					"teamId": 455,
+					"teamName": "Atletico Tucuman",
+					"points": 3,
+					"stats": {
+						"goalsDiff": 1,
+						"played": 1,
+						"win": 1,
+						"draw": 0,
+						"lose": 0,
+						"goals": { "for": 1, "against": 0 }
+					}
+				},
+				{
+					"teamId": 2432,
+					"teamName": "Barracas Central",
+					"points": 3,
+					"stats": {
+						"goalsDiff": 1,
+						"played": 1,
+						"win": 1,
+						"draw": 0,
+						"lose": 0,
+						"goals": { "for": 1, "against": 0 }
+					}
+				},
+				{
+					"teamId": 476,
+					"teamName": "Deportivo Riestra",
+					"points": 3,
+					"stats": {
+						"goalsDiff": 1,
+						"played": 1,
+						"win": 1,
+						"draw": 0,
+						"lose": 0,
+						"goals": { "for": 1, "against": 0 }
+					}
+				},
+				{
+					"teamId": 436,
+					"teamName": "Racing Club",
+					"points": 1,
+					"stats": {
+						"goalsDiff": 0,
+						"played": 1,
+						"win": 0,
+						"draw": 1,
+						"lose": 0,
+						"goals": { "for": 4, "against": 4 }
+					}
+				},
+				{
+					"teamId": 440,
+					"teamName": "Belgrano Cordoba",
+					"points": 1,
+					"stats": {
+						"goalsDiff": 0,
+						"played": 1,
+						"win": 0,
+						"draw": 1,
+						"lose": 0,
+						"goals": { "for": 4, "against": 4 }
+					}
+				},
+				{
+					"teamId": 437,
+					"teamName": "Rosario Central",
+					"points": 0,
+					"stats": {
+						"goalsDiff": -1,
+						"played": 1,
+						"win": 0,
+						"draw": 0,
+						"lose": 1,
+						"goals": { "for": 2, "against": 3 }
+					}
+				},
+				{
+					"teamId": 474,
+					"teamName": "Sarmiento Junin",
+					"points": 0,
+					"stats": {
+						"goalsDiff": -1,
+						"played": 1,
+						"win": 0,
+						"draw": 0,
+						"lose": 1,
+						"goals": { "for": 1, "against": 2 }
+					}
+				},
+				{
+					"teamId": 452,
+					"teamName": "Tigre",
+					"points": 0,
+					"stats": {
+						"goalsDiff": -1,
+						"played": 1,
+						"win": 0,
+						"draw": 0,
+						"lose": 1,
+						"goals": { "for": 0, "against": 1 }
+					}
+				},
+				{
+					"teamId": 449,
+					"teamName": "Banfield",
+					"points": 0,
+					"stats": {
+						"goalsDiff": -1,
+						"played": 1,
+						"win": 0,
+						"draw": 0,
+						"lose": 1,
+						"goals": { "for": 0, "against": 1 }
+					}
+				},
+				{
+					"teamId": 460,
+					"teamName": "San Lorenzo",
+					"points": 0,
+					"stats": {
+						"goalsDiff": -1,
+						"played": 1,
+						"win": 0,
+						"draw": 0,
+						"lose": 1,
+						"goals": { "for": 0, "against": 1 }
+					}
+				},
+				{
+					"teamId": 451,
+					"teamName": "Boca Juniors",
+					"points": 0,
+					"stats": {
+						"goalsDiff": -1,
+						"played": 1,
+						"win": 0,
+						"draw": 0,
+						"lose": 1,
+						"goals": { "for": 0, "against": 1 }
+					}
+				},
+				{
+					"teamId": 439,
+					"teamName": "Godoy Cruz",
+					"points": 0,
+					"stats": {
+						"goalsDiff": -1,
+						"played": 1,
+						"win": 0,
+						"draw": 0,
+						"lose": 1,
+						"goals": { "for": 0, "against": 1 }
+					}
+				},
+				{
+					"teamId": 438,
+					"teamName": "Velez Sarsfield",
+					"points": 0,
+					"stats": {
+						"goalsDiff": -2,
+						"played": 1,
+						"win": 0,
+						"draw": 0,
+						"lose": 1,
+						"goals": { "for": 1, "against": 3 }
+					}
+				},
+				{
+					"teamId": 453,
+					"teamName": "Independiente",
+					"points": 0,
+					"stats": {
+						"goalsDiff": -2,
+						"played": 1,
+						"win": 0,
+						"draw": 0,
+						"lose": 1,
+						"goals": { "for": 1, "against": 3 }
+					}
+				},
+				{
+					"teamId": 442,
+					"teamName": "Defensa Y Justicia",
+					"points": 0,
+					"stats": {
+						"goalsDiff": -2,
+						"played": 1,
+						"win": 0,
+						"draw": 0,
+						"lose": 1,
+						"goals": { "for": 1, "against": 3 }
+					}
+				},
+				{
+					"teamId": 446,
+					"teamName": "Lanus",
+					"points": 0,
+					"stats": {
+						"goalsDiff": -2,
+						"played": 1,
+						"win": 0,
+						"draw": 0,
+						"lose": 1,
+						"goals": { "for": 0, "against": 2 }
+					}
+				},
+				{
+					"teamId": 1064,
+					"teamName": "Platense",
+					"points": 0,
+					"stats": {
+						"goalsDiff": -2,
+						"played": 1,
+						"win": 0,
+						"draw": 0,
+						"lose": 1,
+						"goals": { "for": 0, "against": 2 }
+					}
 				}
-			},
-			{
-				"teamId": 434,
-				"teamName": "Gimnasia L.P.",
-				"points": 3,
-				"stats": {
-					"goalsDiff": 2,
-					"played": 1,
-					"win": 1,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 3, "against": 1 }
-				}
-			},
-			{
-				"teamId": 445,
-				"teamName": "Huracan",
-				"points": 3,
-				"stats": {
-					"goalsDiff": 2,
-					"played": 1,
-					"win": 1,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 3, "against": 1 }
-				}
-			},
-			{
-				"teamId": 456,
-				"teamName": "Talleres Cordoba",
-				"points": 3,
-				"stats": {
-					"goalsDiff": 2,
-					"played": 1,
-					"win": 1,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 3, "against": 1 }
-				}
-			},
-			{
-				"teamId": 457,
-				"teamName": "Newells Old Boys",
-				"points": 3,
-				"stats": {
-					"goalsDiff": 2,
-					"played": 1,
-					"win": 1,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 2, "against": 0 }
-				}
-			},
-			{
-				"teamId": 473,
-				"teamName": "Independ. Rivadavia",
-				"points": 3,
-				"stats": {
-					"goalsDiff": 2,
-					"played": 1,
-					"win": 1,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 2, "against": 0 }
-				}
-			},
-			{
-				"teamId": 458,
-				"teamName": "Argentinos JRS",
-				"points": 3,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 1,
-					"win": 1,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 3, "against": 2 }
-				}
-			},
-			{
-				"teamId": 478,
-				"teamName": "Instituto Cordoba",
-				"points": 3,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 1,
-					"win": 1,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 2, "against": 1 }
-				}
-			},
-			{
-				"teamId": 450,
-				"teamName": "Estudiantes L.P.",
-				"points": 3,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 1,
-					"win": 1,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 1, "against": 0 }
-				}
-			},
-			{
-				"teamId": 455,
-				"teamName": "Atletico Tucuman",
-				"points": 3,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 1,
-					"win": 1,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 1, "against": 0 }
-				}
-			},
-			{
-				"teamId": 2432,
-				"teamName": "Barracas Central",
-				"points": 3,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 1,
-					"win": 1,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 1, "against": 0 }
-				}
-			},
-			{
-				"teamId": 476,
-				"teamName": "Deportivo Riestra",
-				"points": 3,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 1,
-					"win": 1,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 1, "against": 0 }
-				}
-			},
-			{
-				"teamId": 436,
-				"teamName": "Racing Club",
-				"points": 1,
-				"stats": {
-					"goalsDiff": 0,
-					"played": 1,
-					"win": 0,
-					"draw": 1,
-					"lose": 0,
-					"goals": { "for": 4, "against": 4 }
-				}
-			},
-			{
-				"teamId": 440,
-				"teamName": "Belgrano Cordoba",
-				"points": 1,
-				"stats": {
-					"goalsDiff": 0,
-					"played": 1,
-					"win": 0,
-					"draw": 1,
-					"lose": 0,
-					"goals": { "for": 4, "against": 4 }
-				}
-			},
-			{
-				"teamId": 449,
-				"teamName": "Banfield",
-				"points": 0,
-				"stats": {
-					"goalsDiff": 0,
-					"played": 0,
-					"win": 0,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 0, "against": 0 }
-				}
-			},
-			{
-				"teamId": 441,
-				"teamName": "Union Santa Fe",
-				"points": 0,
-				"stats": {
-					"goalsDiff": 0,
-					"played": 0,
-					"win": 0,
-					"draw": 0,
-					"lose": 0,
-					"goals": { "for": 0, "against": 0 }
-				}
-			},
-			{
-				"teamId": 437,
-				"teamName": "Rosario Central",
-				"points": 0,
-				"stats": {
-					"goalsDiff": -1,
-					"played": 1,
-					"win": 0,
-					"draw": 0,
-					"lose": 1,
-					"goals": { "for": 2, "against": 3 }
-				}
-			},
-			{
-				"teamId": 474,
-				"teamName": "Sarmiento Junin",
-				"points": 0,
-				"stats": {
-					"goalsDiff": -1,
-					"played": 1,
-					"win": 0,
-					"draw": 0,
-					"lose": 1,
-					"goals": { "for": 1, "against": 2 }
-				}
-			},
-			{
-				"teamId": 452,
-				"teamName": "Tigre",
-				"points": 0,
-				"stats": {
-					"goalsDiff": -1,
-					"played": 1,
-					"win": 0,
-					"draw": 0,
-					"lose": 1,
-					"goals": { "for": 0, "against": 1 }
-				}
-			},
-			{
-				"teamId": 460,
-				"teamName": "San Lorenzo",
-				"points": 0,
-				"stats": {
-					"goalsDiff": -1,
-					"played": 1,
-					"win": 0,
-					"draw": 0,
-					"lose": 1,
-					"goals": { "for": 0, "against": 1 }
-				}
-			},
-			{
-				"teamId": 451,
-				"teamName": "Boca Juniors",
-				"points": 0,
-				"stats": {
-					"goalsDiff": -1,
-					"played": 1,
-					"win": 0,
-					"draw": 0,
-					"lose": 1,
-					"goals": { "for": 0, "against": 1 }
-				}
-			},
-			{
-				"teamId": 439,
-				"teamName": "Godoy Cruz",
-				"points": 0,
-				"stats": {
-					"goalsDiff": -1,
-					"played": 1,
-					"win": 0,
-					"draw": 0,
-					"lose": 1,
-					"goals": { "for": 0, "against": 1 }
-				}
-			},
-			{
-				"teamId": 438,
-				"teamName": "Velez Sarsfield",
-				"points": 0,
-				"stats": {
-					"goalsDiff": -2,
-					"played": 1,
-					"win": 0,
-					"draw": 0,
-					"lose": 1,
-					"goals": { "for": 1, "against": 3 }
-				}
-			},
-			{
-				"teamId": 453,
-				"teamName": "Independiente",
-				"points": 0,
-				"stats": {
-					"goalsDiff": -2,
-					"played": 1,
-					"win": 0,
-					"draw": 0,
-					"lose": 1,
-					"goals": { "for": 1, "against": 3 }
-				}
-			},
-			{
-				"teamId": 442,
-				"teamName": "Defensa Y Justicia",
-				"points": 0,
-				"stats": {
-					"goalsDiff": -2,
-					"played": 1,
-					"win": 0,
-					"draw": 0,
-					"lose": 1,
-					"goals": { "for": 1, "against": 3 }
-				}
-			},
-			{
-				"teamId": 446,
-				"teamName": "Lanus",
-				"points": 0,
-				"stats": {
-					"goalsDiff": -2,
-					"played": 1,
-					"win": 0,
-					"draw": 0,
-					"lose": 1,
-					"goals": { "for": 0, "against": 2 }
-				}
-			},
-			{
-				"teamId": 1064,
-				"teamName": "Platense",
-				"points": 0,
-				"stats": {
-					"goalsDiff": -2,
-					"played": 1,
-					"win": 0,
-					"draw": 0,
-					"lose": 1,
-					"goals": { "for": 0, "against": 2 }
-				}
-			}
+			]
 		],
 		"matches": []
 	},
@@ -5270,266 +5352,268 @@
 		"country": "Brazil",
 		"flag": "🇧🇷",
 		"standings": [
-			{
-				"teamId": 134,
-				"teamName": "Atletico Paranaense",
-				"points": 13,
-				"stats": {
-					"goalsDiff": 6,
-					"played": 6,
-					"win": 4,
-					"draw": 1,
-					"lose": 1,
-					"goals": { "for": 9, "against": 3 }
+			[
+				{
+					"teamId": 134,
+					"teamName": "Atletico Paranaense",
+					"points": 13,
+					"stats": {
+						"goalsDiff": 6,
+						"played": 6,
+						"win": 4,
+						"draw": 1,
+						"lose": 1,
+						"goals": { "for": 9, "against": 3 }
+					}
+				},
+				{
+					"teamId": 118,
+					"teamName": "Bahia",
+					"points": 13,
+					"stats": {
+						"goalsDiff": 3,
+						"played": 6,
+						"win": 4,
+						"draw": 1,
+						"lose": 1,
+						"goals": { "for": 9, "against": 6 }
+					}
+				},
+				{
+					"teamId": 127,
+					"teamName": "Flamengo",
+					"points": 11,
+					"stats": {
+						"goalsDiff": 2,
+						"played": 6,
+						"win": 3,
+						"draw": 2,
+						"lose": 1,
+						"goals": { "for": 7, "against": 5 }
+					}
+				},
+				{
+					"teamId": 120,
+					"teamName": "Botafogo",
+					"points": 10,
+					"stats": {
+						"goalsDiff": 5,
+						"played": 6,
+						"win": 3,
+						"draw": 1,
+						"lose": 2,
+						"goals": { "for": 12, "against": 7 }
+					}
+				},
+				{
+					"teamId": 126,
+					"teamName": "Sao Paulo",
+					"points": 10,
+					"stats": {
+						"goalsDiff": 4,
+						"played": 6,
+						"win": 3,
+						"draw": 1,
+						"lose": 2,
+						"goals": { "for": 10, "against": 6 }
+					}
+				},
+				{
+					"teamId": 135,
+					"teamName": "Cruzeiro",
+					"points": 10,
+					"stats": {
+						"goalsDiff": 1,
+						"played": 5,
+						"win": 3,
+						"draw": 1,
+						"lose": 1,
+						"goals": { "for": 8, "against": 7 }
+					}
+				},
+				{
+					"teamId": 1062,
+					"teamName": "Atletico-MG",
+					"points": 9,
+					"stats": {
+						"goalsDiff": 6,
+						"played": 5,
+						"win": 2,
+						"draw": 3,
+						"lose": 0,
+						"goals": { "for": 9, "against": 3 }
+					}
+				},
+				{
+					"teamId": 794,
+					"teamName": "RB Bragantino",
+					"points": 9,
+					"stats": {
+						"goalsDiff": 1,
+						"played": 6,
+						"win": 2,
+						"draw": 3,
+						"lose": 1,
+						"goals": { "for": 7, "against": 6 }
+					}
+				},
+				{
+					"teamId": 121,
+					"teamName": "Palmeiras",
+					"points": 8,
+					"stats": {
+						"goalsDiff": 0,
+						"played": 6,
+						"win": 2,
+						"draw": 2,
+						"lose": 2,
+						"goals": { "for": 3, "against": 3 }
+					}
+				},
+				{
+					"teamId": 119,
+					"teamName": "Internacional",
+					"points": 7,
+					"stats": {
+						"goalsDiff": 1,
+						"played": 4,
+						"win": 2,
+						"draw": 1,
+						"lose": 1,
+						"goals": { "for": 4, "against": 3 }
+					}
+				},
+				{
+					"teamId": 154,
+					"teamName": "Fortaleza EC",
+					"points": 7,
+					"stats": {
+						"goalsDiff": 1,
+						"played": 5,
+						"win": 1,
+						"draw": 4,
+						"lose": 0,
+						"goals": { "for": 5, "against": 4 }
+					}
+				},
+				{
+					"teamId": 130,
+					"teamName": "Gremio",
+					"points": 6,
+					"stats": {
+						"goalsDiff": 1,
+						"played": 4,
+						"win": 2,
+						"draw": 0,
+						"lose": 2,
+						"goals": { "for": 4, "against": 3 }
+					}
+				},
+				{
+					"teamId": 133,
+					"teamName": "Vasco DA Gama",
+					"points": 6,
+					"stats": {
+						"goalsDiff": -5,
+						"played": 6,
+						"win": 2,
+						"draw": 0,
+						"lose": 4,
+						"goals": { "for": 6, "against": 11 }
+					}
+				},
+				{
+					"teamId": 140,
+					"teamName": "Criciuma",
+					"points": 5,
+					"stats": {
+						"goalsDiff": 4,
+						"played": 3,
+						"win": 1,
+						"draw": 2,
+						"lose": 0,
+						"goals": { "for": 6, "against": 2 }
+					}
+				},
+				{
+					"teamId": 152,
+					"teamName": "Juventude",
+					"points": 5,
+					"stats": {
+						"goalsDiff": -2,
+						"played": 4,
+						"win": 1,
+						"draw": 2,
+						"lose": 1,
+						"goals": { "for": 5, "against": 7 }
+					}
+				},
+				{
+					"teamId": 131,
+					"teamName": "Corinthians",
+					"points": 5,
+					"stats": {
+						"goalsDiff": -2,
+						"played": 6,
+						"win": 1,
+						"draw": 2,
+						"lose": 3,
+						"goals": { "for": 3, "against": 5 }
+					}
+				},
+				{
+					"teamId": 124,
+					"teamName": "Fluminense",
+					"points": 5,
+					"stats": {
+						"goalsDiff": -4,
+						"played": 6,
+						"win": 1,
+						"draw": 2,
+						"lose": 3,
+						"goals": { "for": 8, "against": 12 }
+					}
+				},
+				{
+					"teamId": 136,
+					"teamName": "Vitoria",
+					"points": 1,
+					"stats": {
+						"goalsDiff": -6,
+						"played": 5,
+						"win": 0,
+						"draw": 1,
+						"lose": 4,
+						"goals": { "for": 5, "against": 11 }
+					}
+				},
+				{
+					"teamId": 144,
+					"teamName": "Atletico Goianiense",
+					"points": 1,
+					"stats": {
+						"goalsDiff": -6,
+						"played": 5,
+						"win": 0,
+						"draw": 1,
+						"lose": 4,
+						"goals": { "for": 2, "against": 8 }
+					}
+				},
+				{
+					"teamId": 1193,
+					"teamName": "Cuiaba",
+					"points": 0,
+					"stats": {
+						"goalsDiff": -10,
+						"played": 4,
+						"win": 0,
+						"draw": 0,
+						"lose": 4,
+						"goals": { "for": 0, "against": 10 }
+					}
 				}
-			},
-			{
-				"teamId": 118,
-				"teamName": "Bahia",
-				"points": 13,
-				"stats": {
-					"goalsDiff": 3,
-					"played": 6,
-					"win": 4,
-					"draw": 1,
-					"lose": 1,
-					"goals": { "for": 9, "against": 6 }
-				}
-			},
-			{
-				"teamId": 127,
-				"teamName": "Flamengo",
-				"points": 11,
-				"stats": {
-					"goalsDiff": 2,
-					"played": 6,
-					"win": 3,
-					"draw": 2,
-					"lose": 1,
-					"goals": { "for": 7, "against": 5 }
-				}
-			},
-			{
-				"teamId": 120,
-				"teamName": "Botafogo",
-				"points": 10,
-				"stats": {
-					"goalsDiff": 5,
-					"played": 6,
-					"win": 3,
-					"draw": 1,
-					"lose": 2,
-					"goals": { "for": 12, "against": 7 }
-				}
-			},
-			{
-				"teamId": 135,
-				"teamName": "Cruzeiro",
-				"points": 10,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 5,
-					"win": 3,
-					"draw": 1,
-					"lose": 1,
-					"goals": { "for": 8, "against": 7 }
-				}
-			},
-			{
-				"teamId": 1062,
-				"teamName": "Atletico-MG",
-				"points": 9,
-				"stats": {
-					"goalsDiff": 6,
-					"played": 5,
-					"win": 2,
-					"draw": 3,
-					"lose": 0,
-					"goals": { "for": 9, "against": 3 }
-				}
-			},
-			{
-				"teamId": 794,
-				"teamName": "RB Bragantino",
-				"points": 9,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 6,
-					"win": 2,
-					"draw": 3,
-					"lose": 1,
-					"goals": { "for": 7, "against": 6 }
-				}
-			},
-			{
-				"teamId": 121,
-				"teamName": "Palmeiras",
-				"points": 8,
-				"stats": {
-					"goalsDiff": 0,
-					"played": 6,
-					"win": 2,
-					"draw": 2,
-					"lose": 2,
-					"goals": { "for": 3, "against": 3 }
-				}
-			},
-			{
-				"teamId": 126,
-				"teamName": "Sao Paulo",
-				"points": 7,
-				"stats": {
-					"goalsDiff": 3,
-					"played": 5,
-					"win": 2,
-					"draw": 1,
-					"lose": 2,
-					"goals": { "for": 8, "against": 5 }
-				}
-			},
-			{
-				"teamId": 119,
-				"teamName": "Internacional",
-				"points": 7,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 4,
-					"win": 2,
-					"draw": 1,
-					"lose": 1,
-					"goals": { "for": 4, "against": 3 }
-				}
-			},
-			{
-				"teamId": 154,
-				"teamName": "Fortaleza EC",
-				"points": 7,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 5,
-					"win": 1,
-					"draw": 4,
-					"lose": 0,
-					"goals": { "for": 5, "against": 4 }
-				}
-			},
-			{
-				"teamId": 130,
-				"teamName": "Gremio",
-				"points": 6,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 4,
-					"win": 2,
-					"draw": 0,
-					"lose": 2,
-					"goals": { "for": 4, "against": 3 }
-				}
-			},
-			{
-				"teamId": 133,
-				"teamName": "Vasco DA Gama",
-				"points": 6,
-				"stats": {
-					"goalsDiff": -5,
-					"played": 6,
-					"win": 2,
-					"draw": 0,
-					"lose": 4,
-					"goals": { "for": 6, "against": 11 }
-				}
-			},
-			{
-				"teamId": 140,
-				"teamName": "Criciuma",
-				"points": 5,
-				"stats": {
-					"goalsDiff": 4,
-					"played": 3,
-					"win": 1,
-					"draw": 2,
-					"lose": 0,
-					"goals": { "for": 6, "against": 2 }
-				}
-			},
-			{
-				"teamId": 152,
-				"teamName": "Juventude",
-				"points": 5,
-				"stats": {
-					"goalsDiff": -2,
-					"played": 4,
-					"win": 1,
-					"draw": 2,
-					"lose": 1,
-					"goals": { "for": 5, "against": 7 }
-				}
-			},
-			{
-				"teamId": 131,
-				"teamName": "Corinthians",
-				"points": 5,
-				"stats": {
-					"goalsDiff": -2,
-					"played": 6,
-					"win": 1,
-					"draw": 2,
-					"lose": 3,
-					"goals": { "for": 3, "against": 5 }
-				}
-			},
-			{
-				"teamId": 124,
-				"teamName": "Fluminense",
-				"points": 5,
-				"stats": {
-					"goalsDiff": -3,
-					"played": 5,
-					"win": 1,
-					"draw": 2,
-					"lose": 2,
-					"goals": { "for": 7, "against": 10 }
-				}
-			},
-			{
-				"teamId": 136,
-				"teamName": "Vitoria",
-				"points": 1,
-				"stats": {
-					"goalsDiff": -6,
-					"played": 5,
-					"win": 0,
-					"draw": 1,
-					"lose": 4,
-					"goals": { "for": 5, "against": 11 }
-				}
-			},
-			{
-				"teamId": 144,
-				"teamName": "Atletico Goianiense",
-				"points": 1,
-				"stats": {
-					"goalsDiff": -6,
-					"played": 5,
-					"win": 0,
-					"draw": 1,
-					"lose": 4,
-					"goals": { "for": 2, "against": 8 }
-				}
-			},
-			{
-				"teamId": 1193,
-				"teamName": "Cuiaba",
-				"points": 0,
-				"stats": {
-					"goalsDiff": -10,
-					"played": 4,
-					"win": 0,
-					"draw": 0,
-					"lose": 4,
-					"goals": { "for": 0, "against": 10 }
-				}
-			}
+			]
 		],
 		"matches": [
 			{
@@ -5541,100 +5625,109 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
+						"name": "El equipo local marca un gol",
 						"recommendable": false,
-						"acceptancePercentage": 0.25,
+						"acceptancePercentage": 0.17,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "❌",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "❌", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "❌", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
+								"check": "✅",
+								"weight": 0.083
+							},
+							{
+								"description": "El visitante está en los últimos 3 puestos de la tabla",
 								"check": "❌",
-								"weight": 0.15
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "✅",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "❌",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "❌",
 								"weight": 0
 							}
 						],
 						"warnings": [
 							{ "description": "Ambos equipos son destacados" },
-							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+							{
+								"description": "El visitante tiene buenos resultados como visitante (Puntos ganados > 50%)"
+							}
 						]
 					},
 					{
 						"id": "GEP",
 						"name": "Hay un gol en el partido",
 						"recommendable": false,
-						"acceptancePercentage": 0.4,
+						"acceptancePercentage": 0.25,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "❌",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": [{ "description": "Ambos equipos son destacados" }]
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"name": "El equipo local gana o empata",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "❌",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "✅", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "❌", "weight": 0.25 }
 						],
-						"warnings": [{ "description": "El equipo visitante es destacado" }]
+						"warnings": [{ "description": "El visitante es destacado" }]
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
+						"name": "El equipo visitante marca un gol",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
+								"check": "❌",
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
+							},
+							{
+								"description": "El local está en los últimos 3 puestos de la tabla",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
-						"warnings": [{ "description": "El equipo local es destacado" }]
+						"warnings": [{ "description": "El local es destacado" }]
 					}
 				],
 				"teams": {
@@ -5642,12 +5735,14 @@
 						"id": 126,
 						"name": "Sao Paulo",
 						"country": "🇧🇷",
-						"position": 9,
+						"position": 5,
 						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
 							"total_de_goles": 28,
 							"promedio_de_goles": 1.9,
+							"total_de_goles_recibidos": 6,
+							"promedio_de_goles_recibidos": 1,
 							"---|---": 0,
 							"goles_de_local": 5,
 							"promedio_de_goles_de_local": 1,
@@ -5669,27 +5764,29 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 80,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
+							"ultimos_total_de_partidos": 4,
 							"ultimos_total_de_goles": 9,
-							"ultimos_promedio_de_goles": 3,
+							"ultimos_promedio_de_goles": 2.3,
+							"ultimos_total_de_goles_recibidos": 6,
+							"ultimos_promedio_de_goles_recibidos": 1,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 3,
+							"ultimos_goles_de_local": 4,
 							"ultimos_promedio_de_goles_de_local": 1,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 1,
-							"ultimos_partidos_perdidos_de_local": 1,
+							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_partidos_con_goles_de_local": 3,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 50,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 9,
-							"ultimos_promedio_de_goles_de_visitante": 3,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 3,
+							"ultimos_goles_de_visitante": 11,
+							"ultimos_promedio_de_goles_de_visitante": 2.8,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 4,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_partidos_con_goles_de_visitante": 4,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
@@ -5714,7 +5811,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -5741,7 +5838,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -5768,7 +5865,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -5786,7 +5883,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -5795,7 +5892,7 @@
 										"id": 121,
 										"name": "Palmeiras",
 										"country": "🇧🇷",
-										"position": 8,
+										"position": 9,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -5822,7 +5919,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -5849,7 +5946,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -5876,7 +5973,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -5894,7 +5991,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -5921,7 +6018,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -5957,7 +6054,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -5975,7 +6072,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -6011,7 +6108,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -6029,7 +6126,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -6038,7 +6135,7 @@
 										"id": 121,
 										"name": "Palmeiras",
 										"country": "🇧🇷",
-										"position": 8,
+										"position": 9,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -6065,7 +6162,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -6092,7 +6189,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -6111,6 +6208,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 17,
 							"promedio_de_goles": 1.1,
+							"total_de_goles_recibidos": 12,
+							"promedio_de_goles_recibidos": 2,
 							"---|---": 0,
 							"goles_de_local": 12,
 							"promedio_de_goles_de_local": 1.7,
@@ -6132,29 +6231,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 62.5,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
+							"ultimos_total_de_partidos": 4,
 							"ultimos_total_de_goles": 5,
-							"ultimos_promedio_de_goles": 1.7,
+							"ultimos_promedio_de_goles": 1.3,
+							"ultimos_total_de_goles_recibidos": 12,
+							"ultimos_promedio_de_goles_recibidos": 2,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 6,
+							"ultimos_goles_de_local": 8,
 							"ultimos_promedio_de_goles_de_local": 2,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 1,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 2,
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 2,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
-							"ultimos_promedio_de_goles_de_visitante": 1,
-							"ultimos_partidos_de_visitante": 3,
+							"ultimos_promedio_de_goles_de_visitante": 0.8,
+							"ultimos_partidos_de_visitante": 4,
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
-							"ultimos_partidos_empatados_de_visitante": 0,
+							"ultimos_partidos_empatados_de_visitante": 1,
 							"ultimos_partidos_con_goles_de_visitante": 2,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -6204,7 +6305,7 @@
 										"id": 1062,
 										"name": "Atletico-MG",
 										"country": "🇧🇷",
-										"position": 6,
+										"position": 7,
 										"featured": true,
 										"score": 2,
 										"winner": null
@@ -6366,7 +6467,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": 8,
 										"featured": true,
 										"score": 2,
 										"winner": null
@@ -6575,45 +6676,44 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
+						"name": "El equipo local marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 0.85,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "❌",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "✅", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
 								"check": "❌",
-								"weight": 0.15
+								"weight": 0.083
+							},
+							{
+								"description": "El visitante está en los últimos 3 puestos de la tabla",
+								"check": "❌",
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "✅",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "❌",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
-								"check": "✅",
 								"weight": 0
 							}
 						],
-						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }]
+						"warnings": [
+							{
+								"description": "El visitante tiene buenos resultados como visitante (Puntos ganados > 50%)"
+							}
+						]
 					},
 					{
 						"id": "GEP",
@@ -6622,50 +6722,62 @@
 						"acceptancePercentage": 1,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": []
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
+						"name": "El equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "✅",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "✅", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "✅", "weight": 0.25 }
 						],
 						"warnings": []
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"name": "El equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
+								"check": "✅",
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
+							},
+							{
+								"description": "El local está en los últimos 3 puestos de la tabla",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
-						"warnings": [{ "description": "El equipo local es destacado" }]
+						"warnings": [{ "description": "El local es destacado" }]
 					}
 				],
 				"teams": {
@@ -6679,6 +6791,8 @@
 							"total_de_partidos": 12,
 							"total_de_goles": 14,
 							"promedio_de_goles": 1.2,
+							"total_de_goles_recibidos": 3,
+							"promedio_de_goles_recibidos": 0.8,
 							"---|---": 0,
 							"goles_de_local": 7,
 							"promedio_de_goles_de_local": 1.4,
@@ -6700,29 +6814,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 85.7,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 3,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 4,
 							"ultimos_promedio_de_goles": 1,
+							"ultimos_total_de_goles_recibidos": 3,
+							"ultimos_promedio_de_goles_recibidos": 0.8,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 3,
+							"ultimos_goles_de_local": 4,
 							"ultimos_promedio_de_goles_de_local": 1,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 1,
-							"ultimos_partidos_perdidos_de_local": 0,
+							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 2,
-							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_partidos_con_goles_de_local": 3,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 75,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
-							"ultimos_promedio_de_goles_de_visitante": 1,
-							"ultimos_partidos_de_visitante": 3,
+							"ultimos_promedio_de_goles_de_visitante": 0.8,
+							"ultimos_partidos_de_visitante": 4,
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
-							"ultimos_partidos_empatados_de_visitante": 0,
+							"ultimos_partidos_empatados_de_visitante": 1,
 							"ultimos_partidos_con_goles_de_visitante": 2,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -6817,7 +6933,7 @@
 										"id": 121,
 										"name": "Palmeiras",
 										"country": "🇧🇷",
-										"position": 8,
+										"position": 9,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -7061,6 +7177,8 @@
 							"total_de_partidos": 13,
 							"total_de_goles": 15,
 							"promedio_de_goles": 1.2,
+							"total_de_goles_recibidos": 7,
+							"promedio_de_goles_recibidos": 1.8,
 							"---|---": 0,
 							"goles_de_local": 7,
 							"promedio_de_goles_de_local": 1.2,
@@ -7082,29 +7200,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 57.1,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 4,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 5,
 							"ultimos_promedio_de_goles": 1.3,
+							"ultimos_total_de_goles_recibidos": 7,
+							"ultimos_promedio_de_goles_recibidos": 1.8,
 							"---||||---": 0,
 							"ultimos_goles_de_local": 3,
-							"ultimos_promedio_de_goles_de_local": 1,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_promedio_de_goles_de_local": 0.8,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 1,
 							"ultimos_partidos_perdidos_de_local": 0,
-							"ultimos_partidos_empatados_de_local": 2,
+							"ultimos_partidos_empatados_de_local": 3,
 							"ultimos_partidos_con_goles_de_local": 2,
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 3,
+							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 0,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_partidos_con_goles_de_visitante": 4,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 50
 						},
 						"matches": [
 							{
@@ -7465,426 +7585,678 @@
 		]
 	},
 	{
+		"name": "Eredivisie",
+		"country": "Netherlands",
+		"flag": "🇳🇱",
+		"standings": [
+			[
+				{
+					"teamId": 197,
+					"teamName": "PSV Eindhoven",
+					"points": 88,
+					"stats": {
+						"goalsDiff": 88,
+						"played": 33,
+						"win": 28,
+						"draw": 4,
+						"lose": 1,
+						"goals": { "for": 108, "against": 20 }
+					}
+				},
+				{
+					"teamId": 209,
+					"teamName": "Feyenoord",
+					"points": 81,
+					"stats": {
+						"goalsDiff": 62,
+						"played": 33,
+						"win": 25,
+						"draw": 6,
+						"lose": 2,
+						"goals": { "for": 88, "against": 26 }
+					}
+				},
+				{
+					"teamId": 415,
+					"teamName": "Twente",
+					"points": 66,
+					"stats": {
+						"goalsDiff": 32,
+						"played": 33,
+						"win": 20,
+						"draw": 6,
+						"lose": 7,
+						"goals": { "for": 67, "against": 35 }
+					}
+				},
+				{
+					"teamId": 201,
+					"teamName": "AZ Alkmaar",
+					"points": 64,
+					"stats": {
+						"goalsDiff": 31,
+						"played": 33,
+						"win": 19,
+						"draw": 7,
+						"lose": 7,
+						"goals": { "for": 67, "against": 36 }
+					}
+				},
+				{
+					"teamId": 194,
+					"teamName": "Ajax",
+					"points": 55,
+					"stats": {
+						"goalsDiff": 13,
+						"played": 33,
+						"win": 15,
+						"draw": 10,
+						"lose": 8,
+						"goals": { "for": 72, "against": 59 }
+					}
+				},
+				{
+					"teamId": 413,
+					"teamName": "NEC Nijmegen",
+					"points": 50,
+					"stats": {
+						"goalsDiff": 14,
+						"played": 33,
+						"win": 13,
+						"draw": 11,
+						"lose": 9,
+						"goals": { "for": 64, "against": 50 }
+					}
+				},
+				{
+					"teamId": 207,
+					"teamName": "Utrecht",
+					"points": 49,
+					"stats": {
+						"goalsDiff": 2,
+						"played": 33,
+						"win": 13,
+						"draw": 10,
+						"lose": 10,
+						"goals": { "for": 46, "against": 44 }
+					}
+				},
+				{
+					"teamId": 426,
+					"teamName": "Sparta Rotterdam",
+					"points": 46,
+					"stats": {
+						"goalsDiff": 2,
+						"played": 33,
+						"win": 13,
+						"draw": 7,
+						"lose": 13,
+						"goals": { "for": 49, "against": 47 }
+					}
+				},
+				{
+					"teamId": 410,
+					"teamName": "GO Ahead Eagles",
+					"points": 43,
+					"stats": {
+						"goalsDiff": 0,
+						"played": 33,
+						"win": 11,
+						"draw": 10,
+						"lose": 12,
+						"goals": { "for": 45, "against": 45 }
+					}
+				},
+				{
+					"teamId": 210,
+					"teamName": "Heerenveen",
+					"points": 37,
+					"stats": {
+						"goalsDiff": -16,
+						"played": 33,
+						"win": 10,
+						"draw": 7,
+						"lose": 16,
+						"goals": { "for": 52, "against": 68 }
+					}
+				},
+				{
+					"teamId": 205,
+					"teamName": "Fortuna Sittard",
+					"points": 37,
+					"stats": {
+						"goalsDiff": -19,
+						"played": 33,
+						"win": 9,
+						"draw": 10,
+						"lose": 14,
+						"goals": { "for": 37, "against": 56 }
+					}
+				},
+				{
+					"teamId": 193,
+					"teamName": "PEC Zwolle",
+					"points": 36,
+					"stats": {
+						"goalsDiff": -21,
+						"played": 33,
+						"win": 9,
+						"draw": 9,
+						"lose": 15,
+						"goals": { "for": 44, "against": 65 }
+					}
+				},
+				{
+					"teamId": 419,
+					"teamName": "Almere City FC",
+					"points": 34,
+					"stats": {
+						"goalsDiff": -23,
+						"played": 33,
+						"win": 7,
+						"draw": 13,
+						"lose": 13,
+						"goals": { "for": 32, "against": 55 }
+					}
+				},
+				{
+					"teamId": 206,
+					"teamName": "Heracles",
+					"points": 32,
+					"stats": {
+						"goalsDiff": -33,
+						"played": 33,
+						"win": 9,
+						"draw": 5,
+						"lose": 19,
+						"goals": { "for": 41, "against": 74 }
+					}
+				},
+				{
+					"teamId": 417,
+					"teamName": "Waalwijk",
+					"points": 29,
+					"stats": {
+						"goalsDiff": -16,
+						"played": 33,
+						"win": 7,
+						"draw": 8,
+						"lose": 18,
+						"goals": { "for": 37, "against": 53 }
+					}
+				},
+				{
+					"teamId": 196,
+					"teamName": "Excelsior",
+					"points": 29,
+					"stats": {
+						"goalsDiff": -19,
+						"played": 33,
+						"win": 6,
+						"draw": 11,
+						"lose": 16,
+						"goals": { "for": 50, "against": 69 }
+					}
+				},
+				{
+					"teamId": 416,
+					"teamName": "FC Volendam",
+					"points": 19,
+					"stats": {
+						"goalsDiff": -53,
+						"played": 33,
+						"win": 4,
+						"draw": 7,
+						"lose": 22,
+						"goals": { "for": 33, "against": 86 }
+					}
+				},
+				{
+					"teamId": 200,
+					"teamName": "Vitesse",
+					"points": 5,
+					"stats": {
+						"goalsDiff": -44,
+						"played": 33,
+						"win": 6,
+						"draw": 5,
+						"lose": 22,
+						"goals": { "for": 28, "against": 72 }
+					}
+				}
+			]
+		],
+		"matches": []
+	},
+	{
 		"name": "Jupiler Pro League",
 		"country": "Belgium",
 		"flag": "🇧🇪",
 		"standings": [
-			{
-				"teamId": 736,
-				"teamName": "Charleroi",
-				"points": 45,
-				"stats": {
-					"goalsDiff": -15,
-					"played": 36,
-					"win": 12,
-					"draw": 9,
-					"lose": 15,
-					"goals": { "for": 37, "against": 52 }
+			[
+				{
+					"teamId": 736,
+					"teamName": "Charleroi",
+					"points": 45,
+					"stats": {
+						"goalsDiff": -15,
+						"played": 36,
+						"win": 12,
+						"draw": 9,
+						"lose": 15,
+						"goals": { "for": 37, "against": 52 }
+					}
+				},
+				{
+					"teamId": 734,
+					"teamName": "Kortrijk",
+					"points": 31,
+					"stats": {
+						"goalsDiff": -38,
+						"played": 36,
+						"win": 8,
+						"draw": 7,
+						"lose": 21,
+						"goals": { "for": 29, "against": 67 }
+					}
+				},
+				{
+					"teamId": 6224,
+					"teamName": "RWDM",
+					"points": 30,
+					"stats": {
+						"goalsDiff": -37,
+						"played": 36,
+						"win": 7,
+						"draw": 9,
+						"lose": 20,
+						"goals": { "for": 39, "against": 76 }
+					}
+				},
+				{
+					"teamId": 739,
+					"teamName": "AS Eupen",
+					"points": 28,
+					"stats": {
+						"goalsDiff": -37,
+						"played": 36,
+						"win": 8,
+						"draw": 4,
+						"lose": 24,
+						"goals": { "for": 29, "against": 66 }
+					}
 				}
-			},
-			{
-				"teamId": 734,
-				"teamName": "Kortrijk",
-				"points": 31,
-				"stats": {
-					"goalsDiff": -38,
-					"played": 36,
-					"win": 8,
-					"draw": 7,
-					"lose": 21,
-					"goals": { "for": 29, "against": 67 }
+			],
+			[
+				{
+					"teamId": 554,
+					"teamName": "Anderlecht",
+					"points": 46,
+					"stats": {
+						"goalsDiff": 31,
+						"played": 38,
+						"win": 22,
+						"draw": 11,
+						"lose": 5,
+						"goals": { "for": 69, "against": 38 }
+					}
+				},
+				{
+					"teamId": 569,
+					"teamName": "Club Brugge KV",
+					"points": 46,
+					"stats": {
+						"goalsDiff": 47,
+						"played": 38,
+						"win": 20,
+						"draw": 11,
+						"lose": 7,
+						"goals": { "for": 82, "against": 35 }
+					}
+				},
+				{
+					"teamId": 1393,
+					"teamName": "Union St. Gilloise",
+					"points": 43,
+					"stats": {
+						"goalsDiff": 34,
+						"played": 38,
+						"win": 23,
+						"draw": 9,
+						"lose": 6,
+						"goals": { "for": 76, "against": 42 }
+					}
+				},
+				{
+					"teamId": 741,
+					"teamName": "Cercle Brugge",
+					"points": 36,
+					"stats": {
+						"goalsDiff": 11,
+						"played": 38,
+						"win": 17,
+						"draw": 8,
+						"lose": 13,
+						"goals": { "for": 56, "against": 45 }
+					}
+				},
+				{
+					"teamId": 742,
+					"teamName": "Genk",
+					"points": 34,
+					"stats": {
+						"goalsDiff": 12,
+						"played": 38,
+						"win": 15,
+						"draw": 12,
+						"lose": 11,
+						"goals": { "for": 58, "against": 46 }
+					}
+				},
+				{
+					"teamId": 740,
+					"teamName": "Antwerp",
+					"points": 29,
+					"stats": {
+						"goalsDiff": 16,
+						"played": 38,
+						"win": 15,
+						"draw": 10,
+						"lose": 13,
+						"goals": { "for": 59, "against": 43 }
+					}
 				}
-			},
-			{
-				"teamId": 6224,
-				"teamName": "RWDM",
-				"points": 30,
-				"stats": {
-					"goalsDiff": -37,
-					"played": 36,
-					"win": 7,
-					"draw": 9,
-					"lose": 20,
-					"goals": { "for": 39, "against": 76 }
+			],
+			[
+				{
+					"teamId": 631,
+					"teamName": "Gent",
+					"points": 42,
+					"stats": {
+						"goalsDiff": 27,
+						"played": 38,
+						"win": 18,
+						"draw": 11,
+						"lose": 9,
+						"goals": { "for": 74, "against": 47 }
+					}
+				},
+				{
+					"teamId": 266,
+					"teamName": "KV Mechelen",
+					"points": 33,
+					"stats": {
+						"goalsDiff": 4,
+						"played": 38,
+						"win": 16,
+						"draw": 7,
+						"lose": 15,
+						"goals": { "for": 54, "against": 50 }
+					}
+				},
+				{
+					"teamId": 735,
+					"teamName": "St. Truiden",
+					"points": 32,
+					"stats": {
+						"goalsDiff": -10,
+						"played": 38,
+						"win": 13,
+						"draw": 13,
+						"lose": 12,
+						"goals": { "for": 48, "against": 58 }
+					}
+				},
+				{
+					"teamId": 260,
+					"teamName": "OH Leuven",
+					"points": 29,
+					"stats": {
+						"goalsDiff": -12,
+						"played": 38,
+						"win": 11,
+						"draw": 10,
+						"lose": 17,
+						"goals": { "for": 44, "against": 56 }
+					}
+				},
+				{
+					"teamId": 733,
+					"teamName": "Standard Liege",
+					"points": 22,
+					"stats": {
+						"goalsDiff": -14,
+						"played": 37,
+						"win": 8,
+						"draw": 15,
+						"lose": 14,
+						"goals": { "for": 42, "against": 56 }
+					}
+				},
+				{
+					"teamId": 261,
+					"teamName": "KVC Westerlo",
+					"points": 18,
+					"stats": {
+						"goalsDiff": -19,
+						"played": 37,
+						"win": 7,
+						"draw": 12,
+						"lose": 18,
+						"goals": { "for": 52, "against": 71 }
+					}
 				}
-			},
-			{
-				"teamId": 739,
-				"teamName": "AS Eupen",
-				"points": 28,
-				"stats": {
-					"goalsDiff": -37,
-					"played": 36,
-					"win": 8,
-					"draw": 4,
-					"lose": 24,
-					"goals": { "for": 29, "against": 66 }
+			],
+			[
+				{
+					"teamId": 1393,
+					"teamName": "Union St. Gilloise",
+					"points": 70,
+					"stats": {
+						"goalsDiff": 32,
+						"played": 30,
+						"win": 21,
+						"draw": 7,
+						"lose": 2,
+						"goals": { "for": 63, "against": 31 }
+					}
+				},
+				{
+					"teamId": 554,
+					"teamName": "Anderlecht",
+					"points": 63,
+					"stats": {
+						"goalsDiff": 28,
+						"played": 30,
+						"win": 18,
+						"draw": 9,
+						"lose": 3,
+						"goals": { "for": 58, "against": 30 }
+					}
+				},
+				{
+					"teamId": 740,
+					"teamName": "Antwerp",
+					"points": 52,
+					"stats": {
+						"goalsDiff": 28,
+						"played": 30,
+						"win": 14,
+						"draw": 10,
+						"lose": 6,
+						"goals": { "for": 55, "against": 27 }
+					}
+				},
+				{
+					"teamId": 569,
+					"teamName": "Club Brugge KV",
+					"points": 51,
+					"stats": {
+						"goalsDiff": 33,
+						"played": 30,
+						"win": 14,
+						"draw": 9,
+						"lose": 7,
+						"goals": { "for": 62, "against": 29 }
+					}
+				},
+				{
+					"teamId": 741,
+					"teamName": "Cercle Brugge",
+					"points": 47,
+					"stats": {
+						"goalsDiff": 10,
+						"played": 30,
+						"win": 14,
+						"draw": 5,
+						"lose": 11,
+						"goals": { "for": 44, "against": 34 }
+					}
+				},
+				{
+					"teamId": 742,
+					"teamName": "Genk",
+					"points": 47,
+					"stats": {
+						"goalsDiff": 20,
+						"played": 30,
+						"win": 12,
+						"draw": 11,
+						"lose": 7,
+						"goals": { "for": 51, "against": 31 }
+					}
+				},
+				{
+					"teamId": 631,
+					"teamName": "Gent",
+					"points": 47,
+					"stats": {
+						"goalsDiff": 15,
+						"played": 30,
+						"win": 12,
+						"draw": 11,
+						"lose": 7,
+						"goals": { "for": 53, "against": 38 }
+					}
+				},
+				{
+					"teamId": 266,
+					"teamName": "KV Mechelen",
+					"points": 45,
+					"stats": {
+						"goalsDiff": 5,
+						"played": 30,
+						"win": 13,
+						"draw": 6,
+						"lose": 11,
+						"goals": { "for": 39, "against": 34 }
+					}
+				},
+				{
+					"teamId": 735,
+					"teamName": "St. Truiden",
+					"points": 40,
+					"stats": {
+						"goalsDiff": -11,
+						"played": 30,
+						"win": 10,
+						"draw": 10,
+						"lose": 10,
+						"goals": { "for": 35, "against": 46 }
+					}
+				},
+				{
+					"teamId": 733,
+					"teamName": "Standard Liege",
+					"points": 34,
+					"stats": {
+						"goalsDiff": -8,
+						"played": 30,
+						"win": 8,
+						"draw": 10,
+						"lose": 12,
+						"goals": { "for": 33, "against": 41 }
+					}
+				},
+				{
+					"teamId": 261,
+					"teamName": "KVC Westerlo",
+					"points": 30,
+					"stats": {
+						"goalsDiff": -12,
+						"played": 30,
+						"win": 7,
+						"draw": 9,
+						"lose": 14,
+						"goals": { "for": 42, "against": 54 }
+					}
+				},
+				{
+					"teamId": 260,
+					"teamName": "OH Leuven",
+					"points": 29,
+					"stats": {
+						"goalsDiff": -13,
+						"played": 30,
+						"win": 7,
+						"draw": 8,
+						"lose": 15,
+						"goals": { "for": 34, "against": 47 }
+					}
+				},
+				{
+					"teamId": 736,
+					"teamName": "Charleroi",
+					"points": 29,
+					"stats": {
+						"goalsDiff": -22,
+						"played": 30,
+						"win": 7,
+						"draw": 8,
+						"lose": 15,
+						"goals": { "for": 26, "against": 48 }
+					}
+				},
+				{
+					"teamId": 739,
+					"teamName": "AS Eupen",
+					"points": 24,
+					"stats": {
+						"goalsDiff": -34,
+						"played": 30,
+						"win": 7,
+						"draw": 3,
+						"lose": 20,
+						"goals": { "for": 24, "against": 58 }
+					}
+				},
+				{
+					"teamId": 734,
+					"teamName": "Kortrijk",
+					"points": 24,
+					"stats": {
+						"goalsDiff": -35,
+						"played": 30,
+						"win": 6,
+						"draw": 6,
+						"lose": 18,
+						"goals": { "for": 22, "against": 57 }
+					}
+				},
+				{
+					"teamId": 6224,
+					"teamName": "RWDM",
+					"points": 23,
+					"stats": {
+						"goalsDiff": -36,
+						"played": 30,
+						"win": 5,
+						"draw": 8,
+						"lose": 17,
+						"goals": { "for": 31, "against": 67 }
+					}
 				}
-			},
-			{
-				"teamId": 554,
-				"teamName": "Anderlecht",
-				"points": 46,
-				"stats": {
-					"goalsDiff": 31,
-					"played": 38,
-					"win": 22,
-					"draw": 11,
-					"lose": 5,
-					"goals": { "for": 69, "against": 38 }
-				}
-			},
-			{
-				"teamId": 569,
-				"teamName": "Club Brugge KV",
-				"points": 45,
-				"stats": {
-					"goalsDiff": 47,
-					"played": 37,
-					"win": 20,
-					"draw": 10,
-					"lose": 7,
-					"goals": { "for": 80, "against": 33 }
-				}
-			},
-			{
-				"teamId": 1393,
-				"teamName": "Union St. Gilloise",
-				"points": 42,
-				"stats": {
-					"goalsDiff": 34,
-					"played": 37,
-					"win": 23,
-					"draw": 8,
-					"lose": 6,
-					"goals": { "for": 74, "against": 40 }
-				}
-			},
-			{
-				"teamId": 741,
-				"teamName": "Cercle Brugge",
-				"points": 36,
-				"stats": {
-					"goalsDiff": 11,
-					"played": 38,
-					"win": 17,
-					"draw": 8,
-					"lose": 13,
-					"goals": { "for": 56, "against": 45 }
-				}
-			},
-			{
-				"teamId": 742,
-				"teamName": "Genk",
-				"points": 34,
-				"stats": {
-					"goalsDiff": 12,
-					"played": 38,
-					"win": 15,
-					"draw": 12,
-					"lose": 11,
-					"goals": { "for": 58, "against": 46 }
-				}
-			},
-			{
-				"teamId": 740,
-				"teamName": "Antwerp",
-				"points": 29,
-				"stats": {
-					"goalsDiff": 16,
-					"played": 38,
-					"win": 15,
-					"draw": 10,
-					"lose": 13,
-					"goals": { "for": 59, "against": 43 }
-				}
-			},
-			{
-				"teamId": 631,
-				"teamName": "Gent",
-				"points": 42,
-				"stats": {
-					"goalsDiff": 27,
-					"played": 38,
-					"win": 18,
-					"draw": 11,
-					"lose": 9,
-					"goals": { "for": 74, "against": 47 }
-				}
-			},
-			{
-				"teamId": 266,
-				"teamName": "KV Mechelen",
-				"points": 33,
-				"stats": {
-					"goalsDiff": 4,
-					"played": 38,
-					"win": 16,
-					"draw": 7,
-					"lose": 15,
-					"goals": { "for": 54, "against": 50 }
-				}
-			},
-			{
-				"teamId": 735,
-				"teamName": "St. Truiden",
-				"points": 32,
-				"stats": {
-					"goalsDiff": -10,
-					"played": 38,
-					"win": 13,
-					"draw": 13,
-					"lose": 12,
-					"goals": { "for": 48, "against": 58 }
-				}
-			},
-			{
-				"teamId": 260,
-				"teamName": "OH Leuven",
-				"points": 29,
-				"stats": {
-					"goalsDiff": -12,
-					"played": 38,
-					"win": 11,
-					"draw": 10,
-					"lose": 17,
-					"goals": { "for": 44, "against": 56 }
-				}
-			},
-			{
-				"teamId": 733,
-				"teamName": "Standard Liege",
-				"points": 22,
-				"stats": {
-					"goalsDiff": -14,
-					"played": 37,
-					"win": 8,
-					"draw": 15,
-					"lose": 14,
-					"goals": { "for": 42, "against": 56 }
-				}
-			},
-			{
-				"teamId": 261,
-				"teamName": "KVC Westerlo",
-				"points": 18,
-				"stats": {
-					"goalsDiff": -19,
-					"played": 37,
-					"win": 7,
-					"draw": 12,
-					"lose": 18,
-					"goals": { "for": 52, "against": 71 }
-				}
-			},
-			{
-				"teamId": 1393,
-				"teamName": "Union St. Gilloise",
-				"points": 70,
-				"stats": {
-					"goalsDiff": 32,
-					"played": 30,
-					"win": 21,
-					"draw": 7,
-					"lose": 2,
-					"goals": { "for": 63, "against": 31 }
-				}
-			},
-			{
-				"teamId": 554,
-				"teamName": "Anderlecht",
-				"points": 63,
-				"stats": {
-					"goalsDiff": 28,
-					"played": 30,
-					"win": 18,
-					"draw": 9,
-					"lose": 3,
-					"goals": { "for": 58, "against": 30 }
-				}
-			},
-			{
-				"teamId": 740,
-				"teamName": "Antwerp",
-				"points": 52,
-				"stats": {
-					"goalsDiff": 28,
-					"played": 30,
-					"win": 14,
-					"draw": 10,
-					"lose": 6,
-					"goals": { "for": 55, "against": 27 }
-				}
-			},
-			{
-				"teamId": 569,
-				"teamName": "Club Brugge KV",
-				"points": 51,
-				"stats": {
-					"goalsDiff": 33,
-					"played": 30,
-					"win": 14,
-					"draw": 9,
-					"lose": 7,
-					"goals": { "for": 62, "against": 29 }
-				}
-			},
-			{
-				"teamId": 741,
-				"teamName": "Cercle Brugge",
-				"points": 47,
-				"stats": {
-					"goalsDiff": 10,
-					"played": 30,
-					"win": 14,
-					"draw": 5,
-					"lose": 11,
-					"goals": { "for": 44, "against": 34 }
-				}
-			},
-			{
-				"teamId": 742,
-				"teamName": "Genk",
-				"points": 47,
-				"stats": {
-					"goalsDiff": 20,
-					"played": 30,
-					"win": 12,
-					"draw": 11,
-					"lose": 7,
-					"goals": { "for": 51, "against": 31 }
-				}
-			},
-			{
-				"teamId": 631,
-				"teamName": "Gent",
-				"points": 47,
-				"stats": {
-					"goalsDiff": 15,
-					"played": 30,
-					"win": 12,
-					"draw": 11,
-					"lose": 7,
-					"goals": { "for": 53, "against": 38 }
-				}
-			},
-			{
-				"teamId": 266,
-				"teamName": "KV Mechelen",
-				"points": 45,
-				"stats": {
-					"goalsDiff": 5,
-					"played": 30,
-					"win": 13,
-					"draw": 6,
-					"lose": 11,
-					"goals": { "for": 39, "against": 34 }
-				}
-			},
-			{
-				"teamId": 735,
-				"teamName": "St. Truiden",
-				"points": 40,
-				"stats": {
-					"goalsDiff": -11,
-					"played": 30,
-					"win": 10,
-					"draw": 10,
-					"lose": 10,
-					"goals": { "for": 35, "against": 46 }
-				}
-			},
-			{
-				"teamId": 733,
-				"teamName": "Standard Liege",
-				"points": 34,
-				"stats": {
-					"goalsDiff": -8,
-					"played": 30,
-					"win": 8,
-					"draw": 10,
-					"lose": 12,
-					"goals": { "for": 33, "against": 41 }
-				}
-			},
-			{
-				"teamId": 261,
-				"teamName": "KVC Westerlo",
-				"points": 30,
-				"stats": {
-					"goalsDiff": -12,
-					"played": 30,
-					"win": 7,
-					"draw": 9,
-					"lose": 14,
-					"goals": { "for": 42, "against": 54 }
-				}
-			},
-			{
-				"teamId": 260,
-				"teamName": "OH Leuven",
-				"points": 29,
-				"stats": {
-					"goalsDiff": -13,
-					"played": 30,
-					"win": 7,
-					"draw": 8,
-					"lose": 15,
-					"goals": { "for": 34, "against": 47 }
-				}
-			},
-			{
-				"teamId": 736,
-				"teamName": "Charleroi",
-				"points": 29,
-				"stats": {
-					"goalsDiff": -22,
-					"played": 30,
-					"win": 7,
-					"draw": 8,
-					"lose": 15,
-					"goals": { "for": 26, "against": 48 }
-				}
-			},
-			{
-				"teamId": 739,
-				"teamName": "AS Eupen",
-				"points": 24,
-				"stats": {
-					"goalsDiff": -34,
-					"played": 30,
-					"win": 7,
-					"draw": 3,
-					"lose": 20,
-					"goals": { "for": 24, "against": 58 }
-				}
-			},
-			{
-				"teamId": 734,
-				"teamName": "Kortrijk",
-				"points": 24,
-				"stats": {
-					"goalsDiff": -35,
-					"played": 30,
-					"win": 6,
-					"draw": 6,
-					"lose": 18,
-					"goals": { "for": 22, "against": 57 }
-				}
-			},
-			{
-				"teamId": 6224,
-				"teamName": "RWDM",
-				"points": 23,
-				"stats": {
-					"goalsDiff": -36,
-					"played": 30,
-					"win": 5,
-					"draw": 8,
-					"lose": 17,
-					"goals": { "for": 31, "against": 67 }
-				}
-			}
+			]
 		],
 		"matches": [
 			{
@@ -7896,45 +8268,44 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
+						"name": "El equipo local marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 0.9,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "✅", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
-								"check": "✅",
-								"weight": 0.15
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
+							},
+							{
+								"description": "El visitante está en los últimos 3 puestos de la tabla",
+								"check": "❌",
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "❌",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "✅",
 								"weight": 0
 							}
 						],
-						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }]
+						"warnings": [
+							{
+								"description": "El visitante tiene buenos resultados como visitante (Puntos ganados > 50%)"
+							}
+						]
 					},
 					{
 						"id": "GEP",
@@ -7943,50 +8314,62 @@
 						"acceptancePercentage": 1,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": []
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
+						"name": "El equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "✅",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "✅", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "✅", "weight": 0.25 }
 						],
 						"warnings": []
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"name": "El equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
+								"check": "✅",
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
+								"check": "✅",
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.083
+							},
+							{
+								"description": "El local está en los últimos 3 puestos de la tabla",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
-						"warnings": [{ "description": "El equipo local es destacado" }]
+						"warnings": [{ "description": "El local es destacado" }]
 					}
 				],
 				"teams": {
@@ -7994,12 +8377,14 @@
 						"id": 569,
 						"name": "Club Brugge KV",
 						"country": "🇧🇪",
-						"position": 6,
+						"position": 2,
 						"featured": true,
 						"stats": {
 							"total_de_partidos": 15,
 							"total_de_goles": 32,
 							"promedio_de_goles": 2.1,
+							"total_de_goles_recibidos": 35,
+							"promedio_de_goles_recibidos": 0.9,
 							"---|---": 0,
 							"goles_de_local": 18,
 							"promedio_de_goles_de_local": 2.6,
@@ -8021,29 +8406,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 62.5,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 5,
-							"ultimos_promedio_de_goles": 1.7,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 8,
+							"ultimos_promedio_de_goles": 2,
+							"ultimos_total_de_goles_recibidos": 35,
+							"ultimos_promedio_de_goles_recibidos": 0.9,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 8,
-							"ultimos_promedio_de_goles_de_local": 2.7,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 2,
+							"ultimos_goles_de_local": 9,
+							"ultimos_promedio_de_goles_de_local": 2.3,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 3,
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 7,
+							"ultimos_goles_de_visitante": 9,
 							"ultimos_promedio_de_goles_de_visitante": 2.3,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 2,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 3,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_partidos_con_goles_de_visitante": 4,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -8057,7 +8444,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -8084,7 +8471,7 @@
 										"id": 740,
 										"name": "Antwerp",
 										"country": "🇧🇪",
-										"position": 10,
+										"position": 6,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -8093,7 +8480,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -8120,7 +8507,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 2,
 										"winner": false
@@ -8138,7 +8525,7 @@
 										"id": 742,
 										"name": "Genk",
 										"country": "🇧🇪",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -8147,7 +8534,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -8165,7 +8552,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 4,
 										"winner": true
@@ -8174,7 +8561,7 @@
 										"id": 742,
 										"name": "Genk",
 										"country": "🇧🇪",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -8192,7 +8579,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -8201,7 +8588,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -8228,7 +8615,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -8246,7 +8633,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -8255,7 +8642,7 @@
 										"id": 740,
 										"name": "Antwerp",
 										"country": "🇧🇪",
-										"position": 10,
+										"position": 6,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -8273,7 +8660,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -8300,7 +8687,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -8309,7 +8696,7 @@
 										"id": 554,
 										"name": "Anderlecht",
 										"country": "🇧🇪",
-										"position": 5,
+										"position": 1,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -8327,7 +8714,7 @@
 										"id": 741,
 										"name": "Cercle Brugge",
 										"country": "🇧🇪",
-										"position": 8,
+										"position": 4,
 										"featured": false,
 										"score": 1,
 										"winner": null
@@ -8336,7 +8723,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -8354,7 +8741,7 @@
 										"id": 735,
 										"name": "St. Truiden",
 										"country": "🇧🇪",
-										"position": 13,
+										"position": 3,
 										"featured": false,
 										"score": 2,
 										"winner": true
@@ -8363,7 +8750,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -8381,7 +8768,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -8408,7 +8795,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -8417,7 +8804,7 @@
 										"id": 260,
 										"name": "OH Leuven",
 										"country": "🇧🇪",
-										"position": 14,
+										"position": 4,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -8444,7 +8831,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -8457,12 +8844,14 @@
 						"id": 1393,
 						"name": "Union St. Gilloise",
 						"country": "🇧🇪",
-						"position": 7,
+						"position": 3,
 						"featured": false,
 						"stats": {
 							"total_de_partidos": 15,
 							"total_de_goles": 21,
 							"promedio_de_goles": 1.4,
+							"total_de_goles_recibidos": 42,
+							"promedio_de_goles_recibidos": 1.1,
 							"---|---": 0,
 							"goles_de_local": 13,
 							"promedio_de_goles_de_local": 1.4,
@@ -8484,29 +8873,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 66.7,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 5,
-							"ultimos_promedio_de_goles": 1.7,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 8,
+							"ultimos_promedio_de_goles": 2,
+							"ultimos_total_de_goles_recibidos": 42,
+							"ultimos_promedio_de_goles_recibidos": 1.1,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 5,
-							"ultimos_promedio_de_goles_de_local": 1.7,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_goles_de_local": 6,
+							"ultimos_promedio_de_goles_de_local": 1.5,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 2,
-							"ultimos_partidos_perdidos_de_local": 0,
+							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_partidos_con_goles_de_local": 3,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 75,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 4,
+							"ultimos_goles_de_visitante": 5,
 							"ultimos_promedio_de_goles_de_visitante": 1.3,
-							"ultimos_partidos_de_visitante": 3,
+							"ultimos_partidos_de_visitante": 4,
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 2,
-							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_partidos_empatados_de_visitante": 1,
+							"ultimos_partidos_con_goles_de_visitante": 3,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 50
 						},
 						"matches": [
 							{
@@ -8520,7 +8911,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 1,
 										"winner": true
@@ -8529,7 +8920,7 @@
 										"id": 740,
 										"name": "Antwerp",
 										"country": "🇧🇪",
-										"position": 10,
+										"position": 6,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -8547,7 +8938,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 0,
 										"winner": null
@@ -8556,7 +8947,7 @@
 										"id": 554,
 										"name": "Anderlecht",
 										"country": "🇧🇪",
-										"position": 5,
+										"position": 1,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -8574,7 +8965,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 4,
 										"winner": true
@@ -8583,7 +8974,7 @@
 										"id": 740,
 										"name": "Antwerp",
 										"country": "🇧🇪",
-										"position": 10,
+										"position": 6,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -8601,7 +8992,7 @@
 										"id": 740,
 										"name": "Antwerp",
 										"country": "🇧🇪",
-										"position": 10,
+										"position": 6,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -8610,7 +9001,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 3,
 										"winner": true
@@ -8628,7 +9019,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -8637,7 +9028,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -8655,7 +9046,7 @@
 										"id": 554,
 										"name": "Anderlecht",
 										"country": "🇧🇪",
-										"position": 5,
+										"position": 1,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -8664,7 +9055,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -8682,7 +9073,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 2,
 										"winner": false
@@ -8691,7 +9082,7 @@
 										"id": 741,
 										"name": "Cercle Brugge",
 										"country": "🇧🇪",
-										"position": 8,
+										"position": 4,
 										"featured": false,
 										"score": 3,
 										"winner": true
@@ -8709,7 +9100,7 @@
 										"id": 742,
 										"name": "Genk",
 										"country": "🇧🇪",
-										"position": 9,
+										"position": 5,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -8718,7 +9109,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -8736,7 +9127,7 @@
 										"id": 740,
 										"name": "Antwerp",
 										"country": "🇧🇪",
-										"position": 10,
+										"position": 6,
 										"featured": false,
 										"score": 1,
 										"winner": null
@@ -8745,7 +9136,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 1,
 										"winner": null
@@ -8772,7 +9163,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 1,
 										"winner": true
@@ -8790,7 +9181,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 1,
 										"winner": null
@@ -8799,8 +9190,8 @@
 										"id": 631,
 										"name": "Gent",
 										"country": "🇧🇪",
-										"position": 11,
-										"featured": false,
+										"position": 1,
+										"featured": true,
 										"score": 1,
 										"winner": null
 									}
@@ -8817,7 +9208,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -8844,7 +9235,7 @@
 										"id": 260,
 										"name": "OH Leuven",
 										"country": "🇧🇪",
-										"position": 14,
+										"position": 4,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -8853,7 +9244,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 2,
 										"winner": true
@@ -8871,7 +9262,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 2,
 										"winner": true
@@ -8880,7 +9271,7 @@
 										"id": 569,
 										"name": "Club Brugge KV",
 										"country": "🇧🇪",
-										"position": 6,
+										"position": 2,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -8898,7 +9289,7 @@
 										"id": 1393,
 										"name": "Union St. Gilloise",
 										"country": "🇧🇪",
-										"position": 7,
+										"position": 3,
 										"featured": false,
 										"score": 2,
 										"winner": true
@@ -8907,7 +9298,7 @@
 										"id": 733,
 										"name": "Standard Liege",
 										"country": "🇧🇪",
-										"position": 15,
+										"position": 5,
 										"featured": true,
 										"score": 1,
 										"winner": false

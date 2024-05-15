@@ -14,47 +14,39 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
+						"name": "El equipo local marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 0.75,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "❌",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "✅", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
 								"check": "❌",
-								"weight": 0.15
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "❌",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "❌",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "❌",
 								"weight": 0
 							}
 						],
 						"warnings": [
 							{ "description": "Ambos equipos son destacados" },
-							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+							{
+								"description": "El visitante tiene buenos resultados como visitante (Puntos ganados > 50%)"
+							}
 						],
 						"right": true,
 						"lostRight": false,
@@ -68,14 +60,14 @@
 						"acceptancePercentage": 1,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
@@ -86,40 +78,47 @@
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"name": "El equipo local gana o empata",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "❌",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "✅", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "❌", "weight": 0.25 }
 						],
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
-						"right": false,
-						"lostRight": true,
+						"warnings": [{ "description": "El visitante es destacado" }],
+						"right": true,
+						"lostRight": false,
 						"fail": false,
 						"skippedFail": false
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
+						"name": "El equipo visitante marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 1,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
 								"check": "✅",
-								"weight": 1
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
+								"check": "✅",
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
-						"warnings": [{ "description": "El equipo local es destacado" }],
+						"warnings": [{ "description": "El local es destacado" }],
 						"right": false,
 						"lostRight": false,
 						"fail": true,
@@ -139,6 +138,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 27,
 							"promedio_de_goles": 1.8,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 15,
 							"promedio_de_goles_de_local": 2.1,
@@ -160,29 +161,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 75,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 6,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 8,
 							"ultimos_promedio_de_goles": 2,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 5,
-							"ultimos_promedio_de_goles_de_local": 1.7,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 1,
+							"ultimos_goles_de_local": 8,
+							"ultimos_promedio_de_goles_de_local": 2,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 2,
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_partidos_con_goles_de_local": 3,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 75,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 4,
-							"ultimos_promedio_de_goles_de_visitante": 1.3,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 1,
+							"ultimos_goles_de_visitante": 6,
+							"ultimos_promedio_de_goles_de_visitante": 1.5,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_partidos_con_goles_de_visitante": 4,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 50
 						},
 						"matches": [
 							{
@@ -604,6 +607,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 37,
 							"promedio_de_goles": 2.5,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 17,
 							"promedio_de_goles_de_local": 2.1,
@@ -625,27 +630,29 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 100,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 11,
-							"ultimos_promedio_de_goles": 3.7,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 15,
+							"ultimos_promedio_de_goles": 3.8,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 9,
-							"ultimos_promedio_de_goles_de_local": 3,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_goles_de_local": 10,
+							"ultimos_promedio_de_goles_de_local": 2.5,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 1,
 							"ultimos_partidos_perdidos_de_local": 1,
-							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_empatados_de_local": 2,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 75,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 10,
-							"ultimos_promedio_de_goles_de_visitante": 3.3,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 3,
+							"ultimos_goles_de_visitante": 16,
+							"ultimos_promedio_de_goles_de_visitante": 4,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 4,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_partidos_con_goles_de_visitante": 4,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
@@ -1072,268 +1079,7 @@
 		"name": "Copa Do Brasil",
 		"country": "Brazil",
 		"flag": "🇧🇷",
-		"standings": [
-			{
-				"teamId": 134,
-				"teamName": "Atletico Paranaense",
-				"points": 13,
-				"stats": {
-					"goalsDiff": 6,
-					"played": 6,
-					"win": 4,
-					"draw": 1,
-					"lose": 1,
-					"goals": { "for": 9, "against": 3 }
-				}
-			},
-			{
-				"teamId": 118,
-				"teamName": "Bahia",
-				"points": 13,
-				"stats": {
-					"goalsDiff": 3,
-					"played": 6,
-					"win": 4,
-					"draw": 1,
-					"lose": 1,
-					"goals": { "for": 9, "against": 6 }
-				}
-			},
-			{
-				"teamId": 127,
-				"teamName": "Flamengo",
-				"points": 11,
-				"stats": {
-					"goalsDiff": 2,
-					"played": 6,
-					"win": 3,
-					"draw": 2,
-					"lose": 1,
-					"goals": { "for": 7, "against": 5 }
-				}
-			},
-			{
-				"teamId": 120,
-				"teamName": "Botafogo",
-				"points": 10,
-				"stats": {
-					"goalsDiff": 5,
-					"played": 6,
-					"win": 3,
-					"draw": 1,
-					"lose": 2,
-					"goals": { "for": 12, "against": 7 }
-				}
-			},
-			{
-				"teamId": 135,
-				"teamName": "Cruzeiro",
-				"points": 10,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 5,
-					"win": 3,
-					"draw": 1,
-					"lose": 1,
-					"goals": { "for": 8, "against": 7 }
-				}
-			},
-			{
-				"teamId": 1062,
-				"teamName": "Atletico-MG",
-				"points": 9,
-				"stats": {
-					"goalsDiff": 6,
-					"played": 5,
-					"win": 2,
-					"draw": 3,
-					"lose": 0,
-					"goals": { "for": 9, "against": 3 }
-				}
-			},
-			{
-				"teamId": 794,
-				"teamName": "RB Bragantino",
-				"points": 9,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 6,
-					"win": 2,
-					"draw": 3,
-					"lose": 1,
-					"goals": { "for": 7, "against": 6 }
-				}
-			},
-			{
-				"teamId": 121,
-				"teamName": "Palmeiras",
-				"points": 8,
-				"stats": {
-					"goalsDiff": 0,
-					"played": 6,
-					"win": 2,
-					"draw": 2,
-					"lose": 2,
-					"goals": { "for": 3, "against": 3 }
-				}
-			},
-			{
-				"teamId": 126,
-				"teamName": "Sao Paulo",
-				"points": 7,
-				"stats": {
-					"goalsDiff": 3,
-					"played": 5,
-					"win": 2,
-					"draw": 1,
-					"lose": 2,
-					"goals": { "for": 8, "against": 5 }
-				}
-			},
-			{
-				"teamId": 119,
-				"teamName": "Internacional",
-				"points": 7,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 4,
-					"win": 2,
-					"draw": 1,
-					"lose": 1,
-					"goals": { "for": 4, "against": 3 }
-				}
-			},
-			{
-				"teamId": 154,
-				"teamName": "Fortaleza EC",
-				"points": 7,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 5,
-					"win": 1,
-					"draw": 4,
-					"lose": 0,
-					"goals": { "for": 5, "against": 4 }
-				}
-			},
-			{
-				"teamId": 130,
-				"teamName": "Gremio",
-				"points": 6,
-				"stats": {
-					"goalsDiff": 1,
-					"played": 4,
-					"win": 2,
-					"draw": 0,
-					"lose": 2,
-					"goals": { "for": 4, "against": 3 }
-				}
-			},
-			{
-				"teamId": 133,
-				"teamName": "Vasco DA Gama",
-				"points": 6,
-				"stats": {
-					"goalsDiff": -5,
-					"played": 6,
-					"win": 2,
-					"draw": 0,
-					"lose": 4,
-					"goals": { "for": 6, "against": 11 }
-				}
-			},
-			{
-				"teamId": 140,
-				"teamName": "Criciuma",
-				"points": 5,
-				"stats": {
-					"goalsDiff": 4,
-					"played": 3,
-					"win": 1,
-					"draw": 2,
-					"lose": 0,
-					"goals": { "for": 6, "against": 2 }
-				}
-			},
-			{
-				"teamId": 152,
-				"teamName": "Juventude",
-				"points": 5,
-				"stats": {
-					"goalsDiff": -2,
-					"played": 4,
-					"win": 1,
-					"draw": 2,
-					"lose": 1,
-					"goals": { "for": 5, "against": 7 }
-				}
-			},
-			{
-				"teamId": 131,
-				"teamName": "Corinthians",
-				"points": 5,
-				"stats": {
-					"goalsDiff": -2,
-					"played": 6,
-					"win": 1,
-					"draw": 2,
-					"lose": 3,
-					"goals": { "for": 3, "against": 5 }
-				}
-			},
-			{
-				"teamId": 124,
-				"teamName": "Fluminense",
-				"points": 5,
-				"stats": {
-					"goalsDiff": -3,
-					"played": 5,
-					"win": 1,
-					"draw": 2,
-					"lose": 2,
-					"goals": { "for": 7, "against": 10 }
-				}
-			},
-			{
-				"teamId": 136,
-				"teamName": "Vitoria",
-				"points": 1,
-				"stats": {
-					"goalsDiff": -6,
-					"played": 5,
-					"win": 0,
-					"draw": 1,
-					"lose": 4,
-					"goals": { "for": 5, "against": 11 }
-				}
-			},
-			{
-				"teamId": 144,
-				"teamName": "Atletico Goianiense",
-				"points": 1,
-				"stats": {
-					"goalsDiff": -6,
-					"played": 5,
-					"win": 0,
-					"draw": 1,
-					"lose": 4,
-					"goals": { "for": 2, "against": 8 }
-				}
-			},
-			{
-				"teamId": 1193,
-				"teamName": "Cuiaba",
-				"points": 0,
-				"stats": {
-					"goalsDiff": -10,
-					"played": 4,
-					"win": 0,
-					"draw": 0,
-					"lose": 4,
-					"goals": { "for": 0, "against": 10 }
-				}
-			}
-		],
+		"standings": [],
 		"matches": [
 			{
 				"id": "2024-05-01-Sampaio Correa-Fluminense",
@@ -1344,49 +1090,39 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0.6,
+						"name": "El equipo local marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "✅", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
 								"check": "❌",
-								"weight": 0.15
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "❌",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "✅",
 								"weight": 0
 							}
 						],
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
+						"warnings": [{ "description": "El visitante es destacado y el local no" }],
 						"right": false,
 						"lostRight": false,
-						"fail": false,
-						"skippedFail": true
+						"fail": true,
+						"skippedFail": false
 					},
 					{
 						"id": "GEP",
@@ -1395,35 +1131,32 @@
 						"acceptancePercentage": 1,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"lostRight": false,
 						"fail": false,
 						"skippedFail": false
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
+						"name": "El equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "❌",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "❌", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "❌", "weight": 0.25 }
 						],
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [{ "description": "El visitante es destacado" }],
 						"right": false,
 						"lostRight": false,
 						"fail": false,
@@ -1431,19 +1164,29 @@
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
+						"name": "El equipo visitante marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 1,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "✅",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
+								"check": "❌",
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
 						"warnings": [],
@@ -1466,6 +1209,8 @@
 							"total_de_partidos": 14,
 							"total_de_goles": 25,
 							"promedio_de_goles": 1.8,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 14,
 							"promedio_de_goles_de_local": 1.8,
@@ -1487,29 +1232,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 83.3,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 4,
-							"ultimos_promedio_de_goles": 1.3,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 7,
+							"ultimos_promedio_de_goles": 1.8,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 7,
-							"ultimos_promedio_de_goles_de_local": 2.3,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_goles_de_local": 8,
+							"ultimos_promedio_de_goles_de_local": 2,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 1,
 							"ultimos_partidos_perdidos_de_local": 0,
-							"ultimos_partidos_empatados_de_local": 2,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_empatados_de_local": 3,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 5,
-							"ultimos_promedio_de_goles_de_visitante": 1.7,
-							"ultimos_partidos_de_visitante": 3,
+							"ultimos_promedio_de_goles_de_visitante": 1.3,
+							"ultimos_partidos_de_visitante": 4,
 							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
-							"ultimos_partidos_empatados_de_visitante": 0,
+							"ultimos_partidos_empatados_de_visitante": 1,
 							"ultimos_partidos_con_goles_de_visitante": 2,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -1896,7 +1643,7 @@
 						"id": 124,
 						"name": "Fluminense",
 						"country": "🇧🇷",
-						"position": 17,
+						"position": null,
 						"featured": true,
 						"score": 2,
 						"winner": true,
@@ -1904,6 +1651,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 13,
 							"promedio_de_goles": 0.9,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 10,
 							"promedio_de_goles_de_local": 1.4,
@@ -1925,29 +1674,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 50,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 2,
-							"ultimos_promedio_de_goles": 0.7,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 3,
+							"ultimos_promedio_de_goles": 0.8,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
 							"ultimos_goles_de_local": 6,
-							"ultimos_promedio_de_goles_de_local": 2,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_promedio_de_goles_de_local": 1.5,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 2,
-							"ultimos_partidos_perdidos_de_local": 0,
+							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 1,
 							"ultimos_partidos_con_goles_de_local": 3,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 75,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 1,
-							"ultimos_promedio_de_goles_de_visitante": 0.3,
-							"ultimos_partidos_de_visitante": 3,
+							"ultimos_goles_de_visitante": 2,
+							"ultimos_promedio_de_goles_de_visitante": 0.5,
+							"ultimos_partidos_de_visitante": 4,
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 2,
-							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_partidos_empatados_de_visitante": 2,
+							"ultimos_partidos_con_goles_de_visitante": 2,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 33.3
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 50
 						},
 						"matches": [
 							{
@@ -1961,7 +1712,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -1970,7 +1721,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -1997,7 +1748,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -2015,7 +1766,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -2024,7 +1775,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -2042,7 +1793,7 @@
 										"id": 118,
 										"name": "Bahia",
 										"country": "🇧🇷",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -2051,7 +1802,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -2069,7 +1820,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": null
@@ -2078,7 +1829,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": null
@@ -2096,7 +1847,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -2132,7 +1883,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -2150,7 +1901,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -2159,7 +1910,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -2177,7 +1928,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -2186,7 +1937,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -2204,7 +1955,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": false
@@ -2213,7 +1964,7 @@
 										"id": 120,
 										"name": "Botafogo",
 										"country": "🇧🇷",
-										"position": 4,
+										"position": null,
 										"featured": true,
 										"score": 4,
 										"winner": true
@@ -2231,7 +1982,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -2258,7 +2009,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -2267,7 +2018,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -2294,7 +2045,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -2321,7 +2072,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -2339,7 +2090,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -2348,7 +2099,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -2368,47 +2119,37 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0.6,
+						"name": "El equipo local marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "❌",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "✅", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
 								"check": "❌",
-								"weight": 0.15
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "❌",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "❌",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "❌",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "✅",
 								"weight": 0
 							}
 						],
-						"warnings": [{ "description": "El equipo visitante es destacado y el local no" }],
-						"right": false,
-						"lostRight": true,
+						"warnings": [{ "description": "El visitante es destacado y el local no" }],
+						"right": true,
+						"lostRight": false,
 						"fail": false,
 						"skippedFail": false
 					},
@@ -2419,14 +2160,14 @@
 						"acceptancePercentage": 1,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": [],
@@ -2437,17 +2178,14 @@
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
+						"name": "El equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "❌",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "❌", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "❌", "weight": 0.25 }
 						],
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [{ "description": "El visitante es destacado" }],
 						"right": false,
 						"lostRight": true,
 						"fail": false,
@@ -2455,19 +2193,29 @@
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
+						"name": "El equipo visitante marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 1,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "✅",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
+								"check": "✅",
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
 						"warnings": [],
@@ -2490,6 +2238,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 17,
 							"promedio_de_goles": 1.1,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 14,
 							"promedio_de_goles_de_local": 1.4,
@@ -2511,27 +2261,29 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 80,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
+							"ultimos_total_de_partidos": 4,
 							"ultimos_total_de_goles": 1,
 							"ultimos_promedio_de_goles": 0.3,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 2,
-							"ultimos_promedio_de_goles_de_local": 0.7,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_goles_de_local": 3,
+							"ultimos_promedio_de_goles_de_local": 0.8,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 1,
 							"ultimos_partidos_perdidos_de_local": 0,
-							"ultimos_partidos_empatados_de_local": 2,
-							"ultimos_partidos_con_goles_de_local": 1,
+							"ultimos_partidos_empatados_de_local": 3,
+							"ultimos_partidos_con_goles_de_local": 2,
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 1,
-							"ultimos_promedio_de_goles_de_visitante": 0.3,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 0,
+							"ultimos_goles_de_visitante": 3,
+							"ultimos_promedio_de_goles_de_visitante": 0.8,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 3,
-							"ultimos_partidos_con_goles_de_visitante": 1,
+							"ultimos_partidos_con_goles_de_visitante": 2,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
@@ -2853,7 +2605,7 @@
 										"id": 135,
 										"name": "Cruzeiro",
 										"country": "🇧🇷",
-										"position": 5,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -2947,7 +2699,7 @@
 						"id": 794,
 						"name": "RB Bragantino",
 						"country": "🇧🇷",
-						"position": 7,
+						"position": null,
 						"featured": true,
 						"score": 1,
 						"winner": null,
@@ -2955,6 +2707,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 17,
 							"promedio_de_goles": 1.1,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 11,
 							"promedio_de_goles_de_local": 1.4,
@@ -2976,29 +2730,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 42.9,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 4,
-							"ultimos_promedio_de_goles": 1.3,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 6,
+							"ultimos_promedio_de_goles": 1.5,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 5,
-							"ultimos_promedio_de_goles_de_local": 1.7,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 3,
+							"ultimos_goles_de_local": 6,
+							"ultimos_promedio_de_goles_de_local": 1.5,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 4,
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 3,
+							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1,
-							"ultimos_partidos_de_visitante": 3,
+							"ultimos_partidos_de_visitante": 4,
 							"ultimos_partidos_ganados_de_visitante": 0,
-							"ultimos_partidos_perdidos_de_visitante": 1,
+							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 2,
-							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_partidos_con_goles_de_visitante": 3,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 50
 						},
 						"matches": [
 							{
@@ -3012,7 +2768,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -3021,7 +2777,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -3039,7 +2795,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -3066,7 +2822,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -3075,7 +2831,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -3093,7 +2849,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -3102,7 +2858,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -3120,7 +2876,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": null
@@ -3129,7 +2885,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": null
@@ -3156,7 +2912,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -3174,7 +2930,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -3210,7 +2966,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -3228,7 +2984,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -3255,7 +3011,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -3264,7 +3020,7 @@
 										"id": 120,
 										"name": "Botafogo",
 										"country": "🇧🇷",
-										"position": 4,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -3291,7 +3047,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -3309,7 +3065,7 @@
 										"id": 120,
 										"name": "Botafogo",
 										"country": "🇧🇷",
-										"position": 4,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -3318,7 +3074,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -3336,7 +3092,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -3363,7 +3119,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": true
@@ -3399,7 +3155,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -3419,40 +3175,30 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
+						"name": "El equipo local marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 0.75,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "✅", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
 								"check": "❌",
-								"weight": 0.15
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "❌",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "✅",
 								"weight": 0
 							}
@@ -3470,14 +3216,14 @@
 						"acceptancePercentage": 1,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": [{ "description": "Ambos equipos son destacados" }],
@@ -3488,44 +3234,51 @@
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"name": "El equipo local gana o empata",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "❌",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "✅", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "❌", "weight": 0.25 }
 						],
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
-						"right": false,
-						"lostRight": true,
+						"warnings": [{ "description": "El visitante es destacado" }],
+						"right": true,
+						"lostRight": false,
 						"fail": false,
 						"skippedFail": false
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"name": "El equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
+								"check": "✅",
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
+								"check": "✅",
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.083
 							}
 						],
-						"warnings": [{ "description": "El equipo local es destacado" }],
+						"warnings": [{ "description": "El local es destacado" }],
 						"right": false,
 						"lostRight": false,
-						"fail": false,
-						"skippedFail": true
+						"fail": true,
+						"skippedFail": false
 					}
 				],
 				"teams": {
@@ -3533,7 +3286,7 @@
 						"id": 154,
 						"name": "Fortaleza EC",
 						"country": "🇧🇷",
-						"position": 11,
+						"position": null,
 						"featured": true,
 						"score": 0,
 						"winner": null,
@@ -3541,6 +3294,8 @@
 							"total_de_partidos": 14,
 							"total_de_goles": 26,
 							"promedio_de_goles": 1.9,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 19,
 							"promedio_de_goles_de_local": 1.9,
@@ -3562,29 +3317,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 75,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 10,
-							"ultimos_promedio_de_goles": 3.3,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 11,
+							"ultimos_promedio_de_goles": 2.8,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 10,
-							"ultimos_promedio_de_goles_de_local": 3.3,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_goles_de_local": 11,
+							"ultimos_promedio_de_goles_de_local": 2.8,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 2,
 							"ultimos_partidos_perdidos_de_local": 0,
-							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_empatados_de_local": 2,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 5,
-							"ultimos_promedio_de_goles_de_visitante": 1.7,
-							"ultimos_partidos_de_visitante": 3,
+							"ultimos_goles_de_visitante": 7,
+							"ultimos_promedio_de_goles_de_visitante": 1.8,
+							"ultimos_partidos_de_visitante": 4,
 							"ultimos_partidos_ganados_de_visitante": 2,
-							"ultimos_partidos_perdidos_de_visitante": 0,
+							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_partidos_con_goles_de_visitante": 4,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -3598,7 +3355,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -3607,7 +3364,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -3625,7 +3382,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 4,
 										"winner": true
@@ -3652,7 +3409,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 5,
 										"winner": true
@@ -3679,7 +3436,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -3688,7 +3445,7 @@
 										"id": 135,
 										"name": "Cruzeiro",
 										"country": "🇧🇷",
-										"position": 5,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -3706,7 +3463,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -3715,7 +3472,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -3733,7 +3490,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 5,
 										"winner": true
@@ -3769,7 +3526,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -3796,7 +3553,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -3814,7 +3571,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -3850,7 +3607,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": false
@@ -3868,7 +3625,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -3877,7 +3634,7 @@
 										"id": 136,
 										"name": "Vitoria",
 										"country": "🇧🇷",
-										"position": 18,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": true
@@ -3895,7 +3652,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -3922,7 +3679,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -3949,7 +3706,7 @@
 										"id": 154,
 										"name": "Fortaleza EC",
 										"country": "🇧🇷",
-										"position": 11,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": true
@@ -3971,7 +3728,7 @@
 						"id": 133,
 						"name": "Vasco DA Gama",
 						"country": "🇧🇷",
-						"position": 13,
+						"position": null,
 						"featured": true,
 						"score": 0,
 						"winner": null,
@@ -3979,6 +3736,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 22,
 							"promedio_de_goles": 1.5,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 13,
 							"promedio_de_goles_de_local": 1.6,
@@ -4000,29 +3759,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 42.9,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 2,
-							"ultimos_promedio_de_goles": 0.7,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 4,
+							"ultimos_promedio_de_goles": 1,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 3,
-							"ultimos_promedio_de_goles_de_local": 1,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_goles_de_local": 6,
+							"ultimos_promedio_de_goles_de_local": 1.5,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 1,
 							"ultimos_partidos_perdidos_de_local": 1,
-							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_partidos_empatados_de_local": 2,
+							"ultimos_partidos_con_goles_de_local": 3,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 75,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 2,
-							"ultimos_promedio_de_goles_de_visitante": 0.7,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 0,
+							"ultimos_goles_de_visitante": 5,
+							"ultimos_promedio_de_goles_de_visitante": 1.3,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 3,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_partidos_con_goles_de_visitante": 3,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 0
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 25
 						},
 						"matches": [
 							{
@@ -4036,7 +3797,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -4045,7 +3806,7 @@
 										"id": 140,
 										"name": "Criciuma",
 										"country": "🇧🇷",
-										"position": 14,
+										"position": null,
 										"featured": false,
 										"score": 4,
 										"winner": true
@@ -4063,7 +3824,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -4072,7 +3833,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -4090,7 +3851,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -4099,7 +3860,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -4117,7 +3878,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -4126,7 +3887,7 @@
 										"id": 130,
 										"name": "Gremio",
 										"country": "🇧🇷",
-										"position": 12,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -4153,7 +3914,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -4171,7 +3932,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -4198,7 +3959,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": null
@@ -4225,7 +3986,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 4,
 										"winner": true
@@ -4261,7 +4022,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -4279,7 +4040,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -4306,7 +4067,7 @@
 										"id": 120,
 										"name": "Botafogo",
 										"country": "🇧🇷",
-										"position": 4,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": false
@@ -4315,7 +4076,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 4,
 										"winner": true
@@ -4333,7 +4094,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -4342,7 +4103,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -4360,7 +4121,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -4387,7 +4148,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -4396,7 +4157,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -4423,7 +4184,7 @@
 										"id": 133,
 										"name": "Vasco DA Gama",
 										"country": "🇧🇷",
-										"position": 13,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -4443,45 +4204,39 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
+						"name": "El equipo local marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 0.9,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "❌",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "✅", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
-								"check": "✅",
-								"weight": 0.15
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "❌",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "❌",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "❌",
 								"weight": 0
 							}
 						],
-						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
+						"warnings": [
+							{
+								"description": "El visitante tiene buenos resultados como visitante (Puntos ganados > 50%)"
+							}
+						],
 						"right": true,
 						"lostRight": false,
 						"fail": false,
@@ -4494,14 +4249,14 @@
 						"acceptancePercentage": 1,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": [],
@@ -4512,15 +4267,12 @@
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
+						"name": "El equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "✅",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "✅", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "✅", "weight": 0.25 }
 						],
 						"warnings": [],
 						"right": true,
@@ -4530,26 +4282,36 @@
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"name": "El equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
+								"check": "✅",
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
-						"warnings": [{ "description": "El equipo local es destacado" }],
+						"warnings": [{ "description": "El local es destacado" }],
 						"right": false,
 						"lostRight": false,
-						"fail": false,
-						"skippedFail": true
+						"fail": true,
+						"skippedFail": false
 					}
 				],
 				"teams": {
@@ -4557,7 +4319,7 @@
 						"id": 127,
 						"name": "Flamengo",
 						"country": "🇧🇷",
-						"position": 3,
+						"position": null,
 						"featured": true,
 						"score": 1,
 						"winner": true,
@@ -4565,6 +4327,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 26,
 							"promedio_de_goles": 1.7,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 14,
 							"promedio_de_goles_de_local": 1.8,
@@ -4586,29 +4350,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 85.7,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 1,
-							"ultimos_promedio_de_goles": 0.3,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 3,
+							"ultimos_promedio_de_goles": 0.8,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 4,
+							"ultimos_goles_de_local": 5,
 							"ultimos_promedio_de_goles_de_local": 1.3,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 2,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 3,
 							"ultimos_partidos_perdidos_de_local": 1,
 							"ultimos_partidos_empatados_de_local": 0,
-							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_partidos_con_goles_de_local": 3,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 75,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 3,
+							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1,
-							"ultimos_partidos_de_visitante": 3,
+							"ultimos_partidos_de_visitante": 4,
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
-							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_partidos_empatados_de_visitante": 2,
+							"ultimos_partidos_con_goles_de_visitante": 3,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -4622,7 +4388,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -4631,7 +4397,7 @@
 										"id": 120,
 										"name": "Botafogo",
 										"country": "🇧🇷",
-										"position": 4,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -4658,7 +4424,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -4676,7 +4442,7 @@
 										"id": 121,
 										"name": "Palmeiras",
 										"country": "🇧🇷",
-										"position": 8,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -4685,7 +4451,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -4703,7 +4469,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -4712,7 +4478,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -4730,7 +4496,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -4739,7 +4505,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -4757,7 +4523,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -4784,7 +4550,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -4820,7 +4586,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -4847,7 +4613,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -4865,7 +4631,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -4874,7 +4640,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -4892,7 +4658,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -4901,7 +4667,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -4919,7 +4685,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -4946,7 +4712,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -4955,7 +4721,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -4973,7 +4739,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 4,
 										"winner": true
@@ -5009,7 +4775,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -5030,6 +4796,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 23,
 							"promedio_de_goles": 1.5,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 16,
 							"promedio_de_goles_de_local": 2,
@@ -5051,29 +4819,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 57.1,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 3,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 4,
 							"ultimos_promedio_de_goles": 1,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 5,
-							"ultimos_promedio_de_goles_de_local": 1.7,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 0,
+							"ultimos_goles_de_local": 8,
+							"ultimos_promedio_de_goles_de_local": 2,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 1,
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 50,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 3,
+							"ultimos_goles_de_visitante": 4,
 							"ultimos_promedio_de_goles_de_visitante": 1,
-							"ultimos_partidos_de_visitante": 3,
+							"ultimos_partidos_de_visitante": 4,
 							"ultimos_partidos_ganados_de_visitante": 1,
-							"ultimos_partidos_perdidos_de_visitante": 1,
+							"ultimos_partidos_perdidos_de_visitante": 2,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_partidos_con_goles_de_visitante": 3,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 50
 						},
 						"matches": [
 							{
@@ -5494,50 +5264,42 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"name": "El equipo local marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "❌",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "❌", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
 								"check": "❌",
-								"weight": 0.15
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "❌",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "❌",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "✅",
 								"weight": 0
 							}
 						],
 						"warnings": [
-							{ "description": "El equipo visitante es destacado y el local no" },
-							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+							{ "description": "El visitante es destacado y el local no" },
+							{
+								"description": "El visitante tiene buenos resultados como visitante (Puntos ganados > 50%)"
+							}
 						],
-						"right": false,
-						"lostRight": true,
+						"right": true,
+						"lostRight": false,
 						"fail": false,
 						"skippedFail": false
 					},
@@ -5548,14 +5310,14 @@
 						"acceptancePercentage": 1,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": [],
@@ -5566,17 +5328,14 @@
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
+						"name": "El equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "❌",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "❌", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "❌", "weight": 0.25 }
 						],
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [{ "description": "El visitante es destacado" }],
 						"right": false,
 						"lostRight": true,
 						"fail": false,
@@ -5584,19 +5343,29 @@
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
+						"name": "El equipo visitante marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 1,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "✅",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
+								"check": "✅",
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
+								"check": "✅",
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.083
 							}
 						],
 						"warnings": [],
@@ -5619,6 +5388,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 17,
 							"promedio_de_goles": 1.1,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 9,
 							"promedio_de_goles_de_local": 1.3,
@@ -5640,26 +5411,28 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 62.5,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
+							"ultimos_total_de_partidos": 4,
 							"ultimos_total_de_goles": 9,
-							"ultimos_promedio_de_goles": 3,
+							"ultimos_promedio_de_goles": 2.3,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
 							"ultimos_goles_de_local": 5,
-							"ultimos_promedio_de_goles_de_local": 1.7,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_promedio_de_goles_de_local": 1.3,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 2,
 							"ultimos_partidos_perdidos_de_local": 0,
-							"ultimos_partidos_empatados_de_local": 1,
+							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 2,
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 6,
-							"ultimos_promedio_de_goles_de_visitante": 2,
-							"ultimos_partidos_de_visitante": 3,
+							"ultimos_promedio_de_goles_de_visitante": 1.5,
+							"ultimos_partidos_de_visitante": 4,
 							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 0,
-							"ultimos_partidos_empatados_de_visitante": 2,
+							"ultimos_partidos_empatados_de_visitante": 3,
 							"ultimos_partidos_con_goles_de_visitante": 3,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
@@ -5874,7 +5647,7 @@
 										"id": 130,
 										"name": "Gremio",
 										"country": "🇧🇷",
-										"position": 12,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -5946,7 +5719,7 @@
 										"id": 152,
 										"name": "Juventude",
 										"country": "🇧🇷",
-										"position": 15,
+										"position": null,
 										"featured": false,
 										"score": 3,
 										"winner": true
@@ -6000,7 +5773,7 @@
 										"id": 119,
 										"name": "Internacional",
 										"country": "🇧🇷",
-										"position": 10,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -6076,7 +5849,7 @@
 						"id": 134,
 						"name": "Atletico Paranaense",
 						"country": "🇧🇷",
-						"position": 1,
+						"position": null,
 						"featured": true,
 						"score": 1,
 						"winner": false,
@@ -6084,6 +5857,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 34,
 							"promedio_de_goles": 2.3,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 24,
 							"promedio_de_goles_de_local": 3.4,
@@ -6105,29 +5880,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 75,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
+							"ultimos_total_de_partidos": 4,
 							"ultimos_total_de_goles": 3,
-							"ultimos_promedio_de_goles": 1,
+							"ultimos_promedio_de_goles": 0.8,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 11,
-							"ultimos_promedio_de_goles_de_local": 3.7,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 3,
+							"ultimos_goles_de_local": 14,
+							"ultimos_promedio_de_goles_de_local": 3.5,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 4,
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 0,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 2,
-							"ultimos_promedio_de_goles_de_visitante": 0.7,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 1,
+							"ultimos_goles_de_visitante": 6,
+							"ultimos_promedio_de_goles_de_visitante": 1.5,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_partidos_con_goles_de_visitante": 3,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -6141,7 +5918,7 @@
 										"id": 152,
 										"name": "Juventude",
 										"country": "🇧🇷",
-										"position": 15,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": null
@@ -6150,7 +5927,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -6177,7 +5954,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -6195,7 +5972,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -6204,7 +5981,7 @@
 										"id": 119,
 										"name": "Internacional",
 										"country": "🇧🇷",
-										"position": 10,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -6222,7 +5999,7 @@
 										"id": 130,
 										"name": "Gremio",
 										"country": "🇧🇷",
-										"position": 12,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -6231,7 +6008,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -6249,7 +6026,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 4,
 										"winner": true
@@ -6258,7 +6035,7 @@
 										"id": 1193,
 										"name": "Cuiaba",
 										"country": "🇧🇷",
-										"position": 20,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -6276,7 +6053,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 6,
 										"winner": true
@@ -6303,7 +6080,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -6339,7 +6116,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 4,
 										"winner": true
@@ -6366,7 +6143,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -6384,7 +6161,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -6420,7 +6197,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -6438,7 +6215,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 6,
 										"winner": true
@@ -6474,7 +6251,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -6492,7 +6269,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -6528,7 +6305,7 @@
 										"id": 134,
 										"name": "Atletico Paranaense",
 										"country": "🇧🇷",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -6548,50 +6325,42 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0.6,
+						"name": "El equipo local marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
-								"check": "✅",
-								"weight": 0.6
-							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "✅", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
-							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "❌",
-								"weight": 0.15
+								"weight": 0.75
+							},
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.083 },
+							{
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "❌",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "✅",
 								"weight": 0
 							}
 						],
 						"warnings": [
-							{ "description": "El equipo visitante es destacado y el local no" },
-							{ "description": "El equipo visitante tiene buenos resultados (>50%)" }
+							{ "description": "El visitante es destacado y el local no" },
+							{
+								"description": "El visitante tiene buenos resultados como visitante (Puntos ganados > 50%)"
+							}
 						],
-						"right": false,
-						"lostRight": true,
+						"right": true,
+						"lostRight": false,
 						"fail": false,
 						"skippedFail": false
 					},
@@ -6602,14 +6371,14 @@
 						"acceptancePercentage": 1,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": [],
@@ -6620,17 +6389,14 @@
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
+						"name": "El equipo local gana o empata",
 						"recommendable": false,
 						"acceptancePercentage": 0,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "❌",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "❌", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "❌", "weight": 0.25 }
 						],
-						"warnings": [{ "description": "El equipo visitante es destacado" }],
+						"warnings": [{ "description": "El visitante es destacado" }],
 						"right": false,
 						"lostRight": false,
 						"fail": false,
@@ -6638,19 +6404,29 @@
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
+						"name": "El equipo visitante marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 1,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "✅",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
+								"check": "✅",
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
 						"warnings": [],
@@ -6673,6 +6449,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 23,
 							"promedio_de_goles": 1.5,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 11,
 							"promedio_de_goles_de_local": 1.4,
@@ -6694,27 +6472,29 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 100,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 5,
-							"ultimos_promedio_de_goles": 1.7,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 6,
+							"ultimos_promedio_de_goles": 1.5,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
 							"ultimos_goles_de_local": 3,
-							"ultimos_promedio_de_goles_de_local": 1,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_promedio_de_goles_de_local": 0.8,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 2,
 							"ultimos_partidos_perdidos_de_local": 0,
-							"ultimos_partidos_empatados_de_local": 1,
+							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 3,
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 5,
-							"ultimos_promedio_de_goles_de_visitante": 1.7,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 2,
+							"ultimos_goles_de_visitante": 9,
+							"ultimos_promedio_de_goles_de_visitante": 2.3,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 3,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_partidos_con_goles_de_visitante": 4,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
@@ -7130,7 +6910,7 @@
 						"id": 131,
 						"name": "Corinthians",
 						"country": "🇧🇷",
-						"position": 16,
+						"position": null,
 						"featured": true,
 						"score": 2,
 						"winner": true,
@@ -7138,6 +6918,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 24,
 							"promedio_de_goles": 1.6,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 12,
 							"promedio_de_goles_de_local": 2,
@@ -7159,29 +6941,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 66.7,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
+							"ultimos_total_de_partidos": 4,
 							"ultimos_total_de_goles": 3,
-							"ultimos_promedio_de_goles": 1,
+							"ultimos_promedio_de_goles": 0.8,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 7,
-							"ultimos_promedio_de_goles_de_local": 2.3,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 2,
+							"ultimos_goles_de_local": 10,
+							"ultimos_promedio_de_goles_de_local": 2.5,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 3,
 							"ultimos_partidos_perdidos_de_local": 0,
 							"ultimos_partidos_empatados_de_local": 1,
-							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_partidos_con_goles_de_local": 3,
 							"ultimos_promedio_de_puntos_de_local": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_local": 100,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 0,
-							"ultimos_promedio_de_goles_de_visitante": 0,
-							"ultimos_partidos_de_visitante": 3,
+							"ultimos_goles_de_visitante": 1,
+							"ultimos_promedio_de_goles_de_visitante": 0.3,
+							"ultimos_partidos_de_visitante": 4,
 							"ultimos_partidos_ganados_de_visitante": 0,
 							"ultimos_partidos_perdidos_de_visitante": 3,
-							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 0,
+							"ultimos_partidos_empatados_de_visitante": 1,
+							"ultimos_partidos_con_goles_de_visitante": 1,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 0
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 25
 						},
 						"matches": [
 							{
@@ -7195,7 +6979,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -7204,7 +6988,7 @@
 										"id": 124,
 										"name": "Fluminense",
 										"country": "🇧🇷",
-										"position": 17,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -7231,7 +7015,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -7249,7 +7033,7 @@
 										"id": 794,
 										"name": "RB Bragantino",
 										"country": "🇧🇷",
-										"position": 7,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -7258,7 +7042,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -7276,7 +7060,7 @@
 										"id": 152,
 										"name": "Juventude",
 										"country": "🇧🇷",
-										"position": 15,
+										"position": null,
 										"featured": false,
 										"score": 2,
 										"winner": true
@@ -7285,7 +7069,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -7303,7 +7087,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -7312,7 +7096,7 @@
 										"id": 1062,
 										"name": "Atletico-MG",
 										"country": "🇧🇷",
-										"position": 6,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -7330,7 +7114,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 4,
 										"winner": true
@@ -7366,7 +7150,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -7393,7 +7177,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -7420,7 +7204,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": null
@@ -7438,7 +7222,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -7465,7 +7249,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -7501,7 +7285,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -7519,7 +7303,7 @@
 										"id": 121,
 										"name": "Palmeiras",
 										"country": "🇧🇷",
-										"position": 8,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": null
@@ -7528,7 +7312,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": null
@@ -7555,7 +7339,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 4,
 										"winner": true
@@ -7573,7 +7357,7 @@
 										"id": 131,
 										"name": "Corinthians",
 										"country": "🇧🇷",
-										"position": 16,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -7602,84 +7386,75 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0.6,
+						"name": "El equipo local marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "✅", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "❌", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
 								"check": "❌",
-								"weight": 0.15
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
 								"check": "❌",
-								"weight": 0.1
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "❌", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "❌",
 								"weight": 0
 							}
 						],
-						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
+						"warnings": [
+							{
+								"description": "El visitante tiene buenos resultados como visitante (Puntos ganados > 50%)"
+							}
+						],
 						"right": false,
 						"lostRight": false,
-						"fail": false,
-						"skippedFail": true
+						"fail": true,
+						"skippedFail": false
 					},
 					{
 						"id": "GEP",
 						"name": "Hay un gol en el partido",
-						"recommendable": false,
-						"acceptancePercentage": 0.6,
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "❌",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": [],
-						"right": false,
+						"right": true,
 						"lostRight": false,
 						"fail": false,
 						"skippedFail": false
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
+						"name": "El equipo local gana o empata",
 						"recommendable": false,
-						"acceptancePercentage": 0,
+						"acceptancePercentage": 0.25,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "❌",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "❌", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "✅", "weight": 0.25 }
 						],
 						"warnings": [],
 						"right": false,
@@ -7689,19 +7464,29 @@
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
+						"name": "El equipo visitante marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 1,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
 								"check": "✅",
-								"weight": 1
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
+								"check": "✅",
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
 						"warnings": [],
@@ -7724,6 +7509,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 20,
 							"promedio_de_goles": 1.3,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 12,
 							"promedio_de_goles_de_local": 1.7,
@@ -7745,29 +7532,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 87.5,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 4,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 5,
 							"ultimos_promedio_de_goles": 1.3,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 6,
-							"ultimos_promedio_de_goles_de_local": 2,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_goles_de_local": 7,
+							"ultimos_promedio_de_goles_de_local": 1.8,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 2,
 							"ultimos_partidos_perdidos_de_local": 1,
-							"ultimos_partidos_empatados_de_local": 0,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_empatados_de_local": 1,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 75,
 							"---|||||---": 0,
 							"ultimos_goles_de_visitante": 3,
-							"ultimos_promedio_de_goles_de_visitante": 1,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 0,
+							"ultimos_promedio_de_goles_de_visitante": 0.8,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 1,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 2,
 							"ultimos_partidos_con_goles_de_visitante": 2,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -7835,7 +7624,7 @@
 										"id": 140,
 										"name": "Criciuma",
 										"country": "🇧🇷",
-										"position": 14,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": null
@@ -7871,7 +7660,7 @@
 										"id": 140,
 										"name": "Criciuma",
 										"country": "🇧🇷",
-										"position": 14,
+										"position": null,
 										"featured": false,
 										"score": 2,
 										"winner": true
@@ -8132,7 +7921,7 @@
 										"id": 140,
 										"name": "Criciuma",
 										"country": "🇧🇷",
-										"position": 14,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -8181,7 +7970,7 @@
 						"id": 144,
 						"name": "Atletico Goianiense",
 						"country": "🇧🇷",
-						"position": 19,
+						"position": null,
 						"featured": false,
 						"score": 1,
 						"winner": true,
@@ -8189,6 +7978,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 40,
 							"promedio_de_goles": 2.7,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 23,
 							"promedio_de_goles_de_local": 3.3,
@@ -8210,29 +8001,31 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 87.5,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 1,
-							"ultimos_promedio_de_goles": 0.3,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 2,
+							"ultimos_promedio_de_goles": 0.5,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 4,
-							"ultimos_promedio_de_goles_de_local": 1.3,
-							"ultimos_partidos_de_local": 3,
-							"ultimos_partidos_ganados_de_local": 1,
+							"ultimos_goles_de_local": 7,
+							"ultimos_promedio_de_goles_de_local": 1.8,
+							"ultimos_partidos_de_local": 4,
+							"ultimos_partidos_ganados_de_local": 2,
 							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 0,
-							"ultimos_partidos_con_goles_de_local": 2,
+							"ultimos_partidos_con_goles_de_local": 3,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 50,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 3,
-							"ultimos_promedio_de_goles_de_visitante": 1,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 1,
+							"ultimos_goles_de_visitante": 6,
+							"ultimos_promedio_de_goles_de_visitante": 1.5,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 2,
 							"ultimos_partidos_perdidos_de_visitante": 1,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 2,
+							"ultimos_partidos_con_goles_de_visitante": 3,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 66.7
+							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 75
 						},
 						"matches": [
 							{
@@ -8246,7 +8039,7 @@
 										"id": 119,
 										"name": "Internacional",
 										"country": "🇧🇷",
-										"position": 10,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": null
@@ -8255,7 +8048,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": null
@@ -8273,7 +8066,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -8282,7 +8075,7 @@
 										"id": 126,
 										"name": "Sao Paulo",
 										"country": "🇧🇷",
-										"position": 9,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -8300,7 +8093,7 @@
 										"id": 120,
 										"name": "Botafogo",
 										"country": "🇧🇷",
-										"position": 4,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -8309,7 +8102,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -8327,7 +8120,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -8336,7 +8129,7 @@
 										"id": 127,
 										"name": "Flamengo",
 										"country": "🇧🇷",
-										"position": 3,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -8354,7 +8147,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 3,
 										"winner": true
@@ -8390,7 +8183,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 2,
 										"winner": true
@@ -8408,7 +8201,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 3,
 										"winner": true
@@ -8444,7 +8237,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 3,
 										"winner": true
@@ -8462,7 +8255,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 5,
 										"winner": true
@@ -8498,7 +8291,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 3,
 										"winner": true
@@ -8525,7 +8318,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 3,
 										"winner": true
@@ -8543,7 +8336,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 5,
 										"winner": true
@@ -8579,7 +8372,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 3,
 										"winner": true
@@ -8606,7 +8399,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 2,
 										"winner": true
@@ -8624,7 +8417,7 @@
 										"id": 144,
 										"name": "Atletico Goianiense",
 										"country": "🇧🇷",
-										"position": 19,
+										"position": null,
 										"featured": false,
 										"score": 6,
 										"winner": true
@@ -8650,242 +8443,7 @@
 		"name": "King's Cup",
 		"country": "Saudi-Arabia",
 		"flag": "🇸🇦",
-		"standings": [
-			{
-				"teamId": 2932,
-				"teamName": "Al-Hilal Saudi FC",
-				"points": 89,
-				"stats": {
-					"goalsDiff": 75,
-					"played": 31,
-					"win": 29,
-					"draw": 2,
-					"lose": 0,
-					"goals": { "for": 95, "against": 20 }
-				}
-			},
-			{
-				"teamId": 2939,
-				"teamName": "Al-Nassr",
-				"points": 77,
-				"stats": {
-					"goalsDiff": 56,
-					"played": 31,
-					"win": 25,
-					"draw": 2,
-					"lose": 4,
-					"goals": { "for": 93, "against": 37 }
-				}
-			},
-			{
-				"teamId": 2929,
-				"teamName": "Al-Ahli Jeddah",
-				"points": 58,
-				"stats": {
-					"goalsDiff": 27,
-					"played": 31,
-					"win": 17,
-					"draw": 7,
-					"lose": 7,
-					"goals": { "for": 61, "against": 34 }
-				}
-			},
-			{
-				"teamId": 2936,
-				"teamName": "Al Taawon",
-				"points": 52,
-				"stats": {
-					"goalsDiff": 14,
-					"played": 31,
-					"win": 14,
-					"draw": 10,
-					"lose": 7,
-					"goals": { "for": 48, "against": 34 }
-				}
-			},
-			{
-				"teamId": 2938,
-				"teamName": "Al-Ittihad FC",
-				"points": 50,
-				"stats": {
-					"goalsDiff": 8,
-					"played": 31,
-					"win": 15,
-					"draw": 5,
-					"lose": 11,
-					"goals": { "for": 56, "against": 48 }
-				}
-			},
-			{
-				"teamId": 2934,
-				"teamName": "Al-Ettifaq",
-				"points": 44,
-				"stats": {
-					"goalsDiff": 9,
-					"played": 31,
-					"win": 11,
-					"draw": 11,
-					"lose": 9,
-					"goals": { "for": 41, "against": 32 }
-				}
-			},
-			{
-				"teamId": 2931,
-				"teamName": "Al-Fateh",
-				"points": 42,
-				"stats": {
-					"goalsDiff": 4,
-					"played": 31,
-					"win": 11,
-					"draw": 9,
-					"lose": 11,
-					"goals": { "for": 52, "against": 48 }
-				}
-			},
-			{
-				"teamId": 2944,
-				"teamName": "Al-Fayha",
-				"points": 42,
-				"stats": {
-					"goalsDiff": -7,
-					"played": 31,
-					"win": 11,
-					"draw": 9,
-					"lose": 11,
-					"goals": { "for": 42, "against": 49 }
-				}
-			},
-			{
-				"teamId": 2940,
-				"teamName": "Al Shabab",
-				"points": 41,
-				"stats": {
-					"goalsDiff": 4,
-					"played": 31,
-					"win": 11,
-					"draw": 8,
-					"lose": 12,
-					"goals": { "for": 42, "against": 38 }
-				}
-			},
-			{
-				"teamId": 2956,
-				"teamName": "Damac",
-				"points": 39,
-				"stats": {
-					"goalsDiff": 2,
-					"played": 31,
-					"win": 10,
-					"draw": 9,
-					"lose": 12,
-					"goals": { "for": 41, "against": 39 }
-				}
-			},
-			{
-				"teamId": 2928,
-				"teamName": "Al Khaleej Saihat",
-				"points": 36,
-				"stats": {
-					"goalsDiff": -9,
-					"played": 31,
-					"win": 9,
-					"draw": 9,
-					"lose": 13,
-					"goals": { "for": 33, "against": 42 }
-				}
-			},
-			{
-				"teamId": 2937,
-				"teamName": "Al Wehda Club",
-				"points": 35,
-				"stats": {
-					"goalsDiff": -13,
-					"played": 31,
-					"win": 10,
-					"draw": 5,
-					"lose": 16,
-					"goals": { "for": 43, "against": 56 }
-				}
-			},
-			{
-				"teamId": 2935,
-				"teamName": "Al-Raed",
-				"points": 32,
-				"stats": {
-					"goalsDiff": -9,
-					"played": 31,
-					"win": 8,
-					"draw": 8,
-					"lose": 15,
-					"goals": { "for": 39, "against": 48 }
-				}
-			},
-			{
-				"teamId": 10511,
-				"teamName": "Al Riyadh",
-				"points": 30,
-				"stats": {
-					"goalsDiff": -25,
-					"played": 31,
-					"win": 7,
-					"draw": 9,
-					"lose": 15,
-					"goals": { "for": 28, "against": 53 }
-				}
-			},
-			{
-				"teamId": 2951,
-				"teamName": "Abha",
-				"points": 29,
-				"stats": {
-					"goalsDiff": -45,
-					"played": 31,
-					"win": 8,
-					"draw": 5,
-					"lose": 18,
-					"goals": { "for": 34, "against": 79 }
-				}
-			},
-			{
-				"teamId": 2977,
-				"teamName": "Al Akhdoud",
-				"points": 28,
-				"stats": {
-					"goalsDiff": -21,
-					"played": 31,
-					"win": 8,
-					"draw": 4,
-					"lose": 19,
-					"goals": { "for": 29, "against": 50 }
-				}
-			},
-			{
-				"teamId": 2942,
-				"teamName": "Al Taee",
-				"points": 28,
-				"stats": {
-					"goalsDiff": -28,
-					"played": 31,
-					"win": 7,
-					"draw": 7,
-					"lose": 17,
-					"goals": { "for": 30, "against": 58 }
-				}
-			},
-			{
-				"teamId": 2945,
-				"teamName": "Al-Hazm",
-				"points": 20,
-				"stats": {
-					"goalsDiff": -42,
-					"played": 31,
-					"win": 3,
-					"draw": 11,
-					"lose": 17,
-					"goals": { "for": 30, "against": 72 }
-				}
-			}
-		],
+		"standings": [],
 		"matches": [
 			{
 				"id": "2024-05-01-Al-Nassr-Al Khaleej Saihat",
@@ -8896,45 +8454,39 @@
 				"predictions": [
 					{
 						"id": "GEL",
-						"name": "Equipo local marca un gol",
+						"name": "El equipo local marca un gol",
 						"recommendable": true,
-						"acceptancePercentage": 1,
+						"acceptancePercentage": 0.83,
 						"criteria": [
 							{
-								"description": "Hizo gol en los ultimos 3 partidos de local",
+								"description": "Marcó gol en los últimos 4 partidos de local",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
-							{ "description": "Promedio de goles de local >= 1.4", "check": "✅", "weight": 0.6 },
-							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.15 },
+							{ "description": "Promedio de goles de local >= 1.3", "check": "✅", "weight": 0.75 },
+							{ "description": "El local es un equipo destacado", "check": "✅", "weight": 0.083 },
 							{
-								"description": "El local está en las primeras 6 posiciones de la tabla",
-								"check": "✅",
-								"weight": 0.15
+								"description": "El visitante recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
 							},
 							{
 								"description": "El local está al menos 5 posiciones mas arriba que el rival",
-								"check": "✅",
-								"weight": 0.1
+								"check": "❌",
+								"weight": 0
 							},
 							{ "description": "Promedio de goles >= 1.5", "check": "✅", "weight": 0 },
 							{
-								"description": "Promedio de goles de visitante >= 1.5",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "Ha marcado en los últimos 3 partidos de local",
-								"check": "✅",
-								"weight": 0
-							},
-							{
-								"description": "No ha perdido los últimos 3 partidos de local",
+								"description": "No ha perdido los últimos 4 partidos de local",
 								"check": "❌",
 								"weight": 0
 							}
 						],
-						"warnings": [{ "description": "El equipo visitante tiene buenos resultados (>50%)" }],
+						"warnings": [
+							{
+								"description": "El visitante tiene buenos resultados como visitante (Puntos ganados > 50%)"
+							}
+						],
 						"right": true,
 						"lostRight": false,
 						"fail": false,
@@ -8947,14 +8499,14 @@
 						"acceptancePercentage": 1,
 						"criteria": [
 							{
-								"description": "El equipo local o visitante puede hacer un gol",
+								"description": "El local o visitante puede hacer un gol",
 								"check": "✅",
-								"weight": 0.6
+								"weight": 0.75
 							},
 							{
 								"description": "Alguno de los dos equipos es destacado",
 								"check": "✅",
-								"weight": 0.4
+								"weight": 0.25
 							}
 						],
 						"warnings": [],
@@ -8965,15 +8517,12 @@
 					},
 					{
 						"id": "ELGE",
-						"name": "Equipo local gana o empata",
+						"name": "El equipo local gana o empata",
 						"recommendable": true,
 						"acceptancePercentage": 1,
 						"criteria": [
-							{
-								"description": "El equipo local es destacado y el visitante no",
-								"check": "✅",
-								"weight": 1
-							}
+							{ "description": "El local es destacado", "check": "✅", "weight": 0.75 },
+							{ "description": "El visitante no es destacado", "check": "✅", "weight": 0.25 }
 						],
 						"warnings": [],
 						"right": true,
@@ -8983,24 +8532,34 @@
 					},
 					{
 						"id": "GEV",
-						"name": "Equipo visitante marca un gol",
-						"recommendable": false,
-						"acceptancePercentage": 0,
+						"name": "El equipo visitante marca un gol",
+						"recommendable": true,
+						"acceptancePercentage": 0.75,
 						"criteria": [
 							{
-								"description": "El equipo visitante es destacado y el local no",
+								"description": "El visitante es destacado y el local no",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.75
 							},
 							{
-								"description": "El equipo visitante tiene un promedio de gol de visitante >= 1.4",
+								"description": "El visitante tiene un promedio de gol >= 1 en los últimos 4 partidos de visitante",
+								"check": "✅",
+								"weight": 0.75
+							},
+							{
+								"description": "El visitante tiene un promedio de gol de visitante >= 1.3",
 								"check": "❌",
-								"weight": 1
+								"weight": 0.083
+							},
+							{
+								"description": "El local recibe muchos goles (Promedio >= 2)",
+								"check": "❌",
+								"weight": 0.083
 							}
 						],
-						"warnings": [{ "description": "El equipo local es destacado" }],
-						"right": false,
-						"lostRight": true,
+						"warnings": [{ "description": "El local es destacado" }],
+						"right": true,
+						"lostRight": false,
 						"fail": false,
 						"skippedFail": false
 					}
@@ -9010,7 +8569,7 @@
 						"id": 2939,
 						"name": "Al-Nassr",
 						"country": "🇸🇦",
-						"position": 2,
+						"position": null,
 						"featured": true,
 						"score": 3,
 						"winner": true,
@@ -9018,6 +8577,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 40,
 							"promedio_de_goles": 2.7,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 21,
 							"promedio_de_goles_de_local": 3,
@@ -9039,27 +8600,29 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 87.5,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 5,
-							"ultimos_promedio_de_goles": 1.7,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 13,
+							"ultimos_promedio_de_goles": 3.3,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
-							"ultimos_goles_de_local": 12,
-							"ultimos_promedio_de_goles_de_local": 4,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_goles_de_local": 13,
+							"ultimos_promedio_de_goles_de_local": 3.3,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 2,
-							"ultimos_partidos_perdidos_de_local": 1,
+							"ultimos_partidos_perdidos_de_local": 2,
 							"ultimos_partidos_empatados_de_local": 0,
-							"ultimos_partidos_con_goles_de_local": 3,
+							"ultimos_partidos_con_goles_de_local": 4,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 66.7,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 50,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 10,
-							"ultimos_promedio_de_goles_de_visitante": 3.3,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 3,
+							"ultimos_goles_de_visitante": 11,
+							"ultimos_promedio_de_goles_de_visitante": 2.8,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 4,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 0,
-							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_partidos_con_goles_de_visitante": 4,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
@@ -9075,7 +8638,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -9084,7 +8647,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -9102,7 +8665,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -9111,7 +8674,7 @@
 										"id": 2944,
 										"name": "Al-Fayha",
 										"country": "🇸🇦",
-										"position": 8,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -9129,7 +8692,7 @@
 										"id": 2956,
 										"name": "Damac",
 										"country": "🇸🇦",
-										"position": 10,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -9138,7 +8701,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -9156,7 +8719,7 @@
 										"id": 2951,
 										"name": "Abha",
 										"country": "🇸🇦",
-										"position": 15,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -9165,7 +8728,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 8,
 										"winner": true
@@ -9183,7 +8746,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 5,
 										"winner": true
@@ -9192,7 +8755,7 @@
 										"id": 2942,
 										"name": "Al Taee",
 										"country": "🇸🇦",
-										"position": 17,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -9210,8 +8773,8 @@
 										"id": 2929,
 										"name": "Al-Ahli Jeddah",
 										"country": "🇸🇦",
-										"position": 3,
-										"featured": true,
+										"position": null,
+										"featured": false,
 										"score": 0,
 										"winner": false
 									},
@@ -9219,7 +8782,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -9237,7 +8800,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 4,
 										"winner": false
@@ -9264,7 +8827,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": false
@@ -9273,7 +8836,7 @@
 										"id": 2935,
 										"name": "Al-Raed",
 										"country": "🇸🇦",
-										"position": 13,
+										"position": null,
 										"featured": false,
 										"score": 3,
 										"winner": true
@@ -9300,7 +8863,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 0,
 										"winner": false
@@ -9318,7 +8881,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 4,
 										"winner": null
@@ -9327,7 +8890,7 @@
 										"id": 2945,
 										"name": "Al-Hazm",
 										"country": "🇸🇦",
-										"position": 18,
+										"position": null,
 										"featured": false,
 										"score": 4,
 										"winner": null
@@ -9345,7 +8908,7 @@
 										"id": 2940,
 										"name": "Al Shabab",
 										"country": "🇸🇦",
-										"position": 9,
+										"position": null,
 										"featured": false,
 										"score": 2,
 										"winner": false
@@ -9354,7 +8917,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 3,
 										"winner": true
@@ -9372,7 +8935,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -9381,7 +8944,7 @@
 										"id": 2944,
 										"name": "Al-Fayha",
 										"country": "🇸🇦",
-										"position": 8,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -9399,7 +8962,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 2,
 										"winner": true
@@ -9408,7 +8971,7 @@
 										"id": 2931,
 										"name": "Al-Fateh",
 										"country": "🇸🇦",
-										"position": 7,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -9426,7 +8989,7 @@
 										"id": 2944,
 										"name": "Al-Fayha",
 										"country": "🇸🇦",
-										"position": 8,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -9435,7 +8998,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -9453,8 +9016,8 @@
 										"id": 2936,
 										"name": "Al Taawon",
 										"country": "🇸🇦",
-										"position": 4,
-										"featured": true,
+										"position": null,
+										"featured": false,
 										"score": 1,
 										"winner": false
 									},
@@ -9462,7 +9025,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 4,
 										"winner": true
@@ -9475,7 +9038,7 @@
 						"id": 2928,
 						"name": "Al Khaleej Saihat",
 						"country": "🇸🇦",
-						"position": 11,
+						"position": null,
 						"featured": false,
 						"score": 1,
 						"winner": false,
@@ -9483,6 +9046,8 @@
 							"total_de_partidos": 15,
 							"total_de_goles": 18,
 							"promedio_de_goles": 1.2,
+							"total_de_goles_recibidos": 0,
+							"promedio_de_goles_recibidos": 0,
 							"---|---": 0,
 							"goles_de_local": 9,
 							"promedio_de_goles_de_local": 1.3,
@@ -9504,27 +9069,29 @@
 							"promedio_de_puntos_de_visitante": 0,
 							"porcentaje_de_puntos_ganados_de_visitante": 75,
 							"---|||---": 0,
-							"ultimos_total_de_partidos": 3,
-							"ultimos_total_de_goles": 2,
-							"ultimos_promedio_de_goles": 0.7,
+							"ultimos_total_de_partidos": 4,
+							"ultimos_total_de_goles": 3,
+							"ultimos_promedio_de_goles": 0.8,
+							"ultimos_total_de_goles_recibidos": 0,
+							"ultimos_promedio_de_goles_recibidos": 0,
 							"---||||---": 0,
 							"ultimos_goles_de_local": 3,
-							"ultimos_promedio_de_goles_de_local": 1,
-							"ultimos_partidos_de_local": 3,
+							"ultimos_promedio_de_goles_de_local": 0.8,
+							"ultimos_partidos_de_local": 4,
 							"ultimos_partidos_ganados_de_local": 0,
 							"ultimos_partidos_perdidos_de_local": 2,
-							"ultimos_partidos_empatados_de_local": 1,
+							"ultimos_partidos_empatados_de_local": 2,
 							"ultimos_partidos_con_goles_de_local": 2,
 							"ultimos_promedio_de_puntos_de_local": 0,
-							"ultimos_porcentaje_de_puntos_ganados_de_local": 33.3,
+							"ultimos_porcentaje_de_puntos_ganados_de_local": 50,
 							"---|||||---": 0,
-							"ultimos_goles_de_visitante": 3,
-							"ultimos_promedio_de_goles_de_visitante": 1,
-							"ultimos_partidos_de_visitante": 3,
-							"ultimos_partidos_ganados_de_visitante": 2,
+							"ultimos_goles_de_visitante": 5,
+							"ultimos_promedio_de_goles_de_visitante": 1.3,
+							"ultimos_partidos_de_visitante": 4,
+							"ultimos_partidos_ganados_de_visitante": 3,
 							"ultimos_partidos_perdidos_de_visitante": 0,
 							"ultimos_partidos_empatados_de_visitante": 1,
-							"ultimos_partidos_con_goles_de_visitante": 3,
+							"ultimos_partidos_con_goles_de_visitante": 4,
 							"ultimos_promedio_de_puntos_de_visitante": 0,
 							"ultimos_porcentaje_de_puntos_ganados_de_visitante": 100
 						},
@@ -9540,7 +9107,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -9549,7 +9116,7 @@
 										"id": 2939,
 										"name": "Al-Nassr",
 										"country": "🇸🇦",
-										"position": 2,
+										"position": null,
 										"featured": true,
 										"score": 1,
 										"winner": true
@@ -9567,8 +9134,8 @@
 										"id": 2936,
 										"name": "Al Taawon",
 										"country": "🇸🇦",
-										"position": 4,
-										"featured": true,
+										"position": null,
+										"featured": false,
 										"score": 1,
 										"winner": null
 									},
@@ -9576,7 +9143,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": null
@@ -9594,7 +9161,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -9603,7 +9170,7 @@
 										"id": 2932,
 										"name": "Al-Hilal Saudi FC",
 										"country": "🇸🇦",
-										"position": 1,
+										"position": null,
 										"featured": true,
 										"score": 4,
 										"winner": true
@@ -9621,7 +9188,7 @@
 										"id": 2935,
 										"name": "Al-Raed",
 										"country": "🇸🇦",
-										"position": 13,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -9630,7 +9197,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": true
@@ -9648,7 +9215,7 @@
 										"id": 2956,
 										"name": "Damac",
 										"country": "🇸🇦",
-										"position": 10,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -9657,7 +9224,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": true
@@ -9675,7 +9242,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 2,
 										"winner": null
@@ -9684,7 +9251,7 @@
 										"id": 2977,
 										"name": "Al Akhdoud",
 										"country": "🇸🇦",
-										"position": 16,
+										"position": null,
 										"featured": false,
 										"score": 2,
 										"winner": null
@@ -9702,7 +9269,7 @@
 										"id": 2931,
 										"name": "Al-Fateh",
 										"country": "🇸🇦",
-										"position": 7,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -9711,7 +9278,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 2,
 										"winner": true
@@ -9729,7 +9296,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": null
@@ -9738,7 +9305,7 @@
 										"id": 2940,
 										"name": "Al Shabab",
 										"country": "🇸🇦",
-										"position": 9,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": null
@@ -9756,7 +9323,7 @@
 										"id": 2945,
 										"name": "Al-Hazm",
 										"country": "🇸🇦",
-										"position": 18,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": null
@@ -9765,7 +9332,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": null
@@ -9783,7 +9350,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -9792,8 +9359,8 @@
 										"id": 2934,
 										"name": "Al-Ettifaq",
 										"country": "🇸🇦",
-										"position": 6,
-										"featured": true,
+										"position": null,
+										"featured": false,
 										"score": 2,
 										"winner": true
 									}
@@ -9810,8 +9377,8 @@
 										"id": 2929,
 										"name": "Al-Ahli Jeddah",
 										"country": "🇸🇦",
-										"position": 3,
-										"featured": true,
+										"position": null,
+										"featured": false,
 										"score": 1,
 										"winner": true
 									},
@@ -9819,7 +9386,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -9837,7 +9404,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 3,
 										"winner": true
@@ -9846,7 +9413,7 @@
 										"id": 2944,
 										"name": "Al-Fayha",
 										"country": "🇸🇦",
-										"position": 8,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -9864,7 +9431,7 @@
 										"id": 10511,
 										"name": "Al Riyadh",
 										"country": "🇸🇦",
-										"position": 14,
+										"position": null,
 										"featured": false,
 										"score": 0,
 										"winner": false
@@ -9873,7 +9440,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": true
@@ -9891,7 +9458,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 3,
 										"winner": true
@@ -9900,7 +9467,7 @@
 										"id": 2951,
 										"name": "Abha",
 										"country": "🇸🇦",
-										"position": 15,
+										"position": null,
 										"featured": false,
 										"score": 1,
 										"winner": false
@@ -9918,8 +9485,8 @@
 										"id": 2938,
 										"name": "Al-Ittihad FC",
 										"country": "🇸🇦",
-										"position": 5,
-										"featured": true,
+										"position": null,
+										"featured": false,
 										"score": 4,
 										"winner": true
 									},
@@ -9927,7 +9494,7 @@
 										"id": 2928,
 										"name": "Al Khaleej Saihat",
 										"country": "🇸🇦",
-										"position": 11,
+										"position": null,
 										"featured": false,
 										"score": 2,
 										"winner": false
