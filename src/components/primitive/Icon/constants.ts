@@ -46,6 +46,7 @@ import {
 	ServerIcon,
 	Square3Stack3DIcon,
 	StarIcon,
+	TrophyIcon,
 	UserCircleIcon,
 	WindowIcon,
 	WrenchIcon,
@@ -574,6 +575,13 @@ const ICONS = {
 			color: "",
 		},
 	},
+	TAG: {
+		icon: TagIconSolid,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
 	TOOL: {
 		icon: WrenchIcon,
 		defaultProps: {
@@ -581,8 +589,8 @@ const ICONS = {
 			color: "",
 		},
 	},
-	TAG: {
-		icon: TagIconSolid,
+	TROPHY: {
+		icon: TrophyIcon,
 		defaultProps: {
 			className: "",
 			color: "",

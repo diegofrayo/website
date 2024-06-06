@@ -13,7 +13,7 @@ export default BetsPage;
 // --- NEXT.JS FUNCTIONS ---
 
 export const getStaticProps: GetStaticProps<T_BetsPageProps> = async () => {
-	const monday = dayjs(dateWithoutTimezone(new Date(2024, 4, 13)));
+	const monday = dayjs(dateWithoutTimezone(new Date(2024, 4, 27)));
 	const dates = (
 		dateWithoutTimezone().getDay() >= 2 && dateWithoutTimezone().getDay() <= 4
 			? [

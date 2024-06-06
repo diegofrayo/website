@@ -52,10 +52,7 @@ function ResumePage({ data, cmsContent }: T_ResumePageProps) {
 						<InlineText>Download as PDF</InlineText>
 					</Link>
 				</Block>
-				<Block
-					className="tw-relative tw-mx-auto tw-max-w-screen-md tw-overflow-hidden tw-border-12 tw-border-gray-700
-        tw-bg-white tw-px-6 tw-py-16 tw-text-black print:tw-w-full print:tw-border-0 print:tw-p-0 md:tw-px-8"
-				>
+				<Block className="tw-relative tw-mx-auto tw-max-w-screen-md tw-overflow-hidden tw-border-12 tw-border-gray-700 tw-bg-white tw-px-6 tw-py-16 tw-text-black print:tw-w-full print:tw-border-0 print:tw-p-0 md:tw-px-8">
 					<PrintBlock
 						className="print:tw-flex print:tw-items-center print:tw-justify-center"
 						fullPage

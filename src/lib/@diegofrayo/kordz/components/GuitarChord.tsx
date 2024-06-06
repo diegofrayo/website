@@ -36,7 +36,7 @@ function GuitarChord({ plainChord }: T_GuitarChordProps) {
 	return (
 		<article className="tw-max-w-full tw-text-center">
 			<section
-				className="tw-pb-2 "
+				className="tw-pb-2"
 				ref={chordContainerRef}
 			>
 				<h1 className="tw-mb-6 tw-truncate tw-text-center tw-text-2xl tw-font-bold">

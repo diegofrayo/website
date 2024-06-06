@@ -64,7 +64,7 @@ const APPS = [
 	},
 	{
 		id: "bets",
-		icon: Icon.icon.SOCCER,
+		icon: Icon.icon.TROPHY,
 		name: "bets",
 	},
 	{

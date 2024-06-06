@@ -16,7 +16,7 @@
 		"start": "next start",
 		"no-opt-install": "npm install --omit=optional --force",
 		"===== FORMATTING =====": "",
-		"lint": "eslint --ignore-path .gitignore --ext .js --ext .ts --ext .tsx --fix ./",
+		"lint": "eslint --ignore-path .gitignore --ext .js --ext .ts --ext .tsx ./",
 		"lint:no-warnings": "NO_LINT_WARNINGS=true npm run lint",
 		"format": "prettier --write \"./**/*.{ts,tsx,json,css,mjs,js}\"",
 		"===== SEO =====": "",
@@ -59,11 +59,11 @@
 		"hoist-non-react-statics": "^3.3.2",
 		"js-convert-case": "^4.2.0",
 		"mdx-bundler": "^9.2.1",
-		"next": "^14.1.1",
+		"next": "^14.2.3",
 		"next-pwa": "^5.6.0",
 		"postcss": "8.4.31",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
 		"react-error-boundary": "^4.0.11",
 		"react-string-replace": "^1.1.1",
 		"sonner": "^1.0.3",
@@ -81,7 +81,7 @@
 		"feed": "^4.2.2",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^3.2.5",
-		"prettier-plugin-tailwindcss": "^0.5.14",
+		"prettier-plugin-tailwindcss": "^0.6.1",
 		"ts-node": "^10.9.1",
 		"tsx": "^4.7.1"
 	},
@@ -104,6 +104,6 @@
 		"husky": "^6.0.0"
 	},
 	"engines": {
-		"node": "18.19.1"
+		"node": "18.17.0"
 	}
 }
