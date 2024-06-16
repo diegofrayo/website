@@ -6,11 +6,11 @@
 		"album": "Ahí vamos",
 		"year": 2006,
 		"country": "🇦🇷",
-		"category": "4|REVIEW|🕵️",
+		"category": "3|CHECKED|☑️",
 		"order": 0,
 		"created_at": "2023/02/11",
-		"is_public": false,
-		"done": false,
+		"is_public": true,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/1rh4kDY9T4fHVDum8Foi5k",
 		"youtube_url": "https://youtu.be/217Bw85-5cw",
 		"assets": {},
@@ -40,5 +40,5 @@
 		"interpretation": ""
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "Em      A        D         G             A  G\n   Suspiraban lo mismo los dos\nEm           A            D        G     A  G\n   y hoy son parte de una lluvia lejos\nEm          A         D           G      A  G\n   no te confundas no sirve el rencor\nEm       A         D           G         A  G\n   son espasmos después del adiós\n\n\nBm          F#m            G               D\n   Ponés canciones tristes para sentirte mejor\nA                Bm\n   tu esencia es más visible,\n    G\ndel mismo dolor\n   Gm                Em  A  D  G  A  G\nvendrá un nuevo amanecer\n\n\nEm            A        D     G           A  G\n   Tal vez colmaban la necesidad\nEm            A        D            G    A  G\n   pero hay vacíos que no pueden llenar\nEm        A       D       G              A  G\n   no conocían la profundidad\nEm              A      D          G      A  G\n   hasta que un día no   dio para más\n\n\nBm          F#m       G                D\n   Quedabas esperando ecos que no volverán\nA             Bm\n   flotando entre rechazos\n    G\ndel mismo dolor\n   Gm                Em  A  D  G  A  G\nvendrá un nuevo amanecer\n\n\nBm           F#\n   Separarse de la especie\nA              E           Esus4  E\npor algo superior\nG          D          A    Asus   A  Asus\n   no es soberbia es amor\nG          D          E    Esus4  E\n   no es soberbia es amor\nG          Gm\n   poder decir adiós\nGm  Gm  Gm  Gm         Em  A  D  G  A  G\n↓↓  ↓↓  ↓↓  ↓↓   es crecer"
+	"txt": "Em       A        D         G             A  G\n   Suspiraban lo mismo los dos\nEm            A            D        G     A  G\n   y hoy son parte de una lluvia lejos\nEm           A         D           G      A  G\n   no te confundas no sirve el rencor\nEm        A         D          G          A  G\n   son espasmos después del adiós\n\n\nBm           F#m            G               D\n   Ponés canciones tristes para sentirte mejor\nA                 Bm\n   tu esencia es más visible,\n     G\ndel mismo dolor\n     Gm               Em  A  D  G  A  G\nvendrá un nuevo amanecer\n\n\nEm             A        D     G           A  G\n   Tal vez colmaban la necesidad\nEm             A        D            G    A  G\n   pero hay vacíos que no pueden llenar\nEm         A        D      G              A  G\n   no conocían la profundidad\nEm               A      D           G     A  G\n   hasta que un día no    dio para más\n\n\nBm          F#m       G                 D\n   Quedabas esperando ecos que no volverán\nA               Bm\n   flotando entre rechazos\n     G\ndel mismo dolor\n     Gm               Em  A  D  G  A  G\nvendrá un nuevo amanecer\n\n\nBm            F#\n   Separarse de la especie\n A             E           Esus4  E\npor algo superior\nG           D          A   Asus   A  Asus\n   no es soberbia es amor\nG           D          E   Esus4  E\n   no es soberbia es amor\nG           Gm\n   poder decir adiós\n\nGm  Gm  Gm  Gm          Em  A  D  G  A  G\n↓↓  ↓↓  ↓↓  ↓↓   es crecer"
 }
