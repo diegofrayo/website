@@ -6,11 +6,11 @@
 		"album": "Alma de diamante",
 		"year": 1980,
 		"country": "🇦🇷",
-		"category": "4|REVIEW|🕵️",
+		"category": "3|CHECKED|☑️",
 		"order": 0,
 		"created_at": "2021/04/30",
-		"is_public": false,
-		"done": false,
+		"is_public": true,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/6F3VxUPgfcvDDpk2UxsJ5a",
 		"youtube_url": "https://youtu.be/hEL2AgzRmjc",
 		"assets": {},
@@ -30,5 +30,5 @@
 		"interpretation": ""
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "C     Am\nVen a mí\n       F     Em7\ncon tu dulce luz\nAm         F\nalma de diamante\n\n  C         Am\nY aunque el sol\n     F      Em7\nse nuble después\n    Am         F\nsos alma de diamante\n\nC       Am\nCielo o    piel\n     F        Em7\nsilencio o verdad\n    Am         F\nsos alma de diamante\n\n    C   Am\nPor eso ven así\n         F   Em7\ncon la humanidad\nAm         F\nalma de diamante\n\n\nA                E          F#m\n   Aunque tu corazón recircule\n        F      G[2]      A\nsiga de paso o venga\n           E             F#m\npretenda volar con las manos\n           F        G\nsueñe despierto o duerma...\n\n     C        Am\n...o beba el elixir\n       F    Em7\nde la eternidad\n    Am         F      Am         F      Am         F\nsos alma de diamante, alma de diamante, alma de diamante...\n\n\nC     Am\nBien aquí\n        F    Em7\no en el más allá\n    Am         F\nsos alma de diamante\n\n  C           Am\nY aunque este mismo sol\n     F      Em7\nse nuble después\n    Am         F      Am         F      Am         F\nsos alma de diamante, alma de diamante, alma de diamante..."
+	"txt": " C     Am\nVen a mí\n        F     Em7\ncon tu dulce luz\nAm          F\nalma de diamante\n\n  C          Am\nY aunque el sol\n       F     Em7\nse nuble después\n    Am          F\nsos alma de diamante\n\n C       Am\nCielo o piel\n      F        Em7\nsilencio o verdad\n    Am          F\nsos alma de diamante\n\n    C    Am\nPor eso ven así\n          F   Em7\ncon la humanidad\nAm          F\nalma de diamante\n\n\nA                 E          F#m\n   Aunque tu corazón recircule\n         F      G[2]      A\nsiga de paso o venga\n            E           F#m\npretenda volar con las manos\n          F        G\nsueñe despierto o duerma...\n\n      C        Am\n...o beba el elixir\n        F    Em7\nde la eternidad\n    Am          F     Am          F     Am          F\nsos alma de diamante, alma de diamante, alma de diamante...\n\n\n C      Am\nBien aquí\n         F     Em7\no en el más allá\n    Am          F\nsos alma de diamante\n\n  C            Am\nY aunque este mismo sol\n       F     Em7\nse nuble después\n    Am          F     Am          F     Am          F\nsos alma de diamante, alma de diamante, alma de diamante..."
 }

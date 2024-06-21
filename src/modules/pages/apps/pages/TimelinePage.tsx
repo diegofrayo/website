@@ -30,11 +30,11 @@ function TimelinePage() {
 						items: v.isNotEmptyString(selectedCategory)
 							? group.items.filter((item) => {
 									return item.categories.includes(selectedCategory);
-								})
+							  })
 							: group.items,
 					};
 				}),
-			};
+		  };
 
 	// --- HANDLERS ---
 	function handleSelectFilterClick(category: string): () => void {

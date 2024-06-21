@@ -161,7 +161,7 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 														/>
 													</Link>
 												);
-											})
+										  })
 										: null}
 								</Block>
 							</InfoBlock>

@@ -62,8 +62,8 @@ function BooksPage() {
 														calification === 5
 															? Icon.icon.STAR_SOLID
 															: calification === 4
-																? Icon.icon.HEART_SOLID
-																: Icon.icon.CHECK
+															? Icon.icon.HEART_SOLID
+															: Icon.icon.CHECK
 													}
 													size={24}
 												/>

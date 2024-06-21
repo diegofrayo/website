@@ -219,8 +219,8 @@ function RenderByStrategy({ data }: T_BetsPageProps) {
 					return predictionTeamA.acceptancePercentage > predictionTeamB.acceptancePercentage
 						? -1
 						: predictionTeamA.acceptancePercentage < predictionTeamB.acceptancePercentage
-							? 1
-							: 0;
+						? 1
+						: 0;
 				},
 			);
 		});
@@ -703,8 +703,8 @@ function FixtureMatch({
 															{currentTeam.winner === true
 																? "✅"
 																: currentTeam.winner === false
-																	? "❌"
-																	: "🔳"}{" "}
+																? "❌"
+																: "🔳"}{" "}
 														</InlineText>
 														<InlineText>{composeMatchTitle(playedMatch)}</InlineText>
 													</Text>

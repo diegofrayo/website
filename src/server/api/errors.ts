@@ -14,7 +14,7 @@ export abstract class CustomError extends Error {
 			? {
 					message: cause["message"],
 					...cause,
-				}
+			  }
 			: this.cause;
 	}
 }

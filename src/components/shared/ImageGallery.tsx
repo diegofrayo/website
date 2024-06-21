@@ -44,8 +44,8 @@ function ImageGallery({ id, images, noBounds, className }: T_ImageGalleryProps) 
 						return newIndex < 0
 							? totalNumberOfImages - 1
 							: newIndex === totalNumberOfImages
-								? 0
-								: newIndex;
+							? 0
+							: newIndex;
 					}
 
 					return newIndex < 0 ? 0 : newIndex === totalNumberOfImages ? currentIndex : newIndex;

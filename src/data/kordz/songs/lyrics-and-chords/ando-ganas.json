@@ -6,11 +6,11 @@
 		"album": "Ay ay ay",
 		"year": 1994,
 		"country": "🇦🇷",
-		"category": "4|REVIEW|🕵️",
+		"category": "1|FAVORITE|⭐",
 		"order": 0,
 		"created_at": "2021/03/27",
-		"is_public": false,
-		"done": false,
+		"is_public": true,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/4vsmIkU6VJa9dXXqasvzx0",
 		"youtube_url": "https://youtu.be/qfLfimOh1nU",
 		"assets": {},
@@ -20,15 +20,10 @@
 				"text": "Ando ganas",
 				"url": "https://acordes.lacuerda.net/piojos/ando_ganas-5.shtml",
 				"source": "lacuerda"
-			},
-			{
-				"text": "Ando Ganas - Los Piojos - Cover",
-				"url": "https://youtu.be/ygy53pb51Nk",
-				"source": "youtube"
 			}
 		],
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "Dm7\n   Ando ganas de encontrarte\nC\n   cuánto lejos que estás de acá\nDm7\n   ando ganas de encontrarte\nC\n   ando lejos más, no me da,\n   no me da\n\n\nDm7\nLlora, llora, llora mi pena de amor\nC\nllora, llora, llora mi pena por vos\nDm7\nllora, llora, llora mi pena de amor\n     C\ny amale...\n\n\nF       \nA mí sí que me gustan tus piernas mecerse\n               C\ncomo si fueran olas\nC#\n   por lo que se ve\nF\n   me gustó tu mar y tu\n  C\ncanoa\n\n\nDm7\n   Ando ganas de encontrarte\nC\n   de una buena vez por todas\nDm7\n   el invierno largo se fue\nC\n   y ya cambiaron las modas\n\n\nDm7\nLlora, llora, llora mi pena de amor\nC\nllora, llora, llora mi pena por vos\nDm7\nllora, llora, llora mi pena de amor\n     C\ny amale...\n\n\nF\nA mí sí que me gustan tus piernas mecerse\n               C\ncomo si fueran olas\nC#\n   por lo que se ve\nF\n   me gustó tu mar y tu\n  C\ncanoa\n\n\nDm7\nla..la..le! sólo una cosa te digo\nDm7\nla..la..le! yo necesito un abrigo\nC\nla..la..le! que en esta tierra hace frío\nC\nla..la..le! si no estás al lado mío\n\nDm7\nla..la..le! y como vos no hay ninguna\nDm7\nla..la..le! no brilla tanto la luna\nC\nla..la..le! ando ganas de encontrarte\nC\nla..la..le! quiero llevarte pa' marte\n\n\nDm7\n↓ ↓ ↓"
+	"txt": "Dm7\n   Ando ganas de encontrarte\nC\n   cuánto lejos que estás de acá\nDm7\n   ando ganas de encontrarte\nC\n   ando lejos más, no me da, no me da\n\n\n  Dm7\nLlora, llora, llora mi pena de amor\n  C\nllora, llora, llora mi pena por vos\n  Dm7\nllora, llora, llora mi pena de amor\n      C\ny amale...\n\n\nF\n   A mí sí que me gustan tus piernas mecerse\n               C\ncomo si fueran olas\nC#\n   por lo que se ve\nF\n   me gustó tu mar y tu\n   C\ncanoa\n\n\nDm7\n   Ando ganas de encontrarte\nC\n   de una buena vez por todas\nDm7\n   el invierno largo se fue\nC\n   y ya cambiaron las modas\n\n\n  Dm7\nLlora, llora, llora mi pena de amor\n  C\nllora, llora, llora mi pena por vos\n  Dm7\nllora, llora, llora mi pena de amor\n      C\ny amale...\n\n\nF\n   A mí sí que me gustan tus piernas mecerse\n               C\ncomo si fueran olas\nC#\n   por lo que se ve\nF\n   me gustó tu mar y tu\n   C\ncanoa\n\n\n Dm7\nLa..la..le! sólo una cosa te digo\n Dm7\nla..la..le! yo necesito un abrigo\n C\nla..la..le! que en esta tierra hace frío\n C\nla..la..le! si no estás al lado mío\n\n Dm7\nLa..la..le! y como vos no hay ninguna\n Dm7\nla..la..le! no brilla tanto la luna\n C\nla..la..le! ando ganas de encontrarte\n C\nla..la..le! quiero llevarte pa' marte\n\n\nDm7\n↓ ↓ ↓"
 }

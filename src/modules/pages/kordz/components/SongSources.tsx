@@ -60,10 +60,10 @@ function SongSources({ sources }: T_SongSourcesProps) {
 											item.source === "youtube"
 												? Icon.icon.YOUTUBE
 												: item.source === "spotify"
-													? Icon.icon.SPOTIFY
-													: item.source === "instagram"
-														? Icon.icon.INSTAGRAM
-														: Icon.icon.LINK
+												? Icon.icon.SPOTIFY
+												: item.source === "instagram"
+												? Icon.icon.INSTAGRAM
+												: Icon.icon.LINK
 										}
 										size={32}
 										wrapperClassName="tw-mr-2"

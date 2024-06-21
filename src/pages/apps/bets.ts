@@ -20,13 +20,13 @@ export const getStaticProps: GetStaticProps<T_BetsPageProps> = async () => {
 					monday.add(1, "day").toDate(),
 					monday.add(2, "day").toDate(),
 					monday.add(3, "day").toDate(),
-				]
+			  ]
 			: [
 					monday.add(4, "day").toDate(),
 					monday.add(5, "day").toDate(),
 					monday.add(6, "day").toDate(),
 					monday.add(7, "day").toDate(),
-				]
+			  ]
 	).map((date) => {
 		// TODO: Weird issue related to getDate()
 		return `${date.getFullYear()}-${addLeftPadding(date.getMonth() + 1)}-${addLeftPadding(

@@ -53,11 +53,12 @@ export const ContactsPage = withAuthRulesPage(
 		const [isAllCollapsiblesOpened, , toggleIsAllCollapsiblesOpened] = useEnhancedState(false);
 
 		// --- STATES & REFS ---
-		const [whatsAppLinksMode, setWhatsAppLinksMode] = React.useState<T_WhatsAppLinksMode>("web");
+		const [whatsAppLinksMode, setWhatsAppLinksMode] = React.useState<T_WhatsAppLinksMode>("app");
 
 		// --- EFFECTS ---
 		useDidMount(() => {
-			setWhatsAppLinksMode(isMobileDevice() ? "app" : "web");
+			setWhatsAppLinksMode("app");
+			// setWhatsAppLinksMode(isMobileDevice() ? "app" : "web");
 		});
 
 		// --- HANDLERS ---

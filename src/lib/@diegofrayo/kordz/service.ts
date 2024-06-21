@@ -140,7 +140,7 @@ class KordzServiceClass {
 			: rawChordName;
 		const chordVariantIndex = hasChordMultipleVariants
 			? Number(replaceAll(rawChordName.substring(rawChordName.lastIndexOf("[")), ["[", "]"], "")) -
-				1
+			  1
 			: 0;
 
 		return { chordName, chordVariantIndex };
