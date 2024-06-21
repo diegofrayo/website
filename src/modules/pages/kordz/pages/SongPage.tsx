@@ -3,20 +3,9 @@ import { useRouter } from "next/router";
 import cn from "classnames";
 
 import { MainLayout, Page } from "~/components/layout";
-import {
-	Block,
-	Button,
-	Collapsible,
-	Icon,
-	InlineText,
-	Modal,
-	Pre,
-	Space,
-	Text,
-} from "~/components/primitive";
+import { Block, Button, Icon, InlineText, Modal, Pre, Space, Text } from "~/components/primitive";
 import { CopyToClipboardPopover, Loader } from "~/components/shared";
 import { ClientRenderComponent } from "~/hocs";
-import { ComponentWithAuth } from "~/modules/auth";
 import { MDXContent } from "~/modules/mdx/client";
 import { ROUTES } from "~/modules/routing";
 import type { T_PageContent } from "~/server/data-loader";

@@ -20,7 +20,6 @@ import { useDidMount, useEnhancedState } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
 import { isBusiness, type T_Business } from "@diegofrayo/types/businesses";
 import { isContact, type T_Contact } from "@diegofrayo/types/contacts";
-import { isMobileDevice } from "@diegofrayo/utils/browser";
 import { throwError } from "@diegofrayo/utils/misc";
 import { capitalize, generateSlug, replaceAll } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
