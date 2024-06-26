@@ -320,7 +320,12 @@ function CategoryContacts({
 									className="tw-mb-8 tw-w-full tw-pr-4 last:tw-mb-4 sm:tw-w-1/2"
 									style={{ breakInside: "avoid", pageBreakInside: "avoid" }}
 								>
-									<Text className="tw-mb-1 tw-font-bold tw-leading-tight">{contact.name}</Text>
+									<Text className="tw-mb-1 tw-font-bold tw-leading-tight">
+										{isBusiness(contact) && !contact.visited ? (
+											<InlineText className="tw-relative tw--top-0.5 tw-text-xs">🔰</InlineText>
+										) : null}
+										<InlineText>{contact.name}</InlineText>
+									</Text>
 									<Block>
 										{contactPhone.map((phone) => {
 											return (

@@ -63,8 +63,8 @@ function useAsync<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn>(
 				? v.isBoolean(optsParam["withDelay"])
 					? 1000
 					: v.isNumber(optsParam["withDelay"])
-					? optsParam["withDelay"]
-					: 0
+						? optsParam["withDelay"]
+						: 0
 				: 0,
 		};
 	}, [optsParam]);

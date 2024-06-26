@@ -34,7 +34,7 @@ function FilmsPage() {
 					isAddedDateFilterEnabled ? sortBy("-added_date") : sortBy("-calification", "title"),
 				),
 				categories: generateCategories(rawData),
-		  };
+			};
 
 	// --- HANDLERS ---
 	function handleSelectFilterClick(category: string) {
@@ -217,8 +217,8 @@ function FilmsPage() {
 															calification === 5
 																? Icon.icon.STAR_SOLID
 																: calification === 4
-																? Icon.icon.HEART_SOLID
-																: Icon.icon.CHECK
+																	? Icon.icon.HEART_SOLID
+																	: Icon.icon.CHECK
 														}
 														size={18}
 													/>
@@ -276,12 +276,13 @@ function FilmsPage() {
 																		source === "Netflix"
 																			? `https://www.netflix.com/title/${id}`
 																			: source === "YouTube"
-																			? `https://www.youtube.com/watch?v=${id}`
-																			: source === "imdb"
-																			? `https://www.imdb.com/title/${id}`
-																			: source === "Amazon Prime Video"
-																			? `https://www.primevideo.com/detail/${id}`
-																			: url || throwError(`Invalid film (${id}) url and source`)
+																				? `https://www.youtube.com/watch?v=${id}`
+																				: source === "imdb"
+																					? `https://www.imdb.com/title/${id}`
+																					: source === "Amazon Prime Video"
+																						? `https://www.primevideo.com/detail/${id}`
+																						: url ||
+																							throwError(`Invalid film (${id}) url and source`)
 																	}
 																	className="title-link"
 																	isExternalLink

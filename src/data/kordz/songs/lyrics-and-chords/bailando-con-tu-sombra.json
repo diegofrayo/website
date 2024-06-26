@@ -6,11 +6,11 @@
 		"album": "Fenix",
 		"year": 2003,
 		"country": "🇦🇷",
-		"category": "4|REVIEW|🕵️",
+		"category": "3|CHECKED|☑️",
 		"order": 0,
 		"created_at": "2021/04/29",
 		"is_public": false,
-		"done": false,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/1kepq9J67v8HhEEfGdYq9m",
 		"youtube_url": "https://youtu.be/puUKQ_pJ_v4",
 		"assets": {},
@@ -19,16 +19,11 @@
 				"text": "Bailando con tu sombra",
 				"url": "https://acordes.lacuerda.net/abel_pintos/bailando_con_tu_sombra.shtml",
 				"source": "lacuerda"
-			},
-			{
-				"text": "Como tocar guitarra Bailando con tu Sombra de V. Heredia",
-				"url": "https://youtu.be/vRUJRqK1rFk",
-				"source": "youtube"
 			}
 		],
 		"chords": [],
 		"interpretation": ""
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "    Am                     G\n¿Quién podrá quererte como yo te quiero amor?\n   F                          C\nquién pregunto quién podrá quererte como yo\n  Am                    G\nsiempre lo decías y me atabas a tu piel\nF                      C\ncon ramos de besos y dejabamos caer...\n\nG         F         C\nSobre los techos de zinc\nG           F        C\nlluvias de otoño en abril\n\n\nE                        Am\nTengo esa nostalgia de domingo por llover\nE                     Am\nde guitarra rota y oxidado carrusel\nF     C   F        G\nay Alelí, pobre de mí\n\n\nAm                   G\nYo te desnudaba para ver cómo era el mar\nF                             C\ny el mar se enredaba en mis deseos de volar\nAm                       G\níbamos tan lejos que olvidábamos volver\nF                        C\nnos traía el ángel ciego del amanecer...\n\nG        F          C\nY se acostaba a tus pies\nG         F       C\ncomo un gatito siamés\n\n\nE                        Am\nTengo esa nostalgia de domingo por llover\nE                     Am\nde guitarra rota y oxidado carrusel\nF     C   F        G\nay Alelí, pobre de mí\n\n\nAm                       G\nEsta noche quiero que bailemos otra vez\nF                               C\nla canción que el viento nos cantaba en el ayer\nAm                          G\nya sabrá el infierno cómo hacer para aceptar\nF                            C\nque baile en mi celda con tu sombra sin parar...\n\n G         F      C\n¿Cómo he podido matar\nG            F     C\na quien me hacía soñar?\n\n\nE                        Am\nTengo esa nostalgia de domingo por llover\nE                     Am\nde guitarra rota y oxidado carrusel\nF     C   F        G\nay Alelí, pobre de mí"
+	"txt": "   Am                       G\n¿Quién podrá quererte como yo te quiero amor?\n  F                            C\nquién pregunto quién podrá quererte como yo\n Am                      G\nsiempre lo decías y me atabas a tu piel\n F                      C\ncon ramos de besos y dejabamos caer...\n\n\n G         F         C\nSobre los techos de zinc\n  G          F         C\nlluvias de otoño en abril\n\n\n E                        Am\nTengo esa nostalgia de domingo por llover\n E                     Am\nde guitarra rota y oxidado carrusel\nF      C   F        G\nay Alelí, pobre de mí\n\n\n Am                   G\nYo te desnudaba para ver cómo era el mar\nF                              C\ny el mar se enredaba en mis deseos de volar\nAm                        G\níbamos tan lejos que olvidábamos volver\n F                        C\nnos traía el ángel ciego del amanecer...\n\n\nG         F          C\nY se acostaba a tus pies\n G         F       C\ncomo un gatito siamés\n\n\n E                        Am\nTengo esa nostalgia de domingo por llover\n E                     Am\nde guitarra rota y oxidado carrusel\nF      C   F        G\nay Alelí, pobre de mí\n\n\nAm                        G\nEsta noche quiero que bailemos otra vez\n F                               C\nla canción que el viento nos cantaba en el ayer\n Am                          G\nya sabrá el infierno cómo hacer para aceptar\n  F                           C\nque baile en mi celda con tu sombra sin parar...\n\n\n  G         F      C\n¿Cómo he podido matar\nG             F     C\na quien me hacía soñar?\n\n\n E                        Am\nTengo esa nostalgia de domingo por llover\n E                     Am\nde guitarra rota y oxidado carrusel\nF      C   F        G\nay Alelí, pobre de mí"
 }

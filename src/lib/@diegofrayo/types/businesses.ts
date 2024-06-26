@@ -1,4 +1,4 @@
-import { type Input, object, string, union, array, url, length, enumType } from "valibot";
+import { type Input, object, string, union, array, url, length, enumType, boolean } from "valibot";
 import v from "../v";
 
 export type T_BusinessesData = {
@@ -26,6 +26,7 @@ export const BusinessSchema = object({
 	instagram: string(),
 	maps: union([string([length(0)]), string([url()])]),
 	menu: union([string([length(0)]), string([url()])]),
+	visited: boolean(),
 	country: enumType(["CO"]),
 });
 

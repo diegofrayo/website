@@ -23,8 +23,8 @@ export function logAndReportError(error: unknown, source?: string) {
 		error instanceof Error
 			? `${error.message} | ${error.stack}`
 			: typeof error === "string"
-			? error
-			: "Unknown error";
+				? error
+				: "Unknown error";
 	addLog(source, parsedError);
 }
 

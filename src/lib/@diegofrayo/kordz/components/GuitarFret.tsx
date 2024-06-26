@@ -38,8 +38,8 @@ function GuitarFret({ variant, number, musicNotes, touchedStrings, barreFret }: 
 				isSkippedGuitarStringsVariant
 					? "tw-w-auto"
 					: isGuitarStringsNamesVariant
-					? "tw-w-16"
-					: "tw-w-10",
+						? "tw-w-16"
+						: "tw-w-10",
 			)}
 		>
 			{isEmptyVariant || isDefaultVariant ? (
