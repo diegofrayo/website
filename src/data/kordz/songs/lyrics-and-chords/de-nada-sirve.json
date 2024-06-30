@@ -6,10 +6,10 @@
 		"album": "Otras canciones",
 		"year": 2019,
 		"country": "🇺🇾",
-		"category": "4|REVIEW|🕵️",
+		"category": "2|WELL_DONE|👌",
 		"order": 0,
 		"created_at": "2023/05/14",
-		"is_public": false,
+		"is_public": true,
 		"done": true,
 		"spotify_url": "https://open.spotify.com/track/2CFDPiNUxcSOqfQtUHYNxF",
 		"youtube_url": "https://youtu.be/I_818q1nMp8",
@@ -32,11 +32,6 @@
 				"source": "youtube"
 			},
 			{
-				"text": "De nada sirve - versión - Cynthia Lozada y Lucho Aberastain",
-				"url": "https://youtu.be/8lor5UqUQIg",
-				"source": "youtube"
-			},
-			{
 				"text": "El jhovas -como tocar de nada sirve -no te va a gustar y jorge drexler",
 				"url": "https://youtu.be/OykIkDdpue4",
 				"source": "youtube"
@@ -45,5 +40,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{NOTE}\",\n\t\t\treplacement: <Tablature notes=\"La canción se toca con el capo en el traste 2\" />,\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
-	"txt": "{NOTE}\n\n\nD  Dsus2  Dsus4  D  Dsus4  D   | (x3)\n\n\nD  A  D\n\n\nD                                A  D\n   De nada sirve el por qué,\nD                                A  D\n   de nada sirve el valor,\nD                                A  D\n   de nada sirve volver,\n                      G\nde nada siiirve el adiós,\n                D\nseguro de nada sirve\n\n\nD  A  D   | (x2)\n\n\nD                                A  D\n   Yo me pregunté hasta cuando,\nD                                A  D\n   te querré como hasta hoy,\nD                                A  D\n   vos me enseñaste llorando,\nD                          G\n   que de nada sirve el adiós,\n               D       A  D\nseguro de nada sirve,     mi amor\n\nA                    G                             D\n   Podré caerme a pedazos, pero acá siempre estás vos\n\n\nD  A  D   | (x2)\n\n\nD                                A  D\n   Me gusta lo que no tengo,\nD                                A  D\n   y quiero lo que no doy,\nD                                A  D\n   no me comprendo a mí mismo,\nD                                               G\n   no se entregarte la vida, tampoco vivir sin vos,\n                   D      A   D\nyo sé que de nada sirve,     mi amor\n\nA                    G                              D   Dsus2  Dsus4  D\n   Podré caerme a pedazos, pero acá siempre estás vos\nA                    G                             D\n   podré caerme a pedazos, pero acá siempre estás vos\n\n\nD  A  D   | (x2)\n\n\nMi jardín ya no te espera,\nporque ya corté la flor,\ny todo lo que me queda,\n                                         G      D  A  G\nes cantarte con el alma si te regalé la voz\n                D      A   D\nseguro de nada sirve,     mi amor\n\nA                    G                             D   Dsus2  Dsus4  D\n   Podré caerme a pedazos, pero acá siempre estás vos\nA                    G                 D  Dsus2  Dsus4  D  Dsus2  D\n   podré caerme a pedazos, pero acá…\n               D  Dsus2  Dsus4  D  Dsus2  D\nsiempre estás vos\n               D\nsiempre estás vos...\n\n\nD  A  D"
+	"txt": "{NOTE}\n\n\nD  Dsus2  Dsus4  D  Dsus4  D   | (x3)\n\n\nD  A  D\n\n\nD                                A  D\n   De nada sirve el por qué,\nD                                A  D\n   de nada sirve el valor,\nD                                A  D\n   de nada sirve volver,\n                   G\nde nada sirve el adiós,\n                D\nseguro de nada sirve\n\n\nD  A  D   | (x2)\n\n\nD                                A  D\n   Yo me pregunté hasta cuando,\nD                                A  D\n   te querré como hasta hoy,\nD                                A  D\n   vos me enseñaste llorando,\nD                         G\n   que de nada sirve el adiós,\n                D      A   D\nseguro de nada sirve,     mi amor\n\nA                    G                             D\n   Podré caerme a pedazos, pero acá siempre estás vos\n\n\nD  A  D   | (x2)\n\n\nD                                A  D\n   Me gusta lo que no tengo,\nD                                A  D\n   y quiero lo que no doy,\nD                                A  D\n   no me comprendo a mí mismo,\nD                                               G\n   no se entregarte la vida, tampoco vivir sin vos,\n                   D      A   D\nyo sé que de nada sirve,     mi amor\n\nA                    G                             D   Dsus2  Dsus4  D\n   Podré caerme a pedazos, pero acá siempre estás vos\nA                    G                             D\n   podré caerme a pedazos, pero acá siempre estás vos\n\n\nD  A  D   | (x2)\n\n\nD                                A  D\n   Mi jardín ya no te espera,\nD                                A  D\n   porque ya corté la flor,\nD                                A  D\n   y todo lo que me queda,\n                                         G      D  A  G\nes cantarte con el alma si te regalé la voz\n                D      A   D\nseguro de nada sirve,     mi amor\n\nA                    G                             D   Dsus2  Dsus4  D\n   Podré caerme a pedazos, pero acá siempre estás vos\nA                    G                 D  Dsus2  Dsus4  D  Dsus2  D\n   podré caerme a pedazos, pero acá…\n               D  Dsus2  Dsus4  D  Dsus2  D\nsiempre estás vos\n               D\nsiempre estás vos...\n\n\nD  A  D"
 }

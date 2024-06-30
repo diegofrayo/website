@@ -6,6 +6,7 @@ import { MainLayout, Page } from "~/components/layout";
 import { Block, Button, Icon, InlineText, Modal, Pre, Space, Text } from "~/components/primitive";
 import { CopyToClipboardPopover, Loader } from "~/components/shared";
 import { ClientRenderComponent } from "~/hocs";
+import { withAuth } from "~/modules/auth";
 import { MDXContent } from "~/modules/mdx/client";
 import { ROUTES } from "~/modules/routing";
 import type { T_PageContent } from "~/server/data-loader";
@@ -192,7 +193,7 @@ function SongPage({ cmsContent, songDetails, songContent }: T_SongPageProps) {
 								<MDXContent
 									code={songContent}
 									globals={{ DATA: { song: songDetails } }}
-									components={{ TextFormatter, Tablature, MusicTextNote }}
+									components={{ TextFormatter, Tablature: withAuth(Tablature), MusicTextNote }}
 								/>
 							</Block>
 						</ClientRenderComponent>

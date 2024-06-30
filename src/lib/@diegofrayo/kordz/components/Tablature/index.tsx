@@ -17,7 +17,7 @@ type T_TablatureProps = {
 	notes?: string;
 };
 
-function Tablature({ positions, notes }: T_TablatureProps) {
+function Tablature({ positions, notes = "" }: T_TablatureProps) {
 	// --- VARS ---
 	const parsedPositions: T_TablatureProps["positions"] | undefined = v.isNotEmptyArray(positions)
 		? [{ space: 1, variant: "SPACE" }, ...parsePositions(positions), { space: 1, variant: "SPACE" }]
@@ -121,7 +121,7 @@ function Tablature({ positions, notes }: T_TablatureProps) {
 				</div>
 			) : null}
 
-			{v.isDefined(parsedPositions) && v.isNotEmpty(notes) ? (
+			{parsedPositions && v.isNotEmpty(notes) ? (
 				<hr className="tw-my-0.5 tw-border-0 tw-bg-transparent" />
 			) : null}
 
