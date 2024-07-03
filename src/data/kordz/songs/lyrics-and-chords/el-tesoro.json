@@ -6,15 +6,14 @@
 		"album": "La Síntesis O'konor",
 		"year": 2017,
 		"country": "🇦🇷",
-		"category": "4|REVIEW|🕵️",
+		"category": "1|FAVORITE|⭐",
 		"order": 0,
 		"created_at": "2022/08/10",
-		"is_public": false,
-		"done": false,
+		"is_public": true,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/0l6LVRTDNFSHVBsqQvMR62",
 		"youtube_url": "https://youtu.be/GFa9NhZ0Yho",
 		"assets": {},
-		"interpretation": "- Fuerza del canto: Como sea\n- Velocidad de rasgueo: Media o baja\n- Fuerza de rasgueo: Como sea\n- Complejidad: Fácil\n",
 		"sources": [
 			{
 				"text": "EL TESORO, El mató a un Policía Motorizado: Acordes",
@@ -40,5 +39,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "INTRO: E C#m   (x4)\n\n\nE   C#m   E   C#m          E   C#m         E     C#m\nAy,           paso todo el día pensando en vos\nE   C#m   E   C#m               E    C#m  E      C#m\nay,           que hay de mal en todo es...to\nE   C#m   E   C#m          E   C#m         E     C#m\nay,           paso todo el día pensando en vos\nE   C#m   E   C#m            E         C#m  E    G#m\nay,           vos pensás que pierdo el ti...empo\n\n\nA              B             E\n   Perdón si estoy de nuevo acá\n            G#m                 A\npensé que habías preguntado por mí\n           B             E\nme gusta estar de nuevo acá\n          G#m                  A\naunque no hayas preguntado por mí\n         B              E\nvoy a quedarme un poco acá\n         G#m                      A\ncuidarte siempre a vos en la derrota\n           B         E\nhasta el final, el final\n\n\nE C#m   (x4)\n\n\nE   C#m   E   C#m         E    C#m     E         C#m\nAy,           todo lo que hago es para vos\nE   C#m   E   C#m       E          C#m    E      C#m\nay,           el tesoro se está hundien...do\nE   C#m   E   C#m         E    C#m     E         C#m\nay,           todo lo que hago es para vos\nE   C#m   E   C#m            E         C#m  E    G#m\nay,           vos pensás que pierdo el ti...empo\n\n\nA              B             E\n   Perdón si estoy de nuevo acá\n            G#m                 A\npensé que habías preguntado por mí\n           B             E\nme gusta estar de nuevo acá\n          G#m                  A\naunque no hayas preguntado por mí\n         B              E\nvoy a quedarme un poco acá\n         G#m                      A\ncuidarte siempre a vos en la derrota\n           B         E\nhasta el final, el final\n\n\nE   C#m   E      C#m           E\nEs            la depresión sin épica\n    C#m   E      C#m           E\n              la depresión sin épica\n\n\nE C#m   (x4)"
+	"txt": "INTRO: E  C#m   | (x4)\n\n\nE   C#m   E    C#m          E   C#m         E     C#m\nAy,           paso todo el día pensando en vos\nE   C#m   E     C#m              E   C#m   E      C#m\nay,           que hay de mal en todo es...to\nE   C#m   E    C#m          E   C#m         E     C#m\nay,           paso todo el día pensando en vos\nE   C#m   E    C#m            E         C#m    E  G#m\nay,           vos pensás que pierdo el ti...empo\n\n\nA               B             E\n   Perdón si estoy de nuevo acá\n             G#m                 A\npensé que habías preguntado por mí\n            B             E\nme gusta estar de nuevo acá\n           G#m                  A\naunque no hayas preguntado por mí\n          B              E\nvoy a quedarme un poco acá\n          G#m                      A\ncuidarte siempre a vos en la derrota\n            B         E\nhasta el final, el final\n\n\nE  C#m   | (x4)\n\n\nE   C#m   E    C#m         E   C#m      E         C#m\nAy,           todo lo que hago es para vos\nE   C#m   E   C#m        E          C#m    E      C#m\nay,           el tesoro se está hundien...do\nE   C#m   E    C#m         E   C#m      E         C#m\nay,           todo lo que hago es para vos\nE   C#m   E    C#m            E         C#m    E  G#m\nay,           vos pensás que pierdo el ti...empo\n\n\nA               B             E\n   Perdón si estoy de nuevo acá\n             G#m                 A\npensé que habías preguntado por mí\n            B             E\nme gusta estar de nuevo acá\n           G#m                  A\naunque no hayas preguntado por mí\n          B              E\nvoy a quedarme un poco acá\n          G#m                      A\ncuidarte siempre a vos en la derrota\n            B         E\nhasta el final, el final\n\n\nE   C#m   E       C#m          E\nEs            la depresión sin épica\n    C#m   E       C#m          E\n              la depresión sin épica\n\n\nE  C#m   | (x4)"
 }

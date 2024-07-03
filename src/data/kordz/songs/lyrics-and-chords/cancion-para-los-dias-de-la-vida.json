@@ -14,7 +14,6 @@
 		"spotify_url": "https://open.spotify.com/track/3T5SksrlFxunlotQ0lmSwv",
 		"youtube_url": "https://youtu.be/q1Sr16pdF64",
 		"assets": {},
-		"interpretation": "- Fuerza del canto: Baja\n- Velocidad de rasgueo: Baja o media\n- Fuerza de rasgueo: Baja\n- Complejidad: Díficil\n",
 		"sources": [
 			{
 				"text": "Canción para los días de la vida",
@@ -39,6 +38,11 @@
 			{
 				"text": "María Gabriela Epumer - Canción Para Los Días De La Vida",
 				"url": "https://youtu.be/BI1sNQ25gEc",
+				"source": "youtube"
+			},
+			{
+				"text": "COMO TOCAR \"CANCIÓN PARA LOS DIAS DE LA VIDA\" - LUIS ALBERTO SPINETTA",
+				"url": "https://youtu.be/O5SPb_G_qsw",
 				"source": "youtube"
 			}
 		],

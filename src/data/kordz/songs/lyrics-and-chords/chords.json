@@ -15,8 +15,7 @@
 		"youtube_url": "",
 		"assets": {},
 		"sources": [],
-		"chords": [],
-		"interpretation": ""
+		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
 	"txt": "↓↑"

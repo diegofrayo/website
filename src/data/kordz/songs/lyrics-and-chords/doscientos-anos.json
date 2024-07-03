@@ -6,11 +6,11 @@
 		"album": "El jardín de los presentes",
 		"year": 1976,
 		"country": "🇦🇷",
-		"category": "4|REVIEW|🕵️",
+		"category": "2|WELL_DONE|👌",
 		"order": 0,
 		"created_at": "2022/09/25",
-		"is_public": false,
-		"done": false,
+		"is_public": true,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/0CPARYGdedbVXR1kOX9G2R",
 		"youtube_url": "https://youtu.be/vghq50Hwcpo",
 		"assets": {},
@@ -26,9 +26,8 @@
 				"source": "lacuerda"
 			}
 		],
-		"chords": [],
-		"interpretation": ""
+		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "Fmaj7                    Cmaj7\nUna palabra,           dame una palabra\nFmaj7                    Cmaj7\nuna palabra,           sólo una palabra\nFmaj7                    Cmaj7\ndame suave brisa, oh, brisa de la playa\nFmaj7                    E\ndame una palabra\n\n\n   F               G[3]    C/G       E\nDoscientos años de que  sirvió\n  F                G[3]    C/G       E   Asus2\nhaber cruzado a    nado la mar\n\n\nFmaj7               Cmaj7\nUna palabra,      sólo una palabra\nFmaj7               Cmaj7\ndame la brisa,    dame toda brisa\nFmaj7               Cmaj7\nsuave junco, oh, junco de la orilla\nFmaj7               E\ndame una palabra\n\n\n   F               G[3]    C/G       E\nDoscientos años de que  sirvió\n  F                G[3]    C/G       E   Asus2\nhaber cruzado a    nado la mar\n\n\nB               A             |\n   nara naa naa naaaaaaaaaaaa | (x3)\nB               C/G\n   nara naa naa naaaaaaaaaaaa\nC               Cmaj7\n                ↓"
+	"txt": "Fmaj7                   Cmaj7\nUna palabra,           dame una palabra\nFmaj7                   Cmaj7\nuna palabra,           sólo una palabra\n Fmaj7                  Cmaj7\ndame suave brisa, oh, brisa de la playa\n Fmaj7                  E\ndame una palabra\n\n\n    F                G[3]   C/G       E\nDoscientos años de que  sirvió\n   F                G[3]    C/G       E   Asus2\nhaber cruzado a    nado la mar\n\n\nFmaj7              Cmaj7\nUna palabra,      sólo una palabra\n Fmaj7             Cmaj7\ndame la brisa,    dame toda brisa\n Fmaj7             Cmaj7\nsuave junco, oh,  junco de la orilla\n Fmaj7             E\ndame una palabra\n\n\n    F                G[3]   C/G       E\nDoscientos años de que  sirvió\n   F                G[3]    C/G       E   Asus2\nhaber cruzado a    nado la mar\n\n\nB               A             |\n   nara naa naa naaaaaaaaaaaa | (x3)\nB               C/G\n   nara naa naa naaaaaaaaaaaa\nC               Cmaj7\n                ↓"
 }

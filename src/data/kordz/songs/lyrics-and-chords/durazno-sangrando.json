@@ -6,11 +6,11 @@
 		"album": "Durazno Sangrando",
 		"year": 1975,
 		"country": "🇦🇷",
-		"category": "4|REVIEW|🕵️",
+		"category": "2|WELL_DONE|👌",
 		"order": 0,
 		"created_at": "2021/04/20",
-		"is_public": false,
-		"done": false,
+		"is_public": true,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/6pjbkrGImw09Nv5Ji3emkr",
 		"youtube_url": "https://youtu.be/i4_pVlJdbEY",
 		"assets": {},
@@ -25,7 +25,6 @@
 				"url": "https://youtu.be/aZgOHYMBKs8",
 				"source": "youtube"
 			},
-			{ "text": "ticky_mago", "url": "https://instagram.com/p/Bs-1na-nZ3l", "source": "instagram" },
 			{
 				"text": "Durazno Sangrando - Luis Alberto Spinetta (Unplugged) (cover guitarra)",
 				"url": "https://youtu.be/UOBLf7wFoOM",
@@ -47,9 +46,8 @@
 				"source": "youtube"
 			}
 		],
-		"chords": [],
-		"interpretation": ""
+		"chords": []
 	},
 	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{INTRO}\",\n\t\t\treplacement: (\n\t\t\t\t<ComponentWithAuth withoutContainer>\n\t\t\t\t\t<Tablature\n\t\t\t\t\t\tnotes={`Pisar: Cejilla en T_9 y T_10,C_2\\n\nTocar: C_2 y C_5 al tiempo, soltar C_2 y tocar la C_1\nPisar: Cejilla en T_7 y T_8,C_2\nTocar: C_2 y C_5 al tiempo, soltar C_2 y tocar la C_3\nHacer esto mismo en T_5 y T_3\nBm7 y rasguear hacia abajo\nAm y rasguear hacia abajo\n(x2)\nAm Cmaj7 E (x2)`}\n\t\t\t\t\t/>\n\t\t\t\t</ComponentWithAuth>\n\t\t\t),\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
-	"txt": "{INTRO}\n\n\n   Am            Am/F#     Fmaj7    E\nTemprano el durazno    del árbol  cayó\n   Am         Am/F#      Fmaj7    E\nsu piel era rosa       dorado del sol\n     Dm7         Cmaj7     Fmaj7        E7/9\ny al verse en la suerte de todo   frutal\n      Am          Am/F#    Fmaj7       E     Am\na la orilla de un río   su fé     lo hizo llegar\n\n\nC\nDicen que en este valle\nFmaj7                       Am\nlos duraznos son de los duendes\n\n\n  Am            Am/F#        Fmaj7   E\nPasó cierto tiempo     en el mismo lugar\n   Am               Am/F#    Fmaj7       E\nhasta que un buen día     se puso  a escuchar\n Dm7    Cmaj7       Fmaj7             E7/9\nuna melodía     muy triste del     sur\n     Am         Am/F#    Fmaj7          E   Am\nque así le lloraba    desde        su interior\n\n\nC\nQuien canta es tu carozo\nFmaj7                           Am\npues tu cuerpo al fin tiene un alma\n\nC\nY si tu ser estalla\nFmaj7                     Am\nserá un corazón el que sangre\n\nC\nY la canción que escuchas\nFmaj7                     Am\ntu cuerpo abrirá con el alba\n\n\nINTRO   (x2)\n\n\n   Am          Am/F#           Fmaj7    E\nLa brisa de enero        a la orilla llegó\n   Am            Am/F#       Fmaj7      E\nla noche del tiempo      sus horas   cumplió\n     Dm7       Cmaj7          Fmaj7       E7/9\ny al llegar el alba      el carozo   cantó\n   Am          Am/F#        Fmaj7    E Am\npartiendo el durazno que al río      cayó\n\n\nC\nY el durazno partido\nFmaj7                       Am\nya sangrando está, bajo el agua"
+	"txt": "{INTRO}\n\n\n     Am           Am/F#     Fmaj7    E\nTemprano el durazno    del árbol  cayó\n    Am         Am/F#      Fmaj7    E\nsu piel era rosa       dorado del sol\n      Dm7         Cmaj7     Fmaj7     E7/9\ny al verse en la suerte de todo   frutal\n       Am          Am/F#    Fmaj7       E     Am\na la orilla de un río   su fé     lo hizo llegar\n\n\n C\nDicen que en este valle\n Fmaj7                       Am\nlos duraznos son de los duendes\n\n\n   Am            Am/F#        Fmaj7   E\nPasó cierto tiempo     en el mismo lugar\n    Am              Am/F#     Fmaj7        E\nhasta que un buen día     se puso  a escuchar\n  Dm7    Cmaj7        Fmaj7         E7/9\nuna melodía     muy triste del     sur\n      Am         Am/F#    Fmaj7          E  Am\nque así le lloraba    desde        su interior\n\n\n  C\nQuien canta es tu carozo\n Fmaj7                            Am\npues tu cuerpo al fin tiene un alma\n\nC\nY si tu ser estalla\n Fmaj7                      Am\nserá un corazón el que sangre\n\nC\nY la canción que escuchas\n Fmaj7                     Am\ntu cuerpo abrirá con el alba\n\n\nINTRO   (x2)\n\n\n     Am         Am/F#           Fmaj7    E\nLa brisa de enero        a la orilla llegó\n    Am            Am/F#       Fmaj7       E\nla noche del tiempo      sus horas   cumplió\n       Dm7     Cmaj7           Fmaj7     E7/9\ny al llegar el alba      el carozo   cantó\n    Am          Am/F#        Fmaj7    E Am\npartiendo el durazno que al río      cayó\n\n\nC\nY el durazno partido\n Fmaj7                       Am\nya sangrando está, bajo el agua"
 }

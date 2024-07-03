@@ -29,17 +29,8 @@ type T_SongBase = {
 	readonly assets: DR.Object;
 };
 
-export type T_RawSong = T_SongBase & {
-	readonly interpretation?: {
-		"Fuerza del canto": string;
-		"Velocidad de rasgueo": string;
-		"Fuerza de rasgueo": string;
-		Rasgueo: string;
-		Complejidad: string;
-	};
-};
+export type T_RawSong = T_SongBase;
 
 export type T_Song = T_SongBase & {
-	readonly interpretation: string;
 	readonly chords: string[];
 };
