@@ -11,16 +11,15 @@ type T_SongBase = {
 		| "0|IN_PROGRESS|🚧"
 		| "1|FAVORITE|⭐"
 		| "2|WELL_DONE|👌"
-		| "3|CHECKED|☑️"
-		| "4|REVIEW|🕵️"
-		| "5|SOCIAL|🎶"
+		| "3|SOCIAL|🎶"
+		| "4|CHECKED|☑️"
+		| "5|REVIEW|🕵️"
 		| "6|ARCHIVED|🗃️";
 	readonly spotify_url: string;
 	readonly youtube_url: string;
 	readonly created_at: string;
 	readonly is_public: boolean;
 	readonly done: boolean;
-	readonly order: number;
 	readonly sources: {
 		text: string;
 		url: string;

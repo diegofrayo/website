@@ -256,9 +256,15 @@ function FilmsPage() {
 																width={24}
 																height={24}
 															/>
-														) : (
+														) : source === "YouTube" ? (
 															<Icon
 																icon={Icon.icon.YOUTUBE}
+																size={24}
+																wrapperClassName="tw-flex-shrink-0"
+															/>
+														) : (
+															<Icon
+																icon={Icon.icon.LINK}
 																size={24}
 																wrapperClassName="tw-flex-shrink-0"
 															/>
@@ -336,7 +342,7 @@ type T_Film = {
 	id: string;
 	title: string;
 	type: "Serie" | "Película" | "Documental" | "Serie documental";
-	source: "Netflix" | "YouTube" | "imdb" | "Amazon Prime Video" | "Star+";
+	source: "Netflix" | "YouTube" | "imdb" | "Amazon Prime Video" | "Star+" | "Vix";
 	categories: string[];
 	calification: number;
 	cover: string;

@@ -7,7 +7,6 @@
 		"year": 2016,
 		"country": "🇧🇷",
 		"category": "0|IN_PROGRESS|🚧",
-		"order": 0,
 		"created_at": "2024/07/04",
 		"is_public": true,
 		"done": true,
@@ -24,5 +23,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "  Gm    F        Cm\nTriste louca ou má\n             Gm         F       Cm\nserá qualificada, ela quem recusar\n                Gm       F          Cm\nseguir receita tal, a receita cultural\n                 Gm\ndo marido, da família\n        F          Cm\ncuida, cuida da rotina\n\nGm     F    Cm\n   Só mesmo    rejeita\nGm      F    Cm\n   bem conhecida receita\nGm       F      Cm\n   quem não sem    dores\nGm   F         Cm\n   aceita que tudo deve mudar\n\n\nGm               F        Cm\n   Que um homem não te define\n                   Gm\nSua casa não te define\n           F        Cm\nSua carne não te define\n\nVocê é seu próprio lar\nGm          F        Cm\n   O homem não te define\n                   Gm\nSua casa não te define\n           F        Cm\nSua carne não te define\n\nVocê é seu próprio lar\n\n\nGm     F   Cm\nEla desatinou\n         Gm\ndesatou nós\n       F   Cm\nvai viver só\n\nGm     F   Cm\nEla desatinou\n         Gm\ndesatou nós\n       F   Cm\nvai viver só"
+	"txt": "  Gm    F        Cm\nTriste louca ou má\n             Gm         F       Cm\nserá qualificada, ela quem recusar\n                Gm       F          Cm\nseguir receita tal, a receita cultural\n                 Gm\ndo marido, da família\n        F          Cm\ncuida, cuida da rotina\n\nGm     F    Cm\n   Só mesmo    rejeita\nGm      F    Cm\n   bem conhecida receita\nGm       F      Cm\n   quem não sem    dores\nGm   F         Cm\n   aceita que tudo deve mudar\n\n\nGm               F       Cm\n   Que um homem não te define\n                  Gm\nsua casa não te define\n           F       Cm\nsua carne não te define\nvocê é seu próprio lar\n\nGm          F       Cm\n   O homem não te define\n                  Gm\nsua casa não te define\n           F       Cm\nsua carne não te define\nvocê é seu próprio lar\n\n\nGm     F   Cm\nEla desatinou\n         Gm\ndesatou nós\n       F   Cm\nvai viver só\n\nGm     F   Cm\nEla desatinou\n         Gm\ndesatou nós\n       F   Cm\nvai viver só"
 }

@@ -6,8 +6,7 @@
 		"album": "Circo Beat",
 		"year": 1994,
 		"country": "🇦🇷",
-		"category": "4|REVIEW|🕵️",
-		"order": 0,
+		"category": "5|REVIEW|🕵️",
 		"created_at": "2021/05/10",
 		"is_public": false,
 		"done": false,
@@ -33,6 +32,11 @@
 			{
 				"text": "Como tocar MARIPOSA TECKNICOLOR de FITO PAEZ en GUITARRA/ acordes/ritmo/todo!!",
 				"url": "https://youtu.be/jGwz8QVemL0",
+				"source": "youtube"
+			},
+			{
+				"text": "Las 10 mejores canciones de ROCK en ESPAÑOL para tocar cuando te dicen ¡TOCA!",
+				"url": "https://youtu.be/mvZp6mknvpY?&t=688",
 				"source": "youtube"
 			}
 		],

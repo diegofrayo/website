@@ -7,7 +7,6 @@
 		"year": 2007,
 		"country": "🇦🇷",
 		"category": "2|WELL_DONE|👌",
-		"order": 0,
 		"created_at": "2021/06/22",
 		"is_public": true,
 		"done": true,
@@ -16,7 +15,7 @@
 		"assets": {},
 		"sources": [
 			{
-				"text": "Bicho de ciudad",
+				"text": "BICHO DE CIUDAD, los Piojos: Acordes",
 				"url": "https://acordes.lacuerda.net/piojos/bicho_de_ciudad.shtml",
 				"source": "lacuerda"
 			},
