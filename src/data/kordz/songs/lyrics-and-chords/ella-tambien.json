@@ -6,16 +6,16 @@
 		"album": "Kamikaze",
 		"year": 1982,
 		"country": "🇦🇷",
-		"category": "5|REVIEW|🕵️",
+		"category": "2|WELL_DONE|👌",
 		"created_at": "2021/04/23",
-		"is_public": false,
+		"is_public": true,
 		"done": true,
 		"spotify_url": "https://open.spotify.com/track/4y1ze4JPCe7XVv28VlZ4k0",
 		"youtube_url": "https://youtu.be/JpJW5yFwb40",
 		"assets": {},
 		"sources": [
 			{
-				"text": "Ella También",
+				"text": "ELLA TAMBIEN, Luis Alberto Spinetta: Acordes",
 				"url": "https://acordes.lacuerda.net/luis_a_spinetta/ella_tambien-2.shtml",
 				"source": "lacuerda"
 			},
@@ -33,5 +33,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "Fmaj7                 Em7\n  Ella también se cansó de este sol\nFmaj7                  Em7       Am7\n  viene a mojarse los pies a la luna\nFmaj7                 Em7\n  ella también se cansó de este sol\nFmaj7                  Em7       Am7\n  viene a mojarse los pies a la luna\n\nGm                     Am[2]\n  Viene a mojarse los pies a la luna\nGm                     Am[2]\n  viene a mojarse los pies a la luna...\n\n\nFmaj7                 Em7\n  Cuando se cansa de tanto querer\nFmaj7                    Em7         Am7\n  ella es tan clara que ya no es ninguna\nFmaj7                 Em7\n  cuando se cansa de tanto querer\nFmaj7                    E           Am7\n  ella es tan clara que ya no es ninguna\n\nGm                       Am\n  Ella es tan clara que ya no es ninguna\nGm                       Am\n  ella es tan clara que ya no es ninguna...\n\n\nFmaj7                 Em7\n  Sube a las hojas y cae hasta el mar\nFmaj7                   Em7         Am7\n  ¿Cómo es que puedo tocarle las manos?\nFmaj7                 Em7\n  sube a las hojas y cae hasta el mar\nFmaj7                   Em7         Am7\n  ¿Cómo es que puedo tocarle las manos?\n\nGm                      Am[2]\n  ¿Cómo es que puedo tocarle las manos?\nGm                      Am[2]\n  ¿Cómo es que puedo tocarle las manos?...\n\n\nFmaj7                   Em7\n  ¿De dónde vienen quienes al nacer\nFmaj7                    Em7      Am7\n  llueven y llueven y en ella se juntan?\nFmaj7                   Em7\n  ¿De dónde vienen quienes al nacer\nFmaj7                    Em7      Am7\n  llueven y llueven y en ella se juntan?\n\nGm                       Am[2]\n  Llueven y llueven y en ella se juntan\nGm                       Am[2]\n  llueven y llueven y en ella se juntan?...\n\n\nFmaj7                 Em7\n  Yo me recuesto y ella, en el final\nFmaj7                 Em7        Am7\n  viene a dormirme movida de estrellas\nFmaj7                 Em7\n  yo me recuesto y ella, en el final\nFmaj7                 Em7        Am7\n  viene a dormirme movida de estrellas\n\nGm                    Am[2]\n  Viene a dormirme movida de estrellas\nGm                    Am[2]\n  viene a dormirme movida de estrellas\nGm                    Am[2]\n  viene a dormirme movida de estrellas\nGm\n  viene a dormirme..."
+	"txt": "Fmaj7                 Em7                 |\n  Ella también se cansó de este sol       |\nFmaj7                  Em7       Am7      |\n  viene a mojarse los pies a la luna      | (x2)\n\nGm                     Am[2]              |\n  Viene a mojarse los pies a la luna      | (x2)\n\n\nFmaj7                 Em7                 |\n  Cuando se cansa de tanto querer         |\nFmaj7                    Em7         Am7  |\n  ella es tan clara que ya no es ninguna  | (x2)\n\nGm                       Am               |\n  Ella es tan clara que ya no es ninguna  | (x2)\n\n\nFmaj7                 Em7                 |\n  Sube a las hojas y cae hasta el mar     |\nFmaj7                   Em7         Am7   |\n  ¿Cómo es que puedo tocarle las manos?   | (x2)\n\nGm                      Am[2]             |\n  ¿Cómo es que puedo tocarle las manos?   | (x2)\n\n\nFmaj7                   Em7               |\n  ¿De dónde vienen quienes al nacer       |\nFmaj7                    Em7      Am7     |\n  llueven y llueven y en ella se juntan?  | (x2)\n\nGm                       Am[2]            | (x2)\n  Llueven y llueven y en ella se juntan   | (x2)\n\n\nFmaj7                 Em7                 |\n  Yo me recuesto y ella, en el final      |\nFmaj7                 Em7        Am7      |\n  viene a dormirme movida de estrellas    | (x2)\n\nGm                    Am[2]               |\n  Viene a dormirme movida de estrellas    | (x3)\nGm\n  viene a dormirme..."
 }
