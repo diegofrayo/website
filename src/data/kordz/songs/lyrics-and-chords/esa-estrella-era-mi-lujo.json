@@ -6,23 +6,18 @@
 		"album": "¡Bang! ¡Bang! Estás liquidado",
 		"year": 1989,
 		"country": "🇦🇷",
-		"category": "5|REVIEW|🕵️",
+		"category": "2|WELL_DONE|👌",
 		"created_at": "2022/03/16",
-		"is_public": false,
-		"done": false,
+		"is_public": true,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/5exsngywf8qMS6f00gKVWY",
 		"youtube_url": "https://youtu.be/OP1e9OJhk7E",
 		"assets": {},
 		"sources": [
 			{
-				"text": "Esa estrella era mi lujo",
+				"text": "ESA ESTRELLA ERA MI LUJO, Patricio Rey y sus Redonditos de Ricota: Acordes",
 				"url": "https://acordes.lacuerda.net/patricio_rey/esa_estrella_era_mi_lujo.shtml",
 				"source": "lacuerda"
-			},
-			{
-				"text": "Messi no nos abandones!(Base Esa estrella era mi lujo) Duke Gastou",
-				"url": "https://youtu.be/QggbpqT9CrY",
-				"source": "youtube"
 			},
 			{
 				"text": "Era hora de que vuelva... les dejo este tremendo temon.. obviamente al haber desaparecido tanto instagram no me va a mostrar mucho.. así…",
@@ -33,5 +28,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "INTRO: Am  F  G  E   (x2)\n\n\nAm            F           E\n   ¿Era todo? Pregunté\n          Am\nsoy un iluso\nAm              F         E\n   no nos dimos nada más,\n             Am\nsólo un buen gesto\n\n\nAm  F  G  E   (x2)\n\n\nAm                   F           E\n   Mordí el anzuelo una vez más\n              Am\nsiempre un iluso\nAm                  F            E\n   nuestra estrella se agotó\n           Am\ny era mi lujo\n\n\nAm  F  G  E   (x2)\n\n\nAm              F           E\n   Ella fue por esa vez\n         Am\nmi héroe vivo, bah,\nAm              F           E\n   fue mi único héroe\n        Am\nen este lío\n\n\nAm              F           E\n   La más linda del amor,\n                Am\nque un tonto ha visto soñar\nAm                 F        E\n   metió, metió mi rocanrol\n             Am\nbajo este pulso"
+	"txt": "INTRO: Am  F  G  E   | (x2)\n\n\nAm              F           E\n   ¿Era todo? Pregunté\n           Am\nsoy un iluso\nAm               F          E\n   no nos dimos nada más,\n              Am\nsólo un buen gesto\n\n\nAm  F  G  E   | (x2)\n\n\nAm                    F           E\n   Mordí el anzuelo una vez más\n               Am\nsiempre un iluso\nAm                   F            E\n   nuestra estrella se agotó\n            Am\ny era mi lujo\n\n\nAm  F  G  E   | (x2)\n\n\nAm              F            E\n   Ella fue por esa vez\n          Am\nmi héroe vivo, bah,\nAm               F           E\n   fue mi único héroe\n         Am\nen este lío\n\nAm               F           E\n   La más linda del amor,\n                 Am\nque un tonto ha visto soñar\nAm                  F        E\n   metió, metió mi rocanrol\n              Am\nbajo este pulso"
 }
