@@ -9,12 +9,25 @@ export default ResumePage;
 
 export const getStaticProps: GetStaticProps<T_ResumePageProps> = async () => {
 	const cmsContent = await loadPageContent({ page: "resume" });
-	const data = await loadData<T_ResumePageProps["data"]>({ page: "resume", remote: true });
+	const dataEn = await loadData<T_ResumePageProps["data"][keyof T_ResumePageProps["data"]]>({
+		localPath: "_local_/resume/data-en.json",
+		remotePath: "resume/en",
+		remote: true,
+	});
+
+	const dataEs = await loadData<T_ResumePageProps["data"][keyof T_ResumePageProps["data"]]>({
+		localPath: "_local_/resume/data-es.json",
+		remotePath: "resume/es",
+		remote: true,
+	});
 
 	return {
 		props: {
 			cmsContent,
-			data,
+			data: {
+				es: dataEs,
+				en: dataEn,
+			},
 		},
 	};
 };

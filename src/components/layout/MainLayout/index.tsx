@@ -683,7 +683,7 @@ function Flags() {
 	});
 
 	return (
-		<Block className="tw-flex tw-gap-1 tw-px-1 tw-py-3">
+		<Block className="tw-flex tw-gap-1 tw-px-1 tw-py-3 print:tw-hidden">
 			{showAnalyticsFlag ? (
 				<Block className="tw-relative tw-flex tw-items-center tw-justify-center tw-rounded-full tw-border dr-bg-color-surface-200 dr-border-color-surface-300 tw-wh-6">
 					<Icon

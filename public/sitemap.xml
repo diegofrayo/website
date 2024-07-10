@@ -6,7 +6,7 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
 >
   <url>
-    <loc>https://diegofrayo.dev/</loc>
+    <loc>https://diegofrayo.dev</loc>
   </url>
   <url>
     <loc>https://diegofrayo.dev/resume</loc>
@@ -31,6 +31,12 @@
   </url>
   <url>
     <loc>https://diegofrayo.dev/kordz/chords</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.dev/kordz/horas</loc>
+  </url>
+  <url>
+    <loc>https://diegofrayo.dev/kordz/juguetes-perdidos</loc>
   </url>
   <url>
     <loc>https://diegofrayo.dev/kordz/mil-horas</loc>
@@ -120,9 +126,6 @@
     <loc>https://diegofrayo.dev/kordz/guanuqueando</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.dev/kordz/horas</loc>
-  </url>
-  <url>
     <loc>https://diegofrayo.dev/kordz/la-bestia-pop</loc>
   </url>
   <url>
@@ -183,10 +186,10 @@
     <loc>https://diegofrayo.dev/kordz/hasta-la-raiz</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.dev/kordz/juguetes-perdidos</loc>
+    <loc>https://diegofrayo.dev/kordz/la-espera</loc>
   </url>
   <url>
-    <loc>https://diegofrayo.dev/kordz/la-espera</loc>
+    <loc>https://diegofrayo.dev/kordz/lento</loc>
   </url>
   <url>
     <loc>https://diegofrayo.dev/kordz/tarea-fina</loc>

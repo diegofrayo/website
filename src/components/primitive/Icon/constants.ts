@@ -4,8 +4,15 @@ import {
 	ArrowPathIcon,
 	ArrowTopRightOnSquareIcon,
 	ArrowUpIcon,
+	ArrowsPointingInIcon,
+	ArrowsPointingOutIcon,
+	Bars2Icon,
 	Bars4Icon,
+	Battery100Icon,
+	Battery50Icon,
 	BeakerIcon,
+	BoltIcon,
+	BoltSlashIcon,
 	BookOpenIcon,
 	BriefcaseIcon,
 	BuildingStorefrontIcon,
@@ -32,11 +39,13 @@ import {
 	GlobeAltIcon,
 	HeartIcon,
 	HomeIcon,
+	IdentificationIcon,
 	KeyIcon,
 	LinkIcon,
 	MagnifyingGlassMinusIcon,
 	MagnifyingGlassPlusIcon,
 	MusicalNoteIcon,
+	NewspaperIcon,
 	PauseIcon,
 	PencilSquareIcon,
 	PlayIcon,
@@ -47,6 +56,7 @@ import {
 	Square3Stack3DIcon,
 	StarIcon,
 	TrophyIcon,
+	TvIcon,
 	UserCircleIcon,
 	WindowIcon,
 	WrenchIcon,
@@ -231,6 +241,48 @@ const ICONS = {
 			color: "",
 		},
 	},
+	ARROWS_POINTING_IN: {
+		icon: ArrowsPointingInIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	ARROWS_POINTING_OUT: {
+		icon: ArrowsPointingOutIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	BARS_2: {
+		icon: Bars2Icon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	BARS_4: {
+		icon: Bars4Icon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	BATTERY_50: {
+		icon: Battery50Icon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	BATTERY_100: {
+		icon: Battery100Icon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
 	BEAKER: {
 		icon: BeakerIcon,
 		defaultProps: {
@@ -246,6 +298,20 @@ const ICONS = {
 	},
 	BRIEFCASE: {
 		icon: BriefcaseIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	BOLT: {
+		icon: BoltIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	BOLT_SLASH: {
+		icon: BoltSlashIcon,
 		defaultProps: {
 			className: "",
 			color: "",
@@ -437,6 +503,13 @@ const ICONS = {
 			color: "",
 		},
 	},
+	IDENTIFICATION: {
+		icon: IdentificationIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
 	INFO: {
 		icon: InformationCircleIconSolid,
 		defaultProps: {
@@ -474,6 +547,13 @@ const ICONS = {
 	},
 	MUSIC_NOTE: {
 		icon: MusicalNoteIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	NEWSPAPER: {
+		icon: NewspaperIcon,
 		defaultProps: {
 			className: "",
 			color: "",
@@ -591,6 +671,13 @@ const ICONS = {
 	},
 	TROPHY: {
 		icon: TrophyIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	TV: {
+		icon: TvIcon,
 		defaultProps: {
 			className: "",
 			color: "",

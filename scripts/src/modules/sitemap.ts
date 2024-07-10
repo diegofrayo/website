@@ -12,7 +12,7 @@ async function main() {
 		await readFile("./src/data/_local_/kordz/data.json"),
 	) as T_RawKordzResponse;
 	const WEBSITE_PAGES = {
-		HOME: "/",
+		HOME: "",
 		RESUME: "/resume",
 		BLOG: "/blog",
 		KORDZ: "/kordz",

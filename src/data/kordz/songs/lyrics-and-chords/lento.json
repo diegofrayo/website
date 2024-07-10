@@ -6,9 +6,9 @@
 		"album": "Si",
 		"year": 2004,
 		"country": "🇲🇽",
-		"category": "5|REVIEW|🕵️",
+		"category": "4|CHECKED|☑️",
 		"created_at": "2022/05/12",
-		"is_public": false,
+		"is_public": true,
 		"done": true,
 		"spotify_url": "https://open.spotify.com/track/2NsMwNWumJXCdTg2IZCLZ5",
 		"youtube_url": "https://youtu.be/ZSIzwYzCkHQ",
@@ -20,7 +20,7 @@
 				"source": "youtube"
 			},
 			{
-				"text": "Lento",
+				"text": "LENTO, Julieta Venegas: Acordes",
 				"url": "https://acordes.lacuerda.net/julieta_venegas/lento.shtml",
 				"source": "lacuerda"
 			}
@@ -28,5 +28,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "INTRO: F A#   (x2)\n\n\nF             A#\n   Si quieres un poco de mí\nF          A#\n   me deberías esperar\nF         A#         Gm         C[2]\n   y caminar a paso lento, muy lento\n\nF            A#\n   Y poco a poco olvidar\nF               A#\n   el tiempo y su velocidad\nF             A#           Gm         C[2]\n   frenar el ritmo ir muy lento, más lento\n\n\nA#  C[2]          F       Am\nSe     delicado y espera\n             A#       C[2]\ndame tiempo para darte\n             F  Am\ntodo lo que tengo\n\n\nINTRO\n\n\nF             A#\n   Si quieres un poco de mí\nF          A#\n   dame paciencia y verás\nF          A#               Gm                C[2]\n   será mejor que andar corriendo levanta el vuelo\n\nF            A#\n   Y poco a poco olvidar\nF               A#\n   el tiempo y su velocidad\nF             A#           Gm         C[2]\n   frenar el ritmo ir muy lento, más lento\n\n\nA#  C[2]          F       Am\nSe     delicado y espera\n             A#       C[2]\ndame tiempo para darte\n             F  Am\ntodo lo que tengo\n\n\nSOLO: A# C[2] F Am   (x2)\n\n\n       C[3]       Fsus2\nSi me hablas de amor\n       C[3]       Fsus2\nsi suavizas mi vida\n        A#[2]\nno estaré más tiempo\n       G[2]        C[3]\nsin saber que siento\n\n\nA#  C[2]          F       Am\nSe     delicado y espera\n             A#       C[2]\ndame tiempo para darte\n             F  Am\ntodo lo que tengo"
+	"txt": "F A#   | (x2)\n\n\nF             A#\n   Si quieres un poco de mí\nF          A#\n   me deberías esperar\nF         A#         Gm         C[2]\n   y caminar a paso lento, muy lento\n\nF            A#\n   Y poco a poco olvidar\nF               A#\n   el tiempo y su velocidad\nF             A#           Gm         C[2]\n   frenar el ritmo ir muy lento, más lento\n\n\n A#  C[2]          F       Am   |\nSe      delicado y espera       |\n             A#       C[2]      |\ndame tiempo para darte          |\n             F  Am              |\ntodo lo que tengo               | (x2)\n\n\nF A#   | (x2)\n\n\nF             A#\n   Si quieres un poco de mí\nF          A#\n   dame paciencia y verás\nF          A#               Gm                C[2]\n   será mejor que andar corriendo levanta el vuelo\n\nF            A#\n   Y poco a poco olvidar\nF               A#\n   el tiempo y su velocidad\nF             A#           Gm         C[2]\n   frenar el ritmo ir muy lento, más lento\n\n\n A#  C[2]          F       Am   |\nSe      delicado y espera       |\n             A#       C[2]      |\ndame tiempo para darte          |\n             F  Am              |\ntodo lo que tengo               | (x2)\n\n\nA#  C[2]  F  Am   | (x2)\n\n\n       C[3]       Fsus2\nSi me hablas de amor\n       C[3]       Fsus2\nsi suavizas mi vida\n        A#[2]\nno estaré más tiempo\n       G[2]        C[3]\nsin saber que siento\n\n\n A#  C[2]          F       Am   |\nSe      delicado y espera       |\n             A#       C[2]      |\ndame tiempo para darte          |\n             F  Am              |\ntodo lo que tengo               | (x2)"
 }
