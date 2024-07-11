@@ -2,16 +2,19 @@ import * as React from "react";
 
 const IntlProviderValue = {
 	EN: {
+		SUMMARY: "Summary",
 		EXPERIENCE: "Experience",
 		EDUCATION: "Education",
 		OTHER: "Other",
 		LANGUAGES: "Languages",
 		SKILLS: "Skills",
 		SKILLS_L1: "I usually work with",
-		SKILLS_L2: "I have an considerable experience with",
+		SKILLS_L2: "I have considerable experience with",
 		SKILLS_L3: "I once worked with",
+		PRESENT: "Present",
 	},
 	ES: {
+		SUMMARY: "Sobre mi",
 		EXPERIENCE: "Experiencia",
 		EDUCATION: "Educación",
 		OTHER: "Otros",
@@ -20,6 +23,7 @@ const IntlProviderValue = {
 		SKILLS_L1: "Usualmente trabajo con",
 		SKILLS_L2: "Tengo considerable experiencia con",
 		SKILLS_L3: "Alguna vez trabajé con",
+		PRESENT: "Presente",
 	},
 };
 

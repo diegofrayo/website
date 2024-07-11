@@ -6,27 +6,22 @@
 		"album": "El jardín de los presentes",
 		"year": 1976,
 		"country": "🇦🇷",
-		"category": "5|REVIEW|🕵️",
+		"category": "1|FAVORITE|⭐",
 		"created_at": "2021/03/23",
-		"is_public": false,
+		"is_public": true,
 		"done": true,
 		"spotify_url": "https://open.spotify.com/track/2G6XFgIRMn0ZdIBao0ggoM",
 		"youtube_url": "https://youtu.be/OU_HZZF_bl8",
 		"assets": {},
 		"sources": [
 			{
-				"text": "Que ves el cielo",
+				"text": "QUE VES EL CIELO, Invisible: Acordes",
 				"url": "https://acordes.lacuerda.net/invisible/que_ves_el_cielo.shtml",
 				"source": "lacuerda"
 			},
 			{
 				"text": "Cómo tocar Spinetta (Invisible) Que ves el cielo con Acordes Tutorial Letra Cover Pedro Aznar",
 				"url": "https://youtu.be/IX4BZ3PkbZ4",
-				"source": "youtube"
-			},
-			{
-				"text": "que ves el cielo ( cover) temazo del flaco spinetta",
-				"url": "https://youtu.be/bGkqLWnaph8",
 				"source": "youtube"
 			},
 			{

@@ -72,7 +72,7 @@ function MainLayout({ title, children, className }: T_MainLayoutProps) {
 		<Block is="main">
 			<Block
 				className={cn(
-					"tw-relative tw-mx-auto tw-min-h-dv-screen tw-max-w-5xl tw-px-6 tw-py-12 dr-bg-color-surface-100 print:tw-bg-transparent",
+					"tw-relative tw-mx-auto tw-min-h-dv-screen tw-max-w-5xl tw-px-6 tw-py-12 dr-bg-color-surface-100 print:tw-bg-transparent print:tw-p-0",
 					className,
 				)}
 			>
