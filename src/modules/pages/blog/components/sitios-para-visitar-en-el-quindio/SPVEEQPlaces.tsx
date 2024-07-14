@@ -104,7 +104,7 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 												title="Links"
 												icon={{ name: Icon.icon.LINK }}
 											>
-												<Block className="tw-flex tw-items-center tw-gap-1">
+												<Block className="tw-flex tw-flex-wrap tw-items-center tw-gap-1">
 													{v.isNotEmptyString(place.instagram) ? (
 														<Link
 															variant={Link.variant.SIMPLE}
@@ -161,14 +161,15 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 														</Link>
 													) : null}
 
-													{v.isNotEmptyArray(place.links)
-														? place.links.map((link) => {
+													{v.isNotEmptyArray(place.links) ? (
+														<Block className="tw-w-full">
+															{place.links.map((link) => {
 																return (
 																	<Link
 																		key={link}
 																		variant={Link.variant.SIMPLE}
 																		href={link}
-																		className="tw-inline-block"
+																		className="tw-block"
 																		onClick={AnalyticsService.trackClickEvent("BLOG|SPVEEQ|LINK", {
 																			place: place.id,
 																			link: "info",
@@ -179,10 +180,17 @@ function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
 																			icon={Icon.icon.INFO}
 																			size={32}
 																		/>
+																		<InlineText className="tw-ml-0.5 tw-align-middle">
+																			{link
+																				.replace("https://", "")
+																				.replace("http://", "")
+																				.replace("www.", "")}
+																		</InlineText>
 																	</Link>
 																);
-															})
-														: null}
+															})}
+														</Block>
+													) : null}
 												</Block>
 											</InfoBlock>
 

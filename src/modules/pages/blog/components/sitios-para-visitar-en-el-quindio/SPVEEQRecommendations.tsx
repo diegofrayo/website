@@ -25,8 +25,7 @@ function SPVEEQRecommendations({ data: recommendations }: T_SPVEEQRecommendation
 					<Collapsible
 						key={recommendation.id}
 						title={recommendation.name}
-						className="tw-mb-4"
-						contentClassName="tw-pt-1"
+						contentClassName="tw-pt-1 tw-pb-4"
 						onShowContentHandler={AnalyticsService.trackClickEvent(
 							"BLOG|SPVEEQ_RECOMMENDATION|OPEN",
 							{

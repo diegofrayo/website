@@ -6,16 +6,16 @@
 		"album": "Clásicos de la provincia",
 		"year": 1993,
 		"country": "🇨🇴",
-		"category": "5|REVIEW|🕵️",
+		"category": "3|SOCIAL|🎶",
 		"created_at": "2021/06/04",
-		"is_public": false,
-		"done": false,
+		"is_public": true,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/4tXR895KKljrC2VptgyEhJ",
 		"youtube_url": "https://youtu.be/Nmb80HXWsFQ",
 		"assets": {},
 		"sources": [
 			{
-				"text": "la Gota Fría",
+				"text": "LA GOTA FRIA, Carlos Vives: Acordes",
 				"url": "https://acordes.lacuerda.net/carlos_vives/la_gota_fria.shtml",
 				"source": "lacuerda"
 			},
@@ -33,5 +33,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{NOTE}\",\n\t\t\treplacement: <Tablature notes=\"La canción se toca con el capo en el traste 1\" />,\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
-	"txt": "{NOTE}\n\n\nAm (x5)\nC Am E Am\n\n\n    Am\nAcordate Moralito de aquel día\n                    E7\nque estuviste en Urumita\n                      Am\ny no quisiste hacer parranda\n\n                 E\nte fuiste de mañanita\n                  Am\nsería de la misma rabia   (x2)\n\n\nC                  G7\nen mis notas soy extenso\n                C\na mi nadie me corrije (x2)\n\n  Am             E\npara tocar con Lorenzo\n                         Am\nmañana sábado, día e´ la Virgen   (x2)\n\n\n                          E\nme lleva el o me lo llevo yo\n                    Am\npa' que se acabe la vaina   (x2)\n\n                       E\nay! Morales a mi no me lleva\n                   Am\nporque no me da la gana\n                    E\nMoralito a mi no me lleva\n                   Am\nporque no me da la gana\n\n\nAm (x5)\nC Am E Am\n\n\n       Am                       C\nqué cultura, que cultura va a tener\n            E\nun indio chumeca\n               Am\ncomo Lorenzo Morales\n\n                   E\nque cultura va a tener si\n                  Am\nnació en los cardonales   (x2)\n\n\nC                 G7\nMorales mienta mi mama\n                  C\nsolamente pa' ofender (x2)\n\n  Am                    E\npara que él también se ofenda\n                      Am\nahora le miento la de él   (x2)\n\n\n                          E\nme lleva el o me lo llevo yo\n                    Am\npa' que se acabe la vaina   (x2)\n\n                       E\nay! Morales a mi no me lleva\n                   Am\nporque no me da la gana\n                    E\nMoralito a mi no me lleva\n                   Am\nporque no me da la gana\n\n\nAm (x5)\nC Am E Am\n\n\n                        E\nMoralito, Moralito se creía\n                                    Am\nque el a mí, que él a mí me iba a ganar\n\n                  E\nY cuando me oyó tocar\n                Am\nle cayo la gota fría   (x2)\n\n                    E\nal cabo e´ la compartía\n                 Am\nel tiro le salió mal   (x2)"
+	"txt": "{NOTE}\n\n\nAm   | (x5)\nC Am E Am\n\n\n     Am\nAcordate Moralito de aquel día\n                     E7\nque estuviste en Urumita\n                        Am\ny no quisiste hacer parranda\n\n                  E       |\nTe fuiste de mañanita     |\n                   Am     |\nsería de la misma rabia   | (x2)\n\n\nC                   G7     |\nEn mis notas soy extenso   |\n                  C        |\na mi nadie me corrije      |(x2)\n\n   Am             E               |\nPara tocar con Lorenzo            |\n                          Am      |\nmañana sábado, día e´ la Virgen   | (x2)\n\n\n                           E   |\nMe lleva el o me lo llevo yo   |\n                     Am        |\npa' que se acabe la vaina      | (x2)\n\n                         E\nAy! Morales a mi no me lleva\n                    Am\nporque no me da la gana\n                      E\nMoralito a mi no me lleva\n                    Am\nporque no me da la gana\n\n\nAm   | (x5)\nC Am E Am\n\n\n        Am                       C\nQué cultura, que cultura va a tener\n             E\nun indio chumeca\n                Am\ncomo Lorenzo Morales\n\n                    E       |\nQue cultura va a tener si   |\n                   Am       |\nnació en los cardonales     | (x2)\n\n\n C                 G7    |\nMorales mienta mi mama   |\n                   C     |\nsolamente pa' ofender    | (x2)\n\n   Am                    E      |\nPara que él también se ofenda   |\n                      Am        |\nahora le miento la de él        | (x2)\n\n\n                           E   |\nMe lleva el o me lo llevo yo   |\n                     Am        |\npa' que se acabe la vaina      | (x2)\n\n                         E\nAy! Morales a mi no me lleva\n                    Am\nporque no me da la gana\n                      E\nMoralito a mi no me lleva\n                    Am\nporque no me da la gana\n\n\nAm   | (x5)\nC Am E Am\n\n\n                         E\nMoralito, Moralito se creía\n                                     Am\nque el a mí, que él a mí me iba a ganar\n\n                   E    |\nY cuando me oyó tocar   |\n                  Am    |\nle cayo la gota fría    | (x2)\n\n                     E    |\nAl cabo e´ la compartía   |\n                  Am      |\nel tiro le salió mal      | (x2)"
 }

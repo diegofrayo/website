@@ -172,9 +172,7 @@
 							"featured": true,
 							"links": [
 								"https://www.instagram.com/reel/C6WoqGEoetP",
-								"https://www.instagram.com/p/C1F6qXbu2IM",
-								"https://es.wikipedia.org/wiki/Valle_de_Cocora",
-								"http://www.colparques.net/COCORA"
+								"https://www.instagram.com/p/C1F6qXbu2IM"
 							],
 							"images": [
 								{
@@ -557,6 +555,34 @@
 								},
 								{
 									"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/chorros-de-san-rafael/2.jpg",
+									"alt": "Chorros de San Rafael"
+								},
+								{
+									"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/chorros-de-san-rafael/3.jpg",
+									"alt": "Chorros de San Rafael"
+								},
+								{
+									"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/chorros-de-san-rafael/4.jpg",
+									"alt": "Chorros de San Rafael"
+								},
+								{
+									"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/chorros-de-san-rafael/5.jpg",
+									"alt": "Chorros de San Rafael"
+								},
+								{
+									"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/chorros-de-san-rafael/6.jpg",
+									"alt": "Chorros de San Rafael"
+								},
+								{
+									"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/chorros-de-san-rafael/7.jpg",
+									"alt": "Chorros de San Rafael"
+								},
+								{
+									"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/chorros-de-san-rafael/8.jpg",
+									"alt": "Chorros de San Rafael"
+								},
+								{
+									"url": "/assets/images/pages/blog/posts/assets/sitios-para-visitar-en-el-quindio/chorros-de-san-rafael/9.jpg",
 									"alt": "Chorros de San Rafael"
 								}
 							]
