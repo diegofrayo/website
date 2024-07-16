@@ -6,23 +6,18 @@
 		"album": "Artaud",
 		"year": 1973,
 		"country": "🇦🇷",
-		"category": "5|REVIEW|🕵️",
+		"category": "1|FAVORITE|⭐",
 		"created_at": "2021/04/04",
-		"is_public": false,
+		"is_public": true,
 		"done": true,
 		"spotify_url": "https://open.spotify.com/track/689lBKIELtWGHfsPWpR6rv",
 		"youtube_url": "https://youtu.be/b-u-bchAnW4",
 		"assets": {},
 		"sources": [
 			{
-				"text": "Todas las hojas son del viento",
+				"text": "TODAS LAS HOJAS SON DEL VIENTO, Luis Alberto Spinetta: Acordes",
 				"url": "https://acordes.lacuerda.net/luis_a_spinetta/todas_las_hojas_son_del_viento-4.shtml",
 				"source": "lacuerda"
-			},
-			{
-				"text": "Todas las Hojas son del Viento (Pescado Rabioso / Cover)",
-				"url": "https://youtu.be/fndCBPG2fCA",
-				"source": "youtube"
 			},
 			{
 				"text": "Como Tocar \"Todas Las Hojas Son del Viento\" de Spinetta en Guitarra",

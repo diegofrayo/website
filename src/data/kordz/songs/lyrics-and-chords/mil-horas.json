@@ -6,7 +6,7 @@
 		"album": "Vasos y besos",
 		"year": 1983,
 		"country": "🇦🇷",
-		"category": "0|IN_PROGRESS|🚧",
+		"category": "2|WELL_DONE|👌",
 		"created_at": "2024/06/21",
 		"is_public": true,
 		"done": true,
@@ -28,10 +28,15 @@
 				"text": "cómo tocar en guitarra MIL HORAS de Los Abuelos de la Nada tutorial COMPLETO acordes fácil",
 				"url": "https://youtu.be/Rjaes8wQAh4",
 				"source": "youtube"
+			},
+			{
+				"text": "Los Abuelos de la Nada – Mil horas|Estudio Satori",
+				"url": "https://estudiosatori.com.ar/los-abuelos-de-la-nada-mil-horas/",
+				"source": "url"
 			}
 		],
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "       Cm7     Dm7[2]       Gm7\nHace frío y estoy lejos de casa\n      Cm7\nhace tiempo que estoy\n    Dm7[2]          Gm7\nsentado sobre esta piedra\n          Cm7\nyo me pregunto\n         Dm7[2]         C7\n\"¿Para qué sirven las guerras?\"\n\n            C7\nTengo un cohete en el pantalón\nvos estás tan fría\ncomo la nieve a mi alrededor\n Gm7\nvos estás tan blanca\n           Ebmaj7[3]\nque ya no sé qué hacer\n\n\nGm7\n   La otra noche te esperé\n                    Cm7\nbajo la lluvia dos horas\n     Dm7[2]         Ebmaj7[3]\nmil horas, como un perro\nGm7\ny cuando llegaste\n                           Cm7\nme miraste y me dijiste: \"Loco\n         Dm7[2]           Ebmaj7[3]\nestás mojado, ya no te quiero\"\n\n\n       Cm7        Dm7[2]        Gm7\nEn el circo, vos ya sos una estrella\n        Cm7\nuna estrella roja que\n Dm7[2]        Gm7\ntodo se lo imagina\n          Cm7\nsi te preguntan\n     Dm7[2]    C7\nvos no me conocías, no, no\n\n            C7\nTengo un cohete en el pantalón\nvos estás tan fría\ncomo la nieve a mi alrededor\n Gm7\nvos estás tan blanca\n           Ebmaj7[3]\nque ya no sé qué hacer\n\n\nGm7  Cm7  Dm7\nGm7  Cm7  Dm7\n\n\nGm7\n   La otra noche te esperé\n                    Cm7\nbajo la lluvia dos horas\n     Dm7[2]         Ebmaj7[3]\nmil horas, como un perro\nGm7\ny cuando llegaste\n                           Cm7\nme miraste y me dijiste: \"Loco\n         Dm7[2]           Ebmaj7[3]\nestás mojado, ya no te quiero\"\n\nGm7\n   La otra noche te esperé\n                    Cm7\nbajo la lluvia dos horas\n     Dm7[2]         Ebmaj7[3]\nmil horas, como un perro\nGm7\ny cuando llegaste\n                           Cm7\nme miraste y me dijiste: \"Loco\n         Dm7[2]           Ebmaj7[3]\nestás mojado, ya no te quiero\""
+	"txt": "       Cm7     Dm7[2]       Gm7\nHace frío y estoy lejos de casa\n      Cm7\nhace tiempo que estoy\n    Dm7[2]          Gm7\nsentado sobre esta piedra\n          Cm7\nyo me pregunto\n         Dm7[2]         C7\n\"¿Para qué sirven las guerras?\"\n\n            C7\nTengo un cohete en el pantalón\n C7\nvos estás tan fría\n         C7\ncomo la nieve a mi alrededor\n Gm7\nvos estás tan blanca\n           Ebmaj7[3]\nque ya no sé qué hacer\n\n\nGm7\n   La otra noche te esperé\n                    Cm7\nbajo la lluvia dos horas\n     Dm7[2]         Ebmaj7[3]\nmil horas, como un perro\nGm7\ny cuando llegaste\n                           Cm7\nme miraste y me dijiste: \"Loco\n         Dm7[2]          Ebmaj7[3]\nestás mojado, ya no te quiero\"\n\n\n       Cm7        Dm7[2]        Gm7\nEn el circo, vos ya sos una estrella\n        Cm7\nuna estrella roja que\n Dm7[2]        Gm7\ntodo se lo imagina\n          Cm7\nsi te preguntan\n     Dm7[2]    C7\nvos no me conocías, no, no\n\n            C7\nTengo un cohete en el pantalón\n C7\nvos estás tan fría\n         C7\ncomo la nieve a mi alrededor\n Gm7\nvos estás tan blanca\n           Ebmaj7[3]\nque ya no sé qué hacer\n\n\nGm7  Cm7  Dm7\nGm7  Cm7  Dm7\n\n\nGm7\n   La otra noche te esperé\n                    Cm7\nbajo la lluvia dos horas\n     Dm7[2]         Ebmaj7[3]\nmil horas, como un perro\nGm7\ny cuando llegaste\n                           Cm7\nme miraste y me dijiste: \"Loco\n         Dm7[2]          Ebmaj7[3]\nestás mojado, ya no te quiero\"\n\nGm7\n   La otra noche te esperé\n                    Cm7\nbajo la lluvia dos horas\n     Dm7[2]         Ebmaj7[3]\nmil horas, como un perro\nGm7\ny cuando llegaste\n                           Cm7\nme miraste y me dijiste: \"Loco\n         Dm7[2]          Ebmaj7[3]\nestás mojado, ya no te quiero\""
 }

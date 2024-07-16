@@ -6,10 +6,10 @@
 		"album": "De la cabeza con Bersuit Vergarabat",
 		"year": 2002,
 		"country": "🇦🇷",
-		"category": "5|REVIEW|🕵️",
+		"category": "2|WELL_DONE|👌",
 		"created_at": "2021/10/02",
-		"is_public": false,
-		"done": false,
+		"is_public": true,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/4J2Jf2GvaOSINTlTTHdmse",
 		"youtube_url": "https://youtu.be/WNebXvrqGDE",
 		"assets": {},
@@ -30,7 +30,7 @@
 				"source": "youtube"
 			},
 			{
-				"text": "Un pacto",
+				"text": "UN PACTO PARA VIVIR, Bersuit Vergarabat: Acordes",
 				"url": "https://acordes.lacuerda.net/bersuit/un_pacto_para_vivir.shtml",
 				"source": "lacuerda"
 			}
@@ -38,5 +38,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "G\nUn pacto para vivir, odiándonos sol a sol\n            D\nrevolviendo más\n          Em          C\nen los restos, de un amor\nD             C      D               Em\ncon un camino recto, a la desesperación\nBm              B7          G\ndesenlace en un cuento de terror\n\nG G\n\nG\n6 años así, escapando a un mismo lugar\n            D\ncon mi fantasía\n                  Em       C\nbuscando otro cuerpo, otra voz\nD                     C    D             Em\nfui consumiendo infiernos, para salir de vos\nBm            B7          G\nintoxicado, loco y, sin humor\n\nG G\n\nC C C C G C G   C C C C G C G\n\nG\nsi hoy te tuviera aquí, cuando hago esta canción,\n              D\nme sentiría raro\n            Em             C\nno tengo sueño, mi panza vibra\nD                     C   D                   Em\ntuve un golpe energético, milagro y resurrección\nBm                  B7          G\ny eso que estaba tieso, bajo control\n\nG\n\nG                       G                     G\nel poder siempre manda, si para tenerte aquí\n                    D\nhabría que maltratarte\n              Em         C\nno puedo hacerlo, sos mi Dios\n   D                     C        D                  Em\nte veo, me sonrojo y tiemblo, que idiota te hace el amor\nBm                     B7                   C\ny hoy quiero darle rienda, a esta superstición\n\nC C C C\n\nG\nUn pacto para vivir\nG\nUn pacto para vivir\nG\nUn pacto para vivir\n\nC C C C G G\n\nG\nUn pacto para vivir\nG\nUn pacto para vivir\nG\nUn pacto para vivir\n\nC C C C G G\n\nG\nUn pacto para vivir\nG\nUn pacto para vivir\nG\nUn pacto para vivir\n\nG             C G    C      G\nUn pacto para vivir, para vivir"
+	"txt": "G\nUn pacto para vivir, odiándonos sol a sol\n             D\nrevolviendo más\n           Em          C\nen los restos, de un amor\n D             C     D               Em\ncon un camino recto, a la desesperación\n Bm              B7           G\ndesenlace en un cuento de terror\n\nG G\n\nG\n6 años así, escapando a un mismo lugar\n             D\ncon mi fantasía\n                   Em       C\nbuscando otro cuerpo, otra voz\n D                     C    D             Em\nfui consumiendo infiernos, para salir de vos\nBm             B7          G\nintoxicado, loco y, sin humor\n\nG G\nC C C C G C G   C C C C G C G\n\n G\nSi hoy te tuviera aquí, cuando hago esta canción,\n               D\nme sentiría raro\n             Em              C\nno tengo sueño, mi panza vibra\n D                     C   D                  Em\ntuve un golpe energético, milagro y resurrección\nBm                   B7           G\ny eso que estaba tieso, bajo control\n\nG\n\nG                        G                 G\nEl poder siempre manda, si para tenerte aquí\n                     D\nhabría que maltratarte\n               Em         C\nno puedo hacerlo, sos mi Dios\n    D                      C        D                 Em\nte veo, me sonrojo y tiemblo, que idiota te hace el amor\nBm                      B7                  C\ny hoy quiero darle rienda, a esta superstición\n\nC C C C\n\nG\nUn pacto para vivir\nG\nUn pacto para vivir\nG\nUn pacto para vivir\n\nC C C C G G\n\nG\nUn pacto para vivir\nG\nUn pacto para vivir\nG\nUn pacto para vivir\n\nC C C C G G\n\nG\nUn pacto para vivir\nG\nUn pacto para vivir\nG\nUn pacto para vivir\n\nG              C G    C      G\nUn pacto para vivir, para vivir"
 }
