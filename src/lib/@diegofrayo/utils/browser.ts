@@ -141,6 +141,16 @@ export function isAndroid() {
 	return navigator.userAgent.toLowerCase().indexOf("android") > -1;
 }
 
+export function isWindowsDevice() {
+	/* WARN:
+	 * I ignore this because I'm accessing to a untyped attribute
+	 * (navigator.userAgentData) on navigator object.
+	 * This code is irrelevant, i'm not going to try to fix this
+	 */
+	// @ts-ignore
+	return navigator.platform.indexOf("Win") > -1;
+}
+
 export async function deletePWACache() {
 	const cacheKeys = await window.caches.keys();
 

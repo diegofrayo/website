@@ -28,10 +28,10 @@ type T_SPVEEQPlacesProps = {
 	>;
 };
 
-function SPVEEQPlaces({ data: places }: T_SPVEEQPlacesProps) {
+function SPVEEQPlaces({ data }: T_SPVEEQPlacesProps) {
 	return (
 		<Block>
-			{Object.entries(places).map(([categoryName, places]) => {
+			{Object.entries(data).map(([categoryName, places]) => {
 				return (
 					<Block
 						key={categoryName}

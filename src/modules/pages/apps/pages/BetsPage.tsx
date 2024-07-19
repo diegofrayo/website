@@ -1,37 +1,36 @@
 import * as React from "react";
 import jsConvertCase from "js-convert-case";
 
-import { MainLayout, Page } from "~/components/layout";
+import { Page } from "~/components/layout";
 import {
 	Block,
-	Button,
 	Collapsible,
 	Icon,
 	InlineText,
 	Link,
-	List,
 	Pre,
 	Select,
 	Space,
 	Text,
 	Title,
 } from "~/components/primitive";
-import { BoxWithTitle } from "~/components/shared";
 import cn from "~/lib/cn";
 import { withAuthRulesPage } from "~/modules/auth";
 import type DR from "@diegofrayo/types";
-import { addLeftPadding, generateSlug } from "@diegofrayo/utils/strings";
+import { generateSlug, replaceAll } from "@diegofrayo/utils/strings";
 
 function BetsPage({ data }: T_BetsPageProps) {
 	// --- STATES & REFS ---
-	const [renderType, setRenderType] = React.useState<"strategy" | "date">("strategy");
+	const [renderType] = React.useState<"STRATEGY" | "DATE">("DATE");
 
 	// --- HANDLERS ---
+	/*
 	function toggleRenderType() {
 		setRenderType((currentValue) => {
-			return currentValue === "strategy" ? "date" : "strategy";
+			return currentValue === "STRATEGY" ? "DATE" : "STRATEGY";
 		});
 	}
+  */
 
 	return (
 		<Page
@@ -40,39 +39,37 @@ function BetsPage({ data }: T_BetsPageProps) {
 				disableSEO: true,
 			}}
 		>
-			<MainLayout
-				title="Bets"
-				className="tw-max-w-[1280px] tw-text-sm lg:tw-text-base"
-			>
+			<Layout>
+				{/*
 				<Block className="tw-text-center">
 					<BoxWithTitle
 						title="Agrupar por:"
-						className="tw-inline-flex tw-gap-2 tw-p-5"
+						className="tw-flex tw-gap-2 tw-p-5"
 					>
 						<Button
 							variant={Button.variant.STYLED}
-							className={cn(renderType === "date" && "dr-bg-color-surface-300")}
+							className={cn(renderType === "DATE" && "dr-bg-color-surface-300")}
 							onClick={toggleRenderType}
+							disabled
 						>
 							Fecha
 						</Button>
-						<Button
-							variant={Button.variant.STYLED}
-							className={cn(renderType === "strategy" && "dr-bg-color-surface-300")}
-							onClick={toggleRenderType}
-						>
-							Estrategia
-						</Button>
+            <Button
+              variant={Button.variant.STYLED}
+              className={cn(renderType === "STRATEGY" && "dr-bg-color-surface-300")}
+              onClick={toggleRenderType}
+            >
+              Estrategia
+            </Button>
 					</BoxWithTitle>
 				</Block>
 				<Space size={4} />
+        */}
 
-				{renderType === "strategy" ? (
-					<RenderByStrategy data={data} />
-				) : (
+				{renderType === "STRATEGY" ? null : ( // <RenderByStrategy data={data} />
 					<RenderByDate data={data} />
 				)}
-			</MainLayout>
+			</Layout>
 		</Page>
 	);
 }
@@ -81,6 +78,18 @@ export default withAuthRulesPage(BetsPage, { requireAuth: true });
 
 // --- COMPONENTS ---
 
+function Layout({ children }: { children: DR.React.Children }) {
+	return (
+		<Block
+			is="main"
+			className="tw-min-h-screen tw-bg-black tw-p-8 tw-text-sm lg:tw-text-base"
+		>
+			<Block className="tw-mx-auto tw-max-w-[1280px]">{children}</Block>
+		</Block>
+	);
+}
+
+/*
 function RenderByStrategy({ data }: T_BetsPageProps) {
 	// --- UTILS ---
 	function groupByStrategy() {
@@ -269,6 +278,7 @@ function RenderByStrategy({ data }: T_BetsPageProps) {
 		);
 	});
 }
+*/
 
 function RenderByDate({ data }: T_BetsPageProps) {
 	// --- UTILS ---
@@ -290,92 +300,107 @@ function RenderByDate({ data }: T_BetsPageProps) {
 		);
 	}
 
-	return Object.entries(data).map(([fixtureDate, fixtureLeagues]) => {
-		return (
-			<Collapsible
-				key={fixtureDate}
-				title={fixtureDate}
-				className="tw-mb-4 last:tw-mb-0"
-				contentClassName="tw-pt-2"
-			>
-				{fixtureLeagues.map((league) => {
-					const leagueName = `${league.name} (${league.country})`;
+	return (
+		<Block>
+			{Object.entries(data).map(([fixtureDate, fixtureLeagues]) => {
+				return (
+					<Collapsible
+						key={fixtureDate}
+						title={
+							<Block>
+								<Text className="tw-text-lg tw-font-bold tw-text-white">Partidos</Text>
+								<Text className="tw-text-stone-300">{formatDate(fixtureDate)}</Text>
+							</Block>
+						}
+						className="tw-mb-8 last:tw-mb-0"
+						contentClassName="tw-py-6"
+						showIcon={false}
+					>
+						{fixtureLeagues.map((league) => {
+							const leagueName = `${league.name} (${league.country})`;
 
-					if (league.matches.length === 0) {
-						return null;
-					}
-
-					return (
-						<Collapsible
-							key={`${fixtureDate}-${leagueName}`}
-							title={
-								<Title
-									is="h2"
-									className="tw-p-2 tw-text-left tw-text-base tw-text-white dr-bg-color-surface-300 lg:tw-text-center lg:tw-text-xl"
-								>
-									{league.flag} {leagueName}
-								</Title>
+							if (league.matches.length === 0) {
+								return null;
 							}
-							className="tw-mb-8 tw-overflow-auto tw-rounded-md dr-bg-color-surface-200"
-							contentClassName="tw-p-4"
-						>
-							<LeagueStandings
-								topKey={fixtureDate}
-								data={league.standings}
-							/>
-							{league.standings.length > 0 ? (
-								<Space
-									variant={Space.variant.DASHED}
-									size={4}
-								/>
-							) : null}
 
-							{Object.entries(groupMatchesByDate(league.matches)).map(
-								([date, matchesGroupedByDate]) => {
-									return (
-										<Block
-											key={`${leagueName}-${date}`}
-											className="tw-mb-4 last:tw-mb-0"
-										>
-											{matchesGroupedByDate.map((match) => {
-												return (
-													<FixtureMatch
-														key={match.id}
-														variant="date"
-														topKey={date}
-														match={match}
-														league={league}
-													/>
-												);
-											})}
-										</Block>
-									);
-								},
-							)}
-						</Collapsible>
-					);
-				})}
-			</Collapsible>
-		);
-	});
+							return (
+								<Collapsible
+									key={`${fixtureDate}-${leagueName}`}
+									title={
+										<Title is="h2">
+											<Block
+												is="span"
+												className="tw-mr-2 tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-zinc-800 tw-wh-11"
+											>
+												<Block
+													is="span"
+													className="tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-zinc-600 tw-p-0.5 tw-text-lg tw-wh-7"
+												>
+													{league.flag}
+												</Block>
+											</Block>
+
+											<InlineText className="tw-text-base tw-text-gray-100">
+												{leagueName}
+											</InlineText>
+										</Title>
+									}
+									showIcon={false}
+									contentClassName="tw-px-4 tw-border-l-4 tw-m-4 tw-border-zinc-600"
+									className="tw-mb-6 last:tw-mb-0"
+								>
+									<LeagueStandings
+										topKey={fixtureDate}
+										data={league.standings}
+									/>
+									{league.standings.length > 0 ? <Space size={1} /> : null}
+
+									{Object.entries(groupMatchesByDate(league.matches)).map(
+										([date, matchesGroupedByDate]) => {
+											return (
+												<Block
+													key={`${leagueName}-${date}`}
+													className="tw-flex tw-flex-wrap tw-justify-start tw-gap-4"
+												>
+													{matchesGroupedByDate.map((match) => {
+														return (
+															<FixtureMatch
+																key={match.id}
+																// variant="date"
+																topKey={date}
+																match={match}
+																league={league}
+															/>
+														);
+													})}
+												</Block>
+											);
+										},
+									)}
+								</Collapsible>
+							);
+						})}
+					</Collapsible>
+				);
+			})}
+		</Block>
+	);
 }
 
 function FixtureMatch({
-	variant,
+	// variant,
 	topKey,
 	match,
 	league,
 }: {
-	variant: "date" | "strategy";
+	// variant: "date" | "strategy";
 	topKey: string;
 	match: T_FixtureMatch;
 	league: Pick<T_League, "country" | "name">;
 }) {
-	// --- VARS ---
-	const isStrategyVariant = variant === "strategy";
-
 	// --- STATES & REFS ---
 	const [matchesFilters, setMatchesFilters] = React.useState<T_PlayedMatchesFilters>({});
+	const [matchOpenedId, setMatchOpenedId] = React.useState("");
 
 	// --- HANDLERS ---
 	function onMatchesFilterChange(teamName: string) {
@@ -389,6 +414,14 @@ function FixtureMatch({
 				};
 			});
 		};
+	}
+
+	function onShowContentHandler() {
+		setMatchOpenedId(match.id);
+	}
+
+	function onHideContentHandler() {
+		setMatchOpenedId("");
 	}
 
 	// --- UTILS ---
@@ -439,91 +472,25 @@ function FixtureMatch({
 		return matches;
 	}
 
-	function composeMatchTitle(matchParam: T_PlayedMatch | T_FixtureMatch) {
-		if (matchParam.played) {
-			return `${matchParam.teams.home.featured ? "🔰" : ""}${matchParam.teams.home.name} ${
-				matchParam.teams.home.score === null ? "" : `(${matchParam.teams.home.score})`
-			} - ${matchParam.teams.away.featured ? "🔰" : ""}${matchParam.teams.away.name} ${
-				matchParam.teams.away.score === null ? "" : `(${matchParam.teams.away.score})`
-			}`;
-		}
-
-		return `${matchParam.teams.home.featured ? "🔰" : ""}${matchParam.teams.home.name} - ${
-			matchParam.teams.away.featured ? "🔰" : ""
-		}${matchParam.teams.away.name}`;
-	}
-
 	return (
 		<Collapsible
 			title={
-				<Title
-					is="h2"
-					className="tw-cursor-pointer tw-px-2 tw-pb-4 tw-pt-3 tw-text-center"
-				>
-					<Block>
-						<Text
-							className={cn(
-								checkMatchStarted(match.fullDate) ? "tw-text-red-700" : "tw-text-green-700",
-							)}
-						>
-							{composeMatchTitle(match)}
-						</Text>
-						<Text>{composeTeamsCountry(match.teams.home.country, match.teams.away.country)}</Text>
-						{isStrategyVariant ? <Text>{league.name}</Text> : null}
-					</Block>
-					<Text>{isStrategyVariant ? `${match.date} | ${match.hour}` : `${match.hour}`}</Text>
-					<Space size={1} />
-
-					<Block className="tw-flex tw-items-center tw-justify-center tw-gap-4">
-						{match.predictions.map((prediction) => {
-							const isPlayedMatchPrediction = checkIsPlayedMatchPrediction(match, prediction);
-
-							if (isStrategyVariant && prediction.name !== topKey) {
-								return null;
-							}
-
-							return (
-								<Block
-									key={`${match.id}-${prediction.id}`}
-									className={cn(
-										"tw-relative tw-rounded-md tw-border tw-bg-black tw-pr-1 tw-shadow-sm dr-border-color-surface-400",
-										isPlayedMatchPrediction
-											? prediction.right || prediction.skippedFail
-												? "tw-shadow-green-600"
-												: "tw-shadow-red-600"
-											: "dr-shadow-color-primary-600",
-									)}
-								>
-									<InlineText className="tw-inline-block tw-px-2 tw-py-1.5 tw-text-sm tw-text-white dr-bg-color-surface-300">
-										{prediction.id}
-									</InlineText>
-									<Block className="tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-px-2 tw-text-xs">
-										<InlineText>{prediction.recommendable ? "🌟" : "👎"}</InlineText>
-
-										{isPlayedMatchPrediction ? (
-											<React.Fragment>
-												{prediction.right || prediction.skippedFail ? (
-													<InlineText>✅</InlineText>
-												) : null}
-												{prediction.fail || prediction.lostRight ? (
-													<InlineText>❌</InlineText>
-												) : null}
-											</React.Fragment>
-										) : null}
-
-										{prediction.warnings.length > 0 ? (
-											<InlineText className="tw-absolute tw--bottom-1 tw--right-1">⚠️</InlineText>
-										) : null}
-									</Block>
-								</Block>
-							);
-						})}
-					</Block>
-				</Title>
+				<MatchDetails
+					match={match}
+					className="tw-cursor-pointer"
+					variant="DATE_FIXTURE_MATCH"
+				/>
 			}
-			className="tw-mb-10 tw-rounded-md tw-border tw-border-dashed dr-border-color-surface-300 last:tw-mb-0"
-			contentClassName="tw-py-4 dr-border-color-surface-300 tw-border-t tw-pr-5"
+			className={cn(
+				"tw-overflow-hidden tw-rounded-md",
+				match.id === matchOpenedId ? "tw-w-full" : "tw-w-80",
+			)}
+			contentClassName="tw-bg-zinc-900 tw-p-4"
+			showIcon={false}
+			onShowContentHandler={onShowContentHandler}
+			onHideContentHandler={onHideContentHandler}
 		>
+			{/*
 			<Collapsible
 				title="Predicciones de apuestas"
 				contentClassName="tw-pt-0.5"
@@ -598,44 +565,49 @@ function FixtureMatch({
 				size={4}
 				variant={Space.variant.DASHED}
 			/>
+      */}
 
-			<Block className="tw-flex tw-flex-wrap tw-justify-between tw-gap-2 lg:tw-flex-nowrap">
+			<Block className="tw-flex tw-flex-wrap tw-items-start tw-justify-between tw-gap-4 lg:tw-flex-nowrap">
 				{Object.entries(match.teams).map(([teamSide, team]) => {
 					return (
 						<Block
 							key={team.name}
-							className="tw-w-full tw-flex-shrink-0 tw-overflow-auto tw-rounded-md lg:tw-w-[49%]"
+							className="tw-w-full tw-flex-shrink-0 tw-overflow-auto tw-rounded-sm tw-bg-zinc-800 lg:tw-flex-1"
 						>
-							<Title
-								is="h4"
-								className="tw-relative tw-p-1 tw-text-center dr-bg-color-surface-100"
-							>
-								<InlineText>
-									{team.featured ? "🔰" : ""}
-									{team.name} {Number.isInteger(team.position) ? `[${team.position}]` : ""}
-								</InlineText>
+							<Block className="tw-relative tw-flex tw-justify-between tw-bg-zinc-700 tw-px-4 tw-py-1 tw-text-zinc-100">
+								<Text className="tw-flex-1 tw-text-left">
+									<InlineText className="win:tw-hidden tw-mr-2 tw-align-middle tw-text-xl">
+										{team.country}
+									</InlineText>
+									<InlineText className="win:tw-inline-block tw-text-left tw-align-middle tw-text-base">
+										⚽
+									</InlineText>
+									<InlineText className="tw-align-middle">{team.name}</InlineText>
+								</Text>
+
 								<Link
 									variant={Link.variant.SIMPLE}
 									href={`https://www.google.com/search?q=${encodeURIComponent(
 										`${team.name} equipo ${league.country || ""} 365scores`,
 									)}`}
-									className="tw-absolute tw-right-2"
+									className="tw-absolute tw-right-1 tw-top-0"
 									isExternalLink
 								>
 									<Icon
-										icon={Icon.icon.GOOGLE}
-										size={16}
+										icon={Icon.icon.EXTERNAL_LINK}
+										size={12}
 									/>
 								</Link>
-							</Title>
+							</Block>
 
-							<Block className="tw-px-4 tw-pb-1 tw-pt-3 dr-bg-color-surface-300">
+							<Block className="tw-px-4 tw-py-4">
 								<Collapsible
-									title="Estadísticas"
+									title={<CollapsibleTitle title="Ver estadísticas" />}
 									className="tw-mb-2"
-									contentClassName="tw-pt-1"
+									contentClassName="tw-pt-2 tw-px-1 tw-pb-6"
+									showIcon={false}
 								>
-									<Pre className="tw-w-full tw-max-w-full tw-overflow-x-auto tw-overflow-y-hidden tw-rounded-md tw-px-4 tw-py-3 tw-text-sm dr-bg-color-surface-200">
+									<Pre className="tw-w-full tw-max-w-full tw-overflow-x-auto tw-overflow-y-hidden tw-rounded-md tw-bg-zinc-900 tw-px-4 tw-py-3 tw-text-sm tw-text-zinc-400">
 										{Object.entries(team.stats).map(([key, value]) => {
 											if (key.includes("---")) {
 												return (
@@ -658,9 +630,9 @@ function FixtureMatch({
 								</Collapsible>
 
 								<Collapsible
-									title="Partidos"
-									className="tw-mb-2"
-									contentClassName="tw-pt-2"
+									title={<CollapsibleTitle title="Ver historial de partidos" />}
+									contentClassName="tw-pt-2 tw-px-1 tw-pb-6"
+									showIcon={false}
 								>
 									<Block>
 										<Select
@@ -679,10 +651,7 @@ function FixtureMatch({
 									</Block>
 									<Space size={1} />
 
-									<List
-										variant={List.variant.SIMPLE}
-										className="tw-rounded-md tw-p-2 tw-pt-4 dr-bg-color-surface-200"
-									>
+									<Block className="tw-rounded-md tw-bg-zinc-900 tw-p-6">
 										{filterMatches(
 											team.matches,
 											team.name,
@@ -694,18 +663,47 @@ function FixtureMatch({
 													: playedMatch.teams.away;
 
 											return (
-												<List.Item
+												<Block
 													key={`${generateSlug(playedMatch.id + playedMatch.hour)}`}
-													className="tw-ml-3"
+													className={cn(
+														"tw-relative tw-mb-6 tw-rounded-sm tw-border-2 tw-px-4 tw-pb-6 tw-pt-6 last:tw-mb-0",
+														currentTeam.winner === true
+															? "tw-border-green-600"
+															: currentTeam.winner === false
+																? "tw-border-red-600"
+																: "tw-border-yellow-600",
+													)}
 												>
-													<Text className="lg:tw-truncate">
-														<InlineText className="tw-mr-1 tw-text-xs">
+													<Block
+														className={cn(
+															"tw-absolute tw--top-3 tw-left-0 tw-w-full tw-text-center",
+														)}
+													>
+														<InlineText
+															className={cn(
+																"tw-inline-block tw-rounded-sm tw-px-2 tw-py-1 tw-text-xs tw-font-bold tw-uppercase",
+																currentTeam.winner === true
+																	? "tw-border-emerald-500 tw-bg-emerald-500 tw-text-black"
+																	: currentTeam.winner === false
+																		? "tw-border-rose-500 tw-bg-rose-500 tw-text-black"
+																		: "tw-border-yellow-500 tw-bg-yellow-500 tw-text-black",
+															)}
+														>
 															{currentTeam.winner === true
-																? "✅"
+																? "Victoria"
 																: currentTeam.winner === false
-																	? "❌"
-																	: "🔳"}{" "}
+																	? "Derrota"
+																	: "Empate"}{" "}
 														</InlineText>
+													</Block>
+
+													<MatchDetails
+														match={playedMatch}
+														variant="PLAYED_MATCH"
+													/>
+
+													{/*
+													<Text className="lg:tw-truncate">
 														<InlineText>{composeMatchTitle(playedMatch)}</InlineText>
 													</Text>
 													<Block className="tw-ml-0 lg:tw-ml-5">
@@ -726,10 +724,11 @@ function FixtureMatch({
 															) : null}
 														</Text>
 													</Block>
-												</List.Item>
+                          */}
+												</Block>
 											);
 										})}
-									</List>
+									</Block>
 								</Collapsible>
 							</Block>
 						</Block>
@@ -743,8 +742,9 @@ function FixtureMatch({
 function LeagueStandings({ topKey, data }: { topKey: string; data: T_LeagueStandings }) {
 	return (
 		<Collapsible
-			title="Posiciones"
+			title={<CollapsibleTitle title="Ver las clasificaciones" />}
 			contentClassName="tw-pt-1 tw-overflow-auto"
+			showIcon={false}
 		>
 			<table className="tw-min-w-[500px] tw-table-fixed">
 				<thead>
@@ -791,18 +791,174 @@ function LeagueStandings({ topKey, data }: { topKey: string; data: T_LeagueStand
 	);
 }
 
-// --- UTILS ---
-
-function composeTeamsCountry(teamHomeCountry: string, teamAwayCountry: string) {
-	if (teamHomeCountry && teamAwayCountry) {
-		return `${teamHomeCountry} - ${teamAwayCountry}`;
-	}
-
-	const country = teamHomeCountry || teamAwayCountry || "🌎";
-
-	return `${country} - ${country}`;
+function CollapsibleTitle({ title, ...rest }: { title: string }) {
+	return (
+		<Text
+			className="tw-text-zinc-100"
+			{...rest}
+		>
+			<InlineText>{title}</InlineText> <Icon icon={Icon.icon.CHEVRON_RIGHT} />
+		</Text>
+	);
 }
 
+function MatchDetails({
+	match,
+	variant,
+	className,
+	...rest
+}: {
+	match: T_FixtureMatch | T_PlayedMatch;
+	variant: "STRATEGY_FIXTURE_MATCH" | "DATE_FIXTURE_MATCH" | "PLAYED_MATCH";
+	className?: string;
+}) {
+	const isStrategyVariant = variant === "STRATEGY_FIXTURE_MATCH";
+	const isPlayedMatchVariant = variant === "PLAYED_MATCH";
+	const teamsFromSameCountry = match.teams.home.country === match.teams.away.country;
+
+	return (
+		<Block
+			className={cn(
+				"tw-flex tw-h-28 tw-max-w-full tw-flex-nowrap tw-items-center tw-justify-between tw-gap-4 tw-bg-zinc-800 tw-p-6",
+				className,
+			)}
+			{...rest}
+		>
+			<Block className="tw-w-48 tw-max-w-[250px] tw-flex-grow tw-text-zinc-100">
+				<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
+					{teamsFromSameCountry ? (
+						<InlineText className="tw-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-zinc-500 tw-wh-8">
+							⚽
+						</InlineText>
+					) : (
+						<React.Fragment>
+							<InlineText className="win:tw-hidden tw-relative tw-top-0.5 tw-text-3xl">
+								{match.teams.home.country}
+							</InlineText>
+							<InlineText className="win:tw-inline-block tw-text-left tw-align-middle tw-text-xl">
+								⚽
+							</InlineText>
+						</React.Fragment>
+					)}
+
+					<InlineText
+						className="tw-flex-1 tw-truncate"
+						title={match.teams.home.name}
+					>
+						{match.teams.home.name}
+						<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
+							{match.teams.home.featured ? "🟨" : ""}
+						</InlineText>
+					</InlineText>
+					{match.played ? (
+						<InlineText className="tw-w-6 tw-text-center tw-font-bold">
+							{match.teams.home.score}
+						</InlineText>
+					) : null}
+				</Block>
+				<Space size={0.5} />
+				<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
+					{teamsFromSameCountry ? (
+						<InlineText className="tw-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-zinc-500 tw-wh-8">
+							⚽
+						</InlineText>
+					) : (
+						<React.Fragment>
+							<InlineText className="win:tw-hidden tw-relative tw-top-0.5 tw-text-3xl">
+								{match.teams.away.country}
+							</InlineText>
+							<InlineText className="win:tw-inline-block tw-text-left tw-align-middle tw-text-xl">
+								⚽
+							</InlineText>
+						</React.Fragment>
+					)}
+					<InlineText
+						className="tw-flex-1 tw-truncate"
+						title={match.teams.away.name}
+					>
+						{match.teams.away.name}
+						<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
+							{match.teams.away.featured ? "🟨" : ""}
+						</InlineText>
+					</InlineText>
+					{match.played ? (
+						<InlineText className="tw-w-6 tw-text-center tw-font-bold">
+							{match.teams.away.score}
+						</InlineText>
+					) : null}
+				</Block>
+			</Block>
+			<Block className="tw-w-16 tw-flex-shrink-0 tw-text-right tw-text-zinc-100">
+				{isStrategyVariant ? (
+					<Text>{`${match.date} | ${match.hour}`}</Text>
+				) : isPlayedMatchVariant ? (
+					<Block className="tw-text-center tw-text-xs">
+						<Text className="tw-font-bold">
+							{replaceAll(match.date, "2024", "24").split("-").reverse().join("/")}
+						</Text>
+						<Text className="tw-font-bold">{match.hour}</Text>
+						<Space size={0.5} />
+						<Text>Fin del partido</Text>
+					</Block>
+				) : (
+					<Text>{match.hour}</Text>
+				)}
+			</Block>
+
+			{/*
+      <Block className="tw-flex tw-items-center tw-justify-center tw-gap-4">
+        {match.predictions.map((prediction) => {
+          const isPlayedMatchPrediction = checkIsPlayedMatchPrediction(match, prediction);
+
+          if (isStrategyVariant && prediction.name !== topKey) {
+            return null;
+          }
+
+          return (
+            <Block
+              key={`${match.id}-${prediction.id}`}
+              className={cn(
+                "tw-relative tw-rounded-md tw-border tw-bg-black tw-pr-1 tw-shadow-sm dr-border-color-surface-400",
+                isPlayedMatchPrediction
+                  ? prediction.right || prediction.skippedFail
+                    ? "tw-shadow-green-600"
+                    : "tw-shadow-red-600"
+                  : "dr-shadow-color-primary-600",
+              )}
+            >
+              <InlineText className="tw-inline-block tw-px-2 tw-py-1.5 tw-text-sm tw-text-white dr-bg-color-surface-300">
+                {prediction.id}
+              </InlineText>
+              <Block className="tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-px-2 tw-text-xs">
+                <InlineText>{prediction.recommendable ? "🌟" : "👎"}</InlineText>
+
+                {isPlayedMatchPrediction ? (
+                  <React.Fragment>
+                    {prediction.right || prediction.skippedFail ? (
+                      <InlineText>✅</InlineText>
+                    ) : null}
+                    {prediction.fail || prediction.lostRight ? (
+                      <InlineText>❌</InlineText>
+                    ) : null}
+                  </React.Fragment>
+                ) : null}
+
+                {prediction.warnings.length > 0 ? (
+                  <InlineText className="tw-absolute tw--bottom-1 tw--right-1">⚠️</InlineText>
+                ) : null}
+              </Block>
+            </Block>
+          );
+        })}
+      </Block>
+      */}
+		</Block>
+	);
+}
+
+// --- UTILS ---
+
+/*
 function checkMatchStarted(fullDate: string) {
 	const currentDate = new Date();
 	const currentDateFormatted = `${currentDate.getFullYear()}-${addLeftPadding(
@@ -819,6 +975,18 @@ function checkIsPlayedMatchPrediction(
 	_: unknown,
 ): _ is T_PlayedMatchPrediction {
 	return match.played;
+}
+*/
+
+function formatDate(date: string) {
+	const formattedDate = new Intl.DateTimeFormat("es", {
+		weekday: "long",
+		year: "numeric",
+		month: "long",
+		day: "numeric",
+	}).format(new Date(date));
+
+	return formattedDate;
 }
 
 // --- TYPES ---

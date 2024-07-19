@@ -14,7 +14,7 @@ import { initPWARoutingConfig } from "~/modules/routing";
 import { recoverFromBreakingChanges } from "~/utils/errors-recovery";
 import { useDidMount } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
-import { isMobileDevice, isPWA } from "@diegofrayo/utils/browser";
+import { isMobileDevice, isPWA, isWindowsDevice } from "@diegofrayo/utils/browser";
 import { isServer } from "@diegofrayo/utils/misc";
 
 // --- PROPS & TYPES ---
@@ -28,6 +28,10 @@ function CustomApp({ Component, pageProps }: T_CustomAppProps) {
 	useDidMount(() => {
 		addErrorsGlobalListener();
 		recoverFromBreakingChanges();
+
+		if (isWindowsDevice()) {
+			document.body.classList.add("windows-os");
+		}
 
 		if (isMobileDevice()) {
 			document.body.classList.add("mobile");

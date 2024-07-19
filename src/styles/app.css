@@ -64,3 +64,13 @@ body.scroll-disabled {
 body.mobile ::-webkit-scrollbar-thumb {
 	display: none;
 }
+
+/* --- UTILS --- */
+
+.windows-os .win\:tw-inline-block {
+	display: inline-block;
+}
+
+.windows-os .win\:tw-hidden {
+	display: none;
+}
