@@ -15,9 +15,10 @@ import {
 	Title,
 } from "~/components/primitive";
 import cn from "~/lib/cn";
-import { withAuthRulesPage } from "~/modules/auth";
 import type DR from "@diegofrayo/types";
-import { generateSlug, replaceAll } from "@diegofrayo/utils/strings";
+import { addLeftPadding, generateSlug, replaceAll } from "@diegofrayo/utils/strings";
+
+import styles from "./BetsPage.styles.module.css";
 
 function BetsPage({ data }: T_BetsPageProps) {
 	// --- STATES & REFS ---
@@ -74,7 +75,7 @@ function BetsPage({ data }: T_BetsPageProps) {
 	);
 }
 
-export default withAuthRulesPage(BetsPage, { requireAuth: true });
+export default BetsPage;
 
 // --- COMPONENTS ---
 
@@ -567,21 +568,15 @@ function FixtureMatch({
 			/>
       */}
 
-			<Block className="tw-flex tw-flex-wrap tw-items-start tw-justify-between tw-gap-4 lg:tw-flex-nowrap">
+			<Block className="tw-flex tw-flex-wrap tw-items-start tw-justify-between tw-gap-4 tw-overflow-auto md:tw-overflow-hidden lg:tw-flex-nowrap">
 				{Object.entries(match.teams).map(([teamSide, team]) => {
 					return (
 						<Block
 							key={team.name}
-							className="tw-w-full tw-flex-shrink-0 tw-overflow-auto tw-rounded-sm tw-bg-zinc-800 lg:tw-flex-1"
+							className="tw-min-w-[500px] tw-flex-shrink-0 tw-overflow-auto tw-rounded-sm tw-bg-zinc-800 sm:tw-min-w-full lg:tw-min-w-fit lg:tw-flex-1"
 						>
 							<Block className="tw-relative tw-flex tw-justify-between tw-bg-zinc-700 tw-px-4 tw-py-1 tw-text-zinc-100">
 								<Text className="tw-flex-1 tw-text-left">
-									<InlineText className="win:tw-hidden tw-mr-2 tw-align-middle tw-text-xl">
-										{team.country}
-									</InlineText>
-									<InlineText className="win:tw-inline-block tw-text-left tw-align-middle tw-text-base">
-										⚽
-									</InlineText>
 									<InlineText className="tw-align-middle">{team.name}</InlineText>
 								</Text>
 
@@ -740,6 +735,10 @@ function FixtureMatch({
 }
 
 function LeagueStandings({ topKey, data }: { topKey: string; data: T_LeagueStandings }) {
+	if (data.length === 0) {
+		return null;
+	}
+
 	return (
 		<Collapsible
 			title={<CollapsibleTitle title="Ver las clasificaciones" />}
@@ -770,8 +769,12 @@ function LeagueStandings({ topKey, data }: { topKey: string; data: T_LeagueStand
 											)}
 										>
 											<tr>
-												<td className="tw-p-1 tw-text-center">{standingIndex + 1}</td>
-												<td className="tw-p-1 tw-text-left">{team.teamName}</td>
+												<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
+													{standingIndex + 1}
+												</td>
+												<td className="tw-whitespace-nowrap tw-p-1 tw-text-left">
+													{team.teamName}
+												</td>
 												<td className="tw-p-1 tw-text-center">{team.points}</td>
 												<td className="tw-p-1 tw-text-center">{team.stats.played}</td>
 												<td className="tw-p-1 tw-text-center">{team.stats.goals.for}</td>
@@ -812,14 +815,16 @@ function MatchDetails({
 	variant: "STRATEGY_FIXTURE_MATCH" | "DATE_FIXTURE_MATCH" | "PLAYED_MATCH";
 	className?: string;
 }) {
+	// --- VARS ---
 	const isStrategyVariant = variant === "STRATEGY_FIXTURE_MATCH";
 	const isPlayedMatchVariant = variant === "PLAYED_MATCH";
 	const teamsFromSameCountry = match.teams.home.country === match.teams.away.country;
+	const isMatchPlaying = match.played === false && checkMatchStarted(match.fullDate);
 
 	return (
 		<Block
 			className={cn(
-				"tw-flex tw-h-28 tw-max-w-full tw-flex-nowrap tw-items-center tw-justify-between tw-gap-4 tw-bg-zinc-800 tw-p-6",
+				"tw-relative tw-flex tw-h-28 tw-max-w-full tw-flex-nowrap tw-items-center tw-justify-between tw-gap-4 tw-bg-zinc-800 tw-p-6",
 				className,
 			)}
 			{...rest}
@@ -847,7 +852,7 @@ function MatchDetails({
 					>
 						{match.teams.home.name}
 						<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
-							{match.teams.home.featured ? "🟨" : ""}
+							{match.teams.home.featured ? "🟩" : ""}
 						</InlineText>
 					</InlineText>
 					{match.played ? (
@@ -878,7 +883,7 @@ function MatchDetails({
 					>
 						{match.teams.away.name}
 						<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
-							{match.teams.away.featured ? "🟨" : ""}
+							{match.teams.away.featured ? "🟩" : ""}
 						</InlineText>
 					</InlineText>
 					{match.played ? (
@@ -897,13 +902,20 @@ function MatchDetails({
 							{replaceAll(match.date, "2024", "24").split("-").reverse().join("/")}
 						</Text>
 						<Text className="tw-font-bold">{match.hour}</Text>
-						<Space size={0.5} />
-						<Text>Fin del partido</Text>
 					</Block>
 				) : (
 					<Text>{match.hour}</Text>
 				)}
 			</Block>
+
+			{isMatchPlaying ? (
+				<Block
+					className={cn(
+						"tw-absolute tw-right-2 tw-top-2 tw-mx-auto tw-h-1 tw-w-4 tw-rounded-sm tw-bg-red-500",
+						styles["animation"],
+					)}
+				/>
+			) : null}
 
 			{/*
       <Block className="tw-flex tw-items-center tw-justify-center tw-gap-4">
@@ -958,7 +970,6 @@ function MatchDetails({
 
 // --- UTILS ---
 
-/*
 function checkMatchStarted(fullDate: string) {
 	const currentDate = new Date();
 	const currentDateFormatted = `${currentDate.getFullYear()}-${addLeftPadding(
@@ -970,6 +981,7 @@ function checkMatchStarted(fullDate: string) {
 	return currentDateFormatted >= fullDate;
 }
 
+/*
 function checkIsPlayedMatchPrediction(
 	match: T_FixtureMatch,
 	_: unknown,
