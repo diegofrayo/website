@@ -1,6 +1,6 @@
 import {
 	ArrowDownTrayIcon,
-	ArrowLeftOnRectangleIcon,
+	ArrowLeftEndOnRectangleIcon,
 	ArrowPathIcon,
 	ArrowTopRightOnSquareIcon,
 	ArrowUpIcon,
@@ -73,6 +73,7 @@ import {
 	PlayIcon as PlayIconSolid,
 	StarIcon as StarIconSolid,
 	TagIcon as TagIconSolid,
+	TrophyIcon as TrophyIconSolid,
 	XCircleIcon as XCircleIconSolid,
 } from "@heroicons/react/24/solid";
 import {
@@ -448,7 +449,7 @@ const ICONS = {
 		},
 	},
 	EXIT: {
-		icon: ArrowLeftOnRectangleIcon,
+		icon: ArrowLeftEndOnRectangleIcon,
 		defaultProps: {
 			className: "",
 			color: "",
@@ -671,6 +672,13 @@ const ICONS = {
 	},
 	TROPHY: {
 		icon: TrophyIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	TROPHY_SOLID: {
+		icon: TrophyIconSolid,
 		defaultProps: {
 			className: "",
 			color: "",

@@ -1,6 +1,6 @@
 import * as React from "react";
-import cn from "classnames";
 
+import cn from "~/lib/cn";
 import { mirror } from "@diegofrayo/utils/arrays-and-objects";
 import v from "@diegofrayo/v";
 import type DR from "@diegofrayo/types";
