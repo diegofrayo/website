@@ -67,6 +67,12 @@ export function setScrollPosition(val: number, behavior?: "auto") {
 	window.scroll({ top: val, behavior: behavior || "smooth" });
 }
 
+export function goToElement(element: string | Element) {
+	(v.isString(element) ? document.getElementById(element) : element)?.scrollIntoView({
+		behavior: "smooth",
+	});
+}
+
 export function focusElement(element: HTMLElement) {
 	element.focus();
 	element.click();

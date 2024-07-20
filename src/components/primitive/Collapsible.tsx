@@ -73,8 +73,8 @@ function Collapsible({
 
 	return (
 		<Block
-			className={cn("dr-collapsible", className)}
 			is="section"
+			className={cn("dr-collapsible", className)}
 		>
 			{React.isValidElement(title) ? (
 				React.cloneElement(title as DR.React.JSXElement, {

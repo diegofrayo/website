@@ -11,6 +11,7 @@ import { sortBy } from "@diegofrayo/sort";
 import type DR from "@diegofrayo/types";
 import {
 	getScrollPosition,
+	goToElement,
 	isElementInViewport,
 	setScrollPosition,
 } from "@diegofrayo/utils/browser";
@@ -45,7 +46,7 @@ function FilmsPage() {
 			if (!resultsTitleElement) return;
 
 			if (!isElementInViewport(resultsTitleElement)) {
-				resultsTitleElement.scrollIntoView();
+				goToElement(resultsTitleElement);
 				setTimeout(() => {
 					setScrollPosition(getScrollPosition());
 				}, 10);
