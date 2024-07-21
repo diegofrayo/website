@@ -1,5 +1,5 @@
 export type T_DayOfMatches = Array<
-	Omit<T_League, "enabled" | "season" | "order"> & {
+	Omit<T_League, "enabled" | "season"> & {
 		standings: T_LeagueStandings;
 		matches: T_FixtureMatch[];
 	}
@@ -10,7 +10,7 @@ export type T_League = {
 	enabled: boolean;
 	name: string;
 	type: string; // "League" | "Cup"
-	order: number;
+	priority: number;
 	country: string;
 	flag: string;
 	season: number;
@@ -97,9 +97,13 @@ export type T_PlayedMatch = T_Match & {
 		home: T_PlayedMatchTeam;
 		away: T_PlayedMatchTeam;
 	};
+	league: Pick<T_League, "id" | "name">;
 };
 
-export type T_TeamStats = Record<string, number>;
+export type T_TeamStats = Array<{
+	name: string;
+	items: Record<string, string | number>;
+}>;
 
 /*
 export type T_TeamStats = {

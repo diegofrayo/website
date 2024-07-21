@@ -10,7 +10,7 @@ import {
 	InlineText,
 	Input,
 	Link,
-	Pre,
+	List,
 	Select,
 	Space,
 	Text,
@@ -20,9 +20,9 @@ import cn from "~/lib/cn";
 import http from "~/lib/http";
 import { ROUTES } from "~/modules/routing";
 import { useDidMount } from "@diegofrayo/hooks";
+import { sortBy } from "@diegofrayo/sort";
 import type DR from "@diegofrayo/types";
 import { goToElement } from "@diegofrayo/utils/browser";
-import { dateWithoutTimezone } from "@diegofrayo/utils/dates";
 import { delay, safeAsync } from "@diegofrayo/utils/misc";
 import { addLeftPadding, generateSlug, replaceAll } from "@diegofrayo/utils/strings";
 
@@ -35,12 +35,15 @@ import type {
 } from "./types";
 import styles from "./styles.module.css";
 
+// import DATA from "../../../../../../public/data/apps/bets/2024-07-20.json"; // NOTE: FOR DX PURPOSES
+
 function BetsPage() {
 	// --- STATES & REFS ---
 	const [renderType] = React.useState<"MARKET" | "DATE">("DATE");
-	const [selectedDate, setSelectedDate] = React.useState(formatDate(dateWithoutTimezone()));
+	const [selectedDate, setSelectedDate] = React.useState(formatDate(new Date()));
 	const [isLoading, setIsLoading] = React.useState(true);
 	const [data, setData] = React.useState<undefined | T_Data>(undefined);
+	// const [data, setData] = React.useState<undefined | T_Data>({ [selectedDate]: DATA }); // NOTE: FOR DX PURPOSES
 
 	// --- EFFECTS ---
 	useDidMount(() => {
@@ -66,11 +69,7 @@ function BetsPage() {
 	// --- HANDLERS ---
 	async function fetchData(date: string) {
 		try {
-			/*
-			await delay(1000);
-			setIsLoading(false);
-			return;
-			*/
+			// return; // NOTE: FOR DX PURPOSES
 
 			setIsLoading(true);
 
@@ -89,16 +88,14 @@ function BetsPage() {
 					}),
 				)
 			).reduce((result, [response], index) => {
-				if (response) {
-					return {
-						...result,
-						// TODO: Check it out this TS error
-						// @ts-ignore
-						[dates[index]]: response.data,
-					};
-				}
-
-				return result;
+				return {
+					...result,
+					[dates[index]]: response
+						? // TODO: Check it out this TS error
+							// @ts-ignore
+							(response.data as T_DayOfMatches).sort(sortBy("priority"))
+						: [],
+				};
 			}, {});
 
 			setData(newData);
@@ -241,19 +238,19 @@ function RenderByDate({ data }: { data: T_Data }) {
 						contentClassName="tw-py-6"
 						showIcon={false}
 					>
-						{fixtureLeagues.map((league) => {
-							if (league.matches.length === 0) {
-								return null;
-							}
-
-							return (
-								<LeagueFixture
-									key={`${fixtureDate}-${league.name}`}
-									league={league}
-									fixtureDate={fixtureDate}
-								/>
-							);
-						})}
+						{fixtureLeagues.length === 0 ? (
+							<Text>No hay partidos para esta fecha</Text>
+						) : (
+							fixtureLeagues.map((league) => {
+								return (
+									<LeagueFixture
+										key={`${fixtureDate}-${league.name}`}
+										league={league}
+										fixtureDate={fixtureDate}
+									/>
+								);
+							})
+						)}
 					</Collapsible>
 				);
 			})}
@@ -587,31 +584,45 @@ function FixtureMatch({
 									<Collapsible
 										title={<CollapsibleTitle title="Ver estadísticas" />}
 										className="tw-mb-2"
-										contentClassName="tw-pt-2 tw-px-0 md:tw-px-1 tw-pb-6"
+										contentClassName="tw-mt-2 tw-p-2 md:tw-p-4 tw-bg-stone-900 tw-font-mono tw-mb-4"
 										showIcon={false}
 									>
-										<Pre className="tw-w-full tw-max-w-full tw-overflow-x-auto tw-overflow-y-hidden tw-rounded-md tw-bg-stone-900 tw-px-4 tw-py-3 tw-text-sm tw-text-stone-400">
-											{Object.entries(team.stats).map(([key, value]) => {
-												if (key.includes("---")) {
-													return (
-														<Space
-															key={`${match.id}-stats-${key}`}
-															size={2}
-														/>
-													);
-												}
+										{team.stats.map((group) => {
+											const reactKey = generateSlug(`${match.id}-stats-${group.name}`);
 
-												return (
-													<Text key={`${match.id}-stats-${key}`}>
-														<InlineText is="strong">
-															- {jsConvertCase.toSentenceCase(key)}
-														</InlineText>
-														: {value}
-														{key.includes("porcentaje") ? "%" : ""}
-													</Text>
-												);
-											})}
-										</Pre>
+											return (
+												<Block
+													key={reactKey}
+													is="section"
+													className="tw-mb-3 last:tw-mb-0"
+												>
+													<Title
+														is="h2"
+														variant={Title.variant.SIMPLE}
+														className="tw-uppercase"
+														size={Title.size.SM}
+													>
+														{group.name}
+													</Title>
+													<Space size={0.5} />
+													<List
+														variant={List.variant.SIMPLE}
+														className="tw-ml-0 md:tw-ml-2"
+													>
+														{Object.entries(group.items).map(([key, value], index) => {
+															return (
+																<List.Item key={`${reactKey}-${index}`}>
+																	<InlineText is="strong">
+																		{jsConvertCase.toSentenceCase(key)}:
+																	</InlineText>{" "}
+																	<InlineText>{value}</InlineText>
+																</List.Item>
+															);
+														})}
+													</List>
+												</Block>
+											);
+										})}
 									</Collapsible>
 
 									<Collapsible
@@ -819,165 +830,174 @@ function MatchDetails({
 }) {
 	// --- VARS ---
 	const isMarketVariant = variant === "MARKET_FIXTURE_MATCH";
-	const isPlayedMatchVariant = variant === "PLAYED_MATCH";
 	const teamsFromSameCountry = match.teams.home.country === match.teams.away.country;
 	const { isMatchFinished, isMatchInProgress } = checkMatchStatus(match);
+	const isPlayedMatchVariant = checkIsPlayedMatch(match);
 
 	return (
 		<Block
 			className={cn(
-				"tw-relative tw-flex tw-max-w-full tw-flex-nowrap tw-items-center tw-justify-between tw-gap-4 tw-rounded-md tw-bg-stone-800 tw-p-2 md:tw-p-6",
+				"tw-relative tw-rounded-md tw-bg-stone-800 tw-p-2 md:tw-p-6",
+				isPlayedMatchVariant && "md:tw-pb-3",
 				className,
 			)}
 			onClick={onClick}
 			{...rest}
 		>
-			<Block className="tw-w-48 tw-max-w-[250px] tw-flex-grow">
-				<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
-					{teamsFromSameCountry ? (
-						<InlineText className="tw-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-stone-500 tw-wh-7">
-							⚽
-						</InlineText>
-					) : (
-						<React.Fragment>
-							<InlineText className="win:tw-hidden tw-relative tw-top-0.5 tw-text-3xl">
-								{match.teams.home.country}
-							</InlineText>
-							<InlineText className="win:tw-inline-block tw-text-left tw-align-middle tw-text-xl">
+			<Block className="tw-flex tw-flex-nowrap tw-items-center tw-justify-between tw-gap-4">
+				<Block className="tw-w-48 tw-max-w-[250px] tw-flex-grow">
+					<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
+						{teamsFromSameCountry ? (
+							<InlineText className="tw-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-stone-500 tw-wh-7">
 								⚽
 							</InlineText>
-						</React.Fragment>
-					)}
+						) : (
+							<React.Fragment>
+								<InlineText className="win:tw-hidden tw-relative tw-top-0.5 tw-inline-block tw-text-3xl">
+									{match.teams.home.country}
+								</InlineText>
+								<InlineText className="win:tw-inline-block tw-hidden tw-text-left tw-align-middle tw-text-xl">
+									⚽
+								</InlineText>
+							</React.Fragment>
+						)}
 
-					<InlineText
-						className="tw-flex-1 tw-truncate tw-leading-none"
-						title={match.teams.home.name}
-					>
-						{match.teams.home.name}
-						<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
-							{match.teams.home.featured ? "🟩" : ""}
-						</InlineText>
-					</InlineText>
-					{match.played ? (
-						<InlineText className="tw-w-6 tw-text-center tw-font-bold">
-							{match.teams.home.score}
-						</InlineText>
-					) : null}
-				</Block>
-				<Space size={1} />
-				<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
-					{teamsFromSameCountry ? (
-						<InlineText className="tw-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-stone-500 tw-wh-7">
-							⚽
-						</InlineText>
-					) : (
-						<React.Fragment>
-							<InlineText className="win:tw-hidden tw-relative tw-top-0.5 tw-text-3xl">
-								{match.teams.away.country}
+						<InlineText
+							className="tw-flex-1 tw-truncate tw-leading-none"
+							title={match.teams.home.name}
+						>
+							{match.teams.home.name}
+							<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
+								{match.teams.home.featured ? "🟩" : ""}
 							</InlineText>
-							<InlineText className="win:tw-inline-block tw-text-left tw-align-middle tw-text-xl">
-								⚽
+						</InlineText>
+						{match.played ? (
+							<InlineText className="tw-w-6 tw-text-center tw-font-bold">
+								{match.teams.home.score}
 							</InlineText>
-						</React.Fragment>
-					)}
-					<InlineText
-						className="tw-flex-1 tw-truncate tw-leading-none"
-						title={match.teams.away.name}
-					>
-						{match.teams.away.name}
-						<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
-							{match.teams.away.featured ? "🟩" : ""}
-						</InlineText>
-					</InlineText>
-					{match.played ? (
-						<InlineText className="tw-w-6 tw-text-center tw-font-bold">
-							{match.teams.away.score}
-						</InlineText>
-					) : null}
-				</Block>
-			</Block>
-			<Block className="tw-w-16 tw-flex-shrink-0 tw-text-right">
-				{isMarketVariant ? (
-					<Text>{`${match.date} | ${match.hour}`}</Text>
-				) : isPlayedMatchVariant || isMatchFinished ? (
-					<Block className="tw-text-right tw-text-xs md:tw-text-center">
-						{isPlayedMatchVariant ? (
-							<Text className="tw-font-bold">
-								{replaceAll(match.date, "2024", "24").split("-").reverse().join("/")}
-							</Text>
 						) : null}
-						<Text className="tw-font-bold">{match.hour}</Text>
-						{!isPlayedMatchVariant ? <Text>Final del partido</Text> : null}
 					</Block>
-				) : (
-					<Text>{match.hour}</Text>
-				)}
+					<Space size={1} />
+					<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
+						{teamsFromSameCountry ? (
+							<InlineText className="tw-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-stone-500 tw-wh-7">
+								⚽
+							</InlineText>
+						) : (
+							<React.Fragment>
+								<InlineText className="win:tw-hidden tw-relative tw-top-0.5 tw-inline-block tw-text-3xl">
+									{match.teams.away.country}
+								</InlineText>
+								<InlineText className="win:tw-inline-block tw-hidden tw-text-left tw-align-middle tw-text-xl">
+									⚽
+								</InlineText>
+							</React.Fragment>
+						)}
+						<InlineText
+							className="tw-flex-1 tw-truncate tw-leading-none"
+							title={match.teams.away.name}
+						>
+							{match.teams.away.name}
+							<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
+								{match.teams.away.featured ? "🟩" : ""}
+							</InlineText>
+						</InlineText>
+						{match.played ? (
+							<InlineText className="tw-w-6 tw-text-center tw-font-bold">
+								{match.teams.away.score}
+							</InlineText>
+						) : null}
+					</Block>
+				</Block>
+				<Block className="tw-w-16 tw-flex-shrink-0 tw-text-right">
+					{isMarketVariant ? (
+						<Text>{`${match.date} | ${match.hour}`}</Text>
+					) : isPlayedMatchVariant || isMatchFinished ? (
+						<Block className="tw-text-right tw-text-xs md:tw-text-center">
+							{isPlayedMatchVariant ? (
+								<Text className="tw-font-bold">
+									{replaceAll(match.date, "2024", "24").split("-").reverse().join("/")}
+								</Text>
+							) : null}
+							<Text className="tw-font-bold">{match.hour}</Text>
+							{!isPlayedMatchVariant ? <Text>Final del partido</Text> : null}
+						</Block>
+					) : (
+						<Text>{match.hour}</Text>
+					)}
+				</Block>
+
+				{isMatchInProgress ? (
+					<Block
+						className={cn(
+							"tw-absolute tw-right-2 tw-top-2 tw-mx-auto tw-h-1 tw-w-4 tw-rounded-sm tw-bg-red-500",
+							styles["animation"],
+						)}
+					/>
+				) : null}
+
+				{isMatchFinished && !isPlayedMatchVariant ? (
+					<Block
+						className={cn(
+							"tw-absolute tw-right-2 tw-top-2 tw-mx-auto tw-h-1 tw-w-4 tw-rounded-sm tw-bg-yellow-500",
+						)}
+					/>
+				) : null}
+
+				{/*
+        <Block className="tw-flex tw-items-center tw-justify-center tw-gap-4">
+          {match.predictions.map((prediction) => {
+            const isPlayedMatchPrediction = checkIsPlayedMatchPrediction(match, prediction);
+
+            if (isMarketVariant && prediction.name !== topKey) {
+              return null;
+            }
+
+            return (
+              <Block
+                key={`${match.id}-${prediction.id}`}
+                className={cn(
+                  "tw-relative tw-rounded-md tw-border tw-bg-black tw-pr-1 tw-shadow-sm dr-border-color-surface-400",
+                  isPlayedMatchPrediction
+                    ? prediction.right || prediction.skippedFail
+                      ? "tw-shadow-green-500"
+                      : "tw-shadow-red-500"
+                    : "dr-shadow-color-primary-500",
+                )}
+              >
+                <InlineText className="tw-inline-block tw-px-2 tw-py-1.5 tw-text-sm tw-text-white dr-bg-color-surface-300">
+                  {prediction.id}
+                </InlineText>
+                <Block className="tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-px-2 tw-text-xs">
+                  <InlineText>{prediction.recommendable ? "🌟" : "👎"}</InlineText>
+
+                  {isPlayedMatchPrediction ? (
+                    <React.Fragment>
+                      {prediction.right || prediction.skippedFail ? (
+                        <InlineText>✅</InlineText>
+                      ) : null}
+                      {prediction.fail || prediction.lostRight ? (
+                        <InlineText>❌</InlineText>
+                      ) : null}
+                    </React.Fragment>
+                  ) : null}
+
+                  {prediction.warnings.length > 0 ? (
+                    <InlineText className="tw-absolute tw--bottom-1 tw--right-1">⚠️</InlineText>
+                  ) : null}
+                </Block>
+              </Block>
+            );
+          })}
+        </Block>
+        */}
 			</Block>
 
-			{isMatchInProgress ? (
-				<Block
-					className={cn(
-						"tw-absolute tw-right-2 tw-top-2 tw-mx-auto tw-h-1 tw-w-4 tw-rounded-sm tw-bg-red-500",
-						styles["animation"],
-					)}
-				/>
+			{isPlayedMatchVariant ? (
+				<Text className="tw-mt-3 tw-text-center tw-font-bold tw-underline">
+					{match.league.name}
+				</Text>
 			) : null}
-
-			{isMatchFinished ? (
-				<Block
-					className={cn(
-						"tw-absolute tw-right-2 tw-top-2 tw-mx-auto tw-h-1 tw-w-4 tw-rounded-sm tw-bg-yellow-500",
-					)}
-				/>
-			) : null}
-
-			{/*
-      <Block className="tw-flex tw-items-center tw-justify-center tw-gap-4">
-        {match.predictions.map((prediction) => {
-          const isPlayedMatchPrediction = checkIsPlayedMatchPrediction(match, prediction);
-
-          if (isMarketVariant && prediction.name !== topKey) {
-            return null;
-          }
-
-          return (
-            <Block
-              key={`${match.id}-${prediction.id}`}
-              className={cn(
-                "tw-relative tw-rounded-md tw-border tw-bg-black tw-pr-1 tw-shadow-sm dr-border-color-surface-400",
-                isPlayedMatchPrediction
-                  ? prediction.right || prediction.skippedFail
-                    ? "tw-shadow-green-500"
-                    : "tw-shadow-red-500"
-                  : "dr-shadow-color-primary-500",
-              )}
-            >
-              <InlineText className="tw-inline-block tw-px-2 tw-py-1.5 tw-text-sm tw-text-white dr-bg-color-surface-300">
-                {prediction.id}
-              </InlineText>
-              <Block className="tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-px-2 tw-text-xs">
-                <InlineText>{prediction.recommendable ? "🌟" : "👎"}</InlineText>
-
-                {isPlayedMatchPrediction ? (
-                  <React.Fragment>
-                    {prediction.right || prediction.skippedFail ? (
-                      <InlineText>✅</InlineText>
-                    ) : null}
-                    {prediction.fail || prediction.lostRight ? (
-                      <InlineText>❌</InlineText>
-                    ) : null}
-                  </React.Fragment>
-                ) : null}
-
-                {prediction.warnings.length > 0 ? (
-                  <InlineText className="tw-absolute tw--bottom-1 tw--right-1">⚠️</InlineText>
-                ) : null}
-              </Block>
-            </Block>
-          );
-        })}
-      </Block>
-      */}
 		</Block>
 	);
 }
@@ -1004,7 +1024,7 @@ function checkMatchStatus(match: T_FixtureMatch | T_PlayedMatch) {
 	const currentDate = formatDate(new Date(), "full");
 	const matchEndFullDate = formatDate(dayjs(match.fullDate).add(2.5, "hours").toDate(), "full");
 
-	if (match.played) {
+	if (match.played || currentDate >= matchEndFullDate) {
 		status.isMatchFinished = true;
 	} else if (currentDate >= match.fullDate && currentDate <= matchEndFullDate) {
 		status.isMatchInProgress = true;
@@ -1025,6 +1045,10 @@ function localizeDate(date: string) {
 	return formattedDate;
 }
 
+function checkIsPlayedMatch(match: DR.Object): match is T_PlayedMatch {
+	return "league" in match;
+}
+
 /*
 function checkIsPlayedMatchPrediction(
 	match: T_FixtureMatch,
@@ -1041,12 +1065,6 @@ type T_FiltersValues = "Todos" | "Local" | "Visitante" | "Ganados" | "Perdidos" 
 type T_PlayedMatchesFilters = DR.Object<T_FiltersValues>;
 
 type T_Data = DR.Object<T_DayOfMatches>;
-
-/*
-const DATA: T_Data = {
-	"2024-07-20": [],
-};
-*/
 
 /*
 function RenderByMarket({ data }: T_BetsPageProps) {

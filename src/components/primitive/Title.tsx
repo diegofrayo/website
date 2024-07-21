@@ -10,7 +10,7 @@ import type DR from "@diegofrayo/types";
 const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "STYLED"]);
 type T_Variant = keyof typeof VARIANTS;
 
-const SIZES = mirror(["MD", "LG", "XL"]);
+const SIZES = mirror(["SM", "MD", "LG", "XL"]);
 type T_Size = keyof typeof SIZES;
 
 const ELEMENTS = mirror(["h1", "h2", "h3", "h4", "h5", "h6"]);
@@ -62,6 +62,7 @@ const styles = cva("", {
 			[VARIANTS.STYLED]: "tw-text-white dr-font-titles",
 		},
 		size: {
+			[SIZES.SM]: "tw-text-xl",
 			[SIZES.MD]: "tw-text-2xl",
 			[SIZES.LG]: "tw-text-3xl",
 			[SIZES.XL]: "tw-text-4xl",
