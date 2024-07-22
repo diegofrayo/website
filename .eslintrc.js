@@ -3,7 +3,7 @@ const warnRulesValue = process.env.NO_LINT_WARNINGS ? "off" : "warn";
 module.exports = {
 	root: true,
 	parser: "@typescript-eslint/parser",
-	plugins: ["prettier", "no-loops", "react-hooks", "@typescript-eslint"],
+	plugins: ["prettier", "react-hooks", "@typescript-eslint"],
 	ignorePatterns: [
 		"*.config.js",
 		".docs/**/*",
@@ -94,7 +94,6 @@ module.exports = {
 		"@typescript-eslint/no-explicit-any": "error",
 		"@typescript-eslint/no-shadow": ["error", { allow: ["params", "data", "result"] }],
 		"@typescript-eslint/no-unused-vars": "error",
-		"no-loops/no-loops": "error",
 		"no-restricted-exports": ["error", { restrictedNamedExports: [] }],
 		"prettier/prettier": [
 			"error",

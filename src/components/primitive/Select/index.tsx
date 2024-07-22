@@ -69,7 +69,7 @@ Select.Option = function SelectOption({
 	className,
 	...rest
 }: {
-	children: string;
+	children: DR.React.Children;
 	value: string;
 	className?: string;
 } & DR.DOM.HTMLElementAttributes["option"]) {

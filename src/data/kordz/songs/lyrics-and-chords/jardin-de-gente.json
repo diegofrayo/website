@@ -1,0 +1,37 @@
+{
+	"details": {
+		"id": "jardin-de-gente",
+		"title": "Jardín de gente",
+		"artist": "Luis Alberto Spinetta",
+		"album": "Spinetta y los Socios del Desierto",
+		"year": 1997,
+		"country": "🇦🇷",
+		"category": "0|IN_PROGRESS|🚧",
+		"created_at": "2024/07/22",
+		"is_public": true,
+		"done": true,
+		"spotify_url": "https://open.spotify.com/track/1zYeS19z1Ucwgj5ovzCeQT",
+		"youtube_url": "https://youtu.be/ZOOPrfui0n4",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Como Tocar Jardín de Gente de Spinetta en Guitarra",
+				"url": "https://youtu.be/Chi7WeCIai4",
+				"source": "youtube"
+			},
+			{
+				"text": "JARDIN DE GENTE, Spinetta y los Socios del Desierto: Acordes",
+				"url": "https://acordes.lacuerda.net/spinetta_y_los_socios_del_desierto/jardin_de_gente-3.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Jardin de Gente (Spinetta y los Socios del Desierto) Cover",
+				"url": "https://youtu.be/3uDUt5cT_MM",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "G\n  Alguien debió conservar\n      Em/9                             Am9\ny cuidar con amor este jardín de gente\n               D7sus4\neso es lo que nunca será\n\nG                           Em/9\n  Cómo harás para ver y aliviar el dolor\n                      Am9\nen el jardín de gente\n                  D7sus4\nalgún acuerdo en tu alma tendrás\n\n\n         E\nY ya no sé\n              Fmaj7\nsi es que amanece o veo el cielo como\n     Em/9   Am9\nun gran collage...\n\n\nG\n  Estás ciego al creer\n        Em/9                           Am9\nque podrás evitar este jardín de gente\n                    D7sus4\ncon dinero no se inventa el amor, no\n\nG\n  Ya te hartaste de frutos\n   Em/9                              Am9\ny peces y panes que comes sin suerte\n              D7sus4\ny el andén espera por mí\n\n\n         E             Fmaj7\nY qué dirás cuando termines el bocado\n        Em/9    Am9\nde tu propia  flor...\n\n\nG\n  Oh, alguien debió conservar\n      Em/9                             Am9\ny cuidar con amor este jardín de gente\n                 D7sus4\na Dios nunca se le ocurrirá, no\n\nG                           Em/9\n  Cómo harás para ver y aliviar el dolor\n                      Am9\nen el jardín de gente\n                  D7sus4\nalgún acuerdo en tu alma tendrás\n\n         E\nY ya no sé\n              Fmaj7\nsi es que amanece o veo el cielo como\n     Em/9   Am9\nun gran collage..."
+}

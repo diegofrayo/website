@@ -36,7 +36,7 @@ import type {
 } from "./types";
 import styles from "./styles.module.css";
 
-// import DATA from "../../../../../../public/data/apps/bets/2024-07-21.json"; // NOTE: FOR DX PURPOSES
+// import DATA from "../../../../../../public/data/apps/bets/2024-07-22.json"; // NOTE: FOR DX PURPOSES
 
 function BetsPage() {
 	// --- STATES & REFS ---
@@ -340,6 +340,7 @@ function LeagueFixture({
 				<Block className="tw-mb-4 tw-border tw-border-yellow-500">
 					<FixtureMatch
 						// variant="date"
+						key={selectedMatch.id}
 						topKey={league.name}
 						match={selectedMatch}
 						league={league}
@@ -564,6 +565,12 @@ function FixtureMatch({
 
 				<Block className="tw-flex tw-flex-wrap tw-items-start tw-justify-between tw-gap-1 tw-overflow-auto md:tw-gap-4 md:tw-overflow-hidden lg:tw-flex-nowrap">
 					{Object.entries(match.teams).map(([teamSide, team]) => {
+						const filteredMatches = filterMatches(
+							team.matches,
+							team.name,
+							matchesFilters[team.name] || (teamSide === "home" ? "Local" : "Visitante"),
+						);
+
 						return (
 							<Block
 								key={team.name}
@@ -590,6 +597,16 @@ function FixtureMatch({
 								</Block>
 
 								<Block className="tw-p-1 md:tw-p-4">
+									{team.position ? (
+										<React.Fragment>
+											<Text>
+												<InlineText is="strong">Posición:</InlineText>{" "}
+												<InlineText>{team.position}</InlineText>
+											</Text>
+											<Space size={1} />
+										</React.Fragment>
+									) : null}
+
 									<Collapsible
 										title={<CollapsibleTitle title="Ver estadísticas" />}
 										className="tw-mb-2"
@@ -646,22 +663,50 @@ function FixtureMatch({
 												defaultValue={teamSide === "home" ? "Local" : "Visitante"}
 												onChange={onMatchesFilterChange(team.name)}
 											>
-												<Select.Option value="Todos">Todos</Select.Option>
-												<Select.Option value="Local">Local</Select.Option>
-												<Select.Option value="Visitante">Visitante</Select.Option>
-												<Select.Option value="Ganados">Ganados</Select.Option>
-												<Select.Option value="Perdidos">Perdidos</Select.Option>
-												<Select.Option value="Empatados">Empatados</Select.Option>
+												<Select.Option value="Todos">
+													Todos{" "}
+													{matchesFilters[team.name] === "Todos"
+														? `(${filteredMatches.length})`
+														: ""}
+												</Select.Option>
+												<Select.Option value="Local">
+													Local{" "}
+													{matchesFilters[team.name] === "Local" ||
+													(!matchesFilters[team.name] && teamSide === "home")
+														? `(${filteredMatches.length})`
+														: ""}
+												</Select.Option>
+												<Select.Option value="Visitante">
+													Visitante{" "}
+													{matchesFilters[team.name] === "Visitante" ||
+													(!matchesFilters[team.name] && teamSide === "away")
+														? `(${filteredMatches.length})`
+														: ""}
+												</Select.Option>
+												<Select.Option value="Ganados">
+													Ganados{" "}
+													{matchesFilters[team.name] === "Ganados"
+														? `(${filteredMatches.length})`
+														: ""}
+												</Select.Option>
+												<Select.Option value="Perdidos">
+													Perdidos{" "}
+													{matchesFilters[team.name] === "Perdidos"
+														? `(${filteredMatches.length})`
+														: ""}
+												</Select.Option>
+												<Select.Option value="Empatados">
+													Empatados{" "}
+													{matchesFilters[team.name] === "Empatados"
+														? `(${filteredMatches.length})`
+														: ""}
+												</Select.Option>
 											</Select>
 										</Block>
 										<Space size={1} />
 
 										<Block className="tw-rounded-md tw-bg-stone-900 tw-px-1 tw-pb-1 tw-pt-4 md:tw-px-6 md:tw-pb-6 md:tw-pt-8">
-											{filterMatches(
-												team.matches,
-												team.name,
-												matchesFilters[team.name] || (teamSide === "home" ? "Local" : "Visitante"),
-											).map((playedMatch, index) => {
+											{filteredMatches.map((playedMatch, index) => {
 												const currentTeam =
 													playedMatch.teams.home.name === team.name
 														? playedMatch.teams.home
@@ -845,11 +890,7 @@ function MatchDetails({
 
 	return (
 		<Block
-			className={cn(
-				"tw-relative tw-rounded-md tw-bg-stone-800 tw-p-2 md:tw-p-6",
-				isPlayedMatchVariant && "md:tw-pb-3",
-				className,
-			)}
+			className={cn("tw-relative tw-rounded-md tw-bg-stone-800 tw-p-2 md:tw-p-6", className)}
 			onClick={onClick}
 			{...rest}
 		>
