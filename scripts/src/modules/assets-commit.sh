@@ -1,3 +1,4 @@
+npm run build:build-info
 npm run build:ts
 npm run seo
 npm run script:sync-shared-lib

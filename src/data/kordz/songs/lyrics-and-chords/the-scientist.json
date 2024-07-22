@@ -1,0 +1,32 @@
+{
+	"details": {
+		"id": "the-scientist",
+		"title": "The scientist",
+		"artist": "Coldplay",
+		"album": "A Rush of Blood to the Head",
+		"year": 2002,
+		"country": "🇬🇧",
+		"category": "5|REVIEW|🕵️",
+		"created_at": "2022/08/19",
+		"is_public": false,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/75JFxkI2RXiU7L9VXzMkle",
+		"youtube_url": "https://youtu.be/RB-RcX5DS5A",
+		"assets": {},
+		"sources": [
+			{
+				"text": "The Scientist Guitar Tutorial 🎸 - Coldplay Guitar Lesson |Easy Chords + Guitar Cover|",
+				"url": "https://youtu.be/qJ4jW8uVpM8",
+				"source": "youtube"
+			},
+			{
+				"text": "THE SCIENTIST CHORDS by Coldplay @ Ultimate-Guitar.Com",
+				"url": "https://tabs.ultimate-guitar.com/tab/coldplay/the-scientist-chords-42050",
+				"source": "url"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{NOTE}\",\n\t\t\treplacement: <Tablature notes=\"La canción se toca con el capo en el traste 5\" />,\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
+	"txt": "{NOTE}\n\n\nINTRO: Am7  F  C  Csus2   (x2)\n\n\nAm7             F                     C\n   Come up to meet you, tell you I'm sorry\n                    Csus2\nYou don't know how lovely you are\nAm7             F                    C\n   I had to find you, tell you I need you,\n              Csus2\nTell you I’ll set you apart\nAm7               F                          C\n   Tell me your secrets, and’ask me your questions\n               Csus2\nOh, let’s go back to the start\nAm7             F                  C\n   Running in circles, coming up tails,\n               Csus2\nHeads on a science apart\n\n\nF\n  Nobody said it was easy\nC             Csus2\n  It's such a shame for us to part\nF\n  Nobody said it was easy\nC             Csus2                 G     G\n  No one ever said it would be this hard\n                        C\nOh take me back to the start...\n\n\nF    C  C\nAm7  F  C  Csus2\n\n\nAm7              F                      C\n   I was just guessing at numbers and figures\n                 Csus2\nPulling the puzzles apart\nAm7                F                    C\n   Questions of science, science and progress\n                   Csus2\nDo not speak as loud as my heart\nAm7               F                        C\n   Tell me you love me, come back and haunt me\n               Csus2\nOh, and I rush to the start\nAm7             F                    C\n   Running in circles, chasing our tails\n                  Csus2\nComing back as we are\n\n\nF\n  Nobody said it was easy\nC             Csus2\n  It's such a shame for us to part\nF\n  Nobody said it was easy\nC             Csus2                 G     G\n  No one ever said it would be this hard\n                       C\nI’m going back to the start\n\n\nF    C  C\nAm7  F  C  C\nAm7  F  C  C   (x3)\n    Ooouuuuuuuuuuuuuuhh\nAm7  F  C\n    Ooouuuuuuuuuuuuuuhh"
+}

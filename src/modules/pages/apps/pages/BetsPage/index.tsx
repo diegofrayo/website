@@ -16,6 +16,7 @@ import {
 	Text,
 	Title,
 } from "~/components/primitive";
+import BUILD_INFO from "~/data/build-info.json";
 import cn from "~/lib/cn";
 import http from "~/lib/http";
 import { ROUTES } from "~/modules/routing";
@@ -84,7 +85,9 @@ function BetsPage() {
 			const newData = (
 				await Promise.all(
 					dates.map((item) => {
-						return safeAsync(() => http.get<T_DayOfMatches>(`/data/apps/bets/${item}.json`));
+						return safeAsync(() =>
+							http.get<T_DayOfMatches>(`/data/apps/bets/${item}.json?v=${BUILD_INFO.timestamp}`),
+						);
 					}),
 				)
 			).reduce((result, [response], index) => {
@@ -1025,8 +1028,12 @@ function checkMatchStatus(match: T_FixtureMatch | T_PlayedMatch) {
 		isMatchInProgress: false,
 		isMatchFinished: false,
 	};
+	const AVERAGE_MATCH_DURATION = 115;
 	const currentDate = formatDate(new Date(), "full");
-	const matchEndFullDate = formatDate(dayjs(match.fullDate).add(2.5, "hours").toDate(), "full");
+	const matchEndFullDate = formatDate(
+		dayjs(match.fullDate).add(AVERAGE_MATCH_DURATION, "minutes").toDate(),
+		"full",
+	);
 
 	if (match.played || currentDate >= matchEndFullDate) {
 		status.isMatchFinished = true;

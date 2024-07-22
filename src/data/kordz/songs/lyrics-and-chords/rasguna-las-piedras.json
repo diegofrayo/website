@@ -1,0 +1,32 @@
+{
+	"details": {
+		"id": "rasguna-las-piedras",
+		"title": "Rasguña las piedras",
+		"artist": "Sui Generis",
+		"album": "Confesiones de invierno",
+		"year": 1973,
+		"country": "🇦🇷",
+		"category": "5|REVIEW|🕵️",
+		"created_at": "2021/12/09",
+		"is_public": false,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/3zhH1Ng7NRBX8ZQAULwXNm?autoplay=true",
+		"youtube_url": "https://youtu.be/wZi-HDLJifI",
+		"assets": {},
+		"sources": [
+			{
+				"text": "cómo tocar en guitarra RASGUÑA LAS PIEDRAS de SUI GENERIS tutorial COMPLETO",
+				"url": "https://youtu.be/dulUsEl8DYo",
+				"source": "youtube"
+			},
+			{
+				"text": "RASGUÑA LAS PIEDRAS- SUI GENERIS- TUTORIAL GUITARRA",
+				"url": "https://youtu.be/4QpLXNx9UIo",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "  C             G\nDetrás de las paredes\n     Am              Em\nque ayer te han levantado\n   F            C         G\nte ruego que respires todavía\n\n C          G\nApoyo mis espaldas\n    Am           Em\ny espero que me abraces,\n F             C           G\natravesando el muro de mis días\n\n\n     F           C\nY rasguña las piedras,\n     F           C\ny rasguña las piedras,\n     F F        Am G  Dm F      G  G  C\ny rasguña las pieee...draaas    hasta mí\n\n\n C           G\nApenas perceptibles,\n  Am            Em\nescucho tus palabras\n    F             C               G\nse acercan las bandas de rock and roll\n\n   C          G\nSe sacuden un poco\n      Am       Em\nlas paredes gastadas\n  F             C            G\ny siento las preguntas de tu voz\n\n\n     F           C\nY rasguña las piedras,\n     F           C\ny rasguña las piedras,\n     F F        Am G  Dm F      G  G  C\ny rasguña las pieee...draaas    hasta mí\n\n\nDm                          G\n   Y si estoy cansado de gritarte,\nDm                          G        F G\n   es que solo quiero despertarte...\n\n\n  C                  G\nY por fin veo en tus ojos\n    Am              Em\nque lloran desde el fondo,\n    F              C             G\ny empiezo a amarte con toda mi piel\n\n    C               G\nY escarbo hasta abrazarte\n  Am               Em\ny me sangran las manos,\n   F             C          G\n¡pero qué libres vamos a crecer!\n\n\n     F           C\nY rasguña las piedras,\n     F           C\ny rasguña las piedras,\n     F F        Am G  Dm F      G  G  C\ny rasguña las pieee...draaas    hasta mí\n\n     F           C\nY rasguña las piedras,\n     F           C\ny rasguña las piedras,\n     F F        Am G  Dm F      G  G  C\ny rasguña las pieee...draaas    hasta mí"
+}

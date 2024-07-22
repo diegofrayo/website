@@ -11,6 +11,7 @@
 		"dev:next": "next dev",
 		"build:ts": "tsc --noEmit",
 		"build:env-file": "ts-node --project ./scripts/tsconfig.json scripts/src/modules/env-file.ts",
+		"build:build-info": "ts-node --project ./scripts/tsconfig.json scripts/src/modules/build-info.ts",
 		"===== PROD =====": "",
 		"build": "next build",
 		"start": "next start",

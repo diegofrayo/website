@@ -1,0 +1,27 @@
+{
+	"details": {
+		"id": "love-and-feeling",
+		"title": "Love and feeling",
+		"artist": "Chet Faker",
+		"album": "Thinking in Textures",
+		"year": 2012,
+		"country": "🇦🇺",
+		"category": "5|REVIEW|🕵️",
+		"created_at": "2022/09/15",
+		"is_public": false,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/0Dg1RcUS88uvvnldv80kOx",
+		"youtube_url": "https://youtu.be/Wpks0qalBhU",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Chet Faker - Love & Feeling (Live Sessions Acoustic Guitar Cover)",
+				"url": "https://youtu.be/b5xyEI6c650",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "C#m         B\nLonely sun, enough of lies\nE              Bm\nSleeping naked in the night\nC#m            B           E   Bm\nGot to take it off my mind\n\nC#m        B\nOld enough to make you mine\nE            Bm\nI believe in human rights\nC#m            B            E           Bm\nGot to take if off my mind, off my mind\n\nC#m                   B\nAnd now you've got me here, aware\nE                 Bm\nI see through the innocence\nC#m               B            E   Bm\nI know the way is getting hard\n\nC#m                B\nBut I hold in line away to live\nE                   Bm\nYou come close just a little bit\nC#m             B             E   Bm\nNow everything, it seems okay\n\nC#m      B                    E        Bm\nYou know, you got me with the love and feeling\nC#m    B              E    Bm\nI know, my body cares only what to say\nC#m      B                    E        Bm\nYou know, you got me with the love and feeling\nC#m    B              E    Bm\nI know, my body cares only what to say\n\nC#m        B\nOld enough to see you're fine\nE                 Bm\n  Driving circles in my mind\nC#m            B            E           Bm\nGot to keep it all in line, all in line\n\nC#m              B\nScrambling words to make you fall\nE              Bm\nMake you hear so you want more\nC#m            B            E           Bm\nGot to keep it all in line, all in line\n\nC#m               B\nAnd now you know, the less you give\nE                Bm\nThe more I pull, the more I wish\nC#m           B                   E   Bm\nHer face just from the very start\n\nC#m                B\nBut I hold in line away to live\nE                   Bm\nYou come close just a little bit\nC#m             B             E   Bm\nNow everything, it seems okay\n\nC#m      B                    E        Bm\nYou know, you got me with the love and feeling\nC#m    B              E    Bm\nI know, my body cares only what to say\nC#m      B                    E        Bm\nYou know, you got me with the love and feeling\nC#m    B              E    Bm\nI know, my body cares only what to say\n\nC#m      B                    E        Bm\nYou know, you got me with the love and feeling\nC#m    B              E    Bm\nI know, my body cares only what to say\nC#m      B                    E        Bm\nYou know, you got me with the love and feeling\nC#m    B              E    Bm\nI know, my body cares only what to say"
+}

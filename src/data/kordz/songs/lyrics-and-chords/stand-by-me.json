@@ -1,0 +1,27 @@
+{
+	"details": {
+		"id": "stand-by-me",
+		"title": "Stand by me",
+		"artist": "Ben E. King",
+		"album": "Unknown",
+		"year": 1961,
+		"country": "🇺🇸",
+		"category": "5|REVIEW|🕵️",
+		"created_at": "2022/08/18",
+		"is_public": false,
+		"done": false,
+		"spotify_url": "https://open.spotify.com/track/3SdTKo2uVsxFblQjpScoHy",
+		"youtube_url": "https://youtu.be/einn_UJgGGM",
+		"assets": {},
+		"sources": [
+			{
+				"text": "STAND BY ME CHORDS by Ben E. King @ Ultimate-Guitar.Com",
+				"url": "https://tabs.ultimate-guitar.com/tab/ben-e-king/stand-by-me-chords-73005",
+				"source": "url"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "INTRO: F#m  D  E  A\n\n\n           A\nWhen the night has come\nF#m\n  And the land is dark\n            D         E                 A\nAnd the moon is the only light we'll see\n          A\nNo, I won't be afraid,\n      F#m\nNo, I won't be afraid\n            D            E             A\nJust as long as you stand, stand by me\n\n\n                      A\nSo, darling, darling, stand by me,\n    F#m\nOh, stand by me\n    D     E            A\nOh, stand, stand by me,\nStand by me\n\n\n         A\nIf the sky that we look upon\nF#m\nShould tumble and fall\n            D         E                 A\nOr the mountain should crumble to the sea,\n          A\nI won't cry, I won't cry,\n      F#m\nNo, I won't shed a tear\n            D            E             A\nJust as long as you stand, stand by me\n\n\n                      A\nAnd darling, darling, stand by me,\n    F#m\nOh, stand by me\n     D        E            A\nOh, stand now, stand by me,\nStand by me\n\n\nA  F#m  D  E  A   (x2)\n\n\n                      A\nSo, darling, darling, stand by me,\n    F#m\nOh, stand by me\n     D               E\nOh, stand now, stand by me,\n      A\nStand by me\n\n                                     A                 F#m\nWhenever you're in trouble won't you stand by me, oh, stand by me\n     D              E             A\nOh, stand now, oh, stand, stand by me"
+}
