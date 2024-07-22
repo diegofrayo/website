@@ -23,6 +23,7 @@
 	"Am/F#": { "music_notes": "4,2,3|3,2,4|2,1,1|6,2,2", "touched_strings": "1,0,1,1,1,0" },
 	"Am/G": { "music_notes": "4,2,2|3,2,3|2,1,1|6,3,4", "touched_strings": "1,0,1,1,1,0" },
 	"Am7": { "music_notes": "4,2,2|2,1,1", "touched_strings": "x,0,1,0,1,0" },
+	"Am9": { "music_notes": "4,5,3|3,5,4", "touched_strings": "x,0,1,1,0,0" },
 	"Asus": { "music_notes": "4,2,1|3,2,2|2,2,3|2,3,4", "touched_strings": "x,0,1,1,1,0" },
 	"Asus2": { "music_notes": "4,2,2|3,2,3", "touched_strings": "x,0,1,1,0,0" },
 	"Asus2/G": { "music_notes": "4,2,2|3,2,3|6,3,4", "touched_strings": "1,0,1,1,0,0" },
@@ -70,6 +71,7 @@
 		{ "music_notes": "5x,5|4,7,3|2,6,2", "touched_strings": "x,0,1,0,1,0" }
 	],
 	"D7sus2": { "music_notes": "2,1,1|3,2,2", "touched_strings": "x,x,0,1,1,0" },
+	"D7sus4": { "music_notes": "2,1,1|3,2,2|1,2,3", "touched_strings": "x,x,0,1,1,1" },
 	"Dsus2": { "music_notes": "3,2,1|2,3,2", "touched_strings": "x,x,0,1,1,0" },
 	"Dsus4": { "music_notes": "3,2,1|2,3,3|1,3,4|1,2,2", "touched_strings": "x,x,0,1,1,1" },
 	"E": { "music_notes": "5,2,2|4,2,3|3,1,1", "touched_strings": "0,1,1,1,0,0" },
@@ -89,6 +91,7 @@
 		{ "music_notes": "5,2,2", "touched_strings": "0,1,0,0,0,0" }
 	],
 	"Em9": { "music_notes": "5,2,1|4,2,2|2,3,4|1,2,3", "touched_strings": "0,1,1,0,1,1" },
+	"Em/9": { "music_notes": "5,2,1|3,2,2|2,3,3", "touched_strings": "0,1,0,1,1,0" },
 	"Em°": { "music_notes": "5,2,2|4,1,1", "touched_strings": "0,1,1,0,0,0" },
 	"Esus": { "music_notes": "5,2,2|4,2,3|3,2,4|3,1,1", "touched_strings": "0,1,1,1,0,0" },
 	"Esus4": { "music_notes": "5,2,2|4,2,3|3,2,4|3,1,1", "touched_strings": "0,1,1,1,0,0" },

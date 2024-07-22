@@ -35,7 +35,7 @@ import type {
 } from "./types";
 import styles from "./styles.module.css";
 
-// import DATA from "../../../../../../public/data/apps/bets/2024-07-20.json"; // NOTE: FOR DX PURPOSES
+// import DATA from "../../../../../../public/data/apps/bets/2024-07-21.json"; // NOTE: FOR DX PURPOSES
 
 function BetsPage() {
 	// --- STATES & REFS ---
@@ -299,10 +299,11 @@ function LeagueFixture({
 				<Title
 					is="h2"
 					id={`${fixtureDate}-${league.id}`}
+					className="tw-flex tw-items-center tw-justify-start"
 				>
 					<Block
 						is="span"
-						className="tw-mr-2 tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-stone-800 tw-wh-8"
+						className="tw-mr-2 tw-inline-flex tw-flex-shrink-0 tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-stone-800 tw-wh-8"
 					>
 						<Block
 							is="span"
@@ -311,10 +312,15 @@ function LeagueFixture({
 							{league.flag}
 						</Block>
 					</Block>
+					<Block className="tw-inline-block">
+						<InlineText className="tw-truncate tw-text-base tw-text-gray-100">
+							{league.name}
+						</InlineText>
 
-					<InlineText className="tw-truncate tw-text-base tw-text-gray-100">
-						{league.name}
-					</InlineText>
+						<InlineText className="win:tw-inline tw-ml-1 tw-hidden tw-truncate tw-text-base tw-text-gray-100">
+							({league.country})
+						</InlineText>
+					</Block>
 				</Title>
 			}
 			showIcon={false}
@@ -662,7 +668,7 @@ function FixtureMatch({
 													<Block
 														key={`${generateSlug(playedMatch.id + playedMatch.hour + index)}`}
 														className={cn(
-															"tw-relative tw-mb-6 tw-rounded-sm tw-border-2 tw-px-4 tw-pb-6 tw-pt-6 last:tw-mb-0",
+															"tw-relative tw-mb-6 tw-rounded-sm tw-border-2 tw-px-4 tw-pb-9 tw-pt-6 last:tw-mb-0",
 															currentTeam.winner === true
 																? "tw-border-green-500"
 																: currentTeam.winner === false
@@ -848,9 +854,7 @@ function MatchDetails({
 				<Block className="tw-w-48 tw-max-w-[250px] tw-flex-grow">
 					<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
 						{teamsFromSameCountry ? (
-							<InlineText className="tw-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-stone-500 tw-wh-7">
-								⚽
-							</InlineText>
+							<InlineText className="tw-text-left tw-align-middle tw-text-xl">⚽</InlineText>
 						) : (
 							<React.Fragment>
 								<InlineText className="win:tw-hidden tw-relative tw-top-0.5 tw-inline-block tw-text-3xl">
@@ -880,9 +884,7 @@ function MatchDetails({
 					<Space size={1} />
 					<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
 						{teamsFromSameCountry ? (
-							<InlineText className="tw-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-stone-500 tw-wh-7">
-								⚽
-							</InlineText>
+							<InlineText className="tw-text-left tw-align-middle tw-text-xl">⚽</InlineText>
 						) : (
 							<React.Fragment>
 								<InlineText className="win:tw-hidden tw-relative tw-top-0.5 tw-inline-block tw-text-3xl">
@@ -994,9 +996,11 @@ function MatchDetails({
 			</Block>
 
 			{isPlayedMatchVariant ? (
-				<Text className="tw-mt-3 tw-text-center tw-font-bold tw-underline">
-					{match.league.name}
-				</Text>
+				<Block className="tw-absolute tw--bottom-5 tw-w-full tw-text-center">
+					<InlineText className="tw-rounded-b-md tw-bg-stone-800 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-white tw-underline">
+						{match.league.name}
+					</InlineText>
+				</Block>
 			) : null}
 		</Block>
 	);

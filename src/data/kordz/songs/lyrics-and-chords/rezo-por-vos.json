@@ -6,10 +6,10 @@
 		"album": "Privé",
 		"year": 1986,
 		"country": "🇦🇷",
-		"category": "5|REVIEW|🕵️",
+		"category": "2|WELL_DONE|👌",
 		"created_at": "2021/04/28",
-		"is_public": false,
-		"done": false,
+		"is_public": true,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/46TZ5rawdrjoFwsQLGlcLr",
 		"youtube_url": "https://youtu.be/kHPja5eLZdU",
 		"assets": {},
@@ -20,7 +20,12 @@
 				"source": "youtube"
 			},
 			{
-				"text": "Rezo por vos",
+				"text": "Luis Alberto Spinetta & Charly García – Rezo por vos|Estudio Satori",
+				"url": "https://estudiosatori.com.ar/luis-alberto-spinetta-charly-garcia-rezo-por-vos/",
+				"source": "url"
+			},
+			{
+				"text": "REZO POR VOS, Charly García: Acordes",
 				"url": "https://acordes.lacuerda.net/charly_garcia/rezo_por_vos-2.shtml",
 				"source": "lacuerda"
 			},
@@ -40,8 +45,8 @@
 				"source": "url"
 			},
 			{
-				"text": "sofiandroll",
-				"url": "https://instagram.com/p/B8zpqk6n4ro",
+				"text": "Sofi & Roll 💙 | T e m a z o. ♥️ Me ayudan compartiendo? ♥️♥️ @charlygarcia . . . . #rezoporvos #charly #charlygarcia #spinetta #elflacospinetta…",
+				"url": "https://www.instagram.com/p/B8zpqk6n4ro",
 				"source": "instagram"
 			},
 			{
@@ -53,5 +58,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{INTRO}\",\n\t\t\treplacement: (\n\t\t\t\t<Tablature\n\t\t\t\t\tpositions={[\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 1 },\n\t\t\t\t\t\t{ space: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 3, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 1 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 1 },\n\t\t\t\t\t\t{ space: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t]}\n\t\t\t\t\tnotes=\"Las 3 primeras notas se tocan haciendo el acorde D. Se repite 4 veces\"\n\t\t\t\t/>\n\t\t\t),\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
-	"txt": "{INTRO}\n\n\nD\n   La indómita luz\n        G\nse hizo carne en mí\nD                           Em\n   y lo dejé todo, por esta soledad\n\nG\n   Y leo revistas\n      Am\nen la tempestad\nBm\n   hice el sacrificio\n    Am         Bm\nabracé la cruz al amanecer\n\n\n            D\nY entonces  rezo...\nAm          D\n            rezo...\nAm          D\n            rezo...\nAm          D\n   rezo por vos...\n\n\nD\n   Morí sin morir\n         G\ny me abracé al dolor\nD                           Em\n   y lo dejé todo, por esta soledad\n\nG\n   Y se hizo de noche\n        Am\ny ahora estoy aquí\nBm\n   mi cuerpo se cae\n     Am          Bm\nsolo veo la cruz al amanecer\n\n\n            D\nY entonces  rezo...\nAm          D\n            rezo...\nAm          D\n            rezo...\nAm          D\n   rezo por vos...\n\n\nAm\n↓↑ ↓↑ ↓↑ ↓↑\n\n\nA\nY curé mis heridas\n          G\ny me encendí de amor\nA\ny quemé las cortinas\n          G               A        D\ny me encendí de amor, de amor sagrado\n\n\nAm   D   Am\n\n\n          Bm\nY entonces...\nC\n   y entonces...\nBm\n   y entonces...\n\n\nC\n↓↑ ↓↑ ↓↑ ↓↑\n\n\n           D\nY entonces rezo...\nAm          D\n   rezo por vos...\nAm         D\n           rezo...\nAm          D\n   rezo por vos...\n\n\nAm\n↓↑ ↓↑ ↓↑ ↓↑\n\n\nA\nY curé mis heridas\n          G\ny me encendí de amor\nA\ny quemé las cortinas\n          G               A        D\ny me encendí de amor, de amor sagrado\n\n\n{INTRO}\n\n\nD"
+	"txt": "{INTRO}\n\n\nD\n   La indómita luz\n         G\nse hizo carne en mí\nD                            Em\n   y lo dejé todo, por esta soledad\n\nG\n   Y leo revistas\n       Am\nen la tempestad\nBm\n   hice el sacrificio\n     Am        Bm\nabracé la cruz al amanecer\n\n\n             D\nY entonces  rezo...\nAm           D\n            rezo...\nAm           D\n            rezo...\nAm           D\n   rezo por vos...\n\n\nD\n   Morí sin morir\n          G\ny me abracé al dolor\nD                            Em\n   y lo dejé todo, por esta soledad\n\nG\n   Y se hizo de noche\n        Am\ny ahora estoy aquí\nBm\n   mi cuerpo se cae\n      Am         Bm\nsolo veo la cruz al amanecer\n\n\n             D\nY entonces  rezo...\nAm           D\n            rezo...\nAm           D\n            rezo...\nAm           D\n   rezo por vos...\n\n\nAm\n↓↑ ↓↑ ↓↑ ↓↑\n\n\nA\nY curé mis heridas\n           G\ny me encendí de amor\nA\ny quemé las cortinas\n           G               A      D\ny me encendí de amor, de amor sagrado\n\n\nAm  D  Am\n\n\n          Bm\nY entonces...\nC\n   y entonces...\nBm\n   y entonces...\n\n\nC\n↓↑ ↓↑ ↓↑ ↓↑\n\n\n            D\nY entonces rezo...\nAm           D\n   rezo por vos...\nAm          D\n           rezo...\nAm           D\n   rezo por vos...\n\n\nAm\n↓↑ ↓↑ ↓↑ ↓↑\n\n\nA\nY curé mis heridas\n           G\ny me encendí de amor\nA\ny quemé las cortinas\n           G               A      D\ny me encendí de amor, de amor sagrado\n\n\n{INTRO}\n\n\nD"
 }

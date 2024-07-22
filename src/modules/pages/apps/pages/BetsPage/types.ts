@@ -106,54 +106,6 @@ export type T_TeamStats = Array<{
 }>;
 
 /*
-export type T_TeamStats = {
-	total_de_partidos: number;
-	total_de_goles: number;
-	total_de_goles_recibidos: number;
-	promedio_de_goles: number;
-	promedio_de_goles_recibidos: number;
-	"---|---": number;
-	partidos_de_local: number;
-	goles_de_local: number;
-	promedio_de_goles_de_local: number;
-	partidos_ganados_de_local: number;
-	partidos_perdidos_de_local: number;
-	partidos_empatados_de_local: number;
-	partidos_con_goles_de_local: number;
-	porcentaje_de_puntos_ganados_de_local: number;
-	"---||---": number;
-	partidos_de_visitante: number;
-	goles_de_visitante: number;
-	promedio_de_goles_de_visitante: number;
-	partidos_ganados_de_visitante: number;
-	partidos_perdidos_de_visitante: number;
-	partidos_empatados_de_visitante: number;
-	partidos_con_goles_de_visitante: number;
-	porcentaje_de_puntos_ganados_de_visitante: number;
-	"---|||---": number;
-	ultimos_total_de_partidos: number;
-	ultimos_total_de_goles: number;
-	ultimos_promedio_de_goles: number;
-	"---||||---": number;
-	ultimos_partidos_de_local: number;
-	ultimos_goles_de_local: number;
-	ultimos_promedio_de_goles_de_local: number;
-	ultimos_partidos_ganados_de_local: number;
-	ultimos_partidos_perdidos_de_local: number;
-	ultimos_partidos_empatados_de_local: number;
-	ultimos_partidos_con_goles_de_local: number;
-	"---|||||---": number;
-	ultimos_partidos_de_visitante: number;
-	ultimos_goles_de_visitante: number;
-	ultimos_promedio_de_goles_de_visitante: number;
-	ultimos_partidos_ganados_de_visitante: number;
-	ultimos_partidos_perdidos_de_visitante: number;
-	ultimos_partidos_empatados_de_visitante: number;
-	ultimos_partidos_con_goles_de_visitante: number;
-};
-*/
-
-/*
 export type T_Prediction = T_NextMatchPrediction | T_PlayedMatchPrediction;
 
 export type T_NextMatchPrediction = {

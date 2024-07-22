@@ -71,6 +71,10 @@ body.mobile ::-webkit-scrollbar-thumb {
 	display: inline-block;
 }
 
+.windows-os .win\:tw-inline {
+	display: inline;
+}
+
 .windows-os .win\:tw-hidden {
 	display: none;
 }

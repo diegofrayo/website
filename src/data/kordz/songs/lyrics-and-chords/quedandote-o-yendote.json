@@ -6,16 +6,16 @@
 		"album": "Elija y Gane",
 		"year": 1999,
 		"country": "🇦🇷",
-		"category": "5|REVIEW|🕵️",
+		"category": "2|WELL_DONE|👌",
 		"created_at": "2021/07/21",
-		"is_public": false,
-		"done": false,
+		"is_public": true,
+		"done": true,
 		"spotify_url": "https://open.spotify.com/track/5gUxsVRhWljyJz7pYakRL4",
 		"youtube_url": "https://youtu.be/Jqi2rk5l0-k",
 		"assets": {},
 		"sources": [
 			{
-				"text": "Quedándote o Yéndote",
+				"text": "QUEDANDOTE O YENDOTE, Luis Alberto Spinetta: Tablatura",
 				"url": "https://acordes.lacuerda.net/luis_a_spinetta/quedandote_o_yendote-2.shtml",
 				"source": "lacuerda"
 			},
@@ -33,5 +33,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "INTRO:\nA (0,5 | 2,4 | 2,3 | 2,2)   (x3)\nDm6 ↓\n\n\n      Em7           D                       A\nY deberás plantar     y ver así a la flor nacer\n      Em7           D                               A\ny deberás crear       si quieres ver a tu tierra en paz\n\nD          E           A            D                   E D\n  el sol empuja con su luz el cielo brilla renovando la vida,\n\n\nA (con dedo 4 en 3,2)\nLA LA LA LA LA...\n\n\n      Em7           D                   A\ny deberás amar,       amar amar hasta morir\n      Em7           D                    A\ny deberás crecer      sabiendo reír y llorar\n\nD           E           A          D                       E D\n  la lluvia borra la maldad y lava todas las heridas de tu alma,\n\n\nF#m E A D\nLA LA LA LA LA...   (x2)\n\n\n      Em7           D                      A\nde tí saldrá la luz   tan sólo así serás feliz\n      Em7           D                         A\ny deberás luchar      si quieres descubrir la fe\n\nD           E           A          D                       E D\n  la lluvia borra la maldad y lava todas las heridas de tu alma,\n\n\nF#m E A D\nLA LA LA LA LA...   (x2)\n\n\nC#m                        D          E\n  este agua lleva en sí la fuerza del fuego\n   F          G         B      A     A/G     Asus2\nla voz que responde por tí por mí-----i------i...\n         Em7            D                   A\ny esto será siempre así   quedándote o yéndote\n\n\nDm6"
+	"txt": "A (0,5 | 2,4 | 2,3 | 2,2)   | (x3)\nDm6\n↓\n\n\n       Em7         D                         A  Asus4 A Asus4\nY deberás plantar     y ver así a la flor nacer\n       Em7         D                                 A  Asus4 A Asus4\ny deberás crear       si quieres ver a tu tierra en paz\n\nD           E           A             D                  E D\n  El sol empuja con su luz el cielo brilla renovando la vida,\n\n\nA  Asus4          |\nLA LA LA LA LA... | (x2)\n\n\n       Em7         D                     A  Asus4 A Asus4\nY deberás amar,       amar amar hasta morir\n       Em7         D                      A  Asus4 A Asus4\ny deberás crecer      sabiendo reír y llorar\n\nD            E           A          D                      E D\n  La lluvia borra la maldad y lava todas las heridas de tu alma,\n\n\nF#m E A D           |\nLA LA LA LA LA...   | (x2)\n\n\n       Em7           D                        A  Asus4 A Asus4\nDe tí saldrá la luz     tan sólo así serás feliz\n       Em7           D                           A  Asus4 A Asus4\ny deberás luchar        si quieres descubrir la fe\n\nD            E           A          D                      E  D\n  La lluvia borra la maldad y lava todas las heridas de tu alma,\n\n\nF#m E A D           |\nLA LA LA LA LA...   | (x2)\n\n\nC#m                           D          E\n    Este agua lleva en sí la fuerza del fuego\n    F          G         B      A     A/G    Asus2\nla voz que responde por tí por mí-----i------i...\n\n          Em7            D                    A\nY esto será siempre así    quedándote o yéndote\n\n\nA (0,5 | 2,4 | 2,3 | 2,2)   | (x3)\nDm6\n↓"
 }
