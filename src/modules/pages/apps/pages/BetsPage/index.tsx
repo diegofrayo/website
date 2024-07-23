@@ -32,6 +32,7 @@ import type {
 	T_FixtureMatch,
 	T_League,
 	T_LeagueStandings,
+	T_MarketPrediction,
 	T_PlayedMatch,
 } from "./types";
 import styles from "./styles.module.css";
@@ -367,7 +368,7 @@ function LeagueFixture({
 							return (
 								<Block
 									key={match.id}
-									className="tw-w-full md:tw-w-80"
+									className="tw-w-full md:tw-w-96"
 								>
 									<FixtureMatch
 										// variant="date"
@@ -486,82 +487,73 @@ function FixtureMatch({
 				showIcon={false}
 				opened
 			>
-				{/*
-        <Collapsible
-          title="Predicciones de apuestas"
-          contentClassName="tw-pt-0.5"
-        >
-          {match.predictions.map((prediction) => {
-            return (
-              <Block
-                key={generateSlug(`${match.id}-${prediction.name}`)}
-                className="tw-mb-2 tw-overflow-hidden tw-rounded-md tw-px-4 tw-py-3 dr-bg-color-surface-300 last:tw-mb-0"
-              >
-                <Text className="tw-text-lg tw-font-bold">
-                  <InlineText className="tw-underline">{prediction.name}</InlineText>
-                  {prediction.recommendable ? (
-                    <InlineText className="tw-ml-1 tw-text-sm">🌟</InlineText>
-                  ) : null}
-                </Text>
-                <Space size={1} />
+				<Collapsible
+					title={<CollapsibleTitle title="Ver predicciones" />}
+					contentClassName="tw-mt-1 tw-p-1 md:tw-p-4 tw-bg-stone-800 tw-font-mono"
+					showIcon={false}
+				>
+					{match.predictions.map((marketPrediction) => {
+						const baseKey = `${match.id}-${marketPrediction.id}`;
 
-                <Block>
-                  <Text>
-                    <InlineText is="strong">- Es recomendable:</InlineText>{" "}
-                    <InlineText className="tw-text-xs">
-                      {prediction.recommendable ? "✅" : "❌"}
-                    </InlineText>
-                  </Text>
-                  <Text>
-                    <InlineText is="strong">- Porcentaje de aceptacion:</InlineText>{" "}
-                    <InlineText>{prediction.acceptancePercentage * 100}%</InlineText>
-                  </Text>
+						return (
+							<Collapsible
+								key={baseKey}
+								title={
+									<Text className="tw-font-bold">
+										<InlineText>{marketPrediction.name} </InlineText>
+										<InlineText>
+											{getMarketTrustLevelEmojy(marketPrediction.trustLevel)}
+										</InlineText>{" "}
+									</Text>
+								}
+								showIcon={false}
+								className="tw-mb-2 last:tw-mb-0"
+								contentClassName="tw-p-1 tw-mb-4 md:tw-p-4 tw-bg-stone-900 tw-mt-1"
+							>
+								{marketPrediction.criteria.map((subCriteria, subCriteriaIndex) => {
+									return (
+										<Block
+											key={`${baseKey}-${subCriteriaIndex}`}
+											className="tw-mb-4 last:tw-mb-0"
+										>
+											<Text className="tw-font-bold">
+												<InlineText>{subCriteria.description} </InlineText>
+												<InlineText>{subCriteria.fulfilled ? "✅" : "❌"}</InlineText>
+											</Text>
 
-                  <Text className="tw-font-bold">- Criterios:</Text>
-                  <List variant={List.variant.SIMPLE}>
-                    {prediction.criteria.map((criteria) => {
-                      return (
-                        <List.Item
-                          key={generateSlug(`${match.id}-${criteria.description}`)}
-                          className={cn(
-                            "tw-ml-3 tw-text-sm",
-                            criteria.weight > 0 ? "tw-underline" : "",
-                          )}
-                        >
-                          <InlineText className="tw-mr-2">{criteria.description}</InlineText>
-                          <InlineText className="tw-text-xs">{criteria.check}</InlineText>
-                        </List.Item>
-                      );
-                    })}
-                  </List>
-
-                  {prediction.warnings.length > 0 ? (
-                    <React.Fragment>
-                      <Text className="tw-font-bold">- Advertencias:</Text>
-                      <List variant={List.variant.SIMPLE}>
-                        {prediction.warnings.map((warning, warningIndex) => {
-                          return (
-                            <List.Item
-                              key={generateSlug(`${match.id}-${warningIndex}`)}
-                              className="tw-ml-3 tw-text-sm"
-                            >
-                              <InlineText className="tw-mr-2">{warning.description}</InlineText>
-                            </List.Item>
-                          );
-                        })}
-                      </List>
-                    </React.Fragment>
-                  ) : null}
-                </Block>
-              </Block>
-            );
-          })}
-        </Collapsible>
-        <Space
-          size={4}
-          variant={Space.variant.DASHED}
-        />
-        */}
+											<Block className="tw-pl-2">
+												{subCriteria.items.map((item, itemIndex) => {
+													return (
+														<Collapsible
+															key={`${baseKey}-${subCriteriaIndex}-${itemIndex}`}
+															title={
+																<Text>
+																	- <InlineText>{item.description} </InlineText>
+																	<InlineText>{item.fulfilled ? "✅" : "❌"}</InlineText>
+																</Text>
+															}
+															showIcon={false}
+														>
+															<Text
+																className={cn(
+																	"tw-mb-2 tw-pl-5 tw-text-sm tw-italic",
+																	item.fulfilled ? "tw-text-green-600" : "tw-text-red-600",
+																)}
+															>
+																{item.explanation}
+															</Text>
+														</Collapsible>
+													);
+												})}
+											</Block>
+										</Block>
+									);
+								})}
+							</Collapsible>
+						);
+					})}
+				</Collapsible>
+				<Space size={2} />
 
 				<Block className="tw-flex tw-flex-wrap tw-items-start tw-justify-between tw-gap-1 tw-overflow-auto md:tw-gap-4 md:tw-overflow-hidden lg:tw-flex-nowrap">
 					{Object.entries(match.teams).map(([teamSide, team]) => {
@@ -574,7 +566,7 @@ function FixtureMatch({
 						return (
 							<Block
 								key={team.name}
-								className="stw-min-w-[500px] tw-w-full tw-flex-shrink-0 tw-overflow-auto tw-rounded-sm tw-bg-stone-800 sm:tw-min-w-full lg:tw-min-w-fit lg:tw-flex-1"
+								className="tw-w-full tw-flex-shrink-0 tw-overflow-auto tw-rounded-sm tw-bg-stone-800 sm:tw-min-w-full lg:tw-w-1/2 lg:tw-min-w-0"
 							>
 								<Block className="tw-relative tw-flex tw-justify-between tw-bg-stone-700 tw-px-1 tw-py-1 md:tw-px-4">
 									<Text className="tw-flex-1 tw-text-left">
@@ -609,8 +601,7 @@ function FixtureMatch({
 
 									<Collapsible
 										title={<CollapsibleTitle title="Ver estadísticas" />}
-										className="tw-mb-2"
-										contentClassName="tw-mt-2 tw-p-2 md:tw-p-4 tw-bg-stone-900 tw-font-mono tw-mb-4"
+										contentClassName="tw-mt-2 tw-p-2 md:tw-p-4 tw-bg-stone-900 tw-mb-4"
 										showIcon={false}
 									>
 										{team.stats.map((group) => {
@@ -622,15 +613,11 @@ function FixtureMatch({
 													is="section"
 													className="tw-mb-3 last:tw-mb-0"
 												>
-													<Title
-														is="h2"
-														variant={Title.variant.SIMPLE}
-														className="tw-uppercase"
-														size={Title.size.SM}
-													>
+													<Text className="tw-text-lg tw-font-bold tw-uppercase tw-text-white">
 														{group.name}
-													</Title>
+													</Text>
 													<Space size={0.5} />
+
 													<List
 														variant={List.variant.SIMPLE}
 														className="tw-ml-0 md:tw-ml-2"
@@ -650,6 +637,7 @@ function FixtureMatch({
 											);
 										})}
 									</Collapsible>
+									<Space size={1} />
 
 									<Collapsible
 										title={<CollapsibleTitle title="Ver historial de partidos" />}
@@ -989,54 +977,6 @@ function MatchDetails({
 						)}
 					/>
 				) : null}
-
-				{/*
-        <Block className="tw-flex tw-items-center tw-justify-center tw-gap-4">
-          {match.predictions.map((prediction) => {
-            const isPlayedMatchPrediction = checkIsPlayedMatchPrediction(match, prediction);
-
-            if (isMarketVariant && prediction.name !== topKey) {
-              return null;
-            }
-
-            return (
-              <Block
-                key={`${match.id}-${prediction.id}`}
-                className={cn(
-                  "tw-relative tw-rounded-md tw-border tw-bg-black tw-pr-1 tw-shadow-sm dr-border-color-surface-400",
-                  isPlayedMatchPrediction
-                    ? prediction.right || prediction.skippedFail
-                      ? "tw-shadow-green-500"
-                      : "tw-shadow-red-500"
-                    : "dr-shadow-color-primary-500",
-                )}
-              >
-                <InlineText className="tw-inline-block tw-px-2 tw-py-1.5 tw-text-sm tw-text-white dr-bg-color-surface-300">
-                  {prediction.id}
-                </InlineText>
-                <Block className="tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-px-2 tw-text-xs">
-                  <InlineText>{prediction.recommendable ? "🌟" : "👎"}</InlineText>
-
-                  {isPlayedMatchPrediction ? (
-                    <React.Fragment>
-                      {prediction.right || prediction.skippedFail ? (
-                        <InlineText>✅</InlineText>
-                      ) : null}
-                      {prediction.fail || prediction.lostRight ? (
-                        <InlineText>❌</InlineText>
-                      ) : null}
-                    </React.Fragment>
-                  ) : null}
-
-                  {prediction.warnings.length > 0 ? (
-                    <InlineText className="tw-absolute tw--bottom-1 tw--right-1">⚠️</InlineText>
-                  ) : null}
-                </Block>
-              </Block>
-            );
-          })}
-        </Block>
-        */}
 			</Block>
 
 			{isPlayedMatchVariant ? (
@@ -1045,7 +985,27 @@ function MatchDetails({
 						{match.league.name}
 					</InlineText>
 				</Block>
-			) : null}
+			) : (
+				<Block className="tw-mt-3 tw-flex tw-gap-2">
+					{match.predictions.map((marketAnalysis) => {
+						return (
+							<InlineText
+								key={`${match.id}-${marketAnalysis.id}-label`}
+								className={cn(
+									"tw-inline-block tw-rounded-md tw-border-2 tw-bg-black tw-px-2 tw-py-1 tw-text-xs tw-font-bold",
+									marketAnalysis.trustLevel === "HIGH"
+										? "tw-border-yellow-600"
+										: marketAnalysis.trustLevel === "MEDIUM"
+											? "tw-border-orange-600"
+											: "tw-border-red-600",
+								)}
+							>
+								{marketAnalysis.id} {getMarketTrustLevelEmojy(marketAnalysis.trustLevel)}
+							</InlineText>
+						);
+					})}
+				</Block>
+			)}
 		</Block>
 	);
 }
@@ -1099,6 +1059,10 @@ function localizeDate(date: string) {
 
 function checkIsPlayedMatch(match: DR.Object): match is T_PlayedMatch {
 	return "league" in match;
+}
+
+function getMarketTrustLevelEmojy(trustLevel: T_MarketPrediction["trustLevel"]) {
+	return trustLevel === "HIGH" ? "🌟" : trustLevel === "MEDIUM" ? "🤔" : "👎";
 }
 
 /*
