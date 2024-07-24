@@ -45,11 +45,11 @@ function CopyToClipboardPopover({
 				{React.Children.map(children, (child) => {
 					if (React.isValidElement(child)) {
 						return React.cloneElement(child as DR.React.JSXElement, {
-							onClick: () => {
+							onClick: (event: DR.React.Events.OnChangeEvent<HTMLButtonElement>) => {
 								handleClick();
 
 								if (v.isFunction(child.props.onClick)) {
-									child.props.onClick();
+									child.props.onClick(event);
 								}
 							},
 						});

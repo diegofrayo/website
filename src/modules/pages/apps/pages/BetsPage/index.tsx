@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import { Page } from "~/components/layout";
 import {
 	Block,
+	Button,
 	Collapsible,
 	Icon,
 	InlineText,
@@ -16,9 +17,11 @@ import {
 	Text,
 	Title,
 } from "~/components/primitive";
+import { CopyToClipboardPopover } from "~/components/shared";
 import BUILD_INFO from "~/data/build-info.json";
 import cn from "~/lib/cn";
 import http from "~/lib/http";
+import { ComponentWithAuth } from "~/modules/auth";
 import { ROUTES } from "~/modules/routing";
 import { useDidMount } from "@diegofrayo/hooks";
 import { sortBy } from "@diegofrayo/sort";
@@ -39,7 +42,7 @@ import type {
 } from "./types";
 import styles from "./styles.module.css";
 
-// import DATA from "../../../../../../public/data/apps/bets/2024-07-23.json"; // NOTE: FOR DX PURPOSES
+// import DATA from "../../../../../../public/data/apps/bets/2024-07-21.json"; // NOTE: FOR DX PURPOSES
 
 function BetsPage() {
 	// --- STATES & REFS ---
@@ -76,6 +79,9 @@ function BetsPage() {
 				dateBase.subtract(1, "day"),
 				dateBase.subtract(2, "day"),
 				dateBase.subtract(3, "day"),
+				dateBase.subtract(4, "day"),
+				dateBase.subtract(5, "day"),
+				dateBase.subtract(6, "day"),
 			].map((item) => formatDate(item.toDate()));
 
 			await delay(1000);
@@ -276,7 +282,7 @@ function LeagueFixture({
 				<Title
 					is="h2"
 					id={`${fixtureDate}-${league.id}`}
-					className="tw-flex tw-items-center tw-justify-start"
+					className="tw-relative tw-flex tw-items-center tw-justify-start md:tw-max-w-[500px]"
 				>
 					<Block
 						is="span"
@@ -298,6 +304,20 @@ function LeagueFixture({
 							({league.country})
 						</InlineText>
 					</Block>
+
+					<Link
+						variant={Link.variant.SIMPLE}
+						href={`https://www.google.com/search?q=${encodeURIComponent(
+							`${league.name} 365scores`,
+						)}`}
+						className="tw-absolute tw-right-0 tw-top-0"
+						isExternalLink
+					>
+						<Icon
+							icon={Icon.icon.EXTERNAL_LINK}
+							size={12}
+						/>
+					</Link>
 				</Title>
 			}
 			showIcon={false}
@@ -836,9 +856,13 @@ function MatchDetails({
 }) {
 	// --- VARS ---
 	const isMarketVariant = variant === "MARKET_FIXTURE_MATCH";
-	const teamsFromSameCountry = match.teams.home.country === match.teams.away.country;
 	const { isMatchFinished, isMatchInProgress } = checkMatchStatus(match);
 	const isPlayedMatchVariant = checkIsPlayedMatch(match);
+
+	// --- HANDLERS ---
+	function handleCopyMatchIdClick(event: DR.React.Events.OnClickEvent<HTMLButtonElement>) {
+		event.stopPropagation();
+	}
 
 	return (
 		<Block
@@ -848,66 +872,15 @@ function MatchDetails({
 		>
 			<Block className="tw-flex tw-flex-nowrap tw-items-center tw-justify-between tw-gap-4">
 				<Block className="tw-w-48 tw-max-w-[250px] tw-flex-grow">
-					<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
-						{teamsFromSameCountry ||
-						v.isEmptyString(match.teams.home.country) ||
-						v.isEmptyString(match.teams.away.country) ? (
-							<InlineText className="tw-text-left tw-align-middle tw-text-xl">⚽</InlineText>
-						) : (
-							<React.Fragment>
-								<InlineText className="win:tw-hidden tw-inline-block tw-text-left tw-align-middle tw-text-xl">
-									{match.teams.home.country}
-								</InlineText>
-								<InlineText className="win:tw-inline-block tw-hidden tw-text-left tw-align-middle tw-text-xl">
-									⚽
-								</InlineText>
-							</React.Fragment>
-						)}
-
-						<InlineText
-							className="tw-flex-1 tw-truncate tw-leading-none"
-							title={match.teams.home.name}
-						>
-							{match.teams.home.name}
-							<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
-								{match.teams.home.featured ? "🟩" : ""}
-							</InlineText>
-						</InlineText>
-						{match.played ? (
-							<InlineText className="tw-w-6 tw-text-center tw-font-bold">
-								{match.teams.home.score}
-							</InlineText>
-						) : null}
-					</Block>
+					<MatchTeamDetails
+						match={match}
+						teamSide="home"
+					/>
 					<Space size={1} />
-					<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
-						{teamsFromSameCountry ? (
-							<InlineText className="tw-text-left tw-align-middle tw-text-xl">⚽</InlineText>
-						) : (
-							<React.Fragment>
-								<InlineText className="win:tw-hidden tw-inline-block tw-text-left tw-align-middle tw-text-xl">
-									{match.teams.away.country}
-								</InlineText>
-								<InlineText className="win:tw-inline-block tw-hidden tw-text-left tw-align-middle tw-text-xl">
-									⚽
-								</InlineText>
-							</React.Fragment>
-						)}
-						<InlineText
-							className="tw-flex-1 tw-truncate tw-leading-none"
-							title={match.teams.away.name}
-						>
-							{match.teams.away.name}
-							<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
-								{match.teams.away.featured ? "🟩" : ""}
-							</InlineText>
-						</InlineText>
-						{match.played ? (
-							<InlineText className="tw-w-6 tw-text-center tw-font-bold">
-								{match.teams.away.score}
-							</InlineText>
-						) : null}
-					</Block>
+					<MatchTeamDetails
+						match={match}
+						teamSide="away"
+					/>
 				</Block>
 				<Block className="tw-w-16 tw-flex-shrink-0 tw-text-right">
 					{isMarketVariant ? (
@@ -935,6 +908,14 @@ function MatchDetails({
 						)}
 					/>
 				) : null}
+
+				<ComponentWithAuth className="tw-absolute tw-bottom-1 tw-right-1">
+					<CopyToClipboardPopover textToCopy={match.id}>
+						<Button onClick={handleCopyMatchIdClick}>
+							<Icon icon={Icon.icon.COPY} />
+						</Button>
+					</CopyToClipboardPopover>
+				</ComponentWithAuth>
 
 				{isMatchFinished && !isPlayedMatchVariant ? (
 					<Block
@@ -974,7 +955,7 @@ function MatchDetails({
 								</InlineText>
 
 								{"results" in marketPrediction ? (
-									<Block
+									<InlineText
 										className={cn(
 											"tw-absolute tw--right-2 tw--top-2 tw-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-black tw-wh-4",
 											marketPrediction.results.right || marketPrediction.results.skippedFail
@@ -985,13 +966,58 @@ function MatchDetails({
 										{marketPrediction.results.right || marketPrediction.results.skippedFail
 											? "✓"
 											: "✖"}
-									</Block>
+									</InlineText>
 								) : null}
 							</Text>
 						);
 					})}
 				</Block>
 			)}
+		</Block>
+	);
+}
+
+function MatchTeamDetails({
+	match,
+	teamSide,
+}: {
+	match: T_FixtureMatch | T_PlayedMatch;
+	teamSide: "home" | "away";
+}) {
+	// --- VARS ---
+	const teamsFromSameCountry = match.teams.home.country === match.teams.away.country;
+
+	return (
+		<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
+			{teamsFromSameCountry ||
+			v.isEmptyString(match.teams.home.country) ||
+			v.isEmptyString(match.teams.away.country) ? (
+				<InlineText className="tw-text-left tw-align-middle tw-text-xl">⚽</InlineText>
+			) : (
+				<React.Fragment>
+					<InlineText className="win:tw-hidden tw-inline-block tw-text-left tw-align-middle tw-text-xl">
+						{match.teams.home.country}
+					</InlineText>
+					<InlineText className="win:tw-inline-block tw-hidden tw-text-left tw-align-middle tw-text-xl">
+						⚽
+					</InlineText>
+				</React.Fragment>
+			)}
+
+			<InlineText
+				className="tw-flex-1 tw-truncate tw-leading-none"
+				title={match.teams[teamSide].name}
+			>
+				{match.teams[teamSide].name}
+				<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
+					{match.teams[teamSide].featured ? "🟩" : ""}
+				</InlineText>
+			</InlineText>
+			{match.played ? (
+				<InlineText className="tw-w-6 tw-text-center tw-font-bold">
+					{match.teams[teamSide].score}
+				</InlineText>
+			) : null}
 		</Block>
 	);
 }
@@ -1019,11 +1045,11 @@ function getRelativeDatesDifference(input: string) {
 		return "de hoy";
 	}
 
-	if (daysDifference === -1) {
+	if (daysDifference === 1) {
 		return "de ayer";
 	}
 
-	if (daysDifference === 1) {
+	if (daysDifference === -1) {
 		return "de mañana";
 	}
 
