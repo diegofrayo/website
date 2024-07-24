@@ -24,8 +24,10 @@ import { useDidMount } from "@diegofrayo/hooks";
 import { sortBy } from "@diegofrayo/sort";
 import type DR from "@diegofrayo/types";
 import { goToElement } from "@diegofrayo/utils/browser";
+import { dateWithoutTime } from "@diegofrayo/utils/dates";
 import { delay, safeAsync } from "@diegofrayo/utils/misc";
 import { addLeftPadding, generateSlug, replaceAll } from "@diegofrayo/utils/strings";
+import v from "@diegofrayo/v";
 
 import type {
 	T_DayOfMatches,
@@ -37,7 +39,7 @@ import type {
 } from "./types";
 import styles from "./styles.module.css";
 
-// import DATA from "../../../../../../public/data/apps/bets/2024-07-22.json"; // NOTE: FOR DX PURPOSES
+// import DATA from "../../../../../../public/data/apps/bets/2024-07-23.json"; // NOTE: FOR DX PURPOSES
 
 function BetsPage() {
 	// --- STATES & REFS ---
@@ -45,7 +47,7 @@ function BetsPage() {
 	const [selectedDate, setSelectedDate] = React.useState(formatDate(new Date()));
 	const [isLoading, setIsLoading] = React.useState(true);
 	const [data, setData] = React.useState<undefined | T_Data>(undefined);
-	// const [data, setData] = React.useState<undefined | T_Data>({ [selectedDate]: DATA }); // NOTE: FOR DX PURPOSES
+	// const [data, setData] = React.useState<T_Data>({ [selectedDate]: DATA as T_DayOfMatches }); // NOTE: FOR DX PURPOSES
 
 	// --- EFFECTS ---
 	useDidMount(() => {
@@ -60,14 +62,6 @@ function BetsPage() {
 		fetchData(event.currentTarget.value);
 	}
 
-	/*
-	function toggleRenderType() {
-		setRenderType((currentValue) => {
-			return currentValue === "MARKET" ? "DATE" : "MARKET";
-		});
-	}
-  */
-
 	// --- HANDLERS ---
 	async function fetchData(date: string) {
 		try {
@@ -76,11 +70,13 @@ function BetsPage() {
 			setIsLoading(true);
 
 			const dateBase = dayjs(date);
-			const dateYesterday = dateBase.subtract(1, "day");
-			const dateTomorrow = dateBase.add(1, "day");
-			const dates = [dateBase, dateYesterday, dateTomorrow].map((item) =>
-				formatDate(item.toDate()),
-			);
+			const dates = [
+				dateBase,
+				dateBase.add(1, "day"),
+				dateBase.subtract(1, "day"),
+				dateBase.subtract(2, "day"),
+				dateBase.subtract(3, "day"),
+			].map((item) => formatDate(item.toDate()));
 
 			await delay(1000);
 			const newData = (
@@ -146,31 +142,6 @@ function BetsPage() {
 						</Link>
 					</Title>
 				</Block>
-				{/*
-				<Block className="tw-text-center">
-					<BoxWithTitle
-						title="Agrupar por:"
-						className="tw-flex tw-gap-2 tw-p-5"
-					>
-						<Button
-							variant={Button.variant.STYLED}
-							className={cn(renderType === "DATE" && "dr-bg-color-surface-300")}
-							onClick={toggleRenderType}
-							disabled
-						>
-							Fecha
-						</Button>
-            <Button
-              variant={Button.variant.STYLED}
-              className={cn(renderType === "MARKET" && "dr-bg-color-surface-300")}
-              onClick={toggleRenderType}
-            >
-              Mercado
-            </Button>
-					</BoxWithTitle>
-				</Block>
-				<Space size={4} />
-        */}
 
 				<Space size={4} />
 				<Block className="tw-mx-auto tw-max-w-[1280px] tw-px-1 md:tw-px-4">
@@ -234,7 +205,9 @@ function RenderByDate({ data }: { data: T_Data }) {
 						key={fixtureDate}
 						title={
 							<Block>
-								<Text className="tw-text-lg tw-font-bold tw-text-white">Partidos</Text>
+								<Text className="tw-text-lg tw-font-bold tw-text-white">
+									Partidos {getRelativeDatesDifference(fixtureDate)}
+								</Text>
 								<Text className="tw-text-stone-300">{localizeDate(fixtureDate)}</Text>
 							</Block>
 						}
@@ -311,7 +284,7 @@ function LeagueFixture({
 					>
 						<Block
 							is="span"
-							className="tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-stone-500 tw-p-0.5 tw-text-lg tw-wh-7"
+							className="tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-stone-500 tw-p-0.5 tw-text-xl tw-leading-none tw-wh-7"
 						>
 							{league.flag}
 						</Block>
@@ -500,10 +473,12 @@ function FixtureMatch({
 								key={baseKey}
 								title={
 									<Text className="tw-font-bold">
-										<InlineText>{marketPrediction.name} </InlineText>
-										<InlineText>
+										<InlineText className="tw-mr-1 tw-inline-block tw-align-middle">
+											{marketPrediction.name}{" "}
+										</InlineText>
+										<InlineText className="tw-inline-block tw-align-middle tw-text-xxs">
 											{getMarketTrustLevelEmojy(marketPrediction.trustLevel)}
-										</InlineText>{" "}
+										</InlineText>
 									</Text>
 								}
 								showIcon={false}
@@ -517,8 +492,12 @@ function FixtureMatch({
 											className="tw-mb-4 last:tw-mb-0"
 										>
 											<Text className="tw-font-bold">
-												<InlineText>{subCriteria.description} </InlineText>
-												<InlineText>{subCriteria.fulfilled ? "✅" : "❌"}</InlineText>
+												<InlineText className="tw-mr-1 tw-inline-block tw-align-middle">
+													{subCriteria.description}
+												</InlineText>
+												<InlineText className="tw-inline-block tw-align-middle tw-text-xxs">
+													{subCriteria.fulfilled ? "✅" : "❌"}
+												</InlineText>
 											</Text>
 
 											<Block className="tw-pl-2">
@@ -528,8 +507,14 @@ function FixtureMatch({
 															key={`${baseKey}-${subCriteriaIndex}-${itemIndex}`}
 															title={
 																<Text>
-																	- <InlineText>{item.description} </InlineText>
-																	<InlineText>{item.fulfilled ? "✅" : "❌"}</InlineText>
+																	<InlineText className="tw-mr-1 tw-inline-block tw-align-middle">
+																		- {item.description}{" "}
+																	</InlineText>
+																	{subCriteria.fulfilled ? null : (
+																		<InlineText className="tw-inline-block tw-align-middle tw-text-xxs">
+																			{item.fulfilled ? "✅" : "❌"}
+																		</InlineText>
+																	)}
 																</Text>
 															}
 															showIcon={false}
@@ -537,7 +522,7 @@ function FixtureMatch({
 															<Text
 																className={cn(
 																	"tw-mb-2 tw-pl-5 tw-text-sm tw-italic",
-																	item.fulfilled ? "tw-text-green-600" : "tw-text-red-600",
+																	item.fulfilled ? "tw-text-green-400" : "tw-text-red-400",
 																)}
 															>
 																{item.explanation}
@@ -604,7 +589,7 @@ function FixtureMatch({
 										contentClassName="tw-mt-2 tw-p-2 md:tw-p-4 tw-bg-stone-900 tw-mb-4"
 										showIcon={false}
 									>
-										{team.stats.map((group) => {
+										{Object.values(team.stats).map((group) => {
 											const reactKey = generateSlug(`${match.id}-stats-${group.name}`);
 
 											return (
@@ -628,7 +613,10 @@ function FixtureMatch({
 																	<InlineText is="strong">
 																		{jsConvertCase.toSentenceCase(key)}:
 																	</InlineText>{" "}
-																	<InlineText>{value}</InlineText>
+																	<InlineText>
+																		{value}
+																		{key.includes("porcentaje") ? "%" : ""}
+																	</InlineText>
 																</List.Item>
 															);
 														})}
@@ -739,30 +727,6 @@ function FixtureMatch({
 															match={playedMatch}
 															variant="PLAYED_MATCH"
 														/>
-
-														{/*
-													<Text className="lg:tw-truncate">
-														<InlineText>{composeMatchTitle(playedMatch)}</InlineText>
-													</Text>
-													<Block className="tw-ml-0 lg:tw-ml-5">
-														<Text>
-															{composeTeamsCountry(
-																playedMatch.teams.home.country,
-																playedMatch.teams.away.country,
-															)}
-														</Text>
-														<Text className="tw-mb-4 tw-flex tw-flex-col tw-justify-between tw-text-sm lg:tw-flex-row">
-															<InlineText className="tw-italic">{playedMatch.date}</InlineText>
-
-															{Number.isInteger(playedMatch.teams.home.position) &&
-															Number.isInteger(playedMatch.teams.away.position) ? (
-																<InlineText>
-																	{`Posiciones: [${playedMatch.teams.home.position}] | [${playedMatch.teams.away.position}]`}
-																</InlineText>
-															) : null}
-														</Text>
-													</Block>
-                          */}
 													</Block>
 												);
 											})}
@@ -885,11 +849,13 @@ function MatchDetails({
 			<Block className="tw-flex tw-flex-nowrap tw-items-center tw-justify-between tw-gap-4">
 				<Block className="tw-w-48 tw-max-w-[250px] tw-flex-grow">
 					<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
-						{teamsFromSameCountry ? (
+						{teamsFromSameCountry ||
+						v.isEmptyString(match.teams.home.country) ||
+						v.isEmptyString(match.teams.away.country) ? (
 							<InlineText className="tw-text-left tw-align-middle tw-text-xl">⚽</InlineText>
 						) : (
 							<React.Fragment>
-								<InlineText className="win:tw-hidden tw-relative tw-top-0.5 tw-inline-block tw-text-3xl">
+								<InlineText className="win:tw-hidden tw-inline-block tw-text-left tw-align-middle tw-text-xl">
 									{match.teams.home.country}
 								</InlineText>
 								<InlineText className="win:tw-inline-block tw-hidden tw-text-left tw-align-middle tw-text-xl">
@@ -919,7 +885,7 @@ function MatchDetails({
 							<InlineText className="tw-text-left tw-align-middle tw-text-xl">⚽</InlineText>
 						) : (
 							<React.Fragment>
-								<InlineText className="win:tw-hidden tw-relative tw-top-0.5 tw-inline-block tw-text-3xl">
+								<InlineText className="win:tw-hidden tw-inline-block tw-text-left tw-align-middle tw-text-xl">
 									{match.teams.away.country}
 								</InlineText>
 								<InlineText className="win:tw-inline-block tw-hidden tw-text-left tw-align-middle tw-text-xl">
@@ -987,21 +953,41 @@ function MatchDetails({
 				</Block>
 			) : (
 				<Block className="tw-mt-3 tw-flex tw-gap-2">
-					{match.predictions.map((marketAnalysis) => {
+					{match.predictions.map((marketPrediction) => {
 						return (
-							<InlineText
-								key={`${match.id}-${marketAnalysis.id}-label`}
+							<Text
+								key={`${match.id}-${marketPrediction.id}-label`}
 								className={cn(
-									"tw-inline-block tw-rounded-md tw-border-2 tw-bg-black tw-px-2 tw-py-1 tw-text-xs tw-font-bold",
-									marketAnalysis.trustLevel === "HIGH"
-										? "tw-border-yellow-600"
-										: marketAnalysis.trustLevel === "MEDIUM"
-											? "tw-border-orange-600"
+									"tw-relative tw-inline-block tw-rounded-md tw-border-2 tw-bg-black tw-px-2 tw-py-1 tw-text-xs tw-font-bold",
+									marketPrediction.trustLevel === "1|HIGH"
+										? "tw-border-green-600"
+										: marketPrediction.trustLevel === "2|MEDIUM"
+											? "tw-border-yellow-600"
 											: "tw-border-red-600",
 								)}
 							>
-								{marketAnalysis.id} {getMarketTrustLevelEmojy(marketAnalysis.trustLevel)}
-							</InlineText>
+								<InlineText className="tw-mr-1 tw-inline-block tw-align-middle">
+									{marketPrediction.id}{" "}
+								</InlineText>
+								<InlineText className="tw-inline-block tw-align-middle tw-text-xxs">
+									{getMarketTrustLevelEmojy(marketPrediction.trustLevel)}
+								</InlineText>
+
+								{"results" in marketPrediction ? (
+									<Block
+										className={cn(
+											"tw-absolute tw--right-2 tw--top-2 tw-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-black tw-wh-4",
+											marketPrediction.results.right || marketPrediction.results.skippedFail
+												? "tw-text-green-600"
+												: "tw-text-red-600",
+										)}
+									>
+										{marketPrediction.results.right || marketPrediction.results.skippedFail
+											? "✓"
+											: "✖"}
+									</Block>
+								) : null}
+							</Text>
 						);
 					})}
 				</Block>
@@ -1022,6 +1008,26 @@ function formatDate(date: Date, config?: "full") {
 	}
 
 	return baseDate;
+}
+
+function getRelativeDatesDifference(input: string) {
+	const currentDate = dayjs(dateWithoutTime(new Date()));
+	const inputDate = dayjs(input);
+	const daysDifference = currentDate.diff(inputDate, "day");
+
+	if (daysDifference === 0) {
+		return "de hoy";
+	}
+
+	if (daysDifference === -1) {
+		return "de ayer";
+	}
+
+	if (daysDifference === 1) {
+		return "de mañana";
+	}
+
+	return "";
 }
 
 function checkMatchStatus(match: T_FixtureMatch | T_PlayedMatch) {
@@ -1062,17 +1068,8 @@ function checkIsPlayedMatch(match: DR.Object): match is T_PlayedMatch {
 }
 
 function getMarketTrustLevelEmojy(trustLevel: T_MarketPrediction["trustLevel"]) {
-	return trustLevel === "HIGH" ? "🌟" : trustLevel === "MEDIUM" ? "🤔" : "👎";
+	return trustLevel === "1|HIGH" ? "🟩" : trustLevel === "2|MEDIUM" ? "🟨" : "🟥";
 }
-
-/*
-function checkIsPlayedMatchPrediction(
-	match: T_FixtureMatch,
-	_: unknown,
-): _ is T_PlayedMatchPrediction {
-	return match.played;
-}
-*/
 
 // --- TYPES ---
 
@@ -1083,6 +1080,36 @@ type T_PlayedMatchesFilters = DR.Object<T_FiltersValues>;
 type T_Data = DR.Object<T_DayOfMatches>;
 
 /*
+function toggleRenderType() {
+  setRenderType((currentValue) => {
+    return currentValue === "MARKET" ? "DATE" : "MARKET";
+  });
+}
+
+<Block className="tw-text-center">
+  <BoxWithTitle
+    title="Agrupar por:"
+    className="tw-flex tw-gap-2 tw-p-5"
+  >
+    <Button
+      variant={Button.variant.STYLED}
+      className={cn(renderType === "DATE" && "dr-bg-color-surface-300")}
+      onClick={toggleRenderType}
+      disabled
+    >
+      Fecha
+    </Button>
+    <Button
+      variant={Button.variant.STYLED}
+      className={cn(renderType === "MARKET" && "dr-bg-color-surface-300")}
+      onClick={toggleRenderType}
+    >
+      Mercado
+    </Button>
+  </BoxWithTitle>
+</Block>
+<Space size={4} />
+
 function RenderByMarket({ data }: T_BetsPageProps) {
 	// --- UTILS ---
 	function groupByMarket() {
