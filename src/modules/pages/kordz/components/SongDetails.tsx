@@ -104,7 +104,7 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 					</Block>
 				) : null}
 
-				{song.done ? (
+				{song.in_progress ? (
 					<ComponentWithAuth
 						className={cn(
 							song.country &&
@@ -112,9 +112,9 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 						)}
 					>
 						<Icon
-							icon={Icon.icon.CHECK_BADGE}
+							icon={Icon.icon.TOOL}
 							size={24}
-							color="tw-text-blue-500"
+							color="tw-text-yellow-600"
 						/>
 					</ComponentWithAuth>
 				) : null}

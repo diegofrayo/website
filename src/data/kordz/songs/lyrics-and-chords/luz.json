@@ -9,7 +9,7 @@
 		"category": "1|FAVORITE|⭐",
 		"created_at": "2022/05/23",
 		"is_public": true,
-		"done": true,
+		"in_progress": false,
 		"spotify_url": "https://open.spotify.com/track/3nLL7rb00qmExkNTyJJqSv",
 		"youtube_url": "https://youtu.be/EotTm9fms6o",
 		"assets": {},

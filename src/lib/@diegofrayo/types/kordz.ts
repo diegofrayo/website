@@ -8,18 +8,17 @@ type T_SongBase = {
 	readonly year: number;
 	readonly country: string;
 	readonly category:
-		| "0|IN_PROGRESS|🚧"
+		| "0|TO_REVIEW|🧐"
 		| "1|FAVORITE|⭐"
-		| "2|WELL_DONE|👌"
-		| "3|SOCIAL|🎶"
-		| "4|CHECKED|☑️"
-		| "5|REVIEW|🕵️"
-		| "6|ARCHIVED|🗃️";
+		| "2|WELL_DONE|👍"
+		| "3|SOCIAL|🎉"
+		| "4|TO_LEARN|🏗️"
+		| "5|ARCHIVED|🗃️";
 	readonly spotify_url: string;
 	readonly youtube_url: string;
 	readonly created_at: string;
 	readonly is_public: boolean;
-	readonly done: boolean;
+	readonly in_progress: boolean;
 	readonly sources: {
 		text: string;
 		url: string;

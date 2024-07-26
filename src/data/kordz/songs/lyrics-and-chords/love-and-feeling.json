@@ -6,10 +6,10 @@
 		"album": "Thinking in Textures",
 		"year": 2012,
 		"country": "🇦🇺",
-		"category": "5|REVIEW|🕵️",
+		"category": "4|TO_LEARN|🏗️",
 		"created_at": "2022/09/15",
 		"is_public": false,
-		"done": false,
+		"in_progress": false,
 		"spotify_url": "https://open.spotify.com/track/0Dg1RcUS88uvvnldv80kOx",
 		"youtube_url": "https://youtu.be/Wpks0qalBhU",
 		"assets": {},
@@ -17,6 +17,11 @@
 			{
 				"text": "Chet Faker - Love & Feeling (Live Sessions Acoustic Guitar Cover)",
 				"url": "https://youtu.be/b5xyEI6c650",
+				"source": "youtube"
+			},
+			{
+				"text": "Love And Feeling - Chet Faker - Guitar Lesson",
+				"url": "https://youtu.be/JWj5Q4poecI",
 				"source": "youtube"
 			}
 		],

@@ -18,12 +18,7 @@ export const getStaticPaths: GetStaticPaths = async function getStaticPaths() {
 	return {
 		paths: songs
 			.filter((song) => {
-				return (
-					song.is_public &&
-					(song.category === "0|IN_PROGRESS|🚧" ||
-						song.category === "1|FAVORITE|⭐" ||
-						song.category === "2|WELL_DONE|👌")
-				);
+				return song.is_public || song.category === "0|TO_REVIEW|🧐";
 			})
 			.map((song) => {
 				return { params: { song: song.id } };
