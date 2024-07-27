@@ -1,0 +1,42 @@
+{
+	"details": {
+		"id": "me-haces-bien",
+		"title": "Me haces bien",
+		"artist": "Jorge Drexler",
+		"album": "Sea",
+		"year": 2001,
+		"country": "🇦🇷",
+		"category": "2|WELL_DONE|👍",
+		"created_at": "2024/07/26",
+		"is_public": true,
+		"in_progress": true,
+		"spotify_url": "https://open.spotify.com/track/4UKe38tm5NkRpuFCxwewEe",
+		"youtube_url": "https://youtu.be/gCF66OIRPFk",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Me Haces Bien - Jorge Drexler - Cifra Club",
+				"url": "https://www.cifraclub.com/jorge-drexler/me-haces-bien/",
+				"source": "url"
+			},
+			{
+				"text": "Como tocar \"ME HACES BIEN \" TUTORIAL DE GUITARRA /Ritmo /Acordes y mas!",
+				"url": "https://youtu.be/Wwq-LI36aSE?t=169s",
+				"source": "youtube"
+			},
+			{
+				"text": "ME HACES BIEN, Jorge Drexler: Acordes",
+				"url": "https://acordes.lacuerda.net/jorge_drexler/me_haces_bien.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "ME HACES BIEN - TUTORIAL GUITARRA - JORGE DREXLER",
+				"url": "https://youtu.be/e9mT4-ABJBg?t=128s",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "         A\nPara contarte, canto\n            Amaj7  A7\nquiero que sepas  cuanto\n          D\nme haces bien\n          E7\nme haces bien\n          A   Asus4  A\nme haces bien\n\n\n           A\nTe quiero de mil modos\n           Amaj7  A7\nte quiero sobre  todo\n          D\nme haces bien\n          E7\nme haces bien\n          A   Asus4  A\nme haces bien\n\n\n       Bm7\nBasta ver\n       C#7                     F#m7\nel reflejo de tus ojos en los míos\n                   B7\ncomo se lleva el frío\n           Bm7  E7\npara entender\n\n\n            A\nQue el corazón no miente\n           Amaj7   A7\nque afortunada....mente\n          D\nme haces bien\n          E7\nme haces bien\n          A  Asus4  A\nme haces bien\n\n\n         A\nPara contarte, canto\n            Amaj7  A7\nquiero que sepas  cuanto\n          D\nme haces bien\n          E7\nme haces bien\n          A   Asus4  A\nme haces bien\n\n\n       Bm7\nBasta ver\n       C#7                     F#m7\nel reflejo de tus ojos en los míos\n                   B7\ncomo se lleva el frío\n\n          Bm7\nMe haces bien\n          E7\nme haces bien\n          A    B\nme haces bien\n\n          Bm7\nMe haces bien\n          E7\nme haces bien\n          A    B\nme haces bien\n\n          Bm7\nMe haces bien\n          E7\nme haces bien\n          A    B\nme haces bien\n\n\nA  Amaj7  A7  D  E7  A"
+}
