@@ -26,9 +26,10 @@ import { ROUTES } from "~/modules/routing";
 import { useDidMount } from "@diegofrayo/hooks";
 import { sortBy } from "@diegofrayo/sort";
 import type DR from "@diegofrayo/types";
+import { createArray } from "@diegofrayo/utils/arrays-and-objects";
 import { goToElement } from "@diegofrayo/utils/browser";
 import { dateWithoutTime } from "@diegofrayo/utils/dates";
-import { delay, safeAsync } from "@diegofrayo/utils/misc";
+import { delay } from "@diegofrayo/utils/misc";
 import { addLeftPadding, generateSlug, replaceAll } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 
@@ -41,6 +42,7 @@ import type {
 	T_PlayedMatch,
 } from "./types";
 import styles from "./styles.module.css";
+import { logger } from "~/modules/logging";
 
 // import DATA from "../../../../../../public/data/apps/bets/2024-07-21.json"; // NOTE: FOR DX PURPOSES
 
@@ -66,41 +68,42 @@ function BetsPage() {
 	}
 
 	// --- HANDLERS ---
-	async function fetchData(date: string) {
+	async function fetchData(selectedDate_: string) {
 		try {
 			// return; // NOTE: FOR DX PURPOSES
 
 			setIsLoading(true);
-
-			const dateBase = dayjs(date);
-			const dates = [
-				dateBase,
-				dateBase.add(1, "day"),
-				dateBase.subtract(1, "day"),
-				dateBase.subtract(2, "day"),
-				dateBase.subtract(3, "day"),
-				dateBase.subtract(4, "day"),
-				dateBase.subtract(5, "day"),
-				dateBase.subtract(6, "day"),
-			].map((item) => formatDate(item.toDate()));
-
 			await delay(1000);
+
+			const dates = generateDates(selectedDate_);
 			const newData = (
 				await Promise.all(
-					dates.map((item) => {
-						return safeAsync(() =>
-							http.get<T_DayOfMatches>(`/data/apps/bets/${item}.json?v=${BUILD_INFO.timestamp}`),
-						);
+					dates.map(async (date) => {
+						/*
+						// TODO: Solve typing error using safeAsync
+						const [response] = await safeAsync(() => {
+							return http.get<T_DayOfMatches>(
+								`/data/apps/bets/${date}.json?v=${BUILD_INFO.timestamp}`,
+							);
+						});
+            */
+
+						let response;
+						try {
+							response = await http.get<T_DayOfMatches>(
+								`/data/apps/bets/${date}.json?v=${BUILD_INFO.timestamp}`,
+							);
+						} catch (e) {
+							logger("LOG", e);
+						}
+
+						return { date, data: response ? response.data.sort(sortBy("priority")) : [] };
 					}),
 				)
-			).reduce((result, [response], index) => {
+			).reduce((result, item) => {
 				return {
 					...result,
-					[dates[index]]: response
-						? // TODO: Check it out this TS error
-							// @ts-ignore
-							(response.data as T_DayOfMatches).sort(sortBy("priority"))
-						: [],
+					[item.date]: item.data,
 				};
 			}, {});
 
@@ -176,7 +179,10 @@ function BetsPage() {
 						</Block>
 					) : data ? (
 						renderType === "MARKET" ? null : (
-							<RenderByDate data={data} />
+							<RenderByDate
+								data={data}
+								selectedDate={selectedDate}
+							/>
 						)
 					) : (
 						<Block className="tw-text-red-500">Error!</Block>
@@ -202,7 +208,10 @@ function Layout({ children }: { children: DR.React.Children }) {
 	);
 }
 
-function RenderByDate({ data }: { data: T_Data }) {
+function RenderByDate({ data, selectedDate }: { data: T_Data; selectedDate: string }) {
+	// --- VARS ---
+	const selectedDateIsToday = formatDate(new Date()) === selectedDate;
+
 	return (
 		<Block>
 			{Object.entries(data).map(([fixtureDate, fixtureLeagues]) => {
@@ -212,9 +221,9 @@ function RenderByDate({ data }: { data: T_Data }) {
 						title={
 							<Block>
 								<Text className="tw-text-lg tw-font-bold tw-text-white">
-									Partidos {getRelativeDatesDifference(fixtureDate)}
+									Partidos {selectedDateIsToday ? getRelativeDatesDifference(fixtureDate) : ""}
 								</Text>
-								<Text className="tw-text-stone-300">{localizeDate(fixtureDate)}</Text>
+								<Text>{localizeDate(fixtureDate)}</Text>
 							</Block>
 						}
 						className="tw-mb-8 last:tw-mb-0"
@@ -497,7 +506,7 @@ function FixtureMatch({
 											{marketPrediction.name}{" "}
 										</InlineText>
 										<InlineText className="tw-inline-block tw-align-middle tw-text-xxs">
-											{getMarketTrustLevelEmojy(marketPrediction.trustLevel)}
+											{getMarketTrustLevelEmojy(marketPrediction.trustLevelLabel)}
 										</InlineText>
 									</Text>
 								}
@@ -527,14 +536,12 @@ function FixtureMatch({
 															key={`${baseKey}-${subCriteriaIndex}-${itemIndex}`}
 															title={
 																<Text>
-																	<InlineText className="tw-mr-1 tw-inline-block tw-align-middle">
-																		- {item.description}{" "}
+																	<InlineText className="tw-mr-1 tw-inline tw-align-middle">
+																		- {item.description}
 																	</InlineText>
-																	{subCriteria.fulfilled ? null : (
-																		<InlineText className="tw-inline-block tw-align-middle tw-text-xxs">
-																			{item.fulfilled ? "✅" : "❌"}
-																		</InlineText>
-																	)}
+																	<InlineText className="tw-inline-block tw-align-middle tw-text-xxs">
+																		{item.fulfilled ? "✅" : "❌"}
+																	</InlineText>
 																</Text>
 															}
 															showIcon={false}
@@ -940,9 +947,9 @@ function MatchDetails({
 								key={`${match.id}-${marketPrediction.id}-label`}
 								className={cn(
 									"tw-relative tw-inline-block tw-rounded-md tw-border-2 tw-bg-black tw-px-2 tw-py-1 tw-text-xs tw-font-bold",
-									marketPrediction.trustLevel === "1|HIGH"
+									marketPrediction.trustLevelLabel === "HIGH"
 										? "tw-border-green-600"
-										: marketPrediction.trustLevel === "2|MEDIUM"
+										: marketPrediction.trustLevelLabel === "MEDIUM"
 											? "tw-border-yellow-600"
 											: "tw-border-red-600",
 								)}
@@ -951,7 +958,7 @@ function MatchDetails({
 									{marketPrediction.id}{" "}
 								</InlineText>
 								<InlineText className="tw-inline-block tw-align-middle tw-text-xxs">
-									{getMarketTrustLevelEmojy(marketPrediction.trustLevel)}
+									{getMarketTrustLevelEmojy(marketPrediction.trustLevelLabel)}
 								</InlineText>
 
 								{"results" in marketPrediction ? (
@@ -1093,8 +1100,40 @@ function checkIsPlayedMatch(match: DR.Object): match is T_PlayedMatch {
 	return "league" in match;
 }
 
-function getMarketTrustLevelEmojy(trustLevel: T_MarketPrediction["trustLevel"]) {
-	return trustLevel === "1|HIGH" ? "🟩" : trustLevel === "2|MEDIUM" ? "🟨" : "🟥";
+function getMarketTrustLevelEmojy(trustLevel: T_MarketPrediction["trustLevelLabel"]) {
+	return trustLevel === "HIGH" ? "🟩" : trustLevel === "MEDIUM" ? "🟨" : "🟥";
+}
+
+function generateDates(selectedDate: string) {
+	const selectedDateIsToday = formatDate(new Date()) === selectedDate;
+	const dateBase = dayjs(selectedDate);
+	const dayOfWeek = dateBase.day();
+	const isSunday = dayOfWeek === 0;
+	const isMonday = dayOfWeek === 1;
+	let output;
+
+	if (isSunday) {
+		output = [dateBase, ...createArray(6).map((day) => dayjs(dateBase.subtract(day, "days")))];
+	} else if (isMonday) {
+		output = [dateBase, ...createArray(6).map((day) => dayjs(dateBase.add(day, "days")))];
+	} else {
+		output = [
+			dateBase,
+			...(selectedDateIsToday
+				? [
+						dateBase.subtract(1, "days"),
+						dateBase.add(1, "days"),
+						...createArray(6 - dayOfWeek).map((day) => dayjs(dateBase.add(day + 1, "days"))),
+						...createArray(dayOfWeek - 1).map((day) => dayjs(dateBase.subtract(day, "days"))),
+					]
+				: [
+						...createArray(dayOfWeek - 1).map((day) => dayjs(dateBase.subtract(day, "days"))),
+						...createArray(7 - dayOfWeek).map((day) => dayjs(dateBase.add(day, "days"))),
+					].sort((a, b) => a.unix() - b.unix())),
+		];
+	}
+
+	return output.map((item) => formatDate(item.toDate()));
 }
 
 // --- TYPES ---

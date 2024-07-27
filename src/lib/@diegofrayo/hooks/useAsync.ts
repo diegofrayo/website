@@ -80,7 +80,7 @@ function useAsync<G_AsyncFnArgs extends unknown[], G_AsyncFnReturn>(
 	useDidMount(() => {
 		if (opts.autoLaunch === true) {
 			// @ts-ignore
-			// TODO
+			// TODO: Solve typing error using safeAsync
 			safeAsync(() => enhancedAsyncFn());
 		}
 	});
