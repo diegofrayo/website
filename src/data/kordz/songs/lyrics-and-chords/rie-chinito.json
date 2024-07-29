@@ -6,16 +6,16 @@
 		"album": "Perotá Chingó",
 		"year": 2014,
 		"country": "🇦🇷",
-		"category": "0|TO_REVIEW|🧐",
+		"category": "1|FAVORITE|⭐",
 		"created_at": "2021/07/04",
-		"is_public": false,
-		"in_progress": true,
+		"is_public": true,
+		"in_progress": false,
 		"spotify_url": "https://open.spotify.com/track/4UZdPR7auDwEnpPc5vHU7n",
 		"youtube_url": "https://youtu.be/_aIuna5a8Dc",
 		"assets": {},
 		"sources": [
 			{
-				"text": "Ríe Chinito",
+				"text": "RIE CHINITO, Dolo y Maju: Acordes",
 				"url": "https://acordes.lacuerda.net/dolo_y_maju/rie_chinito-2.shtml",
 				"source": "lacuerda"
 			},
@@ -25,18 +25,13 @@
 				"source": "youtube"
 			},
 			{
-				"text": "martynmccontre",
-				"url": "https://instagram.com/p/Bky5LNTAgfK",
-				"source": "instagram"
-			},
-			{
-				"text": "cgprensaycomunicacion",
-				"url": "https://instagram.com/p/BkLvNSPHNhM",
+				"text": "Martyn McContre | Muchas gracias @perota_chingo por el tutorial de #RieChinito Aca se hace la tarea. #PerotaChingo #Musica #Guitarra #Piano #Burmeister…",
+				"url": "https://www.instagram.com/p/Bky5LNTAgfK",
 				"source": "instagram"
 			}
 		],
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "A     (2,3 2,2 2,5 | 2,4 | 2,1 | 2,2)\nAsus2 (2,3 2,2 2,5 | 2,3)\nA     (2,3 2,2 2,5)\n\n\n A               A\nRíe chinito, se ríe y yo lloro\n     Bm\nporque el chino se ríe sin mi\n\n A                A\nRíe la noche y achina los ojos\n   Bm\nmorochos mas lindos que vi\n\n\n D                  D\nSopla las cañas, sube la montaña\n   A\nmañana quizás bajará\n    Bm              Bm\nse hace de día, el sol lo encandila\n     D                       D\nlos vientos descansan y el chino se amansa y se\n\n\n A               A\nRíe chinito, se ríe y yo lloro\n     Bm\nporque el chino se ríe sin mi\n\n A                A\nRíe la noche y achina los ojos\n   Bm\nmorochos mas lindos que vi\n\n D                  D\nSopla las cañas, sube la montaña\n   A\nmañana quizás bajará\n Bm                Bm\nmira la luna y mi niña se acuna\n        D                    D\nque es larga la noche y es claro el camino\n\n\n    A              Bm\nMi despedacito de río\n     D\n¿hasta donde bajará?\n    A\nmi despedacito de río\n\n\nA     (2,3 2,2 2,5 | 2,4 | 2,1 | 2,2)\nAsus2 (2,3 2,2 2,5 | 2,3)\nA     (2,3 2,2 2,5)\n\n\n A               A\nRíe chinito, se ríe y yo lloro\n     Bm\nporque el chino se ríe sin mi\n\n A                A\nRíe la noche y achina los ojos\n   Bm\nmorochos mas lindos que vi\n\n\n D                  D\nSopla las cañas, sube la montaña\n   A\nmañana quizás bajará\n Bm                Bm\nmira la luna y mi niña se acuna\n        D                    D\nque es larga la noche y es claro el camino\n\n\n    A              Bm\nMi despedacito de río\n     D\n¿hasta donde bajará?\n    A\nmi despedacito de río\n\n\n    A              Bm\nMi despedacito de río\n     D\n¿hasta donde bajará?\n    A\nmi despedacito de río\n\n\nA     (2,3 2,2 2,5 | 2,4 | 2,1 | 2,2)\nA ↓"
+	"txt": "A     (2,3 2,2 2,5 | 2,4 | 2,1 | 2,2)\nAsus2 (2,3 2,2 2,5 | 2,3)\nA     (2,3 2,2 2,5)\n\n\n A               A\nRíe chinito, se ríe y yo lloro\n     Bm\nporque el chino se ríe sin mi\n\n A                A\nRíe la noche y achina los ojos\n   Bm\nmorochos mas lindos que vi\n\n D                  D\nSopla las cañas, sube la montaña\n   A\nmañana quizás bajará\n    Bm              Bm\nse hace de día, el sol lo encandila\n     D                       D\nlos vientos descansan y el chino se amansa y se\n\n\n A               A\nRíe chinito, se ríe y yo lloro\n     Bm\nporque el chino se ríe sin mi\n\n A                A\nRíe la noche y achina los ojos\n   Bm\nmorochos mas lindos que vi\n\n D                  D\nSopla las cañas, sube la montaña\n   A\nmañana quizás bajará\n Bm                Bm\nmira la luna y mi niña se acuna\n        D                    D\nque es larga la noche y es claro el camino\n\n\n    A              Bm\nMi despedacito de río\n        D\n¿hasta donde bajará?\n    A\nmi despedacito de río\n\n\nA     (2,3 2,2 2,5 | 2,4 | 2,1 | 2,2)\nAsus2 (2,3 2,2 2,5 | 2,3)\nA     (2,3 2,2 2,5)\n\n\n A               A\nRíe chinito, se ríe y yo lloro\n     Bm\nporque el chino se ríe sin mi\n\n A                A\nRíe la noche y achina los ojos\n   Bm\nmorochos mas lindos que vi\n\n D                  D\nSopla las cañas, sube la montaña\n   A\nmañana quizás bajará\n Bm                Bm\nmira la luna y mi niña se acuna\n        D                    D\nque es larga la noche y es claro el camino\n\n\n    A              Bm   |\nMi despedacito de río   |\n        D               |\n¿hasta donde bajará?    |\n    A                   |\nmi despedacito de río   | (x2)\n\n\nA     (2,3 2,2 2,5 | 2,4 | 2,1 | 2,2)\nA\n↓"
 }

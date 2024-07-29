@@ -22,6 +22,7 @@ import BUILD_INFO from "~/data/build-info.json";
 import cn from "~/lib/cn";
 import http from "~/lib/http";
 import { ComponentWithAuth } from "~/modules/auth";
+import { logger } from "~/modules/logging";
 import { ROUTES } from "~/modules/routing";
 import { useDidMount } from "@diegofrayo/hooks";
 import { sortBy } from "@diegofrayo/sort";
@@ -42,9 +43,8 @@ import type {
 	T_PlayedMatch,
 } from "./types";
 import styles from "./styles.module.css";
-import { logger } from "~/modules/logging";
 
-// import DATA from "../../../../../../public/data/apps/bets/2024-07-21.json"; // NOTE: FOR DX PURPOSES
+// import DATA from "../../../../../../public/data/apps/bets/2024-07-29.json"; // NOTE: FOR DX PURPOSES
 
 function BetsPage() {
 	// --- STATES & REFS ---
@@ -128,17 +128,18 @@ function BetsPage() {
 					is="header"
 					className="tw-border-b tw-border-stone-800"
 				>
-					<Title
-						is="h1"
-						className="tw-relative tw-mx-auto tw-max-w-[1280px] tw-p-4 tw-text-2xl tw-text-white dr-font-main-title"
-					>
-						<Icon
-							icon={Icon.icon.TROPHY_SOLID}
-							wrapperClassName="tw-align-middle tw-mr-2"
-							size={26}
-						/>
-						<InlineText className="tw-align-middle">BETS</InlineText>
-
+					<Block className="tw-relative tw-mx-auto tw-max-w-[1280px] tw-p-4">
+						<Title
+							is="h1"
+							className="tw-text-2xl tw-text-white dr-font-main-title"
+						>
+							<Icon
+								icon={Icon.icon.TROPHY_SOLID}
+								wrapperClassName="tw-align-middle tw-mr-2"
+								size={26}
+							/>
+							<InlineText className="tw-align-middle">BETS</InlineText>
+						</Title>
 						<Link
 							href={ROUTES.HOME}
 							className="tw-absolute tw-right-1 tw-top-1"
@@ -149,18 +150,20 @@ function BetsPage() {
 								iconClassName="tw-text-stone-300"
 							/>
 						</Link>
-					</Title>
+					</Block>
 				</Block>
 
-				<Space size={4} />
-				<Block className="tw-mx-auto tw-max-w-[1280px] tw-px-1 md:tw-px-4">
+				<Block className="tw-mx-auto tw-max-w-[1280px] tw-px-1 tw-py-8 md:tw-px-4">
 					<Block className="tw-text-white">
 						<Text className="tw-text-sm tw-font-bold">Seleccionar fecha:</Text>
 						<Space size={1} />
 						<Input
 							type="date"
 							id="input-dates-selector"
-							className="tw-h-16 tw-max-w-[200px] tw-rounded-md tw-border tw-border-stone-800 tw-bg-black tw-px-4 tw-text-center"
+							className={cn(
+								styles["input-date"],
+								"tw-flex tw-h-[60px] tw-w-[200px] tw-items-center tw-justify-center tw-rounded-md tw-border tw-border-stone-800 tw-bg-black tw-px-4 tw-py-0 tw-text-center",
+							)}
 							value={selectedDate}
 							onChange={handleInputDateChange}
 						/>
@@ -708,7 +711,7 @@ function FixtureMatch({
 										</Block>
 										<Space size={1} />
 
-										<Block className="tw-rounded-md tw-bg-stone-900 tw-px-1 tw-pb-1 tw-pt-4 md:tw-px-6 md:tw-pb-6 md:tw-pt-8">
+										<Block className="tw-rounded-md tw-bg-stone-900 tw-px-4 tw-pb-4 tw-pt-6 md:tw-px-6 md:tw-pb-6 md:tw-pt-8">
 											{filteredMatches.map((playedMatch, index) => {
 												const currentTeam =
 													playedMatch.teams.home.name === team.name
@@ -746,7 +749,7 @@ function FixtureMatch({
 																	? "Victoria"
 																	: currentTeam.winner === false
 																		? "Derrota"
-																		: "Empate"}{" "}
+																		: "Empate"}
 															</InlineText>
 														</Block>
 
@@ -878,7 +881,7 @@ function MatchDetails({
 			{...rest}
 		>
 			<Block className="tw-flex tw-flex-nowrap tw-items-center tw-justify-between tw-gap-4">
-				<Block className="tw-w-48 tw-max-w-[250px] tw-flex-grow">
+				<Block className="tw-min-w-0 tw-max-w-[250px] tw-flex-grow">
 					<MatchTeamDetails
 						match={match}
 						teamSide="home"
@@ -934,7 +937,7 @@ function MatchDetails({
 			</Block>
 
 			{isPlayedMatchVariant ? (
-				<Block className="tw-absolute tw--bottom-5 tw-w-full tw-text-center">
+				<Block className="tw-absolute tw--bottom-5 tw-left-0 tw-w-full tw-text-center">
 					<InlineText className="tw-rounded-b-md tw-bg-stone-800 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-white tw-underline">
 						{match.league.name}
 					</InlineText>

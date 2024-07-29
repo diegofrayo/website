@@ -6,10 +6,10 @@
 		"album": "Lebon & Co",
 		"year": 2019,
 		"country": "🇦🇷",
-		"category": "2|WELL_DONE|👍",
+		"category": "5|ARCHIVED|🗃️",
 		"created_at": "2021/07/04",
-		"is_public": true,
-		"in_progress": true,
+		"is_public": false,
+		"in_progress": false,
 		"spotify_url": "https://open.spotify.com/track/4VcZ2jEE3t9ij9XJV9n7in",
 		"youtube_url": "https://youtu.be/O9RbVM2N3s4",
 		"assets": {},
@@ -28,5 +28,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "Am               Am/G                   F      Em7 Dm7\n   Quiero despertar en un mundo agradable\n           G\nquiero darme libertad\nAm               Am/G                     F    Em7 Dm7\n   ya no quiero dar lo que no tiene sentido\n       G                  Am\nsolo quiero aquí estar\n\n\n              Cadd9\nTodas las personas pueden mejorar\nG            Am\ntodos los caminos pueden ayudar\n      F           G\nsi estás ahí, si lo deseas\n\n            Cadd9\nEste es mi sueño y el de muchos mas\nG           Am\nesta es mi casa donde quiero estar\n    F              G\ncalmar mi sed, viajar en paz\n\n\nAm              Am/G                    F      Em7 Dm7\n   Necesito darme un espacio en el tiempo\n          G\nser muy claro al hablar\nAm             Am/G                        F   Em7 Dm7\n   sin informaciones que castiguen mi centro\n       G              Am\nsolo quiero alcanzar\n\n\n           Cadd9\nTodas las ideas pueden mejorar\n G            Am\ntodos los proyectos pueden ayudar\n      F           G\nsi estás ahí, si lo deseas\n\n            Cadd9\nEste es mi sueño y el de muchos mas\nG           Am\nesta es mi casa donde quiero estar\n    F              G\ncalmar mi sed, viajar en paz\n\n\nAm  Am/G  F  Em7  Dm7  G  Am   | (x2)\n\n\n              Cadd9\nTodas las personas pueden mejorar\nG            Am\ntodos los caminos pueden ayudar\n      F           G\nsi estás ahí, si lo deseas\n\n            Cadd9\nEste es mi sueño y el de muchos mas\nG           Am\nesta es mi casa donde quiero estar\n    F              G\ncalmar mi sed, viajar en paz\n\n\nAm  G  F  Em7  Dm7  G  Cadd9"
+	"txt": "Am               Am/G                   F      Em7 Dm7\n   Quiero despertar en un mundo agradable\n           G\nquiero darme libertad\nAm               Am/G                     F    Em7 Dm7\n   ya no quiero dar lo que no tiene sentido\n       G                  Am\nsolo quiero aquí estar\n\n\n              Cadd9\nTodas las personas pueden mejorar\n G           Am\ntodos los caminos pueden ayudar\n      F           G\nsi estás ahí, si lo deseas\n\n            Cadd9\nEste es mi sueño y el de muchos mas\nG           Am\nesta es mi casa donde quiero estar\n    F              G\ncalmar mi sed, viajar en paz\n\n\nAm              Am/G                    F      Em7 Dm7\n   Necesito darme un espacio en el tiempo\n          G\nser muy claro al hablar\nAm             Am/G                        F   Em7 Dm7\n   sin informaciones que castiguen mi centro\n       G              Am\nsolo quiero alcanzar\n\n\n           Cadd9\nTodas las ideas pueden mejorar\n G            Am\ntodos los proyectos pueden ayudar\n      F           G\nsi estás ahí, si lo deseas\n\n            Cadd9\nEste es mi sueño y el de muchos mas\nG           Am\nesta es mi casa donde quiero estar\n    F              G\ncalmar mi sed, viajar en paz\n\n\nAm  Am/G  F  Em7  Dm7  G  Am   | (x2)\n\n\n              Cadd9\nTodas las personas pueden mejorar\n G           Am\ntodos los caminos pueden ayudar\n      F           G\nsi estás ahí, si lo deseas\n\n            Cadd9\nEste es mi sueño y el de muchos mas\nG           Am\nesta es mi casa donde quiero estar\n    F              G\ncalmar mi sed, viajar en paz\n\n\nAm  G  F  Em7  Dm7  G  Cadd9"
 }
