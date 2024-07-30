@@ -6,10 +6,10 @@
 		"album": "Chactuchac",
 		"year": 1992,
 		"country": "🇦🇷",
-		"category": "0|TO_REVIEW|🧐",
+		"category": "2|WELL_DONE|👍",
 		"created_at": "2024/01/01",
-		"is_public": false,
-		"in_progress": true,
+		"is_public": true,
+		"in_progress": false,
 		"spotify_url": "https://open.spotify.com/track/6Soxxi73U6SO4rOGJwYYxI",
 		"youtube_url": "https://youtu.be/eVLxHS4oZ_0",
 		"assets": {},
@@ -38,5 +38,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "  G\nQuizá no sea el vino\n    F\nquizá no sea el postre\n    C\nquizá no sea\n        G\nno sea nada\n\n      G\nPero hay tanta belleza\n   F\ntirada en la mesa\n    C              G\ndesnuda toda rebalsada\n\nG\nApuras el vaso\n F\nvas perdiendo el paso\n  C                     G\ny en la mesa ya no hay nada\n\n    G\nBorracha está la puerta\n    F\ncerraste y quedó abierta\n   C                    G\ny puedo escuchar tu llamada\n\n\nG   F        C        |\nOh! Oh! Tan solo...   | (x2)\n\n\n    G\nServida ya tu boca\n     F\ntan dulce está tu boca\n     C                    G\ntan dulce como un blues amargo\n\n    G\nUn vaso rueda al piso\n F\nlento cae al piso\n C                      G\nlento y muere en mil pedazos\n\n\n             G\nNo quiero dejar que se vean\n    F\ntus ojos se vean\n C               G\ntan, tan, tan, tristes\n\n       G\nHabrá sido es destino\n     F              C\nese vaso de vino...\n       G\nque dijiste...\n\n\nG   F        C        |\nOh! Oh! Tan solo...   | (x2)\n\n\n G         F           C     |\nSalta la cuerda, se enreda   |\n            G                |\nY cae de boca                | (x4)\n\n\nG   F        C        |\nOh! Oh! Tan solo...   | (x2)"
+	"txt": "  G\nQuizá no sea el vino\n    F\nquizá no sea el postre\n    C\nquizá no sea\n        G\nno sea nada\n\n      G\nPero hay tanta belleza\n   F\ntirada en la mesa\n    C              G\ndesnuda toda rebalsada\n\nG\nApuras el vaso\n F\nvas perdiendo el paso\n  C                     G\ny en la mesa ya no hay nada\n\n    G\nBorracha está la puerta\n    F\ncerraste y quedó abierta\n   C                    G\ny puedo escuchar tu llamada\n\n\nG   F        C        |\nOh! Oh! Tan solo...   | (x2)\n\n\n    G\nServida ya tu boca\n     F\ntan dulce está tu boca\n     C                    G\ntan dulce como un blues amargo\n\n    G\nUn vaso rueda al piso\n F\nlento cae al piso\n C                      G\nlento y muere en mil pedazos\n\n\n             G\nNo quiero dejar que se vean\n    F\ntus ojos se vean\n C               G\ntan, tan, tan, tristes\n\n       G\nHabrá sido es destino\n     F              C\nese vaso de vino...\n       G\nque dijiste...\n\n\nG   F        C        |\nOh! Oh! Tan solo...   | (x2)\n\n\n G         F           C     |\nSalta la cuerda, se enreda   |\n          G                  |\ny cae de boca                | (x4)\n\n\nG   F        C        |\nOh! Oh! Tan solo...   | (x2)"
 }

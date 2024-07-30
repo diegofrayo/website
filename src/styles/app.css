@@ -20,7 +20,7 @@
 body {
 	@apply dr-font-texts;
 	@apply dr-text-color-surface-600;
-	background-image: url("/assets/images/textures/thunder.jpg");
+	@apply tw-bg-black;
 	cursor: default;
 	font-size: 18px;
 	overflow: auto;

@@ -162,8 +162,9 @@ function BetsPage() {
 							id="input-dates-selector"
 							className={cn(
 								styles["input-date"],
-								"tw-flex tw-h-[60px] tw-w-[200px] tw-items-center tw-justify-center tw-rounded-md tw-border tw-border-stone-800 tw-bg-black tw-px-4 tw-py-0 tw-text-center",
+								"tw-flex tw-h-[60px] tw-items-center tw-justify-center tw-rounded-md tw-border tw-border-stone-800 tw-bg-black tw-px-4 tw-py-0 tw-text-center",
 							)}
+							containerProps={{ className: "tw-w-[300px] tw-block tw-max-w-full" }}
 							value={selectedDate}
 							onChange={handleInputDateChange}
 						/>
