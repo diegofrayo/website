@@ -101,6 +101,15 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 				) : null}
 
 				<Block className="tw-inline-flex tw-gap-2">
+					{song.is_public ? null : (
+						<ComponentWithAuth>
+							<Icon
+								icon={Icon.icon.EYE_SLASH}
+								size={24}
+								color="tw-text-gray-600"
+							/>
+						</ComponentWithAuth>
+					)}
 					{song.in_progress ? (
 						<ComponentWithAuth>
 							<Icon

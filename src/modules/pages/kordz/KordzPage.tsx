@@ -144,14 +144,7 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 												className="tw-block sm:tw-truncate"
 												title={song.title}
 											>
-												{song.is_public ? null : (
-													<Icon
-														icon={Icon.icon.EYE_SLASH}
-														color="dr-text-color-surface-600"
-														wrapperClassName="tw-mr-1"
-													/>
-												)}
-												<InlineText>{song.title}</InlineText>
+												{song.title}
 											</Link>
 											<SongDetails song={song} />
 										</Block>
