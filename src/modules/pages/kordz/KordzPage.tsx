@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { Page, MainLayout } from "~/components/layout";
-import { Link, Space, Input, Text, InlineText, Block, Icon } from "~/components/primitive";
+import { Link, Space, Input, Text, InlineText, Block } from "~/components/primitive";
 import { ClientRenderComponent } from "~/hocs";
 import { AuthService } from "~/modules/auth";
 import { ROUTES } from "~/modules/routing";

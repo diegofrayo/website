@@ -1,3 +1,4 @@
+set -e
 npm run build:build-info
 npm run build:ts
 npm run seo
