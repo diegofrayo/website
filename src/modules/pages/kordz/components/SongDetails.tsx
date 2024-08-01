@@ -1,7 +1,7 @@
 import * as React from "react";
 import cn from "classnames";
 
-import { Block, Icon, InlineText, Link, Space } from "~/components/primitive";
+import { Block, Icon, InlineText, Link } from "~/components/primitive";
 import { ComponentWithAuth, withAuth } from "~/modules/auth";
 import type { T_Song } from "@diegofrayo/types/kordz";
 import { replaceAll } from "@diegofrayo/utils/strings";
@@ -74,9 +74,8 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 						</InlineText>
 					</Block>
 				) : null}
-
 				{v.isNotEmptyString(song.spotify_url) && v.isNotEmptyString(song.youtube_url) ? (
-					<Block className="tw-ml-2 tw-inline-block tw-border-l tw-pl-2 dr-border-color-surface-300">
+					<Block className="tw-mx-2 tw-inline-flex tw-gap-2 tw-border-x tw-px-2 dr-border-color-surface-300">
 						<Link
 							variant={Link.variant.SIMPLE}
 							href={song.spotify_url}
@@ -87,10 +86,7 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 								size={24}
 							/>
 						</Link>
-						<Space
-							size={1}
-							orientation="v"
-						/>
+
 						<Link
 							variant={Link.variant.SIMPLE}
 							href={song.youtube_url}
@@ -104,20 +100,34 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 					</Block>
 				) : null}
 
-				{song.in_progress ? (
-					<ComponentWithAuth
-						className={cn(
-							song.country &&
-								"tw-ml-2 tw-inline-block tw-border-l tw-pl-2 dr-border-color-surface-300",
-						)}
-					>
-						<Icon
-							icon={Icon.icon.TOOL}
-							size={24}
-							color="tw-text-yellow-600"
-						/>
-					</ComponentWithAuth>
-				) : null}
+				<Block className="tw-inline-flex tw-gap-2">
+					{song.in_progress ? (
+						<ComponentWithAuth>
+							<Icon
+								icon={Icon.icon.TOOL}
+								size={24}
+								color="tw-text-yellow-600"
+							/>
+						</ComponentWithAuth>
+					) : null}
+					{song.to_finish ? (
+						<ComponentWithAuth>
+							<Icon
+								icon={Icon.icon.BATTERY_50}
+								size={24}
+								color="tw-text-orange-600"
+							/>
+						</ComponentWithAuth>
+					) : (
+						<ComponentWithAuth>
+							<Icon
+								icon={Icon.icon.CHECK_BADGE}
+								size={24}
+								color="tw-text-blue-600"
+							/>
+						</ComponentWithAuth>
+					)}
+				</Block>
 			</Block>
 		</Block>
 	);

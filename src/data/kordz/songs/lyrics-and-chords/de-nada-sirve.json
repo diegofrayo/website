@@ -10,6 +10,7 @@
 		"created_at": "2023/05/14",
 		"is_public": true,
 		"in_progress": false,
+		"to_finish": false,
 		"spotify_url": "https://open.spotify.com/track/2CFDPiNUxcSOqfQtUHYNxF",
 		"youtube_url": "https://youtu.be/I_818q1nMp8",
 		"assets": {},

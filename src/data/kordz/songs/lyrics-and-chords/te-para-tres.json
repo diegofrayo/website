@@ -6,16 +6,17 @@
 		"album": "Canción animal",
 		"year": 1990,
 		"country": "🇦🇷",
-		"category": "0|TO_REVIEW|🧐",
+		"category": "1|FAVORITE|⭐",
 		"created_at": "2021/04/23",
-		"is_public": false,
-		"in_progress": true,
+		"is_public": true,
+		"in_progress": false,
+		"to_finish": false,
 		"spotify_url": "https://open.spotify.com/track/2kMVxFh1y5gow2hBtqGO4m",
 		"youtube_url": "https://youtu.be/91XRV1mKUe4",
 		"assets": {},
 		"sources": [
 			{
-				"text": "Té para 3",
+				"text": "TE PARA 3, Soda Stereo: Acordes",
 				"url": "https://acordes.lacuerda.net/soda_stereo/te_para_3-2.shtml",
 				"source": "lacuerda"
 			},
@@ -28,5 +29,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "     D/F#              Em9\nLas tazas sobre el mantel\n     D/F#       Em9\nla lluvia derramada\n    G\nun poco de miel\n    A7              Em9\nun poco de miel no basta\n\n\n   D/F#               Em9\nEl eclipse no fue parcial\n     D/F#          Em9\ny cegó nuestras miradas\n    G\nte vi que llorabas\n    A7                 Em9\nte vi que llorabas por él\n          D/F#\nté para tres\n\n\nEm9  D/F#  Em9  G  A7  Em9\n\n\n    D/F#             Em9\nUn sorbo de distracción\n    D/F#        Em9\nbuscando descifrarnos\n        G\nno hay nada mejor\n        A7             Em9\nno hay nada mejor que casa\n          D/F#\nté para tres\n\n\nEm9  D/F#  Em9  G  A7  A"
+	"txt": "     D/F#              Em9\nLas tazas sobre el mantel\n     D/F#       Em9\nla lluvia derramada\n    G\nun poco de miel\n    A7              Em9\nun poco de miel no basta\n\n   D/F#               Em9\nEl eclipse no fue parcial\n     D/F#          Em9\ny cegó nuestras miradas\n    G\nte vi que llorabas\n    A7                 Em9\nte vi que llorabas por él\n          D/F#\nté para tres\n\n\nEm9  D/F#  Em9  G  A7  Em9\n\n\n    D/F#             Em9\nUn sorbo de distracción\n    D/F#        Em9\nbuscando descifrarnos\n        G\nno hay nada mejor\n        A7             Em9\nno hay nada mejor que casa\n          D/F#\nté para tres\n\n\nEm9  D/F#  Em9  G  A7  A"
 }

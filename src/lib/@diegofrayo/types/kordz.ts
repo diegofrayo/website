@@ -19,6 +19,7 @@ type T_SongBase = {
 	readonly created_at: string;
 	readonly is_public: boolean;
 	readonly in_progress: boolean;
+	readonly to_finish: boolean;
 	readonly sources: {
 		text: string;
 		url: string;

@@ -10,6 +10,7 @@
 		"created_at": "2024/06/28",
 		"is_public": false,
 		"in_progress": true,
+		"to_finish": true,
 		"spotify_url": "",
 		"youtube_url": "",
 		"assets": {},

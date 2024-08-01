@@ -1,0 +1,38 @@
+{
+	"details": {
+		"id": "19",
+		"title": "19",
+		"artist": "Emmanuel Horvilleur",
+		"album": "Mordisco",
+		"year": 2007,
+		"country": "🇦🇷",
+		"category": "2|WELL_DONE|👍",
+		"created_at": "2024/07/31",
+		"is_public": true,
+		"in_progress": true,
+		"to_finish": true,
+		"spotify_url": "https://open.spotify.com/track/0mRmRzqq9vahlZoODOdLNQ",
+		"youtube_url": "https://youtu.be/y1TBSn91-a4",
+		"assets": {},
+		"sources": [
+			{
+				"text": "19, Emmanuel Horvilleur: Acordes",
+				"url": "https://acordes.lacuerda.net/emmanuel_horvilleur/19-5.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Emmanuel Horvilleur: 19 (letra, acordes, cover) ES LO QUE HAY session # 38",
+				"url": "https://youtu.be/A0ijfEQtsqI",
+				"source": "youtube"
+			},
+			{
+				"text": "Emma Horvilleur ft. Cerati - 19 (Kepek)",
+				"url": "https://youtu.be/O7rjBf99X7o",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": " C#m  C          E          Amaj7     A     Am\nNena, 19 son tus años y tu colección\n G#m           G           B           F    E      A\ntienes tantos novios como novias ha tenido Dios..\n\n\nE  Amaj7   | (x2)\n\n\n      E                 Amaj7\nNena yo no fui, el que te mando a matar\n         E                 Amaj7\nlo entendiste mal, no te quise lastimar\n\n      A            Bm       C#m           D       C#m      Am       A\nPues nena lo entendiste mal...  yo no quise matar.... Lo nuestro..\n\n\nE  Amaj7   | (x2)\n\n\n         E                   Amaj7\nY en la soledad, de mi cuestión emocional\n          E                 Amaj7\ntuve un plan genial, no lo voy a confesar\n\n      A            Bm       C#m           D       C#m      F#      C#m       A\nPues nena lo entendiste mal...  yo no quise matar.... Lo nuestro....    Lo nuestro..\n\n\nE  Amaj7   | (x2)\n\n      A            Bm       C#m           D       C#m      F#      C#m\nPues nena lo entendiste mal...  yo no quise matar.... Lo nuestro....\n     F#       C#m\nlo nuestro..\n     F#       C#m\nlo nuestro..\n     F#       C#m    Em\nlo nuestro..\n\n\nA  Am  E\nE  Amaj7   | (x4)"
+}
