@@ -240,7 +240,7 @@ function RenderByDate({ data, selectedDate }: { data: T_Data; selectedDate: stri
 							fixtureLeagues.map((league) => {
 								return (
 									<LeagueFixture
-										key={`${fixtureDate}-${league.name}`}
+										key={generateSlug(`${fixtureDate}-${league.id}-${league.name}`)}
 										league={league}
 										fixtureDate={fixtureDate}
 									/>
@@ -348,7 +348,7 @@ function LeagueFixture({
 					<FixtureMatch
 						// variant="date"
 						key={selectedMatch.id}
-						topKey={league.name}
+						topKey={selectedMatch.id}
 						match={selectedMatch}
 						league={league}
 						onOpenMatchDetailsHandler={onOpenMatchDetailsHandler}
@@ -360,7 +360,7 @@ function LeagueFixture({
 			{Object.entries(groupMatchesByDate(league.matches)).map(([date, matchesGroupedByDate]) => {
 				return (
 					<Block
-						key={`${league.name}-${date}`}
+						key={generateSlug(`${date}-${league.name}-${league.id}`)}
 						className={cn(
 							"tw-flex tw-flex-wrap tw-gap-4",
 							matchesGroupedByDate.length > 2 ? "tw-justify-stretch" : "tw-justify-start",
@@ -581,7 +581,7 @@ function FixtureMatch({
 
 						return (
 							<Block
-								key={team.name}
+								key={generateSlug(`${topKey}-${team.name}`)}
 								className="tw-w-full tw-flex-shrink-0 tw-overflow-auto tw-rounded-sm tw-bg-stone-800 sm:tw-min-w-full lg:tw-w-1/2 lg:tw-min-w-0"
 							>
 								<Block className="tw-relative tw-flex tw-justify-between tw-bg-stone-700 tw-px-1 tw-py-1 md:tw-px-4">
@@ -621,11 +621,11 @@ function FixtureMatch({
 										showIcon={false}
 									>
 										{Object.values(team.stats).map((group) => {
-											const reactKey = generateSlug(`${match.id}-stats-${group.name}`);
+											const baseKey = generateSlug(`${match.id}-stats-${group.name}`);
 
 											return (
 												<Block
-													key={reactKey}
+													key={baseKey}
 													is="section"
 													className="tw-mb-3 last:tw-mb-0"
 												>
@@ -640,7 +640,7 @@ function FixtureMatch({
 													>
 														{Object.entries(group.items).map(([key, value], index) => {
 															return (
-																<List.Item key={`${reactKey}-${index}`}>
+																<List.Item key={`${baseKey}-${index}`}>
 																	<InlineText is="strong">
 																		{jsConvertCase.toSentenceCase(key)}:
 																	</InlineText>{" "}
@@ -721,7 +721,7 @@ function FixtureMatch({
 
 												return (
 													<Block
-														key={`${generateSlug(playedMatch.id + playedMatch.hour + index)}`}
+														key={generateSlug(`${playedMatch.id}-${playedMatch.fullDate}-${index}`)}
 														className={cn(
 															"tw-relative tw-mb-6 tw-rounded-sm tw-border-2 tw-px-4 tw-pb-9 tw-pt-6 last:tw-mb-0",
 															currentTeam.winner === true
@@ -1125,8 +1125,8 @@ function generateDates(selectedDate: string) {
 			dateBase,
 			...(selectedDateIsToday
 				? [
-						dateBase.subtract(1, "days"),
 						dateBase.add(1, "days"),
+						dateBase.subtract(1, "days"),
 						...createArray(6 - dayOfWeek).map((day) => dayjs(dateBase.add(day + 1, "days"))),
 						...createArray(dayOfWeek - 1).map((day) => dayjs(dateBase.subtract(day, "days"))),
 					]
