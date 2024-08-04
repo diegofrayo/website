@@ -6,7 +6,7 @@
 		"album": "Desconocido",
 		"year": 1964,
 		"country": "🇦🇷",
-		"category": "0|TO_REVIEW|🧐",
+		"category": "4|TO_LEARN|🏗️",
 		"created_at": "2021/07/21",
 		"is_public": false,
 		"in_progress": false,
@@ -16,7 +16,7 @@
 		"assets": {},
 		"sources": [
 			{
-				"text": "Zamba de mi esperanza",
+				"text": "ZAMBA DE MI ESPERANZA, Los Chalchaleros: Acordes",
 				"url": "https://acordes.lacuerda.net/chalchaleros/zamba_de_mi_esperanza.shtml",
 				"source": "lacuerda"
 			},

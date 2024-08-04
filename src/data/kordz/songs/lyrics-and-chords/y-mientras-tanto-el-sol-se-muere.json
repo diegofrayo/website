@@ -6,17 +6,17 @@
 		"album": "Porco Rex",
 		"year": 2007,
 		"country": "🇦🇷",
-		"category": "0|TO_REVIEW|🧐",
+		"category": "2|WELL_DONE|👍",
 		"created_at": "2022/03/08",
-		"is_public": false,
+		"is_public": true,
 		"in_progress": false,
-		"to_finish": false,
+		"to_finish": true,
 		"spotify_url": "https://open.spotify.com/track/4kyqER2JEip8vrxwtutTsO",
 		"youtube_url": "https://youtu.be/kJ1Fv23KxP0",
 		"assets": {},
 		"sources": [
 			{
-				"text": "Y mientras tanto el sol se muere",
+				"text": "Y MIENTRAS TANTO EL SOL SE MUERE, Indio Solari: Acordes",
 				"url": "https://acordes.lacuerda.net/indio_solari/y_mientras_tanto_el_sol_se_muere.shtml",
 				"source": "lacuerda"
 			},
@@ -29,5 +29,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "Bm  D  G  F#   | (x4)\n\n\nBm         D   A       F#7\n   Todavía no usé mi milagro de hoy\nBm                  D         A    F#7\n   (que corta es la vida, mi amor!)\nBm             D       A         F#7\n   no voy a buscar mas consuelos tontos\nBm              D         A\n   si pasa algo malo esta vez\n\n   F#7      Bm   D  G     F#       Bm   D  G  F#\nTe voy a buscar        en la oscuridad\n\n\nBm             D        A          F#7\n   Yo no sé si pueda volver a encontrarte, amor\nBm               D         A        F#7\n   si Dios no me quiere en tu eternidad\nBm               D          A        F#7\n   sueño con que duermo, no lleno mi tumba aún\nBm              D          A             F#7\n   y un poquito tarde ésta vez se va a hacer\n\n\nBm                     Em     F#\n   Y mientras tanto el sol se muere\nBm                  Em F#\n   y no parece importarnos\nBm                       Em      F#\n   mientras te quiero el sol se apaga\n     Bm\ny si Dios queda en nada o no existe\n      Em       F#   Bm  D  G\nte amaré mucho más\n\n   F#7        Bm    D  G     F#7      Bm   D  G  F#\nTe voy a encontrar        en la oscuridad\n\n\nBm  D  G  F#\n\n\nBm            D        A         F#7\n   Algún día, pronto, una de mis vidas\nBm                 D       A       F#7\n   va a intentar matarme y lo va a lograr\nBm          D           A         F#7\ncómo será andar solito allá en la muerte?\n        Bm         D           A  F#7\nay! mi amor ya sin vos, sin tu sueño\n\n\nBm                   Em    F#\n   Yo no sabría echarte de menos\nBm                      Em   F#\n   (soy un ladrón que robó dolor)\nBm                  Em     F#\n   y si te pierdo camino a casa\n      Bm\nya te dije esto antes linda mía\nEm               F#    Bm  D  G\n   te voy a encontrar\n\n   F#7      Bm   D\nTe voy a buscar\nG       F#7        Bm    D\n   y te voy a encontrar\nG     F#7  Bm   D\n   Te buscaré...\nG         F#7   Bm     D\n   y te encontraré...\n\n\nBm  D  G  F#   | (x2)"
+	"txt": "Bm  D  G  F#   | (x4)\n\n\nBm          D   A       F#7\n   Todavía no usé mi milagro de hoy\nBm                   D         A    F#7\n   (que corta es la vida, mi amor!)\nBm              D       A         F#7\n   no voy a buscar mas consuelos tontos\nBm               D         A\n   si pasa algo malo esta vez\n\n    F#7      Bm  D  G      F#       Bm   D  G  F#\nTe voy a buscar        en la oscuridad\n\n\nBm              D        A           F#7\n   Yo no sé si pueda volver a encontrarte, amor\nBm                 D        A        F#7\n   si Dios no me quiere en tu eternidad\nBm                D           A       F#7\n   sueño con que duermo, no lleno mi tumba aún\nBm               D          A             F#7\n   y un poquito tarde ésta vez se va a hacer\n\n\nBm                      Em     F#\n   Y mientras tanto el sol se muere\nBm                   Em F#\n   y no parece importarnos\nBm                        Em      F#\n   mientras te quiero el sol se apaga\n      Bm\ny si Dios queda en nada o no existe\n       Em       F#   Bm  D  G\nte amaré mucho más\n\n    F#7         Bm  D  G      F#7      Bm   D  G  F#\nTe voy a encontrar        en la oscuridad\n\n\nBm  D  G  F#\n\n\nBm              D       A         F#7\n   Algún día, pronto, una de mis vidas\nBm                  D       A          F#7\n   va a intentar matarme y lo va a lograr\n Bm          D            A        F#7\ncómo será andar solito allá en la muerte?\n         Bm         D           A  F#7\nay! mi amor ya sin vos, sin tu sueño\n\n\nBm                    Em    F#\n   Yo no sabría echarte de menos\nBm                       Em   F#\n   (soy un ladrón que robó dolor)\nBm                   Em     F#\n   y si te pierdo camino a casa\n       Bm\nya te dije esto antes linda mía\nEm                 F#    Bm  D  G\n   te voy a encontrar\n\n       F#7   Bm   D\nTe voy a buscar\nG           F#7      Bm    D\n   y te voy a encontrar\nG      F#7  Bm   D\n   te buscaré...\nG          F#7   Bm     D\n   y te encontraré...\n\n\nBm  D  G  F#   | (x2)"
 }
