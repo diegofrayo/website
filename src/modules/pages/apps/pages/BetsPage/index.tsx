@@ -843,7 +843,7 @@ function MatchDetails({
 	// --- VARS ---
 	const isMarketVariant = variant === "MARKET_FIXTURE_MATCH";
 	const { isMatchFinished, isMatchInProgress } = checkMatchStatus(match);
-	const isPlayedMatchVariant = checkIsPlayedMatch(match);
+	const isPlayedMatchVariant = match.type === "PLAYED_MATCH";
 
 	// --- HANDLERS ---
 	function handleCopyMatchIdClick(event: DR.React.Events.OnClickEvent<HTMLButtonElement>) {
@@ -852,7 +852,10 @@ function MatchDetails({
 
 	return (
 		<Block
-			className={cn("tw-relative tw-rounded-md tw-bg-stone-800 tw-p-2 md:tw-p-6", className)}
+			className={cn(
+				"tw-relative tw-rounded-md tw-bg-stone-800 tw-p-2 md:tw-p-6 lg:tw-pb-8",
+				className,
+			)}
 			onClick={onClick}
 			{...rest}
 		>
@@ -898,7 +901,13 @@ function MatchDetails({
 				<ComponentWithAuth className="tw-absolute tw-bottom-1 tw-right-1">
 					<CopyToClipboardPopover textToCopy={match.id}>
 						<Button onClick={handleCopyMatchIdClick}>
-							<Icon icon={Icon.icon.COPY} />
+							<InlineText className="tw-mr-0.5 tw-hidden tw-align-middle tw-text-xs lg:tw-inline-block">
+								{match.id}
+							</InlineText>
+							<Icon
+								icon={Icon.icon.COPY}
+								size="tw-wh-4"
+							/>
 						</Button>
 					</CopyToClipboardPopover>
 				</ComponentWithAuth>
@@ -919,8 +928,12 @@ function MatchDetails({
 					</InlineText>
 				</Block>
 			) : (
-				<Block className="tw-mt-3 tw-flex tw-gap-2">
+				<Block className="tw-mt-3 tw-flex tw-flex-wrap tw-gap-2 empty:tw-mt-0">
 					{match.predictions.map((marketPrediction) => {
+						if (marketPrediction.trustLevelLabel === "LOW") {
+							return null;
+						}
+
 						return (
 							<Text
 								key={`${match.id}-${marketPrediction.id}-label`}
@@ -944,12 +957,12 @@ function MatchDetails({
 									<InlineText
 										className={cn(
 											"tw-absolute tw--right-2 tw--top-2 tw-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-black tw-wh-4",
-											marketPrediction.results.right || marketPrediction.results.skippedFail
+											marketPrediction.results.winning || marketPrediction.results.skippedLost
 												? "tw-text-green-600"
 												: "tw-text-red-600",
 										)}
 									>
-										{marketPrediction.results.right || marketPrediction.results.skippedFail
+										{marketPrediction.results.winning || marketPrediction.results.skippedLost
 											? "✓"
 											: "✖"}
 									</InlineText>
@@ -1114,10 +1127,6 @@ function localizeDate(date: string) {
 	}).format(new Date(date));
 
 	return formattedDate;
-}
-
-function checkIsPlayedMatch(match: DR.Object): match is T_PlayedMatch {
-	return "league" in match;
 }
 
 function getMarketTrustLevelEmojy(trustLevel: T_MarketPrediction["trustLevelLabel"]) {
