@@ -37,14 +37,13 @@ import v from "@diegofrayo/v";
 import type {
 	T_DayOfMatches,
 	T_FixtureMatch,
-	T_League,
 	T_LeagueStandings,
 	T_MarketPrediction,
 	T_PlayedMatch,
 } from "./types";
 import styles from "./styles.module.css";
 
-// import DATA from "../../../../../../public/data/apps/bets/2024-07-29.json"; // NOTE: FOR DX PURPOSES
+// import DATA from "../../../../../../public/data/apps/bets/2024-08-03.json"; // NOTE: FOR DX PURPOSES
 
 function BetsPage() {
 	// --- STATES & REFS ---
@@ -261,7 +260,7 @@ function LeagueFixture({
 	league: T_DayOfMatches[number];
 	fixtureDate: string;
 }) {
-	// --- STATES & VARS ---
+	// --- STATES & REFS ---
 	const [selectedMatch, setSelectedMatch] = React.useState<undefined | T_FixtureMatch>(undefined);
 
 	// --- HANDLERS ---
@@ -317,26 +316,19 @@ function LeagueFixture({
 							({league.country})
 						</InlineText>
 					</Block>
-
-					<Link
-						variant={Link.variant.SIMPLE}
-						href={`https://www.google.com/search?q=${encodeURIComponent(
-							`${league.name} 365scores`,
-						)}`}
-						className="tw-absolute tw-right-0 tw-top-0"
-						isExternalLink
-					>
-						<Icon
-							icon={Icon.icon.EXTERNAL_LINK}
-							size={12}
-						/>
-					</Link>
 				</Title>
 			}
 			showIcon={false}
 			contentClassName="tw-border-l-0 tw-my-4 tw-mx-0 tw-px-0 md:tw-px-4 md:tw-border-l-4 md:tw-m-4 tw-border-stone-500"
 			className="tw-mb-6 last:tw-mb-0"
 		>
+			<ExternalLinks
+				reactKey={fixtureDate}
+				entityId={league.id}
+				entityName={league.name}
+			/>
+			<Space size={1} />
+
 			<LeagueStandings
 				topKey={fixtureDate}
 				data={league.standings}
@@ -346,11 +338,9 @@ function LeagueFixture({
 			{selectedMatch ? (
 				<Block className="tw-mb-4 tw-border tw-border-yellow-500">
 					<FixtureMatch
-						// variant="date"
 						key={selectedMatch.id}
 						topKey={selectedMatch.id}
 						match={selectedMatch}
-						league={league}
 						onOpenMatchDetailsHandler={onOpenMatchDetailsHandler}
 						isSelectedMatch
 					/>
@@ -377,10 +367,8 @@ function LeagueFixture({
 									className="tw-w-full md:tw-w-96"
 								>
 									<FixtureMatch
-										// variant="date"
 										topKey={date}
 										match={match}
-										league={league}
 										onOpenMatchDetailsHandler={onOpenMatchDetailsHandler}
 									/>
 								</Block>
@@ -394,17 +382,13 @@ function LeagueFixture({
 }
 
 function FixtureMatch({
-	// variant,
 	topKey,
 	match,
-	league,
 	isSelectedMatch,
 	onOpenMatchDetailsHandler,
 }: {
-	// variant: "DATE" | "MARKET";
 	topKey: string;
 	match: T_FixtureMatch;
-	league: Pick<T_League, "country" | "name">;
 	isSelectedMatch?: boolean;
 	onOpenMatchDetailsHandler: (match: T_FixtureMatch) => void;
 }) {
@@ -585,26 +569,17 @@ function FixtureMatch({
 								className="tw-w-full tw-flex-shrink-0 tw-overflow-auto tw-rounded-sm tw-bg-stone-800 sm:tw-min-w-full lg:tw-w-1/2 lg:tw-min-w-0"
 							>
 								<Block className="tw-relative tw-flex tw-justify-between tw-bg-stone-700 tw-px-1 tw-py-1 md:tw-px-4">
-									<Text className="tw-flex-1 tw-text-left">
-										<InlineText className="tw-align-middle">{team.name}</InlineText>
-									</Text>
-
-									<Link
-										variant={Link.variant.SIMPLE}
-										href={`https://www.google.com/search?q=${encodeURIComponent(
-											`${team.name} equipo ${league.country || ""} 365scores`,
-										)}`}
-										className="tw-absolute tw-right-1 tw-top-0"
-										isExternalLink
-									>
-										<Icon
-											icon={Icon.icon.EXTERNAL_LINK}
-											size={12}
-										/>
-									</Link>
+									<Text className="tw-flex-1 tw-text-left">{team.name}</Text>
 								</Block>
 
 								<Block className="tw-p-1 md:tw-p-4">
+									<ExternalLinks
+										reactKey={match.id}
+										entityId={team.id}
+										entityName={team.name}
+									/>
+									<Space size={1} />
+
 									{team.position ? (
 										<React.Fragment>
 											<Text>
@@ -1029,6 +1004,47 @@ function MatchTeamDetails({
 					{match.teams[teamSide].score}
 				</InlineText>
 			) : null}
+		</Block>
+	);
+}
+
+function ExternalLinks({
+	reactKey,
+	entityId,
+	entityName,
+}: {
+	reactKey: string;
+	entityId: number;
+	entityName: string;
+}) {
+	// --- VARS ---
+	const STATISTICS_WEBSITES = [
+		"365scores.com",
+		"footystats.org",
+		"soccerstats.com",
+		"flashscore.co",
+	];
+
+	return (
+		<Block className="tw-flex tw-flex-wrap tw-gap-x-3 tw-gap-y-0">
+			{STATISTICS_WEBSITES.map((website) => {
+				return (
+					<Link
+						key={generateSlug(`${reactKey}-${entityId}-${website}`)}
+						variant={Link.variant.SIMPLE}
+						href={`https://www.google.com/search?q=${encodeURIComponent(
+							`${entityName} ${website}`,
+						)}`}
+						isExternalLink
+					>
+						<Icon
+							icon={Icon.icon.EXTERNAL_LINK}
+							size={12}
+						/>
+						<InlineText className="tw-ml-0.5 tw-text-xs">{website}</InlineText>
+					</Link>
+				);
+			})}
 		</Block>
 	);
 }
