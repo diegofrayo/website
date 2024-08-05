@@ -307,7 +307,7 @@ function LeagueFixture({
 							is="span"
 							className="tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-stone-500 tw-p-0.5 tw-text-xl tw-leading-none tw-wh-7"
 						>
-							{league.flag}
+							{league.country.flag}
 						</Block>
 					</Block>
 					<Block className="tw-inline-block">
@@ -316,7 +316,7 @@ function LeagueFixture({
 						</InlineText>
 
 						<InlineText className="tw-ml-1 tw-truncate tw-text-base tw-text-gray-100">
-							({league.country})
+							({league.country.name})
 						</InlineText>
 					</Block>
 				</Title>
@@ -328,7 +328,7 @@ function LeagueFixture({
 			<ExternalLinks
 				reactKey={fixtureDate}
 				entityId={league.id}
-				entityName={`${league.name} ${league.country}`}
+				entityName={`${league.name} ${league.country.name}`}
 			/>
 			<Space size={1} />
 
@@ -575,7 +575,7 @@ function FixtureMatch({
 									<ExternalLinks
 										reactKey={match.id}
 										entityId={team.id}
-										entityName={`${team.name} ${match.league.country}`}
+										entityName={`${team.name} ${match.league.country.name}`}
 									/>
 									<Space size={1} />
 
@@ -1015,23 +1015,25 @@ function MatchTeamDetails({
 	teamSide: "home" | "away";
 }) {
 	// --- VARS ---
-	const teamsFromSameCountry = match.teams.home.country === match.teams.away.country;
+	const isFixtureMatchAndInternationalLeague =
+		match.type !== "PLAYED_MATCH" && match.league.country.name === "World";
+	const isPlayedMatch = match.type === "PLAYED_MATCH";
+	const bothTeamsHaveCountryDetails =
+		v.isNotNil(match.teams.home.country) && v.isNotNil(match.teams.away.country);
 
 	return (
 		<Block className="tw-flex tw-items-center tw-justify-between tw-gap-2">
-			{teamsFromSameCountry ||
-			v.isEmptyString(match.teams.home.country) ||
-			v.isEmptyString(match.teams.away.country) ? (
-				<InlineText className="tw-text-left tw-align-middle tw-text-xl">⚽</InlineText>
-			) : (
+			{(isFixtureMatchAndInternationalLeague || isPlayedMatch) && bothTeamsHaveCountryDetails ? (
 				<React.Fragment>
 					<InlineText className="win:tw-hidden tw-inline-block tw-text-left tw-align-middle tw-text-xl">
-						{match.teams[teamSide].country}
+						{match.teams[teamSide].country?.flag}
 					</InlineText>
 					<InlineText className="win:tw-inline-block tw-hidden tw-text-left tw-align-middle tw-text-xl">
 						⚽
 					</InlineText>
 				</React.Fragment>
+			) : (
+				<InlineText className="tw-text-left tw-align-middle tw-text-xl">⚽</InlineText>
 			)}
 
 			<InlineText
