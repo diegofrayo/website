@@ -1,9 +1,9 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run script:sync-shared-lib
-npm run build:build-info
 npm run build:ts
+npm run build:build-info
+npm run script:sync-shared-lib
 npm run seo
 npm run styles
 npm run lint

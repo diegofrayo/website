@@ -1,6 +1,6 @@
 set -e
-npm run build:build-info
 npm run build:ts
+npm run build:build-info
 npm run seo
 npm run format
 npm run lint

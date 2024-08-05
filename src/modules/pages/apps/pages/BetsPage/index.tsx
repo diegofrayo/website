@@ -1,6 +1,7 @@
 import * as React from "react";
 import jsConvertCase from "js-convert-case";
 import dayjs from "dayjs";
+import { Entries } from "type-fest";
 
 import { Page } from "~/components/layout";
 import {
@@ -43,7 +44,7 @@ import type {
 } from "./types";
 import styles from "./styles.module.css";
 
-// import DATA from "../../../../../../public/data/apps/bets/2024-08-03.json"; // NOTE: FOR DX PURPOSES
+// import DATA from "../../../../../../public/data/apps/bets/2024-08-05.json"; // NOTE: FOR DX PURPOSES
 
 function BetsPage() {
 	// --- STATES & REFS ---
@@ -269,6 +270,7 @@ function LeagueFixture({
 		goToElement(`${fixtureDate}-${league.id}`);
 	}
 
+	/*
 	// --- UTILS ---
 	function groupMatchesByDate(matches: T_FixtureMatch[]) {
 		return matches.reduce(
@@ -287,6 +289,7 @@ function LeagueFixture({
 			{} as DR.Object<T_FixtureMatch[]>,
 		);
 	}
+  */
 
 	return (
 		<Collapsible
@@ -312,7 +315,7 @@ function LeagueFixture({
 							{league.name}
 						</InlineText>
 
-						<InlineText className="win:tw-inline tw-ml-1 tw-hidden tw-truncate tw-text-base tw-text-gray-100">
+						<InlineText className="tw-ml-1 tw-truncate tw-text-base tw-text-gray-100">
 							({league.country})
 						</InlineText>
 					</Block>
@@ -336,7 +339,7 @@ function LeagueFixture({
 			{league.standings.items.length > 0 ? <Space size={1} /> : null}
 
 			{selectedMatch ? (
-				<Block className="tw-mb-4 tw-border tw-border-yellow-500">
+				<Block className="tw-border tw-border-yellow-500">
 					<FixtureMatch
 						key={selectedMatch.id}
 						topKey={selectedMatch.id}
@@ -347,36 +350,32 @@ function LeagueFixture({
 				</Block>
 			) : null}
 
-			{Object.entries(groupMatchesByDate(league.matches)).map(([date, matchesGroupedByDate]) => {
-				return (
-					<Block
-						key={generateSlug(`${date}-${league.name}-${league.id}`)}
-						className={cn(
-							"tw-flex tw-flex-wrap tw-gap-4",
-							matchesGroupedByDate.length > 2 ? "tw-justify-stretch" : "tw-justify-start",
-						)}
-					>
-						{matchesGroupedByDate.map((match) => {
-							if (match.id === selectedMatch?.id) {
-								return null;
-							}
+			<Block
+				key={generateSlug(`${fixtureDate}-${league.name}-${league.id}`)}
+				className={cn(
+					"tw-mt-4 tw-flex tw-flex-wrap tw-gap-4 empty:tw-mt-0",
+					league.matches.length > 2 ? "tw-justify-stretch" : "tw-justify-start",
+				)}
+			>
+				{league.matches.map((match) => {
+					if (match.id === selectedMatch?.id) {
+						return null;
+					}
 
-							return (
-								<Block
-									key={match.id}
-									className="tw-w-full md:tw-w-96"
-								>
-									<FixtureMatch
-										topKey={date}
-										match={match}
-										onOpenMatchDetailsHandler={onOpenMatchDetailsHandler}
-									/>
-								</Block>
-							);
-						})}
-					</Block>
-				);
-			})}
+					return (
+						<Block
+							key={match.id}
+							className="tw-w-full md:tw-w-96"
+						>
+							<FixtureMatch
+								topKey={fixtureDate}
+								match={match}
+								onOpenMatchDetailsHandler={onOpenMatchDetailsHandler}
+							/>
+						</Block>
+					);
+				})}
+			</Block>
 		</Collapsible>
 	);
 }
@@ -604,29 +603,39 @@ function FixtureMatch({
 													is="section"
 													className="tw-mb-3 last:tw-mb-0"
 												>
-													<Text className="tw-text-lg tw-font-bold tw-uppercase tw-text-white">
-														{group.name}
-													</Text>
-													<Space size={0.5} />
-
-													<List
-														variant={List.variant.SIMPLE}
-														className="tw-ml-0 md:tw-ml-2"
+													<Collapsible
+														title={
+															<Text className="tw-text-lg tw-font-bold tw-uppercase tw-text-white">
+																{group.name}
+															</Text>
+														}
+														showIcon={false}
 													>
-														{Object.entries(group.items).map(([key, value], index) => {
-															return (
-																<List.Item key={`${baseKey}-${index}`}>
-																	<InlineText is="strong">
-																		{jsConvertCase.toSentenceCase(key)}:
-																	</InlineText>{" "}
-																	<InlineText>
-																		{value}
-																		{key.includes("porcentaje") ? "%" : ""}
-																	</InlineText>
-																</List.Item>
-															);
-														})}
-													</List>
+														<List
+															variant={List.variant.SIMPLE}
+															className="tw-ml-0 md:tw-ml-2"
+														>
+															{(Object.entries(group.items) as Entries<typeof group.items>).map(
+																([key, value], index) => {
+																	return (
+																		<List.Item key={`${baseKey}-${index}`}>
+																			<InlineText is="strong">
+																				{jsConvertCase.toSentenceCase(key)}:
+																			</InlineText>{" "}
+																			<InlineText>
+																				{value}
+																				{key === "porcentaje_de_puntos_ganados"
+																					? "%"
+																					: key === "puntos_ganados"
+																						? `/${group.items.total_de_partidos * 3}`
+																						: ""}
+																			</InlineText>
+																		</List.Item>
+																	);
+																},
+															)}
+														</List>
+													</Collapsible>
 												</Block>
 											);
 										})}
@@ -1017,7 +1026,7 @@ function MatchTeamDetails({
 			) : (
 				<React.Fragment>
 					<InlineText className="win:tw-hidden tw-inline-block tw-text-left tw-align-middle tw-text-xl">
-						{match.teams.home.country}
+						{match.teams[teamSide].country}
 					</InlineText>
 					<InlineText className="win:tw-inline-block tw-hidden tw-text-left tw-align-middle tw-text-xl">
 						⚽
