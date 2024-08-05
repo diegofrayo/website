@@ -325,7 +325,7 @@ function LeagueFixture({
 			<ExternalLinks
 				reactKey={fixtureDate}
 				entityId={league.id}
-				entityName={league.name}
+				entityName={`${league.name} ${league.country}`}
 			/>
 			<Space size={1} />
 
@@ -333,7 +333,7 @@ function LeagueFixture({
 				topKey={fixtureDate}
 				data={league.standings}
 			/>
-			{league.standings.length > 0 ? <Space size={1} /> : null}
+			{league.standings.items.length > 0 ? <Space size={1} /> : null}
 
 			{selectedMatch ? (
 				<Block className="tw-mb-4 tw-border tw-border-yellow-500">
@@ -576,7 +576,7 @@ function FixtureMatch({
 									<ExternalLinks
 										reactKey={match.id}
 										entityId={team.id}
-										entityName={team.name}
+										entityName={`${team.name} ${match.league.country}`}
 									/>
 									<Space size={1} />
 
@@ -758,7 +758,7 @@ function FixtureMatch({
 }
 
 function LeagueStandings({ topKey, data }: { topKey: string; data: T_LeagueStandings }) {
-	if (data.length === 0) {
+	if (data.items.length === 0) {
 		return null;
 	}
 
@@ -775,42 +775,67 @@ function LeagueStandings({ topKey, data }: { topKey: string; data: T_LeagueStand
 						<th className="tw-p-1 tw-text-left">Equipo</th>
 						<th className="tw-w-20 tw-p-1">Puntos</th>
 						<th className="tw-w-16 tw-p-1">PJ</th>
-						<th className="tw-w-16 tw-p-1">GAF</th>
-						<th className="tw-w-16 tw-p-1">GEC</th>
+						<th className="tw-w-16 tw-p-1">GF</th>
+						<th className="tw-w-16 tw-p-1">GC</th>
 						<th className="tw-w-16 tw-p-1">GD</th>
+						<th className="tw-w-16 tw-p-1">PJL</th>
+						<th className="tw-w-16 tw-p-1">GFL</th>
+						<th className="tw-w-16 tw-p-1">PJV</th>
+						<th className="tw-w-16 tw-p-1">GFV</th>
+						<th className="tw-w-16 tw-p-1">%GF</th>
+						<th className="tw-w-16 tw-p-1">%GFL</th>
+						<th className="tw-w-16 tw-p-1">%GFV</th>
 					</tr>
 				</thead>
 				<tbody>
-					{data.map((teams, teamsIndex) => {
+					{data.items.map((team, teamIndex) => {
 						return (
-							<React.Fragment key={generateSlug(`${topKey}-league-standing-${teamsIndex}`)}>
-								{teams.map((team, standingIndex) => {
-									return (
-										<React.Fragment
-											key={generateSlug(
-												`${topKey}-league-standing-${team.teamId}-${standingIndex}`,
-											)}
-										>
-											<tr>
-												<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
-													{standingIndex + 1}
-												</td>
-												<td className="tw-whitespace-nowrap tw-p-1 tw-text-left">
-													{team.teamName}
-												</td>
-												<td className="tw-p-1 tw-text-center">{team.points}</td>
-												<td className="tw-p-1 tw-text-center">{team.stats.played}</td>
-												<td className="tw-p-1 tw-text-center">{team.stats.goals.for}</td>
-												<td className="tw-p-1 tw-text-center">{team.stats.goals.against}</td>
-												<td className="tw-p-1 tw-text-center">{team.stats.goalsDiff}</td>
-											</tr>
-										</React.Fragment>
-									);
-								})}
-								<tr className="tw-h-4 last:tw-hidden" />
-							</React.Fragment>
+							<tr key={generateSlug(`${topKey}-league-standing-${teamIndex}`)}>
+								<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">{teamIndex + 1}</td>
+								<td className="tw-whitespace-nowrap tw-p-1 tw-text-left">{team.teamName}</td>
+								<td className="tw-p-1 tw-text-center">{team.points}</td>
+								<td className="tw-p-1 tw-text-center">{team.stats.all.played}</td>
+								<td className="tw-p-1 tw-text-center">{team.stats.all.goals.for}</td>
+								<td className="tw-p-1 tw-text-center">{team.stats.all.goals.against}</td>
+								<td className="tw-p-1 tw-text-center">{team.stats.all.goals.diff}</td>
+								<td className="tw-p-1 tw-text-center">{team.stats.home.played}</td>
+								<td className="tw-p-1 tw-text-center">{team.stats.home.goals.for}</td>
+								<td className="tw-p-1 tw-text-center">{team.stats.away.played}</td>
+								<td className="tw-p-1 tw-text-center">{team.stats.away.goals.for}</td>
+								<td className="tw-p-1 tw-text-center">
+									{team.stats.averages.promedio_de_goles_anotados_por_partido}
+								</td>
+								<td className="tw-p-1 tw-text-center">
+									{team.stats.averages.promedio_de_goles_anotados_de_local_por_partido}
+								</td>
+								<td className="tw-p-1 tw-text-center">
+									{team.stats.averages.promedio_de_goles_anotados_de_visitante_por_partido}
+								</td>
+							</tr>
 						);
 					})}
+					<tr>
+						<td className="tw-invisible">-</td>
+						<td className="tw-invisible">-</td>
+						<td className="tw-invisible">-</td>
+						<td className="tw-invisible">-</td>
+						<td className="tw-invisible">-</td>
+						<td className="tw-invisible">-</td>
+						<td className="tw-invisible">-</td>
+						<td className="tw-invisible">-</td>
+						<td className="tw-invisible">-</td>
+						<td className="tw-invisible">-</td>
+						<td className="tw-invisible">-</td>
+						<td className="tw-p-1 tw-text-center">
+							{data.stats.promedio_de_goles_anotados_por_partido}
+						</td>
+						<td className="tw-p-1 tw-text-center">
+							{data.stats.promedio_de_goles_anotados_de_local_por_partido}
+						</td>
+						<td className="tw-p-1 tw-text-center">
+							{data.stats.promedio_de_goles_anotados_de_visitante_por_partido}
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</Collapsible>
@@ -852,10 +877,7 @@ function MatchDetails({
 
 	return (
 		<Block
-			className={cn(
-				"tw-relative tw-rounded-md tw-bg-stone-800 tw-p-2 md:tw-p-6 lg:tw-pb-8",
-				className,
-			)}
+			className={cn("tw-relative tw-rounded-md tw-bg-stone-800 tw-p-2 md:tw-p-6", className)}
 			onClick={onClick}
 			{...rest}
 		>
@@ -871,7 +893,7 @@ function MatchDetails({
 						teamSide="away"
 					/>
 				</Block>
-				<Block className="tw-w-16 tw-flex-shrink-0 tw-text-right">
+				<Block className="tw-w-16 tw-flex-shrink-0 tw-py-4 tw-text-right">
 					{isMarketVariant ? (
 						<Text>{`${match.date} | ${match.hour}`}</Text>
 					) : isPlayedMatchVariant || isMatchFinished ? (
@@ -882,7 +904,7 @@ function MatchDetails({
 								</Text>
 							) : null}
 							<Text className="tw-font-bold">{match.hour}</Text>
-							{!isPlayedMatchVariant ? <Text>Final del partido</Text> : null}
+							{isPlayedMatchVariant ? null : <Text>Final del partido</Text>}
 						</Block>
 					) : (
 						<Text>{match.hour}</Text>
@@ -928,9 +950,9 @@ function MatchDetails({
 					</InlineText>
 				</Block>
 			) : (
-				<Block className="tw-mt-3 tw-flex tw-flex-wrap tw-gap-2 empty:tw-mt-0">
+				<Block className="tw-mt-3 tw-flex tw-flex-wrap tw-gap-2 tw-pr-6 empty:tw-mt-0">
 					{match.predictions.map((marketPrediction) => {
-						if (marketPrediction.trustLevelLabel === "LOW") {
+						if (marketPrediction.trustLevelLabel === "LOW" && !match.played) {
 							return null;
 						}
 

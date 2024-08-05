@@ -15,3 +15,13 @@ export function safeCastNumber<G_DefaultValue>(input: unknown, defaultValue: G_D
 		return defaultValue;
 	}
 }
+
+export function formatDecimalNumber(decimalNumber: number, numberOfDecimals: number) {
+	const output = Number(decimalNumber.toFixed(numberOfDecimals));
+
+	if (Number.isNaN(output)) {
+		return 0;
+	}
+
+	return output;
+}
