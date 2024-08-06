@@ -414,24 +414,26 @@ function FixtureMatch({
 
 	// --- UTILS ---
 	function filterMatches(matches: T_PlayedMatch[], teamName: string, filter: T_FiltersValues) {
+		let output = matches;
+
 		if (filter === "Todos") {
-			return matches;
+			output = matches;
 		}
 
 		if (filter === "Local") {
-			return matches.filter((item) => {
+			output = matches.filter((item) => {
 				return item.teams.home.name === teamName;
 			});
 		}
 
 		if (filter === "Visitante") {
-			return matches.filter((item) => {
+			output = matches.filter((item) => {
 				return item.teams.away.name === teamName;
 			});
 		}
 
 		if (filter === "Ganados") {
-			return matches.filter((item) => {
+			output = matches.filter((item) => {
 				return (
 					(item.teams.home.name === teamName && item.teams.home.winner === true) ||
 					(item.teams.away.name === teamName && item.teams.away.winner === true)
@@ -440,7 +442,7 @@ function FixtureMatch({
 		}
 
 		if (filter === "Perdidos") {
-			return matches.filter((item) => {
+			output = matches.filter((item) => {
 				return (
 					(item.teams.home.name === teamName && item.teams.home.winner === false) ||
 					(item.teams.away.name === teamName && item.teams.away.winner === false)
@@ -449,7 +451,7 @@ function FixtureMatch({
 		}
 
 		if (filter === "Empatados") {
-			return matches.filter((item) => {
+			output = matches.filter((item) => {
 				return (
 					(item.teams.home.name === teamName && item.teams.home.winner === null) ||
 					(item.teams.away.name === teamName && item.teams.away.winner === null)
@@ -457,7 +459,9 @@ function FixtureMatch({
 			});
 		}
 
-		return matches;
+		return output.filter((match_) => {
+			return match_.date < match.date;
+		});
 	}
 
 	if (isSelectedMatch) {
@@ -478,6 +482,7 @@ function FixtureMatch({
 			>
 				<Collapsible
 					title={<CollapsibleTitle title="Ver predicciones" />}
+					className={cn(match.predictions.length === 0 && "tw-hidden")}
 					contentClassName="tw-mt-1 tw-p-1 md:tw-p-4 tw-bg-stone-800 tw-font-mono"
 					showIcon={false}
 				>
@@ -931,7 +936,10 @@ function MatchDetails({
 
 				<ComponentWithAuth className="tw-absolute tw-bottom-1 tw-right-1">
 					<CopyToClipboardPopover textToCopy={match.id}>
-						<Button onClick={handleCopyMatchIdClick}>
+						<Button
+							variant={Button.variant.SIMPLE}
+							onClick={handleCopyMatchIdClick}
+						>
 							<InlineText className="tw-mr-0.5 tw-hidden tw-align-middle tw-text-xs lg:tw-inline-block">
 								{match.id}
 							</InlineText>
