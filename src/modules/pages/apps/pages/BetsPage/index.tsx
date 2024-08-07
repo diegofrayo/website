@@ -610,7 +610,7 @@ function FixtureMatch({
 												>
 													<Collapsible
 														title={
-															<Text className="tw-text-lg tw-font-bold tw-uppercase tw-text-white">
+															<Text className="tw-text-lg tw-font-bold tw-text-white">
 																{group.name}
 															</Text>
 														}
@@ -701,7 +701,7 @@ function FixtureMatch({
 										</Block>
 										<Space size={1} />
 
-										<Block className="tw-rounded-md tw-bg-stone-900 tw-px-4 tw-pb-4 tw-pt-6 md:tw-px-6 md:tw-pb-6 md:tw-pt-8">
+										<Block className="tw-max-h-[500px] tw-overflow-auto tw-rounded-md tw-bg-stone-900 tw-px-4 tw-pb-4 tw-pt-6 md:tw-px-6 md:tw-pb-6 md:tw-pt-8">
 											{filteredMatches.map((playedMatch, index) => {
 												const currentTeam =
 													playedMatch.teams.home.name === team.name

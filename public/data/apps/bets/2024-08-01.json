@@ -10116,961 +10116,109 @@
 						"winner": true,
 						"stats": {
 							"all-matches": {
-								"name": "Comportamiento general en los últimos 23 partidos",
+								"name": "Comportamiento general en los últimos 0 partidos",
 								"items": {
-									"total_de_partidos": 23,
-									"total_de_goles_anotados": 26,
-									"total_de_goles_recibidos": 28,
-									"promedio_de_goles_anotados": 1.1,
-									"promedio_de_goles_recibidos": 1.2,
-									"partidos_ganados": 7,
-									"partidos_empatados": 9,
-									"partidos_perdidos": 7,
-									"partidos_con_goles_anotados": 18,
-									"partidos_con_goles_recibidos": 16,
-									"puntos_ganados": 30,
-									"porcentaje_de_puntos_ganados": 43.5
+									"total_de_partidos": 0,
+									"total_de_goles_anotados": 0,
+									"total_de_goles_recibidos": 0,
+									"promedio_de_goles_anotados": 0,
+									"promedio_de_goles_recibidos": 0,
+									"partidos_ganados": 0,
+									"partidos_empatados": 0,
+									"partidos_perdidos": 0,
+									"partidos_con_goles_anotados": 0,
+									"partidos_con_goles_recibidos": 0,
+									"puntos_ganados": 0,
+									"porcentaje_de_puntos_ganados": 0
 								}
 							},
 							"all-home-matches": {
-								"name": "Comportamiento como local en los últimos 23 partidos",
+								"name": "Comportamiento como local en los últimos 0 partidos",
 								"items": {
-									"total_de_partidos": 12,
-									"total_de_goles_anotados": 18,
-									"total_de_goles_recibidos": 9,
-									"promedio_de_goles_anotados": 1.5,
-									"promedio_de_goles_recibidos": 0.8,
-									"partidos_ganados": 6,
-									"partidos_empatados": 5,
-									"partidos_perdidos": 1,
-									"partidos_con_goles_anotados": 11,
-									"partidos_con_goles_recibidos": 7,
-									"puntos_ganados": 23,
-									"porcentaje_de_puntos_ganados": 63.9
+									"total_de_partidos": 0,
+									"total_de_goles_anotados": 0,
+									"total_de_goles_recibidos": 0,
+									"promedio_de_goles_anotados": 0,
+									"promedio_de_goles_recibidos": 0,
+									"partidos_ganados": 0,
+									"partidos_empatados": 0,
+									"partidos_perdidos": 0,
+									"partidos_con_goles_anotados": 0,
+									"partidos_con_goles_recibidos": 0,
+									"puntos_ganados": 0,
+									"porcentaje_de_puntos_ganados": 0
 								}
 							},
 							"all-away-matches": {
-								"name": "Comportamiento como visitante en los últimos 23 partidos",
+								"name": "Comportamiento como visitante en los últimos 0 partidos",
 								"items": {
-									"total_de_partidos": 11,
-									"total_de_goles_anotados": 8,
-									"total_de_goles_recibidos": 19,
-									"promedio_de_goles_anotados": 0.7,
-									"promedio_de_goles_recibidos": 1.7,
-									"partidos_ganados": 1,
-									"partidos_empatados": 4,
-									"partidos_perdidos": 6,
-									"partidos_con_goles_anotados": 7,
-									"partidos_con_goles_recibidos": 9,
-									"puntos_ganados": 7,
-									"porcentaje_de_puntos_ganados": 21.2
+									"total_de_partidos": 0,
+									"total_de_goles_anotados": 0,
+									"total_de_goles_recibidos": 0,
+									"promedio_de_goles_anotados": 0,
+									"promedio_de_goles_recibidos": 0,
+									"partidos_ganados": 0,
+									"partidos_empatados": 0,
+									"partidos_perdidos": 0,
+									"partidos_con_goles_anotados": 0,
+									"partidos_con_goles_recibidos": 0,
+									"puntos_ganados": 0,
+									"porcentaje_de_puntos_ganados": 0
 								}
 							},
 							"last-matches": {
 								"name": "Comportamiento general en los últimos 5 partidos",
 								"items": {
-									"total_de_partidos": 5,
-									"total_de_goles_anotados": 4,
-									"total_de_goles_recibidos": 6,
-									"promedio_de_goles_anotados": 0.8,
-									"promedio_de_goles_recibidos": 1.2,
-									"partidos_ganados": 1,
-									"partidos_empatados": 2,
-									"partidos_perdidos": 2,
-									"partidos_con_goles_anotados": 2,
-									"partidos_con_goles_recibidos": 3,
-									"puntos_ganados": 5,
-									"porcentaje_de_puntos_ganados": 33.3
+									"total_de_partidos": 0,
+									"total_de_goles_anotados": 0,
+									"total_de_goles_recibidos": 0,
+									"promedio_de_goles_anotados": 0,
+									"promedio_de_goles_recibidos": 0,
+									"partidos_ganados": 0,
+									"partidos_empatados": 0,
+									"partidos_perdidos": 0,
+									"partidos_con_goles_anotados": 0,
+									"partidos_con_goles_recibidos": 0,
+									"puntos_ganados": 0,
+									"porcentaje_de_puntos_ganados": 0
 								}
 							},
 							"last-home-matches": {
 								"name": "Comportamiento en los últimos 3 partidos como local",
 								"items": {
-									"total_de_partidos": 2,
-									"total_de_goles_anotados": 4,
-									"total_de_goles_recibidos": 4,
-									"promedio_de_goles_anotados": 2,
-									"promedio_de_goles_recibidos": 2,
-									"partidos_ganados": 1,
+									"total_de_partidos": 0,
+									"total_de_goles_anotados": 0,
+									"total_de_goles_recibidos": 0,
+									"promedio_de_goles_anotados": 0,
+									"promedio_de_goles_recibidos": 0,
+									"partidos_ganados": 0,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 1,
-									"partidos_con_goles_anotados": 2,
-									"partidos_con_goles_recibidos": 2,
-									"puntos_ganados": 3,
-									"porcentaje_de_puntos_ganados": 50
+									"partidos_perdidos": 0,
+									"partidos_con_goles_anotados": 0,
+									"partidos_con_goles_recibidos": 0,
+									"puntos_ganados": 0,
+									"porcentaje_de_puntos_ganados": 0
 								}
 							},
 							"last-away-matches": {
 								"name": "Comportamiento en los últimos 3 partidos como visitante",
 								"items": {
-									"total_de_partidos": 2,
+									"total_de_partidos": 0,
 									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 2,
+									"total_de_goles_recibidos": 0,
 									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 1,
+									"promedio_de_goles_recibidos": 0,
 									"partidos_ganados": 0,
-									"partidos_empatados": 1,
-									"partidos_perdidos": 1,
+									"partidos_empatados": 0,
+									"partidos_perdidos": 0,
 									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 1,
-									"puntos_ganados": 1,
-									"porcentaje_de_puntos_ganados": 16.7
+									"partidos_con_goles_recibidos": 0,
+									"puntos_ganados": 0,
+									"porcentaje_de_puntos_ganados": 0
 								}
 							}
 						},
-						"matches": [
-							{
-								"id": "1180560",
-								"fullDate": "2024-08-04T14:00",
-								"date": "2024-08-04",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 131,
-										"name": "Corinthians",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": null
-									},
-									"away": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1251960",
-								"fullDate": "2024-08-01T17:00",
-								"date": "2024-08-01",
-								"hour": "17:00",
-								"teams": {
-									"home": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 3,
-										"winner": true
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 73,
-									"name": "Copa Do Brasil",
-									"type": "Cup",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 3
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180554",
-								"fullDate": "2024-07-27T17:00",
-								"date": "2024-07-27",
-								"hour": "17:00",
-								"teams": {
-									"home": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": false
-									},
-									"away": {
-										"id": 140,
-										"name": "Criciuma",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180536",
-								"fullDate": "2024-07-24T17:00",
-								"date": "2024-07-24",
-								"hour": "17:00",
-								"teams": {
-									"home": {
-										"id": 135,
-										"name": "Cruzeiro",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									},
-									"away": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180534",
-								"fullDate": "2024-07-21T16:30",
-								"date": "2024-07-21",
-								"hour": "16:30",
-								"teams": {
-									"home": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": null
-									},
-									"away": {
-										"id": 126,
-										"name": "Sao Paulo",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180524",
-								"fullDate": "2024-07-16T17:00",
-								"date": "2024-07-16",
-								"hour": "17:00",
-								"teams": {
-									"home": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									},
-									"away": {
-										"id": 1062,
-										"name": "Atletico-MG",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1196771",
-								"fullDate": "2024-07-13T14:00",
-								"date": "2024-07-13",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									},
-									"away": {
-										"id": 119,
-										"name": "Internacional",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 73,
-									"name": "Copa Do Brasil",
-									"type": "Cup",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 3
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1196770",
-								"fullDate": "2024-07-10T17:00",
-								"date": "2024-07-10",
-								"hour": "17:00",
-								"teams": {
-									"home": {
-										"id": 119,
-										"name": "Internacional",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": false
-									},
-									"away": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 73,
-									"name": "Copa Do Brasil",
-									"type": "Cup",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 3
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180513",
-								"fullDate": "2024-07-09T19:00",
-								"date": "2024-07-09",
-								"hour": "19:00",
-								"teams": {
-									"home": {
-										"id": 1193,
-										"name": "Cuiaba",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": null
-									},
-									"away": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180504",
-								"fullDate": "2024-07-07T14:00",
-								"date": "2024-07-07",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 3,
-										"winner": true
-									},
-									"away": {
-										"id": 130,
-										"name": "Gremio",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180487",
-								"fullDate": "2024-07-04T17:00",
-								"date": "2024-07-04",
-								"hour": "17:00",
-								"teams": {
-									"home": {
-										"id": 118,
-										"name": "Bahia",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									},
-									"away": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180482",
-								"fullDate": "2024-06-30T14:00",
-								"date": "2024-06-30",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 154,
-										"name": "Fortaleza EC",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									},
-									"away": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180474",
-								"fullDate": "2024-06-26T18:00",
-								"date": "2024-06-26",
-								"hour": "18:00",
-								"teams": {
-									"home": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									},
-									"away": {
-										"id": 127,
-										"name": "Flamengo",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180460",
-								"fullDate": "2024-06-23T16:30",
-								"date": "2024-06-23",
-								"hour": "16:30",
-								"teams": {
-									"home": {
-										"id": 121,
-										"name": "Palmeiras",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 3,
-										"winner": true
-									},
-									"away": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180454",
-								"fullDate": "2024-06-19T18:00",
-								"date": "2024-06-19",
-								"hour": "18:00",
-								"teams": {
-									"home": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									},
-									"away": {
-										"id": 133,
-										"name": "Vasco DA Gama",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180441",
-								"fullDate": "2024-06-15T16:30",
-								"date": "2024-06-15",
-								"hour": "16:30",
-								"teams": {
-									"home": {
-										"id": 794,
-										"name": "RB Bragantino",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									},
-									"away": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180434",
-								"fullDate": "2024-06-11T17:00",
-								"date": "2024-06-11",
-								"hour": "17:00",
-								"teams": {
-									"home": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									},
-									"away": {
-										"id": 136,
-										"name": "Vitoria",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180404",
-								"fullDate": "2024-06-05T17:00",
-								"date": "2024-06-05",
-								"hour": "17:00",
-								"teams": {
-									"home": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": true
-									},
-									"away": {
-										"id": 144,
-										"name": "Atletico Goianiense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180418",
-								"fullDate": "2024-06-01T16:30",
-								"date": "2024-06-01",
-								"hour": "16:30",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									},
-									"away": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180394",
-								"fullDate": "2024-04-28T16:30",
-								"date": "2024-04-28",
-								"hour": "16:30",
-								"teams": {
-									"home": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									},
-									"away": {
-										"id": 134,
-										"name": "Atletico Paranaense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180379",
-								"fullDate": "2024-04-21T16:30",
-								"date": "2024-04-21",
-								"hour": "16:30",
-								"teams": {
-									"home": {
-										"id": 120,
-										"name": "Botafogo",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 5,
-										"winner": true
-									},
-									"away": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180374",
-								"fullDate": "2024-04-17T18:00",
-								"date": "2024-04-17",
-								"hour": "18:00",
-								"teams": {
-									"home": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									},
-									"away": {
-										"id": 131,
-										"name": "Corinthians",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180364",
-								"fullDate": "2024-04-13T16:30",
-								"date": "2024-04-13",
-								"hour": "16:30",
-								"teams": {
-									"home": {
-										"id": 140,
-										"name": "Criciuma",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									},
-									"away": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							}
-						]
+						"matches": []
 					},
 					"away": {
 						"id": 124,
@@ -11082,1181 +10230,112 @@
 						"winner": false,
 						"stats": {
 							"all-matches": {
-								"name": "Comportamiento general en los últimos 28 partidos",
+								"name": "Comportamiento general en los últimos 0 partidos",
 								"items": {
-									"total_de_partidos": 28,
-									"total_de_goles_anotados": 27,
-									"total_de_goles_recibidos": 30,
-									"promedio_de_goles_anotados": 1,
-									"promedio_de_goles_recibidos": 1.1,
-									"partidos_ganados": 9,
-									"partidos_empatados": 8,
-									"partidos_perdidos": 11,
-									"partidos_con_goles_anotados": 18,
-									"partidos_con_goles_recibidos": 19,
-									"puntos_ganados": 35,
-									"porcentaje_de_puntos_ganados": 41.7
+									"total_de_partidos": 0,
+									"total_de_goles_anotados": 0,
+									"total_de_goles_recibidos": 0,
+									"promedio_de_goles_anotados": 0,
+									"promedio_de_goles_recibidos": 0,
+									"partidos_ganados": 0,
+									"partidos_empatados": 0,
+									"partidos_perdidos": 0,
+									"partidos_con_goles_anotados": 0,
+									"partidos_con_goles_recibidos": 0,
+									"puntos_ganados": 0,
+									"porcentaje_de_puntos_ganados": 0
 								}
 							},
 							"all-home-matches": {
-								"name": "Comportamiento como local en los últimos 28 partidos",
+								"name": "Comportamiento como local en los últimos 0 partidos",
 								"items": {
-									"total_de_partidos": 14,
-									"total_de_goles_anotados": 17,
-									"total_de_goles_recibidos": 14,
-									"promedio_de_goles_anotados": 1.2,
-									"promedio_de_goles_recibidos": 1,
-									"partidos_ganados": 5,
-									"partidos_empatados": 6,
-									"partidos_perdidos": 3,
-									"partidos_con_goles_anotados": 10,
-									"partidos_con_goles_recibidos": 10,
-									"puntos_ganados": 21,
-									"porcentaje_de_puntos_ganados": 50
+									"total_de_partidos": 0,
+									"total_de_goles_anotados": 0,
+									"total_de_goles_recibidos": 0,
+									"promedio_de_goles_anotados": 0,
+									"promedio_de_goles_recibidos": 0,
+									"partidos_ganados": 0,
+									"partidos_empatados": 0,
+									"partidos_perdidos": 0,
+									"partidos_con_goles_anotados": 0,
+									"partidos_con_goles_recibidos": 0,
+									"puntos_ganados": 0,
+									"porcentaje_de_puntos_ganados": 0
 								}
 							},
 							"all-away-matches": {
-								"name": "Comportamiento como visitante en los últimos 28 partidos",
+								"name": "Comportamiento como visitante en los últimos 0 partidos",
 								"items": {
-									"total_de_partidos": 14,
-									"total_de_goles_anotados": 10,
-									"total_de_goles_recibidos": 16,
-									"promedio_de_goles_anotados": 0.7,
-									"promedio_de_goles_recibidos": 1.1,
-									"partidos_ganados": 4,
-									"partidos_empatados": 2,
-									"partidos_perdidos": 8,
-									"partidos_con_goles_anotados": 8,
-									"partidos_con_goles_recibidos": 9,
-									"puntos_ganados": 14,
-									"porcentaje_de_puntos_ganados": 33.3
+									"total_de_partidos": 0,
+									"total_de_goles_anotados": 0,
+									"total_de_goles_recibidos": 0,
+									"promedio_de_goles_anotados": 0,
+									"promedio_de_goles_recibidos": 0,
+									"partidos_ganados": 0,
+									"partidos_empatados": 0,
+									"partidos_perdidos": 0,
+									"partidos_con_goles_anotados": 0,
+									"partidos_con_goles_recibidos": 0,
+									"puntos_ganados": 0,
+									"porcentaje_de_puntos_ganados": 0
 								}
 							},
 							"last-matches": {
 								"name": "Comportamiento general en los últimos 5 partidos",
 								"items": {
-									"total_de_partidos": 5,
-									"total_de_goles_anotados": 5,
-									"total_de_goles_recibidos": 3,
-									"promedio_de_goles_anotados": 1,
-									"promedio_de_goles_recibidos": 0.6,
-									"partidos_ganados": 3,
-									"partidos_empatados": 1,
-									"partidos_perdidos": 1,
-									"partidos_con_goles_anotados": 4,
-									"partidos_con_goles_recibidos": 1,
-									"puntos_ganados": 10,
-									"porcentaje_de_puntos_ganados": 66.7
+									"total_de_partidos": 0,
+									"total_de_goles_anotados": 0,
+									"total_de_goles_recibidos": 0,
+									"promedio_de_goles_anotados": 0,
+									"promedio_de_goles_recibidos": 0,
+									"partidos_ganados": 0,
+									"partidos_empatados": 0,
+									"partidos_perdidos": 0,
+									"partidos_con_goles_anotados": 0,
+									"partidos_con_goles_recibidos": 0,
+									"puntos_ganados": 0,
+									"porcentaje_de_puntos_ganados": 0
 								}
 							},
 							"last-home-matches": {
 								"name": "Comportamiento en los últimos 3 partidos como local",
 								"items": {
-									"total_de_partidos": 2,
-									"total_de_goles_anotados": 1,
+									"total_de_partidos": 0,
+									"total_de_goles_anotados": 0,
 									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0.5,
+									"promedio_de_goles_anotados": 0,
 									"promedio_de_goles_recibidos": 0,
-									"partidos_ganados": 1,
-									"partidos_empatados": 1,
+									"partidos_ganados": 0,
+									"partidos_empatados": 0,
 									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 1,
+									"partidos_con_goles_anotados": 0,
 									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 4,
-									"porcentaje_de_puntos_ganados": 66.7
+									"puntos_ganados": 0,
+									"porcentaje_de_puntos_ganados": 0
 								}
 							},
 							"last-away-matches": {
 								"name": "Comportamiento en los últimos 3 partidos como visitante",
 								"items": {
-									"total_de_partidos": 2,
-									"total_de_goles_anotados": 3,
-									"total_de_goles_recibidos": 3,
-									"promedio_de_goles_anotados": 1.5,
-									"promedio_de_goles_recibidos": 1.5,
-									"partidos_ganados": 1,
+									"total_de_partidos": 0,
+									"total_de_goles_anotados": 0,
+									"total_de_goles_recibidos": 0,
+									"promedio_de_goles_anotados": 0,
+									"promedio_de_goles_recibidos": 0,
+									"partidos_ganados": 0,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 1,
-									"partidos_con_goles_anotados": 2,
-									"partidos_con_goles_recibidos": 1,
-									"puntos_ganados": 3,
-									"porcentaje_de_puntos_ganados": 50
+									"partidos_perdidos": 0,
+									"partidos_con_goles_anotados": 0,
+									"partidos_con_goles_recibidos": 0,
+									"puntos_ganados": 0,
+									"porcentaje_de_puntos_ganados": 0
 								}
 							}
 						},
-						"matches": [
-							{
-								"id": "1180558",
-								"fullDate": "2024-08-04T14:00",
-								"date": "2024-08-04",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": null
-									},
-									"away": {
-										"id": 118,
-										"name": "Bahia",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1251960",
-								"fullDate": "2024-08-01T17:00",
-								"date": "2024-08-01",
-								"hour": "17:00",
-								"teams": {
-									"home": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 3,
-										"winner": true
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 73,
-									"name": "Copa Do Brasil",
-									"type": "Cup",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 3
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180551",
-								"fullDate": "2024-07-28T09:00",
-								"date": "2024-07-28",
-								"hour": "09:00",
-								"teams": {
-									"home": {
-										"id": 794,
-										"name": "RB Bragantino",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": true
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180538",
-								"fullDate": "2024-07-24T19:30",
-								"date": "2024-07-24",
-								"hour": "19:30",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": true
-									},
-									"away": {
-										"id": 121,
-										"name": "Palmeiras",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180533",
-								"fullDate": "2024-07-21T18:00",
-								"date": "2024-07-21",
-								"hour": "18:00",
-								"teams": {
-									"home": {
-										"id": 1193,
-										"name": "Cuiaba",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": true
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180518",
-								"fullDate": "2024-07-16T19:00",
-								"date": "2024-07-16",
-								"hour": "19:00",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": null
-									},
-									"away": {
-										"id": 134,
-										"name": "Atletico Paranaense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180514",
-								"fullDate": "2024-07-11T18:00",
-								"date": "2024-07-11",
-								"hour": "18:00",
-								"teams": {
-									"home": {
-										"id": 140,
-										"name": "Criciuma",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180502",
-								"fullDate": "2024-07-07T14:00",
-								"date": "2024-07-07",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 154,
-										"name": "Fortaleza EC",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": true
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180488",
-								"fullDate": "2024-07-04T18:00",
-								"date": "2024-07-04",
-								"hour": "18:00",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									},
-									"away": {
-										"id": 119,
-										"name": "Internacional",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180475",
-								"fullDate": "2024-06-30T14:00",
-								"date": "2024-06-30",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 130,
-										"name": "Gremio",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": true
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180468",
-								"fullDate": "2024-06-27T17:00",
-								"date": "2024-06-27",
-								"hour": "17:00",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									},
-									"away": {
-										"id": 136,
-										"name": "Vitoria",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": true
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180458",
-								"fullDate": "2024-06-23T14:00",
-								"date": "2024-06-23",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									},
-									"away": {
-										"id": 127,
-										"name": "Flamengo",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": true
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180446",
-								"fullDate": "2024-06-19T19:30",
-								"date": "2024-06-19",
-								"hour": "19:30",
-								"teams": {
-									"home": {
-										"id": 135,
-										"name": "Cruzeiro",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180438",
-								"fullDate": "2024-06-15T19:00",
-								"date": "2024-06-15",
-								"hour": "19:00",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": false
-									},
-									"away": {
-										"id": 144,
-										"name": "Atletico Goianiense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180429",
-								"fullDate": "2024-06-11T18:00",
-								"date": "2024-06-11",
-								"hour": "18:00",
-								"teams": {
-									"home": {
-										"id": 120,
-										"name": "Botafogo",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": true
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180418",
-								"fullDate": "2024-06-01T16:30",
-								"date": "2024-06-01",
-								"hour": "16:30",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									},
-									"away": {
-										"id": 152,
-										"name": "Juventude",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1187274",
-								"fullDate": "2024-05-29T19:30",
-								"date": "2024-05-29",
-								"hour": "19:30",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 3,
-										"winner": true
-									},
-									"away": {
-										"id": 2553,
-										"name": "Alianza Lima",
-										"country": null,
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": false,
-									"id": 13,
-									"name": "CONMEBOL Libertadores",
-									"type": "Cup",
-									"country": { "name": "World", "flag": "🌎", "code": "World" },
-									"season": { "year": 2024, "startDate": "2024-07-01" },
-									"priority": 3
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1196755",
-								"fullDate": "2024-05-22T17:00",
-								"date": "2024-05-22",
-								"hour": "17:00",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									},
-									"away": {
-										"id": 155,
-										"name": "Sampaio Correa",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 73,
-									"name": "Copa Do Brasil",
-									"type": "Cup",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 3
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1187261",
-								"fullDate": "2024-05-16T17:00",
-								"date": "2024-05-16",
-								"hour": "17:00",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									},
-									"away": {
-										"id": 1176,
-										"name": "Cerro Porteno",
-										"country": null,
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": false,
-									"id": 13,
-									"name": "CONMEBOL Libertadores",
-									"type": "Cup",
-									"country": { "name": "World", "flag": "🌎", "code": "World" },
-									"season": { "year": 2024, "startDate": "2024-07-01" },
-									"priority": 3
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180411",
-								"fullDate": "2024-05-13T18:00",
-								"date": "2024-05-13",
-								"hour": "18:00",
-								"teams": {
-									"home": {
-										"id": 126,
-										"name": "Sao Paulo",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1187247",
-								"fullDate": "2024-05-09T19:00",
-								"date": "2024-05-09",
-								"hour": "19:00",
-								"teams": {
-									"home": {
-										"id": 2315,
-										"name": "Colo Colo",
-										"country": null,
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": true
-									}
-								},
-								"league": {
-									"enabled": false,
-									"id": 13,
-									"name": "CONMEBOL Libertadores",
-									"type": "Cup",
-									"country": { "name": "World", "flag": "🌎", "code": "World" },
-									"season": { "year": 2024, "startDate": "2024-07-01" },
-									"priority": 3
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180398",
-								"fullDate": "2024-05-04T14:00",
-								"date": "2024-05-04",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": null
-									},
-									"away": {
-										"id": 1062,
-										"name": "Atletico-MG",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1196754",
-								"fullDate": "2024-05-01T14:00",
-								"date": "2024-05-01",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 155,
-										"name": "Sampaio Correa",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 73,
-									"name": "Copa Do Brasil",
-									"type": "Cup",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 3
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180390",
-								"fullDate": "2024-04-28T14:00",
-								"date": "2024-04-28",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 131,
-										"name": "Corinthians",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 3,
-										"winner": true
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1187230",
-								"fullDate": "2024-04-25T17:00",
-								"date": "2024-04-25",
-								"hour": "17:00",
-								"teams": {
-									"home": {
-										"id": 1176,
-										"name": "Cerro Porteno",
-										"country": null,
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": null
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 0,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": false,
-									"id": 13,
-									"name": "CONMEBOL Libertadores",
-									"type": "Cup",
-									"country": { "name": "World", "flag": "🌎", "code": "World" },
-									"season": { "year": 2024, "startDate": "2024-07-01" },
-									"priority": 3
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180378",
-								"fullDate": "2024-04-20T14:00",
-								"date": "2024-04-20",
-								"hour": "14:00",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									},
-									"away": {
-										"id": 133,
-										"name": "Vasco DA Gama",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180367",
-								"fullDate": "2024-04-16T19:30",
-								"date": "2024-04-16",
-								"hour": "19:30",
-								"teams": {
-									"home": {
-										"id": 118,
-										"name": "Bahia",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": true
-									},
-									"away": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 1,
-										"winner": false
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							},
-							{
-								"id": "1180358",
-								"fullDate": "2024-04-13T19:00",
-								"date": "2024-04-13",
-								"hour": "19:00",
-								"teams": {
-									"home": {
-										"id": 124,
-										"name": "Fluminense",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": null
-									},
-									"away": {
-										"id": 794,
-										"name": "RB Bragantino",
-										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-										"position": null,
-										"featured": false,
-										"score": 2,
-										"winner": null
-									}
-								},
-								"league": {
-									"enabled": true,
-									"id": 71,
-									"name": "Serie A",
-									"type": "League",
-									"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
-									"season": { "year": 2024, "startDate": "2024-04-13" },
-									"priority": 2
-								},
-								"type": "PLAYED_MATCH",
-								"played": true
-							}
-						]
+						"matches": []
 					}
 				},
 				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de copa local o internacional",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": true,
-										"description": "El local tiene un promedio de goles anotados como local alto",
-										"explanation": "El local tiene un promedio de goles anotados como local mayor a 1 | (1.5)"
-									},
-									{
-										"fulfilled": true,
-										"description": "El visitante tiene un promedio de goles recibidos como visitante alto",
-										"explanation": "El visitante tiene un promedio de goles recibidos como visitante mayor o igual a 1 | (1.1)"
-									}
-								],
-								"fulfilled": true
-							}
-						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
-						"results": {
-							"winning": true,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": false
-						}
-					},
 					{
 						"id": "do-local",
 						"name": "Doble oportunidad (Local)",
@@ -12269,12 +10348,44 @@
 									{
 										"fulfilled": false,
 										"description": "El local debe haber sumado al menos 10 de 15 puntos en los ultimos 5 partidos",
-										"explanation": "El local sumó menos de 10 puntos en los ultimos 5 partidos | (5/15)"
+										"explanation": "El local sumó menos de 10 puntos en los ultimos 5 partidos | (0/15)"
 									},
 									{
 										"fulfilled": true,
 										"description": "El visitante debe haber sumado menos de 10 puntos en los ultimos 5 partidos",
-										"explanation": "El visitante sumó menos de 10 puntos en los ultimos 5 partidos | (10/15)"
+										"explanation": "El visitante sumó menos de 10 puntos en los ultimos 5 partidos | (0/15)"
+									}
+								],
+								"fulfilled": false
+							}
+						],
+						"trustLevel": 0,
+						"trustLevelLabel": "LOW",
+						"results": {
+							"winning": false,
+							"lostWinning": true,
+							"lost": false,
+							"skippedLost": false
+						}
+					},
+					{
+						"id": "gpe-local",
+						"name": "Gol del equipo local",
+						"shortName": "GL",
+						"criteria": [
+							{
+								"description": "Criterios mas confiables para el local como favorito en un partido de copa local o internacional",
+								"trustLevel": 100,
+								"items": [
+									{
+										"fulfilled": false,
+										"description": "El local tiene un promedio de goles anotados como local alto",
+										"explanation": "El local tiene un promedio de goles anotados como local menor o igual a 1 | (0)"
+									},
+									{
+										"fulfilled": false,
+										"description": "El visitante tiene un promedio de goles recibidos como visitante alto",
+										"explanation": "El visitante tiene un promedio de goles recibidos como visitante menor a 1 | (0)"
 									}
 								],
 								"fulfilled": false
@@ -12301,12 +10412,12 @@
 									{
 										"fulfilled": false,
 										"description": "El local debe haber sumado al menos 10 de 15 puntos en los ultimos 5 partidos",
-										"explanation": "El local sumó menos de 10 puntos en los ultimos 5 partidos | (5/15)"
+										"explanation": "El local sumó menos de 10 puntos en los ultimos 5 partidos | (0/15)"
 									},
 									{
-										"fulfilled": false,
+										"fulfilled": true,
 										"description": "El visitante debe haber sumado menos de 4 puntos en los ultimos 5 partidos",
-										"explanation": "El visitante sumó mas de 4 puntos en los ultimos 5 partidos | (10/15)"
+										"explanation": "El visitante sumó menos de 4 puntos en los ultimos 5 partidos | (0/15)"
 									}
 								],
 								"fulfilled": false

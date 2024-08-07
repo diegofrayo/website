@@ -1,0 +1,48 @@
+{
+	"details": {
+		"id": "universos-paralelos",
+		"title": "Universos paralelos",
+		"artist": "Jorge Drexler",
+		"album": "Bailar en la cueva",
+		"year": 2014,
+		"country": "🇺🇾",
+		"category": "1|FAVORITE|⭐",
+		"created_at": "2024/08/06",
+		"is_public": true,
+		"in_progress": true,
+		"to_finish": true,
+		"spotify_url": "https://open.spotify.com/track/0NE9wngHDACpcQJ59WuYgU",
+		"youtube_url": "https://youtu.be/roPOeNy_YNI",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Universos Paralelos - Jorge Drexler - Cifra Club",
+				"url": "https://www.cifraclub.com/jorge-drexler/universos-paralelos/",
+				"source": "url"
+			},
+			{
+				"text": "UNIVERSOS PARALELOS, Jorge Drexler: Acordes",
+				"url": "https://acordes.lacuerda.net/jorge_drexler/universos_paralelos-2.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Universos Paralelos - MODO PRINCIPIANTE / Lo que Jorge Drexler NO te cuenta COVER GUITARRA",
+				"url": "https://youtu.be/x6JeI_CQ7ws&t=64s",
+				"source": "youtube"
+			},
+			{
+				"text": "Cómo tocar Universos paralelos de Jorge Drexler (Iván Plata) Tutorial acordes",
+				"url": "https://youtu.be/rsmtywTF_WI",
+				"source": "youtube"
+			},
+			{
+				"text": "Universos Paralelos - Jorge Drexler Cover",
+				"url": "https://youtu.be/K3cbWEfTiF0",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "C7\n   Mi anhelo no está\n              Bm7                       Am7\nmi anhelo se fue detrás de ti siguiéndote\n           G[2]    G7\npor la avenida\n\nC7\n   Ha vuelto a pasar\n              Bm7                       Am7\nmi anhelo volvió a tomar su propia decisión\n                     G[2]   G7\nindependiente de la mía\n\nC7\n   Qué le voy a hacer\n             Bm7                             Am7\nse trata de ti y en eso él y yo vos ya lo sabés\n              G[2]    G7\nopinamos diferente\n\nC7                             Bm7\n   Yo contigo mantengo las distancias\n               Am7         ??4\nmi anhelo las rompe alegremente\n\n  C7        Bm7         Am7        G   G7\nLlévate del aire el perfume de tu pelo\n    C7                        Bm7\nno ves que yo no sé qué hacer\n                           Em7            A7\ncon mis dos universos paralelos....  paralelos"
+}
