@@ -435,8 +435,8 @@ function FixtureMatch({
 		if (filter === "Ganados") {
 			output = matches.filter((item) => {
 				return (
-					(item.teams.home.name === teamName && item.teams.home.winner === true) ||
-					(item.teams.away.name === teamName && item.teams.away.winner === true)
+					(item.teams.home.name === teamName && item.teams.home.result === "WIN") ||
+					(item.teams.away.name === teamName && item.teams.away.result === "WIN")
 				);
 			});
 		}
@@ -444,8 +444,8 @@ function FixtureMatch({
 		if (filter === "Perdidos") {
 			output = matches.filter((item) => {
 				return (
-					(item.teams.home.name === teamName && item.teams.home.winner === false) ||
-					(item.teams.away.name === teamName && item.teams.away.winner === false)
+					(item.teams.home.name === teamName && item.teams.home.result === "LOSE") ||
+					(item.teams.away.name === teamName && item.teams.away.result === "LOSE")
 				);
 			});
 		}
@@ -453,8 +453,8 @@ function FixtureMatch({
 		if (filter === "Empatados") {
 			output = matches.filter((item) => {
 				return (
-					(item.teams.home.name === teamName && item.teams.home.winner === null) ||
-					(item.teams.away.name === teamName && item.teams.away.winner === null)
+					(item.teams.home.name === teamName && item.teams.home.result === "DRAW") ||
+					(item.teams.away.name === teamName && item.teams.away.result === "DRAW")
 				);
 			});
 		}
@@ -713,9 +713,9 @@ function FixtureMatch({
 														key={generateSlug(`${playedMatch.id}-${playedMatch.fullDate}-${index}`)}
 														className={cn(
 															"tw-relative tw-mb-6 tw-rounded-sm tw-border-2 tw-px-4 tw-pb-9 tw-pt-6 last:tw-mb-0",
-															currentTeam.winner === true
+															currentTeam.result === "WIN"
 																? "tw-border-green-500"
-																: currentTeam.winner === false
+																: currentTeam.result === "LOSE"
 																	? "tw-border-red-500"
 																	: "tw-border-yellow-500",
 														)}
@@ -728,16 +728,16 @@ function FixtureMatch({
 															<InlineText
 																className={cn(
 																	"tw-inline-block tw-rounded-sm tw-px-2 tw-py-1 tw-text-xs tw-font-bold tw-uppercase",
-																	currentTeam.winner === true
+																	currentTeam.result === "WIN"
 																		? "tw-border-emerald-500 tw-bg-emerald-500 tw-text-black"
-																		: currentTeam.winner === false
+																		: currentTeam.result === "LOSE"
 																			? "tw-border-rose-500 tw-bg-rose-500 tw-text-black"
 																			: "tw-border-yellow-500 tw-bg-yellow-500 tw-text-black",
 																)}
 															>
-																{currentTeam.winner === true
+																{currentTeam.result === "WIN"
 																	? "Victoria"
-																	: currentTeam.winner === false
+																	: currentTeam.result === "LOSE"
 																		? "Derrota"
 																		: "Empate"}
 															</InlineText>
@@ -1087,7 +1087,7 @@ function ExternalLinks({
 						key={generateSlug(`${reactKey}-${entityId}-${website}`)}
 						variant={Link.variant.SIMPLE}
 						href={`https://www.google.com/search?q=${encodeURIComponent(
-							`${entityName} ${website}`,
+							`${entityName.replace(" World", "")} ${website}`,
 						)}`}
 						isExternalLink
 					>
