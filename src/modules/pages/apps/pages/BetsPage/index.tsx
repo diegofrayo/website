@@ -44,7 +44,7 @@ import type {
 } from "./types";
 import styles from "./styles.module.css";
 
-// import DATA from "../../../../../../public/data/apps/bets/2024-08-05.json"; // NOTE: FOR DX PURPOSES
+// import DATA from "../../../../../../public/data/apps/bets/2024-08-10.json"; // NOTE: FOR DX PURPOSES
 
 function BetsPage() {
 	// --- STATES & REFS ---
@@ -470,7 +470,7 @@ function FixtureMatch({
 				id={match.id}
 				title={
 					<MatchDetails
-						variant="DATE_FIXTURE_MATCH"
+						variant="FIXTURE_MATCH"
 						match={match}
 						className="tw-cursor-pointer"
 					/>
@@ -494,7 +494,7 @@ function FixtureMatch({
 								key={baseKey}
 								title={
 									<Text className="tw-font-bold">
-										<InlineText className="tw-mr-1 tw-inline-block tw-align-middle">
+										<InlineText className="tw-mr-1 tw-inline tw-align-middle">
 											{marketPrediction.name}{" "}
 										</InlineText>
 										<InlineText className="tw-inline-block tw-align-middle tw-text-xxs">
@@ -513,7 +513,7 @@ function FixtureMatch({
 											className="tw-mb-4 last:tw-mb-0"
 										>
 											<Text className="tw-font-bold">
-												<InlineText className="tw-mr-1 tw-inline-block tw-align-middle">
+												<InlineText className="tw-mr-1 tw-inline tw-align-middle">
 													{subCriteria.description}
 												</InlineText>
 												<InlineText className="tw-inline-block tw-align-middle tw-text-xxs">
@@ -609,11 +609,8 @@ function FixtureMatch({
 													className="tw-mb-3 last:tw-mb-0"
 												>
 													<Collapsible
-														title={
-															<Text className="tw-text-lg tw-font-bold tw-text-white">
-																{group.name}
-															</Text>
-														}
+														title={<CollapsibleTitle title={group.name} />}
+														contentClassName=" tw-pt-1"
 														showIcon={false}
 													>
 														<List
@@ -628,8 +625,9 @@ function FixtureMatch({
 																				{jsConvertCase.toSentenceCase(key)}:
 																			</InlineText>{" "}
 																			<InlineText>
-																				{value}
-																				{key === "porcentaje_de_puntos_ganados"
+																				{key.includes("promedio_de_partidos") ? value * 100 : value}
+																				{key === "porcentaje_de_puntos_ganados" ||
+																				key.startsWith("promedio_de_partidos_")
 																					? "%"
 																					: key === "puntos_ganados"
 																						? `/${group.items.total_de_partidos * 3}`
@@ -744,6 +742,7 @@ function FixtureMatch({
 														</Block>
 
 														<MatchDetails
+															teamId={team.id}
 															match={playedMatch}
 															variant="PLAYED_MATCH"
 														/>
@@ -763,7 +762,7 @@ function FixtureMatch({
 
 	return (
 		<MatchDetails
-			variant="DATE_FIXTURE_MATCH"
+			variant="FIXTURE_MATCH"
 			match={match}
 			className="tw-cursor-pointer"
 			onClick={handleSelectMatchClick}
@@ -786,19 +785,19 @@ function LeagueStandings({ topKey, data }: { topKey: string; data: T_LeagueStand
 				<thead>
 					<tr className="">
 						<th className="tw-p-1">#</th>
-						<th className="tw-p-1 tw-text-left">Equipo</th>
-						<th className="tw-w-20 tw-p-1">Puntos</th>
-						<th className="tw-w-16 tw-p-1">PJ</th>
-						<th className="tw-w-16 tw-p-1">GF</th>
-						<th className="tw-w-16 tw-p-1">GC</th>
-						<th className="tw-w-16 tw-p-1">GD</th>
-						<th className="tw-w-16 tw-p-1">PJL</th>
-						<th className="tw-w-16 tw-p-1">GFL</th>
-						<th className="tw-w-16 tw-p-1">PJV</th>
-						<th className="tw-w-16 tw-p-1">GFV</th>
-						<th className="tw-w-16 tw-p-1">%GF</th>
-						<th className="tw-w-16 tw-p-1">%GFL</th>
-						<th className="tw-w-16 tw-p-1">%GFV</th>
+						<th className="tw-whitespace-nowrap tw-p-1 tw-text-left">Equipo</th>
+						<th className="tw-w-20 tw-whitespace-nowrap tw-p-1">Puntos</th>
+						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">PJ</th>
+						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GF</th>
+						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GC</th>
+						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GD</th>
+						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">PJL</th>
+						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GFL</th>
+						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">PJV</th>
+						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GFV</th>
+						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">%GF</th>
+						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">%GFL</th>
+						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">%GFV</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -871,18 +870,25 @@ function MatchDetails({
 	match,
 	variant,
 	className,
+	teamId,
 	onClick,
 	...rest
 }: {
 	match: T_FixtureMatch | T_PlayedMatch;
-	variant: "MARKET_FIXTURE_MATCH" | "DATE_FIXTURE_MATCH" | "PLAYED_MATCH";
+	variant: "FIXTURE_MATCH" | "PLAYED_MATCH";
+	teamId?: number;
 	className?: string;
 	onClick?: () => void;
 }) {
 	// --- VARS ---
-	const isMarketVariant = variant === "MARKET_FIXTURE_MATCH";
 	const { isMatchFinished, isMatchInProgress } = checkMatchStatus(match);
-	const isPlayedMatchVariant = match.type === "PLAYED_MATCH";
+	const isFixturePlayedMatchType = match.type === "FIXTURE_PLAYED_MATCH";
+	const isPlayedMatchType = match.type === "PLAYED_MATCH";
+	const isMatchPlayed = isFixturePlayedMatchType || isPlayedMatchType;
+	const goalsInPeriodsClasses = {
+		home: match.teams.home.id === teamId ? "tw-opacity-1" : "tw-opacity-50",
+		away: match.teams.away.id === teamId ? "tw-opacity-1" : "tw-opacity-50",
+	};
 
 	// --- HANDLERS ---
 	function handleCopyMatchIdClick(event: DR.React.Events.OnClickEvent<HTMLButtonElement>) {
@@ -891,7 +897,10 @@ function MatchDetails({
 
 	return (
 		<Block
-			className={cn("tw-relative tw-rounded-md tw-bg-stone-800 tw-p-2 md:tw-p-6", className)}
+			className={cn(
+				"tw-relative tw-rounded-md tw-bg-stone-800 tw-p-2 tw-pb-8 md:tw-p-6 md:tw-pb-10",
+				className,
+			)}
 			onClick={onClick}
 			{...rest}
 		>
@@ -907,18 +916,17 @@ function MatchDetails({
 						teamSide="away"
 					/>
 				</Block>
+
 				<Block className="tw-w-16 tw-flex-shrink-0 tw-py-4 tw-text-right">
-					{isMarketVariant ? (
-						<Text>{`${match.date} | ${match.hour}`}</Text>
-					) : isPlayedMatchVariant || isMatchFinished ? (
+					{isMatchPlayed || isMatchFinished ? (
 						<Block className="tw-text-right tw-text-xs md:tw-text-center">
-							{isPlayedMatchVariant ? (
+							{isPlayedMatchType ? (
 								<Text className="tw-font-bold">
 									{replaceAll(match.date, "2024", "24").split("-").reverse().join("/")}
 								</Text>
 							) : null}
 							<Text className="tw-font-bold">{match.hour}</Text>
-							{isPlayedMatchVariant ? null : <Text>Final del partido</Text>}
+							{isMatchPlayed ? null : <Text>Final del partido</Text>}
 						</Block>
 					) : (
 						<Text>{match.hour}</Text>
@@ -934,24 +942,7 @@ function MatchDetails({
 					/>
 				) : null}
 
-				<ComponentWithAuth className="tw-absolute tw-bottom-1 tw-right-1">
-					<CopyToClipboardPopover textToCopy={match.id}>
-						<Button
-							variant={Button.variant.SIMPLE}
-							onClick={handleCopyMatchIdClick}
-						>
-							<InlineText className="tw-mr-0.5 tw-hidden tw-align-middle tw-text-xs lg:tw-inline-block">
-								{match.id}
-							</InlineText>
-							<Icon
-								icon={Icon.icon.COPY}
-								size="tw-wh-4"
-							/>
-						</Button>
-					</CopyToClipboardPopover>
-				</ComponentWithAuth>
-
-				{isMatchFinished && !isPlayedMatchVariant ? (
+				{isMatchFinished && !isPlayedMatchType ? (
 					<Block
 						className={cn(
 							"tw-absolute tw-right-2 tw-top-2 tw-mx-auto tw-h-1 tw-w-4 tw-rounded-sm tw-bg-yellow-500",
@@ -960,12 +951,69 @@ function MatchDetails({
 				) : null}
 			</Block>
 
-			{isPlayedMatchVariant ? (
-				<Block className="tw-absolute tw--bottom-5 tw-left-0 tw-w-full tw-text-center">
-					<InlineText className="tw-rounded-b-md tw-bg-stone-800 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-white tw-underline">
-						{match.league.name}
-					</InlineText>
-				</Block>
+			{isPlayedMatchType ? (
+				<React.Fragment>
+					<Block className="tw-my-6 tw-flex tw-h-4 tw-justify-between tw-bg-stone-900">
+						<Block className="tw-relative tw-flex tw-w-2/5 tw-justify-center tw-gap-2">
+							{createArray(match.teams.home.score.firstHalf.for).map((index) => {
+								return (
+									<Icon
+										key={generateSlug(
+											`${match.id}-${match.teams.home.name}-firstHalf-for-${index}`,
+										)}
+										icon={Icon.icon.SOCCER}
+										size={24}
+										wrapperClassName={cn(goalsInPeriodsClasses.home)}
+									/>
+								);
+							})}
+							{createArray(match.teams.away.score.firstHalf.for).map((index) => {
+								return (
+									<Icon
+										key={generateSlug(
+											`${match.id}-${match.teams.away.name}-firstHalf-for-${index}`,
+										)}
+										icon={Icon.icon.SOCCER}
+										size={24}
+										wrapperClassName={cn(goalsInPeriodsClasses.away)}
+									/>
+								);
+							})}
+						</Block>
+						<Block className="tw-bg-stone-700 tw-px-2 tw-text-xs tw-font-bold">HT</Block>
+						<Block className="tw-relative tw-flex tw-w-2/5 tw-justify-center tw-gap-2">
+							{createArray(match.teams.home.score.secondHalf.for).map((index) => {
+								return (
+									<Icon
+										key={generateSlug(
+											`${match.id}-${match.teams.home.name}-secondHalf-for-${index}`,
+										)}
+										icon={Icon.icon.SOCCER}
+										size={24}
+										wrapperClassName={cn(goalsInPeriodsClasses.home)}
+									/>
+								);
+							})}
+							{createArray(match.teams.away.score.secondHalf.for).map((index) => {
+								return (
+									<Icon
+										key={generateSlug(
+											`${match.id}-${match.teams.away.name}-secondHalf-for-${index}`,
+										)}
+										icon={Icon.icon.SOCCER}
+										size={24}
+										wrapperClassName={cn(goalsInPeriodsClasses.away)}
+									/>
+								);
+							})}
+						</Block>
+					</Block>
+					<Block className="tw-absolute tw--bottom-5 tw-left-0 tw-w-full tw-text-center">
+						<InlineText className="tw-rounded-b-md tw-bg-stone-800 tw-px-3 tw-py-1 tw-text-xs tw-font-bold tw-text-white tw-underline">
+							{match.league.name}
+						</InlineText>
+					</Block>
+				</React.Fragment>
 			) : (
 				<Block className="tw-mt-3 tw-flex tw-flex-wrap tw-gap-2 tw-pr-6 empty:tw-mt-0">
 					{match.predictions.map((marketPrediction) => {
@@ -1011,6 +1059,30 @@ function MatchDetails({
 					})}
 				</Block>
 			)}
+
+			<ComponentWithAuth className="tw-absolute tw-bottom-1 tw-left-0 tw-flex tw-w-full tw-justify-between tw-pl-2 tw-pr-2 md:tw-pl-6 md:tw-pr-5">
+				<ExternalLinks
+					reactKey={match.date}
+					entityId={match.id}
+					entityName={`${match.teams.home.name} vs ${match.teams.away.name}`}
+				/>
+
+				<CopyToClipboardPopover textToCopy={match.id}>
+					<Button
+						variant={Button.variant.SIMPLE}
+						className="tw-relative tw--top-0.5"
+						onClick={handleCopyMatchIdClick}
+					>
+						<InlineText className="tw-mr-0.5 tw-hidden tw-align-middle tw-text-xs lg:tw-inline-block">
+							{match.id}
+						</InlineText>
+						<Icon
+							icon={Icon.icon.COPY}
+							size="tw-wh-4"
+						/>
+					</Button>
+				</CopyToClipboardPopover>
+			</ComponentWithAuth>
 		</Block>
 	);
 }
@@ -1055,7 +1127,7 @@ function MatchTeamDetails({
 			</InlineText>
 			{match.played ? (
 				<InlineText className="tw-w-6 tw-text-center tw-font-bold">
-					{match.teams[teamSide].score}
+					{match.teams[teamSide].score.fullTime}
 				</InlineText>
 			) : null}
 		</Block>
@@ -1068,34 +1140,40 @@ function ExternalLinks({
 	entityName,
 }: {
 	reactKey: string;
-	entityId: number;
+	entityId: string | number;
 	entityName: string;
 }) {
 	// --- VARS ---
 	const STATISTICS_WEBSITES = [
-		"365scores.com",
-		"footystats.org",
-		"soccerstats.com",
-		"flashscore.co",
+		{ long: "365scores.com", short: "365" },
+		{ long: "footystats.org", short: "footy" },
+		{ long: "soccerstats.com", short: "soccer" },
+		{ long: "flashscore.co", short: "flash" },
 	];
+
+	// --- HANDLERS ---
+	function handleClick(event: DR.React.Events.OnClickEvent<HTMLAnchorElement>) {
+		event.stopPropagation();
+	}
 
 	return (
 		<Block className="tw-flex tw-flex-wrap tw-gap-x-3 tw-gap-y-0">
 			{STATISTICS_WEBSITES.map((website) => {
 				return (
 					<Link
-						key={generateSlug(`${reactKey}-${entityId}-${website}`)}
+						key={generateSlug(`${reactKey}-${entityId}-${website.short}`)}
 						variant={Link.variant.SIMPLE}
 						href={`https://www.google.com/search?q=${encodeURIComponent(
-							`${entityName.replace(" World", "")} ${website}`,
+							`${entityName.replace(" World", "")} ${website.long}`,
 						)}`}
+						onClick={handleClick}
 						isExternalLink
 					>
 						<Icon
 							icon={Icon.icon.EXTERNAL_LINK}
 							size={12}
 						/>
-						<InlineText className="tw-ml-0.5 tw-text-xs">{website}</InlineText>
+						<InlineText className="tw-ml-0.5 tw-text-xs">{website.short}</InlineText>
 					</Link>
 				);
 			})}

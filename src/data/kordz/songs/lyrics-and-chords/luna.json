@@ -1,0 +1,43 @@
+{
+	"details": {
+		"id": "luna",
+		"title": "Luna",
+		"artist": "Zoé",
+		"album": "Reptilectric",
+		"year": 2008,
+		"country": "🇲🇽",
+		"category": "2|WELL_DONE|👍",
+		"created_at": "2024/08/09",
+		"is_public": true,
+		"in_progress": true,
+		"to_finish": true,
+		"spotify_url": "https://open.spotify.com/track/7b3k8I1fncAzbk9PHnLkbX",
+		"youtube_url": "https://youtu.be/W7YK-Q_eZlE",
+		"assets": {},
+		"sources": [
+			{
+				"text": "LUNA, Zoe: Acordes",
+				"url": "https://acordes.lacuerda.net/zoe/luna-6.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Luna - Zoé | Diana Salas (Cover)",
+				"url": "https://youtu.be/NC1WhDMPipY",
+				"source": "youtube"
+			},
+			{
+				"text": "Luna ZOE Cover Guitarra Acustica Unplugged Demo Christianvib",
+				"url": "https://youtu.be/2RojrGMlQEY",
+				"source": "youtube"
+			},
+			{
+				"text": "Cómo Tocar | Luna - Zoé",
+				"url": "https://youtu.be/gf2k8XVGNjQ",
+				"source": "youtube"
+			}
+		],
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "   F[2]          G[4]       Am            G[4]\nEntiendo que no puedo suplicarle una vez más\n      F[2]      G[4]       Am        G[4]\npero nada se detiene solo vivo para ti\n\n F[2]         G[4]          Am            G[4]\nDame solo un beso que me alcance hasta morir\n         F[2]         G[4]         Am           G[4]\ncomo un vicio que me duele quiero mirarte a los ojos\n\n\nF[2] G[4] Am G[4] | (x2)\n\n\n   F[2]          G[4]\nY cuando te me acercas\n       Am        G[4]\nse acelera mi motor\n\n        F[2]\nMe das fiebre\n         G[4]       Am            G[4]\nme hago fuego y me vuelvo a consumir\n\n F[2]         G[4]          Am            G[4]\nDame solo un beso que me alcance hasta morir\n         F[2]         G[4]         Am           G[4]\ncomo un vicio que me duele quiero mirarte a los ojos\n\n\n F[2]            G[4]\nLuna, no me abandones mas\n                F[2]\nque tiendo a recuperarme\n                    G[4]\nen la cuna de tus cráteres\n\n   F[2]               G[4]\nSilencio, se abre la tierra\n                F[2]\ny se alzan los mares\n                  G[4]\nal compas del volcán\n\n\nF[2] G[4] Am G[4] | (x2)\n\n\n   F[2]          G[4]\nY cuando te me acercas\n       Am        G[4]\nse acelera mi motor\n\n        F[2]\nMe das fiebre\n         G[4]       Am            G[4]\nme hago fuego y me vuelvo a consumir\n\n F[2]         G[4]          Am            G[4]\nDame solo un beso que me alcance hasta morir\n         F[2]         G[4]         Am           G[4]\ncomo un vicio que me duele quiero mirarte a los ojos\n\n\n F[2]            G[4]\nLuna, no me abandones mas\n                F[2]\nque tiendo a recuperarme\n                    G[4]\nen la cuna de tus cráteres\n\n   F[2]               G[4]\nSilencio, se abre la tierra\n                F[2]\ny se alzan los mares\n                  G[4]\nal compas del volcán"
+}
