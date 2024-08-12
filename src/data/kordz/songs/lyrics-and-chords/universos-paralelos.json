@@ -41,6 +41,7 @@
 				"source": "youtube"
 			}
 		],
+		"notes": "\n\t\tMarcar acorde\n\t\tAbajo\n\t\tArriba\n\t\tArriba\n\t\tMarca el bajo\n\t\tAbajo\n\t\tAbajo\n\t",
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",

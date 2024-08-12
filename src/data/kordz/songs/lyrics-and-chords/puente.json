@@ -41,6 +41,7 @@
 				"source": "youtube"
 			}
 		],
+		"notes": "",
 		"chords": []
 	},
 	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{NOTE}\",\n\t\t\treplacement: <Tablature notes=\"La canción se toca con el capo en el traste 3\" />,\n\t\t},\n\t\t{\n\t\t\ttext: \"{PUNTEO}\",\n\t\t\treplacement: (\n\t\t\t\t<ComponentWithAuth withoutContainer>\n\t\t\t\t\t<ImageWithLink\n\t\t\t\t\t\tsrc={DATA.song.assets.punteo}\n\t\t\t\t\t\twidth={500}\n\t\t\t\t\t\theight={277}\n\t\t\t\t\t/>\n\t\t\t\t</ComponentWithAuth>\n\t\t\t),\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",

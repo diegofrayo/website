@@ -26,6 +26,7 @@
 				"source": "lacuerda"
 			}
 		],
+		"notes": "",
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",

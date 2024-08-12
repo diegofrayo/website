@@ -42,6 +42,7 @@
 				"source": "youtube"
 			}
 		],
+		"notes": "",
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",

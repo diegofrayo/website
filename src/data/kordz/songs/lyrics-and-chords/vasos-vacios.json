@@ -31,6 +31,7 @@
 				"source": "youtube"
 			}
 		],
+		"notes": "",
 		"chords": []
 	},
 	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{INTRO}\",\n\t\t\treplacement: (\n\t\t\t\t<Tablature\n\t\t\t\t\tpositions={[\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ space: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 5 },\n\t\t\t\t\t\t{ guitarString: 1 },\n\t\t\t\t\t\t{ space: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ space: 3 },\n\t\t\t\t\t\t{ guitarString: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 1, guitarFret: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t\t{ guitarString: 2 },\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 3 },\n\t\t\t\t\t]}\n\t\t\t\t\tnotes=\"Este intro se toca pulsando la cuerda 3 en el traste 1 y la cuerda 4 en el traste 2. Se repite 4 veces\"\n\t\t\t\t/>\n\t\t\t),\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",

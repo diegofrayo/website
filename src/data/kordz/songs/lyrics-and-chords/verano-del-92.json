@@ -44,6 +44,7 @@
 				"source": "youtube"
 			}
 		],
+		"notes": "",
 		"chords": []
 	},
 	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{PUNTEO_1}\",\n\t\t\treplacement: (\n\t\t\t\t<ComponentWithAuth>\n\t\t\t\t\t<ImageWithLink\n\t\t\t\t\t\tsrc={DATA.song.assets.punteo_1}\n\t\t\t\t\t\talt=\"Rasgueo para el pre-coro\"\n\t\t\t\t\t\twidth={304}\n\t\t\t\t\t\theight={106}\n\t\t\t\t\t/>\n\t\t\t\t\t<MusicTextNote className=\"tw-mt-0.5\">Rasgueo para el pre-coro</MusicTextNote>\n\t\t\t\t</ComponentWithAuth>\n\t\t\t),\n\t\t},\n\t\t{\n\t\t\ttext: \"{PUNTEO_2}\",\n\t\t\treplacement: (\n\t\t\t\t<ComponentWithAuth>\n\t\t\t\t\t<ImageWithLink\n\t\t\t\t\t\tsrc={DATA.song.assets.punteo_2}\n\t\t\t\t\t\talt=\"Rasgueo para el muteo después del coro\"\n\t\t\t\t\t\twidth={304}\n\t\t\t\t\t\theight={106}\n\t\t\t\t\t/>\n\t\t\t\t\t<MusicTextNote className=\"tw-mt-0.5\">\n\t\t\t\t\t\t{\"Rasgueo para el muteo después del coro\"}\n\t\t\t\t\t</MusicTextNote>\n\t\t\t\t</ComponentWithAuth>\n\t\t\t),\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",

@@ -31,6 +31,7 @@
 				"source": "instagram"
 			}
 		],
+		"notes": "",
 		"chords": []
 	},
 	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{NOTE}\",\n\t\t\treplacement: <Tablature notes=\"La canción se toca con el capo en el traste 3\" />,\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",

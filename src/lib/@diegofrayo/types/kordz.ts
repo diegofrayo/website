@@ -25,6 +25,7 @@ type T_SongBase = {
 		url: string;
 		source: "youtube" | "lacuerda" | "url" | "instagram" | "spotify" | "ultimate-guitar";
 	}[];
+	readonly notes: string;
 	readonly assets: DR.Object;
 };
 

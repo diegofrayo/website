@@ -15,6 +15,7 @@
 		"youtube_url": "https://youtu.be/jlzEemNtNGA",
 		"assets": {},
 		"sources": [],
+		"notes": "",
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",

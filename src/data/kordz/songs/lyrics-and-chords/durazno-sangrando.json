@@ -46,6 +46,7 @@
 				"source": "youtube"
 			}
 		],
+		"notes": "",
 		"chords": []
 	},
 	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{INTRO}\",\n\t\t\treplacement: (\n\t\t\t\t<ComponentWithAuth withoutContainer>\n\t\t\t\t\t<Tablature\n\t\t\t\t\t\tnotes={`Pisar: Cejilla en T_9 y T_10,C_2\\n\nTocar: C_2 y C_5 al tiempo, soltar C_2 y tocar la C_1\nPisar: Cejilla en T_7 y T_8,C_2\nTocar: C_2 y C_5 al tiempo, soltar C_2 y tocar la C_3\nHacer esto mismo en T_5 y T_3\nBm7 y rasguear hacia abajo\nAm y rasguear hacia abajo\n(x2)\nAm Cmaj7 E (x2)`}\n\t\t\t\t\t/>\n\t\t\t\t</ComponentWithAuth>\n\t\t\t),\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
