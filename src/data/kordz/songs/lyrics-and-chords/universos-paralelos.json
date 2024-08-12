@@ -9,8 +9,8 @@
 		"category": "1|FAVORITE|⭐",
 		"created_at": "2024/08/06",
 		"is_public": true,
-		"in_progress": true,
-		"to_finish": true,
+		"in_progress": false,
+		"to_finish": false,
 		"spotify_url": "https://open.spotify.com/track/0NE9wngHDACpcQJ59WuYgU",
 		"youtube_url": "https://youtu.be/roPOeNy_YNI",
 		"assets": {},
@@ -26,13 +26,13 @@
 				"source": "lacuerda"
 			},
 			{
-				"text": "Universos Paralelos - MODO PRINCIPIANTE / Lo que Jorge Drexler NO te cuenta COVER GUITARRA",
-				"url": "https://youtu.be/x6JeI_CQ7ws&t=64s",
+				"text": "Cómo tocar Universos paralelos de Jorge Drexler (Iván Plata) Tutorial acordes",
+				"url": "https://youtu.be/rsmtywTF_WI",
 				"source": "youtube"
 			},
 			{
-				"text": "Cómo tocar Universos paralelos de Jorge Drexler (Iván Plata) Tutorial acordes",
-				"url": "https://youtu.be/rsmtywTF_WI",
+				"text": "Universos Paralelos - MODO PRINCIPIANTE / Lo que Jorge Drexler NO te cuenta COVER GUITARRA",
+				"url": "https://youtu.be/x6JeI_CQ7ws&t=64s",
 				"source": "youtube"
 			},
 			{
@@ -44,5 +44,5 @@
 		"chords": []
 	},
 	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
-	"txt": "Cmaj7\n   Mi anhelo no está\n              Bm7                       Am7\nmi anhelo se fue detrás de ti siguiéndote\n           G[2]    G7\npor la avenida\n\nCmaj7\n   Ha vuelto a pasar\n              Bm7                       Am7\nmi anhelo volvió a tomar su propia decisión\n                     G[2]   G7\nindependiente de la mía\n\nCmaj7\n   Qué le voy a hacer\n             Bm7                             Am7\nse trata de ti y en eso él y yo vos ya lo sabés\n              G[2]    G7\nopinamos diferente\n\nCmaj7                          Bm7\n   Yo contigo mantengo las distancias\n               Am7         G   G7\nmi anhelo las rompe alegremente\n\n  Cmaj7     Bm7         Am7        G   G7\nLlévate del aire el perfume de tu pelo\n    Cmaj7                     Bm7\nno ves que yo no sé qué hacer\n                           Em7            A7\ncon mis dos universos paralelos....  paralelos"
+	"txt": "Cmaj7\n   Mi anhelo no está\n              Bm7                       Am7\nmi anhelo se fue detrás de ti siguiéndote\n           G[2]    G7\npor la avenida\n\nCmaj7\n   Ha vuelto a pasar\n              Bm7                       Am7\nmi anhelo volvió a tomar su propia decisión\n                     G[2]   G7\nindependiente de la mía\n\nCmaj7\n   Qué le voy a hacer\n             Bm7                             Am7\nse trata de ti y en eso él y yo vos ya lo sabés\n              G[2]    G7\nopinamos diferente\n\nCmaj7                          Bm7\n   Yo contigo mantengo las distancias\n               Am7         G[2] G7\nmi anhelo las rompe alegremente\n\n  C7        Bm7         Am7        G[2] G7\nLlévate del aire el perfume de tu pelo\n    C7                        Bm7\nno ves que yo no sé qué hacer\n                           Am7            A7\ncon mis dos universos paralelos....  paralelos"
 }

@@ -1122,7 +1122,11 @@ function MatchTeamDetails({
 			>
 				{match.teams[teamSide].name}
 				<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
-					{match.teams[teamSide].featured ? "🟩" : ""}
+					{match.teams[teamSide].tag === "FEATURED"
+						? "🟩"
+						: match.teams[teamSide].tag === "POOR"
+							? "🟥"
+							: ""}
 				</InlineText>
 			</InlineText>
 			{match.played ? (
