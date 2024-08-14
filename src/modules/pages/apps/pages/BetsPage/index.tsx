@@ -1135,11 +1135,15 @@ function MatchTeamDetails({
 						: match.teams[teamSide].tag === "POOR"
 							? "🟥"
 							: ""}
+					{match.teams[teamSide].historic ? "🟨" : ""}
 				</InlineText>
 			</InlineText>
 			{match.played ? (
-				<InlineText className="tw-w-6 tw-text-center tw-font-bold">
-					{match.teams[teamSide].score.fullTime}
+				<InlineText className="tw-w-8 tw-text-center tw-font-bold">
+					{match.teams[teamSide].score.fullTime}{" "}
+					{v.isNumber(match.teams[teamSide].score.extraTime.for)
+						? `(${match.teams[teamSide].score.extraTime.for})`
+						: ""}
 				</InlineText>
 			) : null}
 		</Block>
