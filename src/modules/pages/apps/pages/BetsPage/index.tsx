@@ -263,11 +263,17 @@ function LeagueFixture({
 }) {
 	// --- STATES & REFS ---
 	const [selectedMatch, setSelectedMatch] = React.useState<undefined | T_FixtureMatch>(undefined);
+	const selectedMatchRef = React.useRef<HTMLDivElement | null>(null);
 
 	// --- HANDLERS ---
 	async function onOpenMatchDetailsHandler(match: T_FixtureMatch) {
 		setSelectedMatch(match);
-		goToElement(`${fixtureDate}-${league.id}`);
+
+		if (selectedMatchRef.current) {
+			goToElement(selectedMatchRef.current, {
+				onlyIfElementIsOutsideViewport: true,
+			});
+		}
 	}
 
 	/*
@@ -338,17 +344,19 @@ function LeagueFixture({
 			/>
 			{league.standings.items.length > 0 ? <Space size={1} /> : null}
 
-			{selectedMatch ? (
-				<Block className="tw-border tw-border-yellow-500">
+			<Block
+				ref={selectedMatchRef}
+				className={cn("tw-scroll-mt-3 tw-border-yellow-500", selectedMatch && "tw-border")}
+			>
+				{selectedMatch ? (
 					<FixtureMatch
-						key={selectedMatch.id}
 						topKey={selectedMatch.id}
 						match={selectedMatch}
 						onOpenMatchDetailsHandler={onOpenMatchDetailsHandler}
 						isSelectedMatch
 					/>
-				</Block>
-			) : null}
+				) : null}
+			</Block>
 
 			<Block
 				key={generateSlug(`${fixtureDate}-${league.name}-${league.id}`)}

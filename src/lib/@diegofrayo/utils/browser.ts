@@ -67,10 +67,20 @@ export function setScrollPosition(val: number, behavior?: "auto") {
 	window.scroll({ top: val, behavior: behavior || "smooth" });
 }
 
-export function goToElement(element: string | Element) {
-	(v.isString(element) ? document.getElementById(element) : element)?.scrollIntoView({
-		behavior: "smooth",
-	});
+export function goToElement(
+	element_: string | Element,
+	options?: { onlyIfElementIsOutsideViewport?: boolean },
+) {
+	const element = v.isString(element_) ? document.getElementById(element_) : element_;
+
+	if (!element) return;
+
+	if (
+		(options?.onlyIfElementIsOutsideViewport && !isElementInViewport(element)) ||
+		!options?.onlyIfElementIsOutsideViewport
+	) {
+		element.scrollIntoView({ behavior: "smooth" });
+	}
 }
 
 export function focusElement(element: HTMLElement) {
@@ -181,7 +191,7 @@ export async function downloadComponentAsImage(
 	});
 }
 
-export function isElementInViewport(element: HTMLElement) {
+export function isElementInViewport(element: Element) {
 	const bounding = element.getBoundingClientRect();
 
 	return (

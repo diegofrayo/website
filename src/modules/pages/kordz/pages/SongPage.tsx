@@ -3,10 +3,20 @@ import { useRouter } from "next/router";
 import cn from "classnames";
 
 import { MainLayout, Page } from "~/components/layout";
-import { Block, Button, Icon, InlineText, Modal, Pre, Space, Text } from "~/components/primitive";
+import {
+	Block,
+	Button,
+	Collapsible,
+	Icon,
+	InlineText,
+	Modal,
+	Pre,
+	Space,
+	Text,
+} from "~/components/primitive";
 import { CopyToClipboardPopover, Loader } from "~/components/shared";
 import { ClientRenderComponent } from "~/hocs";
-import { withAuth } from "~/modules/auth";
+import { ComponentWithAuth, withAuth } from "~/modules/auth";
 import { MDXContent } from "~/modules/mdx/client";
 import { ROUTES } from "~/modules/routing";
 import type { T_PageContent } from "~/server/data-loader";
@@ -183,7 +193,6 @@ function SongPage({ cmsContent, songDetails, songContent }: T_SongPageProps) {
 							</Button>
 						</CopyToClipboardPopover>
 					</Block>
-
 					<Block className="tw-max-w-full tw-border-y-4 tw-p-4 dr-border-color-surface-300">
 						<ClientRenderComponent>
 							<Block
@@ -198,7 +207,6 @@ function SongPage({ cmsContent, songDetails, songContent }: T_SongPageProps) {
 							</Block>
 						</ClientRenderComponent>
 					</Block>
-
 					<Block className="tw-p-4 tw-text-center dr-bg-color-surface-200">
 						<Text className="tw-font-bold">Lista de acordes: [{songDetails.chords.length}]</Text>
 						<Pre
@@ -208,6 +216,18 @@ function SongPage({ cmsContent, songDetails, songContent }: T_SongPageProps) {
 							}}
 						/>
 					</Block>
+					{songDetails.notes ? (
+						<ComponentWithAuth className="tw-border-t-4 tw-p-4 dr-bg-color-surface-200 dr-border-color-surface-300">
+							<Collapsible title="Notas">
+								<Pre
+									variant={Pre.variant.BREAK_WITH_BLANK_SPACES}
+									className="tw-text-sm"
+								>
+									{songDetails.notes}
+								</Pre>
+							</Collapsible>
+						</ComponentWithAuth>
+					) : null}
 				</Block>
 				<Space size={2} />
 
