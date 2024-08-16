@@ -3,6 +3,7 @@ import Head from "next/head";
 import Script from "next/script";
 
 import WEBSITE_METADATA from "~/data/metadata.json";
+import { withOnlyClientRender } from "~/hocs";
 import AnalyticsService from "~/modules/analytics";
 import EnvVars from "~/modules/env-vars";
 import { ROUTES } from "~/modules/routing";
@@ -160,8 +161,42 @@ function Page({ children, config }: T_PageProps) {
 				) : null}
 			</Head>
 			{children}
+
+			<WindowSize />
 		</React.Fragment>
 	);
 }
 
 export default Page;
+
+// --- COMPONENTS ---
+
+const WindowSize = withOnlyClientRender(function WindowSize() {
+	const [size, setSize] = React.useState([0, 0]);
+
+	React.useEffect(() => {
+		const updateSize = () => {
+			setSize([window.innerWidth, window.innerHeight]);
+		};
+
+		updateSize();
+
+		window.addEventListener("resize", updateSize);
+
+		return () => window.removeEventListener("resize", updateSize);
+	}, []);
+
+	if (isDevelopmentEnvironment(EnvVars)) {
+		return (
+			<div className="tw-fixed tw-bottom-0 tw-left-0 tw-bg-black/80 tw-p-2.5 tw-font-bold tw-text-white print:tw-hidden">
+				<span>{size.join("x")} | </span>
+				<span className="tw-inline-block sm:tw-hidden">mobile</span>
+				<span className="tw-hidden sm:tw-inline-block md:tw-hidden">sm</span>
+				<span className="tw-hidden md:tw-inline-block lg:tw-hidden">md</span>
+				<span className="tw-hidden lg:tw-inline-block">lg</span>
+			</div>
+		);
+	}
+
+	return null;
+});

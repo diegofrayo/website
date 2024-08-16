@@ -6,7 +6,7 @@
 		"country": { "name": "Iceland", "flag": "🇮🇸", "code": "IS" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 278,
@@ -406,9 +406,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1.7,
-				"promedio_de_goles_anotados_de_local_por_partido": 2,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 1.5
+				"partidos_jugados": 17,
+				"promedio_de_goles_anotados_por_partido": 20.9,
+				"promedio_de_goles_anotados_de_local_por_partido": 24.3,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 18.1
 			}
 		},
 		"matches": [
@@ -2571,7 +2572,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (12<=6/12)"
 									},
 									{
@@ -2696,7 +2697,7 @@
 		"country": { "name": "Colombia", "flag": "🇨🇴", "code": "CO" },
 		"priority": 2,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 1147,
@@ -3360,9 +3361,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 0.9,
-				"promedio_de_goles_anotados_de_local_por_partido": 1.2,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 0.7
+				"partidos_jugados": 6,
+				"promedio_de_goles_anotados_por_partido": 18.8,
+				"promedio_de_goles_anotados_de_local_por_partido": 24.4,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 14.6
 			}
 		},
 		"matches": [
@@ -4067,7 +4069,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (14<=8/20)"
 									},
 									{
@@ -4191,15 +4193,7 @@
 		"type": "Cup",
 		"country": { "name": "World", "flag": "🌎", "code": "World" },
 		"priority": 3,
-		"standings": {
-			"type": "SIMPLE",
-			"items": [],
-			"stats": {
-				"promedio_de_goles_anotados_por_partido": 0,
-				"promedio_de_goles_anotados_de_local_por_partido": 0,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 0
-			}
-		},
+		"standings": { "type": "GROUPS", "items": [] },
 		"matches": [
 			{
 				"id": "1253317",
@@ -7755,15 +7749,7 @@
 		"type": "Cup",
 		"country": { "name": "World", "flag": "🌎", "code": "World" },
 		"priority": 3,
-		"standings": {
-			"type": "SIMPLE",
-			"items": [],
-			"stats": {
-				"promedio_de_goles_anotados_por_partido": 0,
-				"promedio_de_goles_anotados_de_local_por_partido": 0,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 0
-			}
-		},
+		"standings": { "type": "GROUPS", "items": [] },
 		"matches": [
 			{
 				"id": "1274793",

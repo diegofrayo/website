@@ -139,11 +139,13 @@ function ResumePage({ data, cmsContent }: T_ResumePageProps) {
 							</Button>
 						</Block>
 
-						{viewMode === "FULL" ? (
-							<FullMode data={currentData} />
-						) : (
-							<ShortMode data={currentData} />
-						)}
+						<Block className="tw-text-base">
+							{viewMode === "FULL" ? (
+								<FullMode data={currentData} />
+							) : (
+								<ShortMode data={currentData} />
+							)}
+						</Block>
 					</Block>
 				</IntlContext.Provider>
 			</MainLayout>
@@ -160,7 +162,7 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 	const texts = useIntl();
 
 	return (
-		<Block className="tw-bg-white tw-text-base tw-text-black">
+		<Block className="tw-bg-white tw-text-black">
 			<Block
 				is="header"
 				className="tw-border-b tw-border-gray-200 tw-bg-gray-100 tw-p-4"
@@ -229,76 +231,57 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 								className="tw-mb-6 tw-break-inside-avoid last:tw-mb-0"
 							>
 								<Block className="tw-flex tw-items-center tw-justify-between tw-gap-4">
-									{v.isNotEmptyString(item.companyWebsite) ? (
+									{v.isNotEmptyString(item.company.website) ? (
 										<Link
 											variant={Link.variant.SIMPLE}
-											href={item.companyWebsite}
+											href={item.company.website}
 											className="tw-truncate tw-font-bold tw-text-black tw-underline"
 											onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", {
-												item: item.company,
+												item: item.company.name,
 											})}
 											isExternalLink
 										>
-											{item.company}
+											{item.company.name}
 										</Link>
 									) : (
-										<Text className="tw-truncate tw-font-bold tw-text-black">{item.company}</Text>
+										<Text className="tw-truncate tw-font-bold tw-text-black">
+											{item.company.name}
+										</Text>
 									)}
-									<Block className="tw-flex-shrink-0 tw-text-xs tw-lowercase tw-italic">
+									<Block className="tw-flex-shrink-0 tw-text-xs tw-lowercase">
 										{item.startDate} - {item.endDate}
 									</Block>
 								</Block>
 
-								<Block className="tw--mt-0.5 tw-text-sm tw-italic">{item.role}</Block>
+								<Block className="tw--mt-0.5 tw-flex tw-items-center tw-justify-between tw-gap-4 tw-italic">
+									<Text className="tw-text-sm">{item.role}</Text>
+									<Text className="tw-text-xs tw-capitalize">{item.mode}</Text>
+								</Block>
 
 								<Block>
-									{item.description.split("› ").map((line) => {
-										const [contentName, ...rest] = line.split(":");
-										const isTechStackContent = contentName.toLowerCase().includes("stack");
-										const content = rest.join("");
-
-										if (contentName.startsWith("Pro") || !contentName) {
-											return null;
-										}
-
-										if (isTechStackContent) {
+									<List
+										variant={List.variant.SIMPLE}
+										className="tw-ml-1.5 tw-mt-1.5"
+									>
+										{item.description.achievements?.value.map((achievement, index) => {
 											return (
-												<Text
-													key={generateSlug(`${item.id}-${contentName}`)}
-													className="tw-my-1"
-												>
-													<InlineText
-														is="strong"
-														className="tw-mr-1 tw-text-sm"
-													>
-														{contentName}:
-													</InlineText>
-
-													{content.split(",").map((techStackItem) => {
-														return (
-															<TechStackLabel key={`${item.id}-${techStackItem}`}>
-																{techStackItem}
-															</TechStackLabel>
-														);
-													})}
-												</Text>
+												<List.Item key={generateSlug(`${item.id}-achievement-${index}`)}>
+													{achievement}
+												</List.Item>
 											);
-										}
-
-										if (content.includes("\n")) {
-											return (
-												<Pre
-													key={generateSlug(`${item.id}-${contentName}`)}
-													variant={Pre.variant.BREAK_WITH_BLANK_SPACES}
-													className="tw-text-base dr-font-texts print:tw-text-sm"
-												>
-													{content.split("\n")[0].trim()}
-												</Pre>
-											);
-										}
-
-										return <Text key={generateSlug(`${item.id}-${contentName}`)}>{content}</Text>;
-									})}
+										})}
+									</List>
+									<Block className="tw-my-1">
+										<InlineText
+											is="strong"
+											className="tw-mr-1 tw-text-sm"
+										>
+											Skills:
+										</InlineText>
+										{item.description.skills.value.map((skill) => {
+											return <Skill key={generateSlug(`${item.id}-${skill}`)}>{skill}</Skill>;
+										})}
+									</Block>
 								</Block>
 							</Block>
 						);
@@ -479,7 +462,7 @@ function FullMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePage
 									<Link
 										variant={Link.variant.SIMPLE}
 										href={item.schoolWebsite}
-										className="tw-text-base tw-underline"
+										className="tw-underline"
 										onClick={AnalyticsService.trackClickEvent("RESUME|EDUCATION", {
 											item: item.school,
 										})}
@@ -562,7 +545,7 @@ type T_ExperienceTimelineProps = {
 	experience: T_Resume["experience"];
 };
 
-function TechStackLabel({ children }: { children: string }) {
+function Skill({ children }: { children: string }) {
 	return (
 		<InlineText className="tw-my-0.5 tw-mr-1 tw-inline-block tw-rounded-md tw-border tw-border-gray-200 tw-bg-gray-100 tw-px-1.5 tw-py-0.5 tw-font-mono tw-text-xs tw-text-gray-600">
 			{children.trim()}
@@ -598,9 +581,7 @@ function OtherSection({
 									{texts[`SKILLS_L${index + 1}` as keyof typeof texts]}:
 								</InlineText>
 								{value.map((item) => {
-									return (
-										<TechStackLabel key={`short-skills-tech-stack-${item}`}>{item}</TechStackLabel>
-									);
+									return <Skill key={`short-skills-tech-stack-${item}`}>{item}</Skill>;
 								})}
 							</List.Item>
 						);
@@ -634,93 +615,94 @@ function ExperienceTimeline({ experience }: T_ExperienceTimelineProps) {
 
 	return (
 		<Block className="tw-ml-2 tw-border-l-2 tw-border-dashed tw-border-black print:tw-border-0">
-			{experience.map(
-				({ id, role, company, companyLogo, companyWebsite, startDate, endDate, description }) => {
-					return (
-						<Block
-							key={id}
-							is="section"
-							className="tw-relative tw-mb-6 tw-pl-10 last:tw-mb-0"
-						>
-							<Block className="tw-absolute tw--left-2 tw-top-0 tw-overflow-hidden tw-border-2 tw-border-black tw-bg-white tw-wh-10 print:tw-border-0">
-								<Image
-									src={companyLogo}
-									alt="Company logo"
-									fill
-								/>
-							</Block>
-
-							<Block>
-								<Title
-									is="h3"
-									variant={Title.variant.SIMPLE}
-									size={Title.size.MD}
-									className="tw-text-black"
-								>
-									{v.isNotEmptyString(companyWebsite) ? (
-										<Link
-											variant={Link.variant.SIMPLE}
-											className="tw-text-black tw-underline"
-											href={companyWebsite}
-											onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", {
-												item: company,
-											})}
-											isExternalLink
-										>
-											{company}
-										</Link>
-									) : (
-										company
-									)}
-								</Title>
-
-								<Text>{role}</Text>
-
-								<Text className="tw-text-xs tw-lowercase tw-italic">
-									<InlineText>{startDate}</InlineText> /{" "}
-									<InlineText>{endDate || texts.PRESENT}</InlineText>
-								</Text>
-								<Space size={1} />
-
-								<List variant={List.variant.SIMPLE}>
-									{description.split("› ").map((line) => {
-										if (!line) {
-											return null;
-										}
-
-										const [contentName, ...content] = line.split(":");
-
-										return (
-											<List.Item key={generateSlug(`${id}-${contentName}`)}>
-												<Pre
-													variant={Pre.variant.BREAK_WITH_BLANK_SPACES}
-													className="tw-text-base dr-font-texts print:tw-text-sm"
-												>
-													<InlineText is="strong">{contentName}:</InlineText>
-													{contentName.toLowerCase().includes("stack") ? (
-														<Block>
-															{content
-																.join("")
-																.split(",")
-																.map((item) => {
-																	return (
-																		<TechStackLabel key={`${id}-${item}`}>{item}</TechStackLabel>
-																	);
-																})}
-														</Block>
-													) : (
-														content.join(":")
-													)}
-												</Pre>
-											</List.Item>
-										);
-									})}
-								</List>
-							</Block>
+			{experience.map(({ id, role, company, startDate, endDate, description, mode }) => {
+				return (
+					<Block
+						key={id}
+						is="section"
+						className="tw-relative tw-mb-6 tw-pl-10 last:tw-mb-0"
+					>
+						<Block className="tw-absolute tw--left-2 tw-top-0 tw-overflow-hidden tw-border-2 tw-border-black tw-bg-white tw-wh-10 print:tw-border-0">
+							<Image
+								src={company.logo}
+								alt="Company logo"
+								fill
+							/>
 						</Block>
-					);
-				},
-			)}
+
+						<Block>
+							<Block>
+								<Block className="tw-flex tw-items-end tw-justify-between">
+									<Title
+										is="h3"
+										variant={Title.variant.SIMPLE}
+										size={Title.size.MD}
+										className="tw-text-black"
+									>
+										{v.isNotEmptyString(company.website) ? (
+											<Link
+												variant={Link.variant.SIMPLE}
+												className="tw-text-black tw-underline"
+												href={company.website}
+												onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", {
+													item: company.name,
+												})}
+												isExternalLink
+											>
+												{company.name}
+											</Link>
+										) : (
+											company.name
+										)}
+									</Title>
+									<Text className="tw-text-sm tw-lowercase">
+										<InlineText>{startDate}</InlineText> /{" "}
+										<InlineText>{endDate || texts.PRESENT}</InlineText>
+									</Text>
+								</Block>
+								<Block className="tw-flex tw-justify-between tw-text-xs tw-italic">
+									<Text>{role}</Text>
+									<Text className="tw-capitalize">{mode}</Text>
+								</Block>
+							</Block>
+							<Space size={1} />
+
+							<List variant={List.variant.SIMPLE}>
+								{description.summary ? (
+									<List.Item>
+										<Text className="tw-font-bold">{description.summary.label}:</Text>
+										<Pre
+											variant={Pre.variant.BREAK_WITH_BLANK_SPACES}
+											className="dr-font-texts print:tw-text-sm"
+										>
+											{description.summary.value}
+										</Pre>
+									</List.Item>
+								) : null}
+
+								<List.Item>
+									<Text className="tw-font-bold">{description.achievements.label}:</Text>
+									<Pre
+										variant={Pre.variant.BREAK_WITH_BLANK_SPACES}
+										className="dr-font-texts print:tw-text-sm"
+									>
+										{description.achievements.value.map((item) => {
+											return `- ${item}\n`;
+										})}
+									</Pre>
+								</List.Item>
+
+								<List.Item>
+									<Text className="tw-font-bold">{description.skills.label}:</Text>
+									{description.skills.value.map((skill) => {
+										return <Skill key={generateSlug(`${id}-${skill}`)}>{skill}</Skill>;
+									})}
+								</List.Item>
+							</List>
+						</Block>
+					</Block>
+				);
+			})}
 		</Block>
 	);
 }

@@ -6,7 +6,7 @@
 		"country": { "name": "Norway", "flag": "🇳🇴", "code": "NO" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 327,
@@ -538,9 +538,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1.4,
-				"promedio_de_goles_anotados_de_local_por_partido": 1.4,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 1.3
+				"partidos_jugados": 17,
+				"promedio_de_goles_anotados_por_partido": 22.7,
+				"promedio_de_goles_anotados_de_local_por_partido": 21.6,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 21.5
 			}
 		},
 		"matches": [
@@ -2893,7 +2894,7 @@
 								"items": [
 									{
 										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas arriba que el visitante en la tabla | (1>14/16)"
 									},
 									{
@@ -3018,7 +3019,7 @@
 		"country": { "name": "Argentina", "flag": "🇦🇷", "code": "AR" },
 		"priority": 2,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 445,
@@ -3946,9 +3947,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1.1,
-				"promedio_de_goles_anotados_de_local_por_partido": 1.3,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 0.9
+				"partidos_jugados": 8,
+				"promedio_de_goles_anotados_por_partido": 30.6,
+				"promedio_de_goles_anotados_de_local_por_partido": 36.5,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 24.2
 			}
 		},
 		"matches": [
@@ -4653,7 +4655,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (27<=14/28)"
 									},
 									{
@@ -5469,9 +5471,9 @@
 								"trustLevel": 100,
 								"items": [
 									{
-										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
-										"explanation": "El local está mas arriba que el visitante en la tabla | (1>3/28)"
+										"fulfilled": false,
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
+										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (1<=3/28)"
 									},
 									{
 										"fulfilled": true,
@@ -5479,14 +5481,14 @@
 										"explanation": "Ambos equipos no son históricos | (false-true)"
 									}
 								],
-								"fulfilled": true
+								"fulfilled": false
 							}
 						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
+						"trustLevel": 0,
+						"trustLevelLabel": "LOW",
 						"results": {
-							"winning": true,
-							"lostWinning": false,
+							"winning": false,
+							"lostWinning": true,
 							"lost": false,
 							"skippedLost": false
 						}
@@ -6286,9 +6288,9 @@
 								"trustLevel": 100,
 								"items": [
 									{
-										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
-										"explanation": "El local está mas arriba que el visitante en la tabla | (22>23/28)"
+										"fulfilled": false,
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
+										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (22<=23/28)"
 									},
 									{
 										"fulfilled": false,
@@ -7103,9 +7105,9 @@
 								"trustLevel": 100,
 								"items": [
 									{
-										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
-										"explanation": "El local está mas arriba que el visitante en la tabla | (4>6/28)"
+										"fulfilled": false,
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
+										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (4<=6/28)"
 									},
 									{
 										"fulfilled": true,
@@ -7113,14 +7115,14 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": true
+								"fulfilled": false
 							}
 						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
+						"trustLevel": 0,
+						"trustLevelLabel": "LOW",
 						"results": {
-							"winning": true,
-							"lostWinning": false,
+							"winning": false,
+							"lostWinning": true,
 							"lost": false,
 							"skippedLost": false
 						}
@@ -7921,7 +7923,7 @@
 								"items": [
 									{
 										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas arriba que el visitante en la tabla | (5>25/28)"
 									},
 									{
@@ -8046,7 +8048,7 @@
 		"country": { "name": "Colombia", "flag": "🇨🇴", "code": "CO" },
 		"priority": 2,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 1136,
@@ -8710,9 +8712,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1,
-				"promedio_de_goles_anotados_de_local_por_partido": 1.2,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 0.8
+				"partidos_jugados": 5,
+				"promedio_de_goles_anotados_por_partido": 19.5,
+				"promedio_de_goles_anotados_de_local_por_partido": 23.7,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 15.3
 			}
 		},
 		"matches": [
@@ -9466,7 +9469,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (2<=1/20)"
 									},
 									{
@@ -10283,7 +10286,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (18<=13/20)"
 									},
 									{
@@ -11100,7 +11103,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (17<=4/20)"
 									},
 									{
@@ -11225,7 +11228,7 @@
 		"country": { "name": "Finland", "flag": "🇫🇮", "code": "FI" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 649,
@@ -11625,9 +11628,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1.6,
-				"promedio_de_goles_anotados_de_local_por_partido": 1.7,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 1.4
+				"partidos_jugados": 18,
+				"promedio_de_goles_anotados_por_partido": 18.9,
+				"promedio_de_goles_anotados_de_local_por_partido": 20.3,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 17.2
 			}
 		},
 		"matches": [
@@ -14081,7 +14085,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (12<=1/12)"
 									},
 									{
@@ -14206,7 +14210,7 @@
 		"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 		"priority": 2,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 127,
@@ -14870,9 +14874,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1.2,
-				"promedio_de_goles_anotados_de_local_por_partido": 1.4,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 1.1
+				"partidos_jugados": 20,
+				"promedio_de_goles_anotados_por_partido": 24.3,
+				"promedio_de_goles_anotados_de_local_por_partido": 27.8,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 21
 			}
 		},
 		"matches": [
@@ -15151,7 +15156,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -16603,7 +16608,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 1,
@@ -17726,9 +17731,9 @@
 								"trustLevel": 100,
 								"items": [
 									{
-										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
-										"explanation": "El local está mas arriba que el visitante en la tabla | (17>18/20)"
+										"fulfilled": false,
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
+										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (17<=18/20)"
 									},
 									{
 										"fulfilled": true,
@@ -17736,14 +17741,14 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": true
+								"fulfilled": false
 							}
 						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
+						"trustLevel": 0,
+						"trustLevelLabel": "LOW",
 						"results": {
-							"winning": true,
-							"lostWinning": false,
+							"winning": false,
+							"lostWinning": true,
 							"lost": false,
 							"skippedLost": false
 						}
@@ -18706,7 +18711,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 6,
@@ -20320,7 +20325,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 1,
@@ -20651,7 +20656,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (11<=10/20)"
 									},
 									{
@@ -22203,7 +22208,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -22297,7 +22302,7 @@
 						"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 						"position": 1,
 						"tag": "FEATURED",
-						"historic": false,
+						"historic": true,
 						"result": "LOSE",
 						"score": {
 							"fullTime": 0,
@@ -22494,7 +22499,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -22543,7 +22548,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -22607,7 +22612,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -22641,7 +22646,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -22690,7 +22695,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -22739,7 +22744,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 1,
@@ -22803,7 +22808,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 4,
@@ -22837,7 +22842,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -22901,7 +22906,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -22950,7 +22955,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 1,
@@ -22984,7 +22989,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -23048,7 +23053,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 1,
@@ -23082,7 +23087,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -23146,7 +23151,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 6,
@@ -23180,7 +23185,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 3,
@@ -23244,7 +23249,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 1,
@@ -23278,7 +23283,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 4,
@@ -23327,7 +23332,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -23391,7 +23396,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 0,
@@ -23440,7 +23445,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 1,
@@ -23474,7 +23479,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 1,
@@ -23523,7 +23528,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 0,
@@ -23587,7 +23592,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -23636,7 +23641,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 0,
@@ -23670,7 +23675,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -23734,7 +23739,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -23771,13 +23776,13 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (6<=1/20)"
 									},
 									{
-										"fulfilled": true,
+										"fulfilled": false,
 										"description": "Ambos equipos no pueden ser históricos",
-										"explanation": "Ambos equipos no son históricos | (true-false)"
+										"explanation": "Ambos equipos son históricos | (true-true)"
 									}
 								],
 								"fulfilled": false
@@ -23859,9 +23864,9 @@
 										"explanation": "El visitante no ganó su último partido como visitante | (1-2)"
 									},
 									{
-										"fulfilled": true,
+										"fulfilled": false,
 										"description": "Ambos equipos no pueden ser históricos",
-										"explanation": "Ambos equipos no son históricos | (true-false)"
+										"explanation": "Ambos equipos son históricos | (true-true)"
 									}
 								],
 								"fulfilled": false
@@ -24147,7 +24152,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -25191,7 +25196,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -26364,7 +26369,7 @@
 										"country": null,
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -26496,7 +26501,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 0,
@@ -26744,7 +26749,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (20<=2/20)"
 									},
 									{
@@ -27169,7 +27174,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -28553,7 +28558,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 1,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 4,
@@ -29028,7 +29033,7 @@
 										"country": null,
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -29288,7 +29293,7 @@
 										"country": null,
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 2,
@@ -29472,7 +29477,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (12<=9/20)"
 									},
 									{
@@ -29597,7 +29602,7 @@
 		"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 1405,
@@ -29997,6 +30002,7 @@
 				}
 			],
 			"stats": {
+				"partidos_jugados": 0,
 				"promedio_de_goles_anotados_por_partido": 0,
 				"promedio_de_goles_anotados_de_local_por_partido": 0,
 				"promedio_de_goles_anotados_de_visitante_por_partido": 0
@@ -30208,7 +30214,7 @@
 						"name": "WSG Wattens",
 						"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 						"position": 11,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "WIN",
 						"score": {
@@ -30396,35 +30402,7 @@
 						"matches": []
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 8 y el visitante de 11 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 218,
@@ -30828,35 +30806,7 @@
 						"matches": []
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 5 y el visitante de 6 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 218,
@@ -30880,7 +30830,7 @@
 						"name": "Wolfsberger AC",
 						"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 						"position": 12,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "WIN",
 						"score": {
@@ -31072,7 +31022,7 @@
 						"name": "Austria Klagenfurt",
 						"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 						"position": 1,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -31260,35 +31210,7 @@
 						"matches": []
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 12 y el visitante de 1 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 218,
@@ -31308,7 +31230,7 @@
 		"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 261,
@@ -31840,9 +31762,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 0.5,
-				"promedio_de_goles_anotados_de_local_por_partido": 0.3,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 0.2
+				"partidos_jugados": 1,
+				"promedio_de_goles_anotados_por_partido": 8,
+				"promedio_de_goles_anotados_de_local_por_partido": 5,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 3
 			}
 		},
 		"matches": [
@@ -31859,7 +31782,7 @@
 						"name": "KV Mechelen",
 						"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 						"position": 5,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -32071,7 +31994,7 @@
 										"name": "KV Mechelen",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -32101,7 +32024,7 @@
 						"name": "KVC Westerlo",
 						"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 						"position": 1,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "WIN",
 						"score": {
@@ -32298,7 +32221,7 @@
 										"name": "KVC Westerlo",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 1,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -32313,7 +32236,7 @@
 										"name": "Cercle Brugge",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 16,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -32339,35 +32262,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 5 y el visitante de 1 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 144,
@@ -32871,35 +32766,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 10 y el visitante de 9 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 144,
@@ -32923,7 +32790,7 @@
 						"name": "St. Truiden",
 						"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 						"position": 15,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -33120,7 +32987,7 @@
 										"name": "Anderlecht",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": true,
 										"result": "WIN",
 										"score": {
@@ -33135,7 +33002,7 @@
 										"name": "St. Truiden",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 15,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -33165,7 +33032,7 @@
 						"name": "Charleroi",
 						"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 						"position": 14,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "WIN",
 						"score": {
@@ -33362,7 +33229,7 @@
 										"name": "Charleroi",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 14,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -33377,7 +33244,7 @@
 										"name": "Antwerp",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -33403,35 +33270,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 15 y el visitante de 14 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 144,

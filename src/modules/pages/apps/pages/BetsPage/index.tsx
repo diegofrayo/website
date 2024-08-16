@@ -44,7 +44,7 @@ import type {
 } from "./types";
 import styles from "./styles.module.css";
 
-// import DATA from "../../../../../../public/data/apps/bets/2024-08-10.json"; // NOTE: FOR DX PURPOSES
+// import DATA from "../../../../../../public/data/apps/bets/2024-08-16.json"; // NOTE: FOR DX PURPOSES
 
 function BetsPage() {
 	// --- STATES & REFS ---
@@ -164,7 +164,7 @@ function BetsPage() {
 								styles["input-date"],
 								"tw-flex tw-h-[60px] tw-items-center tw-justify-center tw-rounded-md tw-border tw-border-stone-800 tw-bg-black tw-px-4 tw-py-0 tw-text-center",
 							)}
-							containerProps={{ className: "tw-w-[300px] tw-block tw-max-w-full" }}
+							containerProps={{ className: "tw-w-full md:tw-w-[300px] tw-block tw-max-w-full" }}
 							value={selectedDate}
 							onChange={handleInputDateChange}
 						/>
@@ -578,7 +578,7 @@ function FixtureMatch({
 						return (
 							<Block
 								key={generateSlug(`${topKey}-${team.name}`)}
-								className="tw-w-full tw-flex-shrink-0 tw-overflow-auto tw-rounded-sm tw-bg-stone-800 sm:tw-min-w-full lg:tw-w-1/2 lg:tw-min-w-0"
+								className="tw-w-full tw-flex-shrink-0 tw-overflow-auto tw-rounded-sm tw-bg-stone-800 lg:tw-w-1/2 lg:tw-min-w-0"
 							>
 								<Block className="tw-relative tw-flex tw-justify-between tw-bg-stone-700 tw-px-1 tw-py-1 md:tw-px-4">
 									<Text className="tw-flex-1 tw-text-left">{team.name}</Text>
@@ -789,76 +789,97 @@ function LeagueStandings({ topKey, data }: { topKey: string; data: T_LeagueStand
 			contentClassName="tw-pt-1 tw-overflow-auto"
 			showIcon={false}
 		>
-			<table className="tw-min-w-[500px] tw-table-fixed">
-				<thead>
-					<tr className="">
-						<th className="tw-p-1">#</th>
-						<th className="tw-whitespace-nowrap tw-p-1 tw-text-left">Equipo</th>
-						<th className="tw-w-20 tw-whitespace-nowrap tw-p-1">Puntos</th>
-						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">PJ</th>
-						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GF</th>
-						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GC</th>
-						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GD</th>
-						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">PJL</th>
-						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GFL</th>
-						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">PJV</th>
-						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GFV</th>
-						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">%GF</th>
-						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">%GFL</th>
-						<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">%GFV</th>
-					</tr>
-				</thead>
-				<tbody>
-					{data.items.map((team, teamIndex) => {
-						return (
-							<tr key={generateSlug(`${topKey}-league-standing-${teamIndex}`)}>
-								<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">{teamIndex + 1}</td>
-								<td className="tw-whitespace-nowrap tw-p-1 tw-text-left">{team.teamName}</td>
-								<td className="tw-p-1 tw-text-center">{team.points}</td>
-								<td className="tw-p-1 tw-text-center">{team.stats.all.played}</td>
-								<td className="tw-p-1 tw-text-center">{team.stats.all.goals.for}</td>
-								<td className="tw-p-1 tw-text-center">{team.stats.all.goals.against}</td>
-								<td className="tw-p-1 tw-text-center">{team.stats.all.goals.diff}</td>
-								<td className="tw-p-1 tw-text-center">{team.stats.home.played}</td>
-								<td className="tw-p-1 tw-text-center">{team.stats.home.goals.for}</td>
-								<td className="tw-p-1 tw-text-center">{team.stats.away.played}</td>
-								<td className="tw-p-1 tw-text-center">{team.stats.away.goals.for}</td>
-								<td className="tw-p-1 tw-text-center">
-									{team.stats.averages.promedio_de_goles_anotados_por_partido}
-								</td>
-								<td className="tw-p-1 tw-text-center">
-									{team.stats.averages.promedio_de_goles_anotados_de_local_por_partido}
-								</td>
-								<td className="tw-p-1 tw-text-center">
-									{team.stats.averages.promedio_de_goles_anotados_de_visitante_por_partido}
-								</td>
-							</tr>
-						);
-					})}
-					<tr>
-						<td className="tw-invisible">-</td>
-						<td className="tw-invisible">-</td>
-						<td className="tw-invisible">-</td>
-						<td className="tw-invisible">-</td>
-						<td className="tw-invisible">-</td>
-						<td className="tw-invisible">-</td>
-						<td className="tw-invisible">-</td>
-						<td className="tw-invisible">-</td>
-						<td className="tw-invisible">-</td>
-						<td className="tw-invisible">-</td>
-						<td className="tw-invisible">-</td>
-						<td className="tw-p-1 tw-text-center">
-							{data.stats.promedio_de_goles_anotados_por_partido}
-						</td>
-						<td className="tw-p-1 tw-text-center">
-							{data.stats.promedio_de_goles_anotados_de_local_por_partido}
-						</td>
-						<td className="tw-p-1 tw-text-center">
-							{data.stats.promedio_de_goles_anotados_de_visitante_por_partido}
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			{(data.type === "REGULAR" ? [data.items] : data.items).map(
+				(groupOfItems, groupOfItemsIndex) => {
+					return (
+						<table
+							key={generateSlug(`${topKey}-league-standings-group-${groupOfItemsIndex}`)}
+							className="tw-mb-2 tw-min-w-[500px] tw-table-fixed last:tw-mb-0"
+						>
+							<thead>
+								<tr>
+									<th className="tw-p-1">#</th>
+									<th className="tw-min-w-[200px] tw-whitespace-nowrap tw-p-1 tw-text-left">
+										Equipo
+									</th>
+									<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">PJ</th>
+									<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">PT</th>
+									<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GF</th>
+									<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GC</th>
+									<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GD</th>
+									<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">PJL</th>
+									<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GFL</th>
+									<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">PJV</th>
+									<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">GFV</th>
+									<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">%GF</th>
+									<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">%GFL</th>
+									<th className="tw-w-16 tw-whitespace-nowrap tw-p-1">%GFV</th>
+								</tr>
+							</thead>
+							<tbody>
+								{groupOfItems.map((team, teamIndex) => {
+									return (
+										<tr
+											key={generateSlug(
+												`${topKey}-league-standings-group-${groupOfItemsIndex}-${teamIndex}`,
+											)}
+										>
+											<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
+												{teamIndex + 1}
+											</td>
+											<td className="tw-min-w-[200px] tw-truncate tw-whitespace-nowrap tw-p-1 tw-text-left">
+												{team.teamName}
+											</td>
+											<td className="tw-p-1 tw-text-center">{team.stats.all.played}</td>
+											<td className="tw-p-1 tw-text-center">{team.points}</td>
+											<td className="tw-p-1 tw-text-center">{team.stats.all.goals.for}</td>
+											<td className="tw-p-1 tw-text-center">{team.stats.all.goals.against}</td>
+											<td className="tw-p-1 tw-text-center">{team.stats.all.goals.diff}</td>
+											<td className="tw-p-1 tw-text-center">{team.stats.home.played}</td>
+											<td className="tw-p-1 tw-text-center">{team.stats.home.goals.for}</td>
+											<td className="tw-p-1 tw-text-center">{team.stats.away.played}</td>
+											<td className="tw-p-1 tw-text-center">{team.stats.away.goals.for}</td>
+											<td className="tw-p-1 tw-text-center">
+												{team.stats.averages.promedio_de_goles_anotados_por_partido}
+											</td>
+											<td className="tw-p-1 tw-text-center">
+												{team.stats.averages.promedio_de_goles_anotados_de_local_por_partido}
+											</td>
+											<td className="tw-p-1 tw-text-center">
+												{team.stats.averages.promedio_de_goles_anotados_de_visitante_por_partido}
+											</td>
+										</tr>
+									);
+								})}
+								{data.type === "REGULAR" ? (
+									<tr>
+										<td className="tw-invisible">-</td>
+										<td className="tw-invisible">-</td>
+										<td className="tw-invisible">-</td>
+										<td className="tw-invisible">-</td>
+										<td className="tw-invisible">-</td>
+										<td className="tw-invisible">-</td>
+										<td className="tw-invisible">-</td>
+										<td className="tw-invisible">-</td>
+										<td className="tw-invisible">-</td>
+										<td className="tw-invisible">-</td>
+										<td className="tw-invisible">-</td>
+										<td className="tw-p-1 tw-text-center">
+											{data.stats.promedio_de_goles_anotados_por_partido}
+										</td>
+										<td className="tw-p-1 tw-text-center">
+											{data.stats.promedio_de_goles_anotados_de_local_por_partido}
+										</td>
+										<td className="tw-p-1 tw-text-center">
+											{data.stats.promedio_de_goles_anotados_de_visitante_por_partido}
+										</td>
+									</tr>
+								) : null}
+							</tbody>
+						</table>
+					);
+				},
+			)}
 		</Collapsible>
 	);
 }
@@ -913,7 +934,7 @@ function MatchDetails({
 			{...rest}
 		>
 			<Block className="tw-flex tw-flex-nowrap tw-items-center tw-justify-between tw-gap-4">
-				<Block className="tw-min-w-0 tw-max-w-[250px] tw-flex-grow">
+				<Block className="tw-min-w-0 tw-max-w-none tw-flex-grow md:tw-max-w-[250px]">
 					<MatchTeamDetails
 						match={match}
 						teamSide="home"
@@ -934,7 +955,7 @@ function MatchDetails({
 								</Text>
 							) : null}
 							<Text className="tw-font-bold">{match.hour}</Text>
-							{isMatchPlayed ? null : <Text>Final del partido</Text>}
+							{isFixturePlayedMatchType ? <Text>Final del partido</Text> : null}
 						</Block>
 					) : (
 						<Text>{match.hour}</Text>
@@ -1135,16 +1156,20 @@ function MatchTeamDetails({
 						: match.teams[teamSide].tag === "POOR"
 							? "🟥"
 							: ""}
-					{match.teams[teamSide].historic ? "🟨" : ""}
 				</InlineText>
+				{match.teams[teamSide].historic ? (
+					<InlineText className="tw-relative tw--top-0.5 tw-ml-1 tw-text-xxs">🟨</InlineText>
+				) : null}
 			</InlineText>
 			{match.played ? (
-				<InlineText className="tw-w-8 tw-text-center tw-font-bold">
-					{match.teams[teamSide].score.fullTime}{" "}
-					{v.isNumber(match.teams[teamSide].score.extraTime.for)
-						? `(${match.teams[teamSide].score.extraTime.for})`
-						: ""}
-				</InlineText>
+				<Block className="tw-flex tw-justify-between tw-text-center tw-font-bold">
+					<InlineText className="tw-w-6">{match.teams[teamSide].score.fullTime}</InlineText>
+					{v.isNumber(match.teams[teamSide].score.extraTime.for) ? (
+						<InlineText className="tw-w-8">
+							{`(${match.teams[teamSide].score.extraTime.for})`}
+						</InlineText>
+					) : null}
+				</Block>
 			) : null}
 		</Block>
 	);

@@ -6,7 +6,7 @@
 		"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 1025,
@@ -406,9 +406,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1.5,
-				"promedio_de_goles_anotados_de_local_por_partido": 0.8,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 0.7
+				"partidos_jugados": 1,
+				"promedio_de_goles_anotados_por_partido": 18,
+				"promedio_de_goles_anotados_de_local_por_partido": 10,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 8
 			}
 		},
 		"matches": [
@@ -425,7 +426,7 @@
 						"name": "Lask Linz",
 						"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 						"position": 3,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -637,7 +638,7 @@
 										"name": "Lask Linz",
 										"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -879,7 +880,7 @@
 										"name": "WSG Wattens",
 										"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -905,35 +906,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": true,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 3 y el visitante de 9 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": true
-							}
-						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
-						"results": {
-							"winning": true,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 218,
@@ -957,7 +930,7 @@
 						"name": "WSG Wattens",
 						"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 						"position": 4,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "DRAW",
 						"score": {
@@ -1169,7 +1142,7 @@
 										"name": "WSG Wattens",
 										"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -1457,7 +1430,7 @@
 										"name": "Red Bull Salzburg",
 										"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 										"position": 2,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": true,
 										"result": "WIN",
 										"score": {
@@ -1483,35 +1456,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 4 y el visitante de 7 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": true
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 218,
@@ -1535,7 +1480,7 @@
 						"name": "Red Bull Salzburg",
 						"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 						"position": 2,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": true,
 						"result": "WIN",
 						"score": {
@@ -1732,7 +1677,7 @@
 										"name": "Red Bull Salzburg",
 										"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 										"position": 2,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": true,
 										"result": "WIN",
 										"score": {
@@ -1796,7 +1741,7 @@
 										"name": "Red Bull Salzburg",
 										"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 										"position": 2,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": true,
 										"result": "WIN",
 										"score": {
@@ -2038,7 +1983,7 @@
 										"name": "Austria Vienna",
 										"country": { "name": "Austria", "flag": "🇦🇹", "code": "AT" },
 										"position": 10,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -2064,35 +2009,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 2 y el visitante de 5 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 218,
@@ -2112,7 +2029,7 @@
 		"country": { "name": "Czech-Republic", "flag": "🇨🇿", "code": "CZ" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 628,
@@ -2644,9 +2561,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1.1,
-				"promedio_de_goles_anotados_de_local_por_partido": 1.3,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 1
+				"partidos_jugados": 3,
+				"promedio_de_goles_anotados_por_partido": 17.4,
+				"promedio_de_goles_anotados_de_local_por_partido": 21.5,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 15.5
 			}
 		},
 		"matches": [
@@ -3399,9 +3317,9 @@
 								"trustLevel": 100,
 								"items": [
 									{
-										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
-										"explanation": "El local está mas arriba que el visitante en la tabla | (2>3/16)"
+										"fulfilled": false,
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
+										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (2<=3/16)"
 									},
 									{
 										"fulfilled": true,
@@ -3409,14 +3327,14 @@
 										"explanation": "Ambos equipos no son históricos | (true-false)"
 									}
 								],
-								"fulfilled": true
+								"fulfilled": false
 							}
 						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
+						"trustLevel": 0,
+						"trustLevelLabel": "LOW",
 						"results": {
-							"winning": true,
-							"lostWinning": false,
+							"winning": false,
+							"lostWinning": true,
 							"lost": false,
 							"skippedLost": false
 						}
@@ -4217,7 +4135,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (15<=6/16)"
 									},
 									{
@@ -5034,7 +4952,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (13<=7/16)"
 									},
 									{
@@ -5998,7 +5916,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (8<=1/16)"
 									},
 									{
@@ -6123,7 +6041,7 @@
 		"country": { "name": "Norway", "flag": "🇳🇴", "code": "NO" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 327,
@@ -6655,9 +6573,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1.4,
-				"promedio_de_goles_anotados_de_local_por_partido": 1.4,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 1.4
+				"partidos_jugados": 18,
+				"promedio_de_goles_anotados_por_partido": 23,
+				"promedio_de_goles_anotados_de_local_por_partido": 22,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 21.7
 			}
 		},
 		"matches": [
@@ -9053,7 +8972,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (14<=12/16)"
 									},
 									{
@@ -11806,7 +11725,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (3<=1/16)"
 									},
 									{
@@ -11931,7 +11850,7 @@
 		"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 261,
@@ -12463,9 +12382,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1.2,
-				"promedio_de_goles_anotados_de_local_por_partido": 1.1,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 1.2
+				"partidos_jugados": 2,
+				"promedio_de_goles_anotados_por_partido": 18.5,
+				"promedio_de_goles_anotados_de_local_por_partido": 18,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 19
 			}
 		},
 		"matches": [
@@ -12482,7 +12402,7 @@
 						"name": "Dender",
 						"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 						"position": 5,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "WIN",
 						"score": {
@@ -12694,7 +12614,7 @@
 										"name": "Dender",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -12728,7 +12648,7 @@
 										"name": "Dender",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -12743,7 +12663,7 @@
 										"name": "Union St. Gilloise",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -12970,7 +12890,7 @@
 										"name": "Cercle Brugge",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 16,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -13060,124 +12980,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "do-local",
-						"name": "Doble oportunidad (Local)",
-						"shortName": "DOL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
-										"explanation": "El local está mas arriba que el visitante en la tabla | (5>9/16)"
-									},
-									{
-										"fulfilled": true,
-										"description": "Ambos equipos no pueden ser históricos",
-										"explanation": "Ambos equipos no son históricos | (false-false)"
-									}
-								],
-								"fulfilled": true
-							}
-						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
-						"results": {
-							"winning": true,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": false
-						}
-					},
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 5 y el visitante de 9 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					},
-					{
-						"id": "tr-local",
-						"name": "Tiempo reglamentario (Local)",
-						"shortName": "TRL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": true,
-										"description": "El local es de los mejores del torneo",
-										"explanation": "El local es de los mejores del torneo | (5/16)"
-									},
-									{
-										"fulfilled": false,
-										"description": "El visitante es de los peores del torneo",
-										"explanation": "El visitante no es de los peores del torneo | (9/16)"
-									},
-									{
-										"fulfilled": false,
-										"description": "El local debe haber sumado al menos 10 de 15 puntos en los últimos 5 partidos",
-										"explanation": "El local sumó menos de 10 puntos en los últimos 5 partidos | (4/15)"
-									},
-									{
-										"fulfilled": true,
-										"description": "El visitante debe haber sumado menos de 4 puntos en los últimos 5 partidos",
-										"explanation": "El visitante sumó menos de 4 puntos en los últimos 5 partidos | (3/15)"
-									},
-									{
-										"fulfilled": false,
-										"description": "El último partido del local como local debe ser una victoria",
-										"explanation": "El local no ganó su último partido como local | (0-0)"
-									},
-									{
-										"fulfilled": false,
-										"description": "El último partido del visitante como visitante debe ser una derrota",
-										"explanation": "El visitante no ganó su último partido como visitante | (1-2)"
-									},
-									{
-										"fulfilled": true,
-										"description": "Ambos equipos no pueden ser históricos",
-										"explanation": "Ambos equipos no son históricos | (false-false)"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 144,
@@ -13201,7 +13004,7 @@
 						"name": "KVC Westerlo",
 						"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 						"position": 1,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "WIN",
 						"score": {
@@ -13413,7 +13216,7 @@
 										"name": "KVC Westerlo",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 1,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -13447,7 +13250,7 @@
 										"name": "KVC Westerlo",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 1,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -13462,7 +13265,7 @@
 										"name": "Cercle Brugge",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 16,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -13492,7 +13295,7 @@
 						"name": "Union St. Gilloise",
 						"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 						"position": 4,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -13704,7 +13507,7 @@
 										"name": "Union St. Gilloise",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -13738,7 +13541,7 @@
 										"name": "Union St. Gilloise",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -13753,7 +13556,7 @@
 										"name": "Beerschot Wilrijk",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 13,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -13787,7 +13590,7 @@
 										"name": "Dender",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -13802,7 +13605,7 @@
 										"name": "Union St. Gilloise",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -13828,124 +13631,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "do-local",
-						"name": "Doble oportunidad (Local)",
-						"shortName": "DOL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
-										"explanation": "El local está mas arriba que el visitante en la tabla | (1>4/16)"
-									},
-									{
-										"fulfilled": true,
-										"description": "Ambos equipos no pueden ser históricos",
-										"explanation": "Ambos equipos no son históricos | (false-false)"
-									}
-								],
-								"fulfilled": true
-							}
-						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
-						"results": {
-							"winning": true,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": false
-						}
-					},
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 1 y el visitante de 4 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					},
-					{
-						"id": "tr-local",
-						"name": "Tiempo reglamentario (Local)",
-						"shortName": "TRL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": true,
-										"description": "El local es de los mejores del torneo",
-										"explanation": "El local es de los mejores del torneo | (1/16)"
-									},
-									{
-										"fulfilled": false,
-										"description": "El visitante es de los peores del torneo",
-										"explanation": "El visitante no es de los peores del torneo | (4/16)"
-									},
-									{
-										"fulfilled": false,
-										"description": "El local debe haber sumado al menos 10 de 15 puntos en los últimos 5 partidos",
-										"explanation": "El local sumó menos de 10 puntos en los últimos 5 partidos | (6/15)"
-									},
-									{
-										"fulfilled": true,
-										"description": "El visitante debe haber sumado menos de 4 puntos en los últimos 5 partidos",
-										"explanation": "El visitante sumó menos de 4 puntos en los últimos 5 partidos | (4/15)"
-									},
-									{
-										"fulfilled": true,
-										"description": "El último partido del local como local debe ser una victoria",
-										"explanation": "El local ganó su último partido como local | (3-0)"
-									},
-									{
-										"fulfilled": true,
-										"description": "El último partido del visitante como visitante debe ser una derrota",
-										"explanation": "El visitante ganó su último partido como visitante | (3-1)"
-									},
-									{
-										"fulfilled": true,
-										"description": "Ambos equipos no pueden ser históricos",
-										"explanation": "Ambos equipos no son históricos | (false-false)"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 144,
@@ -13969,7 +13655,7 @@
 						"name": "Anderlecht",
 						"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 						"position": 2,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": true,
 						"result": "DRAW",
 						"score": {
@@ -14181,7 +13867,7 @@
 										"name": "Anderlecht",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 2,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": true,
 										"result": "WIN",
 										"score": {
@@ -14215,7 +13901,7 @@
 										"name": "Anderlecht",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 2,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": true,
 										"result": "WIN",
 										"score": {
@@ -14230,7 +13916,7 @@
 										"name": "St. Truiden",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 15,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -14260,7 +13946,7 @@
 						"name": "OH Leuven",
 						"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 						"position": 3,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "DRAW",
 						"score": {
@@ -14457,7 +14143,7 @@
 										"name": "OH Leuven",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -14472,7 +14158,7 @@
 										"name": "Genk",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 14,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -14506,7 +14192,7 @@
 										"name": "Beerschot Wilrijk",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 13,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -14521,7 +14207,7 @@
 										"name": "OH Leuven",
 										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -14547,124 +14233,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "do-local",
-						"name": "Doble oportunidad (Local)",
-						"shortName": "DOL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
-										"explanation": "El local está mas arriba que el visitante en la tabla | (2>3/16)"
-									},
-									{
-										"fulfilled": true,
-										"description": "Ambos equipos no pueden ser históricos",
-										"explanation": "Ambos equipos no son históricos | (true-false)"
-									}
-								],
-								"fulfilled": true
-							}
-						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
-						"results": {
-							"winning": true,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": false
-						}
-					},
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 2 y el visitante de 3 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					},
-					{
-						"id": "tr-local",
-						"name": "Tiempo reglamentario (Local)",
-						"shortName": "TRL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": true,
-										"description": "El local es de los mejores del torneo",
-										"explanation": "El local es de los mejores del torneo | (2/16)"
-									},
-									{
-										"fulfilled": false,
-										"description": "El visitante es de los peores del torneo",
-										"explanation": "El visitante no es de los peores del torneo | (3/16)"
-									},
-									{
-										"fulfilled": false,
-										"description": "El local debe haber sumado al menos 10 de 15 puntos en los últimos 5 partidos",
-										"explanation": "El local sumó menos de 10 puntos en los últimos 5 partidos | (6/15)"
-									},
-									{
-										"fulfilled": true,
-										"description": "El visitante debe haber sumado menos de 4 puntos en los últimos 5 partidos",
-										"explanation": "El visitante sumó menos de 4 puntos en los últimos 5 partidos | (4/15)"
-									},
-									{
-										"fulfilled": true,
-										"description": "El último partido del local como local debe ser una victoria",
-										"explanation": "El local ganó su último partido como local | (1-0)"
-									},
-									{
-										"fulfilled": false,
-										"description": "El último partido del visitante como visitante debe ser una derrota",
-										"explanation": "El visitante no ganó su último partido como visitante | (0-0)"
-									},
-									{
-										"fulfilled": true,
-										"description": "Ambos equipos no pueden ser históricos",
-										"explanation": "Ambos equipos no son históricos | (true-false)"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": true
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 144,
@@ -14684,7 +14253,7 @@
 		"country": { "name": "Scotland", "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "code": "GB" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 247,
@@ -15084,9 +14653,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1.2,
-				"promedio_de_goles_anotados_de_local_por_partido": 0.8,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 0.3
+				"partidos_jugados": 1,
+				"promedio_de_goles_anotados_por_partido": 14,
+				"promedio_de_goles_anotados_de_local_por_partido": 10,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 4
 			}
 		},
 		"matches": [
@@ -15632,35 +15202,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 8 y el visitante de 7 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 179,
@@ -16138,7 +15680,7 @@
 										"name": "Dundee",
 										"country": { "name": "Scotland", "flag": "🇬🇧", "code": "GB" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -16164,35 +15706,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 9 y el visitante de 5 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 179,
@@ -16216,7 +15730,7 @@
 						"name": "Dundee",
 						"country": { "name": "Scotland", "flag": "🇬🇧", "code": "GB" },
 						"position": 4,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "WIN",
 						"score": {
@@ -16428,7 +15942,7 @@
 										"name": "Dundee",
 										"country": { "name": "Scotland", "flag": "🇬🇧", "code": "GB" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -16696,35 +16210,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 4 y el visitante de 6 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 179,
@@ -16744,7 +16230,7 @@
 		"country": { "name": "Finland", "flag": "🇫🇮", "code": "FI" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 1165,
@@ -17144,9 +16630,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1.5,
-				"promedio_de_goles_anotados_de_local_por_partido": 1.7,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 1.4
+				"partidos_jugados": 19,
+				"promedio_de_goles_anotados_por_partido": 18.6,
+				"promedio_de_goles_anotados_de_local_por_partido": 20.5,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 16.6
 			}
 		},
 		"matches": [
@@ -19735,7 +19222,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (9<=7/12)"
 									},
 									{
@@ -19860,7 +19347,7 @@
 		"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 67,
@@ -20656,6 +20143,7 @@
 				}
 			],
 			"stats": {
+				"partidos_jugados": 0,
 				"promedio_de_goles_anotados_por_partido": 0,
 				"promedio_de_goles_anotados_de_local_por_partido": 0,
 				"promedio_de_goles_anotados_de_visitante_por_partido": 0
@@ -20675,7 +20163,7 @@
 						"name": "Cardiff",
 						"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 						"position": 8,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -20887,7 +20375,7 @@
 										"name": "Cardiff",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 8,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -20918,7 +20406,7 @@
 										"name": "Cardiff",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 8,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -20964,7 +20452,7 @@
 										"name": "Cardiff",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 8,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -21025,7 +20513,7 @@
 										"name": "Cardiff",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 8,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -21071,7 +20559,7 @@
 										"name": "Cardiff",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 8,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -21102,7 +20590,7 @@
 										"name": "Cardiff",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 8,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -21148,7 +20636,7 @@
 										"name": "Cardiff",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 8,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -21194,7 +20682,7 @@
 										"name": "Cardiff",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 8,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -21236,7 +20724,7 @@
 						"name": "Sunderland",
 						"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 						"position": 5,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "WIN",
 						"score": {
@@ -21433,7 +20921,7 @@
 										"name": "Sunderland",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -21446,10 +20934,10 @@
 									"away": {
 										"id": 81,
 										"name": "Marseille",
-										"country": null,
+										"country": { "name": "France", "flag": "🇫🇷", "code": "FR" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 2,
@@ -21494,7 +20982,7 @@
 										"name": "Sunderland",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -21540,7 +21028,7 @@
 										"name": "Sunderland",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -21586,7 +21074,7 @@
 										"name": "Sunderland",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -21615,7 +21103,7 @@
 									"home": {
 										"id": 65,
 										"name": "Nottingham Forest",
-										"country": null,
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": null,
 										"tag": "REGULAR",
 										"historic": false,
@@ -21632,7 +21120,7 @@
 										"name": "Sunderland",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -21663,7 +21151,7 @@
 										"name": "Sunderland",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -21724,7 +21212,7 @@
 										"name": "Sunderland",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -21747,35 +21235,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 8 y el visitante de 5 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": true
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 40,
@@ -22101,10 +21561,10 @@
 									"away": {
 										"id": 34,
 										"name": "Newcastle",
-										"country": null,
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -22176,7 +21636,7 @@
 						"name": "Bristol City",
 						"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 						"position": 6,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "DRAW",
 						"score": {
@@ -22373,7 +21833,7 @@
 										"name": "Bristol City",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 6,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -22419,7 +21879,7 @@
 										"name": "Bristol City",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 6,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -22480,7 +21940,7 @@
 										"name": "Bristol City",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 6,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -22511,7 +21971,7 @@
 										"name": "Bristol City",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 6,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -22572,7 +22032,7 @@
 										"name": "Bristol City",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 6,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -22595,35 +22055,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 10 y el visitante de 6 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 40,
@@ -22647,7 +22079,7 @@
 						"name": "Leeds",
 						"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 						"position": 19,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "DRAW",
 						"score": {
@@ -22844,7 +22276,7 @@
 										"name": "Leeds",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 19,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -22857,10 +22289,10 @@
 									"away": {
 										"id": 532,
 										"name": "Valencia",
-										"country": null,
+										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -22905,7 +22337,7 @@
 										"name": "Leeds",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 19,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -22932,7 +22364,7 @@
 						"name": "Portsmouth",
 						"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 						"position": 4,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "DRAW",
 						"score": {
@@ -23144,7 +22576,7 @@
 										"name": "Portsmouth",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -23190,7 +22622,7 @@
 										"name": "Portsmouth",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -23236,7 +22668,7 @@
 										"name": "Portsmouth",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -23282,7 +22714,7 @@
 										"name": "Portsmouth",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -23328,7 +22760,7 @@
 										"name": "Portsmouth",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -23351,35 +22783,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 19 y el visitante de 4 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 40,
@@ -23403,7 +22807,7 @@
 						"name": "Middlesbrough",
 						"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 						"position": 3,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "WIN",
 						"score": {
@@ -23600,7 +23004,7 @@
 										"name": "Middlesbrough",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -23661,7 +23065,7 @@
 										"name": "Middlesbrough",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -23707,7 +23111,7 @@
 										"name": "Middlesbrough",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -23753,7 +23157,7 @@
 										"name": "Middlesbrough",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -23784,7 +23188,7 @@
 										"name": "Middlesbrough",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -23845,7 +23249,7 @@
 										"name": "Middlesbrough",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -23872,7 +23276,7 @@
 						"name": "Swansea",
 						"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 						"position": 22,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -24069,7 +23473,7 @@
 										"name": "Swansea",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 22,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -24115,7 +23519,7 @@
 										"name": "Swansea",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 22,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -24176,7 +23580,7 @@
 										"name": "Swansea",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 22,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -24199,35 +23603,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": true,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 3 y el visitante de 22 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": true
-							}
-						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
-						"results": {
-							"winning": true,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 40,
@@ -24251,7 +23627,7 @@
 						"name": "Millwall",
 						"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 						"position": 21,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -24448,7 +23824,7 @@
 										"name": "Millwall",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 21,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -24461,7 +23837,7 @@
 									"away": {
 										"id": 41,
 										"name": "Southampton",
-										"country": null,
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": null,
 										"tag": "REGULAR",
 										"historic": false,
@@ -24494,7 +23870,7 @@
 										"name": "Millwall",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 21,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -24555,7 +23931,7 @@
 										"name": "Millwall",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 21,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -24584,7 +23960,7 @@
 									"home": {
 										"id": 65,
 										"name": "Nottingham Forest",
-										"country": null,
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": null,
 										"tag": "REGULAR",
 										"historic": false,
@@ -24601,7 +23977,7 @@
 										"name": "Millwall",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 21,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -24647,7 +24023,7 @@
 										"name": "Millwall",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 21,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -24693,7 +24069,7 @@
 										"name": "Millwall",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 21,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -24724,7 +24100,7 @@
 										"name": "Millwall",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 21,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -24777,212 +24153,507 @@
 						},
 						"stats": {
 							"all-matches": {
-								"name": "Comportamiento general en los últimos 0 partidos",
+								"name": "Comportamiento general en los últimos 7 partidos",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
-									"partidos_ganados": 0,
-									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 0,
-									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"total_de_partidos": 7,
+									"total_de_goles_anotados": 9,
+									"total_de_goles_recibidos": 12,
+									"promedio_de_goles_anotados": 1.3,
+									"promedio_de_goles_recibidos": 1.7,
+									"partidos_ganados": 2,
+									"partidos_empatados": 2,
+									"partidos_perdidos": 3,
+									"partidos_con_goles_anotados": 5,
+									"partidos_con_goles_recibidos": 6,
+									"puntos_ganados": 8,
+									"porcentaje_de_puntos_ganados": 38.1,
+									"total_de_goles_anotados_en_primera_mitad": 5,
+									"total_de_goles_recibidos_en_primera_mitad": 5,
+									"partidos_con_goles_anotados_en_primera_mitad": 4,
+									"partidos_con_goles_recibidos_en_primera_mitad": 5,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.6,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.7,
+									"total_de_goles_anotados_en_segunda_mitad": 4,
+									"total_de_goles_recibidos_en_segunda_mitad": 7,
+									"partidos_con_goles_anotados_en_segunda_mitad": 4,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 5,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0.6,
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0.7
 								}
 							},
 							"all-home-matches": {
-								"name": "Comportamiento como local en los últimos 0 partidos",
+								"name": "Comportamiento como local en los últimos 7 partidos",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"total_de_partidos": 2,
+									"total_de_goles_anotados": 1,
+									"total_de_goles_recibidos": 3,
+									"promedio_de_goles_anotados": 0.5,
+									"promedio_de_goles_recibidos": 1.5,
 									"partidos_ganados": 0,
-									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 0,
-									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"partidos_empatados": 1,
+									"partidos_perdidos": 1,
+									"partidos_con_goles_anotados": 1,
+									"partidos_con_goles_recibidos": 2,
+									"puntos_ganados": 1,
+									"porcentaje_de_puntos_ganados": 16.7,
+									"total_de_goles_anotados_en_primera_mitad": 1,
+									"total_de_goles_recibidos_en_primera_mitad": 1,
+									"partidos_con_goles_anotados_en_primera_mitad": 1,
+									"partidos_con_goles_recibidos_en_primera_mitad": 1,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.5,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.5,
 									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
+									"total_de_goles_recibidos_en_segunda_mitad": 2,
 									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 1,
 									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0.5
 								}
 							},
 							"all-away-matches": {
-								"name": "Comportamiento como visitante en los últimos 0 partidos",
+								"name": "Comportamiento como visitante en los últimos 7 partidos",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
-									"partidos_ganados": 0,
-									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 0,
-									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"total_de_partidos": 5,
+									"total_de_goles_anotados": 8,
+									"total_de_goles_recibidos": 9,
+									"promedio_de_goles_anotados": 1.6,
+									"promedio_de_goles_recibidos": 1.8,
+									"partidos_ganados": 2,
+									"partidos_empatados": 1,
+									"partidos_perdidos": 2,
+									"partidos_con_goles_anotados": 4,
+									"partidos_con_goles_recibidos": 4,
+									"puntos_ganados": 7,
+									"porcentaje_de_puntos_ganados": 46.7,
+									"total_de_goles_anotados_en_primera_mitad": 4,
+									"total_de_goles_recibidos_en_primera_mitad": 4,
+									"partidos_con_goles_anotados_en_primera_mitad": 3,
+									"partidos_con_goles_recibidos_en_primera_mitad": 4,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.6,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.8,
+									"total_de_goles_anotados_en_segunda_mitad": 4,
+									"total_de_goles_recibidos_en_segunda_mitad": 5,
+									"partidos_con_goles_anotados_en_segunda_mitad": 4,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 4,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0.8,
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0.8
 								}
 							},
 							"last-matches": {
 								"name": "Comportamiento general en los últimos 5 partidos",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
-									"partidos_ganados": 0,
-									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 0,
-									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"total_de_partidos": 5,
+									"total_de_goles_anotados": 8,
+									"total_de_goles_recibidos": 10,
+									"promedio_de_goles_anotados": 1.6,
+									"promedio_de_goles_recibidos": 2,
+									"partidos_ganados": 1,
+									"partidos_empatados": 2,
+									"partidos_perdidos": 2,
+									"partidos_con_goles_anotados": 4,
+									"partidos_con_goles_recibidos": 5,
+									"puntos_ganados": 5,
+									"porcentaje_de_puntos_ganados": 33.3,
+									"total_de_goles_anotados_en_primera_mitad": 5,
+									"total_de_goles_recibidos_en_primera_mitad": 5,
+									"partidos_con_goles_anotados_en_primera_mitad": 4,
+									"partidos_con_goles_recibidos_en_primera_mitad": 5,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.8,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 1,
+									"total_de_goles_anotados_en_segunda_mitad": 3,
+									"total_de_goles_recibidos_en_segunda_mitad": 5,
+									"partidos_con_goles_anotados_en_segunda_mitad": 3,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 4,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0.6,
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0.8
 								}
 							},
 							"last-home-matches": {
 								"name": "Comportamiento en los últimos 3 partidos como local",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"total_de_partidos": 2,
+									"total_de_goles_anotados": 1,
+									"total_de_goles_recibidos": 3,
+									"promedio_de_goles_anotados": 0.5,
+									"promedio_de_goles_recibidos": 1.5,
 									"partidos_ganados": 0,
-									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 0,
-									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"partidos_empatados": 1,
+									"partidos_perdidos": 1,
+									"partidos_con_goles_anotados": 1,
+									"partidos_con_goles_recibidos": 2,
+									"puntos_ganados": 1,
+									"porcentaje_de_puntos_ganados": 16.7,
+									"total_de_goles_anotados_en_primera_mitad": 1,
+									"total_de_goles_recibidos_en_primera_mitad": 1,
+									"partidos_con_goles_anotados_en_primera_mitad": 1,
+									"partidos_con_goles_recibidos_en_primera_mitad": 1,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.5,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.5,
 									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
+									"total_de_goles_recibidos_en_segunda_mitad": 2,
 									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 1,
 									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0.5
 								}
 							},
 							"last-away-matches": {
 								"name": "Comportamiento en los últimos 3 partidos como visitante",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
-									"partidos_ganados": 0,
+									"total_de_partidos": 2,
+									"total_de_goles_anotados": 5,
+									"total_de_goles_recibidos": 5,
+									"promedio_de_goles_anotados": 2.5,
+									"promedio_de_goles_recibidos": 2.5,
+									"partidos_ganados": 1,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 0,
-									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"partidos_perdidos": 1,
+									"partidos_con_goles_anotados": 2,
+									"partidos_con_goles_recibidos": 2,
+									"puntos_ganados": 3,
+									"porcentaje_de_puntos_ganados": 50,
+									"total_de_goles_anotados_en_primera_mitad": 3,
+									"total_de_goles_recibidos_en_primera_mitad": 2,
+									"partidos_con_goles_anotados_en_primera_mitad": 2,
+									"partidos_con_goles_recibidos_en_primera_mitad": 2,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 1,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 1,
+									"total_de_goles_anotados_en_segunda_mitad": 2,
+									"total_de_goles_recibidos_en_segunda_mitad": 3,
+									"partidos_con_goles_anotados_en_segunda_mitad": 2,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 2,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 1,
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 1
 								}
 							}
 						},
-						"matches": []
+						"matches": [
+							{
+								"id": "1225762",
+								"fullDate": "2024-08-03T09:00",
+								"date": "2024-08-03",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 38,
+										"name": "Watford",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 17,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "DRAW",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 1, "against": 1 },
+											"secondHalf": { "for": 0, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 55,
+										"name": "Brentford",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "DRAW",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 1, "against": 1 },
+											"secondHalf": { "for": 0, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1219999",
+								"fullDate": "2024-07-30T13:30",
+								"date": "2024-07-30",
+								"hour": "13:30",
+								"teams": {
+									"home": {
+										"id": 1358,
+										"name": "Wycombe",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 3,
+											"firstHalf": { "for": 1, "against": 1 },
+											"secondHalf": { "for": 2, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 38,
+										"name": "Watford",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 17,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 2,
+											"firstHalf": { "for": 1, "against": 1 },
+											"secondHalf": { "for": 1, "against": 2 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1218303",
+								"fullDate": "2024-07-24T13:00",
+								"date": "2024-07-24",
+								"hour": "13:00",
+								"teams": {
+									"home": {
+										"id": 249,
+										"name": "Hibernian",
+										"country": { "name": "Scotland", "flag": "🇬🇧", "code": "GB" },
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 2,
+											"firstHalf": { "for": 1, "against": 2 },
+											"secondHalf": { "for": 1, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 38,
+										"name": "Watford",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 17,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 3,
+											"firstHalf": { "for": 2, "against": 1 },
+											"secondHalf": { "for": 1, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1210324",
+								"fullDate": "2024-07-20T09:00",
+								"date": "2024-07-20",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 1347,
+										"name": "Gillingham",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 2,
+											"firstHalf": { "for": 1, "against": 0 },
+											"secondHalf": { "for": 1, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 38,
+										"name": "Watford",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 17,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 0,
+											"firstHalf": { "for": 0, "against": 1 },
+											"secondHalf": { "for": 0, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1207328",
+								"fullDate": "2024-07-13T09:00",
+								"date": "2024-07-13",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 1368,
+										"name": "Stevenage",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "DRAW",
+										"score": {
+											"fullTime": 2,
+											"firstHalf": { "for": 1, "against": 1 },
+											"secondHalf": { "for": 1, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 38,
+										"name": "Watford",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 17,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "DRAW",
+										"score": {
+											"fullTime": 2,
+											"firstHalf": { "for": 1, "against": 1 },
+											"secondHalf": { "for": 1, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1205692",
+								"fullDate": "2024-07-10T13:45",
+								"date": "2024-07-10",
+								"hour": "13:45",
+								"teams": {
+									"home": {
+										"id": 1830,
+										"name": "Boreham Wood",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 0,
+											"firstHalf": { "for": 0, "against": 0 },
+											"secondHalf": { "for": 0, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 38,
+										"name": "Watford",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 17,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 0, "against": 0 },
+											"secondHalf": { "for": 1, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1203410",
+								"fullDate": "2024-07-06T04:30",
+								"date": "2024-07-06",
+								"hour": "04:30",
+								"teams": {
+									"home": {
+										"id": 38,
+										"name": "Watford",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 17,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 0,
+											"firstHalf": { "for": 0, "against": 0 },
+											"secondHalf": { "for": 0, "against": 2 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 53,
+										"name": "Reading",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 2,
+											"firstHalf": { "for": 0, "against": 0 },
+											"secondHalf": { "for": 2, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							}
+						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 21 y el visitante de 17 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 40,
@@ -25006,7 +24677,7 @@
 						"name": "Oxford United",
 						"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 						"position": 23,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "WIN",
 						"score": {
@@ -25203,7 +24874,7 @@
 										"name": "Oxford United",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 23,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -25249,7 +24920,7 @@
 										"name": "Oxford United",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 23,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -25262,7 +24933,7 @@
 									"away": {
 										"id": 41,
 										"name": "Southampton",
-										"country": null,
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": null,
 										"tag": "REGULAR",
 										"historic": false,
@@ -25310,7 +24981,7 @@
 										"name": "Oxford United",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 23,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -25341,7 +25012,7 @@
 										"name": "Oxford United",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 23,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -25402,7 +25073,7 @@
 										"name": "Oxford United",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 23,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -25448,7 +25119,7 @@
 										"name": "Oxford United",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 23,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -25494,7 +25165,7 @@
 										"name": "Oxford United",
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 23,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -25532,212 +25203,461 @@
 						},
 						"stats": {
 							"all-matches": {
-								"name": "Comportamiento general en los últimos 0 partidos",
+								"name": "Comportamiento general en los últimos 6 partidos",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
-									"partidos_ganados": 0,
-									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 0,
-									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"total_de_partidos": 6,
+									"total_de_goles_anotados": 7,
+									"total_de_goles_recibidos": 10,
+									"promedio_de_goles_anotados": 1.2,
+									"promedio_de_goles_recibidos": 1.7,
+									"partidos_ganados": 1,
+									"partidos_empatados": 2,
+									"partidos_perdidos": 3,
+									"partidos_con_goles_anotados": 4,
+									"partidos_con_goles_recibidos": 5,
+									"puntos_ganados": 5,
+									"porcentaje_de_puntos_ganados": 27.8,
+									"total_de_goles_anotados_en_primera_mitad": 3,
+									"total_de_goles_recibidos_en_primera_mitad": 9,
+									"partidos_con_goles_anotados_en_primera_mitad": 2,
+									"partidos_con_goles_recibidos_en_primera_mitad": 5,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.3,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.8,
+									"total_de_goles_anotados_en_segunda_mitad": 4,
+									"total_de_goles_recibidos_en_segunda_mitad": 1,
+									"partidos_con_goles_anotados_en_segunda_mitad": 3,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 1,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0.5,
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0.2
 								}
 							},
 							"all-home-matches": {
-								"name": "Comportamiento como local en los últimos 0 partidos",
+								"name": "Comportamiento como local en los últimos 6 partidos",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"total_de_partidos": 2,
+									"total_de_goles_anotados": 1,
+									"total_de_goles_recibidos": 4,
+									"promedio_de_goles_anotados": 0.5,
+									"promedio_de_goles_recibidos": 2,
 									"partidos_ganados": 0,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
+									"partidos_perdidos": 2,
+									"partidos_con_goles_anotados": 1,
+									"partidos_con_goles_recibidos": 2,
 									"puntos_ganados": 0,
 									"porcentaje_de_puntos_ganados": 0,
 									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
+									"total_de_goles_recibidos_en_primera_mitad": 4,
 									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"partidos_con_goles_recibidos_en_primera_mitad": 2,
 									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 1,
+									"total_de_goles_anotados_en_segunda_mitad": 1,
 									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
+									"partidos_con_goles_anotados_en_segunda_mitad": 1,
 									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0.5,
 									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
 								}
 							},
 							"all-away-matches": {
-								"name": "Comportamiento como visitante en los últimos 0 partidos",
+								"name": "Comportamiento como visitante en los últimos 6 partidos",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
-									"partidos_ganados": 0,
-									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 0,
-									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"total_de_partidos": 4,
+									"total_de_goles_anotados": 6,
+									"total_de_goles_recibidos": 6,
+									"promedio_de_goles_anotados": 1.5,
+									"promedio_de_goles_recibidos": 1.5,
+									"partidos_ganados": 1,
+									"partidos_empatados": 2,
+									"partidos_perdidos": 1,
+									"partidos_con_goles_anotados": 3,
+									"partidos_con_goles_recibidos": 3,
+									"puntos_ganados": 5,
+									"porcentaje_de_puntos_ganados": 41.7,
+									"total_de_goles_anotados_en_primera_mitad": 3,
+									"total_de_goles_recibidos_en_primera_mitad": 5,
+									"partidos_con_goles_anotados_en_primera_mitad": 2,
+									"partidos_con_goles_recibidos_en_primera_mitad": 3,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.5,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.8,
+									"total_de_goles_anotados_en_segunda_mitad": 3,
+									"total_de_goles_recibidos_en_segunda_mitad": 1,
+									"partidos_con_goles_anotados_en_segunda_mitad": 2,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 1,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0.5,
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0.3
 								}
 							},
 							"last-matches": {
 								"name": "Comportamiento general en los últimos 5 partidos",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"total_de_partidos": 5,
+									"total_de_goles_anotados": 4,
+									"total_de_goles_recibidos": 10,
+									"promedio_de_goles_anotados": 0.8,
+									"promedio_de_goles_recibidos": 2,
 									"partidos_ganados": 0,
-									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 0,
-									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"partidos_empatados": 2,
+									"partidos_perdidos": 3,
+									"partidos_con_goles_anotados": 3,
+									"partidos_con_goles_recibidos": 5,
+									"puntos_ganados": 2,
+									"porcentaje_de_puntos_ganados": 13.3,
+									"total_de_goles_anotados_en_primera_mitad": 1,
+									"total_de_goles_recibidos_en_primera_mitad": 9,
+									"partidos_con_goles_anotados_en_primera_mitad": 1,
+									"partidos_con_goles_recibidos_en_primera_mitad": 5,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.2,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 1,
+									"total_de_goles_anotados_en_segunda_mitad": 3,
+									"total_de_goles_recibidos_en_segunda_mitad": 1,
+									"partidos_con_goles_anotados_en_segunda_mitad": 2,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 1,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0.4,
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0.2
 								}
 							},
 							"last-home-matches": {
 								"name": "Comportamiento en los últimos 3 partidos como local",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"total_de_partidos": 2,
+									"total_de_goles_anotados": 1,
+									"total_de_goles_recibidos": 4,
+									"promedio_de_goles_anotados": 0.5,
+									"promedio_de_goles_recibidos": 2,
 									"partidos_ganados": 0,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
+									"partidos_perdidos": 2,
+									"partidos_con_goles_anotados": 1,
+									"partidos_con_goles_recibidos": 2,
 									"puntos_ganados": 0,
 									"porcentaje_de_puntos_ganados": 0,
 									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
+									"total_de_goles_recibidos_en_primera_mitad": 4,
 									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"partidos_con_goles_recibidos_en_primera_mitad": 2,
 									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 1,
+									"total_de_goles_anotados_en_segunda_mitad": 1,
 									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
+									"partidos_con_goles_anotados_en_segunda_mitad": 1,
 									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0.5,
 									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
 								}
 							},
 							"last-away-matches": {
 								"name": "Comportamiento en los últimos 3 partidos como visitante",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"total_de_partidos": 2,
+									"total_de_goles_anotados": 3,
+									"total_de_goles_recibidos": 3,
+									"promedio_de_goles_anotados": 1.5,
+									"promedio_de_goles_recibidos": 1.5,
 									"partidos_ganados": 0,
-									"partidos_empatados": 0,
+									"partidos_empatados": 2,
 									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 0,
-									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
+									"partidos_con_goles_anotados": 2,
+									"partidos_con_goles_recibidos": 2,
+									"puntos_ganados": 2,
+									"porcentaje_de_puntos_ganados": 33.3,
+									"total_de_goles_anotados_en_primera_mitad": 1,
+									"total_de_goles_recibidos_en_primera_mitad": 3,
+									"partidos_con_goles_anotados_en_primera_mitad": 1,
+									"partidos_con_goles_recibidos_en_primera_mitad": 2,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.5,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 1,
+									"total_de_goles_anotados_en_segunda_mitad": 2,
 									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
+									"partidos_con_goles_anotados_en_segunda_mitad": 1,
 									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0.5,
 									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
 								}
 							}
 						},
-						"matches": []
+						"matches": [
+							{
+								"id": "1225804",
+								"fullDate": "2024-08-03T09:00",
+								"date": "2024-08-03",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 71,
+										"name": "Norwich",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 11,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 0, "against": 3 },
+											"secondHalf": { "for": 1, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 186,
+										"name": "FC St. Pauli",
+										"country": { "name": "Germany", "flag": "🇩🇪", "code": "DE" },
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 3,
+											"firstHalf": { "for": 3, "against": 0 },
+											"secondHalf": { "for": 0, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1261868",
+								"fullDate": "2024-07-30T11:00",
+								"date": "2024-07-30",
+								"hour": "11:00",
+								"teams": {
+									"home": {
+										"id": 167,
+										"name": "1899 Hoffenheim",
+										"country": { "name": "Germany", "flag": "🇩🇪", "code": "DE" },
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "DRAW",
+										"score": {
+											"fullTime": 2,
+											"firstHalf": { "for": 2, "against": 0 },
+											"secondHalf": { "for": 0, "against": 2 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 71,
+										"name": "Norwich",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 11,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "DRAW",
+										"score": {
+											"fullTime": 2,
+											"firstHalf": { "for": 0, "against": 2 },
+											"secondHalf": { "for": 2, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1218315",
+								"fullDate": "2024-07-26T12:45",
+								"date": "2024-07-26",
+								"hour": "12:45",
+								"teams": {
+									"home": {
+										"id": 71,
+										"name": "Norwich",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 11,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 0,
+											"firstHalf": { "for": 0, "against": 1 },
+											"secondHalf": { "for": 0, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 179,
+										"name": "FC Magdeburg",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 1, "against": 0 },
+											"secondHalf": { "for": 0, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1210354",
+								"fullDate": "2024-07-20T09:00",
+								"date": "2024-07-20",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 733,
+										"name": "Standard Liege",
+										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
+										"position": null,
+										"tag": "REGULAR",
+										"historic": true,
+										"result": "DRAW",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 1, "against": 1 },
+											"secondHalf": { "for": 0, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 71,
+										"name": "Norwich",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 11,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "DRAW",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 1, "against": 1 },
+											"secondHalf": { "for": 0, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1209096",
+								"fullDate": "2024-07-17T11:30",
+								"date": "2024-07-17",
+								"hour": "11:30",
+								"teams": {
+									"home": {
+										"id": 569,
+										"name": "Club Brugge KV",
+										"country": { "name": "Belgium", "flag": "🇧🇪", "code": "BE" },
+										"position": null,
+										"tag": "REGULAR",
+										"historic": true,
+										"result": "WIN",
+										"score": {
+											"fullTime": 3,
+											"firstHalf": { "for": 2, "against": 0 },
+											"secondHalf": { "for": 1, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 71,
+										"name": "Norwich",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 11,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 0,
+											"firstHalf": { "for": 0, "against": 2 },
+											"secondHalf": { "for": 0, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1209032",
+								"fullDate": "2024-07-13T09:00",
+								"date": "2024-07-13",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 1337,
+										"name": "Northampton",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 0,
+											"firstHalf": { "for": 0, "against": 2 },
+											"secondHalf": { "for": 0, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 71,
+										"name": "Norwich",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 11,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 3,
+											"firstHalf": { "for": 2, "against": 0 },
+											"secondHalf": { "for": 1, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							}
+						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 23 y el visitante de 11 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 40,
@@ -25772,76 +25692,76 @@
 						},
 						"stats": {
 							"all-matches": {
-								"name": "Comportamiento general en los últimos 0 partidos",
+								"name": "Comportamiento general en los últimos 3 partidos",
 								"items": {
-									"total_de_partidos": 0,
+									"total_de_partidos": 3,
 									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
+									"total_de_goles_recibidos": 4,
 									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"promedio_de_goles_recibidos": 1.3,
 									"partidos_ganados": 0,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
+									"partidos_perdidos": 3,
 									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
+									"partidos_con_goles_recibidos": 3,
 									"puntos_ganados": 0,
 									"porcentaje_de_puntos_ganados": 0,
 									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
+									"total_de_goles_recibidos_en_primera_mitad": 1,
 									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"partidos_con_goles_recibidos_en_primera_mitad": 1,
 									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.3,
 									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
+									"total_de_goles_recibidos_en_segunda_mitad": 3,
 									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 3,
 									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 1
 								}
 							},
 							"all-home-matches": {
-								"name": "Comportamiento como local en los últimos 0 partidos",
+								"name": "Comportamiento como local en los últimos 3 partidos",
 								"items": {
-									"total_de_partidos": 0,
+									"total_de_partidos": 2,
 									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
+									"total_de_goles_recibidos": 3,
 									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"promedio_de_goles_recibidos": 1.5,
 									"partidos_ganados": 0,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
+									"partidos_perdidos": 2,
 									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
+									"partidos_con_goles_recibidos": 2,
 									"puntos_ganados": 0,
 									"porcentaje_de_puntos_ganados": 0,
 									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
+									"total_de_goles_recibidos_en_primera_mitad": 1,
 									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"partidos_con_goles_recibidos_en_primera_mitad": 1,
 									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.5,
 									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
+									"total_de_goles_recibidos_en_segunda_mitad": 2,
 									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 2,
 									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 1
 								}
 							},
 							"all-away-matches": {
-								"name": "Comportamiento como visitante en los últimos 0 partidos",
+								"name": "Comportamiento como visitante en los últimos 3 partidos",
 								"items": {
-									"total_de_partidos": 0,
+									"total_de_partidos": 1,
 									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
+									"total_de_goles_recibidos": 1,
 									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"promedio_de_goles_recibidos": 1,
 									"partidos_ganados": 0,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
+									"partidos_perdidos": 1,
 									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
+									"partidos_con_goles_recibidos": 1,
 									"puntos_ganados": 0,
 									"porcentaje_de_puntos_ganados": 0,
 									"total_de_goles_anotados_en_primera_mitad": 0,
@@ -25851,84 +25771,84 @@
 									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
 									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
 									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
+									"total_de_goles_recibidos_en_segunda_mitad": 1,
 									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 1,
 									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 1
 								}
 							},
 							"last-matches": {
 								"name": "Comportamiento general en los últimos 5 partidos",
 								"items": {
-									"total_de_partidos": 0,
+									"total_de_partidos": 3,
 									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
+									"total_de_goles_recibidos": 4,
 									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"promedio_de_goles_recibidos": 1.3,
 									"partidos_ganados": 0,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
+									"partidos_perdidos": 3,
 									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
+									"partidos_con_goles_recibidos": 3,
 									"puntos_ganados": 0,
 									"porcentaje_de_puntos_ganados": 0,
 									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
+									"total_de_goles_recibidos_en_primera_mitad": 1,
 									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"partidos_con_goles_recibidos_en_primera_mitad": 1,
 									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.3,
 									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
+									"total_de_goles_recibidos_en_segunda_mitad": 3,
 									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 3,
 									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 1
 								}
 							},
 							"last-home-matches": {
 								"name": "Comportamiento en los últimos 3 partidos como local",
 								"items": {
-									"total_de_partidos": 0,
+									"total_de_partidos": 2,
 									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
+									"total_de_goles_recibidos": 3,
 									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"promedio_de_goles_recibidos": 1.5,
 									"partidos_ganados": 0,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
+									"partidos_perdidos": 2,
 									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
+									"partidos_con_goles_recibidos": 2,
 									"puntos_ganados": 0,
 									"porcentaje_de_puntos_ganados": 0,
 									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
+									"total_de_goles_recibidos_en_primera_mitad": 1,
 									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"partidos_con_goles_recibidos_en_primera_mitad": 1,
 									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.5,
 									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
+									"total_de_goles_recibidos_en_segunda_mitad": 2,
 									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 2,
 									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 1
 								}
 							},
 							"last-away-matches": {
 								"name": "Comportamiento en los últimos 3 partidos como visitante",
 								"items": {
-									"total_de_partidos": 0,
+									"total_de_partidos": 1,
 									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
+									"total_de_goles_recibidos": 1,
 									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"promedio_de_goles_recibidos": 1,
 									"partidos_ganados": 0,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
+									"partidos_perdidos": 1,
 									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
+									"partidos_con_goles_recibidos": 1,
 									"puntos_ganados": 0,
 									"porcentaje_de_puntos_ganados": 0,
 									"total_de_goles_anotados_en_primera_mitad": 0,
@@ -25938,22 +25858,161 @@
 									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
 									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
 									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
+									"total_de_goles_recibidos_en_segunda_mitad": 1,
 									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 1,
 									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 1
 								}
 							}
 						},
-						"matches": []
+						"matches": [
+							{
+								"id": "1225771",
+								"fullDate": "2024-08-03T09:00",
+								"date": "2024-08-03",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 72,
+										"name": "QPR",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 14,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 0,
+											"firstHalf": { "for": 0, "against": 0 },
+											"secondHalf": { "for": 0, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 51,
+										"name": "Brighton",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 0, "against": 0 },
+											"secondHalf": { "for": 1, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1218394",
+								"fullDate": "2024-07-27T09:00",
+								"date": "2024-07-27",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 53,
+										"name": "Reading",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 0, "against": 0 },
+											"secondHalf": { "for": 1, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 72,
+										"name": "QPR",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 14,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 0,
+											"firstHalf": { "for": 0, "against": 0 },
+											"secondHalf": { "for": 0, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1210217",
+								"fullDate": "2024-07-20T09:00",
+								"date": "2024-07-20",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 72,
+										"name": "QPR",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 14,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 0,
+											"firstHalf": { "for": 0, "against": 1 },
+											"secondHalf": { "for": 0, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 47,
+										"name": "Tottenham",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 2,
+											"firstHalf": { "for": 1, "against": 0 },
+											"secondHalf": { "for": 1, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							}
+						]
 					},
 					"away": {
 						"id": 60,
 						"name": "West Brom",
 						"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 						"position": 18,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "WIN",
 						"score": {
@@ -25964,212 +26023,461 @@
 						},
 						"stats": {
 							"all-matches": {
-								"name": "Comportamiento general en los últimos 0 partidos",
+								"name": "Comportamiento general en los últimos 6 partidos",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
-									"partidos_ganados": 0,
+									"total_de_partidos": 6,
+									"total_de_goles_anotados": 5,
+									"total_de_goles_recibidos": 11,
+									"promedio_de_goles_anotados": 0.8,
+									"promedio_de_goles_recibidos": 1.8,
+									"partidos_ganados": 1,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 0,
-									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"partidos_perdidos": 5,
+									"partidos_con_goles_anotados": 4,
+									"partidos_con_goles_recibidos": 6,
+									"puntos_ganados": 3,
+									"porcentaje_de_puntos_ganados": 16.7,
+									"total_de_goles_anotados_en_primera_mitad": 2,
+									"total_de_goles_recibidos_en_primera_mitad": 4,
+									"partidos_con_goles_anotados_en_primera_mitad": 2,
+									"partidos_con_goles_recibidos_en_primera_mitad": 4,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.3,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.7,
+									"total_de_goles_anotados_en_segunda_mitad": 3,
+									"total_de_goles_recibidos_en_segunda_mitad": 7,
+									"partidos_con_goles_anotados_en_segunda_mitad": 2,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 5,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0.3,
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0.8
 								}
 							},
 							"all-home-matches": {
-								"name": "Comportamiento como local en los últimos 0 partidos",
+								"name": "Comportamiento como local en los últimos 6 partidos",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
-									"partidos_ganados": 0,
+									"total_de_partidos": 4,
+									"total_de_goles_anotados": 4,
+									"total_de_goles_recibidos": 6,
+									"promedio_de_goles_anotados": 1,
+									"promedio_de_goles_recibidos": 1.5,
+									"partidos_ganados": 1,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 0,
-									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"partidos_perdidos": 3,
+									"partidos_con_goles_anotados": 3,
+									"partidos_con_goles_recibidos": 4,
+									"puntos_ganados": 3,
+									"porcentaje_de_puntos_ganados": 25,
+									"total_de_goles_anotados_en_primera_mitad": 1,
+									"total_de_goles_recibidos_en_primera_mitad": 2,
+									"partidos_con_goles_anotados_en_primera_mitad": 1,
+									"partidos_con_goles_recibidos_en_primera_mitad": 2,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.3,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.5,
+									"total_de_goles_anotados_en_segunda_mitad": 3,
+									"total_de_goles_recibidos_en_segunda_mitad": 4,
+									"partidos_con_goles_anotados_en_segunda_mitad": 2,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 4,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0.5,
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 1
 								}
 							},
 							"all-away-matches": {
-								"name": "Comportamiento como visitante en los últimos 0 partidos",
+								"name": "Comportamiento como visitante en los últimos 6 partidos",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"total_de_partidos": 2,
+									"total_de_goles_anotados": 1,
+									"total_de_goles_recibidos": 5,
+									"promedio_de_goles_anotados": 0.5,
+									"promedio_de_goles_recibidos": 2.5,
 									"partidos_ganados": 0,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
+									"partidos_perdidos": 2,
+									"partidos_con_goles_anotados": 1,
+									"partidos_con_goles_recibidos": 2,
 									"puntos_ganados": 0,
 									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"total_de_goles_anotados_en_primera_mitad": 1,
+									"total_de_goles_recibidos_en_primera_mitad": 2,
+									"partidos_con_goles_anotados_en_primera_mitad": 1,
+									"partidos_con_goles_recibidos_en_primera_mitad": 2,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.5,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 1,
 									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
+									"total_de_goles_recibidos_en_segunda_mitad": 3,
 									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 1,
 									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0.5
 								}
 							},
 							"last-matches": {
 								"name": "Comportamiento general en los últimos 5 partidos",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
-									"partidos_ganados": 0,
+									"total_de_partidos": 5,
+									"total_de_goles_anotados": 4,
+									"total_de_goles_recibidos": 9,
+									"promedio_de_goles_anotados": 0.8,
+									"promedio_de_goles_recibidos": 1.8,
+									"partidos_ganados": 1,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
-									"puntos_ganados": 0,
-									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"partidos_perdidos": 4,
+									"partidos_con_goles_anotados": 3,
+									"partidos_con_goles_recibidos": 5,
+									"puntos_ganados": 3,
+									"porcentaje_de_puntos_ganados": 20,
+									"total_de_goles_anotados_en_primera_mitad": 1,
+									"total_de_goles_recibidos_en_primera_mitad": 3,
+									"partidos_con_goles_anotados_en_primera_mitad": 1,
+									"partidos_con_goles_recibidos_en_primera_mitad": 3,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.2,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.6,
+									"total_de_goles_anotados_en_segunda_mitad": 3,
+									"total_de_goles_recibidos_en_segunda_mitad": 6,
+									"partidos_con_goles_anotados_en_segunda_mitad": 2,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 4,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0.4,
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0.8
 								}
 							},
 							"last-home-matches": {
 								"name": "Comportamiento en los últimos 3 partidos como local",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"total_de_partidos": 2,
+									"total_de_goles_anotados": 1,
+									"total_de_goles_recibidos": 3,
+									"promedio_de_goles_anotados": 0.5,
+									"promedio_de_goles_recibidos": 1.5,
 									"partidos_ganados": 0,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
+									"partidos_perdidos": 2,
+									"partidos_con_goles_anotados": 1,
+									"partidos_con_goles_recibidos": 2,
 									"puntos_ganados": 0,
 									"porcentaje_de_puntos_ganados": 0,
 									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
+									"total_de_goles_recibidos_en_primera_mitad": 1,
 									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"partidos_con_goles_recibidos_en_primera_mitad": 1,
 									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
-									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0.5,
+									"total_de_goles_anotados_en_segunda_mitad": 1,
+									"total_de_goles_recibidos_en_segunda_mitad": 2,
+									"partidos_con_goles_anotados_en_segunda_mitad": 1,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 2,
+									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0.5,
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 1
 								}
 							},
 							"last-away-matches": {
 								"name": "Comportamiento en los últimos 3 partidos como visitante",
 								"items": {
-									"total_de_partidos": 0,
-									"total_de_goles_anotados": 0,
-									"total_de_goles_recibidos": 0,
-									"promedio_de_goles_anotados": 0,
-									"promedio_de_goles_recibidos": 0,
+									"total_de_partidos": 2,
+									"total_de_goles_anotados": 1,
+									"total_de_goles_recibidos": 5,
+									"promedio_de_goles_anotados": 0.5,
+									"promedio_de_goles_recibidos": 2.5,
 									"partidos_ganados": 0,
 									"partidos_empatados": 0,
-									"partidos_perdidos": 0,
-									"partidos_con_goles_anotados": 0,
-									"partidos_con_goles_recibidos": 0,
+									"partidos_perdidos": 2,
+									"partidos_con_goles_anotados": 1,
+									"partidos_con_goles_recibidos": 2,
 									"puntos_ganados": 0,
 									"porcentaje_de_puntos_ganados": 0,
-									"total_de_goles_anotados_en_primera_mitad": 0,
-									"total_de_goles_recibidos_en_primera_mitad": 0,
-									"partidos_con_goles_anotados_en_primera_mitad": 0,
-									"partidos_con_goles_recibidos_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 0,
+									"total_de_goles_anotados_en_primera_mitad": 1,
+									"total_de_goles_recibidos_en_primera_mitad": 2,
+									"partidos_con_goles_anotados_en_primera_mitad": 1,
+									"partidos_con_goles_recibidos_en_primera_mitad": 2,
+									"promedio_de_partidos_con_goles_anotados_en_primera_mitad": 0.5,
+									"promedio_de_partidos_con_goles_recibidos_en_primera_mitad": 1,
 									"total_de_goles_anotados_en_segunda_mitad": 0,
-									"total_de_goles_recibidos_en_segunda_mitad": 0,
+									"total_de_goles_recibidos_en_segunda_mitad": 3,
 									"partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"partidos_con_goles_recibidos_en_segunda_mitad": 0,
+									"partidos_con_goles_recibidos_en_segunda_mitad": 1,
 									"promedio_de_partidos_con_goles_anotados_en_segunda_mitad": 0,
-									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0
+									"promedio_de_partidos_con_goles_recibidos_en_segunda_mitad": 0.5
 								}
 							}
 						},
-						"matches": []
+						"matches": [
+							{
+								"id": "1225799",
+								"fullDate": "2024-08-03T09:00",
+								"date": "2024-08-03",
+								"hour": "09:00",
+								"teams": {
+									"home": {
+										"id": 54,
+										"name": "Birmingham",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 4,
+											"firstHalf": { "for": 1, "against": 1 },
+											"secondHalf": { "for": 3, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 60,
+										"name": "West Brom",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 18,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 1, "against": 1 },
+											"secondHalf": { "for": 0, "against": 3 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1225722",
+								"fullDate": "2024-08-02T13:45",
+								"date": "2024-08-02",
+								"hour": "13:45",
+								"teams": {
+									"home": {
+										"id": 1370,
+										"name": "Cambridge United",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 1, "against": 0 },
+											"secondHalf": { "for": 0, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 60,
+										"name": "West Brom",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 18,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 0,
+											"firstHalf": { "for": 0, "against": 1 },
+											"secondHalf": { "for": 0, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1218376",
+								"fullDate": "2024-07-27T07:00",
+								"date": "2024-07-27",
+								"hour": "07:00",
+								"teams": {
+									"home": {
+										"id": 60,
+										"name": "West Brom",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 18,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 0,
+											"firstHalf": { "for": 0, "against": 0 },
+											"secondHalf": { "for": 0, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 798,
+										"name": "Mallorca",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 0, "against": 0 },
+											"secondHalf": { "for": 1, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1219631",
+								"fullDate": "2024-07-23T07:30",
+								"date": "2024-07-23",
+								"hour": "07:30",
+								"teams": {
+									"home": {
+										"id": 60,
+										"name": "West Brom",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 18,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 0, "against": 1 },
+											"secondHalf": { "for": 1, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 1356,
+										"name": "Blackpool",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 2,
+											"firstHalf": { "for": 1, "against": 0 },
+											"secondHalf": { "for": 1, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1218222",
+								"fullDate": "2024-07-20T07:00",
+								"date": "2024-07-20",
+								"hour": "07:00",
+								"teams": {
+									"home": {
+										"id": 60,
+										"name": "West Brom",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 18,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 2,
+											"firstHalf": { "for": null, "against": null },
+											"secondHalf": { "for": 2, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 1350,
+										"name": "Peterborough",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": null, "against": null },
+											"secondHalf": { "for": 1, "against": 2 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							},
+							{
+								"id": "1218164",
+								"fullDate": "2024-07-13T08:00",
+								"date": "2024-07-13",
+								"hour": "08:00",
+								"teams": {
+									"home": {
+										"id": 60,
+										"name": "West Brom",
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
+										"position": 18,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "LOSE",
+										"score": {
+											"fullTime": 1,
+											"firstHalf": { "for": 1, "against": 1 },
+											"secondHalf": { "for": 0, "against": 1 },
+											"extraTime": { "for": null, "against": null }
+										}
+									},
+									"away": {
+										"id": 68,
+										"name": "Bolton",
+										"country": null,
+										"position": null,
+										"tag": "REGULAR",
+										"historic": false,
+										"result": "WIN",
+										"score": {
+											"fullTime": 2,
+											"firstHalf": { "for": 1, "against": 1 },
+											"secondHalf": { "for": 1, "against": 0 },
+											"extraTime": { "for": null, "against": null }
+										}
+									}
+								},
+								"league": {
+									"id": 667,
+									"name": "Friendlies Clubs",
+									"type": "Unknown",
+									"country": { "name": "Unknown", "code": "Unknown", "flag": "❓" }
+								},
+								"type": "PLAYED_MATCH",
+								"played": true
+							}
+						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 14 y el visitante de 18 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 40,
@@ -26918,7 +27226,7 @@
 									"away": {
 										"id": 45,
 										"name": "Everton",
-										"country": null,
+										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": null,
 										"tag": "REGULAR",
 										"historic": false,
@@ -27081,35 +27389,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 16 y el visitante de 9 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 40,
@@ -27129,7 +27409,7 @@
 		"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 419,
@@ -27727,6 +28007,7 @@
 				}
 			],
 			"stats": {
+				"partidos_jugados": 0,
 				"promedio_de_goles_anotados_por_partido": 0,
 				"promedio_de_goles_anotados_de_local_por_partido": 0,
 				"promedio_de_goles_anotados_de_visitante_por_partido": 0
@@ -27956,10 +28237,10 @@
 									"away": {
 										"id": 91,
 										"name": "Monaco",
-										"country": null,
+										"country": { "name": "France", "flag": "🇫🇷", "code": "FR" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 3,
@@ -28169,7 +28450,7 @@
 						"name": "Willem II",
 						"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 						"position": 16,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "DRAW",
 						"score": {
@@ -28381,7 +28662,7 @@
 										"name": "Willem II",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 16,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -28412,7 +28693,7 @@
 										"name": "Willem II",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 16,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -28458,7 +28739,7 @@
 										"name": "Willem II",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 16,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -28519,7 +28800,7 @@
 										"name": "Willem II",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 16,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -28550,7 +28831,7 @@
 										"name": "Willem II",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 16,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -28588,35 +28869,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": true,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 10 y el visitante de 16 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": true
-							}
-						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
-						"results": {
-							"winning": true,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 88,
@@ -28850,7 +29103,7 @@
 									"away": {
 										"id": 111,
 										"name": "LE Havre",
-										"country": null,
+										"country": { "name": "France", "flag": "🇫🇷", "code": "FR" },
 										"position": null,
 										"tag": "REGULAR",
 										"historic": false,
@@ -29276,10 +29529,10 @@
 									"away": {
 										"id": 174,
 										"name": "FC Schalke 04",
-										"country": null,
+										"country": { "name": "Germany", "flag": "🇩🇪", "code": "DE" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 0,
@@ -29347,35 +29600,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 11 y el visitante de 8 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 88,
@@ -29399,7 +29624,7 @@
 						"name": "Almere City FC",
 						"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 						"position": 1,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -29596,7 +29821,7 @@
 										"name": "Almere City FC",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 1,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -29611,7 +29836,7 @@
 										"name": "Waalwijk",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -29657,7 +29882,7 @@
 										"name": "Almere City FC",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 1,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -29703,7 +29928,7 @@
 										"name": "Almere City FC",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 1,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -29749,7 +29974,7 @@
 										"name": "Almere City FC",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 1,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -29795,7 +30020,7 @@
 										"name": "Almere City FC",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 1,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -29826,7 +30051,7 @@
 										"name": "GO Ahead Eagles",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 17,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -29841,7 +30066,7 @@
 										"name": "Almere City FC",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 1,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -30124,7 +30349,7 @@
 									"away": {
 										"id": 111,
 										"name": "LE Havre",
-										"country": null,
+										"country": { "name": "France", "flag": "🇫🇷", "code": "FR" },
 										"position": null,
 										"tag": "REGULAR",
 										"historic": false,
@@ -30333,35 +30558,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": true,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 1 y el visitante de 13 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": true
-							}
-						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
-						"results": {
-							"winning": false,
-							"lostWinning": false,
-							"lost": true,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 88,
@@ -30385,7 +30582,7 @@
 						"name": "PSV Eindhoven",
 						"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 						"position": 5,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": true,
 						"result": "WIN",
 						"score": {
@@ -30582,7 +30779,7 @@
 										"name": "PSV Eindhoven",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": true,
 										"result": "WIN",
 										"score": {
@@ -30595,10 +30792,10 @@
 									"away": {
 										"id": 532,
 										"name": "Valencia",
-										"country": null,
+										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -30628,7 +30825,7 @@
 										"name": "PSV Eindhoven",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": true,
 										"result": "WIN",
 										"score": {
@@ -30674,7 +30871,7 @@
 										"name": "PSV Eindhoven",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": true,
 										"result": "DRAW",
 										"score": {
@@ -30716,7 +30913,7 @@
 						"name": "Waalwijk",
 						"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 						"position": 3,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -30913,7 +31110,7 @@
 										"name": "Almere City FC",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 1,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -30928,7 +31125,7 @@
 										"name": "Waalwijk",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -30974,7 +31171,7 @@
 										"name": "Waalwijk",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -31005,7 +31202,7 @@
 										"name": "Waalwijk",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -31051,7 +31248,7 @@
 										"name": "Waalwijk",
 										"country": { "name": "Netherlands", "flag": "🇳🇱", "code": "NL" },
 										"position": 3,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -31089,35 +31286,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 5 y el visitante de 3 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 88,
@@ -31137,7 +31306,7 @@
 		"country": { "name": "Argentina", "flag": "🇦🇷", "code": "AR" },
 		"priority": 2,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 445,
@@ -32065,9 +32234,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1.1,
-				"promedio_de_goles_anotados_de_local_por_partido": 1.3,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 0.9
+				"partidos_jugados": 10,
+				"promedio_de_goles_anotados_por_partido": 29.5,
+				"promedio_de_goles_anotados_de_local_por_partido": 35.2,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 23.8
 			}
 		},
 		"matches": [
@@ -32918,9 +33088,9 @@
 								"trustLevel": 100,
 								"items": [
 									{
-										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
-										"explanation": "El local está mas arriba que el visitante en la tabla | (12>13/28)"
+										"fulfilled": false,
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
+										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (12<=13/28)"
 									},
 									{
 										"fulfilled": true,
@@ -32928,14 +33098,14 @@
 										"explanation": "Ambos equipos no son históricos | (false-true)"
 									}
 								],
-								"fulfilled": true
+								"fulfilled": false
 							}
 						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
+						"trustLevel": 0,
+						"trustLevelLabel": "LOW",
 						"results": {
-							"winning": true,
-							"lostWinning": false,
+							"winning": false,
+							"lostWinning": true,
 							"lost": false,
 							"skippedLost": false
 						}
@@ -33883,7 +34053,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (24<=6/28)"
 									},
 									{
@@ -34847,7 +35017,7 @@
 								"items": [
 									{
 										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas arriba que el visitante en la tabla | (15>19/28)"
 									},
 									{
@@ -35762,7 +35932,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (11<=1/28)"
 									},
 									{
@@ -35887,7 +36057,7 @@
 		"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 15130,
@@ -36485,6 +36655,7 @@
 				}
 			],
 			"stats": {
+				"partidos_jugados": 0,
 				"promedio_de_goles_anotados_por_partido": 0,
 				"promedio_de_goles_anotados_de_local_por_partido": 0,
 				"promedio_de_goles_anotados_de_visitante_por_partido": 0
@@ -37019,7 +37190,7 @@
 						"name": "GIL Vicente",
 						"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 						"position": 5,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -37216,7 +37387,7 @@
 										"name": "GIL Vicente",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -37260,7 +37431,7 @@
 									"home": {
 										"id": 538,
 										"name": "Celta Vigo",
-										"country": null,
+										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": null,
 										"tag": "REGULAR",
 										"historic": false,
@@ -37277,7 +37448,7 @@
 										"name": "GIL Vicente",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -37308,7 +37479,7 @@
 										"name": "GIL Vicente",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -37354,7 +37525,7 @@
 										"name": "GIL Vicente",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 5,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -37392,35 +37563,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 9 y el visitante de 5 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 94,
@@ -37444,7 +37587,7 @@
 						"name": "Casa Pia",
 						"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 						"position": 15,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -37641,7 +37784,7 @@
 										"name": "Casa Pia",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 15,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -37687,7 +37830,7 @@
 										"name": "Casa Pia",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 15,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -37733,7 +37876,7 @@
 										"name": "Famalicao",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 16,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -37748,7 +37891,7 @@
 										"name": "Casa Pia",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 15,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -37775,7 +37918,7 @@
 						"name": "Boavista",
 						"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 						"position": 2,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "WIN",
 						"score": {
@@ -37972,7 +38115,7 @@
 										"name": "Boavista",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 2,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -38018,7 +38161,7 @@
 										"name": "Boavista",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 2,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -38064,7 +38207,7 @@
 										"name": "Boavista",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 2,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -38102,35 +38245,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 15 y el visitante de 2 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": true
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 94,
@@ -38154,7 +38269,7 @@
 						"name": "AVS",
 						"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 						"position": 18,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "DRAW",
 						"score": {
@@ -38351,7 +38466,7 @@
 										"name": "AVS",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 18,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -38397,7 +38512,7 @@
 										"name": "AVS",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 18,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -38458,7 +38573,7 @@
 										"name": "AVS",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 18,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -38504,7 +38619,7 @@
 										"name": "AVS",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 18,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -38535,7 +38650,7 @@
 										"name": "AVS",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 18,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -38581,7 +38696,7 @@
 										"name": "AVS",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 18,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -38627,7 +38742,7 @@
 										"name": "AVS",
 										"country": { "name": "Portugal", "flag": "🇵🇹", "code": "PT" },
 										"position": 18,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -39088,35 +39203,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 18 y el visitante de 13 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 94,
@@ -39136,7 +39223,7 @@
 		"country": { "name": "Colombia", "flag": "🇨🇴", "code": "CO" },
 		"priority": 2,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 1147,
@@ -39800,9 +39887,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 0.9,
-				"promedio_de_goles_anotados_de_local_por_partido": 1.2,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 0.7
+				"partidos_jugados": 6,
+				"promedio_de_goles_anotados_por_partido": 18.8,
+				"promedio_de_goles_anotados_de_local_por_partido": 24.2,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 14.6
 			}
 		},
 		"matches": [
@@ -40605,7 +40693,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (20<=9/20)"
 									},
 									{
@@ -41506,7 +41594,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (12<=11/20)"
 									},
 									{
@@ -42501,7 +42589,7 @@
 								"items": [
 									{
 										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas arriba que el visitante en la tabla | (4>19/20)"
 									},
 									{
@@ -43416,7 +43504,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (13<=3/20)"
 									},
 									{
@@ -43541,7 +43629,7 @@
 		"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 		"priority": 2,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 120,
@@ -44205,9 +44293,10 @@
 				}
 			],
 			"stats": {
-				"promedio_de_goles_anotados_por_partido": 1.2,
-				"promedio_de_goles_anotados_de_local_por_partido": 1.4,
-				"promedio_de_goles_anotados_de_visitante_por_partido": 1.1
+				"partidos_jugados": 21,
+				"promedio_de_goles_anotados_por_partido": 24.3,
+				"promedio_de_goles_anotados_de_local_por_partido": 27.5,
+				"promedio_de_goles_anotados_de_visitante_por_partido": 21
 			}
 		},
 		"matches": [
@@ -44814,7 +44903,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 2,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -46198,7 +46287,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 2,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 4,
@@ -46673,7 +46762,7 @@
 										"country": null,
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -46933,7 +47022,7 @@
 										"country": null,
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 2,
@@ -47117,7 +47206,7 @@
 								"items": [
 									{
 										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas arriba que el visitante en la tabla | (5>9/20)"
 									},
 									{
@@ -48194,7 +48283,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 2,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 6,
@@ -49367,7 +49456,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 2,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 1,
@@ -50215,7 +50304,7 @@
 								"items": [
 									{
 										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas arriba que el visitante en la tabla | (11>17/20)"
 									},
 									{
@@ -51495,7 +51584,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 2,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -53222,7 +53311,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 2,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 1,
@@ -53553,7 +53642,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (18<=10/20)"
 									},
 									{
@@ -54125,7 +54214,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 2,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -55678,7 +55767,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 2,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -56563,7 +56652,7 @@
 								"items": [
 									{
 										"fulfilled": true,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas arriba que el visitante en la tabla | (3>12/20)"
 									},
 									{
@@ -57184,7 +57273,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 2,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 1,
@@ -59282,7 +59371,7 @@
 										"country": { "name": "Brazil", "flag": "🇧🇷", "code": "BR" },
 										"position": 2,
 										"tag": "FEATURED",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -59824,7 +59913,7 @@
 								"items": [
 									{
 										"fulfilled": false,
-										"description": "El local tiene una mejor posición que el visitante",
+										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
 										"explanation": "El local está mas abajo o en la misma posición que el visitante en la tabla | (19<=14/20)"
 									},
 									{
@@ -59949,7 +60038,7 @@
 		"country": { "name": "Turkey", "flag": "🇹🇷", "code": "TR" },
 		"priority": 1,
 		"standings": {
-			"type": "SIMPLE",
+			"type": "REGULAR",
 			"items": [
 				{
 					"teamId": 3563,
@@ -60580,6 +60669,7 @@
 				}
 			],
 			"stats": {
+				"partidos_jugados": 0,
 				"promedio_de_goles_anotados_por_partido": 0,
 				"promedio_de_goles_anotados_de_local_por_partido": 0,
 				"promedio_de_goles_anotados_de_visitante_por_partido": 0
@@ -60599,7 +60689,7 @@
 						"name": "Kasimpasa",
 						"country": { "name": "Turkey", "flag": "🇹🇷", "code": "TR" },
 						"position": 16,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -61210,35 +61300,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 16 y el visitante de 14 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 203,
@@ -61262,7 +61324,7 @@
 						"name": "Antalyaspor",
 						"country": { "name": "Turkey", "flag": "🇹🇷", "code": "TR" },
 						"position": 4,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "DRAW",
 						"score": {
@@ -61459,7 +61521,7 @@
 										"name": "Antalyaspor",
 										"country": { "name": "Turkey", "flag": "🇹🇷", "code": "TR" },
 										"position": 4,
-										"tag": "FEATURED",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -61501,7 +61563,7 @@
 						"name": "Goztepe",
 						"country": { "name": "Turkey", "flag": "🇹🇷", "code": "TR" },
 						"position": 18,
-						"tag": "POOR",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "DRAW",
 						"score": {
@@ -61698,7 +61760,7 @@
 										"name": "Goztepe",
 										"country": { "name": "Turkey", "flag": "🇹🇷", "code": "TR" },
 										"position": 18,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -61744,7 +61806,7 @@
 										"name": "Goztepe",
 										"country": { "name": "Turkey", "flag": "🇹🇷", "code": "TR" },
 										"position": 18,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "WIN",
 										"score": {
@@ -61805,7 +61867,7 @@
 										"name": "Goztepe",
 										"country": { "name": "Turkey", "flag": "🇹🇷", "code": "TR" },
 										"position": 18,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "DRAW",
 										"score": {
@@ -61851,7 +61913,7 @@
 										"name": "Goztepe",
 										"country": { "name": "Turkey", "flag": "🇹🇷", "code": "TR" },
 										"position": 18,
-										"tag": "POOR",
+										"tag": "REGULAR",
 										"historic": false,
 										"result": "LOSE",
 										"score": {
@@ -61874,35 +61936,7 @@
 						]
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": true,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 4 y el visitante de 18 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": true
-							}
-						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
-						"results": {
-							"winning": false,
-							"lostWinning": false,
-							"lost": true,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 203,
@@ -62121,7 +62155,7 @@
 									"home": {
 										"id": 79,
 										"name": "Lille",
-										"country": null,
+										"country": { "name": "France", "flag": "🇫🇷", "code": "FR" },
 										"position": null,
 										"tag": "REGULAR",
 										"historic": false,
@@ -62404,7 +62438,7 @@
 						"name": "Adana Demirspor",
 						"country": { "name": "Turkey", "flag": "🇹🇷", "code": "TR" },
 						"position": 1,
-						"tag": "FEATURED",
+						"tag": "REGULAR",
 						"historic": false,
 						"result": "LOSE",
 						"score": {
@@ -62592,35 +62626,7 @@
 						"matches": []
 					}
 				},
-				"predictions": [
-					{
-						"id": "gpe-local",
-						"name": "Gol del equipo local",
-						"shortName": "GL",
-						"criteria": [
-							{
-								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
-									{
-										"fulfilled": false,
-										"description": "El local está al menos 4 posiciones por arriba del visitante",
-										"explanation": "El local va de 11 y el visitante de 1 en la tabla de posiciones"
-									}
-								],
-								"fulfilled": false
-							}
-						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
-					}
-				],
+				"predictions": [],
 				"league": {
 					"enabled": true,
 					"id": 203,

@@ -65,7 +65,10 @@ export type T_RawResumeEnhancements = {
 	location: T_Location;
 	websites: T_Website[];
 	education: T_Education[];
-	experience: Pick<T_Experience, "id" | "companyLogo" | "companyWebsite">[];
+	experience: {
+		company: Omit<T_Experience["company"], "name">;
+		mode: string;
+	}[];
 	skills: {
 		strong: string[];
 		intermediate: string[];
@@ -117,10 +120,17 @@ type T_Education = {
 type T_Experience = {
 	id: string;
 	role: string;
-	company: string;
-	companyLogo: string;
-	companyWebsite: string;
+	company: {
+		name: string;
+		logo: string;
+		website: string;
+	};
 	startDate: string;
 	endDate: string;
-	description: string;
+	mode: string;
+	description: {
+		summary?: { label: string; value: string };
+		achievements: { label: string; value: string[] };
+		skills: { label: string; value: string[] };
+	};
 };

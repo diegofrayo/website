@@ -15,7 +15,7 @@ import {
 import type { T_IconName } from "~/components/primitive/Icon";
 import { Toast, TypingTextEffect } from "~/components/shared";
 import WEBSITE_METADATA from "~/data/metadata.json";
-import { renderIf, withOnlyClientRender } from "~/hocs";
+import { renderIf } from "~/hocs";
 import cn from "~/lib/cn";
 import AnalyticsService from "~/modules/analytics";
 import ServerAPI from "~/modules/api";
@@ -150,8 +150,6 @@ function MainLayout({ title, children, className }: T_MainLayoutProps) {
 
 				<Footer />
 			</Block>
-
-			<WindowSize />
 		</Block>
 	);
 }
@@ -713,33 +711,3 @@ function Flags() {
 		</Block>
 	);
 }
-
-const WindowSize = withOnlyClientRender(function WindowSize() {
-	const [size, setSize] = React.useState([0, 0]);
-
-	React.useEffect(() => {
-		const updateSize = () => {
-			setSize([window.innerWidth, window.innerHeight]);
-		};
-
-		updateSize();
-
-		window.addEventListener("resize", updateSize);
-
-		return () => window.removeEventListener("resize", updateSize);
-	}, []);
-
-	if (isDevelopmentEnvironment(EnvVars)) {
-		return (
-			<div className="tw-fixed tw-bottom-0 tw-left-0 tw-bg-black/80 tw-p-2.5 tw-font-bold tw-text-white print:tw-hidden">
-				<span>{size.join("x")} | </span>
-				<span className="tw-inline-block sm:tw-hidden">mobile</span>
-				<span className="tw-hidden sm:tw-inline-block md:tw-hidden">sm</span>
-				<span className="tw-hidden md:tw-inline-block lg:tw-hidden">md</span>
-				<span className="tw-hidden lg:tw-inline-block">lg</span>
-			</div>
-		);
-	}
-
-	return null;
-});
