@@ -4,6 +4,7 @@ const IntlProviderValue = {
 	EN: {
 		SUMMARY: "Summary",
 		EXPERIENCE: "Experience",
+		ACHIEVEMENTS: "Achievements",
 		EDUCATION: "Education",
 		OTHER: "Other",
 		LANGUAGES: "Languages",
@@ -16,6 +17,7 @@ const IntlProviderValue = {
 	ES: {
 		SUMMARY: "Sobre mi",
 		EXPERIENCE: "Experiencia",
+		ACHIEVEMENTS: "Logros",
 		EDUCATION: "Educación",
 		OTHER: "Otros",
 		LANGUAGES: "Idiomas",

@@ -9,11 +9,13 @@ import { ErrorBoundary } from "react-error-boundary";
 import type { AppProps } from "next/app";
 
 import { addErrorsGlobalListener, logger } from "~/modules/logging";
+import EnvVars from "~/modules/env-vars";
 import ErrorPage from "~/modules/pages/ErrorPage";
 import { initPWARoutingConfig } from "~/modules/routing";
 import { recoverFromBreakingChanges } from "~/utils/errors-recovery";
 import { useDidMount } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
+import { isDevelopmentEnvironment } from "~/utils/app";
 import { isMobileDevice, isPWA, isWindowsDevice } from "@diegofrayo/utils/browser";
 import { isServer } from "@diegofrayo/utils/misc";
 
@@ -105,13 +107,25 @@ const fontTexts = Montserrat({
 		return;
 	}
 
-	const css = `
-    html {
-      --font-main-title: ${fontMainTitle.style.fontFamily};
-      --font-titles: ${fontTitles.style.fontFamily};
-      --font-texts: ${fontTexts.style.fontFamily};
-    }
-  `;
+	let css;
+
+	if (isDevelopmentEnvironment(EnvVars)) {
+		css = `
+      html {
+        --font-main-title: 'Black Ops One';
+        --font-titles: 'Staatliches';
+        --font-texts: 'Montserrat';
+      }
+    `;
+	} else {
+		css = `
+      html {
+        --font-main-title: ${fontMainTitle.style.fontFamily};
+        --font-titles: ${fontTitles.style.fontFamily};
+        --font-texts: ${fontTexts.style.fontFamily};
+      }
+    `;
+	}
 
 	const style = document.createElement("style");
 	style.appendChild(document.createTextNode(css));

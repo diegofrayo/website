@@ -252,17 +252,14 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 										{item.startDate} - {item.endDate}
 									</Block>
 								</Block>
-
 								<Block className="tw--mt-0.5 tw-flex tw-items-center tw-justify-between tw-gap-4 tw-italic">
 									<Text className="tw-text-sm">{item.role}</Text>
 									<Text className="tw-text-xs tw-capitalize">{item.mode}</Text>
 								</Block>
+								<Space size={1} />
 
-								<Block>
-									<List
-										variant={List.variant.SIMPLE}
-										className="tw-ml-1.5 tw-mt-1.5"
-									>
+								<Block className="tw-px-2">
+									<List variant={List.variant.SIMPLE}>
 										{item.description.achievements?.value.map((achievement, index) => {
 											return (
 												<List.Item key={generateSlug(`${item.id}-achievement-${index}`)}>
@@ -271,12 +268,13 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 											);
 										})}
 									</List>
-									<Block className="tw-my-1">
+									<Space size={1} />
+									<Block>
 										<InlineText
 											is="strong"
-											className="tw-mr-1 tw-text-sm"
+											className="tw-text-sm"
 										>
-											Skills:
+											{texts.SKILLS}:{" "}
 										</InlineText>
 										{item.description.skills.value.map((skill) => {
 											return <Skill key={generateSlug(`${item.id}-${skill}`)}>{skill}</Skill>;
