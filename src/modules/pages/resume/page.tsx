@@ -231,35 +231,45 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 								key={item.id}
 								className="tw-mb-6 tw-break-inside-avoid last:tw-mb-0"
 							>
-								<Block className="tw-flex tw-items-center tw-justify-between tw-gap-4">
-									{v.isNotEmptyString(item.company.website) ? (
-										<Link
-											variant={Link.variant.SIMPLE}
-											href={item.company.website}
-											className="tw-truncate tw-font-bold tw-text-black tw-underline"
-											onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", {
-												item: item.company.name,
-											})}
-											isExternalLink
-										>
-											{item.company.name}
-										</Link>
-									) : (
-										<Text className="tw-truncate tw-font-bold tw-text-black">
-											{item.company.name}
-										</Text>
-									)}
-									<Block className="tw-flex-shrink-0 tw-text-xs tw-lowercase">
-										{item.startDate} - {item.endDate}
-									</Block>
+								<Block className="tw-flex tw-items-end tw-justify-between tw-gap-4">
+									<Title
+										is="h3"
+										variant={Title.variant.UNSTYLED}
+										className="tw-truncate tw-leading-none tw-text-black"
+									>
+										{v.isNotEmptyString(item.company.website) ? (
+											<Link
+												variant={Link.variant.SIMPLE}
+												href={item.company.website}
+												className="tw-underline"
+												onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", {
+													item: item.company.name,
+												})}
+												isExternalLink
+											>
+												{item.company.name}
+											</Link>
+										) : (
+											<Text>{item.company.name}</Text>
+										)}
+									</Title>
+									<Text className="tw-flex-shrink-0 tw-text-right tw-text-xs tw-lowercase tw-leading-none">
+										{item.startDate} - {item.endDate || texts.PRESENT}
+									</Text>
 								</Block>
-								<Block className="tw--mt-0.5 tw-flex tw-items-center tw-justify-between tw-gap-4 tw-italic">
-									<Text className="tw-text-sm">{item.role}</Text>
-									<Text className="tw-text-xs tw-capitalize">{item.mode}</Text>
+								<Space size={0.5} />
+								<Block className="tw-flex tw-items-end tw-justify-between tw-gap-4 tw-text-xs tw-italic">
+									<Text className="tw-flex-shrink-0 tw-leading-none">{item.role}</Text>
+									<Text className="tw-text-right tw-capitalize tw-leading-none sm:tw-hidden">
+										{item.mode.split(" (")[0]}
+									</Text>
+									<Text className="tw-hidden tw-text-right tw-capitalize tw-leading-none sm:tw-inline-block">
+										{item.mode}
+									</Text>
 								</Block>
 								<Space size={1} />
 
-								<Block className="tw-px-2">
+								<Block className="tw-px-1">
 									<List variant={List.variant.SIMPLE}>
 										{item.description.achievements.value.map((achievement, index) => {
 											return (
@@ -339,7 +349,7 @@ function FullMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePage
 	const texts = useIntl();
 
 	return (
-		<Block className="tw-relative tw-bg-white tw-px-6 tw-py-16 tw-text-black print:tw-py-0 md:tw-px-8">
+		<Block className="tw-relative tw-bg-white tw-px-2 tw-py-16 tw-text-black print:tw-py-0 md:tw-px-8">
 			<Block
 				is="header"
 				className="tw-text-center"
@@ -624,10 +634,10 @@ function ExperienceTimeline({ experience }: T_ExperienceTimelineProps) {
 					<Block
 						key={id}
 						is="section"
-						className="tw-relative tw-mb-6 tw-pl-10 last:tw-mb-0"
+						className="tw-relative tw-mb-6 tw-pl-8 last:tw-mb-0 sm:tw-pl-10"
 						style={{ pageBreakInside: "avoid" }}
 					>
-						<Block className="tw-absolute tw--left-2 tw-top-0 tw-overflow-hidden tw-border-2 tw-border-black tw-bg-white tw-wh-10">
+						<Block className="tw-absolute tw--left-2 tw-top-0 tw-overflow-hidden tw-border-2 tw-border-black tw-bg-white tw-wh-8 sm:tw-wh-10">
 							<Image
 								src={company.logo}
 								alt="Company logo"
@@ -637,12 +647,12 @@ function ExperienceTimeline({ experience }: T_ExperienceTimelineProps) {
 
 						<Block>
 							<Block>
-								<Block className="tw-flex tw-items-end tw-justify-between">
+								<Block className="tw-mb-0.5 tw-flex tw-items-end tw-justify-between tw-gap-4">
 									<Title
 										is="h3"
 										variant={Title.variant.SIMPLE}
 										size={Title.size.MD}
-										className="tw-text-black"
+										className="tw-leading-none tw-text-black"
 									>
 										{v.isNotEmptyString(company.website) ? (
 											<Link
@@ -660,14 +670,16 @@ function ExperienceTimeline({ experience }: T_ExperienceTimelineProps) {
 											company.name
 										)}
 									</Title>
-									<Text className="tw-text-sm tw-lowercase">
+									<Text className="tw-text-xs tw-lowercase sm:tw-text-sm">
 										<InlineText>{startDate}</InlineText> /{" "}
 										<InlineText>{endDate || texts.PRESENT}</InlineText>
 									</Text>
 								</Block>
-								<Block className="tw-flex tw-justify-between tw-text-xs tw-italic">
-									<Text>{role}</Text>
-									<Text className="tw-capitalize">{mode}</Text>
+								<Block className="tw-flex tw-justify-between tw-gap-4 tw-text-xs tw-italic">
+									<Text className="tw-flex-shrink-0">{role}</Text>
+									<Text className="tw-truncate tw-text-right tw-capitalize">
+										{mode.split(" (")[0]}
+									</Text>
 								</Block>
 							</Block>
 							<Space size={1} />
