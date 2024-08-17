@@ -2836,16 +2836,17 @@
 						]
 					}
 				},
-				"predictions": [
+				"analysis": [
 					{
 						"id": "do-local",
 						"name": "Doble oportunidad (Local)",
 						"shortName": "DOL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "5e7b9e2b-cbf8-43d5-8b60-813c66300c37",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
@@ -2857,54 +2858,54 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": true,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "3|LOW"
 					},
 					{
 						"id": "gpe-local",
 						"name": "Gol del equipo local",
 						"shortName": "GL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "3c889798-2dea-4276-9cc9-762b8b95b556",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local está al menos 4 posiciones por arriba del visitante",
 										"explanation": "El local va de 16 y el visitante de 11 en la tabla de posiciones"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": true,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "3|LOW"
 					},
 					{
 						"id": "tr-local",
 						"name": "Tiempo reglamentario (Local)",
 						"shortName": "TRL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "a25adfae-292b-4cac-88b8-f15532a63e7b",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local es de los mejores del torneo",
@@ -2941,17 +2942,16 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": false,
+									"lost": false,
+									"skippedLost": true
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": true
-						}
+						"confidenceLevel": "3|LOW"
 					}
 				],
 				"league": {
@@ -4103,7 +4103,7 @@
 						]
 					}
 				},
-				"predictions": [],
+				"analysis": [],
 				"league": {
 					"enabled": true,
 					"id": 144,
@@ -5366,16 +5366,17 @@
 						]
 					}
 				},
-				"predictions": [
+				"analysis": [
 					{
 						"id": "do-local",
 						"name": "Doble oportunidad (Local)",
 						"shortName": "DOL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "5e7b9e2b-cbf8-43d5-8b60-813c66300c37",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": true,
 										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
@@ -5387,54 +5388,54 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": true
+								"recommended": true,
+								"results": {
+									"winning": true,
+									"lostWinning": false,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
-						"results": {
-							"winning": true,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "1|HIGH"
 					},
 					{
 						"id": "gpe-local",
 						"name": "Gol del equipo local",
 						"shortName": "GL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "3c889798-2dea-4276-9cc9-762b8b95b556",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": true,
 										"description": "El local está al menos 4 posiciones por arriba del visitante",
 										"explanation": "El local va de 6 y el visitante de 12 en la tabla de posiciones"
 									}
 								],
-								"fulfilled": true
+								"recommended": true,
+								"results": {
+									"winning": true,
+									"lostWinning": false,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
-						"results": {
-							"winning": true,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "1|HIGH"
 					},
 					{
 						"id": "tr-local",
 						"name": "Tiempo reglamentario (Local)",
 						"shortName": "TRL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "a25adfae-292b-4cac-88b8-f15532a63e7b",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local es de los mejores del torneo",
@@ -5471,17 +5472,16 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": true,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "3|LOW"
 					}
 				],
 				"league": {
@@ -8437,16 +8437,17 @@
 						]
 					}
 				},
-				"predictions": [
+				"analysis": [
 					{
 						"id": "do-local",
 						"name": "Doble oportunidad (Local)",
 						"shortName": "DOL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "5e7b9e2b-cbf8-43d5-8b60-813c66300c37",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
@@ -8458,54 +8459,54 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": true,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "3|LOW"
 					},
 					{
 						"id": "gpe-local",
 						"name": "Gol del equipo local",
 						"shortName": "GL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "3c889798-2dea-4276-9cc9-762b8b95b556",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local está al menos 4 posiciones por arriba del visitante",
 										"explanation": "El local va de 11 y el visitante de 12 en la tabla de posiciones"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": true,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "3|LOW"
 					},
 					{
 						"id": "tr-local",
 						"name": "Tiempo reglamentario (Local)",
 						"shortName": "TRL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "a25adfae-292b-4cac-88b8-f15532a63e7b",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local es de los mejores del torneo",
@@ -8542,17 +8543,16 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": true,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "3|LOW"
 					}
 				],
 				"league": {
@@ -10324,7 +10324,7 @@
 						]
 					}
 				},
-				"predictions": [],
+				"analysis": [],
 				"league": {
 					"enabled": true,
 					"id": 40,
@@ -11236,7 +11236,7 @@
 						]
 					}
 				},
-				"predictions": [],
+				"analysis": [],
 				"league": {
 					"enabled": true,
 					"id": 40,
@@ -12716,7 +12716,7 @@
 						]
 					}
 				},
-				"predictions": [],
+				"analysis": [],
 				"league": {
 					"enabled": true,
 					"id": 88,
@@ -14458,16 +14458,17 @@
 						]
 					}
 				},
-				"predictions": [
+				"analysis": [
 					{
 						"id": "do-local",
 						"name": "Doble oportunidad (Local)",
 						"shortName": "DOL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "5e7b9e2b-cbf8-43d5-8b60-813c66300c37",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
@@ -14479,54 +14480,54 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": true,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "3|LOW"
 					},
 					{
 						"id": "gpe-local",
 						"name": "Gol del equipo local",
 						"shortName": "GL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "3c889798-2dea-4276-9cc9-762b8b95b556",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local está al menos 4 posiciones por arriba del visitante",
 										"explanation": "El local va de 15 y el visitante de 9 en la tabla de posiciones"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": true,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "3|LOW"
 					},
 					{
 						"id": "tr-local",
 						"name": "Tiempo reglamentario (Local)",
 						"shortName": "TRL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "a25adfae-292b-4cac-88b8-f15532a63e7b",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local es de los mejores del torneo",
@@ -14563,17 +14564,16 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": true,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "3|LOW"
 					}
 				],
 				"league": {
@@ -15373,16 +15373,17 @@
 						]
 					}
 				},
-				"predictions": [
+				"analysis": [
 					{
 						"id": "do-local",
 						"name": "Doble oportunidad (Local)",
 						"shortName": "DOL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "5e7b9e2b-cbf8-43d5-8b60-813c66300c37",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
@@ -15394,54 +15395,54 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": true,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "3|LOW"
 					},
 					{
 						"id": "gpe-local",
 						"name": "Gol del equipo local",
 						"shortName": "GL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "3c889798-2dea-4276-9cc9-762b8b95b556",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local está al menos 4 posiciones por arriba del visitante",
 										"explanation": "El local va de 26 y el visitante de 5 en la tabla de posiciones"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": true,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "3|LOW"
 					},
 					{
 						"id": "tr-local",
 						"name": "Tiempo reglamentario (Local)",
 						"shortName": "TRL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "a25adfae-292b-4cac-88b8-f15532a63e7b",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local es de los mejores del torneo",
@@ -15478,17 +15479,16 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": false,
+									"lost": false,
+									"skippedLost": true
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": true
-						}
+						"confidenceLevel": "3|LOW"
 					}
 				],
 				"league": {
@@ -16288,16 +16288,17 @@
 						]
 					}
 				},
-				"predictions": [
+				"analysis": [
 					{
 						"id": "do-local",
 						"name": "Doble oportunidad (Local)",
 						"shortName": "DOL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "5e7b9e2b-cbf8-43d5-8b60-813c66300c37",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
@@ -16309,54 +16310,54 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": true,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "3|LOW"
 					},
 					{
 						"id": "gpe-local",
 						"name": "Gol del equipo local",
 						"shortName": "GL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "3c889798-2dea-4276-9cc9-762b8b95b556",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local está al menos 4 posiciones por arriba del visitante",
 										"explanation": "El local va de 10 y el visitante de 2 en la tabla de posiciones"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": true,
+									"lost": false,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": true,
-							"lost": false,
-							"skippedLost": false
-						}
+						"confidenceLevel": "3|LOW"
 					},
 					{
 						"id": "tr-local",
 						"name": "Tiempo reglamentario (Local)",
 						"shortName": "TRL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "a25adfae-292b-4cac-88b8-f15532a63e7b",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": false,
 										"description": "El local es de los mejores del torneo",
@@ -16393,17 +16394,16 @@
 										"explanation": "Ambos equipos no son históricos | (false-false)"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": false,
+									"lost": false,
+									"skippedLost": true
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": true
-						}
+						"confidenceLevel": "3|LOW"
 					}
 				],
 				"league": {
@@ -17203,16 +17203,17 @@
 						]
 					}
 				},
-				"predictions": [
+				"analysis": [
 					{
 						"id": "do-local",
 						"name": "Doble oportunidad (Local)",
 						"shortName": "DOL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "5e7b9e2b-cbf8-43d5-8b60-813c66300c37",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": true,
 										"description": "El local está al menos 4 posiciones mas arriba que el visitante",
@@ -17224,54 +17225,54 @@
 										"explanation": "Ambos equipos no son históricos | (true-false)"
 									}
 								],
-								"fulfilled": true
+								"recommended": true,
+								"results": {
+									"winning": false,
+									"lostWinning": false,
+									"lost": true,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
-						"results": {
-							"winning": false,
-							"lostWinning": false,
-							"lost": true,
-							"skippedLost": false
-						}
+						"confidenceLevel": "1|HIGH"
 					},
 					{
 						"id": "gpe-local",
 						"name": "Gol del equipo local",
 						"shortName": "GL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "3c889798-2dea-4276-9cc9-762b8b95b556",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": true,
 										"description": "El local está al menos 4 posiciones por arriba del visitante",
 										"explanation": "El local va de 3 y el visitante de 20 en la tabla de posiciones"
 									}
 								],
-								"fulfilled": true
+								"recommended": true,
+								"results": {
+									"winning": false,
+									"lostWinning": false,
+									"lost": true,
+									"skippedLost": false
+								}
 							}
 						],
-						"trustLevel": 100,
-						"trustLevelLabel": "HIGH",
-						"results": {
-							"winning": false,
-							"lostWinning": false,
-							"lost": true,
-							"skippedLost": false
-						}
+						"confidenceLevel": "1|HIGH"
 					},
 					{
 						"id": "tr-local",
 						"name": "Tiempo reglamentario (Local)",
 						"shortName": "TRL",
-						"criteria": [
+						"strategies": [
 							{
+								"id": "a25adfae-292b-4cac-88b8-f15532a63e7b",
 								"description": "Criterios mas confiables para el local como favorito en un partido de liga local",
-								"trustLevel": 100,
-								"items": [
+								"confidenceLevel": 100,
+								"criteria": [
 									{
 										"fulfilled": true,
 										"description": "El local es de los mejores del torneo",
@@ -17308,17 +17309,16 @@
 										"explanation": "Ambos equipos no son históricos | (true-false)"
 									}
 								],
-								"fulfilled": false
+								"recommended": false,
+								"results": {
+									"winning": false,
+									"lostWinning": false,
+									"lost": false,
+									"skippedLost": true
+								}
 							}
 						],
-						"trustLevel": 0,
-						"trustLevelLabel": "LOW",
-						"results": {
-							"winning": false,
-							"lostWinning": false,
-							"lost": false,
-							"skippedLost": true
-						}
+						"confidenceLevel": "3|LOW"
 					}
 				],
 				"league": {
@@ -18800,7 +18800,7 @@
 						]
 					}
 				},
-				"predictions": [],
+				"analysis": [],
 				"league": {
 					"enabled": true,
 					"id": 94,
@@ -20128,7 +20128,7 @@
 						"matches": []
 					}
 				},
-				"predictions": [],
+				"analysis": [],
 				"league": {
 					"enabled": true,
 					"id": 203,

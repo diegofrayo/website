@@ -15,6 +15,7 @@ import {
 	Title,
 } from "~/components/primitive";
 import WEBSITE_METADATA from "~/data/metadata.json";
+import cn from "~/lib/cn";
 import AnalyticsService from "~/modules/analytics";
 import type { T_PageContent } from "~/server/data-loader";
 import type DR from "@diegofrayo/types";
@@ -98,7 +99,7 @@ function ResumePage({ data, cmsContent }: T_ResumePageProps) {
 			<MainLayout title={cmsContent.content.seo.title}>
 				<IntlContext.Provider value={IntlProviderValue[lang]}>
 					<style id="print-styles" />
-					<Block className="tw-mx-auto tw-max-w-screen-md">
+					<Block className="tw-mx-auto tw-max-w-screen-md print:tw-max-w-none">
 						<Block className="tw-mb-4 tw-flex tw-justify-center tw-gap-2 tw-text-sm tw-font-bold print:tw-hidden">
 							<Button
 								variant={Button.variant.STYLED}
@@ -177,7 +178,7 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 				<Text>{data.headline}</Text>
 				<Space size={1.5} />
 
-				<Text className="tw-flex tw-flex-col tw-items-end tw-text-sm md:tw-flex-row md:tw-justify-end">
+				<Text className="tw-flex tw-flex-col tw-items-end tw-text-sm print:tw-flex-row print:tw-items-center print:tw-justify-end md:tw-flex-row md:tw-items-center md:tw-justify-end">
 					<Link
 						variant={Link.variant.SIMPLE}
 						href={`mailto:${data.contactInfo.email}`}
@@ -186,7 +187,7 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 					>
 						{data.contactInfo.email}
 					</Link>
-					<InlineText className="tw-mx-1 tw-hidden md:tw-inline-block">|</InlineText>
+					<InlineText className="tw-mx-1 tw-hidden tw-h-3 tw-border-r tw-border-black print:tw-inline-block md:tw-inline-block" />
 					<Link
 						variant={Link.variant.SIMPLE}
 						href={data.contactInfo.websites[1].value}
@@ -195,7 +196,7 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 					>
 						{data.contactInfo.websites[1].value.replace("https://", "")}
 					</Link>
-					<InlineText className="tw-mx-1 tw-hidden md:tw-inline-block">|</InlineText>
+					<InlineText className="tw-mx-1 tw-hidden tw-h-3 tw-border-r tw-border-black print:tw-inline-block md:tw-inline-block" />
 					<Link
 						variant={Link.variant.SIMPLE}
 						href={data.contactInfo.websites[0].value}
@@ -204,7 +205,7 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 					>
 						{data.contactInfo.websites[0].value.replace("https://", "")}
 					</Link>
-					<InlineText className="tw-mx-1 tw-hidden md:tw-inline-block">|</InlineText>
+					<InlineText className="tw-mx-1 tw-hidden tw-h-3 tw-border-r tw-border-black print:tw-inline-block md:tw-inline-block" />
 					<Link
 						variant={Link.variant.SIMPLE}
 						href={WEBSITE_METADATA.social.linkedin}
@@ -260,9 +261,15 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 
 								<Block className="tw-px-2">
 									<List variant={List.variant.SIMPLE}>
-										{item.description.achievements?.value.map((achievement, index) => {
+										{item.description.achievements.value.map((achievement, index) => {
 											return (
-												<List.Item key={generateSlug(`${item.id}-achievement-${index}`)}>
+												<List.Item
+													key={generateSlug(`${item.id}-achievement-${index}`)}
+													className={cn(
+														"print:tw-text-sm",
+														item.company.name === "HelloBUILD" && index > 1 && "print:tw-hidden",
+													)}
+												>
 													{achievement}
 												</List.Item>
 											);
@@ -425,7 +432,7 @@ function FullMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePage
 			>
 				<Pre
 					variant={Pre.variant.BREAK_WITH_BLANK_LINES}
-					className="dr-font-texts md:tw-text-justify"
+					className="tw-text-justify dr-font-texts"
 				>
 					{data.summary}
 				</Pre>
@@ -525,6 +532,7 @@ function ResumeBlock({ title, children, variant }: T_ResumeBlockProps) {
 		<Block
 			is="section"
 			className="tw-mt-12"
+			style={{ pageBreakInside: "avoid" }}
 		>
 			<Title
 				is="h2"
@@ -575,9 +583,7 @@ function OtherSection({
 					{Object.entries(data.skills).map(([, value], index) => {
 						return (
 							<List.Item key={generateSlug(`short-skills-label-${value[0]}`)}>
-								<InlineText className="tw-mr-1">
-									{texts[`SKILLS_L${index + 1}` as keyof typeof texts]}:
-								</InlineText>
+								<Text>{texts[`SKILLS_L${index + 1}` as keyof typeof texts]}:</Text>
 								{value.map((item) => {
 									return <Skill key={`short-skills-tech-stack-${item}`}>{item}</Skill>;
 								})}
@@ -619,8 +625,9 @@ function ExperienceTimeline({ experience }: T_ExperienceTimelineProps) {
 						key={id}
 						is="section"
 						className="tw-relative tw-mb-6 tw-pl-10 last:tw-mb-0"
+						style={{ pageBreakInside: "avoid" }}
 					>
-						<Block className="tw-absolute tw--left-2 tw-top-0 tw-overflow-hidden tw-border-2 tw-border-black tw-bg-white tw-wh-10 print:tw-border-0">
+						<Block className="tw-absolute tw--left-2 tw-top-0 tw-overflow-hidden tw-border-2 tw-border-black tw-bg-white tw-wh-10">
 							<Image
 								src={company.logo}
 								alt="Company logo"

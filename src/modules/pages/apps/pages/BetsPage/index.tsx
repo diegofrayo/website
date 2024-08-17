@@ -39,7 +39,7 @@ import type {
 	T_DayOfMatches,
 	T_FixtureMatch,
 	T_LeagueStandings,
-	T_MarketPrediction,
+	T_MarketAnalysis,
 	T_PlayedMatch,
 } from "./types";
 import styles from "./styles.module.css";
@@ -489,13 +489,13 @@ function FixtureMatch({
 				opened
 			>
 				<Collapsible
-					title={<CollapsibleTitle title="Ver predicciones" />}
-					className={cn(match.predictions.length === 0 && "tw-hidden")}
+					title={<CollapsibleTitle title="Ver análisis" />}
+					className={cn(match.analysis.length === 0 && "tw-hidden")}
 					contentClassName="tw-mt-1 tw-p-1 md:tw-p-4 tw-bg-stone-800 tw-font-mono"
 					showIcon={false}
 				>
-					{match.predictions.map((marketPrediction) => {
-						const baseKey = `${match.id}-${marketPrediction.id}`;
+					{match.analysis.map((marketAnalysis) => {
+						const baseKey = `${match.id}-${marketAnalysis.id}`;
 
 						return (
 							<Collapsible
@@ -503,10 +503,10 @@ function FixtureMatch({
 								title={
 									<Text className="tw-font-bold">
 										<InlineText className="tw-mr-1 tw-inline tw-align-middle">
-											{marketPrediction.name}{" "}
+											{marketAnalysis.name}{" "}
 										</InlineText>
 										<InlineText className="tw-inline-block tw-align-middle tw-text-xxs">
-											{getMarketTrustLevelEmojy(marketPrediction.trustLevelLabel)}
+											{getMarketTrustLevelEmojy(marketAnalysis.confidenceLevel)}
 										</InlineText>
 									</Text>
 								}
@@ -514,26 +514,26 @@ function FixtureMatch({
 								className="tw-mb-2 last:tw-mb-0"
 								contentClassName="tw-p-1 tw-mb-4 md:tw-p-4 tw-bg-stone-900 tw-mt-1"
 							>
-								{marketPrediction.criteria.map((subCriteria, subCriteriaIndex) => {
+								{marketAnalysis.strategies.map((strategy, strategyIndex) => {
 									return (
 										<Block
-											key={`${baseKey}-${subCriteriaIndex}`}
+											key={`${baseKey}-${strategyIndex}`}
 											className="tw-mb-4 last:tw-mb-0"
 										>
 											<Text className="tw-font-bold">
 												<InlineText className="tw-mr-1 tw-inline tw-align-middle">
-													{subCriteria.description}
+													{strategy.description}
 												</InlineText>
 												<InlineText className="tw-inline-block tw-align-middle tw-text-xxs">
-													{subCriteria.fulfilled ? "✅" : "❌"}
+													{strategy.recommended ? "✅" : "❌"}
 												</InlineText>
 											</Text>
 
 											<Block className="tw-pl-2">
-												{subCriteria.items.map((item, itemIndex) => {
+												{strategy.criteria.map((item, itemIndex) => {
 													return (
 														<Collapsible
-															key={`${baseKey}-${subCriteriaIndex}-${itemIndex}`}
+															key={`${baseKey}-${strategyIndex}-${itemIndex}`}
 															title={
 																<Text>
 																	<InlineText className="tw-mr-1 tw-inline tw-align-middle">
@@ -1045,40 +1045,42 @@ function MatchDetails({
 				</React.Fragment>
 			) : (
 				<Block className="tw-mt-3 tw-flex tw-flex-wrap tw-gap-2 tw-pr-6 empty:tw-mt-0">
-					{match.predictions.map((marketPrediction) => {
-						if (marketPrediction.trustLevelLabel === "LOW" && !match.played) {
+					{match.analysis.map((marketAnalysis) => {
+						if (marketAnalysis.confidenceLevel === "3|LOW" && !match.played) {
 							return null;
 						}
 
 						return (
 							<Text
-								key={`${match.id}-${marketPrediction.id}-label`}
+								key={`${match.id}-${marketAnalysis.id}-label`}
 								className={cn(
 									"tw-relative tw-inline-block tw-rounded-md tw-border-2 tw-bg-black tw-px-2 tw-py-1 tw-text-xs tw-font-bold",
-									marketPrediction.trustLevelLabel === "HIGH"
+									marketAnalysis.confidenceLevel === "1|HIGH"
 										? "tw-border-green-600"
-										: marketPrediction.trustLevelLabel === "MEDIUM"
+										: marketAnalysis.confidenceLevel === "2|MEDIUM"
 											? "tw-border-yellow-600"
 											: "tw-border-red-600",
 								)}
 							>
 								<InlineText className="tw-mr-1 tw-inline-block tw-align-middle">
-									{marketPrediction.id}{" "}
+									{marketAnalysis.id}{" "}
 								</InlineText>
 								<InlineText className="tw-inline-block tw-align-middle tw-text-xxs">
-									{getMarketTrustLevelEmojy(marketPrediction.trustLevelLabel)}
+									{getMarketTrustLevelEmojy(marketAnalysis.confidenceLevel)}
 								</InlineText>
 
-								{"results" in marketPrediction ? (
+								{"results" in marketAnalysis.strategies[0] ? (
 									<InlineText
 										className={cn(
 											"tw-absolute tw--right-2 tw--top-2 tw-flex tw-items-center tw-justify-center tw-rounded-full tw-bg-black tw-wh-4",
-											marketPrediction.results.winning || marketPrediction.results.skippedLost
+											marketAnalysis.strategies[0].results.winning ||
+												marketAnalysis.strategies[0].results.skippedLost
 												? "tw-text-green-600"
 												: "tw-text-red-600",
 										)}
 									>
-										{marketPrediction.results.winning || marketPrediction.results.skippedLost
+										{marketAnalysis.strategies[0].results.winning ||
+										marketAnalysis.strategies[0].results.skippedLost
 											? "✓"
 											: "✖"}
 									</InlineText>
@@ -1289,8 +1291,8 @@ function localizeDate(date: string) {
 	return formattedDate;
 }
 
-function getMarketTrustLevelEmojy(trustLevel: T_MarketPrediction["trustLevelLabel"]) {
-	return trustLevel === "HIGH" ? "🟩" : trustLevel === "MEDIUM" ? "🟨" : "🟥";
+function getMarketTrustLevelEmojy(confidenceLevel: T_MarketAnalysis["confidenceLevel"]) {
+	return confidenceLevel === "1|HIGH" ? "🟩" : confidenceLevel === "2|MEDIUM" ? "🟨" : "🟥";
 }
 
 function generateDates(selectedDate: string) {
