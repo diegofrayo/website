@@ -607,8 +607,10 @@ function FixtureMatch({
 										contentClassName="tw-mt-2 tw-p-2 md:tw-p-4 tw-bg-stone-900 tw-mb-4"
 										showIcon={false}
 									>
-										{Object.values(team.stats).map((group) => {
-											const baseKey = generateSlug(`${match.id}-stats-${group.name}`);
+										{Object.values(team.stats).map((group, groupIndex) => {
+											const baseKey = generateSlug(
+												`${match.id}-${team.name}-stats-${group.name}-${groupIndex}`,
+											);
 
 											return (
 												<Block
@@ -1152,13 +1154,15 @@ function MatchTeamDetails({
 				title={match.teams[teamSide].name}
 			>
 				{match.teams[teamSide].name}
-				<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
-					{match.teams[teamSide].tag === "FEATURED"
-						? "🟩"
-						: match.teams[teamSide].tag === "POOR"
-							? "🟥"
-							: ""}
-				</InlineText>
+				{!isPlayedMatch ? (
+					<InlineText className="tw-relative tw--top-0.5 tw-ml-1.5 tw-text-xxs">
+						{match.teams[teamSide].tag === "FEATURED"
+							? "🟩"
+							: match.teams[teamSide].tag === "POOR"
+								? "🟥"
+								: ""}
+					</InlineText>
+				) : null}
 				{match.teams[teamSide].historic ? (
 					<InlineText className="tw-relative tw--top-0.5 tw-ml-1 tw-text-xxs">🟨</InlineText>
 				) : null}
@@ -1263,7 +1267,7 @@ function checkMatchStatus(match: T_FixtureMatch | T_PlayedMatch) {
 		isMatchInProgress: false,
 		isMatchFinished: false,
 	};
-	const AVERAGE_MATCH_DURATION = 115;
+	const AVERAGE_MATCH_DURATION = 120;
 	const currentDate = formatDate(new Date(), "full");
 	const matchEndFullDate = formatDate(
 		dayjs(match.fullDate).add(AVERAGE_MATCH_DURATION, "minutes").toDate(),
