@@ -166,7 +166,7 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 		<Block className="tw-bg-white tw-text-black">
 			<Block
 				is="header"
-				className="tw-border-b tw-border-gray-200 tw-bg-gray-100 tw-p-4"
+				className="tw-bg-gray-100 tw-p-4"
 			>
 				<Title
 					is="h1"
@@ -178,7 +178,7 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 				<Text>{data.headline}</Text>
 				<Space size={1.5} />
 
-				<Text className="tw-flex tw-flex-col tw-items-end tw-text-sm print:tw-flex-row print:tw-items-center print:tw-justify-end md:tw-flex-row md:tw-items-center md:tw-justify-end">
+				<Block className="tw-flex tw-flex-col tw-items-end tw-text-sm print:tw-flex-row print:tw-items-center print:tw-justify-end md:tw-flex-row md:tw-items-center md:tw-justify-end">
 					<Link
 						variant={Link.variant.SIMPLE}
 						href={`mailto:${data.contactInfo.email}`}
@@ -214,7 +214,7 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 					>
 						{WEBSITE_METADATA.social.linkedin.replace("https://", "")}
 					</Link>
-				</Text>
+				</Block>
 				<Text className="tw-text-right tw-text-sm">
 					{data.location.from.city.split(",")[1]}, {data.location.from.country}
 				</Text>

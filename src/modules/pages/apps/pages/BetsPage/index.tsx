@@ -44,7 +44,7 @@ import type {
 } from "./types";
 import styles from "./styles.module.css";
 
-// import DATA from "../../../../../../public/data/apps/bets/2024-08-16.json"; // NOTE: FOR DX PURPOSES
+// import DATA from "../../../../../../public/data/apps/bets/2024-08-20.json"; // NOTE: FOR DX PURPOSES
 
 function BetsPage() {
 	// --- STATES & REFS ---
@@ -198,6 +198,10 @@ function BetsPage() {
 }
 
 export default BetsPage;
+
+// --- UTILS ---
+
+const AVERAGE_MATCH_DURATION = 115;
 
 // --- COMPONENTS ---
 
@@ -959,6 +963,8 @@ function MatchDetails({
 							<Text className="tw-font-bold">{match.hour}</Text>
 							{isFixturePlayedMatchType ? <Text>Final del partido</Text> : null}
 						</Block>
+					) : isMatchInProgress ? (
+						<ProgressTime matchFullDate={match.fullDate} />
 					) : (
 						<Text>{match.hour}</Text>
 					)}
@@ -1228,6 +1234,65 @@ function ExternalLinks({
 	);
 }
 
+function ProgressTime({ matchFullDate }: { matchFullDate: string }) {
+	// --- STATES & REFS ---
+	const [time, setTime] = React.useState(calcDifference());
+	const timerRef = React.useRef<DR.SetTimeout | null>(null);
+
+	// --- UTILS ---
+	const clearTimer = React.useCallback(
+		function clearTimer() {
+			if (timerRef.current) {
+				clearInterval(timerRef.current);
+				timerRef.current = null;
+			}
+		},
+		[timerRef],
+	);
+
+	function calcDifference() {
+		return Math.floor(dayjs(new Date()).diff(new Date(matchFullDate), "minutes"));
+	}
+
+	function formatTime(time_: number) {
+		if (time_ < 45) {
+			return `${time_}'`;
+		}
+
+		if (time_ < 50) {
+			return `45 + ${time_ - 44}'`;
+		}
+
+		if (time_ < 65) {
+			return "MT";
+		}
+
+		if (time_ < 110) {
+			return `${time_ - (5 + 15)}'`;
+		}
+
+		if (time_ < AVERAGE_MATCH_DURATION) {
+			return `90 + ${time_ - (44 + 5 + 15 + 45)}'`;
+		}
+
+		clearTimer();
+		return "";
+	}
+
+	// --- EFFECTS ---
+	React.useEffect(() => {
+		timerRef.current = setInterval(() => {
+			setTime((time_) => time_ + 1);
+		}, 1000 * 60);
+
+		return () => {
+			clearTimer();
+		};
+	}, [clearTimer]);
+
+	return <Text>{formatTime(time)}</Text>;
+}
+
 // --- UTILS ---
 
 function formatDate(date: Date, config?: "full") {
@@ -1267,7 +1332,6 @@ function checkMatchStatus(match: T_FixtureMatch | T_PlayedMatch) {
 		isMatchInProgress: false,
 		isMatchFinished: false,
 	};
-	const AVERAGE_MATCH_DURATION = 120;
 	const currentDate = formatDate(new Date(), "full");
 	const matchEndFullDate = formatDate(
 		dayjs(match.fullDate).add(AVERAGE_MATCH_DURATION, "minutes").toDate(),

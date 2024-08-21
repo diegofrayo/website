@@ -5638,7 +5638,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 2,
@@ -22128,7 +22128,7 @@
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -42546,7 +42546,7 @@
 										"country": { "name": "Italy", "flag": "🇮🇹", "code": "IT" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 2,
@@ -44126,7 +44126,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -59168,7 +59168,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 0,
@@ -60615,7 +60615,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 0,
@@ -64204,7 +64204,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -79532,7 +79532,7 @@
 										"country": null,
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 1,
@@ -88975,7 +88975,7 @@
 										"country": null,
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 0,

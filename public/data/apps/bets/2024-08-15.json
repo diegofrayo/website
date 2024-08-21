@@ -1510,7 +1510,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": 9,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 3,

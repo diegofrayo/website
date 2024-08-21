@@ -1511,7 +1511,7 @@
 						"country": { "name": "Italy", "flag": "🇮🇹", "code": "IT" },
 						"position": 2,
 						"tag": "REGULAR",
-						"historic": false,
+						"historic": true,
 						"result": "WIN",
 						"score": {
 							"fullTime": 3,
@@ -1708,7 +1708,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -1723,7 +1723,7 @@
 										"country": { "name": "Italy", "flag": "🇮🇹", "code": "IT" },
 										"position": 2,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 0,
@@ -1754,7 +1754,7 @@
 										"country": { "name": "Italy", "flag": "🇮🇹", "code": "IT" },
 										"position": 2,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 4,
@@ -1800,7 +1800,7 @@
 										"country": { "name": "Italy", "flag": "🇮🇹", "code": "IT" },
 										"position": 2,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 2,
@@ -1861,7 +1861,7 @@
 										"country": { "name": "Italy", "flag": "🇮🇹", "code": "IT" },
 										"position": 2,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 0,
@@ -3785,7 +3785,7 @@
 						"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 						"position": 6,
 						"tag": "REGULAR",
-						"historic": false,
+						"historic": true,
 						"result": "DRAW",
 						"score": {
 							"fullTime": 2,
@@ -3997,7 +3997,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": 6,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 0,
@@ -4043,7 +4043,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": 6,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 2,
@@ -4089,7 +4089,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": 6,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 0,
@@ -4135,7 +4135,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": 6,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -4181,7 +4181,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": 6,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 3,
@@ -4227,7 +4227,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": 6,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -4258,7 +4258,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": 6,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -4300,7 +4300,7 @@
 						"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 						"position": 7,
 						"tag": "REGULAR",
-						"historic": false,
+						"historic": true,
 						"result": "DRAW",
 						"score": {
 							"fullTime": 2,
@@ -4497,7 +4497,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": 7,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -4512,7 +4512,7 @@
 										"country": { "name": "Italy", "flag": "🇮🇹", "code": "IT" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 0,
@@ -4558,7 +4558,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": 7,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 6,
@@ -4604,7 +4604,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": 7,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 3,
@@ -4635,7 +4635,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": 7,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "DRAW",
 										"score": {
 											"fullTime": 1,
@@ -5758,7 +5758,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -5800,7 +5800,7 @@
 						"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 						"position": 12,
 						"tag": "REGULAR",
-						"historic": false,
+						"historic": true,
 						"result": "DRAW",
 						"score": {
 							"fullTime": 1,
@@ -5997,7 +5997,7 @@
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 12,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 2,
@@ -6043,7 +6043,7 @@
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 12,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 1,
@@ -6104,7 +6104,7 @@
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 12,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 4,
@@ -6150,7 +6150,7 @@
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 12,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 3,
@@ -6196,7 +6196,7 @@
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 12,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 2,
@@ -6242,7 +6242,7 @@
 										"country": { "name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "code": "GB" },
 										"position": 12,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "WIN",
 										"score": {
 											"fullTime": 5,
