@@ -129,8 +129,8 @@ type T_Experience = {
 	endDate: string;
 	mode: string;
 	description: {
-		summary?: { label: string; value: string };
-		achievements: { label: string; value: string[] };
-		skills: { label: string; value: string[] };
+		summary: string;
+		achievements?: string[];
+		skills: string[];
 	};
 };

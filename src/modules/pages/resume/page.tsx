@@ -140,7 +140,7 @@ function ResumePage({ data, cmsContent }: T_ResumePageProps) {
 							</Button>
 						</Block>
 
-						<Block className="tw-text-base">
+						<Block className="tw-text-sm">
 							{viewMode === "FULL" ? (
 								<FullMode data={currentData} />
 							) : (
@@ -166,7 +166,7 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 		<Block className="tw-bg-white tw-text-black">
 			<Block
 				is="header"
-				className="tw-bg-gray-100 tw-p-4"
+				className="tw-bg-gray-100 tw-p-4 tw-text-center"
 			>
 				<Title
 					is="h1"
@@ -178,49 +178,116 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 				<Text>{data.headline}</Text>
 				<Space size={1.5} />
 
-				<Block className="tw-flex tw-flex-col tw-items-end tw-text-sm print:tw-flex-row print:tw-items-center print:tw-justify-end md:tw-flex-row md:tw-items-center md:tw-justify-end">
+				<Block className="tw-flex tw-items-center tw-justify-center tw-gap-3">
 					<Link
 						variant={Link.variant.SIMPLE}
 						href={`mailto:${data.contactInfo.email}`}
 						className="tw-font-bold tw-underline"
 						isExternalLink
 					>
-						{data.contactInfo.email}
+						<Icon
+							icon={Icon.icon.ENVELOPE}
+							wrapperClassName="tw-align-middle tw-mr-0.5"
+						/>
+						<InlineText className="tw-hidden sm:tw-inline">{data.contactInfo.email}</InlineText>
 					</Link>
-					<InlineText className="tw-mx-1 tw-hidden tw-h-3 tw-border-r tw-border-black print:tw-inline-block md:tw-inline-block" />
 					<Link
 						variant={Link.variant.SIMPLE}
 						href={data.contactInfo.websites[1].value}
 						className="tw-font-bold tw-underline"
 						isExternalLink
 					>
-						{data.contactInfo.websites[1].value.replace("https://", "")}
+						<Icon
+							icon={Icon.icon.LINK}
+							wrapperClassName="tw-align-middle tw-mr-0.5"
+						/>
+						<InlineText className="tw-hidden sm:tw-inline">
+							{data.contactInfo.websites[1].value.replace("https://", "")}
+						</InlineText>
 					</Link>
-					<InlineText className="tw-mx-1 tw-hidden tw-h-3 tw-border-r tw-border-black print:tw-inline-block md:tw-inline-block" />
 					<Link
 						variant={Link.variant.SIMPLE}
 						href={data.contactInfo.websites[0].value}
 						className="tw-font-bold tw-underline"
 						isExternalLink
 					>
-						{data.contactInfo.websites[0].value.replace("https://", "")}
+						<Icon
+							icon={Icon.icon.GITHUB_MONO}
+							wrapperClassName="tw-align-middle tw-mr-0.5"
+						/>
+						<InlineText className="tw-hidden sm:tw-inline">
+							{data.contactInfo.websites[0].value.split("/").reverse()[0]}
+						</InlineText>
 					</Link>
-					<InlineText className="tw-mx-1 tw-hidden tw-h-3 tw-border-r tw-border-black print:tw-inline-block md:tw-inline-block" />
 					<Link
 						variant={Link.variant.SIMPLE}
 						href={WEBSITE_METADATA.social.linkedin}
 						className="tw-font-bold tw-underline"
 						isExternalLink
 					>
-						{WEBSITE_METADATA.social.linkedin.replace("https://", "")}
+						<Icon
+							icon={Icon.icon.LINKEDIN_MONO}
+							wrapperClassName="tw-align-middle tw-mr-0.5"
+						/>
+						<InlineText className="tw-hidden sm:tw-inline">
+							{WEBSITE_METADATA.social.linkedin.split("/").reverse()[0]}
+						</InlineText>
 					</Link>
 				</Block>
-				<Text className="tw-text-right tw-text-sm">
-					{data.location.from.city.split(",")[1]}, {data.location.from.country}
+				<Space size={1.5} />
+
+				<Text className="tw-text-xs">
+					<Icon
+						icon={Icon.icon.MAP_PIN}
+						wrapperClassName="tw-align-middle tw-mr-0.5"
+					/>
+					<InlineText className="tw-align-middle">
+						{data.location.from.city.split(",")[1].trim()}, {data.location.from.country}
+					</InlineText>
 				</Text>
 			</Block>
 
 			<Block className="tw-p-4">
+				<ResumeBlock
+					variant="SHORT"
+					title={texts.SUMMARY}
+				>
+					{data.summary}
+				</ResumeBlock>
+
+				<ResumeBlock
+					variant="SHORT"
+					title={texts.EDUCATION}
+				>
+					{data.education.map((item) => {
+						return (
+							<Block
+								key={item.id}
+								className="tw-mb-6 last:tw-mb-0"
+							>
+								<Text className="tw--mb-1 tw-font-bold">{item.degree}</Text>
+								<Link
+									variant={Link.variant.SIMPLE}
+									href={item.schoolWebsite}
+									className="tw-text-sm tw-underline"
+									onClick={AnalyticsService.trackClickEvent("RESUME|EDUCATION", {
+										item: item.school,
+									})}
+									isExternalLink
+								>
+									{item.school}
+								</Link>
+								{item.startDate ? (
+									<Text className="tw-text-xs tw-lowercase tw-italic">
+										<InlineText>{item.startDate}</InlineText> /{" "}
+										<InlineText>{item.endDate}</InlineText>
+									</Text>
+								) : null}
+							</Block>
+						);
+					})}
+				</ResumeBlock>
+
 				<ResumeBlock
 					variant="SHORT"
 					title={texts.EXPERIENCE}
@@ -269,23 +336,28 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 								</Block>
 								<Space size={1} />
 
-								<Block className="tw-px-1">
-									<List variant={List.variant.SIMPLE}>
-										{item.description.achievements.value.map((achievement, index) => {
-											return (
-												<List.Item
-													key={generateSlug(`${item.id}-achievement-${index}`)}
-													className={cn(
-														"print:tw-text-sm",
-														item.company.name === "HelloBUILD" && index > 1 && "print:tw-hidden",
-													)}
-												>
-													{achievement}
-												</List.Item>
-											);
-										})}
-									</List>
+								<Block>
+									<Text>{item.description.summary}</Text>
 									<Space size={1} />
+
+									{item.description.achievements ? (
+										<React.Fragment>
+											<List
+												variant={List.variant.SIMPLE}
+												className="tw-mx-1"
+											>
+												{item.description.achievements.map((achievement, index) => {
+													return (
+														<List.Item key={generateSlug(`short-${item.id}-achievement-${index}`)}>
+															{achievement}
+														</List.Item>
+													);
+												})}
+											</List>
+											<Space size={1} />
+										</React.Fragment>
+									) : null}
+
 									<Block>
 										<InlineText
 											is="strong"
@@ -293,43 +365,18 @@ function ShortMode({ data }: { data: T_ResumePageProps["data"][keyof T_ResumePag
 										>
 											{texts.SKILLS}:{" "}
 										</InlineText>
-										{item.description.skills.value.map((skill) => {
-											return <Skill key={generateSlug(`${item.id}-${skill}`)}>{skill}</Skill>;
+										{item.description.skills.map((skill, index) => {
+											return (
+												<Skill
+													key={generateSlug(`${item.id}-${skill}`)}
+													className={cn(index > 7 && "print:tw-hidden")}
+												>
+													{skill}
+												</Skill>
+											);
 										})}
 									</Block>
 								</Block>
-							</Block>
-						);
-					})}
-				</ResumeBlock>
-				<ResumeBlock
-					variant="SHORT"
-					title={texts.EDUCATION}
-				>
-					{data.education.map((item) => {
-						return (
-							<Block
-								key={item.id}
-								className="tw-mb-6 last:tw-mb-0"
-							>
-								<Text className="tw--mb-1 tw-font-bold">{item.degree}</Text>
-								<Link
-									variant={Link.variant.SIMPLE}
-									href={item.schoolWebsite}
-									className="tw-text-sm tw-underline"
-									onClick={AnalyticsService.trackClickEvent("RESUME|EDUCATION", {
-										item: item.school,
-									})}
-									isExternalLink
-								>
-									{item.school}
-								</Link>
-								{item.startDate ? (
-									<Text className="tw-text-xs tw-lowercase tw-italic">
-										<InlineText>{item.startDate}</InlineText> /{" "}
-										<InlineText>{item.endDate}</InlineText>
-									</Text>
-								) : null}
 							</Block>
 						);
 					})}
@@ -517,14 +564,16 @@ type T_ResumeBlockProps = {
 	title: string;
 	children: DR.React.Children;
 	variant: "SHORT" | "FULL";
+	style?: DR.React.Styles;
 };
 
-function ResumeBlock({ title, children, variant }: T_ResumeBlockProps) {
+function ResumeBlock({ title, children, variant, style }: T_ResumeBlockProps) {
 	if (variant === "SHORT") {
 		return (
 			<Block
 				is="section"
 				className="tw-mb-6 last:tw-mb-0"
+				style={style}
 			>
 				<Title
 					is="h2"
@@ -533,7 +582,7 @@ function ResumeBlock({ title, children, variant }: T_ResumeBlockProps) {
 				>
 					{title}
 				</Title>
-				{children}
+				<Block className="tw-px-1">{children}</Block>
 			</Block>
 		);
 	}
@@ -561,9 +610,14 @@ type T_ExperienceTimelineProps = {
 	experience: T_Resume["experience"];
 };
 
-function Skill({ children }: { children: string }) {
+function Skill({ children, className }: { children: string; className?: string }) {
 	return (
-		<InlineText className="tw-my-0.5 tw-mr-1 tw-inline-block tw-rounded-md tw-border tw-border-gray-200 tw-bg-gray-100 tw-px-1.5 tw-py-0.5 tw-font-mono tw-text-xs tw-text-gray-600">
+		<InlineText
+			className={cn(
+				"tw-my-0.5 tw-mr-1 tw-inline-block tw-rounded-md tw-border tw-border-gray-200 tw-bg-gray-100 tw-px-1.5 tw-py-0.5 tw-font-mono tw-text-xs tw-text-gray-600",
+				className,
+			)}
+		>
 			{children.trim()}
 		</InlineText>
 	);
@@ -583,6 +637,7 @@ function OtherSection({
 		<ResumeBlock
 			variant={variant}
 			title={texts.OTHER}
+			style={{ pageBreakInside: "avoid" }}
 		>
 			<Block>
 				<Text className="tw-font-bold">{texts.SKILLS}:</Text>
@@ -684,38 +739,31 @@ function ExperienceTimeline({ experience }: T_ExperienceTimelineProps) {
 							</Block>
 							<Space size={1} />
 
-							<List variant={List.variant.SIMPLE}>
-								{description.summary ? (
-									<List.Item>
-										<Text className="tw-font-bold">{description.summary.label}:</Text>
-										<Pre
-											variant={Pre.variant.BREAK_WITH_BLANK_SPACES}
-											className="dr-font-texts print:tw-text-sm"
-										>
-											{description.summary.value}
-										</Pre>
-									</List.Item>
-								) : null}
+							<Text className="dr-font-texts print:tw-text-sm">{description.summary}</Text>
+							<Space size={1} />
 
-								<List.Item>
-									<Text className="tw-font-bold">{description.achievements.label}:</Text>
-									<Pre
-										variant={Pre.variant.BREAK_WITH_BLANK_SPACES}
-										className="dr-font-texts print:tw-text-sm"
+							{description.achievements ? (
+								<React.Fragment>
+									<List
+										variant={List.variant.SIMPLE}
+										className="tw-mx-1"
 									>
-										{description.achievements.value.map((item) => {
-											return `- ${item}\n`;
+										{description.achievements.map((item, index) => {
+											return (
+												<List.Item key={generateSlug(`full-${id}-achievements-${index}`)}>
+													{item}
+												</List.Item>
+											);
 										})}
-									</Pre>
-								</List.Item>
+									</List>
+									<Space size={1} />
+								</React.Fragment>
+							) : null}
 
-								<List.Item>
-									<Text className="tw-font-bold">{description.skills.label}:</Text>
-									{description.skills.value.map((skill) => {
-										return <Skill key={generateSlug(`${id}-${skill}`)}>{skill}</Skill>;
-									})}
-								</List.Item>
-							</List>
+							<Text className="tw-font-bold">{texts.SKILLS}:</Text>
+							{description.skills.map((skill) => {
+								return <Skill key={generateSlug(`${id}-${skill}`)}>{skill}</Skill>;
+							})}
 						</Block>
 					</Block>
 				);
@@ -730,11 +778,13 @@ const SHORT_MODE_STYLES = `
   @media print {
     @page {
       margin: 0cm;
+      margin-bottom: 0.5cm;
+      margin-top: 0.5cm;
     }
 
-    /* Second page */
-    @page :left {
-      margin-top: 0.5cm;
+    @page :first {
+      margin-bottom: 0cm;
+      margin-top: 0cm;
     }
   }
 `;

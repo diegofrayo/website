@@ -44,6 +44,7 @@ import {
 	LinkIcon,
 	MagnifyingGlassMinusIcon,
 	MagnifyingGlassPlusIcon,
+	MapPinIcon,
 	MusicalNoteIcon,
 	NewspaperIcon,
 	PauseIcon,
@@ -527,6 +528,13 @@ const ICONS = {
 	},
 	LINK: {
 		icon: LinkIcon,
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+	},
+	MAP_PIN: {
+		icon: MapPinIcon,
 		defaultProps: {
 			className: "",
 			color: "",
