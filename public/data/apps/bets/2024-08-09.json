@@ -18217,7 +18217,7 @@
 										"country": { "name": "Spain", "flag": "🇪🇸", "code": "ES" },
 										"position": null,
 										"tag": "REGULAR",
-										"historic": false,
+										"historic": true,
 										"result": "LOSE",
 										"score": {
 											"fullTime": 0,
