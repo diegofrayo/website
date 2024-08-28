@@ -9,23 +9,29 @@ import type DR from "@diegofrayo/types";
 
 import { goBack } from "../routing";
 import AuthService from "./service";
+import type { T_Role } from "./types";
 
 export function withAuth<G_ComponentProps extends object>(
 	Component: DR.React.FunctionComponent<G_ComponentProps>,
+	roles?: T_Role[],
 ): DR.React.FunctionComponent<G_ComponentProps> {
-	return renderIf(Component)(() => AuthService.isUserLoggedIn());
+	return renderIf(Component)(() => {
+		return AuthService.isUserLoggedIn() && (roles ? roles.includes(AuthService.getRole()) : true);
+	});
 }
 
 interface I_OptionsRequireAuth {
 	requireSecurityPin?: boolean;
 	requireRemoteSecurityPin?: boolean;
 	requireAuth: true;
+	roles?: T_Role[];
 	requireNoAuth?: never;
 }
 interface I_OptionsRequireNoAuth {
 	requireSecurityPin?: boolean;
 	requireRemoteSecurityPin?: boolean;
 	requireNoAuth: true;
+	roles?: never;
 	requireAuth?: never;
 }
 
@@ -49,7 +55,12 @@ export function withAuthRulesPage<G_ComponentProps extends object>(
 			const isValidSecurityPin = await checkSecurityPinConfig();
 
 			if ("requireAuth" in options) {
-				redirectUser(AuthService.isUserLoggedIn() === false || !isValidSecurityPin);
+				redirectUser(
+					AuthService.isUserLoggedIn() === false ||
+						!isValidSecurityPin ||
+						(AuthService.isUserLoggedIn() &&
+							(options.roles ? !options.roles.includes(AuthService.getRole()) : false)),
+				);
 			} else {
 				redirectUser(AuthService.isUserLoggedIn() || !isValidSecurityPin);
 			}
@@ -77,6 +88,7 @@ export function withAuthRulesPage<G_ComponentProps extends object>(
 
 					return pinMatched;
 				}
+
 				if (options.requireRemoteSecurityPin === true) {
 					try {
 						const pinMatched = (

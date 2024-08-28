@@ -36,4 +36,7 @@ function ExperimentsPage() {
 	);
 }
 
-export default withAuthRulesPage(ExperimentsPage, { requireAuth: true });
+export default withAuthRulesPage(ExperimentsPage, {
+	requireAuth: true,
+	roles: ["ADMIN"],
+});

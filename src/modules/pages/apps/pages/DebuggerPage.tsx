@@ -132,4 +132,7 @@ function DebuggerPage() {
 	);
 }
 
-export default withAuthRulesPage(DebuggerPage, { requireAuth: true });
+export default withAuthRulesPage(DebuggerPage, {
+	requireAuth: true,
+	roles: ["ADMIN"],
+});

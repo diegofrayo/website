@@ -217,7 +217,10 @@ function SongPage({ cmsContent, songDetails, songContent }: T_SongPageProps) {
 						/>
 					</Block>
 					{songDetails.notes ? (
-						<ComponentWithAuth className="tw-border-t-4 tw-p-4 dr-bg-color-surface-200 dr-border-color-surface-300">
+						<ComponentWithAuth
+							className="tw-border-t-4 tw-p-4 dr-bg-color-surface-200 dr-border-color-surface-300"
+							roles={["ADMIN"]}
+						>
 							<Collapsible title="Notas">
 								<Pre
 									variant={Pre.variant.BREAK_WITH_BLANK_SPACES}

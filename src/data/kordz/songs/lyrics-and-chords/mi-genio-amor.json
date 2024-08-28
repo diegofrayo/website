@@ -1,0 +1,34 @@
+{
+	"details": {
+		"id": "mi-genio-amor",
+		"title": "Mi genio amor",
+		"artist": "Patricio Rey y sus Redonditos de Ricota",
+		"album": "Estadio Obras",
+		"year": 1991,
+		"country": "🇦🇷",
+		"category": "2|WELL_DONE|👍",
+		"created_at": "2024/08/27",
+		"is_public": true,
+		"in_progress": true,
+		"to_finish": true,
+		"spotify_url": "https://open.spotify.com/track/46s8VW9vqRZ0IAXRVKayqX?si=1f6c387434ee411a",
+		"youtube_url": "https://youtu.be/-x6wczPymF0",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Mi genio amor - Los Redondos - Cover",
+				"url": "https://youtu.be/nTeeB9KSgiY",
+				"source": "youtube"
+			},
+			{
+				"text": "MI GENIO AMOR, Patricio Rey y sus Redonditos de Ricota: Acordes",
+				"url": "https://acordes.lacuerda.net/patricio_rey/mi_genio_amor-3.shtml",
+				"source": "lacuerda"
+			}
+		],
+		"notes": "",
+		"chords": []
+	},
+	"mdx": "<TextFormatter\n\tinsertions={[\n\t\t{\n\t\t\ttext: \"{RIFF}\",\n\t\t\treplacement: (\n\t\t\t\t<Tablature\n\t\t\t\t\tpositions={[\n\t\t\t\t\t\t{ guitarString: 2, guitarFret: 1 },\n\t\t\t\t\t\t{ guitarString: 2 },\n\t\t\t\t\t\t{ guitarString: 3 },\n\t\t\t\t\t\t{ guitarString: 4, guitarFret: 2 },\n\t\t\t\t\t]}\n\t\t\t\t\tnotes=\"RIFF\"\n\t\t\t\t/>\n\t\t\t),\n\t\t},\n\t]}\n>\n\t{DATA.song.parsedLyrics}\n</TextFormatter>",
+	"txt": "{RIFF}\n\n\nRIFF\nEm  RIFF   | (x2)\n\n\nEm                                                     Em   RIFF\n  Si empiezo a desconfiar     de mi suerte estoy perdido\nEm                                           Em   RIFF\n  pues tengo ideas     cada vez menos atrevidas\nEm\n  pero cerca,     aquí cerca el lobo aúlla\nEm                                           Em   RIFF\n  despertando     al mal hombre, al mago bueno\n\nC             G                    Am\n  Con un corazón que no puede cumplir más promesas ya\n\n\nEm                                               Em   RIFF\n  Los genios son buenos servidores     y malos amos\nEm                                                 Em   RIFF\n  si les has visto     primorosos, caíste en el lazo\nEm\n  tu bolsillo     es más profundo que su gracia\nEm                                               Em   RIFF\n  y calcular tu oración     puede llevarme la vida\n\nC             G                    Am\n  Con un corazón que no puede cumplir más promesas ya\n\n\n G              D                  C\nYo te saqué un día de allí y me encadené\n G                 D              C\nte obedecí, hasta donde pude, mi genio amor\n\n    G               D                   C\nMe pude apartar de tu corazón en otro crimen más\nG                 D              C\ny me alejé de tu seducción y tu dulce voz\n\nG  D       C          |\n       Tu dulce voz   | (x2)\n\n\nRIFF  D"
+}

@@ -1,0 +1,105 @@
+{
+	"details": {
+		"id": "jic",
+		"title": "JIC",
+		"artist": "",
+		"album": "",
+		"year": 0,
+		"country": "",
+		"category": "4|TO_LEARN|🏗️",
+		"created_at": "2024/06/28",
+		"is_public": false,
+		"in_progress": true,
+		"to_finish": true,
+		"spotify_url": "",
+		"youtube_url": "",
+		"assets": {},
+		"sources": [
+			{
+				"text": "Cómo tocar \"Ojos Color Sol\" de Calle 13 Ft. Silvio Rodríguez - En guitarra (HD) - christianvib",
+				"url": "https://youtu.be/D9Vlc4RTMHI",
+				"source": "youtube"
+			},
+			{
+				"text": "Ojos Color Sol - Calle 13 Ft Silvio Rodriguez - Acustico Cover Guitarra Demo Christianvib",
+				"url": "https://youtu.be/TSa1N1bLglA",
+				"source": "youtube"
+			},
+			{
+				"text": "ÍNDIGO - Camilo, Evaluna Montaner GUITARRA Tutorial | ACORDES Christianvib",
+				"url": "https://youtu.be/_hOW22hGYS4",
+				"source": "youtube"
+			},
+			{
+				"text": "INDIGO, Camilo: Acordes",
+				"url": "https://acordes.lacuerda.net/camilo/indigo-2.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "No digas nada- Cali y El Dandee (Cover by Xandra Garsem)",
+				"url": "https://youtu.be/X_kOB8m8veA",
+				"source": "youtube"
+			},
+			{
+				"text": "FUJI, Spinetta y los Socios del Desierto: Tablatura",
+				"url": "https://acordes.lacuerda.net/spinetta_y_los_socios_del_desierto/fuji-2.shtml",
+				"source": "lacuerda"
+			},
+			{
+				"text": "Loli Molina - Fuji ( Luis Alberto Spinetta ) - en vivo",
+				"url": "https://youtu.be/TkrhivLt2Sk",
+				"source": "youtube"
+			},
+			{
+				"text": "Loli Molina - Fuji (Spinetta cover) - Queretaro Trovafest 2019",
+				"url": "https://youtu.be/RO53Hfmr7vg",
+				"source": "youtube"
+			},
+			{
+				"text": "LOLI MOLINA CANTO TODO Y NOS LLENO DE CALMA",
+				"url": "https://youtu.be/mGxUma3E0Ws",
+				"source": "youtube"
+			},
+			{ "text": "fuji (Spinetta)", "url": "https://youtu.be/fsN5kcC5mJc", "source": "youtube" },
+			{
+				"text": "Como tocar Fuji de Spinetta",
+				"url": "https://youtu.be/O9b59Ss6whI",
+				"source": "youtube"
+			},
+			{
+				"text": "NINGÚN ACORDE NACE LOCO: SPINETTA - Fuji",
+				"url": "https://youtu.be/-1PXmG574Yw",
+				"source": "youtube"
+			},
+			{
+				"text": "Fuji - Spinetta y los Socios del Desierto (+Tab)",
+				"url": "https://youtu.be/rIvDu-cFh18",
+				"source": "youtube"
+			},
+			{
+				"text": "FUJI - SPINETTA (Cover)",
+				"url": "https://youtu.be/S2pAeBhf41Q",
+				"source": "youtube"
+			},
+			{
+				"text": "Fuji - (Spinetta y los socios del desierto) - Cover",
+				"url": "https://youtu.be/pvSoMppd8QY",
+				"source": "youtube"
+			},
+			{
+				"text": "Fuji (Luis Alberto Spinetta) - Gino Donofrio",
+				"url": "https://youtu.be/ue846BMrf5E",
+				"source": "youtube"
+			},
+			{
+				"text": "6ª en RE (D) Afinación - DICCIONARIO DE GUITARRA 📗",
+				"url": "https://youtu.be/bZzF7e0i-eQ",
+				"source": "youtube"
+			}
+		],
+		"notes": "",
+		"chords": []
+	},
+	"mdx": "<TextFormatter>{DATA.song.parsedLyrics}</TextFormatter>",
+	"txt": "OJOS COLOR SOL\n\nEm                     Bm\n   La luna sale a caminar\nsiguiendo tus pupilas\nEm                       Bm\n   la noche brilla original\ndespués que tú la miras\nEm                      Bm\n   ya nadie sabe ser feliz\na costa del despojo,\nC\n   gracias a ti\n        A7\ny a tus ojos\n\n\nEm                     Bm\n   En la academia militar\nenseñan medicina\nEm                          Bm\n   y los banqueros ahora harán\nviviendas y comida\nEm                      Bm\n   ya nadie sabe ser feliz\na costa del despojo,\nC\n   gracias a ti\n        A7\ny a tus ojos\n\n{SEPARATOR}\n\nINDIGO\n\n           Fmaj7     G6\nPorque llegó a mi vida\n     Em7         A7\nel amor de mi vida\n            D7sus2       G\nyo se lo pedí al de arriba\n         Cadd9\npero contigo se le fue la mano\n\n                 Fmaj7  G6\nY qué buena suerte la mía\n            Em7         A7\ngané sin jugar la lotería\n              D7sus2  G\nla falta que me   hacías\n         Cadd9\ncontigo Navidad llegó temprano\n\n{SEPARATOR}\n\nNO DIGAS NADA\n\n                     F\nNo digas nada por favor\n                             G\nque hablando el alma me destrozas\n                       C\nquiero decirte tantas cosas,\n         Em              Am\nquiero acordarme de tu olor\n\n                     F\nNo digas nada por favor\n                         G\nno vaya a ser que me despierte\n                             E\nde un sueño en el que puedo verte\n   E7                        Am\ny aún puedo hablarte de mi amor\n          G           F\nno digas nada ten piedad,\n         C          F\nsolo te pido que mañana por la noche\n    G\ndormido me des la oportunidad\n\n{SEPARATOR}\n\nFUJI\n\n/ La canción se toca con el capo en el traste 1 y con la 6ta cuerda afinada en D\n\n               Em\nY es que me espera\n     ??1\ny cobijo me dará\n           Em\nentre sus manos\n           ??1\nhasta que luego venga Fuji\n        Em\ncon el mundo\n      ??1                      Em\nY me hace las señales con las piernas\n          ??1                    Am\ndesde un punto de la calle, desolada,\n          Am                     Am\ny es que puedo soportar esta distancia,\n             Am                         ??2\ny es que te has impreso en mi como una luz"
+}

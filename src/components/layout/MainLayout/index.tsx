@@ -34,7 +34,7 @@ import {
 	isPWA,
 	setScrollPosition,
 } from "@diegofrayo/utils/browser";
-import { createRandomString, generateSlug } from "@diegofrayo/utils/strings";
+import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 
 import styles from "./styles.module.css";
@@ -49,9 +49,6 @@ function MainLayout({ title, children, className }: T_MainLayoutProps) {
 	// --- HOOKS ---
 	const { pathname } = useRouting();
 
-	// --- STATES & REFS ---
-	const [forceRenderKey, setForceRenderKey] = React.useState("");
-
 	// --- VARS ---
 	const parentUrl = getParentURL();
 
@@ -62,10 +59,6 @@ function MainLayout({ title, children, className }: T_MainLayoutProps) {
 		const urlParts = pathname.split("/");
 
 		return `${urlParts.slice(0, urlParts.length - 1).join("/")}/`;
-	}
-
-	function dispatchForcedRender() {
-		setForceRenderKey(createRandomString(10));
 	}
 
 	return (
@@ -104,7 +97,7 @@ function MainLayout({ title, children, className }: T_MainLayoutProps) {
 					<NavigationMenu />
 
 					<Block className="tw-absolute tw--top-1 tw-right-0">
-						<ToolsMenu dispatchForcedRender={dispatchForcedRender} />
+						<ToolsMenu />
 					</Block>
 				</Block>
 
@@ -113,7 +106,7 @@ function MainLayout({ title, children, className }: T_MainLayoutProps) {
 					clasName="print:tw-hidden"
 				/>
 
-				<Block key={forceRenderKey}>
+				<Block>
 					{v.isNotEmptyString(title) ? (
 						<Block className="tw-text-center print:tw-hidden">
 							{v.isNotEmptyString(parentUrl) ? (
@@ -193,11 +186,7 @@ const SOCIAL_ICONS = [
 
 // --- COMPONENTS ---
 
-type T_ToolsMenuProps = {
-	dispatchForcedRender: () => void;
-};
-
-const ToolsMenu = renderIf(function ToolsMenu({ dispatchForcedRender }: T_ToolsMenuProps) {
+const ToolsMenu = renderIf(function ToolsMenu() {
 	// --- HANDLERS ---
 	function onPointerEventHandler(event: DR.React.Events.OnMouseEvent<HTMLButtonElement>) {
 		event.preventDefault();
@@ -228,7 +217,7 @@ const ToolsMenu = renderIf(function ToolsMenu({ dispatchForcedRender }: T_ToolsM
 							<EnvironmentMenuItem />
 							<ISRMenuItem />
 							<ReloadPageMenuItem />
-							<SwitchUserModeMenuItem dispatchForcedRender={dispatchForcedRender} />
+							<SwitchUserModeMenuItem />
 							<SignInMenuItem />
 							<SignOutMenuItem />
 						</List>
@@ -289,25 +278,26 @@ function ToolsMenuItem(props: T_ToolsMenuItemProps) {
 	);
 }
 
-type T_SwitchUserModeMenuItemProps = {
-	dispatchForcedRender: () => void;
-};
-
-function SwitchUserModeMenuItem({ dispatchForcedRender }: T_SwitchUserModeMenuItemProps) {
+function SwitchUserModeMenuItem() {
 	// --- HANDLERS ---
 	function handleClick() {
 		if (AuthService.isGuestUser()) {
-			AuthService.createTemporalSession();
+			if (window.prompt("Type password") === "ASKL") {
+				AuthService.switchToAdminUser();
+			} else {
+				alert("Wrong password");
+				return;
+			}
 		} else {
-			AuthService.destroyTemporalSession();
+			AuthService.switchToGuestUser();
 		}
 
-		dispatchForcedRender();
+		window.location.reload();
 	}
 
 	return (
 		<ToolsMenuItem
-			title={`Switch to "${AuthService.isGuestUser() ? "user" : "guest"}" mode`}
+			title={`Switch to "${AuthService.isGuestUser() ? "admin" : "guest"}" mode`}
 			icon={Icon.icon.USER_CIRCLE}
 			onClick={handleClick}
 		/>
@@ -567,16 +557,19 @@ const NavigationMenuItem = React.forwardRef<HTMLAnchorElement, T_NavigationMenuI
 	},
 );
 
-const AppsNavigationMenuItem = withAuth(function AppsNavigationMenuItem() {
-	return (
-		<NavigationMenuItem
-			href={ROUTES.APPS}
-			icon={Icon.icon.COMMAND_LINE}
-		>
-			Apps
-		</NavigationMenuItem>
-	);
-});
+const AppsNavigationMenuItem = withAuth(
+	function AppsNavigationMenuItem() {
+		return (
+			<NavigationMenuItem
+				href={ROUTES.APPS}
+				icon={Icon.icon.COMMAND_LINE}
+			>
+				Apps
+			</NavigationMenuItem>
+		);
+	},
+	["ADMIN"],
+);
 
 function Footer() {
 	return (

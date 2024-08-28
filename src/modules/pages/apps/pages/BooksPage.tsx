@@ -102,7 +102,11 @@ function BooksPage() {
 	);
 }
 
-export default withAuthRulesPage(BooksPage, { requireAuth: true, requireSecurityPin: true });
+export default withAuthRulesPage(BooksPage, {
+	requireAuth: true,
+	requireSecurityPin: true,
+	roles: ["ADMIN"],
+});
 
 // --- API ---
 

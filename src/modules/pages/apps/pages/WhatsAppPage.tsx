@@ -3,7 +3,6 @@ import * as React from "react";
 import { MainLayout, Page } from "~/components/layout";
 import { Input, Block, Button, Space, Select } from "~/components/primitive";
 import { BoxWithTitle, CopyToClipboardPopover } from "~/components/shared";
-import { withAuthRulesPage } from "~/modules/auth";
 import { useDidMount } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
 import { generateSlug, replaceAll } from "@diegofrayo/utils/strings";
@@ -150,4 +149,4 @@ function WhatsAppPage() {
 	);
 }
 
-export default withAuthRulesPage(WhatsAppPage, { requireAuth: true });
+export default WhatsAppPage;

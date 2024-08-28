@@ -101,6 +101,7 @@ function TimelinePage() {
 export default withAuthRulesPage(TimelinePage, {
 	requireAuth: true,
 	requireRemoteSecurityPin: true,
+	roles: ["ADMIN"],
 });
 
 // --- API ---

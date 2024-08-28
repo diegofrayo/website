@@ -262,6 +262,7 @@ export const ContactsPage = withAuthRulesPage(
 	{
 		requireAuth: true,
 		requireSecurityPin: true,
+		roles: ["ADMIN"],
 	},
 );
 

@@ -42,7 +42,10 @@ function AppsPage() {
 	);
 }
 
-export default withAuthRulesPage(AppsPage, { requireAuth: true });
+export default withAuthRulesPage(AppsPage, {
+	requireAuth: true,
+	roles: ["ADMIN"],
+});
 
 // --- COMPONENTS ---
 

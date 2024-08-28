@@ -102,7 +102,7 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 
 				<Block className="tw-inline-flex tw-gap-2">
 					{song.is_public ? null : (
-						<ComponentWithAuth>
+						<ComponentWithAuth roles={["ADMIN"]}>
 							<Icon
 								icon={Icon.icon.EYE_SLASH}
 								size={24}
@@ -111,7 +111,7 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 						</ComponentWithAuth>
 					)}
 					{song.in_progress ? (
-						<ComponentWithAuth>
+						<ComponentWithAuth roles={["ADMIN"]}>
 							<Icon
 								icon={Icon.icon.TOOL}
 								size={24}
@@ -120,7 +120,7 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 						</ComponentWithAuth>
 					) : null}
 					{song.to_finish ? (
-						<ComponentWithAuth>
+						<ComponentWithAuth roles={["ADMIN"]}>
 							<Icon
 								icon={Icon.icon.BATTERY_50}
 								size={24}
@@ -128,7 +128,7 @@ function SongDetails({ song, className = "" }: { song: T_Song; className?: strin
 							/>
 						</ComponentWithAuth>
 					) : (
-						<ComponentWithAuth>
+						<ComponentWithAuth roles={["ADMIN"]}>
 							<Icon
 								icon={Icon.icon.CHECK_BADGE}
 								size={24}
@@ -146,21 +146,24 @@ export default SongDetails;
 
 // --- COMPONENTS ---
 
-const Category = withAuth(function Category({ category }: { category: string }) {
-	const [, categoryName, categoryEmoji] = category.split("|");
+const Category = withAuth(
+	function Category({ category }: { category: string }) {
+		const [, categoryName, categoryEmoji] = category.split("|");
 
-	return (
-		<Block className="sm:tw-flex sm:tw-flex-nowrap">
-			<InlineText
-				is="strong"
-				className="tw-mr-1"
-			>
-				Categoría:
-			</InlineText>
-			<InlineText>{categoryEmoji}</InlineText>
-			<InlineText className="tw-ml-1 tw-capitalize">
-				{replaceAll(categoryName, "_", " ").toLowerCase()}
-			</InlineText>
-		</Block>
-	);
-});
+		return (
+			<Block className="sm:tw-flex sm:tw-flex-nowrap">
+				<InlineText
+					is="strong"
+					className="tw-mr-1"
+				>
+					Categoría:
+				</InlineText>
+				<InlineText>{categoryEmoji}</InlineText>
+				<InlineText className="tw-ml-1 tw-capitalize">
+					{replaceAll(categoryName, "_", " ").toLowerCase()}
+				</InlineText>
+			</Block>
+		);
+	},
+	["ADMIN"],
+);

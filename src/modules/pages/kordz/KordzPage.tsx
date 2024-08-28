@@ -77,11 +77,11 @@ function KordzPage({ cmsContent, data }: T_KordzPageProps) {
 	function initialDataFiltering() {
 		setFilteredData(
 			data.filter((song) => {
-				if (AuthService.isGuestUser() && !song.is_public) {
-					return false;
+				if (AuthService.isUserLoggedIn()) {
+					return true;
 				}
 
-				return true;
+				return song.is_public;
 			}),
 		);
 	}
