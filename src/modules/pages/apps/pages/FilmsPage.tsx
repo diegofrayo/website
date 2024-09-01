@@ -15,7 +15,6 @@ import {
 	isElementInViewport,
 	setScrollPosition,
 } from "@diegofrayo/utils/browser";
-import { throwError } from "@diegofrayo/utils/misc";
 import { generateSlug } from "@diegofrayo/utils/strings";
 import v from "@diegofrayo/v";
 
@@ -225,15 +224,7 @@ function FilmsPage() {
 													/>
 
 													<Block className="tw-z-20 tw-flex tw-w-full tw-flex-nowrap tw-items-end tw-justify-between tw-self-end tw-bg-opacity-90 tw-p-2 dr-bg-color-surface-100">
-														{source === "imdb" ? (
-															<Image
-																src="/assets/images/pages/apps/films/imdb.jpg"
-																alt="imdb icon"
-																className="tw-flex-shrink-0 tw-rounded-full"
-																width={24}
-																height={24}
-															/>
-														) : source === "Amazon Prime Video" ? (
+														{source === "Amazon Prime Video" ? (
 															<Image
 																src="/assets/images/pages/apps/films/amazon-prime-video.jpg"
 																alt="Amazon Prime Video icon"
@@ -280,16 +271,10 @@ function FilmsPage() {
 																<Link
 																	variant={Link.variant.UNSTYLED}
 																	href={
-																		source === "Netflix"
-																			? `https://www.netflix.com/title/${id}`
-																			: source === "YouTube"
-																				? `https://www.youtube.com/watch?v=${id}`
-																				: source === "imdb"
-																					? `https://www.imdb.com/title/${id}`
-																					: source === "Amazon Prime Video"
-																						? `https://www.primevideo.com/detail/${id}`
-																						: url ||
-																							throwError(`Invalid film (${id}) url and source`)
+																		url ||
+																		`https://www.google.com/search?q=${encodeURIComponent(
+																			`${title} ${source === "Web" ? type : source}`,
+																		)}`
 																	}
 																	className="title-link"
 																	isExternalLink
@@ -347,7 +332,7 @@ type T_Film = {
 	id: string;
 	title: string;
 	type: "Serie" | "Película" | "Documental" | "Serie documental";
-	source: "Netflix" | "YouTube" | "imdb" | "Amazon Prime Video" | "Star+" | "Vix";
+	source: "Netflix" | "YouTube" | "Amazon Prime Video" | "Star+" | "Vix" | "Web";
 	categories: string[];
 	calification: number;
 	cover: string;
