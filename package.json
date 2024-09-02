@@ -59,6 +59,7 @@
 		"firebase": "^10.5.0",
 		"hoist-non-react-statics": "^3.3.2",
 		"js-convert-case": "^4.2.0",
+		"lint-staged": "^15.2.10",
 		"mdx-bundler": "^9.2.1",
 		"next": "^14.2.5",
 		"next-pwa": "^5.6.0",
@@ -106,5 +107,13 @@
 	},
 	"engines": {
 		"node": "18.18.0"
+	},
+	"lint-staged": {
+		"*.{ts,tsx,json,css,mjs,js}": [
+			"prettier --ignore-unknown --write"
+		],
+		"*.{ts,tsx,js,jsx}": [
+			"eslint --ignore-path .gitignore"
+		]
 	}
 }
