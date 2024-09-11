@@ -282,10 +282,15 @@ function SwitchUserModeMenuItem() {
 	// --- HANDLERS ---
 	function handleClick() {
 		if (AuthService.isGuestUser()) {
-			if (window.prompt("Type password") === "ASKL") {
+			const password = window.prompt("Type password");
+
+			if (password === "ASKL") {
 				AuthService.switchToAdminUser();
 			} else {
-				alert("Wrong password");
+				if (password) {
+					alert("Wrong password");
+				}
+
 				return;
 			}
 		} else {
