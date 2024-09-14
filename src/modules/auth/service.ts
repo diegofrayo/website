@@ -40,11 +40,16 @@ class AuthServiceClass {
 			} else if (role === this.#AXIOS_VG) {
 				this.#role = "GUEST";
 				this.#isUserLoggedIn = true;
+			} else if (isRemoteLocalhostEnvironment()) {
+				this.#role = "ADMIN";
+				this.#isUserLoggedIn = true;
 			} else {
-				this.#isUserLoggedIn = isRemoteLocalhostEnvironment();
+				this.#role = "ANONYMOUS";
+				this.#isUserLoggedIn = false;
 			}
 
-			const isOutdatedSession = this.#isUserLoggedIn && sessionTimestamp < this.#LBC;
+			const isOutdatedSession =
+				this.#isUserLoggedIn && sessionTimestamp && sessionTimestamp < this.#LBC;
 			if (isOutdatedSession) {
 				this.signOut();
 			}

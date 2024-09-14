@@ -44,7 +44,7 @@ import type {
 } from "./types";
 import styles from "./styles.module.css";
 
-// import DATA from "../../../../../../public/data/apps/bets/2024-08-20.json"; // NOTE: FOR DX PURPOSES
+// import DATA from "../../../../../../public/data/apps/bets/2024-09-14.json"; // NOTE: FOR DX PURPOSES
 
 function BetsPage() {
 	// --- STATES & REFS ---
@@ -836,22 +836,38 @@ function LeagueStandings({ topKey, data }: { topKey: string; data: T_LeagueStand
 											<td className="tw-min-w-[200px] tw-truncate tw-whitespace-nowrap tw-p-1 tw-text-left">
 												{team.teamName}
 											</td>
-											<td className="tw-p-1 tw-text-center">{team.stats.all.played}</td>
-											<td className="tw-p-1 tw-text-center">{team.points}</td>
-											<td className="tw-p-1 tw-text-center">{team.stats.all.goals.for}</td>
-											<td className="tw-p-1 tw-text-center">{team.stats.all.goals.against}</td>
-											<td className="tw-p-1 tw-text-center">{team.stats.all.goals.diff}</td>
-											<td className="tw-p-1 tw-text-center">{team.stats.home.played}</td>
-											<td className="tw-p-1 tw-text-center">{team.stats.home.goals.for}</td>
-											<td className="tw-p-1 tw-text-center">{team.stats.away.played}</td>
-											<td className="tw-p-1 tw-text-center">{team.stats.away.goals.for}</td>
-											<td className="tw-p-1 tw-text-center">
+											<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
+												{team.stats.all.played}
+											</td>
+											<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">{team.points}</td>
+											<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
+												{team.stats.all.goals.for}
+											</td>
+											<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
+												{team.stats.all.goals.against}
+											</td>
+											<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
+												{team.stats.all.goals.diff}
+											</td>
+											<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
+												{team.stats.home.played}
+											</td>
+											<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
+												{team.stats.home.goals.for}
+											</td>
+											<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
+												{team.stats.away.played}
+											</td>
+											<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
+												{team.stats.away.goals.for}
+											</td>
+											<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
 												{team.stats.averages.promedio_de_goles_anotados_por_partido}
 											</td>
-											<td className="tw-p-1 tw-text-center">
+											<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
 												{team.stats.averages.promedio_de_goles_anotados_de_local_por_partido}
 											</td>
-											<td className="tw-p-1 tw-text-center">
+											<td className="tw-whitespace-nowrap tw-p-1 tw-text-center">
 												{team.stats.averages.promedio_de_goles_anotados_de_visitante_por_partido}
 											</td>
 										</tr>
