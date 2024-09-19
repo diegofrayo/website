@@ -76661,7 +76661,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -76710,7 +76710,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -76759,7 +76759,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -76808,7 +76808,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -77243,7 +77243,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -77292,7 +77292,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -77341,7 +77341,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -77390,7 +77390,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -77406,7 +77406,7 @@
 				},
 				"analysis": [],
 				"league": {
-					"enabled": true,
+					"enabled": false,
 					"id": 262,
 					"name": "Liga MX",
 					"type": "League",
@@ -77750,7 +77750,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -77799,7 +77799,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -77848,7 +77848,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -77897,7 +77897,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -78139,7 +78139,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -78335,7 +78335,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -78384,7 +78384,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -78433,7 +78433,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -78482,7 +78482,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -78498,7 +78498,7 @@
 				},
 				"analysis": [],
 				"league": {
-					"enabled": true,
+					"enabled": false,
 					"id": 262,
 					"name": "Liga MX",
 					"type": "League",
@@ -78891,7 +78891,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -78940,7 +78940,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -78989,7 +78989,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -79038,7 +79038,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -79476,7 +79476,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -79525,7 +79525,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -79574,7 +79574,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -79623,7 +79623,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -79639,7 +79639,7 @@
 				},
 				"analysis": [],
 				"league": {
-					"enabled": true,
+					"enabled": false,
 					"id": 262,
 					"name": "Liga MX",
 					"type": "League",
@@ -80081,7 +80081,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -80130,7 +80130,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -80179,7 +80179,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -80228,7 +80228,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -80568,7 +80568,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -80617,7 +80617,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -80666,7 +80666,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -80715,7 +80715,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -80731,7 +80731,7 @@
 				},
 				"analysis": [],
 				"league": {
-					"enabled": true,
+					"enabled": false,
 					"id": 262,
 					"name": "Liga MX",
 					"type": "League",
@@ -81216,7 +81216,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -81265,7 +81265,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -81314,7 +81314,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -81363,7 +81363,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -81605,7 +81605,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -81752,7 +81752,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -81801,7 +81801,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -81850,7 +81850,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -81899,7 +81899,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 262,
 									"name": "Liga MX",
 									"type": "League",
@@ -81915,7 +81915,7 @@
 				},
 				"analysis": [],
 				"league": {
-					"enabled": true,
+					"enabled": false,
 					"id": 262,
 					"name": "Liga MX",
 					"type": "League",

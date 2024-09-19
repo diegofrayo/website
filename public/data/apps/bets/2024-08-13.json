@@ -848,7 +848,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -897,7 +897,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -946,7 +946,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -995,7 +995,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1044,7 +1044,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1093,7 +1093,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1142,7 +1142,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1237,7 +1237,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1286,7 +1286,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1335,7 +1335,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1384,7 +1384,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1433,7 +1433,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1482,7 +1482,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1531,7 +1531,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1580,7 +1580,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1629,7 +1629,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1678,7 +1678,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1727,7 +1727,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1776,7 +1776,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1825,7 +1825,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -1874,7 +1874,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2254,7 +2254,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2303,7 +2303,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2352,7 +2352,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2401,7 +2401,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2450,7 +2450,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2499,7 +2499,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2548,7 +2548,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2597,7 +2597,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2646,7 +2646,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2741,7 +2741,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2790,7 +2790,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2839,7 +2839,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2888,7 +2888,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2937,7 +2937,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -2986,7 +2986,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -3035,7 +3035,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -3084,7 +3084,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -3133,7 +3133,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -3182,7 +3182,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -3231,7 +3231,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -3280,7 +3280,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -3329,7 +3329,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -3600,7 +3600,7 @@
 					}
 				],
 				"league": {
-					"enabled": true,
+					"enabled": false,
 					"id": 233,
 					"name": "Premier League",
 					"type": "League",
@@ -3846,7 +3846,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -3895,7 +3895,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -3944,7 +3944,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -3993,7 +3993,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4042,7 +4042,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4091,7 +4091,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4140,7 +4140,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4235,7 +4235,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4284,7 +4284,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4333,7 +4333,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4382,7 +4382,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4431,7 +4431,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4480,7 +4480,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4529,7 +4529,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4578,7 +4578,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4627,7 +4627,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4676,7 +4676,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4725,7 +4725,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4774,7 +4774,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4823,7 +4823,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4872,7 +4872,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -4921,7 +4921,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5108,7 +5108,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5350,7 +5350,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5399,7 +5399,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5448,7 +5448,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5497,7 +5497,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5546,7 +5546,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5595,7 +5595,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5644,7 +5644,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5693,7 +5693,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5742,7 +5742,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5837,7 +5837,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5886,7 +5886,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5935,7 +5935,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -5984,7 +5984,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -6033,7 +6033,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -6082,7 +6082,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -6131,7 +6131,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -6180,7 +6180,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -6229,7 +6229,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -6278,7 +6278,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -6327,7 +6327,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -6376,7 +6376,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -6425,7 +6425,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -6696,7 +6696,7 @@
 					}
 				],
 				"league": {
-					"enabled": true,
+					"enabled": false,
 					"id": 233,
 					"name": "Premier League",
 					"type": "League",
@@ -6942,7 +6942,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -6991,7 +6991,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7040,7 +7040,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7089,7 +7089,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7138,7 +7138,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7187,7 +7187,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7236,7 +7236,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7285,7 +7285,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7380,7 +7380,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7429,7 +7429,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7478,7 +7478,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7527,7 +7527,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7576,7 +7576,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7625,7 +7625,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7674,7 +7674,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7723,7 +7723,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7772,7 +7772,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7821,7 +7821,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7870,7 +7870,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7919,7 +7919,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -7968,7 +7968,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -8017,7 +8017,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -8066,7 +8066,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -8492,7 +8492,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -8541,7 +8541,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -8590,7 +8590,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -8639,7 +8639,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -8688,7 +8688,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -8737,7 +8737,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -8786,7 +8786,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -8835,7 +8835,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -8930,7 +8930,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -8979,7 +8979,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -9028,7 +9028,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -9077,7 +9077,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -9126,7 +9126,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -9175,7 +9175,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -9224,7 +9224,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -9273,7 +9273,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -9322,7 +9322,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -9371,7 +9371,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -9420,7 +9420,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -9469,7 +9469,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -9518,7 +9518,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -9567,7 +9567,7 @@
 									}
 								},
 								"league": {
-									"enabled": true,
+									"enabled": false,
 									"id": 233,
 									"name": "Premier League",
 									"type": "League",
@@ -9838,7 +9838,7 @@
 					}
 				],
 				"league": {
-					"enabled": true,
+					"enabled": false,
 					"id": 233,
 					"name": "Premier League",
 					"type": "League",
