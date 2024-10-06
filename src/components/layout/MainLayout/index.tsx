@@ -537,7 +537,7 @@ const NavigationMenuItem = React.forwardRef<HTMLAnchorElement, T_NavigationMenuI
 		const { isCurrentPathActive } = useRouting();
 
 		return (
-			<List.Item className="tw-block md:tw-inline-block md:tw-w-32 md:tw-border-r md:dr-border-color-surface-400 md:last:tw-border-r-0">
+			<List.Item className="tw-block md:tw-inline-block md:tw-border-r md:dr-border-color-surface-400 md:last:tw-border-r-0">
 				<Link
 					className={cn(
 						"tw-flex tw-items-center tw-justify-start tw-px-6 tw-py-1.5 tw-text-left tw-text-xl tw-uppercase dr-font-titles md:tw-justify-center md:tw-text-center md:tw-text-lg md:dr-bg-color-surface-200",

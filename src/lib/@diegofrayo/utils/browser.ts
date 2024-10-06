@@ -1,4 +1,5 @@
 import v from "../v";
+import { isServer } from "./misc";
 
 export function isConfirmAlertAccepted(message: string) {
 	return window.confirm(message);
@@ -158,6 +159,10 @@ export function isAndroid() {
 }
 
 export function isWindowsDevice() {
+	if (isServer()) {
+		return process.platform === "win32";
+	}
+
 	/* WARN:
 	 * I ignore this because I'm accessing to a untyped attribute
 	 * (navigator.userAgentData) on navigator object.
