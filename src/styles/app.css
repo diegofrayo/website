@@ -37,6 +37,10 @@ body.scroll-disabled {
 	overflow: hidden;
 }
 
+body:not(.visible) {
+	visibility: hidden;
+}
+
 /* --- SCROLLBAR --- */
 
 ::-webkit-scrollbar {

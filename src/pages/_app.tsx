@@ -15,33 +15,11 @@ import type { AppProps } from "next/app";
 import { isMobileDevice, isPWA, isWindowsDevice } from "@diegofrayo/utils/browser";
 import { useDidMount } from "@diegofrayo/hooks";
 import type DR from "@diegofrayo/types";
+import useAuth from "~/modules/auth/hooks";
 import { addErrorsGlobalListener, logger } from "~/modules/logging";
 import ErrorPage from "~/modules/pages/ErrorPage";
 import { initPWARoutingConfig } from "~/modules/routing";
 import { recoverFromBreakingChanges } from "~/utils/errors-recovery";
-
-// --- STYLES ---
-
-const fontMainTitle = FontMainTitle({
-	display: "swap",
-	subsets: ["latin"],
-	weight: ["400"],
-	variable: "--font-main-title",
-});
-
-const fontTitles = FontTitles({
-	display: "swap",
-	subsets: ["latin"],
-	weight: ["400"],
-	variable: "--font-titles",
-});
-
-const fontTexts = FontTexts({
-	display: "swap",
-	subsets: ["latin"],
-	weight: ["400", "700"],
-	variable: "--font-texts",
-});
 
 // --- PROPS & TYPES ---
 
@@ -50,6 +28,9 @@ type T_CustomAppProps = AppProps;
 // --- COMPONENT DEFINITION ---
 
 function CustomApp({ Component, pageProps }: T_CustomAppProps) {
+	// --- HOOKS ---
+	const { isSessionLoaded } = useAuth();
+
 	// --- EFFECTS ---
 	useDidMount(() => {
 		addErrorsGlobalListener();
@@ -70,8 +51,16 @@ function CustomApp({ Component, pageProps }: T_CustomAppProps) {
 		return () => undefined;
 	});
 
-	// --- UTILS ---
+	React.useEffect(
+		function checkUserSession() {
+			if (isSessionLoaded) {
+				setTimeout(() => document.body.classList.add("visible"), 500);
+			}
+		},
+		[isSessionLoaded],
+	);
 
+	// --- UTILS ---
 	function onError(error: Error, info: { componentStack: string }) {
 		console.group("componentDidCatch (ErrorBoundary)");
 		logger("ERROR", error);
@@ -97,7 +86,7 @@ function CustomApp({ Component, pageProps }: T_CustomAppProps) {
 			/>
 			<RadixTooltip.Provider>
 				<CustomErrorBoundary>
-					<Component {...pageProps} />
+					{isSessionLoaded ? <Component {...pageProps} /> : null}
 					<Toaster
 						position="bottom-center"
 						toastOptions={{
@@ -113,6 +102,29 @@ function CustomApp({ Component, pageProps }: T_CustomAppProps) {
 }
 
 export default CustomApp;
+
+// --- FONTS ---
+
+const fontMainTitle = FontMainTitle({
+	display: "swap",
+	subsets: ["latin"],
+	weight: ["400"],
+	variable: "--font-main-title",
+});
+
+const fontTitles = FontTitles({
+	display: "swap",
+	subsets: ["latin"],
+	weight: ["400"],
+	variable: "--font-titles",
+});
+
+const fontTexts = FontTexts({
+	display: "swap",
+	subsets: ["latin"],
+	weight: ["400", "700"],
+	variable: "--font-texts",
+});
 
 // --- COMPONENTS ---
 

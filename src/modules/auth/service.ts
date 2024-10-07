@@ -1,5 +1,4 @@
 import { BrowserStorageManager } from "@diegofrayo/storage";
-import { isBrowser } from "@diegofrayo/utils/misc";
 import { isRemoteLocalhostEnvironment } from "~/utils/app";
 
 import { logger } from "../logging";
@@ -24,12 +23,6 @@ class AuthServiceClass {
 		readInitialValueFromStorage: true,
 	});
 
-	constructor() {
-		if (isBrowser()) {
-			this.loadSession();
-		}
-	}
-
 	loadSession() {
 		try {
 			const [role, sessionTimestamp] = this.#BS_AUTH.get();
@@ -52,11 +45,17 @@ class AuthServiceClass {
 				this.#isUserLoggedIn && sessionTimestamp && sessionTimestamp < this.#LBC;
 			if (isOutdatedSession) {
 				this.signOut();
+			} else {
+				window.dispatchEvent(new CustomEvent("SESSION_LOADED"));
 			}
 		} catch (error) {
 			logger("ERROR", error);
 			this.signOut();
 		}
+	}
+
+	onLoadSession(callback: () => void) {
+		window.addEventListener("SESSION_LOADED", callback, false);
 	}
 
 	createSession() {
