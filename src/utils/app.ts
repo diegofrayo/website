@@ -11,7 +11,7 @@ export function isProductionEnvironment(EnvVars?: DR.Object<string>) {
 
 export function isLocalhostEnvironment(EnvVars?: DR.Object<string>) {
 	const url = isBrowser() ? window.location.href : getWebsiteURL(EnvVars);
-	return url.includes("localhost");
+	return url.includes("localhost") || url.includes("127.0.0.1");
 }
 
 export function isRemoteLocalhostEnvironment(EnvVars?: DR.Object<string>) {

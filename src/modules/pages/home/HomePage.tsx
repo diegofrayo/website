@@ -86,11 +86,17 @@ function Room({ song }: T_RoomProps) {
 			<Radio song={song} />
 			<Table />
 
-			<ComponentWithAuth className="tw-absolute tw--bottom-1 tw-left-0 tw-overflow-hidden tw-rounded-full tw-bg-black">
+			<ComponentWithAuth
+				roles={["ADMIN"]}
+				className="tw-absolute tw--bottom-1 tw-left-0 tw-overflow-hidden tw-rounded-full tw-bg-black"
+			>
 				<StackPopover />
 			</ComponentWithAuth>
 
-			<ComponentWithAuth withoutContainer>
+			<ComponentWithAuth
+				roles={["ADMIN"]}
+				withoutContainer
+			>
 				<Icon
 					icon={Icon.icon.SOCCER}
 					size={40}

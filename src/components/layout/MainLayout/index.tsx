@@ -77,22 +77,21 @@ function MainLayout({ title, children, className }: T_MainLayoutProps) {
 					is="header"
 					className="tw-relative print:tw-hidden"
 				>
-					<Title
-						is="h1"
-						className="tw-mb-8 tw-flex-shrink-0 tw-text-center"
-					>
-						<Link
-							variant={Link.variant.SIMPLE}
-							href={ROUTES.HOME}
-							className="tw-block tw-text-2xl tw-text-white dr-font-main-title sm:tw-text-4xl"
-							onClick={AnalyticsService.trackClickEvent("GENERAL|HEADER_LINK")}
-						>
-							{`@${WEBSITE_METADATA.username}`}
-						</Link>
+					<Block className="tw-mb-8 tw-flex-shrink-0 tw-text-center">
+						<Title is="h1">
+							<Link
+								variant={Link.variant.SIMPLE}
+								href={ROUTES.HOME}
+								className="tw-block tw-text-2xl tw-text-white dr-font-main-title sm:tw-text-4xl"
+								onClick={AnalyticsService.trackClickEvent("GENERAL|HEADER_LINK")}
+							>
+								{`@${WEBSITE_METADATA.username}`}
+							</Link>
+						</Title>
 						<TypingTextEffect className="tw-font-mono tw-text-sm tw-font-thin">
 							{WEBSITE_METADATA.jobTitle.toLowerCase()}
 						</TypingTextEffect>
-					</Title>
+					</Block>
 
 					<NavigationMenu />
 
@@ -333,7 +332,7 @@ function EnvironmentMenuItem() {
 		setUrl(
 			isDevelopmentEnvironment(EnvVars)
 				? `${WEBSITE_METADATA.url}${window.location.pathname}`
-				: `http://localhost:3000${window.location.pathname}`,
+				: `http://127.0.0.1:3000${window.location.pathname}`,
 		);
 	});
 
@@ -540,7 +539,7 @@ const NavigationMenuItem = React.forwardRef<HTMLAnchorElement, T_NavigationMenuI
 			<List.Item className="tw-block md:tw-inline-block md:tw-border-r md:dr-border-color-surface-400 md:last:tw-border-r-0">
 				<Link
 					className={cn(
-						"tw-flex tw-items-center tw-justify-start tw-px-6 tw-py-1.5 tw-text-left tw-text-xl tw-uppercase dr-font-titles md:tw-justify-center md:tw-text-center md:tw-text-lg md:dr-bg-color-surface-200",
+						"tw-flex tw-items-center tw-justify-start tw-px-6 tw-py-1.5 tw-text-left tw-text-xl tw-font-bold tw-uppercase dr-font-titles md:tw-justify-center md:tw-text-center md:tw-text-lg md:dr-bg-color-surface-200",
 						isCurrentPathActive(href)
 							? "tw-text-white md:dr-bg-color-surface-300"
 							: "dr-text-color-surface-600",
