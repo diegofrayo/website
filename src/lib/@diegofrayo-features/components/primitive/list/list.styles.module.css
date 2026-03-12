@@ -1,0 +1,11 @@
+@reference "tailwindcss";
+
+.dr-list--default {
+	list-style-position: outside;
+	list-style-type: square;
+	padding-left: 17px;
+}
+
+.dr-list-item--default {
+	@apply mb-1 last:mb-0;
+}

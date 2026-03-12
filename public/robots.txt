@@ -1,0 +1,5 @@
+User-agent: *
+
+disallow: /portfolio
+
+Sitemap: https://diegofrayo.vercel.app/sitemap.xml

@@ -1,0 +1,51 @@
+@reference "tailwindcss";
+
+/* Spacing: parent components */
+.dr-mdx-content > :is(blockquote, hr, ol, p, ul, a > img, *[data-markdown-block]) {
+	@apply mb-6;
+}
+
+.dr-mdx-content > *:last-child {
+	@apply mb-0;
+}
+
+/* Spacing: nested components */
+.dr-mdx-content
+	:is(
+		li > p,
+		li > :global(.dr-source-code),
+		li > blockquote,
+		li > img,
+		blockquote > p,
+		li > a > img
+	) {
+	@apply mb-3;
+}
+
+/* Spacing: titles */
+.dr-mdx-content > :is(h1, h2, h3, h4) {
+	@apply mt-8;
+	@apply mb-3;
+}
+
+/* Spacing: nested UL lists */
+.dr-mdx-content :is(li > ul, li > :global(.dr-source-code)) {
+	@apply mt-3;
+}
+
+/* Ordered lists */
+.dr-mdx-content ol {
+	@apply pl-9;
+	list-style-type: decimal;
+}
+
+.dr-mdx-content ol > li {
+	@apply mb-6;
+}
+
+/* Images */
+.dr-mdx-content :is(> a > img, li > a > img) {
+	@apply rounded-md;
+	margin-left: auto;
+	margin-right: auto;
+}
