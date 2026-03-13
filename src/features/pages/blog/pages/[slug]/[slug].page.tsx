@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
-import twcss from "@diegofrayo-pkg/twcss";
 import type DR from "@diegofrayo-pkg/types";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isEmptyArray } from "@diegofrayo-pkg/validator";
@@ -25,6 +24,7 @@ import {
 	Toast,
 	Tooltip,
 } from "@diegofrayo-features/components/shared";
+import type { CopyToClipboardPopoverProps } from "@diegofrayo-features/components/shared/copy-to-clipboard-popover";
 import { getMDXExport, MDXContent } from "@diegofrayo-features/mdx/client";
 
 import { MainLayout, Page } from "~/components/layout";
@@ -203,65 +203,78 @@ function BlogPostSources({ sources }: { sources: { title: string; url: string }[
 }
 
 const BlogPostActions = withRenderInBrowser(function BlogPostActions() {
+	const ACTIONS = [
+		{
+			type: "LINK",
+			icon: IconCatalog.MAILS,
+			label: "Send a comment via e-mail",
+			popoverConfig: undefined,
+			props: {
+				href: (function composeMailToURL() {
+					const paramsValues = {
+						subject: "Blog post comment",
+						body: `Hi, I have a comment about this blog post: ${window.location.href}`,
+					};
+
+					const queryParams = Object.entries(paramsValues)
+						.reduce((result: string[], [key, value]) => {
+							return [...result, `${key}=${value}`];
+						}, [])
+						.join("&");
+
+					return `mailto:${WEBSITE_METADATA.email}?${queryParams}`;
+				})(),
+				isExternalLink: true,
+			},
+		},
+		{
+			type: "BUTTON",
+			icon: IconCatalog.LINK,
+			label: "Copy URL",
+			popoverConfig: { textToCopy: window.location.href },
+			props: {
+				onClick: AnalyticsService.trackClickEvent("BLOG|COPY_URL", { url: window.location.href }),
+			},
+		},
+	] as const;
+
 	return (
 		<Box className="flex flex-wrap justify-between border border-x-8 border-black p-4 text-black">
-			<BlogPostDetailsCopyUrlItem />
-			<Space responsive="w-full my-1 sm:hidden" />
-			<BlogPostDetailsSendCommentItem />
+			{ACTIONS.map((action) => {
+				return (
+					<BlogPostActionsItemWrapper
+						key={action.label}
+						popoverConfig={action.popoverConfig}
+					>
+						<Button
+							className="flex items-center justify-start text-left text-sm"
+							render={action.type === "LINK" ? <Link {...action.props} /> : undefined}
+						>
+							<Icon
+								className="mr-1"
+								icon={action.icon}
+							/>
+							<InlineText>{action.label}</InlineText>
+						</Button>
+					</BlogPostActionsItemWrapper>
+				);
+			})}
 		</Box>
 	);
 });
 
-function BlogPostDetailsSendCommentItem() {
-	// --- UTILS ---
-	function composeMailToURL() {
-		const paramsValues = {
-			subject: "Blog post comment",
-			body: `Hi, I have a comment about this blog post: ${window.location.href}`,
-		};
+type BlogPostActionsItemWrapperProps = {
+	children: DR.React.Children;
+	popoverConfig: Omit<CopyToClipboardPopoverProps, "children"> | undefined;
+};
 
-		const queryParams = Object.entries(paramsValues)
-			.reduce((result: string[], [key, value]) => {
-				return [...result, `${key}=${value}`];
-			}, [])
-			.join("&");
-
-		return `mailto:${WEBSITE_METADATA.email}?${queryParams}`;
+const BlogPostActionsItemWrapper = ({
+	children,
+	popoverConfig,
+}: BlogPostActionsItemWrapperProps) => {
+	if (popoverConfig) {
+		return <CopyToClipboardPopover {...popoverConfig}>{children}</CopyToClipboardPopover>;
 	}
 
-	return (
-		<BlogPostDetailsItem
-			as={Link}
-			href={composeMailToURL()}
-			onClick={AnalyticsService.trackClickEvent("BLOG|SEND_COMMENT", { url: window.location.href })}
-			isExternalLink
-		>
-			<BlogPostDetailsItemIcon icon={IconCatalog.MAILS} />
-			<InlineText>Send a comment via e-mail</InlineText>
-		</BlogPostDetailsItem>
-	);
-}
-
-function BlogPostDetailsCopyUrlItem() {
-	return (
-		<BlogPostDetailsItem as="div">
-			<CopyToClipboardPopover textToCopy={window.location.href}>
-				<Button
-					variant={Button.variant.SMOOTH}
-					onClick={AnalyticsService.trackClickEvent("BLOG|COPY_URL", { url: window.location.href })}
-				>
-					<BlogPostDetailsItemIcon icon={IconCatalog.LINK} />
-					<InlineText>Copy URL</InlineText>
-				</Button>
-			</CopyToClipboardPopover>
-		</BlogPostDetailsItem>
-	);
-}
-
-const BlogPostDetailsItem = twcss(Button)("flex items-center justify-start text-sm text-left", {
-	variant: Button.variant.SMOOTH,
-});
-
-const BlogPostDetailsItemIcon = twcss(Icon)("", {
-	wrapperClassName: "mr-1",
-});
+	return children;
+};

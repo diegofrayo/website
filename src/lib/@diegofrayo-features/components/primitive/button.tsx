@@ -1,8 +1,8 @@
-import { forwardRef } from "react";
+import { mergeProps } from "@base-ui/react";
+import { useRender } from "@base-ui/react/use-render";
 import { cva } from "class-variance-authority";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
@@ -11,7 +11,7 @@ const Variant = mirror(["UNSTYLED", "SMOOTH", "STYLED"]);
 type Variant = keyof typeof Variant;
 const Size = mirror(["SM", "BASE"]);
 type Size = keyof typeof Size;
-type ButtonProps = DR.DOM.HTMLElementAttributes["button"] & {
+type ButtonProps = useRender.ComponentProps<"button"> & {
 	size?: Size;
 	type?: "submit" | "button" | "reset";
 	variant?: Variant;
@@ -19,19 +19,17 @@ type ButtonProps = DR.DOM.HTMLElementAttributes["button"] & {
 
 // --- COMPONENT DEFINITION ---
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-	{
-		children,
-		className = "",
-		disabled = false,
-		onClick,
-		size = Size.BASE,
-		type = "button",
-		variant = Variant.UNSTYLED,
-		...rest
-	}: ButtonProps,
-	forwardedRef,
-) {
+const Button = function Button({
+	children,
+	className = "",
+	disabled = false,
+	onClick,
+	size = Size.BASE,
+	type = "button",
+	variant = Variant.UNSTYLED,
+	render,
+	...otherProps
+}: ButtonProps) {
 	const classes = {
 		element: cn(
 			`dr-button dr-button--${variant.toLowerCase()}`,
@@ -40,23 +38,22 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
 		),
 	};
 
-	return (
-		<button
-			type={type}
-			className={classes.element}
-			disabled={disabled}
-			onClick={onClick}
-			ref={forwardedRef}
-			{...rest}
-		>
-			{children}
-		</button>
-	);
-}) as DR.React.CompoundedComponent<
-	ButtonProps,
-	HTMLButtonElement,
-	{ size: typeof Size; variant: typeof Variant }
->;
+	const defaultProps: useRender.ElementProps<"button"> = {
+		className: classes.element,
+		children,
+		disabled,
+		type,
+		onClick,
+	};
+
+	const element = useRender({
+		defaultTagName: "button",
+		props: mergeProps<"button">(defaultProps, otherProps),
+		render,
+	});
+
+	return element;
+};
 
 Button.size = Size;
 Button.variant = Variant;

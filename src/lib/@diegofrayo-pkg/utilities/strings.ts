@@ -54,6 +54,10 @@ export function capitalize(input: string) {
 	return input[0].toUpperCase() + input.slice(1);
 }
 
+export function join(items: string[], separator?: string) {
+	return items.join(separator || "");
+}
+
 // --- UTILS ---
 
 function escapeRegExp(text: string) {

@@ -1,4 +1,5 @@
-import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
+import { pipe } from "@diegofrayo-pkg/utilities/fp";
+import { generateSlug, join } from "@diegofrayo-pkg/utilities/strings";
 import AnalyticsService from "@diegofrayo-features/analytics";
 import {
 	Box,
@@ -45,7 +46,7 @@ export default HomePage;
 // --- COMPONENTS ---
 
 function Header() {
-	const mainTitle = `@${WEBSITE_METADATA.username}`;
+	const mainTitle = join(["@", WEBSITE_METADATA.username]);
 	const jobTitle = WEBSITE_METADATA.jobTitle.toLowerCase();
 
 	return (
@@ -78,7 +79,7 @@ function NavigationLinks() {
 	return (
 		<Box className="flex items-center justify-center gap-1">
 			{LINKS.map((item) => {
-				const key = generateSlug(`NavigationLinks-item-List.Item-${item.label}`);
+				const key = pipe(join([`NavigationLinks`, item.label], "-"), generateSlug);
 
 				return (
 					<Box
@@ -87,7 +88,7 @@ function NavigationLinks() {
 					>
 						<Link
 							href={item.url}
-							className="inline-block font-mono text-sm font-bold text-zinc-600"
+							className="inline-flex items-center justify-center gap-0.5 font-mono text-sm font-bold text-zinc-600"
 							variant={Link.variant.SMOOTH}
 						>
 							<Icon
@@ -130,11 +131,11 @@ function Footer() {
 	return (
 		<Box
 			as="footer"
-			className="text-center print:hidden"
+			className="text-center"
 		>
 			<Box className="flex justify-center gap-2">
 				{SOCIAL_ICONS.map((item) => {
-					const key = generateSlug(`Footer-item-Link-${item.name}`);
+					const key = pipe(join([`Footer`, item.name], "-"), generateSlug);
 
 					return (
 						<Link
@@ -157,7 +158,7 @@ function Footer() {
 
 			<Text className="mt-1 text-sm">
 				<InlineText>© 2026 All rights reserved | Coded by </InlineText>
-				<InlineText as="strong">Diego Rayo</InlineText>
+				<InlineText as="strong">{WEBSITE_METADATA.shortName}</InlineText>
 			</Text>
 		</Box>
 	);

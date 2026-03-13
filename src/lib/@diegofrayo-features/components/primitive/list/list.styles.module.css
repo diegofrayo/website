@@ -1,4 +1,4 @@
-@reference "tailwindcss";
+@reference "../../../../../styles/globals.css";
 
 .dr-list--default {
 	list-style-position: outside;

@@ -1,4 +1,5 @@
 import { Children, cloneElement, isValidElement, useState } from "react";
+import type { PopoverPositionerProps } from "@base-ui/react";
 
 import type DR from "@diegofrayo-pkg/types";
 import { copyToClipboard } from "@diegofrayo-pkg/utilities/browser";
@@ -7,8 +8,7 @@ import { isFunction, isString } from "@diegofrayo-pkg/validator";
 import { Box } from "../primitive";
 import Popover from "./popover";
 
-type CopyToClipboardPopoverProps = {
-	children: DR.React.Children;
+export type CopyToClipboardPopoverProps = PopoverPositionerProps & {
 	textToCopy: string | (() => string);
 	popoverText?: string;
 };
@@ -17,6 +17,7 @@ function CopyToClipboardPopover({
 	children,
 	textToCopy,
 	popoverText = "copied!",
+	...rest
 }: CopyToClipboardPopoverProps) {
 	// --- STATE & REFS ---
 	const [showPopover, setShowPopover] = useState(false);
@@ -38,6 +39,7 @@ function CopyToClipboardPopover({
 		<Popover
 			text={popoverText}
 			open={showPopover}
+			{...rest}
 		>
 			<Box as="span">
 				{Children.map(children, (child) => {

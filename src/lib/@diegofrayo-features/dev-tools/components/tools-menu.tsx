@@ -4,6 +4,8 @@ import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
 import type DR from "@diegofrayo-pkg/types";
 import { copyToClipboard, showAlert } from "@diegofrayo-pkg/utilities/browser";
 import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
+import { CopyToClipboardPopover } from "@diegofrayo-features/components/shared";
+import type { CopyToClipboardPopoverProps } from "@diegofrayo-features/components/shared/copy-to-clipboard-popover";
 
 import { AuthService, withAuth, type AuthUserRole } from "../../auth";
 import {
@@ -56,52 +58,6 @@ export default ToolsMenu;
 
 // --- COMPONENTS ---
 
-interface ToolsMenuItemLinkProps {
-	as: "link";
-	icon: IconName;
-	title: string;
-	url: string;
-	isExternalLink?: boolean;
-}
-
-interface ToolsMenuItemButtonProps {
-	as: "button";
-	title: string;
-	icon: IconName;
-	onClick: DR.React.Events.OnClickEventHandler<HTMLButtonElement>;
-}
-
-type ToolsMenuItemProps = ToolsMenuItemLinkProps | ToolsMenuItemButtonProps;
-
-function ToolsMenuItem(props: ToolsMenuItemProps) {
-	const isLinkElement = props.as === "link";
-
-	return (
-		<List.Item className="border-b border-zinc-300 bg-zinc-100 text-sm last:border-0">
-			{isLinkElement ? (
-				<Link
-					variant={Link.variant.SMOOTH}
-					href={props.url}
-					className="flex h-8 w-full items-center justify-between gap-4 px-2"
-					isExternalLink={props.isExternalLink || false}
-				>
-					<InlineText>{props.title}</InlineText>
-					<Icon icon={props.icon} />
-				</Link>
-			) : (
-				<Button
-					variant={Button.variant.SMOOTH}
-					className="flex h-8 w-full items-center justify-between gap-4 px-2"
-					onClick={props.onClick}
-				>
-					<InlineText>{props.title}</InlineText>
-					<Icon icon={props.icon} />
-				</Button>
-			)}
-		</List.Item>
-	);
-}
-
 function CopyURLMenuItem() {
 	// --- HANDLERS ---
 	function handleClick() {
@@ -113,6 +69,7 @@ function CopyURLMenuItem() {
 			as="button"
 			icon={IconCatalog.LINK}
 			title="Copy URL"
+			popoverConfig={{ textToCopy: window.location.href, align: "end" }}
 			onClick={handleClick}
 		/>
 	);
@@ -237,3 +194,66 @@ const SignOutMenuItem = withAuth(function SignOutMenuItem() {
 		/>
 	);
 });
+
+interface ToolsMenuItemLinkProps {
+	as: "link";
+	icon: IconName;
+	title: string;
+	url: string;
+	isExternalLink?: boolean;
+	popoverConfig?: Omit<CopyToClipboardPopoverProps, "children">;
+}
+
+interface ToolsMenuItemButtonProps {
+	as: "button";
+	title: string;
+	icon: IconName;
+	onClick: DR.React.Events.OnClickEventHandler<HTMLButtonElement>;
+	popoverConfig?: Omit<CopyToClipboardPopoverProps, "children">;
+}
+
+type ToolsMenuItemProps = ToolsMenuItemLinkProps | ToolsMenuItemButtonProps;
+
+function ToolsMenuItem(props: ToolsMenuItemProps) {
+	const isLinkElement = props.as === "link";
+
+	return (
+		<List.Item className="border-b border-zinc-300 bg-zinc-100 text-sm last:border-0">
+			<ToolsMenuItemWrapper popoverConfig={props.popoverConfig}>
+				{isLinkElement ? (
+					<Link
+						variant={Link.variant.SMOOTH}
+						href={props.url}
+						className="flex h-8 w-full items-center justify-between gap-4 px-2"
+						isExternalLink={props.isExternalLink || false}
+					>
+						<InlineText>{props.title}</InlineText>
+						<Icon icon={props.icon} />
+					</Link>
+				) : (
+					<Button
+						variant={Button.variant.SMOOTH}
+						className="flex h-8 w-full items-center justify-between gap-4 px-2"
+						onClick={props.onClick}
+					>
+						<InlineText>{props.title}</InlineText>
+						<Icon icon={props.icon} />
+					</Button>
+				)}
+			</ToolsMenuItemWrapper>
+		</List.Item>
+	);
+}
+
+type ToolsMenuItemWrapperProps = {
+	children: DR.React.Children;
+	popoverConfig: Omit<CopyToClipboardPopoverProps, "children"> | undefined;
+};
+
+const ToolsMenuItemWrapper = ({ children, popoverConfig }: ToolsMenuItemWrapperProps) => {
+	if (popoverConfig) {
+		return <CopyToClipboardPopover {...popoverConfig}>{children}</CopyToClipboardPopover>;
+	}
+
+	return children;
+};

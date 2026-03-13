@@ -167,7 +167,7 @@ function Page({ children, config }: PageProps) {
 				)}
 			</Head>
 			{children}
-			<DevTools productionURL={EnvVars.NEXT_PUBLIC_WEBSITE_URL} />
+			<DevTools productionURL={EnvVars.NEXT_PUBLIC_WEBSITE_URL_PROD} />
 		</>
 	);
 }

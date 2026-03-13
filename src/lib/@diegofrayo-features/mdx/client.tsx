@@ -11,13 +11,13 @@ import {
 	Code,
 	Collapsible,
 	Icon,
-	Image,
 	InlineText,
 	Link,
 	List,
 	Space,
 	Text,
 	Title,
+	type ImageProps,
 	type TitleProps,
 } from "@diegofrayo-features/components/primitive";
 import { BoxWithTitle, ImageWithLink, SourceCode } from "@diegofrayo-features/components/shared";
@@ -72,16 +72,6 @@ export const MDXComponents = {
 	hr: function CustomHr() {
 		return <Space variant={Space.variant.DASHED} />;
 	},
-	img: function CustomImage(props: DR.DOM.HTMLElementAttributes["img"]) {
-		return (
-			<Image
-				{...props}
-				alt={props.alt || ""}
-				className="shadow-md shadow-zinc-900"
-				useNativeElement
-			/>
-		);
-	},
 	li: List.Item,
 	p: Text,
 	pre: function CustomPre({ children }: DR.DOM.HTMLElementAttributes["pre"]) {
@@ -96,10 +86,16 @@ export const MDXComponents = {
 	BoxWithTitle,
 	Collapsible,
 	Icon,
-	Image,
-	ImageWithLink,
 	InlineText,
 	Link,
+	MDXImage: (props: ImageProps) => {
+		return (
+			<ImageWithLink
+				className="shadow-md shadow-zinc-900"
+				{...props}
+			/>
+		);
+	},
 	SourceCode,
 	Space,
 	WithAuth,

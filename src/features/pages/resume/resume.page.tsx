@@ -76,7 +76,8 @@ function ResumePage({ data }: ResumePageProps) {
 		});
 	}
 
-	function handleDownloadAsPDFClick() {
+	// --- UTILS ---
+	function getSelectedPDFLink() {
 		const LINKS = {
 			"ES-SHORT":
 				"https://drive.google.com/file/d/10_g1xNAUaZWnZSxRh2ud2cayG85daxhL/view?usp=sharing",
@@ -88,8 +89,7 @@ function ResumePage({ data }: ResumePageProps) {
 				"https://drive.google.com/file/d/10Z1-PEvIrilz9SbXef2KLY88ILSFbj7N/view?usp=sharing",
 		};
 
-		AnalyticsService.trackEvent("RESUME|DOWNLOAD_AS_PDF", { version: viewMode, lang });
-		window.open(LINKS[`${lang}-${viewMode}`], "_blank");
+		return LINKS[`${lang}-${viewMode}`];
 	}
 
 	return (
@@ -115,7 +115,7 @@ function ResumePage({ data }: ResumePageProps) {
 									className="w-36"
 									onClick={handleToggleViewModeClick}
 								>
-									<InlineText>Version: </InlineText>
+									<InlineText className="mr-0.5">Version:</InlineText>
 									<Icon
 										icon={viewMode === "SHORT" ? IconCatalog.EXPAND : IconCatalog.SHRINK}
 										size={viewMode === "SHORT" ? 12 : 16}
@@ -128,17 +128,30 @@ function ResumePage({ data }: ResumePageProps) {
 								className="w-28 sm:w-36"
 								onClick={handleToggleLangClick}
 							>
-								<InlineText>Lang: </InlineText>
+								<InlineText className="mr-0.5">Lang:</InlineText>
 								<InlineText>{lang}</InlineText>
 							</Button>
 
 							<Button
 								variant={Button.variant.STYLED}
 								className="sm:w-36"
-								onClick={handleDownloadAsPDFClick}
+								render={
+									<Link
+										href={getSelectedPDFLink()}
+										onClick={AnalyticsService.trackClickEvent("RESUME|DOWNLOAD_AS_PDF", {
+											version: viewMode,
+											lang,
+										})}
+										className="flex items-center justify-center"
+										isExternalLink
+									/>
+								}
 							>
-								<Icon icon={IconCatalog.DOWNLOAD} />
-								<InlineText> PDF</InlineText>
+								<Icon
+									className="mr-0.5"
+									icon={IconCatalog.DOWNLOAD}
+								/>
+								<InlineText>PDF</InlineText>
 							</Button>
 						</Box>
 

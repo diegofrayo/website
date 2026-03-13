@@ -92,7 +92,7 @@ function ProjectBox({ item }: { item: Demo }) {
 				<Text className="text-sm">{item.description}</Text>
 			</Box>
 
-			<Box className="mb-1 place-self-end">
+			<Box className="place-self-end leading-none">
 				<Link
 					href={item.url}
 					variant={Link.variant.SMOOTH}

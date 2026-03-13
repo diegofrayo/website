@@ -84,7 +84,7 @@ function useAsync<AsyncFnArgs extends unknown[], AsyncFnReturn>(
 
 				return result;
 			} catch (err) {
-				dispatch({ type: "ERROR", payload: err });
+				dispatch({ type: "ERROR", payload: err as Error });
 				throw err;
 			}
 		},
@@ -94,9 +94,7 @@ function useAsync<AsyncFnArgs extends unknown[], AsyncFnReturn>(
 	// --- EFFECTS ---
 	useDidMount(() => {
 		if (opts.autoLaunch === true) {
-			// @ts-expect-error
-			// TODO: [ts] Fix me
-			attemptAsync(() => enhancedAsyncFn());
+			attemptAsync(() => enhancedAsyncFn(...([] as unknown[] as AsyncFnArgs)));
 		}
 	});
 
@@ -114,13 +112,13 @@ export default useAsync;
 type State<Data> = {
 	isLoading: boolean;
 	data: Data | undefined;
-	error: unknown | undefined;
+	error: Error | undefined;
 };
 
 type Action<Data> =
 	| { type: "LOADING" }
 	| { type: "SUCCESS"; payload: Data }
-	| { type: "ERROR"; payload: unknown };
+	| { type: "ERROR"; payload: Error };
 
 const initialState = {
 	isLoading: false,
