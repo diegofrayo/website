@@ -1,10 +1,9 @@
-export * from "./loader";
-export * from "./typing-text-effect";
 export { default as BoxWithTitle } from "./box-with-title";
 export { default as Callout } from "./callout";
 export { default as CopyToClipboardPopover } from "./copy-to-clipboard-popover";
 export { default as ImageGallery } from "./image-gallery";
 export { default as ImageWithLink } from "./image-with-link";
+export { default as Loader } from "./loader";
 export { default as Playground } from "./playground";
 export { default as Popover } from "./popover";
 export { default as RenderData } from "./render-data";
