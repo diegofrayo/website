@@ -3,11 +3,11 @@ import type DR from "@diegofrayo-pkg/types";
 
 // --- PROPS & TYPES ---
 
-type BoxquoteProps = DR.DOM.HTMLElementAttributes["blockquote"];
+type BlockQuoteProps = DR.DOM.HTMLElementAttributes["blockquote"];
 
 // --- COMPONENT DEFINITION ---
 
-function Boxquote({ children, className, ...rest }: BoxquoteProps) {
+function BlockQuote({ children, className, ...rest }: BlockQuoteProps) {
 	return (
 		<blockquote
 			className={cn("dr-blockquote", "border-l-4 border-black pl-3 text-black", className)}
@@ -18,4 +18,4 @@ function Boxquote({ children, className, ...rest }: BoxquoteProps) {
 	);
 }
 
-export default Boxquote;
+export default BlockQuote;

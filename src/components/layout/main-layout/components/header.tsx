@@ -3,7 +3,7 @@ import { NavigationMenu as RadixNavigationMenu } from "radix-ui";
 
 import cn from "@diegofrayo-pkg/cn";
 import { useBoolean, useLockScroll } from "@diegofrayo-pkg/hooks";
-import DR from "@diegofrayo-pkg/types";
+import type DR from "@diegofrayo-pkg/types";
 import AnalyticsService from "@diegofrayo-features/analytics";
 import {
 	Box,

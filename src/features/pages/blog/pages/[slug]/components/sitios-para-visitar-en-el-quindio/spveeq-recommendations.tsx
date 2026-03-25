@@ -1,8 +1,8 @@
 import { isNotEmptyString } from "@diegofrayo-pkg/validator";
 import AnalyticsService from "@diegofrayo-features/analytics";
 import {
+	BlockQuote,
 	Box,
-	Boxquote,
 	Collapsible,
 	Icon,
 	IconCatalog,
@@ -103,9 +103,9 @@ function SPVEEQRecommendations({ data: recommendations }: SPVEEQRecommendationsP
 							)}
 						</BoxWithTitle>
 
-						<Boxquote>
+						<BlockQuote>
 							<Pre variant={Pre.variant.BREAK_WITH_BLANK_LINES}>{recommendation.description}</Pre>
-						</Boxquote>
+						</BlockQuote>
 					</Collapsible>
 				);
 			})}

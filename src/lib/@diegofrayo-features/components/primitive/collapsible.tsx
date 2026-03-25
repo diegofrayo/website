@@ -11,29 +11,29 @@ import Title from "./title";
 // --- PROPS & TYPES ---
 
 type CollapsibleProps = Omit<DR.DOM.HTMLElementAttributes["details"], "title"> & {
-	contentClassName?: string;
-	onHideContentHandler?: () => void;
-	onShowContentHandler?: () => void;
-	opened?: boolean;
-	openedByDefault?: boolean;
-	showIcon?: boolean;
 	title?: string | DR.React.JSXElement;
+	openedByDefault?: boolean;
+	opened?: boolean;
+	contentClassName?: string;
 	titleClassName?: string;
+	showIcon?: boolean;
+	onShowContentHandler?: () => void;
+	onHideContentHandler?: () => void;
 };
 
 // --- COMPONENT DEFINITION ---
 
 function Collapsible({
 	children,
+	openedByDefault = false,
+	opened,
 	className = "",
 	contentClassName = "",
-	onHideContentHandler = () => undefined,
-	onShowContentHandler = () => undefined,
-	opened,
-	openedByDefault = false,
-	showIcon = true,
-	title = "",
 	titleClassName = "",
+	title = "",
+	showIcon = true,
+	onShowContentHandler = () => undefined,
+	onHideContentHandler = () => undefined,
 }: CollapsibleProps) {
 	// --- STATE & REFS ---
 	const [isOpen, setIsOpen] = useState(openedByDefault);
@@ -77,11 +77,12 @@ function Collapsible({
 			className={cn("dr-collapsible", className)}
 		>
 			{isValidElement<CustomTitleProps>(title) ? (
+				// TODO: [react] Fix me
 				// eslint-disable-next-line react-hooks/refs
 				cloneElement(title as DR.React.JSXElement, {
-					className: cn("cursor-pointer", title.props.className),
 					onClick: handleToggleClick,
 					role: "button",
+					className: cn("cursor-pointer", title.props.className),
 				})
 			) : (
 				<Title

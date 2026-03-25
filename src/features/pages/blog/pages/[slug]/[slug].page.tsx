@@ -239,7 +239,7 @@ const BlogPostActions = withRenderInBrowser(function BlogPostActions() {
 	] as const;
 
 	return (
-		<Box className="flex flex-wrap justify-between border border-x-8 border-black p-4 text-black">
+		<Box className="flex flex-col flex-wrap justify-between gap-2 border border-x-8 border-black p-4 text-black sm:flex-row">
 			{ACTIONS.map((action) => {
 				return (
 					<BlogPostActionsItemWrapper

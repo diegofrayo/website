@@ -18,12 +18,12 @@ export async function attemptAsync<Return>(
 
 // NOTE: References: https://es-toolkit.slash.page/reference/util/attempt.html
 export function attempt<Return>(callback: () => Return): [Return, undefined] | [undefined, Error] {
-  try {
-    const response = callback();
-    return [response, undefined];
-  } catch (error) {
-    return [undefined, error as Error];
-  }
+	try {
+		const response = callback();
+		return [response, undefined];
+	} catch (error) {
+		return [undefined, error as Error];
+	}
 }
 
 export async function resolvePromisesSequentially<ArrayElement>(

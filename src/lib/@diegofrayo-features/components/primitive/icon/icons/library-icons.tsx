@@ -3,6 +3,7 @@ import {
 	ArrowUpIcon,
 	BadgeCheckIcon,
 	BookTextIcon,
+	BracesIcon,
 	CalendarIcon,
 	CheckIcon,
 	ChevronLeftIcon,
@@ -81,12 +82,12 @@ const LibraryIcons = {
 		},
 		icon: BookTextIcon,
 	},
-	CODE_XML: {
+	BRACES: {
 		defaultProps: {
 			className: "",
 			color: "",
 		},
-		icon: CodeXmlIcon,
+		icon: BracesIcon,
 	},
 	CALENDAR: {
 		defaultProps: {
@@ -122,6 +123,13 @@ const LibraryIcons = {
 			color: "",
 		},
 		icon: CircleUser,
+	},
+	CODE_XML: {
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+		icon: CodeXmlIcon,
 	},
 	COPY: {
 		defaultProps: {

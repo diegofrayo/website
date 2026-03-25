@@ -6,8 +6,8 @@ import type DR from "@diegofrayo-pkg/types";
 import { isString } from "@diegofrayo-pkg/validator";
 import { WithAuth } from "@diegofrayo-features/auth";
 import {
+	BlockQuote,
 	Box,
-	Boxquote,
 	Code,
 	Collapsible,
 	Icon,
@@ -57,7 +57,7 @@ export const MDXComponents = {
 			</Link>
 		);
 	},
-	blockquote: Boxquote,
+	blockquote: BlockQuote,
 	code: function CustomCode({ children }: DR.DOM.HTMLElementAttributes["code"]) {
 		if (isString(children)) {
 			return <Code variant={Code.variant.ENHANCED}>{children}</Code>;

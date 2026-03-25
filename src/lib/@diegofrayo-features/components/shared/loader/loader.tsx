@@ -1,6 +1,6 @@
 import cn from "@diegofrayo-pkg/cn";
-import { Box } from "@diegofrayo-features/components/primitive";
 
+import { Box } from "../../primitive";
 import styles from "./loader.styles.module.css";
 
 function Loader() {

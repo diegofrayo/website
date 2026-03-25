@@ -39,6 +39,7 @@ function CopyToClipboardPopover({
 		<Popover
 			text={popoverText}
 			open={showPopover}
+			nativeButton={false}
 			{...rest}
 		>
 			<Box as="span">

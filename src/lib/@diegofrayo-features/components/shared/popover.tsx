@@ -1,13 +1,18 @@
-import { Popover as BaseUIPopover, type PopoverPositionerProps } from "@base-ui/react/popover";
+import {
+	Popover as BaseUIPopover,
+	type PopoverPositionerProps,
+	type PopoverTriggerProps,
+} from "@base-ui/react/popover";
 
 import cn from "@diegofrayo-pkg/cn";
 import type DR from "@diegofrayo-pkg/types";
 
-type PopoverProps = PopoverPositionerProps & {
-	children: DR.React.JSXElement;
-	text: string;
-	open?: boolean;
-};
+type PopoverProps = Partial<PopoverPositionerProps> &
+	Partial<Pick<PopoverTriggerProps, "nativeButton">> & {
+		children: DR.React.JSXElement;
+		text: string;
+		open?: boolean;
+	};
 
 function Popover({ children, text, open = false, ...rest }: PopoverProps) {
 	return (
@@ -15,6 +20,7 @@ function Popover({ children, text, open = false, ...rest }: PopoverProps) {
 			<BaseUIPopover.Trigger
 				className="radix-popover-trigger"
 				render={children}
+				nativeButton={rest.nativeButton ?? true}
 			/>
 			<BaseUIPopover.Portal>
 				<BaseUIPopover.Positioner
