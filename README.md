@@ -1,4 +1,4 @@
-# @diegofrayo/website
+# website
 
 My personal website | [[diegofrayo.dev]](https://diegofrayo.dev)
 
@@ -10,6 +10,7 @@ My personal website | [[diegofrayo.dev]](https://diegofrayo.dev)
 - Tailwind CSS
 - MDX with [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
 - ESLint & Prettier & Husky
+- Storybook
 
 ## Setup
 
