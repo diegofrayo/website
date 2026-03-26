@@ -1,6 +1,6 @@
 import "~/styles/globals.css";
 
-import type { Decorator, Preview } from "@storybook/react";
+import type { Decorator, Preview } from "@storybook/nextjs-vite";
 
 // --- GLOBAL CONFIG ---
 
