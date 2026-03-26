@@ -1,6 +1,7 @@
 import js from "@eslint/js";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import pluginReact from "eslint-plugin-react";
+import storybook from "eslint-plugin-storybook";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
@@ -44,6 +45,11 @@ const CSS_CONFIG = {
 	language: "css/css",
 };
 
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+const STORYBOOK_CONFIG = {
+	extends: [storybook.configs["flat/recommended"]],
+};
+
 export default defineConfig([
 	...nextVitals,
 
@@ -51,6 +57,7 @@ export default defineConfig([
 	TYPESCRIPT_CONFIG,
 	REACT_CONFIG,
 	CSS_CONFIG,
+	STORYBOOK_CONFIG,
 
 	globalIgnores([
 		// Default ignores of eslint-config-next:
