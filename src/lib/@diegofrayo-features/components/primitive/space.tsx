@@ -9,7 +9,7 @@ import { isNotEmptyString, isNumber } from "@diegofrayo-pkg/validator";
 const VARIANTS = mirror(["UNSTYLED", "SIMPLE", "DASHED"]);
 type Variant = keyof typeof VARIANTS;
 type SpaceProps = {
-	clasName?: string;
+	className?: string;
 	variant?: Variant;
 	orientation?: "h" | "v";
 	responsive?: string;
@@ -24,7 +24,7 @@ type SpaceProps = {
 
 function Space({
 	variant = VARIANTS.UNSTYLED,
-	clasName = "",
+	className = "",
 	orientation = "h",
 	responsive = "",
 	size,
@@ -35,6 +35,7 @@ function Space({
 }: SpaceProps) {
 	// --- COMPUTED STATES ---
 	const isVerticalOrientation = orientation === "v";
+	const hasBorder = variant !== VARIANTS.UNSTYLED;
 
 	// --- UTILS ---
 	function composeStyles() {
@@ -42,12 +43,14 @@ function Space({
 			`dr-space dr-space--${variant.toLowerCase()}`,
 			"shrink-0",
 			{ "border-0": variant === VARIANTS.UNSTYLED },
-			{ "border-t border-dashed border-zinc-400": variant === VARIANTS.DASHED },
-			{ "border-t border-zinc-400": variant === VARIANTS.SIMPLE },
-			{ "h-full": isVerticalOrientation },
+			{ "border-dashed border-zinc-400": variant === VARIANTS.DASHED },
+			{ "border-zinc-400": variant === VARIANTS.SIMPLE },
+			{ "w-px": isVerticalOrientation },
 			{ "h-px": !isVerticalOrientation },
+			{ "border-l": hasBorder && isVerticalOrientation },
+			{ "border-t": hasBorder && !isVerticalOrientation },
 			isNotEmptyString(responsive) ? responsive : composeSizeStyles(),
-			clasName,
+			className,
 		);
 	}
 

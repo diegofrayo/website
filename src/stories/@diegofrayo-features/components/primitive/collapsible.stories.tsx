@@ -31,6 +31,10 @@ export const Closed: StoryObj<typeof Collapsible> = {
 		openedByDefault: false,
 		title: "Closed by default",
 		children: "This content is hidden until expanded.",
+		contentClassName: "bg-zinc-300",
+		titleClassName: "text-red-800",
+		onShowContentHandler: () => alert("Content shown!"),
+		onHideContentHandler: () => alert("Content hidden!"),
 	},
 };
 
@@ -39,5 +43,18 @@ export const Opened: StoryObj<typeof Collapsible> = {
 		openedByDefault: true,
 		title: "Opened by default",
 		children: "This content is visible by default.",
+	},
+};
+
+export const WithCustomTitle: StoryObj<typeof Collapsible> = {
+	args: {
+		title: (
+			<div className="flex gap-3 bg-zinc-400">
+				<h1>{`> Custom title`}</h1>
+				<button onClick={() => alert("hey!")}>button</button>
+				<a href="javascript::void">link</a>
+			</div>
+		),
+		children: "The title is a custom component",
 	},
 };

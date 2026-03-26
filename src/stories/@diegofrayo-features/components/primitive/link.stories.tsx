@@ -32,8 +32,9 @@ export default meta;
 export const Styled: StoryObj<typeof Link> = {
 	args: {
 		variant: "STYLED",
-		children: "Styled Link",
+		children: "Styled and External Link",
 		href: "https://storybook.js.org/",
+		isExternalLink: true,
 	},
 };
 
@@ -41,7 +42,7 @@ export const Smooth: StoryObj<typeof Link> = {
 	args: {
 		variant: "SMOOTH",
 		children: "Smooth Link",
-		href: "https://storybook.js.org/",
+		href: "http://localhost:6006/?path=/docs/primitive-link--docs#smooth-1",
 	},
 };
 
@@ -49,6 +50,6 @@ export const Unstyled: StoryObj<typeof Link> = {
 	args: {
 		variant: "UNSTYLED",
 		children: "Unstyled Link",
-		href: "https://storybook.js.org/",
+		href: "http://localhost:6006/?path=/docs/primitive-link--docs#unstyled",
 	},
 };

@@ -18,13 +18,13 @@ const meta: Meta<typeof Space> = {
 			options: ["h", "v"],
 		},
 		size: { control: "number" },
-		clasName: { control: "text" },
+		className: { control: "text" },
 	},
 	args: {
 		variant: "UNSTYLED",
 		orientation: "h",
 		size: 16,
-		clasName: "",
+		className: "",
 	},
 };
 
@@ -36,22 +36,49 @@ export const Unstyled: StoryObj<typeof Space> = {
 	args: {
 		variant: "UNSTYLED",
 		orientation: "h",
-		size: 16,
+		size: 2,
 	},
+	decorators: [
+		(Story) => (
+			<div>
+				<p>Element 1</p>
+				<Story />
+				<p>Element 2</p>
+			</div>
+		),
+	],
 };
 
 export const Simple: StoryObj<typeof Space> = {
 	args: {
 		variant: "SIMPLE",
 		orientation: "h",
-		size: 24,
+		size: 1.5,
 	},
+	decorators: [
+		(Story) => (
+			<div>
+				<p>Element 1</p>
+				<Story />
+				<p>Element 2</p>
+			</div>
+		),
+	],
 };
 
 export const Dashed: StoryObj<typeof Space> = {
 	args: {
 		variant: "DASHED",
 		orientation: "v",
-		size: 32,
+		size: 4,
 	},
+	decorators: [
+		(Story) => (
+			<div className="flex gap-2">
+				<p>Element 1</p>
+				<Story />
+				<p>Element 2</p>
+			</div>
+		),
+	],
 };

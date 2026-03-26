@@ -76,7 +76,7 @@ const styles = cva("font-bold", {
 		variant: {
 			[Variant.UNSTYLED]: "",
 			[Variant.SIMPLE]: "font-titles",
-			[Variant.STYLED]: "font-titles inline-block border-b-4 border-black pr-6 text-black",
+			[Variant.STYLED]: "font-titles inline-block border-b-4 border-black pr-2 text-black",
 		},
 	},
 	compoundVariants: [

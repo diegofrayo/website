@@ -18,8 +18,9 @@ const meta: Meta<typeof Pre> = {
 	},
 	args: {
 		variant: "UNSTYLED",
-		children: "const foo = 'bar';\nconsole.log(foo);",
-		className: "",
+		children:
+			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique nobis vero necessitatibus? Quidem cupiditate unde, inventore quam eligendi harum ducimus, voluptates consequuntur voluptatum quae ad distinctio eveniet perspiciatis exercitationem earum? VeryLongWordWordWordWordWordWordWordWord VeryLongWordWordWordWordWordWordWordWord VeryLongWordWordWordWordWordWordWordWord VeryLongWordWordWordWordWordWordWordWord",
+		className: "overflow-auto w-96 border border-red-900 bg-red-400 p-8",
 	},
 };
 
@@ -30,27 +31,23 @@ export default meta;
 export const Unstyled: StoryObj<typeof Pre> = {
 	args: {
 		variant: "UNSTYLED",
-		children: "const foo = 'bar';\nconsole.log(foo);",
 	},
 };
 
 export const BreakWithBlankLines: StoryObj<typeof Pre> = {
 	args: {
 		variant: "BREAK_WITH_BLANK_LINES",
-		children: "Line 1\n\nLine 2\n\nLine 3",
 	},
 };
 
 export const BreakWithBlankSpaces: StoryObj<typeof Pre> = {
 	args: {
 		variant: "BREAK_WITH_BLANK_SPACES",
-		children: "Word1    Word2    Word3",
 	},
 };
 
 export const BreakWords: StoryObj<typeof Pre> = {
 	args: {
 		variant: "BREAK_WORDS",
-		children: "ThisIsAReallyLongWordThatShouldBreak",
 	},
 };

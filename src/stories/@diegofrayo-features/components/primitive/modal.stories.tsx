@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { useArgs } from "storybook/preview-api";
 
+import { Button } from "@diegofrayo-features/components/primitive";
 import Modal from "@diegofrayo-features/components/primitive/modal";
 
 // --- META ---
@@ -11,13 +13,11 @@ const meta: Meta<typeof Modal> = {
 	argTypes: {
 		visible: { control: "boolean" },
 		className: { control: "text" },
-		children: { control: "text" },
 		onCloseHandler: { action: "onCloseHandler" },
 	},
 	args: {
-		visible: true,
+		visible: false,
 		className: "",
-		children: "This is a Modal.",
 	},
 };
 
@@ -27,14 +27,28 @@ export default meta;
 
 export const Visible: StoryObj<typeof Modal> = {
 	args: {
-		visible: true,
-		children: "This is a visible Modal.",
-	},
-};
-
-export const Hidden: StoryObj<typeof Modal> = {
-	args: {
 		visible: false,
-		children: "This Modal is hidden.",
+	},
+	render: () => {
+		const [args, setArgs] = useArgs();
+
+		return (
+			<div className="">
+				<button onClick={() => setArgs({ ...args, visible: true })}>open modal</button>
+				<Modal
+					visible={args["visible"]}
+					onCloseHandler={() => setArgs({ ...args, visible: false })}
+					className="bg-red-800"
+				>
+					<p>modal is visible</p>
+					<Button
+						variant={Button.variant.STYLED}
+						onClick={() => setArgs({ ...args, visible: false })}
+					>
+						close modal
+					</Button>
+				</Modal>
+			</div>
+		);
 	},
 };
