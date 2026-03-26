@@ -103,7 +103,12 @@ function Icon({
 
 	if (isLibraryIcon(icon)) {
 		const iconComponentProps = {
-			className: cn(iconBaseStyles, getLibraryIconColorStyles(), `icon--${generateSlug(iconName)}`),
+			className: cn(
+				svgProps.className,
+				iconBaseStyles,
+				getLibraryIconColorStyles(),
+				`icon--${generateSlug(iconName)}`,
+			),
 			...getIconSizeStyles(16),
 		};
 		const IconComponent = icon.icon;
@@ -113,6 +118,7 @@ function Icon({
 				<IconComponent
 					{...iconComponentProps}
 					{...svgProps}
+					className={iconComponentProps.className}
 				/>
 			</Wrapper>
 		);

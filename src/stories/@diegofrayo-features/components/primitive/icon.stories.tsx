@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { Icon, IconCatalog } from "@diegofrayo-features/components/primitive/icon";
 
+import { ArgTypes } from "~/stories/config/arg-types";
+
 // --- META ---
 
 const meta: Meta<typeof Icon> = {
@@ -10,7 +12,7 @@ const meta: Meta<typeof Icon> = {
 	tags: ["autodocs"],
 	argTypes: {
 		icon: { control: "select", options: Object.keys(IconCatalog) },
-		color: { control: "text" },
+		color: ArgTypes.tailwindColors,
 		size: { control: "number" },
 		className: { control: "text" },
 	},
