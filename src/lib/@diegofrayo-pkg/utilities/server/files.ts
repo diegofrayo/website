@@ -187,6 +187,16 @@ export function getOS(): "Linux" | "MacOS" | "Windows" {
 	return output;
 }
 
+export function jsonToBlob(object: Record<string, unknown> | Array<unknown>): Blob {
+	const str = JSON.stringify(object);
+	const bytes = new TextEncoder().encode(str);
+	const blob = new Blob([bytes], {
+		type: "application/json;charset=utf-8",
+	});
+
+	return blob;
+}
+
 interface IncludeTheseExtensionsConfig {
 	includeDirectories?: boolean;
 	recursive?: boolean;

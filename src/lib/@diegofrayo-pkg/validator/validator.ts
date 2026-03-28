@@ -140,3 +140,9 @@ export function isBrowser() {
 export function isServer() {
 	return !isBrowser();
 }
+
+// --- OTHERS ---
+
+export function isBlob(input: unknown): input is Blob {
+	return input instanceof Blob;
+}
