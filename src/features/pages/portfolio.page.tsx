@@ -49,7 +49,10 @@ function PortfolioPage() {
 			}}
 		>
 			<MainLayout title="Portfolio">
-				<Box className="mx-auto flex w-full max-w-sm flex-col gap-6">
+				<Box className="mx-auto flex w-full max-w-sm flex-col gap-3">
+					<Text className="mb-2 text-center text-sm italic">
+						Some side projects for personal use
+					</Text>
 					{PORTFOLIO.map((item, index) => {
 						return (
 							<ProjectBox
@@ -72,12 +75,12 @@ function ProjectBox({ item }: { item: Demo }) {
 	return (
 		<Box
 			as="article"
-			className="flex items-start justify-between gap-2"
+			className="flex items-start justify-between gap-2 rounded-2xl border border-zinc-300 bg-linear-to-r from-zinc-100 to-zinc-300 p-2"
 		>
 			<Icon
 				icon={item.icon}
 				size={48}
-				wrapperClassName="rounded-md bg-linear-to-b from-black to-zinc-600 p-2 text-white"
+				wrapperClassName="rounded-md bg-black p-2 text-zinc-100"
 			/>
 
 			<Box className="flex-1">
@@ -101,7 +104,10 @@ function ProjectBox({ item }: { item: Demo }) {
 						project: item.title,
 					})}
 				>
-					<Icon icon={IconCatalog.EXTERNAL_LINK} />
+					<Icon
+						icon={IconCatalog.EXTERNAL_LINK}
+						color="text-black"
+					/>
 				</Link>
 			</Box>
 		</Box>

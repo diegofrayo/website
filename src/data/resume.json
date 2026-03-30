@@ -1,560 +1,545 @@
 {
 	"en": {
 		"contactInfo": {
+			"name": "Diego Fernando Rayo Zamora",
+			"label": "Software Developer | JavaScript, TypeScript, React, and Node.js",
 			"email": "diegofrayo@gmail.com",
-			"linkedin": "https://www.linkedin.com/in/diegofrayo/",
-			"websites": [
+			"phone": "",
+			"image": "",
+			"website": "https://diegofrayo.dev",
+			"location": { "countryCode": "CO", "address": "Colombia" },
+			"profiles": [
 				{
-					"name": "Portfolio",
-					"value": "https://github.com/diegofrayo"
+					"network": "LinkedIn",
+					"username": "diegofrayo",
+					"url": "https://www.linkedin.com/in/diegofrayo"
 				},
 				{
-					"name": "Personal Website",
-					"value": "https://diegofrayo.dev"
+					"network": "GitHub",
+					"username": "diegofrayo",
+					"url": "https://www.github.com/diegofrayo"
 				}
 			]
 		},
-		"education": [
-			{
-				"degree": "Engineer's degree (Systems Engineering)",
-				"endDate": "2018",
-				"id": "3f538c84-8e4e-47c9-9b8c-8c296574968d",
-				"school": "Universidad del Quindío",
-				"schoolLogo": "/assets/pages/resume/images/uniquindio.png",
-				"schoolWebsite": "https://uniquindio.edu.co",
-				"startDate": "2010"
-			},
-			{
-				"degree": "Courses about programming and english",
-				"endDate": "",
-				"id": "42c7c3c5-cc6d-4c32-b31d-d7c7b66b46db",
-				"school": "Platzi",
-				"schoolLogo": "/assets/pages/resume/images/platzi.webp",
-				"schoolWebsite": "https://platzi.com/p/diegofrayo",
-				"startDate": ""
-			}
-		],
+		"summary": "Software Developer based in Colombia with over 8 years of experience designing, developing, and maintaining web applications. My primary focus is on front-end development, building user interfaces with JavaScript, TypeScript, and React. I also have experience working across the full stack, including back-end development, and have developed mobile applications using cross-platform frameworks such as React Native. Most of my experience comes from working in startup environments.",
 		"experience": [
 			{
-				"company": {
-					"logo": "/assets/pages/resume/images/freelance.png",
-					"name": "Crypto Company",
-					"website": ""
-				},
-				"description": {
-					"skills": [
-						"React",
-						"JavaScript",
-						"TypeScript",
-						"Firebase",
-						"Node.js",
-						"Fastify",
-						"Web3.js",
-						"WebSockets",
-						"Storybook"
-					],
-					"summary": "I worked for a small company that launches continuously applications related with the crypto world. Usually, we were responsible for the web-apps' frontend implementation and we integrated them with the Solana network through some REST APIs given by some external dev teams."
-				},
-				"endDate": "",
-				"id": "en-crypto-company-0",
-				"mode": "Remote",
+				"id": "deb2376d-b7ba-4357-80ec-7ae6b3ae0d82",
+				"name": "Print World",
 				"role": "Software Developer",
-				"startDate": "Aug 2024"
+				"startDate": "Aug 2024",
+				"endDate": "Dec 2025",
+				"mode": "Remote",
+				"location": "",
+				"summary": "I worked for a small company that launches continuously applications related with the crypto world. Usually, we were responsible for the web-apps' frontend implementation and we integrated them with the Solana network through some REST APIs given by some external dev teams.",
+				"achievements": [],
+				"skills": [
+					"React",
+					"JavaScript",
+					"TypeScript",
+					"Firebase",
+					"Node.js",
+					"Fastify",
+					"Web3.js",
+					"WebSockets",
+					"Storybook"
+				],
+				"company": {
+					"logo": "/assets/pages/resume/images/print-world.png",
+					"website": "https://print.world",
+					"linkedin": ""
+				}
 			},
 			{
-				"company": {
-					"logo": "/assets/pages/resume/images/freelance.png",
-					"name": "Freelance",
-					"website": ""
-				},
-				"description": {
-					"skills": ["React", "JavaScript", "TypeScript", "Firebase", "Node.js"],
-					"summary": "Contributed to the development and maintenance of some internal projects for some companies where I worked previously."
-				},
+				"id": "9df79600-0924-42ef-8bdf-74264f755c09",
+				"name": "Freelance",
+				"role": "Software Developer",
+				"startDate": "Jan 2024",
 				"endDate": "Jun 2024",
-				"id": "en-freelance-self-employed-1",
 				"mode": "Remote",
-				"role": "Software Developer",
-				"startDate": "Jan 2024"
+				"location": "",
+				"summary": "Contributed to the development and maintenance of some internal projects for some companies where I worked previously.",
+				"achievements": [],
+				"skills": ["React", "JavaScript", "TypeScript", "Firebase", "Node.js"],
+				"company": {
+					"logo": "/assets/pages/resume/images/freelance.png",
+					"website": "",
+					"linkedin": "https://www.linkedin.com/company/freelance-self-employed-_4/"
+				}
 			},
 			{
+				"id": "44e115fc-43ff-4774-be69-79ec7a6445ac",
+				"name": "Arlene",
+				"role": "Software Developer",
+				"startDate": "Feb 2023",
+				"endDate": "Dec 2023",
+				"mode": "Remote",
+				"location": "",
+				"summary": "Arlene was a start-up that developed multiple editors to create customizable 3D scenarios and AR experiences, besides providing a simple way to share and reproduce these experiences through a URL. I worked on the maintenance and enhancement of the company's products.",
+				"achievements": [
+					"Contributed to the development and improvement of some projects that used libraries for AR/VR and 3D rendering, besides the browser APIs for camera and gyro handling.",
+					"Implemented some scripts using puppeteer to automate some tasks required for the properly working of the augmented reality applications.",
+					"Implemented the user authentication features using social providers like Google or Facebook."
+				],
+				"skills": [
+					"React",
+					"JavaScript",
+					"TypeScript",
+					"Svelte",
+					"Firebase",
+					"Node.js",
+					"Fastify",
+					"Puppeteer",
+					"Three.js",
+					"Marzipano"
+				],
 				"company": {
 					"logo": "/assets/pages/resume/images/arlene.jpg",
-					"name": "Arlene",
-					"website": "https://linkedin.com/company/arlene"
-				},
-				"description": {
-					"achievements": [
-						"Contributed to the development and improvement of some projects that used libraries for AR/VR and 3D rendering, besides the browser APIs for camera and gyro handling.",
-						"Implemented some scripts using puppeteer to automate some tasks required for the properly working of the augmented reality applications.",
-						"Implemented the user authentication features using social providers like Google or Facebook."
-					],
-					"skills": [
-						"React",
-						"JavaScript",
-						"TypeScript",
-						"Svelte",
-						"Firebase",
-						"Node.js",
-						"Fastify",
-						"Puppeteer",
-						"Three.js",
-						"Marzipano"
-					],
-					"summary": "Arlene was a start-up that developed multiple editors to create customizable 3D scenarios and AR experiences, besides providing a simple way to share and reproduce these experiences through a URL. I worked on the maintenance and enhancement of the company's products. "
-				},
-				"endDate": "Dec 2023",
-				"id": "en-arlene-2",
-				"mode": "Remote",
-				"role": "Software Developer",
-				"startDate": "Feb 2023"
+					"website": "https://www.linkedin.com/company/arleneio",
+					"linkedin": "https://www.linkedin.com/company/arleneio"
+				}
 			},
 			{
+				"id": "7754c3a3-a0d1-4529-8132-5c2a6c364dca",
+				"name": "Freelance",
+				"role": "Software Developer",
+				"startDate": "Jan 2022",
+				"endDate": "Jan 2023",
+				"mode": "Remote",
+				"location": "",
+				"summary": "Contributed to the development and maintenance of some internal projects for some companies where I worked previously. Also, I was a consultant for a company where my main role was taking out blockers and problems to the developers team that were implementing a web application based on React and Next.js.",
+				"achievements": [],
+				"skills": ["React", "TypeScript", "Next.js", "Tailwind CSS"],
 				"company": {
 					"logo": "/assets/pages/resume/images/freelance.png",
-					"name": "Freelance",
-					"website": ""
-				},
-				"description": {
-					"skills": ["React", "TypeScript", "Next.js", "Tailwind CSS"],
-					"summary": "Contributed to the development and maintenance of some internal projects for some companies where I worked previously. Also, I was a consultant for a company where my main role was taking out blockers and problems to the developers team that were implementing a web application based on React and Next.js."
-				},
-				"endDate": "Jan 2023",
-				"id": "en-freelance-self-employed-3",
-				"mode": "Remote",
-				"role": "Software Developer",
-				"startDate": "Jan 2022"
+					"website": "",
+					"linkedin": "https://www.linkedin.com/company/freelance-self-employed-_4/"
+				}
 			},
 			{
+				"id": "4a3084dd-af7f-49db-a5c0-414b7a3c6c51",
+				"name": "HelloBUILD",
+				"role": "Lead Software Developer",
+				"startDate": "Jun 2018",
+				"endDate": "Mar 2021",
+				"mode": "Remote",
+				"location": "",
+				"summary": "HelloBuild is a company focused on offering development services. I worked on several projects as a Full-stack Developer, and as a Tech Lead in the last stage. I had the opportunity to build some projects from scratch and work on other projects by contributing to its development and maintenance.",
+				"achievements": [
+					"Contributed to the implementation of a web application for jobs offers searching. I was the lead software developer, we built the web app front-end and integrated it with the back-end services given by the client's team. One of the main challenges was the implementation of the user authentication using Auth0 (Authorization Code Flow) and Redis. The success of this project led to the client contracts our company for future projects.",
+					"Contributed to developing of a platform oriented to support the union credits operation. This platform had several web applications, landing pages, React Native apps, Lambda services and Node.js servers. My main role was giving support to the tech team and designing some key features such as users authentication, npm packages distribution and writing code guidelines.",
+					"Implemented a web application oriented to management and tracking of building projects. In this project I got significant experience working with TypeScript, GraphQL, and prisma.io.",
+					"Implemented a React Native mobile application oriented to babies caring following the UI designs given by the team's designer."
+				],
+				"skills": [
+					"JavaScript",
+					"TypeScript",
+					"React",
+					"React Native",
+					"Node.js",
+					"Tailwind CSS",
+					"Next.js",
+					"GraphQL",
+					"Apollo Client",
+					"Prisma.io",
+					"AWS",
+					"Auth0"
+				],
 				"company": {
 					"logo": "/assets/pages/resume/images/hellobuild.jpg",
-					"name": "HelloBUILD",
-					"website": "https://hellobuild.co"
-				},
-				"description": {
-					"achievements": [
-						"Contributed to the implementation of a web application for jobs offers searching. I was the lead software developer, we built the web app front-end and integrated it with the back-end services given by the client's team. One of the main challenges was the implementation of the user authentication using Auth0 (Authorization Code Flow) and Redis. The success of this project led to the client contracts our company for future projects.",
-						"Contributed to developing of a platform oriented to support the union credits operation. This platform had several web applications, landing pages, React Native apps, Lambda services and Node.js servers. My main role was giving support to the tech team and designing some key features such as users authentication, npm packages distribution and writing code guidelines.",
-						"Implemented a web application oriented to management and tracking of building projects. In this project I got significant experience working with TypeScript, GraphQL, and prisma.io.",
-						"Implemented a React Native mobile application oriented to babies caring following the UI designs given by the team's designer."
-					],
-					"skills": [
-						"JavaScript",
-						"TypeScript",
-						"React",
-						"React Native",
-						"Node.js",
-						"Tailwind CSS",
-						"Next.js",
-						"GraphQL",
-						"Apollo Client",
-						"Prisma.io",
-						"AWS",
-						"Auth0"
-					],
-					"summary": "HelloBuild is a company focused on offering development services. I worked on several projects as a Full-stack Developer, and as a Tech Lead in the last stage. I had the opportunity to build some projects from scratch and work on other projects by contributing to its development and maintenance."
-				},
-				"endDate": "Mar 2021",
-				"id": "en-hellobuild-4",
-				"mode": "Remote",
-				"role": "Lead Software Developer",
-				"startDate": "Jun 2018"
+					"website": "https://hellobuild.co",
+					"linkedin": "https://www.linkedin.com/company/hellobuild"
+				}
 			},
 			{
+				"id": "cd430f7c-9e4f-4a93-a548-f8f95f7ac15c",
+				"name": "Freelance",
+				"role": "Software Developer",
+				"startDate": "Apr 2017",
+				"endDate": "May 2018",
+				"mode": "Remote",
+				"location": "",
+				"summary": "Worked on multiple projects, maintaining web applications. During this time, I started to get professional experience working with React, React Native, and Redux, besides being in charge of the deployment process using Amazon Web Services.",
+				"achievements": [],
+				"skills": [
+					"React",
+					"React Native",
+					"Redux",
+					"Node.js",
+					"Sails.js",
+					"Styled Components",
+					"AWS",
+					"ElasticSearch"
+				],
 				"company": {
 					"logo": "/assets/pages/resume/images/freelance.png",
-					"name": "Freelance",
-					"website": ""
-				},
-				"description": {
-					"skills": [
-						"React",
-						"React Native",
-						"Redux",
-						"Node.js",
-						"Sails.js",
-						"Styled Components",
-						"AWS",
-						"ElasticSearch"
-					],
-					"summary": "Worked on multiple projects, maintaining web applications. During this time, I started to get professional experience working with React, React Native, and Redux, besides being in charge of the deployment process using Amazon Web Services."
-				},
-				"endDate": "May 2018",
-				"id": "en-freelance-self-employed-5",
-				"mode": "Remote",
-				"role": "Software Developer",
-				"startDate": "Apr 2017"
+					"website": "",
+					"linkedin": "https://www.linkedin.com/company/freelance-self-employed-_4/"
+				}
 			},
 			{
+				"id": "f7699231-8e57-42a2-ad1b-cae2fd211e77",
+				"name": "Festa Music App",
+				"role": "Junior Software Developer",
+				"startDate": "Apr 2015",
+				"endDate": "Dec 2016",
+				"mode": "On-Site",
+				"location": "Armenia, Quindío, Colombia",
+				"summary": "Festa was a platform to play music from YouTube and create collaborative playlists among multiple people. I joined this company as a junior software developer.",
+				"achievements": [
+					"Implemented the new Festa web app following the UI/UX designs given by the company's designer. This new version was a single page application (SPA) built with Angular.js, Bootstrap Material, and Firebase.",
+					"Contributed to developing the new back-end application using Node.js, Sails.js, and MongoDB.",
+					"Implemented several features with real-time capabilities using Firebase and web sockets.",
+					"Maintained the legacy Festa web app for several months. This version had a monolithic architecture and was built with PHP and jQuery."
+				],
+				"skills": [
+					"JavaScript",
+					"Angular.js",
+					"Bootstrap Material",
+					"Node.js",
+					"Sails.js",
+					"MongoDB",
+					"Firebase",
+					"PHP",
+					"jQuery"
+				],
 				"company": {
 					"logo": "/assets/pages/resume/images/festa.jpg",
-					"name": "Festa Music App",
-					"website": "https://linkedin.com/company/festa"
-				},
-				"description": {
-					"achievements": [
-						"Implemented the new Festa web app following the UI/UX designs given by the company's designer. This new version was a single page application (SPA) built with Angular.js, Bootstrap Material, and Firebase.",
-						"Contributed to developing the new back-end application using Node.js, Sails.js, and MongoDB.",
-						"Implemented several features with real-time capabilities using Firebase and web sockets.",
-						"Maintained the legacy Festa web app for several months. This version had a monolithic architecture and was built with PHP and jQuery."
-					],
-					"skills": [
-						"JavaScript",
-						"Angular.js",
-						"Bootstrap Material",
-						"Node.js",
-						"Sails.js",
-						"MongoDB",
-						"Firebase",
-						"PHP",
-						"jQuery"
-					],
-					"summary": "Festa was a platform to play music from YouTube and create collaborative playlists among multiple people. I joined this company as a junior software developer."
-				},
-				"endDate": "Dec 2016",
-				"id": "en-festa-music-app-6",
-				"mode": "On-site (Armenia, Quindío)",
-				"role": "Junior Software Developer",
-				"startDate": "Apr 2015"
+					"website": "https://www.linkedin.com/company/festa",
+					"linkedin": "https://www.linkedin.com/company/festa"
+				}
 			}
 		],
-		"fullName": "Diego Fernando Rayo Zamora",
-		"headline": "Software Developer | JavaScript, TypeScript, React, and Node.js",
+		"education": [
+			{
+				"institution": "Universidad del Quindío",
+				"institutionLogo": "/assets/pages/resume/images/uniquindio.png",
+				"institutionWebsite": "https://www.uniquindio.edu.co",
+				"area": "Systems Engineering",
+				"studyType": "Engineer's degree",
+				"startDate": "2010-12-31",
+				"endDate": "2018-12-31"
+			},
+			{
+				"institution": "Platzi",
+				"institutionWebsite": "https://platzi.com/@diegofrayo",
+				"institutionLogo": "/assets/pages/resume/images/platzi.webp",
+				"area": "Programming and english",
+				"studyType": "Courses",
+				"startDate": "",
+				"endDate": ""
+			}
+		],
 		"languages": [
-			{
-				"fluency": "Native Speaker",
-				"language": "Spanish"
-			},
-			{
-				"fluency": "Limited Working B1",
-				"language": "English"
-			}
+			{ "language": "Spanish", "fluency": "Native speaker" },
+			{ "language": "English", "fluency": "Limited Working B2" }
 		],
-		"location": {
-			"currently": {
-				"city": "Armenia, Quindío",
-				"country": "Colombia"
+		"skills": [
+			{
+				"category": "High experience",
+				"items": [
+					"React",
+					"JavaScript",
+					"TypeScript",
+					"Next.js",
+					"Tailwind CSS",
+					"Node.js",
+					"React testing library / Jest / Vitest"
+				]
 			},
-			"from": {
-				"city": "Armenia, Quindío",
-				"country": "Colombia"
+			{
+				"category": "Considerable experience",
+				"items": ["Firebase", "Auth0", "GraphQL", "MySQL / Postgres", "React Native", "Sails.js"]
+			},
+			{
+				"category": "Low experiencia",
+				"items": [
+					"MongoDB",
+					"ElasticSearch",
+					"Redis",
+					"Puppeteer",
+					"Svelte",
+					"Angular.js",
+					"Three.js",
+					"jQuery",
+					"Bootstrap",
+					"PHP"
+				]
 			}
-		},
-		"profilePhoto": "/assets/pages/resume/images/profile-photo.jpg",
-		"shortName": "Diego Rayo",
-		"skills": {
-			"1-high": [
-				"React",
-				"JavaScript",
-				"TypeScript",
-				"Next.js",
-				"Tailwind CSS",
-				"Node.js",
-				"React testing library / Cypress / Jest / Vitest"
-			],
-			"2-medium": [
-				"Firebase",
-				"Auth0",
-				"AWS",
-				"React Native",
-				"Redux",
-				"GraphQL",
-				"Prisma.io",
-				"Sails.js"
-			],
-			"3-low": [
-				"MongoDB",
-				"MySQL",
-				"Postgres",
-				"ElasticSearch",
-				"Redis",
-				"Puppeteer",
-				"Svelte",
-				"Angular.js",
-				"Three.js",
-				"jQuery",
-				"PHP"
-			]
-		},
-		"summary": "I'm a software developer with over 10 years of experience designing, developing, and maintaining web projects using JavaScript as the main language. I have experience using a wide range of technologies and libraries both in front-end and back-end development, as well as experience developing mobile applications based on cross-platform frameworks like React Native. Most of my experience has been working remotely."
+		]
 	},
 	"es": {
 		"contactInfo": {
+			"name": "Diego Fernando Rayo Zamora",
+			"label": "Desarrollador de Software | JavaScript, TypeScript, React y Node.js",
 			"email": "diegofrayo@gmail.com",
-			"linkedin": "https://www.linkedin.com/in/diegofrayo/",
-			"websites": [
+			"phone": "",
+			"image": "",
+			"website": "https://diegofrayo.dev",
+			"location": { "countryCode": "CO", "address": "Colombia" },
+			"profiles": [
 				{
-					"name": "Portafolio",
-					"value": "https://github.com/diegofrayo"
+					"network": "LinkedIn",
+					"username": "diegofrayo",
+					"url": "https://www.linkedin.com/in/diegofrayo"
 				},
 				{
-					"name": "Sitio web",
-					"value": "https://diegofrayo.dev"
+					"network": "GitHub",
+					"username": "diegofrayo",
+					"url": "https://www.github.com/diegofrayo"
 				}
 			]
 		},
-		"education": [
-			{
-				"degree": "Ingeniería de Sistemas y Computación",
-				"endDate": "2018",
-				"id": "fae9b1a1-0f54-4136-b55f-99a30a3d68c4",
-				"school": "Universidad del Quindío",
-				"schoolLogo": "/assets/pages/resume/images/uniquindio.png",
-				"schoolWebsite": "https://uniquindio.edu.co",
-				"startDate": "2010"
-			},
-			{
-				"degree": "Cursos de programación e inglés",
-				"endDate": "",
-				"id": "6ffcecbd-e22c-4d82-9413-a06f71d2b8b6",
-				"school": "Platzi",
-				"schoolLogo": "/assets/pages/resume/images/platzi.webp",
-				"schoolWebsite": "https://platzi.com/p/diegofrayo",
-				"startDate": ""
-			}
-		],
+		"summary": "Soy Diego, Ingeniero de Sistemas y Computación de la universidad del Quindío de Colombia.\n\t\tTengo 8 años de experiencia trabajando como Desarrollador de Software; colaborando en el diseño, implementación y mantenimiento de aplicaciones Web.\n\t\tLa mayor parte de mi experiencia ha sido trabajando en el lado del front-end, usando principalmente tecnologías como JavaScript/TypeScript, React/Next.js.\n\t\tAdemás tengo la habilidad de trabajar del lado del back-end, de colaborar en el desarrollo y mantenimiento de aplicaciones back-end basadas en Node.js, usando diversos ORMs y motores de bases de datos SQL/NoSQL.\n\t\tHe trabajado principalmente para Start ups, aunque también como Freelancer y para agencias digitales.\n\t\tTengo fluidez hablando Inglés y cuento con un nivel B2.\n\t\tActualmente estoy interesado en trabajar como Desarrollador Front-end remoto, quiero seguir fortaleciendo mi conocimiento y experiencia en esta área.",
 		"experience": [
 			{
-				"company": {
-					"logo": "/assets/pages/resume/images/freelance.png",
-					"name": "Crypto Company",
-					"website": ""
-				},
-				"description": {
-					"skills": [
-						"React",
-						"JavaScript",
-						"TypeScript",
-						"Firebase",
-						"Node.js",
-						"Fastify",
-						"Web3.js",
-						"WebSockets",
-						"Storybook"
-					],
-					"summary": "Trabajé para una pequeña empresa que lanza continuamente aplicaciones relacionadas con el mundo de las criptomonedas. Normalmente, éramos responsables de la implementación del frontend de las aplicaciones web y las integrábamos con la red Solana a través de algunas API REST proporcionadas por algunos equipos de desarrollo externos."
-				},
-				"endDate": "",
-				"id": "es-crypto-company-0",
-				"mode": "Remoto",
+				"id": "deb2376d-b7ba-4357-80ec-7ae6b3ae0d82",
+				"name": "Print World",
 				"role": "Software Developer",
-				"startDate": "ago 2024"
+				"startDate": "ago 2024",
+				"endDate": "dic 2025",
+				"mode": "Remote",
+				"location": "",
+				"summary": "Trabajé para una pequeña empresa que lanza continuamente aplicaciones relacionadas con el mundo de las criptomonedas. Normalmente, éramos responsables de la implementación del frontend de las aplicaciones web y las integrábamos con la red Solana a través de algunas API REST proporcionadas por algunos equipos de desarrollo externos.",
+				"achievements": [],
+				"skills": [
+					"React",
+					"JavaScript",
+					"TypeScript",
+					"Tailwind CSS",
+					"Radix",
+					"Storybook",
+					"Web3.js",
+					"Solana",
+					"Node.js",
+					"Fastify",
+					"Firebase",
+					"Postgres",
+					"Redis",
+					"WebSockets"
+				],
+				"company": {
+					"logo": "/assets/pages/resume/images/print-world.png",
+					"website": "https://print.world",
+					"linkedin": ""
+				}
 			},
 			{
-				"company": {
-					"logo": "/assets/pages/resume/images/freelance.png",
-					"name": "Freelance",
-					"website": ""
-				},
-				"description": {
-					"skills": ["React", "JavaScript", "TypeScript", "Firebase", "Node.js"],
-					"summary": "Contribuí al soporte y desarrollo de algunos proyectos internos de empresas en donde trabajé anteriormente."
-				},
+				"id": "9df79600-0924-42ef-8bdf-74264f755c09",
+				"name": "Freelance",
+				"role": "Software Developer",
+				"startDate": "ene 2024",
 				"endDate": "jun 2024",
-				"id": "es-freelance-1",
-				"mode": "Remoto",
-				"role": "Software Developer",
-				"startDate": "ene 2024"
+				"mode": "Remote",
+				"location": "",
+				"summary": "Contribuí al soporte y desarrollo de algunos proyectos internos de empresas en donde trabajé anteriormente",
+				"achievements": [],
+				"skills": ["React", "JavaScript", "TypeScript", "Firebase", "Node.js"],
+				"company": {
+					"logo": "/assets/pages/resume/images/freelance.png",
+					"website": "",
+					"linkedin": "https://www.linkedin.com/company/freelance-self-employed-_4/"
+				}
 			},
 			{
+				"id": "44e115fc-43ff-4774-be69-79ec7a6445ac",
+				"name": "Arlene",
+				"role": "Software Developer",
+				"startDate": "feb 2023",
+				"endDate": "dic 2023",
+				"mode": "Remote",
+				"location": "",
+				"summary": "Arlene era una startup que desarrollaba varios editores que permitían crear escenarios 3D personalizados y experiencias de realidad aumentada, además ofrecía un mecanismo sencillo para reproducir estos escenarios y experiencias en un navegador web y compartirlas a través de una URL. Trabajé en el mantenimiento y mejoramiento de los productos de la compañía.",
+				"achievements": [
+					"Contribuí al desarrollo y corrección de errores de algunos proyectos de la compañía en donde hacíamos uso de librerías de AR/VR y renderizado 3D, además de APIs del navegador para acceder a la cámara o giroscopio de los dispositivos.",
+					"Implementé varios scripts usando puppeteer para automatizar tareas importantes necesarias para el correcto funcionamiento de las experiencias de realidad aumentada.",
+					"Implementé la autenticación de usuarios usando redes sociales como Facebook o Google."
+				],
+				"skills": [
+					"React",
+					"JavaScript",
+					"TypeScript",
+					"Svelte",
+					"Firebase",
+					"Node.js",
+					"Fastify",
+					"Puppeteer",
+					"Three.js",
+					"Marzipano"
+				],
 				"company": {
 					"logo": "/assets/pages/resume/images/arlene.jpg",
-					"name": "Arlene",
-					"website": "https://linkedin.com/company/arlene"
-				},
-				"description": {
-					"achievements": [
-						"Contribuí al desarrollo y corrección de errores de algunos proyectos de la compañía en donde hacíamos uso de librerías de AR/VR y renderizado 3D, además de APIs del navegador para acceder a la cámara o giroscopio de los dispositivos.",
-						"Implementé varios scripts usando puppeteer para automatizar tareas importantes necesarias para el correcto funcionamiento de las experiencias de realidad aumentada.",
-						"Implementé la autenticación de usuarios usando redes sociales como Facebook o Google."
-					],
-					"skills": [
-						"React",
-						"JavaScript",
-						"TypeScript",
-						"Svelte",
-						"Firebase",
-						"Node.js",
-						"Fastify",
-						"Puppeteer",
-						"Three.js",
-						"Marzipano"
-					],
-					"summary": "Arlene era una startup que desarrollaba varios editores que permitían crear escenarios 3D personalizados y experiencias de realidad aumentada, además ofrecía un mecanismo sencillo para reproducir estos escenarios y experiencias en un navegador web y compartirlas a través de una URL. Trabajé en el mantenimiento y mejoramiento de los productos de la compañía. "
-				},
-				"endDate": "dic 2023",
-				"id": "es-arlene-2",
-				"mode": "Remoto",
-				"role": "Software Developer",
-				"startDate": "feb 2023"
+					"website": "https://www.linkedin.com/company/arleneio",
+					"linkedin": "https://www.linkedin.com/company/arleneio"
+				}
 			},
 			{
+				"id": "7754c3a3-a0d1-4529-8132-5c2a6c364dca",
+				"name": "Freelance",
+				"role": "Software Developer",
+				"startDate": "ene 2022",
+				"endDate": "ene 2023",
+				"mode": "Remote",
+				"location": "",
+				"summary": "Contribuí al soporte y desarrollo de algunos proyectos internos de empresas en donde trabajé anteriormente. Además, fui consultor para una empresa donde mi función principal era eliminar bloqueos que tenía el equipo de desarrollo con la construcción de una aplicación web basada en React y Next.js.",
+				"achievements": [],
+				"skills": ["React", "TypeScript", "Next.js", "Tailwind CSS"],
 				"company": {
 					"logo": "/assets/pages/resume/images/freelance.png",
-					"name": "Freelance",
-					"website": ""
-				},
-				"description": {
-					"skills": ["React", "TypeScript", "Next.js", "Node.js", "Tailwind CSS", "Vercel"],
-					"summary": "Contribuí al soporte y desarrollo de algunos proyectos internos de empresas en donde trabajé anteriormente. Además, fui consultor para una empresa donde mi función principal era eliminar bloqueos que tenía el equipo de desarrollo con la construcción de una aplicación web basada en React y Next.js."
-				},
-				"endDate": "ene 2023",
-				"id": "es-freelance-3",
-				"mode": "Remoto",
-				"role": "Software Developer",
-				"startDate": "ene 2022"
+					"website": "",
+					"linkedin": "https://www.linkedin.com/company/freelance-self-employed-_4/"
+				}
 			},
 			{
+				"id": "4a3084dd-af7f-49db-a5c0-414b7a3c6c51",
+				"name": "HelloBUILD",
+				"role": "Lead Software Developer",
+				"startDate": "jun 2018",
+				"endDate": "mar 2021",
+				"mode": "Remote",
+				"location": "",
+				"summary": "HelloBuild es una empresa enfocada en ofrecer servicios de desarrollo. Trabajé en varios proyectos como Desarrollador Full-stack y como Líder de equipo de desarrollo en mi última etapa en la compañía. Tuve la oportunidad de construir algunos proyectos desde cero y trabajar en otros proyectos contribuyendo a su desarrollo y mantenimiento.",
+				"achievements": [
+					"Implementé una aplicación web orientada a la búsqueda de ofertas laborales. Estuve a cargo del equipo de desarrollo, construimos el front-end de la aplicación y lo integramos con los servicios del back-end proveídos por el equipo del cliente. Uno de los principales desafíos fue la implementación de la autenticación utilizando Auth0 (Authorization Code Flow) y Redis. El éxito de este proyecto contribuyó a que el cliente le otorgara a futuro otros proyectos a nuestra empresa.",
+					"Contribuí al desarrollo de una plataforma orientada a apoyar la operación de las Cooperativas de Crédito. Este proyecto tenía varias aplicaciones web, aplicaciones React Native, servicios Lambda y aplicaciones back-end. Mi función principal fue brindar soporte técnico al equipo y diseñar algunas características clave como la autenticación de usuarios, distribución de paquetes npm y guías de codificación.",
+					"Implementé una aplicación web orientada a la gestión y seguimiento de proyectos de construcción. En este proyecto pude obtener bastante experiencia usando GraphQL, TypeScript y prisma.io.",
+					"Construí una aplicación móvil orientada al cuidado de bebés usando React Native y desplegada en la tienda iOS; siguiendo los diseños de UI entregados por el diseñador del equipo."
+				],
+				"skills": [
+					"JavaScript",
+					"TypeScript",
+					"React",
+					"React Native",
+					"Node.js",
+					"Tailwind CSS",
+					"Next.js",
+					"GraphQL",
+					"Apollo Client",
+					"Prisma.io",
+					"AWS",
+					"Auth0"
+				],
 				"company": {
 					"logo": "/assets/pages/resume/images/hellobuild.jpg",
-					"name": "HelloBUILD",
-					"website": "https://hellobuild.co"
-				},
-				"description": {
-					"achievements": [
-						"Implementé una aplicación web orientada a la búsqueda de ofertas laborales. Estuve a cargo del equipo de desarrollo, construimos el front-end de la aplicación y lo integramos con los servicios del back-end proveídos por el equipo del cliente. Uno de los principales desafíos fue la implementación de la autenticación utilizando Auth0 (Authorization Code Flow) y Redis. El éxito de este proyecto contribuyó a que el cliente le otorgara a futuro otros proyectos a nuestra empresa.",
-						"Contribuí al desarrollo de una plataforma orientada a apoyar la operación de las Cooperativas de Crédito. Este proyecto tenía varias aplicaciones web, aplicaciones React Native, servicios Lambda y aplicaciones back-end. Mi función principal fue brindar soporte técnico al equipo y diseñar algunas características clave como la autenticación de usuarios, distribución de paquetes npm y guías de codificación.",
-						"Implementé una aplicación web orientada a la gestión y seguimiento de proyectos de construcción. En este proyecto pude obtener bastante experiencia usando GraphQL, TypeScript y prisma.io.",
-						"Construí una aplicación móvil orientada al cuidado de bebés usando React Native y desplegada en la tienda iOS; siguiendo los diseños de UI entregados por el diseñador del equipo."
-					],
-					"skills": [
-						"JavaScript",
-						"TypeScript",
-						"React",
-						"React Native",
-						"Node.js",
-						"Tailwind CSS",
-						"Next.js",
-						"GraphQL",
-						"Apollo Client",
-						"Prisma.io",
-						"AWS",
-						"Auth0"
-					],
-					"summary": "HelloBuild es una empresa enfocada en ofrecer servicios de desarrollo. Trabajé en varios proyectos como Desarrollador Full-stack y como Líder de equipo de desarrollo en mi última etapa en la compañía. Tuve la oportunidad de construir algunos proyectos desde cero y trabajar en otros proyectos contribuyendo a su desarrollo y mantenimiento."
-				},
-				"endDate": "mar 2021",
-				"id": "es-hellobuild-4",
-				"mode": "Remoto",
-				"role": "Lead Software Developer",
-				"startDate": "jun 2018"
+					"website": "https://hellobuild.co",
+					"linkedin": "https://www.linkedin.com/company/hellobuild"
+				}
 			},
 			{
+				"id": "cd430f7c-9e4f-4a93-a548-f8f95f7ac15c",
+				"name": "Freelance",
+				"role": "Software Developer",
+				"startDate": "abr 2017",
+				"endDate": "may 2018",
+				"mode": "Remote",
+				"location": "",
+				"summary": "Trabajé en múltiples proyectos, manteniendo aplicaciones web. Durante este tiempo, comencé a adquirir experiencia profesional con React, React Native y Redux, además de encargarme de los procesos de despliegue en servicios como Amazon.",
+				"achievements": [],
+				"skills": [
+					"React",
+					"React Native",
+					"Redux",
+					"Node.js",
+					"Sails.js",
+					"Styled Components",
+					"AWS",
+					"ElasticSearch"
+				],
 				"company": {
 					"logo": "/assets/pages/resume/images/freelance.png",
-					"name": "Freelance",
-					"website": ""
-				},
-				"description": {
-					"skills": [
-						"React",
-						"React Native",
-						"Redux",
-						"Node.js",
-						"Sails.js",
-						"Styled Components",
-						"AWS",
-						"ElasticSearch"
-					],
-					"summary": "Trabajé en múltiples proyectos, manteniendo aplicaciones web. Durante este tiempo, comencé a adquirir experiencia profesional con React, React Native y Redux, además de encargarme de los procesos de despliegue en servicios como Amazon."
-				},
-				"endDate": "may 2018",
-				"id": "es-freelance-5",
-				"mode": "Remoto",
-				"role": "Software Developer",
-				"startDate": "abr 2017"
+					"website": "",
+					"linkedin": "https://www.linkedin.com/company/freelance-self-employed-_4/"
+				}
 			},
 			{
+				"id": "f7699231-8e57-42a2-ad1b-cae2fd211e77",
+				"name": "Festa Music App",
+				"role": "Junior Software Developer",
+				"startDate": "abr 2015",
+				"endDate": "dic 2016",
+				"mode": "Presencial",
+				"location": "Armenia, Quindío, Colombia",
+				"summary": "Festa era una plataforma para escuchar música de YouTube y crear listas de reproducción colaborativas entre varias personas. Me uní a esta empresa como desarrollador de software junior.",
+				"achievements": [
+					"Implementé la nueva versión de la aplicación web Festa siguiendo los diseños de UI/UX dados por el diseñador del equipo. Esta nueva versión fue una Single Page Application (SPA) construida con Angular.js, Bootstrap Material y Firebase.",
+					"Colaboré en el desarrollo del back-end usando tecnologías como Node.js, Sails.js y MongoDB.",
+					"Implementé varias funcionalidades que requerían sincronización de datos en tiempo real usando Firebase y web sockets.",
+					"Mantuve la aplicación legacy de Festa por algunos meses. Esta versión tenía una arquitectura monolítica y estaba construida con PHP y jQuery."
+				],
+				"skills": [
+					"JavaScript",
+					"Angular.js",
+					"Bootstrap Material",
+					"Node.js",
+					"Sails.js",
+					"MongoDB",
+					"Firebase",
+					"PHP",
+					"jQuery"
+				],
 				"company": {
 					"logo": "/assets/pages/resume/images/festa.jpg",
-					"name": "Festa Music App",
-					"website": "https://linkedin.com/company/festa"
-				},
-				"description": {
-					"achievements": [
-						"Implementé la nueva versión de la aplicación web Festa siguiendo los diseños de UI/UX dados por el diseñador del equipo. Esta nueva versión fue una Single Page Application (SPA) construida con Angular.js, Bootstrap Material y Firebase.",
-						"Colaboré en el desarrollo del back-end usando tecnologías como Node.js, Sails.js y MongoDB.",
-						"Implementé varias funcionalidades que requerían sincronización de datos en tiempo real usando Firebase y web sockets.",
-						"Mantuve la aplicación legacy de Festa por algunos meses. Esta versión tenía una arquitectura monolítica y estaba construida con PHP y jQuery."
-					],
-					"skills": [
-						"JavaScript",
-						"Angular.js",
-						"Bootstrap Material",
-						"Node.js",
-						"Sails.js",
-						"MongoDB",
-						"Firebase",
-						"PHP",
-						"jQuery"
-					],
-					"summary": "Festa era una plataforma para escuchar música de YouTube y crear listas de reproducción colaborativas entre varias personas. Me uní a esta empresa como desarrollador de software junior."
-				},
-				"endDate": "dic 2016",
-				"id": "es-festa-music-app-6",
-				"mode": "Presencial (Armenia, Quindío)",
-				"role": "Junior Software Developer",
-				"startDate": "abr 2015"
+					"website": "https://www.linkedin.com/company/festa",
+					"linkedin": "https://www.linkedin.com/company/festa"
+				}
 			}
 		],
-		"fullName": "Diego Fernando Rayo Zamora",
-		"headline": "Desarrollador de Software | JavaScript, TypeScript, React y Node.js",
+		"education": [
+			{
+				"institution": "Universidad del Quindío",
+				"institutionLogo": "/assets/pages/resume/images/uniquindio.png",
+				"institutionWebsite": "https://www.uniquindio.edu.co",
+				"area": "Ingeniería de Sistemas y Computación",
+				"studyType": "Pregrado en Ingeniería",
+				"startDate": "2010-12-31",
+				"endDate": "2018-12-31"
+			},
+			{
+				"institution": "Platzi",
+				"institutionWebsite": "https://platzi.com/@diegofrayo",
+				"institutionLogo": "/assets/pages/resume/images/platzi.webp",
+				"area": "Programación e inglés",
+				"studyType": "Cursos",
+				"startDate": "",
+				"endDate": ""
+			}
+		],
 		"languages": [
-			{
-				"fluency": "Hablante nativo",
-				"language": "Español"
-			},
-			{
-				"fluency": "Básico conversacional B1",
-				"language": "Inglés"
-			}
+			{ "language": "Español", "fluency": "Hablante nativo" },
+			{ "language": "Inglés", "fluency": "Intermedio conversacional B2" }
 		],
-		"location": {
-			"currently": {
-				"city": "Armenia, Quindío",
-				"country": "Colombia"
+		"skills": [
+			{
+				"category": "Alta experiencia",
+				"items": [
+					"React",
+					"JavaScript",
+					"TypeScript",
+					"Next.js",
+					"Tailwind CSS",
+					"Node.js",
+					"React testing library / Jest / Vitest"
+				]
 			},
-			"from": {
-				"city": "Armenia, Quindío",
-				"country": "Colombia"
+			{
+				"category": "Considerable experiencia",
+				"items": ["Firebase", "Auth0", "GraphQL", "MySQL / Postgres", "React Native", "Sails.js"]
+			},
+			{
+				"category": "Poca experiencia",
+				"items": [
+					"MongoDB",
+					"ElasticSearch",
+					"Redis",
+					"Puppeteer",
+					"Svelte",
+					"Angular.js",
+					"Three.js",
+					"jQuery",
+					"Bootstrap",
+					"PHP"
+				]
 			}
-		},
-		"profilePhoto": "/assets/pages/resume/images/profile-photo.jpg",
-		"shortName": "Diego Rayo",
-		"skills": {
-			"1-high": [
-				"React",
-				"JavaScript",
-				"TypeScript",
-				"Next.js",
-				"Tailwind CSS",
-				"Node.js",
-				"React testing library / Cypress / Jest / Vitest"
-			],
-			"2-medium": [
-				"Firebase",
-				"Auth0",
-				"AWS",
-				"React Native",
-				"Redux",
-				"GraphQL",
-				"Prisma.io",
-				"Sails.js"
-			],
-			"3-low": [
-				"MongoDB",
-				"MySQL",
-				"Postgres",
-				"ElasticSearch",
-				"Redis",
-				"Puppeteer",
-				"Svelte",
-				"Angular.js",
-				"Three.js",
-				"jQuery",
-				"PHP"
-			]
-		},
-		"summary": "Soy desarrollador de software con más de 8 años de experiencia diseñando, implementando y manteniendo proyectos web usando JavaScript como lenguaje principal. Tengo habilidades en un amplio rango de tecnologías y librerías tanto en Front-end como en Back-end, además de experiencia creando aplicaciones móviles con frameworks multiplataforma como React Native. La mayor parte de mi experiencia ha sido trabajando de forma remota."
+		]
 	}
 }

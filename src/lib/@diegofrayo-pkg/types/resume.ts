@@ -1,138 +1,84 @@
-export type ResumeDBModel = {
-	$schema: string;
-	basics: {
-		name: string;
-		label: string;
-		image: string;
-		email: string;
-		phone: string;
-		url: string;
-		summary: string;
-		location: {
-			countryCode: string;
-			address: string;
-		};
-		profiles: Array<{
-			network: string;
-			username: string;
-			url: string;
-		}>;
-	};
-	work: Array<{
-		name: string;
-		position: string;
-		startDate: string;
-		endDate: string;
-		highlights: Array<[]>;
-		summary: string;
-		url: string;
-		location?: string;
-	}>;
-	volunteer: Array<[]>;
-	education: Array<{
-		institution: string;
-		area: string;
-		studyType: string;
-		startDate: string;
-		endDate: string;
-		score: string;
-		courses: Array<[]>;
-	}>;
-	awards: Array<[]>;
-	certificates: Array<[]>;
-	publications: Array<[]>;
-	skills: Array<{
-		name: string;
-		level: string;
-		keywords: Array<[]>;
-	}>;
-	languages: Array<{
-		fluency: string;
-		language: string;
-	}>;
-	interests: Array<[]>;
-	references: Array<[]>;
-	projects: Array<[]>;
-	meta: {
-		version: string;
-		canonical: string;
-	};
-};
-
-export type ResumeEnhancementsDBModel = {
-	profilePhoto: string;
-	shortName: string;
-	location: Location;
-	websites: Website[];
-	education: Education[];
-	experience: {
-		company: Omit<Experience["company"], "name">;
-		mode: string;
-	}[];
-	skills: {
-		strong: string[];
-		intermediate: string[];
-		others: string[];
-	};
-	languages: ResumeDBModel["languages"];
-};
-
-export type Resume = {
-	profilePhoto: string;
-	fullName: string;
-	shortName: string;
-	headline: string;
-	location: Location;
+export interface RawResume {
 	contactInfo: ContactInfo;
 	summary: string;
+	experience: RawExperience[];
 	education: Education[];
+	languages: Language[];
+	skills: Skill[];
+}
+
+export interface Resume {
+	contactInfo: ContactInfo;
+	summary: string;
 	experience: Experience[];
-	skills: ResumeEnhancementsDBModel["skills"];
-	languages: ResumeDBModel["languages"];
-};
+	education: Education[];
+	languages: Language[];
+	skills: Skill[];
+}
 
-type Location = {
-	from: { country: string; city: string };
-	currently: { country: string; city: string };
-};
-
-type ContactInfo = {
-	linkedin: string;
-	websites: Website[];
-	email: string;
-};
-
-type Website = {
+export interface ContactInfo {
 	name: string;
-	value: string;
-};
+	label: string;
+	email: string;
+	phone: string;
+	image: string;
+	website: string;
+	location: Location;
+	profiles: Profile[];
+}
 
-type Education = {
-	id: string;
-	school: string;
-	schoolWebsite: string;
-	schoolLogo: string;
-	degree: string;
-	startDate: string;
-	endDate: string;
-};
+export interface Location {
+	countryCode: string;
+	address: string;
+}
 
-type Experience = {
+export interface Profile {
+	network: string;
+	username: string;
+	url: string;
+}
+
+export type RawExperience = {
 	id: string;
+	name: string;
 	role: string;
-	company: {
-		name: string;
-		logo: string;
-		website: string;
-	};
 	startDate: string;
 	endDate: string;
 	mode: string;
-	description: ResumeExperienceDescription;
+	location: string;
+	summary: string;
+	achievements: string;
+	skills: string;
+	company: Company;
 };
 
-export type ResumeExperienceDescription = {
-	summary: string;
-	achievements?: string[];
+export type Experience = Omit<RawExperience, "achievements" | "skills"> & {
+	achievements: string[];
 	skills: string[];
 };
+
+export interface Company {
+	logo: string;
+	website: string;
+	linkedin: string;
+}
+
+export interface Education {
+	institution: string;
+	institutionLogo: string;
+	institutionWebsite: string;
+	area: string;
+	studyType: string;
+	startDate: string;
+	endDate: string;
+}
+
+export interface Language {
+	language: string;
+	fluency: string;
+}
+
+export interface Skill {
+	category: string;
+	items: string[];
+}

@@ -7,7 +7,6 @@ import {
 	IconCatalog,
 	InlineText,
 	Link,
-	Text,
 	Title,
 } from "@diegofrayo-features/components/primitive";
 import { TypingTextEffect } from "@diegofrayo-features/components/shared";
@@ -133,33 +132,28 @@ function Footer() {
 			as="footer"
 			className="text-center"
 		>
-			<Box className="flex justify-center gap-2">
+			<Box className="inline-flex justify-center gap-2 rounded-2xl border border-zinc-200 bg-zinc-100 px-2 py-1">
 				{SOCIAL_ICONS.map((item) => {
 					const key = pipe(join([`Footer`, item.name], "-"), generateSlug);
 
 					return (
 						<Link
 							key={key}
-							variant={Link.variant.SMOOTH}
 							href={item.url}
 							onClick={AnalyticsService.trackClickEvent("HOME_PAGE|SOCIAL_NETWORKS", {
 								item: item.name,
 							})}
+							className="transition-call inline-flex items-center justify-center rounded-lg p-1 text-black duration-200 hover:bg-zinc-600 hover:px-2 hover:text-white"
 							isExternalLink
 						>
 							<Icon
 								icon={item.icon}
-								size={32}
+								size={24}
 							/>
 						</Link>
 					);
 				})}
 			</Box>
-
-			<Text className="mt-1 text-sm">
-				<InlineText>© 2026 All rights reserved | Coded by </InlineText>
-				<InlineText as="strong">{WEBSITE_METADATA.shortName}</InlineText>
-			</Text>
 		</Box>
 	);
 }

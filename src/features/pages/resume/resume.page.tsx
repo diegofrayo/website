@@ -5,7 +5,7 @@ import cn from "@diegofrayo-pkg/cn";
 import type DR from "@diegofrayo-pkg/types";
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
-import { isNotEmptyString } from "@diegofrayo-pkg/validator";
+import { isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
 import AnalyticsService from "@diegofrayo-features/analytics";
 import { WithAuth } from "@diegofrayo-features/auth";
 import {
@@ -24,7 +24,6 @@ import {
 } from "@diegofrayo-features/components/primitive";
 
 import { MainLayout, Page } from "~/components/layout";
-import { WEBSITE_METADATA } from "~/constants";
 
 import { IntlContext, IntlProviderValue, useIntl } from "./resume.context";
 
@@ -43,7 +42,7 @@ function ResumePage({ data }: ResumePageProps) {
 	const [lang, setLang] = useState<"ES" | "EN">("EN");
 
 	// --- COMPUTED STATES ---
-	const currentData = data[lang.toLowerCase() as Lowercase<typeof lang>];
+	const currentData: Resume = data[lang.toLowerCase() as Lowercase<typeof lang>];
 
 	// --- EFFECTS ---
 	useEffect(
@@ -51,7 +50,7 @@ function ResumePage({ data }: ResumePageProps) {
 			const tag = document.getElementById("print-styles");
 
 			if (tag) {
-				tag.innerHTML = viewMode === "SHORT" ? SHORMODE_STYLES : FULL_MODE_STYLES;
+				tag.innerHTML = viewMode === "SHORT" ? SHORT_MODE_STYLES : FULL_MODE_STYLES;
 			}
 		},
 		[viewMode],
@@ -173,7 +172,7 @@ export default ResumePage;
 
 // --- COMPONENTS ---
 
-function ShortMode({ data }: { data: ResumePageProps["data"][keyof ResumePageProps["data"]] }) {
+function ShortMode({ data }: { data: Resume }) {
 	// --- HOOKS ---
 	const texts = useIntl();
 
@@ -187,10 +186,10 @@ function ShortMode({ data }: { data: ResumePageProps["data"][keyof ResumePagePro
 					as="h1"
 					size={Title.size.LG}
 				>
-					{data.shortName}
+					{data.contactInfo.name}
 				</Title>
 
-				<Text>{data.headline}</Text>
+				<Text>{data.contactInfo.label}</Text>
 				<Space size={1.5} />
 
 				<Box className="flex items-center justify-center gap-3 text-black">
@@ -204,7 +203,7 @@ function ShortMode({ data }: { data: ResumePageProps["data"][keyof ResumePagePro
 					</Link>
 					<Link
 						variant={Link.variant.SMOOTH}
-						href={data.contactInfo.websites[1].value}
+						href={data.contactInfo.website}
 						className="font-bold text-zinc-800 underline"
 						isExternalLink
 					>
@@ -212,19 +211,19 @@ function ShortMode({ data }: { data: ResumePageProps["data"][keyof ResumePagePro
 					</Link>
 					<Link
 						variant={Link.variant.SMOOTH}
-						href={data.contactInfo.websites[0].value}
-						className="font-bold text-zinc-800 underline"
-						isExternalLink
-					>
-						<GithubIcon size={24} />
-					</Link>
-					<Link
-						variant={Link.variant.SMOOTH}
-						href={WEBSITE_METADATA.social.linkedin}
+						href={data.contactInfo.profiles[1].url}
 						className="font-bold text-zinc-800 underline"
 						isExternalLink
 					>
 						<LinkedinIcon size={24} />
+					</Link>
+					<Link
+						variant={Link.variant.SMOOTH}
+						href={data.contactInfo.profiles[0].url}
+						className="font-bold text-zinc-800 underline"
+						isExternalLink
+					>
+						<GithubIcon size={24} />
 					</Link>
 				</Box>
 				<Space size={1.5} />
@@ -232,11 +231,9 @@ function ShortMode({ data }: { data: ResumePageProps["data"][keyof ResumePagePro
 				<Text className="text-xs">
 					<Icon
 						icon={IconCatalog.MAP_PIN}
-						wrapperClassName="mr-0.5 align-middle"
+						wrapperClassName="mr-0.5"
 					/>
-					<InlineText className="align-middle">
-						{data.location.from.city.split(",")[1].trim()}, {data.location.from.country}
-					</InlineText>
+					<InlineText className="align-middle">{`${data.contactInfo.location.address} (${data.contactInfo.location.countryCode})`}</InlineText>
 				</Text>
 			</Box>
 
@@ -255,20 +252,20 @@ function ShortMode({ data }: { data: ResumePageProps["data"][keyof ResumePagePro
 					{data.education.map((item) => {
 						return (
 							<Box
-								key={item.id}
+								key={generateSlug(`short-education-${item.institution}`)}
 								className="mb-3 last:mb-0"
 							>
-								<Text className="-mb-1 font-bold">{item.degree}</Text>
+								<Text className="-mb-1 font-bold">{`${item.area} (${item.studyType})`}</Text>
 								<Link
 									variant={Link.variant.SMOOTH}
-									href={item.schoolWebsite}
+									href={item.institutionWebsite}
 									className="text-sm underline"
 									onClick={AnalyticsService.trackClickEvent("RESUME|EDUCATION", {
-										item: item.school,
+										item: item.institution,
 									})}
 									isExternalLink
 								>
-									{item.school}
+									{item.institution}
 								</Link>
 								{item.startDate ? (
 									<Text className="text-xs lowercase italic">
@@ -288,8 +285,8 @@ function ShortMode({ data }: { data: ResumePageProps["data"][keyof ResumePagePro
 					{data.experience.map((item) => {
 						return (
 							<Box
-								key={item.id}
-								className="mb-6 break-inside-avoid last:mb-0"
+								key={generateSlug(`short-experience-${item.id}`)}
+								className="mb-8 break-inside-avoid last:mb-0"
 							>
 								<Box className="flex items-end justify-between gap-4">
 									<Title
@@ -303,14 +300,14 @@ function ShortMode({ data }: { data: ResumePageProps["data"][keyof ResumePagePro
 												href={item.company.website}
 												className="underline"
 												onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", {
-													item: item.company.name,
+													item: item.name,
 												})}
 												isExternalLink
 											>
-												{item.company.name}
+												{item.name}
 											</Link>
 										) : (
-											<Text>{item.company.name}</Text>
+											<Text>{item.name}</Text>
 										)}
 									</Title>
 									<Text className="shrink-0 text-right text-xs leading-none lowercase">
@@ -320,51 +317,41 @@ function ShortMode({ data }: { data: ResumePageProps["data"][keyof ResumePagePro
 								<Space size={0.5} />
 								<Box className="flex items-end justify-between gap-4 text-xs italic">
 									<Text className="shrink-0 leading-none">{item.role}</Text>
-									<Text className="pr-px text-right leading-none capitalize sm:hidden">
-										{item.mode.split(" (")[0]}
-									</Text>
-									<Text className="hidden text-right leading-none capitalize sm:inline-block">
+									<Text className="inline-block text-right leading-none capitalize">
 										{item.mode}
 									</Text>
 								</Box>
 								<Space size={1} />
 
-								<Box>
-									<Text>{item.description.summary}</Text>
-									<Space size={1} />
+								<Box className="flex flex-col gap-1">
+									<Text>{item.summary}</Text>
 
-									{item.description.achievements ? (
-										<>
-											<List
-												variant={List.variant.SIMPLE}
-												className="mx-1"
-											>
-												{item.description.achievements.map((achievement, index) => {
-													return (
-														<List.Item key={generateSlug(`short-${item.id}-achievement-${index}`)}>
-															{achievement}
-														</List.Item>
-													);
-												})}
-											</List>
-											<Space size={1} />
-										</>
-									) : null}
-
-									<Box>
-										<Text className="text-sm font-bold">{texts.SKILLS}:</Text>
-										<Box className="flex flex-wrap items-center gap-x-2 gap-y-1 p-1">
-											{item.description.skills.map((skill, index) => {
+									{isNotEmptyArray(item.achievements) ? (
+										<List
+											variant={List.variant.SIMPLE}
+											className="mx-1"
+										>
+											{item.achievements.map((achievement, index) => {
 												return (
-													<Skill
-														key={generateSlug(`${item.id}-${skill}`)}
-														className={cn({ "print:hidden": index > 7 })}
-													>
-														{skill}
-													</Skill>
+													<List.Item key={generateSlug(`short-${item.id}-achievement-${index}`)}>
+														{achievement}
+													</List.Item>
 												);
 											})}
-										</Box>
+										</List>
+									) : null}
+
+									<Box className="flex flex-wrap items-center gap-x-1 gap-y-1">
+										{item.skills.map((skill, index) => {
+											return (
+												<Skill
+													key={generateSlug(`${item.id}-${skill}`)}
+													className={cn({ "print:hidden": index > 7 })}
+												>
+													{skill}
+												</Skill>
+											);
+										})}
 									</Box>
 								</Box>
 							</Box>
@@ -373,15 +360,15 @@ function ShortMode({ data }: { data: ResumePageProps["data"][keyof ResumePagePro
 				</ResumeBox>
 
 				<OtherSection
-					data={data}
 					variant="SHORT"
+					data={data}
 				/>
 			</Box>
 		</Box>
 	);
 }
 
-function FullMode({ data }: { data: ResumePageProps["data"][keyof ResumePageProps["data"]] }) {
+function FullMode({ data }: { data: Resume }) {
 	// --- HOOKS ---
 	const texts = useIntl();
 
@@ -396,16 +383,15 @@ function FullMode({ data }: { data: ResumePageProps["data"][keyof ResumePageProp
 					variant={Title.variant.SIMPLE}
 					size={Title.size.XL}
 				>
-					{data.fullName}
+					{data.contactInfo.name}
 				</Title>
 				<Space size={2} />
 
-				<Text>{data.headline}</Text>
+				<Text>{data.contactInfo.label}</Text>
 				<Space size={1} />
 
 				<Text className="text-sm italic">
-					<InlineText>{data.location.from.city}</InlineText> <InlineText> / </InlineText>
-					<InlineText>{data.location.from.country}</InlineText>
+					<InlineText className="align-middle">{`${data.contactInfo.location.address} (${data.contactInfo.location.countryCode})`}</InlineText>
 				</Text>
 				<Space size={2} />
 
@@ -427,10 +413,25 @@ function FullMode({ data }: { data: ResumePageProps["data"][keyof ResumePageProp
 					</Link>
 					<Link
 						variant={Link.variant.SMOOTH}
-						href={data.contactInfo.linkedin}
+						href={data.contactInfo.website}
 						className="inline-block"
 						onClick={AnalyticsService.trackClickEvent("RESUME|SOCIAL_NETWORK", {
-							item: "linkedin",
+							item: "website",
+						})}
+						isExternalLink
+					>
+						<Icon
+							icon={IconCatalog.LINK}
+							size={28}
+							color="text-black"
+						/>
+					</Link>
+					<Link
+						variant={Link.variant.SMOOTH}
+						href={data.contactInfo.profiles[0].url}
+						className="inline-block"
+						onClick={AnalyticsService.trackClickEvent("RESUME|SOCIAL_NETWORK", {
+							item: data.contactInfo.profiles[0].network,
 						})}
 						isExternalLink
 					>
@@ -440,36 +441,21 @@ function FullMode({ data }: { data: ResumePageProps["data"][keyof ResumePageProp
 							iconClassName="p-1"
 						/>
 					</Link>
-					{data.contactInfo.websites.map((website) => {
-						const isPersonalWebsite = website.name.toLowerCase().includes("web");
-
-						return (
-							<Link
-								key={generateSlug(website.name)}
-								variant={Link.variant.SMOOTH}
-								href={website.value}
-								className="inline-block"
-								onClick={AnalyticsService.trackClickEvent("RESUME|SOCIAL_NETWORK", {
-									item: isPersonalWebsite ? "website" : "github",
-								})}
-								isExternalLink
-							>
-								{isPersonalWebsite ? (
-									<Icon
-										icon={IconCatalog.LINK}
-										size={28}
-										color="text-black"
-									/>
-								) : (
-									<Icon
-										icon={IconCatalog.GITHUB}
-										size={36}
-										iconClassName="p-1"
-									/>
-								)}
-							</Link>
-						);
-					})}
+					<Link
+						variant={Link.variant.SMOOTH}
+						href={data.contactInfo.profiles[1].url}
+						className="inline-block"
+						onClick={AnalyticsService.trackClickEvent("RESUME|SOCIAL_NETWORK", {
+							item: data.contactInfo.profiles[1].network,
+						})}
+						isExternalLink
+					>
+						<Icon
+							icon={IconCatalog.GITHUB}
+							size={36}
+							iconClassName="p-1"
+						/>
+					</Link>
 				</Box>
 			</Box>
 
@@ -493,12 +479,12 @@ function FullMode({ data }: { data: ResumePageProps["data"][keyof ResumePageProp
 					{data.education.map((item) => {
 						return (
 							<Box
-								key={item.id}
+								key={generateSlug(`short-education-${item.institution}`)}
 								className="mb-4 flex items-start last:mb-0"
 							>
 								<Image
-									src={item.schoolLogo}
-									alt={`${item.school} logo`}
+									src={item.institutionLogo}
+									alt={`${item.institution} logo`}
 									className="relative top-1 mr-2 shrink-0"
 									width={48}
 									height={48}
@@ -508,18 +494,18 @@ function FullMode({ data }: { data: ResumePageProps["data"][keyof ResumePageProp
 										as="h3"
 										size={Title.size.MD}
 									>
-										{item.degree}
+										{item.area}
 									</Title>
 									<Link
 										variant={Link.variant.SMOOTH}
-										href={item.schoolWebsite}
+										href={item.institutionWebsite}
 										className="underline"
 										onClick={AnalyticsService.trackClickEvent("RESUME|EDUCATION", {
-											item: item.school,
+											item: item.institution,
 										})}
 										isExternalLink
 									>
-										{item.school}
+										{item.institution}
 									</Link>
 									{item.startDate ? (
 										<Text className="text-xs lowercase italic">
@@ -567,7 +553,7 @@ function ResumeBox({ title, children, variant, style }: ResumeBoxProps) {
 				<Title
 					as="h2"
 					variant={Title.variant.UNSTYLED}
-					className="mb-1 text-left text-lg uppercase"
+					className="mb-1 text-left text-xl uppercase"
 				>
 					{title}
 				</Title>
@@ -594,15 +580,11 @@ function ResumeBox({ title, children, variant, style }: ResumeBoxProps) {
 	);
 }
 
-type ExperienceTimelineProps = {
-	experience: Resume["experience"];
-};
-
 function Skill({ children, className }: { children: string; className?: string }) {
 	return (
 		<InlineText
 			className={cn(
-				"inline-block font-mono text-xs leading-tight text-zinc-500 lowercase underline",
+				"inline-block rounded-md border border-zinc-400 bg-zinc-200 px-2.5 py-1 font-mono text-xs leading-tight font-semibold text-zinc-700",
 				className,
 			)}
 		>
@@ -611,34 +593,128 @@ function Skill({ children, className }: { children: string; className?: string }
 	);
 }
 
-function OtherSection({
-	data,
-	variant,
-}: {
-	data: ResumePageProps["data"][keyof ResumePageProps["data"]];
-	variant: "SHORT" | "FULL";
-}) {
+type ExperienceTimelineProps = {
+	experience: Resume["experience"];
+};
+
+function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
 	// --- HOOKS ---
 	const texts = useIntl();
 
 	return (
-		<ResumeBox
-			variant={variant}
-			title={texts.OTHER}
-			style={{ pageBreakInside: "avoid" }}
-		>
-			<Box>
-				<Text className="font-bold">{texts.SKILLS}:</Text>
+		<Box className="ml-2 border-l-2 border-black print:border-0">
+			{experience.map(
+				({ id, name, role, company, startDate, endDate, summary, mode, achievements, skills }) => {
+					return (
+						<Box
+							key={id}
+							as="section"
+							className="relative mb-6 pl-8 last:mb-0 sm:pl-10"
+							style={{ pageBreakInside: "avoid" }}
+						>
+							<Box className="absolute top-0 -left-2 size-8 overflow-hidden border-2 border-black bg-white sm:size-10">
+								<Image
+									src={company.logo}
+									alt="Company logo"
+									fill
+								/>
+							</Box>
+
+							<Box>
+								<Box>
+									<Box className="mb-0.5 flex items-end justify-between gap-4">
+										<Title
+											as="h3"
+											size={Title.size.SM}
+											className="leading-none text-black"
+										>
+											{isNotEmptyString(company.website) ? (
+												<Link
+													variant={Link.variant.SMOOTH}
+													className="text-black underline"
+													href={company.website}
+													onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", {
+														item: name,
+													})}
+													isExternalLink
+												>
+													{name}
+												</Link>
+											) : (
+												name
+											)}
+										</Title>
+										<Text className="text-xs lowercase sm:text-sm">
+											<InlineText>{startDate}</InlineText> /{" "}
+											<InlineText>{endDate || texts.PRESENT}</InlineText>
+										</Text>
+									</Box>
+									<Box className="flex justify-between gap-4 text-xs italic">
+										<Text className="shrink-0">{role}</Text>
+										<Text className="truncate pr-px text-right capitalize">
+											{mode.split(" (")[0]}
+										</Text>
+									</Box>
+								</Box>
+								<Space size={1} />
+
+								<Text className="print:text-sm">{summary}</Text>
+								<Space size={1} />
+
+								{isNotEmptyArray(achievements) ? (
+									<>
+										<List
+											variant={List.variant.SIMPLE}
+											className="mx-1"
+										>
+											{achievements.map((item, index) => {
+												return (
+													<List.Item key={generateSlug(`full-${id}-achievements-${index}`)}>
+														{item}
+													</List.Item>
+												);
+											})}
+										</List>
+										<Space size={1} />
+									</>
+								) : null}
+
+								<Text className="font-bold">{texts.SKILLS}:</Text>
+								<Box className="flex flex-wrap items-center gap-x-1 gap-y-1 p-1">
+									{skills.map((skill) => {
+										return <Skill key={generateSlug(`${id}-${skill}`)}>{skill}</Skill>;
+									})}
+								</Box>
+							</Box>
+						</Box>
+					);
+				},
+			)}
+		</Box>
+	);
+}
+
+function OtherSection({ data, variant }: { data: Resume; variant: "SHORT" | "FULL" }) {
+	// --- HOOKS ---
+	const texts = useIntl();
+
+	return (
+		<>
+			<ResumeBox
+				variant={variant}
+				title={texts.SKILLS}
+				style={{ pageBreakInside: "avoid" }}
+			>
 				<List
 					variant={List.variant.SIMPLE}
 					className="ml-1"
 				>
-					{Object.entries(data.skills).map(([, value], index) => {
+					{data.skills.map((item, index) => {
 						return (
-							<List.Item key={generateSlug(`short-skills-label-${value[0]}`)}>
+							<List.Item key={generateSlug(`short-skills-label-${item.category}`)}>
 								<Text>{texts[`SKILLS_L${index + 1}` as keyof typeof texts]}:</Text>
-								<Box className="mt-1 mb-3 flex flex-wrap items-center gap-x-2 gap-y-1">
-									{value.map((item) => {
+								<Box className="mt-1 mb-3 flex flex-wrap items-center gap-x-1 gap-y-1">
+									{item.items.map((item) => {
 										return <Skill key={`short-skills-tech-stack-${item}`}>{item}</Skill>;
 									})}
 								</Box>
@@ -646,11 +722,15 @@ function OtherSection({
 						);
 					})}
 				</List>
-			</Box>
+			</ResumeBox>
+
 			<Space size={2} />
 
-			<Box>
-				<Text className="font-bold">{texts.LANGUAGES}:</Text>
+			<ResumeBox
+				variant={variant}
+				title={texts.LANGUAGES}
+				style={{ pageBreakInside: "avoid" }}
+			>
 				<List
 					variant={List.variant.SIMPLE}
 					className="ml-1"
@@ -663,109 +743,14 @@ function OtherSection({
 						);
 					})}
 				</List>
-			</Box>
-		</ResumeBox>
-	);
-}
-
-function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
-	// --- HOOKS ---
-	const texts = useIntl();
-
-	return (
-		<Box className="ml-2 border-l-2 border-black print:border-0">
-			{experience.map(({ id, role, company, startDate, endDate, description, mode }) => {
-				return (
-					<Box
-						key={id}
-						as="section"
-						className="relative mb-6 pl-8 last:mb-0 sm:pl-10"
-						style={{ pageBreakInside: "avoid" }}
-					>
-						<Box className="absolute top-0 -left-2 size-8 overflow-hidden border-2 border-black bg-white sm:size-10">
-							<Image
-								src={company.logo}
-								alt="Company logo"
-								fill
-							/>
-						</Box>
-
-						<Box>
-							<Box>
-								<Box className="mb-0.5 flex items-end justify-between gap-4">
-									<Title
-										as="h3"
-										size={Title.size.SM}
-										className="leading-none text-black"
-									>
-										{isNotEmptyString(company.website) ? (
-											<Link
-												variant={Link.variant.SMOOTH}
-												className="text-black underline"
-												href={company.website}
-												onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", {
-													item: company.name,
-												})}
-												isExternalLink
-											>
-												{company.name}
-											</Link>
-										) : (
-											company.name
-										)}
-									</Title>
-									<Text className="text-xs lowercase sm:text-sm">
-										<InlineText>{startDate}</InlineText> /{" "}
-										<InlineText>{endDate || texts.PRESENT}</InlineText>
-									</Text>
-								</Box>
-								<Box className="flex justify-between gap-4 text-xs italic">
-									<Text className="shrink-0">{role}</Text>
-									<Text className="truncate pr-px text-right capitalize">
-										{mode.split(" (")[0]}
-									</Text>
-								</Box>
-							</Box>
-							<Space size={1} />
-
-							<Text className="print:text-sm">{description.summary}</Text>
-							<Space size={1} />
-
-							{description.achievements ? (
-								<>
-									<List
-										variant={List.variant.SIMPLE}
-										className="mx-1"
-									>
-										{description.achievements.map((item, index) => {
-											return (
-												<List.Item key={generateSlug(`full-${id}-achievements-${index}`)}>
-													{item}
-												</List.Item>
-											);
-										})}
-									</List>
-									<Space size={1} />
-								</>
-							) : null}
-
-							<Text className="font-bold">{texts.SKILLS}:</Text>
-							<Box className="flex flex-wrap items-center gap-x-2 gap-y-1 p-1">
-								{description.skills.map((skill) => {
-									return <Skill key={generateSlug(`${id}-${skill}`)}>{skill}</Skill>;
-								})}
-							</Box>
-						</Box>
-					</Box>
-				);
-			})}
-		</Box>
+			</ResumeBox>
+		</>
 	);
 }
 
 // --- STYLES ---
 
-const SHORMODE_STYLES = `
+const SHORT_MODE_STYLES = `
   @media print {
     @page {
       margin: 0cm;
@@ -793,7 +778,7 @@ const FULL_MODE_STYLES = `
 const metadata = {
 	title: "Resume",
 	description:
-		"I'm a Software Developer. Focused on JavaScript, TypeScript, React, Next.js, Tailwind CSS, and Node.js",
+		"Software Developer based in Colombia with over 8 years of experience designing, developing, and maintaining web applications. My primary focus is on front-end development, building user interfaces with JavaScript, TypeScript, and React. I also have experience working across the full stack, including back-end development, and have developed mobile applications using cross-platform frameworks such as React Native. Most of my experience comes from working in startup environments.",
 	is_seo_enabled: true,
 	pathname: "/resume",
 };
