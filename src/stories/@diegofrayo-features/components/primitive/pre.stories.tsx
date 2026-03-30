@@ -11,7 +11,7 @@ const meta: Meta<typeof Pre> = {
 	argTypes: {
 		variant: {
 			control: "radio",
-			options: ["UNSTYLED", "BREAK_WITH_BLANK_LINES", "BREAK_WITH_BLANK_SPACES", "BREAK_WORDS"],
+			options: Object.values(Pre.variant),
 		},
 		children: { control: "text" },
 		className: { control: "text" },

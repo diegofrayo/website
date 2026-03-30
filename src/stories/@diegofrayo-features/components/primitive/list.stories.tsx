@@ -11,7 +11,7 @@ const meta: Meta<typeof List> = {
 	argTypes: {
 		variant: {
 			control: "radio",
-			options: ["UNSTYLED", "SIMPLE"],
+			options: Object.values(List.variant),
 		},
 		className: { control: "text" },
 		children: { control: "object" },

@@ -12,7 +12,7 @@ const meta: Meta<typeof Link> = {
 		href: { control: "text" },
 		variant: {
 			control: "radio",
-			options: ["UNSTYLED", "SMOOTH", "STYLED"],
+			options: Object.values(Link.variant),
 		},
 		children: { control: "text" },
 		className: { control: "text" },

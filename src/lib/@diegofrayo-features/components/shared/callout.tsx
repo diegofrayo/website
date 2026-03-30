@@ -57,7 +57,7 @@ export default Callout;
 const styles = cva("", {
 	variants: {
 		variant: {
-			[Variant.ERROR]: "",
+			[Variant.ERROR]: "border border-red-300 bg-red-100 text-red-700",
 			[Variant.WARNING]: "border border-amber-300 bg-amber-100 text-amber-700",
 		},
 	},

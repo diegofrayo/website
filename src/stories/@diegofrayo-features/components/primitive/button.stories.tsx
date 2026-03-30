@@ -15,7 +15,7 @@ const meta: Meta<typeof Button> = {
 		},
 		variant: {
 			control: "radio",
-			options: ["UNSTYLED", "SMOOTH", "STYLED"],
+			options: Object.values(Button.variant),
 		},
 		disabled: {
 			control: "boolean",

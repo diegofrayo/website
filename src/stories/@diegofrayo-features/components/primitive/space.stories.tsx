@@ -11,7 +11,7 @@ const meta: Meta<typeof Space> = {
 	argTypes: {
 		variant: {
 			control: "radio",
-			options: ["UNSTYLED", "SIMPLE", "DASHED"],
+			options: Object.values(Space.variant),
 		},
 		orientation: {
 			control: "radio",

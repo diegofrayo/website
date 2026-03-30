@@ -19,7 +19,7 @@ const meta: Meta<typeof Title> = {
 		},
 		variant: {
 			control: "radio",
-			options: ["UNSTYLED", "SIMPLE", "STYLED"],
+			options: Object.values(Title.variant),
 		},
 		children: { control: "text" },
 		className: { control: "text" },

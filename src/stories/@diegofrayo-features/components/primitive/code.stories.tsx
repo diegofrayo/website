@@ -12,7 +12,7 @@ const meta: Meta<typeof Code> = {
 		children: { control: "text" },
 		variant: {
 			control: "radio",
-			options: ["UNSTYLED", "ENHANCED"],
+			options: Object.values(Code.variant),
 		},
 		className: { control: "text" },
 	},
