@@ -14,8 +14,8 @@ import {
 import { MainLayout, Page } from "~/components/layout";
 import { Routes } from "~/constants";
 
-function PortfolioPage() {
-	const PORTFOLIO = [
+function ProjectsPage() {
+	const PROJECTS = [
 		{
 			title: "kordz",
 			icon: IconCatalog.GUITAR,
@@ -42,21 +42,21 @@ function PortfolioPage() {
 	return (
 		<Page
 			config={{
-				title: "Portfolio",
+				title: "Projects",
 				description: "Some projects for learning purposes and personal use",
-				pathname: "/portfolio",
+				pathname: "/projects",
 				isSEOEnabled: false,
 			}}
 		>
-			<MainLayout title="Portfolio">
+			<MainLayout title="Projects">
 				<Box className="mx-auto flex w-full max-w-sm flex-col gap-3">
 					<Text className="mb-2 text-center text-sm italic">
 						Some side projects for personal use
 					</Text>
-					{PORTFOLIO.map((item, index) => {
+					{PROJECTS.map((item, index) => {
 						return (
 							<ProjectBox
-								key={generateSlug(`PortfolioPage-item-ProjectBox-${index}`)}
+								key={generateSlug(`ProjectsPage-item-ProjectBox-${index}`)}
 								item={item}
 							/>
 						);
@@ -67,7 +67,7 @@ function PortfolioPage() {
 	);
 }
 
-export default PortfolioPage;
+export default ProjectsPage;
 
 // --- COMPONENTS ---
 
@@ -100,7 +100,7 @@ function ProjectBox({ item }: { item: Demo }) {
 					href={item.url}
 					variant={Link.variant.SMOOTH}
 					isExternalLink={isPWA() === false || !item.url.startsWith("/")}
-					onClick={AnalyticsService.trackClickEvent("PORTFOLIO|OPEN_PROJECT", {
+					onClick={AnalyticsService.trackClickEvent("PROJECTS|OPEN_PROJECT", {
 						project: item.title,
 					})}
 				>

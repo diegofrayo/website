@@ -3,5 +3,5 @@ export const Routes = {
 	BLOG: "/blog",
 	BLOG_POST: (slug: string) => `/blog/${slug}`,
 	RESUME: "/resume",
-	PORTFOLIO: "/portfolio",
+	PROJECTS: "/projects",
 } as const;

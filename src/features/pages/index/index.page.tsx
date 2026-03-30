@@ -72,7 +72,7 @@ function NavigationLinks() {
 	const LINKS = [
 		{ icon: IconCatalog.RSS, label: "Blog", url: Routes.BLOG },
 		{ icon: IconCatalog.ID_CARD, label: "Resume", url: Routes.RESUME },
-		{ icon: IconCatalog.CODE_XML, label: "Portfolio", url: Routes.PORTFOLIO },
+		{ icon: IconCatalog.CODE_XML, label: "Projects", url: Routes.PROJECTS },
 	];
 
 	return (
