@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 import { Box, Icon, IconCatalog } from "../primitive";
@@ -10,7 +10,7 @@ const Variant = mirror(["WARNING", "ERROR"]);
 type Variant = keyof typeof Variant;
 
 type CalloutProps = {
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 	variant?: Variant;
 };
 

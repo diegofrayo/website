@@ -1,7 +1,8 @@
 import dynamic from "next/dynamic";
 
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
-import type DR from "@diegofrayo-pkg/types";
+import type UtilsTypes from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isEmptyArray } from "@diegofrayo-pkg/validator";
 import AnalyticsService from "@diegofrayo-features/analytics";
@@ -75,7 +76,7 @@ export default BlogPostPage;
 
 // --- UTILS ---
 
-function getBlogPostDynamicComponents(componentsMap: DR.Object<string>) {
+function getBlogPostDynamicComponents(componentsMap: UtilsTypes.Object<string>) {
 	const COMPONENTS_PATHS_MAP = {
 		Playground: "../../../../common/components/shared/playground",
 		MFMAMGitHubRepo: "./components/my-favorite-music-and-mdx/MFMAMGitHubRepo",
@@ -83,7 +84,7 @@ function getBlogPostDynamicComponents(componentsMap: DR.Object<string>) {
 		MFMAMSpotifyPlaylist: "./components/my-favorite-music-and-mdx/MFMAMSpotifyPlaylist",
 		SPVEEQPlaces: "./components/sitios-para-visitar-en-el-quindio/SPVEEQPlaces",
 		SPVEEQRecommendations: "./components/sitios-para-visitar-en-el-quindio/SPVEEQRecommendations",
-	} as DR.Object<string>;
+	} as UtilsTypes.Object<string>;
 
 	const components = {
 		Callout,
@@ -91,7 +92,7 @@ function getBlogPostDynamicComponents(componentsMap: DR.Object<string>) {
 		ImageWithLink,
 		Toast,
 		Tooltip,
-	} as DR.Object;
+	} as UtilsTypes.Object;
 
 	Object.keys(componentsMap["Components"] || {}).forEach((componentName) => {
 		if (COMPONENTS_PATHS_MAP[componentName]) {
@@ -264,7 +265,7 @@ const BlogPostActions = withRenderInBrowser(function BlogPostActions() {
 });
 
 type BlogPostActionsItemWrapperProps = {
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 	popoverConfig: Omit<CopyToClipboardPopoverProps, "children"> | undefined;
 };
 

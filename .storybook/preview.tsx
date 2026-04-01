@@ -11,7 +11,7 @@ import type { Decorator, Preview } from "@storybook/nextjs-vite";
 	document.head.appendChild(style);
 })();
 
-const SetBodyAsVisibleDecorator: Decorator = (Story, context) => {
+const SetBodyAsVisibleDecorator: Decorator = (Story) => {
 	document.body.classList.add("visible");
 	return <Story />;
 };

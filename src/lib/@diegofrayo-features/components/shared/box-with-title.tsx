@@ -1,10 +1,10 @@
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box, Text } from "../primitive";
 
 type BoxWithTitleProps = {
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 	title: string;
 	className?: string;
 };

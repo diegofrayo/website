@@ -1,3 +1,5 @@
+/* eslint storybook/no-uninstalled-addons: 0 */
+
 import type { StorybookConfig } from "@storybook/nextjs-vite";
 
 const config: StorybookConfig = {

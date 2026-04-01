@@ -1,5 +1,5 @@
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { pipe, removeLastItem } from "@diegofrayo-pkg/utilities/fp";
 import { isEmptyString, isNotEmptyString } from "@diegofrayo-pkg/validator";
 import AnalyticsService from "@diegofrayo-features/analytics";
@@ -10,7 +10,7 @@ import Footer from "./components/footer";
 import Header from "./components/header";
 
 type MainLayoutProps = {
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 	className?: string;
 	contentClassName?: string;
 	title?: string;
@@ -52,7 +52,7 @@ export default MainLayout;
 // --- COMPONENTS ---
 
 type TitleSectionProps = {
-	style: DR.React.Styles;
+	style: ReactTypes.Styles;
 	title: string | undefined;
 };
 

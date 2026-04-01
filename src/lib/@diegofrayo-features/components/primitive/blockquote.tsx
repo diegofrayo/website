@@ -1,9 +1,9 @@
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 // --- PROPS & TYPES ---
 
-type BlockQuoteProps = DR.DOM.HTMLElementAttributes["blockquote"];
+type BlockQuoteProps = ReactTypes.DOM.HTMLElementAttributes["blockquote"];
 
 // --- COMPONENT DEFINITION ---
 

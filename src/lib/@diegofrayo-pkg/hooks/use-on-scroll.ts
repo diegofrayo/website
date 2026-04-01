@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 
-import type DR from "../types";
+import type UtilsTypes from "../types";
 
 type UseOnScrollProps = {
 	onScrollCallback: () => void;
@@ -11,7 +11,7 @@ type UseOnScrollProps = {
 function useOnScroll({ onScrollCallback, onScrollStopCallback, timeout = 3000 }: UseOnScrollProps) {
 	// --- STATES & REFS ---
 	const isMounted = useRef(false);
-	const isScrolling = useRef<DR.SetTimeout | undefined>(undefined);
+	const isScrolling = useRef<UtilsTypes.SetTimeout | undefined>(undefined);
 
 	// --- EFFECTS ---
 	useLayoutEffect(() => {

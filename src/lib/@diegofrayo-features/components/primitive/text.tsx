@@ -1,11 +1,11 @@
 import { isValidElement } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 // --- PROPS & TYPES ---
 
-type TextProps = DR.DOM.HTMLElementAttributes["p"];
+type TextProps = ReactTypes.DOM.HTMLElementAttributes["p"];
 
 // --- COMPONENT DEFINITION ---
 
@@ -24,7 +24,7 @@ export default Text;
 
 // --- UTILS ---
 
-function removeTextElements(children: DR.React.Children): DR.React.Children {
+function removeTextElements(children: ReactTypes.Children): ReactTypes.Children {
 	if (isValidElement<ChildElementProps>(children) && children.type === "p") {
 		return children.props.children;
 	}
@@ -35,5 +35,5 @@ function removeTextElements(children: DR.React.Children): DR.React.Children {
 // --- TYPES ---
 
 type ChildElementProps = {
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 };

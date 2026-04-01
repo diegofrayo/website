@@ -1,11 +1,11 @@
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 import { Box } from "../components/primitive";
 import { withAuth } from "./hocs";
 import type { AuthUserRole } from "./types";
 
 type WithAuthProps = {
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 	roles: AuthUserRole[];
 	asChild?: boolean;
 	className?: string;

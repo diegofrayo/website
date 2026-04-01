@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 import CopyToClipboardPopover from "../shared/copy-to-clipboard-popover";
@@ -11,7 +11,7 @@ import Button from "./button";
 
 const Variant = mirror(["UNSTYLED", "ENHANCED"]);
 type Variant = keyof typeof Variant;
-type CodeProps = DR.DOM.HTMLElementAttributes["code"] & {
+type CodeProps = ReactTypes.DOM.HTMLElementAttributes["code"] & {
 	children: string;
 	variant?: Variant;
 };

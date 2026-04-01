@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
@@ -13,7 +13,7 @@ const VARIANTS = mirror([
 	"BREAK_WORDS",
 ]);
 type Variant = keyof typeof VARIANTS;
-type PreProps = DR.DOM.HTMLElementAttributes["pre"] & {
+type PreProps = ReactTypes.DOM.HTMLElementAttributes["pre"] & {
 	variant?: Variant;
 };
 

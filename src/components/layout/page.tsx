@@ -2,7 +2,7 @@ import Head from "next/head";
 import Script from "next/script";
 
 import { useDidMount, useDocumentTitle } from "@diegofrayo-pkg/hooks";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
 import { is } from "@diegofrayo-pkg/utilities/fp";
 import { isBoolean, isEmptyString } from "@diegofrayo-pkg/validator";
@@ -12,7 +12,7 @@ import DevTools from "@diegofrayo-features/dev-tools";
 import { ASSETS_ROOT_PATH, EnvVars, FAVICON_PATH, Routes, WEBSITE_METADATA } from "~/constants";
 
 type PageProps = {
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 	config: {
 		isSEOEnabled?: boolean;
 		shouldAppendWebsiteNameInTitle?: boolean;

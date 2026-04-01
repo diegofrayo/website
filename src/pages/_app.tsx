@@ -12,7 +12,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { Toaster } from "sonner";
 
 import { useDidMount } from "@diegofrayo-pkg/hooks";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isMobileDevice, isWindowsDevice } from "@diegofrayo-pkg/utilities/browser";
 import { useAuth } from "@diegofrayo-features/auth";
 import { addGlobalErrorListener, logger } from "@diegofrayo-features/logger";
@@ -131,10 +131,10 @@ function ErrorFallback() {
 }
 
 class CustomErrorBoundary extends Component<
-	{ children: DR.React.Children },
+	{ children: ReactTypes.Children },
 	{ hasError: boolean }
 > {
-	constructor(props: { children: DR.React.Children }) {
+	constructor(props: { children: ReactTypes.Children }) {
 		super(props);
 		this.state = { hasError: false };
 	}

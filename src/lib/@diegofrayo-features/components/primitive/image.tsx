@@ -1,11 +1,11 @@
 import NextImage, { type ImageProps as NextImageProps } from "next/image";
 
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { omit } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
 
-type ImgHtmlAttributes = DR.DOM.HTMLElementAttributes["img"];
+type ImgHtmlAttributes = ReactTypes.DOM.HTMLElementAttributes["img"];
 
 interface NativeImage extends ImgHtmlAttributes {
 	alt: string;

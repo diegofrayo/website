@@ -1,10 +1,10 @@
 import { forwardRef } from "react";
 
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 // --- PROPS & TYPES ---
 
-type BoxProps = DR.DOM.HTMLElementAttributes["div"] & {
+type BoxProps = ReactTypes.DOM.HTMLElementAttributes["div"] & {
 	as?: "main" | "div" | "section" | "article" | "header" | "aside" | "footer" | "span";
 };
 

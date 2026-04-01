@@ -1,7 +1,7 @@
 import autoBind from "auto-bind";
 
 import { BrowserStorageManager } from "@diegofrayo-pkg/browser-storage";
-import type DR from "@diegofrayo-pkg/types";
+import type UtilsTypes from "@diegofrayo-pkg/types";
 import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
 
 import { AuthService } from "../auth";
@@ -59,13 +59,13 @@ class AnalyticsServiceClass {
 		logger("LOG", `Page "${window.location.pathname}" | "${document.title}" visit was tracked`);
 	}
 
-	trackClickEvent(name: string, data?: DR.Object<DR.Primitive>) {
+	trackClickEvent(name: string, data?: UtilsTypes.Object<UtilsTypes.Primitive>) {
 		return () => {
 			this.trackEvent(name, data);
 		};
 	}
 
-	trackEvent(name: string, data?: DR.Object<DR.Primitive>) {
+	trackEvent(name: string, data?: UtilsTypes.Object<UtilsTypes.Primitive>) {
 		if (this.shouldSkipTracking()) {
 			logger("LOG", `Event "${name}" was not tracked`, data);
 			return;

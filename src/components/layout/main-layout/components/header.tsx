@@ -3,7 +3,7 @@ import { NavigationMenu as RadixNavigationMenu } from "radix-ui";
 
 import cn from "@diegofrayo-pkg/cn";
 import { useBoolean, useLockScroll } from "@diegofrayo-pkg/hooks";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import AnalyticsService from "@diegofrayo-features/analytics";
 import {
 	Box,
@@ -154,7 +154,7 @@ function NavigationMenuList({ className }: { className?: string }) {
 }
 
 type NavigationMenuItemProps = {
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 	href: string;
 	icon: IconName;
 };

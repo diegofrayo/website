@@ -3,7 +3,7 @@ import { useState } from "react";
 import { BrowserStorageManager } from "@diegofrayo-pkg/browser-storage";
 import { withConditionalRender } from "@diegofrayo-pkg/hocs";
 import { useDidMount } from "@diegofrayo-pkg/hooks";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isProductionEnvironment } from "@diegofrayo-pkg/utilities/environment";
 import { goBack } from "@diegofrayo-pkg/utilities/navigation";
 
@@ -12,9 +12,9 @@ import { AuthService } from "./service";
 import type { AuthUserRole } from "./types";
 
 export function withAuth<ComponentProps extends object>(
-	Component: DR.React.FunctionComponent<ComponentProps>,
+	Component: ReactTypes.FunctionComponent<ComponentProps>,
 	roles?: AuthUserRole[],
-): DR.React.FunctionComponent<ComponentProps> {
+): ReactTypes.FunctionComponent<ComponentProps> {
 	return withConditionalRender(Component)(() => {
 		return AuthService.isUserLoggedIn() && (roles ? roles.includes(AuthService.getRole()) : true);
 	});
@@ -38,9 +38,9 @@ interface OptionsRequireNoAuth {
 type Options = OptionsRequireAuth | OptionsRequireNoAuth;
 
 export function withAuthRulesPage<ComponentProps extends object>(
-	Component: DR.React.FunctionComponent<ComponentProps>,
+	Component: ReactTypes.FunctionComponent<ComponentProps>,
 	options: Options,
-): DR.React.FunctionComponent<ComponentProps> {
+): ReactTypes.FunctionComponent<ComponentProps> {
 	return function WithAuthComponent(props: ComponentProps) {
 		// --- STATE & REFS ---
 		const [renderStatus, setRenderStatus] = useState<RenderStatus>("NO_RENDER");

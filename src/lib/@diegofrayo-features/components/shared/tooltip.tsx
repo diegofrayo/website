@@ -1,9 +1,9 @@
 import { Tooltip as RadixTooltip } from "radix-ui";
 
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 type TooltipProps = {
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 	text: string;
 	triggerAsChild?: boolean;
 };

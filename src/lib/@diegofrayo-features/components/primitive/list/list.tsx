@@ -1,7 +1,7 @@
 import { Children, cloneElement, isValidElement } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 import styles from "./list.styles.module.css";
@@ -10,7 +10,7 @@ import styles from "./list.styles.module.css";
 
 const VARIANTS = mirror(["UNSTYLED", "SIMPLE"]);
 type Variant = keyof typeof VARIANTS;
-type ListProps = DR.DOM.HTMLElementAttributes["ul"] & {
+type ListProps = ReactTypes.DOM.HTMLElementAttributes["ul"] & {
 	variant?: Variant;
 };
 
@@ -51,7 +51,7 @@ List.Item = function ListItem({
 	isDefaultVariant = false,
 	className = "",
 	...rest
-}: DR.DOM.HTMLElementAttributes["li"] & { isDefaultVariant?: boolean }) {
+}: ReactTypes.DOM.HTMLElementAttributes["li"] & { isDefaultVariant?: boolean }) {
 	return (
 		<li
 			className={cn(
@@ -68,6 +68,6 @@ List.Item = function ListItem({
 
 // --- TYPES ---
 
-type ListItemChildProps = DR.DOM.HTMLElementAttributes["li"] & {
+type ListItemChildProps = ReactTypes.DOM.HTMLElementAttributes["li"] & {
 	isDefaultVariant: boolean;
 };

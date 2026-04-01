@@ -1,11 +1,11 @@
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { getErrorMessage } from "@diegofrayo-pkg/utilities/errors";
 
 import { Box, InlineText, Text } from "../primitive";
 import Loader from "./loader";
 
 type RenderProps<Data> = {
-	children: (data: Data) => DR.React.JSXElementNullable;
+	children: (data: Data) => ReactTypes.JSXElementNullable;
 	isLoading: boolean;
 	error: unknown;
 	data: Data | undefined;

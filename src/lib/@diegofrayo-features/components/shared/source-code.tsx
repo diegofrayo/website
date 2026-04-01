@@ -5,7 +5,7 @@ import { isValidElement, useCallback, useEffect, useRef, useState } from "react"
 import { highlight } from "sugar-high";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { throwError } from "@diegofrayo-pkg/utilities/errors";
 import { isNotEmptyString, isString } from "@diegofrayo-pkg/validator";
 
@@ -14,7 +14,7 @@ import CopyToClipboardPopover from "./copy-to-clipboard-popover";
 
 export type SourceCodeProps = {
 	className?: string;
-	code: DR.React.Children;
+	code: ReactTypes.Children;
 	sourceURL?: string;
 	title?: string;
 	language?: string;
@@ -118,6 +118,6 @@ export default SourceCode;
 // --- TYPES ---
 
 type CodeChildElementProps = {
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 	className: string;
 };

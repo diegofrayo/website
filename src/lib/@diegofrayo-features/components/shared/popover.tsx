@@ -5,11 +5,11 @@ import {
 } from "@base-ui/react/popover";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 type PopoverProps = Partial<PopoverPositionerProps> &
 	Partial<Pick<PopoverTriggerProps, "nativeButton">> & {
-		children: DR.React.JSXElement;
+		children: ReactTypes.JSXElement;
 		text: string;
 		open?: boolean;
 	};

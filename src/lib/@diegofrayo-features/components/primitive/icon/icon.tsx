@@ -1,7 +1,8 @@
 import type { ComponentProps } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type UtilsTypes from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { getObjectKeys, mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyString, isNumber, isString, isUndefined } from "@diegofrayo-pkg/validator";
@@ -35,7 +36,7 @@ interface CustomIcon {
 
 type Icon = LibraryIcon | CustomIcon;
 
-type LibraryIconComponent = (props: ComponentProps<"svg">) => DR.React.JSXElement;
+type LibraryIconComponent = (props: ComponentProps<"svg">) => ReactTypes.JSXElement;
 
 export type IconProps = ComponentProps<"svg"> & {
 	icon: IconName;
@@ -43,7 +44,7 @@ export type IconProps = ComponentProps<"svg"> & {
 	color?: string;
 	iconClassName?: string;
 	wrapperClassName?: string;
-	wrapperProps?: DR.Object;
+	wrapperProps?: UtilsTypes.Object;
 };
 
 // --- COMPONENT DEFINITION ---
@@ -157,7 +158,7 @@ export const IconCatalog = mirror(getObjectKeys(Icons));
 
 // --- COMPONENTS ---
 
-function Wrapper({ children, className = "" }: DR.DOM.HTMLElementAttributes["span"]) {
+function Wrapper({ children, className = "" }: ReactTypes.DOM.HTMLElementAttributes["span"]) {
 	return (
 		<Box
 			as="span"

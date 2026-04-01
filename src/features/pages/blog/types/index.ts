@@ -1,4 +1,4 @@
-import type DR from "@diegofrayo-pkg/types";
+import type UtilsTypes from "@diegofrayo-pkg/types";
 
 type BlogPost = {
 	slug: string;
@@ -11,7 +11,7 @@ type BlogPost = {
 	updated_at: string;
 	is_published: boolean;
 	sources: { title: string; url: string }[];
-	assets: DR.GenericObject<string>;
+	assets: UtilsTypes.GenericObject<string>;
 };
 
 export type BlogPosts = Array<Omit<BlogPost, "sources" | "assets">>;

@@ -4,7 +4,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { createArray } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 import { isMobileDevice } from "@diegofrayo-pkg/utilities/browser";
 import { safeCastNumber } from "@diegofrayo-pkg/utilities/numbers";
@@ -125,7 +125,7 @@ function ImageGallery({ id, images, noBounds, className }: ImageGalleryProps) {
 	);
 
 	// --- HANDLERS ---
-	function handleChangeImage(event: DR.React.Events.OnClickEvent<HTMLButtonElement>) {
+	function handleChangeImage(event: ReactTypes.Events.OnClickEvent<HTMLButtonElement>) {
 		const dataIndex = safeCastNumber(event.currentTarget.getAttribute("data-index"), null);
 
 		changeActivePhoto({
@@ -220,7 +220,7 @@ type NavigationArrowProps = {
 	activeIndex: number;
 	totalNumberOfImages: number;
 	noBounds: boolean | undefined;
-	onClick: DR.React.Events.OnMouseEventHandler<HTMLButtonElement>;
+	onClick: ReactTypes.Events.OnMouseEventHandler<HTMLButtonElement>;
 };
 
 function NavigationArrow({

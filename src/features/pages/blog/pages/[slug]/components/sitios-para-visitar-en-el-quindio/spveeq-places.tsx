@@ -1,4 +1,5 @@
-import type DR from "@diegofrayo-pkg/types";
+import type UtilsTypes from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
 import AnalyticsService from "@diegofrayo-features/analytics";
@@ -16,7 +17,7 @@ import {
 import { BoxWithTitle, ImageGallery } from "@diegofrayo-features/components/shared";
 
 type SPVEEQPlacesProps = {
-	data: DR.Object<
+	data: UtilsTypes.Object<
 		{
 			id: string;
 			name: string;
@@ -231,7 +232,7 @@ export default SPVEEQPlaces;
 type InfoBoxProps = {
 	icon: { name: IconName; color?: string };
 	title: string;
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 };
 
 function InfoBox({ icon, title, children }: InfoBoxProps) {

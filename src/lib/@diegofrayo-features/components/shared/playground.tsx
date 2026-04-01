@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { createArray } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 
@@ -9,7 +9,7 @@ import { Box, Button, Icon, IconCatalog, InlineText, Text } from "../primitive";
 import SourceCode, { type SourceCodeProps } from "./source-code";
 
 type PlaygroundProps = {
-	Preview: DR.React.FunctionComponent;
+	Preview: ReactTypes.FunctionComponent;
 	height?: number;
 	language?: string;
 	sourceCode: SourceCodeProps["code"];
@@ -20,8 +20,8 @@ function Playground({
 	Preview,
 	height = 500,
 	language = "",
-	sourceCode,
 	title = "",
+	sourceCode,
 }: PlaygroundProps) {
 	// --- STATE ---
 	const [tab, setTab] = useState(0);

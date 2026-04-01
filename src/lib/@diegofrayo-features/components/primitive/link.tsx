@@ -2,7 +2,7 @@ import { cva } from "class-variance-authority";
 import NextLink, { type LinkProps as NextLinkProps } from "next/link";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { mirror, omit } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
@@ -10,7 +10,7 @@ import { mirror, omit } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 const VARIANTS = mirror(["UNSTYLED", "SMOOTH", "STYLED"]);
 type Variant = keyof typeof VARIANTS;
 
-type AnchorHtmlAttributes = DR.DOM.HTMLElementAttributes["a"];
+type AnchorHtmlAttributes = ReactTypes.DOM.HTMLElementAttributes["a"];
 type LinkBase = {
 	variant?: Variant;
 };
@@ -23,7 +23,7 @@ interface NativeLink extends AnchorHtmlAttributes, LinkBase {
 interface NextLink extends NextLinkProps, LinkBase {
 	isExternalLink?: false;
 	href: string;
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 	className?: string;
 }
 

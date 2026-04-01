@@ -1,8 +1,8 @@
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 
 // --- PROPS & TYPES ---
 
-type InlineTextProps = DR.DOM.HTMLElementAttributes["span"] & {
+type InlineTextProps = ReactTypes.DOM.HTMLElementAttributes["span"] & {
 	as?: "span" | "strong";
 };
 

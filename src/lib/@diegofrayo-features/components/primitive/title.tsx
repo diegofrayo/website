@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { mirror } from "@diegofrayo-pkg/utilities/arrays-and-objects";
 
 // --- PROPS & TYPES ---
@@ -15,7 +15,7 @@ type Size = keyof typeof Size;
 const As = mirror(["h1", "h2", "h3", "h4", "h5", "h6"]);
 type As = keyof typeof As;
 
-export type TitleProps = DR.DOM.HTMLElementAttributes["h1"] & {
+export type TitleProps = ReactTypes.DOM.HTMLElementAttributes["h1"] & {
 	as: As;
 	size?: Size;
 	variant?: Variant;

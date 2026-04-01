@@ -1,17 +1,17 @@
 import hoistNonReactStatics from "hoist-non-react-statics";
 
-import type DR from "../types";
+import type ReactTypes from "../types/react";
 
 type WithConditionalRenderReturn<ComponentProps> = (
 	callback: () => boolean,
-) => DR.React.FunctionComponent<ComponentProps>;
+) => ReactTypes.FunctionComponent<ComponentProps>;
 
 function withConditionalRender<ComponentProps extends object>(
-	WrappedComponent: DR.React.FunctionComponent<ComponentProps>,
+	WrappedComponent: ReactTypes.FunctionComponent<ComponentProps>,
 ): WithConditionalRenderReturn<ComponentProps> {
 	const withConditionalRenderReturn: WithConditionalRenderReturn<ComponentProps> =
 		function withConditionalRenderReturn(callback) {
-			function RenderIfComponent(props: ComponentProps): DR.React.JSXElementNullable {
+			function RenderIfComponent(props: ComponentProps): ReactTypes.JSXElementNullable {
 				const shouldRender = callback();
 
 				if (!shouldRender) return null;

@@ -2,7 +2,8 @@ import { useMemo } from "react";
 import { getMDXComponent, getMDXExport } from "mdx-bundler/client";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type UtilsTypes from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isString } from "@diegofrayo-pkg/validator";
 import { WithAuth } from "@diegofrayo-features/auth";
 import {
@@ -26,8 +27,8 @@ import styles from "./styles.module.css";
 
 type MDXContentProps = {
 	code: string;
-	components?: DR.Object;
-	globals?: DR.Object;
+	components?: UtilsTypes.Object;
+	globals?: UtilsTypes.Object;
 };
 
 export function MDXContent({ code, components = {}, globals = {} }: MDXContentProps) {
@@ -46,7 +47,7 @@ export { getMDXExport };
 // DOCS: https://mdxjs.com/table-of-components
 export const MDXComponents = {
 	// --- PRIMITIVE COMPONENTS ---
-	a: function CustomA({ children, href }: DR.DOM.HTMLElementAttributes["a"]) {
+	a: function CustomA({ children, href }: ReactTypes.DOM.HTMLElementAttributes["a"]) {
 		return (
 			<Link
 				href={href || ""}
@@ -58,7 +59,7 @@ export const MDXComponents = {
 		);
 	},
 	blockquote: BlockQuote,
-	code: function CustomCode({ children }: DR.DOM.HTMLElementAttributes["code"]) {
+	code: function CustomCode({ children }: ReactTypes.DOM.HTMLElementAttributes["code"]) {
 		if (isString(children)) {
 			return <Code variant={Code.variant.ENHANCED}>{children}</Code>;
 		}
@@ -74,10 +75,10 @@ export const MDXComponents = {
 	},
 	li: List.Item,
 	p: Text,
-	pre: function CustomPre({ children }: DR.DOM.HTMLElementAttributes["pre"]) {
+	pre: function CustomPre({ children }: ReactTypes.DOM.HTMLElementAttributes["pre"]) {
 		return <SourceCode code={children} />;
 	},
-	ul: function CustomUl({ children }: DR.DOM.HTMLElementAttributes["ul"]) {
+	ul: function CustomUl({ children }: ReactTypes.DOM.HTMLElementAttributes["ul"]) {
 		return <List variant={List.variant.SIMPLE}>{children}</List>;
 	},
 
@@ -104,7 +105,7 @@ export const MDXComponents = {
 // --- UTILS ---
 
 function createTitleComponent(Tag: "h1" | "h2" | "h3" | "h4", props: Omit<TitleProps, "as">) {
-	return function CustomTitle({ children }: DR.DOM.HTMLElementAttributes["h1"]) {
+	return function CustomTitle({ children }: ReactTypes.DOM.HTMLElementAttributes["h1"]) {
 		return (
 			<Title
 				{...props}

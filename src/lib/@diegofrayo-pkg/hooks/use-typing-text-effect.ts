@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-import type DR from "../types";
+import type UtilsTypes from "../types";
 
 function useTypingTextEffect(text: string) {
 	// --- STATE & REFS ---
 	const [output, setOutput] = useState(text.charAt(0));
 	const outputIndexRef = useRef(1);
-	const intervalRef = useRef<DR.SetTimeout | null>(null);
+	const intervalRef = useRef<UtilsTypes.SetTimeout | null>(null);
 
 	// --- EFFECTS ---
 	useEffect(

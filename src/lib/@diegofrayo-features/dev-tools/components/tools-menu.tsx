@@ -1,7 +1,7 @@
 import { DropdownMenu } from "radix-ui";
 
 import { withRenderInBrowser } from "@diegofrayo-pkg/hocs";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { copyToClipboard, showAlert } from "@diegofrayo-pkg/utilities/browser";
 import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
 import { CopyToClipboardPopover } from "@diegofrayo-features/components/shared";
@@ -208,7 +208,7 @@ interface ToolsMenuItemButtonProps {
 	as: "button";
 	title: string;
 	icon: IconName;
-	onClick: DR.React.Events.OnClickEventHandler<HTMLButtonElement>;
+	onClick: ReactTypes.Events.OnClickEventHandler<HTMLButtonElement>;
 	popoverConfig?: Omit<CopyToClipboardPopoverProps, "children">;
 }
 
@@ -246,7 +246,7 @@ function ToolsMenuItem(props: ToolsMenuItemProps) {
 }
 
 type ToolsMenuItemWrapperProps = {
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 	popoverConfig: Omit<CopyToClipboardPopoverProps, "children"> | undefined;
 };
 

@@ -2,14 +2,14 @@ import { useRef } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
 import { useDidMount, useLockScroll } from "@diegofrayo-pkg/hooks";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { getScrollPosition, setScrollPosition } from "@diegofrayo-pkg/utilities/browser";
 import { isNull, isTrue } from "@diegofrayo-pkg/validator";
 
 // --- PROPS & TYPES ---
 
 type ModalProps = {
-	children: DR.React.Children;
+	children: ReactTypes.Children;
 	className?: string;
 	visible: boolean;
 	onCloseHandler: () => void;
@@ -47,7 +47,7 @@ function Backdrop({ children, className, onCloseHandler }: BackdropProps) {
 	const scrollPosition = useRef(0);
 
 	// --- HANDLERS ---
-	function handleClick(event: DR.React.Events.OnMouseEvent<HTMLDialogElement>) {
+	function handleClick(event: ReactTypes.Events.OnMouseEvent<HTMLDialogElement>) {
 		if (event.target !== dialogRef.current) return;
 
 		onCloseHandler();

@@ -71,11 +71,11 @@ export default ProjectsPage;
 
 // --- COMPONENTS ---
 
-function ProjectBox({ item }: { item: Demo }) {
+function ProjectBox({ item }: { item: Project }) {
 	return (
 		<Box
 			as="article"
-			className="flex items-start justify-between gap-2 rounded-2xl border border-zinc-300 bg-linear-to-r from-zinc-100 to-zinc-300 p-2"
+			className="flex items-start justify-between gap-2 rounded-sm border border-zinc-100 p-2 shadow-md"
 		>
 			<Icon
 				icon={item.icon}
@@ -116,7 +116,7 @@ function ProjectBox({ item }: { item: Demo }) {
 
 // --- TYPES ---
 
-type Demo = {
+type Project = {
 	title: string;
 	icon: IconName;
 	url: string;

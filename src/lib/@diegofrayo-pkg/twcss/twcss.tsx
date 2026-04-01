@@ -1,7 +1,8 @@
 import { forwardRef, type ForwardedRef } from "react";
 
 import cn from "../cn";
-import type DR from "../types";
+import type UtilsTypes from "../types";
+import type ReactTypes from "../types/react";
 import { isArray, isPlainObject, isString } from "../validator";
 import { HTML_TAGS, type HTMLTag } from "./constants";
 
@@ -35,7 +36,7 @@ function TWCSSCreator(Tag: ElementToRender): TWCSSComponentDefinition {
 			 * This assertion is so useful and hard to remove
 			 * I have no problem to use it
 			 */
-			const Element = (is || Tag) as DR.React.FunctionComponent<{
+			const Element = (is || Tag) as ReactTypes.FunctionComponent<{
 				[key: string]: unknown;
 				ref: ReactForwardedRef;
 			}>;
@@ -43,7 +44,7 @@ function TWCSSCreator(Tag: ElementToRender): TWCSSComponentDefinition {
 				componentStyles: styles,
 				classNameProp: className,
 				TWCSSVariant,
-				componentProps: rest as DR.Object,
+				componentProps: rest as UtilsTypes.Object,
 			});
 
 			return (
@@ -70,7 +71,7 @@ type GenerateClassNameParams = {
 	componentStyles: StylesParam;
 	classNameProp: string;
 	TWCSSVariant: string | undefined;
-	componentProps: DR.Object;
+	componentProps: UtilsTypes.Object;
 };
 
 function generateClassName({
@@ -108,18 +109,18 @@ interface TWCSSCreator {
 }
 
 interface TWCSSComponentDefinition {
-	(styles: StylesParam, staticProps?: DR.Object): TWCSSReactComponent;
+	(styles: StylesParam, staticProps?: UtilsTypes.Object): TWCSSReactComponent;
 }
 
 type TWCSSReactComponentProps = {
-	children?: DR.React.Children;
+	children?: ReactTypes.Children;
 	className?: string;
 	TWCSSVariant?: string;
 	is?: ElementToRender;
 	[key: string]: unknown;
 };
 
-type TWCSSReactComponent = DR.React.FunctionComponent<TWCSSReactComponentProps>;
+type TWCSSReactComponent = ReactTypes.FunctionComponent<TWCSSReactComponentProps>;
 
 type StylesParam =
 	| string
@@ -129,7 +130,7 @@ type StylesParam =
 			[key: string]: StylesParamFunction;
 	  };
 
-type StylesParamFunction = string | ((props: DR.Object) => string);
+type StylesParamFunction = string | ((props: UtilsTypes.Object) => string);
 
 /*
  * WARN:

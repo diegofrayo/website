@@ -1,7 +1,7 @@
 import { cloneElement, isValidElement, useEffect, useRef, useState } from "react";
 
 import cn from "@diegofrayo-pkg/cn";
-import type DR from "@diegofrayo-pkg/types";
+import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isBoolean, isNotEmptyString } from "@diegofrayo-pkg/validator";
 
 import Box from "./box";
@@ -10,8 +10,8 @@ import Title from "./title";
 
 // --- PROPS & TYPES ---
 
-type CollapsibleProps = Omit<DR.DOM.HTMLElementAttributes["details"], "title"> & {
-	title?: string | DR.React.JSXElement;
+type CollapsibleProps = Omit<ReactTypes.DOM.HTMLElementAttributes["details"], "title"> & {
+	title?: string | ReactTypes.JSXElement;
 	openedByDefault?: boolean;
 	opened?: boolean;
 	contentClassName?: string;
@@ -79,7 +79,7 @@ function Collapsible({
 			{isValidElement<CustomTitleProps>(title) ? (
 				// TODO: [react] Fix me
 				// eslint-disable-next-line react-hooks/refs
-				cloneElement(title as DR.React.JSXElement, {
+				cloneElement(title as ReactTypes.JSXElement, {
 					onClick: handleToggleClick,
 					role: "button",
 					className: cn("cursor-pointer", title.props.className),
