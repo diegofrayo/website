@@ -41,7 +41,7 @@
 				"mode": "Remote",
 				"location": "",
 				"shortContent": {
-					"summary": "Led web application development from scratch for a crypto trading platform, contributing to both front-end and back-end.",
+					"summary": "Guided web application development from scratch for a crypto trading platform, contributing to both front-end and back-end.",
 					"achievements": [
 						"Built an auth system supporting multiple providers, including Solana wallets and Google.",
 						"Migrated the component library from Styled Components to a custom Tailwind CSS library."
@@ -51,7 +51,7 @@
 					"summary": "Print World is a crypto trading platform. I led the development of the web application from scratch using React and TypeScript, while actively contributing to back-end development.",
 					"achievements": [
 						"Implemented an authentication system supporting multiple providers, including Solana wallets and Google.",
-						"Led the migration from a legacy component library based on Styled Components to a custom component library built with Tailwind CSS."
+						"Contributed the migration from a legacy component library based on Styled Components to a custom component library built with Tailwind CSS."
 					]
 				},
 				"skills": [
@@ -112,7 +112,7 @@
 					]
 				},
 				"fullContent": {
-					"summary": "Arlene was a start-up that developed multiple editors to create customizable 3D scenarios and AR experiences, providing a seamless way to share and reproduce these experiences through a URL. I contributed to the maintenance and enhancement of the company's products.",
+					"summary": "Arlene was a start-up that developed multiple editors to create customizable 3D scenarios and AR experiences, providing a seamless way to share and reproduce these experiences through a URL. I participated to the maintenance and enhancement of the company's products.",
 					"achievements": [
 						"Contributed to the development and improvement of projects leveraging AR/VR and 3D rendering libraries, as well as browser APIs for camera and gyroscope handling.",
 						"Implemented automation scripts using Puppeteer to streamline tasks required for the proper functioning of augmented reality applications.",
