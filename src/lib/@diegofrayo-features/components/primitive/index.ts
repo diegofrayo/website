@@ -1,9 +1,10 @@
 export * from "./icon";
 export * from "./image";
 export * from "./list";
+export * from "./select";
 export * from "./title";
-export { default as Box } from "./box";
 export { default as BlockQuote } from "./blockquote";
+export { default as Box } from "./box";
 export { default as Button } from "./button";
 export { default as Code } from "./code";
 export { default as Collapsible } from "./collapsible";

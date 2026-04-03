@@ -1,6 +1,6 @@
 export interface RawResume {
 	contactInfo: ContactInfo;
-	summary: string;
+	summary: { short: string; full: string };
 	experience: RawExperience[];
 	education: Education[];
 	languages: Language[];
@@ -9,7 +9,7 @@ export interface RawResume {
 
 export interface Resume {
 	contactInfo: ContactInfo;
-	summary: string;
+	summary: { short: string; full: string };
 	experience: Experience[];
 	education: Education[];
 	languages: Language[];
@@ -20,6 +20,7 @@ export interface ContactInfo {
 	name: string;
 	label: string;
 	email: string;
+	username: string;
 	phone: string;
 	image: string;
 	website: string;
@@ -29,7 +30,9 @@ export interface ContactInfo {
 
 export interface Location {
 	countryCode: string;
-	address: string;
+	country: string;
+	city: string;
+	timezone: string;
 }
 
 export interface Profile {

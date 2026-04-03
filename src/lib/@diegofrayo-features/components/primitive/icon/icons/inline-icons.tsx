@@ -61,22 +61,14 @@ export default InlineIcons;
 export function GithubMonoIcon({ className, height, width }: IconProps) {
 	return (
 		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			className={cn("icon icon-tabler icon-tabler-brand-github", className)}
 			viewBox="0 0 24 24"
+			fill="currentColor"
 			width={width}
 			height={height}
-			strokeWidth="1.2"
-			stroke="currentColor"
-			fill="none"
-			strokeLinecap="round"
-			strokeLinejoin="round"
+			className={cn(className)}
+			xmlns="http://www.w3.org/2000/svg"
 		>
-			<path
-				d="M0 0h24v24H0z"
-				stroke="none"
-			/>
-			<path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" />
+			<path d="M12 0.5C5.65 0.5 0.5 5.65 0.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.97.1-.75.4-1.26.73-1.55-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.28 1.2-3.08-.12-.3-.52-1.5.11-3.13 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.18 3.2-1.18.63 1.63.23 2.83.11 3.13.75.8 1.2 1.82 1.2 3.08 0 4.43-2.7 5.4-5.28 5.68.41.36.77 1.08.77 2.18 0 1.58-.01 2.85-.01 3.24 0 .3.2.66.79.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35 0.5 12 0.5z" />
 		</svg>
 	);
 }
@@ -112,7 +104,7 @@ export function InstagramMonoIcon({ className, height, width }: IconProps) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			className={cn("icon icon-tabler icon-tabler-brand-github", className)}
+			className={cn(className)}
 			viewBox="0 0 24 24"
 			width={width}
 			height={height}
@@ -137,27 +129,41 @@ export function InstagramMonoIcon({ className, height, width }: IconProps) {
 export function LinkedinMonoIcon({ className, height, width }: IconProps) {
 	return (
 		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			className={cn("icon icon-tabler icon-tabler-brand-github", className)}
 			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth={1.8}
 			width={width}
 			height={height}
-			strokeWidth="1.2"
-			stroke="currentColor"
-			fill="none"
 			strokeLinecap="round"
 			strokeLinejoin="round"
+			className={cn(className)}
+			xmlns="http://www.w3.org/2000/svg"
 		>
-			<path
-				stroke="none"
-				d="M0 0h24v24H0z"
-				fill="none"
+			{/* Outer rounded square */}
+			<rect
+				x="2"
+				y="2"
+				width="20"
+				height="20"
+				rx="5"
+				ry="5"
 			/>
-			<path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-			<path d="M8 11l0 5" />
-			<path d="M8 8l0 .01" />
-			<path d="M12 16l0 -5" />
-			<path d="M16 16v-3a2 2 0 0 0 -4 0" />
+
+			{/* "in" logo */}
+			<line
+				x1="8"
+				y1="11"
+				x2="8"
+				y2="16"
+			/>
+			<circle
+				cx="8"
+				cy="8"
+				r="1"
+			/>
+
+			<path d="M12 16v-3a2 2 0 0 1 4 0v3" />
 		</svg>
 	);
 }
@@ -166,7 +172,7 @@ export function SpotifyMonoIcon({ className, height, width }: IconProps) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			className={cn("icon icon-tabler icon-tabler-brand-github", className)}
+			className={cn(className)}
 			viewBox="0 0 24 24"
 			width={width}
 			height={height}
@@ -193,7 +199,7 @@ export function TwitterMonoIcon({ className, height, width }: IconProps) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			className={cn("icon icon-tabler icon-tabler-brand-github", className)}
+			className={cn(className)}
 			viewBox="0 0 24 24"
 			width={width}
 			height={height}
@@ -218,7 +224,7 @@ export function WhatsAppMonoIcon({ className, height, width }: IconProps) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			className={className}
+			className={cn(className)}
 			viewBox="0 0 24 24"
 			width={width}
 			height={height}

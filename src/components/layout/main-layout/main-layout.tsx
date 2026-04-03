@@ -22,10 +22,7 @@ function MainLayout({ children, className, contentClassName, title }: MainLayout
 
 	// --- STYLES ---
 	const classes = {
-		container: cn(
-			"min-h-dv-screen relative flex flex-col print:bg-transparent print:p-0",
-			className,
-		),
+		container: cn("min-h-dv-screen relative flex flex-col", className),
 		content: cn("md:layout-with-max-width w-full flex-1 p-4", contentClassName),
 	};
 
@@ -52,8 +49,8 @@ export default MainLayout;
 // --- COMPONENTS ---
 
 type TitleSectionProps = {
-	style: ReactTypes.Styles;
 	title: string | undefined;
+	style?: ReactTypes.Styles;
 };
 
 function TitleSection({ title, style }: TitleSectionProps) {
@@ -66,7 +63,7 @@ function TitleSection({ title, style }: TitleSectionProps) {
 
 	// --- STYLES ---
 	const classes = {
-		root: cn("sm:pt-0"),
+		root: cn("sm:pt-0 print:hidden"),
 		title: cn("text-4xl uppercase", { "max-sm:text-2xl": title && title.length >= 10 }),
 	};
 
@@ -77,7 +74,7 @@ function TitleSection({ title, style }: TitleSectionProps) {
 			className={classes.root}
 			style={style}
 		>
-			<Box className="layout-with-max-width w-full gap-2 px-4 py-12 text-center print:hidden">
+			<Box className="layout-with-max-width w-full gap-2 px-4 py-12 text-center">
 				{showParentURL && (
 					<Box className="sm:hidden">
 						<Link

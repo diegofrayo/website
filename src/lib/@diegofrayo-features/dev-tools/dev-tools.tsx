@@ -89,7 +89,7 @@ function StatusIndicators() {
 	});
 
 	return (
-		<Box className="flex gap-1 print:hidden">
+		<Box className="flex gap-1">
 			{isAuthFlagVisible && (
 				<Box className={cn(classes.indicator, "bg-green-700")}>
 					<Icon

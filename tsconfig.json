@@ -19,7 +19,6 @@
 		"noUncheckedSideEffectImports": true,
 
 		// Modules
-		"baseUrl": ".",
 		"paths": {
 			"@diegofrayo-pkg/*": ["./src/lib/@diegofrayo-pkg/*"],
 			"@diegofrayo-features/*": ["./src/lib/@diegofrayo-features/*"],
@@ -59,7 +58,6 @@
 		// Editor support
 		"plugins": [{ "name": "next" }]
 	},
-
 	"include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"],
 	"exclude": ["node_modules"]
 }

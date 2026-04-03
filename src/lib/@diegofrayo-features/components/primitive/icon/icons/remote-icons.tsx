@@ -16,7 +16,7 @@ const RemoteIcons = {
 		},
 	},
 	GMAIL: {
-		icon: `${ICONS_PATH}/gmail.webp`,
+		icon: `${ICONS_PATH}/gmail.png`,
 		defaultProps: {
 			alt: "Email",
 			className: "",

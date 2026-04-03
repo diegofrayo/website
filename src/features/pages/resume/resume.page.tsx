@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { GithubIcon, GlobeIcon, LinkedinIcon, MailIcon } from "lucide-react";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
@@ -73,18 +72,17 @@ function ResumePage({ data }: ResumePageProps) {
 			return newState;
 		});
 	}
-
 	// --- UTILS ---
 	function getSelectedPDFLink() {
 		const LINKS = {
-			"ES-SHORT":
-				"https://drive.google.com/file/d/10_g1xNAUaZWnZSxRh2ud2cayG85daxhL/view?usp=sharing",
-			"ES-FULL":
-				"https://drive.google.com/file/d/10Zb7kWhV0_M5veA_5RH-N6uJYNyrwHR6/view?usp=sharing",
 			"EN-SHORT":
-				"https://drive.google.com/file/d/10_Kj8LhLN99nQLA9S0BMyas_VHDtjXrA/view?usp=sharing",
+				"https://drive.google.com/file/d/1FXgV7ivut-qXpoztv7VPIhHtF-fzXJZn/view?usp=sharing",
 			"EN-FULL":
-				"https://drive.google.com/file/d/10Z1-PEvIrilz9SbXef2KLY88ILSFbj7N/view?usp=sharing",
+				"https://drive.google.com/file/d/1b3kvK6ef_Z1UeD5IE_Y8Y8go-JjNRIPv/view?usp=sharing",
+			"ES-SHORT":
+				"https://drive.google.com/file/d/1FXgV7ivut-qXpoztv7VPIhHtF-fzXJZn/view?usp=sharing",
+			"ES-FULL":
+				"https://drive.google.com/file/d/1b3kvK6ef_Z1UeD5IE_Y8Y8go-JjNRIPv/view?usp=sharing",
 		};
 
 		return LINKS[`${lang}-${viewMode}`];
@@ -99,7 +97,10 @@ function ResumePage({ data }: ResumePageProps) {
 				pathname: metadata.pathname,
 			}}
 		>
-			<MainLayout title={metadata.title}>
+			<MainLayout
+				title={metadata.title}
+				contentClassName="print:p-0"
+			>
 				<IntlContext.Provider value={IntlProviderValue[lang]}>
 					<style id="print-styles" />
 					<Box className="mx-auto max-w-3xl print:max-w-none">
@@ -171,10 +172,13 @@ function ShortMode({ data }: { data: Resume }) {
 	const texts = useIntl();
 
 	return (
-		<Box className="border-t border-zinc-100 bg-white text-black shadow-sm shadow-zinc-200">
+		<Box
+			as="section"
+			className="border-t border-slate-100 bg-white text-black shadow-sm shadow-slate-200 print:border-0 print:text-sm print:shadow-none"
+		>
 			<Box
 				as="header"
-				className="bg-zinc-100 p-4 text-center"
+				className="bg-slate-100 p-4 text-center"
 			>
 				<Title
 					as="h1"
@@ -186,49 +190,65 @@ function ShortMode({ data }: { data: Resume }) {
 				<Text>{data.contactInfo.label}</Text>
 				<Space size={1.5} />
 
-				<Box className="flex items-center justify-center gap-3 text-black">
+				<Box className="grid grid-cols-1 gap-x-3 gap-y-1 text-black sm:grid-cols-2">
 					<Link
 						variant={Link.variant.SMOOTH}
 						href={`mailto:${data.contactInfo.email}`}
-						className="font-bold text-zinc-800 underline"
+						className="inline-flex shrink-0 items-center justify-center gap-0.5 sm:justify-end"
 						isExternalLink
 					>
-						<MailIcon size={24} />
+						<Icon
+							icon={IconCatalog.MAILS}
+							size={16}
+						/>
+						<InlineText className="text-sm font-semibold">{data.contactInfo.email}</InlineText>
 					</Link>
 					<Link
 						variant={Link.variant.SMOOTH}
 						href={data.contactInfo.website}
-						className="font-bold text-zinc-800 underline"
+						className="inline-flex shrink-0 items-center justify-center gap-0.5 sm:justify-start"
 						isExternalLink
 					>
-						<GlobeIcon size={24} />
-					</Link>
-					<Link
-						variant={Link.variant.SMOOTH}
-						href={data.contactInfo.profiles[1].url}
-						className="font-bold text-zinc-800 underline"
-						isExternalLink
-					>
-						<LinkedinIcon size={24} />
+						<Icon
+							icon={IconCatalog.GLOBE}
+							size={16}
+						/>
+						<InlineText className="text-sm font-semibold">
+							{data.contactInfo.website.replace("https://", "")}
+						</InlineText>
 					</Link>
 					<Link
 						variant={Link.variant.SMOOTH}
 						href={data.contactInfo.profiles[0].url}
-						className="font-bold text-zinc-800 underline"
+						className="inline-flex shrink-0 items-center justify-center gap-0.5 sm:justify-end"
 						isExternalLink
 					>
-						<GithubIcon size={24} />
+						<Icon
+							icon={IconCatalog.LINKEDIN_MONO}
+							className="size-4"
+						/>
+						<InlineText className="text-sm font-semibold">
+							{data.contactInfo.profiles[0].url.replace("https://www.", "")}
+						</InlineText>
+					</Link>
+					<Link
+						variant={Link.variant.SMOOTH}
+						href={data.contactInfo.profiles[1].url}
+						className="inline-flex shrink-0 items-center justify-center gap-0.5 sm:justify-start"
+						isExternalLink
+					>
+						<Icon
+							icon={IconCatalog.GITHUB_MONO}
+							className="size-4"
+						/>
+						<InlineText className="text-sm font-semibold">
+							{data.contactInfo.profiles[1].url.replace("https://www.", "")}
+						</InlineText>
 					</Link>
 				</Box>
 				<Space size={1.5} />
 
-				<Text className="text-xs">
-					<Icon
-						icon={IconCatalog.MAP_PIN}
-						wrapperClassName="mr-0.5"
-					/>
-					<InlineText className="align-middle">{`${data.contactInfo.location.address} (${data.contactInfo.location.countryCode})`}</InlineText>
-				</Text>
+				<Location location={data.contactInfo.location} />
 			</Box>
 
 			<Box className="p-4">
@@ -236,7 +256,12 @@ function ShortMode({ data }: { data: Resume }) {
 					variant="SHORT"
 					title={texts.SUMMARY}
 				>
-					{data.summary}
+					<Pre
+						variant={Pre.variant.BREAK_WITH_BLANK_LINES}
+						className="font-texts text-justify"
+					>
+						{data.summary.short}
+					</Pre>
 				</ResumeBox>
 
 				<ResumeBox
@@ -277,7 +302,7 @@ function ShortMode({ data }: { data: Resume }) {
 					title={texts.EXPERIENCE}
 				>
 					{data.experience.map(
-						({ id, name, role, company, startDate, endDate, mode, fullContent, skills }) => {
+						({ id, name, role, company, startDate, endDate, mode, shortContent, skills }) => {
 							return (
 								<Box
 									key={generateSlug(`short-experience-${id}`)}
@@ -317,14 +342,14 @@ function ShortMode({ data }: { data: Resume }) {
 									<Space size={1} />
 
 									<Box className="flex flex-col gap-1">
-										<Text>{fullContent.summary}</Text>
+										<Text>{shortContent.summary}</Text>
 
-										{isNotEmptyArray(fullContent.achievements) ? (
+										{isNotEmptyArray(shortContent.achievements) ? (
 											<List
 												variant={List.variant.SIMPLE}
 												className="mx-1"
 											>
-												{fullContent.achievements.map((achievement, index) => {
+												{shortContent.achievements.map((achievement, index) => {
 													return (
 														<List.Item key={generateSlug(`short-${id}-achievement-${index}`)}>
 															{achievement}
@@ -334,7 +359,7 @@ function ShortMode({ data }: { data: Resume }) {
 											</List>
 										) : null}
 
-										<Box className="flex flex-wrap items-center gap-x-1 gap-y-1">
+										<Box className="mt-1 flex flex-wrap items-center gap-x-1 gap-y-1">
 											{skills.map((skill, index) => {
 												return (
 													<Skill
@@ -367,10 +392,13 @@ function FullMode({ data }: { data: Resume }) {
 	const texts = useIntl();
 
 	return (
-		<Box className="relative border-t border-zinc-50 bg-white px-2 py-16 text-black shadow-sm shadow-zinc-200 md:px-8 print:py-0">
+		<Box
+			as="section"
+			className="relative border-t border-slate-50 bg-white px-2 py-16 text-black shadow-sm shadow-slate-200 md:px-8 print:border-0 print:py-0 print:text-sm print:shadow-none"
+		>
 			<Box
 				as="header"
-				className="text-center"
+				className="text-center print:pt-12"
 			>
 				<Title
 					as="h1"
@@ -379,18 +407,12 @@ function FullMode({ data }: { data: Resume }) {
 				>
 					{data.contactInfo.name}
 				</Title>
-				<Space size={2} />
+				<Space size={1} />
 
 				<Text>{data.contactInfo.label}</Text>
 				<Space size={1} />
 
-				<Text className="text-xs">
-					<Icon
-						icon={IconCatalog.MAP_PIN}
-						wrapperClassName="mr-0.5"
-					/>
-					<InlineText className="align-middle">{`${data.contactInfo.location.address} (${data.contactInfo.location.countryCode})`}</InlineText>
-				</Text>
+				<Location location={data.contactInfo.location} />
 				<Space size={2} />
 
 				<Box className="flex items-center justify-center gap-3">
@@ -420,7 +442,6 @@ function FullMode({ data }: { data: Resume }) {
 						<Icon
 							icon={IconCatalog.WEBSITE}
 							size={30}
-							color="text-black"
 						/>
 					</Link>
 					<Link
@@ -462,7 +483,7 @@ function FullMode({ data }: { data: Resume }) {
 					variant={Pre.variant.BREAK_WITH_BLANK_LINES}
 					className="font-texts text-justify"
 				>
-					{data.summary}
+					{data.summary.full}
 				</Pre>
 			</ResumeBox>
 
@@ -487,7 +508,7 @@ function FullMode({ data }: { data: Resume }) {
 								<Box>
 									<Title
 										as="h3"
-										size={Title.size.MD}
+										className="text-xl"
 									>
 										{`${item.studyType} (${item.area})`}
 									</Title>
@@ -548,7 +569,7 @@ function ResumeBox({ title, children, variant, style }: ResumeBoxProps) {
 				<Title
 					as="h2"
 					variant={Title.variant.UNSTYLED}
-					className="mb-1 text-left text-xl uppercase"
+					className="mb-3 border-b border-dashed text-left text-xl uppercase"
 				>
 					{title}
 				</Title>
@@ -579,7 +600,7 @@ function Skill({ children, className }: { children: string; className?: string }
 	return (
 		<InlineText
 			className={cn(
-				"rounded-sms inline-block border border-zinc-300 bg-zinc-100 px-2.5 py-1 font-mono text-xs leading-tight font-semibold text-zinc-600",
+				"inline-block border border-slate-300 bg-slate-100 px-1.5 py-0.5 pt-1 font-mono text-xs leading-tight font-semibold text-slate-600",
 				className,
 			)}
 		>
@@ -620,8 +641,7 @@ function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
 									<Box className="mb-0.5 flex items-end justify-between gap-4">
 										<Title
 											as="h3"
-											size={Title.size.SM}
-											className="leading-none text-black"
+											className="text-xl leading-none text-black"
 										>
 											{isNotEmptyString(company.website) ? (
 												<Link
@@ -639,7 +659,7 @@ function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
 												name
 											)}
 										</Title>
-										<Text className="text-xs leading-none lowercase sm:text-sm">
+										<Text className="text-xs leading-none lowercase sm:text-sm print:text-xs">
 											<InlineText>{startDate}</InlineText> /{" "}
 											<InlineText>{endDate || texts.PRESENT}</InlineText>
 										</Text>
@@ -650,7 +670,7 @@ function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
 									</Box>
 								</Box>
 
-								<Text className="print:text-sm">{fullContent.summary}</Text>
+								<Text>{fullContent.summary}</Text>
 
 								{isNotEmptyArray(fullContent.achievements) ? (
 									<List
@@ -698,11 +718,11 @@ function OtherSection({ data, variant }: { data: Resume; variant: "SHORT" | "FUL
 				>
 					{data.skills.map((item, index) => {
 						return (
-							<List.Item key={generateSlug(`short-skills-label-${item.category}`)}>
+							<List.Item key={generateSlug(`skills-label-${item.category}`)}>
 								<Text>{texts[`SKILLS_L${index + 1}` as keyof typeof texts]}:</Text>
 								<Box className="mt-1 mb-3 flex flex-wrap items-center gap-x-1 gap-y-1">
 									{item.items.map((item) => {
-										return <Skill key={`short-skills-tech-stack-${item}`}>{item}</Skill>;
+										return <Skill key={`skills-tech-stack-${item}`}>{item}</Skill>;
 									})}
 								</Box>
 							</List.Item>
@@ -725,13 +745,25 @@ function OtherSection({ data, variant }: { data: Resume; variant: "SHORT" | "FUL
 					{data.languages.map((item) => {
 						return (
 							<List.Item
-								key={generateSlug(`languages-short-${item.language}`)}
+								key={generateSlug(`languages-${item.language}`)}
 							>{`${item.language} (${item.fluency})`}</List.Item>
 						);
 					})}
 				</List>
 			</ResumeBox>
 		</>
+	);
+}
+
+function Location({ location }: { location: Resume["contactInfo"]["location"] }) {
+	return (
+		<Text className="text-xs">
+			<Icon
+				icon={IconCatalog.MAP_PIN}
+				wrapperClassName="mr-0.5"
+			/>
+			<InlineText className="align-middle">{`${location.city}, ${location.country} (${location.timezone})`}</InlineText>
+		</Text>
 	);
 }
 
@@ -765,7 +797,7 @@ const FULL_MODE_STYLES = `
 const metadata = {
 	title: "Resume",
 	description:
-		"Software Developer based in Colombia with over 8 years of experience designing, developing, and maintaining web applications. My primary focus is on front-end development, building user interfaces with JavaScript, TypeScript, and React. I also have experience working across the full stack, including back-end development, and have developed mobile applications using cross-platform frameworks such as React Native. Most of my experience comes from working in startup environments.",
+		"I'm Diego, a Systems and Computing Engineer from Universidad del Quindío, Colombia, with 8 years of experience developing web applications. I specialize in front-end development with JavaScript/TypeScript and React/Next.js, and also have experience working with Node.js, ORMs, and SQL/NoSQL databases. I’ve worked with startups, digital agencies, and as a freelancer. I have a B2 level of English. I'm interested in remote Front-end Developer roles to continue strengthening my experience in this area while further adopting AI in my workflow to improve productivity and maintain a high standard of work.",
 	is_seo_enabled: true,
 	pathname: "/resume",
 };
