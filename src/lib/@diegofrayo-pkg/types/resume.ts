@@ -46,14 +46,27 @@ export type RawExperience = {
 	endDate: string;
 	mode: string;
 	location: string;
-	summary: string;
-	achievements: string;
+	shortContent: {
+		summary: string;
+		achievements: string;
+	};
+	fullContent: {
+		summary: string;
+		achievements: string;
+	};
 	skills: string;
 	company: Company;
 };
 
-export type Experience = Omit<RawExperience, "achievements" | "skills"> & {
-	achievements: string[];
+export type Experience = Omit<RawExperience, "shortContent" | "fullContent" | "skills"> & {
+	shortContent: {
+		summary: string;
+		achievements: string[];
+	};
+	fullContent: {
+		summary: string;
+		achievements: string[];
+	};
 	skills: string[];
 };
 

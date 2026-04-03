@@ -1,5 +1,5 @@
 {
-	"name": "@diegofrayo/website",
+	"name": "website",
 	"version": "8.0.0",
 	"private": true,
 	"scripts": {

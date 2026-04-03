@@ -7,7 +7,6 @@ import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
 import AnalyticsService from "@diegofrayo-features/analytics";
-import { WithAuth } from "@diegofrayo-features/auth";
 import {
 	Box,
 	Button,
@@ -105,22 +104,17 @@ function ResumePage({ data }: ResumePageProps) {
 					<style id="print-styles" />
 					<Box className="mx-auto max-w-3xl print:max-w-none">
 						<Box className="mb-4 flex justify-center gap-2 text-sm font-bold print:hidden">
-							<WithAuth
-								roles={["ADMIN"]}
-								asChild
+							<Button
+								variant={Button.variant.STYLED}
+								className="w-36"
+								onClick={handleToggleViewModeClick}
 							>
-								<Button
-									variant={Button.variant.STYLED}
-									className="w-36"
-									onClick={handleToggleViewModeClick}
-								>
-									<InlineText className="mr-0.5">Version:</InlineText>
-									<Icon
-										icon={viewMode === "SHORT" ? IconCatalog.EXPAND : IconCatalog.SHRINK}
-										size={viewMode === "SHORT" ? 12 : 16}
-									/>
-								</Button>
-							</WithAuth>
+								<InlineText className="mr-0.5">Version:</InlineText>
+								<Icon
+									icon={viewMode === "SHORT" ? IconCatalog.EXPAND : IconCatalog.SHRINK}
+									size={viewMode === "SHORT" ? 12 : 16}
+								/>
+							</Button>
 
 							<Button
 								variant={Button.variant.STYLED}
@@ -177,10 +171,10 @@ function ShortMode({ data }: { data: Resume }) {
 	const texts = useIntl();
 
 	return (
-		<Box className="border border-zinc-300 bg-white text-black">
+		<Box className="border-t border-zinc-100 bg-white text-black shadow-sm shadow-zinc-200">
 			<Box
 				as="header"
-				className="border-b border-zinc-300 bg-zinc-200 p-4 text-center"
+				className="bg-zinc-100 p-4 text-center"
 			>
 				<Title
 					as="h1"
@@ -255,7 +249,7 @@ function ShortMode({ data }: { data: Resume }) {
 								key={generateSlug(`short-education-${item.institution}`)}
 								className="mb-3 last:mb-0"
 							>
-								<Text className="-mb-1 font-bold">{`${item.area} (${item.studyType})`}</Text>
+								<Text className="-mb-1 font-bold">{`${item.studyType} (${item.area})`}</Text>
 								<Link
 									variant={Link.variant.SMOOTH}
 									href={item.institutionWebsite}
@@ -282,81 +276,81 @@ function ShortMode({ data }: { data: Resume }) {
 					variant="SHORT"
 					title={texts.EXPERIENCE}
 				>
-					{data.experience.map((item) => {
-						return (
-							<Box
-								key={generateSlug(`short-experience-${item.id}`)}
-								className="mb-8 break-inside-avoid last:mb-0"
-							>
-								<Box className="flex items-end justify-between gap-4">
-									<Title
-										as="h3"
-										variant={Title.variant.UNSTYLED}
-										className="truncate leading-none text-black"
-									>
-										{isNotEmptyString(item.company.website) ? (
-											<Link
-												variant={Link.variant.SMOOTH}
-												href={item.company.website}
-												className="underline"
-												onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", {
-													item: item.name,
-												})}
-												isExternalLink
-											>
-												{item.name}
-											</Link>
-										) : (
-											<Text>{item.name}</Text>
-										)}
-									</Title>
-									<Text className="shrink-0 text-right text-xs leading-none lowercase">
-										{item.startDate} - {item.endDate || texts.PRESENT}
-									</Text>
-								</Box>
-								<Space size={0.5} />
-								<Box className="flex items-end justify-between gap-4 text-xs italic">
-									<Text className="shrink-0 leading-none">{item.role}</Text>
-									<Text className="inline-block text-right leading-none capitalize">
-										{item.mode}
-									</Text>
-								</Box>
-								<Space size={1} />
-
-								<Box className="flex flex-col gap-1">
-									<Text>{item.summary}</Text>
-
-									{isNotEmptyArray(item.achievements) ? (
-										<List
-											variant={List.variant.SIMPLE}
-											className="mx-1"
+					{data.experience.map(
+						({ id, name, role, company, startDate, endDate, mode, fullContent, skills }) => {
+							return (
+								<Box
+									key={generateSlug(`short-experience-${id}`)}
+									className="mb-8 break-inside-avoid last:mb-0"
+								>
+									<Box className="flex items-end justify-between gap-4">
+										<Title
+											as="h3"
+											variant={Title.variant.UNSTYLED}
+											className="truncate leading-none text-black"
 										>
-											{item.achievements.map((achievement, index) => {
+											{isNotEmptyString(company.website) ? (
+												<Link
+													variant={Link.variant.SMOOTH}
+													href={company.website}
+													className="underline"
+													onClick={AnalyticsService.trackClickEvent("RESUME|EXPERIENCE", {
+														item: name,
+													})}
+													isExternalLink
+												>
+													{name}
+												</Link>
+											) : (
+												<Text>{name}</Text>
+											)}
+										</Title>
+										<Text className="shrink-0 text-right text-xs leading-none lowercase">
+											{startDate} - {endDate || texts.PRESENT}
+										</Text>
+									</Box>
+									<Space size={0.5} />
+									<Box className="-mt-0.5 flex items-end justify-between gap-4 text-xs italic">
+										<Text className="shrink-0 leading-none">{role}</Text>
+										<Text className="inline-block text-right leading-none capitalize">{mode}</Text>
+									</Box>
+									<Space size={1} />
+
+									<Box className="flex flex-col gap-1">
+										<Text>{fullContent.summary}</Text>
+
+										{isNotEmptyArray(fullContent.achievements) ? (
+											<List
+												variant={List.variant.SIMPLE}
+												className="mx-1"
+											>
+												{fullContent.achievements.map((achievement, index) => {
+													return (
+														<List.Item key={generateSlug(`short-${id}-achievement-${index}`)}>
+															{achievement}
+														</List.Item>
+													);
+												})}
+											</List>
+										) : null}
+
+										<Box className="flex flex-wrap items-center gap-x-1 gap-y-1">
+											{skills.map((skill, index) => {
 												return (
-													<List.Item key={generateSlug(`short-${item.id}-achievement-${index}`)}>
-														{achievement}
-													</List.Item>
+													<Skill
+														key={generateSlug(`${id}-${skill}`)}
+														className={cn({ "print:hidden": index > 7 })}
+													>
+														{skill}
+													</Skill>
 												);
 											})}
-										</List>
-									) : null}
-
-									<Box className="flex flex-wrap items-center gap-x-1 gap-y-1">
-										{item.skills.map((skill, index) => {
-											return (
-												<Skill
-													key={generateSlug(`${item.id}-${skill}`)}
-													className={cn({ "print:hidden": index > 7 })}
-												>
-													{skill}
-												</Skill>
-											);
-										})}
+										</Box>
 									</Box>
 								</Box>
-							</Box>
-						);
-					})}
+							);
+						},
+					)}
 				</ResumeBox>
 
 				<OtherSection
@@ -373,7 +367,7 @@ function FullMode({ data }: { data: Resume }) {
 	const texts = useIntl();
 
 	return (
-		<Box className="relative border border-black bg-white px-2 py-16 text-black md:px-8 print:py-0">
+		<Box className="relative border-t border-zinc-50 bg-white px-2 py-16 text-black shadow-sm shadow-zinc-200 md:px-8 print:py-0">
 			<Box
 				as="header"
 				className="text-center"
@@ -390,16 +384,20 @@ function FullMode({ data }: { data: Resume }) {
 				<Text>{data.contactInfo.label}</Text>
 				<Space size={1} />
 
-				<Text className="text-sm italic">
+				<Text className="text-xs">
+					<Icon
+						icon={IconCatalog.MAP_PIN}
+						wrapperClassName="mr-0.5"
+					/>
 					<InlineText className="align-middle">{`${data.contactInfo.location.address} (${data.contactInfo.location.countryCode})`}</InlineText>
 				</Text>
 				<Space size={2} />
 
-				<Box className="flex items-center justify-center gap-2">
+				<Box className="flex items-center justify-center gap-3">
 					<Link
 						variant={Link.variant.SMOOTH}
 						href={`mailto:${data.contactInfo.email}`}
-						className="inline-block"
+						className="-mr-1 inline-block"
 						onClick={AnalyticsService.trackClickEvent("RESUME|SOCIAL_NETWORK", {
 							item: "email",
 						})}
@@ -407,8 +405,7 @@ function FullMode({ data }: { data: Resume }) {
 					>
 						<Icon
 							icon={IconCatalog.GMAIL}
-							size={36}
-							iconClassName="p-1"
+							size={44}
 						/>
 					</Link>
 					<Link
@@ -421,8 +418,8 @@ function FullMode({ data }: { data: Resume }) {
 						isExternalLink
 					>
 						<Icon
-							icon={IconCatalog.LINK}
-							size={28}
+							icon={IconCatalog.WEBSITE}
+							size={30}
 							color="text-black"
 						/>
 					</Link>
@@ -437,8 +434,7 @@ function FullMode({ data }: { data: Resume }) {
 					>
 						<Icon
 							icon={IconCatalog.LINKEDIN}
-							size={36}
-							iconClassName="p-1"
+							size={30}
 						/>
 					</Link>
 					<Link
@@ -452,8 +448,7 @@ function FullMode({ data }: { data: Resume }) {
 					>
 						<Icon
 							icon={IconCatalog.GITHUB}
-							size={36}
-							iconClassName="p-1"
+							size={30}
 						/>
 					</Link>
 				</Box>
@@ -494,7 +489,7 @@ function FullMode({ data }: { data: Resume }) {
 										as="h3"
 										size={Title.size.MD}
 									>
-										{item.area}
+										{`${item.studyType} (${item.area})`}
 									</Title>
 									<Link
 										variant={Link.variant.SMOOTH}
@@ -570,7 +565,7 @@ function ResumeBox({ title, children, variant, style }: ResumeBoxProps) {
 		>
 			<Title
 				as="h2"
-				className="mb-4 border border-black px-4 py-2 text-left uppercase"
+				className="mb-4 border-black bg-black px-4 py-2 text-left text-white uppercase"
 				size={Title.size.LG}
 			>
 				{title}
@@ -584,7 +579,7 @@ function Skill({ children, className }: { children: string; className?: string }
 	return (
 		<InlineText
 			className={cn(
-				"inline-block rounded-md border border-zinc-400 bg-zinc-200 px-2.5 py-1 font-mono text-xs leading-tight font-semibold text-zinc-700",
+				"rounded-sms inline-block border border-zinc-300 bg-zinc-100 px-2.5 py-1 font-mono text-xs leading-tight font-semibold text-zinc-600",
 				className,
 			)}
 		>
@@ -604,7 +599,7 @@ function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
 	return (
 		<Box className="ml-2 border-l-2 border-black print:border-0">
 			{experience.map(
-				({ id, name, role, company, startDate, endDate, summary, mode, achievements, skills }) => {
+				({ id, name, role, company, startDate, endDate, mode, fullContent, skills }) => {
 					return (
 						<Box
 							key={id}
@@ -620,7 +615,7 @@ function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
 								/>
 							</Box>
 
-							<Box>
+							<Box className="flex flex-col gap-2">
 								<Box>
 									<Box className="mb-0.5 flex items-end justify-between gap-4">
 										<Title
@@ -644,43 +639,35 @@ function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
 												name
 											)}
 										</Title>
-										<Text className="text-xs lowercase sm:text-sm">
+										<Text className="text-xs leading-none lowercase sm:text-sm">
 											<InlineText>{startDate}</InlineText> /{" "}
 											<InlineText>{endDate || texts.PRESENT}</InlineText>
 										</Text>
 									</Box>
 									<Box className="flex justify-between gap-4 text-xs italic">
 										<Text className="shrink-0">{role}</Text>
-										<Text className="truncate pr-px text-right capitalize">
-											{mode.split(" (")[0]}
-										</Text>
+										<Text className="-mt-0.5 truncate pr-px text-right capitalize">{mode}</Text>
 									</Box>
 								</Box>
-								<Space size={1} />
 
-								<Text className="print:text-sm">{summary}</Text>
-								<Space size={1} />
+								<Text className="print:text-sm">{fullContent.summary}</Text>
 
-								{isNotEmptyArray(achievements) ? (
-									<>
-										<List
-											variant={List.variant.SIMPLE}
-											className="mx-1"
-										>
-											{achievements.map((item, index) => {
-												return (
-													<List.Item key={generateSlug(`full-${id}-achievements-${index}`)}>
-														{item}
-													</List.Item>
-												);
-											})}
-										</List>
-										<Space size={1} />
-									</>
+								{isNotEmptyArray(fullContent.achievements) ? (
+									<List
+										variant={List.variant.SIMPLE}
+										className="mx-1"
+									>
+										{fullContent.achievements.map((item, index) => {
+											return (
+												<List.Item key={generateSlug(`full-${id}-achievements-${index}`)}>
+													{item}
+												</List.Item>
+											);
+										})}
+									</List>
 								) : null}
 
-								<Text className="font-bold">{texts.SKILLS}:</Text>
-								<Box className="flex flex-wrap items-center gap-x-1 gap-y-1 p-1">
+								<Box className="flex flex-wrap items-center gap-x-1 gap-y-1">
 									{skills.map((skill) => {
 										return <Skill key={generateSlug(`${id}-${skill}`)}>{skill}</Skill>;
 									})}

@@ -16,7 +16,7 @@ const RemoteIcons = {
 		},
 	},
 	GMAIL: {
-		icon: `${ICONS_PATH}/gmail.svg`,
+		icon: `${ICONS_PATH}/gmail.webp`,
 		defaultProps: {
 			alt: "Email",
 			className: "",
@@ -59,6 +59,13 @@ const RemoteIcons = {
 		icon: `${ICONS_PATH}/spotify.svg`,
 		defaultProps: {
 			alt: "Spotify",
+			className: "",
+		},
+	},
+	WEBSITE: {
+		icon: `${ICONS_PATH}/website.png`,
+		defaultProps: {
+			alt: "Website",
 			className: "",
 		},
 	},
