@@ -87,7 +87,6 @@ export function batch<Element>(elements: Element[], batchSize: number) {
 
 	if (currentBatch.length >= 0) {
 		result.push(currentBatch);
-		currentBatch = [];
 	}
 
 	return result;

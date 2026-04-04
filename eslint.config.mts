@@ -1,6 +1,6 @@
 import js from "@eslint/js";
-import nextVitals from "eslint-config-next/core-web-vitals";
 import pluginReact from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
 import storybook from "eslint-plugin-storybook";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
@@ -9,22 +9,22 @@ import tseslint from "typescript-eslint";
 import css from "@eslint/css";
 
 const JAVASCRIPT_CONFIG = {
-	files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
-	extends: ["js/recommended"],
+	files: ["**/*.{mts,ts,tsx}"],
+	extends: [js.configs.recommended],
 	plugins: { js },
 	languageOptions: { globals: globals.browser },
 };
 
 // NOTE: It is a config defined by eslint cli
 const TYPESCRIPT_CONFIG = {
-	files: ["**/*.{ts,tsx}"],
+	files: ["**/*.{mts,ts,tsx}"],
 	extends: [tseslint.configs.recommended],
 };
 
 const REACT_CONFIG = {
 	files: ["**/*.{ts,tsx}"],
-	extends: [pluginReact.configs.flat["recommended"]],
-	settings: { react: { version: "detect" } },
+	extends: [pluginReact.configs.flat["recommended"], reactHooks.configs.flat.recommended],
+	settings: { react: { version: "19" } },
 	rules: {
 		"react/react-in-jsx-scope": ["off"],
 
@@ -51,7 +51,8 @@ const STORYBOOK_CONFIG = {
 };
 
 export default defineConfig([
-	...nextVitals,
+	// TODO: Enable this someday, when there are new releases from this package
+	// ...nextVitals,
 
 	JAVASCRIPT_CONFIG,
 	TYPESCRIPT_CONFIG,

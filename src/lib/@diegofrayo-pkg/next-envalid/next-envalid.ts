@@ -62,7 +62,7 @@ export function url(config?: Config): EnvVarConfigAPI {
 
 				new URL(input as string);
 				return true;
-			} catch (error) {
+			} catch (_) {
 				return false;
 			}
 		},

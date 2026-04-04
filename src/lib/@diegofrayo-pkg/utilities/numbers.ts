@@ -11,7 +11,7 @@ export function safeCastNumber<DefaultValue>(input: unknown, defaultValue: Defau
 		}
 
 		return number;
-	} catch (error) {
+	} catch (_) {
 		return defaultValue;
 	}
 }

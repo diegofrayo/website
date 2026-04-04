@@ -30,9 +30,8 @@ export function isiOSAndMobileDevice() {
 	/* WARN:
 	 * I ignore this because I'm accessing to a untyped attribute
 	 * (navigator.userAgentData) on navigator object.
-	 * This code is irrelevant, i'm not going to try to fix this
 	 */
-	// @ts-expect-error
+	// @ts-expect-error This code is irrelevant, i'm not going to try to fix this
 	const browserPlatform = window.navigator.userAgentData?.platform || window.navigator.platform;
 	const isIpadWithIOS13 = navigator.userAgent.includes("Mac") && "ontouchend" in document;
 	const APPLE_DEVICES_NAMES = [
@@ -86,9 +85,8 @@ export function isMobileDevice() {
 	/* WARN:
 	 * I ignore this because I'm accessing to a untyped attribute
 	 * (window.opera) on window object.
-	 * This code is irrelevant, i'm not going to try to fix this
 	 */
-	// @ts-expect-error
+	// @ts-expect-error This code is irrelevant, i'm not going to try to fix this
 	const navigatorDetails = navigator.userAgent || navigator.vendor || window.opera;
 	const isMobileResult = (function checker(input: string) {
 		if (
@@ -113,9 +111,8 @@ export function isPWA() {
 	/* WARN:
 	 * I ignore this because I'm accessing to a untyped attribute
 	 * (navigator.standalone) on navigator object.
-	 * This code is irrelevant, i'm not going to try to fix this
 	 */
-	// @ts-expect-error
+	// @ts-expect-error This code is irrelevant, i'm not going to try to fix this
 	const isStandaloneModeActive = window.navigator.standalone;
 
 	return isStandaloneModeActive || window.matchMedia("(display-mode: standalone)").matches;

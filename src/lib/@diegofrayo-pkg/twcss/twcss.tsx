@@ -132,12 +132,7 @@ type StylesParam =
 
 type StylesParamFunction = string | ((props: UtilsTypes.Object) => string);
 
-/*
- * WARN:
- * I don't know how to remove this any
- * styled-components also uses any to type this arg
- */
-// @ts-ignore
+// @ts-expect-error I don't know how to remove this any, styled-components also uses any to type this arg
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ElementToRender = HTMLTag | ReactFunctionComponent<any> | any;
 
