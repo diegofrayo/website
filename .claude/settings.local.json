@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git commit -m ':*)"
+      "Bash(git commit -m ':*)",
+      "Bash(file /Users/diegofrayo/Documents/Programming/Personal/website/public/assets/pages/projects/images/*.png)"
     ]
   }
 }

@@ -70,7 +70,7 @@ function Backdrop({ children, className, onCloseHandler }: BackdropProps) {
 		<dialog
 			ref={dialogRef}
 			className={cn(
-				"m-auto max-h-full max-w-full bg-transparent p-3 text-zinc-400 backdrop:fixed backdrop:inset-0 backdrop:bottom-0 backdrop:z-50 backdrop:m-0 backdrop:flex backdrop:size-full backdrop:cursor-default backdrop:items-center backdrop:justify-center backdrop:overflow-hidden backdrop:bg-black/70 backdrop:p-0 sm:p-6",
+				"m-auto max-h-full max-w-full bg-transparent p-3 text-zinc-400 outline-none backdrop:fixed backdrop:inset-0 backdrop:bottom-0 backdrop:z-50 backdrop:m-0 backdrop:flex backdrop:size-full backdrop:cursor-default backdrop:items-center backdrop:justify-center backdrop:overflow-hidden backdrop:bg-black/70 backdrop:p-0 sm:p-6",
 				className,
 			)}
 			onClick={handleClick}

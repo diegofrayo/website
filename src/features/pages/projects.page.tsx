@@ -1,41 +1,42 @@
+import { useState } from "react";
+
 import { isPWA } from "@diegofrayo-pkg/utilities/browser";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import AnalyticsService from "@diegofrayo-features/analytics";
 import {
 	Box,
+	Button,
 	Icon,
 	IconCatalog,
 	Link,
+	Modal,
 	Text,
 	Title,
-	type IconName,
 } from "@diegofrayo-features/components/primitive";
 
 import { MainLayout, Page } from "~/components/layout";
 import { Routes } from "~/constants";
+import { PROJECTS_IMAGES_PATH } from "~/constants/assets";
 
 function ProjectsPage() {
 	const PROJECTS = [
 		{
 			title: "kordz",
-			icon: IconCatalog.GUITAR,
+			image: `${PROJECTS_IMAGES_PATH}/kordz.webp`,
 			url: "https://kordz-dfrz.vercel.app",
 			description: "Chords and lyrics for the songs I can play on guitar.",
-			tags: [],
 		},
 		{
 			title: "blog",
-			icon: IconCatalog.RSS,
+			image: `${PROJECTS_IMAGES_PATH}/blog.webp`,
 			url: Routes.BLOG,
 			description: "A static blog, built with React, MDX, and Next.js.",
-			tags: [],
 		},
 		{
 			title: "bets",
-			icon: IconCatalog.TROPHY,
+			image: `${PROJECTS_IMAGES_PATH}/bets.webp`,
 			url: "https://bets-dfrz.vercel.app",
 			description: "A tool for personal use that shows analysis to support my soccer bets.",
-			tags: [],
 		},
 	];
 
@@ -49,10 +50,8 @@ function ProjectsPage() {
 			}}
 		>
 			<MainLayout title="Projects">
-				<Box className="mx-auto flex w-full max-w-sm flex-col gap-3">
-					<Text className="mb-2 text-center text-sm italic">
-						Some side projects for personal use
-					</Text>
+				<Text className="mb-4 text-center text-sm italic">Some side projects for personal use</Text>
+				<Box className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 					{PROJECTS.map((item, index) => {
 						return (
 							<ProjectBox
@@ -72,45 +71,86 @@ export default ProjectsPage;
 // --- COMPONENTS ---
 
 function ProjectBox({ item }: { item: Project }) {
-	return (
-		<Box
-			as="article"
-			className="flex items-start justify-between gap-2 rounded-sm border border-zinc-100 p-2 shadow-md"
-		>
-			<Icon
-				icon={item.icon}
-				size={48}
-				wrapperClassName="rounded-md bg-black p-2 text-zinc-100"
-			/>
+	// --- STATE ---
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
-			<Box className="flex-1">
-				<Title
-					as="h1"
-					size={Title.size.SM}
-					className="leading-tight text-black"
-					variant={Title.variant.SIMPLE}
+	return (
+		<>
+			<Box
+				as="article"
+				className="relative mx-auto flex w-full max-w-lg flex-col overflow-hidden rounded-md border border-zinc-200 shadow-md"
+			>
+				<Box
+					className="group relative h-48 cursor-zoom-in overflow-hidden border-b border-zinc-200 bg-zinc-100 shadow-inner"
+					onClick={() => setIsModalOpen(true)}
 				>
-					{item.title}
-				</Title>
-				<Text className="text-sm">{item.description}</Text>
+					<img
+						src={item.image}
+						alt={item.title}
+						className="h-full w-full object-cover object-top"
+					/>
+					<Box className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-200 group-hover:bg-black/40">
+						<Icon
+							icon={IconCatalog.ZOOM_IN}
+							size={36}
+							color="text-white"
+							wrapperClassName="opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+						/>
+					</Box>
+				</Box>
+
+				<Box className="flex flex-1 flex-col gap-1 p-3 pb-10">
+					<Title
+						as="h2"
+						size={Title.size.SM}
+						className="leading-tight text-black"
+						variant={Title.variant.SIMPLE}
+					>
+						{item.title}
+					</Title>
+					<Text className="text-sm text-zinc-600">{item.description}</Text>
+				</Box>
+
+				<Box className="absolute right-3 bottom-3">
+					<Link
+						href={item.url}
+						variant={Link.variant.SMOOTH}
+						isExternalLink={isPWA() === false || !item.url.startsWith("/")}
+						onClick={AnalyticsService.trackClickEvent("PROJECTS|OPEN_PROJECT", {
+							project: item.title,
+						})}
+					>
+						<Icon
+							icon={IconCatalog.EXTERNAL_LINK}
+							color="text-black"
+						/>
+					</Link>
+				</Box>
 			</Box>
 
-			<Box className="place-self-end leading-none">
-				<Link
-					href={item.url}
-					variant={Link.variant.SMOOTH}
-					isExternalLink={isPWA() === false || !item.url.startsWith("/")}
-					onClick={AnalyticsService.trackClickEvent("PROJECTS|OPEN_PROJECT", {
-						project: item.title,
-					})}
+			<Modal
+				visible={isModalOpen}
+				className="relative"
+				onCloseHandler={() => setIsModalOpen(false)}
+			>
+				<Button
+					variant={Button.variant.SMOOTH}
+					className="ml-auto block rounded-t-sm bg-red-500/60 px-2 py-0.5 text-white"
+					onClick={() => setIsModalOpen(false)}
 				>
 					<Icon
-						icon={IconCatalog.EXTERNAL_LINK}
-						color="text-black"
+						icon={IconCatalog.X}
+						size={16}
+						color="text-white"
 					/>
-				</Link>
-			</Box>
-		</Box>
+				</Button>
+				<img
+					src={item.image}
+					alt={`${item.title} project thumbnail`}
+					className="max-h-[80vh] max-w-[80vw] object-contain shadow-xl"
+				/>
+			</Modal>
+		</>
 	);
 }
 
@@ -118,8 +158,7 @@ function ProjectBox({ item }: { item: Project }) {
 
 type Project = {
 	title: string;
-	icon: IconName;
+	image: string;
 	url: string;
 	description: string;
-	tags: string[];
 };
