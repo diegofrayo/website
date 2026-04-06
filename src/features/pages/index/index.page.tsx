@@ -132,7 +132,7 @@ function Footer() {
 			as="footer"
 			className="text-center"
 		>
-			<Box className="inline-flex justify-center gap-2 rounded-2xl border border-zinc-200 bg-zinc-100 px-2 py-1">
+			<Box className="inline-flex justify-center gap-2 rounded-2xl border border-zinc-200 bg-zinc-100 px-3 py-2">
 				{SOCIAL_ICONS.map((item) => {
 					const key = pipe(join([`Footer`, item.name], "-"), generateSlug);
 
@@ -143,7 +143,7 @@ function Footer() {
 							onClick={AnalyticsService.trackClickEvent("HOME_PAGE|SOCIAL_NETWORKS", {
 								item: item.name,
 							})}
-							className="transition-call inline-flex items-center justify-center rounded-lg p-1 text-black duration-200 hover:bg-zinc-600 hover:px-2 hover:text-white"
+							className="inline-flex items-center justify-center rounded-lg p-1 text-black transition-all duration-500 hover:bg-zinc-900 hover:text-white"
 							isExternalLink
 						>
 							<Icon

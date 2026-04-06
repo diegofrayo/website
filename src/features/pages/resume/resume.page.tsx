@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Toggle } from "@base-ui/react/toggle";
+import { ToggleGroup } from "@base-ui/react/toggle-group";
 
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
@@ -8,7 +10,6 @@ import { isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
 import AnalyticsService from "@diegofrayo-features/analytics";
 import {
 	Box,
-	Button,
 	Icon,
 	IconCatalog,
 	Image,
@@ -36,8 +37,8 @@ export type ResumePageProps = {
 
 function ResumePage({ data }: ResumePageProps) {
 	// --- STATE ---
-	const [viewMode, setViewMode] = useState<"FULL" | "SHORT">("SHORT");
-	const [lang, setLang] = useState<"ES" | "EN">("EN");
+	const [viewMode, setViewMode] = useState<ViewMode>("SHORT");
+	const [lang, setLang] = useState<Lang>("EN");
 
 	// --- COMPUTED STATES ---
 	const currentData: Resume = data[lang.toLowerCase() as Lowercase<typeof lang>];
@@ -54,24 +55,6 @@ function ResumePage({ data }: ResumePageProps) {
 		[viewMode],
 	);
 
-	// --- HANDLERS ---
-	function handleToggleViewModeClick() {
-		setViewMode((currentState) => {
-			const newState = currentState === "FULL" ? "SHORT" : "FULL";
-			AnalyticsService.trackEvent("RESUME|SET_VIEW_MODE", { view_mode: newState });
-
-			return newState;
-		});
-	}
-
-	function handleToggleLangClick() {
-		setLang((currentState) => {
-			const newState = currentState === "ES" ? "EN" : "ES";
-			AnalyticsService.trackEvent("RESUME|SET_LANG", { lang: newState });
-
-			return newState;
-		});
-	}
 	// --- UTILS ---
 	function getSelectedPDFLink() {
 		const LINKS = {
@@ -104,50 +87,14 @@ function ResumePage({ data }: ResumePageProps) {
 				<IntlContext.Provider value={IntlProviderValue[lang]}>
 					<style id="print-styles" />
 					<Box className="mx-auto max-w-3xl print:max-w-none">
-						<Box className="mb-4 flex justify-center gap-2 text-sm font-bold print:hidden">
-							<Button
-								variant={Button.variant.STYLED}
-								className="w-36"
-								onClick={handleToggleViewModeClick}
-							>
-								<InlineText className="mr-0.5">Version:</InlineText>
-								<Icon
-									icon={viewMode === "SHORT" ? IconCatalog.EXPAND : IconCatalog.SHRINK}
-									size={viewMode === "SHORT" ? 12 : 16}
-								/>
-							</Button>
-
-							<Button
-								variant={Button.variant.STYLED}
-								className="w-28 sm:w-36"
-								onClick={handleToggleLangClick}
-							>
-								<InlineText className="mr-0.5">Lang:</InlineText>
-								<InlineText>{lang}</InlineText>
-							</Button>
-
-							<Button
-								variant={Button.variant.STYLED}
-								className="sm:w-36"
-								render={
-									<Link
-										href={getSelectedPDFLink()}
-										onClick={AnalyticsService.trackClickEvent("RESUME|DOWNLOAD_AS_PDF", {
-											version: viewMode,
-											lang,
-										})}
-										className="flex items-center justify-center"
-										isExternalLink
-									/>
-								}
-							>
-								<Icon
-									className="mr-0.5"
-									icon={IconCatalog.DOWNLOAD}
-								/>
-								<InlineText>PDF</InlineText>
-							</Button>
-						</Box>
+						<ActionButtons
+							viewMode={viewMode}
+							lang={lang}
+							pdfLink={getSelectedPDFLink()}
+							onViewModeChange={setViewMode}
+							onLangChange={setLang}
+						/>
+						<Space size={3} />
 
 						<Box className="text-base">
 							{viewMode === "FULL" ? (
@@ -767,6 +714,136 @@ function Location({ location }: { location: Resume["contactInfo"]["location"] })
 	);
 }
 
+type ActionButtonsProps = {
+	viewMode: ViewMode;
+	lang: Lang;
+	pdfLink: string;
+	onViewModeChange: (viewMode: ViewMode) => void;
+	onLangChange: (lang: Lang) => void;
+};
+
+function ActionButtons({
+	viewMode,
+	lang,
+	pdfLink,
+	onViewModeChange,
+	onLangChange,
+}: ActionButtonsProps) {
+	// --- STYLES ---
+	const classes = {
+		icon: "hidden px-2 text-slate-400 sm:flex",
+		separator: "mx-1.5 h-5 w-px border-slate-200",
+		toggle:
+			"cursor-pointer rounded-full px-3 py-1 text-slate-600 transition-colors data-pressed:bg-slate-900 data-pressed:text-white",
+		downloadPDF: "flex items-center gap-1.5 rounded-full bg-slate-900 px-3 py-1 text-white h-full",
+	};
+
+	// --- HANDLERS ---
+	function handleViewModeChange(newValue: string[]) {
+		if (newValue.length > 0) {
+			const newMode = newValue[0] as ViewMode;
+			onViewModeChange(newMode);
+			AnalyticsService.trackEvent("RESUME|SET_VIEW_MODE", { view_mode: newMode });
+		}
+	}
+
+	function handleLangChange(newValue: string[]) {
+		if (newValue.length === 0) return;
+
+		const newLang = newValue[0] as Lang;
+		onLangChange(newLang);
+		AnalyticsService.trackEvent("RESUME|SET_LANG", { lang: newLang });
+	}
+
+	return (
+		<Box className="flex justify-center print:hidden">
+			<Box className="flex items-center rounded-full border border-slate-100 bg-white px-1.5 py-1 text-sm font-medium shadow-sm">
+				<Icon
+					icon={IconCatalog.FILE_TEXT}
+					size={16}
+					wrapperClassName={classes.icon}
+				/>
+
+				<ToggleGroup
+					value={[viewMode]}
+					onValueChange={handleViewModeChange}
+					className="flex"
+				>
+					<Toggle
+						value="SHORT"
+						aria-label="Short view"
+						className={classes.toggle}
+					>
+						Short
+					</Toggle>
+					<Toggle
+						value="FULL"
+						aria-label="Full view"
+						className={classes.toggle}
+					>
+						Full
+					</Toggle>
+				</ToggleGroup>
+
+				<Space
+					variant={Space.variant.SIMPLE}
+					orientation="v"
+					className={classes.separator}
+				/>
+
+				<Icon
+					icon={IconCatalog.LANGUAGES}
+					size={16}
+					wrapperClassName={classes.icon}
+				/>
+
+				<ToggleGroup
+					value={[lang]}
+					onValueChange={handleLangChange}
+					className="flex"
+				>
+					<Toggle
+						value="EN"
+						aria-label="English"
+						className={classes.toggle}
+					>
+						EN
+					</Toggle>
+					<Toggle
+						value="ES"
+						aria-label="Spanish"
+						className={classes.toggle}
+					>
+						ES
+					</Toggle>
+				</ToggleGroup>
+
+				<Space
+					variant={Space.variant.SIMPLE}
+					orientation="v"
+					className={classes.separator}
+				/>
+
+				<Link
+					href={pdfLink}
+					onClick={AnalyticsService.trackClickEvent("RESUME|DOWNLOAD_AS_PDF", {
+						version: viewMode,
+						lang,
+					})}
+					className={classes.downloadPDF}
+					isExternalLink
+				>
+					<Icon
+						icon={IconCatalog.DOWNLOAD}
+						size={14}
+					/>
+					<InlineText className="hidden sm:inline">PDF</InlineText>
+				</Link>
+			</Box>
+		</Box>
+	);
+}
+
 // --- STYLES ---
 
 const SHORT_MODE_STYLES = `
@@ -791,6 +868,11 @@ const FULL_MODE_STYLES = `
     }
   }
 `;
+
+// --- TYPES ---
+
+type ViewMode = "FULL" | "SHORT";
+type Lang = "EN" | "ES";
 
 // --- CONSTANTS ---
 

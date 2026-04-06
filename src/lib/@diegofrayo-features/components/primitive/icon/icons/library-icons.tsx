@@ -20,6 +20,7 @@ import {
 	EyeIcon,
 	EyeOffIcon,
 	FileChartLineIcon,
+	FileTextIcon,
 	FilmIcon,
 	GlobeIcon,
 	GuitarIcon,
@@ -28,6 +29,7 @@ import {
 	IdCardIcon,
 	InfoIcon,
 	KeyIcon,
+	LanguagesIcon,
 	LinkIcon,
 	LogOutIcon,
 	MailsIcon,
@@ -201,6 +203,13 @@ const LibraryIcons = {
 		},
 		icon: FileChartLineIcon,
 	},
+	FILE_TEXT: {
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+		icon: FileTextIcon,
+	},
 	FILM: {
 		defaultProps: {
 			className: "",
@@ -256,6 +265,13 @@ const LibraryIcons = {
 			color: "",
 		},
 		icon: KeyIcon,
+	},
+	LANGUAGES: {
+		defaultProps: {
+			className: "",
+			color: "",
+		},
+		icon: LanguagesIcon,
 	},
 	LINK: {
 		defaultProps: {
