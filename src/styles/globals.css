@@ -58,6 +58,16 @@
 	box-sizing: border-box;
 }
 
+html,
+body,
+body > #__next {
+	height: 100%;
+}
+
+html {
+	scrollbar-gutter: stable;
+}
+
 body {
 	@apply font-texts;
 	@apply bg-white;
@@ -78,14 +88,16 @@ body.scroll-disabled {
 	overflow: hidden;
 }
 
+body:has(dialog[open]) {
+	overflow: hidden;
+}
+
 body:not(.visible) {
 	visibility: hidden;
 }
 
-html,
-body,
-body > #__next {
-	height: 100%;
+dialog {
+	overscroll-behavior: contain;
 }
 
 button {

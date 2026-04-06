@@ -130,7 +130,7 @@ function ProjectBox({ item }: { item: Project }) {
 
 			<Modal
 				visible={isModalOpen}
-				className="relative"
+				className="relative flex-col"
 				onCloseHandler={() => setIsModalOpen(false)}
 			>
 				<Button
