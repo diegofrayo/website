@@ -11,6 +11,7 @@ import {
 	Button,
 	Icon,
 	IconCatalog,
+	Image,
 	InlineText,
 	Link,
 	List,
@@ -29,7 +30,7 @@ import type { CopyToClipboardPopoverProps } from "@diegofrayo-features/component
 import { getMDXExport, MDXContent } from "@diegofrayo-features/mdx/client";
 
 import { MainLayout, Page } from "~/components/layout";
-import { Routes } from "~/constants";
+import { BLOG_IMAGES_PATH, Routes } from "~/constants";
 import WEBSITE_METADATA from "~/data/metadata.json";
 
 import { BlogPostCategory } from "../../components/blog-post-category";
@@ -52,9 +53,17 @@ function BlogPostPage({ data }: BlogPostPageProps) {
 			}}
 		>
 			<MainLayout title={blogPostDetails.title}>
+				<Box className="border-t border-zinc-100 bg-slate-50 shadow-sm shadow-zinc-300">
+					<Image
+						src={`${BLOG_IMAGES_PATH}/thumbnails/${blogPostDetails.slug}.png`}
+						alt={blogPostDetails.title}
+						className="mx-auto h-64 max-w-full"
+						useNativeElement
+					/>
+				</Box>
+				<Space size={1.5} />
 				<BlogPostDetails details={blogPostDetails} />
 				<Space size={1.5} />
-
 				<MDXContent
 					code={blogPostContent}
 					components={getBlogPostDynamicComponents(getMDXExport(blogPostContent))}
@@ -62,7 +71,6 @@ function BlogPostPage({ data }: BlogPostPageProps) {
 						DATA: { post: blogPostDetails },
 					}}
 				/>
-
 				<Space size={4} />
 				<BlogPostSources sources={blogPostDetails.sources} />
 				<Space size={2} />

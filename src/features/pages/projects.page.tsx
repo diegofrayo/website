@@ -8,6 +8,7 @@ import {
 	Button,
 	Icon,
 	IconCatalog,
+	Image,
 	Link,
 	Modal,
 	Text,
@@ -23,7 +24,7 @@ function ProjectsPage() {
 		{
 			title: "kordz",
 			image: `${PROJECTS_IMAGES_PATH}/kordz.webp`,
-			url: "https://kordz-dfrz.vercel.app",
+			url: "https://kordz.diegofrayo.dev",
 			description: "Chords and lyrics for the songs I can play on guitar.",
 		},
 		{
@@ -35,7 +36,7 @@ function ProjectsPage() {
 		{
 			title: "bets",
 			image: `${PROJECTS_IMAGES_PATH}/bets.webp`,
-			url: "https://bets-dfrz.vercel.app",
+			url: "https://bets.diegofrayo.dev",
 			description: "A tool for personal use that shows analysis to support my soccer bets.",
 		},
 	];
@@ -144,10 +145,11 @@ function ProjectBox({ item }: { item: Project }) {
 						color="text-white"
 					/>
 				</Button>
-				<img
+				<Image
 					src={item.image}
 					alt={`${item.title} project thumbnail`}
-					className="max-h-[80vh] max-w-[80vw] object-contain shadow-xl"
+					className="max-h-[90vh] max-w-[90vw] object-contain shadow-xl"
+					useNativeElement
 				/>
 			</Modal>
 		</>

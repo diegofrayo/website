@@ -27,7 +27,6 @@
 		"auto-bind": "^5.0.1",
 		"class-variance-authority": "^0.7.1",
 		"classnames": "^2.5.1",
-		"developer-icons": "^6.0.5",
 		"hoist-non-react-statics": "^3.3.2",
 		"lucide-react": "^0.562.0",
 		"mdx-bundler": "^10.1.1",

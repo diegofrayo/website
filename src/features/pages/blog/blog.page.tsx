@@ -2,6 +2,7 @@ import {
 	Box,
 	Icon,
 	IconCatalog,
+	Image,
 	InlineText,
 	Link,
 	Text,
@@ -10,6 +11,7 @@ import {
 
 import { MainLayout, Page } from "~/components/layout";
 import { Routes } from "~/constants";
+import { BLOG_IMAGES_PATH } from "~/constants/assets";
 
 import { BlogPostCategory } from "./components/blog-post-category";
 import type { BlogPosts } from "./types";
@@ -29,7 +31,7 @@ function BlogPage({ data: posts }: BlogPageProps) {
 			}}
 		>
 			<MainLayout title={metadata.title}>
-				<Box className="mx-auto flex w-full max-w-lg flex-wrap gap-3">
+				<Box className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 					{Object.values(posts).map((post) => {
 						if (post.is_published === false) return null;
 
@@ -38,37 +40,47 @@ function BlogPage({ data: posts }: BlogPageProps) {
 								key={post.slug}
 								href={Routes.BLOG_POST(post.slug)}
 								variant={Link.variant.SMOOTH}
-								className="flex w-full shrink-0 flex-col justify-between rounded-sm border border-zinc-100 p-3 shadow-md"
+								className="mx-auto flex w-full max-w-lg flex-col overflow-hidden rounded-md border border-zinc-200 shadow-md"
 							>
-								<Box className="relative">
+								<Image
+									src={`${BLOG_IMAGES_PATH}/thumbnails/${post.slug}.png`}
+									alt={post.title}
+									className="h-auto w-full border-b border-zinc-200 object-cover sm:h-72 sm:object-fill"
+									useNativeElement
+								/>
+
+								<Box className="flex flex-1 flex-col gap-2 p-3">
 									<Title
 										variant={Title.variant.SIMPLE}
 										as="h2"
+										size={Title.size.SM}
 										className="leading-tight text-black"
 									>
 										{post.title}
 									</Title>
 
-									<Text className="pr-22 text-base">{post.description}</Text>
+									<Text className="text-sm text-zinc-600">{post.description}</Text>
 
-									<Box className="absolute right-0 bottom-0 mt-1 flex items-center justify-center gap-1 rounded bg-black px-1 py-0.5 pr-1.5 text-right text-xs text-white">
+									<Box className="mt-auto flex items-center gap-1 pt-2">
 										<Icon
 											icon={IconCatalog.CALENDAR}
 											size={12}
 										/>
-										<InlineText as="strong">{post.published_at.split("/")[0]}</InlineText>
+										<InlineText className="text-xs text-zinc-500">
+											{post.published_at.substring(0, 4)}
+										</InlineText>
 									</Box>
-								</Box>
 
-								<Box className="mt-6 hidden flex-wrap gap-1">
-									{post.categories.map((category) => {
-										return (
-											<BlogPostCategory
-												key={category}
-												text={category}
-											/>
-										);
-									})}
+									<Box className="flex flex-wrap gap-1">
+										{post.categories.map((category) => {
+											return (
+												<BlogPostCategory
+													key={category}
+													text={category}
+												/>
+											);
+										})}
+									</Box>
 								</Box>
 							</Link>
 						);
