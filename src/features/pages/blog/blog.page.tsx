@@ -45,7 +45,7 @@ function BlogPage({ data: posts }: BlogPageProps) {
 								<Image
 									src={`${BLOG_IMAGES_PATH}/thumbnails/${post.slug}.png`}
 									alt={post.title}
-									className="h-auto w-full border-b border-zinc-200 object-cover sm:h-72 sm:object-fill"
+									className="h-auto w-full border-b border-zinc-200 bg-slate-50 object-cover sm:h-72 sm:object-contain"
 									useNativeElement
 								/>
 

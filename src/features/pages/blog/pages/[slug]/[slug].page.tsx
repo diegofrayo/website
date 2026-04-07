@@ -57,7 +57,7 @@ function BlogPostPage({ data }: BlogPostPageProps) {
 					<Image
 						src={`${BLOG_IMAGES_PATH}/thumbnails/${blogPostDetails.slug}.png`}
 						alt={blogPostDetails.title}
-						className="mx-auto h-64 max-w-full"
+						className="mx-auto max-w-full"
 						useNativeElement
 					/>
 				</Box>

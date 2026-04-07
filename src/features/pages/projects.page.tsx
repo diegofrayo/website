@@ -131,7 +131,7 @@ function ProjectBox({ item }: { item: Project }) {
 
 			<Modal
 				visible={isModalOpen}
-				className="relative flex-col"
+				className="hide-scrollbar relative flex-col"
 				onCloseHandler={() => setIsModalOpen(false)}
 			>
 				<Button
@@ -148,7 +148,7 @@ function ProjectBox({ item }: { item: Project }) {
 				<Image
 					src={item.image}
 					alt={`${item.title} project thumbnail`}
-					className="max-h-[90vh] max-w-[90vw] object-contain shadow-xl"
+					className="max-h-[90vh] max-w-[90vw] object-contain"
 					useNativeElement
 				/>
 			</Modal>
