@@ -126,7 +126,7 @@ export function InstagramMonoIcon({ className, height, width }: IconProps) {
 	);
 }
 
-export function LinkedinMonoIcon({ className, height, width }: IconProps) {
+export function LinkedinMonoIcon({ className, height, width, ...rest }: IconProps) {
 	return (
 		<svg
 			viewBox="0 0 24 24"
@@ -139,6 +139,7 @@ export function LinkedinMonoIcon({ className, height, width }: IconProps) {
 			strokeLinejoin="round"
 			className={cn(className)}
 			xmlns="http://www.w3.org/2000/svg"
+			{...rest}
 		>
 			{/* Outer rounded square */}
 			<rect

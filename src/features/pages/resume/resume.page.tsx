@@ -1,15 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { Radio } from "@base-ui/react/radio";
+import { RadioGroup } from "@base-ui/react/radio-group";
 import { Toggle } from "@base-ui/react/toggle";
 import { ToggleGroup } from "@base-ui/react/toggle-group";
+import { flushSync } from "react-dom";
 
+import { useBrowserStorage } from "@diegofrayo-pkg/browser-storage";
 import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
 import AnalyticsService from "@diegofrayo-features/analytics";
+import { WithAuth } from "@diegofrayo-features/auth";
 import {
 	Box,
+	Button,
 	Icon,
 	IconCatalog,
 	Image,
@@ -37,8 +43,18 @@ export type ResumePageProps = {
 
 function ResumePage({ data }: ResumePageProps) {
 	// --- STATE ---
-	const [viewMode, setViewMode] = useState<ViewMode>("SHORT");
-	const [lang, setLang] = useState<Lang>("EN");
+	const [viewMode, setViewMode] = useBrowserStorage<ViewMode>({
+		key: "DR_RESUME_VIEW_MODE",
+		value: "SHORT",
+		readInitialValueFromStorage: true,
+		saveDuringCreation: true,
+	});
+	const [lang, setLang] = useBrowserStorage<Lang>({
+		key: "DR_RESUME_LANG",
+		value: "EN",
+		readInitialValueFromStorage: true,
+		saveDuringCreation: true,
+	});
 
 	// --- COMPUTED STATES ---
 	const currentData: Resume = data[lang.toLowerCase() as Lowercase<typeof lang>];
@@ -55,22 +71,6 @@ function ResumePage({ data }: ResumePageProps) {
 		[viewMode],
 	);
 
-	// --- UTILS ---
-	function getSelectedPDFLink() {
-		const LINKS = {
-			"EN-SHORT":
-				"https://drive.google.com/file/d/1FXgV7ivut-qXpoztv7VPIhHtF-fzXJZn/view?usp=sharing",
-			"EN-FULL":
-				"https://drive.google.com/file/d/1b3kvK6ef_Z1UeD5IE_Y8Y8go-JjNRIPv/view?usp=sharing",
-			"ES-SHORT":
-				"https://drive.google.com/file/d/1FXgV7ivut-qXpoztv7VPIhHtF-fzXJZn/view?usp=sharing",
-			"ES-FULL":
-				"https://drive.google.com/file/d/1b3kvK6ef_Z1UeD5IE_Y8Y8go-JjNRIPv/view?usp=sharing",
-		};
-
-		return LINKS[`${lang}-${viewMode}`];
-	}
-
 	return (
 		<Page
 			config={{
@@ -86,15 +86,26 @@ function ResumePage({ data }: ResumePageProps) {
 			>
 				<IntlContext.Provider value={IntlProviderValue[lang]}>
 					<style id="print-styles" />
-					<Box className="mx-auto max-w-3xl print:max-w-none">
-						<ActionButtons
-							viewMode={viewMode}
-							lang={lang}
-							pdfLink={getSelectedPDFLink()}
-							onViewModeChange={setViewMode}
-							onLangChange={setLang}
-						/>
-						<Space size={3} />
+					<Box className="mx-auto flex max-w-3xl flex-col gap-6 print:max-w-none">
+						<Box className="flex w-full flex-col justify-center gap-3 sm:flex-row print:hidden">
+							<ActionButtons
+								viewMode={viewMode}
+								lang={lang}
+								onViewModeChange={setViewMode}
+								onLangChange={setLang}
+							/>
+							<WithAuth
+								roles={["ADMIN"]}
+								asChild
+							>
+								<DownloadActions
+									viewMode={viewMode}
+									lang={lang}
+									onViewModeChange={setViewMode}
+									onLangChange={setLang}
+								/>
+							</WithAuth>
+						</Box>
 
 						<Box className="text-base">
 							{viewMode === "FULL" ? (
@@ -137,62 +148,10 @@ function ShortMode({ data }: { data: Resume }) {
 				<Text>{data.contactInfo.label}</Text>
 				<Space size={1.5} />
 
-				<Box className="grid grid-cols-1 gap-x-3 gap-y-1 text-black sm:grid-cols-2">
-					<Link
-						variant={Link.variant.SMOOTH}
-						href={`mailto:${data.contactInfo.email}`}
-						className="inline-flex shrink-0 items-center justify-center gap-0.5 sm:justify-end"
-						isExternalLink
-					>
-						<Icon
-							icon={IconCatalog.MAILS}
-							size={16}
-						/>
-						<InlineText className="text-sm font-semibold">{data.contactInfo.email}</InlineText>
-					</Link>
-					<Link
-						variant={Link.variant.SMOOTH}
-						href={data.contactInfo.website}
-						className="inline-flex shrink-0 items-center justify-center gap-0.5 sm:justify-start"
-						isExternalLink
-					>
-						<Icon
-							icon={IconCatalog.GLOBE}
-							size={16}
-						/>
-						<InlineText className="text-sm font-semibold">
-							{data.contactInfo.website.replace("https://", "")}
-						</InlineText>
-					</Link>
-					<Link
-						variant={Link.variant.SMOOTH}
-						href={data.contactInfo.profiles[0].url}
-						className="inline-flex shrink-0 items-center justify-center gap-0.5 sm:justify-end"
-						isExternalLink
-					>
-						<Icon
-							icon={IconCatalog.LINKEDIN_MONO}
-							className="size-4"
-						/>
-						<InlineText className="text-sm font-semibold">
-							{data.contactInfo.profiles[0].url.replace("https://www.", "")}
-						</InlineText>
-					</Link>
-					<Link
-						variant={Link.variant.SMOOTH}
-						href={data.contactInfo.profiles[1].url}
-						className="inline-flex shrink-0 items-center justify-center gap-0.5 sm:justify-start"
-						isExternalLink
-					>
-						<Icon
-							icon={IconCatalog.GITHUB_MONO}
-							className="size-4"
-						/>
-						<InlineText className="text-sm font-semibold">
-							{data.contactInfo.profiles[1].url.replace("https://www.", "")}
-						</InlineText>
-					</Link>
-				</Box>
+				<ContactInfo
+					contactInfo={data.contactInfo}
+					variant="SHORT"
+				/>
 				<Space size={1.5} />
 
 				<Location location={data.contactInfo.location} />
@@ -362,64 +321,10 @@ function FullMode({ data }: { data: Resume }) {
 				<Location location={data.contactInfo.location} />
 				<Space size={2} />
 
-				<Box className="flex items-center justify-center gap-3">
-					<Link
-						variant={Link.variant.SMOOTH}
-						href={`mailto:${data.contactInfo.email}`}
-						className="-mr-1 inline-block"
-						onClick={AnalyticsService.trackClickEvent("RESUME|SOCIAL_NETWORK", {
-							item: "email",
-						})}
-						isExternalLink
-					>
-						<Icon
-							icon={IconCatalog.GMAIL}
-							size={44}
-						/>
-					</Link>
-					<Link
-						variant={Link.variant.SMOOTH}
-						href={data.contactInfo.website}
-						className="inline-block"
-						onClick={AnalyticsService.trackClickEvent("RESUME|SOCIAL_NETWORK", {
-							item: "website",
-						})}
-						isExternalLink
-					>
-						<Icon
-							icon={IconCatalog.WEBSITE}
-							size={30}
-						/>
-					</Link>
-					<Link
-						variant={Link.variant.SMOOTH}
-						href={data.contactInfo.profiles[0].url}
-						className="inline-block"
-						onClick={AnalyticsService.trackClickEvent("RESUME|SOCIAL_NETWORK", {
-							item: data.contactInfo.profiles[0].network,
-						})}
-						isExternalLink
-					>
-						<Icon
-							icon={IconCatalog.LINKEDIN}
-							size={30}
-						/>
-					</Link>
-					<Link
-						variant={Link.variant.SMOOTH}
-						href={data.contactInfo.profiles[1].url}
-						className="inline-block"
-						onClick={AnalyticsService.trackClickEvent("RESUME|SOCIAL_NETWORK", {
-							item: data.contactInfo.profiles[1].network,
-						})}
-						isExternalLink
-					>
-						<Icon
-							icon={IconCatalog.GITHUB}
-							size={30}
-						/>
-					</Link>
-				</Box>
+				<ContactInfo
+					contactInfo={data.contactInfo}
+					variant="FULL"
+				/>
 			</Box>
 
 			<ResumeBox
@@ -579,7 +484,8 @@ function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
 								<Image
 									src={company.logo}
 									alt="Company logo"
-									fill
+									loading="eager"
+									useNativeElement
 								/>
 							</Box>
 
@@ -702,6 +608,110 @@ function OtherSection({ data, variant }: { data: Resume; variant: "SHORT" | "FUL
 	);
 }
 
+function ContactInfo({
+	contactInfo,
+	variant,
+}: {
+	contactInfo: Resume["contactInfo"];
+	variant: "SHORT" | "FULL";
+}) {
+	const classes = {
+		item: cn(
+			"inline-flex shrink-0 items-center justify-center gap-1",
+			"odd:sm:justify-end even:sm:justify-start",
+		),
+	};
+	const isShortVariant = variant === "SHORT";
+
+	return (
+		<Box className="grid grid-cols-1 gap-x-3 gap-y-1 text-black sm:grid-cols-2">
+			<Link
+				variant={Link.variant.SMOOTH}
+				href={`mailto:${contactInfo.email}`}
+				className={classes.item}
+				isExternalLink
+			>
+				{isShortVariant ? (
+					<Icon
+						icon={IconCatalog.MAILS}
+						size={16}
+					/>
+				) : (
+					<Icon
+						icon={IconCatalog.GMAIL}
+						size={22}
+					/>
+				)}
+				<InlineText className="text-sm font-semibold">{contactInfo.email}</InlineText>
+			</Link>
+			<Link
+				variant={Link.variant.SMOOTH}
+				href={contactInfo.website}
+				className={classes.item}
+				isExternalLink
+			>
+				{isShortVariant ? (
+					<Icon
+						icon={IconCatalog.GLOBE}
+						size={16}
+					/>
+				) : (
+					<Icon
+						icon={IconCatalog.WEBSITE}
+						size={16}
+					/>
+				)}
+				<InlineText className="text-sm font-semibold">
+					{contactInfo.website.replace("https://", "")}
+				</InlineText>
+			</Link>
+			<Link
+				variant={Link.variant.SMOOTH}
+				href={contactInfo.profiles[0].url}
+				className={classes.item}
+				isExternalLink
+			>
+				{isShortVariant ? (
+					<Icon
+						icon={IconCatalog.LINKEDIN_MONO}
+						className="size-4"
+						strokeWidth={2}
+					/>
+				) : (
+					<Icon
+						icon={IconCatalog.LINKEDIN}
+						wrapperClassName="size-4"
+					/>
+				)}
+				<InlineText className="text-sm font-semibold">
+					{contactInfo.profiles[0].url.replace("https://www.", "")}
+				</InlineText>
+			</Link>
+			<Link
+				variant={Link.variant.SMOOTH}
+				href={contactInfo.profiles[1].url}
+				className={classes.item}
+				isExternalLink
+			>
+				{isShortVariant ? (
+					<Icon
+						icon={IconCatalog.GITHUB_MONO}
+						className="size-4"
+					/>
+				) : (
+					<Icon
+						icon={IconCatalog.GITHUB}
+						wrapperClassName="size-4"
+					/>
+				)}
+				<InlineText className="text-sm font-semibold">
+					{contactInfo.profiles[1].url.replace("https://www.", "")}
+				</InlineText>
+			</Link>
+		</Box>
+	);
+}
+
 function Location({ location }: { location: Resume["contactInfo"]["location"] }) {
 	return (
 		<Text className="text-xs">
@@ -717,21 +727,14 @@ function Location({ location }: { location: Resume["contactInfo"]["location"] })
 type ActionButtonsProps = {
 	viewMode: ViewMode;
 	lang: Lang;
-	pdfLink: string;
 	onViewModeChange: (viewMode: ViewMode) => void;
 	onLangChange: (lang: Lang) => void;
 };
 
-function ActionButtons({
-	viewMode,
-	lang,
-	pdfLink,
-	onViewModeChange,
-	onLangChange,
-}: ActionButtonsProps) {
+function ActionButtons({ viewMode, lang, onViewModeChange, onLangChange }: ActionButtonsProps) {
 	// --- STYLES ---
 	const classes = {
-		icon: "hidden px-2 text-slate-400 sm:flex",
+		icon: "px-2 text-slate-400",
 		separator: "mx-1.5 h-5 w-px border-slate-200",
 		toggle:
 			"cursor-pointer rounded-full px-3 py-1 text-slate-600 transition-colors data-pressed:bg-slate-900 data-pressed:text-white",
@@ -756,14 +759,13 @@ function ActionButtons({
 	}
 
 	return (
-		<Box className="flex justify-center print:hidden">
+		<Box className="flex justify-center">
 			<Box className="flex items-center rounded-full border border-slate-100 bg-white px-1.5 py-1 text-sm font-medium shadow-sm">
 				<Icon
 					icon={IconCatalog.FILE_TEXT}
 					size={16}
 					wrapperClassName={classes.icon}
 				/>
-
 				<ToggleGroup
 					value={[viewMode]}
 					onValueChange={handleViewModeChange}
@@ -796,7 +798,6 @@ function ActionButtons({
 					size={16}
 					wrapperClassName={classes.icon}
 				/>
-
 				<ToggleGroup
 					value={[lang]}
 					onValueChange={handleLangChange}
@@ -817,28 +818,139 @@ function ActionButtons({
 						ES
 					</Toggle>
 				</ToggleGroup>
+			</Box>
+		</Box>
+	);
+}
 
-				<Space
-					variant={Space.variant.SIMPLE}
-					orientation="v"
-					className={classes.separator}
+type DownloadActionsProps = {
+	viewMode: ViewMode;
+	lang: Lang;
+	onViewModeChange: (viewMode: ViewMode) => void;
+	onLangChange: (lang: Lang) => void;
+};
+
+function DownloadActions({ viewMode, lang, onViewModeChange, onLangChange }: DownloadActionsProps) {
+	// --- STATE ---
+	const [downloadMode, setDownloadMode] = useBrowserStorage<DownloadMode>({
+		key: "RESUME_DOWNLOAD_MODE",
+		value: "CURRENT",
+		readInitialValueFromStorage: true,
+		saveDuringCreation: true,
+	});
+
+	// --- STYLES ---
+	const classes = {
+		radioGroup: "flex gap-5 py-1",
+		radioItem: cn("flex cursor-pointer items-center gap-1"),
+		radio: cn(
+			"m-0 box-border flex size-4 items-center justify-center rounded-full border border-black bg-black p-0 outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 data-unchecked:bg-black",
+		),
+		indicator: cn(
+			"&:data-unchecked:hiddenw flex items-center justify-center before:size-1.5 before:rounded-full before:bg-slate-300 before:content-['']",
+		),
+		downloadButton:
+			"flex h-full cursor-pointer items-center gap-1.5 rounded-full bg-slate-900 px-3 py-1 text-white ml-2",
+		separator: "mx-1.5 h-5 w-px border-slate-200",
+	};
+
+	// --- HANDLERS ---
+	function handleDownloadClick() {
+		if (downloadMode === "CURRENT") {
+			window.print();
+		} else {
+			downloadAll();
+		}
+	}
+
+	// --- UTILS ---
+	function downloadAll() {
+		const originalViewMode = viewMode;
+		const originalLang = lang;
+		const originalTitle = document.title;
+		const variants: Array<{ lang: Lang; viewMode: ViewMode }> = [
+			{ lang: "EN", viewMode: "SHORT" },
+			{ lang: "ES", viewMode: "SHORT" },
+			{ lang: "EN", viewMode: "FULL" },
+			{ lang: "ES", viewMode: "FULL" },
+		];
+
+		let index = 0;
+
+		const triggerPrint = (lang: Lang, viewMode: ViewMode) => {
+			const isDefaultResume = lang === "EN" && viewMode === "SHORT";
+			document.title = isDefaultResume ? "2026" : `2026 - ${lang} - ${viewMode}`.toUpperCase();
+			window.print();
+		};
+
+		const printNext = () => {
+			if (index >= variants.length) {
+				document.title = originalTitle;
+				onViewModeChange(originalViewMode);
+				onLangChange(originalLang);
+				return;
+			}
+
+			const variant = variants[index++];
+
+			flushSync(() => {
+				onViewModeChange(variant.viewMode);
+				onLangChange(variant.lang);
+			});
+
+			setTimeout(() => {
+				window.addEventListener("afterprint", printNext, { once: true });
+				triggerPrint(variant.lang, variant.viewMode);
+			}, 1000);
+		};
+
+		printNext();
+	}
+
+	return (
+		<Box className="flex justify-center">
+			<Box className="flex items-center gap-3 rounded-full border border-slate-100 bg-white px-1.5 py-1 text-sm font-medium shadow-sm">
+				<Icon
+					icon={IconCatalog.DOWNLOAD}
+					size={16}
+					wrapperClassName="px-2 text-slate-400"
 				/>
 
-				<Link
-					href={pdfLink}
-					onClick={AnalyticsService.trackClickEvent("RESUME|DOWNLOAD_AS_PDF", {
-						version: viewMode,
-						lang,
-					})}
-					className={classes.downloadPDF}
-					isExternalLink
+				<RadioGroup
+					value={downloadMode}
+					onValueChange={(val) => setDownloadMode(val as DownloadMode)}
+					className={classes.radioGroup}
 				>
-					<Icon
-						icon={IconCatalog.DOWNLOAD}
-						size={14}
-					/>
-					<InlineText className="hidden sm:inline">PDF</InlineText>
-				</Link>
+					<label className={classes.radioItem}>
+						<Radio.Root
+							value="CURRENT"
+							aria-label="Download current variant"
+							className={classes.radio}
+						>
+							<Radio.Indicator className={classes.indicator} />
+						</Radio.Root>
+						<InlineText>Current</InlineText>
+					</label>
+
+					<label className={classes.radioItem}>
+						<Radio.Root
+							value="ALL"
+							aria-label="Download all variants"
+							className={classes.radio}
+						>
+							<Radio.Indicator className={classes.indicator} />
+						</Radio.Root>
+						<InlineText>All</InlineText>
+					</label>
+				</RadioGroup>
+
+				<Button
+					variant={Button.variant.SMOOTH}
+					className={classes.downloadButton}
+					onClick={handleDownloadClick}
+				>
+					<InlineText>Download</InlineText>
+				</Button>
 			</Box>
 		</Box>
 	);
@@ -855,7 +967,6 @@ const SHORT_MODE_STYLES = `
     }
 
     @page :first {
-      margin-bottom: 0cm;
       margin-top: 0cm;
     }
   }
@@ -873,6 +984,7 @@ const FULL_MODE_STYLES = `
 
 type ViewMode = "FULL" | "SHORT";
 type Lang = "EN" | "ES";
+type DownloadMode = "CURRENT" | "ALL";
 
 // --- CONSTANTS ---
 
