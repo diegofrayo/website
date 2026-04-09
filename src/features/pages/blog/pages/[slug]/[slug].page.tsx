@@ -5,7 +5,15 @@ import type UtilsTypes from "@diegofrayo-pkg/types";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isEmptyArray } from "@diegofrayo-pkg/validator";
-import AnalyticsService from "@diegofrayo-features/analytics";
+
+import BoxWithTitle from "~/components/common/box-with-title";
+import Callout from "~/components/common/callout";
+import CopyToClipboardPopover from "~/components/common/copy-to-clipboard-popover";
+import type { CopyToClipboardPopoverProps } from "~/components/common/copy-to-clipboard-popover";
+import ImageWithLink from "~/components/common/image-with-link";
+import Toast from "~/components/common/toast";
+import Tooltip from "~/components/common/tooltip";
+import { MainLayout, Page } from "~/components/layout";
 import {
 	Box,
 	Button,
@@ -17,21 +25,11 @@ import {
 	List,
 	Space,
 	Text,
-} from "@diegofrayo-features/components/primitive";
-import {
-	BoxWithTitle,
-	Callout,
-	CopyToClipboardPopover,
-	ImageWithLink,
-	Toast,
-	Tooltip,
-} from "@diegofrayo-features/components/shared";
-import type { CopyToClipboardPopoverProps } from "@diegofrayo-features/components/shared/copy-to-clipboard-popover";
-import { getMDXExport, MDXContent } from "@diegofrayo-features/mdx/client";
-
-import { MainLayout, Page } from "~/components/layout";
+} from "~/components/primitive";
 import { BLOG_IMAGES_PATH, Routes } from "~/constants";
 import WEBSITE_METADATA from "~/data/metadata.json";
+import AnalyticsService from "~/features/analytics";
+import { getMDXExport, MDXContent } from "~/features/mdx/client";
 
 import { BlogPostCategory } from "../../components/blog-post-category";
 import type { BlogPostWithContent } from "../../types";
@@ -86,7 +84,7 @@ export default BlogPostPage;
 
 function getBlogPostDynamicComponents(componentsMap: UtilsTypes.Object<string>) {
 	const COMPONENTS_PATHS_MAP = {
-		Playground: "../../../../common/components/shared/playground",
+		Playground: "../../../../common/components/common/playground",
 		MFMAMGitHubRepo: "./components/my-favorite-music-and-mdx/MFMAMGitHubRepo",
 		MFMAMHelloWorldMDX: "./components/my-favorite-music-and-mdx/MFMAMHelloWorldMDX",
 		MFMAMSpotifyPlaylist: "./components/my-favorite-music-and-mdx/MFMAMSpotifyPlaylist",
@@ -106,7 +104,7 @@ function getBlogPostDynamicComponents(componentsMap: UtilsTypes.Object<string>) 
 		if (COMPONENTS_PATHS_MAP[componentName]) {
 			if (componentName === "Playground") {
 				components[componentName] = dynamic(
-					() => import("../../../../../lib/@diegofrayo-features/components/shared/playground"),
+					() => import("../../../../../components/common/playground"),
 					{
 						ssr: true,
 					},

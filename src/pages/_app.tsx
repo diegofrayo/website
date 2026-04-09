@@ -14,9 +14,9 @@ import { Toaster } from "sonner";
 import { useDidMount } from "@diegofrayo-pkg/hooks";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isMobileDevice, isWindowsDevice } from "@diegofrayo-pkg/utilities/browser";
-import { useAuth } from "@diegofrayo-features/auth";
-import { addGlobalErrorListener, logger } from "@diegofrayo-features/logger";
 
+import { useAuth } from "~/features/auth";
+import { addGlobalErrorListener, logger } from "~/features/logger";
 import ErrorPage from "~/features/pages/error.page";
 
 // --- PROPS & TYPES ---

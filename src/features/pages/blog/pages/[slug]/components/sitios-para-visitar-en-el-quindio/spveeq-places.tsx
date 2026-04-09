@@ -2,7 +2,9 @@ import type UtilsTypes from "@diegofrayo-pkg/types";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
-import AnalyticsService from "@diegofrayo-features/analytics";
+
+import BoxWithTitle from "~/components/common/box-with-title";
+import ImageGallery from "~/components/common/image-gallery";
 import {
 	Box,
 	Collapsible,
@@ -13,8 +15,8 @@ import {
 	Space,
 	Title,
 	type IconName,
-} from "@diegofrayo-features/components/primitive";
-import { BoxWithTitle, ImageGallery } from "@diegofrayo-features/components/shared";
+} from "~/components/primitive";
+import AnalyticsService from "~/features/analytics";
 
 type SPVEEQPlacesProps = {
 	data: UtilsTypes.Object<

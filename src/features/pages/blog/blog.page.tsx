@@ -1,3 +1,4 @@
+import { MainLayout, Page } from "~/components/layout";
 import {
 	Box,
 	Icon,
@@ -7,9 +8,7 @@ import {
 	Link,
 	Text,
 	Title,
-} from "@diegofrayo-features/components/primitive";
-
-import { MainLayout, Page } from "~/components/layout";
+} from "~/components/primitive";
 import { Routes } from "~/constants";
 import { BLOG_IMAGES_PATH } from "~/constants/assets";
 

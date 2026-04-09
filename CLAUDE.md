@@ -25,11 +25,20 @@ Pre-commit hooks (Husky + lint-staged) run Prettier and ESLint on staged `.ts`/`
 ```
 src/
 ├── pages/                  # Next.js routes (thin wrappers — re-export from features/)
-├── features/pages/         # Actual page implementations (page-specific, not reusable)
-├── components/layout/      # Shared layout: MainLayout, Header, Footer, Page (SEO wrapper)
+├── features/
+│   ├── pages/              # Actual page implementations (page-specific, not reusable)
+│   ├── analytics/          # Analytics tracking
+│   ├── auth/               # Token-based auth (components, hooks, service)
+│   ├── dev-tools/          # Development utilities
+│   ├── logger/             # Logging
+│   ├── mdx/                # MDX compilation (client + server)
+│   └── routing/            # Routing helpers
+├── components/
+│   ├── layout/             # MainLayout, Header, Footer, Page (SEO wrapper)
+│   ├── primitive/          # Base building blocks: Box, Button, Icon, Text, Link, Title, etc.
+│   └── common/             # Shared UI: Callout, Toast, Tooltip, Popover, ImageGallery, etc.
 ├── lib/
-│   ├── @diegofrayo-pkg/    # Generic utilities (FP, browser, server, types, validation, hooks)
-│   └── @diegofrayo-features/  # Domain features (auth, mdx, logger, routing, analytics, components)
+│   └── @diegofrayo-pkg/    # Generic utilities (FP, browser, server, types, validation, hooks)
 ├── data/                   # Static JSON data (resume, blog posts, site metadata)
 ├── constants/              # Routes, env vars, asset paths
 ├── styles/                 # Global CSS + Tailwind utilities
@@ -40,7 +49,6 @@ src/
 
 - `~/*` → `src/*`
 - `@diegofrayo-pkg/*` → `src/lib/@diegofrayo-pkg/*`
-- `@diegofrayo-features/*` → `src/lib/@diegofrayo-features/*`
 
 ### Page Pattern
 
@@ -64,8 +72,8 @@ Blog posts are stored as JSON files with MDX content as a string. `mdx-bundler` 
 
 ### Components
 
-- **Primitives** (`@diegofrayo-features/components/primitive`): Box, Button, Icon, Text, Link, Title — the base building blocks
-- **Shared** (`@diegofrayo-features/components/shared`): TypingTextEffect, Callout, Toast, Tooltip, Popover
+- **Primitives** (`src/components/primitive/`): Box, Button, Icon, Text, Link, Title — the base building blocks
+- **Common** (`src/components/common/`): TypingTextEffect, Callout, Toast, Tooltip, Popover, ImageGallery, SourceCode, Modal
 - Radix UI and Base UI back accessible primitives; Lucide React for icons; Sonner for toasts
 
 ### Styling

@@ -2,8 +2,8 @@ import path from "path";
 import type { GetStaticPaths, GetStaticProps } from "next";
 
 import { readFile } from "@diegofrayo-pkg/utilities/server/files";
-import { compile } from "@diegofrayo-features/mdx/server";
 
+import { compile } from "~/features/mdx/server";
 import type { BlogPosts, BlogPostWithContent } from "~/features/pages/blog";
 import type { BlogPostPageProps } from "~/features/pages/blog/pages/[slug]";
 

@@ -1,6 +1,5 @@
-import { Box, Button, Space, Text, Title } from "@diegofrayo-features/components/primitive";
-
 import { MainLayout, Page } from "~/components/layout";
+import { Box, Button, Space, Text, Title } from "~/components/primitive";
 
 function ErrorPage({ title, variant }: { variant: "404" | "500"; title: string }) {
 	// --- COMPUTED STATES ---

@@ -4,7 +4,7 @@ import { NavigationMenu as RadixNavigationMenu } from "radix-ui";
 import cn from "@diegofrayo-pkg/cn";
 import { useBoolean, useLockScroll } from "@diegofrayo-pkg/hooks";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
-import AnalyticsService from "@diegofrayo-features/analytics";
+
 import {
 	Box,
 	Button,
@@ -15,10 +15,10 @@ import {
 	List,
 	Title,
 	type IconName,
-} from "@diegofrayo-features/components/primitive";
-import { useRouting } from "@diegofrayo-features/routing";
-
+} from "~/components/primitive";
 import { Routes, WEBSITE_METADATA } from "~/constants";
+import AnalyticsService from "~/features/analytics";
+import { useRouting } from "~/features/routing";
 
 type HeaderProps = {
 	height: number;

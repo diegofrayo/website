@@ -1,18 +1,11 @@
 import { pipe } from "@diegofrayo-pkg/utilities/fp";
 import { generateSlug, join } from "@diegofrayo-pkg/utilities/strings";
-import AnalyticsService from "@diegofrayo-features/analytics";
-import {
-	Box,
-	Icon,
-	IconCatalog,
-	InlineText,
-	Link,
-	Title,
-} from "@diegofrayo-features/components/primitive";
-import { TypingTextEffect } from "@diegofrayo-features/components/shared";
 
+import TypingTextEffect from "~/components/common/typing-text-effect";
 import { Page } from "~/components/layout";
+import { Box, Icon, IconCatalog, InlineText, Link, Title } from "~/components/primitive";
 import { Routes, WEBSITE_METADATA } from "~/constants";
+import AnalyticsService from "~/features/analytics";
 
 // --- COMPONENT DEFINITION ---
 

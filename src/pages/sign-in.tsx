@@ -3,11 +3,11 @@ import { useState } from "react";
 import cn from "@diegofrayo-pkg/cn";
 import { useDidMount } from "@diegofrayo-pkg/hooks";
 import { waitFor } from "@diegofrayo-pkg/utilities/async";
-import { AuthService } from "@diegofrayo-features/auth";
-import { Box } from "@diegofrayo-features/components/primitive";
 
 import { Page } from "~/components/layout";
+import { Box } from "~/components/primitive";
 import { EnvVars, Routes } from "~/constants";
+import { AuthService } from "~/features/auth";
 
 function SignInPage() {
 	// --- STATES & REFS ---

@@ -1,11 +1,4 @@
-import {
-	Box,
-	Icon,
-	IconCatalog,
-	Link,
-	Text,
-	Title,
-} from "@diegofrayo-features/components/primitive";
+import { Box, Icon, IconCatalog, Link, Text, Title } from "~/components/primitive";
 
 type MFMAMGitHubRepoProps = {
 	name: string;

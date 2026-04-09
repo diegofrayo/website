@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(git commit -m ':*)",
-      "Bash(file /Users/diegofrayo/Documents/Programming/Personal/website/public/assets/pages/projects/images/*.png)"
+      "Bash(file /Users/diegofrayo/Documents/Programming/Personal/website/public/assets/pages/projects/images/*.png)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('scripts', {}\\), indent=2\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('compilerOptions', {}\\).get\\('paths', {}\\), indent=2\\)\\)\")",
+      "Bash(grep -h \"^export\" /Users/diegofrayo/Documents/Programming/Personal/website/src/components/common/*.tsx /Users/diegofrayo/Documents/Programming/Personal/website/src/components/common/loader/loader.tsx)"
     ]
   }
 }

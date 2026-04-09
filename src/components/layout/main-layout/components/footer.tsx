@@ -1,17 +1,9 @@
 import { useBoolean, useOnScroll } from "@diegofrayo-pkg/hooks";
 import { getScrollPosition, setScrollPosition } from "@diegofrayo-pkg/utilities/browser";
-import AnalyticsService from "@diegofrayo-features/analytics";
-import {
-	Box,
-	Button,
-	Icon,
-	IconCatalog,
-	InlineText,
-	Link,
-	Text,
-} from "@diegofrayo-features/components/primitive";
 
+import { Box, Button, Icon, IconCatalog, InlineText, Link, Text } from "~/components/primitive";
 import { Routes } from "~/constants";
+import AnalyticsService from "~/features/analytics";
 
 function Footer() {
 	return (

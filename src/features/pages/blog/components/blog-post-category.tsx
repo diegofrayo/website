@@ -1,4 +1,4 @@
-import { InlineText } from "@diegofrayo-features/components/primitive";
+import { InlineText } from "~/components/primitive";
 
 export function BlogPostCategory({ text }: { text: string }) {
 	const composedText = `#${text}`;

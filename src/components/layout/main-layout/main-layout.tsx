@@ -2,9 +2,10 @@ import cn from "@diegofrayo-pkg/cn";
 import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { pipe, removeLastItem } from "@diegofrayo-pkg/utilities/fp";
 import { isEmptyString, isNotEmptyString } from "@diegofrayo-pkg/validator";
-import AnalyticsService from "@diegofrayo-features/analytics";
-import { Box, Link, Space, Title } from "@diegofrayo-features/components/primitive";
-import { useRouting } from "@diegofrayo-features/routing";
+
+import { Box, Link, Space, Title } from "~/components/primitive";
+import AnalyticsService from "~/features/analytics";
+import { useRouting } from "~/features/routing";
 
 import Footer from "./components/footer";
 import Header from "./components/header";

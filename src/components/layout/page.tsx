@@ -6,10 +6,10 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import { isDevelopmentEnvironment } from "@diegofrayo-pkg/utilities/environment";
 import { is } from "@diegofrayo-pkg/utilities/fp";
 import { isBoolean, isEmptyString } from "@diegofrayo-pkg/validator";
-import AnalyticsService from "@diegofrayo-features/analytics";
-import DevTools from "@diegofrayo-features/dev-tools";
 
 import { ASSETS_ROOT_PATH, EnvVars, FAVICON_PATH, Routes, WEBSITE_METADATA } from "~/constants";
+import AnalyticsService from "~/features/analytics";
+import DevTools from "~/features/dev-tools";
 
 type PageProps = {
 	children: ReactTypes.Children;

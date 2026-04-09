@@ -2,7 +2,8 @@ import { useState } from "react";
 
 import { isPWA } from "@diegofrayo-pkg/utilities/browser";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
-import AnalyticsService from "@diegofrayo-features/analytics";
+
+import { MainLayout, Page } from "~/components/layout";
 import {
 	Box,
 	Button,
@@ -13,11 +14,10 @@ import {
 	Modal,
 	Text,
 	Title,
-} from "@diegofrayo-features/components/primitive";
-
-import { MainLayout, Page } from "~/components/layout";
+} from "~/components/primitive";
 import { Routes } from "~/constants";
 import { PROJECTS_IMAGES_PATH } from "~/constants/assets";
+import AnalyticsService from "~/features/analytics";
 
 function ProjectsPage() {
 	const PROJECTS = [

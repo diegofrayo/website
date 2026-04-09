@@ -1,15 +1,8 @@
 import { isNotEmptyString } from "@diegofrayo-pkg/validator";
-import AnalyticsService from "@diegofrayo-features/analytics";
-import {
-	BlockQuote,
-	Box,
-	Collapsible,
-	Icon,
-	IconCatalog,
-	Link,
-	Pre,
-} from "@diegofrayo-features/components/primitive";
-import { BoxWithTitle } from "@diegofrayo-features/components/shared";
+
+import BoxWithTitle from "~/components/common/box-with-title";
+import { BlockQuote, Box, Collapsible, Icon, IconCatalog, Link, Pre } from "~/components/primitive";
+import AnalyticsService from "~/features/analytics";
 
 type SPVEEQRecommendationsProps = {
 	data: {

@@ -11,8 +11,8 @@ import type ReactTypes from "@diegofrayo-pkg/types/react";
 import type { Resume } from "@diegofrayo-pkg/types/resume";
 import { generateSlug } from "@diegofrayo-pkg/utilities/strings";
 import { isNotEmptyArray, isNotEmptyString } from "@diegofrayo-pkg/validator";
-import AnalyticsService from "@diegofrayo-features/analytics";
-import { WithAuth } from "@diegofrayo-features/auth";
+
+import { MainLayout, Page } from "~/components/layout";
 import {
 	Box,
 	Button,
@@ -26,9 +26,9 @@ import {
 	Space,
 	Text,
 	Title,
-} from "@diegofrayo-features/components/primitive";
-
-import { MainLayout, Page } from "~/components/layout";
+} from "~/components/primitive";
+import AnalyticsService from "~/features/analytics";
+import { WithAuth } from "~/features/auth";
 
 import { IntlContext, IntlProviderValue, useIntl } from "./resume.context";
 
