@@ -51,7 +51,7 @@ export function getAndroidVersion() {
 		const ua: string = navigator.userAgent.toLowerCase();
 		const match: RegExpMatchArray | null = ua.match(/android\s([0-9.]*)/);
 
-		if (!match) throw new Error();
+		if (!match || !match[1]) throw new Error();
 
 		return parseFloat(match[1]);
 	} catch (error) {

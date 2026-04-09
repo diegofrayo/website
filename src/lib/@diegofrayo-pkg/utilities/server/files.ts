@@ -113,11 +113,11 @@ export function createOutputFolder(outputPath: string, opts?: { isDirectory?: bo
 export function setFileModifiedDate(filePath: string, fileStats: CustomFile["stats"]) {
 	/*
   console.log(
-		new Date(fileStats.atimeMs),
-		new Date(fileStats.birthtimeMs),
-		new Date(fileStats.ctimeMs),
-		new Date(fileStats.mtimeMs),
-		new Date(),
+    new Date(fileStats.atimeMs),
+    new Date(fileStats.birthtimeMs),
+    new Date(fileStats.ctimeMs),
+    new Date(fileStats.mtimeMs),
+    new Date(),
   );
   */
 
@@ -230,7 +230,7 @@ export function readFolderFiles(
 	sourceFolderPath: string,
 	opts?: ReadFolderFilesOpts,
 ): CustomFile[] {
-	return fs.readdirSync(sourceFolderPath).reduce((result: CustomFile[], fileName) => {
+	return fs.readdirSync(sourceFolderPath).reduce((result: CustomFile[], fileName: string) => {
 		const file = new CustomFile(sourceFolderPath, fileName);
 
 		if (opts?.recursive && file.isDirectory) {
