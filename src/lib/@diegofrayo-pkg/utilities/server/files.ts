@@ -197,6 +197,11 @@ export function jsonToBlob(object: Record<string, unknown> | Array<unknown>): Bl
 	return blob;
 }
 
+export function checkIsDirectory(sourcePath: string) {
+	const stats = fs.statSync(sourcePath);
+	return stats.isDirectory();
+}
+
 interface IncludeTheseExtensionsConfig {
 	includeDirectories?: boolean;
 	recursive?: boolean;

@@ -12,6 +12,7 @@ import {
 	Image,
 	Link,
 	Modal,
+	Pre,
 	Text,
 	Title,
 } from "~/components/primitive";
@@ -22,6 +23,13 @@ import AnalyticsService from "~/features/analytics";
 function ProjectsPage() {
 	const PROJECTS = [
 		{
+			title: "dranki",
+			image: `${PROJECTS_IMAGES_PATH}/dranki.png`,
+			url: "https://dranki.diegofrayo.dev",
+			description: `A vibe coded web app to practice english.
+      👷 In progress...`,
+		},
+		{
 			title: "kordz",
 			image: `${PROJECTS_IMAGES_PATH}/kordz.webp`,
 			url: "https://kordz.diegofrayo.dev",
@@ -29,7 +37,7 @@ function ProjectsPage() {
 		},
 		{
 			title: "blog",
-			image: `${PROJECTS_IMAGES_PATH}/blog.webp`,
+			image: `${PROJECTS_IMAGES_PATH}/blog.jpeg`,
 			url: Routes.BLOG,
 			description: "A static blog, built with React, MDX, and Next.js.",
 		},
@@ -109,7 +117,12 @@ function ProjectBox({ item }: { item: Project }) {
 					>
 						{item.title}
 					</Title>
-					<Text className="text-sm text-zinc-600">{item.description}</Text>
+					<Pre
+						variant={Pre.variant.BREAK_WITH_BLANK_LINES}
+						className="font-texts text-sm text-zinc-600"
+					>
+						{item.description}
+					</Pre>
 				</Box>
 
 				<Box className="absolute right-3 bottom-3">

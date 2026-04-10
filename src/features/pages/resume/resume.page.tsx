@@ -43,15 +43,21 @@ export type ResumePageProps = {
 
 function ResumePage({ data }: ResumePageProps) {
 	// --- STATE ---
-	const [viewMode, setViewMode] = useBrowserStorage<ViewMode>({
-		key: "DR_RESUME_VIEW_MODE",
-		value: "SHORT",
+	const [design, setDesign] = useBrowserStorage<Design>({
+		key: "DR_RESUME_DESIGN",
+		value: "SIMPLE",
 		readInitialValueFromStorage: true,
 		saveDuringCreation: true,
 	});
 	const [lang, setLang] = useBrowserStorage<Lang>({
 		key: "DR_RESUME_LANG",
 		value: "EN",
+		readInitialValueFromStorage: true,
+		saveDuringCreation: true,
+	});
+	const [contentMode, setContentMode] = useBrowserStorage<ContentMode>({
+		key: "DR_RESUME_CONTENT_MODE",
+		value: "SHORT",
 		readInitialValueFromStorage: true,
 		saveDuringCreation: true,
 	});
@@ -65,10 +71,10 @@ function ResumePage({ data }: ResumePageProps) {
 			const tag = document.getElementById("print-styles");
 
 			if (tag) {
-				tag.innerHTML = viewMode === "SHORT" ? SHORT_MODE_STYLES : FULL_MODE_STYLES;
+				tag.innerHTML = design === "SIMPLE" ? SIMPLE_MODE_STYLES : COLORFUL_MODE_STYLES;
 			}
 		},
-		[viewMode],
+		[design],
 	);
 
 	return (
@@ -87,11 +93,13 @@ function ResumePage({ data }: ResumePageProps) {
 				<IntlContext.Provider value={IntlProviderValue[lang]}>
 					<style id="print-styles" />
 					<Box className="mx-auto flex max-w-3xl flex-col gap-6 print:max-w-none">
-						<Box className="flex w-full flex-col justify-center gap-3 sm:flex-row print:hidden">
+						<Box className="flex w-full flex-col justify-center gap-3 sm:flex-row sm:flex-wrap print:hidden">
 							<ActionButtons
-								viewMode={viewMode}
+								contentMode={contentMode}
+								design={design}
 								lang={lang}
-								onViewModeChange={setViewMode}
+								onContentModeChange={setContentMode}
+								onDesignChange={setDesign}
 								onLangChange={setLang}
 							/>
 							<WithAuth
@@ -99,19 +107,25 @@ function ResumePage({ data }: ResumePageProps) {
 								asChild
 							>
 								<DownloadActions
-									viewMode={viewMode}
+									design={design}
 									lang={lang}
-									onViewModeChange={setViewMode}
+									onDesignChange={setDesign}
 									onLangChange={setLang}
 								/>
 							</WithAuth>
 						</Box>
 
 						<Box className="text-base">
-							{viewMode === "FULL" ? (
-								<FullMode data={currentData} />
+							{design === "SIMPLE" ? (
+								<SimpleMode
+									contentMode={contentMode}
+									data={currentData}
+								/>
 							) : (
-								<ShortMode data={currentData} />
+								<ColorfulMode
+									contentMode={contentMode}
+									data={currentData}
+								/>
 							)}
 						</Box>
 					</Box>
@@ -125,7 +139,9 @@ export default ResumePage;
 
 // --- COMPONENTS ---
 
-function ShortMode({ data }: { data: Resume }) {
+type SimpleModeProps = { data: Resume; contentMode: ContentMode };
+
+function SimpleMode({ data, contentMode }: SimpleModeProps) {
 	// --- HOOKS ---
 	const texts = useIntl();
 
@@ -150,7 +166,7 @@ function ShortMode({ data }: { data: Resume }) {
 
 				<ContactInfo
 					contactInfo={data.contactInfo}
-					variant="SHORT"
+					variant="SIMPLE"
 				/>
 				<Space size={1.5} />
 
@@ -159,19 +175,19 @@ function ShortMode({ data }: { data: Resume }) {
 
 			<Box className="p-4">
 				<ResumeBox
-					variant="SHORT"
+					variant="SIMPLE"
 					title={texts.SUMMARY}
 				>
 					<Pre
 						variant={Pre.variant.BREAK_WITH_BLANK_LINES}
 						className="font-texts text-justify"
 					>
-						{data.summary.short}
+						{contentMode === "SHORT" ? data.summary.short : data.summary.full}
 					</Pre>
 				</ResumeBox>
 
 				<ResumeBox
-					variant="SHORT"
+					variant="SIMPLE"
 					title={texts.EDUCATION}
 				>
 					{data.education.map((item) => {
@@ -204,11 +220,24 @@ function ShortMode({ data }: { data: Resume }) {
 				</ResumeBox>
 
 				<ResumeBox
-					variant="SHORT"
+					variant="SIMPLE"
 					title={texts.EXPERIENCE}
 				>
 					{data.experience.map(
-						({ id, name, role, company, startDate, endDate, mode, shortContent, skills }) => {
+						({
+							id,
+							name,
+							role,
+							company,
+							startDate,
+							endDate,
+							mode,
+							skills,
+							shortContent,
+							fullContent,
+						}) => {
+							const content = contentMode === "SHORT" ? shortContent : fullContent;
+
 							return (
 								<Box
 									key={generateSlug(`short-experience-${id}`)}
@@ -248,14 +277,14 @@ function ShortMode({ data }: { data: Resume }) {
 									<Space size={1} />
 
 									<Box className="flex flex-col gap-1">
-										<Text>{shortContent.summary}</Text>
+										<Text>{content.summary}</Text>
 
-										{isNotEmptyArray(shortContent.achievements) ? (
+										{isNotEmptyArray(content.achievements) ? (
 											<List
 												variant={List.variant.SIMPLE}
 												className="mx-1"
 											>
-												{shortContent.achievements.map((achievement, index) => {
+												{content.achievements.map((achievement, index) => {
 													return (
 														<List.Item key={generateSlug(`short-${id}-achievement-${index}`)}>
 															{achievement}
@@ -285,7 +314,7 @@ function ShortMode({ data }: { data: Resume }) {
 				</ResumeBox>
 
 				<OtherSection
-					variant="SHORT"
+					variant="SIMPLE"
 					data={data}
 				/>
 			</Box>
@@ -293,7 +322,9 @@ function ShortMode({ data }: { data: Resume }) {
 	);
 }
 
-function FullMode({ data }: { data: Resume }) {
+type ColorfulModeProps = { data: Resume; contentMode: ContentMode };
+
+function ColorfulMode({ data, contentMode }: ColorfulModeProps) {
 	// --- HOOKS ---
 	const texts = useIntl();
 
@@ -323,24 +354,24 @@ function FullMode({ data }: { data: Resume }) {
 
 				<ContactInfo
 					contactInfo={data.contactInfo}
-					variant="FULL"
+					variant="COLORFUL"
 				/>
 			</Box>
 
 			<ResumeBox
-				variant="FULL"
+				variant="COLORFUL"
 				title={texts.SUMMARY}
 			>
 				<Pre
 					variant={Pre.variant.BREAK_WITH_BLANK_LINES}
 					className="font-texts text-justify"
 				>
-					{data.summary.full}
+					{contentMode === "SHORT" ? data.summary.short : data.summary.full}
 				</Pre>
 			</ResumeBox>
 
 			<ResumeBox
-				variant="FULL"
+				variant="COLORFUL"
 				title={texts.EDUCATION}
 			>
 				<Box>
@@ -389,15 +420,18 @@ function FullMode({ data }: { data: Resume }) {
 			</ResumeBox>
 
 			<ResumeBox
-				variant="FULL"
+				variant="COLORFUL"
 				title={texts.EXPERIENCE}
 			>
-				<ExperienceTimeline experience={data.experience} />
+				<ExperienceTimeline
+					experience={data.experience}
+					contentMode={contentMode}
+				/>
 			</ResumeBox>
 
 			<OtherSection
 				data={data}
-				variant="FULL"
+				variant="COLORFUL"
 			/>
 		</Box>
 	);
@@ -406,12 +440,12 @@ function FullMode({ data }: { data: Resume }) {
 type ResumeBoxProps = {
 	title: string;
 	children: ReactTypes.Children;
-	variant: "SHORT" | "FULL";
+	variant: "SIMPLE" | "COLORFUL";
 	style?: ReactTypes.Styles;
 };
 
 function ResumeBox({ title, children, variant, style }: ResumeBoxProps) {
-	if (variant === "SHORT") {
+	if (variant === "SIMPLE") {
 		return (
 			<Box
 				as="section"
@@ -463,16 +497,30 @@ function Skill({ children, className }: { children: string; className?: string }
 
 type ExperienceTimelineProps = {
 	experience: Resume["experience"];
+	contentMode: ContentMode;
 };
 
-function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
+function ExperienceTimeline({ experience, contentMode }: ExperienceTimelineProps) {
 	// --- HOOKS ---
 	const texts = useIntl();
 
 	return (
 		<Box className="ml-2 border-l-2 border-black print:border-0">
 			{experience.map(
-				({ id, name, role, company, startDate, endDate, mode, fullContent, skills }) => {
+				({
+					id,
+					name,
+					role,
+					company,
+					startDate,
+					endDate,
+					mode,
+					fullContent,
+					shortContent,
+					skills,
+				}) => {
+					const content = contentMode === "SHORT" ? shortContent : fullContent;
+
 					return (
 						<Box
 							key={id}
@@ -523,14 +571,14 @@ function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
 									</Box>
 								</Box>
 
-								<Text>{fullContent.summary}</Text>
+								<Text>{content.summary}</Text>
 
-								{isNotEmptyArray(fullContent.achievements) ? (
+								{isNotEmptyArray(content.achievements) ? (
 									<List
 										variant={List.variant.SIMPLE}
 										className="mx-1"
 									>
-										{fullContent.achievements.map((item, index) => {
+										{content.achievements.map((item, index) => {
 											return (
 												<List.Item key={generateSlug(`full-${id}-achievements-${index}`)}>
 													{item}
@@ -554,7 +602,7 @@ function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
 	);
 }
 
-function OtherSection({ data, variant }: { data: Resume; variant: "SHORT" | "FULL" }) {
+function OtherSection({ data, variant }: { data: Resume; variant: "SIMPLE" | "COLORFUL" }) {
 	// --- HOOKS ---
 	const texts = useIntl();
 
@@ -613,7 +661,7 @@ function ContactInfo({
 	variant,
 }: {
 	contactInfo: Resume["contactInfo"];
-	variant: "SHORT" | "FULL";
+	variant: "SIMPLE" | "COLORFUL";
 }) {
 	const classes = {
 		item: cn(
@@ -621,7 +669,7 @@ function ContactInfo({
 			"odd:sm:justify-end even:sm:justify-start",
 		),
 	};
-	const isShortVariant = variant === "SHORT";
+	const isShortVariant = variant === "SIMPLE";
 
 	return (
 		<Box className="grid grid-cols-1 gap-x-3 gap-y-1 text-black sm:grid-cols-2">
@@ -725,28 +773,38 @@ function Location({ location }: { location: Resume["contactInfo"]["location"] })
 }
 
 type ActionButtonsProps = {
-	viewMode: ViewMode;
+	contentMode: ContentMode;
+	design: Design;
 	lang: Lang;
-	onViewModeChange: (viewMode: ViewMode) => void;
+	onContentModeChange: (content: ContentMode) => void;
+	onDesignChange: (design: Design) => void;
 	onLangChange: (lang: Lang) => void;
 };
 
-function ActionButtons({ viewMode, lang, onViewModeChange, onLangChange }: ActionButtonsProps) {
+function ActionButtons({
+	contentMode,
+	design,
+	lang,
+	onContentModeChange,
+	onDesignChange,
+	onLangChange,
+}: ActionButtonsProps) {
 	// --- STYLES ---
 	const classes = {
+		container:
+			"flex items-center justify-start rounded-full border border-slate-100 bg-white px-1.5 py-1 text-sm font-medium shadow-sm w-full",
 		icon: "px-2 text-slate-400",
-		separator: "mx-1.5 h-5 w-px border-slate-200",
+		toggleGroup: cn("grid min-w-0 flex-1 grid-cols-2 flex-nowrap"),
 		toggle:
-			"cursor-pointer rounded-full px-3 py-1 text-slate-600 transition-colors data-pressed:bg-slate-900 data-pressed:text-white",
-		downloadPDF: "flex items-center gap-1.5 rounded-full bg-slate-900 px-3 py-1 text-white h-full",
+			"cursor-pointer rounded-full px-3 py-1 text-slate-600 transition-colors data-pressed:bg-slate-900 data-pressed:text-white truncate",
 	};
 
 	// --- HANDLERS ---
-	function handleViewModeChange(newValue: string[]) {
+	function handleDesignChange(newValue: string[]) {
 		if (newValue.length > 0) {
-			const newMode = newValue[0] as ViewMode;
-			onViewModeChange(newMode);
-			AnalyticsService.trackEvent("RESUME|SET_VIEW_MODE", { view_mode: newMode });
+			const newMode = newValue[0] as Design;
+			onDesignChange(newMode);
+			AnalyticsService.trackEvent("RESUME|SET_DESIGN", { view_mode: newMode });
 		}
 	}
 
@@ -758,82 +816,116 @@ function ActionButtons({ viewMode, lang, onViewModeChange, onLangChange }: Actio
 		AnalyticsService.trackEvent("RESUME|SET_LANG", { lang: newLang });
 	}
 
+	function handleContentModeChange(newValue: string[]) {
+		if (newValue.length === 0) return;
+
+		const newContentMode = newValue[0] as ContentMode;
+		onContentModeChange(newContentMode);
+		AnalyticsService.trackEvent("RESUME|SET_CONTENT_MODE", { content_mode: newContentMode });
+	}
+
 	return (
-		<Box className="flex justify-center">
-			<Box className="flex items-center rounded-full border border-slate-100 bg-white px-1.5 py-1 text-sm font-medium shadow-sm">
-				<Icon
-					icon={IconCatalog.FILE_TEXT}
-					size={16}
-					wrapperClassName={classes.icon}
-				/>
-				<ToggleGroup
-					value={[viewMode]}
-					onValueChange={handleViewModeChange}
-					className="flex"
-				>
-					<Toggle
-						value="SHORT"
-						aria-label="Short view"
-						className={classes.toggle}
+		<Box className="@container w-full">
+			<Box className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),300px))] justify-center gap-3 sm:grid-cols-3">
+				<Box className={classes.container}>
+					<Icon
+						icon={IconCatalog.PEN_TOOL}
+						size={16}
+						wrapperClassName={classes.icon}
+					/>
+					<ToggleGroup
+						value={[design]}
+						onValueChange={handleDesignChange}
+						className={classes.toggleGroup}
 					>
-						Short
-					</Toggle>
-					<Toggle
-						value="FULL"
-						aria-label="Full view"
-						className={classes.toggle}
-					>
-						Full
-					</Toggle>
-				</ToggleGroup>
+						<Toggle
+							value="SIMPLE"
+							aria-label="Simple design"
+							className={classes.toggle}
+						>
+							Simple
+						</Toggle>
+						<Toggle
+							value="COLORFUL"
+							aria-label="Colorful design"
+							className={classes.toggle}
+						>
+							Colorful
+						</Toggle>
+					</ToggleGroup>
+				</Box>
 
-				<Space
-					variant={Space.variant.SIMPLE}
-					orientation="v"
-					className={classes.separator}
-				/>
+				<Box className={classes.container}>
+					<Icon
+						icon={IconCatalog.FILE_TEXT}
+						size={16}
+						wrapperClassName={classes.icon}
+					/>
+					<ToggleGroup
+						value={[contentMode]}
+						onValueChange={handleContentModeChange}
+						className={classes.toggleGroup}
+					>
+						<Toggle
+							value="SHORT"
+							aria-label="Short content"
+							className={classes.toggle}
+						>
+							Short
+						</Toggle>
+						<Toggle
+							value="FULL"
+							aria-label="Full content"
+							className={classes.toggle}
+						>
+							Full
+						</Toggle>
+					</ToggleGroup>
+				</Box>
 
-				<Icon
-					icon={IconCatalog.LANGUAGES}
-					size={16}
-					wrapperClassName={classes.icon}
-				/>
-				<ToggleGroup
-					value={[lang]}
-					onValueChange={handleLangChange}
-					className="flex"
-				>
-					<Toggle
-						value="EN"
-						aria-label="English"
-						className={classes.toggle}
+				<Box className={classes.container}>
+					<Icon
+						icon={IconCatalog.LANGUAGES}
+						size={16}
+						wrapperClassName={classes.icon}
+					/>
+					<ToggleGroup
+						value={[lang]}
+						onValueChange={handleLangChange}
+						className={classes.toggleGroup}
 					>
-						EN
-					</Toggle>
-					<Toggle
-						value="ES"
-						aria-label="Spanish"
-						className={classes.toggle}
-					>
-						ES
-					</Toggle>
-				</ToggleGroup>
+						<Toggle
+							value="EN"
+							aria-label="English"
+							className={classes.toggle}
+						>
+							EN
+						</Toggle>
+						<Toggle
+							value="ES"
+							aria-label="Spanish"
+							className={classes.toggle}
+						>
+							ES
+						</Toggle>
+					</ToggleGroup>
+				</Box>
 			</Box>
 		</Box>
 	);
 }
 
 type DownloadActionsProps = {
-	viewMode: ViewMode;
+	design: Design;
 	lang: Lang;
-	onViewModeChange: (viewMode: ViewMode) => void;
+	onDesignChange: (design: Design) => void;
 	onLangChange: (lang: Lang) => void;
 };
 
-function DownloadActions({ viewMode, lang, onViewModeChange, onLangChange }: DownloadActionsProps) {
+function DownloadActions({ design, lang, onDesignChange, onLangChange }: DownloadActionsProps) {
 	// --- STATE ---
 	const [downloadMode, setDownloadMode] = useBrowserStorage<DownloadMode>({
-		key: "RESUME_DOWNLOAD_MODE",
+		key: "DR_RESUME_DOWNLOAD_MODE",
 		value: "CURRENT",
 		readInitialValueFromStorage: true,
 		saveDuringCreation: true,
@@ -865,28 +957,28 @@ function DownloadActions({ viewMode, lang, onViewModeChange, onLangChange }: Dow
 
 	// --- UTILS ---
 	function downloadAll() {
-		const originalViewMode = viewMode;
+		const originalDesign = design;
 		const originalLang = lang;
 		const originalTitle = document.title;
-		const variants: Array<{ lang: Lang; viewMode: ViewMode }> = [
-			{ lang: "EN", viewMode: "SHORT" },
-			{ lang: "ES", viewMode: "SHORT" },
-			{ lang: "EN", viewMode: "FULL" },
-			{ lang: "ES", viewMode: "FULL" },
+		const variants: Array<{ lang: Lang; design: Design }> = [
+			{ lang: "EN", design: "SIMPLE" },
+			{ lang: "ES", design: "SIMPLE" },
+			{ lang: "EN", design: "COLORFUL" },
+			{ lang: "ES", design: "COLORFUL" },
 		];
 
 		let index = 0;
 
-		const triggerPrint = (lang: Lang, viewMode: ViewMode) => {
-			const isDefaultResume = lang === "EN" && viewMode === "SHORT";
-			document.title = isDefaultResume ? "2026" : `2026 - ${lang} - ${viewMode}`.toUpperCase();
+		const triggerPrint = (lang: Lang, design: Design) => {
+			const isDefaultResume = lang === "EN" && design === "SIMPLE";
+			document.title = isDefaultResume ? "2026" : `2026 - ${lang} - ${design}`.toUpperCase();
 			window.print();
 		};
 
 		const printNext = () => {
 			if (index >= variants.length) {
 				document.title = originalTitle;
-				onViewModeChange(originalViewMode);
+				onDesignChange(originalDesign);
 				onLangChange(originalLang);
 				return;
 			}
@@ -894,13 +986,13 @@ function DownloadActions({ viewMode, lang, onViewModeChange, onLangChange }: Dow
 			const variant = variants[index++];
 
 			flushSync(() => {
-				onViewModeChange(variant.viewMode);
+				onDesignChange(variant.design);
 				onLangChange(variant.lang);
 			});
 
 			setTimeout(() => {
 				window.addEventListener("afterprint", printNext, { once: true });
-				triggerPrint(variant.lang, variant.viewMode);
+				triggerPrint(variant.lang, variant.design);
 			}, 1000);
 		};
 
@@ -958,7 +1050,7 @@ function DownloadActions({ viewMode, lang, onViewModeChange, onLangChange }: Dow
 
 // --- STYLES ---
 
-const SHORT_MODE_STYLES = `
+const SIMPLE_MODE_STYLES = `
   @media print {
     @page {
       margin: 0cm;
@@ -972,7 +1064,7 @@ const SHORT_MODE_STYLES = `
   }
 `;
 
-const FULL_MODE_STYLES = `
+const COLORFUL_MODE_STYLES = `
   @media print {
     @page {
       margin: 0.8cm;
@@ -982,8 +1074,9 @@ const FULL_MODE_STYLES = `
 
 // --- TYPES ---
 
-type ViewMode = "FULL" | "SHORT";
+type Design = "SIMPLE" | "COLORFUL";
 type Lang = "EN" | "ES";
+type ContentMode = "SHORT" | "FULL";
 type DownloadMode = "CURRENT" | "ALL";
 
 // --- CONSTANTS ---

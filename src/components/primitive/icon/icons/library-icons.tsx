@@ -37,6 +37,7 @@ import {
 	MenuIcon,
 	MessageSquareTextIcon,
 	PencilIcon,
+	PenToolIcon,
 	PhoneIcon,
 	RefreshCwIcon,
 	RssIcon,
@@ -314,6 +315,12 @@ const LibraryIcons = {
 			color: "",
 		},
 		icon: MessageSquareTextIcon,
+	},
+	PEN_TOOL: {
+		defaultProps: {
+			className: "",
+		},
+		icon: PenToolIcon,
 	},
 	PENCIL: {
 		defaultProps: {
